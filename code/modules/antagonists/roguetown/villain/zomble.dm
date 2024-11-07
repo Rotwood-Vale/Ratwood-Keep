@@ -3,8 +3,6 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "zombie"
 	show_in_roundend = FALSE
-	/// SET TO FALSE IF WE DON'T TURN INTO ROTMEN WHEN REMOVED
-	var/become_rotman = FALSE
 	var/zombie_start
 	var/revived = FALSE
 	// CACHE VARIABLES SO ZOMBIFICATION CAN BE CURED
@@ -27,6 +25,8 @@
 	var/list/base_intents
 	/// Whether or not we have been turned
 	var/has_turned = FALSE
+
+	rogue_enabled = TRUE
 
 /datum/antagonist/zombie/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/vampirelord))
@@ -72,60 +72,62 @@
 	return ..()
 
 /datum/antagonist/zombie/on_removal()
-	var/mob/living/carbon/human/zombie = owner?.current
-	if(zombie)
-		zombie.mind?.special_role = special_role
-		zombie.ambushable = ambushable
-		if(zombie.dna?.species)
-			zombie.dna.species.soundpack_m = soundpack_m
-			zombie.dna.species.soundpack_f = soundpack_f
-		zombie.base_intents = base_intents
 
-		owner.known_skills = stored_skills
-		owner.skill_experience = stored_experience
+	if(!owner.current)
+		return
 
-		zombie.update_a_intents()
-		zombie.aggressive = FALSE
-		zombie.mode = AI_OFF
-		if(zombie.charflaw)
-			zombie.charflaw.ephemeral = FALSE
-		zombie.update_body()
-		zombie.STASTR = STASTR
-		zombie.STASPD = STASPD
-		zombie.STAINT = STAINT
-		zombie.STACON = STACON
-		zombie.STAEND = STAEND
-		zombie.cmode_music = cmode_music
-		zombie.set_patron(patron)
-		for(var/trait in GLOB.traits_deadite)
-			REMOVE_TRAIT(zombie, trait, "[type]")
-		zombie.remove_client_colour(/datum/client_colour/monochrome)
-		if(has_turned && become_rotman)
-			zombie.STACON = max(zombie.STACON - 2, 1) //ur rotting bro
-			zombie.STASPD = max(zombie.STASPD - 3, 1)
-			zombie.STAINT = max(zombie.STAINT - 3, 1)
-			for(var/trait in GLOB.traits_rotman)
-				ADD_TRAIT(zombie, trait, "[type]")
-			to_chat(zombie, span_green("I no longer crave for flesh... <i>But I still feel ill.</i>"))
-		else
-			if(!was_i_undead)
-				zombie.mob_biotypes &= ~MOB_UNDEAD
-			zombie.faction -= "undead"
-			zombie.faction += "station"
-			zombie.faction += "neutral"
-			zombie.regenerate_organs()
-			if(has_turned)
-				to_chat(zombie, span_green("I no longer crave for flesh..."))
-		for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
-			zombie_part.rotted = FALSE
-			zombie_part.update_disabled()
-			zombie_part.update_limb()
-		zombie.update_body()
+	var/mob/living/carbon/human/zombie = owner.current
+
+	zombie.mind?.special_role = special_role
+	zombie.ambushable = ambushable
+	if(zombie.dna?.species)
+		zombie.dna.species.soundpack_m = soundpack_m
+		zombie.dna.species.soundpack_f = soundpack_f
+	zombie.base_intents = base_intents
+
+	owner.known_skills = stored_skills
+	owner.skill_experience = stored_experience
+
+	zombie.update_a_intents()
+	zombie.aggressive = FALSE
+	zombie.mode = AI_OFF
+	if(zombie.charflaw)
+		zombie.charflaw.ephemeral = FALSE
+	zombie.update_body()
+	zombie.STASTR = STASTR
+	zombie.STASPD = STASPD
+	zombie.STAINT = STAINT
+	zombie.STACON = STACON
+	zombie.STAEND = STAEND
+	zombie.cmode_music = cmode_music
+	zombie.set_patron(patron)
+
+	for(var/trait in GLOB.traits_deadite)
+		REMOVE_TRAIT(zombie, trait, TRAIT_GENERIC)
+
+	zombie.remove_client_colour(/datum/client_colour/monochrome)
+
+	if(!was_i_undead)
+		zombie.mob_biotypes &= ~MOB_UNDEAD
+	zombie.faction -= "undead"
+	zombie.faction += "station"
+	zombie.faction += "neutral"
+	zombie.regenerate_organs()
+	if(has_turned)
+		to_chat(zombie, span_green("I no longer crave for flesh..."))
+		
+	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
+		zombie_part.rotted = FALSE
+		zombie_part.update_disabled()
+		zombie_part.update_limb()
+	zombie.update_body()
+
 	// Bandaid to fix the zombie ghostizing not allowing you to re-enter
-	if(zombie)
-		var/mob/dead/observer/ghost = zombie.get_ghost(TRUE)
-		if(ghost)
-			ghost.can_reenter_corpse = TRUE
+
+	var/mob/dead/observer/ghost = zombie.get_ghost(TRUE)
+	if(ghost)
+		ghost.can_reenter_corpse = TRUE
+
 	return ..()
 
 /// Transform the player mob into a deadite
@@ -166,6 +168,9 @@
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
 
 	has_turned = TRUE
+
+	// zombies cant rp, thus shouldnt be playable
+	zombie.ghostize(FALSE)
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))

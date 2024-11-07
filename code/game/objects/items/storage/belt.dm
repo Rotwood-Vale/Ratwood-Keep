@@ -511,7 +511,6 @@
 		/obj/item/soap,
 		/obj/item/holosign_creator,
 		/obj/item/forcefield_projector,
-		/obj/item/key/janitor,
 		/obj/item/clothing/gloves,
 		/obj/item/melee/flyswatter,
 		/obj/item/assembly/mousetrap,

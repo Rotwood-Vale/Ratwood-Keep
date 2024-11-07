@@ -422,8 +422,8 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "aR" = (
-/obj/item/roguekey/lord,
-/obj/item/roguekey/lord,
+/obj/item/key/lord,
+/obj/item/key/lord,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "aS" = (
@@ -708,7 +708,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "bx" = (
-/obj/item/roguekey/lord,
+/obj/item/key/lord,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "by" = (
@@ -1192,9 +1192,9 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/roguekey/vampire,
-/obj/item/roguekey/vampire,
-/obj/item/roguekey/vampire,
+/obj/item/key/vampire,
+/obj/item/key/vampire,
+/obj/item/key/vampire,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "dg" = (
@@ -1559,7 +1559,7 @@
 	},
 /obj/item/rogueweapon/flail/sflail,
 /obj/item/rogueweapon/flail/sflail,
-/obj/item/roguekey/lord,
+/obj/item/key/lord,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "jQ" = (
@@ -1605,7 +1605,7 @@
 /obj/item/rogueweapon/greatsword,
 /obj/item/rogueweapon/greatsword,
 /obj/item/rogueweapon/greatsword,
-/obj/item/roguekey/lord,
+/obj/item/key/lord,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "la" = (
@@ -1781,35 +1781,35 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "rt" = (
-/obj/item/roguekey/walls{
+/obj/item/key/walls{
 	lockid = "bandit";
 	name = "old key"
 	},
-/obj/item/roguekey/walls{
+/obj/item/key/walls{
 	lockid = "bandit";
 	name = "old key"
 	},
-/obj/item/roguekey/walls{
+/obj/item/key/walls{
 	lockid = "bandit";
 	name = "old key"
 	},
-/obj/item/roguekey/walls{
+/obj/item/key/walls{
 	lockid = "bandit";
 	name = "old key"
 	},
-/obj/item/roguekey/walls{
+/obj/item/key/walls{
 	lockid = "bandit";
 	name = "old key"
 	},
-/obj/item/roguekey/walls{
+/obj/item/key/walls{
 	lockid = "bandit";
 	name = "old key"
 	},
-/obj/item/roguekey/walls{
+/obj/item/key/walls{
 	lockid = "bandit";
 	name = "old key"
 	},
-/obj/item/roguekey/walls{
+/obj/item/key/walls{
 	lockid = "bandit";
 	name = "old key"
 	},
@@ -2449,7 +2449,7 @@
 /obj/structure/closet/crate/chest{
 	lockid = "bandit"
 	},
-/obj/item/roguekey/walls{
+/obj/item/key/walls{
 	lockid = "bandit";
 	name = "old key"
 	},

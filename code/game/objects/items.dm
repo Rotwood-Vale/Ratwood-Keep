@@ -342,6 +342,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		else if(isliving(loc))
 			var/mob/living/embedded_mob = loc
 			embedded_mob.simple_remove_embedded_object(src)
+	if(artrecipe)
+		QDEL_NULL(artrecipe)
+	if(istype(loc, /obj/machinery/artificer_table))
+		var/obj/machinery/artificer_table/A = loc
+		A.material = null
+		A.update_icon()
 	return ..()
 
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)

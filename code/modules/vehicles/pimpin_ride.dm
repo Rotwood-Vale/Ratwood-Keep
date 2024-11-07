@@ -3,7 +3,6 @@
 	name = "janicart (pimpin' ride)"
 	desc = ""
 	icon_state = "pussywagon"
-	key_type = /obj/item/key/janitor
 	var/obj/item/storage/bag/trash/mybag = null
 	var/floorbuffer = FALSE
 
