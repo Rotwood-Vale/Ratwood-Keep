@@ -25,7 +25,7 @@
 	wrists = /obj/item/storage/keyring/nightman
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	beltr = /obj/item/rogueweapon/whip // In case the one whip in the office has already been pilfered
+	beltl = /obj/item/rogueweapon/whip // In case the one whip in the office has already been pilfered
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
