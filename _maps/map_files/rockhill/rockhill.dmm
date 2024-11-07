@@ -6480,7 +6480,7 @@
 /area/rogue/indoors/shelter/mountains)
 "fOT" = (
 /obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/cobble/mossy,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "fOW" = (
 /obj/machinery/light/rogue/torchholder,
@@ -14263,7 +14263,7 @@
 	pixel_x = -9;
 	pixel_y = -1
 	},
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "mYT" = (
 /obj/effect/decal/cleanable/cobweb{
@@ -22661,7 +22661,7 @@
 /obj/machinery/light/rogue/firebowl/standing{
 	pixel_x = -10
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "uzx" = (
 /obj/structure/mineral_door/wood{
@@ -23628,7 +23628,7 @@
 "vtZ" = (
 /obj/effect/landmark/events/haunts,
 /obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/cobble/mossy,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "vuk" = (
 /obj/structure/closet/crate/drawer,
@@ -268453,7 +268453,7 @@ uaL
 uaL
 sjP
 sjP
-uaL
+qvR
 uaL
 uaL
 wSn
@@ -269257,7 +269257,7 @@ uaL
 uaL
 uaL
 sjP
-qvR
+sjP
 qvR
 uaL
 uaL
@@ -270861,7 +270861,7 @@ ooJ
 ooJ
 pAV
 fCT
-uaL
+wSn
 qvR
 qvR
 sjP
@@ -271263,9 +271263,9 @@ aRI
 pAV
 oJO
 qvR
+wSn
+wSn
 uaL
-uaL
-sjP
 sjP
 fxx
 uaL
@@ -271664,10 +271664,10 @@ pAV
 xou
 qjz
 pAV
-fOT
-fOT
+vLS
+vLS
 vtZ
-sjP
+uaL
 sjP
 fxx
 uaL
@@ -272067,9 +272067,9 @@ xou
 xou
 pAV
 fOT
-fOT
-fOT
-sjP
+vLS
+vLS
+uaL
 sjP
 fxx
 uaL
@@ -272470,8 +272470,8 @@ xou
 pAV
 fOT
 fOT
-fOT
-xXH
+vLS
+uaL
 sjP
 fxx
 uaL
@@ -272873,8 +272873,8 @@ pAV
 qvR
 uaL
 qvR
-xXH
-fxx
+uaL
+sjP
 fxx
 wSn
 wSn
@@ -273274,8 +273274,8 @@ xou
 pAV
 qvR
 uaL
+wSn
 uaL
-xXH
 fxx
 fxx
 wSn
@@ -273677,7 +273677,7 @@ pAV
 hKm
 mYH
 uzc
-xXH
+uaL
 fxx
 fxx
 wSn
