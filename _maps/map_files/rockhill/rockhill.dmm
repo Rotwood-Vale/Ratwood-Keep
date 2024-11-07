@@ -348,7 +348,7 @@
 /area/rogue/indoors/town/church/chapel)
 "aok" = (
 /obj/structure/roguemachine/scomm,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "aos" = (
 /obj/structure/mineral_door/bars{
@@ -6183,10 +6183,8 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church)
 "fCT" = (
-/obj/machinery/light/rogue/firebowl/standing{
-	pixel_x = 10
-	},
-/turf/open/floor/rogue/dirt/road,
+/obj/item/roguebin/water,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "fDe" = (
 /obj/structure/mineral_door/bars,
@@ -8543,11 +8541,10 @@
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/outdoors/mountains)
 "hKm" = (
-/obj/structure/flora/roguetree/stump{
-	pixel_x = -9;
-	pixel_y = -1
+/obj/machinery/light/rogue/firebowl/standing{
+	pixel_x = -10
 	},
-/turf/open/floor/rogue/cobble/mossy,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "hKU" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
@@ -14262,8 +14259,11 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
 "mYH" = (
-/obj/machinery/light/rogue/torchholder/c,
-/turf/open/floor/rogue/blocks,
+/obj/structure/flora/roguetree/stump{
+	pixel_x = -9;
+	pixel_y = -1
+	},
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "mYT" = (
 /obj/effect/decal/cleanable/cobweb{
@@ -263225,7 +263225,7 @@ izN
 kQt
 uaL
 vKb
-sjP
+uaL
 tWz
 wSn
 qvR
@@ -268855,7 +268855,7 @@ uaL
 uaL
 uaL
 sjP
-fxx
+qvR
 qvR
 uaL
 uaL
@@ -269251,14 +269251,14 @@ uaL
 uaL
 uaL
 uaL
-uaL
-uaL
+qvR
+qvR
 uaL
 uaL
 uaL
 sjP
-fxx
-fxx
+qvR
+qvR
 uaL
 uaL
 uaL
@@ -269655,12 +269655,12 @@ vjf
 pAV
 pAV
 aok
-uaL
+qvR
 uaL
 uaL
 sjP
 sjP
-fxx
+qvR
 uaL
 uaL
 wSn
@@ -270057,12 +270057,12 @@ ooJ
 ooJ
 pAV
 itt
+qvR
 uaL
-uaL
-sjP
+qvR
 sjP
 fxx
-fxx
+qvR
 uaL
 uaL
 uaL
@@ -270458,10 +270458,10 @@ ooJ
 ooJ
 ooJ
 vjf
+qvR
+qvR
 uaL
-uaL
-uaL
-sjP
+qvR
 sjP
 fxx
 uaL
@@ -270861,9 +270861,9 @@ ooJ
 ooJ
 pAV
 fCT
-sjP
-fOT
-fOT
+uaL
+qvR
+qvR
 sjP
 fxx
 uaL
@@ -271262,10 +271262,10 @@ pAV
 aRI
 pAV
 oJO
-hKm
+qvR
+uaL
+uaL
 sjP
-vtZ
-fOT
 sjP
 fxx
 uaL
@@ -271664,10 +271664,10 @@ pAV
 xou
 qjz
 pAV
-uzc
+fOT
+fOT
+vtZ
 sjP
-fOT
-fOT
 sjP
 fxx
 uaL
@@ -272066,9 +272066,9 @@ nps
 xou
 xou
 pAV
-qvR
-jXZ
-jXZ
+fOT
+fOT
+fOT
 sjP
 sjP
 fxx
@@ -272468,9 +272468,9 @@ pAV
 uvD
 xou
 pAV
-qvR
-uaL
-uaL
+fOT
+fOT
+fOT
 xXH
 sjP
 fxx
@@ -273273,9 +273273,9 @@ xou
 xou
 pAV
 qvR
-qvR
-pAV
-mYH
+uaL
+uaL
+xXH
 fxx
 fxx
 wSn
@@ -273674,9 +273674,9 @@ xou
 xou
 xou
 pAV
-qvR
-qvR
-qvR
+hKm
+mYH
+uzc
 xXH
 fxx
 fxx
@@ -477891,7 +477891,7 @@ yjh
 gAc
 gAc
 gAc
-qzf
+lpp
 qbG
 qbG
 qbG
