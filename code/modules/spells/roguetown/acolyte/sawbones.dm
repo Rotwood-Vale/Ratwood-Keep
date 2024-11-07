@@ -137,54 +137,56 @@
 		return FALSE
 	return TRUE
 
-
-
 /obj/effect/proc_holder/spell/targeted/debride/cast(list/targets, mob/living/user)
-	if(isliving(targets[1]) && targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
-		testing("curerot1")
-		var/mob/living/target = targets[1]
-		if(target == user)
-			return FALSE
-		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-		var/has_rot = was_zombie
-		if(!has_rot && iscarbon(target))
-			var/mob/living/carbon/stinky = target
-			for(var/obj/item/bodypart/bodypart as anything in stinky.bodyparts)
-				if(bodypart.rotted || bodypart.skeletonized)
-					has_rot = TRUE
-					break
-		if(!has_rot)
-			to_chat(user, span_warning("Nothing happens."))
-			return FALSE
-		testing("curerot2")
-		if(was_zombie)
-			if(was_zombie.become_rotman && prob(10)) //10% chance to NOT become a rotman
-				was_zombie.become_rotman = FALSE
-			target.mind.remove_antag_datum(/datum/antagonist/zombie)
-			target.Unconscious(20 SECONDS)
-			target.emote("breathgasp")
-			target.Jitter(100)
-			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
-				adjust_playerquality(unzombification_pq, user.ckey)
-				ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, "[type]")
-		var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
-		if(rot)
-			rot.amount = 0
-		if(iscarbon(target))
-			var/mob/living/carbon/stinky = target
-			for(var/obj/item/bodypart/rotty in stinky.bodyparts)
-				rotty.rotted = FALSE
-				rotty.skeletonized = FALSE
-				rotty.update_limb()
-				rotty.update_disabled()
-		target.update_body()
-		if(!HAS_TRAIT(target, TRAIT_ROTMAN))
-			target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
-		else
-			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
-		return TRUE
-	to_chat(user, span_warning("I need too prime their liver first"))
-	return FALSE
+
+	if(!isliving(targets[1]))
+		revert_cast()
+		return FALSE
+
+	if(!targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
+		to_chat(user, span_warning("I need too prime their liver first"))
+		return FALSE
+
+	var/mob/living/target = targets[1]
+	
+	if(target == user)
+		return FALSE
+
+	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
+	var/has_rot = was_zombie
+
+	if(!has_rot)
+		to_chat(user, span_warning("Nothing happens."))
+		return FALSE
+
+	testing("curerot2")
+
+	if(was_zombie)
+		target.mind.remove_antag_datum(/datum/antagonist/zombie)
+		target.Unconscious(20 SECONDS)
+		target.emote("breathgasp")
+		target.Jitter(100)
+		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
+			adjust_playerquality(unzombification_pq, user.ckey)
+			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
+	
+	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
+
+	if(rot)
+		rot.amount = 0
+
+	if(iscarbon(target))
+		var/mob/living/carbon/stinky = target
+		for(var/obj/item/bodypart/rotty in stinky.bodyparts)
+			rotty.rotted = FALSE
+			rotty.skeletonized = FALSE
+			rotty.update_limb()
+			rotty.update_disabled()
+
+	target.update_body()
+	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+
+	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/debride/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
