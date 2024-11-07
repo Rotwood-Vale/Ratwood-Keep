@@ -123,6 +123,8 @@
 		/obj/effect/proc_holder/spell/invoked/featherfall,
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,
 		/obj/effect/proc_holder/spell/invoked/longstrider,
+		/obj/effect/proc_holder/spell/invoked/invisibility,
+		/obj/effect/proc_holder/spell/invoked/blindness,
 	)
 
 /obj/effect/proc_holder/spell/invoked/rituos/miracle
