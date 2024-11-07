@@ -26,14 +26,14 @@
 	. = ..()
 	head = /obj/item/clothing/head/roguetown/helmet/citywatch
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	cloak = /obj/item/clothing/cloak/cape/citywatch
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	cloak = /obj/item/clothing/cloak/citywatch
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/citywatch
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	gloves = /obj/item/clothing/gloves/roguetown/chain
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	beltl = /obj/item/keyring/town_watch
 	belt = /obj/item/storage/belt/rogue/leather/black
-	beltr = /obj/item/rogueweapon/mace/cudgel
+	beltr = /obj/item/rogueweapon/mace/stunmace
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
