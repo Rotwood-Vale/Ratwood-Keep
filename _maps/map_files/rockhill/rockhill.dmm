@@ -841,9 +841,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "aNf" = (
-/obj/structure/fluff/walldeco/rpainting/crown,
-/turf/open/floor/carpet/purple,
-/area/rogue/indoors/town/tavern)
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/turf/open/floor/rogue/blocks/platform,
+/area/rogue/indoors/town/church)
 "aNV" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
@@ -9460,7 +9460,6 @@
 /area/rogue/indoors/town/bath)
 "iDd" = (
 /obj/structure/ladder,
-/obj/structure/ladder,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "iDg" = (
@@ -16116,9 +16115,7 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
 "oCi" = (
-/obj/structure/closet/crate/drawer{
-	pixel_x = 6
-	},
+/obj/structure/closet/crate/drawer,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "oCE" = (
@@ -17948,10 +17945,8 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "qiu" = (
-/obj/structure/closet/crate/drawer{
-	pixel_x = 6
-	},
 /obj/item/key/farm,
+/obj/structure/closet/crate/drawer,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "qiM" = (
@@ -19819,9 +19814,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "rXL" = (
-/obj/structure/closet/crate/drawer{
-	pixel_x = 6
-	},
+/obj/structure/closet/crate/drawer,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "rXZ" = (
@@ -20192,9 +20185,9 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
 "smE" = (
-/obj/structure/fluff/walldeco/stone,
-/turf/closed/wall/mineral/rogue/decowood,
-/area/rogue/indoors/town/tavern)
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/town/church)
 "smP" = (
 /obj/machinery/light/rogue/smelter/great,
 /turf/open/floor/rogue/metal,
@@ -20497,9 +20490,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
 "sEb" = (
-/obj/structure/closet/crate/drawer{
-	pixel_x = 6
-	},
+/obj/structure/closet/crate/drawer,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
 "sEo" = (
@@ -22548,9 +22539,7 @@
 	},
 /area/rogue/indoors/town/church)
 "utm" = (
-/obj/structure/closet/crate/drawer{
-	pixel_x = 6
-	},
+/obj/structure/closet/crate/drawer,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "utz" = (
@@ -24529,7 +24518,6 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "wik" = (
-/obj/structure/ladder,
 /obj/structure/ladder,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
@@ -270479,7 +270467,7 @@ uaL
 rBC
 fxx
 fxx
-rZt
+fxx
 uaL
 uaL
 uaL
@@ -272519,7 +272507,7 @@ xou
 pAV
 qmG
 qmG
-pAV
+fDB
 mYH
 sjP
 fxx
@@ -278118,9 +278106,9 @@ uaL
 uaL
 fxx
 fxx
-uaL
-uaL
-uaL
+fxx
+fxx
+fxx
 fxx
 fxx
 fxx
@@ -278548,13 +278536,13 @@ fxx
 fxx
 fxx
 fxx
-uaL
-uaL
-uaL
 fxx
 fxx
-uaL
-uaL
+fxx
+fxx
+fxx
+fxx
+fxx
 fxx
 fxx
 fxx
@@ -278953,6 +278941,8 @@ uaL
 uaL
 uaL
 uTf
+fxx
+fxx
 uaL
 uaL
 uaL
@@ -397898,7 +397888,7 @@ rSm
 wNn
 iEi
 mks
-xMw
+rJc
 xvv
 fZJ
 fZJ
@@ -432459,7 +432449,7 @@ qvR
 qvR
 qvR
 qvR
-qvR
+kVa
 fDB
 vIa
 vIa
