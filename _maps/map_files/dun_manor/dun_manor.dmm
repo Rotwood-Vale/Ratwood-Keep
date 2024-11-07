@@ -185,7 +185,8 @@
 "aiD" = (
 /obj/structure/fluff/canopy/booth/booth02,
 /obj/structure/mineral_door/wood/deadbolt/shutter{
-	dir = 2
+	dir = 2;
+	pixel_y = -1
 	},
 /obj/effect/decal/cobbleedge{
 	dir = 10;
@@ -3420,6 +3421,9 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"dlc" = (
+/turf/open/floor/rogue/tile/bath,
+/area/rogue/indoors/town/manor)
 "dlj" = (
 /obj/structure/roguemachine/scomm{
 	pixel_y = -32
@@ -15245,8 +15249,11 @@
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/indoors)
 "oIU" = (
-/obj/structure/mineral_door/wood/deadbolt/shutter,
 /obj/structure/table/wood,
+/obj/structure/mineral_door/wood/deadbolt/shutter{
+	dir = 2;
+	pixel_y = -1
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -21954,7 +21961,7 @@
 "vwW" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "manor";
-	name = "Lord's Dining Room - Servant Entry";
+	name = "Servant's Entry";
 	locked = 1
 	},
 /turf/open/floor/rogue/herringbone,
@@ -24442,7 +24449,7 @@
 /area/rogue/indoors/town/magician)
 "xJG" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
-/turf/open/floor/rogue/herringbone,
+/turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/town/manor)
 "xJI" = (
 /turf/open/water/bath,
@@ -118118,7 +118125,7 @@ mgy
 jOY
 jOY
 jOY
-jOY
+dlc
 acF
 tkZ
 tkZ
@@ -118275,7 +118282,7 @@ vcT
 hlY
 hlY
 jOY
-jOY
+dlc
 fdk
 tkZ
 tkZ
@@ -118432,7 +118439,7 @@ vcT
 vcT
 vcT
 xJG
-jOY
+dlc
 fdk
 tkZ
 tkZ
