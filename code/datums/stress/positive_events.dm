@@ -142,3 +142,12 @@
 	stressadd = -5
 	desc = span_green("A nice modern entertainmant.")
 	timer = 10 MINUTES
+
+/datum/stressevent/puzzle_impossible
+	stressadd = -4
+	desc = span_boldgreen("I solved an extremely difficult puzzle. Xylix is smiling at me, and surely even Noc must find it impressive.")
+	timer = 15 MINUTES
+
+/datum/stressevent/noble_lavish_food
+	stressadd = -2
+	desc = span_green("Truly, a feast befitting my station.")

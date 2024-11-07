@@ -14,6 +14,7 @@
 	desc = "A slab of beastflesh, fried to a perfect medium-rare(Serve as is or add Pepper, Onion or use with salt to make a Coppiette)"
 	icon_state = "frysteak"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
+	faretype = FARE_NEUTRAL
 	rotprocess = SHELFLIFE_DECENT
 	tastes = list("warm steak" = 1)
 
@@ -65,6 +66,7 @@
 	desc = "Originally an elven cuisine composed of mortal races flesh and bread, the classic wiener in a bun, now modified and staple food of Grenzelhoft cuisine."
 	icon_state = "grenzbun"
 	foodtype = GRAIN | MEAT
+	faretype = FARE_NEUTRAL
 	warming = 5 MINUTES
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
@@ -74,6 +76,7 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	faretype = FARE_FINE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -89,6 +92,8 @@
 	name = "fried cackleberry"
 	desc = "A favorite dish among Astratans."
 	icon_state = "friedegg"
+	portable = FALSE
+	faretype = FARE_POOR
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = SHELFLIFE_DECENT
@@ -115,7 +120,9 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
 	tastes = list("fried cackleberries" = 1)
 	name = "fried cackleberries"
+	faretype = FARE_NEUTRAL
 	desc = "Double the yolks, double the fun."
+	portable = FALSE
 	icon_state = "seggs"
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/two/attackby(obj/item/I, mob/living/user, params)
@@ -142,6 +149,8 @@
 	name = "frybird"
 	desc = "Poultry scorched to a perfect delicious crisp."
 	icon_state = "frybird"
+	faretype = FARE_FINE
+	portable = FALSE
 	fried_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	rotprocess = SHELFLIFE_DECENT
@@ -176,6 +185,7 @@
 	eat_effect = null
 	name = "fried bacon"
 	desc = "A trufflepig's retirement plan."
+	faretype = FARE_FINE
 	icon_state = "friedbacon"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	rotprocess = SHELFLIFE_DECENT
@@ -185,10 +195,22 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/fried
 	name = "fried spidermeat"
 	desc = "A spider leg, shaved and roasted."
+	faretype = FARE_POOR
 	icon_state = "friedspider"
 	eat_effect = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	rotprocess = SHELFLIFE_DECENT
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/crab/fried
+	eat_effect = null
+	slices_num = 0
+	name = "fried crabmeat"
+	faretype = FARE_NEUTRAL
+	portable = FALSE
+	desc = "A fried piece of crabmeat, yum."
+	icon_state = "crabmeat"
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	desc = ""
 
 
 /*	.............   Sausage & Wiener   ................ */
@@ -197,6 +219,7 @@
 	name = "sausage"
 	desc = "Delicious flesh stuffed in a intestine casing."
 	icon_state = "wiener"
+	faretype = FARE_NEUTRAL
 	fried_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	rotprocess = SHELFLIFE_EXTREME
@@ -210,6 +233,8 @@
 	name = "cooked cabbage"
 	icon_state = "cabbage_fried"
 	desc = "A peasant's delight."
+	faretype = FARE_POOR
+	portable = FALSE
 	bitesize = 6
 	list_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	tastes = list("warm cabbage" = 1)
@@ -233,8 +258,9 @@
 
 /*	.............   Baked potato   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked
-	name = "baked potatos"
+	name = "baked potatoes"
 	desc = "A dwarven favorite, as a meal or a game of hot potato."
+	faretype = FARE_POOR
 	icon_state = "potato_baked"
 	bitesize = 4
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
@@ -272,6 +298,8 @@
 	name = "fried onion"
 	desc = "Seared onions roasted to a delicious set of rings."
 	icon_state = "onion_fried"
+	faretype = FARE_POOR
+	portable = FALSE
 	bitesize = 6
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("savoury morsel" = 1)
@@ -298,6 +326,8 @@
 	name = "fried potato"
 	desc = "Potato bits, well roasted."
 	icon_state = "potato_fried"
+	faretype = FARE_NEUTRAL
+	portable = FALSE
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("warm potato" = 1)
