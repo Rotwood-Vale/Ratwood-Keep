@@ -107,7 +107,8 @@
 	"We Toil Together" = 'sound/music/instruments/accord (3).ogg',
 	"Just One More, Tavern Wench" = 'sound/music/instruments/accord (4).ogg',
 	"Moonlight Carnival" = 'sound/music/instruments/accord (5).ogg',
-	"'Ye Best Be Goin'" = 'sound/music/instruments/accord (6).ogg')
+	"'Ye Best Be Goin'" = 'sound/music/instruments/accord (6).ogg',
+	"Beloved Blue" = 'sound/music/instruments/accord (7).ogg')
 
 /obj/item/rogue/instrument/guitar
 	name = "guitar"
@@ -122,7 +123,8 @@
 	"El Odio" = 'sound/music/instruments/guitar (7).ogg',
 	"Danza De Las Lanzas" = 'sound/music/instruments/guitar (8).ogg',
 	"The Feline, Forever Returning" = 'sound/music/instruments/guitar (9).ogg',
-	"El Beso Carmesí" = 'sound/music/instruments/guitar (10).ogg')
+	"El Beso Carmesí" = 'sound/music/instruments/guitar (10).ogg',
+	"The Queen's High Seas" = 'sound/music/instruments/guitar (11).ogg')
 
 /obj/item/rogue/instrument/harp
 	name = "harp"
@@ -130,7 +132,12 @@
 	icon_state = "harp"
 	song_list = list("Through Thine Window, He Glanced" = 'sound/music/instruments/harb (1).ogg',
 	"The Lady of Red Silks" = 'sound/music/instruments/harb (2).ogg',
-	"Eora Doth Watches" = 'sound/music/instruments/harb (3).ogg')
+	"Eora Doth Watches" = 'sound/music/instruments/harb (3).ogg',
+	"On the Breeze" = 'sound/music/instruments/harb (4).ogg',
+	"Never Enough" = 'sound/music/instruments/harb (5).ogg',
+	"Sundered Heart" = 'sound/music/instruments/harb (6).ogg',
+	"Corridors of Time" = 'sound/music/instruments/harb (7).ogg',
+	"Determination" = 'sound/music/instruments/harb (8).ogg')
 
 /obj/item/rogue/instrument/flute
 	name = "flute"
