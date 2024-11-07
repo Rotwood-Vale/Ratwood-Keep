@@ -12,7 +12,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Hierophant","Arcyne-Monk")
+	var/classes = list("Hierophant","Arcyne-Monk","Vizier")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -44,7 +44,7 @@
 			H.mind.adjust_spellpoints(2)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			r_hand = /obj/item/rogueweapon/woodstaff
-		if("Arcyne-Monk")
+		if("Pontifex")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a Naledi Arcyne-Monk, a warrior trained into a hybridized style of movement-controlling magic and hand-to-hand combat. Though your abilities in magical fields are lacking, you are far more dangerous than other magi in a straight fight."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -66,6 +66,29 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe)
 			r_hand = /obj/item/rogueweapon/katar
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+		if("Vizier")
+			H.set_blindness(0)
+			to_chat(H, span_warning("You are a Naledi Vizier, a creacher of two worlds. Likely of a learned or upper class background, you are decently skilled in both combat and the arcane, but an expert at neither."))
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
+			H.mind.adjust_spellpoints(1)
+			H.change_stat("strength", 1)
+			H.change_stat("endurance", 2)
+			H.change_stat("perception", -1)
+			H.change_stat("speed", 3)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
+			r_hand = /obj/item/rogueweapon/katar
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/magered
 
 	//General gear regardless of class.
 	mask = /obj/item/clothing/mask/rogue/lordmask/tarnished

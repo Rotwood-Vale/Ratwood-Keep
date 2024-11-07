@@ -680,7 +680,7 @@
 	xp_gain = TRUE
 	releasedrain = 60
 	chargedrain = 1
-	chargetime = 2 SECONDS
+	chargetime = 1 SECONDS
 	charge_max = 1.5 MINUTES
 	warnie = "spellwarning"
 	school = "transmutation"
@@ -772,11 +772,11 @@
 
 	return TRUE
 
-//ports
+//ports -- todo: sfx
 
 /obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e
 	name = "Acid Splash"
-	desc = ""
+	desc = "A slow-moving glob of acid that sprays over an area upon impact."
 	range = 8
 	projectile_type = /obj/projectile/magic/acidsplash5e
 	overlay_state = "null"
@@ -786,7 +786,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 3
-	charge_max = 3 SECONDS //cooldown
+	charge_max = 15 SECONDS //cooldown
 
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -812,7 +812,7 @@
 	damage_type = BURN
 	flag = "magic"
 	range = 15
-	speed = 30 //higher is slower
+	speed = 15 //higher is slower
 	var/aoe_range = 1
 
 /obj/projectile/magic/acidsplash5e/on_hit(atom/target, blocked = FALSE)
@@ -860,13 +860,14 @@
 
 /obj/effect/proc_holder/spell/invoked/frostbite5e
 	name = "Frostbite"
+	desc = "Reach out and touch your enemy with an icy grip that does low damage, but reduces the target's Speed for a considerable length of time."
 	overlay_state = "null"
 	releasedrain = 50
-	chargetime = 1
+	chargetime = 3
 	charge_max = 25 SECONDS
 	//chargetime = 10
 	//charge_max = 30 SECONDS
-	range = 6
+	range = 2
 	warnie = "spellwarning"
 	movement_interrupt = FALSE
 	no_early_release = FALSE
