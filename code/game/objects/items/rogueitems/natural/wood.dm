@@ -25,12 +25,12 @@
 		if(!do_after(user, lumber_time, target = user))
 			return
 		lumber_amount = rand(minimum, max(round(skill_level), minimum))
-		var/sound_played = FALSE
+		var/essense_sound_played = FALSE //This is here so the sound wont play multiple times if the essense itself spawns multiple times
 		for(var/i = 0; i < lumber_amount; i++)
 			if(prob(skill_level+ user.goodluck(2)))
 				new /obj/item/grown/log/tree/small/essence(get_turf(src))
-				if(!sound_played)
-					sound_played = TRUE
+				if(!essense_sound_played)
+					essense_sound_played = TRUE
 					to_chat(user, span_warning("Dendor watches over us..."))
 					playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 			else

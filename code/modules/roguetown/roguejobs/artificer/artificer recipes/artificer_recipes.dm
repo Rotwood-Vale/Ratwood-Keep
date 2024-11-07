@@ -17,10 +17,6 @@
 
 	var/datum/parent
 
-/datum/artificer_recipe/New(datum/P, ...)
-	parent = P
-	. = ..()
-
 /datum/artificer_recipe/proc/advance(obj/item/I, mob/user)
 	if(progress == 100)
 		return
