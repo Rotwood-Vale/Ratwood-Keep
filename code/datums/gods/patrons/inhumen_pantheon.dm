@@ -42,6 +42,10 @@
 	desc = "The Man who stole fire from the Underworld and gave it in exchange for worship; the first Transaction, cutting a hole in the firmament and flooding ontological reality with the fact of Wealth. Take from the wealthy, give to the worthless, empower."
 	worshippers = "Highwaymen, Robbers, Downtrodden Peasants, Merchants"
 	mob_traits = list(TRAIT_COMMIE)
+	t0 = /obj/effect/proc_holder/spell/invoked/appraise
+	t1 = /obj/effect/proc_holder/spell/invoked/transact
+	t2 = /obj/effect/proc_holder/spell/invoked/equalize
+	t3 = /obj/effect/proc_holder/spell/invoked/churnwealthy
 	confess_lines = list(
 		"MATTHIOS STEALS FROM THE WORTHLESS!",
 		"MATTHIOS IS JUSTICE!",
