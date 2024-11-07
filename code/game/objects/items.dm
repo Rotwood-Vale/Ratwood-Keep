@@ -34,7 +34,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	max_integrity = 200
 
-	obj_flags = NONE
 	var/item_flags = NONE
 
 	var/list/hitsound

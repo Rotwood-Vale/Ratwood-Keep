@@ -1185,7 +1185,6 @@
 	possible_item_intents = list(/datum/intent/use)
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH | ITEM_SLOT_HIP
@@ -1240,7 +1239,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 3
-	obj_flags = null
 	firefuel = 15 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
