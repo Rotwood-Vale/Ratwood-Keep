@@ -3293,6 +3293,7 @@
 #include "code\modules\roguetown\roguejobs\alchemist\recipe\reagents.dm"
 #include "code\modules\roguetown\roguejobs\artificer\artificer_table.dm"
 #include "code\modules\roguetown\roguejobs\artificer\artificer recipes\artificer_recipes.dm"
+#include "code\modules\roguetown\roguejobs\artificer\contraptions.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\forge.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\grindwheel.dm"
