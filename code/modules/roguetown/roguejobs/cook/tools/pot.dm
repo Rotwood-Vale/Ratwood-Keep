@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/glass/bucket/pot
 	force = 10
-	name = "pot"
+	name = "iron pot"
 	desc = ""
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
@@ -14,7 +14,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
-	volume = 198
+	volume = 199
 
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()
 	cut_overlays()
