@@ -19,26 +19,33 @@
 
 /datum/outfit/job/roguetown/niteman/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	belt = /obj/item/storage/belt/rogue/leather/rope
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	beltr = /obj/item/storage/keyring/nightman
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
+	shoes = /obj/item/clothing/shoes/roguetown/boots // Swaggier and more armored against uppity/bitey attendants
+	belt = /obj/item/storage/belt/rogue/leather/black
+	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/purple // Tunics are far swaggier than shirts
+	wrists = /obj/item/storage/keyring/nightman
+	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+	beltr = /obj/item/rogueweapon/whip // In case the one whip in the office has already been pilfered
+	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC, TRAIT_SEEPRICES_SHITTY, TRAIT_NUTCRACKER)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE) // Need the strongarm to wrestle people out of the baths
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE) // Below here are skills bath attendants have. Only makes sense to have them >= for the head honcho
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE) // Being a more rowdy type, they should be capable with a knife
 		H.change_stat("strength", 1)
 		H.change_stat("intelligence", -1)
 		H.change_stat("constitution", 1)
-		H.change_stat("perception", -1)
+		// H.change_stat("perception", -1) // They are criminal types, and should be reasonably perceptive
+		H.change_stat("endurance", 2) // They are professionals, they should 'outlast' their subordinates and clients
 
 	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
