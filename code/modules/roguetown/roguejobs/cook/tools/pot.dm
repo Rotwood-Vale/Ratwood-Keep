@@ -14,7 +14,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
-	volume = 99
+	volume = 198
 
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()
 	cut_overlays()
@@ -42,3 +42,4 @@
 
 /obj/item/reagent_containers/glass/bucket/pot/stone
 	name = "stone pot"
+	volume = 99
