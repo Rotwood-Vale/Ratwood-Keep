@@ -182,6 +182,28 @@
 				L.IgniteMob()
 				if(L.health <= 0)
 					L.dust(drop_items = TRUE)
+
+/turf/open/lava/onbite(mob/user)
+	if(isliving(user))
+		var/mob/living/L = user
+		if(L.stat != CONSCIOUS)
+			return
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			if(C.is_mouth_covered())
+				return
+		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
+		user.visible_message(span_info("[user] starts to drink from [src]."))
+		if(do_after(L, 25, target = src))
+			var/mob/living/carbon/C = user
+			to_chat(C, span_userdanger("OH SWEET PSYDON, WHY DID I THINK THIS WAS A GOOD IDEA???"))
+			C.flash_fullscreen("redflash3")
+			C.emote("agony", forced = TRUE)
+			C.adjust_fire_stacks(500) //you deserve this.
+			C.IgniteMob()
+			C.adjustFireLoss(1000) //you, literally, deserve this.
+
+
 /turf/open/lava/smooth
 	name = "lava"
 	baseturfs = /turf/open/lava/smooth
@@ -269,3 +291,20 @@
 
 			L.dust(drop_items = TRUE)
 
+/turf/open/lava/acid/onbite(mob/user)
+	if(isliving(user))
+		var/mob/living/L = user
+		if(L.stat != CONSCIOUS)
+			return
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			if(C.is_mouth_covered())
+				return
+		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
+		user.visible_message(span_info("[user] starts to drink from [src]."))
+		if(do_after(L, 25, target = src))
+			var/mob/living/carbon/C = user
+			to_chat(C, span_userdanger("OH SWEET PSYDON, WHY DID I THINK THIS WAS A GOOD IDEA???"))
+			C.flash_fullscreen("redflash3")
+			C.emote("agony", forced = TRUE)
+			C.gib() //YOU. LITERALLY. DESERVE THIS.

@@ -1224,6 +1224,10 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves)
+"ki" = (
+/obj/machinery/gear_painter,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/mountains)
 "kj" = (
 /obj/structure/rack/rogue,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
@@ -1554,6 +1558,10 @@
 /obj/structure/fluff/statue/gargoyle/moss,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/town/basement)
+"mo" = (
+/obj/machinery/gear_painter,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/outdoors/mountains)
 "mr" = (
 /mob/living/carbon/human/species/goblin/npc/ambush/sea,
 /turf/open/floor/rogue/dirt/road,
@@ -2875,7 +2883,7 @@
 /area/rogue/outdoors/woods)
 "xS" = (
 /obj/structure/roguewindow,
-/turf/closed,
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/beach/forest)
 "xU" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -3765,7 +3773,7 @@
 /area/rogue/under/cave)
 "Fr" = (
 /obj/structure/roguewindow,
-/turf/closed,
+/turf/open/floor/rogue/twig,
 /area/rogue/outdoors/woods)
 "Fs" = (
 /turf/open/water/river{
@@ -6108,7 +6116,7 @@
 /area/rogue/under/cave)
 "ZB" = (
 /obj/structure/roguewindow,
-/turf/closed,
+/turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/woods)
 "ZD" = (
 /obj/structure/mineral_door/wood/fancywood,
@@ -45325,8 +45333,8 @@ MK
 Yi
 jW
 gc
-ZB
-ZB
+cz
+cz
 gc
 nt
 nt
@@ -45786,10 +45794,10 @@ By
 nt
 Yi
 nt
-ZB
+cz
 oC
 eK
-ZB
+cz
 By
 MK
 MK
@@ -46093,7 +46101,7 @@ jW
 jW
 nt
 nt
-ZB
+cz
 FL
 KI
 gX
@@ -46253,11 +46261,11 @@ nt
 gX
 Ed
 ey
-ZB
+cz
 nt
 gc
-ZB
-ZB
+cz
+cz
 gc
 jW
 jW
@@ -46401,7 +46409,7 @@ nt
 nt
 gc
 gX
-ZB
+cz
 gX
 gc
 jW
@@ -46566,7 +46574,7 @@ MK
 nt
 gc
 Lz
-ZB
+cz
 gc
 jW
 vE
@@ -68081,12 +68089,12 @@ rj
 rj
 rj
 hh
-ZB
+cz
 sL
 Bz
 Bz
 Zu
-ZB
+cz
 rj
 rj
 rj
@@ -68397,7 +68405,7 @@ rj
 hh
 gc
 gX
-ZB
+cz
 gX
 gc
 hh
@@ -81678,7 +81686,7 @@ rj
 GH
 GH
 GH
-zu
+ki
 HO
 gU
 gU
@@ -82778,7 +82786,7 @@ Jr
 Jx
 pL
 zu
-HO
+mo
 gU
 gU
 gU
