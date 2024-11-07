@@ -827,6 +827,7 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
+/obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "aMH" = (
@@ -6536,7 +6537,6 @@
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 8
 	},
-/obj/structure/roguemachine/scomm,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "fQx" = (
