@@ -1,3 +1,5 @@
+#define BLESSINGOFLIGHT_FILTER "bol_glow"
+
 /obj/effect/proc_holder/spell/targeted/touch/orison
 	name = "Orison"
 	overlay_state = "thaumaturgy"
@@ -46,7 +48,9 @@
 
 	var/obj/effect/proc_holder/spell/targeted/touch/orison/base_spell = attached_spell
 	if (user)
-		adjust_experience(user, base_spell.associated_skill, fatigue+attached_spell.devotion_cost)
+		var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
+		if (skill_level <= SKILL_LEVEL_EXPERT)
+			adjust_experience(user, base_spell.associated_skill, fatigue+attached_spell.devotion_cost)
 
 /obj/item/melee/touch_attack/orison/MiddleClick(mob/living/user, params)
 	. = ..()
@@ -88,6 +92,7 @@
 	status_type = STATUS_EFFECT_REFRESH
 	examine_text = "SUBJECTPRONOUN is surrounded by an aura of gentle light."
 	var/potency = 1
+	var/outline_colour = "#f5edda"
 	var/list/mobs_affected
 
 /datum/status_effect/light_buff/on_creation(mob/living/new_owner, light_power)
@@ -100,6 +105,9 @@
 
 /datum/status_effect/light_buff/on_apply()
 	to_chat(owner, span_notice("Light blossoms into being around me!"))
+	var/filter = owner.get_filter(BLESSINGOFLIGHT_FILTER)
+	if (!filter)
+		owner.add_filter(BLESSINGOFLIGHT_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 1))
 	add_light(owner)
 	return TRUE
 
@@ -120,6 +128,7 @@
 
 /datum/status_effect/light_buff/on_remove()
 	to_chat(owner, span_notice("The miraculous light surrounding me has fled..."))
+	owner.remove_filter(BLESSINGOFLIGHT_FILTER)
 	remove_light(owner)
 
 /obj/item/melee/touch_attack/orison/proc/cast_light(atom/thing, mob/living/carbon/human/user)
@@ -323,7 +332,7 @@
 			if (prob(80))
 				playsound(user, 'sound/items/fillcup.ogg', 55, TRUE)
 		
-		return fatigue_spent
+		return min(50, fatigue_spent)
 	else if (istype(thing, /obj/item/natural/cloth))
 		// stupid little easter egg here: you can dampen a cloth to clean with it, because prestidigitation also lets you clean things. also a lot cheaper devotion-wise than filling a bucket
 		var/obj/item/natural/cloth/the_cloth = thing
@@ -334,3 +343,5 @@
 			return water_moisten
 	else
 		to_chat(user, span_info("I'll need to find a container that can hold water."))
+
+#undef BLESSINGOFLIGHT_FILTER

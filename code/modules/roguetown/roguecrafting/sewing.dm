@@ -47,6 +47,13 @@
 	craftdiff = 0
 
 
+/datum/crafting_recipe/roguetown/sewing/linedanklet
+	name = "cloth anklet"
+	result = list(/obj/item/clothing/shoes/roguetown/boots/clothlinedanklets)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 0
+
 /* craftdif of 1 */
 
 /datum/crafting_recipe/roguetown/sewing/clothgloves

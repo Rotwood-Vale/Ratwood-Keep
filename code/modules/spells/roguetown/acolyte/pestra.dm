@@ -29,6 +29,7 @@
 			to_chat(user, span_warning("A slight yellowing indicates the barest presence of disrupted choleric humor."))
 		
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/diagnose/secular
@@ -135,6 +136,7 @@
 				limb.skeletonized = FALSE
 		human_target.update_body()
 		return TRUE
+	revert_cast()
 	return FALSE
 
 // Cure rot
@@ -212,6 +214,7 @@
 		else
 			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/cast_check(skipcharge = 0,mob/user = usr)

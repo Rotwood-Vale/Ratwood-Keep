@@ -240,7 +240,7 @@
 /datum/status_effect/buff/guardbuffone
 	id = "guardbuffone"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/guardbuffone
-	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 3) //if they can't figure out how to ply this for winning chances i'm going to sob openly
+	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 2) //dropped perception bonus, was regularly pushing to 17-18 per with statpacks/racial bonuses
 	duration = 50000 //essentially permanent, removes when we're out of the area
 
 /datum/status_effect/buff/guardbuffone/process()
@@ -255,14 +255,24 @@
 	desc = "Divine intervention relieves me of my ailments."
 	icon_state = "buff"
 
+#define MIRACLE_HEALING_FILTER "miracle_heal_glow"
+
 /datum/status_effect/buff/healing
 	id = "healing"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing
 	duration = 10 SECONDS
+	examine_text = "SUBJECTPRONOUN is bathed in a restorative aura!"
 	var/healing_on_tick = 1
+	var/outline_colour = "#c42424"
+
+/datum/status_effect/buff/healing/on_apply()
+	var/filter = owner.get_filter(MIRACLE_HEALING_FILTER)
+	if (!filter)
+		owner.add_filter(MIRACLE_HEALING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 1))
+	return TRUE
 
 /datum/status_effect/buff/healing/tick()
-	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal(get_turf(owner))
+	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))
 	H.color = "#FF0000"
 	var/list/wCount = owner.get_wounds()
 	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
@@ -277,6 +287,9 @@
 	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
 	owner.adjustCloneLoss(-healing_on_tick, 0)
 
+/datum/status_effect/buff/healing/on_remove()
+	owner.remove_filter(MIRACLE_HEALING_FILTER)
+	
 /atom/movable/screen/alert/status_effect/buff/fortify
 	name = "Fortifying Miracle"
 	desc = "Divine intervention bolsters me and aids my recovery."
@@ -287,3 +300,4 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/fortify
 	duration = 1 MINUTES
 
+#undef MIRACLE_HEALING_FILTER

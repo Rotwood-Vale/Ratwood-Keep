@@ -216,7 +216,7 @@
 
 /datum/special_trait/languagesavant
 	name = "Polyglot"
-	greet_text = span_notice("I have always picked up on languages easily, even those that are forbidden to mortals.")
+	greet_text = span_notice("I have always picked up on languages easily, even those that are forbidden to mortals... except that accursed beastial chatter. What even is that nonsense?")
 	weight = 100
 
 /datum/special_trait/languagesavant/on_apply(mob/living/carbon/human/character, silent)
@@ -225,7 +225,6 @@
 	character.grant_language(/datum/language/hellspeak)
 	character.grant_language(/datum/language/celestial)
 	character.grant_language(/datum/language/orcish)
-	character.grant_language(/datum/language/beast)
 	character.grant_language(/datum/language/draconic)
 
 /datum/special_trait/civilizedbarbarian

@@ -8,7 +8,7 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	tutorial = "Having proven yourself both loyal and capable, you have been knighted to serve the realm as the monarch's personal guard. You listen to your Liege and the Captain of the Guard, defending your Lord and realm."
+	tutorial = "Having proven yourself both loyal and capable, you have been knighted to serve the realm as the Grand Duke's personal guard. You listen to your Liege and the Captain of the Guard, defending your Lord and realm."
 	display_order = JDO_KNIGHT
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/knight
@@ -59,8 +59,8 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-	beltl = /obj/item/storage/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/black
+	beltl = /obj/item/storage/keyring/guardcastle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/signal_horn = 1)
 
@@ -80,6 +80,8 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)			//Heavy-knight so not as good at riding. Don't crush your mount!
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)		
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)			//these guys suck with ranged weapons compared to other knights
 
 	//Normal shared skill section.
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -88,8 +90,6 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
@@ -99,11 +99,11 @@
 	H.verbs |= /mob/proc/haltyell
 
 
-	H.change_stat("strength", 2) //HEY, YOU, BEFORE YOU CHANGE THIS BECAUSE SOMEONE TOOK A STAT PACK WITH -STR: this is specifically because people extremely oftenly broke the 15/16 str threshhold. don't do it.
-	H.change_stat("constitution", 2)
-	H.change_stat("endurance", 2)
-	H.change_stat("perception", 1)
-	H.change_stat("speed", -2)		//Lower speed for more strength and con vs other knight, and to off-set endurance. (They need the end-stam for 2 handed.)
+	H.change_stat("strength", 2) //tanky, two-handed melee brutes. more endurance/con than other classes in exchange for a heavy speed debuff and worse bow skills
+	H.change_stat("constitution", 3)
+	H.change_stat("endurance", 3)
+	H.change_stat("intelligence", 1)
+	H.change_stat("speed", -1)
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Zweihander","Great Mace","Battle Axe", "Estoc")
@@ -112,7 +112,7 @@
 	switch(weapon_choice)
 		if("Zweihander") 	// A two-handed sword, but not the strongest one
 			r_hand = /obj/item/rogueweapon/greatsword/zwei
-		if("Great Mace")	// Great-mace, 2-handed (worse than normal steel but better than iron)
+		if("Great Mace")	// Great-mace, 2-handed
 			r_hand = /obj/item/rogueweapon/mace/goden/steel
 		if("Battle Axe")	// Why did heavy knights get a mace+shield combo if they're supposed to be the two-hander guys? Gives them a greataxe instead.
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
@@ -140,6 +140,8 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)		//Mildly better shield skill due to less weapon options, kind of their specialty
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)			//Foot-knight so not as good at riding.
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 
 	//Normal shared skill section.
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -148,8 +150,6 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
@@ -159,10 +159,9 @@
 	H.verbs |= /mob/proc/haltyell
 
 	H.change_stat("strength", 2)
-	H.change_stat("constitution", 1)
-	H.change_stat("endurance", 2)
-	H.change_stat("intelligence", 1)
-	H.change_stat("speed", -1)			//Bit faster than a heavy knight, not as fast as a mounted knight.
+	H.change_stat("constitution", 2)
+	H.change_stat("endurance", 2) // generalist sword/shield infantry
+	H.change_stat("intelligence", 1) //was asked to give them each +1 intelligence
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Bastard Sword","Flail")
@@ -197,8 +196,8 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)		//gave mounted knights maces instead of flails because we only have the one-handed flails currently and maces were more commonly used on horseback
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)		//Mildly better shield skill due to less weapon options.
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)			//this is their THING
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
 
 	//Normal shared skill section.
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -207,8 +206,6 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
@@ -217,25 +214,33 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()		//For knightly voices; even though I despise them.
 	H.verbs |= /mob/proc/haltyell
 
-	H.change_stat("strength", 1)			//Worse strength than others, but bonus intel and no speed penalty.
-	H.change_stat("intelligence", 2)
-	H.change_stat("constitution", 1)
+	H.change_stat("strength", 1)
 	H.change_stat("endurance", 1)
-	H.change_stat("perception", 2) //really? nobody gave the mounted class with bow/crossbow skill perception? ok, dude lmao
+	H.change_stat("constitution", 1)
+	H.change_stat("perception", 2)
+	H.change_stat("speed", 1)
+	H.change_stat("intelligence", 1) // excels at riding, archery, and polearms - less strength/con/end than other classes, but higher perception/speed
 
 	H.adjust_blindness(-3)
-	var/weapons = list("Bastard Sword","Spear")
+	var/weapons = list("Sword + Recurve Bow","Mace + Crossbow","Spear + Shield")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("Bastard Sword")
-			beltr = /obj/item/rogueweapon/sword/long
-			backl = /obj/item/rogueweapon/shield/tower/metal
-		if("Spear")
+		if("Sword + Recurve Bow")
+			r_hand = /obj/item/rogueweapon/sword
+			beltr = /obj/item/quiver/arrows
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+
+		if("Mace + Crossbow")
+			r_hand = /obj/item/rogueweapon/mace
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+			beltr = /obj/item/quiver/bolts
+		
+		if ("Spear + Shield")
 			r_hand = /obj/item/rogueweapon/spear
 			backl = /obj/item/rogueweapon/shield/tower/metal
 
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates		//given because it's less durability than the steel cuirass but is actually heavy, making use of their heavy skill, unlike cuirass
+	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates	//given because it's less durability than the steel cuirass but is actually heavy, making use of their heavy skill, unlike cuirass
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)

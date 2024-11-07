@@ -84,7 +84,7 @@
 // OBJECTIVES
 /datum/objective/aspirant/coup/one
 	name = "Aspirant"
-	explanation_text = "I must ensure that I am crowned as the Monarch."
+	explanation_text = "I must ensure that I am crowned as the Grand Duke."
 	triumph_count = 5
 
 /datum/objective/aspirant/coup/one/check_completion()
@@ -95,7 +95,7 @@
 
 /datum/objective/aspirant/coup/two
 	name = "Moral"
-	explanation_text = "I am no kinslayer, I must make sure that the monarch doesn't die."
+	explanation_text = "I am no kinslayer, I must make sure that the Grand Duke doesn't die."
 	triumph_count = 10
 	var/initialruler
 
@@ -125,7 +125,7 @@
 
 /datum/objective/aspirant/loyal/two
 	name = "Loyalist"
-	explanation_text = "I must ensure that the monarch continues to reign."
+	explanation_text = "I must ensure that the Grand Duke continues to reign."
 	triumph_count = 3
 	var/initialruler
 
