@@ -1096,7 +1096,7 @@
 /datum/emote/living/warcry
 	key = "warcry"
 	key_third_person = "warcrys"
-	message = "shouts an inspiring battle cry!"
+	message = "lets out an inspiring battle cry!"
 	emote_type = EMOTE_AUDIBLE
 	message_muffled = "makes a muffled shout!"
 
