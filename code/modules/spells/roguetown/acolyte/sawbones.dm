@@ -248,6 +248,17 @@
 		return TRUE
 	return FALSE
 
+/obj/effect/proc_holder/spell/targeted/purge/cast_check(skipcharge = 0,mob/user = usr)
+	if(!..())
+		return FALSE
+	var/found = null
+	for(var/obj/structure/bed/rogue/S in oview(2, user))
+		found = S
+	if(!found)
+		to_chat(user, span_warning("I need to lay them on a bed"))
+		return FALSE
+	return TRUE
+
 /obj/item/organ/heart/weak
 	name = "weakened heart"
 	desc = "this thing seems barely functional"
