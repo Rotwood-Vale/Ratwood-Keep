@@ -18678,6 +18678,7 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 /obj/item/clothing/head/roguetown/wizhat,
 /obj/item/clothing/head/roguetown/wizhat/black,
+/obj/item/clothing/head/roguetown/roguehood/random,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
