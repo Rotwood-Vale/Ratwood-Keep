@@ -78,7 +78,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
@@ -88,8 +88,8 @@
 			H.change_stat("intelligence", 2)
 			H.change_stat("speed", 3)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
-			r_hand = /obj/item/rogueweapon/katar
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell)
+			r_hand = /obj/item/rogueweapon/sword/long/rider
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/magered
 
 	//General gear regardless of class.
