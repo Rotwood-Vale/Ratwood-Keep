@@ -26,6 +26,10 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	beltl = /obj/item/rogueweapon/whip // In case the one whip in the office has already been pilfered
+
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 2, /obj/item/reagent_containers/powder/moondust = 1, /obj/item/reagent_containers/powder/spice = 1)
+	// Bath master got that good good
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
