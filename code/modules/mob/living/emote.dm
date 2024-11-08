@@ -1093,6 +1093,20 @@
 	stat_allowed = UNCONSCIOUS
 	mob_type_ignore_stat_typecache = list(/mob/living/carbon/human)
 
+/datum/emote/living/warcry
+	key = "warcry"
+	key_third_person = "warcrys"
+	message = "lets out an inspiring battle cry!"
+	emote_type = EMOTE_AUDIBLE
+	message_muffled = "makes a muffled shout!"
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_warcry()
+	set name = "Warcry"
+	set category = "Noises"
+
+	emote("warcry", intentional = TRUE)
+
 /datum/emote/living/wave
 	key = "wave"
 	key_third_person = "waves"
