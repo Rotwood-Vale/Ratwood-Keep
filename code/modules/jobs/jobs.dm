@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Guild Smith",
 	"Seamster",
 	"Alchemist",
-	"Artificier",
+	"Artificer",
 	"Scribe",
 	"Village Elder",
 ))

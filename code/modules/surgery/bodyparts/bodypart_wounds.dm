@@ -501,11 +501,11 @@
 		break
 	var/static/list/retracting_behaviors = list(
 		TOOL_RETRACTOR,
-		TOOL_CROWBAR,
+		TOOL_IMPROVRETRACTOR,
 	)
 	var/static/list/clamping_behaviors = list(
 		TOOL_HEMOSTAT,
-		TOOL_WIRECUTTER,
+		TOOL_IMPROVHEMOSTAT,
 	)
 	for(var/obj/item/embedded as anything in embedded_objects)
 		if((embedded.tool_behaviour in retracting_behaviors) || embedded.embedding?.retract_limbs)
