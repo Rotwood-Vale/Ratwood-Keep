@@ -1041,6 +1041,12 @@
 		wise.change_stat("intelligence", -2, "wisehat")
 		to_chat(wise, span_red("I lose wisdom."))
 
+// azure addition - random wizard hats
+
+/obj/item/clothing/head/roguetown/wizhat/random/Initialize()
+	icon_state = pick("wizardhatred", "wizardhatyellow", "wizardhatgreen", "wizardhat")
+	..()
+
 /obj/item/clothing/head/roguetown/witchhat
 	name = "witch hat"
 	desc = ""
