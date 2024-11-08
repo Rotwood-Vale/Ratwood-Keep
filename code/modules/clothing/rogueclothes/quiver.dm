@@ -18,6 +18,7 @@
 	var/max_storage = 20
 	var/list/arrows = list()
 	sewrepair = TRUE
+	obj_flags = 0
 
 /obj/item/quiver/attackby(obj/A, loc, params)
 	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))

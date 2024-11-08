@@ -96,6 +96,7 @@
 	static_debris = null
 	firefuel = 60 MINUTES // Extremely poweful fuel.
 	w_class = WEIGHT_CLASS_SMALL
+	metalizer_result = /obj/item/rogueore/gold
 
 /obj/item/grown/log/tree/bowpartial
 	name = "unstrung bow"
