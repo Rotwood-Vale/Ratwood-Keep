@@ -351,10 +351,11 @@
 	return ..()
 
 /obj/item/clothing/cloak/stabard/bog
-	name = "bogman tabard"
-	desc = "A tabard worn by those that protect the citizenry from the horrors of the Terrorbog" // THE BOG DESERVES A BETTER DESCRIPTION!
-	color = CLOTHING_GREEN
-	detail_color = CLOTHING_DARK_GREEN
+	name = "vanguard tabard"
+	desc = "A tabard worn by those that protect the citizenry from what lurks beyond" // THE BOG DESERVES A BETTER DESCRIPTION!
+	color = CLOTHING_VANGUARD
+	detail_color = CLOTHING_VANGUARD_DETAIL
+
 
 /obj/item/clothing/cloak/stabard/grenzelhoft
 	name = "grenzelhoft mercenary tabard"
