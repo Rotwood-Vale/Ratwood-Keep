@@ -13993,7 +13993,8 @@
 /area/rogue/outdoors/rtfield)
 "mEz" = (
 /obj/structure/winch{
-	gid = ""bog_gate2";\tredstone_id = ""bog_gate2"
+	gid = "bog_gate2";
+	redstone_id = "bog_gate2"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -14601,7 +14602,8 @@
 /area/rogue/under/cavewet/bogcaves)
 "nfC" = (
 /obj/structure/winch{
-	gid = ""bog_gate1";\tredstone_id = ""bog_gate1"
+	gid = "bog_gate1";
+	redstone_id = "bog_gate1"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -17656,7 +17658,8 @@
 /area/rogue/under/cavewet/bogcaves)
 "pEH" = (
 /obj/structure/gate/bars{
-	redstone_id = ""bog_gate2";\tgid = ""bog_gate2"
+	redstone_id = "bog_gate2";
+	gid = "bog_gate2"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
@@ -23955,7 +23958,8 @@
 /area/rogue/indoors/town/manor)
 "vqB" = (
 /obj/structure/gate/bars{
-	redstone_id = ""bog_gate1";\tgid = ""bog_gate1"
+	redstone_id = "bog_gate1";
+	gid = "bog_gate1"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
