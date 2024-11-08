@@ -10,13 +10,14 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = ALL_AGES_LIST
 
-	tutorial = "Granted a life of comfortable servitute in the King's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
+	tutorial = "Granted a life of comfortable servitude in the Duke's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
 
 	outfit = /datum/outfit/job/roguetown/servant
 	display_order = JDO_SERVANT
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/servant/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -36,7 +37,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)
 
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		head = /obj/item/clothing/head/roguetown/armingcap
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

@@ -15,6 +15,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	requires_power = FALSE
 //	var/previous_ambient = ""
+	var/town_area = FALSE
+
+/area/rogue/Entered(mob/living/carbon/human/guy)
+
+	. = ..()
+	if((src.town_area == TRUE) && HAS_TRAIT(guy, TRAIT_GUARDSMAN) && guy.z == 3 && !guy.has_status_effect(/datum/status_effect/buff/guardbuffone)) //man at arms
+		guy.apply_status_effect(/datum/status_effect/buff/guardbuffone)
 
 /area/rogue/indoors
 	name = "indoors rt"
@@ -30,6 +37,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	soundenv = 2
 	plane = INDOOR_PLANE
 	converted_type = /area/rogue/outdoors
+
+
 
 /area/rogue/indoors/banditcamp
 	name = "bandit camp indoors"
@@ -444,6 +453,9 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/outdoors/exposed/town
+	town_area = TRUE
+
+
 /area/rogue/outdoors/exposed/town
 	icon_state = "town"
 	droning_sound = 'sound/music/area/towngen.ogg'
@@ -609,12 +621,15 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/indoors/shelter/town
-	first_time_text = "THE TOWN OF AZURE PEAK"
+	first_time_text = "THE CITY OF AZURE PEAK"
+	town_area = TRUE
+
 /area/rogue/indoors/shelter/town
 	icon_state = "town"
 	droning_sound = 'sound/music/area/townstreets.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
+
 
 /area/rogue/outdoors/town/sargoth
 	name = "outdoors"

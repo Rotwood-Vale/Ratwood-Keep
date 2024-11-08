@@ -1246,6 +1246,22 @@
 	filter_data[name] = p
 	update_filters()
 
+/atom/movable/proc/remove_filter(name_or_names)
+	if(!filter_data)
+		return
+
+	var/list/names = islist(name_or_names) ? name_or_names : list(name_or_names)
+
+	. = FALSE
+	for(var/name in names)
+		if(filter_data[name])
+			filter_data -= name
+			. = TRUE
+
+	if(.)
+		update_filters()
+	return .
+
 /atom/movable/proc/update_filters()
 	filters = null
 	sortTim(filter_data,associative = TRUE)

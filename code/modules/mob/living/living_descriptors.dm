@@ -146,6 +146,10 @@
 				they_replace = "they"
 				man_replace = "person"
 				him_replace = "them"
+			if (THEY_THEM_F)
+				they_replace = "they"
+				man_replace = "person"
+				him_replace = "them"
 			if (IT_ITS)
 				they_replace = "it"
 				man_replace = "creacher"

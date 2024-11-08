@@ -73,8 +73,8 @@
 
 /obj/item/clothing/mask/rogue/lordmask/tarnished
 	name = "tarnished golden halfmask"
-	desc = "Runes and wards, meant for daemons; the gold has somehow rusted in unnatural, impossible agony. It is worthless."
-	sellprice = 0
+	desc = "Runes and wards, meant for daemons; the gold has somehow rusted in unnatural, impossible agony. The gold is now worthless, but that is not why the Naledi wear them."
+	sellprice = 20
 
 /obj/item/clothing/mask/rogue/wildguard
 	name = "wild guard"

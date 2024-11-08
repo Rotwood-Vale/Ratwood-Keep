@@ -231,6 +231,77 @@
 	to_chat(owner, span_warning("The rough floors slow my travels once again."))
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
 
+
+/atom/movable/screen/alert/status_effect/buff/guardbuffone
+	name = "Vigilant Guardsman"
+	desc = "My home. I watch vigilantly and respond swiftly."
+	icon_state = "buff"
+
+/datum/status_effect/buff/guardbuffone
+	id = "guardbuffone"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/guardbuffone
+	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 2) //dropped perception bonus, was regularly pushing to 17-18 per with statpacks/racial bonuses
+	duration = 50000 //essentially permanent, removes when we're out of the area
+
+/datum/status_effect/buff/guardbuffone/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.town_area))
+		owner.remove_status_effect(/datum/status_effect/buff/guardbuffone)
+
+/atom/movable/screen/alert/status_effect/buff/healing
+	name = "Healing Miracle"
+	desc = "Divine intervention relieves me of my ailments."
+	icon_state = "buff"
+
+#define MIRACLE_HEALING_FILTER "miracle_heal_glow"
+
+/datum/status_effect/buff/healing
+	id = "healing"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/healing
+	duration = 10 SECONDS
+	examine_text = "SUBJECTPRONOUN is bathed in a restorative aura!"
+	var/healing_on_tick = 1
+	var/outline_colour = "#c42424"
+
+/datum/status_effect/buff/healing/on_apply()
+	var/filter = owner.get_filter(MIRACLE_HEALING_FILTER)
+	if (!filter)
+		owner.add_filter(MIRACLE_HEALING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 1))
+	return TRUE
+
+/datum/status_effect/buff/healing/tick()
+	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))
+	H.color = "#FF0000"
+	var/list/wCount = owner.get_wounds()
+	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
+		owner.blood_volume = min(owner.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	if(wCount.len > 0)
+		owner.heal_wounds(healing_on_tick)
+		owner.update_damage_overlays()
+	owner.adjustBruteLoss(-healing_on_tick, 0)
+	owner.adjustFireLoss(-healing_on_tick, 0)
+	owner.adjustOxyLoss(-healing_on_tick, 0)
+	owner.adjustToxLoss(-healing_on_tick, 0)
+	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
+	owner.adjustCloneLoss(-healing_on_tick, 0)
+
+/datum/status_effect/buff/healing/on_remove()
+	owner.remove_filter(MIRACLE_HEALING_FILTER)
+	
+/atom/movable/screen/alert/status_effect/buff/fortify
+	name = "Fortifying Miracle"
+	desc = "Divine intervention bolsters me and aids my recovery."
+	icon_state = "buff"
+
+/datum/status_effect/buff/fortify //Increases all healing while it lasts.
+	id = "fortify"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/fortify
+	duration = 1 MINUTES
+
+#undef MIRACLE_HEALING_FILTER
+
 /atom/movable/screen/alert/status_effect/buff/longstrider
 	name = "Longstrider"
 	desc = "I can easily walk through rough terrain."

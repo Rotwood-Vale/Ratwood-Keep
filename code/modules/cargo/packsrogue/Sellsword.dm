@@ -4,31 +4,33 @@
 	crate_name = "Gifts of Coinspillers"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
-/datum/supply_pack/rogue/Sellsword/drider
+
+/datum/supply_pack/rogue/Sellsword/dridersword
 	name = "Old Zybantine package..."
-	cost = 70
-	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal,
-					/obj/item/storage/belt/rogue/leather/shalal,
-					/obj/item/rogueweapon/sword/long/rider,
-					/obj/item/clothing/suit/roguetown/armor/plate/scale,
-					/obj/item/clothing/under/roguetown/chainlegs/iron,
-					/obj/item/clothing/neck/roguetown/shalal,
-					/obj/item/clothing/suit/roguetown/armor/plate/scale,
-					/obj/item/storage/backpack/rogue/satchel/black,
-					/obj/item/clothing/gloves/roguetown/angle)
+	cost = 10
+	contains = list(/obj/item/rogueweapon/sword/long/rider)
 
-/datum/supply_pack/rogue/Sellsword/Grenzel
-	name = "Old Grenzelhoft package..."
-	cost = 70
-	contains = list(/obj/item/clothing/suit/roguetown/shirt/grenzelhoft,
-					/obj/item/clothing/head/roguetown/grenzelhofthat,
-					/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass,
-					/obj/item/clothing/under/roguetown/grenzelpants,
-					/obj/item/clothing/shoes/roguetown/grenzelhoft,
-					/obj/item/clothing/gloves/roguetown/grenzelgloves,
-					/obj/item/storage/backpack/rogue/satchel/black,
-					/obj/item/rogueweapon/halberd)
 
+/datum/supply_pack/rogue/Sellsword/driderhead
+	name = "Desert Rider headdress"
+	cost = 5
+	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
+
+
+/datum/supply_pack/rogue/Sellsword/grenzelhofthat
+	name = "Grenzel Hat"
+	cost = 5
+	contains = list(/obj/item/clothing/head/roguetown/grenzelhofthat)
+
+/datum/supply_pack/rogue/Sellsword/Grenzelpants
+	name = "Grenzel Pants"
+	cost = 5
+	contains = list(/obj/item/clothing/under/roguetown/grenzelpants)
+
+/datum/supply_pack/rogue/Sellsword/Grenzelshoes
+	name = "Grenzel Shoes"
+	cost = 5
+	contains = list(/obj/item/clothing/shoes/roguetown/grenzelhoft)
 
 /datum/supply_pack/rogue/Sellsword/coif/steel
 	name = "Steel Coif"
@@ -42,24 +44,24 @@
 
 /datum/supply_pack/rogue/Sellsword/bracers
 	name = "Steel Bracers"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
 
 /datum/supply_pack/rogue/Sellsword/chaingauntlets
 	name = "Steel Chain Gauntlets"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/clothing/gloves/roguetown/chain)
 
 /datum/supply_pack/rogue/Sellsword/boots
 	name = "Steel Boots"
-	cost = 20
-	contains = list(/obj/item/clothing/shoes/roguetown/boots)
+	cost = 10
+	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
 
 
 /datum/supply_pack/rogue/Sellsword/hauberk
 	name = "Hauberk"
-	cost = 40
+	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk)
 
 /datum/supply_pack/rogue/Sellsword/Haubergeon
@@ -85,7 +87,7 @@
 
 /datum/supply_pack/rogue/Sellsword/steelcuirass
 	name = "Blacksteel Cuirass"
-	cost = 60
+	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass)
 
 
@@ -106,10 +108,15 @@
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
+/datum/supply_pack/rogue/Sellsword/sallet
+	name = "Sallet"
+	cost = 20
+	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
+
 
 /datum/supply_pack/rogue/Sellsword/visoredsallet
 	name = "Visored Sallet"
-	cost = 20
+	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
 
@@ -163,32 +170,6 @@
 	name = "Quiver of Bolts"
 	cost = 20
 	contains = list(/obj/item/quiver/bolts)
-
-/datum/supply_pack/rogue/Sellsword/bolt
-	name = "Bolts"
-	cost = 15
-	contains = list(
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-					/obj/item/ammo_casing/caseless/rogue/bolt,
-				)
 
 
 /datum/supply_pack/rogue/Sellsword/crossbow

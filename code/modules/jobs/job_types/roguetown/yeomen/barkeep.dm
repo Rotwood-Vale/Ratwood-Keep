@@ -8,13 +8,14 @@
 
 	allowed_races = RACES_ALL_KINDS
 
-	tutorial = "Adventurers and warriors alike have two exit plans; the early grave or even earlier retirement. As a proud owner of a fine establishment now, you took the latter: Azurian Pint, tavern, inn, and bathhouse! You even have an assortment of staff to help you, plenty of business from the town looking to eat and travelers looking to rest, and a comfy living. Your bladework has gotten a little rusty and the church across the street gives you the odd evil eye for the extra delights of the bathhouse but, well. Can't win 'em all!"
+	tutorial = "Adventurers and warriors alike have two exit plans; the early grave or even earlier retirement. As the proud owner of this fine establishment, you took the latter: The Azurian Pint, tavern, inn, and bathhouse! You even have an assortment of staff to help you, and plenty of business from the famished townsfolk looking to eat, weary travelers looking to rest, and characters of dubious repute seeking their own sort of success. Your bladework has gotten a little rusty, and the church across the street gives you the odd evil eye for the extra 'delights' of the bathhouse--but, well...you can't win 'em all!"
 
 	outfit = /datum/outfit/job/roguetown/barkeep
 	display_order = JDO_BARKEEP
 	give_bank_account = 43
 	min_pq = -4
 	max_pq = null
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/barkeep/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -40,7 +41,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltr = /obj/item/storage/keyring/innkeep
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random

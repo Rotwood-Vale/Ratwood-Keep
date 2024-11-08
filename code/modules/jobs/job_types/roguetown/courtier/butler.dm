@@ -10,13 +10,14 @@
 	allowed_races = RACES_ALL_KINDS
 	//allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 
-	tutorial = "Servitude unto death; That is your motto. Having nurtured royalty for years, you are nothing short of the King's majordomo, commanding over the rest of the house staff."
+	tutorial = "Servitude unto death; That is your motto. Having nurtured royalty for years, you are nothing short of the Duke's majordomo, commanding over the rest of the house staff."
 
 	outfit = /datum/outfit/job/roguetown/butler
 	display_order = JDO_BUTLER
 	give_bank_account = 30
-	min_pq = 0
+	min_pq = 1 //Head Butler needs to actually give head at least once before getting the position
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/butler/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -36,7 +37,7 @@
 		H.change_stat("intelligence", 2)
 		H.change_stat("perception", 1)
 
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 	//	switch(H.patron?.type)
 	//		if(/datum/patron/divine/eora) //Eoran loadouts
 	//			armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/black

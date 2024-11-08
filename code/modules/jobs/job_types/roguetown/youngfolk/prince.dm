@@ -19,6 +19,7 @@
 	noble_income = 20
 	min_pq = 1
 	max_pq = null
+	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_fancy.ogg'
 
 /datum/job/roguetown/prince/after_spawn(mob/living/H, mob/M, latejoin)
@@ -109,6 +110,7 @@
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("fortune", 1)
+		H.change_stat("speed", 1)
 
 /datum/advclass/heir/inbred
 	name = "Inbred wastrel"
@@ -124,12 +126,12 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/heir
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	if(H.gender == MALE)
+	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		belt = /obj/item/storage/belt/rogue/leather
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
-	if(H.gender == FEMALE)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		head = /obj/item/clothing/head/roguetown/hennin
 		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat

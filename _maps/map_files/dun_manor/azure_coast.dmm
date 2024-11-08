@@ -4794,9 +4794,6 @@
 /obj/item/rogueweapon/sword/iron/short,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/cave)
-"MD" = (
-/turf/closed,
-/area/rogue/outdoors/beach)
 "ME" = (
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/cobble,
@@ -4968,7 +4965,12 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/beach/forest)
 "On" = (
-/turf/closed,
+/obj/structure/table/wood{
+	icon_state = "longtable"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/book/rogue/secret/thefireisgone,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/cave)
 "Oo" = (
 /obj/item/reagent_containers/powder/salt,
@@ -15229,7 +15231,7 @@ NX
 NX
 NX
 NX
-MD
+bf
 bf
 MU
 gG
@@ -15359,7 +15361,7 @@ NX
 NX
 NX
 NX
-MD
+bf
 bf
 MU
 gG
@@ -24266,7 +24268,7 @@ oP
 Ku
 gp
 QH
-pu
+On
 qi
 Ev
 nA
@@ -41953,7 +41955,7 @@ Iq
 kN
 kN
 kN
-On
+kN
 kN
 zC
 tk

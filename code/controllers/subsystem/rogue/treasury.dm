@@ -76,7 +76,7 @@ SUBSYSTEM_DEF(treasury)
 		amt_to_generate = amt_to_generate - (amt_to_generate * queens_tax)
 		amt_to_generate = round(amt_to_generate)
 		give_money_treasury(amt_to_generate, "wealth hoard")
-		send_ooc_note("Income from wealth hoard: +[amt_to_generate]", job = list("Monarch", "Steward", "Clerk"))
+		send_ooc_note("Income from wealth hoard: +[amt_to_generate]", job = list("Grand Duke", "Steward", "Clerk"))
 
 /datum/controller/subsystem/treasury/proc/add_to_vault(var/obj/item/I)
 	if(I.get_real_price() <= 0 || istype(I, /obj/item/roguecoin))
@@ -152,10 +152,10 @@ SUBSYSTEM_DEF(treasury)
 		// Player was fined
 		if(source)
 			send_ooc_note("<b>MEISTER:</b> You were fined [amt]m. ([source])", name = target_name)
-			log_to_steward("[name] was fined [amt] ([source])")
+			log_to_steward("[target_name] was fined [amt] ([source])")
 		else
 			send_ooc_note("<b>MEISTER:</b> You were fined [amt]m.", name = target_name)
-			log_to_steward("[name] was fined [amt]")
+			log_to_steward("[target_name] was fined [amt]")
 
 	return TRUE
 

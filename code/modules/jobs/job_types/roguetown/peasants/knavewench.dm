@@ -1,6 +1,6 @@
 /datum/job/roguetown/knavewench // The most aggressively rude name yet.
-	title = "Tavern Knave"
-	f_title = "Tavern Wench"
+	title = "Tapster"
+	f_title = "Tapster"
 	flag = KNAVEWENCH
 	department_flag = PEASANTS
 	faction = "Station"
@@ -8,13 +8,14 @@
 	spawn_positions = 4
 
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "You have a simple role at the Azurian Pint; please. You wait tables and help guests, clean the rooms, and assist in the kitchens as need be. Bring a smile and the cheapsake townsfolk and adventures might give you extra coin, too - assuming you don't get sticky fingers while they're half-dead from beer."
+	tutorial = "You have a simple role at the Azurian Pint; please. You wait tables and help guests, clean the rooms, grow and brew more drink, and assist in the kitchens as need be. Bring a smile to the masses--and those cheapsake townsfolk and adventures might just give you an extra coin...assuming you've not already pilfered their pouch while they're in a drunken stupor off your latest brew."
 
 	outfit = /datum/outfit/job/roguetown/knavewench
 	display_order = JDO_KNAVEWENCH
 	give_bank_account = 10
 	min_pq = -10
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/knavewench/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -44,7 +45,7 @@
 	cloak = /obj/item/clothing/cloak/apron/waist
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	if(H.gender == MALE)
+	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	else

@@ -1,7 +1,5 @@
 /mob/living/proc/update_rogfat() //update hud and regen after last_fatigued delay on taking
-//	maxrogfat = round(100 * (rogstam/maxrogstam))
-//	if(maxrogfat < 5)
-//		maxrogfat = 5
+	maxrogfat = maxrogstam / 10
 
 	if(world.time > last_fatigued + 30) //regen fatigue
 		var/added = rogstam / maxrogstam

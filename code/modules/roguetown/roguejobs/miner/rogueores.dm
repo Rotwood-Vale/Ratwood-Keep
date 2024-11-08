@@ -174,7 +174,7 @@
 	sellprice = 80
 /obj/item/ingot/steel
 	name = "steel bar"
-	desc = "This ingot is a stalwart defender of the kingdom."
+	desc = "This ingot is a stalwart defender of the realm."
 	icon_state = "ingotsteel"
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 40

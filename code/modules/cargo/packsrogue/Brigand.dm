@@ -13,7 +13,7 @@
 
 /datum/supply_pack/rogue/Brigand/bracers
 	name = "Steel Bracers"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
 /datum/supply_pack/rogue/Brigand/chainlegs
@@ -24,18 +24,18 @@
 
 /datum/supply_pack/rogue/Brigand/chaingauntlets
 	name = "Steel Chain Gauntlets"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/clothing/gloves/roguetown/chain)
 
 /datum/supply_pack/rogue/Brigand/boots
 	name = "Steel Boots"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
 
 
 /datum/supply_pack/rogue/Brigand/hauberk
 	name = "Hauberk"
-	cost = 40
+	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk)
 
 /datum/supply_pack/rogue/Brigand/Haubergeon
@@ -45,7 +45,7 @@
 
 /datum/supply_pack/rogue/Brigand/steelcuirass
 	name = "Steel Cuirass"
-	cost = 40
+	cost = 20
 	contains =  list(/obj/item/clothing/suit/roguetown/armor/plate/half)
 
 /datum/supply_pack/rogue/Brigand/scalemail
@@ -59,9 +59,9 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
 
-/datum/supply_pack/rogue/Brigand/steelcuirass
+/datum/supply_pack/rogue/Brigand/blksteelcuirass
 	name = "Blacksteel Cuirass"
-	cost = 60
+	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass)
 
 
@@ -82,10 +82,15 @@
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
+/datum/supply_pack/rogue/Brigand/sallet
+	name = "Sallet"
+	cost = 20
+	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
+
 
 /datum/supply_pack/rogue/Brigand/visoredsallet
 	name = "Visored Sallet"
-	cost = 40
+	cost = 30
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
 /datum/supply_pack/rogue/Brigand/steelflail
@@ -98,11 +103,6 @@
 	cost = 10
 	contains = list(/obj/item/rogueweapon/flail)
 
-/datum/supply_pack/rogue/Brigand/repentaen
-	name = "Loyalty's Reward"
-	cost = 50
-	contains = list(/obj/item/rogueweapon/whip/antique)
-
 /datum/supply_pack/rogue/Brigand/mace
 	name = "Iron Mace"
 	cost = 10
@@ -110,9 +110,19 @@
 
 /datum/supply_pack/rogue/Brigand/steelmace
 	name = "Steel Mace"
-	cost = 40
+	cost = 20
 	contains = list(/obj/item/rogueweapon/mace/steel)
 
+/datum/supply_pack/rogue/Brigand/cudgel
+	name = "Cudgel"
+	cost = 20
+	contains = list(/obj/item/rogueweapon/mace/cudgel)
+
+
+/datum/supply_pack/rogue/Brigand/gmace
+	name = "Grand Mace"
+	cost = 40
+	contains = list(/obj/item/rogueweapon/mace/goden/steel)
 
 /datum/supply_pack/rogue/Brigand/warhammer
 	name = "Silver Warhammer"
@@ -126,7 +136,7 @@
 
 /datum/supply_pack/rogue/Brigand/Staxe
 	name = "Steel Battleaxe"
-	cost = 40
+	cost = 20
 	contains = list(/obj/item/rogueweapon/stoneaxe/battle)
 
 

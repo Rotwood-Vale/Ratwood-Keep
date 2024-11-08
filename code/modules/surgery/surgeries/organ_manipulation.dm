@@ -164,7 +164,8 @@ GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_P
 	accept_hand = TRUE
 	implements = list(
 		TOOL_HEMOSTAT = 80,
-		TOOL_CROWBAR = 65
+		TOOL_CROWBAR = 65,
+		TOOL_IMPROVISED_HEMOSTAT = 40,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED

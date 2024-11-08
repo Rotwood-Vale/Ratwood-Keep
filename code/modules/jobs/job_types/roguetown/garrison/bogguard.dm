@@ -9,13 +9,14 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Typically a denizen of the sparcely populated Azure woods, you volunteered up with the wardens, a group of ranger types who keep a vigil over the untamed wilds."
+	tutorial = "Typically a denizen of the sparsely populated Azure woods, you volunteered up with the wardens--a group of ranger types who keep a vigil over the untamed wilds."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/bogguardsman
 	give_bank_account = 16
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 2
 
 	cmode_music = 'sound/music/combat_bog.ogg'
 

@@ -9,7 +9,7 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_MARSHAL
-	tutorial = "You are an agent of the crown in matters of law and military, making sure that laws are pushed, verified and carried out by the retinue upon the citizenry of the nation. While you preside over the knights and men-at-arms, most of your work happens behind a desk, deferring to the Guard Captain to make sure your will is carried out in the field."
+	tutorial = "You are an agent of the crown in matters of law and military, making sure that laws are pushed, verified and carried out by the retinue upon the citizenry of the realm. While you preside over the knights and men-at-arms, much of your work happens behind a desk, deferring to the Guard Captain to make sure your will is carried out in the field."
 	whitelist_req = FALSE
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard) // /obj/effect/proc_holder/spell/self/convertrole/bog
@@ -19,6 +19,7 @@
 	noble_income = 20
 	min_pq = 5
 	max_pq = null
+	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_guard.ogg'
 
 /datum/outfit/job/roguetown/bailiff/pre_equip(mob/living/carbon/human/H)
@@ -126,7 +127,7 @@
 /proc/find_lord(required_stat = CONSCIOUS)
 	var/mob/living/lord
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
-		if(!H.mind || H.job != "Monarch" || (H.stat > required_stat))
+		if(!H.mind || H.job != "Grand Duke" || (H.stat > required_stat))
 			continue
 		lord = H
 		break

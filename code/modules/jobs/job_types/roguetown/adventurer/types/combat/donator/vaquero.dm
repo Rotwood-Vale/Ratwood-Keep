@@ -9,7 +9,7 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/advclass/vaquero/equipme(mob/living/carbon/human/H)
-	if(H.gender == FEMALE)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled
 	return ..()
 
