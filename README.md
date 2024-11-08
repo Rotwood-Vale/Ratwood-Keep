@@ -53,7 +53,7 @@ The following code and assets are under a custom proprietary license as per auth
 | Reference                                           | Author   |   License  |
 |-----------------------------------------------------|----------|------------|
 | sprite.dmi                                          | John Doe | license.txt|
-| [Assets](https://github.com/Rotwood-Vale/Ratwood-Keep/blob/new-watchman/icons/roguetown/clothing/licensed-infraredbaron)                                        | Infrared Baron | [LICENSE.md](https://github.com/Rotwood-Vale/Ratwood-Keep/blob/new-watchman/icons/roguetown/clothing/licensed-infraredbaron/LICENSE.md)|
+| [Assets](https://github.com/Rotwood-Vale/Ratwood-Keep/blob/main/icons/roguetown/clothing/licensed-infraredbaron)                                        | Infrared Baron | [LICENSE.md](https://github.com/Rotwood-Vale/Ratwood-Keep/blob/main/icons/roguetown/clothing/licensed-infraredbaron/LICENSE.md)|
 
 
 ## TG
