@@ -5038,11 +5038,11 @@
 "eCA" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/shoes/roguetown/simpleshoes,
-/obj/item/clothing/suit/roguetown/shirt/formal,
-/obj/item/clothing/suit/roguetown/shirt/formal,
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
 /obj/item/clothing/under/roguetown/tights,
-/obj/item/clothing/under/roguetown/tights/formal,
+/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/suit/roguetown/shirt/undershirt,
+/obj/item/clothing/suit/roguetown/shirt/undershirt,
+/obj/item/clothing/suit/roguetown/shirt/undershirt,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "eCB" = (
