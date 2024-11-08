@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(virtues)
 			var/datum/skill/the_skill = skill_block[1]
 			var/increase_by = skill_block[2]
 			var/maximum_skill = skill_block[3]
-			var/our_skill = recipient.mind?.get_skill_level(skill)
+			var/our_skill = recipient.mind?.get_skill_level(the_skill)
 			if (our_skill && our_skill < maximum_skill)
 				recipient.mind?.adjust_skillrank(the_skill.type, increase_by, TRUE)
 			else
@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(virtues)
 		return FALSE
 	
 	// we should check to see if they have triumphs first but i can't be fucked
-	recipient.mind?.adjust_triumphs(triumph_cost, FALSE)
+	recipient.mind?.adjust_triumphs(-triumph_cost, FALSE)
 	return TRUE
 
 /proc/apply_virtue(mob/living/carbon/human/recipient, datum/virtue/virtue_type)
