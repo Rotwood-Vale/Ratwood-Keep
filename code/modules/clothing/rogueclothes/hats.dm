@@ -1202,3 +1202,15 @@
 	icon_state = "monkhood"
 	item_state = "monkhood"
 	naledicolor = TRUE
+
+/obj/item/clothing/head/roguetown/bucklehat
+	name = "Buckled Hat"
+	desc = "A plain leather had with decorative buckle. Made popular by the ne'er-do-wells of Etrusca."
+	icon_state = "bucklehat"
+	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/duelhat
+	name = "Duelist's Hat"
+	desc = "A feathered leather hat, to show them all your superiority."
+	icon_state = "duelhat"
+	sewrepair = TRUE
