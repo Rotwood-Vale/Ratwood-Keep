@@ -42,7 +42,6 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("dried fruit" = 1)
-	faretype = FARE_POOR
 	foodtype = GRAIN
 	eat_effect = null
 	rotprocess = null
@@ -74,7 +73,6 @@
 	icon_state = "spiderhoney"
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
-	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("sweetness and spiderwebs" = 1)
 	eat_effect = null
@@ -147,7 +145,6 @@
 	slices_num = 4
 	bitesize = 5
 	slice_batch = FALSE
-	faretype = FARE_POOR
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice
 	tastes = list("salted meat" = 1)
@@ -177,7 +174,6 @@
 	slices_num = 0
 	name = "salumoi"
 	icon_state = "salumoi_slice"
-	faretype = FARE_NEUTRAL
 	fried_type = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	bitesize = 1
@@ -189,7 +185,6 @@
 	name = "coppiette"
 	icon_state = "jerk5"
 	desc = "Dried meat sticks."
-	faretype = FARE_POOR
 	fried_type = null
 	bitesize = 5
 	slice_path = null
@@ -215,7 +210,6 @@
 	name = "saltfish"
 	icon_state = ""
 	desc = "Dried fish."
-	faretype = FARE_POOR
 	fried_type = null
 	bitesize = 4
 	slice_path = null
@@ -236,7 +230,6 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
 	bitesize = 4
 	slice_path = /obj/item/reagent_containers/food/snacks/fat/salo/slice
-	faretype = FARE_POOR
 	slices_num = 4
 	slice_batch = FALSE
 	rotprocess = null
@@ -322,7 +315,6 @@
 	icon_state = "butter6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTER_NUTRITION)
 	foodtype = DAIRY
-	faretype = FARE_IMPOVERISHED
 	slice_path = /obj/item/reagent_containers/food/snacks/butterslice
 	slices_num = 6
 	slice_batch = FALSE
@@ -354,7 +346,6 @@
 	icon_state = "butter_slice"
 	name = "butter"
 	desc = ""
-	faretype = FARE_IMPOVERISHED
 	foodtype = DAIRY
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 
@@ -497,7 +488,6 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION)
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
-	faretype = FARE_POOR
 	foodtype = GRAIN
 	eat_effect = null
 	rotprocess = SHELFLIFE_DECENT
@@ -511,7 +501,6 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION*4)
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cheese" = 1)
-	faretype = FARE_POOR
 	eat_effect = null
 	rotprocess = SHELFLIFE_LONG
 	slices_num = 6
@@ -524,7 +513,6 @@
 	name = "wheel of aged cheese"
 	icon_state = "blue_cheese"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
-	faretype = FARE_FINE
 	become_rot_type = null
 	rotprocess = null
 
@@ -534,7 +522,6 @@
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	w_class = WEIGHT_CLASS_TINY
-	faretype = FARE_FINE
 	tastes = list("cheese" = 1)
 	eat_effect = null
 	rotprocess = SHELFLIFE_LONG
@@ -552,7 +539,6 @@
 	name = "wedge of aged cheese"
 	icon_state = "blue_cheese_wedge"
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
-	faretype = FARE_FINE
 	become_rot_type = null
 	rotprocess = null
 
@@ -564,7 +550,6 @@
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
 	eat_effect = null
-	faretype = FARE_FINE
 	rotprocess = 20 MINUTES
 	slices_num = null
 	slice_path = null
@@ -577,7 +562,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
 	name = "slice of aged cheese"
 	icon_state = "blue_cheese_slice"
-	faretype = FARE_FINE
 	become_rot_type = null
 	rotprocess = null
 
