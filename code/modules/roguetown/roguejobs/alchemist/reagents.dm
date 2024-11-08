@@ -1,34 +1,3 @@
-/datum/reagent/medicine/healthpot
-	name = "Dated Health Potion"
-	description = "Gradually regenerates all types of damage, is past it's shelf-life."
-	reagent_state = LIQUID
-	color = "#A20000"
-	taste_description = "red"
-	overdose_threshold = 45
-	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	alpha = 173
-
-/datum/reagent/medicine/healthpot/on_mob_life(mob/living/carbon/M)
-	if(volume >= 60)
-		M.reagents.remove_reagent(/datum/reagent/medicine/healthpot, 2) //No overhealing.
-	var/list/wCount = M.get_wounds()
-	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
-	else
-		//can overfill you with blood, but at a slower rate
-		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
-	if(wCount.len > 0)
-		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep.
-		M.heal_wounds(3) //at a motabalism of .5 U a tick this translates to 120WHP healing with 20 U Most wounds are unsewn 15-100. This is powerful on single wounds but rapidly weakens at multi wounds.
-		M.update_damage_overlays()
-	M.adjustBruteLoss(-0.7*REM, 0)
-	M.adjustFireLoss(-0.7*REM, 0)
-	M.adjustOxyLoss(-0.7, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.7*REM)
-	M.adjustCloneLoss(-0.7*REM, 0)
-	M.adjust_nutrition(-5*REM)
-	..()
-	. = 1
 
 /datum/reagent/medicine/healthpot/overdose_start(mob/living/M)
 	if(ishuman(M))
@@ -46,7 +15,7 @@
 	..()
 	. = 1
 
-/datum/reagent/medicine/healthpotnew
+/datum/reagent/medicine/healthpot
 	name = "Health Potion"
 	description = "Gradually regenerates all types of damage."
 	reagent_state = LIQUID
@@ -76,7 +45,7 @@
 	..()
 	. = 1
 
-/datum/reagent/medicine/healthpotnew/overdose_start(mob/living/M)
+/datum/reagent/medicine/healthpot/overdose_start(mob/living/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!istype(H.dna.species, /datum/species/werewolf))
@@ -84,7 +53,7 @@
 			H.visible_message(span_warning("Blood runs from [H]'s nose."))
 	. = 1
 
-/datum/reagent/medicine/healthpotnew/overdose_process(mob/living/M)
+/datum/reagent/medicine/healthpot/overdose_process(mob/living/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!istype(H.dna.species, /datum/species/werewolf))
