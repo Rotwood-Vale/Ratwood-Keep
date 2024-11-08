@@ -61,7 +61,6 @@
 			log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
 			message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
 		reagents.reaction(M, TOUCH)
-		log_combat(user, M, "splashed", R)
 		reagents.clear_reagents()
 		return
 	else if(user.used_intent.type == INTENT_POUR)
