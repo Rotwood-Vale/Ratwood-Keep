@@ -88,7 +88,7 @@
 
 	var/datum/sleep_adv/sleep_adv = null
 
-	var/funeral = FALSE // used for sending funeralized rogueghosts back to lobby on login
+	var/funeral = FALSE // used for tracking funeral status between living/dead mobs and underworld spirits
 
 /datum/mind/New(key)
 	src.key = key

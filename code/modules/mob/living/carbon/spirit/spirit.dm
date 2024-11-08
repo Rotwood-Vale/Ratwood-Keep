@@ -17,6 +17,8 @@
 	var/beingmoved = FALSE
 	var/livingname = null
 	var/datum/mind/prevmind // the mind it had before becoming a spirit. used primarily for pacification
+	var/being_spoken_with = FALSE // Prevents this spirit being a consecutive target of Speak with Soul spell.
+	var/mob/speaking_with // Holds a reference to the summoning mob for notification purposes.
 
 /obj/item/bodypart/chest/spirit
 	icon = 'icons/roguetown/underworld/underworld.dmi'
@@ -42,16 +44,6 @@
 	icon = 'icons/roguetown/underworld/underworld.dmi'
 	icon_state = "spiritpart"
 
-/mob/living/carbon/spirit/Login()
-	. = ..()
-	if(prevmind?.funeral)
-		if(CONFIG_GET(flag/force_respawn_on_funeral))
-			to_chat(src, span_rose("With my body buried in creation, my soul passes on in peace..."))
-			var/ghost = burial_rite_make_ghost(src)
-			burial_rite_return_ghost_to_lobby(ghost)
-		else
-			to_chat(src, span_notice("Welcome back. Your body was funeralized, and your spirit was teleported back to underworld spawn.\n\
-			Use the carriage to immediately return to the lobby."))
 
 /mob/living/carbon/spirit/Initialize(mapload, cubespawned=FALSE, mob/spawner)
 	set_light(2, 2, "#547fa4")
@@ -211,17 +203,20 @@
 				success = TRUE
 			break // only the first
 	// Success is actually the ckey of the last attacker so we can prevent PQ farming from fragging people // DOESNT WORK "success" is not a ckey, just a bool for now
-	if(success)
-		to_chat(user, span_rose("A sense of peace washes over me.")) // flavor this however you want
+	if(success && deep) // deep is here for no double-message
+		to_chat(user, span_rose("I gain a faint sense of peace.")) // flavor this however you want
 		if(give_pq && user?.ckey && (user.ckey != success))
 			adjust_playerquality(give_pq, user.ckey)
 	return success
 
 /// Proc that funeralizes a corpse by setting a variable in its mind, for reliable respawns.
 /proc/pacify_corpse(mob/living/corpse, mob/user, coin_pq = PQ_GAIN_BURIAL_COIN)
-	if(QDELETED(corpse) || QDELETED(corpse.mind) || (corpse.stat != DEAD) || corpse.mind.funeral)
+	if(QDELETED(corpse) || QDELETED(corpse.mind) || (corpse.stat != DEAD))
 		return FALSE
 	if(copytext(corpse.key, 1, 2) == "@") // lazy version of IsMobAdminGhosted()
+		return FALSE
+	if(corpse.mind.funeral)
+		to_chat(user, span_red("This one has already been buried."))
 		return FALSE
 	var/attacker_ckey = corpse.lastattackerckey || TRUE
 	var/mob/living/carbon/human/human_corpse
@@ -247,40 +242,42 @@
 	var/corpse_name = corpse.real_name || "*no name*"
 	var/corpse_key = corpse.mind.key || "*no key*"
 	testing("pacify_corpse success ([corpse_name], [corpse_key])")
-	to_chat(corpse, span_rose("My soul finds peace buried in creation, thanks to [user_acknowledgement]."))
 	user.log_message("memorialized [corpse_name][corpse.mind.name ? " (mind-name [corpse.mind.name])" : ""], played by [corpse_key].", LOG_GAME)
 	var/peace_message = span_rose("My soul finds peace buried in creation, thanks to [user_acknowledgement].")
+
+	var/mob/living/carbon/spirit/spirit = corpse.get_spirit() // much less expensive to use now
 
 	if(!CONFIG_GET(flag/force_respawn_on_funeral))
 		// time to (expensively) search for whatever the mob is, to deliver the mail.
 		var/mob/currentlyin
-		var/mob/living/carbon/spirit/spirit = corpse.get_spirit() // much less expensive to use now
 		if(corpse.mind.key)
 			currentlyin = get_mob_by_key(corpse.mind.key) // the most expensive operation here
 		if(currentlyin)
 			if(corpse.mind == currentlyin.mind) // should only succeed if in body or ghosted, from the same character.
 				to_chat(currentlyin, peace_message)
-				to_chat(currentlyin, span_notice("You can now use 'Descend to the Underworld' in your Spirit tab to instantly return to the lobby."))
+				to_chat(currentlyin, span_notice("You can now use 'Journey to the Underworld' in your Spirit tab to instantly return to the lobby."))
 			else if(spirit)
 				spirit.funeral_return(peace_message)
-// /mob/dead/observer/rogue/Login(), /mob/living/Login(), and /mob/living/carbon/spirit/Login() are set up to notify you if you're funeralized
+// /client/proc/funeral_login(), called on /client/New(), is set up to notify you if you're funeralized
 
 	else // Config sez all ghosts gotta go straight to the lobby, simple as.
+		if(spirit && spirit.speaking_with)
+			to_chat(spirit.speaking_with, "The soul returns to the underworld.")
 		var/mob/dead/observer/ghost = burial_rite_make_ghost(corpse)
 		if(ghost && ghost.client)
 			to_chat(ghost, peace_message)
 			burial_rite_return_ghost_to_lobby(ghost)
-			// /mob/dead/observer/rogue/Login() will take care of the d/ced bois.
-			// At this point, if you're not caught by this, you're on a different mind (character) entirely.
-		return TRUE
-	testing("pacify_corpse fail ([corpse_name], [corpse_key])")
-	return FALSE
+			// /client/proc/funeral_login() will take care of the d/ced bois.
+			// At this point, if you're not caught by the logic, you're on a different mind (character) entirely.
+	return TRUE
 
 // Teleports spirit to underworld spawn and pays its toll
 /mob/living/carbon/spirit/proc/funeral_return(peace_message)
 	to_chat(src, peace_message)
-	var/paidfor = src.paid
-	src.paid = TRUE
+	var/paidfor = paid
+	paid = TRUE
+	if(speaking_with)
+		to_chat(speaking_with, "The soul is being pulled away...")
 	for(var/obj/effect/landmark/underworld/underspawn in shuffle(GLOB.landmarks_list))
 		to_chat(src, span_warning("Something pulls me back towards my judgement..."))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(funeral_teleport), src, underspawn, paidfor), 5 SECONDS)
@@ -289,13 +286,20 @@
 /proc/funeral_teleport(mob/living/carbon/spirit/spirit, obj/effect/landmark/underworld/underspawn, paidfor)
 	if(!QDELETED(spirit)) // in case they already used carriage
 		spirit.visible_message(span_warning("[spirit] vanishes!"), span_warning("I'm whisked away!"))
+		if(spirit.speaking_with)
+			to_chat(spirit.speaking_with, "The soul returns to the underworld.")
 		if(!paidfor)
-			to_chat(spirit, span_notice("My toll has been paid for! The carriage is open to me..."))
+			to_chat(spirit, span_notice("My toll has been paid for!") + "\n\
+										The carriage is open to me...")
 		for(var/obj/item/I in spirit.held_items) // won't need these anymore
 			. |= spirit.dropItemToGround(I)
 		spirit.loc = underspawn.loc
 		spirit.invisibility = initial(spirit.invisibility) // remove effect from soulspeak spell immediately
-		spirit.SetParalyzed(0) // ditto
+		spirit.SetParalyzed(0)
+		spirit.being_spoken_with = FALSE
+		spirit.speaking_with = null
+		spirit.set_resting(FALSE)
+
 
 // used by force-respawn, and by living corpses using the underworld verb
 // should be fine to use with disconnected people, as we'll have things to clean them up anyways
@@ -318,8 +322,8 @@
 		return ghost
 
 /proc/burial_rite_return_ghost_to_lobby(mob/dead/observer/ghost)
-	if(IsAdminGhost(ghost))
-		message_admins("[key_name(ghost)] skipped force-respawn due to being an admin ghost.")
+	if(isadminobserver(ghost))
+		ghost.log_message("skipped force-respawn due to being an admin ghost.", LOG_GAME)
 		return
 
 	if(ghost.key)
@@ -337,8 +341,7 @@
 		ghost.log_message("had no client in game during burial rites.", LOG_GAME)
 
 	var/mob/dead/new_player/M = new /mob/dead/new_player()
-	if(CONFIG_GET(flag/force_respawn_on_funeral))
-		M.funeral_respawn = TRUE // informs the player as to why they were respawned
+	M.funeral_respawn = TRUE // informs the player as to why they were respawned
 
 	M.key = ghost.key
 	if(ghost.client)

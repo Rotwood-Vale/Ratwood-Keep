@@ -34,11 +34,6 @@
 	if(changeling)
 		changeling.regain_powers()
 
-	if((src.stat == DEAD) && mind?.funeral) // force-respawn will have you log in to your ghost, not your living mob
-		to_chat(src, span_notice("Welcome back. Your body was funeralized and a respawn is available.\n\
-		Use the \"Journey to the Underworld\" verb in your Spirit tab to immediately respawn."))
-
-
 
 /mob/living/proc/login_fade()
 	set waitfor = FALSE

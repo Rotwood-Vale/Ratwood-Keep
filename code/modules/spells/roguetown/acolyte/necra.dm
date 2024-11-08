@@ -97,7 +97,7 @@
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
 	associated_skill = /datum/skill/magic/holy
-	invocation = "She-Below brooks thee respite, be heard, wanderer."
+	invocation = "She-Below brooks thee respite. Be heard, wanderer."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 	miracle = TRUE
 	devotion_cost = 30
@@ -107,10 +107,15 @@
 	var/list/souloptions = list()
 	var/list/itemstorestore = list()
 	for(var/mob/living/carbon/spirit/S in GLOB.spirit_list)
+		if(S.being_spoken_with)
+			continue
 		if(!S.client)
 			continue
-		if(S.prevmind && S.prevmind.funeral)
-			continue // being funeralized gives you pull immunity
+		if(S.prevmind)
+			if(S.prevmind.funeral)
+				continue // being funeralized gives you pull immunity
+		else // likely an admin
+			continue
 		souloptions += S.livingname
 	if(!length(souloptions))
 		to_chat(user, span_warning("No souls are available for me to commune with."))
@@ -118,9 +123,12 @@
 	var/pickedsoul = input(user, "Which soul should I commune with?", "Available Souls") as null|anything in souloptions
 	if(!pickedsoul)
 		return
+	var/hasabyssal = FALSE
+	if(user.has_language(/datum/language_holder/abyssal))
+		hasabyssal = TRUE
 	for(var/mob/living/carbon/spirit/P in GLOB.spirit_list)
 		if(P.livingname == pickedsoul)
-			to_chat(P, "You feel yourself being pulled out of the underworld.")
+			to_chat(P, span_red("You feel yourself being pulled out of the underworld."))
 			sleep(2 SECONDS)
 			P.loc = user.loc
 			capturedsoul = P
@@ -135,17 +143,34 @@
 			break
 		to_chat(P, "[itemstorestore]")
 	if(capturedsoul)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(soulspeak_return), capturedsoul, user, itemstorestore), 2 MINUTES)
+		if(!hasabyssal)
+			user.grant_language(/datum/language_holder/abyssal)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(soulspeak_return), capturedsoul, user, itemstorestore, hasabyssal), 120 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(soulspeak_timer_warning), capturedsoul, user), 115 SECONDS)
 		to_chat(user, "<font color='blue'>I feel a cold chill run down my spine, a presence has arrived.</font>")
+		capturedsoul.being_spoken_with = TRUE
+		capturedsoul.speaking_with = user
 		capturedsoul.Paralyze(2 MINUTES)
 
-/proc/soulspeak_return(mob/living/carbon/spirit/capturedsoul, mob/summoner, list/itemstorestore)
-	if(!QDELETED(capturedsoul) || !capturedsoul.prevmind?.funeral)
+/proc/soulspeak_timer_warning(mob/living/carbon/spirit/capturedsoul, mob/summoner)
+	if(!QDELETED(capturedsoul) && capturedsoul.being_spoken_with && !capturedsoul.prevmind?.funeral)
+		to_chat(capturedsoul, span_warning("I'm starting to be pulled away..."))
+		if(!QDELETED(summoner))
+			to_chat(summoner, span_warning("The soul is being pulled away..."))
+
+/proc/soulspeak_return(mob/living/carbon/spirit/capturedsoul, mob/summoner, list/itemstorestore, hasabyssal)
+	if(!QDELETED(summoner) && !hasabyssal)
+		summoner.remove_language(/datum/language_holder/abyssal)
+	if(!QDELETED(capturedsoul) && capturedsoul.being_spoken_with && !capturedsoul.prevmind?.funeral) // pacify_corpse has its own stuff to teleport & unparalyze the spirit
 		to_chat(summoner, "The soul returns to the underworld.")
-		to_chat(capturedsoul, "You feel yourself being pulled back to the underworld.")
+		to_chat(capturedsoul, "You return to the underworld.")
 		for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
 			capturedsoul.loc = A.loc
 			capturedsoul.invisibility = initial(capturedsoul.invisibility)
+			capturedsoul.SetParalyzed(0)
+			capturedsoul.being_spoken_with = FALSE
+			capturedsoul.speaking_with = null
+			capturedsoul.set_resting(FALSE)
 			for(var/I in itemstorestore)
 				if(I == "token")
 					var/obj/item/underworld/coin/C = new

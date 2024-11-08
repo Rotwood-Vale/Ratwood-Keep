@@ -275,10 +275,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 			to_chat(src, span_rose("With my body buried in creation, my soul passes on in peace..."))
 			burial_rite_return_ghost_to_lobby(src)
 			return
-		else
-			to_chat(src, span_notice("Welcome back. Your body was funeralized and a respawn is available.\n\
-			Use the \"Journey to the Underworld\" verb in your Spirit tab to immediately respawn."))
-
 /mob/dead/observer/rogue/CanPass(atom/movable/mover, turf/target)
 	if(!isinhell)
 		if(istype(mover, /mob/dead/observer/rogue))
