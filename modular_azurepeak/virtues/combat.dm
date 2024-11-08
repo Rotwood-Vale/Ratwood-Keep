@@ -4,9 +4,15 @@
 	added_skills = list(/datum/skill/magic/arcane = 1)
 
 /datum/virtue/combat/magical_potential/apply_to_human(mob/living/carbon/human/recipient)
-	if (!recipient.mind?.has_spell(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation))
-		recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-		recipient.mind?.adjust_spellpoints(-1)
+	if (!recipient.mind?.get_skill_level(/datum/skill/magic/arcane)) // we can do this because apply_to is always called first
+		recipient.mind?.adjust_spellpoints(-6) // no martial-arcyne for you - not the intent of this virtue!
+		if (!recipient.mind?.has_spell(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation))
+			recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+	else
+		if (!HAS_TRAIT(recipient, TRAIT_MEDIUMARMOR) && !HAS_TRAIT(recipient, TRAIT_HEAVYARMOR) && !HAS_TRAIT(recipient, TRAIT_DODGEEXPERT))
+			recipient.mind?.adjust_spellpoints(1) // 1 extra spellpoint if you're already arcane
+		else
+			to_chat(recipient, span_notice("I'm too trained in defensive tactics for my Virtue to benefit my spell knowledge any further."))
 
 /datum/virtue/combat/devotee
 	name = "Devotee"
@@ -14,13 +20,32 @@
 	added_skills = list(/datum/skill/magic/holy = 1)
 
 /datum/virtue/combat/devotee/apply_to_human(mob/living/carbon/human/recipient)
-	// this grants devotion, but ONLY for orison, and never enough to get even T1. it also doesn't grant healing miracle, full stop.
-	if (!recipient.devotion && recipient.mind)
+	if (!recipient.mind)
+		return
+	if (!recipient.devotion)
+		// only give non-devotionists orison... and t0 for some reason (this is probably a bad idea)
 		var/datum/devotion/new_faith = new /datum/devotion(recipient, recipient.patron)
+		var/datum/patron/our_patron = new_faith.patron
 		new_faith.max_devotion = CLERIC_REQ_1 - 20
 		new_faith.max_progression = CLERIC_REQ_1 - 20
 		recipient.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 		recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/orison)
+		recipient.mind?.AddSpell(new our_patron.t0) // i dunno... let's see how it plays out
+	else
+		// for devotionists, bump up their maximum 1 tier and give them a TINY amount of passive devo gain
+		var/datum/devotion/our_faith = recipient.devotion
+		our_faith.passive_devotion_gain += 0.15
+		switch (our_faith.max_progression)
+			if (CLERIC_REQ_0)
+				our_faith.max_progression = CLERIC_REQ_1
+			if (CLERIC_REQ_1)
+				our_faith.max_progression = CLERIC_REQ_2
+			if (CLERIC_REQ_2)
+				our_faith.max_progression = CLERIC_REQ_3
+			if (CLERIC_REQ_3)
+				our_faith.max_progression = CLERIC_REQ_4
+			if (CLERIC_REQ_4)
+				our_faith.passive_devotion_gain += 1
 
 /datum/virtue/combat/duelist
 	name = "Duelist Apprentice"
