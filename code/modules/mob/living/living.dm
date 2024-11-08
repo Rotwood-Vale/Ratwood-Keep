@@ -497,6 +497,8 @@
 /mob/living/proc/set_pull_offsets(mob/living/M, grab_state = GRAB_PASSIVE)
 	if(M.buckled)
 		return //don't make them change direction or offset them if they're buckled into something.
+	if(M.dir != turn(get_dir(M,src), 180))
+		M.setDir(get_dir(M, src))
 	var/offset = 0
 	switch(grab_state)
 		if(GRAB_PASSIVE)
@@ -507,8 +509,7 @@
 			offset = GRAB_PIXEL_SHIFT_NECK
 		if(GRAB_KILL)
 			offset = GRAB_PIXEL_SHIFT_NECK
-	M.setDir(get_dir(M, src))
-	switch(M.dir)
+	switch(get_dir(M, src))
 		if(NORTH)
 			M.set_mob_offsets("pulledby", 0, 0+offset)
 			M.layer = MOB_LAYER+0.05
