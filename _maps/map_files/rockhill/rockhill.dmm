@@ -4707,9 +4707,13 @@
 /area/rogue/outdoors/rtfield)
 "emn" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/gloves/roguetown/chain/iron,
-/obj/item/clothing/gloves/roguetown/chain/iron,
-/obj/item/clothing/gloves/roguetown/chain/iron,
+/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/rogue/leather,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "emr" = (
@@ -15896,11 +15900,11 @@
 /area/rogue/indoors)
 "ohf" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/chainmail,
-/obj/item/clothing/suit/roguetown/armor/chainmail,
-/obj/item/clothing/suit/roguetown/armor/chainmail,
-/obj/item/clothing/suit/roguetown/armor/chainmail,
-/obj/item/clothing/suit/roguetown/armor/chainmail,
+/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/clothing/under/roguetown/trou/leather,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "ohi" = (
@@ -18085,15 +18089,16 @@
 /area/rogue/indoors/town/manor)
 "pYf" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/cloak/stabard/bog,
-/obj/item/clothing/cloak/stabard/bog,
-/obj/item/clothing/cloak/stabard/bog,
-/obj/item/clothing/cloak/stabard/bog,
-/obj/item/clothing/cloak/stabard/bog,
-/obj/item/clothing/cloak/stabard/bog,
-/obj/item/clothing/cloak/stabard/bog,
-/obj/item/clothing/cloak/stabard/bog,
-/obj/item/clothing/cloak/stabard/bog,
+/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/raincloak/vanguard,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "pYh" = (
