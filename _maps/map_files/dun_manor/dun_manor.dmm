@@ -15250,10 +15250,7 @@
 /area/rogue/indoors)
 "oIU" = (
 /obj/structure/table/wood,
-/obj/structure/mineral_door/wood/deadbolt/shutter{
-	dir = 2;
-	pixel_y = -1
-	},
+/obj/structure/mineral_door/wood/deadbolt/shutter,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -117033,7 +117030,7 @@ fjC
 fjC
 fjC
 dPO
-qhq
+maj
 dPO
 fjC
 loA
