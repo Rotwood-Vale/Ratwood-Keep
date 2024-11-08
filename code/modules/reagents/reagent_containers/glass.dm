@@ -60,16 +60,11 @@
 						span_danger("[user] attempts to feed you something."))
 			if(!do_mob(user, M))
 				return
-			if(M != user)
-				M.visible_message(span_danger("[user] attempts to feed [M] something."), \
-							span_danger("[user] attempts to feed you something."))
-				if(!do_mob(user, M))
-					return
-				if(!reagents || !reagents.total_volume)
-					return // The drink might be empty after the delay, such as by spam-feeding
-				M.visible_message(span_danger("[user] feeds [M] something."), \
-							span_danger("[user] feeds you something."))
-				log_combat(user, M, "fed", reagents.log_list())
+			if(!reagents || !reagents.total_volume)
+				return // The drink might be empty after the delay, such as by spam-feeding
+			M.visible_message(span_danger("[user] feeds [M] something."), \
+						span_danger("[user] feeds you something."))
+			log_combat(user, M, "fed", reagents.log_list())
 		else
 			// check to see if we're a noble drinking soup
 			if (ishuman(user) && istype(src, /obj/item/reagent_containers/glass/bowl))
