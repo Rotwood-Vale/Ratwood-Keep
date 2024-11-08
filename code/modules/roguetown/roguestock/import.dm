@@ -28,8 +28,8 @@
 	masterkey = TRUE
 
 /datum/roguestock/import/bogguard
-	name = "Bog Guard Equipment Crate"
-	desc = "Starting kit for a new Bog Guard."
+	name = "Vanguard Equipment Crate"
+	desc = "Starting kit for a new Vanguard."
 	item_type = /obj/structure/closet/crate/chest/steward/bogguard
 	export_price = 50
 	importexport_amt = 1

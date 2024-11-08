@@ -1,5 +1,5 @@
 /datum/job/roguetown/bogmaster
-	title = "Bog Master"
+	title = "High Warden"
 	flag = BOGMASTER
 	department_flag = GARRISON
 	faction = "Station"
@@ -9,9 +9,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "You are the most experienced idiot to volunteer to the Bog Guard... \
+	tutorial = "You are the most experienced idiot to volunteer to the Vanguard... \
 				What a mistake that was. You report to the Royal Marshal and their Councillors, \
-				and your job is to keep the bogmen in line and to ensure the routes to the town are safe. \
+				and your job is to keep the vanguard in line and to ensure the routes to the town are safe. \
 				May Gods have mercy on you..."
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE
@@ -35,7 +35,7 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "bog master tabard ([index])"
+			S.name = "warden tabard ([index])"
 
 /datum/outfit/job/roguetown/bogmaster/pre_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -81,12 +81,12 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /obj/effect/proc_holder/spell/self/convertrole/bog
-	name = "Recruit Bogmen"
-	new_role = "Bog Guard"
+	name = "Recruit Vanguard"
+	new_role = "Vanguard"
 	overlay_state = "recruit_bog"
-	recruitment_faction = "Bog Guard"
-	recruitment_message = "Serve the bog, %RECRUIT!"
-	accept_message = "FOR THE BOG!"
+	recruitment_faction = "Vanguard"
+	recruitment_message = "Serve the vanguard, %RECRUIT!"
+	accept_message = "FOR THE VANGUARDs!"
 	refuse_message = "I refuse."
 
 /obj/effect/proc_holder/spell/self/convertrole/bog/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
