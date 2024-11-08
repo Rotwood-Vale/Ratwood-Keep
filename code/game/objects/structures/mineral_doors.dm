@@ -854,6 +854,7 @@
 	repair_cost_second = /obj/item/ingot/iron
 	repair_skill = /datum/skill/craft/carpentry
 	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/mineral_door/wood/donjon/stone
 	desc = "stone door"
@@ -866,6 +867,7 @@
 	repair_cost_first = /obj/item/natural/stone
 	repair_cost_second = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
+	smeltresult = null
 
 /obj/structure/mineral_door/wood/donjon/stone/view_toggle(mob/user)
 	return

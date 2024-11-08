@@ -1,7 +1,7 @@
 /obj/item/reagent_containers/glass/bucket/pot
 	force = 10
 	name = "pot"
-	desc = ""
+	desc = "A pot made out of iron"
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
@@ -16,6 +16,7 @@
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
 	volume = 198
+	smeltresult = /obj/item/ingot/iron
 	
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()
 	cut_overlays()
@@ -43,3 +44,4 @@
 
 /obj/item/reagent_containers/glass/bucket/pot/stone
 	name = "stone pot"
+	desc = "A pot made out of stone"

@@ -28,7 +28,7 @@
 	var/ulevel = 0
 
 /obj/item/cart_upgrade/level_1
-	name = "upgrade cog"
+	name = "wooden cog"
 	desc = "A cog that can increase the carry capacity of a wooden cart."
 	icon_state = "upgrade"
 	ulevel = 1
@@ -36,7 +36,7 @@
 	metalizer_result = /obj/item/roguegear
 
 /obj/item/cart_upgrade/level_2
-	name = "advanced upgrade cog"
+	name = "advanced wooden cog"
 	desc = "A cog that can further increase the carry capacity of a wooden cart. The first upgrade is required for this one to function."
 	icon_state = "upgrade2"
 	ulevel = 2

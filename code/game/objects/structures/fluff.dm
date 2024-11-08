@@ -544,6 +544,7 @@
 	var/broke = FALSE
 	var/datum/looping_sound/clockloop/soundloop
 	drag_slowdown = 3
+	metalizer_result = /obj/item/roguegear
 
 /obj/structure/fluff/clock/Initialize()
 	soundloop = new(list(src), FALSE)
@@ -613,6 +614,7 @@
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
 	var/broke = FALSE
 	pixel_y = 32
+	metalizer_result = /obj/item/roguegear
 
 /obj/structure/fluff/wallclock/Destroy()
 	if(soundloop)

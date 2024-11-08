@@ -62,7 +62,7 @@
 	appro_skill = /datum/skill/craft/engineering
 
 /datum/artificer_recipe/wood //This looks a bit silly but due to how these datums work is necessary for other things to inherit from it
-	name = "Wooden Upgrade Cog"
+	name = "Wooden Cog"
 	required_item = /obj/item/natural/wood/plank
 	created_item = /obj/item/cart_upgrade/level_1
 	additional_items = list(/obj/item/natural/wood/plank = 1)
@@ -71,7 +71,7 @@
 	i_type = "General"
 
 /datum/artificer_recipe/wood/upgrade2
-	name = "Advanced Wooden Upgrade Cog (+1 Essence of Lumber)"
+	name = "Advanced Wooden Cog (+1 Essence of Lumber)"
 	created_item = /obj/item/cart_upgrade/level_2
 	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/grown/log/tree/small/essence = 1)
 	hammers_per_item = 10
@@ -177,23 +177,23 @@
 // --------- PROSTHETICS -----------
 
 /datum/artificer_recipe/wood/prosthetics
-	name = "Left Wooden Arm (+1 Cog)"
+	name = "Left Wooden Arm (+1 Wooden Cog)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/wood
-	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear = 1)
+	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/cart_upgrade/level_1 = 1)
 	i_type = "Prosthetics"
 	hammers_per_item = 4
 	craftdiff = 2
 
 /datum/artificer_recipe/wood/prosthetics/arm_right
-	name = "Right Wooden Arm (+1 Cog)"
+	name = "Right Wooden Arm (+1 Wooden Cog)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/wood
 
 /datum/artificer_recipe/wood/prosthetics/leg_left
-	name = "Left Wooden Leg (+1 Cog)"
+	name = "Left Wooden Leg (+1 Wooden Cog)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/wood
 
 /datum/artificer_recipe/wood/prosthetics/leg_right
-	name = "Right Wooden Leg (+1 Cog)"
+	name = "Right Wooden Leg (+1 Wooden Cog)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/wood
 
 // --------- BRONZE -----------
@@ -259,22 +259,22 @@
 // --------- IRON -----------
 
 /datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
-	name = "Iron Left Arm (+1 Wooden Cog)"
+	name = "Iron Left Arm (+1 Cog)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/iron
 	required_item = /obj/item/ingot/iron
-	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/cart_upgrade/level_1 = 1)
+	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/roguegear = 1)
 	hammers_per_item = 4
 	craftdiff = 2
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/iron/prosthetic/arm_right
-	name = "Iron Right Arm (+1 Wooden Cog)"
+	name = "Iron Right Arm (+1 Cog)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/iron
 
 /datum/artificer_recipe/iron/prosthetic/leg_left
-	name = "Iron Left Leg (+1 Wooden Cog)"
+	name = "Iron Left Leg (+1 Cog)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/iron
 
 /datum/artificer_recipe/iron/prosthetic/leg_right
-	name = "Iron Right Leg (+1 Wooden Cog)"
+	name = "Iron Right Leg (+1 Cog)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/iron
