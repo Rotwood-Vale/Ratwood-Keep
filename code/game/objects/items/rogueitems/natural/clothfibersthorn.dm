@@ -227,6 +227,8 @@
 		if(prob(prob2break))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
 			qdel(src)
+			if (L.alpha == 0 && L.rogue_sneaking) // not anymore you're not
+				L.update_sneak_invis(TRUE)
 			L.consider_ambush()
 
 /obj/item/natural/bundle/fibers

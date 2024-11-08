@@ -20,6 +20,8 @@
 	var/ai_when_client = FALSE
 	var/next_idle = 0
 	var/next_seek = 0
+	var/next_stand = 0
+	var/next_passive_detect = 0
 	var/flee_in_pain = FALSE
 	var/stand_attempts = 0
 	var/ai_currently_active = FALSE
@@ -234,6 +236,9 @@
 	if(L == src)
 		return FALSE
 
+	if (L.alpha == 0 && L.rogue_sneaking)
+		return FALSE
+
 	if(!is_in_zweb(src.z,L.z))
 		return FALSE
 
@@ -262,12 +267,19 @@
 				for(var/mob/living/L in view(7, src)) // scan for enemies
 					if(should_target(L))
 						retaliate(L)
+					if (world.time >= next_passive_detect && L.alpha == 0 && L.rogue_sneaking && prob(STAPER / 2))
+						if (!npc_detect_sneak(L, -20)) // attempt a passive detect with 20% increased difficulty
+							next_passive_detect = world.time + STAPER SECONDS
 
 		if(AI_HUNT)		// hunting for attacker
 			if(target != null)
 				if(!should_target(target))
-					back_to_idle()
-					return TRUE
+					if (target.alpha == 0 && target.rogue_sneaking) // attempt one detect since we were just fighting them and have lost them
+						if (npc_detect_sneak(target))
+							retaliate(target)
+					else
+						back_to_idle()
+						return TRUE
 				m_intent = MOVE_INTENT_WALK
 				INVOKE_ASYNC(src, PROC_REF(walk2derpless), target)
 
@@ -406,6 +418,13 @@
 	if(L == src)
 		return
 	if(mode != AI_OFF)
+		if (L.alpha == 0 && L.rogue_sneaking)
+			// we just got hit by something hidden so try and find them
+			if (prob(5))
+				visible_message(span_notice("[src] begins searching around frantically..."))
+			var/extra_chance = (health <= maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
+			if (!npc_detect_sneak(L, extra_chance))
+				return
 		mode = AI_HUNT
 		last_aggro_loss = null
 		face_atom(L)
@@ -413,6 +432,38 @@
 			emote("aggro")
 		target = L
 		enemies |= L
+
+/mob/living/proc/npc_detect_sneak(mob/living/target, extra_prob = 0)
+	if (target.alpha > 0 || !target.rogue_sneaking)
+		return TRUE
+	var/probby = 4 * STAPER //this is 10 by default - npcs get an easier time to detect to slightly thwart cheese
+	probby += extra_prob
+	var/sneak_bonus = 0
+	if(target.mind)
+		if (world.time < target.mob_timers[MT_INVISIBILITY])
+			// we're invisible as per the spell effect, so use the highest of our arcane magic (or holy) skill instead of our sneaking
+			sneak_bonus = (max(target.mind?.get_skill_level(/datum/skill/magic/arcane), target.mind?.get_skill_level(/datum/skill/magic/holy)) * 10)
+			probby -= 20 // also just a fat lump of extra difficulty for the npc since spells are hard, you know?
+		else
+			sneak_bonus = (target.mind?.get_skill_level(/datum/skill/misc/sneaking) * 5)
+		probby -= sneak_bonus
+	if(!target.check_armor_skill())
+		probby += 85 //armor is loud as fuck
+		if (sneak_bonus)
+			probby += sneak_bonus // you don't get sneak bonus in heavy armor at all, on top of that
+	if (target.badluck(5))
+		probby += (10 - target.STALUC) * 5 // drop 5% chance for every bit of fortune we're missing
+	if (target.goodluck(5))
+		probby -= (10 - target.STALUC) * 5 // make it 5% harder for every bit of fortune over 10 that we do have
+
+	if (prob(probby))
+		// whoops it saw us
+		target.mob_timers[MT_FOUNDSNEAK] = world.time
+		to_chat(target, span_danger("[src] sees me! I'm found!"))
+		target.update_sneak_invis(TRUE)
+		return TRUE
+	else
+		return FALSE
 
 
 /mob/living/carbon/human/attackby(obj/item/W, mob/user, params)
