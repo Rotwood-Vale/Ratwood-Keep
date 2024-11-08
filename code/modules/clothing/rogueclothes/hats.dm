@@ -1205,7 +1205,7 @@
 
 /obj/item/clothing/head/roguetown/bucklehat
 	name = "Buckled Hat"
-	desc = "A plain leather had with decorative buckle. Made popular by the ne'er-do-wells of Etrusca."
+	desc = "A plain leather hat with decorative buckle. Made popular by the ne'er-do-wells of Etrusca."
 	icon_state = "bucklehat"
 	sewrepair = TRUE
 
