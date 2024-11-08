@@ -26,7 +26,6 @@
 	M.adjustOxyLoss(-0.7, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.7*REM)
 	M.adjustCloneLoss(-0.7*REM, 0)
-	M.adjust_nutrition(-5*REM)
 	..()
 	. = 1
 
@@ -75,7 +74,6 @@
 	M.adjustOxyLoss(-1.4, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1.4*REM)
 	M.adjustCloneLoss(-1.4*REM, 0)
-	M.adjust_nutrition(-2.5*REM)
 	..()
 	. = 1
 
