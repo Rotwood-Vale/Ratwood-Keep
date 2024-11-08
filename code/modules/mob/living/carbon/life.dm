@@ -222,7 +222,7 @@
 /mob/living/carbon/proc/get_complex_pain()
 	var/amt = 0
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
-		if(limb.status == BODYPART_ROBOTIC)
+		if(limb.status == BODYPART_ROBOTIC || limb.skeletonized)
 			continue
 		var/bodypart_pain = ((limb.brute_dam + limb.burn_dam) / limb.max_damage) * 100
 		for(var/datum/wound/wound as anything in limb.wounds)
