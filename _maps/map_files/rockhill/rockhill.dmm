@@ -6885,10 +6885,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"fVQ" = (
-/obj/structure/roguewindow,
-/turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/indoors)
 "fWK" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt,
@@ -486234,12 +486230,12 @@ sIG
 rvA
 rvA
 rvA
-fVQ
+oZH
 jCh
 jCh
 jCh
 lSG
-fVQ
+oZH
 sZI
 qbG
 qbG
@@ -486636,12 +486632,12 @@ rvA
 rvA
 rvA
 rvA
-fVQ
+oZH
 jCh
 jCh
 vrf
 lSG
-fVQ
+oZH
 ljc
 sZI
 qbG
@@ -487040,7 +487036,7 @@ rvA
 rvA
 ryI
 wOD
-fVQ
+oZH
 wOD
 hgO
 ryI
