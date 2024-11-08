@@ -484,6 +484,12 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
+"aun" = (
+/obj/structure/roguemachine/mail{
+	mailtag = "Vanguard Bastion"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "auG" = (
 /obj/structure/chair/wood/rogue{
 	dir = 1
@@ -2344,6 +2350,12 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"cky" = (
+/obj/structure/roguemachine/mail{
+	mailtag = "Vanguard Bastion"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors)
 "ckL" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/tavern)
@@ -4578,6 +4590,10 @@
 	dir = 8
 	},
 /area/rogue/indoors/town/manor)
+"egH" = (
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "egV" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -13757,6 +13773,10 @@
 /obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter/town)
+"mtf" = (
+/obj/structure/bearpelt,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "mtl" = (
 /obj/structure/mannequin/male,
 /turf/open/floor/rogue/woodturned,
@@ -13973,8 +13993,7 @@
 /area/rogue/outdoors/rtfield)
 "mEz" = (
 /obj/structure/winch{
-	gid = ""bog_gate2";
-	redstone_id = ""bog_gate2"
+	gid = ""bog_gate2";\tredstone_id = ""bog_gate2"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -14582,8 +14601,7 @@
 /area/rogue/under/cavewet/bogcaves)
 "nfC" = (
 /obj/structure/winch{
-	gid = ""bog_gate1";
-	redstone_id = ""bog_gate1"
+	gid = ""bog_gate1";\tredstone_id = ""bog_gate1"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -17638,8 +17656,7 @@
 /area/rogue/under/cavewet/bogcaves)
 "pEH" = (
 /obj/structure/gate/bars{
-	redstone_id = ""bog_gate2";
-	gid = ""bog_gate2"
+	redstone_id = ""bog_gate2";\tgid = ""bog_gate2"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
@@ -23938,8 +23955,7 @@
 /area/rogue/indoors/town/manor)
 "vqB" = (
 /obj/structure/gate/bars{
-	redstone_id = ""bog_gate1";
-	gid = ""bog_gate1"
+	redstone_id = ""bog_gate1";\tgid = ""bog_gate1"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
@@ -24974,6 +24990,10 @@
 /area/rogue/indoors/town/dwarfin)
 "wlD" = (
 /turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
+"wlH" = (
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "wlL" = (
 /obj/structure/fluff/railing/wood{
@@ -281411,7 +281431,7 @@ pAV
 wlD
 wlD
 wlD
-wlD
+vWQ
 wlD
 wlD
 wlD
@@ -281814,7 +281834,7 @@ wlD
 wlD
 pAV
 pAV
-vWQ
+aun
 wlD
 wlD
 qli
@@ -283420,7 +283440,7 @@ fxx
 uHR
 pAV
 pAV
-wlD
+egH
 wlD
 wlD
 kFc
@@ -383919,7 +383939,7 @@ erZ
 erZ
 erZ
 pAV
-htF
+cky
 htF
 htF
 pAV
@@ -384321,14 +384341,14 @@ erZ
 erZ
 erZ
 pAV
-htF
+wlH
 mVe
 htF
 pAV
 cmJ
 wlD
 wlD
-wlD
+mtf
 wlD
 wlD
 wlD
