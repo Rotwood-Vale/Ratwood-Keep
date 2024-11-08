@@ -14,6 +14,7 @@
 	var/charge_per_source = 5
 	var/current_charge = 0
 	var/missfire_chance
+	obj_flags_ignore = TRUE
 
 /obj/item/contraption/examine(mob/user)
 	. = ..()

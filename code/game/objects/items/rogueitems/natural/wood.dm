@@ -76,7 +76,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 10
-	obj_flags = null
 	firefuel = 30 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_BULKY
