@@ -99,6 +99,8 @@
 	//TODO: Look into implementing soft fluttering sounds instead, and prevent this check that will happen for every footstep ever
 	if(isseelie(H))	//Need to look into a wing check for wingless seelie too
 		return
+	if(HAS_TRAIT(H,TRAIT_LIGHT_STEP)) //TODO, do the above.
+		return
 	var/feetCover = (H.wear_armor && (H.wear_armor.body_parts_covered & FEET)) || (H.wear_pants && (H.wear_pants.body_parts_covered & FEET))
 
 	var/used_sound
