@@ -1,20 +1,3 @@
-
-/datum/reagent/medicine/healthpot/overdose_start(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(!istype(H.dna.species, /datum/species/werewolf))
-			H.playsound_local(H, 'sound/misc/heroin_rush.ogg', 100, FALSE)
-			H.visible_message(span_warning("Blood runs from [H]'s nose."))
-	. = 1
-
-/datum/reagent/medicine/healthpot/overdose_process(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(!istype(H.dna.species, /datum/species/werewolf))
-			M.adjustToxLoss(2, 0)
-	..()
-	. = 1
-
 /datum/reagent/medicine/healthpot
 	name = "Health Potion"
 	description = "Gradually regenerates all types of damage."
