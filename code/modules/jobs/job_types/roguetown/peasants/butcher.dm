@@ -30,7 +30,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	beltl = /obj/item/roguekey/butcher
+	beltl = /obj/item/key/butcher
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather

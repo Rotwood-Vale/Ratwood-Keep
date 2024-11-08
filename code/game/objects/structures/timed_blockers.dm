@@ -1,8 +1,8 @@
 /obj/structure/fog_wall
 	name = "heavy fog"
 	desc = "Heavy, thick fog. The kind to assure you that you're about to have a bad day."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "target_stake"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "nothing"
 	density = FALSE
 	anchored = TRUE
 	opacity = FALSE//from TRUE

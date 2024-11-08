@@ -1,7 +1,7 @@
 /////// SHITCODE MADE BY MORIBUND and modularized so you dickless pricks can cannibalize and swipe it easier. Sprites for this by SINNERPEN and INFRARED BARON. payed for by dragon lee. you gonna swip this shit credit thos due.
 
 
-//// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch. 
+//// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
 
 ///////////////////////////////////////////////////////-----------------------------------------doc surgeries and functions---------------------------------------//////////////////////////////////////////////////
 
@@ -12,7 +12,7 @@
 	range = 1
 	associated_skill = /datum/skill/misc/treatment
 	miracle = FALSE
-	devotion_cost = 0 
+	devotion_cost = 0
 
 /obj/effect/proc_holder/spell/targeted/docheal  /////// miricle on 3x cooldown from normal
 	action_icon = 'icons/mob/actions/roguespells.dmi'
@@ -137,54 +137,56 @@
 		return FALSE
 	return TRUE
 
-
-
 /obj/effect/proc_holder/spell/targeted/debride/cast(list/targets, mob/living/user)
-	if(isliving(targets[1]) && targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
-		testing("curerot1")
-		var/mob/living/target = targets[1]
-		if(target == user)
-			return FALSE
-		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-		var/has_rot = was_zombie
-		if(!has_rot && iscarbon(target))
-			var/mob/living/carbon/stinky = target
-			for(var/obj/item/bodypart/bodypart as anything in stinky.bodyparts)
-				if(bodypart.rotted || bodypart.skeletonized)
-					has_rot = TRUE
-					break
-		if(!has_rot)
-			to_chat(user, span_warning("Nothing happens."))
-			return FALSE
-		testing("curerot2")
-		if(was_zombie)
-			if(was_zombie.become_rotman && prob(10)) //10% chance to NOT become a rotman
-				was_zombie.become_rotman = FALSE
-			target.mind.remove_antag_datum(/datum/antagonist/zombie)
-			target.Unconscious(20 SECONDS)
-			target.emote("breathgasp")
-			target.Jitter(100)
-			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
-				adjust_playerquality(unzombification_pq, user.ckey)
-				ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, "[type]")
-		var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
-		if(rot)
-			rot.amount = 0
-		if(iscarbon(target))
-			var/mob/living/carbon/stinky = target
-			for(var/obj/item/bodypart/rotty in stinky.bodyparts)
-				rotty.rotted = FALSE
-				rotty.skeletonized = FALSE
-				rotty.update_limb()
-				rotty.update_disabled()
-		target.update_body()
-		if(!HAS_TRAIT(target, TRAIT_ROTMAN))
-			target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
-		else
-			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
-		return TRUE
-	to_chat(user, span_warning("I need too prime their liver first"))
-	return FALSE
+
+	if(!isliving(targets[1]))
+		revert_cast()
+		return FALSE
+
+	if(!targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
+		to_chat(user, span_warning("I need too prime their liver first"))
+		return FALSE
+
+	var/mob/living/target = targets[1]
+	
+	if(target == user)
+		return FALSE
+
+	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
+	var/has_rot = was_zombie
+
+	if(!has_rot)
+		to_chat(user, span_warning("Nothing happens."))
+		return FALSE
+
+	testing("curerot2")
+
+	if(was_zombie)
+		target.mind.remove_antag_datum(/datum/antagonist/zombie)
+		target.Unconscious(20 SECONDS)
+		target.emote("breathgasp")
+		target.Jitter(100)
+		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
+			adjust_playerquality(unzombification_pq, user.ckey)
+			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
+	
+	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
+
+	if(rot)
+		rot.amount = 0
+
+	if(iscarbon(target))
+		var/mob/living/carbon/stinky = target
+		for(var/obj/item/bodypart/rotty in stinky.bodyparts)
+			rotty.rotted = FALSE
+			rotty.skeletonized = FALSE
+			rotty.update_limb()
+			rotty.update_disabled()
+
+	target.update_body()
+	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+
+	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/debride/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
@@ -220,7 +222,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -235,7 +237,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user) 
+/obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -247,6 +249,17 @@
 		target.emote("scream")
 		return TRUE
 	return FALSE
+
+/obj/effect/proc_holder/spell/targeted/purge/cast_check(skipcharge = 0,mob/user = usr)
+	if(!..())
+		return FALSE
+	var/found = null
+	for(var/obj/structure/bed/rogue/S in oview(2, user))
+		found = S
+	if(!found)
+		to_chat(user, span_warning("I need to lay them on a bed"))
+		return FALSE
+	return TRUE
 
 /obj/item/organ/heart/weak
 	name = "weakened heart"
@@ -316,7 +329,7 @@
 		TOOL_SHARP = 40,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED 
+	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED
 	skill_min = SKILL_LEVEL_EXPERT
 	skill_median = SKILL_LEVEL_MASTER
 
@@ -341,7 +354,7 @@
 		liver = new /obj/item/organ/liver/weak
 		liver.Insert(target)
 		return TRUE
-	
+
 
 /datum/surgery/bypass
 	name = "Coronary artery bypass surgery"
@@ -670,7 +683,7 @@
 /datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
 	M.adjustFireLoss(0.5*REM, 0)
 	M.heal_wounds(3)
-	
+
 	// Iterate through all body parts
 	for (var/obj/item/bodypart/B in M.bodyparts)
 		// Iterate through wounds on each body part
@@ -1037,7 +1050,7 @@
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 	new /obj/item/candle/yellow(src)
 	new /obj/item/needle(src)
-	new /obj/item/book/rogue/snek(src)
+	new /obj/item/book/rogue/medical_notebook(src)
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"
 	desc = "If you see this, call an admin."
@@ -1202,11 +1215,11 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if (!affecting) return
-	if (affecting.bandage) 
+	if (affecting.bandage)
 		to_chat(user, "There is already a bandage.")
 		return
 	var/used_time = 100
-	if (H.mind) 
+	if (H.mind)
 		used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if (!do_mob(user, M, used_time)) return
@@ -1214,7 +1227,7 @@
 	user.dropItemToGround(src)
 	affecting.try_bandage(src)
 	H.update_damage_overlays()
-	
+
 	// Heal the specific body part every second while bandaged and manage wound pain and disabling effects
 	addtimer(CALLBACK(src, /proc/heal_and_manage_pain_disabling, H, affecting), 10, 1, TRUE)
 	if (M == user)
@@ -1249,9 +1262,9 @@
 	icon2 = "bandageroll2"
 	icon2step = 3
 
-/obj/item/book/rogue/snek
-	name = "Snake Stitches"
-	desc = "{<font color='green'><blink>By Dr.volva, snake.</blink></font>}"
+/obj/item/book/rogue/medical_notebook
+	name = "Medical Notebook"
+	desc = "A quick rundown on medical works."
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "medical.json"
