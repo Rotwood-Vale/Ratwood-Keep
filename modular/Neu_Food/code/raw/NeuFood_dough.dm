@@ -276,7 +276,6 @@
 	desc = "Very, very hard and dry."
 	icon_state = "tack6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
-	faretype = FARE_POOR
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("spelt" = 1)
 	bitesize = 6
@@ -304,7 +303,6 @@
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/breadslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = DOUGH_NUTRITION)
-	faretype = FARE_POOR
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1)
 	slice_batch = FALSE
@@ -336,7 +334,6 @@
 	name = "sliced bread"
 	desc = "A bit of comfort to start your dae."
 	icon_state = "loaf_slice"
-	faretype = FARE_POOR
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast
 	bitesize = 2
@@ -382,7 +379,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast
 	name = "toast"
 	icon_state = "toast"
-	faretype = FARE_NEUTRAL
 	tastes = list("crispy bread" = 1)
 	cooked_type = null
 	bitesize = 2
@@ -405,7 +401,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast/buttered
 	name = "buttered toast"
 	icon_state = "toast_butter"
-	faretype = FARE_NEUTRAL
 	tastes = list("butter" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 
@@ -413,35 +408,30 @@
 /obj/item/reagent_containers/food/snacks/rogue/sandwich
 	desc = "A delightful piece of heaven, in every slice."
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
-	faretype = FARE_NEUTRAL
 	rotprocess = 30 MINUTES
 	eat_effect = /datum/status_effect/buff/foodbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salami
 	tastes = list("salumoi" = 1,"bread" = 1)
 	name = "salumoi bread"
-	faretype = FARE_NEUTRAL
 	icon_state = "bread_salami"
 	foodtype = GRAIN | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese
 	tastes = list("cheese" = 1,"bread" = 1)
 	name = "cheese bread"
-	faretype = FARE_NEUTRAL
 	icon_state = "bread_cheese"
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/egg
 	tastes = list("cheese" = 1,"cackleberry" = 1)
 	name = "cackleberry toast"
-	faretype = FARE_NEUTRAL
 	icon_state = "bread_egg"
 	foodtype = GRAIN | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salo
 	tastes = list("salty fat" = 1)
 	name = "salo bread"
-	faretype = FARE_IMPOVERISHED
 	icon_state = "bread_salo"
 	foodtype = GRAIN | MEAT
 
@@ -453,7 +443,6 @@
 	desc = "Portable, quaint and entirely consumable"
 	icon_state = "bun"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
-	faretype = FARE_POOR
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1)
 	bitesize = 2
@@ -489,7 +478,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/cheesebun
 	name = "fresh cheese bun"
 	desc = "A treat from the Grenzelhoft kitchen."
-	faretype = FARE_FINE
 	icon_state = "cheesebun"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION+FRESHCHEESE_NUTRITION)
 	w_class = WEIGHT_CLASS_NORMAL
@@ -502,7 +490,6 @@
 	name = "frybread"
 	desc = "Flatbread fried at high heat with butter to give it a crispy outside. Staple of the elven kitchen."
 	icon_state = "frybread"
-	faretype = FARE_FINE
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("crispy bread with a soft inside" = 1)
 	w_class = WEIGHT_CLASS_NORMAL
@@ -534,7 +521,6 @@
 	name = "biscuit"
 	desc = "A treat made for a wretched dog like you."
 	icon_state = "biscuit"
-	faretype = FARE_POOR
 	filling_color = "#F0E68C"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR)
 	w_class = WEIGHT_CLASS_NORMAL
@@ -556,7 +542,6 @@
 	desc = "The next best thing since sliced bread, naturally, made by a dwarf."
 	icon_state = "prezzel"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
-	faretype = FARE_FINE
 	tastes = list("crispy butterdough" = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
@@ -607,7 +592,6 @@
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_AVERAGE)
-	faretype = FARE_NEUTRAL
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1,"dried fruit" = 1)
 	slice_batch = FALSE
@@ -640,7 +624,6 @@
 	icon_state = "raisinbread_slice"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
 	w_class = WEIGHT_CLASS_NORMAL
-	faretype = FARE_NEUTRAL
 	cooked_type = null
 	tastes = list("spelt" = 1,"dried fruit" = 1)
 	bitesize = 2
@@ -709,7 +692,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cake"=1, "delicious honeyfrosting"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
-	faretype = FARE_LAVISH
 	slice_batch = TRUE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
@@ -721,7 +703,6 @@
 	icon_state = "honeycakeslice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
-	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
@@ -754,7 +735,6 @@
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/ccakeslice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
-	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cake"=1, "creamy cheese"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
@@ -770,7 +750,6 @@
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	w_class = WEIGHT_CLASS_NORMAL
-	faretype = FARE_NEUTRAL
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 2
@@ -781,7 +760,6 @@
 	icon_state = "cheesecakeslice_plated"
 	rotprocess = SHELFLIFE_EXTREME
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1)
-	faretype = FARE_FINE
 	trash = /obj/item/cooking/platter
 
 /* maybe split up spider honey cake WIP

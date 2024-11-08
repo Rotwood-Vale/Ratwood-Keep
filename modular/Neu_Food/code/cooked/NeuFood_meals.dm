@@ -13,8 +13,6 @@
 	tastes = list("steak" = 1, "pepper" = 1)
 	name = "peppersteak"
 	desc = "Roasted flesh flanked with a generous coating of ground pepper for intense flavor."
-	faretype = FARE_FINE
-	portable = FALSE
 	icon_state = "peppersteak"
 	foodtype = MEAT
 	warming = 5 MINUTES
@@ -27,8 +25,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_LAVISH
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -44,8 +40,6 @@
 	tastes = list("steak" = 1, "onions" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
 	foodtype = MEAT
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	warming = 5 MINUTES
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/foodbuff
@@ -56,8 +50,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_FINE
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -71,8 +63,6 @@
 	tastes = list("savory sausage" = 1, "cabbage" = 1)
 	name = "wiener on cabbage"
 	desc = "A rich and heavy meal, a perfect ration for a soldier on the march."
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	icon_state = "wienercabbage"
 	foodtype = VEGETABLES | MEAT
 	warming = 3 MINUTES
@@ -84,8 +74,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -99,8 +87,6 @@
 	tastes = list("savory sausage" = 1, "potato" = 1)
 	name = "wiener on tato"
 	desc = "Stout and nourishing."
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	icon_state = "wienerpotato"
 	foodtype = VEGETABLES | MEAT
 	warming = 3 MINUTES
@@ -127,8 +113,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -156,8 +140,6 @@
 	tastes = list("savory sausage" = 1, "fried onions" = 1)
 	name = "wiener and onions"
 	desc = "Stout and flavourful."
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	icon_state = "wieneronion"
 	foodtype = VEGETABLES | MEAT
 	warming = 3 MINUTES
@@ -184,8 +166,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -214,8 +194,6 @@
 	tastes = list("savory sausage" = 1, "potato" = 1)
 	name = "wiener meal"
 	desc = "Stout and nourishing."
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	icon_state = "wpotonion"
 	foodtype = VEGETABLES | MEAT
 	warming = 3 MINUTES
@@ -239,8 +217,6 @@
 	tastes = list("frybird" = 1, "tato" = 1)
 	name = "frybird with a tato"
 	desc = "Hearty, comforting and rich - Alleged favorite dish of Ravox."
-	faretype = FARE_FINE
-	portable = FALSE
 	icon_state = "frybirdtato"
 	foodtype = VEGETABLES | MEAT
 	warming = 3 MINUTES
@@ -252,8 +228,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_LAVISH
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -267,8 +241,6 @@
 	tastes = list("fried cackleberries" = 1, "cheese" = 1)
 	name = "valerian omelette"
 	desc = "Fried cackleberries on a bed of half-melted cheese, a dish from distant lands."
-	faretype = FARE_FINE
-	portable = FALSE
 	icon_state = "omelette"
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = SHELFLIFE_DECENT
@@ -278,8 +250,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_FINE
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -293,8 +263,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_POOR // carp sucks
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -307,8 +275,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -321,8 +287,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_NEUTRAL
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -335,8 +299,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_FINE // eel's pretty tasty
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -351,8 +313,6 @@
 	slices_num = 0
 	name = "roast bird"
 	icon_state = "roastchicken"
-	faretype = FARE_FINE
-	portable = FALSE
 	tastes = list("tasty birdmeat" = 1)
 	cooked_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
@@ -393,8 +353,6 @@
 	desc = "A plump bird, roasted perfection, spiced to taste divine."
 	eat_effect = /datum/status_effect/buff/foodbuff
 	name = "spiced bird-roast"
-	faretype = FARE_LAVISH
-	portable = FALSE
 	color = "#ffc0c0"
 	tastes = list("spicy birdmeat" = 1)
 
@@ -403,8 +361,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_LAVISH
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -419,8 +375,6 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_IMPOVERISHED
-	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
