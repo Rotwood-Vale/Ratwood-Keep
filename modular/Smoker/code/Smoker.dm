@@ -21,7 +21,7 @@
 	return
 
 /obj/item/clothing/mask/cigarette/rollie/snek
-	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/consumable/honey = 30, /datum/reagent/toxin/venom = 10) //honey will give heal. it is NOT great 55% chance per unit tick to heal 1brute,burn,tox. high end perfect rolls 30hp. unlikely. degrades into sugar (chance) which has a chance to degrade into nutrients. simulates appetite surpressant effect.
+	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/consumable/honey = 3, /datum/reagent/toxin/venom = 10) //honey will give heal. it is NOT great 55% chance per unit tick to heal 1brute,burn,tox. high end perfect rolls 30hp. unlikely. degrades into sugar (chance) which has a chance to degrade into nutrients. simulates appetite surpressant effect.
 
 /obj/item/reagent_containers/hypospray/medipen/sty/snekbt
 	name = "Snake Bite"
