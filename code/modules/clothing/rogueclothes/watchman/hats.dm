@@ -7,3 +7,4 @@
 	item_state = "citywatch_helmet"
 	smeltresult = /obj/item/ingot/steel
 	body_parts_covered = HEAD|HAIR|EARS
+	flags_inv = HIDEHAIR
