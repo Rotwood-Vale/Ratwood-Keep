@@ -109,6 +109,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
 	tastes = list("fish" = 1)
 	name = "cooked fish"
+	faretype = FARE_POOR
 	desc = "A charred fish, crisped to perfection."
 	icon_state = "carpcooked"
 	foodtype = MEAT
@@ -117,6 +118,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
 	icon_state = "carpcooked"
+	faretype = FARE_IMPOVERISHED
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
 	icon_state = "clownfishcooked"
@@ -126,3 +128,4 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
 	icon_state = "eelcooked"
+	faretype = FARE_NEUTRAL

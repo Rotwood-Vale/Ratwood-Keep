@@ -84,6 +84,7 @@
 	foodtype = FRUIT
 	tastes = list("apple" = 1)
 	trash = /obj/item/trash/applecore
+	faretype = FARE_POOR
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	slot_flags = ITEM_SLOT_HEAD
 	worn_x_dimension = 64
@@ -137,6 +138,7 @@
 	tastes = list("berry" = 1)
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	faretype = FARE_POOR
 	dropshrink = 0.75
 	var/color_index = "good"
 	can_distill = TRUE
