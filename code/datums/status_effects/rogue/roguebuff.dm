@@ -300,8 +300,6 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/fortify
 	duration = 1 MINUTES
 
-#undef MIRACLE_HEALING_FILTER
-
 /atom/movable/screen/alert/status_effect/buff/longstrider
 	name = "Longstrider"
 	desc = "I can easily walk through rough terrain."
@@ -341,3 +339,5 @@
 	. = ..()
 	to_chat(owner, span_warning("My feeble mind muddies my warcraft once more."))
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+
+#undef MIRACLE_HEALING_FILTER
