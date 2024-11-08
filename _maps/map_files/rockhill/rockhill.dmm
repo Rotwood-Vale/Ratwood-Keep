@@ -635,6 +635,10 @@
 /obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"aCf" = (
+/obj/structure/roguemachine/drugmachine,
+/turf/closed/mineral/rogue,
+/area/rogue/indoors/town/tavern)
 "aCu" = (
 /obj/machinery/light/roguestreet/orange/walllamp{
 	dir = 8
@@ -772,6 +776,9 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church/chapel)
+"aIs" = (
+/turf/open/water/swamp/deep,
+/area/rogue/indoors/town/tavern)
 "aIN" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -5958,9 +5965,16 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "fqC" = (
-/obj/structure/roguemachine/drugmachine,
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/rtfield)
+/obj/item/candle/yellow/lit{
+	pixel_x = 2;
+	pixel_y = 16
+	},
+/obj/item/candle/yellow/lit{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/tavern)
 "fqH" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/machinery/light/rogue/torchholder{
@@ -7443,6 +7457,10 @@
 "gIg" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
+"gIh" = (
+/obj/item/reagent_containers/glass/bottle,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/tavern)
 "gIk" = (
 /obj/structure/roguemachine/scomm/l,
 /turf/open/floor/rogue/woodturned,
@@ -8059,9 +8077,10 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/bog)
 "hmK" = (
-/obj/structure/roguemachine/drugmachine,
-/turf/closed/wall/mineral/rogue/wooddark/horizontal,
-/area/rogue/indoors/town/shop)
+/obj/effect/decal/cleanable/cobweb,
+/obj/item/reagent_containers/food/snacks/deadmouse,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/tavern)
 "hmN" = (
 /obj/structure/mineral_door/wood/red{
 	lockid = "nightmaiden";
@@ -9650,6 +9669,10 @@
 	dir = 8
 	},
 /turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/tavern)
+"iNv" = (
+/obj/machinery/light/rogue/campfire/densefire,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town/tavern)
 "iNx" = (
 /obj/structure/closet/crate/coffin,
@@ -13246,6 +13269,11 @@
 "mdo" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
+"mdq" = (
+/obj/item/natural/poo,
+/obj/item/natural/poo/horse,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/tavern)
 "mdA" = (
 /obj/structure/stairs{
 	dir = 8
@@ -15233,6 +15261,17 @@
 	icon_state = "newstone2"
 	},
 /area/rogue/indoors/town/church)
+"nSA" = (
+/obj/item/reagent_containers/glass/bowl{
+	pixel_x = -4;
+	pixel_y = -30
+	},
+/obj/item/candle/yellow/lit{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/tavern)
 "nTb" = (
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/outdoors/bog)
@@ -15348,6 +15387,10 @@
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
 	},
+/area/rogue/indoors/town/tavern)
+"nXs" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town/tavern)
 "nXC" = (
 /obj/structure/closet/crate/chest{
@@ -15573,9 +15616,9 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "ofk" = (
-/obj/structure/roguemachine/drugmachine,
-/turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/outdoors/town)
+/obj/structure/bed/rogue/shit,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/tavern)
 "ofl" = (
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/outdoors/town/roofs)
@@ -17774,9 +17817,14 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
 "qbj" = (
-/obj/structure/roguemachine/drugmachine,
-/turf/closed/wall/mineral/rogue/stonebrick,
-/area/rogue/under/town/sewer)
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/item/reagent_containers/syringe{
+	pixel_y = -34;
+	pixel_x = -11
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/tavern)
 "qbw" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -18777,6 +18825,9 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
+"qZB" = (
+/turf/open/water/cleanshallow,
+/area/rogue/indoors/town/tavern)
 "qZP" = (
 /obj/structure/closet/crate/chest/crafted,
 /turf/open/floor/rogue/ruinedwood,
@@ -21201,6 +21252,9 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"tmm" = (
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/town/sewer)
 "tmE" = (
 /obj/structure/roguewindow/openclose{
 	dir = 1
@@ -21778,6 +21832,10 @@
 	dir = 8
 	},
 /area/rogue/indoors)
+"tNn" = (
+/obj/structure/flora/roguegrass/water/reeds,
+/turf/open/water/cleanshallow,
+/area/rogue/indoors/town/tavern)
 "tNr" = (
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/ruinedwood{
@@ -22475,6 +22533,10 @@
 /obj/item/rope/chain,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"uqG" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/tavern)
 "uqR" = (
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town)
@@ -22648,6 +22710,10 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
+"uyL" = (
+/obj/structure/glowshroom,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/town/sewer)
 "uza" = (
 /obj/structure/bed/rogue,
 /obj/effect/landmark/start/hostage,
@@ -183982,7 +184048,7 @@ lrs
 rRb
 rRb
 rRb
-qbj
+rRb
 rRb
 rRb
 rRb
@@ -190815,10 +190881,10 @@ nRZ
 cEg
 xyL
 csO
-hac
-hac
-hac
-hac
+uqG
+ofk
+gIh
+cVS
 orb
 wNn
 wNn
@@ -191217,10 +191283,10 @@ nRZ
 nRZ
 xyL
 orb
-hac
-hac
-hac
-hac
+ofk
+iNv
+cVS
+nXs
 csO
 csO
 csO
@@ -191619,11 +191685,11 @@ csO
 csO
 csO
 orb
-hac
-hac
-hac
-hac
-hac
+nSA
+cVS
+cVS
+cVS
+hmK
 orb
 txS
 wxX
@@ -192020,12 +192086,12 @@ lrs
 lrs
 lrs
 lrs
-hac
-hac
-hac
-hac
-hac
-hac
+aCf
+cVS
+cVS
+cVS
+qZB
+aIs
 csO
 wxX
 wxX
@@ -192422,12 +192488,12 @@ lrs
 lrs
 lrs
 lrs
-hac
-hac
-hac
-hac
-hac
-hac
+qbj
+cVS
+cVS
+cVS
+tNn
+aIs
 csO
 aFW
 juC
@@ -192826,10 +192892,10 @@ lrs
 lrs
 hac
 hac
-hac
-hac
-hac
-hac
+fqC
+cVS
+mdq
+qZB
 csO
 csO
 lnG
@@ -193228,10 +193294,10 @@ lrs
 lrs
 hac
 hac
-hac
-hac
-hac
-hac
+cVS
+cVS
+cVS
+tNn
 csO
 csO
 orb
@@ -193630,8 +193696,8 @@ rRb
 rRb
 rRb
 rRb
-rRb
-rRb
+tmm
+uyL
 rRb
 rRb
 rRb
@@ -291833,7 +291899,7 @@ lVe
 lVe
 qvR
 qvR
-fqC
+fDB
 fxx
 fxx
 fxx
@@ -298531,7 +298597,7 @@ mwE
 mwE
 mwE
 mwE
-ofk
+esR
 mwE
 wbg
 wbg
@@ -298587,7 +298653,7 @@ pKQ
 xut
 hUt
 hUt
-hmK
+fmR
 wVI
 wbg
 wbg
