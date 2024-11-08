@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
 
-	if(stat == DEAD)
+	if(src.stat == DEAD)
 		return
 
 	// 3 seconds cooldown
@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	set name = "Communicate"
 	set category = "ZIZO"
 
-	if(stat == DEAD)
+	if(src.stat == DEAD)
 		return
 
 	// 5 seconds cooldown
@@ -528,7 +528,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(H == user)
 			return
 		if(iszizocultist(H))
-			to_chat(H.mind, span_danger("\"I'm not gonna let my strongest follower become a mindless brute.\""))
+			to_chat(user.mind, span_danger("\"I'm not gonna let my strongest follower become a mindless brute.\""))
 			return
 		if(H.mind)
 			H.mind.special_role = "Cult Summon"
@@ -943,9 +943,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /proc/fleshform(var/mob/user, var/turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		if(iszizocultist(H))
-			to_chat(H.mind, span_danger("\"I'm not letting my strongest follower become a mindless brute.\""))
+			to_chat(user.mind, span_danger("\"I'm not letting my strongest follower become a mindless brute.\""))
 			return
-		to_chat(user.mind, span_danger("SOON I WILL BECOME A HIGHER FORM!!!"))
+		to_chat(H.mind, span_danger("SOON I WILL BECOME A HIGHER FORM!!!"))
 		sleep(5 SECONDS)
 		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood(H)
 		trl.forceMove(H)
