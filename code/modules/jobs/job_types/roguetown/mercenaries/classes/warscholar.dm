@@ -6,7 +6,6 @@
 	outfit = /datum/outfit/job/roguetown/mercenary/warscholar
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/warscholar.ogg'
-	allowed_patrons = list(/datum/patron/old_god)
 	
 /datum/outfit/job/roguetown/mercenary/warscholar
 	var/detailcolor
