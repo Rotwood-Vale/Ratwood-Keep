@@ -70,6 +70,10 @@
 
 
 /proc/ping_sound(atom/A)
+	if(ishuman(A))
+		var/mob/living/carbon/human/sneaker = A
+		if(HAS_TRAIT(sneaker,TRAIT_LIGHT_STEP))
+			return FALSE //Should stop people with Light Step from appearing on FOV cones. Won't stop their actions (stepping on branches) from alerting people. test with caution.
 	var/image/I = image(icon = 'icons/effects/effects.dmi', loc = A, icon_state = "emote", layer = ABOVE_MOB_LAYER)
 	if(!I)
 		return
