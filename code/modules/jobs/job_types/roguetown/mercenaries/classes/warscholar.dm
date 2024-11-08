@@ -100,6 +100,14 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/summonrogueweapon/bladeofpsydon)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+
+			head = /obj/item/clothing/head/roguetown/roguehood/pontifex
+			gloves = /obj/item/clothing/gloves/roguetown/angle/pontifex
+			head = /obj/item/clothing/head/roguetown/roguehood/pontifex
+			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex
+			shirt = /obj/item/clothing/suit/roguetown/shirt/robe/pointfex
+			pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex
+
 		if("Vizier")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a Naledi Vizier, a creacher of two worlds. Likely of a learned or upper class background, you are decently skilled in both combat and the arcane, but an expert at neither."))
@@ -126,12 +134,21 @@
 			r_hand = /obj/item/rogueweapon/sword/long/rider
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/magered
 
-			head = /obj/item/clothing/head/roguetown/roguehood/pontifex
-			gloves = /obj/item/clothing/gloves/roguetown/angle/pontifex
-			head = /obj/item/clothing/head/roguetown/roguehood/pontifex
-			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex
-			shirt = /obj/item/clothing/suit/roguetown/shirt/robe/pointfex
-			pants = /obj/item/clothing/under/roguetown/trou/leather/pontifex
+			mask = /obj/item/clothing/mask/rogue/lordmask/tarnished
+			belt = /obj/item/storage/belt/rogue/leather
+			beltl = /obj/item/flashlight/flare/torch
+			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+			pants = /obj/item/clothing/under/roguetown/trou/leather
+			shoes = /obj/item/clothing/shoes/roguetown/boots
+			gloves = /obj/item/clothing/gloves/roguetown/angle
+			backr = /obj/item/storage/backpack/rogue/satchel/black
+			head = /obj/item/clothing/head/roguetown/roguehood/shalal/black
+			cloak = /obj/item/clothing/cloak/half
+			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
+				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+			else
+				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord // FUCK YOU ZETH, WHY DOESN'T THE ARMING JACKET GET WOMEN SPRITES..
+
 
 	backpack_contents = list(/obj/item/roguekey/mercenary,/obj/item/rogueweapon/huntingknife)
 
