@@ -48,11 +48,12 @@ All original code and assets of this repository are under the [GNU Affero Genera
 
 ## Ratwood - Proprietary
 
-The following code and assets are under a custom proprietary license as per original author's wishes.
+The following code and assets are under a custom proprietary license as per author or client's wishes.
 
-| Name                 | Reference                                           | Author   |   License  |
-|----------------------|-----------------------------------------------------|----------|------------|
-| Sprites              | sprite.dmi                                          | John Doe | license.txt|
+| Reference                                           | Author   |   License  |
+|-----------------------------------------------------|----------|------------|
+| sprite.dmi                                          | John Doe | license.txt|
+| [Assets](https://github.com/Gyrandola/Rotwood-Vale/Ratwood-Keep/blob/new-watchman/icons/roguetown/clothing/licensed-infraredbaron)                                        | Infrared Baron | [LICENSE.md](https://github.com/Rotwood-Vale/Ratwood-Keep/blob/new-watchman/icons/roguetown/clothing/licensed-infraredbaron/LICENSE.md)|
 
 
 ## TG

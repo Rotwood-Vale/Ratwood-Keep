@@ -2,8 +2,8 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "citywatch armor"
 	desc = ""
-	icon = 'icons/roguetown/clothing/citywatch/armor.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/citywatch/onmob/armor.dmi'
+	icon = 'icons/roguetown/clothing/licensed-infraredbaron/citywatch/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/citywatch/onmob/armor.dmi'
 	icon_state = "citywatch"
 	item_state = "citywatch"
 	blocksound = PLATEHIT
