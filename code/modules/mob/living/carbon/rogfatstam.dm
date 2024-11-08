@@ -51,6 +51,8 @@
 /mob/living/rogfat_add(added as num, emote_override, force_emote = TRUE) //call update_rogfat here and set last_fatigued, return false when not enough fatigue left
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
+	if(HAS_TRAIT(src, TRAIT_FORTITUDE))
+		added = added * 0.5
 	rogfat = CLAMP(rogfat+added, 0, maxrogfat)
 	if(added > 0)
 		rogstam_add(added * -1)

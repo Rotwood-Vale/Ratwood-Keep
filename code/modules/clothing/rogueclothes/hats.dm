@@ -1188,3 +1188,17 @@
 	max_integrity = 425
 	smeltresult = /obj/item/ingot/blacksteel
 	smelt_bar_num = 2
+
+/obj/item/clothing/head/roguetown/roguehood/hierophant
+	name = "hierophant's pashmina"
+	desc = "A thick hood that covers one's entire head, should they desire, or merely acts as a scarf otherwise."
+	icon_state = "deserthood"
+	item_state = "deserthood"
+	naledicolor = TRUE
+
+/obj/item/clothing/head/roguetown/roguehood/pontifex
+	name = "pontifex's pashmina"
+	desc = "A slim hood with thin, yet dense fabric. Stretchy and malleable, allowing for full flexibility and mobility."
+	icon_state = "monkhood"
+	item_state = "monkhood"
+	naledicolor = TRUE

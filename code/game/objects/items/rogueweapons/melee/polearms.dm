@@ -486,3 +486,8 @@
 	chargetime = 5
 	recovery = 20
 	clickcd = 10
+
+/obj/item/rogueweapon/woodstaff/naledi
+	name = "naledian warstaff"
+	desc = "A staff carrying the crescent moon of Psydon's knowledge, as well as the black and gold insignia of the war scholars."
+	icon_state = "naledistaff"

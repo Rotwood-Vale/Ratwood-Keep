@@ -296,3 +296,10 @@
 	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
 	resistance_flags = FIRE_PROOF
+
+/obj/item/clothing/under/roguetown/trou/leather/pontifex
+	name = "pontifex's chaqchur"
+	desc = "A handmade pair of baggy, thin leather pants. They end in a tight stocking around the calf, ballooning out around the thigh."
+	icon_state = "monkpants"
+	item_state = "monkpants"
+	naledicolor = TRUE

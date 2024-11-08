@@ -217,7 +217,9 @@
 		/obj/effect/proc_holder/spell/invoked/invisibility,
 		/obj/effect/proc_holder/spell/invoked/blindness,
 		/obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e,
-		/obj/effect/proc_holder/spell/invoked/frostbite5e
+		/obj/effect/proc_holder/spell/invoked/frostbite5e,
+		/obj/effect/proc_holder/spell/invoked/guidance,
+		/obj/effect/proc_holder/spell/invoked/fortitude
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
@@ -917,6 +919,74 @@
 	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
 	. = ..()
 
+
+/obj/effect/proc_holder/spell/invoked/fortitude
+	name = "Fortitude"
+	desc = "Harden one's humors to the fatigues of the body."
+	cost = 2
+	xp_gain = TRUE
+	releasedrain = 60
+	chargedrain = 1
+	chargetime = 4 SECONDS
+	charge_max = 5 MINUTES
+	warnie = "spellwarning"
+	school = "transmutation"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+
+/obj/effect/proc_holder/spell/invoked/fortitude/cast(list/targets, mob/user)
+	var/atom/A = targets[1]
+	if(!isliving(A))
+		revert_cast()
+		return
+
+	var/mob/living/spelltarget = A
+	spelltarget.apply_status_effect(/datum/status_effect/buff/fortitude)
+	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
+
+	if(spelltarget != user)
+		user.visible_message("[user] mutters an incantation and [spelltarget] briefly shines green.")
+	else
+		user.visible_message("[user] mutters an incantation and they briefly shine green.")
+
+	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/guidance
+	name = "Guidance"
+	desc = "Makes one's hand travel true, blessing them with arcyne luck in combat."
+	cost = 2
+	xp_gain = TRUE
+	releasedrain = 60
+	chargedrain = 1
+	chargetime = 4 SECONDS
+	charge_max = 10 MINUTES
+	warnie = "spellwarning"
+	school = "transmutation"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+
+/obj/effect/proc_holder/spell/invoked/fortitude/cast(list/targets, mob/user)
+	var/atom/A = targets[1]
+	if(!isliving(A))
+		revert_cast()
+		return
+
+	var/mob/living/spelltarget = A
+	spelltarget.apply_status_effect(/datum/status_effect/buff/guidance)
+	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
+
+	if(spelltarget != user)
+		user.visible_message("[user] mutters an incantation and [spelltarget] briefly shines orange.")
+	else
+		user.visible_message("[user] mutters an incantation and they briefly shine orange.")
+
+	return TRUE
 
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK

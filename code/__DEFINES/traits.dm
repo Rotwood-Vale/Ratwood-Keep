@@ -162,6 +162,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_XYLIX = span_info("I know how to speak in code that only fellow tricksters can understand."),
 	TRAIT_CABAL = span_info("In secret, I have studied the ways of Her ascension, and know of others of the Cabal."),
 	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED! I FEEL THE STRENGTH IN OTHERS WHO ARE THE SAME."),
+	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
+	TRAIT_GUIDANCE = span_info("Arcyne assistance guides my weapons."),
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others.")
 ))
 
@@ -392,6 +394,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define INNATE_TRAIT "innate"
 
 // unique trait sources, still defines
+#define TRAIT_GUIDANCE "guidance"
+#define TRAIT_FORTITUDE "fortitude"
 #define TRAIT_LONGSTRIDER "longstrider"
 #define TRAIT_DARKVISION "darkvision"
 #define CLONING_POD_TRAIT "cloning-pod"

@@ -3595,6 +3595,7 @@
 #include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\gethsmane.dm"
 #include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\newminotaur.dm"
 #include "modular_azurepeak\code\modules\spells\orison.dm"
+#include "modular_azurepeak\code\modules\spells\warscholar.dm"
 #include "modular_azurepeak\code\modules\spells\pantheon\divine\necra.dm"
 #include "modular_azurepeak\code\modules\spells\pantheon\inhumen\zizo.dm"
 #include "modular_azurepeak\statpacks\agile.dm"
