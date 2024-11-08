@@ -13204,6 +13204,10 @@
 /obj/structure/fluff/walldeco/stone,
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/tavern)
+"lSG" = (
+/obj/structure/stairs/stone,
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors)
 "lTg" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -14820,6 +14824,15 @@
 /obj/item/clothing/neck/roguetown/psicross/noc,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"nsi" = (
+/obj/structure/closet/crate/chest{
+	lockid = "bog_gatehouse"
+	},
+/obj/item/flashlight/flare/torch/lantern,
+/obj/item/flashlight/flare/torch/lantern,
+/obj/item/flashlight/flare/torch/lantern,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "nsw" = (
 /obj/structure/stairs/stone{
 	dir = 4
@@ -20037,9 +20050,9 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "rSg" = (
-/obj/item/roguebin/trash,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/shelter/rtfield)
 "rSm" = (
 /obj/structure/toilet,
 /obj/machinery/light/rogue/wallfire/candle,
@@ -21433,6 +21446,10 @@
 /obj/effect/landmark/start/druid,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
+"tgV" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/shelter/rtfield)
 "tgZ" = (
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
@@ -280199,7 +280216,7 @@ pAV
 qvR
 dOu
 dOu
-elB
+tgV
 dOu
 dOu
 dOu
@@ -281810,7 +281827,7 @@ dOu
 dOu
 qKF
 qKF
-dOu
+rSg
 elB
 qvR
 uaL
@@ -282202,7 +282219,7 @@ pAV
 fss
 wlD
 wlD
-qli
+nsi
 pAV
 pAV
 wlD
@@ -283820,7 +283837,7 @@ dOu
 dOu
 iLB
 iLB
-elB
+tgV
 dOu
 fxx
 fxx
@@ -287438,7 +287455,7 @@ dOu
 elB
 dOu
 iWZ
-dOu
+rSg
 qKF
 qvR
 qvR
@@ -289045,7 +289062,7 @@ pAV
 elB
 elB
 elB
-wSn
+mHb
 qvR
 uaL
 uaL
@@ -291055,7 +291072,7 @@ dOu
 dOu
 dOu
 qKF
-uaL
+fTe
 qvR
 qvR
 uaL
@@ -386723,7 +386740,7 @@ pAV
 oMt
 wlD
 wlD
-wlD
+oMt
 pAV
 qbG
 qbG
@@ -389132,10 +389149,10 @@ erZ
 erZ
 erZ
 pAV
-rSg
+oMt
 wlD
 wlD
-wlD
+oMt
 pAV
 qbG
 qbG
@@ -485618,7 +485635,7 @@ fVQ
 jCh
 jCh
 jCh
-xbD
+lSG
 fVQ
 sZI
 qbG
@@ -486020,7 +486037,7 @@ fVQ
 jCh
 jCh
 vrf
-xbD
+lSG
 fVQ
 ljc
 sYr
