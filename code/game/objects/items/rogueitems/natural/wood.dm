@@ -55,6 +55,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
+	metalizer_result = /obj/item/rogueore/copper
 
 /obj/item/natural/wood/plank
 	name = "wood plank"
@@ -64,6 +65,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ash
 	bundletype = /obj/item/natural/bundle/plank
+	metalizer_result = /obj/item/rogueore/tin
 
 
 /obj/item/natural/bundle/plank
