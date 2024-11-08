@@ -74,7 +74,8 @@
 
 /obj/item/reagent_containers/food/snacks/fish/carp
 	name = "carp"
-	desc = "A majestic scaled fish bearing untold tales."
+	desc = "A mudraking creacher of the river-depths, barely fit for food."
+	faretype = FARE_IMPOVERISHED
 	icon_state = "carp"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
@@ -83,6 +84,7 @@
 	name = "clownfish"
 	desc = "This fish brings vibrant hues to the dark world of Azure Peak."
 	icon_state = "clownfish"
+	faretype = FARE_NEUTRAL
 	sellprice = 40
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
@@ -90,6 +92,7 @@
 /obj/item/reagent_containers/food/snacks/fish/angler
 	name = "anglerfish"
 	desc = "A menacing abyssal predator."
+	faretype = FARE_NEUTRAL
 	icon_state = "angler"
 	sellprice = 15
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
@@ -99,6 +102,7 @@
 	name = "eel"
 	desc = "A sinuous eel that slithers through the dark waters."
 	icon_state = "eel"
+	faretype = FARE_NEUTRAL
 	sellprice = 5
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
@@ -122,9 +126,11 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
 	icon_state = "clownfishcooked"
+	faretype = FARE_POOR
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
 	icon_state = "anglercooked"
+	faretype = FARE_NEUTRAL
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
 	icon_state = "eelcooked"
