@@ -138,7 +138,7 @@
 	tastes = list("berry" = 1)
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-	faretype = FARE_POOR
+	faretype = FARE_NEUTRAL
 	dropshrink = 0.75
 	var/color_index = "good"
 	can_distill = TRUE

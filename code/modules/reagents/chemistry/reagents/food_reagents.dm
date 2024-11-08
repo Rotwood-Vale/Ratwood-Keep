@@ -25,7 +25,7 @@
 	return ..()
 
 /datum/reagent/consumable/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
-	if(method == INGEST)
+	/*if(method == INGEST)
 		if (quality && !HAS_TRAIT(M, TRAIT_AGEUSIA))
 			switch(quality)
 				if (DRINK_NICE)
@@ -38,6 +38,33 @@
 					SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/quality_fantastic)
 				if (FOOD_AMAZING)
 					SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "quality_food", /datum/mood_event/amazingtaste)
+	*/
+	if (method == INGEST && ishuman(M))
+		var/mob/living/carbon/human/HM = M
+		if (quality)
+			switch (quality)
+				if (DRINK_NICE)
+					M.add_stress(/datum/stressevent/wine_okay)
+					if (prob(25))
+						to_chat(M, span_green("Not bad."))
+					if (HM.is_noble() || HM.is_courtier() || HM.is_yeoman())
+						M.remove_stress(/datum/stressevent/noble_bland_food)
+				if (DRINK_GOOD)
+					M.add_stress(/datum/stressevent/wine_good)
+					if (prob(25))
+						to_chat(M, span_green("A fine beverage."))
+					if (HM.is_noble() || HM.is_courtier() || HM.is_yeoman())
+						M.remove_stress_list(list(/datum/stressevent/noble_impoverished_food, /datum/stressevent/noble_bland_food))
+				if (DRINK_VERYGOOD to DRINK_FANTASTIC)
+					if (HM.is_noble() || HM.is_courtier() || HM.is_yeoman())
+						M.add_stress(/datum/stressevent/wine_great)
+						M.remove_stress_list(list(/datum/stressevent/noble_desperate, /datum/stressevent/noble_impoverished_food, /datum/stressevent/noble_bland_food, /datum/stressevent/noble_bad_manners, /datum/stressevent/noble_ate_without_table))
+						if (prob(25))
+							to_chat(M, span_blue("Absolutely exquisite!"))
+					else
+						M.add_stress(/datum/stressevent/wine_good)
+						if (prob(25))
+							to_chat(M, span_green("Complex, but good."))
 	return ..()
 
 /datum/reagent/consumable/nutriment
