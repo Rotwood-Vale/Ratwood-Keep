@@ -226,9 +226,10 @@
 			playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
 			return
 		if(totalvalue >= 501)
-			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I feel the weight of my wealth rend my soul apart!"))
+			target.visible_message(span_danger("[target] is smited with holy light!"), span_userdanger("I feel the weight of my wealth rend my soul apart!"))
 			user.say("Your final transaction! The Free-God rebukes!!")
 			target.Stun(60)
+			target.emote("agony")
 			playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
 			explosion(get_turf(target), light_impact_range = 1, flame_range = 1, smoke = FALSE)
 			return
