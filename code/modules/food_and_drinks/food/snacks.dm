@@ -245,7 +245,7 @@ All foods are distributed among various categories. Use common sense.
 						to_chat(eater, span_red("This is disgusting... how can anyone eat this?"))
 						if (eater.nutrition >= NUTRITION_LEVEL_STARVING)
 							eater.taste(reagents)
-							human_eater.add_nausea(150)
+							human_eater.add_nausea(34)
 							return
 						else
 							if (eater.has_stress_event(/datum/stressevent/noble_impoverished_food))
