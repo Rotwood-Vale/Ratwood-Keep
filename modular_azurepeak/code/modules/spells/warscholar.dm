@@ -1,7 +1,5 @@
 /obj/effect/proc_holder/spell/targeted/touch/summonrogueweapon
-	refresh_on_drop = FALSE
 	castdrain = 25
-	charge_max = 20 SECONDS
 	school = "transmutation"
 
 /obj/effect/proc_holder/spell/targeted/touch/summonrogueweapon/bladeofpsydon
@@ -11,23 +9,20 @@
 	drawmessage = "I imagine the perfect weapon, forged by arcyne knowledge, it's edge flawless. \
 	I feel it in my mind's eye -- but it's just out of reach. I pull away it's shadow, a bad copy, and yet it is one of a great weapon nonetheless... "
 	dropmessage = "Letting go, I watch the blade lose it's form, unable to stay stable without my energy rooting it to this world..."
+	overlay_state = "boundkatar"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/rogueweapon/bladeofpsydon
 
 /obj/item/melee/touch_attack/rogueweapon/bladeofpsydon
 	name = "\improper arcyne push dagger"
-	desc = "This blade throbs, translucent and iridiscent, it's color coated by your soul..."
+	desc = "This blade throbs, translucent and iridiscent, blueish arcyne energies running through it's translucent surface..."
 	catchphrase = null
-	icon = 'icons/mob/roguehudgrabs.dmi'
-	icon_state = "pulling"
-	icon_state = "grabbing_greyscale"
-	color = "#3FBAFD" // this produces green because the icon base is yellow but someone else can fix that if they want
+	icon = 'icons/mob/actions/roguespells.dmi'
+	icon_state = "katar_bound"
 	charges = 20
 	force = 18
 	possible_item_intents = list(/datum/intent/katar/cut, /datum/intent/katar/thrust)
-	icon_state = "katar"
-	icon = 'icons/roguetown/weapons/32.dmi'
 	gripsprite = FALSE
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_HUGE

@@ -244,12 +244,12 @@
 /datum/status_effect/buff/fortitude/on_apply()
 	. = ..()
 	to_chat(owner, span_warning("My body feels lighter..."))
-	ADD_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+	ADD_TRAIT(owner, TRAIT_FORTITUDE, MAGIC_TRAIT)
 
 /datum/status_effect/buff/fortitude/on_remove()
 	. = ..()
 	to_chat(owner, span_warning("The weight of the world rests upon my shoulders once more."))
-	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_FORTITUDE, MAGIC_TRAIT)
 
 /atom/movable/screen/alert/status_effect/buff/guidance
 	name = "Guidance"
