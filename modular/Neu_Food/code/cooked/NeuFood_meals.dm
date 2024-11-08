@@ -307,7 +307,7 @@
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	faretype = FARE_NEUTRAL
+	faretype = FARE_FINE
 	portable = FALSE
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
