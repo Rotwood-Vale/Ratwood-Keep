@@ -71,7 +71,7 @@
 			H.change_stat("intelligence", 3)
 			H.mind.adjust_spellpoints(2)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-			r_hand = /obj/item/rogueweapon/woodstaff
+			r_hand = /obj/item/rogueweapon/woodstaff/naledi
 				
 			
 			head = /obj/item/clothing/head/roguetown/roguehood/hierophant
