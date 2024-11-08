@@ -48,12 +48,41 @@
 /mob/proc/rogfat_add(added as num)
 	return TRUE
 
+/mob/living/proc/rogfat_nutrition_mod(amt)
+	// to simulate exertion, we deduct a mob's nutrition whenever it takes an action that would give us fatigue.
+	var/nutrition_amount = amt // nutrition goes up to 1k at max (but constantly ticks down) so we need to work at a slightly bigger scale
+
+	var/tox_damage = getToxLoss()
+	if (tox_damage >= (maxHealth * 0.2)) // if we have over 20% of our health as toxin damage, add 10% of our toxin damage as base loss
+		nutrition_amount += (tox_damage * 0.1)
+
+	if (rogfat >= (maxrogfat * 0.7)) // if you've spent 70% of your max fatigue, the base amount you lose is doubled
+		nutrition_amount *= 2
+	if (STACON <= 9) // 10% extra nutrition loss for every CON below 9
+		var/low_end_malus = (10 - STACON) * 0.1
+		nutrition_amount *= (1 + low_end_malus)
+	if (STACON >= 11) // 5% less nutrition loss for every CON above 11
+		var/high_end_buff = (STACON - 10) * 0.05
+		nutrition_amount *= (1 - high_end_buff)
+	if (STASTR >= 11) // 7.5% increased nutrition loss for every STR above 11. the gainz don't come cheap
+		var/swole_malus = (10 - STASTR) * 0.075
+		nutrition_amount *= (1 + swole_malus)
+	
+	if (nutrition >= NUTRITION_LEVEL_WELL_FED) // we've only just eaten recently so just flat out reduce the total loss by half
+		nutrition_amount *= 0.5
+
+	if (reagents.has_reagent(/datum/reagent/consumable/nutriment)) // we're still digesting so knock off a tiny bit
+		nutrition_amount *= 0.9
+
+	return nutrition_amount
+
 /mob/living/rogfat_add(added as num, emote_override, force_emote = TRUE) //call update_rogfat here and set last_fatigued, return false when not enough fatigue left
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
 	rogfat = CLAMP(rogfat+added, 0, maxrogfat)
 	if(added > 0)
 		rogstam_add(added * -1)
+		adjust_nutrition(-rogfat_nutrition_mod(added))
 	if(added >= 5)
 		if(rogstam <= 0)
 			if(iscarbon(src))
