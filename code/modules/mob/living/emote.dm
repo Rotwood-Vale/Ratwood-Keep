@@ -1099,6 +1099,7 @@
 	message = "lets out an inspiring battle cry!"
 	emote_type = EMOTE_AUDIBLE
 	message_muffled = "makes a muffled shout!"
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_warcry()
 	set name = "Warcry"
