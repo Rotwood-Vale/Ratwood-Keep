@@ -258,7 +258,7 @@
 /obj/structure/fluff/walldeco/alarm
 	name = "le réveil murmure"
 	icon_state = "alarm"
-	desc = "This est un wall-mounted système d'alarme, designed dans les underdark."
+	desc = "This est un wall-mounted système d'alarme, designed dans les ."
 	pixel_y = 32
 	var/stop_yapping = 0
 	var/onoff = 0
