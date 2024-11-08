@@ -300,11 +300,6 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/fortify
 	duration = 1 MINUTES
 
-/atom/movable/screen/alert/status_effect/buff/longstrider
-	name = "Longstrider"
-	desc = "I can easily walk through rough terrain."
-	icon_state = "buff"
-
 /datum/status_effect/buff/fortitude
 	id = "fortitude"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/fortitude
