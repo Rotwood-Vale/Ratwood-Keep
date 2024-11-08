@@ -14,4 +14,6 @@
 	max_integrity = 250
 	armor_class = ARMOR_CLASS_HEAVY
 	clothing_flags = CANT_SLEEP_IN
+	anvilrepair = /datum/skill/craft/blacksmithing
+	sewrepair = FALSE
 	

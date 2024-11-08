@@ -8,3 +8,5 @@
 	smeltresult = /obj/item/ingot/steel
 	body_parts_covered = HEAD|HAIR|EARS
 	flags_inv = HIDEHAIR
+	anvilrepair = /datum/skill/craft/blacksmithing
+	sewrepair = FALSE
