@@ -2063,6 +2063,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			//Target.ForceContractDisease(Disease)	//Disease removed in favor of simply stopping the heart via heart attack
 			Target.set_heartattack(TRUE)
 			Target.visible_message(span_danger("[Target] clutches at [Target.p_their()] chest as if [Target.p_their()] heart stopped!"))
+			Ripper.log_message("[key_name(Ripper)] ripped [key_name(Target)]'s wings.")
+			Target.log_message("[key_name(Target)]'s wings got ripped by [key_name(Ripper)].")
 
 			//CURSE OF THE SEELIE
 			if(!isdead(Target))
