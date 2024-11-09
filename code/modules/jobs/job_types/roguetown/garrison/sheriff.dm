@@ -20,17 +20,19 @@
 
 /datum/outfit/job/roguetown/sheriff/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/sallet
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/sheriff
+	head = /obj/item/clothing/head/roguetown/helmet/citywatch
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	armor = /obj/item/clothing/suit/roguetown/armor/citywatch
 	neck = /obj/item/clothing/neck/roguetown/gorget
+	gloves = /obj/item/clothing/gloves/roguetown/chain
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	backr = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/rogueweapon/sword/sabre
-	beltr = /obj/item/rogueweapon/mace/cudgel
-	cloak = /obj/item/clothing/cloak/cape/guard
+	beltr = /obj/item/rogueweapon/mace/stunmace
+	cloak = /obj/item/clothing/cloak/cape/black
 	backpack_contents = list(/obj/item/keyring/sheriff = 1)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard)
