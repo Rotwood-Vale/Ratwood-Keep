@@ -34,7 +34,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/roguekey/butcher
+	beltr = /obj/item/roguekey/farm
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	backpack_contents = list(/obj/item/kitchen/spoon, /obj/item/reagent_containers/food/snacks/rogue/truffles)
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
