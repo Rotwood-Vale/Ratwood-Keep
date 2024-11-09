@@ -757,7 +757,7 @@
 	rotprocess = SHELFLIFE_LONG
 
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice/plated
-	icon_state = "cheesecakeslice_plated"
+	icon_state = "cheesecake_slice_plated"
 	rotprocess = SHELFLIFE_EXTREME
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	trash = /obj/item/cooking/platter
