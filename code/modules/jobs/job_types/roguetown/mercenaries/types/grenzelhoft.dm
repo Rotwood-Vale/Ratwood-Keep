@@ -15,7 +15,7 @@
 		/datum/species/tabaxi
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
-	maximum_possible_slots = 10
+	maximum_possible_slots = 9
 	min_pq = 2
 	torch = FALSE
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'

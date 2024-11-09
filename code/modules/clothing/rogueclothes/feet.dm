@@ -13,24 +13,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
-
-/obj/item/clothing/shoes/roguetown/ComponentInitialize()               //////////////////////////////// works like belt for small items. knife, key etc. 2 slots because 2 shoes
-	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 10
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = 2
-
-/obj/item/clothing/shoes/roguetown/dropped(mob/living/carbon/human/user)
-	..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		var/list/things = STR.contents()
-		for(var/obj/item/I in things)
-			STR.remove_from_storage(I, get_turf(src))
-
 /obj/item/clothing/shoes/roguetown/shortboots
 	name = "shortboots"
 	color = "#d5c2aa"

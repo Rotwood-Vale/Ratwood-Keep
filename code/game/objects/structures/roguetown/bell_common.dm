@@ -7,15 +7,11 @@
 	max_integrity = 0
 	anchored = TRUE
 	var/last_ring
-	var/ignore_wallz = TRUE
-
 
 /obj/structure/bell_common/attack_hand(mob/user)
 	if(world.time < last_ring + 15)
 		return
 	user.visible_message(span_info("[user] starts ringing the bell."))
-	playsound(src, 'sound/misc/bell_common.ogg', 100, extrarange = 8)
+	playsound(src, 'sound/misc/bell_common.ogg', 100, extrarange = 8, ignore_walls = TRUE)
 	flick("bell_commonpressed", src)
 	last_ring = world.time
-	
-	
