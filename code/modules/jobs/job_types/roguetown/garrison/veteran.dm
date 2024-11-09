@@ -14,7 +14,6 @@
 	display_order = JDO_VET
 	whitelist_req = TRUE
 
-	outfit = /datum/outfit/job/roguetown/veteran
 	give_bank_account = 35
 	min_pq = 5 //Should...probably actually be a veteran of at least a few weeks before trying to teach others
 	max_pq = null
