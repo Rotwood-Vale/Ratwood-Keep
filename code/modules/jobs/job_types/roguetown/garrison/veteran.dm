@@ -47,7 +47,7 @@
 // Normal veteran start, from the olden days.
 
 /datum/outfit/job/roguetown/vet/battlemaster/pre_equip(mob/living/carbon/human/H)
-	cloak = /obj/item/clothing/cloak/vet
+	cloak = /obj/item/clothing/cloak/half/vet
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -95,7 +95,7 @@
 // No hero, just a normal guy who happened to survive war.
 
 /datum/outfit/job/roguetown/vet/footman/pre_equip(mob/living/carbon/human/H)
-	cloak = /obj/item/clothing/cloak/vet
+	cloak = /obj/item/clothing/cloak/half/vet
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half // Meant to be better than footman, but worse than knight. No heavy armor!!
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
