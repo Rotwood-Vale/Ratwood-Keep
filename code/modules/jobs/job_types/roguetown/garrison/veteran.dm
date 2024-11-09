@@ -394,11 +394,11 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
+		H.change_stat("strength", -2)
 		H.change_stat("perception", 1)
-		H.change_stat("intelligence", 2)
-		H.change_stat("endurance", 1)
+		H.change_stat("intelligence", 3) // you are int-maxxing, especially if you go old.
 		H.change_stat("constitution", 1)
-		H.change_stat("speed", 1) // You get -2 speed from being old.
+		H.change_stat("speed", 1)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
@@ -408,8 +408,8 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-			H.change_stat("speed", 1) // You get -1 speed from being old.
-			H.change_stat("perception", 1)
+			H.change_stat("speed", 1) // You get -2 speed from being old. You are still in the negative stat wise from picking old.
+			H.change_stat("perception", 2) // You get -2 perception from being old. I want you to at least have a positive perception, to represent that you're observant. The highest perception you can get with this is a 13, so I think we'll be okayed.
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_fancy.ogg'
