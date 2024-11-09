@@ -3,7 +3,7 @@
 	flag = MAGEAPPRENTICE
 	department_flag = YOUNGFOLK
 	faction = "Station"
-	total_positions = 4
+	total_positions = 3
 	spawn_positions = 4
 
 	allowed_races = RACES_ALL_KINDS
