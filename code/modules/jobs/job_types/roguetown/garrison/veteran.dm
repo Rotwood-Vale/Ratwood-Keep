@@ -174,7 +174,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4 TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
