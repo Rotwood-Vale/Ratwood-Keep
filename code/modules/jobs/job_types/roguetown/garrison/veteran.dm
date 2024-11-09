@@ -39,7 +39,7 @@
 
 /datum/advclass/veteran/battlemaster
 	name = "Veteran Battlemaster"
-	tutorial = "You have played blademaster and strategist to the Noble-Family for so long that you are a master tactician, something you exploit with potent conviction. Let no man ever forget whose ear you whisper into. You've killed more men with swords than any spymaster could ever claim to."
+	tutorial = "You have served under a hundred masters, some good, some bad. You were a general once. A marshal, a captain. To some a hero, others a monster. Something of the sorts. You made strategies, tactics, new innovations of war. A thousand new ways for one man to kill another. It still keeps you up at night."
 	outfit = /datum/outfit/job/roguetown/vet/battlemaster
 
 	category_tags = list(CTAG_VETERAN)
