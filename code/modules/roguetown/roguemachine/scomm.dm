@@ -450,7 +450,7 @@
 // MATTHIAN SCOMCOIN
 
 /obj/item/mattcoin
-	name = "Ruby Band"
+	name = "rontz ring"
 	icon_state = "mattcoin"
 	desc = "A faded coin, a ruby laid into its center."
 	gripped_intents = null
@@ -467,6 +467,10 @@
 	var/listening = TRUE
 	var/speaking = TRUE
 	sellprice = 0
+
+/obj/item/mattcoin/New(loc, ...)
+	. = ..()
+	name = pick("rontz ring", "gold ring")
 
 /obj/item/mattcoin/pickup(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_COMMIE))
