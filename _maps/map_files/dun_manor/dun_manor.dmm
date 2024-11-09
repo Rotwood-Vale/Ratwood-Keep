@@ -9206,7 +9206,7 @@
 	},
 /area/rogue/indoors)
 "iWh" = (
-/obj/structure/bookcase/random/archive,
+/obj/structure/bookcase/random/adult,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
 "iWT" = (
