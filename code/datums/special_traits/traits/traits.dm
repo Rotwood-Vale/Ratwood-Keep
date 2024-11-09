@@ -167,7 +167,7 @@
 
 /datum/special_trait/psydons_rider
 	name = "Psydon's Drunkest Rider"
-	greet_text = span_notice("I ride!! None of the laws shall stop me for that is Psydon's divine will!")
+	greet_text = span_notice("I ride! None of the laws shall stop me for that is Psydon's divine will!")
 	req_text = "Worship Psydon"
 	allowed_patrons = list(/datum/patron/psydon)
 	weight = 100
