@@ -135,29 +135,28 @@
 		S.set_up(1, 1, front)
 		S.start()
 		return
+	var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
+	if(istype(O, /obj/structure/mineral_door/wood)) //This is to ensure the new door will retain its lock
+		var/obj/structure/mineral_door/wood/I = O
+		var/obj/structure/mineral_door/wood/new_door = new I.metalizer_result(get_turf(I))
+		new_door.locked = I.locked
+		if(I.lockid)
+			new_door.lockid = I.lockid
+		qdel(I)
 	else
-		var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
-		if(istype(O, /obj/structure/mineral_door/wood)) //This is to ensure the new door will retain its lock
-			var/obj/structure/mineral_door/wood/I = O
-			var/obj/structure/mineral_door/wood/new_door = new I.metalizer_result(get_turf(I))
-			new_door.locked = I.locked
-			if(I.lockid)
-				new_door.lockid = I.lockid
-			qdel(I)
-		else
-			var/obj/I = O
-			new I.metalizer_result(get_turf(I))
-			qdel(I)
-		flick(on_icon, src)
-		current_charge -= 1
-		shake_camera(user, 1, 1)
-		playsound(src, 'sound/magic/swap.ogg', 100, TRUE)
-		user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 2))
-		if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
-			misfire(O, user)
-		if(!current_charge)
-			addtimer(CALLBACK(src, PROC_REF(battery_collapse), O, user), rand(5))
-		return
+		var/obj/I = O
+		new I.metalizer_result(get_turf(I))
+		qdel(I)
+	flick(on_icon, src)
+	current_charge -= 1
+	shake_camera(user, 1, 1)
+	playsound(src, 'sound/magic/swap.ogg', 100, TRUE)
+	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 2))
+	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
+		misfire(O, user)
+	if(!current_charge)
+		addtimer(CALLBACK(src, PROC_REF(battery_collapse), O, user), rand(5))
+	return
 
 /obj/item/contraption/smelter
 	name = "portable smelter"
@@ -213,13 +212,12 @@
 		S.set_up(1, 1, front)
 		S.start()
 		return
-	else
-		user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 3))
-		current_charge -= 1
-		flick(on_icon, src)
-		playsound(loc, 'sound/misc/machinevomit.ogg', 50, TRUE)
-		addtimer(CALLBACK(src, PROC_REF(smelt_part2), O, user), 5)
-		return
+	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 3))
+	current_charge -= 1
+	flick(on_icon, src)
+	playsound(loc, 'sound/misc/machinevomit.ogg', 50, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(smelt_part2), O, user), 5)
+	return
 
 /obj/item/contraption/smelter/proc/smelt_part2(obj/O, mob/living/user)
 	var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
