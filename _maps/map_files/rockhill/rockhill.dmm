@@ -7713,6 +7713,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
+"gHC" = (
+/obj/structure/fluff/count_banner,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/bog)
 "gIc" = (
 /obj/structure/fog_wall,
 /turf/closed/mineral/random/rogue,
@@ -12396,6 +12400,13 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
+"kVH" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/obj/structure/fluff/count_banner,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/bog)
 "kWa" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs)
@@ -14344,6 +14355,16 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
+"mFg" = (
+/obj/structure/fluff/railing/fence{
+	dir = 1
+	},
+/obj/structure/fluff/count_banner,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/outdoors/bog)
 "mFs" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/cobweb,
@@ -19143,6 +19164,10 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/roofs)
+"qGY" = (
+/obj/structure/fluff/count_banner,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/bog)
 "qGZ" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/cobble/mossy,
@@ -21718,6 +21743,10 @@
 "sSm" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/outdoors/bog)
+"sSt" = (
+/obj/structure/fluff/count_banner,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/bog)
 "sSS" = (
 /turf/closed/mineral/random/rogue/med,
 /area/rogue/under/cave)
@@ -21973,6 +22002,10 @@
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town)
+"tcG" = (
+/obj/structure/fluff/count_banner,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/bog)
 "tcO" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/closed/mineral/rogue,
@@ -287829,7 +287862,7 @@ wGD
 wGD
 ddL
 wGD
-odi
+tcG
 wGD
 wGD
 wGD
@@ -290636,7 +290669,7 @@ rMf
 sto
 wGD
 wGD
-wGD
+gHC
 rxd
 jDA
 rxd
@@ -291428,7 +291461,7 @@ cvt
 cvt
 cvt
 cvt
-cvt
+kVH
 pwt
 sar
 cvt
@@ -292255,7 +292288,7 @@ lOV
 bxK
 bxK
 pRx
-lOV
+qGY
 lOV
 lOV
 lOV
@@ -293438,7 +293471,7 @@ uuE
 uuE
 uuE
 sIl
-sIl
+sSt
 cgA
 cgA
 sIl
@@ -297061,7 +297094,7 @@ uuE
 uuE
 uuE
 uuE
-aga
+mFg
 ook
 sYx
 sYx
@@ -298286,7 +298319,7 @@ sYx
 rfl
 wGD
 lOV
-lOV
+qGY
 lOV
 lOV
 lOV

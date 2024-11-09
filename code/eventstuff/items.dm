@@ -1,0 +1,20 @@
+/obj/structure/fluff/count_banner
+	name = "pantheon cross"
+	icon_state = "banner_rival"
+	icon = 'code/eventstuff/icons/rivalobjects.dmi'
+	break_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+	density = FALSE
+	anchored = TRUE
+	blade_dulling = DULLING_BASHCHOP
+	layer = BELOW_MOB_LAYER
+	max_integrity = 100
+	sellprice = 40
+	flags_1 = HEAR_1
+	buckleverb = "crucifie"
+	can_buckle = 1
+	buckle_lying = 0
+	breakoutextra = 10 MINUTES
+	dir = NORTH
+	buckle_requires_restraints = 1
+	buckle_prevents_pull = 1

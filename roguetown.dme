@@ -803,6 +803,7 @@
 #include "code\datums\wounds\types\slashes.dm"
 #include "code\datums\wounds\types\special.dm"
 #include "code\eventstuff\ammo.dm"
+#include "code\eventstuff\items.dm"
 #include "code\eventstuff\loadouts\arquebusier.dm"
 #include "code\eventstuff\loadouts\count.dm"
 #include "code\eventstuff\loadouts\crossbowman.dm"
