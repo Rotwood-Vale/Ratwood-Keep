@@ -38,7 +38,7 @@
 			S.name = "veteran cloak ([index])"
 
 /datum/outfit/job/roguetown/veteran
-  cloaks = /obj/item/clothing/cloak/half/vet
+  cloak = /obj/item/clothing/cloak/half/vet
   belt = /obj/item/storage/belt/rogue/leather/black
 
 /datum/advclass/veteran/battlemaster
