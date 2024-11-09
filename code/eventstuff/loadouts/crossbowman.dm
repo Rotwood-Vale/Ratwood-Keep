@@ -8,10 +8,10 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather/black
+	beltl = /obj/item/quiver/bolts
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rope/chain = 1)
-	r_hand = /obj/item/rogueweapon/
-	l_hand = /obj/item/rogueweapon/shield/wood
+	r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	if(H.mind)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
