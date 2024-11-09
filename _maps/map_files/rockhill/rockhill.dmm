@@ -9568,7 +9568,7 @@
 /area/rogue/indoors/town)
 "iDP" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "blacksmith"
+	lockid = "blacksmith"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town/dwarfin)
@@ -11372,7 +11372,7 @@
 /area/rogue/indoors/town/church)
 "kkS" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "seamster"
+	lockid = "seamster"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town)
@@ -20745,7 +20745,7 @@
 /area/rogue/indoors/town/manor)
 "sEb" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "farm"
+	lockid = "farm"
 	},
 /turf/closed/wall/mineral/rogue/wooddark/end{
 	dir = 8
@@ -25281,7 +25281,7 @@
 /area/rogue/indoors/town/bath)
 "wFq" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "towner_blacksmith"
+	lockid = "towner_blacksmith"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town)

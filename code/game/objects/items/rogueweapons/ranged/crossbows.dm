@@ -22,6 +22,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	var/damfactor = 2
+	metalizer_result = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()

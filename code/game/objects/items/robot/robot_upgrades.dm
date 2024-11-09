@@ -6,7 +6,7 @@
 	desc = ""
 	icon = 'icons/obj/module.dmi'
 	icon_state = "cyborg_upgrade"
-	var/locked = FALSE
+	locked = FALSE
 	var/installed = 0
 	var/require_module = 0
 	var/list/module_type = null

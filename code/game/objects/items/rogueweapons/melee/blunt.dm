@@ -256,7 +256,7 @@
 	wdefense = 5
 	wbalance = 0
 	associated_skill = /datum/skill/combat/swords
-	metalizer_result = /obj/item/rogueweapon/sword/iron
+	metalizer_result = /obj/item/rogueweapon/sword/gladius
 
 /obj/item/rogueweapon/mace/wsword/getonmobprop(tag)
 	. = ..()
