@@ -98,6 +98,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
+	metalizer_result = /obj/item/bodypart/l_arm/prosthetic/iron
 
 /obj/item/bodypart/r_arm/prosthetic/wood
 	name = "right wooden arm"
@@ -108,6 +109,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
+	metalizer_result = /obj/item/bodypart/r_arm/prosthetic/iron
 
 /obj/item/bodypart/l_leg/prosthetic/wood
 	name = "left wooden leg"
@@ -119,6 +121,7 @@
 	max_integrity = 300
 	sellprice = 20
 	organ_slowdown = 1.3
+	metalizer_result = /obj/item/bodypart/l_leg/prosthetic/iron
 
 /obj/item/bodypart/r_leg/prosthetic/wood
 	name = "right wooden leg"
@@ -130,6 +133,7 @@
 	max_integrity = 300
 	sellprice = 20
 	organ_slowdown = 1.3
+	metalizer_result = /obj/item/bodypart/r_leg/prosthetic/iron
 
 
 // --------- IRON PROSTHETICS -----------
