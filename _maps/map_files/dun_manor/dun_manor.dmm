@@ -319,7 +319,7 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town)
 "anU" = (
-/obj/structure/roguemachine/scomm,
+/obj/structure/roguemachine/withdraw,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "aoe" = (
@@ -2638,6 +2638,13 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town)
+"cBu" = (
+/obj/effect/decal/cobbleedge{
+	dir = 8
+	},
+/obj/structure/roguemachine/withdraw,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/magician)
 "cBy" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/machinery/light/rogue/wallfire/candle/l,
@@ -9530,6 +9537,7 @@
 /area/rogue/indoors/town/church/chapel)
 "jlQ" = (
 /obj/structure/roguemachine/atm,
+/obj/structure/roguemachine/scomm/l,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "jlY" = (
@@ -23054,8 +23062,10 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town)
 "wvm" = (
+/obj/item/reagent_containers/glass/mortar,
+/obj/item/pestle,
+/obj/structure/table/wood,
 /obj/structure/fluff/railing/border,
-/obj/structure/bookcase/random/adult,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "wvT" = (
@@ -46102,7 +46112,7 @@ gdw
 pNQ
 pNQ
 mag
-agq
+cBu
 agq
 fbQ
 law
