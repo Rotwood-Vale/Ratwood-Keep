@@ -104,7 +104,7 @@
 	cloak = /obj/item/clothing/cloak/half/vet
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass // Meant to be better than footman, but worse than knight. No heavy armor!!
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	pants = /obj/item/clothing/under/roguetown/platelegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
