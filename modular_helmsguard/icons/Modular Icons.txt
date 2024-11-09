@@ -1,0 +1,20 @@
+Because of the large size and complexity of .dmi files which can cause conflicts, all submissions for new icons should follow the following workflow.
+
+Lets say we want to make gold boots.
+
+1. Refer to icons\roguetown\clothing\.
+2. Identify which .dmi file your contribution would ordinarily be part of. For example, a new pair of gold boots would have been added to feet.dmi.
+3. Identify the folder here in modular_helmsguard\icons\obj\items\clothing\ that corresponds to that .dmi file. Here, it is the \feet\ folder.
+4. Create your goldboots.dmi icon within the \feet\ folder. This will prevent it from interfering with someone else making silver boots, etc.
+5. Refer to icons\roguetown\clothing\onmob\.
+6. Identify which .dmi file your contribution would ordinarily be part of, in our case, feet.dmi.
+7. Identify the folder here in modular_helmsguard\icons\obj\items\clothing\onmob\ that corresponds to that .dmi file. In our case, \feet\.
+8. Create your goldboots.dmi icon within the onmob\feet\ folder.
+
+The same flow works for any other icon addition. Check how the icons were organized in Roguetown, create a folder in a duplicate folder structure named for that original .dmi, and create a purpose-made .dmi containing the icons required for your addition.
+
+Although it is some work compared to just using the .dmi that already exists, it breaks the spaghetti code that is hundreds of icons packed into a singular, hard to collaborate-on file.
+
+In some cases, however, we do want to make broad changes to the palette or brightness of the gamespace. This would be the turf .dmi files.
+
+If we wanted to lighten the shade of grey used in pre-existing stonework, we will refer to roguefloors.dmi or similar. If we wish to add a new form of stonework, such as sandstone, we will make a new file, ideally denoted as helms_standstone_floor.dmi and helms_sandstone_wall.dmi. With the helms_ prefix, we avoid conflicts with upstream additions and save ourselves future problems by breaking our .dmi from the big spaghetti files.
