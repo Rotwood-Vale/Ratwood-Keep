@@ -21,7 +21,7 @@
 
 	cmode_music = 'sound/music/combat_guard.ogg'
 
-/datum/job/roguetown/hand/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+/datum/job/roguetown/veteran/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
