@@ -27,23 +27,13 @@
 	icon2 = "leatherroll2"
 	icon2step = 10
 
-/obj/item/natural/cured/masterwork //This has to be a different typepath so recipes dont use this type of leather
-	name = "masterwork cured leather"
-	icon_state = "leather"
-	desc = "A hide piece that has been masterfully cured and may now be used by a talented craftsman."
+/obj/item/natural/cured/essence
+	name = "essense of wilderness"
+	icon_state = "ewilderness"
+	desc = "A mystical essense embued with the power of Dendor. Merely holding it transports one's mind to ancient times."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
-	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sellprice = 20
-	bundletype = /obj/item/natural/bundle/curred_hide/masterwork
-	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(218, 165, 32))
-
-/obj/item/natural/bundle/curred_hide/masterwork
-	name = "bundle of masterwork leather"
-	desc = "A bunch of masterwork leather pieces bundled together."
-	stacktype = /obj/item/natural/cured/masterwork
-	stackname = "masterwork cured leather"
-	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(218, 165, 32))
 
 /obj/item/natural/fur
 	name = "fur"

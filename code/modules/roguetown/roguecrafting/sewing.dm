@@ -465,7 +465,7 @@
 	name = "masterwork leather boots"
 	result = /obj/item/clothing/shoes/roguetown/armor/leather/masterwork
 	reqs = list(/obj/item/clothing/shoes/roguetown/armor/leather = 1,
-				/obj/item/natural/cured/masterwork = 1,
+				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
 
@@ -473,7 +473,7 @@
 	name = "masterwork leather gloves"
 	result = /obj/item/clothing/gloves/roguetown/leather/masterwork
 	reqs = list(/obj/item/clothing/gloves/roguetown/leather = 1,
-				/obj/item/natural/cured/masterwork = 1,
+				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
 
@@ -481,7 +481,7 @@
 	name = "masterwork leather bracers"
 	result = /obj/item/clothing/wrists/roguetown/bracers/leather/masterwork
 	reqs = list(/obj/item/clothing/wrists/roguetown/bracers/leather = 1,
-				/obj/item/natural/cured/masterwork = 1,
+				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
 
@@ -489,7 +489,7 @@
 	name = "masterwork leather coat"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/masterwork
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather = 1,
-				/obj/item/natural/cured/masterwork = 1,
+				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
 
@@ -497,7 +497,7 @@
 	name = "masterwork leather helmet"
 	result = /obj/item/clothing/head/roguetown/helmet/leather/masterwork
 	reqs = list(/obj/item/clothing/head/roguetown/helmet/leather = 1,
-				/obj/item/natural/cured/masterwork = 1,
+				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
 
@@ -505,7 +505,7 @@
 	name = "masterwork leather chausses"
 	result = /obj/item/clothing/under/roguetown/trou/leather/masterwork
 	reqs = list(/obj/item/clothing/under/roguetown/trou/leather = 1,
-				/obj/item/natural/cured/masterwork = 1,
+				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
 
