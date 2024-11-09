@@ -272,7 +272,7 @@
 
 // Originally was meant to be a horse archer. I decided that was a bad idea.
 
-/datum/outfit/job/roguetown/vet/scout/pre_equip(mob/living/carbon/human/H
+/datum/outfit/job/roguetown/vet/scout/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
