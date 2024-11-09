@@ -9,7 +9,7 @@
 	projectile_type = /obj/projectile/magic/lightning
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 15
+	chargetime = 30
 	charge_max = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
