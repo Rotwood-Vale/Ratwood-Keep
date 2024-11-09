@@ -1,4 +1,4 @@
-/datum/outfit/job/roguetown/1event/crossbowman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/event/crossbowman/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	pants = /obj/item/clothing/under/roguetown/chainlegs

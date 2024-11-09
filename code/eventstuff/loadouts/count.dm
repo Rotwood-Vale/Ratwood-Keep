@@ -1,4 +1,4 @@
-/datum/outfit/job/roguetown/1event/count/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/event/count/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black

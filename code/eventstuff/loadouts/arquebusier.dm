@@ -1,4 +1,4 @@
-/datum/outfit/job/roguetown/1event/arquebusier/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/event/arquebusier/pre_equip(mob/living/carbon/human/H)
 	..()
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
