@@ -723,6 +723,7 @@
 	repair_cost_first = /obj/item/grown/log/tree/small
 	repair_cost_second = /obj/item/grown/log/tree/small	
 	repair_skill = /datum/skill/craft/carpentry
+	metalizer_result = /obj/structure/mineral_door/wood/donjon
 
 /obj/structure/mineral_door/wood/Initialize()
 	if(icon_state =="woodhandle")
@@ -793,11 +794,13 @@
 	windowed = TRUE
 	desc = ""
 	over_state = "woodwindowopen"
+	metalizer_result = null
 
 /obj/structure/mineral_door/wood/fancywood
 	icon_state = "fancy_wood"
 	desc = ""
 	over_state = "fancy_woodopen"
+	metalizer_result = null
 
 /obj/structure/mineral_door/wood/deadbolt
 	desc = "This door comes with a deadbolt."
@@ -850,6 +853,8 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")		
 	repair_cost_second = /obj/item/ingot/iron
 	repair_skill = /datum/skill/craft/carpentry
+	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/mineral_door/wood/donjon/stone
 	desc = "stone door"
@@ -862,6 +867,7 @@
 	repair_cost_first = /obj/item/natural/stone
 	repair_cost_second = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
+	smeltresult = null
 
 /obj/structure/mineral_door/wood/donjon/stone/view_toggle(mob/user)
 	return

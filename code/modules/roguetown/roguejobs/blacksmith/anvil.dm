@@ -10,6 +10,7 @@
 	density = TRUE
 	damage_deflection = 25
 	climbable = TRUE
+	smeltresult = /obj/item/ingot/iron
 
 /obj/machinery/anvil/crafted
 	icon_state = "caveanvil"

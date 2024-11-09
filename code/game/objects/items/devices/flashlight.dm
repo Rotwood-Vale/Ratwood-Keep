@@ -338,6 +338,7 @@
 	fuel = 30 MINUTES
 	light_depth = 0
 	light_height = 0
+	metalizer_result = /obj/item/flashlight/flare/torch/lantern
 
 /obj/item/flashlight/flare/torch/getonmobprop(tag)
 	. = ..()
@@ -440,6 +441,7 @@
 	icon_state = "mtorch"
 	light_range = 6
 	fuel = 9999 MINUTES
+	metalizer_result = null
 
 /obj/item/flashlight/flare/torch/lantern
 	name = "iron lamptern"
@@ -455,6 +457,8 @@
 	var/open = TRUE
 	var/list/occupants = list()
 	var/max_occupants = 1 //Hard-cap so you can't have multiple seelie in one carrier
+	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/item/flashlight/flare/torch/lantern/process()
 	open_flame(heat)
@@ -507,6 +511,7 @@
 	light_range = 8
 	light_color ="#4ac77e"
 	on = FALSE
+	smeltresult = /obj/item/ingot/bronze
 
 //------------BEGIN LANTERN SEELIE CARRYING CODE--------------//
 
