@@ -10,7 +10,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel
-	beltl = /obj/item/powderflask
+	beltr = /obj/item/powderflask
 	beltl = /obj/item/ramrod
 	r_hand = /obj/item/gun/ballistic/arquebus
 	backpack_contents = list(/obj/item/ammo_casing/caseless/rogue/event/bullet = 6)
