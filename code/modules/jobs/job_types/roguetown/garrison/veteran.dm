@@ -26,7 +26,7 @@
 	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		if(istype(H.cloak, /obj/item/clothing/cloak/half/vet))
+		if(istype(H.cloak, /obj/item/clothing/cloak//vet))
 			var/obj/item/clothing/S = H.cloak
 			var/index = findtext(H.real_name, " ")
 			if(index)
@@ -53,7 +53,7 @@
 // Normal veteran start, from the olden days.
 
 /datum/outfit/job/roguetown/vet/battlemaster/pre_equip(mob/living/carbon/human/H)
-	cloak = /obj/item/clothing/cloak/half/vet
+	cloak = /obj/item/clothing/cloak//vet
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -101,9 +101,9 @@
 // No hero, just a normal guy who happened to survive war.
 
 /datum/outfit/job/roguetown/vet/footman/pre_equip(mob/living/carbon/human/H)
-	cloak = /obj/item/clothing/cloak/half/vet
+	cloak = /obj/item/clothing/cloak//vet
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	armor = /obj/item/clothing/suit/roguetown/armor/half // Meant to be better than footman, but worse than knight. No heavy armor!!
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half // Meant to be better than footman, but worse than knight. No heavy armor!!
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	pants = /obj/item/clothing/under/roguetown/platelegs
@@ -154,7 +154,7 @@
 /datum/outfit/job/roguetown/vet/calvaryman/pre_equip(mob/living/carbon/human/H)
 	cloak = /obj/item/clothing/cloak/half/vet
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	armor = /obj/item/clothing/suit/roguetown/armor/half
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	pants = /obj/item/clothing/under/roguetown/platelegs
