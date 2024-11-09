@@ -8263,6 +8263,21 @@
 /area/rogue/outdoors/town)
 "hXy" = (
 /obj/structure/fluff/alch,
+/obj/structure/rack/rogue/shelf,
+/obj/item/reagent_containers/glass/bottle/rogue{
+	layer = 5;
+	pixel_x = -8;
+	pixel_y = 32
+	},
+/obj/item/reagent_containers/glass/bottle/rogue{
+	layer = 6;
+	pixel_y = 32
+	},
+/obj/item/reagent_containers/glass/bottle/rogue{
+	layer = 7;
+	pixel_x = 8;
+	pixel_y = 32
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "hXD" = (
@@ -22765,6 +22780,10 @@
 /obj/effect/decal/cleanable/blood,
 /turf/closed/mineral/random/rogue/high,
 /area/rogue/under/cave)
+"wkw" = (
+/obj/structure/roguemachine/scomm,
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/indoors/town)
 "wkS" = (
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/rogue/blocks,
@@ -86023,7 +86042,7 @@ qhb
 qhb
 fJa
 fJa
-xeP
+wkw
 fJa
 fJa
 lcQ
