@@ -43,6 +43,13 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Buckled Hat"
 	path = /obj/item/clothing/head/roguetown/puritan
 
+/datum/loadout_item/folded_hat
+	name = "Folded Hat"
+	path = /obj/item/clothing/head/roguetown/bucklehat
+
+/datum/loadout_item/duelist_hat
+	name = "Duelist's Hat"
+	path = /obj/item/clothing/head/roguetown/duelhat
 //CLOAKS
 /datum/loadout_item/tabard
 	name = "Tabard"
