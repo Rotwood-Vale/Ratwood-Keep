@@ -258,6 +258,7 @@
 
 /*	.................   Plated fryfish   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/plated
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "carpcooked_plated"
 	item_state = "plate_food"
@@ -270,6 +271,7 @@
 	rotprocess = SHELFLIFE_LONG
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/plated
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "clownfishcooked_plated"
 	item_state = "plate_food"
@@ -282,6 +284,7 @@
 	rotprocess = SHELFLIFE_LONG
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/plated
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "anglercooked_plated"
 	item_state = "plate_food"
@@ -294,6 +297,7 @@
 	rotprocess = SHELFLIFE_LONG
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/plated
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "eelcooked_plated"
 	item_state = "plate_food"
