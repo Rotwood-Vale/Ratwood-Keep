@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
 
-	if(src.stat == DEAD)
+	if(stat == DEAD)
 		return
 
 	// 3 seconds cooldown
@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	set name = "Communicate"
 	set category = "ZIZO"
 
-	if(src.stat == DEAD)
+	if(stat == DEAD)
 		return
 
 	// 5 seconds cooldown
