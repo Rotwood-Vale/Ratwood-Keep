@@ -728,10 +728,6 @@
 "aFk" = (
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
-"aFQ" = (
-/obj/structure/fluff/statue/knight,
-/turf/open/floor/rogue/carpet,
-/area/rogue/indoors/town/manor)
 "aFW" = (
 /obj/structure/fluff/statue/gargoyle/moss,
 /turf/open/floor/rogue/concrete,
@@ -1828,9 +1824,6 @@
 "bIl" = (
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/beach)
-"bIm" = (
-/turf/open/floor/rogue/churchrough,
-/area/rogue/outdoors/town)
 "bIt" = (
 /obj/effect/landmark/start/manorguardsman{
 	dir = 4
@@ -2373,7 +2366,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/shelter/mountains)
 "cmj" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "cmC" = (
@@ -3361,7 +3354,7 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "dbH" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/needle/thorn,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/rtfield)
@@ -9960,7 +9953,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "iYn" = (
@@ -14908,7 +14901,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "nxw" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "nxD" = (
@@ -16312,7 +16305,7 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
 "oDH" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
@@ -21218,6 +21211,7 @@
 /area/rogue/outdoors/rtfield)
 "sZz" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
+/obj/structure/fluff/statue/knight,
 /turf/open/floor/rogue/tile/masonic,
 /area/rogue/indoors/town/manor)
 "sZE" = (
@@ -25158,7 +25152,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/town)
 "wzM" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -26452,7 +26446,7 @@
 /turf/open/floor/rogue/metal,
 /area/rogue/indoors/town/shop)
 "xIg" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
 "xIh" = (
@@ -493430,7 +493424,7 @@ tPh
 tPh
 tPh
 tPh
-bIm
+tPh
 uuP
 tPh
 tPh
@@ -499054,7 +499048,7 @@ los
 bFU
 los
 sZz
-aFQ
+nBW
 nBW
 nBW
 wtF
