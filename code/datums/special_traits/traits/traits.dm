@@ -54,13 +54,31 @@
 /datum/special_trait/value/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_SEEPRICES, "[type]")
 
-/datum/special_trait/lightstep
-	name = "Light Step"
-	greet_text = span_notice("I am quiet, nobody can hear my steps.")
-	weight = 100
+/datum/special_trait/underworldassassin
+	name = "Underworld Assassin"
+	greet_text = span_notice("You've always been an outlier. Even from a young age, socialite activities weren't for you. Be it misfortune, happenstance, or simply good luck - You ended up in the care of one of the many assassin guilds that poliferate this rotten world.")
+	weight = 15 //This is on-par with vengeant bum; but far weaker as it doesn't give you 20 STR/CON/END
+	//This doesn't mean that it won't be changed if it turns out to be problematic - this is a massive buff for some combat playstyles.
 
-/datum/special_trait/lightstep/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/underworldassassin/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
+	character.change_stat("strength", -1)
+	character.change_stat("endurance", 2)
+	character.change_stat("speed", 2)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+
+/datum/special_trait/lightfooted
+	name = "Lightfooted"
+	greet_text = span_notice("You've always been light on your feet. Sneaking around quietly, and quickly has never been a problem for you.")
+	weight = 75 //This is far less stronk
+	//Weaker version of Underworld Assassin.
+
+/datum/special_trait/lightfooted/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
+	character.change_stat("speed", 1)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 
 /datum/special_trait/night_owl
 	name = "Night Owl"
@@ -238,7 +256,7 @@
 
 /datum/special_trait/mastercraftsmen
 	name = "Master Craftsman"
-	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 8 arts of the craft."
+	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 7 arts of the craft."
 	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	weight = 100
@@ -248,10 +266,9 @@
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 
 /datum/special_trait/bleublood
 	name = "Noble Lineage"

@@ -9,7 +9,7 @@
 	projectile_type = /obj/projectile/magic/lightning
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 15
+	chargetime = 20
 	charge_max = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -47,7 +47,8 @@
 			return BULLET_ACT_BLOCK
 		if(isliving(target))
 			var/mob/living/L = target
-			L.electrocute_act(1, src)
+			L.electrocute_act(1, src, 1, SHOCK_NOSTUN)
+			L.Paralyze(10)
 	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning

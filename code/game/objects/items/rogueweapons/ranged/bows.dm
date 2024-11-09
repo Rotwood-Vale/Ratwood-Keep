@@ -20,6 +20,7 @@
 	load_sound = 'sound/foley/nockarrow.ogg'
 	associated_skill = /datum/skill/combat/bows
 	var/damfactor = 1
+	metalizer_result = /obj/item/restraints/legcuffs/beartrap/armed
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/getonmobprop(tag)
 	. = ..()
