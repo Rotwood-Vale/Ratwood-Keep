@@ -128,6 +128,7 @@
 	icon_state = "whammer"
 	force = 16
 	smeltresult = null
+	metalizer_result = /obj/item/rogueweapon/hammer
 
 /obj/item/rogueweapon/tongs
 	force = 10

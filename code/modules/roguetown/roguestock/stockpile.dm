@@ -141,6 +141,17 @@
 	importexport_amt = 5
 	passive_generation = 2
 
+/datum/roguestock/stockpile/cured
+	name = "Cured Leather"
+	desc = "Cured Leather ready to be worked."
+	item_type = /obj/item/natural/hide/cured
+	held_items = list(2, 0)
+	payout_price = 5
+	withdraw_price = 7
+	transport_fee = 1
+	export_price = 7
+	importexport_amt = 10
+
 /datum/roguestock/stockpile/fur
 	name = "Fur"
 	desc = "Hide with a long winter coat from animals."
