@@ -14,7 +14,6 @@
 
 /obj/machinery/anvil/crafted
 	icon_state = "caveanvil"
-	smeltresult = /obj/item/rogueore/iron
 
 /obj/machinery/anvil/examine(mob/user)
 	. = ..()
