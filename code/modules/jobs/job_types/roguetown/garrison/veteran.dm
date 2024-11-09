@@ -184,7 +184,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.change_stat("perception", 1)
-		H.change_stat("intelligence", 2)
+		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 2)
 		H.change_stat("speed", -1)
@@ -321,7 +321,7 @@
 		H.change_stat("intelligence", 2)
 		H.change_stat("endurance", 1)
 		H.change_stat("constitution", 1)
-		H.change_stat("speed", 1)
+		H.change_stat("speed", 2) // You get -2 speed from being old. 
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
@@ -373,7 +373,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 		H.change_stat("perception", 3)
-		H.change_stat("intelligence", 2)
+		H.change_stat("intelligence", 3)
 		H.change_stat("endurance", 1)
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 3) // You get -2 speed from being old. 
