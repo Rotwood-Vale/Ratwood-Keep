@@ -54,7 +54,7 @@
 			update_icon()
 			return
 		if(skill < material.artrecipe.craftdiff)
-			if(prob(25))
+			if(prob(max(0, 25 - user.goodluck(2) - (skill * 2))))
 				to_chat(user, span_warning("Ah yes, my incompetence bears fruit."))
 				playsound(src,'sound/combat/hits/onwood/destroyfurniture.ogg', 100, FALSE)
 				user.mind.add_sleep_experience(material.artrecipe.appro_skill, (user.STAINT * material.artrecipe.craftdiff)) // Getting exp for failing
