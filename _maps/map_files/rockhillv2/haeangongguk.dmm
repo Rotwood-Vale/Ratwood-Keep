@@ -2720,7 +2720,7 @@
 /area/rogue)
 "vS" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "blacksmith"
+	lockid = "blacksmith"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue)

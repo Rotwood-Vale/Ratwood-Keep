@@ -61,7 +61,7 @@
 /datum/artificer_recipe
 	appro_skill = /datum/skill/craft/engineering
 
-/datum/artificer_recipe/wood //This looks a bit silly but due to how these datums work is necessary for other things to inherit from it
+/datum/artificer_recipe/wood //TNevermind this being silly, I was silly and this needs to be redone proper
 	name = "Wooden Cog"
 	required_item = /obj/item/natural/wood/plank
 	created_item = /obj/item/cart_upgrade/level_1
@@ -118,7 +118,7 @@
 	i_type = "Contraptions"
 
 /datum/artificer_recipe/contraptions/metalizer
-	name = "Wood Metalizer (+1 Wooden Upgrade Cog)"
+	name = "Wood Metalizer (+1 Wooden Cog)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/cart_upgrade/level_1 = 1)
 	created_item = /obj/item/contraption/wood_metalizer
@@ -132,6 +132,14 @@
 	created_item = /obj/item/contraption/smelter
 	hammers_per_item = 10
 	craftdiff = 3
+
+/datum/artificer_recipe/contraptions/imprinter
+	name = "Lock Imprinter (+1 Advanced Wooden Cog)"
+	required_item = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/cart_upgrade/level_2 = 1)
+	created_item = /obj/item/contraption/lock_imprinter
+	hammers_per_item = 15
+	craftdiff = 5
 	
 // --------- WEAPON -----------
 
@@ -174,27 +182,79 @@
 /obj/item/rogueweapon/shield/heater/crafted
 	sellprice = 6
 
+/// CROSSBOW
+
+/datum/artificer_recipe/wood/weapons/crossbow
+	name = "Crossbow (+1 Steel) (+1 Fiber)"
+	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/fibers)
+	hammers_per_item = 10
+	craftdiff = 4
+
+// --------- AMMUNITION -----------
+
+/datum/artificer_recipe/ammunition
+	i_type = "Ammunition"
+
+/datum/artificer_recipe/ammunition/bolts
+	name = "Crossbow Bolts 5x (+1 Iron)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt)
+	hammers_per_item = 6
+	craftdiff = 2
+
+/datum/artificer_recipe/ammunition/arrows
+	name = "Arrows 5x (+1 Iron)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron)
+	hammers_per_item = 6
+	craftdiff = 2
+
 // --------- PROSTHETICS -----------
 
-/datum/artificer_recipe/wood/prosthetics
-	name = "Left Wooden Arm (+1 Wooden Cog)"
-	created_item = /obj/item/bodypart/l_arm/prosthetic/wood
-	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/cart_upgrade/level_1 = 1)
+/datum/artificer_recipe/prosthetics
 	i_type = "Prosthetics"
+
+/datum/artificer_recipe/prosthetics/wood/arm_left
+	name = "Left Wooden Arm (+1 Wooden Cog)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/cart_upgrade/level_1 = 1)
+	created_item = /obj/item/bodypart/l_arm/prosthetic/wood
 	hammers_per_item = 4
 	craftdiff = 2
 
-/datum/artificer_recipe/wood/prosthetics/arm_right
+/datum/artificer_recipe/prosthetics/wood/arm_right
 	name = "Right Wooden Arm (+1 Wooden Cog)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/cart_upgrade/level_1 = 1)
 	created_item = /obj/item/bodypart/r_arm/prosthetic/wood
+	hammers_per_item = 4
+	craftdiff = 2
 
-/datum/artificer_recipe/wood/prosthetics/leg_left
+/datum/artificer_recipe/prosthetics/wood/leg_left
 	name = "Left Wooden Leg (+1 Wooden Cog)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/cart_upgrade/level_1 = 1)
 	created_item = /obj/item/bodypart/l_leg/prosthetic/wood
+	hammers_per_item = 4
+	craftdiff = 2
 
-/datum/artificer_recipe/wood/prosthetics/leg_right
+/datum/artificer_recipe/prosthetics/wood/leg_right
 	name = "Right Wooden Leg (+1 Wooden Cog)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/cart_upgrade/level_1 = 1)
 	created_item = /obj/item/bodypart/r_leg/prosthetic/wood
+	hammers_per_item = 4
+	craftdiff = 2
+
+/datum/artificer_recipe/prosthetics/wood/eye
+	name = "Wooden Eyeball"
+	required_item = /obj/item/natural/wood/plank
+	created_item = /obj/item/organ/eyes/robotic/wooden
+	hammers_per_item = 5
+	craftdiff = 2
 
 // --------- BRONZE -----------
 

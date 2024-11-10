@@ -17,7 +17,7 @@ The console is located at computer/gulag_teleporter.dm
 	idle_power_usage = 200
 	active_power_usage = 5000
 	circuit = /obj/item/circuitboard/machine/gulag_teleporter
-	var/locked = FALSE
+	locked = FALSE
 	var/message_cooldown
 	var/breakout_time = 600
 	var/jumpsuit_type = /obj/item/clothing/under/rank/prisoner
