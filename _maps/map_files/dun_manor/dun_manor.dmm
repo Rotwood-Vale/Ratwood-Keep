@@ -9840,7 +9840,7 @@
 /area/rogue/outdoors/town)
 "jFz" = (
 /obj/structure/roguewindow,
-/turf/closed,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/shop)
 "jGs" = (
 /obj/structure/closet/crate/chest,
@@ -11413,6 +11413,10 @@
 "kWL" = (
 /turf/closed/wall/mineral/rogue/decowood/vert,
 /area/rogue/indoors/town/shop)
+"kWP" = (
+/obj/structure/roguemachine/scomm/l,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/under/town/basement)
 "kWX" = (
 /obj/structure/closet/crate/chest/crate,
 /obj/item/storage/roguebag,
@@ -38644,7 +38648,7 @@ gdw
 gdw
 gdw
 gdw
-gdw
+pNQ
 pNQ
 pNQ
 pNQ
@@ -38800,7 +38804,7 @@ dnd
 dnd
 dnd
 dnd
-dnd
+gdw
 gdw
 gdw
 gdw
@@ -38957,7 +38961,7 @@ dDy
 nFd
 nFd
 nFd
-nFd
+kWP
 tcC
 jis
 rRc
