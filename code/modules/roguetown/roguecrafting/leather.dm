@@ -51,6 +51,13 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 30
 
+/datum/crafting_recipe/roguetown/leather/gwstrap
+	name = "Greatweapon Strap"
+	result = /obj/item/gwstrap
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/natural/fibers = 2)
+	sellprice = 30
+
 /datum/crafting_recipe/roguetown/leather/belt
 	name = "leather belt"
 	result = /obj/item/storage/belt/rogue/leather
