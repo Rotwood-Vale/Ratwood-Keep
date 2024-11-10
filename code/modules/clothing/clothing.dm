@@ -161,6 +161,9 @@
 					body_parts_covered &= ~ARM_RIGHT
 				if(r_sleeve_zone == BODY_ZONE_R_LEG)
 					body_parts_covered &= ~LEG_RIGHT
+				if(salvage_result == /obj/item/natural/hide/cured)
+					to_chat(user, span_info("You ruined a piece of leather."))
+					return
 				var/obj/item/Sr = new salvage_result(get_turf(src))
 				Sr.color = color
 				user.put_in_hands(Sr)
@@ -185,6 +188,9 @@
 					body_parts_covered &= ~ARM_LEFT
 				if(l_sleeve_zone == BODY_ZONE_L_LEG)
 					body_parts_covered &= ~LEG_LEFT
+				if(salvage_result == /obj/item/natural/hide/cured)
+					to_chat(user, span_info("You ruined a piece of leather."))
+					return
 				var/obj/item/Sr = new salvage_result(get_turf(src))
 				Sr.color = color
 				user.put_in_hands(Sr)

@@ -40,8 +40,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE) //fishing catalogue monthly
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
@@ -66,7 +65,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)

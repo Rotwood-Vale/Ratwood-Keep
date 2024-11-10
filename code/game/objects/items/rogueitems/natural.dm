@@ -19,7 +19,7 @@
 			else
 				to_chat(user, "There's not enough space in [W].")
 			return
-	else if(istype(W, /obj/item/natural/))
+	else if(istype(W, /obj/item/natural))
 		var/obj/item/natural/B = W
 		if(B.bundletype == src.bundletype && src.bundletype != null)
 			var/obj/item/natural/bundle/N = new bundletype(src.loc)

@@ -1,7 +1,3 @@
-
-/obj/item
-	var/smeltresult
-
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "stone furnace"

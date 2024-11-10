@@ -352,7 +352,6 @@
 	name = "leather armor"
 	desc = "Flexible cowhide armor. Lightweight, better than nothing."
 	icon_state = "leather"
-//	color = "#514339"
 	body_parts_covered = CHEST|GROIN|VITALS
 	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
@@ -365,7 +364,25 @@
 	max_integrity = 150
 	sellprice = 20
 	armor_class = ARMOR_CLASS_LIGHT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/suit/roguetown/armor/leather/advanced
+	name = "hardened leather coat"
+	desc = "Sturdy, durable, flexible. Will keep you alive in style."
+	icon_state = "alcoat"
+	max_integrity = 350
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 75, "slash" = 60, "stab" = 30, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/suit/roguetown/armor/leather/masterwork
+	name = "masterwork leather coat"
+	desc = "This coat is a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
+	icon_state = "leather"
+	max_integrity = 400
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP) //we're adding chop here!
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(218, 165, 32))
 
 /obj/item/clothing/suit/roguetown/armor/leather/hide
 	name = "hide armor"
@@ -406,7 +423,7 @@
 	sleevetype = null
 	sleeved = null
 	armor_class = ARMOR_CLASS_LIGHT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	name = "sea jacket"
@@ -516,7 +533,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sewrepair = TRUE
 	armor_class = ARMOR_CLASS_LIGHT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
 	slot_flags = ITEM_SLOT_ARMOR
