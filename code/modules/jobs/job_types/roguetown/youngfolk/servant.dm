@@ -68,7 +68,7 @@
 
 /datum/advclass/servant/servant
 	name = "Servant"
-	tutorial = "You are a humdrum servant, dressed the part; lowly and best out of sight."
+	tutorial = "You are a humdrum servant, dressed the part; lowly and best out of sight. It's practical, however."
 	outfit = /datum/outfit/job/roguetown/servant/servant
 	category_tags = list(CTAG_SERVANT)
 
@@ -104,7 +104,7 @@
 
 /datum/advclass/servant/butler
 	name = "Butler"
-	tutorial = "An impeccable appearance if your core being. You still dig through the mud, though, you just do the laundry more."
+	tutorial = "An impeccable appearance is your core being. You still dig through the mud, though, you just do the laundry more."
 	outfit = /datum/outfit/job/roguetown/servant/butler
 	category_tags = list(CTAG_SERVANT)
 
