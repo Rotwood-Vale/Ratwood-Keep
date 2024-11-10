@@ -25,12 +25,10 @@
 
 /datum/outfit/job/roguetown/marshal/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	backl = /obj/item/storage/backpack/rogue/satchel
-	beltl = /obj/item/storage/keyring/sheriff
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/signal_horn = 1)
@@ -75,8 +73,10 @@
 /datum/outfit/job/roguetown/marshal/classic/pre_equip(mob/living/carbon/human/H)
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/sheriff
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/bailiff
-	beltr = /obj/item/rogueweapon/mace/cudgel/justice
+	backr = /obj/item/rogueweapon/mace/cudgel/justice
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltl = /obj/item/storage/keyring/sheriff
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 
@@ -89,8 +89,10 @@
 
 /datum/outfit/job/roguetown/marshal/kcommander/pre_equip(mob/living/carbon/human/H)
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/sheriff/coat
-	beltr = /obj/item/rogueweapon/sword/long/oathkeeper
+	backr = /obj/item/rogueweapon/sword/long/oathkeeper
 	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltl = /obj/item/storage/keyring/sheriff
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 

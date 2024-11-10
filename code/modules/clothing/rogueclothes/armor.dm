@@ -635,3 +635,26 @@
 	desc = "A thick boiled leather surcoat with plates concealed in it's many great folds. It weighs a ton and takes a great man to wear."
 	icon_state = "leathercoat"
 	item_state = "leathercoat"
+	var/picked = FALSE
+	sleeved_detail = TRUE
+	boobed_detail = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/brigandine/sheriff/coat/attack_right(mob/user)
+	if(picked)
+		return
+	var/the_time = world.time
+	var/pickedvalue = input(user, "Select a color", "KINGSLAYER'S GARB") as null|anything in list("Khaki", "Black")
+	if(!pickedvalue)
+		return
+	if(world.time > (the_time + 30 SECONDS))
+		return
+	if(pickedvalue == "Khaki")
+		picked = TRUE
+	else if(pickedvalue == "Black")
+		picked = TRUE
+		icon_state = "bleathercoat"
+		item_state = "bleathercoat"
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_armor()
