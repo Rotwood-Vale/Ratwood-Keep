@@ -3463,7 +3463,6 @@
 /area/rogue/indoors/town/church)
 "dnd" = (
 /obj/structure/bookcase/random/archive{
-	density = 0;
 	opacity = 0
 	},
 /turf/open/floor/rogue/hexstone,
@@ -4131,7 +4130,6 @@
 /area/rogue/indoors)
 "dVM" = (
 /obj/structure/bookcase/random/archive{
-	density = 0;
 	opacity = 0
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -16187,11 +16185,10 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "pwl" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
 /obj/structure/bookcase/random/archive{
-	density = 0;
 	opacity = 0
 	},
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -39904,7 +39901,7 @@ gdw
 gdw
 dnd
 adU
-adU
+dnd
 dnd
 gdw
 gdw
