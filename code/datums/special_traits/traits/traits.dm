@@ -585,7 +585,7 @@
 	name = "Reps for Redemption"
 	greet_text = span_notice("Pain has finally transformed into gain.")
 	allowed_jobs = list(CHURCH_ROLES)
-	weight = 75
+	weight = 50
 
 /datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
