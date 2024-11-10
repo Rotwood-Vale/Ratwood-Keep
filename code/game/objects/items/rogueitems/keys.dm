@@ -9,8 +9,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	dropshrink = 0.75
 	throwforce = 0
-	var/lockhash = 0
-	var/lockid = null
+	lockhash = 0
+	lockid = null
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
 	anvilrepair = /datum/skill/craft/blacksmithing
 
@@ -53,7 +53,7 @@
 	icon_state = "brownkey"
 	w_class = WEIGHT_CLASS_TINY
 	dropshrink = 0.75
-	var/lockhash = 0
+	lockhash = 0
 
 /obj/item/key_custom_blank/attackby(obj/item/I, mob/user, params)
 

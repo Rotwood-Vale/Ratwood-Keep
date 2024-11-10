@@ -10,10 +10,10 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/list/held_items = list()
-	var/locked = TRUE
+	locked = TRUE
 	var/budget = 0
 	var/wgain = 0
-	var/keycontrol = "merchant"
+	lockid = "merchant"
 	var/funynthing = FALSE
 
 /obj/structure/roguemachine/vendor/proc/insert(obj/item/P, mob/living/user)
@@ -40,7 +40,7 @@
 		return attack_hand(user)
 	if(istype(P, /obj/item/key))
 		var/obj/item/key/K = P
-		if(K.lockid == keycontrol)
+		if(K.lockid == lockid)
 			locked = !locked
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			update_icon()
@@ -54,7 +54,7 @@
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
 		for(var/obj/item/key/KE in K.keys)
-			if(KE.lockid == keycontrol)
+			if(KE.lockid == lockid)
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
@@ -225,7 +225,7 @@
 	desc = "Give this thing money, and you will immediately buy a neat property in the capital."
 	max_integrity = 0
 	icon_state = "streetvendor1"
-	keycontrol = "dhjlashfdg"
+	lockid = "dhjlashfdg"
 	var/list/cachey = list()
 
 /obj/structure/roguemachine/vendor/centcom/attack_hand(mob/living/user)
@@ -260,7 +260,7 @@
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 
 /obj/structure/roguemachine/vendor/inn
-	keycontrol = "tavern"
+	lockid = "tavern"
 
 /obj/structure/roguemachine/vendor/inn/Initialize()
 	. = ..()

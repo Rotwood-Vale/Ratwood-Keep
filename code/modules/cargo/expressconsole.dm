@@ -25,7 +25,7 @@
 	var/area/landingzone = /area/quartermaster/storage //where we droppin boys
 	var/podType = /obj/structure/closet/supplypod
 	var/cooldown = 0 //cooldown to prevent printing supplypod beacon spam
-	var/locked = TRUE //is the console locked? unlock with ID
+	locked = TRUE //is the console locked? unlock with ID
 	var/usingBeacon = FALSE //is the console in beacon mode? exists to let beacon know when a pod may come in
 
 /obj/machinery/computer/cargo/express/Initialize()

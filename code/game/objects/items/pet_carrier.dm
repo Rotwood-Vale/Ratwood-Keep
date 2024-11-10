@@ -17,7 +17,7 @@
 	throw_range = 3
 	custom_materials = list(/datum/material/iron = 7500, /datum/material/glass = 100)
 	var/open = TRUE
-	var/locked = FALSE
+	locked = FALSE
 	var/list/occupants = list()
 	var/occupant_weight = 0
 	var/max_occupants = 3 //Hard-cap so you can't have infinite mice or something in one carrier

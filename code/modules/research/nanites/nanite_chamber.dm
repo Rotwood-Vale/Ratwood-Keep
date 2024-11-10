@@ -12,7 +12,7 @@
 	active_power_usage = 300
 
 	var/obj/machinery/computer/nanite_chamber_control/console
-	var/locked = FALSE
+	locked = FALSE
 	var/breakout_time = 1200
 	var/scan_level
 	var/busy = FALSE
