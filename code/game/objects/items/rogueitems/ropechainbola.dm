@@ -151,7 +151,6 @@
 		target.legcuffed = cuffs
 
 		target.update_inv_legcuffed()
-
 		target.add_movespeed_modifier(MOVESPEED_ID_CUFFED_LEG_SLOWDOWN, update=TRUE, priority=100, multiplicative_slowdown=2, movetypes=GROUND)
 		return
 
