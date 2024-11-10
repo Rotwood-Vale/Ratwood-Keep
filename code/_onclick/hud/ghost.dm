@@ -31,62 +31,30 @@
 /atom/movable/screen/ghost/orbit/rogue/Click(location, control, params)
 	var/mob/dead/observer/G = usr
 	var/paramslist = params2list(params)
-	var/datum/mind/prevmind
-	if(G.mind && !isadminobserver(G))
-		prevmind = G.mind
+	var/descend_text = "Descend to the Underworld?"
 	if(paramslist["right"]) // screen objects don't do the normal Click() stuff so we'll cheat
 		if(G.client?.holder)
 			G.follow()
 	else
-		if(G.isinhell)
-			return
 		if(G.client)
-			if(G.client.holder)
-				if(istype(G, /mob/dead/observer/rogue/arcaneeye))
-					return
-				if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
-
-
-					// Check if the player's job is hiv+
-					var/datum/job/target_job = SSjob.GetJob(G.mind.assigned_role)
-					if(target_job)
-						if(target_job.job_reopens_slots_on_death)
-							target_job.current_positions = max(0, target_job.current_positions - 1)
-						if(target_job.same_job_respawn_delay)
-							// Store the current time for the player
-							GLOB.job_respawn_delays[G.ckey] = world.time + target_job.same_job_respawn_delay
-
-					for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
-						var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
-						O.livingname = G.name
-						O.ckey = G.ckey
-						O.prevmind = prevmind
-						SSdroning.area_entered(get_area(O), O.client)
-					G.client.verbs -= GLOB.ghost_verbs
-
+			if(istype(G, /mob/dead/observer/rogue/arcaneeye))
 				return
+			if(isrogueobserver(G) && G.mind?.funeral)
+				descend_text = "Your body has been buried.\n\
+								Are you ready to be judged?"
+				switch(alert(G, descend_text, "", "Yes", "No"))
+					if("Yes")
+						to_chat(G, span_rose("With my body buried in creation, my soul passes on in peace..."))
+						burial_rite_return_ghost_to_lobby(G)
+					if("No")
+						usr << "You have second thoughts."
+			else
+				switch(alert(descend_text, "", "Yes", "No"))
+					if("Yes")
+						G.client.try_descend()
+					if("No")
+						usr << "You have second thoughts."
 
-//		var/take_triumph = FALSE
-		var/datum/game_mode/chaosmode/C = SSticker.mode
-		if(istype(C))
-			if(C.skeletons)
-				G.returntolobby()			
-		if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
-			for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
-				var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
-				O.livingname = G.name
-				O.ckey = G.ckey
-				O.prevmind = prevmind
-				SSdroning.area_entered(get_area(O), O.client)
-			G.client.verbs -= GLOB.ghost_verbs
-/*		if(world.time < G.ghostize_time + RESPAWNTIME)
-			var/ttime = round((G.ghostize_time + RESPAWNTIME - world.time) / 10)
-			var/list/thingsz = list("My connection to the world is still too strong.",\
-			"I'm not ready to leave...", "I'm not ready to travel with Charon.",\
-			"Don't make me leave!", "No... Not yet!", "Please, don't make me go yet...",\
-			"The shores are calling me but I cannot go...","My soul isn't ready yet...")
-			to_chat(G, span_warning("[pick(thingsz)] ([ttime])"))
-			return */ //Disabling this since the underworld will exist
 
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
