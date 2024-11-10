@@ -431,6 +431,13 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
+/datum/crafting_recipe/roguetown/sewing/leather/braces
+	name = "hardened leather braces"
+	result = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
 /datum/crafting_recipe/roguetown/sewing/leather/coat
 	name = "hardened leather coat"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced
@@ -438,8 +445,8 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
-/datum/crafting_recipe/roguetown/sewing/leather/hood
-	name = "hardened leather hooded helmet"
+/datum/crafting_recipe/roguetown/sewing/leather/helmet
+	name = "hardened leather helmet"
 	result = /obj/item/clothing/head/roguetown/helmet/leather/advanced
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)

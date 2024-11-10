@@ -167,7 +167,7 @@
 /datum/artificer_recipe/wood/weapons/hshield
 	name = "Heater Shield (+1 Hide)"
 	created_item = /obj/item/rogueweapon/shield/heater/crafted
-	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/natural/hide = 1)
+	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/natural/hide/cured = 1)
 	hammers_per_item = 6
 	craftdiff = 3
 

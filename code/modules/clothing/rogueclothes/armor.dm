@@ -533,7 +533,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sewrepair = TRUE
 	armor_class = ARMOR_CLASS_LIGHT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
 	slot_flags = ITEM_SLOT_ARMOR
