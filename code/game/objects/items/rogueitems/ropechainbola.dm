@@ -41,6 +41,10 @@
 			M.update_inv_legcuffed()
 	return ..()
 
+/obj/item/rope/dropped(mob/user, silent)
+	user.remove_movespeed_modifier(MOVESPEED_ID_CUFFED_LEG_SLOWDOWN)
+	. = ..()
+
 /obj/item/rope/attack(mob/living/carbon/C, mob/living/user)
 	if(user.used_intent.type != /datum/intent/tie)
 		..()
@@ -147,6 +151,8 @@
 		target.legcuffed = cuffs
 
 		target.update_inv_legcuffed()
+
+		target.add_movespeed_modifier(MOVESPEED_ID_CUFFED_LEG_SLOWDOWN, update=TRUE, priority=100, multiplicative_slowdown=2, movetypes=GROUND)
 		return
 
 
