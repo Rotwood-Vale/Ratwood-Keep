@@ -188,8 +188,7 @@
 	var/datum/mind/M = person
 	var/mob/living/carbon/human/H = current
 	if(M.known_people && istype(H))
-		if(M.known_people[H.real_name])
-			M.known_people[H.real_name] = null
+		M.known_people -= H.real_name
 
 
 /datum/mind/proc/unknow_all_people()
