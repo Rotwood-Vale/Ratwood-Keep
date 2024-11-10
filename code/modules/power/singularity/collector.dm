@@ -22,7 +22,7 @@
 	var/obj/item/tank/internals/plasma/loaded_tank = null
 	var/stored_energy = 0
 	var/active = 0
-	var/locked = FALSE
+	locked = FALSE
 	var/drainratio = 1
 	var/powerproduction_drain = 0.001
 

@@ -40,7 +40,12 @@
 		S.start()
 		var/skill = user.mind.get_skill_level(material.artrecipe.appro_skill)
 		if(material.artrecipe.progress == 100)
-			new material.artrecipe.created_item(get_turf(src))
+			if(islist(material.artrecipe.created_item))
+				var/list/L = material.artrecipe.created_item
+				for(var/IT in L)
+					new IT(get_turf(src))
+			else
+				new material.artrecipe.created_item(get_turf(src))
 			var/obj/item/created_item_instance = new(material.artrecipe.created_item)
 			user.visible_message(span_info("[user] creates \a [created_item_instance.name]."))
 			user.mind.add_sleep_experience(material.artrecipe.appro_skill, (user.STAINT * (material.artrecipe.craftdiff * 5))) //may need to be adjusted

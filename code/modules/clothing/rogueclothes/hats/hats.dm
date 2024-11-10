@@ -38,7 +38,7 @@
 	toggle_icon_state = TRUE
 	max_integrity = 100
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
@@ -895,7 +895,7 @@
 	blocksound = SOFTHIT
 	clothing_flags = null
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/helmet/tricorn/skull
 	icon_state = "tricorn_skull"
@@ -919,7 +919,7 @@
 	blocksound = SOFTHIT
 	clothing_flags = null
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 //----------------- BLACKSTEEL ---------------------
 

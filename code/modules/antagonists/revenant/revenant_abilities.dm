@@ -126,7 +126,7 @@
 	name = "Report this to a coder"
 	var/reveal = 80 //How long it reveals the revenant in deciseconds
 	var/stun = 20 //How long it stuns the revenant in deciseconds
-	var/locked = TRUE //If it's locked and needs to be unlocked before use
+	locked = TRUE //If it's locked and needs to be unlocked before use
 	var/unlock_amount = 100 //How much essence it costs to unlock
 	var/cast_amount = 50 //How much essence it costs to use
 
