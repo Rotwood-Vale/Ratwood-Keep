@@ -50,10 +50,10 @@
 						usr << "You have second thoughts."
 			else
 				switch(alert(descend_text, "", "Yes", "No"))
-				if("Yes")
-					G.client.try_descend()
-				if("No")
-					usr << "You have second thoughts."
+					if("Yes")
+						G.client.try_descend()
+					if("No")
+						usr << "You have second thoughts."
 
 
 /atom/movable/screen/ghost/reenter_corpse
