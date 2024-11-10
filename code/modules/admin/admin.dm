@@ -212,6 +212,10 @@
 	if(!check_rights())
 		return
 
+	if(M.mind?.funeral)
+		to_chat(owner, span_red("Warning: [M.real_name || "this mob"] is currently set as funeralized.\n\
+								Set the \"funeral\" var in its mind datum to 0 if not intended."))
+
 	M.revive(full_heal = TRUE, admin_revive = TRUE)
 	message_admins(span_danger("Admin [key_name_admin(usr)] revived [key_name_admin(M)]!"))
 	log_admin("[key_name(usr)] Revived [key_name(M)].")

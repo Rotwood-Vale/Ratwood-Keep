@@ -473,7 +473,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 	to_chat(src, get_message_output("message", ckey))
 
-
+	
 
 //	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
 //		to_chat(src, span_warning("Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you."))
@@ -505,6 +505,10 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		var/datum/verbs/menu/menuitem = GLOB.menulist[thing]
 		if (menuitem)
 			menuitem.Load_checked(src)
+
+
+	if(!funeral_login())
+		log_game("[key_name(src)] on login: had an issue with funeral-checking logic.")
 
 	Master.UpdateTickRate()
 
@@ -1147,3 +1151,57 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		log_game("COMMEND: [ckey] commends [theykey].")
 		log_admin("COMMEND: [ckey] commends [theykey].")
 	return
+
+// Handles notifying funeralized players on login, or forcing them back to lobby, depending on configs. Called on /client/New().
+/client/proc/funeral_login()
+	if(QDELETED(mob) || QDELETED(mob.mind))
+		return FALSE
+	if(isnewplayer(mob))
+		return TRUE
+	var/buried_message
+	if(!CONFIG_GET(flag/force_respawn_on_funeral)) // by default, just notify funeralized people
+		buried_message = span_notice("Welcome back. Your body was funeralized, and you can respawn.")
+		if(isroguespirit(mob))
+			var/mob/living/carbon/spirit/spirit = mob
+			if(spirit.prevmind?.funeral)
+				to_chat(src, buried_message + span_notice("\nUse the carriage to immediately return to the lobby."))
+				return TRUE
+		else if(isliving(mob))
+			var/mob/living/livingg = mob
+			if((livingg.stat >= DEAD) && livingg.mind.funeral)
+				to_chat(src, buried_message + span_notice("\nUse the \"Journey to the Underworld\" verb to immediately return to the lobby."))
+				return TRUE
+		else if(isobserver(mob))
+			var/mob/dead/observer/observer = mob
+			if(observer.mind.funeral)
+				to_chat(src, buried_message + span_notice("\nUse the \"Journey to the Underworld\" verb to immediately return to the lobby."))
+				return TRUE
+		return FALSE
+	else // forcing funeralized people back to lobby is toggled on
+		if(holder) // Basically, if(client.isadmin). Excludes auto-deadmins
+			return TRUE
+		buried_message = span_rose("With my body buried in creation, my soul passes on in peace...")
+		// we have to do the silly if-else chain for reliability with types
+		if(isroguespirit(mob))
+			var/mob/living/carbon/spirit/S = mob
+			if(S.prevmind?.funeral)
+				to_chat(src, buried_message)
+				if(S.speaking_with)
+					to_chat(S.speaking_with, "The soul returns to the underworld.")
+				var/sghost = burial_rite_make_ghost(S)
+				burial_rite_return_ghost_to_lobby(sghost)
+				return TRUE
+		else if(isobserver(mob) && !isadminobserver(mob))
+			var/mob/dead/observer/O = mob
+			if(O.mind.funeral)
+				to_chat(src, buried_message)
+				burial_rite_return_ghost_to_lobby(O)
+				return TRUE
+		else if(isliving(mob)) // just in case the ghosting stuff messed up for some reason
+			var/mob/living/L = mob
+			if(L.mind.funeral) // no dead check, because w/ this config, once you're given a funeral, it's done.
+				to_chat(src, buried_message)
+				var/lghost = burial_rite_make_ghost(L)
+				burial_rite_return_ghost_to_lobby(lghost)
+		return FALSE
+	return FALSE

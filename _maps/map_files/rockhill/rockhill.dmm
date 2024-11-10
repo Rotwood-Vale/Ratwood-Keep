@@ -1903,10 +1903,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
-"bMt" = (
-/obj/structure/fermenting_barrel/random/water,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "bNm" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -2365,10 +2361,6 @@
 "clE" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/shelter/mountains)
-"cmj" = (
-/obj/machinery/tanningrack,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "cmC" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -9561,7 +9553,7 @@
 /area/rogue/indoors/town)
 "iDP" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "blacksmith"
+	lockid = "blacksmith"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town/dwarfin)
@@ -11365,7 +11357,7 @@
 /area/rogue/indoors/town/church)
 "kkS" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "seamster"
+	lockid = "seamster"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town)
@@ -20738,7 +20730,7 @@
 /area/rogue/indoors/town/manor)
 "sEb" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "farm"
+	lockid = "farm"
 	},
 /turf/closed/wall/mineral/rogue/wooddark/end{
 	dir = 8
@@ -21687,10 +21679,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "tvv" = (
-/obj/structure/rack/rogue,
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
+/obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "tvH" = (
@@ -25275,7 +25267,7 @@
 /area/rogue/indoors/town/bath)
 "wFq" = (
 /obj/structure/roguemachine/vendor{
-	keycontrol = "towner_blacksmith"
+	lockid = "towner_blacksmith"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town)
@@ -300908,10 +300900,10 @@ wbg
 wVI
 kkS
 nDD
-bMt
+rNm
 thT
 tvv
-cmj
+nqr
 pYa
 iCC
 evo

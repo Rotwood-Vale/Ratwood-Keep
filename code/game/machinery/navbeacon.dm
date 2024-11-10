@@ -13,7 +13,7 @@
 	armor = list("blunt" = 70, "slash" = 70, "stab" = 70, "bullet" = 70, "laser" = 70, "energy" = 70, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80)
 
 	var/open = FALSE		// true if cover is open
-	var/locked = TRUE		// true if controls are locked
+	locked = TRUE		// true if controls are locked
 	var/freq = FREQ_NAV_BEACON
 	var/location = ""	// location response text
 	var/list/codes		// assoc. list of transponder codes

@@ -38,7 +38,7 @@
 	integrity_failure = 0.5
 	armor = list("blunt" = 50, "slash" = 45, "stab" = 40, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90)
 
-	var/locked = TRUE			//if the turret's behaviour control access is locked
+	locked = TRUE			//if the turret's behaviour control access is locked
 	var/controllock = FALSE		//if the turret responds to control panels
 
 	var/installation = /obj/item/gun/energy/e_gun/turret		//the type of weapon installed by default
@@ -789,7 +789,7 @@
 	density = FALSE
 	var/enabled = 1
 	var/lethal = 0
-	var/locked = TRUE
+	locked = TRUE
 	var/control_area = null //can be area name, path or nothing.
 	var/ailock = 0 // AI cannot use this
 	var/shoot_cyborgs = FALSE

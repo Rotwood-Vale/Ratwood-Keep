@@ -474,3 +474,12 @@
 	eyes.update_accessory_colors()
 	if(eyes.owner)
 		eyes.owner.update_body_parts(TRUE)
+
+/obj/item/organ/eyes/robotic/wooden
+	name = "wooden eyeball"
+	desc = "This is just a wooden ball."
+	icon_state = "weyeball"
+	eye_color = "#663702"
+	tint = INFINITY
+	sight_flags = BLIND
+	metalizer_result = /obj/item/ammo_casing/caseless/rogue/bullet

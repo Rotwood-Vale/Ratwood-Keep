@@ -42,6 +42,20 @@
 
 	return colors
 
+/datum/body_marking/flushed_cheeks
+	icon = 'icons/mob/body_markings/other_markings.dmi'
+	name = "Flushed Cheeks"
+	icon_state = "flushed_cheeks"
+	default_color = "FF0000"
+	affected_bodyparts = HEAD
+
+/datum/body_marking/eyeliner
+	icon = 'icons/mob/body_markings/other_markings.dmi'
+	name = "Eyeliner"
+	icon_state = "eyeliner"
+	default_color = "FF0000"
+	affected_bodyparts = HEAD
+
 /datum/body_marking/plain
 	icon = 'icons/mob/body_markings/plain_markings.dmi'
 	name = "Plain"
