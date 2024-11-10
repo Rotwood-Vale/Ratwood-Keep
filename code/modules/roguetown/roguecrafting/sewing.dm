@@ -240,9 +240,9 @@
 	name = "surcoat (guard) - (2 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/stabard/guard)
 
-/datum/crafting_recipe/roguetown/sewing/stabard/bog
-	name = "surcoat (bog) - (2 cloths, fiber; JOURNEYMAN)"
-	result = list(/obj/item/clothing/cloak/stabard/bog)
+/datum/crafting_recipe/roguetown/sewing/cloak/vanguard
+	name = "cloak (vanguard) - (2 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/raincloak/vanguard)
 
 /datum/crafting_recipe/roguetown/sewing/tabard
 	name = "tabard (2 cloths, fiber; JOURNEYMAN)"
