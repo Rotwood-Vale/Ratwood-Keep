@@ -639,7 +639,7 @@
 					return
 				if(ishuman(L))
 					var/mob/living/carbon/human/H = L
-					if(!H.check_armor_skill())
+					if(!H.check_armor_skill() || H.legcuffed)
 						return
 			m_intent = MOVE_INTENT_RUN
 	if(hud_used && hud_used.static_inventory)
