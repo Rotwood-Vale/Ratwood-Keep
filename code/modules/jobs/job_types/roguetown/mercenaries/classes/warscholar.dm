@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/mercenary/warscholar
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/warscholar.ogg'
-	
+
 /datum/outfit/job/roguetown/mercenary/warscholar
 	var/detailcolor
 	allowed_patrons = list(/datum/patron/old_god)
@@ -71,8 +71,8 @@
 			H.mind.adjust_spellpoints(2)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			r_hand = /obj/item/rogueweapon/woodstaff/naledi
-				
-			
+
+
 			head = /obj/item/clothing/head/roguetown/roguehood/hierophant
 			cloak = /obj/item/clothing/cloak/hierophant
 			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/hierophant
@@ -145,6 +145,7 @@
 			backr = /obj/item/storage/backpack/rogue/satchel/black
 			head = /obj/item/clothing/head/roguetown/roguehood/shalal/black
 			cloak = /obj/item/clothing/cloak/half
+			H.grant_language(/datum/language/celestial
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			else
