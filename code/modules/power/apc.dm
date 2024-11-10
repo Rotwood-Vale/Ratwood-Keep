@@ -75,7 +75,7 @@
 	var/charging = APC_NOT_CHARGING
 	var/chargemode = 1
 	var/chargecount = 0
-	var/locked = TRUE
+	locked = TRUE
 	var/coverlocked = TRUE
 	var/aidisabled = 0
 	var/tdir = null

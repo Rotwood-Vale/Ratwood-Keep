@@ -16,7 +16,7 @@
 	light_color = LIGHT_COLOR_LAVA
 	var/open = FALSE
 	var/changing_openness = FALSE
-	var/locked = FALSE
+	locked = FALSE
 	var/static/mutable_appearance/top_overlay
 	var/static/mutable_appearance/door_overlay
 	var/static/mutable_appearance/dais_overlay
