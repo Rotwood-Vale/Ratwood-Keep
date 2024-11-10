@@ -23308,6 +23308,10 @@
 "wCd" = (
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
+"wCB" = (
+/obj/structure/roguemachine/scomm/r,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "wDa" = (
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/rtfield)
@@ -68478,7 +68482,7 @@ hvn
 rjw
 hIP
 pJn
-pJn
+sas
 pIO
 pJn
 pJn
@@ -69247,7 +69251,7 @@ wze
 cxb
 cxb
 cxb
-cxb
+wCB
 cxb
 cxb
 cxb
