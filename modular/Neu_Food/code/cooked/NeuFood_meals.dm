@@ -374,6 +374,7 @@
 
 /*	.................   Cooked rat   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/friedrat/plated
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	desc = "The beggar's feast."
 	icon_state = "cookedrat_plated"
 	item_state = "plate_food"
