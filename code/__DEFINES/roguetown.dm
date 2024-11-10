@@ -224,6 +224,8 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define CTAG_HEIR			"CAT_HEIR"			// Prince(cess) class - Handles Heir class selector
 #define CTAG_SQUIRE			"CAT_SQUIRE"		// Squire class - Handles Squire class selector
 #define CTAG_MARSHAL		"CAT_MARSHAL"		// Marshal class
+#define CTAG_SENESCHAL		"CAT_SENSCHAL"		// Seneschal's aesthetic choices. 
+#define CTAG_SERVANT		"CAT_SERVANT"		// Servant's aesthetic choices. 
 
 /*
 	Defines for the triumph buy datum categories

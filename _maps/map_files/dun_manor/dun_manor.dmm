@@ -401,10 +401,9 @@
 /obj/item/candle/yellow,
 /obj/item/candle/yellow,
 /obj/item/flint,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "asT" = (
@@ -635,6 +634,12 @@
 	},
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/manor)
+"aDr" = (
+/obj/structure/fermenting_barrel/water,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
 /area/rogue/indoors/town/manor)
 "aDy" = (
 /obj/machinery/light/rogue/torchholder/r,
@@ -2322,6 +2327,16 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
+"ckM" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/structure/fluff/walldeco/stone{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/manor)
 "clq" = (
 /obj/structure/table/wood{
 	icon_state = "map3"
@@ -6926,6 +6941,9 @@
 "gJj" = (
 /obj/structure/closet/crate/drawer/random,
 /obj/machinery/light/rogue/wallfire/candle/l,
+/obj/machinery/light/rogue/wallfire{
+	pixel_y = 32
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -11331,7 +11349,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "manor";
-	name = "Head Butler's Quarters"
+	name = "Senescal's Quarters"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -11641,13 +11659,6 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
-"lfR" = (
-/obj/structure/fluff/walldeco/stone{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/manor)
 "lfT" = (
 /obj/effect/decal/cobbleedge{
 	dir = 5
@@ -12884,6 +12895,10 @@
 	icon_state = "plating2"
 	},
 /area/rogue/indoors/town/dwarfin)
+"mnF" = (
+/obj/structure/closet/crate/roguecloset,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/manor)
 "mnG" = (
 /obj/structure/closet/crate/chest/wicker{
 	opened = 1
@@ -13246,7 +13261,6 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
 "mJl" = (
-/obj/structure/roguemachine/scomm,
 /obj/structure/chair/bench/couch,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -14570,6 +14584,10 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/shop)
+"nWE" = (
+/obj/structure/fermenting_barrel/beer,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/manor)
 "nWK" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -15543,7 +15561,11 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/item/book/rogue/cardgame,
+/obj/item/natural/feather{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/obj/item/paper,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "oRQ" = (
@@ -15856,6 +15878,16 @@
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
+"piC" = (
+/obj/structure/closet/crate/roguecloset,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/roguekey/manor,
+/obj/item/roguekey/manor,
+/obj/item/roguekey/manor,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor)
 "pja" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -17040,8 +17072,6 @@
 	pixel_x = -6;
 	pixel_y = 12
 	},
-/obj/item/roguekey/manor,
-/obj/item/roguekey/manor,
 /obj/item/rogueweapon/huntingknife/chefknife,
 /obj/item/book/rogue/yeoldecookingmanual{
 	pixel_x = 10
@@ -17067,6 +17097,18 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
+"qlk" = (
+/obj/effect/decal/cobbleedge{
+	dir = 8
+	},
+/obj/structure/closet/crate/roguecloset,
+/obj/item/rogueweapon/huntingknife/cleaver,
+/obj/item/rogueweapon/huntingknife/cleaver,
+/obj/item/clothing/head/roguetown/chef,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/manor)
 "qlw" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
@@ -17677,7 +17719,6 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "qRB" = (
-/obj/structure/roguemachine/scomm/r,
 /obj/effect/landmark/start/butler,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -18377,15 +18418,6 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town)
-"rCW" = (
-/obj/effect/decal/cobbleedge{
-	dir = 8
-	},
-/obj/structure/closet/crate/chest,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/manor)
 "rCZ" = (
 /obj/structure/fluff/railing/border{
 	dir = 8;
@@ -19227,7 +19259,6 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
-/obj/item/reagent_containers/food/snacks/butter,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/potato/rogue,
 /obj/item/reagent_containers/food/snacks/grown/potato/rogue,
@@ -19238,9 +19269,11 @@
 /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
 /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
 /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+/obj/item/reagent_containers/food/snacks/butter,
 /obj/effect/decal/cobbleedge{
 	dir = 8
 	},
+/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -19653,10 +19686,11 @@
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/cooking/platter,
 /obj/item/cooking/platter,
-/obj/item/reagent_containers/peppermill,
 /obj/effect/decal/cobbleedge{
 	dir = 4
 	},
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -20040,6 +20074,7 @@
 /area/rogue/indoors/town/dwarfin)
 "tfJ" = (
 /obj/structure/chair/bench/couchablack,
+/obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/manor)
 "tfW" = (
@@ -22098,6 +22133,7 @@
 /area/rogue/indoors/town/manor)
 "vsU" = (
 /obj/structure/table/wood,
+/obj/item/book/rogue/cardgame,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "vtR" = (
@@ -22450,7 +22486,6 @@
 /obj/effect/decal/cobbleedge{
 	dir = 4
 	},
-/obj/machinery/light/rogue/torchholder/l,
 /obj/structure/closet/crate/chest,
 /obj/item/soap,
 /obj/item/soap,
@@ -23641,14 +23676,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/garrison)
-"wRH" = (
-/obj/machinery/light/rogue/wallfire{
-	pixel_x = -32
-	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/manor)
 "wSa" = (
 /obj/effect/decal/cobbleedge{
 	dir = 6
@@ -24105,21 +24132,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/cheese,
 /obj/item/reagent_containers/food/snacks/rogue/honey,
 /obj/item/reagent_containers/food/snacks/rogue/honey,
-/obj/item/rogueweapon/huntingknife/cleaver{
-	pixel_y = 36;
-	pixel_x = -4;
-	name = "fish cleaver"
-	},
-/obj/item/rogueweapon/huntingknife/cleaver{
-	pixel_y = 36;
-	pixel_x = 4;
-	name = "meat cleaver"
-	},
-/obj/item/rogueweapon/huntingknife/cleaver{
-	pixel_y = 36;
-	pixel_x = 12;
-	name = "cheese cleaver"
-	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -69540,7 +69552,7 @@ vcT
 ycP
 flt
 dPO
-trF
+aDr
 vcT
 hvn
 hvn
@@ -70166,7 +70178,7 @@ vcT
 vcT
 vcT
 qiV
-kXB
+nWE
 uDU
 cap
 vcT
@@ -70632,9 +70644,9 @@ kuB
 cSR
 dEj
 vcT
-mFr
+qlk
 sqp
-rCW
+mFr
 xhJ
 vcT
 geE
@@ -91049,7 +91061,7 @@ hGV
 jvd
 vcT
 mJl
-sHf
+ckM
 vcT
 vcT
 vcT
@@ -91352,7 +91364,7 @@ qhb
 vcT
 vcT
 gJj
-wRH
+gTl
 ygb
 oRM
 vcT
@@ -91362,7 +91374,7 @@ fAW
 vcT
 vcT
 vcT
-lfR
+xDh
 fjC
 fjC
 dPO
@@ -91512,7 +91524,7 @@ qRB
 raP
 dPO
 fjC
-khn
+piC
 vcT
 fAW
 fAW
@@ -94341,8 +94353,8 @@ fjC
 dWm
 vcT
 tfJ
-oYc
 qsa
+mnF
 vcT
 mMX
 dPO
