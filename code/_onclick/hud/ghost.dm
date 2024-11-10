@@ -31,6 +31,9 @@
 /atom/movable/screen/ghost/orbit/rogue/Click(location, control, params)
 	var/mob/dead/observer/G = usr
 	var/paramslist = params2list(params)
+	var/datum/mind/prevmind
+	if(G.mind && !isadminobserver(G))
+		prevmind = G.mind
 	if(paramslist["right"]) // screen objects don't do the normal Click() stuff so we'll cheat
 		if(G.client?.holder)
 			G.follow()
@@ -42,6 +45,7 @@
 				if(istype(G, /mob/dead/observer/rogue/arcaneeye))
 					return
 				if(alert("Travel with the boatman?", "", "Yes", "No") == "Yes")
+
 
 					// Check if the player's job is hiv+
 					var/datum/job/target_job = SSjob.GetJob(G.mind.assigned_role)
@@ -56,6 +60,7 @@
 						var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
 						O.livingname = G.name
 						O.ckey = G.ckey
+						O.prevmind = prevmind
 						SSdroning.area_entered(get_area(O), O.client)
 					G.client.verbs -= GLOB.ghost_verbs
 
@@ -71,6 +76,7 @@
 				var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
 				O.livingname = G.name
 				O.ckey = G.ckey
+				O.prevmind = prevmind
 				SSdroning.area_entered(get_area(O), O.client)
 			G.client.verbs -= GLOB.ghost_verbs
 /*		if(world.time < G.ghostize_time + RESPAWNTIME)
