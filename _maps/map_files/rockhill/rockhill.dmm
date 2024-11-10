@@ -1903,10 +1903,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
-"bMt" = (
-/obj/structure/fermenting_barrel/random/water,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "bNm" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -2365,10 +2361,6 @@
 "clE" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/shelter/mountains)
-"cmj" = (
-/obj/machinery/tanningrack,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "cmC" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -21687,10 +21679,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "tvv" = (
-/obj/structure/rack/rogue,
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
+/obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "tvH" = (
@@ -300908,10 +300900,10 @@ wbg
 wVI
 kkS
 nDD
-bMt
+rNm
 thT
 tvv
-cmj
+nqr
 pYa
 iCC
 evo
