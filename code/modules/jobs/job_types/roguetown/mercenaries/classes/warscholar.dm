@@ -145,7 +145,7 @@
 			backr = /obj/item/storage/backpack/rogue/satchel/black
 			head = /obj/item/clothing/head/roguetown/roguehood/shalal/black
 			cloak = /obj/item/clothing/cloak/half
-			H.grant_language(/datum/language/celestial
+			H.grant_language(/datum/language/celestial)
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			else
