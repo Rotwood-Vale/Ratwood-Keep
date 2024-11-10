@@ -629,3 +629,9 @@
 	icon_state = "monkleather"
 	item_state = "monkleather"
 	desc = "Tight boiled leathers that stretch and fit to one's frame perfectly."
+
+/obj/item/clothing/suit/roguetown/armor/brigandine/sheriff/coat
+	name = "coat of the commander"
+	desc = "A thick boiled leather surcoat with plates concealed in it's many great folds. It weighs a ton and takes a great man to wear."
+	icon_state = "leathercoat"
+	item_state = "leathercoat"
