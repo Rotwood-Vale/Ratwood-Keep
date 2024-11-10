@@ -768,3 +768,12 @@
 				"eastabove" = 1,
 				"westabove" = 0,
 				)
+
+/obj/item/rogueweapon/sword/long/oathkeeper
+	name = "Oathkeeper"
+	desc = "An ornate golden blade with a ruby embedded in the hilt. Granted to the Knight Commander for their valiant service to the crown."
+	sellprice = 140
+	force = 26
+	force_wielded = 35
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	icon_state = "kingslayer"
