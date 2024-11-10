@@ -382,7 +382,7 @@
 	sec_hud_set_security_status()
 	..()
 
-/mob/living/carbon/human/proc/equipOutfit(outfit, visualsOnly = FALSE)
+/mob/living/carbon/human/proc/equipOutfit(outfit, visualsOnly = FALSE, host_job)
 	var/datum/outfit/O = null
 
 	if(ispath(outfit))
