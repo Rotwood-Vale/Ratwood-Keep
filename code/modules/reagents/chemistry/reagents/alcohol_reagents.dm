@@ -2134,24 +2134,28 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 15
 	taste_description = "cheap pisswater"
 	color = "#DBD77F"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/beer/hagwoodbitter
 	name = "Hagwood Bitter"
 	boozepwr = 25
 	taste_description = "dull crispness"
 	color = "#BBB525"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/beer/blackgoat
 	name = "Black Goat Kriek"
 	boozepwr = 25
 	taste_description = "overwhelming sourness"
 	color = "#401806"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/beer/onion
 	name = "Ratkept Onin Cognac"
 	boozepwr = 10
 	taste_description = "spicy sweet malty overtones"
 	color = "#f1b5ff"
+	quality = DRINK_NICE
 
 // Elf Production - LEAF-LOVERS MOTHERFUCKER
 
@@ -2160,6 +2164,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 5
 	taste_description = "subtle herbacious undertones"
 	color = "#5D8A8A"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/beer/fireleaf // cabbbage
 	name = "Fireleaf"
@@ -2174,12 +2179,14 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 30
 	taste_description = "buttery richness"
 	color = "#5D8A8A"
+	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/beer/stonebeards
 	name = "Stonebeard Reserve"
 	boozepwr = 40
 	taste_description = "potent oatlike liquor"
 	color = "#5D8A8A"
+	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/beer/voddena // Not vodka. Trust me.
 	name = "Voddena"
@@ -2202,18 +2209,21 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 30
 	taste_description = "sweet white wine"
 	color = "#F3ED91"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/beer/redwine
 	name = "Red Wine"
 	boozepwr = 30
 	taste_description = "tannin-stricken wine"
 	color = "#4A1111"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/beer/jackberrywine
 	name = "Jackberry Wine"
 	boozepwr = 15
 	taste_description = "sickly sweet young wine"
 	color = "#3F2D45"
+	quality = DRINK_NICE
 
 
 // Elf Production - Berries & Herbal
@@ -2223,12 +2233,14 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 15
 	taste_description = "delectable fruity notes"
 	color = "#6C0000"
+	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/beer/elfblue
 	name = "Valmora Blue"
 	boozepwr = 50
 	taste_description = "saintly sweetness"
 	color = "#2C9DAF"
+	quality = DRINK_FANTASTIC
 
 //AZURE DRINKS
 /datum/reagent/consumable/ethanol/beer/jagdtrunk // JÄGERMEISTER!!!!
@@ -2236,30 +2248,35 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 55  // gotta be stronk
 	taste_description = "spicy herbal remedy"
 	color = "#331f18"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/beer/apfelweinheim
 	name = "Appelheimer"
 	boozepwr = 45
 	taste_description = "tart crispness and mellow sweetness"
 	color = "#e0cb55"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/beer/rtoper
 	name = "Rockhill Toper"
 	boozepwr = 40
 	taste_description = "overwhelming tartness"
 	color = "#e0a400"
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/beer/nred
 	name = "Norwardine Red"
 	boozepwr = 30
 	taste_description = "heavy caramel note and slight bitterness"
 	color = "#543633"
+	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/beer/gronnmead
-	name = "Ragnars brew"
+	name = "Ragnar's Brew"
 	boozepwr = 35
 	taste_description = "notes of honey and red berries" //I love red mead ok...
 	color = "#772C48"
+	quality = DRINK_GOOD
 
 //Avar boozes
 
@@ -2268,15 +2285,17 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 30
 	taste_description = "spicy honey"
 	color = "#e0a400"
+	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/beer/avarrice
 	name = "Makkolir"
 	boozepwr = 30
 	taste_description = "tangy sweetness"
 	color = "#ddcbc9"
+	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/beer/saigamilk //No way, kumys from avar!!!
-	name = "Bökhiin arkhi"
+	name = "Bökhiin Arkhi"
 	boozepwr = 15
 	taste_description = "bubbly, sour salt"
 	color = "#dddddd"
@@ -2294,9 +2313,11 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	boozepwr = 50
 	taste_description = "dry sweetness"
 	color = "#ccd7e0"
+	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/beer/kgunplum
 	name = "Umeshu"
 	boozepwr = 30
 	taste_description = "a mix of sweet and sour"
 	color = "#ddb99b"
+	quality = DRINK_VERYGOOD

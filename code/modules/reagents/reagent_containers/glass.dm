@@ -66,6 +66,13 @@
 						span_danger("[user] feeds you something."))
 			log_combat(user, M, "fed", reagents.log_list())
 		else
+			// check to see if we're a noble drinking soup
+			if (ishuman(user) && istype(src, /obj/item/reagent_containers/glass/bowl))
+				var/mob/living/carbon/human/human_user = user
+				if (human_user.is_noble()) // egads we're an unmannered SLOB
+					human_user.add_stress(/datum/stressevent/noble_bad_manners)
+					if (prob(25))
+						to_chat(human_user, span_red("I've got better manners than this..."))
 			to_chat(user, span_notice("I swallow a gulp of [src]."))
 		addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), M, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
 		playsound(M.loc,pick(drinksounds), 100, TRUE)
