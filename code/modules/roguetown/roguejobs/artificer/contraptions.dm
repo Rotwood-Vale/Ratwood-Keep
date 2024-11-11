@@ -57,7 +57,7 @@
 		. += span_warning("The contraption has [current_charge] charges left.")
 	if(!current_charge)
 		. += span_warning("This contraption requires a new [initial(accepted_power_source.name)] to function.")
-	if(misfire_chance)
+	if(misfire_chance && skill < 6)
 		if(skill > 2)
 			. += span_warning("You calculate this contraptions chance of failure to be anywhere between [max(0, (misfire_chance - skill) - rand(4))]% and [max(2, (misfire_chance - skill) + rand(3))]%.")
 		else
@@ -197,7 +197,7 @@
 	shake_camera(user, 1, 1)
 	playsound(src, 'sound/magic/swap.ogg', 100, TRUE)
 	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 2))
-	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
+	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)) && skill < 6) //legendary artificers dont misfire
 		misfire(O, user)
 	return
 
@@ -277,7 +277,7 @@
 	playsound(O, pick('sound/combat/hits/burn (1).ogg','sound/combat/hits/burn (2).ogg'), 100)
 	new /obj/effect/decal/cleanable/ash(turf)
 	O.moveToNullspace()
-	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
+	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)) && skill < 6) //legendary artificers dont misfire
 		misfire(O, user)
 	addtimer(CALLBACK(O, PROC_REF(popcorn_smelt_result), turf), 20)
 	return
