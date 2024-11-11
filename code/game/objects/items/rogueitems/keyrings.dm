@@ -155,7 +155,7 @@
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
 
 /obj/item/keyring/dungeoneer
-	keys = list(/obj/item/key/keep_dungeon, /obj/item/key/keep_dungeon_torture, /obj/item/key/town_dungeon, /obj/item/key/bog_dungeon, /obj/item/key/manor, /obj/item/key/keep_barracks)
+	keys = list(/obj/item/key/keep_dungeon, /obj/item/key/keep_dungeon_torture, /obj/item/key/town_dungeon, /obj/item/key/bog_gatehouse, /obj/item/key/manor, /obj/item/key/keep_barracks)
 
 /obj/item/keyring/veteran
 	keys = list(/obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
