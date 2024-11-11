@@ -191,7 +191,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
-/turf/open/floor/plating/ashplanet/rocky,
+/turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/beach)
 "afx" = (
 /obj/effect/decal/cleanable/cobweb,
