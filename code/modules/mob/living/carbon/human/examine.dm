@@ -127,7 +127,7 @@
 				. += span_beautiful_masc("[m1] handsome!")
 			if (SHE_HER)
 				. += span_beautiful_fem("[m1] beautiful!")
-			if (THEY_THEM || THEY_THEM_F || IT_ITS)
+			if (THEY_THEM, THEY_THEM_F, IT_ITS)
 				. += span_beautiful_nb("[m1] good-looking!")
 
 	if(user != src)
