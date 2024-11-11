@@ -20,8 +20,8 @@
 	throw_range = 1
 
 /obj/item/cart_upgrade
-	name = "Exemple upgrade cog"
-	desc = "Exemple upgrade."
+	name = "Example upgrade cog"
+	desc = "Example upgrade."
 	icon_state = "upgrade"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	var/ulevel = 0
@@ -31,12 +31,6 @@
 	desc = "A cog that can increase the carry capacity of a wooden cart."
 	icon_state = "upgrade"
 	ulevel = 1
-	
-	Initialize()
-		. = ..()
-		ApplyFilters()
-
-/proc/ApplyFilters()
 	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(26, 13, 150, 150))
 
 /obj/item/cart_upgrade/level_2
@@ -44,12 +38,6 @@
 	desc = "A cog that can further increase the carry capacity of a wooden cart. The first upgrade is required for this one to function."
 	icon_state = "upgrade2"
 	ulevel = 2
-	
-	Initialize()
-		. = ..()
-		ApplyFilters()
-
-/proc/ApplyFilters()
 	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(32, 196, 218, 200))
 
 /obj/structure/handcart/examine(mob/user)
