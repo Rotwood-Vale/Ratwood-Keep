@@ -209,6 +209,10 @@
 			backr = /obj/item/rogue/instrument/accord
 		if("Guitar")
 			backr = /obj/item/rogue/instrument/guitar
+		if("Hurdy-Gurdy")
+			backr = /obj/item/rogue/instrument/hurdygurdy
+		if("Viola")
+			backr = /obj/item/rogue/instrument/viola
 
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
