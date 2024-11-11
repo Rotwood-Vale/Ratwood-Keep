@@ -197,7 +197,7 @@
 			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 			H.mind.RemoveSpell(/obj/effect/proc_holder/spell/targeted/churn)//End of Azure Peak Update
 
-	var/weapons = list("Harp","Lute","Accordion","Guitar")
+	var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)

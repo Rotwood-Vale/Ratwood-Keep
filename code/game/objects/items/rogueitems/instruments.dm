@@ -158,3 +158,23 @@
 	song_list = list("Barbarian's Moot" = 'sound/music/instruments/drum (1).ogg',
 	"Muster the Wardens" = 'sound/music/instruments/drum (2).ogg',
 	"The Earth That Quakes" = 'sound/music/instruments/drum (3).ogg')
+
+/obj/item/rogue/instrument/hurdygurdy
+	name = "hurdy-gurdy"
+	desc = "A knob-driven, wooden string instrument that reminds you of the oceans far."
+	icon_state = "hurdygurdy"
+	song_list = list("Ruler's One Ring" = 'sound/music/instruments/hurdy (1).ogg',
+	"Tangled Trod" = 'sound/music/instruments/hurdy (2).ogg',
+	"Motus" = 'sound/music/instruments/hurdy (3).ogg',
+	"Becalmed" = 'sound/music/instruments/hurdy (4).ogg',
+	"The Bloody Throne" = 'sound/music/instruments/hurdy (5).ogg')
+
+/obj/item/rogue/instrument/viola
+	name = "viola"
+	desc = "The prim and proper Viola, every prince's first instrument taught."
+	icon_state = "viola"
+	song_list = list("Far Flung Tale" = 'sound/music/instruments/viola (1).ogg',
+	"G Major Cello Suite No. 1" = 'sound/music/instruments/viola (2).ogg',
+	"Ursine's Home" = 'sound/music/instruments/viola (3).ogg',
+	"Mead, Gold and Blood" = 'sound/music/instruments/viola (4).ogg',
+	"Gasgow's Reel" = 'sound/music/instruments/viola (5).ogg')
