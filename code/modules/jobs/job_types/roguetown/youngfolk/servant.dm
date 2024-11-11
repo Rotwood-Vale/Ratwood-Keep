@@ -19,6 +19,7 @@
 	min_pq = -10
 	max_pq = null
 	round_contrib_points = 2
+	advjob_examine = TRUE
 
 /datum/job/roguetown/servant/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
