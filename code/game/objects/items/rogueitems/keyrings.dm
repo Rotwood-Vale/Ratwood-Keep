@@ -166,6 +166,9 @@
 /obj/item/keyring/velder
 	keys = list(/obj/item/key/velder, /obj/item/key/blacksmith/town, /obj/item/key/farm, /obj/item/key/butcher)
 
+/obj/item/keyring/Butcher
+	keys = list(/obj/item/key/farm, /obj/item/key/butcher)
+
 /obj/item/keyring/vtavern
 	keys = list(/obj/item/key/tavern/village, /obj/item/key/roomvi/village, /obj/item/key/roomv/village, /obj/item/key/roomiv/village, /obj/item/key/roomiii/village, /obj/item/key/roomii/village, /obj/item/key/roomi/village)
 
