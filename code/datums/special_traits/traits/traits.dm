@@ -12,7 +12,6 @@
 
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DARKVISION, "[type]")
-	character.change_stat("perception", 2)
 
 /datum/special_trait/thickskin
 	name = "Tough"
