@@ -812,8 +812,7 @@
 /area/rogue/indoors/town/manor)
 "aHr" = (
 /obj/structure/fluff/railing/border{
-	dir = 6;
-	icon_state = "border"
+	dir = 6
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -1361,6 +1360,10 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
+"bgz" = (
+/mob/living/carbon/human/species/human/northern/bum,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave)
 "bgI" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/blocks,
@@ -20002,8 +20005,7 @@
 /area/rogue/outdoors/rtfield)
 "rda" = (
 /obj/structure/fluff/railing/border{
-	dir = 5;
-	icon_state = "border"
+	dir = 5
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -20545,6 +20547,10 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
+"rAb" = (
+/mob/living/carbon/human/species/human/northern/bum,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave)
 "rAc" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
@@ -224950,7 +224956,7 @@ vuH
 cdX
 cdX
 cdX
-fjw
+rAb
 vRu
 dLD
 bIl
@@ -225745,7 +225751,7 @@ vRu
 vRu
 rSC
 rSC
-vuH
+bgz
 cjQ
 vuH
 vuH
