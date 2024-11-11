@@ -136,6 +136,8 @@
 			target.STAPER -= totalstatshift
 			user.STAPER += totalstatshift
 			spawn(1 MINUTES) // timer before our stats shift back to normal.
+				if(!user || !target)
+					return
 				user.remove_filter(EQUALIZED_GLOW)
 				target.remove_filter(EQUALIZED_GLOW)
 				target.STASPD += totalstatshift
