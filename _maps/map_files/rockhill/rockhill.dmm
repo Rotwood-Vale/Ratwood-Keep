@@ -13781,7 +13781,7 @@
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
-/turf/closed,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "lQx" = (
 /obj/structure/bars/passage{
@@ -19704,10 +19704,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/outdoors/beach)
-"qSI" = (
-/obj/effect/mob_spawn/human/skeleton/alive,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
 "qSU" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/beach)
@@ -395082,7 +395078,7 @@ qbG
 pBo
 lVe
 dWf
-qSI
+tWR
 xou
 lQu
 jCh
