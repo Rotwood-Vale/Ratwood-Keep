@@ -10858,10 +10858,7 @@
 /obj/item/key/bog_gatehouse,
 /obj/item/key/bog_gatehouse,
 /obj/item/key/bog_gatehouse,
-/obj/item/key/bog_armory,
 /obj/item/key/bog_master,
-/obj/item/key/bog_armory,
-/obj/item/key/bog_armory,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "jnI" = (
@@ -19045,12 +19042,6 @@
 /obj/structure/rogue/trophy/deer,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
-"qmy" = (
-/obj/structure/closet/crate/chest/gold{
-	lockid = "bog_master"
-	},
-/turf/closed/mineral/rogue,
-/area/rogue/outdoors/mountains)
 "qmK" = (
 /obj/structure/mineral_door/wood/red{
 	lockid = "farm";
@@ -21104,10 +21095,6 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
-"rZw" = (
-/obj/effect/landmark/start/prisonerb,
-/turf/closed/mineral/random/rogue,
-/area/rogue/under/cavewet/bogcaves)
 "rZy" = (
 /obj/structure/chair/bench/couch,
 /obj/machinery/light/rogue/wallfire/candle/l,
@@ -21790,13 +21777,6 @@
 /obj/structure/fluff/statue/gargoyle/candles,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-"sCS" = (
-/obj/structure/mineral_door/wood/red{
-	lockid = "bog_barracks";
-	name = "Storage"
-	},
-/turf/closed/mineral/random/rogue,
-/area/rogue/under/deep_caverns)
 "sDl" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -69070,7 +69050,7 @@ kXQ
 kXQ
 kXQ
 kXQ
-sCS
+kXQ
 kXQ
 kXQ
 kXQ
@@ -193296,7 +193276,7 @@ vRu
 vRu
 gIc
 whb
-rZw
+whb
 whb
 whb
 whb
@@ -379815,7 +379795,7 @@ erZ
 erZ
 erZ
 jEY
-qmy
+jEY
 jEY
 jEY
 jEY
