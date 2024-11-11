@@ -20833,6 +20833,12 @@
 /obj/structure/fluff/wallclock/r,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
+"rMU" = (
+/obj/structure/roguemachine/vendor{
+	lockid = "tavern"
+	},
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town/tavern)
 "rNm" = (
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
@@ -291271,7 +291277,7 @@ fje
 ajv
 xIh
 qQx
-lyG
+rMU
 edF
 ujj
 ujj
