@@ -52,6 +52,7 @@
 	guard.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
