@@ -273,6 +273,7 @@
 	integrity_failure = 0.1
 	night_variants = FALSE
 	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/roguewindow/curtain
 	icon_state = "window-solid-dir"
