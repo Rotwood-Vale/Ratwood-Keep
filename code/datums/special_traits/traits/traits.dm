@@ -584,6 +584,7 @@
 /datum/special_trait/reps_redemption
 	name = "Reps for Redemption"
 	greet_text = span_notice("Pain has finally transformed into gain.")
+	req_text = "Be a Church Role"
 	allowed_jobs = list(CHURCH_ROLES)
 	weight = 50
 
