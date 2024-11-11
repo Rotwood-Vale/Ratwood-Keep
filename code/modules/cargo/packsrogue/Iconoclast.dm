@@ -26,6 +26,11 @@
 	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine)
 
+/datum/supply_pack/rogue/Iconoclast/halfplate
+	name = "Half-Plate"
+	cost = 30
+	contains = list(/obj/item/clothing/suit/roguetown/armor/plate)
+
 /datum/supply_pack/rogue/Iconoclast/coatofplates
 	name = "Coat of plates"
 	cost = 50
