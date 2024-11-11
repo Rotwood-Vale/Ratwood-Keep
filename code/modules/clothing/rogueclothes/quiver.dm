@@ -13,7 +13,6 @@
 	var/list/ammo = list()
 	sewrepair = TRUE
 	var/list/ammo_type
-	var/weapon_type
 
 /obj/item/ammo_holder/quiver
 	name = "quiver"
