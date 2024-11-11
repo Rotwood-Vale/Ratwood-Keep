@@ -11499,7 +11499,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "manor";
-	name = "Senescal's Quarters"
+	name = "Seneschal's Quarters"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -13066,10 +13066,6 @@
 	icon_state = "plating2"
 	},
 /area/rogue/indoors/town/dwarfin)
-"mnF" = (
-/obj/structure/closet/crate/roguecloset,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town/manor)
 "mnG" = (
 /obj/structure/closet/crate/chest/wicker{
 	opened = 1
@@ -14802,10 +14798,6 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/shop)
-"nWE" = (
-/obj/structure/fermenting_barrel/beer,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/manor)
 "nWK" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -16128,16 +16120,6 @@
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
-"piC" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/roguekey/manor,
-/obj/item/roguekey/manor,
-/obj/item/roguekey/manor,
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/manor)
 "pja" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -23755,10 +23737,6 @@
 "wCd" = (
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
-"wCB" = (
-/obj/structure/roguemachine/scomm/r,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/town)
 "wDa" = (
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/rtfield)
@@ -68951,8 +68929,8 @@ rjw
 xJI
 rjw
 hIP
-pJn
-sas
+pkG
+oqg
 pIO
 pkG
 pkG
@@ -69714,24 +69692,24 @@ jSY
 vcT
 vcT
 vcT
-hvn
-hvn
-cxb
-wze
-cxb
-cxb
-cxb
-wCB
-cxb
-cxb
-cxb
-cxb
-cxb
-cxb
-axE
-hvn
-dRZ
-gog
+xJI
+xJI
+dUc
+uvk
+dUc
+dUc
+dUc
+bsk
+dUc
+dUc
+dUc
+dUc
+dUc
+dUc
+sDT
+xJI
+nKB
+nGd
 fVT
 nGd
 dUc
@@ -70652,7 +70630,7 @@ vcT
 vcT
 vcT
 qiV
-nWE
+kXB
 uDU
 cap
 vcT
@@ -91998,7 +91976,7 @@ qRB
 raP
 dPO
 fjC
-piC
+hvm
 vcT
 fAW
 fAW
@@ -94828,7 +94806,7 @@ dWm
 vcT
 tfJ
 qsa
-mnF
+jdf
 vcT
 mMX
 dPO
