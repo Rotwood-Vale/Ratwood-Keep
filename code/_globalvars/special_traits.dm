@@ -63,7 +63,6 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if(!trait_type)
 		return
 	apply_special_trait_if_able(character, player, trait_type)
-	player.prefs.next_special_trait = null
 
 /proc/apply_special_trait_if_able(mob/living/carbon/human/character, client/player, trait_type)
 	if(!character_eligible_for_trait(character, player, trait_type))
@@ -139,7 +138,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	return pickweight(eligible_weight)
 
 /proc/apply_special_trait(mob/living/carbon/human/character, trait_type, silent)
-    var/datum/special_trait/special = SPECIAL_TRAIT(trait_type)
-    special.on_apply(character, silent)
-    if(!silent && special.greet_text)
-        to_chat(character, special.greet_text)
+	var/datum/special_trait/special = SPECIAL_TRAIT(trait_type)
+	special.on_apply(character, silent)
+	if(!silent && special.greet_text)
+		to_chat(character, special.greet_text)
