@@ -19691,6 +19691,7 @@
 	},
 /obj/item/cooking/platter,
 /obj/item/cooking/platter,
+/obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
