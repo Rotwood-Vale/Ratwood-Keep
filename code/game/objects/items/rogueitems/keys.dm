@@ -215,6 +215,24 @@
 	icon_state = "brownkey"
 	lockid = "roomvi"
 
+/obj/item/key/fancyroomi
+	name = "fancy room I key"
+	desc = "The key to the fancy room I."
+	icon_state = "brownkey"
+	lockid = "fancyroomi"
+
+/obj/item/key/fancyroomii
+	name = "fancy room II key"
+	desc = "The key to the fancy room II."
+	icon_state = "brownkey"
+	lockid = "fancyroomii"
+
+/obj/item/key/fancyroomiii
+	name = "fancy room III key"
+	desc = "The key to the fancy room III."
+	icon_state = "brownkey"
+	lockid = "fancyroomiii"
+
 /obj/item/key/roomhunt
 	name = "room HUNT key"
 	desc = "This is the HUNT key!"
@@ -370,6 +388,12 @@
 	desc = "This key opens the bog gatehouse."
 	icon_state = "spikekey"
 	lockid = "bog_gatehouse"
+
+/obj/item/key/bog_master
+	name = "Warden's key"
+	desc = "This key opens the Warden's office."
+	icon_state = "spikekey"
+	lockid = "bog_master"
 
 /obj/item/key/bog_barracks
 	name = "bog barracks key"
