@@ -98,7 +98,7 @@
 	childtype = list(/mob/living/simple_animal/hostile/retaliate/rogue/goat/goatlet = 90, /mob/living/simple_animal/hostile/retaliate/rogue/goat/goatletboy = 10)
 	can_buckle = TRUE
 	buckle_lying = 0
-	can_saddle = FALSE
+	can_saddle = TRUE
 	remains_type = /obj/effect/decal/remains/cow
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/get_sound(input)
@@ -226,7 +226,7 @@
 	STASPD = 2
 	can_buckle = TRUE
 	buckle_lying = 0
-	can_saddle = FALSE
+	can_saddle = TRUE
 	tame_chance = 25
 	bonus_tame_chance = 15
 	remains_type = /obj/effect/decal/remains/cow
