@@ -7,7 +7,7 @@
 	icon_state = "lock"
 	w_class = WEIGHT_CLASS_SMALL
 	dropshrink = 0.75
-	var/lockhash = 0
+	lockhash = 0
 
 /obj/item/customlock/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/hammer))

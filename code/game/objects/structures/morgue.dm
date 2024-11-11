@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	max_integrity = 400
 
 	var/obj/structure/tray/connected = null
-	var/locked = FALSE
+	locked = FALSE
 	dir = SOUTH
 	var/message_cooldown
 	var/breakout_time = 600

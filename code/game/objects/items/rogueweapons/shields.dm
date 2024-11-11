@@ -77,6 +77,7 @@
 	dropshrink = 0.8
 	wdefense = 15
 	coverage = 40
+	metalizer_result = /obj/item/cooking/pan
 
 /obj/item/rogueweapon/shield/wood/attack_hand(mob/user)
 	if(!overlays.len)

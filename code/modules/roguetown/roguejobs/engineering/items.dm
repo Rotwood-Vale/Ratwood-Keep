@@ -4,7 +4,7 @@
 	desc = "A cog with teeth meticulously crafted for tight interlocking."
 	icon_state = "gear"
 	w_class = WEIGHT_CLASS_SMALL
-	smeltresult = null
+	smeltresult = /obj/item/ingot/bronze
 	var/obj/structure/linking
 
 /obj/item/roguegear/Destroy()

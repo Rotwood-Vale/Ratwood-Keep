@@ -349,7 +349,7 @@
 	name = "Heraldic Shield (+1 Steel +1 Hide)"
 	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide)
+	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/tower/metal
 	craftdiff = 2
 
@@ -366,23 +366,3 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/shield/buckler
 	craftdiff = 3
-
-/// CROSSBOWS
-/datum/anvil_recipe/weapons/steel/xbow
-	name = "Crossbow (+1 Small Log) (+1 Fiber)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/grown/log/tree/small, /obj/item/natural/fibers)
-	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-
-/datum/anvil_recipe/ammo/iron/bolts
-	name = "Crossbow Bolts 5x (+1 Stick)"
-	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt)
-
-/// BOWS
-/datum/anvil_recipe/ammo/iron/arrows
-	name = "Arrows 5x (+1 Stick)"
-	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron)

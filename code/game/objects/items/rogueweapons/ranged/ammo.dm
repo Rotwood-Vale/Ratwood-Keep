@@ -149,6 +149,7 @@
 	possible_item_intents = list(/datum/intent/use)
 	max_integrity = 0
 	w_class = WEIGHT_CLASS_TINY
+	smeltresult = /obj/item/rogueore/iron
 
 /obj/projectile/bullet/reusable/bullet
 	name = "rune ball"

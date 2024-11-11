@@ -34,6 +34,7 @@
 	if(changeling)
 		changeling.regain_powers()
 
+
 /mob/living/proc/login_fade()
 	set waitfor = FALSE
 	if(!client)

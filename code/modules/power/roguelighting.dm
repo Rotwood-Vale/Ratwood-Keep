@@ -97,6 +97,7 @@
 	max_integrity = 0
 	use_power = NO_POWER_USE
 	pass_flags = LETPASSTHROW
+	smeltresult = /obj/item/ingot/bronze
 
 /obj/machinery/light/roguestreet/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'
