@@ -105,8 +105,8 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/bogguardsman/proc/assign_skills(mob/living/carbon/human/bogger)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)

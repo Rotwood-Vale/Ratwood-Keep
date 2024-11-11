@@ -21,7 +21,7 @@
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard.ogg'
-			
+
 /datum/outfit/job/roguetown/citywatch/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	head = /obj/item/clothing/head/roguetown/helmet/citywatch
@@ -42,12 +42,11 @@
 		assign_skills(H)
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/citywatch/proc/assign_skills(mob/living/carbon/human/guard)
-	guard.mind.adjust_skillrank(/datum/skill/combat/maces, pick(3,4), TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	guard.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE) 
+	guard.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
@@ -56,13 +55,13 @@
 	guard.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	guard.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE) 
+	guard.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	guard.change_stat("strength", 1)
-	guard.change_stat("perception", 2) 
+	guard.change_stat("perception", 2)
 	guard.change_stat("constitution", 1)
 	guard.change_stat("endurance", 1)
 	guard.change_stat("speed", 1)
