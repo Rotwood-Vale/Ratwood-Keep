@@ -75,7 +75,7 @@
 
 /datum/crafting_recipe/roguetown/hunting/quiver
 	name = "quiver"
-	result = /obj/item/quiver
+	result = /obj/item/ammo_holder/quiver
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 2)
 	sellprice = 28
