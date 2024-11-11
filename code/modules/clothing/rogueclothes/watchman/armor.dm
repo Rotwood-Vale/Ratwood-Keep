@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/roguetown/armor/citywatch
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "citywatch armor"
-	desc = "Made of an alloy of blacksteel and some unknown material. Incredibly resilient to all forms of damage. Issued to the Citywatch."
+	desc = "Heavy, well worn armour. Incredibly resilient to all forms of damage. Issued to the Citywatch."
 	icon = 'icons/roguetown/clothing/licensed-infraredbaron/citywatch/armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/citywatch/onmob/armor.dmi'
 	icon_state = "citywatch"

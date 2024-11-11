@@ -1,6 +1,6 @@
 /obj/item/clothing/head/roguetown/helmet/citywatch
 	name = "city watch helmet"
-	desc = "Made of an alloy of blacksteel and some unknown material. Incredibly resilient to all forms of damage. Issued to the Citywatch."
+	desc = "A heavy helmet. Incredibly resilient to all forms of damage. Issued to the Citywatch."
 	icon = 'icons/roguetown/clothing/licensed-infraredbaron/citywatch/head.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/citywatch/onmob/head.dmi'
 	icon_state = "citywatch_helmet"

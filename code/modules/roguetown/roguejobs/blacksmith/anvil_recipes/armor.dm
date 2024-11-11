@@ -85,7 +85,7 @@
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/clothing/head/roguetown/helmet/goblin
 	craftdiff = 2
-	
+
 /datum/anvil_recipe/armor/iron/plategoblin
 	name = "Goblin Mail (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
@@ -162,7 +162,7 @@
 
 /datum/anvil_recipe/armor/steel/platelegs
 	name = "Plated Chausses (+1 Steel)"
-	req_bar = /obj/item/ingot/steel 
+	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/under/roguetown/platelegs
 	craftdiff = 2
@@ -323,6 +323,19 @@
 	name = "Steel Belt"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/storage/belt/rogue/leather/steel
+
+/datum/anvil_recipe/armor/steel/watch_helm
+	name = "Citywatch Helmet (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/citywatch
+
+/datum/anvil_recipe/armor/steel/watch_arm
+	name = "Citywatch Armour (+2 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
+	created_item = /obj/item/clothing/suit/roguetown/armor/citywatch
+	craftdiff = 2
 
 // --------- SILVER -----------
 
