@@ -237,10 +237,20 @@
 	desc = "My home. I watch vigilantly and respond swiftly."
 	icon_state = "buff"
 
+/atom/movable/screen/alert/status_effect/buff/knightbuff
+	name = "Sworn Defender"
+	desc = "I've sworn an oath to defend this castle. My resolve will not waver."
+	icon_state = "buff"
+
 /datum/status_effect/buff/guardbuffone
 	id = "guardbuffone"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/guardbuffone
-	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 2) //dropped perception bonus, was regularly pushing to 17-18 per with statpacks/racial bonuses
+	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 2) 
+
+/datum/status_effect/buff/knightbuff
+	id = "knightbuff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/knightbuff
+	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 2)
 	duration = 50000 //essentially permanent, removes when we're out of the area
 
 /datum/status_effect/buff/guardbuffone/process()
@@ -249,6 +259,13 @@
 	var/area/rogue/our_area = get_area(owner)
 	if(!(our_area.town_area))
 		owner.remove_status_effect(/datum/status_effect/buff/guardbuffone)
+
+/datum/status_effect/buff/knightbuff/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.keep_area))
+		owner.remove_status_effect(/datum/status_effect/buff/knightbuff)
 
 /atom/movable/screen/alert/status_effect/buff/healing
 	name = "Healing Miracle"
