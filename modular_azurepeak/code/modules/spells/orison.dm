@@ -317,17 +317,18 @@
 			if (thing.reagents.holder_full() || (user.devotion.devotion - fatigue_used <= 0))
 				break
 
-			var/water_qty = max(1, holy_skill / 2) + 1
+			var/water_qty = max(1, holy_skill) + 1
 			var/list/water_contents = list(/datum/reagent/water/cursed = water_qty)
 			if(user.patron.undead_hater == TRUE)
 				water_contents = list(/datum/reagent/water/blessed = water_qty)
+
 			var/datum/reagents/reagents_to_add = new()
 			reagents_to_add.add_reagent_list(water_contents)
 			reagents_to_add.trans_to(thing, reagents_to_add.total_volume, transfered_by = user, method = INGEST)
 
 			fatigue_spent += fatigue_used
 			user.rogfat_add(fatigue_used)
-			user.devotion?.update_devotion(-0.5)
+			user.devotion?.update_devotion(-1.0)
 
 			if (prob(80))
 				playsound(user, 'sound/items/fillcup.ogg', 55, TRUE)

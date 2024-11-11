@@ -28,7 +28,7 @@
 
 /obj/item/clothing/gloves/roguetown/fingerless
 	name = "fingerless gloves"
-	desc = ""
+	desc = "Cloth gloves to absorb palm sweat while leaving the fingers free for fine manipulation."
 	icon_state = "fingerless_gloves"
 	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
@@ -134,3 +134,9 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/blacksteel
+
+/obj/item/clothing/gloves/roguetown/angle/pontifex
+	name = "rune-scrybed wrappings"
+	desc = "Paper and cloth bandages enscrybed with powerful naledian runes. They do an ample job of protecting their user's hands in combat."
+	icon_state = "clothwraps"
+	item_state = "clothwraps"

@@ -47,7 +47,10 @@
 			return BULLET_ACT_BLOCK
 		if(isliving(target))
 			var/mob/living/L = target
-			L.electrocute_act(1, src)
+			if(L.STACON <= 14)
+				L.electrocute_act(3, src)
+			else
+				L.electrocute_act(2, src)
 	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning
@@ -95,7 +98,7 @@
 			return BULLET_ACT_BLOCK
 		if(isliving(target))
 			var/mob/living/L = target
-			L.electrocute_act(1, src)
+			L.electrocute_act(3, src)
 	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/bloodsteal
@@ -241,8 +244,8 @@
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 3
-	charge_max = 3 SECONDS
+	chargetime = 1
+	charge_max = 4 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

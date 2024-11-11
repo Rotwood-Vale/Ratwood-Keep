@@ -41,6 +41,7 @@
 		"White" = "#ffffff",
 		"Black" = "#414143",
 		"Light Grey" = "#999999",
+		"Dark Grey" = "#505050",
 		"Mage Grey" = "#6c6c6c",
 		"Mage Red" = "#b8252c",
 		"Mage Blue" = "#4756d8",

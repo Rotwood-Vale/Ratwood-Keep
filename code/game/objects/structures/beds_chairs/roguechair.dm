@@ -302,8 +302,8 @@
 	name = "rolled bedroll"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "bedroll_r"
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 
 /obj/item/bedroll/attack_self(mob/user, params)
 	..()

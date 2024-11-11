@@ -616,3 +616,45 @@
 	smeltresult = /obj/item/ingot/blacksteel
 	armor_class = ARMOR_CLASS_MEDIUM
 	smelt_bar_num = 2
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/hierophant
+	name = "hierophant's shawl"
+	icon_state = "desertrobe"
+	item_state = "desertrobe"
+	desc = "A thick robe intervowen with spell-laced fabrics. Thick and protective while remaining light and breezy; the perfect gear for protecting one from the threats of the sun, the desert and the daemons, yet still allowing one to cast spells aptly."
+	naledicolor = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex
+	name = "pontifex's kaftan"
+	icon_state = "monkleather"
+	item_state = "monkleather"
+	desc = "Tight boiled leathers that stretch and fit to one's frame perfectly."
+
+/obj/item/clothing/suit/roguetown/armor/brigandine/sheriff/coat
+	name = "coat of the commander"
+	desc = "A thick boiled leather surcoat with plates concealed in it's many great folds. It weighs a ton and takes a great man to wear."
+	icon_state = "leathercoat"
+	item_state = "leathercoat"
+	var/picked = FALSE
+	sleeved_detail = TRUE
+	boobed_detail = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/brigandine/sheriff/coat/attack_right(mob/user)
+	if(picked)
+		return
+	var/the_time = world.time
+	var/pickedvalue = input(user, "Select a color", "KINGSLAYER'S GARB") as null|anything in list("Khaki", "Black")
+	if(!pickedvalue)
+		return
+	if(world.time > (the_time + 30 SECONDS))
+		return
+	if(pickedvalue == "Khaki")
+		picked = TRUE
+	else if(pickedvalue == "Black")
+		picked = TRUE
+		icon_state = "bleathercoat"
+		item_state = "bleathercoat"
+		update_icon()
+		if(ismob(loc))
+			var/mob/L = loc
+			L.update_inv_armor()

@@ -37,6 +37,11 @@
 	playsound(get_turf(user), on_use_sound,50,TRUE)
 	charges--
 	if(charges <= 0)
+		var/mob/living/gamer = user
+		var/verbu = "hits"
+		verbu = pick(gamer.used_intent.attack_verb)
+		user.visible_message(span_warning("[user] [verbu] with \the [user.p_their()] [src] for the last time! It smashes into a million pieces, which soon disintegrate..."), \
+			span_notice("My [src] smashes in my hand, disintegrating into the wind!."))
 		qdel(src)
 
 /obj/item/melee/touch_attack/Destroy()

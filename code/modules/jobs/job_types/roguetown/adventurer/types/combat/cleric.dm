@@ -30,6 +30,8 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 		if(/datum/patron/divine/eora) //Eora content from Stonekeep
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
+		if(/datum/patron/inhumen/zizo)
+			H.cmode_music = 'sound/music/combat_cult.ogg'
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
