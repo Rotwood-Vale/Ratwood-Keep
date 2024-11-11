@@ -380,6 +380,7 @@
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	leanable = TRUE
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/bars/CanPass(atom/movable/mover, turf/target)
 	if(isobserver(mover))
@@ -514,6 +515,7 @@
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN | BLOCK_Z_IN_UP
 	attacked_sound = list('sound/combat/hits/onmetal/grille (1).ogg', 'sound/combat/hits/onmetal/grille (2).ogg', 'sound/combat/hits/onmetal/grille (3).ogg')
 	var/togg = FALSE
+	smeltresult = /obj/item/ingot/bronze
 
 /obj/structure/bars/pipe/left
 	name = "bronze pipe"
@@ -543,6 +545,7 @@
 	var/broke = FALSE
 	var/datum/looping_sound/clockloop/soundloop
 	drag_slowdown = 3
+	metalizer_result = /obj/item/roguegear
 
 /obj/structure/fluff/clock/Initialize()
 	soundloop = new(list(src), FALSE)
@@ -612,6 +615,7 @@
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
 	var/broke = FALSE
 	pixel_y = 32
+	metalizer_result = /obj/item/roguegear
 
 /obj/structure/fluff/wallclock/Destroy()
 	if(soundloop)
@@ -747,20 +751,6 @@
 					wrotesign = inputty
 					icon_state = "signwrote"
 	..()
-
-/obj/structure/fluff/dryingrack
-	name = "drying rack"
-	desc = ""
-	icon = 'icons/roguetown/misc/structure.dmi'
-	icon_state = "dryrack"
-	density = TRUE
-	anchored = TRUE
-	layer = BELOW_OBJ_LAYER
-	blade_dulling = DULLING_BASHCHOP
-	max_integrity = 150
-	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
-	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
-
 
 /obj/structure/fluff/statue
 	name = "statue"

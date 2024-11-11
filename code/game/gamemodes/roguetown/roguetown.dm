@@ -370,7 +370,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Knight",
 	"Retinue Captain",
 	"Gatemaster",
-	"Bog Master",
+	"Warden",
 	"Inquisitor",
 	"Confessor",
 	"Acolyte"
@@ -419,8 +419,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Retinue Captain",
 	"Court Magician",
 	"Templar",
-	"Bog Guard",
-	"Bog Master",
+	"Vanguard",
+	"Warden",
 	"Knight",
 	"Mortician",
 	"Mercenary"
@@ -459,8 +459,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Retinue Captain",
 	"Court Magician",
 	"Templar",
-	"Bog Guard",
-	"Bog Master",
+	"Vanguard",
+	"Warden",
 	"Knight",
 	"Bandit"
 	)
@@ -507,8 +507,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Retinue Captain",
 	"Court Magician",
 	"Templar",
-	"Bog Guard",
-	"Bog Master",
+	"Vanguard",
+	"Warden",
 	"Knight",
 	"Mortician",
 	"Mercenary",
