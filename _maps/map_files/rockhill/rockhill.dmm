@@ -10781,7 +10781,10 @@
 /area/rogue/indoors/town)
 "jlg" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
-/obj/structure/fluff/statue/knight,
+/obj/structure/fluff/statue/knight{
+	dir = 3;
+	pixel_x = -10
+	},
 /turf/open/floor/rogue/tile/masonic,
 /area/rogue/indoors/town/manor)
 "jlz" = (
@@ -11604,7 +11607,10 @@
 /turf/closed/wall/mineral/rogue/roofwall/outercorner,
 /area/rogue/outdoors/town)
 "jSv" = (
-/obj/structure/fluff/statue/knight/r,
+/obj/structure/fluff/statue/knight/r{
+	dir = 3;
+	pixel_x = 10
+	},
 /turf/open/floor/rogue/tile/masonic,
 /area/rogue/indoors/town/manor)
 "jSW" = (
@@ -16159,7 +16165,10 @@
 	},
 /area/rogue/indoors/town/magician)
 "nUi" = (
-/obj/structure/fluff/statue/knight/r,
+/obj/structure/fluff/statue/knight/r{
+	dir = 3;
+	pixel_x = 10
+	},
 /turf/open/floor/rogue/tile/masonic{
 	dir = 4
 	},
@@ -16471,7 +16480,10 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
 "oeI" = (
-/obj/structure/fluff/statue/knight/r,
+/obj/structure/fluff/statue/knight/r{
+	dir = 3;
+	pixel_x = 10
+	},
 /turf/open/floor/rogue/tile/masonic{
 	dir = 1
 	},
@@ -18624,10 +18636,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-"pTW" = (
-/obj/machinery/light/rogue/firebowl/standing,
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/manor)
 "pUr" = (
 /obj/item/natural/poo,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -19552,11 +19560,6 @@
 /obj/item/flint,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
-"qLA" = (
-/turf/open/water/river{
-	icon_state = "rockwd"
-	},
-/area/rogue/under/town/sewer)
 "qLP" = (
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -21069,10 +21072,6 @@
 	icon_state = "roofg"
 	},
 /area/rogue/outdoors/town/roofs)
-"rZt" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/rtfield)
 "rZy" = (
 /obj/structure/chair/bench/couch,
 /obj/machinery/light/rogue/wallfire/candle/l,
@@ -27934,7 +27933,10 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = -32
 	},
-/obj/structure/fluff/statue/knight,
+/obj/structure/fluff/statue/knight{
+	dir = 3;
+	pixel_x = -10
+	},
 /turf/open/floor/rogue/tile/masonic,
 /area/rogue/indoors/town/manor)
 "xVI" = (
@@ -182317,9 +182319,9 @@ gUg
 gUg
 gUg
 iAU
-qLA
-qLA
-qLA
+pOf
+pOf
+pOf
 pOf
 pOf
 pOf
@@ -501855,7 +501857,7 @@ aUc
 aUc
 vIa
 wtF
-xlm
+ged
 xlm
 tji
 jTP
@@ -502661,7 +502663,7 @@ vIa
 wtF
 ged
 xlm
-pTW
+xlm
 qvB
 iur
 iur
@@ -503063,7 +503065,7 @@ vIa
 wtF
 ksq
 xlm
-ged
+xlm
 qvB
 iur
 iur
@@ -503465,7 +503467,7 @@ vIa
 wtF
 pGE
 xlm
-ged
+tji
 jTP
 iur
 iur
@@ -503867,7 +503869,7 @@ vIa
 wtF
 sTq
 xlm
-ged
+xlm
 qvB
 iur
 iur
@@ -504269,7 +504271,7 @@ vIa
 wtF
 ged
 xlm
-pTW
+xlm
 qvB
 iur
 iur
@@ -505071,7 +505073,7 @@ aUc
 aUc
 vIa
 wtF
-xlm
+ged
 xlm
 tji
 jTP
