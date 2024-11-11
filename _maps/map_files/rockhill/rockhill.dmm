@@ -2733,9 +2733,6 @@
 /obj/effect/mob_spawn/human/skeleton/alive,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"csU" = (
-/turf/closed,
-/area/rogue)
 "cty" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/cobble,
@@ -282419,10 +282416,6 @@ sYx
 gxt
 fyc
 fyc
-csU
-csU
-csU
-csU
 "}
 (117,1,3) = {"
 cWT
