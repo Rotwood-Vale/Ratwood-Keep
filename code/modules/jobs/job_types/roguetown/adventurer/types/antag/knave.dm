@@ -58,7 +58,7 @@
 			beltr = /obj/item/rogueweapon/sword/iron // sword like literally every adventurer gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/rogue/satchel
-			beltl = /obj/item/quiver/arrows
+			beltl = /obj/item/ammo_holder/quiver/arrows
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
