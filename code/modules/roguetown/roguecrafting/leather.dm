@@ -59,7 +59,7 @@
 	sellprice = 30
 
 /datum/crafting_recipe/roguetown/leather/twstrap
-	name = "Thrown Weapon Strap"
+	name = "bandolier"
 	result = /obj/item/twstrap
 	reqs = list(/obj/item/natural/hide = 2,
 				/obj/item/rope = 1)
