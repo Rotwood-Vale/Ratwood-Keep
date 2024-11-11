@@ -229,13 +229,13 @@
 	ADD_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(hugboxing_moved))
 	//Lies, it goes away even if you don't move after enough time
-	if(GLOB.adventurer_hugbox_duration_still)
+	if(GLOB.hugbox_duration_still)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration_still)
 
 /mob/living/carbon/human/proc/hugboxing_moved()
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
-	to_chat(src, span_danger("I have [DisplayTimeText(GLOB.hugbox_duration)] to begone!"))
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, ahugboxing_end)), GLOB.hugbox_duration)
+	to_chat(src, span_danger("I have [DisplayTimeText(GLOB.hugbox_duration)] before my protection runs out!"))
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration)
 
 /mob/living/carbon/human/proc/hugboxing_end()
 	if(QDELETED(src))
@@ -245,7 +245,7 @@
 		return
 	status_flags &= ~GODMODE
 	REMOVE_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
-	to_chat(src, span_danger("I feel no longer protected."))
+	to_chat(src, span_danger("I feel no longer safe."))
 
 /datum/job/proc/add_spells(mob/living/H)
 	if(spells && H.mind)
