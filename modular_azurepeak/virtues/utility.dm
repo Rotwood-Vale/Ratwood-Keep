@@ -55,15 +55,15 @@
 /datum/virtue/utility/crafter
 	name = "Crafter's Apprentice"
 	desc = "In my youth, I worked for the Artisan's Guild in a variety of disciplines."
-	added_skills = list(/datum/skill/craft/crafting = 2,
-						/datum/skill/craft/weaponsmithing = 2,
-						/datum/skill/craft/armorsmithing = 2,
-						/datum/skill/craft/blacksmithing = 2,
-						/datum/skill/craft/carpentry = 2,
-						/datum/skill/craft/masonry = 2,
-						/datum/skill/craft/traps = 2,
-						/datum/skill/craft/engineering = 2,
-						/datum/skill/misc/sewing = 2,
+	added_skills = list(list(/datum/skill/craft/crafting, 2, 5),
+						list(/datum/skill/craft/weaponsmithing, 2, 5),
+						list(/datum/skill/craft/armorsmithing, 2, 5),
+						list(/datum/skill/craft/blacksmithing, 2, 5),
+						list(/datum/skill/craft/carpentry, 2, 5),
+						list(/datum/skill/craft/masonry, 2, 5),
+						list(/datum/skill/craft/traps, 2, 5),
+						list(/datum/skill/craft/engineering, 2, 5),
+						list(/datum/skill/misc/sewing, 2, 5),
 	)
 
 /datum/virtue/utility/feral_appetite
