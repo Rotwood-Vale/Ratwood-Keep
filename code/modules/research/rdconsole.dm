@@ -33,7 +33,7 @@ Nothing else in the console has ID requirements.
 	//UI VARS
 	var/screen = RDSCREEN_MENU
 	var/back = RDSCREEN_MENU
-	var/locked = FALSE
+	locked = FALSE
 	var/tdisk_uple = FALSE
 	var/ddisk_uple = FALSE
 	var/datum/selected_node_id

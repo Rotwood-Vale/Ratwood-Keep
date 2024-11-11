@@ -51,7 +51,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/steel
 	beltr = /obj/item/rogueweapon/sword/long
 	beltl = /obj/item/keyring/knight
-	belt = /obj/item/storage/belt/rogue/leather/hand
+	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	if(prob(50))
 		r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
@@ -84,4 +84,3 @@
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

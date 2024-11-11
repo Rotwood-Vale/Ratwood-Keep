@@ -60,7 +60,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.change_stat("intelligence", 3)
 		H.change_stat("endurance", 3)
 		H.change_stat("speed", 2)
@@ -70,6 +70,7 @@
 /obj/effect/proc_holder/spell/self/convertrole/servant
 	name = "Recruit Servant"
 	new_role = "Servant"
+	overlay_state = "recruit_servant"
 	recruitment_faction = "Servants"
 	recruitment_message = "Serve the duchy, %RECRUIT!"
 	accept_message = "Yes, your highness!"

@@ -8,6 +8,8 @@
 	var/plant_def_type
 	var/seed_identity = "some seed"
 
+// WARNING!! Some seeds were removed from soilsons because their produce wasn't being used in New Cooking! Please give them the seeds back if this changes!!
+
 /obj/item/seeds/Initialize()
 	. = ..()
 	if(plant_def_type)

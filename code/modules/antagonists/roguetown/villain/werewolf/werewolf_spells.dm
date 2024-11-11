@@ -50,24 +50,32 @@ var/sound_cooldown = 10 * 60 * 10 // cooldown in deciseconds (15 minutes)
     var/extended = FALSE
 
 /obj/effect/proc_holder/spell/self/claws/cast(mob/user = usr)
-    ..()
-    var/obj/item/rogueweapon/werewolf_claw/left/l
-    var/obj/item/rogueweapon/werewolf_claw/right/r
-    l = user.get_active_held_item()
-    r = user.get_inactive_held_item()
+	..()
+	var/obj/item/rogueweapon/werewolf_claw/left/l
+	var/obj/item/rogueweapon/werewolf_claw/right/r
+	l = user.get_active_held_item()
+	r = user.get_inactive_held_item()
 
-    if (extended)
-        if (istype(user.get_active_held_item(), /obj/item/rogueweapon/werewolf_claw))
-            user.dropItemToGround(l, TRUE)
-            user.dropItemToGround(r, TRUE)
-            qdel(l)
-            qdel(r)
-        // user.visible_message("Your claws retract.", "You feel your claws retracting.", "You hear a sound of claws retracting.")
-        extended = FALSE
-    else
-        l = new(user, 1)
-        r = new(user, 2)
-        user.put_in_hands(l, TRUE, FALSE, TRUE)
-        user.put_in_hands(r, TRUE, FALSE, TRUE)
-        // user.visible_message("Your claws extend.", "You feel your claws extending.", "You hear a sound of claws extending.")
-        extended = TRUE
+	if (extended)
+		if (istype(user.get_active_held_item(), /obj/item/rogueweapon/werewolf_claw))
+			user.dropItemToGround(l, TRUE)
+			user.dropItemToGround(r, TRUE)
+			qdel(l)
+			qdel(r)
+			// user.visible_message("Your claws retract.", "You feel your claws retracting.", "You hear a sound of claws retracting.")
+			extended = FALSE
+	else
+		var/obj
+		for(var/i = 0, i<2, i++)
+			switch(i)
+				if(0)
+					obj = user.get_active_held_item()
+				if(1)
+					obj = user.get_inactive_held_item()
+			user.dropItemToGround(obj, TRUE)
+		l = new(user, 1)
+		r = new(user, 2)
+		user.put_in_hands(l, TRUE, FALSE, TRUE)
+		user.put_in_hands(r, TRUE, FALSE, TRUE)
+		// user.visible_message("Your claws extend.", "You feel your claws extending.", "You hear a sound of claws extending.")
+		extended = TRUE

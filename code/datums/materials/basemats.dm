@@ -20,7 +20,7 @@
 	sheet_type = /obj/item/stack/sheet/glass
 	value_per_unit = 0.0025
 	beauty_modifier = 0.05
-	armor_modifiers = list("blunt" = 0.3, "slash" = 0.2, "stab" = 0.2, "bullet" = 0.2, "laser" = 0, "energy" = 1, "bomb" = 0, "bio" = 0.2, "rad" = 0.2, "fire" = 1, "acid" = 0.2) // yeah ok retard
+	armor_modifiers = list("blunt" = 0.3, "slash" = 0.2, "stab" = 0.2, "bullet" = 0.2, "laser" = 0, "energy" = 1, "bomb" = 0, "bio" = 0.2, "rad" = 0.2, "fire" = 1, "acid" = 0.2) // yeah ok
 
 /*
 Color matrices are like regular colors but unlike with normal colors, you can go over 255 on a channel.

@@ -10,6 +10,12 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/whet
+	name = "whet stone"
+	result = /obj/item/natural/whet
+	reqs = list(/obj/item/natural/stone = 2)
+	craftdiff = 1
+
 /datum/crafting_recipe/roguetown/clothbelt
 	name = "cloth belt"
 	result = /obj/item/storage/belt/rogue/leather/cloth
@@ -156,36 +162,6 @@
 				/obj/item/rogueweapon/thresher = 1)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/larmprosthetic_w
-	name = "wood arm (L)"
-	result = list(/obj/item/bodypart/l_arm/rprosthetic)
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/rarmprosthetic_w
-	name = "wood arm (R)"
-	result = list(/obj/item/bodypart/r_arm/rprosthetic)
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/rlegprosthetic_w
-	name = "peg leg (R)"
-	result = list(/obj/item/bodypart/r_leg/rprosthetic)
-	reqs = list(/obj/item/grown/log/tree/small = 1)
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 1
-
-/datum/crafting_recipe/roguetown/llegprosthetic_w
-	name = "peg_leg (L)"
-	result = list(/obj/item/bodypart/l_leg/rprosthetic)
-	reqs = list(/obj/item/grown/log/tree/small = 1)
-	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 1
-
 /obj/item/rogueweapon/mace/woodclub/crafted
 	sellprice = 8
 
@@ -204,27 +180,6 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
-
-/datum/crafting_recipe/roguetown/woodshield
-	name = "wooden shield"
-	result = /obj/item/rogueweapon/shield/wood/crafted
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/natural/hide = 1)
-	skillcraft = /datum/skill/craft/carpentry
-
-
-/obj/item/rogueweapon/shield/wood/crafted
-	sellprice = 6
-
-/datum/crafting_recipe/roguetown/heatershield
-	name = "heater shield"
-	result = /obj/item/rogueweapon/shield/heater/crafted
-	reqs = list(/obj/item/grown/log/tree/small = 2,
-				/obj/item/natural/hide = 1)
-	skillcraft = /datum/skill/craft/carpentry
-
-/obj/item/rogueweapon/shield/heater/crafted
-	sellprice = 6
 
 /datum/crafting_recipe/roguetown/woodbucket
 	name = "wooden bucket"
@@ -256,7 +211,7 @@
 
 /datum/crafting_recipe/roguetown/pot
 	name = "stone pot"
-	result = /obj/item/reagent_containers/glass/bucket/pot
+	result = /obj/item/reagent_containers/glass/bucket/pot/stone
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/stonearrow
@@ -346,22 +301,6 @@
 
 	req_table = TRUE
 
-/datum/crafting_recipe/roguetown/mortar
-	name = "stone mortar"
-	result = /obj/item/reagent_containers/glass/mortar
-	reqs = list(/obj/item/natural/stone = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
-	craftdiff = 1
-	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
-
-/datum/crafting_recipe/roguetown/pestle
-	name = "stone pestle"
-	result = /obj/item/pestle
-	reqs = list(/obj/item/natural/stone = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife) // Intended to be either stone knife or steel hunting knife
-	craftdiff = 1
-	subtype_reqs = TRUE //Unsure if needed for stone knife to work, feel free to remove this if not.
-
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
 
@@ -448,7 +387,6 @@
 				/obj/item/natural/fibers = 2,
 				/obj/item/ingot/iron = 1)
 	req_table = TRUE
-	skillcraft = /datum/skill/craft/traps
 	craftdiff = 1
 	verbage_simple = "put together"
 	verbage = "puts together"
@@ -463,7 +401,7 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/datum/reagent/water = 50)
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/parchment
@@ -479,7 +417,7 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/datum/reagent/water = 30)
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 1
 
 
@@ -490,3 +428,16 @@
 				/obj/item/natural/fibers = 3)
 	skillcraft = /datum/skill/magic/druidic
 	craftdiff = 2 // druids & dendor clerics can craft
+
+// Woodcutting recipe
+
+/datum/crafting_recipe/roguetown/lumberjacking
+	skillcraft = /datum/skill/labor/lumberjacking
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
+	name = "upgrade cog"
+	result = /obj/item/cart_upgrade/level_1
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/stone = 1)
+	craftdiff = 2

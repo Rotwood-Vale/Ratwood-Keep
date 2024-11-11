@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/torso
-	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_MEDIUMARMOR, TRAIT_STEELHEARTED)
+	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_MEDIUMARMOR)
 	category_tags = list(CTAG_DISABLED)
 
 /datum/outfit/job/roguetown/adventurer/torso/pre_equip(mob/living/carbon/human/H)
@@ -25,7 +25,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, rand(0,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, rand(0,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, rand(0,4), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, rand(0,4), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, rand(0,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, rand(0,4), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, rand(0,4), TRUE)
 	H.change_stat("strength", 3)

@@ -118,7 +118,7 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/list/held_items = list()
-	var/locked = FALSE
+	locked = FALSE
 	var/budget = 0
 	var/upgrade_flags
 	var/current_cat = "1"
@@ -153,16 +153,16 @@
 			if(alert != "Take it")
 				return
 			else		
-				var/obj/item/roguekey/key
-				key = new /obj/item/roguekey/merchant(get_turf(user))
+				var/obj/item/key/key
+				key = new /obj/item/key/merchant(get_turf(user))
 				user.put_in_hands(key)
 				hidden_key_present = FALSE
 		else
 			to_chat(user, span_warning("The hidden compartment lies empty."))
 
 /obj/structure/roguemachine/merchantvend/attackby(obj/item/P, mob/user, params)
-	if(istype(P, /obj/item/roguekey))
-		var/obj/item/roguekey/K = P
+	if(istype(P, /obj/item/key))
+		var/obj/item/key/K = P
 		if(K.lockid == "merchant")
 			locked = !locked
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -173,7 +173,7 @@
 			return
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
-		for(var/obj/item/roguekey/KE in K.keys)
+		for(var/obj/item/key/KE in K.keys)
 			if(KE.lockid == "merchant")
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -198,7 +198,7 @@
 		var/mob/M = usr
 		var/path = text2path(href_list["buy"])
 		if(!ispath(path, /datum/supply_pack))
-			message_admins("RETARDED MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE GOLDFACE")
+			message_admins("STUPID MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE GOLDFACE")
 			return
 		var/datum/supply_pack/PA = new path
 		var/cost = PA.cost

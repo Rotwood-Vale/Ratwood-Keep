@@ -14,7 +14,7 @@
 	var/secure = FALSE //secure locker or not, also used if overriding a non-secure locker with a secure door overlay to add fancy lights
 	var/opened = FALSE
 	var/welded = FALSE
-	var/locked = FALSE
+	locked = FALSE
 	var/large = TRUE
 	var/wall_mounted = 0 //never solid (You can always pass over it)
 	var/breakout_time = 1200
@@ -38,8 +38,8 @@
 	var/anchorable = TRUE
 	var/icon_welded = "welded"
 	var/keylock = FALSE
-	var/lockhash
-	var/lockid = null
+	lockhash
+	lockid = null
 	var/masterkey = FALSE
 	throw_speed = 1
 	throw_range = 1
@@ -260,7 +260,7 @@
 /obj/structure/closet/attackby(obj/item/W, mob/user, params)
 	if(user in src)
 		return
-	if(istype(W, /obj/item/roguekey) || istype(W, /obj/item/keyring))
+	if(istype(W, /obj/item/key) || istype(W, /obj/item/keyring))
 		trykeylock(W, user)
 		return
 	if(src.tool_interact(W,user))
@@ -282,7 +282,7 @@
 		if(!R.keys.len)
 			return
 		var/list/keysy = shuffle(R.keys.Copy())
-		for(var/obj/item/roguekey/K in keysy)
+		for(var/obj/item/key/K in keysy)
 			if(user.cmode)
 				if(!do_after(user, 10, TRUE, src))
 					break
@@ -294,7 +294,7 @@
 					playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
 		return
 	else
-		var/obj/item/roguekey/K = I
+		var/obj/item/key/K = I
 		if(K.lockhash == lockhash)
 			togglelock(user)
 			return

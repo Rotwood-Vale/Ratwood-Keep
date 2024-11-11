@@ -1,6 +1,6 @@
 /obj/item/storage/fancy/shhig
 	name = "Shhig Brand Zigs"
-	desc = "Dr. V's Shhig's; much like the image of serpents these zigs are synonymous with both healing and killing. Your life expectancy isnt very high anyway."
+	desc = "Shhig's Brand Zigs; much like the image of serpents these zigs are synonymous with both healing and killing. Your life expectancy isnt very high anyway."
 	icon = 'modular/Smoker/icon/smokable.dmi'
 	icon_state = "smokebox"
 	icon_type = "smoke"
@@ -21,25 +21,21 @@
 	return
 
 /obj/item/clothing/mask/cigarette/rollie/snek
-	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/consumable/honey = 30, /datum/reagent/toxin/venom = 10) //honey will give heal. it is NOT great 55% chance per unit tick to heal 1brute,burn,tox. high end perfect rolls 30hp. unlikely. degrades into sugar (chance) which has a chance to degrade into nutrients. simulates appetite surpressant effect.
+	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/consumable/honey = 3, /datum/reagent/toxin/venom = 10) //honey will give heal. it is NOT great 55% chance per unit tick to heal 1brute,burn,tox. high end perfect rolls 30hp. unlikely. degrades into sugar (chance) which has a chance to degrade into nutrients. simulates appetite surpressant effect.
 
-/obj/item/reagent_containers/hypospray/medipen/snekbt
+/obj/item/reagent_containers/hypospray/medipen/sty/snekbt
 	name = "Snake Bite"
-	desc = "Dr. V's;.....vim....and- Ask yourself this; What am I doing? It is litterally a fucking glowing viscous sludge you are about to put into your vascular system..."
-	icon = 'modular/Smoker/icon/smokable.dmi'
-	icon_state = "bite"
-	volume = 8
+	desc = "Ask yourself this; What am I doing? It is litterally a fucking glowing viscous sludge you are about to put into your vascular system..."
+	volume = 10
 	amount_per_transfer_from_this = 10
 	list_reagents = list(/datum/reagent/drug/snekbt = 5, /datum/reagent/toxin/venom = 5)
 
-/obj/item/reagent_containers/hypospray/medipen/nourish
+/obj/item/reagent_containers/hypospray/medipen/sty/nourish
 	name = "NOURISH"
-	desc = "Dr. V's nutritional suppliment; normal people eat and drink, but true champions NOURISH."
-	icon = 'modular/Smoker/icon/smokable.dmi'
-	icon_state = "nourish"
-	volume = 135
-	amount_per_transfer_from_this = 135
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 3, /datum/reagent/water = 50) // as much water as a bucket so full hydrate. enough honey to IF good rng rolls get 30hp. 33% chance to decay into sugar, sugar has a 33% chance to decay into nutrients. so saturation varies.
+	desc = "A nutritional suppliment; normal people eat and drink, but true champions NOURISH."
+	volume = 85
+	amount_per_transfer_from_this = 85
+	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/vitamin = 3, /datum/reagent/water = 50) // as much water as a bottle. enough honey to IF good rng rolls get 30hp. 33% chance to decay into sugar, sugar has a 33% chance to decay into nutrients. so saturation varies.
 
 /datum/reagent/drug/snekbt
 	name = "Snake Bite"
@@ -79,7 +75,7 @@
 	. = 1
 
 /atom/movable/screen/fullscreen/bittensm/Initialize()
-	..()
+	. = ..()
 	filters += filter(type="angular_blur",x=5,y=5,size=1)
 
 /datum/reagent/drug/snekbt/overdose_start(mob/living/M, can_overdose = TRUE)

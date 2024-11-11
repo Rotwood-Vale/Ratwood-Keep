@@ -3,7 +3,7 @@
 	var/list/datum/wound/wounds
 	/// List of items embedded in this bodypart
 	var/list/obj/item/embedded_objects = list()
-	/// Bandage, if this ever hard dels thats fucking retarded lol
+	/// Bandage, if this ever hard dels thats fucking stupid lol
 	var/obj/item/bandage
 
 /// Checks if we have any embedded objects whatsoever
@@ -291,7 +291,7 @@
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				attempted_wounds += /datum/wound/fracture/neck
-			else
+			else if (!resistance)
 				attempted_wounds += /datum/wound/dislocation/neck
 	if(bclass in GLOB.fracture_bclasses)
 		used = round(damage_dividend * 20 + (dam / 3), 1)
@@ -300,7 +300,7 @@
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
-		if(!owner.stat && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
+		if(!owner.stat && !resistance && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
 			owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
 			owner.flash_fullscreen("whiteflash3")
 			owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
@@ -367,7 +367,7 @@
 						attempted_wounds +=/datum/wound/fracture/head/nose
 					else
 						attempted_wounds += /datum/wound/facial/disfigurement/nose
-				else if(zone_precise in knockout_zones)
+				else if(!zone_precise in knockout_zones)
 					attempted_wounds += /datum/wound/fracture/head/brain
 
 	for(var/wound_type in shuffle(attempted_wounds))
@@ -501,11 +501,11 @@
 		break
 	var/static/list/retracting_behaviors = list(
 		TOOL_RETRACTOR,
-		TOOL_CROWBAR,
+		TOOL_IMPROVRETRACTOR,
 	)
 	var/static/list/clamping_behaviors = list(
 		TOOL_HEMOSTAT,
-		TOOL_WIRECUTTER,
+		TOOL_IMPROVHEMOSTAT,
 	)
 	for(var/obj/item/embedded as anything in embedded_objects)
 		if((embedded.tool_behaviour in retracting_behaviors) || embedded.embedding?.retract_limbs)
