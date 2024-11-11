@@ -1,5 +1,5 @@
 /obj/item/gwstrap
-	name = "Greatweapon Strap"
+	name = "greatweapon strap"
 	desc = ""
 	icon_state = "gws0"
 	item_state = "gwstrap"
