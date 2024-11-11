@@ -99,7 +99,6 @@
 		user.dropItemToGround(I)
 		user.dropItemToGround(src)
 		
-=======
 /obj/item/gwstrap
 	name = "Greatweapon Strap"
 	desc = ""
