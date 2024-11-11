@@ -30,3 +30,21 @@
 	. = ..()
 	regenerate_icons()
 	ADD_TRAIT(src, TRAIT_SIMPLE_WOUNDS, TRAIT_GENERIC)
+
+//For the PIT.
+/mob/living/simple_animal/hostile/rogue/werewolf/pit
+	name = "Dendor's Hatred"
+	base_intents = list(/datum/intent/unarmed/wwolf)
+	maxHealth = 4520
+	health = 4520
+	melee_damage_lower = 42
+	melee_damage_upper = 52
+	STASTR = 32
+	STACON = 32
+	STAEND = 32
+	STASPD = 32
+
+/mob/living/simple_animal/hostile/rogue/werewolf/pit/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)//Shouldn't be needed?
+	ADD_TRAIT(src, TRAIT_ANTIMAGIC, TRAIT_GENERIC)

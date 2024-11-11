@@ -812,8 +812,7 @@
 /area/rogue/indoors/town/manor)
 "aHr" = (
 /obj/structure/fluff/railing/border{
-	dir = 6;
-	icon_state = "border"
+	dir = 6
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -1117,6 +1116,9 @@
 "aVv" = (
 /obj/structure/fermenting_barrel/random/water,
 /obj/item/storage/box/matches,
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "aVy" = (
@@ -8562,6 +8564,12 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"hlN" = (
+/mob/living/simple_animal/hostile/rogue/werewolf/pit{
+	name = "Conrad of Kingsfield"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "hmJ" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/bog)
@@ -10539,6 +10547,10 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
+"jaC" = (
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "jbc" = (
 /obj/structure/bed/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -15888,13 +15900,6 @@
 /obj/item/roguebin/water/gross,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
-"nFa" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
-	del_on_deaggro = 0;
-	name = "Beatrix"
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
 "nFg" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 1;
@@ -16323,13 +16328,6 @@
 	dir = 8
 	},
 /area/rogue/outdoors/town)
-"nZb" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
-	del_on_deaggro = 0;
-	name = "Aruzhan"
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
 "nZo" = (
 /obj/machinery/light/roguestreet/orange/walllamp{
 	dir = 4
@@ -18385,6 +18383,12 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
+"pHQ" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "pHR" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -19998,8 +20002,7 @@
 /area/rogue/outdoors/rtfield)
 "rda" = (
 /obj/structure/fluff/railing/border{
-	dir = 5;
-	icon_state = "border"
+	dir = 5
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -22773,6 +22776,12 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
+"tvk" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "tvr" = (
 /obj/structure/lever/wall{
 	pixel_x = 32;
@@ -23732,10 +23741,6 @@
 /obj/item/storage/backpack/rogue/satchel,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
-"ukS" = (
-/obj/item/roguegem,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/under/cave)
 "ule" = (
 /obj/item/rogueweapon/woodstaff/aries,
 /obj/structure/fluff/psycross,
@@ -25757,6 +25762,10 @@
 /obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"wbr" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "wbG" = (
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
@@ -26778,11 +26787,8 @@
 /turf/open/water/cleanshallow,
 /area/rogue/indoors/town/tavern)
 "wXL" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
-	del_on_deaggro = 0;
-	name = "Rowena"
-	},
-/turf/open/floor/rogue/cobble,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "wYd" = (
 /obj/structure/chair/stool/rogue,
@@ -27352,6 +27358,10 @@
 "xvv" = (
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/tavern)
+"xvE" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "xww" = (
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "vertw"
@@ -91433,13 +91443,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+txa
+txa
+txa
+txa
+txa
+txa
 bpD
 bpD
 bpD
@@ -91835,13 +91845,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+hlN
+iTw
+iTw
+wXL
+iTw
+txa
 bpD
 bpD
 bpD
@@ -92237,13 +92247,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+iTw
+cBf
+xvE
+tvk
+jaC
+txa
 bpD
 bpD
 bpD
@@ -92639,13 +92649,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+iTw
+iTw
+cBf
+tvk
+iTw
+txa
 bpD
 bpD
 bpD
@@ -93041,13 +93051,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+iTw
+cBf
+cBf
+tvk
+wbr
+txa
 bpD
 bpD
 bpD
@@ -93443,13 +93453,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+iTw
+mig
+vvl
+pHQ
+cBf
+txa
 bpD
 bpD
 bpD
@@ -93845,13 +93855,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+iTw
+iTw
+cBf
+iTw
+iTw
+txa
 bpD
 bpD
 bpD
@@ -94247,13 +94257,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+iTw
+cBf
+iTw
+cBf
+iTw
+txa
 bpD
 bpD
 bpD
@@ -94649,13 +94659,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+iTw
+cBf
+iTw
+iTw
+iTw
+txa
 bpD
 bpD
 bpD
@@ -95051,13 +95061,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+iTw
+iTw
+cBf
+iTw
+iTw
+txa
 bpD
 bpD
 bpD
@@ -95453,13 +95463,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+iTw
+iTw
+iTw
+iTw
+cBf
+txa
 bpD
 bpD
 bpD
@@ -95855,13 +95865,13 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+txa
+txa
+txa
+txa
+txa
+txa
+txa
 bpD
 bpD
 bpD
@@ -189926,7 +189936,7 @@ vRu
 vRu
 vRu
 ylC
-cEK
+oyv
 cEK
 glW
 cEK
@@ -190326,10 +190336,10 @@ vRu
 vRu
 vRu
 vRu
-ukS
+vRu
 cEK
-ylC
-oyv
+cEK
+cEK
 ylC
 ylC
 ylC
@@ -190727,8 +190737,8 @@ vRu
 vRu
 vRu
 vRu
-fjw
-fjw
+vRu
+vRu
 ylC
 txa
 txa
@@ -191130,7 +191140,7 @@ vRu
 vRu
 vRu
 vRu
-fjw
+vRu
 vRu
 txa
 rpo
@@ -191532,7 +191542,7 @@ vRu
 vRu
 vRu
 vRu
-fjw
+vRu
 vRu
 txa
 iML
@@ -191933,8 +191943,8 @@ vRu
 vRu
 vRu
 vRu
-fjw
-fjw
+vRu
+vRu
 vRu
 txa
 yeM
@@ -192334,8 +192344,8 @@ sYw
 vRu
 vRu
 vRu
-fjw
-fjw
+vRu
+vRu
 vRu
 vRu
 txa
@@ -192736,8 +192746,8 @@ sYw
 vRu
 vRu
 vRu
-fjw
-fjw
+vRu
+vRu
 vRu
 vRu
 txa
@@ -193138,9 +193148,9 @@ sYw
 vRu
 vRu
 vRu
-fjw
-fjw
-fjw
+vRu
+vRu
+vRu
 vRu
 txa
 rpo
@@ -193541,9 +193551,9 @@ vRu
 vRu
 vRu
 vRu
-fjw
-fjw
-fjw
+vRu
+vRu
+vRu
 txa
 uKD
 rpo
@@ -193944,8 +193954,8 @@ vRu
 vRu
 vRu
 vRu
-vRu
-vuH
+txa
+txa
 txa
 txa
 txa
@@ -194347,13 +194357,13 @@ vRu
 vRu
 vRu
 txa
-iTw
+fPR
+fPR
+fPR
+fPR
+fPR
 txa
-iTw
-cBf
-iTw
-iTw
-txa
+hVj
 iTw
 xzW
 txa
@@ -194749,13 +194759,13 @@ txa
 txa
 txa
 txa
-iTw
-cBf
-iTw
-iTw
-cBf
+fPR
+fPR
+fPR
+fPR
+fPR
 txa
-txa
+iTw
 cBf
 iTw
 gbt
@@ -195151,12 +195161,12 @@ czb
 iTw
 sTe
 txa
-iTw
-iTw
-cBf
-iTw
-iTw
-txa
+fPR
+fPR
+fPR
+fPR
+fPR
+ida
 iTw
 iTw
 cBf
@@ -195553,11 +195563,11 @@ pUz
 iTw
 oga
 txa
-iTw
-cBf
-nZb
-iTw
-iTw
+fPR
+fPR
+fPR
+fPR
+fPR
 ida
 cBf
 cBf
@@ -195955,11 +195965,11 @@ dfS
 iTw
 jMA
 txa
-iTw
-iTw
-iTw
-iTw
-cBf
+fPR
+fPR
+fPR
+fPR
+fPR
 txa
 cBf
 iTw
@@ -196357,13 +196367,13 @@ jRC
 iTw
 nZt
 txa
-iTw
-iTw
-cBf
-iTw
-iTw
+fPR
+fPR
+fPR
+fPR
+fPR
 txa
-dcN
+iTw
 iTw
 fVe
 txa
@@ -196759,12 +196769,12 @@ tHU
 iTw
 wZJ
 txa
-iTw
-cBf
-iTw
-cBf
-iTw
-txa
+fPR
+fPR
+fPR
+fPR
+fPR
+ida
 iTw
 cBf
 iTw
@@ -197161,11 +197171,11 @@ tnK
 iTw
 pMw
 txa
-iTw
-cBf
-iTw
-iTw
-wXL
+fPR
+fPR
+fPR
+fPR
+fPR
 ida
 iTw
 iTw
@@ -197563,11 +197573,11 @@ aEN
 iTw
 mMO
 txa
-iTw
-nFa
-cBf
-iTw
-iTw
+fPR
+fPR
+fPR
+fPR
+fPR
 txa
 iTw
 cBf
@@ -197965,13 +197975,13 @@ nda
 iTw
 vse
 txa
-iTw
-iTw
-iTw
-iTw
-cBf
+fPR
+fPR
+fPR
+fPR
+fPR
 txa
-iTw
+dcN
 iTw
 aVv
 txa
@@ -198368,8 +198378,8 @@ iTw
 iTw
 txa
 jyI
-txa
-txa
+ida
+ida
 txa
 stp
 txa
