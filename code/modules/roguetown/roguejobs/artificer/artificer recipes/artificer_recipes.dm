@@ -61,11 +61,13 @@
 /datum/artificer_recipe
 	appro_skill = /datum/skill/craft/engineering
 
+/datum/artificer_recipe/general
+	i_type = "General"
+
 /datum/artificer_recipe/wood //TNevermind this being silly, I was silly and this needs to be redone proper
 	name = "Wooden Cog"
 	required_item = /obj/item/natural/wood/plank
 	created_item = /obj/item/cart_upgrade/level_1
-	additional_items = list(/obj/item/natural/wood/plank = 1)
 	hammers_per_item = 5
 	craftdiff = 1
 	i_type = "General"
@@ -73,7 +75,7 @@
 /datum/artificer_recipe/wood/upgrade2
 	name = "Advanced Wooden Cog (+1 Essence of Lumber)"
 	created_item = /obj/item/cart_upgrade/level_2
-	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/grown/log/tree/small/essence = 1)
+	additional_items = list(/obj/item/grown/log/tree/small/essence = 1)
 	hammers_per_item = 10
 	craftdiff = 2
 
@@ -84,6 +86,20 @@
 	hammers_per_item = 10
 	craftdiff = 1
 	i_type = "General"
+
+/datum/artificer_recipe/general/copper/cog
+	name = "Copper Cog"
+	required_item = /obj/item/ingot/copper
+	created_item = /obj/item/roguegear
+	hammers_per_item = 10
+	craftdiff = 1
+
+/datum/artificer_recipe/general/tin/cog
+	name = "Tin Cog"
+	required_item = /obj/item/ingot/tin
+	created_item = /obj/item/roguegear
+	hammers_per_item = 10
+	craftdiff = 1
 
 /datum/artificer_recipe/bronze/locks
 	name = "Lock"
@@ -138,15 +154,15 @@
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/cart_upgrade/level_2 = 1)
 	created_item = /obj/item/contraption/lock_imprinter
-	hammers_per_item = 15
-	craftdiff = 5
+	hammers_per_item = 12
+	craftdiff = 4
 	
 // --------- WEAPON -----------
 
 /datum/artificer_recipe/wood/weapons //Again, a bit silly, but is important
 	name = "Wooden Staff"
 	created_item = /obj/item/rogueweapon/woodstaff
-	additional_items = list(/obj/item/natural/wood/plank = 2)
+	additional_items = list(/obj/item/natural/wood/plank = 1)
 	hammers_per_item = 3
 	i_type = "Weapons"
 
@@ -165,7 +181,7 @@
 /datum/artificer_recipe/wood/weapons/wshield
 	name = "Wooden Shield"
 	created_item = /obj/item/rogueweapon/shield/wood/crafted
-	additional_items = list(/obj/item/natural/wood/plank = 2)
+	additional_items = list(/obj/item/natural/wood/plank = 1)
 	hammers_per_item = 6
 	craftdiff = 2
 
@@ -173,9 +189,9 @@
 	sellprice = 6
 
 /datum/artificer_recipe/wood/weapons/hshield
-	name = "Heater Shield (+1 Hide)"
+	name = "Heater Shield (+1 Cured Leather)"
 	created_item = /obj/item/rogueweapon/shield/heater/crafted
-	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/natural/hide/cured = 1)
+	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/hide/cured = 1)
 	hammers_per_item = 6
 	craftdiff = 3
 
