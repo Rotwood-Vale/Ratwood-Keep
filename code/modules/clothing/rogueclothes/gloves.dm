@@ -28,7 +28,7 @@
 
 /obj/item/clothing/gloves/roguetown/fingerless
 	name = "fingerless gloves"
-	desc = ""
+	desc = "Cloth gloves to absorb palm sweat while leaving the fingers free for fine manipulation."
 	icon_state = "fingerless_gloves"
 	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
