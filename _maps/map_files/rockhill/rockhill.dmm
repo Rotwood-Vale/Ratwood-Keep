@@ -4712,9 +4712,6 @@
 /obj/item/key/tavern,
 /obj/item/key/nightmaiden,
 /obj/item/key/bog_gatehouse,
-/obj/item/key/bog_dungeon,
-/obj/item/key/bog_barracks,
-/obj/item/key/bog_armory,
 /obj/item/key/town_armory,
 /obj/item/key/town_armory,
 /obj/item/key/town_barracks,
@@ -4729,6 +4726,7 @@
 /obj/item/key/seamster,
 /obj/item/key/butcher,
 /obj/item/key/farm,
+/obj/item/key/bog_master,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
 "ebb" = (
