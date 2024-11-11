@@ -95,13 +95,12 @@
 	movement_interrupt = FALSE
 	charge_max = 2 MINUTES
 	range = 4
-
+	var/totalstatshift = 0
+	var/totalstatchange = 0
+	var/outline_colour = "#FFD700"
 /obj/effect/proc_holder/spell/invoked/equalize/cast(list/targets, mob/living/user)
 	if(ishuman(targets[1]))
 		var/mob/living/carbon/human/target = targets[1]
-		var/totalstatshift = 0
-		var/totalstatchange = 0
-		var/outline_colour = "#FFD700"
 		totalstatchange += (target.STASPD-user.STASPD)
 		totalstatchange += ((target.STASTR-user.STASTR)*2) // We're gonna weigh strength as double, being the strongest stat.
 		totalstatchange += (target.STAEND-user.STAEND)
@@ -135,30 +134,31 @@
 			user.STACON += totalstatshift
 			target.STAPER -= totalstatshift
 			user.STAPER += totalstatshift
-			spawn(1 MINUTES) // timer before our stats shift back to normal.
-				if(!user || !target)
-					return
-				user.remove_filter(EQUALIZED_GLOW)
-				target.remove_filter(EQUALIZED_GLOW)
-				target.STASPD += totalstatshift
-				user.STASPD -= totalstatshift
-				target.STASTR += totalstatshift
-				user.STASTR -= totalstatshift
-				target.STAEND += totalstatshift
-				user.STAEND -= totalstatshift
-				target.STALUC += totalstatshift
-				user.STALUC -= totalstatshift
-				target.STAINT += totalstatshift
-				user.STAINT -= totalstatshift
-				target.STACON += totalstatshift
-				user.STACON -= totalstatshift
-				target.STAPER += totalstatshift
-				user.STAPER -= totalstatshift
-				to_chat(target, span_danger("I feel my strength returned to me!"))
-				to_chat(user, "<font color='yellow'>My link wears off, [target]'s stolen fire returns to them</font>")
+			addtimer(CALLBACK(src, PROC_REF(returnstatstarget), target), 1 MINUTES) // 2 timers incase only one guy gets deleted or smthing
+			addtimer(CALLBACK(src, PROC_REF(returnstatsuser), user), 1 MINUTES)
 			return
+			
+/obj/effect/proc_holder/spell/invoked/equalize/proc/returnstatstarget(mob/living/target)
+	target.remove_filter(EQUALIZED_GLOW)
+	target.STASPD += totalstatshift
+	target.STASTR += totalstatshift
+	target.STAEND += totalstatshift
+	target.STALUC += totalstatshift
+	target.STAINT += totalstatshift
+	target.STACON += totalstatshift
+	target.STAPER += totalstatshift
+	to_chat(target, span_danger("I feel my strength returned to me!"))
 
-
+/obj/effect/proc_holder/spell/invoked/equalize/proc/returnstatsuser(mob/living/user)
+	user.remove_filter(EQUALIZED_GLOW)
+	user.STASTR -= totalstatshift
+	user.STASPD -= totalstatshift
+	user.STAEND -= totalstatshift
+	user.STALUC -= totalstatshift
+	user.STAINT -= totalstatshift
+	user.STACON -= totalstatshift
+	user.STAPER -= totalstatshift
+	to_chat(user, "<font color='yellow'>My link wears off, their stolen fire returns to them</font>")
 
 //T3 COUNT WEALTH, HURT TARGET/APPLY EFFECTS BASED ON AMOUNT OF WEALTH. AT 500+, OLD STYLE CHURNS THE TARGET.
 
