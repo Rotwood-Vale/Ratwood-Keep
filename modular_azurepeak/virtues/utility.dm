@@ -63,7 +63,7 @@
 						/datum/skill/craft/masonry = 2,
 						/datum/skill/craft/traps = 2,
 						/datum/skill/craft/engineering = 2,
-						/datum/skill/craft/tanning = 2,
+						/datum/skill/misc/sewing = 2,
 	)
 
 /datum/virtue/utility/feral_appetite
