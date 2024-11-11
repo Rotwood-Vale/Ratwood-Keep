@@ -77,6 +77,7 @@
 	max_integrity = 800
 	integrity_failure = 0.1
 	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/roguewindow/openclose/Initialize()
 	lockdir = dir
