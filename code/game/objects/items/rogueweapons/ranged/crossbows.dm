@@ -91,6 +91,7 @@
 	update_icon()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/attackby(obj/item/A, mob/user, params)
+	..()
 	if(istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing))
 		if(cocked)
 			if((loc == user) && (user.get_inactive_held_item() != src))

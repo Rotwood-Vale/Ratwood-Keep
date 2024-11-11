@@ -1,5 +1,5 @@
 /datum/job/roguetown/bogmaster
-	title = "Bog Master"
+	title = "Warden"
 	flag = BOGMASTER
 	department_flag = GARRISON
 	faction = "Station"
@@ -8,11 +8,11 @@
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
-	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "You are the most experienced idiot to volunteer to the Bog Guard... \
-				What a mistake that was. You report to the Royal Marshal and their Councillors, \
-				and your job is to keep the bogmen in line and to ensure the routes to the town are safe. \
-				May Gods have mercy on you..."
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+	tutorial = "An experienced soldier of the Duke's retinue, you have been tasked with overseeing the newly constructed Bastion. \
+				You report to the Royal Marshal and their Councillors, \
+				and your job is to keep the vanguard in line and to ensure the routes to the town are safe.\
+				The Bastion must not fall."
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE
 
@@ -28,20 +28,20 @@
 	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/bog))
+		if(istype(H.cloak, /obj/item/clothing/cloak/raincloak/vanguard))
 			var/obj/item/clothing/S = H.cloak
 			var/index = findtext(H.real_name, " ")
 			if(index)
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "bog master tabard ([index])"
+			S.name = "warden cloak ([index])"
 
 /datum/outfit/job/roguetown/bogmaster/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	cloak = /obj/item/clothing/cloak/stabard/bog
+	cloak = /obj/item/clothing/cloak/raincloak/vanguard
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	neck = /obj/item/clothing/neck/roguetown/bervor
@@ -70,7 +70,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.change_stat("strength", 3)
 		H.change_stat("constitution", 2)
 		H.change_stat("perception", 2)
@@ -81,12 +81,12 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /obj/effect/proc_holder/spell/self/convertrole/bog
-	name = "Recruit Bogmen"
-	new_role = "Bog Guard"
+	name = "Recruit Vanguard"
+	new_role = "Vanguard"
 	overlay_state = "recruit_bog"
-	recruitment_faction = "Bog Guard"
-	recruitment_message = "Serve the bog, %RECRUIT!"
-	accept_message = "FOR THE BOG!"
+	recruitment_faction = "Vanguard"
+	recruitment_message = "Serve the vanguard, %RECRUIT!"
+	accept_message = "FOR THE VANGUARDs!"
 	refuse_message = "I refuse."
 
 /obj/effect/proc_holder/spell/self/convertrole/bog/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
