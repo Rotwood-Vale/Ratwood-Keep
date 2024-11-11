@@ -36,7 +36,7 @@
 		. = ..()
 		ApplyFilters()
 
-/obj/item/cart_upgrade/level_1/proc/ApplyFilters()
+/proc/ApplyFilters()
 	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(26, 13, 150, 150))
 
 /obj/item/cart_upgrade/level_2
@@ -49,7 +49,7 @@
 		. = ..()
 		ApplyFilters()
 
-/obj/item/cart_upgrade/level_2/proc/ApplyFilters()
+/proc/ApplyFilters()
 	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(32, 196, 218, 200))
 
 /obj/structure/handcart/examine(mob/user)
