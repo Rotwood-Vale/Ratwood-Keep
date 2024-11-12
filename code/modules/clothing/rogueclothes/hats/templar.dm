@@ -7,7 +7,7 @@
 	adjustable = CAN_CADJUST
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	block2add = FOV_RIGHT|FOV_LEFT|FOV_BEHIND
+			block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt
 	desc = "Gilded gold and silvered metal, the bright, vibrant colors of an Astratan crusader radiate from this blessed helmet."
@@ -24,7 +24,7 @@
 	adjustable = CAN_CADJUST
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	block2add = FOV_RIGHT|FOV_LEFT|FOV_BEHIND
+			block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
 	desc = "The darkest of blacks, this hooded helm is reminiscent of an executioner's head, striking fear into those who look upon it that they too may soon face the undermaiden."
@@ -40,7 +40,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	block2add = FOV_RIGHT|FOV_LEFT|FOV_BEHIND
+			block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/templar/noc
 	name = "noctian helmet"
@@ -51,7 +51,7 @@
 	adjustable = CAN_CADJUST
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	block2add = FOV_RIGHT|FOV_LEFT|FOV_BEHIND
+			block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/templar/dendor
 	name = "dendorite helmet"
@@ -61,7 +61,7 @@
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	block2add = FOV_RIGHT|FOV_LEFT|FOV_BEHIND
+			block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
 	name = "ravoxian helmet"
@@ -72,7 +72,7 @@
 	adjustable = CAN_CADJUST
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES|MOUTH
-	block2add = FOV_RIGHT|FOV_LEFT|FOV_BEHIND
+			block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/helmet/heavy/templar/AdjustClothes(mob/user)
 	if(loc == user)
