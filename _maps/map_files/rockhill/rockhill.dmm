@@ -1483,6 +1483,10 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
+"bly" = (
+/mob/living/carbon/human/species/human/northern/bum/ambush,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave)
 "blM" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/random,
@@ -9288,6 +9292,10 @@
 /obj/item/key/church,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"hQG" = (
+/mob/living/carbon/human/species/human/northern/bum/ambush,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/town/sewer)
 "hQH" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 4
@@ -10729,8 +10737,7 @@
 /area/rogue/indoors/town/garrison)
 "jfW" = (
 /obj/structure/fluff/railing/border{
-	dir = 5;
-	icon_state = "border"
+	dir = 5
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -19148,8 +19155,7 @@
 /area/rogue/outdoors/rtfield)
 "qng" = (
 /obj/structure/fluff/railing/border{
-	dir = 6;
-	icon_state = "border"
+	dir = 6
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -19190,6 +19196,10 @@
 	icon_state = "paving"
 	},
 /area/rogue/under/town/basement)
+"qox" = (
+/mob/living/carbon/human/species/human/northern/bum/ambush,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/cave)
 "qoM" = (
 /obj/structure/table/vtable,
 /turf/open/floor/rogue/churchbrick,
@@ -27046,6 +27056,10 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/town/basement)
+"xfh" = (
+/mob/living/carbon/human/species/human/northern/bum/ambush,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave)
 "xfn" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -187686,7 +187700,7 @@ rRb
 gLf
 rSC
 rSC
-gLf
+hQG
 rRb
 lrs
 lrs
@@ -195300,7 +195314,7 @@ rSC
 rSC
 rSC
 rSC
-gLf
+hQG
 uAL
 rRb
 rRb
@@ -195713,7 +195727,7 @@ gLf
 mof
 gLf
 gLf
-gLf
+hQG
 gLf
 gLf
 gLf
@@ -195736,7 +195750,7 @@ gLf
 gLf
 gLf
 gLf
-gLf
+hQG
 gLf
 gLf
 gLf
@@ -200565,7 +200579,7 @@ lrs
 rRb
 gLf
 rSC
-gLf
+hQG
 rRb
 lrs
 lrs
@@ -203355,7 +203369,7 @@ rRb
 gLf
 rSC
 rSC
-gLf
+hQG
 gLf
 gLf
 gLf
@@ -220265,7 +220279,7 @@ vRu
 vRu
 vRu
 tQZ
-tQP
+qox
 boa
 tQP
 vRu
@@ -225051,7 +225065,7 @@ vuH
 cdX
 cdX
 cdX
-fjw
+bly
 vRu
 dLD
 bIl
@@ -225445,7 +225459,7 @@ vRu
 rSC
 rSC
 vuH
-vuH
+xfh
 vuH
 vuH
 vuH
@@ -230299,7 +230313,7 @@ iyS
 tQP
 tQP
 tQP
-tQP
+qox
 tQP
 tQP
 cHw
@@ -231121,7 +231135,7 @@ tQP
 tQP
 tQP
 tQP
-tQP
+qox
 vRu
 vRu
 vRu
