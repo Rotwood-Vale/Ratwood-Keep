@@ -9,7 +9,7 @@
 	allowed_races = RACES_ALL_KINDS
 
 	tutorial = "Servitude unto death; that is your motto. You are the manor's major-domo, commanding over the house servants and seeing to the administrative affairs, day to day of the estate. This role has style options for chief butlers and head maids."
-	outfit = /datum/outfit/job/roguetown/butler
+	outfit = /datum/outfit/job/roguetown/seneschal
 	advclass_cat_rolls = list(CTAG_SENESCHAL = 20)
 	display_order = JDO_BUTLER
 	give_bank_account = 30
@@ -23,10 +23,26 @@
 		var/mob/living/carbon/human/H = L
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
+		H.become_blind("advsetup") // Classes are for aesthetic clothing only, mechanically they're identical.
 
-/datum/outfit/job/roguetown/butler/pre_equip(mob/living/carbon/human/H) // Shared skills; the classes are for style.
+/datum/advclass/seneschal/seneschal
+	name = "Seneschal"
+	tutorial = "While still expected to fill in for the duties of the household servantry as needed, you have styled yourself as a figure beyond them."
+	outfit = /datum/outfit/job/roguetown/seneschal/seneschal
+	category_tags = list(CTAG_SENESCHAL)
+
+/datum/outfit/job/roguetown/seneschal/seneschal/pre_equip(mob/living/carbon/human/H)
 	..()
+	pants = /obj/item/clothing/under/roguetown/tights
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
+	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	backl = /obj/item/storage/backpack/rogue/satchel
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/keyring/servant
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
+	id = /obj/item/scomstone/bad
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F) 
+		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
@@ -50,32 +66,7 @@
 		H.change_stat("speed", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("perception", 2)
-		H.change_stat("fortune", 1) // Usually leadership carrot.
-
-//	pants = /obj/item/clothing/under/roguetown/tights
-//	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-//	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-//	belt = /obj/item/storage/belt/rogue/leather
-//	beltr = /obj/item/storage/keyring/servant
-
-/datum/advclass/seneschal/seneschal
-	name = "Seneschal"
-	tutorial = "While still expected to fill in for the duties of the household servantry as needed, you have styled yourself as a figure beyond them."
-	outfit = /datum/outfit/job/roguetown/seneschal/seneschal
-	category_tags = list(CTAG_SENESCHAL)
-
-/datum/outfit/job/roguetown/seneschal/seneschal/pre_equip(mob/living/carbon/human/H)
-	..()
-	pants = /obj/item/clothing/under/roguetown/tights
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	backl = /obj/item/storage/backpack/rogue/satchel
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/keyring/servant
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-	id = /obj/item/scomstone/bad
-	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F) 
-		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
+		H.change_stat("fortune", 1) // Usual leadership carrot.
 
 /datum/advclass/seneschal/headmaid
 	name = "Head Maid"
@@ -95,6 +86,30 @@
 	beltr = /obj/item/storage/keyring/servant
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	id = /obj/item/scomstone/bad
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		if(H.age == AGE_MIDDLEAGED)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.change_stat("speed", 1)
+		H.change_stat("intelligence", 2)
+		H.change_stat("perception", 2)
+		H.change_stat("fortune", 1) // Usual leadership carrot.
 
 /datum/advclass/seneschal/chiefbutler
 	name = "Chief Butler"
@@ -113,4 +128,28 @@
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	id = /obj/item/scomstone/bad
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		if(H.age == AGE_MIDDLEAGED)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.change_stat("speed", 1)
+		H.change_stat("intelligence", 2)
+		H.change_stat("perception", 2)
+		H.change_stat("fortune", 1) // Usual leadership carrot.
 
