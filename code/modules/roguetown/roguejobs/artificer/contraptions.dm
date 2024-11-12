@@ -360,20 +360,26 @@
 				S.set_up(1, 1, front)
 				S.start()
 				user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT)) // Only imprinting gives EXP
+				message_admins("[user] has used [name] to change the lock of [O] to [stored_lock_id] hash [stored_lock_hash] in [ADMIN_VERBOSEJMP(front)]")
+				log_game("[user] has used [name] to change the lock of [O] to [stored_lock_id] hash [stored_lock_hash] in [ADMIN_VERBOSEJMP(front)]")
 				if(!skill && prob(sneaky_misfire_chance))
 					misfire(O, user)
 				break
 			if(mode == "Unlocker")
+				var/turf/front = get_turf(O)
 				if(O.locked)
 					O.locked = FALSE
 					playsound(user, 'sound/foley/doors/unlock.ogg', 150, TRUE)
 					playsound(user, 'sound/foley/doors/lockrattlemetal.ogg', 100, TRUE)
+					message_admins("[user] has used [name] to unlock [O] in [ADMIN_VERBOSEJMP(front)]")
+					log_game("[user] has used [name] to unlock [O] in [ADMIN_VERBOSEJMP(front)]")
 				else
 					O.locked = TRUE
 					playsound(user, 'sound/foley/doors/lock.ogg', 150, TRUE)
+					message_admins("[user] has used [name] to lock [O] in [ADMIN_VERBOSEJMP(front)]")
+					log_game("[user] has used [name] to lock [O] in [ADMIN_VERBOSEJMP(front)]")
 				user.visible_message(span_notice("[user] holds the [name] up to the [O.name] causing sparks to fly!"))
 				var/datum/effect_system/spark_spread/S = new()
-				var/turf/front = get_turf(O)
 				S.set_up(1, 1, front)
 				S.start()
 				var/oldx = O.pixel_x
