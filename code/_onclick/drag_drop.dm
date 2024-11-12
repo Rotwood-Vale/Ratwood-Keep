@@ -60,6 +60,7 @@
 	var/goal
 	var/progress
 	var/doneset
+	var/aghost_toggle
 
 /atom
 	var/blockscharging = FALSE
@@ -114,6 +115,25 @@
 
 
 	var/list/L = params2list(params)
+	if (L["middle"]) //start charging a spell or readying a mmb intent- Moved to front so it can't be overriden by people holding right click
+		if(mob.next_move > world.time)
+			return
+		mob.atkswinging = "middle"
+		if(mob.mmb_intent)
+			mob.used_intent = mob.mmb_intent
+			if(mob.used_intent.type == INTENT_SPELL && mob.ranged_ability)
+				var/obj/effect/proc_holder/spell/S = mob.ranged_ability
+				if(!S.cast_check(TRUE,mob))
+					return
+		if(!mob.mmb_intent)
+			mouse_pointer_icon = 'icons/effects/mousemice/human_looking.dmi'
+		else
+			if(mob.mmb_intent.get_chargetime() && !AD.blockscharging)
+				updateprogbar()
+			else
+				mouse_pointer_icon = mob.mmb_intent.pointer
+		return
+
 	if (L["right"])
 		mob.face_atom(object, location, control, params)
 		if(L["left"])
@@ -135,24 +155,7 @@
 		else
 			mouse_pointer_icon = 'icons/effects/mousemice/human_looking.dmi'
 			return
-	if (L["middle"]) //start charging a spell or readying a mmb intent
-		if(mob.next_move > world.time)
-			return
-		mob.atkswinging = "middle"
-		if(mob.mmb_intent)
-			mob.used_intent = mob.mmb_intent
-			if(mob.used_intent.type == INTENT_SPELL && mob.ranged_ability)
-				var/obj/effect/proc_holder/spell/S = mob.ranged_ability
-				if(!S.cast_check(TRUE,mob))
-					return
-		if(!mob.mmb_intent)
-			mouse_pointer_icon = 'icons/effects/mousemice/human_looking.dmi'
-		else
-			if(mob.mmb_intent.get_chargetime() && !AD.blockscharging)
-				updateprogbar()
-			else
-				mouse_pointer_icon = mob.mmb_intent.pointer
-		return
+
 	if (L["left"]) //start charging a lmb intent
 		if(!L["shift"])
 			mob.face_atom(object, location, control, params)

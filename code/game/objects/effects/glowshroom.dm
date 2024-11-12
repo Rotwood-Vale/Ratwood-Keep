@@ -43,6 +43,7 @@
 			if(!HAS_TRAIT(L, TRAIT_KNEESTINGER_IMMUNITY))
 				if(L.electrocute_act(30, src))
 					L.emote("painscream")
+					L.update_sneak_invis(TRUE)
 					L.consider_ambush()
 	. = ..()
 

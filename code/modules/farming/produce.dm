@@ -156,6 +156,7 @@
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/wine
 	rotprocess = 15 MINUTES
+	mill_result = /obj/item/reagent_containers/powder/alch/berry
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/Initialize()
 	if(GLOB.berrycolors[color_index])
@@ -167,8 +168,8 @@
 		else
 			GLOB.berrycolors[color_index] = newcolor
 		filling_color = GLOB.berrycolors[color_index]
+	. = ..()
 	update_icon()
-	..()
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/On_Consume(mob/living/eater)
 	..()
@@ -185,7 +186,7 @@
 		used_state = "berriesc2"
 	if(bitecount == 4)
 		used_state = "berriesc1"
-	var/image/item_overlay = image(used_state)
+	var/image/item_overlay = image(icon, used_state)
 	item_overlay.color = filling_color
 	add_overlay(item_overlay)
 
@@ -196,6 +197,7 @@
 	list_reagents = list(/datum/reagent/berrypoison = 5, /datum/reagent/consumable/nutriment = 3)
 	grind_results = list(/datum/reagent/berrypoison = 5)
 	color_index = "bad"
+	mill_result = /obj/item/reagent_containers/powder/alch/berryp
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
 	seed = /obj/item/seeds/sweetleaf
@@ -234,6 +236,7 @@
 	eat_effect = /datum/status_effect/debuff/badmeal
 	list_reagents = list(/datum/reagent/drug/nicotine = 5, /datum/reagent/consumable/nutriment = 1)
 	grind_results = list(/datum/reagent/drug/nicotine = 10)
+	mill_result = /obj/item/reagent_containers/powder/alch/pipe
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry
 	seed = null
@@ -245,6 +248,7 @@
 	list_reagents = list(/datum/reagent/drug/space_drugs = 2,/datum/reagent/consumable/nutriment = 1)
 	grind_results = list(/datum/reagent/drug/space_drugs = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
+	mill_result = /obj/item/reagent_containers/powder/alch/swamp
 
 /obj/item/reagent_containers/food/snacks/grown/cabbage
 	name = "cabbage"

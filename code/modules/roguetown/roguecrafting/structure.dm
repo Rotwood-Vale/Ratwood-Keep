@@ -17,6 +17,8 @@
 				/obj/item/ingot/iron = 1,)
 	verbage_simple = "construct"
 	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/handcart
 	name = "handcart"
@@ -214,6 +216,14 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
+
+/datum/crafting_recipe/roguetown/structure/art_table
+	name = "artificer table"
+	result = /obj/machinery/artificer_table
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	skillcraft = /datum/skill/craft/engineering
+	verbage_simple = "create"
+	verbage = "creates"
 
 /datum/crafting_recipe/roguetown/structure/loom
 	name = "loom"
@@ -459,7 +469,7 @@
 
 /datum/crafting_recipe/roguetown/structure/dryingrack
 	name = "drying rack"
-	result = /obj/structure/fluff/dryingrack
+	result = /obj/machinery/tanningrack
 	reqs = list(/obj/item/grown/log/tree/stick = 3)
 	verbage_simple = "construct"
 	verbage = "constructs"

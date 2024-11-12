@@ -129,8 +129,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/dying_key
 
 	//Grinder vars
-	var/list/grind_results //A reagent list containing the reagents this item produces when ground up in a grinder - this can be an empty list to allow for reagent transferring only
-	var/list/juice_results //A reagent list containing blah blah... but when JUICED in a grinder!
+	var/list/grind_results = null //A reagent list containing the reagents this item produces when ground up in a grinder - this can be an empty list to allow for reagent transferring only
+	var/list/juice_results = null //A reagent list containing blah blah... but when JUICED in a grinder!
 
 	var/canMouseDown = FALSE
 	var/can_parry = FALSE
@@ -342,6 +342,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		else if(isliving(loc))
 			var/mob/living/embedded_mob = loc
 			embedded_mob.simple_remove_embedded_object(src)
+	if(artrecipe)
+		QDEL_NULL(artrecipe)
+	if(istype(loc, /obj/machinery/artificer_table))
+		var/obj/machinery/artificer_table/A = loc
+		A.material = null
+		A.update_icon()
 	return ..()
 
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)

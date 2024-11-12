@@ -318,7 +318,7 @@
 
 /obj/item/flashlight/flare/torch
 	name = "torch"
-	desc = ""
+	desc = "The light.. the promise of safety!"
 	w_class = WEIGHT_CLASS_NORMAL
 	light_range = 4
 	light_color = LIGHT_COLOR_ORANGE
@@ -338,6 +338,7 @@
 	fuel = 30 MINUTES
 	light_depth = 0
 	light_height = 0
+	metalizer_result = /obj/item/flashlight/flare/torch/lantern
 
 /obj/item/flashlight/flare/torch/getonmobprop(tag)
 	. = ..()
@@ -440,11 +441,12 @@
 	icon_state = "mtorch"
 	light_range = 6
 	fuel = 9999 MINUTES
+	metalizer_result = null
 
 /obj/item/flashlight/flare/torch/lantern
-	name = "lamptern"
+	name = "iron lamptern"
 	icon_state = "lamp"
-	desc = ""
+	desc = "Flames kept safe within an iron cage."
 	light_range = 7
 	on = FALSE
 	flags_1 = CONDUCT_1
@@ -455,6 +457,8 @@
 	var/open = TRUE
 	var/list/occupants = list()
 	var/max_occupants = 1 //Hard-cap so you can't have multiple seelie in one carrier
+	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/item/flashlight/flare/torch/lantern/process()
 	open_flame(heat)
@@ -498,6 +502,16 @@
 "eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/flashlight/flare/torch/lantern/bronzelamptern
+	name = "bronze lamptern"
+	icon_state = "bronzelamp"
+	item_state = "bronzelamp"
+	desc = "A marvel of engineering that emits a strange green glow."
+	light_range = 8
+	light_color ="#4ac77e"
+	on = FALSE
+	smeltresult = /obj/item/ingot/bronze
 
 //------------BEGIN LANTERN SEELIE CARRYING CODE--------------//
 

@@ -14,9 +14,9 @@
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 	var/latched = FALSE
-	var/locked = FALSE
+	locked = FALSE
 	var/base_icon = "pillory_single"
-	var/list/lockid = list()
+	var/list/accepted_id = list()
 	var/keylock = TRUE
 
 /obj/structure/pillory/double/custom
@@ -31,16 +31,16 @@
 	base_icon = "pillory_reinforced"
 
 /obj/structure/pillory/town_square
-	lockid = list("keep_dungeon", "keep_barracks", "town_dungeon", "town_barracks", "bog_dungeon", "bog_barracks", "church")
+	accepted_id = list("keep_dungeon", "keep_barracks", "town_dungeon", "town_barracks", "bog_dungeon", "bog_barracks", "church")
 
 /obj/structure/pillory/reinforced/keep_dungeon
-	lockid = list("keep_dungeon")
+	accepted_id = list("keep_dungeon")
 
 /obj/structure/pillory/reinforced/town_dungeon
-	lockid = list("town_dungeon")
+	accepted_id = list("town_dungeon")
 
 /obj/structure/pillory/reinforced/bog_dungeon
-	lockid = list("bog_dungeon")
+	accepted_id = list("bog_dungeon")
 
 
 /obj/structure/pillory/Initialize()
@@ -73,7 +73,7 @@
 			to_chat(user, span_warning("[src] already has a lock."))
 		else
 			keylock = TRUE
-			lockid = list(K.lockhash)
+			accepted_id = list(K.lockhash)
 			to_chat(user, span_notice("You add [K] to [P]."))
 			qdel(P)
 		return
@@ -83,12 +83,12 @@
 	if(!latched && keylock)
 		to_chat(user, span_warning("It's not latched shut!"))
 		return
-	if(istype(P, /obj/item/roguekey))
-		var/obj/item/roguekey/K = P
+	if(istype(P, /obj/item/key))
+		var/obj/item/key/K = P
 		if (!keylock)
 			to_chat(user, span_warning("\The [src] lacks a lock."))
 			return
-		if(K.lockid in lockid)
+		if(K.lockid in accepted_id)
 			togglelock(user)
 			return
 		else
@@ -97,8 +97,8 @@
 			return
 	if(istype(P, /obj/item/keyring))
 		var/obj/item/keyring/K = P
-		for(var/obj/item/roguekey/KE in K.keys)
-			if(KE.lockid in lockid)
+		for(var/obj/item/key/KE in K.keys)
+			if(KE.lockid in accepted_id)
 				togglelock(user)
 				return
 

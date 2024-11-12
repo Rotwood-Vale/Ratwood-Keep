@@ -82,7 +82,7 @@
 
 
 /obj/structure/chair/bench/couch/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -107,6 +107,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
+	metalizer_result = /obj/item/roguestatue/iron/deformed
 
 /obj/structure/chair/wood/rogue/chair3
 	icon_state = "chair3"
@@ -137,6 +138,7 @@
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
 	sleepy = 0.35
+	metalizer_result = /obj/item/roguestatue/iron/deformed
 
 /obj/item/chair/rogue/getonmobprop(tag)
 	. = ..()
@@ -239,6 +241,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
+	metalizer_result = /obj/item/cooking/pan
 
 /obj/item/chair/stool/bar/rogue
 	name = "stool"
@@ -252,6 +255,7 @@
 	max_integrity = 100
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
+	metalizer_result = /obj/item/cooking/pan
 
 /obj/item/chair/stool/bar/rogue/getonmobprop(tag)
 	. = ..()
@@ -271,10 +275,12 @@
 	pixel_y = 5
 	sleepy = 3
 	debris = list(/obj/item/grown/log/tree/small = 1)
+	metalizer_result = /obj/machinery/anvil/crafted
 
 /obj/structure/bed/rogue/shit
 	icon_state = "shitbed"
 	sleepy = 1
+	metalizer_result = null
 
 /obj/structure/bed/rogue/sleepingbag
 	name = "sleepcloth"
@@ -283,6 +289,7 @@
 	attacked_sound = 'sound/foley/cloth_rip.ogg'
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	sleepy = 0.5
+	metalizer_result = null
 
 /obj/structure/bed/rogue/sleepingbag/MiddleClick(mob/user, params)
 	..()

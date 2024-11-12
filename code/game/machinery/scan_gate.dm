@@ -20,7 +20,7 @@
 
 	var/scanline_timer
 	var/next_beep = 0 //avoids spam
-	var/locked = FALSE
+	locked = FALSE
 	var/scangate_mode = SCANGATE_NONE
 	var/disease_threshold = DISEASE_SEVERITY_MINOR
 	var/nanite_cloud = 0

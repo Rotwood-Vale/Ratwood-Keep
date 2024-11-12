@@ -73,9 +73,8 @@
 		return span_warning("I'm too far away to read it.")
 
 /obj/item/paper/scroll/Initialize()
-	open = FALSE
+	. = ..()
 	update_icon_state()
-	..()
 
 /obj/item/paper/scroll/rmb_self(mob/user)
 	attack_right(user)

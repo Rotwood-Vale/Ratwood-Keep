@@ -20,6 +20,8 @@
 	alpha = 200
 	leanable = TRUE
 	var/stump_type = /obj/structure/flora/roguetree/stump
+	metalizer_result = /obj/machinery/light/roguestreet
+	smeltresult = /obj/item/rogueore/coal
 
 /obj/structure/flora/roguetree/attack_right(mob/user)
 	if(user.mind && isliving(user))
@@ -133,6 +135,7 @@
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	stump_type = null
 	pixel_x = -32
+	metalizer_result = /obj/machinery/anvil
 
 /obj/structure/flora/roguetree/stump/burnt/Initialize()
 	. = ..()
@@ -161,12 +164,12 @@
 	layer = TABLE_LAYER
 	plane = GAME_PLANE
 	blade_dulling = DULLING_CUT
-	debris = list(/obj/item/grown/log/tree/stick = 1)
 	static_debris = list(/obj/item/grown/log/tree/small = 1)
 	alpha = 255
 	pixel_x = -16
 	climb_offset = 14
 	stump_type = FALSE
+	metalizer_result = /obj/machinery/anvil
 
 /obj/structure/flora/roguetree/stump/Initialize()
 	. = ..()
@@ -182,6 +185,7 @@
 	static_debris = list(/obj/item/grown/log/tree = 1)
 	climb_offset = 14
 	stump_type = FALSE
+	metalizer_result = /obj/structure/bars/pipe
 
 /obj/structure/flora/roguetree/stump/log/Initialize()
 	. = ..()
@@ -363,7 +367,7 @@
 	leanable = TRUE
 
 /obj/structure/flora/roguegrass/bush/wall/Initialize()
-	..()
+	. = ..()
 	icon_state = "bushwall[pick(1,2)]"
 
 /obj/structure/flora/roguegrass/bush/wall/update_icon()
@@ -388,7 +392,7 @@
 	static_debris = null
 
 /obj/structure/flora/roguegrass/bush/wall/tall/Initialize()
-	..()
+	. = ..()
 	icon_state = "tallbush[pick(1,2)]"
 
 
@@ -423,7 +427,7 @@
 
 
 /obj/structure/flora/rogueshroom/Initialize()
-	..()
+	. = ..()
 	icon_state = "mush[rand(1,5)]"
 	if(icon_state == "mush5")
 		static_debris = list(/obj/item/natural/thorn=1, /obj/item/grown/log/tree/small = 1)

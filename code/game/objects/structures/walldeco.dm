@@ -94,10 +94,10 @@
 	desc = ""
 	icon_state = "serpent"
 
-/obj/structure/fluff/walldeco/masonflag
-	name = "mason's guild"
+/obj/structure/fluff/walldeco/artificerflag
+	name = "Artificer's Guild"
 	desc = ""
-	icon_state = "mason"
+	icon_state = "artificer"
 
 /obj/structure/fluff/walldeco/maidendrape
 	name = "black drape"
@@ -133,7 +133,7 @@
 
 /obj/structure/fluff/walldeco/stone/Initialize()
 	icon_state = "walldec[rand(1,6)]"
-	..()
+	return ..()
 
 /obj/structure/fluff/walldeco/maidensigil
 	name = "stone sigil"
@@ -173,10 +173,11 @@
 	buckle_lying = 0
 	breakoutextra = 10 MINUTES
 	buckleverb = "tie"
+	smeltresult = /obj/item/rope/chain
 
 /obj/structure/fluff/walldeco/chains/Initialize()
 	icon_state = "chains[rand(1,8)]"
-	..()
+	return ..()
 
 /obj/structure/fluff/walldeco/customflag
 	name = "rockhill flag"
@@ -184,7 +185,7 @@
 	icon_state = "wallflag"
 
 /obj/structure/fluff/walldeco/customflag/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else

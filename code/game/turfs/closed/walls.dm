@@ -151,15 +151,6 @@
 					span_hear("I hear a booming smash!"))
 	return TRUE
 
-/turf/closed/wall/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
-	user.changeNext_move(CLICK_CD_MELEE)
-	to_chat(user, span_notice("I push the wall but nothing happens!"))
-	playsound(src, 'sound/blank.ogg', 25, TRUE)
-	add_fingerprint(user)
-
 /turf/closed/wall/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	if (!user.IsAdvancedToolUser())

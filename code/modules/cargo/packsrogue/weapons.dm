@@ -67,14 +67,6 @@
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 				)
 
-/datum/supply_pack/rogue/weapons/stunmace
-	name = "Stunmaces"
-	cost = 450
-	contains = list(
-					/obj/item/rogueweapon/mace/stunmace,
-					/obj/item/rogueweapon/mace/stunmace,
-				)
-
 /datum/supply_pack/rogue/weapons/shield
 	name = "Wooden Shields"
 	cost = 45
@@ -106,9 +98,9 @@
 	name = "Quiver"
 	cost = 15
 	contains = list(
-					/obj/item/quiver,
-					/obj/item/quiver,
-					/obj/item/quiver,
+					/obj/item/ammo_holder/quiver,
+					/obj/item/ammo_holder/quiver,
+					/obj/item/ammo_holder/quiver,
 				)
 
 /datum/supply_pack/rogue/weapons/arrow
@@ -141,18 +133,18 @@
 	name = "Quiver of Arrows"
 	cost = 50
 	contains = list(
-					/obj/item/quiver/arrows,
-					/obj/item/quiver/arrows,
-					/obj/item/quiver/arrows,
+					/obj/item/ammo_holder/quiver/arrows,
+					/obj/item/ammo_holder/quiver/arrows,
+					/obj/item/ammo_holder/quiver/arrows,
 				)
 
 /datum/supply_pack/rogue/weapons/quivers/bolts
 	name = "Quiver of Bolts"
 	cost = 50
 	contains = list(
-					/obj/item/quiver/bolts,
-					/obj/item/quiver/bolts,
-					/obj/item/quiver/bolts,
+					/obj/item/ammo_holder/quiver/bolts,
+					/obj/item/ammo_holder/quiver/bolts,
+					/obj/item/ammo_holder/quiver/bolts,
 				)
 
 /*
