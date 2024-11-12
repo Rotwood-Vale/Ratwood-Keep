@@ -15,7 +15,7 @@
 
 	display_order = JDO_LADY
 	give_bank_account = TRUE
-	min_pq = 0
+	min_pq = 2
 	max_pq = null
 
 /datum/job/roguetown/exlady //just used to change the ladys title
