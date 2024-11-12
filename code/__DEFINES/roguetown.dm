@@ -149,6 +149,16 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 )
+// For their armour sets. Shouldn't need to define the sub species, but oh well.
+#define GOBLIN_RACE_TYPES list(\
+	/datum/species/goblinp,\
+	/datum/species/goblin,\
+	/datum/species/goblin/hell,\
+	/datum/species/goblin/cave,\
+	/datum/species/goblin/sea,\
+	/datum/species/goblin/moon,\
+)
+
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
@@ -270,6 +280,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
 #define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
 #define CTAG_BOG 		"CAT_BOG" 	//Vanguard
+#define CTAG_GOBS 		"CAT_GOBS" 	// Goblin Guards
 
 /*
 	Defines for the triumph buy datum categories
