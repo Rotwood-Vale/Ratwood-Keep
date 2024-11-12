@@ -129,8 +129,9 @@
 #define JESTER		(1<<0)
 #define WIZARD		(1<<1)
 #define PHYSICIAN 	(1<<2)
-#define BUTLER		(1<<3)
-#define COUNCILLOR	(1<<4)
+#define PHYSAPPRE 	(1<<3)
+#define BUTLER		(1<<4)
+#define COUNCILLOR	(1<<5)
 
 #define YEOMEN		(1<<4)
 
@@ -223,6 +224,7 @@
 #define JDO_MAGICIAN 5
 #define JDO_MAGEAPPRENTICE 5.1
 #define JDO_PHYSICIAN 6
+#define JDO_PHYSAPPRE 6.1
 #define JDO_JESTER 7
 #define JDO_BUTLER 7.1
 #define JDO_SERVANT 7.2
@@ -307,6 +309,7 @@
 	/datum/job/roguetown/prince,\
 	/datum/job/roguetown/councillor,\
 	/datum/job/roguetown/physician,\
+	/datum/job/roguetown/physician_apprentice,\
 	/datum/job/roguetown/marshal,\
 	/datum/job/roguetown/captain,\
 	/datum/job/roguetown/hand,\

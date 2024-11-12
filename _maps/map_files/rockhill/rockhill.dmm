@@ -25877,6 +25877,10 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/cavewet/bogcaves)
+"wba" = (
+/obj/effect/landmark/start/physician_apprentice,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "wbg" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
@@ -407548,7 +407552,7 @@ uOL
 ojx
 xBv
 dnf
-aFk
+wba
 kUR
 kUR
 kUR
