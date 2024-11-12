@@ -114,15 +114,15 @@
 
 
 /datum/surgery_step/remove_prosthetic/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to saw through the base of [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to saw through [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] begins to saw through [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("I begin to saw through the base of [target]'s [parse_zone(target_zone)] prosthetic..."),
+		span_notice("[user] begins to saw through the base of [target]'s prosthetic [parse_zone(target_zone)]."),
+		span_notice("[user] begins to saw through the base of [target]'s prosthetic [parse_zone(target_zone)]."))
 	return TRUE
 
 /datum/surgery_step/remove_prosthetic/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I saw through the base of [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] saws through the base of [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] saws through the base of [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("I saw through the base of [target]'s prosthetic [parse_zone(target_zone)]."),
+		span_notice("[user] saws through the base of [target]'s prosthetic [parse_zone(target_zone)]!"),
+		span_notice("[user] saws through the base of [target]'s prosthetic [parse_zone(target_zone)]!"))
 	var/obj/item/bodypart/target_limb = target.get_bodypart(check_zone(target_zone))
 	target_limb?.drop_limb(TRUE)
 	return TRUE
