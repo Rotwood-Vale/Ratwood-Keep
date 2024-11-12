@@ -2,7 +2,8 @@ GLOBAL_VAR(lordsurname)
 GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/job/roguetown/lord
-	title = "Monarch"
+	title = "Grand Duke"
+	f_title = "Grand Duchess"
 	flag = LORD
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -22,16 +23,18 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	visuals_only_outfit = /datum/outfit/job/roguetown/lord/visuals
 
 	display_order = JDO_LORD
-	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it. Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error in their ways."
+	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it. Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error of their ways."
 	whitelist_req = FALSE
 	min_pq = 10
 	max_pq = null
+	round_contrib_points = 4
 	give_bank_account = 1000
 	required = TRUE
 	cmode_music = 'sound/music/combat_fancy.ogg'
 
 /datum/job/roguetown/exlord //just used to change the lords title
-	title = "Monarch Emeritus"
+	title = "Duke Emeritus"
+	f_title = "Duchess Emeritus"
 	flag = LORD
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -51,7 +54,14 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		else
 			GLOB.lordsurname = "of [L.real_name]"
 		SSticker.rulermob = L
-		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Monarch of Azure Peak.</span></span></b>")
+		switch(L.pronouns)
+			if(SHE_HER)
+				SSticker.rulertype = "Grand Duchess"
+			if(THEY_THEM_F)
+				SSticker.rulertype = "Grand Duchess"
+			else
+				SSticker.rulertype = "Grand Duke"
+		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is [SSticker.rulertype] of Azure Peak.</span></span></b>")
 		if(STATION_TIME_PASSED() <= 10 MINUTES) //Late to the party? Stuck with default colors, sorry!
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 
@@ -65,7 +75,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	l_hand = /obj/item/rogueweapon/lordscepter
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	id = /obj/item/clothing/ring/active/nomag
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
@@ -151,6 +161,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /obj/effect/proc_holder/spell/self/grant_title
 	name = "Grant Title"
 	desc = "Grant someone a title of honor... Or shame."
+	overlay_state = "recruit_titlegrant"
 	antimagic_allowed = TRUE
 	charge_max = 100
 	/// Maximum range for title granting

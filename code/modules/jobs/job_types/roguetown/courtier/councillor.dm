@@ -9,14 +9,15 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_COUNCILLOR
-	tutorial = "You may have inherited this position, bought your way into it, or were appointed to it by merit - perish the thought! Whatever the case, though, you work as an assistant and agent of the crown in matters of state. Whether this be aiding the steward, the sheriff, or the crown itself or simply enjoying the free food of the keep varies day by day. You may be the lowest rung of the ladder, but that still towers over everyone else in town."
+	tutorial = "You may have inherited this position, bought your way into it, or were appointed to it by merit--perish the thought! Whatever the case though, you work as an assistant and agent of the crown in matters of state. Whether this be aiding the steward, the sheriff, or the crown itself, or simply enjoying the free food of the keep, your duties vary day by day. You may be the lowest rung of the ladder, but that rung still towers over everyone else in town."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/councillor
 
 	give_bank_account = 40
 	noble_income = 20
-	min_pq = 1
+	min_pq = 1 //Probably a bad idea to have a complete newbie advising the monarch
 	max_pq = null
+	round_contrib_points = 2
 
 	cmode_music = 'sound/music/combat_fancy.ogg'
 

@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	ROLE_PAI))
 
 GLOBAL_LIST_INIT(noble_positions, list(
-	"Monarch",
+	"Grand Duke",
 	"Consort",
 	"Prince",
 	"Hand",
@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(courtier_positions, list(
 	"Court Magician",
 	"Court Physician",
 	"Jester",
-	"Head Butler",
+	"Seneschal",
 ))
 
 GLOBAL_LIST_INIT(garrison_positions, list(
@@ -123,8 +123,8 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Towner",
 	"Grabber",
 	"Nightmaster",
-	"Tavern Knave",
-	"Bath Swain",
+	"Tapster",
+	"Bathhouse Attendant",
 	"Docker",
 	"Prisoner",
 	"Beggar",

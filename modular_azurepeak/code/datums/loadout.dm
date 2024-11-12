@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/archercap
 	name = "Archer's cap"
 	path = /obj/item/clothing/head/roguetown/archercap
-	
+
 /datum/loadout_item/strawhat
 	name = "Straw Hat"
 	path = /obj/item/clothing/head/roguetown/strawhat
@@ -43,6 +43,13 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Buckled Hat"
 	path = /obj/item/clothing/head/roguetown/puritan
 
+/datum/loadout_item/folded_hat
+	name = "Folded Hat"
+	path = /obj/item/clothing/head/roguetown/bucklehat
+
+/datum/loadout_item/duelist_hat
+	name = "Duelist's Hat"
+	path = /obj/item/clothing/head/roguetown/duelhat
 //CLOAKS
 /datum/loadout_item/tabard
 	name = "Tabard"
@@ -71,6 +78,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/raincloak
 	name = "Rain Cloak"
 	path = /obj/item/clothing/cloak/raincloak
+
+/datum/loadout_item/direcloak
+	name = "direbear cloak"
+	path = /obj/item/clothing/cloak/darkcloak/bear
+
+/datum/loadout_item/lightdirecloak
+	name = "light direbear cloak"
+	path = /obj/item/clothing/cloak/darkcloak/bear/light
 
 
 //SHOES
@@ -126,6 +141,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/straplessdress
 	name = "Strapless Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless
+
+/datum/loadout_item/straplessdress/alt
+	name = "Strapless Dress, alt"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/alt
 
 /datum/loadout_item/leathervest
 	name = "Leather Vest"

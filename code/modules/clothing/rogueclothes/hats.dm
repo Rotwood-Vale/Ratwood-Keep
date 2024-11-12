@@ -1041,6 +1041,12 @@
 		wise.change_stat("intelligence", -2, "wisehat")
 		to_chat(wise, span_red("I lose wisdom."))
 
+// azure addition - random wizard hats
+
+/obj/item/clothing/head/roguetown/wizhat/random/Initialize()
+	icon_state = pick("wizardhatred", "wizardhatyellow", "wizardhatgreen", "wizardhat")
+	..()
+
 /obj/item/clothing/head/roguetown/witchhat
 	name = "witch hat"
 	desc = ""
@@ -1188,3 +1194,29 @@
 	max_integrity = 425
 	smeltresult = /obj/item/ingot/blacksteel
 	smelt_bar_num = 2
+
+/obj/item/clothing/head/roguetown/roguehood/hierophant
+	name = "hierophant's pashmina"
+	desc = "A thick hood that covers one's entire head, should they desire, or merely acts as a scarf otherwise."
+	icon_state = "deserthood"
+	item_state = "deserthood"
+	naledicolor = TRUE
+
+/obj/item/clothing/head/roguetown/roguehood/pontifex
+	name = "pontifex's pashmina"
+	desc = "A slim hood with thin, yet dense fabric. Stretchy and malleable, allowing for full flexibility and mobility."
+	icon_state = "monkhood"
+	item_state = "monkhood"
+	naledicolor = TRUE
+
+/obj/item/clothing/head/roguetown/bucklehat //lifeweb sprite
+	name = "folded hat"
+	desc = "A plain leather hat with decorative buckle. Made popular by the ne'er-do-wells of Etrusca."
+	icon_state = "bucklehat"
+	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/duelhat //lifeweb sprite
+	name = "duelist's hat"
+	desc = "A feathered leather hat, to show them all your superiority."
+	icon_state = "duelhat"
+	sewrepair = TRUE

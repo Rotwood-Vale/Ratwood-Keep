@@ -261,6 +261,13 @@
 	if(mind.has_studied)
 		mind.has_studied = FALSE
 		to_chat(mind.current, span_smallnotice("I feel like I can study my tome again...")) // AZURE PEAK ADDITION
+	if(mind.has_rituos)
+		mind.has_rituos = FALSE
+		to_chat(mind.current, span_smallnotice("The toil of invoking Her Lesser Work has fled my feeble form. I can continue my transfiguration..."))
+	if (mind.rituos_spell)
+		to_chat(mind.current, span_warning("My glimpse of [mind.rituos_spell.name] flees my slumbering mind..."))
+		mind.RemoveSpell(mind.rituos_spell)
+		mind.rituos_spell = null
 	to_chat(mind.current, span_notice("..and that's all I dreamt of"))
 	close_ui()
 

@@ -35,6 +35,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 2)
 			H.change_stat("intelligence", 1)
@@ -42,10 +43,13 @@
 			backl = /obj/item/rogueweapon/shield/wood
 			r_hand = /obj/item/rogueweapon/mace/steel
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/full
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
+
 		if("Blade Dancer")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Zybantian 'Blade Dancers' are famed and feared the world over. Their expertise in blades both long and short is well known..."))
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE) //they have literally nothing else going for them and swords suck ass, do not use this as an excuse to powercreep
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -60,24 +64,24 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			H.change_stat("strength", 1)
 			H.change_stat("endurance", 2)
 			H.change_stat("intelligence", 1)
 			H.change_stat("speed", 3)
 			backl = /obj/item/rogueweapon/sword/long/rider
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+			armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	beltl = /obj/item/flashlight/flare/torch
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	H.grant_language(/datum/language/celestial)
 
 	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/rogueweapon/huntingknife/idagger/navaja, /obj/item/clothing/neck/roguetown/shalal)
 
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

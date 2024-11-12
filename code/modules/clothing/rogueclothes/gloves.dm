@@ -15,7 +15,7 @@
 	icon_state = "leather_gloves"
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
-	resistance_flags = null
+	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -28,9 +28,9 @@
 
 /obj/item/clothing/gloves/roguetown/fingerless
 	name = "fingerless gloves"
-	desc = ""
+	desc = "Cloth gloves to absorb palm sweat while leaving the fingers free for fine manipulation."
 	icon_state = "fingerless_gloves"
-	resistance_flags = null
+	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -104,7 +104,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
-	resistance_flags = null
+	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -134,3 +134,9 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/blacksteel
+
+/obj/item/clothing/gloves/roguetown/angle/pontifex
+	name = "rune-scrybed wrappings"
+	desc = "Paper and cloth bandages enscrybed with powerful naledian runes. They do an ample job of protecting their user's hands in combat."
+	icon_state = "clothwraps"
+	item_state = "clothwraps"

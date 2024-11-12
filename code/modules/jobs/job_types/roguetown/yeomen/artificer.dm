@@ -9,13 +9,14 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
 
-	tutorial = "Hidden in the depths are ancient mechanical secrets, something your creed has taken it upon themselves to studying and understanding. To some, these mechanical wonders may seem like magic, but you know their inner workings as well as you do stone, down to the last cog."
+	tutorial = "Hidden in the depths are ancient mechanical secrets, something your creed has taken it upon themselves to studying and understanding. To some these mechanical wonders may seem like magic, but you know their inner workings as well as you do stone, down to the last cog."
 
 	outfit = /datum/outfit/job/roguetown/artificer
 	display_order = JDO_ARTIFICER
 	give_bank_account = 8
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/artificer/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -9,7 +9,7 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/cleric
-	allowed_patrons = ALL_CLERIC_PATRONS
+	allowed_patrons = ALL_PATRONS
 
 /datum/outfit/job/roguetown/adventurer/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -30,6 +30,8 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 		if(/datum/patron/divine/eora) //Eora content from Stonekeep
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
+		if(/datum/patron/inhumen/zizo)
+			H.cmode_music = 'sound/music/combat_cult.ogg'
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
@@ -54,7 +56,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -108,6 +110,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.change_stat("intelligence", 2)
 			H.change_stat("strength", -1)

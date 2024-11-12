@@ -226,13 +226,13 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = ""
+	desc = "The Tome of laws as passed by the Holy See to its many Ten-worshipping communities."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
-	bookfile = "law.json"
+	bookfile = "law_2.json"
 
 /obj/item/book/rogue/cooking
-	name = "Tastes Fit For The Lord" 
+	name = "Tastes Fit For The Lord"
 	desc = ""
 	icon_state ="book_0"
 	base_icon_state = "book"
@@ -248,7 +248,7 @@
 
 /obj/item/book/rogue/secret/xylix
 	name = "Book of Gold"
-	desc = "{<font color='red'><blink>An ominous book with untold powers.</blink></font>}"
+	desc = "<font color='red'><blink>An ominous book with untold powers.</blink></font>"
 	icon_state ="xylix_0"
 	base_icon_state = "xylix"
 	bookfile = "xylix.json"
@@ -260,6 +260,13 @@
 	..()
 	user.update_inv_hands()
 	to_chat(user, span_notice("You feel laughter echo in your head."))
+
+/obj/item/book/rogue/secret/thefireisgone
+	name = "THE FIRE IS GONE"
+	desc = "{<font color='red'><blink>AN ANCIENT TOME WRITTEN BY THE GODS' GREATEST FOOL</blink></font>}"
+	icon_state ="book6_0"
+	base_icon_state = "book6"
+	bookfile = "thefireisgone.json"
 
 //player made books
 /obj/item/book/rogue/tales1
@@ -278,7 +285,7 @@
 
 
 /obj/item/book/rogue/tales3
-	name = "Myths & Legends of Rockhill & Beyond Volume I"
+	name = "Myths & Legends of the Peaks & Beyond Volume I"
 	desc = "Arbalius The Younger"
 	icon_state ="book3_0"
 	base_icon_state = "book3"
@@ -368,6 +375,35 @@
 	base_icon_state = "book8"
 	bookfile = "tales14.json"
 
+/obj/item/book/rogue/naledi1
+	name = "The Path of the War Scholar Volume 1"
+	desc = "By Jatholemew von Rittensquatter, Esq"
+	icon_state = "knowledge_0"
+	base_icon_state = "knowledge"
+	bookfile = "naledi1.json"
+
+/obj/item/book/rogue/naledi2
+	name = "The Path of the War Scholar Volume 3"
+	desc = "By Jatholemew von Rittensquatter, Esq"
+	icon_state = "book8_0"
+	base_icon_state = "book8"
+	bookfile = "naledi2.json"
+
+/obj/item/book/rogue/naledi3
+	name = "The Path of the War Scholar Volume 7"
+	desc = "By Jatholemew von Rittensquatter, Esq"
+	icon_state = "book7_0"
+	base_icon_state = "book7"
+	bookfile = "naledi3.json"
+
+/obj/item/book/rogue/naledi4
+	name = "The Path of the War Scholar Volume 20"
+	desc = "By Jatholemew von Rittensquatter, Esq"
+	icon_state = "book6_0"
+	base_icon_state = "book6"
+	bookfile = "naledi4.json"
+
+
 /obj/item/book/rogue/playerbook
 	var/player_book_text
 	var/player_book_title
@@ -390,7 +426,7 @@
 	icon_state = "basic_book_0"
 	base_icon_state = "basic_book"
 	override_find_book = TRUE
-	
+
 /obj/item/book/rogue/playerbook/Initialize(loc, in_round_player_generated, var/mob/living/in_round_player_mob, text)
 	. = ..()
 	is_in_round_player_generated = in_round_player_generated

@@ -1,5 +1,5 @@
 /datum/language/celestial
-	name = "Celestial"
+	name = "Sama'glos"
 	desc = ""
 	speech_verb = "says"
 	ask_verb = "asks"

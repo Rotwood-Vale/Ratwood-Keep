@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/atm
 	name = "MEISTER"
-	desc = "Stores and withdraws currency for accounts managed by the Kingdom of Azure Peak."
+	desc = "Stores and withdraws currency for accounts managed by the Grand Duchy of Azuria."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "atm"
 	density = FALSE
@@ -27,9 +27,7 @@
 				spawn(5)
 				say("Blueblood for the Freefolk!")
 				playsound(src, 'sound/vo/mobs/ghost/laugh (5).ogg', 100, TRUE)
-				return
-			else
-				
+				return			
 	if(H in SStreasury.bank_accounts)
 		var/amt = SStreasury.bank_accounts[H]
 		if(!amt)
@@ -69,7 +67,8 @@
 		budget2change(coin_amt*mod, user, selection)
 	else
 		to_chat(user, span_warning("The machine bites my finger."))
-		icon_state = "atm-b"
+		if(!drilled)
+			icon_state = "atm-b"
 		H.flash_fullscreen("redflash3")
 		playsound(H, 'sound/combat/hits/bladed/genstab (1).ogg', 100, FALSE, -1)
 		SStreasury.create_bank_account(H)
@@ -107,18 +106,23 @@
 			if(!HAS_TRAIT(H, TRAIT_COMMIE))
 				to_chat(user, "<font color='red'>I don't know what I'm doing with this thing!</font>")
 				return
-			if(drilled)
+			if(SStreasury.treasury_value <50)
+				to_chat(user, "<font color='red'>These fools are completely broke. We'll get nothing out of this...</font>")
+				return
+			if(mammonsiphoned >499)
 				to_chat(user, "<font color='red'>This one has already been siphoned dry...</font>")
+				return
 			else
 				user.visible_message(span_warning("[user] is mounting the Crown onto the meister!"))
 				if(do_after(user, 50))
-					user.visible_message(span_warning("[user] mounts the Crown atop the meister!"))
-					drilling = TRUE
-					drill(src)
-					icon_state = "crown_meister"
-					qdel(P)
-					message_admins("[usr.key] has applied the Crustacean to a MEISTER.")
-					return
+					if(!drilling)
+						user.visible_message(span_warning("[user] mounts the Crown atop the meister!"))
+						icon_state = "crown_meister"
+						drilling = TRUE
+						drill(src)
+						qdel(P)
+						message_admins("[usr.key] has applied the Crustacean to a MEISTER.")
+						return
 		else
 			say("No account found. Submit your fingers for inspection.")
 	return ..()
@@ -129,10 +133,13 @@
 
 
 /obj/structure/roguemachine/atm/proc/drill(obj/structure/roguemachine/atm)
+	if(!drilling)
+		return
 	if(SStreasury.treasury_value <50)
 		new /obj/item/coveter(loc)
 		loc.visible_message(span_warning("The Crown grinds to a halt as the last of the treasury spills from the meister!"))
 		playsound(src, 'sound/misc/DrillDone.ogg', 70, TRUE)
+		icon_state = "atm"
 		drilling = FALSE
 		return
 	if(mammonsiphoned >499) // The cap variable for siphoning. 
@@ -142,6 +149,7 @@
 		icon_state = "meister_broken"
 		drilled = TRUE
 		drilling = FALSE
+		return
 	else
 		loc.visible_message(span_warning("A horrible scraping sound emanates from the Crown as it does its work..."))
 		playsound(src, 'sound/misc/TheDrill.ogg', 70, TRUE)
@@ -149,7 +157,7 @@
 			loc.visible_message(span_warning("The meister spills its bounty!"))
 			SStreasury.treasury_value -= 50 // Takes from the treasury
 			mammonsiphoned += 50
-			budget2change(50, src, "SILVER")
+			budget2change(50, null, "SILVER")
 			playsound(src, 'sound/misc/coindispense.ogg', 70, TRUE)
 			SStreasury.log_to_steward("-[50] exported mammon to the Freefolks!")
 			drill(src)
@@ -157,7 +165,9 @@
 /obj/structure/roguemachine/atm/attack_right(mob/living/carbon/human/user)
 	if(drilling)
 		to_chat(user,"<font color='yellow'>I begin dismounting the Crown from the meister...</font>" )
-		if(do_after(user, 30))
+		if(do_after(user, 30, src))
+			if(!drilling)
+				return
 			new /obj/item/coveter(loc)
 			user.visible_message(span_warning("[user] dismounts the Crown!"))
 			icon_state = "atm"

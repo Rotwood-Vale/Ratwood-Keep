@@ -30,7 +30,7 @@
 	icon_state = "saddle"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK_L
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	gripped_intents = list(/datum/intent/use)
 	force = 0
 	throwforce = 0
@@ -56,6 +56,7 @@
 /mob/living/simple_animal
 	var/can_saddle = FALSE
 	var/obj/item/ssaddle
+	var/simple_detect_bonus = 0 // A flat percentage bonus to our ability to detect sneaking people only. Use in lieu of giving mobs huge STAPER bonuses if you want them to be observant.
 
 /obj/item/natural/bone
 	name = "bone"

@@ -1,6 +1,6 @@
 /datum/job/roguetown/nightmaiden
-	title = "Bath Swain"
-	f_title = "Bath Wench"
+	title = "Bathhouse Attendant"
+	f_title = "Bathhouse Attendant"
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
@@ -11,7 +11,7 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "Most would decry the humble bath attendant as a desperate fool tempting others into bedsheets for money - only sometimes, you say! You work under the Bathmaster in the communal bathhouse, keeping it and the guests in turn as tidy as they please. Laundry, mild wounds, and your tender touch with a bar of soap is your craft."
+	tutorial = "Most would decry the humble bath attendant as a desperate fool tempting others into bedsheets for money--only sometimes, you say! You work under your Bathmaster in the communal bathhouse, keeping it and the guests in turn as tidy as they please. Wash laundry, tend mild wounds, and deftly wash your patrons with soap and a skilled 'caress', for this is your craft."
 
 	outfit = /datum/outfit/job/roguetown/nightmaiden
 	display_order = JDO_WENCH
@@ -19,6 +19,7 @@
 	can_random = FALSE
 	min_pq = -10
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/nightmaiden/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -27,7 +28,7 @@
 	r_hand = /obj/item/bath/soap
 	belt =	/obj/item/storage/belt/rogue/leather/cloth
 	beltl = /obj/item/roguekey/nightmaiden
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/fishnet/random //Added fishnet stockings to the wenches

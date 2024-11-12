@@ -54,6 +54,7 @@
 	bigboy = TRUE
 	gripsprite = TRUE
 	associated_skill = /datum/skill/combat/polearms
+	resistance_flags = FLAMMABLE
 
 /obj/item/rogueweapon/woodstaff/getonmobprop(tag)
 	. = ..()
@@ -122,6 +123,7 @@
 	wdefense = 5
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
+	resistance_flags = FLAMMABLE
 
 /obj/item/rogueweapon/spear/getonmobprop(tag)
 	. = ..()
@@ -484,3 +486,8 @@
 	chargetime = 5
 	recovery = 20
 	clickcd = 10
+
+/obj/item/rogueweapon/woodstaff/naledi
+	name = "naledian warstaff"
+	desc = "A staff carrying the crescent moon of Psydon's knowledge, as well as the black and gold insignia of the war scholars."
+	icon_state = "naledistaff"

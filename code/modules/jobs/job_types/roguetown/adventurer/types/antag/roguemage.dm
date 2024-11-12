@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/roguemage
 	category_tags = list(CTAG_BANDIT)
-	cmode_music = 'sound/music/combat_bandit_mage.ogg'	
+	cmode_music = 'sound/music/combat_bandit_mage.ogg'
 
 /datum/outfit/job/roguetown/bandit/roguemage/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -38,18 +38,18 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
 		if(H.age == AGE_OLD)
 			head = /obj/item/clothing/head/roguetown/wizhat/gen
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-			H.change_stat("speed", -1)
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 1)
 			H.mind.adjust_spellpoints(1)
-		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", -1)
+		H.change_stat("fortune", 2)
+		H.change_stat("speed", 1) //ohhh sweetie this is NOT gonna help
 		H.mind.adjust_spellpoints(1)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)

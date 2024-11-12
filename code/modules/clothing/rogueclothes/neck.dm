@@ -327,3 +327,9 @@
 	resistance_flags = FIRE_PROOF
 	sellprice = 100
 	anvilrepair = /datum/skill/craft/armorsmithing
+
+/obj/item/clothing/neck/roguetown/psicross/naledi
+	name = "naledian psy-bracelet"
+	desc = "A peculiar icon of worship from a foreign land. Forming the three-progned Psydonite cross in a circular ring, this bracelet embodies the Naledian belief of Psydon's eternity."
+	icon_state = "psybracelet"
+	item_state = null

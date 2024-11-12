@@ -23,6 +23,7 @@
 		new /obj/item/clothing/head/peaceflower(T)
 		return TRUE
 	to_chat(user, "<span class='warning'>The targeted location is blocked. The flowers of Eora refuse to grow.</span>")
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/eoracurse
@@ -49,4 +50,5 @@
 		target.visible_message("<span class='info'>A purple haze shrouds [target]!</span>", "<span class='notice'>I feel much calmer.</span>")
 		target.blur_eyes(10)
 		return TRUE
+	revert_cast()
 	return FALSE

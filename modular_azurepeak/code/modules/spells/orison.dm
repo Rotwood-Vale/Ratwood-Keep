@@ -1,3 +1,5 @@
+#define BLESSINGOFLIGHT_FILTER "bol_glow"
+
 /obj/effect/proc_holder/spell/targeted/touch/orison
 	name = "Orison"
 	overlay_state = "thaumaturgy"
@@ -46,7 +48,9 @@
 
 	var/obj/effect/proc_holder/spell/targeted/touch/orison/base_spell = attached_spell
 	if (user)
-		adjust_experience(user, base_spell.associated_skill, fatigue+attached_spell.devotion_cost)
+		var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
+		if (skill_level <= SKILL_LEVEL_EXPERT)
+			adjust_experience(user, base_spell.associated_skill, fatigue+attached_spell.devotion_cost)
 
 /obj/item/melee/touch_attack/orison/MiddleClick(mob/living/user, params)
 	. = ..()
@@ -88,6 +92,8 @@
 	status_type = STATUS_EFFECT_REFRESH
 	examine_text = "SUBJECTPRONOUN is surrounded by an aura of gentle light."
 	var/potency = 1
+	var/outline_colour = "#f5edda"
+	var/list/mobs_affected
 
 /datum/status_effect/light_buff/on_creation(mob/living/new_owner, light_power)
 	potency = light_power
@@ -99,16 +105,31 @@
 
 /datum/status_effect/light_buff/on_apply()
 	to_chat(owner, span_notice("Light blossoms into being around me!"))
-	owner.light_range = potency
-	owner.light_flags = NONE
-	owner.update_light()
+	var/filter = owner.get_filter(BLESSINGOFLIGHT_FILTER)
+	if (!filter)
+		owner.add_filter(BLESSINGOFLIGHT_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 1))
+	add_light(owner)
 	return TRUE
+
+/datum/status_effect/light_buff/proc/add_light(mob/living/source)
+	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = source.mob_light(potency)
+	LAZYSET(mobs_affected, source, mob_light_obj)
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(on_living_holder_deletion))
+
+/datum/status_effect/light_buff/proc/remove_light(mob/living/source)
+	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
+	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = LAZYACCESS(mobs_affected, source)
+	LAZYREMOVE(mobs_affected, source)
+	if(mob_light_obj)
+		qdel(mob_light_obj)
+
+/datum/status_effect/light_buff/proc/on_living_holder_deletion(mob/living/M)
+	remove_light(M)
 
 /datum/status_effect/light_buff/on_remove()
 	to_chat(owner, span_notice("The miraculous light surrounding me has fled..."))
-	owner.light_range = initial(owner.light_range)
-	owner.light_flags = initial(owner.light_flags)
-	owner.update_light()
+	owner.remove_filter(BLESSINGOFLIGHT_FILTER)
+	remove_light(owner)
 
 /obj/item/melee/touch_attack/orison/proc/cast_light(atom/thing, mob/living/carbon/human/user)
 	var/holy_skill = user.mind?.get_skill_level(attached_spell.associated_skill)
@@ -216,6 +237,65 @@
 			to_chat(user, span_warning("I can only direct thaumaturgical prayers towards myself, the ground, and any nearby light sources."))
 			return
 
+/datum/reagent/water/blessed
+	name = "blessed water"
+	description = "A gift of Devotion. Very slightly heals wounds."
+
+/datum/reagent/water/blessed/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	if (M.mob_biotypes & MOB_UNDEAD)
+		M.adjustFireLoss(0.5*REM)
+	else
+		M.adjustBruteLoss(-0.1*REM)
+		M.adjustFireLoss(-0.1*REM)
+		M.adjustOxyLoss(-0.1, 0)
+		var/list/our_wounds = M.get_wounds()
+		if (LAZYLEN(our_wounds))
+			var/upd = M.heal_wounds(1)
+			if (upd)
+				M.update_damage_overlays()
+
+/datum/reagent/water/blessed/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if (!istype(M))
+		return ..()
+	
+	if (method == TOUCH)
+		if (M.mob_biotypes & MOB_UNDEAD)
+			M.adjustFireLoss(2*reac_volume, 0)
+			M.visible_message(span_warning("[M] erupts into angry fizzling and hissing!"), span_warning("BLESSED WATER!!! IT BURNS!!!"))
+			M.emote("scream")
+	
+	return ..()
+
+/datum/reagent/water/cursed
+	name = "cursed water"
+	description = "A gift of Devotion. Very slightly heals wounds of the dead and the enlightened."
+
+/datum/reagent/water/cursed/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	var/mob/living/carbon/human/M_hum
+	if(istype(M,/mob/living/carbon/human/))
+		M_hum = M
+	if((M.mob_biotypes & MOB_UNDEAD) || (M_hum.patron.undead_hater == FALSE))
+		M.adjustBruteLoss(-0.1*REM)
+		M.adjustFireLoss(-0.1*REM)
+		M.adjustOxyLoss(-0.1, 0)
+		var/list/our_wounds = M.get_wounds()
+		if (LAZYLEN(our_wounds))
+			var/upd = M.heal_wounds(1)
+			if (upd)
+				M.update_damage_overlays()
+	else
+		M.adjustBruteLoss(-0.1*REM)
+		M.adjustFireLoss(-0.1*REM)
+		M.adjustOxyLoss(-0.1, 0)
+		var/list/our_wounds = M.get_wounds()
+		if (LAZYLEN(our_wounds))
+			var/upd = M.heal_wounds(1)
+			if (upd)
+				M.update_damage_overlays()
+		M.rogfat_add(0.5*REM)
+
 /obj/item/melee/touch_attack/orison/proc/create_water(atom/thing, mob/living/carbon/human/user)
 	// normally we wouldn't use fatigue here to keep in line w/ other holy magic, but we have to since water is a persistent resource
 	if (!thing.Adjacent(user))
@@ -237,20 +317,23 @@
 			if (thing.reagents.holder_full() || (user.devotion.devotion - fatigue_used <= 0))
 				break
 
-			var/water_qty = max(1, holy_skill / 2) + 1
-			var/list/water_contents = list(/datum/reagent/water = water_qty)
+			var/water_qty = max(1, holy_skill) + 1
+			var/list/water_contents = list(/datum/reagent/water/cursed = water_qty)
+			if(user.patron.undead_hater == TRUE)
+				water_contents = list(/datum/reagent/water/blessed = water_qty)
+
 			var/datum/reagents/reagents_to_add = new()
 			reagents_to_add.add_reagent_list(water_contents)
 			reagents_to_add.trans_to(thing, reagents_to_add.total_volume, transfered_by = user, method = INGEST)
 
 			fatigue_spent += fatigue_used
 			user.rogfat_add(fatigue_used)
-			user.devotion?.update_devotion(-0.5)
+			user.devotion?.update_devotion(-1.0)
 
 			if (prob(80))
 				playsound(user, 'sound/items/fillcup.ogg', 55, TRUE)
 		
-		return fatigue_spent
+		return min(50, fatigue_spent)
 	else if (istype(thing, /obj/item/natural/cloth))
 		// stupid little easter egg here: you can dampen a cloth to clean with it, because prestidigitation also lets you clean things. also a lot cheaper devotion-wise than filling a bucket
 		var/obj/item/natural/cloth/the_cloth = thing
@@ -261,3 +344,5 @@
 			return water_moisten
 	else
 		to_chat(user, span_info("I'll need to find a container that can hold water."))
+
+#undef BLESSINGOFLIGHT_FILTER

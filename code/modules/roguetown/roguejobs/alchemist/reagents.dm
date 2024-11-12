@@ -26,6 +26,10 @@
 	M.adjustOxyLoss(-0.7, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.7*REM)
 	M.adjustCloneLoss(-0.7*REM, 0)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!istype(H.dna.species, /datum/species/werewolf))
+			M.adjust_nutrition(-5*REM)
 	..()
 	. = 1
 
@@ -74,6 +78,10 @@
 	M.adjustOxyLoss(-1.4, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1.4*REM)
 	M.adjustCloneLoss(-1.4*REM, 0)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!istype(H.dna.species, /datum/species/werewolf))
+			M.adjust_nutrition(-2.5*REM)
 	..()
 	. = 1
 
@@ -159,3 +167,46 @@
 		M.adjust_fire_stacks(1)
 		M.IgniteMob()
 	return ..()
+
+/datum/reagent/infection
+	name = "excess choleric humour"
+	description = "Red-yellow pustulence - the carrier of disease, the enemy of all Pestrans."
+	reagent_state = LIQUID
+	color = "#dfe36f"
+	metabolization_rate = 0.1
+	var/damage_tick = 0.3
+	var/lethal_fever = FALSE
+	var/fever_multiplier = 1
+
+/datum/reagent/infection/on_mob_life(mob/living/carbon/M)
+	var/heat = (BODYTEMP_AUTORECOVERY_MINIMUM + clamp(volume, 3, 15)) * fever_multiplier
+	M.adjustToxLoss(damage_tick, 0)
+	if (lethal_fever)
+		M.adjust_bodytemperature(heat, 0)
+		if (prob(5))
+			to_chat(M, span_warning("A wicked heat settles within me... I feel ill. Very ill."))
+	else
+		M.adjust_bodytemperature(heat, 0, BODYTEMP_HEAT_DAMAGE_LIMIT - 1)
+		if (prob(5))
+			to_chat(M, span_warning("I feel a horrible chill despite the sweat rolling from my brow..."))
+	return ..()
+
+/datum/reagent/infection/minor
+	name = "disrupted choleric humor"
+	description = "Symptomatic of disrupted humours."
+	damage_tick = 0.1
+	lethal_fever = FALSE
+
+/datum/reagent/infection/major
+	name = "excess melancholic humour"
+	description = "Kingsfield's Bane. Excess melancholic has killed thousands, and even Pestra's greatest struggle against its insidious advance."
+	damage_tick = 1
+	lethal_fever = TRUE
+	fever_multiplier = 3
+
+/datum/reagent/infection/major/on_mob_life(mob/living/carbon/M)
+	if (M.badluck(1))
+		M.reagents.add_reagent(src, rand(1,3))
+		to_chat(M, span_small("I feel even worse..."))
+	return ..()
+	

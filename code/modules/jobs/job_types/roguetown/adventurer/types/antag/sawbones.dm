@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/sawbones
 	category_tags = list(CTAG_BANDIT)
-	cmode_music = 'sound/music/combat_physician.ogg'	
+	cmode_music = 'sound/music/combat_physician.ogg'
 
 /datum/outfit/job/roguetown/bandit/sawbones/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -15,16 +15,17 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/surgery_bag/full
-	beltr = /obj/item/rogueweapon/huntingknife/cleaver /// proper self defense an tree aquiring
+	beltr = /obj/item/rogueweapon/sword/rapier
 	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backr = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/mattcoin
 	backpack_contents = list(		/obj/item/natural/worms/leech/cheele = 1, /obj/item/natural/cloth = 2,)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
@@ -32,9 +33,11 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
-	H.change_stat("intelligence", 3)
-	H.change_stat("fortune", 1)
+	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	H.change_stat("speed", 3)
+	H.change_stat("intelligence", 4)
+	H.change_stat("fortune", 3)
 	if(H.age == AGE_OLD)
 		H.change_stat("speed", -1)
 		H.change_stat("intelligence", 1)

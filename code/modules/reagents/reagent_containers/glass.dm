@@ -34,71 +34,50 @@
 	misscost = 0
 
 /obj/item/reagent_containers/glass/attack(mob/M, mob/user, obj/target)
-	testing("a1")
-	if(istype(M))
-		if(user.used_intent.type == INTENT_GENERIC)
-			return ..()
-		if(user.used_intent.type == /datum/intent/fill)
-			if(ishuman(M))
-				var/mob/living/carbon/human/humanized = M
-				if(get_location_accessible(humanized, BODY_ZONE_CHEST))
-					var/obj/item/organ/breasts/breasts = humanized.has_breasts()
-					if(breasts && breasts.lactating)
-						if(breasts.milk_stored > 0)
-							if(reagents.total_volume < volume)
-								var/milk_to_take = min(breasts.milk_stored, max(breasts.breast_size, 1), volume - reagents.total_volume)
-								if(do_after(user, 20, target = M))
-									reagents.add_reagent(/datum/reagent/consumable/milk, milk_to_take)
-									breasts.milk_stored -= milk_to_take
-									user.visible_message(span_notice("[user] milks [M] using \the [src]."), span_notice("I milk [M] using \the [src]."))
-							else
-								to_chat(user, span_warning("[src] is full."))
-						else
-							to_chat(user, span_warning("[M] is out of milk!"))
-					else
-						to_chat(user, span_warning("[M] cannot be milked!"))
-				else
-					to_chat(user, span_warning("[M]'s chest must be exposed before I can milk them!"))
-				return 1
-		if(!spillable)
-			return
+	if(!reagents || !reagents.total_volume)
+		to_chat(user, span_warning("[src] is empty!"))
+		return
+	if(user.used_intent.type == INTENT_SPLASH)
+		var/R
+		M.visible_message(span_danger("[user] splashes the contents of [src] onto [M]!"), \
+						span_danger("[user] splashes the contents of [src] onto you!"))
+		if(reagents)
+			for(var/datum/reagent/A in reagents.reagent_list)
+				R += "[A] ([num2text(A.volume)]),"
 
-		if(!reagents || !reagents.total_volume)
-			to_chat(user, span_warning("[src] is empty!"))
+		if(isturf(target) && reagents.reagent_list.len && thrownby)
+			log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
+			message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
+		reagents.reaction(M, TOUCH)
+		log_combat(user, M, "splashed", R)
+		reagents.clear_reagents()
+		return
+	else if(user.used_intent.type == INTENT_POUR)
+		if(!canconsume(M, user))
 			return
-		if(user.used_intent.type == INTENT_SPLASH)
-			var/R
-			M.visible_message(span_danger("[user] splashes the contents of [src] onto [M]!"), \
-							span_danger("[user] splashes the contents of [src] onto you!"))
-			if(reagents)
-				for(var/datum/reagent/A in reagents.reagent_list)
-					R += "[A] ([num2text(A.volume)]),"
-
-			if(isturf(target) && reagents.reagent_list.len && thrownby)
-				log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
-				message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
-			reagents.reaction(M, TOUCH)
-			log_combat(user, M, "splashed", R)
-			reagents.clear_reagents()
-			return
-		else if(user.used_intent.type == INTENT_POUR)
-			if(!canconsume(M, user))
+		if(M != user)
+			M.visible_message(span_danger("[user] attempts to feed [M] something."), \
+						span_danger("[user] attempts to feed you something."))
+			if(!do_mob(user, M))
 				return
-			if(M != user)
-				M.visible_message(span_danger("[user] attempts to feed [M] something."), \
-							span_danger("[user] attempts to feed you something."))
-				if(!do_mob(user, M))
-					return
-				if(!reagents || !reagents.total_volume)
-					return // The drink might be empty after the delay, such as by spam-feeding
-				M.visible_message(span_danger("[user] feeds [M] something."), \
-							span_danger("[user] feeds you something."))
-				log_combat(user, M, "fed", reagents.log_list())
-			else
-				to_chat(user, span_notice("I swallow a gulp of [src]."))
-			addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), M, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
-			playsound(M.loc,pick(drinksounds), 100, TRUE)
-			return
+			if(!reagents || !reagents.total_volume)
+				return // The drink might be empty after the delay, such as by spam-feeding
+			M.visible_message(span_danger("[user] feeds [M] something."), \
+						span_danger("[user] feeds you something."))
+			log_combat(user, M, "fed", reagents.log_list())
+		else
+			// check to see if we're a noble drinking soup
+			if (ishuman(user) && istype(src, /obj/item/reagent_containers/glass/bowl))
+				var/mob/living/carbon/human/human_user = user
+				if (human_user.is_noble()) // egads we're an unmannered SLOB
+					human_user.add_stress(/datum/stressevent/noble_bad_manners)
+					if (prob(25))
+						to_chat(human_user, span_red("I've got better manners than this..."))
+			to_chat(user, span_notice("I swallow a gulp of [src]."))
+		addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), M, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
+		playsound(M.loc,pick(drinksounds), 100, TRUE)
+		return
+
 /obj/item/reagent_containers/glass/attack_obj(obj/target, mob/living/user)
 	if(user.used_intent.type == INTENT_GENERIC)
 		return ..()

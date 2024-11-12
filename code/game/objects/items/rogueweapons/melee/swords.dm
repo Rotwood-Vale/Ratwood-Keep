@@ -82,6 +82,21 @@
 	swingdelay = 0
 	item_d_type = "stab"
 
+/obj/item/rogueweapon/sword/stone
+	force = 17 //Weaker than a short sword
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/chop)
+	gripped_intents = null
+	name = "stone sword"
+	desc = "A simple stone sword, crude and effective."
+	icon_state = "stone_sword"
+	max_blade_int = 70
+	max_integrity = 70
+	anvilrepair = /datum/skill/craft/crafting
+	smeltresult = null
+	minstr = 4
+	wdefense = 4
+	sellprice = 10
+
 /obj/item/rogueweapon/sword/short
 	name = "short sword"
 	desc = "An archaic steel sword made for stabbing."
@@ -593,7 +608,6 @@
 	sellprice = 140
 
 /obj/item/rogueweapon/sword/rapier/lord
-	force = 20
 	name = "sword of the Mad Duke"
 	desc = "A royal heirloom whose spiraling basket hilt is inlaid with fine cut gems. It bears the burnish of \
 	time, where once sharply defined features have been worn down by so many hands. An old rumor ties this implement \
@@ -754,3 +768,12 @@
 				"eastabove" = 1,
 				"westabove" = 0,
 				)
+
+/obj/item/rogueweapon/sword/long/oathkeeper
+	name = "Oathkeeper"
+	desc = "An ornate golden blade with a ruby embedded in the hilt. Granted to the Knight Commander for their valiant service to the crown."
+	sellprice = 140
+	force = 26
+	force_wielded = 35
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	icon_state = "kingslayer"

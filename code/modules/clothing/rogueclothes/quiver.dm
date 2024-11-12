@@ -9,7 +9,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
-	resistance_flags = NONE
+	resistance_flags = FIRE_PROOF
 	max_integrity = 0
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"

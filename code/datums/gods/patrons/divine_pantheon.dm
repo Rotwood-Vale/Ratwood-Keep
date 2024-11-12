@@ -23,8 +23,8 @@
 	desc = "The he-form of the Twinned Gods, the combined amalgam of single-bodied Noc and Astrata that opens his eyes during pondorous Night. He gifted man knowledge of divinity and magicks. A single form begets two Gods that shift at Dusk and Dawn but always endures, even at dae."
 	worshippers = "Wizards and Scholars"
 	mob_traits = list(TRAIT_NOCSIGHT)
-	t1 = /obj/effect/proc_holder/spell/invoked/blindness
-	t2 = /obj/effect/proc_holder/spell/invoked/invisibility
+	t1 = /obj/effect/proc_holder/spell/invoked/blindness/miracle
+	t2 = /obj/effect/proc_holder/spell/invoked/invisibility/miracle
 	confess_lines = list(
 		"NOC IS NIGHT!",
 		"NOC SEES ALL!",
@@ -40,6 +40,7 @@
 	t1 = /obj/effect/proc_holder/spell/targeted/blesscrop
 	t2 = /obj/effect/proc_holder/spell/targeted/beasttame
 	t3 = /obj/effect/proc_holder/spell/targeted/conjure_glowshroom
+	t4 = /obj/effect/proc_holder/spell/self/howl/call_of_the_moon
 	confess_lines = list(
 		"DENDOR PROVIDES!",
 		"THE TREEFATHER BRINGS BOUNTY!",
@@ -49,7 +50,7 @@
 /datum/patron/divine/abyssor
 	name = "Abyssor"
 	domain = "God of the Ocean, Storms and the Tide"
-	desc = "The strongest of the Ten, the last he was awake the world flooded for a thousand daes before he was put to sleep. Resting fitfully did Dendor split from his skull like a gaping wound. Gifted primordial Man water."
+	desc = "The strongest of the Ten; when awakened, the world flooded for a thousand daes and a thousand nights before he was put to slumber. Resting fitfully did Dendor split from his skull like a gaping wound. Communes rarely with his followers, only offering glimpses in dreams. Gifted primordial Man water. "
 	worshippers = "Men of the Sea, Primitive Aquatics"
 	mob_traits = list(TRAIT_ABYSSOR_SWIM)
 	confess_lines = list(
@@ -60,8 +61,8 @@
 
 /datum/patron/divine/ravox
 	name = "Ravox"
-	domain = "God of Justice, Glory, War"
-	desc = "Stalwart warrior, glorious justicier; legends say he came down to the Basin to repel the vile hordes of demons with his own hands, and that he disguises to seek warriors for his divine army among mortals."
+	domain = "God of Justice, Glory, Battle"
+	desc = "Stalwart warrior, glorious justicier; legends say he came down to the Basin to repel the vile hordes of demons with his own hands, and that he seeks warriors for his divine army among mortals."
 	worshippers = "Warriors, Sellswords & those who seek Justice"
 	confess_lines = list(
 		"RAVOX IS JUSTICE!",
@@ -72,11 +73,11 @@
 /datum/patron/divine/necra
 	name = "Necra"
 	domain = "Goddess of Death and the Afterlife"
-	desc = "Veiled Lady of the underworld, equally feared and respected by mortals. She taught mortals the inevitability of death and cares for them as they reach the afterlife.."
+	desc = "Veiled Lady of the underworld, equally feared and respected by mortals. She taught mortals the inevitability of death and cares for them as they reach the afterlife."
 	worshippers = "The Dead, Mourners, Gravekeepers"
 	mob_traits = list(TRAIT_SOUL_EXAMINE)
-	t1 = /obj/effect/proc_holder/spell/targeted/burialrite
-	t2 = /obj/effect/proc_holder/spell/targeted/churn
+	t1 = /obj/effect/proc_holder/spell/invoked/avert
+	t2 = /obj/effect/proc_holder/spell/targeted/abrogation
 	t3 = /obj/effect/proc_holder/spell/targeted/soulspeak
 	confess_lines = list(
 		"ALL SOULS FIND THEIR WAY TO NECRA!",

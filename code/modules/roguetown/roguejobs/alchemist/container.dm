@@ -78,7 +78,7 @@
 
 /obj/item/reagent_containers/glass/bottle/rogue/elfred
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/elfred = 48)
-	desc = "A bottle gilded with a silver cork-seal. It appears to be labelled as a elvish red wine from Otava. Likely worth more than what an entire village makes!"
+	desc = "A bottle gilded with a silver cork-seal. It appears to be labelled as an elvish red wine from Otava. Likely worth more than what an entire village makes!"
 
 /obj/item/reagent_containers/glass/bottle/rogue/elfblue
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/elfblue = 48)

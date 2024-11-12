@@ -118,7 +118,7 @@
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
 
-	W.STASTR = 17
+	W.STASTR = 20
 	W.STACON = 20
 	W.STAEND = 20
 

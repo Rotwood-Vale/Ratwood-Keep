@@ -139,7 +139,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
-	name = "Monarch"
+	name = "Grand Duke"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knight
@@ -255,7 +255,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightmaiden
-	name = "Bath Swain"
+	name = "Bathhouse Attendant"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/merchant
@@ -320,7 +320,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knavewench
-	name = "Tavern Knave"
+	name = "Tapster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/gravedigger
@@ -376,7 +376,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/butler
-	name = "Head Butler"
+	name = "Seneschal"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/barkeeper

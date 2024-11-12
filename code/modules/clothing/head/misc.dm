@@ -413,11 +413,6 @@
 	desc = ""
 	icon_state = "kippah"
 
-/obj/item/clothing/head/medievaljewhat
-	name = "medieval Jew hat"
-	desc = ""
-	icon_state = "medievaljewhat"
-
 /obj/item/clothing/head/taqiyahwhite
 	name = "white taqiyah"
 	desc = ""

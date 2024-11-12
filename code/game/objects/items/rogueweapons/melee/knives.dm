@@ -278,6 +278,7 @@
 	max_integrity = 50
 	max_blade_int = 50
 	wdefense = 1
+	resistance_flags = FLAMMABLE
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)

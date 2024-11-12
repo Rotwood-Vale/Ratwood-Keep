@@ -191,6 +191,7 @@
 	dropshrink = 0.6
 	blade_dulling = DULLING_BASHCHOP
 	wdefense = 1
+	resistance_flags = FLAMMABLE
 
 /obj/item/rogueweapon/flail/peasantwarflail/getonmobprop(tag)
 	. = ..()

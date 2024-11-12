@@ -94,6 +94,7 @@
 	var/plevel_req = 0
 	var/min_pq = 0
 	var/max_pq = 0
+	var/round_contrib_points = 0 //Each 10 contributor points counts as 1 PQ, up to 10 PQ.
 
 	var/show_in_credits = TRUE
 	var/announce_latejoin = TRUE
@@ -191,7 +192,7 @@
 
 	if(H.islatejoin && announce_latejoin)
 		var/used_title = title
-		if((H.pronouns == SHE_HER) && f_title)
+		if((H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F) && f_title)
 			used_title = f_title
 		scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
 

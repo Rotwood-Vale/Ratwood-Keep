@@ -142,6 +142,10 @@
 
 #define ALL_DIVINE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora)
 
+#define ALL_INHUMEN_PATRONS list(/datum/patron/inhumen/zizo, /datum/patron/inhumen/graggar, /datum/patron/inhumen/matthios, /datum/patron/inhumen/baotha)
+
+#define ALL_PATRONS  list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/old_god, /datum/patron/inhumen/zizo, /datum/patron/inhumen/graggar, /datum/patron/inhumen/matthios, /datum/patron/inhumen/baotha)
+
 #define PLATEHIT "plate"
 #define CHAINHIT "chain"
 #define SOFTHIT "soft"
@@ -185,6 +189,7 @@ GLOBAL_LIST_EMPTY(confessors)
 GLOBAL_LIST_EMPTY(sunlights)
 GLOBAL_LIST_EMPTY(head_bounties)
 GLOBAL_LIST_EMPTY(job_respawn_delays)
+GLOBAL_LIST_EMPTY(round_join_times)
 
 //stress levels
 #define STRESS_MAX 30
@@ -218,6 +223,9 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_TEMPLAR		"CAT_TEMPLAR"		// Templar class - Handles Templar class selector
 #define CTAG_HEIR			"CAT_HEIR"			// Prince(cess) class - Handles Heir class selector
 #define CTAG_SQUIRE			"CAT_SQUIRE"		// Squire class - Handles Squire class selector
+#define CTAG_MARSHAL		"CAT_MARSHAL"		// Marshal class
+#define CTAG_SENESCHAL		"CAT_SENESCHAL"		// Seneschal's aesthetic choices. 
+#define CTAG_SERVANT		"CAT_SERVANT"		// Servant's aesthetic choices. 
 
 /*
 	Defines for the triumph buy datum categories
