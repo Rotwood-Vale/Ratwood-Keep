@@ -139,6 +139,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/charflaw/charflaw
 
 	var/family = FAMILY_NONE
+	var/list/family_species = list()
+	var/list/family_gender = list()
+	var/family_sexes = list()
 
 	var/crt = FALSE
 
@@ -339,7 +342,13 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-//			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
+			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family == FAMILY_NONE ? "No" : "Yes!"]</a><BR>" // Disabling until its working
+			if(family != FAMILY_NONE)
+				dat += "<B>Family Preferences:</B>"
+				dat += " <small><a href='?_src_=prefs;preference=familypref;res=sex'>Body</a></small>"
+				dat += " <small><a href='?_src_=prefs;preference=familypref;res=gender'>Gender</a></small>"
+				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
+				dat += "<BR>"
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
 /*
@@ -1182,6 +1191,48 @@ Slots: [job.spawn_positions]</span>
 	else if(href_list["preference"] == "triumph_buy_menu")
 		SStriumphs.startup_triumphs_menu(user.client)
 
+	else if(href_list["preference"] == "familypref")
+		switch(href_list["res"])
+			if("gender")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list("[(MALE in family_gender) ? "(+)" : ""]Masculine" = MALE,"[(FEMALE in family_gender) ? "(+)" : ""]Feminine" = FEMALE)
+					choices += "(DONE)"
+					choice = input(usr,"I've always found my eyes wander towards those that appear...","GENDER") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in family_gender)
+							family_gender -= choices[choice]
+						else
+							family_gender += choices[choice]
+			if("sex")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list("[("penis" in family_sexes) ? "(+)" : ""] a Penis" = "penis","[("vagina" in family_sexes) ? "(+)" : ""] a Vagina" = "vagina", "[("herm" in family_sexes) ? "(+)" : ""] Both!" = "herm")
+					choices += "(DONE)"
+					choice = input(usr,"When I look below someone's belt, I'd like to see...","BODY") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in family_sexes)
+							family_sexes -= choices[choice]
+						else
+							family_sexes += choices[choice]
+
+			if("race")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.roundstart_races)
+						var/datum/species/S = GLOB.species_list[A]
+						var/index = "[(S.id in family_species) ? "(+)" : ""][S.name]"
+						choices[index] = S.id
+					choices += "(DONE)"
+					choice = input(usr,"Out of all the many races, none catch my fancy quite like...","RACE") as anything in choices
+					if(choice != "(CANCEL)")
+						if(choices[choice] in family_species)
+							family_species -= choices[choice]
+						else
+							family_species += choices[choice]
+
+
 	else if(href_list["preference"] == "keybinds")
 		switch(href_list["task"])
 			if("close")
@@ -1669,9 +1720,10 @@ Slots: [job.spawn_positions]</span>
 						to_chat(user, span_warning("You may switch your character and choose any role, if you don't meet the requirements (if any are specified) it won't be applied"))
 
 				if("family")
-					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
-					to_chat(user, "<font color='red'>[pick(loly)]</font>")
-					return
+					if(family == FAMILY_NONE)
+						family = FAMILY_FULL
+					else
+						family = FAMILY_NONE
 				if("hotkeys")
 					hotkeys = !hotkeys
 					if(hotkeys)
