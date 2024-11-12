@@ -6,7 +6,7 @@
 	downgrade_wave = /datum/migrant_wave/heartfelt_down_one
 	roles = list(
 		/datum/migrant_role/heartfelt/lord = 1,
-		/datum/migrant_role/heartfelt/lady = 1,
+		/datum/migrant_role/heartfelt/noble = 1,
 		/datum/migrant_role/heartfelt/hand = 1,
 		/datum/migrant_role/heartfelt/knight = 1,
 		/datum/migrant_role/heartfelt/magos = 1,
@@ -21,7 +21,7 @@
 	downgrade_wave = /datum/migrant_wave/heartfelt_down_two
 	roles = list(
 		/datum/migrant_role/heartfelt/lord = 1,
-		/datum/migrant_role/heartfelt/lady = 1,
+		/datum/migrant_role/heartfelt/noble = 1,
 		/datum/migrant_role/heartfelt/hand = 1,
 		/datum/migrant_role/heartfelt/knight = 1,
 		/datum/migrant_role/heartfelt/magos = 1,
@@ -35,7 +35,7 @@
 	downgrade_wave = /datum/migrant_wave/heartfelt_down_three
 	roles = list(
 		/datum/migrant_role/heartfelt/lord = 1,
-		/datum/migrant_role/heartfelt/lady = 1,
+		/datum/migrant_role/heartfelt/noble = 1,
 		/datum/migrant_role/heartfelt/hand = 1,
 		/datum/migrant_role/heartfelt/knight = 1,
 	)

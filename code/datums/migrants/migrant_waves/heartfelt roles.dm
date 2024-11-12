@@ -1,18 +1,22 @@
 /datum/migrant_role/heartfelt/lord
-	name = "Lord of Heartfelt"
-	greet_text = "You are the Lord of Heartfelt, ruler of a once-prosperous barony now in ruin. Guided by your Magos, you journey to Rockhill, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
+	name = "Ruler of Heartfelt"
+	greet_text = "You are the Ruler of Heartfelt, ruler of a once-prosperous barony now in ruin. Married to a noble of heartfelt, you are guided by your Magos, you journey to Rockhill, seeking aid to restore your domain to its former glory, or perhaps claim a new throne."
 	outfit = /datum/outfit/job/roguetown/heartfelt/lord
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/lord/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	belt = /obj/item/storage/belt/rogue/leather/black
-	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
+	if(H.gender == MALE)
+		belt = /obj/item/storage/belt/rogue/leather/black
+	else
+		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
+		head = /obj/item/clothing/head/roguetown/hennin
 	pants = /obj/item/clothing/under/roguetown/tights/black
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	cloak = /obj/item/clothing/cloak/heartfelt
 	armor = /obj/item/clothing/suit/roguetown/armor/heartfelt/lord
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
@@ -50,29 +54,37 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-/datum/migrant_role/heartfelt/lady
-	name = "Lady of Heartfelt"
-	greet_text = "You are the Lady of Heartfelt, once a respected noblewoman now struggling to survive in a desolate landscape. With your home in ruins, you look to Rockhill, hoping to find new purpose or refuge amidst the chaos."
-	outfit = /datum/outfit/job/roguetown/heartfelt/lady
-	allowed_sexes = list(FEMALE)
+/datum/migrant_role/heartfelt/noble
+	name = "Noble Consort of Heartfelt"
+	greet_text = "You are a noble of Heartfelt, married to the Ruler of heartfelt now struggling to survive in a desolate landscape. With your home in ruins, you look to Rockhill, hoping to find new purpose or refuge amidst the chaos."
+	outfit = /datum/outfit/job/roguetown/heartfelt/noble
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/heartfelt/lady/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/heartfelt/noble/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/hennin
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	cloak = /obj/item/clothing/cloak/heartfelt
-	if(isdwarf(H))
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress
+	if(H.gender == FEMALE)
+		head = /obj/item/clothing/head/roguetown/hennin
+		if(isdwarf(H))
+			armor = /obj/item/clothing/suit/roguetown/shirt/dress
+		else
+			armor = /obj/item/clothing/suit/roguetown/armor/armordress
+		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	else
-		armor = /obj/item/clothing/suit/roguetown/armor/armordress
-	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		belt = /obj/item/storage/belt/rogue/leather/black
+		pants = /obj/item/clothing/under/roguetown/tights/black
+		armor = /obj/item/clothing/cloak/stabard/surcoat/marshal
+
+	cloak = /obj/item/clothing/cloak/heartfelt
+	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/huntingknife/elvish
 	id = /obj/item/clothing/ring/silver
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
