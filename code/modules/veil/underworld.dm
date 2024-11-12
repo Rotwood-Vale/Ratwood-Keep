@@ -100,48 +100,6 @@
 	else
 		to_chat(user, "<B><font size=3 color=red>It's LOCKED.</font></B>")
 
-GLOBAL_VAR_INIT(underworld_coins, 0)
-
-/obj/item/underworld/coin
-	name = "The Toll"
-	desc = "This is more than just a coin."
-	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
-	icon_state = "soultoken_floor"
-	var/should_track = TRUE
-
-/obj/item/underworld/coin/Initialize()
-	. = ..()
-	if(should_track)
-		GLOB.underworld_coins += 1
-
-/obj/item/underworld/coin/Destroy()
-	if(should_track)
-		GLOB.underworld_coins -= 1
-	coin_upkeep()
-	return ..()
-
-/obj/item/underworld/coin/pickup(mob/user)
-	..()
-	if(should_track)
-		GLOB.underworld_coins -= 1
-	coin_upkeep()
-	icon_state = "soultoken"
-
-/obj/item/underworld/coin/dropped(mob/user)
-	..()
-	if(should_track)
-		GLOB.underworld_coins += 1
-	icon_state = "soultoken_floor"
-
-/obj/item/underworld/coin/notracking
-	should_track = FALSE
-
-/proc/coin_upkeep()
-	if(GLOB.underworld_coins < 8)
-		for(var/obj/effect/landmark/underworldcoin/B in GLOB.landmarks_list)
-			new /obj/item/underworld/coin(B.loc)
-	
-
 // why not also some mob stuff too
 /mob/living/simple_animal/hostile/rogue/dragger
 	name = "dragger"
