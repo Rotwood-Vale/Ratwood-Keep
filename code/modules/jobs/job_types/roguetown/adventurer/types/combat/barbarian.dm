@@ -80,7 +80,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			l_hand = /obj/item/quiver/arrows
+			l_hand = /obj/item/ammo_holder/quiver/arrows
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/rogueweapon/huntingknife
@@ -159,7 +159,7 @@
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 					beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 					r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-					l_hand = /obj/item/quiver/arrows
+					l_hand = /obj/item/ammo_holder/quiver/arrows
 					belt = /obj/item/storage/belt/rogue/leather
 					neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 					beltl = /obj/item/rogueweapon/huntingknife

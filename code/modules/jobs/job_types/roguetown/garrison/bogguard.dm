@@ -86,7 +86,7 @@
 	. = ..()
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-	beltr = /obj/item/quiver/arrows //replaces sword
+	beltr = /obj/item/ammo_holder/quiver/arrows //replaces sword
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/clothing/cloak/raincloak/brown = 1 )
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

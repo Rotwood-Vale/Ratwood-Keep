@@ -20,7 +20,7 @@
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
-	beltl = /obj/item/quiver/bolts
+	beltl = /obj/item/ammo_holder/quiver/bolts
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
