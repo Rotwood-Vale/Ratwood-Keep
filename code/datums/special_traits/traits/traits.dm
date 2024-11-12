@@ -12,7 +12,6 @@
 
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DARKVISION, "[type]")
-	character.change_stat("perception", 2)
 
 /datum/special_trait/thickskin
 	name = "Tough"
@@ -114,7 +113,7 @@
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 5, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
 	character.mind.special_items["Crossbow"] = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	character.mind.special_items["Bolts"] = /obj/item/quiver/bolts
+	character.mind.special_items["Bolts"] = /obj/item/ammo_holder/quiver/bolts
 
 /datum/special_trait/mule
 	name = "Mule"

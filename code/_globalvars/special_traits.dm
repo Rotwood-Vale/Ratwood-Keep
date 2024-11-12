@@ -63,6 +63,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if(!trait_type)
 		return
 	apply_special_trait_if_able(character, player, trait_type)
+	player.prefs.next_special_trait = null
 
 /proc/apply_special_trait_if_able(mob/living/carbon/human/character, client/player, trait_type)
 	if(!character_eligible_for_trait(character, player, trait_type))

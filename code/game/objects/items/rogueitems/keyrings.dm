@@ -127,9 +127,6 @@
 	else
 		desc = ""
 
-/obj/item/keyring/sheriff
-	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/town_armory)
-
 /obj/item/keyring/marshal
 	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor)
 
@@ -143,7 +140,7 @@
 	keys = list(/obj/item/key/bog_gatehouse, /obj/item/key/bog_master)
 
 /obj/item/keyring/town_watch
-	keys = list(/obj/item/key/town_barracks, /obj/item/key/town_dungeon)
+	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/town_armory)
 
 /obj/item/keyring/sheriff
 	keys = list(/obj/item/key/sheriff_office, /obj/item/key/town_armory, /obj/item/key/town_barracks, /obj/item/key/town_dungeon)
