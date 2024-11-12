@@ -173,7 +173,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor 
-	beltr = /obj/item/quiver/bolts
+	beltr = /obj/item/ammo_holder/quiver/bolts
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/rogueweapon/huntingknife/cleaver/combat = 1, /obj/item/needle = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)

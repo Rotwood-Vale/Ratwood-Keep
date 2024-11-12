@@ -142,9 +142,9 @@
 	new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(src)
 	new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(src)
 	new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(src)
-	new /obj/item/quiver/bolts(src)
-	new /obj/item/quiver/bolts(src)
-	new /obj/item/quiver/bolts(src)
+	new /obj/item/ammo_holder/quiver/bolts(src)
+	new /obj/item/ammo_holder/quiver/bolts(src)
+	new /obj/item/ammo_holder/quiver/bolts(src)
 
 /datum/roguestock/import/saigabuck
 	name = "Saigabuck"

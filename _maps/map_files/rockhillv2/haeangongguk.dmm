@@ -877,8 +877,8 @@
 /area/rogue)
 "ht" = (
 /obj/structure/rack/rogue,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "hu" = (
@@ -1483,8 +1483,8 @@
 /area/rogue)
 "nl" = (
 /obj/structure/rack/rogue,
-/obj/item/quiver,
-/obj/item/quiver,
+/obj/item/ammo_holder/quiver,
+/obj/item/ammo_holder/quiver,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -3497,8 +3497,8 @@
 	keylock = 1;
 	lockid = "town_armory"
 	},
-/obj/item/quiver/bolts,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "Dk" = (
@@ -4445,9 +4445,9 @@
 /area/rogue)
 "Kt" = (
 /obj/structure/rack/rogue,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "KF" = (
@@ -4562,7 +4562,7 @@
 /obj/structure/closet/crate/chest{
 	lockid = "sheriff_office"
 	},
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /obj/item/rogueweapon/flail/sflail,
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /turf/open/floor/rogue/tile,
@@ -4871,8 +4871,8 @@
 /area/rogue)
 "Oj" = (
 /obj/structure/rack/rogue,
-/obj/item/quiver/bolts,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "On" = (
@@ -5803,8 +5803,8 @@
 /area/rogue)
 "Vb" = (
 /obj/structure/rack/rogue,
-/obj/item/quiver,
-/obj/item/quiver,
+/obj/item/ammo_holder/quiver,
+/obj/item/ammo_holder/quiver,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "Vi" = (
@@ -6276,8 +6276,8 @@
 /area/rogue)
 "YX" = (
 /obj/structure/rack/rogue,
-/obj/item/quiver/bolts,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},

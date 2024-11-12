@@ -113,7 +113,7 @@
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 5, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
 	character.mind.special_items["Crossbow"] = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	character.mind.special_items["Bolts"] = /obj/item/quiver/bolts
+	character.mind.special_items["Bolts"] = /obj/item/ammo_holder/quiver/bolts
 
 /datum/special_trait/mule
 	name = "Mule"
@@ -513,7 +513,7 @@
 	weight = 50
 
 /datum/special_trait/pacifist/on_apply(mob/living/carbon/human/character, silent)
-	character.add_curse(/datum/curse/ravox, TRUE)
+	ADD_TRAIT(src, TRAIT_PACIFISM, TRAIT_GENERIC)
 
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
@@ -600,6 +600,7 @@
 /datum/special_trait/reps_redemption
 	name = "Reps for Redemption"
 	greet_text = span_notice("Pain has finally transformed into gain.")
+	req_text = "Be a Church Role"
 	allowed_jobs = list(CHURCH_ROLES)
 	weight = 50
 
