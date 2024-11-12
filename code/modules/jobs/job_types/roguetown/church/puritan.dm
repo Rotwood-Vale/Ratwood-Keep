@@ -40,10 +40,11 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver)
 	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)//Like a true witch hunter. Also used by the Runelock.
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
