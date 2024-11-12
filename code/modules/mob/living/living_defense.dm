@@ -44,7 +44,8 @@
 	return BULLET_ACT_HIT
 
 /mob/living/bullet_act(obj/projectile/P, def_zone, src)
-	var/list/projacc = projectile_accuracy_check(def_zone, P)
+	var/mob/living/target = src
+	var/list/projacc = projectile_accuracy_check(def_zone, P, target)
 	def_zone = projacc[1]
 	var/goodhit = projacc[2]
 	if(goodhit == "Miss")
