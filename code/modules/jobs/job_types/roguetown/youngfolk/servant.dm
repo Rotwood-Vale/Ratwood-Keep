@@ -27,10 +27,25 @@
 		var/mob/living/carbon/human/H = L
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
+		H.become_blind("advsetup") // Classes are for aesthetic clothing only, mechanically they're identical.
 
-/datum/outfit/job/roguetown/servant/pre_equip(mob/living/carbon/human/H)
+/datum/advclass/servant/servant
+	name = "Servant"
+	tutorial = "You are a humdrum servant, dressed the part; lowly and best out of sight. It's practical, however."
+	outfit = /datum/outfit/job/roguetown/servant/servant
+	category_tags = list(CTAG_SERVANT)
+
+/datum/outfit/job/roguetown/servant/servant/pre_equip(mob/living/carbon/human/H)
 	..()
+	pants = /obj/item/clothing/under/roguetown/trou
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
+	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	backl = /obj/item/storage/backpack/rogue/satchel
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/keyring/servant
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	armor = /obj/item/clothing/suit/roguetown/armor/workervest
+	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
@@ -55,36 +70,6 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 2)
 
-//	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
-//		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
-//		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-//		belt = /obj/item/storage/belt/rogue/leather
-//		beltr = /obj/item/storage/keyring/servant
-//	else
-//		pants = /obj/item/clothing/under/roguetown/tights
-//		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-//		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-//		belt = /obj/item/storage/belt/rogue/leather
-//		beltr = /obj/item/storage/keyring/servant
-
-/datum/advclass/servant/servant
-	name = "Servant"
-	tutorial = "You are a humdrum servant, dressed the part; lowly and best out of sight. It's practical, however."
-	outfit = /datum/outfit/job/roguetown/servant/servant
-	category_tags = list(CTAG_SERVANT)
-
-/datum/outfit/job/roguetown/servant/servant/pre_equip(mob/living/carbon/human/H)
-	..()
-	pants = /obj/item/clothing/under/roguetown/trou
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	backl = /obj/item/storage/backpack/rogue/satchel
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/keyring/servant
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-	armor = /obj/item/clothing/suit/roguetown/armor/workervest
-	gloves = /obj/item/clothing/gloves/roguetown/fingerless
-
 /datum/advclass/servant/maid
 	name = "Maid"
 	tutorial = "Not one really mentions how hard it is to do yardwork in a dress and stockings, but at least you still look really good."
@@ -102,6 +87,29 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/servant
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		if(H.age == AGE_MIDDLEAGED)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.change_stat("speed", 1)
+		H.change_stat("intelligence", 1)
+		H.change_stat("perception", 2)
 
 /datum/advclass/servant/butler
 	name = "Butler"
@@ -119,3 +127,26 @@
 	beltr = /obj/item/storage/keyring/servant
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		if(H.age == AGE_MIDDLEAGED)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.change_stat("speed", 1)
+		H.change_stat("intelligence", 1)
+		H.change_stat("perception", 2)
