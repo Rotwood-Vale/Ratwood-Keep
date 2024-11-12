@@ -350,11 +350,12 @@
 	GLOB.lordcolor -= src
 	return ..()
 
-/obj/item/clothing/cloak/stabard/bog
-	name = "bogman tabard"
-	desc = "A tabard worn by those that protect the citizenry from the horrors of the Terrorbog" // THE BOG DESERVES A BETTER DESCRIPTION!
-	color = CLOTHING_GREEN
-	detail_color = CLOTHING_DARK_GREEN
+/obj/item/clothing/cloak/raincloak/vanguard
+	name = "vanguard cloak"
+	desc = "A nightly cloak worn by those that protect the citizenry from what lurks beyond" // THE BOG DESERVES A BETTER DESCRIPTION!
+	color = CLOTHING_VANGUARD
+	detail_color = CLOTHING_VANGUARD_DETAIL
+
 
 /obj/item/clothing/cloak/stabard/grenzelhoft
 	name = "grenzelhoft mercenary tabard"
@@ -575,7 +576,7 @@
 	body_parts_covered = CHEST|GROIN
 	armor = list("blunt" = 25, "slash" = 5, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 24, "acid" = 0)
 	boobed = TRUE
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/cloak/apron/brown
 	color = CLOTHING_BROWN
@@ -636,7 +637,7 @@
 	inhand_mod = TRUE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood
 	toggle_icon_state = FALSE
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/wash_act(clean)
 	. = ..()

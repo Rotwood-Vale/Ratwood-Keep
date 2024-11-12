@@ -22,9 +22,8 @@
 	H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
@@ -36,7 +35,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 	beltl = /obj/item/rogueweapon/huntingknife
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/key/artificer)
+	backpack_contents = list(/obj/item/flint = 1)
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen
 	if(H.gender == MALE)

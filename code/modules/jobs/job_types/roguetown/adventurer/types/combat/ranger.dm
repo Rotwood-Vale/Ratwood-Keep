@@ -31,7 +31,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1)
-			beltl = /obj/item/quiver/arrows
+			beltl = /obj/item/ammo_holder/quiver/arrows
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -47,11 +47,9 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, rand(1,2), TRUE)
@@ -73,7 +71,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
-			beltl = /obj/item/quiver/arrows
+			beltl = /obj/item/ammo_holder/quiver/arrows
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -89,7 +87,6 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, rand(1,2), TRUE)

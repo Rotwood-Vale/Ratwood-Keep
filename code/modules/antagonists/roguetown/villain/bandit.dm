@@ -5,6 +5,7 @@
 	job_rank = ROLE_BANDIT
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "bandit"
+	rogue_enabled = TRUE
 	confess_lines = list(
 		"FREEDOM!!!",
 		"I WILL NOT LIVE IN YOUR WALLS!",

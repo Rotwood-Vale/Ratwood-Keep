@@ -12,7 +12,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "nanite_remote"
 	item_flags = NOBLUDGEON
-	var/locked = FALSE //Can be locked, so it can be given to users with a set code and mode
+	locked = FALSE //Can be locked, so it can be given to users with a set code and mode
 	var/mode = REMOTE_MODE_OFF
 	var/list/saved_settings = list()
 	var/last_id = 0

@@ -250,6 +250,17 @@
 		return TRUE
 	return FALSE
 
+/obj/effect/proc_holder/spell/targeted/purge/cast_check(skipcharge = 0,mob/user = usr)
+	if(!..())
+		return FALSE
+	var/found = null
+	for(var/obj/structure/bed/rogue/S in oview(2, user))
+		found = S
+	if(!found)
+		to_chat(user, span_warning("I need to lay them on a bed"))
+		return FALSE
+	return TRUE
+
 /obj/item/organ/heart/weak
 	name = "weakened heart"
 	desc = "this thing seems barely functional"
@@ -1185,7 +1196,6 @@
 	possible_item_intents = list(/datum/intent/use)
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH | ITEM_SLOT_HIP
@@ -1240,7 +1250,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 3
-	obj_flags = null
 	firefuel = 15 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
@@ -1489,21 +1498,21 @@
 /datum/crafting_recipe/roguetown/impsaw
 	name = "improvised saw"
 	result = /obj/item/rogueweapon/surgery/saw/improv
-	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 3, /obj/item/grown/log/tree/small = 1,)
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 1, /obj/item/grown/log/tree/stick = 1,)
 	craftdiff = 1
 	skillcraft = /datum/skill/craft/crafting
 
 /datum/crafting_recipe/roguetown/impretra
 	name = "improvised clamp"
 	result = /obj/item/rogueweapon/surgery/hemostat/improv
-	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 2, /obj/item/grown/log/tree/stick = 2,)
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2,)
 	craftdiff = 1
 	skillcraft = /datum/skill/craft/crafting
 
 /datum/crafting_recipe/roguetown/imphemo
 	name = "improvised retractor"
 	result = /obj/item/rogueweapon/surgery/retractor/improv
-	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 2, /obj/item/grown/log/tree/stick = 2,)
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2,)
 	craftdiff = 1
 	skillcraft = /datum/skill/craft/crafting
 
@@ -1517,7 +1526,7 @@
 /*/datum/crafting_recipe/roguetown/splint
 	name = "splint"
 	result = /obj/item/splint
-	reqs = list(/obj/item/natural/cloth = 2, /obj/item/grown/log/tree/stick = 2,)
+	reqs = list(/obj/item/natural/cloth = 1, /obj/item/grown/log/tree/stick = 1,)
 	craftdiff = 2
 	skillcraft = /datum/skill/misc/treatment*/
 

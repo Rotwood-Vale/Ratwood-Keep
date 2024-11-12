@@ -74,7 +74,7 @@
 	equip_cooldown = 10
 	energy_drain = 100
 	range = MECHA_MELEE|MECHA_RANGED
-	var/atom/movable/locked
+	var/atom/movable/locking
 	var/mode = 1 //1 - gravsling 2 - gravpush
 
 
@@ -83,7 +83,7 @@
 		return
 	switch(mode)
 		if(1)
-			if(!locked)
+			if(!locking)
 				if(!istype(target) || target.anchored || target.move_resist >= MOVE_FORCE_EXTREMELY_STRONG)
 					occupant_message(span_warning("Unable to lock on [target]!"))
 					return
@@ -92,21 +92,21 @@
 					if(M.mob_negates_gravity())
 						occupant_message(span_warning("Unable to lock on [target]!"))
 						return
-				locked = target
+				locking = target
 				occupant_message(span_notice("Locked on [target]."))
 				send_byjax(chassis.occupant,"exosuit.browser","[REF(src)]",src.get_equip_info())
-			else if(target!=locked)
-				if(locked in view(chassis))
+			else if(target!=locking)
+				if(locking in view(chassis))
 					var/turf/targ = get_turf(target)
-					var/turf/orig = get_turf(locked)
-					locked.throw_at(target, 14, 1.5)
-					locked = null
+					var/turf/orig = get_turf(locking)
+					locking.throw_at(target, 14, 1.5)
+					locking = null
 					send_byjax(chassis.occupant,"exosuit.browser","[REF(src)]",src.get_equip_info())
-					log_game("[key_name(chassis.occupant)] used a Gravitational Catapult to throw [locked] (From [AREACOORD(orig)]) at [target] ([AREACOORD(targ)]).")
+					log_game("[key_name(chassis.occupant)] used a Gravitational Catapult to throw [locking] (From [AREACOORD(orig)]) at [target] ([AREACOORD(targ)]).")
 					return TRUE
 				else
-					locked = null
-					occupant_message(span_notice("Lock on [locked] disengaged."))
+					locking = null
+					occupant_message(span_notice("Lock on [locking] disengaged."))
 					send_byjax(chassis.occupant,"exosuit.browser","[REF(src)]",src.get_equip_info())
 		if(2)
 			var/list/atoms = list()
@@ -134,7 +134,7 @@
 		sleep(2)
 
 /obj/item/mecha_parts/mecha_equipment/gravcatapult/get_equip_info()
-	return "[..()] [mode==1?"([locked||"Nothing"])":null] \[<a href='?src=[REF(src)];mode=1'>S</a>|<a href='?src=[REF(src)];mode=2'>P</a>\]"
+	return "[..()] [mode==1?"([locking||"Nothing"])":null] \[<a href='?src=[REF(src)];mode=1'>S</a>|<a href='?src=[REF(src)];mode=2'>P</a>\]"
 
 /obj/item/mecha_parts/mecha_equipment/gravcatapult/Topic(href, href_list)
 	..()

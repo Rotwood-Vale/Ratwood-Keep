@@ -53,6 +53,7 @@
 	bigboy = TRUE
 	gripsprite = TRUE
 	associated_skill = /datum/skill/combat/polearms
+	metalizer_result = /obj/item/rogueweapon/spear/bronze
 
 /obj/item/rogueweapon/woodstaff/getonmobprop(tag)
 	. = ..()
