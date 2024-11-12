@@ -2246,6 +2246,12 @@
 /obj/structure/bed/rogue/inn/hay,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
+"bUK" = (
+/obj/structure/rack/rogue,
+/obj/item/clothing/head/roguetown/helmet/citywatch,
+/obj/item/clothing/head/roguetown/helmet/citywatch,
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/garrison)
 "bUY" = (
 /obj/structure/chair/bench/church/mid{
 	dir = 4
@@ -5770,6 +5776,12 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/manor)
+"eQT" = (
+/obj/structure/rack/rogue,
+/obj/item/clothing/suit/roguetown/armor/citywatch,
+/obj/item/clothing/suit/roguetown/armor/citywatch,
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/garrison)
 "eSc" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/tile{
@@ -9782,6 +9794,11 @@
 	icon_state = "vertw"
 	},
 /area/rogue/outdoors/beach)
+"iqj" = (
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/mace/stunmace,
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/garrison)
 "iqI" = (
 /obj/machinery/anvil/crafted,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -413620,7 +413637,7 @@ kIh
 kIh
 kIh
 kIh
-kIh
+eQT
 tNj
 cQq
 pyh
@@ -414020,9 +414037,9 @@ tNj
 jKT
 xen
 cxX
+iqj
 kIh
-kIh
-kIh
+bUK
 tNj
 lCv
 hob
