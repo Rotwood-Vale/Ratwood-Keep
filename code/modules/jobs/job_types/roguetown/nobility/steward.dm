@@ -12,24 +12,21 @@
 	tutorial = "Coin, Coin, Coin! Oh beautiful coin: You're addicted to it, and you hold the position as the Duke's personal treasurer of both coin and information. You know the power silver and gold has on a man's mortal soul, and you know just what lengths they'll go to in order to get even more. Keep your festering economy and your rats alive, the'yre the only two things you can weigh any trust into anymore."
 	outfit = /datum/outfit/job/roguetown/steward
 	give_bank_account = 17
-	min_pq = 2
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == FEMALE)
-		H.virginity = TRUE
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/nobledress
-		cloak = /obj/item/clothing/cloak/tabard/knight
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
-	else
-		pants = /obj/item/clothing/under/roguetown/tights/random
-		armor = /obj/item/clothing/cloak/tabard/knight
-	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
+	H.virginity = TRUE
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/steward
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
+	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	head = /obj/item/clothing/head/roguetown/chaperon/greyscale
-	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
+	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/keyring/steward
+
+	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
+	
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)

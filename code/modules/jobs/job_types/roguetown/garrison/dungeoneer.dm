@@ -34,7 +34,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	armor = /obj/item/clothing/cloak/stabard/dungeon
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
+	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/rogueweapon/whip/antique
 	beltl = /obj/item/keyring/dungeoneer

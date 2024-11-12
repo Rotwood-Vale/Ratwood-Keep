@@ -17,23 +17,20 @@
 	outfit = /datum/outfit/job/roguetown/councillor
 	
 	give_bank_account = 40
-	min_pq = 2
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/councillor/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	armor = /obj/item/clothing/suit/roguetown/armor/councillor
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/armor
-	head = /obj/item/clothing/head/roguetown/chaperon/councillor
 	backl = /obj/item/storage/backpack/rogue/satchel
-	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
+	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/keyring/councillor
-	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-	cloak = /obj/item/clothing/cloak/stabard/surcoat/councillor
-	backpack_contents = list(/obj/item/keyring/councillor = 1)
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
