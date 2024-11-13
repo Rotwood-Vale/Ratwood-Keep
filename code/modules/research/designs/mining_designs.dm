@@ -2,15 +2,6 @@
 /////////////////////////////////////////
 /////////////////Mining//////////////////
 /////////////////////////////////////////
-/datum/design/cargo_express
-	name = "Computer Design (Express Supply Console)"//shes beautiful
-	desc = ""//who?
-	id = "cargoexpress"//the coder reading this
-	build_type = IMPRINTER
-	materials = list(/datum/material/glass = 1000)
-	build_path = /obj/item/circuitboard/computer/cargo/express
-	category = list("Mining Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_CARGO
 
 /datum/design/bluespace_pod
 	name = "Supply Drop Pod Upgrade Disk"

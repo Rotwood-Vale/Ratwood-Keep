@@ -17,27 +17,6 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		spark_system.start()
 	return ..()
 
-/mob/living/silicon/robot/attack_alien(mob/living/carbon/alien/humanoid/M)
-	if (M.used_intent.type == INTENT_DISARM)
-		if(mobility_flags & MOBILITY_STAND)
-			M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
-			var/obj/item/I = get_active_held_item()
-			if(I)
-				uneq_active()
-				visible_message(span_danger("[M] disarmed [src]!"), \
-					span_danger("[M] has disabled [src]'s active module!"), null, COMBAT_MESSAGE_RANGE)
-				log_combat(M, src, "disarmed", "[I ? " removing \the [I]" : ""]")
-			else
-				Stun(40)
-				step(src,get_dir(M,src))
-				log_combat(M, src, "pushed")
-				visible_message(span_danger("[M] has forced back [src]!"), \
-					span_danger("[M] has forced back [src]!"), null, COMBAT_MESSAGE_RANGE)
-			playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
-	else
-		..()
-	return
-
 /mob/living/silicon/robot/attack_slime(mob/living/simple_animal/slime/M)
 	if(..()) //successful slime shock
 		flash_act()

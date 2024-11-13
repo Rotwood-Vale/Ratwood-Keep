@@ -210,9 +210,6 @@
 	config_entry_value = list(			//DEFAULTS
 	/mob/living/simple_animal = 1,
 	/mob/living/silicon/pai = 1,
-	/mob/living/carbon/alien/humanoid/hunter = -1,
-	/mob/living/carbon/alien/humanoid/royal/praetorian = 1,
-	/mob/living/carbon/alien/humanoid/royal/queen = 3
 	)
 
 /datum/config_entry/keyed_list/multiplicative_movespeed/ValidateAndSet()
@@ -260,8 +257,6 @@
 	movedelay_type = /mob/living/silicon/robot
 /datum/config_entry/number/outdated_movedelay/monkey_delay
 	movedelay_type = /mob/living/carbon/monkey
-/datum/config_entry/number/outdated_movedelay/alien_delay
-	movedelay_type = /mob/living/carbon/alien
 /datum/config_entry/number/outdated_movedelay/slime_delay
 	movedelay_type = /mob/living/simple_animal/slime
 /datum/config_entry/number/outdated_movedelay/animal_delay

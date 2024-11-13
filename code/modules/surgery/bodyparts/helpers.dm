@@ -52,8 +52,6 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/alien/larva/has_left_hand()
-	return 1
 
 
 /mob/proc/has_right_hand(check_disabled = TRUE)
@@ -65,9 +63,6 @@
 			if(!check_disabled || !L.disabled)
 				return TRUE
 	return FALSE
-
-/mob/living/carbon/alien/larva/has_right_hand()
-	return 1
 
 
 
@@ -90,10 +85,6 @@
 /mob/proc/get_arm_ignore()
 	return 0
 
-/mob/living/carbon/alien/larva/get_arm_ignore()
-	return 1 //so we can still handcuff larvas.
-
-
 /mob/proc/get_num_legs(check_disabled = TRUE)
 	return 2
 
@@ -112,8 +103,6 @@
 /mob/proc/get_leg_ignore()
 	return FALSE
 
-/mob/living/carbon/alien/larva/get_leg_ignore()
-	return TRUE
 
 /mob/living/carbon/human/get_leg_ignore()
 	if(movement_type & (FLYING | FLOATING))
@@ -125,22 +114,12 @@
 
 /mob/living/carbon/get_missing_limbs()
 	var/list/full = list(
-		BODY_ZONE_HEAD, 
-		BODY_ZONE_CHEST, 
-		BODY_ZONE_R_ARM, 
-		BODY_ZONE_L_ARM, 
-		BODY_ZONE_R_LEG, 
-		BODY_ZONE_L_LEG,
-	)
-	for(var/zone in full)
-		if(get_bodypart(zone))
-			full -= zone
-	return full
-
-/mob/living/carbon/alien/larva/get_missing_limbs()
-	var/list/full = list(
-		BODY_ZONE_HEAD, 
+		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
+		BODY_ZONE_R_ARM,
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_LEG,
+		BODY_ZONE_L_LEG,
 	)
 	for(var/zone in full)
 		if(get_bodypart(zone))
@@ -152,24 +131,12 @@
 
 /mob/living/carbon/get_disabled_limbs()
 	var/list/full = list(
-		BODY_ZONE_HEAD, 
-		BODY_ZONE_CHEST, 
-		BODY_ZONE_R_ARM, 
-		BODY_ZONE_L_ARM, 
-		BODY_ZONE_R_LEG, 
-		BODY_ZONE_L_LEG,
-	)
-	var/list/disabled = list()
-	for(var/zone in full)
-		var/obj/item/bodypart/affecting = get_bodypart(zone)
-		if(affecting && affecting.disabled)
-			disabled += zone
-	return disabled
-
-/mob/living/carbon/alien/larva/get_disabled_limbs()
-	var/list/full = list(
-		BODY_ZONE_HEAD, 
+		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
+		BODY_ZONE_R_ARM,
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_LEG,
+		BODY_ZONE_L_LEG,
 	)
 	var/list/disabled = list()
 	for(var/zone in full)
@@ -220,42 +187,6 @@
 		if(robotic)
 			L.change_bodypart_status(BODYPART_ROBOTIC)
 	. = L
-
-/mob/living/carbon/alien/larva/newBodyPart(zone, robotic, fixed_icon)
-	var/obj/item/bodypart/L
-	switch(zone)
-		if(BODY_ZONE_HEAD)
-			L = new /obj/item/bodypart/head/larva()
-		if(BODY_ZONE_CHEST)
-			L = new /obj/item/bodypart/chest/larva()
-	if(L)
-		L.update_limb(fixed_icon, src)
-		if(robotic)
-			L.change_bodypart_status(BODYPART_ROBOTIC)
-	. = L
-
-/mob/living/carbon/alien/humanoid/newBodyPart(zone, robotic, fixed_icon)
-	var/obj/item/bodypart/L
-	switch(zone)
-		if(BODY_ZONE_L_ARM)
-			L = new /obj/item/bodypart/l_arm/alien()
-		if(BODY_ZONE_R_ARM)
-			L = new /obj/item/bodypart/r_arm/alien()
-		if(BODY_ZONE_HEAD)
-			L = new /obj/item/bodypart/head/alien()
-		if(BODY_ZONE_L_LEG)
-			L = new /obj/item/bodypart/l_leg/alien()
-		if(BODY_ZONE_R_LEG)
-			L = new /obj/item/bodypart/r_leg/alien()
-		if(BODY_ZONE_CHEST)
-			L = new /obj/item/bodypart/chest/alien()
-	if(L)
-		L.update_limb(fixed_icon, src)
-		if(robotic)
-			L.change_bodypart_status(BODYPART_ROBOTIC)
-	. = L
-
-
 
 /mob/living/carbon/proc/Digitigrade_Leg_Swap(swap_back)
 	var/body_plan_changed = FALSE

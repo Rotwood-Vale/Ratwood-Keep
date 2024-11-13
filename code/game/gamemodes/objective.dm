@@ -689,22 +689,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		captured_amount+=1
 	for(var/mob/living/carbon/monkey/M in A)//Monkeys are almost worthless, you failure.
 		captured_amount+=0.1
-	for(var/mob/living/carbon/alien/larva/M in A)//Larva are important for research.
-		if(M.stat == DEAD)
-			captured_amount+=0.5
-			continue
-		captured_amount+=1
-	for(var/mob/living/carbon/alien/humanoid/M in A)//Aliens are worth twice as much as humans.
-		if(istype(M, /mob/living/carbon/alien/humanoid/royal/queen))//Queens are worth three times as much as humans.
-			if(M.stat == DEAD)
-				captured_amount+=1.5
-			else
-				captured_amount+=3
-			continue
-		if(M.stat == DEAD)
-			captured_amount+=1
-			continue
-		captured_amount+=2
+
 	return captured_amount >= target_amount
 
 /datum/objective/capture/admin_edit(mob/admin)
