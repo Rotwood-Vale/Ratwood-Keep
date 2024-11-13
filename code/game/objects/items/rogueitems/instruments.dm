@@ -18,6 +18,7 @@
 	if(playing && user.get_active_held_item() != src)
 		playing = FALSE
 		soundloop.stop()
+		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 
 /obj/item/rogue/instrument/getonmobprop(tag)
 	. = ..()
@@ -33,10 +34,11 @@
 //	soundloop.start()
 	. = ..()
 
-/obj/item/rogue/instrument/dropped()
+/obj/item/rogue/instrument/dropped(mob/living/user, silent)
 	..()
 	if(soundloop)
 		soundloop.stop()
+		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 
 /obj/item/rogue/instrument/attack_self(mob/living/user)
 	var/stressevent = /datum/stressevent/music
@@ -45,6 +47,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(!playing)
+		var/note_color = "#7f7f7f" // uses MMO item rarity color grading
 		var/curfile = input(user, "Which song?", "Roguetown", name) as null|anything in song_list
 		if(!user)
 			return
@@ -54,24 +57,31 @@
 				if(1)
 					stressevent = /datum/stressevent/music
 				if(2)
+					note_color = "#ffffff"
 					stressevent = /datum/stressevent/music/two
 				if(3)
+					note_color = "#1eff00"
 					stressevent = /datum/stressevent/music/three
 				if(4)
+					note_color = "#0070dd"
 					stressevent = /datum/stressevent/music/four
 				if(5)
+					note_color = "#a335ee"
 					stressevent = /datum/stressevent/music/five
 				if(6)
+					note_color = "#ff8000"
 					stressevent = /datum/stressevent/music/six
 		if(playing)
 			playing = FALSE
 			soundloop.stop()
+			user.remove_status_effect(/datum/status_effect/buff/playing_music)
 			return
 		if(!(src in user.held_items))
 			return
 		if(user.get_inactive_held_item())
 			playing = FALSE
 			soundloop.stop()
+			user.remove_status_effect(/datum/status_effect/buff/playing_music)
 			return
 		if(curfile)
 			curfile = song_list[curfile]
@@ -79,12 +89,15 @@
 			soundloop.mid_sounds = list(curfile)
 			soundloop.cursound = null
 			soundloop.start()
-		for(var/mob/living/carbon/human/L in viewers(7))
+			user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
+		/* for(var/mob/living/carbon/human/L in viewers(7)) // this is very simple, shouldn't we pulse this on a regular tick?
 			L.add_stress(stressevent)
-			add_sleep_experience(user, /datum/skill/misc/music, user.STAINT)
+			add_sleep_experience(user, /datum/skill/misc/music, user.STAINT)*/
+		// we handle the above on the status effect now
 	else
 		playing = FALSE
 		soundloop.stop()
+		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 
 /obj/item/rogue/instrument/lute
 	name = "lute"
