@@ -27,11 +27,12 @@
 /datum/outfit/job/roguetown/druid/pre_equip(mob/living/carbon/human/H)
 	..()
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltr = /obj/item/flashlight/flare/torch/lantern
+	beltl = /obj/item/rogueweapon/whip //The whip itself is not often associated to many jobs. Druids feel like a thematic choice to have a self-defense whip
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/roguetown/dendormask
-	neck = /obj/item/clothing/neck/roguetown/psicross/dendor
+	wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
@@ -48,8 +49,11 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/druidic, 2, TRUE) //This does nothing, but maybe one day it will.
-		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE) //Druids know the forest and when it has been disturbed
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE) //To help them defend themselves with parrying
+		H.put_in_hands(new /obj/item/rogueweapon/woodstaff(H), TRUE) //To encourage them to wander the forests and to help defend themselves
 		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 1)
