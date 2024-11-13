@@ -15,7 +15,6 @@
 	display_order = JDO_GOBLINRABBLE
 	min_pq = 1
 	max_pq = null
-	always_show_on_latechoices = TRUE
 
 /datum/outfit/job/roguetown/goblinrabble/pre_equip(mob/living/carbon/human/H)
 	..()
