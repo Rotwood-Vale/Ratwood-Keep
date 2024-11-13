@@ -183,7 +183,7 @@
 	var/obj/item/held_item = user.get_active_held_item()
 	if(held_item)
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
-			if((!rotted && !skeletonized)
+			if(!rotted && !skeletonized)
 				var/used_time = 210
 				if(user.mind)
 					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
