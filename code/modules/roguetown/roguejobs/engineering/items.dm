@@ -54,7 +54,7 @@
 	name = "wooden cog"
 	desc = "A very simple cog that has the ability to increase the carry capacity of a wooden cart."
 	icon_state = "wcog"
-	metalizer_result = /obj/item/roguegear
+	metalizer_result = /obj/item/roguegear/bronze
 	cart_capacity = 90
 
 /obj/item/roguegear/wood/reliable

@@ -89,7 +89,7 @@
 /datum/artificer_recipe/bronze
 	name = "Bronze Cog"
 	required_item = /obj/item/ingot/bronze
-	created_item = /obj/item/roguegear
+	created_item = /obj/item/roguegear/bronze
 	hammers_per_item = 10
 	craftdiff = 1
 	i_type = "General"
@@ -97,14 +97,14 @@
 /datum/artificer_recipe/general/copper/cog
 	name = "Copper Cog"
 	required_item = /obj/item/ingot/copper
-	created_item = /obj/item/roguegear
+	created_item = /obj/item/roguegear/bronze
 	hammers_per_item = 10
 	craftdiff = 1
 
 /datum/artificer_recipe/general/tin/cog
 	name = "Tin Cog"
 	required_item = /obj/item/ingot/tin
-	created_item = /obj/item/roguegear
+	created_item = /obj/item/roguegear/bronze
 	hammers_per_item = 10
 	craftdiff = 1
 
@@ -286,7 +286,7 @@
 	created_item = /obj/item/bodypart/l_arm/prosthetic/bronze
 	hammers_per_item = 15
 	craftdiff = 4
-	additional_items = list(/obj/item/roguegear = 1)
+	additional_items = list(/obj/item/roguegear/bronze = 1)
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/bronze/prosthetic/arm_right
@@ -299,7 +299,7 @@
 	name = "Gold Left Arm (+2 Cog)"
 	required_item = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/l_arm/prosthetic/gold
-	additional_items = list(/obj/item/roguegear = 2)
+	additional_items = list(/obj/item/roguegear/bronze = 2)
 	hammers_per_item = 20
 	craftdiff = 5
 	i_type = "Prosthetics"
@@ -322,7 +322,7 @@
 	name = "Steel Left Arm (+1 Steel, +1 Cog)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/steel
 	required_item = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel = 1, /obj/item/roguegear = 1)
+	additional_items = list(/obj/item/ingot/steel = 1, /obj/item/roguegear/bronze = 1)
 	hammers_per_item = 15
 	craftdiff = 4
 	i_type = "Prosthetics"
@@ -345,7 +345,7 @@
 	name = "Iron Left Arm (+1 Cog)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/iron
 	required_item = /obj/item/ingot/iron
-	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/roguegear = 1)
+	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/roguegear/bronze = 1)
 	hammers_per_item = 4
 	craftdiff = 2
 	i_type = "Prosthetics"

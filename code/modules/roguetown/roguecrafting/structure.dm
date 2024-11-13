@@ -545,7 +545,7 @@
 /datum/crafting_recipe/roguetown/structure/lever
 	name = "lever"
 	result = /obj/structure/lever
-	reqs = list(/obj/item/roguegear = 1)
+	reqs = list(/obj/item/roguegear/bronze = 1)
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
@@ -554,7 +554,7 @@
 	name = "floorhatch"
 	result = /obj/structure/floordoor
 	reqs = list(/obj/item/grown/log/tree/small = 1,
-					/obj/item/roguegear = 1)
+					/obj/item/roguegear/bronze = 1)
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
@@ -623,7 +623,7 @@
 	name = "passage"
 	result = /obj/structure/bars/passage
 	reqs = list(/obj/item/ingot/iron = 1,
-					/obj/item/roguegear = 1)
+					/obj/item/roguegear/bronze = 1)
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
