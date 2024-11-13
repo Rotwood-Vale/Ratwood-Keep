@@ -686,7 +686,7 @@
 				/obj/item/natural/stone = 1)
 	craftdiff = 2
 
-	/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
+	/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade_2
 	name = "upgrade cog level 2"
 	result = /obj/item/cart_upgrade/level_2
 	reqs = list(/obj/item/grown/log/tree/small = 2,
