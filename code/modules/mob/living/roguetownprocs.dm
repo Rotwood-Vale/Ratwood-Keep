@@ -205,8 +205,14 @@
 			zone = check_zone(zone)
 			return list(zone, hit)
 
-/proc/projectile_accuracy_check(zone, obj/projectile/P, mob/living/target, obj/item/I, associated_skill)
+/proc/projectile_accuracy_check(zone, obj/projectile/P, mob/living/target)
 	var/mob/living/user = P.firer
+	var/associated_skill
+	if(P.fired_from)
+		if(ispath(/obj/item))
+			var/obj/item/I = P.fired_from
+			associated_skill = I.associated_skill
+	
 	var/hit = "Hit"
 	if(!zone)
 		return
@@ -237,7 +243,7 @@
 		if(user.mind.get_skill_level(associated_skill) == /datum/skill/combat/bows)
 			if(user.domhand == user.active_hand_index)		//Bows go in your offhand, primehand for drawing and aiming
 				chance2hit -= 25
-		if(user.domhand != user.active_hand_index)			//Attacking with your offhand will penalize your To-Hit
+		else(user.domhand != user.active_hand_index)			//Attacking with your offhand will penalize your To-Hit
 			chance2hit -= 25
 
 	if(!(target.mobility_flags & MOBILITY_STAND))			//If they're grounded, you get a bonus to your To-Hit
