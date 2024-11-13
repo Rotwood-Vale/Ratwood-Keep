@@ -215,7 +215,7 @@
 	owner.sexcon.arousal += 1
 
 	if(owner.mob_timers["baotha_curse"])
-		if(world.time < owner.mob_timers["baotha_curse"] + rand(15,90)SECONDS)
+		if(world.time < owner.mob_timers["baotha_curse"] + rand(10,20,30,40,50,60)SECONDS)
 			return
 	owner.mob_timers["baotha_curse"] = world.time
 
