@@ -928,7 +928,7 @@
 	releasedrain = 60
 	chargedrain = 1
 	chargetime = 4 SECONDS
-	charge_max = 5 MINUTES
+	charge_max = 2 MINUTES
 	warnie = "spellwarning"
 	school = "transmutation"
 	no_early_release = TRUE
@@ -962,7 +962,7 @@
 	releasedrain = 60
 	chargedrain = 1
 	chargetime = 4 SECONDS
-	charge_max = 10 MINUTES
+	charge_max = 5 MINUTES
 	warnie = "spellwarning"
 	school = "transmutation"
 	no_early_release = TRUE

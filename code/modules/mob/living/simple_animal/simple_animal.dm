@@ -422,6 +422,11 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 					gib()
 					if(user.mind)
 						user.mind.add_sleep_experience(/datum/skill/labor/butchering, user.STAINT * 4)
+	else if (stat != DEAD && istype(ssaddle, /obj/item/natural/saddle))
+		var/datum/component/storage/saddle_storage = ssaddle.GetComponent(/datum/component/storage)
+		var/access_time = (user in buckled_mobs) ? 10 : 30
+		if (do_after(user, access_time, target = src))
+			saddle_storage.show_to(user)
 	..()
 
 /mob/living/simple_animal/gib()
