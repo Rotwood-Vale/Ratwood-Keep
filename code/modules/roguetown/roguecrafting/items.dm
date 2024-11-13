@@ -689,7 +689,7 @@
 /datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade2
 	name = "advanced upgrade cog"
 	result = /obj/item/cart_upgrade/level_2
-	reqs = list(/obj/item/grown/log/tree/small = 2,
+	reqs = list(/obj/item/grown/log/tree/small = 4,
 				/obj/item/cart_upgrade/level_1 = 1,
 				/obj/item/ingot/iron = 1)
 	craftdiff = 4
