@@ -104,6 +104,8 @@
 			unlocked_cats+="Mage"
 		if("Knave")
 			unlocked_cats+="Knave"
+		if("Iconoclast")
+			unlocked_cats+="Iconoclast"
    
 	if(current_cat == "1")
 		contents += "<center>"

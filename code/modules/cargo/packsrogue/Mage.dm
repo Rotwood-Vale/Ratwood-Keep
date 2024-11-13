@@ -92,7 +92,7 @@
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 
-/datum/supply_pack/rogue/Mage/leather/Lbracers
+/datum/supply_pack/rogue/Mage/leather/woodenstaff
 	name = "Wooden Staff"
 	cost = 5
 	contains = list(/obj/item/rogueweapon/woodstaff)

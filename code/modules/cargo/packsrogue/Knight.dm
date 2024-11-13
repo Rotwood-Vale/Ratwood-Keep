@@ -31,7 +31,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/bucket)
 
 
-/datum/supply_pack/rogue/Knight/bhelm
+/datum/supply_pack/rogue/Knight/blkstelbuckhelm
 	name = "Blacksteel Bucket Helm"
 	cost = 100
 	contains = list(/obj/item/clothing/head/roguetown/helmet/blacksteel/bucket)
