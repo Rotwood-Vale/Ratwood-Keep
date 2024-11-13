@@ -101,7 +101,7 @@
 
 /obj/item/bodypart/proc/get_specific_markings_overlays(list/specific_markings, aux = FALSE, mob/living/carbon/human/human_owner, override_color)
 	var/list/appearance_list = list()
-	var/specific_layer = aux ? aux_layer : BODYPARTS_LAYER
+	var/specific_layer = aux_layer ? aux_layer : BODYPARTS_LAYER
 	var/specific_render_zone = aux ? aux_zone : body_zone
 	for(var/key in specific_markings)
 		var/color = specific_markings[key]
@@ -150,6 +150,8 @@
 		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 
 /obj/item/bodypart/chest/grabbedintents(mob/living/user, precise)
+	if(precise == BODY_ZONE_PRECISE_GROIN)
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/shove)
 	return list(/datum/intent/grab/move, /datum/intent/grab/shove)
 
 /obj/item/bodypart/blob_act()
@@ -862,6 +864,8 @@
 	px_x = -2
 	px_y = 12
 	max_stamina_damage = 50
+	aux_zone = "l_leg_above"
+	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_L_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_L_LEG)
 	dismember_wound = /datum/wound/dismemberment/l_leg
@@ -919,6 +923,8 @@
 	px_x = 2
 	px_y = 12
 	max_stamina_damage = 50
+	aux_zone = "r_leg_above"
+	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_R_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_R_LEG)
 	dismember_wound = /datum/wound/dismemberment/r_leg
