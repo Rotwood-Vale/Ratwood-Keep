@@ -33,7 +33,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/roguetown/dendormask
 	wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+	shirt = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
