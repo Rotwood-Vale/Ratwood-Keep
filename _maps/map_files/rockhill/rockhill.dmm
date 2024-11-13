@@ -200,8 +200,8 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/beach)
 "aeV" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/hexstone,
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
 "afx" = (
 /obj/effect/decal/cleanable/cobweb,
@@ -329,6 +329,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
 	},
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "amn" = (
@@ -356,13 +357,6 @@
 /obj/item/reagent_containers/food/snacks/crow,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
-"ane" = (
-/obj/structure/table/wood{
-	icon_state = "largetable_mid_alt2"
-	},
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/carpet/lord/center,
-/area/rogue/indoors/town)
 "anu" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/ruinedwood{
@@ -429,6 +423,7 @@
 /obj/item/reagent_containers/glass/cup/wooden{
 	pixel_x = -19
 	},
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "apU" = (
@@ -589,7 +584,6 @@
 /area/rogue/indoors/town/garrison)
 "axD" = (
 /obj/structure/pillory/reinforced/town_dungeon,
-/obj/effect/landmark/underworldcoin,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
 "axW" = (
@@ -657,10 +651,6 @@
 /obj/structure/roguewindow/openclose,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-"aAv" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors/town/tavern)
 "aAy" = (
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
@@ -1530,7 +1520,7 @@
 	dir = 1;
 	icon_state = "longtable_mid"
 	},
-/obj/effect/landmark/underworldcoin,
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
 "bmL" = (
@@ -2342,7 +2332,6 @@
 /obj/structure/roguemachine/mail/r{
 	mailtag = "Gate Keeper"
 	},
-/obj/effect/landmark/underworldcoin,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -3299,6 +3288,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = 32
 	},
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town/manor)
 "cNk" = (
@@ -5017,7 +5007,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "elZ" = (
-/obj/effect/landmark/underworldcoin,
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town/manor)
 "emc" = (
@@ -6412,9 +6402,9 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
 "foM" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/town)
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town/roofs)
 "fpa" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -9486,7 +9476,6 @@
 	pixel_x = -8;
 	pixel_y = 6
 	},
-/obj/effect/landmark/underworldcoin,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "hYL" = (
@@ -10368,7 +10357,6 @@
 	icon_state = "longtable"
 	},
 /obj/effect/mob_spawn/human/skeleton/alive,
-/obj/effect/landmark/underworldcoin,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church)
 "iOH" = (
@@ -14333,7 +14321,7 @@
 	icon_state = "churchtable_mid_alt"
 	},
 /obj/item/reagent_containers/glass/cup/golden,
-/obj/effect/landmark/underworldcoin,
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church/chapel)
 "mmu" = (
@@ -14428,7 +14416,6 @@
 	icon_state = "longtable_mid"
 	},
 /obj/item/book/rogue/yeoldecookingmanual,
-/obj/effect/landmark/underworldcoin,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "mqF" = (
@@ -17608,9 +17595,10 @@
 /turf/open/floor/rogue/rooftop,
 /area/rogue/outdoors/rtfield)
 "oVJ" = (
-/obj/structure/underworld/carriage_normal,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/rtfield)
+/obj/structure/table/wood,
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/dwarfin)
 "oVN" = (
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
@@ -18515,6 +18503,7 @@
 	name = "sealed sarcophagus"
 	},
 /obj/item/candle/yellow,
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/indoors/town/church)
 "pIx" = (
@@ -21705,7 +21694,6 @@
 	dir = 10;
 	icon_state = "largetable"
 	},
-/obj/effect/landmark/underworldcoin,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "svx" = (
@@ -22958,10 +22946,6 @@
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/tavern)
-"tyA" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors/town/dwarfin)
 "tyB" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
@@ -23611,6 +23595,7 @@
 	dir = 1;
 	icon_state = "tablewood1"
 	},
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "uaL" = (
@@ -23900,7 +23885,6 @@
 /obj/item/grown/log/tree/stick,
 /obj/item/grown/log/tree/stick,
 /obj/item/grown/log/tree/stick,
-/obj/effect/landmark/underworldcoin,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "ulv" = (
@@ -23912,6 +23896,7 @@
 	dir = 8;
 	icon_state = "largetable"
 	},
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "uma" = (
@@ -25016,9 +25001,10 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
 "vlc" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/under/town/basement)
+/obj/structure/rack/rogue,
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town)
 "vly" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/mob_spawn/human/skeleton/alive,
@@ -25319,9 +25305,9 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
 "vCk" = (
-/obj/effect/landmark/underworldcoin,
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
+/area/rogue/under/town/basement)
 "vCr" = (
 /obj/item/flashlight/flare/torch/lantern,
 /obj/structure/closet/crate/roguecloset,
@@ -25397,10 +25383,6 @@
 /obj/item/cigbutt/roach,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
-"vFr" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "vFA" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/carpet/lord/left,
@@ -25665,6 +25647,7 @@
 /area/rogue/under/cave)
 "vRB" = (
 /obj/structure/fluff/psycross,
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
 "vSr" = (
@@ -26640,9 +26623,10 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/rtfield)
 "wMt" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/under/town/basement)
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church)
 "wMH" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -26966,9 +26950,9 @@
 /turf/closed/mineral/random/rogue/med,
 /area/rogue/under/cavewet/bogcaves)
 "xaj" = (
-/obj/effect/landmark/underworldcoin,
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/indoors/town/manor)
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "xas" = (
 /obj/structure/fluff/walldeco/maidensigil,
 /turf/open/floor/rogue/blocks,
@@ -178995,7 +178979,7 @@ whb
 whb
 aIy
 aIy
-aKh
+wMt
 emH
 emH
 aIy
@@ -184999,7 +184983,7 @@ whb
 whb
 txa
 cQR
-cBf
+vCk
 cBf
 cBf
 cBf
@@ -188074,7 +188058,7 @@ vRu
 uAu
 sID
 iNX
-vlc
+fBR
 fBR
 fBR
 fBR
@@ -208626,7 +208610,7 @@ cBf
 uSS
 rqd
 rqd
-wMt
+rqd
 qPH
 wJU
 rqd
@@ -283065,7 +283049,7 @@ wlD
 pAV
 pAV
 whJ
-wlD
+xaj
 wlD
 fXy
 pAV
@@ -284262,7 +284246,7 @@ fxx
 fxx
 fxx
 fxx
-oVJ
+fxx
 fxx
 fxx
 pAV
@@ -290247,7 +290231,7 @@ gsM
 aKi
 aKi
 aKi
-tyA
+aKi
 aCz
 sco
 mtR
@@ -291050,7 +291034,7 @@ cfm
 gsM
 sco
 jBN
-tTm
+oVJ
 tTm
 dJy
 sco
@@ -292207,7 +292191,7 @@ wbg
 mwE
 aCU
 aRj
-aeV
+lbV
 aCU
 lbV
 lbV
@@ -293028,7 +293012,7 @@ wbg
 wbg
 orb
 amk
-aAv
+xIh
 eoO
 fJc
 wtb
@@ -296672,7 +296656,7 @@ wVI
 xfn
 ucS
 ucS
-foM
+ucS
 ucS
 ugJ
 ucS
@@ -300656,7 +300640,7 @@ wbg
 vYG
 dds
 arZ
-dds
+aeV
 mUq
 uoM
 xAt
@@ -302245,7 +302229,7 @@ wrj
 kxU
 fdM
 tOz
-xaj
+tOz
 tOz
 tOz
 tOz
@@ -308704,7 +308688,7 @@ evo
 upp
 avU
 etj
-ane
+etj
 ipK
 pXm
 rNm
@@ -316382,7 +316366,7 @@ rfx
 rfx
 oAn
 evo
-qlw
+vlc
 qlw
 evo
 evo
@@ -318751,7 +318735,7 @@ xGW
 aOv
 rfx
 myC
-vCk
+wVI
 myC
 rfx
 auT
@@ -385980,7 +385964,7 @@ liY
 ddv
 cVx
 ddv
-vFr
+wlD
 wlD
 oba
 uxr
@@ -406780,7 +406764,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-kWa
+foM
 fZJ
 fZJ
 rTC

@@ -47,7 +47,7 @@
 
 /mob/living/carbon/spirit/Initialize(mapload, cubespawned=FALSE, mob/spawner)
 	set_light(2, 2, "#547fa4")
-	coin_upkeep()
+	check_toll_upkeep()
 	verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down
 	ADD_TRAIT(src, TRAIT_PACIFISM, TRAIT_GENERIC)
@@ -73,9 +73,9 @@
 	if(QDELETED(src) || paid)
 		return
 	for(var/item in held_items)
-		if(istype(item, /obj/item/underworld/coin))
+		if(istype(item, /obj/item/veil/toll))
 			return
-	put_in_hands(new /obj/item/underworld/coin/notracking(get_turf(src)))
+	put_in_hands(new /obj/item/veil/toll(get_turf(src)))
 	if(patron)
 		to_chat(src, span_danger("Your suffering has not gone unnoticed, [patron] has rewarded you with your toll."))
 	else
@@ -166,8 +166,8 @@
 	beingmoved = TRUE
 	to_chat(src, "<B><font size=3 color=red>Your soul is dragged to an infathomably cruel place where it endures severe torment. You've all but given up hope when you feel a presence drag you back to that Forest.</font></B>")
 	playsound(src, 'sound/combat/caught.ogg', 80, TRUE, -1)
-	for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
-		forceMove(A.loc)
+	for(var/obj/effect/landmark/veil/toll/T in GLOB.landmarks_list)
+		forceMove(T.loc)
 	beingmoved = FALSE
 
 ///Get the underworld spirit associated with this mob (from the mind)
@@ -230,10 +230,10 @@
 				adjust_playerquality(coin_pq, user.ckey)
 			qdel(human_corpse.mouth)
 			human_corpse.update_inv_mouth()
-			for(var/obj/effect/landmark/underworld/coin_spawn in GLOB.landmarks_list)
+			for(var/obj/effect/landmark/veil/toll/coin_spawn in GLOB.landmarks_list)
 				var/turf/fallen = get_turf(coin_spawn)
 				fallen = locate(fallen.x + rand(-3, 3), fallen.y + rand(-3, 3), fallen.z)
-				new /obj/item/underworld/coin/notracking(fallen)
+				new /obj/item/veil/toll(fallen)
 				fallen.visible_message(span_warning("A coin falls from above!"))
 				break
 	corpse.mind.remove_antag_datum(/datum/antagonist/zombie)
@@ -278,12 +278,12 @@
 	paid = TRUE
 	if(speaking_with)
 		to_chat(speaking_with, "The soul is being pulled away...")
-	for(var/obj/effect/landmark/underworld/underspawn in shuffle(GLOB.landmarks_list))
+	for(var/obj/effect/landmark/veil/toll/underspawn in shuffle(GLOB.landmarks_list))
 		to_chat(src, span_warning("Something pulls me back towards my judgement..."))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(funeral_teleport), src, underspawn, paidfor), 5 SECONDS)
 		break // No need to worry about Speak with Soul spell, that checks for funeral
 
-/proc/funeral_teleport(mob/living/carbon/spirit/spirit, obj/effect/landmark/underworld/underspawn, paidfor)
+/proc/funeral_teleport(mob/living/carbon/spirit/spirit, obj/effect/landmark/veil/toll/underspawn, paidfor)
 	if(!QDELETED(spirit)) // in case they already used carriage
 		spirit.visible_message(span_warning("[spirit] vanishes!"), span_warning("I'm whisked away!"))
 		if(spirit.speaking_with)

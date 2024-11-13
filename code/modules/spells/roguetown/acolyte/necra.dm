@@ -135,7 +135,7 @@
 			P.invisibility = INVISIBILITY_OBSERVER
 			for(var/obj/item/I in P.held_items) // this is big ass, will revisit later
 				. |= P.dropItemToGround(I)
-				if(istype(I, /obj/item/underworld/coin))
+				if(istype(I, /obj/item/veil/toll))
 					itemstorestore |= "token"
 				if(istype(I, /obj/item/flashlight/lantern/shrunken))
 					itemstorestore |= "lamp"
@@ -164,7 +164,7 @@
 	if(!QDELETED(capturedsoul) && capturedsoul.being_spoken_with && !capturedsoul.prevmind?.funeral) // pacify_corpse has its own stuff to teleport & unparalyze the spirit
 		to_chat(summoner, "The soul returns to the underworld.")
 		to_chat(capturedsoul, "You return to the underworld.")
-		for(var/obj/effect/landmark/underworld/A in GLOB.landmarks_list)
+		for(var/obj/effect/landmark/veil/toll/A in GLOB.landmarks_list)
 			capturedsoul.loc = A.loc
 			capturedsoul.invisibility = initial(capturedsoul.invisibility)
 			capturedsoul.SetParalyzed(0)
@@ -173,7 +173,7 @@
 			capturedsoul.set_resting(FALSE)
 			for(var/I in itemstorestore)
 				if(I == "token")
-					var/obj/item/underworld/coin/C = new
+					var/obj/item/veil/toll/tracked/C = new
 					capturedsoul.put_in_hands(C)
 				if(I == "lamp")
 					var/obj/item/flashlight/lantern/shrunken/L = new

@@ -52,7 +52,7 @@
 
 /obj/structure/underworld/carriageman/attackby(obj/item/W, mob/living/user)
 	var/mob/living/carbon/spirit/ghost = user
-	if(istype(W, /obj/item/underworld/coin))
+	if(istype(W, /obj/item/veil/toll))
 		if(!ghost.paid)
 			qdel(W)
 			to_chat(ghost, "<br><font color=purple><span class='bold'>THE TOLL IS PAID, THROUGH THE CARRIAGE THE UNDERMAIDEN WAITS.</span></font>")

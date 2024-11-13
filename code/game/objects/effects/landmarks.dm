@@ -822,14 +822,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 
 //Underworld landmark
 
-/obj/effect/landmark/underworld
-	name = "underworld spawn"
-
-/obj/effect/landmark/underworldcoin
-	name = "ferryman coin"
-
-/obj/effect/landmark/underworldsafe // To prevent demons spawn camping.
-	name = "safe zone"
+/obj/effect/landmark/veil/toll
+	name = "veil toll"
 
 GLOBAL_LIST_EMPTY(travel_tile_locations)
 
