@@ -193,6 +193,8 @@
 					new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
 					new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
 					qdel(src)
+			else
+				to_chat(user, span_warning("I cannot butcher this limb."))
 	..()
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
