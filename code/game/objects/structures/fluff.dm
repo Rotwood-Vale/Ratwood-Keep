@@ -380,6 +380,7 @@
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	leanable = TRUE
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/bars/CanPass(atom/movable/mover, turf/target)
 	if(isobserver(mover))

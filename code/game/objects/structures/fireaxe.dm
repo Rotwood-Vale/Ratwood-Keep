@@ -7,7 +7,7 @@
 	armor = list("blunt" = 50, "slash" = 40, "stab" = 30, "bullet" = 20, "laser" = 0, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 50)
 	max_integrity = 150
 	integrity_failure = 0.33
-	var/locked = FALSE
+	locked = FALSE
 	var/open = TRUE
 	var/obj/item/rogueweapon/sword/long/heirloom
 

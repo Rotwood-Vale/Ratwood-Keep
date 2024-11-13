@@ -77,7 +77,7 @@
 	var/danger_level = 0
 	var/mode = AALARM_MODE_SCRUBBING
 
-	var/locked = TRUE
+	locked = TRUE
 	var/aidisabled = 0
 	var/shorted = 0
 	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone

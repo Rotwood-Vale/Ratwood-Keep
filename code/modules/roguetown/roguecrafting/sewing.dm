@@ -240,9 +240,9 @@
 	name = "surcoat (guard) - (2 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/stabard/guard)
 
-/datum/crafting_recipe/roguetown/sewing/stabard/bog
-	name = "surcoat (bog) - (2 cloths, fiber; JOURNEYMAN)"
-	result = list(/obj/item/clothing/cloak/stabard/bog)
+/datum/crafting_recipe/roguetown/sewing/cloak/vanguard
+	name = "cloak (vanguard) - (2 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/raincloak/vanguard)
 
 /datum/crafting_recipe/roguetown/sewing/tabard
 	name = "tabard (2 cloths, fiber; JOURNEYMAN)"
@@ -431,6 +431,13 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
+/datum/crafting_recipe/roguetown/sewing/leather/braces
+	name = "hardened leather braces"
+	result = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
 /datum/crafting_recipe/roguetown/sewing/leather/coat
 	name = "hardened leather coat"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/advanced
@@ -438,8 +445,8 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
-/datum/crafting_recipe/roguetown/sewing/leather/hood
-	name = "hardened leather hooded helmet"
+/datum/crafting_recipe/roguetown/sewing/leather/helmet
+	name = "hardened leather helmet"
 	result = /obj/item/clothing/head/roguetown/helmet/leather/advanced
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
@@ -467,6 +474,7 @@
 	reqs = list(/obj/item/clothing/shoes/roguetown/armor/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
+	blacklist = (/obj/item/clothing/shoes/roguetown/armor/leather/advanced)
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/gloves/masterwork
@@ -475,6 +483,7 @@
 	reqs = list(/obj/item/clothing/gloves/roguetown/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
+	blacklist = (/obj/item/clothing/gloves/roguetown/leather/advanced)
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/bracers/masterwork
@@ -483,6 +492,7 @@
 	reqs = list(/obj/item/clothing/wrists/roguetown/bracers/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
+	blacklist = (/obj/item/clothing/wrists/roguetown/bracers/leather/advanced)
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/coat/masterwork
@@ -491,6 +501,7 @@
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
+	blacklist = (/obj/item/clothing/suit/roguetown/armor/leather/advanced)
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/helmet/masterwork
@@ -499,6 +510,7 @@
 	reqs = list(/obj/item/clothing/head/roguetown/helmet/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
+	blacklist = (/obj/item/clothing/head/roguetown/helmet/leather/advanced)
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/chausses/masterwork
@@ -507,6 +519,7 @@
 	reqs = list(/obj/item/clothing/under/roguetown/trou/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
+	blacklist = (/obj/item/clothing/under/roguetown/trou/leather/advanced)
 	craftdiff = 5
 
 /// SILKS

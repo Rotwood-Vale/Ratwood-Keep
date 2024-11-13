@@ -28,6 +28,8 @@
 	message = treat_message_accent(message, get_accent_end(source), REGEX_ENDWORD)
 	message = treat_message_accent(message, get_accent_any(source), REGEX_ANY)
 
+	message = autopunct_bare(message)
+
 	speech_args[SPEECH_MESSAGE] = trim(message)
 
 

@@ -155,6 +155,11 @@
 		return
 	qdel(src)
 
+/obj/item/clothing/neck/roguetown/gorget/alt
+	name = "vreccale"
+	desc = "Nature knows not of mercy."
+	icon_state = "iwolfcollar"
+
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"
 	desc = ""

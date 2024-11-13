@@ -325,7 +325,7 @@
 
 /obj/item/storage/lockbox/dueling/update_icon()
 	cut_overlays()
-	var/locked = SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED)
+	locked = SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED)
 	if(locked)
 		icon_state = "medalbox+l"
 	else

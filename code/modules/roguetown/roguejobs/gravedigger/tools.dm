@@ -1,7 +1,7 @@
 /obj/item/rogueweapon/shovel
 	force = 21
-	possible_item_intents = list(/datum/intent/mace/strike/shovel, /datum/intent/shovelscoop)
-	gripped_intents = list(/datum/intent/mace/strike/shovel, /datum/intent/shovelscoop, /datum/intent/axe/chop/stone)
+	possible_item_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel)
+	gripped_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel, /datum/intent/axe/chop/stone)
 	name = "shovel"
 	desc = "Essential for digging (graves) in this darkened earth."
 	icon_state = "shovel"

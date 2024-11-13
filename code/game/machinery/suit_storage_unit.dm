@@ -26,7 +26,7 @@
 
 	state_open = FALSE
 	/// If the SSU's doors are locked closed. Can be toggled manually via the UI, but is also locked automatically when the UV decontamination sequence is running.
-	var/locked = FALSE
+	locked = FALSE
 	panel_open = FALSE
 	/// If the safety wire is cut/pulsed, the SSU can run the decontamination sequence while occupied by a mob. The mob will be burned during every cycle of cook().
 	var/safeties = TRUE
