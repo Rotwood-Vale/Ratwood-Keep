@@ -1979,12 +1979,6 @@
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church)
-"bGe" = (
-/obj/structure/stairs{
-	dir = 8
-	},
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors/town)
 "bGD" = (
 /obj/machinery/anvil,
 /turf/open/floor/rogue/blocks,
@@ -326338,7 +326332,7 @@ xAt
 xAt
 rfx
 rfx
-bGe
+gGZ
 rfx
 rfx
 rfx
