@@ -42,31 +42,31 @@
 /datum/skill/combat/knives
 	name = "Knife-fighting"
 	dreams = list(
-		"...your heart beats as swift as your knife strikes that reached their legs, groin and above, throwing daggers and in a devious move kicking them from the floor towards ones that tried to dodge and parry to catch them by surprise, at times when timed right with attacking them directly go through as they recover their parry, draining chipping slowly at their armor and making them slowly short of breathe, while dodging which made it even worse and feinting their parry attempts to begin unleashing a fury of stabs through their leather armor before flipping the knife over to start picking through chained and plated armor alike, fully ignoring its protection opponent's surface, with great haste and ease of precision little stood chance against your swift devious might..."
+		"...you dream of energy. Energy reaching the tips of your fingers, energy yearning for the tips of your toes, energy rushing through your veins, towards the tip of your knife. You find yourself on the roof of a building, a pouch of gold you didn't earn on your hip and a man with an authoritative voice shouting at your back. Something within you opens, like a valve, allowing the boundless energy to bubble up to your lips - and before you even realize what you've said, you reminisce on how *good* it felt to tell him to fuck off... and how nicely the dagger feels in your palm, primed to slip itself between his coif and his neck as he leers closer."
 	)
 
 /datum/skill/combat/swords
 	name = "Sword-fighting"
 	dreams = list(
-		"...your heart beats wildly as your swords strike eachothers, you parry your opponent and finish him off with a decisive slash..."
+		"...you dream of calm. A priceless commodity in Rockhill, you simply bask in it, meditating at the top of a great mountain. The azure skies stare down at the serene, rolling plains in front of you. The sword in the grass, pristine as the day it was made, shines radiant and guides your hand to it. You trace it along the sky, etching your name into the clouds, a painter at work with their brush - your sword is not just a tool of war, but a tool of creativity and status. And, as you slowly awake, you feel the world open up, and get just a little bit brighter - as long as you have your brush by your side."
 	)
 
 /datum/skill/combat/polearms
 	name = "Polearms"
 	dreams = list(
-		"...the air blows against your body in the open field, as your opponent's whole body is at range with the polearm's great length, regaining your focus you'd start to pull the polearm with a firm grip to ready up for a proper instead of a half-hearted hasty half-forced strike and thrusting it forth, keeping your opponent at a distance, striking where they move or at when close and with proper precision when they're at range, with double the said range came the advantage when chasing and tactically falling back from them, piercing through padded-cloth and leather armor like they were nothing with the spear, throwing it towards someone unarmored before rolling towards an heavier polearm and reaching for the heavens and with the added polearm range unleashed a slow but crashing blow through that plated armor making them scream for pain and slowly crawl towards and away, never being able to reach you back until they were properly subdued..."
+		"...you dream of safety. The grip of the staff in your hand never falters, and those at your back never, *ever* doubt you. Throughout your dream, which seems to stretch on and on forever, you lead hundreds of soldiers, or a flock of sheep, or no one at all - but regardless of who's at your back, all you need to feel safe is the staff at your side. The tip of your spear points you, like the north star. No matter what happens, no matter what natural disaster or thief of volf comes your way, you will never compromise, never waver, never rest. Stand tall, soldier."
 	)
 
 /datum/skill/combat/maces
 	name = "Maces"
 	dreams = list(
-		"...maces maces maces, they're all around, striking to slow, unleashing a hefty, delayed smash to fully punch though its protection, stunning them briefly and staggering them after, making their retreats and advances more than futile, smashing them when they're down, making them too meek to stand on their legs, what an amusing sight." 
+		"...you dream of power. Your body leaves and fails you, and still you hear the still creaking and slow snapping of bone and sinew. Something screams. Someone breaks. You bring the club down on it, anyways. Subdue the regret. Dust yourself off - keep going! You'll shirk your brutality in your next life, where you don't make mistakes. Do what you can with this one, while you're still alive. It's the least you can do, killer."
 	)
 
 /datum/skill/combat/axes
 	name = "Axes"
 	dreams = list(
-		"...grabbing a random axe, using it to cut and chop, getting a feel for it and finally realizing that they are not half bad one handed with barely any added heft when wielded, be it iron or steel, until picking up the battle axe and the effect inverted, what a cumbersome weapon to wield in one-hand, with a mighty fine one in two, chopping through limps like, shattering shields into splinters and bending steel one to ones will, reaching the legs, groin and above, what a handy thing to axe folk a few questions..."
+		"...you dream of the wild. You bring your axe into a tree, and it bleeds. You bring your axe down into the earth, and it bleeds. You bring your axe down on a shape, and... everything slows down. Your senses sharpen. The deep, dark canopies of the bog suddenly seem... beautiful, in its own way. Like there's a whole life out there, waiting for you. The axe finishes its course, embedding itself in... something that matters less to you, now. Your instincts sharpen as you wake up. Your soul calls for something more."
 	)
 
 /datum/skill/combat/whipsflails
@@ -78,7 +78,7 @@
 /datum/skill/combat/bows
 	name = "Archery"
 	dreams = list(
-		"...you stand in an open field, a straw target in your sights, pulling a arrow from your quiver with your gloved hand and loading it to aim and let it loose at the target missing, this cycle continued for a bit until your aim steadied proper, muscles building up strength making it easier to draw the bow, skills slowly refining aiding the task at hand, a new trick that pop to mind is to curl the arm back and grab the arrow with the bow holding hand to draw it in the air before aiming proper, tilting the head, squinting an eye, taking a deep breath and finally letting it loose, bullseye, probably want to run just about now, that bull looks quite angry..."
+		"...you dream of focus. You are the eye of the eye of the needle, letting your breathing down as you calculate distance. The line between you and your target shortens as you draw back the bowstring. You put a little bit of your soul into every shot you fire, a little bit of love sent with each great shock of grace and brutality in equal measure. The dream ends abruptly as it cracks and sputters, reeling from the shock of catching an arrow in its neck. If you can kill your own dream, you can kill *anything*. Just be sure to place your arrows carefully, hotshot."
 	)
 
 /datum/skill/combat/crossbows
@@ -96,5 +96,5 @@
 /datum/skill/combat/unarmed
 	name = "Fist-fighting"
 	dreams = list(
-		"...your body is bruised, your breathe haggers, but your harden fists and lower-legs refused to give in, going into actions with punches that landed furied blows from their groin to the top that managed to fractured several bones before dealing a decisive knockout that was followed up by a hefty punch that snapped the spine, refocusing your efforts towards another, deciding to use an delayed kick against the unarmored leg, avoiding the neck and above that can't be reached, knocking one by the wall, another on the table, a third against a few objects and a fourth against fifth, moving into a stomp that dislocated and later shattered bone, you stood there, gasping for air, all bruised and beaten up, yet victories..."
+		"..."
 	)
