@@ -183,15 +183,18 @@
 	var/obj/item/held_item = user.get_active_held_item()
 	if(held_item)
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
-			var/used_time = 210
-			if(user.mind)
-				used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
-			visible_message("[user] begins to butcher \the [src].")
-			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-			if(do_after(user, used_time, target = src))
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
-				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
-				qdel(src)
+			if(!rotted && !skeletonized)
+				var/used_time = 210
+				if(user.mind)
+					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
+				visible_message("[user] begins to butcher \the [src].")
+				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+				if(do_after(user, used_time, target = src))
+					new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
+					new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+					qdel(src)
+			else
+				to_chat(user, span_warning("I cannot butcher this limb."))
 	..()
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
