@@ -3548,6 +3548,8 @@
 #include "code\modules\vehicles\wheelchair.dm"
 #include "code\modules\vehicles\cars\car.dm"
 #include "code\modules\vehicles\cars\clowncar.dm"
+#include "code\modules\veil\carriage.dm"
+#include "code\modules\veil\carriageman.dm"
 #include "code\modules\veil\demon.dm"
 #include "code\modules\veil\toll.dm"
 #include "code\modules\veil\underworld.dm"

@@ -838,6 +838,10 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church/chapel)
+"aHR" = (
+/obj/structure/carriage,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "aIy" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/indoors/town/church)
@@ -23226,6 +23230,10 @@
 /obj/structure/flora/roguegrass/maneater/real,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
+"tLY" = (
+/obj/structure/veil/barrier,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "tMo" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -284246,7 +284254,7 @@ fxx
 fxx
 fxx
 fxx
-fxx
+aHR
 fxx
 fxx
 pAV
@@ -284647,7 +284655,7 @@ fxx
 fxx
 fxx
 fxx
-fxx
+tLY
 fxx
 fxx
 fxx
@@ -285049,7 +285057,7 @@ fxx
 fxx
 fxx
 fxx
-fxx
+tLY
 fxx
 fxx
 fxx
@@ -285451,7 +285459,7 @@ fxx
 fxx
 fxx
 fxx
-fxx
+tLY
 fxx
 fxx
 fxx

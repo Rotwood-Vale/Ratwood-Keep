@@ -1,5 +1,5 @@
 /**
- * This list keeps track of all the underworld coins in the game.
+ * This list contains all tracked veil tolls in the game.
  * It is used to avoid having too many coins in the game at once.
  */
 GLOBAL_VAR_INIT(veil_tolls, 0)
@@ -19,15 +19,33 @@ GLOBAL_VAR_INIT(veil_tolls, 0)
 	name = "The Toll"
 	desc = "This is more than just a coin."
 	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
-	icon_state = "soultoken_floor"
+	icon_state = null
+
+	/// Discriminating overlays used to make sure they are only visible to spirits
+	var/image/icon_on_turf
+	var/image/icon_in_hand
+
+/obj/item/veil/toll/Initialize()
+	icon_on_turf = image(
+				icon = 'icons/roguetown/underworld/enigma_husks.dmi',
+				icon_state = "soultoken_floor",
+				loc = src
+			)
+	icon_in_hand = image(
+				icon = 'icons/roguetown/underworld/enigma_husks.dmi',
+				icon_state = "soultoken",
+				loc = src
+			)
+	// let's assume it always spawns on the ground
+	apply_veil(icon_on_turf, src)
 
 /obj/item/veil/toll/pickup(mob/user)
 	..()
-	icon_state = "soultoken"
+	apply_veil(icon_in_hand, src)
 
 /obj/item/veil/toll/dropped(mob/user)
 	..()
-	icon_state = "soultoken_floor"
+	apply_veil(icon_on_turf, src)
 	
 
 /// Tracked version thats spawned in the map.
