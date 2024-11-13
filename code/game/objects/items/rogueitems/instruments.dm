@@ -194,5 +194,4 @@
 	"Timeless Temple (Masculine)" = 'sound/music/instruments/vocalsm (2).ogg',
 	"Angel's Earnt Halo (Masculine)" = 'sound/music/instruments/vocalsm (3).ogg',
 	"A Fabled Choir (Masculine)" = 'sound/music/instruments/vocalsm (4).ogg',
-	"Ultima Thule (Masculine + Vocals)" = 'sound/music/instruments/vocalsm (5).ogg',
 	"A Pained Farewell (Masculine + Feminine)" = 'sound/music/instruments/vocalsx (1).ogg')
