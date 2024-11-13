@@ -1248,7 +1248,6 @@
 /obj/structure/floordoor/gatehatch/inner{
 	redstone_id = "gatelava"
 	},
-/obj/structure/floordoor/gatehatch/outer,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
 "bbt" = (
@@ -5556,7 +5555,6 @@
 	pixel_x = -32;
 	pixel_y = -32
 	},
-/obj/structure/floordoor/gatehatch/outer,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
 "eIg" = (
@@ -6537,7 +6535,6 @@
 /obj/structure/floordoor/gatehatch/outer{
 	redstone_id = "gatelava"
 	},
-/obj/structure/floordoor/gatehatch/outer,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
 "fyN" = (
