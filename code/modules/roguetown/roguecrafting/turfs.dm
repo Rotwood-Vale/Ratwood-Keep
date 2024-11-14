@@ -1,4 +1,11 @@
 
+/datum/crafting_recipe/proc/isplatform(turf/P)
+	if(	istype(P, /turf/open/floor/rogue/ruinedwood/platform) || \
+		istype(P, /turf/open/floor/rogue/twig/platform) || \
+		istype(P, /turf/open/floor/rogue/blocks/platform))
+		return TRUE
+	return FALSE
+
 /// WOOD
 
 /datum/crafting_recipe/roguetown/turfs/woodfloor
@@ -49,6 +56,8 @@
 		return
 	if(!istype(T, /turf/open/floor/rogue))
 		return
+	if(isplatform(T))
+		return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/fancywwall
@@ -65,6 +74,8 @@
 		return
 	if(!istype(T, /turf/open/floor/rogue))
 		return
+	if(isplatform(T))
+		return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/woodwindow
@@ -80,6 +91,8 @@
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/floor/rogue))
+		return
+	if(isplatform(T))
 		return
 	return TRUE
 
@@ -133,6 +146,8 @@
 		return
 	if(!istype(T, /turf/open/floor/rogue))
 		return
+	if(isplatform(T))
+		return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/fancyswall
@@ -148,6 +163,8 @@
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/floor/rogue))
+		return
+	if(isplatform(T))
 		return
 	return TRUE
 
@@ -165,6 +182,8 @@
 		return
 	if(!istype(T, /turf/open/floor/rogue))
 		return
+	if(isplatform(T))
+		return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/stonewindow
@@ -180,6 +199,8 @@
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/floor/rogue))
+		return
+	if(isplatform(T))
 		return
 	return TRUE
 
@@ -233,6 +254,8 @@
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/floor/rogue))
+		return
+	if(isplatform(T))
 		return
 	return TRUE
 
