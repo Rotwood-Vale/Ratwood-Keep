@@ -1,3 +1,7 @@
+/mob/dead/observer/rogue/veil
+	name = "ghost"
+
+
 /// veil overlay. This makes sure only veil spirits and admins can see veil entities.
 /datum/atom_hud/alternate_appearance/basic/veil/mobShouldSee(mob/M)
 
@@ -32,7 +36,6 @@
 
 	S.ckey = ckey
 	S.real_name = real_name
-	S.livingname = real_name
 	S.add_client_colour(/datum/client_colour/monochrome)
 
 	return TRUE
