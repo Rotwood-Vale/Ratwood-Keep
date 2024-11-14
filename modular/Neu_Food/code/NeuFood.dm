@@ -455,6 +455,9 @@
 /*	..................   Food platter   ................... */
 /obj/item/cooking/platter/attackby(obj/item/I, mob/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
+	if(findtext("[I.type]", "/plated")) //All plated food items have /plated at end of path
+		to_chat(user, span_warning("[I] in your hand appears to already be plated."))
+		return
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
