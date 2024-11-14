@@ -141,7 +141,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/family = FAMILY_NONE
 	var/list/family_species = list()
 	var/list/family_gender = list()
-	var/family_sexes = list()
 
 	var/crt = FALSE
 
@@ -345,7 +344,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family == FAMILY_NONE ? "No" : "Yes!"]</a><BR>" // Disabling until its working
 			if(family != FAMILY_NONE)
 				dat += "<B>Family Preferences:</B>"
-				dat += " <small><a href='?_src_=prefs;preference=familypref;res=sex'>Body</a></small>"
 				dat += " <small><a href='?_src_=prefs;preference=familypref;res=gender'>Gender</a></small>"
 				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
 				dat += "<BR>"
@@ -1204,17 +1202,6 @@ Slots: [job.spawn_positions]</span>
 							family_gender -= choices[choice]
 						else
 							family_gender += choices[choice]
-			if("sex")
-				var/choice
-				while(choice != "(DONE)")
-					var/list/choices = list("[("penis" in family_sexes) ? "(+)" : ""] a Penis" = "penis","[("vagina" in family_sexes) ? "(+)" : ""] a Vagina" = "vagina", "[("herm" in family_sexes) ? "(+)" : ""] Both!" = "herm")
-					choices += "(DONE)"
-					choice = input(usr,"When I look below someone's belt, I'd like to see...","BODY") as anything in choices
-					if(choice != "(DONE)")
-						if(choices[choice] in family_sexes)
-							family_sexes -= choices[choice]
-						else
-							family_sexes += choices[choice]
 
 			if("race")
 				var/choice

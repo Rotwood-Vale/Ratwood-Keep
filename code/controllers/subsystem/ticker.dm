@@ -382,6 +382,13 @@ SUBSYSTEM_DEF(ticker)
 		transfer_characters()	//transfer keys to the new mobs
 		log_game("GAME SETUP: transfer characters success")
 
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
+			if(H.client)
+				if(H.client.prefs.family)
+					SSfamily.family_candidates += H
+
+		SSfamily.SetupFamilies()
+
 	for(var/I in round_start_events)
 		var/datum/callback/cb = I
 		cb.InvokeAsync()
