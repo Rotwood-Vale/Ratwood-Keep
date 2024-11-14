@@ -1616,19 +1616,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-"bpz" = (
-/obj/structure/table/wood{
-	dir = 6;
-	icon_state = "largetable"
-	},
-/obj/item/rogueweapon/pick,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/shelter/mountains)
 "bpD" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/cave)
@@ -2346,12 +2333,6 @@
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cavewet/bogcaves)
-"bYx" = (
-/obj/structure/bars{
-	alpha = 150
-	},
-/turf/closed/mineral/rogue/bedrock,
-/area/rogue/indoors/shelter/mountains)
 "bYA" = (
 /obj/structure/stairs{
 	dir = 8
@@ -4658,17 +4639,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/under/town/basement)
 "dUK" = (
-/obj/structure/chair/wood/rogue{
-	dir = 8
-	},
 /mob/living/carbon/human/species/goblin/npc/ambush,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/bars{
-	alpha = 150
-	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/mountains)
 "dUY" = (
@@ -5472,12 +5443,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
-"eBp" = (
-/obj/structure/bars{
-	alpha = 150
-	},
-/turf/open/transparent/openspace,
-/area/rogue/indoors/shelter/mountains)
 "eBC" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/flint,
@@ -6004,7 +5969,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/rogueweapon/pick,
-/turf/closed/mineral/rogue/bedrock,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/mountains)
 "eTV" = (
 /obj/structure/bars{
@@ -6819,10 +6784,6 @@
 "fDB" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors/rtfield)
-"fDQ" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/closed/mineral/rogue/bedrock,
-/area/rogue/indoors/shelter/mountains)
 "fEb" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/cloak/cape/puritan,
@@ -8583,7 +8544,7 @@
 	dir = 8
 	},
 /mob/living/carbon/human/species/goblin/npc/ambush,
-/turf/closed/mineral/rogue/bedrock,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/mountains)
 "hdd" = (
 /obj/structure/table/wood{
@@ -9943,7 +9904,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
-/turf/closed/mineral/rogue/bedrock,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/mountains)
 "inf" = (
 /turf/open/floor/rogue/rooftop/green/corner1{
@@ -12888,24 +12849,6 @@
 /obj/structure/stairs,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
-"kNW" = (
-/obj/structure/table/wood{
-	dir = 10;
-	icon_state = "largetable"
-	},
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/mineral_door/wood/donjon{
-	locked = 1;
-	lockid = "bog_gatehouse";
-	name = "Gatehouse";
-	dir = 1
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/shelter/mountains)
 "kOh" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/rogue/ruinedwood,
@@ -20021,10 +19964,6 @@
 /obj/item/flint,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
-"qLJ" = (
-/obj/structure/fermenting_barrel/random/water,
-/turf/closed/mineral/rogue/bedrock,
-/area/rogue/indoors/shelter/mountains)
 "qLP" = (
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -27907,7 +27846,7 @@
 	dir = 4
 	},
 /mob/living/carbon/human/species/goblin/npc/ambush,
-/turf/closed/mineral/rogue/bedrock,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/mountains)
 "xur" = (
 /obj/structure/closet/crate/roguecloset,
@@ -255353,28 +255292,28 @@ vIa
 vIa
 vIa
 vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
 aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-rbn
-rbn
-rbn
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -255754,10 +255693,6 @@ vIa
 vIa
 vIa
 vIa
-vIa
-aUc
-vIa
-vIa
 aUc
 aUc
 aUc
@@ -255767,16 +255702,20 @@ aUc
 aUc
 aUc
 aUc
-bYx
 aUc
 aUc
 aUc
 aUc
-bYx
 aUc
 aUc
-rbn
-rbn
+aUc
+aUc
+aUc
+aUc
+aUc
+pyv
+pyv
+qbG
 qbG
 qbG
 qbG
@@ -256156,28 +256095,28 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 qSB
 xtV
 twI
-twI
+qSB
 qSB
 qSB
 vIa
 qSB
 clE
 aev
-eBp
+bYH
 aev
 clE
-eBp
-rbn
-eBp
-rbn
-rbn
-eBp
+pyv
+qbG
+qbG
+qbG
+qbG
+pyv
 qbG
 qbG
 qbG
@@ -256558,28 +256497,28 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 vIa
 imV
 clE
-qSB
+clE
 wdp
 twI
 twI
 qSB
 clE
 twI
-eBp
+bYH
 clE
 aev
-eBp
-rbn
-eBp
-rbn
-rbn
-eBp
+pyv
+qbG
+qbG
+qbG
+qbG
+pyv
 qbG
 qbG
 qbG
@@ -256960,28 +256899,28 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 vIa
 eTN
 clE
 clE
-kNW
+twI
 clE
 clE
 qSB
 twI
 twI
 twI
-clE
+bYH
 twI
-eBp
-rbn
-rbn
-rbn
-rbn
-eBp
+pyv
+qbG
+qbG
+qbG
+qbG
+pyv
 lEN
 lEN
 uaL
@@ -257362,14 +257301,14 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 qSB
 hcX
 twI
 clE
-bpz
+aev
 clE
 clE
 smv
@@ -257377,14 +257316,14 @@ clE
 aev
 aev
 twI
+hlz
 twI
-twI
+vIa
+vIa
+vIa
 aUc
-vIa
-vIa
 aUc
-vIa
-vIa
+aUc
 aUc
 aUc
 wSn
@@ -257764,13 +257703,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-qLJ
+vIa
+iGk
 twI
-qSB
+clE
 dUK
 twI
 clE
@@ -257781,7 +257720,7 @@ twI
 twI
 vIa
 vIa
-aUc
+vIa
 vIa
 vIa
 aUc
@@ -258166,14 +258105,14 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
+vIa
 qSB
-aUc
 qSB
-bYH
-iGk
+qSB
+qSB
+twI
 twI
 clE
 cNO
@@ -258183,7 +258122,7 @@ twI
 vIa
 vIa
 vIa
-aUc
+vIa
 vIa
 vIa
 aUc
@@ -258568,11 +258507,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-aUc
+vIa
+twI
 vIa
 qSB
 qSB
@@ -258585,7 +258524,7 @@ twI
 qSB
 vIa
 vIa
-aUc
+vIa
 vIa
 vIa
 aUc
@@ -258970,11 +258909,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-aUc
+vIa
+aev
 vIa
 clE
 aev
@@ -258987,7 +258926,7 @@ aev
 qSB
 vIa
 vIa
-aUc
+vIa
 vIa
 vIa
 aUc
@@ -259372,11 +259311,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-aUc
+vIa
+twI
 vIa
 clE
 aev
@@ -259389,7 +259328,7 @@ vIa
 vIa
 vIa
 vIa
-aUc
+vIa
 vIa
 vIa
 aUc
@@ -259774,13 +259713,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-aUc
+vIa
 twI
-iPF
+twI
+aev
 aev
 twI
 clE
@@ -259791,7 +259730,7 @@ vIa
 vIa
 vIa
 vIa
-aUc
+vIa
 vIa
 vIa
 aUc
@@ -260176,12 +260115,12 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-aUc
-twI
+vIa
+aev
+aev
 aev
 clE
 twI
@@ -260193,7 +260132,7 @@ vIa
 vIa
 vIa
 vIa
-aUc
+vIa
 vIa
 vIa
 aUc
@@ -260578,12 +260517,12 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-aUc
-twI
+vIa
+aev
+aev
 aev
 qSB
 twI
@@ -260595,7 +260534,7 @@ vIa
 vIa
 vIa
 vIa
-aUc
+vIa
 vIa
 vIa
 aUc
@@ -260980,24 +260919,24 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-aUc
-twI
+vIa
+aev
+aev
 twI
 qSB
 twI
 aev
 qSB
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
-aUc
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
+vIa
 vIa
 vIa
 aUc
@@ -261382,11 +261321,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-aUc
+vIa
+twI
 twI
 clE
 qSB
@@ -261784,11 +261723,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
 vIa
 vIa
-fDQ
+vIa
+hyf
 twI
 clE
 qSB
@@ -262186,11 +262125,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 qSB
-aUc
+twI
 twI
 clE
 hyf
@@ -262588,11 +262527,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 qSB
-aUc
+twI
 clE
 qSB
 twI
@@ -262990,11 +262929,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 twI
-aUc
+twI
 twI
 qSB
 twI
@@ -263392,11 +263331,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 aev
-aUc
+twI
 clE
 twI
 twI
@@ -263794,11 +263733,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 aev
-aUc
+twI
 clE
 aev
 clE
@@ -264196,11 +264135,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 clE
-aUc
+twI
 clE
 aev
 clE
@@ -264598,11 +264537,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 clE
-aUc
+twI
 twI
 clE
 clE
@@ -265000,11 +264939,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 twI
-aUc
+twI
 twI
 clE
 clE
@@ -265402,11 +265341,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 aev
-aUc
+twI
 clE
 twI
 clE
@@ -265804,11 +265743,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 twI
-aUc
+twI
 clE
 aev
 clE
@@ -266206,11 +266145,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 clE
-aUc
+twI
 aev
 twI
 twI
@@ -266608,11 +266547,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 clE
-aUc
+twI
 aev
 clE
 clE
@@ -267010,11 +266949,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
 aUc
+vIa
 vIa
 clE
-aUc
+twI
 twI
 clE
 twI
@@ -267412,11 +267351,11 @@ vIa
 vIa
 vIa
 vIa
-vIa
+aUc
 vIa
 vIa
 clE
-aUc
+twI
 twI
 clE
 clE
