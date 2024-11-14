@@ -3578,6 +3578,7 @@
 #include "modular_azurepeak\code\datums\mind.dm"
 #include "modular_azurepeak\code\game\area\areas.dm"
 #include "modular_azurepeak\code\game\objects\effects\temporary_visuals\miracles.dm"
+#include "modular_azurepeak\code\game\objects\effects\temporary_visuals\music.dm"
 #include "modular_azurepeak\code\game\objects\items\gwstrap.dm"
 #include "modular_azurepeak\code\game\objects\items\mundanities.dm"
 #include "modular_azurepeak\code\game\objects\items\spellbooks.dm"
