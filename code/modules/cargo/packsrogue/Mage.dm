@@ -34,6 +34,16 @@
 	cost = 55
 	contains = list(/obj/item/roguegem/yellow)
 
+/datum/supply_pack/rogue/Mage/sdagger
+	name = "Silver Dagger"
+	cost = 100
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver)
+
+/datum/supply_pack/rogue/Mage/manapowder
+	name = "Mana Powder"
+	cost = 25
+	contains = list(/obj/item/reagent_containers/powder/mana)
+
 /datum/supply_pack/rogue/Mage/scrolls
 	name = "Scrolls"
 	cost = 2
