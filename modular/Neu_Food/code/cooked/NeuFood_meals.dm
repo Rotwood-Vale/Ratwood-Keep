@@ -386,7 +386,9 @@
 				return FALSE
 
 			mill.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
-			new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
+			if (istype(src, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated))
+				new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/plated(loc)
+			else new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
 			qdel(src)
 		else
 			mill.icon_state = "peppermill"
@@ -409,6 +411,20 @@
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	faretype = FARE_LAVISH
 	portable = FALSE
+	experimental_inhand = FALSE
+	w_class = WEIGHT_CLASS_BULKY
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	trash = /obj/item/cooking/platter
+	rotprocess = SHELFLIFE_LONG
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/plated
+	icon_state = "roastchicken_plated"
+	item_state = "plate_food"
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	faretype = FARE_LAVISH
+	portable = FALSE
+	color = "#ffc0c0"
 	experimental_inhand = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
