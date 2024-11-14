@@ -51,6 +51,50 @@
 		if("idle")
 			return pick('sound/vo/mobs/chikn/idle (1).ogg','sound/vo/mobs/chikn/idle (2).ogg','sound/vo/mobs/chikn/idle (3).ogg','sound/vo/mobs/chikn/idle (4).ogg','sound/vo/mobs/chikn/idle (5).ogg','sound/vo/mobs/chikn/idle (6).ogg')
 
+/mob/living/simple_animal/hostile/retaliate/rogue/chicken/simple_limb_hit(zone)
+	if(!zone)
+		return ""
+	switch(zone)
+		if(BODY_ZONE_PRECISE_R_EYE)
+			return "head"
+		if(BODY_ZONE_PRECISE_L_EYE)
+			return "head"
+		if(BODY_ZONE_PRECISE_NOSE)
+			return "beak"
+		if(BODY_ZONE_PRECISE_MOUTH)
+			return "beak"
+		if(BODY_ZONE_PRECISE_SKULL)
+			return "head"
+		if(BODY_ZONE_PRECISE_EARS)
+			return "head"
+		if(BODY_ZONE_PRECISE_NECK)
+			return "neck"
+		if(BODY_ZONE_PRECISE_L_HAND)
+			return "wing"
+		if(BODY_ZONE_PRECISE_R_HAND)
+			return "wing"
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			return "leg"
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			return "leg"
+		if(BODY_ZONE_CHEST)
+			return "body"
+		if(BODY_ZONE_PRECISE_STOMACH)
+			return "body"
+		if(BODY_ZONE_PRECISE_GROIN)
+			return "body"
+		if(BODY_ZONE_HEAD)
+			return "head"
+		if(BODY_ZONE_R_LEG)
+			return "leg"
+		if(BODY_ZONE_L_LEG)
+			return "leg"
+		if(BODY_ZONE_R_ARM)
+			return "wing"
+		if(BODY_ZONE_L_ARM)
+			return "wing"
+	return ..()
+
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/Initialize()
 	. = ..()
 	if(!body_color)

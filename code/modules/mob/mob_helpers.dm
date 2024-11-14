@@ -70,15 +70,15 @@
 	var/zone_ace_mod = 1
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			zone_ace_mod = 0.3
+			zone_ace_mod = 0.25
 		if(BODY_ZONE_PRECISE_L_EYE)
-			zone_ace_mod = 0.3
+			zone_ace_mod = 0.25
 		if(BODY_ZONE_PRECISE_NOSE)
 			zone_ace_mod = 0.3
 		if(BODY_ZONE_PRECISE_MOUTH)
 			zone_ace_mod = 0.7
 		if(BODY_ZONE_PRECISE_SKULL)
-			zone_ace_mod = 0.9
+			zone_ace_mod = 0.85
 		if(BODY_ZONE_PRECISE_EARS)
 			zone_ace_mod = 0.15
 		if(BODY_ZONE_PRECISE_NECK)
@@ -88,11 +88,11 @@
 		if(BODY_ZONE_PRECISE_R_HAND)
 			zone_ace_mod = 0.6
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			zone_ace_mod = 0.55
+			zone_ace_mod = 0.45
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			zone_ace_mod = 0.55
+			zone_ace_mod = 0.45
 		if(BODY_ZONE_PRECISE_GROIN)
-			zone_ace_mod = 0.75
+			zone_ace_mod = 0.65
 		if(BODY_ZONE_PRECISE_STOMACH)
 			zone_ace_mod = 0.9
 		if(BODY_ZONE_PRECISE_R_INHAND)
@@ -168,6 +168,42 @@
 		if(BODY_ZONE_PRECISE_L_INHAND)
 			facing_zone = BODY_ZONE_FACING_L_ARM
 	return facing_zone
+
+///Convert a PRECISE ZONE into the BODY_ZONE
+/proc/check_subzone(zone)
+	if(!zone)
+		return FALSE
+	switch(zone)
+		if(BODY_ZONE_PRECISE_R_EYE)
+			return TRUE
+		if(BODY_ZONE_PRECISE_L_EYE)
+			return TRUE
+		if(BODY_ZONE_PRECISE_NOSE)
+			return TRUE
+		if(BODY_ZONE_PRECISE_MOUTH)
+			return TRUE
+		if(BODY_ZONE_PRECISE_SKULL)
+			return TRUE
+		if(BODY_ZONE_PRECISE_EARS)
+			return TRUE
+		if(BODY_ZONE_PRECISE_NECK)
+			return TRUE
+		if(BODY_ZONE_PRECISE_L_HAND)
+			return TRUE
+		if(BODY_ZONE_PRECISE_R_HAND)
+			return TRUE
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			return TRUE
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			return TRUE
+		if(BODY_ZONE_PRECISE_GROIN)
+			return TRUE
+		if(BODY_ZONE_PRECISE_STOMACH)
+			return TRUE
+		else
+			return FALSE
+
+
 /**
   * Convert random parts of a passed in message to stars
   *

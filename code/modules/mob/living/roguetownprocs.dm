@@ -138,25 +138,34 @@
 	var/tohit = rand(1,100)
 	if(tohit <= chance2acehit)
 		if(user.client?.prefs.showrolls)
-			to_chat(user, span_greentext("Good Hit!! Rolled [tohit] against [chance2acehit]%"))
+			var/subzone = check_subzone(zone)
+			if(subzone)
+				to_chat(user, span_greentext("Good Hit!!"))
+			if(GLOB.Debug2)
+				if(!subzone)
+					to_chat(user, span_nicegreen("Hit!"))
+				to_chat(user, span_smallgreen("Rolled [tohit] against [chance2acehit]%"))
 		hit = "Hit"
 		return list(zone, hit)
 	else
 		if(tohit <= chance2hit)
-			if(user.client?.prefs.showrolls)
-				to_chat(user, span_nicegreen("Hit! Rolled [tohit] against [chance2hit]%"))
+			if(user.client?.prefs.showrolls && GLOB.Debug2)
+				to_chat(user, span_nicegreen("Hit!"))
+				to_chat(user, span_smallgreen("Rolled [tohit] against [chance2hit]%"))
 			hit = "Hit"
 			zone = check_zone(zone)
 			return list(zone, hit)
 		else
 			if(user.client?.prefs.showrolls)
-				to_chat(user, span_warning("Missed!! Rolled [tohit] against [chance2hit]%"))
+				to_chat(user, span_warning("I Missed!"))
+				if(GLOB.Debug2)
+					to_chat(user, span_smallgreen("Rolled [tohit] against [chance2hit]%"))
 			user.aftermiss()
 			hit = "Miss"
 			zone = check_zone(zone)
 			return list(zone, hit)
 
-/proc/simple_accuracy_check(zone, mob/living/user, mob/living/target, datum/intent/used_intent)
+/proc/simple_accuracy_check(zone, mob/living/simple_animal/user, mob/living/target, datum/intent/used_intent)
 	var/hit = "Hit"
 	used_intent = user.used_intent
 	if(!zone)
@@ -185,21 +194,23 @@
 	chance2hit = CLAMP((round(chance2hit)), 0, 100)					//Ability to hit the target
 	var/tohit = rand(1,100)
 	if(tohit <= chance2acehit)
-		if(target.client?.prefs.showrolls)
-			target.visible_message(span_boldwarning("[user] cleanly hit you!! Rolled [tohit] against [chance2acehit]%"))
+		if(GLOB.Debug2)
+			to_chat(target,span_danger("[user] cleanly hit me!! ") + span_warning("Rolled [tohit] against [chance2acehit]%"))
 		hit = "Hit"
 		return list(zone, hit)
 	else
 		if(tohit <= chance2hit)
-			if(user.client?.prefs.showrolls)
-				target.visible_message(span_warning("[user] hit you! Rolled [tohit] against [chance2hit]%"))
+			if(GLOB.Debug2)
+				to_chat(target, span_smallred("[user] hit me! ") + span_warning("Rolled [tohit] against [chance2hit]%"))
 			hit = "Hit"
 			zone = check_zone(zone)
 			return list(zone, hit)
 		else
-			if(user.client?.prefs.showrolls)
-				target.visible_message(span_warning("[user] missed!! Rolled [tohit] against [chance2hit]%")) ///DEBUGGING FIELD
-			user.aftermiss()
+			target.visible_message(span_warning("[user] missed!"))
+			if(GLOB.Debug2)
+				to_chat(target, span_warning("Rolled [tohit] against [chance2hit]%"))
+			playsound(get_turf(user), pick(user.attack_sound), 100, FALSE)
+			playsound(get_turf(user), pick(used_intent.miss_sound), 100, FALSE)
 			hit = "Miss"
 			zone = check_zone(zone)
 			return list(zone, hit)
@@ -333,26 +344,37 @@
 	var/tohit = rand(1,100)
 	if(tohit <= chance2acehit)
 		if(user.client?.prefs.showrolls)
-			to_chat(user, span_greentext("Good Hit!! Rolled [tohit] against [chance2acehit]%"))
+			var/subzone = check_subzone(zone)
+			if(subzone)
+				to_chat(user, span_greentext("Good Hit!!"))
+			if(GLOB.Debug2)
+				if(!subzone)
+					to_chat(user, span_nicegreen("Hit!"))
+				to_chat(user, span_smallgreen("Rolled [tohit] against [chance2acehit]%"))
 		hit = "Hit"
 		return list(zone, hit)
 	else
 		if(tohit <= chance2hit)
-			if(user.client?.prefs.showrolls)
-				to_chat(user, span_nicegreen("Hit! Rolled [tohit] against [chance2hit]%"))
+			if(user.client?.prefs.showrolls && GLOB.Debug2)
+				to_chat(user, span_nicegreen("Hit!"))
+				to_chat(user, span_smallgreen("Rolled [tohit] against [chance2hit]%"))
 			hit = "Hit"
 			zone = check_zone(zone)
 			return list(zone, hit)
 		else
 			if(tohit <= scatterhit)
 				if(user.client?.prefs.showrolls)
-					to_chat(user, span_nicegreen("Barely Hit! Rolled [tohit] against [scatterhit]%"))
+					to_chat(user, span_smallgreen("I managed to hit them."))
+					if(GLOB.Debug2)
+						to_chat(user, span_smallgreen("Rolled [tohit] against [scatterhit]%"))
 				hit = "Hit"
 				zone = zone_simpmob_target(zone)
 				return list(zone, hit)
 			else
 				if(user.client?.prefs.showrolls)
-					to_chat(user, span_warning("Missed!! Rolled [tohit] against [chance2hit]%"))
+					to_chat(user, span_warning("Missed!!"))
+					if(GLOB.Debug2)
+						to_chat(user, span_smallgreen("Rolled [tohit] against [chance2hit]%"))
 				hit = "Miss"
 				zone = check_zone(zone)
 				return list(zone, hit)

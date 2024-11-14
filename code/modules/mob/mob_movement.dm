@@ -434,6 +434,8 @@
 	var/next_in_line
 	switch(mob.zone_selected)
 		if(BODY_ZONE_PRECISE_R_EYE)
+			next_in_line = BODY_ZONE_PRECISE_L_EYE
+		if(BODY_ZONE_PRECISE_L_EYE)
 			next_in_line = BODY_ZONE_PRECISE_NOSE
 		else
 			next_in_line = BODY_ZONE_PRECISE_R_EYE

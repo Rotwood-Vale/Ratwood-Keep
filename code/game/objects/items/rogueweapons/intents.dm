@@ -345,7 +345,7 @@
 	canparry = TRUE
 	blade_class = BCLASS_PUNCH
 	miss_text = "swings a fist at the air!"
-	miss_sound = "punchwoosh"
+	miss_sound = PUNCHWOOSH
 	item_d_type = "blunt"
 
 /datum/intent/unarmed/punch/rmb_ranged(atom/target, mob/user)
@@ -444,6 +444,8 @@
 	swingdelay = 0
 	candodge = TRUE
 	canparry = TRUE
+	miss_text = "thrusts their head at nothing!"
+	miss_sound = PUNCHWOOSH
 	item_d_type = "blunt"
 
 /datum/intent/simple/claw
@@ -459,6 +461,7 @@
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
+	miss_sound = BLADEWOOSH_SMALL
 	item_d_type = "slash"
 
 /datum/intent/simple/bite
@@ -473,4 +476,6 @@
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
+	miss_text = "bites the air!"
+	miss_sound = PUNCHWOOSH
 	item_d_type = "stab"

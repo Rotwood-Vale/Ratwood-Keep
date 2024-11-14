@@ -68,3 +68,47 @@
 	. = ..()
 	if(!.)
 		return eat_bodies()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/simple_limb_hit(zone)
+	if(!zone)
+		return ""
+	switch(zone)
+		if(BODY_ZONE_PRECISE_R_EYE)
+			return "eye"
+		if(BODY_ZONE_PRECISE_L_EYE)
+			return "eye"
+		if(BODY_ZONE_PRECISE_NOSE)
+			return "snout"
+		if(BODY_ZONE_PRECISE_MOUTH)
+			return "jaw"
+		if(BODY_ZONE_PRECISE_SKULL)
+			return "head"
+		if(BODY_ZONE_PRECISE_EARS)
+			return "head"
+		if(BODY_ZONE_PRECISE_NECK)
+			return "neck"
+		if(BODY_ZONE_PRECISE_L_HAND)
+			return "hand"
+		if(BODY_ZONE_PRECISE_R_HAND)
+			return "hand"
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			return "foot"
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			return "foot"
+		if(BODY_ZONE_CHEST)
+			return "body"
+		if(BODY_ZONE_PRECISE_STOMACH)
+			return "stomach"
+		if(BODY_ZONE_PRECISE_GROIN)
+			return "tail"
+		if(BODY_ZONE_HEAD)
+			return "head"
+		if(BODY_ZONE_R_LEG)
+			return "leg"
+		if(BODY_ZONE_L_LEG)
+			return "leg"
+		if(BODY_ZONE_R_ARM)
+			return "arm"
+		if(BODY_ZONE_L_ARM)
+			return "arm"
+	return ..()

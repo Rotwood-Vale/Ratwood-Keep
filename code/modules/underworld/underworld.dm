@@ -184,6 +184,57 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 /mob/living/simple_animal/hostile/rogue/dragger/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE
 
+/mob/living/simple_animal/hostile/rogue/dragger/simple_limb_hit(zone)
+	if(!zone)
+		return ""
+	switch(zone)
+		if(BODY_ZONE_PRECISE_R_EYE)
+			return "head"
+		if(BODY_ZONE_PRECISE_L_EYE)
+			return "head"
+		if(BODY_ZONE_PRECISE_NOSE)
+			return "head"
+		if(BODY_ZONE_PRECISE_MOUTH)
+			return "head"
+		if(BODY_ZONE_PRECISE_SKULL)
+			return "head"
+		if(BODY_ZONE_PRECISE_EARS)
+			return "head"
+		if(BODY_ZONE_PRECISE_NECK)
+			return "neck"
+		if(BODY_ZONE_PRECISE_L_HAND)
+			return "hand"
+		if(BODY_ZONE_PRECISE_R_HAND)
+			return "hand"
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			return "tail"
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			return "tail"
+		if(BODY_ZONE_CHEST)
+			return "body"
+		if(BODY_ZONE_PRECISE_STOMACH)
+			return "body"
+		if(BODY_ZONE_PRECISE_GROIN)
+			return "body"
+		if(BODY_ZONE_PRECISE_R_INHAND)
+			return "body"
+		if(BODY_ZONE_PRECISE_L_INHAND)
+			return "body"
+		if(BODY_ZONE_HEAD)
+			return "head"
+		if(BODY_ZONE_R_LEG)
+			return "tail"
+		if(BODY_ZONE_L_LEG)
+			return "tail"
+		if(BODY_ZONE_R_ARM)
+			return "arm"
+		if(BODY_ZONE_L_ARM)
+			return "arm"
+		if(BODY_ZONE_CHEST)
+			return "chest"
+
+	return ..()
+
 /mob/living/simple_animal/hostile/rogue/dragger/taunted(mob/user)
 	GiveTarget(user)
 	return

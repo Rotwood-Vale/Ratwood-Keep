@@ -355,53 +355,11 @@
 		I.take_damage(1, BRUTE, I.d_type)
 	return TRUE
 
-/mob/living/proc/simple_limb_hit(zone)
+/mob/living/proc/simple_limb_hit(zone, mob/living/simple_animal/M)
 	if(!zone)
 		return ""
-	switch(zone)
-		if(BODY_ZONE_HEAD)
-			return "body"
-		if(BODY_ZONE_CHEST)
-			return "body"
-		if(BODY_ZONE_R_LEG)
-			return "body"
-		if(BODY_ZONE_L_LEG)
-			return "body"
-		if(BODY_ZONE_R_ARM)
-			return "body"
-		if(BODY_ZONE_L_ARM)
-			return "body"
-		if(BODY_ZONE_PRECISE_R_EYE)
-			return "body"
-		if(BODY_ZONE_PRECISE_L_EYE)
-			return "body"
-		if(BODY_ZONE_PRECISE_NOSE)
-			return "body"
-		if(BODY_ZONE_PRECISE_MOUTH)
-			return "body"
-		if(BODY_ZONE_PRECISE_SKULL)
-			return "body"
-		if(BODY_ZONE_PRECISE_EARS)
-			return "body"
-		if(BODY_ZONE_PRECISE_NECK)
-			return "body"
-		if(BODY_ZONE_PRECISE_L_HAND)
-			return "body"
-		if(BODY_ZONE_PRECISE_R_HAND)
-			return "body"
-		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "body"
-		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "body"
-		if(BODY_ZONE_PRECISE_STOMACH)
-			return "body"
-		if(BODY_ZONE_PRECISE_GROIN)
-			return "body"
-		if(BODY_ZONE_PRECISE_R_INHAND)
-			return "body"
-		if(BODY_ZONE_PRECISE_L_INHAND)
-			return "body"
-	return "body"
+	zone = M.simple_limb_hit(zone)
+	return zone
 
 /obj/item/proc/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	return
