@@ -49,7 +49,7 @@
 	def_zone = projacc[1]
 	var/goodhit = projacc[2]
 	if(goodhit == "Miss")
-		return P.return_pathing_turfs_in_moves()
+		return BULLET_ACT_MISS
 
 	var/armor = run_armor_check(def_zone, P.flag, "", "",P.armor_penetration, damage = P.damage)
 

@@ -407,7 +407,7 @@
 	return
 
 /mob/living/attacked_by(obj/item/I, mob/living/user)
-	var/list/accuracy_check = accuracy_check(user.zone_selected, user, src, I)
+	var/list/accuracy_check = accuracy_check(user.zone_selected, user, src, I, I.associated_skill, user.used_intent)
 	var/goodhit = accuracy_check[2]
 	if(goodhit == "Miss")
 		return FALSE
