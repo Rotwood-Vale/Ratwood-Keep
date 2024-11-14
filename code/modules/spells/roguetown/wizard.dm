@@ -1065,7 +1065,7 @@
 
 /obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets,mob/user = usr)
 	var/turf/target_turf = get_turf(targets[1])
-		new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
+	new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
 	return TRUE
 
 
