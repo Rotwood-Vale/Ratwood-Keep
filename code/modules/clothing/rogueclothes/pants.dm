@@ -114,6 +114,32 @@
 	icon_state = "leathertrou"
 	resistance_flags = FIRE_PROOF
 
+/obj/item/clothing/under/roguetown/heavy_leather_pants
+	name = "heavy leather trousers"
+	desc = "Thick hide cut and sewn into a pair of very protective trousers. The dense leather can \
+	turn away errant chops."
+	gender = PLURAL
+	icon_state = "roguepants"
+	item_state = "roguepants"
+	sewrepair = TRUE
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	max_integrity = 250
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+	resistance_flags = FIRE_PROOF
+
+/obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
+	name = "heavy leather shorts"
+	desc = "A thick hide pair of shorts, favored by some for their ease of motion in spite of \
+	being less protective than full trousers."
+	icon_state = "rogueshorts"
+	item_state = "rogueshorts"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	body_parts_covered = GROIN
+
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
 	icon_state = "leathertrou"

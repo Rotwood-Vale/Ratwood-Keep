@@ -413,6 +413,38 @@
 	sellprice = 25
 	armor_class = ARMOR_CLASS_LIGHT
 
+/obj/item/clothing/suit/roguetown/armor/leather/heavy
+	name = "heavy leather armor"
+	desc = "A heavy steerhide jerkin with enough body to stand on its own. It forms a stiff, protective mantle \
+	for its wearer, shielding from blows and weather alike."
+	icon_state = "roguearmor"
+	item_state = "roguearmor"
+	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	max_integrity = 300
+	sellprice = 25
+
+/obj/item/clothing/suit/roguetown/armor/leather/heavy/belted
+	name = "belted heavy leather armor"
+	desc = "A heavy steerhide jerkin bearing a supplementary utility belt."
+	icon_state = "roguearmor_belt"
+	item_state = "roguearmor_belt"
+	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	max_integrity = 300
+	sellprice = 25
+
+/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
+	name = "armored leather coat"
+	desc = "A heavy steerhide jerkin that reaches past the hips and better protects the vitals."
+	icon_state = "roguearmor_coat"
+	item_state = "roguearmor_coat"
+	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	max_integrity = 300
+	sellprice = 25
+
 /obj/item/clothing/suit/roguetown/armor/leather/bikini
 	name = "leather bikini"
 	desc = "Flexible cowhide armor. Lightweight, better than nothing. Now in tasteful bikini shape."
