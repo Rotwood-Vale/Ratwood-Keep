@@ -378,11 +378,11 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 /client/proc/toggle_aghost_invis()
 	set category = "GameMaster"
-	set name = "Aghost (Toggle Invisibility)"
+	set name = "Aghost Toggle-Invis"
 	if (!holder)
 		return
 	aghost_toggle = !aghost_toggle
-	to_chat(src, aghost_toggle ? "Aghosting will now turn your mob invisible." : "Aghost will no longer turn your mob invisible.")
+	to_chat(src, "Aghosting [aghost_toggle ? "will now" : "will no longer"] turn your living mob invisible.")
 
 /client/proc/admin_ghost()
 	set category = "GameMaster"

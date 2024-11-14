@@ -60,3 +60,10 @@
 /obj/item/roguestatue/iron/Initialize()
 	. = ..()
 	icon_state = "istatue[pick(1,2)]"
+
+/obj/item/roguestatue/iron/deformed
+	name = "deformed iron statue"
+	desc = "Theres something strange about this statue..."
+	icon_state = "istatue1"
+	smeltresult = /obj/item/rogueore/iron
+	sellprice = 10

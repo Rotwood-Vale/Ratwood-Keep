@@ -3,10 +3,10 @@
 	flag = ARTIFICER
 	department_flag = YEOMEN
 	faction = "Station"
-	total_positions = 3
+	total_positions = 2
 	spawn_positions = 2
 
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
 	tutorial = "Hidden in the depths are ancient mechanical secrets, something your creed has taken it upon themselves to studying and understanding. To some, these mechanical wonders may seem like magic, but you know their inner workings as well as you do stone, down to the last cog."
@@ -29,11 +29,11 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	head = /obj/item/clothing/head/roguetown/hatfur
 	if(prob(50))

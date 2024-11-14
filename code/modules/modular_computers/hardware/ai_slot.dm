@@ -7,7 +7,7 @@
 	device_type = MC_AI
 
 	var/obj/item/aicard/stored_card = null
-	var/locked = FALSE
+	locked = FALSE
 
 /obj/item/computer_hardware/ai_slot/handle_atom_del(atom/A)
 	if(A == stored_card)

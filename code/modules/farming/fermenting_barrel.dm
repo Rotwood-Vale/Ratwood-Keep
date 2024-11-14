@@ -11,6 +11,7 @@
 	drag_slowdown = 2
 	var/open = FALSE
 	var/speed_multiplier = 1 //How fast it distills. Defaults to 100% (1.0). Lower is better.
+	metalizer_result = /obj/item/reagent_containers/glass/bucket/pot
 
 /obj/structure/fermenting_barrel/Initialize()
 	// Bluespace beakers, but without the portability or efficiency in circuits.

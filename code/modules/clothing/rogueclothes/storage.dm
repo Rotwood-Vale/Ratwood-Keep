@@ -16,7 +16,7 @@
 	sewrepair = TRUE
 	fiber_salvage = TRUE
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 	var/datum/wound/artery/artery_wound
 
 /obj/item/storage/belt/rogue/ComponentInitialize()
@@ -255,8 +255,8 @@
 	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
 
 /obj/item/storage/belt/rogue/pouch/ammo
-	name = "rune ball pouch"
-	desc = "Usually used for holding runelock balls."
+	name = "sphere pouch"
+	desc = "Usually used for holding runelock sphreres."
 
 /obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
 	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
@@ -267,7 +267,7 @@
 	sewrepair = TRUE
 	fiber_salvage = TRUE
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/storage/backpack/rogue/satchel
 	name = "satchel"

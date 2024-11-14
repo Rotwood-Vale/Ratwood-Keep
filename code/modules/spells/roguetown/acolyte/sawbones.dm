@@ -137,54 +137,56 @@
 		return FALSE
 	return TRUE
 
-
-
 /obj/effect/proc_holder/spell/targeted/debride/cast(list/targets, mob/living/user)
-	if(isliving(targets[1]) && targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
-		testing("curerot1")
-		var/mob/living/target = targets[1]
-		if(target == user)
-			return FALSE
-		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-		var/has_rot = was_zombie
-		if(!has_rot && iscarbon(target))
-			var/mob/living/carbon/stinky = target
-			for(var/obj/item/bodypart/bodypart as anything in stinky.bodyparts)
-				if(bodypart.rotted || bodypart.skeletonized)
-					has_rot = TRUE
-					break
-		if(!has_rot)
-			to_chat(user, span_warning("Nothing happens."))
-			return FALSE
-		testing("curerot2")
-		if(was_zombie)
-			if(was_zombie.become_rotman && prob(10)) //10% chance to NOT become a rotman
-				was_zombie.become_rotman = FALSE
-			target.mind.remove_antag_datum(/datum/antagonist/zombie)
-			target.Unconscious(20 SECONDS)
-			target.emote("breathgasp")
-			target.Jitter(100)
-			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
-				adjust_playerquality(unzombification_pq, user.ckey)
-				ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, "[type]")
-		var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
-		if(rot)
-			rot.amount = 0
-		if(iscarbon(target))
-			var/mob/living/carbon/stinky = target
-			for(var/obj/item/bodypart/rotty in stinky.bodyparts)
-				rotty.rotted = FALSE
-				rotty.skeletonized = FALSE
-				rotty.update_limb()
-				rotty.update_disabled()
-		target.update_body()
-		if(!HAS_TRAIT(target, TRAIT_ROTMAN))
-			target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
-		else
-			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
-		return TRUE
-	to_chat(user, span_warning("I need too prime their liver first"))
-	return FALSE
+
+	if(!isliving(targets[1]))
+		revert_cast()
+		return FALSE
+
+	if(!targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
+		to_chat(user, span_warning("I need too prime their liver first"))
+		return FALSE
+
+	var/mob/living/target = targets[1]
+	
+	if(target == user)
+		return FALSE
+
+	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
+	var/has_rot = was_zombie
+
+	if(!has_rot)
+		to_chat(user, span_warning("Nothing happens."))
+		return FALSE
+
+	testing("curerot2")
+
+	if(was_zombie)
+		target.mind.remove_antag_datum(/datum/antagonist/zombie)
+		target.Unconscious(20 SECONDS)
+		target.emote("breathgasp")
+		target.Jitter(100)
+		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
+			adjust_playerquality(unzombification_pq, user.ckey)
+			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
+	
+	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
+
+	if(rot)
+		rot.amount = 0
+
+	if(iscarbon(target))
+		var/mob/living/carbon/stinky = target
+		for(var/obj/item/bodypart/rotty in stinky.bodyparts)
+			rotty.rotted = FALSE
+			rotty.skeletonized = FALSE
+			rotty.update_limb()
+			rotty.update_disabled()
+
+	target.update_body()
+	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+
+	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/debride/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
@@ -247,6 +249,17 @@
 		target.emote("scream")
 		return TRUE
 	return FALSE
+
+/obj/effect/proc_holder/spell/targeted/purge/cast_check(skipcharge = 0,mob/user = usr)
+	if(!..())
+		return FALSE
+	var/found = null
+	for(var/obj/structure/bed/rogue/S in oview(2, user))
+		found = S
+	if(!found)
+		to_chat(user, span_warning("I need to lay them on a bed"))
+		return FALSE
+	return TRUE
 
 /obj/item/organ/heart/weak
 	name = "weakened heart"
@@ -1183,7 +1196,6 @@
 	possible_item_intents = list(/datum/intent/use)
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH | ITEM_SLOT_HIP
@@ -1238,7 +1250,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 3
-	obj_flags = null
 	firefuel = 15 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
@@ -1487,21 +1498,21 @@
 /datum/crafting_recipe/roguetown/impsaw
 	name = "improvised saw"
 	result = /obj/item/rogueweapon/surgery/saw/improv
-	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 3, /obj/item/grown/log/tree/small = 1,)
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 1, /obj/item/grown/log/tree/stick = 1,)
 	craftdiff = 1
 	skillcraft = /datum/skill/craft/crafting
 
 /datum/crafting_recipe/roguetown/impretra
 	name = "improvised clamp"
 	result = /obj/item/rogueweapon/surgery/hemostat/improv
-	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 2, /obj/item/grown/log/tree/stick = 2,)
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2,)
 	craftdiff = 1
 	skillcraft = /datum/skill/craft/crafting
 
 /datum/crafting_recipe/roguetown/imphemo
 	name = "improvised retractor"
 	result = /obj/item/rogueweapon/surgery/retractor/improv
-	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 2, /obj/item/grown/log/tree/stick = 2,)
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2,)
 	craftdiff = 1
 	skillcraft = /datum/skill/craft/crafting
 
@@ -1515,7 +1526,7 @@
 /*/datum/crafting_recipe/roguetown/splint
 	name = "splint"
 	result = /obj/item/splint
-	reqs = list(/obj/item/natural/cloth = 2, /obj/item/grown/log/tree/stick = 2,)
+	reqs = list(/obj/item/natural/cloth = 1, /obj/item/grown/log/tree/stick = 1,)
 	craftdiff = 2
 	skillcraft = /datum/skill/misc/treatment*/
 

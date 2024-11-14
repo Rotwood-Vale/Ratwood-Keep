@@ -27,6 +27,7 @@
 	var/stained = FALSE
 	var/night_variants = FALSE
 	leanable = TRUE
+	metalizer_result = /obj/structure/roguewindow/openclose/reinforced
 
 /obj/structure/roguewindow/Initialize()
 	update_icon()
@@ -75,6 +76,8 @@
 	base_state = "reinforcedwindow"
 	max_integrity = 800
 	integrity_failure = 0.1
+	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/roguewindow/openclose/Initialize()
 	lockdir = dir
@@ -269,6 +272,8 @@
 	max_integrity = 800
 	integrity_failure = 0.1
 	night_variants = FALSE
+	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/roguewindow/curtain
 	icon_state = "window-solid-dir"

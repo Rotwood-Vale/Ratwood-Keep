@@ -129,6 +129,20 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
+/obj/item/clothing/neck/roguetown/leather
+	name = "hardened leather gorget"
+	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering."
+	icon_state = "lgorget"
+	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 150
+	slot_flags = ITEM_SLOT_NECK
+	body_parts_covered = NECK
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST) //This one will help against chopping
+	blocksound = SOFTHIT
+	sewrepair = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+
 /obj/item/clothing/neck/roguetown/gorget/prisoner/Initialize()
 	. = ..()
 	name = "cursed collar"
@@ -140,6 +154,11 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
+
+/obj/item/clothing/neck/roguetown/gorget/alt
+	name = "vreccale"
+	desc = "Nature knows not of mercy."
+	icon_state = "iwolfcollar"
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"

@@ -90,7 +90,7 @@
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
 			var/list/skin_tones = dna.species.get_skin_list()
 			var/skin_tone_seen = "incomprehensible"
-			if(!HAS_TRAIT(src, TRAIT_ROTMAN) && skin_tone)
+			if(skin_tone)
 				//AGGHHHHH this is stupid
 				for(var/tone in skin_tones)
 					if(src.skin_tone == skin_tones[tone])
@@ -278,8 +278,11 @@
 
 	//handcuffed?
 	if(handcuffed)
-		. += "<A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'><span class='warning'>[m1] tied up with \a [handcuffed]!</span></A>"
-
+		if(user == src)
+			. += "<span class='warning'>[m1] tied up with \a [handcuffed]!</span>"
+		else
+			. += "<A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'><span class='warning'>[m1] tied up with \a [handcuffed]!</span></A>"
+ 
 	if(legcuffed)
 		. += "<A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'><span class='warning'>[m3] \a [legcuffed] around [m2] legs!</span></A>"
 

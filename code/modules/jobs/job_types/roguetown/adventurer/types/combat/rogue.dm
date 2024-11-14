@@ -10,7 +10,6 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/rogue
-	allowed_patrons = list(/datum/patron/divine/xylix, /datum/patron/inhumen/graggar, /datum/patron/inhumen/baotha, /datum/patron/inhumen/matthios)
 
 /datum/outfit/job/roguetown/adventurer/rogue/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -33,7 +32,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(5,6), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, pick(0,1,1), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, pick(0,1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)

@@ -89,12 +89,15 @@
 	base_state = "slamp"
 	brightness = 10.9
 	nightshift_allowed = FALSE
+	plane = GAME_PLANE_UPPER
+	layer = 4.81
 	fueluse = 0
 	bulb_colour = "#58dd90"
 	bulb_power = 0.95
 	max_integrity = 0
 	use_power = NO_POWER_USE
 	pass_flags = LETPASSTHROW
+	smeltresult = /obj/item/ingot/bronze
 
 /obj/machinery/light/roguestreet/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'

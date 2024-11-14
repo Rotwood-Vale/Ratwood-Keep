@@ -28,7 +28,7 @@
 	var/last_shot = 0
 	var/shot_number = 0
 	var/state = EMITTER_UNWRENCHED
-	var/locked = FALSE
+	locked = FALSE
 	var/allow_switch_interact = TRUE
 
 	var/projectile_type = /obj/projectile/beam/emitter

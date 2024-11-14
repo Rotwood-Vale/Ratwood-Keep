@@ -12,7 +12,7 @@
 	active_power_usage = 300
 
 	var/cloud_id = 1
-	var/locked = FALSE
+	locked = FALSE
 	var/breakout_time = 1200
 	var/busy = FALSE
 	var/busy_icon_state

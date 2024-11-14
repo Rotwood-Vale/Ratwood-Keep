@@ -99,7 +99,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/bogguardlate
 	name = "Bogguardlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Bog Master", "Bog Guard")
+	jobspawn_override = list("Warden", "Vanguard")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vagrantlate
@@ -189,11 +189,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bogmaster
-	name = "Bog Master"
+	name = "Warden"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bogguardsman
-	name = "Bog Guard"
+	name = "Vanguard"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/marshal

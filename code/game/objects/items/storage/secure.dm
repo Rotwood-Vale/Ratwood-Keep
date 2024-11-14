@@ -64,7 +64,7 @@
 	return ..()
 
 /obj/item/storage/secure/attack_self(mob/user)
-	var/locked = SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED)
+	locked = SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED)
 	user.set_machine(src)
 	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (locked ? "LOCKED" : "UNLOCKED"))
 	var/message = "Code"

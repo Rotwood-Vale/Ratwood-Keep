@@ -369,4 +369,4 @@
 	/datum/job/roguetown/gatemaster,\
 	/datum/job/roguetown/manorguard,\
 	/datum/job/roguetown/sheriff,\
-	/datum/job/roguetown/guardsman
+	/datum/job/roguetown/citywatch

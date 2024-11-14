@@ -1628,11 +1628,11 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/item/quiver/bolts,
-/obj/item/quiver/bolts,
-/obj/item/quiver/bolts,
-/obj/item/quiver/bolts,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors)
 "mQ" = (
@@ -1758,7 +1758,7 @@
 /area/rogue/indoors)
 "qP" = (
 /obj/structure/rack/rogue,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "qR" = (
@@ -2467,12 +2467,12 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors)
 "Vl" = (

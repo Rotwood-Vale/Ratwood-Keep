@@ -50,7 +50,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/rogueweapon/mace/cudgel
-	beltr = /obj/item/quiver/arrows
+	beltr = /obj/item/ammo_holder/quiver/arrows
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	backpack_contents = list(/obj/item/keyring/gatemaster = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)

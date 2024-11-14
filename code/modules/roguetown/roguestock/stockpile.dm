@@ -3,7 +3,18 @@
 	desc = "Wooden logs cut short for transport."
 	item_type = /obj/item/grown/log/tree/small
 	held_items = list(2, 2)
-	payout_price = 3
+	payout_price = 2
+	withdraw_price = 4
+	transport_fee = 2
+	export_price = 4
+	importexport_amt = 10
+
+/datum/roguestock/stockpile/wood/plank
+	name = "Wood Plank"
+	desc = "Wooden planks ready to be worked."
+	item_type = /obj/item/natural/wood/plank
+	held_items = list(2, 0)
+	payout_price = 4
 	withdraw_price = 5
 	transport_fee = 3
 	export_price = 5
@@ -129,6 +140,17 @@
 	export_price = 15
 	importexport_amt = 5
 	passive_generation = 2
+
+/datum/roguestock/stockpile/cured
+	name = "Cured Leather"
+	desc = "Cured Leather ready to be worked."
+	item_type = /obj/item/natural/hide/cured
+	held_items = list(2, 0)
+	payout_price = 5
+	withdraw_price = 7
+	transport_fee = 1
+	export_price = 7
+	importexport_amt = 10
 
 /datum/roguestock/stockpile/fur
 	name = "Fur"

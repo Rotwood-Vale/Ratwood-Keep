@@ -228,7 +228,7 @@
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
-	if ((bclass = BCLASS_PUNCH) && (user && dam))
+	if ((bclass == BCLASS_PUNCH) && (user && dam))
 		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
 			dam += 15
 	if((bclass in GLOB.cbt_classes) && (zone_precise == BODY_ZONE_PRECISE_GROIN))
@@ -501,11 +501,11 @@
 		break
 	var/static/list/retracting_behaviors = list(
 		TOOL_RETRACTOR,
-		TOOL_CROWBAR,
+		TOOL_IMPROVRETRACTOR,
 	)
 	var/static/list/clamping_behaviors = list(
 		TOOL_HEMOSTAT,
-		TOOL_WIRECUTTER,
+		TOOL_IMPROVHEMOSTAT,
 	)
 	for(var/obj/item/embedded as anything in embedded_objects)
 		if((embedded.tool_behaviour in retracting_behaviors) || embedded.embedding?.retract_limbs)
