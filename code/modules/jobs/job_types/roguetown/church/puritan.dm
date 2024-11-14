@@ -95,7 +95,7 @@
 		)
 		say(pick(torture_lines), spans = list("torture"))
 		src.visible_message(span_warning("[src]'s silver psycross abruptly catches flame, burning away in an instant!"))
-		addtimer(CALLBACK(H, PROC_REF(confess_sins), 2 SECONDS, "antag"))
+		H.confess_sins("antag")
 		qdel(S)
 		return
 	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
@@ -128,7 +128,7 @@
 		)
 		say(pick(faith_lines), spans = list("torture"))
 		src.visible_message(span_warning("[src]'s silver psycross abruptly catches flame, burning away in an instant!"))
-		addtimer(CALLBACK(H, PROC_REF(confess_sins), 2 SECONDS, "patron"))
+		H.confess_sins("patron")
 		qdel(S)
 		return
 	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
