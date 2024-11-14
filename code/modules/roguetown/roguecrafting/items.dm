@@ -437,7 +437,7 @@
 
 /datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
 	name = "upgrade cog"
-	result = /obj/item/cart_upgrade/level_1
+	result = /obj/item/roguegear/wood/basic
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/stone = 1)
 	craftdiff = 2

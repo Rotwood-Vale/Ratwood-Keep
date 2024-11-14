@@ -8,7 +8,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = /obj/item/ingot/bronze
 	slot_flags = ITEM_SLOT_HIP
-	var/obj/item/accepted_power_source = /obj/item/roguegear
+	var/obj/item/accepted_power_source = /obj/item/roguegear/bronze
 	/// This is the amount of charges we get per power source
 	var/charge_per_source = 5
 	var/current_charge = 0
@@ -17,6 +17,8 @@
 	/// Are we misfiring? Important for chain reactions.
 	var/misfiring = FALSE
 	obj_flags_ignore = TRUE
+	/// If this contraption should accept cogs that alter its behaviour
+	var/cog_accept = TRUE
 
 /obj/item/contraption/getonmobprop(tag)
 	. = ..()
@@ -79,9 +81,9 @@
 	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT * 5))
 	to_chat(user, span_info("Oh fuck."))
 	playsound(src, 'sound/misc/bell.ogg', 100)
-	addtimer(CALLBACK(src, PROC_REF(misfire_result)), rand(5, 30))
+	addtimer(CALLBACK(src, PROC_REF(misfire_result), O, user), rand(5, 30))
 
-/obj/item/contraption/proc/misfire_result()
+/obj/item/contraption/proc/misfire_result(obj/O, mob/living/user)
 	misfiring = TRUE
 	explosion(src, light_impact_range = 3, flame_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 	qdel(src)
@@ -92,10 +94,24 @@
 		addtimer(CALLBACK(src, PROC_REF(battery_collapse), O, user), 5)
 
 /obj/item/contraption/attackby(obj/item/I, mob/user, params)
+	var/datum/effect_system/spark_spread/S = new()
+	var/turf/front = get_turf(src)
+	if(istype(I, /obj/item/roguegear/wood) && cog_accept)
+		var/obj/item/roguegear/wood/cog = I
+		if(cog.misfire_modification || cog.misfire_modification == 0)
+			misfire_chance = cog.misfire_modification
+		if(cog.name_prefix)
+			name = "[cog.name_prefix] [initial(name)]"
+		else if(!cog.name_prefix)
+			name = initial(name)
+		qdel(cog)
+		playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
+		shake_camera(user, 1, 1)
+		S.set_up(1, 1, front)
+		S.start()
+		to_chat(user, "<span class='warning'>[cog.name] inserted!</span>")
 	if(istype(I, accepted_power_source))
 		user.changeNext_move(CLICK_CD_FAST)
-		var/datum/effect_system/spark_spread/S = new()
-		var/turf/front = get_turf(src)
 		S.set_up(1, 1, front)
 		S.start()
 		if(current_charge)
@@ -197,7 +213,7 @@
 	shake_camera(user, 1, 1)
 	playsound(src, 'sound/magic/swap.ogg', 100, TRUE)
 	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 2))
-	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)) && skill < 6) //legendary artificers dont misfire
+	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
 		misfire(O, user)
 	return
 
@@ -277,7 +293,7 @@
 	playsound(O, pick('sound/combat/hits/burn (1).ogg','sound/combat/hits/burn (2).ogg'), 100)
 	new /obj/effect/decal/cleanable/ash(turf)
 	O.moveToNullspace()
-	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)) && skill < 6) //legendary artificers dont misfire
+	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
 		misfire(O, user)
 	addtimer(CALLBACK(O, PROC_REF(popcorn_smelt_result), turf), 20)
 	return
@@ -293,6 +309,7 @@
 	misfire_chance = 0
 	sneaky_misfire_chance = 20
 	charge_per_source = 2
+	cog_accept = FALSE
 	var/list/allowed_locks = list(/obj/structure/mineral_door, /obj/structure/closet, /obj/structure/roguemachine/steward, /obj/structure/roguemachine/vendor, /obj/structure/roguemachine/merchantvend)
 	var/stored_lock_id = "artificer"
 	var/stored_lock_hash = 354
