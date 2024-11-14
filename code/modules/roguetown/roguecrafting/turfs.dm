@@ -222,8 +222,8 @@
 /datum/crafting_recipe/roguetown/turfs/tentwall
 	name = "tent wall"
 	result = /turf/closed/wall/mineral/rogue/tent
-	reqs = list(/obj/item/grown/log/tree/stick = 1,
-				/obj/item/natural/cloth = 1)
+	reqs = list(/obj/item/grown/log/tree/stick = 4,
+				/obj/item/natural/cloth = 4)
 	skillcraft = /datum/skill/craft/crafting
 	verbage_simple = "set up"	
 	verbage = "sets up"
@@ -239,8 +239,8 @@
 /datum/crafting_recipe/roguetown/turfs/tentdoor
 	name = "tent door"
 	result = /obj/structure/roguetent
-	reqs = list(/obj/item/grown/log/tree/stick = 1,
-				/obj/item/natural/cloth = 1)
+	reqs = list(/obj/item/grown/log/tree/stick = 2,
+				/obj/item/natural/cloth = 3)
 	skillcraft = /datum/skill/craft/crafting
 	verbage_simple = "set up"
 	verbage = "sets up"
