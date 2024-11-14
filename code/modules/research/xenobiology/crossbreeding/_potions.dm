@@ -98,7 +98,6 @@ Slimecrossing Potions
 		M.mind.store_memory("You are in love with [user].")
 	M.faction |= "[REF(user)]"
 	M.apply_status_effect(STATUS_EFFECT_INLOVE, user)
-	M.add_curse(/datum/curse/baotha, TRUE)
 	qdel(src)
 
 //Pressure potion - Charged Dark Blue

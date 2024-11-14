@@ -139,44 +139,28 @@
 
 //Musket spheres.
 /obj/item/ammo_casing/caseless/rogue/bullet
-	name = "runed sphere"
-	desc = "A small lead sphere. It's been inscribed with countless runes, increasing its stopping power."
+	name = "iron sphere"
+	desc = "A small iron ball, perfectly round. Deadly when projected at very high velocity."
 	projectile_type = /obj/projectile/bullet/reusable/bullet
-	caliber = "runeball"
+	caliber = "small_sphere"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball"
-	dropshrink = 0.5
 	possible_item_intents = list(/datum/intent/use)
 	max_integrity = 0
 	w_class = WEIGHT_CLASS_TINY
 	smeltresult = /obj/item/rogueore/iron
 
 /obj/projectile/bullet/reusable/bullet
-	name = "rune ball"
+	name = "iron sphere"
 	damage = 40
+	armor_penetration = 50
+	speed = 0.6
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "musketball_proj"
+	icon_state = "musketball"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
 	range = 30
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
+	hitsound = 'sound/combat/hits/hi_bolt (2).ogg'
 	embedchance = 100
 	woundclass = BCLASS_STAB
 	flag = "bullet"
-	armor_penetration = 50
-	speed = 0.1
-
-/obj/projectile/bullet/reusable/bullet/on_hit(mob/living/target, blocked = FALSE)
-	. = ..()
-
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf)
-
-		if(W && W.transformed == TRUE)
-			H.adjustFireLoss(25)
-			H.Paralyze(10)
-			H.Stun(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-			to_chat(H, span_userdanger("I'm hit by my BANE!"))

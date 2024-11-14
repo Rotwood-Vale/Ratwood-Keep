@@ -324,20 +324,6 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/storage/belt/rogue/leather/steel
 
-/datum/anvil_recipe/armor/steel/watch_helm
-	name = "Citywatch Helmet (+1 Steel, +1 Coal)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/rogueore/coal)
-	created_item = /obj/item/clothing/head/roguetown/helmet/citywatch
-	craftdiff = 2
-
-/datum/anvil_recipe/armor/steel/watch_arm
-	name = "Citywatch Armour (+2 Steel, +1 Coal)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/rogueore/coal)
-	created_item = /obj/item/clothing/suit/roguetown/armor/citywatch
-	craftdiff = 3
-
 // --------- SILVER -----------
 
 /datum/anvil_recipe/armor/silver/belt
