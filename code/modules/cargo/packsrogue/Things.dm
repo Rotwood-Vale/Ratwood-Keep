@@ -40,6 +40,12 @@
 	cost = 10
 	contains = list(/obj/item/reagent_containers/glass/bottle/waterskin)
 
+/datum/supply_pack/rogue/Things/gwstrap
+	name = "Greatweapon Strap"
+	cost = 15
+	contains = list(/obj/item/gwstrap)
+
+
 /datum/supply_pack/rogue/Things/Lamp
 	name = "Lamptern"
 	cost = 5
@@ -58,17 +64,17 @@
 
 /datum/supply_pack/rogue/Things/ozium
 	name = "Ozium"
-	cost = 5
+	cost = 15
 	contains = list(/obj/item/reagent_containers/powder/ozium)
 
 /datum/supply_pack/rogue/Things/moondust
 	name = "Moon Dust"
-	cost = 10
+	cost = 15
 	contains = list(/obj/item/reagent_containers/powder/moondust)
 
 /datum/supply_pack/rogue/Things/spice
 	name = "Spice"
-	cost = 20
+	cost = 15
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 

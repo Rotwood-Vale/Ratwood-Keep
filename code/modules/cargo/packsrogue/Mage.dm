@@ -54,6 +54,16 @@
 	cost = 10
 	contains = list(/obj/item/spellbook_unfinished)
 
+/datum/supply_pack/rogue/Mage/coolrobes
+	name = "Archmagister's Robes"
+	cost = 5
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/robe)
+
+/datum/supply_pack/rogue/Mage/coolhat
+	name = "Archmagister's Hat"
+	cost = 5
+	contains = list(/obj/item/clothing/head/roguetown/wizhat/gen)
+
 /datum/supply_pack/rogue/Mage/nomag
 	name = "Ring of Nullmagic"
 	cost = 200
