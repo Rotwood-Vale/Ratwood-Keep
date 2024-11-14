@@ -57,6 +57,10 @@
 	name = "Bedhead (Long)"
 	icon_state = "bedhead-long"
 
+/datum/sprite_accessory/hair/head/bedheadlongest
+	name = "Bedhead (Longest)"
+	icon_state = "bedhead-longest"
+
 /datum/sprite_accessory/hair/head/beehive
 	name = "Beehive"
 	icon_state = "beehive"

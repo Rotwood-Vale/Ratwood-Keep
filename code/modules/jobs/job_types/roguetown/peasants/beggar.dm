@@ -18,9 +18,9 @@
 	display_order = JDO_VAGRANT
 	show_in_credits = FALSE
 	can_random = FALSE
-	
+
 	cmode_music = 'sound/music/combat_bum.ogg'
-	
+
 	/// Chance to become a wise beggar, if we still have space for more wise beggars
 	var/wise_chance = 10
 	/// Amount of wise beggars spawned as of now
@@ -42,6 +42,7 @@
 
 /datum/outfit/job/roguetown/vagrant/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.faction += "bums"
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NASTY_EATER, TRAIT_GENERIC)
 	// wise beggar!!!

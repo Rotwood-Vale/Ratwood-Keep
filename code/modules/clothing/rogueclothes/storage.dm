@@ -255,8 +255,8 @@
 	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
 
 /obj/item/storage/belt/rogue/pouch/ammo
-	name = "rune ball pouch"
-	desc = "Usually used for holding runelock balls."
+	name = "sphere pouch"
+	desc = "Usually used for holding runelock sphreres."
 
 /obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
 	new /obj/item/ammo_casing/caseless/rogue/bullet(src)

@@ -21,8 +21,8 @@
 	associated_skill = /datum/skill/combat/crossbows
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	var/damfactor = 2
-	metalizer_result = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
+	damfactor = 2
+	metalizer_result = /obj/structure/bars/pipe
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()
@@ -111,7 +111,6 @@
 		spread = 0
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
-		BB.damage = BB.damage * damfactor
 		if(HAS_TRAIT(user, TRAIT_TINY))
 			BB.damage = (BB.damage * 0.1)
 	cocked = FALSE
