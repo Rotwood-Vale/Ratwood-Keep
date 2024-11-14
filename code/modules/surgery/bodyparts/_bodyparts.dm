@@ -198,7 +198,7 @@
 					new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
 					qdel(src)
 			else
-				to_chat(user, span_warning("I cannot butcher this limb."))
+				to_chat(user, span_warning("There is no meat to butcher."))
 	..()
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
