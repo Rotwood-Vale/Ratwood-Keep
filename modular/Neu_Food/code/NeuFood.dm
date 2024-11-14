@@ -459,7 +459,9 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated(loc)
+				if (istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced))
+					new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/plated(loc)
+				else new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated(loc)
 				qdel(I)
 				qdel(src)
 		else
