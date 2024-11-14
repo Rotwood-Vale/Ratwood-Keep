@@ -38,7 +38,7 @@
 			)
 	apply_veil(veil_icon, src)
 
-/obj/structure/veil/carriage/attack_hand(mob/dead/observer/rogue/user)
+/obj/structure/veil/carriage/attack_hand(mob/dead/observer/rogue/veil/user)
 	if(user)
 		switch(alert("Are you ready to be judged?",,"Yes","No"))
 			if("Yes")

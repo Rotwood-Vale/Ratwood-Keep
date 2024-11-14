@@ -1,4 +1,4 @@
-/obj/structure/underworld/carriageman
+/obj/structure/veil/carriageman
 	name = "The Carriageman"
 	desc = "They will take the reigns and lead the way. But only if the price I can pay."
 	icon = 'icons/roguetown/underworld/enigma_carriageman.dmi'
@@ -8,11 +8,10 @@
 	anchored = TRUE
 	density = TRUE
 
-/obj/structure/underworld/carriageman/Initialize()
+/obj/structure/veil/carriageman/Initialize()
 	. = ..()
-	set_light(5, 30, LIGHT_COLOR_BLUE)
 
-/obj/structure/underworld/carriageman/attack_hand(mob/living/carbon/spirit/user)
+/obj/structure/veil/carriageman/attack_hand(mob/dead/observer/rogue/veil/user)
 	if(!user.paid)
 		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 		to_chat(user, "<br><font color=purple><span class='bold'>FETCH THE TOLL AND YOU MAY BOARD</span></font>")
@@ -20,8 +19,8 @@
 		to_chat(user, "<br><font color=purple><span class='bold'>HANDS EXCHANGE PAY, BE ON YOUR WAY</span></font>")
 		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
 
-/obj/structure/underworld/carriageman/attackby(obj/item/W, mob/living/user)
-	var/mob/living/carbon/spirit/ghost = user
+/obj/structure/veil/carriageman/attackby(obj/item/W, mob/living/user)
+	var/mob/dead/observer/rogue/veil/ghost = user
 	if(istype(W, /obj/item/veil/toll))
 		if(!ghost.paid)
 			qdel(W)
