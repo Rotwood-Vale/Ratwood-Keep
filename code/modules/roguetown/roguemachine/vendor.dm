@@ -268,5 +268,11 @@
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
-		held_items[P]["PRICE"] = 10
+		held_items[P]["PRICE"] = 20
+
+	for(var/X in list(/obj/item/key/fancyroomi, /obj/item/key/fancyroomii, /obj/item/key/fancyroomiii))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 100
 	update_icon()
