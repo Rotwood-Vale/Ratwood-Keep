@@ -28,7 +28,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_SMASH, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	armor_class = ARMOR_CLASS_MEDIUM
 	smeltresult = /obj/item/ingot/steel
-	body_parts_covered = HEAD|HAIR|EARS
+	body_parts_covered = HEAD|HAIR|EARS|NECK
 	flags_inv = HIDEHAIR
 	anvilrepair = /datum/skill/craft/blacksmithing
 	sewrepair = FALSE
