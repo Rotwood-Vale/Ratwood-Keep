@@ -50,7 +50,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed",1)
-		H.mind.adjust_spellpoints(3)
+		H.mind.adjust_spellpoints(4)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 		H.verbs |= /mob/proc/haltyell
