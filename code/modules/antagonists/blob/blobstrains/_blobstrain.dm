@@ -39,7 +39,7 @@ GLOBAL_LIST_INIT(valid_blobstrains, subtypesof(/datum/blobstrain) - list(/datum/
 
 /datum/blobstrain/proc/send_message(mob/living/M)
 	var/totalmessage = message
-	if(message_living && !issilicon(M))
+	if(message_living)
 		totalmessage += message_living
 	totalmessage += "!"
 	to_chat(M, span_danger("[totalmessage]"))

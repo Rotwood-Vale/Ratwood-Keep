@@ -1,20 +1,9 @@
 /datum/export/gear
 
-/datum/export/gear/sec_helmet
-	cost = 100
-	unit_name = "helmet"
-	export_types = list(/obj/item/clothing/head/helmet/sec)
-
 /datum/export/gear/sec_armor
 	cost = 100
 	unit_name = "armor vest"
 	export_types = list(/obj/item/clothing/suit/armor/vest)
-
-/datum/export/gear/riot_shield
-	cost = 100
-	unit_name = "riot shield"
-	export_types = list(/obj/item/shield/riot)
-
 
 /datum/export/gear/mask/breath
 	cost = 2
@@ -26,30 +15,6 @@
 	unit_name = "gas mask"
 	export_types = list(/obj/item/clothing/mask/gas)
 	include_subtypes = FALSE
-
-
-/datum/export/gear/space/helmet
-	cost = 75
-	unit_name = "space helmet"
-	export_types = list(/obj/item/clothing/head/helmet/space, /obj/item/clothing/head/helmet/space/eva, /obj/item/clothing/head/helmet/space/nasavoid)
-	include_subtypes = FALSE
-
-/datum/export/gear/space/suit
-	cost = 150
-	unit_name = "space suit"
-	export_types = list(/obj/item/clothing/suit/space, /obj/item/clothing/suit/space/eva, /obj/item/clothing/suit/space/nasavoid)
-	include_subtypes = FALSE
-
-
-/datum/export/gear/space/syndiehelmet
-	cost = 150
-	unit_name = "Syndicate space helmet"
-	export_types = list(/obj/item/clothing/head/helmet/space/syndicate)
-
-/datum/export/gear/space/syndiesuit
-	cost = 300
-	unit_name = "Syndicate space suit"
-	export_types = list(/obj/item/clothing/suit/space/syndicate)
 
 
 /datum/export/gear/radhelmet

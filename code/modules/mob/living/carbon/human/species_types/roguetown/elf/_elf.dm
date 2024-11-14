@@ -5,6 +5,7 @@
 	name = "Elfb"
 	id = "elf"
 	max_age = 850
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,

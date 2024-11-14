@@ -48,23 +48,7 @@
 		new /obj/item/stack/rods(get_turf(src), number_of_rods)
 	qdel(src)
 
-/obj/structure/lattice/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	if(the_rcd.mode == RCD_FLOORWALL)
-		return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 2)
-
-/obj/structure/lattice/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	if(passed_mode == RCD_FLOORWALL)
-		to_chat(user, span_notice("I build a floor."))
-		var/turf/T = src.loc
-		if(isspaceturf(T))
-			T.PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
-			qdel(src)
-			return TRUE
-	return FALSE
-
-/obj/structure/lattice/singularity_pull(S, current_size)
-	if(current_size >= STAGE_FOUR)
-		deconstruct()
+/obj/structure/lattice/singularity_pull()
 
 /obj/structure/lattice/catwalk
 	name = "catwalk"
@@ -78,15 +62,3 @@
 
 /obj/structure/lattice/catwalk/deconstruction_hints(mob/user)
 	return span_notice("The supporting rods look like they could be <b>cut</b>.")
-
-/obj/structure/lattice/catwalk/Move()
-	var/turf/T = loc
-	for(var/obj/structure/cable/C in T)
-		C.deconstruct()
-	..()
-
-/obj/structure/lattice/catwalk/deconstruct()
-	var/turf/T = loc
-	for(var/obj/structure/cable/C in T)
-		C.deconstruct()
-	..()

@@ -1,5 +1,4 @@
 /mob/living/brain
-	var/obj/item/mmi/container = null
 	var/timeofhostdeath = 0
 	var/emp_damage = 0//Handles a type of MMI damage
 	var/datum/dna/stored/stored_dna // dna var for brain. Used to store dna, brain dna is not considered like actual dna, brain.has_dna() returns FALSE.
@@ -32,7 +31,6 @@
 			mind.current = null
 		testing("BASEDLOL ")
 		ghostize(drawskip=TRUE)		//Ghostize checks for key so nothing else is necessary.
-	container = null
 	return ..()
 
 /mob/living/brain/update_mobility()
@@ -58,7 +56,7 @@
 
 /mob/living/brain/can_be_revived()
 	. = 1
-	if(!container || health <= HEALTH_THRESHOLD_DEAD)
+	if(health <= HEALTH_THRESHOLD_DEAD)
 		testing("noresbrain")
 		return 0
 
@@ -67,22 +65,11 @@
 	if(stored_dna)
 		stored_dna.real_name = real_name
 
-/mob/living/brain/ClickOn(atom/A, params)
-	..()
-	if(container)
-		var/obj/mecha/M = container.mecha
-		if(istype(M))
-			return M.click_action(A,src,params)
-
 /mob/living/brain/forceMove(atom/destination)
-	if(container)
-		return container.forceMove(destination)
-	else if (istype(loc, /obj/item/organ/brain))
+	if (istype(loc, /obj/item/organ/brain))
 		var/obj/item/organ/brain/B = loc
 		B.forceMove(destination)
 	else if (istype(destination, /obj/item/organ/brain))
-		doMove(destination)
-	else if (istype(destination, /obj/item/mmi))
 		doMove(destination)
 	else
 		CRASH("Brainmob without a container [src] attempted to move to [destination].")
@@ -90,12 +77,6 @@
 /mob/living/brain/update_mouse_pointer()
 	if (!client)
 		return
-	if(!container)
-		return
-	if (container.mecha)
-		var/obj/mecha/M = container.mecha
-		if(M.mouse_pointer)
-			client.mouse_pointer_icon = M.mouse_pointer
 	if (client && ranged_ability && ranged_ability.ranged_mousepointer)
 		client.mouse_pointer_icon = ranged_ability.ranged_mousepointer
 
@@ -104,9 +85,3 @@
 	if(istype(loc, /obj/item/organ/brain))
 		var/obj/item/organ/brain/B = loc
 		. = B.traumas
-
-/mob/living/brain/get_policy_keywords()
-	. = ..()
-
-	if(container)
-		. += "[container.type]"

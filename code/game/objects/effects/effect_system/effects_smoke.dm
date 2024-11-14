@@ -309,12 +309,10 @@
 			var/more = ""
 			if(M)
 				more = "[ADMIN_LOOKUPFLW(M)] "
-			if(!istype(carry.my_atom, /obj/machinery/plumbing))
-				message_admins("Smoke: ([ADMIN_VERBOSEJMP(location)])[contained]. Key: [more ? more : carry.my_atom.fingerprintslast].")
+			message_admins("Smoke: ([ADMIN_VERBOSEJMP(location)])[contained]. Key: [more ? more : carry.my_atom.fingerprintslast].")
 			log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last touched by [carry.my_atom.fingerprintslast].")
 		else
-			if(!istype(carry.my_atom, /obj/machinery/plumbing))
-				message_admins("Smoke: ([ADMIN_VERBOSEJMP(location)])[contained]. No associated key.")
+			message_admins("Smoke: ([ADMIN_VERBOSEJMP(location)])[contained]. No associated key.")
 			log_game("A chemical smoke reaction has taken place in ([where])[contained]. No associated key.")
 
 

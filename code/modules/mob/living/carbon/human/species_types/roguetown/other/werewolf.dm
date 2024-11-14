@@ -49,6 +49,8 @@
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
+	mutanteyes = /obj/item/organ/eyes/night_vision/werewolf
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,

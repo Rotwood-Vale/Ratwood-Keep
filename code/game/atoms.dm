@@ -435,8 +435,6 @@
   */
 /atom/proc/emp_act(severity)
 	var/protection = SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
-	if(!(protection & EMP_PROTECT_WIRES) && istype(wires))
-		wires.emp_pulse()
 	return protection // Pass the protection value collected here upwards
 
 /**
@@ -673,12 +671,11 @@
 	return
 
 /**
-  * Respond to the singularity pulling on us
-  *
-  * Default behaviour is to send COMSIG_ATOM_SING_PULL and return
-  */
-/atom/proc/singularity_pull(obj/singularity/S, current_size)
-	SEND_SIGNAL(src, COMSIG_ATOM_SING_PULL, S, current_size)
+ * Respond to the singularity pulling on us
+ *
+ * Default behaviour is to send COMSIG_ATOM_SING_PULL and return
+ */
+/atom/proc/singularity_pull()
 
 
 /**
@@ -712,21 +709,6 @@
   */
 /atom/proc/narsie_act()
 	SEND_SIGNAL(src, COMSIG_ATOM_NARSIE_ACT)
-
-
-///Return the values you get when an RCD eats you?
-/atom/proc/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	return FALSE
-
-
-/**
-  * Respond to an RCD acting on our item
-  *
-  * Default behaviour is to send COMSIG_ATOM_RCD_ACT and return FALSE
-  */
-/atom/proc/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	SEND_SIGNAL(src, COMSIG_ATOM_RCD_ACT, user, the_rcd, passed_mode)
-	return FALSE
 
 /**
   * Implement the behaviour for when a user click drags a storage object to your atom
@@ -817,10 +799,6 @@
 /atom/proc/setDir(newdir)
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
 	dir = newdir
-
-///Handle melee attack by a mech
-/atom/proc/mech_melee_attack(obj/mecha/M)
-	return
 
 /**
   * Called when the atom log's in or out

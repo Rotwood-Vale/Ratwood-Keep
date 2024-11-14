@@ -113,35 +113,6 @@
 			smoke.set_up(0, t)
 			smoke.start()
 
-/obj/projectile/magic/door
-	name = "bolt of door creation"
-	icon_state = "energy"
-	damage = 0
-	damage_type = OXY
-	nodamage = TRUE
-	var/list/door_types = list(/obj/structure/mineral_door/wood, /obj/structure/mineral_door/iron, /obj/structure/mineral_door/silver, /obj/structure/mineral_door/gold, /obj/structure/mineral_door/uranium, /obj/structure/mineral_door/sandstone, /obj/structure/mineral_door/transparent/plasma, /obj/structure/mineral_door/transparent/diamond)
-
-/obj/projectile/magic/door/on_hit(atom/target)
-	. = ..()
-	if(istype(target, /obj/machinery/door))
-		OpenDoor(target)
-	else
-		var/turf/T = get_turf(target)
-		if(isclosedturf(T) && !isindestructiblewall(T))
-			CreateDoor(T)
-
-/obj/projectile/magic/door/proc/CreateDoor(turf/T)
-	var/door_type = pick(door_types)
-	var/obj/structure/mineral_door/D = new door_type(T)
-	T.ChangeTurf(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
-	D.Open()
-
-/obj/projectile/magic/door/proc/OpenDoor(obj/machinery/door/D)
-	if(istype(D, /obj/machinery/door/airlock))
-		var/obj/machinery/door/airlock/A = D
-		A.locked = FALSE
-	D.open()
-
 /obj/projectile/magic/change
 	name = "bolt of change"
 	icon_state = "ice_1"
@@ -172,40 +143,16 @@
 
 	var/list/contents = M.contents.Copy()
 
-	if(iscyborg(M))
-		var/mob/living/silicon/robot/Robot = M
-		if(Robot.mmi)
-			qdel(Robot.mmi)
-		Robot.notify_ai(NEW_BORG)
-	else
-		for(var/obj/item/W in contents)
-			if(!M.dropItemToGround(W))
-				qdel(W)
+	for(var/obj/item/W in contents)
+		if(!M.dropItemToGround(W))
+			qdel(W)
 
 	var/mob/living/new_mob
 
-	var/randomize = pick("monkey","robot","slime","humanoid","animal")
+	var/randomize = pick("monkey","slime","humanoid","animal")
 	switch(randomize)
 		if("monkey")
 			new_mob = new /mob/living/carbon/monkey(M.loc)
-
-		if("robot")
-			var/robot = pick(200;/mob/living/silicon/robot,
-							/mob/living/silicon/robot/modules/syndicate,
-							/mob/living/silicon/robot/modules/syndicate/medical,
-							/mob/living/silicon/robot/modules/syndicate/saboteur,
-							200;/mob/living/simple_animal/drone/polymorphed)
-			new_mob = new robot(M.loc)
-			if(issilicon(new_mob))
-				new_mob.gender = M.gender
-				new_mob.invisibility = 0
-				new_mob.job = "Cyborg"
-				var/mob/living/silicon/robot/Robot = new_mob
-				Robot.lawupdate = FALSE
-				Robot.connected_ai = null
-				Robot.mmi.transfer_identity(M)	//Does not transfer key/client.
-				Robot.clear_inherent_laws(0)
-				Robot.clear_zeroth_law(0)
 
 		if("slime")
 			new_mob = new /mob/living/simple_animal/slime/random(M.loc)
@@ -635,42 +582,6 @@
 				return Bump(L)
 	..()
 
-/obj/projectile/magic/aoe/lightning
-	name = "lightning bolt"
-	icon_state = "tesla_projectile"	//Better sprites are REALLY needed and appreciated!~
-	damage = 15
-	damage_type = BURN
-	nodamage = FALSE
-	speed = 0.3
-	flag = "magic"
-	light_color = "#ffffff"
-	light_range = 2
-
-	var/tesla_power = 20000
-	var/tesla_range = 15
-	var/tesla_flags = TESLA_MOB_DAMAGE | TESLA_MOB_STUN | TESLA_OBJ_DAMAGE
-	var/chain
-	var/mob/living/caster
-
-/obj/projectile/magic/aoe/lightning/fire(setAngle)
-	if(caster)
-		chain = caster.Beam(src, icon_state = "lightning[rand(1, 12)]", time = INFINITY, maxdistance = INFINITY)
-	..()
-
-/obj/projectile/magic/aoe/lightning/on_hit(target)
-	. = ..()
-	if(ismob(target))
-		var/mob/M = target
-		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with [target]!"))
-			qdel(src)
-			return BULLET_ACT_BLOCK
-	tesla_zap(src, tesla_range, tesla_power, tesla_flags)
-	qdel(src)
-
-/obj/projectile/magic/aoe/lightning/Destroy()
-	qdel(chain)
-	. = ..()
 
 /obj/projectile/magic/aoe/fireball
 	name = "bolt of fireball"

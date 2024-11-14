@@ -47,22 +47,19 @@
 	loot = list(/obj/item/gun/ballistic/automatic/pistol = 5,
 				/obj/item/gun/ballistic/shotgun/automatic/combat = 5,
 				/obj/item/gun/ballistic/automatic/pistol/deagle,
-				/obj/item/storage/box/syndie_kit/throwing_weapons = 3,
 				/obj/item/gun/ballistic/revolver/mateba)
 
 /obj/effect/spawner/lootdrop/armory_contraband/donutstation
-	loot = list(/obj/item/grenade/clusterbuster/teargas = 5,
+	loot = list(
 				/obj/item/gun/ballistic/shotgun/automatic/combat = 5,
 				/obj/item/bikehorn/golden,
-				/obj/item/grenade/clusterbuster,
-				/obj/item/storage/box/syndie_kit/throwing_weapons = 3)
+				/obj/item/grenade/clusterbuster)
 
 /obj/effect/spawner/lootdrop/gambling
 	name = "gambling valuables spawner"
 	loot = list(
 				/obj/item/gun/ballistic/revolver/russian = 5,
 				/obj/item/clothing/head/ushanka = 3,
-				/obj/item/storage/box/syndie_kit/throwing_weapons,
 				/obj/item/coin/gold,
 				/obj/item/reagent_containers/food/drinks/bottle/vodka/badminka,
 				)
@@ -197,39 +194,6 @@
 		/obj/item/clothing/mask/gas/cyborg = 25,
 		"" = 75)
 
-/obj/effect/spawner/lootdrop/aimodule_harmless // These shouldn't allow the AI to start butchering people
-	name = "harmless AI module spawner"
-	loot = list(
-				/obj/item/aiModule/core/full/asimov,
-				/obj/item/aiModule/core/full/asimovpp,
-				/obj/item/aiModule/core/full/hippocratic,
-				/obj/item/aiModule/core/full/paladin_devotion,
-				/obj/item/aiModule/core/full/paladin
-				)
-
-/obj/effect/spawner/lootdrop/aimodule_neutral // These shouldn't allow the AI to start butchering people without reason
-	name = "neutral AI module spawner"
-	loot = list(
-				/obj/item/aiModule/core/full/corp,
-				/obj/item/aiModule/core/full/maintain,
-				/obj/item/aiModule/core/full/drone,
-				/obj/item/aiModule/core/full/peacekeeper,
-				/obj/item/aiModule/core/full/reporter,
-				/obj/item/aiModule/core/full/robocop,
-				/obj/item/aiModule/core/full/liveandletlive,
-				/obj/item/aiModule/core/full/hulkamania
-				)
-
-/obj/effect/spawner/lootdrop/aimodule_harmful // These will get the shuttle called
-	name = "harmful AI module spawner"
-	loot = list(
-				/obj/item/aiModule/core/full/antimov,
-				/obj/item/aiModule/core/full/balance,
-				/obj/item/aiModule/core/full/tyrant,
-				/obj/item/aiModule/core/full/thermurderdynamic,
-				/obj/item/aiModule/core/full/damaged
-				)
-
 // Tech storage circuit board spawners
 
 /obj/effect/spawner/lootdrop/techstorage
@@ -237,103 +201,3 @@
 	lootdoubles = FALSE
 	fan_out_items = TRUE
 	lootcount = INFINITY
-
-/obj/effect/spawner/lootdrop/techstorage/service
-	name = "service circuit board spawner"
-	loot = list(
-				/obj/item/circuitboard/computer/arcade/battle,
-				/obj/item/circuitboard/computer/arcade/orion_trail,
-				/obj/item/circuitboard/machine/autolathe,
-				/obj/item/circuitboard/computer/mining,
-				/obj/item/circuitboard/machine/ore_redemption,
-				/obj/item/circuitboard/machine/mining_equipment_vendor,
-				/obj/item/circuitboard/machine/microwave,
-				/obj/item/circuitboard/machine/chem_dispenser/drinks,
-				/obj/item/circuitboard/machine/chem_dispenser/drinks/beer,
-				/obj/item/circuitboard/computer/slot_machine
-				)
-
-/obj/effect/spawner/lootdrop/techstorage/rnd
-	name = "RnD circuit board spawner"
-	loot = list(
-				/obj/item/circuitboard/computer/aifixer,
-				/obj/item/circuitboard/machine/rdserver,
-				/obj/item/circuitboard/machine/mechfab,
-				/obj/item/circuitboard/machine/circuit_imprinter/department,
-				/obj/item/circuitboard/computer/teleporter,
-				/obj/item/circuitboard/machine/destructive_analyzer,
-				/obj/item/circuitboard/computer/rdconsole,
-				/obj/item/circuitboard/computer/nanite_chamber_control,
-				/obj/item/circuitboard/computer/nanite_cloud_controller,
-				/obj/item/circuitboard/machine/nanite_chamber,
-				/obj/item/circuitboard/machine/nanite_programmer,
-				/obj/item/circuitboard/machine/nanite_program_hub
-				)
-
-/obj/effect/spawner/lootdrop/techstorage/security
-	name = "security circuit board spawner"
-	loot = list(
-				/obj/item/circuitboard/computer/secure_data,
-				/obj/item/circuitboard/computer/security,
-				/obj/item/circuitboard/computer/prisoner
-				)
-
-/obj/effect/spawner/lootdrop/techstorage/engineering
-	name = "engineering circuit board spawner"
-	loot = list(
-				/obj/item/circuitboard/computer/atmos_alert,
-				/obj/item/circuitboard/computer/stationalert,
-				/obj/item/circuitboard/computer/powermonitor
-				)
-
-/obj/effect/spawner/lootdrop/techstorage/tcomms
-	name = "tcomms circuit board spawner"
-	loot = list(
-				/obj/item/circuitboard/computer/message_monitor,
-				/obj/item/circuitboard/machine/telecomms/broadcaster,
-				/obj/item/circuitboard/machine/telecomms/bus,
-				/obj/item/circuitboard/machine/telecomms/server,
-				/obj/item/circuitboard/machine/telecomms/receiver,
-				/obj/item/circuitboard/machine/telecomms/processor,
-				/obj/item/circuitboard/machine/announcement_system,
-				/obj/item/circuitboard/computer/comm_server,
-				/obj/item/circuitboard/computer/comm_monitor
-				)
-
-/obj/effect/spawner/lootdrop/techstorage/medical
-	name = "medical circuit board spawner"
-	loot = list(
-				/obj/item/circuitboard/computer/cloning,
-				/obj/item/circuitboard/machine/clonepod,
-				/obj/item/circuitboard/machine/chem_dispenser,
-				/obj/item/circuitboard/computer/scan_consolenew,
-				/obj/item/circuitboard/computer/med_data,
-				/obj/item/circuitboard/machine/smoke_machine,
-				/obj/item/circuitboard/machine/chem_master,
-				/obj/item/circuitboard/machine/clonescanner,
-				/obj/item/circuitboard/computer/pandemic
-				)
-
-/obj/effect/spawner/lootdrop/techstorage/AI
-	name = "secure AI circuit board spawner"
-	loot = list(
-				/obj/item/circuitboard/computer/aiupload,
-				/obj/item/circuitboard/computer/borgupload,
-				/obj/item/circuitboard/aicore
-				)
-
-/obj/effect/spawner/lootdrop/techstorage/command
-	name = "secure command circuit board spawner"
-	loot = list(
-				/obj/item/circuitboard/computer/crew,
-				/obj/item/circuitboard/computer/communications,
-				/obj/item/circuitboard/computer/card
-				)
-
-/obj/effect/spawner/lootdrop/techstorage/RnD_secure
-	name = "secure RnD circuit board spawner"
-	loot = list(
-				/obj/item/circuitboard/computer/mecha_control,
-				/obj/item/circuitboard/computer/apc_control,
-				/obj/item/circuitboard/computer/robotics
-				)

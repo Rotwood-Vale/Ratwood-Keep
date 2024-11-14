@@ -13,7 +13,7 @@
 	var/static/list/spooks = list('sound/blank.ogg')
 	disliked_food = NONE
 	liked_food = GROSS | MEAT | RAW
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | ERT_SPAWN
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE
 
 /datum/species/zombie/check_roundstart_eligible()
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
@@ -29,7 +29,7 @@
 	speedmod = 1.6
 	var/heal_rate = 1
 	var/regen_cooldown = 0
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
+	changesource_flags = MIRROR_BADMIN | WABBAJACK
 
 /datum/species/zombie/infectious/check_roundstart_eligible()
 	return FALSE
@@ -86,6 +86,7 @@
 	limbs_id = "zombie" //They look like zombies
 	sexes = 0
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/zombie
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
+	mutanttongue = /obj/item/organ/tongue/zombie
+	changesource_flags = MIRROR_BADMIN | WABBAJACK
 
 #undef REGENERATION_DELAY

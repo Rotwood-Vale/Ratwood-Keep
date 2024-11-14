@@ -75,4 +75,4 @@
 /datum/keybinding/admin/deadsay/down(client/user)
 	user.get_dead_say()
 	return TRUE
-*/
+

@@ -51,43 +51,6 @@
 		qdel(A)
 	return ..()
 
-
-///Called when attached_light value changes.
-/obj/item/clothing/head/helmet/proc/set_attached_light(obj/item/flashlight/seclite/new_attached_light)
-	if(attached_light == new_attached_light)
-		return
-	. = attached_light
-	attached_light = new_attached_light
-	if(attached_light)
-		attached_light.set_light_flags(attached_light.light_flags | LIGHT_ATTACHED)
-		if(attached_light.loc != src)
-			attached_light.forceMove(src)
-	else if(.)
-		var/obj/item/flashlight/seclite/old_attached_light = .
-		old_attached_light.set_light_flags(old_attached_light.light_flags & ~LIGHT_ATTACHED)
-		if(old_attached_light.loc == src)
-			old_attached_light.forceMove(get_turf(src))
-
-
-/obj/item/clothing/head/helmet/sec
-	can_flashlight = TRUE
-
-/obj/item/clothing/head/helmet/sec/attackby(obj/item/I, mob/user, params)
-	if(issignaler(I))
-		var/obj/item/assembly/signaler/S = I
-		if(attached_light) //Has a flashlight. Player must remove it, else it will be lost forever.
-			to_chat(user, span_warning("The mounted flashlight is in the way, remove it first!"))
-			return
-
-		if(S.secured)
-			qdel(S)
-			var/obj/item/bot_assembly/secbot/A = new
-			user.put_in_hands(A)
-			to_chat(user, span_notice("I add the signaler to the helmet."))
-			qdel(src)
-			return
-	return ..()
-
 /obj/item/clothing/head/helmet/alt
 	name = "bulletproof helmet"
 	desc = ""
@@ -380,7 +343,7 @@
 		I.play_tool_sound(src)
 		to_chat(user, span_notice("I unscrew [attached_light] from [src]."))
 		attached_light.forceMove(drop_location())
-		if(Adjacent(user) && !issilicon(user))
+		if(Adjacent(user))
 			user.put_in_hands(attached_light)
 
 		var/obj/item/flashlight/removed_light = set_attached_light(null)

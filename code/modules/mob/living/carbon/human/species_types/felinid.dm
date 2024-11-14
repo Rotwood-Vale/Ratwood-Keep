@@ -6,7 +6,9 @@
 
 	default_features = MANDATORY_FEATURE_LIST
 
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
+	mutantears = /obj/item/organ/ears/cat
+	mutanttail = /obj/item/organ/tail/cat
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | SLIME_EXTRACT
 	var/original_felinid = TRUE //set to false for felinids created by mass-purrbation
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,

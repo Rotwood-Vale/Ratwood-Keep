@@ -872,9 +872,6 @@
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
-			return
 
 		if(alert(usr, "Send [key_name(M)] to Prison?", "Message", "Yes", "No") != "Yes")
 			return
@@ -922,9 +919,6 @@
 		if(!isliving(M))
 			to_chat(usr, "This can only be used on instances of type /mob/living.")
 			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
-			return
 		var/mob/living/L = M
 
 		for(var/obj/item/I in L)
@@ -947,9 +941,6 @@
 		var/mob/M = locate(href_list["tdome2"])
 		if(!isliving(M))
 			to_chat(usr, "This can only be used on instances of type /mob/living.")
-			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
 			return
 		var/mob/living/L = M
 
@@ -974,9 +965,6 @@
 		if(!isliving(M))
 			to_chat(usr, "This can only be used on instances of type /mob/living.")
 			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
-			return
 		var/mob/living/L = M
 
 		L.Unconscious(100)
@@ -996,9 +984,6 @@
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!isliving(M))
 			to_chat(usr, "This can only be used on instances of type /mob/living.")
-			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
 			return
 		var/mob/living/L = M
 
@@ -1029,19 +1014,6 @@
 		message_admins(span_danger("Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!"))
 		log_admin("[key_name(usr)] healed / Revived [key_name(L)].")
 
-	else if(href_list["makeai"])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/living/carbon/human/H = locate(href_list["makeai"])
-		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-			return
-
-		message_admins(span_danger("Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!"))
-		log_admin("[key_name(usr)] AIized [key_name(H)].")
-		H.AIize(TRUE, H.client)
-
 	else if(href_list["makeslime"])
 		if(!check_rights(R_SPAWN))
 			return
@@ -1063,18 +1035,6 @@
 			return
 
 		usr.client.cmd_admin_blobize(H)
-
-
-	else if(href_list["makerobot"])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/living/carbon/human/H = locate(href_list["makerobot"])
-		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-			return
-
-		usr.client.cmd_admin_robotize(H)
 
 	else if(href_list["makeanimal"])
 		if(!check_rights(R_SPAWN))
@@ -1129,11 +1089,6 @@
 			C.admin_ghost()
 		sleep(2)
 		C.jumptocoord(x,y,z)
-
-	else if(href_list["adminchecklaws"])
-		if(!check_rights(R_ADMIN))
-			return
-		output_ai_laws()
 
 	else if(href_list["admincheckdevilinfo"])
 		if(!check_rights(R_ADMIN))
@@ -1419,16 +1374,6 @@
 		else
 			show_traitor_panel(M)
 
-	else if(href_list["borgpanel"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		var/mob/M = locate(href_list["borgpanel"])
-		if(!iscyborg(M))
-			to_chat(usr, "This can only be used on cyborgs")
-		else
-			open_borgopanel(M)
-
 	else if(href_list["initmind"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -1511,7 +1456,7 @@
 
 		switch(where)
 			if("inhand")
-				if (!iscarbon(usr) && !iscyborg(usr))
+				if (!iscarbon(usr))
 					to_chat(usr, "Can only spawn in hand when you're a carbon mob or cyborg.")
 					where = "onfloor"
 				target = usr
@@ -1565,11 +1510,6 @@
 								var/mob/living/L = usr
 								var/obj/item/I = O
 								L.put_in_hands(I)
-								if(iscyborg(L))
-									var/mob/living/silicon/robot/R = L
-									if(R.module)
-										R.module.add_module(I, TRUE, TRUE)
-										R.activate_module(I)
 
 		if(pod)
 			new /obj/effect/DPtarget(target, pod)
@@ -1590,256 +1530,6 @@
 
 	else if(href_list["secrets"])
 		Secrets_topic(href_list["secrets"],href_list)
-
-	else if(href_list["ac_view_wanted"])            //Admin newscaster Topic() stuff be here
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_screen = 18                 //The ac_ prefix before the hrefs stands for AdminCaster.
-		src.access_news_network()
-
-	else if(href_list["ac_set_channel_name"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_feed_channel.channel_name = stripped_input(usr, "Provide a Feed Channel Name.", "Network Channel Handler", "")
-		while (findtext(src.admincaster_feed_channel.channel_name," ") == 1)
-			src.admincaster_feed_channel.channel_name = copytext(src.admincaster_feed_channel.channel_name,2,length(src.admincaster_feed_channel.channel_name)+1)
-		src.access_news_network()
-
-	else if(href_list["ac_set_channel_lock"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_feed_channel.locked = !src.admincaster_feed_channel.locked
-		src.access_news_network()
-
-	else if(href_list["ac_submit_new_channel"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/check = 0
-		for(var/datum/newscaster/feed_channel/FC in GLOB.news_network.network_channels)
-			if(FC.channel_name == src.admincaster_feed_channel.channel_name)
-				check = 1
-				break
-		if(src.admincaster_feed_channel.channel_name == "" || src.admincaster_feed_channel.channel_name == "\[REDACTED\]" || check )
-			src.admincaster_screen=7
-		else
-			var/choice = alert("Please confirm Feed channel creation.","Network Channel Handler","Confirm","Cancel")
-			if(choice=="Confirm")
-				GLOB.news_network.CreateFeedChannel(src.admincaster_feed_channel.channel_name, src.admin_signature, src.admincaster_feed_channel.locked, 1)
-				SSblackbox.record_feedback("tally", "newscaster_channels", 1, src.admincaster_feed_channel.channel_name)
-				log_admin("[key_name(usr)] created command feed channel: [src.admincaster_feed_channel.channel_name]!")
-				src.admincaster_screen=5
-		src.access_news_network()
-
-	else if(href_list["ac_set_channel_receiving"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/list/available_channels = list()
-		for(var/datum/newscaster/feed_channel/F in GLOB.news_network.network_channels)
-			available_channels += F.channel_name
-		src.admincaster_feed_channel.channel_name = adminscrub(input(usr, "Choose receiving Feed Channel.", "Network Channel Handler") in sortList(available_channels) )
-		src.access_news_network()
-
-	else if(href_list["ac_set_new_message"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_feed_message.body = adminscrub(input(usr, "Write my Feed story.", "Network Channel Handler", ""))
-		while (findtext(src.admincaster_feed_message.returnBody(-1)," ") == 1)
-			src.admincaster_feed_message.body = copytext(src.admincaster_feed_message.returnBody(-1),2,length(src.admincaster_feed_message.returnBody(-1))+1)
-		src.access_news_network()
-
-	else if(href_list["ac_submit_new_message"])
-		if(!check_rights(R_ADMIN))
-			return
-		if(src.admincaster_feed_message.returnBody(-1) =="" || src.admincaster_feed_message.returnBody(-1) =="\[REDACTED\]" || src.admincaster_feed_channel.channel_name == "" )
-			src.admincaster_screen = 6
-		else
-			GLOB.news_network.SubmitArticle(src.admincaster_feed_message.returnBody(-1), src.admin_signature, src.admincaster_feed_channel.channel_name, null, 1)
-			SSblackbox.record_feedback("amount", "newscaster_stories", 1)
-			src.admincaster_screen=4
-
-		for(var/obj/machinery/newscaster/NEWSCASTER in GLOB.allCasters)
-			NEWSCASTER.newsAlert(src.admincaster_feed_channel.channel_name)
-
-		log_admin("[key_name(usr)] submitted a feed story to channel: [src.admincaster_feed_channel.channel_name]!")
-		src.access_news_network()
-
-	else if(href_list["ac_create_channel"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_screen=2
-		src.access_news_network()
-
-	else if(href_list["ac_create_feed_story"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_screen=3
-		src.access_news_network()
-
-	else if(href_list["ac_menu_censor_story"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_screen=10
-		src.access_news_network()
-
-	else if(href_list["ac_menu_censor_channel"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_screen=11
-		src.access_news_network()
-
-	else if(href_list["ac_menu_wanted"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/already_wanted = 0
-		if(GLOB.news_network.wanted_issue.active)
-			already_wanted = 1
-
-		if(already_wanted)
-			src.admincaster_wanted_message.criminal  = GLOB.news_network.wanted_issue.criminal
-			src.admincaster_wanted_message.body = GLOB.news_network.wanted_issue.body
-		src.admincaster_screen = 14
-		src.access_news_network()
-
-	else if(href_list["ac_set_wanted_name"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_wanted_message.criminal = adminscrub(input(usr, "Provide the name of the Wanted person.", "Network Security Handler", ""))
-		while(findtext(src.admincaster_wanted_message.criminal," ") == 1)
-			src.admincaster_wanted_message.criminal = copytext(admincaster_wanted_message.criminal,2,length(admincaster_wanted_message.criminal)+1)
-		src.access_news_network()
-
-	else if(href_list["ac_set_wanted_desc"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_wanted_message.body = adminscrub(input(usr, "Provide the a description of the Wanted person and any other details you deem important.", "Network Security Handler", ""))
-		while (findtext(src.admincaster_wanted_message.body," ") == 1)
-			src.admincaster_wanted_message.body = copytext(src.admincaster_wanted_message.body,2,length(src.admincaster_wanted_message.body)+1)
-		src.access_news_network()
-
-	else if(href_list["ac_submit_wanted"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/input_param = text2num(href_list["ac_submit_wanted"])
-		if(src.admincaster_wanted_message.criminal == "" || src.admincaster_wanted_message.body == "")
-			src.admincaster_screen = 16
-		else
-			var/choice = alert("Please confirm Wanted Issue [(input_param==1) ? ("creation.") : ("edit.")]","Network Security Handler","Confirm","Cancel")
-			if(choice=="Confirm")
-				if(input_param==1)          //If input_param == 1 we're submitting a new wanted issue. At 2 we're just editing an existing one. See the else below
-					GLOB.news_network.submitWanted(admincaster_wanted_message.criminal, admincaster_wanted_message.body, admin_signature, null, 1, 1)
-					src.admincaster_screen = 15
-				else
-					GLOB.news_network.submitWanted(admincaster_wanted_message.criminal, admincaster_wanted_message.body, admin_signature)
-					src.admincaster_screen = 19
-				log_admin("[key_name(usr)] issued a Station-wide Wanted Notification for [src.admincaster_wanted_message.criminal]!")
-		src.access_news_network()
-
-	else if(href_list["ac_cancel_wanted"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/choice = alert("Please confirm Wanted Issue removal.","Network Security Handler","Confirm","Cancel")
-		if(choice=="Confirm")
-			GLOB.news_network.deleteWanted()
-			src.admincaster_screen=17
-		src.access_news_network()
-
-	else if(href_list["ac_censor_channel_author"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/datum/newscaster/feed_channel/FC = locate(href_list["ac_censor_channel_author"])
-		FC.toggleCensorAuthor()
-		src.access_news_network()
-
-	else if(href_list["ac_censor_channel_story_author"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/datum/newscaster/feed_message/MSG = locate(href_list["ac_censor_channel_story_author"])
-		MSG.toggleCensorAuthor()
-		src.access_news_network()
-
-	else if(href_list["ac_censor_channel_story_body"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/datum/newscaster/feed_message/MSG = locate(href_list["ac_censor_channel_story_body"])
-		MSG.toggleCensorBody()
-		src.access_news_network()
-
-	else if(href_list["ac_pick_d_notice"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/datum/newscaster/feed_channel/FC = locate(href_list["ac_pick_d_notice"])
-		src.admincaster_feed_channel = FC
-		src.admincaster_screen=13
-		src.access_news_network()
-
-	else if(href_list["ac_toggle_d_notice"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/datum/newscaster/feed_channel/FC = locate(href_list["ac_toggle_d_notice"])
-		FC.toggleCensorDclass()
-		src.access_news_network()
-
-	else if(href_list["ac_view"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_screen=1
-		src.access_news_network()
-
-	else if(href_list["ac_setScreen"]) //Brings us to the main menu and resets all fields~
-		if(!check_rights(R_ADMIN))
-			return
-		src.admincaster_screen = text2num(href_list["ac_setScreen"])
-		if (src.admincaster_screen == 0)
-			if(src.admincaster_feed_channel)
-				src.admincaster_feed_channel = new /datum/newscaster/feed_channel
-			if(src.admincaster_feed_message)
-				src.admincaster_feed_message = new /datum/newscaster/feed_message
-			if(admincaster_wanted_message)
-				admincaster_wanted_message = new /datum/newscaster/wanted_message
-		src.access_news_network()
-
-	else if(href_list["ac_show_channel"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/datum/newscaster/feed_channel/FC = locate(href_list["ac_show_channel"])
-		src.admincaster_feed_channel = FC
-		src.admincaster_screen = 9
-		src.access_news_network()
-
-	else if(href_list["ac_pick_censor_channel"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/datum/newscaster/feed_channel/FC = locate(href_list["ac_pick_censor_channel"])
-		src.admincaster_feed_channel = FC
-		src.admincaster_screen = 12
-		src.access_news_network()
-
-	else if(href_list["ac_refresh"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.access_news_network()
-
-	else if(href_list["ac_set_signature"])
-		if(!check_rights(R_ADMIN))
-			return
-		src.admin_signature = adminscrub(input(usr, "Provide my desired signature.", "Network Identity Handler", ""))
-		src.access_news_network()
-
-	else if(href_list["ac_del_comment"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/datum/newscaster/feed_comment/FC = locate(href_list["ac_del_comment"])
-		var/datum/newscaster/feed_message/FM = locate(href_list["ac_del_comment_msg"])
-		FM.comments -= FC
-		qdel(FC)
-		src.access_news_network()
-
-	else if(href_list["ac_lock_comment"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/datum/newscaster/feed_message/FM = locate(href_list["ac_lock_comment"])
-		FM.locked ^= 1
-		src.access_news_network()
 
 	else if(href_list["check_antagonist"])
 		if(!check_rights(R_ADMIN))
@@ -1886,35 +1576,6 @@
 			return
 		var/datum/outfit/O = locate(href_list["chosen_outfit"]) in GLOB.custom_outfits
 		save_outfit(usr,O)
-	else if(href_list["set_selfdestruct_code"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/code = random_nukecode()
-		for(var/obj/machinery/nuclearbomb/selfdestruct/SD in GLOB.nuke_list)
-			SD.r_code = code
-		message_admins("[key_name_admin(usr)] has set the self-destruct \
-			code to \"[code]\".")
-
-	else if(href_list["add_station_goal"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/list/type_choices = typesof(/datum/station_goal)
-		var/picked = input("Choose goal type") in type_choices|null
-		if(!picked)
-			return
-		var/datum/station_goal/G = new picked()
-		if(picked == /datum/station_goal)
-			var/newname = input("Enter goal name:") as text|null
-			if(!newname)
-				return
-			G.name = newname
-			var/description = input("Enter CentCom message contents:") as message|null
-			if(!description)
-				return
-			G.report_message = description
-		message_admins("[key_name(usr)] created \"[G.name]\" station goal.")
-		SSticker.mode.station_goals += G
-		modify_goals()
 
 	else if(href_list["viewruntime"])
 		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
@@ -1965,11 +1626,6 @@
 					log_query_debug("[usr.key] | [response]")
 		else if(answer == "no")
 			log_query_debug("[usr.key] | Reported no server hang")
-
-	else if(href_list["ctf_toggle"])
-		if(!check_rights(R_ADMIN))
-			return
-		toggle_all_ctf(usr)
 
 	else if(href_list["rebootworld"])
 		if(!check_rights(R_ADMIN))

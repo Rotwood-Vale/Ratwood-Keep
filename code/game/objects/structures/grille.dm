@@ -17,10 +17,6 @@
 	var/broken_type = /obj/structure/grille/broken
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
 
-/obj/structure/grille/Destroy()
-	update_cable_icons_on_turf(get_turf(src))
-	return ..()
-
 /obj/structure/grille/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
 	. = ..()
 	update_icon()
@@ -46,55 +42,12 @@
 //	if(!anchored)
 //		. += span_notice("The anchoring screws are <i>unscrewed</i>. The rods look like they could be <b>cut</b> through.")
 
-/obj/structure/grille/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	switch(the_rcd.mode)
-		if(RCD_DECONSTRUCT)
-			return list("mode" = RCD_DECONSTRUCT, "delay" = 20, "cost" = 5)
-		if(RCD_WINDOWGRILLE)
-			if(the_rcd.window_type == /obj/structure/window/reinforced/fulltile)
-				return list("mode" = RCD_WINDOWGRILLE, "delay" = 40, "cost" = 12)
-			else
-				return list("mode" = RCD_WINDOWGRILLE, "delay" = 20, "cost" = 8)
-	return FALSE
-
-/obj/structure/grille/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	switch(passed_mode)
-		if(RCD_DECONSTRUCT)
-			to_chat(user, span_notice("I deconstruct the grille."))
-			qdel(src)
-			return TRUE
-		if(RCD_WINDOWGRILLE)
-			if(locate(/obj/structure/window) in loc)
-				return FALSE
-			to_chat(user, span_notice("I construct the window."))
-			var/obj/structure/window/WD = new the_rcd.window_type(drop_location())
-			WD.setAnchored(TRUE)
-			return TRUE
-	return FALSE
-
-/obj/structure/grille/Bumped(atom/movable/AM)
-	if(!ismob(AM))
-		return
-	var/mob/M = AM
-	shock(M, 70)
-
-/obj/structure/grille/attack_animal(mob/user)
-	. = ..()
-	if(!.)
-		return
-	if(!shock(user, 70))
-		take_damage(rand(5,10), BRUTE, "slash", 1)
 
 /obj/structure/grille/attack_paw(mob/user)
 	return attack_hand(user)
 
 /obj/structure/grille/hulk_damage()
 	return 60
-
-/obj/structure/grille/attack_hulk(mob/living/carbon/human/user)
-	if(shock(user, 70))
-		return
-	. = ..()
 
 /obj/structure/grille/attack_hand(mob/living/user)
 	. = ..()
@@ -104,8 +57,6 @@
 	user.do_attack_animation(src, ATTACK_EFFECT_KICK)
 	user.visible_message(span_warning("[user] hits [src]."), null, null, COMBAT_MESSAGE_RANGE)
 	log_combat(user, src, "hit")
-	if(!shock(user, 70))
-		take_damage(rand(5,10), BRUTE, "blunt", 1)
 
 
 /obj/structure/grille/CanPass(atom/movable/mover, turf/target)
@@ -127,25 +78,22 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	add_fingerprint(user)
 	if(W.tool_behaviour == TOOL_WIRECUTTER)
-		if(!shock(user, 100))
-			W.play_tool_sound(src, 100)
-			deconstruct()
+		W.play_tool_sound(src, 100)
+		deconstruct()
 	else if((W.tool_behaviour == TOOL_SCREWDRIVER) && (isturf(loc) || anchored))
-		if(!shock(user, 90))
-			W.play_tool_sound(src, 100)
-			setAnchored(!anchored)
-			user.visible_message(span_notice("[user] [anchored ? "fastens" : "unfastens"] [src]."), \
+		W.play_tool_sound(src, 100)
+		setAnchored(!anchored)
+		user.visible_message(span_notice("[user] [anchored ? "fastens" : "unfastens"] [src]."), \
 								 span_notice("I [anchored ? "fasten [src] to" : "unfasten [src] from"] the floor."))
-			return
+		return
 	else if(istype(W, /obj/item/stack/rods) && broken)
 		var/obj/item/stack/rods/R = W
-		if(!shock(user, 90))
-			user.visible_message(span_notice("[user] rebuilds the broken grille."), \
+		user.visible_message(span_notice("[user] rebuilds the broken grille."), \
 								 span_notice("I rebuild the broken grille."))
-			new grille_type(src.loc)
-			R.use(1)
-			qdel(src)
-			return
+		new grille_type(src.loc)
+		R.use(1)
+		qdel(src)
+		return
 
 //window placing begin
 	else if(is_glass_sheet(W))
@@ -189,7 +137,7 @@
 			return
 //window placing end
 
-	else if(istype(W, /obj/item/shard) || !shock(user, 70))
+	else if(istype(W, /obj/item/shard))
 		return ..()
 
 /obj/structure/grille/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
@@ -220,46 +168,12 @@
 	..()
 
 
-// shock user with probability prb (if all connections & power are working)
-// returns 1 if shocked, 0 otherwise
-
-/obj/structure/grille/proc/shock(mob/user, prb)
-	if(!anchored || broken)		// anchored/broken grilles are never connected
-		return FALSE
-	if(!prob(prb))
-		return FALSE
-	if(!in_range(src, user))//To prevent TK and mech users from getting shocked
-		return FALSE
-	var/turf/T = get_turf(src)
-	var/obj/structure/cable/C = T.get_cable_node()
-	if(C)
-		if(electrocute_mob(user, C, src, 1, TRUE))
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(3, 1, src)
-			s.start()
-			return TRUE
-		else
-			return FALSE
-	return FALSE
 
 /obj/structure/grille/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(!broken)
 		if(exposed_temperature > T0C + 1500)
 			take_damage(1, BURN, 0, 0)
 	..()
-
-/obj/structure/grille/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
-	if(isobj(AM))
-		if(prob(50) && anchored && !broken)
-			var/obj/O = AM
-			if(O.throwforce != 0)//don't want to let people spam tesla bolts, this way it will break after time
-				var/turf/T = get_turf(src)
-				var/obj/structure/cable/C = T.get_cable_node()
-				if(C)
-					playsound(src, 'sound/blank.ogg', 100, TRUE, extrarange = 5)
-					tesla_zap(src, 3, C.newavail() * 0.01, TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE | TESLA_MOB_STUN | TESLA_ALLOW_DUPLICATES) //Zap for 1/100 of the amount of power. At a million watts in the grid, it will be as powerful as a tesla revolver shot.
-					C.add_delayedload(C.newavail() * 0.0375) // you can gain up to 3.5 via the 4x upgrades power is halved by the pole so thats 2x then 1X then .5X for 3.5x the 3 bounces shock.
-	return ..()
 
 /obj/structure/grille/get_dumping_location(datum/component/storage/source,mob/user)
 	return null

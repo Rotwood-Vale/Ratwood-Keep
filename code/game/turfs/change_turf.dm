@@ -358,13 +358,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	else
 		CALCULATE_ADJACENT_TURFS(src)
 
-	//update firedoor adjacency
-	var/list/turfs_to_check = get_adjacent_open_turfs(src) | src
-	for(var/I in turfs_to_check)
-		var/turf/T = I
-		for(var/obj/machinery/door/firedoor/FD in T)
-			FD.CalculateAffectingAreas()
-
 	queue_smooth_neighbors(src)
 
 	HandleTurfChange(src)

@@ -190,9 +190,6 @@
 /datum/dynamic_ruleset/midround/autotraitor/trim_candidates()
 	..()
 	for(var/mob/living/player in living_players)
-		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
-			living_players -= player
-			continue
 		if(is_centcom_level(player.z))
 			living_players -= player // We don't autotator people in CentCom
 			continue
@@ -210,58 +207,6 @@
 	living_players -= M
 	var/datum/antagonist/traitor/newTraitor = new
 	M.mind.add_antag_datum(newTraitor)
-	return TRUE
-
-
-//////////////////////////////////////////////
-//                                          //
-//         Malfunctioning AI                //
-//                              		    //
-//////////////////////////////////////////////
-
-/datum/dynamic_ruleset/midround/malf
-	name = "Malfunctioning AI"
-	antag_datum = /datum/antagonist/traitor
-	antag_flag = ROLE_MALF
-	enemy_roles = list("Security Officer", "Warden","Detective","Head of Security", "Captain", "Scientist", "Chemist", "Research Director", "Chief Engineer")
-	exclusive_roles = list("AI")
-	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
-	required_candidates = 1
-	weight = 3
-	cost = 35
-	requirements = list(101,101,80,70,60,60,50,50,40,40)
-	high_population_requirement = 35
-	required_type = /mob/living/silicon/ai
-	var/ion_announce = 33
-	var/removeDontImproveChance = 10
-
-/datum/dynamic_ruleset/midround/malf/trim_candidates()
-	..()
-	candidates = living_players
-	for(var/mob/living/player in candidates)
-		if(!isAI(player))
-			candidates -= player
-			continue
-		if(is_centcom_level(player.z))
-			candidates -= player
-			continue
-		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
-			candidates -= player
-
-/datum/dynamic_ruleset/midround/malf/execute()
-	if(!candidates || !candidates.len)
-		return FALSE
-	var/mob/living/silicon/ai/M = pick_n_take(candidates)
-	assigned += M.mind
-	var/datum/antagonist/traitor/AI = new
-	M.mind.special_role = antag_flag
-	M.mind.add_antag_datum(AI)
-	if(prob(ion_announce))
-		priority_announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", 'sound/blank.ogg')
-		if(prob(removeDontImproveChance))
-			M.replace_random_law(generate_ion_law(), list(LAW_INHERENT, LAW_SUPPLIED, LAW_ION))
-		else
-			M.add_ion_law(generate_ion_law())
 	return TRUE
 
 //////////////////////////////////////////////
@@ -295,49 +240,6 @@
 /datum/dynamic_ruleset/midround/from_ghosts/wizard/finish_setup(mob/new_character, index)
 	..()
 	new_character.forceMove(pick(GLOB.wizardstart))
-
-//////////////////////////////////////////////
-//                                          //
-//          NUCLEAR OPERATIVES (MIDROUND)   //
-//                                          //
-//////////////////////////////////////////////
-
-/datum/dynamic_ruleset/midround/from_ghosts/nuclear
-	name = "Nuclear Assault"
-	antag_flag = ROLE_OPERATIVE
-	antag_datum = /datum/antagonist/nukeop
-	enemy_roles = list("AI", "Cyborg", "Security Officer", "Warden","Detective","Head of Security", "Captain")
-	required_enemies = list(3,3,3,3,3,2,1,1,0,0)
-	required_candidates = 5
-	weight = 5
-	cost = 35
-	requirements = list(90,90,90,80,60,40,30,20,10,10)
-	high_population_requirement = 10
-	var/list/operative_cap = list(2,2,3,3,4,5,5,5,5,5)
-	var/datum/team/nuclear/nuke_team
-	flags = HIGHLANDER_RULESET
-
-/datum/dynamic_ruleset/midround/from_ghosts/nuclear/acceptable(population=0, threat=0)
-	if (locate(/datum/dynamic_ruleset/roundstart/nuclear) in mode.executed_rules)
-		return FALSE // Unavailable if nuke ops were already sent at roundstart
-	indice_pop = min(operative_cap.len, round(living_players.len/5)+1)
-	required_candidates = operative_cap[indice_pop]
-	return ..()
-
-/datum/dynamic_ruleset/midround/from_ghosts/nuclear/ready(forced = FALSE)
-	if (required_candidates > (dead_players.len + list_observers.len))
-		return FALSE
-	return ..()
-
-/datum/dynamic_ruleset/midround/from_ghosts/nuclear/finish_setup(mob/new_character, index)
-	new_character.mind.special_role = "Nuclear Operative"
-	new_character.mind.assigned_role = "Nuclear Operative"
-	if (index == 1) // Our first guy is the leader
-		var/datum/antagonist/nukeop/leader/new_role = new
-		nuke_team = new_role.nuke_team
-		new_character.mind.add_antag_datum(new_role)
-	else
-		return ..()
 
 //////////////////////////////////////////////
 //                                          //

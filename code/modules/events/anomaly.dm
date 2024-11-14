@@ -21,13 +21,12 @@
 		/area/ai_monitored/turret_protected/ai_upload,
 		/area/engine,
 		/area/solar,
-		/area/holodeck,
 		/area/shuttle)
 		)
 
 		//Subtypes from the above that actually should explode.
 		var/list/unsafe_area_subtypes = typecacheof(list(/area/engine/break_room))
-		
+
 		allowed_areas = make_associative(GLOB.the_station_areas) - safe_area_types + unsafe_area_subtypes
 
 	return safepick(typecache_filter_list(GLOB.sortedAreas,allowed_areas))
