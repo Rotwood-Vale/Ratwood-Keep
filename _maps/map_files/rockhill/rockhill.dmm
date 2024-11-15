@@ -8612,7 +8612,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/bog)
 "hgB" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame,
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
 "hgO" = (
@@ -9541,7 +9541,7 @@
 	},
 /area/rogue/indoors/town)
 "hTN" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame,
+/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
 "hTQ" = (
@@ -289880,7 +289880,7 @@ wlD
 wlD
 odp
 cyr
-cyr
+hTN
 cyr
 pAV
 qvR
