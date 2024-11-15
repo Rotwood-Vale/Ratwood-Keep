@@ -31,7 +31,10 @@ SUBSYSTEM_DEF(fire_burning)
 
 		if(O.resistance_flags & ON_FIRE) //in case an object is extinguished while still in currentrun
 			if(!(O.resistance_flags & FIRE_PROOF))
-				O.take_damage(0.15, BURN, "fire", 0)
+				if (istype(O, /obj/item/grown)) //should make all wood or grown items burn faster
+					O.take_damage(2, BURN, "fire", 0)
+				else
+					O.take_damage(1, BURN, "fire", 0) //everything else burns normally
 			else
 				O.extinguish()
 			if(!O.fire_burn_start)
