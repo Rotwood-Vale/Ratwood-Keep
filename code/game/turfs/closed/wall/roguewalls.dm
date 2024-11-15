@@ -142,7 +142,7 @@
 	above_floor = /turf/open/floor/rogue/twig
 	baseturfs = list(/turf/open/floor/rogue/twig)
 	neighborlay = "dirtedge"
-	climbdiff = 1
+	climbdiff = 99 //how are you even supposed to climb a tent??
 
 /turf/closed/wall/mineral/rogue/wooddark
 	name = "dark wood wall"
