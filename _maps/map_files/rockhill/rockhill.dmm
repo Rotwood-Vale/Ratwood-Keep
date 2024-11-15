@@ -5664,6 +5664,10 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/tavern)
+"exp" = (
+/obj/structure/fluff/walldeco/stone,
+/turf/closed/wall/mineral/rogue/decostone/mossy/blue,
+/area/rogue/indoors/town/church/chapel)
 "eyb" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/stairs{
@@ -9635,7 +9639,7 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/town)
 "hAb" = (
-/obj/structure/roguemachine/atm,
+/obj/structure/fluff/psycross/copper,
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church/chapel)
 "hAg" = (
@@ -22277,6 +22281,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 9
 	},
+/obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "rMj" = (
@@ -424387,8 +424392,8 @@ fZJ
 hlE
 dqA
 klS
+exp
 uwg
-bcq
 rLX
 tCM
 bUY
@@ -426008,7 +426013,7 @@ njH
 aVi
 nhW
 ahq
-rdc
+hAb
 sPD
 xNd
 vkU
