@@ -24935,6 +24935,12 @@
 	icon_state = "tile"
 	},
 /area/rogue/indoors/town/tavern)
+"veb" = (
+/obj/structure/roguemachine/vendor{
+	lockid = "artificer"
+	},
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town)
 "veg" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/outdoors/mountains)
@@ -25968,9 +25974,9 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/roguegear{
-	pixel_y = 8;
-	pixel_x = -4
+/obj/item/roguegear/bronze{
+	pixel_y = 7;
+	pixel_x = -6
 	},
 /obj/item/rogueweapon/hammer/wood{
 	pixel_x = 4
@@ -26024,6 +26030,10 @@
 "whb" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/cavewet/bogcaves)
+"whh" = (
+/obj/item/rogueweapon/tongs,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town)
 "whr" = (
 /obj/structure/closet/crate/chest{
 	lockid = "clinic"
@@ -296290,7 +296300,7 @@ wbg
 wbg
 wbg
 wVI
-evo
+veb
 wek
 ucS
 ucS
@@ -399208,7 +399218,7 @@ nWv
 bmi
 thT
 tHa
-tHa
+whh
 xEE
 hdl
 fZJ
