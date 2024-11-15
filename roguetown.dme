@@ -2241,6 +2241,8 @@
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\antag\foresworn.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\antag\hedgeknight.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\antag\knave.dm"
+#include "code\modules\jobs\job_types\roguetown\adventurer\types\antag\roguemage.dm"
+#include "code\modules\jobs\job_types\roguetown\adventurer\types\antag\sawbones.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\amazon.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\barbarian.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\combat\bard.dm"

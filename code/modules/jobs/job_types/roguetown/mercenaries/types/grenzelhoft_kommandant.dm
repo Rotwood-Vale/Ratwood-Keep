@@ -19,7 +19,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_kommandant
 	maximum_possible_slots = 1
-	min_pq = 6
+	min_pq = 18
 	torch = FALSE
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	category_tags = list(CTAG_MERCENARY)

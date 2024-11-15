@@ -26,6 +26,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
@@ -36,10 +37,11 @@
 	neck = /obj/item/clothing/neck/roguetown/coif
 	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	H.change_stat("strength", 4)
+	H.change_stat("strength", 3)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
-	H.change_stat("intelligence", -3)
+	H.change_stat("perception", 1)
+	H.change_stat("intelligence", -2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
 	var/weapons = list("Axe & Cudgel","Flail & Shield")
