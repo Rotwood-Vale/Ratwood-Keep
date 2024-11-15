@@ -27755,10 +27755,6 @@
 "xvv" = (
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/tavern)
-"xvR" = (
-/obj/structure/flora/newtree,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/rtfield)
 "xww" = (
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "vertw"
@@ -396295,7 +396291,7 @@ qbG
 qbG
 qbG
 qbG
-xvR
+qbG
 qbG
 qbG
 qbG
@@ -396698,7 +396694,7 @@ qbG
 qbG
 qbG
 qbG
-xvR
+qbG
 qbG
 qbG
 qbG
