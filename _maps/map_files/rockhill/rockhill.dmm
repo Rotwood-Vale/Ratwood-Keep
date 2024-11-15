@@ -2144,6 +2144,12 @@
 /obj/structure/ladder,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
+"bOX" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled{
+	dir = 8
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/indoors)
 "bQf" = (
 /obj/structure/chair/stool/rogue,
 /obj/effect/landmark/start/grabber,
@@ -4196,16 +4202,6 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
-"dys" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	layer = 2.7;
-	pixel_x = 2;
-	pixel_y = 7
-	},
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors)
 "dyt" = (
 /obj/structure/roguewindow/openclose{
 	dir = 4
@@ -9496,7 +9492,9 @@
 	},
 /area/rogue/indoors/town)
 "hTN" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled,
+/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled{
+	dir = 4
+	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
 "hTQ" = (
@@ -25198,8 +25196,10 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
+/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled{
+	dir = 8
+	},
 /obj/machinery/light/rogue/torchholder/l,
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
 "vhb" = (
@@ -289344,14 +289344,14 @@ fxx
 pAV
 pAV
 cyr
-hTN
+bOX
 cyr
 jbJ
 fcy
 odp
 wEY
 mfz
-hTN
+bOX
 cyr
 pAV
 pAV
@@ -290150,7 +290150,7 @@ wlD
 wlD
 pAV
 pAV
-dys
+jHe
 jHe
 vfC
 wlD
@@ -290552,7 +290552,7 @@ wlD
 wlD
 pAV
 pAV
-cyr
+hTN
 odp
 wlD
 wlD
