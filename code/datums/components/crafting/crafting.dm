@@ -255,15 +255,18 @@
 							var/atom/movable/I = new IT(T)
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
+							I.add_fingerprint(user)
 					else
 						if(ispath(R.result, /turf))
 							var/turf/X = T.PlaceOnTop(R.result)
 							if(X)
 								X.OnCrafted(user.dir, user)
+								X.add_fingerprint(user)
 						else
 							var/atom/movable/I = new R.result (T)
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
+							I.add_fingerprint(user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [R.name]!"), \
 										span_notice("I [R.verbage_simple] \a [R.name]!"))
 					if(user.mind && R.skillcraft)
