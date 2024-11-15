@@ -96,10 +96,6 @@ Reproductive extracts:
 	extract_type = /obj/item/slime_extract/pyrite
 	colour = "pyrite"
 
-/obj/item/slimecross/reproductive/red
-	extract_type = /obj/item/slime_extract/red
-	colour = "red"
-
 /obj/item/slimecross/reproductive/green
 	extract_type = /obj/item/slime_extract/green
 	colour = "green"

@@ -210,21 +210,6 @@ Chilling extracts:
 	new /obj/item/clothing/glasses/prism_glasses(get_turf(user))
 	..()
 
-/obj/item/slimecross/chilling/red
-	colour = "red"
-	effect_desc = ""
-
-/obj/item/slimecross/chilling/red/do_effect(mob/user)
-	var/slimesfound = FALSE
-	for(var/mob/living/simple_animal/slime/S in view(get_turf(user), 7))
-		slimesfound = TRUE
-		S.docile = TRUE
-	if(slimesfound)
-		user.visible_message(span_notice("[src] lets out a peaceful ring as it shatters, and nearby slimes seem calm."))
-	else
-		user.visible_message(span_notice("[src] lets out a peaceful ring as it shatters, but nothing happens..."))
-	..()
-
 /obj/item/slimecross/chilling/green
 	colour = "green"
 	effect_desc = ""

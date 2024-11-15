@@ -68,6 +68,7 @@
 	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
 	qdel(src)
 
+
 /obj/structure/reagent_dispensers/fueltank/ex_act()
 	boom()
 

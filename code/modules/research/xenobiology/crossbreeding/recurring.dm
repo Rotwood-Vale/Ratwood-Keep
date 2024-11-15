@@ -98,10 +98,6 @@ Recurring extracts:
 	extract_type = /obj/item/slime_extract/pyrite
 	colour = "pyrite"
 
-/obj/item/slimecross/recurring/red
-	extract_type = /obj/item/slime_extract/red
-	colour = "red"
-
 /obj/item/slimecross/recurring/green
 	extract_type = /obj/item/slime_extract/green
 	colour = "green"

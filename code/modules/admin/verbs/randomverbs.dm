@@ -886,16 +886,13 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
 		return
 	var/static/list/punishment_list = list(
-		ADMIN_PUNISHMENT_LIGHTNING, 
-		ADMIN_PUNISHMENT_BRAINDAMAGE, 
-		ADMIN_PUNISHMENT_GIB, 
-		ADMIN_PUNISHMENT_BSA, 
-		ADMIN_PUNISHMENT_FIREBALL, 
-		ADMIN_PUNISHMENT_ROD, 
-		ADMIN_PUNISHMENT_SUPPLYPOD_QUICK, 
-		ADMIN_PUNISHMENT_SUPPLYPOD, 
-		ADMIN_PUNISHMENT_MAZING, 
-		ADMIN_PUNISHMENT_BRAZIL,
+		ADMIN_PUNISHMENT_LIGHTNING,
+		ADMIN_PUNISHMENT_BRAINDAMAGE,
+		ADMIN_PUNISHMENT_GIB,
+		ADMIN_PUNISHMENT_BSA,
+		ADMIN_PUNISHMENT_ROD,
+		ADMIN_PUNISHMENT_SUPPLYPOD_QUICK,
+		ADMIN_PUNISHMENT_SUPPLYPOD,
 		ADMIN_PUNISHMENT_CBT,
 		ADMIN_PUNISHMENT_NECKSNAP,
 	)
@@ -920,8 +917,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			target.gib(FALSE)
 		if(ADMIN_PUNISHMENT_BSA)
 			bluespace_artillery(target)
-		if(ADMIN_PUNISHMENT_FIREBALL)
-			new /obj/effect/temp_visual/target(get_turf(target))
 		if(ADMIN_PUNISHMENT_SUPPLYPOD_QUICK)
 			var/target_path = input(usr,"Enter typepath of an atom you'd like to send with the pod (type \"empty\" to send an empty pod):" ,"Typepath","/obj/item/reagent_containers/food/snacks/grown/harebell") as null|text
 			var/obj/structure/closet/supplypod/centcompod/pod = new()
@@ -952,33 +947,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			plaunch.temp_pod.effectStun = TRUE
 			plaunch.ui_interact(usr)
 			return //We return here because punish_log() is handled by the centcom_podlauncher datum
-
-		if(ADMIN_PUNISHMENT_MAZING)
-			if(!puzzle_imprison(target))
-				to_chat(usr,span_warning("Imprisonment failed!"))
-				return
-		/*
-		if(ADMIN_PUNISHMENT_BRAZIL)
-			if(!ishuman(target))
-				to_chat(usr,span_warning("Target must be human!"))
-				return
-			var/mob/living/carbon/human/ligga = target
-			ligga.emote("painscream")
-			ligga.set_patron(GLOB.patronlist[/datum/patron/divine/dendor] || GLOB.patronlist[/datum/patron/godless])
-			var/old_name = ligga.real_name
-			var/datum/species/lizard/brazil/brazil = new /datum/species/lizard/brazil
-			ligga.set_species(brazil)
-			brazil.random_character(ligga)
-			ligga.fully_replace_character_name(ligga.real_name, old_name)
-			ligga.regenerate_icons()
-			var/static/list/bad_slots = list(
-				SLOT_HEAD,
-				SLOT_SHOES,
-			)
-			for(var/slot in bad_slots)
-				ligga.dropItemToGround(ligga.get_item_by_slot(slot))
-			to_chat(ligga, "<span class='userdanger'>I have been sent to <span class='green'>Brazil</span>!</span>")
-		*/
 
 		if(ADMIN_PUNISHMENT_CBT)
 			if(!ishuman(target))

@@ -132,11 +132,7 @@
 				body += "<A href='?_src_=holder;[HrefToken()];corgione=[REF(M)]'>Corgize</A> | "
 
 			if(ishuman(M))
-				body += "<A href='?_src_=holder;[HrefToken()];makeai=[REF(M)]'>Make AI</A> | "
-				body += "<A href='?_src_=holder;[HrefToken()];makerobot=[REF(M)]'>Make Robot</A> | "
-				body += "<A href='?_src_=holder;[HrefToken()];makealien=[REF(M)]'>Make Alien</A> | "
 				body += "<A href='?_src_=holder;[HrefToken()];makeslime=[REF(M)]'>Make Slime</A> | "
-				body += "<A href='?_src_=holder;[HrefToken()];makeblob=[REF(M)]'>Make Blob</A> | "
 
 			//Simple Animals
 			if(isanimal(M))
@@ -652,25 +648,6 @@
 	log_admin("[key_name(usr)] pod-spawned [chosen] at [AREACOORD(usr)]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Podspawn Atom") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/spawn_cargo(object as text)
-	set category = "Debug"
-	set desc = ""
-	set name = "Spawn Cargo"
-
-	if(!check_rights(R_SPAWN))
-		return
-
-	var/chosen = pick_closest_path(object, make_types_fancy(subtypesof(/datum/supply_pack)))
-	if(!chosen)
-		return
-	var/datum/supply_pack/S = new chosen
-	S.admin_spawned = TRUE
-	S.generate(get_turf(usr))
-
-	log_admin("[key_name(usr)] spawned cargo pack [chosen] at [AREACOORD(usr)]")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Spawn Cargo") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-
 /datum/admins/proc/show_traitor_panel(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set desc = ""
@@ -889,3 +866,20 @@
 
 	var/mob/living/carbon/human/H = mob
 	H.returntolobby()
+
+/client/proc/spawn_pollution()
+	set category = "GameMaster"
+	set name = "Spawn Pollution"
+	set desc = "Spawns an amount of chosen pollutant at your current location."
+
+	var/list/singleton_list = SSpollution.singletons
+	var/choice = input(usr, "What type of pollutant would you like to spawn?", "Spawn Pollution") as null|anything in singleton_list
+	if(!choice)
+		return
+	var/amount_choice = input(usr, "Amount of pollution", "Spawn Pollution") as num|null
+	if(!amount_choice)
+		return
+	var/turf/epicenter = get_turf(mob)
+	epicenter.pollute_turf(choice, amount_choice)
+	message_admins("[ADMIN_LOOKUPFLW(usr)] spawned pollution at [epicenter.loc] ([choice] - [amount_choice]).")
+	log_admin("[key_name(usr)] spawned pollution at [epicenter.loc] ([choice] - [amount_choice]).")

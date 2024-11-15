@@ -202,19 +202,7 @@
 			target.mind.attackedme[user.real_name] = world.time
 		user.rogfat_add(15)
 
-/mob/living/simple_animal/attack_slime(mob/living/simple_animal/slime/M)
-	if(..()) //successful slime attack
-		var/damage = rand(15, 25)
-		if(M.is_adult)
-			damage = rand(20, 35)
-		return attack_threshold_check(damage)
-
-/mob/living/simple_animal/attack_drone(mob/living/simple_animal/drone/M)
-	if(M.used_intent.type == INTENT_HARM) //No kicking dogs even as a rogue drone. Use a weapon.
-		return
-	return ..()
-
-/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = d_type)
+/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = "melee")
 	var/temp_damage = damage
 	if(!damage_coeff[damagetype])
 		temp_damage = 0
@@ -256,7 +244,7 @@
 			if(prob(bomb_armor))
 				bloss = bloss / 1.5
 			adjustBruteLoss(bloss)
-			
+
 /mob/living/simple_animal/do_attack_animation(atom/A, visual_effect_icon, used_item, no_effect)
 	if(!no_effect && !visual_effect_icon && melee_damage_upper)
 		if(melee_damage_upper < 10)

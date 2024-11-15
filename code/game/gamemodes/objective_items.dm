@@ -110,17 +110,6 @@
 			return TRUE
 	return FALSE
 
-/datum/objective_item/steal/slime
-	name = "an unused sample of slime extract."
-	targetitem = /obj/item/slime_extract
-	difficulty = 3
-	excludefromjob = list("Research Director","Scientist")
-
-/datum/objective_item/steal/slime/check_special_completion(obj/item/slime_extract/E)
-	if(E.Uses > 0)
-		return 1
-	return 0
-
 //Unique Objectives
 /datum/objective_item/unique/docs_red
 	name = "the \"Red\" secret documents."
@@ -142,17 +131,6 @@
 /datum/objective_item/special/Destroy()
 	GLOB.possible_items_special -= src
 	return ..()
-
-//Old ninja objectives.
-/datum/objective_item/special/pinpointer/nuke
-	name = "the captain's pinpointer."
-	targetitem = /obj/item/pinpointer
-	difficulty = 10
-
-/datum/objective_item/special/ddrill
-	name = "a diamond drill."
-	targetitem = /obj/item/pickaxe/drill/diamonddrill
-	difficulty = 10
 
 /datum/objective_item/special/boh
 	name = "a bag of holding."

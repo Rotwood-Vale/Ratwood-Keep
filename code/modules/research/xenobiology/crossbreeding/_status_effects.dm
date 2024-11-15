@@ -453,19 +453,6 @@ datum/status_effect/rebreathing/tick()
 /datum/status_effect/stabilized/null //This shouldn't ever happen, but just in case.
 	id = "stabilizednull"
 
-
-//Stabilized effects start below.
-/datum/status_effect/stabilized/grey
-	id = "stabilizedgrey"
-	colour = "grey"
-
-/datum/status_effect/stabilized/grey/tick()
-	for(var/mob/living/simple_animal/slime/S in range(1, get_turf(owner)))
-		if(!(owner in S.Friends))
-			to_chat(owner, span_notice("[linked_extract] pulses gently as it communicates with [S]."))
-			S.Friends[owner] = 1
-	return ..()
-
 /datum/status_effect/stabilized/orange
 	id = "stabilizedorange"
 	colour = "orange"

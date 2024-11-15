@@ -190,23 +190,6 @@
 			if(istype(C))
 				C.sensor_mode = NO_SENSORS
 
-	var/obj/item/card/id/W = H.wear_ring
-	if(W)
-		if(id_access)
-			for(var/jobtype in typesof(/datum/job))
-				var/datum/job/J = new jobtype
-				if(J.title == id_access)
-					W.access = J.get_access()
-					break
-		if(id_access_list)
-			if(!islist(W.access))
-				W.access = list()
-			W.access |= id_access_list
-		if(id_job)
-			W.assignment = id_job
-		W.registered_name = H.real_name
-		W.update_label()
-
 //Instant version - use when spawning corpses during runtime
 /obj/effect/mob_spawn/human/corpse
 	roundstart = FALSE
@@ -226,15 +209,6 @@
 	instant = FALSE
 
 //Non-human spawners
-
-/obj/effect/mob_spawn/slime
-	mob_type = 	/mob/living/simple_animal/slime
-	var/mobcolour = "grey"
-	icon = 'icons/mob/slimes.dmi'
-	icon_state = "grey baby slime" //sets the icon in the map editor
-
-/obj/effect/mob_spawn/slime/equip(mob/living/simple_animal/slime/S)
-	S.colour = mobcolour
 
 /obj/effect/mob_spawn/mouse
 	name = "sleeper"
@@ -262,8 +236,6 @@
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	suit = /obj/item/clothing/suit/armor/vest
 	glasses = /obj/item/clothing/glasses/sunglasses/reagent
-	id = /obj/item/card/id
-
 /obj/effect/mob_spawn/human/beach
 	outfit = /datum/outfit/beachbum
 
@@ -288,10 +260,8 @@
 /datum/outfit/beachbum
 	name = "Beach Bum"
 	glasses = /obj/item/clothing/glasses/sunglasses
-	r_pocket = /obj/item/storage/wallet/random
 	l_pocket = /obj/item/reagent_containers/food/snacks/pizzaslice/dank;
 	uniform = /obj/item/clothing/under/pants/youngfolksjeans
-	id = /obj/item/card/id
 
 /datum/outfit/beachbum/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
@@ -313,7 +283,6 @@
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	glasses = /obj/item/clothing/glasses/sunglasses
-	id = /obj/item/card/id
 
 
 /obj/effect/mob_spawn/human/commander
@@ -332,7 +301,6 @@
 	gloves = /obj/item/clothing/gloves/combat
 	shoes = /obj/item/clothing/shoes/combat/swat
 	r_pocket = /obj/item/lighter
-	id = /obj/item/card/id
 
 
 /obj/effect/mob_spawn/human/nanotrasensoldier
@@ -350,7 +318,6 @@
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	head = /obj/item/clothing/head/helmet/swat/nanotrasen
 	back = /obj/item/storage/backpack/security
-	id = /obj/item/card/id
 
 
 /obj/effect/mob_spawn/human/commander/alive

@@ -27,18 +27,6 @@ Burning extracts:
 	qdel(src)
 	return
 
-/obj/item/slimecross/burning/grey
-	colour = "grey"
-	effect_desc = ""
-
-/obj/item/slimecross/burning/grey/do_effect(mob/user)
-	var/mob/living/simple_animal/slime/S = new(get_turf(user),"grey")
-	S.visible_message(span_danger("A baby slime emerges from [src], and it nuzzles [user] before burbling hungrily!"))
-	S.Friends[user] = 20 //Gas, gas, gas
-	S.bodytemperature = T0C + 400 //We gonna step on the gas.
-	S.set_nutrition(S.get_hunger_nutrition()) //Tonight, we fight!
-	..()
-
 /obj/item/slimecross/burning/orange
 	colour = "orange"
 	effect_desc = ""
@@ -182,23 +170,6 @@ Burning extracts:
 		stoplag()
 	..()
 
-/obj/item/slimecross/burning/red
-	colour = "red"
-	effect_desc = ""
-
-/obj/item/slimecross/burning/red/do_effect(mob/user)
-	user.visible_message(span_danger("[src] pulses a hazy red aura for a moment, which wraps around [user]!"))
-	for(var/mob/living/simple_animal/slime/S in view(7, get_turf(user)))
-		if(user in S.Friends)
-			var/friendliness = S.Friends[user]
-			S.Friends = list()
-			S.Friends[user] = friendliness
-		else
-			S.Friends = list()
-		S.rabid = 1
-		S.visible_message(span_danger("The [S] is driven into a dangerous frenzy!"))
-	..()
-
 /obj/item/slimecross/burning/green
 	colour = "green"
 	effect_desc = ""
@@ -260,21 +231,6 @@ Burning extracts:
 		new /obj/effect/temp_visual/explosion(get_turf(M))
 		M.ex_act(EXPLODE_HEAVY)
 	qdel(src)
-
-/obj/item/slimecross/burning/black
-	colour = "black"
-	effect_desc = ""
-
-/obj/item/slimecross/burning/black/do_effect(mob/user)
-	var/mob/living/L = user
-	if(!istype(L))
-		return
-	user.visible_message(span_danger("[src] absorbs [user], transforming [user.p_them()] into a slime!"))
-	var/obj/effect/proc_holder/spell/targeted/shapeshift/slimeform/S = new()
-	S.remove_on_restore = TRUE
-	user.mind.AddSpell(S)
-	S.cast(list(user),user)
-	..()
 
 /obj/item/slimecross/burning/lightpink
 	colour = "light pink"

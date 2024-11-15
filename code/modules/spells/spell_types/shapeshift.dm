@@ -81,16 +81,6 @@
 	clothes_req = initial(clothes_req)
 	human_req = initial(human_req)
 
-/obj/effect/proc_holder/spell/targeted/shapeshift/dragon
-	name = "Dragon Form"
-	desc = ""
-	invocation = "RAAAAAAAAWR!"
-	convert_damage = FALSE
-
-
-	shapeshift_type = /mob/living/simple_animal/hostile/megafauna/dragon/lesser
-
-
 /obj/shapeshift_holder
 	name = "Shapeshift holder"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ON_FIRE | UNACIDABLE | ACID_PROOF

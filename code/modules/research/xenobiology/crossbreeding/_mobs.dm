@@ -4,32 +4,6 @@ Slimecrossing Mobs
 	Collected here for clarity.
 */
 
-//Slime transformation power - Burning Black
-/obj/effect/proc_holder/spell/targeted/shapeshift/slimeform
-	name = "Slime Transformation"
-	desc = ""
-	action_icon_state = "transformslime"
-	cooldown_min = 0
-	charge_max = 0
-	invocation_type = "none"
-	shapeshift_type = /mob/living/simple_animal/slime/transformedslime
-	convert_damage = TRUE
-	convert_damage_type = CLONE
-	var/remove_on_restore = FALSE
-
-/obj/effect/proc_holder/spell/targeted/shapeshift/slimeform/Restore(mob/living/M)
-	if(remove_on_restore)
-		if(M.mind)
-			M.mind.RemoveSpell(src)
-	..()
-
-//Transformed slime - Burning Black
-/mob/living/simple_animal/slime/transformedslime
-
-/mob/living/simple_animal/slime/transformedslime/Reproduce() //Just in case.
-	to_chat(src, span_warning("I can't reproduce..."))
-	return
-
 //Slime corgi - Chilling Pink
 /mob/living/simple_animal/pet/dog/corgi/puppy/slime
 	name = "\improper slime corgi puppy"

@@ -28,15 +28,6 @@ Charged extracts:
 	qdel(src)
 	return
 
-/obj/item/slimecross/charged/grey
-	colour = "grey"
-	effect_desc = ""
-
-/obj/item/slimecross/charged/grey/do_effect(mob/user)
-	new /obj/item/slimepotion/slime_reviver(get_turf(user))
-	user.visible_message(span_notice("[src] distills into a potion!"))
-	..()
-
 /obj/item/slimecross/charged/orange
 	colour = "orange"
 	effect_desc = ""
@@ -54,15 +45,6 @@ Charged extracts:
 /obj/item/slimecross/charged/purple/do_effect(mob/user)
 	new /obj/item/slimecrossbeaker/omnizine(get_turf(user))
 	user.visible_message(span_notice("[src] sparks, and floods with a regenerative solution!"))
-	..()
-
-/obj/item/slimecross/charged/blue
-	colour = "blue"
-	effect_desc = ""
-
-/obj/item/slimecross/charged/blue/do_effect(mob/user)
-	new /obj/item/slimepotion/slime/chargedstabilizer(get_turf(user))
-	user.visible_message(span_notice("[src] distills into a potion!"))
 	..()
 
 /obj/item/slimecross/charged/metal
@@ -245,15 +227,4 @@ Charged extracts:
 /obj/item/slimecross/charged/adamantine/do_effect(mob/user)
 	user.visible_message(span_notice("[src] produces a fully formed golem shell!"))
 	new /obj/effect/mob_spawn/human/golem/servant(get_turf(src), /datum/species/golem/adamantine, user)
-	..()
-
-/obj/item/slimecross/charged/rainbow
-	colour = "rainbow"
-	effect_desc = ""
-
-/obj/item/slimecross/charged/rainbow/do_effect(mob/user)
-	user.visible_message(span_warning("[src] swells and splits into three new slimes!"))
-	for(var/i in 1 to 3)
-		var/mob/living/simple_animal/slime/S = new(get_turf(user))
-		S.random_colour()
 	..()

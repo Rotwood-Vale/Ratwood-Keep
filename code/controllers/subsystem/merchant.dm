@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(merchant)
 	wait = 10
 	init_order = INIT_ORDER_SHUTTLE
 	runlevels = RUNLEVEL_SETUP | RUNLEVEL_GAME
+	flags = SS_NO_FIRE
 
 	var/list/supply_packs = list()
 	var/list/supply_cats = list()

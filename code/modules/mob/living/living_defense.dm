@@ -299,28 +299,6 @@
 						span_danger("[user] tightens [user.p_their()] grip on me!"), span_hear("I hear aggressive shuffling!"), null, user)
 		to_chat(user, span_danger("I tighten my grip on [src]!"))
 
-/mob/living/attack_slime(mob/living/simple_animal/slime/M)
-	if(!SSticker.HasRoundStarted())
-		to_chat(M, "You cannot attack people before the game has started.")
-		return
-
-	if(M.buckled)
-		if(M in buckled_mobs)
-			M.Feedstop()
-		return // can't attack while eating!
-
-	if(HAS_TRAIT(src, TRAIT_PACIFISM))
-		to_chat(M, span_warning("I don't want to hurt anyone!"))
-		return FALSE
-
-	if (stat != DEAD)
-		log_combat(M, src, "attacked")
-		M.do_attack_animation(src)
-		visible_message(span_danger("\The [M.name] glomps [src]!"), \
-						span_danger("\The [M.name] glomps me!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
-		to_chat(M, span_danger("I glomp [src]!"))
-		return TRUE
-
 /mob/living/attack_animal(mob/living/simple_animal/M)
 	if(M.swinging)
 		return
