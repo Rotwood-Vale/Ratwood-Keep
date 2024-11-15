@@ -273,8 +273,6 @@
 					newmob.equipOutfit(posttransformoutfit)
 			if("monkey")
 				M.change_mob_type( /mob/living/carbon/monkey , null, null, delmob )
-			if("robot")
-				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
 			if("cat")
 				M.change_mob_type( /mob/living/simple_animal/pet/cat , null, null, delmob )
 			if("runtime")

@@ -326,7 +326,6 @@ GLOBAL_LIST_INIT(cardboard_recipes, list (														\
 		new /datum/stack_recipe("light tubes box", /obj/item/storage/box/lights/tubes),			\
 		new /datum/stack_recipe("light bulbs box", /obj/item/storage/box/lights/bulbs),			\
 		new /datum/stack_recipe("mixed lights box", /obj/item/storage/box/lights/mixed),		\
-		new /datum/stack_recipe("mouse traps box", /obj/item/storage/box/mousetraps),			\
 		new /datum/stack_recipe("candle box", /obj/item/storage/fancy/candle_box)
 		)),
 

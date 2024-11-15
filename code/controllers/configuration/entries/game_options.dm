@@ -209,7 +209,6 @@
 	value_mode = VALUE_MODE_NUM
 	config_entry_value = list(			//DEFAULTS
 	/mob/living/simple_animal = 1,
-	/mob/living/silicon/pai = 1,
 	)
 
 /datum/config_entry/keyed_list/multiplicative_movespeed/ValidateAndSet()
@@ -253,8 +252,6 @@
 
 /datum/config_entry/number/outdated_movedelay/human_delay
 	movedelay_type = /mob/living/carbon/human
-/datum/config_entry/number/outdated_movedelay/robot_delay
-	movedelay_type = /mob/living/silicon/robot
 /datum/config_entry/number/outdated_movedelay/monkey_delay
 	movedelay_type = /mob/living/carbon/monkey
 /datum/config_entry/number/outdated_movedelay/animal_delay

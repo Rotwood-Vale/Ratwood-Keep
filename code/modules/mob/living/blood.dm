@@ -62,7 +62,6 @@
 		remove_status_effect(/datum/status_effect/debuff/bleeding)
 		remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 		remove_status_effect(/datum/status_effect/debuff/bleedingworst)
-
 	bleed_rate = get_bleed_rate()
 	if(bleed_rate)
 		bleed(bleed_rate)
@@ -383,18 +382,3 @@
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
 	if(!(NOBLOOD in dna.species.species_traits))
 		..()
-
-/mob/living/carbon/alien/add_splatter_floor(turf/T, small_drip)
-	if(!T)
-		T = get_turf(src)
-	var/obj/effect/decal/cleanable/xenoblood/B = locate() in T.contents
-	if(!B)
-		B = new(T)
-	B.add_blood_DNA(list("UNKNOWN DNA" = "X*"))
-
-/mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip)
-	if(!T)
-		T = get_turf(src)
-	var/obj/effect/decal/cleanable/oil/B = locate() in T.contents
-	if(!B)
-		B = new(T)

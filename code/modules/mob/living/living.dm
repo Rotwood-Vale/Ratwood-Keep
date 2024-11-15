@@ -1428,9 +1428,6 @@
 /mob/living/proc/update_stamina()
 	return
 
-/mob/living/carbon/alien/update_stamina()
-	return
-
 /mob/living/proc/owns_soul()
 	if(mind)
 		return mind.soulOwner == mind
