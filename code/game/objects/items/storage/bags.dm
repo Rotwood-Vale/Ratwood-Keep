@@ -235,7 +235,6 @@
 	STR.set_holdable(list(
 		/obj/item/book,
 		/obj/item/storage/book,
-		/obj/item/spellbook
 		))
 
 /*

@@ -278,6 +278,11 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	attack_verb = list("stabbed", "ripped", "gored", "impaled")
 	embedding = list("embedded_pain_multiplier" = 8, "embed_chance" = 100, "embedded_fall_chance" = 0, "embedded_impact_pain_multiplier" = 15) //55 damage+embed on hit
 
+/obj/item/throwing_star/ninja
+	name = "ninja throwing star"
+	throwforce = 30
+	embedding = list("embedded_pain_multiplier" = 6, "embed_chance" = 100, "embedded_fall_chance" = 0)
+
 /obj/item/switchblade
 	name = "switchblade"
 	icon_state = "switchblade"
