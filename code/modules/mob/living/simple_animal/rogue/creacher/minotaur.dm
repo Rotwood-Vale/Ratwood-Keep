@@ -113,7 +113,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended/Initialize()
 	. = ..()
-	set_light(5,5, LIGHT_COLOR_RED)
+	set_light(5,5,5, l_color =  LIGHT_COLOR_RED)
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
 

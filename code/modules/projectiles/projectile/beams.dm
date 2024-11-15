@@ -3,6 +3,7 @@
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 20
+	light_outer_range =  2
 	damage_type = BURN
 	hitsound = 'sound/blank.ogg'
 	hitsound_wall = 'sound/blank.ogg'
@@ -10,7 +11,7 @@
 	eyeblur = 2
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/red_laser
 	light_system = MOVABLE_LIGHT
-	light_range = 2
+	light_outer_range = 2
 	light_power = 1
 	light_color = LIGHT_COLOR_RED
 	ricochets_max = 50	//Honk!

@@ -43,7 +43,7 @@
 		set_light(0)
 		return
 	w_class = WEIGHT_CLASS_GIGANTIC
-	set_light(2, 2, "#1b7bf1")
+	set_light(2, 2, 2, l_color =  "#1b7bf1")
 
 /obj/item/roguemachine/merchant/Initialize()
 	. = ..()
@@ -134,7 +134,7 @@
 	if(obj_broken)
 		set_light(0)
 		return
-	set_light(1, 1, "#1b7bf1")
+	set_light(1, 1, 1, l_color =  "#1b7bf1")
 	add_overlay(mutable_appearance(icon, "vendor-merch"))
 
 /obj/structure/roguemachine/merchantvend/attack_right(mob/user)

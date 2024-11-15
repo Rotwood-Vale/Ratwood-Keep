@@ -1,7 +1,7 @@
 /turf/open/floor/light
 	name = "light floor"
 	desc = ""
-	light_range = 5
+	light_outer_range =  5
 	icon_state = "light_on"
 	floor_tile = /obj/item/stack/tile/light
 	broken_states = list("light_broken")
@@ -23,7 +23,7 @@
 
 /turf/open/floor/light/break_tile()
 	..()
-	light_range = 0
+	light_outer_range =  0
 	update_light()
 
 /turf/open/floor/light/update_icon()

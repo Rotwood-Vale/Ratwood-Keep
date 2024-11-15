@@ -27,7 +27,9 @@
 
 	trail = TRUE
 	trail_lifespan = 5
-	trail_icon_state = "magicmd"
+	light_color = "magicmd"
+	light_outer_range =  2
+
 
 /obj/projectile/magic/spell/magic_missile/on_hit(target)
 	. = ..()

@@ -51,7 +51,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/rings.dmi'
 	sleevetype = "shirt"
 	desc = "flick of the thumb portable flame"
-	light_range = 4 // standard torch range
+	light_outer_range = 4 // standard torch range
 	on = FALSE
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_HIP

@@ -183,7 +183,7 @@
 					CO = bulb_colour
 					if(color)
 						CO = color
-		var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
+		var/matching = light && BR == light.light_outer_range && PO == light.light_power && CO == light.light_color
 		if(!matching)
 			switchcount++
 			if(rigged)
@@ -191,7 +191,7 @@
 					explode()
 			else
 				use_power = ACTIVE_POWER_USE
-				set_light(BR, PO, CO)
+				set_light(BR, light_inner_range, PO, l_color = CO)
 	else if(!turned_off())
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE

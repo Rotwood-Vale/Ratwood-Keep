@@ -23,6 +23,18 @@
 	var/last_payout = 0
 	var/drugrade_flags
 
+/obj/structure/roguemachine/drugmachine/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/structure/roguemachine/drugmachine/update_icon()
+	cut_overlays()
+	if(obj_broken)
+		set_light(0)
+		return
+	set_light(1, 1, 1, l_color =  "#8f06b5")
+	add_overlay(mutable_appearance(icon, "vendor-merch"))
+
 /obj/structure/roguemachine/drugmachine/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/key))
 		var/obj/item/key/K = P

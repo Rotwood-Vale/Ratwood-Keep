@@ -179,13 +179,13 @@
 			AM.emp_act(EMP_LIGHT)
 
 		for(var/obj/item/O in AM)
-			if(O.light_range && O.light_power)
+			if(O.light_outer_range && O.light_power)
 				disintegrate(O)
-		if(L.pulling && L.pulling.light_range && isitem(L.pulling))
+		if(L.pulling && L.pulling.light_outer_range && isitem(L.pulling))
 			disintegrate(L.pulling)
 	else if(isitem(AM))
 		var/obj/item/I = AM
-		if(I.light_range && I.light_power)
+		if(I.light_outer_range && I.light_power)
 			disintegrate(I)
 
 /obj/item/light_eater/proc/disintegrate(obj/item/O)

@@ -44,9 +44,7 @@
 	desc = "Happy to light your way."
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "wisp"
-	light_system = MOVABLE_LIGHT
-	light_range = 7
-	light_flags = LIGHT_ATTACHED
+	light_outer_range =  6
 	layer = ABOVE_ALL_MOB_LAYER
 	var/sight_flags = SEE_MOBS
 	var/lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE

@@ -670,7 +670,7 @@
 
 /obj/item/twohanded/pitchfork/demonic/Initialize()
 	. = ..()
-	set_light(3,6,LIGHT_COLOR_RED)
+	set_light(3,3,6, l_color = LIGHT_COLOR_RED)
 
 /obj/item/twohanded/pitchfork/demonic/greater
 	force = 24

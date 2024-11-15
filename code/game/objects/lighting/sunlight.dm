@@ -53,7 +53,7 @@
 			light_color = pick("#394579", "#49385d", "#3a1537")
 		if("day")
 			light_color = pick("#dbbfbf", "#ddd7bd", "#add1b0", "#a4c0ca", "#ae9dc6", "#d09fbf")
-	set_light(brightness, light_power, light_color)
+	set_light(brightness, brightness, light_power, l_color = light_color)
 
 /obj/effect/sunlight/ultra
 	brightness = 30

@@ -36,7 +36,7 @@
 	speed = 0.3
 	flag = "magic"
 	light_color = "#ffffff"
-	light_range = 7
+	light_outer_range =  7
 
 /obj/projectile/magic/lightning/on_hit(target)
 	. = ..()
@@ -85,7 +85,7 @@
 	speed = 0.3
 	flag = "magic"
 	light_color = "#802121"
-	light_range = 7
+	light_outer_range =  7
 
 /obj/projectile/magic/bloodlightning/on_hit(target)
 	. = ..()
@@ -133,7 +133,7 @@
 	speed = 0.3
 	flag = "magic"
 	light_color = "#e74141"
-	light_range = 7
+	light_outer_range = 7
 	var/mob/living/carbon/human/sender
 
 /obj/projectile/magic/bloodsteal/on_hit(target)
@@ -479,7 +479,8 @@
 	//let's adjust the light power based on our skill, too
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	var/mote_power = clamp(4 + (skill_level - 3), 4, 7) // every step above journeyman should get us 1 more tile of brightness
-	mote.light_range = mote_power
+	mote.light_outer_range =  mote_power
+	mote.update_light()
 
 	if (mote.loc == src)
 		user.visible_message(span_notice("[user] holds open the palm of [user.p_their()] hand and concentrates..."), span_notice("I hold open the palm of my hand and concentrate on my arcyne power..."))
@@ -546,8 +547,7 @@
 	name = "minor magelight mote"
 	desc = "A tiny display of arcyne power used to illuminate."
 	pixel_x = 20
-	light_range = 4
-	light_flags = NONE
+	light_outer_range =  4
 	light_color = "#3FBAFD"
 
 //A spell to choose new spells, upon spawning or gaining levels
@@ -861,7 +861,7 @@
 /obj/effect/temp_visual/trap
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "trap"
-	light_range = 2
+	light_outer_range =  2
 	duration = 7
 	layer = ABOVE_ALL_MOB_LAYER //this doesnt render above mobs? it really should
 

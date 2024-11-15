@@ -110,4 +110,20 @@
 	start_lit = TRUE
 	icon_state = "skullcandle_lit"
 
+/obj/item/candle/yellow/lit/infinite
+	light_power = 1
+	light_outer_range =  4
+	start_lit = TRUE
+	infinite = TRUE
+	icon_state = "candle1_lit"
+	anchored = TRUE
+
+/obj/item/candle/yellow/lit/infinite/strong
+	light_power = 2
+	light_outer_range =  4
+	pixel_x = 4
+
+/obj/item/candle/yellow/lit/infinite/strong/skull
+	icon_state = "skullcandle_lit"
+
 #undef CANDLE_LUMINOSITY

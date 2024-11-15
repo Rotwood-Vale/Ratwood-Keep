@@ -41,9 +41,7 @@
 
 	var/blade_dulling = DULLING_FLOOR
 	var/attacked_sound
-	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
-	var/dynamic_lumcount = 0
-
+	
 	var/break_sound = null //The sound played when a turf breaks
 	var/debris = null
 	var/break_message = null
@@ -89,7 +87,7 @@
 		CALCULATE_ADJACENT_TURFS(src)
 		SSair.add_to_active(src)
 
-	if (light_power && light_range)
+	if (light_power && (light_outer_range || light_inner_range))
 		update_light()
 
 	if(turf_integrity == null)

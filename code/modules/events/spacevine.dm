@@ -83,7 +83,7 @@
 
 /datum/spacevine_mutation/light/on_grow(obj/structure/spacevine/holder)
 	if(holder.energy)
-		holder.set_light(severity, 0.3)
+		holder.set_light(severity, severity, 0.3)
 
 /datum/spacevine_mutation/toxicity
 	name = "toxic"

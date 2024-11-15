@@ -306,7 +306,7 @@
 	item_state = "kindleKicks"
 	actions_types = list(/datum/action/item_action/kindleKicks)
 	light_system = MOVABLE_LIGHT
-	light_range = 2
+	light_outer_range = 2
 	light_power = 3
 	light_on = FALSE
 	var/lightCycle = 0
@@ -317,13 +317,12 @@
 	if(active)
 		return
 	active = TRUE
-	set_light_color(rgb(rand(0, 255), rand(0, 255), rand(0, 255)))
-	set_light_on(active)
-	addtimer(CALLBACK(src, PROC_REF(lightUp)), 0.5 SECONDS)
+	set_light(2, 2, 3, l_color = rgb(rand(0,255),rand(0,255),rand(0,255)))
+	addtimer(CALLBACK(src, PROC_REF(lightUp)), 5)
 
 /obj/item/clothing/shoes/kindleKicks/proc/lightUp(mob/user)
 	if(lightCycle < 15)
-		set_light(2, 3, rgb(rand(0,255),rand(0,255),rand(0,255)))
+		set_light(2, 2, 3, l_color = rgb(rand(0,255),rand(0,255),rand(0,255)))
 		lightCycle += 1
 		addtimer(CALLBACK(src, PROC_REF(lightUp)), 5)
 	else

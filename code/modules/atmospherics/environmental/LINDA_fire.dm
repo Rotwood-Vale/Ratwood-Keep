@@ -47,10 +47,7 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "1"
 	layer = GASFIRE_LAYER
-	blend_mode = BLEND_ADD
-	light_system = MOVABLE_LIGHT
-	light_range = LIGHT_RANGE_FIRE
-	light_power = 1
+	light_outer_range =  LIGHT_RANGE_FIRE
 	light_color = LIGHT_COLOR_FIRE
 
 	var/volume = 125
@@ -187,48 +184,6 @@
 	perform_exposure()
 	return
 
-	if((temperature < FIRE_MINIMUM_TEMPERATURE_TO_EXIST) || (volume <= 1))
-		qdel(src)
-		return
-	if(!location.air || (INSUFFICIENT(/datum/gas/plasma) && INSUFFICIENT(/datum/gas/tritium)) || INSUFFICIENT(/datum/gas/oxygen))
-		qdel(src)
-		return
-
-	//Not enough to burn
-	if(((!location.air.gases[/datum/gas/plasma] || location.air.gases[/datum/gas/plasma][MOLES] < 0.5) && (!location.air.gases[/datum/gas/tritium] || location.air.gases[/datum/gas/tritium][MOLES] < 0.5)) || location.air.gases[/datum/gas/oxygen][MOLES] < 0.5)
-		qdel(src)
-		return
-
-//	perform_exposure()
-
-	if(bypassing)
-		icon_state = "3"
-		location.burn_tile()
-
-		//Possible spread due to radiated heat
-		if(location.air.temperature > FIRE_MINIMUM_TEMPERATURE_TO_SPREAD)
-			var/radiated_temperature = location.air.temperature*FIRE_SPREAD_RADIOSITY_SCALE
-			for(var/t in location.atmos_adjacent_turfs)
-				var/turf/open/T = t
-				if(!T.active_hotspot)
-					T.hotspot_expose(radiated_temperature, CELL_VOLUME/4)
-
-	else
-		if(volume > CELL_VOLUME*0.4)
-			icon_state = "2"
-		else
-			icon_state = "1"
-
-//	if((visual_update_tick++ % 7) == 0)
-//		update_color()
-
-	if(temperature > location.max_fire_temperature_sustained)
-		location.max_fire_temperature_sustained = temperature
-
-	if(location.heat_capacity && temperature > location.heat_capacity)
-		location.to_be_destroyed = TRUE
-	return TRUE
-
 /obj/effect/hotspot/Destroy()
 	SSair.hotspots -= src
 	var/turf/open/T = loc
@@ -264,6 +219,6 @@
 /obj/effect/dummy/lighting_obj/moblight/fire
 	name = "fire"
 	light_color = LIGHT_COLOR_FIRE
-	light_range = LIGHT_RANGE_FIRE
+	light_outer_range =  LIGHT_RANGE_FIRE
 
 #undef INSUFFICIENT

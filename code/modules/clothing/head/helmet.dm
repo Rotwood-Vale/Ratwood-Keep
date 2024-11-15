@@ -367,6 +367,10 @@
 
 /obj/item/clothing/head/helmet/proc/update_helmlight()
 	if(attached_light)
+		if(attached_light.on)
+			set_light(attached_light.light_outer_range)
+		else
+			set_light(0)
 		update_icon()
 
 	for(var/X in actions)

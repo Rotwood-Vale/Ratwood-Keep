@@ -577,7 +577,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/tequila_sunrise/on_mob_metabolize(mob/living/M)
 	to_chat(M, span_notice("I feel gentle warmth spread through my body!"))
 	light_holder = new(M)
-	light_holder.set_light(3, 0.7, "#FFCC00") //Tequila Sunrise makes you radiate dim light, like a sunrise!
+	light_holder.set_light(3,3,0.7, l_color = "#FFCC00") //Tequila Sunrise makes you radiate dim light, like a sunrise!
 
 /datum/reagent/consumable/ethanol/tequila_sunrise/on_mob_life(mob/living/carbon/M)
 	if(QDELETED(light_holder))

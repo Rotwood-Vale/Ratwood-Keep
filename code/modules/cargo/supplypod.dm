@@ -289,7 +289,7 @@
 	icon = 'icons/mob/actions/actions_items.dmi'
 	icon_state = "sniper_zoom"
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER
-	light_range = 2
+	light_outer_range =  2
 	var/obj/effect/temp_visual/fallingPod //Temporary "falling pod" that we animate
 	var/obj/structure/closet/supplypod/pod //The supplyPod that will be landing ontop of this target
 

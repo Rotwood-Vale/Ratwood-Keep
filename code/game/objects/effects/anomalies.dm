@@ -6,7 +6,7 @@
 	icon_state = "bhole3"
 	density = FALSE
 	anchored = TRUE
-	light_range = 3
+	light_outer_range =  3
 	var/movechance = 70
 	var/area/impact_area
 

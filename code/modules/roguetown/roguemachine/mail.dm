@@ -212,10 +212,10 @@
 	cut_overlays()
 	if(coin_loaded)
 		add_overlay(mutable_appearance(icon, "mail-f"))
-		set_light(1, 1, "#ff0d0d")
+		set_light(1, 1, 1, l_color =  "#ff0d0d")
 	else
 		add_overlay(mutable_appearance(icon, "mail-s"))
-		set_light(1, 1, "#1b7bf1")
+		set_light(1, 1, 1, l_color =  "#1b7bf1")
 
 
 /obj/structure/roguemachine/mail/examine(mob/user)
@@ -263,7 +263,7 @@
 		icon_state = "mailspecial-get"
 	else
 		icon_state = "mailspecial"
-	set_light(1, 1, "#ff0d0d")
+	set_light(1, 1, 1, l_color = "#ff0d0d")
 
 /obj/item/roguemachine/mastermail/ComponentInitialize()
 	. = ..()
