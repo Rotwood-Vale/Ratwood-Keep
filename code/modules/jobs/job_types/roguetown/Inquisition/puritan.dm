@@ -1,23 +1,22 @@
 /datum/job/roguetown/puritan
 	title = "Inquisitor"
 	flag = PURITAN
-	department_flag = CHURCHMEN
+	department_flag = INQUISITION
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	allowed_patrons = list(
-		/datum/patron/old_god,
-		ALL_DIVINE_PATRONS,
-	) //gets set to old god.
-	tutorial = "You worship and pay credence to the old god, Psydon--in heretical contrast to the church of the Ten. However, both the crown and church have emboldened your radical sect. Your fervor allows you to root out cultists, the cursed night beasts, and other agents of the darkness using your practice of extracting involuntary 'sin confessions.' Remember, though; they tolerate you only so long as you have a common enemy..."
+	allowed_patrons = list(/datum/patron/old_god) //You MUST have a Psydonite character to start. Just so people don't get japed into Oops Suddenly Psydon!
+	tutorial = "PSYDON YET LIVES. PSYDON YET ENDURES. You know this well. Sent by the High Bishop of Otava, you are tolerated by the Duchy and Church, with a pleasant lie to the citizens. The good folk believe you here to root out the Ascendant, but your true goal lies in the elimination of all Heresy, the kind of the Ten included. Through whatever acts deemed neccesary. TEN worshippers must be brought in line with Church dogma, and ASCENDANT fools corrected, for PSYDON to ENDURE." 
 	whitelist_req = TRUE
+	cmode_music = 'sound/music/inquisitorcombat.ogg'
+	selection_color = JCOLOR_INQUISITION
 
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
 	give_bank_account = 30
-	min_pq = 6 //Only for those bold of spirit, sure of mind, hard of pintle...and should probably know Psydon from Zizo. Not a crucial role, and rather prone to people instigating excessive conflict
+	min_pq = 10 //Woah there buddy. Here's a soft antagging role. You're gonna need to be a Cool Guy:tm: to start doing this work. Usually a high strain role, and can actually ruin rounds for people if not done proper.
 	max_pq = null
 	round_contrib_points = 2
 

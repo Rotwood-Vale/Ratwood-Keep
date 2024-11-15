@@ -573,6 +573,12 @@
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 400
 
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute
+	name = "psydonian barbute"
+	desc = "A barbute styled with Psydonian Imagery."
+	icon_state = "psydonbarbute"
+	item_state = "psydonbarbute"
+
 /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	name = "savoyard"
 	desc = "A helmet with a menacing visage."
@@ -732,6 +738,12 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
+
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
+	name ="otavan armet"
+	desc = "Headwear commonly worn by Templars in service to the Inquisition of Otava. PSYDON Endures."
+	icon_state = "psydonarmet"
+	item_state = "psydonarmet"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 	name = "noc helmet"
