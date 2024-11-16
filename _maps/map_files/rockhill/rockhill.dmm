@@ -4019,13 +4019,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/shop)
-"dpO" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = -6
-	},
-/turf/open/water/cleanshallow,
-/area/rogue/indoors/shelter/mountains)
 "dpP" = (
 /turf/closed/mineral/rogue/salt,
 /area/rogue/under/cavewet/bogcaves)
@@ -4300,10 +4293,6 @@
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter/town)
-"dBK" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/grass,
-/area/rogue/indoors/shelter/mountains)
 "dBV" = (
 /turf/open/floor/rogue/rooftop/green,
 /area/rogue/indoors)
@@ -4422,13 +4411,6 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/under/cave)
-"dFN" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 1;
-	pixel_y = -6
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/shelter/mountains)
 "dGl" = (
 /obj/machinery/light/rogue/wallfire,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -4667,10 +4649,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-"dVo" = (
-/obj/machinery/light/rogue/torchholder/r,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/shelter/mountains)
 "dVr" = (
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/town/basement)
@@ -16431,11 +16409,6 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
-"nRc" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/machinery/light/rogue/torchholder/r,
-/turf/open/floor/rogue/grass,
-/area/rogue/indoors/shelter/mountains)
 "nRf" = (
 /obj/structure/fluff/statue/gargoyle/candles,
 /turf/open/floor/rogue/cobble,
@@ -20358,12 +20331,6 @@
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/manor)
-"rcB" = (
-/obj/machinery/light/rogue/torchholder/r{
-	dir = 4
-	},
-/turf/open/water/cleanshallow,
-/area/rogue/indoors/shelter/mountains)
 "rcQ" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/dirt,
@@ -23774,14 +23741,6 @@
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
-"tTJ" = (
-/obj/machinery/light/rogue/torchholder/r{
-	dir = 4
-	},
-/turf/open/water/river{
-	icon_state = "rockwd"
-	},
-/area/rogue/indoors/shelter/mountains)
 "tTO" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -28582,10 +28541,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
-"xZJ" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/shelter/mountains)
 "xZM" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
@@ -257705,7 +257660,7 @@ clE
 dUK
 twI
 clE
-dBK
+qSB
 vET
 aev
 twI
@@ -260915,7 +260870,7 @@ aUc
 vIa
 vIa
 vIa
-xZJ
+aev
 aev
 twI
 enT
@@ -262528,7 +262483,7 @@ clE
 enT
 jsI
 twI
-dBK
+clE
 aUc
 aUc
 aUc
@@ -321632,21 +321587,21 @@ suD
 suD
 mJf
 oGM
-rcB
+mJf
 fZe
 oGM
 suD
 mJf
 mJf
 mJf
-rcB
+mJf
 mJf
 suD
 lQv
 twI
 mJf
 mJf
-tTJ
+suD
 mJf
 mJf
 mJf
@@ -322457,7 +322412,7 @@ mJf
 twI
 pnV
 oGM
-dpO
+mJf
 qSB
 fyc
 whb
@@ -324065,7 +324020,7 @@ mJf
 lQv
 twI
 mJf
-dFN
+twI
 qSB
 fyc
 whb
@@ -325646,21 +325601,21 @@ aUc
 vIa
 vIa
 clE
-nRc
+jFU
 clE
 dVv
 clE
 mJf
 twI
 fZe
-dVo
+twI
 twI
 mJf
 twI
 mJf
 aUc
 twI
-dVo
+twI
 twI
 twI
 mJf
