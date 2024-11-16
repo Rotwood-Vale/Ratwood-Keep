@@ -1038,14 +1038,22 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 
 		if(prefs)
 			prefs.copy_to(body,TRUE,FALSE)
-		if(human_gear_override)
-			for(var/obj/item/W in human_gear_override) //EVIL CODE!!
-				var/obj/item/new_item = new W.type(body)
-				new_item.icon_state = W.icon_state
-				new_item.flags_inv = W.flags_inv
-				new_item.body_parts_covered = W.body_parts_covered
-				new_item.color = W.color
-				body.equip_to_appropriate_slot(new_item)
+		if(human_gear_override) //EVIL CODE!!
+			var/static/list/all_item_slots = ALL_ITEM_SLOTS
+			for(var/slot in all_item_slots)
+				var/obj/item/item = human_gear_override.get_item_by_slot(slot)
+				if(!item)
+					continue
+				var/obj/item/new_item
+				if(item.visual_replacement)
+					new_item = new item.visual_replacement(body)
+				else
+					new_item = new item.type(body)
+				new_item.icon_state = item.icon_state
+				new_item.flags_inv = item.flags_inv
+				new_item.body_parts_covered = item.body_parts_covered
+				new_item.color = item.color
+				body.equip_to_slot_if_possible(new_item, slot)
 		else if(J)
 			J.equip(body, TRUE, FALSE, outfit_override = outfit_override)
 		else if (outfit_override)
