@@ -73,7 +73,7 @@
 			backl = /obj/item/rogueweapon/sword/long/rider
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
-			pants = /obj/item/clothing/under/roguetown/trou/leather
+			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal
