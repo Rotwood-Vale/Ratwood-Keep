@@ -140,6 +140,23 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 
+
+/area/rogue/outdoors/mountains/decap/stepbelow
+	name = "mt decapitation inner"
+	icon_state = "decap"
+	ambush_types = list(
+				/turf/open/floor/rogue/dirt)
+	ambush_mobs = list(
+				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 30,
+				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
+				/mob/living/carbon/human/species/goblin/npc/ambush/hell = 20)
+	droning_sound = 'sound/music/area/decap_deeper.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	first_time_text = "TARICHEA, VALLEY OF LOSS"
+	ambush_times = list("night","dawn","dusk","day")
+	converted_type = /area/rogue/indoors/shelter/mountains/decap
+
 /area/rogue/outdoors/rtfield
 	name = "azure basin"
 	icon_state = "rtfield"
@@ -561,7 +578,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
 	keep_area = TRUE
-	
+
 
 /area/rogue/indoors/town/tavern
 	name = "tavern"

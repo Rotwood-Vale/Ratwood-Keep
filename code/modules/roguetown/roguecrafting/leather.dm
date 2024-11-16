@@ -86,7 +86,7 @@
 	reqs = list(/obj/item/natural/fur = 1)
 	sellprice = 20
 
-/datum/crafting_recipe/roguetown/leather/heavygloves
+/datum/crafting_recipe/roguetown/leather/fingerless_leather_gloves
 	name = "fingerless leather gloves"
 	result = /obj/item/clothing/gloves/roguetown/fingerless_leather
 	reqs = list(
@@ -203,7 +203,7 @@
 	sellprice = 26
 
 /datum/crafting_recipe/roguetown/leather/heavy_leather_armor/belted
-	name = "hide armor"
+	name = "belted heavy leather armor"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy/belted
 	reqs = list(
 		/obj/item/natural/hide = 3,
@@ -213,7 +213,7 @@
 	sellprice = 26
 
 /datum/crafting_recipe/roguetown/leather/heavy_leather_armor/coat
-	name = "hide armor"
+	name = "armored leather coat"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	reqs = list(
 		/obj/item/natural/hide = 4, //covers an extra body part, costs more

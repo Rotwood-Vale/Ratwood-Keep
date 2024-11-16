@@ -22,7 +22,7 @@
 	domain = "Twinned God of the Moon, Night, and Knowledge"
 	desc = "The he-form of the Twinned Gods, the combined amalgam of single-bodied Noc and Astrata that opens his eyes during pondorous Night. He gifted man knowledge of divinity and magicks. A single form begets two Gods that shift at Dusk and Dawn but always endures, even at dae."
 	worshippers = "Wizards and Scholars"
-	mob_traits = list(TRAIT_NOCSIGHT)
+	mob_traits = list(TRAIT_NIGHT_OWL, TRAIT_NOCSIGHT)
 	t1 = /obj/effect/proc_holder/spell/invoked/blindness/miracle
 	t2 = /obj/effect/proc_holder/spell/invoked/invisibility/miracle
 	confess_lines = list(

@@ -61,7 +61,7 @@
 	var/devotion_multiplier = 1
 	if(holder?.mind)
 		devotion_multiplier += (holder.mind.get_skill_level(/datum/skill/magic/holy) / SKILL_LEVEL_LEGENDARY)
-	update_devotion(round(passive_devotion_gain * devotion_multiplier), round(passive_progression_gain * devotion_multiplier), silent = TRUE)
+	update_devotion((passive_devotion_gain * devotion_multiplier), (passive_progression_gain * devotion_multiplier), silent = TRUE)
 
 /datum/devotion/proc/check_devotion(obj/effect/proc_holder/spell/spell)
 	if(devotion - spell.devotion_cost < 0)

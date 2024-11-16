@@ -158,3 +158,6 @@
 #define span_warningbig(str) ("<span class='warningbig'>" + str + "</span>")
 #define span_yell(str) ("<span class='yell'>" + str + "</span>")
 #define span_yellowteamradio(str) ("<span class='yellowteamradio'>" + str + "</span>")
+#define span_beautiful_masc(str) ("<span class='beautifulmasc'>" + str + "</span>")
+#define span_beautiful_fem(str) ("<span class='beautifulfem'>" + str + "</span>")
+#define span_beautiful_nb(str) ("<span class='beautifulnb'>" + str + "</span>")

@@ -50,6 +50,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/duelist_hat
 	name = "Duelist's Hat"
 	path = /obj/item/clothing/head/roguetown/duelhat
+
+/datum/loadout_item/hood
+	name = "Hood"
+	path = /obj/item/clothing/head/roguetown/roguehood
+
 //CLOAKS
 /datum/loadout_item/tabard
 	name = "Tabard"
@@ -78,6 +83,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/raincloak
 	name = "Rain Cloak"
 	path = /obj/item/clothing/cloak/raincloak
+
+/datum/loadout_item/furcloak
+	name = "Fur Cloak"
+	path = /obj/item/clothing/cloak/raincloak/furcloak
 
 /datum/loadout_item/direcloak
 	name = "direbear cloak"
