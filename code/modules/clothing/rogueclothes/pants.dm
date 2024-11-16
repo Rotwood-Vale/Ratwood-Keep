@@ -108,6 +108,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/trou/leather
 	name = "leather trousers"
@@ -122,14 +123,15 @@
 	icon_state = "roguepants"
 	item_state = "roguepants"
 	sewrepair = TRUE
-	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 50, "slash" = 70, "stab" = 60, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = SOFTHIT
-	max_integrity = 250
+	max_integrity = 200
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	resistance_flags = FIRE_PROOF
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
 	name = "heavy leather shorts"
@@ -170,6 +172,7 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	resistance_flags = FIRE_PROOF
+	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -189,11 +192,12 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	resistance_flags = FIRE_PROOF
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
 	name = "iron chain chausses"
 	icon_state = "ichain_legs"
-	max_integrity = 200
+	max_integrity = 250
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 
@@ -217,6 +221,7 @@
 	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
 	resistance_flags = FIRE_PROOF
+	armor_class = ARMOR_CLASS_HEAVY
 
 
 /obj/item/clothing/under/roguetown/chainlegs/skirt
@@ -225,6 +230,7 @@
 	icon_state = "chain_skirt"
 	item_state = "chain_skirt"
 	body_parts_covered = GROIN
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/platelegs/skirt
 	name = "steel plate skirt"
@@ -232,6 +238,7 @@
 	icon_state = "plate_skirt"
 	item_state = "plate_skirt"
 	body_parts_covered = GROIN
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"
@@ -258,6 +265,7 @@
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_BLUNT)
 	var/picked = FALSE
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/grenzelpants/attack_right(mob/user)
 	..()
@@ -322,6 +330,7 @@
 	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
 	resistance_flags = FIRE_PROOF
+	armor_class = ARMOR_CLASS_HEAVY
 
 /obj/item/clothing/under/roguetown/trou/leather/pontifex
 	name = "pontifex's chaqchur"

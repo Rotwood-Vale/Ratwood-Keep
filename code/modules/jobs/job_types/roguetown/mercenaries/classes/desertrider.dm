@@ -71,7 +71,7 @@
 			H.change_stat("speed", 3)
 			backl = /obj/item/rogueweapon/sword/long/rider
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-			armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal
@@ -80,7 +80,8 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	beltl = /obj/item/flashlight/flare/torch
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	H.grant_language(/datum/language/celestial)
 
 	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/rogueweapon/huntingknife/idagger/navaja, /obj/item/clothing/neck/roguetown/shalal)
