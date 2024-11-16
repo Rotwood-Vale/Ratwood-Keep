@@ -2285,6 +2285,7 @@
 #include "code\modules\jobs\job_types\roguetown\Inquisition\orthodoxist.dm"
 #include "code\modules\jobs\job_types\roguetown\Inquisition\puritan.dm"
 #include "code\modules\jobs\job_types\roguetown\Inquisition\orthoclasses\confessor.dm"
+#include "code\modules\jobs\job_types\roguetown\Inquisition\orthoclasses\disciple.dm"
 #include "code\modules\jobs\job_types\roguetown\Inquisition\orthoclasses\psydoniantemplar.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\mercenary.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\blackoak.dm"
