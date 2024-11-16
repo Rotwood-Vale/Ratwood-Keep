@@ -35,6 +35,15 @@
 	force = 0
 	throwforce = 0
 	sellprice = 10
+	var/storage_type = /datum/component/storage/concrete
+
+/obj/item/natural/saddle/ComponentInitialize()
+	. = ..()
+	AddComponent(storage_type)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_combined_w_class = 16
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
+	STR.max_items = 12
 
 /obj/item/natural/saddle/attack(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, /mob/living/simple_animal))

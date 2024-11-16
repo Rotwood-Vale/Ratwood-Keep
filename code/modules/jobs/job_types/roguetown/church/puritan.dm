@@ -16,19 +16,10 @@
 
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
-	give_bank_account = 36
+	give_bank_account = 30
 	min_pq = 6 //Only for those bold of spirit, sure of mind, hard of pintle...and should probably know Psydon from Zizo. Not a crucial role, and rather prone to people instigating excessive conflict
 	max_pq = null
 	round_contrib_points = 2
-
-/datum/job/roguetown/puritan/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	..()
-	if(!L.mind)
-		return
-	if(L.mind.has_antag_datum(/datum/antagonist))
-		return
-	var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-	L.mind.add_antag_datum(new_antag)
 
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"
@@ -78,98 +69,88 @@
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Extract Confession"
 	set category = "Inquisition"
-
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H
+	var/obj/item/S = get_inactive_held_item()
 	if(!istype(I) || !ishuman(I.grabbed))
+		to_chat(src, span_warning("I don't have a victim in my hands!"))
 		return
 	H = I.grabbed
 	if(H == src)
 		to_chat(src, span_warning("I already torture myself."))
 		return
-	var/painpercent = (H.get_complex_pain() / (H.STAEND * 10)) * 100
-	if(H.add_stress(/datum/stressevent/tortured))
-		if(!H.stat)
-			var/static/list/torture_lines = list(
-				"CONFESS!",
-				"TELL ME YOUR SECRETS!",
-				"SPEAK!",
-				"YOU WILL SPEAK!",
-				"TELL ME!",
-				"THE PAIN HAS ONLY BEGUN, CONFESS!",
-			)
-			say(pick(torture_lines), spans = list("torture"))
-			if(painpercent >= 100)
-				H.emote("painscream")
-				H.confession_time("antag")
-				return
-	to_chat(src, span_warning("Not ready to speak yet."))
+	if (!H.restrained())
+		to_chat(src, span_warning ("My victim needs to be restrained in order to do this!"))
+		return
+	if(!istype(S, /obj/item/clothing/neck/roguetown/psicross/silver))
+		to_chat(src, span_warning("I need to be holding a silver psycross to extract this divination!"))
+		return
+	if(!H.stat)
+		var/static/list/torture_lines = list(
+			"CONFESS!",
+			"TELL ME YOUR SECRETS!",
+			"SPEAK!",
+			"YOU WILL SPEAK!",
+			"TELL ME!",
+		)
+		say(pick(torture_lines), spans = list("torture"))
+		src.visible_message(span_warning("[src]'s silver psycross abruptly catches flame, burning away in an instant!"))
+		H.confess_sins("antag")
+		qdel(S)
+		return
+	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
 
 /mob/living/carbon/human/proc/faith_test()
 	set name = "Test Faith"
 	set category = "Inquisition"
-
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H
+	var/obj/item/S = get_inactive_held_item()
 	if(!istype(I) || !ishuman(I.grabbed))
+		to_chat(src, span_warning("I don't have a victim in my hands!"))
 		return
 	H = I.grabbed
 	if(H == src)
 		to_chat(src, span_warning("I already torture myself."))
 		return
-	var/painpercent = (H.get_complex_pain() / (H.STAEND * 10)) * 100
-	if(H.add_stress(/datum/stressevent/tortured))
-		if(!H.stat)
-			var/static/list/faith_lines = list(
-				"DO YOU DENY THE TEN?",
-				"WHO IS YOUR GOD?",
-				"ARE YOU FAITHFUL?",
-				"WHO IS YOUR SHEPHERD?",
-			)
-			say(pick(faith_lines), spans = list("torture"))
-			if(painpercent >= 100)
-				H.emote("painscream")
-				H.confession_time("patron")
-				return
-	to_chat(src, span_warning("Not ready to speak yet."))
-
-/mob/living/carbon/human/proc/confession_time(confession_type = "antag")
-	var/timerid = addtimer(CALLBACK(src, PROC_REF(confess_sins)), 6 SECONDS, TIMER_STOPPABLE)
-	var/responsey = alert(src, "Resist torture? (1 TRI)", "TORTURE", "Yes","No")
-	if(!responsey)
-		responsey = "No"
-	if(SStimer.timer_id_dict[timerid])
-		deltimer(timerid)
-	else
-		to_chat(src, span_warning("Too late..."))
+	if (!H.restrained())
+		to_chat(src, span_warning ("My victim needs to be restrained in order to do this!"))
 		return
-	if(responsey == "Yes")
-		adjust_triumphs(-1)
-		confess_sins(confession_type, resist = TRUE)
-	else
-		confess_sins(confession_type)
+	if(!istype(S, /obj/item/clothing/neck/roguetown/psicross/silver))
+		to_chat(src, span_warning("I need to be holding a silver psycross to extract this divination!"))
+		return
+	if(!H.stat)
+		var/static/list/faith_lines = list(
+			"DO YOU DENY THE TEN?",
+			"WHO IS YOUR GOD?",
+			"ARE YOU FAITHFUL?",
+			"WHO IS YOUR SHEPHERD?",
+		)
+		say(pick(faith_lines), spans = list("torture"))
+		src.visible_message(span_warning("[src]'s silver psycross abruptly catches flame, burning away in an instant!"))
+		H.confess_sins("patron")
+		qdel(S)
+		return
+	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
 
-/mob/living/carbon/human/proc/confess_sins(confession_type = "antag", resist)
+/mob/living/carbon/human/proc/confess_sins(confession_type = "antag")
 	var/static/list/innocent_lines = list(
-		"I DON'T KNOW!",
-		"STOP THE PAIN!!",
-		"I DON'T DESERVE THIS!",
-		"THE PAIN!",
-		"I HAVE NOTHING TO SAY...!",
-		"WHY ME?!",
+		"I AM NO SINNER!",
+		"I'M INNOCENT!",
+		"I HAVE NOTHING TO CONFESS!",
+		"I AM FAITHFUL!",
 	)
-	if(!resist)
-		var/list/confessions = list()
-		switch(confession_type)
-			if("patron")
-				if(length(patron?.confess_lines))
-					confessions += patron.confess_lines
-			if("antag")
-				for(var/datum/antagonist/antag in mind?.antag_datums)
-					if(!length(antag.confess_lines))
-						continue
-					confessions += antag.confess_lines
-		if(length(confessions))
-			say(pick(confessions), spans = list("torture"))
-			return
+	var/list/confessions = list()
+	switch(confession_type)
+		if("patron")
+			if(length(patron?.confess_lines))
+				confessions += patron.confess_lines
+		if("antag")
+			for(var/datum/antagonist/antag in mind?.antag_datums)
+				if(!length(antag.confess_lines))
+					continue
+				confessions += antag.confess_lines
+	if(length(confessions))
+		say(pick(confessions), spans = list("torture"))
+		return
 	say(pick(innocent_lines), spans = list("torture"))

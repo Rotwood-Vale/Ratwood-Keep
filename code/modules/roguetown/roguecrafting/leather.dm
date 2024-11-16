@@ -51,6 +51,20 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 30
 
+/datum/crafting_recipe/roguetown/leather/gwstrap
+	name = "Greatweapon Strap"
+	result = /obj/item/gwstrap
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/rope = 1)
+	sellprice = 30
+
+/datum/crafting_recipe/roguetown/leather/twstrap
+	name = "bandolier"
+	result = /obj/item/twstrap
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/rope = 1)
+	sellprice = 30
+
 /datum/crafting_recipe/roguetown/leather/belt
 	name = "leather belt"
 	result = /obj/item/storage/belt/rogue/leather
@@ -72,6 +86,16 @@
 	reqs = list(/obj/item/natural/fur = 1)
 	sellprice = 20
 
+/datum/crafting_recipe/roguetown/leather/fingerless_leather_gloves
+	name = "fingerless leather gloves"
+	result = /obj/item/clothing/gloves/roguetown/fingerless_leather
+	reqs = list(
+		/obj/item/natural/hide = 1,
+		/obj/item/reagent_containers/food/snacks/fat = 1,
+		/obj/item/natural/fibers = 1,
+		)
+	sellprice = 20
+
 /datum/crafting_recipe/roguetown/leather/bracers
 	name = "leather bracers"
 	result = list(/obj/item/clothing/wrists/roguetown/bracers/leather,
@@ -84,6 +108,26 @@
 	result = list(/obj/item/clothing/under/roguetown/trou/leather)
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 10
+
+/datum/crafting_recipe/roguetown/leather/heavy_leather_pants
+	name = "heavy leather pants"
+	result = list(/obj/item/clothing/under/roguetown/heavy_leather_pants)
+	reqs = list(
+		/obj/item/natural/hide = 3,
+		/obj/item/reagent_containers/food/snacks/fat = 1,
+		/obj/item/natural/fibers = 3,
+		)
+	sellprice = 20
+
+/datum/crafting_recipe/roguetown/leather/heavy_leather_pants/shorts
+	name = "heavy leather shorts"
+	result = list(/obj/item/clothing/under/roguetown/heavy_leather_pants/shorts)
+	reqs = list(
+		/obj/item/natural/hide = 2, //they cover less, you see
+		/obj/item/reagent_containers/food/snacks/fat = 1,
+		/obj/item/natural/fibers = 2,
+		)
+	sellprice = 20
 
 /datum/crafting_recipe/roguetown/leather/shoes
 	name = "leather shoes"
@@ -147,6 +191,36 @@
 	reqs = list(/obj/item/natural/hide = 2,
 				/obj/item/natural/fur = 1)
 	sellprice = 26
+
+/datum/crafting_recipe/roguetown/leather/heavy_leather_armor
+	name = "heavy leather armor"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy
+	reqs = list(
+		/obj/item/natural/hide = 3,
+		/obj/item/reagent_containers/food/snacks/fat = 1,
+		/obj/item/natural/fibers = 3,
+		)
+	sellprice = 26
+
+/datum/crafting_recipe/roguetown/leather/heavy_leather_armor/belted
+	name = "belted heavy leather armor"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy/belted
+	reqs = list(
+		/obj/item/natural/hide = 3,
+		/obj/item/reagent_containers/food/snacks/fat = 1,
+		/obj/item/natural/fibers = 3,
+		)
+	sellprice = 26
+
+/datum/crafting_recipe/roguetown/leather/heavy_leather_armor/coat
+	name = "armored leather coat"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
+	reqs = list(
+		/obj/item/natural/hide = 4, //covers an extra body part, costs more
+		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/natural/fibers = 4,
+		)
+	sellprice = 36
 
 /datum/crafting_recipe/roguetown/leather/hidebikini
 	name = "hide bikini armor"

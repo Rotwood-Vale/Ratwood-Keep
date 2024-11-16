@@ -531,7 +531,7 @@
 				carbon_firer = firer
 				if (carbon_firer?.can_catch_item())
 					throw_target = get_turf(firer)
-			I.throw_at(throw_target, 200, 4)
+			I.throw_at(throw_target, 200, 3)
 
 /obj/projectile/magic/sickness
 	name = "Bolt of Sickness"

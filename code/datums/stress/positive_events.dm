@@ -61,32 +61,32 @@
 /datum/stressevent/music
 	timer = 1 MINUTES
 	stressadd = -1
-	desc = span_green("The music is relaxing.")
+	desc = span_green("This music is relaxing.")
 
 /datum/stressevent/music/two
 	stressadd = -2
-	desc = span_green("The music is very relaxing.")
+	desc = span_green("This music is very relaxing.")
 	timer = 2 MINUTES
 
 /datum/stressevent/music/three
 	stressadd = -2
-	desc = span_green("The music saps my stress.")
+	desc = span_green("This music drains away my stress.")
 	timer = 4 MINUTES
 
 /datum/stressevent/music/four
 	stressadd = -3
-	desc = span_green("The music is heavenly.")
+	desc = span_green("This music is great.")
 	timer = 6 MINUTES
 
 /datum/stressevent/music/five
 	stressadd = -3
 	timer = 8 MINUTES
-	desc = span_green("The music is strummed by an angel.")
+	desc = span_green("This music is wonderful!.")
 
 /datum/stressevent/music/six
 	stressadd = -4
 	timer = 10 MINUTES
-	desc = span_boldgreen("The music is a blessing from Eora.")
+	desc = span_boldgreen("This music is exceptional!")
 
 /datum/stressevent/vblood
 	stressadd = -5
@@ -142,3 +142,23 @@
 	stressadd = -4
 	desc = span_boldgreen("I solved an extremely difficult puzzle. Xylix is smiling at me, and surely even Noc must find it impressive.")
 	timer = 15 MINUTES
+
+/datum/stressevent/noble_lavish_food
+	stressadd = -4
+	desc = span_green("Truly, a feast befitting my station.")
+	timer = 30 MINUTES
+
+/datum/stressevent/wine_okay
+	stressadd = -1
+	desc = span_green("That drink was alright.")
+	timer = 10 MINUTES
+
+/datum/stressevent/wine_good
+	stressadd = -2
+	desc = span_green("A decent vintage always goes down easy.")
+	timer = 10 MINUTES
+
+/datum/stressevent/wine_great
+	stressadd = -3
+	desc = span_blue("An absolutely exquisite vintage. Indubitably.")
+	timer = 10 MINUTES

@@ -32,12 +32,12 @@
 	cost = 5
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
-/datum/supply_pack/rogue/Knave/gambeson
+/datum/supply_pack/rogue/Knave/longbow
 	name = "Longbow"
 	cost = 40
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow)
 
-/datum/supply_pack/rogue/Knave/gambeson
+/datum/supply_pack/rogue/Knave/recurvebow
 	name = "Recurve Bow"
 	cost = 20
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve)
@@ -66,7 +66,7 @@
 	cost = 20
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/navaja)
 
-/datum/supply_pack/rogue/Knave/leather/Navaja
+/datum/supply_pack/rogue/Knave/leather/elfdagger
 	name = "Elven Dagger"
 	cost = 40
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver/elvish)

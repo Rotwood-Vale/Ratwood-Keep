@@ -16,12 +16,19 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	requires_power = FALSE
 //	var/previous_ambient = ""
 	var/town_area = FALSE
+	var/keep_area = FALSE
 
 /area/rogue/Entered(mob/living/carbon/human/guy)
 
 	. = ..()
 	if((src.town_area == TRUE) && HAS_TRAIT(guy, TRAIT_GUARDSMAN) && guy.z == 3 && !guy.has_status_effect(/datum/status_effect/buff/guardbuffone)) //man at arms
 		guy.apply_status_effect(/datum/status_effect/buff/guardbuffone)
+
+/area/rogue/Entered(mob/living/carbon/human/guy)
+
+	. = ..()
+	if((src.keep_area == TRUE) && HAS_TRAIT(guy, TRAIT_KNIGHTSMAN) && guy.z == 3 && !guy.has_status_effect(/datum/status_effect/buff/knightbuff)) //man at arms
+		guy.apply_status_effect(/datum/status_effect/buff/knightbuff)
 
 /area/rogue/indoors
 	name = "indoors rt"
@@ -132,6 +139,23 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/decap.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
+
+
+/area/rogue/outdoors/mountains/decap/stepbelow
+	name = "mt decapitation inner"
+	icon_state = "decap"
+	ambush_types = list(
+				/turf/open/floor/rogue/dirt)
+	ambush_mobs = list(
+				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 30,
+				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
+				/mob/living/carbon/human/species/goblin/npc/ambush/hell = 20)
+	droning_sound = 'sound/music/area/decap_deeper.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	first_time_text = "TARICHEA, VALLEY OF LOSS"
+	ambush_times = list("night","dawn","dusk","day")
+	converted_type = /area/rogue/indoors/shelter/mountains/decap
 
 /area/rogue/outdoors/rtfield
 	name = "azure basin"
@@ -462,6 +486,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 
+/area/rogue/outdoors/exposed/town/keep
+	name = "Keep"
+	icon_state = "manor"
+	droning_sound = 'sound/music/area/manorgarri.ogg'
+	keep_area = TRUE
+	town_area = TRUE
+
 /area/rogue/indoors/town/manor
 	name = "Manor"
 	icon_state = "manor"
@@ -470,11 +501,14 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
 	first_time_text = "THE KEEP OF AZURE PEAK"
+	keep_area = TRUE
+
 /area/rogue/outdoors/exposed/manorgarri
 	icon_state = "manorgarri"
 	droning_sound = 'sound/music/area/manorgarri.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
+	keep_area = TRUE
 
 /area/rogue/indoors/town/magician
 	name = "Wizard's Tower"
@@ -485,11 +519,14 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/magiciantower
+	keep_area = TRUE
+
 /area/rogue/outdoors/exposed/magiciantower
 	icon_state = "magiciantower"
 	droning_sound = 'sound/music/area/magiciantower.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
+	keep_area = TRUE
 
 /area/rogue/indoors/town/shop
 	name = "Shop"
@@ -529,6 +566,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
+	keep_area = TRUE
 
 /area/rogue/indoors/town/cell
 	name = "dungeon cell"
@@ -539,6 +577,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
+	keep_area = TRUE
+
 
 /area/rogue/indoors/town/tavern
 	name = "tavern"
@@ -589,6 +629,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 /area/rogue/indoors/town/vault
 	name = "vault"
 	icon_state = "vault"
+	keep_area = TRUE
 
 /area/rogue/indoors/town/vault/can_craft_here()
 	return FALSE
@@ -659,6 +700,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	soundenv = 17
 	converted_type = /area/rogue/indoors/shelter/town/roofs
+
+/area/rogue/outdoors/town/roofs/keep
+	name = "Keep Rooftops"
+	icon_state = "manor"
+	keep_area = TRUE
+	town_area = TRUE
+
 /area/rogue/indoors/shelter/town/roofs
 	icon_state = "roofs"
 	droning_sound = 'sound/music/area/field.ogg'
@@ -743,7 +791,15 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	soundenv = 5
+	town_area = TRUE
 	converted_type = /area/rogue/outdoors/exposed/under/basement
+
+/area/rogue/under/town/basement/keep
+	name = "keep basement"
+	icon_state = "basement"
+	keep_area = TRUE
+	town_area = TRUE
+
 /area/rogue/outdoors/exposed/under/basement
 	icon_state = "basement"
 	droning_sound = 'sound/music/area/catacombs.ogg'

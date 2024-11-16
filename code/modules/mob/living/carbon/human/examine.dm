@@ -120,6 +120,15 @@
 
 	if(leprosy == 1)
 		. += span_necrosis("A LEPER...")
+	
+	if (HAS_TRAIT(src, TRAIT_BEAUTIFUL))
+		switch (pronouns)
+			if (HE_HIM)
+				. += span_beautiful_masc("[m1] handsome!")
+			if (SHE_HER)
+				. += span_beautiful_fem("[m1] beautiful!")
+			if (THEY_THEM, THEY_THEM_F, IT_ITS)
+				. += span_beautiful_nb("[m1] good-looking!")
 
 	if(user != src)
 		var/datum/mind/Umind = user.mind
@@ -237,7 +246,10 @@
 
 	//handcuffed?
 	if(handcuffed)
-		. += "<A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'><span class='warning'>[m1] tied up with \a [handcuffed]!</span></A>"
+		if(user == src)
+			. += "<span class='warning'>[m1] tied up with \a [handcuffed]!</span>"
+		else
+			. += "<A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'><span class='warning'>[m1] tied up with \a [handcuffed]!</span></A>"
 
 	if(legcuffed)
 		. += "<A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'><span class='warning'>[m3] \a [legcuffed] around [m2] legs!</span></A>"

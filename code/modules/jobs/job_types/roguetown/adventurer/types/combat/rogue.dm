@@ -139,7 +139,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	head = /obj/item/clothing/head/roguetown/bardhat
+	head = /obj/item/clothing/head/roguetown/duelhat
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	gloves = /obj/item/clothing/gloves/roguetown/angle
