@@ -203,7 +203,7 @@
 	sellprice = 26
 
 /datum/crafting_recipe/roguetown/leather/heavy_leather_armor/belted
-	name = "hide armor"
+	name = "belted heavy leather armor"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy/belted
 	reqs = list(
 		/obj/item/natural/hide = 3,
@@ -213,7 +213,7 @@
 	sellprice = 26
 
 /datum/crafting_recipe/roguetown/leather/heavy_leather_armor/coat
-	name = "hide armor"
+	name = "armored leather coat"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	reqs = list(
 		/obj/item/natural/hide = 4, //covers an extra body part, costs more
