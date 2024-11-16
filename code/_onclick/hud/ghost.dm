@@ -28,34 +28,6 @@
 	screen_loc = "WEST-4,SOUTH+6"
 	nomouseover = FALSE
 
-/atom/movable/screen/ghost/orbit/rogue/Click(location, control, params)
-	var/mob/dead/observer/G = usr
-	var/paramslist = params2list(params)
-	var/descend_text = "Descend to the Underworld?"
-	if(paramslist["right"]) // screen objects don't do the normal Click() stuff so we'll cheat
-		if(G.client?.holder)
-			G.follow()
-	else
-		if(G.client)
-			if(istype(G, /mob/dead/observer/rogue/arcaneeye))
-				return
-			if(isrogueobserver(G) && G.mind?.funeral)
-				descend_text = "Your body has been buried.\n\
-								Are you ready to be judged?"
-				switch(alert(G, descend_text, "", "Yes", "No"))
-					if("Yes")
-						to_chat(G, span_rose("With my body buried in creation, my soul passes on in peace..."))
-						burial_rite_return_ghost_to_lobby(G)
-					if("No")
-						usr << "You have second thoughts."
-			else
-				switch(alert(descend_text, "", "Yes", "No"))
-					if("Yes")
-						G.client.try_descend()
-					if("No")
-						usr << "You have second thoughts."
-
-
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
 	icon_state = "reenter_corpse"

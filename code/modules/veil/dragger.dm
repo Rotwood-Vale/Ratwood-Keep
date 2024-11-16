@@ -1,5 +1,5 @@
 
-// why not also some mob stuff too
+// currently unused
 /mob/living/simple_animal/hostile/rogue/dragger
 	name = "dragger"
 	desc = ""

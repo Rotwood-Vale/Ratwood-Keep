@@ -23231,9 +23231,9 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
 "tLY" = (
-/obj/structure/veil/barrier,
+/obj/structure/veil/carriageman,
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/rtfield)
+/area/rogue/outdoors/town)
 "tMo" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -284655,7 +284655,7 @@ fxx
 fxx
 fxx
 fxx
-tLY
+fxx
 fxx
 fxx
 fxx
@@ -285057,7 +285057,7 @@ fxx
 fxx
 fxx
 fxx
-tLY
+fxx
 fxx
 fxx
 fxx
@@ -285459,7 +285459,7 @@ fxx
 fxx
 fxx
 fxx
-tLY
+fxx
 fxx
 fxx
 fxx
@@ -320358,7 +320358,7 @@ aOv
 aOv
 aOv
 aOv
-aOv
+tLY
 aOv
 aOv
 aOv

@@ -98,11 +98,9 @@
 			to_chat(user, span_warning("they need to be mended more."))
 			return FALSE
 		testing("revived2")
-		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
+		var/mob/dead/observer/rogue/veil/ghost = target.get_veil_ghost()
 		//GET OVER HERE!
-		if(underworld_spirit)
-			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
-			qdel(underworld_spirit)
+		if(ghost)
 			ghost.mind.transfer_to(target, TRUE)
 		target.grab_ghost(force = TRUE)
 		target.emote("breathgasp")

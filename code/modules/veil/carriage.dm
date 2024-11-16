@@ -39,6 +39,9 @@
 	if(!ghost)
 		return FALSE
 
+	if(!istype(ghost, /mob/dead/observer/rogue/veil))
+		return FALSE
+
 	if(!ghost.Adjacent(src))
 		return FALSE
 
@@ -54,26 +57,3 @@
 		if("No")
 			ghost << "You delay fate."
 			return FALSE
-
-/obj/structure/veil/carriageman/attack_ghost(mob/dead/observer/rogue/veil/ghost)
-
-	if(!ghost)
-		return FALSE
-
-	if(!ghost.Adjacent(src))
-		return FALSE
-
-	if(!ghost.collected_toll)
-		to_chat(ghost, span_bold("<br><font color=purple>ONLY THE TOLL WILL I ACCEPT</font>"))
-		return FALSE
-	
-	if(ghost.paid_toll)
-		to_chat(ghost, span_bold("<br><font color=purple>FURTHER PAYMENT WILL NOT CHANGE HER JUDGEMENT.</font>"))
-		return FALSE
-
-	to_chat(ghost, span_bold("<br><font color=purple>THE TOLL IS PAID, THROUGH THE CARRIAGE THE UNDERMAIDEN WAITS.</font>"))
-	ghost << sound(pick(sounds), 0, 0 ,0, 50)
-	ghost.collected_toll = FALSE
-	ghost.paid_toll = TRUE
-
-	return TRUE

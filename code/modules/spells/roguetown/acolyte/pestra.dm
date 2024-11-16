@@ -190,9 +190,6 @@
 				rotty.update_disabled()
 		target.update_body()
 		target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
-		if(target.mind?.funeral && (target.stat != DEAD) && !CONFIG_GET(flag/force_respawn_on_funeral))
-			to_chat(target, span_warning("My funeral rites are undone!"))
-			target.mind.funeral = FALSE
 		return TRUE
 	revert_cast()
 	return FALSE

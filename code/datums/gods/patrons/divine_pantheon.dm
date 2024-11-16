@@ -76,7 +76,6 @@
 	mob_traits = list(TRAIT_SOUL_EXAMINE)
 	t1 = /obj/effect/proc_holder/spell/targeted/burialrite
 	t2 = /obj/effect/proc_holder/spell/targeted/churn
-	t3 = /obj/effect/proc_holder/spell/targeted/soulspeak
 	confess_lines = list(
 		"ALL SOULS FIND THEIR WAY TO NECRA!",
 		"THE UNDERMAIDEN IS OUR FINAL REPOSE!",

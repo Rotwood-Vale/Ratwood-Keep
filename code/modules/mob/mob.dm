@@ -640,8 +640,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	set name = "{RETURN TO LOBBY}"
 	set category = "Options"
 	set hidden = 1
-	if(!check_rights(0))
-		return
+	
 	if (CONFIG_GET(flag/norespawn))
 		return
 	if ((stat != DEAD || !( SSticker )))

@@ -268,13 +268,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 /mob/dead/CanPass(atom/movable/mover, turf/target)
 	return 1
 
-/mob/dead/observer/rogue/Login()
-	. = ..()
-	if(mind?.funeral)
-		if(CONFIG_GET(flag/force_respawn_on_funeral))
-			to_chat(src, span_rose("With my body buried in creation, my soul passes on in peace..."))
-			burial_rite_return_ghost_to_lobby(src)
-			return
 /mob/dead/observer/rogue/CanPass(atom/movable/mover, turf/target)
 	if(!isinhell)
 		if(istype(mover, /mob/dead/observer/rogue))
@@ -501,6 +494,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!can_reenter_corpse)
 		to_chat(src, span_warning("I cannot re-enter my body."))
 		return
+	if(mind.has_antag_datum(/datum/antagonist/zombie))
+		to_chat(src, span_warning("My body has rotted beyond Necra's grasp."))
+		return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
 		to_chat(usr, span_warning("Another consciousness is in my body... It is resisting me."))
 		return
@@ -508,14 +504,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SSdroning.kill_rain(src.client)
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
-	remove_client_colour(/datum/client_colour/monochrome)
+	remove_client_colour(/datum/client_colour/glass_colour/lightblue)
 	client.change_view(CONFIG_GET(string/default_view))
 	client?.verbs -= GLOB.ghost_verbs
 	SStgui.on_transfer(src, mind.current) // Transfer NanoUIs.
 	mind.current.key = key
 	return TRUE
 
-/mob/dead/observer/returntolobby(modifier as num)
+/mob/dead/observer/rogue/veil/returntolobby(modifier as num)
 	set name = "{RETURN TO LOBBY}"
 	set category = "Options"
 	set hidden = 1
@@ -548,7 +544,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SSdroning.kill_rain(src.client)
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
-	remove_client_colour(/datum/client_colour/monochrome)
+	remove_client_colour(/datum/client_colour/glass_colour/lightblue)
 	if(!client)
 		log_game("[key_name(src)] AM failed due to disconnect.")
 		return
@@ -563,7 +559,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	client.verbs -= GLOB.ghost_verbs
 //	M.Login()	//wat
 	return
-
 
 /mob/dead/observer/verb/stay_dead()
 	set category = "Ghost"

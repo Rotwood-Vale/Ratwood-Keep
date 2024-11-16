@@ -1,3 +1,4 @@
+// currently unused
 /obj/item/flashlight/lantern/shrunken
 	name = "shrunken lamp"
 	desc = "A beacon."
