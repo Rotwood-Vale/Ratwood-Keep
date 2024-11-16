@@ -93,17 +93,17 @@
 	var/list/unlocked_cats = list("Things")
 	switch(usr.advjob)
 		if("Brigand")
-			unlocked_cats+="brigand"
+			unlocked_cats+="Brigand"
 		if("Foresworn")
 			unlocked_cats+="foresworn"
 		if("Hedge Knight")
-			unlocked_cats+="hedgeknight"
+			unlocked_cats+="Knight"
 		if("Knave")
-			unlocked_cats+="knave"
+			unlocked_cats+="Knave"
 		if("Rogue Mage")
-			unlocked_cats+="mage"
-		if("Knave")
-			unlocked_cats+="knave"
+			unlocked_cats+="Mage"
+		if("Sawbones")
+			unlocked_cats+="Sawbones"
 
 	if(current_cat == "1")
 		contents += "<center>"
