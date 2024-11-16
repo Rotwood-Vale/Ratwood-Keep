@@ -21,32 +21,20 @@ GLOBAL_VAR_INIT(veil_tolls, 0)
 	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
 	icon_state = null
 
-	/// Discriminating overlays used to make sure they are only visible to spirits
-	var/image/icon_on_turf
-	var/image/icon_in_hand
+	var/image/veil_icon
 
 /obj/item/veil/toll/Initialize()
-	icon_on_turf = image(
-				icon = 'icons/roguetown/underworld/enigma_husks.dmi',
-				icon_state = "soultoken_floor",
-				loc = src
-			)
-	icon_in_hand = image(
+	veil_icon = image(
 				icon = 'icons/roguetown/underworld/enigma_husks.dmi',
 				icon_state = "soultoken",
 				loc = src
 			)
 	// let's assume it always spawns on the ground
-	apply_veil(icon_on_turf, src)
+	apply_veil(veil_icon, src)
 
-/obj/item/veil/toll/pickup(mob/user)
-	..()
-	apply_veil(icon_in_hand, src)
-
-/obj/item/veil/toll/dropped(mob/user)
-	..()
-	apply_veil(icon_on_turf, src)
-	
+/obj/item/veil/toll/update_icon()
+	. = ..()
+	apply_veil(veil_icon, src)
 
 /// Tracked version thats spawned in the map.
 /obj/item/veil/toll/tracked/Initialize()
@@ -66,3 +54,25 @@ GLOBAL_VAR_INIT(veil_tolls, 0)
 /obj/item/veil/toll/tracked/dropped(mob/user)
 	..()
 	GLOB.veil_tolls += 1
+
+// this is kind of an hack that simulates picking up the toll
+/obj/item/veil/toll/attack_ghost(mob/dead/observer/rogue/veil/ghost)
+
+	if(ghost.collected_toll)
+		return FALSE
+
+	message_admins("The veil ghost has picked up a toll.")
+	
+	ghost.collected_toll = TRUE
+	qdel(src)
+
+/obj/item/veil/toll/Crossed(mob/dead/observer/rogue/veil/ghost)
+	. = ..()
+
+	if(ghost.collected_toll)
+		return FALSE
+
+	message_admins("The veil ghost has picked up a toll.")
+	
+	ghost.collected_toll = TRUE
+	qdel(src)

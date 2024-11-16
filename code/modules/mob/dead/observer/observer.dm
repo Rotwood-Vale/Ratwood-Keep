@@ -401,9 +401,11 @@ Works together with spawning an observer, noted above.
 	else if(drawskip)
 		ghost = new /mob/dead/observer/rogue/nodraw(src)
 	else
-		ghost = new /mob/dead/observer/rogue(src)
+		ghost = new /mob/dead/observer/rogue/veil(src)
+
 	if(!admin)
-		ghost.add_client_colour(/datum/client_colour/monochrome)
+		ghost.add_client_colour(/datum/client_colour/glass_colour/lightblue)
+
 	ghost.ghostize_time = world.time
 	SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
 	ghost.can_reenter_corpse = can_reenter_corpse

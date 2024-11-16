@@ -96,11 +96,11 @@
 		return mob.Move(n, direct)
 	if(mob.stat == DEAD)
 #ifdef TESTSERVER
-		mob.veil_ghostize()
+		mob.ghostize()
 		return FALSE
 #endif
 		if(world.time > mob.mob_timers["lastdied"] + 60 SECONDS)
-			mob.veil_ghostize()
+			mob.ghostize()
 		else
 			if(!world.time%5)
 				to_chat(src, span_warning("My spirit hasn't manifested yet."))
