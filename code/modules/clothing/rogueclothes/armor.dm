@@ -59,10 +59,9 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	icon_state = "ichainmail"
 	name = "chainmaille"
-	desc = "A chain vest made of heavy iron rings. Better than nothing."
+	desc = "A chain vest made of iron rings. Better than nothing."
 	body_parts_covered = CHEST|GROIN|VITALS
 	smeltresult = /obj/item/ingot/iron
-	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
