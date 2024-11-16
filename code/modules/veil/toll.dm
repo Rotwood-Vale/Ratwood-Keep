@@ -37,7 +37,7 @@ GLOBAL_VAR_INIT(veil_tolls, 0)
 	apply_veil(veil_icon, src)
 
 /// Tracked version thats spawned in the map.
-/obj/item/veil/toll/tracked/Initialize()
+/obj/item/veil/toll/tracked/Initialize(mapload)
 	. = ..()
 	GLOB.veil_tolls += 1
 
