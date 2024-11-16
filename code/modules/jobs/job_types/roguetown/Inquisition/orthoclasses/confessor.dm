@@ -9,7 +9,7 @@
 
 /datum/outfit/job/roguetown/confessor/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE) // Cudgellin - Nonlethals
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE) // Cudgellin - Nonlethals
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE) // Stabbin - Lethals
@@ -34,7 +34,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	mask = /obj/item/clothing/mask/rogue/facemask
 	head = /obj/item/clothing/head/roguetown/roguehood/black
-	backpack_contents = list(/obj/item/storage/keyring/puritan = 1)
+	backpack_contents = list(/obj/item/storage/keyring/puritan = 1, /obj/item/lockpickring/mundane = 1)
 	H.change_stat("strength", -1) // weasel
 	H.change_stat("endurance", 3)
 	H.change_stat("perception", 2)

@@ -1,5 +1,5 @@
 /datum/advclass/psydoniantemplar // A templar, but for the Inquisition
-	name = "Psydonian Templar"
+	name = "Adjudicator"
 	tutorial = "You are the strong arm of the Inquisition. You serve under the local Inquisitor to forward the goals of the Otavan Inquisition. PSYDON Endures."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
