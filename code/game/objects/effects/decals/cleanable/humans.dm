@@ -43,7 +43,7 @@
 	if(weather_trait != PARTICLEWEATHER_RAIN || !COOLDOWN_FINISHED(src, wash_cooldown))
 		return
 	wash_precent += min(10, severity / 4)
-	alpha = 255 * (100 - wash_precent)
+	alpha = 255 *((100 - wash_precent) * 0.01)
 	if(wash_precent >= 100)
 		qdel(src)
 	COOLDOWN_START(src, wash_cooldown, 15 SECONDS)
