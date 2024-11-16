@@ -92,6 +92,14 @@
 	desc = "The Lord's key."
 	icon_state = "bosskey"
 	lockid = "lord"
+	visual_replacement = /obj/item/roguekey/royal
+
+/obj/item/roguekey/lord/Initialize()
+	. = ..()
+	if(SSroguemachine.key)
+		qdel(src)
+	else
+		SSroguemachine.key = src
 
 /obj/item/key/lord/pre_attack(target, user, params)
 	. = ..()

@@ -206,6 +206,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	/// The amount of salvage we get out of salvaging with scissors
 	var/salvage_amount = 0 //This will be more accurate when sewing recipes get sorted
 
+	var/visual_replacement //Path. For use in generating dummies for one-off items that would break the game like the crown.
+
 	/// Temporary snowflake var to be used in the rare cases clothing doesn't require fibers to sew, to avoid material duping
 	var/fiber_salvage = FALSE
 
