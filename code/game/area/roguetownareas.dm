@@ -30,6 +30,12 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	soundenv = 2
 	plane = INDOOR_PLANE
 	converted_type = /area/rogue/outdoors
+/
+area/rogue/indoors/banditcamp
+	name = "bandit camp indoors"
+	droning_sound = 'sound/music/area/banditcamp.ogg'
+	droning_sound_dusk = 'sound/music/area/banditcamp.ogg'
+	droning_sound_night = 'sound/music/area/banditcamp.ogg'
 
 /area/rogue/indoors/cave
 	name = "latejoin cave"
@@ -37,6 +43,14 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	ambientsounds = AMB_GENCAVE
 	ambientnight = AMB_GENCAVE
 	soundenv = 8
+
+/area/rogue/outdoors/banditcamp
+	name = "bandit camp outdoors"
+	droning_sound = 'sound/music/area/banditcamp.ogg'
+	droning_sound_dusk = 'sound/music/area/banditcamp.ogg'
+	droning_sound_night = 'sound/music/area/banditcamp.ogg'
+
+
 
 /area/rogue/indoors/cave/late/can_craft_here()
 	return FALSE
@@ -706,13 +720,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 // Proc to generate the cavern layout dynamically
 /area/rogue/under/deep_caverns/proc/generate_deep_caverns_layout()
     var/list/turfs = list()
-    
+
     for (var/turf/T in world)
         if (T.loc == src)
             turfs += T
 
     var/total_turfs = length(turfs)
-    
+
     if (total_turfs == 0)
         return
 
@@ -798,19 +812,19 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
     list(/obj/structure/flora/rogueshroom, 0.30),
     list(/obj/structure/glowshroom, 0.20),
     list(/obj/effect/spawner/lootdrop/roguetown/dungeon/misc, 0.085),
-    
+
     // Rare objects
     list(/obj/effect/decal/remains/human, 0.02),
     list(/obj/effect/decal/cleanable/blood/old, 0.02),
     list(/obj/item/rogueweapon/pick, 0.015),
     list(/mob/living/simple_animal/hostile/retaliate/rogue/mole, 0.02),
     list(/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated, 0.05),
-    
+
     // Superrare objects
     list(/obj/item/roguegem, 0.010),
     list(/obj/item/roguecoin/silver/pile, 0.005),
     list(/obj/structure/bed/rogue/shit, 0.01),
-    list(/obj/item/rope/chain, 0.009) 
+    list(/obj/item/rope/chain, 0.009)
 )
 
     var/list/placed_objects = list()
