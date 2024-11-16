@@ -18,6 +18,14 @@
 	miracle = TRUE
 	devotion_cost = 0 
 
+/obj/effect/proc_holder/spell/invoked/appraise/secular
+	name = "Secular Appraise"
+	overlay_state = "appraise"
+	range = 2
+	associated_skill = /datum/skill/misc/reading // idk reading is like Accounting right
+	miracle = FALSE
+	devotion_cost = 0 //Merchants are not clerics
+
 
 /obj/effect/proc_holder/spell/invoked/appraise/cast(list/targets, mob/living/user)
 	if(ishuman(targets[1]))

@@ -34,6 +34,16 @@
 	cost = 55
 	contains = list(/obj/item/roguegem/yellow)
 
+/datum/supply_pack/rogue/Mage/sdagger
+	name = "Silver Dagger"
+	cost = 100
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver)
+
+/datum/supply_pack/rogue/Mage/manapowder
+	name = "Mana Powder"
+	cost = 25
+	contains = list(/obj/item/reagent_containers/powder/mana)
+
 /datum/supply_pack/rogue/Mage/scrolls
 	name = "Scrolls"
 	cost = 2
@@ -43,6 +53,16 @@
 	name = "Unfinished Spellbook"
 	cost = 10
 	contains = list(/obj/item/spellbook_unfinished)
+
+/datum/supply_pack/rogue/Mage/coolrobes
+	name = "Archmagister's Robes"
+	cost = 5
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/robe)
+
+/datum/supply_pack/rogue/Mage/coolhat
+	name = "Archmagister's Hat"
+	cost = 5
+	contains = list(/obj/item/clothing/head/roguetown/wizhat/gen)
 
 /datum/supply_pack/rogue/Mage/nomag
 	name = "Ring of Nullmagic"
