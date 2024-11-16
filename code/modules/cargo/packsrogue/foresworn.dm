@@ -30,7 +30,7 @@
 /datum/supply_pack/rogue/foresworn/Grenzelshoes
 	name = "Grenzel Shoes"
 	cost = 5
-	contains = list(/obj/item/clothing/shoes/roguetown/grenzelhoft)
+	contains = list(/obj/item/clothing/shoes/roguetown/armor/grenzelhoft)
 
 /datum/supply_pack/rogue/foresworn/coif/steel
 	name = "Steel Coif"
@@ -56,7 +56,7 @@
 /datum/supply_pack/rogue/foresworn/boots
 	name = "Steel Boots"
 	cost = 10
-	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
+	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 
 
 /datum/supply_pack/rogue/foresworn/hauberk
@@ -80,9 +80,9 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale)
 
 /datum/supply_pack/rogue/foresworn/hgambeson
-	name = "Heavy Gambeson"
+	name = "hardened leather coat"
 	cost = 20
-	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
+	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced)
 
 
 /datum/supply_pack/rogue/foresworn/steelcuirass
@@ -94,7 +94,7 @@
 /datum/supply_pack/rogue/foresworn/Bevor
 	name = "Bevor"
 	cost = 20
-	contains = /obj/item/clothing/neck/roguetown/bevor
+	contains = (/obj/item/clothing/neck/roguetown/bervor)
 
 
 /datum/supply_pack/rogue/foresworn/gorget
@@ -169,8 +169,7 @@
 /datum/supply_pack/rogue/weapons/foresworn/bolts
 	name = "Quiver of Bolts"
 	cost = 20
-	contains = list(/obj/item/quiver/bolts)
-
+	contains = list(/obj/item/ammo_holder/quiver/bolts)
 
 /datum/supply_pack/rogue/foresworn/crossbow
 	name = "Crossbow"

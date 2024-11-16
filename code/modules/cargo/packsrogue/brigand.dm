@@ -30,7 +30,7 @@
 /datum/supply_pack/rogue/Brigand/boots
 	name = "Steel Boots"
 	cost = 10
-	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
+	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 
 
 /datum/supply_pack/rogue/Brigand/hauberk
@@ -63,7 +63,7 @@
 /datum/supply_pack/rogue/Brigand/Bevor
 	name = "Bevor"
 	cost = 20
-	contains = list(/obj/item/clothing/neck/roguetown/bevor)
+	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 
 
 /datum/supply_pack/rogue/Brigand/gorget

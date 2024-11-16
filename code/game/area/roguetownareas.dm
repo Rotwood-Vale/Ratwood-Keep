@@ -33,9 +33,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 /
 area/rogue/indoors/banditcamp
 	name = "bandit camp indoors"
-	droning_sound = 'sound/music/area/banditcamp.ogg'
-	droning_sound_dusk = 'sound/music/area/banditcamp.ogg'
-	droning_sound_night = 'sound/music/area/banditcamp.ogg'
 
 /area/rogue/indoors/cave
 	name = "latejoin cave"
@@ -46,9 +43,6 @@ area/rogue/indoors/banditcamp
 
 /area/rogue/outdoors/banditcamp
 	name = "bandit camp outdoors"
-	droning_sound = 'sound/music/area/banditcamp.ogg'
-	droning_sound_dusk = 'sound/music/area/banditcamp.ogg'
-	droning_sound_night = 'sound/music/area/banditcamp.ogg'
 
 
 

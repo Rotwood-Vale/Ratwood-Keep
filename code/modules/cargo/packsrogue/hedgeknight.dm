@@ -10,15 +10,10 @@
 	cost = 5
 	contains = list(/obj/item/storage/belt/rogue/leather/steel)
 
-/datum/supply_pack/rogue/Knight/froggy
-	name = "Froggemund Helm"
-	cost = 60
-	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth)
-
 /datum/supply_pack/rogue/Knight/pigface
 	name = "Pigface Bascinet"
 	cost = 40
-	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/pigface)
+	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/pigface)
 
 /datum/supply_pack/rogue/Knight/knighthelm
 	name = "Knight's Helmet"
@@ -64,7 +59,7 @@
 /datum/supply_pack/rogue/Knight/Bevor
 	name = "Bevor"
 	cost = 20
-	contains = list(/obj/item/clothing/neck/roguetown/bevor)
+	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 
 /datum/supply_pack/rogue/Knight/gorget
 	name = "Gorget"
@@ -100,7 +95,7 @@
 /datum/supply_pack/rogue/Knight/plateboots
 	name = "Plated boots"
 	cost = 10
-	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor)
+	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 
 /datum/supply_pack/rogue/Knight/blkplateboots
 	name = "Blacksteel Plated boots"

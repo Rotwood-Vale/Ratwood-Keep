@@ -30,11 +30,6 @@
 	cost = 5
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
-/datum/supply_pack/rogue/Knave/longbow
-	name = "Longbow"
-	cost = 40
-	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow)
-
 /datum/supply_pack/rogue/Knave/recurvebow
 	name = "Recurve Bow"
 	cost = 20
@@ -53,7 +48,7 @@
 /datum/supply_pack/rogue/Knave/leather/elfdagger
 	name = "Elven Dagger"
 	cost = 40
-	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver/elvish)
+	contains = list(/obj/item/rogueweapon/huntingknife/elvish)
 
 /datum/supply_pack/rogue/Knave/sword
 	name = "Iron Sword"
@@ -93,18 +88,18 @@
 /datum/supply_pack/rogue/Knave/quiver
 	name = "Empty Quiver"
 	cost = 5
-	contains = list(/obj/item/quiver)
+	contains = list(/obj/item/ammo_holder/quiver)
 
 
 /datum/supply_pack/rogue/Knave/quivers/arrows
 	name = "Quiver of Arrows"
 	cost = 10
-	contains = list(/obj/item/quiver/arrows)
+	contains = list(/obj/item/ammo_holder/quiver/arrows)
 
 /datum/supply_pack/rogue/Knave/quivers/bolts
 	name = "Quiver of Bolts"
 	cost = 20
-	contains = list(/obj/item/quiver/bolts)
+	contains = list(/obj/item/ammo_holder/quiver/bolts)
 
 
 /datum/supply_pack/rogue/Knave/Parrows

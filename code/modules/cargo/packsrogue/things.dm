@@ -17,7 +17,7 @@
 /datum/supply_pack/rogue/Things/pinkpill
 	name = "Pink Pills"
 	cost = 5
-	contains = list(/obj/item/storage/fancy/pilltin/pink
+	contains = list(/obj/item/storage/fancy/pilltin/pink)
 
 /datum/supply_pack/rogue/Things/chain
 	name = "Chain"
@@ -76,7 +76,7 @@
 
 /datum/supply_pack/rogue/Things/hammer
 	name = "Hammer"
-	cost = 60
+	cost = 50
 	contains = list(/obj/item/rogueweapon/hammer)
 
 /datum/supply_pack/rogue/Things/horse
@@ -86,5 +86,5 @@
 
 /datum/supply_pack/rogue/Things/Dragonscale
 	name = "Dragonscale Necklace"
-	cost = 900
+	cost = 600
 	contains = list(/obj/item/clothing/neck/roguetown/blkknight)

@@ -34,8 +34,13 @@
 
 /datum/supply_pack/rogue/Sawbones/leather/surgery_bag
 	name = "Surgery Bag"
-	cost = 30
-	contains = list(/obj/item/storage/belt/rogue/surgery_bag/full/physician)
+	cost = 15
+	contains = list(/obj/item/storage/fancy/skit)
+
+/datum/supply_pack/rogue/Sawbones/leather/patch_kit
+	name = "personal patch kit"
+	cost = 15
+	contains = list(/obj/item/storage/fancy/ifak)
 
 /datum/supply_pack/rogue/Sawbones/leather/rapier
 	name = "Rapier"
