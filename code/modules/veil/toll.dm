@@ -6,7 +6,7 @@
 	invisibility = INVISIBILITY_OBSERVER
 
 /// Tracked version thats spawned in the map.
-/obj/item/veil/toll/tracked/Initialize()
+/obj/item/veil/toll/tracked/Initialize(mapload)
 	. = ..()
 	GLOB.veil_tolls += 1
 
