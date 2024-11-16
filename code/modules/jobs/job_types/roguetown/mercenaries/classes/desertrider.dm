@@ -45,6 +45,7 @@
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/full
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
+			pants = /obj/item/clothing/under/roguetown/chainlegs
 
 		if("Blade Dancer")
 			H.set_blindness(0)
@@ -81,7 +82,6 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	beltl = /obj/item/flashlight/flare/torch
-	pants = /obj/item/clothing/under/roguetown/chainlegs
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	H.grant_language(/datum/language/celestial)
 
