@@ -222,7 +222,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	if(iszizocultist(user) || iszizolackey(user))
 		to_chat(user, "It is of the [sigil_type] circle.")
 
-/obj/effect/decal/cleanable/sigil/Initialize(mapload, list/datum/disease/diseases)
+/obj/effect/decal/cleanable/sigil/Initialize(mapload)
 	. = ..()
 	if(!LAZYLEN(GLOB.ritualslist))
 		testing("initializing ritualslist")

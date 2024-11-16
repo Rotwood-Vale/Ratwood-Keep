@@ -100,7 +100,7 @@
 
 
 /mob/living/carbon/monkey/IsAdvancedToolUser()//Unless its monkey mode monkeys can't use advanced tools
-	if(mind && is_monkey(mind))
+	if(mind)
 		return TRUE
 	return FALSE
 
