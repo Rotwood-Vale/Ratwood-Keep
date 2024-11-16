@@ -5,13 +5,14 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time gracefully as knight of his royal majesty, and now you've grown into a role which many men can only dream of becoming. Lead your men to victory--and keep them in line--and you will see this realm prosper under a thousand suns."
+	tutorial = "Your lineage is noble, and generations of strong, loyal knights have come before you. You served your time \
+	gracefully as knight of his royal majesty, and now you've grown into a role which many men can only dream of becoming. \
+	Lead your men to victory--and keep them in line--and you will see this realm prosper under a thousand suns."
 	display_order = JDO_GUARD_CAPTAIN
-	whitelist_req = FALSE
+	advclass_cat_rolls = list(CTAG_CAPTAIN = 20)
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard)
 	outfit = /datum/outfit/job/roguetown/captain
@@ -22,6 +23,22 @@
 	max_pq = null
 	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_knight.ogg'
+
+/datum/outfit/job/roguetown/captain
+	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	armor = /obj/item/clothing/suit/roguetown/armor/plate
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	gloves = /obj/item/clothing/gloves/roguetown/plate
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
+	cloak = /obj/item/clothing/cloak/stabard/guardhood
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(
+		/obj/item/storage/keyring/sheriff = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
+		)
 
 /datum/job/roguetown/captain/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -46,31 +63,30 @@
 					MF.known_people -= prev_real_name
 					H.mind.person_knows_me(MF)
 
-/datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
+		H.advsetup = 1
+		H.invisibility = INVISIBILITY_MAXIMUM
+		H.become_blind("advsetup")
+
+/datum/advclass/captain/infantry
+	name = "Infantry Captain"
+	tutorial = "You've fought shoulder to shoulder with the realm's worthiest while embedded directly within \
+	massed infantry formations. As a peerless armed combatant and tactician both, you are a formidable presence \
+	on any battlefield."
+	outfit = /datum/outfit/job/roguetown/captain/infantry
+	category_tags = list(CTAG_CAPTAIN)
+
+/datum/outfit/job/roguetown/captain/infantry/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	armor = /obj/item/clothing/suit/roguetown/armor/plate
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	pants = /obj/item/clothing/under/roguetown/chainlegs
-	gloves = /obj/item/clothing/gloves/roguetown/plate
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltr = /obj/item/rogueweapon/mace/steel
-	beltl = /obj/item/rogueweapon/sword/sabre
-	cloak = /obj/item/clothing/cloak/stabard/guardhood
-	backl = /obj/item/rogueweapon/shield/tower/metal
-	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/storage/keyring/sheriff = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -78,7 +94,72 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+		H.change_stat("strength", 2)
+		H.change_stat("perception", 1)
+		H.change_stat("intelligence", 2)
+		H.change_stat("constitution", 2)
+		H.change_stat("endurance", 2)
+		H.change_stat("fortune", 1)
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	H.verbs |= /mob/proc/haltyell
+	H.adjust_blindness(-3)
+	var/weapons = list(
+		"Zweihander",
+		"Great Mace",
+		"Battle Axe",
+		"Estoc",
+		"Bastard Sword",
+		"Flail",
+		)
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Zweihander")
+			r_hand = /obj/item/rogueweapon/greatsword/zwei
+		if("Great Mace")
+			r_hand = /obj/item/rogueweapon/mace/goden/steel
+		if("Battle Axe")
+			r_hand = /obj/item/rogueweapon/stoneaxe/battle
+		if("Estoc")
+			r_hand = /obj/item/rogueweapon/estoc
+		if("Bastard Sword")
+			beltr = /obj/item/rogueweapon/sword/long
+			backl = /obj/item/rogueweapon/shield/tower/metal
+		if("Flail")
+			beltr = /obj/item/rogueweapon/flail/sflail
+			backl = /obj/item/rogueweapon/shield/tower/metal
+
+/datum/advclass/captain/cavalry
+	name = "Cavalry Captain"
+	tutorial = "As the first among finest you ride at the speartip of cavalier forces, barreling saiga and blades through \
+	the soft flanks of enemy formations."
+	outfit = /datum/outfit/job/roguetown/captain/cavalry
+	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
+	category_tags = list(CTAG_CAPTAIN)
+
+/datum/outfit/job/roguetown/captain/cavalry/pre_equip(mob/living/carbon/human/H)
+	..()
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("perception", 1)
 		H.change_stat("intelligence", 2)
@@ -91,6 +172,26 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.verbs |= /mob/proc/haltyell
+	H.adjust_blindness(-3)
+	var/weapons = list(
+		"Sword + Recurve Bow",
+		"Mace + Crossbow",
+		"Spear + Shield",
+		)
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Sword + Recurve Bow")
+			r_hand = /obj/item/rogueweapon/sword
+			beltr = /obj/item/quiver/arrows
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+		if("Mace + Crossbow")
+			r_hand = /obj/item/rogueweapon/mace
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+			beltr = /obj/item/quiver/bolts
+		if ("Spear + Shield")
+			r_hand = /obj/item/rogueweapon/spear
+			backl = /obj/item/rogueweapon/shield/tower/metal
 
 /obj/effect/proc_holder/spell/self/convertrole
 	name = "Recruit Beggar"
