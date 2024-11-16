@@ -13,7 +13,7 @@ GLOBAL_VAR_INIT(veil_tolls, 0)
 /proc/check_toll_upkeep()
 	if(GLOB.veil_tolls < MINIMUM_VEIL_TOLLS)
 		for(var/obj/effect/landmark/veil/toll/L in GLOB.landmarks_list)
-			new /obj/item/veil/toll(L.loc)
+			new /obj/item/veil/toll/tracked(L.loc)
 
 /obj/item/veil/toll
 	name = "The Toll"
@@ -25,7 +25,7 @@ GLOBAL_VAR_INIT(veil_tolls, 0)
 
 /obj/item/veil/toll/Initialize()
 	veil_icon = image(
-				icon = 'icons/roguetown/underworld/enigma_husks.dmi',
+				icon = src.icon,
 				icon_state = "soultoken",
 				loc = src
 			)

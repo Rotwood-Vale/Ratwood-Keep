@@ -1,7 +1,7 @@
 /obj/structure/veil/carriageman
 	name = "The Carriageman"
 	desc = "They will take the reigns and lead the way. But only if the price I can pay."
-	icon = null
+	icon = 'icons/roguetown/underworld/enigma_carriageman.dmi'
 	icon_state = null
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
@@ -15,7 +15,7 @@
 	. = ..()
 
 	veil_icon = image(
-				icon = 'icons/roguetown/underworld/enigma_carriageman.dmi',
+				icon = src.icon,
 				icon_state = "carriageman",
 				loc = src
 			)

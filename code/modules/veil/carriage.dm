@@ -12,7 +12,7 @@
 // looks like a normal carriage to the living, transforms into a portal in the veil.
 /obj/structure/veil/carriage
 	name = "Carriage"
-	desc = "The Undermaiden awaits."
+	desc = "The ride stopped here..."
 	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
 	icon_state = "carriage_normal"
 	layer = ABOVE_MOB_LAYER
