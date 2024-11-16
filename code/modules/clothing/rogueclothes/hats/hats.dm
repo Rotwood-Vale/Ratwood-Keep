@@ -317,18 +317,6 @@
 	item_state = "chap_alt"
 	color = "#cf99e3"
 
-/obj/item/clothing/head/roguetown/chaperon/marshal
-	name = "chaperon hat"
-	desc = "A fancy hat worn by nobles."
-	icon_state = "chap_alt"
-	item_state = "chap_alt"
-	color = "#C0392B"
-
-/obj/item/clothing/head/roguetown/chaperon/councillor
-	icon_state = "chap_alt"
-	item_state = "chap_alt"
-	color = "#7dcea0"
-
 /obj/item/clothing/head/roguetown/chef
 	name = "chef's hat"
 	desc = "A hat which signifies one as well versed in the arts of cooking."

@@ -177,7 +177,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/magician
-	name = "Court Magician"
+	name = "Court Magos"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/physician
@@ -330,7 +330,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Duchess Consort"
+	name = "Duchess"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
