@@ -86,7 +86,7 @@
 	reqs = list(/obj/item/natural/fur = 1)
 	sellprice = 20
 
-/datum/crafting_recipe/roguetown/leather/heavygloves
+/datum/crafting_recipe/roguetown/leather/fingerless_leather_gloves
 	name = "fingerless leather gloves"
 	result = /obj/item/clothing/gloves/roguetown/fingerless_leather
 	reqs = list(
