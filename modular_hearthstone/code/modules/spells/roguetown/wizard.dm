@@ -219,7 +219,8 @@
 		/obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e,
 		/obj/effect/proc_holder/spell/invoked/frostbite5e,
 		/obj/effect/proc_holder/spell/invoked/guidance,
-		/obj/effect/proc_holder/spell/invoked/fortitude
+		/obj/effect/proc_holder/spell/invoked/fortitude,
+		/obj/effect/proc_holder/spell/invoked/snap_freeze
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
@@ -265,7 +266,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	xp_gain = TRUE
-	cost = 2
+	cost = 1 
 
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/forcefield_weak
@@ -277,7 +278,7 @@
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
 	opacity = 0
 	density = TRUE
-	max_integrity = 80
+	max_integrity = 100
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/timeleft = 20 SECONDS
 
@@ -333,7 +334,7 @@
 	range = 6
 	overlay_state = "ensnare"
 	var/area_of_effect = 1
-	var/duration = 2.5 SECONDS
+	var/duration = 5 SECONDS
 	var/delay = 0.8 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe/cast(list/targets, mob/user = usr)
@@ -487,7 +488,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 20
-	charge_max = 10 SECONDS
+	charge_max = 15 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -495,15 +496,15 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "blade_burst"
-	var/delay = 7
-	var/damage = 120 //trust me, this is still way worse than you think it is
+	var/delay = 18
+	var/damage = 100 //trust me, this is still way worse than you think it is
 	var/area_of_effect = 1
 
 /obj/effect/temp_visual/trap
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "trap"
 	light_range = 2
-	duration = 7
+	duration = 18
 	layer = MASSIVE_OBJ_LAYER
 
 /obj/effect/temp_visual/blade_burst
@@ -987,6 +988,74 @@
 		user.visible_message("[user] mutters an incantation and they briefly shine orange.")
 
 	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/snap_freeze
+	name = "Snap Freeze"
+	desc = "Freeze the air in a small area in an instant, slowing and mildly damaging those affected."
+	cost = 2
+	xp_gain = TRUE
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 15
+	charge_max = 15 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	var/delay = 6
+	var/damage = 40 // less then fireball, more then lighting bolt
+	var/area_of_effect = 1
+
+/obj/effect/temp_visual/trapice
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "blueshatter"
+	light_range = 2
+	light_color = "#4cadee"
+	duration = 6
+	layer = MASSIVE_OBJ_LAYER
+
+/obj/effect/temp_visual/snap_freeze
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "shieldsparkles"
+	name = "rippeling arcyne ice"
+	desc = "Get out of the way!"
+	randomdir = FALSE
+	duration = 1 SECONDS
+	layer = MASSIVE_OBJ_LAYER
+
+
+/obj/effect/proc_holder/spell/invoked/snap_freeze/cast(list/targets, mob/user)
+	var/turf/T = get_turf(targets[1])
+
+	for(var/turf/affected_turf in view(area_of_effect, T))
+		if(affected_turf.density)
+			continue
+		new /obj/effect/temp_visual/trapice(affected_turf)
+	playsound(T, 'sound/combat/wooshes/blunt/wooshhuge (2).ogg', 80, TRUE, soundping = TRUE) // it kinda sounds like cold wind idk 
+
+	sleep(delay)
+	var/play_cleave = FALSE
+
+	for(var/turf/affected_turf in view(area_of_effect, T))
+		new /obj/effect/temp_visual/snap_freeze(affected_turf)
+		for(var/mob/living/L in affected_turf.contents)
+			play_cleave = TRUE
+			L.adjustFireLoss(damage)
+			L.apply_status_effect(/datum/status_effect/buff/frostbite5e/)
+			playsound(affected_turf, "genslash", 80, TRUE)
+			to_chat(L, "<span class='userdanger'>The air chills your bones!</span>")
+
+	if(play_cleave)
+		playsound(T, 'sound/combat/newstuck.ogg', 80, TRUE, soundping = TRUE) // this also kinda sounds like ice ngl
+
+	return TRUE
+
+
+
+
+
 
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK
