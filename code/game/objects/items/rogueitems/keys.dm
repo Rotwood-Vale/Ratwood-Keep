@@ -353,11 +353,11 @@
 	icon_state = "mazekey"
 	lockid = "puritan"
 
-/obj/item/key/confession
-	name = "confessional key"
-	desc = "This key opens the doors of the confessional."
+/obj/item/key/inquisition
+	name = "inquisition key"
+	desc = "This key opens the doors of the inquisition."
 	icon_state = "brownkey"
-	lockid = "confession"
+	lockid = "inquisition"
 
 /obj/item/key/hand
 	name = "hand's key"

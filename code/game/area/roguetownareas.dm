@@ -500,6 +500,17 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	icon_state = "chapel"
 	first_time_text = "THE HOUSE OF THE TEN"
 
+/area/rogue/indoors/town/church/inquisition
+	name = "Inquisitorial chambers"
+	icon_state = "inquisition"
+	ambientsounds = AMB_BASEMENT
+	ambientnight = AMB_BASEMENT
+	spookysounds = SPOOKY_DUNGEON
+	spookynight = SPOOKY_DUNGEON
+	droning_sound = 'sound/music/area/magiciantower.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
 /area/rogue/indoors/town/fire_chamber
 	name = "incinerator"
 	icon_state = "fire_chamber"

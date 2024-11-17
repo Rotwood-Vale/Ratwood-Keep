@@ -185,13 +185,13 @@
 	keys = list(/obj/item/key/tavern, /obj/item/key/fancyroomiii, /obj/item/key/fancyroomii, /obj/item/key/fancyroomi, /obj/item/key/roomvi, /obj/item/key/roomv, /obj/item/key/roomiv, /obj/item/key/roomiii, /obj/item/key/roomii, /obj/item/key/roomi)
 
 /obj/item/keyring/priest
-	keys = list(/obj/item/key/priest, /obj/item/key/confession, /obj/item/key/church, /obj/item/key/graveyard)
+	keys = list(/obj/item/key/priest, /obj/item/key/inquisition, /obj/item/key/church, /obj/item/key/graveyard)
 
 /obj/item/keyring/puritan
-	keys = list(/obj/item/key/puritan, /obj/item/key/manor, /obj/item/key/confession, /obj/item/key/church)
+	keys = list(/obj/item/key/puritan, /obj/item/key/manor, /obj/item/key/inquisition, /obj/item/key/church)
 
 /obj/item/keyring/shepherd
-	keys = list(/obj/item/key/confession, /obj/item/key/church)
+	keys = list(/obj/item/key/inquisition, /obj/item/key/church)
 
 /obj/item/keyring/nightman
 	keys = list(/obj/item/key/nightman, /obj/item/key/nightmaiden)
