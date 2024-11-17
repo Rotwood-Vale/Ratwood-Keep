@@ -112,6 +112,7 @@
 
 /obj/item/clothing/under/roguetown/trou/leather
 	name = "leather trousers"
+	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	icon_state = "leathertrou"
 	resistance_flags = FIRE_PROOF
 
