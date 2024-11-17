@@ -10585,7 +10585,9 @@
 /area/rogue/under/cavewet/bogcaves)
 "ilB" = (
 /obj/structure/mineral_door/wood{
-	name = "Storage"
+	name = "Storage";
+	locked = 1;
+	lockid = "church"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/church)
