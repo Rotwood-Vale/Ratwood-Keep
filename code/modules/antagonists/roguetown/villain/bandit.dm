@@ -11,7 +11,7 @@
 		"I WILL NOT LIVE IN YOUR WALLS!",
 		"I WILL NOT FOLLOW YOUR RULES!",
 	)
-	var/favor = 10
+	var/favor = 25
 	var/totaldonated = 0
 
 /datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
