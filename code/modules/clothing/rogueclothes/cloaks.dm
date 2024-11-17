@@ -45,7 +45,7 @@
 
 /obj/item/clothing/cloak/psydontabard/alt
 	name = "open otavan tabard"
-	desc = "Used by more radical followers of the Eoran Church"
+	desc = "A long vest bearing Psydonian symbology"
 	body_parts_covered = null
 	icon_state = "psydontabardalt"
 	item_state = "psydontabardalt"

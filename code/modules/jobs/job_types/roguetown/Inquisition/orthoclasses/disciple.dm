@@ -16,7 +16,6 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltr = /obj/item/roguekey/church
 	id = /obj/item/clothing/ring/silver
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/keyring/puritan = 1)
