@@ -46,7 +46,7 @@
 /obj/item/clothing/cloak/psydontabard/alt
 	name = "open otavan tabard"
 	desc = "A long vest bearing Psydonian symbology"
-	body_parts_covered = null
+	body_parts_covered = GROIN
 	icon_state = "psydontabardalt"
 	item_state = "psydontabardalt"
 	flags_inv = HIDECROTCH
@@ -57,7 +57,7 @@
 		if(FALSE)
 			name = "inquisitorial tabard"
 			desc = "A long vest bearing Psydonian symbology"
-			body_parts_covered = null
+			body_parts_covered = GROIN
 			icon_state = "psydontabardalt"
 			item_state = "psydontabardalt"
 			open_wear = TRUE
