@@ -49,7 +49,6 @@
 	range = -1
 	include_user = TRUE
 
-	mutations = list(LASEREYES, HULK)
 	duration = 300
 	cooldown_min = 300 //25 deciseconds reduction per rank
 
@@ -203,7 +202,6 @@
 	sound = 'sound/blank.ogg'
 
 /obj/effect/proc_holder/spell/targeted/genetic/blind
-	mutations = list(BLINDMUT)
 	duration = 300
 	charge_max = 400 // needs to be higher than the duration or it'll be permanent
 	sound = 'sound/blank.ogg'

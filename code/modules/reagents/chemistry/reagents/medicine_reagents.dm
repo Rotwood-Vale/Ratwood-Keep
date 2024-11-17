@@ -745,13 +745,6 @@
 	color = "#5096C8"
 	taste_description = "acid"
 
-/datum/reagent/medicine/mutadone/on_mob_life(mob/living/carbon/M)
-	M.jitteriness = 0
-	if(M.has_dna())
-		M.dna.remove_all_mutations(list(MUT_NORMAL, MUT_EXTRA), TRUE)
-	if(!QDELETED(M)) //We were a monkey, now a human
-		..()
-
 /datum/reagent/medicine/antihol
 	name = "Antihol"
 	description = "Purges alcoholic substance from the patient's body and eliminates its side effects."

@@ -241,10 +241,6 @@ Class Procs:
 	else
 		if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SILICON)
 			return FALSE
-		if(!Adjacent(user))
-			var/mob/living/carbon/H = user
-			if(!(istype(H) && H.has_dna() && H.dna.check_mutation(TK)))
-				return FALSE
 	return TRUE
 
 ////////////////////////////////////////////////////////////////////////////////////////////

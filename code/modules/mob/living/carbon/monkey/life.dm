@@ -37,8 +37,7 @@
 			to_chat(src, span_danger("I feel weak."))
 		if(radiation > RAD_MOB_MUTATE)
 			if(prob(1))
-				to_chat(src, span_danger("I mutate!"))
-				easy_randmut(NEGATIVE+MINOR_NEGATIVE)
+				to_chat(src, "<span class='danger'>I mutate!</span>")
 				emote("gasp")
 				domutcheck()
 

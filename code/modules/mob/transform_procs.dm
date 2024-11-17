@@ -40,10 +40,6 @@
 	dna.transfer_identity(O)
 	O.updateappearance(icon_update=0)
 
-	if(tr_flags & TR_KEEPSE)
-		O.dna.mutation_index = dna.mutation_index
-		O.dna.set_se(1, GET_INITIALIZED_MUTATION(RACEMUT))
-
 	if(suiciding)
 		O.set_suicide(suiciding)
 	if(hellbound)
@@ -180,11 +176,6 @@
 	else
 		O.real_name = O.dna.real_name
 	O.name = O.real_name
-
-	if(tr_flags & TR_KEEPSE)
-		O.dna.mutation_index = dna.mutation_index
-		O.dna.set_se(0, GET_INITIALIZED_MUTATION(RACEMUT))
-		O.domutcheck()
 
 	if(suiciding)
 		O.set_suicide(suiciding)
