@@ -2107,6 +2107,7 @@
 #include "code\modules\events\rogue\goblininvasion.dm"
 #include "code\modules\events\rogue\haunts.dm"
 #include "code\modules\events\rogue\lightsout.dm"
+#include "code\modules\events\rogue\poltergeist.dm"
 #include "code\modules\events\rogue\skellyinvade.dm"
 #include "code\modules\events\rogue\skellysiege.dm"
 #include "code\modules\events\rogue\vines.dm"
