@@ -208,13 +208,13 @@ Hotkey-Mode: (hotkey-mode must be on)
 	if(prefs.grain == TRUE)
 		prefs.grain = FALSE
 		prefs.save_preferences()
-		to_chat(src, "Grain is OFF.")
+		to_chat(src, "Grain is <font color='red'>OFF.</font>")
 		for(var/atom/movable/screen/grain/S in screen)
 			S.alpha = 0
 	else
 		prefs.grain = TRUE
 		prefs.save_preferences()
-		to_chat(src, "Grain is ON.")
+		to_chat(src, "Grain is <font color='green'>ON.</font>")
 		for(var/atom/movable/screen/grain/S in screen)
 			S.alpha = 55
 

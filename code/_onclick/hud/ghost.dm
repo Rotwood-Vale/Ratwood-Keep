@@ -96,7 +96,7 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/grain
+	grain = new /atom/movable/screen/grain
 	grain.hud = src
 	static_inventory += grain
 	if(owner.client?.prefs?.grain == TRUE)
@@ -163,7 +163,7 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/grain
+	grain = new /atom/movable/screen/grain
 	grain.hud = src
 	static_inventory += grain
 	if(owner.client?.prefs?.grain == TRUE)
@@ -199,7 +199,7 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/grain
+	grain = new /atom/movable/screen/grain
 	grain.hud = src
 	static_inventory += grain
 	if(owner.client?.prefs?.grain == TRUE)
