@@ -31,3 +31,4 @@ roundend-vote-sound.ogg: A snippet of Thief Gold Soundtrack: Track 3 - Lord Baff
 banditcamp.ogg: Tooth and Tail OST (2017) - Fuel For The Firebrand
 traitor.ogg: Tooth and Tail OST (2017) - Bellafide (Firebrand of The Longcoats)
 Iconoclast.ogg: Valley of Judgement- Lateralis
+dragonden.ogg: Ash Lake Theme - Dark Souls

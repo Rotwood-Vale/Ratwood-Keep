@@ -429,8 +429,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 /area/rogue/under/cave/dragonden
 	name = "dragonnest"
 	icon_state = "under"
-	first_time_text = "DRAGONS DEN"
-	droning_sound = 'sound/music/area/dungeon.ogg'
+	first_time_text = "DEN OF DRAGONS"
+	droning_sound = 'sound/music/area/dragonden.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/dungeon1
