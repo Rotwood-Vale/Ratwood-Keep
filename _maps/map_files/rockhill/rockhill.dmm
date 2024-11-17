@@ -862,8 +862,9 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "aGe" = (
-/turf/closed/wall/mineral/rogue/decostone/end,
-/area/rogue/indoors/shelter/mountains)
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/church)
 "aGs" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
@@ -4202,10 +4203,6 @@
 "dnf" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue/cand,
 /area/rogue/indoors/town/manor)
-"dnN" = (
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/churchbrick,
-/area/rogue/indoors/town/church)
 "dnO" = (
 /obj/structure/rack/rogue,
 /obj/item/rope,
@@ -4214,8 +4211,17 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "doB" = (
-/turf/closed/wall/mineral/rogue/decostone,
-/area/rogue/indoors/shelter/mountains)
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1
+	},
+/obj/machinery/light/rogue/wallfire/candle/blue{
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/church)
 "dpe" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -7593,18 +7599,6 @@
 /obj/item/natural/worms,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
-"fQS" = (
-/obj/structure/stairs/stone{
-	dir = 8
-	},
-/obj/structure/fluff/railing/border{
-	dir = 1
-	},
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_y = -32
-	},
-/turf/open/floor/rogue/churchbrick,
-/area/rogue/indoors/town/church)
 "fRo" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -15750,14 +15744,6 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
-"muZ" = (
-/obj/structure/stairs/stone{
-	dir = 8
-	},
-/obj/structure/fluff/railing/border,
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/churchbrick,
-/area/rogue/indoors/town/church)
 "mvo" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -23095,11 +23081,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-"sfc" = (
-/turf/closed/wall/mineral/rogue/decostone/end{
-	dir = 1
-	},
-/area/rogue/indoors/shelter/mountains)
 "sfx" = (
 /obj/structure/stairs{
 	dir = 4
@@ -27411,8 +27392,13 @@
 	},
 /area/rogue/indoors)
 "vzm" = (
-/turf/closed/wall/mineral/rogue/decostone/long,
-/area/rogue/indoors/shelter/mountains)
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/obj/structure/fluff/railing/border,
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/church)
 "vzt" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood,
@@ -332828,12 +332814,12 @@ hcW
 hcW
 hcW
 hcW
+hcW
 lQh
 jmT
 daC
 jmT
 lQh
-hcW
 hcW
 hcW
 hcW
@@ -333230,12 +333216,12 @@ hcW
 hcW
 hcW
 hcW
+hcW
 nGW
 nGW
 una
 nGW
 nGW
-hcW
 hcW
 hcW
 hcW
@@ -333633,10 +333619,10 @@ hcW
 hcW
 hcW
 hcW
+hcW
 nGW
 eza
 nGW
-hcW
 hcW
 hcW
 hcW
@@ -433733,7 +433719,7 @@ fCM
 fCM
 qod
 iMA
-dnN
+cHf
 koz
 cHf
 tML
@@ -434135,7 +434121,7 @@ fCM
 fCM
 pGT
 noB
-cHf
+aGe
 koz
 cHf
 iMA
@@ -434530,8 +434516,8 @@ qrN
 qrN
 qrN
 tML
-aGe
-sfc
+lug
+hKU
 tML
 cvm
 jom
@@ -434926,6 +434912,7 @@ vIa
 vIa
 vIa
 vIa
+vIa
 uZy
 xoV
 sRZ
@@ -434948,7 +434935,6 @@ qdR
 eCn
 mSb
 teW
-vIa
 vIa
 vIa
 vIa
@@ -435328,17 +435314,18 @@ vIa
 vIa
 vIa
 vIa
-doB
-aGe
-vzm
-sfc
-doB
+vIa
+tML
+lug
+wAm
+hKU
+tML
 vIa
 vIa
-doB
-aGe
-vzm
-sfc
+tML
+lug
+wAm
+hKU
 tML
 wuM
 sYd
@@ -435350,7 +435337,6 @@ eCn
 eCn
 nrB
 teW
-vIa
 vIa
 vIa
 vIa
@@ -435741,6 +435727,7 @@ vIa
 vIa
 vIa
 vIa
+vIa
 teW
 jiT
 ffv
@@ -435752,7 +435739,6 @@ cfU
 tyF
 dft
 uZy
-vIa
 vIa
 vIa
 vIa
@@ -436143,10 +436129,11 @@ vIa
 vIa
 vIa
 vIa
+vIa
 noB
-muZ
+vzm
 yjY
-fQS
+doB
 noB
 lug
 wAm
@@ -436154,7 +436141,6 @@ noB
 wAm
 hKU
 tML
-vIa
 vIa
 vIa
 vIa
@@ -436545,12 +436531,12 @@ vIa
 vIa
 vIa
 vIa
+vIa
 iMA
 rrU
 eBN
 mbd
 iMA
-vIa
 vIa
 vIa
 vIa
@@ -436947,12 +436933,12 @@ vIa
 vIa
 vIa
 vIa
+vIa
 uZy
 kyn
 eBN
 kyn
 uZy
-vIa
 vIa
 vIa
 vIa
@@ -437349,12 +437335,12 @@ vIa
 vIa
 vIa
 vIa
+vIa
 tML
 lug
 tja
 hKU
 tML
-vIa
 vIa
 vIa
 vIa
