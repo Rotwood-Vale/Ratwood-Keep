@@ -991,6 +991,13 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"aLi" = (
+/obj/structure/fluff/sellsign{
+	desc = "We shall take care of them";
+	name = "Leave your wounded"
+	},
+/turf/closed/wall/mineral/rogue/decostone,
+/area/rogue/indoors/town/church)
 "aLK" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -3251,7 +3258,9 @@
 /area/rogue/under/cave)
 "czE" = (
 /obj/machinery/light/rogue/torchholder,
-/turf/closed/wall/mineral/rogue/decostone,
+/turf/closed/wall/mineral/rogue/decostone/long{
+	dir = 1
+	},
 /area/rogue/indoors/town/church/chapel)
 "czF" = (
 /obj/structure/table/wood{
@@ -4932,8 +4941,8 @@
 /obj/structure/fluff/railing/border{
 	pixel_x = 4
 	},
-/obj/structure/fluff/statue/knight/interior/r,
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/structure/fluff/psycross/copper,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church/chapel)
 "dSm" = (
@@ -5739,6 +5748,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"ezp" = (
+/obj/structure/fluff/statue/gargoyle,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town/roofs)
 "ezt" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/cobble,
@@ -6518,8 +6531,8 @@
 	dir = 1;
 	pixel_x = 4
 	},
-/obj/structure/fluff/statue/knight/interior/r,
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/structure/fluff/psycross/copper,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church/chapel)
 "eZI" = (
@@ -7208,7 +7221,7 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors/rtfield)
 "fEb" = (
-/obj/structure/fluff/psycross/copper,
+/obj/structure/fluff/statue/knight/interior,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "fEt" = (
@@ -21478,6 +21491,13 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
+"rcg" = (
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "tablewood2"
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/church)
 "rco" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 4
@@ -28252,6 +28272,10 @@
 /obj/structure/fluff/statue/gargoyle/moss,
 /turf/open/floor/rogue/rooftop,
 /area/rogue/outdoors/town)
+"wzh" = (
+/obj/structure/fluff/statue/knight/interior/r,
+/turf/open/floor/rogue/churchrough,
+/area/rogue/indoors/town/church)
 "wzk" = (
 /obj/structure/flora/roguegrass/maneater/real,
 /turf/open/water/swamp,
@@ -326011,8 +326035,8 @@ pQd
 qPA
 qbs
 eBN
+eBN
 xZg
-qPA
 tML
 teW
 wiC
@@ -326414,7 +326438,7 @@ qPA
 kNw
 eBN
 eBN
-qPA
+rcg
 tML
 tML
 wiC
@@ -421691,7 +421715,7 @@ gZt
 kZy
 kZy
 ajN
-tML
+aLi
 pwq
 dmE
 wou
@@ -422489,7 +422513,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-hcx
+uSx
 teW
 wAm
 wAm
@@ -428924,7 +428948,7 @@ kWa
 lKA
 kWa
 uHj
-pxR
+ezp
 teW
 uKB
 uKB
@@ -429731,7 +429755,7 @@ pxR
 pxR
 teW
 fZy
-uKB
+wzh
 rFD
 wiC
 eCn
@@ -429739,7 +429763,7 @@ eCn
 eCn
 wiC
 rFD
-uKB
+wzh
 vCi
 grR
 wiC
@@ -524603,7 +524627,7 @@ teW
 hCN
 pPQ
 jYm
-tML
+teW
 daC
 vfG
 nDs
@@ -525000,11 +525024,11 @@ xAt
 xAt
 xAt
 xAt
-teW
+tML
 teW
 wAm
 iPH
-tML
+wAm
 tML
 daC
 grR
@@ -526208,7 +526232,7 @@ xAt
 xAt
 hcx
 bXB
-uSx
+nJy
 uSx
 gvN
 gvN
