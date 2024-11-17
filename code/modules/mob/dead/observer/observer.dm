@@ -85,6 +85,8 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	if(world.time < next_gmove)
 		return
 	next_gmove = world.time + 3
+
+
 	var/turf/T = n
 
 	setDir(direct)
@@ -92,21 +94,18 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	if(!loc.Exit(src, T))
 		return
 
-	if(istype(T))
-		if(T.density)
+	for(var/obj/structure/O in T)
+		// let ghosts pass through doors
+		if(istype(O, /obj/structure/mineral_door))
+			return ..()
+
+		// but not any other solid objects
+		if(O.density)
 			return
-		for(var/obj/structure/O in T)
-/*			if(istype(O, /obj/structure/fluff/psycross))
-				go2hell()
-				next_gmove = world.time + 30
-				return*/
-			if(O.density && !O.climbable)
-				if(!misting)
-					return
-		for(var/obj/item/reagent_containers/powder/salt/S in T)
-//			go2hell()
-//			next_gmove = world.time + 30
-			return
+
+	// no wall passing
+	if(T.density)
+		return
 	. = ..()
 
 /mob/dead/observer/screye
