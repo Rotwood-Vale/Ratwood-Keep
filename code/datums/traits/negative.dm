@@ -274,40 +274,6 @@
 			H.reagents.addiction_list += reagent_instance
 			to_chat(quirk_holder, span_danger("I thought you kicked it, but you suddenly feel like you need [reagent_instance.name] again..."))
 
-/datum/quirk/junkie/smoker
-	name = "Smoker"
-	desc = ""
-	value = -1
-	gain_text = span_danger("I could really go for a smoke right about now.")
-	lose_text = span_notice("I feel like you should quit smoking.")
-	medical_record_text = "Patient is a current smoker."
-	reagent_type = /datum/reagent/drug/nicotine
-	accessory_type = /obj/item/lighter/greyscale
-
-/datum/quirk/junkie/smoker/on_spawn()
-	drug_container_type = pick(/obj/item/storage/fancy/cigarettes,
-		/obj/item/storage/fancy/cigarettes/cigpack_midori,
-		/obj/item/storage/fancy/cigarettes/cigpack_uplift,
-		/obj/item/storage/fancy/cigarettes/cigpack_robust,
-		/obj/item/storage/fancy/cigarettes/cigpack_robustgold,
-		/obj/item/storage/fancy/cigarettes/cigpack_carp)
-	. = ..()
-
-/datum/quirk/junkie/smoker/announce_drugs()
-	to_chat(quirk_holder, span_boldnotice("There is a [initial(drug_container_type.name)] [where_drug], and a lighter [where_accessory]. Make sure you get my favorite brand when you run out."))
-
-
-/datum/quirk/junkie/smoker/on_process()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/I = H.get_item_by_slot(SLOT_WEAR_MASK)
-	if (istype(I, /obj/item/clothing/mask/cigarette))
-		var/obj/item/storage/fancy/cigarettes/C = drug_container_type
-		if(istype(I, initial(C.spawn_type)))
-			SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "wrong_cigs")
-			return
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "wrong_cigs", /datum/mood_event/wrong_brand)
-
 /datum/quirk/unstable
 	name = "Unstable"
 	desc = ""

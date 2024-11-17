@@ -117,7 +117,7 @@
 	throwforce = 0
 	slot_flags = ITEM_SLOT_BELT
 	icon_type = "cigarette"
-	spawn_type = /obj/item/clothing/mask/cigarette/space_cigarette
+	spawn_type = /obj/item/clothing/mask/cigarette/rollie/nicotine
 	var/candy = FALSE //for cigarette overlay
 
 /obj/item/storage/fancy/cigarettes/ComponentInitialize()
@@ -183,73 +183,18 @@
 		else
 			..()
 	else
-		to_chat(user, span_notice("There are no [icon_type]s left in the pack."))
+		to_chat(user, "<span class='notice'>There are no [icon_type]s left in the pack.</span>")
 
-/obj/item/storage/fancy/cigarettes/dromedaryco
-	name = "\improper DromedaryCo packet"
-	desc = ""
-	icon_state = "dromedary"
-	spawn_type = /obj/item/clothing/mask/cigarette/dromedary
 
-/obj/item/storage/fancy/cigarettes/cigpack_uplift
-	name = "\improper Uplift Smooth packet"
+/obj/item/storage/fancy/cigarettes/zig
+	name = "zigbox"
 	desc = ""
-	icon_state = "uplift"
-	spawn_type = /obj/item/clothing/mask/cigarette/uplift
-
-/obj/item/storage/fancy/cigarettes/cigpack_robust
-	name = "\improper Robust packet"
-	desc = ""
-	icon_state = "robust"
-	spawn_type = /obj/item/clothing/mask/cigarette/robust
-
-/obj/item/storage/fancy/cigarettes/cigpack_robustgold
-	name = "\improper Robust Gold packet"
-	desc = ""
-	icon_state = "robustg"
-	spawn_type = /obj/item/clothing/mask/cigarette/robustgold
-
-/obj/item/storage/fancy/cigarettes/cigpack_carp
-	name = "\improper Carp Classic packet"
-	desc = ""
-	icon_state = "carp"
-	spawn_type = /obj/item/clothing/mask/cigarette/carp
-
-/obj/item/storage/fancy/cigarettes/cigpack_syndicate
-	name = "cigarette packet"
-	desc = ""
-	icon_state = "syndie"
-	spawn_type = /obj/item/clothing/mask/cigarette/syndicate
-
-/obj/item/storage/fancy/cigarettes/cigpack_midori
-	name = "\improper Midori Tabako packet"
-	desc = ""
-	icon_state = "midori"
+	icon_state = "zig"
 	spawn_type = /obj/item/clothing/mask/cigarette/rollie/nicotine
 
-/obj/item/storage/fancy/cigarettes/cigpack_shadyjims
-	name = "\improper Shady Jim's Super Slims packet"
-	desc = ""
-	icon_state = "shadyjim"
-	spawn_type = /obj/item/clothing/mask/cigarette/shadyjims
+/obj/item/storage/fancy/cigarettes/zig/empty
+	spawn_type = null
 
-/obj/item/storage/fancy/cigarettes/cigpack_xeno
-	name = "\improper Xeno Filtered packet"
-	desc = ""
-	icon_state = "slime"
-	spawn_type = /obj/item/clothing/mask/cigarette/xeno
-
-/obj/item/storage/fancy/cigarettes/cigpack_cannabis
-	name = "\improper Freak Brothers' Special packet"
-	desc = ""
-	icon_state = "midori"
-	spawn_type = /obj/item/clothing/mask/cigarette/rollie/cannabis
-
-/obj/item/storage/fancy/cigarettes/cigpack_mindbreaker
-	name = "\improper Leary's Delight packet"
-	desc = ""
-	icon_state = "shadyjim"
-	spawn_type = /obj/item/clothing/mask/cigarette/rollie/mindbreaker
 
 /obj/item/storage/fancy/rollingpapers
 	name = "rolling paper pack"

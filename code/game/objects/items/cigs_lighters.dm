@@ -329,49 +329,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 // Cigarette brands.
 
-/obj/item/clothing/mask/cigarette/space_cigarette
-	desc = ""
-
-/obj/item/clothing/mask/cigarette/dromedary
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/nicotine = 13, /datum/reagent/water = 5) //camel has water
-
-/obj/item/clothing/mask/cigarette/uplift
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/nicotine = 13, /datum/reagent/consumable/menthol = 5)
-
-/obj/item/clothing/mask/cigarette/robust
-	desc = ""
-
-/obj/item/clothing/mask/cigarette/robustgold
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/nicotine = 15, /datum/reagent/gold = 3) // Just enough to taste a hint of expensive metal.
-
-/obj/item/clothing/mask/cigarette/carp
-	desc = ""
-
-/obj/item/clothing/mask/cigarette/carp/Initialize()
-	. = ..()
-	if(prob(5))
-		list_reagents = list(/datum/reagent/drug/nicotine = 15, /datum/reagent/toxin/carpotoxin = 3) //they lied
-
-/obj/item/clothing/mask/cigarette/syndicate
-	desc = ""
-	chem_volume = 60
-	smoketime = 60
-	smoke_all = TRUE
-	list_reagents = list(/datum/reagent/drug/nicotine = 10, /datum/reagent/medicine/omnizine = 15)
-
-/obj/item/clothing/mask/cigarette/shadyjims
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/nicotine = 15, /datum/reagent/toxin/lipolicide = 4, /datum/reagent/ammonia = 2, /datum/reagent/toxin/plantbgone = 1, /datum/reagent/toxin = 1.5)
-
-/obj/item/clothing/mask/cigarette/xeno
-	desc = ""
-	list_reagents = list (/datum/reagent/drug/nicotine = 20, /datum/reagent/medicine/regen_jelly = 15)
-
-// Rollies.
-
 /obj/item/clothing/mask/cigarette/rollie
 	name = "zig"
 	desc = ""
