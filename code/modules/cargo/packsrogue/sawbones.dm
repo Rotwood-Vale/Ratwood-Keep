@@ -6,63 +6,63 @@
 
 /datum/supply_pack/rogue/Sawbones/gambeson
 	name = "Gambeson"
-	cost = 5
+	cost = 12
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 
 /datum/supply_pack/rogue/Sawbones/leather
 	name = "Leather Armor"
-	cost = 10
+	cost = 25
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather)
 
 /datum/supply_pack/rogue/Sawbones/leather/studded
 	name = "Studded Leather Armor"
-	cost = 20
+	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/Sawbones/leather/Lhelmet
 	name = "Leather Helmet"
-	cost = 5
+	cost = 12
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 
 /datum/supply_pack/rogue/Sawbones/leather/Lbracers
 	name = "Leather bracers"
-	cost = 5
+	cost = 12
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 
 /datum/supply_pack/rogue/Sawbones/leather/surgery_bag
 	name = "Surgery Bag"
-	cost = 15
+	cost = 37
 	contains = list(/obj/item/storage/fancy/skit)
 
 /datum/supply_pack/rogue/Sawbones/leather/patch_kit
 	name = "personal patch kit"
-	cost = 15
+	cost = 37
 	contains = list(/obj/item/storage/fancy/ifak)
 
 /datum/supply_pack/rogue/Sawbones/leather/rapier
 	name = "Rapier"
-	cost = 20
+	cost = 50
 	contains = list(/obj/item/rogueweapon/sword/rapier)
 
 /datum/supply_pack/rogue/Sawbones/leather/estoc
 	name = "Estoc"
-	cost = 40
+	cost = 100
 	contains = list(/obj/item/rogueweapon/estoc)
 
 /datum/supply_pack/rogue/Sawbones/leather/gbottle
 	name = "Glass bottle"
-	cost = 5
+	cost = 12
 	contains = list(/obj/item/reagent_containers/glass/bottle)
 
 /datum/supply_pack/rogue/Sawbones/leather/botbomb
 	name = "Bottle bomb"
-	cost = 30
+	cost = 75
 	contains = list(/obj/item/bomb)
 
 /datum/supply_pack/rogue/Sawbones/leather/poison
 	name = "High-Potency poison"
-	cost = 100
+	cost = 250
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/poison)
