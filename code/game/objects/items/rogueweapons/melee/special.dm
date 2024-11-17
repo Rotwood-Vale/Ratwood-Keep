@@ -147,8 +147,8 @@
 			target.electrocute_act(5, src)
 			charge -= 6
 		else//TODO: Check target.STACON!!!!!!!!!!
-			target.rogstam_add(-25)
-			target.rogfat_add(15)
+			target.rogstam_add(-10)
+			target.rogfat_add(5)
 			charge -= 3
 		if(charge <= 0)
 			on = FALSE
