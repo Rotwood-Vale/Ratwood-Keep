@@ -217,10 +217,11 @@
 		/obj/effect/proc_holder/spell/invoked/invisibility,
 		/obj/effect/proc_holder/spell/invoked/blindness,
 		/obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e,
-		/obj/effect/proc_holder/spell/invoked/frostbite5e,
+//		/obj/effect/proc_holder/spell/invoked/frostbite5e,
 		/obj/effect/proc_holder/spell/invoked/guidance,
 		/obj/effect/proc_holder/spell/invoked/fortitude,
-		/obj/effect/proc_holder/spell/invoked/snap_freeze
+		/obj/effect/proc_holder/spell/invoked/snap_freeze,
+		/obj/effect/proc_holder/spell/invoked/projectile/frostbolt
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
@@ -863,14 +864,14 @@
 
 /obj/effect/proc_holder/spell/invoked/frostbite5e
 	name = "Frostbite"
-	desc = "Reach out and touch your enemy with an icy grip that does low damage, but reduces the target's Speed for a considerable length of time."
+	desc = "Freeze your enemy with an icy blast that does low damage, but reduces the target's Speed for a considerable length of time."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 3
 	charge_max = 25 SECONDS
 	//chargetime = 10
 	//charge_max = 30 SECONDS
-	range = 2
+	range = 7
 	warnie = "spellwarning"
 	movement_interrupt = FALSE
 	no_early_release = FALSE
@@ -1053,8 +1054,63 @@
 	return TRUE
 
 
+/obj/effect/proc_holder/spell/invoked/projectile/frostbolt
+	name = "Frost Bolt"
+	desc = "A ray of frozen energy, slowing the first thing it touches and lightly damaging it."
+	range = 8
+	projectile_type = /obj/projectile/magic/frostbolt
+	overlay_state = "null"
+	sound = list('sound/magic/whiteflame.ogg')
+	active = FALSE
+
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 3
+	charge_max = 15 SECONDS //cooldown
+
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	antimagic_allowed = FALSE //can you use it if you are antimagicked?
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	cost = 1
+
+	xp_gain = TRUE
+	miracle = FALSE
+
+/obj/effect/proc_holder/spell/self/frostbolt/cast(mob/user = usr)
+	var/mob/living/target = user
+	target.visible_message(span_warning("[target] hurls a frosty beam!"), span_notice("You hurl a frosty beam!"))
+	. = ..()
+
+/obj/projectile/magic/frostbolt
+	name = "Frost Dart"
+	icon_state = "ice_2"
+	damage = 15
+	damage_type = BURN
+	flag = "magic"
+	range = 10
+	speed = 12 //higher is slower
+	var/aoe_range = 0
+	
 
 
+/obj/projectile/magic/frostbolt/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+		if(isliving(target))
+			var/mob/living/L = target
+			L.apply_status_effect(/datum/status_effect/buff/frostbite5e)
+			new /obj/effect/temp_visual/snap_freeze(get_turf(L))
+	qdel(src)
 
 
 #undef PRESTI_CLEAN
