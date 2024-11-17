@@ -130,24 +130,6 @@
 	lose_text = span_danger("You're no longer severely affected by alcohol.")
 	medical_record_text = "Patient demonstrates a low tolerance for alcohol. (Wimp)"
 
-/datum/quirk/nearsighted //t. errorage
-	name = "Nearsighted"
-	desc = ""
-	value = -1
-	gain_text = span_danger("Things far away from you start looking blurry.")
-	lose_text = span_notice("I start seeing faraway things normally again.")
-	medical_record_text = "Patient requires prescription glasses in order to counteract nearsightedness."
-
-/datum/quirk/nearsighted/add()
-	quirk_holder.become_nearsighted(ROUNDSTART_TRAIT)
-
-/datum/quirk/nearsighted/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/clothing/glasses/regular/glasses = new(get_turf(H))
-	H.put_in_hands(glasses)
-	H.equip_to_slot(glasses, SLOT_GLASSES)
-	H.regenerate_icons() //this is to remove the inhand icon, which persists even if it's not in their hands
-
 /datum/quirk/nyctophobia
 	name = "Nyctophobia"
 	desc = ""
@@ -176,40 +158,6 @@
 	gain_text = span_danger("I feel repulsed by the thought of violence!")
 	lose_text = span_notice("I think you can defend myself again.")
 	medical_record_text = "Patient is unusually pacifistic and cannot bring themselves to cause physical harm."
-
-/datum/quirk/paraplegic
-	name = "Paraplegic"
-	desc = ""
-	value = -3
-	human_only = TRUE
-	gain_text = null // Handled by trauma.
-	lose_text = null
-	medical_record_text = "Patient has an untreatable impairment in motor function in the lower extremities."
-
-/datum/quirk/paraplegic/add()
-	var/datum/brain_trauma/severe/paralysis/paraplegic/T = new()
-	var/mob/living/carbon/human/H = quirk_holder
-	H.gain_trauma(T, TRAUMA_RESILIENCE_ABSOLUTE)
-
-/datum/quirk/paraplegic/on_spawn()
-	if(quirk_holder.buckled) // Handle late joins being buckled to arrival shuttle chairs.
-		quirk_holder.buckled.unbuckle_mob(quirk_holder)
-
-	var/turf/T = get_turf(quirk_holder)
-	var/obj/structure/chair/spawn_chair = locate() in T
-
-	var/obj/vehicle/ridden/wheelchair/wheels = new(T)
-	if(spawn_chair) // Makes spawning on the arrivals shuttle more consistent looking
-		wheels.setDir(spawn_chair.dir)
-
-	wheels.buckle_mob(quirk_holder)
-
-	// During the spawning process, they may have dropped what they were holding, due to the paralysis
-	// So put the things back in their hands.
-
-	for(var/obj/item/I in T)
-		if(I.fingerprintslast == quirk_holder.ckey)
-			quirk_holder.put_in_hands(I)
 
 /datum/quirk/poor_aim
 	name = "Poor Aim"

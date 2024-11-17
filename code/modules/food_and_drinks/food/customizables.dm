@@ -181,7 +181,6 @@
 	name = "kebab"
 	desc = ""
 	ingredients_placement = INGREDIENTS_LINE
-	trash = /obj/item/stack/rods
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	ingMax = 6
 	icon_state = "rod"

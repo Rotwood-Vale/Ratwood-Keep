@@ -101,23 +101,7 @@
 	tastes = list("meat" = 1)
 	foodtype = MEAT
 
-/obj/item/reagent_containers/food/snacks/sausage
-	name = "sausage"
-	desc = ""
-	icon_state = "sausage"
-	filling_color = "#CD5C5C"
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("meat" = 1)
-	foodtype = MEAT | BREAKFAST
-	var/roasted = FALSE
-
-/obj/item/reagent_containers/food/snacks/sausage/Initialize()
-	. = ..()
-	eatverb = pick("bite","chew","nibble","deep throat","gobble","chomp")
-
 /obj/item/reagent_containers/food/snacks/kebab
-	trash = /obj/item/stack/rods
 	icon_state = "kebab"
 	w_class = WEIGHT_CLASS_NORMAL
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8)

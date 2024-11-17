@@ -8,7 +8,7 @@
 	pass_flags = PASSTABLE
 	ventcrawler = VENTCRAWLER_NUDE
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/monkey = 5, /obj/item/stack/sheet/animalhide/monkey = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/monkey = 5)
 	type_of_meat = /obj/item/reagent_containers/food/snacks/meat/slab/monkey
 	gib_type = /obj/effect/decal/cleanable/blood/gibs
 	unique_name = TRUE
@@ -91,14 +91,6 @@
 		stat(null, "Move Mode: [m_intent]")
 	return
 
-
-/mob/living/carbon/monkey/verb/removeinternal()
-	set name = "Remove Internals"
-	set category = "IC"
-	internal = null
-	return
-
-
 /mob/living/carbon/monkey/IsAdvancedToolUser()//Unless its monkey mode monkeys can't use advanced tools
 	if(mind)
 		return TRUE
@@ -123,10 +115,3 @@
 
 /mob/living/carbon/monkey/angry
 	aggressive = TRUE
-
-/mob/living/carbon/monkey/angry/Initialize()
-	. = ..()
-	if(prob(10))
-		var/obj/item/clothing/head/helmet/justice/escape/helmet = new(src)
-		equip_to_slot_or_del(helmet,SLOT_HEAD)
-		helmet.attack_self(src) // todo encapsulate toggle

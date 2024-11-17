@@ -47,45 +47,12 @@
 	results = list(/datum/reagent/consumable/sodiumchloride = 3)
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/sodium = 1, /datum/reagent/chlorine = 1)
 
-/datum/chemical_reaction/plasmasolidification
-	name = "Solid Plasma"
-	id = "solidplasma"
-	required_reagents = list(/datum/reagent/iron = 5, /datum/reagent/consumable/frostoil = 5, /datum/reagent/toxin/plasma = 20)
-	mob_react = FALSE
-
-/datum/chemical_reaction/plasmasolidification/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/stack/sheet/mineral/plasma(location)
-
-/datum/chemical_reaction/goldsolidification
-	name = "Solid Gold"
-	id = "solidgold"
-	required_reagents = list(/datum/reagent/consumable/frostoil = 5, /datum/reagent/gold = 20, /datum/reagent/iron = 1)
-	mob_react = FALSE
-
-/datum/chemical_reaction/goldsolidification/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/stack/sheet/mineral/gold(location)
 
 /datum/chemical_reaction/capsaicincondensation
 	name = "Capsaicincondensation"
 	id = "capsaicincondensation"
 	results = list(/datum/reagent/consumable/condensedcapsaicin = 5)
 	required_reagents = list(/datum/reagent/consumable/capsaicin = 1, /datum/reagent/consumable/ethanol = 5)
-
-/datum/chemical_reaction/soapification
-	name = "Soapification"
-	id = "soapification"
-	required_reagents = list(/datum/reagent/liquidgibs = 10, /datum/reagent/lye  = 10) // requires two scooped gib tiles
-	required_temp = 374
-	mob_react = FALSE
-
-/datum/chemical_reaction/soapification/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/soap/homemade(location)
 
 /datum/chemical_reaction/candlefication
 	name = "Candlefication"
@@ -243,70 +210,6 @@
 	results = list(/datum/reagent/acetone = 3)
 	required_reagents = list(/datum/reagent/fuel/oil = 1, /datum/reagent/fuel = 1, /datum/reagent/oxygen = 1)
 
-/datum/chemical_reaction/carpet
-	name = /datum/reagent/carpet
-	id = /datum/reagent/carpet
-	results = list(/datum/reagent/carpet = 2)
-	required_reagents = list(/datum/reagent/drug/space_drugs = 1, /datum/reagent/blood = 1)
-
-/datum/chemical_reaction/carpet/black
-	name = /datum/reagent/carpet/black
-	id = /datum/reagent/carpet/black
-	results = list(/datum/reagent/carpet/black = 2)
-	required_reagents = list(/datum/reagent/carpet = 1, /datum/reagent/fuel/oil = 1)
-
-/datum/chemical_reaction/carpet/blue
-	name = /datum/reagent/carpet/blue
-	id = /datum/reagent/carpet/blue
-	results = list(/datum/reagent/carpet/blue = 2)
-	required_reagents = list(/datum/reagent/carpet = 1, /datum/reagent/cryostylane = 1)
-
-/datum/chemical_reaction/carpet/cyan
-	name = /datum/reagent/carpet/cyan
-	id = /datum/reagent/carpet/cyan
-	results = list(/datum/reagent/carpet/cyan = 2)
-	required_reagents = list(/datum/reagent/carpet = 1, /datum/reagent/toxin/cyanide = 1)
-	//cyan = cyanide get it huehueuhuehuehheuhe
-
-/datum/chemical_reaction/carpet/green
-	name = /datum/reagent/carpet/green
-	id = /datum/reagent/carpet/green
-	results = list(/datum/reagent/carpet/green = 2)
-	required_reagents = list(/datum/reagent/carpet = 1, /datum/reagent/consumable/ethanol/beer/green = 1)
-	//make green beer by grinding up green crayons and mixing with beer
-
-/datum/chemical_reaction/carpet/orange
-	name = /datum/reagent/carpet/orange
-	id = /datum/reagent/carpet/orange
-	results = list(/datum/reagent/carpet/orange = 2)
-	required_reagents = list(/datum/reagent/carpet = 1, /datum/reagent/consumable/orangejuice = 1)
-
-/datum/chemical_reaction/carpet/purple
-	name = /datum/reagent/carpet/purple
-	id = /datum/reagent/carpet/purple
-	results = list(/datum/reagent/carpet/purple = 2)
-	required_reagents = list(/datum/reagent/carpet = 1, /datum/reagent/medicine/regen_jelly = 1)
-	//slimes only party
-
-/datum/chemical_reaction/carpet/red
-	name = /datum/reagent/carpet/red
-	id = /datum/reagent/carpet/red
-	results = list(/datum/reagent/carpet/red = 2)
-	required_reagents = list(/datum/reagent/carpet/ = 1, /datum/reagent/liquidgibs = 1)
-
-/datum/chemical_reaction/carpet/royalblack
-	name = /datum/reagent/carpet/royal/black
-	id = /datum/reagent/carpet/royal/black
-	results = list(/datum/reagent/carpet/royal/black = 2)
-	required_reagents = list(/datum/reagent/carpet/black = 1, /datum/reagent/royal_bee_jelly = 1)
-
-/datum/chemical_reaction/carpet/royalblue
-	name = /datum/reagent/carpet/royal/blue
-	id = /datum/reagent/carpet/royal/blue
-	results = list(/datum/reagent/carpet/royal/blue = 2)
-	required_reagents = list(/datum/reagent/carpet/blue = 1, /datum/reagent/royal_bee_jelly = 1)
-
-
 /datum/chemical_reaction/oil
 	name = "Oil"
 	id = /datum/reagent/fuel/oil
@@ -410,12 +313,6 @@
 	results = list(/datum/reagent/hair_dye = 5)
 	required_reagents = list(/datum/reagent/colorful_reagent = 1, /datum/reagent/uranium/radium = 1, /datum/reagent/drug/space_drugs = 1)
 
-/datum/chemical_reaction/barbers_aid
-	name = /datum/reagent/barbers_aid
-	id = /datum/reagent/barbers_aid
-	results = list(/datum/reagent/barbers_aid = 5)
-	required_reagents = list(/datum/reagent/carpet = 1, /datum/reagent/uranium/radium = 1, /datum/reagent/drug/space_drugs = 1)
-
 /datum/chemical_reaction/concentrated_barbers_aid
 	name = /datum/reagent/concentrated_barbers_aid
 	id = /datum/reagent/concentrated_barbers_aid
@@ -451,17 +348,6 @@
 	id = /datum/reagent/consumable/laughter
 	results = list(/datum/reagent/consumable/laughter = 10) // Fuck it. I'm not touching this one.
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/banana = 1)
-
-/datum/chemical_reaction/plastic_polymers
-	name = "plastic polymers"
-	id = /datum/reagent/plastic_polymers
-	required_reagents = list(/datum/reagent/fuel/oil = 5, /datum/reagent/toxin/acid = 2, /datum/reagent/ash = 3)
-	required_temp = 374 //lazily consistent with soap & other crafted objects generically created with heat.
-
-/datum/chemical_reaction/plastic_polymers/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i in 1 to created_volume)
-		new /obj/item/stack/sheet/plastic(location)
 
 /datum/chemical_reaction/pax
 	name = /datum/reagent/pax

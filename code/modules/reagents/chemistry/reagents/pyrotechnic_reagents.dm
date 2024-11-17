@@ -1,20 +1,4 @@
 
-/datum/reagent/thermite
-	name = "Thermite"
-	description = "Thermite produces an aluminothermic reaction known as a thermite reaction. Can be used to melt walls."
-	reagent_state = SOLID
-	color = "#550000"
-	taste_description = "sweet tasting metal"
-
-/datum/reagent/thermite/reaction_turf(turf/T, reac_volume)
-	if(reac_volume >= 1)
-		T.AddComponent(/datum/component/thermite, reac_volume)
-
-/datum/reagent/thermite/on_mob_life(mob/living/carbon/M)
-	M.adjustFireLoss(1, 0)
-	..()
-	return TRUE
-
 /datum/reagent/nitroglycerin
 	name = "Nitroglycerin"
 	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol."
@@ -27,49 +11,6 @@
 	reagent_state = LIQUID
 	color = "#FFFF00"
 	taste_description = "metal"
-
-/datum/reagent/clf3
-	name = "Chlorine Trifluoride"
-	description = "Makes a temporary 3x3 fireball when it comes into existence, so be careful when mixing. ClF3 applied to a surface burns things that wouldn't otherwise burn, sometimes through the very floors of the station and exposing it to the vacuum of space."
-	reagent_state = LIQUID
-	color = "#FFC8C8"
-	metabolization_rate = 4
-	taste_description = "burning"
-
-/datum/reagent/clf3/on_mob_life(mob/living/carbon/M)
-	M.adjust_fire_stacks(2)
-	var/burndmg = max(0.3*M.fire_stacks, 0.3)
-	M.adjustFireLoss(burndmg, 0)
-	..()
-	return TRUE
-
-/datum/reagent/clf3/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T))
-		var/turf/open/floor/plating/F = T
-		if(prob(10 + F.burnt + 5*F.broken)) //broken or burnt plating is more susceptible to being destroyed
-			F.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-	if(isfloorturf(T))
-		var/turf/open/floor/F = T
-		if(prob(reac_volume))
-			F.make_plating()
-		else if(prob(reac_volume))
-			F.burn_tile()
-		if(isfloorturf(F))
-			for(var/turf/turf in range(1,F))
-				if(!locate(/obj/effect/hotspot) in turf)
-					new /obj/effect/hotspot(F)
-	if(iswallturf(T))
-		var/turf/closed/wall/W = T
-		if(prob(reac_volume))
-			W.ScrapeAway()
-
-/datum/reagent/clf3/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
-	if(istype(M))
-		if(method != INGEST && method != INJECT)
-			M.adjust_fire_stacks(min(reac_volume/5, 10))
-			M.IgniteMob()
-			if(!locate(/obj/effect/hotspot) in M.loc)
-				new /obj/effect/hotspot(M.loc)
 
 /datum/reagent/sorium
 	name = "Sorium"
@@ -96,8 +37,6 @@
 /datum/reagent/gunpowder/on_mob_life(mob/living/carbon/M)
 	. = TRUE
 	..()
-	if(!isplasmaman(M))
-		return
 	M.set_drugginess(15)
 	if(M.hallucination < volume)
 		M.hallucination += 5
@@ -261,7 +200,7 @@
 			F.lifetime = initial(F.lifetime) //reduce object churn a little bit when using smoke by keeping existing foam alive a bit longer
 
 	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in T)
-	if(hotspot && !isspaceturf(T))
+	if(hotspot)
 		if(T.air)
 			var/datum/gas_mixture/G = T.air
 			if(G.temperature > T20C)

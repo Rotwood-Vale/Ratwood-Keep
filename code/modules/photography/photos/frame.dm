@@ -1,7 +1,6 @@
 // Picture frames
 /obj/item/wallframe
 	icon = 'icons/obj/wallframe.dmi'
-	custom_materials = list(/datum/material/iron=MINERAL_MATERIAL_AMOUNT*2)
 	flags_1 = CONDUCT_1
 	item_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -54,25 +53,6 @@
 
 /obj/item/wallframe/proc/after_attach(obj/O)
 	transfer_fingerprints_to(O)
-
-/obj/item/wallframe/attackby(obj/item/W, mob/user, params)
-	..()
-	if(W.tool_behaviour == TOOL_SCREWDRIVER)
-		// For camera-building borgs
-		var/turf/T = get_step(get_turf(user), user.dir)
-		if(iswallturf(T))
-			T.attackby(src, user, params)
-
-	var/metal_amt = round(custom_materials[getmaterialref(/datum/material/iron)]/MINERAL_MATERIAL_AMOUNT) //Replace this shit later
-	var/glass_amt = round(custom_materials[getmaterialref(/datum/material/glass)]/MINERAL_MATERIAL_AMOUNT) //Replace this shit later
-
-	if(W.tool_behaviour == TOOL_WRENCH && (metal_amt || glass_amt))
-		to_chat(user, "<span class='notice'>I dismantle [src].</span>")
-		if(metal_amt)
-			new /obj/item/stack/sheet/metal(get_turf(src), metal_amt)
-		if(glass_amt)
-			new /obj/item/stack/sheet/glass(get_turf(src), glass_amt)
-		qdel(src)
 
 /obj/item/wallframe/picture
 	name = "picture frame"

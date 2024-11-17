@@ -59,42 +59,6 @@
 	lose_text = span_danger("I feel isolated from others.")
 	medical_record_text = "Patient is highly perceptive of and sensitive to social cues, or may possibly have ESP. Further testing needed."
 
-datum/quirk/fan_clown
-	name = "Clown Fan"
-	desc = ""
-	value = 1
-	mob_trait = TRAIT_FAN_CLOWN
-	gain_text = span_notice("I are a big fan of the Clown.")
-	lose_text = span_danger("The clown doesn't seem so great.")
-	medical_record_text = "Patient reports being a big fan of the Clown."
-
-/datum/quirk/fan_clown/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/clothing/accessory/fan_clown_pin/B = new(get_turf(H))
-	var/list/slots = list (
-		"backpack" = SLOT_IN_BACKPACK,
-		"hands" = SLOT_HANDS,
-	)
-	H.equip_in_one_of_slots(B, slots , qdel_on_fail = TRUE)
-
-datum/quirk/fan_mime
-	name = "Mime Fan"
-	desc = ""
-	value = 1
-	mob_trait = TRAIT_FAN_MIME
-	gain_text = span_notice("I are a big fan of the Mime.")
-	lose_text = span_danger("The mime doesn't seem so great.")
-	medical_record_text = "Patient reports being a big fan of the Mime."
-
-/datum/quirk/fan_mime/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/clothing/accessory/fan_mime_pin/B = new(get_turf(H))
-	var/list/slots = list (
-		"backpack" = SLOT_IN_BACKPACK,
-		"hands" = SLOT_HANDS,
-	)
-	H.equip_in_one_of_slots(B, slots , qdel_on_fail = TRUE)
-
 /datum/quirk/freerunning
 	name = "Freerunning"
 	desc = ""
@@ -134,24 +98,6 @@ datum/quirk/fan_mime
 	gain_text = span_notice("I walk with a little more litheness.")
 	lose_text = span_danger("I start tromping around like a barbarian.")
 	medical_record_text = "Patient's dexterity belies a strong capacity for stealth."
-
-/datum/quirk/musician
-	name = "Musician"
-	desc = ""
-	value = 1
-	mob_trait = TRAIT_MUSICIAN
-	gain_text = span_notice("I know everything about musical instruments.")
-	lose_text = span_danger("I forget how musical instruments work.")
-	medical_record_text = "Patient brain scans show a highly-developed auditory pathway."
-
-/datum/quirk/musician/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/choice_beacon/music/B = new(get_turf(H))
-	var/list/slots = list (
-		"backpack" = SLOT_IN_BACKPACK,
-		"hands" = SLOT_HANDS,
-	)
-	H.equip_in_one_of_slots(B, slots , qdel_on_fail = TRUE)
 
 /datum/quirk/night_vision
 	name = "Night Vision"
@@ -195,23 +141,6 @@ datum/quirk/fan_mime
 /datum/quirk/spiritual/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.equip_to_slot_or_del(new /obj/item/storage/fancy/candle_box(H), SLOT_IN_BACKPACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/matches(H), SLOT_IN_BACKPACK)
-
-/datum/quirk/tagger
-	name = "Tagger"
-	desc = ""
-	value = 1
-	mob_trait = TRAIT_TAGGER
-	gain_text = span_notice("I know how to tag walls efficiently.")
-	lose_text = span_danger("I forget how to tag walls properly.")
-	medical_record_text = "Patient was recently seen for possible paint huffing incident."
-
-/datum/quirk/tagger/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/toy/crayon/spraycan/spraycan = new(get_turf(H))
-	H.put_in_hands(spraycan)
-	H.equip_to_slot(spraycan, SLOT_IN_BACKPACK)
-	H.regenerate_icons()
 
 /datum/quirk/voracious
 	name = "Voracious"

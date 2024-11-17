@@ -94,9 +94,6 @@
 	icon_state = "woodenbarricade-snow-old"
 	max_integrity = 75
 
-/obj/structure/barricade/wooden/make_debris()
-	new /obj/item/stack/sheet/mineral/wood(get_turf(src), drop_amount)
-
 #undef SINGLE
 #undef VERTICAL
 #undef HORIZONTAL

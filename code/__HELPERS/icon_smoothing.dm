@@ -393,12 +393,3 @@
 	SSicon_smooth.smooth_queue += A
 	SSicon_smooth.can_fire = 1
 	A.smooth |= SMOOTH_QUEUED
-
-
-//Example smooth wall
-/turf/closed/wall/smooth
-	name = "smooth wall"
-	icon = 'icons/turf/smooth_wall.dmi'
-	icon_state = "smooth"
-	smooth = SMOOTH_TRUE|SMOOTH_DIAGONAL|SMOOTH_BORDER
-	canSmoothWith = null

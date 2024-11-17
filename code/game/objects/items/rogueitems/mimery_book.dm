@@ -27,7 +27,5 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/mime_wall(null))
 		if (href_list["invisible_chair"])
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/mime_chair(null))
-		if (href_list["invisible_box"])
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/mime_box(null))
-	to_chat(usr, span_notice("The book disappears into thin air."))
+	to_chat(usr, "<span class='notice'>The book disappears into thin air.</span>")
 	qdel(src)

@@ -180,37 +180,6 @@
 /obj/effect/proc_holder/spell/aoe_turf/timestop/cast(list/targets, mob/user = usr)
 	new /obj/effect/timestop/magic(get_turf(user), timestop_range, timestop_duration, list(user))
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/carp
-	name = "Summon Carp"
-	desc = ""
-
-	school = "conjuration"
-	charge_max = 1200
-	clothes_req = TRUE
-	invocation = "NOUK FHUNMM SACP RISSKA"
-	invocation_type = "shout"
-	range = 1
-
-	summon_type = list(/mob/living/simple_animal/hostile/carp)
-	cast_sound = 'sound/blank.ogg'
-
-
-/obj/effect/proc_holder/spell/aoe_turf/conjure/construct
-	name = "Artificer"
-	desc = ""
-
-	school = "conjuration"
-	charge_max = 600
-	clothes_req = FALSE
-	invocation = "none"
-	invocation_type = "none"
-	range = 0
-
-	summon_type = list(/obj/structure/constructshell)
-
-	action_icon_state = "artificer"
-	cast_sound = 'sound/blank.ogg'
-
 
 /obj/effect/proc_holder/spell/aoe_turf/conjure/creature
 	name = "Summon Creature Swarm"

@@ -554,7 +554,6 @@
 	name = "butter on a stick"
 	desc = ""
 	icon_state = "butteronastick"
-	trash = /obj/item/stack/rods
 
 /obj/item/reagent_containers/food/snacks/onionrings
 	name = "onion rings"

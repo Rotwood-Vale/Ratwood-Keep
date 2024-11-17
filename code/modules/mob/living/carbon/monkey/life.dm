@@ -49,22 +49,6 @@
 			vomit(10, TRUE)
 	return ..()
 
-/mob/living/carbon/monkey/handle_breath_temperature(datum/gas_mixture/breath)
-	if(abs(BODYTEMP_NORMAL - breath.temperature) > 50)
-		switch(breath.temperature)
-			if(-INFINITY to 120)
-				adjustFireLoss(3)
-			if(120 to 200)
-				adjustFireLoss(1.5)
-			if(200 to 260)
-				adjustFireLoss(0.5)
-			if(360 to 400)
-				adjustFireLoss(2)
-			if(400 to 1000)
-				adjustFireLoss(3)
-			if(1000 to INFINITY)
-				adjustFireLoss(8)
-
 /mob/living/carbon/monkey/handle_environment(datum/gas_mixture/environment)
 	if(!environment)
 		return

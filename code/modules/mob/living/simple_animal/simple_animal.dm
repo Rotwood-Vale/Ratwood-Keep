@@ -693,13 +693,6 @@ mob/living/simple_animal/handle_fire()
 		return ..()
 	if(!hand_index)
 		hand_index = (active_hand_index % held_items.len)+1
-	var/obj/item/held_item = get_active_held_item()
-	if(held_item)
-		if(istype(held_item, /obj/item/twohanded))
-			var/obj/item/twohanded/T = held_item
-			if(T.wielded == 1)
-				to_chat(usr, span_warning("My other hand is too busy holding [T]."))
-				return FALSE
 	var/oindex = active_hand_index
 	active_hand_index = hand_index
 	if(hud_used)

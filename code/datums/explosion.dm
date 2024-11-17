@@ -209,7 +209,7 @@ GLOBAL_LIST_EMPTY(explosions)
 				if(!QDELETED(A))
 					A.ex_act(dist)
 
-		if(flame_dist && !isspaceturf(T))
+		if(flame_dist)
 			new /obj/effect/hotspot(T) //Mostly for ambience!
 
 		if(dist > EXPLODE_NONE)

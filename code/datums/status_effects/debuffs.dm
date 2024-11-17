@@ -263,26 +263,6 @@
 /datum/status_effect/eorapacify/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "status_effect")
 
-/datum/status_effect/his_wrath //does minor damage over time unless holding His Grace
-	id = "his_wrath"
-	duration = -1
-	tick_interval = 4
-	alert_type = /atom/movable/screen/alert/status_effect/his_wrath
-
-/atom/movable/screen/alert/status_effect/his_wrath
-	name = "His Wrath"
-	desc = ""
-	icon_state = "his_grace"
-	alerttooltipstyle = "hisgrace"
-
-/datum/status_effect/his_wrath/tick()
-	for(var/obj/item/his_grace/HG in owner.held_items)
-		qdel(src)
-		return
-	owner.adjustBruteLoss(0.1)
-	owner.adjustFireLoss(0.1)
-	owner.adjustToxLoss(0.2, TRUE, TRUE)
-
 /datum/status_effect/stacking/saw_bleed
 	id = "saw_bleed"
 	tick_interval = 6

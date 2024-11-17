@@ -643,17 +643,7 @@
 		emote("me", 1, "[src] eagerly downs the cracker.")
 		return 1
 
-
-	if(!drop_gently)
-		if(istype(held_item, /obj/item/grenade))
-			var/obj/item/grenade/G = held_item
-			G.forceMove(drop_location())
-			G.prime()
-			to_chat(src, span_danger("I let go of [held_item]!"))
-			held_item = null
-			return 1
-
-	to_chat(src, span_notice("I drop [held_item]."))
+	to_chat(src, "<span class='notice'>I drop [held_item].</span>")
 
 	held_item.forceMove(drop_location())
 	held_item = null
@@ -842,7 +832,6 @@
 	speak_chance = 20
 	status_flags = GODMODE
 	incorporeal_move = INCORPOREAL_MOVE_BASIC
-	butcher_results = list(/obj/item/ectoplasm = 1)
 
 /mob/living/simple_animal/parrot/Poly/ghost/Initialize()
 	memory_saved = TRUE //At this point nothing is saved

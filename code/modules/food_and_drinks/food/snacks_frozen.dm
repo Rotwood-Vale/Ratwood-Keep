@@ -52,7 +52,6 @@
 	desc = ""
 	icon = 'icons/obj/food/snowcones.dmi'
 	icon_state = "flaverless_sc"
-	trash = /obj/item/reagent_containers/food/drinks/sillycup //We dont eat paper cups
 	bonus_reagents = list(/datum/reagent/water = 10) //Base line will allways give water
 	list_reagents = list(/datum/reagent/water = 1) // We dont get food for water/juices
 	filling_color = "#FFFFFF" //Ice is white

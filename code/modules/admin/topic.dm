@@ -283,22 +283,10 @@
 				M.change_mob_type( /mob/living/simple_animal/pet/dog/corgi/Ian , null, null, delmob )
 			if("pug")
 				M.change_mob_type( /mob/living/simple_animal/pet/dog/pug , null, null, delmob )
-			if("crab")
-				M.change_mob_type( /mob/living/simple_animal/crab , null, null, delmob )
-			if("coffee")
-				M.change_mob_type( /mob/living/simple_animal/crab/Coffee , null, null, delmob )
 			if("parrot")
 				M.change_mob_type( /mob/living/simple_animal/parrot , null, null, delmob )
 			if("polyparrot")
 				M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
-			if("constructarmored")
-				M.change_mob_type( /mob/living/simple_animal/hostile/construct/armored , null, null, delmob )
-			if("constructbuilder")
-				M.change_mob_type( /mob/living/simple_animal/hostile/construct/builder , null, null, delmob )
-			if("constructwraith")
-				M.change_mob_type( /mob/living/simple_animal/hostile/construct/wraith , null, null, delmob )
-			if("shade")
-				M.change_mob_type( /mob/living/simple_animal/shade , null, null, delmob )
 
 	else if(href_list["boot2"])
 		if(!check_rights(R_ADMIN))
@@ -986,10 +974,6 @@
 		for(var/obj/item/I in L)
 			L.dropItemToGround(I, TRUE)
 
-		if(ishuman(L))
-			var/mob/living/carbon/human/observer = L
-			observer.equip_to_slot_or_del(new /obj/item/clothing/under/suit/black(observer), SLOT_PANTS)
-			observer.equip_to_slot_or_del(new /obj/item/clothing/shoes/sneakers/black(observer), SLOT_SHOES)
 		L.Unconscious(100)
 		sleep(5)
 		L.forceMove(pick(GLOB.tdomeobserve))
@@ -1206,8 +1190,6 @@
 		var/cookiealt = /obj/item/reagent_containers/food/snacks/cookie
 		if(isskeleton(H))
 			cookiealt = /obj/item/reagent_containers/food/condiment/milk
-		else if(isplasmaman(H))
-			cookiealt = /obj/item/reagent_containers/food/condiment/milk
 		else if(isethereal(H))
 			cookiealt = /obj/item/reagent_containers/food/snacks/energybar
 		else if(islizard(H))
@@ -1259,12 +1241,6 @@
 		var/mob/M = locate(href_list["HeadsetMessage"])
 		usr.client.admin_headset_message(M)
 
-	else if(href_list["reject_custom_name"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/obj/item/station_charter/charter = locate(href_list["reject_custom_name"])
-		if(istype(charter))
-			charter.reject_proposed(usr)
 	else if(href_list["jumpto"])
 		if(!isobserver(usr) && !check_rights(R_ADMIN))
 			return

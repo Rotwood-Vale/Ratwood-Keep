@@ -66,44 +66,6 @@
 			A.setDir(user.dir)
 			A.buckle_mob(user)
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/mime_box
-	name = "Invisible Box"
-	desc = ""
-	school = "mime"
-	panel = "Mime"
-	summon_type = list(/obj/item/storage/box/mime)
-	invocation_type = "emote"
-	invocation_emote_self = span_notice("I conjure up an invisible box, large enough to store a few things.")
-	summon_lifespan = 500
-	charge_max = 300
-	clothes_req = FALSE
-	antimagic_allowed = TRUE
-	range = 0
-	cast_sound = null
-	human_req = TRUE
-
-	action_icon = 'icons/mob/actions/actions_mime.dmi'
-	action_icon_state = "invisible_box"
-	action_background_icon_state = "bg_mime"
-
-/obj/effect/proc_holder/spell/aoe_turf/conjure/mime_box/cast(list/targets,mob/user = usr)
-	..()
-	var/turf/T = user.loc
-	for (var/obj/item/storage/box/mime/B in T)
-		user.put_in_hands(B)
-		B.alpha = 255
-		addtimer(CALLBACK(B, TYPE_PROC_REF(/obj/item/storage/box/mime, emptyStorage), FALSE), (summon_lifespan - 1))
-
-/obj/effect/proc_holder/spell/aoe_turf/conjure/mime_box/Click()
-	if(usr && usr.mind)
-		if(!usr.mind.miming)
-			to_chat(usr, span_warning("I must dedicate myself to silence first!"))
-			return
-		invocation = "<B>[usr.real_name]</B> moves [usr.p_their()] hands in the shape of a cube, pressing a box out of the air."
-	else
-		invocation_type ="none"
-	..()
-
 
 /obj/effect/proc_holder/spell/targeted/mime/speak
 	name = "Speech"
@@ -174,55 +136,6 @@
 		invocation_type ="none"
 	..()
 
-/obj/effect/proc_holder/spell/aimed/finger_guns
-	name = "Finger Guns"
-	desc = ""
-	school = "mime"
-	panel = "Mime"
-	charge_max = 300
-	clothes_req = FALSE
-	antimagic_allowed = TRUE
-	invocation_type = "emote"
-	invocation_emote_self = span_danger("I fire your finger gun!")
-	range = 20
-	projectile_type = /obj/projectile/bullet/mime
-	projectile_amount = 3
-	sound = null
-	active_msg = "You draw your fingers!"
-	deactive_msg = "You put your fingers at ease. Another time."
-	active = FALSE
-
-	action_icon = 'icons/mob/actions/actions_mime.dmi'
-	action_icon_state = "finger_guns0"
-	action_background_icon_state = "bg_mime"
-	base_icon_state = "finger_guns"
-
-
-/obj/effect/proc_holder/spell/aimed/finger_guns/Click()
-	var/mob/living/carbon/human/owner = usr
-	if(owner.incapacitated())
-		to_chat(owner, span_warning("I can't properly point your fingers while incapacitated."))
-		return
-	if(usr && usr.mind)
-		if(!usr.mind.miming)
-			to_chat(usr, span_warning("I must dedicate myself to silence first!"))
-			return
-		invocation = "<B>[usr.real_name]</B> fires [usr.p_their()] finger gun!"
-	else
-		invocation_type ="none"
-	..()
-
-/obj/effect/proc_holder/spell/aimed/finger_guns/InterceptClickOn(mob/living/caller, params, atom/target)
-	if(caller.incapacitated())
-		to_chat(caller, span_warning("I can't properly point your fingers while incapacitated."))
-		if(charge_type == "recharge")
-			var/refund_percent = current_amount/projectile_amount
-			charge_counter = charge_max * refund_percent
-			start_recharge()
-		remove_ranged_ability()
-		on_deactivation(caller)
-	..()
-
 /obj/item/book/granter/spell/mimery_blockade
 	spell = /obj/effect/proc_holder/spell/targeted/forcewall/mime
 	spellname = "Invisible Blockade"
@@ -232,21 +145,6 @@
 	remarks = list("...")
 
 /obj/item/book/granter/spell/mimery_blockade/attack_self(mob/user)
-	. = ..()
-	if(!.)
-		return
-	if(!locate(/obj/effect/proc_holder/spell/targeted/mime/speak) in user.mind.spell_list)
-		user.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/mime/speak)
-
-/obj/item/book/granter/spell/mimery_guns
-	spell = /obj/effect/proc_holder/spell/aimed/finger_guns
-	spellname = "Finger Guns"
-	name = "Guide to Advanced Mimery Vol 2"
-	desc = ""
-	icon_state ="bookmime"
-	remarks = list("...")
-
-/obj/item/book/granter/spell/mimery_guns/attack_self(mob/user)
 	. = ..()
 	if(!.)
 		return

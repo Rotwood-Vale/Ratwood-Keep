@@ -640,13 +640,6 @@
 		return FALSE
 	return add_blood_DNA(blood_dna)
 
-///Is this atom in space
-/atom/proc/isinspace()
-	if(isspaceturf(get_turf(src)))
-		return TRUE
-	else
-		return FALSE
-
 ///Called when gravity returns after floating I think
 /atom/proc/handle_fall()
 	return

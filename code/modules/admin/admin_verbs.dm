@@ -133,7 +133,6 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/run_particle_weather,
 	/client/proc/mass_zombie_infection,
 	/client/proc/mass_zombie_cure,
-	/client/proc/polymorph_all,
 	/client/proc/show_tip,
 	/client/proc/smite,
 	))
@@ -177,7 +176,6 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/SDQL2_query,
 	/client/proc/test_movable_UI,
 	/client/proc/test_snap_UI,
-	/client/proc/debugNatureMapGenerator,
 	/client/proc/check_bomb_impacts,
 	/client/proc/get_dynex_power,		//*debug verbs for dynex explosions.
 	/client/proc/get_dynex_range,		//*debug verbs for dynex explosions.

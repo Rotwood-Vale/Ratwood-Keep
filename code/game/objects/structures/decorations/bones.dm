@@ -1,7 +1,7 @@
 /obj/structure/statue/bone
 	anchored = TRUE
 	max_integrity = 120
-	material_drop_type = /obj/item/stack/sheet/bone
+	material_drop_type = /obj/item/alch/bone
 	impressiveness = 18 // Carved from the bones of a massive creature, it's going to be a specticle to say the least
 	layer = ABOVE_ALL_MOB_LAYER
 

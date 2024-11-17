@@ -10,7 +10,6 @@
 	exotic_bloodtype = "U"
 	use_skintones = TRUE
 	limbs_id = "human"
-	skinned_type = /obj/item/stack/sheet/animalhide/human
 	var/info_text = "You are a <span class='danger'>Vampire</span>. You will slowly but constantly lose blood if outside of a coffin. If inside a coffin, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/batform //attached to the datum itself to avoid cloning memes, and other duplicates
 
@@ -49,11 +48,6 @@
 		if(H)
 			H.shape.dust() //make sure we're killing the bat if you are out of blood, if you don't it creates weird situations where the bat is alive but the caster is dusted.
 		C.dust()
-
-/datum/species/vampire/check_species_weakness(obj/item/weapon, mob/living/attacker)
-	if(istype(weapon, /obj/item/nullrod/whip))
-		return 1 //Whips deal 2x damage to vampires. Vampire killer.
-	return 0
 
 /obj/item/organ/tongue/vampire
 	name = "vampire tongue"

@@ -457,11 +457,10 @@
 	taste_description = "chalky wheat"
 
 /datum/reagent/consumable/flour/reaction_turf(turf/T, reac_volume)
-	if(!isspaceturf(T))
-		var/obj/effect/decal/cleanable/food/flour/reagentdecal = new(T)
-		reagentdecal = locate() in T //Might have merged with flour already there.
-		if(reagentdecal)
-			reagentdecal.reagents.add_reagent(/datum/reagent/consumable/flour, reac_volume)
+	var/obj/effect/decal/cleanable/food/flour/reagentdecal = new(T)
+	reagentdecal = locate() in T //Might have merged with flour already there.
+	if(reagentdecal)
+		reagentdecal.reagents.add_reagent(/datum/reagent/consumable/flour, reac_volume)
 
 /datum/reagent/consumable/cherryjelly
 	name = "Cherry Jelly"

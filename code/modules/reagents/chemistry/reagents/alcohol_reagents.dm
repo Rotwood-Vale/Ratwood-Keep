@@ -632,8 +632,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		M.adjustStaminaLoss(-10, 0)
 		if(prob(20))
 			new /datum/hallucination/items_other(M)
-		if(prob(10))
-			new /datum/hallucination/stray_bullet(M)
 	..()
 	. = 1
 
@@ -1157,12 +1155,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "fetching_fizz"
 	glass_name = "Fetching Fizz"
 	glass_desc = ""
-
-
-/datum/reagent/consumable/ethanol/fetching_fizz/on_mob_life(mob/living/carbon/M)
-	for(var/obj/item/stack/ore/O in orange(3, M))
-		step_towards(O, get_turf(M))
-	return ..()
 
 //Another reference. Heals those in critical condition extremely quickly.
 /datum/reagent/consumable/ethanol/hearty_punch
@@ -1886,18 +1878,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "bug_spray"
 	glass_name = "Bug Spray"
 	glass_desc = ""
-
-/datum/reagent/consumable/ethanol/bug_spray/on_mob_life(mob/living/carbon/M)
-//Bugs should not drink Bug spray.
-	if(ismoth(M) || isflyperson(M))
-		M.adjustToxLoss(1,0)
-	return ..()
-/datum/reagent/consumable/ethanol/bug_spray/on_mob_metabolize(mob/living/carbon/M)
-
-	if(ismoth(M) || isflyperson(M))
-		M.emote("scream")
-	return ..()
-
 
 /datum/reagent/consumable/ethanol/applejack
 	name = "Applejack"

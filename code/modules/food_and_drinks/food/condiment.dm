@@ -101,21 +101,7 @@
 	. = ..()
 	if(!proximity)
 		return
-	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-
-		if(!target.reagents.total_volume)
-			to_chat(user, span_warning("[target] is empty!"))
-			return
-
-		if(reagents.total_volume >= reagents.maximum_volume)
-			to_chat(user, span_warning("[src] is full!"))
-			return
-
-		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user)
-		to_chat(user, span_notice("I fill [src] with [trans] units of the contents of [target]."))
-
-	//Something like a glass or a food item. Player probably wants to transfer TO it.
-	else if(target.is_drainable() || istype(target, /obj/item/reagent_containers/food/snacks))
+	if(target.is_drainable() || istype(target, /obj/item/reagent_containers/food/snacks))
 		if(!reagents.total_volume)
 			to_chat(user, span_warning("[src] is empty!"))
 			return
