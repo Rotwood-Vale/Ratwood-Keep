@@ -83,6 +83,7 @@
 	blocksound = SOFTHIT //This hit sound is for leather
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST) //These match leather helmets
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/shoes/roguetown/armor/leather
 	name = "leather boots"
@@ -104,6 +105,7 @@
 	resistance_flags = FIRE_PROOF
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	name = "noble boots"
@@ -111,6 +113,7 @@
 	icon_state = "nobleboots"
 	item_state = "nobleboots"
 	armor = list("blunt" = 35, "slash" = 15, "stab" = 25, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/shoes/roguetown/armor/shalal
 	name = "babouche"
@@ -118,6 +121,7 @@
 	icon_state = "shalal"
 	item_state = "shalal"
 	armor = list("blunt" = 25, "slash" = 20, "stab" = 25, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	name = "grenzelhoft boots"
@@ -126,3 +130,4 @@
 	item_state = "grenzelboots"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT

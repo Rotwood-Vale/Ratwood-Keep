@@ -649,24 +649,13 @@
 	return TRUE
 
 /mob/living/carbon/human/check_armor_skill()
-	if(istype(src.wear_armor, /obj/item/clothing))
-		var/obj/item/clothing/CL = src.wear_armor
-		if(CL.armor_class == ARMOR_CLASS_HEAVY)
-			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+	if(worn_armor_class == ARMOR_CLASS_HEAVY)
+		if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+			return FALSE
+	if(worn_armor_class == ARMOR_CLASS_MEDIUM)
+		if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+			if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
 				return FALSE
-		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
-			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
-				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
-					return FALSE
-	if(istype(src.wear_shirt, /obj/item/clothing))
-		var/obj/item/clothing/CL = src.wear_shirt
-		if(CL.armor_class == ARMOR_CLASS_HEAVY)
-			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
-				return FALSE
-		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
-			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
-				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
-					return FALSE
 	return TRUE
 
 /mob/living/proc/check_dodge_skill()
@@ -675,18 +664,10 @@
 /mob/living/carbon/human/check_dodge_skill()
 	if(!HAS_TRAIT(src, TRAIT_DODGEEXPERT))
 		return FALSE
-	if(istype(src.wear_armor, /obj/item/clothing))
-		var/obj/item/clothing/CL = src.wear_armor
-		if(CL.armor_class == ARMOR_CLASS_HEAVY)
-			return FALSE
-		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
-			return FALSE
-	if(istype(src.wear_shirt, /obj/item/clothing))
-		var/obj/item/clothing/CL = src.wear_shirt
-		if(CL.armor_class == ARMOR_CLASS_HEAVY)
-			return FALSE
-		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
-			return FALSE
+	if(worn_armor_class == ARMOR_CLASS_HEAVY)
+		return FALSE
+	if(worn_armor_class == ARMOR_CLASS_MEDIUM)
+		return FALSE
 	return TRUE
 
 /mob/proc/toggle_eye_intent(mob/user) //clicking the fixeye button either makes you fixeye or clears your target

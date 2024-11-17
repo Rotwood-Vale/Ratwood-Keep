@@ -180,46 +180,79 @@
 			if(!move_failed)
 				return TRUE
 
-	if(m_intent == MOVE_INTENT_RUN && dir == get_dir(src, M))
+	if(m_intent == MOVE_INTENT_RUN && dir == get_dir(src, M))						//Charging attacks
 		if(isliving(M))
 			var/sprint_distance = sprinted_tiles
 			toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
 
 			var/mob/living/L = M
 
-			var/self_points = FLOOR((STACON + STASTR)/2, 1)
-			var/target_points = FLOOR((L.STACON + L.STASTR)/2, 1)
+			var/self_points = (STACON + (STASTR * 2) + STASPD)						//Your Strength, Constitution and Speed
+			var/target_points = (L.STACON + (L.STASTR * 2) + L.STAEND)				//Against their Strength, Consitution and Endurance
 
-			switch(sprint_distance)
-				// Point blank
-				if(0 to 1)
-					self_points -= 4
-				// One to two tile between the people
-				if(2 to 3)
-					self_points -= 2
-				// Five or above tiles between people
-				if(6 to INFINITY)
-					self_points += 1
+			if(ishuman(src))														//Checking Armor Class (as weight)
+				var/mob/living/carbon/human/U = src
+				if(U.worn_armor_class > 1 && !check_armor_skill())
+					self_points -= (10 * U.worn_armor_class)
+				else
+					self_points += (10 * U.worn_armor_class)
 
-			// If charging into the BACK of the enemy (facing away)
-			if(L.dir == get_dir(src, L))
-				self_points += 2
+			if(ishuman(L))															//Checking Armor Class (as weight)
+				var/mob/living/carbon/human/T = L
+				if(T.worn_armor_class > 1 && !L.check_armor_skill())
+					target_points -= (10 * T.worn_armor_class)
+				else
+					target_points += (10 * T.worn_armor_class)
 
-			// Randomize con roll from -1 to +1 to make it less consistent
-			self_points += rand(-1, 1)
+			self_points += clamp((sprint_distance * 10) - 30, -30, 60)				//Knockdown chance scaled by distance, short range having disadvantage
 
-			if(self_points > target_points)
-				L.Knockdown(1)
-			if(self_points < target_points)
-				Knockdown(30)
-			if(self_points == target_points)
-				L.Knockdown(1)
-				Knockdown(30)
-			Immobilize(30)
+			if(istype(get_active_held_item(), /obj/item/rogueweapon/shield))		//Bonus if YOU are using a shield
+				self_points += 20
+				if(used_intent.tshield)
+					self_points += 10
+			if(istype(get_inactive_held_item(), /obj/item/rogueweapon/shield))		//Less for inactive hand
+				self_points += 10
+
+			if(can_see(L, src))														//They need to see us to block us
+				if(istype(L.get_active_held_item(), /obj/item/rogueweapon/shield))	//Bonus if THEY are using a shield
+					target_points += 20
+					if(used_intent.tshield)
+						target_points += 10
+				if(istype(L.get_inactive_held_item(), /obj/item/rogueweapon/shield)) //Less for inactive hand
+					target_points += 10
+
+			if(L.cmode)																//They get a bonus for being in a Combat Ready posture
+				target_points += 20
+
+			var/facing = relative_angular_facing(src, L)							// If charging into the BACK or SIDE of the enemy
+			switch(facing)
+				if(SOUTH)
+					target_points = (target_points * 0.5)
+				if(EAST || WEST)
+					target_points = (target_points * 0.75)
+
+			if(!can_see(L, src))													//If they can't see, they can't defend well
+				target_points = (target_points * 0.5)
+
+			if(!can_see(src, L))													//If WE can't see, we can't tackle well
+				self_points = (self_points * 0.5)
+
+			var/scorediff = (self_points - target_points)
+			var/scoredmg = max(self_points - target_points, 0)
+
+			if(scorediff > 5)														//Our score is higher, we knock them down
+				L.Knockdown(scorediff)
+			if(scorediff < -5)														//Their score is higher, we fall down
+				Knockdown(scorediff)
+			if(scorediff <= 5 && scorediff >= -5)									//Our score is close to equal
+				L.Immobilize(scoredmg)
+				Immobilize(scoredmg)
+			Immobilize(5)
+
 			var/playsound = FALSE
-			if(apply_damage(15, BRUTE, "head", run_armor_check("head", "blunt", damage = 20)))
+			if(apply_damage((15 + scoredmg), BRUTE, "head", run_armor_check("head", "blunt", damage = 20)))
 				playsound = TRUE
-			if(L.apply_damage(15, BRUTE, "chest", L.run_armor_check("chest", "blunt", damage = 10)))
+			if(L.apply_damage((15 + scoredmg), BRUTE, "chest", L.run_armor_check("chest", "blunt", damage = 10)))
 				playsound = TRUE
 			if(playsound)
 				playsound(src, "genblunt", 100, TRUE)

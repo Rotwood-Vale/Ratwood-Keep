@@ -208,3 +208,58 @@
 			return 30
 
 	return damage
+
+//Checking the highest armor class worn
+//Limb armors use the second highest armor class
+/mob/living/carbon/human/proc/check_armor_class()
+	//Get Torso values
+	var/shirt_ac
+	var/chest_ac
+	var/torso_class = ARMOR_CLASS_NONE
+	if(istype(src.wear_shirt, /obj/item/clothing))
+		if(wear_shirt.armor_class)
+			shirt_ac = wear_shirt.armor_class
+		else
+			shirt_ac = 0
+	if(istype(src.wear_armor, /obj/item/clothing))
+		if(wear_armor.armor_class)
+			chest_ac = wear_armor.armor_class
+		else
+			chest_ac = 0
+	
+	torso_class = max(shirt_ac, chest_ac)			//Use heaviest Torso Armor Class
+
+	//Get Limb values, use heaviest pair
+	var/list/accessories = list(head, wear_mask, wear_wrists, wear_neck, cloak, wear_pants, gloves, shoes, belt, s_store)
+	var/acc_class = ARMOR_CLASS_NONE
+	var/heavy_count = 0
+	var/medium_count = 0
+	var/light_count = 0
+	for(var/obj/item/clothing/AA in accessories)
+		switch(AA.armor_class)
+			if(ARMOR_CLASS_HEAVY)
+				heavy_count++
+				continue
+			if(ARMOR_CLASS_MEDIUM)
+				medium_count++
+				continue
+			if(ARMOR_CLASS_LIGHT)
+				light_count++
+				continue
+			if(ARMOR_CLASS_NONE)
+				continue
+
+	if(heavy_count >= 2)
+		acc_class = ARMOR_CLASS_HEAVY
+	else if(medium_count >= 2)
+		acc_class = ARMOR_CLASS_MEDIUM
+	else if(light_count >= 2)
+		acc_class = ARMOR_CLASS_LIGHT
+	else if(heavy_count == 1 && medium_count > 0)
+		acc_class = ARMOR_CLASS_MEDIUM
+	else if(medium_count == 1 && light_count > 0)
+		acc_class = ARMOR_CLASS_LIGHT
+
+	var/combined_armor = max(torso_class, acc_class)
+	worn_armor_class = combined_armor
+	return worn_armor_class

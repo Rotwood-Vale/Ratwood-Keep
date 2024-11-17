@@ -235,7 +235,7 @@
 		return list(zone, hit)
 
 	var/ace_mod = zone_ace_mod(zone)								//Sub-location hit modifier
-	var/chance2hit = ((user.STAPER * 2) + user.STASTR + user.STASPD)
+	var/chance2hit = ((user.STAPER * 2) + user.STASTR + user.STASPD + 25)
 	var/chance2acehit = 0
 	var/datum/point/vector/previous = P.trajectory.return_vector_after_increments(1,-1)		//Backstepping the projectile to better account for angular attack vectors
 	var/projlast = previous.return_turf()

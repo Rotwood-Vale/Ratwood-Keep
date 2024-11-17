@@ -582,6 +582,7 @@
 	item_state = "leather_apron"
 	body_parts_covered = CHEST|GROIN
 	armor = list("blunt" = 25, "slash" = 5, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 24, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 	boobed = TRUE
 
 /obj/item/clothing/cloak/apron/brown
@@ -945,6 +946,7 @@
 	icon_state = "bktrinket"
 	max_integrity = 100000
 	armor = list("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = PLATEHIT
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
