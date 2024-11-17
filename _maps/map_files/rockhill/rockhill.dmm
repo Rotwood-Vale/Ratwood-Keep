@@ -28772,6 +28772,8 @@
 /obj/item/reagent_containers/glass/alembic,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
+/obj/item/reagent_containers/glass/mortar,
+/obj/item/reagent_containers/glass/mortar,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
 "wGD" = (
