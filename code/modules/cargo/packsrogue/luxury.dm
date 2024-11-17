@@ -66,6 +66,21 @@
 	cost = 10
 	contains = list(/obj/item/rogue/instrument/drum)
 
+/datum/supply_pack/rogue/luxury/hurdygurdy
+	name = "Hurdy-Gurdy"
+	cost = 30
+	contains = list(/obj/item/rogue/instrument/hurdygurdy)
+
+/datum/supply_pack/rogue/luxury/viola
+	name = "Viola"
+	cost = 30
+	contains = list(/obj/item/rogue/instrument/viola)
+
+/datum/supply_pack/rogue/luxury/vocals
+	name = "Vocalist's Talisman"
+	cost = 30
+	contains = list(/obj/item/rogue/instrument/vocals)
+
 /datum/supply_pack/rogue/luxury/nomag
 	name = "Ring of Null Magic"
 	cost = 300
