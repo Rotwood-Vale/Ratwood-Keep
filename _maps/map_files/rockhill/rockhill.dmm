@@ -296,7 +296,8 @@
 "ali" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Kitchen"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -542,7 +543,8 @@
 "ava" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Acolyte Barracks"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -1780,6 +1782,13 @@
 /area/rogue/indoors)
 "btC" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/church/inquisition)
+"bui" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church/inquisition)
 "buk" = (
@@ -3575,8 +3584,12 @@
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/indoors/town/tavern)
 "cPc" = (
-/obj/structure/closet/crate/roguecloset,
-/turf/open/floor/rogue/woodturned,
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "church";
+	name = "Belfry"
+	},
+/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church/chapel)
 "cPh" = (
 /obj/structure/closet/crate/drawer{
@@ -4004,6 +4017,11 @@
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"dfA" = (
+/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/structure/closet/crate/roguecloset,
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/church/chapel)
 "dfS" = (
 /obj/structure/rack/rogue,
 /obj/item/ammo_holder/quiver/bolts,
@@ -5763,6 +5781,14 @@
 	dir = 4
 	},
 /area/rogue/indoors/town/manor)
+"eAF" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "church";
+	name = "Confessional"
+	},
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/church)
 "eAW" = (
 /obj/structure/bars/tough,
 /turf/open/floor/rogue/cobblerock,
@@ -6803,6 +6829,16 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
+"fkq" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "church";
+	name = "Acolyte Barracks"
+	},
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/church)
 "fkC" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/magician)
@@ -8328,8 +8364,8 @@
 /area/rogue/indoors/town/church/inquisition)
 "gux" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Infirmary"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church)
@@ -10484,6 +10520,14 @@
 /obj/item/kitchen/spoon,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
+"ijd" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "church";
+	name = "Mortician Barracks"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/church)
 "ijl" = (
 /obj/structure/bed/rogue/inn,
 /turf/open/floor/carpet/purple,
@@ -11898,7 +11942,8 @@
 "jpa" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Confessional Cell Door"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church)
@@ -14224,7 +14269,8 @@
 "ljm" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Armory"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church/chapel)
@@ -14678,6 +14724,14 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
+"lDM" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "church";
+	name = "Acolyte Barracks"
+	},
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/church)
 "lEd" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /turf/open/floor/rogue/woodturned,
@@ -14955,7 +15009,8 @@
 "lNB" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
-	lockid = "inquisition"
+	lockid = "inquisition";
+	name = "Inquisitorial Chambers"
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church/inquisition)
@@ -17001,7 +17056,8 @@
 "nxD" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Mortician Barracks"
 	},
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/church)
@@ -17849,7 +17905,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "odl" = (
-/obj/structure/closet/crate/drawer,
+/obj/structure/bed/rogue/inn,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/church/chapel)
 "odp" = (
@@ -18004,7 +18060,8 @@
 "ohQ" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "inquisition"
+	lockid = "inquisition";
+	name = "Confessor Barracks"
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -18030,7 +18087,8 @@
 "oiT" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Storageroom"
 	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church)
@@ -20106,13 +20164,12 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "pLe" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
 /obj/structure/mineral_door/wood/donjon/stone{
-	lockid = "church"
+	locked = 1;
+	lockid = "church";
+	name = "Kitchen"
 	},
-/turf/open/floor/rogue/woodturned,
+/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "pLJ" = (
 /turf/open/floor/rogue/rooftop/green{
@@ -20324,7 +20381,9 @@
 /area/rogue/indoors/town)
 "pUx" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	lockid = "inquisition"
+	lockid = "inquisition";
+	locked = 1;
+	name = "Interrogation Room"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church/inquisition)
@@ -21859,7 +21918,8 @@
 "rgs" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "puritan"
+	lockid = "puritan";
+	name = "Inquisitor's Apartment"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church/inquisition)
@@ -22199,7 +22259,8 @@
 "ruZ" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Church Entrance"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church)
@@ -22529,6 +22590,10 @@
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
+"rIt" = (
+/obj/structure/closet/crate/roguecloset,
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/church/chapel)
 "rIG" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt/road,
@@ -23194,7 +23259,8 @@
 /area/rogue/outdoors/beach)
 "sje" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	lockid = "church"
+	lockid = "church";
+	name = "Confessional Entrance"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
@@ -23214,9 +23280,12 @@
 "sjY" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Kitchen"
 	},
-/turf/open/floor/rogue/churchmarble,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
 /area/rogue/indoors/town/church/chapel)
 "sks" = (
 /obj/structure/closet/crate/chest{
@@ -23756,6 +23825,14 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
+"sFR" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	lockid = "inquisition";
+	locked = 1;
+	name = "Interrogation Room"
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/church/inquisition)
 "sGq" = (
 /obj/item/restraints/legcuffs/beartrap/armed,
 /turf/open/floor/rogue/naturalstone,
@@ -24302,7 +24379,7 @@
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
 	lockid = "church";
-	pixel_y = 1
+	name = "Church Entrance"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
@@ -24587,7 +24664,8 @@
 "tnV" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Templar's room"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church/chapel)
@@ -24692,12 +24770,12 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "tqv" = (
-/obj/structure/fluff/railing/border{
-	dir = 6;
-	pixel_x = 2
+/obj/machinery/light/rogue/wallfire/candle/blue{
+	pixel_y = -32
 	},
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/town)
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/church/inquisition)
 "tqA" = (
 /obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/dirt/road,
@@ -25202,9 +25280,13 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/manor)
 "tOG" = (
-/obj/structure/table/wood,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/church/chapel)
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "church";
+	name = "Mortician Barracks"
+	},
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/church)
 "tOX" = (
 /obj/structure/table/wood,
 /obj/item/flint,
@@ -25838,7 +25920,8 @@
 "ule" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "priest"
+	lockid = "priest";
+	name = "Priest's Chambers"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church)
@@ -26038,7 +26121,8 @@
 "urC" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "priest"
+	lockid = "priest";
+	name = "Priest's Chambers"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church/chapel)
@@ -26907,7 +26991,8 @@
 "vbq" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
-	lockid = "inquisition"
+	lockid = "inquisition";
+	name = "Inquisitorial Chambers"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church/inquisition)
@@ -29654,6 +29739,13 @@
 /obj/item/candle/yellow/lit,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"xpl" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	lockid = "inquisition";
+	locked = 1
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/church/inquisition)
 "xpo" = (
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/ruinedwood,
@@ -30361,9 +30453,12 @@
 "xQs" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "church"
+	lockid = "church";
+	name = "Church Entrance"
 	},
-/turf/open/floor/rogue/woodturned,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
 /area/rogue/indoors/town/church/chapel)
 "xQw" = (
 /obj/structure/fluff/railing/wood{
@@ -323985,7 +324080,7 @@ uZy
 tML
 tML
 noB
-oiT
+tOG
 tML
 fNu
 dpe
@@ -324785,7 +324880,7 @@ xGW
 wVI
 wbg
 wVI
-ruZ
+ijd
 eBN
 fLC
 eBN
@@ -325203,7 +325298,7 @@ qrc
 qrc
 qrc
 qrc
-sIX
+sFR
 oUb
 oUb
 oUb
@@ -326819,7 +326914,7 @@ eNB
 nGW
 qrg
 eCf
-iPH
+kDl
 iPH
 iPH
 iPH
@@ -327627,7 +327722,7 @@ oCy
 qrc
 qrc
 qrc
-xhm
+tqv
 ulv
 nGW
 hcW
@@ -328425,7 +328520,7 @@ cLS
 vMK
 vMK
 gus
-cht
+xpl
 qrc
 vMK
 vMK
@@ -328828,7 +328923,7 @@ vMK
 vMK
 gus
 qrg
-gtT
+bui
 qrc
 qrc
 vMK
@@ -329232,7 +329327,7 @@ eza
 eNB
 uHK
 oCy
-qrc
+rdm
 qrc
 qrc
 xhm
@@ -330438,7 +330533,7 @@ qrg
 nGW
 pvV
 eNB
-lrp
+kkF
 sUV
 eNB
 euo
@@ -330840,8 +330935,8 @@ fEb
 hcW
 hcW
 qrg
-iPH
-iPH
+wOU
+kDl
 qrg
 hcW
 hcW
@@ -331243,7 +331338,7 @@ hcW
 hcW
 lQh
 kan
-iPH
+wOU
 lQh
 hcW
 hcW
@@ -420869,7 +420964,7 @@ rct
 tML
 qHy
 feR
-oiT
+eAF
 nhW
 nhW
 nhW
@@ -424498,7 +424593,7 @@ lPZ
 msg
 tCM
 lPZ
-pLe
+gux
 qrN
 qrN
 qrN
@@ -425302,7 +425397,7 @@ lPZ
 lPZ
 lPZ
 lPZ
-pLe
+gux
 qrN
 qrN
 qrN
@@ -427719,7 +427814,7 @@ wiC
 wiC
 wiC
 tML
-uaS
+pLe
 xWq
 tML
 tML
@@ -431329,7 +431424,7 @@ fCM
 fWv
 gCM
 fCM
-ali
+fkq
 rhs
 fof
 kLn
@@ -431726,7 +431821,7 @@ lug
 noB
 wAm
 hKU
-oiT
+lDM
 lug
 wAm
 noB
@@ -522578,9 +522673,9 @@ lPZ
 kZy
 uSx
 pur
-ljm
+cPc
 oPJ
-ljm
+cPc
 pur
 uSx
 kZy
@@ -528623,7 +528718,7 @@ lBr
 tSQ
 wou
 dpT
-cPc
+nGK
 tPW
 vIa
 vIa
@@ -529424,8 +529519,8 @@ qJM
 hcx
 sIt
 sIt
-wou
-wou
+sIt
+sIt
 sIt
 sIt
 hcx
@@ -529825,11 +529920,11 @@ lPZ
 sNg
 bSu
 odl
-cRS
-tOG
-nGK
-cRS
+dfA
 odl
+rIt
+cRS
+rIt
 bSu
 vIa
 vIa
@@ -530610,7 +530705,7 @@ xAt
 xAt
 xAt
 xAt
-tqv
+xAt
 qPA
 cHf
 uSx
