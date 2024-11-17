@@ -8,7 +8,7 @@
 	spawn_positions = 5
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_ALL_KINDS_PLUS_SEELIE
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
 	tutorial = "Nobody would envy your lot in life, for the role of bath-servant is not something so idly taken. Such folk often come from a place of desperation, 'least usually: for any with true compassion or skill would seek position with a nunnery or the medical trade. Launder clothes and soothe wounds, that is your loathsome creed."
@@ -34,6 +34,13 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 		pants =	/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random
+		if(!isseelie(H) && H.gender == MALE )
+			pants =	/obj/item/clothing/under/roguetown/brayette
+			belt =	/obj/item/storage/belt/rogue/leather/cloth
+		else
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+			armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
+			pants =	/obj/item/clothing/under/roguetown/brayette
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
@@ -43,6 +50,18 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+		if(isseelie(H))
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, -2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, -1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, -1, TRUE)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
