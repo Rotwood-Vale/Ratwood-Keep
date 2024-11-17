@@ -421,8 +421,43 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 /area/rogue/under/cave/dungeon1
 	name = "smalldungeon1"
 	icon_state = "spider"
-	first_time_text = "THE ABANDONED FORTRESS"
 	droning_sound = 'sound/music/area/dungeon.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	converted_type = /area/rogue/outdoors/dungeon1
+
+/area/rogue/under/cave/dragonden
+	name = "dragonnest"
+	icon_state = "under"
+	first_time_text = "DRAGONS DEN"
+	droning_sound = 'sound/music/area/dungeon.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	converted_type = /area/rogue/outdoors/dungeon1
+
+/area/rogue/under/cave/goblinfort
+	name = "goblinfort"
+	icon_state = "spidercave"
+	first_time_text = "GOBLIN FORTRESS"
+	droning_sound = 'sound/music/area/dungeon2.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	converted_type = /area/rogue/outdoors/dungeon1
+
+/area/rogue/under/cave/scarymaze
+	name = "hauntedlabyrinth"
+	icon_state = "spidercave"
+	first_time_text = "CURSED LABYRINTH"
+	droning_sound = 'sound/music/area/dungeon2.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	converted_type = /area/rogue/outdoors/dungeon1
+
+/area/rogue/under/cave/undeadmanor
+	name = "skelemansion"
+	icon_state = "spidercave"
+	first_time_text = "ABANDONED MANOR"
+	droning_sound = 'sound/music/area/dungeon2.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/dungeon1
