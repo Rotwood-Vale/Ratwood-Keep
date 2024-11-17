@@ -393,9 +393,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			current_ticklimit -= (TICK_LIMIT_RUNNING * 0.25) //reserve the tail 1/4 of the next tick for the mc if we plan on running next tick
 		sleep(world.tick_lag * (processing * sleep_delta))
 
-
-
-
 // This is what decides if something should run.
 /datum/controller/master/proc/CheckQueue(list/subsystemstocheck)
 	. = 0 //so the mc knows if we runtimed

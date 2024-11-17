@@ -26,6 +26,9 @@
 	. = say_dead(message)
 
 /mob/dead/observer/rogue/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
+	// this is super cheap but it works for now
+	for(var/mob/dead/observer/ghost in get_hearers_in_view(9, src))
+		ghost.visible_message(span_notice("[name] moans: [message]"))
 	return
 
 /mob/dead/observer/rogue/say_dead(message)
