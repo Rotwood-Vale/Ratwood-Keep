@@ -58,6 +58,7 @@
 	fancy_open = TRUE
 	update_icon()
 
+
 /*
  * Egg Box
  */
@@ -226,19 +227,6 @@
 	icon_state = "midori"
 	spawn_type = /obj/item/clothing/mask/cigarette/rollie/nicotine
 
-/obj/item/storage/fancy/cigarettes/cigpack_candy
-	name = "\improper Timmy's First Candy Smokes packet"
-	desc = ""
-	icon_state = "candy"
-	icon_type = "candy cigarette"
-	spawn_type = /obj/item/clothing/mask/cigarette/candy
-	candy = TRUE
-
-/obj/item/storage/fancy/cigarettes/cigpack_candy/Initialize()
-	. = ..()
-	if(prob(7))
-		spawn_type = /obj/item/clothing/mask/cigarette/candy/nicotine //uh oh!
-
 /obj/item/storage/fancy/cigarettes/cigpack_shadyjims
 	name = "\improper Shady Jim's Super Slims packet"
 	desc = ""
@@ -327,39 +315,3 @@
 	desc = ""
 	icon_state = "cohibacase"
 	spawn_type = /obj/item/clothing/mask/cigarette/cigar/havana
-
-/*
- * Heart Shaped Box w/ Chocolates
- */
-
-/obj/item/storage/fancy/heart_box
-	name = "heart-shaped box"
-	desc = ""
-	icon = 'icons/obj/food/containers.dmi'
-	item_state = "chocolatebox"
-	icon_state = "chocolatebox"
-	icon_type = "chocolate"
-	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
-	spawn_type = /obj/item/reagent_containers/food/snacks/tinychocolate
-
-/obj/item/storage/fancy/heart_box/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 8
-	STR.set_holdable(list(/obj/item/reagent_containers/food/snacks/tinychocolate))
-
-
-/obj/item/storage/fancy/nugget_box
-	name = "nugget box"
-	desc = ""
-	icon = 'icons/obj/food/containers.dmi'
-	icon_state = "nuggetbox"
-	icon_type = "nugget"
-	spawn_type = /obj/item/reagent_containers/food/snacks/nugget
-
-/obj/item/storage/fancy/nugget_box/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 6
-	STR.set_holdable(list(/obj/item/reagent_containers/food/snacks/nugget))

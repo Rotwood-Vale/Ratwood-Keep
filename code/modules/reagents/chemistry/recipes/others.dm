@@ -361,7 +361,7 @@
 	results = list(/datum/reagent/yuck = 4)
 	required_reagents = list(/datum/reagent/fuel = 3)
 	required_container = /obj/item/reagent_containers/food/snacks/deadmouse
-	
+
 /datum/chemical_reaction/cellulose_carbonization
 	name = "Cellulose_Carbonization"
 	id = /datum/reagent/carbon

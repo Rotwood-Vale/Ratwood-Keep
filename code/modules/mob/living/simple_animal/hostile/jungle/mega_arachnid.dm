@@ -17,9 +17,11 @@
 	pixel_x = -16
 	move_to_delay = 10
 	aggro_vision_range = 9
-	speak_emote = list("chitters")
-	attack_sound = 'sound/blank.ogg'
-	ranged_cooldown_time = 60
+	speak_emote = list("aggro")
+	attack_sound = list('sound/vo/mobs/spider/attack (1).ogg','sound/vo/mobs/spider/attack (2).ogg','sound/vo/mobs/spider/attack (3).ogg','sound/vo/mobs/spider/attack (4).ogg')
+	faction = list("bugs")
+	ranged_cooldown_time = 20
+	base_intents = list(/datum/intent/simple/stab, /datum/intent/simple/bigbite)
 	projectiletype = /obj/projectile/mega_arachnid
 	projectilesound = 'sound/blank.ogg'
 	alpha = 50
