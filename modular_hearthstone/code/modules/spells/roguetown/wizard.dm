@@ -497,15 +497,15 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "blade_burst"
-	var/delay = 18
-	var/damage = 100 //trust me, this is still way worse than you think it is
+	var/delay = 14
+	var/damage = 125 //if you get hit by this it's your fault
 	var/area_of_effect = 1
 
 /obj/effect/temp_visual/trap
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "trap"
 	light_range = 2
-	duration = 18
+	duration = 14
 	layer = MASSIVE_OBJ_LAYER
 
 /obj/effect/temp_visual/blade_burst
@@ -998,7 +998,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 15
-	charge_max = 15 SECONDS
+	charge_max = 13 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -1066,7 +1066,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 3
-	charge_max = 15 SECONDS //cooldown
+	charge_max = 13 SECONDS //cooldown
 
 	warnie = "spellwarning"
 	no_early_release = TRUE
