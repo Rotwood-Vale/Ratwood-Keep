@@ -101,30 +101,6 @@
 /obj/item/clothing/mask/bandana/attack_self(mob/user)
 	adjustmask(user)
 
-/obj/item/clothing/mask/bandana/AltClick(mob/user)
-	. = ..()
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if((C.get_item_by_slot(SLOT_HEAD == src)) || (C.get_item_by_slot(SLOT_WEAR_MASK) == src))
-			to_chat(user, span_warning("I can't tie [src] while wearing it!"))
-			return
-	if(slot_flags & ITEM_SLOT_HEAD)
-		to_chat(user, span_warning("I must undo [src] before you can tie it into a neckerchief!"))
-	else
-		if(user.is_holding(src))
-			var/obj/item/clothing/neck/neckerchief/nk = new(src)
-			nk.name = "[name] neckerchief"
-			nk.desc = ""
-			nk.icon_state = icon_state
-			nk.sourceBandanaType = src.type
-			var/currentHandIndex = user.get_held_index_of_item(src)
-			user.transferItemToLoc(src, null)
-			user.put_in_hand(nk, currentHandIndex)
-			user.visible_message(span_notice("I tie [src] up like a neckerchief."), span_notice("[user] ties [src] up like a neckerchief."))
-			qdel(src)
-		else
-			to_chat(user, span_warning("I must be holding [src] in order to tie it!"))
-
 
 /obj/item/clothing/mask/bandana/black
 	name = "black bandana"

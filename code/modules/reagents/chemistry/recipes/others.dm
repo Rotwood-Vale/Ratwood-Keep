@@ -1,10 +1,4 @@
 
-/datum/chemical_reaction/sterilizine
-	name = "Sterilizine"
-	id = /datum/reagent/space_cleaner/sterilizine
-	results = list(/datum/reagent/space_cleaner/sterilizine = 3)
-	required_reagents = list(/datum/reagent/consumable/ethanol = 1, /datum/reagent/medicine/C2/multiver = 1, /datum/reagent/chlorine = 1)
-
 /datum/chemical_reaction/lube
 	name = "Space Lube"
 	id = /datum/reagent/lube
@@ -229,42 +223,6 @@
 	required_reagents = list(/datum/reagent/fuel/oil = 1)
 	required_temp = 480
 
-/datum/chemical_reaction/colorful_reagent
-	name = /datum/reagent/colorful_reagent
-	id = /datum/reagent/colorful_reagent
-	results = list(/datum/reagent/colorful_reagent = 5)
-	required_reagents = list(/datum/reagent/stable_plasma = 1, /datum/reagent/uranium/radium = 1, /datum/reagent/drug/space_drugs = 1, /datum/reagent/medicine/cryoxadone = 1, /datum/reagent/consumable/triple_citrus = 1)
-
-/datum/chemical_reaction/life
-	name = "Life"
-	id = "life"
-	required_reagents = list(/datum/reagent/medicine/strange_reagent = 1, /datum/reagent/medicine/C2/instabitaluri = 1, /datum/reagent/blood = 1)
-	required_temp = 374
-
-/datum/chemical_reaction/life/on_reaction(datum/reagents/holder, created_volume)
-	chemical_mob_spawn(holder, rand(1, round(created_volume, 1)), "Life (hostile)") //defaults to HOSTILE_SPAWN
-
-/datum/chemical_reaction/life_friendly
-	name = "Life (Friendly)"
-	id = "life_friendly"
-	required_reagents = list(/datum/reagent/medicine/strange_reagent = 1, /datum/reagent/medicine/C2/instabitaluri = 1, /datum/reagent/consumable/sugar = 1)
-	required_temp = 374
-
-/datum/chemical_reaction/life_friendly/on_reaction(datum/reagents/holder, created_volume)
-	chemical_mob_spawn(holder, rand(1, round(created_volume, 1)), "Life (friendly)", FRIENDLY_SPAWN)
-
-/datum/chemical_reaction/corgium
-	name = "corgium"
-	id = "corgium"
-	required_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/colorful_reagent = 1, /datum/reagent/medicine/strange_reagent = 1, /datum/reagent/blood = 1)
-	required_temp = 374
-
-/datum/chemical_reaction/corgium/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = rand(1, created_volume), i <= created_volume, i++) // More lulz.
-		new /mob/living/simple_animal/pet/dog/corgi(location)
-	..()
-
 //monkey powder heehoo
 /datum/chemical_reaction/monkey_powder
 	name = /datum/reagent/monkey_powder
@@ -286,26 +244,6 @@
 	id = "electrolysis"
 	results = list(/datum/reagent/oxygen = 10, /datum/reagent/hydrogen = 20)
 	required_reagents = list(/datum/reagent/consumable/liquidelectricity = 1, /datum/reagent/water = 5)
-
-//butterflium
-/datum/chemical_reaction/butterflium
-	name = "butterflium"
-	id = "butterflium"
-	required_reagents = list(/datum/reagent/colorful_reagent = 1, /datum/reagent/medicine/omnizine = 1, /datum/reagent/medicine/strange_reagent = 1, /datum/reagent/consumable/nutriment = 1)
-/datum/chemical_reaction/butterflium/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = rand(1, created_volume), i <= created_volume, i++)
-		new /mob/living/simple_animal/butterfly(location)
-	..()
-//scream powder
-/datum/chemical_reaction/scream
-	name = "scream"
-	id = "scream"
-	required_reagents = list(/datum/reagent/medicine/strange_reagent = 1, /datum/reagent/consumable/cream = 5, /datum/reagent/consumable/ethanol/lizardwine = 5	)
-	required_temp = 374
-
-/datum/chemical_reaction/scream/on_reaction(datum/reagents/holder, created_volume)
-	playsound(holder.my_atom, pick(list( 'sound/blank.ogg')), created_volume*5,TRUE)
 
 /datum/chemical_reaction/hair_dye
 	name = /datum/reagent/hair_dye
@@ -348,12 +286,6 @@
 	id = /datum/reagent/consumable/laughter
 	results = list(/datum/reagent/consumable/laughter = 10) // Fuck it. I'm not touching this one.
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/banana = 1)
-
-/datum/chemical_reaction/pax
-	name = /datum/reagent/pax
-	id = /datum/reagent/pax
-	results = list(/datum/reagent/pax = 3)
-	required_reagents  = list(/datum/reagent/toxin/mindbreaker = 1, /datum/reagent/medicine/synaptizine = 1, /datum/reagent/water = 1)
 
 /datum/chemical_reaction/yuck
 	name = "Organic Fluid"

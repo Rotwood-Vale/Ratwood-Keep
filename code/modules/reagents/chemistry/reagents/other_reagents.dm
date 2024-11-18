@@ -1326,6 +1326,13 @@
 	color = "#60A584" // rgb: 96, 165, 132
 	taste_description = "cool salt"
 
+/datum/reagent/charcoal
+	name = "Charcoal"
+	description = "Burnt wood."
+	reagent_state = SOLID
+	color = "#020202" // rgb: 96, 165, 132
+	taste_description = "ash"
+
 /datum/reagent/lye
 	name = "Lye"
 	description = "Also known as sodium hydroxide. As a profession making this is somewhat underwhelming."

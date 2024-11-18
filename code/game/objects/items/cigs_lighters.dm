@@ -335,7 +335,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "spliffoff"
 	icon_on = "spliffon"
 	icon_off = "spliffoff"
-	type_butt = /obj/item/cigbutt/roach
+	type_butt = /obj/item/cigbutt
 	throw_speed = 0.5
 	item_state = "spliffoff"
 	smoketime = 120 // four minutes
@@ -361,53 +361,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/rollie/mindbreaker
 	list_reagents = list(/datum/reagent/toxin/mindbreaker = 35, /datum/reagent/toxin/lipolicide = 15)
 
-/obj/item/cigbutt/roach
+/obj/item/cigbutt
 	name = "roach"
 	desc = ""
 	icon_state = "roach"
 	muteinmouth = FALSE
 
-/obj/item/cigbutt/roach/Initialize()
+/obj/item/cigbutt/Initialize()
 	. = ..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
-
-
-////////////
-// CIGARS //
-////////////
-/obj/item/clothing/mask/cigarette/cigar
-	name = "premium cigar"
-	desc = ""
-	icon_state = "cigaroff"
-	icon_on = "cigaron"
-	icon_off = "cigaroff" //make sure to add positional sprites in icons/obj/cigarettes.dmi if you add more.
-	type_butt = /obj/item/cigbutt/cigarbutt
-	throw_speed = 0.5
-	item_state = "cigaroff"
-	smoketime = 300 // 11 minutes
-	chem_volume = 40
-	list_reagents = list(/datum/reagent/drug/nicotine = 25)
-
-/obj/item/clothing/mask/cigarette/cigar/cohiba
-	name = "\improper Cohiba Robusto cigar"
-	desc = ""
-	icon_state = "cigar2off"
-	icon_on = "cigar2on"
-	icon_off = "cigar2off"
-	smoketime = 600 // 20 minutes
-	chem_volume = 80
-	list_reagents =list(/datum/reagent/drug/nicotine = 40)
-
-/obj/item/clothing/mask/cigarette/cigar/havana
-	name = "premium Havanian cigar"
-	desc = ""
-	icon_state = "cigar2off"
-	icon_on = "cigar2on"
-	icon_off = "cigar2off"
-	smoketime = 900 // 30 minutes
-	chem_volume = 50
-	list_reagents =list(/datum/reagent/drug/nicotine = 15)
 
 /obj/item/cigbutt
 	name = "cigarette butt"
@@ -419,12 +382,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	grind_results = list(/datum/reagent/carbon = 2)
 	slot_flags = ITEM_SLOT_MOUTH
 	spitoutmouth = TRUE
-
-
-/obj/item/cigbutt/cigarbutt
-	name = "cigar butt"
-	desc = ""
-	icon_state = "cigarbutt"
 
 /////////////////
 //SMOKING PIPES//
@@ -738,16 +695,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/lighter/greyscale/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
 		. = span_notice("After some fiddling, [user] manages to light [A] with [src].")
-
-
-/obj/item/lighter/slime
-	name = "slime zippo"
-	desc = ""
-	icon_state = "slighter"
-	heat = 3000 //Blue flame!
-	light_color = LIGHT_COLOR_CYAN
-	overlay_state = "slime"
-	grind_results = list(/datum/reagent/iron = 1, /datum/reagent/fuel = 5, /datum/reagent/medicine/pyroxadone = 5)
 
 
 ///////////

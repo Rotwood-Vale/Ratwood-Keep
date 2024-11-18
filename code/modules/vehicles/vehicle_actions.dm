@@ -97,59 +97,5 @@
 	button_icon_state = "vehicle_eject"
 	var/obj/vehicle/vehicle_target
 
-/datum/action/vehicle/sealed
-	var/obj/vehicle/sealed/vehicle_entered_target
-
-/datum/action/vehicle/sealed/climb_out
-	name = "Climb Out"
-	desc = ""
-	button_icon_state = "car_eject"
-
-/datum/action/vehicle/sealed/climb_out/Trigger()
-	if(..() && istype(vehicle_entered_target))
-		vehicle_entered_target.mob_try_exit(owner, owner)
-
 /datum/action/vehicle/ridden
 	var/obj/vehicle/ridden/vehicle_ridden_target
-
-/datum/action/vehicle/sealed/remove_key
-	name = "Remove key"
-	desc = ""
-	button_icon_state = "car_removekey"
-
-/datum/action/vehicle/sealed/remove_key/Trigger()
-	vehicle_entered_target.remove_key(owner)
-
-//CLOWN CAR ACTION DATUMS
-/datum/action/vehicle/sealed/horn
-	name = "Honk Horn"
-	desc = ""
-	button_icon_state = "car_horn"
-	var/hornsound = 'sound/blank.ogg'
-	var/last_honk_time
-
-/datum/action/vehicle/sealed/horn/Trigger()
-	if(world.time - last_honk_time > 20)
-		vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target] loudly honks!"))
-		to_chat(owner, span_notice("I press the vehicle's horn."))
-		playsound(vehicle_entered_target, hornsound, 75)
-		last_honk_time = world.time
-
-/datum/action/vehicle/sealed/horn/clowncar/Trigger()
-	if(world.time - last_honk_time > 20)
-		vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target] loudly honks!"))
-		to_chat(owner, span_notice("I press the vehicle's horn."))
-		last_honk_time = world.time
-		if(vehicle_target.inserted_key)
-			vehicle_target.inserted_key.attack_self(owner) //The key plays a sound
-		else
-			playsound(vehicle_entered_target, hornsound, 75)
-
-/datum/action/vehicle/sealed/DumpKidnappedMobs
-	name = "Dump Kidnapped Mobs"
-	desc = ""
-	button_icon_state = "car_dump"
-
-/datum/action/vehicle/sealed/DumpKidnappedMobs/Trigger()
-	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target] starts dumping the people inside of it."))
-	vehicle_entered_target.DumpSpecificMobs(VEHICLE_CONTROL_KIDNAPPED)

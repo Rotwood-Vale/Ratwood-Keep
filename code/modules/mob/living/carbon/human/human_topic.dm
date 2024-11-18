@@ -153,22 +153,6 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD) && !HAS_TRAIT(H, TRAIT_MEDICAL_HUD))
 			return
 		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.general)
-		if(href_list["photo_front"] || href_list["photo_side"])
-			if(!R)
-				return
-			if(!H.canUseHUD())
-				return
-			if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD) && !HAS_TRAIT(H, TRAIT_MEDICAL_HUD))
-				return
-			var/obj/item/photo/P = null
-			if(href_list["photo_front"])
-				P = R.fields["photo_front"]
-			else if(href_list["photo_side"])
-				P = R.fields["photo_side"]
-			if(P)
-				P.show(H)
-			return
-
 		if(href_list["hud"] == "m")
 			if(!HAS_TRAIT(H, TRAIT_MEDICAL_HUD))
 				return

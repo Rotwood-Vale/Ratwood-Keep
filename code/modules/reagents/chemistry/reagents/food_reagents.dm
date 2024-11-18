@@ -203,8 +203,6 @@
 	switch(current_cycle)
 		if(1 to 15)
 			heating = 5 * TEMPERATURE_DAMAGE_COEFFICIENT
-			if(holder.has_reagent(/datum/reagent/cryostylane))
-				holder.remove_reagent(/datum/reagent/cryostylane, 5)
 		if(15 to 25)
 			heating = 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 		if(25 to 35)

@@ -504,28 +504,17 @@ SUBSYSTEM_DEF(ticker)
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/equip_characters()
-//	var/captainless=1
 	var/list/valid_characters = list()
 	for(var/mob/dead/new_player/new_player as anything in GLOB.new_player_list)
 		var/mob/living/carbon/human/player = new_player.new_character
 		if(istype(player) && player.mind?.assigned_role)
-//			if(player.mind.assigned_role == "Captain")
-//				captainless=0
 			if(player.mind.assigned_role != player.mind.special_role)
 				valid_characters[player] = new_player
 	sortTim(valid_characters, GLOBAL_PROC_REF(cmp_assignedrole_dsc))
 	for(var/mob/character as anything in valid_characters)
 		var/mob/new_player = valid_characters[character]
 		SSjob.EquipRank(new_player, character.mind.assigned_role, joined_late = FALSE)
-		if(CONFIG_GET(flag/roundstart_traits) && ishuman(character))
-			SSquirks.AssignQuirks(character, new_player.client, TRUE)
 		CHECK_TICK
-//	if(captainless)
-//		for(var/i in GLOB.new_player_list)
-//			var/mob/dead/new_player/N = i
-//			if(N.new_character)
-//				to_chat(N, span_notice("Captainship not forced on anyone."))
-//			CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/transfer_characters()
 	var/list/livings = list()

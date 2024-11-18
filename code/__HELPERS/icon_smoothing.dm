@@ -181,11 +181,6 @@
 				underlay_appearance.icon_state = DEFAULT_UNDERLAY_ICON_STATE
 		underlays = U
 
-		// Drop posters which were previously placed on this wall.
-		for(var/obj/structure/sign/poster/P in src)
-			P.roll_and_drop(src)
-
-
 /atom/proc/cardinal_smooth(adjacencies)
 	//NW CORNER
 	var/nw = "1-i"

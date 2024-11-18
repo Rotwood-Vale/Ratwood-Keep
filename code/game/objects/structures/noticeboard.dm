@@ -24,7 +24,7 @@
 
 //attaching papers!!
 /obj/structure/noticeboard/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo))
+	if(istype(O, /obj/item/paper))
 		if(!allowed(user))
 			to_chat(user, span_warning("I are not authorized to add notices!"))
 			return
