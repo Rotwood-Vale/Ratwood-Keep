@@ -118,11 +118,9 @@
 #define CHURCHMEN		(1<<2)
 
 #define PRIEST		(1<<0)
-#define PURITAN		(1<<2)
-#define MONK		(1<<3)
-#define GRAVEDIGGER	(1<<4)
-#define CONFESSOR	(1<<5)
-#define DRUID		(1<<6)
+#define MONK		(1<<1)
+#define GRAVEDIGGER	(1<<2)
+#define DRUID		(1<<3)
 
 #define COURTIERS	(1<<3)
 
@@ -145,7 +143,6 @@
 #define MERCHANT	(1<<8)
 #define SCRIBE		(1<<9)
 #define ELDER		(1<<10)
-
 #define PEASANTS	(1<<5)
 
 #define HUNTER		(1<<0)
@@ -203,6 +200,12 @@
 #define DEATHKNIGHT (1<<1)
 #define SKELETON	(1<<2)
 
+#define INQUISITION (1<<10)
+
+#define PURITAN		(1<<0)
+#define ORTHODOXIST	(1<<1)
+
+
 #define JCOLOR_NOBLE "#aa83b9"
 #define JCOLOR_COURTIER "#81adc8"
 #define JCOLOR_CHURCH "#c0ba8d"
@@ -210,7 +213,7 @@
 #define JCOLOR_YEOMAN "#819e82"
 #define JCOLOR_PEASANT "#b09262"
 #define JCOLOR_MERCENARY "#c86e3a"
-
+#define JCOLOR_INQUISITION "#FF0000"
 
 // job display orders //
 
@@ -245,13 +248,11 @@
 #define JDO_BOGGUARD 9.1
 
 #define JDO_PRIEST 10
-#define JDO_PURITAN 11
 #define JDO_TEMPLAR 12
 #define JDO_MONK 13
 #define JDO_DRUID 13.1
 #define JDO_CHURCHLING 14
 #define JDO_GRAVEMAN 15
-#define JDO_SHEPHERD 16
 
 #define JDO_MERCHANT 17
 #define JDO_SHOPHAND 17.1
@@ -299,6 +300,8 @@
 #define JDO_TRIBALCOOK 37
 #define JDO_TRIBALGUARD 38
 #define JDO_TRIBALSMITH 39
+#define JDO_PURITAN 40
+#define JDO_ORTHODOXIST 40.1
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -332,7 +335,6 @@
 	/datum/job/roguetown/druid,\
 	/datum/job/roguetown/monk,\
 	/datum/job/roguetown/priest,\
-	/datum/job/roguetown/puritan,\
 	/datum/job/roguetown/templar
 
 #define PEASANT_ROLES \
@@ -381,3 +383,7 @@
 	/datum/job/roguetown/manorguard,\
 	/datum/job/roguetown/sheriff,\
 	/datum/job/roguetown/guardsman
+
+#define INQUISITION_ROLES \
+	/datum/job/roguetown/puritan,\
+	/datum/job/roguetown/orthodoxist
