@@ -24,7 +24,6 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -54,6 +53,7 @@
 			H.change_stat("strength", -1)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 3)
+			H.change_stat("endurance", -1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 		if("Swashbuckler") //A swashbuckler is a heroic protagonist stock character who is skilled in swordsmanship, acrobatics, and guile. A little less sneaky, a little more en garde-y
 			H.set_blindness(0)
@@ -61,7 +61,6 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
@@ -86,7 +85,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/sword/iron
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor	
-			H.change_stat("endurance", 1)
+			H.change_stat("endurance", -1)
 			H.change_stat("speed", 2)
 			H.cmode_music = 'sound/music/combat_duelist.ogg'
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
