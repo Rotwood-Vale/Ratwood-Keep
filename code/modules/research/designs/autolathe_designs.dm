@@ -348,15 +348,6 @@
 	build_path = /obj/item/kitchen/fork
 	category = list("initial","Dinnerware")
 
-/datum/design/plastic_fork
-	name = "Plastic Fork"
-	id = "plastic_fork"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/plastic = 80)
-	build_path = /obj/item/kitchen/fork/plastic
-	category = list("initial", "Tool Designs", "Dinnerware")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
 /datum/design/plastic_spoon
 	name = "Plastic Spoon"
 	id = "plastic_spoon"
