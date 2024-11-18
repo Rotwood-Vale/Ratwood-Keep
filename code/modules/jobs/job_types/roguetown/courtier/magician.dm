@@ -1,5 +1,5 @@
 /datum/job/roguetown/magician
-	title = "Court Magician"
+	title = "Court Magos"
 	flag = WIZARD
 	department_flag = COURTIERS
 	selection_color = JCOLOR_COURTIER
@@ -26,11 +26,10 @@
 /datum/outfit/job/roguetown/magician/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/clothing/neck/roguetown/talkstone
-	cloak = /obj/item/clothing/cloak/black_cloak
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/magos
+	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
+	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/keyring/mage
 	id = /obj/item/clothing/ring/gold
 	r_hand = /obj/item/rogueweapon/woodstaff
@@ -61,10 +60,8 @@
 			H.change_stat("speed", -1)
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 1)
-			if(ishumannorthern(H))
-				belt = /obj/item/storage/belt/rogue/leather/plaquegold
-				cloak = null
-				head = /obj/item/clothing/head/roguetown/wizhat
-				armor = /obj/item/clothing/suit/roguetown/shirt/robe/wizard
-				H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+		
+		if(H.gender == MALE)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+
 

@@ -935,7 +935,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/objective/vampirelord/infiltrate/two/check_completion()
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/list/noblejobs = list("Duke", "Duchess Consort", "Heir", "Heiress", "Hand", "Steward")
+	var/list/noblejobs = list("Duke", "Duchess", "Heir", "Heiress", "Hand", "Steward")
 	for(var/datum/mind/V in C.vampires)
 		if(V.current.job in noblejobs)
 			return TRUE

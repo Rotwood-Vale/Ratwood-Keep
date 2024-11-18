@@ -128,13 +128,8 @@
 			. += "<span class='userdanger'>OUTLAW!</span>"
 		if(mind && mind.special_role)
 		else
-			if(mind && mind.special_role == "Bandit")
-				. += "<span class='userdanger'>BANDIT!</span>"
 			if(mind && mind.special_role == "Vampire Lord")
 				. += "<span class='userdanger'>A MONSTER!</span>"
-
-		if(name in GLOB.outlawed_players)
-			. += span_userdanger("OUTLAW!")
 
 
 		var/commie_text
