@@ -219,8 +219,9 @@
 /area/rogue/indoors/town)
 "agy" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/cloak/stabard/crusader/t,
-/obj/item/clothing/cloak/stabard/crusader/t,
+/obj/item/clothing/cloak/tabard/crusader/dendor,
+/obj/item/clothing/cloak/tabard/crusader/noc,
+/obj/item/clothing/cloak/tabard/crusader/pestra,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church/chapel)
 "agS" = (
@@ -4033,8 +4034,8 @@
 "dfA" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/cloak/tabard/crusader/pestra,
-/obj/item/clothing/cloak/tabard/crusader,
+/obj/item/clothing/cloak/templar/necran,
+/obj/item/clothing/cloak/templar/necran,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/church/chapel)
 "dfS" = (
@@ -7661,9 +7662,6 @@
 /obj/item/natural/worms,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
-"fQS" = (
-/turf/closed/mineral/rogue,
-/area/rogue/indoors/town/church/inquisition)
 "fRo" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -9164,12 +9162,6 @@
 "hcg" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors/mountains)
-"hcr" = (
-/obj/structure/rack/rogue,
-/obj/item/clothing/cloak/stabard/crusader,
-/obj/item/clothing/cloak/stabard/crusader,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town/church/chapel)
 "hcu" = (
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/wood,
@@ -9579,6 +9571,10 @@
 /area/rogue/indoors/town/shop)
 "hsQ" = (
 /obj/structure/closet/crate/roguecloset,
+/obj/item/clothing/cloak/stabard/crusader,
+/obj/item/clothing/cloak/stabard/crusader,
+/obj/item/clothing/cloak/stabard/crusader/t,
+/obj/item/clothing/cloak/stabard/crusader/t,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church/inquisition)
 "hto" = (
@@ -16445,7 +16441,8 @@
 /area/rogue/under/cavewet/bogcaves)
 "mUK" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/cloak/tabard/crusader/noc,
+/obj/item/clothing/cloak/templar/malummite,
+/obj/item/clothing/cloak/templar/malummite,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/church/chapel)
 "mUQ" = (
@@ -22666,7 +22663,8 @@
 /area/rogue/indoors/town/manor)
 "rIt" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/cloak/tabard/crusader/dendor,
+/obj/item/clothing/cloak/templar/astratan,
+/obj/item/clothing/cloak/templar/astratan,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/church/chapel)
 "rIG" = (
@@ -326667,7 +326665,7 @@ iPH
 iPH
 eNB
 nGW
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -327069,7 +327067,7 @@ iPH
 iPH
 fiM
 qrg
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -327471,7 +327469,7 @@ bDu
 bDu
 bDu
 lQh
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -327874,7 +327872,7 @@ qrc
 tqv
 ulv
 nGW
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -328276,7 +328274,7 @@ qrc
 qrc
 qrc
 qrg
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -328678,7 +328676,7 @@ vMK
 qrc
 drm
 fEb
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -329080,7 +329078,7 @@ qrc
 qrc
 qrc
 lQh
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -329482,7 +329480,7 @@ qrc
 xhm
 ulv
 nGW
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -329883,7 +329881,7 @@ gtT
 gtT
 gtT
 qrg
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -330285,7 +330283,7 @@ iPH
 iPH
 fiM
 lQh
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -330687,7 +330685,7 @@ kkF
 sUV
 eNB
 nGW
-fQS
+hcW
 hcW
 hcW
 hcW
@@ -524429,7 +524427,7 @@ qJM
 bav
 umk
 tPW
-hcr
+eBR
 sYe
 uKB
 tyB
