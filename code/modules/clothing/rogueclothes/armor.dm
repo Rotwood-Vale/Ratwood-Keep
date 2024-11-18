@@ -439,7 +439,6 @@
 	icon_state = "roguearmor_coat"
 	item_state = "roguearmor_coat"
 	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	body_parts_covered = CHEST|GROIN|VITALS
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
 	max_integrity = 300
 	sellprice = 25
