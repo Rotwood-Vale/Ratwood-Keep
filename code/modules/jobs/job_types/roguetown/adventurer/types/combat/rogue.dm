@@ -51,6 +51,7 @@
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
 			H.change_stat("strength", -1)
+			H.change_stat("constitution", -1)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 3)
 			H.change_stat("endurance", -1)
@@ -86,6 +87,7 @@
 			beltr = /obj/item/rogueweapon/sword/iron
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor	
 			H.change_stat("endurance", -1)
+			H.change_stat("constitution", -1)
 			H.change_stat("speed", 2)
 			H.cmode_music = 'sound/music/combat_duelist.ogg'
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
