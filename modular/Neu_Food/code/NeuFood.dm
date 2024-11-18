@@ -89,13 +89,10 @@
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/kitchen/ironspoon
+/obj/item/kitchen/spoon/ironspoon
 	name = "iron spoon"
 	desc = "Traditional utensil for shoveling soup into your mouth, now made with iron for that metallic taste!"
-	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	icon_state = "spoon_iron"
-	force = 0
-	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/kitchen/fork
 	name = "wooden fork"
@@ -105,13 +102,10 @@
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/kitchen/ironfork
+/obj/item/kitchen/fork/ironfork
 	name = "iron fork"
 	desc = "Traditional utensil for stabbing your food, now made with iron for extra stabbiness!"
-	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	icon_state = "fork_iron"
-	force = 0
-	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/kitchen/rollingpin
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
