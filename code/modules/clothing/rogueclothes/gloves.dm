@@ -60,7 +60,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 
 
-/obj/item/clothing/gloves/roguetown/angle
+/obj/item/clothing/gloves/roguetown/leather/angle
 	name = "heavy leather gloves"
 	desc = "A thick pair of leather gloves."
 	icon_state = "angle"

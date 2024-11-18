@@ -752,10 +752,10 @@
 /area/rogue/outdoors/rtfield)
 "aEN" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/gloves/roguetown/angle,
-/obj/item/clothing/gloves/roguetown/angle,
-/obj/item/clothing/gloves/roguetown/angle,
-/obj/item/clothing/gloves/roguetown/angle,
+/obj/item/clothing/gloves/roguetown/leather/angle,
+/obj/item/clothing/gloves/roguetown/leather/angle,
+/obj/item/clothing/gloves/roguetown/leather/angle,
+/obj/item/clothing/gloves/roguetown/leather/angle,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "aES" = (

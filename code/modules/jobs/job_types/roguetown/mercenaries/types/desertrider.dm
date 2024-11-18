@@ -22,7 +22,7 @@
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
