@@ -114,8 +114,8 @@
 	name = "leather trousers"
 	armor = list("blunt" = 50, "slash" = 40, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	icon_state = "leathertrou"
+	max_integrity = 200
 	resistance_flags = FIRE_PROOF
-	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants
 	name = "heavy leather trousers"
@@ -128,7 +128,7 @@
 	armor = list("blunt" = 75, "slash" = 70, "stab" = 60, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = SOFTHIT
-	max_integrity = 200
+	max_integrity = 250
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
