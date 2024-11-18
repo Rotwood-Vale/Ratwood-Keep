@@ -1,7 +1,7 @@
 /datum/advclass/woodcutter
 	name = "Woodworker"
 	tutorial = "You are a woodworker, physically capable of falling any tree yet knowledgeable \
-	in the ways of bending wood to your will. With enough time, your only limit is your imagination. ."
+	in the ways of bending wood to your will. With enough time, your only limit is your imagination."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/woodcutter
