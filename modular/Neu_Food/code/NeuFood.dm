@@ -464,11 +464,12 @@
 			if (S.plateable == TRUE)
 				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 				if(do_after(user,2 SECONDS, target = src))
-					new S.type/plated(loc)
+					var/path = text2path("[S.type]/plated")
+					new path(loc)
 					qdel(I)
 					qdel(src)
 			else
-				to_chat(user, span_warning("[src] cannot be plated."))
+				to_chat(user, span_warning("[S] cannot be plated."))
 		else
 			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
 	else

@@ -123,15 +123,19 @@
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
 	icon_state = "carpcooked"
 	faretype = FARE_IMPOVERISHED
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
 	icon_state = "clownfishcooked"
 	faretype = FARE_POOR
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
 	icon_state = "anglercooked"
 	faretype = FARE_NEUTRAL
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
 	icon_state = "eelcooked"
 	faretype = FARE_NEUTRAL
+	plateable = TRUE
