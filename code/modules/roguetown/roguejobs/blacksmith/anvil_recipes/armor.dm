@@ -269,6 +269,12 @@
 	created_item = /obj/item/clothing/neck/roguetown/bevor
 	craftdiff = 2
 
+/datum/anvil_recipe/armor/steel/sgorget
+	name = "Steel gorget"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/neck/roguetown/gorget/steel
+	craftdiff = 2
+
 /datum/anvil_recipe/armor/steel/helmetsall
 	name = "Sallet"
 	req_bar = /obj/item/ingot/steel
