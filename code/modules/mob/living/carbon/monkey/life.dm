@@ -41,9 +41,6 @@
 				emote("gasp")
 				domutcheck()
 
-				if(radiation > RAD_MOB_MUTATE * 2 && prob(50))
-					gorillize()
-					return
 		if(radiation > RAD_MOB_VOMIT && prob(RAD_MOB_VOMIT_PROB))
 			vomit(10, TRUE)
 	return ..()
