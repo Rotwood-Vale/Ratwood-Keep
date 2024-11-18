@@ -7050,9 +7050,11 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "fwR" = (
-/obj/structure/fluff/walldeco/church/line,
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/church/chapel)
+/obj/item/clothing/cloak/stabard/crusader/t,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/church/inquisition)
 "fwW" = (
 /obj/effect/landmark/map_load_mark/sewers_topleft,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -8200,11 +8202,9 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
 "gnv" = (
-/obj/item/clothing/cloak/stabard/crusader/t,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/church/inquisition)
+/obj/structure/fluff/walldeco/church/line,
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "gnI" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/blocks/stonered,
@@ -11987,9 +11987,11 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "jqj" = (
-/obj/structure/fluff/walldeco/church/line,
 /obj/structure/fluff/psycross{
 	layer = 4.5
+	},
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church/chapel)
@@ -12730,6 +12732,14 @@
 /obj/item/paper/scroll,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
+"jTt" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/church/chapel)
 "jTP" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/manor)
@@ -22760,12 +22770,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
-"rOV" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/church/chapel)
 "rPm" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -25944,6 +25948,12 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"ujc" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 1
+	},
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "ujj" = (
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/tavern)
@@ -31011,14 +31021,6 @@
 "ylC" = (
 /turf/closed/mineral/rogue,
 /area/rogue/under/town/basement)
-"ylD" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4
-	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/church/chapel)
 "ylJ" = (
 /obj/machinery/light/roguestreet/orange{
 	dir = 1
@@ -323777,7 +323779,7 @@ bHc
 fEb
 fAs
 bGd
-gnv
+fwR
 eDY
 vQP
 fEb
@@ -422247,9 +422249,9 @@ wAm
 hKU
 xWq
 jqj
-rOV
+ujc
 swm
-fwR
+gnv
 lij
 xWq
 lug
@@ -422649,9 +422651,9 @@ ikk
 dtv
 etz
 bUY
-rOV
+ujc
 swm
-fwR
+gnv
 jlM
 bUY
 mSb
@@ -423051,9 +423053,9 @@ roY
 iEY
 gLF
 pmj
-rOV
+ujc
 swm
-fwR
+gnv
 mSb
 ijl
 gsJ
@@ -423453,9 +423455,9 @@ ofY
 ofY
 ofY
 ofY
-rOV
+ujc
 swm
-fwR
+gnv
 ofY
 ofY
 ofY
@@ -423855,9 +423857,9 @@ tCM
 lPZ
 msg
 tCM
-rOV
+ujc
 swm
-fwR
+gnv
 hjK
 tCM
 lPZ
@@ -424257,9 +424259,9 @@ tCM
 lPZ
 msg
 tCM
-rOV
+ujc
 lPU
-fwR
+gnv
 hjK
 tCM
 lPZ
@@ -424659,9 +424661,9 @@ tCM
 lPZ
 msg
 tCM
-rOV
+ujc
 swm
-fwR
+gnv
 hjK
 tCM
 lPZ
@@ -425061,9 +425063,9 @@ tCM
 lPZ
 msg
 tCM
-rOV
+ujc
 swm
-fwR
+gnv
 hjK
 tCM
 lPZ
@@ -425458,20 +425460,20 @@ fZJ
 fZJ
 dDJ
 gZt
-ylD
-ylD
-ylD
-ylD
-ylD
-rOV
+jTt
+jTt
+jTt
+jTt
+jTt
+ujc
 swm
-fwR
-ylD
-ylD
-ylD
-ylD
-ylD
-ylD
+gnv
+jTt
+jTt
+jTt
+jTt
+jTt
+jTt
 gux
 qrN
 qrN
