@@ -573,6 +573,12 @@
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 400
 
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute
+	name = "psydonian barbute"
+	desc = "A barbute styled with Psydonian Imagery."
+	icon_state = "psydonbarbute"
+	item_state = "psydonbarbute"
+
 /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	name = "savoyard"
 	desc = "A helmet with a menacing visage."
@@ -732,6 +738,12 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
+
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
+	name ="otavan armet"
+	desc = "Headwear commonly worn by Templars in service to the Inquisition of Otava. PSYDON Endures."
+	icon_state = "psydonarmet"
+	item_state = "psydonarmet"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 	name = "noc helmet"
@@ -934,7 +946,7 @@
 /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	name = "volf helmet"
-	desc = "Bandit initiation rites involve the slaying of a volf."
+	desc = "A leather helmet fashioned from a volf's pelt."
 	body_parts_covered = HEAD|HAIR|EARS
 	icon_state = "volfhead"
 	item_state = "volfhead"

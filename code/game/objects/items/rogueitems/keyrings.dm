@@ -270,7 +270,7 @@
 	keys = list(/obj/item/roguekey/confession, /obj/item/roguekey/church, /obj/item/roguekey/graveyard)
 
 /obj/item/storage/keyring/puritan
-	keys = list(/obj/item/roguekey/puritan, /obj/item/roguekey/manor, /obj/item/roguekey/dungeon, /obj/item/roguekey/confession, /obj/item/roguekey/church, /obj/item/roguekey/sheriff)
+	keys = list(/obj/item/roguekey/puritan, /obj/item/roguekey/confession, /obj/item/roguekey/church)
 
 /obj/item/storage/keyring/shepherd
 	keys = list(/obj/item/roguekey/confession, /obj/item/roguekey/church)

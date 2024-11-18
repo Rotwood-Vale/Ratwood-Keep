@@ -55,6 +55,7 @@
 		H.change_stat("speed", 1)
 		H.change_stat("intelligence", 1)
 		H.change_stat("fortune", 1)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/secular)
 		if(prob(33))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 		else if(prob(33))

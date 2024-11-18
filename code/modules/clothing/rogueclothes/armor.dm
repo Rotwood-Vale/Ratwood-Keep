@@ -77,6 +77,13 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	smelt_bar_num = 2
 
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/fluted
+	name = "fluted hauberk"
+	desc = "A steel maille, of a pattern popularized by Otavan templars."
+	icon_state = "flutedhauberk"
+	item_state = "flutedhauberk"
+
+
 /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 	name = "chainmail bikini"
 	desc = "Not very comfortable against the skin."
