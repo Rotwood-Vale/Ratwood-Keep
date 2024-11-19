@@ -51,15 +51,17 @@
 /datum/skill/combat/swords
 	name = "Sword-fighting"
 	dreams = list(
-		"...your heart beats wildly as your swords clash. You parry your opponent's strike and riposte, finishing them off with a decisive slash...",
-		"...a shining length of ivory steel. A token. A symbol. More than just a weapon. Blood runs thick in the wash-bin. Sparks fly from the grindstone. You maintain the blade and it maintains your honour..."
+		"...your heavy blade swings in a wide arc, cleaving through the air with a roar. Each landed strike hits with bone shattering force. Your opponent's shield crumples under the weight, and your blade finds its mark - crushing through armor, flesh, and will alike...",
+		"...a shining length of ivory steel. A token. A symbol. More than just a weapon. Blood runs thick in the wash-bin. Sparks fly from the grindstone. You maintain the blade and it maintains your honour...",
+		"...the rapier dances in your hand, a whisper of steel cutting through the air. Every thrust is precise, every parry and riposte flowing in perfect rhythm, simply awaiting the moment to seal your their fate with a single, fatal strike..."
 	)
 
 /datum/skill/combat/polearms
 	name = "Polearms"
 	dreams = list(
 	"...the pale volf snaps its jaws, but to no avail. Your weapon has the superior reach and you jab at it with precision until it bleeds and retreats back into the woods...",
-	"...the only thing that makes the humid, fetid bog tolerable is your trusty polearm. You hook it behind some rocks and pull yourself from the mire and press onward..."
+	"...armed with your trusty staff, you hike through the muck and mire with ease. It serves not only as a weapon but a tool, its sturdy length offering support as you press onward, unfazed by the thick, unrelenting muck...",
+	"...the billhook hums through the air, its hooked blade striking with chilling precision. It rends through chain and leather. With each twist, your strikes become inevitable, seamless. A relentless dance of destruction, merciless and fluid..."
 	)
 
 /datum/skill/combat/maces
@@ -84,8 +86,8 @@
 /datum/skill/combat/whipsflails
 	name = "Whips & Flails"
 	dreams = list(
-	"...the sing-song of your flail cleaves through the air and rouses something primal in the air itself, but the down swing of your hand quickly puts it to sleep...",
-	"...with a whistle and a snap and a crack, another bruise is left on flesh. With a sharp pull and crack of the whip, you strike down again. You will tame them..."
+	"...the sing-song of your flail cleaves through the air and rouses something primal, but the down swing of your hand quickly puts it to sleep...",
+	"...with a whistle and a snap and a crack, another bruise is left on flesh. With a sharp pull, you strike down again. They will be tamed..."
 	)
 
 /datum/skill/combat/bows
@@ -114,7 +116,7 @@
 	name = "Unarmed"
 	dreams = list(
 	"...the wet and harsh sound of skin against bone and clattering teeth reaches your ears before your mind processes what just happened. You got knocked out with a mighty blow to the jaw...",
-	"...your nails are claws, your hands are weapons. A silent watcher in pale plate armor nods approvingly at your ferocity..."
+	"...your nails are claws, your hands are weapons. A silent watcher in pale plate armor nods with approval at your ferocity..."
 	)
 
 /datum/skill/combat/shields
