@@ -6,7 +6,7 @@
 	total_positions = 1//From 2
 	spawn_positions = 1//From 2
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/goblinp)
+	allowed_races = RACES_GOBLIN
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	tutorial = "You're one of the camp cooks, in service to the Chief, your lord on this mortal plane. \
 	He's chosen you, out of many others, to prepare and service the camp when it comes to the culinary arts. \

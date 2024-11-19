@@ -50,7 +50,7 @@
 #define RACES_VERY_SHUNNED \
 	/datum/species/halforc
 
-#define RACES_DESPISED \
+#define RACES_GOBLIN \
 	/datum/species/goblinp
 
 #define RACES_SEELIE \
