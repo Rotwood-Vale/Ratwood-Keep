@@ -36,7 +36,7 @@
 
 	if(!istype(I, /obj/item/rogueweapon/hammer))
 		return
-	
+
 	var/input = (input(user, "What would you name this key?", "", "") as text)
 
 	if(!input)
@@ -58,7 +58,7 @@
 /obj/item/key_custom_blank/attackby(obj/item/I, mob/user, params)
 
 	if(!istype(I, /obj/item/rogueweapon/hammer))
-		return 
+		return
 
 	var/input = input(user, "What would you like to set the key ID to?", "", 0) as num
 
@@ -448,6 +448,13 @@
 	desc = "This key opens the keep armory."
 	icon_state = "spikekey"
 	lockid = "keep_armory"
+
+//grenchensnacker
+/obj/item/key/porta
+	name = "strange key"
+	desc = "Was this key enchanted by a wizard locksmith...?"//what is grenchensnacker.
+	icon_state = "eyekey"
+	lockid = "porta"
 
 //Goblins
 /obj/item/key/goblin
