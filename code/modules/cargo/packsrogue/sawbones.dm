@@ -16,7 +16,7 @@
 
 /datum/supply_pack/rogue/Sawbones/leather/studded
 	name = "Studded Leather Armor"
-	cost = 10
+	cost = 80
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/Sawbones/leather/Lhelmet
