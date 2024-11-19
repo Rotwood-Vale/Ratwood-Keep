@@ -9,6 +9,11 @@
 	cost = 50
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 
+/datum/supply_pack/rogue/Things/manapot
+	name = "Mana Potion"
+	cost = 50
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/manapot)
+
 /datum/supply_pack/rogue/Things/bandages
 	name = "Bandages"
 	cost = 40
@@ -16,8 +21,38 @@
 
 /datum/supply_pack/rogue/Things/backpack
 	name = "Backpack"
-	cost = 10
+	cost = 40
 	contains = list(/obj/item/storage/backpack/rogue/backpack)
+
+/datum/supply_pack/rogue/Things/satchel
+	name = "Satchel"
+	cost = 30
+	contains = list(/obj/item/storage/backpack/rogue/satchel)
+
+/datum/supply_pack/rogue/Things/pouch
+	name = "pouch"
+	cost = 20
+	contains = list(/obj/item/storage/belt/rogue/pouch)
+
+/datum/supply_pack/rogue/Things/belt
+	name = "Leather Belt"
+	cost = 20
+	contains = list(/obj/item/storage/belt/rogue/leather)
+
+/datum/supply_pack/rogue/Things/hood
+	name = "Shoulder Hood"
+	cost = 20
+	contains = list(/obj/item/clothing/head/roguetown/roguehood/random)
+
+/datum/supply_pack/rogue/Things/leatherpants
+	name = "Leather trousers"
+	cost = 40
+	contains = list(/obj/item/clothing/under/roguetown/trou/leather)
+
+/datum/supply_pack/rogue/Things/mask
+	name = "Steel Mask"
+	cost = 40
+	contains = list(/obj/item/clothing/mask/rogue/facemask/steel)
 
 /datum/supply_pack/rogue/Things/pinkpill
 	name = "Pink Pills"
@@ -28,6 +63,11 @@
 	name = "Chain"
 	cost = 50
 	contains = list(/obj/item/rope/chain)
+
+/datum/supply_pack/rogue/Things/rope
+	name = "Rope"
+	cost = 30
+	contains = list(/obj/item/rope)
 
 /datum/supply_pack/rogue/Things/needle
 	name = "Needle"
@@ -78,6 +118,21 @@
 	name = "Spice"
 	cost = 100
 	contains = list(/obj/item/reagent_containers/powder/spice)
+
+/datum/supply_pack/rogue/Things/foodgood
+	name = "Frybird & Tato"
+	cost = 100
+	contains = list(/obj/item/reagent_containers/food/snacks/rogue/frybirdtato/plated)
+
+/datum/supply_pack/rogue/Things/foodbad
+	name = "Dry Meat"
+	cost = 20
+	contains = list(/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette)
+
+/datum/supply_pack/rogue/Things/wine
+	name = "Wine"
+	cost = 100
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/wine)
 
 /datum/supply_pack/rogue/Things/hammer
 	name = "Hammer"

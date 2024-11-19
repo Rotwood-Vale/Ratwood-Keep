@@ -9,7 +9,6 @@
 	cost = 24
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
-
 /datum/supply_pack/rogue/Sawbones/leather
 	name = "Leather Armor"
 	cost = 50
@@ -25,12 +24,15 @@
 	cost = 24
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
-
 /datum/supply_pack/rogue/Sawbones/leather/Lbracers
 	name = "Leather bracers"
 	cost = 24
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
+/datum/supply_pack/rogue/Sawbones/leatherpantsadvanced
+	name = "hardened leather chausses"
+	cost = 80
+	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
 
 /datum/supply_pack/rogue/Sawbones/leather/surgery_bag
 	name = "Surgery Bag"

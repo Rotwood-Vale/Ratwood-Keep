@@ -25,10 +25,25 @@
 	cost = 24
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
+/datum/supply_pack/rogue/Knave/helmet/vhelmet
+	name = "volf Helmet"
+	cost = 80
+	contains = list(/obj/item/clothing/head/roguetown/helmet/volfplate)
+
+/datum/supply_pack/rogue/Knave/Bevor
+	name = "Bevor"
+	cost = 100
+	contains = (/obj/item/clothing/neck/roguetown/bervor)
+
 /datum/supply_pack/rogue/Knave/leather/Lbracers
 	name = "Leather bracers"
 	cost = 24
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
+
+/datum/supply_pack/rogue/Knave/leatherpantsadvanced
+	name = "hardened leather chausses"
+	cost = 80
+	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
 
 /datum/supply_pack/rogue/Knave/recurvebow
 	name = "Recurve Bow"
@@ -90,7 +105,6 @@
 	cost = 24
 	contains = list(/obj/item/ammo_holder/quiver)
 
-
 /datum/supply_pack/rogue/Knave/quivers/arrows
 	name = "Quiver of Arrows"
 	cost = 50
@@ -101,12 +115,10 @@
 	cost = 100
 	contains = list(/obj/item/ammo_holder/quiver/bolts)
 
-
 /datum/supply_pack/rogue/Knave/Parrows
 	name = "Poisoned Arrow"
 	cost = 14
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/poison)
-
 
 /datum/supply_pack/rogue/Knave/Mancatcher
 	name = "Mancatcher"

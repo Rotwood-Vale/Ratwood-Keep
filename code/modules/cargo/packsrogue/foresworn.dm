@@ -10,12 +10,10 @@
 	cost = 50
 	contains = list(/obj/item/rogueweapon/sword/long/rider)
 
-
 /datum/supply_pack/rogue/foresworn/driderhead
 	name = "Desert Rider headdress"
 	cost = 24
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
-
 
 /datum/supply_pack/rogue/foresworn/grenzelhofthat
 	name = "Grenzel Hat"
@@ -47,7 +45,6 @@
 	cost = 80
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
-
 /datum/supply_pack/rogue/foresworn/chaingauntlets
 	name = "Steel Chain Gauntlets"
 	cost = 80
@@ -57,7 +54,6 @@
 	name = "Steel Boots"
 	cost = 80
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
-
 
 /datum/supply_pack/rogue/foresworn/hauberk
 	name = "Hauberk"
@@ -84,24 +80,20 @@
 	cost = 100
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced)
 
-
 /datum/supply_pack/rogue/foresworn/steelcuirass
 	name = "Blacksteel Cuirass"
 	cost = 250
 	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass)
-
 
 /datum/supply_pack/rogue/foresworn/Bevor
 	name = "Bevor"
 	cost = 100
 	contains = (/obj/item/clothing/neck/roguetown/bervor)
 
-
 /datum/supply_pack/rogue/foresworn/gorget
 	name = "Gorget"
 	cost = 100
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
-
 
 /datum/supply_pack/rogue/foresworn/kettle
 	name = "Kettle Helmet"
@@ -113,12 +105,10 @@
 	cost = 100
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
-
 /datum/supply_pack/rogue/foresworn/visoredsallet
 	name = "Visored Sallet"
 	cost = 150
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
-
 
 /datum/supply_pack/rogue/foresworn/ssword
 	name = "Steel Sword"
@@ -134,7 +124,6 @@
 	name = "Shalal Saber"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/sword/long/marlin)
-
 
 /datum/supply_pack/rogue/foresworn/billhook
 	name = "Billhook"
