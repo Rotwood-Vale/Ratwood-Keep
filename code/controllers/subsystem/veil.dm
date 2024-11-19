@@ -40,4 +40,5 @@ GLOBAL_VAR_INIT(veil_tolls, 0)
 	if(GLOB.veil_tolls < MINIMUM_VEIL_TOLLS)
 		for(var/obj/effect/landmark/veil/toll/L in GLOB.landmarks_list)
 			new /obj/item/veil/toll/tracked(L.loc)
+			shuffle(GLOB.veil_tolls)	// avoid placing all tolls in the same landmark
 			break //only one
