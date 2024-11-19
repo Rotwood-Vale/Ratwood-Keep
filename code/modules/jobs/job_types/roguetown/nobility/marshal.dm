@@ -39,7 +39,7 @@
 	beltl = /obj/item/keyring/marshal
 	beltr = /obj/item/rogueweapon/mace
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/marshal
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)

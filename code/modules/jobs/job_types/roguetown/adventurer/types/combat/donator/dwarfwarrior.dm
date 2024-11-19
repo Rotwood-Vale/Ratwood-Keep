@@ -26,7 +26,7 @@
 	if(prob(25))
 		gloves = /obj/item/clothing/gloves/roguetown/chain
 	else
-		gloves = /obj/item/clothing/gloves/roguetown/angle
+		gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	if(prob(50))
 		beltl = /obj/item/rogueweapon/mace/steel
 	else if(prob(50))

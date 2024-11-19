@@ -80,7 +80,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			gloves = /obj/item/clothing/gloves/roguetown/leather/black
 			if(prob(15))
-				gloves = /obj/item/clothing/gloves/roguetown/angle
+				gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 			belt = /obj/item/storage/belt/rogue/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/cape/black
