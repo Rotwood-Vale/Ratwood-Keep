@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/handgonne
 	name = "handgonne"
 	desc = "A gunpowder weapon that shoots an armor piercing metal ball."
-	icon = 'icons/weapons/handgonne.dmi'
+	icon = 'icons/roguetown/weapons/handgonne.dmi'
 	icon_state = "handgonne"
 	item_state = "handgonne"
 	force = 10

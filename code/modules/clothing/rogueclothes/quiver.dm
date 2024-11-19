@@ -30,7 +30,7 @@
 	item_state = "pouch"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	max_storage = 10
-	ammo_type = list(/obj/item/ammo_casing/caseless/rogue/bullet)
+	ammo_type = list(/obj/item/ammo_casing/caseless/runelock)
 
 /obj/item/ammo_holder/attackby(obj/A, loc, params)
 	for(var/i in ammo_type)
@@ -90,8 +90,8 @@
 /obj/item/ammo_holder/bullet/runed/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/ammo_casing/caseless/rogue/bullet/A = new()
-		ammo += A
+		var/obj/item/ammo_casing/caseless/runelock/R = new()
+		ammo += R
 	update_icon()
 /*
 /obj/item/ammo_holder/Parrows/Initialize()
