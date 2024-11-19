@@ -26346,7 +26346,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "uyQ" = (
-/obj/structure/carriage,
+/obj/structure/veil/carriage,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "uza" = (
