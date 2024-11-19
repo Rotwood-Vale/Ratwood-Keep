@@ -70,6 +70,9 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 	/// A lazylist of REFs to all mobs which have a radial open currently
 	var/list/current_operators
 
+	///this is our held_cargo
+	var/list/held_cargo = list()
+
 /obj/structure/industrial_lift/Initialize(mapload)
 	. = ..()
 	GLOB.lifts.Add(src)
@@ -126,6 +129,9 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 	changed_gliders -= potential_rider
 
 	UnregisterSignal(potential_rider, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE))
+
+	if(!length(held_cargo))
+		SEND_SIGNAL(src, COMSIG_TRAM_EMPTY)
 
 /obj/structure/industrial_lift/proc/AddItemOnLift(datum/source, atom/movable/new_lift_contents)
 	SIGNAL_HANDLER
@@ -356,68 +362,69 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 		///potentially finds a spot to throw the victim at for daring to be hit by a tram. is null if we havent found anything to throw
 		var/atom/throw_target
 
-		for(var/turf/dest_turf as anything in entering_locs)
-			///handles any special interactions objects could have with the lift/tram, handled on the item itself
-			SEND_SIGNAL(dest_turf, COMSIG_TURF_INDUSTRIAL_LIFT_ENTER, things_to_move)
+		if(!lift_master_datum.ignore_pathing_obstacles)
+			for(var/turf/dest_turf as anything in entering_locs)
+				///handles any special interactions objects could have with the lift/tram, handled on the item itself
+				SEND_SIGNAL(dest_turf, COMSIG_TURF_INDUSTRIAL_LIFT_ENTER, things_to_move)
 
-			if(iswallturf(dest_turf))
-				var/turf/closed/wall/collided_wall = dest_turf
-				do_sparks(2, FALSE, collided_wall)
-				collided_wall.dismantle_wall(devastated = TRUE)
+				if(iswallturf(dest_turf))
+					var/turf/closed/wall/collided_wall = dest_turf
+					do_sparks(2, FALSE, collided_wall)
+					collided_wall.dismantle_wall(devastated = TRUE)
 
-			if(ismineralturf(dest_turf))
-				var/turf/closed/mineral/dest_mineral_turf = dest_turf
-				dest_mineral_turf.gets_drilled(give_exp = FALSE)
+				if(ismineralturf(dest_turf))
+					var/turf/closed/mineral/dest_mineral_turf = dest_turf
+					dest_mineral_turf.gets_drilled(give_exp = FALSE)
 
-			for(var/obj/structure/victim_structure in dest_turf.contents)
-				if(QDELING(victim_structure))
-					continue
-				if(victim_structure.layer >= LOW_OBJ_LAYER)
+				for(var/obj/structure/victim_structure in dest_turf.contents)
+					if(QDELING(victim_structure))
+						continue
+					if(victim_structure.layer >= LOW_OBJ_LAYER)
 
-					if(victim_structure.anchored && initial(victim_structure.anchored) == TRUE)
-						visible_message(span_danger("[src] smashes through [victim_structure]!"))
-						victim_structure.deconstruct(FALSE)
+						if(victim_structure.anchored && initial(victim_structure.anchored) == TRUE)
+							visible_message(span_danger("[src] smashes through [victim_structure]!"))
+							victim_structure.deconstruct(FALSE)
 
+						else
+							if(!throw_target)
+								throw_target = get_edge_target_turf(src, turn(going, pick(45, -45)))
+							visible_message(span_danger("[src] violently rams [victim_structure] out of the way!"))
+							victim_structure.anchored = FALSE
+							victim_structure.take_damage(rand(20, 25) * collision_lethality)
+							victim_structure.throw_at(throw_target, 200 * collision_lethality, 4 * collision_lethality)
+
+				for(var/obj/machinery/victim_machine in dest_turf.contents)
+					if(QDELING(victim_machine))
+						continue
+					if(victim_machine.layer >= LOW_OBJ_LAYER) //avoids stuff that is probably flush with the ground
+						visible_message(span_danger("[src] smashes through [victim_machine]!"))
+						qdel(victim_machine)
+
+				for(var/mob/living/collided in dest_turf.contents)
+					var/damage_multiplier = collided.maxHealth * 0.01
+					to_chat(collided, span_userdanger("[src] collides into you!"))
+					var/damage = 0
+					if(prob(15)) //sorry buddy, luck wasn't on your side
+						damage = 29 * collision_lethality * damage_multiplier
 					else
-						if(!throw_target)
-							throw_target = get_edge_target_turf(src, turn(going, pick(45, -45)))
-						visible_message(span_danger("[src] violently rams [victim_structure] out of the way!"))
-						victim_structure.anchored = FALSE
-						victim_structure.take_damage(rand(20, 25) * collision_lethality)
-						victim_structure.throw_at(throw_target, 200 * collision_lethality, 4 * collision_lethality)
+						damage = rand(7, 21) * collision_lethality * damage_multiplier
+					collided.apply_damage(2 * damage, BRUTE, BODY_ZONE_HEAD)
+					collided.apply_damage(3 * damage, BRUTE, BODY_ZONE_CHEST)
+					collided.apply_damage(0.5 * damage, BRUTE, BODY_ZONE_L_LEG)
+					collided.apply_damage(0.5 * damage, BRUTE, BODY_ZONE_R_LEG)
+					collided.apply_damage(0.5 * damage, BRUTE, BODY_ZONE_L_ARM)
+					collided.apply_damage(0.5 * damage, BRUTE, BODY_ZONE_R_ARM)
+					log_combat(src, collided, "collided with")
 
-			for(var/obj/machinery/victim_machine in dest_turf.contents)
-				if(QDELING(victim_machine))
-					continue
-				if(victim_machine.layer >= LOW_OBJ_LAYER) //avoids stuff that is probably flush with the ground
-					visible_message(span_danger("[src] smashes through [victim_machine]!"))
-					qdel(victim_machine)
+					if(QDELETED(collided)) //in case it was a mob that dels on death
+						continue
+					if(!throw_target)
+						throw_target = get_edge_target_turf(src, turn(going, pick(45, -45)))
 
-			for(var/mob/living/collided in dest_turf.contents)
-				var/damage_multiplier = collided.maxHealth * 0.01
-				to_chat(collided, span_userdanger("[src] collides into you!"))
-				var/damage = 0
-				if(prob(15)) //sorry buddy, luck wasn't on your side
-					damage = 29 * collision_lethality * damage_multiplier
-				else
-					damage = rand(7, 21) * collision_lethality * damage_multiplier
-				collided.apply_damage(2 * damage, BRUTE, BODY_ZONE_HEAD)
-				collided.apply_damage(3 * damage, BRUTE, BODY_ZONE_CHEST)
-				collided.apply_damage(0.5 * damage, BRUTE, BODY_ZONE_L_LEG)
-				collided.apply_damage(0.5 * damage, BRUTE, BODY_ZONE_R_LEG)
-				collided.apply_damage(0.5 * damage, BRUTE, BODY_ZONE_L_ARM)
-				collided.apply_damage(0.5 * damage, BRUTE, BODY_ZONE_R_ARM)
-				log_combat(src, collided, "collided with")
+					var/turf/T = get_turf(collided)
+					T.add_mob_blood(collided)
 
-				if(QDELETED(collided)) //in case it was a mob that dels on death
-					continue
-				if(!throw_target)
-					throw_target = get_edge_target_turf(src, turn(going, pick(45, -45)))
-
-				var/turf/T = get_turf(collided)
-				T.add_mob_blood(collided)
-
-				collided.throw_at()
+					collided.throw_at()
 
 	unset_movement_registrations(exited_locs)
 	group_move(things_to_move, going)
@@ -766,7 +773,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 	//the following are only used to give to the lift_master datum when it's first created
 
 	///decisecond delay between horizontal movements. cannot make the tram move faster than 1 movement per world.tick_lag. only used to give to the lift_master
-	var/horizontal_speed = 0.5
+	var/horizontal_speed = 4
 
 	create_multitile_platform = TRUE
 

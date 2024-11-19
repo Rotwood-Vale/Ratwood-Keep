@@ -27,6 +27,11 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 
 	///if true, the lift cannot be manually moved.
 	var/controls_locked = FALSE
+	///this is so cursed
+	var/ignore_pathing_obstacles = FALSE
+	var/list/objects_pre_alpha = list()
+		///this is our held_cargo
+	var/list/held_cargo = list()
 
 /datum/lift_master/New(obj/structure/industrial_lift/lift_platform)
 	lift_id = lift_platform.lift_id
@@ -563,3 +568,32 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 		lift_to_reset.reset_contents(consider_anything_past, foreign_objects, foreign_non_player_mobs, consider_player_mobs)
 
 	return TRUE
+
+/datum/lift_master/tram/proc/hide_tram()
+	ignore_pathing_obstacles = TRUE
+	for(var/obj/structure/industrial_lift/tram/platform in lift_platforms)
+		platform.horizontal_speed = 0.1
+		base_horizontal_speed = 0.1
+		horizontal_speed = 0.1
+		platform.obj_flags &= ~BLOCK_Z_OUT_DOWN
+		platform.alpha = 0
+		for(var/atom/movable/movable in platform.lift_load)
+			objects_pre_alpha |= movable
+			objects_pre_alpha[movable] = movable.alpha
+			ADD_TRAIT(movable, TRAIT_I_AM_INVISIBLE_ON_A_BOAT, REF(src))
+			movable.density = FALSE
+			movable.alpha = 0
+
+/datum/lift_master/tram/proc/show_tram()
+	ignore_pathing_obstacles = FALSE
+	for(var/obj/structure/industrial_lift/tram/platform in lift_platforms)
+		platform.horizontal_speed = 4
+		base_horizontal_speed = 4
+		horizontal_speed = 4
+		platform.obj_flags |= BLOCK_Z_OUT_DOWN
+		platform.alpha = 255
+		for(var/atom/movable/movable in objects_pre_alpha)
+			movable.alpha = objects_pre_alpha[movable]
+			REMOVE_TRAIT(movable, TRAIT_I_AM_INVISIBLE_ON_A_BOAT, REF(src))
+			objects_pre_alpha -= movable
+			movable.density = initial(movable.density)

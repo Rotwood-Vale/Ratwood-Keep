@@ -13,3 +13,7 @@
 #define COMSIG_LIFT_SET_DIRECTION "lift_set_direction"
 
 #define COMSIG_TRAM_REACHED_PLATFORM "tram_reach_platform"
+
+#define COMSIG_TRAM_EMPTY "tram_empty"
+
+#define COMSIG_DISPATCH_CARGO "dispatch_cargo_boat"

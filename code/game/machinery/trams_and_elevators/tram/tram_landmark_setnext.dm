@@ -28,6 +28,7 @@
 	tram.tram_travel(destination_platform)
 	tram.callback_platform = destination_platform
 
+	return TRUE
 
 /obj/effect/landmark/tram/queued_path/debug_1
 	specific_lift_id = DEBUG_LIFT_ID

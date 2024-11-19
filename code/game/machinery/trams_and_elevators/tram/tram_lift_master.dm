@@ -19,10 +19,10 @@
 
 	///decisecond delay between horizontal movement. cannot make the tram move faster than 1 movement per world.tick_lag.
 	///this var is poorly named its actually horizontal movement delay but whatever.
-	var/horizontal_speed = 0.5
+	var/horizontal_speed = 4
 
 	///version of horizontal_speed that gets set in init and is considered our base speed if our lift gets slowed down
-	var/base_horizontal_speed = 0.5
+	var/base_horizontal_speed = 4
 
 	///the world.time we should next move at. in case our speed is set to less than 1 movement per tick
 	var/next_move = INFINITY
@@ -139,8 +139,9 @@
 
 /datum/lift_master/tram/process(seconds_per_tick)
 	if(!travel_distance)
-		addtimer(CALLBACK(src, PROC_REF(unlock_controls)), 2 SECONDS)
-		SEND_SIGNAL(callback_platform, COMSIG_TRAM_REACHED_PLATFORM, src)
+		addtimer(CALLBACK(src, PROC_REF(unlock_controls), idle_platform), 2 SECONDS)
+		if(SEND_SIGNAL(callback_platform, COMSIG_TRAM_REACHED_PLATFORM, src))
+			return
 		return PROCESS_KILL
 	else if(world.time >= next_move)
 		var/start_time = TICK_USAGE
@@ -180,7 +181,9 @@
  * at a location before users are allowed to interact with the tram console again.
  * Tram finds its location at this point before fully unlocking controls to the user.
  */
-/datum/lift_master/tram/proc/unlock_controls()
+/datum/lift_master/tram/proc/unlock_controls(obj/effect/landmark/tram/tram_mark)
+	if(idle_platform != tram_mark)
+		return
 	set_travelling(FALSE)
 	set_controls(LIFT_PLATFORM_UNLOCKED)
 	for(var/obj/structure/industrial_lift/tram/tram_part as anything in lift_platforms) //only thing everyone needs to know is the new location.
