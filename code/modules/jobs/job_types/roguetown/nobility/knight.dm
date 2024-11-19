@@ -112,12 +112,14 @@
 	switch(weapon_choice)
 		if("Zweihander") 	// A two-handed sword, but not the strongest one
 			r_hand = /obj/item/rogueweapon/greatsword/zwei
+			backl = /obj/item/gwstrap
 		if("Great Mace")	// Great-mace, 2-handed
 			r_hand = /obj/item/rogueweapon/mace/goden/steel
 		if("Battle Axe")	// Why did heavy knights get a mace+shield combo if they're supposed to be the two-hander guys? Gives them a greataxe instead.
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
 		if("Estoc")
 			r_hand = /obj/item/rogueweapon/estoc
+			backl = /obj/item/gwstrap
 
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate		//this is actually steel half-plate, full plate is plate/full. given because they are SLOW.
@@ -236,7 +238,7 @@
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltr = /obj/item/quiver/bolts
 		
-		if ("Spear + Shield")
+		if("Spear + Shield")
 			r_hand = /obj/item/rogueweapon/spear
 			backl = /obj/item/rogueweapon/shield/tower/metal
 

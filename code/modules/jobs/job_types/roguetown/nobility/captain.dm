@@ -34,11 +34,6 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	cloak = /obj/item/clothing/cloak/stabard/guardhood
-	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(
-		/obj/item/storage/keyring/sheriff = 1,
-		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
-		)
 
 /datum/job/roguetown/captain/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -78,6 +73,11 @@
 /datum/outfit/job/roguetown/captain/infantry/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(
+		/obj/item/storage/keyring/sheriff = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
+		)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
@@ -112,25 +112,31 @@
 		"Great Mace",
 		"Battle Axe",
 		"Estoc",
-		"Bastard Sword",
-		"Flail",
+		"Bastard Sword & Shield",
+		"Flail & Shield",
+		"Sabre & Shield",
 		)
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Zweihander")
 			r_hand = /obj/item/rogueweapon/greatsword/zwei
+			backl = /obj/item/gwstrap
 		if("Great Mace")
 			r_hand = /obj/item/rogueweapon/mace/goden/steel
 		if("Battle Axe")
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
 		if("Estoc")
 			r_hand = /obj/item/rogueweapon/estoc
-		if("Bastard Sword")
+			backl = /obj/item/gwstrap
+		if("Bastard Sword & Shield")
 			beltr = /obj/item/rogueweapon/sword/long
 			backl = /obj/item/rogueweapon/shield/tower/metal
-		if("Flail")
+		if("Flail & Shield")
 			beltr = /obj/item/rogueweapon/flail/sflail
+			backl = /obj/item/rogueweapon/shield/tower/metal
+		if("Sabre & Shield")
+			beltr = /obj/item/rogueweapon/sword/sabre
 			backl = /obj/item/rogueweapon/shield/tower/metal
 
 /datum/advclass/captain/cavalry
@@ -144,6 +150,11 @@
 /datum/outfit/job/roguetown/captain/cavalry/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(
+		/obj/item/storage/keyring/sheriff = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
+		)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
@@ -174,23 +185,27 @@
 	H.verbs |= /mob/proc/haltyell
 	H.adjust_blindness(-3)
 	var/weapons = list(
-		"Sword + Recurve Bow",
-		"Mace + Crossbow",
-		"Spear + Shield",
+		"Sword & Recurve Bow",
+		"Mace & Crossbow",
+		"Spear & Shield",
+		"Sabre & Shield",
 		)
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("Sword + Recurve Bow")
+		if("Sword & Recurve Bow")
 			r_hand = /obj/item/rogueweapon/sword
 			beltr = /obj/item/quiver/arrows
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-		if("Mace + Crossbow")
+		if("Mace & Crossbow")
 			r_hand = /obj/item/rogueweapon/mace
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltr = /obj/item/quiver/bolts
-		if ("Spear + Shield")
+		if("Spear & Shield")
 			r_hand = /obj/item/rogueweapon/spear
+			backl = /obj/item/rogueweapon/shield/tower/metal
+		if("Sabre & Shield")
+			beltr = /obj/item/rogueweapon/sword/sabre
 			backl = /obj/item/rogueweapon/shield/tower/metal
 
 /obj/effect/proc_holder/spell/self/convertrole

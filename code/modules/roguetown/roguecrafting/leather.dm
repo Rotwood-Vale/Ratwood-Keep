@@ -109,6 +109,12 @@
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 10
 
+/datum/crafting_recipe/roguetown/leather/volfhelm
+	name = "volf helm"
+	result = list(/obj/item/clothing/head/roguetown/helmet/leather/volfhelm)
+	reqs = list(/obj/item/natural/hide = 3, /obj/item/natural/fur = 2,)
+	sellprice = 20
+
 /datum/crafting_recipe/roguetown/leather/heavy_leather_pants
 	name = "heavy leather pants"
 	result = list(/obj/item/clothing/under/roguetown/heavy_leather_pants)
