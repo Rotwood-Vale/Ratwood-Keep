@@ -124,9 +124,6 @@
 	var/datum/browser/popup = new(user, "HOARDMASTER", "", 370, 600)
 	popup.set_content(contents)
 	popup.open()
-	sleep(600)
-	to_chat(user, "<br><font color=red>I appreciate the triumph, now, make sure to survive and come back to give me more.</font>") //A very temp fix for a bug, fix this ASAP
-	popup.close()
 
 /obj/structure/roguemachine/hoardbarrier //Blocks sprite locations
 	name = ""
