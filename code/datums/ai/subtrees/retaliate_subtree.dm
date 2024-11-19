@@ -44,6 +44,13 @@
 		finish_action(controller, succeeded = FALSE)
 		return
 
+	for(var/mob/living/living_target in enemies_list)
+		if(!living_target.rogue_sneaking)
+			continue
+		var/extra_chance = (living_mob.health <= living_mob.maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
+		if (!living_mob.npc_detect_sneak(living_target, extra_chance))
+			enemies_list -= living_target
+
 	var/atom/new_target = pick_final_target(controller, enemies_list)
 	controller.set_blackboard_key(target_key, new_target)
 
