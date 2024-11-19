@@ -147,15 +147,13 @@
 				user.changeNext_move(CLICK_CD_MELEE)
 				var/list/L = list()
 				var/message = "I fill [C] from [src]."
+				L[water_reagent] = 100
+				C.reagents.add_reagent_list(L)
+				to_chat(user, span_notice(message))
 				// If the user is filling a water purifier and the water isn't already clean...
 				if (istype(C, /obj/item/reagent_containers/glass/bottle/waterskin/purifier) && water_reagent != water_reagent_purified)
 					var/obj/item/reagent_containers/glass/bottle/waterskin/purifier/P = C
-					L[water_reagent_purified] = 100
 					P.cleanwater(user)
-				else
-					L[water_reagent] = 100
-				C.reagents.add_reagent_list(L)
-				to_chat(user, span_notice(message))
 			return
 	. = ..()
 
