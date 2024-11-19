@@ -1,5 +1,5 @@
 /datum/advclass/woodcutter
-	name = "Woodworker"
+	name = "Woodcutter"
 	tutorial = "You are a woodworker, physically capable of falling any tree yet knowledgeable \
 	in the ways of bending wood to your will. With enough time, your only limit is your imagination."
 	allowed_sexes = list(MALE, FEMALE)
@@ -15,11 +15,10 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE) // Need to climb to build
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) // Need to climb to build
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 4, TRUE) 
+	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE) 
 	H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
