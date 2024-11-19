@@ -391,7 +391,7 @@ Works together with spawning an observer, noted above.
 	if(admin)
 		ghost = new /mob/dead/observer/admin(src)
 	else if(drawskip)
-		ghost = new /mob/dead/observer/rogue/nodraw(src)
+		ghost = new /mob/dead/observer/rogue/veil(src) //could runtime lets hope not
 	else
 		ghost = new /mob/dead/observer/rogue/veil(src)
 
