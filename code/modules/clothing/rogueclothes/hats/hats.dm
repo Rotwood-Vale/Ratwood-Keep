@@ -317,18 +317,6 @@
 	item_state = "chap_alt"
 	color = "#cf99e3"
 
-/obj/item/clothing/head/roguetown/chaperon/marshal
-	name = "chaperon hat"
-	desc = "A fancy hat worn by nobles."
-	icon_state = "chap_alt"
-	item_state = "chap_alt"
-	color = "#C0392B"
-
-/obj/item/clothing/head/roguetown/chaperon/councillor
-	icon_state = "chap_alt"
-	item_state = "chap_alt"
-	color = "#7dcea0"
-
 /obj/item/clothing/head/roguetown/chef
 	name = "chef's hat"
 	desc = "A hat which signifies one as well versed in the arts of cooking."
@@ -372,10 +360,11 @@
 	sewrepair = FALSE
 
 /obj/item/clothing/head/roguetown/crown/serpcrown
+	visual_replacement = /obj/item/clothing/head/roguetown/crown/fakecrown
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
-	SSroguemachine.crown = src
+	visual_replacement = /obj/item/clothing/head/roguetown/crown/fakecrown
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
 	src.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))

@@ -126,6 +126,7 @@
 		/datum/sprite_accessory/hair/head/bedhead2,
 		/datum/sprite_accessory/hair/head/bedhead3,
 		/datum/sprite_accessory/hair/head/bedheadlong,
+		/datum/sprite_accessory/hair/head/bedheadlongest,
 		/datum/sprite_accessory/hair/head/beehive,
 		/datum/sprite_accessory/hair/head/beehive2,
 		/datum/sprite_accessory/hair/head/bob,

@@ -545,7 +545,7 @@
 	var/broke = FALSE
 	var/datum/looping_sound/clockloop/soundloop
 	drag_slowdown = 3
-	metalizer_result = /obj/item/roguegear
+	metalizer_result = /obj/item/roguegear/bronze
 
 /obj/structure/fluff/clock/Initialize()
 	soundloop = new(list(src), FALSE)
@@ -615,7 +615,7 @@
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
 	var/broke = FALSE
 	pixel_y = 32
-	metalizer_result = /obj/item/roguegear
+	metalizer_result = /obj/item/roguegear/bronze
 
 /obj/structure/fluff/wallclock/Destroy()
 	if(soundloop)
@@ -933,7 +933,7 @@
 	icon_state = "evilidol"
 	icon = 'icons/roguetown/misc/structure.dmi'
 
-// What items the idol will accept 
+// What items the idol will accept
 	var/treasuretypes = list(
 		/obj/item/roguecoin,
 		/obj/item/roguegem,
@@ -953,9 +953,11 @@
 	)
 
 /obj/structure/fluff/statue/evil/attackby(obj/item/W, mob/user, params)
+	if(!HAS_TRAIT(user, TRAIT_COMMIE))
+		return
+	var/donatedamnt = W.get_real_price()
 	if(user.mind)
-		var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
-		if(B)
+		if(user)
 			if(W.sellprice <= 0)
 				to_chat(user, span_warning("This item is worthless."))
 				return
@@ -965,61 +967,16 @@
 					proceed_with_offer = TRUE
 					break
 			if(proceed_with_offer)
-				if(B.tri_amt >= 10)
-					to_chat(user, span_warning("The mouth doesn't open."))
-					return
-				B.contrib += W.get_real_price()
-				if(B.contrib >= 100)
-					B.tri_amt++
-					user.mind.adjust_triumphs(1)
-					B.contrib -= 100
-					var/I = list()
-					switch(B.tri_amt)
-						if(1)
-							I += /obj/item/reagent_containers/glass/bottle/rogue/healthpot
-							I += /obj/item/storage/backpack/rogue/backpack
-						if(2)
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/bomb
-						if(3)
-							I += /obj/item/clothing/suit/roguetown/armor/plate/scale
-						if(4)
-							I += /obj/item/clothing/neck/roguetown/bervor
-						if(5)
-							I += /obj/item/clothing/head/roguetown/helmet/horned
-						if(6)
-							I += /obj/item/reagent_containers/glass/bottle/rogue/healthpot
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/reagent_containers/powder/moondust
-							I += /obj/item/bomb
-						if(7)
-							I += /obj/item/clothing/shoes/roguetown/armor/steel
-						if(8)
-							I += /obj/item/clothing/gloves/roguetown/plate
-						if(9)
-							I += /obj/item/clothing/wrists/roguetown/bracers
-						if(10)
-							I += /obj/item/clothing/neck/roguetown/blkknight
-							message_admins("A Bandit [ADMIN_FLW(user)] has reached maximum contribution level 10.")
-							user.log_message("as Bandit reached maximum contribution level 10.", LOG_GAME)
-					if(length(I))
-						for(var/R in I)
-							var/obj/item/T = new R(user.loc)
-							T.sellprice = 0
-					I = list()
-					playsound(loc,'sound/items/carvgood.ogg', 50, TRUE)
-				else
-					playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
-				playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
-				if(istype(W, /obj/item/clothing/head/roguetown/crown/serpcrown)) // duplicate check here to notify admins and disable a second crown sale
-					message_admins("A Bandit [ADMIN_FLW(user)] has offered the Crown of Rockhill to Matthios.")
-					user.log_message("as Bandit offered the Crown of Rockhill to Matthios. (THRONE)", LOG_GAME)
-					treasuretypes = treasuretypes - /obj/item/clothing/head/roguetown/crown/serpcrown
-					SSroguemachine.crown = null //Avoid keeping an invalid reference to the crown.
+				playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
 				qdel(W)
-				return
+				for(var/mob/player in GLOB.player_list)
+					if(player.mind)
+						if(player.mind.has_antag_datum(/datum/antagonist/bandit))
+							var/datum/antagonist/bandit/bandit_players = player.mind.has_antag_datum(/datum/antagonist/bandit)
+							bandit_players.favor += donatedamnt
+							bandit_players.totaldonated += donatedamnt
+							to_chat(player, ("<font color='yellow'>[user.name] donates [donatedamnt] to the shrine! You now have [bandit_players.favor] favor.</font>"))
+
 			else
 				to_chat(user, span_warning("This item isn't a good offering."))
 				return
@@ -1296,7 +1253,7 @@
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "headstake"
 	density = FALSE
-	anchored = TRUE	
+	anchored = TRUE
 	dir = SOUTH
 	var/obj/item/grown/log/tree/stake/stake
 	var/obj/item/bodypart/head/victim
@@ -1310,7 +1267,7 @@
 	stake = locate(/obj/item/grown/log/tree/stake) in parts_list
 
 ///obj/structure/fluff/headstake/Initialize()
-//	. = ..()	
+//	. = ..()
 
 /obj/structure/fluff/headstake/OnCrafted(dirin, user)
 	dir = SOUTH

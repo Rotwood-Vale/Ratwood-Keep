@@ -26,9 +26,8 @@
 /datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/heir
 		shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/keyring/royal
@@ -55,13 +54,11 @@
 			H.change_stat("intelligence", 2)
 
 	else
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
 		beltl = /obj/item/keyring/royal
-		head = /obj/item/clothing/head/roguetown/hennin
-		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/velvetdress
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/heiress
+		shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)

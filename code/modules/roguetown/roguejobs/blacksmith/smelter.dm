@@ -126,6 +126,7 @@
 
 					if(steelalloy == 7)
 						testing("STEEL ALLOYED")
+						maxore = 3 // Coal no longer turns to steel
 						alloy = /obj/item/ingot/steel
 					else if(bronzealloy == 7)
 						testing("BRONZE ALLOYED")
@@ -150,6 +151,7 @@
 								var/obj/item/R = new I.smeltresult(src)
 								ore += R
 								qdel(I)
+					maxore = initial(maxore)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("[src] is finished."))
 					cooking = 31
