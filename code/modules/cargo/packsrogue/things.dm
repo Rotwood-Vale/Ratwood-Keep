@@ -51,7 +51,7 @@
 
 /datum/supply_pack/rogue/Things/Lamp
 	name = "Lamptern"
-	cost = 0
+	cost = 50
 	contains = list(/obj/item/flashlight/flare/torch/lantern)
 
 /datum/supply_pack/rogue/Things/westleach
