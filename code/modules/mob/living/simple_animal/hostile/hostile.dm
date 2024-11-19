@@ -294,10 +294,6 @@
 		LoseTarget()
 		return 0
 	if(target in possible_targets)
-//		var/turf/T = get_turf(src)
-//		if(target.z != T.z)
-//			LoseTarget()
-//			return 0
 		var/target_distance = get_dist(targets_from,target)
 		if(ranged) //We ranged? Shoot at em
 			if(!target.Adjacent(targets_from) && ranged_cooldown <= world.time) //But make sure they're not in range for a melee attack and our range attack is off cooldown
@@ -327,19 +323,6 @@
 		Goto(target,move_to_delay,minimum_distance)
 		FindHidden()
 		return 1
-//	if(environment_smash)
-//		if(target.loc != null && get_dist(targets_from, target.loc) <= vision_range) //We can't see our target, but he's in our vision range still
-//			if(ranged_ignores_vision && ranged_cooldown <= world.time) //we can't see our target... but we can fire at them!
-//				OpenFire(target)
-//			if((environment_smash & ENVIRONMENT_SMASH_WALLS) || (environment_smash & ENVIRONMENT_SMASH_RWALLS)) //If we're capable of smashing through walls, forget about vision completely after finding our target
-//				Goto(target,move_to_delay,minimum_distance)
-//				FindHidden()
-//				return 1
-//			else
-//				if(FindHidden())
-//					return 1
-	LoseTarget()
-	return 0
 
 /mob/living/simple_animal/hostile/proc/Goto(target, delay, minimum_distance)
 	if(target == src.target)
