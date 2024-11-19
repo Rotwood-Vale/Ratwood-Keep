@@ -450,19 +450,19 @@
 	lockid = "keep_armory"
 
 //Goblins
-/obj/item/roguekey/goblin
+/obj/item/key/goblin
 	name = "goblin key"
 	desc = "This key opens the fort's basic interior doors."
 	icon_state = "mazekey"
 	lockid = "gobbo"
 
-/obj/item/roguekey/goblinguard
+/obj/item/key/goblinguard
 	name = "goblin guard key"
 	desc = "This key opens the fort barracks."
 	icon_state = "spikekey"
 	lockid = "gobbo_guards"
 
-/obj/item/roguekey/goblinchief
+/obj/item/key/goblinchief
 	name = "goblin chief key"
 	desc = "This key opens the Chief's room and the vault."
 	icon_state = "spikekey"
