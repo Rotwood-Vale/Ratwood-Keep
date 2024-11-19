@@ -37,6 +37,7 @@
 		return FALSE
 
 	if(ghost.collected_toll)
+		to_chat(ghost, span_bold("I already found a toll."))
 		return FALSE
 
 	to_chat(ghost, span_bold("My passage is paid."))
