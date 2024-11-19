@@ -52,6 +52,21 @@
 	cost = 100
 	contains = list(/obj/item/rogueweapon/estoc)
 
+/datum/supply_pack/rogue/Sawbones/dagger
+	name = "Iron Daggers"
+	cost = 25
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger)
+
+/datum/supply_pack/rogue/Sawbones/daggerss
+	name = "Steel Dagger"
+	cost = 50
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
+
+/datum/supply_pack/rogue/Sawbones/leather/elfdagger
+	name = "Elven Dagger"
+	cost = 100
+	contains = list(/obj/item/rogueweapon/huntingknife/elvish)
+
 /datum/supply_pack/rogue/Sawbones/leather/gbottle
 	name = "Glass bottle"
 	cost = 12
