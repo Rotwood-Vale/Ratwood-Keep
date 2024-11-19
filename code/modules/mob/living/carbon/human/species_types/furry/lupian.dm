@@ -10,7 +10,8 @@
 	sharp teeth and deep-rooted spirit of community. They are very dutiful individuals and make fantastic and fearsome \
 	warriors to those who earn their loyalty. Thanks to their pack minded nature they are slow to trust the other races \
 	but form deep connections with those they do. In recent years they have been driven from the forests by unrest and pressed \
-	into cohabitation with races they'd deem lesser."
+	into cohabitation with races they'd deem lesser.<br>\
+	(+1 Intelligence)"
 	skin_tone_wording = "Pack"
 	species_traits = list(
 		MUTCOLORS,

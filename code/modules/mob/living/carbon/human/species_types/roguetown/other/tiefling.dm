@@ -5,18 +5,14 @@
 	name = "Tiefling"
 	id = "tiefling"
 	desc = "<b>Tiefling</b><br>\
-	Tieflings, also known as Infernal-Spawn by the Dwarves, are a relatively new species in Grimmoria\
+	Tieflings, also known as \"Infernal-Spawn\" by the Dwarves, are a relatively new species in the lands. \
 	Having shown up sometime within the past two centuries, very little is known about their culture \
-	as many seem to simply intergrate within whatever society they find themselves in. \
-	Tieflings usually cause strong disturbances with their presence, as their fiendish looks \
+	as many seem to seamlessly intergrate into whatever society they find themselves in. \
+	Despite this, Tieflings often cause strong disturbances wherever they go due to their fiendish appearances. \
 	Many have claimed that they are the spawn of a succubus (Or incubus) laying with a mortal. \
-	In this, their species has suffered vast tragedy throughout their short history, \
-	Facing scrutiny, judgement and even genocide in the past. Wounding many tiefling psyche \
-	and leading to most seeking a solitary life outside the watchful eyes of others. \
-	Tiefling cannot reproduce with mortals, and so no half-breed exists. \
-	Tiefling tend to be extremely perceptive and paranoid, as luck is rarely on their side \
-	and their unique biology makes them extremely susceptible to injury. \
-	+1 Intelligence."
+	Due to this speculation, their species has suffered vast tragedy throughout their short history, \
+	facing harsh scrutiny, unfair judgement, and even outright genocide in the worst cases. This history of brutal treatment and prejudce has resulted in the damage of many a Tiefling's psyche, causing to most of their kind to seek a solitary life away from the judgemental eyes of others. Tieflings cannot reproduce with mortals, and as a result no half-breed exists. Tieflings tend to be extremely perceptive and paranoid, as luck is rarely on their side, and their unique biology makes them extremely susceptible to injury.<br>\
+	(+1 Intelligence)"
 
 	skin_tone_wording = "Progenitor"
 

@@ -13,7 +13,8 @@
 		Tabaxi fur color ranges from light yellow to brownish red.\
 		Tabaxi eyes are slit-pupilled and usually green or yellow.\
 		Tabaxi are competent swimmers and climbers as well as speedy runners.\
-		They have a good sense of balance and an acute sense of smell."
+		They have a good sense of balance and an acute sense of smell.<br>\
+		(+1 Speed, -1 Intelligence)"
 	skin_tone_wording = "Fur Colors"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE, MUTCOLORS)
 	possible_ages = ALL_AGES_LIST
