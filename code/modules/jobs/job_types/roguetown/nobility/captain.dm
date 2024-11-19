@@ -201,7 +201,7 @@
 			r_hand = /obj/item/rogueweapon/mace
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltr = /obj/item/quiver/bolts
-		if ("Spear & Shield")
+		if("Spear & Shield")
 			r_hand = /obj/item/rogueweapon/spear
 			backl = /obj/item/rogueweapon/shield/tower/metal
 		if("Sabre & Shield")
