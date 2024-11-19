@@ -124,7 +124,6 @@
 	var/datum/browser/popup = new(user, "HOARDMASTER", "", 370, 600)
 	popup.set_content(contents)
 	popup.open()
-	to_chat(user, "<br><font color=red>Make sure only to take what you own. Taking equipment from my horde, that is dedicated to another Matthios worshipper is against his will</font>")
 
 /obj/structure/roguemachine/hoardbarrier //Blocks sprite locations
 	name = ""
