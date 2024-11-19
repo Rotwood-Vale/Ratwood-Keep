@@ -409,21 +409,30 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 //goblin
 
-/obj/effect/landmark/start/goblinking
-	name = "Goblin King"
+/obj/effect/landmark/start/goblinchief
+	name = "Goblin Chief"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblincook
 	name = "Goblin Cook"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblinguard
 	name = "Goblin Guard"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblinsmith
 	name = "Goblin Smith"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/goblinrabble
+	name = "Goblin Rabble"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 // START LANDMARKS FOLLOW. Don't change the names unless
 // you are refactoring shitty landmark code.

@@ -187,10 +187,11 @@
 
 #define GOBLIN		(1<<8)
 
-#define GOBLINKING	(1<<0)
+#define GOBLINCHIEF	(1<<0)
 #define GOBLINCOOK	(1<<1)
 #define GOBLINGUARD	(1<<2)
 #define GOBLINSMITH	(1<<3)
+#define GOBLINRABBLE	(1<<4)
 
 #define SLOP		(1<<9)
 
@@ -288,10 +289,11 @@
 #define JDO_HOSTAGE 35.2
 #define JDO_LUNATIC 35.3
 
-#define JDO_GOBLINKING 36
+#define JDO_GOBLINCHIEF 36
 #define JDO_GOBLINCOOK 37
 #define JDO_GOBLINGUARD 38
 #define JDO_GOBLINSMITH 39
+#define JDO_GOBLINRABBLE 40
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
