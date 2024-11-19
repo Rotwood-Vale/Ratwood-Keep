@@ -15,22 +15,22 @@ SUBSYSTEM_DEF(veil)
  */
 GLOBAL_VAR_INIT(veil_tolls, 0)
 
-#define MINIMUM_VEIL_TOLLS 20
+#define MINIMUM_VEIL_TOLLS 30
 
 /**
  * Places MINIMUM_VEIL_TOLLS in the map, distributed among the landmarks.
  */
 /datum/controller/subsystem/veil/proc/Initialize_tolls()
-	if(GLOB.veil_tolls < MINIMUM_VEIL_TOLLS)
-		for(var/obj/effect/landmark/veil/toll/L in GLOB.landmarks_list)
 
-			// reached the minimum?
-			if(GLOB.veil_tolls >= MINIMUM_VEIL_TOLLS)
-				break
+	for(var/obj/effect/landmark/veil/toll/L in GLOB.landmarks_list)
 
-			// place one per landmark
-			new /obj/item/veil/toll/tracked(L.loc)
-			continue 
+		// reached the minimum?
+		if(GLOB.veil_tolls >= MINIMUM_VEIL_TOLLS)
+			break
+
+		// place one per landmark
+		new /obj/item/veil/toll/tracked(L.loc)
+		continue 
 
 /**
  * Called whenever a toll is picked up or dropped.
