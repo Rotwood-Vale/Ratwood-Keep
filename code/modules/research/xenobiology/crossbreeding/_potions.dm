@@ -73,7 +73,7 @@ Slimecrossing Potions
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "lovebottle"
 
-/obj/item/slimepotion/lovepotion/attack(mob/living/M, mob/user)
+/obj/item/slimepotion/lovepotion/attack(mob/living/carbon/human/M, mob/user)
 	if(!isliving(M) || M.stat == DEAD)
 		to_chat(user, span_warning("The love potion only works on living things, sicko!"))
 		return ..()

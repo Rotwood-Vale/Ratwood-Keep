@@ -495,13 +495,10 @@
 	to_chat(src, span_info("I grab [target]."))
 
 /mob/living/proc/set_pull_offsets(mob/living/M, grab_state = GRAB_PASSIVE)
-	return //rtd fix not updating because no dirchange
-	if(M == src)
-		return
-	if(M.wallpressed)
-		return
 	if(M.buckled)
 		return //don't make them change direction or offset them if they're buckled into something.
+	if(M.dir != turn(get_dir(M,src), 180))
+		M.setDir(get_dir(M, src))
 	var/offset = 0
 	switch(grab_state)
 		if(GRAB_PASSIVE)
@@ -512,24 +509,26 @@
 			offset = GRAB_PIXEL_SHIFT_NECK
 		if(GRAB_KILL)
 			offset = GRAB_PIXEL_SHIFT_NECK
-	M.setDir(get_dir(M, src))
-	switch(M.dir)
+	switch(get_dir(M, src))
 		if(NORTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = offset)
+			M.set_mob_offsets("pulledby", 0, 0+offset)
+			M.layer = MOB_LAYER+0.05
 		if(SOUTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = -offset)
+			M.set_mob_offsets("pulledby", 0, 0-offset)
+			M.layer = MOB_LAYER-0.05
 		if(EAST)
-			if(M.lying == 270) //update the dragged dude's direction if we've turned
-				M.lying = 90
-				M.update_transform() //force a transformation update, otherwise it'll take a few ticks for update_mobility() to do so
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
+			M.set_mob_offsets("pulledby", 0+offset, 0)
+			M.layer = MOB_LAYER
 		if(WEST)
-			if(M.lying == 90)
-				M.lying = 270
-				M.update_transform()
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
+			M.set_mob_offsets("pulledby", 0-offset, 0)
+			M.layer = MOB_LAYER
+
+/mob/living/proc/reset_pull_offsets(mob/living/M, override)
+	if(!override && M.buckled)
+		return
+	M.reset_offsets("pulledby")
+	M.layer = MOB_LAYER
+	//animate(M, pixel_x = 0 , pixel_y = 0, 1)
 
 /mob/living
 	var/list/mob_offsets = list()
@@ -568,6 +567,7 @@
 		if(ismob(pulling))
 			var/mob/living/M = pulling
 			M.reset_offsets("pulledby")
+			reset_pull_offsets(pulling)
 
 		if(forced) //if false, called by the grab item itself, no reason to drop it again
 			if(istype(get_active_held_item(), /obj/item/grabbing))
@@ -819,6 +819,9 @@
 		if(mind)
 			if(admin_revive)
 				mind.remove_antag_datum(/datum/antagonist/zombie)
+			else if(mind.funeral && !CONFIG_GET(flag/force_respawn_on_funeral))
+				to_chat(src, span_warning("My funeral rites are undone!"))
+				mind.funeral = FALSE
 			for(var/S in mind.spell_list)
 				var/obj/effect/proc_holder/spell/spell = S
 				spell.updateButtonIcon()
@@ -1137,6 +1140,9 @@
 	var/mob/living/L = pulledby
 	var/combat_modifier = 1
 
+	if(HAS_TRAIT(src, TRAIT_PARALYSIS))//Will stop someone who is paralized from trying to resist
+		to_chat(src, span_warning("I can't move!"))
+		return FALSE
 	if(mind)
 		wrestling_diff += (mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
 	if(L.mind)
@@ -2085,7 +2091,12 @@
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))
 
 /mob/living/proc/stop_looking()
-//	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
+
+	if(!client)
+		return
+
+	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
+	
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0

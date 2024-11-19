@@ -11,7 +11,7 @@
 
 /obj/structure/fluff/testportal/Initialize()
 	name = aportalloc
-	..()
+	return ..()
 
 /obj/structure/fluff/testportal/attack_hand(mob/user)
 	var/fou

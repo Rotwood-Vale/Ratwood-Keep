@@ -30,6 +30,9 @@
 	//How many players have this job
 	var/current_positions = 0
 
+	//Whether this job clears a slot when you get a rename prompt.
+	var/antag_job = FALSE
+
 	//Supervisors, who this person answers to directly
 	var/supervisors = ""
 
@@ -96,9 +99,7 @@
 
 	var/show_in_credits = TRUE
 
-	//Set to FALSE for no roundstart bank account, TRUE for an empty roundstart bank account;
-	//Number greater then 1 for a bank account with amount of money equal to that number;
-	//Non-constant value (ie rand()) will not work
+	var/announce_latejoin = TRUE
 	var/give_bank_account = FALSE
 
 	var/can_random = TRUE
@@ -143,13 +144,31 @@
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
 
+/client/proc/job_greet(var/datum/job/greeting_job)
+	if(mob.job == greeting_job.title)
+		greeting_job.greet(mob)
+
 /datum/job/proc/greet(mob/player)
+	if(player?.mind.assigned_role != title)
+		return
 	if(!job_greet_text)
 		return
 	to_chat(player, span_notice("You are the <b>[title]</b>"))
 	if(tutorial)
+		if(isseelie(player))		//If player is a Seelie
+			change_tutorial(player)	//Check if job flavortext needs changed (hand and maid currently)
 		to_chat(player, span_notice("*-----------------*"))
 		to_chat(player, span_notice(tutorial))
+
+//Custom join messages for SEELIE ONLY, will not trigger for other races unless explicitly called to
+/datum/job/proc/change_tutorial(mob/player)
+	if(title == "Hand")		//Change tutorial message for Seelie Hand
+		tutorial = "It wasn't easy for a fae, but your liege saw great potential in you. Once, you were just an adventuring companion- now you are one of the highest status fae within the realm itself. It's come at a cost, youve lost your more mischievous spells and nature over time, but gained ones more useful to dealing with the chaos of court."
+	else if(title == "Servant")		//Change tutorial message for Seelie maids
+		tutorial = "Though once you were a mischievous fae, you've now accepted the comfort and security of service in the manor instead. Your spells may come in handy, but youve allowed the more chaotic ones to fade to memory."
+	else if(title == "Prisoner (Rockhill)" || title == "Prisoner (Bog)")
+		tutorial = "Thrown in this accursed place, the colar around your neck prevents any and all magic you mightve had. You waste away here, no mischief to be made or people to assist. Your life as a caged fae is miserable indeed."
+	return
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
@@ -200,6 +219,34 @@
 	if(cmode_music)
 		H.cmode_music = cmode_music
 
+	if(GLOB.hugbox_duration)
+		///FOR SOME STUPID FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_start)), 1)
+
+/mob/living/carbon/human/proc/hugboxing_start()
+	to_chat(src, span_warning("I will be in danger once I start moving."))
+	status_flags |= GODMODE
+	ADD_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(hugboxing_moved))
+	//Lies, it goes away even if you don't move after enough time
+	if(GLOB.hugbox_duration_still)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration_still)
+
+/mob/living/carbon/human/proc/hugboxing_moved()
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+	to_chat(src, span_danger("I have [DisplayTimeText(GLOB.hugbox_duration)] before my protection runs out!"))
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration)
+
+/mob/living/carbon/human/proc/hugboxing_end()
+	if(QDELETED(src))
+		return
+	//hugbox already ended
+	if(!(status_flags & GODMODE))
+		return
+	status_flags &= ~GODMODE
+	REMOVE_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
+	to_chat(src, span_danger("I feel no longer safe."))
+
 /datum/job/proc/add_spells(mob/living/H)
 	if(spells && H.mind)
 		for(var/S in spells)
@@ -214,28 +261,38 @@
 				continue
 			H.mind.RemoveSpell(S)
 
-/mob/living/carbon/human/proc/add_credit()
+/client/verb/set_mugshot()
+	set category = "OOC"
+	set name = "Set Credits Mugshot"
+	if(mob && ishuman(mob) && mob.mind)
+		var/mob/living/carbon/human/H = mob
+		if(!H.mind.mugshot_set)
+			to_chat(src, "Updating mugshot...")
+			H.mind.mugshot_set = TRUE
+			H.add_credit(TRUE)
+			to_chat(src, "Mugshot updated.")
+		else
+			to_chat(src, "Mugshots are resource intensive. You are limited to one per character.")
+
+/mob/living/carbon/human/proc/add_credit(generate_for_adv_class = FALSE) //Evil code to get the proper image for adv classes after they spawn in.
 	if(!mind || !client)
 		return
 	var/thename = "[real_name]"
 	var/datum/job/J = SSjob.GetJob(mind.assigned_role)
-	var/used_title
-	if(J)
-		used_title = J.title
-		if(gender == FEMALE && J.f_title)
-			used_title = J.f_title
-	if(used_title)
-		thename = "[real_name] the [used_title]"
+	var/used_title = get_role_title()
 	GLOB.credits_icons[thename] = list()
 	var/client/C = client
 	var/datum/preferences/P = C.prefs
-	if(!P)
-		return
-	var/icon/I = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH))
+	var/icon/I
+	if(generate_for_adv_class)
+		I = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH), human_gear_override = src)
+	else if (P)
+		I = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH))
 	if(I)
 		var/icon/female_s = icon("icon"='icons/mob/clothing/under/masking_helpers.dmi', "icon_state"="credits")
 		I.Blend(female_s, ICON_MULTIPLY)
 		I.Scale(96,96)
+		GLOB.credits_icons[thename]["title"] = used_title
 		GLOB.credits_icons[thename]["icon"] = I
 		GLOB.credits_icons[thename]["vc"] = voice_color
 
@@ -426,4 +483,3 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		return list(ACCESS_MAINT_TUNNELS)
 	return list()
-

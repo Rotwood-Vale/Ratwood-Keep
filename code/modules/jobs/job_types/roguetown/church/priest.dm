@@ -51,8 +51,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 5, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
@@ -95,12 +94,12 @@
 		//Abdicate previous Duke
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.mind)
-				if(HL.mind.assigned_role == "Duke" || HL.mind.assigned_role == "Duchess Consort")
+				if(HL.mind.assigned_role == "Duke" || HL.mind.assigned_role == "Duchess")
 					HL.mind.assigned_role = "Towner" //So they don't get the innate traits of the lord
 			//would be better to change their title directly, but that's not possible since the title comes from the job datum
 			if(HL.job == "Duke")
 				HL.job = "Duke Emeritus"
-			if(HL.job == "Duchess Consort")
+			if(HL.job == "Duchess")
 				HL.job = "Duchess Dowager"
 			SSjob.type_occupations[/datum/job/roguetown/lord].remove_spells(HL)
 
@@ -119,6 +118,7 @@
 		removeomen(OMEN_NOLORD)
 		say("By the authority of the gods, I pronounce you [SSticker.rulertype] of Rockhill!")
 		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the [SSticker.rulertype] of Rockhill!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
+		TITLE_LORD = SSticker.rulertype
 
 /mob/living/carbon/human/proc/churchexcommunicate()
 	set name = "Excommunicate"
@@ -207,6 +207,7 @@
 /obj/effect/proc_holder/spell/self/convertrole/templar
 	name = "Recruit Templar"
 	new_role = "Templar"
+	overlay_state = "recruit_templar"
 	recruitment_faction = "Templars"
 	recruitment_message = "Serve the ten, %RECRUIT!"
 	accept_message = "FOR THE TEN!"
@@ -215,6 +216,7 @@
 /obj/effect/proc_holder/spell/self/convertrole/monk
 	name = "Recruit Acolyte"
 	new_role = "Acolyte"
+	overlay_state = "recruit_acolyte"
 	recruitment_faction = "Church"
 	recruitment_message = "Serve the ten, %RECRUIT!"
 	accept_message = "FOR THE TEN!"

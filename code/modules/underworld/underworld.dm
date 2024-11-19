@@ -26,10 +26,20 @@
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 	anchored = TRUE
-	density = TRUE	
+	density = TRUE
+
+/obj/structure/underworld/carriage_normal
+	name = "Carriage"
+	desc = "The ride stopped here..."
+	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
+	icon_state = "carriage_normal"
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	anchored = TRUE
+	density = TRUE
 
 /obj/structure/underworld/carriageman/Initialize()
-	..()
+	. = ..()
 	set_light(5, 30, LIGHT_COLOR_BLUE)
 
 /obj/structure/underworld/carriageman/attack_hand(mob/living/carbon/spirit/user)
@@ -76,7 +86,7 @@
 
 
 /obj/structure/underworld/carriage/Initialize()
-	..()
+	. = ..()
 	set_light(5, 30, LIGHT_COLOR_BLUE)
 
 /obj/structure/underworld/carriage/attack_hand(mob/living/carbon/spirit/user)

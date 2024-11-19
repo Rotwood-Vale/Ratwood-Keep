@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(treasury)
 	name = "treasury"
 	wait = 1
 	priority = FIRE_PRIORITY_WATER_LEVEL
-	var/tax_value = 0.10
+	var/tax_value = 0.11
 	var/queens_tax = 0.15
 	var/treasury_value = 0
 	var/list/bank_accounts = list()
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(treasury)
 
 /datum/controller/subsystem/treasury/Initialize()
 	treasury_value = rand(800,1500)
-	queens_tax = rand(5, 35)/100
+	queens_tax = pick(0.09, 0.15, 0.21, 0.30)
 
 	for(var/path in subtypesof(/datum/roguestock/bounty))
 		var/datum/D = new path
@@ -60,6 +60,9 @@ SUBSYSTEM_DEF(treasury)
 						X.demand += rand(5,15)
 					if(X.demand > initial(X.demand))
 						X.demand -= rand(5,15)
+		for(var/datum/roguestock/stockpile/A in stockpile_datums) //Generate some remote resources
+			A.held_items[2] += A.passive_generation
+			A.held_items[2] = min(A.held_items[2],10) //To a maximum of 10
 		var/area/A = GLOB.areas_by_type[/area/rogue/indoors/town/vault]
 		var/amt_to_generate = 0
 		for(var/obj/item/I in A)
@@ -80,10 +83,10 @@ SUBSYSTEM_DEF(treasury)
 		var/people_told = 0
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
 			switch(X.job)
-				if("Duke", "Steward", "Clerk", "Hand")
+				if("Duke", "Steward", "Clerk")
 					people_told += 1
 					send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
-					if(people_told > 4)
+					if(people_told > 3)
 						return
 
 
@@ -190,9 +193,6 @@ SUBSYSTEM_DEF(treasury)
 		if(X == name)
 			if(bank_accounts[X] < amt)  // Check if the withdrawal amount exceeds the player's account balance
 				send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the player's account to complete the withdrawal.", name = name)
-				return  // Return without processing the transaction
-			if(treasury_value < amt)  // Check if the withdrawal amount exceeds the treasury balance
-				send_ooc_note("<b>The Bank:</b> Error: Insufficient funds in the treasury to complete the withdrawal.", name = name)
 				return  // Return without processing the transaction
 			bank_accounts[X] -= amt
 			found_account = TRUE

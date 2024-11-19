@@ -82,6 +82,7 @@
 		/datum/sprite_accessory/ears/bigwolf,
 		/datum/sprite_accessory/ears/bigwolf_inner,
 		/datum/sprite_accessory/ears/rabbit,
+		/datum/sprite_accessory/ears/big/rabbit_large,
 		/datum/sprite_accessory/ears/bunny,
 		/datum/sprite_accessory/ears/bunny_perky,
 		/datum/sprite_accessory/ears/cat_big,
@@ -115,6 +116,8 @@
 		/datum/sprite_accessory/ears/possum,
 		/datum/sprite_accessory/ears/raccoon,
 		/datum/sprite_accessory/ears/mouse,
+		/datum/sprite_accessory/ears/big/acrador_long,
+		/datum/sprite_accessory/ears/big/acrador_short,
 		)
 
 /datum/customizer/organ/ears/anthro
@@ -134,6 +137,7 @@
 		/datum/sprite_accessory/ears/bigwolf,
 		/datum/sprite_accessory/ears/bigwolf_inner,
 		/datum/sprite_accessory/ears/rabbit,
+		/datum/sprite_accessory/ears/big/rabbit_large,
 		/datum/sprite_accessory/ears/bunny,
 		/datum/sprite_accessory/ears/bunny_perky,
 		/datum/sprite_accessory/ears/cat_big,
@@ -174,4 +178,6 @@
 		/datum/sprite_accessory/ears/possum,
 		/datum/sprite_accessory/ears/raccoon,
 		/datum/sprite_accessory/ears/mouse,
+		/datum/sprite_accessory/ears/big/acrador_long,
+		/datum/sprite_accessory/ears/big/acrador_short,
 		)

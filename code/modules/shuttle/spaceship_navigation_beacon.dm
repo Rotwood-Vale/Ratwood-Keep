@@ -14,7 +14,7 @@
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/spaceship_navigation_beacon
 
-	var/locked = FALSE //Locked beacons don't allow to jump to it.
+	locked = FALSE //Locked beacons don't allow to jump to it.
 
 
 /obj/machinery/spaceship_navigation_beacon/Initialize()

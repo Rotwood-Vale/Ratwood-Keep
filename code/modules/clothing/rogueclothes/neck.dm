@@ -63,7 +63,6 @@
 	blocksound = CHAINHIT
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/neck/roguetown/chaincoif/AdjustClothes(mob/user)
 	if(loc == user)
@@ -94,6 +93,14 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 150
 
+/obj/item/clothing/neck/roguetown/chaincoif/ironb
+	icon_state = "ichaincoif"
+	anvilrepair = /datum/skill/craft/blacksmithing
+	desc = "An iron chain coif, composed of interlinked metal rings, that barely absorb impacts from arrows that protects the head, ears and neck, and is sadly too uncomfortable to sleep in. blackened iron."
+	smeltresult = /obj/item/ingot/iron
+	color = "#151615"
+	max_integrity = 150
+
 /obj/item/clothing/neck/roguetown/bervor
 	name = "bevor"
 	desc = "A steel bevor that protects the lower part of the head, that being the neck, mouth and nose."
@@ -121,7 +128,20 @@
 	body_parts_covered = NECK
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
-	clothing_flags = CANT_SLEEP_IN
+
+/obj/item/clothing/neck/roguetown/leather
+	name = "hardened leather gorget"
+	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering."
+	icon_state = "lgorget"
+	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 150
+	slot_flags = ITEM_SLOT_NECK
+	body_parts_covered = NECK
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST) //This one will help against chopping
+	blocksound = SOFTHIT
+	sewrepair = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/Initialize()
 	. = ..()
@@ -134,6 +154,11 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
+
+/obj/item/clothing/neck/roguetown/gorget/alt
+	name = "vreccale"
+	desc = "Nature knows not of mercy."
+	icon_state = "iwolfcollar"
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"

@@ -15,8 +15,8 @@
 		/datum/species/tabaxi
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
-	maximum_possible_slots = 10
-	min_pq = 2
+	maximum_possible_slots = 9
+	min_pq = 15
 	torch = FALSE
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	category_tags = list(CTAG_MERCENARY)
@@ -30,7 +30,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	head = /obj/item/clothing/head/roguetown/grenzelhofthat
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/grenzelhoft
+	armor = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
 	pants = /obj/item/clothing/under/roguetown/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves

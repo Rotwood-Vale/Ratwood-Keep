@@ -84,6 +84,7 @@
 	var/rotted = FALSE
 	var/skeletonized = FALSE
 
+	/// Can this bodypart swing weapons?
 	var/fingers = TRUE
 	var/organ_slowdown = 0 // Its here because this is first shared definition between two leg organ paths
 
@@ -100,7 +101,7 @@
 
 /obj/item/bodypart/proc/get_specific_markings_overlays(list/specific_markings, aux = FALSE, mob/living/carbon/human/human_owner, override_color)
 	var/list/appearance_list = list()
-	var/specific_layer = aux ? aux_layer : BODYPARTS_LAYER
+	var/specific_layer = aux_layer ? aux_layer : BODYPARTS_LAYER
 	var/specific_render_zone = aux ? aux_zone : body_zone
 	for(var/key in specific_markings)
 		var/color = specific_markings[key]
@@ -149,6 +150,8 @@
 		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 
 /obj/item/bodypart/chest/grabbedintents(mob/living/user, precise)
+	if(precise == BODY_ZONE_PRECISE_GROIN)
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/shove)
 	return list(/datum/intent/grab/move, /datum/intent/grab/shove)
 
 /obj/item/bodypart/blob_act()
@@ -180,15 +183,22 @@
 	var/obj/item/held_item = user.get_active_held_item()
 	if(held_item)
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
-			var/used_time = 210
-			if(user.mind)
-				used_time -= (user.mind.get_skill_level(/datum/skill/labor/butchering) * 30)
-			visible_message("[user] begins to butcher \the [src].")
-			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-			if(do_after(user, used_time, target = src))
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
-				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
-				qdel(src)
+			if(!skeletonized)
+				var/used_time = 210
+				if(user.mind)
+					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
+				visible_message("[user] begins to butcher \the [src].")
+				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+				if(do_after(user, used_time, target = src))
+					if(rotted)
+						var/obj/item/reagent_containers/food/snacks/rogue/meat/steak/rotten_steak = new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
+						rotten_steak.become_rotten()
+					else
+						new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
+					new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+					qdel(src)
+			else
+				to_chat(user, span_warning("There is no meat to butcher."))
 	..()
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
@@ -275,7 +285,7 @@
 		. |= BODYPART_LIFE_UPDATE_HEALTH
 
 /obj/item/bodypart/Initialize()
-	..()
+	. = ..()
 	update_HP()
 
 /obj/item/bodypart/proc/update_HP()
@@ -615,7 +625,7 @@
 		override_color = SKIN_COLOR_ROT
 	if(is_organic_limb && should_draw_greyscale && !skeletonized)
 		var/draw_color =  mutation_color || species_color || skin_tone
-		if(rotted || (owner && HAS_TRAIT(owner, TRAIT_ROTMAN)))
+		if(rotted)
 			draw_color = SKIN_COLOR_ROT
 		if(draw_color)
 			limb.color = "#[draw_color]"
@@ -861,6 +871,8 @@
 	px_x = -2
 	px_y = 12
 	max_stamina_damage = 50
+	aux_zone = "l_leg_above"
+	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_L_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_L_LEG)
 	dismember_wound = /datum/wound/dismemberment/l_leg
@@ -918,6 +930,8 @@
 	px_x = 2
 	px_y = 12
 	max_stamina_damage = 50
+	aux_zone = "r_leg_above"
+	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_R_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_R_LEG)
 	dismember_wound = /datum/wound/dismemberment/r_leg

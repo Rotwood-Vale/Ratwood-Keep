@@ -41,6 +41,8 @@
 		use_delay = use_delay_override
 
 /datum/component/squeak/proc/play_squeak()
+	if(HAS_TRAIT(parent,TRAIT_LIGHT_STEP)) //Light Step now removes all armor sounds. This may need balancing.
+		return FALSE
 	if(prob(squeak_chance))
 		if(!override_squeak_sounds)
 			playsound(parent, pickweight(default_squeak_sounds), volume, FALSE, -1)

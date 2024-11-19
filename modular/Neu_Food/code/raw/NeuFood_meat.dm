@@ -19,6 +19,7 @@
 	chopping_sound = TRUE
 	foodtype = MEAT
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	mill_result = /obj/item/reagent_containers/powder/alch/mincem
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	ingredient_size = 2
@@ -56,7 +57,7 @@
 			to_chat(user, "<span class='notice'>Stuffing a wiener...</span>")
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,long_cooktime, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/meat/sausage(loc)
 				qdel(I)
 				qdel(src)
@@ -67,7 +68,7 @@
 			to_chat(user, "<span class='notice'>Stuffing a wiener...</span>")
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,long_cooktime, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/meat/sausage(loc)
 				qdel(I)
 				qdel(src)
@@ -153,5 +154,6 @@
 
 /*	........   Fish sounds   ................ */
 /obj/item/reagent_containers/food/snacks/fish
+	mill_result = /obj/item/reagent_containers/powder/alch/mincef
 	chopping_sound = TRUE
 

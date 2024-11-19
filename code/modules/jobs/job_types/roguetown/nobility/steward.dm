@@ -17,19 +17,16 @@
 
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == FEMALE)
-		H.virginity = TRUE
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/nobledress
-		cloak = /obj/item/clothing/cloak/tabard/knight
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
-	else
-		pants = /obj/item/clothing/under/roguetown/tights/random
-		armor = /obj/item/clothing/cloak/tabard/knight
-	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
+	H.virginity = TRUE
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/steward
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
+	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	head = /obj/item/clothing/head/roguetown/chaperon/greyscale
-	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
+	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/keyring/steward
+
+	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
+	
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
@@ -42,7 +39,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.change_stat("intelligence", 2)

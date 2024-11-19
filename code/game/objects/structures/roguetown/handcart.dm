@@ -14,8 +14,16 @@
 	var/maximum_capacity = 60 //arbitrary maximum amount of weight allowed in the cart before it says fuck off
 
 	var/arbitrary_living_creature_weight = 10 // The arbitrary weight for any thing of a mob and living variety
+	/// This is the carts upgrade level, capacity increases with upgrade level
+	var/upgrade_level = 0
+	var/obj/item/roguegear/wood/upgrade = null
 	facepull = FALSE
 	throw_range = 1
+
+/obj/structure/handcart/examine(mob/user)
+	. = ..()
+	if(upgrade)
+		. += span_notice("This cart has a [upgrade.name] instaled.")
 
 /obj/structure/handcart/Initialize(mapload)
 	if(mapload)		// if closed, any item at the crate's loc is put in the contents
@@ -71,11 +79,20 @@
 			playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
 		return TRUE
 
-/obj/structure/handcart/attackby(obj/item/P, mob/user, params)
+/obj/structure/handcart/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/roguegear/wood))
+		var/obj/item/roguegear/wood/cog = I
+		upgrade = I
+		maximum_capacity = cog.cart_capacity
+		qdel(cog)
+		playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
+		shake_camera(user, 1, 1)
+		to_chat(user, "<span class='warning'>[cog.name] inserted!</span>")
+		return
 	if(!user.cmode)
-		if(!insertion_allowed(P))
+		if(!insertion_allowed(I))
 			return
-		if(put_in(P, user))
+		if(put_in(I, user))
 			playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
 		return
 	..()
@@ -126,6 +143,12 @@
 
 /obj/structure/handcart/update_icon()
 	. = ..()
+	cut_overlays()
+	if(upgrade_level)
+		if(upgrade_level == 1)
+			add_overlay("ov_upgrade")
+		if(upgrade_level == 2)
+			add_overlay("ov_upgrade2")
 	if(stuff_shit.len)
 		icon_state = "cart-full"
 	else

@@ -23,7 +23,7 @@
 			to_chat(user, "<span class='notice'>Stuffing a wiener...</span>")
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,long_cooktime, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/meat/sausage(loc)
 				qdel(I)
 				qdel(src)
@@ -94,7 +94,7 @@
 	to_chat(user, "<span class='notice'>Adding water, now its time to knead it...</span>")
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user,2 SECONDS, target = src))
-		user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+		user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 		name = "sticky sugar"
 		desc = "Destined for greatness, at your hands."
 		R.reagents.remove_reagent(/datum/reagent/water, 10)
@@ -106,7 +106,7 @@
 	if(water_added)
 		playsound(get_turf(user), 'modular/Neu_Food/sound/kneading_alt.ogg', 90, TRUE, -1)
 		if(do_after(user,3 SECONDS, target = src))
-			user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			new /obj/item/reagent_containers/food/snacks/rogue/candybase(loc)
 			qdel(src)
 	else ..()
@@ -132,7 +132,7 @@
 			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 90, TRUE, -1)
 			to_chat(user, "<span class='notice'>Breaking the apple down into the base...</span>")
 			if(do_after(user,short_cooktime, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/applecandy(loc)
 				qdel(I)
 				qdel(src)
@@ -141,7 +141,7 @@
 			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 100, TRUE, -1)
 			to_chat(user, "<span class='notice'>Breaking the berries down into the base...</span>")
 			if(do_after(user,short_cooktime, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/berrycandy(loc)
 				qdel(I)
 				qdel(src)
@@ -220,7 +220,7 @@
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/salami
 	req_table = FALSE
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/cooking/coppiette
@@ -231,7 +231,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette
 	req_table = FALSE
 	craftdiff = 0
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/salo
 	name = "salo"
@@ -240,7 +240,7 @@
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/fat/salo
 	craftdiff = 0
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	req_table = FALSE
 
 /datum/crafting_recipe/roguetown/cooking/saltfish
@@ -254,7 +254,7 @@
 	req_table = FALSE
 	craftdiff = 0
 	subtype_reqs = TRUE
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/raisins
 	name = "raisins"
@@ -262,7 +262,7 @@
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	req_table = FALSE
 	craftdiff = 0
 	subtype_reqs = TRUE
@@ -417,7 +417,7 @@
 		to_chat(user, "<span class='warning'>Adding salt to the milk.</span>")
 		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 		if(do_after(user,2 SECONDS, target = src))
-			user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			reagents.remove_reagent(/datum/reagent/consumable/milk, 15)
 			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 15)		
 			qdel(I)
@@ -433,7 +433,7 @@
 		user.visible_message("<span class='info'>[user] churns butter...</span>")
 		playsound(get_turf(user), 'modular/Neu_Food/sound/churn.ogg', 100, TRUE, -1)
 		if(do_after(user,long_cooktime, target = src))
-			user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 15)
 			new /obj/item/reagent_containers/food/snacks/butter(drop_location())
 		return
@@ -491,7 +491,7 @@
 			user.visible_message("<span class='info'>[user] strains fresh cheese...</span>")
 			playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 			if(do_after(user,long_cooktime, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 5)
 				new /obj/item/reagent_containers/food/snacks/rogue/cheese(drop_location())
 
@@ -523,7 +523,7 @@
 			user.visible_message("<span class='info'>[user] starts packing the cloth with fresh cheese...</span>")
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,3 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_start(loc)
 				qdel(I)
 				qdel(src)
@@ -546,7 +546,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,short_cooktime, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_two(loc)
 				qdel(I)
 				qdel(src)
@@ -568,7 +568,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,short_cooktime, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_three(loc)
 				qdel(I)
 				qdel(src)
@@ -591,7 +591,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,short_cooktime, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				qdel(I)
 				name = "maturing cheese wheel"
 				icon_state = "cheesewheel_end"
@@ -646,6 +646,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
 	become_rot_type = null
 	rotprocess = null
+	sellprice = 60
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
 	name = "wedge of cheese"
@@ -672,6 +673,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
 	become_rot_type = null
 	rotprocess = null
+	sellprice = 10
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
 	name = "slice of cheese"

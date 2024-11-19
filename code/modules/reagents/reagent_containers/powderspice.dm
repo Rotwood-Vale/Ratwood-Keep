@@ -143,17 +143,19 @@
 	qdel(src)
 */
 /obj/item/reagent_containers/powder/flour
-	name = "powder"
-	desc = ""
+	name = "mound of flour"
+	desc = "Add water and knead it"
 	gender = PLURAL
 	icon_state = "flour"
+	can_brew = TRUE
 	list_reagents = list(/datum/reagent/floure = 1)
 	grind_results = list(/datum/reagent/floure = 10)
 	volume = 1
 	sellprice = 0
+
 /datum/reagent/floure
 	name = "flour"
-	description = "Add water and knead it"
+	description = ""
 	color = "#FFFFFF" // rgb: 96, 165, 132
 
 /datum/reagent/floure/on_mob_life(mob/living/carbon/M)
@@ -182,18 +184,34 @@
 	desc = ""
 	gender = PLURAL
 	icon_state = "salt"
-	list_reagents = list(/datum/reagent/consumable/sodiumchloride = 15)
-	grind_results = list(/datum/reagent/consumable/sodiumchloride = 15)
-	volume = 1
+	brew_amt = 22
+	brew_reagent = /datum/reagent/alch/syrums
+	list_reagents = list(/datum/reagent/salt = 5,)
+	grind_results = null
+	volume = 5
 
 /obj/item/reagent_containers/powder/salt/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
 	new /obj/effect/decal/cleanable/food/salt(get_turf(src))
 	..()
 	qdel(src)
 
+/datum/reagent/salt
+	name = "Salt"
+	description = ""
+	overdose_threshold = null
+	metabolization_rate = 0.5
+
+/datum/reagent/salt/on_mob_life(mob/living/carbon/M)                                        // teach you fucks to keep snorting salt...
+	var/obj/item/bodypart/BPA = M.get_bodypart(BODY_ZONE_PRECISE_NOSE)
+	M.adjust_blurriness(3)
+	M.confused = max(M.confused+3,0)
+	M.adjustBruteLoss(2, BRUTE, BPA)
+	M.adjustFireLoss(2, BURN, BPA)
+	M.emote(pick("scream"))
+
 /obj/item/reagent_containers/powder/ozium
-	name = "powder"
-	desc = ""
+	name = "ozium powder"
+	desc = "painkiller"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "ozium"
 	possible_transfer_amounts = list()
@@ -238,6 +256,10 @@
 	grind_results = list(/datum/reagent/moondust = 15)
 	sellprice = 5
 
+/datum/reagent/moondust
+	name = "Moondust"
+
+
 /datum/reagent/moondust/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.25*REM, 0)
 	..()
@@ -273,7 +295,7 @@
 	M.adjustToxLoss(10, 0)
 
 /obj/item/reagent_containers/powder/moondust_purest
-	name = "moondust"
+	name = "uncut moondust"
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "moondust_purest"

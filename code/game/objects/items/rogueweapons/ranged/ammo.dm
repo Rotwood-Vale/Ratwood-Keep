@@ -137,29 +137,30 @@
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, adjustToxLoss), 100), 10 SECONDS)
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/atom, visible_message), span_danger("[M] appears greatly weakened by the poison!")), 10 SECONDS)
 
-/obj/projectile/bullet/reusable/bullet
-	name = "lead ball"
-	damage = 50
-	damage_type = BRUTE
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "musketball_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
-	range = 30
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
-	embedchance = 100
-	woundclass = BCLASS_STAB
-	flag = "bullet"
-	armor_penetration = 200
-	speed = 0.1
-
+//Musket spheres.
 /obj/item/ammo_casing/caseless/rogue/bullet
-	name = "lead sphere"
-	desc = "A small lead sphere. This should go well with gunpowder."
+	name = "iron sphere"
+	desc = "A small iron ball, perfectly round. Deadly when projected at very high velocity."
 	projectile_type = /obj/projectile/bullet/reusable/bullet
-	caliber = "musketball"
+	caliber = "small_sphere"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball"
-	dropshrink = 0.5
 	possible_item_intents = list(/datum/intent/use)
 	max_integrity = 0
 	w_class = WEIGHT_CLASS_TINY
+	smeltresult = /obj/item/rogueore/iron
+
+/obj/projectile/bullet/reusable/bullet
+	name = "iron sphere"
+	damage = 40
+	armor_penetration = 50
+	speed = 0.6
+	damage_type = BRUTE
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "musketball"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
+	range = 30
+	hitsound = 'sound/combat/hits/hi_bolt (2).ogg'
+	embedchance = 100
+	woundclass = BCLASS_STAB
+	flag = "bullet"

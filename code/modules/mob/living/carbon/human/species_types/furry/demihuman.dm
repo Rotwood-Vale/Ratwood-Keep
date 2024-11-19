@@ -57,7 +57,7 @@
 		/datum/customizer/organ/ears/demihuman,
 		/datum/customizer/organ/horns/demihuman,
 		/datum/customizer/organ/tail/demihuman,
-		/datum/customizer/organ/testicles/human,
+		/datum/customizer/organ/testicles/external,
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
@@ -67,6 +67,8 @@
 		/datum/body_marking_set/socks,
 	)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 		/datum/body_marking/socklonger,
 		/datum/body_marking/tips,

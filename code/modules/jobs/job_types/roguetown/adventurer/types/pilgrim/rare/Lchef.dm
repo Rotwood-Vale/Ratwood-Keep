@@ -22,10 +22,10 @@
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE) // Ancient cookbooks.
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/labor/butchering, 6, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 6, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 6, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/farming, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 6, TRUE) // Best knife skills in the Enigma.
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	pants = /obj/item/clothing/under/roguetown/tights/random

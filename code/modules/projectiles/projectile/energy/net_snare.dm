@@ -31,7 +31,7 @@
 
 /obj/effect/nettingportal/Initialize()
 	. = ..()
-	var/obj/item/beacon/teletarget = null
+	var/atom/teletarget = null
 	for(var/obj/machinery/computer/teleporter/com in GLOB.machines)
 		if(com.target)
 			if(com.power_station && com.power_station.teleporter_hub && com.power_station.engaged)

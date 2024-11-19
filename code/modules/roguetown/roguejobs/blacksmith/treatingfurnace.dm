@@ -47,7 +47,8 @@
 		icon_state = "treatment0"
 
 /obj/structure/treating_furnace/Destroy()
-	inserted.forceMove(drop_location())
+	if(inserted)
+		inserted.forceMove(drop_location())
 	return ..()
 
 /obj/structure/treating_furnace/attackby(obj/item/I, mob/living/user)

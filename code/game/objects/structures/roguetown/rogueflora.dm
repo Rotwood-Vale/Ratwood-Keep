@@ -20,6 +20,8 @@
 	alpha = 200
 	leanable = TRUE
 	var/stump_type = /obj/structure/flora/roguetree/stump
+	metalizer_result = /obj/machinery/light/roguestreet
+	smeltresult = /obj/item/rogueore/coal
 
 /obj/structure/flora/roguetree/attack_right(mob/user)
 	if(user.mind && isliving(user))
@@ -133,6 +135,7 @@
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	stump_type = null
 	pixel_x = -32
+	metalizer_result = /obj/machinery/anvil
 
 /obj/structure/flora/roguetree/stump/burnt/Initialize()
 	. = ..()
@@ -161,12 +164,41 @@
 	layer = TABLE_LAYER
 	plane = GAME_PLANE
 	blade_dulling = DULLING_CUT
-	debris = list(/obj/item/grown/log/tree/stick = 1)
 	static_debris = list(/obj/item/grown/log/tree/small = 1)
 	alpha = 255
 	pixel_x = -16
 	climb_offset = 14
 	stump_type = FALSE
+	destroy_sound = 'sound/foley/breaksound.ogg'
+	metalizer_result = /obj/machinery/anvil
+	var/lumber_amount = 1
+	var/lumber = /obj/item/grown/log/tree/small
+
+/obj/structure/flora/roguetree/stump/attacked_by(obj/item/I, mob/living/user)
+	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount)
+		var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+		var/lumber_time = (120 - (skill_level * 15))
+		playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
+		if(!do_after(user, lumber_time, target = user))
+			return
+		lumber_amount = rand(lumber_amount, max(lumber_amount, round(skill_level / 2)))
+		var/essense_sound_played = FALSE //This is here so the sound wont play multiple times if the essense itself spawns multiple times
+		for(var/i = 0; i < lumber_amount; i++)
+			if(prob(skill_level + user.goodluck(2)))
+				new /obj/item/grown/log/tree/small/essence(get_turf(src))
+				if(!essense_sound_played)
+					essense_sound_played = TRUE
+					to_chat(user, span_warning("Dendor watches over us..."))
+					playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
+			else
+				new lumber(get_turf(src))
+		if(!skill_level)
+			to_chat(user, span_info("I could have gotten more timber were I more skilled..."))
+		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+		playsound(src, destroy_sound, 100, TRUE)
+		qdel(src)
+		return TRUE
+	..()
 
 /obj/structure/flora/roguetree/stump/Initialize()
 	. = ..()
@@ -182,6 +214,7 @@
 	static_debris = list(/obj/item/grown/log/tree = 1)
 	climb_offset = 14
 	stump_type = FALSE
+	metalizer_result = /obj/structure/bars/pipe
 
 /obj/structure/flora/roguetree/stump/log/Initialize()
 	. = ..()
@@ -363,7 +396,7 @@
 	leanable = TRUE
 
 /obj/structure/flora/roguegrass/bush/wall/Initialize()
-	..()
+	. = ..()
 	icon_state = "bushwall[pick(1,2)]"
 
 /obj/structure/flora/roguegrass/bush/wall/update_icon()
@@ -388,7 +421,7 @@
 	static_debris = null
 
 /obj/structure/flora/roguegrass/bush/wall/tall/Initialize()
-	..()
+	. = ..()
 	icon_state = "tallbush[pick(1,2)]"
 
 
@@ -423,7 +456,7 @@
 
 
 /obj/structure/flora/rogueshroom/Initialize()
-	..()
+	. = ..()
 	icon_state = "mush[rand(1,5)]"
 	if(icon_state == "mush5")
 		static_debris = list(/obj/item/natural/thorn=1, /obj/item/grown/log/tree/small = 1)

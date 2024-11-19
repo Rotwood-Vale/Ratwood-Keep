@@ -184,7 +184,7 @@ SUBSYSTEM_DEF(vote)
 					if(H.stat != DEAD)
 						vote_power += 3
 					if(H.job)
-						var/list/list_of_powerful = list("Duke", "Duchess Consort", "Priest", "Steward", "Hand")
+						var/list/list_of_powerful = list("Duke", "Duchess", "Priest", "Steward", "Hand")
 						if(H.job in list_of_powerful)
 							vote_power += 5
 						else
@@ -197,6 +197,16 @@ SUBSYSTEM_DEF(vote)
 	return 0
 
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key)
+	var/sound/vote_alert = new()
+	vote_alert.file = null
+	vote_alert.priority = 250
+	vote_alert.channel = CHANNEL_ADMIN
+	vote_alert.frequency = 1
+	vote_alert.wait = 1
+	vote_alert.repeat = 0
+	vote_alert.status = SOUND_STREAM
+	vote_alert.volume = 100
+
 	if(!mode)
 		if(started_time && initiator_key)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
@@ -242,6 +252,7 @@ SUBSYSTEM_DEF(vote)
 			if("endround")
 				initiator_key = "Zizo"
 				choices.Add("Continue Playing","End Round")
+				vote_alert.file = 'sound/roundend/roundend-vote-sound.ogg'
 			else
 				return 0
 		mode = vote_type
@@ -252,6 +263,9 @@ SUBSYSTEM_DEF(vote)
 			text += "\n[question]"
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
+		if(vote_alert.file)
+			for(var/mob/M in GLOB.player_list)
+				SEND_SOUND(M, vote_alert)
 		to_chat(world, "\n<font color='purple'><b>[text]</b>\nClick <a href='?src=[REF(src)]'>here</a> to place your vote.\nYou have [DisplayTimeText(vp)] to vote.</font>")
 		time_remaining = round(vp/10)
 //		for(var/c in GLOB.clients)

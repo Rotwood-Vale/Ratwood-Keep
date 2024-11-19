@@ -66,7 +66,7 @@
 			//nothing
 		if(21 to INFINITY)
 			if(prob(current_cycle-10))
-				M.cure_nearsighted(list(EYE_DAMAGE))
+				M.cure_nearsighted(EYE_DAMAGE)
 	..()
 	return
 

@@ -20,38 +20,66 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	set name = "Journey to the Underworld"
 	set category = "Spirit"
 
-	switch(alert("Descend to the Underworld?",,"Yes","No"))
+	var/descend_text = "Descend to the Underworld?"
+
+	if(isrogueobserver(mob) || isliving(mob))
+		if(mob.mind?.funeral)
+			descend_text = "Your body has been buried.\n\
+							Are you ready to be judged?"
+
+	switch(alert(descend_text, "", "Yes", "No"))
 		if("Yes")
-			if(istype(mob, /mob/living/carbon/spirit))
-				//HONEYPOT CODE, REMOVE LATER
-				message_admins("RETARDED MOTHERFUCKER [key] IS TRYING TO CRASH THE SERVER BY SPAWNING 3 GORILLION SPIRITS!")
-				return
-
-			if(istype(mob, /mob/living/carbon/human))
-				var/mob/living/carbon/human/D = mob
-				if(D.buried && D.funeral)
-					D.returntolobby()
-					return
-
-				// Check if the player's job is hiv+
-				var/datum/job/target_job = SSjob.GetJob(D.mind.assigned_role)
-				if(target_job)
-					if(target_job.job_reopens_slots_on_death)
-						target_job.current_positions = max(0, target_job.current_positions - 1)
-					if(target_job.same_job_respawn_delay)
-						// Store the current time for the player
-						GLOB.job_respawn_delays[src.ckey] = world.time + target_job.same_job_respawn_delay
-
-			for(var/obj/effect/landmark/underworld/A in shuffle(GLOB.landmarks_list))
-				var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
-				O.livingname = mob.name
-				O.ckey = ckey
-				O.set_patron(prefs.selected_patron)
-				SSdroning.area_entered(get_area(O), O.client)
-				break
-			verbs -= GLOB.ghost_verbs
+			try_descend()
 		if("No")
 			usr << "You have second thoughts."	
+
+/client/proc/try_descend()
+	if(istype(mob, /mob/living/carbon/spirit))
+		//HONEYPOT CODE, REMOVE LATER
+		message_admins("STUPID MOTHERFUCKER [key] IS TRYING TO CRASH THE SERVER BY SPAWNING 3 GORILLION SPIRITS!")
+		return
+
+	var/datum/mind/prevmind // for tracking mind-based respawns w/ spirit
+	if(!isadminobserver(mob) && !isnewplayer(mob)) // auto-respawning aghosts that become spirits might not be great
+		prevmind = mob.mind
+
+	if(isrogueobserver(mob) && mob.mind) // adminghosts are unaffected, base observer type
+		if(mob.mind.funeral == TRUE)
+			var/mob/dead/observer/rogue/rogueghost = mob
+			to_chat(rogueghost, span_rose("With my body buried in creation, my soul passes on in peace..."))
+			burial_rite_return_ghost_to_lobby(rogueghost)
+			return
+
+	if(isliving(mob))
+		var/mob/living/D = mob
+		if(D.mind && D.mind.funeral)
+			var/ghost = burial_rite_make_ghost(D)
+			if(ghost)
+				to_chat(ghost, span_rose("With my body buried in creation, my soul passes on in peace..."))
+				burial_rite_return_ghost_to_lobby(ghost)
+				return
+			else
+				message_admins("[key_name(mob)] was funeralized, but failed to turn into ghost when using Journey to the Underworld verb. Might need admin intervention.")
+				mob.log_message("was funeralized, but failed to turn into ghost when using Journey to the Underworld verb.", LOG_GAME)
+
+		// Check if the player's job is hiv+
+		var/datum/job/target_job = SSjob.GetJob(D.mind.assigned_role)
+		if(target_job)
+			if(target_job.job_reopens_slots_on_death)
+				target_job.current_positions = max(0, target_job.current_positions - 1)
+			if(target_job.same_job_respawn_delay)
+				// Store the current time for the player
+				GLOB.job_respawn_delays[src.ckey] = world.time + target_job.same_job_respawn_delay
+
+	for(var/obj/effect/landmark/underworld/A in shuffle(GLOB.landmarks_list))
+		var/mob/living/carbon/spirit/O = new /mob/living/carbon/spirit(A.loc)
+		O.livingname = mob.name
+		O.ckey = ckey
+		O.set_patron(prefs.selected_patron)
+		O.prevmind = prevmind // for if we get buried later
+		SSdroning.area_entered(get_area(O), O.client)
+		break
+	verbs -= GLOB.ghost_verbs
 
 /mob/verb/returntolobby()
 	set name = "{RETURN TO LOBBY}"

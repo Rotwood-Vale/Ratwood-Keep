@@ -363,7 +363,7 @@
 		return FALSE
 	if(L)
 		if(H?.check_dodge_skill())
-			prob2defend = prob2defend + (L.STASPD * 15)
+			prob2defend = prob2defend + (L.STASPD * 14)
 		else
 			prob2defend = prob2defend + (L.STASPD * 10)
 	if(U)
@@ -376,7 +376,7 @@
 		if(UH?.mind)
 			prob2defend = prob2defend - (UH.mind.get_skill_level(I.associated_skill) * 10)
 	if(H)
-		if(!H?.check_armor_skill())
+		if(!H?.check_armor_skill() || H?.legcuffed)
 			H.Knockdown(1)
 			return FALSE
 		/* Commented out due to gaping imbalance

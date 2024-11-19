@@ -88,6 +88,10 @@
 
 	var/datum/sleep_adv/sleep_adv = null
 
+	var/funeral = FALSE // used for tracking funeral status between living/dead mobs and underworld spirits
+
+	var/mugshot_set = FALSE
+	
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src
@@ -186,8 +190,7 @@
 	var/datum/mind/M = person
 	var/mob/living/carbon/human/H = current
 	if(M.known_people && istype(H))
-		if(M.known_people[H.real_name])
-			M.known_people[H.real_name] = null
+		M.known_people -= H.real_name
 
 
 /datum/mind/proc/unknow_all_people()

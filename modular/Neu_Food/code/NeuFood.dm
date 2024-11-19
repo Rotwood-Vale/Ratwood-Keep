@@ -102,6 +102,30 @@
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 
+/obj/item/kitchen/ironspoon
+	name = "iron spoon"
+	desc = "Traditional utensil for shoveling soup into your mouth, now made with iron for that metallic taste!"
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	icon_state = "spoon_iron"
+	force = 0
+	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/kitchen/fork
+	name = "wooden fork"
+	desc = "Traditional utensil for stabbing your food in order to shove it into your mouth."
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	icon_state = "fork_iron" //should be "fork" but there's currently no icon, this is temporary, FIX ASAP!!
+	force = 0
+	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/kitchen/ironfork
+	name = "iron fork"
+	desc = "Traditional utensil for stabbing your food, now made with iron for extra stabbiness!"
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	icon_state = "fork_iron"
+	force = 0
+	w_class = WEIGHT_CLASS_TINY
+
 /obj/item/kitchen/rollingpin
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
@@ -136,6 +160,9 @@
 	drinksounds = list('sound/items/drink_cup (1).ogg','sound/items/drink_cup (2).ogg','sound/items/drink_cup (3).ogg','sound/items/drink_cup (4).ogg','sound/items/drink_cup (5).ogg')
 	fillsounds = list('sound/items/fillcup.ogg')
 	var/in_use // so you can't spam eating with spoon
+
+/obj/item/reagent_containers/glass/bowl/iron
+	icon_state = "bowl_iron"
 
 /obj/item/reagent_containers/glass/bowl/update_icon()
 	cut_overlays()
@@ -410,7 +437,7 @@
 	to_chat(user, "<span class='notice'>Adding water, now its time to knead it...</span>")
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user,2 SECONDS, target = src))
-		user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+		user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 		name = "wet powder"
 		desc = "Destined for greatness, at your hands."
 		R.reagents.remove_reagent(/datum/reagent/water, 10)
@@ -422,7 +449,7 @@
 	if(water_added)
 		playsound(get_turf(user), 'modular/Neu_Food/sound/kneading_alt.ogg', 90, TRUE, -1)
 		if(do_after(user,3 SECONDS, target = src))
-			user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			new /obj/item/reagent_containers/food/snacks/rogue/dough_base(loc)
 			qdel(src)
 	else ..()
@@ -449,7 +476,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -459,7 +486,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/peppersteak/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -469,7 +496,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/onionsteak/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -479,7 +506,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -489,7 +516,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/friedrat/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -499,7 +526,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/hcakeslice/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -509,7 +536,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/ccakeslice/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -519,7 +546,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/bun_grenz/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -529,7 +556,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -539,7 +566,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -549,7 +576,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -559,7 +586,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -569,7 +596,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/wienercabbage/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -579,7 +606,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotato/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -589,7 +616,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/wieneronions/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -599,7 +626,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions/plated(loc)
 				qdel(I)
 				qdel(src)
@@ -609,7 +636,7 @@
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			if(do_after(user,2 SECONDS, target = src))
-				user.mind.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 				new /obj/item/reagent_containers/food/snacks/rogue/frybirdtato/plated(loc)
 				qdel(I)
 				qdel(src)
