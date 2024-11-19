@@ -226,11 +226,11 @@
 /obj/item/keyring/mercenary_boss
 	keys = list(/obj/item/key/mercenary, /obj/item/key/mercenary_boss)
 
-/obj/item/key/goblin
+/obj/item/keyring/goblin
 	keys = list(/obj/item/key/goblin)
 
-/obj/item/key/goblinguard
+/obj/item/keyring/goblinguard
 	keys = list(/obj/item/key/goblin, /obj/item/key/goblinguard)
 
-/obj/item/key/goblinchief
+/obj/item/keyring/goblinchief
 	keys = list(/obj/item/key/goblin, /obj/item/key/goblinguard, /obj/item/key/goblinchief)
