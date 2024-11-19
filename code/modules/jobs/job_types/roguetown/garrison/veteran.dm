@@ -172,7 +172,6 @@
 	beltr = /obj/item/storage/keyring/guardcastle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
-	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
