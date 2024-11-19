@@ -6,7 +6,7 @@
 	total_positions = 3//From 6
 	spawn_positions = 3//From 6
 	allowed_sexes = list(MALE)
-	allowed_races = list(/datum/species/goblinp)
+	allowed_races = RACES_GOBLIN
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	tutorial = "You're the hand of the Chief. He's an individual of higher power than any mortal. At least, that's what you've been taught. \
 	Do what the Chief insists, while keeping order in the fort. Try not to venture out without the Chief's say-so. \
