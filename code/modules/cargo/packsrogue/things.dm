@@ -26,7 +26,7 @@
 
 /datum/supply_pack/rogue/Things/chain
 	name = "Chain"
-	cost = 12
+	cost = 25
 	contains = list(/obj/item/rope/chain)
 
 /datum/supply_pack/rogue/Things/needle
@@ -36,7 +36,7 @@
 
 /datum/supply_pack/rogue/Things/hknife
 	name = "Hunting Knife"
-	cost = 12
+	cost = 25
 	contains = list(/obj/item/rogueweapon/huntingknife)
 
 /datum/supply_pack/rogue/Things/cloth
@@ -51,7 +51,7 @@
 
 /datum/supply_pack/rogue/Things/Lamp
 	name = "Lamptern"
-	cost = 12
+	cost = 25
 	contains = list(/obj/item/flashlight/flare/torch/lantern)
 
 /datum/supply_pack/rogue/Things/westleach

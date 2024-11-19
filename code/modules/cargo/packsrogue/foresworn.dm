@@ -44,18 +44,18 @@
 
 /datum/supply_pack/rogue/foresworn/bracers
 	name = "Steel Bracers"
-	cost = 25
+	cost = 40
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
 
 /datum/supply_pack/rogue/foresworn/chaingauntlets
 	name = "Steel Chain Gauntlets"
-	cost = 25
+	cost = 40
 	contains = list(/obj/item/clothing/gloves/roguetown/chain)
 
 /datum/supply_pack/rogue/foresworn/boots
 	name = "Steel Boots"
-	cost = 25
+	cost = 40
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 
 
@@ -138,12 +138,12 @@
 
 /datum/supply_pack/rogue/foresworn/billhook
 	name = "Billhook"
-	cost = 25
+	cost = 40
 	contains = list(/obj/item/rogueweapon/spear/billhook)
 
 /datum/supply_pack/rogue/foresworn/halberd
 	name = "Halberd"
-	cost = 25
+	cost = 40
 	contains = list(/obj/item/rogueweapon/halberd)
 
 /datum/supply_pack/rogue/foresworn/spear
@@ -153,7 +153,7 @@
 
 /datum/supply_pack/rogue/foresworn/bardiche
 	name = "Bardiche"
-	cost = 25
+	cost = 40
 	contains = list(/obj/item/rogueweapon/halberd/bardiche)
 
 /datum/supply_pack/rogue/foresworn/ebeak

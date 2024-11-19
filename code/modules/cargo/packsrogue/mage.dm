@@ -54,10 +54,32 @@
 
 /datum/supply_pack/rogue/Mage/spear
 	name = "Iron Spear"
-	cost = 10
+	cost = 25
 	contains = list(/obj/item/rogueweapon/spear)
 
 /datum/supply_pack/rogue/Mage/spear/billhook
 	name = "Billhook"
-	cost = 20
+	cost = 40
 	contains = list(/obj/item/rogueweapon/spear/billhook)
+
+
+/datum/supply_pack/rogue/Mage/halberd
+	name = "Halberd"
+	cost = 40
+	contains = list(/obj/item/rogueweapon/halberd)
+
+
+/datum/supply_pack/rogue/Mage/bardiche
+	name = "Bardiche"
+	cost = 40
+	contains = list(/obj/item/rogueweapon/halberd/bardiche)
+
+/datum/supply_pack/rogue/Mage/ebeak
+	name = "Eagle's Beak"
+	cost = 50
+	contains = list(/obj/item/rogueweapon/eaglebeak)
+
+/datum/supply_pack/rogue/Mage/Lucerne
+	name = "Lucerne"
+	cost = 50
+	contains = list(/obj/item/rogueweapon/eaglebeak/lucerne)

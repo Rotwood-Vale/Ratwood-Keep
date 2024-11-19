@@ -13,7 +13,7 @@
 
 /datum/supply_pack/rogue/Brigand/bracers
 	name = "Steel Bracers"
-	cost = 25
+	cost = 40
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 
 /datum/supply_pack/rogue/Brigand/chainlegs
@@ -24,12 +24,12 @@
 
 /datum/supply_pack/rogue/Brigand/chaingauntlets
 	name = "Steel Chain Gauntlets"
-	cost = 25
+	cost = 40
 	contains = list(/obj/item/clothing/gloves/roguetown/chain)
 
 /datum/supply_pack/rogue/Brigand/boots
 	name = "Steel Boots"
-	cost = 25
+	cost = 40
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 
 
