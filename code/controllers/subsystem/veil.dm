@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(veil)
  */
 GLOBAL_VAR_INIT(veil_tolls, 0)
 
-#define MINIMUM_VEIL_TOLLS 15
+#define MINIMUM_VEIL_TOLLS 20
 
 /**
  * Places MINIMUM_VEIL_TOLLS in the map, distributed among the landmarks.
