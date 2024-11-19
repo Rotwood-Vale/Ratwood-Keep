@@ -124,8 +124,8 @@
 	if(!client)
 		return
 	/// Update grain alpha
-	var/atom/movable/screen/grain_obj = hud_used.grain
-	grain_obj.alpha = 55 + (new_stress * 1.5)
+	//var/atom/movable/screen/grain_obj = hud_used.grain
+	//grain_obj.alpha = 55 + (new_stress * 1.5)
 
 	var/fade_progress = 0
 	if(new_stress < 5)

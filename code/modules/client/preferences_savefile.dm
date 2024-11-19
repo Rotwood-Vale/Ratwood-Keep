@@ -340,6 +340,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		statpack = GLOB.statpacks[statpack]
 		//statpack = new statpack
 
+/datum/preferences/proc/_load_virtue(S)
+	var/virtue_type
+	S["virtue"] >> virtue_type
+	if (virtue_type)
+		virtue = new virtue_type()
+	else
+		virtue = new /datum/virtue/none
+
 /datum/preferences/proc/_load_loadout(S)
 	var/loadout_type
 	S["loadout"] >> loadout_type
@@ -399,6 +407,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Species
 	_load_species(S)
 
+	_load_virtue(S)
 	_load_flaw(S)
 
 	// LETHALSTONE edit: jank-ass load our statpack choice
@@ -603,6 +612,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["voice_type"] , voice_type)
 	WRITE_FILE(S["pronouns"] , pronouns)
 	WRITE_FILE(S["statpack"] , statpack.type)
+	WRITE_FILE(S["virtue"] , virtue.type)
 	if(loadout)
 		WRITE_FILE(S["loadout"] , loadout.type)
 	else

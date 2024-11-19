@@ -219,6 +219,12 @@
 		resolveAdjacentClick(A,W,params)
 		return
 
+	if (A.loc && ismob(A.loc.loc))
+		// we're inside a container inside a mob, so we're almost certainly a saddle, a box, or someone's organs. check if we're adjacent
+		if (src.Adjacent(A.loc.loc))
+			resolveAdjacentClick(A,W,params)
+			return
+
 	if(W)
 		if(ismob(A))
 			if(CanReach(A,W))

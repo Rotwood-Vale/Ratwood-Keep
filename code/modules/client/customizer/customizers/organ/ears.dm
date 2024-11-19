@@ -114,6 +114,8 @@
 		/datum/sprite_accessory/ears/possum,
 		/datum/sprite_accessory/ears/raccoon,
 		/datum/sprite_accessory/ears/mouse,
+		/datum/sprite_accessory/ears/big/acrador_long,
+		/datum/sprite_accessory/ears/big/acrador_short,
 		)
 
 /datum/customizer/organ/ears/anthro
@@ -174,4 +176,6 @@
 		/datum/sprite_accessory/ears/possum,
 		/datum/sprite_accessory/ears/raccoon,
 		/datum/sprite_accessory/ears/mouse,
+		/datum/sprite_accessory/ears/big/acrador_long,
+		/datum/sprite_accessory/ears/big/acrador_short,
 		)

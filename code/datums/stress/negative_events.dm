@@ -53,7 +53,7 @@
 	max_stacks = 5
 	stressadd = 2
 	stressadd_per_extra_stack = 2
-	desc = span_red("Butchery.")
+	desc = span_red("I watched people get butchered.")
 
 /datum/stressevent/fviewdismember
 	timer = 1 MINUTES
@@ -169,17 +169,17 @@
 /datum/stressevent/parablood
 	timer = 15 SECONDS
 	stressadd = 3
-	desc = span_red("There is so much blood here.. it's like a battlefield!")
+	desc = span_red("There is so much blood here... It's like a battlefield!")
 
 /datum/stressevent/parastr
 	timer = 2 MINUTES
 	stressadd = 2
-	desc = span_red("That beast is stronger.. and might easily kill me!")
+	desc = span_red("That beast is stronger... And might easily kill me!")
 
 /datum/stressevent/paratalk
 	timer = 2 MINUTES
 	stressadd = 2
-	desc = span_red("They are plotting against me in evil tongues..")
+	desc = span_red("They are plotting against me in evil tongues...")
 
 /datum/stressevent/crowd
 	timer = 2 MINUTES

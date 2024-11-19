@@ -18,13 +18,14 @@
 	if(playing && user.get_active_held_item() != src)
 		playing = FALSE
 		soundloop.stop()
+		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 
 /obj/item/rogue/instrument/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.4,"sx" = 0,"sy" = 2,"nx" = 15,"ny" = -4,"wx" = -1,"wy" = 2,"ex" = 7,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+				return list("shrink" = 0.4,"sx" = 0,"sy" = 2,"nx" = 1,"ny" = -4,"wx" = -1,"wy" = 2,"ex" = 7,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = -2,"eturn" = -2,"nflip" = 8,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
@@ -33,10 +34,11 @@
 //	soundloop.start()
 	. = ..()
 
-/obj/item/rogue/instrument/dropped()
+/obj/item/rogue/instrument/dropped(mob/living/user, silent)
 	..()
 	if(soundloop)
 		soundloop.stop()
+		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 
 /obj/item/rogue/instrument/attack_self(mob/living/user)
 	var/stressevent = /datum/stressevent/music
@@ -45,6 +47,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(!playing)
+		var/note_color = "#7f7f7f" // uses MMO item rarity color grading
 		var/curfile = input(user, "Which song?", "Roguetown", name) as null|anything in song_list
 		if(!user)
 			return
@@ -54,24 +57,31 @@
 				if(1)
 					stressevent = /datum/stressevent/music
 				if(2)
+					note_color = "#ffffff"
 					stressevent = /datum/stressevent/music/two
 				if(3)
+					note_color = "#1eff00"
 					stressevent = /datum/stressevent/music/three
 				if(4)
+					note_color = "#0070dd"
 					stressevent = /datum/stressevent/music/four
 				if(5)
+					note_color = "#a335ee"
 					stressevent = /datum/stressevent/music/five
 				if(6)
+					note_color = "#ff8000"
 					stressevent = /datum/stressevent/music/six
 		if(playing)
 			playing = FALSE
 			soundloop.stop()
+			user.remove_status_effect(/datum/status_effect/buff/playing_music)
 			return
 		if(!(src in user.held_items))
 			return
 		if(user.get_inactive_held_item())
 			playing = FALSE
 			soundloop.stop()
+			user.remove_status_effect(/datum/status_effect/buff/playing_music)
 			return
 		if(curfile)
 			curfile = song_list[curfile]
@@ -79,12 +89,15 @@
 			soundloop.mid_sounds = list(curfile)
 			soundloop.cursound = null
 			soundloop.start()
-		for(var/mob/living/carbon/human/L in viewers(7))
+			user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
+		/* for(var/mob/living/carbon/human/L in viewers(7)) // this is very simple, shouldn't we pulse this on a regular tick?
 			L.add_stress(stressevent)
-			add_sleep_experience(user, /datum/skill/misc/music, user.STAINT)
+			add_sleep_experience(user, /datum/skill/misc/music, user.STAINT)*/
+		// we handle the above on the status effect now
 	else
 		playing = FALSE
 		soundloop.stop()
+		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 
 /obj/item/rogue/instrument/lute
 	name = "lute"
@@ -167,7 +180,8 @@
 	"Tangled Trod" = 'sound/music/instruments/hurdy (2).ogg',
 	"Motus" = 'sound/music/instruments/hurdy (3).ogg',
 	"Becalmed" = 'sound/music/instruments/hurdy (4).ogg',
-	"The Bloody Throne" = 'sound/music/instruments/hurdy (5).ogg')
+	"The Bloody Throne" = 'sound/music/instruments/hurdy (5).ogg',
+	"We Shall Sail Together" = 'sound/music/instruments/hurdy (6).ogg')
 
 /obj/item/rogue/instrument/viola
 	name = "viola"
@@ -178,3 +192,19 @@
 	"Ursine's Home" = 'sound/music/instruments/viola (3).ogg',
 	"Mead, Gold and Blood" = 'sound/music/instruments/viola (4).ogg',
 	"Gasgow's Reel" = 'sound/music/instruments/viola (5).ogg')
+
+/obj/item/rogue/instrument/vocals
+	name = "vocalist's talisman"
+	desc = "This talisman eminates a small shimmer of light. When held, it can amplify and even change a bard's voice."
+	icon_state = "vtalisman"
+	song_list = list("Harpy's Call (Feminine)" = 'sound/music/instruments/vocalsf (1).ogg',
+	"Necra's Lullaby (Feminine)" = 'sound/music/instruments/vocalsf (2).ogg',
+	"Death Touched Aasimar (Feminine)" = 'sound/music/instruments/vocalsf (3).ogg',
+	"Our Mother, Our Divine (Feminine)" = 'sound/music/instruments/vocalsf (4).ogg',
+	"Wed, Forever More (Feminine)" = 'sound/music/instruments/vocalsf (5).ogg',
+	"Paper Boats (Feminine + Vocals)" = 'sound/music/instruments/vocalsf (6).ogg',
+	"The Dragon's Blood Surges (Masculine)" = 'sound/music/instruments/vocalsm (1).ogg',
+	"Timeless Temple (Masculine)" = 'sound/music/instruments/vocalsm (2).ogg',
+	"Angel's Earnt Halo (Masculine)" = 'sound/music/instruments/vocalsm (3).ogg',
+	"A Fabled Choir (Masculine)" = 'sound/music/instruments/vocalsm (4).ogg',
+	"A Pained Farewell (Masculine + Feminine)" = 'sound/music/instruments/vocalsx (1).ogg')
