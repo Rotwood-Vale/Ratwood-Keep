@@ -219,6 +219,34 @@
 	if(cmode_music)
 		H.cmode_music = cmode_music
 
+	if(GLOB.hugbox_duration)
+		///FOR SOME STUPID FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_start)), 1)
+
+/mob/living/carbon/human/proc/hugboxing_start()
+	to_chat(src, span_warning("I will be in danger once I start moving."))
+	status_flags |= GODMODE
+	ADD_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(hugboxing_moved))
+	//Lies, it goes away even if you don't move after enough time
+	if(GLOB.hugbox_duration_still)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration_still)
+
+/mob/living/carbon/human/proc/hugboxing_moved()
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+	to_chat(src, span_danger("I have [DisplayTimeText(GLOB.hugbox_duration)] before my protection runs out!"))
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration)
+
+/mob/living/carbon/human/proc/hugboxing_end()
+	if(QDELETED(src))
+		return
+	//hugbox already ended
+	if(!(status_flags & GODMODE))
+		return
+	status_flags &= ~GODMODE
+	REMOVE_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
+	to_chat(src, span_danger("I feel no longer safe."))
+
 /datum/job/proc/add_spells(mob/living/H)
 	if(spells && H.mind)
 		for(var/S in spells)
@@ -233,28 +261,38 @@
 				continue
 			H.mind.RemoveSpell(S)
 
-/mob/living/carbon/human/proc/add_credit()
+/client/verb/set_mugshot()
+	set category = "OOC"
+	set name = "Set Credits Mugshot"
+	if(mob && ishuman(mob) && mob.mind)
+		var/mob/living/carbon/human/H = mob
+		if(!H.mind.mugshot_set)
+			to_chat(src, "Updating mugshot...")
+			H.mind.mugshot_set = TRUE
+			H.add_credit(TRUE)
+			to_chat(src, "Mugshot updated.")
+		else
+			to_chat(src, "Mugshots are resource intensive. You are limited to one per character.")
+
+/mob/living/carbon/human/proc/add_credit(generate_for_adv_class = FALSE) //Evil code to get the proper image for adv classes after they spawn in.
 	if(!mind || !client)
 		return
 	var/thename = "[real_name]"
 	var/datum/job/J = SSjob.GetJob(mind.assigned_role)
-	var/used_title
-	if(J)
-		used_title = J.title
-		if(gender == FEMALE && J.f_title)
-			used_title = J.f_title
-	if(used_title)
-		thename = "[real_name] the [used_title]"
+	var/used_title = get_role_title()
 	GLOB.credits_icons[thename] = list()
 	var/client/C = client
 	var/datum/preferences/P = C.prefs
-	if(!P)
-		return
-	var/icon/I = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH))
+	var/icon/I
+	if(generate_for_adv_class)
+		I = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH), human_gear_override = src)
+	else if (P)
+		I = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH))
 	if(I)
 		var/icon/female_s = icon("icon"='icons/mob/clothing/under/masking_helpers.dmi', "icon_state"="credits")
 		I.Blend(female_s, ICON_MULTIPLY)
 		I.Scale(96,96)
+		GLOB.credits_icons[thename]["title"] = used_title
 		GLOB.credits_icons[thename]["icon"] = I
 		GLOB.credits_icons[thename]["vc"] = voice_color
 

@@ -54,13 +54,13 @@
 	. = ..()
 	if(get_dist(user, target) > 7)
 		return
-	
+
 	user.changeNext_move(CLICK_CD_MELEE)
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/HU = user
 
-		if((HU.job != "Duke") && (HU.job != "Duchess Consort"))
+		if((HU.job != "Duke") && (HU.job != "Duchess"))
 			to_chat(user, span_danger("The rod doesn't obey me."))
 			return
 
@@ -72,7 +72,7 @@
 
 			if(H.anti_magic_check())
 				return
-		
+
 			if(!(H in SStreasury.bank_accounts))
 				return
 
@@ -142,7 +142,22 @@
 
 /obj/item/rogueweapon/mace/stunmace/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	. = ..()
-	// TODO: proper stamcrit logic thats not busted
+	if(on)
+		if(target.rogfat >= target.maxrogfat)
+			target.electrocute_act(5, src)
+			charge -= 6
+		else//TODO: Check target.STACON!!!!!!!!!!
+			target.rogstam_add(-10)
+			target.rogfat_add(5)
+			charge -= 3
+		if(charge <= 0)
+			on = FALSE
+			charge = 0
+			update_icon()
+			if(user.a_intent)
+				var/datum/intent/I = user.a_intent
+				if(istype(I))
+					I.afterchange()
 
 /obj/item/rogueweapon/mace/stunmace/update_icon()
 	if(on)
@@ -153,6 +168,8 @@
 /obj/item/rogueweapon/mace/stunmace/attack_self(mob/user)
 	if(on)
 		on = FALSE
+		force = 25
+		force_wielded = 25
 	else
 		if(charge <= 33)
 			to_chat(user, span_warning("It's out of juice."))
@@ -160,6 +177,8 @@
 		user.visible_message(span_warning("[user] flicks [src] on."))
 		on = TRUE
 		charge--
+		force = 6
+		force_wielded = 6
 	playsound(user, pick('sound/items/stunmace_toggle (1).ogg','sound/items/stunmace_toggle (2).ogg','sound/items/stunmace_toggle (3).ogg'), 100, TRUE)
 	if(user.a_intent)
 		var/datum/intent/I = user.a_intent
@@ -177,6 +196,8 @@
 	if(charge <= 0)
 		on = FALSE
 		charge = 0
+		force = 25
+		force_wielded = 25
 		update_icon()
 		var/mob/user = loc
 		if(istype(user))
@@ -193,6 +214,8 @@
 			user.electrocute_act(5, src)
 		on = FALSE
 		charge = 0
+		force = 25
+		force_wielded = 25
 		update_icon()
 		playsound(src, pick('sound/items/stunmace_toggle (1).ogg','sound/items/stunmace_toggle (2).ogg','sound/items/stunmace_toggle (3).ogg'), 100, TRUE)
 

@@ -1,5 +1,5 @@
 /datum/job/roguetown/lady
-	title = "Duchess Consort"
+	title = "Duchess"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -42,11 +42,9 @@
 	beltl = /obj/item/keyring/royal
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-	if(isdwarf(H))
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress
-	else
-		armor = /obj/item/clothing/suit/roguetown/armor/armordress
-	head = /obj/item/clothing/head/roguetown/hennin
+	head = /obj/item/clothing/head/roguetown/duchess_hood
+	backl = /obj/item/clothing/suit/roguetown/armor/leather/duchess
+	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 //		SSticker.rulermob = H
 
 	id = /obj/item/clothing/ring/silver

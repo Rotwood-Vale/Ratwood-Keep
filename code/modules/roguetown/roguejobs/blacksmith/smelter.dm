@@ -151,6 +151,7 @@
 								var/obj/item/R = new I.smeltresult(src)
 								ore += R
 								qdel(I)
+					maxore = initial(maxore)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("[src] is finished."))
 					cooking = 31

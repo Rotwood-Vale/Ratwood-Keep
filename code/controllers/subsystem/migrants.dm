@@ -426,10 +426,6 @@ SUBSYSTEM_DEF(migrants)
 	character.invisibility = INVISIBILITY_MAXIMUM
 	character.become_blind("advsetup")
 
-	if(GLOB.adventurer_hugbox_duration)
-		///For whatever reason, this requires a timer or else it just breaks.
-		addtimer(CALLBACK(character, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
-
 /proc/grant_lit_torch(mob/living/carbon/human/character)
 	var/obj/item/flashlight/flare/torch/torch = new()
 	torch.spark_act()

@@ -31,10 +31,10 @@
 	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	armor = /obj/item/clothing/cloak/stabard/dungeon
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
+	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/rogueweapon/whip/antique
 	beltl = /obj/item/keyring/dungeoneer

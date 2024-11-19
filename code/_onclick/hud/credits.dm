@@ -6,25 +6,22 @@
 
 /client/proc/RollCredits()
 	set waitfor = FALSE
-//	if(!fexists(CREDITS_PATH))
-//		return
-//	var/icon/credits_icon = new(CREDITS_PATH)
-	// LAZYINITLIST(credits)
-	// var/list/_credits = credits
-//	verbs += /client/proc/ClearCredits
-//	var/static/list/credit_order_for_this_round
-//	if(isnull(credit_order_for_this_round))
-//		credit_order_for_this_round = list("Thanks for playing!") + (shuffle(icon_states(credits_icon)) - "Thanks for playing!")
-	// var/list/coomer = GLOB.credits_icons.Copy()
-	// sleep(50)
-	// for(var/I in coomer)
-//		if(!credits)
-//			return
-		// _credits += new /atom/movable/screen/credit(null, I, src, coomer[I]["icon"])
-		// sleep(CREDIT_SPAWN_SPEED)
-//	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
-//	verbs -= /client/proc/ClearCredits
-//	qdel(credits_icon)
+	if(!fexists(CREDITS_PATH))
+		return
+	var/icon/credits_icon = new(CREDITS_PATH)
+	LAZYINITLIST(credits)
+	var/list/_credits = credits
+	verbs += /client/proc/ClearCredits
+	var/list/coomer = GLOB.credits_icons.Copy()
+	sleep(50)
+	for(var/I in coomer)
+		if(!credits)
+			return
+		_credits += new /atom/movable/screen/credit(null, I, src, coomer[I]["icon"])
+		sleep(CREDIT_SPAWN_SPEED)
+	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
+	verbs -= /client/proc/ClearCredits
+	qdel(credits_icon)
 
 /client/proc/ClearCredits()
 	set name = "Hide Credits"
@@ -68,14 +65,15 @@
 	icon = I
 	parent = P
 	var/voicecolor = "dc0174"
+	var/credited_title = GLOB.credits_icons[credited]["title"]
 	if(GLOB.credits_icons[credited])
 		if(GLOB.credits_icons[credited]["vc"])
 			voicecolor=GLOB.credits_icons[credited]["vc"]
-//	icon_state = credited
+	icon_state = credited
 	maptext = {"<span style='vertical-align:top; text-align:center;
 				color: #[voicecolor]; font-size: 100%;
 				text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
-				font-family: "Pterra";'>[credited]</span>"}
+				font-family: "Pterra";'>[credited] the [credited_title]</span>"}
 	creditee = credited
 	maptext_x = -32
 	maptext_y = 8
