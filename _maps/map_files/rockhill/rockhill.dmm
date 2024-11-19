@@ -4620,6 +4620,7 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "dDu" = (
@@ -14373,6 +14374,10 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
+"lmT" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/water/bath,
+/area/rogue/indoors/town/church)
 "lmV" = (
 /obj/item/rope/chain,
 /turf/open/floor/rogue/cobble,
@@ -19247,6 +19252,7 @@
 	pixel_x = 7;
 	pixel_y = 4
 	},
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/tile/bfloorz,
 /area/rogue/indoors/town/church)
 "pbo" = (
@@ -20556,6 +20562,7 @@
 /area/rogue/outdoors/rtfield)
 "qfL" = (
 /obj/structure/bed/rogue/shit,
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/manor)
 "qgc" = (
@@ -29993,6 +30000,11 @@
 "xvv" = (
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/tavern)
+"xvA" = (
+/obj/structure/bed/rogue,
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/dwarfin)
 "xww" = (
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "vertw"
@@ -318589,7 +318601,7 @@ teW
 tYm
 tYm
 sAg
-jvj
+lmT
 mfI
 jvj
 jlE
@@ -394188,7 +394200,7 @@ mvp
 mvp
 sco
 mvp
-ksR
+xvA
 sco
 fZJ
 fZJ
