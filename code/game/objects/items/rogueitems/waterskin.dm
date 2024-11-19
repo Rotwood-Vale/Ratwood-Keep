@@ -19,3 +19,16 @@
 
 /obj/item/reagent_containers/glass/bottle/waterskin/milk // Filled subtype used by the cheesemaker
 	list_reagents = list(/datum/reagent/consumable/milk = 64)
+
+/obj/item/reagent_containers/glass/bottle/waterskin/purifier
+	name = "purifying waterskin"
+	desc = "Bronze tubes spiral about from the mouth of this waterskin in complex, dizzying patterns."
+	icon_state = "water-purifier"
+
+/obj/item/reagent_containers/glass/bottle/waterskin/purifier/proc/cleanwater(mob/living/carbon/human/user)
+	playsound(user, 'sound/items/waterfilter.ogg', 40, TRUE)
+	to_chat(user, span_notice("I hear whizzing clockwork and gurgling water within [src]."))
+	if (prob(25))
+		new /obj/effect/temp_visual/small_smoke(user.loc)
+		to_chat(user, span_notice("The device sputters and spews a cloud of steam." + span_warning(" How annoying!")))
+

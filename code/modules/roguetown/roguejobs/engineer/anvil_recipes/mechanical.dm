@@ -30,6 +30,13 @@
 	created_item = /obj/item/flashlight/flare/torch/lantern/bronzelamptern
 	craftdiff = 3
 
+/datum/anvil_recipe/engineering/bronze/waterpurifier
+	name = "Self-Purifying Waterskin"
+	req_bar = /obj/item/ingot/bronze
+	created_item = /obj/item/reagent_containers/glass/bottle/waterskin/purifier
+	additional_items = list(/obj/item/reagent_containers/glass/bottle/waterskin)
+	craftdiff = 3
+
 // ------------ PROSTHETICS ----------------
 
 /datum/anvil_recipe/engineering/bronze/prosthetic/bronzeleft

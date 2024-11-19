@@ -35,6 +35,7 @@
 	neighborlay_override = "edge"
 	var/water_color = "#6a9295"
 	var/water_reagent = /datum/reagent/water
+	var/water_reagent_purified = /datum/reagent/water // If put through a water filtration device, provides this reagent instead
 	water_level = 2
 	var/wash_in = TRUE
 	var/swim_skill = FALSE
@@ -141,13 +142,20 @@
 			if(C.reagents.holder_full())
 				to_chat(user, span_warning("[C] is full."))
 				return
+			playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 			if(do_after(user, 8, target = src))
 				user.changeNext_move(CLICK_CD_MELEE)
-				playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 				var/list/L = list()
-				L[water_reagent] = 100
+				var/message = "I fill [C] from [src]."
+				// If the user is filling a water purifier and the water isn't already clean...
+				if (istype(C, /obj/item/reagent_containers/glass/bottle/waterskin/purifier) && water_reagent != water_reagent_purified)
+					var/obj/item/reagent_containers/glass/bottle/waterskin/purifier/P = C
+					L[water_reagent_purified] = 100
+					P.cleanwater(user)
+				else
+					L[water_reagent] = 100
 				C.reagents.add_reagent_list(L)
-				to_chat(user, span_notice("I fill [C] from [src]."))
+				to_chat(user, span_notice(message))
 			return
 	. = ..()
 
