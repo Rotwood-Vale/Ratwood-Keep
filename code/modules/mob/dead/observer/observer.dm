@@ -95,11 +95,11 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		return
 
 	for(var/obj/structure/O in T)
-		// let ghosts pass through doors
-		if(istype(O, /obj/structure/mineral_door))
+		// let ghosts pass through structures, including doors and palisades
+		if(istype(O, /obj/structure))
 			return ..()
 
-		// but not any other solid objects
+		// but not walls
 		if(O.density)
 			return
 
