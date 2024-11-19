@@ -1,7 +1,7 @@
 /datum/stressevent/psyprayer
 	timer = 30 MINUTES
 	stressadd = -2
-	desc = span_green("The Gods smiles upon me.")
+	desc = span_green("The Gods smile upon me.")
 
 /datum/stressevent/viewsinpunish
 	timer = 5 MINUTES
@@ -21,7 +21,7 @@
 /datum/stressevent/blessed
 	timer = 60 MINUTES
 	stressadd = -2
-	desc = span_green("I feel a soothing.")
+	desc = span_green("I feel a soothing presence.")
 
 /datum/stressevent/triumph
 	timer = 10 MINUTES
@@ -100,12 +100,12 @@
 
 /datum/stressevent/beautiful
 	stressadd = -2
-	desc = span_green("Their face is a work of art")
+	desc = span_green("Their face is a work of art!")
 	timer = 2 MINUTES
 
 /datum/stressevent/night_owl
 	stressadd = -3
-	desc = span_green("The night is so relaxing and peaceful")
+	desc = span_green("The night is so relaxing and peaceful.")
 	timer = 20 MINUTES
 
 /datum/stressevent/ozium
@@ -120,7 +120,7 @@
 
 /datum/stressevent/moondust_purest
 	stressadd = -8
-	desc = span_boldgreen("PUREST moondust surges through me!")
+	desc = span_boldgreen("PURE moondust surges through me!")
 	timer = 4 MINUTES
 
 /datum/stressevent/puzzle_easy
