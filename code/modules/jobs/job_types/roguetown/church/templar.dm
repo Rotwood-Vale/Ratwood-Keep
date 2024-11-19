@@ -34,14 +34,20 @@
 			else
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt
 			cloak = /obj/item/clothing/cloak/templar/astratan
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			beltr = /obj/item/rogueweapon/sword/long
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/noc
 			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			beltr = /obj/item/rogueweapon/sword/long
 		if("Dendor")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/dendor
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			beltr = /obj/item/rogueweapon/sword/long
 		if("Necra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
 			if(prob(50))
@@ -49,17 +55,24 @@
 			else
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
 			cloak = /obj/item/clothing/cloak/templar/necran
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			beltr = /obj/item/rogueweapon/sword/long
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			beltr = /obj/item/rogueweapon/sword/long
 		if("Malum")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/malum
 			cloak = /obj/item/clothing/cloak/templar/malummite
+			beltr = /obj/item/rogueweapon/mace/warhammer/steel
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 		if("Ravox")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
-
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			beltr = /obj/item/rogueweapon/sword/long
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs
@@ -69,7 +82,6 @@
 	backr = /obj/item/rogueweapon/shield/tower/metal
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltr = /obj/item/rogueweapon/sword/long
 	id = /obj/item/clothing/ring/silver
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
@@ -82,7 +94,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

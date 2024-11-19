@@ -191,6 +191,13 @@
 	check_other_side = TRUE
 	invis_without_trait = TRUE
 
+/obj/structure/fluff/traveltile/goblin
+	required_trait = TRAIT_GOBLINCAMP
+	can_gain_with_sight = FALSE
+	can_gain_by_walking = FALSE
+	check_other_side = TRUE
+	invis_without_trait = TRUE
+
 /obj/structure/fluff/traveltile/dungeon
 	name = "gate"
 	desc = "This gate's enveloping darkness is so opressive you dread to step through it."

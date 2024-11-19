@@ -2232,10 +2232,10 @@
 /area/rogue)
 "sv" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/gloves/roguetown/angle,
-/obj/item/clothing/gloves/roguetown/angle,
-/obj/item/clothing/gloves/roguetown/angle,
-/obj/item/clothing/gloves/roguetown/angle,
+/obj/item/clothing/gloves/roguetown/leather/angle,
+/obj/item/clothing/gloves/roguetown/leather/angle,
+/obj/item/clothing/gloves/roguetown/leather/angle,
+/obj/item/clothing/gloves/roguetown/leather/angle,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "sA" = (

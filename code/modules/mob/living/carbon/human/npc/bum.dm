@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	if(prob(80))
 		gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	else//Proper gloves!
-		gloves = /obj/item/clothing/gloves/roguetown/angle
+		gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 
 	if(prob(80))
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
