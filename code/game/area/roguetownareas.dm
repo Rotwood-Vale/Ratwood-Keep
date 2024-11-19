@@ -30,8 +30,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	soundenv = 2
 	plane = INDOOR_PLANE
 	converted_type = /area/rogue/outdoors
-/
-area/rogue/indoors/banditcamp
+
+/area/rogue/indoors/banditcamp
 	name = "bandit camp indoors"
 
 /area/rogue/indoors/cave
