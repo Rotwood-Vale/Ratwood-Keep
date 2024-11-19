@@ -259,9 +259,9 @@
 	desc = "Usually used for holding runelock sphreres."
 
 /obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
-	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
-	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
-	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
 
 /obj/item/storage/backpack/rogue //holding salvage vars for children
 	sewrepair = TRUE

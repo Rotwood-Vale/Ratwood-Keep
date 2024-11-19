@@ -98,3 +98,9 @@
 	dreams = list(
 		"...your body is bruised, your breathe haggers, but your harden fists and lower-legs refused to give in, going into actions with punches that landed furied blows from their groin to the top that managed to fractured several bones before dealing a decisive knockout that was followed up by a hefty punch that snapped the spine, refocusing your efforts towards another, deciding to use an delayed kick against the unarmored leg, avoiding the neck and above that can't be reached, knocking one by the wall, another on the table, a third against a few objects and a fourth against fifth, moving into a stomp that dislocated and later shattered bone, you stood there, gasping for air, all bruised and beaten up, yet victories..."
 	)
+
+/datum/skill/combat/firearms
+	name = "Firearms"
+	dreams = list(
+		"..."
+	)
