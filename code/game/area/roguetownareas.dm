@@ -30,8 +30,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	soundenv = 2
 	plane = INDOOR_PLANE
 	converted_type = /area/rogue/outdoors
-/
-area/rogue/indoors/banditcamp
+
+/area/rogue/indoors/banditcamp
 	name = "bandit camp indoors"
 
 /area/rogue/indoors/cave
@@ -680,6 +680,25 @@ area/rogue/indoors/banditcamp
 /area/rogue/outdoors/exposed/under/basement
 	icon_state = "basement"
 	droning_sound = 'sound/music/area/catacombs.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
+//Not really a town area, but whatever.
+/area/rogue/under/town/goblin
+	name = "goblin encampment"
+	icon_state = "decap"
+	ambientsounds = AMB_BASEMENT
+	ambientnight = AMB_BASEMENT
+	spookysounds = SPOOKY_DUNGEON
+	spookynight = SPOOKY_DUNGEON
+	droning_sound = 'sound/music/area/decap.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	first_time_text = "THE ENCAMPMENT"
+	converted_type = /area/rogue/outdoors/exposed/under/goblins
+/area/rogue/outdoors/exposed/under/goblins
+	icon_state = "decap"
+	droning_sound = 'sound/music/area/decap.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 

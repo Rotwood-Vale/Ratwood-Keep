@@ -49,12 +49,12 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = 0, 
-		"intelligence" = 0, 
-		"constitution" = 0, 
-		"endurance" = 0, 
-		"speed" = 0, 
+		"strength" = 0,
+		"perception" = 0,
+		"intelligence" = 0,
+		"constitution" = 0,
+		"endurance" = 0,
+		"speed" = 0,
 		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
@@ -78,7 +78,7 @@
 	)
 
 /datum/species/goblinp/check_roundstart_eligible()
-	return FALSE
+	return TRUE
 
 /datum/species/goblinp/qualifies_for_rank(rank, list/features)
 	return TRUE
