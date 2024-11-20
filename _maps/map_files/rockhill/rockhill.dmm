@@ -16325,7 +16325,7 @@
 "mKy" = (
 /obj/structure/veil/carriageman,
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/town)
+/area/rogue/outdoors/rtfield)
 "mKP" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner{
 	dir = 1
@@ -288744,7 +288744,7 @@ fxx
 fxx
 fxx
 fxx
-fxx
+mKy
 fxx
 fxx
 fxx
@@ -323238,7 +323238,7 @@ aOv
 aOv
 aOv
 aOv
-mKy
+aOv
 aOv
 aOv
 aOv
