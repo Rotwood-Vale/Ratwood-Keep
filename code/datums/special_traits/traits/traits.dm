@@ -490,14 +490,6 @@
 /datum/special_trait/nude_sleeper/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NUDE_SLEEPER, "[type]")
 
-/datum/special_trait/nymphomaniac
-	name = "Nymphomaniac"
-	greet_text = span_boldwarning("I'm in a constant state of arousal, and I cannot control my urges.")
-	weight = 50
-
-/datum/special_trait/nymphomaniac/on_apply(mob/living/carbon/human/character, silent)
-	character.add_curse(/datum/curse/baotha, TRUE)
-	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
 
 /datum/special_trait/loveless
 	name = "Loveless"

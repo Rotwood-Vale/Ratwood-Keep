@@ -455,7 +455,7 @@
 
 	var/obj/effect/proc_holder/spell/targeted/touch/prestidigitation/base_spell = attached_spell
 	if (user)
-		adjust_experience(user, base_spell.associated_skill, fatigue)
+		add_sleep_experience(user, base_spell.associated_skill, fatigue)
 
 /obj/item/melee/touch_attack/prestidigitation/proc/handle_mote(mob/living/carbon/human/user)
 	// adjusted from /obj/item/wisp_lantern & /obj/item/wisp

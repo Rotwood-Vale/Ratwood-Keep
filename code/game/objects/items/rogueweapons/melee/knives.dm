@@ -218,6 +218,7 @@
 	desc = "This is a dagger made of solid steel, more durable."
 	icon_state = "sdagger"
 	max_integrity = 150
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	icon_state = "sdaggeralt"

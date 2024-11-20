@@ -29,14 +29,16 @@
 
 /datum/outfit/job/roguetown/hand/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/hand
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
-	belt = /obj/item/storage/belt/rogue/leather/steel
+	belt = /obj/item/storage/belt/rogue/leather/black
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltr = /obj/item/keyring/hand
+	gloves = /obj/item/clothing/gloves/roguetown/leather/black
+	backl = /obj/item/clothing/suit/roguetown/armor/leather/hand
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/keyring/hand = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)

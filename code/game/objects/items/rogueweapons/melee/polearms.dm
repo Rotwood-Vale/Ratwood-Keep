@@ -290,6 +290,7 @@
 	smeltresult = /obj/item/ingot/bronze
 	force = 20
 	force_wielded = 25
+	gripsprite = FALSE //someone really should make a grip sprite
 
 /obj/item/rogueweapon/greatsword
 	force = 12

@@ -235,7 +235,7 @@
 
 /datum/game_mode/chaosmode/proc/pick_maniac()
 	restricted_jobs = list("Duke",
-	"Duchess Consort",
+	"Duchess",
 	"Prisoner",
 	"Dungeoneer",
 	"Inquisitor",
