@@ -84,7 +84,7 @@
 /datum/supply_pack/rogue/Brigand/steelflail
 	name = "Steel Flail"
 	cost = 100
-	contains =  list(/obj/item/rogueweapon/flail/sflail)
+	contains = list(/obj/item/rogueweapon/flail/sflail)
 
 /datum/supply_pack/rogue/Brigand/flail
 	name = "Iron flail"

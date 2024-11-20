@@ -25,15 +25,15 @@
 	cost = 24
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
-/datum/supply_pack/rogue/Knave/helmet/vhelmet
-	name = "volf Helmet"
+/datum/supply_pack/rogue/Knave/helmet/hhelmet
+	name = "Horned cap"
 	cost = 80
-	contains = list(/obj/item/clothing/head/roguetown/helmet/volfplate)
+	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
 
-/datum/supply_pack/rogue/Knave/Bevor
+/datum/supply_pack/rogue/Knave/bevor
 	name = "Bevor"
 	cost = 100
-	contains = (/obj/item/clothing/neck/roguetown/bervor)
+	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 
 /datum/supply_pack/rogue/Knave/leather/Lbracers
 	name = "Leather bracers"
