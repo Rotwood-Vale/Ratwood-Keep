@@ -4209,12 +4209,6 @@
 /area/rogue/indoors/town/manor)
 "dnr" = (
 /obj/structure/rack/rogue,
-/obj/effect/landmark/veil/toll,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
@@ -9987,6 +9981,11 @@
 /obj/effect/mob_spawn/human/skeleton/alive,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"hKI" = (
+/obj/structure/bed/rogue/inn/hay,
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/church)
 "hKU" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
 	dir = 1
@@ -17419,11 +17418,6 @@
 	},
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/effect/landmark/veil/toll,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_x = -8
@@ -422955,7 +422949,7 @@ fZJ
 teW
 ntC
 cYA
-cYA
+hKI
 lug
 wAm
 nJy
