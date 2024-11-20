@@ -6,7 +6,7 @@
 	total_positions = 1//From 2
 	spawn_positions = 1//From 2
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/goblinp)
+	allowed_races = RACES_GOBLIN
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 	tutorial = "You're an accomplished smith in your own right, chosen by your lord, the Chief, to supply the camp with fresh material. \
 	Try not to fail him, or the many subjects that you're to service by extension with your trade."

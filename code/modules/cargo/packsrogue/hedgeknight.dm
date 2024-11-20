@@ -25,7 +25,6 @@
 	cost = 200
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/bucket)
 
-
 /datum/supply_pack/rogue/Knight/blkstelbuckhelm
 	name = "Blacksteel Bucket Helm"
 	cost = 500
@@ -86,7 +85,6 @@
 	cost = 200
 	contains = list(/obj/item/clothing/under/roguetown/platelegs)
 
-
 /datum/supply_pack/rogue/Knight/blkplatechausses
 	name = "Blacksteel Plate Chausses"
 	cost = 500
@@ -101,7 +99,6 @@
 	name = "Blacksteel Plated boots"
 	cost = 200
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots)
-
 
 /datum/supply_pack/rogue/Knight/bsword
 	name = "Bastard Sword"
@@ -122,7 +119,6 @@
 	name = "Zweihander"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/greatsword/zwei)
-
 
 /datum/supply_pack/rogue/Knight/kiteshield
 	name = "Kite Shield"
