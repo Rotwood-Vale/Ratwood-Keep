@@ -2823,6 +2823,16 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/rogue/metal,
 /area/rogue/under/town/goblin)
+"IC" = (
+/mob/living/simple_animal/pet/fox/Swiper{
+	dir = 4
+	},
+/obj/structure/chair/wood/rogue{
+	dir = 4;
+	icon_state = "chair2"
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/banditcamp)
 "IR" = (
 /obj/structure/pillory/double,
 /turf/open/floor/rogue/blocks{
@@ -3446,14 +3456,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
-"Ve" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "largetable_mid"
-	},
-/mob/living/simple_animal/pet/fox,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/banditcamp)
 "Vh" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -4993,7 +4995,7 @@ ro
 Ih
 Ih
 ro
-RB
+IC
 Pu
 TG
 HM
@@ -5913,7 +5915,7 @@ RB
 RB
 sN
 eb
-Ve
+eb
 jd
 TG
 xy

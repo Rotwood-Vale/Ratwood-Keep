@@ -31,3 +31,11 @@
 	gender = FEMALE
 	gold_core_spawnable = NO_SPAWN
 	unique_pet = TRUE
+
+//Ratwood edit
+/mob/living/simple_animal/pet/fox/Swiper
+	name = "Swiper"
+	desc = "Matthios's gift to his worshippers. He speaks of secret tales of wisdom when nobody is listening."
+	gender = MALE
+	gold_core_spawnable = NO_SPAWN
+	unique_pet = TRUE

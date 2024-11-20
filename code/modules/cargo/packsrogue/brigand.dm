@@ -21,7 +21,6 @@
 	cost = 100
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs)
 
-
 /datum/supply_pack/rogue/Brigand/chaingauntlets
 	name = "Steel Chain Gauntlets"
 	cost = 80
@@ -31,7 +30,6 @@
 	name = "Steel Boots"
 	cost = 80
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
-
 
 /datum/supply_pack/rogue/Brigand/hauberk
 	name = "Hauberk"
@@ -53,24 +51,20 @@
 	cost = 100
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale)
 
-
 /datum/supply_pack/rogue/Brigand/blksteelcuirass
 	name = "Blacksteel Cuirass"
 	cost = 250
 	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass)
-
 
 /datum/supply_pack/rogue/Brigand/Bevor
 	name = "Bevor"
 	cost = 100
 	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 
-
 /datum/supply_pack/rogue/Brigand/gorget
 	name = "Gorget"
 	cost = 100
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
-
 
 /datum/supply_pack/rogue/Brigand/kettle
 	name = "Kettle Helmet"
@@ -79,9 +73,8 @@
 
 /datum/supply_pack/rogue/Brigand/sallet
 	name = "Sallet"
-	cost = 00
+	cost = 100
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
-
 
 /datum/supply_pack/rogue/Brigand/visoredsallet
 	name = "Visored Sallet"
@@ -91,7 +84,7 @@
 /datum/supply_pack/rogue/Brigand/steelflail
 	name = "Steel Flail"
 	cost = 100
-	contains =  list(/obj/item/rogueweapon/flail/sflail)
+	contains = list(/obj/item/rogueweapon/flail/sflail)
 
 /datum/supply_pack/rogue/Brigand/flail
 	name = "Iron flail"
@@ -113,7 +106,6 @@
 	cost = 100
 	contains = list(/obj/item/rogueweapon/mace/cudgel)
 
-
 /datum/supply_pack/rogue/Brigand/gmace
 	name = "Grand Mace"
 	cost = 200
@@ -134,12 +126,10 @@
 	cost = 100
 	contains = list(/obj/item/rogueweapon/stoneaxe/battle)
 
-
 /datum/supply_pack/rogue/Brigand/kiteshield
 	name = "Kite Shield"
 	cost = 100
 	contains = list(/obj/item/rogueweapon/shield/tower/metal)
-
 
 /datum/supply_pack/rogue/Brigand/Tshield
 	name = "Tower Shield"
