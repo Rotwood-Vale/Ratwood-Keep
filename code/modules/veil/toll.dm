@@ -15,15 +15,6 @@
 	SSveil.check_toll_upkeep()
 	return ..()
 
-/obj/item/veil/toll/tracked/pickup(mob/user)
-	..()
-	GLOB.veil_tolls -= 1
-	SSveil.check_toll_upkeep()
-
-/obj/item/veil/toll/tracked/dropped(mob/user)
-	..()
-	GLOB.veil_tolls += 1
-
 // this is kind of an hack that simulates picking up the toll
 /obj/item/veil/toll/attack_ghost(mob/dead/observer/rogue/veil/ghost)
 

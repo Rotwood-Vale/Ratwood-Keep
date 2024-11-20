@@ -1,4 +1,12 @@
 /**
+ * This list contains all tracked veil tolls in the game.
+ * It is used to avoid having too many coins in the game at once.
+ */
+GLOBAL_VAR_INIT(veil_tolls, 0)
+
+#define MINIMUM_VEIL_TOLLS 30
+
+/**
  * This tiny subsystem is responsible for managing the veil tolls.
  */
 SUBSYSTEM_DEF(veil)
@@ -8,14 +16,6 @@ SUBSYSTEM_DEF(veil)
 /datum/controller/subsystem/veil/Initialize(timeofday)
 	Initialize_tolls()
 	return ..()
-
-/**
- * This list contains all tracked veil tolls in the game.
- * It is used to avoid having too many coins in the game at once.
- */
-GLOBAL_VAR_INIT(veil_tolls, 0)
-
-#define MINIMUM_VEIL_TOLLS 30
 
 /**
  * Places MINIMUM_VEIL_TOLLS in the map, distributed among the landmarks.
@@ -33,7 +33,7 @@ GLOBAL_VAR_INIT(veil_tolls, 0)
 		continue 
 
 /**
- * Called whenever a toll is picked up or dropped.
+ * Called whenever a toll is picked up.
  * Ensures there's always enough tolls in the game.
  */
 /datum/controller/subsystem/veil/proc/check_toll_upkeep()
