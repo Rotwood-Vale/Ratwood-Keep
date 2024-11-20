@@ -39,7 +39,7 @@
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
 	deaggroprob = 5
-	defprob = 40
+	simpmob_defend = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
 	retreat_health = 0.3

@@ -388,6 +388,7 @@
 #define SLEEP_CHECK_DEATH(X) sleep(X); if(QDELETED(src) || stat == DEAD) return;
 
 //defense intents
+#define INTENT_NODEF 0
 #define INTENT_DODGE 1
 #define INTENT_PARRY 2
 

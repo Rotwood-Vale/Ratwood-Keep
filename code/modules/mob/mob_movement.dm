@@ -454,6 +454,8 @@
 	switch(mob.zone_selected)
 		if(BODY_ZONE_PRECISE_MOUTH)
 			next_in_line = BODY_ZONE_PRECISE_EARS
+		if(BODY_ZONE_PRECISE_EARS)
+			next_in_line = BODY_ZONE_PRECISE_SKULL
 		else
 			next_in_line = BODY_ZONE_PRECISE_MOUTH
 

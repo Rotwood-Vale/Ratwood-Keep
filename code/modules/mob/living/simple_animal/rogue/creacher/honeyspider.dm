@@ -32,7 +32,7 @@
 	STASTR = 9
 	STASPD = 10
 	deaggroprob = 0
-	defprob = 40
+	simpmob_defend = 40
 	defdrain = 10
 	attack_same = 0
 	retreat_health = 0.3

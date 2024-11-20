@@ -180,10 +180,13 @@
 	var/mob/living/L = user.mob
 	if(!istype(L))
 		return FALSE
-	if(L.d_intent == INTENT_DODGE)
-		L.def_intent_change(INTENT_PARRY)
-	else
-		L.def_intent_change(INTENT_DODGE)
+	switch(L.d_intent)
+		if(INTENT_DODGE)
+			L.def_intent_change(INTENT_PARRY)
+		if(INTENT_PARRY)
+			L.def_intent_change(INTENT_NODEF)
+		else
+			L.def_intent_change(INTENT_DODGE)
 
 /datum/keybinding/living/restd
 	hotkey_keys = list("V")

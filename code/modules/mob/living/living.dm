@@ -213,7 +213,7 @@
 			if(istype(get_inactive_held_item(), /obj/item/rogueweapon/shield))		//Less for inactive hand
 				self_points += 10
 
-			if(can_see(L, src))														//They need to see us to block us
+			if(L.can_see_cone(src))													//They need to see us to block us
 				if(istype(L.get_active_held_item(), /obj/item/rogueweapon/shield))	//Bonus if THEY are using a shield
 					target_points += 20
 					if(used_intent.tshield)
@@ -231,10 +231,10 @@
 				if(EAST || WEST)
 					target_points = (target_points * 0.75)
 
-			if(!can_see(L, src))													//If they can't see, they can't defend well
+			if(!L.can_see_cone(src))													//If they can't see, they can't defend well
 				target_points = (target_points * 0.5)
 
-			if(!can_see(src, L))													//If WE can't see, we can't tackle well
+			if(!src.can_see_cone(L))													//If WE can't see, we can't tackle well
 				self_points = (self_points * 0.5)
 
 			var/scorediff = (self_points - target_points)

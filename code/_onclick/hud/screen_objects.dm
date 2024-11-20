@@ -608,9 +608,15 @@
 	var/_y = text2num(params2list(params)["icon-y"])
 
 	if(_y>=0 && _y<17)
-		usr.def_intent_change(INTENT_DODGE)
+		if(usr.d_intent == INTENT_DODGE)
+			usr.def_intent_change(INTENT_NODEF)
+		else
+			usr.def_intent_change(INTENT_DODGE)
 	else if(_y>16 && _y<=32)
-		usr.def_intent_change(INTENT_PARRY)
+		if(usr.d_intent == INTENT_PARRY)
+			usr.def_intent_change(INTENT_NODEF)
+		else
+			usr.def_intent_change(INTENT_PARRY)
 
 
 /atom/movable/screen/cmode

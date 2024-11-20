@@ -127,7 +127,7 @@
 	STACON = 5
 	STASTR = 5
 	STASPD = 5
-	defprob = 50
+	simpmob_defend = 50
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/goat
 	can_buckle = FALSE
 	buckle_lying = 0

@@ -14,6 +14,12 @@
 	robust_searching = 1
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_sound = PUNCHWOOSH
+	STASTR = 5
+	STAPER = 5
+	STAINT = 1
+	STACON = 5
+	STAEND = 5
+	STASPD = 12
 	health = 40
 	maxHealth = 40
 	move_to_delay = 5

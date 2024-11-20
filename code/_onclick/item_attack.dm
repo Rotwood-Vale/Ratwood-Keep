@@ -355,11 +355,14 @@
 		I.take_damage(1, BRUTE, I.d_type)
 	return TRUE
 
-/mob/living/proc/simple_limb_hit(zone, mob/living/simple_animal/M)
+/mob/living/proc/simple_limb_hit(zone)
 	if(!zone)
 		return ""
-	zone = M.simple_limb_hit(zone)
-	return zone
+	if(istype(src, /mob/living/simple_animal))
+		zone = src.simple_limb_hit(zone)
+		return zone
+	else
+		return "body"
 
 /obj/item/proc/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	return
@@ -369,7 +372,7 @@
 	var/goodhit = accuracy_check[2]
 	if(goodhit == "Miss")
 		return FALSE
-	var/hitlim = simple_limb_hit(user.zone_selected)
+	var/hitlim = accuracy_check[1]
 	testing("[src] attacked_by")
 	I.funny_attack_effects(src, user)
 	if(I.force)
@@ -378,6 +381,7 @@
 		if(I.damtype == BRUTE)
 			next_attack_msg.Cut()
 			if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
+				hitlim = simple_limb_hit(accuracy_check[1])
 				var/datum/wound/crit_wound  = simple_woundcritroll(user.used_intent.blade_class, newforce, user, hitlim)
 				if(should_embed_weapon(crit_wound, I))
 					// throw_alert("embeddedobject", /atom/movable/screen/alert/embeddedobject)

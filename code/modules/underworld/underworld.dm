@@ -176,7 +176,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	minbodytemp = 0
 	faction = list("undead")
 	footstep_type = null
-	defprob = 50 //decently skilled
+	simpmob_defend = 50 //decently skilled
 	defdrain = 20
 	canparry = TRUE
 	retreat_health = null

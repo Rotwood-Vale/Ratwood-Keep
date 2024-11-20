@@ -479,3 +479,35 @@
 	miss_text = "bites the air!"
 	miss_sound = PUNCHWOOSH
 	item_d_type = "stab"
+
+/datum/intent/simple/wereclaw
+	name = "claw"
+	icon_state = "instrike"
+	attack_verb = list("claws", "pecks")
+	animname = "blank22"
+	blade_class = BCLASS_CHOP
+	hitsound = "genslash"
+	chargetime = 0
+	penfactor = 10
+	swingdelay = 3
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "slashes the air!"
+	miss_sound = BLADEWOOSH_LARGE
+	item_d_type = "slash"
+
+/datum/intent/simple/werebite
+	name = "bite"
+	icon_state = "instrike"
+	attack_verb = list("bites")
+	animname = "blank22"
+	blade_class = BCLASS_BITE
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 30
+	swingdelay = 3
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "bites the air!"
+	miss_sound = PUNCHWOOSH
+	item_d_type = "stab"
