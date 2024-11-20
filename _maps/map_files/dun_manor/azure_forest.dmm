@@ -4277,7 +4277,7 @@
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/basement)
 "GQ" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/mob/living/carbon/human/species/skeleton/npc/ambush,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "GR" = (
@@ -6652,9 +6652,9 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
 "ZA" = (
-/obj/structure/mineral_door/wood/window,
-/turf/open/floor/rogue/grass,
-/area/rogue/indoors)
+/obj/structure/flora/roguetree/stump/log,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/shelter/woods)
 "ZB" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/ruinedwood,
@@ -40504,7 +40504,7 @@ bS
 BS
 BS
 Zm
-ZA
+Qv
 Zm
 BS
 BS
@@ -41606,7 +41606,7 @@ nt
 nt
 jW
 jW
-LC
+nt
 nt
 Ek
 jW
@@ -44773,7 +44773,7 @@ nt
 nt
 gc
 gX
-vE
+vI
 gX
 gc
 gX
@@ -46501,7 +46501,7 @@ jW
 jW
 gc
 gX
-vE
+vI
 gc
 jW
 MK
@@ -46968,9 +46968,9 @@ eK
 xV
 gX
 nt
-eK
 vE
-Gn
+ZA
+eK
 gX
 jW
 jW

@@ -2707,7 +2707,9 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/cave)
 "vh" = (
-/obj/structure/stairs,
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/beach/forest)
 "vj" = (
@@ -5029,10 +5031,6 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
-"Of" = (
-/obj/structure/stairs,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/beach/forest)
 "Oh" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -41135,11 +41133,11 @@ pz
 pz
 pz
 pz
-pz
+pZ
 UR
 UR
 UR
-RL
+UR
 RL
 RL
 RL
@@ -41265,11 +41263,11 @@ pz
 pz
 pz
 pz
-pz
+pZ
 yG
 yG
 yG
-RL
+UR
 RL
 RL
 RL
@@ -42962,7 +42960,7 @@ XK
 XK
 XK
 XK
-vh
+DF
 UR
 UR
 RL
@@ -43092,7 +43090,7 @@ XK
 XK
 XK
 XK
-vh
+DF
 UR
 UR
 RL
@@ -43222,7 +43220,7 @@ XK
 XK
 XK
 XK
-vh
+DF
 UR
 UR
 RL
@@ -57653,7 +57651,7 @@ XK
 pz
 pa
 pa
-pa
+sn
 pa
 pz
 pz
@@ -57776,11 +57774,11 @@ BA
 BA
 BA
 BA
-BA
+Se
 yG
 yG
 yG
-pz
+vh
 pz
 pa
 pa
@@ -57906,11 +57904,11 @@ BA
 BA
 BA
 BA
+Se
 BA
 BA
 BA
-BA
-pz
+vh
 pz
 pz
 pa
@@ -58040,13 +58038,13 @@ BA
 BA
 BA
 BA
+vh
 pz
 pz
-vF
 pa
 pa
 pa
-pa
+sn
 pz
 pz
 pZ
@@ -58170,7 +58168,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -58301,7 +58299,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -58432,7 +58430,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 sn
@@ -58562,7 +58560,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pa
@@ -58693,10 +58691,10 @@ BA
 BA
 BA
 BA
+vh
 pz
-pz
-sn
 pa
+sn
 pa
 pz
 pZ
@@ -58823,7 +58821,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pa
 pa
@@ -58954,10 +58952,10 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pa
-pa
+sn
 pz
 pZ
 pZ
@@ -59084,10 +59082,10 @@ BA
 BA
 BA
 BA
+vh
 pz
 pz
-pz
-sn
+pa
 pz
 pZ
 pZ
@@ -59214,7 +59212,7 @@ BA
 BA
 BA
 BA
-BA
+vh
 pz
 pz
 pz
@@ -59344,7 +59342,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -59474,7 +59472,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -59604,7 +59602,7 @@ BA
 BA
 BA
 BA
-Of
+DF
 XK
 XK
 XK
@@ -59734,7 +59732,7 @@ BA
 BA
 BA
 BA
-Of
+DF
 XK
 XK
 XK
@@ -59864,7 +59862,7 @@ BA
 BA
 BA
 BA
-Of
+DF
 XK
 XK
 XK
@@ -59994,7 +59992,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -60124,7 +60122,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -60255,7 +60253,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -60386,8 +60384,8 @@ BA
 BA
 BA
 BA
+vh
 pz
-vF
 pz
 pz
 pZ
@@ -60516,7 +60514,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -60646,9 +60644,9 @@ BA
 BA
 BA
 BA
+vh
 pz
-pz
-pz
+vF
 pz
 pZ
 "}
@@ -60777,7 +60775,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -60907,7 +60905,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -61037,7 +61035,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -61167,7 +61165,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -61297,7 +61295,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -61427,7 +61425,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -61557,7 +61555,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -61687,7 +61685,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -61817,7 +61815,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -61947,7 +61945,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pZ
@@ -67138,7 +67136,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 rb
@@ -67268,7 +67266,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -67398,7 +67396,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pa
 pz
 pz
@@ -67528,7 +67526,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pa
 pa
 pa
@@ -67658,7 +67656,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -67788,7 +67786,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -68438,7 +68436,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 XK
@@ -68568,7 +68566,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
@@ -68698,7 +68696,7 @@ BA
 BA
 BA
 BA
-pz
+vh
 pz
 pz
 pz
