@@ -1842,6 +1842,9 @@
 	pixel_y = 4;
 	pixel_x = -23
 	},
+/obj/item/powderflask,
+/obj/item/ammo_holder/bullet/lead,
+/obj/item/gun/ballistic/handgonne,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "bvH" = (
@@ -2734,8 +2737,14 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/bath)
 "clw" = (
-/obj/effect/landmark/start/merchant,
-/turf/open/floor/rogue/wood,
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "tablewood2"
+	},
+/obj/item/powderflask,
+/obj/item/ammo_holder/bullet/lead,
+/obj/item/gun/ballistic/arquebus_pistol,
+/turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/shop)
 "clE" = (
 /turf/open/floor/rogue/grass,
@@ -3082,9 +3091,10 @@
 /area/rogue/indoors/town)
 "czb" = (
 /obj/structure/rack/rogue,
-/obj/item/ammo_holder/quiver/arrows,
-/obj/item/ammo_holder/quiver/arrows,
 /obj/machinery/light/rogue/torchholder/l,
+/obj/item/gun/ballistic/arquebus,
+/obj/item/gun/ballistic/arquebus,
+/obj/item/gun/ballistic/arquebus,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "czd" = (
@@ -5234,7 +5244,8 @@
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
 	lockid = "merchant";
-	masterkey = 0
+	masterkey = 0;
+	locked = 1
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -23907,6 +23918,10 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town/roofs)
+"sMN" = (
+/obj/effect/landmark/start/merchant,
+/turf/open/floor/carpet/stellar,
+/area/rogue/indoors/town/shop)
 "sMP" = (
 /obj/structure/stairs{
 	dir = 1
@@ -24027,9 +24042,12 @@
 /area/rogue/indoors)
 "sTe" = (
 /obj/structure/rack/rogue,
-/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
+/obj/item/powderflask,
+/obj/item/powderflask,
+/obj/item/powderflask,
+/obj/item/ammo_holder/bullet/lead,
+/obj/item/ammo_holder/bullet/lead,
+/obj/item/ammo_holder/bullet/lead,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "sTq" = (
@@ -304057,7 +304075,7 @@ hUt
 lBt
 mYi
 svu
-clw
+hUt
 hUt
 xut
 ueq
@@ -408179,7 +408197,7 @@ rwn
 rwn
 nDX
 mWx
-sxR
+sMN
 sxR
 nDX
 rAp
@@ -408582,7 +408600,7 @@ rwn
 nDX
 dDk
 wrv
-sxR
+clw
 nDX
 hsI
 azr

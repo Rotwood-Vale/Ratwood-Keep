@@ -30,7 +30,7 @@
 	item_state = "pouch"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	max_storage = 10
-	ammo_type = list(/obj/item/ammo_casing/caseless/runelock)
+	ammo_type = list(/obj/item/ammo_casing) //common denominator type for runelock and arquebus bullets
 
 /obj/item/ammo_holder/attackby(obj/A, loc, params)
 	for(var/i in ammo_type)
@@ -91,6 +91,13 @@
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/ammo_casing/caseless/runelock/R = new()
+		ammo += R
+	update_icon()
+
+/obj/item/ammo_holder/bullet/lead/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/ammo_casing/caseless/lead = new()
 		ammo += R
 	update_icon()
 /*

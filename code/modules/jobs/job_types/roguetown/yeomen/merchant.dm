@@ -38,6 +38,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 
 	head = /obj/item/clothing/head/roguetown/chaperon
