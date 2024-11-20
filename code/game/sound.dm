@@ -26,15 +26,8 @@
 	var/source_z = turf_source.z
 	var/list/listeners = SSmobs.clients_by_zlevel[source_z].Copy()
 
-	var/turf/above_turf = turf_source.above()
-	var/turf/below_turf = turf_source.below()
-
-	if(above_turf)
-		if(!is_in_zweb(source_z,above_turf.z))
-			above_turf=null
-	if(below_turf)
-		if(!is_in_zweb(source_z,below_turf.z))
-			below_turf=null
+	var/turf/above_turf = GET_TURF_ABOVE(turf_source)
+	var/turf/below_turf = GET_TURF_BELOW(turf_source)
 
 	if(soundping)
 		ping_sound(source)
