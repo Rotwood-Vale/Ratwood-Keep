@@ -14,7 +14,6 @@
 	cost = 400
 	contains = list(/obj/item/clothing/ring/active/nomag)
 
-
 /datum/supply_pack/rogue/Mage/scryorb
 	name = "Scrying Orb"
 	cost = 300
@@ -40,12 +39,15 @@
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
+/datum/supply_pack/rogue/Mage/leather/Lgloves
+	name = "hardened leather gloves"
+	cost = 50
+	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 
 /datum/supply_pack/rogue/Mage/leather/Lbracers
 	name = "Leather bracers"
 	cost = 20
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
-
 
 /datum/supply_pack/rogue/Mage/leather/woodenstaff
 	name = "Wooden Staff"
@@ -62,12 +64,10 @@
 	cost = 80
 	contains = list(/obj/item/rogueweapon/spear/billhook)
 
-
 /datum/supply_pack/rogue/Mage/halberd
 	name = "Halberd"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/halberd)
-
 
 /datum/supply_pack/rogue/Mage/bardiche
 	name = "Bardiche"

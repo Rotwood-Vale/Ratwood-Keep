@@ -45,6 +45,11 @@
 	cost = 80
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
 
+/datum/supply_pack/rogue/Knave/leather/Lgloves
+	name = "hardened leather gloves"
+	cost = 50
+	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
+
 /datum/supply_pack/rogue/Knave/recurvebow
 	name = "Recurve Bow"
 	cost = 100

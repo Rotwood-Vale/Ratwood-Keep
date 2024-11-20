@@ -29,6 +29,11 @@
 	cost = 24
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
+/datum/supply_pack/rogue/Sawbones/leather/Lgloves
+	name = "hardened leather gloves"
+	cost = 50
+	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
+
 /datum/supply_pack/rogue/Sawbones/leatherpantsadvanced
 	name = "hardened leather chausses"
 	cost = 80

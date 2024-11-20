@@ -49,6 +49,21 @@
 	cost = 40
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather)
 
+/datum/supply_pack/rogue/Things/leathergloves
+	name = "Leather gloves"
+	cost = 20
+	contains = list(/obj/item/clothing/gloves/roguetown/leather)
+
+/datum/supply_pack/rogue/Things/leathershoes
+	name = "Leather shoes"
+	cost = 20
+	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather)
+
+/datum/supply_pack/rogue/Things/hardleathershoes
+	name = "Hardened Leather shoes"
+	cost = 60
+	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather/advanced)
+
 /datum/supply_pack/rogue/Things/mask
 	name = "Steel Mask"
 	cost = 40
@@ -78,6 +93,11 @@
 	name = "Hunting Knife"
 	cost = 50
 	contains = list(/obj/item/rogueweapon/huntingknife)
+
+/datum/supply_pack/rogue/Things/pickaxe
+	name = "Iron Pickaxe"
+	cost = 80
+	contains = list(/obj/item/rogueweapon/pick)
 
 /datum/supply_pack/rogue/Things/cloth
 	name = "Cloth"
