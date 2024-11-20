@@ -44,19 +44,17 @@
 	else
 		if(above_turf)
 			listeners += SSmobs.clients_by_zlevel[above_turf.z]
+			listeners += SSmobs.dead_players_by_zlevel[above_turf.z]
 
 		if(below_turf)
 			listeners += SSmobs.clients_by_zlevel[below_turf.z]
+			listeners += SSmobs.dead_players_by_zlevel[below_turf.z]
+	
+	listeners += SSmobs.dead_players_by_zlevel[source_z]
 
 	. = list()
 
-	for(var/P in listeners)
-		var/mob/M = P
-		if(get_dist(M, turf_source) <= maxdistance)
-			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat))
-				. += M
-	for(var/P in SSmobs.dead_players_by_zlevel[source_z])
-		var/mob/M = P
+	for(var/mob/M as anything in listeners)
 		if(get_dist(M, turf_source) <= maxdistance)
 			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat))
 				. += M
