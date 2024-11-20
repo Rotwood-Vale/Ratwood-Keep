@@ -8127,11 +8127,6 @@
 /obj/item/book/rogue/blackmountain,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician)
-"hTx" = (
-/obj/structure/spider/stickyweb,
-/obj/effect/spawner/lootdrop/roguetown/sewers,
-/turf/open/floor/rogue/blocks/green,
-/area/rogue/under/town/basement)
 "hTE" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/cobble,
@@ -34034,8 +34029,8 @@ gdw
 gdw
 nze
 gdw
-hdp
-hdp
+nze
+nze
 gdw
 gdw
 gdw
@@ -34970,7 +34965,7 @@ pNQ
 iMs
 heh
 cVE
-hTx
+hYd
 gdw
 idX
 bBD
