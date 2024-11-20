@@ -2366,6 +2366,10 @@
 /obj/structure/mineral_door/wood/deadbolt,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/beach/forest)
+"sn" = (
+/obj/structure/flora/newtree,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/beach/forest)
 "sq" = (
 /obj/structure/table/wood{
 	icon_state = "largetable";
@@ -2702,6 +2706,10 @@
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/cave)
+"vh" = (
+/obj/structure/stairs,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/beach/forest)
 "vj" = (
 /obj/structure/fluff/walldeco/customflag,
 /turf/closed/wall/mineral/rogue/stone/window,
@@ -5021,6 +5029,10 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
+"Of" = (
+/obj/structure/stairs,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/beach/forest)
 "Oh" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -6060,6 +6072,14 @@
 	dir = 8
 	},
 /area/rogue/under/cave/dukecourt)
+"WQ" = (
+/obj/structure/fluff/traveltile{
+	aportalid = "bogrtin2";
+	aportalgoesto = "bogrtout2";
+	aallmig = "rwfieldbog"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/beach/forest)
 "WU" = (
 /obj/structure/bed/rogue/inn/hay,
 /turf/open/floor/rogue/cobble,
@@ -18624,12 +18644,12 @@ RL
 RL
 RL
 RL
-ms
-ms
-RL
-ms
 RL
 RL
+ms
+ms
+sT
+ms
 RL
 RL
 RL
@@ -18756,9 +18776,9 @@ RL
 RL
 RL
 RL
-RL
-RL
-RL
+ms
+sT
+ms
 RL
 RL
 RL
@@ -18885,12 +18905,12 @@ RL
 RL
 RL
 RL
-tk
-tk
-tk
-tk
-tk
-tk
+ms
+sT
+sT
+ms
+RL
+RL
 RL
 RL
 RL
@@ -19014,13 +19034,13 @@ RL
 RL
 RL
 RL
-tk
-oP
-oP
-oP
-tk
-tk
-tk
+ms
+ms
+sT
+sT
+ms
+RL
+RL
 RL
 RL
 RL
@@ -19142,14 +19162,14 @@ UR
 RL
 RL
 RL
-tk
-tk
-oP
-oP
-oP
-oP
-oP
-tk
+RL
+RL
+ms
+sT
+sT
+ms
+RL
+RL
 RL
 RL
 RL
@@ -19272,13 +19292,13 @@ RL
 RL
 RL
 RL
-tk
-oP
-oP
-oP
-oP
-oP
-tk
+RL
+RL
+ms
+sT
+sT
+ms
+RL
 RL
 RL
 RL
@@ -19401,14 +19421,14 @@ UR
 RL
 RL
 RL
-tk
-tk
-oP
-oP
-oP
-oP
-oP
-tk
+RL
+RL
+ms
+ms
+sT
+sT
+ms
+RL
 RL
 RL
 UR
@@ -19531,13 +19551,13 @@ UR
 RL
 RL
 RL
-tk
-tk
-tk
-oP
-oP
-tk
-tk
+RL
+RL
+ms
+ms
+ms
+ms
+RL
 RL
 RL
 RL
@@ -19662,12 +19682,12 @@ UR
 RL
 RL
 RL
-tk
-tk
-oP
-tk
-tk
-tk
+RL
+ms
+sT
+sT
+RL
+RL
 RL
 RL
 RL
@@ -19793,10 +19813,10 @@ UR
 RL
 RL
 RL
-tk
-tk
-tk
-tk
+sT
+sT
+sT
+RL
 RL
 RL
 RL
@@ -19923,9 +19943,9 @@ NX
 Qe
 Qe
 Qe
-Qe
-Qe
-Qe
+Xd
+bf
+bf
 Qe
 Qe
 Qe
@@ -20053,9 +20073,9 @@ NX
 NX
 Qe
 Qe
-Qe
-Qe
-Qe
+bf
+bf
+bf
 NX
 NX
 NX
@@ -42550,7 +42570,7 @@ XK
 XK
 pz
 pz
-pz
+vF
 pz
 pz
 pz
@@ -42683,8 +42703,8 @@ pz
 pz
 pz
 pz
-pz
-RL
+UR
+UR
 RL
 RL
 RL
@@ -42813,8 +42833,8 @@ pz
 pz
 pz
 pz
-pz
-RL
+UR
+UR
 RL
 RL
 RL
@@ -42937,14 +42957,14 @@ XK
 XK
 XK
 XK
-pz
-pz
-pz
-vF
-pz
-pz
-pz
-pz
+XK
+XK
+XK
+XK
+XK
+vh
+UR
+UR
 RL
 RL
 RL
@@ -43067,14 +43087,14 @@ XK
 XK
 XK
 XK
-pz
-pz
-vF
-pz
-pz
-pz
-pz
-pz
+XK
+XK
+XK
+XK
+XK
+vh
+UR
+UR
 RL
 RL
 RL
@@ -43197,14 +43217,14 @@ XK
 XK
 XK
 XK
-pz
-pz
-vF
-pz
-pz
-vF
-pz
-pz
+XK
+XK
+XK
+XK
+XK
+vh
+UR
+UR
 RL
 RL
 RL
@@ -43326,15 +43346,15 @@ XK
 XK
 XK
 XK
-pz
-pz
-vF
-vF
+GD
 pz
 pz
 pz
 pz
 pz
+pz
+UR
+UR
 RL
 RL
 RL
@@ -43464,7 +43484,7 @@ pz
 pz
 pz
 pz
-pz
+UR
 RL
 RL
 RL
@@ -57239,7 +57259,7 @@ XK
 XK
 XK
 pa
-pa
+sn
 pa
 pa
 pz
@@ -57896,7 +57916,7 @@ pz
 pa
 pa
 pa
-pz
+pa
 pz
 pZ
 pZ
@@ -58026,7 +58046,7 @@ vF
 pa
 pa
 pa
-pz
+pa
 pz
 pz
 pZ
@@ -58156,8 +58176,8 @@ pz
 pz
 pa
 pa
-pz
-pz
+pa
+pa
 pz
 pZ
 pZ
@@ -58285,9 +58305,9 @@ pz
 pz
 pz
 pz
-pz
-pz
-pz
+pa
+pa
+pa
 pz
 pZ
 pZ
@@ -58415,9 +58435,9 @@ BA
 pz
 pz
 pz
-vF
-pz
-pz
+sn
+pa
+pa
 pz
 pZ
 pZ
@@ -58545,9 +58565,9 @@ BA
 pz
 pz
 pz
-pz
-pz
-pz
+pa
+pa
+pa
 pz
 pZ
 pZ
@@ -58675,9 +58695,9 @@ BA
 BA
 pz
 pz
-vF
-pz
-pz
+sn
+pa
+pa
 pz
 pZ
 pZ
@@ -58805,9 +58825,9 @@ BA
 BA
 pz
 pz
-pz
-pz
-pz
+pa
+pa
+pa
 pz
 pZ
 pZ
@@ -58936,8 +58956,8 @@ BA
 BA
 pz
 pz
-pz
-pz
+pa
+pa
 pz
 pZ
 pZ
@@ -59067,7 +59087,7 @@ BA
 pz
 pz
 pz
-vF
+sn
 pz
 pZ
 pZ
@@ -59324,7 +59344,7 @@ BA
 BA
 BA
 BA
-BA
+pz
 pz
 pz
 pz
@@ -59454,11 +59474,11 @@ BA
 BA
 BA
 BA
-BA
 pz
 pz
 pz
 pz
+GD
 pZ
 pZ
 "}
@@ -59584,12 +59604,12 @@ BA
 BA
 BA
 BA
-BA
-BA
-pz
-pz
-pz
-pZ
+Of
+XK
+XK
+XK
+XK
+WQ
 pZ
 "}
 (26,1,4) = {"
@@ -59714,12 +59734,12 @@ BA
 BA
 BA
 BA
-BA
-BA
-pz
-pz
-pz
-pZ
+Of
+XK
+XK
+XK
+XK
+WQ
 pZ
 "}
 (27,1,4) = {"
@@ -59844,12 +59864,12 @@ BA
 BA
 BA
 BA
-BA
-BA
-pz
-pz
-pz
-pZ
+Of
+XK
+XK
+XK
+XK
+WQ
 pZ
 "}
 (28,1,4) = {"
@@ -59974,11 +59994,11 @@ BA
 BA
 BA
 BA
-BA
-BA
 pz
 pz
 pz
+pz
+GD
 pZ
 pZ
 "}
@@ -60104,8 +60124,8 @@ BA
 BA
 BA
 BA
-BA
-BA
+pz
+pz
 pz
 pz
 pz
@@ -60235,10 +60255,10 @@ BA
 BA
 BA
 BA
-BA
 pz
 pz
-vF
+pz
+pz
 pZ
 pZ
 "}
@@ -60367,7 +60387,7 @@ BA
 BA
 BA
 pz
-pz
+vF
 pz
 pz
 pZ
@@ -67649,7 +67669,7 @@ pa
 pa
 pa
 pa
-rb
+pZ
 pZ
 "}
 (88,1,4) = {"
@@ -67779,7 +67799,7 @@ pz
 pa
 pa
 pa
-rb
+pZ
 pZ
 "}
 (89,1,4) = {"
@@ -67909,7 +67929,7 @@ pz
 pz
 pz
 pz
-pz
+pZ
 pZ
 "}
 (90,1,4) = {"
@@ -68039,7 +68059,7 @@ pz
 pz
 QB
 pz
-pz
+pZ
 pZ
 "}
 (91,1,4) = {"
@@ -68689,7 +68709,7 @@ pz
 pz
 pz
 pz
-pz
+pZ
 pZ
 "}
 (96,1,4) = {"
@@ -68819,7 +68839,7 @@ pz
 pz
 pz
 pz
-pz
+pZ
 pZ
 "}
 (97,1,4) = {"
@@ -68949,7 +68969,7 @@ pa
 pz
 pz
 pz
-pz
+pZ
 pZ
 "}
 (98,1,4) = {"
@@ -69079,7 +69099,7 @@ pa
 pz
 pz
 pz
-rb
+pZ
 pZ
 "}
 (99,1,4) = {"
