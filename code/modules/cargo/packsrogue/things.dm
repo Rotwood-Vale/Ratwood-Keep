@@ -69,6 +69,11 @@
 	cost = 40
 	contains = list(/obj/item/clothing/mask/rogue/facemask/steel)
 
+/datum/supply_pack/rogue/Things/coif
+	name = "coif"
+	cost = 40
+	contains = list(/obj/item/clothing/neck/roguetown/coif)
+
 /datum/supply_pack/rogue/Things/pinkpill
 	name = "Pink Pills"
 	cost = 24
