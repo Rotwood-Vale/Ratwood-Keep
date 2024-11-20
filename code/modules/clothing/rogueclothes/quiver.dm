@@ -98,7 +98,7 @@
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/ammo_casing/caseless/lead = new()
-		ammo += R
+		ammo += lead
 	update_icon()
 /*
 /obj/item/ammo_holder/Parrows/Initialize()
