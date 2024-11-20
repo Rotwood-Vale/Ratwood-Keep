@@ -5280,6 +5280,15 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
+"ehT" = (
+/obj/structure/rack/rogue,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/church)
 "ehY" = (
 /obj/structure/pillory/reinforced{
 	lockid = list("Church")
@@ -8856,7 +8865,7 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "gUC" = (
-/obj/structure/rack/rogue,
+/obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
 "gVS" = (
@@ -11108,8 +11117,11 @@
 	},
 /area/rogue/indoors/town/manor)
 "iIE" = (
-/obj/structure/bookcase/random,
-/turf/open/floor/rogue/ruinedwood/chevron,
+/obj/structure/stairs{
+	dir = 8;
+	icon_state = "stairs"
+	},
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
 "iIJ" = (
 /obj/structure/table/wood,
@@ -12612,6 +12624,11 @@
 /obj/structure/fluff/walldeco/painting/seraphina,
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/town/church/chapel)
+"jNh" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/structure/bed/rogue/inn/hay,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/church)
 "jNi" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -13197,6 +13214,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "knA" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/structure/fluff/statue/gargoyle,
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church)
@@ -28234,6 +28252,8 @@
 /obj/structure/bars{
 	icon_state = "barsbent"
 	},
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
@@ -324637,8 +324657,8 @@ noB
 xSW
 xSW
 dBG
-kCN
-svo
+dBG
+iIE
 lUx
 pHA
 noB
@@ -325041,9 +325061,9 @@ ffv
 uOo
 qSY
 uKB
-uKB
 wJF
 cSW
+wXe
 wXe
 qPA
 cEZ
@@ -325441,11 +325461,11 @@ qPA
 ffv
 ffv
 uOo
-uKB
-uKB
 knA
+uKB
 wJF
 noE
+wXe
 upd
 qPA
 jmz
@@ -325845,8 +325865,8 @@ kCN
 dBG
 kCN
 dTb
-tML
 pHA
+lUx
 lUx
 pHA
 qPA
@@ -326244,12 +326264,12 @@ qPA
 tjS
 teW
 dLB
+rtC
+isU
+isU
 isU
 rtC
 isU
-rtC
-isU
-iIE
 wJF
 ljt
 iRo
@@ -421513,8 +421533,8 @@ fZJ
 fZJ
 fZJ
 qDH
-cYA
-sZp
+ehT
+jNh
 kOn
 soL
 fmV
