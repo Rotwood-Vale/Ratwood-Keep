@@ -37,8 +37,14 @@
 
 		//Healing while sleeping in a bed
 		if(IsSleeping())
-			var/sleepy_mod = buckled?.sleepy || 0.5
+			var/sleepy_mod = 0.5
 			var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
+			if(buckled?.sleepy)
+				sleepy_mod = buckled.sleepy
+			else if(isturf(loc)) //No illegal tech.
+				var/obj/structure/bed/rogue/bed = locate() in loc
+				if(bed)
+					sleepy_mod = bed.sleepy
 			if(nutrition > 0 || yess)
 				rogstam_add(sleepy_mod * 15)
 			if(hydration > 0 || yess)
@@ -59,7 +65,14 @@
 					Sleeping(300)
 		else if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			// Resting on a bed or something
+			var/sleepy_mod = 0
 			if(buckled?.sleepy)
+				sleepy_mod = buckled.sleepy
+			else if(isturf(loc) && !(mobility_flags & MOBILITY_STAND))
+				var/obj/structure/bed/rogue/bed = locate() in loc
+				if(bed)
+					sleepy_mod = bed.sleepy
+			if(sleepy_mod > 0)
 				if(eyesclosed)
 					var/armor_blocked
 					if(ishuman(src))
@@ -83,6 +96,7 @@
 							Sleeping(300)
 				else
 					rogstam_add(buckled.sleepy * 10)
+					rogstam_add(sleepy_mod * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
 				if(eyesclosed)
