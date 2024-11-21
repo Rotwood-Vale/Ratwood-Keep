@@ -43,6 +43,9 @@
 		if(/datum/patron/old_god)
 			neck = /obj/item/clothing/neck/roguetown/psicross/silver
 			cloak = /obj/item/clothing/cloak/tabard/crusader/psydon
+		if(/datum/patron/inhumen/zizo) 
+			H.cmode_music = 'sound/music/combat_cult.ogg'
+			neck = /obj/item/roguekey/inhumen
 
 	H.adjust_blindness(-3)
 	var/classes = list("Paladin","Battle Master",)
