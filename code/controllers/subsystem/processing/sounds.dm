@@ -1,5 +1,3 @@
-
-//stole from tg
 #define DATUMLESS "NO_DATUM"
 
 SUBSYSTEM_DEF(sounds)
