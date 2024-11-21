@@ -7476,6 +7476,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
+"gVJ" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
+/turf/open/floor/carpet/red,
+/area/rogue/under/town/sewer)
 "gWx" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/tile,
@@ -27823,8 +27827,8 @@ fXl
 wHq
 ivS
 psG
-mBU
 psG
+mBU
 psG
 psG
 onk
@@ -27977,7 +27981,7 @@ biU
 onk
 ylP
 wHq
-jBi
+wHq
 ivS
 psG
 hpe
@@ -28604,7 +28608,7 @@ wHq
 cVR
 cVR
 cVR
-wHq
+jBi
 ylI
 kkF
 psG
@@ -28919,9 +28923,9 @@ biU
 onk
 ylP
 wHq
-jBi
+wHq
 ivS
-mBU
+psG
 vwK
 vwK
 vwK
@@ -39180,7 +39184,7 @@ pmA
 hZC
 hZC
 itN
-itN
+gVJ
 itN
 hZC
 hZC
