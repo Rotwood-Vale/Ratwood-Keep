@@ -342,7 +342,7 @@
 /obj/item/roguekey/inhumen
 	name = "ancient key"
 	desc = "A ancient, rusty key. There's no telling where this leads."
-	icon_state = "rust key"
+	icon_state = "rustkey"
 	lockid = "inhumen"
 
 /obj/item/roguekey/hand
