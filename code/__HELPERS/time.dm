@@ -142,6 +142,34 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 	animate(D, alpha = 255, time = 20, easing = EASE_IN)
 	addtimer(CALLBACK(src, PROC_REF(clear_time_icon), D), 30)
 
+//tips/lore
+
+	var/list/time_change_tips = list(
+		"ZIZO. ZIZO. ZIZO.",
+		"Scent of rot and shit; my feet find fetid ground. A corpse- I am living on a corpse. And then the world is normal again.",
+		"The Holy Ecclesial is a splinter of the Holy See, formed during the great schism. They worship the Four Ascendants as true divinity.",
+		"PSYDON yet lives. PSYDON yet ENDURES.",
+		"Dae is far less dangerous than Night; Astrata-Noc’s gaze is far more searing to all forms of evils in a direct burn.",
+		"Worshippers of the Ascendants are fools hellbent on dooming our world, and must be corrected or destroyed.",
+		"Worshippers of the Ten are fools hellbent on dooming our world, and must be corrected or destroyed.",
+		"Worshippers of the One are fools hellbent on dooming our world, and must be corrected or destroyed.",
+		"The Ten are less responsive to prayer than the Ascendant. This, however, is simply a test of faith.",
+		"Butter is the favored snack for a disturbing amount of squires.",
+		"I can jump further by getting a running start. Mind the overshoot.",
+		"A CORPSE; I AM LIVING ON A FUCKING CORPSE.",
+		"In the Peaks, nobody goes for the one-and-a-half meter jump for frysteak; it is far more safe to make the one-meter jump for frybird.",
+		"The Empire of the Holy Celestia crumbled after the Archmage Zaelorian created a machine that...well. Death was not Her end.",
+		"A torch should be kept dry, and a blade sharp.",
+		"The key to a long life is knowing when to run.",
+		"Xylix's gift to mortals is the humble tarot deck, allowing them to divine the fates themselves.",
+		"Dendor burst from the feverishly-sleeping Abyssor's head, spilling life forth in a chaotic frenzy.",
+		"Challenging a Matthiosite is challenging a Ravoxian. Both fight for their deity; but both have very different senses of Justice.",
+		"Astrata-Noc is the Twinned God, a hermaphroditic creacher with two faces and four arms that shifts at dusk and dawn,",
+		"Necra, in the oldest tomes, is said to be a being older than Psydon. The Holy See itself calls this heresy.",
+		"If two spirits were in the Underworld, and one killed the other with a rock, would that be fucked up or what?",
+		"Thousands of years ago, PSYDON sent down the COMET SYON to defeat the rampaging Archdevil, splitting himself into Ten.",
+		"Matthios is old. He stole Astrata's sacred flame and sold it to mortals, creating the first Transaction and flooding reality with ontological Wealth.",
+
 /proc/station_time_debug(force_set)
 	if(isnum(force_set))
 		SSticker.gametime_offset = force_set
