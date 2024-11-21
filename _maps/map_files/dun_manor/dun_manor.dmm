@@ -14834,6 +14834,7 @@
 "nQL" = (
 /obj/structure/table/wood,
 /obj/structure/table/wood,
+/obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "nQQ" = (
@@ -36677,7 +36678,7 @@ dRO
 bHA
 bHA
 bHA
-jRM
+dRO
 ipJ
 swO
 ccW
@@ -37305,7 +37306,7 @@ iRC
 bHA
 bHA
 kSX
-jRM
+bHA
 qGI
 oGK
 oGK
@@ -37462,7 +37463,7 @@ lJt
 bHA
 bHA
 jRM
-jRM
+bHA
 ipJ
 enl
 bHA
@@ -38086,8 +38087,8 @@ cVE
 cVE
 cVE
 pmA
-jRM
-jRM
+bHA
+bHA
 bku
 nVX
 bHA
@@ -38243,13 +38244,13 @@ cVE
 cVE
 cVE
 pmA
-jRM
+bHA
 bHA
 kSX
 bHA
 bHA
 jBL
-jRM
+bHA
 jRM
 bHA
 pmA
@@ -38403,8 +38404,8 @@ pmA
 ncB
 bHA
 bHA
-jRM
 bHA
+dRO
 ipJ
 jRM
 bHA
@@ -38558,9 +38559,9 @@ cVE
 kkj
 qGI
 oGK
-oGK
+ipJ
 jBL
-oGK
+ipJ
 oGK
 qGI
 oGK
@@ -39028,7 +39029,7 @@ cVE
 heh
 cVE
 xsI
-xsI
+cVE
 cVE
 cVE
 kkj
@@ -39342,7 +39343,7 @@ cVE
 heh
 cVE
 pmA
-jRM
+bHA
 bHA
 dRO
 pmA
@@ -39500,7 +39501,7 @@ heh
 cVE
 mWa
 bHA
-jRM
+bHA
 jRM
 gdw
 gdw
