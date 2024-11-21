@@ -18672,7 +18672,7 @@
 	icon_state = "border";
 	dir = 8
 	},
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/sewer)
 "roU" = (
@@ -38405,7 +38405,7 @@ ncB
 bHA
 bHA
 bHA
-dRO
+bHA
 ipJ
 jRM
 bHA
