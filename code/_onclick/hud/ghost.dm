@@ -96,9 +96,11 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/grain
-	using.hud = src
-	static_inventory += using
+	grain = new /atom/movable/screen/grain
+	grain.hud = src
+	static_inventory += grain
+	if(owner.client?.prefs?.grain == TRUE)
+		grain.alpha = 55
 
 	scannies = new /atom/movable/screen/scannies
 	scannies.hud = src
@@ -161,9 +163,11 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/grain
-	using.hud = src
-	static_inventory += using
+	grain = new /atom/movable/screen/grain
+	grain.hud = src
+	static_inventory += grain
+	if(owner.client?.prefs?.grain == TRUE)
+		grain.alpha = 55
 
 	scannies = new /atom/movable/screen/scannies
 	scannies.hud = src
@@ -195,9 +199,11 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/grain
-	using.hud = src
-	static_inventory += using
+	grain = new /atom/movable/screen/grain
+	grain.hud = src
+	static_inventory += grain
+	if(owner.client?.prefs?.grain == TRUE)
+		grain.alpha = 55
 
 	scannies = new /atom/movable/screen/scannies
 	scannies.hud = src

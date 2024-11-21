@@ -146,6 +146,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/family = FAMILY_NONE
 
 	var/crt = FALSE
+	var/grain = TRUE
 
 	var/list/customizer_entries = list()
 	var/list/list/body_markings = list()
@@ -685,6 +686,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					dat += "<b>UNREADY</b> <a href='byond://?src=[REF(N)];ready=[PLAYER_READY_TO_PLAY]'>READY</a>"
 				if(PLAYER_READY_TO_PLAY)
 					dat += "<a href='byond://?src=[REF(N)];ready=[PLAYER_NOT_READY]'>UNREADY</a> <b>READY</b>"
+					log_game("([user || "NO KEY"]) readied as ([real_name])")
 		else
 			if(!is_active_migrant())
 				dat += "<a href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
