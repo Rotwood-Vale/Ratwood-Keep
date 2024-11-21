@@ -15431,7 +15431,9 @@
 	icon_state = "borderfall";
 	dir = 1
 	},
-/obj/machinery/light/rogue/firebowl/church,
+/obj/machinery/light/rogue/firebowl/church{
+	light_color = "#b30202"
+	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave)
 "osE" = (
@@ -15522,6 +15524,16 @@
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
+"ouI" = (
+/obj/structure/table/wood{
+	icon_state = "longtable_mid"
+	},
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "ovg" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
@@ -19431,7 +19443,9 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "rZO" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/rogue/firebowl{
+	light_color = "#b30202"
+	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave)
 "sac" = (
@@ -26346,7 +26360,9 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "ylP" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/rogue/firebowl{
+	light_color = "#b30202"
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave)
 "ymf" = (
@@ -33806,7 +33822,7 @@ eDv
 bBD
 gdw
 pmA
-bHA
+oYS
 jRM
 bHA
 wGj
@@ -35869,10 +35885,10 @@ cVE
 ipJ
 bHA
 bHA
+wGj
 bHA
 bHA
 wGj
-bHA
 epL
 wGj
 jWN
@@ -36335,7 +36351,7 @@ pOg
 xpt
 xpt
 gdw
-heh
+kkj
 cVE
 pmA
 pqy
@@ -36963,7 +36979,7 @@ bBD
 bBD
 hoH
 nze
-heh
+kkj
 cVE
 pmA
 bHA
@@ -37588,11 +37604,11 @@ cVE
 cVE
 cVE
 cVE
+xsI
 cVE
-xsI
-xsI
+cVE
 heh
-xsI
+cVE
 pmA
 bHA
 bHA
@@ -37747,8 +37763,8 @@ oGK
 oGK
 oGK
 vrR
-xsI
-heh
+cVE
+cVE
 cVE
 pmA
 kmw
@@ -37905,8 +37921,8 @@ wIc
 cfc
 ipJ
 cVE
-heh
-xsI
+cVE
+cVE
 pmA
 bHA
 xeq
@@ -37918,9 +37934,9 @@ oGK
 oGK
 oGK
 qGI
-pNQ
-pNQ
-pNQ
+oGK
+oGK
+oGK
 qGI
 nyq
 rxQ
@@ -38062,8 +38078,8 @@ jRM
 clX
 ipJ
 cVE
-heh
 cVE
+xsI
 pmA
 jRM
 jRM
@@ -38075,9 +38091,9 @@ bHA
 bHA
 kyo
 pmA
-pNQ
-pNQ
-pNQ
+oYS
+bHA
+lJt
 pmA
 cVE
 heh
@@ -38219,8 +38235,8 @@ bHA
 qGI
 rDj
 cVE
-heh
 cVE
+xsI
 pmA
 jRM
 bHA
@@ -38232,11 +38248,11 @@ jRM
 jRM
 bHA
 pmA
-pNQ
-pNQ
-pNQ
-pmA
-xsI
+jRM
+rQD
+bHA
+jBL
+cVE
 heh
 pmA
 rss
@@ -38376,7 +38392,7 @@ bHA
 mWa
 cVE
 cVE
-heh
+cVE
 cVE
 pmA
 ncB
@@ -38389,10 +38405,10 @@ jRM
 bHA
 sHM
 pmA
-pNQ
-pNQ
-pNQ
-pmA
+bHA
+bHA
+bHA
+ipJ
 cVE
 heh
 pmA
@@ -38533,7 +38549,7 @@ bHA
 mWa
 cVE
 cVE
-heh
+cVE
 cVE
 qGI
 oGK
@@ -38546,9 +38562,9 @@ oGK
 oGK
 oGK
 qGI
-pNQ
-pNQ
-pNQ
+ouI
+ouI
+ouI
 pmA
 cVE
 heh
@@ -38690,24 +38706,24 @@ bHA
 qGI
 vrR
 cVE
-heh
 cVE
 cVE
+cVE
+xsI
+cVE
+cVE
+cVE
+cVE
+xsI
 xsI
 cVE
 cVE
 cVE
 cVE
-xsI
-xsI
 cVE
-kkj
-ppJ
-oGK
-oGK
-oGK
-rDj
-tGy
+cVE
+cVE
+cVE
 heh
 pmA
 oYS
@@ -39010,7 +39026,7 @@ xsI
 xsI
 cVE
 cVE
-cVE
+kkj
 cVE
 cVE
 cVE
@@ -39019,7 +39035,7 @@ cVE
 cVE
 bOK
 xsI
-cVE
+kkj
 cVE
 cVE
 heh
@@ -40241,7 +40257,7 @@ oGK
 oGK
 oGK
 rDj
-cVE
+kkj
 hYd
 qGI
 ipJ
