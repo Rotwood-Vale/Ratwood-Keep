@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
 	name = "runelock pistol"
-	desc = "An incredibly deadly weapon, inscribed with runes to render it powderless. All it requires is compatible projectiles."
+	desc = "An incredibly deadly weapon, inscribed with runes to render it powderless."
 	icon = 'icons/roguetown/weapons/32.dmi'
 	icon_state = "pistol2"
 	var/icon_state_ready = "pistol2-1"
@@ -15,7 +15,7 @@
 	pin = /obj/item/firing_pin
 	force = 10
 	var/cocked = FALSE
-	cartridge_wording = "iron sphere"
+	cartridge_wording = "musketball"
 	load_sound = 'sound/foley/musketload.ogg'
 	fire_sound = 'sound/combat/Ranged/musketfire2.ogg'
 	vary_fire_sound = TRUE
@@ -91,8 +91,8 @@
 	..()
 
 /obj/item/ammo_box/magazine/internal/shot/runelock
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
-	caliber = "small_sphere"
+	ammo_type = /obj/item/ammo_casing/caseless/runelock
+	caliber = "runed_sphere"
 	max_ammo = 1
 	start_empty = TRUE
 
