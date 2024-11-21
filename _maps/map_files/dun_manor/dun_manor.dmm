@@ -16909,6 +16909,18 @@
 /obj/item/rogueweapon/huntingknife/cleaver,
 /obj/item/rogueweapon/huntingknife/cleaver,
 /obj/item/clothing/head/roguetown/chef,
+/obj/item/kitchen/ironspoon,
+/obj/item/kitchen/ironspoon,
+/obj/item/kitchen/ironspoon,
+/obj/item/kitchen/ironspoon,
+/obj/item/kitchen/ironspoon,
+/obj/item/kitchen/ironspoon,
+/obj/item/kitchen/ironfork,
+/obj/item/kitchen/ironfork,
+/obj/item/kitchen/ironfork,
+/obj/item/kitchen/ironfork,
+/obj/item/kitchen/ironfork,
+/obj/item/kitchen/ironfork,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -19534,6 +19546,13 @@
 /obj/item/cooking/platter,
 /obj/item/cooking/platter,
 /obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
