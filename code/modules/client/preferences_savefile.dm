@@ -168,6 +168,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["musicvol"]			>> musicvol
 	S["anonymize"]			>> anonymize
 	S["crt"]				>> crt
+	S["grain"]				>> grain
 	S["sexable"]			>> sexable
 	S["shake"]				>> shake
 	S["mastervol"]			>> mastervol
