@@ -95,7 +95,6 @@
 						if(fallingas > 15)
 							Sleeping(300)
 				else
-					rogstam_add(buckled.sleepy * 10)
 					rogstam_add(sleepy_mod * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
