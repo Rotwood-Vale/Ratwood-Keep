@@ -13,6 +13,8 @@
 
 
 /datum/ai_planning_subtree/find_dead_bodies
+	var/vision_range = 9
+	var/datum/ai_behavior/find_and_set/dead_bodies/behavior = /datum/ai_behavior/find_and_set/dead_bodies
 
 /datum/ai_planning_subtree/find_dead_bodies/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
@@ -24,12 +26,28 @@
 		// Busy with something
 		return
 
-	controller.queue_behavior(/datum/ai_behavior/find_and_set/dead_bodies, BB_BASIC_MOB_FOOD_TARGET, controller.blackboard[BB_BASIC_FOODS])
+	controller.queue_behavior(behavior, BB_BASIC_MOB_FOOD_TARGET, controller.blackboard[BB_BASIC_FOODS], vision_range)
 
+/datum/ai_planning_subtree/find_dead_bodies/mole
+	vision_range = 7
 
 /datum/ai_planning_subtree/find_food/rat
 	vision_range = 2
 
-
 /datum/ai_planning_subtree/find_food/spider
 	vision_range = 5
+
+/datum/ai_planning_subtree/find_food/mole
+	vision_range = 7
+
+/datum/ai_planning_subtree/find_food/troll
+	vision_range = 7
+
+
+/datum/ai_planning_subtree/find_dead_bodies/bog_troll
+	vision_range = 7
+	behavior = /datum/ai_behavior/find_and_set/dead_bodies/bog_troll
+
+/datum/ai_planning_subtree/find_dead_bodies/mimic
+	vision_range = 2
+	behavior = /datum/ai_behavior/find_and_set/dead_bodies/mimic
