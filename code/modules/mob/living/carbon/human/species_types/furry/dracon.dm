@@ -4,7 +4,8 @@
 /datum/species/dracon
 	name = "Drakian"
 	id = "dracon"
-	desc = "Mighty scaled individuals who claim to be descendant from the dragons of yore.<br>\
+	desc = "<b>Drakian</b><br>\
+	Mighty scaled individuals who claim to be descendants of the dragons of yore.<br>\
 	(+1 Strength, -1 Endurance)"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	possible_ages = ALL_AGES_LIST

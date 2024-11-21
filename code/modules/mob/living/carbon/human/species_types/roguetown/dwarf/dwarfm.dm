@@ -8,7 +8,7 @@
 	desc = "<b>Dwarf</b><br>\
 	A proud and robust race of short mountain folk, \
 	the dwarves are known for their pride in martial strength \
-	and the tenacity with which they adhere to their ancient traditions.\
+	and the tenacity with which they adhere to their ancient traditions. \
 	A Dwarf, much like the rock that they carve their fortresses out of, \
 	is stubborn and ancient, with their race being the longest lived of all \
 	of the Weeping God's creations. They, like stone, also rarely change \
