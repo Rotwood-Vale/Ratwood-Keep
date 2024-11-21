@@ -2313,7 +2313,9 @@
 /area/rogue/outdoors/town)
 "bYJ" = (
 /obj/structure/fluff/statue/femalestatue/zizo{
-	pixel_y = 0
+	pixel_y = 0;
+	name = "Ancient Statue";
+	desc = "An ancient statue depicting an elven woman."
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave)
@@ -4922,10 +4924,9 @@
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/town)
 "evs" = (
-/obj/structure/mineral_door/wood/donjon/stone{
-	name = "Forgotten Chapel"
-	},
-/turf/open/floor/plasteel/maniac,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
 "evJ" = (
 /obj/structure/mineral_door/wood/window{
@@ -8614,7 +8615,9 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "hZb" = (
-/obj/machinery/light/rogue/smelter,
+/obj/machinery/light/rogue/smelter{
+	on = 0
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "hZv" = (
@@ -10050,7 +10053,12 @@
 	},
 /area/rogue/indoors/town/magician)
 "jyi" = (
-/turf/open/floor/plasteel/maniac/damaged,
+/obj/structure/mineral_door/wood/donjon/stone{
+	name = "Forgotten Chapel";
+	locked = 1;
+	lockid = "inhumen"
+	},
+/turf/open/floor/rogue/hexstone,
 /area/rogue/under/cave)
 "jyK" = (
 /obj/machinery/gear_painter,
@@ -26745,7 +26753,7 @@ etD
 etD
 etD
 etD
-jyi
+etD
 etD
 etD
 etD
@@ -26902,9 +26910,9 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
+etD
+etD
+etD
 etD
 etD
 qli
@@ -27050,18 +27058,18 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
+etD
+etD
+etD
+etD
+etD
+etD
+etD
+etD
+etD
+etD
+etD
 etD
 etD
 dSI
@@ -27211,14 +27219,14 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
+etD
+etD
+etD
+etD
+etD
+etD
+etD
 etD
 etD
 etD
@@ -27370,13 +27378,13 @@ etD
 etD
 etD
 etD
-uBR
 etD
-uBR
 etD
-uBR
-uBR
-uBR
+etD
+etD
+etD
+etD
+etD
 etD
 etD
 etD
@@ -27527,10 +27535,6 @@ etD
 etD
 etD
 etD
-etD
-etD
-etD
-etD
 anQ
 rRR
 rRR
@@ -27539,7 +27543,11 @@ rRR
 rRR
 rRR
 sJB
-uBR
+etD
+etD
+etD
+etD
+etD
 uBR
 mLS
 dSI
@@ -27681,10 +27689,6 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-etD
-etD
 etD
 etD
 onk
@@ -27698,6 +27702,10 @@ rZO
 onk
 onk
 etD
+etD
+etD
+uBR
+uBR
 uBR
 mLS
 uBR
@@ -27836,11 +27844,7 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
 etD
 etD
 onk
@@ -27855,6 +27859,10 @@ psG
 psG
 onk
 nAP
+etD
+etD
+uBR
+uBR
 uBR
 mLS
 uBR
@@ -27993,10 +28001,6 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
 nAP
 onk
 biU
@@ -28012,6 +28016,10 @@ eTF
 eFZ
 cGL
 mJn
+etD
+uBR
+uBR
+uBR
 uBR
 dSI
 uBR
@@ -28149,11 +28157,7 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
 cjv
 xlv
 kPt
@@ -28170,6 +28174,10 @@ xiL
 cGL
 cjv
 mwd
+dSI
+mLS
+uBR
+mLS
 dSI
 mLS
 uBR
@@ -28306,11 +28314,7 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
 mJn
 xlv
 cVR
@@ -28327,6 +28331,10 @@ psG
 psG
 onk
 dSI
+dSI
+dSI
+dSI
+mLS
 dSI
 dSI
 uBR
@@ -28463,11 +28471,7 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
 biU
 wHq
 cVR
@@ -28482,8 +28486,12 @@ psG
 psG
 mBU
 psG
-evs
+jyi
 umC
+evs
+dSI
+dSI
+dSI
 dSI
 dSI
 etD
@@ -28620,11 +28628,7 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
 nAP
 wHq
 cVR
@@ -28640,6 +28644,10 @@ eTF
 ewV
 psG
 onk
+dSI
+dSI
+dSI
+mLS
 dSI
 dSI
 dSI
@@ -28777,11 +28785,7 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
 cjv
 mZF
 xlv
@@ -28798,6 +28802,10 @@ psG
 xiL
 cjv
 mwd
+dSI
+uBR
+uBR
+dSI
 dSI
 mLS
 mLS
@@ -28934,11 +28942,7 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
 mJn
 onk
 biU
@@ -28955,7 +28959,11 @@ psG
 cGL
 nAP
 uBR
-etD
+uBR
+uBR
+uBR
+uBR
+dSI
 mLS
 eZs
 eZs
@@ -29092,11 +29100,7 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
 etD
 etD
 onk
@@ -29111,6 +29115,10 @@ eFZ
 psG
 onk
 mJn
+uBR
+uBR
+uBR
+uBR
 uBR
 eZs
 eZs
@@ -29249,12 +29257,8 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
+etD
 etD
 etD
 onk
@@ -29267,6 +29271,10 @@ psG
 rZO
 onk
 onk
+uBR
+uBR
+uBR
+uBR
 uBR
 uBR
 eZs
@@ -29406,12 +29414,8 @@ uBR
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
-uBR
-uBR
+etD
+etD
 etD
 etD
 etD
@@ -29423,6 +29427,10 @@ rRR
 rRR
 rRR
 sJB
+uBR
+uBR
+uBR
+uBR
 uBR
 uBR
 eZs
@@ -29564,10 +29572,10 @@ etD
 etD
 etD
 etD
-uBR
-uBR
-uBR
-uBR
+etD
+etD
+etD
+etD
 etD
 etD
 etD
@@ -30367,8 +30375,8 @@ uBR
 uBR
 uBR
 sbR
-sbR
-sbR
+akG
+akG
 pNQ
 pmA
 cVE
@@ -30509,8 +30517,6 @@ etD
 etD
 etD
 etD
-etD
-etD
 uBR
 uBR
 uBR
@@ -30524,7 +30530,9 @@ uBR
 uBR
 uBR
 uBR
-sbR
+uBR
+uBR
+akG
 sbR
 pNQ
 pmA
