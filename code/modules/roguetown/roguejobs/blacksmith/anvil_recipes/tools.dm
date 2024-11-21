@@ -124,20 +124,6 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/reagent_containers/glass/bucket/pot
 
-/datum/anvil_recipe/tools/iron/fork
-	name = "Iron Fork x3"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/kitchen/ironfork
-	createditem_num = 3
-	craftdiff = 1
-
-/datum/anvil_recipe/tools/iron/spoon
-	name = "Iron Spoon x3"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/kitchen/ironspoon
-	createditem_num = 3
-	craftdiff = 1
-
 /datum/anvil_recipe/tools/iron/bowl
 	name = "Iron Bowl"
 	req_bar = /obj/item/ingot/iron
