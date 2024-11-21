@@ -154,6 +154,7 @@
 			H.adjust_hydration(hydration)
 		if(M.blood_volume < BLOOD_VOLUME_NORMAL)
 			M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_NORMAL)
+		M.rogfat_add(hydration * -1)
 	..()
 
 /datum/reagent/water/gross

@@ -6,8 +6,6 @@
 	race = /datum/species/goblin
 	gender = MALE
 	domhand = 2
-	simpmob_attack = 45
-	simpmob_defend = 10
 	bodyparts = list(/obj/item/bodypart/chest/goblin, /obj/item/bodypart/head/goblin, /obj/item/bodypart/l_arm/goblin,
 					 /obj/item/bodypart/r_arm/goblin, /obj/item/bodypart/r_leg/goblin, /obj/item/bodypart/l_leg/goblin)
 	rot_type = /datum/component/rot/corpse/goblin
@@ -27,8 +25,10 @@
 	wander = FALSE
 
 /mob/living/carbon/human/species/goblin/npc/ambush
-
+	simpmob_attack = 35
+	simpmob_defend = 25
 	wander = TRUE
+	attack_speed = 10
 
 /mob/living/carbon/human/species/goblin/hell
 	name = "hell goblin"
@@ -78,21 +78,21 @@
 //	qdel(H)
 
 /obj/item/bodypart/head/goblin
-	max_damage = 150
+	max_damage = 80
 /obj/item/bodypart/chest/goblin
-	max_damage = 180
+	max_damage = 150
 	dismemberable = 0
 /obj/item/bodypart/l_arm/goblin
-	max_damage = 100
+	max_damage = 75
 	dismemberable = 0
 /obj/item/bodypart/r_arm/goblin
-	max_damage = 100
+	max_damage = 75
 	dismemberable = 0
 /obj/item/bodypart/r_leg/goblin
-	max_damage = 120
+	max_damage = 100
 	dismemberable = 0
 /obj/item/bodypart/l_leg/goblin
-	max_damage = 120
+	max_damage = 100
 	dismemberable = 0
 
 /obj/item/bodypart/head/goblin/update_icon_dropped()
@@ -305,6 +305,8 @@
 		H.STASTR += 6
 		H.STACON += 6
 		H.STASPD -= 4
+		H.simpmob_attack += 10
+		H.simpmob_defend += 15
 	if(is_species(H, /datum/species/goblin/cave))
 		H.STAPER += 6
 		H.STAEND += 2
@@ -314,6 +316,8 @@
 	if(is_species(H, /datum/species/goblin/moon))
 		H.STAINT += 4
 		H.STASPD += 4
+		H.simpmob_attack += 10
+		H.simpmob_defend += 25
 	var/loadout = rand(1,5)
 	switch(loadout)
 		if(1) //tribal spear
@@ -345,6 +349,7 @@
 		if(5) //heavy armored sword/flail/shields
 			H.simpmob_attack += 45
 			H.simpmob_defend += 25
+			ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			if(prob(30))
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
 			else

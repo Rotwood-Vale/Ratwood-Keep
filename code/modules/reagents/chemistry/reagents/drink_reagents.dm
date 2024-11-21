@@ -211,6 +211,7 @@
 			H.adjust_hydration(10)
 		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
+		H.rogfat_add(-10)
 	..()
 
 /datum/reagent/consumable/soymilk

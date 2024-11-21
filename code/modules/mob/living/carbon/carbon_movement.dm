@@ -34,4 +34,8 @@
 				adjust_hydration(-(0.1))
 		if(m_intent == MOVE_INTENT_RUN) //sprint fatigue add
 			var/stamina_consumption = HAS_TRAIT(src, TRAIT_GOODRUNNER) ? 1 : 2
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				if(H.worn_armor_class > 1)
+					stamina_consumption *= H.worn_armor_class
 			rogfat_add(stamina_consumption)

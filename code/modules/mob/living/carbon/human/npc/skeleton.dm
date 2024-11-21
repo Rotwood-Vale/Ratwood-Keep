@@ -4,8 +4,6 @@
 	race = /datum/species/human/northern
 	gender = MALE
 	domhand = 2
-	simpmob_attack = 30
-	simpmob_defend = 0
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	faction = list("undead")
@@ -24,8 +22,10 @@
 	candodge = FALSE
 
 /mob/living/carbon/human/species/skeleton/npc/ambush
-
+	simpmob_attack = 50
+	simpmob_defend = 0
 	wander = TRUE
+	attack_speed = -10
 
 /obj/item/bodypart/chest/skeleton
 	max_damage = 450
@@ -76,6 +76,7 @@
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	for(var/obj/item/bodypart/B in src.bodyparts)
 		B.skeletonize(FALSE)
 	update_body()
@@ -86,7 +87,7 @@
 
 /datum/outfit/job/roguetown/npc/skeleton/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.STASTR = rand(6, 12)
+	H.STASTR = rand(8, 14)
 	H.STAPER = rand(1, 6)
 	H.STAINT = 1
 	H.STACON = rand(12, 18)

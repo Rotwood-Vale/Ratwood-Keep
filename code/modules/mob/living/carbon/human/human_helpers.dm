@@ -190,18 +190,14 @@
 		return TRUE
 
 /mob/living/carbon/human/get_punch_dmg()
-	var/damage = 12
+	var/damage = 5
 
 	var/used_str = STASTR
 
 	if(domhand)
 		used_str = get_str_arms(used_hand)
 
-	if(used_str >= 11)
-		damage = max(damage + (damage * ((used_str - 10) * 0.3)), 1)
-
-	if(used_str <= 9)
-		damage = max(damage - (damage * ((10 - used_str) * 0.1)), 1)
+	damage += round(damage * (used_str / 10))
 
 	if(mind)
 		if(mind.has_antag_datum(/datum/antagonist/werewolf))

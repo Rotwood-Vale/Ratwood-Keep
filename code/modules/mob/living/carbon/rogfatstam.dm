@@ -1,11 +1,13 @@
 /mob/living/proc/update_rogfat() //update hud and regen after last_fatigued delay on taking
-//	maxrogfat = round(100 * (rogstam/maxrogstam))
-//	if(maxrogfat < 5)
-//		maxrogfat = 5
+	var/athletics_skill = 0
+	if(mind)
+		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
+	maxrogfat = round(10 * ((STAEND + (STACON / 2)) + athletics_skill))
 
-	if(world.time > last_fatigued + 50) //regen fatigue
+	if(world.time > last_fatigued + 6) //regen fatigue
 		var/added = rogstam / maxrogstam
-		added = round(-10+ (added*-40))
+		var/rogfatmult = ((maxrogfat - rogfat + 1) / maxrogfat)
+		added = round((((STAEND * -1.5) * rogfatmult) - 10) * added)
 		if(HAS_TRAIT(src, TRAIT_MISSING_NOSE))
 			added = round(added * 0.5, 1)
 		if(rogfat >= 1)
@@ -19,10 +21,12 @@
 	var/athletics_skill = 0
 	if(mind)
 		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
-	maxrogstam = (STAEND + (athletics_skill/2 ) ) * 100
+	maxrogstam = (((STAEND * 2) + (STACON / 2)) * (1 + (athletics_skill * 0.1))) * 100
 	if(cmode)
 		if(!HAS_TRAIT(src, TRAIT_BREADY))
 			rogstam_add(-2)
+	if(rogstam > maxrogstam)
+		rogstam = maxrogstam
 
 /mob/proc/rogstam_add(added as num)
 	return
@@ -73,7 +77,7 @@
 		else
 			emote(emote_override, forced = force_emote)
 		blur_eyes(2)
-		last_fatigued = world.time + 30 //extra time before fatigue regen sets in
+		last_fatigued = world.time + 74 //extra time before fatigue regen sets in
 		stop_attack()
 		changeNext_move(CLICK_CD_EXHAUSTED)
 		flash_fullscreen("blackflash")
@@ -93,7 +97,7 @@
 						C.heart_attack()
 		return FALSE
 	else
-		last_fatigued = world.time
+		last_fatigued = world.time + 24
 		update_health_hud()
 		return TRUE
 
