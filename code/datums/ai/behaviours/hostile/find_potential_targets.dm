@@ -59,3 +59,10 @@
 /// Returns the desired final target from the filtered list of targets
 /datum/ai_behavior/find_potential_targets/proc/pick_final_target(datum/ai_controller/controller, list/filtered_targets)
 	return pick(filtered_targets)
+
+
+/datum/ai_behavior/find_potential_targets/rat
+	vision_range = 2
+
+/datum/ai_behavior/find_potential_targets/spider
+	vision_range = 5

@@ -222,6 +222,15 @@
 				force_open()
 				user.visible_message(span_warning("[user] smashes through [src]!"))
 			return
+		if(HAS_TRAIT(user, TRAIT_ROTMAN))
+			if(locked)
+				user.visible_message(span_warning("The deadite bashes into [src]!"))
+				take_damage(50, "brute", "blunt", 1)
+			else
+				playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 90)
+				force_open()
+				user.visible_message(span_warning("The deadite smashes through [src]!"))
+			return
 		if(locked)
 			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/storage/keyring))
 				src.attackby(user.get_active_held_item(), user, TRUE)
@@ -252,6 +261,11 @@
 	if(try_award_resident_key(user))
 		return
 	if(locked)
+		if( user.used_intent.type == /datum/intent/unarmed/claw )
+			user.changeNext_move(CLICK_CD_MELEE)
+			to_chat(user, "<span class='warning'>The deadite claws at the door!!</span>")
+			take_damage(40, "brute", "melee", 1)
+			return
 		if(isliving(user))
 			var/mob/living/L = user
 			if(L.m_intent == MOVE_INTENT_SNEAK)
@@ -540,8 +554,8 @@
 					continue
 			else
 				playsound(loc, 'sound/items/pickbad.ogg', 40, TRUE)
-				I.take_damage(1)
-				to_chat(user, "<span class='warning'>Clack.</span>")
+				I.take_damage(1, BRUTE, "blunt")
+				to_chat(user, span_warning("Clack."))
 				continue
 		return
 

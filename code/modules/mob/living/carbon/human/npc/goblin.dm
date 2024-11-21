@@ -28,6 +28,7 @@
 /mob/living/carbon/human/species/goblin/hell
 	name = "hell goblin"
 	race = /datum/species/goblin/hell
+
 /mob/living/carbon/human/species/goblin/npc/hell
 	race = /datum/species/goblin/hell
 /mob/living/carbon/human/species/goblin/npc/ambush/hell

@@ -1,6 +1,7 @@
 /datum/ai_behavior/basic_melee_attack
-	action_cooldown = 1.5 SECONDS
+	action_cooldown = 0.2 SECONDS // We gotta check unfortunately often because we're in a race condition with nextmove
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
+	var/sidesteps_after = FALSE
 
 /datum/ai_behavior/basic_melee_attack/setup(datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
 	. = ..()
@@ -35,6 +36,22 @@
 	else
 		basic_mob.ClickOn(target, list())
 
+	if(sidesteps_after && prob(33)) //this is so fucking hacky, but going off og code this is exactly how it goes ignoring movetimers
+		if(!target || !isturf(target.loc) || !isturf(basic_mob.loc) || basic_mob.stat == DEAD)
+			return
+		var/target_dir = get_dir(basic_mob,target)
+
+		var/static/list/cardinal_sidestep_directions = list(-90,-45,0,45,90)
+		var/static/list/diagonal_sidestep_directions = list(-45,0,45)
+		var/chosen_dir = 0
+		if (target_dir & (target_dir - 1))
+			chosen_dir = pick(diagonal_sidestep_directions)
+		else
+			chosen_dir = pick(cardinal_sidestep_directions)
+		if(chosen_dir)
+			chosen_dir = turn(target_dir,chosen_dir)
+			basic_mob.Move(get_step(basic_mob,chosen_dir))
+			basic_mob.face_atom(target) //Looks better if they keep looking at you when dodging
 
 /datum/ai_behavior/basic_melee_attack/finish_action(datum/ai_controller/controller, succeeded, target_key, targetting_datum_key, hiding_location_key)
 	. = ..()
