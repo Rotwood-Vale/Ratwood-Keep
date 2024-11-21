@@ -149,13 +149,7 @@
 			to_chat(user, "Channeling my patron's power is easier in these conditions!")
 			healing += situational_bonus
 
-		if(iscarbon(target))
-			var/mob/living/carbon/C = target
-			var/datum/status_effect/buff/healing/heal_effect = C.apply_status_effect(/datum/status_effect/buff/healing)
-			heal_effect.healing_on_tick = healing
-		else
-			target.adjustBruteLoss(-healing*10)
-			target.adjustFireLoss(-healing*10)
+		target.apply_status_effect(/datum/status_effect/buff/healing, healing)
 		return TRUE
 	revert_cast()
 	return FALSE

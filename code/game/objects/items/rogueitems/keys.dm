@@ -339,6 +339,12 @@
 	icon_state = "brownkey"
 	lockid = "inquisition"
 
+/obj/item/roguekey/inhumen
+	name = "ancient key"
+	desc = "A ancient, rusty key. There's no telling where this leads."
+	icon_state = "rustkey"
+	lockid = "inhumen"
+
 /obj/item/roguekey/hand
 	name = "hand's key"
 	desc = "This regal key belongs to the Grand Duke's Right Hand."
