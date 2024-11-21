@@ -5993,16 +5993,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
-"fyZ" = (
-/obj/structure/table/wood{
-	icon_state = "longtable_mid"
-	},
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/sewer)
 "fzp" = (
 /obj/effect/decal/cobbleedge{
 	dir = 6
@@ -14001,8 +13991,8 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "ncB" = (
-/obj/machinery/light/rogue/firebowl/standing,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "ncQ" = (
@@ -21229,6 +21219,16 @@
 "tFu" = (
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/town/basement/keep)
+"tFC" = (
+/obj/structure/table/wood{
+	icon_state = "longtable_mid"
+	},
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "tGm" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/ruinedwood/herringbone,
@@ -22130,6 +22130,11 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
+"uBe" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/light/rogue/firebowl/standing/blue,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "uBl" = (
 /obj/structure/bed/rogue/inn/wool,
 /obj/item/bedsheet/rogue/fabric,
@@ -30051,7 +30056,7 @@ akG
 bsO
 pNQ
 pmA
-xsI
+cVE
 heh
 cVE
 kAA
@@ -30208,9 +30213,9 @@ sbR
 sbR
 pNQ
 pmA
-xsI
-heh
 cVE
+heh
+xsI
 kAA
 xOt
 qwP
@@ -30365,9 +30370,9 @@ sbR
 sbR
 pNQ
 pmA
-xsI
-heh
 cVE
+heh
+xsI
 kAA
 qPG
 mOe
@@ -30524,7 +30529,7 @@ pNQ
 pmA
 cVE
 heh
-cVE
+xsI
 kAA
 kAA
 mOe
@@ -33355,8 +33360,8 @@ kkj
 cVE
 cVE
 cVE
-xsI
-xsI
+cVE
+cVE
 heh
 pmA
 kAA
@@ -33513,7 +33518,7 @@ ipJ
 ipJ
 oGK
 vrR
-xsI
+cVE
 heh
 pmA
 kAA
@@ -33822,8 +33827,8 @@ eDv
 bBD
 gdw
 pmA
-oYS
-jRM
+dRO
+bHA
 bHA
 wGj
 mWa
@@ -34937,7 +34942,7 @@ gdw
 gdw
 cVE
 cVE
-xsI
+heh
 ppJ
 oGK
 qGI
@@ -36359,7 +36364,7 @@ bHA
 aUo
 jRM
 bHA
-oYS
+dRO
 pmA
 nEh
 bku
@@ -36668,7 +36673,7 @@ mBm
 cVE
 cVE
 pmA
-oYS
+dRO
 bHA
 bHA
 bHA
@@ -37590,8 +37595,8 @@ pNQ
 pmA
 kkj
 cVE
-xsI
-xsI
+cVE
+cVE
 cVE
 cVE
 cVE
@@ -37915,7 +37920,7 @@ pmA
 cVE
 heh
 pmA
-rvq
+uBe
 oxD
 wIc
 cfc
@@ -38079,7 +38084,7 @@ clX
 ipJ
 cVE
 cVE
-xsI
+cVE
 pmA
 jRM
 jRM
@@ -38091,7 +38096,7 @@ bHA
 bHA
 kyo
 pmA
-oYS
+dRO
 bHA
 lJt
 pmA
@@ -38236,7 +38241,7 @@ qGI
 rDj
 cVE
 cVE
-xsI
+cVE
 pmA
 jRM
 bHA
@@ -38393,7 +38398,7 @@ mWa
 cVE
 cVE
 cVE
-kkj
+cVE
 pmA
 ncB
 bHA
@@ -38550,7 +38555,7 @@ mWa
 cVE
 cVE
 cVE
-cVE
+kkj
 qGI
 oGK
 oGK
@@ -38562,10 +38567,10 @@ oGK
 oGK
 oGK
 qGI
-fyZ
-fyZ
-fyZ
-pmA
+tFC
+tFC
+tFC
+qGI
 cVE
 heh
 pmA
@@ -38709,7 +38714,7 @@ cVE
 cVE
 cVE
 cVE
-xsI
+cVE
 cVE
 cVE
 cVE
@@ -38808,13 +38813,13 @@ exi
 exi
 pNQ
 pmA
-rvq
+uBe
 bHA
 bHA
 rkK
 bHA
 vlr
-oYS
+dRO
 pmA
 heh
 kVa
@@ -39034,7 +39039,7 @@ cVE
 cVE
 cVE
 bOK
-xsI
+cVE
 kkj
 cVE
 cVE
@@ -39329,7 +39334,7 @@ jRM
 qvA
 pmA
 lJt
-jRM
+bHA
 bHA
 cfc
 pmA
@@ -39339,7 +39344,7 @@ cVE
 pmA
 jRM
 bHA
-oYS
+dRO
 pmA
 pNQ
 pNQ
@@ -39956,7 +39961,7 @@ kSX
 bHA
 jiG
 pmA
-oYS
+dRO
 bHA
 bHA
 tNw
@@ -40105,7 +40110,7 @@ oGK
 qGI
 bHA
 bHA
-jRM
+bHA
 bHA
 bHA
 jRM
@@ -40227,7 +40232,7 @@ bHA
 vlr
 jRM
 bHA
-oYS
+dRO
 pmA
 heh
 cVE
@@ -40412,7 +40417,7 @@ heh
 heh
 heh
 heh
-xsI
+cVE
 cVE
 cVE
 cVE
@@ -40743,9 +40748,9 @@ mhu
 oGK
 vrR
 kkj
-xsI
 cVE
-xsI
+cVE
+cVE
 cVE
 cVE
 cVE
@@ -40753,7 +40758,7 @@ cVE
 cVE
 cVE
 heh
-xsI
+cVE
 pmA
 nze
 nze
@@ -41081,7 +41086,7 @@ cVE
 cVE
 heh
 cVE
-xsI
+cVE
 cVE
 cVE
 cVE
@@ -41550,7 +41555,7 @@ heh
 cVE
 pmA
 heh
-xsI
+cVE
 pmA
 lXN
 aab
