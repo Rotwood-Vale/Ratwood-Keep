@@ -5993,6 +5993,16 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
+"fyZ" = (
+/obj/structure/table/wood{
+	icon_state = "longtable_mid"
+	},
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "fzp" = (
 /obj/effect/decal/cobbleedge{
 	dir = 6
@@ -15524,16 +15534,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
-"ouI" = (
-/obj/structure/table/wood{
-	icon_state = "longtable_mid"
-	},
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/sewer)
 "ovg" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
@@ -38393,7 +38393,7 @@ mWa
 cVE
 cVE
 cVE
-cVE
+kkj
 pmA
 ncB
 bHA
@@ -38562,9 +38562,9 @@ oGK
 oGK
 oGK
 qGI
-ouI
-ouI
-ouI
+fyZ
+fyZ
+fyZ
 pmA
 cVE
 heh
@@ -40596,7 +40596,7 @@ heh
 heh
 heh
 heh
-xsI
+kkj
 pmA
 nze
 wOa
@@ -40753,7 +40753,7 @@ cVE
 cVE
 cVE
 heh
-cVE
+xsI
 pmA
 nze
 nze
@@ -41087,7 +41087,7 @@ cVE
 cVE
 cVE
 cVE
-cVE
+kkj
 rxQ
 sjE
 exi
