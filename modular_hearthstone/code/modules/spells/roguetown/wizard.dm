@@ -221,7 +221,8 @@
 		/obj/effect/proc_holder/spell/invoked/guidance,
 		/obj/effect/proc_holder/spell/invoked/fortitude,
 		/obj/effect/proc_holder/spell/invoked/snap_freeze,
-		/obj/effect/proc_holder/spell/invoked/projectile/frostbolt
+		/obj/effect/proc_holder/spell/invoked/projectile/frostbolt,
+		/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
@@ -430,8 +431,8 @@
 	xp_gain = TRUE
 	releasedrain = 50
 	chargedrain = 1
-	chargetime = 2 SECONDS
-	charge_max = 25 SECONDS
+	chargetime = 5
+	charge_max = 30 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
