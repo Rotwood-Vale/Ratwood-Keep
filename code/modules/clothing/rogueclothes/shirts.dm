@@ -359,3 +359,16 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/steward
+	color = null
+	name = "ornate silk dress"
+	desc = "A dress woven of only the finest, softest silks. Golden thread is inlaid with a deep royal crimson, expressing the owner's exquisitve wealth."
+	icon_state = "stewarddress"
+	item_state = "stewarddress"
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/silktunic
+	name = "ornate silk tunic"
+	desc = "A billowing tunic made of the finest silks and softest fabrics. Inlaid with golden thread, this is the height of fashion for the wealthiest of wearers."
+	icon_state = "stewardtunic"
+	item_state = "stewardtunic"
