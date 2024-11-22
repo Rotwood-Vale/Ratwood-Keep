@@ -18,6 +18,8 @@
 	craftdiff = 0
 	craftsound = 'sound/misc/frying.ogg'
 	req_table = FALSE
+	verbage_simple = "render"
+	verbage = "renders"
 
 /datum/crafting_recipe/roguetown/cooking/campfire_tallow
 	name = "render tallow over the campfire"
@@ -32,3 +34,5 @@
 	craftdiff = 0
 	craftsound = 'sound/misc/frying.ogg'
 	req_table = FALSE
+	verbage_simple = "render"
+	verbage = "renders"
