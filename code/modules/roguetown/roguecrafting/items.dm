@@ -104,7 +104,7 @@
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/bone = 2,
-		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/natural/fibers = 2,
 	)
 	tools = /obj/item/rogueweapon/huntingknife
@@ -129,7 +129,7 @@
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/cloth = 1,
-		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/natural/fibers = 2,
 	)
 	tools = /obj/item/rogueweapon/huntingknife
