@@ -151,12 +151,9 @@
 			head = /obj/item/clothing/head/roguetown/roguehood/shalal/black
 			cloak = /obj/item/clothing/cloak/half
 			H.grant_language(/datum/language/celestial)
-			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-			else
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord // FUCK YOU ZETH, WHY DOESN'T THE ARMING JACKET GET WOMEN SPRITES.
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 
-				backpack_contents = list(/obj/item/roguekey/mercenary,/obj/item/rogueweapon/huntingknife)
+			backpack_contents = list(/obj/item/roguekey/mercenary,/obj/item/rogueweapon/huntingknife)
 
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_templar(H)

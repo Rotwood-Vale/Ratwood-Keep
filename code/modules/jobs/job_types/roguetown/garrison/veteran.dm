@@ -107,7 +107,7 @@
 /datum/outfit/job/roguetown/vet/footman/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half // Meant to be better than man-at-arms, but worse than knight. No heavy armor!! This is a cuirass, not half-plate.
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy 
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
@@ -175,7 +175,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
@@ -223,7 +223,7 @@
 			r_hand = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltl = /obj/item/quiver/bolts
-		
+
 		if ("Spear + Shield")
 			r_hand = /obj/item/rogueweapon/spear
 			backl = /obj/item/rogueweapon/shield/tower/metal
@@ -252,7 +252,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
@@ -263,7 +263,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 		H.change_stat("intelligence", 1)
@@ -274,7 +274,7 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE) 
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE) // two handed weapons require a LOT of stamina.
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
@@ -291,7 +291,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		if("Halberd")
-			r_hand = /obj/item/rogueweapon/halberd	
+			r_hand = /obj/item/rogueweapon/halberd
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE) // SO, fun fact. The description of the grenzel halbardier says they specialize in axes, but they get no axe skill. Maybe this guy is where that rumor came from.
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 
@@ -342,7 +342,7 @@
 		H.change_stat("intelligence", 2)
 		H.change_stat("endurance", 1)
 		H.change_stat("constitution", 1)
-		H.change_stat("speed", 1) // You get -2 speed from being old. 
+		H.change_stat("speed", 1) // You get -2 speed from being old.
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)

@@ -87,7 +87,7 @@
 	H.change_stat("constitution", 1)
 	H.change_stat("endurance", 1)
 
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy		//Bit worse shirt protection than the archer
+	shirt = 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord		//Bit worse shirt protection than the archer
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale			//Makes up for worse shirt protection with kinda better armor protection
 	head = /obj/item/clothing/head/roguetown/helmet/sallet				//Better protection than kettle archer has
 
