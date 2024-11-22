@@ -98,6 +98,7 @@
 	penfactor = 20
 	swingdelay = 10
 	item_d_type = "slash"
+	iparrybonus = 5
 
 /datum/intent/axe/chop/battle
 	penfactor = 70
@@ -105,13 +106,7 @@
 
 /datum/intent/axe/cut/battle
 	penfactor = 30
-
-/datum/intent/axe/chop/battle
-	penfactor = 70
-	damfactor = 1.2 //36 on battleaxe
-
-/datum/intent/axe/cut/battle
-	penfactor = 30
+	iparrybonus = 5
 
 /obj/item/rogueweapon/stoneaxe/battle
 	force = 25
@@ -125,6 +120,8 @@
 	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle)
 	minstr = 12
 	wdefense = 4
+	wparrybonus = 5
+	wparryspeed = -2
 
 /obj/item/rogueweapon/stoneaxe/battle/getonmobprop(tag)
 	if(tag)

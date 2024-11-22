@@ -18,6 +18,8 @@
 	var/list/hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg')
 	var/canparry = TRUE
 	var/candodge = TRUE
+	var/iparrybonus = 0
+	var/idodgebonus = 0
 	var/chargetime = 0 //if above 0, this attack must be charged to reach full damage
 	var/chargedrain = 0 //how much fatigue is removed every second when at max charge
 	var/releasedrain = 1 //drain when we go off, regardless

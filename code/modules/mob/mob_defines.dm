@@ -270,7 +270,7 @@
 	var/dodgetime = 12
 
 	var/last_dodge = 0
-	var/last_parry = 0
+	var/next_parry = 0
 	var/next_emote = 0
 	var/next_me_emote = 0
 	var/lastpoint = 0

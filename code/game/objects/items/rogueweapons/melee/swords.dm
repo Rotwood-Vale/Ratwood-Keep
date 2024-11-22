@@ -79,6 +79,7 @@
 	chargetime = 0
 	swingdelay = 0
 	item_d_type = "stab"
+	iparrybonus = 5
 
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
@@ -346,6 +347,7 @@
 	swingdelay = 5
 	damfactor = 0.8
 	item_d_type = "blunt"
+	iparrybonus = -10
 
 /datum/intent/sword/chop
 	name = "chop"
@@ -450,9 +452,12 @@
 	minstr = 5
 	wdefense = 6
 	wbalance = 1
+	wparryspeed = 5
 
 /datum/intent/sword/cut/sabre
 	clickcd = 10
+	iparrybonus = 5
+	idodgebonus = 10
 
 /obj/item/rogueweapon/sword/sabre/dec
 	icon_state = "decsaber"
@@ -470,13 +475,16 @@
 	minstr = 6
 	wdefense = 7
 	wbalance = 1
+	wparryspeed = 2
 
 /datum/intent/sword/cut/rapier
 	clickcd = 10
 	damfactor = 0.7
+	iparrybonus = 10
 
 /datum/intent/sword/thrust/rapier
 	clickcd = 8
+	iparrybonus = 20
 
 /obj/item/rogueweapon/sword/rapier/dec
 	icon_state = "decrapier"
@@ -491,6 +499,7 @@
 	max_integrity = 300
 	max_blade_int = 300
 	wdefense = 7
+	wparryspeed = 6
 
 /obj/item/rogueweapon/sword/estoc
 	name = "estoc"
@@ -506,6 +515,7 @@
 /datum/intent/sword/thrust/estoc // Around 12 or so dmg gets through armor, making it weaker than spears, but more portable.
 	clickcd = 10
 	penfactor = 60
+	iparrybonus = 20
 
 /obj/item/rogueweapon/sword/cutlass
 	name = "cutlass"

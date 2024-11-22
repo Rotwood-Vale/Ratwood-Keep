@@ -43,11 +43,13 @@
 		else if(used_intent.blade_class == BCLASS_CUT)				//Slashing is still semi-aimed
 			chance2hit += user.STAPER
 		else if(used_intent.blade_class == BCLASS_PUNCH)			//It is easiest to aim your fists
-			chance2hit += (40 + user.STAPER)
+			chance2hit += (20 + user.STAPER)
+		else if(used_intent == INTENT_GRAB)
+			chance2hit += (20 + user.STAPER)
 		else if(used_intent == INTENT_KICK)
-			chance2hit += (30 + user.STAPER)
+			chance2hit += (10 + user.STAPER)
 		else if(used_intent == INTENT_BITE)
-			chance2hit += (50 + user.STAPER)
+			chance2hit += (20 + user.STAPER)
 		else if(used_intent.reach >= 2)								//Using a polearm's reach attack at close range reduces the To-Hit chance
 			if(get_dist(user, target) <= 1)
 				chance2hit -= 35
@@ -58,6 +60,8 @@
 	if(I)
 		if(I.wlength == WLENGTH_SHORT)								//Small weapons like daggers are easier to aim
 			chance2hit += 25
+		if(I.wbalance > 0)
+			chance2hit += user.STASPD
 		if(I.minstr > 0)											//Using a weapon while below minimum strength requirement will penalize your To-Hit
 			if(strmod <= 0)
 				chance2hit += (strmod * 2) 
@@ -428,7 +432,7 @@
 				return FALSE
 			if(pulling == A && grab_state >= GRAB_AGGRESSIVE)				//Nor if you are grabbing them
 				return FALSE
-			if(world.time < last_parry + setparrytime)
+			if(world.time < next_parry)
 				if(!istype(rmb_intent, /datum/rmb_intent/riposte))				//Defense Stance allows you to quickly re-parry
 					return FALSE
 			if(has_status_effect(/datum/status_effect/debuff/feinted))			//You can not parry an attack that feinted you
@@ -438,14 +442,14 @@
 			if(intenty && !intenty.canparry)									//You have to be able to parry to parry
 				return FALSE
 
-			last_parry = world.time
-
 			defense_score += ((STAINT + STAPER) * 2)							//Base parry ability is based on seeing and predicting the enemy's attack
 
 			defense_score -= ((A.STASTR - D.STASTR) * 5)						//Contested Strength check
 
 			if(m_intent == MOVE_INTENT_RUN)										//Defender receives a penalty to parry while sprinting, scaled by Speed stat
 				defense_score -= (5 * (20 - STASPD))
+
+			defense_score += (D.rmb_intent.def_bonus)							//Any defense bonus from poise
 
 			var/drained = D.defdrain
 			var/weapon_parry = FALSE
@@ -468,10 +472,15 @@
 				if(mainhand.can_parry)
 					mainhand_defense += (D.mind ? (D.mind.get_skill_level(mainhand.associated_skill) * 15) : 0)
 					mainhand_defense += mainhand.wdefense
+					mainhand_defense += mainhand.wparrybonus
+					mainhand_defense += D.used_intent.iparrybonus		//Attack intent based parry bonus
+
 			if(offhand)															//Check any item in other hand for skills
 				if(offhand.can_parry)
 					offhand_defense += (D.mind ? (D.mind.get_skill_level(offhand.associated_skill) * 15) : 0)
 					offhand_defense += offhand.wdefense
+					offhand_defense += offhand.wparrybonus
+					offhand_defense += D.used_intent.iparrybonus			//Attack intent based parry bonus
 			if(mainhand_defense < offhand_defense)
 				used_weapon = offhand
 
@@ -503,6 +512,8 @@
 			defense_score = clamp(defense_score, 0, 95)
 
 			drained = max(drained + (A.STASTR - D.STASTR), 5)					//If the Defender has lower Strength, it drains more energy to parry
+
+			next_parry = ((world.time + setparrytime) - used_weapon.wparryspeed) //Faster weapons can re-parry sooner
 
 			var/parryroll = rand(1, 100)
 			if(D.client?.prefs.showrolls && GLOB.Debug2)
@@ -669,6 +680,7 @@
 	var/mob/living/carbon/human/DH
 	var/mob/living/carbon/human/AH
 	var/obj/item/I
+	var/obj/item/DI = D.get_active_held_item()
 	var/drained = 5
 	var/dodge_speed = floor(D.STASPD / 2)
 	if(ishuman(src))
@@ -679,7 +691,7 @@
 	var/dodge_score = D.simpmob_defend
 	if(D.rogfat >= D.maxrogfat)
 		return FALSE
-	if(!(D.mobility_flags & MOBILITY_STAND))									//Can't dodge when knocked down
+	if(!(D.mobility_flags & MOBILITY_STAND))							//Can't dodge when knocked down
 		return FALSE
 	if(D)
 		if(DH?.check_dodge_skill())
@@ -688,24 +700,37 @@
 			dodge_score += ((D.STASPD * 10) + (D.STAPER * 4))
 	if(A)
 		dodge_score -= (A.mind ? (A.STASPD * 5) : A.simpmob_attack)
-	if(I)
+	if(AH?.mind)
+		dodge_score -= (AH.mind.get_skill_level(I.associated_skill) * 10)
+
+	if(I.wbalance > 0)													//Enemy weapon is quick, so they get a bonus based on spddiff
+		dodge_score -= ((A.STASPD - D.STASPD) * 5)
+
+	dodge_score += (D.rmb_intent.def_bonus)								//Dodge bonus from Poise
 
 				//// ADD WEAPON INTENT MODIFIERS HERE ////
+	if(istype(DI, /obj/item/rogueweapon))
+		switch(DI.wlength)
+			if(WLENGTH_NORMAL)
+				dodge_score -= 5
+				drained += 2
+			if(WLENGTH_LONG)
+				dodge_score -= 10
+				drained += 5
+			if(WLENGTH_GREAT)
+				dodge_score -= 15
+				dodge_speed = floor(dodge_speed * 0.8)
+				drained += 8
+		dodge_score += (DI.wdodgebonus)
+	
+	dodge_score += (D.used_intent.idodgebonus)							//Some weapon intents help with dodging
 
-/*		if(I.wbalance > 0 && A.STASPD > D.STASPD) //nme weapon is quick, so they get a bonus based on spddiff
-			dodge_score = dodge_score - ( I.wbalance * ((A.STASPD - D.STASPD) * 10) )
-		if(I.wbalance < 0 && D.STASPD > A.STASPD) //nme weapon is slow, so its easier to dodge if we're faster
-			dodge_score = dodge_score + ( I.wbalance * ((A.STASPD - D.STASPD) * -10) ) */
-
-
-		if(AH?.mind)
-			dodge_score -= (AH.mind.get_skill_level(I.associated_skill) * 10)
 	if(DH)
 		if(!DH?.check_armor_skill())
 			DH.Knockdown(1)
 			return FALSE
-		if(I)																	//Attacker attacked us with a weapon
-			if(!I.associated_skill)												//Attacker's weapon doesn't have a skill because its improvised, so penalty to attack
+		if(I)															//Attacker attacked us with a weapon
+			if(!I.associated_skill)										//Attacker's weapon doesn't have a skill because its improvised, so penalty to attack
 				dodge_score += 10
 			else
 				if(DH.mind)

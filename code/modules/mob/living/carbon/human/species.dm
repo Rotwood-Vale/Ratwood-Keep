@@ -1136,6 +1136,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						span_danger("I block [user]'s grab!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_warning("My grab at [target] was blocked!"))
 		return FALSE
+
+	var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/wrestling, user.used_intent)
+	var/goodhit = accuracy_check[2]
+	if(goodhit == "Miss")
+		return FALSE
+
 	if(attacker_style && attacker_style.grab_act(user,target))
 		return TRUE
 	else
@@ -1192,6 +1198,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return
 
 		var/damage = user.get_punch_dmg()
+		if(user.gloves)
+			damage *= (1 + (user.gloves.armor_class * 0.2))
 
 /*		var/miss_chance = 100//calculate the odds that a punch misses entirely. considers stamina and brute damage of the puncher. punches miss by default to prevent weird cases
 		if(user.dna.species.punchdamagelow)
@@ -1240,6 +1248,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			target.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 		else
 			affecting.bodypart_attacked_by(user.used_intent.blade_class, damage, user, selzone, crit_message = TRUE)
+			
 		log_combat(user, target, "punched")
 
 		if(!nodmg)
@@ -1414,8 +1423,23 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(user == target)
 		return FALSE
 	if(user.check_leg_grabbed(1) || user.check_leg_grabbed(2))
-		to_chat(user, span_notice("I can't move my leg!"))
-		return
+		if(user.check_leg_grabbed(1) && user.check_leg_grabbed(2))		//If both legs are grabbed
+			to_chat(user, span_notice("I can't move my leg!"))
+			return
+		else															//If only one leg is grabbed
+			var/mob/living/G = user.pulledby
+			var/userskill = 1
+			if(user.mind)
+				userskill = ((user.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+			var/grabberskill = 1
+			if(G?.mind)
+				grabberskill = ((G.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+			if(((user.STASTR + rand(1, 6)) * userskill) < ((G.STASTR + rand(1, 6)) * grabberskill))
+				to_chat(user, span_notice("I can't move my leg!"))
+				user.changeNext_move(CLICK_CD_GRABBING)
+				return
+			else
+				user.resist_grab()
 	if(user.rogfat >= user.maxrogfat)
 		return FALSE
 	if(!(user.mobility_flags & MOBILITY_STAND))
@@ -1436,7 +1460,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				return FALSE
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
-			var/damage = user.get_punch_dmg() * 1.4
+			var/damage = (user.get_punch_dmg() * 4)
+			if(user.shoes)
+				damage *= (1 + (user.shoes.armor_class * 0.2))
 			target.next_attack_msg.Cut()
 			var/nodmg = FALSE
 			if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
@@ -1530,7 +1556,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!affecting)
 			affecting = target.get_bodypart(BODY_ZONE_CHEST)
 		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
-		var/damage = user.get_punch_dmg()
+		var/damage = (user.get_punch_dmg() * 2.5)
+		if(user.shoes)
+			damage *= (1 + (user.shoes.armor_class * 0.2))
 		if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
 			target.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 		else
@@ -1584,8 +1612,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H, selzone)
 	// Allows you to put in item-specific reactions based on species
 	if(user != H)
-		if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
-			return 0
+		if(H.can_see_cone(user))
+			if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
+				return 0
 	if(H.check_block())
 		H.visible_message(span_warning("[H] blocks [I]!"), \
 						span_danger("I block [I]!"))

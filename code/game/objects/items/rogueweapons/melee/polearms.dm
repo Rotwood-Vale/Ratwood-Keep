@@ -20,6 +20,8 @@
 	penfactor = 10
 	damfactor = 0.8
 	item_d_type = "blunt"
+	iparrybonus = 5
+	idodgebonus = 15
 
 /datum/intent/spear/cut
 	name = "cut"
@@ -53,6 +55,9 @@
 	bigboy = TRUE
 	gripsprite = TRUE
 	associated_skill = /datum/skill/combat/polearms
+	wparrybonus = 10
+	wparryspeed = 3
+	wdodgebonus = 15
 
 /obj/item/rogueweapon/woodstaff/getonmobprop(tag)
 	. = ..()
@@ -83,6 +88,9 @@
 	bigboy = FALSE
 	gripsprite = FALSE
 	gripped_intents = null
+	wparrybonus = 25
+	wparryspeed = 5
+	wdodgebonus = 30
 
 /obj/item/rogueweapon/woodstaff/aries/getonmobprop(tag)
 	. = ..()
@@ -250,6 +258,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 6
+	wparryspeed = -2
 
 /obj/item/rogueweapon/eaglebeak/getonmobprop(tag)
 	. = ..()
@@ -301,6 +310,7 @@
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 300
 	wdefense = 5
+	wparryspeed = -1
 
 /obj/item/rogueweapon/greatsword/getonmobprop(tag)
 	. = ..()
@@ -324,6 +334,8 @@
 
 /datum/intent/sword/cut/zwei
 	reach = 2
+	iparrybonus = 10
 
 /datum/intent/sword/thrust/zwei
 	reach = 2
+	iparrybonus = 15

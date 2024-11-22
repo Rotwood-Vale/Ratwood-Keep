@@ -18,6 +18,7 @@
 	throwforce = 5
 	wdefense = 0
 	minstr = 4
+	wparryspeed = -6
 
 /datum/intent/flail/strike
 	name = "strike"
@@ -28,6 +29,7 @@
 	penfactor = 5
 	icon_state = "instrike"
 	item_d_type = "slash"
+	iparrybonus = 15
 
 /datum/intent/flail/strikerange //No flail seems to use this intent.
 	name = "ranged strike"
@@ -143,7 +145,7 @@
 	slot_flags = ITEM_SLOT_HIP //| ITEM_SLOT_BELT (Either someone fixes this, or this remains disabled because it's very bugged)
 	associated_skill = /datum/skill/combat/whipsflails
 	anvilrepair = /datum/skill/craft/tanning
-	parrysound = list('sound/combat/parry/parrygen.ogg')
+	can_parry = FALSE
 	swingsound = WHIPWOOSH
 	throwforce = 5
 	wdefense = 0

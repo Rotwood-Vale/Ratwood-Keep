@@ -9,8 +9,20 @@
   */
 /obj/item/proc/melee_attack_chain(mob/user, atom/target, params)
 	if(user.check_arm_grabbed(user.active_hand_index))
-		to_chat(user, span_notice("I can't move my arm!"))
-		return
+		var/mob/living/G = user.pulledby
+		var/mob/living/U = user
+		var/userskill = 1
+		if(U?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+			userskill = ((U.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+		var/grabberskill = 1
+		if(G?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+			grabberskill = ((G.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+		if(((U.STASTR + rand(1, 6)) * userskill) < ((G.STASTR + rand(1, 6)) * grabberskill))
+			to_chat(user, span_notice("I can't move my arm!"))
+			user.changeNext_move(CLICK_CD_GRABBING)
+			return
+		else
+			user.resist_grab()
 	if(!user.has_hand_for_held_index(user.active_hand_index, TRUE)) //we obviously have a hadn, but we need to check for fingers/prosthetics
 		to_chat(user, span_warning("I can't move the fingers."))
 		return
@@ -211,17 +223,16 @@
 	if(istype(user.rmb_intent, /datum/rmb_intent/weak))
 		used_str--
 	used_str = CLAMP(used_str, 1, 20)
-	if(used_str >= 11)
-		newforce = newforce + (newforce * ((used_str - 10) * 0.1))
-	else if(used_str <= 9)
-		newforce = newforce - (newforce * ((10 - used_str) * 0.1))
+	if(I.wielded)
+		used_str *= 1.2
+	newforce = (newforce * (used_str / 10))
 
 	if(I.minstr)
 		var/effective = I.minstr
 		if(I.wielded)
-			effective = max(I.minstr / 2, 1)
+			effective = max(round(I.minstr / 1.5), 1)
 		if(effective > user.STASTR)
-			newforce = max(newforce*0.3, 1)
+			newforce = max(newforce * ((used_str / effective) / 1.5), 1)
 
 	switch(blade_dulling)
 		if(DULLING_CUT) //wooden that can't be attacked by clubs (trees, bushes, grass)
@@ -294,8 +305,8 @@
 	
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
-		newforce = newforce * 0.5
-	newforce = round(newforce,1)
+		newforce = newforce * round(user.client?.chargedprog / 100, 0.1)
+	newforce = round(newforce, 1)
 	newforce = max(newforce, 1)
 	testing("endforce [newforce]")
 	return newforce

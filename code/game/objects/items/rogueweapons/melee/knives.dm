@@ -67,6 +67,7 @@
 	clickcd = 14
 	swingdelay = 12
 	damfactor = 1.1
+	iparrybonus = -15
 
 /obj/item/rogueweapon/huntingknife/getonmobprop(tag)
 	. = ..()

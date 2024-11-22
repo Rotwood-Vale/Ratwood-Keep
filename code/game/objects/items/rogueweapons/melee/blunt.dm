@@ -24,6 +24,8 @@
 	minstr = 7
 	wdefense = 2
 	wbalance = -1
+	wparrybonus = 10
+	wparryspeed = -4
 	blade_dulling = DULLING_BASHCHOP
 
 /obj/item/rogueweapon/mace/church
@@ -200,6 +202,8 @@
 	minstr = 0
 	wdefense = 5
 	wbalance = 0
+	wparrybonus = 0
+	wparryspeed = 0
 	associated_skill = /datum/skill/combat/swords
 
 

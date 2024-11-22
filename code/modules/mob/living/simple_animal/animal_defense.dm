@@ -201,8 +201,23 @@
 	if(user == target)
 		return FALSE
 	if(user.check_leg_grabbed(1) || user.check_leg_grabbed(2))
-		to_chat(user, span_notice("I can't move my leg!"))
-		return
+		if(user.check_leg_grabbed(1) && user.check_leg_grabbed(2))		//If both legs are grabbed
+			to_chat(user, span_notice("I can't move my legs!"))
+			return
+		else															//If only one leg is grabbed
+			var/mob/living/G = user.pulledby
+			var/userskill = 1
+			if(user.mind)
+				userskill = ((user.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+			var/grabberskill = 1
+			if(G?.mind)
+				grabberskill = ((G.mind.get_skill_level(/datum/skill/combat/wrestling) * 0.1) + 1)
+			if(((user.STASTR + rand(1, 6)) * userskill) < ((G.STASTR + rand(1, 6)) * grabberskill))
+				to_chat(user, span_notice("I can't move my leg!"))
+				user.changeNext_move(CLICK_CD_GRABBING)
+				return
+			else
+				user.resist_grab()
 	if(user.rogfat >= user.maxrogfat)
 		return FALSE
 	if(user.loc == target.loc)

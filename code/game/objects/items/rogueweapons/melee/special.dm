@@ -25,6 +25,7 @@
 	attack_verb = list("bashes", "clubs", "strikes")
 	penfactor = 10
 	item_d_type = "blunt"
+	iparrybonus = 10
 
 /datum/intent/lord_electrocute
 	name = "electrocute"
@@ -235,6 +236,8 @@
 	swingdelay = 0
 	clickcd = 8
 	item_d_type = "slash"
+	iparrybonus = -5
+	idodgebonus = 20
 
 /datum/intent/katar/thrust
 	name = "thrust"
@@ -247,6 +250,8 @@
 	chargetime = 0
 	clickcd = 8
 	item_d_type = "stab"
+	iparrybonus = -10
+	idodgebonus = 20
 
 /obj/item/rogueweapon/katar/getonmobprop(tag)
 	. = ..()

@@ -1166,7 +1166,7 @@
 	. = TRUE
 
 	var/wrestling_diff = 0
-	var/resist_chance = 40
+	var/resist_chance = 0
 	var/mob/living/L = pulledby
 	var/combat_modifier = 1
 
@@ -1190,7 +1190,9 @@
 		if(G.chokehold == TRUE)
 			combat_modifier -= 0.15
 
-	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
+	combat_modifier *= ((wrestling_diff * 0.1) + 1)
+
+	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2))) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
@@ -1298,6 +1300,7 @@
 
 	if(check_arm_grabbed(active_hand_index))
 		to_chat(src, span_warning("Someone is grabbing my arm!"))
+		resist_grab()
 		return
 	
 	if(istype(src, /mob/living/carbon/spirit))

@@ -225,7 +225,7 @@
 			to_chat(src, span_warning("I'm restrained! I can't move!"))
 			return TRUE
 		else
-//			return mob.resist_grab(1)
+			mob.resist_grab(1)
 			move_delay = world.time + 10
 			to_chat(src, span_warning("I can't move!"))
 			return TRUE

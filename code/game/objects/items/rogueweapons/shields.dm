@@ -69,6 +69,7 @@
 	tshield = 1
 	chargetime = 1
 	warnie = "shieldwarn"
+	iparrybonus = 10
 
 /obj/item/rogueweapon/shield/wood
 	name = "wooden shield"

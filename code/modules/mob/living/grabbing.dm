@@ -129,7 +129,7 @@
 		return FALSE
 	if(!valid_check())
 		return FALSE
-	user.changeNext_move(CLICK_CD_MELEE * 2 - user.STASPD) // 24 - the user's speed
+	user.changeNext_move((CLICK_CD_MELEE * (((user.STASPD - 10) / 20) + 1)) + 4)	//12 deciseconds, modified by User Speed, plus 4 for buffer
 	var/skill_diff = 0
 	var/combat_modifier = 1
 	if(user.mind)
@@ -137,26 +137,28 @@
 	if(M.mind)
 		skill_diff -= (M.mind.get_skill_level(/datum/skill/combat/wrestling))
 
-	if(M.surrendering)
+	if(M.surrendering)																//If the target has surrendered
 		combat_modifier = 2
 
-	if(M.restrained())
+	if(M.restrained())																//If the target is restrained
 		combat_modifier += 0.25
 
-	if(!(M.mobility_flags & MOBILITY_STAND) && user.mobility_flags & MOBILITY_STAND)
-		combat_modifier += 0.05
+	if(!(M.mobility_flags & MOBILITY_STAND) && user.mobility_flags & MOBILITY_STAND) //We are on the ground, target is not
+		combat_modifier += 0.1
 
 	if(user.cmode && !M.cmode)
 		combat_modifier += 0.3
 	else if(!user.cmode && M.cmode)
 		combat_modifier -= 0.3
 
-	if(sublimb_grabbed == BODY_ZONE_PRECISE_NECK && grab_state > 0) //grabbing aggresively the neck
+	if(sublimb_grabbed == BODY_ZONE_PRECISE_NECK && grab_state > 0)					//grabbing aggresively the neck
 		if(user && (M.dir == turn(get_dir(M,user), 180))) //is behind the grabbed
 			chokehold = TRUE
 
 	if(chokehold)
 		combat_modifier += 0.15
+
+	combat_modifier *= ((skill_diff * 0.1) + 1)
 
 	switch(user.used_intent.type)
 		if(/datum/intent/grab/upgrade)
@@ -211,7 +213,7 @@
 				user.Immobilize(20 - skill_diff)
 			else
 				user.rogfat_add(rand(5,15))
-				if(prob(clamp((((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
+				if(prob(clamp((((4 + (((user.STASTR - M.STASTR)/2))) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
 					M.visible_message(span_danger("[user] shoves [M] to the ground!"), \
 									span_userdanger("[user] shoves me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
 					M.Knockdown(max(10 + (skill_diff * 2), 1))
@@ -228,7 +230,7 @@
 				else
 					I = M.get_inactive_held_item()
 			user.rogfat_add(rand(3,8))
-			var/probby = clamp((((3 + (((user.STASTR - M.STASTR)/4) + skill_diff)) * 10) * combat_modifier), 5, 95)
+			var/probby = clamp((((3 + (((user.STASTR - M.STASTR)/4))) * 10) * combat_modifier), 5, 95)
 			if(I)
 				if(M.mind)
 					if(I.associated_skill)
@@ -380,7 +382,7 @@
 /obj/item/grabbing/proc/smashlimb(atom/A, mob/living/user) //implies limb_grabbed and sublimb are things
 	var/mob/living/carbon/C = grabbed
 	var/armor_block = C.run_armor_check(limb_grabbed, d_type)
-	var/damage = user.get_punch_dmg()
+	var/damage = (user.get_punch_dmg() * 1.5)
 	C.next_attack_msg.Cut()
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
 		limb_grabbed.bodypart_attacked_by(BCLASS_BLUNT, damage, user, sublimb_grabbed, crit_message = TRUE)
