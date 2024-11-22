@@ -301,6 +301,9 @@
 			if(4)
 				new /obj/item/reagent_containers/powder/spice(src)
 
+/obj/item/storage/backpack/rogue/satchel/musketeer/PopulateContents()
+	new /obj/item/powderflask(src)
+	new /obj/item/storage/belt/rogue/pouch/coins/mid(src)
 
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK
