@@ -482,6 +482,88 @@
 	miss_sound = PUNCHWOOSH
 	item_d_type = "stab"
 
+
+/datum/intent/unarmed/claw
+	name = "claw"
+	icon_state = "instrike"
+	attack_verb = list("claws", "tears", "rips")
+	animname = "cut"
+	blade_class = BCLASS_CUT
+	hitsound = "smallslash"
+	penfactor = 20
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "claws the air!"
+	miss_sound = "bluntwooshmed"
+
+/datum/intent/unarmed/wwolf
+	name = "claw"
+	icon_state = "inchop"
+	attack_verb = list("claws", "mauls", "eviscerates")
+	animname = "cut"
+	blade_class = BCLASS_CHOP
+	hitsound = "genslash"
+	penfactor = 40
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "slashes the air!"
+	miss_sound = "bluntwooshlarge"
+
+/datum/intent/unarmed/ascendedclaw
+	name = "claw"
+	icon_state = "inchop"
+	attack_verb = list("claws", "mauls", "eviscerates")
+	animname = "cut"
+	blade_class = BCLASS_CHOP
+	hitsound = "genslash"
+	penfactor = 230
+	damfactor = 40
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "slashes the air!"
+	miss_sound = "bluntwooshlarge"
+
+/datum/intent/simple/sting
+	name = "sting"
+	icon_state = "instrike"
+	attack_verb = list("stings")
+	animname = "blank22"
+	blade_class = BCLASS_STAB
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 1
+	swingdelay = 0
+	candodge = FALSE
+	canparry = FALSE
+	miss_text = "stings the air!"
+
+/datum/intent/simple/bigbite
+	name = "big bite"
+	icon_state = "instrike"
+	attack_verb = list("gnashes", "viciously bites")
+	animname = "blank22"
+	blade_class = BCLASS_CHOP
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 20
+	swingdelay = 1
+	candodge = TRUE
+	canparry = TRUE
+
+/datum/intent/simple/stab
+	name = "stab"
+	icon_state = "instrike"
+	attack_verb = list("impales", "stabs")
+	animname = "blank22"
+	blade_class = BCLASS_STAB
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 25
+	swingdelay = 1
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "stabs the air!"
+
 /datum/intent/simple/wereclaw
 	name = "claw"
 	icon_state = "instrike"

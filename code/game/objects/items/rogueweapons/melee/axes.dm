@@ -117,7 +117,7 @@
 	icon_state = "battleaxe"
 	max_blade_int = 300
 	smeltresult = /obj/item/ingot/steel
-	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle)
+	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle)
 	minstr = 12
 	wdefense = 4
 	wparrybonus = 5

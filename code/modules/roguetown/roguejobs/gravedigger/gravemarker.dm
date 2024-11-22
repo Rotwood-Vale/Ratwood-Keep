@@ -37,7 +37,7 @@
 	var/turf/T = get_turf(src)
 	if(T)
 		new /obj/item/grown/log/tree/stick(T)
-	..()
+	return ..()
 
 /mob/dead/new_player/proc/reducespawntime(amt)
 	if(ckey)
@@ -49,5 +49,5 @@
 	icon_state = "gravemarker[rand(1,3)]"
 	for(var/obj/structure/closet/dirthole/hole in loc)
 		if(pacify_coffin(hole, user))
-			to_chat(user, span_notice("I feel their soul finding peace..."))
+			break
 	return ..()

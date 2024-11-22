@@ -107,9 +107,6 @@
 
 	var/original_name = null
 
-	var/buried = FALSE // Whether the body is buried or not.
-	var/funeral = FALSE // Whether the body has received rites or not.
-
 	var/datum/devotion/devotion = null // Used for cleric_holder for priests
 
 	var/headshot_link = null

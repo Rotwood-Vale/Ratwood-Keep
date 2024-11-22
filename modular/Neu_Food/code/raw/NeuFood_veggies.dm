@@ -51,4 +51,3 @@
 	icon_state = "potato_sliced"
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
-

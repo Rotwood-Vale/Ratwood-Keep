@@ -319,8 +319,8 @@
 //		if(I.loc != real_location)
 //			continue
 		remove_from_storage(I, target)
-		I.pixel_x = initial(I.pixel_x) += rand(-10,10)
-		I.pixel_y = initial(I.pixel_y) += rand(-10,10)
+		I.pixel_x = initial(I.pixel_x) + rand(-10,10)
+		I.pixel_y = initial(I.pixel_y) + rand(-10,10)
 //		if(trigger_on_found && I.on_found())
 //			return FALSE
 
@@ -332,8 +332,8 @@
 			testing("debugbag5 [I]")
 			continue
 		remove_from_storage(I, target)
-		I.pixel_x = initial(I.pixel_x) += rand(-10,10)
-		I.pixel_y = initial(I.pixel_y) += rand(-10,10)
+		I.pixel_x = initial(I.pixel_x) + rand(-10,10)
+		I.pixel_y = initial(I.pixel_y) + rand(-10,10)
 		if(trigger_on_found && I.on_found())
 			testing("debugbag6 [I]")
 			return FALSE
@@ -562,9 +562,11 @@
 		if(istype(I, /obj/item/needle))
 			var/obj/item/needle/sewer = I
 			var/obj/item/storage/this_item = parent
-			if(sewer.can_repair && this_item.sewrepair && this_item.max_integrity && !this_item.obj_broken && this_item.obj_integrity < this_item.max_integrity && M.mind.get_skill_level(/datum/skill/misc/sewing) >= this_item.required_repair_skill && this_item.ontable() && !being_repaired)
+			if(sewer.can_repair && this_item.sewrepair && this_item.max_integrity && !this_item.obj_broken && this_item.obj_integrity < this_item.max_integrity && M.mind.get_skill_level(/datum/skill/misc/sewing) >= 1 && this_item.ontable() && !being_repaired)
 				being_repaired = TRUE
 				return FALSE
+		if(M.used_intent.type == /datum/intent/snip) //This makes it so we can salvage
+			return FALSE
 	being_repaired = FALSE
 	if(!can_be_inserted(I, FALSE, M))
 		var/atom/real_location = real_location()

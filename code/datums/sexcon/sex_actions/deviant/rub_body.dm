@@ -12,8 +12,6 @@
 		return FALSE
 	if(!get_location_accessible(target, BODY_ZONE_CHEST))
 		return FALSE
-	if(!get_location_accessible(user, BODY_ZONE_PRECISE_MOUTH))
-		return FALSE
 	return TRUE
 
 /datum/sex_action/rub_body/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)

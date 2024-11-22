@@ -7,25 +7,12 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/gloves.dmi'
 	bloody_icon_state = "bloodyhands"
 	sleevetype = "shirt"
+	siemens_coefficient = 1 //Who in astrata's name forgot to set this to 1? No more immunity from lightning due to gloves.
 	max_heat_protection_temperature = 361
 	w_class = WEIGHT_CLASS_SMALL
-
-/obj/item/clothing/gloves/roguetown/leather
-	name = "leather gloves"
-	desc = "Leather gloves usually worn by laborers."
-	icon_state = "leather_gloves"
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
-	resistance_flags = null
-	blocksound = SOFTHIT
-	blade_dulling = DULLING_BASHCHOP
-	break_sound = 'sound/foley/cloth_rip.ogg'
-	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
 	sewrepair = TRUE
-
-/obj/item/clothing/gloves/roguetown/leather/black
-	icon_state = "gloves_black"
+	fiber_salvage = FALSE
+	salvage_amount = 1
 
 /obj/item/clothing/gloves/roguetown/fingerless
 	name = "fingerless gloves"
@@ -36,24 +23,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE
-
-
-/obj/item/clothing/gloves/roguetown/angle
-	name = "heavy leather gloves"
-	desc = "A thick pair of leather gloves."
-	icon_state = "angle"
-	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
-	resistance_flags = null
-	blocksound = SOFTHIT
-	max_integrity = 100
-	blade_dulling = DULLING_BASHCHOP
-	break_sound = 'sound/foley/cloth_rip.ogg'
-	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE
 
 /obj/item/clothing/gloves/roguetown/chain
 	name = "chain gauntlets"
@@ -68,13 +37,14 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	resistance_flags = FIRE_PROOF
+	sewrepair = FALSE
 
 /obj/item/clothing/gloves/roguetown/chain/iron
 	icon_state = "icgloves"
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 
 //rogtodo sprites for this
@@ -91,9 +61,9 @@
 	blade_dulling = DULLING_BASH
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	clothing_flags = CANT_SLEEP_IN
+	sewrepair = FALSE
 
 /obj/item/clothing/gloves/roguetown/grenzelgloves
 	name = "grenzelhoft gloves"
@@ -109,5 +79,23 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	anvilrepair = null
-	sewrepair = TRUE
+	
+	//---------------- BLACKSTEEL ---------------------
+
+/obj/item/clothing/gloves/roguetown/blacksteel/plategloves
+	name = "Blacksteel Plate Gauntlets"
+	desc = "A set of plate gauntlets forged of blacksteel."
+	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	icon_state = "bkgloves"
+	item_state = "bkgloves"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CHOP, BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	resistance_flags = null
+	blocksound = PLATEHIT
+	max_integrity = 400
+	blade_dulling = DULLING_BASH
+	break_sound = 'sound/foley/breaksound.ogg'
+	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/blacksteel

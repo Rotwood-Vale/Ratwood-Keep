@@ -51,9 +51,9 @@
 		"perception" = 1,
 		"intelligence" = 2,
 		"constitution" = -2,
-		"endurance" = 1,
+		"endurance" = 0,
 		"speed" = 0,
-		"fortune" = -1
+		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
 	organs = list(
@@ -88,6 +88,8 @@
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 	languages = list(

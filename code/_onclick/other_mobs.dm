@@ -232,7 +232,8 @@
 				caused_wound?.werewolf_infect_attempt()
 				if(prob(30))
 					user.werewolf_feed(src)
-			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
+			// both player and npc deadites can infect
+			if(user.mind.has_antag_datum(/datum/antagonist/zombie) || istype(user, /mob/living/carbon/human/species/deadite))
 				var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)
@@ -366,7 +367,7 @@
 				if(ishuman(src))
 					var/mob/living/carbon/human/H = src
 					jadded += H.get_complex_pain()/50
-					if(!H.check_armor_skill())
+					if(!H.check_armor_skill() || H.legcuffed)
 						jadded += 50
 						jrange = 1
 				if(rogfat_add(min(jadded,100)))

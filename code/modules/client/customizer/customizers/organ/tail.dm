@@ -27,9 +27,8 @@
 		/datum/sprite_accessory/tail/otie,
 		/datum/sprite_accessory/tail/shepherd,
 		/datum/sprite_accessory/tail/wolf,
-		/datum/sprite_accessory/tail/eevee,
-		/datum/sprite_accessory/tail/fox,
 		/datum/sprite_accessory/tail/fox2,
+		/datum/sprite_accessory/tail/australian_shepherd,
 		/datum/sprite_accessory/tail/husky
 		)
 
@@ -119,6 +118,7 @@
 		/datum/sprite_accessory/tail/fox2,
 		/datum/sprite_accessory/tail/hawk,
 		/datum/sprite_accessory/tail/horse,
+		/datum/sprite_accessory/tail/australian_shepherd,
 		/datum/sprite_accessory/tail/husky,
 		/datum/sprite_accessory/tail/insect,
 		/datum/sprite_accessory/tail/kangaroo,
@@ -176,6 +176,7 @@
 		/datum/sprite_accessory/tail/fox2,
 		/datum/sprite_accessory/tail/hawk,
 		/datum/sprite_accessory/tail/horse,
+		/datum/sprite_accessory/tail/australian_shepherd,
 		/datum/sprite_accessory/tail/husky,
 		/datum/sprite_accessory/tail/insect,
 		/datum/sprite_accessory/tail/kangaroo,
@@ -207,4 +208,5 @@
 		/datum/sprite_accessory/tail/lizard/dtiger,
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
+		/datum/sprite_accessory/tail/snuppy,
 		)

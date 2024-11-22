@@ -79,7 +79,7 @@
 	name = "Call Beast"
 	overlay_state = "dendor"
 	releasedrain = 30
-	charge_max = 2 MINUTES
+	charge_max = 90 SECONDS		//Lowered cooldown from 2 minutes. Not significant but enough to be more useful
 	range = 7
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
@@ -102,7 +102,7 @@
 	name = "Strip Clothes"
 	overlay_state = "bcry"
 	releasedrain = 80
-	charge_max = 6 MINUTES
+	charge_max = 2 MINUTES	//Less cooldown - more chaos. Used to be 6 minutes, change based on feedback
 	range = 1
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
@@ -195,10 +195,10 @@
 	sound = 'sound/magic/lightning.ogg'
 	range = 8
 	projectile_type = /obj/projectile/magic/animate
-	releasedrain = 95
+	releasedrain = 55		//Decrease drain from 95, extra blue bar is taken out UPON bolt hitting something
 	chargedrain = 1
 	chargetime = 15
-	charge_max = 8 MINUTES
+	charge_max = 5 MINUTES	//Decrease cooldown from 8 minutes, felt excessive based on testing and feedback
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -211,7 +211,7 @@
 	range = 5
 	overlay_state = "tamebeast"
 	releasedrain = 30
-	charge_max = 3 MINUTES
+	charge_max = 1 MINUTES	//Decreased from 3 minutes. Intermitant weirdness, wouldnt always work even if conditions were met, lowering cooldown should help
 	max_targets = 0
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
@@ -238,7 +238,7 @@
 	name = "Regenerative Kiss"
 	overlay_state = "heal"
 	releasedrain = 0
-	charge_max = 4 MINUTES
+	charge_max = 90 SECONDS		//Decreased from 4 minutes to increase utility, almost never used but when needed its really needed
 	range = 1
 	invocation_type = "none" //can be none, whisper, emote and shout
 
@@ -266,7 +266,7 @@
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 5
-	charge_max = 3 MINUTES
+	charge_max = 35 SECONDS		//Decreased significantly from 3 minutes to support new Seelie maid
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -274,10 +274,60 @@
 	chargedloop = /datum/looping_sound/invokegen
 
 /obj/item/reagent_containers/powder/SK
-	list_reagents = list(/datum/reagent/medicine/healthpot = 1, /datum/reagent/medicine/manapot = 1)
+	list_reagents = list(/datum/reagent/medicine/healthpot = 2, /datum/reagent/medicine/manapot = 2)	//Buff strength of regen kiss slightly, now 2 units of red and 2 units of blue
 
 /obj/item/reagent_containers/powder/SD
 	list_reagents = list(/datum/reagent/seelie_drugs = 10)
 
 /obj/item/reagent_containers/glass/bucket/wooden/spell_water
 	list_reagents = list(/datum/reagent/water = 40)
+
+/obj/effect/proc_holder/spell/invoked/summon_berry
+	name = "Summon Berry"
+	range = 7
+	overlay_state = "berry_spell"
+	releasedrain = 30
+	charge_max = 2 MINUTES	//Decreased slightly from 3 minutes
+	cast_without_targets = TRUE
+	sound = 'sound/items/gem.ogg' // Not a spell sound but infinitely more fun and, I think, fitting!
+	invocation = "A berry for someone in need..."
+	invocation_type = "whisper"
+
+/obj/effect/proc_holder/spell/invoked/summon_berry/cast(list/targets, mob/user)
+	. = ..()
+	user.emote("giggle")
+	var/turf/T = get_turf(targets[1])
+	if(prob(50))
+		var/obj/item/reagent_containers/food/snacks/grown/berries/rogue/berry = new get_turf(T)
+		berry.become_rotten()
+		user.visible_message(span_notice("[user] summons a rotten berry!"))
+	else
+		new /obj/item/reagent_containers/food/snacks/grown/berries/rogue (T)
+		user.visible_message(span_notice("[user] summons a tasty berry!"))
+	return TRUE
+
+//Sate crop will satisfy hunger requirement, but not bless crops. Removes need for ash or poop.
+/obj/effect/proc_holder/spell/targeted/sate_crop
+	name = "Nutrify Crop"
+	range = 5
+	overlay_state = "blesscrop"
+	releasedrain = 30
+	charge_max = 30 SECONDS
+	cast_without_targets = TRUE
+	sound = 'sound/items/gem.ogg' // Not a spell sound but copied from berry summon.
+	invocation = "Sated crops for hungry people..."
+	invocation_type = "whisper"
+
+/obj/effect/proc_holder/spell/targeted/sate_crop/cast(list/targets,mob/user = usr)
+	. = ..()
+	var/growed = FALSE
+	var/amount_blessed = 0
+	for(var/obj/structure/soil/soil in view(4))
+		soil.adjust_nutrition(150)
+		growed = TRUE
+		// Nutrifies only up to 5 crops
+		if(amount_blessed >= 5)
+			break
+	if(growed)
+		visible_message(span_green("[usr] sates the nearby crops with magical nutrients!"))
+	return growed

@@ -1,6 +1,6 @@
 #define TARGET_CLOSEST 1
 #define TARGET_RANDOM 2
-#define MAGIC_XP_MULTIPLIER 0.3 //used to miltuply the amount of xp gained from spells
+#define MAGIC_XP_MULTIPLIER 0.5 //used to miltuply the amount of xp gained from spells
 
 /obj/effect/proc_holder
 	var/panel = "Debug"//What panel the proc holder needs to go on.
@@ -26,6 +26,8 @@
 	var/chargedloop = null
 	var/charging_slowdown = 0
 	var/obj/inhand_requirement = null
+
+	/// This will be the spells image and it is located in icons/mob/actions/roguespells.dmi
 	var/overlay_state = null
 
 
@@ -416,6 +418,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			recharging = FALSE
 
 /obj/effect/proc_holder/spell/proc/perform(list/targets, recharge = TRUE, mob/user = usr) //if recharge is started is important for the trigger spells
+	user.mob_timers[MT_SPELLSNEAK] = world.time //no more stealth mages for you.
 	before_cast(targets, user = user)
 	invocation(user)
 	if(user && user.ckey)
@@ -481,7 +484,8 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		to_chat(devotee, "<font color='purple'>I [devotion_cost > 0 ? "lost" : "gained"] [abs(devotion_cost)] devotion.</font>")
 	//Add xp based on the fatigue used
 	if(xp_gain)
-		adjust_experience(usr, associated_skill, round(get_fatigue_drain() * MAGIC_XP_MULTIPLIER))
+		var/mob/living/carbon/human/mage = user
+		add_sleep_experience(usr, associated_skill, round(get_fatigue_drain() * MAGIC_XP_MULTIPLIER *(mage.STAINT / 10)))	//The smarter the mage, the less fatigue they use. STAINT/10 gives a multiplier of 1.0 for 10 INT, and 1.5 for 15 INT
 
 /obj/effect/proc_holder/spell/proc/view_or_range(distance = world.view, center=usr, type="view")
 	switch(type)

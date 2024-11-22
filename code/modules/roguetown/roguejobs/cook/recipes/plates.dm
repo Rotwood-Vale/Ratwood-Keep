@@ -1,3 +1,5 @@
+/*
+
 /obj/item/reagent_containers/food/snacks/rogue/peppersteak
 	icon = 'icons/roguetown/items/food.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = 25)
@@ -385,3 +387,5 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/cornedbeef
 	craftdiff = 2
 	subtype_reqs = TRUE
+
+*/

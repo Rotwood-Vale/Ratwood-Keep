@@ -38,6 +38,7 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
+	simple_detect_bonus = 20
 	deaggroprob = 5
 	simpmob_defend = 40
 	defdrain = 10

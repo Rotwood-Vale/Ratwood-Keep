@@ -11,7 +11,7 @@
 
 /obj/structure/fluff/testportal/Initialize()
 	name = aportalloc
-	..()
+	return ..()
 
 /obj/structure/fluff/testportal/attack_hand(mob/user)
 	var/fou
@@ -188,6 +188,13 @@
 /obj/structure/fluff/traveltile/vampire
 	can_gain_with_sight = TRUE
 	can_gain_by_walking = TRUE
+	check_other_side = TRUE
+	invis_without_trait = TRUE
+
+/obj/structure/fluff/traveltile/goblin
+	required_trait = TRAIT_GOBLINCAMP
+	can_gain_with_sight = FALSE
+	can_gain_by_walking = FALSE
 	check_other_side = TRUE
 	invis_without_trait = TRUE
 

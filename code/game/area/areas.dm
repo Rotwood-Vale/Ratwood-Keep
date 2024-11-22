@@ -72,8 +72,8 @@
 	var/min_ambience_cooldown = 70 SECONDS
 	var/max_ambience_cooldown = 120 SECONDS
 
-	var/droningniqqa = TRUE
-	var/loopniqqa = TRUE
+	var/we_droning_here = TRUE
+	var/we_looping_here = TRUE
 
 	var/droning_sound_current = null
 	var/droning_sound_dawn = null

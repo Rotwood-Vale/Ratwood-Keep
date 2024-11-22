@@ -16,7 +16,7 @@
 	integrity_failure = 0.5
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 //	block2add = FOV_BEHIND
 
 /obj/item/clothing/mask/rogue/spectacles/golden
@@ -29,7 +29,7 @@
 	integrity_failure = 0.5
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/mask/rogue/spectacles/Initialize()
 	. = ..()
@@ -57,6 +57,7 @@
 	block2add = FOV_RIGHT
 	body_parts_covered = EYES
 	sewrepair = TRUE
+	salvage_amount = 1
 
 /obj/item/clothing/mask/rogue/eyepatch/left
 	desc = "An eyepatch, fitted for the left eye."
@@ -68,7 +69,7 @@
 	desc = "Half of your face turned gold."
 	icon_state = "lmask"
 	sellprice = 50
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/mask/rogue/lordmask/l
 	icon_state = "lmask_l"
@@ -90,13 +91,12 @@
 	block2add = FOV_BEHIND
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	experimental_onhip = TRUE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
-	clothing_flags = CANT_SLEEP_IN
 
 /obj/item/clothing/mask/rogue/facemask/hound
 	name = "iron hound mask"
-	desc = "An iron mask, made for those who have snouts."
+	desc = "An iron mask, made for those who have snouts, protecting the eyes, nose and muzzle while obscuring the face."
 	icon_state = "imask_hound"
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
@@ -120,7 +120,7 @@
 
 /obj/item/clothing/mask/rogue/facemask/steel/hound
 	name = "steel hound mask"
-	desc = "A steel mask, made for those who have snouts."
+	desc = "A steel mask, made for those who have snouts, protecting the eyes, nose and muzzle while obscuring the face."
 	icon_state = "smask_hound"
 
 /obj/item/clothing/mask/rogue/shepherd
@@ -133,6 +133,7 @@
 	toggle_icon_state = TRUE
 	experimental_onhip = TRUE
 	sewrepair = TRUE
+	salvage_amount = 1
 
 /obj/item/clothing/mask/rogue/shepherd/AdjustClothes(mob/user)
 	if(loc == user)
@@ -162,3 +163,10 @@
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
+
+/obj/item/clothing/mask/rogue/facemask/goldmask
+	name = "Gold Mask"
+	icon_state = "goldmask"
+	max_integrity = 150
+	sellprice = 100
+	smeltresult = /obj/item/ingot/gold

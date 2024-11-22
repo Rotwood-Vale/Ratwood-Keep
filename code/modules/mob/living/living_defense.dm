@@ -1,7 +1,7 @@
 
 /mob/living/proc/run_armor_check(def_zone = null, attack_flag = "blunt", absorb_text = null, soften_text = null, armor_penetration, penetrated_text, damage, blade_dulling)
 	var/armor = getarmor(def_zone, attack_flag, damage, armor_penetration, blade_dulling)
-
+	src.mob_timers[MT_SNEAKATTACK] = world.time //Stops you from sneaking after being hit. (Should work!)
 	//the if "armor" check is because this is used for everything on /living, including humans
 	if(armor > 0 && armor_penetration)
 		armor = max(0, armor - armor_penetration)
@@ -175,14 +175,14 @@
 				return
 		updatehealth()
 		visible_message(span_danger("[M.name] hits [src]!"), \
-						span_danger("[M.name] hits you!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
+						span_danger("[M.name] hits me!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
 		to_chat(M, span_danger("I hit [src]!"))
-		log_combat(M.occupant, src, "attacked", M, "(INTENT: [uppertext(M.occupant.used_intent)]) (DAMTYPE: [uppertext(M.damtype)])")
+		log_combat(M.occupant, src, "attacked", M, "(INTENT: [uppertext(M.occupant.used_intent.name)]) (DAMTYPE: [uppertext(M.damtype)])")
 	else
 		step_away(src,M)
 		log_combat(M.occupant, src, "pushed", M)
 		visible_message(span_warning("[M] pushes [src] out of the way."), \
-						span_warning("[M] pushes you out of the way."), span_hear("I hear aggressive shuffling!"), 5, M)
+						span_warning("[M] pushes me out of the way."), span_hear("I hear aggressive shuffling!"), 5, M)
 		to_chat(M, span_danger("I push [src] out of the way."))
 
 /mob/living/fire_act(added, maxstacks)

@@ -1,6 +1,6 @@
 /mob/living/carbon/human/species/skeleton
 	name = "skeleton"
-	
+
 	race = /datum/species/human/northern
 	gender = MALE
 	domhand = 2
@@ -8,6 +8,7 @@
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	faction = list("undead")
 	var/skel_outfit = /datum/outfit/job/roguetown/npc/skeleton
+	var/skel_fragile = FALSE
 	ambushable = FALSE
 	rot_type = null
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw)
@@ -68,12 +69,11 @@
 		QDEL_NULL(src.charflaw)
 	mob_biotypes |= MOB_UNDEAD
 	faction = list("undead")
-	name = "skelelon"
-	real_name = "skelelon"
+	name = "Skeleton"
+	real_name = "Skeleton"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

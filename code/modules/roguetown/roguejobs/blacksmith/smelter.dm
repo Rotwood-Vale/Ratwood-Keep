@@ -1,7 +1,3 @@
-
-/obj/item
-	var/smeltresult
-
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "stone furnace"
@@ -75,7 +71,7 @@
 				playsound(src.loc,'sound/misc/smelter_sound.ogg', 50, FALSE)
 			else
 				if(cooking == 20)
-					for(var/obj/item/I in ore)
+					for(var/obj/item/I in ore)	
 						if(I.smeltresult)
 							ore -= I
 							var/obj/item/R = new I.smeltresult(src)
@@ -108,17 +104,39 @@
 				playsound(src.loc,'sound/misc/smelter_sound.ogg', 50, FALSE)
 			else
 				if(cooking == 30)
-					var/alloy
+
+					var/alloy //moving each alloy to it's own var allows for possible additions later
+					var/steelalloy
+					var/bronzealloy
+					var/blacksteelalloy
+
 					for(var/obj/item/I in ore)
 						if(I.smeltresult == /obj/item/rogueore/coal)
-							alloy = alloy + 1
+							steelalloy = steelalloy + 1
 						if(I.smeltresult == /obj/item/ingot/iron)
-							alloy = alloy + 2
-					if(alloy == 7)
-						testing("ALLOYED")
+							steelalloy = steelalloy + 2
+						if(I.smeltresult == /obj/item/ingot/tin)
+							bronzealloy = bronzealloy + 1
+						if(I.smeltresult == /obj/item/ingot/copper)
+							bronzealloy = bronzealloy + 2
+						if(I.smeltresult == /obj/item/ingot/silver)
+							blacksteelalloy = blacksteelalloy + 1
+						if(I.smeltresult == /obj/item/ingot/steel)
+							blacksteelalloy = blacksteelalloy + 2
+
+					if(steelalloy == 7)
+						testing("STEEL ALLOYED")
+						maxore = 3 // Coal no longer turns to steel
 						alloy = /obj/item/ingot/steel
+					else if(bronzealloy == 7)
+						testing("BRONZE ALLOYED")
+						alloy = /obj/item/ingot/bronze
+					else if(blacksteelalloy == 7)
+						testing("BLACKSTEEL ALLOYED")
+						alloy = /obj/item/ingot/blacksteel
 					else
 						alloy = null
+						
 					if(alloy)
 						for(var/obj/item/I in ore)
 							ore -= I
@@ -133,6 +151,7 @@
 								var/obj/item/R = new I.smeltresult(src)
 								ore += R
 								qdel(I)
+					maxore = initial(maxore)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("[src] is finished."))
 					cooking = 31

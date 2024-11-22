@@ -25,11 +25,9 @@
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=1, /obj/item/rogueore/iron=1)
 
 	if(H.gender == MALE)
-
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	else
-		
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	if(H.mind)
@@ -41,9 +39,6 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 3, TRUE) //removes a lot of the combat skills for 3 in all smithing, would not be opposed to making it maces 1 instead of 2 if you really wanna disarm towners
-		H.mind.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE) //intended to make smiths be able to make mantraps (they are made of metal)
 		H.change_stat("strength", 2) //takes a point from end and con to give to str and int(smiths are meant to be smart and strong not tough as nails ??? and as fit as an olympic athelete ????)
 		H.change_stat("endurance", 1)
 		H.change_stat("intelligence", 1)

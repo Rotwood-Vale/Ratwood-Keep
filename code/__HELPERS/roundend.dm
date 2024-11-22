@@ -187,12 +187,12 @@
 	var/atom/movable/screen/splash/credits/S = new(src, FALSE)
 	S.Fade(FALSE,FALSE, 8 SECONDS)
 	RollCredits()
-//	if(GLOB.credits_icons.len)
-//		for(var/i=0, i<=GLOB.credits_icons.len, i++)
-//			var/atom/movable/screen/P = new()
-//			P.layer = SPLASHSCREEN_LAYER+1
-//			P.appearance = GLOB.credits_icons
-//			screen += P
+	if(GLOB.credits_icons.len)
+		for(var/i=0, i<=GLOB.credits_icons.len, i++)
+			var/atom/movable/screen/P = new()
+			P.layer = SPLASHSCREEN_LAYER+1
+			P.appearance = GLOB.credits_icons
+			screen += P
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	set waitfor = FALSE
@@ -321,6 +321,9 @@
 			end_reason = "When the Vampires finished sucking the town dry, they moved on to the next one."
 		if(C.vampire_werewolf() == "werewolf")
 			end_reason = "The Werevolves formed an unholy clan, marauding Rockhill until the end of its daes."
+
+		if(C.cultascended)
+			end_reason = "ZIZOZIZOZIZOZIZO"
 
 		if(C.headrebdecree)
 			end_reason = "The peasant rebels took control of the throne, hail the new community!"

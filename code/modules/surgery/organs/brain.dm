@@ -71,7 +71,7 @@
 	C.update_hair()
 
 /obj/item/organ/brain/prepare_eat(mob/living/carbon/human/H)
-	if(iszombie(H) || HAS_TRAIT(H, TRAIT_ROTMAN))//braaaaaains... otherwise, too important to eat.
+	if(iszombie(H))//braaaaaains... otherwise, too important to eat.
 		return ..()
 	return FALSE
 

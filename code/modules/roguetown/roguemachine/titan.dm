@@ -1,6 +1,7 @@
 GLOBAL_LIST_EMPTY(outlawed_players)
 GLOBAL_LIST_EMPTY(lord_decrees)
 GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
+/var/atom/TITLE_LORD = "Duke" //outside var to relay to all announcements if there is a Duke or Duchess
 
 /proc/initialize_laws_of_the_land()
 	var/list/laws = strings("laws_of_the_land.json", "lawsets")
@@ -34,7 +35,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 
 /obj/structure/roguemachine/titan/Destroy()
 	set_light(0)
-	..()
+	return ..()
 
 /obj/structure/roguemachine/titan/Initialize()
 	. = ..()
@@ -84,7 +85,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				say("The crown is summoned!")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
-				return 
+				return
 			if(ishuman(I.loc))
 				var/mob/living/carbon/human/HC = I.loc
 				if(HC.stat != DEAD)
@@ -92,7 +93,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 						say("[HC.real_name] holds the crown!")
 						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 						return
-					if(H.head == I)
+					if(HC.head == I)
 						say("[HC.real_name] wears the crown!")
 						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 						return
@@ -224,7 +225,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			return
 		newtax = CLAMP(newtax, 1, 99)
 		SStreasury.tax_value = newtax / 100
-		priority_announce("The new tax in Rockhill shall be [newtax] percent.", "The Generous Lord Decrees", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+		priority_announce("The new tax in Rockhill shall be [newtax] percent.", "The Generous [TITLE_LORD] Decrees", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 
 
 /obj/structure/roguemachine/titan/proc/make_announcement(mob/living/user, raw_message)
@@ -278,20 +279,26 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	return make_outlaw(raw_message)
 
 /proc/make_outlaw(raw_message, silent = FALSE)
-	if(raw_message in GLOB.outlawed_players)
-		GLOB.outlawed_players -= raw_message
+	var/sanitized_name = html_encode(raw_message)  // Escapes special characters
+
+	if(sanitized_name in GLOB.outlawed_players)
+		GLOB.outlawed_players -= sanitized_name
 		if(!silent)
-			priority_announce("[raw_message] is no longer an outlaw in Rockhill lands.", "The King Decrees", 'sound/misc/royal_decree.ogg', "Captain")
+			priority_announce("[sanitized_name] is no longer an outlaw in Rockhill lands.", "The [TITLE_LORD] Decrees", 'sound/misc/royal_decree.ogg', "Captain")
 		return FALSE
+
 	var/found = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(H.real_name == raw_message)
+		if(H.real_name == sanitized_name)
 			found = TRUE
+			break
+
 	if(!found)
 		return FALSE
-	GLOB.outlawed_players += raw_message
+
+	GLOB.outlawed_players += sanitized_name
 	if(!silent)
-		priority_announce("[raw_message] has been declared an outlaw and must be captured or slain.", "The King Decrees", 'sound/misc/royal_decree2.ogg', "Captain")
+		priority_announce("[sanitized_name] has been declared an outlaw and must be captured or slain.", "The [TITLE_LORD] Decrees", 'sound/misc/royal_decree2.ogg', "Captain")
 	return TRUE
 
 /proc/make_law(raw_message)

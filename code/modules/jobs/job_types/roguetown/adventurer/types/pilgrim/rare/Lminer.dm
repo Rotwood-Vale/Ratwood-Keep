@@ -22,11 +22,10 @@
 	beltl = /obj/item/rogueweapon/pick/steel
 	backl = /obj/item/storage/backpack/rogue/backpack
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE) // The TRUE strongest of the strong.
@@ -38,6 +37,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.change_stat("strength", 4)
 		H.change_stat("endurance", 6) // Must...mine...
 		H.change_stat("constitution", 3)

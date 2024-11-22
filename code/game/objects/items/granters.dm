@@ -488,9 +488,9 @@
 	icon_state ="scrollgreen"
 	remarks = list("Foe rubiginem meam..", "Pestilentia in terris..", "Trabes putrida..")
 
-/obj/item/book/granter/spell/blackstone/bonechill
+/obj/item/book/granter/spell/blackstone/strengthen_undead
 	name = "Scroll of Bone Chill"
-	spell = /obj/effect/proc_holder/spell/invoked/bonechill
+	spell = /obj/effect/proc_holder/spell/invoked/strengthen_undead
 	spellname = "Bone Chill"
 	icon_state ="scrolldarkred"
 	remarks = list("Mediolanum ventis..", "Sana damnatorum..", "Frigidus ossa mortuorum..")

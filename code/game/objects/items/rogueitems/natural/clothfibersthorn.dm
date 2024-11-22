@@ -5,7 +5,6 @@
 	desc = "Plant fibers. The peasants make their living making these into clothing."
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	color = "#454032"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
@@ -41,7 +40,6 @@
 	desc = "Silken strands. Their usage in clothing is exotic in all places save the underdark"
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	color = "#e6e3db"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
@@ -94,7 +92,6 @@
 	desc = "This piece of fabric is ready to be worked, or used."
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
@@ -180,15 +177,12 @@
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if(!affecting)
 		return
-	if(!get_location_accessible(H, check_zone(user.zone_selected)))
-		to_chat(user, span_warning("Something in the way."))
-		return
 	if(affecting.bandage)
 		to_chat(user, span_warning("There is already a bandage."))
 		return
 	var/used_time = 70
 	if(H.mind)
-		used_time -= (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
+		used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if(!do_mob(user, M, used_time))
 		return
@@ -230,6 +224,8 @@
 		if(prob(prob2break))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
 			qdel(src)
+			if (L.alpha == 0 && L.rogue_sneaking) // not anymore you're not
+				L.update_sneak_invis(TRUE)
 			L.consider_ambush()
 
 /obj/item/natural/bundle/fibers
@@ -240,7 +236,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 6
-	obj_flags = null
 	color = "#454032"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
@@ -266,7 +261,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 6
-	obj_flags = null
 	color = "#e6e3db"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
@@ -287,7 +281,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 10
-	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
@@ -307,7 +300,6 @@
 	maxamount = 10
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
@@ -327,7 +319,6 @@
 	possible_item_intents = list(/datum/intent/use)
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	color = COLOR_BEIGE
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE

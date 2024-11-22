@@ -415,13 +415,13 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			if((butcher_results || guaranteed_butcher_results) && held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 				var/used_time = 210
 				if(user.mind)
-					used_time -= (user.mind.get_skill_level(/datum/skill/labor/butchering) * 30)
+					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
 				visible_message("[user] begins to butcher [src].")
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				if(do_after(user, used_time, target = src))
 					gib()
 					if(user.mind)
-						user.mind.add_sleep_experience(/datum/skill/labor/butchering, user.STAINT * 4)
+						user.mind.add_sleep_experience(/datum/skill/craft/hunting, user.STAINT * 4)
 	..()
 
 /mob/living/simple_animal/gib()
@@ -513,7 +513,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		..()
 
 /mob/living/simple_animal/proc/CanAttack(atom/the_target)
-	if(see_invisible < the_target.invisibility)
+	if(see_invisible < the_target.invisibility) //Makes sneaking useful vs mobs now!
 		return FALSE
 	if(ismob(the_target))
 		var/mob/M = the_target

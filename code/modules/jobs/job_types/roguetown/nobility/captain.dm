@@ -10,9 +10,9 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "You served your time gracefully as a warrior of His Royal Majesty, and now you've grown into a role which many men dream to become. \
-				You are the Marshal's chosen, elevated to command His Majesty's personal retinue. \
-				Keep your men in line, as for this kingdom to prosper, the crown must be safe. \
+	tutorial = "You served your time gracefully as a soldier, and now you've grown into a role which many men dream to become. \
+				You are the Marshal's chosen, elevated to command His Highness' personal retinue. \
+				Keep your men in line, as for this realm to prosper, the duke must be safe. \
 				The Men at Arms and the Gatemaster are under your direct supervision."
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
@@ -91,12 +91,12 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.verbs |= /mob/proc/haltyell
 
 /obj/effect/proc_holder/spell/self/convertrole
 	name = "Recruit Beggar"
 	desc = "Recruit someone to your cause."
+	overlay_state = "recruit_bog"
 	antimagic_allowed = TRUE
 	charge_max = 100
 	/// Role given if recruitment is accepted
@@ -143,7 +143,7 @@
 	//only migrants and peasants
 	if(!(recruit.job in GLOB.peasant_positions) && \
 		!(recruit.job in GLOB.yeoman_positions) && \
-		!(recruit.job in GLOB.allmig_positions) && \
+		!(recruit.job in GLOB.youngfolk_positions) && \
 		!(recruit.job in GLOB.mercenary_positions))
 		return FALSE
 	//need to see their damn face
@@ -171,9 +171,10 @@
 /obj/effect/proc_holder/spell/self/convertrole/guard
 	name = "Recruit Guardsmen"
 	new_role = "Watchman"
+	overlay_state = "recruit_guard"
 	recruitment_faction = "Watchman"
 	recruitment_message = "Serve the town guard, %RECRUIT!"
-	accept_message = "FOR THE KING!"
+	accept_message = "FOR THE DUKE!"
 	refuse_message = "I refuse."
 
 /obj/effect/proc_holder/spell/self/convertrole/guard/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)

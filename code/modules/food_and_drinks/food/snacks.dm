@@ -73,6 +73,7 @@ All foods are distributed among various categories. Use common sense.
 	var/rotprocess = FALSE
 	var/become_rot_type = null
 
+
 	var/fertamount = 50
 	
 	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
@@ -109,7 +110,7 @@ All foods are distributed among various categories. Use common sense.
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(begin_rotting)))
 	if(cooked_type || fried_type)
 		cooktime = 30 SECONDS
-	..()
+	. = ..()
 
 /obj/item/reagent_containers/food/snacks/proc/begin_rotting()
 	START_PROCESSING(SSobj, src)
@@ -117,7 +118,7 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
-		if(!istype(loc, /obj/structure/closet/crate/chest) && !(locate(/obj/structure/table) in loc))
+		if(!istype(loc, /obj/structure/closet/crate/chest) && !(locate(/obj/structure/table) in loc) && !istype(loc, /obj/structure/roguemachine/vendor))
 			warming -= 20 //ssobj processing has a wait of 20
 			if(warming < (-1*rotprocess))
 				if(become_rotten())

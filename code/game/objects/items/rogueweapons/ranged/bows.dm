@@ -19,7 +19,7 @@
 	cartridge_wording = "arrow"
 	load_sound = 'sound/foley/nockarrow.ogg'
 	associated_skill = /datum/skill/combat/bows
-	var/damfactor = 1
+	metalizer_result = /obj/item/restraints/legcuffs/beartrap/armed
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/getonmobprop(tag)
 	. = ..()
@@ -79,11 +79,11 @@
 			BB.damage = BB.damage - (BB.damage * (user.client.chargedprog / 100))
 			BB.embedchance = 5
 		else
-			BB.damage = BB.damage
+			BB.damage = BB.damage * (user.STAPER / 10)
 			BB.embedchance = 100
 		BB.damage = BB.damage * (user.STASTR * 0.1) * damfactor
 		if(HAS_TRAIT(user, TRAIT_TINY))
-			BB.damage = (BB.damage * 0.3)
+			BB.damage = (BB.damage * 0.1)
 	. = ..()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/update_icon()

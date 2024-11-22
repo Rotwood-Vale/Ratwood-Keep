@@ -52,16 +52,20 @@
 	var/setup_error		//What stopepd setting up the mode.
 
 	var/list/datum/mind/villains = list() //Murders Runtimes via shoving this into parent
+	var/list/datum/mind/liches = list()
 	var/list/datum/mind/vampires = list()
 	var/list/datum/mind/werewolves = list()
 	var/list/datum/mind/bandits = list()
+	var/list/datum/mind/cultists = list()
 
 	var/list/datum/mind/pre_villains = list()
+	var/list/datum/mind/pre_liches = list()
 	var/list/datum/mind/pre_werewolves = list()
 	var/list/datum/mind/pre_vampires = list()
 	var/list/datum/mind/pre_bandits = list()
 	var/list/datum/mind/pre_delfs = list()
 	var/list/datum/mind/pre_rebels = list()
+	var/list/datum/mind/pre_cultists = list()
 	var/list/datum/mind/pre_aspirants = list()
 	var/list/datum/mind/aspirants = list()
 

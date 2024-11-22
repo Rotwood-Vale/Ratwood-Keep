@@ -50,15 +50,21 @@
 #define RACES_VERY_SHUNNED \
 	/datum/species/halforc
 
-#define RACES_DESPISED \
-	/datum/species/goblinp,\
-	/datum/species/seelie
+#define RACES_GOBLIN \
+	/datum/species/goblinp
 
-#define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
+#define RACES_SEELIE \
+	/datum/species/seelie	//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS
+
+#define RACES_ALL_KINDS list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
+
+#define RACES_NEARLY_ALL_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
 
 #define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
+
+#define RACES_SHUNNED_UP_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED, RACES_SEELIE)
 
 #define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
 
@@ -143,19 +149,32 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 )
+// For their armour sets. Shouldn't need to define the sub species, but oh well.
+#define GOBLIN_RACE_TYPES list(\
+	/datum/species/goblinp,\
+	/datum/species/goblin,\
+	/datum/species/goblin/hell,\
+	/datum/species/goblin/cave,\
+	/datum/species/goblin/sea,\
+	/datum/species/goblin/moon,\
+)
+
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
 	/datum/patron/divine/necra,\
-	/datum/patron/divine/pestra\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum,\
+	/datum/patron/divine/ravox,\
 )
 
 #define ALL_ACOLYTE_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
-	/datum/patron/divine/pestra\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum\
 )
 
 #define ALL_DIVINE_PATRONS list(\
@@ -198,7 +217,7 @@
 	INHUMEN_CURSES\
 )
 
-#define ALL_NON_INHUMEN_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/old_god)
+#define ALL_NON_INHUMEN_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/psydon)
 
 #define PLATEHIT "plate"
 #define CHAINHIT "chain"
@@ -260,7 +279,8 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
 #define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
-#define CTAG_BOG 		"CAT_BOG" 	// Bog guards
+#define CTAG_BOG 		"CAT_BOG" 	//Vanguard
+#define CTAG_GOBS 		"CAT_GOBS" 	// Goblin Guards
 
 /*
 	Defines for the triumph buy datum categories

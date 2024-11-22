@@ -268,7 +268,13 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 /mob/dead/CanPass(atom/movable/mover, turf/target)
 	return 1
 
-
+/mob/dead/observer/rogue/Login()
+	. = ..()
+	if(mind?.funeral)
+		if(CONFIG_GET(flag/force_respawn_on_funeral))
+			to_chat(src, span_rose("With my body buried in creation, my soul passes on in peace..."))
+			burial_rite_return_ghost_to_lobby(src)
+			return
 /mob/dead/observer/rogue/CanPass(atom/movable/mover, turf/target)
 	if(!isinhell)
 		if(istype(mover, /mob/dead/observer/rogue))

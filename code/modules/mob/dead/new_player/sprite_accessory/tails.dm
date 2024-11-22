@@ -49,6 +49,13 @@
 	color_key_names = list("Tail", "Tip")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/snuppy
+	name = "Rattleyote"
+	icon_state = "snuppy"
+	color_keys = 2
+	color_key_names = list("Tail", "Tip")
+	can_wag = TRUE
+
 /datum/sprite_accessory/tail/bats
 	name = "Bat (Short)"
 	icon_state = "bats"
@@ -178,6 +185,13 @@
 /datum/sprite_accessory/tail/shepherd
 	name = "Shepherd"
 	icon_state = "shepherd"
+	color_keys = 2
+	color_key_names = list("Tail", "Inner")
+	can_wag = TRUE
+
+/datum/sprite_accessory/tail/australian_shepherd
+	name = "Australian Shepherd"
+	icon_state = "australianshepherd"
 	color_keys = 2
 	color_key_names = list("Tail", "Inner")
 	can_wag = TRUE

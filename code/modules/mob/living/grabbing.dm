@@ -11,7 +11,7 @@
 	no_effect = TRUE
 	force = 0
 	experimental_inhand = FALSE
-	var/grabbed				//ref to what atom we are grabbing
+	var/atom/movable/grabbed //ref to what atom we are grabbing
 	var/obj/item/bodypart/limb_grabbed		//ref to actual bodypart being grabbed if we're grabbing a carbo
 	var/sublimb_grabbed		//ref to what precise (sublimb) we are grabbing (if any) (text)
 	var/mob/living/carbon/grabbee
@@ -498,8 +498,8 @@
 				if(prob(30))
 					user.werewolf_feed(C)
 			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
-			if(zombie_antag)
-				zombie_antag.last_bite = world.time
+			if(zombie_antag || istype(user, /mob/living/carbon/human/species/deadite))
+				user.mob_timers["deadite_bite"] = world.time
 				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)

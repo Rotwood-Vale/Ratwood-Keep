@@ -11,32 +11,32 @@
 
 /obj/item/roguebin/crackers/Initialize()
 	. = ..()
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
 
 /obj/structure/closet/crate/chest/steward
 	lockid = "steward"
 	locked = TRUE
 	masterkey = TRUE
 
-/datum/roguestock/import/bogguard
-	name = "Bog Guard Equipment Crate"
-	desc = "Starting kit for a new Bog Guard."
-	item_type = /obj/structure/closet/crate/chest/steward/bogguard
+/datum/roguestock/import/vanguard
+	name = "Vanguard Equipment Crate"
+	desc = "Starting kit for a new Vanguard."
+	item_type = /obj/structure/closet/crate/chest/steward/vanguard
 	export_price = 50
 	importexport_amt = 1
 
-/obj/structure/closet/crate/chest/steward/bogguard/Initialize()
+/obj/structure/closet/crate/chest/steward/vanguard/Initialize()
 	. = ..()
-	new /obj/item/clothing/cloak/stabard/bog(src)
+	new /obj/item/clothing/cloak/raincloak/vanguard(src)
 	new /obj/item/keyring/bog_guard(src)
 	new /obj/item/clothing/suit/roguetown/armor/gambeson(src)
 	new /obj/item/rogueweapon/mace/cudgel(src)
@@ -105,7 +105,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/plate/full(src)
 	new /obj/item/clothing/shoes/roguetown/armor/steel(src)
 	new /obj/item/keyring/knight(src)
-	new /obj/item/storage/belt/rogue/leather/hand(src)
+	new /obj/item/storage/belt/rogue/leather/steel(src)
 	new /obj/item/rogueweapon/sword/long(src)
 
 
@@ -127,7 +127,7 @@
 	new /obj/item/clothing/suit/roguetown/armor/plate/half(src)
 	new /obj/item/clothing/shoes/roguetown/armor/steel(src)
 	new /obj/item/keyring/man_at_arms(src)
-	new /obj/item/storage/belt/rogue/leather/hand(src)
+	new /obj/item/storage/belt/rogue/leather/steel(src)
 	new /obj/item/rogueweapon/spear(src)
 
 /datum/roguestock/import/crossbow
@@ -142,9 +142,9 @@
 	new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(src)
 	new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(src)
 	new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow(src)
-	new /obj/item/quiver/bolts(src)
-	new /obj/item/quiver/bolts(src)
-	new /obj/item/quiver/bolts(src)
+	new /obj/item/ammo_holder/quiver/bolts(src)
+	new /obj/item/ammo_holder/quiver/bolts(src)
+	new /obj/item/ammo_holder/quiver/bolts(src)
 
 /datum/roguestock/import/saigabuck
 	name = "Saigabuck"

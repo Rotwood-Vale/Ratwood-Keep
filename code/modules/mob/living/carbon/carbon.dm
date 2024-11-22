@@ -454,6 +454,8 @@
 		stupid_msg = span_warning("[src] manages to slip out of [I]!")
 	visible_message(stupid_msg)
 	to_chat(src, span_notice("I [cuff_break ? "break" : "slip"] out of [I]!"))
+	if(I == legcuffed)
+		src.remove_movespeed_modifier(MOVESPEED_ID_CUFFED_LEG_SLOWDOWN)
 
 	if(cuff_break)
 		. = !((I == handcuffed) || (I == legcuffed))

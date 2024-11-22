@@ -10,13 +10,7 @@
 	max_integrity = 10
 	force = 10
 	w_class = WEIGHT_CLASS_SMALL
-/*
-/obj/item/ammo_casing/caseless/rogue/bolt/poison
-	name = "poisoned bolt"
-	desc = "A durable iron bolt that will pierce a skull easily. This one is coated in a clear liquid."
-	projectile_type = /obj/projectile/bullet/reusable/bolt/poison
-	icon_state = "arrow_poison"
-*/
+
 /obj/projectile/bullet/reusable/bolt
 	name = "bolt"
 	damage = 35
@@ -37,13 +31,6 @@
 	damage = 50
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/poison
 
-
-/obj/projectile/bullet/reusable/bolt/poison/on_hit(atom/target, blocked = FALSE)
-	. = ..()
-	if(iscarbon(target))
-		var/mob/living/carbon/M = target
-		M.reagents.add_reagent(/datum/reagent/toxin/mutetoxin, 7) //not gonna kill anyone, but they will be quite quiet
-*/
 /obj/item/ammo_casing/caseless/rogue/arrow
 	name = "arrow"
 	desc = "A wooden shaft with a pointy iron end."
@@ -136,30 +123,3 @@
 		M.show_message(span_danger("You feel an intense burning sensation spreading swiftly from the puncture!")) //In case a player is in control of the mob.
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, adjustToxLoss), 100), 10 SECONDS)
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/atom, visible_message), span_danger("[M] appears greatly weakened by the poison!")), 10 SECONDS)
-
-/obj/projectile/bullet/reusable/bullet
-	name = "lead ball"
-	damage = 50
-	damage_type = BRUTE
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "musketball_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
-	range = 30
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
-	embedchance = 100
-	woundclass = BCLASS_STAB
-	flag = "bullet"
-	armor_penetration = 200
-	speed = 0.1
-
-/obj/item/ammo_casing/caseless/rogue/bullet
-	name = "lead sphere"
-	desc = "A small lead sphere. This should go well with gunpowder."
-	projectile_type = /obj/projectile/bullet/reusable/bullet
-	caliber = "musketball"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "musketball"
-	dropshrink = 0.5
-	possible_item_intents = list(/datum/intent/use)
-	max_integrity = 0
-	w_class = WEIGHT_CLASS_TINY

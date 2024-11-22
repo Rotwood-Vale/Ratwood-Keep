@@ -77,7 +77,7 @@
 	max_integrity = 100
 	var/active = FALSE
 	var/list/deployed_shields
-	var/locked = FALSE
+	locked = FALSE
 	var/shield_range = 4
 
 /obj/machinery/shieldgen/Initialize(mapload)
@@ -227,7 +227,7 @@
 	var/active = FALSE
 	var/power = 0
 	var/maximum_stored_power = 500
-	var/locked = TRUE
+	locked = TRUE
 	var/shield_range = 8
 	var/obj/structure/cable/attached // the attached cable
 
