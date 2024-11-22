@@ -121,6 +121,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 		set_ai_status(AI_STATUS_ON)
 
 	RegisterSignal(pawn, COMSIG_MOB_LOGIN, PROC_REF(on_sentience_gained))
+	RegisterSignal(pawn, COMSIG_MOB_STATCHANGE, PROC_REF(on_stat_changed))
 
 ///Abstract proc for initializing the pawn to the new controller
 /datum/ai_controller/proc/TryPossessPawn(atom/new_pawn)
@@ -128,12 +129,47 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 ///Proc for deinitializing the pawn to the old controller
 /datum/ai_controller/proc/UnpossessPawn(destroy)
-	UnregisterSignal(pawn, list(COMSIG_MOB_LOGIN, COMSIG_MOB_LOGOUT))
+	UnregisterSignal(pawn, list(COMSIG_MOB_LOGIN, COMSIG_MOB_LOGOUT, COMSIG_MOB_STATCHANGE))
 	pawn.ai_controller = null
 	pawn = null
 	if(destroy)
 		qdel(src)
 	return
+
+/// Turn the controller on or off based on if you're alive, we only register to this if the flag is present so don't need to check again
+/datum/ai_controller/proc/on_stat_changed(mob/living/source, new_stat)
+	SIGNAL_HANDLER
+	reset_ai_status()
+
+/// Sets the AI on or off based on current conditions, call to reset after you've manually disabled it somewhere
+/datum/ai_controller/proc/reset_ai_status()
+	set_ai_status(get_expected_ai_status())
+
+/**
+ * Gets the AI status we expect the AI controller to be on at this current moment.
+ * Returns AI_STATUS_OFF if it's inhabited by a Client and shouldn't be, if it's dead and cannot act while dead, or is on a z level without clients.
+ * Returns AI_STATUS_ON otherwise.
+ */
+/datum/ai_controller/proc/get_expected_ai_status()
+
+	if (!ismob(pawn))
+		return AI_STATUS_ON
+
+	var/mob/living/mob_pawn = pawn
+	if(!continue_processing_when_client && mob_pawn.client)
+		return AI_STATUS_OFF
+
+	if(mob_pawn.stat == DEAD)
+		return AI_STATUS_OFF
+
+	var/turf/pawn_turf = get_turf(mob_pawn)
+#ifdef TESTING
+	if(!pawn_turf)
+		CRASH("AI controller [src] controlling pawn ([pawn]) is not on a turf.")
+#endif
+	if(!length(SSmobs.clients_by_zlevel[pawn_turf?.z]))
+		return AI_STATUS_OFF
+	return AI_STATUS_ON
 
 ///Returns TRUE if the ai controller can actually run at the moment.
 /datum/ai_controller/proc/able_to_run()

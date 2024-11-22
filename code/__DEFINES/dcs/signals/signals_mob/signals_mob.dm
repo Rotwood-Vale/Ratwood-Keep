@@ -3,3 +3,4 @@
 #define COMSIG_MOB_LOGIN "mob_login"
 ///from base of /mob/Logout(): ()
 #define COMSIG_MOB_LOGOUT "mob_logout"
+#define COMSIG_MOB_STATCHANGE "mob_statchange"

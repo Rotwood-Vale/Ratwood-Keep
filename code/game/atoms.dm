@@ -1249,21 +1249,19 @@
 		custom_materials[custom_material] += materials[x] * multiplier
 
 /**
-  * Returns true if this atom has gravity for the passed in turf
-  *
-  * Sends signals COMSIG_ATOM_HAS_GRAVITY and COMSIG_TURF_HAS_GRAVITY, both can force gravity with
-  * the forced gravity var
-  *
-  * micro-optimized to hell because this proc is very hot, being called several times per movement every movement.
-  *
-  * Gravity situations:
-  * * No gravity if you're not in a turf
-  * * No gravity if this atom is in is a space turf
-  * * Gravity if the area it's in always has gravity
-  * * Gravity if there's a gravity generator on the z level
-  * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
-  * * otherwise no gravity
-  */
+ * Returns true if this atom has gravity for the passed in turf
+ *
+ * Sends signals COMSIG_ATOM_HAS_GRAVITY and COMSIG_TURF_HAS_GRAVITY, both can force gravity with
+ * the forced gravity var
+ *
+ * Gravity situations:
+ * * No gravity if you're not in a turf
+ * * No gravity if this atom is in is a space turf
+ * * Gravity if the area it's in always has gravity
+ * * Gravity if there's a gravity generator on the z level
+ * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
+ * * otherwise no gravity
+ */
 /atom/proc/has_gravity(turf/gravity_turf)
 	if(!isturf(gravity_turf))
 		gravity_turf = get_turf(src)

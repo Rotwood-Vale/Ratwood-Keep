@@ -279,8 +279,10 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(stat != DEAD)
 		if(health <= 0)
 			death()
+			SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, DEAD)
 			return
 	med_hud_set_status()
+	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, stat)
 	if(footstep_type)
 		AddComponent(/datum/component/footstep, footstep_type)
 
