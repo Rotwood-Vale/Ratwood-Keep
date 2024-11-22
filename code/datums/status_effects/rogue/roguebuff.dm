@@ -282,6 +282,10 @@
 	var/healing_on_tick = 1
 	var/outline_colour = "#c42424"
 
+/datum/status_effect/buff/healing/on_creation(mob/living/new_owner, new_healing_on_tick)
+	healing_on_tick = new_healing_on_tick
+	return ..()
+
 /datum/status_effect/buff/healing/on_apply()
 	var/filter = owner.get_filter(MIRACLE_HEALING_FILTER)
 	if (!filter)

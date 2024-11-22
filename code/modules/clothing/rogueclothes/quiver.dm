@@ -42,7 +42,11 @@
 /obj/item/quiver/attackby(obj/A, loc, params)
 	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
 		if(arrows.len < max_storage)
-			A.forceMove(src)
+			if(ismob(loc))
+				var/mob/M = loc
+				M.doUnEquip(A, TRUE, src, TRUE, silent = TRUE)
+			else
+				A.forceMove(src)
 			arrows += A
 			update_icon()
 		else
