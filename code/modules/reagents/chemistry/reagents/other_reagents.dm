@@ -303,6 +303,7 @@
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			H.adjust_hydration(hydration)
+		H.rogfat_add(hydration * -1)
 	if(!data)
 		data = 1
 	data++

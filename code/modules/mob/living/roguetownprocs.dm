@@ -12,7 +12,7 @@
 	if(used_intent.type == INTENT_GRAB)
 		if(!(target.mobility_flags & MOBILITY_STAND))				//If they're grounded, you can just grab them
 			return list(zone, hit)
-		if(user.grab_state >= GRAB_AGGRESSIVE)
+		if(user.grab_state <= GRAB_AGGRESSIVE)
 			return list(zone, hit)
 
 	var/ace_mod = zone_ace_mod(zone)								//Sub-location hit modifier
@@ -58,7 +58,7 @@
 	if(I)
 		if(I.wlength == WLENGTH_SHORT)								//Small weapons like daggers are easier to aim
 			chance2hit += 25
-		if(I.minstr >= 0)											//Using a weapon while below minimum strength requirement will penalize your To-Hit
+		if(I.minstr > 0)											//Using a weapon while below minimum strength requirement will penalize your To-Hit
 			if(strmod <= 0)
 				chance2hit += (strmod * 2) 
 		if(I.wielded)												//Two Handing a weapon will add part of your Strength score to your To-Hit
@@ -71,7 +71,7 @@
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))			//Taking time to aim attacks gives Perception + 10
 		chance2hit += (user.STAPER + 10)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))			//Swinging as fast as you can reduces your To-Hit
-		chance2hit -= 20
+		chance2hit -= (30 - user.STASPD)
 
 	var/facing_zone = facing_zone(zone)
 	if(facing == NORTH)												//Attacks from the front, normal
@@ -144,14 +144,16 @@
 			if(GLOB.Debug2)
 				if(!subzone)
 					to_chat(user, span_nicegreen("Hit!"))
-				to_chat(user, span_smallgreen("Rolled [tohit] against [chance2acehit]%"))
+				to_chat(user, span_smallgreen("Roll under [chance2acehit] to Ace Hit: [tohit]"))
+				to_chat(target, span_smallred("They rolled [tohit] against [chance2acehit]%"))
 		hit = "Hit"
 		return list(zone, hit)
 	else
 		if(tohit <= chance2hit)
 			if(user.client?.prefs.showrolls && GLOB.Debug2)
 				to_chat(user, span_nicegreen("Hit!"))
-				to_chat(user, span_smallgreen("Rolled [tohit] against [chance2hit]%"))
+				to_chat(user, span_smallgreen("Roll under [chance2hit] to Hit: [tohit]"))
+				to_chat(target, span_smallred("They rolled [tohit] against [chance2hit]%"))
 			hit = "Hit"
 			zone = check_zone(zone)
 			return list(zone, hit)
@@ -159,7 +161,8 @@
 			if(user.client?.prefs.showrolls)
 				to_chat(user, span_warning("I Missed!"))
 				if(GLOB.Debug2)
-					to_chat(user, span_smallgreen("Rolled [tohit] against [chance2hit]%"))
+					to_chat(user, span_smallgreen("Roll under [chance2hit] to Hit: [tohit]"))
+					to_chat(target, span_smallred("They rolled [tohit] against [chance2hit]%"))
 			user.aftermiss()
 			hit = "Miss"
 			zone = check_zone(zone)
@@ -235,7 +238,7 @@
 		return list(zone, hit)
 
 	var/ace_mod = zone_ace_mod(zone)								//Sub-location hit modifier
-	var/chance2hit = ((user.STAPER * 2) + user.STASTR + user.STASPD + 25)
+	var/chance2hit = ((user.STAPER * 2) + user.STASPD + 20)
 	var/chance2acehit = 0
 	var/datum/point/vector/previous = P.trajectory.return_vector_after_increments(1,-1)		//Backstepping the projectile to better account for angular attack vectors
 	var/projlast = previous.return_turf()
@@ -254,8 +257,8 @@
 			zone = check_zone(zone)
 			return list(zone, hit)
 
-	if(user.mind)													//15 points per skill level, 95 bonus at Legendary
-		chance2hit += (user.mind.get_skill_level(associated_skill) * 15)
+	if(user.mind)													//10 points per skill level, 60 bonus at Legendary
+		chance2hit += (user.mind.get_skill_level(associated_skill) * 10)
 
 	if(user.mob_size != target.mob_size)							//Size modifier. Easier to hit bigger enemies, harder to hit smaller enemies.
 		chance2hit += ((target.mob_size - user.mob_size) * 10)
@@ -274,9 +277,9 @@
 		chance2hit -= (60 - (user.STASTR * 3))
 
 	if(istype(user.used_intent, /datum/intent/arc))
-		chance2hit -= ((dist * 2) * (8 - ((user.mind.get_skill_level(associated_skill)) * 1)))
-
-	chance2hit -= (dist * (8 - ((user.mind.get_skill_level(associated_skill)) * 1)))
+		dist *= 1.5
+	
+	chance2hit -= (dist * (6 - ((user.mind.get_skill_level(associated_skill)) * 1)))
 
 	var/facing_zone = facing_zone(zone)
 	if(facing == NORTH)												//Attacks from the front, normal
@@ -350,14 +353,14 @@
 			if(GLOB.Debug2)
 				if(!subzone)
 					to_chat(user, span_nicegreen("Hit!"))
-				to_chat(user, span_smallgreen("Rolled [tohit] against [chance2acehit]%"))
+				to_chat(user, span_smallgreen("Roll under [chance2acehit] to Ace Hit... [tohit]"))
 		hit = "Hit"
 		return list(zone, hit)
 	else
 		if(tohit <= chance2hit)
 			if(user.client?.prefs.showrolls && GLOB.Debug2)
 				to_chat(user, span_nicegreen("Hit!"))
-				to_chat(user, span_smallgreen("Rolled [tohit] against [chance2hit]%"))
+				to_chat(user, span_smallgreen("Roll under [chance2hit] to Hit... [tohit]"))
 			hit = "Hit"
 			zone = check_zone(zone)
 			return list(zone, hit)
@@ -366,7 +369,7 @@
 				if(user.client?.prefs.showrolls)
 					to_chat(user, span_smallgreen("I managed to hit them."))
 					if(GLOB.Debug2)
-						to_chat(user, span_smallgreen("Rolled [tohit] against [scatterhit]%"))
+						to_chat(user, span_smallgreen("Roll under [scatterhit] to Scatter: [tohit]"))
 				hit = "Hit"
 				zone = zone_simpmob_target(zone)
 				return list(zone, hit)
@@ -374,7 +377,7 @@
 				if(user.client?.prefs.showrolls)
 					to_chat(user, span_warning("Missed!!"))
 					if(GLOB.Debug2)
-						to_chat(user, span_smallgreen("Rolled [tohit] against [chance2hit]%"))
+						to_chat(user, span_smallgreen("Roll under [chance2hit] to Hit: [tohit]"))
 				hit = "Miss"
 				zone = check_zone(zone)
 				return list(zone, hit)
@@ -399,154 +402,140 @@
 
 /mob/living/proc/checkdefense(datum/intent/intenty, mob/living/user)
 	testing("begin defense")
-	if(!cmode)
+	if(!cmode)																	//Combat Mode must be enabled
 		return FALSE
-	if(stat)
+	if(stat)																	//Defender must be consious
 		return FALSE
-	if(!canparry && !candodge) //mob can do neither of these
+	if(!canparry && !candodge)													//mob can do neither of these
 		return FALSE
-	if(!cmode)
+	if(user == src)																//Ignore defense when targeting self
 		return FALSE
-	if(user == src)
+	if(!can_see_cone(user))														//You can not defend against what you can not see
 		return FALSE
-	if(!(mobility_flags & MOBILITY_MOVE))
-		return FALSE
-
 	if(client && used_intent)
-		if(client.charging && used_intent.tranged && !used_intent.tshield)
+		if(client.charging && used_intent.tranged && !used_intent.tshield)		//Defender can not defend while charging an ability without a shield
 			return FALSE
 
-	var/prob2defend = user.defprob
-	var/mob/living/H = src
-	var/mob/living/U = user
-	if(H && U)
-		prob2defend = 0
-
-	if(!can_see_cone(user))
-		if(d_intent == INTENT_PARRY)
-			return FALSE
-		else
-			prob2defend = max(prob2defend-15,0)
-
-//	if(!cmode) // not currently used, see cmode check above
-//		prob2defend = max(prob2defend-15,0)
-
-	if(m_intent == MOVE_INTENT_RUN)
-		prob2defend = max(prob2defend-15,0)
+	var/mob/living/D = src												//The Defender
+	var/mob/living/A = user												//The Attacker
+	var/defense_score = simpmob_defend											//Base score and offset for NPC mobs
 
 	switch(d_intent)
-		if(INTENT_PARRY)
+		if(INTENT_PARRY)												//// PARRYING ////
 			if(HAS_TRAIT(src, TRAIT_CHUNKYFINGERS))
 				return FALSE
-			if(pulledby == user && pulledby.grab_state >= GRAB_AGGRESSIVE)
+			if(pulledby == A && pulledby.grab_state >= GRAB_AGGRESSIVE)		//You can not parry the person who is grabbing you
 				return FALSE
-			if(pulling == user && grab_state >= GRAB_AGGRESSIVE)
+			if(pulling == A && grab_state >= GRAB_AGGRESSIVE)				//Nor if you are grabbing them
 				return FALSE
 			if(world.time < last_parry + setparrytime)
-				if(!istype(rmb_intent, /datum/rmb_intent/riposte))
+				if(!istype(rmb_intent, /datum/rmb_intent/riposte))				//Defense Stance allows you to quickly re-parry
 					return FALSE
-			if(has_status_effect(/datum/status_effect/debuff/feinted))
+			if(has_status_effect(/datum/status_effect/debuff/feinted))			//You can not parry an attack that feinted you
 				return FALSE
-			if(has_status_effect(/datum/status_effect/debuff/riposted))
+			if(has_status_effect(/datum/status_effect/debuff/riposted))			//You can not parry a counter attack to your own parried attack
 				return FALSE
+			if(intenty && !intenty.canparry)									//You have to be able to parry to parry
+				return FALSE
+
 			last_parry = world.time
-			if(intenty && !intenty.canparry)
-				return FALSE
-			var/drained = user.defdrain
+
+			defense_score += ((STAINT + STAPER) * 2)							//Base parry ability is based on seeing and predicting the enemy's attack
+
+			defense_score -= ((A.STASTR - D.STASTR) * 5)						//Contested Strength check
+
+			if(m_intent == MOVE_INTENT_RUN)										//Defender receives a penalty to parry while sprinting, scaled by Speed stat
+				defense_score -= (5 * (20 - STASPD))
+
+			var/drained = D.defdrain
 			var/weapon_parry = FALSE
 			var/offhand_defense = 0
 			var/mainhand_defense = 0
-			var/highest_defense = 0
 			var/obj/item/mainhand = get_active_held_item()
 			var/obj/item/offhand = get_inactive_held_item()
 			var/obj/item/used_weapon = mainhand
 			var/obj/item/rogueweapon/shield/buckler/skiller = get_inactive_held_item()  // buckler code
 			var/obj/item/rogueweapon/shield/buckler/skillerbuck = get_active_held_item()
-
-			if(istype(offhand, /obj/item/rogueweapon/shield/buckler))
-				skiller.bucklerskill(H)
-			if(istype(mainhand, /obj/item/rogueweapon/shield/buckler))
-				skillerbuck.bucklerskill(H)  //buckler code end
-
-			if(mainhand)
-				if(mainhand.can_parry)
-					mainhand_defense += (H.mind ? (H.mind.get_skill_level(mainhand.associated_skill) * 20) : 20)
-					mainhand_defense += (mainhand.wdefense * 10)
-			if(offhand)
-				if(offhand.can_parry)
-					offhand_defense += (H.mind ? (H.mind.get_skill_level(offhand.associated_skill) * 20) : 20)
-					offhand_defense += (offhand.wdefense * 10)
-
-			if(mainhand_defense >= offhand_defense)
-				highest_defense += mainhand_defense
-			else
-				used_weapon = offhand
-				highest_defense += offhand_defense
-
 			var/defender_skill = 0
 			var/attacker_skill = 0
 
-			if(highest_defense <= (H.mind ? (H.mind.get_skill_level(/datum/skill/combat/unarmed) * 20) : 20))
-				defender_skill = H.mind?.get_skill_level(/datum/skill/combat/unarmed)
-				prob2defend += (defender_skill * 20)
+			if(istype(offhand, /obj/item/rogueweapon/shield/buckler))
+				skiller.bucklerskill(D)
+			if(istype(mainhand, /obj/item/rogueweapon/shield/buckler))
+				skillerbuck.bucklerskill(D)  //buckler code end
+
+			if(mainhand)														//Check any item in active hand for skills
+				if(mainhand.can_parry)
+					mainhand_defense += (D.mind ? (D.mind.get_skill_level(mainhand.associated_skill) * 15) : 0)
+					mainhand_defense += mainhand.wdefense
+			if(offhand)															//Check any item in other hand for skills
+				if(offhand.can_parry)
+					offhand_defense += (D.mind ? (D.mind.get_skill_level(offhand.associated_skill) * 15) : 0)
+					offhand_defense += offhand.wdefense
+			if(mainhand_defense < offhand_defense)
+				used_weapon = offhand
+
+			defense_score += (mainhand_defense + (offhand_defense * 0.5))
+
+																				//Checking Defense Score to determine if Unarmed Combat
+			if(defense_score <= (D.mind ? (D.mind.get_skill_level(/datum/skill/combat/unarmed) * 15) : 0))
+				defender_skill = D.mind?.get_skill_level(/datum/skill/combat/unarmed)
+				defense_score += (defender_skill * 10)
 				weapon_parry = FALSE
 			else
-				defender_skill = H.mind?.get_skill_level(used_weapon.associated_skill)
-				prob2defend += highest_defense
+				defender_skill = D.mind?.get_skill_level(used_weapon.associated_skill)
 				weapon_parry = TRUE
 
-			if(U.mind)
+			if(A.mind)															//Attacker's combat ability applying penalties
 				if(intenty.masteritem)
-					attacker_skill = U.mind.get_skill_level(intenty.masteritem.associated_skill)
-					prob2defend -= (attacker_skill * 20)
-					if((intenty.masteritem.wbalance > 0) && (user.STASPD > src.STASPD)) //enemy weapon is quick, so get a bonus based on spddiff
-						prob2defend -= ( intenty.masteritem.wbalance * ((user.STASPD - src.STASPD) * 10) )
+					attacker_skill = A.mind.get_skill_level(intenty.masteritem.associated_skill)
+					defense_score -= (attacker_skill * 10)
+					if((intenty.masteritem.wbalance > 0) && (A.STASPD > D.STASPD))	//Attacker has a swift weapon, giving a penalty to parry
+						defense_score -= (intenty.masteritem.wbalance * ((A.STASPD - D.STASPD) * 15))
 				else
-					attacker_skill = U.mind.get_skill_level(/datum/skill/combat/unarmed)
-					prob2defend -= (attacker_skill * 20)
+					defense_score = (A.mind.get_skill_level(/datum/skill/combat/unarmed) * 15)
 
-			// parrying while knocked down sucks ass
-			if(!(mobility_flags & MOBILITY_STAND))
-				prob2defend *= 0.65
-			prob2defend = clamp(prob2defend, 5, 90)
-			if(src.client?.prefs.showrolls)
-				to_chat(src, span_info("Roll to parry... [prob2defend]%"))
+			defense_score -= (A.simpmob_attack * 0.5)							//NPC mob combat ability bonus
 
-			if(prob(prob2defend))
-				if(intenty.masteritem)
-					if(intenty.masteritem.wbalance < 0 && user.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
-						drained = drained + ( intenty.masteritem.wbalance * ((user.STASTR - src.STASTR) * -5) )
-			else
-				to_chat(src, span_warning("The enemy defeated my parry!"))
+			if(!(mobility_flags & MOBILITY_STAND))								//Disadvantage while parrying from the ground
+				defense_score = (defense_score * 0.65)
+
+			defense_score = clamp(defense_score, 0, 95)
+
+			drained = max(drained + (A.STASTR - D.STASTR), 5)					//If the Defender has lower Strength, it drains more energy to parry
+
+			var/parryroll = rand(1, 100)
+			if(D.client?.prefs.showrolls && GLOB.Debug2)
+				to_chat(D, span_info("Under [defense_score] to parry... [parryroll]"))
+			if(parryroll > defense_score)										//Rolling above the defense score fails
+				to_chat(D, span_warning("The enemy defeated my parry!"))
 				return FALSE
 
-			drained = max(drained, 5)
-
 			if(weapon_parry == TRUE)
-				if(do_parry(used_weapon, drained, user)) //show message
+				if(do_parry(used_weapon, drained, A)) //show message
 
-					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, used_weapon.associated_skill, attacker_skill - SKILL_LEVEL_NOVICE))
-						mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
+					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(D, used_weapon.associated_skill, attacker_skill - SKILL_LEVEL_NOVICE))
+						mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT / 2), 0), FALSE)
 
 					var/obj/item/AB = intenty.masteritem
 
 					//attacker skill gain
 
-					if(U.mind)
+					if(A.mind)
 						var/attacker_skill_type
 						if(AB)
 							attacker_skill_type = AB.associated_skill
 						else
 							attacker_skill_type = /datum/skill/combat/unarmed
-						if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
-							U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT/2), 0), FALSE)
+						if((A.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(A, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
+							A.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT / 2), 0), FALSE)
 
 					if(prob(66) && AB)
 						if((used_weapon.flags_1 & CONDUCT_1) && (AB.flags_1 & CONDUCT_1))
 							flash_fullscreen("whiteflash")
-							user.flash_fullscreen("whiteflash")
+							A.flash_fullscreen("whiteflash")
 							var/datum/effect_system/spark_spread/S = new()
-							var/turf/front = get_step(src,src.dir)
+							var/turf/front = get_step(D, D.dir)
 							S.set_up(1, 1, front)
 							S.start()
 						else
@@ -554,42 +543,45 @@
 					else
 						flash_fullscreen("blackflash2")
 
-					var/dam2take = round((get_complex_damage(AB,user,used_weapon.blade_dulling)/2),1)
+					var/dam2take = round((get_complex_damage(AB, A, used_weapon.blade_dulling) / 2), 1)
 					if(dam2take)
-						used_weapon.take_damage(max(dam2take,1), BRUTE, used_weapon.d_type)
+						used_weapon.take_damage(max(dam2take, 1), BRUTE, used_weapon.d_type)
 					return TRUE
 				else
 					return FALSE
 
 			if(weapon_parry == FALSE)
-				if(do_unarmed_parry(drained, user))
-					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(H, /datum/skill/combat/unarmed, attacker_skill - SKILL_LEVEL_NOVICE))
-						H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
+				if(do_unarmed_parry(drained, A))
+					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(D, /datum/skill/combat/unarmed, attacker_skill - SKILL_LEVEL_NOVICE))
+						D.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
 					flash_fullscreen("blackflash2")
 					return TRUE
 				else
 					testing("failparry")
 					return FALSE
+																		//// DODGING ////
 		if(INTENT_DODGE)
+			if(!(mobility_flags & MOBILITY_MOVE))								//Defender can not dodge if they are immobile
+				return FALSE
 			if(pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE)
 				return FALSE
-			if(pulling == user)
+			if(pulling == A)
 				return FALSE
 			if(world.time < last_dodge + dodgetime)
-				if(!istype(rmb_intent, /datum/rmb_intent/riposte))
+				if(!istype(rmb_intent, /datum/rmb_intent/swift))				//Swift stance allows for rapid dodging, where stamina allows
 					return FALSE
 			if(has_status_effect(/datum/status_effect/debuff/riposted))
 				return FALSE
 			last_dodge = world.time
-			if(src.loc == user.loc)
+			if(D.loc == A.loc)
 				return FALSE
 			if(intenty)
 				if(!intenty.candodge)
 					return FALSE
 			if(candodge)
 				var/list/dirry = list()
-				var/dx = x - user.x
-				var/dy = y - user.y
+				var/dx = x - A.x
+				var/dy = y - A.y
 				if(abs(dx) < abs(dy))
 					if(dy > 0)
 						dirry += NORTH
@@ -610,7 +602,7 @@
 						dirry += SOUTH
 				var/turf/turfy
 				for(var/x in shuffle(dirry.Copy()))
-					turfy = get_step(src,x)
+					turfy = get_step(D,x)
 					if(turfy)
 						if(turfy.density)
 							continue
@@ -621,31 +613,33 @@
 				if(pulledby)
 					return FALSE
 				if(!turfy)
-					to_chat(src, span_boldwarning("There's nowhere to dodge to!"))
+					to_chat(D, span_boldwarning("There's nowhere to dodge to!"))
 					return FALSE
 				else
-					if(do_dodge(user, turfy))
+					if(do_dodge(A, turfy))
 						flash_fullscreen("blackflash2")
-						user.aftermiss()
+						A.aftermiss()
 						return TRUE
 					else
 						return FALSE
 			else
 				return FALSE
+		if(INTENT_NODEF)
+			return FALSE
 
 /mob/proc/do_parry(obj/item/W, parrydrain as num, mob/living/user)
 	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
-		if(H.rogfat_add(parrydrain))
+		var/mob/living/carbon/human/D = src
+		if(D.rogfat_add(parrydrain))
 			if(W)
-				playsound(get_turf(src), pick(W.parrysound), 100, FALSE)
+				playsound(get_turf(D), pick(W.parrysound), 100, FALSE)
 			if(istype(rmb_intent, /datum/rmb_intent/riposte))
-				src.visible_message(span_boldwarning("<b>[src]</b> ripostes [user] with [W]!"))
+				D.visible_message(span_boldwarning("<b>[D]</b> ripostes [user] with [W]!"))
 			else
-				src.visible_message(span_boldwarning("<b>[src]</b> parries [user] with [W]!"))
+				D.visible_message(span_boldwarning("<b>[D]</b> parries [user] with [W]!"))
 			return TRUE
 		else
-			to_chat(src, span_warning("I'm too tired to parry!"))
+			to_chat(D, span_warning("I'm too tired to parry!"))
 			return FALSE //crush through
 	else
 		if(W)
@@ -670,93 +664,105 @@
 /mob/proc/do_dodge(mob/user, turf/turfy)
 	if(dodgecd)
 		return FALSE
-	var/mob/living/L = src
-	var/mob/living/U = user
-	var/mob/living/carbon/human/H
-	var/mob/living/carbon/human/UH
+	var/mob/living/D = src
+	var/mob/living/A = user
+	var/mob/living/carbon/human/DH
+	var/mob/living/carbon/human/AH
 	var/obj/item/I
-	var/drained = 10
+	var/drained = 5
+	var/dodge_speed = floor(D.STASPD / 2)
 	if(ishuman(src))
-		H = src
+		DH = src
 	if(ishuman(user))
-		UH = user
-		I = UH.used_intent.masteritem
-	var/prob2defend = U.defprob
-	if(L.rogfat >= L.maxrogfat)
+		AH = user
+		I = AH.used_intent.masteritem
+	var/dodge_score = D.simpmob_defend
+	if(D.rogfat >= D.maxrogfat)
 		return FALSE
-	if(L)
-		if(H?.check_dodge_skill())
-			prob2defend = prob2defend + (L.STASPD * 15)
+	if(!(D.mobility_flags & MOBILITY_STAND))									//Can't dodge when knocked down
+		return FALSE
+	if(D)
+		if(DH?.check_dodge_skill())
+			dodge_score += ((D.STASPD * 15) + (D.STAPER * 4))
 		else
-			prob2defend = prob2defend + (L.STASPD * 10)
-	if(U)
-		prob2defend = prob2defend - (U.STASPD * 10)
+			dodge_score += ((D.STASPD * 10) + (D.STAPER * 4))
+	if(A)
+		dodge_score -= (A.mind ? (A.STASPD * 5) : A.simpmob_attack)
 	if(I)
-		if(I.wbalance > 0 && U.STASPD > L.STASPD) //nme weapon is quick, so they get a bonus based on spddiff
-			prob2defend = prob2defend - ( I.wbalance * ((U.STASPD - L.STASPD) * 10) )
-		if(I.wbalance < 0 && L.STASPD > U.STASPD) //nme weapon is slow, so its easier to dodge if we're faster
-			prob2defend = prob2defend + ( I.wbalance * ((U.STASPD - L.STASPD) * -10) )
-		if(UH?.mind)
-			prob2defend = prob2defend - (UH.mind.get_skill_level(I.associated_skill) * 10)
-	if(H)
-		if(!H?.check_armor_skill())
-			H.Knockdown(1)
+
+				//// ADD WEAPON INTENT MODIFIERS HERE ////
+
+/*		if(I.wbalance > 0 && A.STASPD > D.STASPD) //nme weapon is quick, so they get a bonus based on spddiff
+			dodge_score = dodge_score - ( I.wbalance * ((A.STASPD - D.STASPD) * 10) )
+		if(I.wbalance < 0 && D.STASPD > A.STASPD) //nme weapon is slow, so its easier to dodge if we're faster
+			dodge_score = dodge_score + ( I.wbalance * ((A.STASPD - D.STASPD) * -10) ) */
+
+
+		if(AH?.mind)
+			dodge_score -= (AH.mind.get_skill_level(I.associated_skill) * 10)
+	if(DH)
+		if(!DH?.check_armor_skill())
+			DH.Knockdown(1)
 			return FALSE
-		/* Commented out due to gaping imbalance
-			if(H?.check_dodge_skill())
-				drained = drained - 5  commented out for being too much. It was giving effectively double stamina efficiency compared to everyone else.
-			if(H.mind)
-				drained = drained + max((H.checkwornweight() * 10)-(mind.get_skill_level(/datum/skill/misc/athletics) * 10),0)
+		if(I)																	//Attacker attacked us with a weapon
+			if(!I.associated_skill)												//Attacker's weapon doesn't have a skill because its improvised, so penalty to attack
+				dodge_score += 10
 			else
-				drained = drained + (H.checkwornweight() * 10)
-		*/
-		if(I) //the enemy attacked us with a weapon
-			if(!I.associated_skill) //the enemy weapon doesn't have a skill because its improvised, so penalty to attack
-				prob2defend = prob2defend + 10
-			else
-				if(H.mind)
-					prob2defend = prob2defend + (H.mind.get_skill_level(I.associated_skill) * 10)
-				/* Commented out due to encumbrance being seemingly broken and nonfunctional
-				var/thing = H.encumbrance
-				if(thing > 0)
-					drained = drained + (thing * 10)
-				*/
+				if(DH.mind)
+					dodge_score += (DH.mind.get_skill_level(I.associated_skill) * 10)
+
 		else //the enemy attacked us unarmed or is nonhuman
-			if(UH)
-				if(UH.used_intent.unarmed)
-					if(UH.mind)
-						prob2defend = prob2defend - (UH.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
-					if(H.mind)
-						prob2defend = prob2defend + (H.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
-		// dodging while knocked down sucks ass
-		if(!(L.mobility_flags & MOBILITY_STAND))
-			prob2defend *= 0.25
-		prob2defend = clamp(prob2defend, 5, 90)
-		if(client?.prefs.showrolls)
-			to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
-		if(!prob(prob2defend))
+			if(AH)
+				if(AH.used_intent.unarmed)
+					if(AH.mind)
+						dodge_score -= (AH.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
+					if(DH.mind)
+						dodge_score += (DH.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
+
+		switch(DH.worn_armor_class)
+			if(ARMOR_CLASS_LIGHT)
+				dodge_speed -= 10
+				drained += 5
+			if(ARMOR_CLASS_MEDIUM)
+				dodge_score *= 0.5
+				dodge_speed = floor(dodge_speed * 0.5)
+				drained += 10
+			if(ARMOR_CLASS_HEAVY)
+				dodge_score *= 0.2
+				dodge_speed = floor(dodge_speed * 0.25)
+				drained += 20
+
+		dodge_score = clamp(dodge_score, 0, 95)
+		var/dodgeroll = rand(1, 100)
+
+		if(D.client?.prefs.showrolls && GLOB.Debug2)
+			to_chat(src, span_info("Roll under [dodge_score] to dodge... [dodgeroll]"))
+		if(dodgeroll > dodge_score)
 			return FALSE
-		if(!H.rogfat_add(max(drained,5)))
+		if(!DH.rogfat_add(max(drained, 5)))
 			to_chat(src, span_warning("I'm too tired to dodge!"))
 			return FALSE
-	else //we are a non human
-		prob2defend = clamp(prob2defend, 5, 90)
-		if(client?.prefs.showrolls)
-			to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
-		if(!prob(prob2defend))
+	else																//Defender is non human
+		dodge_score = clamp(dodge_score, 0, 95)
+		var/dodgeroll = rand(1, 100)
+
+		if(D.client?.prefs.showrolls && GLOB.Debug2)
+			to_chat(src, span_info("Roll under [dodge_score] to dodge... [dodgeroll]"))
+		if(dodgeroll > dodge_score)
 			return FALSE
 	dodgecd = TRUE
+	dodge_speed = (11 - dodge_speed)
 	playsound(src, 'sound/combat/dodge.ogg', 100, FALSE)
-	throw_at(turfy, 1, 4, src, FALSE)
+	throw_at(turfy, 1, dodge_speed, src, FALSE)
 	if(drained > 0)
 		src.visible_message(span_warning("<b>[src]</b> dodges [user]'s attack!"))
 	else
 		src.visible_message(span_warning("<b>[src]</b> easily dodges [user]'s attack!"))
 	dodgecd = FALSE
-//		if(H)
-//			if(H.IsOffBalanced())
-//				H.Knockdown(1)
-//				to_chat(H, span_danger("I tried to dodge off-balance!"))
+//		if(DH)
+//			if(DH.IsOffBalanced())
+//				DH.Knockdown(1)
+//				to_chat(DH, span_danger("I tried to dodge off-balance!"))
 //		if(isturf(loc))
 //			var/turf/T = loc
 //			if(T.landsound)

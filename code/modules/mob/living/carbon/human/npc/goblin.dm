@@ -15,6 +15,7 @@
 	a_intent = INTENT_HELP
 	possible_mmb_intents = list(INTENT_STEAL, INTENT_JUMP, INTENT_KICK, INTENT_BITE)
 	possible_rmb_intents = list(/datum/rmb_intent/feint, /datum/rmb_intent/swift, /datum/rmb_intent/riposte, /datum/rmb_intent/weak)
+	flee_in_pain = TRUE
 
 /mob/living/carbon/human/species/goblin/npc
 	aggressive=1
@@ -244,7 +245,7 @@
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	if(is_species(src, /datum/species/goblin/sea))
-		ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
+		ADD_TRAIT(src, TRAIT_WATERBREATHING, TRAIT_GENERIC)
 	if(gob_outfit)
 		var/datum/outfit/O = new gob_outfit
 		if(O)

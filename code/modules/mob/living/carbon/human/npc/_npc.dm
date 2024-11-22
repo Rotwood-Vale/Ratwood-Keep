@@ -306,10 +306,10 @@
 			else								// not next to perp
 				frustration++
 
-		if(AI_FLEE)
-			back_to_idle()
-			return TRUE
 /*		if(AI_FLEE)
+			back_to_idle()
+			return TRUE */
+		if(AI_FLEE)
 			var/list/around = view(src, 7)
 			// flee from anyone who attacked us and we didn't beat down
 			for(var/mob/living/L in around)
@@ -320,19 +320,19 @@
 			if(target != null)
 				frustration++
 				if(Adjacent(target))
-					retalitate(target)
-					return TRUE
+					monkey_attack(target)
 				walk_away(src, target, 5, update_movespeed())
 			else
 				back_to_idle()
 
-			return TRUE*/
+			return TRUE
 
 	return IsStandingStill()
 
 
 /mob/living/carbon/human/proc/back_to_idle()
 	last_aggro_loss = world.time
+	cmode = 0
 	if(pulling)
 		stop_pulling()
 	myPath = list()
@@ -340,7 +340,7 @@
 	target = null
 	a_intent = INTENT_HELP
 	frustration = 0
-	walk_to(src,0)
+	walk_to(src,0,0,update_movespeed())
 
 // attack using a held weapon otherwise bite the enemy, then if we are angry there is a chance we might calm down a little
 /mob/living/carbon/human/proc/monkey_attack(mob/living/L)
@@ -406,6 +406,7 @@
 	if(L == src)
 		return
 	if(mode != AI_OFF)
+		cmode = 1
 		mode = AI_HUNT
 		last_aggro_loss = null
 		face_atom(L)

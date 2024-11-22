@@ -57,9 +57,22 @@
 		if(user.client.chargedprog >= 100)
 			spread = 0
 		else
-			spread = 150 - (150 * (user.client.chargedprog / 100))
+			spread = 90 - (90 * (user.client.chargedprog / 100))
 	else
 		spread = 0
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		switch(H.mind.get_skill_level(/datum/skill/combat/bows))
+			if(0)
+				spread += 35
+			if(1)
+				spread += 20
+			if(2)
+				spread += 5
+			else
+				spread += 0
+		if(H.worn_armor_class == 3)
+			spread += 10
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
 		if(user.client.chargedprog < 100)
@@ -68,7 +81,7 @@
 		else
 			BB.damage = BB.damage
 			BB.embedchance = 100
-		BB.damage = BB.damage * (user.STAPER / 10) * damfactor
+		BB.damage = BB.damage * (user.STASTR * 0.1) * damfactor
 		if(HAS_TRAIT(user, TRAIT_TINY))
 			BB.damage = (BB.damage * 0.3)
 	. = ..()
@@ -112,8 +125,8 @@
 /datum/intent/shoot/bow/get_chargetime()
 	if(mastermob && chargetime)
 		var/newtime = 0
-		var/chargeskillmod = (mastermob.mind.get_skill_level(/datum/skill/combat/bows) * 0.1)
-		newtime = chargetime - ((mastermob.STASTR * (0.3 + chargeskillmod)) + (mastermob.STAPER * 0.1))
+		var/chargeskillmod = ((mastermob.mind.get_skill_level(/datum/skill/combat/bows) * 0.2) + 1)
+		newtime = round(chargetime * (25 / ((((mastermob.STASTR * 2) * chargeskillmod) + ((mastermob.STAPER * 0.5) * chargeskillmod)))))	//Returns original Charge Time at 10 STR, 10 PER, 0 skill
 		if(newtime > 0)
 			return newtime
 		else
@@ -157,14 +170,15 @@
 	randomspread = 1
 	spread = 1
 	force = 9
-	damfactor = 0.9
+	minstr = 7
+	damfactor = 1.2
 
 /datum/intent/shoot/bow/recurve
-	chargetime = 11.5
+	chargetime = 8
 	chargedrain = 1.5
 	charging_slowdown = 2.5
 
 /datum/intent/arc/bow/recurve
-	chargetime = 15
+	chargetime = 12
 	chargedrain = 1.5
 	charging_slowdown = 2.5

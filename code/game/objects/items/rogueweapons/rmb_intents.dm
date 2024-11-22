@@ -71,7 +71,7 @@
 
 /datum/rmb_intent/swift
 	name = "swift"
-	desc = "Your attacks have less recovery time but are less accurate."
+	desc = "Your attacks have less recovery time but are less accurate and you can dodge more frequently."
 	icon_state = "rmbswift"
 
 /datum/rmb_intent/special
@@ -97,9 +97,9 @@
 	duration = 30
 
 /datum/rmb_intent/riposte
-	name = "defend"
-	desc = "No delay between dodge and parry rolls."
-	icon_state = "rmbdef"
+	name = "riposte"
+	desc = "No delay between parry rolls."
+	icon_state = "rmbriposte"
 
 /datum/rmb_intent/guard
 	name = "guarde"

@@ -14,6 +14,7 @@
 	can_parry = TRUE
 	pin = /obj/item/firing_pin
 	force = 10
+	minstr = 5
 	var/cocked = FALSE
 	cartridge_wording = "bolt"
 	load_sound = 'sound/foley/nockarrow.ogg'
@@ -33,17 +34,14 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /datum/intent/shoot/crossbow
+	chargetime = 8
 	chargedrain = 0 //no drain to aim a crossbow
 
 /datum/intent/shoot/crossbow/get_chargetime()
 	if(mastermob && chargetime)
-		var/newtime = chargetime
-		//skill block
-		newtime = newtime + 18
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/crossbows) * 3)
-		//per block
-		newtime = newtime + 20
-		newtime = newtime - (mastermob.STAPER)
+		var/newtime = 0
+		var/skillmod = ((mastermob.mind.get_skill_level(/datum/skill/combat/crossbows) * 0.2) + 1)
+		newtime = round(chargetime * (30 / (((mastermob.STAPER * 2) * skillmod) + ((mastermob.STASPD) * skillmod))))	//Returns original Charge Time at 10 PER, 10 SPD, 0 skill
 		if(newtime > 0)
 			return newtime
 		else
@@ -56,13 +54,9 @@
 
 /datum/intent/arc/crossbow/get_chargetime()
 	if(mastermob && chargetime)
-		var/newtime = chargetime
-		//skill block
-		newtime = newtime + 18
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/crossbows) * 3)
-		//per block
-		newtime = newtime + 20
-		newtime = newtime - (mastermob.STAPER)
+		var/newtime = 0
+		var/skillmod = ((mastermob.mind.get_skill_level(/datum/skill/combat/crossbows) * 0.2) + 1)
+		newtime = round(chargetime * (30 / (((mastermob.STAPER * 2) * skillmod) + ((mastermob.STASPD) * skillmod))))	//Returns original Charge Time at 10 PER, 10 SPD, 0 skill
 		if(newtime > 0)
 			return newtime
 		else
@@ -81,9 +75,14 @@
 	else
 		if(!cocked)
 			to_chat(user, span_info("I step on the stirrup and use all my might..."))
-			if(do_after(user, 50 - user.STASTR, target = user))
-				playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
-				cocked = TRUE
+			if(user.STASTR < minstr)
+				if(do_after(user, 180 - (user.STASTR * 8), target = user))
+					to_chat(user, span_info("I'm not strong enough..."))
+					cocked = FALSE
+			else
+				if(do_after(user, 180 - (user.STASTR * 8), target = user))
+					playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
+					cocked = TRUE
 		else
 			to_chat(user, span_warning("I carefully de-cock the crossbow."))
 			cocked = FALSE
@@ -104,9 +103,20 @@
 		if(user.client.chargedprog >= 100)
 			spread = 0
 		else
-			spread = 150 - (150 * (user.client.chargedprog / 100))
+			spread = 90 - (90 * (user.client.chargedprog / 100))
 	else
 		spread = 0
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		switch(H.mind.get_skill_level(/datum/skill/combat/crossbows))
+			if(0)
+				spread += 35
+			if(1)
+				spread += 20
+			if(2)
+				spread += 5
+			else
+				spread += 0
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
 		BB.damage = BB.damage * damfactor

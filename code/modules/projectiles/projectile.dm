@@ -248,6 +248,8 @@
 		if(suppressed)
 			volume = 5
 		playsound(loc, hitsound_wall, volume, TRUE, -1)
+		if(arcshot)													//Prevents arrow duplication on arcshot mob miss
+			return process_hit(T, qdel_self=2, hit_something=TRUE)
 
 	if(arcshot)
 		if(A.loc != original)

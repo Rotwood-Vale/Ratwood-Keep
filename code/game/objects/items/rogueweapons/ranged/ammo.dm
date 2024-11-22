@@ -30,7 +30,7 @@
 	embedchance = 100
 	woundclass = BCLASS_STAB
 	flag = "bullet"
-	speed = 0.3
+	speed = 0.25
 /*
 /obj/projectile/bullet/reusable/bolt/poison
 	name = "poisoned bolt"
@@ -82,7 +82,7 @@
 	embedchance = 100
 	woundclass = BCLASS_STAB
 	flag = "bullet"
-	speed = 0.4
+	speed = 0.5
 
 /obj/projectile/bullet/reusable/arrow/iron
 	name = "iron arrow"
