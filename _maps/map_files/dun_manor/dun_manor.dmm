@@ -3126,11 +3126,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town/shop)
-"cMb" = (
-/obj/structure/rack/rogue,
-/obj/item/rogueweapon/flail/sflail,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement/keep)
 "cMd" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/woodturned,
@@ -10884,7 +10879,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town/roofs)
 "kgb" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement/keep)
 "kgo" = (
@@ -11017,7 +11012,7 @@
 /obj/item/roguebin/water/gross,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/garrison)
-"knK" = (
+"knX" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/armor/plate/half/iron,
 /obj/item/clothing/suit/roguetown/armor/plate/half/iron,
@@ -14062,6 +14057,11 @@
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
+"mXe" = (
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/flail/sflail,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement/keep)
 "mXm" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
@@ -20289,10 +20289,7 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond,
@@ -42736,7 +42733,7 @@ rcD
 ixc
 oWR
 diY
-cMb
+mXe
 uZz
 diY
 qfQ
@@ -43996,7 +43993,7 @@ epK
 iuO
 uhH
 jBq
-knK
+knX
 uhH
 iuO
 wBX
