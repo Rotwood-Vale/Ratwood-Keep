@@ -54,7 +54,7 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
-	armor_class = ARMOR_CLASS_LIGHT
+	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	icon_state = "ichainmail"
@@ -62,7 +62,6 @@
 	desc = "A chain vest made of heavy iron rings. Better than nothing."
 	body_parts_covered = CHEST|GROIN|VITALS
 	smeltresult = /obj/item/ingot/iron
-	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -76,6 +75,13 @@
 	do_sound_chain = TRUE
 	armor_class = ARMOR_CLASS_MEDIUM
 	smelt_bar_num = 2
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/fluted
+	name = "fluted hauberk"
+	desc = "A steel maille, of a pattern popularized by Otavan templars."
+	icon_state = "flutedhauberk"
+	item_state = "flutedhauberk"
+
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 	name = "chainmail bikini"
@@ -333,7 +339,7 @@
 	desc = "A large shirt meant to be used below armor."
 	icon_state = "gambeson"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
-	armor = list("blunt" = 40, "slash" = 30, "stab" = 30, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 45, "slash" = 30, "stab" = 35, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -347,7 +353,7 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson/light
 	name = "light gambeson"
 	desc = "A barely padded gambeson, typically worn by the peasantry as cheap yet fashionable armor for the whole body."
-	armor = list("blunt" = 30, "slash" = 20, "stab" = 15, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 30, "slash" = 15, "stab" = 20, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = null // It won't help, like, at all.
 	sellprice = 10
 
@@ -355,7 +361,7 @@
 	name = "padded gambeson"
 	desc = "A gambeson with additional padding layers, hardened to make it more durable. It still cannot compare to proper armor."
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 25, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	sellprice = 30
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
@@ -379,7 +385,7 @@
 	icon_state = "leather"
 //	color = "#514339"
 	body_parts_covered = CHEST|GROIN|VITALS
-	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 65, "slash" = 30, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -412,6 +418,38 @@
 	smeltresult = /obj/item/ingot/iron
 	sellprice = 25
 	armor_class = ARMOR_CLASS_LIGHT
+
+/obj/item/clothing/suit/roguetown/armor/leather/heavy
+	name = "heavy leather armor"
+	desc = "A heavy steerhide jerkin with enough body to stand on its own. It forms a stiff, protective mantle \
+	for its wearer, shielding from blows and weather alike."
+	icon_state = "roguearmor"
+	item_state = "roguearmor"
+	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	max_integrity = 300
+	sellprice = 25
+
+/obj/item/clothing/suit/roguetown/armor/leather/heavy/belted
+	name = "belted heavy leather armor"
+	desc = "A heavy steerhide jerkin bearing a supplementary utility belt."
+	icon_state = "roguearmor_belt"
+	item_state = "roguearmor_belt"
+	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	max_integrity = 300
+	sellprice = 25
+
+/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
+	name = "armored leather coat"
+	desc = "A heavy steerhide jerkin that reaches past the hips and better protects the vitals."
+	icon_state = "roguearmor_coat"
+	item_state = "roguearmor_coat"
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS
+	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	max_integrity = 200
+	sellprice = 25
 
 /obj/item/clothing/suit/roguetown/armor/leather/bikini
 	name = "leather bikini"

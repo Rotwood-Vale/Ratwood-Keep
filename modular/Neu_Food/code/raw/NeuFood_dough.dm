@@ -733,6 +733,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice/plated
 	icon_state = "honeycakeslice_plated"
 	rotprocess = SHELFLIFE_EXTREME
+	faretype = FARE_LAVISH
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	trash = /obj/item/cooking/platter
 
@@ -771,7 +772,7 @@
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	w_class = WEIGHT_CLASS_NORMAL
-	faretype = FARE_NEUTRAL
+	faretype = FARE_FINE
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 2
@@ -782,7 +783,7 @@
 	icon_state = "cheesecake_slice_plated"
 	rotprocess = SHELFLIFE_EXTREME
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1)
-	faretype = FARE_FINE
+	faretype = FARE_LAVISH
 	trash = /obj/item/cooking/platter
 
 /* maybe split up spider honey cake WIP

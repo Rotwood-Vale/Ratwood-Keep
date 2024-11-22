@@ -10,7 +10,7 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/paladin
-	allowed_patrons = ALL_PALADIN_PATRONS
+	allowed_patrons = ALL_PATRONS
 
 /datum/outfit/job/roguetown/adventurer/paladin/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -43,6 +43,9 @@
 		if(/datum/patron/old_god)
 			neck = /obj/item/clothing/neck/roguetown/psicross/silver
 			cloak = /obj/item/clothing/cloak/tabard/crusader/psydon
+		if(/datum/patron/inhumen/zizo) 
+			H.cmode_music = 'sound/music/combat_cult.ogg'
+			neck = /obj/item/roguekey/inhumen
 
 	H.adjust_blindness(-3)
 	var/classes = list("Paladin","Battle Master",)
@@ -102,6 +105,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
 			H.change_stat("perception", 1)
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2)

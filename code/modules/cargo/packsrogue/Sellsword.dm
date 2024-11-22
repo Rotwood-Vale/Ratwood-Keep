@@ -166,7 +166,7 @@
 	cost = 20
 	contains = list(/obj/item/rogueweapon/eaglebeak/lucerne)
 
-/datum/supply_pack/rogue/weapons/Sellsword/bolts
+/datum/supply_pack/rogue/Sellsword/bolts
 	name = "Quiver of Bolts"
 	cost = 20
 	contains = list(/obj/item/quiver/bolts)

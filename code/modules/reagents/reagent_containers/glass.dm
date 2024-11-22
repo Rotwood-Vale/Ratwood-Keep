@@ -102,7 +102,7 @@
 		if(user.m_intent != MOVE_INTENT_SNEAK)
 			if(poursounds)
 				playsound(user.loc,pick(poursounds), 100, TRUE)
-		for(var/i in 1 to 10)
+		for(var/i in 1 to 11)
 			if(do_after(user, 8, target = target))
 				if(!reagents.total_volume)
 					break
@@ -128,13 +128,14 @@
 				playsound(user.loc,pick(fillsounds), 100, TRUE)
 		user.visible_message(span_notice("[user] fills [src] with [target]."), \
 							span_notice("I fill [src] with [target]."))
-		for(var/i in 1 to 10)
+		for(var/i in 1 to 11)
 			if(do_after(user, 8, target = target))
 				if(reagents.holder_full())
 					break
 				if(!target.reagents.total_volume)
 					break
 				target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user)
+				onfill(target, user, silent = TRUE)
 			else
 				break
 
@@ -180,10 +181,13 @@
 			else
 				to_chat(user, span_notice("I break [E] in [src]."))
 				E.reagents.trans_to(src, E.reagents.total_volume, transfered_by = user)
+				onfill(E, user, silent = FALSE)
 				qdel(E)
 			return
 	..()
 
+// Called whenever this container is successfully filled via the target.
+/obj/item/reagent_containers/glass/proc/onfill(obj/target, mob/user, silent = FALSE)
 
 /obj/item/reagent_containers/glass/beaker
 	name = "beaker"
@@ -573,6 +577,7 @@
 					to_chat(user, span_notice("I juice [grinded] into a fine liquid."))
 					if(grinded.reagents) //food and pills
 						grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
+						onfill(grinded, user, silent = FALSE)
 					QDEL_NULL(grinded)
 					return
 				grinded.on_grind()
@@ -610,6 +615,7 @@
 						break
 					if(!I.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user))
 						reagents.reaction(src, TOUCH, amount_per_transfer_from_this)
+					onfill(I, user, silent = TRUE)
 				else
 					break
 			return

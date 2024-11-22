@@ -38,6 +38,7 @@
 		H.change_stat("speed", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("fortune", 2)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/secular)
 
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green

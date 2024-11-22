@@ -268,7 +268,7 @@
 		to_chat(mind.current, span_warning("My glimpse of [mind.rituos_spell.name] flees my slumbering mind..."))
 		mind.RemoveSpell(mind.rituos_spell)
 		mind.rituos_spell = null
-	to_chat(mind.current, span_notice("..and that's all I dreamt of"))
+	to_chat(mind.current, span_notice("...and that's all I dreamt of."))
 	close_ui()
 
 /datum/sleep_adv/Topic(href, list/href_list)

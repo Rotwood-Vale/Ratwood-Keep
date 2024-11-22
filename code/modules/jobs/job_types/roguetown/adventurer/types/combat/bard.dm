@@ -11,6 +11,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/bard
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
+	cmode_music = 'sound/music/combat_bard.ogg'
 
 /datum/outfit/job/roguetown/adventurer/bard/pre_equip(mob/living/carbon/human/H)
 	..() // The entertaining jack of all trades, uniquely handy with crossbows and swords. They're incredibly well travelled, can sneak, steal and survive on their own.
@@ -197,7 +198,7 @@
 			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 			H.mind.RemoveSpell(/obj/effect/proc_holder/spell/targeted/churn)//End of Azure Peak Update
 
-	var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola")
+	var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
@@ -213,6 +214,9 @@
 			backr = /obj/item/rogue/instrument/hurdygurdy
 		if("Viola")
 			backr = /obj/item/rogue/instrument/viola
+		if("Vocal Talisman")
+			backr = /obj/item/rogue/instrument/vocals
+		
 
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

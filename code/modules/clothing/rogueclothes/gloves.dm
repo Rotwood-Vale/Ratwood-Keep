@@ -52,7 +52,23 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
-	max_integrity = 100
+	max_integrity = 200
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	anvilrepair = null
+	sewrepair = TRUE
+
+/obj/item/clothing/gloves/roguetown/fingerless_leather
+	name = "fingerless leather gloves"
+	desc = "A pair of protective gloves favored by lockshimmers, laborers, and smokers for maintaining \
+	manual dexterity over regular gloves."
+	icon_state = "roguegloves"
+	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	resistance_flags = FIRE_PROOF
+	blocksound = SOFTHIT
+	max_integrity = 200
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
@@ -73,6 +89,11 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/gloves/roguetown/chain/psydon
+	name = "otavan chain gauntlets"
+	icon_state = "psydongloveschain"
+	item_state = "psydongloveschains"
 
 /obj/item/clothing/gloves/roguetown/chain/iron
 	icon_state = "icgloves"

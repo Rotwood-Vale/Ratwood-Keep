@@ -7,7 +7,7 @@
 	tutorial = "Templars are warriors who have forsaken wealth and title in lieu of service to the church, due to either zealotry or a past shame. They guard the church and its priest while keeping a watchful eye against heresy and nite-creechers. Within troubled dreams, they wonder if the blood they shed makes them holy or stained."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	allowed_patrons = ALL_PALADIN_PATRONS
+	allowed_patrons = ALL_DIVINE_PATRONS
 	outfit = /datum/outfit/job/roguetown/templar
 	min_pq = 3 //Deus vult, but only according to the proper escalation rules
 	max_pq = null
@@ -24,7 +24,7 @@
 	allowed_patrons = ALL_PALADIN_PATRONS
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltr = /obj/item/roguekey/church
+	beltr = /obj/item/storage/keyring/churchie
 	id = /obj/item/clothing/ring/silver
 	backl = /obj/item/storage/backpack/rogue/satchel
 	
@@ -72,9 +72,6 @@
 		if(/datum/patron/divine/malum)
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 			cloak = /obj/item/clothing/cloak/tabard/crusader/malum
-		if(/datum/patron/old_god)
-			neck = /obj/item/clothing/neck/roguetown/psicross
-			cloak = /obj/item/clothing/cloak/tabard/crusader/psydon
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	wrists = /obj/item/clothing/wrists/roguetown/wrappings
 	shoes = /obj/item/clothing/shoes/roguetown/sandals

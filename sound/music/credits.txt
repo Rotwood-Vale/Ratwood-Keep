@@ -30,3 +30,7 @@ guitar (10).ogg: https://open.spotify.com/track/37yQRGfndzGwUUScYOBMyk?si=d2d8c7
 roundend-vote-sound.ogg: A snippet of Thief Gold Soundtrack: Track 3 - Lord Bafford's Manor
 banditcamp.ogg: Tooth and Tail OST (2017) - Fuel For The Firebrand
 traitor.ogg: Tooth and Tail OST (2017) - Bellafide (Firebrand of The Longcoats)
+Iconoclast.ogg: Valley of Judgement- Lateralis
+dragonden.ogg: Ash Lake Theme - Dark Souls
+inquisitorcombat.ogg: Hellsing OST RAID Track 15 Survival on the Street of Insincerity
+templarofpsydon.ogg: 26 - Duty and Honor II (with Ryan Patrick Buckley) - Chivalry 2 (Original Game Soundtrack)

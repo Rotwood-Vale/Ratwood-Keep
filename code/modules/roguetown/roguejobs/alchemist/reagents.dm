@@ -29,7 +29,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!istype(H.dna.species, /datum/species/werewolf))
-			M.adjust_nutrition(-5*REM)
+			M.adjust_nutrition(-2.5*REM)
 	..()
 	. = 1
 
@@ -81,7 +81,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!istype(H.dna.species, /datum/species/werewolf))
-			M.adjust_nutrition(-2.5*REM)
+			M.adjust_nutrition(-0.5*REM)
 	..()
 	. = 1
 
