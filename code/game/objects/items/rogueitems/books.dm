@@ -130,17 +130,11 @@
 			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == picked_cat)
 				pax += PA
-		var/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
+		var/datum/supply_pack/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
 		if(!picked_pack)
 			return
-		var/namer = user.name
-		var/rankr = "None"
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			namer = H.get_authentification_name()
-			rankr = H.get_assignment(hand_first = TRUE)
-		var/datum/supply_order/SO = new (picked_pack, namer, rankr, user.ckey, "None", SSeconomy.get_dep_account(ACCOUNT_CAR))
-		C.orders += SO
+
+		C.orders += picked_pack
 		C.rebuild_info()
 		return
 	if(istype(I, /obj/item/paper/scroll))
@@ -159,18 +153,12 @@
 			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == picked_cat)
 				pax += PA
-		var/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
+		var/datum/supply_pack/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
 		if(!picked_pack)
 			return
 		var/obj/item/paper/scroll/cargo/C = new(user.loc)
-		var/namer = user.name
-		var/rankr = "None"
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			namer = H.get_authentification_name()
-			rankr = H.get_assignment(hand_first = TRUE)
-		var/datum/supply_order/SO = new (picked_pack, namer, rankr, user.ckey, "None", SSeconomy.get_dep_account(ACCOUNT_CAR))
-		C.orders += SO
+
+		C.orders += picked_pack
 		C.rebuild_info()
 		user.dropItemToGround(P)
 		qdel(P)
