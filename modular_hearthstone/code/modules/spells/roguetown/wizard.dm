@@ -267,7 +267,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	xp_gain = TRUE
-	cost = 1 
+	cost = 1
 
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/forcefield_weak
@@ -1034,7 +1034,7 @@
 		if(affected_turf.density)
 			continue
 		new /obj/effect/temp_visual/trapice(affected_turf)
-	playsound(T, 'sound/combat/wooshes/blunt/wooshhuge (2).ogg', 80, TRUE, soundping = TRUE) // it kinda sounds like cold wind idk 
+	playsound(T, 'sound/combat/wooshes/blunt/wooshhuge (2).ogg', 80, TRUE, soundping = TRUE) // it kinda sounds like cold wind idk
 
 	sleep(delay)
 	var/play_cleave = FALSE
@@ -1094,7 +1094,7 @@
 	range = 10
 	speed = 12 //higher is slower
 	var/aoe_range = 0
-	
+
 
 
 /obj/projectile/magic/frostbolt/on_hit(target)
@@ -1111,6 +1111,50 @@
 			L.apply_status_effect(/datum/status_effect/buff/frostbite5e)
 			new /obj/effect/temp_visual/snap_freeze(get_turf(L))
 	qdel(src)
+
+/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt
+	name = "Arcyne Bolt"
+	desc = "Shoot out rapid bolts of arcyne magic, that firmly hits on impact."
+	clothes_req = FALSE
+	range = 12
+	projectile_type = /obj/projectile/energy/rogue3
+	overlay_state = "force_dart"
+	sound = list('sound/magic/vlightning.ogg')
+	active = FALSE
+	releasedrain = 20
+	chargedrain = 1
+	chargetime = 7
+	charge_max = 5 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	cost = 2
+
+/obj/projectile/energy/rogue3
+	name = "Arcyne Bolt"
+	icon_state = "arcane_barrage"
+	damage = 45
+	damage_type = BRUTE
+	armor_penetration = 10
+	woundclass = BCLASS_STAB
+	nodamage = FALSE
+	flag = "bullet"
+	hitsound = 'sound/blank.ogg'
+	speed = 1
+
+/obj/projectile/energy/rogue3/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+
 
 
 #undef PRESTI_CLEAN
