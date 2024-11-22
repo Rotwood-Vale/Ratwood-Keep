@@ -1,6 +1,6 @@
 /datum/migrant_role/musketeer/musketeer
 	name = "Musketeer"
-	greet_text = "A jolly adventurer armed with a musket and a rapier, seeking to save the girl and the day! Don't lose sight of your two companions, you're inseperable!"
+	greet_text = "A merry musketman seeking to save the girl and the day! Don't lose sight of your two companions, you're inseperable!"
 	outfit = /datum/outfit/job/roguetown/musketeer/musketeer
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -24,9 +24,9 @@
 	beltl = /obj/item/ammo_holder/bullet/lead
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
