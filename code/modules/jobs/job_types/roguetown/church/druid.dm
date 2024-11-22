@@ -26,7 +26,6 @@
 /datum/outfit/job/roguetown/druid/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.faction += list("rats", "spiders", "wolfs")
-	H.ambushable = FALSE
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltr = /obj/item/flashlight/flare/torch/lantern
@@ -59,7 +58,3 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-
-	if(!H.has_language(/datum/language/beast))
-		H.grant_language(/datum/language/beast)
-		to_chat(H, span_info("I can speak the primal language with ,b before my speech."))
