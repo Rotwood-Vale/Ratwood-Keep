@@ -17,7 +17,7 @@
 
 /obj/projectile/bullet/reusable/runelock
 	name = "runed sphere"
-	damage = 40
+	damage = 200
 	armor_penetration = 50
 	speed = 0.6
 	damage_type = BRUTE
@@ -37,18 +37,18 @@
 
 /obj/projectile/bullet/lead
 	name = "lead sphere"
-	damage = 75	//higher damage than crossbow
+	damage = 450								//higher damage than crossbow
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/lead
-	range = 25		//Higher than arrow, but not halfway through the entire town.
+	range = 35									//Higher than arrow, but not halfway through the entire town.
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
 	woundclass = BCLASS_STAB
 	flag = "bullet"
-	armor_penetration = 75 
-	speed = 0.1		
+	armor_penetration = 75
+	speed = 0.1
 
 /obj/projectile/bullet/rogue/on_hit(atom/target, blocked = FALSE)
 	. = ..()

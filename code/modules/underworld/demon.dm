@@ -28,6 +28,8 @@
 	obj_damage = 1
 	melee_damage_lower = 25
 	melee_damage_upper = 35
+	simpmob_attack = 66
+	simpmob_defend = 66
 	attack_same = FALSE
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	dodge_sound = 'sound/combat/dodge.ogg'
@@ -36,6 +38,12 @@
 	speak_emote = list("growls")
 	limb_destroyer = 1
 	del_on_death = TRUE
+	STASTR = 10
+	STAPER = 12
+	STAINT = 11
+	STACON = 12
+	STAEND = 14
+	STASPD = 16
 	STALUC = 11
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0

@@ -28,10 +28,14 @@
 	food_type = list(/obj/item/bodypart, /obj/item/organ, /obj/item/reagent_containers/food/snacks/rogue/meat)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
+	STASTR = 8
+	STAPER = 9
+	STAINT = 1
 	STACON = 6
-	STASTR = 9
+	STAEND = 12
 	STASPD = 10
 	deaggroprob = 0
+	simpmob_attack = 60
 	simpmob_defend = 40
 	defdrain = 10
 	attack_same = 0

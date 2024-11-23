@@ -19,7 +19,7 @@
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
-	range = 15
+	range = 25
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
 	woundclass = BCLASS_STAB
@@ -75,10 +75,12 @@
 /obj/projectile/bullet/reusable/arrow/iron
 	name = "iron arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
+	spread = 5
 
 /obj/projectile/bullet/reusable/arrow/stone
 	name = "stone arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
+	spread = 10
 
 /obj/item/ammo_casing/caseless/rogue/arrow/stone
 	name = "stone arrow"
@@ -108,6 +110,7 @@
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	range = 15
+	spread = 5
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	poisontype = /datum/reagent/berrypoison //Support for future variations of poison for arrow-crafting
 	poisonfeel = "burning" //Ditto

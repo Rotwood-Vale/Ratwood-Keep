@@ -59,6 +59,12 @@
 	icon_dead = "goat_dead"
 	icon_gib = "goat_gib"
 	gender = FEMALE
+	STASTR = 12
+	STAPER = 4
+	STAINT = 2
+	STACON = 8
+	STAEND = 16
+	STASPD = 4
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	emote_see = list("shakes her head.", "chews her cud.")
 	speak_chance = 1
@@ -84,9 +90,8 @@
 	attack_verb_simple = "headbutt"
 	melee_damage_lower = 10
 	melee_damage_upper = 25
-	STASPD = 2
-	STACON = 8
-	STASTR = 12
+	simpmob_attack = 15
+	simpmob_defend = 35
 	childtype = list(/mob/living/simple_animal/hostile/retaliate/rogue/goat/goatlet = 90, /mob/living/simple_animal/hostile/retaliate/rogue/goat/goatletboy = 10)
 	can_buckle = TRUE
 	buckle_lying = 0
@@ -124,9 +129,12 @@
 	gender = FEMALE
 	melee_damage_lower = 1
 	melee_damage_upper = 6
-	STACON = 5
 	STASTR = 5
-	STASPD = 5
+	STAPER = 5
+	STAINT = 2
+	STACON = 5
+	STAEND = 5
+	STASPD = 4
 	simpmob_defend = 50
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/goat
 	can_buckle = FALSE
@@ -184,6 +192,12 @@
 	icon_dead = "goatmale_dead"
 	icon_gib = "goatmale_gib"
 	gender = MALE
+	STASTR = 14
+	STAPER = 4
+	STAINT = 2
+	STACON = 8
+	STAEND = 17
+	STASPD = 8
 	emote_see = list("shakes his head.", "chews his cud.")
 	speak_chance = 1
 	turns_per_move = 3
@@ -202,6 +216,8 @@
 	maxHealth = 150
 	melee_damage_lower = 25
 	melee_damage_upper = 50
+	simpmob_attack = 45
+	simpmob_defend = 30
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	retreat_distance = 0
 	minimum_distance = 0
@@ -209,9 +225,6 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse
-	STACON = 7
-	STASTR = 12
-	STASPD = 2
 	can_buckle = TRUE
 	buckle_lying = 0
 	can_saddle = FALSE
@@ -346,8 +359,11 @@
 	milkies = FALSE
 	melee_damage_lower = 1
 	melee_damage_upper = 6
-	STACON = 5
 	STASTR = 5
+	STAPER = 5
+	STAINT = 5
+	STACON = 5
+	STAEND = 5
 	STASPD = 5
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/goatmale
 	can_buckle = FALSE

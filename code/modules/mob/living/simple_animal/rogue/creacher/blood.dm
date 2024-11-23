@@ -23,10 +23,12 @@
 	attack_sound = list('sound/combat/wooshes/blunt/wooshhuge (1).ogg','sound/combat/wooshes/blunt/wooshhuge (2).ogg','sound/combat/wooshes/blunt/wooshhuge (3).ogg')
 	melee_damage_lower = 40
 	melee_damage_upper = 60
-	STACON = 15
 	STASTR = 16
-	STASPD = 2
+	STAPER = 2
+	STAINT = 1
+	STACON = 8
 	STAEND = 16
+	STASPD = 2
 	deaggroprob = 0
 	simpmob_attack = 25
 	simpmob_defend = 20
@@ -54,6 +56,8 @@
 	base_intents = list(/datum/intent/unarmed/ascendedclaw)
 	melee_damage_lower = 250
 	melee_damage_upper = 550
+	simpmob_attack = 66
+	simpmob_defend = 66
 	health = 666666
 	maxHealth = 666666
 	STACON = 66

@@ -8,6 +8,12 @@
 	icon_dead = "cow_dead"
 	icon_gib = "cow_gib"
 	gender = FEMALE
+	STASTR = 16
+	STAPER = 4
+	STAINT = 2
+	STACON = 20
+	STAEND = 20
+	STASPD = 6
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	emote_hear = list("brays.")
 	emote_see = list("shakes its head.", "chews her cud.")
@@ -32,9 +38,8 @@
 	attack_verb_simple = "headbutt"
 	melee_damage_lower = 10
 	melee_damage_upper = 25
-	STASPD = 2
-	STACON = 20
-	STASTR = 12
+	simpmob_attack = 5
+	candodge = FALSE
 	childtype = list(/mob/living/simple_animal/hostile/retaliate/rogue/cow/cowlet = 95, /mob/living/simple_animal/hostile/retaliate/rogue/cow/bullet = 5)
 	remains_type = /obj/effect/decal/remains/cow
 
@@ -73,8 +78,11 @@
 	milkies = FALSE
 	melee_damage_lower = 1
 	melee_damage_upper = 6
-	STACON = 5
-	STASTR = 5
+	STASTR = 8
+	STAPER = 4
+	STAINT = 2
+	STACON = 12
+	STAEND = 12
 	STASPD = 5
 	simpmob_defend = 50
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/cow
@@ -143,6 +151,12 @@
 	icon_dead = "bull_dead"
 	icon_gib = "bull_gib"
 	gender = MALE
+	STASTR = 24
+	STAPER = 5
+	STAINT = 3
+	STACON = 20
+	STAEND = 20
+	STASPD = 12
 	emote_hear = list("chews.")
 	emote_see = list("shakes his head.", "chews his cud.")
 	speak_chance = 1
@@ -167,9 +181,6 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/cow
-	STACON = 20
-	STASTR = 12
-	STASPD = 2
 	remains_type = /obj/effect/decal/remains/cow
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bull/get_sound(input)
@@ -254,7 +265,10 @@
 	milkies = FALSE
 	melee_damage_lower = 1
 	melee_damage_upper = 6
-	STACON = 5
-	STASTR = 5
+	STASTR = 8
+	STAPER = 4
+	STAINT = 2
+	STACON = 12
+	STAEND = 12
 	STASPD = 5
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/bull

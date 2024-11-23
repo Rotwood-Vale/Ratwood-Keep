@@ -24,6 +24,8 @@
 	response_harm_simple = "kick"
 	melee_damage_lower = 1
 	melee_damage_upper = 8
+	simpmob_attack = 5
+	simpmob_defend = 15
 	pooptype = /obj/item/natural/poo/horse
 	health = 15
 	maxHealth = 15
@@ -37,9 +39,12 @@
 	var/list/validColors = list("brown","black","white")
 	var/static/chicken_count = 0
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
-	STACON = 6
 	STASTR = 6
-	STASPD = 1
+	STAPER = 3
+	STAINT = 1
+	STACON = 6
+	STAEND = 3
+	STASPD = 6
 	tame = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/get_sound(input)

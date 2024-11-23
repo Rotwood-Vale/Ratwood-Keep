@@ -11,7 +11,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	spread = 10
 	recoil = 3
-	associated_skill = /datum/skill/craft/hunting
+	associated_skill = /datum/skill/combat/firearms
 	pin = /obj/item/firing_pin
 	force = 10
 	var/cocked = FALSE
@@ -27,7 +27,7 @@
 	/// Reload time, in SECONDS
 	var/reload_time = 10
 	weapon_embed_chance = 100 //this was here to make a weaker version of the gun, didn't do it, still keeping this here to be used
-	damfactor = 5
+	damfactor = 1
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/runelock/getonmobprop(tag)
 	. = ..()
@@ -52,7 +52,7 @@
 		if(!cocked)
 			to_chat(user, span_info("I ready the runelock to be fired..."))
 			if(user.mind)
-				var/skill = user.mind.get_skill_level(/datum/skill/craft/hunting)
+				var/skill = user.mind.get_skill_level(/datum/skill/combat/firearms)
 				if(skill)
 					reload_time = reload_time / skill
 			if(move_after(user, reload_time SECONDS, target = user))
@@ -73,10 +73,19 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/runelock/process_fire/(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(user.mind)
-		var/skill = user.mind.get_skill_level(/datum/skill/craft/hunting)
+		var/skill = user.mind.get_skill_level(/datum/skill/combat/firearms)
 		if(skill)
 			misfire_chance = max(0, misfire_chance - (skill * 2))
-			spread = max(3, spread / skill)
+			switch(skill)
+				if(0)
+					spread += 30
+				if(1)
+					spread += 15
+				if(2)
+					spread += 5
+				else
+					spread += 0
+
 	if(prob(misfire_chance))
 		to_chat(user, span_warning("The [name] misfires!"))
 		explosion(src, light_impact_range = 2, heavy_impact_range = 1, smoke = TRUE, soundin = 'sound/misc/explode/bomb.ogg')

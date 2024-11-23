@@ -11,6 +11,12 @@
 	icon_dead = "polter_initial"
 //End of sprite rant.
 	gender = PLURAL
+	STASTR = 5
+	STAPER = 12
+	STAINT = 2
+	STACON = 5
+	STAEND = 5
+	STASPD = 20
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
@@ -29,9 +35,6 @@
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	retreat_distance = 6
 	minimum_distance = 4
-	STACON = 5
-	STASTR = 5
-	STASPD = 20
 	deaggroprob = 0
 	simpmob_attack = 30
 	simpmob_defend = 80

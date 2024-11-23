@@ -5,6 +5,12 @@
 	icon_living = "rat"
 	icon_dead = "rat1"
 	gender = MALE
+	STASTR = 7
+	STAPER = 8
+	STAINT = 1
+	STACON = 8
+	STAEND = 5
+	STASPD = 18
 	emote_hear = list("squeaks.")
 	emote_see = list("cleans its nose.")
 	speak_chance = 1
@@ -32,12 +38,10 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
-	STACON = 6
-	STASTR = 9
-	STASPD = 10
 	can_buckle = TRUE
 	buckle_lying = 0
 	deaggroprob = 0
+	simpmob_attack = 25
 	simpmob_defend = 40
 	defdrain = 10
 	attack_same = 1

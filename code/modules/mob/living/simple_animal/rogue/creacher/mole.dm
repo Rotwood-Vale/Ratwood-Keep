@@ -5,6 +5,12 @@
 	icon_living = "mole"
 	icon_dead = "mole_dead"
 	gender = MALE
+	STASTR = 20
+	STAPER = 1
+	STAINT = 2
+	STACON = 7
+	STAEND = 17
+	STASPD = 13
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
@@ -30,11 +36,9 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
-	STACON = 7
-	STASTR = 20
-	STASPD = 13
 	deaggroprob = 0
 	simpmob_defend = 40
+	simpmob_attack = -5
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
 	retreat_health = 0.3

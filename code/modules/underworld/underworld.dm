@@ -173,6 +173,8 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	obj_damage = 1
 	melee_damage_lower = 30
 	melee_damage_upper = 45
+	simpmob_attack = 66
+	simpmob_defend = 66
 	attack_same = FALSE
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	dodge_sound = 'sound/combat/dodge.ogg'
@@ -181,6 +183,12 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	speak_emote = list("growls")
 	limb_destroyer = 1
 	del_on_death = FALSE
+	STASTR = 20
+	STAPER = 6
+	STAINT = 4
+	STACON = 20
+	STAEND = 16
+	STASPD = 7
 	STALUC = 11
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0

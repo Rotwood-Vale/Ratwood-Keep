@@ -11,7 +11,7 @@
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_SMALL
 	randomspread = 1
-	spread = 0
+	spread = 10
 	can_parry = TRUE
 	pin = /obj/item/firing_pin
 	minstr = 6
@@ -19,6 +19,7 @@
 	cartridge_wording = "lead ball"
 	load_sound = 'sound/foley/musketload.ogg'
 	fire_sound = "sound/arquebus/arquefire.ogg"
+	associated_skill = /datum/skill/combat/firearms
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	bolt_type = BOLT_TYPE_NO_BOLT
@@ -26,9 +27,9 @@
 	//pickup_sound = 'sound/sheath_sounds/draw_from_holster.ogg'
 	//sheathe_sound = 'sound/sheath_sounds/put_back_to_holster.ogg'
 	slot_flags = ITEM_SLOT_HIP
-	damfactor = 2
+	damfactor = 0.25
 	var/reloaded = FALSE
-	var/load_time = 50
+	var/load_time = 70
 	var/gunpowder = FALSE
 	var/obj/item/ramrod/myrod = null
 	var/spread_num = 10
@@ -43,6 +44,7 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /datum/intent/shoot/arquebus_pistol
+	chargetime = 15
 	chargedrain = 0
 
 /datum/intent/shoot/arquebus_pistol/can_charge()
@@ -50,6 +52,7 @@
 		return TRUE
 
 /datum/intent/arc/arquebus_pistol
+	chargetime = 15
 	chargedrain = 0
 
 /datum/intent/arc/arquebus_pistol/can_charge()
@@ -88,7 +91,7 @@
 /obj/item/gun/ballistic/arquebus_pistol/attackby(obj/item/A, mob/user, params)
 
 	var/firearm_skill = (user?.mind ? user.mind.get_skill_level(/datum/skill/combat/firearms) : 1)
-	var/load_time_skill = load_time - (firearm_skill*2)
+	var/load_time_skill = load_time - (firearm_skill*8)
 	if(istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing))
 		if(chambered)
 			to_chat(user, span_warning("There is already a [chambered] in the [src]!"))
@@ -146,20 +149,24 @@
 	if(firearm_skill < 1)
 		accident_chance =80
 
-	if(firearm_skill < 2)
-		accident_chance =50
-	if(firearm_skill >= 2 && firearm_skill <= 5)
-		accident_chance =10
-	if(firearm_skill >= 5)
-		accident_chance =0
+	if(ishuman(user))
+		switch(firearm_skill)
+			if(0)
+				spread += 30
+			if(1)
+				spread += 20
+			if(2)
+				spread += 10
+			else
+				spread += 0
+
 	if(user.client)
 		if(user.client.chargedprog >= 100)
-			spread = 0
-			//adjust_experience(user, /datum/skill/combat/crossbows, user.STAINT * 4)
+			adjust_experience(user, /datum/skill/combat/firearms, user.STAINT * 4)
 		else
-			spread = 150 - (150 * (user.client.chargedprog / 100))
+			spread = 90 - (90 * (user.client.chargedprog / 100))
 	else
-		spread = 0
+		spread = 20
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
 		BB.damage = BB.damage * damfactor

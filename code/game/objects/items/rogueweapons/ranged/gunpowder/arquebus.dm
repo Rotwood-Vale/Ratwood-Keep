@@ -20,8 +20,8 @@
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	randomspread = 1
-	spread = 0
-
+	spread = 5
+	recoil = 3
 	can_parry = TRUE
 	pin = /obj/item/firing_pin
 	minstr = 6
@@ -30,16 +30,16 @@
 	cartridge_wording = "musketball"
 	load_sound = 'sound/foley/musketload.ogg'
 	fire_sound = 'sound/arquebus/arquefire.ogg'
+	associated_skill = /datum/skill/combat/firearms
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	bolt_type = BOLT_TYPE_NO_BOLT
 	casing_ejector = FALSE
 	//pickup_sound = 'sound/sheath_sounds/draw_from_holster.ogg'
 	//sheathe_sound = 'sound/sheath_sounds/put_back_to_holster.ogg'
-	var/spread_num = 10
-	damfactor = 2
+	damfactor = 1
 	var/reloaded = FALSE
-	var/load_time = 50
+	var/load_time = 100
 	var/gunpowder = FALSE
 	var/obj/item/ramrod/myrod = null
 	var/gunchannel
@@ -81,6 +81,7 @@
 
 
 /datum/intent/shoot/arquebus
+	chargetime = 30
 	chargedrain = 0
 
 /datum/intent/shoot/arquebus/can_charge()
@@ -91,13 +92,9 @@
 
 /datum/intent/shoot/arquebus/get_chargetime()
 	if(mastermob && chargetime)
-		var/newtime = chargetime
-		//skill block
-		newtime = newtime + 80
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 20)
-		//per block
-		newtime = newtime + 20
-		newtime = newtime - ((mastermob.STAPER)*1.5)
+		var/newtime = 0
+		var/skillmod = ((mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 0.2) + 1)
+		newtime = round(chargetime * (30 / (((mastermob.STAPER * 2) * skillmod) + ((mastermob.STASPD) * skillmod))))	//Returns original Charge Time at 10 PER, 10 SPD, 0 skill
 		if(newtime > 0)
 			return newtime
 		else
@@ -105,7 +102,7 @@
 	return chargetime
 
 /datum/intent/arc/arquebus
-	chargetime = 1
+	chargetime = 30
 	chargedrain = 0
 
 /datum/intent/arc/arquebus/can_charge()
@@ -121,12 +118,8 @@
 /datum/intent/arc/arquebus/get_chargetime()
 	if(mastermob && chargetime)
 		var/newtime = chargetime
-		//skill block
-		newtime = newtime + 80
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 20)
-		//per block
-		newtime = newtime + 20
-		newtime = newtime - ((mastermob.STAPER)*1.5)
+		var/skillmod = ((mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 0.2) + 1)
+		newtime = round(chargetime * (30 / (((mastermob.STAPER * 2) * skillmod) + ((mastermob.STASPD) * skillmod))))	//Returns original Charge Time at 10 PER, 10 SPD, 0 skill
 		if(newtime > 0)
 			return newtime
 		else
@@ -152,7 +145,7 @@
 /obj/item/gun/ballistic/arquebus/attackby(obj/item/A, mob/user, params)
 	user.stop_sound_channel(gunchannel)
 	var/firearm_skill = (user?.mind ? user.mind.get_skill_level(/datum/skill/combat/firearms) : 1)
-	var/load_time_skill = load_time - (firearm_skill*2)
+	var/load_time_skill = load_time - (firearm_skill*12)
 	//gunchannel = SSsounds.random_available_channel()
 
 	if(istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing))
@@ -206,27 +199,30 @@
 
 /obj/item/gun/ballistic/arquebus/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 
-	var/accident_chance = 0
+	var/accident_chance = 72
 	var/firearm_skill = (user?.mind ? user.mind.get_skill_level(/datum/skill/combat/firearms) : 1)
 	var/turf/knockback = get_ranged_target_turf(user, turn(user.dir, 180), rand(1,2))
-	spread = (spread_num - firearm_skill)
-	if(firearm_skill < 1)
-		accident_chance =80
 
-	if(firearm_skill < 2)
-		accident_chance =50
-	if(firearm_skill >= 2 && firearm_skill <= 5)
-		accident_chance =10
-	if(firearm_skill >= 5)
-		accident_chance =0
+	if(ishuman(user))
+		switch(firearm_skill)
+			if(0)
+				spread += 15
+			if(1)
+				spread += 10
+			if(2)
+				spread += 5
+			else
+				spread += 0
+	
+	accident_chance -= max(firearm_skill * 20, 0)
+
 	if(user.client)
 		if(user.client.chargedprog >= 100)
-			spread = 0
-			//adjust_experience(user, /datum/skill/combat/crossbows, user.STAINT * 4)
+			adjust_experience(user, /datum/skill/combat/firearms, user.STAINT * 4)
 		else
-			spread = 150 - (150 * (user.client.chargedprog / 100))
+			spread = 90 - (90 * (user.client.chargedprog / 100))
 	else
-		spread = 0
+		spread = 15
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
 		BB.damage = BB.damage * damfactor
@@ -247,7 +243,12 @@
 		if(!M.stat)
 			shake_camera(M, 3, 1)
 
-
+/*	if(prob((accident_chance * 0.1)))				//Spontanious and rapid disasembly
+		user.flash_fullscreen("whiteflash")
+		explosion(user, -1, 1, 0, 2)
+		user.visible_message("<span class='danger'>The [src] explodes in [user]'s hands!</span>")
+		user.emote("painscream")
+		qdel(src) */
 	if(prob(accident_chance))
 		user.flash_fullscreen("whiteflash")
 		user.apply_damage(rand(5,15), BURN, pick(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND))
@@ -257,7 +258,7 @@
 			user.dropItemToGround(src)
 			user.Knockdown(rand(15,30))
 			user.Immobilize(30)
-	if(prob(accident_chance))
+	if(user.STASTR < minstr)
 		user.visible_message("<span class='danger'>[user] is knocked back by the recoil!</span>")
 		user.throw_at(knockback, rand(1,2), 7)
 		if(prob(accident_chance))
