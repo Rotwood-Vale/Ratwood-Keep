@@ -88,7 +88,7 @@
 /datum/supply_pack/rogue/foresworn/Bevor
 	name = "Bevor"
 	cost = 100
-	contains = (/obj/item/clothing/neck/roguetown/bervor)
+	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 
 /datum/supply_pack/rogue/foresworn/gorget
 	name = "Gorget"
