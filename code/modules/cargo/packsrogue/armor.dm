@@ -36,6 +36,14 @@
 					/obj/item/clothing/mask/rogue/facemask/steel,
 				)
 
+/datum/supply_pack/rogue/armor/mask/steel/hound
+	name = "Steel Hound Mask"
+	cost = 50
+	contains = list(
+					/obj/item/clothing/mask/rogue/facemask/steel/hound,
+					/obj/item/clothing/mask/rogue/facemask/steel/hound,
+				)
+			
 /datum/supply_pack/rogue/armor/bracers
 	name = "Steel Bracers"
 	cost = 50
