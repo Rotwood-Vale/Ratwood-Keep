@@ -3363,7 +3363,6 @@
 #include "code\modules\spells\spell_types\voice_of_god.dm"
 #include "code\modules\spells\spell_types\wizard.dm"
 #include "code\modules\station_goals\bsa.dm"
-#include "code\modules\station_goals\dna_vault.dm"
 #include "code\modules\station_goals\station_goal.dm"
 #include "code\modules\surgery\_surgery.dm"
 #include "code\modules\surgery\_surgery_step.dm"
