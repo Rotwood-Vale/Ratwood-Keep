@@ -102,7 +102,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 1)
@@ -113,7 +113,7 @@
 		if("Forge Cleric")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a cleric of the Forge domain. You are adept at making arms and armors as well as using them."))
-			armor = /obj/item/clothing/suit/roguetown/armor/plate
+			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			cloak = /obj/item/clothing/cloak/apron/blacksmith
 			pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -138,10 +138,9 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE) //Traded a few weapon proficiencies from war cleric for smithing.
 			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue) // weaker astra fire spell. mostly for lighting things.
 			H.change_stat("intelligence", 2) // Changed to follow balance people's advice.
-			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 1)
 			H.change_stat("strength", 2)
 			H.change_stat("speed", -2)
-			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
