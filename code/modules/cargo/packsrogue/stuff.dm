@@ -54,14 +54,14 @@
 	contains = list(/obj/item/clothing/cloak/half)
 
 /datum/supply_pack/rogue/Stuff/raincloak
-	name = "Rain-Cloaks"
+	name = "Green Rain-Cloaks"
 	cost = 25
-	contains = list(/obj/item/clothing/cloak/raincloak)
+	contains = list(/obj/item/clothing/cloak/raincloak/green)
 
 /datum/supply_pack/rogue/Stuff/cape
-	name = "Cape"
+	name = "Black Cape"
 	cost = 30
-	contains = list(/obj/item/clothing/cloak/cape)
+	contains = list(/obj/item/clothing/cloak/cape/black)
 
 /datum/supply_pack/rogue/Stuff/hidearmor
 	name = "Hide armor"
