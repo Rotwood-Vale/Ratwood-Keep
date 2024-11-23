@@ -263,7 +263,7 @@ SUBSYSTEM_DEF(ticker)
 							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
 							continue
 					readied_jobs.Add(V)
-					
+
 	job_change_locked = TRUE
 	return TRUE
 
@@ -441,8 +441,6 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/PostSetup()
 	set waitfor = FALSE
 	mode.post_setup()
-	GLOB.start_state = new /datum/station_state()
-	GLOB.start_state.count()
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]

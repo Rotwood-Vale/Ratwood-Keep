@@ -70,12 +70,6 @@
 		playsound(src, 'sound/blank.ogg', 100, TRUE)
 	..()
 
-/obj/structure/fireaxecabinet/blob_act(obj/structure/blob/B)
-	if(heirloom)
-		heirloom.forceMove(loc)
-		heirloom = null
-	qdel(src)
-
 /obj/structure/fireaxecabinet/attack_hand(mob/user)
 	. = ..()
 	if(.)

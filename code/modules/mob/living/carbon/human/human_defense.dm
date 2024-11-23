@@ -431,16 +431,6 @@
 				if(!max_limb_loss)
 					break
 
-
-/mob/living/carbon/human/blob_act(obj/structure/blob/B)
-	if(stat == DEAD)
-		return
-	show_message(span_danger("The blob attacks you!"))
-	var/dam_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-	var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
-	apply_damage(5, BRUTE, affecting, run_armor_check(affecting, "blunt"))
-
-
 ///Calculates the siemens coeff based on clothing and species, can also restart hearts.
 /mob/living/carbon/human/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	//Calculates the siemens coeff based on clothing. Completely ignores the arguments

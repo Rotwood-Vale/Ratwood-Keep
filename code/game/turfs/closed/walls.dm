@@ -99,13 +99,6 @@
 	if(!density)
 		..()
 
-
-/turf/closed/wall/blob_act(obj/structure/blob/B)
-	if(prob(50))
-		dismantle_wall()
-	else
-		add_dent(WALL_DENT_HIT)
-
 /turf/closed/wall/attack_paw(mob/living/user)
 	user.changeNext_move(CLICK_CD_MELEE)
 	return attack_hand(user)

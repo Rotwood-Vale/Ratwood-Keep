@@ -25,20 +25,6 @@ Because if you select a player mob as owner it tries to do the proc for
 /mob/living/carbon/human/ instead. And that gives a run-time error.
 But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
 */
-/client/proc/cmd_admin_blobize(mob/M in GLOB.mob_list)
-	set category = "Fun"
-	set name = "Make Blob"
-
-	if(!SSticker.HasRoundStarted())
-		alert("Wait until the game starts")
-		return
-	if(ishuman(M))
-		log_admin("[key_name(src)] has blobized [M.key].")
-		var/mob/living/carbon/human/H = M
-		H.become_overmind()
-	else
-		alert("Invalid mob")
-
 
 /client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = "Fun"
@@ -462,12 +448,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		exists[L.ruin_template] = landmark
 
 	var/list/names = list()
-	names += "---- Space Ruins ----"
-	for(var/name in SSmapping.space_ruins_templates)
-		names[name] = list(SSmapping.space_ruins_templates[name], ZTRAIT_SPACE_RUINS, /area/space)
-	names += "---- Lava Ruins ----"
-	for(var/name in SSmapping.lava_ruins_templates)
-		names[name] = list(SSmapping.lava_ruins_templates[name], ZTRAIT_LAVA_RUINS, /area/lavaland/surface/outdoors/unexplored)
 
 	var/ruinname = input("Select ruin", "Spawn Ruin") as null|anything in sortList(names)
 	var/data = names[ruinname]

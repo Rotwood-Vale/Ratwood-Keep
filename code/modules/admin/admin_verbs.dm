@@ -99,7 +99,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/cmd_change_command_name,
 	/client/proc/cmd_admin_check_player_exp, /* shows players by playtime */
 	/client/proc/toggle_combo_hud, // toggle display of the combination pizza antag and taco sci/med/eng hud
-	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
 	/datum/admins/proc/open_shuttlepanel, /* Opens shuttle manipulator UI */
 	/client/proc/deadchat,
 	/client/proc/toggleprayers,
@@ -135,7 +134,6 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/polymorph_all,
 	/client/proc/show_tip,
 	/client/proc/smite,
-	/client/proc/admin_away
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -179,7 +177,6 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/test_snap_UI,
 	/client/proc/debugNatureMapGenerator,
 	/client/proc/check_bomb_impacts,
-	/client/proc/populate_world,
 	/client/proc/get_dynex_power,		//*debug verbs for dynex explosions.
 	/client/proc/get_dynex_range,		//*debug verbs for dynex explosions.
 	/client/proc/set_dynex_scale,
@@ -763,52 +760,6 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	message_admins("[src] re-adminned themselves.")
 	log_admin("[src] re-adminned themselves.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Readmin")
-
-/client/proc/populate_world(amount = 50 as num)
-	set name = "Populate World"
-	set category = "Debug"
-	set desc = ""
-
-	if (amount > 0)
-		var/area/area
-		var/list/candidates
-		var/turf/open/floor/tile
-		var/j,k
-
-		for (var/i = 1 to amount)
-			j = 100
-
-			do
-				area = pick(GLOB.the_station_areas)
-
-				if (area)
-
-					candidates = get_area_turfs(area)
-
-					if (candidates.len)
-						k = 100
-
-						do
-							tile = pick(candidates)
-						while ((!tile || !istype(tile)) && --k > 0)
-
-						if (tile)
-							var/mob/living/carbon/human/hooman = new(tile)
-							hooman.equipOutfit(pick(subtypesof(/datum/outfit)))
-							testing("Spawned test mob at [COORD(tile)]")
-			while (!area && --j > 0)
-
-/client/proc/toggle_AI_interact()
-	set name = "Toggle Admin AI Interact"
-	set category = "Admin"
-	set desc = ""
-
-	AI_Interact = !AI_Interact
-	if(mob && IsAdminGhost(mob))
-		mob.has_unlimited_silicon_privilege = AI_Interact
-
-	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
-	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
 
 /client/proc/end_party()
 	set category = "GameMaster"

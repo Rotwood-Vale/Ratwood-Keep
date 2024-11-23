@@ -100,7 +100,6 @@ SUBSYSTEM_DEF(mapping)
 	repopulate_sorted_areas()
 	// Set up Z-level transitions.
 	setup_map_transitions()
-	generate_station_area_list()
 	initialize_reserved_level(transit.z_value)
 	generate_z_level_linkages()
 	calculate_default_z_level_gravities()

@@ -573,14 +573,6 @@
 	contents_explosion(severity, target)
 	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, severity, target)
 
-/**
-  * React to a hit by a blob objecd
-  *
-  * default behaviour is to send the COMSIG_ATOM_BLOB_ACT signal
-  */
-/atom/proc/blob_act(obj/structure/blob/B)
-	SEND_SIGNAL(src, COMSIG_ATOM_BLOB_ACT, B)
-	return
 
 /atom/proc/fire_act(added, maxstacks)
 	SEND_SIGNAL(src, COMSIG_ATOM_FIRE_ACT, added, maxstacks)
