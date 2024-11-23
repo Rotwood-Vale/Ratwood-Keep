@@ -163,7 +163,7 @@
 
 /obj/item/scomstone
 	name = "gemerald ring"
-	icon_state = "ring_emerald"
+	icon_state = "scomstone"
 	desc = "A golden ring with an gemerald gem."
 	gripped_intents = null
 	dropshrink = 0.75
@@ -259,7 +259,7 @@
 
 /obj/item/scomstone/bad
 	name = "serfstone"
-	icon_state = "ring_emerald"
+	icon_state = "scomstone"
 	listening = FALSE
 	sellprice = 2
 
