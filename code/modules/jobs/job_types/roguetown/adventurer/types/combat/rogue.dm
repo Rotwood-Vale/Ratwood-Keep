@@ -85,7 +85,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/cape/black
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/rogueweapon/sword/iron
+			beltr = /obj/item/rogueweapon/sword/rapier
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor	
 			H.change_stat("intelligence", pick(0,1,1))
 			H.change_stat("speed", pick(2,3))

@@ -25,7 +25,7 @@
 #define ROLE_MALF				"Malf AI"
 #define ROLE_REV				"Revolutionary"
 #define ROLE_REV_HEAD			"Head Revolutionary"
-#define ROLE_ALIEN				"Xenomorph"
+
 #define ROLE_PAI				"pAI"
 #define ROLE_CULTIST			"Cultist"
 #define ROLE_BLOB				"Blob"
@@ -58,7 +58,6 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_WIZARD = /datum/game_mode/wizard,
 	ROLE_MALF,
 	ROLE_REV = /datum/game_mode/revolution,
-	ROLE_ALIEN,
 	ROLE_PAI,
 	ROLE_BLOB,
 	ROLE_NINJA,

@@ -107,13 +107,6 @@
 	if(!shock(user, 70))
 		take_damage(rand(5,10), BRUTE, "blunt", 1)
 
-/obj/structure/grille/attack_alien(mob/living/user)
-	user.do_attack_animation(src)
-	user.changeNext_move(CLICK_CD_MELEE)
-	user.visible_message(span_warning("[user] mangles [src]."), null, null, COMBAT_MESSAGE_RANGE)
-	if(!shock(user, 70))
-		take_damage(20, BRUTE, "slash", 1)
-
 
 /obj/structure/grille/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))

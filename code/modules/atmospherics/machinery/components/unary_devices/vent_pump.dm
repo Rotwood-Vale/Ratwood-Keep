@@ -283,16 +283,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/can_crawl_through()
 	return !welded
 
-/obj/machinery/atmospherics/components/unary/vent_pump/attack_alien(mob/user)
-	if(!welded || !(do_after(user, 20, target = src)))
-		return
-	user.visible_message(span_warning("[user] furiously claws at [src]!"), span_notice("I manage to clear away the stuff blocking the vent."), span_hear("I hear loud scraping noises."))
-	welded = FALSE
-	update_icon()
-	pipe_vision_img = image(src, loc, layer = ABOVE_HUD_LAYER, dir = dir)
-	pipe_vision_img.plane = ABOVE_HUD_PLANE
-	playsound(loc, 'sound/blank.ogg', 100, TRUE)
-
 /obj/machinery/atmospherics/components/unary/vent_pump/high_volume
 	name = "large air vent"
 	power_channel = EQUIP

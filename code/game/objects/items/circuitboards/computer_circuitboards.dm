@@ -144,11 +144,6 @@
 	icon_state = "engineering"
 	build_path = /obj/machinery/computer/monitor/secret
 
-/obj/item/circuitboard/computer/sat_control
-	name = "Satellite Network Control (Computer Board)"
-	icon_state = "engineering"
-	build_path = /obj/machinery/computer/sat_control
-
 /obj/item/circuitboard/computer/solar_control
 	name = "Solar Control (Computer Board)"  //name fixed 250810
 	icon_state = "engineering"
@@ -427,53 +422,6 @@
 	build_path = /obj/machinery/computer/camera_advanced/syndie
 
 //Service
-
-//Supply
-
-/obj/item/circuitboard/computer/bounty
-	name = "Nanotrasen Bounty Console (Computer Board)"
-	icon_state = "supply"
-	build_path = /obj/machinery/computer/bounty
-
-/obj/item/circuitboard/computer/cargo
-	name = "Supply Console (Computer Board)"
-	icon_state = "supply"
-	build_path = /obj/machinery/computer/cargo
-	var/contraband = FALSE
-
-/obj/item/circuitboard/computer/cargo/multitool_act(mob/living/user)
-	. = ..()
-	if(!(obj_flags & EMAGGED))
-		contraband = !contraband
-		to_chat(user, span_notice("Receiver spectrum set to [contraband ? "Broad" : "Standard"]."))
-	else
-		to_chat(user, span_alert("The spectrum chip is unresponsive."))
-
-/obj/item/circuitboard/computer/cargo/emag_act(mob/living/user)
-	if(!(obj_flags & EMAGGED))
-		contraband = TRUE
-		obj_flags |= EMAGGED
-		to_chat(user, span_notice("I adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband."))
-
-/obj/item/circuitboard/computer/cargo/express
-	name = "Express Supply Console (Computer Board)"
-	build_path = /obj/machinery/computer/cargo/express
-
-/obj/item/circuitboard/computer/cargo/express/multitool_act(mob/living/user)
-	. = ..()
-	if (!(obj_flags & EMAGGED))
-		to_chat(user, span_alert("Routing protocols are already set to: \"factory defaults\"."))
-	else
-		to_chat(user, span_notice("I reset the routing protocols to: \"factory defaults\"."))
-		obj_flags &= ~EMAGGED
-
-/obj/item/circuitboard/computer/cargo/express/emag_act(mob/living/user)
-		to_chat(user, span_notice("I change the routing protocols, allowing the Drop Pod to land anywhere on the station."))
-		obj_flags |= EMAGGED
-
-/obj/item/circuitboard/computer/cargo/request
-	name = "Supply Request Console (Computer Board)"
-	build_path = /obj/machinery/computer/cargo/request
 
 /obj/item/circuitboard/computer/ferry
 	name = "Transport Ferry (Computer Board)"

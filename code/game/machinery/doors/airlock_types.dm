@@ -421,20 +421,6 @@
 	opacity = 0
 	glass = TRUE
 
-/obj/machinery/door/airlock/abductor
-	name = "alien airlock"
-	desc = ""
-	icon = 'icons/obj/doors/airlocks/abductor/abductor_airlock.dmi'
-	overlays_file = 'icons/obj/doors/airlocks/abductor/overlays.dmi'
-	assemblytype = /obj/structure/door_assembly/door_assembly_abductor
-	note_overlay_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
-	damage_deflection = 30
-	explosion_block = 3
-	hackProof = TRUE
-	aiControlDisabled = 1
-	normal_integrity = 700
-	security_level = 1
-
 //////////////////////////////////
 /*
 	Cult Airlocks

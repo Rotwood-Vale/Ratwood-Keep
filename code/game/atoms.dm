@@ -1289,6 +1289,8 @@
   * Sends signals COMSIG_ATOM_HAS_GRAVITY and COMSIG_TURF_HAS_GRAVITY, both can force gravity with
   * the forced gravity var
   *
+  * micro-optimized to hell because this proc is very hot, being called several times per movement every movement.
+  *
   * Gravity situations:
   * * No gravity if you're not in a turf
   * * No gravity if this atom is in is a space turf
@@ -1297,34 +1299,27 @@
   * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
   * * otherwise no gravity
   */
-/atom/proc/has_gravity(turf/T)
-	if(!T || !isturf(T))
-		T = get_turf(src)
+/atom/proc/has_gravity(turf/gravity_turf)
+	if(!isturf(gravity_turf))
+		gravity_turf = get_turf(src)
 
-	if(!T)
+	if(!gravity_turf)//no gravity in nullspace
 		return 0
 
-	var/list/forced_gravity = list()
-	SEND_SIGNAL(src, COMSIG_ATOM_HAS_GRAVITY, T, forced_gravity)
-	if(!forced_gravity.len)
-		SEND_SIGNAL(T, COMSIG_TURF_HAS_GRAVITY, src, forced_gravity)
-	if(forced_gravity.len)
-		var/max_grav
-		for(var/i in forced_gravity)
+	//the list isnt created every time as this proc is very hot, its only accessed if anything is actually listening to the signal too
+	var/static/list/forced_gravity = list()
+	if(SEND_SIGNAL(src, COMSIG_ATOM_HAS_GRAVITY, gravity_turf, forced_gravity))
+		if(!length(forced_gravity))
+			SEND_SIGNAL(gravity_turf, COMSIG_TURF_HAS_GRAVITY, src, forced_gravity)
+
+		var/max_grav = 0
+		for(var/i in forced_gravity)//our gravity is the strongest return forced gravity we get
 			max_grav = max(max_grav, i)
+		forced_gravity.Cut()
+		//cut so we can reuse the list, this is ok since forced gravity movers are exceedingly rare compared to all other movement
 		return max_grav
 
-	if(isspaceturf(T)) // Turf never has gravity
-		return 0
-
-	var/area/A = get_area(T)
-	if(A.has_gravity) // Areas which always has gravity
-		return A.has_gravity
-	else
-		// There's a gravity generator on our z level
-		if(GLOB.gravity_generators["[T.z]"])
-			var/max_grav = 0
-			for(var/obj/machinery/gravity_generator/main/G in GLOB.gravity_generators["[T.z]"])
-				max_grav = max(G.setting,max_grav)
-			return max_grav
-	return SSmapping.level_trait(T.z, ZTRAIT_GRAVITY)
+	var/area/turf_area = gravity_turf.loc
+	// force_no_gravity has been removed because this is Roguetown code
+	// it'd be trivial to readd if you needed it, though
+	return SSmapping.gravity_by_z_level["[gravity_turf.z]"] || turf_area.has_gravity

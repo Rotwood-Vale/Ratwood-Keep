@@ -93,12 +93,7 @@
 /mob/living/proc/bloodcrawl_consume(mob/living/victim)
 	to_chat(src, span_danger("I begin to feast on [victim]... You can not move while you are doing this."))
 
-	var/sound
-	if(istype(src, /mob/living/simple_animal/slaughter))
-		var/mob/living/simple_animal/slaughter/SD = src
-		sound = SD.feast_sound
-	else
-		sound = 'sound/blank.ogg'
+	var/sound = 'sound/blank.ogg'
 
 	for(var/i in 1 to 3)
 		playsound(get_turf(src),sound, 50, TRUE)
