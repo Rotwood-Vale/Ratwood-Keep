@@ -182,32 +182,37 @@
 	if (user && dam)
 		if(user.goodluck(2))
 			dam += 5
+	if ((bclass == BCLASS_PUNCH) && (user && dam))
+		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
+			dam += 20
 	if(bclass in GLOB.dislocation_bclasses)
-		used = round(damage_dividend * 10 + (dam / 3), 1)
+		used = round(damage_dividend * 15 + (dam * 0.5), 1)
+		used += (user?.mind?.get_skill_level(/datum/skill/combat/wrestling) * 2)
 		if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
-			used += 10
+			used += user.STASTR
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				attempted_wounds += /datum/wound/fracture
 			else
 				attempted_wounds += /datum/wound/dislocation
 	if(bclass in GLOB.fracture_bclasses)
-		used = round(damage_dividend * 10 + (dam / 3), 1)
+		used = round(damage_dividend * 10 + (dam * 0.5), 1)
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 10
+				used += user.STASTR
 		if(HAS_TRAIT(src, TRAIT_BRITTLE))
-			used += 10
+			used *= 1.5
 		if(prob(used))
 			attempted_wounds += /datum/wound/dislocation
 			attempted_wounds += /datum/wound/fracture
 	if(bclass in GLOB.artery_bclasses)
-		used = round(user.STAPER + (dam / 3), 1)
+		used = round((user.STAPER * 0.5) + (dam * 0.5), 1)
+		used += (user?.mind?.get_skill_level(/datum/skill/misc/treatment) * 0.5)
 		if(user)
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 5
+				used += (user.STASTR * 0.25)
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += (user.STAPER + 5)
+				used += (user.STAPER * 0.5)
 		if(prob(used))
 			attempted_wounds += /datum/wound/artery
 
@@ -230,34 +235,35 @@
 			dam += 10
 	if ((bclass == BCLASS_PUNCH) && (user && dam))
 		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
-			dam += 15
+			dam += 20
 	if((bclass in GLOB.cbt_classes) && (zone_precise == BODY_ZONE_PRECISE_GROIN))
 		var/cbt_multiplier = 1
 		if(user && HAS_TRAIT(user, TRAIT_NUTCRACKER))
 			cbt_multiplier = 5
-		if(!resistance && prob(round(dam/5) * cbt_multiplier))
+		if(!resistance && prob(round(dam * 0.5) * cbt_multiplier))
 			attempted_wounds += /datum/wound/cbt
 		if(prob(dam * cbt_multiplier))
 			owner.emote("groin", TRUE)
-			owner.Stun(10)
+			owner.Stun(40)
 	if((bclass in GLOB.fracture_bclasses) && (zone_precise != BODY_ZONE_PRECISE_STOMACH))
-		used = round(damage_dividend * 10 + (dam / 3), 1)
+		used = round(damage_dividend * 10 + (dam * 0.5), 1)
 		if(user && istype(user.rmb_intent, /datum/rmb_intent/strong))
-			used += 10
+			used += (user.STASTR * 0.5)
 		if(HAS_TRAIT(src, TRAIT_BRITTLE))
-			used += 10
+			used *= 1.5
 		var/fracture_type = /datum/wound/fracture/chest
 		if(zone_precise == BODY_ZONE_PRECISE_GROIN)
 			fracture_type = /datum/wound/fracture/groin
 		if(prob(used))
 			attempted_wounds += fracture_type
 	if(bclass in GLOB.artery_bclasses)
-		used = round(user.STAPER + (dam / 4), 1)
+		used = round((user.STAPER * 0.2) + (dam * 0.3), 1)
+		used += (user?.mind?.get_skill_level(/datum/skill/misc/treatment) * 0.1)
 		if(user)
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 5
+				used += (user.STASTR * 0.25)
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-				used += (user.STAPER + 5)
+				used += (user.STAPER * 0.5)
 		if(prob(used))
 			if((zone_precise == BODY_ZONE_PRECISE_STOMACH) && !resistance)
 				attempted_wounds += /datum/wound/slash/disembowel
@@ -280,58 +286,64 @@
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
 	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
+	var/facing = relative_angular_facing(user, owner)
 	var/from_behind = FALSE
-	if(user && (owner.dir == turn(get_dir(owner,user), 180)))
+	if(user && facing == SOUTHEAST || user && facing == SOUTH || user && facing == SOUTHWEST)
 		from_behind = TRUE
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
+	if ((bclass == BCLASS_PUNCH) && (user && dam))
+		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
+			dam += 25
 	if((bclass in GLOB.dislocation_bclasses) && (total_dam >= max_damage))
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * 20 + (user.STAPER * 0.5) + (dam * 0.75), 0.5)
+		used += (user?.mind?.get_skill_level(/datum/skill/combat/wrestling) * 2)
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				attempted_wounds += /datum/wound/fracture/neck
 			else if (!resistance)
 				attempted_wounds += /datum/wound/dislocation/neck
 	if(bclass in GLOB.fracture_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round(damage_dividend * 15 + (dam * 0.75), 1)
 		if(HAS_TRAIT(src, TRAIT_BRITTLE))
-			used += 20
+			used *= 2
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-				used += 10
+				used += (user.STASTR)
 		if(!owner.stat && !resistance && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
 			owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
 			owner.flash_fullscreen("whiteflash3")
-			owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
+			owner.Unconscious(5 SECONDS + (from_behind * (round(user.STASTR * 0.25) * 10 SECONDS)))
 			if(owner.client)
 				winset(owner.client, "outputwindow.output", "max-lines=1")
 				winset(owner.client, "outputwindow.output", "max-lines=100")
 		var/dislocation_type
 		var/fracture_type = /datum/wound/fracture/head
-		var/necessary_damage = 0.9
+		var/necessary_damage = 1
 		if(resistance)
 			fracture_type = /datum/wound/fracture
 		else if(zone_precise == BODY_ZONE_PRECISE_SKULL)
-			necessary_damage = 0.8
+			necessary_damage = 0.75
 			used += 5
 		else if(zone_precise == BODY_ZONE_PRECISE_MOUTH)
 			fracture_type = /datum/wound/fracture/mouth
-			necessary_damage = 0.6
+			necessary_damage = 0.45
 		else if(zone_precise == BODY_ZONE_PRECISE_NECK)
 			fracture_type = /datum/wound/fracture/neck
 			dislocation_type = /datum/wound/dislocation/neck
-			necessary_damage = 0.9
+			necessary_damage = 0.85
 		if(prob(used) && (damage_dividend >= necessary_damage))
 			if(dislocation_type)
 				attempted_wounds += dislocation_type
 			attempted_wounds += fracture_type
 	if(bclass in GLOB.artery_bclasses)
-		used = round(damage_dividend * 20 + (dam / 3), 1)
+		used = round((user.STAPER * 0.5) + (dam * 0.3), 1)
+		used += (user?.mind?.get_skill_level(/datum/skill/misc/treatment) * 0.2)
 		if(user)
 			if(bclass == BCLASS_CHOP)
 				if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-					used += 10
+					used += user.STASTR
 			else
 				if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 					used += user.STAPER

@@ -221,7 +221,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			var/diffy = 10 - ranged_ability_user.STAINT
 			newdrain = newdrain + (releasedrain * (diffy * 0.02))
 		if(ishuman(ranged_ability_user))
-			var/mob/living/carbon/human/ranger
+			var/mob/living/carbon/human/ranger = ranged_ability_user
 			newdrain += (ranger.worn_armor_class * 10)
 		if(!ranged_ability_user.check_armor_skill())
 			newdrain += 40

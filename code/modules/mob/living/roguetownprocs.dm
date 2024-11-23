@@ -18,7 +18,6 @@
 	var/ace_mod = zone_ace_mod(zone)								//Sub-location hit modifier
 	var/chance2hit = 0
 	var/chance2acehit = 0
-	var/strmod = (user.STASTR - I.minstr)
 	var/facing = relative_angular_facing(user, target)				//Which side of the target you are attacking
 
 	if(user.mind)													//15 points per skill level, 95 bonus at Legendary
@@ -30,6 +29,9 @@
 	if(user.grabbedby == target)
 		if(used_intent.reach == 1)
 			chance2hit += 30
+
+	if(!get_dist(user, target))
+		chance2hit += 50
 
 	if(user.simpmob_attack >= 1)									//To compensate for NPCs lack of skills
 		chance2hit += (user.simpmob_attack)							//Not to be confused with actual SimpleAnimals, which use their own variant of accuracy
@@ -43,11 +45,11 @@
 		else if(used_intent.blade_class == BCLASS_CUT)				//Slashing is still semi-aimed
 			chance2hit += user.STAPER
 		else if(used_intent.blade_class == BCLASS_PUNCH)			//It is easiest to aim your fists
-			chance2hit += (20 + user.STAPER)
+			chance2hit += (30 + user.STAPER)
 		else if(used_intent == INTENT_GRAB)
-			chance2hit += (20 + user.STAPER)
+			chance2hit += (30 + user.STAPER)
 		else if(used_intent == INTENT_KICK)
-			chance2hit += (10 + user.STAPER)
+			chance2hit += (20 + user.STAPER)
 		else if(used_intent == INTENT_BITE)
 			chance2hit += (20 + user.STAPER)
 		else if(used_intent.reach >= 2)								//Using a polearm's reach attack at close range reduces the To-Hit chance
@@ -58,6 +60,7 @@
 		chance2hit += 40
 
 	if(I)
+		var/strmod = (user.STASTR - I.minstr)
 		if(I.wlength == WLENGTH_SHORT)								//Small weapons like daggers are easier to aim
 			chance2hit += 25
 		if(I.wbalance > 0)
@@ -75,7 +78,7 @@
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))			//Taking time to aim attacks gives Perception + 10
 		chance2hit += (user.STAPER + 10)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))			//Swinging as fast as you can reduces your To-Hit
-		chance2hit -= (30 - user.STASPD)
+		chance2hit -= (25 - user.STASPD)
 
 	var/facing_zone = facing_zone(zone)
 	if(facing == NORTH)												//Attacks from the front, normal
@@ -242,7 +245,7 @@
 		return list(zone, hit)
 
 	var/ace_mod = zone_ace_mod(zone)								//Sub-location hit modifier
-	var/chance2hit = ((user.STAPER * 2) + user.STASPD + 20)
+	var/chance2hit = ((user.STAPER * 2) + user.STASPD + 15)
 	var/chance2acehit = 0
 	var/datum/point/vector/previous = P.trajectory.return_vector_after_increments(1,-1)		//Backstepping the projectile to better account for angular attack vectors
 	var/projlast = previous.return_turf()
@@ -261,8 +264,8 @@
 			zone = check_zone(zone)
 			return list(zone, hit)
 
-	if(user.mind)													//10 points per skill level, 60 bonus at Legendary
-		chance2hit += (user.mind.get_skill_level(associated_skill) * 10)
+	if(user.mind)													//12 points per skill level, 72 bonus at Legendary
+		chance2hit += (user.mind.get_skill_level(associated_skill) * 12)
 
 	if(user.mob_size != target.mob_size)							//Size modifier. Easier to hit bigger enemies, harder to hit smaller enemies.
 		chance2hit += ((target.mob_size - user.mob_size) * 10)
@@ -344,6 +347,9 @@
 			zone = BODY_ZONE_CHEST
 		if(facing_zone == BODY_ZONE_FACING_R_LEG)
 			chance2hit = (chance2hit / 2)
+
+	if(zone == BODY_ZONE_CHEST)
+		chance2hit *= 2
 
 	chance2acehit = CLAMP((round(chance2hit * ace_mod)), 0, 100)		//Ability to hit sub-locations
 	chance2hit = CLAMP((round(chance2hit)), 0, 100)						//Ability to hit the target
@@ -500,7 +506,7 @@
 					attacker_skill = A.mind.get_skill_level(intenty.masteritem.associated_skill)
 					defense_score -= (attacker_skill * 10)
 					if((intenty.masteritem.wbalance > 0) && (A.STASPD > D.STASPD))	//Attacker has a swift weapon, giving a penalty to parry
-						defense_score -= (intenty.masteritem.wbalance * ((A.STASPD - D.STASPD) * 15))
+						defense_score -= (intenty.masteritem.wbalance * ((A.STASPD - D.STASPD) * 5))
 				else
 					defense_score = (A.mind.get_skill_level(/datum/skill/combat/unarmed) * 15)
 
@@ -513,7 +519,10 @@
 
 			drained = max(drained + (A.STASTR - D.STASTR), 5)					//If the Defender has lower Strength, it drains more energy to parry
 
-			next_parry = ((world.time + setparrytime) - used_weapon.wparryspeed) //Faster weapons can re-parry sooner
+			if(used_weapon)
+				next_parry = ((world.time + setparrytime) - used_weapon.wparryspeed) //Faster weapons can re-parry sooner
+			else
+				next_parry = ((world.time + setparrytime) - round(D.STASPD*0.5))	//If Unarmed
 
 			var/parryroll = rand(1, 100)
 			if(D.client?.prefs.showrolls && GLOB.Debug2)
@@ -700,11 +709,15 @@
 			dodge_score += ((D.STASPD * 10) + (D.STAPER * 4))
 	if(A)
 		dodge_score -= (A.mind ? (A.STASPD * 5) : A.simpmob_attack)
-	if(AH?.mind)
-		dodge_score -= (AH.mind.get_skill_level(I.associated_skill) * 10)
 
-	if(I.wbalance > 0)													//Enemy weapon is quick, so they get a bonus based on spddiff
-		dodge_score -= ((A.STASPD - D.STASPD) * 5)
+	if(I)
+		if(AH?.mind)
+			dodge_score -= (AH.mind.get_skill_level(I.associated_skill) * 10)
+		if(I.wbalance > 0)												//Enemy weapon is quick, so they get a bonus based on spddiff
+			dodge_score -= ((A.STASPD - D.STASPD) * 5)
+	else
+		if(AH?.mind)
+			dodge_score -= (AH.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
 
 	dodge_score += (D.rmb_intent.def_bonus)								//Dodge bonus from Poise
 
@@ -739,8 +752,6 @@
 		else //the enemy attacked us unarmed or is nonhuman
 			if(AH)
 				if(AH.used_intent.unarmed)
-					if(AH.mind)
-						dodge_score -= (AH.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
 					if(DH.mind)
 						dodge_score += (DH.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
 

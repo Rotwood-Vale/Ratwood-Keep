@@ -227,6 +227,7 @@
 	max_integrity = 300
 	blade_dulling = DULLING_BASH
 	associated_skill = 0
+	wparrybonus = 20
 
 /obj/item/rogueweapon/shield/buckler/proc/bucklerskill(mob/living/user)
 	if(!ishuman(user))

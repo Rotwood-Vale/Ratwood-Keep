@@ -1138,7 +1138,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		to_chat(user, span_warning("My grab at [target] was blocked!"))
 		return FALSE
 
-	var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/wrestling, user.used_intent)
+	var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/wrestling, user.used_intent)
 	var/goodhit = accuracy_check[2]
 	if(goodhit == "Miss")
 		return FALSE
@@ -1217,7 +1217,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			log_combat(user, target, "attempted to punch")
 			return FALSE
 */
-		var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
+		var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/unarmed, user.used_intent)
 		var/selzone = accuracy_check[1]
 		var/goodhit = accuracy_check[2]
 		if(goodhit == "Miss")
@@ -1454,7 +1454,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			target.lastattackerckey = user.ckey
 			if(target.mind)
 				target.mind.attackedme[user.real_name] = world.time
-			var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
+			var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/unarmed, user.used_intent)
 			var/selzone = accuracy_check[1]
 			var/goodhit = accuracy_check[2]
 			if(goodhit == "Miss")
@@ -1551,7 +1551,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			to_chat(user, span_danger("I kick [target.name]!"))
 			log_combat(user, target, "kicked")
 
-		var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
+		var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/unarmed, user.used_intent)
 		var/selzone = accuracy_check[1]
 		var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 		if(!affecting)

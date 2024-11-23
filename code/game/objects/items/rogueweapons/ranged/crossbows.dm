@@ -77,11 +77,11 @@
 		if(!cocked)
 			to_chat(user, span_info("I step on the stirrup and use all my might..."))
 			if(user.STASTR < minstr)
-				if(do_after(user, 180 - (user.STASTR * 8), target = user))
+				if(do_after(user, 120 - (user.STASTR * 5), target = user))
 					to_chat(user, span_info("I'm not strong enough..."))
 					cocked = FALSE
 			else
-				if(do_after(user, 180 - (user.STASTR * 8), target = user))
+				if(do_after(user, 120 - (user.STASTR * 5), target = user))
 					playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
 					cocked = TRUE
 		else

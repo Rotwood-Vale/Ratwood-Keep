@@ -62,12 +62,12 @@
 	name = "icepick stab"
 	icon_state = "inpick"
 	attack_verb = list("picks", "impales")
-	blade_class = BCLASS_PICK
+	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 80
+	penfactor = 65
 	clickcd = 14
 	swingdelay = 12
-	damfactor = 1.1
+	damfactor = 1.5
 	iparrybonus = -15
 
 /obj/item/rogueweapon/huntingknife/getonmobprop(tag)
