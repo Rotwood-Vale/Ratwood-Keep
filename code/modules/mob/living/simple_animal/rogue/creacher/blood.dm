@@ -58,6 +58,7 @@
 	melee_damage_upper = 550
 	simpmob_attack = 66
 	simpmob_defend = 66
+	status_flags = GODMODE//It's not meant to be killable, at all. But for some reason stuff doesn't set correctly.
 	health = 666666
 	maxHealth = 666666
 	STACON = 66
