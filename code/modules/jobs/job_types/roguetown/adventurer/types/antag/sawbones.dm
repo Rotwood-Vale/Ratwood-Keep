@@ -34,7 +34,8 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_NOSTINK, TRAIT_GENERIC) //Given for consistencysake as the idol still provides scalemail.
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //Given for consistencysake as the idol still provides scalemail.
+	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC) // Vital for any surgical role dealing in potentially decaying bodies.
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 3)
 	H.change_stat("speed", 1)
