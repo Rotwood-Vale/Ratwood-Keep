@@ -72,6 +72,7 @@
 
 /obj/machinery/light/roguestreet/Initialize()
 	GLOB.streetlamp_list += src
+	lights_on()
 	update_icon()
 	. = ..()
 
