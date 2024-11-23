@@ -80,7 +80,7 @@
 
 /datum/supply_pack/rogue/Stuff/maskgold
 	name = "Gold Mask"
-	cost = 100
+	cost = 350
 	contains = list(/obj/item/clothing/mask/rogue/facemask/goldmask)
 
 /datum/supply_pack/rogue/Stuff/coif
