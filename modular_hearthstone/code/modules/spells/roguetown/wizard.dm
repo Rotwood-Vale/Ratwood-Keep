@@ -1196,12 +1196,12 @@
 		playsound(T, 'sound/magic/gravity.ogg', 80, TRUE, soundping = FALSE)
 		for(var/mob/living/L in affected_turf.contents) 
 			if(L.STASTR <= 13)
-				L.apply_damage_type(30,BRUTE)
+				L.adjustBruteLoss(30)
 				L.Knockdown(5)
 				to_chat(L, "<span class='userdanger'>Your magically weighed down and lose your footing!</span>")
 			else
 				L.OffBalance(10)
-				L.apply_damage_type(15,BRUTE)
+				L.adjustBruteLoss(15)
 				to_chat(L, "<span class='userdanger'>Your magically weighed down, your strength resist!</span>")
 			
 			
