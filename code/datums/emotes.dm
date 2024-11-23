@@ -6,8 +6,6 @@
 	var/key_third_person = "" //This will also call the emote
 	var/message = "" //Message displayed when emote is used
 	var/message_mime = "" //Message displayed if the user is a mime
-	var/message_alien = "" //Message displayed if the user is a grown alien
-	var/message_larva = "" //Message displayed if the user is an alien larva
 	var/message_robot = "" //Message displayed if the user is a robot
 	var/message_AI = "" //Message displayed if the user is an AI
 	var/message_monkey = "" //Message displayed if the user is a monkey
@@ -185,10 +183,6 @@
 		return "makes a [pick("strong ", "weak ", "")]noise."
 	if(user.mind && user.mind.miming && message_mime)
 		. = message_mime
-	if(isalienadult(user) && message_alien)
-		. = message_alien
-	else if(islarva(user) && message_larva)
-		. = message_larva
 	else if(iscyborg(user) && message_robot)
 		. = message_robot
 	else if(isAI(user) && message_AI)

@@ -208,30 +208,6 @@
 	category = list("Computer Boards")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
-/datum/design/board/cargo
-	name = "Computer Design (Supply Console)"
-	desc = ""
-	id = "cargo"
-	build_path = /obj/item/circuitboard/computer/cargo
-	category = list("Computer Boards")
-	departmental_flags = DEPARTMENTAL_FLAG_CARGO
-
-/datum/design/board/cargorequest
-	name = "Computer Design (Supply Request Console)"
-	desc = ""
-	id = "cargorequest"
-	build_path = /obj/item/circuitboard/computer/cargo/request
-	category = list("Computer Boards")
-	departmental_flags = DEPARTMENTAL_FLAG_CARGO
-
-/datum/design/board/bounty
-	name = "Computer Design (Bounty Console)"
-	desc = ""
-	id = "bounty"
-	build_path = /obj/item/circuitboard/computer/bounty
-	category = list("Computer Boards")
-	departmental_flags = DEPARTMENTAL_FLAG_CARGO
-
 /datum/design/board/mining
 	name = "Computer Design (Outpost Status Display)"
 	desc = ""

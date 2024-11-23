@@ -620,38 +620,3 @@
 		SSticker.mode_result = "win - monkey win"
 	else
 		SSticker.mode_result = "loss - staff stopped the monkeys"
-
-//////////////////////////////////////////////
-//                                          //
-//               METEOR                     //
-//                                          //
-//////////////////////////////////////////////
-
-/datum/dynamic_ruleset/roundstart/meteor
-	name = "Meteor"
-	persistent = TRUE
-	required_candidates = 0
-	weight = 3
-	cost = 0
-	requirements = list(101,101,101,101,101,101,101,101,101,101)
-	high_population_requirement = 101
-	var/meteordelay = 2000
-	var/nometeors = 0
-	var/rampupdelta = 5
-
-/datum/dynamic_ruleset/roundstart/meteor/rule_process()
-	if(nometeors || meteordelay > world.time - SSticker.round_start_time)
-		return
-
-	var/list/wavetype = GLOB.meteors_normal
-	var/meteorminutes = (world.time - SSticker.round_start_time - meteordelay) / 10 / 60
-
-	if (prob(meteorminutes))
-		wavetype = GLOB.meteors_threatening
-
-	if (prob(meteorminutes/2))
-		wavetype = GLOB.meteors_catastrophic
-
-	var/ramp_up_final = CLAMP(round(meteorminutes/rampupdelta), 1, 10)
-
-	spawn_meteors(ramp_up_final, wavetype)

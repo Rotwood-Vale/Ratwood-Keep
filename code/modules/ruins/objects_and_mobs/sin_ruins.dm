@@ -88,10 +88,7 @@
 			return TRUE
 		else
 			to_chat(H, span_warning("You're repulsed by even looking at [src]. Only a pig could force themselves to go through it."))
-	if(istype(mover, /mob/living/simple_animal/hostile/morph))
-		return TRUE
-	else
-		return FALSE
+	return FALSE
 
 /obj/structure/mirror/magic/pride //Pride's mirror: Used in the Pride ruin.
 	name = "pride's mirror"

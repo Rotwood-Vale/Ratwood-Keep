@@ -60,13 +60,3 @@
 	category = list("initial", "Stock Parts")
 	departmental_flags = DEPARTMENTAL_FLAG_CARGO | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
 	maxstack = 50
-
-/datum/design/alienalloy
-	name = "Alien Alloy"
-	desc = ""
-	id = "alienalloy"
-	build_type = PROTOLATHE | SMELTER
-	materials = list(/datum/material/iron = 4000, /datum/material/plasma = 4000)
-	build_path = /obj/item/stack/sheet/mineral/abductor
-	category = list("Stock Parts")
-	departmental_flags = DEPARTMENTAL_FLAG_CARGO | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
