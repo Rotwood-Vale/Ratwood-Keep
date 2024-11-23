@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "cultist"
 	confess_lines = list(
-		"DEATH TO THE SUCCESSORS!", 
+		"DEATH TO THE SUCCESSORS!",
 		"PRAISE ZIZO!",
 		"THE GODHEAD FAVORS ME!",
 	)
@@ -704,7 +704,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	n_req = /obj/item/natural/worms/leech
 
 	function = /proc/heartache
-	
+
 /proc/heartache(mob/user, turf/C)
 	new /obj/item/corruptedheart(C)
 	to_chat(user.mind, span_notice("A corrupted heart. When used on a non-enlightened mortal their heart shall ache and they will be immobilized and too stunned to speak. Perfect for getting new soon-to-be enlightened. Now, just don't use it at the combat ready."))
@@ -1004,7 +1004,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended(C)
 		trl.ckey = H.ckey
 		H.gib()
-		to_chat(world, "\n<font color='purple'>15 minutes remain.</font>")
+		to_chat(world, "\n<font color='purple'>The fabric of reality begins to weep. Fifteen minutes remain until the end.</font>")
 		for(var/mob/living/carbon/human/V in GLOB.human_list)
 			if(V.mind in CM.cultists)
 				V.add_stress(/datum/stressevent/lovezizo)
