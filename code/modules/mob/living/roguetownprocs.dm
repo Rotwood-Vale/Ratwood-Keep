@@ -694,7 +694,7 @@
 	if(!(D.mobility_flags & MOBILITY_STAND))							//Can't dodge when knocked down
 		return FALSE
 	if(D)
-		if(DH?.check_dodge_skill())
+		if(D?.check_dodge_skill())
 			dodge_score += ((D.STASPD * 15) + (D.STAPER * 4))
 		else
 			dodge_score += ((D.STASPD * 10) + (D.STAPER * 4))
@@ -726,7 +726,7 @@
 	dodge_score += (D.used_intent.idodgebonus)							//Some weapon intents help with dodging
 
 	if(DH)
-		if(!DH?.check_armor_skill())
+		if(!DH?.check_armor_skill() || DH?.legcuffed)
 			DH.Knockdown(1)
 			return FALSE
 		if(I)															//Attacker attacked us with a weapon

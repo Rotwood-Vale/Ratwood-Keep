@@ -33,7 +33,8 @@
 	STASTR = 5
 	STASPD = 20
 	deaggroprob = 0
-	defprob = 95
+	simpmob_attack = 30
+	simpmob_defend = 80
 	defdrain = 10
 	dodgetime = 30
 	aggressive = 1

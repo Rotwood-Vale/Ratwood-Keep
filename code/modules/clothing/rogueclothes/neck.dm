@@ -138,6 +138,7 @@
 	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering."
 	icon_state = "lgorget"
 	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_class = ARMOR_CLASS_LIGHT
 	max_integrity = 150
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK

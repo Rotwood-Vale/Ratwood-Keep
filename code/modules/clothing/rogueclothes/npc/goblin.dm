@@ -5,7 +5,6 @@
 	icon = 'icons/roguetown/mob/monster/goblins.dmi'
 	smeltresult = /obj/item/ingot/iron
 	allowed_race = GOBLIN_RACE_TYPES
-	allowed_race = list(/datum/species/goblin)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	sellprice = 0
 
@@ -16,7 +15,6 @@
 	icon = 'icons/roguetown/mob/monster/goblins.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	allowed_race = GOBLIN_RACE_TYPES
-	allowed_race = list(/datum/species/goblin)
 	sellprice = 0
 
 /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
@@ -25,7 +23,6 @@
 	item_state = "cloth_armor"
 	icon = 'icons/roguetown/mob/monster/goblins.dmi'
 	allowed_race = GOBLIN_RACE_TYPES
-	allowed_race = list(/datum/species/goblin)
 	armor = null
 	sellprice = 0
 
@@ -35,7 +32,6 @@
 	item_state = "leather_helm"
 	icon = 'icons/roguetown/mob/monster/goblins.dmi'
 	allowed_race = GOBLIN_RACE_TYPES
-	allowed_race = list(/datum/species/goblin)
 	sellprice = 0
 
 /obj/item/clothing/head/roguetown/helmet/goblin
@@ -44,7 +40,6 @@
 	item_state = "plate_helm"
 	icon = 'icons/roguetown/mob/monster/goblins.dmi'
 	allowed_race = GOBLIN_RACE_TYPES
-	allowed_race = list(/datum/species/goblin)
 	body_parts_covered = HEAD|EARS|HAIR|EYES
 	sellprice = 0
 	smeltresult = /obj/item/ingot/iron

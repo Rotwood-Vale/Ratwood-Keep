@@ -15,7 +15,8 @@
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
 	deaggroprob = 0
-	defprob = 40
+	simpmob_attack = 25
+	simpmob_defend = 40
 	defdrain = 10
 	retreat_health = 0.1
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')

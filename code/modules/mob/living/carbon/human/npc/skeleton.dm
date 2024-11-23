@@ -23,7 +23,7 @@
 	candodge = FALSE
 
 /mob/living/carbon/human/species/skeleton/npc/ambush
-	simpmob_attack = 50
+	simpmob_attack = 40
 	simpmob_defend = 0
 	wander = TRUE
 	attack_speed = -10

@@ -496,19 +496,6 @@
 	miss_text = "claws the air!"
 	miss_sound = "bluntwooshmed"
 
-/datum/intent/unarmed/wwolf
-	name = "claw"
-	icon_state = "inchop"
-	attack_verb = list("claws", "mauls", "eviscerates")
-	animname = "cut"
-	blade_class = BCLASS_CHOP
-	hitsound = "genslash"
-	penfactor = 40
-	candodge = TRUE
-	canparry = TRUE
-	miss_text = "slashes the air!"
-	miss_sound = "bluntwooshlarge"
-
 /datum/intent/unarmed/ascendedclaw
 	name = "claw"
 	icon_state = "inchop"
@@ -536,6 +523,7 @@
 	candodge = FALSE
 	canparry = FALSE
 	miss_text = "stings the air!"
+	miss_sound = BLADEWOOSH_SMALL
 
 /datum/intent/simple/bigbite
 	name = "big bite"
@@ -549,6 +537,8 @@
 	swingdelay = 1
 	candodge = TRUE
 	canparry = TRUE
+	miss_text = "bites the air!"
+	miss_sound = PUNCHWOOSH
 
 /datum/intent/simple/stab
 	name = "stab"
@@ -563,6 +553,7 @@
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "stabs the air!"
+	miss_sound = BLADEWOOSH_SMALL
 
 /datum/intent/simple/wereclaw
 	name = "claw"

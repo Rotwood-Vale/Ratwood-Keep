@@ -28,8 +28,9 @@
 /*
 /obj/projectile/bullet/reusable/bolt/poison
 	name = "poisoned bolt"
-	damage = 50
+	damage = 20
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/poison
+*/
 
 /obj/item/ammo_casing/caseless/rogue/arrow
 	name = "arrow"
