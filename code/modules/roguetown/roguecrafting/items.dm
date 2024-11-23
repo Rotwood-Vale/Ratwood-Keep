@@ -104,7 +104,7 @@
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/bone = 2,
-		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/natural/fibers = 2,
 	)
 	tools = /obj/item/rogueweapon/huntingknife
@@ -129,7 +129,7 @@
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/cloth = 1,
-		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/natural/fibers = 2,
 	)
 	tools = /obj/item/rogueweapon/huntingknife
@@ -155,12 +155,23 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/soap
+	name = "soap (3x)"
+	result = list(
+				/obj/item/soap,
+				/obj/item/soap,
+				/obj/item/soap,
+				)
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1)
+
 /datum/crafting_recipe/roguetown/candle
 	name = "candle (x3)"
-	result = list(/obj/item/candle/yellow,
+	result = list(
 				/obj/item/candle/yellow,
-				/obj/item/candle/yellow)
-	reqs = list(/obj/item/reagent_containers/food/snacks/fat = 2)
+				/obj/item/candle/yellow,
+				/obj/item/candle/yellow,
+				)
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1)
 
 /datum/crafting_recipe/roguetown/stoneaxe
 	name = "stone axe"
@@ -274,8 +285,9 @@
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/spoon
-	name = "spoon (x2)"
+	name = "spoon (x3)"
 	result = list(/obj/item/kitchen/spoon,
+				/obj/item/kitchen/spoon,
 				/obj/item/kitchen/spoon)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
@@ -673,3 +685,23 @@
 	tools = list(/obj/item/natural/feather)
 	req_table = TRUE
 	craftdiff = 2
+
+// Woodcutting recipe
+/datum/crafting_recipe/roguetown/lumberjacking
+	skillcraft = /datum/skill/labor/lumberjacking
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
+	name = "upgrade cog"
+	result = /obj/item/cart_upgrade/level_1
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/stone = 1)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade2
+	name = "advanced upgrade cog"
+	result = /obj/item/cart_upgrade/level_2
+	reqs = list(/obj/item/grown/log/tree/small = 4,
+				/obj/item/cart_upgrade/level_1 = 1,
+				/obj/item/ingot/iron = 1)
+	craftdiff = 4

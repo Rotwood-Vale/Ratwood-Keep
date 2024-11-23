@@ -134,7 +134,7 @@
 /datum/anvil_recipe/tools/iron/spoon
 	name = "Iron Spoon x3"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/kitchen/ironspoon
+	created_item = /obj/item/kitchen/spoon/ironspoon
 	createditem_num = 3
 	craftdiff = 1
 

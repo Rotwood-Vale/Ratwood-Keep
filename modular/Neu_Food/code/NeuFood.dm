@@ -89,7 +89,7 @@
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/kitchen/ironspoon
+/obj/item/kitchen/spoon/ironspoon
 	name = "iron spoon"
 	desc = "Traditional utensil for shoveling soup into your mouth, now made with iron for that metallic taste!"
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
@@ -139,7 +139,7 @@
 	reagent_flags = OPENCONTAINER
 	amount_per_transfer_from_this = 7
 	possible_transfer_amounts = list(7)
-	dropshrink = 0.8
+	dropshrink = 1
 	w_class = WEIGHT_CLASS_NORMAL
 	volume = 33
 	obj_flags = CAN_BE_HIT
