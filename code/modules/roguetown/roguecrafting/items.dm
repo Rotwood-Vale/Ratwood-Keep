@@ -274,8 +274,9 @@
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/spoon
-	name = "spoon (x2)"
+	name = "spoon (x3)"
 	result = list(/obj/item/kitchen/spoon,
+				/obj/item/kitchen/spoon,
 				/obj/item/kitchen/spoon)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
