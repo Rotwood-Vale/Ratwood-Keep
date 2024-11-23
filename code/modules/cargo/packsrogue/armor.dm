@@ -41,7 +41,7 @@
 	cost = 50
 	contains = list(
 					/obj/item/clothing/mask/rogue/facemask/steel/hound,
-					/obj/item/clothing/mask/rogue/facemask/steel/hound
+					/obj/item/clothing/mask/rogue/facemask/steel/hound,
 				)
 			
 /datum/supply_pack/rogue/armor/bracers
