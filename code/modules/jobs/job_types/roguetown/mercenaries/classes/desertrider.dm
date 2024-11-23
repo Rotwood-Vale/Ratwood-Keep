@@ -46,7 +46,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 			pants = /obj/item/clothing/under/roguetown/chainlegs
-      H.grant_language(/datum/language/celestial)
+			H.grant_language(/datum/language/celestial)
 
 		if("Blade Dancer")
 			H.set_blindness(0)
@@ -75,7 +75,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
-      H.grant_language(/datum/language/celestial)
+			H.grant_language(/datum/language/celestial)
 
 		if("Blade Caster")
 			H.set_blindness(0)
