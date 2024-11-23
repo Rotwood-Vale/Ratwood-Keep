@@ -2,9 +2,6 @@
 	name = "Mushroomperson"
 	id = "mush"
 	default_features = MANDATORY_FEATURE_LIST
-	mutant_bodyparts = list("caps")
-	default_features = list("caps" = "Round")
-	changesource_flags = MIRROR_BADMIN | WABBAJACK
 
 	fixed_mut_color = "DBBF92"
 	hair_color = "FF4B19" //cap color, spot color uses eye color

@@ -35,7 +35,7 @@
 	user.holder.player_panel_new()
 	return TRUE
 
-/*
+
 /datum/keybinding/admin/toggle_buildmode_self
 	hotkey_keys = list("F7")
 	name = "toggle_buildmode_self"

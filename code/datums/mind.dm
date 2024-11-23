@@ -474,13 +474,6 @@
 				if(A.type == datum_type)
 					return A
 
-// Boolean. Returns true if the antag is actually "good", false otherwise.
-/datum/mind/proc/isactuallygood()
-	for(var/GG in antag_datums)
-		var/datum/antagonist/antaggy = GG
-		return antaggy.isgoodguy
-
-
 /datum/mind/proc/remove_traitor()
 	remove_antag_datum(/datum/antagonist/traitor)
 

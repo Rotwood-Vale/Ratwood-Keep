@@ -291,16 +291,14 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			if(!is_type_in_typecache(H.head, casting_clothes))
 				to_chat(H, span_warning("I don't feel strong enough without your hat!"))
 				return FALSE
-		if(miracle)
-			var/datum/devotion/cleric_holder/D = H.cleric
-			if(!D.check_devotion(devotion_cost))
-				to_chat(H, "<span class='warning'>I don't have enough devotion!</span>")
-				return FALSE
+		if(miracle && !H.devotion?.check_devotion(src))
+			to_chat(H, span_warning("I don't have enough devotion!"))
+			return FALSE
 	else
 		if(clothes_req || human_req)
 			to_chat(user, span_warning("This spell can only be cast by humans!"))
 			return FALSE
-		if(nonabstract_req && (isbrain(user) || ispAI(user)))
+		if(nonabstract_req && (isbrain(user)))
 			to_chat(user, span_warning("This spell can only be cast by physical beings!"))
 			return FALSE
 

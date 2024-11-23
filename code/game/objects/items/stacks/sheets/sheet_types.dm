@@ -103,8 +103,6 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
  * Plasteel
  */
 GLOBAL_LIST_INIT(plasteel_recipes, list ( \
-	new/datum/stack_recipe("pestle", /obj/item/pestle, 1, time = 50), \
-	null, \
 ))
 
 /obj/item/stack/sheet/plasteel

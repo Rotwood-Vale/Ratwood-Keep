@@ -26,9 +26,6 @@
 
 
 /obj/item/clothing/head/helmet/Destroy()
-	var/obj/item/flashlight/seclite/old_light = set_attached_light(null)
-	if(old_light)
-		qdel(old_light)
 	return ..()
 
 
@@ -44,7 +41,6 @@
 
 /obj/item/clothing/head/helmet/handle_atom_del(atom/A)
 	if(A == attached_light)
-		set_attached_light(null)
 		update_helmlight()
 		update_icon()
 		QDEL_NULL(alight)
@@ -328,7 +324,6 @@
 			if(!user.transferItemToLoc(S, src))
 				return
 			to_chat(user, span_notice("You click [S] into place on [src]."))
-			set_attached_light(S)
 			update_icon()
 			update_helmlight()
 			alight = new(src)
@@ -345,10 +340,7 @@
 		attached_light.forceMove(drop_location())
 		if(Adjacent(user))
 			user.put_in_hands(attached_light)
-
-		var/obj/item/flashlight/removed_light = set_attached_light(null)
 		update_helmlight()
-		removed_light.update_brightness(user)
 		update_icon()
 		user.update_inv_head()
 		QDEL_NULL(alight)

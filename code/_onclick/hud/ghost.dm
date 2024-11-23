@@ -72,6 +72,30 @@
 	var/mob/dead/observer/G = usr
 	G.dead_tele()
 
+/atom/movable/screen/ghost/moveup
+	name = "move up"
+	icon_state = "pai"
+
+/atom/movable/screen/ghost/moveup/Click()
+	var/mob/dead/observer/G = usr
+	G.ghost_up()
+
+/atom/movable/screen/ghost/movedown
+	name = "move down"
+	icon_state = "pai"
+
+/atom/movable/screen/ghost/bigassuselessbutton
+	name = "AFTER LIFE"
+	icon = 'icons/mob/ghostspin.dmi'
+	icon_state = ""
+	screen_loc = "WEST-4,SOUTH+6"
+	nomouseover = FALSE
+
+/atom/movable/screen/ghost/movedown/Click()
+	var/mob/dead/observer/G = usr
+	G.ghost_down()
+
+
 /datum/hud/ghost/New(mob/owner)
 	..()
 	var/atom/movable/screen/using

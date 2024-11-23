@@ -158,9 +158,6 @@ SUBSYSTEM_DEF(mapping)
 
 	var/max_gravity = 0
 
-	for(var/obj/machinery/gravity_generator/main/grav_gen as anything in GLOB.gravity_generators["[z_level_number]"])
-		max_gravity = max(grav_gen.setting, max_gravity)
-
 	max_gravity = max_gravity || level_trait(z_level_number, ZTRAIT_GRAVITY) || 0//just to make sure no nulls
 	gravity_by_z_level["[z_level_number]"] = max_gravity
 	return max_gravity

@@ -86,7 +86,5 @@
 	limbs_id = "zombie" //They look like zombies
 	sexes = 0
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/zombie
-	mutanttongue = /obj/item/organ/tongue/zombie
-	changesource_flags = MIRROR_BADMIN | WABBAJACK
 
 #undef REGENERATION_DELAY

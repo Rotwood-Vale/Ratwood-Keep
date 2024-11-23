@@ -518,7 +518,7 @@
 						[usr.key] has forced the gamemode.</font>")
 					return
 				SSticker.manualmodes |= choice
-				GLOB.roguegamemodes -= choice
+				roguegamemodes -= choice
 	else
 		to_chat(usr, "<font color='red'>Error: Force Modes: Game has already started.</font>")
 

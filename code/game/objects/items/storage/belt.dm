@@ -51,7 +51,6 @@
 		/obj/item/wrench,
 		/obj/item/multitool,
 		/obj/item/flashlight,
-		/obj/item/analyzer,
 		/obj/item/geiger_counter,
 		/obj/item/extinguisher/mini,
 		/obj/item/clothing/gloves,
@@ -72,7 +71,6 @@
 	new /obj/item/weldingtool/experimental(src)//This can be changed if this is too much
 	new /obj/item/multitool(src)
 	new /obj/item/extinguisher/mini(src)
-	new /obj/item/analyzer(src)
 	//much roomier now that we've managed to remove two tools
 
 /obj/item/storage/belt/utility/full/PopulateContents()
@@ -225,7 +223,6 @@
 		/obj/item/wrench,
 		/obj/item/multitool,
 		/obj/item/flashlight,
-		/obj/item/analyzer,
 		/obj/item/extinguisher/mini,
 		/obj/item/clothing/gloves,
 		/obj/item/resonator,

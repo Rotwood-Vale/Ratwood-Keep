@@ -28,7 +28,7 @@
 		GLOB.redstone_objs += src
 		. = INITIALIZE_HINT_LATELOAD
 	if(leanable)
-	AddComponent(/datum/component/leanable)
+		AddComponent(/datum/component/leanable)
 
 /obj/structure/Bumped(atom/movable/AM)
 	..()
