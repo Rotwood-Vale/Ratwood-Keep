@@ -263,46 +263,7 @@ SUBSYSTEM_DEF(ticker)
 							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
 							continue
 					readied_jobs.Add(V)
-
-	if(("King" in readied_jobs) || ("Queen" in readied_jobs))
-		if("King" in readied_jobs)
-			rulertype = "King"
-		else
-			rulertype = "Queen"
-	else
-		var/list/stuffy = list("Set a Ruler to 'high' in your class preferences to start the game!", "PLAY Ruler NOW!", "A Ruler is required to start.", "Pray for a Ruler.", "One day, there will be a Ruler.", "Just try playing Ruler.", "If you don't play Ruler, the game will never start.", "We need at least one Ruler to start the game.", "We're waiting for you to pick Ruler to start.", "Still no Ruler is readied..", "I'm going to lose my mind if we don't get a Ruler readied up.","No. The game will not start because there is no Ruler.","What's the point of ROGUETOWN without a Ruler?")
-		to_chat(world, "<span class='purple'>[pick(stuffy)]</span>")
-		return FALSE
-
-	/*
-		This prevents any gamemode from starting unless theres at least 2 players ready, but the comments say 20 or it defaults into a deathmatch mode.
-		It is commented out and just left here for posterity
-	*/
-	/*
-	var/amt_ready = 0
-	for(var/mob/dead/new_player/player in GLOB.player_list)
-		if(!player)
-			continue
-		if(player.ready == PLAYER_READY_TO_PLAY)
-			amt_ready++
-
-	if(amt_ready < 2)
-		to_chat(world, span_purple("[amt_ready]/20 players ready."))
-		failedstarts++
-		if(failedstarts > 7)
-			to_chat(world, span_purple("[failedstarts]/13"))
-		if(failedstarts >= 13)
-			to_chat(world, span_greentext("Starting ROGUEFIGHT..."))
-			var/icon/ikon
-			var/file_path = "icons/roguefight_title.dmi"
-			ASSERT(fexists(file_path))
-			ikon = new(fcopy_rsc(file_path))
-			if(SStitle.splash_turf && ikon)
-				SStitle.splash_turf.icon = ikon
-			for(var/mob/dead/new_player/player in GLOB.player_list)
-				player.playsound_local(player, 'sound/music/wartitle.ogg', 100, TRUE)
-		return FALSE
-	*/
+					
 	job_change_locked = TRUE
 	return TRUE
 
