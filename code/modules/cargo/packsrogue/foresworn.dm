@@ -155,6 +155,16 @@
 	cost = 100
 	contains = list(/obj/item/rogueweapon/eaglebeak/lucerne)
 
+/datum/supply_pack/rogue/foresworn/kiteshield
+	name = "Kite Shield"
+	cost = 100
+	contains = list(/obj/item/rogueweapon/shield/tower/metal)
+
+/datum/supply_pack/rogue/foresworn/Tshield
+	name = "Tower Shield"
+	cost = 50
+	contains = list(/obj/item/rogueweapon/shield/tower)
+
 /datum/supply_pack/rogue/foresworn/bolts
 	name = "Quiver of Bolts"
 	cost = 100

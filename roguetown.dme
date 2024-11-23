@@ -1840,6 +1840,7 @@
 #include "code\modules\cargo\packsrogue\mage.dm"
 #include "code\modules\cargo\packsrogue\sawbones.dm"
 #include "code\modules\cargo\packsrogue\seeds.dm"
+#include "code\modules\cargo\packsrogue\stuff.dm"
 #include "code\modules\cargo\packsrogue\things.dm"
 #include "code\modules\cargo\packsrogue\tools.dm"
 #include "code\modules\cargo\packsrogue\wardrobe.dm"

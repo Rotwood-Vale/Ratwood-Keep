@@ -90,7 +90,7 @@
 	contents += "<a href='?src=[REF(src)];change=1'>Your favor:</a> [B.favor]<BR>"
 
 
-	var/list/unlocked_cats = list("Things")
+	var/list/unlocked_cats = list("Things", "Stuff")
 	switch(usr.advjob)
 		if("Brigand")
 			unlocked_cats+="Brigand"
