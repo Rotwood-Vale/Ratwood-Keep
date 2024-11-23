@@ -654,6 +654,8 @@
 #include "code\datums\migrants\migrant_waves\fablefield wave.dm"
 #include "code\datums\migrants\migrant_waves\heartfelt roles.dm"
 #include "code\datums\migrants\migrant_waves\heartfelt wave.dm"
+#include "code\datums\migrants\migrant_waves\musketeer roles.dm"
+#include "code\datums\migrants\migrant_waves\musketeer wave.dm"
 #include "code\datums\migrants\migrant_waves\slaver roles.dm"
 #include "code\datums\migrants\migrant_waves\slaver wave.dm"
 #include "code\datums\mob_descriptors\mob_descriptor.dm"
