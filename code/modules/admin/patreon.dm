@@ -261,7 +261,7 @@ GLOBAL_LIST_EMPTY(anonymize)
 			client.prefs.anonymize = TRUE
 			client.prefs.save_preferences()
 			to_chat(src, "Anonymous... OK")
-			GLOB.anonymize |= client.ckey
+			//GLOB.anonymize |= client.ckey
 
 GLOBAL_LIST_EMPTY(temporary_donators)
 

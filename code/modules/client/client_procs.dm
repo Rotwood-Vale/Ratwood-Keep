@@ -454,10 +454,6 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	else
 		toggle_fullscreeny(FALSE)
 
-	if(prefs.anonymize)
-		if(get_playerquality(ckey) > -5)
-			GLOB.anonymize |= ckey
-
 	if(ckey in GLOB.clientmessages)
 		for(var/message in GLOB.clientmessages[ckey])
 			to_chat(src, message)
