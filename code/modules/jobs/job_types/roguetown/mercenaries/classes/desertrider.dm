@@ -75,7 +75,7 @@
 
 		if("Blade Caster")
 			H.set_blindness(0)
-			to_chat(H, span_warning("Blade Casters are those skilled in both magyck and swordsmanship. "))
+			to_chat(H, span_warning("Blade Casters are those skilled in both magyck and swordsmanship, but excelling in nothing."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
