@@ -44,56 +44,56 @@ GLOBAL_LIST_INIT(footstep, list(
 		'sound/foley/footsteps/FTWOO_A1.ogg',
 		'sound/foley/footsteps/FTWOO_A2.ogg',
 		'sound/foley/footsteps/FTWOO_A3.ogg',
-		'sound/foley/footsteps/FTWOO_A4.ogg'), 100, 0),
+		'sound/foley/footsteps/FTWOO_A4.ogg'), 42, 0),
 	FOOTSTEP_FLOOR = list(list(
 		'sound/foley/footsteps/FTTIL_A1.ogg',
 		'sound/foley/footsteps/FTTIL_A2.ogg',
 		'sound/foley/footsteps/FTTIL_A3.ogg',
-		'sound/foley/footsteps/FTTIL_A4.ogg'), 100, 0),
+		'sound/foley/footsteps/FTTIL_A4.ogg'), 50, 0),
 	FOOTSTEP_PLATING = list(list(
 		'sound/foley/footsteps/FTMET_A1.ogg',
 		'sound/foley/footsteps/FTMET_A2.ogg',
 		'sound/foley/footsteps/FTMET_A3.ogg',
-		'sound/foley/footsteps/FTMET_A4.ogg'), 100, 0),
+		'sound/foley/footsteps/FTMET_A4.ogg'), 40, 0),
 	FOOTSTEP_CARPET = list(list(
 		'sound/foley/footsteps/FTCAR_A1.ogg',
 		'sound/foley/footsteps/FTCAR_A2.ogg',
 		'sound/foley/footsteps/FTCAR_A3.ogg',
-		'sound/foley/footsteps/FTCAR_A4.ogg'), 25, 0),
+		'sound/foley/footsteps/FTCAR_A4.ogg'), 12, 0),
 	FOOTSTEP_SAND = list(list(
 		'sound/foley/footsteps/FTDIR_A1.ogg',
 		'sound/foley/footsteps/FTDIR_A2.ogg',
 		'sound/foley/footsteps/FTDIR_A3.ogg',
-		'sound/foley/footsteps/FTDIR_A4.ogg'), 25, 0),
+		'sound/foley/footsteps/FTDIR_A4.ogg'), 10, 0),
 	FOOTSTEP_GRASS = list(list(
 		'sound/foley/footsteps/FTGRA_A1.ogg',
 		'sound/foley/footsteps/FTGRA_A2.ogg',
 		'sound/foley/footsteps/FTGRA_A3.ogg',
-		'sound/foley/footsteps/FTGRA_A4.ogg'), 25, 0),
+		'sound/foley/footsteps/FTGRA_A4.ogg'), 15, 0),
 	FOOTSTEP_WATER = list(list(
 		'sound/foley/footsteps/FTWAT_1.ogg',
 		'sound/foley/footsteps/FTWAT_2.ogg',
 		'sound/foley/footsteps/FTWAT_3.ogg',
-		'sound/foley/footsteps/FTWAT_4.ogg'), 100, 0),
+		'sound/foley/footsteps/FTWAT_4.ogg'), 80, 0),
 	FOOTSTEP_SHALLOW = list(list(
 		'sound/foley/footsteps/FTSHAL (1).ogg',
 		'sound/foley/footsteps/FTSHAL (2).ogg',
 		'sound/foley/footsteps/FTSHAL (3).ogg',
 		'sound/foley/footsteps/FTSHAL (4).ogg',
-		'sound/foley/footsteps/FTSHAL (5).ogg'), 100, 0),
+		'sound/foley/footsteps/FTSHAL (5).ogg'), 80, 0),
 	FOOTSTEP_LAVA = list(list(
 		'sound/blank.ogg'), 100, 0),
 	FOOTSTEP_STONE = list(list(
 		'sound/foley/footsteps/FTROC_A1.ogg',
 		'sound/foley/footsteps/FTROC_A2.ogg',
 		'sound/foley/footsteps/FTROC_A3.ogg',
-		'sound/foley/footsteps/FTROC_A4.ogg'), 100, 0),
+		'sound/foley/footsteps/FTROC_A4.ogg'), 40, 0),
 	FOOTSTEP_MUD = list(list(
 		'sound/foley/footsteps/FTMUD (1).ogg',
 		'sound/foley/footsteps/FTMUD (2).ogg',
 		'sound/foley/footsteps/FTMUD (3).ogg',
 		'sound/foley/footsteps/FTMUD (4).ogg',
-		'sound/foley/footsteps/FTMUD (5).ogg'), 100, 0),
+		'sound/foley/footsteps/FTMUD (5).ogg'), 50, 0),
 ))
 //bare footsteps lists
 GLOBAL_LIST_INIT(barefootstep, list(
