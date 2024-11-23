@@ -97,6 +97,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell)
 			r_hand = /obj/item/rogueweapon/sword/long/rider
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/magered
+			backl = /obj/item/rogueweapon/sword/long/rider
 
 			H.grant_language(/datum/language/celestial)
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
