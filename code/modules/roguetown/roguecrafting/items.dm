@@ -291,6 +291,13 @@
 				/obj/item/kitchen/spoon)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
+/datum/crafting_recipe/roguetown/fork
+	name = "fork (x3)"
+	result = list(/obj/item/kitchen/fork,
+				/obj/item/kitchen/fork,
+				/obj/item/kitchen/fork)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
 /datum/crafting_recipe/roguetown/platter
 	name = "platter (x2)"
 	result = list(/obj/item/cooking/platter,
