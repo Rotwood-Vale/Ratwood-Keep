@@ -1138,10 +1138,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		to_chat(user, span_warning("My grab at [target] was blocked!"))
 		return FALSE
 
-	var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/wrestling, user.used_intent)
-	var/goodhit = accuracy_check[2]
-	if(goodhit == "Miss")
-		return FALSE
+	if(!istype(target, mob/living/simple_animal))
+		var/list/accuracy_check = accuracy_check(user.zone_selected, user, target, 0, /datum/skill/combat/wrestling, user.used_intent)
+		var/goodhit = accuracy_check[2]
+		if(goodhit == "Miss")
+			return FALSE
 
 	if(attacker_style && attacker_style.grab_act(user,target))
 		return TRUE
