@@ -14498,6 +14498,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"lsy" = (
+/obj/structure/roguemachine/bounty,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town)
 "lsG" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/pick,
@@ -25484,7 +25488,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "tSU" = (
-/obj/effect/landmark/start/mercenary,
+/obj/effect/landmark/start/guild_clerk,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
 "tSV" = (
@@ -309783,7 +309787,7 @@ rNm
 vTo
 evo
 pvw
-rNm
+lsy
 lPL
 nNJ
 nNJ

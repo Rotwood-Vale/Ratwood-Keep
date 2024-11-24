@@ -1,15 +1,23 @@
-/datum/advclass/guild_clerk
-	name = "Guild Clerk"
+/datum/job/roguetown/guild_clerk
+	title = "Guild Clerk"
+	flag = MERC_CLERK
+	department_flag = MERCENARIES
 	tutorial = "Tidy. Crass. Foul mouthed. The first words that come to mind for the unsung hero of the mercenary guild's contract clerk. \
 	The medium by which the mercenaries go through for the average town goer to secure a mercenary and a fair price to accompany. \
+	Not only are you responsible for organizing contracts for the mercenaries, but also ensuring the proper use and delivery of the rewards from the excidium. \
 	It's a thankless task, but someone has to do it. May as well be you."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/mercenary/guild_clerk
-	maximum_possible_slots = 1
-	min_pq = 0
-	torch = FALSE
-	category_tags = list(CTAG_MERCENARY)
+	display_order = JDO_MERC_CLERK
+	selection_color = JCOLOR_MERCENARY
+	faction = "Station"
+	total_positions = 1
+	spawn_positions = 1
+	min_pq = 6
+	max_pq = null
+	job_reopens_slots_on_death = TRUE
 
 /datum/outfit/job/roguetown/mercenary/guild_clerk/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -44,6 +52,6 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich//To pay out contracts, if the issuer flakes.
-	beltl = /obj/item/rogueweapon/mace
+	backl = /obj/item/rogueweapon/mace
 	beltl = /obj/item/keyring/mercenary_boss//So they can access the Captain's office.
 	backr = /obj/item/storage/backpack/rogue/satchel
