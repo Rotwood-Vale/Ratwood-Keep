@@ -20,7 +20,7 @@
 	var/bandit
 	///Is this bounty withdrawable by the guild clerk?
 	var/withdrawable
-	
+
 /obj/structure/roguemachine/bounty/attack_hand(mob/user)
 
 	if(!ishuman(user)) return
@@ -29,7 +29,9 @@
 	var/mob/living/carbon/human/H = user
 
 	// Main Menu
-	var/list/choices = list("Consult bounties", "Set bounty", "Withdraw bounty reward")
+	var/list/choices = list("Consult bounties", "Set bounty")
+	if(user.mind.assigned_role == "Guild Clerk")
+		choices += "Withdraw bounty reward"
 	var/selection = input(user, "The Excidium listens", src) as null|anything in choices
 
 	switch(selection)
@@ -231,24 +233,17 @@
 		new_bounty.banner += "--------------<BR>"
 
 /obj/structure/roguemachine/bounty/proc/withdraw_bounty(mob/user)
-	if(user.advjob == "Guild Clerk")
-		var/bounty_number = input(user, "What is the number of the bounty whose reward is to be withdrawn?", src) as null|num
-		if(isnull(bounty_number))
-			say("Invalid number.")
-			return
-		for(var/datum/bounty/b in GLOB.head_bounties)
-			if(b.number == bounty_number)
-				if(b.withdrawable == "Yes")
-					var/confirm = input(user, "Are you sure you would like to to withdraw the reward [b.target ? "on [b.target]'s head" : "of this task"] and mark it as completed? There will be punisment from the guild for any reported inproper use.", src) as null|anything in list("Yes", "No")
-					if(isnull(confirm) || confirm == "No") return
-					budget2change(b.amount, user)
-					GLOB.head_bounties -= b
-					say("Bounty successfully marked as completed and reward withdrawn.")
-				else
-					say("This bounty is not withdrawable without a cranial examination. Please deliver the target's head for reward.")
-			else
-				say("There are no bounties with that number.")
-	else
-		say("You do not do not have permission by the guild to withdraw bounties.")
+	var/bounty_number = input(user, "What is the number of the bounty whose reward is to be withdrawn?", src) as null|num
+	if(isnull(bounty_number))
+		say("No number given.")
 		return
+	for(var/datum/bounty/b in GLOB.head_bounties)
+		if(b.number == bounty_number && b.withdrawable == "Yes")
+			var/confirm = input(user, "Are you sure you would like to to withdraw the reward [b.target ? "on [b.target]'s head" : "of this task"] and mark it as completed? There will be punisment from the guild for any reported inproper use.", src) as null|anything in list("Yes", "No")
+			if(isnull(confirm) || confirm == "No") return
+			budget2change(b.amount, user)
+			GLOB.head_bounties -= b
+			say("Bounty successfully marked as completed and reward withdrawn.")
+		else 
+			say("There are no withdrawable bounties with that number. Please confirm that the bounty is withdrawable, and deliver head for cranial inspection otherwise.")
 	//Please for the love of god anyone that can properly do menus should fix this. This is the best i could do considering how i know nothing about them. 
