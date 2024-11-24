@@ -19,9 +19,9 @@
 	if(multiz_dir) //Are we a trunk that goes up? Or down?
 		var/turf/T = null
 		if(multiz_dir == MULTIZ_PIPE_UP)
-			T = SSmapping.get_turf_above(get_turf(src)) //Get the turf above us
+			T = GET_TURF_ABOVE(get_turf(src)) //Get the turf above us
 		if(multiz_dir == MULTIZ_PIPE_DOWN)
-			T = SSmapping.get_turf_below(get_turf(src))
+			T = GET_TURF_BELOW(get_turf(src))
 		if(!T)
 			expel(H)
 			return //Nothing located.

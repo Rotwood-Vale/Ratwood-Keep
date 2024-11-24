@@ -286,28 +286,6 @@
 	if(L.mobility_flags & MOBILITY_MOVE)
 		return L.resist_fire() //I just want to start a flame in your hearrrrrrtttttt.
 
-
-//ALIENS
-
-/atom/movable/screen/alert/alien_tox
-	name = "Plasma"
-	desc = ""
-	icon_state = "alien_tox"
-	alerttooltipstyle = "alien"
-
-/atom/movable/screen/alert/alien_fire
-// This alert is temporarily gonna be thrown for all hot air but one day it will be used for literally being on fire
-	name = "Too Hot"
-	desc = ""
-	icon_state = "alien_fire"
-	alerttooltipstyle = "alien"
-
-/atom/movable/screen/alert/alien_vulnerable
-	name = "Severed Matriarchy"
-	desc = ""
-	icon_state = "alien_noqueen"
-	alerttooltipstyle = "alien"
-
 //BLOBS
 
 /atom/movable/screen/alert/nofactory

@@ -5,7 +5,7 @@
 	spread_flags = DISEASE_SPREAD_SPECIAL
 	cure_text = "A coder's love (theoretical)."
 	agent = "Shenanigans"
-	viable_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey, /mob/living/carbon/alien)
+	viable_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	severity = DISEASE_SEVERITY_BIOHAZARD
 	stage_prob = 10
 	visibility_flags = HIDDEN_SCANNER|HIDDEN_PANDEMIC
@@ -184,37 +184,6 @@
 			if (prob(20))
 				affected_mob.say(pick("beep, beep!", "Boop bop boop beep.", "kkkiiiill mmme", "I wwwaaannntt tttoo dddiiieeee..."), forced = "robotic transformation")
 
-
-/datum/disease/transformation/xeno
-
-	name = "Xenomorph Transformation"
-	cure_text = "Spaceacillin & Glycerol"
-	cures = list(/datum/reagent/medicine/spaceacillin, /datum/reagent/glycerol)
-	cure_chance = 5
-	agent = "Rip-LEY Alien Microbes"
-	desc = ""
-	severity = DISEASE_SEVERITY_BIOHAZARD
-	visibility_flags = 0
-	stage1	= list()
-	stage2	= list("Your throat feels scratchy.", span_danger("Kill..."))
-	stage3	= list(span_danger("My throat feels very scratchy."), "Your skin feels tight.", span_danger("I can feel something move...inside."))
-	stage4	= list(span_danger("My skin feels very tight."), span_danger("My blood boils!"), span_danger("I can feel... something...inside you."))
-	stage5	= list(span_danger("My skin feels as if it's about to burst off!"))
-	new_form = /mob/living/carbon/alien/humanoid/hunter
-	bantype = ROLE_ALIEN
-
-/datum/disease/transformation/xeno/stage_act()
-	..()
-	switch(stage)
-		if(3)
-			if (prob(4))
-				to_chat(affected_mob, span_danger("I feel a stabbing pain in my head."))
-				affected_mob.Unconscious(40)
-		if(4)
-			if (prob(20))
-				affected_mob.say(pick("You look delicious.", "Going to... devour you...", "Hsssshhhhh!"), forced = "xenomorph transformation")
-
-
 /datum/disease/transformation/slime
 	name = "Advanced Mutation Transformation"
 	cure_text = "frost oil"
@@ -268,25 +237,6 @@
 		if(4)
 			if (prob(20))
 				affected_mob.say(pick("Bark!", "AUUUUUU"), forced = "corgi transformation")
-
-/datum/disease/transformation/morph
-	name = "Gluttony's Blessing"
-	cure_text = /datum/reagent/consumable/nothing
-	cures = list(/datum/reagent/medicine/adminordrazine)
-	agent = "Gluttony's Blessing"
-	desc = ""
-	stage_prob = 20
-	severity = DISEASE_SEVERITY_BIOHAZARD
-	visibility_flags = 0
-	stage1	= list("Your stomach rumbles.")
-	stage2	= list("Your skin feels saggy.")
-	stage3	= list(span_danger("My appendages are melting away."), span_danger("My limbs begin to lose their shape."))
-	stage4	= list(span_danger("You're ravenous."))
-	stage5	= list(span_danger("I have become a morph."))
-	new_form = /mob/living/simple_animal/hostile/morph
-	infectable_biotypes = MOB_ORGANIC|MOB_MINERAL|MOB_UNDEAD //magic!
-	transformed_antag_datum = /datum/antagonist/morph
-
 /datum/disease/transformation/gondola
 	name = "Gondola Transformation"
 	cure_text = "Condensed Capsaicin, ingested or injected." //getting pepper sprayed doesn't help

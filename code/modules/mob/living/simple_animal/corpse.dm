@@ -203,17 +203,3 @@
 	back = /obj/item/storage/backpack/satchel/med
 	id = /obj/item/card/id
 	glasses = /obj/item/clothing/glasses/hud/health
-
-/obj/effect/mob_spawn/human/corpse/bee_terrorist
-	name = "BLF Operative"
-	outfit = /datum/outfit/bee_terrorist
-
-/datum/outfit/bee_terrorist
-	name = "BLF Operative"
-	uniform = /obj/item/clothing/under/color/yellow
-	suit = /obj/item/clothing/suit/hooded/bee_costume
-	shoes = /obj/item/clothing/shoes/sneakers/yellow
-	gloves = /obj/item/clothing/gloves/color/yellow
-	ears = /obj/item/radio/headset
-	id = /obj/item/card/id
-	mask = /obj/item/clothing/mask/rat/bee

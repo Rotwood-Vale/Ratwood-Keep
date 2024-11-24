@@ -177,8 +177,6 @@
 		gibtype = C.gib_type
 		if(ismonkey(C))
 			typeofskin = /obj/item/stack/sheet/animalhide/monkey
-		else if(isalien(C))
-			typeofskin = /obj/item/stack/sheet/animalhide/xeno
 	var/occupant_volume
 	if(occupant?.reagents)
 		occupant_volume = occupant.reagents.total_volume
