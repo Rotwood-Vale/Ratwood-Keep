@@ -297,7 +297,7 @@
 		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
 			dam += 25
 	if((bclass in GLOB.dislocation_bclasses) && (total_dam >= max_damage))
-		used = round(damage_dividend * 20 + (user.STAPER * 0.5) + (dam * 0.75), 0.5)
+		used = round(damage_dividend * 20 + (user.STASTR * 0.5) + (dam * 0.75), 0.5)
 		used += (user?.mind?.get_skill_level(/datum/skill/combat/wrestling) * 2)
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
