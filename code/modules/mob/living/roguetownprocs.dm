@@ -498,7 +498,7 @@
 				defense_score += (defender_skill * 10)
 				weapon_parry = FALSE
 			else
-				defender_skill = D.mind?.get_skill_level(used_weapon.associated_skill)
+				defender_skill += D?.mind?.get_skill_level(used_weapon?.associated_skill)
 				weapon_parry = TRUE
 
 			if(A.mind)															//Attacker's combat ability applying penalties
@@ -719,7 +719,8 @@
 		if(AH?.mind)
 			dodge_score -= (AH.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
 
-	dodge_score += (D.rmb_intent.def_bonus)								//Dodge bonus from Poise
+	if(D.rmb_intent)
+		dodge_score += (D.rmb_intent.def_bonus)								//Dodge bonus from Poise
 
 				//// ADD WEAPON INTENT MODIFIERS HERE ////
 	if(istype(DI, /obj/item/rogueweapon))
