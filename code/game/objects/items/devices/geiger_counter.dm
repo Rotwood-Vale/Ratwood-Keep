@@ -200,34 +200,6 @@
 	to_chat(user, span_warning("I override [src]'s radiation storing protocols. It will now generate small doses of radiation, and stored rads are now projected into creatures you scan."))
 	obj_flags |= EMAGGED
 
-
-
-/obj/item/geiger_counter/cyborg
-	var/mob/listeningTo
-
-/obj/item/geiger_counter/cyborg/cyborg_unequip(mob/user)
-	if(!scanning)
-		return
-	scanning = FALSE
-	update_icon()
-
-/obj/item/geiger_counter/cyborg/equipped(mob/user)
-	. = ..()
-	if(listeningTo == user)
-		return
-	if(listeningTo)
-		UnregisterSignal(listeningTo, COMSIG_ATOM_RAD_ACT)
-	RegisterSignal(user, COMSIG_ATOM_RAD_ACT, PROC_REF(redirect_rad_act))
-	listeningTo = user
-
-/obj/item/geiger_counter/cyborg/proc/redirect_rad_act(datum/source, amount)
-	rad_act(amount)
-
-/obj/item/geiger_counter/cyborg/dropped()
-	. = ..()
-	if(listeningTo)
-		UnregisterSignal(listeningTo, COMSIG_ATOM_RAD_ACT)
-
 #undef RAD_LEVEL_NORMAL
 #undef RAD_LEVEL_MODERATE
 #undef RAD_LEVEL_HIGH

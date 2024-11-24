@@ -228,16 +228,6 @@
 					else
 						M_job = "Carbon-based"
 
-				else if(issilicon(M)) //silicon
-					if(isAI(M))
-						M_job = "AI"
-					else if(ispAI(M))
-						M_job = ROLE_PAI
-					else if(iscyborg(M))
-						M_job = "Cyborg"
-					else
-						M_job = "Silicon-based"
-
 				else if(isanimal(M)) //simple animals
 					if(iscorgi(M))
 						M_job = "Corgi"

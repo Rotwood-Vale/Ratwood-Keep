@@ -63,11 +63,6 @@
 		trunk.linked = null
 	return ..()
 
-/obj/machinery/disposal/singularity_pull(S, current_size)
-	..()
-	if(current_size >= STAGE_FIVE)
-		deconstruct()
-
 /obj/machinery/disposal/LateInitialize()
 	//this will get a copy of the air turf and take a SEND PRESSURE amount of air from it
 	var/atom/L = loc
@@ -115,12 +110,7 @@
 
 /obj/machinery/disposal/proc/stuff_mob_in(mob/living/target, mob/living/user)
 	if(!iscarbon(user) && !user.ventcrawler) //only carbon and ventcrawlers can climb into disposal by themselves.
-		if (iscyborg(user))
-			var/mob/living/silicon/robot/borg = user
-			if (!borg.module || !borg.module.canDispose)
-				return
-		else
-			return
+		return
 	if(!isturf(user.loc)) //No magically doing it from inside closets
 		return
 	if(target.buckled || target.has_buckled_mobs())
@@ -299,7 +289,6 @@
 	data["pressure_charging"] = pressure_charging
 	data["panel_open"] = panel_open
 	data["per"] = CLAMP01(air_contents.return_pressure() / (SEND_PRESSURE))
-	data["isai"] = isAI(user)
 	return data
 
 /obj/machinery/disposal/bin/ui_act(action, params)
@@ -399,13 +388,8 @@
 	if(stat & NOPOWER) // won't charge if no power
 		return
 
-	use_power(100) // base power usage
-
 	if(!pressure_charging) // if off or ready, no need to charge
 		return
-
-	// otherwise charge
-	use_power(500) // charging power usage
 
 	var/atom/L = loc //recharging from loc turf
 

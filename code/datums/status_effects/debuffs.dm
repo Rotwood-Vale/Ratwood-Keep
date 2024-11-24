@@ -13,13 +13,13 @@
 	if(.)
 		if(updating_canmove)
 			owner.update_mobility()
-			if(needs_update_stat || issilicon(owner))
+			if(needs_update_stat)
 				owner.update_stat()
 
 /datum/status_effect/incapacitating/on_remove()
 	if(owner)
 		owner.update_mobility()
-		if(needs_update_stat || issilicon(owner)) //silicons need stat updates in addition to normal canmove updates
+		if(needs_update_stat) //silicons need stat updates in addition to normal canmove updates
 			owner.update_stat()
 
 //STUN
@@ -263,19 +263,6 @@
 	owner.adjustBruteLoss(0.1)
 	owner.adjustFireLoss(0.1)
 	owner.adjustToxLoss(0.2, TRUE, TRUE)
-
-/datum/status_effect/cultghost //is a cult ghost and can't use manifest runes
-	id = "cult_ghost"
-	duration = -1
-	alert_type = null
-
-/datum/status_effect/cultghost/on_apply()
-	owner.see_invisible = SEE_INVISIBLE_OBSERVER
-	owner.see_in_dark = 2
-
-/datum/status_effect/cultghost/tick()
-	if(owner.reagents)
-		owner.reagents.del_reagent(/datum/reagent/water/holywater) //can't be deconverted
 
 /datum/status_effect/crusher_mark
 	id = "crusher_mark"

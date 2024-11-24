@@ -108,7 +108,7 @@
 /obj/machinery/portable_atmospherics/proc/replace_tank(mob/living/user, close_valve, obj/item/tank/new_tank)
 	if(holding)
 		holding.forceMove(drop_location())
-		if(Adjacent(user) && !issiliconoradminghost(user))
+		if(Adjacent(user))
 			user.put_in_hands(holding)
 	if(new_tank)
 		holding = new_tank

@@ -5,8 +5,6 @@
 	limbs_id = "human"
 
 	default_features = MANDATORY_FEATURE_LIST
-
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	var/original_felinid = TRUE //set to false for felinids created by mass-purrbation
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,

@@ -67,27 +67,10 @@
 	. = ..()
 	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS ,null,CALLBACK(src, PROC_REF(can_be_rotated)),CALLBACK(src,PROC_REF(after_rotation)))
 
-/obj/structure/window/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	switch(the_rcd.mode)
-		if(RCD_DECONSTRUCT)
-			return list("mode" = RCD_DECONSTRUCT, "delay" = 20, "cost" = 5)
-	return FALSE
-
-/obj/structure/window/rcd_act(mob/user, obj/item/construction/rcd/the_rcd)
-	switch(the_rcd.mode)
-		if(RCD_DECONSTRUCT)
-			to_chat(user, span_notice("I deconstruct the window."))
-			qdel(src)
-			return TRUE
-	return FALSE
-
 /obj/structure/window/narsie_act()
 	add_atom_colour(NARSIE_WINDOW_COLOUR, FIXED_COLOUR_PRIORITY)
 
-/obj/structure/window/singularity_pull(S, current_size)
-	..()
-	if(current_size >= STAGE_FIVE)
-		deconstruct(FALSE)
+/obj/structure/window/singularity_pull()
 
 /obj/structure/window/setDir(direct)
 	if(!fulltile)
@@ -106,12 +89,6 @@
 		var/obj/structure/window/W = mover
 		if(!valid_window_location(loc, W.ini_dir))
 			return FALSE
-	else if(istype(mover, /obj/structure/windoor_assembly))
-		var/obj/structure/windoor_assembly/W = mover
-		if(!valid_window_location(loc, W.ini_dir))
-			return FALSE
-	else if(istype(mover, /obj/machinery/door/window) && !valid_window_location(loc, mover.dir))
-		return FALSE
 	return 1
 
 /obj/structure/window/CheckExit(atom/movable/O, turf/target)
@@ -212,11 +189,6 @@
 
 /obj/structure/window/proc/check_state_and_anchored(checked_state, checked_anchored)
 	return check_state(checked_state) && check_anchored(checked_anchored)
-
-/obj/structure/window/mech_melee_attack(obj/mecha/M)
-	if(!can_be_reached())
-		return
-	..()
 
 /obj/structure/window/proc/can_be_reached(mob/user)
 	if(!fulltile)
