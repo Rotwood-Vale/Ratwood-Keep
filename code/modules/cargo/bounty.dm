@@ -6,6 +6,8 @@ GLOBAL_LIST_EMPTY(bounties_list)
 	var/reward = 1000 // In credits.
 	var/claimed = FALSE
 	var/high_priority = FALSE
+	var/number //couldn't find anywhere else to put these two like the other bounty variables, so i'll just put them here. Please put them where the others go if you're more competent than me and know where they go.
+	var/withdrawable //these two are used on bounty.dm from roguemachines
 
 // Displayed on bounty UI screen.
 /datum/bounty/proc/completion_string()
