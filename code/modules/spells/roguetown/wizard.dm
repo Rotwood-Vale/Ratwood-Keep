@@ -5,6 +5,8 @@
 	clothes_req = FALSE
 	overlay_state = "lightning"
 	sound = 'sound/magic/lightning.ogg'
+	invocation = "Qo'Strun!"
+	invocation_type = "shout"
 	range = 8
 	projectile_type = /obj/projectile/magic/lightning
 	releasedrain = 30
@@ -163,6 +165,8 @@
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
 	overlay_state = "fireball"
 	sound = list('sound/magic/fireball.ogg')
+	invocation = "GAAR'ARDE!!"
+	invocation_type = "shout"
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
@@ -212,6 +216,8 @@
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great
 	overlay_state = "fireball_wide"
 	sound = list('sound/magic/fireball.ogg')
+	invocation = "GAAR'SOL'ARDE!!"
+	invocation_type = "shout"
 	active = FALSE
 	releasedrain = 50
 	chargedrain = 1
@@ -241,6 +247,8 @@
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
 	overlay_state = "fireball_multi"
 	sound = list('sound/magic/whiteflame.ogg')
+	invocation = "Sol'Igniculus!!"
+	invocation_type = "shout"
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
@@ -289,6 +297,8 @@
 	projectile_type = /obj/projectile/energy/rogue3
 	overlay_state = "force_dart"
 	sound = list('sound/magic/vlightning.ogg')
+	invocation = "Lah'Arundo!"
+	invocation_type = "shout"
 	active = FALSE
 	releasedrain = 20
 	chargedrain = 1
@@ -333,6 +343,8 @@
 	projectile_type = /obj/projectile/magic/fetch
 	overlay_state = ""
 	sound = list('sound/magic/magnet.ogg')
+	invocation = "Rapto."
+	invocation_type = "whisper"
 	active = FALSE
 	releasedrain = 5
 	chargedrain = 0
@@ -368,6 +380,8 @@
 	dropmessage = "I release my minor arcyne focus."
 	school = "transmutation"
 	overlay_state = "prestidigitation"
+	invocation = "Aura!"
+	invocation_type = "whisper"
 	chargedrain = 0
 	chargetime = 0
 	releasedrain = 5 // this influences -every- cost involved in the spell's functionality, if you want to edit specific features, do so in handle_cost
@@ -603,6 +617,8 @@
 	clothes_req = FALSE
 	active = FALSE
 	sound = 'sound/blank.ogg'
+	invocation = "Tiid'Disseptum!"
+	invocation_type = "shout"
 	overlay_state = "forcewall"
 	range = -1
 	chargedloop = /datum/looping_sound/invokegen
@@ -682,6 +698,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	range = 6
+	invocation = "Capio!"
+	invocation_type = "shout"
 	overlay_state = "ensnare"
 	var/area_of_effect = 1
 	var/duration = 4 SECONDS
@@ -775,6 +793,8 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Gaar'Iaculatio!!"
+	invocation_type = "shout"
 	var/stun_amt = 5
 	var/maxthrow = 3
 	var/sparkle_path = /obj/effect/temp_visual/gravpush
@@ -832,6 +852,8 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Medeis Kest!"
+	invocation_type = "shout"
 	overlay_state = "blade_burst"
 	var/delay = 7
 	var/damage = 45
@@ -944,6 +966,8 @@
 	charge_max = 2 MINUTES
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Lux'Oculus."
+	invocation_type = "Whisper"
 	hand_path = /obj/item/melee/touch_attack/darkvision
 	xp_gain = TRUE
 	cost = 2
@@ -991,6 +1015,8 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Leve Pondus!"
+	invocation_type = "shout"
 	overlay_state = "jump"
 
 /obj/effect/proc_holder/spell/invoked/featherfall/cast(list/targets, mob/user = usr)
@@ -1018,6 +1044,8 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Su Volo!"
+	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/invoked/haste/cast(list/targets, mob/user)
 	var/atom/A = targets[1]
