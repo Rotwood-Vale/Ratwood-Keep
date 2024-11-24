@@ -325,6 +325,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Mercenary"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/guild_clerk
+	name = "Guild Clerk"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/vagrant
 	name = "Beggar"
 	icon_state = "arrow"
