@@ -285,6 +285,14 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
+/datum/crafting_recipe/roguetown/sewing/chaperon
+	name = "hat (reinforced hood) - (2 fur, hood; EXPERT)"
+	result = list(/obj/item/clothing/head/roguetown/roguehood/reinforced)
+	reqs = list(/obj/item/clothing/head/roguetown/roguehood = 2,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/fur = 2)
+	craftdiff = 4
+
 /datum/crafting_recipe/roguetown/sewing/jupon
 	name = "jupon (2 cloths, fiber; EXPERT)"
 	result = list(/obj/item/clothing/cloak/stabard/surcoat)
