@@ -12,12 +12,15 @@
 	var/amount
 	var/reason
 	var/employer
+	var/number
 
 	/// Whats displayed when consulting the bounties
 	var/banner
 	///Is this a bandit bounty?
 	var/bandit
-
+	///Is this bounty withdrawable by the guild clerk?
+	var/withdrawable
+	
 /obj/structure/roguemachine/bounty/attack_hand(mob/user)
 
 	if(!ishuman(user)) return
