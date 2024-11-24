@@ -549,8 +549,6 @@
 		if(labeler.mode)
 			return FALSE
 //	. = TRUE //no afterattack
-	if(iscyborg(M))
-		return
 	//Vrell - Adding a block here to allow sewing/hammering to repair containers. Clicking while trying to sew will bypass this requirement.
 	if(isitem(parent))
 		if(istype(I, /obj/item/rogueweapon/hammer))

@@ -219,44 +219,13 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	var/attacher = "UNKNOWN"
 	var/det_timer
 
-/obj/item/twohanded/required/gibtonite/Destroy()
-	qdel(wires)
-	wires = null
-	return ..()
 
 /obj/item/twohanded/required/gibtonite/attackby(obj/item/I, mob/user, params)
-	if(!wires && istype(I, /obj/item/assembly/igniter))
-		user.visible_message(span_notice("[user] attaches [I] to [src]."), span_notice("I attach [I] to [src]."))
-		wires = new /datum/wires/explosive/gibtonite(src)
-		attacher = key_name(user)
-		qdel(I)
-		add_overlay("Gibtonite_igniter")
-		return
-
-	if(wires && !primed)
-		if(is_wire_tool(I))
-			wires.interact(user)
-			return
 
 	if(I.tool_behaviour == TOOL_MINING || istype(I, /obj/item/resonator) || I.force >= 10)
 		GibtoniteReaction(user)
 		return
-	if(primed)
-		if(istype(I, /obj/item/mining_scanner) || istype(I, /obj/item/t_scanner/adv_mining_scanner) || I.tool_behaviour == TOOL_MULTITOOL)
-			primed = FALSE
-			if(det_timer)
-				deltimer(det_timer)
-			user.visible_message(span_notice("The chain reaction was stopped! ...The ore's quality looks diminished."), span_notice("I stopped the chain reaction. ...The ore's quality looks diminished."))
-			icon_state = "Gibtonite ore"
-			quality = GIBTONITE_QUALITY_LOW
-			return
 	..()
-
-/obj/item/twohanded/required/gibtonite/attack_self(user)
-	if(wires)
-		wires.interact(user)
-	else
-		..()
 
 /obj/item/twohanded/required/gibtonite/bullet_act(obj/projectile/P)
 	GibtoniteReaction(P.firer)
@@ -325,7 +294,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	w_class = WEIGHT_CLASS_TINY
 	custom_materials = list(/datum/material/iron = 400)
 	material_flags = MATERIAL_ADD_PREFIX | MATERIAL_COLOR
-	var/string_attached
 	var/list/sideslist = list("heads","tails")
 	var/cooldown = 0
 	var/value
@@ -372,39 +340,10 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	. = ..()
 	. += span_info("It's worth [value] credit\s.")
 
-/obj/item/coin/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/CC = W
-		if(string_attached)
-			to_chat(user, span_warning("There already is a string attached to this coin!"))
-			return
 
-		if (CC.use(1))
-			add_overlay("coin_string_overlay")
-			string_attached = 1
-			to_chat(user, span_notice("I attach a string to the coin."))
-		else
-			to_chat(user, span_warning("I need one length of cable to attach a string to the coin!"))
-			return
-	else
-		..()
-
-/obj/item/coin/wirecutter_act(mob/living/user, obj/item/I)
-	..()
-	if(!string_attached)
-		return TRUE
-
-	new /obj/item/stack/cable_coil(drop_location(), 1)
-	overlays = list()
-	string_attached = null
-	to_chat(user, span_notice("I detach the string from the coin."))
-	return TRUE
 
 /obj/item/coin/attack_self(mob/user)
 	if(cooldown < world.time)
-		if(string_attached) //does the coin have a wire attached
-			to_chat(user, span_warning("The coin won't flip very well with something attached!") )
-			return FALSE//do not flip the coin
 		cooldown = world.time + 15
 		flick("coin_[coinflip]_flip", src)
 		coinflip = pick(sideslist)

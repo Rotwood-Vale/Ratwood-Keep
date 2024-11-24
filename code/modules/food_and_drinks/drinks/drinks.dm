@@ -70,14 +70,8 @@
 			to_chat(user, span_warning("[target] is full."))
 			return
 
-		var/refill = reagents.get_master_reagent_id()
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
 		to_chat(user, span_notice("I transfer [trans] units of the solution to [target]."))
-
-		if(iscyborg(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
-			var/mob/living/silicon/robot/bro = user
-			bro.cell.use(30)
-			addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, add_reagent), refill, trans), 600)
 
 	else if(target.is_drainable()) //A dispenser. Transfer FROM it TO us.
 		if (!is_refillable())

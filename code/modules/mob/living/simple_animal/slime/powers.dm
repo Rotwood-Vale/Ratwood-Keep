@@ -56,9 +56,6 @@
 		Feedstop()
 		return FALSE
 
-	if(issilicon(M))
-		return FALSE
-
 	if(isanimal(M))
 		var/mob/living/simple_animal/S = M
 		if(S.damage_coeff[TOX] <= 0 && S.damage_coeff[CLONE] <= 0) //The creature wouldn't take any damage, it must be too weird even for us.
@@ -173,8 +170,6 @@
 			var/list/babies = list()
 			var/new_nutrition = round(nutrition * 0.9)
 			var/new_powerlevel = round(powerlevel / 4)
-			var/datum/component/nanites/original_nanites = GetComponent(/datum/component/nanites)
-
 			for(var/i=1,i<=4,i++)
 				var/child_colour
 				if(mutation_chance >= 100)
@@ -194,10 +189,6 @@
 				babies += M
 				M.mutation_chance = CLAMP(mutation_chance+(rand(5,-5)),0,100)
 				SSblackbox.record_feedback("tally", "slime_babies_born", 1, M.colour)
-
-				if(original_nanites)
-					M.AddComponent(/datum/component/nanites, original_nanites.nanite_volume*0.25)
-					SEND_SIGNAL(M, COMSIG_NANITE_SYNC, original_nanites, TRUE, TRUE) //The trues are to copy activation as well
 
 			var/mob/living/simple_animal/slime/new_slime = pick(babies)
 			new_slime.a_intent = INTENT_HARM
