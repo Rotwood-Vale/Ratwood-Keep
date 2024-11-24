@@ -32,7 +32,7 @@
 
 /datum/supply_pack/rogue/Knight/Fullplate
 	name = "Steel Full plate"
-	cost = 250
+	cost = 350
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full)
 
 /datum/supply_pack/rogue/Knight/blacksteelfullplate
@@ -57,7 +57,7 @@
 
 /datum/supply_pack/rogue/Knight/Bevor
 	name = "Bevor"
-	cost = 100
+	cost = 200
 	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 
 /datum/supply_pack/rogue/Knight/gorget
@@ -72,17 +72,17 @@
 
 /datum/supply_pack/rogue/Knight/plategaunt
 	name = "Plate Gauntlets"
-	cost = 100
+	cost = 200
 	contains = list(/obj/item/clothing/gloves/roguetown/plate)
 
 /datum/supply_pack/rogue/Knight/blkplategaunt
 	name = "Blacksteel Plate Gauntlets"
-	cost = 250
+	cost = 350
 	contains = list(/obj/item/clothing/gloves/roguetown/blacksteel/plategloves)
 
 /datum/supply_pack/rogue/Knight/platechausses
 	name = "Plate Chausses"
-	cost = 200
+	cost = 300
 	contains = list(/obj/item/clothing/under/roguetown/platelegs)
 
 /datum/supply_pack/rogue/Knight/blkplatechausses
@@ -92,35 +92,35 @@
 
 /datum/supply_pack/rogue/Knight/plateboots
 	name = "Plated boots"
-	cost = 80
+	cost = 200
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 
 /datum/supply_pack/rogue/Knight/blkplateboots
 	name = "Blacksteel Plated boots"
-	cost = 200
+	cost = 400
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots)
 
 /datum/supply_pack/rogue/Knight/bsword
 	name = "Bastard Sword"
-	cost = 100
+	cost = 200
 	contains = list(/obj/item/rogueweapon/sword/long)
 
 /datum/supply_pack/rogue/Knight/estoc
 	name = "Estoc"
-	cost = 250
+	cost = 350
 	contains = list(/obj/item/rogueweapon/estoc)
 
 /datum/supply_pack/rogue/Knight/greatsword
 	name = "Greatsword"
-	cost = 250
+	cost = 400
 	contains = list(/obj/item/rogueweapon/greatsword)
 
 /datum/supply_pack/rogue/Knight/Zweihandersword
 	name = "Zweihander"
-	cost = 80
+	cost = 200
 	contains = list(/obj/item/rogueweapon/greatsword/zwei)
 
 /datum/supply_pack/rogue/Knight/kiteshield
 	name = "Kite Shield"
-	cost = 100
+	cost = 200
 	contains = list(/obj/item/rogueweapon/shield/tower/metal)

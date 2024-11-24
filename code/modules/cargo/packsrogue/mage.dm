@@ -21,32 +21,32 @@
 
 /datum/supply_pack/rogue/Mage/gambeson
 	name = "Gambeson"
-	cost = 20
+	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/Mage/leather
 	name = "Leather Armor"
-	cost = 40
+	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather)
 
 /datum/supply_pack/rogue/Mage/leather/studded
 	name = "Studded Leather Armor"
-	cost = 80
+	cost = 200
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/Mage/leather/Lhelmet
 	name = "Leather Helmet"
-	cost = 20
+	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 /datum/supply_pack/rogue/Mage/leather/Lgloves
 	name = "hardened leather gloves"
-	cost = 50
+	cost = 150
 	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 
 /datum/supply_pack/rogue/Mage/leather/Lbracers
 	name = "Leather bracers"
-	cost = 20
+	cost = 25
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 /datum/supply_pack/rogue/Mage/leather/woodenstaff
@@ -61,25 +61,25 @@
 
 /datum/supply_pack/rogue/Mage/spear/billhook
 	name = "Billhook"
-	cost = 80
+	cost = 160
 	contains = list(/obj/item/rogueweapon/spear/billhook)
 
 /datum/supply_pack/rogue/Mage/halberd
 	name = "Halberd"
-	cost = 80
+	cost = 160
 	contains = list(/obj/item/rogueweapon/halberd)
 
 /datum/supply_pack/rogue/Mage/bardiche
 	name = "Bardiche"
-	cost = 80
+	cost = 160
 	contains = list(/obj/item/rogueweapon/halberd/bardiche)
 
 /datum/supply_pack/rogue/Mage/ebeak
 	name = "Eagle's Beak"
-	cost = 100
+	cost = 200
 	contains = list(/obj/item/rogueweapon/eaglebeak)
 
 /datum/supply_pack/rogue/Mage/Lucerne
 	name = "Lucerne"
-	cost = 100
+	cost = 200
 	contains = list(/obj/item/rogueweapon/eaglebeak/lucerne)
