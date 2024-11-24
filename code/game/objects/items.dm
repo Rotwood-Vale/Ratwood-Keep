@@ -145,6 +145,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/list/gripped_intents //intents while gripped, replacing main intents
 	var/force_wielded = 0
 	var/gripsprite = FALSE //use alternate grip sprite for inhand
+	var/gripspriteonmob = FALSE //use alternate sprite for onmob
 
 	var/dropshrink = 0
 
@@ -250,9 +251,23 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 					B.remove()
 					B.generate_appearance()
 					B.apply()
+			if(gripspriteonmob)
+				item_state = "[initial(item_state)]1"
+				var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
+				if(B)
+					B.remove()
+					B.generate_appearance()
+					B.apply()
 			return
 		if(gripsprite)
 			icon_state = initial(icon_state)
+			var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
+			if(B)
+				B.remove()
+				B.generate_appearance()
+				B.apply()
+		if(gripspriteonmob)
+			item_state = initial(item_state)
 			var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
 			if(B)
 				B.remove()

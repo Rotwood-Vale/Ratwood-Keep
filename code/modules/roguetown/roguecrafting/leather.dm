@@ -73,6 +73,14 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 15
 
+/datum/crafting_recipe/roguetown/hunting/powderflask
+	name = "powderflask"
+	result = /obj/item/powderflask
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 2,
+				/datum/reagent/alch/syruma = 15)
+	sellprice = 15
+
 /datum/crafting_recipe/roguetown/hunting/quiver
 	name = "quiver"
 	result = /obj/item/ammo_holder/quiver

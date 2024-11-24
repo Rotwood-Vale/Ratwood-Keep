@@ -281,8 +281,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Innkeep"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/archivist
-	name = "Archivist"
+/obj/effect/landmark/start/architect
+	name = "Architect"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/guildsmith

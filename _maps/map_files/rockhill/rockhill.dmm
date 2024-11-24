@@ -10012,7 +10012,7 @@
 "hNJ" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/fabric,
-/obj/effect/landmark/start/archivist,
+/obj/effect/landmark/start/architect,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "hNW" = (

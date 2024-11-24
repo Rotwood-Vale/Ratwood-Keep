@@ -135,7 +135,7 @@
 #define YEOMEN		(1<<4)
 
 #define BARKEEP		(1<<0)
-#define ARCHIVIST	(1<<1)
+#define ARCHITECT	(1<<1)
 #define GUILDSMITH	(1<<2)
 #define ALCHEMIST	(1<<3)
 #define ARTIFICER	(1<<4)
@@ -252,7 +252,7 @@
 #define JDO_SHOPHAND 17.1
 #define JDO_GRABBER 17.2
 
-#define JDO_ARCHIVIST 18
+#define JDO_ARCHITECT 18
 
 #define JDO_CHIEF 19
 #define JDO_GUILDSMITH 20
@@ -349,7 +349,7 @@
 
 #define YEOMEN_ROLES \
 	/datum/job/roguetown/woodsman,\
-	/datum/job/roguetown/archivist,\
+	/datum/job/roguetown/architect,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/guildsmith,\
 	/datum/job/roguetown/artificer,\

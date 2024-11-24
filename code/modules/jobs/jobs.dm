@@ -75,6 +75,7 @@ GLOBAL_LIST_INIT(courtier_positions, list(
 	"Court Physician",
 	"Jester",
 	"Head Butler",
+	"Architect",
 ))
 
 GLOBAL_LIST_INIT(garrison_positions, list(
@@ -101,7 +102,6 @@ GLOBAL_LIST_INIT(church_positions, list(
 GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Merchant",
 	"Barkeep",
-	"Archivist",
 	"Guild Smith",
 	"Seamster",
 	"Alchemist",

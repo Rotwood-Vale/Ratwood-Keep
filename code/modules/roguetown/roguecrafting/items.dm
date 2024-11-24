@@ -441,3 +441,10 @@
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/stone = 1)
 	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/sawedoff
+	name = "handgonne"
+	result = /obj/item/gun/ballistic/handgonne
+	reqs = list(/obj/item/gun/ballistic/arquebus = 1)
+	craftdiff = 0
+	tools = list(/obj/item/rogueweapon/surgery/saw = 1)

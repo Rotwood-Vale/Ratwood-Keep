@@ -230,7 +230,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "archive";
-	name = "Archivist's Office"
+	name = "Architect's Office"
 	},
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue)
@@ -368,7 +368,7 @@
 	icon_state = "wcv";
 	locked = 1;
 	lockid = "archive";
-	name = "Archivist's Chambers"
+	name = "Architect's Chambers"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
@@ -2535,7 +2535,7 @@
 "uF" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/fabric,
-/obj/effect/landmark/start/archivist,
+/obj/effect/landmark/start/architect,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "uI" = (
