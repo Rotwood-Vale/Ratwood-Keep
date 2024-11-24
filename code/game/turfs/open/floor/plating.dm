@@ -130,6 +130,17 @@
 		else
 			to_chat(user, span_danger("I hit [src], to no effect!"))
 
+/turf/open/floor/plating/foam/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	if(the_rcd.mode == RCD_FLOORWALL)
+		return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 1)
+
+/turf/open/floor/plating/foam/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
+	if(passed_mode == RCD_FLOORWALL)
+		to_chat(user, span_notice("I build a floor."))
+		ChangeTurf(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
+		return TRUE
+	return FALSE
+
 /turf/open/floor/plating/foam/ex_act()
 	..()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)

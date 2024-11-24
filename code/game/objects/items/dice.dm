@@ -216,3 +216,9 @@ obj/item/dice/d6/ebony
 /obj/item/dice/update_icon()
 	cut_overlays()
 	add_overlay("[src.icon_state]-[src.result]")
+
+/obj/item/dice/microwave_act(obj/machinery/microwave/M)
+	if(microwave_riggable)
+		rigged = DICE_BASICALLY_RIGGED
+		rigged_value = result
+	..(M)

@@ -129,7 +129,10 @@
 
 	var/log_message = uppertext(message)
 	if(!span_list || !span_list.len)
-		span_list = list()
+		if(iscultist(user))
+			span_list = list("narsiesmall")
+		else
+			span_list = list()
 
 	user.say(message, spans = span_list, sanitize = FALSE)
 
@@ -161,6 +164,10 @@
 		//Why are you speaking
 		if(user.mind.assigned_role == "Mime")
 			power_multiplier *= 0.5
+
+	//Cultists are closer to their gods and are more powerful, but they'll give themselves away
+	if(iscultist(user))
+		power_multiplier *= 2
 
 	//Try to check if the speaker specified a name or a job to focus on
 	var/list/specific_listeners = list()
@@ -377,6 +384,12 @@
 			var/mob/living/L = V
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom/movable, say), "Who's there?"), 5 * i)
 			i++
+
+	//STATE LAWS
+	else if((findtext(message, statelaws_words)))
+		cooldown = COOLDOWN_STUN
+		for(var/mob/living/silicon/S in listeners)
+			S.statelaws(force = 1)
 
 	//MOVE
 	else if((findtext(message, move_words)))

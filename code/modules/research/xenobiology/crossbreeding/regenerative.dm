@@ -75,6 +75,20 @@ Regenerative extracts:
 	C.desc = ""
 	target.forceMove(C)
 
+/obj/item/slimecross/regenerative/yellow
+	colour = "yellow"
+	effect_desc = ""
+
+/obj/item/slimecross/regenerative/yellow/core_effect(mob/living/target, mob/user)
+	var/list/batteries = list()
+	for(var/obj/item/stock_parts/cell/C in target.GetAllContents())
+		if(C.charge < C.maxcharge)
+			batteries += C
+	if(batteries.len)
+		var/obj/item/stock_parts/cell/ToCharge = pick(batteries)
+		ToCharge.charge = ToCharge.maxcharge
+		to_chat(target, span_notice("I feel a strange electrical pulse, and one of your electrical items was recharged."))
+
 /obj/item/slimecross/regenerative/darkpurple
 	colour = "dark purple"
 	effect_desc = ""

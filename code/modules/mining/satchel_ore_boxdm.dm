@@ -42,6 +42,10 @@
 	if(Adjacent(user))
 		show_contents(user)
 
+/obj/structure/ore_box/attack_robot(mob/user)
+	if(Adjacent(user))
+		show_contents(user)
+
 /obj/structure/ore_box/proc/show_contents(mob/user)
 	var/dat = text("<b>The contents of the ore box reveal...</b><br>")
 	var/list/assembled = list()

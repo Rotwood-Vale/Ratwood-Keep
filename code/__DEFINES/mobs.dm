@@ -376,6 +376,8 @@
 #define MIRROR_PRIDE  (1<<2)
 //Race swap wizard event
 #define RACE_SWAP     (1<<3)
+//ERT spawn template (avoid races that don't function without correct gear)
+#define ERT_SPAWN     (1<<4)
 //xenobio black crossbreed
 #define SLIME_EXTRACT (1<<5)
 //Wabbacjack staff projectiles

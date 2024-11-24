@@ -176,6 +176,9 @@ FLOOR SAFES
 /obj/structure/safe/handle_atom_del(atom/A)
 	updateUsrDialog()
 
+/obj/structure/safe/blob_act(obj/structure/blob/B)
+	return
+
 /obj/structure/safe/ex_act(severity, target)
 	if(((severity == 2 && target == src) || severity == 1) && explosion_count < 3)
 		explosion_count++

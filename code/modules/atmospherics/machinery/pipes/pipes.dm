@@ -58,6 +58,14 @@
 /obj/machinery/atmospherics/pipe/remove_air(amount)
 	return parent.air.remove(amount)
 
+/obj/machinery/atmospherics/pipe/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/pipe_meter))
+		var/obj/item/pipe_meter/meter = W
+		user.dropItemToGround(meter)
+		meter.setAttachLayer(piping_layer)
+	else
+		return ..()
+
 /obj/machinery/atmospherics/pipe/returnPipenet()
 	return parent
 
@@ -69,6 +77,13 @@
 
 	releaseAirToTurf()
 	QDEL_NULL(air_temporary)
+
+	var/turf/T = loc
+	for(var/obj/machinery/meter/meter in T)
+		if(meter.target == src)
+			var/obj/item/pipe_meter/PM = new (T)
+			meter.transfer_fingerprints_to(PM)
+			qdel(meter)
 	. = ..()
 
 /obj/machinery/atmospherics/pipe/update_icon()

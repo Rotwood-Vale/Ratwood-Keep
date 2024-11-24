@@ -81,6 +81,17 @@ Industrial extracts:
 	plasmarequired = 3
 	itempath = /obj/item/stack/sheet/metal/ten
 
+/obj/item/slimecross/industrial/yellow
+	colour = "yellow"
+	effect_desc = ""
+	plasmarequired = 5
+	itempath = /obj/item/stock_parts/cell/high
+
+/obj/item/slimecross/industrial/yellow/do_after_spawn(obj/item/spawned)
+	var/obj/item/stock_parts/cell/high/C = spawned
+	if(istype(C))
+		C.charge = rand(0,C.maxcharge/2)
+
 /obj/item/slimecross/industrial/darkpurple
 	colour = "dark purple"
 	effect_desc = ""
@@ -113,6 +124,12 @@ Industrial extracts:
 	effect_desc = ""
 	plasmarequired = 7
 	itempath = /obj/item/stack/ore/bluespace_crystal/artificial
+
+/obj/item/slimecross/industrial/sepia
+	colour = "sepia"
+	effect_desc = ""
+	plasmarequired = 2
+	itempath = /obj/item/camera
 
 /obj/item/slimecross/industrial/cerulean
 	colour = "cerulean"

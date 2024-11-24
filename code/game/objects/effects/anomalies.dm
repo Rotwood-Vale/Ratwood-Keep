@@ -8,6 +8,7 @@
 	anchored = TRUE
 	light_range = 3
 	var/movechance = 70
+	var/obj/item/assembly/signaler/anomaly/aSignal
 	var/area/impact_area
 
 	var/lifespan = 990
@@ -22,9 +23,15 @@
 	START_PROCESSING(SSobj, src)
 	impact_area = get_area(src)
 
+	aSignal = new(src)
+	aSignal.name = "[name] core"
+	aSignal.code = rand(1,100)
+	aSignal.anomaly_type = type
+
 	var/frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)
 	if(ISMULTIPLE(frequency, 2))//signaller frequencies are always uneven!
 		frequency++
+	aSignal.set_frequency(frequency)
 
 	if(new_lifespan)
 		lifespan = new_lifespan
@@ -65,6 +72,11 @@
 		O.forceMove(drop_location())
 
 	qdel(src)
+
+
+/obj/effect/anomaly/attackby(obj/item/I, mob/user, params)
+	if(I.tool_behaviour == TOOL_ANALYZER)
+		to_chat(user, span_notice("Analyzing... [src]'s unstable field is fluctuating along frequency [format_frequency(aSignal.frequency)], code [aSignal.code]."))
 
 ///////////////////////
 

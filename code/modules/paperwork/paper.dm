@@ -210,6 +210,21 @@
 			playsound(loc, 'sound/blank.ogg', 50, TRUE)
 			addtimer(CALLBACK(src, PROC_REF(reset_spamflag)), 20)
 
+
+/obj/item/paper/attack_ai(mob/living/silicon/ai/user)
+	var/dist
+	if(istype(user) && user.current) //is AI
+		dist = get_dist(src, user.current)
+	else //cyborg or AI not seeing through a camera
+		dist = get_dist(src, user)
+	if(dist < 2)
+		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		onclose(usr, "[name]")
+	else
+		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		onclose(usr, "[name]")
+
+
 /obj/item/paper/proc/addtofield(id, text, links = 0)
 	var/locid = 0
 	var/laststart = 1

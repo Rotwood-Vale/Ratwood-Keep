@@ -159,6 +159,15 @@ Burning extracts:
 			playsound(get_turf(L), "sparks", 50, TRUE)
 	..()
 
+/obj/item/slimecross/burning/sepia
+	colour = "sepia"
+	effect_desc = ""
+
+/obj/item/slimecross/burning/sepia/do_effect(mob/user)
+	user.visible_message(span_notice("[src] shapes itself into a camera!"))
+	new /obj/item/camera/rewind(get_turf(user))
+	..()
+
 /obj/item/slimecross/burning/cerulean
 	colour = "cerulean"
 	effect_desc = ""

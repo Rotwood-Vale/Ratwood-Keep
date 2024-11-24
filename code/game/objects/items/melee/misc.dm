@@ -249,10 +249,32 @@
 		else
 			user.take_bodypart_damage(2*force)
 		return
+	if(iscyborg(target))
+		// We don't stun if we're on harm.
+		if (user.used_intent.type != INTENT_HARM)
+			if (affect_silicon)
+				var/list/desc = get_silicon_stun_description(target, user)
+
+				target.flash_act(affect_silicon = TRUE)
+				target.Paralyze(stun_time_silicon)
+				additional_effects_silicon(target, user)
+
+				user.visible_message(desc["visible"], desc["local"])
+				playsound(get_turf(src), on_stun_sound, 100, TRUE, -1)
+
+				if (stun_animation)
+					user.do_attack_animation(target)
+			else
+				..()
+		else
+			..()
+		return
 	if(!isliving(target))
 		return
 	if (user.used_intent.type == INTENT_HARM)
 		if(!..())
+			return
+		if(!iscyborg(target))
 			return
 	else
 		if(cooldown_check <= world.time)
@@ -384,6 +406,104 @@
 	target.Jitter(20)
 	target.stuttering += 20
 
+/obj/item/melee/supermatter_sword
+	name = "supermatter sword"
+	desc = ""
+	icon = 'icons/obj/items_and_weapons.dmi'
+	icon_state = "supermatter_sword"
+	item_state = "supermatter_sword"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	slot_flags = null
+	w_class = WEIGHT_CLASS_BULKY
+	force = 0.001
+	armor_penetration = 1000
+	var/obj/machinery/power/supermatter_crystal/shard
+	var/balanced = 1
+	force_string = "INFINITE"
+
+/obj/item/melee/supermatter_sword/Initialize()
+	. = ..()
+	shard = new /obj/machinery/power/supermatter_crystal(src)
+	qdel(shard.countdown)
+	shard.countdown = null
+	START_PROCESSING(SSobj, src)
+	visible_message(span_warning("[src] appears, balanced ever so perfectly on its hilt. This isn't ominous at all."))
+
+/obj/item/melee/supermatter_sword/process()
+	if(balanced || throwing || ismob(src.loc) || isnull(src.loc))
+		return
+	if(!isturf(src.loc))
+		var/atom/target = src.loc
+		forceMove(target.loc)
+		consume_everything(target)
+	else
+		var/turf/T = get_turf(src)
+		if(!isspaceturf(T))
+			consume_turf(T)
+
+/obj/item/melee/supermatter_sword/afterattack(target, mob/user, proximity_flag)
+	. = ..()
+	if(user && target == user)
+		user.dropItemToGround(src)
+	if(proximity_flag)
+		consume_everything(target)
+
+/obj/item/melee/supermatter_sword/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	..()
+	if(ismob(hit_atom))
+		var/mob/M = hit_atom
+		if(src.loc == M)
+			M.dropItemToGround(src)
+	consume_everything(hit_atom)
+
+/obj/item/melee/supermatter_sword/pickup(user)
+	..()
+	balanced = 0
+
+/obj/item/melee/supermatter_sword/ex_act(severity, target)
+	visible_message(span_danger("The blast wave smacks into [src] and rapidly flashes to ash."),\
+	span_hear("I hear a loud crack as you are washed with a wave of heat."))
+	consume_everything()
+
+/obj/item/melee/supermatter_sword/acid_act()
+	visible_message(span_danger("The acid smacks into [src] and rapidly flashes to ash."),\
+	span_hear("I hear a loud crack as you are washed with a wave of heat."))
+	consume_everything()
+
+/obj/item/melee/supermatter_sword/bullet_act(obj/projectile/P)
+	visible_message(span_danger("[P] smacks into [src] and rapidly flashes to ash."),\
+	span_hear("I hear a loud crack as you are washed with a wave of heat."))
+	consume_everything(P)
+	return BULLET_ACT_HIT
+
+/obj/item/melee/supermatter_sword/suicide_act(mob/user)
+	user.visible_message(span_suicide("[user] touches [src]'s blade. It looks like [user.p_theyre()] tired of waiting for the radiation to kill [user.p_them()]!"))
+	user.dropItemToGround(src, TRUE)
+	shard.Bumped(user)
+
+/obj/item/melee/supermatter_sword/proc/consume_everything(target)
+	if(isnull(target))
+		shard.Consume()
+	else if(!isturf(target))
+		shard.Bumped(target)
+	else
+		consume_turf(target)
+
+/obj/item/melee/supermatter_sword/proc/consume_turf(turf/T)
+	var/oldtype = T.type
+	var/turf/newT = T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+	if(newT.type == oldtype)
+		return
+	playsound(T, 'sound/blank.ogg', 50, TRUE)
+	T.visible_message(span_danger("[T] smacks into [src] and rapidly flashes to ash."),\
+	span_hear("I hear a loud crack as you are washed with a wave of heat."))
+	shard.Consume()
+	CALCULATE_ADJACENT_TURFS(T)
+
+/obj/item/melee/supermatter_sword/add_blood_DNA(list/blood_dna)
+	return FALSE
+
 /obj/item/melee/curator_whip
 	name = "curator's whip"
 	desc = ""
@@ -403,6 +523,116 @@
 		var/mob/living/carbon/human/H = target
 		H.drop_all_held_items()
 		H.visible_message(span_danger("[user] disarms [H]!"), span_danger("[user] disarmed you!"))
+
+/obj/item/melee/roastingstick
+	name = "advanced roasting stick"
+	desc = ""
+	icon_state = "roastingstick_0"
+	item_state = "null"
+	slot_flags = ITEM_SLOT_BELT
+	w_class = WEIGHT_CLASS_SMALL
+	item_flags = NONE
+	force = 0
+	attack_verb = list("hit", "poked")
+	var/obj/item/reagent_containers/food/snacks/sausage/held_sausage
+	var/static/list/ovens
+	var/on = FALSE
+	var/datum/beam/beam
+
+/obj/item/melee/roastingstick/Initialize()
+	. = ..()
+	if (!ovens)
+		ovens = typecacheof(list(/obj/singularity, /obj/machinery/power/supermatter_crystal))
+
+/obj/item/melee/roastingstick/attack_self(mob/user)
+	on = !on
+	if(on)
+		extend(user)
+	else
+		if (held_sausage)
+			to_chat(user, span_warning("I can't retract [src] while [held_sausage] is attached!"))
+			return
+		retract(user)
+
+	playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
+	add_fingerprint(user)
+
+/obj/item/melee/roastingstick/attackby(atom/target, mob/user)
+	..()
+	if (istype(target, /obj/item/reagent_containers/food/snacks/sausage))
+		if (!on)
+			to_chat(user, span_warning("I must extend [src] to attach anything to it!"))
+			return
+		if (held_sausage)
+			to_chat(user, span_warning("[held_sausage] is already attached to [src]!"))
+			return
+		if (user.transferItemToLoc(target, src))
+			held_sausage = target
+		else
+			to_chat(user, span_warning("[target] doesn't seem to want to get on [src]!"))
+	update_icon()
+
+/obj/item/melee/roastingstick/attack_hand(mob/user)
+	..()
+	if (held_sausage)
+		user.put_in_hands(held_sausage)
+		held_sausage = null
+	update_icon()
+
+/obj/item/melee/roastingstick/update_icon()
+	. = ..()
+	cut_overlays()
+	if (held_sausage)
+		var/mutable_appearance/sausage = mutable_appearance(icon, "roastingstick_sausage")
+		add_overlay(sausage)
+
+/obj/item/melee/roastingstick/proc/extend(user)
+	to_chat(user, span_warning("I extend [src]."))
+	icon_state = "roastingstick_1"
+	item_state = "nullrod"
+	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/melee/roastingstick/proc/retract(user)
+	to_chat(user, span_notice("I collapse [src]."))
+	icon_state = "roastingstick_0"
+	item_state = null
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/melee/roastingstick/handle_atom_del(atom/target)
+	if (target == held_sausage)
+		held_sausage = null
+		update_icon()
+
+/obj/item/melee/roastingstick/afterattack(atom/target, mob/user, proximity)
+	. = ..()
+	if (!on)
+		return
+	if (is_type_in_typecache(target, ovens))
+		if (held_sausage && held_sausage.roasted)
+			to_chat(user, span_warning("My [held_sausage] has already been cooked!"))
+			return
+		if (istype(target, /obj/singularity) && get_dist(user, target) < 10)
+			to_chat(user, span_notice("I send [held_sausage] towards [target]."))
+			playsound(src, 'sound/blank.ogg', 50, TRUE)
+			beam = user.Beam(target,icon_state="rped_upgrade",time=100)
+		else if (user.Adjacent(target))
+			to_chat(user, span_notice("I extend [src] towards [target]."))
+			playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
+		else
+			return
+		if(do_after(user, 100, target = user))
+			finish_roasting(user, target)
+		else
+			QDEL_NULL(beam)
+			playsound(src, 'sound/blank.ogg', 50, TRUE)
+
+/obj/item/melee/roastingstick/proc/finish_roasting(user, atom/target)
+	to_chat(user, span_notice("I finish roasting [held_sausage]."))
+	playsound(src,'sound/blank.ogg',50,TRUE)
+	held_sausage.add_atom_colour(rgb(103,63,24), FIXED_COLOUR_PRIORITY)
+	held_sausage.name = "[target.name]-roasted [held_sausage.name]"
+	held_sausage.desc = ""
+	update_icon()
 
 /obj/item/melee/cleric_mace
 	name = "cleric mace"

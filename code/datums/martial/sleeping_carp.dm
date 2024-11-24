@@ -223,6 +223,8 @@
 		else
 			user.take_bodypart_damage(2*force)
 		return
+	if(iscyborg(target))
+		return ..()
 	if(!isliving(target))
 		return ..()
 	var/mob/living/carbon/C = target

@@ -23,8 +23,9 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 	//items that shouldn't spawn on the floor because they would bug or act weird
 	var/static/list/spawn_forbidden = list(
 		/obj/item/tk_grab, /obj/item/implant, // not implanter, the actual thing that is inside you
-		/obj/item/assembly, /obj/item/onetankbomb,
-		/obj/item/smallDelivery, /obj/projectile)
+		/obj/item/assembly, /obj/item/onetankbomb, /obj/item/pda/ai,
+		/obj/item/smallDelivery, /obj/projectile,
+		/obj/item/borg/sight, /obj/item/borg/stun, /obj/item/robot_module)
 
 /datum/hSB/proc/update()
 	var/static/list/hrefs = list(
@@ -46,7 +47,11 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Spawn 50 Plasteel"					= "hsbplasteel",
 			"Spawn 50 Reinforced Glass"         = "hsbrglass",
 			"Spawn 50 Glass"					= "hsbglass",
+			"Spawn Full Cable Coil"				= "hsbspawn&path=[/obj/item/stack/cable_coil]",
+			"Spawn Hyper Capacity Power Cell"	= "hsbspawn&path=[/obj/item/stock_parts/cell/hyper]",
+			"Spawn Inf. Capacity Power Cell"	= "hsbspawn&path=[/obj/item/stock_parts/cell/infinite]",
 			"Spawn Rapid Construction Device"	= "hsbrcd",
+			"Spawn RCD Ammo"					= "hsb_safespawn&path=[/obj/item/rcd_ammo]",
 			"Spawn Airlock"						= "hsbairlock",
 
 			"Miscellaneous",
@@ -55,6 +60,9 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Spawn Water Tank"					= "hsbspawn&path=[/obj/structure/reagent_dispensers/watertank]",
 
 			"Bots",
+			"Spawn Cleanbot"					= "hsbspawn&path=[/mob/living/simple_animal/bot/cleanbot]",
+			"Spawn Floorbot"					= "hsbspawn&path=[/mob/living/simple_animal/bot/floorbot]",
+			"Spawn Medbot"						= "hsbspawn&path=[/mob/living/simple_animal/bot/medbot]",
 
 			"Canisters",
 			"Spawn O2 Canister" 				= "hsbspawn&path=[/obj/machinery/portable_atmospherics/canister/oxygen]",
@@ -159,6 +167,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					P.back.layer = initial(P.back.layer)
 					P.back.plane = initial(P.back.plane)
 					P.back = null
+				P.back = new/obj/item/tank/jetpack/oxygen(P)
 				P.back.layer = ABOVE_HUD_LAYER
 				P.back.plane = ABOVE_HUD_PLANE
 				P.update_inv_back()
@@ -197,6 +206,21 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 				ID.assignment = "Sandbox"
 				ID.access = get_all_accesses()
 				ID.update_label()
+
+			//
+			// RCD - starts with full clip
+			// Spawn check due to grief potential (destroying floors, walls, etc)
+			//
+			if("hsbrcd")
+				if(!GLOB.hsboxspawn) return
+
+				new/obj/item/construction/rcd/combat(usr.loc)
+
+			//
+			// New sandbox airlock maker
+			//
+			if("hsbairlock")
+				new /datum/airlock_maker(usr.loc)
 
 			//
 			// Object spawn window

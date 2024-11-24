@@ -204,6 +204,18 @@
 
 	dog_fashion = /datum/dog_fashion/head/cardborg
 
+/obj/item/clothing/head/cardborg/equipped(mob/living/user, slot)
+	..()
+	if(ishuman(user) && slot == SLOT_HEAD)
+		var/mob/living/carbon/human/H = user
+		if(istype(H.wear_armor, /obj/item/clothing/suit/cardborg))
+			var/obj/item/clothing/suit/cardborg/CB = H.wear_armor
+			CB.disguise(user, src)
+
+/obj/item/clothing/head/cardborg/dropped(mob/living/user)
+	..()
+	user.remove_alt_appearance("standard_borg_disguise")
+
 
 
 /obj/item/clothing/head/wig
@@ -306,7 +318,7 @@
 			return
 	return ..()
 
-/obj/item/clothing/head/foilhat/heating_act()
+/obj/item/clothing/head/foilhat/microwave_act(obj/machinery/microwave/M)
 	. = ..()
 	if(!warped)
 		warp_up()

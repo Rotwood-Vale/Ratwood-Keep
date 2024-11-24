@@ -1,6 +1,7 @@
 /obj/machinery/door/airlock/maniac
 	icon = 'icons/roguetown/maniac/dreamer_structures.dmi'
 	icon_state = "door_closed"
+	assemblytype = null
 	resistance_flags = INDESTRUCTIBLE
 	locked = TRUE
 

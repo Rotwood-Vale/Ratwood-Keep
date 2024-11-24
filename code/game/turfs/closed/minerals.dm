@@ -92,14 +92,13 @@
 			if(prob(23))
 				new rockType(src)
 		SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
-//	if(ishuman(user))
-//		var/mob/living/carbon/human/H = user
-//		if(give_exp)
-//			if (mineralType && (mineralAmt > 0))
-//				H.mind.adjust_experience(/datum/skill/mining, initial(mineralType.mine_experience) * mineralAmt)
-//			else
-//				H.mind.adjust_experience(/datum/skill/mining, 4)
+	else if(user.goodluck(2))
+		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
+//		to_chat(user, span_notice("Bonus ducks!"))
+		new newthing(src)
 
+	for(var/obj/effect/temp_visual/mining_overlay/M in src)
+		qdel(M)
 	var/flags = NONE
 	if(defer_change) // TODO: make the defer change var a var for any changeturf flag
 		flags = CHANGETURF_DEFER_CHANGE
@@ -458,6 +457,12 @@
 /turf/closed/mineral/gibtonite/Initialize()
 	det_time = rand(8,10) //So you don't know exactly when the hot potato will explode
 	. = ..()
+
+/turf/closed/mineral/gibtonite/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/mining_scanner) || istype(I, /obj/item/t_scanner/adv_mining_scanner) && stage == 1)
+		user.visible_message(span_notice("[user] holds [I] to [src]..."), span_notice("I use [I] to locate where to cut off the chain reaction and attempt to stop it..."))
+		defuse()
+	..()
 
 /turf/closed/mineral/gibtonite/proc/explosive_reaction(mob/user = null, triggered_by_explosion = 0)
 	if(stage == GIBTONITE_UNSTRUCK)

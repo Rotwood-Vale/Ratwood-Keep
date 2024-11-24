@@ -6,6 +6,7 @@
 
 	var/static/list/falling_atoms = list() // Atoms currently falling into chasms
 	var/static/list/forbidden_types = typecacheof(list(
+		/obj/singularity,
 		/obj/docking_port,
 		/obj/structure/lattice,
 		/obj/structure/stone_tile,
@@ -126,6 +127,10 @@
 		//Make sure the item is still there after our sleep
 		if(!AM || QDELETED(AM))
 			return
+
+		if(iscyborg(AM))
+			var/mob/living/silicon/robot/S = AM
+			qdel(S.mmi)
 
 		falling_atoms -= AM
 		qdel(AM)

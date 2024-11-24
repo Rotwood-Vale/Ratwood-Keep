@@ -94,7 +94,10 @@
 
 			playsound(loc, cuffsound, 30, TRUE, -2)
 			if(do_mob(user, C, 30) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore()))
-				apply_cuffs(C, user)
+				if(iscyborg(user))
+					apply_cuffs(C, user, TRUE)
+				else
+					apply_cuffs(C, user)
 				C.visible_message(span_notice("[user] handcuffs [C]."), \
 									span_danger("[user] handcuffs you."))
 				SSblackbox.record_feedback("tally", "handcuffs", 1, type)

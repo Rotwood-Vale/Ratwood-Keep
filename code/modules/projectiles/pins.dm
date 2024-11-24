@@ -83,6 +83,8 @@
 /obj/item/firing_pin/test_range/pin_auth(mob/living/user)
 	if(!istype(user))
 		return FALSE
+	for(var/obj/machinery/magnetic_controller/M in range(user, 3))
+		return TRUE
 	return FALSE
 
 
@@ -304,6 +306,18 @@
 			return TRUE
 	to_chat(user, span_warning("I need to be wearing [tagcolor] laser tag armor!"))
 	return FALSE
+
+/obj/item/firing_pin/tag/red
+	name = "red laser tag firing pin"
+	icon_state = "firing_pin_red"
+	suit_requirement = /obj/item/clothing/suit/redtag
+	tagcolor = "red"
+
+/obj/item/firing_pin/tag/blue
+	name = "blue laser tag firing pin"
+	icon_state = "firing_pin_blue"
+	suit_requirement = /obj/item/clothing/suit/bluetag
+	tagcolor = "blue"
 
 /obj/item/firing_pin/Destroy()
 	if(gun)

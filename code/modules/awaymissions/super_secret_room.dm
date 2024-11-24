@@ -99,6 +99,9 @@
 	return
 
 
+/obj/structure/speaking_tile/attack_ai(mob/user)
+	return interact(user)
+
 /obj/structure/speaking_tile/attack_slime(mob/user)
 	return interact(user)
 

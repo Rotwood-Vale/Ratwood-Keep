@@ -102,6 +102,7 @@
 			if(user)
 				user.visible_message(span_warning("[user] saws [src] open and pulls out a brain!"), span_notice("I saw [src] open and pull out a brain."))
 			if(brainmob)
+				brainmob.container = null
 				brainmob.forceMove(brain)
 				brain.brainmob = brainmob
 				brainmob = null

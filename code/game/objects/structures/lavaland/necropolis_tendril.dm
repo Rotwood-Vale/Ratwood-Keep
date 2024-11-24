@@ -38,6 +38,7 @@ GLOBAL_LIST_INIT(tendrils, list())
 
 /obj/structure/spawner/lavaland/deconstruct(disassembled)
 	new /obj/effect/collapse(loc)
+	new /obj/structure/closet/crate/necropolis/tendril(loc)
 	return ..()
 
 

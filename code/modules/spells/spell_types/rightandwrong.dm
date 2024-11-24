@@ -4,10 +4,15 @@
 #define SPECIALIST_MAGIC_PROB 2
 
 GLOBAL_LIST_INIT(summoned_guns, list(
+	/obj/item/gun/energy/disabler,
+	/obj/item/gun/energy/e_gun,
+	/obj/item/gun/energy/e_gun/advtaser,
+	/obj/item/gun/energy/laser,
 	/obj/item/gun/ballistic/revolver,
 	/obj/item/gun/ballistic/revolver/detective,
 	/obj/item/gun/ballistic/automatic/pistol/deagle/camo,
 	/obj/item/gun/ballistic/automatic/gyropistol,
+	/obj/item/gun/energy/pulse,
 	/obj/item/gun/ballistic/automatic/pistol/suppressed,
 	/obj/item/gun/ballistic/shotgun/doublebarrel,
 	/obj/item/gun/ballistic/shotgun,
@@ -17,17 +22,30 @@ GLOBAL_LIST_INIT(summoned_guns, list(
 	/obj/item/gun/ballistic/rifle/boltaction,
 	/obj/item/pneumatic_cannon/speargun,
 	/obj/item/gun/ballistic/automatic/mini_uzi,
+	/obj/item/gun/energy/lasercannon,
+	/obj/item/gun/energy/kinetic_accelerator/crossbow/large,
+	/obj/item/gun/energy/e_gun/nuclear,
 	/obj/item/gun/ballistic/automatic/proto,
 	/obj/item/gun/ballistic/automatic/c20r,
 	/obj/item/gun/ballistic/automatic/l6_saw,
 	/obj/item/gun/ballistic/automatic/m90,
+	/obj/item/gun/energy/e_gun/dragnet,
+	/obj/item/gun/energy/e_gun/turret,
+	/obj/item/gun/energy/pulse/carbine,
+	/obj/item/gun/energy/decloner,
+	/obj/item/gun/energy/mindflayer,
+	/obj/item/gun/energy/kinetic_accelerator,
+	/obj/item/gun/energy/plasmacutter/adv,
+	/obj/item/gun/energy/wormhole_projector,
 	/obj/item/gun/ballistic/automatic/wt550,
 	/obj/item/gun/ballistic/shotgun/bulldog,
 	/obj/item/gun/ballistic/revolver/grenadelauncher,
 	/obj/item/gun/ballistic/revolver/golden,
 	/obj/item/gun/ballistic/automatic/sniper_rifle,
 	/obj/item/gun/ballistic/rocketlauncher,
-	/obj/item/gun/medbeam))
+	/obj/item/gun/medbeam,
+	/obj/item/gun/energy/laser/scatter,
+	/obj/item/gun/energy/gravity_gun))
 
 //if you add anything that isn't covered by the typepaths below, add it to summon_magic_objective_types
 GLOBAL_LIST_INIT(summoned_magic, list(
@@ -38,17 +56,21 @@ GLOBAL_LIST_INIT(summoned_magic, list(
 	/obj/item/book/granter/spell/forcewall,
 	/obj/item/book/granter/spell/knock,
 	/obj/item/book/granter/spell/barnyard,
+	/obj/item/book/granter/spell/charge,
 	/obj/item/book/granter/spell/summonitem,
 	/obj/item/gun/magic/wand,
 	/obj/item/gun/magic/wand/death,
 	/obj/item/gun/magic/wand/resurrection,
 	/obj/item/gun/magic/wand/polymorph,
 	/obj/item/gun/magic/wand/teleport,
+	/obj/item/gun/magic/wand/door,
 	/obj/item/gun/magic/wand/fireball,
 	/obj/item/gun/magic/staff/healing,
+	/obj/item/gun/magic/staff/door,
 	/obj/item/scrying,
 	/obj/item/voodoo,
 	/obj/item/warpwhistle,
+	/obj/item/clothing/suit/space/hardsuit/shielded/wizard,
 	/obj/item/immortality_talisman,
 	/obj/item/melee/ghost_sword))
 
@@ -65,6 +87,7 @@ GLOBAL_LIST_INIT(summoned_special_magic, list(
 GLOBAL_LIST_INIT(summoned_magic_objectives, list(
 	/obj/item/antag_spawner/contract,
 	/obj/item/blood_contract,
+	/obj/item/clothing/suit/space/hardsuit/shielded/wizard,
 	/obj/item/gun/magic,
 	/obj/item/immortality_talisman,
 	/obj/item/melee/ghost_sword,

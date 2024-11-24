@@ -231,6 +231,12 @@
 		if(do_after(user, 10, target = O))
 			advanced_surgery_steps |= D.surgery_steps
 		return TRUE
+	if(istype(O, /obj/machinery/computer/operating))
+		to_chat(user, span_notice("I copy surgery protocols from [O] into [src]."))
+		var/obj/machinery/computer/operating/OC = O
+		if(do_after(user, 10, target = O))
+			advanced_surgery_steps |= OC.advanced_surgery_steps
+		return TRUE
 	return
 
 /obj/item/scalpel/advanced

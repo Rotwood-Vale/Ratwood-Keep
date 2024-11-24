@@ -8,7 +8,7 @@
 	use_skintones = TRUE
 	limbs_id = "human"
 	skinned_type = /obj/item/stack/sheet/animalhide/human
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain/dullahan,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,

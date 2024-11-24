@@ -205,3 +205,43 @@
 		icon_state = "r_wall-[d_state]"
 	else
 		icon_state = "r_wall"
+
+/turf/closed/wall/r_wall/wall_singularity_pull(current_size)
+	if(current_size >= STAGE_FIVE)
+		if(prob(30))
+			dismantle_wall()
+
+/turf/closed/wall/r_wall/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	if(the_rcd.canRturf)
+		return ..()
+
+
+/turf/closed/wall/r_wall/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
+	if(the_rcd.canRturf)
+		return ..()
+
+/turf/closed/wall/r_wall/syndicate
+	name = "hull"
+	desc = ""
+	icon = 'icons/turf/walls/plastitanium_wall.dmi'
+	icon_state = "map-shuttle"
+	explosion_block = 20
+	sheet_type = /obj/item/stack/sheet/mineral/plastitanium
+	smooth = SMOOTH_MORE|SMOOTH_DIAGONAL
+	canSmoothWith = list(/turf/closed/wall/r_wall/syndicate, /turf/closed/wall/mineral/plastitanium, /obj/machinery/door/airlock/shuttle, /obj/machinery/door/airlock, /obj/structure/window/plasma/reinforced/plastitanium, /obj/structure/shuttle/engine, /obj/structure/falsewall/plastitanium)
+
+/turf/closed/wall/r_wall/syndicate/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	return FALSE
+
+/turf/closed/wall/r_wall/syndicate/nodiagonal
+	smooth = SMOOTH_MORE
+	icon_state = "map-shuttle_nd"
+
+/turf/closed/wall/r_wall/syndicate/nosmooth
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "wall"
+	smooth = SMOOTH_FALSE
+
+/turf/closed/wall/r_wall/syndicate/overspace
+	icon_state = "map-overspace"
+	fixed_underlay = list("space"=1)

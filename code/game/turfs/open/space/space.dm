@@ -28,6 +28,7 @@
 	icon_state = SPACE_ICON_STATE
 //	air = space_gas
 	vis_contents.Cut() //removes inherited overlays
+	visibilityChanged()
 
 //	if(flags_1 & INITIALIZED_1)
 //		stack_trace("Warning: [src]([type]) initialized multiple times!")
@@ -192,6 +193,28 @@
 	underlay_appearance.icon_state = SPACE_ICON_STATE
 	underlay_appearance.plane = PLANE_SPACE
 	return TRUE
+
+
+/turf/open/space/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	if(!CanBuildHere())
+		return FALSE
+
+	switch(the_rcd.mode)
+		if(RCD_FLOORWALL)
+			var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
+			if(L)
+				return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 1)
+			else
+				return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 3)
+	return FALSE
+
+/turf/open/space/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
+	switch(passed_mode)
+		if(RCD_FLOORWALL)
+			to_chat(user, span_notice("I build a floor."))
+			PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
+			return TRUE
+	return FALSE
 
 /turf/open/space/ReplaceWithLattice()
 	var/dest_x = destination_x

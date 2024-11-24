@@ -40,6 +40,11 @@
 		id_tag = assign_uid_vents()
 
 /obj/machinery/atmospherics/components/unary/vent_pump/Destroy()
+	var/area/A = get_area(src)
+	if (A)
+		A.air_vent_names -= id_tag
+		A.air_vent_info -= id_tag
+
 	SSradio.remove_object(src,frequency)
 	radio_connection = null
 	return ..()
@@ -151,6 +156,12 @@
 		"external" = external_pressure_bound,
 		"sigtype" = "status"
 	))
+
+	var/area/A = get_area(src)
+	if(!A.air_vent_names[id_tag])
+		name = "\improper [A.name] vent pump #[A.air_vent_names.len + 1]"
+		A.air_vent_names[id_tag] = name
+	A.air_vent_info[id_tag] = signal.data
 
 	radio_connection.post_signal(src, signal, radio_filter_out)
 
@@ -264,6 +275,10 @@
 	. = ..()
 	if(welded)
 		. += "It seems welded shut."
+
+/obj/machinery/atmospherics/components/unary/vent_pump/power_change()
+	. = ..()
+	update_icon_nopipes()
 
 /obj/machinery/atmospherics/components/unary/vent_pump/can_crawl_through()
 	return !welded

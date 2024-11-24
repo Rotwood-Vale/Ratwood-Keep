@@ -9,6 +9,7 @@
 	piping_layer = PIPING_LAYER_DEFAULT
 	device_type = 0
 	volume = 260
+	construction_type = /obj/item/pipe/binary
 	pipe_state = "manifoldlayer"
 
 	var/list/front_nodes

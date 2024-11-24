@@ -77,6 +77,10 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 		close()
 	add_fingerprint(user)
 
+/obj/structure/bodycontainer/attack_robot(mob/user)
+	if(!user.Adjacent(src))
+		return
+	return attack_hand(user)
 
 /obj/structure/bodycontainer/attackby(obj/P, mob/user, params)
 	add_fingerprint(user)
@@ -164,7 +168,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 
 /obj/structure/bodycontainer/morgue/AltClick(mob/user)
 	..()
-	if(!user.canUseTopic(src, TRUE))
+	if(!user.canUseTopic(src, !issilicon(user)))
 		return
 	beeper = !beeper
 	to_chat(user, span_notice("I turn the speaker function [beeper ? "on" : "off"]."))
@@ -207,6 +211,10 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	icon_state = "crema1"
 	dir = SOUTH
 	var/id = 1
+
+/obj/structure/bodycontainer/crematorium/attack_robot(mob/user) //Borgs can't use crematoriums without help
+	to_chat(user, span_warning("[src] is locked against you."))
+	return
 
 /obj/structure/bodycontainer/crematorium/Destroy()
 	GLOB.crematoriums.Remove(src)

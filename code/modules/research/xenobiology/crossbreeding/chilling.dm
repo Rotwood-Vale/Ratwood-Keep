@@ -82,6 +82,18 @@ Chilling extracts:
 			new /obj/effect/forcefield/slimewall(T)
 	..()
 
+/obj/item/slimecross/chilling/yellow
+	colour = "yellow"
+	effect_desc = ""
+
+/obj/item/slimecross/chilling/yellow/do_effect(mob/user)
+	var/area/A = get_area(get_turf(user))
+	user.visible_message(span_notice("[src] shatters, and a the air suddenly feels charged for a moment."))
+	for(var/obj/machinery/power/apc/C in A)
+		if(C.cell)
+			C.cell.charge = min(C.cell.charge + C.cell.maxcharge/2, C.cell.maxcharge)
+	..()
+
 /obj/item/slimecross/chilling/darkpurple
 	colour = "dark purple"
 	effect_desc = ""
@@ -306,3 +318,17 @@ Chilling extracts:
 	user.visible_message(span_notice("[src] creaks and breaks as it shifts into a heavy set of armor!"))
 	new /obj/item/clothing/suit/armor/heavy/adamantine(get_turf(user))
 	..()
+
+/obj/item/slimecross/chilling/rainbow
+	colour = "rainbow"
+	effect_desc = ""
+
+/obj/item/slimecross/chilling/rainbow/do_effect(mob/user)
+	var/area/area = get_area(user)
+	if(area.outdoors)
+		to_chat(user, span_warning("[src] can't affect such a large area."))
+		return
+	user.visible_message(span_warning("[src] reflects an array of dazzling colors and light, energy rushing to nearby doors!"))
+	for(var/obj/machinery/door/airlock/door in area)
+		new /obj/effect/forcefield/slimewall/rainbow(door.loc)
+	return ..()

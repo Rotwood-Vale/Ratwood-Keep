@@ -292,6 +292,10 @@
 	REMOVE_TRAIT(L, TRAIT_HOLY, type)
 	..()
 
+/datum/reagent/water/holywater/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if(iscultist(M))
+		to_chat(M, span_danger("A vile holiness begins to spread its shining tendrils through my mind, purging the Geometer of Blood's influence!"))
+	..()
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
 	if(ishuman(M))
@@ -302,12 +306,26 @@
 		data = 1
 	data++
 	M.jitteriness = min(M.jitteriness+4,10)
+	if(iscultist(M))
+		for(var/datum/action/innate/cult/blood_magic/BM in M.actions)
+			to_chat(M, span_cultlarge("My blood rites falter as holy water scours my body!"))
+			for(var/datum/action/innate/cult/blood_spell/BS in BM.spells)
+				qdel(BS)
 	if(data >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
 		if(!M.stuttering)
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
 		M.Dizzy(5)
+		if(iscultist(M) && prob(20))
+			M.say(pick("Av'te Nar'Sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"), forced = "holy water")
+			if(prob(10))
+				M.visible_message(span_danger("[M] starts having a seizure!"), span_danger("I have a seizure!"))
+				M.Unconscious(120)
+				to_chat(M, "<span class='cultlarge'>[pick("Your blood is my bond - you are nothing without it", "Do not forget my place", \
+				"All that power, and you still fail?", "If you cannot scour this poison, I shall scour my meager life!")].</span>")
 	if(data >= 60)	// 30 units, 135 seconds
+		if(iscultist(M))
+			SSticker.mode.remove_cultist(M.mind, FALSE, TRUE)
 		M.jitteriness = 0
 		M.stuttering = 0
 		holder.remove_reagent(type, volume)	// maybe this is a little too perfect and a max() cap on the statuses would be better??
@@ -318,6 +336,9 @@
 	..()
 	if(!istype(T))
 		return
+	if(reac_volume>=10)
+		for(var/obj/effect/rune/R in T)
+			qdel(R)
 	T.Bless()
 
 /datum/reagent/hydrogen_peroxide
@@ -363,11 +384,22 @@
 	return ..()
 
 /datum/reagent/fuel/unholywater/on_mob_life(mob/living/carbon/M)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
-	M.adjustToxLoss(2, 0)
-	M.adjustFireLoss(2, 0)
-	M.adjustOxyLoss(2, 0)
-	M.adjustBruteLoss(2, 0)
+	if(iscultist(M))
+		M.drowsyness = max(M.drowsyness-5, 0)
+		M.AdjustAllImmobility(-40, FALSE)
+		M.adjustStaminaLoss(-10, 0)
+		M.adjustToxLoss(-2, 0)
+		M.adjustOxyLoss(-2, 0)
+		M.adjustBruteLoss(-2, 0)
+		M.adjustFireLoss(-2, 0)
+		if(ishuman(M) && M.blood_volume < BLOOD_VOLUME_NORMAL)
+			M.blood_volume += 3
+	else  // Will deal about 90 damage when 50 units are thrown
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
+		M.adjustToxLoss(2, 0)
+		M.adjustFireLoss(2, 0)
+		M.adjustOxyLoss(2, 0)
+		M.adjustBruteLoss(2, 0)
 	holder.remove_reagent(type, 1)
 	return TRUE
 
@@ -1070,7 +1102,7 @@
 
 /datum/reagent/space_cleaner/ez_clean/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	..()
-	if((method == TOUCH || method == VAPOR))
+	if((method == TOUCH || method == VAPOR) && !issilicon(M))
 		M.adjustBruteLoss(1.5)
 		M.adjustFireLoss(1.5)
 
@@ -1863,6 +1895,28 @@
 /datum/reagent/pax/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_PACIFISM, type)
 	..()
+
+/datum/reagent/bz_metabolites
+	name = "BZ metabolites"
+	description = "A harmless metabolite of BZ gas"
+	color = "#FAFF00"
+	taste_description = "acrid cinnamon"
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
+
+/datum/reagent/bz_metabolites/on_mob_metabolize(mob/living/L)
+	..()
+	ADD_TRAIT(L, CHANGELING_HIVEMIND_MUTE, type)
+
+/datum/reagent/bz_metabolites/on_mob_end_metabolize(mob/living/L)
+	..()
+	REMOVE_TRAIT(L, CHANGELING_HIVEMIND_MUTE, type)
+
+/datum/reagent/bz_metabolites/on_mob_life(mob/living/L)
+	if(L.mind)
+		var/datum/antagonist/changeling/changeling = L.mind.has_antag_datum(/datum/antagonist/changeling)
+		if(changeling)
+			changeling.chem_charges = max(changeling.chem_charges-2, 0)
+	return ..()
 
 /datum/reagent/pax/peaceborg
 	name = "synthpax"

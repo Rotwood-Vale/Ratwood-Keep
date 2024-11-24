@@ -129,8 +129,18 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		return
 	if(!operating)
 		return
-	// Who the fuck put this on a 1ds delay? It happens every 2s, what does it matter
-	for(var/atom/movable/A as anything in loc)
+	use_power(6)
+	if(!isturf(loc)) // We're nowhere!
+		return
+	var/turf/turf_loc = loc
+	var/list/cached_contents = loc.contents - src - turf_loc.lighting_object
+	if(!length(cached_contents)) // nothing to convey, don't waste time creating a timer!
+		return
+	// This is on a one-decisecond delay to prevent conveyors from chaining movement into each other.
+	addtimer(CALLBACK(src, PROC_REF(convey), cached_contents), 0.1 SECONDS)
+
+/obj/machinery/conveyor/proc/convey(list/atom/movable/cached_contents)
+	for(var/atom/movable/A as anything in cached_contents)
 		if(A == src)
 			continue
 		if(A.anchored)
@@ -202,6 +212,10 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	var/obj/machinery/conveyor/C = locate() in get_step(src, stepdir)
 	if(C)
 		C.set_operable(stepdir, id, op)
+
+/obj/machinery/conveyor/power_change()
+	. = ..()
+	update()
 
 // the conveyor control switch
 //

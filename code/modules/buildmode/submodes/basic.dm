@@ -41,6 +41,9 @@
 		else if(isobj(object))
 			qdel(object)
 		return
+	else if(istype(object,/turf) && alt_click && left_click)
+		log_admin("Build Mode: [key_name(c)] built an airlock at [AREACOORD(object)]")
+		new/obj/structure/mineral_door/wood(get_turf(object))
 	else if(istype(object,/turf) && ctrl_click && left_click)
 		var/obj/structure/window/reinforced/window
 		if(BM.build_dir == NORTHWEST)

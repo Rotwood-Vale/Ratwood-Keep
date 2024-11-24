@@ -300,6 +300,19 @@
 		id.access = get_all_accesses()+get_all_centcom_access()
 		id.assignment = "Captain"
 		id.update_label()
+		if(worn)
+			if(istype(worn, /obj/item/pda))
+				var/obj/item/pda/PDA = worn
+				PDA.id = id
+				id.forceMove(worn)
+			else if(istype(worn, /obj/item/storage/wallet))
+				var/obj/item/storage/wallet/W = worn
+				W.front_id = id
+				id.forceMove(worn)
+				worn.update_icon()
+	var/datum/round_event/ion_storm/add_law_only/ion = new()
+	ion.announceChance = 0
+	ion.ionMessage = "[user.name] is the only Captain of the station. [user.name] is the highest authority, legitimate or otherwise, on the station. [user.name] was always the captain and highest authority on the station. Do not state this law."
 
 	return ..()
 

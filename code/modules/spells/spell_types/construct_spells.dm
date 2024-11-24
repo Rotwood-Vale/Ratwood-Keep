@@ -30,6 +30,23 @@
 	for(var/turf/T in targets)
 		T.narsie_act(FALSE, TRUE, 100 - (get_dist(user, T) * 25))
 
+
+/obj/effect/proc_holder/spell/aoe_turf/conjure/floor
+	name = "Summon Cult Floor"
+	desc = ""
+
+	school = "conjuration"
+	charge_max = 20
+	clothes_req = FALSE
+	invocation = "none"
+	invocation_type = "none"
+	range = 0
+	summon_type = list(/turf/open/floor/engine/cult)
+	action_icon = 'icons/mob/actions/actions_cult.dmi'
+	action_icon_state = "floorconstruct"
+	action_background_icon_state = "bg_cult"
+
+
 /obj/effect/proc_holder/spell/aoe_turf/conjure/wall
 	name = "Summon Cult Wall"
 	desc = ""
@@ -302,6 +319,6 @@
 	playsound(T, 'sound/blank.ogg', 100, FALSE)
 	new /obj/effect/temp_visual/cult/sac(T)
 	for(var/obj/O in range(src,1))
-		if(O.density)
-			O.take_damage(90, BRUTE, "melee", 0)
+		if(O.density && !istype(O, /obj/structure/destructible/cult))
+			O.take_damage(90, BRUTE, "blunt", 0)
 			new /obj/effect/temp_visual/cult/turf/floor(get_turf(O))

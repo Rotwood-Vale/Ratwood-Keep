@@ -112,9 +112,13 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 			toggleoff()
 		return
 
+	if(active)
+		use_power(5000)
 
 /obj/machinery/gateway/centerstation/toggleon(mob/user)
 	if(!detect())
+		return
+	if(!powered())
 		return
 	if(!awaygate)
 		to_chat(user, span_alert("Error: No destination found."))
@@ -151,6 +155,7 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 		if(dest)
 			AM.forceMove(get_turf(dest))
 			AM.setDir(SOUTH)
+			use_power(5000)
 		return
 
 /obj/machinery/gateway/centeraway/multitool_act(mob/living/user, obj/item/I)

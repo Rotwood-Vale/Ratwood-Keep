@@ -27,6 +27,7 @@
 	if(redstone_id)
 		GLOB.redstone_objs += src
 		. = INITIALIZE_HINT_LATELOAD
+	GLOB.cameranet.updateVisibility(src)
 	if(leanable)
 		AddComponent(/datum/component/leanable)
 
@@ -45,6 +46,7 @@
 
 
 /obj/structure/Destroy()
+	GLOB.cameranet.updateVisibility(src)
 	if(isturf(loc))
 		for(var/mob/living/user in loc)
 			if(climb_offset)
@@ -100,6 +102,8 @@
 			climb_structure(user)
 			return
 	if(!istype(O, /obj/item) || user.get_active_held_item() != O)
+		return
+	if(iscyborg(user))
 		return
 	if(!user.dropItemToGround(O))
 		return

@@ -129,7 +129,7 @@
 
 	reagents.clear_reagents()
 
-/obj/item/reagent_containers/heating_act()
+/obj/item/reagent_containers/microwave_act(obj/machinery/microwave/M)
 	reagents.expose_temperature(1000)
 	..()
 

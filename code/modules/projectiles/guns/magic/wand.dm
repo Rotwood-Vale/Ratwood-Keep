@@ -193,6 +193,24 @@
 
 
 /////////////////////////////////////
+//WAND OF DOOR CREATION
+/////////////////////////////////////
+
+/obj/item/gun/magic/wand/door
+	name = "wand of door creation"
+	desc = ""
+	ammo_type = /obj/item/ammo_casing/magic/door
+	icon_state = "doorwand"
+	fire_sound = 'sound/blank.ogg'
+	max_charges = 20 //20, 10, 10, 7
+	no_den_usage = 1
+
+/obj/item/gun/magic/wand/door/zap_self(mob/living/user)
+	to_chat(user, span_notice("I feel vaguely more open with your feelings."))
+	charges--
+	..()
+
+/////////////////////////////////////
 //WAND OF FIREBALL
 /////////////////////////////////////
 

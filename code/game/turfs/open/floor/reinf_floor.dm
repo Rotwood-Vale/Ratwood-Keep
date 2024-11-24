@@ -75,7 +75,15 @@
 			if(prob(50))
 				ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
-/turf/open/floor/engine/singularity_pull()
+/turf/open/floor/engine/singularity_pull(S, current_size)
+	..()
+	if(current_size >= STAGE_FIVE)
+		if(floor_tile)
+			if(prob(30))
+				new floor_tile(src)
+				make_plating()
+		else if(prob(30))
+			ReplaceWithLattice()
 
 /turf/open/floor/engine/attack_paw(mob/user)
 	return attack_hand(user)
@@ -114,6 +122,37 @@
 	name = "air floor"
 	initial_gas_mix = ATMOS_TANK_AIRMIX
 
+
+
+/turf/open/floor/engine/cult
+	name = "engraved floor"
+	desc = ""
+	icon_state = "plating"
+	floor_tile = null
+	var/obj/effect/cult_turf/overlay/floor/bloodcult/realappearance
+
+
+/turf/open/floor/engine/cult/Initialize()
+	. = ..()
+	new /obj/effect/temp_visual/cult/turf/floor(src)
+	realappearance = new /obj/effect/cult_turf/overlay/floor/bloodcult(src)
+	realappearance.linked = src
+
+/turf/open/floor/engine/cult/Destroy()
+	be_removed()
+	return ..()
+
+/turf/open/floor/engine/cult/ChangeTurf(path, new_baseturf, flags)
+	if(path != type)
+		be_removed()
+	return ..()
+
+/turf/open/floor/engine/cult/proc/be_removed()
+	qdel(realappearance)
+	realappearance = null
+
+/turf/open/floor/engine/cult/airless
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/engine/vacuum
 	name = "vacuum floor"

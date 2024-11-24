@@ -519,6 +519,15 @@
 	buckle_lying = -1
 	buckle_requires_restraints = 1
 	var/mob/living/carbon/human/patient = null
+	var/obj/machinery/computer/operating/computer = null
+
+/obj/structure/table/optable/Initialize()
+	. = ..()
+	for(var/direction in GLOB.cardinals)
+		computer = locate(/obj/machinery/computer/operating, get_step(src, direction))
+		if(computer)
+			computer.table = src
+			break
 
 /obj/structure/table/optable/tablepush(mob/living/user, mob/living/pushed_mob)
 	pushed_mob.forceMove(loc)

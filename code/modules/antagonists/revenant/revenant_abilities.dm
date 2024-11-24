@@ -242,7 +242,7 @@
 		qdel(B)
 		new /obj/effect/temp_visual/revenant(T)
 
-	if(!isplatingturf(T) && isfloorturf(T) && prob(15))
+	if(!isplatingturf(T) && !istype(T, /turf/open/floor/engine/cult) && isfloorturf(T) && prob(15))
 		var/turf/open/floor/floor = T
 		if(floor.intact && floor.floor_tile)
 			new floor.floor_tile(floor)
@@ -263,6 +263,8 @@
 	for(var/obj/structure/bodycontainer/corpseholder in T)
 		if(corpseholder.connected.loc == corpseholder)
 			corpseholder.open()
+	for(var/obj/machinery/dna_scannernew/dna in T)
+		dna.open_machine()
 	for(var/obj/structure/window/window in T)
 		window.take_damage(rand(30,80))
 		if(window && window.fulltile)
@@ -287,6 +289,12 @@
 			INVOKE_ASYNC(src, PROC_REF(malfunction), T, user)
 
 /obj/effect/proc_holder/spell/aoe_turf/revenant/malfunction/proc/malfunction(turf/T, mob/user)
+	for(var/mob/living/simple_animal/bot/bot in T)
+		if(!bot.emagged)
+			new /obj/effect/temp_visual/revenant(bot.loc)
+			bot.locked = FALSE
+			bot.open = TRUE
+			bot.emag_act()
 	for(var/mob/living/carbon/human/human in T)
 		if(human == user)
 			continue
@@ -296,10 +304,20 @@
 		new /obj/effect/temp_visual/revenant(human.loc)
 		human.emp_act(EMP_HEAVY)
 	for(var/obj/thing in T)
+		if(istype(thing, /obj/machinery/power/apc) || istype(thing, /obj/machinery/power/smes)) //Doesn't work on SMES and APCs, to prevent kekkery
+			continue
 		if(prob(20))
 			if(prob(50))
 				new /obj/effect/temp_visual/revenant(thing.loc)
 			thing.emag_act(null)
+		else
+			if(!istype(thing, /obj/machinery/clonepod)) //I hate everything but mostly the fact there's no better way to do this without just not affecting it at all
+				thing.emp_act(EMP_HEAVY)
+	for(var/mob/living/silicon/robot/S in T) //Only works on cyborgs, not AI
+		playsound(S, 'sound/blank.ogg', 50, TRUE)
+		new /obj/effect/temp_visual/revenant(S.loc)
+		S.spark_system.start()
+		S.emp_act(EMP_HEAVY)
 
 //Blight: Infects nearby humans and in general messes living stuff up.
 /obj/effect/proc_holder/spell/aoe_turf/revenant/blight

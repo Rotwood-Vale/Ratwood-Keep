@@ -281,6 +281,18 @@
 	else
 		to_chat(user,span_notice("I say thee neigh")) //It still lives here
 
+/obj/item/book/granter/spell/charge
+	spell = /obj/effect/proc_holder/spell/targeted/charge
+	spellname = "charge"
+	icon_state ="bookcharge"
+	desc = ""
+	remarks = list("I feel ALIVE!", "I CAN TASTE THE MANA!", "What a RUSH!", "I'm FLYING through these pages!", "THIS GENIUS IS MAKING IT!", "This book is ACTION PAcKED!", "HE'S DONE IT", "LETS GOOOOOOOOOOOO")
+
+/obj/item/book/granter/spell/charge/recoil(mob/user)
+	..()
+	to_chat(user,span_warning("[src] suddenly feels very warm!"))
+	empulse(src, 1, 1)
+
 /obj/item/book/granter/spell/summonitem
 	spell = /obj/effect/proc_holder/spell/targeted/summonitem
 	spellname = "instant summons"

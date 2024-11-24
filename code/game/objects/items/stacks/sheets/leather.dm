@@ -208,7 +208,7 @@ GLOBAL_LIST_INIT(sinew_recipes, list ( \
 			wetness = initial(wetness)
 			use(1)
 
-/obj/item/stack/sheet/wetleather/heating_act()
+/obj/item/stack/sheet/wetleather/microwave_act(obj/machinery/microwave/MW)
 	..()
 	new /obj/item/stack/sheet/leather(drop_location(), amount)
 	qdel(src)

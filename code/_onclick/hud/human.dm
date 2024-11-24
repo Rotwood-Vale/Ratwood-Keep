@@ -62,6 +62,24 @@
 /atom/movable/screen/devil/soul_counter/proc/clear()
 	invisibility = INVISIBILITY_ABSTRACT
 
+/atom/movable/screen/ling
+	invisibility = INVISIBILITY_ABSTRACT
+
+/atom/movable/screen/ling/sting
+	name = "current sting"
+	screen_loc = ui_lingstingdisplay
+
+/atom/movable/screen/ling/sting/Click()
+	if(isobserver(usr))
+		return
+	var/mob/living/carbon/U = usr
+	U.unset_sting()
+
+/atom/movable/screen/ling/chems
+	name = "chemical storage"
+	icon_state = "power_display"
+	screen_loc = ui_lingchemdisplay
+
 /datum/hud/human/New(mob/living/carbon/human/owner)
 
 	..()

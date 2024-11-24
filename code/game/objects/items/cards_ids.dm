@@ -115,6 +115,7 @@
 	var/assignment = null
 	var/access_txt // mapping aid
 	var/datum/bank_account/registered_account
+	var/obj/machinery/paystand/my_store
 	var/uses_overlays = TRUE
 	var/icon/cached_flat_icon
 
@@ -126,6 +127,8 @@
 /obj/item/card/id/Destroy()
 	if (registered_account)
 		registered_account.bank_cards -= src
+	if (my_store && my_store.my_card == src)
+		my_store.my_card = null
 	return ..()
 
 /obj/item/card/id/attack_self(mob/user)
@@ -360,6 +363,106 @@ update_label()
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 
+/obj/item/card/id/syndicate
+	name = "agent card"
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE)
+	var/anyone = FALSE //Can anyone forge the ID or just syndicate?
+	var/forged = FALSE //have we set a custom name and job assignment, or will we use what we're given when we chameleon change?
+
+/obj/item/card/id/syndicate/Initialize()
+	. = ..()
+	var/datum/action/item_action/chameleon/change/id/chameleon_action = new(src)
+	chameleon_action.chameleon_type = /obj/item/card/id
+	chameleon_action.chameleon_name = "ID Card"
+	chameleon_action.initialize_disguises()
+
+/obj/item/card/id/syndicate/afterattack(obj/item/O, mob/user, proximity)
+	if(!proximity)
+		return
+	if(istype(O, /obj/item/card/id))
+		var/obj/item/card/id/I = O
+		src.access |= I.access
+		if(isliving(user) && user.mind)
+			if(user.mind.special_role || anyone)
+				to_chat(usr, span_notice("The card's microscanners activate as you pass it over the ID, copying its access."))
+
+/obj/item/card/id/syndicate/attack_self(mob/user)
+	if(isliving(user) && user.mind)
+		var/first_use = registered_name ? FALSE : TRUE
+		if(!(user.mind.special_role || anyone)) //Unless anyone is allowed, only syndies can use the card, to stop metagaming.
+			if(first_use) //If a non-syndie is the first to forge an unassigned agent ID, then anyone can forge it.
+				anyone = TRUE
+			else
+				return ..()
+
+		var/popup_input = alert(user, "Choose Action", "Agent ID", "Show", "Forge/Reset", "Change Account ID")
+		if(user.incapacitated())
+			return
+		if(popup_input == "Forge/Reset" && !forged)
+			var/input_text = input(user, "What name would you like to put on this card? Leave blank to randomise.", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name))as text | null
+
+			if (isnull(input_text))
+				return
+
+			var/t = copytext(sanitize(input_text), 1, 26)
+			if(!t || t == "Unknown" || t == "floor" || t == "wall" || t == "r-wall") //Same as mob/dead/new_player/prefrences.dm
+				if (ishuman(user))
+					var/mob/living/carbon/human/human_agent = user
+
+					// Invalid/blank names give a randomly generated one.
+					if (human_agent.gender == "male")
+						registered_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
+					else if (human_agent.gender == "female")
+						registered_name = "[pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
+					else
+						registered_name = "[pick(GLOB.first_names)] [pick(GLOB.last_names)]"
+				else
+					alert ("Invalid name.")
+					return
+			else
+				registered_name = t
+
+			var/u = copytext(sanitize(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", assignment ? assignment : "Assistant") as text | null),1,MAX_MESSAGE_LEN)
+			if(!u)
+				registered_name = ""
+				return
+			assignment = u
+			update_label()
+			forged = TRUE
+			to_chat(user, span_notice("I successfully forge the ID card."))
+
+
+			// First time use automatically sets the account id to the user.
+			if (first_use && !registered_account)
+				if(ishuman(user))
+					var/mob/living/carbon/human/accountowner = user
+
+					for(var/bank_account in SSeconomy.bank_accounts)
+						var/datum/bank_account/account = bank_account
+						if(account.account_id == accountowner.account_id)
+							account.bank_cards += src
+							registered_account = account
+							to_chat(user, span_notice("My account number has been automatically assigned."))
+			return
+		else if (popup_input == "Forge/Reset" && forged)
+			registered_name = initial(registered_name)
+			assignment = initial(assignment)
+			update_label()
+			forged = FALSE
+			to_chat(user, span_notice("I successfully reset the ID card."))
+			return
+		else if (popup_input == "Change Account ID")
+			set_new_account(user)
+			return
+	return ..()
+
+/obj/item/card/id/syndicate/anyone
+	anyone = TRUE
+
+/obj/item/card/id/syndicate/nuke_leader
+	name = "lead agent card"
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE, ACCESS_SYNDICATE_LEADER)
+
 /obj/item/card/id/syndicate_command
 	name = "syndicate ID card"
 	id_type_name = "syndicate ID card"
@@ -380,6 +483,12 @@ update_label()
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	registered_name = "Captain"
 	assignment = "Captain"
+
+/obj/item/card/id/captains_spare/Initialize()
+	var/datum/job/captain/J = new/datum/job/captain
+	access = J.get_access()
+	. = ..()
+	update_label()
 
 /obj/item/card/id/captains_spare/update_label() //so it doesn't change to Captain's ID card (Captain) on a sneeze
 	if(registered_name == "Captain")

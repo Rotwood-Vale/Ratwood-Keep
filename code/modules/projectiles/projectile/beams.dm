@@ -122,6 +122,47 @@
 /obj/projectile/beam/emitter/singularity_pull()
 	return //don't want the emitters to miss
 
+/obj/projectile/beam/lasertag
+	name = "laser tag beam"
+	icon_state = "omnilaser"
+	hitsound = null
+	damage = 0
+	damage_type = STAMINA
+	flag = "laser"
+	var/suit_types = list(/obj/item/clothing/suit/redtag, /obj/item/clothing/suit/bluetag)
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
+	light_color = LIGHT_COLOR_BLUE
+
+/obj/projectile/beam/lasertag/on_hit(atom/target, blocked = FALSE)
+	. = ..()
+	if(ishuman(target))
+		var/mob/living/carbon/human/M = target
+		if(istype(M.wear_armor))
+			if(M.wear_armor.type in suit_types)
+				M.adjustStaminaLoss(34)
+
+/obj/projectile/beam/lasertag/redtag
+	icon_state = "laser"
+	suit_types = list(/obj/item/clothing/suit/bluetag)
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/red_laser
+	light_color = LIGHT_COLOR_RED
+	tracer_type = /obj/effect/projectile/tracer/laser
+	muzzle_type = /obj/effect/projectile/muzzle/laser
+	impact_type = /obj/effect/projectile/impact/laser
+
+/obj/projectile/beam/lasertag/redtag/hitscan
+	hitscan = TRUE
+
+/obj/projectile/beam/lasertag/bluetag
+	icon_state = "bluelaser"
+	suit_types = list(/obj/item/clothing/suit/redtag)
+	tracer_type = /obj/effect/projectile/tracer/laser/blue
+	muzzle_type = /obj/effect/projectile/muzzle/laser/blue
+	impact_type = /obj/effect/projectile/impact/laser/blue
+
+/obj/projectile/beam/lasertag/bluetag/hitscan
+	hitscan = TRUE
+
 /obj/projectile/beam/instakill
 	name = "instagib laser"
 	icon_state = "purple_laser"

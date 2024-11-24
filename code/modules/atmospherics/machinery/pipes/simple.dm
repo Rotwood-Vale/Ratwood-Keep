@@ -14,6 +14,7 @@
 
 	device_type = BINARY
 
+	construction_type = /obj/item/pipe/binary/bendable
 	pipe_state = "simple"
 
 /obj/machinery/atmospherics/pipe/simple/SetInitDirections()

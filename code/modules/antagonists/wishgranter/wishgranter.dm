@@ -4,8 +4,14 @@
 	show_name_in_check_antagonists = TRUE
 	can_hijack = HIJACK_HIJACKER
 
+/datum/antagonist/wishgranter/proc/forge_objectives()
+	var/datum/objective/hijack/hijack = new
+	hijack.owner = owner
+	objectives += hijack
+
 /datum/antagonist/wishgranter/on_gain()
 	owner.special_role = "Avatar of the Wish Granter"
+	forge_objectives()
 	. = ..()
 	give_powers()
 

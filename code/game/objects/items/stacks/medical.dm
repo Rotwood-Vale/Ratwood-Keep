@@ -137,6 +137,11 @@
 	desc = ""
 	stop_bleeding = 900
 
+/obj/item/stack/medical/gauze/cyborg
+	custom_materials = null
+	is_cyborg = 1
+	cost = 250
+
 /obj/item/stack/medical/ointment
 	name = "ointment"
 	desc = ""

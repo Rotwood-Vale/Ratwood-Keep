@@ -88,7 +88,7 @@
 	else
 		chargesa--
 		insistinga = 0
-		var/wish = input("You want...","Wish") as null|anything in sortList(list("Power","Immortality","Peace"))
+		var/wish = input("You want...","Wish") as null|anything in sortList(list("Power","Wealth","Immortality","Peace"))
 		switch(wish)
 			if("Power")
 				to_chat(user, "<B>My wish is granted, but at a terrible cost...</B>")
@@ -96,6 +96,11 @@
 				user.dna.add_mutation(LASEREYES)
 				user.dna.add_mutation(SPACEMUT)
 				user.dna.add_mutation(XRAY)
+				user.set_species(/datum/species/shadow)
+			if("Wealth")
+				to_chat(user, "<B>My wish is granted, but at a terrible cost...</B>")
+				to_chat(user, "The Wish Granter punishes you for my selfishness, claiming my soul and warping my body to match the darkness in my heart.")
+				new /obj/structure/closet/syndicate/resources/everything(loc)
 				user.set_species(/datum/species/shadow)
 			if("Immortality")
 				to_chat(user, "<B>My wish is granted, but at a terrible cost...</B>")

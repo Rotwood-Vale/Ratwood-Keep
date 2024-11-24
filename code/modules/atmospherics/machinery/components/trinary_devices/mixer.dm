@@ -11,6 +11,7 @@
 	var/node1_concentration = 0.5
 	var/node2_concentration = 0.5
 
+	construction_type = /obj/item/pipe/trinary/flippable
 	pipe_state = "mixer"
 
 	ui_x = 370

@@ -23,6 +23,7 @@ Passive gate is similar to the regular pump except:
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
+	construction_type = /obj/item/pipe/directional
 	pipe_state = "passivegate"
 
 	ui_x = 335

@@ -3422,10 +3422,6 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
-"cJf" = (
-/obj/structure/roguemachine/bounty,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
 "cJt" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -10979,6 +10975,16 @@
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /turf/open/floor/rogue/church,
 /area/rogue/under/town/basement)
+"iCp" = (
+/obj/item/paper,
+/obj/item/natural/feather,
+/obj/item/paper,
+/obj/item/paper,
+/obj/structure/closet/crate/chest{
+	lockid = "merc"
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town)
 "iCt" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -12925,29 +12931,6 @@
 /obj/item/grown/log/tree,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
-"kbl" = (
-/obj/structure/roguemachine/mail{
-	pixel_y = 0;
-	pixel_x = 32
-	},
-/obj/machinery/light/rogue/wallfire/candle,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/structure/closet/crate/chest{
-	lockid = "merc"
-	},
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "kbs" = (
 /turf/closed/wall/mineral/rogue/roofwall/innercorner{
 	dir = 1
@@ -14958,14 +14941,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/under/town/basement)
-"lLH" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall"
-	},
-/obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
 "lLK" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/town/basement)
@@ -19307,10 +19282,6 @@
 /obj/item/clothing/shoes/roguetown/sandals,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/church)
-"oYD" = (
-/obj/effect/landmark/start/guild_clerk,
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town)
 "oYO" = (
 /obj/effect/landmark/start/guard_captain{
 	dir = 1
@@ -19768,6 +19739,21 @@
 	pixel_x = 32
 	},
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/structure/closet/crate/chest{
+	lockid = "merc"
+	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "pvI" = (
@@ -19848,6 +19834,10 @@
 "pyU" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors/shelter/mountains)
+"pzf" = (
+/obj/structure/roguemachine/bounty,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "pzh" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
@@ -30233,22 +30223,6 @@
 /obj/item/clothing/mask/cigarette/pipe/westman,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
-"xBF" = (
-/obj/item/paper,
-/obj/item/natural/feather,
-/obj/item/paper,
-/obj/item/paper,
-/obj/structure/closet/crate/chest{
-	lockid = "merc"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/roguemachine/bounty,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "xBH" = (
 /obj/structure/stairs{
 	dir = 4
@@ -30857,10 +30831,6 @@
 "xXH" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
-"xXV" = (
-/obj/structure/roguemachine/bounty,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "xYd" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -302977,7 +302947,7 @@ xAt
 xAt
 xAt
 eoy
-wbg
+pzf
 wVI
 uTW
 uTW
@@ -303786,7 +303756,7 @@ wVI
 cXf
 suI
 eGO
-lLH
+mpI
 wVI
 wVI
 wVI
@@ -308208,8 +308178,8 @@ mLB
 lmB
 lZX
 evo
-jyB
-llt
+lsy
+rNm
 sLL
 nNJ
 cTK
@@ -309817,7 +309787,7 @@ rNm
 vTo
 evo
 pvw
-lsy
+iCp
 lPL
 nNJ
 nNJ
@@ -412329,8 +412299,8 @@ rNm
 nan
 nNJ
 nNJ
-oYD
-oYD
+tSU
+tSU
 nNJ
 nNJ
 puw

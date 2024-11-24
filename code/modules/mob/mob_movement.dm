@@ -9,6 +9,8 @@
   */
 /client/verb/drop_item()
 	set hidden = 1
+	if(!iscyborg(mob) && mob.stat == CONSCIOUS)
+		mob.dropItemToGround(mob.get_active_held_item(), silent = FALSE)
 	return
 
 /**
@@ -113,6 +115,9 @@
 
 	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
 		return mob.remote_control.relaymove(mob, direct)
+
+	if(isAI(mob))
+		return AIMove(n,direct,mob)
 
 	if(Process_Grab()) //are we restrained by someone's grip?
 		return

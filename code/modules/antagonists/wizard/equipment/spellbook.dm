@@ -206,6 +206,11 @@
 	name = "Tesla Blast"
 	spell_type = /obj/effect/proc_holder/spell/targeted/tesla
 
+/datum/spellbook_entry/lightningbolt
+	name = "Lightning Bolt"
+	spell_type = /obj/effect/proc_holder/spell/aimed/lightningbolt
+	cost = 3
+
 /datum/spellbook_entry/lightningbolt/Buy(mob/living/carbon/human/user,obj/item/spellbook/book) //return TRUE on success
 	. = ..()
 	user.flags_1 |= TESLA_IGNORE_1
@@ -230,6 +235,11 @@
 	name = "Barnyard Curse"
 	spell_type = /obj/effect/proc_holder/spell/targeted/barnyardcurse
 
+/datum/spellbook_entry/charge
+	name = "Charge"
+	spell_type = /obj/effect/proc_holder/spell/targeted/charge
+	category = "Assistance"
+	cost = 1
 
 /datum/spellbook_entry/shapeshift
 	name = "Wild Shapeshift"
@@ -298,6 +308,13 @@
 	desc = ""
 	item_path = /obj/item/gun/magic/staff/spellblade
 
+/datum/spellbook_entry/item/staffdoor
+	name = "Staff of Door Creation"
+	desc = ""
+	item_path = /obj/item/gun/magic/staff/door
+	cost = 1
+	category = "Mobility"
+
 /datum/spellbook_entry/item/staffhealing
 	name = "Staff of Healing"
 	desc = ""
@@ -341,6 +358,12 @@
 	item_path = /obj/item/storage/belt/wands/full
 	category = "Defensive"
 
+/datum/spellbook_entry/item/armor
+	name = "Mastercrafted Armor Set"
+	desc = ""
+	item_path = /obj/item/clothing/suit/space/hardsuit/wizard
+	category = "Defensive"
+
 /datum/spellbook_entry/item/armor/Buy(mob/living/carbon/human/user,obj/item/spellbook/book)
 	. = ..()
 	if(.)
@@ -374,6 +397,20 @@
 	name = "Singularity Hammer"
 	desc = ""
 	item_path = /obj/item/twohanded/singularityhammer
+
+/datum/spellbook_entry/item/battlemage
+	name = "Battlemage Armour"
+	desc = ""
+	item_path = /obj/item/clothing/suit/space/hardsuit/shielded/wizard
+	limit = 1
+	category = "Defensive"
+
+/datum/spellbook_entry/item/battlemage_charge
+	name = "Battlemage Armour Charges"
+	desc = ""
+	item_path = /obj/item/wizard_armour_charge
+	category = "Defensive"
+	cost = 1
 
 /datum/spellbook_entry/item/warpwhistle
 	name = "Warp Whistle"

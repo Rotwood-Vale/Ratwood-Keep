@@ -530,6 +530,29 @@ datum/status_effect/stabilized/blue/on_remove()
 			to_chat(owner, span_notice("[linked_extract] adds a layer of slime to [S], which metamorphosizes into another sheet of material!"))
 	return ..()
 
+
+/datum/status_effect/stabilized/yellow
+	id = "stabilizedyellow"
+	colour = "yellow"
+	var/cooldown = 10
+	var/max_cooldown = 10
+	examine_text = span_warning("Nearby electronics seem just a little more charged wherever SUBJECTPRONOUN goes.")
+
+/datum/status_effect/stabilized/yellow/tick()
+	if(cooldown > 0)
+		cooldown--
+		return ..()
+	cooldown = max_cooldown
+	var/list/batteries = list()
+	for(var/obj/item/stock_parts/cell/C in owner.GetAllContents())
+		if(C.charge < C.maxcharge)
+			batteries += C
+	if(batteries.len)
+		var/obj/item/stock_parts/cell/ToCharge = pick(batteries)
+		ToCharge.charge += min(ToCharge.maxcharge - ToCharge.charge, ToCharge.maxcharge/10) //10% of the cell, or to maximum.
+		to_chat(owner, span_notice("[linked_extract] discharges some energy into a device you have."))
+	return ..()
+
 /obj/item/hothands
 	name = "burning fingertips"
 	desc = ""
@@ -554,7 +577,7 @@ datum/status_effect/stabilized/blue/on_remove()
 	if(istype(F))
 		if(F.cooked_type)
 			to_chat(owner, span_warning("[linked_extract] flares up brightly, and my hands alone are enough cook [F]!"))
-			var/obj/item/result = F.heating_act()
+			var/obj/item/result = F.microwave_act()
 			if(istype(result))
 				owner.put_in_hands(result)
 	else

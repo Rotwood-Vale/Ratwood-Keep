@@ -40,13 +40,18 @@
 			filter_types += gas_id2path(f)
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/Destroy()
+	var/area/A = get_area(src)
+	if (A)
+		A.air_scrub_names -= id_tag
+		A.air_scrub_info -= id_tag
+
 	SSradio.remove_object(src,frequency)
 	radio_connection = null
 	adjacent_turfs.Cut()
 	return ..()
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/auto_use_power()
-	if(!on || welded || !is_operational())
+	if(!on || welded || !is_operational() || !powered(power_channel))
 		return FALSE
 
 	var/amount = idle_power_usage
@@ -58,6 +63,7 @@
 
 	if(widenet)
 		amount += amount * (adjacent_turfs.len * (adjacent_turfs.len / 2))
+	use_power(amount, power_channel)
 	return TRUE
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/update_icon_nopipes()
@@ -108,6 +114,12 @@
 		"sigtype" = "status"
 	))
 
+	var/area/A = get_area(src)
+	if(!A.air_scrub_names[id_tag])
+		name = "\improper [A.name] air scrubber #[A.air_scrub_names.len + 1]"
+		A.air_scrub_names[id_tag] = name
+
+	A.air_scrub_info[id_tag] = signal.data
 	radio_connection.post_signal(src, signal, radio_filter_out)
 
 	return TRUE
@@ -245,6 +257,10 @@
 	broadcast_status()
 	update_icon()
 	return
+
+/obj/machinery/atmospherics/components/unary/vent_scrubber/power_change()
+	. = ..()
+	update_icon_nopipes()
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/welder_act(mob/living/user, obj/item/I)
 	..()

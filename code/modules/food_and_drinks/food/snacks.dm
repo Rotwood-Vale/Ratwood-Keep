@@ -161,12 +161,12 @@ All foods are distributed among various categories. Use common sense.
 		if(cooking < cooktime)
 			cooking = cooking + input
 			if(cooking >= cooktime)
-				return heating_act(A)
+				return microwave_act(A)
 			warming = 5 MINUTES
 			return
 	burning(input)
 
-/obj/item/reagent_containers/food/snacks/heating_act(atom/A)
+/obj/item/reagent_containers/food/snacks/microwave_act(atom/A)
 	if(istype(A,/obj/machinery/light/rogue/oven))
 		var/obj/item/result
 		if(cooked_type)
@@ -472,7 +472,7 @@ All foods are distributed among various categories. Use common sense.
 	S.filling_color = filling_color
 	S.update_snack_overlays(src)
 /*
-/obj/item/reagent_containers/food/snacks/heating_act(obj/machinery/microwave/M)
+/obj/item/reagent_containers/food/snacks/microwave_act(obj/machinery/microwave/M)
 	var/turf/T = get_turf(src)
 	var/obj/item/result
 

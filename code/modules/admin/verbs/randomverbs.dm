@@ -61,6 +61,9 @@
 	if(!istype(H))
 		to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 		return
+	if(!istype(H.ears, /obj/item/radio/headset))
+		to_chat(usr, "The person you are trying to contact is not wearing a headset.")
+		return
 
 	if (!sender)
 		sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE)
@@ -376,9 +379,37 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			new_character.forceMove(pick(GLOB.wizardstart))
 			var/datum/antagonist/wizard/A = new_character.mind.has_antag_datum(/datum/antagonist/wizard,TRUE)
 			A.equip_wizard()
+		if(ROLE_SYNDICATE)
+			new_character.forceMove(pick(GLOB.nukeop_start))
+			var/datum/antagonist/nukeop/N = new_character.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE)
+			N.equip_op()
+		if(ROLE_NINJA)
+			var/list/ninja_spawn = list()
+			for(var/obj/effect/landmark/carpspawn/L in GLOB.landmarks_list)
+				ninja_spawn += L
+			var/datum/antagonist/ninja/ninjadatum = new_character.mind.has_antag_datum(/datum/antagonist/ninja)
+			ninjadatum.equip_space_ninja()
+			if(ninja_spawn.len)
+				new_character.forceMove(pick(ninja_spawn))
 
-		else
-			SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)//Or we simply equip them.
+		else//They may also be a cyborg or AI.
+			switch(new_character.mind.assigned_role)
+				if("Cyborg")//More rigging to make em' work and check if they're traitor.
+					new_character = new_character.Robotize(TRUE)
+				if("AI")
+					new_character = new_character.AIize()
+				else
+					SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)//Or we simply equip them.
+
+	//Announces the character on all the systems, based on the record.
+	if(!issilicon(new_character))//If they are not a cyborg/AI.
+		if(!record_found&&new_character.mind.assigned_role!=new_character.mind.special_role)//If there are no records for them. If they have a record, this info is already in there. MODE people are not announced anyway.
+			//Power to the user!
+			if(alert(new_character,"Warning: No data core entry detected. Would you like to announce the arrival of this character by adding them to various databases, such as medical records?",,"No","Yes")=="Yes")
+				GLOB.data_core.manifest_inject(new_character)
+
+			if(alert(new_character,"Would you like an active AI to announce this character?",,"No","Yes")=="Yes")
+				AnnounceArrival(new_character, new_character.mind.assigned_role)
 
 	var/msg = span_adminnotice("[admin] has respawned [player_key] as [new_character.real_name].")
 	message_admins(msg)
@@ -403,6 +434,13 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	log_admin("Admin [key_name(usr)] has added a new AI law - [input]")
 	message_admins("Admin [key_name_admin(usr)] has added a new AI law - [input]")
+
+	var/show_log = alert(src, "Show ion message?", "Message", "Yes", "No")
+	var/announce_ion_laws = (show_log == "Yes" ? 100 : 0)
+
+	var/datum/round_event/ion_storm/add_law_only/ion = new()
+	ion.announceChance = announce_ion_laws
+	ion.ionMessage = input
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Add Custom AI Law") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -438,11 +476,15 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	var/confirm = alert(src, "Do you want to announce the contents of the report to the crew?", "Announce", "Yes", "No", "Cancel")
+	var/announce_command_report = TRUE
 	switch(confirm)
 		if("Yes")
 			priority_announce(input, null, 'sound/blank.ogg')
+			announce_command_report = FALSE
 		if("Cancel")
 			return
+
+	print_command_report(input, "[announce_command_report ? "Classified " : ""][command_name()] Update", announce_command_report)
 
 	log_admin("[key_name(src)] has created a command report: [input]")
 	message_admins("[key_name_admin(src)] has created a command report")
@@ -702,10 +744,31 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/level = input("Select security level to change to","Set Security Level") as null|anything in list("green","blue","red","delta")
 	if(level)
+		set_security_level(level)
 
 		log_admin("[key_name(usr)] changed the security level to [level]")
 		message_admins("[key_name_admin(usr)] changed the security level to [level]")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Security Level [capitalize(level)]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/toggle_nuke(obj/machinery/nuclearbomb/N in GLOB.nuke_list)
+	set name = "Toggle Nuke"
+	set category = "Fun"
+	set popup_menu = 0
+	set hidden = 1
+	if(!check_rights(R_DEBUG))
+		return
+
+	if(!N.timing)
+		var/newtime = input(usr, "Set activation timer.", "Activate Nuke", "[N.timer_set]") as num|null
+		if(!newtime)
+			return
+		N.timer_set = newtime
+	N.set_safety()
+	N.set_active()
+
+	log_admin("[key_name(usr)] [N.timing ? "activated" : "deactivated"] a nuke at [AREACOORD(N)].")
+	message_admins("[ADMIN_LOOKUPFLW(usr)] [N.timing ? "activated" : "deactivated"] a nuke at [ADMIN_VERBOSEJMP(N)].")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Nuke", "[N.timing]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_combo_hud()
 	set category = "Admin"
@@ -866,6 +929,23 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins("[key_name_admin(usr)] sent a tip of the round.")
 	log_admin("[key_name(usr)] sent \"[input]\" as the Tip of the Round.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Tip")
+
+/client/proc/modify_goals()
+	set category = "Debug"
+	set name = "Modify goals"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	holder.modify_goals()
+
+/datum/admins/proc/modify_goals()
+	var/dat = ""
+	for(var/datum/station_goal/S in SSticker.mode.station_goals)
+		dat += "[S.name] - <a href='?src=[REF(S)];[HrefToken()];announce=1'>Announce</a> | <a href='?src=[REF(S)];[HrefToken()];remove=1'>Remove</a><br>"
+	dat += "<br><a href='?src=[REF(src)];[HrefToken()];add_station_goal=1'>Add New Goal</a>"
+	usr << browse(dat, "window=goals;size=400x400")
+
 
 /client/proc/toggle_hub()
 	set category = "Server"

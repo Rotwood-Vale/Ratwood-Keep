@@ -15,7 +15,7 @@
 	coldmod = 6   // = 3x cold damage
 	heatmod = 0.5 // = 1/4x heat damage
 	burnmod = 0.5 // = 1/2x generic burn damage
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | SLIME_EXTRACT
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	inherent_factions = list("slime")
 
 /datum/species/jelly/on_species_loss(mob/living/carbon/C)
@@ -221,6 +221,14 @@
 	spare.updateappearance(mutcolor_update=1)
 	spare.domutcheck()
 	spare.Move(get_step(H.loc, pick(NORTH,SOUTH,EAST,WEST)))
+
+
+	var/datum/component/nanites/owner_nanites = H.GetComponent(/datum/component/nanites)
+	if(owner_nanites)
+		//copying over nanite programs/cloud sync with 50% saturation in host and spare
+		owner_nanites.nanite_volume *= 0.5
+		spare.AddComponent(/datum/component/nanites, owner_nanites.nanite_volume)
+		SEND_SIGNAL(spare, COMSIG_NANITE_SYNC, owner_nanites, TRUE, TRUE) //The trues are to copy activation as well
 
 	H.blood_volume *= 0.45
 	H.notransform = 0

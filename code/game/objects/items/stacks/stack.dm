@@ -18,6 +18,7 @@
 	var/singular_name
 	var/amount = 1
 	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	var/is_cyborg = 0 // It's 1 if module is used by a cyborg, and uses its storage
 	var/datum/robot_energy_storage/source
 	var/cost = 1 // How much energy from storage it costs
 	var/merge_type = null // This path and its children should merge with this stack, defaults to src.type
@@ -34,6 +35,9 @@
 		grind_results[grind_results[i]] *= get_amount() //Gets the key at position i, then the reagent amount of that key, then multiplies it by stack size
 
 /obj/item/stack/grind_requirements()
+	if(is_cyborg)
+		to_chat(usr, span_warning("[src] is electronically synthesized in my chassis and can't be ground up!"))
+		return
 	return TRUE
 
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
@@ -96,6 +100,12 @@
 
 /obj/item/stack/examine(mob/user)
 	. = ..()
+	if (is_cyborg)
+		if(singular_name)
+			. += "There is enough energy for [get_amount()] [singular_name]\s."
+		else
+			. += "There is enough energy for [get_amount()]."
+		return
 	if(singular_name)
 		if(get_amount()>1)
 			. += "There are [get_amount()] [singular_name]\s in the stack."
@@ -108,7 +118,10 @@
 	. += span_notice("Alt-click to take a custom amount.")
 
 /obj/item/stack/proc/get_amount()
-	. = (amount)
+	if(is_cyborg)
+		. = round(source.energy / cost)
+	else
+		. = (amount)
 
 /obj/item/stack/attack_self(mob/user)
 //	interact(user)
@@ -179,7 +192,7 @@
 	if (href_list["sublist"] && !href_list["make"])
 		interact(usr, text2num(href_list["sublist"]))
 	if (href_list["make"])
-		if (get_amount() < 1)
+		if (get_amount() < 1 && !is_cyborg)
 			qdel(src)
 
 		var/list/recipes_list = recipes
@@ -220,7 +233,10 @@
 			O.set_custom_materials(used_materials)
 
 		//START: oh fuck i'm so sorry
-		if(istype(O, /obj/structure/window))
+		if(istype(O, /obj/structure/windoor_assembly))
+			var/obj/structure/windoor_assembly/W = O
+			W.ini_dir = W.dir
+		else if(istype(O, /obj/structure/window))
 			var/obj/structure/window/W = O
 			W.ini_dir = W.dir
 		//END: oh fuck i'm so sorry
@@ -292,6 +308,8 @@
 /obj/item/stack/use(used, transfer = FALSE, check = TRUE) // return 0 = borked; return 1 = had enough
 	if(check && zero_amount())
 		return FALSE
+	if (is_cyborg)
+		return source.use_charge(used * cost)
 	if (amount < used)
 		return FALSE
 	amount -= used
@@ -316,13 +334,18 @@
 	return TRUE
 
 /obj/item/stack/proc/zero_amount()
+	if(is_cyborg)
+		return source.energy < cost
 	if(amount < 1)
 		qdel(src)
 		return 1
 	return 0
 
 /obj/item/stack/proc/add(amount)
-	src.amount += amount
+	if (is_cyborg)
+		source.add_charge(amount * cost)
+	else
+		src.amount += amount
 	if(custom_materials && custom_materials.len)
 		for(var/i in custom_materials)
 			custom_materials[getmaterialref(i)] = MINERAL_MATERIAL_AMOUNT * src.amount
@@ -334,7 +357,10 @@
 	if(QDELETED(S) || QDELETED(src) || S == src) //amusingly this can cause a stack to consume itself, let's not allow that.
 		return
 	var/transfer = get_amount()
-	transfer = min(transfer, S.max_amount - S.amount)
+	if(S.is_cyborg)
+		transfer = min(transfer, round((S.source.max_energy - S.source.energy) / S.cost))
+	else
+		transfer = min(transfer, S.max_amount - S.amount)
 	if(pulledby)
 		pulledby.start_pulling(S)
 	S.copy_evidences(src)
@@ -366,6 +392,8 @@
 	if(isturf(loc)) // to prevent people that are alt clicking a tile to see its content from getting undesidered pop ups
 		return
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+		return
+	if(is_cyborg)
 		return
 	else
 		if(zero_amount())
@@ -408,6 +436,10 @@
 	add_hiddenprint_list(from.return_hiddenprints())
 	fingerprintslast  = from.fingerprintslast
 	//TODO bloody overlay
+
+/obj/item/stack/microwave_act(obj/machinery/microwave/M)
+	if(istype(M) && M.dirty < 100)
+		M.dirty += amount
 
 /*
  * Recipe datum

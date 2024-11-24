@@ -70,6 +70,8 @@
 	if(user.glasses != src || !user.client)
 		return
 	switch(mode)
+		if(MODE_TRAY)
+			t_ray_scan(user, 8, range)
 		if(MODE_RAD)
 			show_rads()
 		if(MODE_SHUTTLE)

@@ -75,6 +75,17 @@
 	if(W.tool_behaviour == TOOL_WRENCH && !(flags_1&NODECONSTRUCT_1))
 		W.play_tool_sound(src)
 		deconstruct()
+	else if(istype(W, /obj/item/assembly/shock_kit))
+		if(!user.temporarilyRemoveItemFromInventory(W))
+			return
+		var/obj/item/assembly/shock_kit/SK = W
+		var/obj/structure/chair/e_chair/E = new /obj/structure/chair/e_chair(src.loc)
+		playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
+		E.setDir(dir)
+		E.part = SK
+		SK.forceMove(E)
+		SK.master = E
+		qdel(src)
 	else
 		return ..()
 

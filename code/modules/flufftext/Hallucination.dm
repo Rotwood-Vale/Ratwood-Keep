@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	/datum/hallucination/stationmessage = 7,
 	/datum/hallucination/fake_flood = 7,
 	/datum/hallucination/stray_bullet = 7,
+	/datum/hallucination/bolts = 7,
 	/datum/hallucination/items_other = 7,
 	/datum/hallucination/husks = 7,
 	/datum/hallucination/items = 4,
@@ -598,6 +599,57 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		target.client.images.Remove(delusion)
 	return ..()
 
+/datum/hallucination/bolts
+	var/list/locks = list()
+
+/datum/hallucination/bolts/New(mob/living/carbon/C, forced, door_number)
+	set waitfor = FALSE
+	..()
+	if(!door_number)
+		door_number = rand(0,4) //if 0 bolts all visible doors
+	var/count = 0
+	feedback_details += "Door amount: [door_number]"
+	for(var/obj/machinery/door/airlock/A in range(7, target))
+		if(count>door_number && door_number>0)
+			break
+		if(!A.density)
+			continue
+		count++
+		var/obj/effect/hallucination/fake_door_lock/lock = new(get_turf(A))
+		lock.target = target
+		lock.airlock = A
+		locks += lock
+		lock.lock()
+		sleep(rand(4,12))
+	sleep(100)
+	for(var/obj/effect/hallucination/fake_door_lock/lock in locks)
+		locks -= lock
+		lock.unlock()
+		sleep(rand(4,12))
+	qdel(src)
+
+/obj/effect/hallucination/fake_door_lock
+	layer = CLOSED_DOOR_LAYER + 1 //for Bump priority
+	var/image/bolt_light
+	var/obj/machinery/door/airlock/airlock
+
+/obj/effect/hallucination/fake_door_lock/proc/lock()
+	bolt_light = image(airlock.overlays_file, get_turf(airlock), "lights_bolts",layer=airlock.layer+0.1)
+	if(target.client)
+		target.client.images |= bolt_light
+		target.playsound_local(get_turf(airlock), 'sound/blank.ogg',30,0,3)
+
+/obj/effect/hallucination/fake_door_lock/proc/unlock()
+	if(target.client)
+		target.client.images.Remove(bolt_light)
+		target.playsound_local(get_turf(airlock), 'sound/blank.ogg',30,0,3)
+	qdel(src)
+
+/obj/effect/hallucination/fake_door_lock/CanPass(atom/movable/mover, turf/_target)
+	if(mover == target && airlock.density)
+		return FALSE
+	return TRUE
+
 /datum/hallucination/chat
 
 /datum/hallucination/chat/New(mob/living/carbon/C, forced = TRUE, force_radio, specific_message)
@@ -909,6 +961,15 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 				target.throw_alert(alert_type, /atom/movable/screen/alert/highpressure, 2, override = TRUE)
 			else
 				target.throw_alert(alert_type, /atom/movable/screen/alert/lowpressure, 2, override = TRUE)
+		//BEEP BOOP I AM A ROBOT
+		if("newlaw")
+			target.throw_alert(alert_type, /atom/movable/screen/alert/newlaw, override = TRUE)
+		if("locked")
+			target.throw_alert(alert_type, /atom/movable/screen/alert/locked, override = TRUE)
+		if("hacked")
+			target.throw_alert(alert_type, /atom/movable/screen/alert/hacked, override = TRUE)
+		if("charge")
+			target.throw_alert(alert_type, /atom/movable/screen/alert/emptycell, override = TRUE)
 	sleep(duration)
 	target.clear_alert(alert_type, clear_override = TRUE)
 	qdel(src)

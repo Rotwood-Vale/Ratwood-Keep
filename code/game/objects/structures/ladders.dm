@@ -132,6 +132,10 @@
 		return ..()
 	return use(user)
 
+/obj/structure/ladder/attack_robot(mob/living/silicon/robot/R)
+	if(R.Adjacent(src))
+		return use(R)
+
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/structure/ladder/attack_ghost(mob/dead/observer/user)
 	use(user, TRUE)

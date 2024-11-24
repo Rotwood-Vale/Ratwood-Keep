@@ -347,6 +347,9 @@
 					if(ally)
 						continue
 
+					if(issilicon(L) && (rabid || attacked)) // They can't eat silicons, but they can glomp them in defence
+						targets += L // Possible target found!
+
 					if(locate(/mob/living/simple_animal/slime) in L.buckled_mobs) // Only one slime can latch on at a time.
 						continue
 

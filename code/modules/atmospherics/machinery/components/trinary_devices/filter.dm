@@ -11,6 +11,7 @@
 	var/frequency = 0
 	var/datum/radio_frequency/radio_connection
 
+	construction_type = /obj/item/pipe/trinary/flippable
 	pipe_state = "filter"
 
 	ui_x = 390

@@ -15,6 +15,11 @@
 /obj/effect/spawner/structure/window/reinforced/indestructable
 	spawn_list = list(/obj/structure/grille/indestructable, /obj/structure/window/reinforced/fulltile/indestructable)
 
+/obj/structure/barricade/security/murderdome
+	name = "respawnable barrier"
+	desc = ""
+	deploy_time = 0
+	deploy_message = 0
 
 /obj/structure/barricade/security/murderdome/make_debris()
 	new /obj/effect/murderdome/dead_barricade(get_turf(src))

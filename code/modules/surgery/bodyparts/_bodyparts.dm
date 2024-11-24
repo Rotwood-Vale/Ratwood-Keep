@@ -154,6 +154,9 @@
 		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/shove)
 	return list(/datum/intent/grab/move, /datum/intent/grab/shove)
 
+/obj/item/bodypart/blob_act()
+	take_damage(max_damage)
+
 /obj/item/bodypart/Destroy()
 	if(owner)
 		owner.bodyparts -= src

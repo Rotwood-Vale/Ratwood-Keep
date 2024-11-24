@@ -215,7 +215,7 @@
 		L.visible_message(span_warning("[L] scoops up [src]!"))
 
 /mob/living/simple_animal/pet/dog/corgi/Topic(href, href_list)
-	if(!(iscarbon(usr) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK)))
+	if(!(iscarbon(usr) || iscyborg(usr)) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		usr << browse(null, "window=mob[REF(src)]")
 		usr.unset_machine()
 		return
@@ -275,7 +275,11 @@
 						return
 
 					if(!usr.temporarilyRemoveItemFromInventory(item_to_add))
-						to_chat(usr, "<span class='warning'>\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s back!</span>")
+						to_chat(usr, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s back!"))
+						return
+
+					if(istype(item_to_add, /obj/item/grenade/c4)) // last thing he ever wears, I guess
+						item_to_add.afterattack(src,usr,1)
 						return
 
 					//The objects that corgis can wear on their backs.
@@ -306,6 +310,11 @@
 // > some will probably be removed
 
 /mob/living/simple_animal/pet/dog/corgi/proc/place_on_head(obj/item/item_to_add, mob/user)
+
+	if(istype(item_to_add, /obj/item/grenade/c4)) // last thing he ever wears, I guess
+		item_to_add.afterattack(src,user,1)
+		return
+
 	if(inventory_head)
 		if(user)
 			to_chat(user, span_warning("I can't put more than one hat on [src]!"))

@@ -527,6 +527,15 @@
 			user.visible_message(span_warning("[user] spits out [O]!"), span_notice("I spit out [O]!"))
 			return 150
 
+		if(SLIME_ACTIVATE_MAJOR)
+			var/blacklisted_cans = list(/obj/item/toy/crayon/spraycan/borg, /obj/item/toy/crayon/spraycan/infinite)
+			var/chosen = pick(subtypesof(/obj/item/toy/crayon/spraycan) - blacklisted_cans)
+			var/obj/item/O = new chosen(null)
+			if(!user.put_in_active_hand(O))
+				O.forceMove(user.drop_location())
+			playsound(user, 'sound/blank.ogg', 50, TRUE)
+			user.visible_message(span_warning("[user] spits out [O]!"), span_notice("I spit out [O]!"))
+			return 250
 
 /obj/item/slime_extract/cerulean
 	name = "cerulean slime extract"
@@ -556,6 +565,14 @@
 
 /obj/item/slime_extract/sepia/activate(mob/living/carbon/human/user, datum/species/jelly/luminescent/species, activation_type)
 	switch(activation_type)
+		if(SLIME_ACTIVATE_MINOR)
+			var/obj/item/camera/O = new(null, 1)
+			if(!user.put_in_active_hand(O))
+				O.forceMove(user.drop_location())
+			playsound(user, 'sound/blank.ogg', 50, TRUE)
+			user.visible_message(span_warning("[user] spits out [O]!"), span_notice("I spit out [O]!"))
+			return 150
+
 		if(SLIME_ACTIVATE_MAJOR)
 			to_chat(user, span_warning("I feel time slow down..."))
 			if(do_after(user, 30, target = user))
@@ -679,6 +696,17 @@
 
 /obj/item/slimepotion/slime/sentience/proc/after_success(mob/living/user, mob/living/simple_animal/SM)
 	return
+
+/obj/item/slimepotion/slime/sentience/nuclear
+	name = "syndicate intelligence potion"
+	desc = ""
+
+/obj/item/slimepotion/slime/sentience/nuclear/after_success(mob/living/user, mob/living/simple_animal/SM)
+	var/obj/item/implant/radio/syndicate/imp = new(src)
+	imp.implant(SM, user)
+
+	SM.access_card = new /obj/item/card/id/syndicate(SM)
+	ADD_TRAIT(SM.access_card, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
 
 /obj/item/slimepotion/transference
 	name = "consciousness transference potion"
@@ -921,6 +949,28 @@
 	// pass null as first arg to not update records or ID/PDA
 	M.fully_replace_character_name(null, new_name)
 
+	qdel(src)
+
+/obj/item/slimepotion/slime/slimeradio
+	name = "bluespace radio potion"
+	desc = ""
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "potgrey"
+
+/obj/item/slimepotion/slime/slimeradio/attack(mob/living/M, mob/user)
+	if(!ismob(M))
+		return
+	if(!isanimal(M))
+		to_chat(user, span_warning("[M] is too complex for the potion!"))
+		return
+	if(M.stat)
+		to_chat(user, span_warning("[M] is dead!"))
+		return
+
+	to_chat(user, span_notice("I feed the potion to [M]."))
+	to_chat(M, span_notice("My mind tingles as you are fed the potion. You can hear radio waves now!"))
+	var/obj/item/implant/radio/slime/imp = new(src)
+	imp.implant(M, user)
 	qdel(src)
 
 /obj/item/stack/tile/bluespace

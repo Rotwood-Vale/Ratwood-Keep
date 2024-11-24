@@ -96,7 +96,28 @@
 		alpha = 0
 	..()
 
+//Disk boxes
 
+/obj/item/storage/box/disks
+	name = "diskette box"
+	illustration = "disk_kit"
+
+/obj/item/storage/box/disks/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/disk/data(src)
+
+
+/obj/item/storage/box/disks_plantgene
+	name = "plant data disks box"
+	illustration = "disk_kit"
+
+/obj/item/storage/box/disks_nanite
+	name = "nanite program disks box"
+	illustration = "disk_kit"
+
+/obj/item/storage/box/disks_nanite/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/disk/nanite_program(src)
 
 // Ordinary survival box
 /obj/item/storage/box/survival
@@ -114,6 +135,39 @@
 	else
 		new /obj/item/tank/internals/plasmaman/belt(src)
 
+/obj/item/storage/box/survival/radio/PopulateContents()
+	..() // we want the survival stuff too.
+	new /obj/item/radio/off(src)
+
+// Mining survival box
+/obj/item/storage/box/survival/mining
+	mask_type = /obj/item/clothing/mask/gas/explorer
+
+/obj/item/storage/box/survival/mining/PopulateContents()
+	..()
+	new /obj/item/crowbar/red(src)
+
+// Engineer survival box
+/obj/item/storage/box/survival/engineer
+	internal_type = /obj/item/tank/internals/emergency_oxygen/engi
+
+/obj/item/storage/box/survival/engineer/radio/PopulateContents()
+	..() // we want the regular items too.
+	new /obj/item/radio/off(src)
+
+// Syndie survival box
+/obj/item/storage/box/survival/syndie
+	mask_type = /obj/item/clothing/mask/gas/syndicate
+	internal_type = /obj/item/tank/internals/emergency_oxygen/engi
+	medipen_type = null
+
+// Security survival box
+/obj/item/storage/box/survival/security
+	mask_type = /obj/item/clothing/mask/gas/sechailer
+
+/obj/item/storage/box/survival/security/radio/PopulateContents()
+	..() // we want the regular stuff too
+	new /obj/item/radio/off(src)
 
 /obj/item/storage/box/gloves
 	name = "box of latex gloves"
@@ -226,6 +280,44 @@
 	for(var/i in 1 to 7)
 		new /obj/item/grenade/flashbang(src)
 
+/obj/item/storage/box/flashes
+	name = "box of flashbulbs"
+	desc = ""
+	icon_state = "secbox"
+	illustration = "flashbang"
+
+/obj/item/storage/box/flashes/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/assembly/flash/handheld(src)
+
+/obj/item/storage/box/wall_flash
+	name = "wall-mounted flash kit"
+	desc = ""
+	illustration = "flashbang"
+
+/obj/item/storage/box/wall_flash/PopulateContents()
+	var/id = rand(1000, 9999)
+	// FIXME what if this conflicts with an existing one?
+
+	new /obj/item/wallframe/button(src)
+	new /obj/item/electronics/airlock(src)
+	var/obj/item/assembly/control/flasher/remote = new(src)
+	remote.id = id
+	var/obj/item/wallframe/flasher/frame = new(src)
+	frame.id = id
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/screwdriver(src)
+
+
+/obj/item/storage/box/teargas
+	name = "box of tear gas grenades (WARNING)"
+	desc = ""
+	illustration = "flashbang"
+
+/obj/item/storage/box/teargas/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/grenade/chem_grenade/teargas(src)
+
 /obj/item/storage/box/emps
 	name = "box of emp grenades"
 	desc = ""
@@ -244,7 +336,8 @@
 	var/static/items_inside = list(
 		/obj/item/implantcase/tracking = 4,
 		/obj/item/implanter = 1,
-		/obj/item/implantpad = 1)
+		/obj/item/implantpad = 1,
+		/obj/item/locator = 1)
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/box/minertracker
@@ -256,7 +349,8 @@
 	var/static/items_inside = list(
 		/obj/item/implantcase/tracking = 3,
 		/obj/item/implanter = 1,
-		/obj/item/implantpad = 1)
+		/obj/item/implantpad = 1,
+		/obj/item/locator = 1)
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/box/chemimp
@@ -386,6 +480,24 @@
 	for(var/i in 1 to 7)
 		new /obj/item/card/id(src)
 
+//Some spare PDAs in a box
+/obj/item/storage/box/PDAs
+	name = "spare PDAs"
+	desc = ""
+	illustration = "pda"
+
+/obj/item/storage/box/PDAs/PopulateContents()
+	for(var/i in 1 to 4)
+		new /obj/item/pda(src)
+	new /obj/item/cartridge/head(src)
+
+	var/newcart = pick(	/obj/item/cartridge/engineering,
+						/obj/item/cartridge/security,
+						/obj/item/cartridge/medical,
+						/obj/item/cartridge/signal/toxins,
+						/obj/item/cartridge/quartermaster)
+	new newcart(src)
+
 /obj/item/storage/box/silver_ids
 	name = "box of spare silver IDs"
 	desc = ""
@@ -410,6 +522,16 @@
 	new /obj/item/card/id/prisoner/six(src)
 	new /obj/item/card/id/prisoner/seven(src)
 
+/obj/item/storage/box/seccarts
+	name = "box of PDA security cartridges"
+	desc = ""
+	illustration = "pda"
+
+/obj/item/storage/box/seccarts/PopulateContents()
+	new /obj/item/cartridge/detective(src)
+	for(var/i in 1 to 6)
+		new /obj/item/cartridge/security(src)
+
 /obj/item/storage/box/firingpins
 	name = "box of standard firing pins"
 	desc = ""
@@ -427,6 +549,16 @@
 /obj/item/storage/box/firingpins/paywall/PopulateContents()
 	for(var/i in 1 to 5)
 		new /obj/item/firing_pin/paywall(src)
+
+/obj/item/storage/box/lasertagpins
+	name = "box of laser tag firing pins"
+	desc = ""
+	illustration = "id"
+
+/obj/item/storage/box/lasertagpins/PopulateContents()
+	for(var/i in 1 to 3)
+		new /obj/item/firing_pin/tag/red(src)
+		new /obj/item/firing_pin/tag/blue(src)
 
 /obj/item/storage/box/handcuffs
 	name = "box of spare handcuffs"
@@ -575,6 +707,24 @@
 	for(var/i in 1 to 7)
 		new /obj/item/clothing/accessory/armband/deputy(src)
 
+/obj/item/storage/box/metalfoam
+	name = "box of metal foam grenades"
+	desc = ""
+	illustration = "flashbang"
+
+/obj/item/storage/box/metalfoam/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/grenade/chem_grenade/metalfoam(src)
+
+/obj/item/storage/box/smart_metal_foam
+	name = "box of smart metal foam grenades"
+	desc = ""
+	illustration = "flashbang"
+
+/obj/item/storage/box/smart_metal_foam/PopulateContents()
+	for(var/i in 1 to 7)
+		new/obj/item/grenade/chem_grenade/smart_metal_foam(src)
+
 /obj/item/storage/box/hug
 	name = "box of hugs"
 	desc = ""
@@ -592,6 +742,26 @@
 	playsound(loc, "rustle", 50, TRUE, -5)
 	user.visible_message(span_notice("[user] hugs \the [src]."),span_notice("I hug \the [src]."))
 
+/////clown box & honkbot assembly
+/obj/item/storage/box/clown
+	name = "clown box"
+	desc = ""
+	illustration = "clown"
+
+/obj/item/storage/box/clown/attackby(obj/item/I, mob/user, params)
+	if((istype(I, /obj/item/bodypart/l_arm/robot)) || (istype(I, /obj/item/bodypart/r_arm/robot)))
+		if(contents.len) //prevent accidently deleting contents
+			to_chat(user, span_warning("I need to empty [src] out first!"))
+			return
+		if(!user.temporarilyRemoveItemFromInventory(I))
+			return
+		qdel(I)
+		to_chat(user, span_notice("I add some wheels to the [src]! You've got a honkbot assembly now! Honk!"))
+		var/obj/item/bot_assembly/honkbot/A = new
+		qdel(src)
+		user.put_in_hands(A)
+	else
+		return ..()
 
 //////
 /obj/item/storage/box/hug/medical/PopulateContents()
@@ -761,14 +931,31 @@
 	theme_name = "delights"
 
 
+/obj/item/storage/box/ingredients/grains
+	theme_name = "grains"
+
 /obj/item/storage/box/ingredients/carnivore
 	theme_name = "carnivore"
 
 /obj/item/storage/box/ingredients/exotic
 	theme_name = "exotic"
 
-/obj/item/storage/box/ingredients/exotic/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/chocolatebar(src)
+/obj/item/storage/box/emptysandbags
+	name = "box of empty sandbags"
+
+/obj/item/storage/box/emptysandbags/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/emptysandbag(src)
+
+/obj/item/storage/box/rndboards
+	name = "\proper the liberator's legacy"
+	desc = ""
+
+/obj/item/storage/box/rndboards/PopulateContents()
+	new /obj/item/circuitboard/machine/protolathe(src)
+	new /obj/item/circuitboard/machine/destructive_analyzer(src)
+	new /obj/item/circuitboard/machine/circuit_imprinter(src)
+	new /obj/item/circuitboard/computer/rdconsole(src)
 
 /obj/item/storage/box/silver_sulf
 	name = "box of silver sulfadiazine patches"
@@ -784,6 +971,58 @@
 /obj/item/storage/box/fountainpens/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/pen/fountain(src)
+
+/obj/item/storage/box/holy_grenades
+	name = "box of holy hand grenades"
+	desc = ""
+	illustration = "flashbang"
+
+/obj/item/storage/box/holy_grenades/PopulateContents()
+	for(var/i in 1 to 7)
+		new/obj/item/grenade/chem_grenade/holy(src)
+
+/obj/item/storage/box/stockparts/basic //for ruins where it's a bad idea to give access to an autolathe/protolathe, but still want to make stock parts accessible
+	name = "box of stock parts"
+	desc = ""
+
+/obj/item/storage/box/stockparts/basic/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/stock_parts/capacitor = 3,
+		/obj/item/stock_parts/scanning_module = 3,
+		/obj/item/stock_parts/manipulator = 3,
+		/obj/item/stock_parts/micro_laser = 3,
+		/obj/item/stock_parts/matter_bin = 3)
+	generate_items_inside(items_inside,src)
+
+/obj/item/storage/box/stockparts/deluxe
+	name = "box of deluxe stock parts"
+	desc = ""
+	icon_state = "syndiebox"
+
+/obj/item/storage/box/stockparts/deluxe/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/stock_parts/capacitor/quadratic = 3,
+		/obj/item/stock_parts/scanning_module/triphasic = 3,
+		/obj/item/stock_parts/manipulator/femto = 3,
+		/obj/item/stock_parts/micro_laser/quadultra = 3,
+		/obj/item/stock_parts/matter_bin/bluespace = 3)
+	generate_items_inside(items_inside,src)
+
+/obj/item/storage/box/dishdrive
+	name = "DIY Dish Drive Kit"
+	desc = ""
+	custom_premium_price = 200
+
+/obj/item/storage/box/dishdrive/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/stack/sheet/metal/five = 1,
+		/obj/item/stack/cable_coil/five = 1,
+		/obj/item/circuitboard/machine/dish_drive = 1,
+		/obj/item/stack/sheet/glass = 1,
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/matter_bin = 2,
+		/obj/item/screwdriver = 1)
+	generate_items_inside(items_inside,src)
 
 /obj/item/storage/box/material
 	name = "box of materials"
@@ -808,7 +1047,8 @@
 		/obj/item/stack/sheet/bluespace_crystal=50,\
 		/obj/item/stack/sheet/mineral/bananium=50,\
 		/obj/item/stack/sheet/mineral/wood=50,\
-		/obj/item/stack/sheet/plastic/fifty=1,
+		/obj/item/stack/sheet/plastic/fifty=1,\
+		/obj/item/stack/sheet/runed_metal/fifty=1
 		)
 	generate_items_inside(items_inside,src)
 
@@ -820,9 +1060,15 @@
 	var/static/items_inside = list(
 		/obj/item/flashlight/emp/debug=1,\
 		/obj/item/geiger_counter=1,\
+		/obj/item/pipe_dispenser=1,\
 		/obj/item/card/emag=1,\
+		/obj/item/card/id/syndicate/nuke_leader=1,\
 		/obj/item/card/id/departmental_budget/car=1,\
 		/obj/item/stack/spacecash/c1000=50,\
+		/obj/item/healthanalyzer/advanced=1,\
+		/obj/item/disk/tech_disk/debug=1,\
+		/obj/item/uplink/debug=1,\
+		/obj/item/uplink/nuclear/debug=1,\
 		/obj/item/storage/box/beakers/bluespace=1,\
 		/obj/item/storage/box/beakers/variety=1,\
 		/obj/item/storage/box/material=1

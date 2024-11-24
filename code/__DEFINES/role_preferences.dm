@@ -45,13 +45,19 @@
 #define ROLE_DRONE				"Drone"
 #define ROLE_DEATHSQUAD			"Deathsquad"
 #define ROLE_LAVALAND			"Lavaland"
+#define ROLE_INTERNAL_AFFAIRS	"Internal Affairs Agent"
 
 //Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
 //The gamemode specific ones are just so the gamemodes can query whether a player is old enough
 //(in game days played) to play that role
 GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_TRAITOR = /datum/game_mode/traitor,
+	ROLE_BROTHER = /datum/game_mode/traitor/bros,
+	ROLE_OPERATIVE = /datum/game_mode/nuclear,
+	ROLE_CHANGELING = /datum/game_mode/changeling,
 	ROLE_WIZARD = /datum/game_mode/wizard,
+	ROLE_MALF,
+	ROLE_REV = /datum/game_mode/revolution,
 	ROLE_PAI,
 	ROLE_BLOB,
 	ROLE_NINJA,
@@ -60,6 +66,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_REVENANT,
 	ROLE_ABDUCTOR,
 	ROLE_DEVIL = /datum/game_mode/devil,
+	ROLE_INTERNAL_AFFAIRS = /datum/game_mode/traitor/internal_affairs,
 	ROLE_SENTIENCE
 ))
 

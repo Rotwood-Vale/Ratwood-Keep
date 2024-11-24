@@ -50,6 +50,7 @@
 	STR.max_items = 12
 	STR.max_combined_w_class = 24
 	STR.set_holdable(list(
+		/obj/item/healthanalyzer,
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/glass/beaker,
@@ -64,6 +65,8 @@
 		/obj/item/flashlight/pen,
 		/obj/item/extinguisher/mini,
 		/obj/item/reagent_containers/hypospray,
+		/obj/item/sensor_device,
+		/obj/item/radio,
 		/obj/item/clothing/gloves/,
 		/obj/item/lazarus_injector,
 		/obj/item/bikehorn/rubberducky,
@@ -92,6 +95,7 @@
 		/obj/item/implant,
 		/obj/item/implanter,
 		/obj/item/pinpointer/crew,
+		/obj/item/holosign_creator/medical
 		))
 
 /obj/item/storage/firstaid/medical/PopulateContents()
@@ -105,7 +109,8 @@
 		/obj/item/surgical_drapes = 1,
 		/obj/item/scalpel = 1,
 		/obj/item/hemostat = 1,
-		/obj/item/cautery = 1)
+		/obj/item/cautery = 1,
+		/obj/item/healthanalyzer = 1)
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/firstaid/ancient
@@ -252,6 +257,7 @@
 	if(empty)
 		return
 	new /obj/item/stack/medical/gauze(src)
+	new /obj/item/defibrillator/compact/combat/loaded(src)
 	new /obj/item/reagent_containers/hypospray/combat(src)
 	new /obj/item/reagent_containers/pill/patch/libital(src)
 	new /obj/item/reagent_containers/pill/patch/libital(src)
@@ -259,6 +265,31 @@
 	new /obj/item/reagent_containers/pill/patch/aiuri(src)
 	new /obj/item/clothing/glasses/hud/health/night(src)
 
+//medibot assembly
+/obj/item/storage/firstaid/attackby(obj/item/bodypart/S, mob/user, params)
+	if((!istype(S, /obj/item/bodypart/l_arm/robot)) && (!istype(S, /obj/item/bodypart/r_arm/robot)))
+		return ..()
+
+	//Making a medibot!
+	if(contents.len >= 1)
+		to_chat(user, span_warning("I need to empty [src] out first!"))
+		return
+
+	var/obj/item/bot_assembly/medbot/A = new
+	if(istype(src, /obj/item/storage/firstaid/fire))
+		A.set_skin("ointment")
+	else if(istype(src, /obj/item/storage/firstaid/toxin))
+		A.set_skin("tox")
+	else if(istype(src, /obj/item/storage/firstaid/o2))
+		A.set_skin("o2")
+	else if(istype(src, /obj/item/storage/firstaid/brute))
+		A.set_skin("brute")
+	user.put_in_hands(A)
+	to_chat(user, span_notice("I add [S] to [src]."))
+	A.robot_arm = S.type
+	A.firstaid = type
+	qdel(S)
+	qdel(src)
 
 /*
  * Pill Bottles

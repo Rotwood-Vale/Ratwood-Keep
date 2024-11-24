@@ -652,6 +652,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		overlay_state = pick(overlay_list)
 	update_icon()
 
+/obj/item/lighter/cyborg_unequip(mob/user)
+	if(!lit)
+		return
+	set_lit(FALSE)
+
 /obj/item/lighter/suicide_act(mob/living/carbon/user)
 	if (lit)
 		user.visible_message(span_suicide("[user] begins holding \the [src]'s flame up to [user.p_their()] face! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -837,3 +842,169 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			R.desc = ""
 		else
 			to_chat(user, span_warning("I need to dry this first!"))
+
+///////////////
+//VAPE NATION//
+///////////////
+/obj/item/clothing/mask/vape
+	name = "\improper E-Cigarette"
+	desc = ""//<<< i'd vape to that.
+	icon = 'icons/obj/clothing/masks.dmi'
+	icon_state = "red_vape"
+	item_state = null
+	w_class = WEIGHT_CLASS_TINY
+	var/chem_volume = 100
+	var/vapetime = 0 //this so it won't puff out clouds every tick
+	var/screw = 0 // kinky
+	var/super = 0 //for the fattest vapes dude.
+
+/obj/item/clothing/mask/vape/suicide_act(mob/user)
+	user.visible_message(span_suicide("[user] is puffin hard on dat vape, [user.p_they()] trying to join the vape life on a whole notha plane!"))//it doesn't give you cancer, it is cancer
+	return (TOXLOSS|OXYLOSS)
+
+
+/obj/item/clothing/mask/vape/Initialize(mapload, param_color)
+	. = ..()
+	create_reagents(chem_volume, NO_REACT)
+	reagents.add_reagent(/datum/reagent/drug/nicotine, 50)
+	if(!param_color)
+		param_color = pick("red","blue","black","white","green","purple","yellow","orange")
+	icon_state = "[param_color]_vape"
+	item_state = "[param_color]_vape"
+
+/obj/item/clothing/mask/vape/attackby(obj/item/O, mob/user, params)
+	if(O.tool_behaviour == TOOL_SCREWDRIVER)
+		if(!screw)
+			screw = TRUE
+			to_chat(user, span_notice("I open the cap on [src]."))
+			ENABLE_BITFIELD(reagents.flags, OPENCONTAINER)
+			if(obj_flags & EMAGGED)
+				add_overlay("vapeopen_high")
+			else if(super)
+				add_overlay("vapeopen_med")
+			else
+				add_overlay("vapeopen_low")
+		else
+			screw = FALSE
+			to_chat(user, span_notice("I close the cap on [src]."))
+			DISABLE_BITFIELD(reagents.flags, OPENCONTAINER)
+			cut_overlays()
+
+	if(O.tool_behaviour == TOOL_MULTITOOL)
+		if(screw && !(obj_flags & EMAGGED))//also kinky
+			if(!super)
+				cut_overlays()
+				super = 1
+				to_chat(user, span_notice("I increase the voltage of [src]."))
+				add_overlay("vapeopen_med")
+			else
+				cut_overlays()
+				super = 0
+				to_chat(user, span_notice("I decrease the voltage of [src]."))
+				add_overlay("vapeopen_low")
+
+		if(screw && (obj_flags & EMAGGED))
+			to_chat(user, span_warning("[src] can't be modified!"))
+		else
+			..()
+
+
+/obj/item/clothing/mask/vape/emag_act(mob/user)// I WON'T REGRET WRITTING THIS, SURLY.
+	if(screw)
+		if(!(obj_flags & EMAGGED))
+			cut_overlays()
+			obj_flags |= EMAGGED
+			super = 0
+			to_chat(user, span_warning("I maximize the voltage of [src]."))
+			add_overlay("vapeopen_high")
+			var/datum/effect_system/spark_spread/sp = new /datum/effect_system/spark_spread //for effect
+			sp.set_up(5, 1, src)
+			sp.start()
+		else
+			to_chat(user, span_warning("[src] is already emagged!"))
+	else
+		to_chat(user, span_warning("I need to open the cap to do that!"))
+
+/obj/item/clothing/mask/vape/attack_self(mob/user)
+	if(reagents.total_volume > 0)
+		to_chat(user, span_notice("I empty [src] of all reagents."))
+		reagents.clear_reagents()
+
+/obj/item/clothing/mask/vape/equipped(mob/user, slot)
+	. = ..()
+	if(slot == SLOT_WEAR_MASK)
+		if(!screw)
+			to_chat(user, span_notice("I start puffing on the vape."))
+			DISABLE_BITFIELD(reagents.flags, NO_REACT)
+			START_PROCESSING(SSobj, src)
+		else //it will not start if the vape is opened.
+			to_chat(user, span_warning("I need to close the cap first!"))
+
+/obj/item/clothing/mask/vape/dropped(mob/user)
+	. = ..()
+	if(user.get_item_by_slot(SLOT_WEAR_MASK) == src)
+		ENABLE_BITFIELD(reagents.flags, NO_REACT)
+		STOP_PROCESSING(SSobj, src)
+
+/obj/item/clothing/mask/vape/proc/hand_reagents()//had to rename to avoid duplicate error
+	if(reagents.total_volume)
+		if(iscarbon(loc))
+			var/mob/living/carbon/C = loc
+			if (src == C.wear_mask) // if it's in the human/monkey mouth, transfer reagents to the mob
+				var/fraction = min(REAGENTS_METABOLISM/reagents.total_volume, 1) //this will react instantly, making them a little more dangerous than cigarettes
+				reagents.reaction(C, INGEST, fraction)
+				if(!reagents.trans_to(C, REAGENTS_METABOLISM))
+					reagents.remove_any(REAGENTS_METABOLISM)
+				if(reagents.get_reagent_amount(/datum/reagent/fuel))
+					//HOT STUFF
+					C.fire_stacks = 2
+					C.IgniteMob()
+
+				if(reagents.get_reagent_amount(/datum/reagent/toxin/plasma)) // the plasma explodes when exposed to fire
+					var/datum/effect_system/reagents_explosion/e = new()
+					e.set_up(round(reagents.get_reagent_amount(/datum/reagent/toxin/plasma) / 2.5, 1), get_turf(src), 0, 0)
+					e.start()
+					qdel(src)
+				return
+		reagents.remove_any(REAGENTS_METABOLISM)
+
+/obj/item/clothing/mask/vape/process()
+	var/mob/living/M = loc
+
+	if(isliving(loc))
+		M.IgniteMob()
+
+	vapetime++
+
+	if(!reagents.total_volume)
+		if(ismob(loc))
+			to_chat(M, span_warning("[src] is empty!"))
+			STOP_PROCESSING(SSobj, src)
+			//it's reusable so it won't unequip when empty
+		return
+	//open flame removed because vapes are a closed system, they wont light anything on fire
+
+	if(super && vapetime > 3)//Time to start puffing those fat vapes, yo.
+		var/datum/effect_system/smoke_spread/chem/smoke_machine/s = new
+		s.set_up(reagents, 1, 24, loc)
+		s.start()
+		vapetime = 0
+
+	if((obj_flags & EMAGGED) && vapetime > 3)
+		var/datum/effect_system/smoke_spread/chem/smoke_machine/s = new
+		s.set_up(reagents, 4, 24, loc)
+		s.start()
+		vapetime = 0
+		if(prob(5))//small chance for the vape to break and deal damage if it's emagged
+			playsound(get_turf(src), 'sound/blank.ogg', 50, FALSE)
+			M.apply_damage(20, BURN, BODY_ZONE_HEAD)
+			M.Paralyze(300, 1, 0)
+			var/datum/effect_system/spark_spread/sp = new /datum/effect_system/spark_spread
+			sp.set_up(5, 1, src)
+			sp.start()
+			to_chat(M, span_danger("[src] suddenly explodes in my mouth!"))
+			qdel(src)
+			return
+
+	if(reagents && reagents.total_volume)
+		hand_reagents()

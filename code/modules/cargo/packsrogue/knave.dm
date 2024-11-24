@@ -25,11 +25,6 @@
 	cost = 24
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
-/datum/supply_pack/rogue/Knave/leather/Lhelmet
-	name = "Reinforced hood"
-	cost = 30
-	contains = list(/obj/item/clothing/head/roguetown/roguehood/reinforced)
-
 /datum/supply_pack/rogue/Knave/helmet/hhelmet
 	name = "Horned cap"
 	cost = 80

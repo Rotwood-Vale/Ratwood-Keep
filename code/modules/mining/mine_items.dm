@@ -48,11 +48,18 @@
 
 /obj/structure/closet/secure_closet/miner/PopulateContents()
 	..()
+	new /obj/item/stack/sheet/mineral/sandbags(src, 5)
+	new /obj/item/storage/box/emptysandbags(src)
 	new /obj/item/shovel(src)
 	new /obj/item/pickaxe/mini(src)
+	new /obj/item/radio/headset/headset_cargo/mining(src)
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/storage/bag/ore(src)
+	new /obj/item/t_scanner/adv_mining_scanner/lesser(src)
+	new /obj/item/gun/energy/kinetic_accelerator(src)
 	new /obj/item/clothing/glasses/meson(src)
+	new /obj/item/survivalcapsule(src)
+	new /obj/item/assault_pod/mining(src)
 
 
 /**********************Shuttle Computer**************************/
@@ -60,13 +67,24 @@
 /obj/machinery/computer/shuttle/mining
 	name = "mining shuttle console"
 	desc = ""
+	circuit = /obj/item/circuitboard/computer/mining_shuttle
 	shuttleId = "mining"
 	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"
 	no_destination_swap = 1
+	var/static/list/dumb_rev_heads = list()
+
+//ATTACK HAND IGNORING PARENT RETURN VALUE
+/obj/machinery/computer/shuttle/mining/attack_hand(mob/user)
+	if(is_station_level(user.z) && user.mind && is_head_revolutionary(user) && !(user.mind in dumb_rev_heads))
+		to_chat(user, span_warning("I get a feeling that leaving the station might be a REALLY dumb idea..."))
+		dumb_rev_heads += user.mind
+		return
+	. = ..()
 
 /obj/machinery/computer/shuttle/mining/common
 	name = "lavaland shuttle console"
 	desc = ""
+	circuit = /obj/item/circuitboard/computer/mining_shuttle/common
 	shuttleId = "mining_common"
 	possible_destinations = "whiteship_home;lavaland_common_away;landing_zone_dock;mining_public"
 
