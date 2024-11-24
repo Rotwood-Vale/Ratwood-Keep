@@ -378,7 +378,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/heavygloves
 	name = "hide gloves"
-	result = /obj/item/clothing/gloves/roguetown/angle
+	result = /obj/item/clothing/gloves/roguetown/leather/angle
 	reqs = list(/obj/item/natural/fur = 1)
 	craftdiff = 3
 

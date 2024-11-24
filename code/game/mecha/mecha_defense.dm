@@ -66,11 +66,6 @@
 /obj/mecha/attack_paw(mob/user as mob)
 	return attack_hand(user)
 
-/obj/mecha/attack_alien(mob/living/user)
-	log_message("Attack by alien. Attacker - [user].", LOG_MECHA, color="red")
-	playsound(src.loc, 'sound/blank.ogg', 100, TRUE)
-	attack_generic(user, 15, BRUTE, "slash", 0)
-
 /obj/mecha/attack_animal(mob/living/simple_animal/user)
 	log_message("Attack by simple animal. Attacker - [user].", LOG_MECHA, color="red")
 	if(!user.melee_damage_upper && !user.obj_damage)

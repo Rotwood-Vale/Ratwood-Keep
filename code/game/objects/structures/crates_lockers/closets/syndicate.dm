@@ -109,7 +109,6 @@
 	/obj/item/stack/sheet/mineral/plastitanium,
 	/obj/item/stack/rods,
 	/obj/item/stack/sheet/bluespace_crystal,
-	/obj/item/stack/sheet/mineral/abductor,
 	/obj/item/stack/sheet/plastic,
 	/obj/item/stack/sheet/mineral/wood
 	)

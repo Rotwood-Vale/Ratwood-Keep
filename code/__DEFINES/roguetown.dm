@@ -50,15 +50,15 @@
 #define RACES_VERY_SHUNNED \
 	/datum/species/halforc
 
-#define RACES_DESPISED \
+#define RACES_GOBLIN \
 	/datum/species/goblinp
 
 #define RACES_SEELIE \
 	/datum/species/seelie	//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS
 
-#define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
+#define RACES_ALL_KINDS list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
-#define RACES_ALL_KINDS_PLUS_SEELIE list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
+#define RACES_NEARLY_ALL_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
 
 #define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
@@ -149,6 +149,16 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 )
+// For their armour sets. Shouldn't need to define the sub species, but oh well.
+#define GOBLIN_RACE_TYPES list(\
+	/datum/species/goblinp,\
+	/datum/species/goblin,\
+	/datum/species/goblin/hell,\
+	/datum/species/goblin/cave,\
+	/datum/species/goblin/sea,\
+	/datum/species/goblin/moon,\
+)
+
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
@@ -270,6 +280,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
 #define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
 #define CTAG_BOG 		"CAT_BOG" 	//Vanguard
+#define CTAG_GOBS 		"CAT_GOBS" 	// Goblin Guards
 
 /*
 	Defines for the triumph buy datum categories

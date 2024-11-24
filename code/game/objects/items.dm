@@ -206,6 +206,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	/// The amount of salvage we get out of salvaging with scissors
 	var/salvage_amount = 0 //This will be more accurate when sewing recipes get sorted
 
+	/// Path. For use in generating dummies for one-off items that would break the game like the crown.
+	var/visual_replacement
+
 	/// Temporary snowflake var to be used in the rare cases clothing doesn't require fibers to sew, to avoid material duping
 	var/fiber_salvage = FALSE
 
@@ -590,16 +593,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(!user.put_in_active_hand(src, FALSE, FALSE))
 		user.dropItemToGround(src)
 
-/obj/item/attack_alien(mob/user)
-	var/mob/living/carbon/alien/A = user
-
-	if(!A.has_fine_manipulation)
-		if(src in A.contents) // To stop Aliens having items stuck in their pockets
-			A.dropItemToGround(src)
-		to_chat(user, span_warning("My claws aren't capable of such fine manipulation!"))
-		return
-	attack_paw(A)
-
 /obj/item/attack_ai(mob/user)
 	if(istype(src.loc, /obj/item/robot_module))
 		//If the item is part of a cyborg module, equip it
@@ -755,10 +748,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(M.is_eyes_covered())
 		// you can't stab someone in the eyes wearing a mask!
 		to_chat(user, span_warning("You're going to need to remove [M.p_their()] eye protection first!"))
-		return
-
-	if(isalien(M))//Aliens don't have eyes./N     slimes also don't have eyes!
-		to_chat(user, span_warning("I cannot locate any eyes on this creature!"))
 		return
 
 	if(isbrain(M))

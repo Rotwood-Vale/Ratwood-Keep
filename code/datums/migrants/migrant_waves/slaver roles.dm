@@ -13,7 +13,7 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
@@ -63,7 +63,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
@@ -115,7 +115,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
@@ -166,7 +166,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalalz
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson

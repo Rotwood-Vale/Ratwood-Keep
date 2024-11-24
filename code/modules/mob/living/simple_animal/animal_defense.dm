@@ -150,32 +150,6 @@
 			playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
 
 
-/mob/living/simple_animal/attack_alien(mob/living/carbon/alien/humanoid/M)
-	if(..()) //if harm or disarm intent.
-		if(M.used_intent.type == INTENT_DISARM)
-			playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
-			visible_message(span_danger("[M] [response_disarm_continuous] [name]!"), \
-							span_danger("[M] [response_disarm_continuous] you!"), null, COMBAT_MESSAGE_RANGE, M)
-			to_chat(M, span_danger("I [response_disarm_simple] [name]!"))
-			log_combat(M, src, "disarmed")
-		else
-			var/damage = rand(15, 30)
-			visible_message(span_danger("[M] slashes at [src]!"), \
-							span_danger("You're slashed at by [M]!"), null, COMBAT_MESSAGE_RANGE, M)
-			to_chat(M, span_danger("I slash at [src]!"))
-			playsound(loc, 'sound/blank.ogg', 25, TRUE, -1)
-			attack_threshold_check(damage)
-			log_combat(M, src, "attacked")
-		return 1
-
-/mob/living/simple_animal/attack_larva(mob/living/carbon/alien/larva/L)
-	. = ..()
-	if(. && stat != DEAD) //successful larva bite
-		var/damage = rand(5, 10)
-		. = attack_threshold_check(damage)
-		if(.)
-			L.amount_grown = min(L.amount_grown + damage, L.max_grown)
-
 /mob/living/simple_animal/attack_animal(mob/living/simple_animal/M)
 	. = ..()
 	if(.)

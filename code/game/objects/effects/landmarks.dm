@@ -409,21 +409,30 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 //goblin
 
-/obj/effect/landmark/start/goblinking
-	name = "Goblin King"
+/obj/effect/landmark/start/goblinchief
+	name = "Goblin Chief"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblincook
 	name = "Goblin Cook"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblinguard
 	name = "Goblin Guard"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblinsmith
 	name = "Goblin Smith"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/goblinrabble
+	name = "Goblin Rabble"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 // START LANDMARKS FOLLOW. Don't change the names unless
 // you are refactoring shitty landmark code.
@@ -683,16 +692,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/observer_start
 	name = "Observer-Start"
 	icon_state = "x"
-
-//xenos, morphs and nightmares spawn here
-/obj/effect/landmark/xeno_spawn
-	name = "xeno_spawn"
-	icon_state = "xeno_spawn"
-
-/obj/effect/landmark/xeno_spawn/Initialize(mapload)
-	..()
-	GLOB.xeno_spawn += loc
-	return INITIALIZE_HINT_QDEL
 
 //objects with the stationloving component (nuke disk) respawn here.
 //also blobs that have their spawn forcemoved (running out of time when picking their spawn spot), santa and respawning devils

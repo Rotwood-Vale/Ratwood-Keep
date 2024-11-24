@@ -259,9 +259,9 @@
 	desc = "Usually used for holding runelock sphreres."
 
 /obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
-	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
-	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
-	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
 
 /obj/item/storage/backpack/rogue //holding salvage vars for children
 	sewrepair = TRUE
@@ -301,6 +301,9 @@
 			if(4)
 				new /obj/item/reagent_containers/powder/spice(src)
 
+/obj/item/storage/backpack/rogue/satchel/musketeer/PopulateContents()
+	new /obj/item/powderflask(src)
+	new /obj/item/storage/belt/rogue/pouch/coins/mid(src)
 
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK

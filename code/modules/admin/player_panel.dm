@@ -225,11 +225,6 @@
 						M_job = M.get_role_title()
 					else if(ismonkey(M))
 						M_job = "Monkey"
-					else if(isalien(M)) //aliens
-						if(islarva(M))
-							M_job = "Alien larva"
-						else
-							M_job = ROLE_ALIEN
 					else
 						M_job = "Carbon-based"
 

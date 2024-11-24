@@ -7,7 +7,7 @@
 	spawn_positions = 4
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS_PLUS_SEELIE
+	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE
 	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
 
 	outfit = /datum/outfit/job/roguetown/prisonerr
@@ -45,4 +45,4 @@
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
-		
+

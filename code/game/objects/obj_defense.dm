@@ -112,10 +112,6 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	return take_damage(damage_amount, damage_type, damage_flag, sound_effect, get_dir(src, user), armor_penetration)
 
-/obj/attack_alien(mob/living/carbon/alien/humanoid/user)
-	if(attack_generic(user, 60, BRUTE, "slash", 0))
-		playsound(src.loc, 'sound/blank.ogg', 100, TRUE)
-
 /obj/attack_animal(mob/living/simple_animal/M)
 	if(!M.melee_damage_upper && !M.obj_damage)
 		M.emote("custom", message = "[M.friendly_verb_continuous] [src].")
@@ -217,7 +213,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(T.intact && level == 1) //fire can't damage things hidden below the floor.
 			return
 	if(added && !(resistance_flags & FIRE_PROOF))
-		take_damage(added, BURN, "fire", 0)
+		take_damage(CLAMP(0.15 * added, 0, 20), BURN, "fire", 0)
 	if(!(resistance_flags & ON_FIRE) && (resistance_flags & FLAMMABLE) && !(resistance_flags & FIRE_PROOF))
 		resistance_flags |= ON_FIRE
 		SSfire_burning.processing[src] = src
