@@ -125,30 +125,6 @@
 	name = "Ninja Vanish"
 	payload = /obj/item/grenade/smokebomb
 
-/obj/item/grenade/clusterbuster/metalfoam
-	name = "Instant Concrete"
-	payload = /obj/item/grenade/chem_grenade/metalfoam
-
-/obj/item/grenade/clusterbuster/inferno
-	name = "Inferno"
-	payload = /obj/item/grenade/chem_grenade/incendiary
-
-/obj/item/grenade/clusterbuster/antiweed
-	name = "RoundDown"
-	payload = /obj/item/grenade/chem_grenade/antiweed
-
-/obj/item/grenade/clusterbuster/cleaner
-	name = "Mr. Proper"
-	payload = /obj/item/grenade/chem_grenade/cleaner
-
-/obj/item/grenade/clusterbuster/teargas
-	name = "Oignon Grenade"
-	payload = /obj/item/grenade/chem_grenade/teargas
-
-/obj/item/grenade/clusterbuster/facid
-	name = "Aciding Rain"
-	payload = /obj/item/grenade/chem_grenade/facid
-
 /obj/item/grenade/clusterbuster/syndieminibomb
 	name = "SyndiWrath"
 	payload = /obj/item/grenade/syndieminibomb
@@ -164,10 +140,6 @@
 /obj/item/grenade/clusterbuster/soap
 	name = "Slipocalypse"
 	payload = /obj/item/grenade/spawnergrenade/syndiesoap
-
-/obj/item/grenade/clusterbuster/clf3
-	name = "WELCOME TO HELL"
-	payload = /obj/item/grenade/chem_grenade/clf3
 
 //random clusterbuster spawner
 /obj/item/grenade/clusterbuster/random

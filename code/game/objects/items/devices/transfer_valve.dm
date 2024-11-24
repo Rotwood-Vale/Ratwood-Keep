@@ -198,10 +198,7 @@
 
 		var/attachment
 		if(attached_device)
-			if(istype(attached_device, /obj/item/assembly/signaler))
-				attachment = "<A HREF='?_src_=holder;[HrefToken()];secrets=list_signalers'>[attached_device]</A>"
-			else
-				attachment = attached_device
+			attachment = attached_device
 
 		var/admin_attachment_message
 		var/attachment_message

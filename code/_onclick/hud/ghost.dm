@@ -95,6 +95,7 @@
 	var/mob/dead/observer/G = usr
 	G.ghost_down()
 
+
 /datum/hud/ghost/New(mob/owner)
 	..()
 	var/atom/movable/screen/using

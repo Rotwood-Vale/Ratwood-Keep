@@ -368,47 +368,6 @@
 		var/armor_block = run_armor_check(affecting, "blunt")
 		apply_damage(damage, BRUTE, affecting, armor_block)
 
-/mob/living/carbon/human/mech_melee_attack(obj/mecha/M)
-
-	if(M.occupant.used_intent.type == INTENT_HARM)
-		if(HAS_TRAIT(M.occupant, TRAIT_PACIFISM))
-			to_chat(M.occupant, span_warning("I don't want to harm other living beings!"))
-			return
-		M.do_attack_animation(src)
-		if(M.damtype == "brute")
-			step_away(src,M,15)
-		var/obj/item/bodypart/temp = get_bodypart(pick(BODY_ZONE_CHEST, BODY_ZONE_CHEST, BODY_ZONE_CHEST, BODY_ZONE_HEAD))
-		if(temp)
-			var/update = 0
-			var/dmg = rand(M.force/2, M.force)
-			switch(M.damtype)
-				if("brute")
-					if(M.force > 35) // durand and other heavy mechas
-						Unconscious(20)
-					else if(M.force > 20 && !IsKnockdown()) // lightweight mechas like gygax
-						Knockdown(40)
-					update |= temp.receive_damage(dmg, 0)
-					playsound(src, 'sound/blank.ogg', 50, TRUE)
-				if("fire")
-					update |= temp.receive_damage(0, dmg)
-					playsound(src, 'sound/blank.ogg', 50, TRUE)
-				if("tox")
-					M.mech_toxin_damage(src)
-				else
-					return
-			if(update)
-				update_damage_overlays()
-			updatehealth()
-
-		visible_message(span_danger("[M.name] hits [src]!"), \
-						span_danger("[M.name] hits you!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
-		to_chat(M, span_danger("I hit [src]!"))
-		log_combat(M.occupant, src, "attacked", M, "(INTENT: [uppertext(M.occupant.used_intent.name)]) (DAMTYPE: [uppertext(M.damtype)])")
-
-	else
-		..()
-
-
 /mob/living/carbon/human/ex_act(severity, target, origin)
 	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
 		return
@@ -471,16 +430,6 @@
 				max_limb_loss--
 				if(!max_limb_loss)
 					break
-
-
-/mob/living/carbon/human/blob_act(obj/structure/blob/B)
-	if(stat == DEAD)
-		return
-	show_message(span_danger("The blob attacks you!"))
-	var/dam_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-	var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
-	apply_damage(5, BRUTE, affecting, run_armor_check(affecting, "blunt"))
-
 
 ///Calculates the siemens coeff based on clothing and species, can also restart hearts.
 /mob/living/carbon/human/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)

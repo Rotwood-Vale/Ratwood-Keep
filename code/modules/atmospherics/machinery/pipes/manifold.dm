@@ -12,7 +12,6 @@
 
 	device_type = TRINARY
 
-	construction_type = /obj/item/pipe/trinary
 	pipe_state = "manifold"
 
 	var/mutable_appearance/center

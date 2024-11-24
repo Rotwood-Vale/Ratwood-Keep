@@ -89,11 +89,6 @@
 	if(statpanel("Status"))
 		stat(null, "Intent: [a_intent]")
 		stat(null, "Move Mode: [m_intent]")
-		if(client && mind)
-			var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
-			if(changeling)
-				stat("Chemical Storage", "[changeling.chem_charges]/[changeling.chem_storage]")
-				stat("Absorbed DNA", changeling.absorbedcount)
 	return
 
 
@@ -130,16 +125,6 @@
 	//Securitrons can't identify monkeys
 	if( !(judgement_criteria & JUDGE_IGNOREMONKEYS) && (judgement_criteria & JUDGE_IDCHECK) )
 		threatcount += 4
-
-	//Lasertag bullshit
-	if(lasercolor)
-		if(lasercolor == "b")//Lasertag turrets target the opposing team, how great is that? -Sieve
-			if(is_holding_item_of_type(/obj/item/gun/energy/laser/redtag))
-				threatcount += 4
-
-		if(lasercolor == "r")
-			if(is_holding_item_of_type(/obj/item/gun/energy/laser/bluetag))
-				threatcount += 4
 
 		return threatcount
 

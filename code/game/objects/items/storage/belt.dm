@@ -51,21 +51,11 @@
 		/obj/item/wrench,
 		/obj/item/multitool,
 		/obj/item/flashlight,
-		/obj/item/stack/cable_coil,
-		/obj/item/t_scanner,
-		/obj/item/analyzer,
 		/obj/item/geiger_counter,
 		/obj/item/extinguisher/mini,
-		/obj/item/radio,
 		/obj/item/clothing/gloves,
-		/obj/item/holosign_creator/atmos,
-		/obj/item/holosign_creator/engineering,
 		/obj/item/forcefield_projector,
-		/obj/item/assembly/signaler,
 		/obj/item/lightreplacer,
-		/obj/item/construction/rcd,
-		/obj/item/pipe_dispenser,
-		/obj/item/inducer,
 		/obj/item/plunger
 		))
 
@@ -80,9 +70,7 @@
 	new /obj/item/crowbar/power(src)
 	new /obj/item/weldingtool/experimental(src)//This can be changed if this is too much
 	new /obj/item/multitool(src)
-	new /obj/item/stack/cable_coil(src,MAXCOIL,pick("red","yellow","orange"))
 	new /obj/item/extinguisher/mini(src)
-	new /obj/item/analyzer(src)
 	//much roomier now that we've managed to remove two tools
 
 /obj/item/storage/belt/utility/full/PopulateContents()
@@ -92,7 +80,6 @@
 	new /obj/item/crowbar(src)
 	new /obj/item/wirecutters(src)
 	new /obj/item/multitool(src)
-	new /obj/item/stack/cable_coil(src,MAXCOIL,pick("red","yellow","orange"))
 
 /obj/item/storage/belt/utility/full/engi/PopulateContents()
 	new /obj/item/screwdriver(src)
@@ -101,7 +88,6 @@
 	new /obj/item/crowbar(src)
 	new /obj/item/wirecutters(src)
 	new /obj/item/multitool(src)
-	new /obj/item/stack/cable_coil(src,MAXCOIL,pick("red","yellow","orange"))
 
 
 /obj/item/storage/belt/utility/atmostech/PopulateContents()
@@ -110,7 +96,6 @@
 	new /obj/item/weldingtool(src)
 	new /obj/item/crowbar(src)
 	new /obj/item/wirecutters(src)
-	new /obj/item/t_scanner(src)
 	new /obj/item/extinguisher/mini(src)
 
 /obj/item/storage/belt/medical
@@ -125,7 +110,6 @@
 	STR.max_w_class = WEIGHT_CLASS_BULKY
 	STR.max_combined_w_class = 21
 	STR.set_holdable(list(
-		/obj/item/healthanalyzer,
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/glass/beaker,
@@ -140,8 +124,6 @@
 		/obj/item/flashlight/pen,
 		/obj/item/extinguisher/mini,
 		/obj/item/reagent_containers/hypospray,
-		/obj/item/sensor_device,
-		/obj/item/radio,
 		/obj/item/clothing/gloves/,
 		/obj/item/lazarus_injector,
 		/obj/item/bikehorn/rubberducky,
@@ -170,8 +152,6 @@
 		/obj/item/implant,
 		/obj/item/implanter,
 		/obj/item/pinpointer/crew,
-		/obj/item/holosign_creator/medical,
-		/obj/item/construction/plumbing,
 		/obj/item/plunger
 		))
 
@@ -188,12 +168,10 @@
 	STR.max_items = 5
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.set_holdable(list(
-		/obj/item/melee/baton,
 		/obj/item/melee/classic_baton,
 		/obj/item/grenade,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
-		/obj/item/assembly/flash/handheld,
 		/obj/item/clothing/glasses,
 		/obj/item/ammo_casing/shotgun,
 		/obj/item/ammo_box,
@@ -201,18 +179,14 @@
 		/obj/item/kitchen/knife/combat,
 		/obj/item/flashlight/seclite,
 		/obj/item/melee/classic_baton/telescopic,
-		/obj/item/radio,
 		/obj/item/clothing/gloves,
 		/obj/item/restraints/legcuffs/bola,
-		/obj/item/holosign_creator/security
 		))
 
 /obj/item/storage/belt/security/full/PopulateContents()
 	new /obj/item/reagent_containers/spray/pepper(src)
 	new /obj/item/restraints/handcuffs(src)
 	new /obj/item/grenade/flashbang(src)
-	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/loaded(src)
 	update_icon()
 
 /obj/item/storage/belt/security/webbing
@@ -249,13 +223,9 @@
 		/obj/item/wrench,
 		/obj/item/multitool,
 		/obj/item/flashlight,
-		/obj/item/stack/cable_coil,
-		/obj/item/analyzer,
 		/obj/item/extinguisher/mini,
-		/obj/item/radio,
 		/obj/item/clothing/gloves,
 		/obj/item/resonator,
-		/obj/item/mining_scanner,
 		/obj/item/pickaxe,
 		/obj/item/shovel,
 		/obj/item/stack/sheet/animalhide,
@@ -269,8 +239,6 @@
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/gps,
 		/obj/item/storage/bag/ore,
-		/obj/item/survivalcapsule,
-		/obj/item/t_scanner/adv_mining_scanner,
 		/obj/item/reagent_containers/pill,
 		/obj/item/storage/pill_bottle,
 		/obj/item/stack/ore,
@@ -279,10 +247,6 @@
 		/obj/item/wormhole_jaunter,
 		/obj/item/stack/marker_beacon
 		))
-
-
-/obj/item/storage/belt/mining/vendor
-	contents = newlist(/obj/item/survivalcapsule)
 
 /obj/item/storage/belt/mining/alt
 	icon_state = "explorer2"
@@ -408,8 +372,6 @@
 	new /obj/item/weldingtool/abductor(src)
 	new /obj/item/crowbar/abductor(src)
 	new /obj/item/wirecutters/abductor(src)
-	new /obj/item/multitool/abductor(src)
-	new /obj/item/stack/cable_coil(src,MAXCOIL,"white")
 
 /obj/item/storage/belt/military/army
 	name = "army belt"
@@ -447,7 +409,6 @@
 		/obj/item/lighter,
 		/obj/item/multitool,
 		/obj/item/reagent_containers/food/drinks/bottle/molotov,
-		/obj/item/grenade/c4,
 		))
 
 /obj/item/storage/belt/grenade/full/PopulateContents()
@@ -458,8 +419,6 @@
 		/obj/item/grenade/empgrenade = 1,
 		/obj/item/grenade/syndieminibomb/concussion/frag = 10,
 		/obj/item/grenade/gluon = 4,
-		/obj/item/grenade/chem_grenade/incendiary = 2,
-		/obj/item/grenade/chem_grenade/facid = 1,
 		/obj/item/grenade/syndieminibomb = 2,
 		/obj/item/screwdriver = 1,
 		/obj/item/multitool = 1)
@@ -485,7 +444,6 @@
 	new /obj/item/gun/magic/wand/resurrection(src)
 	new /obj/item/gun/magic/wand/polymorph(src)
 	new /obj/item/gun/magic/wand/teleport(src)
-	new /obj/item/gun/magic/wand/door(src)
 	new /obj/item/gun/magic/wand/fireball(src)
 
 	for(var/obj/item/gun/magic/wand/W in contents) //All wands in this pack come in the best possible condition
@@ -504,12 +462,10 @@
 	STR.max_items = 6
 	STR.max_w_class = WEIGHT_CLASS_BULKY // Set to this so the  light replacer can fit.
 	STR.set_holdable(list(
-		/obj/item/grenade/chem_grenade,
 		/obj/item/lightreplacer,
 		/obj/item/flashlight,
 		/obj/item/reagent_containers/spray,
 		/obj/item/soap,
-		/obj/item/holosign_creator,
 		/obj/item/forcefield_projector,
 		/obj/item/clothing/gloves,
 		/obj/item/melee/flyswatter,
@@ -521,7 +477,6 @@
 	new /obj/item/lightreplacer(src)
 	new /obj/item/reagent_containers/spray/cleaner(src)
 	new /obj/item/soap/nanotrasen(src)
-	new /obj/item/holosign_creator(src)
 	new /obj/item/melee/flyswatter(src)
 
 /obj/item/storage/belt/bandolier
@@ -555,7 +510,6 @@
 		/obj/item/gun/ballistic/automatic/pistol,
 		/obj/item/gun/ballistic/revolver,
 		/obj/item/ammo_box,
-		/obj/item/gun/energy/e_gun/mini
 		))
 
 /obj/item/storage/belt/holster/full/PopulateContents()
