@@ -237,7 +237,6 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/stack/ore,
 		/obj/item/reagent_containers/food/drinks,
-		/obj/item/storage/bag/plants,
 		))
 
 /obj/item/storage/belt/mining/alt
