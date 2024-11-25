@@ -351,6 +351,7 @@
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 	VD.handle_vitae(-200)
 	fully_heal()
+	regenerate_limbs()
 
 /mob/living/carbon/human/proc/vampire_infect()
 	if(!mind)
