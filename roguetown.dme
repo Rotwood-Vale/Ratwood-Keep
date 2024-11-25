@@ -1864,6 +1864,7 @@
 #include "code\modules\language\roguetown\dwarf.dm"
 #include "code\modules\language\roguetown\elf.dm"
 #include "code\modules\language\roguetown\fae.dm"
+#include "code\modules\language\roguetown\felid.dm"
 #include "code\modules\language\roguetown\hellspeak.dm"
 #include "code\modules\language\roguetown\lupian.dm"
 #include "code\modules\language\roguetown\orc.dm"
