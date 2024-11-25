@@ -24,7 +24,6 @@
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
-	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
 
 	ui_x = 335

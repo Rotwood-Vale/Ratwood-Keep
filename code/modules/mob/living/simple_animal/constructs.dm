@@ -59,12 +59,6 @@
 		S.action.button.screen_loc = "6:[pos],4:-2"
 		S.action.button.moved = "6:[pos],4:-2"
 		spellnum++
-	if(runetype)
-		var/datum/action/innate/cult/create_rune/CR = new runetype(src)
-		CR.Grant(src)
-		var/pos = 2+spellnum*31
-		CR.button.screen_loc = "6:[pos],4:-2"
-		CR.button.moved = "6:[pos],4:-2"
 
 /mob/living/simple_animal/hostile/construct/Login()
 	..()
@@ -141,7 +135,6 @@
 	force_threshold = 10
 	construct_spells = list(/obj/effect/proc_holder/spell/targeted/forcewall/cult,
 							/obj/effect/proc_holder/spell/targeted/projectile/dumbfire/juggernaut)
-	runetype = /datum/action/innate/cult/create_rune/wall
 	playstyle_string = "<b>I are a Juggernaut. Though slow, your shell can withstand heavy punishment, \
 						create shield walls, rip apart enemies and walls alike, and even deflect energy weapons.</b>"
 
@@ -203,7 +196,6 @@
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/blank.ogg'
 	construct_spells = list(/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/shift)
-	runetype = /datum/action/innate/cult/create_rune/tele
 	playstyle_string = "<b>I are a Wraith. Though relatively fragile, you are fast, deadly, can phase through walls, and your attacks will lower the cooldown on phasing.</b>"
 
 	var/attack_refund = 10 //1 second per attack
@@ -212,7 +204,7 @@
 
 /mob/living/simple_animal/hostile/construct/wraith/AttackingTarget() //refund jaunt cooldown when attacking living targets
 	var/prev_stat
-	if(isliving(target) && !iscultist(target))
+	if(isliving(target))
 		var/mob/living/L = target
 		prev_stat = L.stat
 
@@ -264,11 +256,9 @@
 	environment_smash = ENVIRONMENT_SMASH_WALLS
 	attack_sound = 'sound/blank.ogg'
 	construct_spells = list(/obj/effect/proc_holder/spell/aoe_turf/conjure/wall,
-							/obj/effect/proc_holder/spell/aoe_turf/conjure/floor,
 							/obj/effect/proc_holder/spell/aoe_turf/conjure/soulstone,
 							/obj/effect/proc_holder/spell/aoe_turf/conjure/construct/lesser,
 							/obj/effect/proc_holder/spell/targeted/projectile/magic_missile/lesser)
-	runetype = /datum/action/innate/cult/create_rune/revive
 	playstyle_string = "<b>I are an Artificer. You are incredibly weak and fragile, but you are able to construct fortifications, \
 
 						use magic missile, repair allied constructs, shades, and myself (by clicking on them), \
@@ -332,7 +322,6 @@
 
 /mob/living/simple_animal/hostile/construct/builder/noncult
 	construct_spells = list(/obj/effect/proc_holder/spell/aoe_turf/conjure/wall,
-							/obj/effect/proc_holder/spell/aoe_turf/conjure/floor,
 							/obj/effect/proc_holder/spell/aoe_turf/conjure/soulstone/noncult,
 							/obj/effect/proc_holder/spell/aoe_turf/conjure/construct/lesser,
 							/obj/effect/proc_holder/spell/targeted/projectile/magic_missile/lesser)
@@ -397,12 +386,6 @@
 		return FALSE
 	. = ..()
 
-/mob/living/simple_animal/hostile/construct/harvester/Initialize()
-	. = ..()
-	var/datum/action/innate/seek_prey/seek = new()
-	seek.Grant(src)
-	seek.Activate()
-
 ///////////////////////Master-Tracker///////////////////////
 
 /datum/action/innate/seek_master
@@ -419,29 +402,6 @@
 	the_construct = C
 	..()
 
-/datum/action/innate/seek_master/Activate()
-	var/datum/antagonist/cult/C = owner.mind.has_antag_datum(/datum/antagonist/cult)
-	if(!C)
-		return
-	var/datum/objective/eldergod/summon_objective = locate() in C.cult_team.objectives
-
-	if(summon_objective.check_completion())
-		the_construct.master = C.cult_team.blood_target
-
-	if(!the_construct.master)
-		to_chat(the_construct, span_cultitalic("I have no master to seek!"))
-		the_construct.seeking = FALSE
-		return
-	if(tracking)
-		tracking = FALSE
-		the_construct.seeking = FALSE
-		to_chat(the_construct, span_cultitalic("I are no longer tracking your master."))
-		return
-	else
-		tracking = TRUE
-		the_construct.seeking = TRUE
-		to_chat(the_construct, span_cultitalic("I are now tracking your master."))
-
 
 /datum/action/innate/seek_prey
 	name = "Seek the Harvest"
@@ -455,27 +415,6 @@
 /datum/action/innate/seek_prey/Grant(mob/living/C)
 	the_construct = C
 	..()
-
-/datum/action/innate/seek_prey/Activate()
-	if(GLOB.cult_narsie == null)
-		return
-	if(the_construct.seeking)
-		desc = ""
-		button_icon_state = "cult_mark"
-		the_construct.seeking = FALSE
-		to_chat(the_construct, span_cultitalic("I are now tracking Nar'Sie, return to reap the harvest!"))
-		return
-	else
-		if(LAZYLEN(GLOB.cult_narsie.souls_needed))
-			the_construct.master = pick(GLOB.cult_narsie.souls_needed)
-			var/mob/living/real_target = the_construct.master //We can typecast this way because Narsie only allows /mob/living into the souls list
-			to_chat(the_construct, span_cultitalic("I are now tracking your prey, [real_target.real_name] - harvest [real_target.p_them()]!"))
-		else
-			to_chat(the_construct, span_cultitalic("Nar'Sie has completed her harvest!"))
-			return
-		desc = ""
-		button_icon_state = "sintouch"
-		the_construct.seeking = TRUE
 
 
 /////////////////////////////ui stuff/////////////////////////////

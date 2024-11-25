@@ -43,22 +43,6 @@
 	select_name = "DESTROY"
 	fire_sound = 'sound/blank.ogg'
 
-/obj/item/ammo_casing/energy/laser/bluetag
-	projectile_type = /obj/projectile/beam/lasertag/bluetag
-	select_name = "bluetag"
-	harmful = FALSE
-
-/obj/item/ammo_casing/energy/laser/bluetag/hitscan
-	projectile_type = /obj/projectile/beam/lasertag/bluetag/hitscan
-
-/obj/item/ammo_casing/energy/laser/redtag
-	projectile_type = /obj/projectile/beam/lasertag/redtag
-	select_name = "redtag"
-	harmful = FALSE
-
-/obj/item/ammo_casing/energy/laser/redtag/hitscan
-	projectile_type = /obj/projectile/beam/lasertag/redtag/hitscan
-
 /obj/item/ammo_casing/energy/xray
 	projectile_type = /obj/projectile/beam/xray
 	e_cost = 50

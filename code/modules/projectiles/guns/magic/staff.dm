@@ -42,7 +42,7 @@
 	recharge_rate = 2
 	no_den_usage = 1
 	var/allowed_projectile_types = list(/obj/projectile/magic/change, /obj/projectile/magic/animate, /obj/projectile/magic/resurrection,
-	/obj/projectile/magic/death, /obj/projectile/magic/teleport, /obj/projectile/magic/door, /obj/projectile/magic/aoe/fireball,
+	/obj/projectile/magic/death, /obj/projectile/magic/teleport, /obj/projectile/magic/aoe/fireball,
 	/obj/projectile/magic/spellblade, /obj/projectile/magic/arcane_barrage, /obj/projectile/magic/locker, /obj/projectile/magic/flying,
 	/obj/projectile/magic/bounty, /obj/projectile/magic/antimagic, /obj/projectile/magic/fetch, /obj/projectile/magic/sapping,
 	/obj/projectile/magic/necropotence, /obj/projectile/magic, /obj/projectile/temp/chill, /obj/projectile/magic/wipe)
@@ -50,17 +50,6 @@
 /obj/item/gun/magic/staff/chaos/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	chambered.projectile_type = pick(allowed_projectile_types)
 	. = ..()
-
-/obj/item/gun/magic/staff/door
-	name = "staff of door creation"
-	desc = ""
-	fire_sound = 'sound/blank.ogg'
-	ammo_type = /obj/item/ammo_casing/magic/door
-	icon_state = "staffofdoor"
-	item_state = "staffofdoor"
-	max_charges = 10
-	recharge_rate = 2
-	no_den_usage = 1
 
 /obj/item/gun/magic/staff/honk
 	name = "staff of the honkmother"

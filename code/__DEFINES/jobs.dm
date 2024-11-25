@@ -184,6 +184,7 @@
 #define MERCENARY	(1<<0)
 #define VETERAN		(1<<1)
 #define SEELIE		(1<<2)
+#define MERC_CLERK	(1<<3)
 
 #define GOBLIN		(1<<8)
 
@@ -276,10 +277,11 @@
 #define JDO_PILGRIM 30.2
 #define JDO_MIGRANT 32.3
 
-#define JDO_MERCENARY 31
-#define JDO_VET 31.1
-#define JDO_SEELIE 31.2
-#define JDO_BANDIT 31.3
+#define JDO_MERC_CLERK 31
+#define JDO_MERCENARY 31.1
+#define JDO_VET 31.2
+#define JDO_SEELIE 31.3
+#define JDO_BANDIT 31.4
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -360,6 +362,7 @@
 #define WANDERER_ROLES \
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
+	/datum/job/roguetown/guild_clerk,\
 	/datum/job/roguetown/mercenary,\
 	/datum/job/roguetown/seelie,\
 	/datum/job/roguetown/bandit

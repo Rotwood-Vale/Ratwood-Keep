@@ -57,19 +57,6 @@
 		canvas rotting away and contents vanishing.</span>")
 	qdel(src)
 
-/obj/structure/cursed_money/attack_hand(mob/living/user)
-	. = ..()
-	if(.)
-		return
-	user.visible_message("<span class='warning'>[user] opens the bag and \
-		and removes a die. The bag then vanishes.</span>",
-		"<span class='boldwarning'>I open the bag...!</span>\n\
-		<span class='danger'>And see a bag full of dice. Confused, \
-		you take one... and the bag vanishes.</span>")
-	var/turf/T = get_turf(user)
-	var/obj/item/dice/d20/fate/one_use/critical_fail = new(T)
-	user.put_in_hands(critical_fail)
-	qdel(src)
 
 /obj/effect/gluttony //Gluttony's wall: Used in the Gluttony ruin. Only lets the overweight through.
 	name = "gluttony's wall"

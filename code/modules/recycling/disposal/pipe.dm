@@ -170,11 +170,6 @@
 	qdel(src)
 
 
-/obj/structure/disposalpipe/singularity_pull(S, current_size)
-	..()
-	if(current_size >= STAGE_FIVE)
-		deconstruct()
-
 
 // Straight/bent pipe segment
 /obj/structure/disposalpipe/segment

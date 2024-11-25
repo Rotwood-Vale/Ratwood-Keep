@@ -35,8 +35,6 @@
 		add_overlay("[icon_state]_door")
 
 /obj/structure/guncase/attackby(obj/item/I, mob/user, params)
-	if(iscyborg(user))
-		return
 	if(istype(I, gun_category) && open)
 		if(LAZYLEN(contents) < capacity)
 			if(!user.transferItemToLoc(I, src))
@@ -56,8 +54,6 @@
 /obj/structure/guncase/attack_hand(mob/user)
 	. = ..()
 	if(.)
-		return
-	if(iscyborg(user))
 		return
 	if(contents.len && open)
 		ShowWindow(user)
@@ -104,10 +100,3 @@
 	desc = ""
 	case_type = "shotgun"
 	gun_category = /obj/item/gun/ballistic/shotgun
-
-/obj/structure/guncase/ecase
-	name = "energy gun locker"
-	desc = ""
-	icon_state = "ecase"
-	case_type = "egun"
-	gun_category = /obj/item/gun/energy/e_gun

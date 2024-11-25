@@ -82,8 +82,3 @@
 	unit_name = "block"
 	message = "of sandstone"
 	export_types = list(/obj/item/stack/sheet/mineral/sandstone)
-
-/datum/export/stack/cable
-	cost = 0.2
-	unit_name = "cable piece"
-	export_types = list(/obj/item/stack/cable_coil)
