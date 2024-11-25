@@ -2,7 +2,7 @@
 	name = "New Moon Spellblade"
 	tutorial = "Knowledge is power.. You and your masters in the New Moon holy order took it to heart as you and all acolytes like you were forced to study countless text of both arcane and war to make yourself worthy a worthy emissary. Then it all crumbled, the news came while you were on your voyage; the bastion fell to the rot as only a small ammount of acolytes and spellblades escaped, most forced to retreat to this god forsaken swamp while others searched for something better."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/moth, /datum/species/tabaxi)
+	allowed_races = list(/datum/species/tabaxi)
 	outfit = /datum/outfit/job/roguetown/mercenary/newmoon
 	maximum_possible_slots = 10
 	min_pq = 4
