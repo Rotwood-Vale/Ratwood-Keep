@@ -614,3 +614,16 @@
 	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	character.mind.special_items["The Bag"] = /obj/item/storage/roguebag/seedfeed
 	character.mind.special_items["The Sickle"] = /obj/item/rogueweapon/sickle
+
+//Keep that thang on ye, Priest, for the wicked folk will arrive soon.
+/datum/special_trait/priest_akimbo
+	name = "Runic Faith"
+	greet_text = span_notice("I keep two runelocks at me at all times. Unloaded, of course.")
+	req_text = "Be a Priest or Priestess"
+	allowed_jobs = list(/datum/job/roguetown/priest)
+	weight = 10
+
+/datum/special_trait/priest_akimbo/on_apply(mob/living/carbon/human/character, silent)
+	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
+	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_R)
+	character.mind.adjust_skillrank(/datum/skill/combat/firearms, 6, TRUE)
