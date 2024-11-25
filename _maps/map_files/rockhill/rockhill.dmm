@@ -10975,6 +10975,16 @@
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /turf/open/floor/rogue/church,
 /area/rogue/under/town/basement)
+"iCp" = (
+/obj/item/paper,
+/obj/item/natural/feather,
+/obj/item/paper,
+/obj/item/paper,
+/obj/structure/closet/crate/chest{
+	lockid = "merc"
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town)
 "iCt" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -12194,24 +12204,6 @@
 /obj/structure/bed/rogue/inn/double,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
-"jyB" = (
-/obj/structure/closet/crate/chest{
-	lockid = "merc"
-	},
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "jyE" = (
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/tile,
@@ -14324,16 +14316,6 @@
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/town/basement)
-"llt" = (
-/obj/structure/closet/crate/chest{
-	lockid = "merc"
-	},
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/natural/feather,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town)
 "llz" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -15681,7 +15663,6 @@
 	icon_state = "borderfall"
 	},
 /obj/effect/decal/cleanable/blood/old,
-/obj/structure/roguemachine/bounty,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "mpL" = (
@@ -19758,6 +19739,21 @@
 	pixel_x = 32
 	},
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/structure/closet/crate/chest{
+	lockid = "merc"
+	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "pvI" = (
@@ -19838,6 +19834,10 @@
 "pyU" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors/shelter/mountains)
+"pzf" = (
+/obj/structure/roguemachine/bounty,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "pzh" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
@@ -302947,7 +302947,7 @@ xAt
 xAt
 xAt
 eoy
-wbg
+pzf
 wVI
 uTW
 uTW
@@ -308178,8 +308178,8 @@ mLB
 lmB
 lZX
 evo
-jyB
-llt
+lsy
+rNm
 sLL
 nNJ
 cTK
@@ -308580,7 +308580,7 @@ kUE
 rNm
 rNm
 evo
-dAF
+mDr
 rNm
 lMI
 nNJ
@@ -308982,7 +308982,7 @@ rNm
 rNm
 rNm
 evo
-mDr
+dAF
 hNu
 rUQ
 nNJ
@@ -309787,7 +309787,7 @@ rNm
 vTo
 evo
 pvw
-lsy
+iCp
 lPL
 nNJ
 nNJ
