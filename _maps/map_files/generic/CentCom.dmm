@@ -112,7 +112,6 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "an" = (
-/obj/docking_port/mobile/emergency/backup,
 /turf/closed,
 /area/rogue)
 "ao" = (
