@@ -366,14 +366,6 @@
 		return affecting.body_zone
 	return dam_zone
 
-
-/mob/living/carbon/blob_act(obj/structure/blob/B)
-	if (stat == DEAD)
-		return
-	else
-		show_message(span_danger("The blob attacks!"))
-		adjustBruteLoss(10)
-
 /mob/living/carbon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_CONTENTS)

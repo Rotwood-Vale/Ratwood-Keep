@@ -152,39 +152,6 @@
 		playsound(loc, 'sound/blank.ogg', 50, TRUE, -1) //Item sounds are handled in the item itself
 	..()
 
-
-/mob/living/mech_melee_attack(obj/mecha/M)
-	if(M.occupant.used_intent.type == INTENT_HARM)
-		if(HAS_TRAIT(M.occupant, TRAIT_PACIFISM))
-			to_chat(M.occupant, span_warning("I don't want to harm other living beings!"))
-			return
-		M.do_attack_animation(src)
-		if(M.damtype == "brute")
-			step_away(src,M,15)
-		switch(M.damtype)
-			if(BRUTE)
-				Unconscious(20)
-				take_overall_damage(rand(M.force/2, M.force))
-				playsound(src, 'sound/blank.ogg', 50, TRUE)
-			if(BURN)
-				take_overall_damage(0, rand(M.force/2, M.force))
-				playsound(src, 'sound/blank.ogg', 50, TRUE)
-			if(TOX)
-				M.mech_toxin_damage(src)
-			else
-				return
-		updatehealth()
-		visible_message(span_danger("[M.name] hits [src]!"), \
-						span_danger("[M.name] hits me!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
-		to_chat(M, span_danger("I hit [src]!"))
-		log_combat(M.occupant, src, "attacked", M, "(INTENT: [uppertext(M.occupant.used_intent.name)]) (DAMTYPE: [uppertext(M.damtype)])")
-	else
-		step_away(src,M)
-		log_combat(M.occupant, src, "pushed", M)
-		visible_message(span_warning("[M] pushes [src] out of the way."), \
-						span_warning("[M] pushes me out of the way."), span_hear("I hear aggressive shuffling!"), 5, M)
-		to_chat(M, span_danger("I push [src] out of the way."))
-
 /mob/living/fire_act(added, maxstacks)
 	if(added > 20)
 		added = 20
@@ -506,37 +473,6 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
-///Logs, gibs and returns point values of whatever mob is unfortunate enough to get eaten.
-/mob/living/singularity_act()
-	investigate_log("([key_name(src)]) has been consumed by the singularity.", INVESTIGATE_SINGULO) //Oh that's where the clown ended up!
-	gib()
-	return 20
-
-/mob/living/narsie_act()
-	if(status_flags & GODMODE || QDELETED(src))
-		return
-
-	if(GLOB.cult_narsie && GLOB.cult_narsie.souls_needed[src])
-		GLOB.cult_narsie.souls_needed -= src
-		GLOB.cult_narsie.souls += 1
-		if((GLOB.cult_narsie.souls == GLOB.cult_narsie.soul_goal) && (GLOB.cult_narsie.resolved == FALSE))
-			GLOB.cult_narsie.resolved = TRUE
-			sound_to_playing_players('sound/blank.ogg')
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cult_ending_helper), 1), 120)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ending_helper)), 270)
-	if(client)
-		makeNewConstruct(/mob/living/simple_animal/hostile/construct/harvester, src, cultoverride = TRUE)
-	else
-		switch(rand(1, 6))
-			if(1)
-				new /mob/living/simple_animal/hostile/construct/armored/hostile(get_turf(src))
-			if(2)
-				new /mob/living/simple_animal/hostile/construct/wraith/hostile(get_turf(src))
-			if(3 to 6)
-				new /mob/living/simple_animal/hostile/construct/builder/hostile(get_turf(src))
-	spawn_dust()
-	gib()
-	return TRUE
 
 //called when the mob receives a bright flash
 /mob/living/proc/flash_act(intensity = 1, override_blindness_check = 0, affect_silicon = 0, visual = 0, type = /atom/movable/screen/fullscreen/flash)

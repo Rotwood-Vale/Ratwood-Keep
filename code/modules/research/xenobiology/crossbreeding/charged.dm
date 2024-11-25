@@ -75,15 +75,6 @@ Charged extracts:
 	user.visible_message(span_notice("[src] grows into a plethora of metals!"))
 	..()
 
-/obj/item/slimecross/charged/yellow
-	colour = "yellow"
-	effect_desc = ""
-
-/obj/item/slimecross/charged/yellow/do_effect(mob/user)
-	new /obj/item/stock_parts/cell/high/slime/hypercharged(get_turf(user))
-	user.visible_message(span_notice("[src] sparks violently, and swells with electric power!"))
-	..()
-
 /obj/item/slimecross/charged/darkpurple
 	colour = "dark purple"
 	effect_desc = ""
@@ -121,15 +112,6 @@ Charged extracts:
 /obj/item/slimecross/charged/bluespace/do_effect(mob/user)
 	new /obj/item/stack/sheet/bluespace_crystal(get_turf(user), 10)
 	user.visible_message(span_notice("[src] produces several sheets of polycrystal!"))
-	..()
-
-/obj/item/slimecross/charged/sepia
-	colour = "sepia"
-	effect_desc = ""
-
-/obj/item/slimecross/charged/sepia/do_effect(mob/user)
-	new /obj/item/camera/spooky(get_turf(user))
-	user.visible_message(span_notice("[src] flickers in a strange, ethereal manner, and produces a camera!"))
 	..()
 
 /obj/item/slimecross/charged/cerulean

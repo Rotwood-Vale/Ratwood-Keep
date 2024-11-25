@@ -104,11 +104,9 @@
 		var/static/list/blacklisted = typecacheof(list(
 			/turf,
 			/mob,
-			/obj/structure/cable,
 			/obj/machinery/atmospherics,
 			/obj/item/ammo_casing,
-			/obj/item/implant,
-			/obj/singularity
+			/obj/item/implant
 			))
 		if(!can_contaminate || blacklisted[thing.type])
 			continue

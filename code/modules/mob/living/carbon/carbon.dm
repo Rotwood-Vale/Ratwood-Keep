@@ -133,12 +133,6 @@
 /mob/living/carbon/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	var/hurt = TRUE
-	if(istype(throwingdatum, /datum/thrownthing))
-		var/datum/thrownthing/D = throwingdatum
-		if(iscyborg(D.thrower))
-			var/mob/living/silicon/robot/R = D.thrower
-			if(!R.emagged)
-				hurt = FALSE
 	if(hit_atom.density && isturf(hit_atom))
 		if(hurt)
 			if(IsOffBalanced())
@@ -536,9 +530,6 @@
 
 /mob/living/carbon/Stat()
 	..()
-	if(statpanel("Status"))
-		if(locate(/obj/item/assembly/health) in src)
-			stat(null, "Health: [health]")
 	add_abilities_to_panel()
 
 /mob/living/carbon/attack_ui(slot)
@@ -1068,7 +1059,7 @@
 
 /mob/living/carbon/can_be_revived()
 	. = ..()
-	if(!getorgan(/obj/item/organ/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)))
+	if(!getorgan(/obj/item/organ/brain) && (!mind))
 		testing("norescarbon")
 		return 0
 

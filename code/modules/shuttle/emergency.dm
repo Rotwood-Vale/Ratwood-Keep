@@ -6,8 +6,6 @@
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
 	desc = ""
-	icon_screen = "shuttle"
-	icon_keyboard = "tech_key"
 	ui_x = 400
 	ui_y = 400
 
@@ -256,8 +254,6 @@
 	for(var/mob/living/player in GLOB.player_list)
 		if(player.mind)
 			if(player.stat != DEAD)
-				if(issilicon(player)) //Borgs are technically dead anyways
-					continue
 				if(isanimal(player)) //animals don't count
 					continue
 				if(isbrain(player)) //also technically dead
@@ -464,13 +460,8 @@
 	var/obj/machinery/computer/shuttle/C = getControlConsole()
 	if(!istype(C, /obj/machinery/computer/shuttle/pod))
 		return ..()
-	if(GLOB.security_level >= SEC_LEVEL_RED || (C && (C.obj_flags & EMAGGED)))
-		if(launch_status == UNLAUNCHED)
-			launch_status = EARLY_LAUNCHED
-			return ..()
-	else
-		to_chat(usr, span_warning("Escape pods will only launch during \"Code Red\" security alert."))
-		return TRUE
+	to_chat(usr, span_warning("Escape pods will only launch during \"Code Red\" security alert."))
+	return TRUE
 
 /obj/docking_port/mobile/pod/cancel()
 	return
@@ -565,7 +556,6 @@
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/pickaxe/emergency(src)
 	new /obj/item/pickaxe/emergency(src)
-	new /obj/item/survivalcapsule(src)
 	new /obj/item/storage/toolbox/emergency(src)
 
 /obj/item/storage/pod/attackby(obj/item/W, mob/user, params)
@@ -589,8 +579,6 @@
 /obj/item/storage/pod/can_interact(mob/user)
 	if(!..())
 		return FALSE
-	if(GLOB.security_level >= SEC_LEVEL_RED || unlocked)
-		return TRUE
 	to_chat(user, "The storage unit will only unlock during a Red or Delta security alert.")
 
 /obj/docking_port/mobile/emergency/backup

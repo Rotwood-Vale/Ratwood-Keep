@@ -11,7 +11,6 @@
 
 	device_type = QUATERNARY
 
-	construction_type = /obj/item/pipe/quaternary
 	pipe_state = "manifold4w"
 
 	var/mutable_appearance/center

@@ -50,8 +50,6 @@
 			deconstruct(TRUE)
 		return
 
-	if(iscyborg(user))
-		return
 	if(istype(I, /obj/item/extinguisher))
 		if(!stored_extinguisher && opened)
 			if(!user.transferItemToLoc(I, src))
@@ -71,8 +69,6 @@
 /obj/structure/extinguisher_cabinet/attack_hand(mob/user)
 	. = ..()
 	if(.)
-		return
-	if(iscyborg(user))
 		return
 	if(stored_extinguisher)
 		user.put_in_hands(stored_extinguisher)

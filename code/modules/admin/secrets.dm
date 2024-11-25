@@ -109,28 +109,6 @@
 					var/datum/admins/D = GLOB.admin_datums[ckey]
 					dat += "[ckey] - [D.rank.name]<br>"
 				usr << browse(dat, "window=showadmins;size=600x500")
-
-		if("tdomereset")
-			if(!check_rights(R_ADMIN))
-				return
-			var/delete_mobs = alert("Clear all mobs?","Confirm","Yes","No","Cancel")
-			if(delete_mobs == "Cancel")
-				return
-
-			log_admin("[key_name(usr)] reset the thunderdome to default with delete_mobs==[delete_mobs].", 1)
-			message_admins(span_adminnotice("[key_name_admin(usr)] reset the thunderdome to default with delete_mobs==[delete_mobs]."))
-
-			var/area/thunderdome = GLOB.areas_by_type[/area/tdome/arena]
-			if(delete_mobs == "Yes")
-				for(var/mob/living/mob in thunderdome)
-					qdel(mob) //Clear mobs
-			for(var/obj/obj in thunderdome)
-				if(!istype(obj, /obj/machinery/camera) && !istype(obj, /obj/effect/abstract/proximity_checker))
-					qdel(obj) //Clear objects
-
-			var/area/template = GLOB.areas_by_type[/area/tdome/arena_source]
-			template.copy_contents_to(thunderdome)
-
 		if("clear_virus")
 
 			var/choice = input("Are you sure you want to cure all disease?") in list("Yes", "Cancel")
@@ -235,11 +213,7 @@
 				message_admins("[key_name_admin(usr)] [new_perma ? "stopped" : "started"] the arrivals shuttle")
 				log_admin("[key_name(usr)] [new_perma ? "stopped" : "started"] the arrivals shuttle")
 			else
-				to_chat(usr, span_admin("There is no arrivals shuttle."))
-		if("showailaws")
-			if(!check_rights(R_ADMIN))
-				return
-			output_ai_laws()
+				to_chat(usr, "<span class='admin'>There is no arrivals shuttle.</span>")
 		if("showgm")
 			if(!check_rights(R_ADMIN))
 				return
@@ -302,36 +276,6 @@
 					var/mob/living/carbon/human/H = i
 					H.set_species(newtype)
 
-		if("tripleAI")
-			if(!check_rights(R_FUN))
-				return
-			usr.client.triple_ai()
-			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Triple AI"))
-
-		if("power")
-			if(!check_rights(R_FUN))
-				return
-			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Power All APCs"))
-			log_admin("[key_name(usr)] made all areas powered", 1)
-			message_admins(span_adminnotice("[key_name_admin(usr)] made all areas powered"))
-			power_restore()
-
-		if("unpower")
-			if(!check_rights(R_FUN))
-				return
-			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Depower All APCs"))
-			log_admin("[key_name(usr)] made all areas unpowered", 1)
-			message_admins(span_adminnotice("[key_name_admin(usr)] made all areas unpowered"))
-			power_failure()
-
-		if("quickpower")
-			if(!check_rights(R_FUN))
-				return
-			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Power All SMESs"))
-			log_admin("[key_name(usr)] made all SMESs powered", 1)
-			message_admins(span_adminnotice("[key_name_admin(usr)] made all SMESs powered"))
-			power_restore_quick()
-
 		if("traitor_all")
 			if(!check_rights(R_FUN))
 				return
@@ -345,7 +289,7 @@
 			for(var/mob/living/H in GLOB.player_list)
 				if(!(ishuman(H)||istype(H, /mob/living/silicon/)))
 					continue
-				if(H.stat == DEAD || !H.mind || ispAI(H))
+				if(H.stat == DEAD || !H.mind)
 					continue
 				if(is_special_character(H))
 					continue
@@ -454,17 +398,7 @@
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				to_chat(H, span_boldannounce("I suddenly feel stupid."))
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 60, 80)
-			message_admins("[key_name_admin(usr)] made everybody stupid")
-
-		if("eagles")//SCRAW
-			if(!check_rights(R_FUN))
-				return
-			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Egalitarian Station"))
-			for(var/obj/machinery/door/airlock/W in GLOB.machines)
-				if(is_station_level(W.z) && !istype(get_area(W), /area/bridge) && !istype(get_area(W), /area/crew_quarters) && !istype(get_area(W), /area/security/prison))
-					W.req_access = list()
-			message_admins("[key_name_admin(usr)] activated Egalitarian Station mode")
-			priority_announce("CentCom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, 'sound/blank.ogg')
+			message_admins("[key_name_admin(usr)] made everybody retarded")
 
 		if("ancap")
 			if(!check_rights(R_FUN))
@@ -533,52 +467,6 @@
 				B.facial_hairstyle = "Dward Beard"
 				B.update_hair()
 			message_admins("[key_name_admin(usr)] activated dorf mode")
-
-		if("onlyone")
-			if(!check_rights(R_FUN))
-				return
-			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("There Can Be Only One"))
-			usr.client.only_one()
-			sound_to_playing_players('sound/blank.ogg')
-
-		if("delayed_onlyone")
-			if(!check_rights(R_FUN))
-				return
-			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("There Can Be Only One"))
-			usr.client.only_one_delayed()
-			sound_to_playing_players('sound/blank.ogg')
-
-		if("maint_access_brig")
-			if(!check_rights(R_DEBUG))
-				return
-			for(var/obj/machinery/door/airlock/maintenance/M in GLOB.machines)
-				M.check_access()
-				if (ACCESS_MAINT_TUNNELS in M.req_access)
-					M.req_access = list(ACCESS_BRIG)
-			message_admins("[key_name_admin(usr)] made all maint doors brig access-only.")
-		if("maint_access_engiebrig")
-			if(!check_rights(R_DEBUG))
-				return
-			for(var/obj/machinery/door/airlock/maintenance/M in GLOB.machines)
-				M.check_access()
-				if (ACCESS_MAINT_TUNNELS in M.req_access)
-					M.req_access = list()
-					M.req_one_access = list(ACCESS_BRIG,ACCESS_ENGINE)
-			message_admins("[key_name_admin(usr)] made all maint doors engineering and brig access-only.")
-		if("infinite_sec")
-			if(!check_rights(R_DEBUG))
-				return
-			var/datum/job/J = SSjob.GetJob("Security Officer")
-			if(!J)
-				return
-			J.total_positions = -1
-			J.spawn_positions = -1
-			message_admins("[key_name_admin(usr)] has removed the cap on security officers.")
-
-		if("ctfbutton")
-			if(!check_rights(R_ADMIN))
-				return
-			toggle_all_ctf(usr)
 		if("masspurrbation")
 			if(!check_rights(R_FUN))
 				return
@@ -600,7 +488,7 @@
 
 			var/list/settings = list(
 				"mainsettings" = list(
-					"typepath" = list("desc" = "Path to spawn", "type" = "datum", "path" = "/mob/living", "subtypesonly" = TRUE, "value" = /mob/living/simple_animal/hostile/carp),
+					"typepath" = list("desc" = "Path to spawn", "type" = "datum", "path" = "/mob/living", "subtypesonly" = TRUE, "value" = /mob/living/simple_animal/hostile),
 					"humanoutfit" = list("desc" = "Outfit if human", "type" = "datum", "path" = "/datum/outfit", "subtypesonly" = TRUE, "value" = /datum/outfit),
 					"amount" = list("desc" = "Number per portal", "type" = "number", "value" = 1),
 					"portalnum" = list("desc" = "Number of total portals", "type" = "number", "value" = 10),
