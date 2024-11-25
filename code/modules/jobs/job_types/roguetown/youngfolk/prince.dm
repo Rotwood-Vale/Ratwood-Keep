@@ -67,6 +67,38 @@
 		H.change_stat("fortune", 1)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
+/datum/advclass/heir/bookworm
+	name = "Introverted Bookworm"
+	tutorial = "Despite your standing, sociability is not your strong suit, and you have kept mostly to yourself and your books. This hardly makes you a favourite among the lords and ladies of the court, and an exit from your room is often met with amusement from nobility and servants alike. But maybe... just maybe, some of your reading interests may be bearing fruit."
+	outfit = /datum/outfit/job/roguetown/heir/bookworm
+	category_tags = list(CTAG_HEIR)
+
+/datum/outfit/job/roguetown/heir/bookworm/pre_equip(mob/living/carbon/human/H)
+	..()
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	pants = /obj/item/clothing/under/roguetown/tights/random
+	belt = /obj/item/storage/belt/rogue/leather/rope
+	beltr = /obj/item/storage/keyring/heir
+	beltl = /obj/item/rogueweapon/huntingknife/idagger
+	backr = /obj/item/storage/backpack/rogue/satchel
+	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+	mask = /obj/item/clothing/mask/rogue/spectacles
+	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+	armor = /obj/item/clothing/suit/roguetown/shirt/robe
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		H.mind.adjust_spellpoints(1)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+	H.change_stat("strength", -1)
+	H.change_stat("intelligence", 2)
+	H.change_stat("speed", 1)
+	H.change_stat("constitution", -1)
+
 /datum/advclass/heir/aristocrat
 	name = "Sheltered Aristocrat"
 	tutorial = "Life has been kind to you; you've an entire keep at your disposal, servants to wait on you, and a whole retinue of guards to guard you. You've nothing to prove; just live the good life and you'll be a lord someday, too. A lack of ambition translates into a lacking skillset beyond schooling, though, and your breaks from boredom consist of being a damsel or court gossip."
