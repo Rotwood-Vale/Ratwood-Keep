@@ -181,6 +181,10 @@
 /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored
 	color = COLOR_GRAY
 
+/obj/item/clothing/suit/roguetown/shirt/tunic/newmoon/Initialize()
+	color = pick(CLOTHING_WHITE, CLOTHING_BLUE)
+	return ..()
+
 /obj/item/clothing/suit/roguetown/shirt/tunic/random/Initialize()
 	color = pick(CLOTHING_PURPLE, CLOTHING_RED, CLOTHING_BLUE, CLOTHING_GREEN)
 	return ..()
