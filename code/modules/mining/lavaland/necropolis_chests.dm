@@ -156,8 +156,8 @@
 /obj/effect/wisp
 	name = "friendly wisp"
 	desc = "Happy to light your way."
-	icon = 'icons/obj/lighting.dmi'
-	icon_state = "orb"
+	icon = 'icons/roguetown/items/lighting.dmi'
+	icon_state = "wisp"
 	light_system = MOVABLE_LIGHT
 	light_range = 7
 	light_flags = LIGHT_ATTACHED
