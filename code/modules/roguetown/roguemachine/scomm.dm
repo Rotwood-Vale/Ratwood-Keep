@@ -519,7 +519,7 @@
 	if(tcolor)
 		voicecolor_override = tcolor
 	if(speaking && message)
-		playsound(loc, 'sound/foley/coins1.ogg', 100, TRUE, -1)
+		playsound(loc, 'sound/foley/coins1.ogg', 20, TRUE, -1)
 		say(message, language = message_language)
 	voicecolor_override = null
 
@@ -534,9 +534,9 @@
 		language = get_default_language()
 	if(istype(loc, /obj/item))
 		var/obj/item/I = loc
-		I.send_speech(message, 1, I, , spans, message_language=language)
+		I.send_speech(message, 0, I, , spans, message_language=language)
 	else
-		send_speech(message, 1, src, , spans, message_language=language)
+		send_speech(message, 0, src, , spans, message_language=language)
 
 
 // INQUISITORIAL LISTENERS AND RECEIVER
@@ -566,13 +566,23 @@
 	if(tcolor)
 		voicecolor_override = tcolor
 	if(speaking && message)
-		playsound(loc, 'sound/vo/mobs/rat/rat_life.ogg', 100, TRUE, -1)
+		playsound(loc, 'sound/vo/mobs/rat/rat_life.ogg', 20, TRUE, -1)
 		say(message, language = message_language)
 	voicecolor_override = null
 
-
-/obj/item/speakerinq/attack_right(mob/user)
-	return
+/obj/item/speakerinq/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
+	if(!can_speak())
+		return
+	if(message == "" || !message)
+		return
+	spans |= speech_span
+	if(!language)
+		language = get_default_language()
+	if(istype(loc, /obj/item))
+		var/obj/item/I = loc
+		I.send_speech(message, 0, I, , spans, message_language=language)
+	else
+		send_speech(message, 0, src, , spans, message_language=language)
 
 /obj/item/speakerinq/Destroy()
 	SSroguemachine.scomm_machines -= src
@@ -610,6 +620,7 @@
 	to_chat(user, span_tinynotice("I begin planting the listen-stone..."))
 	if(do_after(user, 30, src))
 		new /obj/structure/listeningdeviceactive(step_turf)
+		message_admins("[usr.key] has planted a listening device")
 		qdel(src)
 
 
