@@ -213,20 +213,12 @@
 			heating = 5 * TEMPERATURE_DAMAGE_COEFFICIENT
 			if(holder.has_reagent(/datum/reagent/cryostylane))
 				holder.remove_reagent(/datum/reagent/cryostylane, 5)
-			if(isslime(M))
-				heating = rand(5,20)
 		if(15 to 25)
 			heating = 10 * TEMPERATURE_DAMAGE_COEFFICIENT
-			if(isslime(M))
-				heating = rand(10,20)
 		if(25 to 35)
 			heating = 15 * TEMPERATURE_DAMAGE_COEFFICIENT
-			if(isslime(M))
-				heating = rand(15,20)
 		if(35 to INFINITY)
 			heating = 20 * TEMPERATURE_DAMAGE_COEFFICIENT
-			if(isslime(M))
-				heating = rand(20,25)
 	M.adjust_bodytemperature(heating)
 	..()
 
@@ -243,24 +235,16 @@
 			cooling = -10 * TEMPERATURE_DAMAGE_COEFFICIENT
 			if(holder.has_reagent(/datum/reagent/consumable/capsaicin))
 				holder.remove_reagent(/datum/reagent/consumable/capsaicin, 5)
-			if(isslime(M))
-				cooling = -rand(5,20)
 		if(15 to 25)
 			cooling = -20 * TEMPERATURE_DAMAGE_COEFFICIENT
-			if(isslime(M))
-				cooling = -rand(10,20)
 		if(25 to 35)
 			cooling = -30 * TEMPERATURE_DAMAGE_COEFFICIENT
 			if(prob(1))
 				M.emote("shiver")
-			if(isslime(M))
-				cooling = -rand(15,20)
 		if(35 to INFINITY)
 			cooling = -40 * TEMPERATURE_DAMAGE_COEFFICIENT
 			if(prob(5))
 				M.emote("shiver")
-			if(isslime(M))
-				cooling = -rand(20,25)
 	M.adjust_bodytemperature(cooling, 50)
 	..()
 

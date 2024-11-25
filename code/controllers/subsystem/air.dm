@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(air)
 	init_order = INIT_ORDER_AIR
 	priority = FIRE_PRIORITY_AIR
 	wait = 5
+	//flags = SS_NO_FIRE | SS_NO_INIT
 	flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
@@ -65,8 +66,6 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/Initialize(timeofday)
 	map_loading = FALSE
 	setup_allturfs()
-	setup_atmos_machinery()
-	setup_pipenets()
 	gas_reactions = init_gas_reactions()
 	return ..()
 

@@ -57,9 +57,11 @@
 		user.visible_message(span_notice("[user] sprays \themself with \the [src]."), span_notice("You spray yourself with \the [src]."))
 	else
 		user.visible_message(span_notice("[user] sprays [target] with \the [src]."), span_notice("You spray [target] with \the [src]."))
+	var/turf/my_turf = get_turf(user)
+	my_turf.pollute_turf(fragrance_type, 20)
 	user.changeNext_move(CLICK_CD_RANGE*2)
 	playsound(user.loc, 'sound/items/perfume.ogg', 100, TRUE)
-	target.AddComponent(/datum/component/pollutant, fragrance_type, 10 MINUTES)
+	target.AddComponent(/datum/component/temporary_pollution_emission, fragrance_type, 5, 10 MINUTES)
 
 /obj/item/perfume/random/Initialize()
 	fragrance_type = pick(subtypesof(/datum/pollutant/fragrance))

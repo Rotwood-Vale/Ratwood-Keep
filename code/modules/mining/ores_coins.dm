@@ -205,69 +205,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	item_state = "slag"
 	singular_name = "slag chunk"
 
-/obj/item/twohanded/required/gibtonite
-	name = "gibtonite ore"
-	desc = ""
-	icon = 'icons/obj/mining.dmi'
-	icon_state = "Gibtonite ore"
-	item_state = "Gibtonite ore"
-	w_class = WEIGHT_CLASS_BULKY
-	throw_range = 0
-	var/primed = FALSE
-	var/det_time = 100
-	var/quality = GIBTONITE_QUALITY_LOW //How pure this gibtonite is, determines the explosion produced by it and is derived from the det_time of the rock wall it was taken from, higher value = better
-	var/attacher = "UNKNOWN"
-	var/det_timer
-
-
-/obj/item/twohanded/required/gibtonite/attackby(obj/item/I, mob/user, params)
-
-	if(I.tool_behaviour == TOOL_MINING || istype(I, /obj/item/resonator) || I.force >= 10)
-		GibtoniteReaction(user)
-		return
-	..()
-
-/obj/item/twohanded/required/gibtonite/bullet_act(obj/projectile/P)
-	GibtoniteReaction(P.firer)
-	. = ..()
-
-/obj/item/twohanded/required/gibtonite/ex_act()
-	GibtoniteReaction(null, 1)
-
-/obj/item/twohanded/required/gibtonite/proc/GibtoniteReaction(mob/user, triggered_by = 0)
-	if(!primed)
-		primed = TRUE
-		playsound(src,'sound/blank.ogg',50,TRUE)
-		icon_state = "Gibtonite active"
-		var/notify_admins = FALSE
-		if(z != 5)//Only annoy the admins ingame if we're triggered off the mining zlevel
-			notify_admins = TRUE
-
-		if(triggered_by == 1)
-			log_bomber(null, "An explosion has primed a", src, "for detonation", notify_admins)
-		else if(triggered_by == 2)
-			var/turf/bombturf = get_turf(src)
-			if(notify_admins)
-				message_admins("A signal has triggered a [name] to detonate at [ADMIN_VERBOSEJMP(bombturf)]. Igniter attacher: [ADMIN_LOOKUPFLW(attacher)]")
-			var/bomb_message = "A signal has primed a [name] for detonation at [AREACOORD(bombturf)]. Igniter attacher: [key_name(attacher)]."
-			log_game(bomb_message)
-			GLOB.bombers += bomb_message
-		else
-			user.visible_message(span_warning("[user] strikes \the [src], causing a chain reaction!"), span_danger("I strike \the [src], causing a chain reaction."))
-			log_bomber(user, "has primed a", src, "for detonation", notify_admins)
-		det_timer = addtimer(CALLBACK(src, PROC_REF(detonate), notify_admins), det_time, TIMER_STOPPABLE)
-
-/obj/item/twohanded/required/gibtonite/proc/detonate(notify_admins)
-	if(primed)
-		switch(quality)
-			if(GIBTONITE_QUALITY_HIGH)
-				explosion(src,2,4,9,adminlog = notify_admins)
-			if(GIBTONITE_QUALITY_MEDIUM)
-				explosion(src,1,2,5,adminlog = notify_admins)
-			if(GIBTONITE_QUALITY_LOW)
-				explosion(src,0,1,3,adminlog = notify_admins)
-		qdel(src)
-
 /obj/item/stack/ore/Initialize()
 	. = ..()
 	pixel_x = rand(0,16)-8

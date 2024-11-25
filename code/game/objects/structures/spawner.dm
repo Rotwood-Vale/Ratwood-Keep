@@ -56,39 +56,3 @@
 	mob_types = list(/mob/living/simple_animal/hostile/retaliate/clown, /mob/living/simple_animal/hostile/retaliate/clown/fleshclown, /mob/living/simple_animal/hostile/retaliate/clown/clownhulk, /mob/living/simple_animal/hostile/retaliate/clown/longface, /mob/living/simple_animal/hostile/retaliate/clown/clownhulk/chlown, /mob/living/simple_animal/hostile/retaliate/clown/clownhulk/honcmunculus, /mob/living/simple_animal/hostile/retaliate/clown/mutant/blob, /mob/living/simple_animal/hostile/retaliate/clown/banana, /mob/living/simple_animal/hostile/retaliate/clown/honkling, /mob/living/simple_animal/hostile/retaliate/clown/lube)
 	spawn_text = "climbs out of"
 	faction = list("clown")
-
-/obj/structure/spawner/mining
-	name = "monster den"
-	desc = ""
-	icon_state = "hole"
-	max_integrity = 200
-	max_mobs = 3
-	icon = 'icons/mob/nest.dmi'
-	spawn_text = "crawls out of"
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goldgrub, /mob/living/simple_animal/hostile/asteroid/goliath, /mob/living/simple_animal/hostile/asteroid/hivelord, /mob/living/simple_animal/hostile/asteroid/basilisk, /mob/living/simple_animal/hostile/asteroid/fugu)
-	faction = list("mining")
-
-/obj/structure/spawner/mining/goldgrub
-	name = "goldgrub den"
-	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goldgrub)
-
-/obj/structure/spawner/mining/goliath
-	name = "goliath den"
-	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goliath)
-
-/obj/structure/spawner/mining/hivelord
-	name = "hivelord den"
-	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/hivelord)
-
-/obj/structure/spawner/mining/basilisk
-	name = "basilisk den"
-	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/basilisk)
-
-/obj/structure/spawner/mining/wumborian
-	name = "wumborian fugu den"
-	desc = ""
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/fugu)

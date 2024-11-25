@@ -103,4 +103,4 @@
 /datum/supply_pack/rogue/luxury/lovepotion
 	name = "Love Potion"
 	cost = 600
-	contains = list(/obj/item/slimepotion/lovepotion)
+	contains = list(/obj/item/lovepotion)

@@ -2417,7 +2417,6 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/goblin)
 "Af" = (
-/obj/effect/decal/cleanable/blood/bubblegum,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "Al" = (
@@ -3290,7 +3289,6 @@
 /area/rogue/under/town/goblin)
 "RV" = (
 /obj/structure/pillory/double,
-/obj/effect/decal/cleanable/blood/bubblegum,
 /turf/open/floor/rogue/metal,
 /area/rogue/under/town/goblin)
 "RX" = (

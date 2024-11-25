@@ -15,7 +15,6 @@
 
 GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 	/turf/open/space,
-	/turf/open/chasm,
 	/turf/open/lava,
 	/turf/open/water,
 	/turf/open/transparent/openspace
@@ -115,10 +114,6 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define ismouse(A) (istype(A, /mob/living/simple_animal/mouse))
 
 #define iscow(A) (istype(A, /mob/living/simple_animal/cow))
-
-#define isslime(A) (istype(A, /mob/living/simple_animal/slime))
-
-#define isdrone(A) (istype(A, /mob/living/simple_animal/drone))
 
 #define iscat(A) (istype(A, /mob/living/simple_animal/pet/cat))
 
