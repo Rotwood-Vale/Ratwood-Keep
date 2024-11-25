@@ -13310,10 +13310,10 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "mga" = (
-/obj/structure/closet/crate/roguecloset/crafted,
 /obj/effect/decal/cobbleedge{
 	dir = 9
 	},
+/obj/structure/closet/crate/roguecloset/crafted,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
 "mgy" = (
@@ -16207,6 +16207,12 @@
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
+"oJT" = (
+/obj/machinery/light/rogue/wallfire{
+	pixel_y = 32
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town)
 "oKg" = (
 /obj/structure/flora/newleaf,
 /turf/open/transparent/openspace,
@@ -16712,7 +16718,6 @@
 /area/rogue/under/town/basement)
 "pjL" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
-/obj/machinery/light/rogue/hearth,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
 "pjV" = (
@@ -112006,7 +112011,7 @@ xqr
 nTS
 bPQ
 xqr
-cep
+oJT
 cep
 xqr
 ouw
