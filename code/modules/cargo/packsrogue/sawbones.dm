@@ -6,7 +6,7 @@
 
 /datum/supply_pack/rogue/Sawbones/gambeson
 	name = "Gambeson"
-	cost = 24
+	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/Sawbones/leather
@@ -16,27 +16,27 @@
 
 /datum/supply_pack/rogue/Sawbones/leather/studded
 	name = "Studded Leather Armor"
-	cost = 80
+	cost = 160
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/Sawbones/leather/Lhelmet
 	name = "Leather Helmet"
-	cost = 24
+	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 /datum/supply_pack/rogue/Sawbones/leather/Lbracers
 	name = "Leather bracers"
-	cost = 24
+	cost = 25
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 /datum/supply_pack/rogue/Sawbones/leather/Lgloves
 	name = "hardened leather gloves"
-	cost = 50
+	cost = 150
 	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 
 /datum/supply_pack/rogue/Sawbones/leatherpantsadvanced
 	name = "hardened leather chausses"
-	cost = 80
+	cost = 200
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
 
 /datum/supply_pack/rogue/Sawbones/leather/surgery_bag
@@ -51,7 +51,7 @@
 
 /datum/supply_pack/rogue/Sawbones/leather/rapier
 	name = "Rapier"
-	cost = 100
+	cost = 150
 	contains = list(/obj/item/rogueweapon/sword/rapier)
 
 /datum/supply_pack/rogue/Sawbones/leather/estoc
@@ -71,7 +71,7 @@
 
 /datum/supply_pack/rogue/Sawbones/leather/elfdagger
 	name = "Elven Dagger"
-	cost = 200
+	cost = 250
 	contains = list(/obj/item/rogueweapon/huntingknife/elvish)
 
 /datum/supply_pack/rogue/Sawbones/leather/gbottle
