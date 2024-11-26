@@ -697,14 +697,14 @@
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
 
 /datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
-	name = "upgrade cog"
+	name = "woodcutters wheelbrace"
 	result = /obj/item/cart_upgrade/level_1
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/stone = 1)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade2
-	name = "advanced upgrade cog"
+	name = "reinforced woodcutters wheelbrace"
 	result = /obj/item/cart_upgrade/level_2
 	reqs = list(/obj/item/grown/log/tree/small = 4,
 				/obj/item/cart_upgrade/level_1 = 1,

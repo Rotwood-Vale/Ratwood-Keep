@@ -27,16 +27,16 @@
 	var/ulevel = 0
 
 /obj/item/cart_upgrade/level_1
-	name = "upgrade cog"
-	desc = "A cog that can increase the carry capacity of a wooden cart."
+	name = "woodcutters wheelbrace"
+	desc = "A wheelbrace, skillfully cut by a woodworker that can increase the carry capacity of a wooden cart."
 	icon_state = "upgrade"
 	ulevel = 1
 	//filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(26, 13, 150, 150))
 	//Commented out the filter effect until I or somebody else can properly fix it I guess
 
 /obj/item/cart_upgrade/level_2
-	name = "advanced upgrade cog"
-	desc = "A cog that can further increase the carry capacity of a wooden cart. The first upgrade is required for this one to function."
+	name = "reinforced woodcutters wheelbrace"
+	desc = "A wheelbrace, expertly crafted by a woodworker that can further increase the carry capacity of a wooden cart. The first upgrade is required for this one to function."
 	icon_state = "upgrade2"
 	ulevel = 2
 	//filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(32, 196, 218, 200))
@@ -45,9 +45,9 @@
 /obj/structure/handcart/examine(mob/user)
 	. = ..()
 	if(upgrade_level == 1)
-		. += span_notice("This cart has a <i>level 1</i> cog instaled.")
+		. += span_notice("This cart has a <i>level 1</i> woodcutters wheelbrace instaled.")
 	else if(upgrade_level == 2)
-		. += span_notice("This cart has a <i>level 2</i> cog instaled.")
+		. += span_notice("This cart has a <i>level 2</i> woodcutters wheelbrace instaled.")
 
 /obj/structure/handcart/proc/manage_upgrade()
 	switch(upgrade_level)
@@ -116,7 +116,7 @@
 		var/obj/item/cart_upgrade/item = I
 		if(item.ulevel == 1)
 			if(upgrade_level != 0)
-				to_chat(user, "<span class='warning'>This cog is obsolete.</span>")
+				to_chat(user, "<span class='warning'>This wheelbrace is obsolete.</span>")
 				return
 			else
 				upgrade = item
@@ -126,7 +126,7 @@
 				playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
 		if(item.ulevel == 2)
 			if(upgrade_level != 1)
-				to_chat(user, "<span class='warning'>The cart needs a normal upgrade cog before this one can be used!</span>")
+				to_chat(user, "<span class='warning'>The cart needs a normal wheelbrace before this one can be used!</span>")
 				return
 			else
 				upgrade = item
