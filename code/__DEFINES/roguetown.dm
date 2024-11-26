@@ -56,8 +56,9 @@
 #define RACES_SEELIE \
 	/datum/species/seelie	//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS
 
-#define RACES_VERMINFOLK \
-	/datum/species/anthromorphsmall
+#define RACES_SMOLFOLK \
+	/datum/species/anthromorphsmall,\
+	/datum/species/kobold
 
 #define RACES_ALL_KINDS list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
@@ -71,7 +72,7 @@
 
 #define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
 
-#define RACES_TOLERATED_UP_PLUS_VERMINFOLK list(RACES_TOLERATED, RACES_VERMINFOLK, RACES_RESPECTED)
+#define RACES_TOLERATED_UP_PLUS_SMOLFOLK list(RACES_TOLERATED, RACES_SMOLFOLK, RACES_RESPECTED)
 
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
