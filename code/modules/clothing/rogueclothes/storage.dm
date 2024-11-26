@@ -244,12 +244,15 @@
 	icon_state = "stewardbelt"
 	item_state = "stewardbelt"
 
+
+/obj/item/storage/belt/rogue/leather/knifebelt
+
+	name = "
 	strip_delay = 20
 	var/max_storage = 20
 	var/list/arrows = list()
 	sewrepair = TRUE
-
-/obj/item/storage/belt/rogue/leather/knifebelt
+	heldz_items = 1
 
 
 /obj/item/storage/belt/rogue/leather/knifebelt/attack_turf(turf/T, mob/living/user)
@@ -257,7 +260,7 @@
 		to_chat(user, span_warning("Your [src.name] is full!"))
 		return
 	to_chat(user, span_notice("You begin to gather the ammunition..."))
-	for(var/obj/item/rogueweapon/huntingknife in T.contents)
+	for(var/obj/item/rogueweapon/huntingknife/throwingknife/arrow in T.contents)
 		if(do_after(user, 5))
 			if(!eatarrow(arrow))
 				break

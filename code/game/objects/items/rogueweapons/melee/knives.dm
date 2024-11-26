@@ -330,7 +330,7 @@
 		sharpness = IS_BLUNT
 		wdefense = 2
 
-/obj/item/rogueweapon/huntingknife
+/obj/item/rogueweapon/huntingknife/throwingknife
 	name = "iron tossblade"
 	desc = ""
 	force = 12
