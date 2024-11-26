@@ -140,7 +140,7 @@
 	if(user.pulling)
 		user.pulling.recent_travel = world.time
 	user.recent_travel = world.time
-	if(can_gain_with_sight && !HAS_TRAIT(user, TRAIT_BLIND)) // If you're blind you can't show others
+	if(can_gain_with_sight)
 		reveal_travel_trait_to_others(user)
 	if(can_gain_by_walking && the_tile.required_trait && !HAS_TRAIT(user, the_tile.required_trait) && !HAS_TRAIT(user, TRAIT_BLIND)) // If you're blind you can't find your way
 		ADD_TRAIT(user, the_tile.required_trait, TRAIT_GENERIC)
