@@ -243,3 +243,85 @@
 	desc = "A dark belt with real gold making up the buckle and highlights. How bougie."
 	icon_state = "stewardbelt"
 	item_state = "stewardbelt"
+
+	strip_delay = 20
+	var/max_storage = 20
+	var/list/arrows = list()
+	sewrepair = TRUE
+
+/obj/item/storage/belt/rogue/leather/knifebelt
+
+
+/obj/item/storage/belt/rogue/leather/knifebelt/attack_turf(turf/T, mob/living/user)
+	if(arrows.len >= max_storage)
+		to_chat(user, span_warning("Your [src.name] is full!"))
+		return
+	to_chat(user, span_notice("You begin to gather the ammunition..."))
+	for(var/obj/item/rogueweapon/huntingknife in T.contents)
+		if(do_after(user, 5))
+			if(!eatarrow(arrow))
+				break
+
+/obj/item/storage/belt/rogue/leather/knifebelt/proc/eatarrow(obj/A)
+	if(A.type in subtypesof(/obj/item/rogueweapon/huntingknife))
+		if(arrows.len < max_storage)
+			A.forceMove(src)
+			arrows += A
+			update_icon()
+			return TRUE
+		else
+			return FALSE
+
+/obj/item/storage/belt/rogue/leather/knifebelt/attackby(obj/A, loc, params)
+	if(A.type in subtypesof(/obj/item/rogueweapon/huntingknife))
+		if(arrows.len < max_storage)
+			if(ismob(loc))
+				var/mob/M = loc
+				M.doUnEquip(A, TRUE, src, TRUE, silent = TRUE)
+			else
+				A.forceMove(src)
+			arrows += A
+			update_icon()
+		else
+			to_chat(loc, span_warning("Full!"))
+		return
+/*
+	if(istype(A, /obj/item/gun/ballistic/revolver/grenadelauncher/bow))
+		var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/B = A
+		if(arrows.len && !B.chambered)
+			for(var/AR in arrows)
+				if(istype(AR, /obj/item/ammo_casing/caseless/rogue/arrow))
+					arrows -= AR
+					B.attackby(AR, loc, params)
+					break
+*/
+		return
+	..()
+
+/obj/item/storage/belt/rogue/leather/knifebelt/attack_right(mob/user)
+	if(arrows.len)
+		var/obj/O = arrows[arrows.len]
+		arrows -= O
+		O.forceMove(user.loc)
+		user.put_in_hands(O)
+		update_icon()
+		return TRUE
+
+/obj/item/storage/belt/rogue/leather/knifebelt/examine(mob/user)
+	. = ..()
+	if(arrows.len)
+		. += span_notice("[arrows.len] inside.")
+/*
+/obj/item/quiver/update_icon()
+	if(arrows.len)
+		icon_state = "quiver1"
+	else
+		icon_state = "quiver0"
+
+/obj/item/quiver/arrows/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/rogueweapon/huntingknife/A = new()
+		arrows += A
+	update_icon()
+*/

@@ -329,3 +329,12 @@
 		attack_verb = list("stubbed", "poked")
 		sharpness = IS_BLUNT
 		wdefense = 2
+
+/obj/item/rogueweapon/huntingknife
+	name = "iron tossblade"
+	desc = ""
+	force = 12
+	throwforce = 25
+	throw_speed = 4
+	icon_state = "throw_knifei"
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 100, "embedded_fall_chance" = 0)
