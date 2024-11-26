@@ -19,4 +19,4 @@
 	. = ..()
 
 /datum/intent/mace/strike/pan
-	hitsound = list('sound/combat/hits/blunt/melee_frying_pan_01.ogg', 'sound/combat/hits/blunt/melee_frying_pan_02.ogg', 'sound/combat/hits/blunt/melee_frying_pan_03.ogg', 'sound/combat/hits/blunt/melee_frying_pan_04.ogg')
+	hitsound = list('sound/combat/hits/blunt/frying_pan(1).ogg', 'sound/combat/hits/blunt/frying_pan(2).ogg', 'sound/combat/hits/blunt/frying_pan(3).ogg', 'sound/combat/hits/blunt/frying_pan(4).ogg')
