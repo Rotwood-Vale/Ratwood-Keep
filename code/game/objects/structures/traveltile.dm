@@ -140,9 +140,9 @@
 	if(user.pulling)
 		user.pulling.recent_travel = world.time
 	user.recent_travel = world.time
-	if(can_gain_with_sight)
+	if(can_gain_with_sight && !HAS_TRAIT(user, TRAIT_BLIND)) // If you're blind you can't show others
 		reveal_travel_trait_to_others(user)
-	if(can_gain_by_walking && the_tile.required_trait && !HAS_TRAIT(user, the_tile.required_trait))
+	if(can_gain_by_walking && the_tile.required_trait && !HAS_TRAIT(user, the_tile.required_trait) && !HAS_TRAIT(user, TRAIT_BLIND)) // If you're blind you can't find your way
 		ADD_TRAIT(user, the_tile.required_trait, TRAIT_GENERIC)
 	if(invis_without_trait && !revealed_to.Find(user))
 		show_travel_tile(user)
@@ -155,7 +155,7 @@
 	if(!HAS_TRAIT(user, required_trait))
 		return
 	for(var/mob/living/carbon/human/H in view(6,src))
-		if(!HAS_TRAIT(H, required_trait))
+		if(!HAS_TRAIT(H, required_trait) && !HAS_TRAIT(H, TRAIT_BLIND))
 			to_chat(H, "<b>I discover a well hidden entrance</b>")
 			ADD_TRAIT(H, required_trait, TRAIT_GENERIC)
 
