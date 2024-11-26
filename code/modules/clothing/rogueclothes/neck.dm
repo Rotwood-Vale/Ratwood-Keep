@@ -59,7 +59,7 @@
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	body_parts_covered = NECK|HAIR|EARS|HEAD
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_ASSASSIN)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	blocksound = CHAINHIT
