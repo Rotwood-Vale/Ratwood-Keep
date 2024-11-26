@@ -193,6 +193,7 @@
 #define GOBLINGUARD	(1<<2)
 #define GOBLINSMITH	(1<<3)
 #define GOBLINRABBLE	(1<<4)
+#define GOBLINSHAMAN	(1<<5)
 
 #define SLOP		(1<<9)
 
@@ -296,6 +297,7 @@
 #define JDO_GOBLINGUARD 38
 #define JDO_GOBLINSMITH 39
 #define JDO_GOBLINRABBLE 40
+#define JDO_GOBLINSHAMAN 41
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -375,3 +377,11 @@
 	/datum/job/roguetown/manorguard,\
 	/datum/job/roguetown/sheriff,\
 	/datum/job/roguetown/citywatch
+
+#define GOBLIN_ROLES \
+	/datum/job/roguetown/goblinchief,\
+	/datum/job/roguetown/goblincook,\
+	/datum/job/roguetown/goblinguard,\
+	/datum/job/roguetown/goblinrabble,\
+	/datum/job/roguetown/goblinshaman,\
+	/datum/job/roguetown/goblinsmith
