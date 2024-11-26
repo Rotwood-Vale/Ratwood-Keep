@@ -21,7 +21,7 @@
 
 /obj/item/cart_upgrade
 	name = "Example upgrade cog"
-	desc = "Example upgrade, ahhhh why do you have this?!"
+	desc = "Example upgrade."
 	icon_state = "upgrade"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	var/ulevel = 0
