@@ -24,13 +24,13 @@
 	verbage_simple = "tie"
 	verbage = "ties"
 
-	/datum/crafting_recipe/roguetown/blindfold
-	name = "blindfold"
-	result = /obj/item/clothing/mask/rogue/blindfold
-	reqs = list(/obj/item/natural/cloth = 1)
-	craftdiff = 0
-	verbage_simple = "tie"
-	verbage = "ties"
+/datum/crafting_recipe/roguetown/blindfold
+name = "blindfold"
+result = /obj/item/clothing/mask/rogue/blindfold
+reqs = list(/obj/item/natural/cloth = 1)
+craftdiff = 0
+verbage_simple = "tie"
+verbage = "ties"
 
 /datum/crafting_recipe/roguetown/spoon
 	name = "spoon (x3)"
@@ -55,6 +55,14 @@
 	name = "untie cloth belt"
 	result = /obj/item/natural/cloth
 	reqs = list(/obj/item/storage/belt/rogue/leather/cloth = 1)
+	craftdiff = 0
+	verbage_simple = "untie"
+	verbage = "unties"
+
+/datum/crafting_recipe/roguetown/blindfold
+	name = "untie blindfold"
+	result = /obj/item/natural/cloth
+	reqs = list(/obj/item/clothing/mask/rogue/blindfold = 1)
 	craftdiff = 0
 	verbage_simple = "untie"
 	verbage = "unties"
