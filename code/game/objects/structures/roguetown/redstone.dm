@@ -287,11 +287,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/togg = FALSE
 	var/base_state = "floorhatch"
 	max_integrity = 0
-/*
-/obj/structure/floordoor/Initialize()
-	AddComponent(/datum/component/squeak, list('sound/foley/footsteps/FTMET_A1.ogg','sound/foley/footsteps/FTMET_A2.ogg','sound/foley/footsteps/FTMET_A3.ogg','sound/foley/footsteps/FTMET_A4.ogg'), 100)
-	return ..()
-*/
+
 /obj/structure/floordoor/obj_break(damage_flag)
 	obj_flags = null
 	..()

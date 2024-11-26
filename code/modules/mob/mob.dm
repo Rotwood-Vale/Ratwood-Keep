@@ -1246,7 +1246,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop Everything")
 	VV_DROPDOWN_OPTION(VV_HK_REGEN_ICONS, "Regenerate Icons")
 	VV_DROPDOWN_OPTION(VV_HK_PLAYER_PANEL, "Show player panel")
-	VV_DROPDOWN_OPTION(VV_HK_BUILDMODE, "Toggle Buildmode")
 	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "Offer Control to Ghosts")
 
@@ -1276,10 +1275,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 		if(!check_rights(R_FUN))
 			return
 		usr.client.cmd_admin_gib(src)
-	if(href_list[VV_HK_BUILDMODE])
-		if(!check_rights(R_BUILD))
-			return
-		togglebuildmode(src)
 	if(href_list[VV_HK_DROP_ALL])
 		if(!check_rights(NONE))
 			return

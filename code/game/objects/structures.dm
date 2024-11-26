@@ -119,12 +119,8 @@
 		adjusted_climb_time *= 2
 	if(!ishuman(user))
 		adjusted_climb_time = 0 //simple mobs instantly climb
-	if(HAS_TRAIT(user, TRAIT_FREERUNNING)) //do you have any idea how fast I am???
-		adjusted_climb_time *= 0.8
 	adjusted_climb_time -= user.STASPD * 2
 	adjusted_climb_time = max(adjusted_climb_time, 0)
-//	if(adjusted_climb_time)
-//		user.visible_message(span_warning("[user] starts climbing onto [src]."), span_warning("I start climbing onto [src]..."))								
 	structureclimber = user
 	if(do_mob(user, user, adjusted_climb_time))
 		if(src.loc) //Checking if structure has been destroyed
@@ -132,8 +128,6 @@
 				user.visible_message(span_warning("[user] climbs onto [src]."), \
 									span_notice("I climb onto [src]."))
 				log_combat(user, src, "climbed onto")
-//				if(climb_offset)
-//					user.set_mob_offsets("structure_climb", _x = 0, _y = climb_offset)
 				if(climb_stun)
 					user.Stun(climb_stun)
 				if(climb_sound)
