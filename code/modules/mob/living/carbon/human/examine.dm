@@ -153,6 +153,12 @@
 			. += commie_text
 		else if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(user, TRAIT_COMMIE))
 			. += span_notice("Comrade!")
+		else if(HAS_TRAIT(src, TRAIT_ZIZOID) && HAS_TRAIT(user, TRAIT_ZIZOID))
+			. += span_notice("Another Follower!")
+		else if(HAS_TRAIT(src, TRAIT_GRAGGARITE) && HAS_TRAIT(user, TRAIT_GRAGGARITE))
+			. += span_notice("Another Graggarite!")
+		else if(HAS_TRAIT(src, TRAIT_DEGENERATE) && HAS_TRAIT(user, TRAIT_DEGENERATE))
+			. += span_notice("Another Baothan!")
 
 	if(HAS_TRAIT(src, TRAIT_LEPROSY))
 		. += span_necrosis("A LEPER...")

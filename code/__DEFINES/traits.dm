@@ -51,8 +51,13 @@
 #define TRAIT_VINE_WALKER "Blessing of Dendor"
 #define TRAIT_SOUL_EXAMINE "Blessing of Necra" //can check bodies to see if they have departed
 #define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
-#define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
 #define TRAIT_CHOSEN "Astrata's Chosen"
+
+// INHUMEN PANTHEON FOLLOWER TRAITS
+#define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally and by other matthiosans
+#define TRAIT_ZIZOID "Rot Marked" //recognized by other zizoids
+#define TRAIT_GRAGGARITE "Graggarite" //recognized by other graggarites
+#define TRAIT_DEGENERATE "Depraved" //recognized by other baothans
 
 #define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
 #define TRAIT_BASHDOORS "bashdoors"
@@ -143,6 +148,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SOUL_EXAMINE = span_deadsay("I know when someone's soul has departed."),
 	TRAIT_CRACKHEAD = span_love("I can use drugs as much as I want!"),
 	TRAIT_COMMIE = span_bloody("I can recognize other free men, and they can recognize me too."),
+	TRAIT_ZIZOID = span_deadsay("I have not taken to the dark arts alone, I know of others who have studied her ascension.")
+	TRAIT_GRAGGARITE = span_bloody("I can feel the power in the hearts of my brotherhood.")
+	TRAIT_DEGENERATE = span_love("I can sense her sordid presence upon others.")
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
