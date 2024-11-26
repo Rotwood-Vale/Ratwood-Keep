@@ -1688,6 +1688,8 @@
 			limbless_slowdown += 6 - (has_legs * 3)
 			if(!has_legs && has_arms < 2)
 				limbless_slowdown += 6 - (has_arms * 3)
+		if(pegleg)
+			limbless_slowdown += pegleg
 		if(limbless_slowdown)
 			add_movespeed_modifier(MOVESPEED_ID_LIVING_LIMBLESS, update=TRUE, priority=100, override=TRUE, multiplicative_slowdown=limbless_slowdown, movetypes=GROUND)
 		else

@@ -118,6 +118,16 @@
 	cost = 40
 	contains = list(/obj/item/bodypart/r_arm/prosthetic/woodright)
 
+/datum/supply_pack/rogue/tools/prlegl
+	name = "Prosthetic Wood Leg (L)"
+	cost = 15
+	contains = /obj/item/bodypart/l_leg/prosthetic
+
+/datum/supply_pack/rogue/tools/prlegr
+	name = "Prosthetic Wood Leg (R)"
+	cost = 15
+	contains = /obj/item/bodypart/r_leg/prosthetic
+
 /datum/supply_pack/rogue/tools/waterskin
 	name = "Waterskin"
 	cost = 10
