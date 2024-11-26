@@ -1198,11 +1198,11 @@
 			if(L.STASTR <= 13)
 				L.adjustBruteLoss(30)
 				L.Knockdown(5)
-				to_chat(L, "<span class='userdanger'>Your magically weighed down and lose your footing!</span>")
+				to_chat(L, "<span class='userdanger'>You're magically weighed down and lose your footing!</span>")
 			else
 				L.OffBalance(10)
 				L.adjustBruteLoss(15)
-				to_chat(L, "<span class='userdanger'>Your magically weighed down, your strength resist!</span>")
+				to_chat(L, "<span class='userdanger'>You're magically weighed down, your strength resist!</span>")
 			
 			
 
