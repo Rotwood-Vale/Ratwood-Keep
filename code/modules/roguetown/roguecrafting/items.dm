@@ -24,6 +24,14 @@
 	verbage_simple = "tie"
 	verbage = "ties"
 
+	/datum/crafting_recipe/roguetown/blindfold
+	name = "blindfold"
+	result = /obj/item/clothing/mask/rogue/blindfold
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+	verbage_simple = "tie"
+	verbage = "ties"
+
 /datum/crafting_recipe/roguetown/spoon
 	name = "spoon (x3)"
 	result = list(/obj/item/kitchen/spoon,
