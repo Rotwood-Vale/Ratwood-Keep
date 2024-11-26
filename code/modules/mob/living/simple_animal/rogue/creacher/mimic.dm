@@ -122,6 +122,8 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
+		if(BODY_ZONE_CHEST)
+			return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "tail"
 		if(BODY_ZONE_HEAD)
@@ -134,6 +136,9 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
+
 	return ..()
 
 //////

@@ -164,6 +164,8 @@
 			return "leg"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
+		if(BODY_ZONE_CHEST)
+			return "body"
 		if(BODY_ZONE_HEAD)
 			return "head"
 		if(BODY_ZONE_R_LEG)
@@ -174,6 +176,8 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
 
 	return ..()
 
@@ -322,6 +326,9 @@
 			return "foreleg"
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
+		else
+			return "body"
+
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigaboy

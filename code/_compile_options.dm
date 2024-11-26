@@ -6,7 +6,7 @@
 #define MATURESERVER
 //#define TESTSERVER
 #define ALLOWPLAY
-//#define LOWMEMORYMODE
+//#define LOWMEMORYMODE				//FOR DEBUGGING: Disables loading the main map and instead loads only side maps
 
 #define RESPAWNTIME 0
 //0 test

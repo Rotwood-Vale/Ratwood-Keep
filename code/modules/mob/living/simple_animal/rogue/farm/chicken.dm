@@ -98,6 +98,9 @@
 			return "wing"
 		if(BODY_ZONE_L_ARM)
 			return "wing"
+		else
+			return "body"
+
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/Initialize()

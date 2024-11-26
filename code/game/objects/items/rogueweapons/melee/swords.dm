@@ -67,6 +67,7 @@
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	swingdelay = 0
 	item_d_type = "slash"
+	ican_cdg = TRUE
 
 /datum/intent/sword/thrust
 	name = "stab"
@@ -80,6 +81,7 @@
 	swingdelay = 0
 	item_d_type = "stab"
 	iparrybonus = 5
+	ican_cdg = TRUE
 
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
@@ -91,6 +93,7 @@
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
 	wdefense = 4
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/long
 	force = 25
@@ -399,6 +402,7 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 100
 	sellprice = 10
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/iron/short
 	name = "short sword"
@@ -558,6 +562,7 @@
 	max_integrity = 200
 	dropshrink = 0.80
 	wdefense = 2
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/greatsword
 	force = 12

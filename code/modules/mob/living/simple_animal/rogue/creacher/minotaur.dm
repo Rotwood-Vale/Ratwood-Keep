@@ -107,4 +107,7 @@
 			return "arm"
 		if(BODY_ZONE_L_ARM)
 			return "arm"
+		else
+			return "body"
+
 	return ..()

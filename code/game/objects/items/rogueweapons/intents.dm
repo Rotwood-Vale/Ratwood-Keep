@@ -20,33 +20,35 @@
 	var/candodge = TRUE
 	var/iparrybonus = 0
 	var/idodgebonus = 0
-	var/chargetime = 0 //if above 0, this attack must be charged to reach full damage
-	var/chargedrain = 0 //how much fatigue is removed every second when at max charge
-	var/releasedrain = 1 //drain when we go off, regardless
-	var/misscost = 1	//extra drain from missing only, ALSO APPLIED IF ENEMY DODGES
+	var/chargetime = 0				//if above 0, this attack must be charged to reach full damage
+	var/chargedrain = 0				//how much fatigue is removed every second when at max charge
+	var/releasedrain = 1			//drain when we go off, regardless
+	var/misscost = 1				//extra drain from missing only, ALSO APPLIED IF ENEMY DODGES
 	var/tranged = 0
-	var/noaa = FALSE //turns off auto aiming, also turns off the 'swooshes'
+	var/noaa = FALSE				//turns off auto aiming, also turns off the 'swooshes'
 	var/warnie = ""
 	var/pointer = 'icons/effects/mousemice/human_attack.dmi'
-	var/clickcd = CLICK_CD_MELEE //the cd invoked clicking on stuff with this intent
-	var/recovery = 0		//RTD unable to move for this duration after an attack without becoming off balance
-	var/list/charge_invocation //list of stuff to say while charging
-	var/no_early_release = FALSE //we can't shoot off early
-	var/movement_interrupt = FALSE //we cancel charging when changing mob direction, for concentration spells
-	var/rmb_ranged = FALSE //we execute a proc with the same name when rmbing at range with no offhand intent selected
-	var/tshield = FALSE //probably needed or something
+	var/clickcd = CLICK_CD_MELEE	//the cd invoked clicking on stuff with this intent
+	var/recovery = 0				//RTD unable to move for this duration after an attack without becoming off balance
+	var/list/charge_invocation		//list of stuff to say while charging
+	var/no_early_release = FALSE	//we can't shoot off early
+	var/movement_interrupt = FALSE	//we cancel charging when changing mob direction, for concentration spells
+	var/rmb_ranged = FALSE			//we execute a proc with the same name when rmbing at range with no offhand intent selected
+	var/tshield = FALSE				//probably needed or something
 	var/datum/looping_sound/chargedloop = null
 	var/keep_looping = TRUE
-	var/damfactor = 1 //multiplied by weapon's force for damage
-	var/penfactor = 0 //see armor_penetration
-	var/item_d_type = "blunt" // changes the item's attack type ("blunt" - area-pressure attack, "slash" - line-pressure attack, "stab" - point-pressure attack)
+	var/damfactor = 1				//multiplied by weapon's force for damage
+	var/penfactor = 0				//see armor_penetration
+	var/item_d_type = "blunt"		// changes the item's attack type ("blunt" - area-pressure attack, "slash" - line-pressure attack, "stab" - point-pressure attack)
 	var/charging_slowdown = 0
 	var/warnoffset = 0
 	var/swingdelay = 0
-	var/no_attack = FALSE //causes a return in /attack() but still allows to be used in attackby(
-	var/reach = 1 //In tiles, how far this weapon can reach; 1 for adjacent, which is default
-	var/miss_text //THESE ARE FOR UNARMED MISSING ATTACKS
-	var/miss_sound //THESE ARE FOR UNARMED MISSING ATTACKS
+	var/no_attack = FALSE			//causes a return in /attack() but still allows to be used in attackby(
+	var/reach = 1					//In tiles, how far this weapon can reach; 1 for adjacent, which is default
+	var/miss_text					//THESE ARE FOR UNARMED MISSING ATTACKS
+	var/miss_sound					//THESE ARE FOR UNARMED MISSING ATTACKS
+	var/ican_assin = FALSE			//Intent: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
+	var/ican_cdg = FALSE			//Intent: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
 /datum/intent/Destroy()
 	if(chargedloop)

@@ -229,7 +229,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "tail"
 		if(BODY_ZONE_CHEST)
-			return "body"
+			return "chest"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
@@ -248,8 +248,8 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 			return "arm"
 		if(BODY_ZONE_L_ARM)
 			return "arm"
-		if(BODY_ZONE_CHEST)
-			return "chest"
+		else
+			return "body"
 
 	return ..()
 
