@@ -247,7 +247,10 @@
 
 /obj/item/storage/belt/rogue/leather/knifebelt
 
-	name = "
+	name = "tossblade belt"
+	desc = "A many-slotted belt meant for tossblades. Little room left over."
+	icon_state = "leather"
+	item_state = "leather"
 	strip_delay = 20
 	var/max_storage = 20
 	var/list/arrows = list()
@@ -266,7 +269,7 @@
 				break
 
 /obj/item/storage/belt/rogue/leather/knifebelt/proc/eatarrow(obj/A)
-	if(A.type in subtypesof(/obj/item/rogueweapon/huntingknife))
+	if(A.type in subtypesof(/obj/item/rogueweapon/huntingknife/throwingknife))
 		if(arrows.len < max_storage)
 			A.forceMove(src)
 			arrows += A
@@ -276,7 +279,7 @@
 			return FALSE
 
 /obj/item/storage/belt/rogue/leather/knifebelt/attackby(obj/A, loc, params)
-	if(A.type in subtypesof(/obj/item/rogueweapon/huntingknife))
+	if(A.type in subtypesof(/obj/item/rogueweapon/huntingknife/throwingknife))
 		if(arrows.len < max_storage)
 			if(ismob(loc))
 				var/mob/M = loc
@@ -314,17 +317,11 @@
 	. = ..()
 	if(arrows.len)
 		. += span_notice("[arrows.len] inside.")
-/*
-/obj/item/quiver/update_icon()
-	if(arrows.len)
-		icon_state = "quiver1"
-	else
-		icon_state = "quiver0"
 
-/obj/item/quiver/arrows/Initialize()
+/obj/item/storage/belt/rogue/leather/knifebelt/iron/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/rogueweapon/huntingknife/A = new()
+		var/obj/item/rogueweapon/huntingknife/throwingknife/A = new()
 		arrows += A
 	update_icon()
-*/
+

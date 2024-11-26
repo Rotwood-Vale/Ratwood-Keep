@@ -333,8 +333,30 @@
 /obj/item/rogueweapon/huntingknife/throwingknife
 	name = "iron tossblade"
 	desc = ""
+	item_state = "bone_dagger"
 	force = 12
 	throwforce = 25
 	throw_speed = 4
 	icon_state = "throw_knifei"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 100, "embedded_fall_chance" = 0)
+
+/obj/item/rogueweapon/huntingknife/throwingknife/steel
+	name = "steel tossblade"
+	desc = ""
+	item_state = "bone_dagger"
+	force = 12
+	throwforce = 25
+	throw_speed = 4
+	icon_state = "throw_knifes"
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 100, "embedded_fall_chance" = 0)
+
+/obj/item/rogueweapon/huntingknife/throwingknife/psydon
+	name = "psydonian tossblade"
+	desc = "An unconventional method of delivering silver to a heretic; but one PSYDON smiles at, all the same."
+	item_state = "bone_dagger"
+	force = 12
+	throwforce = 25
+	throw_speed = 4
+	icon_state = "throw_knifes"
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 100, "embedded_fall_chance" = 0)
+	is_silver = TRUE
