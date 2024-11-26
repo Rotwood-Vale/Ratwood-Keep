@@ -50,7 +50,7 @@
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon/Initialize()
-	color = pick(	color = pick(CLOTHING_WHITE, CLOTHING_BLUE))
+	color = pick(CLOTHING_WHITE, CLOTHING_BLUE)
 	return ..()
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
