@@ -104,7 +104,7 @@
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/bone = 2,
-		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/natural/fibers = 2,
 	)
 	tools = /obj/item/rogueweapon/huntingknife
@@ -129,7 +129,7 @@
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/cloth = 1,
-		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/natural/fibers = 2,
 	)
 	tools = /obj/item/rogueweapon/huntingknife
@@ -155,12 +155,23 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/soap
+	name = "soap (3x)"
+	result = list(
+				/obj/item/soap,
+				/obj/item/soap,
+				/obj/item/soap,
+				)
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1)
+
 /datum/crafting_recipe/roguetown/candle
 	name = "candle (x3)"
-	result = list(/obj/item/candle/yellow,
+	result = list(
 				/obj/item/candle/yellow,
-				/obj/item/candle/yellow)
-	reqs = list(/obj/item/reagent_containers/food/snacks/fat = 2)
+				/obj/item/candle/yellow,
+				/obj/item/candle/yellow,
+				)
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1)
 
 /datum/crafting_recipe/roguetown/stoneaxe
 	name = "stone axe"
@@ -274,9 +285,17 @@
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/spoon
-	name = "spoon (x2)"
+	name = "spoon (x3)"
 	result = list(/obj/item/kitchen/spoon,
+				/obj/item/kitchen/spoon,
 				/obj/item/kitchen/spoon)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
+/datum/crafting_recipe/roguetown/fork
+	name = "fork (x3)"
+	result = list(/obj/item/kitchen/fork,
+				/obj/item/kitchen/fork,
+				/obj/item/kitchen/fork)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /datum/crafting_recipe/roguetown/platter
@@ -650,17 +669,15 @@
 /datum/crafting_recipe/roguetown/prosthetic/woodleft
 	name = "wood arm (L)"
 	result = list(/obj/item/bodypart/l_arm/prosthetic/woodleft)
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/engineering
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/prosthetic/woodright
 	name = "wood arm (R)"
 	result = list(/obj/item/bodypart/r_arm/prosthetic/woodright)
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/engineering
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/tarot_deck
@@ -673,3 +690,23 @@
 	tools = list(/obj/item/natural/feather)
 	req_table = TRUE
 	craftdiff = 2
+
+// Woodcutting recipe
+/datum/crafting_recipe/roguetown/lumberjacking
+	skillcraft = /datum/skill/labor/lumberjacking
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
+	name = "woodcutters wheelbrace"
+	result = /obj/item/cart_upgrade/level_1
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/stone = 1)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade2
+	name = "reinforced woodcutters wheelbrace"
+	result = /obj/item/cart_upgrade/level_2
+	reqs = list(/obj/item/grown/log/tree/small = 4,
+				/obj/item/cart_upgrade/level_1 = 1,
+				/obj/item/ingot/iron = 1)
+	craftdiff = 4

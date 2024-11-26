@@ -90,5 +90,5 @@
 	var/domhand = 0
 
 /// Amount of remaining vitae that can be drained from this mob
-	var/vitae_bank = 9000
+	var/vitae_pool = 8000
 

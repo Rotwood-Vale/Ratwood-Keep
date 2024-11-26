@@ -235,6 +235,18 @@
 	importexport_amt = 5
 	passive_generation = 2
 
+/datum/roguestock/stockpile/tallow
+	name = "Tallow"
+	desc = "Shelf-stabilized fatty tissue"
+	item_type = /obj/item/reagent_containers/food/snacks/tallow
+	held_items = list(0, 0)
+	payout_price = 1
+	withdraw_price = 2
+	transport_fee = 1
+	export_price = 2
+	importexport_amt = 5
+	passive_generation = 2
+
 /datum/roguestock/stockpile/butter
 	name = "Butter"
 	desc = "The product of milk and salt."

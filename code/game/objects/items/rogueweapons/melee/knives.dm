@@ -124,8 +124,9 @@
 
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
-	name = "combat knife"
-	desc = "A combat knife. Swift and deadly if you hit."
+	name = "seax"
+	desc = "A fighting knife used amongst the Grenzels and Northerners for centuries, serving dual purpose as a \
+	tool of daily life and as a capable fighting knife."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, )
 	icon_state = "combatknife"
 	icon = 'icons/roguetown/weapons/32.dmi'
@@ -291,8 +292,8 @@
 	is_silver = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish/drow
-	name = "nite elf dagger"
-	desc = "This ominous, dark handled silver dagger was crafted by the assassin race of nite elves."
+	name = "dark elvish dagger"
+	desc = "A vicious wave-bladed dagger from the Underdark."
 	force = 25
 	last_used = 0
 	is_silver = TRUE

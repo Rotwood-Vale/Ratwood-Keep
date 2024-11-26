@@ -21,6 +21,7 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/foodbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/peppersteak/plated
 	icon_state = "peppersteak_plated"
@@ -50,6 +51,7 @@
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/foodbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/onionsteak/plated
 	icon_state = "onionsteak_plated"
@@ -78,6 +80,7 @@
 	warming = 3 MINUTES
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/wienercabbage/plated
 	icon_state = "wienercabbage_plated"
@@ -106,6 +109,7 @@
 	warming = 3 MINUTES
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotato/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -163,6 +167,7 @@
 	warming = 3 MINUTES
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/wieneronions/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -221,6 +226,7 @@
 	warming = 3 MINUTES
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/foodbuff
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions/plated
 	icon_state = "wpotonion_plated"
@@ -247,6 +253,7 @@
 	warming = 3 MINUTES
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/foodbuff
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/frybirdtato/plated
 	icon_state = "frybirdtato_plated"
@@ -273,6 +280,7 @@
 	icon_state = "omelette"
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = SHELFLIFE_DECENT
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian/plated
 	icon_state = "omelette_plated"
@@ -362,6 +370,7 @@
 	cooked_type = null
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
 	rotprocess = SHELFLIFE_DECENT
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/attackby(obj/item/I, mob/user, params)
 	var/obj/item/reagent_containers/peppermill/mill = I
@@ -404,6 +413,7 @@
 	portable = FALSE
 	color = "#ffc0c0"
 	tastes = list("spicy birdmeat" = 1)
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated
 	icon_state = "roastchicken_plated"

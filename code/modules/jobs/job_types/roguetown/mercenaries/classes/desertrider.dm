@@ -13,7 +13,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Janissary","Blade Dancer")
+	var/classes = list("Janissary","Blade Dancer","Blade Caster")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -46,6 +46,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 			pants = /obj/item/clothing/under/roguetown/chainlegs
+			H.grant_language(/datum/language/celestial)
 
 		if("Blade Dancer")
 			H.set_blindness(0)
@@ -74,6 +75,36 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
+			H.grant_language(/datum/language/celestial)
+
+		if("Blade Caster")
+			H.set_blindness(0)
+			to_chat(H, span_warning("Blade Casters are those skilled in both magyck and swordsmanship, but excelling in nothing."))
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+			H.mind.adjust_spellpoints(1)
+			H.change_stat("endurance", 2)
+			H.change_stat("intelligence", 3)
+			H.change_stat("speed", 3)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell)
+			r_hand = /obj/item/rogueweapon/sword/long/rider
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/magered
+			backl = /obj/item/rogueweapon/sword/long/rider
+
+			H.grant_language(/datum/language/celestial)
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal
@@ -83,7 +114,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	beltl = /obj/item/flashlight/flare/torch
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	H.grant_language(/datum/language/celestial)
+	
 
 	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/rogueweapon/huntingknife/idagger/navaja, /obj/item/clothing/neck/roguetown/shalal)
 

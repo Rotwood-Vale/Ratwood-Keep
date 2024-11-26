@@ -12,6 +12,7 @@
 	ambushable = FALSE
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw)
 	possible_rmb_intents = list()
+	vitae_pool = 250 // Small, frail creechers with not so much vitality to gain from.
 
 /mob/living/carbon/human/species/goblin/npc
 	aggressive = 1
@@ -33,6 +34,7 @@
 /mob/living/carbon/human/species/goblin/npc/ambush/hell
 	race = /datum/species/goblin/hell
 /datum/species/goblin/hell
+	id = "goblin_hell"
 	name = "hell goblin"
 	raceicon = "goblin_hell"
 
@@ -44,6 +46,7 @@
 /mob/living/carbon/human/species/goblin/npc/ambush/cave
 	race = /datum/species/goblin/cave
 /datum/species/goblin/cave
+	id = "goblin_cave"
 	raceicon = "goblin_cave"
 
 /mob/living/carbon/human/species/goblin/sea
@@ -54,6 +57,7 @@
 /mob/living/carbon/human/species/goblin/npc/ambush/sea
 	race = /datum/species/goblin/sea
 /datum/species/goblin/sea
+	id = "goblin_sea"
 	raceicon = "goblin_sea"
 
 /mob/living/carbon/human/species/goblin/moon
@@ -100,7 +104,7 @@
 	name = "goblin"
 	id = "goblin"
 	species_traits = list(NO_UNDERWEAR,NOEYESPRITES)
-	inherent_traits = list(TRAIT_NOROGSTAM,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_CRITICAL_WEAKNESS)
+	inherent_traits = list(TRAIT_NOROGSTAM, TRAIT_RESISTCOLD, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_RADIMMUNE, TRAIT_CRITICAL_WEAKNESS, TRAIT_NASTY_EATER)
 	no_equip = list(SLOT_SHIRT, SLOT_WEAR_MASK, SLOT_GLOVES, SLOT_SHOES, SLOT_PANTS, SLOT_S_STORE)
 	nojumpsuit = 1
 	sexes = 1
@@ -274,12 +278,8 @@
 		else if(amount > 12 MINUTES)
 			C.update_body()
 
-/////
-////
-////
-//// OUTFGITS						//////////////////
-////
-///
+
+//////////////////   OUTFITS	//////////////////
 
 /datum/outfit/job/roguetown/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -338,13 +338,7 @@
 			l_hand = /obj/item/rogueweapon/shield/wood
 
 
-////
-////
-/// INVADER ZIM
-///
-///
-///
-
+//////////////////   INVADER ZIM	//////////////////
 
 /obj/structure/gob_portal
 	name = "Gob Portal"
