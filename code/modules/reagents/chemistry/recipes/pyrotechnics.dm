@@ -462,13 +462,6 @@
 	mix_message = span_danger("A jet of sparks flies from the mixture as it merges into a flickering slurry.")
 	required_temp = 400
 
-/datum/chemical_reaction/energized_jelly
-	name = "Energized Jelly"
-	id = /datum/reagent/teslium/energized_jelly
-	results = list(/datum/reagent/teslium/energized_jelly = 2)
-	required_reagents = list(/datum/reagent/toxin/slimejelly = 1, /datum/reagent/teslium = 1)
-	mix_message = span_danger("The slime jelly starts glowing intermittently.")
-
 /datum/chemical_reaction/reagent_explosion/nitrous_oxide
 	name = "N2O explosion"
 	id = "n2o_explosion"

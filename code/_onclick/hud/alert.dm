@@ -286,15 +286,6 @@
 	if(L.mobility_flags & MOBILITY_MOVE)
 		return L.resist_fire() //I just want to start a flame in your hearrrrrrtttttt.
 
-//BLOBS
-
-/atom/movable/screen/alert/nofactory
-	name = "No Factory"
-	desc = ""
-	icon_state = "blobbernaut_nofactory"
-	alerttooltipstyle = "blob"
-
-
 //GUARDIANS
 
 /atom/movable/screen/alert/cancharge

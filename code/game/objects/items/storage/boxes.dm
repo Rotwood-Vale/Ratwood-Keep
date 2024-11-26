@@ -377,38 +377,6 @@
 	for(var/i in 1 to 3)
 		new /obj/item/reagent_containers/food/snacks/monkeycube/gorilla(src)
 
-/obj/item/storage/box/ids
-	name = "box of spare IDs"
-	desc = ""
-	illustration = "id"
-
-/obj/item/storage/box/ids/PopulateContents()
-	for(var/i in 1 to 7)
-		new /obj/item/card/id(src)
-
-/obj/item/storage/box/silver_ids
-	name = "box of spare silver IDs"
-	desc = ""
-	illustration = "id"
-
-/obj/item/storage/box/silver_ids/PopulateContents()
-	for(var/i in 1 to 7)
-		new /obj/item/card/id/silver(src)
-
-/obj/item/storage/box/prisoner
-	name = "box of prisoner IDs"
-	desc = ""
-	illustration = "id"
-
-/obj/item/storage/box/prisoner/PopulateContents()
-	..()
-	new /obj/item/card/id/prisoner/one(src)
-	new /obj/item/card/id/prisoner/two(src)
-	new /obj/item/card/id/prisoner/three(src)
-	new /obj/item/card/id/prisoner/four(src)
-	new /obj/item/card/id/prisoner/five(src)
-	new /obj/item/card/id/prisoner/six(src)
-	new /obj/item/card/id/prisoner/seven(src)
 
 /obj/item/storage/box/firingpins
 	name = "box of standard firing pins"
@@ -419,14 +387,6 @@
 	for(var/i in 1 to 5)
 		new /obj/item/firing_pin(src)
 
-/obj/item/storage/box/firingpins/paywall
-	name = "box of paywall firing pins"
-	desc = ""
-	illustration = "id"
-
-/obj/item/storage/box/firingpins/paywall/PopulateContents()
-	for(var/i in 1 to 5)
-		new /obj/item/firing_pin/paywall(src)
 
 /obj/item/storage/box/handcuffs
 	name = "box of spare handcuffs"
@@ -821,7 +781,6 @@
 		/obj/item/flashlight/emp/debug=1,\
 		/obj/item/geiger_counter=1,\
 		/obj/item/card/emag=1,\
-		/obj/item/card/id/departmental_budget/car=1,\
 		/obj/item/stack/spacecash/c1000=50,\
 		/obj/item/storage/box/beakers/bluespace=1,\
 		/obj/item/storage/box/beakers/variety=1,\

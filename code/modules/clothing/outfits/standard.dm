@@ -8,18 +8,10 @@
 	mask = /obj/item/clothing/mask/cigarette/cigar/havana
 	r_pocket = /obj/item/lighter
 	back = /obj/item/storage/backpack/satchel/leather
-	id = /obj/item/card/id/centcom
 
 /datum/outfit/spec_ops/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
-
-	var/obj/item/card/id/W = H.wear_ring
-	W.access = get_all_accesses()
-	W.access += get_centcom_access("Special Ops Officer")
-	W.assignment = "Special Ops Officer"
-	W.registered_name = H.real_name
-	W.update_label()
 
 /datum/outfit/space
 	name = "Standard Space Gear"
@@ -86,11 +78,6 @@
 /datum/outfit/pirate/post_equip(mob/living/carbon/human/H)
 	H.faction |= "pirate"
 
-	var/obj/item/card/id/W = H.wear_ring
-	if(W)
-		W.registered_name = H.real_name
-		W.update_label()
-
 /datum/outfit/tunnel_clown
 	name = "Tunnel Clown"
 
@@ -101,18 +88,11 @@
 	glasses = /obj/item/clothing/glasses/thermal/monocle
 	suit = /obj/item/clothing/suit/hooded/chaplain_hoodie
 	r_pocket = /obj/item/bikehorn
-	id = /obj/item/card/id
 	r_hand = /obj/item/twohanded/fireaxe
 
 /datum/outfit/tunnel_clown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
-
-	var/obj/item/card/id/W = H.wear_ring
-	W.access = get_all_accesses()
-	W.assignment = "Tunnel Clown!"
-	W.registered_name = H.real_name
-	W.update_label()
 
 /datum/outfit/psycho
 	name = "Masked Killer"
@@ -174,18 +154,10 @@
 	r_pocket = /obj/item/lighter
 	l_pocket = /obj/item/ammo_box/a357
 	back = /obj/item/storage/backpack/satchel/leather
-	id = /obj/item/card/id/centcom
 
 /datum/outfit/centcom/commander/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
-
-	var/obj/item/card/id/W = H.wear_ring
-	W.access = get_all_accesses()
-	W.access += get_centcom_access("CentCom Commander")
-	W.assignment = "CentCom Commander"
-	W.registered_name = H.real_name
-	W.update_label()
 
 /datum/outfit/wizard
 	name = "Blue Wizard"
@@ -239,18 +211,10 @@
 	back = /obj/item/storage/backpack/satchel/leather
 	belt = /obj/item/gun/ballistic/revolver/mateba
 
-	id = /obj/item/card/id/centcom
 
 /datum/outfit/soviet/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
-
-	var/obj/item/card/id/W = H.wear_ring
-	W.access = get_all_accesses()
-	W.access += get_centcom_access("Admiral")
-	W.assignment = "Admiral"
-	W.registered_name = H.real_name
-	W.update_label()
 
 /datum/outfit/mobster
 	name = "Mobster"
@@ -261,16 +225,10 @@
 	gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/sunglasses
 	r_hand = /obj/item/gun/ballistic/automatic/tommygun
-	id = /obj/item/card/id
 
 /datum/outfit/mobster/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
-
-	var/obj/item/card/id/W = H.wear_ring
-	W.assignment = "Assistant"
-	W.registered_name = H.real_name
-	W.update_label()
 
 /datum/outfit/plasmaman
 	name = "Plasmaman"
@@ -291,7 +249,6 @@
 	back = /obj/item/storage/backpack/security
 	suit_store = /obj/item/tank/internals/emergency_oxygen/double
 	belt = /obj/item/gun/ballistic/revolver/mateba
-	id = /obj/item/card/id/centcom
 
 	backpack_contents = list(/obj/item/storage/box=1,\
 		/obj/item/ammo_box/a357=1,\
@@ -305,14 +262,6 @@
 
 	var/obj/item/implant/mindshield/L = new/obj/item/implant/mindshield(H)//Here you go Deuryn
 	L.implant(H, null, 1)
-
-
-	var/obj/item/card/id/W = H.wear_ring
-	W.access = get_all_accesses()//They get full station access.
-	W.access += get_centcom_access("Death Commando")//Let's add their alloted CentCom access.
-	W.assignment = "Death Commando"
-	W.registered_name = H.real_name
-	W.update_label()
 
 /datum/outfit/chrono_agent
 	name = "Timeline Eradication Agent"
@@ -328,7 +277,6 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/utility/chief/full
 	shoes = /obj/item/clothing/shoes/magboots/advance
-	id = /obj/item/card/id/ert
 	suit_store = /obj/item/tank/internals/oxygen
 	back = /obj/item/storage/backpack/holding
 	box = /obj/item/storage/box/debugtools

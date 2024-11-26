@@ -120,7 +120,7 @@
 	attack_verb_continuous = "blasts"
 	attack_verb_simple = "blast"
 	attack_sound = 'sound/blank.ogg'
-	loot = list(/obj/effect/decal/remains/plasma, /obj/item/pickaxe/drill/jackhammer)
+	loot = list(/obj/effect/decal/remains/plasma)
 
 /mob/living/simple_animal/hostile/skeleton/plasmaminer/Initialize()
 	. = ..()

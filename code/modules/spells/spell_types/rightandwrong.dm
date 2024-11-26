@@ -48,9 +48,7 @@ GLOBAL_LIST_INIT(summoned_magic, list(
 	/obj/item/gun/magic/staff/healing,
 	/obj/item/scrying,
 	/obj/item/voodoo,
-	/obj/item/warpwhistle,
-	/obj/item/immortality_talisman,
-	/obj/item/melee/ghost_sword))
+	/obj/item/warpwhistle))
 
 GLOBAL_LIST_INIT(summoned_special_magic, list(
 	/obj/item/gun/magic/staff/change,
@@ -58,16 +56,12 @@ GLOBAL_LIST_INIT(summoned_special_magic, list(
 	/obj/item/storage/belt/wands/full,
 	/obj/item/antag_spawner/contract,
 	/obj/item/gun/magic/staff/chaos,
-	/obj/item/necromantic_stone,
-	/obj/item/blood_contract))
+	/obj/item/necromantic_stone))
 
 //everything above except for single use spellbooks, because they are counted separately (and are for basic bitches anyways)
 GLOBAL_LIST_INIT(summoned_magic_objectives, list(
 	/obj/item/antag_spawner/contract,
-	/obj/item/blood_contract,
 	/obj/item/gun/magic,
-	/obj/item/immortality_talisman,
-	/obj/item/melee/ghost_sword,
 	/obj/item/necromantic_stone,
 	/obj/item/scrying,
 	/obj/item/spellbook,

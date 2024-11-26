@@ -134,20 +134,6 @@
 	icon_state = "floor"
 	floor_tile = /obj/item/stack/tile/plasteel
 
-/turf/open/floor/bluespace
-	slowdown = -1
-	icon_state = "bluespace"
-	desc = ""
-	floor_tile = /obj/item/stack/tile/bluespace
-
-
-/turf/open/floor/sepia
-	slowdown = 2
-	icon_state = "sepia"
-	desc = ""
-	floor_tile = /obj/item/stack/tile/sepia
-
-
 /turf/open/floor/bronze
 	name = "bronze floor"
 	desc = ""

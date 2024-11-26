@@ -151,7 +151,7 @@
 /turf/closed/mineral/random
 	var/list/mineralSpawnChanceList = list(/turf/closed/mineral/uranium = 5, /turf/closed/mineral/diamond = 1, /turf/closed/mineral/gold = 10,
 		/turf/closed/mineral/silver = 12, /turf/closed/mineral/plasma = 20, /turf/closed/mineral/iron = 40, /turf/closed/mineral/titanium = 11,
-		/turf/closed/mineral/gibtonite = 4, /turf/open/floor/plating/asteroid/airless/cave = 2, /turf/closed/mineral/bscrystal = 1)
+		/turf/closed/mineral/bscrystal = 1)
 		//Currently, Adamantine won't spawn as it has no uses. -Durandan
 	var/mineralChance = 13
 	var/display_icon_state = "rock"
@@ -179,7 +179,7 @@
 /turf/closed/mineral/random/no_caves
 	mineralSpawnChanceList = list(/turf/closed/mineral/uranium = 5, /turf/closed/mineral/diamond = 1, /turf/closed/mineral/gold = 10,
 		/turf/closed/mineral/silver = 12, /turf/closed/mineral/plasma = 20, /turf/closed/mineral/iron = 40, /turf/closed/mineral/titanium = 11,
-		/turf/closed/mineral/gibtonite = 4, /turf/closed/mineral/bscrystal = 1)
+		/turf/closed/mineral/bscrystal = 1)
 
 /turf/closed/mineral/random/high_chance
 	icon_state = "rock_highchance"
@@ -206,7 +206,7 @@
 	mineralSpawnChanceList = list(
 		/turf/closed/mineral/uranium = 2, /turf/closed/mineral/diamond = 1, /turf/closed/mineral/gold = 4, /turf/closed/mineral/titanium = 4,
 		/turf/closed/mineral/silver = 6, /turf/closed/mineral/plasma = 15, /turf/closed/mineral/iron = 40,
-		/turf/closed/mineral/gibtonite = 2, /turf/closed/mineral/bscrystal = 1)
+		/turf/closed/mineral/bscrystal = 1)
 
 
 /turf/closed/mineral/random/volcanic
@@ -220,14 +220,13 @@
 	mineralSpawnChanceList = list(
 		/turf/closed/mineral/uranium/volcanic = 5, /turf/closed/mineral/diamond/volcanic = 1, /turf/closed/mineral/gold/volcanic = 10, /turf/closed/mineral/titanium/volcanic = 11,
 		/turf/closed/mineral/silver/volcanic = 12, /turf/closed/mineral/plasma/volcanic = 20, /turf/closed/mineral/iron/volcanic = 40,
-		/turf/closed/mineral/gibtonite/volcanic = 4, /turf/open/floor/plating/asteroid/airless/cave/volcanic = 1, /turf/closed/mineral/bscrystal/volcanic = 1)
+		/turf/closed/mineral/bscrystal/volcanic = 1)
 
 
 /turf/closed/mineral/random/labormineral
 	mineralSpawnChanceList = list(
 		/turf/closed/mineral/uranium = 3, /turf/closed/mineral/diamond = 1, /turf/closed/mineral/gold = 8, /turf/closed/mineral/titanium = 8,
-		/turf/closed/mineral/silver = 20, /turf/closed/mineral/plasma = 30, /turf/closed/mineral/iron = 95,
-		/turf/closed/mineral/gibtonite = 2)
+		/turf/closed/mineral/silver = 20, /turf/closed/mineral/plasma = 30, /turf/closed/mineral/iron = 95)
 	icon_state = "rock_labor"
 
 
@@ -239,7 +238,7 @@
 	defer_change = 1
 	mineralSpawnChanceList = list(
 		/turf/closed/mineral/uranium/volcanic = 3, /turf/closed/mineral/diamond/volcanic = 1, /turf/closed/mineral/gold/volcanic = 8, /turf/closed/mineral/titanium/volcanic = 8,
-		/turf/closed/mineral/silver/volcanic = 20, /turf/closed/mineral/plasma/volcanic = 30, /turf/closed/mineral/bscrystal/volcanic = 1, /turf/closed/mineral/gibtonite/volcanic = 2,
+		/turf/closed/mineral/silver/volcanic = 20, /turf/closed/mineral/plasma/volcanic = 30, /turf/closed/mineral/bscrystal/volcanic = 1,
 		/turf/closed/mineral/iron/volcanic = 95)
 
 
@@ -442,98 +441,6 @@
 	environment_type = "snow_cavern"
 	turf_type = /turf/open/floor/plating/asteroid/snow/ice
 
-//GIBTONITE
-
-/turf/closed/mineral/gibtonite
-	mineralAmt = 1
-	spreadChance = 0
-	spread = 0
-	scan_state = "rock_Gibtonite"
-	var/det_time = 8 //Countdown till explosion, but also rewards the player for how close you were to detonation when you defuse it
-	var/stage = GIBTONITE_UNSTRUCK //How far into the lifecycle of gibtonite we are
-	var/activated_ckey = null //These are to track who triggered the gibtonite deposit for logging purposes
-	var/activated_name = null
-	var/mutable_appearance/activated_overlay
-
-/turf/closed/mineral/gibtonite/Initialize()
-	det_time = rand(8,10) //So you don't know exactly when the hot potato will explode
-	. = ..()
-
-/turf/closed/mineral/gibtonite/proc/explosive_reaction(mob/user = null, triggered_by_explosion = 0)
-	if(stage == GIBTONITE_UNSTRUCK)
-		activated_overlay = mutable_appearance('icons/turf/smoothrocks.dmi', "rock_Gibtonite_active", ON_EDGED_TURF_LAYER)
-		add_overlay(activated_overlay)
-		name = "gibtonite deposit"
-		desc = ""
-		stage = GIBTONITE_ACTIVE
-		visible_message(span_danger("There was gibtonite inside! It's going to explode!"))
-
-		var/notify_admins = 0
-		if(z != 5)
-			notify_admins = TRUE
-
-		if(!triggered_by_explosion)
-			log_bomber(user, "has trigged a gibtonite deposit reaction via", src, null, notify_admins)
-		else
-			log_bomber(null, "An explosion has triggered a gibtonite deposit reaction via", src, null, notify_admins)
-
-		countdown(notify_admins)
-
-/turf/closed/mineral/gibtonite/proc/countdown(notify_admins = 0)
-	set waitfor = 0
-	while(istype(src, /turf/closed/mineral/gibtonite) && stage == GIBTONITE_ACTIVE && det_time > 0 && mineralAmt >= 1)
-		det_time--
-		sleep(5)
-	if(istype(src, /turf/closed/mineral/gibtonite))
-		if(stage == GIBTONITE_ACTIVE && det_time <= 0 && mineralAmt >= 1)
-			var/turf/bombturf = get_turf(src)
-			mineralAmt = 0
-			stage = GIBTONITE_DETONATE
-			explosion(bombturf,1,3,5, adminlog = notify_admins)
-
-/turf/closed/mineral/gibtonite/proc/defuse()
-	if(stage == GIBTONITE_ACTIVE)
-		cut_overlay(activated_overlay)
-		activated_overlay.icon_state = "rock_Gibtonite_inactive"
-		add_overlay(activated_overlay)
-		desc = ""
-		stage = GIBTONITE_STABLE
-		if(det_time < 0)
-			det_time = 0
-		visible_message(span_notice("The chain reaction was stopped! The gibtonite had [det_time] reactions left till the explosion!"))
-
-/turf/closed/mineral/gibtonite/gets_drilled(mob/user, triggered_by_explosion = 0)
-	if(stage == GIBTONITE_UNSTRUCK && mineralAmt >= 1) //Gibtonite deposit is activated
-		playsound(src,'sound/blank.ogg',50,TRUE)
-		explosive_reaction(user, triggered_by_explosion)
-		return
-	if(stage == GIBTONITE_ACTIVE && mineralAmt >= 1) //Gibtonite deposit goes kaboom
-		var/turf/bombturf = get_turf(src)
-		mineralAmt = 0
-		stage = GIBTONITE_DETONATE
-		explosion(bombturf,1,2,5, adminlog = 0)
-	if(stage == GIBTONITE_STABLE) //Gibtonite deposit is now benign and extractable. Depending on how close you were to it blowing up before defusing, you get better quality ore.
-		var/obj/item/twohanded/required/gibtonite/G = new (src)
-		if(det_time <= 0)
-			G.quality = 3
-			G.icon_state = "Gibtonite ore 3"
-		if(det_time >= 1 && det_time <= 2)
-			G.quality = 2
-			G.icon_state = "Gibtonite ore 2"
-
-	var/flags = NONE
-	if(defer_change)
-		flags = CHANGETURF_DEFER_CHANGE
-	ScrapeAway(null, flags)
-	addtimer(CALLBACK(src, PROC_REF(AfterChange)), 1, TIMER_UNIQUE)
-
-
-/turf/closed/mineral/gibtonite/volcanic
-	environment_type = "basalt"
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
-	defer_change = 1
 
 /turf/closed/mineral/strong
 	name = "Very strong rock"

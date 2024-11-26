@@ -395,7 +395,6 @@
 	var/jobtype = null
 
 	uniform = /obj/item/clothing/under/color/grey
-	id = /obj/item/card/id
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	box = /obj/item/storage/box/survival
@@ -439,21 +438,6 @@
 	var/datum/job/J = SSjob.GetJobType(jobtype)
 	if(!J)
 		J = SSjob.GetJob(H.job)
-
-	var/obj/item/card/id/C = H.wear_ring
-	if(istype(C))
-		C.access = J.get_access()
-		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
-		C.registered_name = H.real_name
-		C.assignment = J.title
-		C.update_label()
-		for(var/A in SSeconomy.bank_accounts)
-			var/datum/bank_account/B = A
-			if(B.account_id == H.account_id)
-				C.registered_account = B
-				B.bank_cards += C
-				break
-		H.sec_hud_set_ID()
 
 /datum/outfit/job/get_chameleon_disguise_info()
 	var/list/types = ..()

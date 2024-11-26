@@ -38,7 +38,6 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Spawn Toolbox"						= "hsbspawn&path=[/obj/item/storage/toolbox/mechanical]",
 			"Spawn Light Replacer"				= "hsbspawn&path=[/obj/item/lightreplacer]",
 			"Spawn Medical Kit"					= "hsbspawn&path=[/obj/item/storage/firstaid/regular]",
-			"Spawn All-Access ID"				= "hsbaaid",
 
 			"Building Supplies",
 			"Spawn 50 Wood"                     = "hsbwood",
@@ -187,17 +186,6 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 
 			if("hsbwood")
 				new/obj/item/stack/sheet/mineral/wood{amount=50}(usr.loc)
-
-			//
-			// All access ID
-			//
-			if("hsbaaid")
-				var/obj/item/card/id/gold/ID = new(usr.loc)
-				ID.registered_name = usr.real_name
-				ID.assignment = "Sandbox"
-				ID.access = get_all_accesses()
-				ID.update_label()
-
 			//
 			// Object spawn window
 			//

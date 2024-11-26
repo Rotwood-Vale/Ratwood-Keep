@@ -969,9 +969,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/proc/activate_hand(selhand)
 	return
 
-/mob/proc/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null) //For sec bot threat assessment
-	return 0
-
 ///Get the ghost of this mob (from the mind)
 /mob/proc/get_ghost(even_if_they_cant_reenter, ghosts_with_clients)
 	if(mind)
@@ -1135,9 +1132,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 		//update the datacore records! This is goig to be a bit costly.
 		replace_records_name(oldname,newname)
 
-		//update our pda and id if we have them on our person
-		replace_identification_name(oldname,newname)
-
 		for(var/datum/mind/T in SSticker.minds)
 			for(var/datum/objective/obj in T.get_all_objectives())
 				// Only update if this player is a target
@@ -1149,23 +1143,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/proc/replace_records_name(oldname,newname)
 	return
 
-///update the ID name of this mob
-/mob/proc/replace_identification_name(oldname,newname)
-	var/list/searching = GetAllContents()
-	var/search_id = 1
-	var/search_pda = 1
-
-	for(var/A in searching)
-		if( search_id && istype(A, /obj/item/card/id) )
-			var/obj/item/card/id/ID = A
-			if(ID.registered_name == oldname)
-				ID.registered_name = newname
-				ID.update_label()
-				if(ID.registered_account?.account_holder == oldname)
-					ID.registered_account.account_holder = newname
-				if(!search_pda)
-					break
-				search_id = 0
 
 /mob/proc/update_stat()
 	return

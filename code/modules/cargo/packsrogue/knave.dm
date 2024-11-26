@@ -17,27 +17,27 @@
 
 /datum/supply_pack/rogue/Knave/leather/studded
 	name = "Studded Leather Armor"
-	cost = 100
+	cost = 200
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/Knave/leather/Lhelmet
 	name = "Leather Helmet"
-	cost = 24
+	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 /datum/supply_pack/rogue/Knave/leather/Lhelmet
 	name = "Reinforced hood"
-	cost = 30
+	cost = 100
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/reinforced)
 
 /datum/supply_pack/rogue/Knave/helmet/hhelmet
 	name = "Horned cap"
-	cost = 80
+	cost = 100
 	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
 
 /datum/supply_pack/rogue/Knave/bevor
 	name = "Bevor"
-	cost = 100
+	cost = 200
 	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 
 /datum/supply_pack/rogue/Knave/leather/Lbracers
@@ -47,12 +47,12 @@
 
 /datum/supply_pack/rogue/Knave/leatherpantsadvanced
 	name = "hardened leather chausses"
-	cost = 80
+	cost = 200
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
 
 /datum/supply_pack/rogue/Knave/leather/Lgloves
 	name = "hardened leather gloves"
-	cost = 50
+	cost = 150
 	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 
 /datum/supply_pack/rogue/Knave/recurvebow
@@ -72,7 +72,7 @@
 
 /datum/supply_pack/rogue/Knave/leather/elfdagger
 	name = "Elven Dagger"
-	cost = 200
+	cost = 250
 	contains = list(/obj/item/rogueweapon/huntingknife/elvish)
 
 /datum/supply_pack/rogue/Knave/sword
@@ -127,7 +127,7 @@
 
 /datum/supply_pack/rogue/Knave/Parrows
 	name = "Poisoned Arrow"
-	cost = 14
+	cost = 50
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/poison)
 
 /datum/supply_pack/rogue/Knave/Mancatcher
