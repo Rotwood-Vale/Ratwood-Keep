@@ -18,8 +18,8 @@
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	armor = /obj/item/clothing/suit/roguetown/shirt/tunic/newmoon
+	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/newmoon
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
 	beltr = /obj/item/keyring/mercenary
 	beltl = /obj/item/rogueweapon/huntingknife/idagger
 	backr = /obj/item/storage/backpack/rogue/satchel
