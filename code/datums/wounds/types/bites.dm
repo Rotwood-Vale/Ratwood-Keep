@@ -1,6 +1,6 @@
 /datum/wound/bite
 	name = "bite"
-	bleed_rate = 0
+	bleed_rate = 0.5
 	sewn_bleed_rate = 0
 	clotting_threshold = null
 	sewn_clotting_threshold = null
@@ -8,8 +8,8 @@
 	woundpain = 10
 	sew_threshold = 50
 	mob_overlay = "cut"
-	can_sew = FALSE
-	can_cauterize = FALSE
+	can_sew = TRUE
+	can_cauterize = TRUE
 	passive_healing = 0.5
 
 /datum/wound/bite/small

@@ -48,6 +48,7 @@
 	eat_effect = null
 	rotprocess = 15 MINUTES
 	sellprice = 0
+	plateable = TRUE
 
 /obj/item/reagent_containers/food/snacks/smallrat/burning(input as num)
 	if(!dead)

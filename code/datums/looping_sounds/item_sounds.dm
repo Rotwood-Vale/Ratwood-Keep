@@ -70,8 +70,8 @@
 /datum/looping_sound/boilloop
 	mid_sounds = list('sound/misc/boiling.ogg')
 	mid_length = 98
-	volume = 50
-	extra_range = -2
+	volume = 70
+	extra_range = 0
 	vary = TRUE
 
 /datum/looping_sound/streetlamp1
