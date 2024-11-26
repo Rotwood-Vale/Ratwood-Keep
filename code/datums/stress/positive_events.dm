@@ -81,7 +81,7 @@
 /datum/stressevent/music/five
 	stressadd = -3
 	timer = 8 MINUTES
-	desc = span_green("This music is wonderful!.")
+	desc = span_green("This music is wonderful!")
 
 /datum/stressevent/music/six
 	stressadd = -4
