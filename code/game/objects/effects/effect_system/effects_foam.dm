@@ -20,7 +20,6 @@
 	var/reagent_divisor = 7
 	var/static/list/blacklisted_turfs = typecacheof(list(
 	/turf/open/space/transit,
-	/turf/open/chasm,
 	/turf/open/lava))
 	var/slippery_foam = TRUE
 

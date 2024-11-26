@@ -156,41 +156,6 @@
 	exp_flash = 0
 	exp_fire= 4
 
-/datum/mutation/human/void
-	name = "Void Magnet"
-	desc = ""
-	quality = MINOR_NEGATIVE //upsides and downsides
-	text_gain_indication = span_notice("I feel a heavy, dull force just beyond the walls watching you.")
-	instability = 30
-	power = /obj/effect/proc_holder/spell/self/void
-	energy_coeff = 1
-	synchronizer_coeff = 1
-
-/datum/mutation/human/void/on_life()
-	if(!isturf(owner.loc))
-		return
-	if(prob((0.5+((100-dna.stability)/20))) * GET_MUTATION_SYNCHRONIZER(src)) //very rare, but enough to annoy you hopefully. +0.5 probability for every 10 points lost in stability
-		new /obj/effect/immortality_talisman/void(get_turf(owner), owner)
-
-/obj/effect/proc_holder/spell/self/void
-	name = "Convoke Void" //magic the gathering joke here
-	desc = ""
-	school = "evocation"
-	clothes_req = FALSE
-	charge_max = 600
-	invocation = "DOOOOOOOOOOOOOOOOOOOOM!!!"
-	invocation_type = "shout"
-	action_icon_state = "void_magnet"
-
-/obj/effect/proc_holder/spell/self/void/can_cast(mob/user = usr)
-	. = ..()
-	if(!isturf(user.loc))
-		return FALSE
-
-/obj/effect/proc_holder/spell/self/void/cast(mob/user = usr)
-	. = ..()
-	new /obj/effect/immortality_talisman/void(get_turf(user), user)
-
 /datum/mutation/human/self_amputation
 	name = "Autotomy"
 	desc = ""

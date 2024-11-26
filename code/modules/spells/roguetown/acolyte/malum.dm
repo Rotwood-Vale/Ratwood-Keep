@@ -410,3 +410,8 @@ obj/effect/proc_holder/spell/invoked/malum_flame_rogue/cast(list/targets, mob/us
 			to_chat(user, span_warning("You point at [O], but it fails to catch fire."))
 			return FALSE
 	return FALSE
+
+
+/obj/effect/temp_visual/lavastaff
+	icon_state = "lavastaff_warn"
+	duration = 50

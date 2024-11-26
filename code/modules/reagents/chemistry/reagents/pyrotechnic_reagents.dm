@@ -247,24 +247,6 @@
 		return
 	L.physiology.siemens_coeff *= 0.5
 
-/datum/reagent/teslium/energized_jelly
-	name = "Energized Jelly"
-	description = "Electrically-charged jelly. Boosts jellypeople's nervous system, but only shocks other lifeforms."
-	reagent_state = LIQUID
-	color = "#CAFF43"
-	taste_description = "jelly"
-
-/datum/reagent/teslium/energized_jelly/on_mob_life(mob/living/carbon/M)
-	if(isjellyperson(M))
-		shock_timer = 0 //immune to shocks
-		M.AdjustAllImmobility(-40, FALSE)
-		M.adjustStaminaLoss(-2, 0)
-		if(isluminescent(M))
-			var/mob/living/carbon/human/H = M
-			var/datum/species/jelly/luminescent/L = H.dna.species
-			L.extract_cooldown = max(0, L.extract_cooldown - 20)
-	..()
-
 /datum/reagent/firefighting_foam
 	name = "Firefighting Foam"
 	description = "A historical fire suppressant. Originally believed to simply displace oxygen to starve fires, it actually interferes with the combustion reaction itself. Vastly superior to the cheap water-based extinguishers found on NT vessels."

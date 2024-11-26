@@ -22,7 +22,7 @@
 	icon = 'icons/obj/chempuff.dmi'
 	pass_flags = PASSTABLE | PASSGRILLE
 	layer = FLY_LAYER
-	
+
 /obj/effect/decal/fakelattice
 	name = "lattice"
 	desc = ""

@@ -119,7 +119,6 @@
 			update_inv_belt()
 		if(SLOT_RING)
 			wear_ring = I
-			sec_hud_set_ID()
 			update_inv_wear_id()
 		if(SLOT_WRISTS)
 
@@ -304,7 +303,6 @@
 			update_inv_belt()
 	else if(I == wear_ring)
 		wear_ring = null
-		sec_hud_set_ID()
 		if(!QDELETED(src))
 			update_inv_wear_id()
 	else if(I == wear_wrists)

@@ -134,7 +134,6 @@
 	//Update med hud images...
 	..()
 	//...sec hud images...
-	sec_hud_set_ID()
 	sec_hud_set_implants()
 	sec_hud_set_security_status()
 	//...and display them.
@@ -335,53 +334,6 @@
 	if(!. && error_msg && user)
 		// Might need re-wording.
 		to_chat(user, span_alert("There is no exposed flesh or thin material [above_neck(target_zone) ? "on [p_their()] head" : "on [p_their()] body"]."))
-
-/mob/living/carbon/human/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null)
-	if(judgement_criteria & JUDGE_EMAGGED)
-		return 10 //Everyone is a criminal!
-
-	var/threatcount = 0
-
-	//Check for ID
-	var/obj/item/card/id/idcard = get_idcard(FALSE)
-	if( (judgement_criteria & JUDGE_IDCHECK) && !idcard && name=="Unknown")
-		threatcount += 4
-
-	//Check for weapons
-	if( (judgement_criteria & JUDGE_WEAPONCHECK) && weaponcheck)
-		if(!idcard || !(ACCESS_WEAPONS in idcard.access))
-			for(var/obj/item/I in held_items) //if they're holding a gun
-				if(weaponcheck.Invoke(I))
-					threatcount += 4
-			if(weaponcheck.Invoke(belt) || weaponcheck.Invoke(back)) //if a weapon is present in the belt or back slot
-				threatcount += 2 //not enough to trigger look_for_perp() on it's own unless they also have criminal status.
-
-	//Check for arrest warrant
-	if(judgement_criteria & JUDGE_RECORDCHECK)
-		var/perpname = get_face_name(get_id_name())
-		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.security)
-		if(R && R.fields["criminal"])
-			switch(R.fields["criminal"])
-				if("*Arrest*")
-					threatcount += 5
-				if("Incarcerated")
-					threatcount += 2
-				if("Paroled")
-					threatcount += 2
-
-	//Check for dresscode violations
-	if(istype(head, /obj/item/clothing/head/wizard))
-		threatcount += 2
-
-	//Check for nonhuman scum
-	if(dna && dna.species.id && dna.species.id != "human" && dna.species.id != "humen")
-		threatcount += 1
-
-	//mindshield implants imply trustworthyness
-	if(HAS_TRAIT(src, TRAIT_MINDSHIELD))
-		threatcount -= 1
-
-	return threatcount
 
 
 //Used for new human mobs created by cloning/goleming/podding
@@ -1093,26 +1045,11 @@
 /mob/living/carbon/human/species/golem/soviet
 	race = /datum/species/golem/soviet
 
-/mob/living/carbon/human/species/jelly
-	race = /datum/species/jelly
-
-/mob/living/carbon/human/species/jelly/slime
-	race = /datum/species/jelly/slime
-
-/mob/living/carbon/human/species/jelly/stargazer
-	race = /datum/species/jelly/stargazer
-
-/mob/living/carbon/human/species/jelly/luminescent
-	race = /datum/species/jelly/luminescent
-
 /mob/living/carbon/human/species/lizard
 	race = /datum/species/lizard
 
 /mob/living/carbon/human/species/ethereal
 	race = /datum/species/ethereal
-
-/mob/living/carbon/human/species/lizard/ashwalker
-	race = /datum/species/lizard/ashwalker
 
 /mob/living/carbon/human/species/moth
 	race = /datum/species/moth

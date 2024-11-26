@@ -1510,12 +1510,6 @@
 	else
 		new_mob.key = key
 
-	for(var/para in hasparasites())
-		var/mob/living/simple_animal/hostile/guardian/G = para
-		G.summoner = new_mob
-		G.Recall()
-		to_chat(G, span_holoparasite("My summoner has changed form!"))
-
 /mob/living/rad_act(amount)
 	. = ..()
 
