@@ -3375,6 +3375,7 @@
 #include "code\modules\spells\roguetown\acolyte\necra.dm"
 #include "code\modules\spells\roguetown\acolyte\noc.dm"
 #include "code\modules\spells\roguetown\acolyte\pestra.dm"
+#include "code\modules\spells\roguetown\acolyte\xylix.dm"
 #include "code\modules\spells\spell_types\aimed.dm"
 #include "code\modules\spells\spell_types\area_teleport.dm"
 #include "code\modules\spells\spell_types\barnyard.dm"

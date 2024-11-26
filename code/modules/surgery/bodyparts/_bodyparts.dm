@@ -84,6 +84,7 @@
 	var/skeletonized = FALSE
 
 	var/fingers = TRUE
+	var/is_prosthetic = FALSE
 
 	/// Visaul markings to be rendered alongside the bodypart
 	var/list/markings

@@ -33,6 +33,19 @@
 	else
 		return ..()
 
+// TALLOW is used as an intermediate crafting ingredient for other recipes.
+/obj/item/reagent_containers/food/snacks/tallow
+	name = "tallow"
+	desc = "Fatty tissue is harvested from slain creachurs and rendered of its membraneous sinew to produce a hard shelf-stable \
+	grease."
+	icon = 'modular/Neu_Food/icons/food.dmi'
+	icon_state = "tallow"
+	tastes = list("grease" = 1, "oil" = 1, "regret" =1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+	bitesize = 1
+	dropshrink = 0.3
+
 // -------------- RAISINS -----------------
 /obj/item/reagent_containers/food/snacks/rogue/raisins
 	name = "raisins"

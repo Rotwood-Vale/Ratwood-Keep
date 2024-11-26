@@ -493,9 +493,9 @@
 			else
 				if(VVictim)
 					to_chat(user, span_warning("It's vitae, just like mine."))
-				else if (C.vitae_bank > 500)
+				else if (C.vitae_pool > 500)
 					C.blood_volume = max(C.blood_volume-45, 0)
-					C.vitae_bank -= 500
+					C.vitae_pool -= 500
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
 						if(H.virginity)
