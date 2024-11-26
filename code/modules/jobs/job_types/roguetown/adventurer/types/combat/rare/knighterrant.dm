@@ -32,7 +32,11 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			backr = /obj/item/storage/backpack/rogue/satchel/black
 			backl = /obj/item/rogueweapon/shield/tower/metal
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1,/obj/item/storage/belt/rogue/pouch/coins/poor)
+			backpack_contents = list(
+							/obj/item/rogueweapon/huntingknife/idagger = 1,
+							/obj/item/storage/belt/rogue/pouch/coins/poor,
+							/obj/item/flashlight/flare/torch = 1,
+							)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)

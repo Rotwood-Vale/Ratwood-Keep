@@ -19,11 +19,11 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/sword/iron
 	backpack_contents = list(
-		/obj/item/storage/belt/rogue/pouch/coins/poor,
-		/obj/item/rogueweapon/hammer,
-		/obj/item/rogueweapon/tongs
-
-	)
+					/obj/item/storage/belt/rogue/pouch/coins/poor,
+					/obj/item/rogueweapon/hammer,
+					/obj/item/rogueweapon/tongs,
+					/obj/item/flashlight/flare/torch = 1,
+					)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)

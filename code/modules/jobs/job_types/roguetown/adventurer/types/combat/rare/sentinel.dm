@@ -40,7 +40,11 @@
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/sword/sabre
-	backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife/idagger/silver/elvish = 1)
+	backpack_contents = list(
+				/obj/item/bait = 1,
+				/obj/item/rogueweapon/huntingknife/idagger/silver/elvish = 1,
+				/obj/item/flashlight/flare/torch = 1,
+				)
 	beltl = /obj/item/quiver/arrows
 	H.change_stat("perception", 5)
 	H.change_stat("endurance", 2)

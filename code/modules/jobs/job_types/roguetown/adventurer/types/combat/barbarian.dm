@@ -40,6 +40,9 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backl = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(
+								/obj/item/flashlight/flare/torch = 1,
+								)
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			head = /obj/item/clothing/head/roguetown/helmet/horned
@@ -97,6 +100,9 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(
+								/obj/item/flashlight/flare/torch = 1,
+								)			
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 			H.change_stat("intelligence", -1) // The hunter is smarter, more skilled -- but not as tough.
@@ -129,6 +135,9 @@
 			beltl = /obj/item/rogueweapon/huntingknife
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(
+								/obj/item/flashlight/flare/torch = 1,
+								)			
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide

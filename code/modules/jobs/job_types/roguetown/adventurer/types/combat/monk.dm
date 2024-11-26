@@ -21,6 +21,9 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/storage/backpack/rogue/backpack
+	backpack_contents = list(
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	r_hand = /obj/item/rogueweapon/woodstaff
 	if(H.mind)
 		to_chat(src, span_warning("Monks are pilgrims of powerful belief who empart the teachings of their Temple or God by their interactions with the people of the world. A good monk would seek to help travellers on the road, feed the hungry and teach the weak to become strong. A bad one however..."))
