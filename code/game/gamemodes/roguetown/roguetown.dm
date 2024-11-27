@@ -259,6 +259,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					continue
 				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
+				if(get_playerquality(candidate.key) < 15) // Many of these guys vanishing would suck
+					continue
 
 				allantags -= candidate
 				pre_bandits += candidate
