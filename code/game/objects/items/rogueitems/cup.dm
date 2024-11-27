@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/glass/cup
 	name = "metal cup"
-	desc = "A sturdy cup, often used by warriors, bogwatch and other sturdy men."
+	desc = "A sturdy cup of metal. Often seen in the hands of warriors, wardens, and other sturdy folk."
 	icon_state = "iron"
 	force = 5
 	throwforce = 10
@@ -108,7 +108,7 @@
 
 /obj/item/reagent_containers/glass/cup/skull
 	name = "skull goblet"
-	desc = "The hollow eye sockets tell you of forgotten, dark rituals."
+	desc = "The hollow eye sockets tell me of forgotten, dark rituals."
 	icon_state = "skull"
 
 /obj/item/reagent_containers/glass/bowl
