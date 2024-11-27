@@ -1,7 +1,7 @@
 /obj/item/grown/log/tree
 	icon = 'icons/roguetown/items/natural.dmi'
 	name = "log"
-	desc = "A big tree log. It's very heavy, and huge."
+	desc = "A heavy and bulky tree log. The prize of many a lumberjack."
 	icon_state = "log"
 	blade_dulling = DULLING_CUT
 	attacked_sound = 'sound/misc/woodhit.ogg'
@@ -41,7 +41,7 @@
 
 /obj/item/grown/log/tree/small
 	name = "small log"
-	desc = "Smaller log that came from a larger log. Suitable for building."
+	desc = "A smaller log that came from a larger log. Suitable for building."
 	icon_state = "logsmall"
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	max_integrity = 30
@@ -55,7 +55,7 @@
 
 /obj/item/grown/log/tree/bowpartial
 	name = "crude bowstave"
-	desc = "A partially completed bow, still waiting to be strung."
+	desc = "A partially completed bow, waiting to be strung."
 	icon_state = "bowpartial"
 	max_integrity = 30
 	firefuel = 10 MINUTES
@@ -67,13 +67,13 @@
 
 /obj/item/grown/log/tree/bowpartial/recurve
 	name = "recurve bowstave"
-	desc = "An incomplete recurve awaiting stringing."
+	desc = "An incomplete recurve bow, waiting to be strung."
 	icon = 'icons/roguetown/items/64x.dmi'
 	icon_state = "recurve_bowstave"
 
 /obj/item/grown/log/tree/bowpartial/longbow
 	name = "long bowstave"
-	desc = "An incomplete longbow awaiting its string."
+	desc = "An incomplete longbow, waiting to be strung."
 	icon = 'icons/roguetown/items/64x.dmi'
 	icon_state = "long_bowstave"
 
@@ -133,7 +133,7 @@
 	if(istype(I, /obj/item/grown/log/tree/stick))
 		var/obj/item/natural/B = I
 		var/obj/item/natural/bundle/stick/N = new(src.loc)
-		to_chat(user, "You tie the sticks into a bundle.")
+		to_chat(user, "I tie the sticks into a bundle.")
 		qdel(B)
 		qdel(src)
 		user.put_in_hands(N)
@@ -146,13 +146,13 @@
 				user.visible_message("[user] adds [src] to [I].")
 				qdel(src)
 			else
-				to_chat(user, "This bundle of sticks is falling apart, at this point.")
+				to_chat(user, "I can't add any more sticks to the bundle without it falling apart.")
 			return
 
 /obj/item/grown/log/tree/stake
 	name = "stake"
 	icon_state = "stake"
-	desc = "A wooden stake, and it's pointy end!"
+	desc = "A wooden stake. Mind the pointy end!"
 	force = 10
 	throwforce = 5
 	possible_item_intents = list(/datum/intent/stab, /datum/intent/pick)
