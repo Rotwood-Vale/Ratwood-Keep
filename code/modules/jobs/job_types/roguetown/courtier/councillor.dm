@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/roguetown/councillor
 	
 	give_bank_account = 40
-	min_pq = 2
+	min_pq = 15 //Councillor is a RP heavy role that can require some intense knowledge on mechanics, lore, and good ability to roleplay to be worthwhile.
 	max_pq = null
 
 /datum/outfit/job/roguetown/councillor/pre_equip(mob/living/carbon/human/H)
