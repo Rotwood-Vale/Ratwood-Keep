@@ -539,7 +539,7 @@
 	overdose_threshold = null
 
 /datum/reagent/alch/syrumf
-	name = "fishyy syrum"
+	name = "fishy syrum"
 	description = "refined viscous fishy smelling gunk"
 	reagent_state = LIQUID
 	color = "#ff7f7f"
