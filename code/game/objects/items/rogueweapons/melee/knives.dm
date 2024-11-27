@@ -372,4 +372,4 @@
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0)
 	is_silver = TRUE
 	sellprice = 6
-	smeltresult = /obj/item/ingot/silver
+	smeltresult = null
