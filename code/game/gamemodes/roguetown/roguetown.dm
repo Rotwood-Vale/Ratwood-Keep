@@ -1,5 +1,5 @@
 // This mode will become the main basis for the typical roguetown round. Based off of chaos mode.
-var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "Extended", "Aspirants", "Bandits", "Maniac", "Cultists", "Lich", "CANCEL") // This is mainly used for forcemgamemodes
+var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "None", "Aspirants", "Bandits", "Maniac", "Cultists", "Lich", "CANCEL") // This is mainly used for forcemgamemodes
 
 /datum/game_mode/chaosmode
 	name = "roguemode"
@@ -159,25 +159,25 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				if("Cultists")
 					pick_cultist()
 					log_game("Major Antagonist: Cultists")
-				if("Extended")
-					log_game("Major Antagonist: Extended")
+				if("None")
+					log_game("Major Antagonist: None")
 		return TRUE
 
-	var/major_roll = rand(1,100)
+	var/major_roll = pick(1,4)
 	switch(major_roll)
-		if(0 to 25)
+		if(1)
 			pick_rebels()
-			log_game("Major Antagonist: Rebellion")
-		if(26 to 51)
+			log_game("Major Antagonist: Peasant Rebellion")
+		if(2)
 			pick_cultist()
 			log_game("Major Antagonist: Cultists")
-		if(52 to 76)
+		if(3)
 			//WWs and Vamps now normally roll together
 			pick_vampires()
 			pick_werewolves()
-			log_game("Major Antagonist: Werewolves")
-		if(77 to 99)
-			log_game("Major Antagonist: Extended") //gotta put something here.
+			log_game("Major Antagonist: Vampires and Werewolves")
+		if(4)
+			log_game("Major Antagonist: None")
 
 	if(prob(70))
 		pick_bandits()
@@ -350,19 +350,18 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_maniac()
 	restricted_jobs = list("Duke", "Duchess")
 	antag_candidates = get_players_for_role(ROLE_MANIAC)
-	var/datum/mind/villain = pick_n_take(antag_candidates)
-	if(villain)
-		var/blockme = FALSE
+	for(var/datum/mind/villain in antag_candidates)
 		if(!(villain in allantags))
-			blockme = TRUE
-		if(blockme)
-			return
+			continue
+		if(get_playerquality(villain.key) < 70)
+			continue
 		allantags -= villain
 		pre_villains += villain
 		villain.special_role = ROLE_MANIAC
 		villain.restricted_roles = restricted_jobs.Copy()
 		testing("[key_name(villain)] has been selected as the [villain.special_role]")
 		log_game("[key_name(villain)] has been selected as the [villain.special_role]")
+		break // Only one maniac
 	for(var/antag in pre_villains)
 		GLOB.pre_setup_antags |= antag
 	restricted_jobs = list()
@@ -413,10 +412,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 /datum/game_mode/chaosmode/proc/pick_lich()
 
-	// High pop only
-	if(num_players() < 70)
-		return FALSE
-
 	restricted_jobs = list(
 	"Duke",
 	"Duchess",
@@ -446,10 +441,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	antag_candidates = get_players_for_role(ROLE_LICH)
 	var/datum/mind/lichman = pick_n_take(antag_candidates)
 	if(lichman)
-		var/blockme = FALSE
 		if(!(lichman in allantags))
-			blockme = TRUE
-		if(blockme)
+			return
+		if(get_playerquality(lichman.key) < 60)
 			return
 		allantags -= lichman
 		pre_liches += lichman
@@ -493,15 +487,15 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	for(var/datum/mind/vampire in antag_candidates)
 		if(!vampsremaining)
 			break
-		var/blockme = FALSE
+		if(get_playerquality(vampire.key) < 30)
+			continue
 		if(!(vampire in allantags))
-			blockme = TRUE
+			continue
 		if(vampire.assigned_role in GLOB.noble_positions)
 			continue
 		if(vampire.assigned_role in GLOB.youngfolk_positions)
-			blockme = TRUE
-		if(blockme)
 			continue
+
 		allantags -= vampire
 		pre_vampires += vampire
 		vampire.special_role = "vampire"
