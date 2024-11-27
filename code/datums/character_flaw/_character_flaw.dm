@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Cyclops (L)"=/datum/charflaw/noeyel,
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
+	"Hunted"=/datum/charflaw/dead_or_alive,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
 	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw
 	))
@@ -356,7 +357,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 			user.emote("yawn", forced = TRUE)
 			next_sleep = world.time + rand(8 SECONDS, 12 SECONDS)
 			do_sleep = TRUE
-	
+
 /proc/narcolepsy_drug_up(mob/living/living)
 	var/datum/charflaw/narcoleptic/narco = living.get_flaw(/datum/charflaw/narcoleptic)
 	if(!narco)
