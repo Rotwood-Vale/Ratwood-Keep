@@ -17,7 +17,7 @@
 	display_order = JDO_BANDIT
 	show_in_credits = FALSE
 	announce_latejoin = FALSE
-	min_pq = 30 //Self-explanatory. We don't want new players on bandit; and this makes PQ nuking bad bandits viable.
+	min_pq = 15 //Self-explanatory. We don't want new players on bandit; and this makes PQ nuking bad bandits viable.
 	max_pq = null
 
 	advclass_cat_rolls = list(CTAG_BANDIT = 20)
