@@ -47,7 +47,8 @@
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg', 'sound/combat/hits/kick/kick.ogg')
 	damfactor = 0.5
-	clickcd = 10
+	clickcd = 14
+	recovery = 10
 	item_d_type = "blunt"
 	canparry = FALSE
 	candodge = FALSE
