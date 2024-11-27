@@ -177,6 +177,11 @@
 		H.change_stat("constitution", 2)
 		H.change_stat("endurance", 2)
 		H.change_stat("fortune", 1)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/movemovemove)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/takeaim)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/onfeet)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/hold)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/focustarget)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
