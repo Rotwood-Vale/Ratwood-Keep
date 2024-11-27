@@ -18,7 +18,7 @@
 	outfit = /datum/outfit/job/roguetown/priest
 
 	display_order = JDO_PRIEST
-	give_bank_account = 115
+	give_bank_account = 140
 	min_pq = 20 //Priests should know how to play the game.
 	max_pq = null
 
