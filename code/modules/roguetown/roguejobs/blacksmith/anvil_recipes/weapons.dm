@@ -68,7 +68,7 @@
 	craftdiff = 0
 
 /datum/anvil_recipe/weapons/iron/bardiche
-	name = "Bardiche (+ iron) (+1 Small Log)"
+	name = "Bardiche (+ Iron) (+1 Small Log)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/halberd/bardiche
