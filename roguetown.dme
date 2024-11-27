@@ -1698,7 +1698,6 @@
 #include "code\modules\jobs\job_types\roguetown\adventurer\pilgrim.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\villager.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\_advclass.dm"
-#include "code\modules\jobs\job_types\roguetown\adventurer\types\antag\bandit.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\antag\brigand.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\antag\foresworn.dm"
 #include "code\modules\jobs\job_types\roguetown\adventurer\types\antag\hedgeknight.dm"
