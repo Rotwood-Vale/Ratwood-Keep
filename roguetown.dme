@@ -1883,6 +1883,7 @@
 #include "code\modules\mapping\space_management\traits.dm"
 #include "code\modules\mapping\space_management\zlevel_manager.dm"
 #include "code\modules\mining\ores_coins.dm"
+#include "code\modules\mining\lavaland\necropolis_chests.dm"
 #include "code\modules\mob\death.dm"
 #include "code\modules\mob\emote.dm"
 #include "code\modules\mob\inventory.dm"
