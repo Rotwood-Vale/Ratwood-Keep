@@ -38,5 +38,5 @@
 	H.change_stat("strength", -1) // weasel
 	H.change_stat("endurance", 3)
 	H.change_stat("perception", 2)
-	H.change_stat("speed", 3) 
-	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) 
+	H.change_stat("speed", 3)
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
