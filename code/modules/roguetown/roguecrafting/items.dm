@@ -680,6 +680,20 @@
 	skillcraft = /datum/skill/craft/crafting
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/prosthetic/woodleft
+	name = "wood leg (L)"
+	result = list(/obj/item/bodypart/l_leg/prosthetic)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/prosthetic/woodright
+	name = "wood leg (R)"
+	result = list(/obj/item/bodypart/r_leg/prosthetic)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
+	craftdiff = 3
+
 /datum/crafting_recipe/roguetown/tarot_deck
 	name = "tarot deck"
 	result = list(/obj/item/toy/cards/deck/tarot)

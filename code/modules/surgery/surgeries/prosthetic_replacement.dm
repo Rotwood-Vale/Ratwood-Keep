@@ -88,7 +88,9 @@
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	possible_locs = list(
 		BODY_ZONE_R_ARM,
-		BODY_ZONE_L_ARM
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_LEG,
+		BODY_ZONE_L_LEG
 	)
 	requires_bodypart = TRUE
 	requires_bodypart_type = BODYPART_ROBOTIC
@@ -101,7 +103,9 @@
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	possible_locs = list(
 		BODY_ZONE_R_ARM,
-		BODY_ZONE_L_ARM
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_LEG,
+		BODY_ZONE_L_LEG
 	)
 	time = 10 SECONDS
 	requires_bodypart = TRUE
