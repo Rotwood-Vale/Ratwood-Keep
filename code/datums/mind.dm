@@ -374,9 +374,9 @@
 	if(silent)
 		return
 	if(known_skills[S] >= old_level)
-		to_chat(current, span_nicegreen("I feel like I've become more proficient at [S.name]!"))
+		to_chat(current, span_nicegreen("I feel like I've become more proficient at [lowertext(S.name)]!"))
 	else
-		to_chat(current, span_warning("I feel like I've become worse at [S.name]!"))
+		to_chat(current, span_warning("I feel like I've become worse at [lowertext(S.name)]!"))
 
 // adjusts the amount of available spellpoints
 /datum/mind/proc/adjust_spellpoints(points)
