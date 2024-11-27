@@ -1,3 +1,52 @@
+//intent datums ฅ^•ﻌ•^ฅ
+
+/datum/intent/axe/cut
+	name = "cut"
+	icon_state = "incut"
+	blade_class = BCLASS_CUT
+	attack_verb = list("cuts", "slashes")
+	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
+	animname = "cut"
+	penfactor = 20
+	chargetime = 0
+	item_d_type = "slash"
+
+/datum/intent/axe/chop
+	name = "chop"
+	icon_state = "inchop"
+	blade_class = BCLASS_CHOP
+	attack_verb = list("chops", "hacks")
+	animname = "chop"
+	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
+	penfactor = 35
+	swingdelay = 10
+	item_d_type = "slash"
+
+/datum/intent/axe/chop/stone
+	penfactor = 5
+
+/datum/intent/axe/chop/battle
+	damfactor = 1.2 //36 on battleaxe
+	penfactor = 40
+
+/datum/intent/axe/cut/battle
+	penfactor = 25
+
+/datum/intent/axe/bash
+	name = "bash"
+	icon_state = "instrike"
+	attack_verb = list("bashes", "clubs")
+	animname = "strike"
+	blade_class = BCLASS_BLUNT
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	chargetime = 0
+	penfactor = 10
+	swingdelay = 5
+	damfactor = 0.8
+	item_d_type = "blunt"
+
+//axe objs ฅ^•ﻌ•^ฅ
+
 /obj/item/rogueweapon/stoneaxe
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 18
@@ -75,49 +124,17 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 	return ..()
 
-/datum/intent/axe/chop/stone
-	penfactor = 5
-
-/datum/intent/axe/cut
-	name = "cut"
-	icon_state = "incut"
-	blade_class = BCLASS_CUT
-	attack_verb = list("cuts", "slashes")
-	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	animname = "cut"
-	penfactor = 20
-	chargetime = 0
-	item_d_type = "slash"
-
-/datum/intent/axe/chop
-	name = "chop"
-	icon_state = "inchop"
-	blade_class = BCLASS_CHOP
-	attack_verb = list("chops", "hacks")
-	animname = "chop"
-	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 35
-	swingdelay = 10
-	item_d_type = "slash"
-
-/datum/intent/axe/chop/battle
-	damfactor = 1.2 //36 on battleaxe
-	penfactor = 40
-
-/datum/intent/axe/cut/battle
-	penfactor = 25
-
 /obj/item/rogueweapon/stoneaxe/battle
 	force = 25
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle)
+	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash)
 	name = "battle axe"
 	desc = "A steel battleaxe of war. Has a wicked edge."
 	icon_state = "battleaxe"
 	max_blade_int = 300
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
-	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle)
+	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle, /datum/intent/axe/bash)
 	minstr = 9
 	wdefense = 4
 
@@ -135,7 +152,7 @@
 /obj/item/rogueweapon/stoneaxe/oath
 	force = 30
 	force_wielded = 40
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle)
+	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash)
 	name = "oath"
 	desc = "A hefty, steel-forged axe marred by the touch of countless Wardens. Despite it's weathered etchings and worn grip, the blade has been honed to a razor's edge and you can see your reflection in the finely polished metal."
 	icon_state = "oath"
@@ -151,7 +168,7 @@
 	bigboy = TRUE
 	gripsprite = TRUE
 	smeltresult = /obj/item/ingot/steel
-	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle)
+	gripped_intents = list(/datum/intent/axe/cut/battle ,/datum/intent/axe/chop/battle, /datum/intent/axe/bash)
 	minstr = 12
 	wdefense = 5
 
@@ -182,8 +199,8 @@
 	name = "Pulaski axe"
 	desc = "An odd mix of a pickaxe front and a hatchet blade back, capable of being switched between."
 	icon_state = "paxe"
-	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/pick)
-	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/pick)
+	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/pick, /datum/intent/axe/bash)
+	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/pick, /datum/intent/axe/bash)
 	smeltresult = /obj/item/ingot/steel
 	wlength = WLENGTH_NORMAL
 	toolspeed = 2
@@ -194,8 +211,8 @@
 	icon_state = "wardenpax"
 	force = 22
 	force_wielded = 28
-	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/pick)
-	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/pick)
+	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/pick, /datum/intent/axe/bash)
+	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/pick, /datum/intent/axe/bash)
 	smeltresult = /obj/item/ingot/steel
 	wlength = WLENGTH_NORMAL
 	toolspeed = 2
@@ -273,7 +290,7 @@
 	desc = "A one-handed war axe forged of silver."
 	icon_state = "silveraxe"
 	force = 24
-	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
+	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/axe/bash)
 	minstr = 6
 	max_blade_int = 400
 	smeltresult = /obj/item/ingot/silver

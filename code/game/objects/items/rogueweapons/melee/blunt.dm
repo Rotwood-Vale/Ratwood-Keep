@@ -1,3 +1,44 @@
+//intent datums ฅ^•ﻌ•^ฅ
+
+/datum/intent/mace/strike
+	name = "strike"
+	blade_class = BCLASS_BLUNT
+	attack_verb = list("strikes", "hits")
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	chargetime = 0
+	penfactor = 15
+	swingdelay = 0
+	icon_state = "instrike"
+	item_d_type = "blunt"
+
+/datum/intent/mace/smash
+	name = "smash"
+	blade_class = BCLASS_SMASH
+	attack_verb = list("smashes")
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	penfactor = 80
+	damfactor = 1.1
+	swingdelay = 10
+	icon_state = "insmash"
+	item_d_type = "blunt"
+
+/datum/intent/mace/rangedthrust
+	name = "thrust"
+	blade_class = BCLASS_STAB
+	attack_verb = list("thrusts")
+	animname = "stab"
+	icon_state = "instab"
+	reach = 2
+	chargetime = 1
+	recovery = 30
+	warnie = "mobwarning"
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	penfactor = 25
+	damfactor = 0.9
+	item_d_type = "stab"
+
+//blunt objs ฅ^•ﻌ•^ฅ
+
 /obj/item/rogueweapon/mace
 	force = 20
 	force_wielded = 25
@@ -111,44 +152,6 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 	return ..()
-
-
-/datum/intent/mace/strike
-	name = "strike"
-	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes", "hits")
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	chargetime = 0
-	penfactor = 15
-	swingdelay = 0
-	icon_state = "instrike"
-	item_d_type = "blunt"
-
-/datum/intent/mace/smash
-	name = "smash"
-	blade_class = BCLASS_SMASH
-	attack_verb = list("smashes")
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	penfactor = 80
-	damfactor = 1.1
-	swingdelay = 10
-	icon_state = "insmash"
-	item_d_type = "blunt"
-
-/datum/intent/mace/rangedthrust
-	name = "thrust"
-	blade_class = BCLASS_STAB
-	attack_verb = list("thrusts")
-	animname = "stab"
-	icon_state = "instab"
-	reach = 2
-	chargetime = 1
-	recovery = 30
-	warnie = "mobwarning"
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 25
-	damfactor = 0.9
-	item_d_type = "stab"
 
 /obj/item/rogueweapon/mace/woodclub
 	force = 15
