@@ -74,6 +74,13 @@
 	created_item = /obj/item/rogueweapon/halberd/bardiche
 	craftdiff = 2
 
+/datum/anvil_recipe/weapons/steel/zweihander
+	name = "Zweihander (+2 Iron)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
+	created_item = /obj/item/rogueweapon/greatsword/zwei
+	craftdiff = 3
+
 /datum/anvil_recipe/weapons/iron/axe
 	name = "Axe (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
@@ -197,13 +204,6 @@
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/estoc
 	craftdiff = 4
-
-/datum/anvil_recipe/weapons/steel/zweihander
-	name = "Zweihander (+2 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/greatsword/zwei
-	craftdiff = 3
 
 /datum/anvil_recipe/weapons/steel/greatsword
 	name = "Greatsword (+2 Steel)"
