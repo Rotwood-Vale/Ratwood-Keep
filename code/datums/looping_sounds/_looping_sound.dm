@@ -1,3 +1,19 @@
+GLOBAL_LIST_EMPTY(created_sound_groups)
+/datum/sound_group
+	var/list/reserved_channels = list()
+	var/channel_count = 1
+	var/last_iter = 1
+
+/datum/sound_group/New()
+	. = ..()
+	for(var/channel = 1 to channel_count)
+		reserved_channels |= SSsounds.reserve_sound_channel(src)
+
+/datum/sound_group/torches
+	channel_count = 150
+
+/datum/sound_group/fire_loop
+	channel_count = 150
 /*
 	parent	(the source of the sound)			The source the sound comes from
 
@@ -39,6 +55,7 @@
 	var/loop_started = FALSE
 	///our sound channel
 	var/channel
+	var/datum/sound_group/sound_group
 
 /datum/looping_sound/New(_parent, start_immediately=FALSE, _direct=FALSE, _channel = 0)
 	if(!mid_sounds)
@@ -48,9 +65,29 @@
 		WARNING("A looping sound datum was created using a list, this is no longer allowed please change to a parent")
 		return
 
+	var/datum/sound_group/group
+	if(sound_group)
+		for(var/datum/sound_group/listed in GLOB.created_sound_groups)
+			if(listed.type != sound_group)
+				continue
+			group = listed
+		if(!group)
+			group = new sound_group
+			GLOB.created_sound_groups |= group
+		if(group.last_iter == group.channel_count)
+			group.last_iter = 1
+
+		var/picked_channel = group.reserved_channels[group.last_iter]
+		group.last_iter++
+		channel = picked_channel
+
 	parent = _parent
 	direct = _direct
-	channel = _channel
+
+	if(_channel)
+		channel = _channel
+	if(!channel)
+		channel = SSsounds.reserve_sound_channel(src)
 
 	if(start_immediately)
 		start()
@@ -101,7 +138,7 @@
 	if(!istype(S))
 		S = sound(soundfile)
 	if(direct)
-		S.channel = channel || SSsounds.random_available_channel()
+		S.channel = channel
 		S.volume = volume
 	var/atom/thing = parent
 	if(direct)
