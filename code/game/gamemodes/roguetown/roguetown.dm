@@ -173,14 +173,16 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			log_game("Major Antagonist: Cultists")
 		if(52 to 76)
 			//WWs and Vamps now normally roll together
-			// pick_vampires()
+			pick_vampires()
 			pick_werewolves()
 			log_game("Major Antagonist: Werewolves")
 		if(77 to 99)
 			log_game("Major Antagonist: Extended") //gotta put something here.
 
-	pick_bandits()
-	log_game("Minor Antagonist: Bandit")
+	if(prob(50))
+		pick_bandits()
+		log_game("Minor Antagonist: Bandit")
+
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
@@ -189,9 +191,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		pick_lich()
 		log_game("Minor Antagonist: Lich")
 
-	// if(prob(10))
-	// 	pick_maniac()
-	// 	log_game("Minor Antagonist: Maniac")
+	if(prob(10))
+	 	pick_maniac()
+	 	log_game("Minor Antagonist: Maniac")
 
 	return TRUE
 
