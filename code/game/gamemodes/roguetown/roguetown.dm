@@ -398,6 +398,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		if(villain.assigned_role in GLOB.youngfolk_positions)
 			continue
 		if(get_playerquality(villain.key) < 30)
+			continue
 		allantags -= villain
 		pre_cultists += villain
 		villain.special_role = "cultist"
@@ -439,8 +440,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Goblin Shaman"
 	)
 	antag_candidates = get_players_for_role(ROLE_LICH)
-	var/datum/mind/lichman = pick_n_take(antag_candidates)
-	if(lichman)
+	for(var/datum/mind/lichman in antag_candidates)
 		if(!(lichman in allantags))
 			continue
 		if(get_playerquality(lichman.key) < 60)
