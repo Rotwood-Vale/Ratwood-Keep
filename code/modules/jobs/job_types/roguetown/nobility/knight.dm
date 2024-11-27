@@ -14,7 +14,7 @@
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/knight
 	give_bank_account = 22
-	min_pq = 8
+	min_pq = 35 //"from-Terminator541: They misunderstood what "Some part of them seems to be missing" and figured that mean your body was soulless." - Makes Knight's have higher PQ. Keep role with a lot of importance and power.
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
