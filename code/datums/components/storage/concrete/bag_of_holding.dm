@@ -17,7 +17,6 @@
 		log_game("[key_name(user)] detonated a bag of holding at [loc_name(loccheck)].")
 
 		user.gib(TRUE, TRUE, TRUE)
-		new/obj/singularity/boh_tear(loccheck)
 		qdel(A)
 		return
 	. = ..()

@@ -299,9 +299,14 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/otherZ = list()
 
-	#ifdef ROGUEWORLD
-	otherZ += load_map_config("_maps/map_files/otherz/rogueworld.json")
-	#endif
+	if(config.map_name == "Azure Peak")
+		otherZ += load_map_config("_maps/map_files/dun_manor/azure_forest.json")
+		otherZ += load_map_config("_maps/map_files/dun_manor/azure_coast.json")
+		// Add dungeon map files here later, maybe we can pick from a list of them?
+	else //For Rogue map
+		otherZ += load_map_config("_maps/map_files/dun_manor/smallforest.json")
+		otherZ += load_map_config("_maps/map_files/dun_manor/smalldecap.json")
+	
 	if(otherZ.len)
 		for(var/datum/map_config/OtherZ in otherZ)
 			LoadGroup(FailedZs, OtherZ.map_name, OtherZ.map_path, OtherZ.map_file, OtherZ.traits, ZTRAITS_STATION)

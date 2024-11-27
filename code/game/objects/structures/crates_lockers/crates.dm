@@ -158,21 +158,6 @@
 	for(var/i in 1 to 3)
 		new /obj/item/reagent_containers/blood/random(src)
 
-/obj/structure/closet/crate/freezer/surplus_limbs
-	name = "surplus prosthetic limbs"
-	desc = ""
-
-/obj/structure/closet/crate/freezer/surplus_limbs/PopulateContents()
-	. = ..()
-	new /obj/item/bodypart/l_arm/robot/surplus(src)
-	new /obj/item/bodypart/l_arm/robot/surplus(src)
-	new /obj/item/bodypart/r_arm/robot/surplus(src)
-	new /obj/item/bodypart/r_arm/robot/surplus(src)
-	new /obj/item/bodypart/l_leg/robot/surplus(src)
-	new /obj/item/bodypart/l_leg/robot/surplus(src)
-	new /obj/item/bodypart/r_leg/robot/surplus(src)
-	new /obj/item/bodypart/r_leg/robot/surplus(src)
-
 /obj/structure/closet/crate/radiation
 	desc = ""
 	name = "radiation crate"
@@ -190,33 +175,10 @@
 /obj/structure/closet/crate/engineering/electrical
 	icon_state = "engi_e_crate"
 
-/obj/structure/closet/crate/rcd
-	desc = ""
-	name = "\improper RCD crate"
-	icon_state = "engi_crate"
-
-/obj/structure/closet/crate/rcd/PopulateContents()
-	..()
-	for(var/i in 1 to 4)
-		new /obj/item/rcd_ammo(src)
-	new /obj/item/construction/rcd(src)
-
 /obj/structure/closet/crate/science
 	name = "science crate"
 	desc = ""
 	icon_state = "scicrate"
-
-/obj/structure/closet/crate/solarpanel_small
-	name = "budget solar panel crate"
-	icon_state = "engi_e_crate"
-
-/obj/structure/closet/crate/solarpanel_small/PopulateContents()
-	..()
-	for(var/i in 1 to 13)
-		new /obj/item/solar_assembly(src)
-	new /obj/item/circuitboard/computer/solar_control(src)
-	new /obj/item/paper/guides/jobs/engi/solars(src)
-	new /obj/item/electronics/tracker(src)
 
 /obj/structure/closet/crate/goldcrate
 	name = "gold crate"

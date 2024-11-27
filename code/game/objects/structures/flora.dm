@@ -376,7 +376,7 @@
 	desc = ""
 	icon_state = "plant-09"
 	light_color = "#2cb2e8"
-	light_range = 3
+	light_outer_range = 3
 
 
 //a rock is flora according to where the icon file is

@@ -42,10 +42,7 @@
 	else
 		user.update_inv_hands()
 	if(show_message)
-		if(iscyborg(user))
-			to_chat(user, span_notice("I free up your module."))
-		else
-			to_chat(user, span_notice("I are now carrying [src] with one hand."))
+		to_chat(user, "<span class='notice'>I are now carrying [src] with one hand.</span>")
 	var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
 	if(O && istype(O))
 		O.unwield()
@@ -68,10 +65,7 @@
 		force = force_wielded
 	name = "[name] (Wielded)"
 	update_icon()
-	if(iscyborg(user))
-		to_chat(user, span_notice("I dedicate your module to [src]."))
-	else
-		to_chat(user, span_notice("I grab [src] with both hands."))
+	to_chat(user, "<span class='notice'>I grab [src] with both hands.</span>")
 	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
 	O.name = "[name] - offhand"
 	O.desc = ""
@@ -342,6 +336,10 @@
 		return
 	if((wielded) && prob(50))
 		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
+
+/mob/proc/dance_flip()
+	if(dir == WEST)
+		emote("flip")
 
 /obj/item/twohanded/dualsaber/proc/jedi_spin(mob/living/user)
 	dance_rotate(user, CALLBACK(user, TYPE_PROC_REF(/mob, dance_flip)))
@@ -672,7 +670,7 @@
 
 /obj/item/twohanded/pitchfork/demonic/Initialize()
 	. = ..()
-	set_light(3,6,LIGHT_COLOR_RED)
+	set_light(3,3,6, l_color = LIGHT_COLOR_RED)
 
 /obj/item/twohanded/pitchfork/demonic/greater
 	force = 24

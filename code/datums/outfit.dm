@@ -259,10 +259,6 @@
 				for(var/i in 1 to number)
 					H.equip_to_slot_or_del(new path(H),SLOT_IN_BACKPACK, TRUE)
 
-	if(!H.head && toggle_helmet && istype(H.wear_armor, /obj/item/clothing/suit/space/hardsuit))
-		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_armor
-		HS.ToggleHelmet()
-
 	post_equip(H, visualsOnly)
 
 	if(!visualsOnly)

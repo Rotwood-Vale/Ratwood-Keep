@@ -119,12 +119,6 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_typepaths_asc(A, B)
 	return sorttext("[B]","[A]")
 
-/proc/cmp_pdaname_asc(obj/item/pda/A, obj/item/pda/B)
-	return sorttext(B.owner, A.owner)
-
-/proc/cmp_pdajob_asc(obj/item/pda/A, obj/item/pda/B)
-	return sorttext(B.ownjob, A.ownjob)
-
 /proc/cmp_assignedrole_asc(mob/living/A, mob/living/B)
 	if(!GLOB.job_assignment_order)
 		GLOB.job_assignment_order = get_job_assignment_order()

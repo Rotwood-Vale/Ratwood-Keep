@@ -36,6 +36,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/timeLeft						//pregame timer
 	var/start_at
+	var/timeDelayAdd = 120
 	//576000 dusk
 	//376000 day
 	var/gametime_offset = 288001		//Deciseconds to add to world.time for station time.
@@ -58,6 +59,9 @@ SUBSYSTEM_DEF(ticker)
 	var/late_join_disabled
 
 	var/roundend_check_paused = FALSE
+
+	var/amt_ready = 0 // Total count of players that are ready
+	var/amt_ready_needed = 1 // Total count of players that are needed ready to start the game
 
 	var/round_start_time = 0
 	var/round_start_irl = 0
@@ -207,14 +211,8 @@ SUBSYSTEM_DEF(ticker)
 
 			if(timeLeft <= 0)
 				if(!checkreqroles())
-/*					if(failedstarts >= 13)
-						current_state = GAME_STATE_SETTING_UP
-						Master.SetRunLevel(RUNLEVEL_SETUP)
-						if(start_immediately)
-							fire()
-					else*/
 					current_state = GAME_STATE_STARTUP
-					start_at = world.time + 600
+					start_at = world.time + timeDelayAdd 
 					timeLeft = null
 					Master.SetRunLevel(RUNLEVEL_LOBBY)
 				else
@@ -227,7 +225,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!setup())
 				//setup failed
 				current_state = GAME_STATE_STARTUP
-				start_at = world.time + 600
+				start_at = world.time + timeDelayAdd
 				timeLeft = null
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
@@ -287,12 +285,13 @@ SUBSYSTEM_DEF(ticker)
 		if(player.ready == PLAYER_READY_TO_PLAY)
 			amt_ready++
 
-	if(amt_ready < 2)
-		to_chat(world, span_purple("[amt_ready]/20 players ready."))
-		failedstarts++
-		if(failedstarts > 7)
-			to_chat(world, span_purple("[failedstarts]/13"))
-		if(failedstarts >= 13)
+	if(amt_ready > amt_ready_needed)
+		to_chat(world, "<span class='purple'>Not enough players to start the game</span>")
+	*/
+
+
+	/*	failedstarts++
+		if(failedstarts >= 13) // this stuff is for rougewar, a team deathmatch mode I guess.
 			to_chat(world, span_greentext("Starting ROGUEFIGHT..."))
 			var/icon/ikon
 			var/file_path = "icons/roguefight_title.dmi"
@@ -301,9 +300,7 @@ SUBSYSTEM_DEF(ticker)
 			if(SStitle.splash_turf && ikon)
 				SStitle.splash_turf.icon = ikon
 			for(var/mob/dead/new_player/player in GLOB.player_list)
-				player.playsound_local(player, 'sound/music/wartitle.ogg', 100, TRUE)
-		return FALSE
-	*/
+				player.playsound_local(player, 'sound/music/wartitle.ogg', 100, TRUE)*/
 	job_change_locked = TRUE
 	return TRUE
 
@@ -841,7 +838,6 @@ SUBSYSTEM_DEF(ticker)
 		world.Reboot()
 
 /datum/controller/subsystem/ticker/Shutdown()
-	gather_newscaster() //called here so we ensure the log is created even upon admin reboot
 	save_admin_data()
 	update_everything_flag_in_db()
 
