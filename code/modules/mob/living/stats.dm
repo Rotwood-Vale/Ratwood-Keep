@@ -44,14 +44,8 @@
 	STASPD = 10
 	STALUC = 10
 	for(var/S in MOBSTATS)
-		if(prob(33))
-			change_stat(S, 1)
-			if(prob(33))
-				change_stat(S, -1)
-		else
-			change_stat(S, -1)
-			if(prob(33))
-				change_stat(S, 1)
+		var/how_much = pick(-1, 0, 1)
+		change_stat(S, how_much)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.dna.species)
