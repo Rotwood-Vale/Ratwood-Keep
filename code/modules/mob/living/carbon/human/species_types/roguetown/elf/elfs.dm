@@ -11,7 +11,7 @@
 	the elder races as \"Wood-Elves\". Considering their diverse history, it is extremely \
 	difficult for other mortals to even conceive the various intricacies found in elven \
 	society, thanks in no small part to the hundreds if not thousands of tribes that exist \
-	within their culture. Although ancient and complex,Elves tend to be looked poorly upon by \
+	within their culture. Although ancient and complex, Elves tend to be looked poorly upon by \
 	Humens, as historically the two races have been rivals in various conflicts and \
 	territorial disputes. This, however, does not stop many Humens and Elves from forming \
 	relationships, which are capable of producing half-elven children. Elves are known for \
