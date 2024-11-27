@@ -249,10 +249,10 @@
 
 	name = "tossblade belt"
 	desc = "A many-slotted belt meant for tossblades. Little room left over."
-	icon_state = "leather"
-	item_state = "leather"
+	icon_state = "knife"
+	item_state = "knife"
 	strip_delay = 20
-	var/max_storage = 20
+	var/max_storage = 8
 	var/list/arrows = list()
 	sewrepair = TRUE
 	heldz_items = 1
@@ -325,3 +325,22 @@
 		arrows += A
 	update_icon()
 
+/obj/item/storage/belt/rogue/leather/knifebelt/black
+
+	icon_state = "blackknife"
+	item_state = "blackknife"
+
+
+/obj/item/storage/belt/rogue/leather/knifebelt/black/steel/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/rogueweapon/huntingknife/throwingknife/steel/A = new()
+		arrows += A
+	update_icon()
+
+/obj/item/storage/belt/rogue/leather/knifebelt/black/psydon/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/rogueweapon/huntingknife/throwingknife/psydon/A = new()
+		arrows += A
+	update_icon()
