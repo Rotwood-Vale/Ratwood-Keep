@@ -143,7 +143,7 @@
 			if(B.amount < B.maxamount)
 				B.amount++
 				B.update_bundle()
-				user.visible_message("[user] adds [src] to [I].")
+				user.visible_message("[user] adds [src] to [I].", "I add [src] to [I].")
 				qdel(src)
 			else
 				to_chat(user, "I can't add any more sticks to the bundle without it falling apart.")
