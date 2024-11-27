@@ -19,7 +19,7 @@
 
 	display_order = JDO_PRIEST
 	give_bank_account = 115
-	min_pq = 8
+	min_pq = 20 //Priests should know how to play the game.
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
