@@ -41,7 +41,7 @@
 
 /datum/intent/dagger/sucker_punch
 	name = "sucker punch"
-	icon_state = "instrike"
+	icon_state = "inpunch"
 	attack_verb = list("punches", "jabs",)
 	animname = "strike"
 	blade_class = BCLASS_BLUNT

@@ -34,7 +34,7 @@
 
 /datum/intent/axe/bash
 	name = "bash"
-	icon_state = "instrike"
+	icon_state = "inbash"
 	attack_verb = list("bashes", "clubs")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
