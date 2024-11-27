@@ -15249,13 +15249,7 @@
 /area/rogue/under/town/basement)
 "nVB" = (
 /obj/structure/rack/rogue,
-/obj/item/throwing_star/ninja,
-/obj/item/throwing_star/ninja,
-/obj/item/throwing_star/ninja,
-/obj/item/throwing_star/ninja,
-/obj/item/staff/stick{
-	pixel_x = 8
-	},
+/obj/item/storage/belt/rogue/leather/knifebelt/iron,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
 "nVC" = (
@@ -18286,6 +18280,7 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
+/obj/item/rogueweapon/woodstaff,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/shop)
 "qIz" = (

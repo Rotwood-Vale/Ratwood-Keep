@@ -27,6 +27,7 @@
 		/obj/item/clothing/gloves/roguetown/leather = 4,
 		/obj/item/clothing/shoes/roguetown/boots = 4,
 		/obj/item/clothing/shoes/roguetown/boots/leather = 4,
+		/obj/item/storage/belt/rogue/leather/knifebelt/iron = 1,
 
 		// Money
 		/obj/item/roguecoin/copper = 5,
@@ -58,7 +59,7 @@
 		/obj/item/paper = 3,
 		/obj/item/reagent_containers/glass/bowl = 3,
 		/obj/item/storage/bag/tray = 3,
-		/obj/item/mundane/puzzlebox/medium = 1,
+		/obj/item/mundane/puzzlebox/medium = 2,
 		/obj/item/mundane/puzzlebox/easy = 2,
 
 		//medical
