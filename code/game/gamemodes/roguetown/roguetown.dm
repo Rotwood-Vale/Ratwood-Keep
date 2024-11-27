@@ -259,7 +259,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					continue
 				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
-				if(get_playerquality(candidate.key) < 15) // Many of these guys vanishing would suck
+				if(get_playerquality(candidate.key) < 15) 
 					continue
 
 				allantags -= candidate
@@ -393,13 +393,11 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	for(var/datum/mind/villain in antag_candidates)
 		if(!remaining)
 			break
-		var/blockme = FALSE
 		if(!(villain in allantags))
-			blockme = TRUE
+			continue
 		if(villain.assigned_role in GLOB.youngfolk_positions)
-			blockme = TRUE
-		if(blockme)
-			return
+			continue
+		if(get_playerquality(villain.key) < 30)
 		allantags -= villain
 		pre_cultists += villain
 		villain.special_role = "cultist"
@@ -444,15 +442,16 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	var/datum/mind/lichman = pick_n_take(antag_candidates)
 	if(lichman)
 		if(!(lichman in allantags))
-			return
+			continue
 		if(get_playerquality(lichman.key) < 60)
-			return
+			continue
 		allantags -= lichman
 		pre_liches += lichman
 		lichman.special_role = ROLE_LICH
 		lichman.restricted_roles = restricted_jobs.Copy()
 		testing("[key_name(lichman)] has been selected as the [lichman.special_role]")
 		log_game("[key_name(lichman)] has been selected as the [lichman.special_role]")
+		break // Only one lich
 	for(var/antag in pre_liches)
 		GLOB.pre_setup_antags |= antag
 	restricted_jobs = list()
@@ -548,15 +547,14 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	for(var/datum/mind/werewolf in antag_candidates)
 		if(!num_werewolves)
 			break
-		var/blockme = FALSE
 		if(!(werewolf in allantags))
-			blockme = TRUE
+			continue
 		if(werewolf.assigned_role in GLOB.noble_positions)
 			continue
 		if(werewolf.assigned_role in GLOB.youngfolk_positions)
-			blockme = TRUE
-		if(blockme)
-			return
+			continue
+		if(get_playerquality(werewolf.key) < 30)
+			continue
 		allantags -= werewolf
 		pre_werewolves += werewolf
 		werewolf.special_role = ROLE_WEREWOLF
