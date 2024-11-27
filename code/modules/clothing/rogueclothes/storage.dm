@@ -319,6 +319,12 @@
 	icon_state = "blackknife"
 	item_state = "blackknife"
 
+/obj/item/storage/belt/rogue/leather/knifebelt/black/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/rogueweapon/huntingknife/throwingknife/A = new()
+		arrows += A
+	update_icon()
 
 /obj/item/storage/belt/rogue/leather/knifebelt/black/steel/Initialize()
 	. = ..()
