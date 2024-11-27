@@ -108,7 +108,7 @@
 			amount -= 1
 			var/obj/F = new stacktype(src.loc)
 			H.put_in_hands(F)
-			user.visible_message("[user] removes [F] from [src]")
+			user.visible_message("[user] removes [F] from [src].", "I remove [F] from [src].")
 	update_bundle()
 
 /obj/item/natural/bundle/examine(mob/user)
