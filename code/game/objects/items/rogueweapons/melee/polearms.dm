@@ -331,8 +331,10 @@
 	name = "zweihander"
 	desc = "This is much longer than a common greatsword, and well balanced too!"
 	icon_state = "zwei"
+	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
 	wdefense = 4
+
 
 /datum/intent/sword/cut/zwei
 	reach = 2
