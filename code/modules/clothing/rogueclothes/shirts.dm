@@ -182,7 +182,7 @@
 	color = COLOR_GRAY
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/newmoon
-	color = "#486581"
+	color = "#78a3c9"
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/random/Initialize()
 	color = pick(CLOTHING_PURPLE, CLOTHING_RED, CLOTHING_BLUE, CLOTHING_GREEN)

@@ -50,7 +50,7 @@
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon
-	color = "#486581"
+	color = "#78a3c9"
 	
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
