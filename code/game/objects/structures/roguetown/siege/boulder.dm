@@ -38,7 +38,7 @@
     // Create a shrapnel component for this instance of the boulder
 	var/datum/component/shrapnel/shrapnel_effect = new /datum/component/shrapnel()
 	var/turf/origin_turf = get_turf(src)
-	var/boomchannel = SSsounds.random_available_channel()
+	//var/boomchannel = SSsounds.random_available_channel() //enable this when TG sound gets added
 	var/sound/far_explosion_sound = sound(pick('sound/catapult/explosion_distant.ogg',
 	'sound/catapult/explosion_distant2.ogg','sound/catapult/explosion_distant3.ogg', 'sound/catapult/explosion_distant4.ogg'))
 	shrapnel_effect.projectile_type = /obj/projectile/rock_shard // Define the type of shrapnel
@@ -59,7 +59,8 @@
 		if(isbrain(player))
 			continue
 		if(distance > 20)
-			player.playsound_local(get_turf(player), far_explosion_sound, 100, FALSE, pressure_affected = FALSE, channel = boomchannel)
+			//player.playsound_local(get_turf(player), far_explosion_sound, 100, FALSE, pressure_affected = FALSE, channel = boomchannel) //enable this when TG sound gets added
+			player.playsound_local(get_turf(player), far_explosion_sound, 100, FALSE, pressure_affected = FALSE)
 
 /obj/projectile/rock_shard
 	name = "rock shard"
