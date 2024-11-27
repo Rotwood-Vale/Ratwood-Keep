@@ -291,17 +291,6 @@
 		else
 			to_chat(loc, span_warning("Full!"))
 		return
-/*
-	if(istype(A, /obj/item/gun/ballistic/revolver/grenadelauncher/bow))
-		var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/B = A
-		if(arrows.len && !B.chambered)
-			for(var/AR in arrows)
-				if(istype(AR, /obj/item/ammo_casing/caseless/rogue/arrow))
-					arrows -= AR
-					B.attackby(AR, loc, params)
-					break
-*/
-		return
 	..()
 
 /obj/item/storage/belt/rogue/leather/knifebelt/attack_right(mob/user)
