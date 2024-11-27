@@ -64,18 +64,6 @@
 	icon_state = "eyepatch_l"
 	block2add = FOV_LEFT
 
-/obj/item/clothing/mask/rogue/blindfold
-	name = "blindfold"
-	desc = "See no evil."
-	icon_state = "blindfold"
-	max_integrity = 10
-	integrity_failure = 0.5
-	body_parts_covered = EYES
-	sewrepair = TRUE
-	salvage_amount = 1
-	tint = 3
-	darkness_view = 1
-
 /obj/item/clothing/mask/rogue/lordmask
 	name = "golden halfmask"
 	desc = "Half of your face turned gold."
