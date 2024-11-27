@@ -647,7 +647,7 @@
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/sewing/nmjacket
-	name = "dress (chemise, silk) - (2 hides, 3 cloths, 2 silks; LOOM, amulet of noc, EXPERT)"
+	name = "dress (chemise, silk) - (2 hides, 3 cloths, 2 silks, amulet of noc, EXPERT)"
 	result = list (/obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 2,
