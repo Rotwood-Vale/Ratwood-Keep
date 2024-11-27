@@ -66,13 +66,13 @@
 					user.put_in_hands(H)
 					qdel(B)
 			else
-				to_chat(user, "You add the [W] to the [src].")
+				to_chat(user, "I add the [W] to the [src].")
 				src.amount += B.amount
 				update_bundle()
 				qdel(B)
 	else if(istype(W, stacktype))
 		if(src.amount < src.maxamount)
-			to_chat(user, "You add the [W] to the [src].")
+			to_chat(user, "I add the [W] to the [src].")
 			src.amount++
 			qdel(W)
 		else
