@@ -53,7 +53,7 @@
 #define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
 #define TRAIT_CHOSEN "Astrata's Chosen"
-#define TRAIT_NOCTURNAL "Noc's Moonlight" //Grants darkvision, amplified for mages using the spell
+#define TRAIT_NOCTURNAL "Noc's Moonlight" //Grants weak darkvision- lighting alpha 145, amplified for mages using the DV spell- alpha 200
 
 #define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
 #define TRAIT_BASHDOORS "bashdoors"
@@ -381,7 +381,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 // unique trait sources, still defines
 #define TRAIT_DARKVISION "darkvision"
-#define TRAIT_DARKVISION_SPELL "darkvisionspellref"
 #define TRAIT_DARKVISION_BETTER "darkvisionbetter"
 #define CLONING_POD_TRAIT "cloning-pod"
 #define STATUE_MUTE "statue"
