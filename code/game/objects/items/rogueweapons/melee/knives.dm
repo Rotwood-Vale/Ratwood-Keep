@@ -342,6 +342,8 @@
 	icon_state = "throw_knifei"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 25, "embedded_fall_chance" = 10)
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/chop)
+	smeltresult = null
+	sellprice = 1
 
 /obj/item/rogueweapon/huntingknife/throwingknife/steel
 	name = "steel tossblade"
@@ -354,6 +356,8 @@
 	wdefense = 1
 	icon_state = "throw_knifes"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 5)
+	smeltresult = null
+	sellprice = 2
 
 /obj/item/rogueweapon/huntingknife/throwingknife/psydon
 	name = "psydonian tossblade"
@@ -367,5 +371,5 @@
 	icon_state = "throw_knifep"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0)
 	is_silver = TRUE
-	sellprice = 10
+	sellprice = 6
 	smeltresult = /obj/item/ingot/silver

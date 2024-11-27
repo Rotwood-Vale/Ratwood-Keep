@@ -26710,9 +26710,6 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
-"ylq" = (
-/turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/outdoors/town)
 "ylI" = (
 /obj/structure/table/church{
 	icon_state = "churchtable_end"
@@ -59624,7 +59621,7 @@ pXr
 gog
 gog
 uEE
-ylq
+hvn
 hvn
 nyR
 rxw
