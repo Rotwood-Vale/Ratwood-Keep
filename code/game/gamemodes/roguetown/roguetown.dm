@@ -179,7 +179,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		if(4)
 			log_game("Major Antagonist: None")
 
-	if(prob(70))
+	if(prob(80))
 		pick_bandits()
 		log_game("Minor Antagonist: Bandit")
 
@@ -259,7 +259,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					continue
 				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
-				if(get_playerquality(candidate.key) < 15) 
+				if(get_playerquality(candidate.key) < 10) 
 					continue
 
 				allantags -= candidate
@@ -355,7 +355,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	for(var/datum/mind/villain in antag_candidates)
 		if(!(villain in allantags))
 			continue
-		if(get_playerquality(villain.key) < 70)
+		if(get_playerquality(villain.key) < 50)
 			continue
 		allantags -= villain
 		pre_villains += villain
@@ -397,7 +397,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 			continue
 		if(villain.assigned_role in GLOB.youngfolk_positions)
 			continue
-		if(get_playerquality(villain.key) < 30)
+		if(get_playerquality(villain.key) < 20)
 			continue
 		allantags -= villain
 		pre_cultists += villain
@@ -443,7 +443,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	for(var/datum/mind/lichman in antag_candidates)
 		if(!(lichman in allantags))
 			continue
-		if(get_playerquality(lichman.key) < 60)
+		if(get_playerquality(lichman.key) < 35)
 			continue
 		allantags -= lichman
 		pre_liches += lichman
@@ -488,7 +488,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	for(var/datum/mind/vampire in antag_candidates)
 		if(!vampsremaining)
 			break
-		if(get_playerquality(vampire.key) < 30)
+		if(get_playerquality(vampire.key) < 20)
 			continue
 		if(!(vampire in allantags))
 			continue
@@ -553,7 +553,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 			continue
 		if(werewolf.assigned_role in GLOB.youngfolk_positions)
 			continue
-		if(get_playerquality(werewolf.key) < 30)
+		if(get_playerquality(werewolf.key) < 20)
 			continue
 		allantags -= werewolf
 		pre_werewolves += werewolf
