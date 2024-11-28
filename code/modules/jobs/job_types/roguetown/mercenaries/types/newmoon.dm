@@ -5,7 +5,8 @@
 	allowed_races = list(
 		/datum/species/tabaxi,
 		/datum/species/elf/wood,
-		/datum/species/demihuman
+		/datum/species/demihuman,
+		/datum/species/tieberian
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/newmoon
 	maximum_possible_slots = 3
