@@ -612,3 +612,35 @@
 	max_integrity = 200
 	dropshrink = 0.80
 	wdefense = 2
+/obj/item/rogueweapon/sword/sabre_freeze
+	name = "Freezing Sabre"
+	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
+	icon_state = "saber_freeze"
+	max_integrity = 150
+	possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze, /datum/intent/sword/freeze)
+	gripped_intents = null
+	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 5
+	wdefense = 3
+	wbalance = 1
+	damtype = BURN
+	light_range = 1
+	light_power = 2
+	light_color = LIGHT_COLOR_BLUE
+/datum/intent/sword/freeze
+	name = "strike"
+	icon_state = "instrike"
+	attack_verb = list("freezes")
+	animname = "chop"
+	hitsound = list('sound/combat/hits/pick/genpick (1).ogg')
+	penfactor = 20
+	swingdelay = 6
+	damfactor = 1.2
+	blade_class = BCLASS_BURN	
+/datum/intent/sword/cut/sabre/freeze
+	clickcd = 10
+	damfactor = 0.85
+/datum/intent/sword/thrust/freeze
+	clickcd = 10
+	damfactor = 0.85

@@ -99,6 +99,18 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define isgoblinp(A) (is_species(A, /datum/species/goblinp))
 #define isseelie(A) (is_species(A, /datum/species/seelie))
 
+//furry species
+#define isakula(A) (is_species(A, /datum/species/akula))
+#define isanthromorph(A) (is_species(A, /datum/species/anthromorph))
+#define isanthromorphsmall(A) (is_species(A, /datum/species/anthromorphsmall))
+#define isdemihuman(A) (is_species(A, /datum/species/demihuman))
+#define isdracon(A) (is_species(A, /datum/species/dracon))
+#define iskobold(A) (is_species(A, /datum/species/kobold))
+#define islizardfolk(A) (is_species(A, /datum/species/lizardfolk))
+#define islupian(A) (is_species(A, /datum/species/lupian))
+#define istabaxi(A) (is_species(A, /datum/species/tabaxi))
+#define isvulpkanin(A) (is_species(A, /datum/species/vulpkanin))
+
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))
 
