@@ -4524,6 +4524,10 @@
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter/town)
+"dBr" = (
+/obj/effect/landmark/start/gravedigger,
+/turf/open/floor/rogue/churchrough,
+/area/rogue/indoors/town/church/chapel)
 "dBG" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/red,
 /area/rogue/indoors/town/church)
@@ -8528,6 +8532,15 @@
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/bath)
+"gEH" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 1
+	},
+/obj/effect/landmark/start/orphan{
+	dir = 4
+	},
+/turf/open/floor/rogue/churchrough,
+/area/rogue/indoors/town/church/chapel)
 "gFE" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors/town/church/chapel)
@@ -13128,6 +13141,7 @@
 /area/rogue/outdoors/town)
 "khr" = (
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/effect/landmark/start/puritan,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "khC" = (
@@ -23613,6 +23627,12 @@
 /obj/structure/guillotine,
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/town)
+"suK" = (
+/obj/effect/landmark/start/orphan{
+	dir = 4
+	},
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church/chapel)
 "svc" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
@@ -23707,6 +23727,7 @@
 	dir = 9
 	},
 /obj/structure/roguemachine/atm,
+/obj/effect/landmark/start/gravedigger,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "sxR" = (
@@ -28305,6 +28326,13 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"vZQ" = (
+/obj/structure/fluff/walldeco/church/line,
+/obj/effect/landmark/start/orphan{
+	dir = 4
+	},
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church/chapel)
 "vZW" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -28762,6 +28790,12 @@
 	icon_state = "tile"
 	},
 /area/rogue/indoors/town/tavern)
+"wtd" = (
+/obj/effect/landmark/start/puritan{
+	dir = 1
+	},
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church/chapel)
 "wto" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/generic,
@@ -30573,6 +30607,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
+/obj/effect/landmark/start/gravedigger,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "xKW" = (
@@ -423632,13 +423667,13 @@ bsv
 dGr
 dGr
 ntK
-ntK
-ujc
+suK
+vZQ
 swm
 nhW
 swm
-bsv
-ntK
+gEH
+suK
 ntK
 eBR
 ntK
@@ -424434,7 +424469,7 @@ sKD
 uPB
 bRf
 bRf
-dGr
+dBr
 tCM
 bUY
 ijH
@@ -425651,7 +425686,7 @@ ygx
 bUY
 msg
 ntK
-ntK
+wtd
 lkJ
 eFH
 qOH
