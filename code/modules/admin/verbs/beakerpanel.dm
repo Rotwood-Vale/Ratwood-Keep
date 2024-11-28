@@ -21,16 +21,6 @@
 			var/obj/item/reagent_containers/container = beaker_panel_create_container(containerdata, get_turf(usr))
 			log_game("[key_name(usr)] spawned a [container] containing [pretty_string_from_reagent_list(container.reagents.reagent_list)]")
 
-/datum/admins/proc/beaker_panel_prep_assembly(obj/item/assembly/towrap, grenade)
-	var/obj/item/assembly/igniter/igniter = new
-	igniter.secured = FALSE
-	var/obj/item/assembly_holder/assholder = new(grenade)
-	towrap.forceMove(assholder)
-	igniter.forceMove(assholder)
-	assholder.assemble(igniter, towrap, usr)
-	assholder.master = grenade
-	return assholder
-
 /datum/admins/proc/beaker_panel_create_container(list/containerdata, location)
 	var/containertype = text2path(containerdata["container"])
 	var/obj/item/reagent_containers/container =  new containertype(location)

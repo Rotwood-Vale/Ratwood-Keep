@@ -166,20 +166,6 @@ All ShuttleMove procs go here
 /area/proc/lateShuttleMove()
 	return
 
-/************************************Turf move procs************************************/
-
-/************************************Area move procs************************************/
-
-
-/************************************Item move procs************************************/
-
-/obj/item/storage/pod/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
-	. = ..()
-	// If the pod was launched, the storage will always open. The reserved_level check
-	// ignores the movement of the shuttle from the transit level to
-	// the station as it is loaded in.
-	if (oldT && !is_reserved_level(oldT.z))
-		unlocked = TRUE
 
 /************************************Mob move procs************************************/
 
@@ -224,10 +210,6 @@ All ShuttleMove procs go here
 	. = ..()
 	if(. & MOVE_AREA)
 		. |= MOVE_CONTENTS
-
-/obj/structure/disposalpipe/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
-	. = ..()
-	update()
 
 /obj/structure/shuttle/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()

@@ -19,7 +19,6 @@
 	var/shapeshift_type
 	var/list/possible_shapes = list(/mob/living/simple_animal/mouse,\
 		/mob/living/simple_animal/pet/dog/corgi,\
-		/mob/living/simple_animal/hostile/carp/ranged/chaos,\
 		/mob/living/simple_animal/hostile/poison/giant_spider/hunter/viper,\
 		/mob/living/simple_animal/hostile/construct/armored)
 

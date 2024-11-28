@@ -729,45 +729,14 @@
 	else
 		. = "unknown"
 
-
-// attempts to locate /obj/machinery/computer/shuttle with matching ID inside the shuttle
-/obj/docking_port/mobile/proc/getControlConsole()
-	for(var/place in shuttle_areas)
-		var/area/shuttle/shuttle_area = place
-		for(var/obj/machinery/computer/shuttle/S in shuttle_area)
-			if(S.shuttleId == id)
-				return S
-	return null
-
 /obj/docking_port/mobile/proc/hyperspace_sound(phase, list/areas)
-/*	var/selected_sound
-	switch(phase)
-		if(HYPERSPACE_WARMUP)
-			selected_sound = "hyperspace_begin"
-		if(HYPERSPACE_LAUNCH)
-			selected_sound = "hyperspace_progress"
-		if(HYPERSPACE_END)
-			selected_sound = "hyperspace_end"
-		else
-			CRASH("Invalid hyperspace sound phase: [phase]")*/
+
 	// This previously was played from each door at max volume, and was one of the worst things I had ever seen.
 	// Now it's instead played from the nearest engine if close, or the first engine in the list if far since it doesn't really matter.
 	// Or a door if for some reason the shuttle has no engine, fuck oh hi daniel fuck it
 	var/range = (engine_coeff * max(width, height))
 	var/long_range = range * 2.5
 	var/atom/distant_source
-//	if(engine_list[1])
-//		distant_source = engine_list[1]
-//	else
-//		for(var/A in areas)
-//			distant_source = locate(/obj/machinery/door) in A
-//			if(distant_source)
-//				break
-
-	for(var/A in areas)
-		distant_source = locate(/obj/structure/boatbell) in A
-		if(distant_source)
-			break
 
 	if(distant_source)
 		for(var/mob/M in SSmobs.clients_by_zlevel[z])

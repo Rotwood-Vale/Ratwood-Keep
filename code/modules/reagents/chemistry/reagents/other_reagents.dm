@@ -977,9 +977,6 @@
 		for(var/obj/effect/decal/cleanable/C in T)
 			qdel(C)
 
-		for(var/mob/living/simple_animal/slime/M in T)
-			M.adjustToxLoss(rand(5,10))
-
 /datum/reagent/space_cleaner/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(method == TOUCH || method == VAPOR)
 		M.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
@@ -1058,17 +1055,6 @@
 	if(prob(10))
 		M.emote("drool")
 	..()
-
-/datum/reagent/nanomachines
-	name = "Nanomachines"
-	description = "Microscopic construction robots."
-	color = "#535E66" // rgb: 83, 94, 102
-	can_synth = FALSE
-	taste_description = "sludge"
-
-/datum/reagent/nanomachines/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
-	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
-		L.ForceContractDisease(new /datum/disease/transformation/robot(), FALSE, TRUE)
 
 /datum/reagent/fungalspores
 	name = "Tubercle bacillus Cosmosis microbes"

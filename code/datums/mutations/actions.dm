@@ -1,15 +1,3 @@
-/datum/mutation/human/telepathy
-	name = "Telepathy"
-	desc = ""
-	quality = POSITIVE
-	text_gain_indication = span_notice("I can hear my own voice echoing in my mind!")
-	text_lose_indication = span_notice("I don't hear my mind echo anymore.")
-	difficulty = 12
-	power = /obj/effect/proc_holder/spell/targeted/telepathy
-	instability = 10
-	energy_coeff = 1
-
-
 /datum/mutation/human/olfaction
 	name = "Transcendent Olfaction"
 	desc = ""

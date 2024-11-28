@@ -23,8 +23,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 	//items that shouldn't spawn on the floor because they would bug or act weird
 	var/static/list/spawn_forbidden = list(
 		/obj/item/tk_grab, /obj/item/implant, // not implanter, the actual thing that is inside you
-		/obj/item/assembly, /obj/item/onetankbomb,
-		/obj/item/smallDelivery, /obj/projectile)
+		/obj/projectile)
 
 /datum/hSB/proc/update()
 	var/static/list/hrefs = list(
@@ -49,15 +48,9 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Spawn Airlock"						= "hsbairlock",
 
 			"Miscellaneous",
-			"Spawn Air Scrubber"				= "hsbscrubber",
 			"Spawn Welding Fuel Tank"			= "hsbspawn&path=[/obj/structure/reagent_dispensers/fueltank]",
-			"Spawn Water Tank"					= "hsbspawn&path=[/obj/structure/reagent_dispensers/watertank]",
+			"Spawn Water Tank"					= "hsbspawn&path=[/obj/structure/reagent_dispensers/watertank]")
 
-			"Bots",
-
-			"Canisters",
-			"Spawn O2 Canister" 				= "hsbspawn&path=[/obj/machinery/portable_atmospherics/canister/oxygen]",
-			"Spawn Air Canister"				= "hsbspawn&path=[/obj/machinery/portable_atmospherics/canister/air]")
 
 
 	if(!hsbinfo)
@@ -66,11 +59,6 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			hsbinfo += "<b>Administration</b><br>"
 			hsbinfo += "- <a href='?src=[REF(src)];hsb=hsbtobj'>Toggle Object Spawning</a><br>"
 			hsbinfo += "- <a href='?src=[REF(src)];hsb=hsbtac'>Toggle Item Spawn Panel Auto-close</a><br>"
-			hsbinfo += "<b>Canister Spawning</b><br>"
-			hsbinfo += "- <a href='?src=[REF(src)];hsb=hsbspawn&path=[/obj/machinery/portable_atmospherics/canister/toxins]'>Spawn Plasma Canister</a><br>"
-			hsbinfo += "- <a href='?src=[REF(src)];hsb=hsbspawn&path=[/obj/machinery/portable_atmospherics/canister/carbon_dioxide]'>Spawn CO2 Canister</a><br>"
-			hsbinfo += "- <a href='?src=[REF(src)];hsb=hsbspawn&path=[/obj/machinery/portable_atmospherics/canister/nitrogen]'>Spawn Nitrogen Canister</a><br>"
-			hsbinfo += "- <a href='?src=[REF(src)];hsb=hsbspawn&path=[/obj/machinery/portable_atmospherics/canister/nitrous_oxide]'>Spawn N2O Canister</a><hr>"
 		else
 			hsbinfo += "<i>Some item spawning may be disabled by the administrators.</i><br>"
 			hsbinfo += "<i>Only administrators may spawn dangerous canisters.</i><br>"
@@ -131,7 +119,6 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					P.wear_armor.layer = initial(P.wear_armor.layer)
 					P.wear_armor.plane = initial(P.wear_armor.plane)
 					P.wear_armor = null
-				P.wear_armor = new/obj/item/clothing/suit/space(P)
 				P.wear_armor.layer = ABOVE_HUD_LAYER
 				P.wear_armor.plane = ABOVE_HUD_PLANE
 				P.update_inv_wear_suit()
@@ -163,10 +150,6 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 				P.update_inv_back()
 				P.internal = P.back
 				P.update_internals_hud_icon(1)
-
-			if("hsbscrubber") // This is beyond its normal capability but this is sandbox and you spawned one, I assume you need it
-				var/obj/hsb = new/obj/machinery/portable_atmospherics/scrubber{volume_rate=50*ONE_ATMOSPHERE;on=1}(usr.loc)
-				hsb.update_icon() // hackish but it wasn't meant to be spawned I guess?
 
 			//
 			// Stacked Materials

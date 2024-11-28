@@ -581,9 +581,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 	set hidden = 1
 	set src = usr
 
-	if(ismecha(loc))
-		return
-
 	if(incapacitated())
 		return
 

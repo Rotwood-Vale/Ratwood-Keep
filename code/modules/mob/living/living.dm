@@ -1428,9 +1428,6 @@
 /mob/living/proc/update_stamina()
 	return
 
-/mob/living/carbon/alien/update_stamina()
-	return
-
 /mob/living/proc/owns_soul()
 	if(mind)
 		return mind.soulOwner == mind
@@ -1796,7 +1793,6 @@
 			AT.get_remote_view_fullscreens(src)
 		else
 			clear_fullscreen("remote_view", 0)
-		update_pipe_vision()
 
 /mob/living/update_mouse_pointer()
 	..()

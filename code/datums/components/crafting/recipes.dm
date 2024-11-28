@@ -86,19 +86,6 @@
 	category = CAT_NONE
 	subcategory = CAT_NONE
 
-/datum/crafting_recipe/flamethrower
-	name = "Flamethrower"
-	result = /obj/item/flamethrower
-	reqs = list(/obj/item/weldingtool = 1,
-				/obj/item/assembly/igniter = 1,
-				/obj/item/stack/rods = 1)
-	parts = list(/obj/item/assembly/igniter = 1,
-				/obj/item/weldingtool = 1)
-	tools = list(TOOL_SCREWDRIVER)
-	time = 10
-	category = CAT_NONE
-	subcategory = CAT_NONE
-
 /datum/crafting_recipe/dragonsbreath
 	name = "Dragonsbreath Shell"
 	result = /obj/item/ammo_casing/shotgun/dragonsbreath
@@ -175,14 +162,6 @@
 	reqs = list(/obj/item/stack/sheet/metal = 4,
 				/obj/item/stack/rods = 6)
 	time = 100
-	category = CAT_NONE
-
-/datum/crafting_recipe/mousetrap
-	name = "Mouse Trap"
-	result = /obj/item/assembly/mousetrap
-	time = 10
-	reqs = list(/obj/item/stack/sheet/cardboard = 1,
-				/obj/item/stack/rods = 1)
 	category = CAT_NONE
 
 /datum/crafting_recipe/papersack
