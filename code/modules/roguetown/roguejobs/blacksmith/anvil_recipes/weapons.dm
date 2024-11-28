@@ -414,3 +414,19 @@
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem)
 	created_item = /obj/item/rogueweapon/sword/long/blackflamb
 	craftdiff = 5
+
+
+/datum/anvil_recipe/weapons/swarhammer
+	name = "Warhammer (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/mace/warhammer/steel
+	craftdiff = 2
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/warhammer
+	name = "Warhammer (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/mace/warhammer
+	i_type = "Weapons"

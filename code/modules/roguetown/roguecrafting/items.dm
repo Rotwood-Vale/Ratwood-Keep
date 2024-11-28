@@ -724,3 +724,14 @@
 				/obj/item/cart_upgrade/level_1 = 1,
 				/obj/item/ingot/iron = 1)
 	craftdiff = 4
+
+
+/datum/crafting_recipe/roguetown/heatershield
+	name = "heater shield"
+	result = /obj/item/rogueweapon/shield/heater/crafted
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/hide = 1)
+	skillcraft = /datum/skill/craft/carpentry
+
+/obj/item/rogueweapon/shield/heater/crafted
+	sellprice = 6
