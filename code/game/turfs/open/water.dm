@@ -86,8 +86,6 @@
 				var/drained = max(15 - (user.mind.get_skill_level(/datum/skill/misc/swimming) * 5), 1)
 				if(ishuman(user))
 					drained += (FM.worn_armor_class * 2)
-				if(!user.check_armor_skill())
-					drained += 40
 				if(!user.rogfat_add(drained))
 					user.Immobilize(30)
 					addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, Knockdown), 30), 10)

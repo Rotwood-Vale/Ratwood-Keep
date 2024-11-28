@@ -154,7 +154,6 @@
 			H.adjust_hydration(hydration)
 		if(M.blood_volume < BLOOD_VOLUME_NORMAL)
 			M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_NORMAL)
-		M.rogfat_add(hydration * -1)
 	..()
 
 /datum/reagent/water/gross
@@ -299,7 +298,6 @@
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			H.adjust_hydration(hydration)
-		H.rogfat_add(hydration * -1)
 	if(!data)
 		data = 1
 	data++

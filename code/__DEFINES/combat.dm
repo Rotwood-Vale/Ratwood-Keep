@@ -184,7 +184,6 @@
 #define BCLASS_CHOP			"chopping"
 #define BCLASS_STAB			"stabbing"
 #define BCLASS_PICK			"stab"
-#define BCLASS_ASSASSIN		"piercing"
 #define BCLASS_TWIST		"twist"
 #define BCLASS_PUNCH		"punch"
 #define BCLASS_BITE			"bite"

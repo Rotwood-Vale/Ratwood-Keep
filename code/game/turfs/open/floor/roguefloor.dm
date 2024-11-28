@@ -210,8 +210,6 @@
 				var/mob/living/L = user
 				if(!L.cmode)
 					returned = max(returned-2, 0)
-	if(ishuman(FM) && returned > 0)
-		FM.rogfat_add(1 * FM.worn_armor_class)
 	return returned
 
 

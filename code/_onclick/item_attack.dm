@@ -126,12 +126,10 @@
 			if(!user.used_intent.swingdelay)
 				user.do_attack_animation(M, visual_effect_icon = user.used_intent.animname)
 			return
-	if(user.rmb_intent)
-		user.rogfat_add(5)
-		if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-			user.rogfat_add(5)
-		if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-			user.rogfat_add(3)
+	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
+		user.rogfat_add(10)
+	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
+		user.rogfat_add(10)
 	if(M.checkdefense(user.used_intent, user))
 		if(M.d_intent == INTENT_PARRY)
 			if(!M.get_active_held_item() && !M.get_inactive_held_item()) //we parried with a bracer, redirect damage
