@@ -67,6 +67,7 @@
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	swingdelay = 0
 	item_d_type = "slash"
+	ican_cdg = TRUE
 
 /datum/intent/sword/thrust
 	name = "stab"
@@ -79,6 +80,7 @@
 	chargetime = 0
 	swingdelay = 0
 	item_d_type = "stab"
+	ican_cdg = TRUE
 
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
@@ -90,6 +92,7 @@
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
 	wdefense = 4
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/long
 	force = 25
@@ -397,6 +400,7 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 100
 	sellprice = 10
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/iron/short
 	name = "short sword"
@@ -430,6 +434,7 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 2
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/iron/messer/steel
 	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.

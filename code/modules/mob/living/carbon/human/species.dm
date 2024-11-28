@@ -1599,7 +1599,21 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //	var/armor_block = H.run_armor_check(affecting, "I.d_type", span_notice("My armor has protected my [hit_area]!"), span_warning("My armor has softened a hit to my [hit_area]!"),pen)
 
 	var/Iforce = get_complex_damage(I, user) //to avoid runtimes on the forcesay checks at the bottom. Some items might delete themselves if you drop them. (stunning yourself, ninja swords)
-	var/armor_block = H.run_armor_check(selzone, I.d_type, "", "",pen, damage = Iforce, blade_dulling=user.used_intent.blade_class)
+
+	var/blade_class = user.used_intent?.blade_class
+	if(get_dir(user, H) == H.dir && H.pulledby == user && user.grab_state >= GRAB_AGGRESSIVE)	//Check for Assassination
+		if(I.can_assin && user.used_intent.ican_assin)
+			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))				//Skill check, 15-95%
+				blade_class = BCLASS_ASSASSIN
+				pen = 100
+
+	if(!get_dist(user, H) && H.pulledby == user && user.grab_state >= GRAB_AGGRESSIVE)			//Check for Coup de Grace
+		if(I.can_cdg && user.used_intent.ican_cdg)
+			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))				//Skill check, 15-95%
+				blade_class = BCLASS_ASSASSIN
+				pen = 100
+
+	var/armor_block = H.run_armor_check(selzone, I.d_type, "", "",pen, damage = Iforce, blade_dulling=blade_class)
 
 	var/nodmg = FALSE
 
@@ -1614,7 +1628,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(I)
 				I.take_damage(1, BRUTE, I.d_type)
 		if(!nodmg)
-			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(user.used_intent.blade_class, (Iforce * weakness) * ((100-(armor_block+armor))/100), user, selzone, crit_message = TRUE)
+			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(blade_class, (Iforce * weakness) * ((100-(armor_block+armor))/100), user, selzone, crit_message = TRUE)
 			if(should_embed_weapon(crit_wound, I))
 				var/can_impale = TRUE
 				if(!affecting)
@@ -1639,7 +1653,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//dismemberment
 	var/bloody = 0
 	var/probability = I.get_dismemberment_chance(affecting, user)
-	if(affecting.brute_dam && prob(probability) && affecting.dismember(I.damtype, user.used_intent?.blade_class, user, selzone))
+	if(affecting.brute_dam && prob(probability) && affecting.dismember(I.damtype, blade_class, user, selzone))
 		bloody = 1
 		I.add_mob_blood(H)
 		user.update_inv_hands()
