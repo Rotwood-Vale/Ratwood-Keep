@@ -1601,15 +1601,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/Iforce = get_complex_damage(I, user) //to avoid runtimes on the forcesay checks at the bottom. Some items might delete themselves if you drop them. (stunning yourself, ninja swords)
 
 	var/blade_class = user.used_intent?.blade_class
-	if(get_dir(user, H) == H.dir && H.pulledby == user && user.grab_state >= GRAB_AGGRESSIVE)	//Check for Assassination
+	if(get_dir(user, H) == H.dir && H.pulledby == user)							//Check for Assassination
 		if(I.can_assin && user.used_intent.ican_assin)
-			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))				//Skill check, 15-95%
+			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))		//Skill check, 15-95%
 				blade_class = BCLASS_ASSASSIN
 				pen = 100
 
-	if(!get_dist(user, H) && H.pulledby == user && user.grab_state >= GRAB_AGGRESSIVE)			//Check for Coup de Grace
+	if(!get_dist(user, H) && H.pulledby == user)								//Check for Coup de Grace
 		if(I.can_cdg && user.used_intent.ican_cdg)
-			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))				//Skill check, 15-95%
+			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))		//Skill check, 15-95%
 				blade_class = BCLASS_ASSASSIN
 				pen = 100
 
