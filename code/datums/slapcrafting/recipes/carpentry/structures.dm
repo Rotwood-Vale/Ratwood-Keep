@@ -84,13 +84,14 @@
 		/datum/slapcraft_step/item/small_log,
 		/datum/slapcraft_step/use_item/carpentry/hammer
 		)
-	result_type = /obj/structure/chair/wood/rogue/crafted
+	result_type = /obj/structure/chair/wood/rogue/chair3/crafted
 
-/obj/structure/chair/wood/rogue/crafted
-	item_chair = /obj/item/chair/rogue/crafted
+/obj/structure/chair/wood/rogue/chair3/crafted
+	item_chair = /obj/item/chair/rogue/chair3/crafted
+	sellprice = 6
 
-/obj/item/chair/rogue/crafted
-	origin_type = /obj/structure/chair/wood/rogue/crafted
+/obj/item/chair/rogue/chair3/crafted
+	origin_type = /obj/structure/chair/wood/rogue/chair3/crafted
 	sellprice = 6
 
 /datum/slapcraft_recipe/carpentry/structure/fancychair
@@ -104,6 +105,7 @@
 
 /obj/structure/chair/wood/rogue/fancy/crafted
 	item_chair = /obj/item/chair/rogue/fancy/crafted
+	sellprice = 12
 
 /obj/item/chair/rogue/fancy/crafted
 	origin_type = /obj/structure/chair/wood/rogue/fancy/crafted
@@ -119,6 +121,7 @@
 
 /obj/structure/chair/stool/rogue/crafted
 	item_chair = /obj/item/chair/stool/bar/rogue/crafted
+	sellprice = 6
 
 /obj/item/chair/stool/bar/rogue/crafted
 	origin_type = /obj/structure/chair/stool/rogue/crafted
