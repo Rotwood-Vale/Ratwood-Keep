@@ -85,7 +85,7 @@
 		))))
 	if(!capped_pre && capped_post && !silent)
 		to_chat(mind.current, span_nicegreen(pick(list(
-			"My [lowertext(skillref.name)] is not gonna get any better without some rest...",
+			"My [lowertext(skillref.name)] can no longer improve without some rest and meditation...",
 		))))
 
 /datum/sleep_adv/proc/advance_cycle()

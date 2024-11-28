@@ -66,13 +66,13 @@
 					user.put_in_hands(H)
 					qdel(B)
 			else
-				to_chat(user, "You add the [W] to the [src].")
+				to_chat(user, "I add the [W] to the [src].")
 				src.amount += B.amount
 				update_bundle()
 				qdel(B)
 	else if(istype(W, stacktype))
 		if(src.amount < src.maxamount)
-			to_chat(user, "You add the [W] to the [src].")
+			to_chat(user, "I add the [W] to the [src].")
 			src.amount++
 			qdel(W)
 		else
@@ -108,7 +108,7 @@
 			amount -= 1
 			var/obj/F = new stacktype(src.loc)
 			H.put_in_hands(F)
-			user.visible_message("[user] removes [F] from [src]")
+			user.visible_message("[user] removes [F] from [src].", "I remove [F] from [src].")
 	update_bundle()
 
 /obj/item/natural/bundle/examine(mob/user)

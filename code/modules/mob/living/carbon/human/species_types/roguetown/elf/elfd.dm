@@ -5,14 +5,22 @@
 	name = "Dark Elf"
 	id = "elfd"
 	desc = "<b>Dark Elf</b><br>\
-	Elves, are a generic term for tall, pointy-eared humanoids\
-    Of whom trace their original heritage to the ancient mysterious Snow Elves. \
-	These ones are of a dark complexion and originate mostly from the underdark. \
-    Their culture and entire lives normally involve serving the evil gods of the inhumen pantheon. \
-    Previously rare but in recent times, more and more dark elfs can be seen on the surface. \
-    The ones who aren't overtly cruel and bloodthirsty, tend to flee to the surface lest they get culled by their own society, \
-    while some more sinister ones abandon their cities in search of new and greater power. \
-	+1 Perception"
+	\"Elf\" is a catch-all term used for tall, pointy-eared humanoids who can trace their \
+	heritage to the ancient and mysterious Snow Elves. This species of elf, less frequently \
+	seen, are also referred to by some as \"drow,\" and have several key differences \
+	that set them apart from their more well-known and surface-dwelling kin. Chief among these \
+	differences are their dark complexions and origins from the Underdark; a massive subterranean \
+	landscape made up of a vast network of interconnected caves, caverns and tunnels. In this world \
+	hidden deep beneath the soil are several dark elven cities who exist and function far from the \
+	reaches of the rest of the surface-dwelling societies. These are a large part of what has earned \
+	the dark elves their notoriety, for in these cities the worship of the ascendant pantheon is \
+	normalized, and their cruel and bloodthirsty culture reflects this. It was rare to see dark \
+	elves outside of their underground homes, but in recent years, more and more of them have fled \
+	to the surface. The reasons for each dark elf fleeing the Underdark vary depending on the \
+	individual, such as a kinder heart fleeing from a brutal society that scorns them for their \
+	less cruel nature. However, not every dark elf seen on the surface can be safely assumed as \
+	kind, for some leave the Underdark simply to find their own greater heights of power.<br>\
+	(+1 Perception)"
 
 /*
 	Former RT Desc: These guys were undead which doesn't really fit considering now you have a ton of them walking around.
