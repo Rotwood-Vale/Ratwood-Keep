@@ -616,7 +616,7 @@
 	name = "Freezing Sabre"
 	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
 	icon_state = "saber_freeze"
-	max_integrity = 150
+	max_integrity = 125
 	possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze, /datum/intent/sword/freeze)
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
@@ -625,8 +625,8 @@
 	wdefense = 3
 	wbalance = 1
 	damtype = BURN
-	light_range = 1
-	light_power = 2
+	light_range = 2
+	light_power = 0.5
 	light_color = LIGHT_COLOR_BLUE
 /datum/intent/sword/freeze
 	name = "strike"
