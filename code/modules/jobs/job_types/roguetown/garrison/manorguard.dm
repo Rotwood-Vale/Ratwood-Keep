@@ -104,7 +104,7 @@
 
 // Swords/Daggers + Crossbow/Bow	-	Lighter armor, but ranged and quick-like!
 /datum/advclass/manorguard/boltman
-	name = "Men-at-Arms Boltman"
+	name = "Men-at-Arms Skirmisher"
 	tutorial = "You are a professional soldier of the realm, specializing in ranged implements. You sport a keen eye, looking for your enemies weaknesses."
 	outfit = /datum/outfit/job/roguetown/manorguard/boltman
 
