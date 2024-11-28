@@ -15249,13 +15249,7 @@
 /area/rogue/under/town/basement)
 "nVB" = (
 /obj/structure/rack/rogue,
-/obj/item/throwing_star/ninja,
-/obj/item/throwing_star/ninja,
-/obj/item/throwing_star/ninja,
-/obj/item/throwing_star/ninja,
-/obj/item/staff/stick{
-	pixel_x = 8
-	},
+/obj/item/storage/belt/rogue/leather/knifebelt/iron,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
 "nVC" = (
@@ -18286,6 +18280,7 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
+/obj/item/rogueweapon/woodstaff,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/shop)
 "qIz" = (
@@ -26715,9 +26710,6 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
-"ylq" = (
-/turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/outdoors/town)
 "ylI" = (
 /obj/structure/table/church{
 	icon_state = "churchtable_end"
@@ -59629,7 +59621,7 @@ pXr
 gog
 gog
 uEE
-ylq
+hvn
 hvn
 nyR
 rxw
