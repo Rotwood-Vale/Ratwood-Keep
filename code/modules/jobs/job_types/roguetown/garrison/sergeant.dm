@@ -81,8 +81,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/hold)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/focustarget)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard) // We'll just use Watchmen as sorta conscripts yeag?
-		H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw)
-		H.verbs |= /mob/proc/haltyell
+		H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/proc/haltyell, /mob/living/carbon/human/mind/proc/setorders)
 
 /obj/effect/proc_holder/spell/invoked/order
 	name = ""
@@ -105,7 +104,7 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		var/msg = input("Send a message.", "Command") as text|null
+		var/msg = user.mind.movemovemovetext
 		if(!msg)
 			to_chat(user, span_alert("I must say something to give an order!"))
 			return
@@ -161,13 +160,13 @@
 
 /datum/status_effect/buff/order/takeaim/on_apply()
 	. = ..()
-	to_chat(owner, span_alert("My officer orders me to take aim!"))
+	to_chat(owner, span_blue("My officer orders me to take aim!"))
 
 /obj/effect/proc_holder/spell/invoked/order/takeaim/cast(list/targets, mob/living/user)
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		var/msg = input("Send a message.", "Command") as text|null
+		var/msg = user.mind.takeaimtext
 		if(!msg)
 			to_chat(user, span_alert("I must say something to give an order!"))
 			return
@@ -197,7 +196,7 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		var/msg = input("Send a message.", "Command") as text|null
+		var/msg = user.mind.onfeettext
 		if(!msg)
 			to_chat(user, span_alert("I must say something to give an order!"))
 			return
@@ -254,7 +253,7 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		var/msg = input("Send a message.", "Command") as text|null
+		var/msg = user.mind.holdtext
 		if(!msg)
 			to_chat(user, span_alert("I must say something to give an order!"))
 			return
@@ -288,7 +287,7 @@
 
 /datum/status_effect/buff/order/hold/on_apply()
 	. = ..()
-	to_chat(owner, span_alert("My officer orders me to hold!"))
+	to_chat(owner, span_blue("My officer orders me to hold!"))
 
 #define TARGET_FILTER "target_marked"
 
@@ -301,7 +300,7 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		var/msg = input("Send a message.", "Command") as text|null
+		var/msg = user.mind.focustargettext
 		if(!msg)
 			to_chat(user, span_alert("I must say something to give an order!"))
 			return
@@ -350,3 +349,28 @@
 
 
 #undef TARGET_FILTER
+
+
+/mob/living/carbon/human/mind/proc/setorders()
+	set name = "Rehearse Orders"
+	set category = "Voice of Command"
+	mind.movemovemovetext = input("Send a message.", "Move! Move! Move!") as text|null
+	if(!mind.movemovemovetext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
+	mind.holdtext = input("Send a message.", "Hold!") as text|null
+	if(!mind.holdtext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
+	mind.takeaimtext = input("Send a message.", "Take aim!") as text|null
+	if(!mind.takeaimtext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
+	mind.onfeettext = input("Send a message.", "On your feet!") as text|null
+	if(!mind.onfeettext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
+	mind.focustargettext = input("Send a message.", "Focus Target!") as text|null
+	if(!mind.focustargettext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
