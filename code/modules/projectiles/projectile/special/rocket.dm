@@ -24,9 +24,6 @@
 	if(ismecha(target))
 		var/obj/mecha/M = target
 		M.take_damage(anti_armour_damage)
-	if(issilicon(target))
-		var/mob/living/silicon/S = target
-		S.take_overall_damage(anti_armour_damage*0.75, anti_armour_damage*0.25)
 	return BULLET_ACT_HIT
 
 /obj/projectile/bullet/a84mm_he
@@ -52,9 +49,6 @@
 	ricochets_max = 0 //it's a MISSILE
 	var/sturdy = list(
 	/turf/closed,
-	/obj/mecha,
-	/obj/machinery/door/,
-	/obj/machinery/door/poddoor/shutters
 	)
 
 /obj/item/broken_missile

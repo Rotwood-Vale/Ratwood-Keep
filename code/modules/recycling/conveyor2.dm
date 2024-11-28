@@ -129,7 +129,6 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		return
 	if(!operating)
 		return
-	use_power(6)
 	if(!isturf(loc)) // We're nowhere!
 		return
 	var/turf/turf_loc = loc
@@ -212,10 +211,6 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	var/obj/machinery/conveyor/C = locate() in get_step(src, stepdir)
 	if(C)
 		C.set_operable(stepdir, id, op)
-
-/obj/machinery/conveyor/power_change()
-	. = ..()
-	update()
 
 // the conveyor control switch
 //

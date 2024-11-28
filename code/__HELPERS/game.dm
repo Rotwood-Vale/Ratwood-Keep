@@ -188,7 +188,7 @@
 				found_organ.organ_flags ^= ORGAN_FROZEN
 
 		for(var/atom/B in A)	//objects held within other objects are added to the processing list, unless that object is something that can hold organs safely
-			if(!processed_list[B]
+			if(!processed_list[B])
 
 		index++
 		processed_list[A] = A

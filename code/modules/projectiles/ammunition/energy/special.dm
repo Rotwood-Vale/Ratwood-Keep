@@ -41,13 +41,6 @@
 	projectile_type = /obj/projectile/meteor
 	select_name = "goddamn meteor"
 
-/obj/item/ammo_casing/energy/net
-	projectile_type = /obj/projectile/energy/net
-	select_name = "netting"
-	pellets = 6
-	variance = 40
-	harmful = FALSE
-
 /obj/item/ammo_casing/energy/trap
 	projectile_type = /obj/projectile/energy/trap
 	select_name = "snare"
@@ -63,12 +56,6 @@
 
 /obj/item/ammo_casing/energy/instakill/red
 	projectile_type = /obj/projectile/beam/instakill/red
-
-/obj/item/ammo_casing/energy/tesla_revolver
-	fire_sound = 'sound/blank.ogg'
-	e_cost = 200
-	select_name = "stun"
-	projectile_type = /obj/projectile/energy/tesla/revolver
 
 /obj/item/ammo_casing/energy/shrink
 	projectile_type = /obj/projectile/beam/shrink

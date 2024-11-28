@@ -4,16 +4,6 @@ Slimecrossing Items
 	Collected here for clarity.
 */
 
-//Rewind camera - I'm already Burning Sepia
-/obj/item/camera/rewind
-	name = "sepia-tinted camera"
-	desc = ""
-	pictures_left = 1
-	pictures_max = 1
-	can_customise = FALSE
-	default_picture_name = "A nostalgic picture"
-	var/used = FALSE
-
 /datum/saved_bodypart
 	var/obj/item/bodypart/old_part
 	var/bodypart_type
@@ -54,49 +44,6 @@ Slimecrossing Items
 
 		ret[part.body_zone] = saved_part
 	return ret
-
-/obj/item/camera/rewind/afterattack(atom/target, mob/user, flag)
-	if(!on || !pictures_left || !isturf(target.loc))
-		return
-	if(!used)//selfie time
-		if(user == target)
-			to_chat(user, "<span class=notice>I take a selfie!</span>")
-		else
-			to_chat(user, "<span class=notice>I take a photo with [target]!</span>")
-			to_chat(target, "<span class=notice>[user] takes a photo with you!</span>")
-		to_chat(target, "<span class=notice>You'll remember this moment forever!</span>")
-
-		used = TRUE
-		target.AddComponent(/datum/component/dejavu, 2)
-	.=..()
-
-
-
-//Timefreeze camera - Old Burning Sepia result. Kept in case admins want to spawn it
-/obj/item/camera/timefreeze
-	name = "sepia-tinted camera"
-	desc = ""
-	pictures_left = 1
-	pictures_max = 1
-	var/used = FALSE
-
-/obj/item/camera/timefreeze/afterattack(atom/target, mob/user, flag)
-	if(!on || !pictures_left || !isturf(target.loc))
-		return
-	if(!used) //refilling the film does not refill the timestop
-		new /obj/effect/timestop(get_turf(target), 2, 50, list(user))
-		used = TRUE
-		desc = ""
-	. = ..()
-
-
-//Hypercharged slime cell - Charged Yellow
-/obj/item/stock_parts/cell/high/slime/hypercharged
-	name = "hypercharged slime core"
-	desc = ""
-	rating = 7 //Roughly 1.5 times the original.
-	maxcharge = 20000 //2 times the normal one.
-	chargerate = 2250 //1.5 times the normal rate.
 
 //Barrier cube - Chilling Grey
 /obj/item/barriercube

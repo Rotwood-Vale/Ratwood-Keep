@@ -96,24 +96,6 @@
 /obj/effect/proc_holder/spell/aimed/proc/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration)
 	return
 
-/obj/effect/proc_holder/spell/aimed/lightningbolt
-	name = "Lightning Bolt"
-	desc = ""
-	school = "evocation"
-	charge_max = 200
-	clothes_req = TRUE
-	invocation = "UN'LTD P'WAH"
-	invocation_type = "shout"
-	cooldown_min = 30
-	base_icon_state = "lightning"
-	action_icon_state = "lightning0"
-	sound = 'sound/blank.ogg'
-	active = FALSE
-	projectile_var_overrides = list("tesla_range" = 15, "tesla_power" = 20000, "tesla_flags" = TESLA_MOB_DAMAGE)
-	active_msg = "You energize your hand with arcane lightning!"
-	deactive_msg = "You let the energy flow out of your hands back into myself..."
-	projectile_type = /obj/projectile/magic/aoe/lightning
-
 /obj/effect/proc_holder/spell/aimed/fireball
 	name = "Fireball"
 	desc = ""

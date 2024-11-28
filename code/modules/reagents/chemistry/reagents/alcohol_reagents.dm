@@ -443,15 +443,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "Cuba Libre"
 	glass_desc = ""
 
-/datum/reagent/consumable/ethanol/cuba_libre/on_mob_life(mob/living/carbon/M)
-	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/rev)) //Cuba Libre, the traditional drink of revolutions! Heals revolutionaries.
-		M.adjustBruteLoss(-1, 0)
-		M.adjustFireLoss(-1, 0)
-		M.adjustToxLoss(-1, 0)
-		M.adjustOxyLoss(-5, 0)
-		. = 1
-	return ..() || .
-
 /datum/reagent/consumable/ethanol/whiskey_cola
 	name = "Whiskey Cola"
 	description = "Whiskey, mixed with cola. Surprisingly refreshing."
@@ -577,7 +568,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/tequila_sunrise/on_mob_metabolize(mob/living/M)
 	to_chat(M, span_notice("I feel gentle warmth spread through my body!"))
 	light_holder = new(M)
-	light_holder.set_light(3, 0.7, "#FFCC00") //Tequila Sunrise makes you radiate dim light, like a sunrise!
+	light_holder.set_light(3,3,0.7, l_color = "#FFCC00") //Tequila Sunrise makes you radiate dim light, like a sunrise!
 
 /datum/reagent/consumable/ethanol/tequila_sunrise/on_mob_life(mob/living/carbon/M)
 	if(QDELETED(light_holder))
@@ -1025,25 +1016,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "amasecglass"
 	glass_name = "Amasec"
 	glass_desc = ""
-
-/datum/reagent/consumable/ethanol/changelingsting
-	name = "Changeling Sting"
-	description = "You take a tiny sip and feel a burning sensation..."
-	color = "#2E6671" // rgb: 46, 102, 113
-	boozepwr = 50
-	quality = DRINK_GOOD
-	taste_description = "your brain coming out my nose"
-	glass_icon_state = "changelingsting"
-	glass_name = "Changeling Sting"
-	glass_desc = ""
-
-/datum/reagent/consumable/ethanol/changelingsting/on_mob_life(mob/living/carbon/M)
-	if(M.mind) //Changeling Sting assists in the recharging of changeling chemicals.
-		var/datum/antagonist/changeling/changeling = M.mind.has_antag_datum(/datum/antagonist/changeling)
-		if(changeling)
-			changeling.chem_charges += metabolization_rate
-			changeling.chem_charges = CLAMP(changeling.chem_charges, 0, changeling.chem_storage)
-	return ..()
 
 /datum/reagent/consumable/ethanol/irishcarbomb
 	name = "Irish Car Bomb"
@@ -1610,38 +1582,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/peppermint_patty/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/throat_soothed)
 	M.adjust_bodytemperature(5 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, BODYTEMP_NORMAL)
-	..()
-
-/datum/reagent/consumable/ethanol/alexander
-	name = "Alexander"
-	description = "Named after a Greek hero, this mix is said to embolden a user's shield as if they were in a phalanx."
-	color = "#F5E9D3"
-	boozepwr = 50
-	quality = DRINK_GOOD
-	taste_description = "bitter, creamy cacao"
-	glass_icon_state = "alexander"
-	glass_name = "Alexander"
-	glass_desc = ""
-	var/obj/item/shield/mighty_shield
-
-/datum/reagent/consumable/ethanol/alexander/on_mob_metabolize(mob/living/L)
-	if(ishuman(L))
-		var/mob/living/carbon/human/thehuman = L
-		for(var/obj/item/shield/theshield in thehuman.contents)
-			mighty_shield = theshield
-			mighty_shield.block_chance += 10
-			to_chat(thehuman, span_notice("[theshield] appears polished, although you don't recall polishing it."))
-			return TRUE
-
-/datum/reagent/consumable/ethanol/alexander/on_mob_life(mob/living/L)
-	..()
-	if(mighty_shield && !(mighty_shield in L.contents)) //If you had a shield and lose it, you lose the reagent as well. Otherwise this is just a normal drink.
-		L.reagents.del_reagent(/datum/reagent/consumable/ethanol/alexander)
-
-/datum/reagent/consumable/ethanol/alexander/on_mob_end_metabolize(mob/living/L)
-	if(mighty_shield)
-		mighty_shield.block_chance -= 10
-		to_chat(L,span_notice("I notice [mighty_shield] looks worn again. Weird."))
 	..()
 
 /datum/reagent/consumable/ethanol/sidecar

@@ -44,7 +44,7 @@
 	item_state = "hardhat0_cakehat"
 	hat_type = "cakehat"
 	lefthand_file = 'icons/mob/inhands/clothing_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/clothing_righthand.dmi'v
+	righthand_file = 'icons/mob/inhands/clothing_righthand.dmi'
 	hitsound = 'sound/blank.ogg'
 	var/hitsound_on = 'sound/blank.ogg' //so we can differentiate between cakehat and energyhat
 	var/hitsound_off = 'sound/blank.ogg'

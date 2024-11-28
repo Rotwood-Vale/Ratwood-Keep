@@ -8,7 +8,7 @@
 	Short in stature and typically scrawny, this little lizards make up for it in their natural agility. People typically stereotype them as thieves, though..."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/mob/species/anthro_small_male.dmi'
 	limbs_icon_f = 'icons/mob/species/anthro_small_female.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'

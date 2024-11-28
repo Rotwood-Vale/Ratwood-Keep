@@ -278,10 +278,6 @@
 	if(!user || !firing_burst)
 		firing_burst = FALSE
 		return FALSE
-	if(!issilicon(user))
-		if(iteration > 1 && !(user.is_holding(src))) //for burst firing
-			firing_burst = FALSE
-			return FALSE
 	if(chambered && chambered.BB)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 			if(chambered.harmful) // Is the bullet chambered harmful?
@@ -446,7 +442,7 @@
 	to_chat(user, span_notice("I [removal_verb ? removal_verb : "remove"] [item_to_remove] from [src]."))
 	item_to_remove.forceMove(drop_location())
 
-	if(Adjacent(user) && !issilicon(user))
+	if(Adjacent(user))
 		user.put_in_hands(item_to_remove)
 
 	if(item_to_remove == bayonet)
@@ -493,7 +489,7 @@
 /obj/item/gun/proc/update_gunlight()
 	if(gun_light)
 		if(gun_light.on)
-			set_light(gun_light.light_power)
+			set_light(gun_light.light_outer_range)
 		else
 			set_light(0)
 		cut_overlays(flashlight_overlay, TRUE)

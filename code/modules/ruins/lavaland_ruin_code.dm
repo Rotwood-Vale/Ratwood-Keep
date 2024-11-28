@@ -1,38 +1,7 @@
 //If you're looking for spawners like ash walker eggs, check ghost_role_spawners.dm
 
-///Wizard tower item
-/obj/item/disk/design_disk/adv/knight_gear
-	name = "Magic Disk of Smithing"
-
-/obj/item/disk/design_disk/adv/knight_gear/Initialize()
-	. = ..()
-	var/datum/design/knight_armour/A = new
-	var/datum/design/knight_helmet/H = new
-	blueprints[1] = A
-	blueprints[2] = H
-
 //lavaland_surface_seed_vault.dmm
 //Free Golems
-
-/obj/item/disk/design_disk/golem_shell
-	name = "Golem Creation Disk"
-	desc = ""
-	icon_state = "datadisk1"
-	max_blueprints = 1
-
-/obj/item/disk/design_disk/golem_shell/Initialize()
-	. = ..()
-	var/datum/design/golem_shell/G = new
-	blueprints[1] = G
-
-/datum/design/golem_shell
-	name = "Golem Shell Construction"
-	desc = ""
-	id = "golem"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 40000)
-	build_path = /obj/item/golem_shell
-	category = list("Imported")
 
 /obj/item/golem_shell
 	name = "incomplete free golem shell"
@@ -58,7 +27,6 @@
 		/obj/item/stack/sheet/mineral/bananium	    = /datum/species/golem/bananium,
 		/obj/item/stack/sheet/mineral/titanium	    = /datum/species/golem/titanium,
 		/obj/item/stack/sheet/mineral/plastitanium	= /datum/species/golem/plastitanium,
-		/obj/item/stack/sheet/mineral/abductor	    = /datum/species/golem/alloy,
 		/obj/item/stack/sheet/mineral/wood	        = /datum/species/golem/wood,
 		/obj/item/stack/sheet/bluespace_crystal	    = /datum/species/golem/bluespace,
 		/obj/item/stack/sheet/runed_metal	        = /datum/species/golem/runic,
@@ -117,10 +85,8 @@
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset/syndicate/alt
 	back = /obj/item/storage/backpack
 	r_pocket = /obj/item/gun/ballistic/automatic/pistol
-	id = /obj/item/card/id/syndicate/anyone
 	implants = list(/obj/item/implant/weapons_auth)
 
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/H)
@@ -142,7 +108,6 @@
 
 /datum/outfit/lavaland_syndicate/comms
 	name = "Lavaland Syndicate Comms Agent"
-	r_hand = /obj/item/melee/transforming/energy/sword/saber
 	mask = /obj/item/clothing/mask/chameleon/gps
 	suit = /obj/item/clothing/suit/armor/vest
 

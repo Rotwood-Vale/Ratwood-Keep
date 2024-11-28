@@ -525,10 +525,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/mob/living/L = the_target
 		if(L.stat == DEAD)
 			return FALSE
-	if (ismecha(the_target))
-		var/obj/mecha/M = the_target
-		if (M.occupant)
-			return FALSE
 	return TRUE
 
 /mob/living/simple_animal/handle_fire()

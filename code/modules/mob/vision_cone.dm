@@ -349,4 +349,4 @@
 	screen_loc = "1,1"
 	mouse_opacity = 0
 	layer = HUD_LAYER
-	plane = HUD_PLANE-2
+	plane = HUD_PLANE-1

@@ -41,7 +41,7 @@
 					apply_damage(HEAT_DAMAGE_LEVEL_2, BURN)
 
 	else if(bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT && !HAS_TRAIT(src, TRAIT_RESISTCOLD))
-			switch(bodytemperature)
+		switch(bodytemperature)
 			if(200 to 260)
 				throw_alert("temp", /atom/movable/screen/alert/cold, 1)
 				apply_damage(COLD_DAMAGE_LEVEL_1, BURN)

@@ -226,6 +226,7 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/wi
 			casingtype = initial(M.ammo_type)
 
 /mob/living/simple_animal/hostile/mimic/copy/ranged/OpenFire(the_target)
+	if(Zapstick)
 		if(Zapstick.charges)
 			Zapstick.charges--
 			Zapstick.update_icon()
@@ -238,7 +239,7 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/wi
 				Pewgun.chambered.update_icon()
 				..()
 			else
-				visible_message(span_danger("The <b>[src]</b> clears a jam!"))
+				visible_message("<span class='danger'>The <b>[src]</b> clears a jam!</span>")
 			Pewgun.chambered.forceMove(loc) //rip revolver immersions, blame shotgun snowflake procs
 			Pewgun.chambered = null
 			if(Pewgun.magazine && Pewgun.magazine.stored_ammo.len)
@@ -248,7 +249,7 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/wi
 		else if(Pewgun.magazine && Pewgun.magazine.stored_ammo.len) //only true for pumpguns i think
 			Pewgun.chambered = Pewgun.magazine.get_round(0)
 			Pewgun.chambered.forceMove(Pewgun)
-			visible_message(span_danger("The <b>[src]</b> cocks itself!"))
+			visible_message("<span class='danger'>The <b>[src]</b> cocks itself!</span>")
 	else
 		ranged = 0 //BANZAIIII
 		retreat_distance = 0
