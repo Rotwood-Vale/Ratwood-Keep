@@ -92,31 +92,12 @@
 			. += span_userdanger("OUTLAW!")
 
 
-		var/commie_text
-		if(mind)
-			if(mind.special_role == "Bandit")
-				if(HAS_TRAIT(user, TRAIT_COMMIE))
-					commie_text = span_notice("Free man!")
-				/*else
-					commie_text = span_userdanger("BANDIT!")*/
-			if(mind.special_role == "Vampire Lord")
-				. += span_userdanger("A MONSTER!")
-			if(mind.assigned_role == "Lunatic")
-				. += span_userdanger("LUNATIC!")
-
-		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
-			. += span_userdanger("MANIAC!")
-
-		if(commie_text)
-			. += commie_text
-		else if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(user, TRAIT_COMMIE))
-			. += span_notice("Comrade!")
-		else if(HAS_TRAIT(src, TRAIT_CABAL) && HAS_TRAIT(user, TRAIT_CABAL))
-			. += span_notice("Another of the Cabal!")
-		else if(HAS_TRAIT(src, TRAIT_HORDE) && HAS_TRAIT(user, TRAIT_HORDE))
-			. += span_notice("Anointed!")
-		else if(HAS_TRAIT(src, TRAIT_DEPRAVED) && HAS_TRAIT(user, TRAIT_DEPRAVED))
-			. += span_notice("Debased!")
+		var/villain_text = get_villain_text()
+		if(villain_text)
+			. += villain_text
+		var/heretic_text = get_heretic_text(user)
+		if(heretic_text)
+			. += span_notice(heretic_text)
 
 	if(leprosy == 1)
 		. += span_necrosis("A LEPER...")
@@ -568,3 +549,47 @@
 			dat += "[new_text]\n" //dat.Join("\n") doesn't work here, for some reason
 	if(dat.len)
 		return dat.Join()
+
+/// Returns patron-related examine text for the mob, if any. Can return null.
+/mob/living/proc/get_heretic_text(mob/examiner)
+	var/heretic_text
+	if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(examiner, TRAIT_COMMIE))
+		heretic_text += "Comrade!"
+	else if(HAS_TRAIT(src, TRAIT_CABAL) && HAS_TRAIT(examiner, TRAIT_CABAL))
+		heretic_text += "Another of the Cabal!"
+	else if(HAS_TRAIT(src, TRAIT_HORDE) && HAS_TRAIT(examiner, TRAIT_HORDE))
+		heretic_text += "Anointed!"
+	else if(HAS_TRAIT(src, TRAIT_DEPRAVED) && HAS_TRAIT(examiner, TRAIT_DEPRAVED))
+		heretic_text += "Debased!"
+	
+	return heretic_text
+
+/// Same as get_heretic_text, but returns a simple symbol depending on the type of heretic!
+/mob/living/proc/get_heretic_symbol(mob/examiner)
+	var/heretic_text
+	if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(examiner, TRAIT_COMMIE))
+		heretic_text += "♠"
+	else if(HAS_TRAIT(src, TRAIT_CABAL) && HAS_TRAIT(examiner, TRAIT_CABAL))
+		heretic_text += "♦"
+	else if(HAS_TRAIT(src, TRAIT_HORDE) && HAS_TRAIT(examiner, TRAIT_HORDE))
+		heretic_text += "♠"
+	else if(HAS_TRAIT(src, TRAIT_DEPRAVED) && HAS_TRAIT(examiner, TRAIT_DEPRAVED))
+		heretic_text += "♥"
+	
+	return heretic_text
+
+/// Returns antagonist-related examine text for the mob, if any. Can return null.
+/mob/living/proc/get_villain_text(mob/examiner)
+	var/villain_text
+	if(mind)
+		if(mind.special_role == "Bandit")
+			if(HAS_TRAIT(examiner, TRAIT_COMMIE))
+				villain_text = span_notice("Free man!")
+			/*else
+				villain_text = span_userdanger("BANDIT!")*/
+		if(mind.special_role == "Vampire Lord")
+			villain_text += span_userdanger("A MONSTER!")
+		if(mind.assigned_role == "Lunatic")
+			villain_text += span_userdanger("LUNATIC!")
+
+	return villain_text
