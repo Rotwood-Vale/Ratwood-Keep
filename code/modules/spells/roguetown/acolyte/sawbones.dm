@@ -148,16 +148,11 @@
 		return FALSE
 
 	var/mob/living/target = targets[1]
-	
+
 	if(target == user)
 		return FALSE
 
 	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-	var/has_rot = was_zombie
-
-	if(!has_rot)
-		to_chat(user, span_warning("Nothing happens."))
-		return FALSE
 
 	testing("curerot2")
 
@@ -169,7 +164,7 @@
 		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
 			adjust_playerquality(unzombification_pq, user.ckey)
 			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
-	
+
 	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 
 	if(rot)
@@ -544,7 +539,7 @@
 	overdose_threshold = null
 
 /datum/reagent/alch/syrumf
-	name = "fishyy syrum"
+	name = "fishy syrum"
 	description = "refined viscous fishy smelling gunk"
 	reagent_state = LIQUID
 	color = "#ff7f7f"

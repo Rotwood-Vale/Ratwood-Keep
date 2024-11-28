@@ -89,8 +89,6 @@
 		/datum/body_marking_set/none,
 	)
 	body_markings = list(
-		/datum/body_marking/flushed_cheeks,
-		/datum/body_marking/eyeliner,
 		/datum/body_marking/small/plain,
 		/datum/body_marking/small/sock,
 		/datum/body_marking/small/socklonger,

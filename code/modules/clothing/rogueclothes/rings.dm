@@ -32,6 +32,10 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
 
+/obj/item/clothing/ringP/graggar
+	name = "corrupted psi ring"
+	desc = "A tainted psi ring, used by the ruinous powers."
+
 /obj/item/clothing/ring/gold
 	name = "gold ring"
 	icon_state = "ring_g"
@@ -58,7 +62,7 @@
 	slot_flags = ITEM_SLOT_RING
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
-	fuel = 9999 
+	fuel = 9999
 	sellprice = 30
 
 /obj/item/clothing/ring/lantern/MiddleClick(mob/living/user, params)

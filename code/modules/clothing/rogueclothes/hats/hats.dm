@@ -49,6 +49,10 @@
 	blocksound = SOFTHIT
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon
+	color = "#78a3c9"
+	
+
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
 	desc = "A protective covering worn by those native to the desert."

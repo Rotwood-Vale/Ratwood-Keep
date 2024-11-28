@@ -438,6 +438,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 	delete_after_roundstart = FALSE
 
+/obj/effect/landmark/start/goblinshaman
+	name = "Goblin Shaman"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+
 //Antagonist spawns
 
 /obj/effect/landmark/start/wizard
