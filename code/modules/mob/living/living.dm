@@ -1179,6 +1179,8 @@
 	for(var/obj/item/grabbing/G in grabbedby)
 		if(G.chokehold == TRUE)
 			combat_modifier -= 0.15
+		if(G.grab_state < GRAB_AGGRESSIVE)
+			combat_modifier -= 0.15
 
 	combat_modifier *= ((wrestling_diff * 0.1) + 1)
 

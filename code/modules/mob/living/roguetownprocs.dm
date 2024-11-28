@@ -78,7 +78,13 @@
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))			//Taking time to aim attacks gives Perception + 10
 		chance2hit += (user.STAPER + 10)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))			//Swinging as fast as you can reduces your To-Hit
-		chance2hit -= (25 - user.STASPD)
+		chance2hit -= (35 - user.STASPD)
+
+																	//Being cracked out on hyper cocaine doesn't mean you're going to be accurate
+	if(user.has_status_effect(/datum/status_effect/buff/moondust) || user.has_status_effect(/datum/status_effect/buff/moondust_purest))
+		chance2hit *= 0.4
+	if(user.has_status_effect(/datum/status_effect/debuff/moondust_crash))
+		chance2hit *= 0.8
 
 	var/facing_zone = facing_zone(zone)
 	if(facing == NORTH)												//Attacks from the front, normal
@@ -139,6 +145,9 @@
 			zone = BODY_ZONE_CHEST
 		if(facing_zone == BODY_ZONE_FACING_R_LEG)
 			chance2hit = (chance2hit / 2)
+	
+	if(zone == BODY_ZONE_HEAD)										//Head is the smallest of the Major Body Zones
+		chance2hit *= 0.8
 
 	chance2acehit = CLAMP((round(chance2hit * ace_mod)), 0, 100) 	//Ability to hit sub-locations
 	chance2hit = CLAMP((round(chance2hit)), 0, 100) 				//Ability to hit the target

@@ -141,6 +141,16 @@
 
 /mob/living/carbon/human/Stat()
 	..()
+	if(worn_armor_class > 0)
+		var/armortext = ""
+		switch(worn_armor_class)
+			if(1)
+				armortext = "Light"
+			if(2)
+				armortext = "Medium"
+			if(3)
+				armortext = "Heavy"
+		stat("ARMOR: [armortext]")
 	if(mind)
 		var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 		if(VD)

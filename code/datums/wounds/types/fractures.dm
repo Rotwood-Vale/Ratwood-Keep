@@ -123,7 +123,7 @@
 	)
 	embed_chance = 100
 	paralysis = TRUE
-	mortal = 75
+	mortal = 65
 	dents_brain = FALSE
 
 /datum/wound/fracture/head/ears
@@ -136,7 +136,7 @@
 	)
 	embed_chance = 100
 	paralysis = TRUE
-	mortal = 75
+	mortal = 65
 	dents_brain = FALSE
 
 /datum/wound/fracture/head/nose
@@ -147,7 +147,7 @@
 	)
 	embed_chance = 100
 	paralysis = FALSE
-	mortal = 25
+	mortal = 20
 	dents_brain = FALSE
 
 /datum/wound/fracture/mouth
