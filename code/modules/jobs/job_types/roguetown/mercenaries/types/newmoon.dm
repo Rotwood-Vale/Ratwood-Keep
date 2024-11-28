@@ -1,6 +1,6 @@
 /datum/advclass/newmoon
 	name = "New Moon Spellblade"
-	tutorial = "Knowledge is power.. You and your masters in the New Moon holy order took it to heart as you and all acolytes like you were forced to study countless text of both arcane and war to make yourself worthy a worthy emissary. Then it all crumbled, the news came while you were on your voyage; the bastion fell to the rot as only a small ammount of acolytes and spellblades escaped, most forced to retreat to this god forsaken swamp while others searched for something better."
+	tutorial = "The New Moon Spellblades of Zybantia are the remnants of a fallen Nocite monastery in an unknown region of Lalvestine, the last major stronghold of the Ten in the Zybantian Empire. Their monastic lyfestyle and devotion collapsed quickly under the weight of the Rot, and they were forced from a lyfe of devout solitude into that of a common sellsword; Noc’s blessings proving rather useful when slaying monsters and Men alike. For whatever reason, you find yourself in Rockhill, offering your skills to the highest bidder. Knowledge is power, or so She says."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/tabaxi,
@@ -9,7 +9,7 @@
 		/datum/species/tieberian
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/newmoon
-	maximum_possible_slots = 3
+	maximum_possible_slots = 10
 	min_pq = 4
 	torch = FALSE
 	cmode_music = 'sound/music/combat_desertrider.ogg'
@@ -47,7 +47,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
