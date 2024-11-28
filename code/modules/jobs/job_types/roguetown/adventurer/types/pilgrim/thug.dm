@@ -30,7 +30,8 @@
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
-	beltr = /obj/item/rogueweapon/mace/cudgel // It claims to be a weapon for brigands but bandits don't actually use them...
+	beltr = /obj/item/rogueweapon/mace/cudgel
+	beltl = /obj/item/flashlight/flare/torch
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", -2)
 	H.change_stat("speed", -1)

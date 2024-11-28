@@ -86,6 +86,9 @@
 			id = /obj/item/clothing/ring/silver
 			backr = /obj/item/rogueweapon/sword
 			backl = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(
+								/obj/item/flashlight/flare/torch = 1,
+								)
 		if("Battle Master")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a battle-master."))
@@ -121,6 +124,9 @@
 			backr = /obj/item/rogueweapon/flail
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
 			backl = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(
+								/obj/item/flashlight/flare/torch = 1,
+								)
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()

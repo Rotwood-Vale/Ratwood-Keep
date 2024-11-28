@@ -57,7 +57,12 @@
 			cloak = /obj/item/clothing/cloak/raincloak/mortus //cool cloak
 			beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
 			backr = /obj/item/storage/backpack/rogue/satchel
-			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/lockpickring/mundane = 1) //rogue gets lockpicks
+			backpack_contents = list(
+						/obj/item/needle/thorn = 1,
+						/obj/item/natural/cloth = 1,
+						/obj/item/lockpickring/mundane = 1,
+						/obj/item/flashlight/flare/torch = 1,
+						) //rogue gets lockpicks
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
@@ -65,5 +70,10 @@
 			beltr = /obj/item/quiver/arrows
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/rogue/satchel
-			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
+			backpack_contents = list(
+						/obj/item/needle/thorn = 1,
+						/obj/item/natural/cloth = 1,
+						/obj/item/restraints/legcuffs/beartrap = 2,
+						/obj/item/flashlight/flare/torch = 1,
+						) //poacher gets mantraps
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)

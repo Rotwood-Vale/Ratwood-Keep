@@ -17,7 +17,10 @@
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
+	backpack_contents = list(
+						/obj/item/rogueweapon/huntingknife/idagger/steel,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	id = /obj/item/clothing/ring/silver
 	cloak = /obj/item/clothing/cloak/half/red

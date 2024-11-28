@@ -57,7 +57,10 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-			backpack_contents = list(/obj/item/lockpickring/one = 1)
+			backpack_contents = list(
+							/obj/item/lockpickring/one = 1,
+							/obj/item/flashlight/flare/torch = 1,
+							)
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)
@@ -99,7 +102,11 @@
 				cloak = /obj/item/clothing/cloak/raincloak/red
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/sword/iron
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/storage/belt/rogue/pouch/coins/mid)
+			backpack_contents = list(
+							/obj/item/rogueweapon/huntingknife/idagger/steel,
+							/obj/item/storage/belt/rogue/pouch/coins/mid,
+							/obj/item/flashlight/flare/torch = 1,
+							)
 			H.change_stat("constitution", 2)
 			H.change_stat("strength", 1)
 			H.change_stat("speed", 1)
@@ -136,6 +143,9 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/white
 			cloak = /obj/item/clothing/cloak/raincloak/purple
 			backl = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(
+								/obj/item/flashlight/flare/torch = 1,
+								)
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			backpack_contents = list(/obj/item/lockpickring/one = 1)
@@ -171,6 +181,9 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/white
 			cloak = /obj/item/clothing/cloak/raincloak
 			backl = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(
+								/obj/item/flashlight/flare/torch = 1,
+								)
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			switch(H.patron?.type)
