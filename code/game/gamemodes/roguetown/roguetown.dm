@@ -163,7 +163,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					log_game("Major Antagonist: None")
 		return TRUE
 
-	var/major_roll = pick(1,4)
+	var/major_roll = pick(1,2,3,4)
 	switch(major_roll)
 		if(1)
 			pick_rebels()
