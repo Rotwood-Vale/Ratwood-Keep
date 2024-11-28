@@ -39,7 +39,7 @@
 		I have been accused of [reason], and [employer] has put a bounty on my head!"))
 
 	if(character.mind.assigned_role in GLOB.courtier_positions)//Magos, Jester, etc.
-		amount = rand(200,350)
+		amount = rand(400,650)
 		switch(rand(1,2))
 			if(1)
 				reason = "Espionage"
@@ -50,7 +50,7 @@
 		I have been accused of [reason], and [employer] has put a bounty on my head!"))
 
 	if(character.mind.assigned_role in GLOB.garrison_positions)//What do you think?
-		amount = rand(125,250)//They can defend themselves.
+		amount = rand(125,450)//They can defend themselves.
 		switch(rand(1,2))
 			if(1)
 				reason = "Sedition"
@@ -61,7 +61,7 @@
 		I have been accused of [reason], and [employer] has put a bounty on my head!"))
 
 	if(character.mind.assigned_role in GLOB.church_positions)//Ditto.
-		amount = rand(300,600)//Killing a member of the Church is a BIG yikes.
+		amount = rand(250,500)//Killing a member of the Church is a BIG yikes.
 		switch(rand(1,3))
 			if(1)
 				reason = "Communing with the Inhumen"
@@ -74,7 +74,7 @@
 		I have been accused of [reason], and [employer] has put a bounty on my head!"))
 
 	if(character.mind.assigned_role in GLOB.yeoman_positions)//Merchant, Barkeep, etc.
-		amount = rand(100,150)
+		amount = rand(200,350)
 		switch(rand(1,2))
 			if(1)
 				reason = "Hawking Stolen Goods"
@@ -85,7 +85,7 @@
 		I have been accused of [reason], and [employer] has put a bounty on my head!"))
 
 	if(character.mind.assigned_role in GLOB.peasant_positions)//Soilson, Towner, etc.
-		amount = rand(40,80)
+		amount = rand(120,200)
 		switch(rand(1,2))
 			if(1)
 				reason = "Ignoring Lawful Orders"
@@ -109,7 +109,7 @@
 		I have been accused of [reason], and [employer] has put a bounty on my head!"))
 
 	if(character.mind.assigned_role in GLOB.youngfolk_positions)//Apprentices, Clerks, etc.
-		amount = rand(85,150)
+		amount = rand(150,250)
 		switch(rand(1,3))
 			if(1)
 				reason = "Abuse of Superior"
@@ -122,20 +122,26 @@
 		I have been accused of [reason], and [employer] has put a bounty on my head!"))
 
 	if(character.mind.assigned_role in GLOB.allmig_positions)//Adventurers and Pilgrims.
-		amount = rand(60, 125)
-		switch(rand(1,3))
+		amount = rand(100, 325)
+		switch(rand(1,6))
 			if(1)
 				reason = "Flight from Authority"
 			if(2)
 				reason = "Smuggling"
-			if(2)
+			if(3)
 				reason = "Trafficking"
+			if(4)
+				reason = "Poaching"
+			if(5)
+				reason = "Fleecing"
+			if(6)
+				reason = "Debt"
 
 		to_chat(character, span_notice("I'm on the run from my past. No matter how recent. \
 		I have been accused of [reason], and [employer] has put a bounty on my head!"))
 
 	if(character.mind.assigned_role in GLOB.goblin_positions)//What do you think?
-		amount = rand(45,100)
+		amount = rand(50,250)
 		switch(rand(1,3))
 			if(1)
 				reason = "Torture"
