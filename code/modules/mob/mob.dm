@@ -772,6 +772,36 @@ GLOBAL_VAR_INIT(mobids, 1)
 	// && check_rights(R_ADMIN,0)
 	var/ticker_time = world.time - SSticker.round_start_time
 	var/time_left = SSticker.mode?.round_ends_at - ticker_time
+	var/daytime
+	switch(GLOB.tod)
+		if(0)
+			daytime = "Twilight"
+		if("night")
+			daytime = "Night"
+		if("dawn")
+			daytime = "Dawn"
+		if("day")
+			daytime = "Dae"
+		if("dusk")
+			daytime = "Dusk"
+	var/days
+	switch(GLOB.dayspassed)
+		if(0)
+			days = "Somme Dae"
+		if(1)
+			days = "Sun's Dae"
+		if(2)
+			days = "Moon's Dae"
+		if(3)
+			days = "Tiw's Dae"
+		if(4)
+			days = "Wedding's Dae"
+		if(5)
+			days = "Thule's Dae"
+		if(6)
+			days = "Freyja's Dae"
+		if(7)
+			days = "Saturn's Dae"
 	if(client && client.holder)
 		if(statpanel("Status"))
 			if (client)
@@ -786,7 +816,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 			if(SSticker.mode?.roundvoteend)
 				stat("Round End: [DisplayTimeText(time_left)]")
 			stat(null, "Round TrueTime: [worldtime2text()] [world.time]")
-			stat(null, "TimeOfDay: [GLOB.tod]")
+			stat(null, "Time Of Dae: [daytime]")
+			stat(null, "Dae of Week: [days]")
 			stat(null, "IC Time: [station_time_timestamp()] [station_time()]")
 			stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
 			if(check_rights(R_ADMIN,0))
@@ -801,7 +832,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 			stat("Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
 			if(SSticker.mode?.roundvoteend)
 				stat("Round End: [DisplayTimeText(time_left)]")
-			stat("TimeOfDay: [GLOB.tod]")
+			stat("Time Of Dae: [daytime]")
+			stat("Dae of Week: [days]")
 
 	if(client && client.holder && check_rights(R_ADMIN,0))
 		if(statpanel("MC"))
