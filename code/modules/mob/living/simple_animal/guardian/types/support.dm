@@ -93,7 +93,7 @@
 	icon = 'icons/turf/floors.dmi'
 	desc = ""
 	icon_state = "light_on-w"
-	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	light_outer_range = MINIMUM_USEFUL_LIGHT_RANGE
 	density = FALSE
 	anchored = TRUE
 	layer = ABOVE_OPEN_TURF_LAYER

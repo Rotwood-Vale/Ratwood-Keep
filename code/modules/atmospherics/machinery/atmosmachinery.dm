@@ -170,15 +170,6 @@
 	nodes[nodes.Find(reference)] = null
 	update_icon()
 
-/obj/machinery/atmospherics/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/pipe)) //lets you autodrop
-		var/obj/item/pipe/pipe = W
-		if(user.dropItemToGround(pipe))
-			pipe.setPipingLayer(piping_layer) //align it with us
-			return TRUE
-	else
-		return ..()
-
 /obj/machinery/atmospherics/wrench_act(mob/living/user, obj/item/I)
 	if(!can_unwrench(user))
 		return ..()
@@ -234,16 +225,6 @@
 	// speed is pressures / 1250
 	user.throw_at(get_edge_target_turf(user, get_dir(src, user) || pick(GLOB.cardinals)), pressures / 250, pressures / 1250)
 
-/obj/machinery/atmospherics/deconstruct(disassembled = TRUE)
-	if(!(flags_1 & NODECONSTRUCT_1))
-		if(can_unwrench)
-			var/obj/item/pipe/stored = new construction_type(loc, null, dir, src)
-			stored.setPipingLayer(piping_layer)
-			if(!disassembled)
-				stored.obj_integrity = stored.max_integrity * 0.5
-			transfer_fingerprints_to(stored)
-	..()
-
 /obj/machinery/atmospherics/proc/getpipeimage(iconset, iconstate, direction, col=rgb(255,255,255), piping_layer=2)
 
 	//Add identifiers for the iconset
@@ -279,12 +260,7 @@
 		L.ventcrawl_layer = piping_layer
 	return ..()
 
-/obj/machinery/atmospherics/singularity_pull(S, current_size)
-	if(current_size >= STAGE_FIVE)
-		deconstruct(FALSE)
-	return ..()
-
-#define VENT_SOUND_DELAY 30
+/obj/machinery/atmospherics/singularity_pull()
 
 /obj/machinery/atmospherics/relaymove(mob/living/user, direction)
 	direction &= initialize_directions

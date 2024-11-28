@@ -6,7 +6,7 @@
 	inherent_traits = list(TRAIT_NOHUNGER,TRAIT_NOBREATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	default_features = MANDATORY_FEATURE_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC
 	exotic_bloodtype = "U"
 	use_skintones = TRUE
 	limbs_id = "human"

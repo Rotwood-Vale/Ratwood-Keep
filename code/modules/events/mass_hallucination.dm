@@ -23,16 +23,15 @@
 			for(var/mob/living/carbon/C in GLOB.alive_mob_list)
 				new /datum/hallucination/stationmessage(C, TRUE, stationmessage)
 		if(4 to 6)
-			var/picked_hallucination = pick(	/datum/hallucination/bolts,
-												/datum/hallucination/chat,
-												/datum/hallucination/message,
-												/datum/hallucination/bolts,
-												/datum/hallucination/fake_flood,
-												/datum/hallucination/battle,
-												/datum/hallucination/fire,
-												/datum/hallucination/self_delusion,
-												/datum/hallucination/death,
-												/datum/hallucination/delusion,
-												/datum/hallucination/oh_yeah)
+			var/picked_hallucination = pick(
+											/datum/hallucination/chat,
+											/datum/hallucination/message,
+											/datum/hallucination/fake_flood,
+											/datum/hallucination/battle,
+											/datum/hallucination/fire,
+											/datum/hallucination/self_delusion,
+											/datum/hallucination/death,
+											/datum/hallucination/delusion,
+											/datum/hallucination/oh_yeah)
 			for(var/mob/living/carbon/C in GLOB.alive_mob_list)
 				new picked_hallucination(C, TRUE)

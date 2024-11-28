@@ -132,9 +132,6 @@
 
 	check_cremation()
 
-	//Updates the number of stored chemicals for powers
-//	handle_changeling()
-
 	if(stat != DEAD)
 		return 1
 
@@ -256,8 +253,6 @@
 /mob/living/carbon/proc/breathe()
 	var/obj/item/organ/lungs = getorganslot(ORGAN_SLOT_LUNGS)
 	if(reagents.has_reagent(/datum/reagent/toxin/lexorin, needs_metabolizing = TRUE))
-		return
-	if(istype(loc, /obj/machinery/atmospherics/components/unary/cryo_cell))
 		return
 
 	var/datum/gas_mixture/environment
@@ -527,18 +522,6 @@
 
 		if(stat != DEAD || D.process_dead)
 			D.stage_act()
-
-//todo generalize this and move hud out
-/mob/living/carbon/proc/handle_changeling()
-	if(mind && hud_used && hud_used.lingchemdisplay)
-		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
-		if(changeling)
-			changeling.regenerate()
-			hud_used.lingchemdisplay.invisibility = 0
-			hud_used.lingchemdisplay.maptext = "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='#dd66dd'>[round(changeling.chem_charges)]</font></div>"
-		else
-			hud_used.lingchemdisplay.invisibility = INVISIBILITY_ABSTRACT
-
 
 /mob/living/carbon/handle_mutations_and_radiation()
 	if(dna && dna.temporary_mutations.len)

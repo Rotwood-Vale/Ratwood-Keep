@@ -28,12 +28,6 @@
 	var/obj/item/card/id/id = get_idcard(hand_first)
 	if(id)
 		. = id.assignment
-	else
-		var/obj/item/pda/pda = wear_ring
-		if(istype(pda))
-			. = pda.ownjob
-		else
-			return if_no_id
 	if(!.)
 		return if_no_job
 
@@ -43,9 +37,6 @@
 	var/obj/item/card/id/id = get_idcard(FALSE)
 	if(id)
 		return id.registered_name
-	var/obj/item/pda/pda = wear_ring
-	if(istype(pda))
-		return pda.owner
 	return if_no_id
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
@@ -79,23 +70,11 @@
 //Useful when player is being seen by other mobs
 /mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
 	var/obj/item/storage/wallet/wallet = wear_ring
-	var/obj/item/pda/pda = wear_ring
 	var/obj/item/card/id/id = wear_ring
-	var/obj/item/modular_computer/tablet/tablet = wear_ring
 	if(istype(wallet))
 		id = wallet.front_id
 	if(istype(id))
 		. = id.registered_name
-	else if(istype(pda))
-		. = pda.owner
-	else if(istype(tablet))
-		var/obj/item/computer_hardware/card_slot/card_slot = tablet.all_components[MC_CARD]
-		if(card_slot && (card_slot.stored_card2 || card_slot.stored_card))
-			if(card_slot.stored_card2) //The second card is the one used for authorization in the ID changing program, so we prioritize it here for consistency
-				. = card_slot.stored_card2.registered_name
-			else
-				if(card_slot.stored_card)
-					. = card_slot.stored_card.registered_name
 	if(!.)
 		. = if_no_id	//to prevent null-names making the mob unclickable
 	return
@@ -146,8 +125,6 @@
 
 
 /mob/living/carbon/human/can_track(mob/living/user)
-	if(wear_ring && istype(wear_ring.GetID(), /obj/item/card/id/syndicate))
-		return 0
 	if(istype(head, /obj/item/clothing/head))
 		var/obj/item/clothing/head/hat = head
 		if(hat.blockTracking)

@@ -34,7 +34,6 @@
 
 /datum/parsed_map/proc/initTemplateBounds()
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
-	var/list/obj/structure/cable/cables = list()
 	var/list/atom/atoms = list()
 	var/list/area/areas = list()
 
@@ -48,9 +47,6 @@
 		areas |= B.loc
 		for(var/A in B)
 			atoms += A
-			if(istype(A, /obj/structure/cable))
-				cables += A
-				continue
 			if(istype(A, /obj/machinery/atmospherics))
 				atmos_machines += A
 	for(var/L in border)
@@ -59,7 +55,6 @@
 
 	SSmapping.reg_in_areas_in_z(areas)
 	SSatoms.InitializeAtoms(atoms)
-	SSmachines.setup_template_powernets(cables)
 	SSair.setup_template_machinery(atmos_machines)
 
 /datum/map_template/proc/load_new_z()

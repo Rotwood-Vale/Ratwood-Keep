@@ -336,7 +336,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	to_chat(src, "<span class='danger'><B>I don't have another mode!</span></B>")
 
 /mob/living/simple_animal/hostile/guardian/proc/ToggleLight()
-	if(light_range<3)
+	if(light_outer_range<3)
 		to_chat(src, span_notice("I activate my light."))
 		set_light(3)
 	else
@@ -483,9 +483,6 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	var/list/guardians = user.hasparasites()
 	if(guardians.len && !allowmultiple)
 		to_chat(user, span_holoparasite("I already have a [mob_name]!"))
-		return
-	if(user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling) && !allowling)
-		to_chat(user, "[ling_failure]")
 		return
 	if(used == TRUE)
 		to_chat(user, "[used_message]")

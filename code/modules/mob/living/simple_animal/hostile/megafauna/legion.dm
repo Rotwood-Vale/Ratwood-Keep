@@ -197,10 +197,6 @@
 	if(last_legion)
 		loot = list(/obj/item/staff/storm)
 		elimination = FALSE
-	else if(prob(20)) //20% chance for sick lootz.
-		loot = list(/obj/structure/closet/crate/necropolis/tendril)
-		if(!true_spawn)
-			loot = null
 	return ..()
 
 ///Splits legion into smaller skulls.
@@ -311,7 +307,7 @@
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	icon_state = "legion_turret"
 	light_power = 0.5
-	light_range = 2
+	light_outer_range = 2
 	max_integrity = 80
 	luminosity = 6
 	anchored = TRUE

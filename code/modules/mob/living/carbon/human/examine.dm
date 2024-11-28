@@ -229,7 +229,7 @@
 	if(!(SLOT_GLASSES in obscured))
 		if(glasses)
 			. += "[m3] [glasses.get_examine_string(user)] covering [m2] eyes."
-		else if(eye_color == BLOODCULT_EYE && iscultist(src) && HAS_TRAIT(src, CULT_EYES))
+		else if(eye_color == BLOODCULT_EYE)
 			. += span_warning("<B>[m2] eyes are glowing an unnatural red!</B>")
 
 	//ears

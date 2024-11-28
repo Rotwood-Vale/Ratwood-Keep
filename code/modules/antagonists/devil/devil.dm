@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 
 /datum/antagonist/devil/can_be_owned(datum/mind/new_owner)
 	. = ..()
-	return . && (ishuman(new_owner.current) || iscyborg(new_owner.current))
+	return . && (ishuman(new_owner.current))
 
 /datum/antagonist/devil/get_admin_commands()
 	. = ..()
@@ -307,8 +307,6 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	if(A)
 		notify_ghosts("An arch devil has ascended in \the [A.name]. Reach out to the devil to be given a new shell for my soul.", source = owner.current, action=NOTIFY_ATTACK)
 	sleep(50)
-	if(!SSticker.mode.devil_ascended)
-		SSshuttle.emergency.request(null, set_coefficient = 0.3)
 	SSticker.mode.devil_ascended++
 	form = ARCH_DEVIL
 
@@ -453,7 +451,6 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 			return -1
 		currentMob.change_mob_type( /mob/living/carbon/human, targetturf, null, 1)
 		var/mob/living/carbon/human/H = owner.current
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/civilian/lawyer/black(H), SLOT_PANTS)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), SLOT_SHOES)
 		H.equip_to_slot_or_del(new /obj/item/storage/briefcase(H), SLOT_HANDS)
 		H.equip_to_slot_or_del(new /obj/item/pen(H), SLOT_L_STORE)
@@ -501,10 +498,6 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	GLOB.allDevils[lowertext(truename)] = src
 
 	antag_memory += "Your devilic true name is [truename]<br>[GLOB.lawlorify[LAW][ban]]<br>I may not use violence to coerce someone into selling their soul.<br>I may not directly and knowingly physically harm a devil, other than myself.<br>[GLOB.lawlorify[LAW][bane]]<br>[GLOB.lawlorify[LAW][obligation]]<br>[GLOB.lawlorify[LAW][banish]]<br>"
-	if(issilicon(owner.current))
-		var/mob/living/silicon/robot_devil = owner.current
-		var/laws = list("You may not use violence to coerce someone into selling their soul.", "You may not directly and knowingly physically harm a devil, other than myself.", GLOB.lawlorify[LAW][ban], GLOB.lawlorify[LAW][obligation], "Accomplish my objectives at all costs.")
-		robot_devil.set_law_sixsixsix(laws)
 	sleep(10)
 	.=..()
 

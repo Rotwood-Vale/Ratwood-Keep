@@ -94,7 +94,7 @@
 		O.forceMove(C)
 	..()
 
-GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/cable, /obj/structure/window))
+GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/window))
 
 /mob/living/simple_animal/hostile/mimic/copy
 	health = 100
@@ -192,10 +192,6 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 /mob/living/simple_animal/hostile/mimic/copy/machine/CanAttack(atom/the_target)
 	if(the_target == creator) // Don't attack our creator AI.
 		return 0
-	if(iscyborg(the_target))
-		var/mob/living/silicon/robot/R = the_target
-		if(R.connected_ai == creator) // Only attack robots that aren't synced to our creator AI.
-			return 0
 	return ..()
 
 
@@ -228,21 +224,8 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 			Pewgun = G
 			var/obj/item/ammo_box/magazine/M = Pewgun.mag_type
 			casingtype = initial(M.ammo_type)
-		if(istype(G, /obj/item/gun/energy))
-			Zapgun = G
-			var/selectfiresetting = Zapgun.select
-			var/obj/item/ammo_casing/energy/E = Zapgun.ammo_type[selectfiresetting]
-			projectiletype = initial(E.projectile_type)
 
 /mob/living/simple_animal/hostile/mimic/copy/ranged/OpenFire(the_target)
-	if(Zapgun)
-		if(Zapgun.cell)
-			var/obj/item/ammo_casing/energy/shot = Zapgun.ammo_type[Zapgun.select]
-			if(Zapgun.cell.charge >= shot.e_cost)
-				Zapgun.cell.use(shot.e_cost)
-				Zapgun.update_icon()
-				..()
-	else if(Zapstick)
 		if(Zapstick.charges)
 			Zapstick.charges--
 			Zapstick.update_icon()

@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sortList(list(
 	armor = list("blunt" = 50, "slash" = 60, "stab" = 70, "bullet" = 75, "laser" = 75, "energy" = 75, "bomb" = 25, "bio" = 100, "rad" = 100, "fire" = 25, "acid" = 0)
 	max_integrity = 50
 	anchored = TRUE
-	light_range = 2
+	light_outer_range = 2
 	light_power = 3
 	var/remove_speed = 15
 	var/picked_color
@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sortList(list(
 	while(!picked_color || !GLOB.marker_beacon_colors[picked_color])
 		picked_color = pick(GLOB.marker_beacon_colors)
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
-	set_light(light_range, light_power, GLOB.marker_beacon_colors[picked_color])
+	set_light(light_outer_range, light_inner_range, light_power, l_color = GLOB.marker_beacon_colors[picked_color])
 
 /obj/structure/marker_beacon/attack_hand(mob/living/user)
 	. = ..()

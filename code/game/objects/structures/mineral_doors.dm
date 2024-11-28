@@ -167,12 +167,6 @@
 					else
 						addtimer(CALLBACK(src, PROC_REF(Close), FALSE), 25)
 
-/obj/structure/mineral_door/attack_ai(mob/user) //those aren't machinery, they're just big fucking slabs of a mineral
-	if(isAI(user)) //so the AI can't open it
-		return
-	else if(iscyborg(user)) //but cyborgs can
-		if(get_dist(user,src) <= 1) //not remotely though
-			return TryToSwitchState(user)
 
 /obj/structure/mineral_door/attack_paw(mob/user)
 	return attack_hand(user)
@@ -583,7 +577,7 @@
 	icon_state = "uranium"
 	sheetType = /obj/item/stack/sheet/mineral/uranium
 	max_integrity = 300
-	light_range = 2
+	light_outer_range = 2
 
 /obj/structure/mineral_door/uranium/ComponentInitialize()
 	return

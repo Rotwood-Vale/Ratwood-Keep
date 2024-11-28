@@ -44,7 +44,7 @@
 	item_state = "hardhat0_cakehat"
 	hat_type = "cakehat"
 	lefthand_file = 'icons/mob/inhands/clothing_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/clothing_righthand.dmi'
+	righthand_file = 'icons/mob/inhands/clothing_righthand.dmi'v
 	hitsound = 'sound/blank.ogg'
 	var/hitsound_on = 'sound/blank.ogg' //so we can differentiate between cakehat and energyhat
 	var/hitsound_off = 'sound/blank.ogg'
@@ -204,18 +204,6 @@
 
 	dog_fashion = /datum/dog_fashion/head/cardborg
 
-/obj/item/clothing/head/cardborg/equipped(mob/living/user, slot)
-	..()
-	if(ishuman(user) && slot == SLOT_HEAD)
-		var/mob/living/carbon/human/H = user
-		if(istype(H.wear_armor, /obj/item/clothing/suit/cardborg))
-			var/obj/item/clothing/suit/cardborg/CB = H.wear_armor
-			CB.disguise(user, src)
-
-/obj/item/clothing/head/cardborg/dropped(mob/living/user)
-	..()
-	user.remove_alt_appearance("standard_borg_disguise")
-
 
 
 /obj/item/clothing/head/wig
@@ -318,7 +306,7 @@
 			return
 	return ..()
 
-/obj/item/clothing/head/foilhat/microwave_act(obj/machinery/microwave/M)
+/obj/item/clothing/head/foilhat/heating_act()
 	. = ..()
 	if(!warped)
 		warp_up()

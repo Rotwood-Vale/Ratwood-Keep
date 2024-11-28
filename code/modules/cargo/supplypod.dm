@@ -119,8 +119,7 @@
 	opened = FALSE
 	INVOKE_ASYNC(holder, PROC_REF(setClosed)) //Use the INVOKE_ASYNC proc to call setClosed() on whatever the holder may be, without giving the atom/movable base class a setClosed() proc definition
 	for (var/atom/movable/O in get_turf(holder))
-		if ((ismob(O) && !isliving(O)) || (is_type_in_typecache(O, GLOB.blacklisted_cargo_types) && !isliving(O))) //We dont want to take ghosts with us, and we don't want blacklisted items going, but we allow mobs.
-			continue
+		if ((ismob(O) && !isliving(O))  && !isliving(O)) //We dont want to take ghosts with us, and we don't want blacklisted items going, but we allow mobs.
 		O.forceMove(holder) //Put objects inside before we close
 	var/obj/effect/temp_visual/risingPod = new /obj/effect/DPfall(get_turf(holder), src) //Make a nice animation of flying back up
 	risingPod.pixel_z = 0 //The initial value of risingPod's pixel_z is 200 because it normally comes down from a high spot
@@ -289,7 +288,7 @@
 	icon = 'icons/mob/actions/actions_items.dmi'
 	icon_state = "sniper_zoom"
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER
-	light_range = 2
+	light_outer_range = 2
 	var/obj/effect/temp_visual/fallingPod //Temporary "falling pod" that we animate
 	var/obj/structure/closet/supplypod/pod //The supplyPod that will be landing ontop of this target
 

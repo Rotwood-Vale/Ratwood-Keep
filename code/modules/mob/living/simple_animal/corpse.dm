@@ -21,11 +21,9 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset
 	mask = /obj/item/clothing/mask/gas
 	head = /obj/item/clothing/head/helmet/swat
 	back = /obj/item/storage/backpack
-	id = /obj/item/card/id/syndicate
 
 /obj/effect/mob_spawn/human/corpse/syndicatecommando
 	name = "Syndicate Commando"
@@ -37,14 +35,10 @@
 /datum/outfit/syndicatecommandocorpse
 	name = "Syndicate Commando Corpse"
 	uniform = /obj/item/clothing/under/syndicate
-	suit = /obj/item/clothing/suit/space/hardsuit/syndi
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset
 	mask = /obj/item/clothing/mask/gas/syndicate
-	back = /obj/item/tank/jetpack/oxygen
 	r_pocket = /obj/item/tank/internals/emergency_oxygen
-	id = /obj/item/card/id/syndicate
 
 
 /obj/effect/mob_spawn/human/corpse/syndicatestormtrooper
@@ -57,13 +51,9 @@
 /datum/outfit/syndicatestormtroopercorpse
 	name = "Syndicate Stormtrooper Corpse"
 	uniform = /obj/item/clothing/under/syndicate
-	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset
 	mask = /obj/item/clothing/mask/gas/syndicate
-	back = /obj/item/tank/jetpack/oxygen/harness
-	id = /obj/item/card/id/syndicate
 
 
 /obj/effect/mob_spawn/human/clown/corpse
@@ -131,7 +121,6 @@
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset
 	head = /obj/item/clothing/head/helmet/alt
 	mask = /obj/item/clothing/mask/balaclava
 
@@ -145,7 +134,6 @@
 	uniform = /obj/item/clothing/under/costume/russian_officer
 	suit = /obj/item/clothing/suit/security/officer/russian
 	shoes = /obj/item/clothing/shoes/combat
-	ears = /obj/item/radio/headset
 	head = /obj/item/clothing/head/ushanka
 
 
@@ -178,7 +166,6 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	head = /obj/item/clothing/head/helmet/swat/nanotrasen
 	back = /obj/item/storage/backpack/security
@@ -196,25 +183,8 @@
 /datum/outfit/cat_butcher
 	name = "Cat Butcher Uniform"
 	uniform = /obj/item/clothing/under/rank/medical/doctor/green
-	suit = /obj/item/clothing/suit/apron/surgical
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
-	ears = /obj/item/radio/headset
 	back = /obj/item/storage/backpack/satchel/med
 	id = /obj/item/card/id
 	glasses = /obj/item/clothing/glasses/hud/health
-
-/obj/effect/mob_spawn/human/corpse/bee_terrorist
-	name = "BLF Operative"
-	outfit = /datum/outfit/bee_terrorist
-
-/datum/outfit/bee_terrorist
-	name = "BLF Operative"
-	uniform = /obj/item/clothing/under/color/yellow
-	suit = /obj/item/clothing/suit/hooded/bee_costume
-	shoes = /obj/item/clothing/shoes/sneakers/yellow
-	gloves = /obj/item/clothing/gloves/color/yellow
-	ears = /obj/item/radio/headset
-	id = /obj/item/card/id
-	mask = /obj/item/clothing/mask/rat/bee
-

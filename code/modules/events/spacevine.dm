@@ -81,7 +81,7 @@
 
 /datum/spacevine_mutation/light/on_grow(obj/structure/spacevine/holder)
 	if(holder.energy)
-		holder.set_light(severity, 0.3)
+		holder.set_light(severity, severity, 0.3)
 
 /datum/spacevine_mutation/toxicity
 	name = "toxic"
@@ -90,8 +90,6 @@
 	quality = NEGATIVE
 
 /datum/spacevine_mutation/toxicity/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(issilicon(crosser))
-		return
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
 		to_chat(crosser, span_alert("I accidentally touch the vine and feel a strange sensation."))
 		crosser.adjustToxLoss(5)
@@ -379,9 +377,6 @@
 	for(var/datum/spacevine_mutation/SM in mutations)
 		SM.on_hit(src, user)
 	user_unbuckle_mob(user,user)
-
-/obj/structure/spacevine/attack_alien(mob/living/user)
-	eat(user)
 
 /datum/spacevine_controller
 	var/list/obj/structure/spacevine/vines

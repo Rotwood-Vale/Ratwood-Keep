@@ -317,13 +317,12 @@
 	if(active)
 		return
 	active = TRUE
-	set_light_color(rgb(rand(0, 255), rand(0, 255), rand(0, 255)))
-	set_light_on(active)
+	set_light(2, 2, 3, l_color = rgb(rand(0,255),rand(0,255),rand(0,255)))
 	addtimer(CALLBACK(src, PROC_REF(lightUp)), 0.5 SECONDS)
 
 /obj/item/clothing/shoes/kindleKicks/proc/lightUp(mob/user)
 	if(lightCycle < 15)
-		set_light(2, 3, rgb(rand(0,255),rand(0,255),rand(0,255)))
+		set_light(2, 2, 3, l_color = rgb(rand(0,255),rand(0,255),rand(0,255)))
 		lightCycle += 1
 		addtimer(CALLBACK(src, PROC_REF(lightUp)), 5)
 	else
@@ -374,7 +373,7 @@
 	if(occupants.len >= max_occupants)
 		to_chat(user, span_warning("[src] are full!"))
 		return
-	if(istype(target, /mob/living/simple_animal/hostile/retaliate/poison/snake) || istype(target, /mob/living/simple_animal/hostile/headcrab) || istype(target, /mob/living/carbon/alien/larva))
+	if(istype(target, /mob/living/simple_animal/hostile/retaliate/poison/snake))
 		occupants += target
 		target.forceMove(src)
 		to_chat(user, span_notice("[target] slithers into [src]."))
