@@ -907,11 +907,17 @@ There are several things that need to be remembered:
 				client.screen += r_store
 			update_observer_view(r_store)*/
 
-
 /mob/living/carbon/human/update_inv_wear_mask()
 	..()
 	update_body_parts(TRUE)
+
+	if(wear_mask)
+		if(!(SLOT_WEAR_MASK in check_obscured_slots()))
+			overlays_standing[MASK_LAYER] = wear_mask.build_worn_icon(default_layer = MASK_LAYER, default_icon_file = 'icons/roguetown/clothing/onmob/masks.dmi')
+		update_hud_wear_mask(wear_mask)
+
 	var/mutable_appearance/mask_overlay = overlays_standing[MASK_LAYER]
+
 	if(mask_overlay)
 		remove_overlay(MASK_LAYER)
 		if(gender == MALE)
