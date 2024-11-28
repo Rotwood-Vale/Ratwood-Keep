@@ -15,6 +15,7 @@
 	max_integrity = 300
 	sellprice = 30
 	fingers = FALSE //can't swing weapons but can pick stuff up and punch
+	anvilrepair = /datum/skill/craft/carpentry
 
 /obj/item/bodypart/l_arm/prosthetic/bronzeleft
 	name = "bronze left arm"
@@ -31,6 +32,8 @@
 	max_integrity = 350
 	sellprice = 30
 	fingers = TRUE // it acts like a normal arm
+	anvilrepair = /datum/skill/craft/engineering
+	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/bodypart/l_arm/prosthetic/attack(mob/living/M, mob/user)
 	if(!ishuman(M))
@@ -62,6 +65,7 @@
 	max_integrity = 300
 	sellprice = 30
 	fingers = FALSE //can't swing weapons but can pick stuff up and punch
+	anvilrepair = /datum/skill/craft/carpentry
 
 /obj/item/bodypart/r_arm/prosthetic/bronzeright
 	name = "bronze right arm"
@@ -78,6 +82,8 @@
 	max_integrity = 350
 	sellprice = 30
 	fingers = TRUE // it acts like a normal arm
+	anvilrepair = /datum/skill/craft/engineering
+	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/bodypart/r_arm/prosthetic/attack(mob/living/M, mob/user)
 	if(!ishuman(M))
@@ -110,6 +116,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_integrity = 300
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/carpentry
 
 /obj/item/bodypart/l_leg/prosthetic/bronzeleft
 	name = "bronze left leg"
@@ -125,6 +132,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_integrity = 350
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/engineering
+	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/bodypart/l_leg/prosthetic/attack(mob/living/M, mob/user)
 	if(!ishuman(M))
@@ -157,6 +166,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_integrity = 300
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/carpentry
 
 /obj/item/bodypart/r_leg/prosthetic/bronzeright
 	name = "bronze right leg"
@@ -172,6 +182,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_integrity = 350
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/engineering
+	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/bodypart/r_leg/prosthetic/attack(mob/living/M, mob/user)
 	if(!ishuman(M))
