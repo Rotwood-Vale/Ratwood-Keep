@@ -186,14 +186,7 @@ SUBSYSTEM_DEF(shuttle)
 	emergency.cancel()
 
 	if(!admiral_message)
-		admiral_message = pick(GLOB.admiral_messages)
-
-// Called when an emergency shuttle mobile docking port is
-// destroyed, which will only happen with admin intervention
-/datum/controller/subsystem/shuttle/proc/emergencyDeregister()
-	// When a new emergency shuttle is created, it will override the
-	// backup shuttle.
-	src.emergency = src.backup_shuttle
+		admiral_message = pick(GLOB.admiral_messages)	
 
 /datum/controller/subsystem/shuttle/proc/cancelEvac(mob/user)
 	if(canRecall())

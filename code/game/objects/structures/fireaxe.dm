@@ -1,10 +1,11 @@
 /obj/structure/fireaxecabinet
-	name = "sword rack"
+	name = "Sword rack"
+	desc = ""
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "fireaxe"
 	anchored = TRUE
 	density = FALSE
-	armor = list("blunt" = 50, "slash" = 40, "stab" = 30, "bullet" = 20, "laser" = 0, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 50)
+	armor = list("melee" = 50, "bullet" = 20, "laser" = 0, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 50)
 	max_integrity = 150
 	integrity_failure = 0.33
 	var/locked = FALSE
@@ -12,9 +13,9 @@
 	var/obj/item/rogueweapon/sword/long/heirloom
 
 /obj/structure/fireaxecabinet/Initialize()
-    . = ..()
-    heirloom = new /obj/item/rogueweapon/sword/long/heirloom
-    update_icon()
+	. = ..()
+	heirloom = new /obj/item/rogueweapon/sword/long/heirloom
+	update_icon()
 
 /obj/structure/fireaxecabinet/Destroy()
 	if(heirloom)
@@ -33,12 +34,12 @@
 		if(istype(I, /obj/item/rogueweapon/sword/long/heirloom) && !heirloom)
 			var/obj/item/rogueweapon/sword/long/heirloom/F = I
 			if(F.wielded)
-				to_chat(user, span_warning("Unwield the [F.name] first."))
+				to_chat(user, "<span class='warning'>Unwield the [F.name] first.</span>")
 				return
 			if(!user.transferItemToLoc(F, src))
 				return
 			heirloom = F
-			to_chat(user, span_notice("I place the [F.name] back in the [name]."))
+			to_chat(user, "<span class='notice'>I place the [F.name] back in the [name].</span>")
 			update_icon()
 			return
 		else if(!broken)
@@ -70,12 +71,6 @@
 		playsound(src, 'sound/blank.ogg', 100, TRUE)
 	..()
 
-/obj/structure/fireaxecabinet/blob_act(obj/structure/blob/B)
-	if(heirloom)
-		heirloom.forceMove(loc)
-		heirloom = null
-	qdel(src)
-
 /obj/structure/fireaxecabinet/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -84,12 +79,12 @@
 		if(heirloom)
 			user.put_in_hands(heirloom)
 			heirloom = null
-			to_chat(user, span_notice("I take the sword from the [name]."))
+			to_chat(user, "<span class='notice'>I take the sword from the [name].</span>")
 			src.add_fingerprint(user)
 			update_icon()
 			return
 	if(locked)
-		to_chat(user, span_warning("The [name] won't budge!"))
+		to_chat(user, "<span class='warning'>The [name] won't budge!</span>")
 		return
 	else
 		open = !open
@@ -101,7 +96,7 @@
 
 /obj/structure/fireaxecabinet/attack_tk(mob/user)
 	if(locked)
-		to_chat(user, span_warning("The [name] won't budge!"))
+		to_chat(user, "<span class='warning'>The [name] won't budge!</span>")
 		return
 	else
 		open = !open
@@ -122,10 +117,10 @@
 		add_overlay("glass_raised")
 
 /obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
-	to_chat(user, span_notice("Resetting circuitry..."))
+	to_chat(user, "<span class='notice'>Resetting circuitry...</span>")
 	playsound(src, 'sound/blank.ogg', 50, TRUE)
 	if(do_after(user, 20, target = src))
-		to_chat(user, span_notice("I [locked ? "disable" : "re-enable"] the locking modules."))
+		to_chat(user, "<span class='notice'>I [locked ? "disable" : "re-enable"] the locking modules.</span>")
 		locked = !locked
 		update_icon()
 
@@ -135,7 +130,7 @@
 	set src in oview(1)
 
 	if(locked)
-		to_chat(usr, span_warning("The [name] won't budge!"))
+		to_chat(usr, "<span class='warning'>The [name] won't budge!</span>")
 		return
 	else
 		open = !open

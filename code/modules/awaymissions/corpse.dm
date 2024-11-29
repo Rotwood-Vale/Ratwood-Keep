@@ -22,7 +22,6 @@
 	var/brute_damage = 0
 	var/oxy_damage = 0
 	var/burn_damage = 0
-	var/datum/disease/disease = null //Do they start with a pre-spawned disease?
 	var/mob_color //Change the mob's color
 	var/assignedrole
 	var/show_flavour = TRUE
@@ -34,10 +33,10 @@
 	if(!SSticker.HasRoundStarted() || !loc || !ghost_usable)
 		return
 	if(!uses)
-		to_chat(user, span_warning("This spawner is out of charges!"))
+		to_chat(user, "<span class='warning'>This spawner is out of charges!</span>")
 		return
 	if(is_banned_from(user.key, banType))
-		to_chat(user, span_warning("I are jobanned!"))
+		to_chat(user, "<span class='warning'>I are jobanned!</span>")
 		return
 	if(QDELETED(src) || QDELETED(user))
 		return
@@ -50,7 +49,7 @@
 /obj/effect/mob_spawn/Initialize(mapload)
 	. = ..()
 	if(instant || (roundstart && (mapload || (SSticker && SSticker.current_state > GAME_STATE_SETTING_UP))))
-		create()
+		INVOKE_ASYNC(src, PROC_REF(create))
 	else if(ghost_usable)
 		GLOB.poi_list |= src
 		LAZYADD(GLOB.mob_spawners[name], src)
@@ -81,8 +80,6 @@
 		M.gender = mob_gender
 	if(faction)
 		M.faction = list(faction)
-	if(disease)
-		M.ForceContractDisease(new disease)
 	if(death)
 		M.death(1) //Kills the new mob
 
@@ -165,13 +162,23 @@
 	return ..()
 
 /obj/effect/mob_spawn/human/equip(mob/living/carbon/human/H)
-	H.setDir(pick(GLOB.alldirs))
 	if(mob_species)
 		H.set_species(mob_species)
 	if(husk)
 		H.Drain()
 	else //Because for some reason I can't track down, things are getting turned into husks even if husk = false. It's in some damage proc somewhere.
 		H.cure_husk()
+	H.underwear = "Nude"
+	H.undershirt = "Nude"
+	H.socks = "Nude"
+	if(hairstyle)
+		H.hairstyle = hairstyle
+	else
+		H.hairstyle = random_hairstyle(H.gender)
+	if(facial_hairstyle)
+		H.facial_hairstyle = facial_hairstyle
+	else
+		H.facial_hairstyle = random_facial_hairstyle(H.gender)
 	if(skin_tone)
 		H.skin_tone = skin_tone
 	else
@@ -190,23 +197,6 @@
 			var/obj/item/clothing/under/C = H.wear_pants
 			if(istype(C))
 				C.sensor_mode = NO_SENSORS
-
-	var/obj/item/card/id/W = H.wear_ring
-	if(W)
-		if(id_access)
-			for(var/jobtype in typesof(/datum/job))
-				var/datum/job/J = new jobtype
-				if(J.title == id_access)
-					W.access = J.get_access()
-					break
-		if(id_access_list)
-			if(!islist(W.access))
-				W.access = list()
-			W.access |= id_access_list
-		if(id_job)
-			W.assignment = id_job
-		W.registered_name = H.real_name
-		W.update_label()
 
 //Instant version - use when spawning corpses during runtime
 /obj/effect/mob_spawn/human/corpse
@@ -228,15 +218,6 @@
 
 //Non-human spawners
 
-/obj/effect/mob_spawn/slime
-	mob_type = 	/mob/living/simple_animal/slime
-	var/mobcolour = "grey"
-	icon = 'icons/mob/slimes.dmi'
-	icon_state = "grey baby slime" //sets the icon in the map editor
-
-/obj/effect/mob_spawn/slime/equip(mob/living/simple_animal/slime/S)
-	S.colour = mobcolour
-
 /obj/effect/mob_spawn/mouse
 	name = "sleeper"
 	mob_type = 	/mob/living/simple_animal/mouse
@@ -256,23 +237,6 @@
 
 // I'll work on making a list of corpses people request for maps, or that I think will be commonly used. Syndicate operatives for example.
 
-/obj/effect/mob_spawn/human/bartender
-	name = "Space Bartender"
-	id_job = "Bartender"
-	id_access_list = list(ACCESS_BAR)
-	outfit = /datum/outfit/spacebartender
-
-/obj/effect/mob_spawn/human/bartender/alive
-	death = FALSE
-	roundstart = FALSE
-	random = TRUE
-	name = "bartender sleeper"
-	icon = 'icons/obj/machines/sleeper.dmi'
-	icon_state = "sleeper"
-	flavour_text = "<span class='big bold'>I are a space bartender!</span><b> Time to mix drinks and change lives. Smoking space drugs makes it easier to understand your patrons' odd dialect.</b>"
-	assignedrole = "Space Bartender"
-	id_job = "Bartender"
-
 /datum/outfit/spacebartender
 	name = "Space Bartender"
 	uniform = /obj/item/clothing/under/rank/civilian/bartender
@@ -280,8 +244,6 @@
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	suit = /obj/item/clothing/suit/armor/vest
 	glasses = /obj/item/clothing/glasses/sunglasses/reagent
-	id = /obj/item/card/id
-
 /obj/effect/mob_spawn/human/beach
 	outfit = /datum/outfit/beachbum
 
@@ -306,10 +268,8 @@
 /datum/outfit/beachbum
 	name = "Beach Bum"
 	glasses = /obj/item/clothing/glasses/sunglasses
-	r_pocket = /obj/item/storage/wallet/random
 	l_pocket = /obj/item/reagent_containers/food/snacks/pizzaslice/dank;
 	uniform = /obj/item/clothing/under/pants/youngfolksjeans
-	id = /obj/item/card/id
 
 /datum/outfit/beachbum/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
@@ -331,7 +291,6 @@
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	glasses = /obj/item/clothing/glasses/sunglasses
-	id = /obj/item/card/id
 
 
 /obj/effect/mob_spawn/human/commander
@@ -350,7 +309,6 @@
 	gloves = /obj/item/clothing/gloves/combat
 	shoes = /obj/item/clothing/shoes/combat/swat
 	r_pocket = /obj/item/lighter
-	id = /obj/item/card/id
 
 
 /obj/effect/mob_spawn/human/nanotrasensoldier
@@ -368,7 +326,6 @@
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	head = /obj/item/clothing/head/helmet/swat/nanotrasen
 	back = /obj/item/storage/backpack/security
-	id = /obj/item/card/id
 
 
 /obj/effect/mob_spawn/human/commander/alive
@@ -378,7 +335,7 @@
 	name = "sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	flavour_text = span_bigbold("I are a Nanotrasen Commander!")
+	flavour_text = "<span class='big bold'>I are a Nanotrasen Commander!</span>"
 
 /obj/effect/mob_spawn/human/nanotrasensoldier/alive
 	death = FALSE
@@ -388,7 +345,7 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	faction = "nanotrasenprivate"
-	flavour_text = span_bigbold("I are a Nanotrasen Private Security Officer!")
+	flavour_text = "<span class='big bold'>I are a Nanotrasen Private Security Officer!</span>"
 
 
 /////////////////Spooky Undead//////////////////////
@@ -448,7 +405,7 @@
 	var/despawn = alert("Return to cryosleep? (Warning, Your mob will be deleted!)",,"Yes","No")
 	if(despawn == "No" || !loc || !Adjacent(user))
 		return
-	user.visible_message(span_notice("[user.name] climbs back into cryosleep..."))
+	user.visible_message("<span class='notice'>[user.name] climbs back into cryosleep...</span>")
 	qdel(user)
 
 /datum/outfit/cryobartender

@@ -965,9 +965,6 @@
 		if(!isliving(M))
 			to_chat(usr, "This can only be used on instances of type /mob/living.")
 			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
-			return
 		var/mob/living/L = M
 
 		L.Unconscious(100)
@@ -987,9 +984,6 @@
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!isliving(M))
 			to_chat(usr, "This can only be used on instances of type /mob/living.")
-			return
-		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
 			return
 		var/mob/living/L = M
 

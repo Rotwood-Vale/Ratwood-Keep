@@ -181,7 +181,7 @@
 	name = "minor magelight mote"
 	desc = "A tiny display of arcyne power used to illuminate."
 	pixel_x = 20
-	light_range = 4
+	light_outer_range = 4
 	light_flags = NONE
 	light_color = "#3FBAFD"
 
@@ -505,7 +505,7 @@
 /obj/effect/temp_visual/trap
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "trap"
-	light_range = 2
+	light_outer_range = 2
 	duration = 14
 	layer = MASSIVE_OBJ_LAYER
 
@@ -1013,7 +1013,7 @@
 /obj/effect/temp_visual/trapice
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "blueshatter"
-	light_range = 2
+	light_outer_range = 2
 	light_color = "#4cadee"
 	duration = 6
 	layer = MASSIVE_OBJ_LAYER

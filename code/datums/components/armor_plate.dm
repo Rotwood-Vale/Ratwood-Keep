@@ -11,7 +11,6 @@
 
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(applyplate))
-	RegisterSignal(parent, COMSIG_PARENT_PREQDELETED, PROC_REF(dropplates))
 
 	if(_maxamount)
 		maxamount = _maxamount
@@ -31,32 +30,23 @@
 
 /datum/component/armor_plate/proc/examine(datum/source, mob/user, list/examine_list)
 	//upgrade_item could also be typecast here instead
-	if(ismecha(parent))
-		if(amount)
-			if(amount < maxamount)
-				examine_list += span_notice("Its armor is enhanced with [amount] [upgrade_name].")
-			else
-				examine_list += span_notice("It's wearing a fearsome carapace entirely composed of [upgrade_name] - its pilot must be an experienced monster hunter.")
-		else
-			examine_list += span_notice("It has attachment points for strapping monster hide on for added protection.")
+	if(amount)
+		examine_list += "<span class='notice'>It has been strengthened with [amount]/[maxamount] [upgrade_name].</span>"
 	else
-		if(amount)
-			examine_list += span_notice("It has been strengthened with [amount]/[maxamount] [upgrade_name].")
-		else
-			examine_list += span_notice("It can be strengthened with up to [maxamount] [upgrade_name].")
+		examine_list += "<span class='notice'>It can be strengthened with up to [maxamount] [upgrade_name].</span>"
 
 /datum/component/armor_plate/proc/applyplate(datum/source, obj/item/I, mob/user, params)
 	if(!istype(I,upgrade_item))
 		return
 	if(amount >= maxamount)
-		to_chat(user, span_warning("I can't improve [parent] any further!"))
+		to_chat(user, "<span class='warning'>I can't improve [parent] any further!</span>")
 		return
 
 	if(istype(I,/obj/item/stack))
 		I.use(1)
 	else
 		if(length(I.contents))
-			to_chat(user, span_warning("[I] cannot be used for armoring while there's something inside!"))
+			to_chat(user, "<span class='warning'>[I] cannot be used for armoring while there's something inside!</span>")
 			return
 		qdel(I)
 
@@ -64,15 +54,4 @@
 	amount++
 	O.armor = O.armor.attachArmor(added_armor)
 
-	if(ismecha(O))
-		var/obj/mecha/R = O
-		R.update_icon()
-		to_chat(user, span_info("I strengthen [R], improving its resistance against melee, bullet and laser damage."))
-	else
-		to_chat(user, span_info("I strengthen [O], improving its resistance against melee attacks."))
-
-
-/datum/component/armor_plate/proc/dropplates(datum/source, force)
-	if(ismecha(parent)) //items didn't drop the plates before and it causes erroneous behavior for the time being with collapsible helmets
-		for(var/i in 1 to amount)
-			new upgrade_item(get_turf(parent))
+	to_chat(user, "<span class='info'>I strengthen [O], improving its resistance against melee attacks.</span>")

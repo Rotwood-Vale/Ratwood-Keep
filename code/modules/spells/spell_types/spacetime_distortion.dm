@@ -50,7 +50,7 @@
 		STD0.add_overlay(T1.photograph())
 		STD1.linked_dist = STD0
 		STD1.add_overlay(T0.photograph())
-		STD1.set_light(4, 3, 30,l_color = "#c9fff5")(4, 30, "#c9fff5")
+		STD1.set_light(4, 3, 30,l_color = "#c9fff5")
 		effects += STD0
 		effects += STD1
 

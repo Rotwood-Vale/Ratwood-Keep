@@ -34,7 +34,6 @@
 	unsuitable_atmos_damage = 10
 	footstep_type = FOOTSTEP_MOB_SHOE
 	var/banana_time = 0 // If there's no time set it won't spawn.
-	var/banana_type = /obj/item/grown/bananapeel
 	var/attack_reagent
 
 /mob/living/simple_animal/hostile/retaliate/clown/handle_temperature_damage()
@@ -52,7 +51,6 @@
 	if(banana_time && banana_time < world.time)
 		var/turf/T = get_turf(src)
 		var/list/adjacent =  T.GetAtmosAdjacentTurfs(1)
-		new banana_type(pick(adjacent))
 		banana_time = world.time + rand(30,60)
 
 /mob/living/simple_animal/hostile/retaliate/clown/AttackingTarget()
@@ -94,6 +92,7 @@
 	maxHealth = 120
 	health = 120
 	speed = -10
+	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/human, /obj/item/soap)
 	banana_time = 20
 
 /mob/living/simple_animal/hostile/retaliate/clown/honkling
@@ -108,7 +107,7 @@
 	melee_damage_upper = 1
 	attack_verb_continuous = "cheers up"
 	attack_verb_simple = "cheer up"
-	banana_type = /obj/item/grown/bananapeel
+	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/human, /obj/item/soap)
 	attack_reagent = /datum/reagent/consumable/laughter
 
 /mob/living/simple_animal/hostile/retaliate/clown/fleshclown

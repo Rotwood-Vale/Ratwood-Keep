@@ -41,8 +41,6 @@
 
 	var/blade_dulling = DULLING_FLOOR
 	var/attacked_sound
-	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
-	var/dynamic_lumcount = 0
 
 	var/break_sound = null //The sound played when a turf breaks
 	var/debris = null
@@ -61,6 +59,7 @@
 	. = ..()
 
 /turf/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
 #ifdef TESTSERVER
 	if(!icon_state)
 		icon_state = "cantfind"
@@ -95,11 +94,11 @@
 	if(turf_integrity == null)
 		turf_integrity = max_integrity
 
-	var/turf/T = GET_TURF_ABOVE(src)
+	var/turf/T = SSmapping.get_turf_above(src)
 	if(T)
 		T.multiz_turf_new(src, DOWN)
 		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, DOWN)
-	T = GET_TURF_BELOW(src)
+	T = SSmapping.get_turf_below(src)
 	if(T)
 		T.multiz_turf_new(src, UP)
 		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, UP)
@@ -121,10 +120,10 @@
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
 	changing_turf = FALSE
-	var/turf/T = GET_TURF_ABOVE(src)
+	var/turf/T = SSmapping.get_turf_above(src)
 	if(T)
 		T.multiz_turf_del(src, DOWN)
-	T = GET_TURF_BELOW(src)
+	T = SSmapping.get_turf_below(src)
 	if(T)
 		T.multiz_turf_del(src, UP)
 	STOP_PROCESSING(SSweather,src)
@@ -257,14 +256,50 @@
 		if(flags & FALL_STOP_INTERCEPTING)
 			break
 	if(prev_turf && !(flags & FALL_NO_MESSAGE))
-		prev_turf.visible_message(span_danger("[mov_name] falls through [prev_turf]!"))
+		prev_turf.visible_message("<span class='danger'>[mov_name] falls through [prev_turf]!</span>")
 	if(flags & FALL_INTERCEPTED)
 		return
 	if(zFall(A, ++levels))
 		return FALSE
-	A.visible_message(span_danger("[A] crashes into [src]!"))
+	if(isliving(A))
+		var/mob/living/O = A
+		var/dex_save = O.mind?.get_skill_level(/datum/skill/misc/climbing)
+		if(dex_save >= 5)
+			if(O.m_intent != MOVE_INTENT_SNEAK) // If we're sneaking, don't show a message to anybody, shhh!
+				O.visible_message("<span class='danger'>[A] gracefully lands on top of [src]!</span>")
+		else
+			A.visible_message("<span class='danger'>[A] crashes into [src]!</span>")
+			if(A.fall_damage())
+				for(var/mob/living/M in contents)
+					visible_message("<span class='danger'>\The [src] falls on \the [M.name]!</span>")
+					M.Stun(1)
+					M.take_overall_damage(A.fall_damage()*2)
+	if(A.fall_damage())
+		for(var/mob/living/M in contents)
+			visible_message("<span class='danger'>\The [src] falls on \the [M.name]!</span>")
+			M.Stun(1)
+			M.take_overall_damage(A.fall_damage()*2)
 	A.onZImpact(src, levels)
 	return TRUE
+
+/atom/movable/proc/fall_damage()
+	return 0
+
+/obj/item/fall_damage()
+	if(w_class == WEIGHT_CLASS_TINY)
+		return 0
+	if(w_class == WEIGHT_CLASS_GIGANTIC)
+		return 300
+	var/bsc = 3**(w_class-1)
+	return bsc
+
+/obj/structure/fall_damage()
+	if(w_class == WEIGHT_CLASS_TINY)
+		return 0
+	if(w_class == WEIGHT_CLASS_GIGANTIC)
+		return 300
+	var/bsc = 3**(w_class-1)
+	return bsc
 
 /turf/proc/can_zFall(atom/movable/A, levels = 1, turf/target)
 	return zPassOut(A, DOWN, target) && target.zPassIn(A, DOWN, src)
@@ -281,7 +316,7 @@
 	target.zImpact(A, levels, src)
 	return TRUE
 
-/turf/attackby(obj/item/C, mob/user, params, multiplier)
+/turf/attackby(obj/item/C, mob/user, params)
 	if(..())
 		return TRUE
 	return FALSE
@@ -441,8 +476,6 @@
 			continue//Will not harm U. Since null != M, can be excluded to kill everyone.
 		M.adjustBruteLoss(damage)
 		M.Unconscious(damage * 4)
-	for(var/obj/mecha/M in src)
-		M.take_damage(damage*2, BRUTE, "blunt", 1)
 
 /turf/proc/Bless()
 	new /obj/effect/blessing(src)
@@ -452,7 +485,7 @@
 	if(.)
 		return
 	if(length(src_object.contents()))
-		to_chat(usr, span_notice("I start dumping out the contents..."))
+		to_chat(usr, "<span class='notice'>I start dumping out the contents...</span>")
 		if(!do_after(usr,20,target=src_object.parent))
 			return FALSE
 
@@ -602,7 +635,7 @@
 
 /turf/proc/add_vomit_floor(mob/living/M, toxvomit = NONE)
 
-	var/obj/effect/decal/cleanable/vomit/V = new /obj/effect/decal/cleanable/vomit(src, M.get_static_viruses())
+	var/obj/effect/decal/cleanable/vomit/V = new /obj/effect/decal/cleanable/vomit(src)
 
 	//if the vomit combined, apply toxicity and reagents to the old vomit
 	if (QDELETED(V))

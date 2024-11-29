@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(traumas)
 
 	phobia_turfs = list(
 		"the supernatural" = typecacheof(list(/turf/open/floor/plasteel/cult, /turf/closed/wall/mineral/cult)),
-		"falling" = typecacheof(list(/turf/open/chasm, /turf/open/floor/fakepit))
+		"falling" = typecacheof(list(/turf/open/floor/fakepit))
 	)
 
 	phobia_species = list(

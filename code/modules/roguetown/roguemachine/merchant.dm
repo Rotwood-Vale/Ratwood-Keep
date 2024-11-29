@@ -152,7 +152,7 @@
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
-			if(K.lockid == lockid)
+			if(KE.lockid == lockid)
 				locked = !locked
 				playsound(loc, 'sound/misc/gold_misc.ogg', 100, FALSE, -1)
 				update_icon()
@@ -177,7 +177,7 @@
 		if(!ispath(path, /datum/supply_pack))
 			message_admins("silly MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE GOLDFACE")
 			return
-		var/datum/supply_pack/PA = SSshuttle.supply_packs[path]
+		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
 		var/cost = PA.cost
 		var/tax_amt=round(SStreasury.tax_value * cost)
 		cost=cost+tax_amt

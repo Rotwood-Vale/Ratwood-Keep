@@ -34,7 +34,7 @@
 	else
 		add_overlay("[icon_state]_door")
 
-/obj/structure/guncase/attackby(obj/item/I, mob/user, params)n
+/obj/structure/guncase/attackby(obj/item/I, mob/user, params)
 	if(istype(I, gun_category) && open)
 		if(LAZYLEN(contents) < capacity)
 			if(!user.transferItemToLoc(I, src))

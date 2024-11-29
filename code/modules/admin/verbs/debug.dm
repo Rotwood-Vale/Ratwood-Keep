@@ -459,17 +459,10 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	var/list/exists = list()
 	for(var/landmark in GLOB.ruin_landmarks)
 		var/obj/effect/landmark/ruin/L = landmark
-		exists[L.ruin_template] = landmark
-
-	var/list/names = list()
-	names += "---- Space Ruins ----"
-	for(var/name in SSmapping.space_ruins_templates)
-		names[name] = list(SSmapping.space_ruins_templates[name], ZTRAIT_SPACE_RUINS, /area/space)
-	names += "---- Lava Ruins ----"
-	for(var/name in SSmapping.lava_ruins_templates)
-		names[name] = list(SSmapping.lava_ruins_templates[name], ZTRAIT_LAVA_RUINS, /area/lavaland/surface/outdoors/unexplored)
+		exists[L.ruin_template] = landmark	
 
 	var/ruinname = input("Select ruin", "Spawn Ruin") as null|anything in sortList(names)
+
 	var/data = names[ruinname]
 	if (!data)
 		return

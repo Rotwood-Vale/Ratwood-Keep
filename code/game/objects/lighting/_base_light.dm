@@ -65,7 +65,7 @@
 	var/bulb_emergency_pow_mul = 0.75	// the multiplier for determining the light's power in emergency mode
 	var/bulb_emergency_pow_min = 0.5	// the minimum value for the light's power in emergency mode
 
-	var/fueluse = -1
+	var/fueluse = -1 // How much fuel the machinery starts with. At -1, it is never turned off with the passing of time.
 
 /obj/machinery/light/broken
 	status = LIGHT_BROKEN
@@ -129,8 +129,7 @@
 	cut_overlays()
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
-			var/area/A = get_area(src)
-			if(emergency_mode || (A && A.fire))
+			if(emergency_mode)
 				icon_state = "[base_state]_emergency"
 				icon_state = null
 			else
@@ -157,10 +156,7 @@
 		var/CO = bulb_colour
 		if(color)
 			CO = color
-		var/area/A = get_area(src)
-		if (A && A.fire)
-			CO = bulb_emergency_colour
-		else if (nightshift_enabled)
+		if (nightshift_enabled)
 			switch(nightshift_enabled)
 				if("night")
 					BR = nightshift_brightness
@@ -192,13 +188,10 @@
 			else
 				use_power = ACTIVE_POWER_USE
 				set_light(BR, light_inner_range, PO, l_color = CO)
-	else if(!turned_off())
+	else
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
 		START_PROCESSING(SSmachines, src)
-	else
-		use_power = IDLE_POWER_USE
-		set_light(0)
 	update_icon()
 
 	broken_sparks(start_only=TRUE)
@@ -249,7 +242,7 @@
 	// attempt to insert light
 	else if(istype(W, /obj/item/light))
 		if(status == LIGHT_OK)
-			to_chat(user, span_warning("There is a [fitting] already inserted!"))
+			to_chat(user, "<span class='warning'>There is a [fitting] already inserted!</span>")
 		else
 			src.add_fingerprint(user)
 			var/obj/item/light/L = W
@@ -260,9 +253,9 @@
 				src.add_fingerprint(user)
 				if(status != LIGHT_EMPTY)
 					drop_light_tube(user)
-					to_chat(user, span_notice("I replace [L]."))
+					to_chat(user, "<span class='notice'>I replace [L].</span>")
 				else
-					to_chat(user, span_notice("I insert [L]."))
+					to_chat(user, "<span class='notice'>I insert [L].</span>")
 				status = L.status
 				switchcount = L.switchcount
 				rigged = L.rigged
@@ -275,17 +268,17 @@
 				if(on && rigged)
 					explode()
 			else
-				to_chat(user, span_warning("This type of light requires a [fitting]!"))
+				to_chat(user, "<span class='warning'>This type of light requires a [fitting]!</span>")
 
 	// attempt to stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
 		if(W.tool_behaviour == TOOL_SCREWDRIVER) //If it's a screwdriver open it.
 			W.play_tool_sound(src, 75)
-			user.visible_message(span_notice("[user.name] opens [src]'s casing."), \
-				span_notice("I open [src]'s casing."), span_hear("I hear a noise."))
+			user.visible_message("<span class='notice'>[user.name] opens [src]'s casing.</span>", \
+				"<span class='notice'>I open [src]'s casing.</span>", "<span class='hear'>I hear a noise.</span>")
 			deconstruct()
 		else
-			to_chat(user, span_danger("I stick \the [W] into the light socket!"))
+			to_chat(user, "<span class='danger'>I stick \the [W] into the light socket!</span>")
 	else
 		return ..()
 
@@ -314,9 +307,9 @@
 		if(BURN)
 			playsound(src.loc, 'sound/blank.ogg', 100, TRUE)
 
-// returns if the light has power /but/ is manually turned off
-// if a light is turned off, it won't activate emergency power
-/obj/machinery/light/proc/turned_off()
+// returns whether this light has power
+// true if area has power and lightswitch is on
+/obj/machinery/light/proc/has_power()
 	return TRUE
 
 
@@ -370,10 +363,10 @@
 
 /obj/machinery/light/attack_tk(mob/user)
 	if(status == LIGHT_EMPTY)
-		to_chat(user, span_warning("There is no [fitting] in this light!"))
+		to_chat(user, "<span class='warning'>There is no [fitting] in this light!</span>")
 		return
 
-	to_chat(user, span_notice("I telekinetically remove the light [fitting]."))
+	to_chat(user, "<span class='notice'>I telekinetically remove the light [fitting].</span>")
 	// create a light tube/bulb item and put it in the user's hand
 	var/obj/item/light/L = drop_light_tube()
 	L.attack_tk(user)
@@ -444,10 +437,10 @@
 
 /obj/item/light/suicide_act(mob/living/carbon/user)
 	if (status == LIGHT_BROKEN)
-		user.visible_message(span_suicide("[user] begins to stab [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message("<span class='suicide'>[user] begins to stab [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 		return BRUTELOSS
 	else
-		user.visible_message(span_suicide("[user] begins to eat \the [src]! It looks like [user.p_theyre()] not very bright!"))
+		user.visible_message("<span class='suicide'>[user] begins to eat \the [src]! It looks like [user.p_theyre()] not very bright!</span>")
 		shatter()
 		return BRUTELOSS
 
@@ -515,7 +508,7 @@
 	if(istype(I, /obj/item/reagent_containers/syringe))
 		var/obj/item/reagent_containers/syringe/S = I
 
-		to_chat(user, span_notice("I inject the solution into \the [src]."))
+		to_chat(user, "<span class='notice'>I inject the solution into \the [src].</span>")
 
 		if(S.reagents.has_reagent(/datum/reagent/toxin/plasma, 5))
 
@@ -536,7 +529,7 @@
 
 /obj/item/light/proc/shatter()
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		visible_message(span_danger("[src] shatters."),span_hear("I hear a small glass object shatter."))
+		visible_message("<span class='danger'>[src] shatters.</span>","<span class='hear'>I hear a small glass object shatter.</span>")
 		status = LIGHT_BROKEN
 		force = 5
 		playsound(src.loc, 'sound/blank.ogg', 75, TRUE)

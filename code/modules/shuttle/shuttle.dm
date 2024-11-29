@@ -747,10 +747,10 @@
 //			if(distant_source)
 //				break
 
-	for(var/A in areas)
+	/*for(var/A in areas)
 		distant_source = locate(/obj/structure/boatbell) in A
 		if(distant_source)
-			break
+			break*/
 
 	if(distant_source)
 		for(var/mob/M in SSmobs.clients_by_zlevel[z])

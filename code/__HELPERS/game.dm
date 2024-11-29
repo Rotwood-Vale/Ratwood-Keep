@@ -189,6 +189,7 @@
 
 		for(var/atom/B in A)	//objects held within other objects are added to the processing list, unless that object is something that can hold organs safely
 			if(!processed_list[B])
+				processing_list+= B
 
 		index++
 		processed_list[A] = A

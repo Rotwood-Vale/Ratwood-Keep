@@ -26,7 +26,7 @@
 				qdel(nest)
 			for(var/mob/living/simple_animal/monster in T)
 				qdel(monster)
-			for(var/obj/structure/flora/plant in T)
+			for(var/obj/structure/flora/ash/plant in T)
 				qdel(plant)
 
 		load(central_turf,centered = TRUE)
@@ -96,7 +96,7 @@
 				break
 		else //Otherwise just pick random one
 			current_pick = pickweight(ruins_availible)
-
+		
 		var/placement_tries = forced_turf ? 1 : PLACEMENT_TRIES //Only try once if we target specific turf
 		var/failed_to_place = TRUE
 		var/target_z = 0
@@ -111,7 +111,7 @@
 					for(var/v in current_pick.always_spawn_with)
 						if(current_pick.always_spawn_with[v] == PLACE_BELOW)
 							var/turf/T = locate(1,1,target_z)
-							if(!GET_TURF_BELOW(T))
+							if(!SSmapping.get_turf_below(T))
 								if(forced_z)
 									continue outer
 								else
@@ -161,7 +161,7 @@
 								if(PLACE_DEFAULT)
 									forced_ruins[linked] = -1
 								if(PLACE_BELOW)
-									forced_ruins[linked] = GET_TURF_BELOW(placed_turf)
+									forced_ruins[linked] = SSmapping.get_turf_below(placed_turf)
 								if(PLACE_ISOLATED)
 									forced_ruins[linked] = SSmapping.get_isolated_ruin_z()
 
@@ -169,5 +169,5 @@
 		for(var/datum/map_template/ruin/R in ruins_availible)
 			if(R.cost > budget)
 				ruins_availible -= R
-
+	
 	log_world("Ruin loader finished with [budget] left to spend.")

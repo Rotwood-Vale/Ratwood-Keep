@@ -1,86 +1,31 @@
-/obj/structure/boatbell
-	name = "bell"
-	desc = "This is the doomspeller of Roguetown."
-	icon = 'icons/roguetown/misc/structure.dmi'
-	icon_state = "bell"
+/obj/structure/warningbell
+	name = "Warning Bell"
+	desc = "A large bell used to warn everyone in the vicinity of impending danger."
+	icon = 'icons/roguetown/misc/96x96.dmi'  // Ensure you have an appropriate icon for the bell
+	icon_state = "churchbell"
 	density = FALSE
-	max_integrity = 0
 	anchored = TRUE
-	var/last_ring
-	var/datum/looping_sound/boatloop/soundloop
+	var/last_ring_time = 0
+	var/ring_cooldown = 50 // Cooldown in deciseconds before the bell can be rung again
+	var/ring_range = 50    // Define the range within which players will be alerted
 
-/obj/structure/boatbell/Initialize()
-	soundloop = new(list(src), FALSE)
-	soundloop.start()
-	. = ..()
-
-/obj/structure/boatbell/attack_hand(mob/user)
-	if(world.time < last_ring + 50)
+/obj/structure/warningbell/attack_hand(mob/user)
+	if(world.time < last_ring_time + ring_cooldown)
+		to_chat(user, "<span class='warning'>The bell is still resonating from the last ring.</span>")
 		return
-	user.visible_message(span_info("[user] rings the bell."))
-	SSshuttle.moveShuttle("supply", "supply_away", TRUE)
-	playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
-	last_ring = world.time
 
-/obj/structure/boatbell/fluff/attack_hand(mob/user)
-	if(world.time < last_ring + 50)
-		return
-	user.visible_message(span_info("[user] rings the bell."))
-	playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
-	last_ring = world.time
+	// Ring the bell
+	last_ring_time = world.time
+	user.visible_message(
+		"<span class='notice'>[user] rings the [src].</span>",
+		"<span class='notice'>You ring the [src].</span>"
+	)
 
-/obj/structure/boatbell/escape
-	desc = "This boat spells the doom of Roguetown. The bell being rung will naturally incite panic in everyone, as many fear the fate of many lordless border settlements should they stay."
-	var/bribe = 0
-	var/bribeprice = 500
+	// Play bell sound for everyone in the vicinity
+	playsound(src, 'sound/misc/deadbell.ogg', 100, TRUE)
 
-/obj/structure/boatbell/escape/Initialize()
-	bribeprice = rand(300,700)
-	. = ..()
-
-
-/obj/structure/boatbell/escape/attackby(obj/item/P, mob/user, params)
-	if(!user.cmode)
-		if(istype(P, /obj/item/roguecoin) || istype(P, /obj/item/roguegem))
-			bribe += P.get_real_price()
-			qdel(P)
-			if(bribe >= bribeprice)
-				to_chat(user, span_warning("That should be enough."))
-			playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
-			return
-	..()
-
-/obj/structure/boatbell/escape/attack_hand(mob/user)
-	if(world.time < last_ring + 50)
-		return
-	last_ring = world.time
-	user.visible_message(span_info("[user] starts ringing the bell."))
-	for(var/i in 1 to rand(1,5))
-		playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
-		if(!do_after(user, 30, target = src))
-			return
-	var/realbribe = bribeprice - (round(((world.time - SSticker.round_start_time) / 9000))*100)
-	if(user.mind)
-		if(user.mind.has_antag_datum(/datum/antagonist/skeleton))
-			realbribe = 0
-	if(bribe < realbribe)
-		to_chat(user, span_warning("Not enough mammon to make the navigators betray the schedule."))
-		return
-//	SSshuttle.requestEvac(user, href_list["call"])
-	if(SSshuttle.emergency.mode != SHUTTLE_DOCKED)
-		return
-	if(SSshuttle.emergency.earlyLaunch == TRUE)
-		SSshuttle.emergency.earlyLaunch = FALSE
-//		SSshuttle.emergency.setTimer(max(SSshuttle.emergency.startTime + ROUNDTIMERBOAT - world.time, 5 MINUTES))
-		//announce delayed
-		priority_announce("The last boat was delayed.")
-	else
-		if(SSshuttle.emergency.timer < 5 MINUTES)
-			priority_announce("The last boat was delayed.")
-		else
-			priority_announce("The last boat is leaving early.", null, 'sound/misc/boatleave.ogg')
-		SSshuttle.emergency.earlyLaunch = TRUE
-		SSshuttle.emergency.setTimer(5 MINUTES)
-//	SSshuttle.moveShuttle("supply", "supply_away", TRUE)
-//	playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
-
+	// Alert all players in the area
+	var/list/nearby_players = get_hearers_in_view(ring_range, src)
+	for(var/mob/M in nearby_players)
+		if(ismob(M))
+			to_chat(M, "<span class='warning'>Alert! The warning bell rings ominously, signaling danger nearby!</span>")

@@ -166,7 +166,6 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
 	AddComponent(/datum/component/butchering, 80, 70)
-
 /obj/item/light_eater/afterattack(atom/movable/AM, mob/user, proximity)
 	. = ..()
 	if(!proximity)
@@ -178,9 +177,20 @@
 		if(isethereal(AM))
 			AM.emp_act(EMP_LIGHT)
 
+		for(var/obj/item/O in AM)
+			if(O.light_outer_range && O.light_power)
+				disintegrate(O)
+		if(L.pulling && L.pulling.light_outer_range && isitem(L.pulling))
+			disintegrate(L.pulling)
+	else if(isitem(AM))
+		var/obj/item/I = AM
+		if(I.light_outer_range && I.light_power)
 			disintegrate(I)
 
 /obj/item/light_eater/proc/disintegrate(obj/item/O)
+
+	visible_message("<span class='danger'>[O] is disintegrated by [src]!</span>")
+	O.burn()
 	playsound(src, 'sound/blank.ogg', 50, TRUE)
 
 #undef HEART_SPECIAL_SHADOWIFY

@@ -7,7 +7,7 @@
 	anchored = TRUE
 	flags_1 = CONDUCT_1
 	pressure_resistance = 5*ONE_ATMOSPHERE
-	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 70, "laser" = 70, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 50, "bullet" = 70, "laser" = 70, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 0, "acid" = 0)
 	max_integrity = 50
 	integrity_failure = 0.4
 	var/rods_type = /obj/item/stack/rods
@@ -38,9 +38,10 @@
 /obj/structure/grille/examine(mob/user)
 	. = ..()
 //	if(anchored)
-//		. += span_notice("It's secured in place with <b>screws</b>. The rods look like they could be <b>cut</b> through.")
+//		. += "<span class='notice'>It's secured in place with <b>screws</b>. The rods look like they could be <b>cut</b> through.</span>"
 //	if(!anchored)
-//		. += span_notice("The anchoring screws are <i>unscrewed</i>. The rods look like they could be <b>cut</b> through.")
+//		. += "<span class='notice'>The anchoring screws are <i>unscrewed</i>. The rods look like they could be <b>cut</b> through.</span>"
+
 
 /obj/structure/grille/attack_paw(mob/user)
 	return attack_hand(user)
@@ -54,8 +55,9 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src, ATTACK_EFFECT_KICK)
-	user.visible_message(span_warning("[user] hits [src]."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message("<span class='warning'>[user] hits [src].</span>", null, null, COMBAT_MESSAGE_RANGE)
 	log_combat(user, src, "hit")
+
 
 /obj/structure/grille/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
@@ -79,7 +81,6 @@
 		W.play_tool_sound(src, 100)
 		deconstruct()
 	else if((W.tool_behaviour == TOOL_SCREWDRIVER) && (isturf(loc) || anchored))
-		if(!shock(user, 90))
 		W.play_tool_sound(src, 100)
 		setAnchored(!anchored)
 		user.visible_message("<span class='notice'>[user] [anchored ? "fastens" : "unfastens"] [src].</span>", \
@@ -99,16 +100,16 @@
 		if (!broken)
 			var/obj/item/stack/ST = W
 			if (ST.get_amount() < 2)
-				to_chat(user, span_warning("I need at least two sheets of glass for that!"))
+				to_chat(user, "<span class='warning'>I need at least two sheets of glass for that!</span>")
 				return
 			var/dir_to_set = SOUTHWEST
 			if(!anchored)
-				to_chat(user, span_warning("[src] needs to be fastened to the floor first!"))
+				to_chat(user, "<span class='warning'>[src] needs to be fastened to the floor first!</span>")
 				return
 			for(var/obj/structure/window/WINDOW in loc)
-				to_chat(user, span_warning("There is already a window there!"))
+				to_chat(user, "<span class='warning'>There is already a window there!</span>")
 				return
-			to_chat(user, span_notice("I start placing the window..."))
+			to_chat(user, "<span class='notice'>I start placing the window...</span>")
 			if(do_after(user,20, target = src))
 				if(!src.loc || !anchored) //Grille broken or unanchored while waiting
 					return
@@ -132,7 +133,7 @@
 				WD.setAnchored(FALSE)
 				WD.state = 0
 				ST.use(2)
-				to_chat(user, span_notice("I place [WD] on [src]."))
+				to_chat(user, "<span class='notice'>I place [WD] on [src].</span>")
 			return
 //window placing end
 

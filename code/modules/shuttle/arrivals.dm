@@ -132,8 +132,6 @@
 		force_depart = FALSE
 	. = ..()
 	if(!. && !docked && !damaged)
-		if(console)
-			console.say("Welcome to your new life, employees!")
 		for(var/L in queued_announces)
 			var/datum/callback/C = L
 			C.Invoke()

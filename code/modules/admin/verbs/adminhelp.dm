@@ -681,7 +681,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 					if(!found)
 						found = surnames[word]
 						if(!found)
-						found = forenames[word]
+							found = forenames[word]
 				if(found)
 					if(!(found in mobs_found))
 						mobs_found += found
