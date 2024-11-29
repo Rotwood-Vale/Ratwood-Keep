@@ -2266,6 +2266,7 @@
 #include "code\modules\roguetown\roguejobs\cook\recipes\soups.dm"
 #include "code\modules\roguetown\roguejobs\cook\tools\cooktools.dm"
 #include "code\modules\roguetown\roguejobs\cook\tools\grinding.dm"
+#include "code\modules\roguetown\roguejobs\cook\tools\milling.dm"
 #include "code\modules\roguetown\roguejobs\cook\tools\oven.dm"
 #include "code\modules\roguetown\roguejobs\cook\tools\pan.dm"
 #include "code\modules\roguetown\roguejobs\cook\tools\pot.dm"
