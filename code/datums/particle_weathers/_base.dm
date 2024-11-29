@@ -304,7 +304,7 @@
 
 
 /datum/particle_weather/proc/weather_message(mob/living/L)
-	messagedMobs[L] = world.time + 30 SECONDS //Chunky delay - this spams otherwise - Severity changes and going indoors resets this timer
+	messagedMobs[L] = world.time + 60 SECONDS //Chunky delay - this spams otherwise - Severity changes and going indoors resets this timer
 	last_message = scale_range_pick(minSeverity, maxSeverity, severity, weather_messages)
 	if(last_message)
 		to_chat(L, last_message)
