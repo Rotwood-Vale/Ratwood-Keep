@@ -145,7 +145,6 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
 	cooked_smell = /datum/pollutant/food/sausage
-	become_rot_type = /obj/item/reagent_containers/food/snacks/rotten/sausage
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/wiener
 	name = "raw wiener"
@@ -154,8 +153,6 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked/wiener
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked/wiener
 	cooked_smell = /datum/pollutant/food/sausage
-	become_rot_type = /obj/item/reagent_containers/food/snacks/rotten/sausage
-
 
 /*	........   Fish sounds   ................ */
 /obj/item/reagent_containers/food/snacks/fish

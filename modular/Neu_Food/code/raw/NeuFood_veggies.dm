@@ -21,7 +21,6 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried
 	cooked_smell = /datum/pollutant/food/fried_onion
 	can_distill = TRUE
-	distill_reagent = /datum/reagent/consumable/ethanol/beer/onion
 	distill_amt = 6
 
 /*	..................   Cabbage   ................... */
@@ -57,5 +56,4 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
 	cooked_smell = /datum/pollutant/food/baked_potato
 	can_distill = TRUE
-	distill_reagent = /datum/reagent/consumable/ethanol/beer/voddena
 	distill_amt = 8
