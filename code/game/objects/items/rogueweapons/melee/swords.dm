@@ -625,13 +625,11 @@
 	wdefense = 6
 	wbalance = 1
 	damtype = BRUTE
-	light_range = 2
-	light_power = 0.5
 	light_color = LIGHT_COLOR_BLUE
 	var/on = FALSE
 
 /datum/intent/sword/freeze
-	name = "strike"
+	name = "freeze"
 	icon_state = "instrike"
 	attack_verb = list("freezes")
 	animname = "chop"
@@ -658,12 +656,13 @@
 	if(on)
 		on = FALSE
 		damtype = BRUTE
+		possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze)
 	else
-		user.visible_message(span_warning("[user]'s blade glows."))
+		user.visible_message(span_warning("[user]'s blade lights up with a blue flame."))
 		on = TRUE
 		damtype = BURN
 		possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze, /datum/intent/sword/freeze)
-	playsound(user, pick('sound/items/stunmace_toggle (1).ogg','sound/items/stunmace_toggle (2).ogg','sound/items/stunmace_toggle (3).ogg'), 100, TRUE)
+	playsound(user, pick('sound/magic/magic_nulled.ogg'), 100, TRUE)
 	if(user.a_intent)
 		var/datum/intent/I = user.a_intent
 		if(istype(I))
