@@ -2,7 +2,7 @@
 	name = "Grenzelhoft Mercenary"
 	tutorial = "Experts, Professionals, Expensive. Those are the first words that come to mind when the emperiate Grenzelhoft mercenary guild is mentioned. While you may work for coin like any common sellsword, mantaining the prestige of the guild will be of utmost priority."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(
+	no = list(
 		/datum/species/akula,
 		/datum/species/vulpkanin,
 		/datum/species/lupian,
@@ -53,6 +53,11 @@
 		var/list/skin_slop = H.dna.species.get_skin_list()
 		H.skin_tone = skin_slop["Grenzelhoft"]
 		H.update_body()
+	if(isdemihuman(H))
+		var/list/skin_slop = H.dna.species.get_skin_list()
+		H.skin_tone = skin_slop["Grenzelhoft"]
+		H.update_body()
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
