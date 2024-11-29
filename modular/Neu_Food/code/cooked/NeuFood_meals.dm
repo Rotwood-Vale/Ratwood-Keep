@@ -134,7 +134,7 @@
 	tastes = list("savory sausage" = 1, "fried onions" = 1)
 	name = "wiener and onions"
 	desc = "Stout and flavourful."
-	icon_state = "wieneronion"
+	icon_state = "wieneronions"
 	foodtype = VEGETABLES | MEAT
 	warming = 3 MINUTES
 	rotprocess = SHELFLIFE_LONG
@@ -154,7 +154,7 @@
 	else
 		return ..()
 /obj/item/reagent_containers/food/snacks/rogue/wieneronions/plated
-	icon_state = "wieneronion_plated"
+	icon_state = "wieneronions_plated"
 	item_state = "plate_food"
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
