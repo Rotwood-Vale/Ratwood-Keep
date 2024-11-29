@@ -231,6 +231,12 @@
 	desc = "It's hard to think..."
 	icon_state = "fentanyl"
 
+// CRITICAL HITS
+
+/datum/status_effect/debuff/skullcrack
+	id = "skullcrack"
+	effectedstats = list("strength" = -10, "perception" = -10, "intelligence" = -20, "endurance" = -10, "speed" = -10)
+
 //Death debuff
 
 /datum/status_effect/debuff/death_weaken
