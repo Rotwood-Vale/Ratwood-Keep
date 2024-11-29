@@ -37,7 +37,7 @@
 	. = ..()
 	if(!user.mind)
 		return
-	var/input = stripped_input(user, "Who are you looking for?", "Scrying Orb")
+	var/input = html_decode(input(user, "Who are you looking for?", "Scrying Orb"))
 	if(!input)
 		return
 	if(!user.key)
