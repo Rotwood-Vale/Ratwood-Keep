@@ -63,6 +63,10 @@
 		var/used_name = name
 		var/used_title = get_role_title()
 		var/display_as_wanderer = FALSE
+		var/display_as_foreign = FALSE
+		var/is_wanderer = FALSE
+		var/are_mercenary = FALSE
+		var/is_mercenary = FALSE
 		var/is_returning = FALSE
 		if(observer_privilege)
 			used_name = real_name
@@ -70,12 +74,24 @@
 			var/datum/migrant_role/migrant = MIGRANT_ROLE(migrant_type)
 			if(migrant.show_wanderer_examine)
 				display_as_wanderer = TRUE
+			if(migrant.show_foreign_examine)
+				display_as_foreign = TRUE
 		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
+			var/datum/job/OJ = SSjob.GetJob(user.job)
 			if(J.wanderer_examine)
 				display_as_wanderer = TRUE
+			if(J.foreign_examine)
+				display_as_foreign = TRUE
+			if(OJ.wanderer_examine)
+				is_wanderer = TRUE
+			if(J.flag == MERCENARY)
+				are_mercenary = TRUE
+			if(OJ.flag == MERCENARY)
+				is_mercenary = TRUE
 			if(islatejoin)
-				is_returning = TRUE
+				(!are_mercenary || !is_mercenary)
+					is_returning = TRUE
 		if(display_as_wanderer)
 			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
 		else if(used_title)
@@ -114,6 +130,12 @@
 			var/mob/living/carbon/human/H = user
 			if(H.marriedto == name)
 				. += span_love("It's my spouse.")
+
+		if(display_as_foreign && !is_wanderer && user != src)
+			if(!are_mercenary || !is_mercenary)
+				. += span_phobia("A Foreigner...")
+			else
+				. += span_notice("A Mercenary")
 
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
