@@ -457,7 +457,7 @@
 			msg += span_warning("[m1] barely conscious.")
 		else
 			if(stat >= UNCONSCIOUS)
-				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"]."
+				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"].[client ? "" : " <b>They won't be waking up for a while.</b>"]"
 			else if(eyesclosed)
 				msg += "[capitalize(m2)] eyes are closed."
 			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))
