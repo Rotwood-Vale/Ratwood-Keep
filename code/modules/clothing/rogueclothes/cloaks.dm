@@ -156,6 +156,10 @@
 /obj/item/clothing/cloak/tabard/crusader/noc
 	color = "#2C2231"
 	detail_color = "#9AB0B0"
+	
+/obj/item/clothing/cloak/tabard/crusader/eora
+	color = "#4D1E49"
+	detail_color = "#A95650"
 
 /obj/item/clothing/cloak/tabard/crusader/tief/attack_right(mob/user)
 	if(picked)

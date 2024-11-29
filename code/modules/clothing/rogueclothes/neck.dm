@@ -203,6 +203,11 @@
 	name = "amulet of Malum"
 	icon_state = "malum"
 	desc = ""
+	
+/obj/item/clothing/neck/roguetown/psicross/eora
+	name = "amulet of Eora"
+	desc = ""
+	icon_state = "eora"
 
 /obj/item/clothing/neck/roguetown/psicross/wood
 	name = "wooden psycross"

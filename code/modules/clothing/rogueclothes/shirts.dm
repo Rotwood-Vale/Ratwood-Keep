@@ -304,6 +304,10 @@
 	. = ..()
 	color = pick("#a90707", "#16239a", "#d68fbd", CLOTHING_BLACK)
 
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/black/Initialize()
+	. = ..()
+	color = CLOTHING_BLACK
+
 /obj/item/clothing/suit/roguetown/shirt/undershirt/webs
 	name = "webbed shirt"
 	desc = "Exotic silk finely woven into.. this? Might as well be wearing a spiderweb"

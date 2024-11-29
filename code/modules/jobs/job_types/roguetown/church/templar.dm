@@ -73,6 +73,14 @@
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			beltr = /obj/item/rogueweapon/sword/long
+		if("Eora") //Eora content from stonekeep
+			head = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
+			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
+			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			beltr = /obj/item/rogueweapon/sword/long
+			mask = /obj/item/clothing/mask/rogue/facemask/goldmask
+
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs

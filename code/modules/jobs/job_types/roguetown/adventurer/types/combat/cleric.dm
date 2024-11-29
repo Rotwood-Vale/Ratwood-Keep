@@ -32,7 +32,9 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 		if(/datum/patron/divine/ravox)
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
-
+		if(/datum/patron/divine/eora)
+			neck = /obj/item/clothing/neck/roguetown/psicross/eora
+			
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
 	var/classes = list("Life Cleric","War Cleric")
