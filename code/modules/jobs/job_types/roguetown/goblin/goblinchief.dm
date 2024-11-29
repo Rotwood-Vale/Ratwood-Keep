@@ -1,12 +1,13 @@
 /datum/job/roguetown/goblinchief
 	title = "Goblin Chief"
+	f_title = "Goblin Chieftess"
 	flag = GOBLINCHIEF
 	department_flag = GOBLIN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_sexes = list(MALE)
-	allowed_races = list(RACES_GOBLIN, RACES_VERY_SHUNNED)//Goblins and Half-Orcs. Orcs, too, if we ever add them.
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = list(/datum/species/goblinp, /datum/species/halforc)
 	tutorial = "You're the Chief of the local Goblin tribe, assuring Graggar's rule is spread to the surrounding lands. \
 	Currently, you're in hiding, beneath the town and, thankfully, bypassing the Mire's gate. \
 	Have your subjects trudge through the sewers, in the name of Gragger, robbing passerby."
