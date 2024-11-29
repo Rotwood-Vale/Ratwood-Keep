@@ -12,7 +12,7 @@
 /datum/outfit/job/roguetown/mercenary/forlorn/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/boots
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/roguetown/gorget/forlorncollar
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
