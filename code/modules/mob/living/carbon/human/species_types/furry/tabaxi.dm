@@ -45,11 +45,10 @@
 		"speed" = 2,
 		"fortune" = 0
 		)
-	)
 	specstats_f = list(
 		"speed" = -1,
 		"perception" = 1,
-	)	
+	)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
