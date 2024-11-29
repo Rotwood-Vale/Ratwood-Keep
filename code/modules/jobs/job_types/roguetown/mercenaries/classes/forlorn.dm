@@ -43,7 +43,6 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("endurance", 2)
-		H.change_stat("constitution", 2)
-		H.change_stat("perception", 1) // Our stats aren't quite as good as other mercs but we get crit res + maces.
+		H.change_stat("constitution", 3) // tuff boys
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
