@@ -60,7 +60,6 @@
 	max_integrity = 250
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
-	armor_class = ARMOR_CLASS_MEDIUM
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
