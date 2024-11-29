@@ -27,6 +27,7 @@
 	thrown_bclass = BCLASS_CUT
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
+	can_cdg = TRUE
 
 
 /datum/intent/dagger
@@ -44,6 +45,8 @@
 	swingdelay = 0
 	clickcd = 10
 	item_d_type = "slash"
+	ican_cdg = TRUE
+	ican_assin = TRUE
 
 /datum/intent/dagger/thrust
 	name = "thrust"
@@ -56,18 +59,22 @@
 	chargetime = 0
 	clickcd = 8
 	item_d_type = "stab"
+	ican_cdg = TRUE
+	ican_assin = TRUE
 
 /datum/intent/dagger/thrust/pick
 	name = "icepick stab"
 	icon_state = "inpick"
 	attack_verb = list("picks", "impales")
-	blade_class = BCLASS_PICK
+	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 80
+	penfactor = 70
 	clickcd = 14
 	swingdelay = 12
-	damfactor = 1.1
+	damfactor = 1.5
 	iparrybonus = -15
+	ican_cdg = TRUE
+	ican_assin = TRUE
 
 /obj/item/rogueweapon/huntingknife/getonmobprop(tag)
 	. = ..()
@@ -105,6 +112,7 @@
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ingot/steel
+	can_cdg = FALSE
 
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
@@ -113,6 +121,8 @@
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
 	icon_state = "combatknife"
 	throwforce = 16
+	can_cdg = TRUE
+	can_assin = TRUE
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
@@ -212,6 +222,8 @@
 	name = "iron dagger"
 	desc = "This is a common dagger of iron."
 	icon_state = "idagger"
+	can_cdg = TRUE
+	can_assin = TRUE
 
 /obj/item/rogueweapon/huntingknife/idagger/steel
 	name = "steel dagger"
@@ -354,6 +366,8 @@
 	force = 19
 	icon_state = "elfdagger"
 	item_state = "elfdag"
+	can_cdg = TRUE
+	can_assin = TRUE
 
 /obj/item/rogueweapon/huntingknife/elvish/drow
 	name = "nite elf dagger"

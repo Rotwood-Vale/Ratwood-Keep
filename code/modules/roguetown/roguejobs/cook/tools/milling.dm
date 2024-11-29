@@ -1,6 +1,6 @@
-/obj/structure/fluff/grindstone
-	name = "grindstone"
-	desc = "A grindstone used to grind items into reagents."
+/obj/structure/fluff/millstone
+	name = "millstone"
+	desc = "A millstone used to grind grain into flour."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "millstone"
 	density = TRUE
@@ -9,20 +9,20 @@
 	max_integrity = 400
 	var/list/obj/item/to_grind = list()
 
-/obj/structure/fluff/grindstone/Initialize()
+/obj/structure/fluff/millstone/Initialize()
 	create_reagents(900, DRAINABLE | AMOUNT_VISIBLE | REFILLABLE)
 	. = ..()
 
-/obj/structure/fluff/grindstone/Destroy()
+/obj/structure/fluff/millstone/Destroy()
 	chem_splash(loc, 2, list(reagents))
 	qdel(reagents)
 	qdel(to_grind)
 	..()
 
-/obj/structure/fluff/grindstone/examine(mob/user)
+/obj/structure/fluff/millstone/examine(mob/user)
 	. = ..()
 
-/obj/structure/fluff/grindstone/proc/grindUp(list/obj/item/to_grind, mob/user)
+/obj/structure/fluff/millstone/proc/grindUp(list/obj/item/to_grind, mob/user)
 	for(var/obj/item/itemtogrind in to_grind)
 		if(do_after(user, 8, target = src))
 			reagents.add_reagent_list(itemtogrind.grind_results)
@@ -33,20 +33,20 @@
 			break
 
 
-/obj/structure/fluff/grindstone/attack_hand(mob/user)
+/obj/structure/fluff/millstone/attack_hand(mob/user)
 	if(to_grind.len == 0)
 		to_chat(user, span_warning("Nothing to grind!"))
 		return TRUE
 	if(do_after(user, 8, target = src))
-		user.visible_message(span_notice("[user] begins to grind the grindstone"), \
-						span_notice("I begin to grind the grindstone."))
+		user.visible_message(span_notice("[user] begins to grind the millstone"), \
+						span_notice("I begin to grind the millstone."))
 		grindUp(to_grind, usr)
-		user.visible_message(span_notice("[user] finishes grinding the grindstone"), \
-						span_notice("I finish grinding the grindstone."))
+		user.visible_message(span_notice("[user] finishes grinding the millstone"), \
+						span_notice("I finish grinding the millstone."))
 		return TRUE
 	..()
 
-/obj/structure/fluff/grindstone/attackby(obj/item/I, mob/user, params)
+/obj/structure/fluff/millstone/attackby(obj/item/I, mob/user, params)
 	var/obj/item/grindable = I
 	if(istype(I, /obj/item/reagent_containers/glass))
 		if(user.used_intent.type == INTENT_POUR) //Something like a glass. Player probably wants to transfer TO it.
