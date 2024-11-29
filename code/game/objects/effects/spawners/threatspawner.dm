@@ -64,6 +64,10 @@ GLOBAL_LIST_INIT(threatspawner_quantities, list(
 	// (This way we don't wind up spawning dudes in a space a player might be building in)
 	var/lights = 0
 	for(var/obj/machinery/light/rogue/RF in view(spawn_range, src))
+		// We ignore braziers because those are usually a result of coming with the map!
+		// (This also allows us to place threat spawners on roads and have them still work)
+		if(istype(RF, /obj/machinery/light/rogue/firebowl/stump))
+			continue
 		if(RF.on)
 			lights++
 	if(lights > 0)
