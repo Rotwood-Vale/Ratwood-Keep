@@ -114,7 +114,7 @@
 	name = "wooden fork"
 	desc = "Traditional utensil for stabbing your food in order to shove it into your mouth."
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
-	icon_state = "fork_iron" //should be "fork" but there's currently no icon, this is temporary, FIX ASAP!!
+	icon_state = "fork"
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 

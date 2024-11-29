@@ -35,15 +35,14 @@ SUBSYSTEM_DEF(traumas)
 		"skeletons"        = typecacheof(list(/mob/living/simple_animal/hostile/skeleton)),
 		"snakes"           = typecacheof(list(/mob/living/simple_animal/hostile/retaliate/poison/snake)),
 		"the supernatural" = typecacheof(list(/mob/living/simple_animal/hostile/construct,
-												/mob/living/simple_animal/revenant, /mob/living/simple_animal/shade)),
-		"conspiracies"     = typecacheof(list(/mob/living/simple_animal/drone,
+												/mob/living/simple_animal/shade)),
+		"conspiracies"     = typecacheof(list(
 												/mob/living/simple_animal/pet/penguin)),
 		"birds"            = typecacheof(list(/mob/living/simple_animal/parrot, /mob/living/simple_animal/chick, /mob/living/simple_animal/chicken,
 												/mob/living/simple_animal/pet/penguin))
 	)
 
 	phobia_objs = list(
-		"snakes" = typecacheof(list(/obj/item/rod_of_asclepius)),
 		"spiders"   = typecacheof(list(/obj/structure/spider)),
 
 					  "lizards"   = typecacheof(list(/obj/item/toy/plush/lizardplushie, /obj/item/reagent_containers/food/snacks/kebab/tail,
@@ -63,7 +62,7 @@ SUBSYSTEM_DEF(traumas)
 
 	phobia_turfs = list(
 		"the supernatural" = typecacheof(list(/turf/open/floor/plasteel/cult, /turf/closed/wall/mineral/cult)),
-		"falling" = typecacheof(list(/turf/open/chasm, /turf/open/floor/fakepit))
+		"falling" = typecacheof(list(/turf/open/floor/fakepit))
 	)
 
 	phobia_species = list(

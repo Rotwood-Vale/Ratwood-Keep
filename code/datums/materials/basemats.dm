@@ -189,18 +189,6 @@ Unless you know what you're doing, only use the first three numbers. They're in 
 	strength_modifier = 0.8
 	value_per_unit = 0.025
 
-///Stronk force increase
-/datum/material/adamantine
-	name = "adamantine"
-	id = "adamantine"
-	desc = ""
-	color = "#6d7e8e"
-	strength_modifier = 1.5
-	categories = list(MAT_CATEGORY_RIGID = TRUE)
-	sheet_type = /obj/item/stack/sheet/mineral/adamantine
-	value_per_unit = 0.25
-	beauty_modifier = 0.4
-	armor_modifiers = list("blunt" = 1.5, "slash" = 1.5, "stab" = 1.5, "bullet" = 1.5, "laser" = 1.3, "energy" = 1.3, "bomb" = 1, "bio" = 1, "rad" = 1, "fire" = 2.5, "acid" = 1)
 
 ///RPG Magic.
 /datum/material/mythril

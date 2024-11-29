@@ -607,8 +607,6 @@
 		return
 	if(!over_object)
 		return
-	if(ismecha(M.loc)) // stops inventory actions in a mech
-		return
 	if(M.incapacitated() || !M.canUseStorage())
 		return
 
@@ -669,7 +667,7 @@
 /datum/component/storage/proc/mousedrop_receive(datum/source, atom/movable/O, mob/M)
 	if(isitem(O))
 		var/obj/item/I = O
-		if(iscarbon(M) || isdrone(M))
+		if(iscarbon(M))
 			var/mob/living/L = M
 			if(!L.incapacitated() && I == L.get_active_held_item())
 				if(!SEND_SIGNAL(I, COMSIG_CONTAINS_STORAGE) && can_be_inserted(I, FALSE))	//If it has storage it should be trying to dump, not insert.

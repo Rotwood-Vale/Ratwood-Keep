@@ -94,7 +94,7 @@
 		if(wonder_id >= 4)
 			if(GLOB.maniac_highlander) // Has a Maniac already TRIUMPHED?
 				to_chat(user, span_danger("IT WAS ALL FOR NAUGHT! I CAN'T WAKE UP!"))
-			else	
+			else
 				to_chat(user, span_userdanger("I must SUM the keys. I am WAKING up!"))
 				dream_master.agony(user)
 				for(var/mob/living/carbon/C in GLOB.carbon_list - user) // Notify any other maniacs
@@ -112,7 +112,7 @@
 		user.log_message("crafted [wonder_id_desc] Maniac Wonder [key_text].", LOG_GAME)
 		message_admins("[wonder_id_desc] Maniac Wonder [key_text] constructed. [ADMIN_JMP(src)]")
 	START_PROCESSING(SSobj, src)
-	
+
 /obj/structure/wonder/examine(mob/user)
 	. = ..()
 	if(!QDELETED(dream_master))
@@ -160,7 +160,7 @@
 			V.add_stress(/datum/stressevent/saw_wonder)
 			V.add_client_colour(/datum/client_colour/maniac_marked)
 		if(!(dream_master in H.maniacs))
-			var/inscryption = "<b>INRL</b> - [key_text] - [key_num]"
+			var/inscryption = "[key_text] - [key_num]"
 			LAZYSET(H.inscryptions, dream_master, inscryption)
 			LAZYSET(H.inscryption_keys, dream_master, key_text)
 			LAZYSET(H.maniacs2wonder_ids, dream_master, wonder_id)

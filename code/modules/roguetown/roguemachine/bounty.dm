@@ -1,8 +1,8 @@
 /obj/structure/roguemachine/bounty
 	name = "Excidium"
 	desc = "A machine that sets and collects bounties. Its bloodied maw could easily fit a human head."
-	icon = 'icons/roguetown/topadd/statue1.dmi'
-	icon_state = "baldguy"
+	icon = 'icons/roguetown/misc/machinesbig.dmi'
+	icon_state = "excidium"
 	density = FALSE
 	blade_dulling = DULLING_BASH
 	anchored = TRUE
@@ -61,8 +61,11 @@
 		if(b.target == stored_head.real_name)
 			correct_head = TRUE
 			say("A bounty has been sated.")
+			flick("excidium_talk", src)
 			reward_amount += b.amount
 			GLOB.head_bounties -= b
+			message_admins("[ADMIN_LOOKUPFLW(user)] has completed the bounty on [ADMIN_LOOKUPFLW(b.target)] by delivering the severed head.")
+
 	if(P.type == /obj/item/bodypart/head/goblin)
 		correct_head = TRUE
 		say("A bounty has been sated.")
@@ -72,6 +75,7 @@
 		qdel(P)
 	else // No valid bounty for this head?
 		say("This skull carries no reward.")
+		flick("excidium_talk", src)
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 
@@ -79,6 +83,7 @@
 
 	sleep(1 SECONDS)
 
+	flick("excidium_eat", src)
 	var/list/headcrush = list('sound/combat/fracture/headcrush (2).ogg', 'sound/combat/fracture/headcrush (3).ogg', 'sound/combat/fracture/headcrush (4).ogg')
 	playsound(src, pick_n_take(headcrush), 100, FALSE, -1)
 	sleep(1 SECONDS)
@@ -92,6 +97,7 @@
 	// Head has been "analyzed". Return it.
 	sleep(2 SECONDS)
 	playsound(src, 'sound/combat/vite.ogg', 100, FALSE, -1)
+	flick("excidium_talk", src)
 	stored_head = new /obj/item/bodypart/head(machine_location)
 	stored_head.name = "mutilated head"
 	stored_head.desc = "This head has been violated beyond recognition, the work of a horrific machine."
@@ -112,6 +118,7 @@
 		popup.open()
 	else
 		say("No bounties are currently active.")
+		flick("excidium_talk", src)
 
 ///Sets a bounty on a target player through user input.
 ///@param user: The player setting the bounty.
@@ -177,6 +184,7 @@
 
 	//Announce it locally and on scomm
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+	flick("excidium_talk", src)
 	var/bounty_announcement 
 	if(target)
 		bounty_announcement = "The Excidium hungers for the head of [target]."
@@ -185,7 +193,7 @@
 	say(bounty_announcement)
 	scom_announce(bounty_announcement)
 
-	message_admins("[ADMIN_LOOKUPFLW(user)] has set a bounty on [ADMIN_LOOKUPFLW(target)] with the reason of: '[reason]'")
+	message_admins("[ADMIN_LOOKUPFLW(user)] has set a bounty [target ? "on [ADMIN_LOOKUPFLW(target)] with the reason of: '[reason]'" : "with the task to [reason]"]")
 
 /proc/add_bounty(target_realname, amount, bandit_status, reason, employer_name, withdrawable, number)
 	var/datum/bounty/new_bounty = new /datum/bounty
@@ -244,6 +252,8 @@
 			budget2change(b.amount, user)
 			GLOB.head_bounties -= b
 			say("Bounty successfully marked as completed and reward withdrawn.")
+			message_admins("[ADMIN_LOOKUPFLW(user)] has withdrawn the bounty of [ADMIN_LOOKUPFLW(b.employer)] [b.target ? "on [ADMIN_LOOKUPFLW(b.target)]'s head non-lethally" : ""] the terms of the bounty was: [b.reason]")
 		else 
 			say("There are no withdrawable bounties with that number. Please confirm that the bounty is withdrawable, and deliver head for cranial inspection otherwise.")
+	flick("excidium_talk", src)
 	//Please for the love of god anyone that can properly do menus should fix this. This is the best i could do considering how i know nothing about them. 

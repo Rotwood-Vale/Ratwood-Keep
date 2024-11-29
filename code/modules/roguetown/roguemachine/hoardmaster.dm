@@ -26,7 +26,7 @@
 		if(4)
 			name = "Hoardmaster Leviathan's Shadow"
 		if(5)
-			name = "Hoardmaster slyph"
+			name = "Hoardmaster Slyph"
 		if(6)
 			name = "Hoardmaster Stormcaller"
 
@@ -51,8 +51,8 @@
 		var/mob/M = usr
 		var/datum/antagonist/bandit/B = M.mind.has_antag_datum(/datum/antagonist/bandit)
 		var/path = text2path(href_list["buy"])
-		if(!ispath(path, /datum/supply_pack))
-			message_admins("silly MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE HOARDMASTER")
+		if(!ispath(path, /datum/supply_pack/rogue/bandit))
+			message_admins("[usr.key] has attempted to purchase [sanitize(href_list["buy"])] with the HOARDMASTER. This is likely a HREF exploit attempt!")
 			return
 		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
 		var/cost = PA.cost

@@ -15,7 +15,6 @@
 
 GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 	/turf/open/space,
-	/turf/open/chasm,
 	/turf/open/lava,
 	/turf/open/water,
 	/turf/open/transparent/openspace
@@ -108,17 +107,11 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 //Simple animals
 #define isanimal(A) (istype(A, /mob/living/simple_animal))
 
-#define isrevenant(A) (istype(A, /mob/living/simple_animal/revenant))
-
 #define isshade(A) (istype(A, /mob/living/simple_animal/shade))
 
 #define ismouse(A) (istype(A, /mob/living/simple_animal/mouse))
 
 #define iscow(A) (istype(A, /mob/living/simple_animal/cow))
-
-#define isslime(A) (istype(A, /mob/living/simple_animal/slime))
-
-#define isdrone(A) (istype(A, /mob/living/simple_animal/drone))
 
 #define iscat(A) (istype(A, /mob/living/simple_animal/pet/cat))
 
@@ -127,8 +120,6 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define iscorgi(A) (istype(A, /mob/living/simple_animal/pet/dog/corgi))
 
 #define ishostile(A) (istype(A, /mob/living/simple_animal/hostile))
-
-#define isswarmer(A) (istype(A, /mob/living/simple_animal/hostile/swarmer))
 
 #define isguardian(A) (istype(A, /mob/living/simple_animal/hostile/guardian))
 
@@ -169,8 +160,6 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 
 #define ismachinery(A) (istype(A, /obj/machinery))
 
-#define ismecha(A) (istype(A, /obj/mecha))
-
 #define is_cleanable(A) (istype(A, /obj/effect/decal/cleanable)) //if something is cleanable
 
 #define isorgan(A) (istype(A, /obj/item/organ))
@@ -192,15 +181,6 @@ GLOBAL_LIST_INIT(pointed_types, typecacheof(list(
 #define isprojectile(A) (istype(A, /obj/projectile))
 
 #define isgun(A) (istype(A, /obj/item/gun))
-
-//Assemblies
-#define isassembly(O) (istype(O, /obj/item/assembly))
-
-#define isigniter(O) (istype(O, /obj/item/assembly/igniter))
-
-#define isprox(O) (istype(O, /obj/item/assembly/prox_sensor))
-
-#define issignaler(O) (istype(O, /obj/item/assembly/signaler))
 
 GLOBAL_LIST_INIT(glass_sheet_types, typecacheof(list(
 	/obj/item/stack/sheet/glass,

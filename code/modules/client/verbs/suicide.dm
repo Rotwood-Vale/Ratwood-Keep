@@ -13,9 +13,6 @@
 	if(B)
 		B.suicided = suicide_state
 
-/mob/living/silicon/robot/set_suicide(suicide_state)
-	. = ..()
-
 /mob/living/carbon/human/verb/suicide()
 	set hidden = 1
 	if(!usr.client.holder)
@@ -137,75 +134,6 @@
 		suicide_log()
 
 		adjustOxyLoss(max(200- getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
-		death(FALSE)
-
-/mob/living/silicon/ai/verb/suicide()
-	set hidden = 1
-	if(!canSuicide())
-		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
-	if(!canSuicide())
-		return
-	if(confirm == "Yes")
-		set_suicide(TRUE)
-		visible_message(span_danger("[src] is powering down. It looks like [p_theyre()] trying to commit suicide."), \
-				span_danger("[src] is powering down. It looks like [p_theyre()] trying to commit suicide."))
-
-		suicide_log()
-
-		//put em at -175
-		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
-		death(FALSE)
-
-/mob/living/silicon/robot/verb/suicide()
-	set hidden = 1
-	if(!canSuicide())
-		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
-	if(!canSuicide())
-		return
-	if(confirm == "Yes")
-		set_suicide(TRUE)
-		visible_message(span_danger("[src] is powering down. It looks like [p_theyre()] trying to commit suicide."), \
-				span_danger("[src] is powering down. It looks like [p_theyre()] trying to commit suicide."))
-
-		suicide_log()
-
-		//put em at -175
-		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
-		death(FALSE)
-
-/mob/living/silicon/pai/verb/suicide()
-	set hidden = 1
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
-	if(confirm == "Yes")
-		var/turf/T = get_turf(src.loc)
-		T.visible_message(span_notice("[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\""), null, \
-		 span_notice("[src] bleeps electronically."))
-
-		suicide_log()
-
-		death(FALSE)
-	else
-		to_chat(src, "Aborting suicide attempt.")
-
-/mob/living/carbon/alien/humanoid/verb/suicide()
-	set hidden = 1
-	if(!canSuicide())
-		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
-	if(!canSuicide())
-		return
-	if(confirm == "Yes")
-		set_suicide(TRUE)
-		visible_message(span_danger("[src] is thrashing wildly! It looks like [p_theyre()] trying to commit suicide."), \
-				span_danger("[src] is thrashing wildly! It looks like [p_theyre()] trying to commit suicide."), \
-				span_hear("I hear thrashing."))
-
-		suicide_log()
-
-		//put em at -175
-		adjustOxyLoss(max(200 - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		death(FALSE)
 
 /mob/living/simple_animal/verb/suicide()

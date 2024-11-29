@@ -666,9 +666,6 @@ mob/living/simple_animal/handle_fire()
 			return
 	sync_lighting_plane_alpha()
 
-/mob/living/simple_animal/get_idcard(hand_first)
-	return access_card
-
 /mob/living/simple_animal/can_hold_items()
 	return dextrous
 

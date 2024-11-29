@@ -44,7 +44,6 @@
 		dat += {"
 			<B>Fun Secrets</B><BR>
 			<BR>
-			<A href='?src=[REF(src)];[HrefToken()];secrets=virus'>Trigger a Virus Outbreak</A><BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=monkey'>Turn all humans into monkeys</A><BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=anime'>Chinese Cartoons</A><BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=allspecies'>Change the species of all humans</A><BR>
@@ -287,8 +286,6 @@
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Traitor All", "[objective]"))
 			for(var/mob/living/H in GLOB.player_list)
-				if(!(ishuman(H)||istype(H, /mob/living/silicon/)))
-					continue
 				if(H.stat == DEAD || !H.mind)
 					continue
 				if(is_special_character(H))
@@ -374,24 +371,7 @@
 		if("floorlava")
 			SSweather.run_weather(/datum/weather/floor_is_lava)
 
-		if("virus")
-			if(!check_rights(R_FUN))
-				return
-			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Virus Outbreak"))
-			switch(alert("Do you want this to be a random disease or do you have something in mind?",,"Make Your Own","Random","Choose"))
-				if("Make Your Own")
-					AdminCreateVirus(usr.client)
-				if("Random")
-					var/datum/round_event_control/disease_outbreak/DC = locate(/datum/round_event_control/disease_outbreak) in SSevents.control
-					E = DC.runEvent()
-				if("Choose")
-					var/virus = input("Choose the virus to spread", "BIOHAZARD") as null|anything in sortList(typesof(/datum/disease, GLOBAL_PROC_REF(cmp_typepaths_asc)))
-					var/datum/round_event_control/disease_outbreak/DC = locate(/datum/round_event_control/disease_outbreak) in SSevents.control
-					var/datum/round_event/disease_outbreak/DO = DC.runEvent()
-					DO.virus_type = virus
-					E = DO
-
-		if("stupidify")
+		if("retardify")
 			if(!check_rights(R_FUN))
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Mass Braindamage"))

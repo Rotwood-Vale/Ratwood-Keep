@@ -284,8 +284,6 @@
 						SwitchState()
 			else
 				SwitchState()
-	else if(ismecha(user))
-		SwitchState()
 	return TRUE
 
 /obj/structure/mineral_door/proc/SwitchState(silent = FALSE)

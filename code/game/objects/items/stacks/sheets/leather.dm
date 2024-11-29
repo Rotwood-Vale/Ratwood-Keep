@@ -119,7 +119,6 @@ GLOBAL_LIST_INIT(monkey_recipes, list ( \
 	item_state = "sheet-leather"
 
 GLOBAL_LIST_INIT(leather_recipes, list ( \
-	new/datum/stack_recipe("wallet", /obj/item/storage/wallet, 1), \
 	new/datum/stack_recipe("muzzle", /obj/item/clothing/mask/muzzle, 2), \
 	new/datum/stack_recipe("botany gloves", /obj/item/clothing/gloves/botanic_leather, 3), \
 	new/datum/stack_recipe("toolbelt", /obj/item/storage/belt/utility, 4), \

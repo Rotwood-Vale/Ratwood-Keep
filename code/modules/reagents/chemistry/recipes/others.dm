@@ -130,7 +130,7 @@
 	name = "Mulligan"
 	id = /datum/reagent/mulligan
 	results = list(/datum/reagent/mulligan = 1)
-	required_reagents = list(/datum/reagent/mutationtoxin/jelly = 1, /datum/reagent/toxin/mutagen = 1)
+	required_reagents = list(/datum/reagent/mutationtoxin = 1, /datum/reagent/toxin/mutagen = 1)
 
 
 ////////////////////////////////// VIROLOGY //////////////////////////////////////////
@@ -681,17 +681,7 @@
 	results = list(/datum/reagent/yuck = 4)
 	required_reagents = list(/datum/reagent/fuel = 3)
 	required_container = /obj/item/reagent_containers/food/snacks/deadmouse
-
-/datum/chemical_reaction/slime_extractification
-	name = "slime extractification"
-	id = "slime extractification"
-	required_reagents = list(/datum/reagent/toxin/slimejelly = 30, /datum/reagent/consumable/frostoil = 5, /datum/reagent/toxin/plasma = 5)
-	mix_message = "The mixture condenses into a ball."
-
-/datum/chemical_reaction/slime_extractification/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	new /obj/item/slime_extract/grey(location)
-
+	
 /datum/chemical_reaction/cellulose_carbonization
 	name = "Cellulose_Carbonization"
 	id = /datum/reagent/carbon

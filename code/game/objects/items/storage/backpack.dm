@@ -220,9 +220,6 @@
 	icon_state = "satchel"
 	item_state = "satchel"
 
-/obj/item/storage/backpack/satchel/leather/withwallet/PopulateContents()
-	new /obj/item/storage/wallet/random(src)
-
 /obj/item/storage/backpack/satchel/fireproof
 	resistance_flags = FIRE_PROOF
 

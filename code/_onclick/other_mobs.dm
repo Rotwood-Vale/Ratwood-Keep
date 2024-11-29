@@ -79,7 +79,13 @@
 		to_chat(src, span_warning("[pulledby] is restraining my arm!"))
 		return
 
-	A.attack_right(src, params)
+	//TODO VANDERLIN: Refactor this into melee_attack_chain_right so that items can more dynamically work with RMB
+	var/obj/item/held_item = get_active_held_item()
+	if(held_item)
+		if(!held_item.pre_attack_right(A, src, params))
+			A.attack_right(src, params)
+	else
+		A.attack_right(src, params)
 
 /mob/living/attack_right(mob/user, params)
 	. = ..()
@@ -648,32 +654,6 @@
 							span_danger("I avoid [src]'s bite!"), span_hear("I hear jaws snapping shut!"), COMBAT_MESSAGE_RANGE, src)
 			to_chat(src, span_danger("My bite misses [ML]!"))
 
-
-/*
-	Slimes
-	Nothing happening here
-*/
-/mob/living/simple_animal/slime/UnarmedAttack(atom/A)
-	A.attack_slime(src)
-/atom/proc/attack_slime(mob/user)
-	return
-/mob/living/simple_animal/slime/RestrainedClickOn(atom/A)
-	return
-
-
-/*
-	Drones
-*/
-/mob/living/simple_animal/drone/UnarmedAttack(atom/A)
-	A.attack_drone(src)
-
-/atom/proc/attack_drone(mob/living/simple_animal/drone/user)
-	attack_hand(user) //defaults to attack_hand. Override it when you don't want drones to do same stuff as humans.
-
-/mob/living/simple_animal/slime/RestrainedClickOn(atom/A)
-	return
-
-
 /*
 	True Devil
 */
@@ -687,15 +667,6 @@
 
 /mob/living/brain/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
 	return
-
-
-/*
-	pAI
-*/
-
-/mob/living/silicon/pai/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
-	return
-
 
 /*
 	Simple animals

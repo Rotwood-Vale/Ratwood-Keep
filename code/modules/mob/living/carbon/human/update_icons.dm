@@ -714,7 +714,10 @@ There are several things that need to be remembered:
 		inv.update_icon()
 
 	if(beltr)
-		beltr.screen_loc = rogueui_beltr
+		if(beltr.bigboy)
+			beltr.screen_loc = "WEST-4:-16,SOUTH+2:-16"
+		else
+			beltr.screen_loc = rogueui_beltr
 		if(client && hud_used && hud_used.hud_shown)
 			client.screen += beltr
 		update_observer_view(beltr)
@@ -766,7 +769,10 @@ There are several things that need to be remembered:
 				standing_front += onbelt_overlay
 
 	if(beltl)
-		beltl.screen_loc = rogueui_beltl
+		if(beltl.bigboy)
+			beltl.screen_loc = "WEST-2:-16,SOUTH+2:-16"
+		else
+			beltl.screen_loc = rogueui_beltl
 		if(client && hud_used && hud_used.hud_shown)
 			client.screen += beltl
 		update_observer_view(beltl)
@@ -901,11 +907,17 @@ There are several things that need to be remembered:
 				client.screen += r_store
 			update_observer_view(r_store)*/
 
-
 /mob/living/carbon/human/update_inv_wear_mask()
 	..()
 	update_body_parts(TRUE)
+
+	if(wear_mask)
+		if(!(SLOT_WEAR_MASK in check_obscured_slots()))
+			overlays_standing[MASK_LAYER] = wear_mask.build_worn_icon(default_layer = MASK_LAYER, default_icon_file = 'icons/roguetown/clothing/onmob/masks.dmi')
+		update_hud_wear_mask(wear_mask)
+
 	var/mutable_appearance/mask_overlay = overlays_standing[MASK_LAYER]
+
 	if(mask_overlay)
 		remove_overlay(MASK_LAYER)
 		if(gender == MALE)
@@ -1467,14 +1479,20 @@ There are several things that need to be remembered:
 
 //update whether our back item appears on our hud.
 /mob/living/carbon/human/update_hud_backr(obj/item/I)
-	I.screen_loc = rogueui_backr
+	if(I.bigboy)
+		I.screen_loc = "WEST-4:-16,SOUTH+5:-16"
+	else
+		I.screen_loc = rogueui_backr
 	if(client && hud_used && hud_used.hud_shown)
 		client.screen += I
 	update_observer_view(I)
 
 //update whether our back item appears on our hud.
 /mob/living/carbon/human/update_hud_backl(obj/item/I)
-	I.screen_loc = rogueui_backl
+	if(I.bigboy)
+		I.screen_loc = "WEST-2:-16,SOUTH+5:-16"
+	else
+		I.screen_loc = rogueui_backl
 	if(client && hud_used && hud_used.hud_shown)
 		client.screen += I
 	update_observer_view(I)

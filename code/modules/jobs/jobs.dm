@@ -134,6 +134,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
 	"Mercenary",
+	"Guild Clerk",
 ))
 
 GLOBAL_LIST_INIT(youngfolk_positions, list(
@@ -154,6 +155,15 @@ GLOBAL_LIST_INIT(allmig_positions, list(
 
 GLOBAL_LIST_INIT(roguewar_positions, list(
 	"Adventurer",
+))
+
+GLOBAL_LIST_INIT(goblin_positions, list(
+	"Goblin Chief",
+	"Goblin Cook",
+	"Goblin Guard",
+	"Goblin Rabble",
+	"Goblin Smith",
+	"Goblin Shaman",
 ))
 
 GLOBAL_LIST_INIT(roguefight_positions, list(

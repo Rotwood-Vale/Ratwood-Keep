@@ -49,6 +49,10 @@
 	blocksound = SOFTHIT
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon
+	color = "#78a3c9"
+	
+
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
 	desc = "A protective covering worn by those native to the desert."
@@ -373,6 +377,7 @@
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
+	SSroguemachine.crown = src
 	visual_replacement = /obj/item/clothing/head/roguetown/crown/fakecrown
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()

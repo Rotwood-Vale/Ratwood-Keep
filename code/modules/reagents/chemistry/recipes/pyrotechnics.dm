@@ -143,16 +143,6 @@
 	if(created_volume >= 150)
 		playsound(get_turf(holder.my_atom), 'sound/blank.ogg', 80, FALSE, round(created_volume/48))
 		strengthdiv = 8
-		for(var/mob/living/simple_animal/revenant/R in get_hearers_in_view(7,get_turf(holder.my_atom)))
-			var/deity
-			if(GLOB.deity)
-				deity = GLOB.deity
-			else
-				deity = "Christ"
-			to_chat(R, span_danger("The power of [deity] compels you!"))
-			R.stun(20)
-			R.reveal(100)
-			R.adjustHealth(50)
 	..()
 
 
@@ -461,13 +451,6 @@
 	required_reagents = list(/datum/reagent/stable_plasma = 1, /datum/reagent/silver = 1, /datum/reagent/gunpowder = 1)
 	mix_message = span_danger("A jet of sparks flies from the mixture as it merges into a flickering slurry.")
 	required_temp = 400
-
-/datum/chemical_reaction/energized_jelly
-	name = "Energized Jelly"
-	id = /datum/reagent/teslium/energized_jelly
-	results = list(/datum/reagent/teslium/energized_jelly = 2)
-	required_reagents = list(/datum/reagent/toxin/slimejelly = 1, /datum/reagent/teslium = 1)
-	mix_message = span_danger("The slime jelly starts glowing intermittently.")
 
 /datum/chemical_reaction/reagent_explosion/nitrous_oxide
 	name = "N2O explosion"

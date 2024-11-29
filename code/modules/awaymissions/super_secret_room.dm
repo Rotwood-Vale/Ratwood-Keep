@@ -98,10 +98,6 @@
 /obj/structure/speaking_tile/attack_hulk(mob/user)
 	return
 
-
-/obj/structure/speaking_tile/attack_slime(mob/user)
-	return interact(user)
-
 /obj/structure/speaking_tile/attack_animal(mob/user)
 	return interact(user)
 

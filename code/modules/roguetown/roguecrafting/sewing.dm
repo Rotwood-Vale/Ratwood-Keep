@@ -645,3 +645,12 @@
 	reqs = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/silk = 3)
 	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/sewing/nmjacket
+	name = "Newmoon Coat - (2 hides, 3 cloths, 2 silks, amulet of noc, EXPERT)"
+	result = list (/obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/silk = 2,
+				/obj/item/natural/hide/cured = 2,
+				/obj/item/clothing/neck/roguetown/psicross/noc)
+	craftdiff = 4

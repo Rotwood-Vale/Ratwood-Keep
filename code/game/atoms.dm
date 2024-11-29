@@ -573,7 +573,6 @@
 	contents_explosion(severity, target)
 	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, severity, target)
 
-
 /atom/proc/fire_act(added, maxstacks)
 	SEND_SIGNAL(src, COMSIG_ATOM_FIRE_ACT, added, maxstacks)
 	return
@@ -621,12 +620,6 @@
 	else
 		blood_dna["UNKNOWN DNA"] = "X*"
 	return blood_dna
-
-/mob/living/carbon/alien/get_blood_dna_list()
-	return list("UNKNOWN DNA" = "X*")
-
-/mob/living/silicon/get_blood_dna_list()
-	return list("MOTOR OIL" = "SAE 5W-30") //just a little flavor text.
 
 ///to add a mob's dna info into an object's blood_dna list.
 /atom/proc/transfer_mob_blood_dna(mob/living/L)

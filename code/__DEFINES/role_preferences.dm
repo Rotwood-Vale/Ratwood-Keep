@@ -51,7 +51,6 @@
 //(in game days played) to play that role
 GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_TRAITOR = /datum/game_mode/traitor,
-	ROLE_WIZARD = /datum/game_mode/wizard,
 	ROLE_PAI,
 	ROLE_BLOB,
 	ROLE_NINJA,

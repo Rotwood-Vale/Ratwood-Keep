@@ -247,36 +247,6 @@ Class Procs:
 				return FALSE
 	return TRUE
 
-/obj/machinery/proc/check_nap_violations()
-	if(!SSeconomy.full_ancap)
-		return TRUE
-	if(occupant && !state_open)
-		if(ishuman(occupant))
-			var/mob/living/carbon/human/H = occupant
-			var/obj/item/card/id/I = H.get_idcard(TRUE)
-			if(I)
-				var/datum/bank_account/insurance = I.registered_account
-				if(!insurance)
-					say("[market_verb] NAP Violation: No bank account found.")
-					nap_violation(occupant)
-					return FALSE
-				else
-					if(!insurance.adjust_money(-fair_market_price))
-						say("[market_verb] NAP Violation: Unable to pay.")
-						nap_violation(occupant)
-						return FALSE
-					var/datum/bank_account/D = SSeconomy.get_dep_account(payment_department)
-					if(D)
-						D.adjust_money(fair_market_price)
-			else
-				say("[market_verb] NAP Violation: No ID card found.")
-				nap_violation(occupant)
-				return FALSE
-	return TRUE
-
-/obj/machinery/proc/nap_violation(mob/violator)
-	return
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 //Return a non FALSE value to interrupt attack_hand propagation to subtypes.

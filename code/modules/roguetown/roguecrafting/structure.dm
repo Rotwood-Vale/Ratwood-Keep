@@ -541,6 +541,16 @@
 	craftsound = null
 	wallcraft = TRUE
 	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/structure/grindstone
+	name = "grindstone"
+	result = /obj/structure/fluff/grindstone
+	reqs = list(/obj/item/natural/stone = 3)
+	verbage = "assembles"
+	craftsound = null
+	wallcraft = TRUE
+	skillcraft = /datum/skill/craft/masonry
 
 /datum/crafting_recipe/roguetown/structure/lever
 	name = "lever"

@@ -240,15 +240,6 @@
 	light_color = LIGHT_COLOR_FIRE
 	duration = 10
 
-/obj/effect/temp_visual/revenant
-	name = "spooky lights"
-	icon_state = "purplesparkles"
-
-/obj/effect/temp_visual/revenant/cracks
-	name = "glowing cracks"
-	icon_state = "purplecrack"
-	duration = 6
-
 /obj/effect/temp_visual/gravpush
 	name = "gravity wave"
 	icon_state = "shieldsparkles"

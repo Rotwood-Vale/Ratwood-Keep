@@ -40,12 +40,12 @@
 
 /obj/item/soulstone/pickup(mob/living/user)
 	..()
-	if(!iswizard(user) && !usability)
+	if(!usability)
 		to_chat(user, "<span class='danger'>An overwhelming feeling of dread comes over you as you pick up the soulstone. It would be wise to be rid of this quickly.</span>")
 
 /obj/item/soulstone/examine(mob/user)
 	. = ..()
-	if(usability || iswizard(user) || isobserver(user))
+	if(usability  || isobserver(user))
 		if (old_shard)
 			. += span_cult("A soulstone, used to capture a soul, either from dead humans or from freed shades.")
 		else
@@ -70,7 +70,7 @@
 //////////////////////////////Capturing////////////////////////////////////////////////////////
 
 /obj/item/soulstone/attack(mob/living/carbon/human/M, mob/living/user)
-	if(!iswizard(user) && !usability)
+	if(!usability)
 		user.Unconscious(100)
 		to_chat(user, span_danger("My body is wracked with debilitating pain!"))
 		return
@@ -90,7 +90,7 @@
 /obj/item/soulstone/attack_self(mob/living/user)
 	if(!in_range(src, user))
 		return
-	if(!iswizard(user) && !usability)
+	if(!usability)
 		user.Unconscious(100)
 		to_chat(user, "<span class='danger'>My body is wracked with debilitating pain!</span>")
 		return
@@ -107,7 +107,7 @@
 		else
 			icon_state = "soulstone"
 		name = initial(name)
-		if(iswizard(user) || usability)
+		if(usability)
 			to_chat(A, "<b>I have been released from my prison, but you are still bound to [user.real_name]'s will. Help [user.p_them()] succeed in [user.p_their()] goals at all costs.</b>")
 		was_used()
 
@@ -120,7 +120,7 @@
 
 /obj/structure/constructshell/examine(mob/user)
 	. = ..()
-	if(iswizard(user) || user.stat == DEAD)
+	if(user.stat == DEAD)
 		. += {"<span class='cult'>A construct shell, used to house bound souls from a soulstone.\n
 		Placing a soulstone with a soul into this shell allows you to produce my choice of the following:\n
 		An <b>Artificer</b>, which can produce <b>more shells and soulstones</b>, as well as fortifications.\n
@@ -130,7 +130,7 @@
 /obj/structure/constructshell/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/soulstone))
 		var/obj/item/soulstone/SS = O
-		if(!iswizard(user) && !SS.purified)
+		if(!SS.purified)
 			to_chat(user, "<span class='danger'>An overwhelming feeling of dread comes over you as you attempt to place the soulstone into the shell. It would be wise to be rid of this quickly.</span>")
 			user.Dizzy(30)
 			return
@@ -200,29 +200,21 @@
 					return
 				switch(construct_class)
 					if("Juggernaut")
-						if(iswizard(user))
-							makeNewConstruct(/mob/living/simple_animal/hostile/construct/armored, A, user, 0, T.loc)
+
+						if(purified)
+							makeNewConstruct(/mob/living/simple_animal/hostile/construct/armored/angelic, A, user, 0, T.loc)
 						else
-							if(purified)
-								makeNewConstruct(/mob/living/simple_animal/hostile/construct/armored/angelic, A, user, 0, T.loc)
-							else
-								makeNewConstruct(/mob/living/simple_animal/hostile/construct/armored/noncult, A, user, 0, T.loc)
+							makeNewConstruct(/mob/living/simple_animal/hostile/construct/armored/noncult, A, user, 0, T.loc)
 					if("Wraith")
-						if(iswizard(user))
-							makeNewConstruct(/mob/living/simple_animal/hostile/construct/wraith, A, user, 0, T.loc)
+						if(purified)
+							makeNewConstruct(/mob/living/simple_animal/hostile/construct/wraith/angelic, A, user, 0, T.loc)
 						else
-							if(purified)
-								makeNewConstruct(/mob/living/simple_animal/hostile/construct/wraith/angelic, A, user, 0, T.loc)
-							else
-								makeNewConstruct(/mob/living/simple_animal/hostile/construct/wraith/noncult, A, user, 0, T.loc)
+							makeNewConstruct(/mob/living/simple_animal/hostile/construct/wraith/noncult, A, user, 0, T.loc)
 					if("Artificer")
-						if(iswizard(user))
-							makeNewConstruct(/mob/living/simple_animal/hostile/construct/builder, A, user, 0, T.loc)
+						if(purified)
+							makeNewConstruct(/mob/living/simple_animal/hostile/construct/builder/angelic, A, user, 0, T.loc)
 						else
-							if(purified)
-								makeNewConstruct(/mob/living/simple_animal/hostile/construct/builder/angelic, A, user, 0, T.loc)
-							else
-								makeNewConstruct(/mob/living/simple_animal/hostile/construct/builder/noncult, A, user, 0, T.loc)
+							makeNewConstruct(/mob/living/simple_animal/hostile/construct/builder/noncult, A, user, 0, T.loc)
 				qdel(T)
 				qdel(src)
 			else
@@ -265,7 +257,7 @@
 		icon_state = "purified_soulstone2"
 	else
 		icon_state = "soulstone2"
-	if(user && (iswizard(user) || usability))
+	if(user && usability)
 		to_chat(S, "Your soul has been captured! You are now bound to [user.real_name]'s will. Help [user.p_them()] succeed in [user.p_their()] goals at all costs.")
 	else if(user)
 		to_chat(S, "Your soul has been captured! You are now bound to the cult's will. Help them succeed in their goals at all costs.")

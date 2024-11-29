@@ -7,8 +7,7 @@
 	var/static/list/blacklist = typecacheof(list(
 		/turf/open/lava,
 		/turf/open/space,
-		/turf/open/water,
-		/turf/open/chasm)
+		/turf/open/water)
 		)
 
 	var/static/list/immunelist = typecacheof(list(
