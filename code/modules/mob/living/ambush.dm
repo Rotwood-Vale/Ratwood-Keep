@@ -1,3 +1,4 @@
+GLOBAL_VAR_INIT(ambush_chance_pct, 10)
 
 /mob/living/proc/ambushable()
 	if(mob_timers["ambushlast"])
@@ -8,7 +9,7 @@
 	return ambushable
 
 /mob/living/proc/consider_ambush()
-	if(prob(95))
+	if(prob(100 - GLOB.ambush_chance_pct))
 		return
 	if(mob_timers["ambush_check"])
 		if(world.time < mob_timers["ambush_check"] + 15 SECONDS)
