@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(ambush_chance_pct, 10)
+GLOBAL_VAR_INIT(ambush_chance_pct, 10) // Please don't raise this over 100 admins :')
 
 /mob/living/proc/ambushable()
 	if(mob_timers["ambushlast"])
