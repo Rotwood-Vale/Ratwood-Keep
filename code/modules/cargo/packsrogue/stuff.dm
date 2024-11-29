@@ -1,4 +1,4 @@
-/datum/supply_pack/rogue/Stuff
+/datum/supply_pack/rogue/bandit/Stuff
 	group = "Stuff"
 	crate_name = "Gifts of stuff."
 	crate_type = /obj/structure/closet/crate/chest/merchant
