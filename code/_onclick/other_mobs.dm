@@ -79,7 +79,7 @@
 		to_chat(src, span_warning("[pulledby] is restraining my arm!"))
 		return
 
-	//TODO VANDERLIN: Refactor this into melee_attack_chain_right so that items can more dynamically work with RMB
+	//TODO: Refactor this into melee_attack_chain_right so that items can more dynamically work with RMB
 	var/obj/item/held_item = get_active_held_item()
 	if(held_item)
 		if(!held_item.pre_attack_right(A, src, params))

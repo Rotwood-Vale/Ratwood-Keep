@@ -125,13 +125,13 @@ SUBSYSTEM_DEF(outdoor_effects)
 		cut_weather_overlay(OE)
 
 //get our weather overlay
-/datum/controller/subsystem/outdoor_effects/proc/get_weather_overlay(atom/movable/outdoor_effect/OE) //TODO VANDERLIN: Restore this to 32x48 for some extra
+/datum/controller/subsystem/outdoor_effects/proc/get_weather_overlay(atom/movable/outdoor_effect/OE) //TODO: Restore this to 32x48 for some extra
 	OE.icon 			  = 'icons/effects/weather_overlay.dmi'
 	OE.icon_state 		  = "weather_overlay"
 	OE.plane			  = WEATHER_OVERLAY_PLANE
 
 //get our weather overlay
-/datum/controller/subsystem/outdoor_effects/proc/cut_weather_overlay(atom/movable/outdoor_effect/OE) //TODO VANDERLIN: Restore this to 32x48 for some extra
+/datum/controller/subsystem/outdoor_effects/proc/cut_weather_overlay(atom/movable/outdoor_effect/OE) //TODO: Restore this to 32x48 for some extra
 	OE.icon 			  = initial(OE.icon)
 	OE.icon_state 		  = initial(OE.icon_state)
 	OE.plane			  = initial(OE.plane)
