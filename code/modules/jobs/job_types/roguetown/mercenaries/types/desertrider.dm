@@ -1,6 +1,6 @@
 /datum/advclass/desert_rider
 	name = "Desert Rider"
-	tutorial = "Blood, like the desert sand, stains your hands, a crimson testament to the gold you covet. A desert rider, renowned mercenary of the far east, your scimitar whispers tales of centuries-old tradition. Your loyalty, a fleeting mirage in the shifting sands, will yield to the allure of fortune."
+	tutorial = "Hooded figures clad in red and easily identifiable by their distinctive emblem, the Desert Riders of Shalvistine are a loosely-governed society of mercenaries and adventurers hailing from the fringes of the Zybantian Empire. You were riding saigaback before you could even walk, and you likely feel more at ease on four legs than two. Due to political unrest with neighboring Lalvestine, increasingly deadly sandstorms, or merely a sense of adventure, you find yourself with the Mercenaries’ Guild in Rockhill, selling your skills with the blade to those willing to pay."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/tieberian,
@@ -32,6 +32,15 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	neck = /obj/item/clothing/neck/roguetown/shalal
+
+	if(ishumannorthern(H))
+		var/list/skin_slop = H.dna.species.get_skin_list()
+		H.skin_tone = skin_slop["Shalvistine"]
+		H.update_body()
+	if(isdemihuman(H))
+		var/list/skin_slop = H.dna.species.get_skin_list()
+		H.skin_tone = skin_slop["Shalvistine"]
+		H.update_body()
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
