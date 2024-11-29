@@ -157,6 +157,15 @@ GLOBAL_LIST_INIT(roguewar_positions, list(
 	"Adventurer",
 ))
 
+GLOBAL_LIST_INIT(goblin_positions, list(
+	"Goblin Chief",
+	"Goblin Cook",
+	"Goblin Guard",
+	"Goblin Rabble",
+	"Goblin Smith",
+	"Goblin Shaman",
+))
+
 GLOBAL_LIST_INIT(roguefight_positions, list(
 	"Red Captain",
 	"Red Caster",

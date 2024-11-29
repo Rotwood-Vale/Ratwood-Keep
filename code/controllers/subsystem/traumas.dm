@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(traumas)
 		"skeletons"        = typecacheof(list(/mob/living/simple_animal/hostile/skeleton)),
 		"snakes"           = typecacheof(list(/mob/living/simple_animal/hostile/retaliate/poison/snake)),
 		"the supernatural" = typecacheof(list(/mob/living/simple_animal/hostile/construct,
-												/mob/living/simple_animal/revenant, /mob/living/simple_animal/shade)),
+												/mob/living/simple_animal/shade)),
 		"conspiracies"     = typecacheof(list(
 												/mob/living/simple_animal/pet/penguin)),
 		"birds"            = typecacheof(list(/mob/living/simple_animal/parrot, /mob/living/simple_animal/chick, /mob/living/simple_animal/chicken,

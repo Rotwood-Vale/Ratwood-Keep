@@ -322,11 +322,6 @@
 				G_gases[I][MOLES] = 0
 			G.garbage_collect()
 			O.air_update_turf()
-		for(var/obj/machinery/atmospherics/components/unary/U in O)
-			if(!U.welded)
-				U.welded = TRUE
-				U.update_icon()
-				U.visible_message(span_danger("[U] sealed shut!"))
 		for(var/mob/living/L in O)
 			L.ExtinguishMob()
 		for(var/obj/item/Item in O)

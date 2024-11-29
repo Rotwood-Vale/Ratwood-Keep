@@ -191,12 +191,6 @@
 				G_gases[/datum/gas/nitrogen][MOLES] += (G_gases[/datum/gas/plasma][MOLES])
 				G_gases[/datum/gas/plasma][MOLES] = 0
 				G.garbage_collect()
-		if (weldvents)
-			for(var/obj/machinery/atmospherics/components/unary/U in T)
-				if(!isnull(U.welded) && !U.welded) //must be an unwelded vent pump or vent scrubber.
-					U.welded = TRUE
-					U.update_icon()
-					U.visible_message(span_danger("[U] was frozen shut!"))
 		for(var/mob/living/L in T)
 			L.ExtinguishMob()
 		for(var/obj/item/Item in T)

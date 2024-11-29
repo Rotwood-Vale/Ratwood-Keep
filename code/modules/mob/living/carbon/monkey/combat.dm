@@ -165,12 +165,6 @@
 							battle_screech()
 							retaliate(L)
 							return TRUE
-						else
-							bodyDisposal = locate(/obj/machinery/disposal/) in around
-							if(bodyDisposal)
-								target = L
-								mode = MONKEY_DISPOSE
-								return TRUE
 
 			// pickup any nearby objects
 			if(!pickupTarget)
@@ -267,7 +261,7 @@
 		if(MONKEY_DISPOSE)
 
 			// if can't dispose of body go back to idle
-			if(!target || !bodyDisposal || frustration >= MONKEY_DISPOSE_FRUSTRATION_LIMIT)
+			if(!target  || frustration >= MONKEY_DISPOSE_FRUSTRATION_LIMIT)
 				back_to_idle()
 				return TRUE
 
@@ -281,20 +275,6 @@
 				else
 					var/turf/olddist = get_dist(src, target)
 					if((get_dist(src, target)) >= (olddist))
-						frustration++
-					else
-						frustration = 0
-
-			else if(!disposing_body)
-				INVOKE_ASYNC(src, PROC_REF(walk2derpless), bodyDisposal.loc)
-
-				if(Adjacent(bodyDisposal))
-					disposing_body = TRUE
-					addtimer(CALLBACK(src, PROC_REF(stuff_mob_in)), 5)
-
-				else
-					var/turf/olddist = get_dist(src, bodyDisposal)
-					if((get_dist(src, bodyDisposal)) >= (olddist))
 						frustration++
 					else
 						frustration = 0
@@ -316,12 +296,6 @@
 	pickpocketing = FALSE
 	pickupTarget = null
 	pickupTimer = 0
-
-/mob/living/carbon/monkey/proc/stuff_mob_in()
-	if(bodyDisposal && target && Adjacent(bodyDisposal))
-		bodyDisposal.stuff_mob_in(target, src)
-	disposing_body = FALSE
-	back_to_idle()
 
 /mob/living/carbon/monkey/proc/back_to_idle()
 

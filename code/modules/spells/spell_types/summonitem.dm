@@ -79,13 +79,6 @@
 									part.remove_embedded_object(item_to_retrieve)
 									to_chat(C, span_warning("The [item_to_retrieve] that was embedded in your [L] has mysteriously vanished. How fortunate!"))
 									break
-
-					else
-						if(istype(item_to_retrieve.loc, /obj/machinery/portable_atmospherics/)) //Edge cases for moved machinery
-							var/obj/machinery/portable_atmospherics/P = item_to_retrieve.loc
-							P.disconnect()
-							P.update_icon()
-
 						item_to_retrieve = item_to_retrieve.loc
 
 					infinite_recursion += 1

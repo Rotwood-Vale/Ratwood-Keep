@@ -74,8 +74,6 @@
 /obj/item/tank/examine(mob/user)
 	var/obj/icon = src
 	. = ..()
-	if(istype(src.loc, /obj/item/assembly))
-		icon = src.loc
 	if(!in_range(src, user) && !isobserver(user))
 		if(icon == src)
 			. += span_notice("If you want any more information you'll need to get closer.")
@@ -121,13 +119,6 @@
 	else
 		to_chat(user, span_warning("There isn't enough pressure in [src] to commit suicide with..."))
 	return SHAME
-
-/obj/item/tank/attackby(obj/item/W, mob/user, params)
-	add_fingerprint(user)
-	if(istype(W, /obj/item/assembly_holder))
-		bomb_assemble(W,user)
-	else
-		. = ..()
 
 /obj/item/tank/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
 									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.hands_state)
@@ -221,8 +212,7 @@
 	var/temperature = air_contents.return_temperature()
 
 	if(pressure > TANK_FRAGMENT_PRESSURE)
-		if(!istype(src.loc, /obj/item/transfer_valve))
-			log_bomber(get_mob_by_key(fingerprintslast), "was last key to touch", src, "which ruptured explosively")
+		log_bomber(get_mob_by_key(fingerprintslast), "was last key to touch", src, "which ruptured explosively")
 		//Give the gas a chance to build up more pressure through reacting
 		air_contents.react(src)
 		pressure = air_contents.return_pressure()
@@ -231,10 +221,7 @@
 
 
 		explosion(epicenter, round(range*0.25), round(range*0.5), round(range), round(range*1.5))
-		if(istype(src.loc, /obj/item/transfer_valve))
-			qdel(src.loc)
-		else
-			qdel(src)
+		qdel(src)
 
 	else if(pressure > TANK_RUPTURE_PRESSURE || temperature > TANK_MELT_TEMPERATURE)
 		if(integrity <= 0)

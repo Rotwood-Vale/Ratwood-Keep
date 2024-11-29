@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(ticker)
 	var/start_at
 	//576000 dusk
 	//376000 day
-	var/gametime_offset = 288001		//Deciseconds to add to world.time for station time.
+	var/gametime_offset = 279000				//Deciseconds to add to world.time for station time.
 	var/station_time_rate_multiplier = 50		//factor of station time progressal vs real time.
 	var/time_until_vote = 150 MINUTES
 	var/last_vote_time = null
@@ -408,7 +408,7 @@ SUBSYSTEM_DEF(ticker)
 				qdel(L)
 
 	log_game("GAME SETUP: Game start took [(world.timeofday - init_start)/10]s")
-	round_start_time = world.time
+	round_start_time = world.time - (world.timeofday - init_start)
 	round_start_irl = REALTIMEOFDAY
 //	SSshuttle.emergency.startTime = world.time
 //	SSshuttle.emergency.setTimer(ROUNDTIMERBOAT)

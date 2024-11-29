@@ -80,7 +80,13 @@
 		to_chat(src, span_warning("[pulledby] is restraining my arm!"))
 		return
 
-	A.attack_right(src, params)
+	//TODO VANDERLIN: Refactor this into melee_attack_chain_right so that items can more dynamically work with RMB
+	var/obj/item/held_item = get_active_held_item()
+	if(held_item)
+		if(!held_item.pre_attack_right(A, src, params))
+			A.attack_right(src, params)
+	else
+		A.attack_right(src, params)
 
 /mob/living/attack_right(mob/user, params)
 	. = ..()
@@ -663,15 +669,6 @@
 
 /mob/living/brain/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
 	return
-
-
-/*
-	pAI
-*/
-
-/mob/living/silicon/pai/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
-	return
-
 
 /*
 	Simple animals

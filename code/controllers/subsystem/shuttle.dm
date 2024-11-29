@@ -58,9 +58,6 @@ SUBSYSTEM_DEF(shuttle)
 	ordernum = rand(1, 9000)
 
 	initial_load()
-
-	if(!emergency)
-		WARNING("No /obj/docking_port/mobile/emergency placed on the map!")
 	return ..()
 
 /datum/controller/subsystem/shuttle/proc/initial_load()
@@ -90,7 +87,6 @@ SUBSYSTEM_DEF(shuttle)
 			var/not_in_use = (!T.get_docked())
 			if(idle && not_centcom_evac && not_in_use)
 				qdel(T, force=TRUE)
-	CheckAutoEvac()
 
 	if(!SSmapping.clearing_reserved_turfs)
 		while(transit_requesters.len)
@@ -105,33 +101,6 @@ SUBSYSTEM_DEF(shuttle)
 					M.transit_failure()
 			if(MC_TICK_CHECK)
 				break
-
-/datum/controller/subsystem/shuttle/proc/CheckAutoEvac()
-	if(emergencyNoEscape || emergencyNoRecall || !emergency || !SSticker.HasRoundStarted())
-		return
-
-	var/threshold = CONFIG_GET(number/emergency_shuttle_autocall_threshold)
-	if(!threshold)
-		return
-
-	var/alive = 0
-	for(var/I in GLOB.player_list)
-		var/mob/M = I
-		if(M.stat != DEAD)
-			++alive
-
-	var/total = GLOB.joined_player_list.len
-	if(total <= 0)
-		return //no players no autoevac
-
-	if(alive / total <= threshold)
-		var/msg = "Automatically dispatching shuttle due to crew death."
-		message_admins(msg)
-		log_game("[msg] Alive: [alive], Roundstart: [total], Threshold: [threshold]")
-		emergencyNoRecall = TRUE
-		priority_announce("Catastrophic casualties detected: crisis shuttle protocols activated - jamming recall signals across all frequencies.")
-		if(emergency.timeLeft(1) > emergencyCallTime * 0.4)
-			emergency.request(null, set_coefficient = 0.4)
 
 /datum/controller/subsystem/shuttle/proc/block_recall(lockout_timer)
 	emergencyNoRecall = TRUE
@@ -156,16 +125,6 @@ SUBSYSTEM_DEF(shuttle)
 	if(!emergency)
 		WARNING("requestEvac(): There is no emergency shuttle, but the \
 			shuttle was called. Using the backup shuttle instead.")
-		if(!backup_shuttle)
-			CRASH("requestEvac(): There is no emergency shuttle, \
-			or backup shuttle! The game will be unresolvable. This is \
-			possibly a mapping error, more likely a bug with the shuttle \
-			manipulation system, or badminry. It is possible to manually \
-			resolve this problem by loading an emergency shuttle template \
-			manually, and then calling register() on the mobile docking port. \
-			Good luck.")
-			return
-		emergency = backup_shuttle
 	var/srd = CONFIG_GET(number/shuttle_refuel_delay)
 	if(world.time - SSticker.round_start_time < srd)
 //		to_chat(user, span_warning("There is no response."))
@@ -227,13 +186,6 @@ SUBSYSTEM_DEF(shuttle)
 	if(!admiral_message)
 		admiral_message = pick(GLOB.admiral_messages)
 
-// Called when an emergency shuttle mobile docking port is
-// destroyed, which will only happen with admin intervention
-/datum/controller/subsystem/shuttle/proc/emergencyDeregister()
-	// When a new emergency shuttle is created, it will override the
-	// backup shuttle.
-	src.emergency = src.backup_shuttle
-
 /datum/controller/subsystem/shuttle/proc/cancelEvac(mob/user)
 	if(canRecall())
 		emergency.cancel(get_area(user))
@@ -248,25 +200,6 @@ SUBSYSTEM_DEF(shuttle)
 	if(emergency.timeLeft(1) < emergencyCallTime)
 		return
 	return 1
-
-/datum/controller/subsystem/shuttle/proc/autoEvac()
-	if (!SSticker.IsRoundInProgress())
-		return
-
-	var/callShuttle = 1
-
-	for(var/thing in GLOB.shuttle_caller_list)
-
-		var/turf/T = get_turf(thing)
-		if(T && is_station_level(T.z))
-			callShuttle = 0
-			break
-
-	if(callShuttle)
-		if(EMERGENCY_IDLE_OR_RECALLED)
-			emergency.request(null, set_coefficient = 2.5)
-			log_game("There is no means of calling the shuttle anymore. Shuttle automatically called.")
-			message_admins("All the communications consoles were destroyed and all AIs are inactive. Shuttle called.")
 
 /datum/controller/subsystem/shuttle/proc/registerHostileEnvironment(datum/bad)
 	hostileEnvironments[bad] = TRUE
@@ -285,7 +218,6 @@ SUBSYSTEM_DEF(shuttle)
 	if(emergencyNoEscape && (emergency.mode == SHUTTLE_IGNITING))
 		emergency.mode = SHUTTLE_STRANDED
 		emergency.timer = null
-		emergency.sound_played = FALSE
 		priority_announce("Hostile environment detected. \
 			Departure has been postponed indefinitely pending \
 			conflict resolution.", null, 'sound/blank.ogg', "Priority")
@@ -439,8 +371,6 @@ SUBSYSTEM_DEF(shuttle)
 		emergency = SSshuttle.emergency
 	if (istype(SSshuttle.arrivals))
 		arrivals = SSshuttle.arrivals
-	if (istype(SSshuttle.backup_shuttle))
-		backup_shuttle = SSshuttle.backup_shuttle
 
 	if (istype(SSshuttle.emergencyLastCallLoc))
 		emergencyLastCallLoc = SSshuttle.emergencyLastCallLoc
@@ -797,12 +727,7 @@ SUBSYSTEM_DEF(shuttle)
 					preview_template = S
 					user.forceMove(get_turf(preview_shuttle))
 		if("load")
-			if(existing_shuttle == backup_shuttle)
-				// TODO make the load button disabled
-				WARNING("The shuttle that the selected shuttle will replace \
-					is the backup shuttle. Backup shuttle is required to be \
-					intact for round sanity.")
-			else if(S)
+			if(S)
 				. = TRUE
 				// If successful, returns the mobile docking port
 				var/obj/docking_port/mobile/mdp = action_load(S)

@@ -71,11 +71,6 @@
 	qdel(src)
 	user.put_in_hands(I)
 
-/obj/item/storage/box/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/stack/packageWrap))
-		return 0
-	return ..()
-
 //Mime spell boxes
 
 /obj/item/storage/box/mime
@@ -426,15 +421,6 @@
 /obj/item/storage/box/fakesyndiesuit/PopulateContents()
 	new /obj/item/clothing/head/syndicatefake(src)
 	new /obj/item/clothing/suit/syndicatefake(src)
-
-/obj/item/storage/box/mousetraps
-	name = "box of Pest-B-Gon mousetraps"
-	desc = ""
-	illustration = "mousetrap"
-
-/obj/item/storage/box/mousetraps/PopulateContents()
-	for(var/i in 1 to 6)
-		new /obj/item/assembly/mousetrap(src)
 
 /obj/item/storage/box/pillbottles
 	name = "box of pill bottles"

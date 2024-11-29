@@ -221,7 +221,6 @@
 		/obj/item/flashlight,
 		/obj/item/extinguisher/mini,
 		/obj/item/clothing/gloves,
-		/obj/item/pickaxe,
 		/obj/item/stack/sheet/animalhide,
 		/obj/item/stack/sheet/sinew,
 		/obj/item/stack/sheet/bone,
@@ -460,7 +459,6 @@
 		/obj/item/forcefield_projector,
 		/obj/item/clothing/gloves,
 		/obj/item/melee/flyswatter,
-		/obj/item/assembly/mousetrap,
 		/obj/item/paint/paint_remover
 		))
 

@@ -318,27 +318,6 @@ GLOBAL_LIST_INIT(snow_recipes, list ( \
 /****************************** Others ****************************/
 
 /*
- * Adamantine
-*/
-
-
-GLOBAL_LIST_INIT(adamantine_recipes, list(
-	new /datum/stack_recipe("incomplete servant golem shell", /obj/item/golem_shell/servant, req_amount=1, res_amount=1),
-	))
-
-/obj/item/stack/sheet/mineral/adamantine
-	name = "adamantine"
-	icon_state = "sheet-adamantine"
-	item_state = "sheet-adamantine"
-	singular_name = "adamantine sheet"
-	custom_materials = list(/datum/material/adamantine=MINERAL_MATERIAL_AMOUNT)
-	merge_type = /obj/item/stack/sheet/mineral/adamantine
-
-/obj/item/stack/sheet/mineral/adamantine/get_main_recipes()
-	. = ..()
-	. += GLOB.adamantine_recipes
-
-/*
  * Runite
  */
 

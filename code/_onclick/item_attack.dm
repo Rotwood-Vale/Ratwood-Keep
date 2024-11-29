@@ -52,6 +52,9 @@
 		return TRUE
 	return FALSE //return TRUE to avoid calling attackby after this proc does stuff
 
+/atom/proc/pre_attack_right(atom/A, mob/living/user, params)
+	return FALSE
+
 // No comment
 /atom/proc/attackby(obj/item/W, mob/user, params)
 	if(user.used_intent.tranged)

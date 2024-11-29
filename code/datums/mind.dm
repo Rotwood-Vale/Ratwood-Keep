@@ -477,13 +477,9 @@
 /datum/mind/proc/remove_traitor()
 	remove_antag_datum(/datum/antagonist/traitor)
 
-/datum/mind/proc/remove_wizard()
-	remove_antag_datum(/datum/antagonist/wizard)
-	special_role = null
 
 /datum/mind/proc/remove_all_antag() //For the Lazy amongst us.
 	remove_traitor()
-	remove_wizard()
 
 /datum/mind/proc/equip_traitor(employer = "The Syndicate", silent = FALSE, datum/antagonist/uplink_owner)
 	return
@@ -689,11 +685,6 @@
 	if(!(has_antag_datum(/datum/antagonist/traitor)))
 		add_antag_datum(/datum/antagonist/traitor)
 
-/datum/mind/proc/make_Wizard()
-	if(!has_antag_datum(/datum/antagonist/wizard))
-		special_role = ROLE_WIZARD
-		assigned_role = ROLE_WIZARD
-		add_antag_datum(/datum/antagonist/wizard)
 
 /datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S)
 	if(!S)
@@ -815,22 +806,6 @@
 	..()
 	if(!mind.assigned_role)
 		mind.assigned_role = "Unassigned" //default
-
-//AI
-/mob/living/silicon/ai/mind_initialize()
-	..()
-	mind.assigned_role = "AI"
-
-//BORG
-/mob/living/silicon/robot/mind_initialize()
-	..()
-	mind.assigned_role = "Cyborg"
-
-//PAI
-/mob/living/silicon/pai/mind_initialize()
-	..()
-	mind.assigned_role = ROLE_PAI
-	mind.special_role = ""
 
 /datum/mind/proc/add_sleep_experience(skill, amt, silent = FALSE)
 	sleep_adv.add_sleep_experience(skill, amt, silent)

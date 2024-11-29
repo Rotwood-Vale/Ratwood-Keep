@@ -1157,6 +1157,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				user.visible_message(span_warning("[user] stole [target]'s [I.name]!"),
 								span_notice("I stole [target]'s [I.name]!"), null, null, target)
 				to_chat(target, span_danger("[user] stole my [I.name]!"))*/
+		var/def_zone = check_zone(user.zone_selected)
+		var/obj/item/bodypart/affecting = target.get_bodypart(def_zone)
+		for(var/obj/item/embedded in affecting.embedded_objects)
+			target.grabbedby(user, 1, item_override = embedded)
+			return TRUE
 		target.grabbedby(user)
 		return TRUE
 
