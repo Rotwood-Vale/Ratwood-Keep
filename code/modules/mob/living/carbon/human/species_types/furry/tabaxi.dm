@@ -37,7 +37,7 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0)
 		)
 	specstats = list(
-		"strength" = 0,
+		"strength" = -1,
 		"perception" = 1,
 		"intelligence" = 0,
 		"constitution" = -1,
@@ -45,6 +45,12 @@
 		"speed" = 2,
 		"fortune" = 0
 		)
+	)
+	specstats_f = list(
+		"speed" = -1,
+		"perception" = 1,
+	)
+		
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
