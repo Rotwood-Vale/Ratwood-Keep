@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_GOBLIN
+	allowed_races = list(/datum/species/goblinp)
 	tutorial = "You're the camp's cook, in service to the Chief, your lord on this mortal plane. \
 	He's chosen you, out of many others, to prepare and service the camp when it comes to the culinary arts. \
 	Maintain a farm, task the lower-goblins with foraging and try not to cook anything that'll kill your Chief."
