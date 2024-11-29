@@ -1,4 +1,3 @@
-// TODO: Weight this thing so 90% of stuff is garbage
 /obj/effect/spawner/lootdrop/roguetown/sewers
 	name = "sewer spawner"
 	lootcount = 3
