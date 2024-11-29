@@ -153,6 +153,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/wdefense = 0 //better at defending
 	var/minstr = 0  //for weapons
 
+	var/can_assin = FALSE		//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
+	var/can_cdg = FALSE			//Weapon: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
+
 	var/sleeved = null
 	var/sleevetype = null
 	var/nodismemsleeves = FALSE

@@ -45,7 +45,7 @@
 
 /datum/advclass/gob_brute
 	name = "Brute"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/brute
 	tutorial = "You're one of the Chief's trusted guards, though many just know you to be a brute. \
@@ -76,7 +76,7 @@
 
 /datum/advclass/gob_outrider
 	name = "Outrider"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/outrider
 	tutorial = "You're one of the few experienced with 'mounted' combat. \
@@ -110,7 +110,7 @@
 
 /datum/advclass/gob_raider
 	name = "Raider"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/raider
 	tutorial = "Armour? A mace? Crossbows? Who needs any of that. You've an axe. \
@@ -138,7 +138,7 @@
 
 /datum/advclass/gob_archer
 	name = "Boltslinger"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/gob_archer
 	tutorial = "Unlike the rest of your fellows, you know how to put a bolt into a Humen. \
