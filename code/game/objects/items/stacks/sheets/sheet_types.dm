@@ -40,8 +40,6 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("rack parts", /obj/item/rack_parts), \
 	new/datum/stack_recipe("closet", /obj/structure/closet, 2, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
 	null, \
-	new/datum/stack_recipe("canister", /obj/machinery/portable_atmospherics/canister, 10, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
-	null, \
 	new/datum/stack_recipe("floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20), \
 	new/datum/stack_recipe("metal rod", /obj/item/stack/rods, 1, 2, 60), \
 	null, \
@@ -328,7 +326,6 @@ GLOBAL_LIST_INIT(cardboard_recipes, list (														\
 		new /datum/stack_recipe("light tubes box", /obj/item/storage/box/lights/tubes),			\
 		new /datum/stack_recipe("light bulbs box", /obj/item/storage/box/lights/bulbs),			\
 		new /datum/stack_recipe("mixed lights box", /obj/item/storage/box/lights/mixed),		\
-		new /datum/stack_recipe("mouse traps box", /obj/item/storage/box/mousetraps),			\
 		new /datum/stack_recipe("candle box", /obj/item/storage/fancy/candle_box)
 		)),
 

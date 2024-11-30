@@ -30,9 +30,6 @@
 #define CHAV		/datum/mutation/human/chav
 #define ELVIS		/datum/mutation/human/elvis
 #define RADIOACTIVE	/datum/mutation/human/radioactive
-#define GLOWY		/datum/mutation/human/glow
-#define ANTIGLOWY	/datum/mutation/human/glow/anti
-#define TELEPATHY	/datum/mutation/human/telepathy
 #define FIREBREATH	/datum/mutation/human/firebreath
 #define VOID		/datum/mutation/human/void
 #define STRONG    	/datum/mutation/human/strong

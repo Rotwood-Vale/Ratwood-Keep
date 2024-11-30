@@ -99,6 +99,18 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define isgoblinp(A) (is_species(A, /datum/species/goblinp))
 #define isseelie(A) (is_species(A, /datum/species/seelie))
 
+//furry species
+#define isakula(A) (is_species(A, /datum/species/akula))
+#define isanthromorph(A) (is_species(A, /datum/species/anthromorph))
+#define isanthromorphsmall(A) (is_species(A, /datum/species/anthromorphsmall))
+#define isdemihuman(A) (is_species(A, /datum/species/demihuman))
+#define isdracon(A) (is_species(A, /datum/species/dracon))
+#define iskobold(A) (is_species(A, /datum/species/kobold))
+#define islizardfolk(A) (is_species(A, /datum/species/lizardfolk))
+#define islupian(A) (is_species(A, /datum/species/lupian))
+#define istabaxi(A) (is_species(A, /datum/species/tabaxi))
+#define isvulpkanin(A) (is_species(A, /datum/species/vulpkanin))
+
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))
 
@@ -106,8 +118,6 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 
 //Simple animals
 #define isanimal(A) (istype(A, /mob/living/simple_animal))
-
-#define isrevenant(A) (istype(A, /mob/living/simple_animal/revenant))
 
 #define isshade(A) (istype(A, /mob/living/simple_animal/shade))
 
@@ -122,8 +132,6 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define iscorgi(A) (istype(A, /mob/living/simple_animal/pet/dog/corgi))
 
 #define ishostile(A) (istype(A, /mob/living/simple_animal/hostile))
-
-#define isswarmer(A) (istype(A, /mob/living/simple_animal/hostile/swarmer))
 
 #define isguardian(A) (istype(A, /mob/living/simple_animal/hostile/guardian))
 
@@ -164,8 +172,6 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 
 #define ismachinery(A) (istype(A, /obj/machinery))
 
-#define ismecha(A) (istype(A, /obj/mecha))
-
 #define is_cleanable(A) (istype(A, /obj/effect/decal/cleanable)) //if something is cleanable
 
 #define isorgan(A) (istype(A, /obj/item/organ))
@@ -187,15 +193,6 @@ GLOBAL_LIST_INIT(pointed_types, typecacheof(list(
 #define isprojectile(A) (istype(A, /obj/projectile))
 
 #define isgun(A) (istype(A, /obj/item/gun))
-
-//Assemblies
-#define isassembly(O) (istype(O, /obj/item/assembly))
-
-#define isigniter(O) (istype(O, /obj/item/assembly/igniter))
-
-#define isprox(O) (istype(O, /obj/item/assembly/prox_sensor))
-
-#define issignaler(O) (istype(O, /obj/item/assembly/signaler))
 
 GLOBAL_LIST_INIT(glass_sheet_types, typecacheof(list(
 	/obj/item/stack/sheet/glass,

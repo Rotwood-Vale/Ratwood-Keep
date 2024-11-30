@@ -20,7 +20,6 @@ Actual Adjacent procs :
 
 	/turf/proc/reachableAdjacentTurfs : returns reachable turfs in cardinal directions (uses simulated_only)
 
-	/turf/proc/reachableAdjacentAtmosTurfs : returns turfs in cardinal directions reachable via atmos
 
 */
 #define PF_TIEBREAKER 0.005
@@ -188,10 +187,6 @@ Actual Adjacent procs :
 /turf/proc/reachableTurftest(caller, turf/T, ID, simulated_only)
 	if(T && !T.density && !(simulated_only && SSpathfinder.space_type_cache[T.type]) && !LinkBlockedWithAccess(T,caller, ID))
 		return TRUE
-
-//Returns adjacent turfs in cardinal directions that are reachable via atmos
-/turf/proc/reachableAdjacentAtmosTurfs()
-	return atmos_adjacent_turfs
 
 /turf/proc/LinkBlockedWithAccess(turf/T, caller, ID)
 	var/adir = get_dir(src, T)

@@ -18,7 +18,6 @@
 
 	uniform = /obj/item/clothing/under/color/grey
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	suit = /obj/item/clothing/suit/space
 	head = /obj/item/clothing/head/helmet/space
 	mask = /obj/item/clothing/mask/breath
 
@@ -158,46 +157,6 @@
 /datum/outfit/centcom/commander/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
-
-/datum/outfit/wizard
-	name = "Blue Wizard"
-
-	uniform = /obj/item/clothing/under/color/lightpurple
-	suit = /obj/item/clothing/suit/wizrobe
-	shoes = /obj/item/clothing/shoes/sandal/magic
-	head = /obj/item/clothing/head/wizard
-	r_pocket = /obj/item/teleportation_scroll
-	r_hand = /obj/item/spellbook
-	l_hand = /obj/item/staff
-	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/storage/box=1)
-
-/datum/outfit/wizard/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	if(visualsOnly)
-		return
-
-	var/obj/item/spellbook/S = locate() in H.held_items
-	if(S)
-		S.owner = H
-
-/datum/outfit/wizard/apprentice
-	name = "Wizard Apprentice"
-	r_hand = null
-	l_hand = null
-	r_pocket = /obj/item/teleportation_scroll/apprentice
-
-/datum/outfit/wizard/red
-	name = "Red Wizard"
-
-	suit = /obj/item/clothing/suit/wizrobe/red
-	head = /obj/item/clothing/head/wizard/red
-
-/datum/outfit/wizard/weeb
-	name = "Marisa Wizard"
-
-	suit = /obj/item/clothing/suit/wizrobe/marisa
-	shoes = /obj/item/clothing/shoes/sandal/marisa
-	head = /obj/item/clothing/head/wizard/marisa
 
 /datum/outfit/soviet
 	name = "Soviet Admiral"

@@ -64,6 +64,8 @@
 			flick("excidium_talk", src)
 			reward_amount += b.amount
 			GLOB.head_bounties -= b
+			message_admins("[ADMIN_LOOKUPFLW(user)] has completed the bounty on [ADMIN_LOOKUPFLW(b.target)] by delivering the severed head.")
+
 	if(P.type == /obj/item/bodypart/head/goblin)
 		correct_head = TRUE
 		say("A bounty has been sated.")
@@ -191,7 +193,7 @@
 	say(bounty_announcement)
 	scom_announce(bounty_announcement)
 
-	message_admins("[ADMIN_LOOKUPFLW(user)] has set a bounty on [ADMIN_LOOKUPFLW(target)] with the reason of: '[reason]'")
+	message_admins("[ADMIN_LOOKUPFLW(user)] has set a bounty [target ? "on [ADMIN_LOOKUPFLW(target)] with the reason of: '[reason]'" : "with the task to [reason]"]")
 
 /proc/add_bounty(target_realname, amount, bandit_status, reason, employer_name, withdrawable, number)
 	var/datum/bounty/new_bounty = new /datum/bounty
@@ -250,6 +252,7 @@
 			budget2change(b.amount, user)
 			GLOB.head_bounties -= b
 			say("Bounty successfully marked as completed and reward withdrawn.")
+			message_admins("[ADMIN_LOOKUPFLW(user)] has withdrawn the bounty of [ADMIN_LOOKUPFLW(b.employer)] [b.target ? "on [ADMIN_LOOKUPFLW(b.target)]'s head non-lethally" : ""] the terms of the bounty was: [b.reason]")
 		else 
 			say("There are no withdrawable bounties with that number. Please confirm that the bounty is withdrawable, and deliver head for cranial inspection otherwise.")
 	flick("excidium_talk", src)

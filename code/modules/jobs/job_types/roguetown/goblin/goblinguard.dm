@@ -5,8 +5,8 @@
 	faction = "Station"
 	total_positions = 3//From 6
 	spawn_positions = 3//From 6
-	allowed_sexes = list(MALE)
-	allowed_races = RACES_GOBLIN
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = list(/datum/species/goblinp)
 	tutorial = "You're the hand of the Chief. He's an individual of higher power than any mortal. At least, that's what you've been taught. \
 	Do what the Chief insists, while keeping order in the fort. Try not to venture out without the Chief's say-so. \
 	'Tend' to captives when possible, instead of outright killing them."
@@ -45,7 +45,7 @@
 
 /datum/advclass/gob_brute
 	name = "Brute"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/brute
 	tutorial = "You're one of the Chief's trusted guards, though many just know you to be a brute. \
@@ -76,7 +76,7 @@
 
 /datum/advclass/gob_outrider
 	name = "Outrider"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/outrider
 	tutorial = "You're one of the few experienced with 'mounted' combat. \
@@ -110,7 +110,7 @@
 
 /datum/advclass/gob_raider
 	name = "Raider"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/raider
 	tutorial = "Armour? A mace? Crossbows? Who needs any of that. You've an axe. \
@@ -138,7 +138,7 @@
 
 /datum/advclass/gob_archer
 	name = "Boltslinger"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinguard/gob_archer
 	tutorial = "Unlike the rest of your fellows, you know how to put a bolt into a Humen. \

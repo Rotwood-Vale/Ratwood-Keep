@@ -70,8 +70,6 @@
 		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	body_markings = list(
-		/datum/body_marking/flushed_cheeks,
-		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 	customizers = list(

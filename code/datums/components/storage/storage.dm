@@ -607,8 +607,6 @@
 		return
 	if(!over_object)
 		return
-	if(ismecha(M.loc)) // stops inventory actions in a mech
-		return
 	if(M.incapacitated() || !M.canUseStorage())
 		return
 

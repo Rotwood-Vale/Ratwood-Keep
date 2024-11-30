@@ -54,17 +54,14 @@ GLOBAL_LIST_INIT(summoned_special_magic, list(
 	/obj/item/gun/magic/staff/change,
 	/obj/item/gun/magic/staff/animate,
 	/obj/item/storage/belt/wands/full,
-	/obj/item/antag_spawner/contract,
 	/obj/item/gun/magic/staff/chaos,
 	/obj/item/necromantic_stone))
 
 //everything above except for single use spellbooks, because they are counted separately (and are for basic bitches anyways)
 GLOBAL_LIST_INIT(summoned_magic_objectives, list(
-	/obj/item/antag_spawner/contract,
 	/obj/item/gun/magic,
 	/obj/item/necromantic_stone,
 	/obj/item/scrying,
-	/obj/item/spellbook,
 	/obj/item/storage/belt/wands/full,
 	/obj/item/voodoo,
 	/obj/item/warpwhistle))
@@ -77,7 +74,7 @@ GLOBAL_VAR_INIT(summon_magic_triggered, FALSE)
 	if(H.stat == DEAD || !(H.client))
 		return
 	if(H.mind)
-		if(iswizard(H) || H.mind.has_antag_datum(/datum/antagonist/survivalist/guns))
+		if(H.mind.has_antag_datum(/datum/antagonist/survivalist/guns))
 			return
 
 	if(prob(GLOB.summon_guns_triggered) && !(H.mind.has_antag_datum(/datum/antagonist)))
@@ -100,7 +97,7 @@ GLOBAL_VAR_INIT(summon_magic_triggered, FALSE)
 	if(H.stat == DEAD || !(H.client))
 		return
 	if(H.mind)
-		if(iswizard(H) || H.mind.has_antag_datum(/datum/antagonist/survivalist/magic))
+		if(H.mind.has_antag_datum(/datum/antagonist/survivalist/magic))
 			return
 
 	if(prob(GLOB.summon_magic_triggered) && !(H.mind.has_antag_datum(/datum/antagonist)))

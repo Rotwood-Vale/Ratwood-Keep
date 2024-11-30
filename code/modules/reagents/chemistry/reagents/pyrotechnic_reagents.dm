@@ -198,11 +198,6 @@
 		M.adjust_bodytemperature(-15)
 	..()
 
-/datum/reagent/cryostylane/reaction_turf(turf/T, reac_volume)
-	if(reac_volume >= 5)
-		for(var/mob/living/simple_animal/slime/M in T)
-			M.adjustToxLoss(rand(15,30))
-
 /datum/reagent/pyrosium
 	name = "Pyrosium"
 	description = "Comes into existence at 20K. As long as there is sufficient oxygen for it to react with, Pyrosium slowly heats all other reagents in the container."

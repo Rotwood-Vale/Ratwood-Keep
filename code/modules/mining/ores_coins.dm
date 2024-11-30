@@ -315,8 +315,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/coin/bananium
 	custom_materials = list(/datum/material/bananium = 400)
 
-/obj/item/coin/adamantine
-	custom_materials = list(/datum/material/adamantine = 400)
 
 /obj/item/coin/mythril
 	custom_materials = list(/datum/material/mythril = 400)

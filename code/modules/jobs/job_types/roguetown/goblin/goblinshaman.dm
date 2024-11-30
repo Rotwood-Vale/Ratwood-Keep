@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_GOBLIN
+	allowed_races = list(/datum/species/goblinp)
 	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
 	/obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose)
 	tutorial = "Were you Humen, they'd call you a sorcerer. Perhaps a witch, even. But you know better than the rest. \
@@ -14,7 +14,7 @@
 	Assure he has all he needs to succeed, and, should he fail, take his place."
 	outfit = /datum/outfit/job/roguetown/goblinshaman
 	display_order = JDO_GOBLINSHAMAN
-	min_pq = 0
+	min_pq = 5
 	max_pq = null
 
 /datum/outfit/job/roguetown/goblinshaman

@@ -524,21 +524,6 @@
 
 	return A.loc
 
-/proc/AnnounceArrival(mob/living/carbon/human/character, rank)
-	return/*
-	if(!SSticker.IsRoundInProgress() || QDELETED(character))
-		return
-	var/area/A = get_area(character)
-	deadchat_broadcast(" has arrived at the station at <span class='name'>[A.name]</span>.", "<span class='game'><span class='name'>[character.real_name]</span> ([rank])", follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
-	if((!GLOB.announcement_systems.len) || (!character.mind))
-		return
-	if((character.mind.assigned_role == "Cyborg") || (character.mind.assigned_role == character.mind.special_role))
-		return
-
-	var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-	announcer.announce("ARRIVAL", character.real_name, rank, list()) //make the list empty to make it announce it in common
-	*/
-
 /proc/GetRedPart(const/hexa)
 	return hex2num(copytext(hexa, 2, 4))
 
@@ -558,13 +543,6 @@
 	var/pressure = environment.return_pressure()
 	if(pressure <= LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
 		. = TRUE
-
-/proc/ispipewire(item)
-	var/static/list/pire_wire = list(
-		/obj/machinery/atmospherics,
-		/obj/structure/disposalpipe,
-	)
-	return (is_type_in_list(item, pire_wire))
 
 // Find a obstruction free turf that's within the range of the center. Can also condition on if it is of a certain area type.
 /proc/find_obstruction_free_location(range, atom/center, area/specific_area)

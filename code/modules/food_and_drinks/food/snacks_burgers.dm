@@ -77,25 +77,6 @@
 	tastes = list("bun" = 4, "tofu" = 4)
 	foodtype = GRAIN | VEGETABLES
 
-/obj/item/reagent_containers/food/snacks/burger/roburger
-	name = "roburger"
-	desc = ""
-	icon_state = "roburger"
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/nanomachines = 2, /datum/reagent/consumable/nutriment/vitamin = 5)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/nanomachines = 5, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("bun" = 4, "lettuce" = 2, "sludge" = 1)
-	foodtype = GRAIN | TOXIC
-
-/obj/item/reagent_containers/food/snacks/burger/roburgerbig
-	name = "roburger"
-	desc = ""
-	icon_state = "roburger"
-	volume = 120
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/nanomachines = 70, /datum/reagent/consumable/nutriment/vitamin = 10)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/nanomachines = 70, /datum/reagent/consumable/nutriment/vitamin = 5)
-	tastes = list("bun" = 4, "lettuce" = 2, "sludge" = 1)
-	foodtype = GRAIN | TOXIC
-
 /obj/item/reagent_containers/food/snacks/burger/xeno
 	name = "xenoburger"
 	desc = ""

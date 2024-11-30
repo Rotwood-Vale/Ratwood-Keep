@@ -94,7 +94,7 @@
 	throwforce = 0
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
-	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
+	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP|ITEM_SLOT_MASK
 	body_parts_covered = null
 	experimental_onhip = TRUE
 	max_integrity = 20
@@ -105,6 +105,15 @@
 	var/wet = 0
 	/// Effectiveness when used as a bandage, how much bloodloss we can tampon
 	var/bandage_effectiveness = 0.9
+
+/obj/item/natural/cloth/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot == SLOT_WEAR_MASK)
+		user.become_blind("blindfold_[REF(src)]")
+
+/obj/item/natural/cloth/dropped(mob/living/carbon/human/user)
+	..()
+	user.cure_blind("blindfold_[REF(src)]")
 
 /obj/item/natural/cloth/examine(mob/user)
 	. = ..()

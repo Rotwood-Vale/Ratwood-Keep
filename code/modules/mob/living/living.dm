@@ -313,6 +313,8 @@
 /mob/living/carbon/proc/kick_attack_check(mob/living/L)
 	if(L == src)
 		return FALSE
+	if(!(src.mobility_flags & MOBILITY_STAND))
+		return TRUE
 	var/list/acceptable = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_R_ARM, BODY_ZONE_CHEST, BODY_ZONE_L_ARM)
 	if( !(check_zone(L.zone_selected) in acceptable) )
 		to_chat(L, span_warning("I can't reach that."))
@@ -1428,9 +1430,6 @@
 /mob/living/proc/update_stamina()
 	return
 
-/mob/living/carbon/alien/update_stamina()
-	return
-
 /mob/living/proc/owns_soul()
 	if(mind)
 		return mind.soulOwner == mind
@@ -1796,7 +1795,6 @@
 			AT.get_remote_view_fullscreens(src)
 		else
 			clear_fullscreen("remote_view", 0)
-		update_pipe_vision()
 
 /mob/living/update_mouse_pointer()
 	..()
