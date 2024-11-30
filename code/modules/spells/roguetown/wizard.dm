@@ -221,7 +221,7 @@
 	active = FALSE
 	releasedrain = 0
 	chargedrain = 1
-	chargetime = 15
+	chargetime = 0
 	charge_max = 0
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -232,10 +232,12 @@
 
 /obj/projectile/magic/aoe/fireball/rogue/great
 	name = "fireball"
-	exp_heavy = 1
+	exp_devi = 1
+	exp_heavy = 2
 	exp_light = 4
 	exp_flash = 0
-	exp_fire = 4
+	exp_fire = 0
+	exp_hotspot = 0
 	flag = "magic"
 	speed = 2
 

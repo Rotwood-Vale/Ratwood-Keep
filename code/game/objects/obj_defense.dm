@@ -74,10 +74,6 @@
 	var/fdist = flame_range
 	var/fodist = get_dist(src, epicenter)
 	var/brute_loss = 0
-	
-	if(fdist)
-		var/stacks = ((fdist - fodist) * 2)
-		fire_act(stacks)
 
 	switch (severity)
 		if (EXPLODE_DEVASTATE)
@@ -90,6 +86,10 @@
 			brute_loss = ((25 * ldist) - (25 * fodist))
 
 	take_damage(brute_loss, BRUTE, "bomb", 0)
+
+	if(fdist && !QDELETED(src))
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
 
 /obj/bullet_act(obj/projectile/P)
 	. = ..()

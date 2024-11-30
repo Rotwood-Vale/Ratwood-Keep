@@ -73,6 +73,8 @@
 					S.forceMove(get_turf(user))
 
 /turf/closed/mineral/turf_destruction(damage_flag)
+	if(!(istype(src, /turf/closed)))
+		return
 	if(damage_flag == "bomb")
 		ScrapeAway()
 		queue_smooth_neighbors(src)
@@ -613,8 +615,8 @@
 /turf/closed/mineral/rogue/bedrock
 	icon_state = "rockyashbed"
 //	smooth_icon = 'icons/turf/walls/hardrock.dmi'
-	max_integrity = 900
-	above_floor = /turf/closed/mineral/rogue/bedrock
+	max_integrity = -1
+	damage_deflection = 99999999
 
 /turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params)
 	..()

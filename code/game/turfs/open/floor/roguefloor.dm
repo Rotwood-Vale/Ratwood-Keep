@@ -937,3 +937,7 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/grassland.wav'
+
+/turf/open/floor/rogue/naturalstone/turf_destruction(damage_flag)
+	. = ..()
+	return
