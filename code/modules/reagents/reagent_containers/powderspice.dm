@@ -287,7 +287,8 @@
 		overdosed = TRUE
 		M.Jitter(5)
 		M.losebreath += 1 //This doesn't kill the user, the overdose does
-		to_chat(M, span_warning("MY HEART HURTS!!"))
+		if(prob(10))
+			to_chat(M, span_warning("[pick("MY HEART HURTS!!", "Oh fuck... Oh fuck.", "IM DYING!!")]"))
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/moondust)
