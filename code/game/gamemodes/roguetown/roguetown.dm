@@ -163,7 +163,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					log_game("Major Antagonist: None")
 		return TRUE
 
-	var/major_roll = pick(1,2,3,4)
+	var/major_roll = pick(1,2,3)
 	switch(major_roll)
 		if(1)
 			pick_rebels()
@@ -176,8 +176,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 			pick_vampires()
 			pick_werewolves()
 			log_game("Major Antagonist: Vampires and Werewolves")
-		if(4)
-			log_game("Major Antagonist: None")
+		//if(4)
+		//	log_game("Major Antagonist: None")
 
 	if(prob(80))
 		pick_bandits()
