@@ -5248,9 +5248,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/beach/forest)
 "OC" = (
-/obj/effect/landmark/threatspawner/longinit{
-	spawn_range = 8
-	},
+/obj/effect/landmark/threatspawner/shortinit,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
 "OJ" = (
@@ -6215,6 +6213,12 @@
 /obj/item/flashlight/flare/torch/metal,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/woods)
+"WG" = (
+/obj/effect/landmark/threatspawner/shortinit{
+	spawn_range = 7
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods)
 "WJ" = (
 /obj/structure/spacevine,
 /turf/open/water/swamp/deep,
@@ -45765,7 +45769,7 @@ nt
 nt
 nt
 jW
-nt
+WG
 nt
 nt
 nt
