@@ -89,9 +89,8 @@
 				are_mercenary = TRUE
 			if(OJ.flag == MERCENARY)
 				is_mercenary = TRUE
-			if(islatejoin)
-				(!are_mercenary || !is_mercenary)
-					is_returning = TRUE
+			if(islatejoin && !are_mercenary)
+				is_returning = TRUE
 		if(display_as_wanderer)
 			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
 		else if(used_title)
@@ -132,10 +131,10 @@
 				. += span_love("It's my spouse.")
 
 		if(display_as_foreign && !is_wanderer && user != src)
-			if(!are_mercenary || !is_mercenary)
-				. += span_phobia("A Foreigner...")
-			else
+			if(are_mercenary || is_mercenary)
 				. += span_notice("A Mercenary")
+			else
+				. += span_phobia("A Foreigner...")
 
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
