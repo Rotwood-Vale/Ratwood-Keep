@@ -2327,6 +2327,7 @@
 #include "code\modules\spells\roguetown\wizard.dm"
 #include "code\modules\spells\roguetown\acolyte\astrata.dm"
 #include "code\modules\spells\roguetown\acolyte\dendor.dm"
+#include "code\modules\spells\roguetown\acolyte\eora.dm"
 #include "code\modules\spells\roguetown\acolyte\general.dm"
 #include "code\modules\spells\roguetown\acolyte\malum.dm"
 #include "code\modules\spells\roguetown\acolyte\necra.dm"
