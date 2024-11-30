@@ -931,7 +931,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.head)
-			to_chat(user, span_warning("<span class='warning'>I feel at peace. <b style='color:pink'>Why would I want anything else?</b></span>"))
+			to_chat(user, span_warning("I feel at peace. <b style='color:pink'>Why would I want anything else?</b>"))
 			return TRUE
 	return FALSE
 
