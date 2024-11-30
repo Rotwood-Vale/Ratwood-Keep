@@ -34,17 +34,14 @@
 			else
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt
 			cloak = /obj/item/clothing/cloak/templar/astratan
-			beltr = /obj/item/rogueweapon/sword/long
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/noc
 			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
-			beltr = /obj/item/rogueweapon/sword/long
 		if("Dendor")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/dendor
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
-			beltr = /obj/item/rogueweapon/sword/long
 		if("Necra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
 			if(prob(50))
@@ -52,25 +49,20 @@
 			else
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
 			cloak = /obj/item/clothing/cloak/templar/necran
-			beltr = /obj/item/rogueweapon/sword/long
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
-			beltr = /obj/item/rogueweapon/sword/long
 		if("Malum")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/malum
 			cloak = /obj/item/clothing/cloak/templar/malummite
-			beltr = /obj/item/rogueweapon/mace/warhammer/steel
 		if("Ravox")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
-			beltr = /obj/item/rogueweapon/sword/long
 		if("Eora")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
 			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
 			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
-			beltr = /obj/item/rogueweapon/sword/long
 			mask = /obj/item/clothing/mask/rogue/facemask/goldmask
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
@@ -104,8 +96,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		if("Malum")
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			beltr = /obj/item/rogueweapon/mace/warhammer/steel
 		else
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			beltr = /obj/item/rogueweapon/sword/long
 		H.change_stat("strength", 3)
 		H.change_stat("perception", 2)
 		H.change_stat("intelligence", 2)
