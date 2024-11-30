@@ -26,6 +26,10 @@
 	if(user.mind.assigned_role == "Inquisitor")
 		inquisitor = TRUE
 
+	if(!M.mind) //Stopping null lookup runtimes
+		to_chat(user, span_warning("[M] does not have the mind to benefit from the holy anointment."))
+		return
+
 	if(HAS_TRAIT(M, TRAIT_SILVER_BLESSED))
 		to_chat(user, span_warning("Upon closer inspection, [M] is already anointed with quicksilver."))
 		return
@@ -50,17 +54,19 @@
 	for(var/obj/structure/fluff/psycross/S in oview(5, user))
 		found = S
 	if(!found)
-		to_chat(user, span_warning("I need a holy cross to properly apply this.")) //Like Anastasis
+		to_chat(user, span_warning("I need a holy cross nearby to properly apply this.")) //Like Anastasis
 		return
 
 	var/datum/antagonist/werewolf/Were = M.mind.has_antag_datum(/datum/antagonist/werewolf/)
+	var/datum/antagonist/werewolf/lesser/Wereless = M.mind.has_antag_datum(/datum/antagonist/werewolf/lesser/)
 	var/datum/antagonist/vampirelord/Vamp = M.mind.has_antag_datum(/datum/antagonist/vampirelord/)
 	var/datum/antagonist/vampirelord/lesser/Vampless = M.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
 
 	user.visible_message(span_notice("[user] begins to anoint [M] with [src]."))
 	if(do_after(user, 10 SECONDS, target = M))
-		if(!Were && !Vamp && !Vampless)
+		if(!Were && !Vamp)
 			user.visible_message(span_notice("[user] anoints [M]'s brow with [src]."))
+			ADD_TRAIT(M, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
 			success = 1
 		else
 			to_chat(M, span_userdanger("This silver concoction burns! It threatens to undo me!"))
@@ -83,10 +89,15 @@
 	else
 		to_chat(user, span_notice("My inquisitorial training allows just enough of the poultice left for one more anointment."))
 
-	
-
 	//Werewolf deconversion
-	if(Were)
+	if(Were && !Wereless) //The roundstart elder/alpha werewolf, it cannot be saved
+		to_chat(M, span_userdanger("This wretched silver weighs heavy on my brow. Dendor's blessing shall not be quit of me so easily."))
+		user.visible_message(span_danger("The silver poultice boils away from [M]'s brow, viscerally rejecting the divine anointment."))
+		M.Stun(30)
+		M.Knockdown(30)
+		return
+
+	else if(Wereless) //A lesser werewolf can be deconverted
 		if(Were.transformed == TRUE)
 			var/mob/living/carbon/human/I = M.stored_mob
 			to_chat(M, span_userdanger("THE FOUL SILVER! MY BODY RENDS ITSELF ASUNDER!"))
@@ -108,11 +119,10 @@
 			M.Knockdown(30)
 			M.Jitter(30)
 			return
-		
 
 	else if(Vamp && !Vampless) //We're the vampire lord, we can't be saved.
 		to_chat(M, span_userdanger("This wretched silver weighs heavy on my brow. An insult I shall never forget, for as long as I die."))
-		user.visible_message(span_danger("[src] boils away from [M]'s brow, viscerally rejecting the divine anointment."))
+		user.visible_message(span_danger("The silver poultice boils away from [M]'s brow, viscerally rejecting the divine anointment."))
 		M.Stun(30)
 		M.Knockdown(30)
 		return
@@ -154,7 +164,6 @@
 		M.Knockdown(30)
 		M.Jitter(30)
 		return
-
 
 
 /obj/item/quicksilver/pickup(mob/user) //Akin to the psycross.
