@@ -12,6 +12,9 @@
 	minSpawning           = 10
 	wind                  = 2
 
+	// big snowflakes
+	transform			 = null
+
 /datum/particle_weather/snow_gentle
 	name = "Rain"
 	desc = "Gentle Rain, la la description."
