@@ -409,10 +409,12 @@
 					src.Open()
 					addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
 					src.last_bumper = user
-				break
+				return
 			else
 				if(user.cmode)
 					door_rattle()
+		to_chat(user, span_warning("None of the keys on my keyring go to this door."))
+		door_rattle()
 		return
 	else
 		var/obj/item/roguekey/K = I
@@ -424,6 +426,7 @@
 				src.last_bumper = user
 			return
 		else
+			to_chat(user, span_warning("This is not the correct key that goes to this door."))
 			door_rattle()
 		return
 
