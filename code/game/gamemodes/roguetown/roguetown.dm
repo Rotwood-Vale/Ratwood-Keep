@@ -259,8 +259,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					continue
 				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
-				if(get_playerquality(candidate.key) < 10) 
-					continue
 
 				allantags -= candidate
 				pre_bandits += candidate
@@ -352,18 +350,19 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 /datum/game_mode/chaosmode/proc/pick_maniac()
 	restricted_jobs = list("Duke", "Duchess")
 	antag_candidates = get_players_for_role(ROLE_MANIAC)
-	for(var/datum/mind/villain in antag_candidates)
+	var/datum/mind/villain = pick_n_take(antag_candidates)
+	if(villain)
+		var/blockme = FALSE
 		if(!(villain in allantags))
-			continue
-		if(get_playerquality(villain.key) < 50)
-			continue
+			blockme = TRUE
+		if(blockme)
+			return
 		allantags -= villain
 		pre_villains += villain
 		villain.special_role = ROLE_MANIAC
 		villain.restricted_roles = restricted_jobs.Copy()
 		testing("[key_name(villain)] has been selected as the [villain.special_role]")
 		log_game("[key_name(villain)] has been selected as the [villain.special_role]")
-		break // Only one maniac
 	for(var/antag in pre_villains)
 		GLOB.pre_setup_antags |= antag
 	restricted_jobs = list()
@@ -393,12 +392,13 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	for(var/datum/mind/villain in antag_candidates)
 		if(!remaining)
 			break
+		var/blockme = FALSE
 		if(!(villain in allantags))
-			continue
+			blockme = TRUE
 		if(villain.assigned_role in GLOB.youngfolk_positions)
-			continue
-		if(get_playerquality(villain.key) < 20)
-			continue
+			blockme = TRUE
+		if(blockme)
+			return	
 		allantags -= villain
 		pre_cultists += villain
 		villain.special_role = "cultist"
@@ -440,18 +440,19 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Goblin Shaman"
 	)
 	antag_candidates = get_players_for_role(ROLE_LICH)
-	for(var/datum/mind/lichman in antag_candidates)
+	var/datum/mind/lichman = pick_n_take(antag_candidates)
+	if(lichman)
+		var/blockme = FALSE
 		if(!(lichman in allantags))
-			continue
-		if(get_playerquality(lichman.key) < 35)
-			continue
+			blockme = TRUE
+		if(blockme)
+			return
 		allantags -= lichman
 		pre_liches += lichman
 		lichman.special_role = ROLE_LICH
 		lichman.restricted_roles = restricted_jobs.Copy()
 		testing("[key_name(lichman)] has been selected as the [lichman.special_role]")
 		log_game("[key_name(lichman)] has been selected as the [lichman.special_role]")
-		break // Only one lich
 	for(var/antag in pre_liches)
 		GLOB.pre_setup_antags |= antag
 	restricted_jobs = list()
@@ -488,13 +489,14 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	for(var/datum/mind/vampire in antag_candidates)
 		if(!vampsremaining)
 			break
-		if(get_playerquality(vampire.key) < 20)
-			continue
+		var/blockme = FALSE
 		if(!(vampire in allantags))
-			continue
+			blockme = TRUE
 		if(vampire.assigned_role in GLOB.noble_positions)
 			continue
 		if(vampire.assigned_role in GLOB.youngfolk_positions)
+			blockme = TRUE
+		if(blockme)
 			continue
 
 		allantags -= vampire
@@ -547,14 +549,15 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	for(var/datum/mind/werewolf in antag_candidates)
 		if(!num_werewolves)
 			break
+		var/blockme = FALSE
 		if(!(werewolf in allantags))
-			continue
+			blockme = TRUE
 		if(werewolf.assigned_role in GLOB.noble_positions)
 			continue
 		if(werewolf.assigned_role in GLOB.youngfolk_positions)
-			continue
-		if(get_playerquality(werewolf.key) < 20)
-			continue
+			blockme = TRUE
+		if(blockme)
+			return
 		allantags -= werewolf
 		pre_werewolves += werewolf
 		werewolf.special_role = ROLE_WEREWOLF
