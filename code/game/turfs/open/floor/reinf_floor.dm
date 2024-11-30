@@ -75,8 +75,6 @@
 			if(prob(50))
 				ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
-/turf/open/floor/engine/singularity_pull()
-
 /turf/open/floor/engine/attack_paw(mob/user)
 	return attack_hand(user)
 

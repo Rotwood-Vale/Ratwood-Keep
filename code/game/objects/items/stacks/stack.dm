@@ -44,9 +44,6 @@
 		new type(loc, max_amount, FALSE)
 	if(!merge_type)
 		merge_type = type
-	if(custom_materials && custom_materials.len)
-		for(var/i in custom_materials)
-			custom_materials[getmaterialref(i)] = mats_per_stack * amount
 	. = ..()
 	if(merge)
 		for(var/obj/item/stack/S in loc)
@@ -54,13 +51,6 @@
 				merge(S)
 	var/list/temp_recipes = get_main_recipes()
 	recipes = temp_recipes.Copy()
-	if(material_type)
-		var/datum/material/M = getmaterialref(material_type) //First/main material
-		for(var/i in M.categories)
-			switch(i)
-				if(MAT_CATEGORY_RIGID)
-					var/list/temp = SSmaterials.rigid_stack_recipes.Copy()
-					recipes += temp
 	update_weight()
 	update_icon()
 
@@ -213,22 +203,6 @@
 			O.setDir(usr.dir)
 		use(R.req_amount * multiplier)
 
-		if(R.applies_mats && custom_materials && custom_materials.len)
-			var/list/used_materials = list()
-			for(var/i in custom_materials)
-				used_materials[getmaterialref(i)] = R.req_amount / R.res_amount * (MINERAL_MATERIAL_AMOUNT / custom_materials.len)
-			O.set_custom_materials(used_materials)
-
-		//START: oh fuck i'm so sorry
-		if(istype(O, /obj/structure/window))
-			var/obj/structure/window/W = O
-			W.ini_dir = W.dir
-		//END: oh fuck i'm so sorry
-
-		else if(istype(O, /obj/item/restraints/handcuffs/cable))
-			var/obj/item/cuffs = O
-			cuffs.color = color
-
 		if (QDELETED(O))
 			return //It's a stack and has already been merged
 
@@ -245,34 +219,26 @@
 /obj/item/stack/proc/building_checks(datum/stack_recipe/R, multiplier)
 	if (get_amount() < R.req_amount*multiplier)
 		if (R.req_amount*multiplier>1)
-			to_chat(usr, span_warning("I haven't got enough [src] to build \the [R.req_amount*multiplier] [R.title]\s!"))
+			to_chat(usr, "<span class='warning'>I haven't got enough [src] to build \the [R.req_amount*multiplier] [R.title]\s!</span>")
 		else
-			to_chat(usr, span_warning("I haven't got enough [src] to build \the [R.title]!"))
+			to_chat(usr, "<span class='warning'>I haven't got enough [src] to build \the [R.title]!</span>")
 		return FALSE
 	var/turf/T = get_turf(usr)
 
-	var/obj/D = R.result_type
-	if(R.window_checks && !valid_window_location(T, initial(D.dir) == FULLTILE_WINDOW_DIR ? FULLTILE_WINDOW_DIR : usr.dir))
-		to_chat(usr, span_warning("The [R.title] won't fit here!"))
-		return FALSE
 	if(R.one_per_turf && (locate(R.result_type) in T))
-		to_chat(usr, span_warning("There is another [R.title] here!"))
+		to_chat(usr, "<span class='warning'>There is another [R.title] here!</span>")
 		return FALSE
 	if(R.on_floor)
 		if(!isfloorturf(T))
-			to_chat(usr, span_warning("\The [R.title] must be constructed on the floor!"))
+			to_chat(usr, "<span class='warning'>\The [R.title] must be constructed on the floor!</span>")
 			return FALSE
 		for(var/obj/AM in T)
 			if(istype(AM,/obj/structure/grille))
 				continue
 			if(istype(AM,/obj/structure/table))
 				continue
-			if(istype(AM,/obj/structure/window))
-				var/obj/structure/window/W = AM
-				if(!W.fulltile)
-					continue
 			if(AM.density)
-				to_chat(usr, span_warning("Theres a [AM.name] here. You cant make a [R.title] here!"))
+				to_chat(usr, "<span class='warning'>Theres a [AM.name] here. You cant make a [R.title] here!</span>")
 				return FALSE
 	if(R.placement_checks)
 		switch(R.placement_checks)
@@ -281,11 +247,11 @@
 				for(var/direction in GLOB.cardinals)
 					step = get_step(T, direction)
 					if(locate(R.result_type) in step)
-						to_chat(usr, span_warning("\The [R.title] must not be built directly adjacent to another!"))
+						to_chat(usr, "<span class='warning'>\The [R.title] must not be built directly adjacent to another!</span>")
 						return FALSE
 			if(STACK_CHECK_ADJACENT)
 				if(locate(R.result_type) in range(1, T))
-					to_chat(usr, span_warning("\The [R.title] must be constructed at least one tile away from others of its type!"))
+					to_chat(usr, "<span class='warning'>\The [R.title] must be constructed at least one tile away from others of its type!</span>")
 					return FALSE
 	return TRUE
 
@@ -323,10 +289,6 @@
 
 /obj/item/stack/proc/add(amount)
 	src.amount += amount
-	if(custom_materials && custom_materials.len)
-		for(var/i in custom_materials)
-			custom_materials[getmaterialref(i)] = MINERAL_MATERIAL_AMOUNT * src.amount
-		set_custom_materials() //Refresh
 	update_icon()
 	update_weight()
 

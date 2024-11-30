@@ -41,10 +41,6 @@
 				if(prob(25))
 					qdel(src)
 
-/obj/effect/singularity_act()
-	qdel(src)
-	return 0
-
 /obj/effect/ConveyorMove()
 	return
 

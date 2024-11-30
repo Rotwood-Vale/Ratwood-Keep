@@ -556,10 +556,6 @@
 		A.ex_act(severity, target)
 		CHECK_TICK
 
-/obj/structure/closet/singularity_act()
-	dump_contents()
-	..()
-
 /obj/structure/closet/AllowDrop()
 	return TRUE
 

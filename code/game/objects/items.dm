@@ -344,10 +344,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		return 1
 
-/obj/item/blob_act(obj/structure/blob/B)
-	if(B && B.loc == loc)
-		qdel(src)
-
 //user: The mob that is suiciding
 //damagetype: The type of damage the item will inflict on the user
 //BRUTELOSS = 1

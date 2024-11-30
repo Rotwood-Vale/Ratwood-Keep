@@ -49,8 +49,6 @@
 /mob/living/simple_animal/hostile/retaliate/clown/Life()
 	. = ..()
 	if(banana_time && banana_time < world.time)
-		var/turf/T = get_turf(src)
-		var/list/adjacent =  T.GetAtmosAdjacentTurfs(1)
 		banana_time = world.time + rand(30,60)
 
 /mob/living/simple_animal/hostile/retaliate/clown/AttackingTarget()

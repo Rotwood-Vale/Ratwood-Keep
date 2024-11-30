@@ -53,21 +53,11 @@
 	required_reagents = list(/datum/reagent/iron = 5, /datum/reagent/consumable/frostoil = 5, /datum/reagent/toxin/plasma = 20)
 	mob_react = FALSE
 
-/datum/chemical_reaction/plasmasolidification/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/stack/sheet/mineral/plasma(location)
-
 /datum/chemical_reaction/goldsolidification
 	name = "Solid Gold"
 	id = "solidgold"
 	required_reagents = list(/datum/reagent/consumable/frostoil = 5, /datum/reagent/gold = 20, /datum/reagent/iron = 1)
 	mob_react = FALSE
-
-/datum/chemical_reaction/goldsolidification/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/stack/sheet/mineral/gold(location)
 
 /datum/chemical_reaction/capsaicincondensation
 	name = "Capsaicincondensation"
@@ -130,7 +120,7 @@
 	name = "Mulligan"
 	id = /datum/reagent/mulligan
 	results = list(/datum/reagent/mulligan = 1)
-	required_reagents = list(/datum/reagent/mutationtoxin/jelly = 1, /datum/reagent/toxin/mutagen = 1)
+	required_reagents = list(/datum/reagent/toxin/mutagen = 1)
 
 
 ////////////////////////////////// VIROLOGY //////////////////////////////////////////
@@ -461,12 +451,6 @@
 	results = list(/datum/reagent/carpet/black = 2)
 	required_reagents = list(/datum/reagent/carpet = 1, /datum/reagent/fuel/oil = 1)
 
-/datum/chemical_reaction/carpet/blue
-	name = /datum/reagent/carpet/blue
-	id = /datum/reagent/carpet/blue
-	results = list(/datum/reagent/carpet/blue = 2)
-	required_reagents = list(/datum/reagent/carpet = 1, /datum/reagent/cryostylane = 1)
-
 /datum/chemical_reaction/carpet/cyan
 	name = /datum/reagent/carpet/cyan
 	id = /datum/reagent/carpet/cyan
@@ -658,17 +642,6 @@
 	results = list(/datum/reagent/consumable/laughter = 10) // Fuck it. I'm not touching this one.
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/banana = 1)
 
-/datum/chemical_reaction/plastic_polymers
-	name = "plastic polymers"
-	id = /datum/reagent/plastic_polymers
-	required_reagents = list(/datum/reagent/fuel/oil = 5, /datum/reagent/toxin/acid = 2, /datum/reagent/ash = 3)
-	required_temp = 374 //lazily consistent with soap & other crafted objects generically created with heat.
-
-/datum/chemical_reaction/plastic_polymers/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i in 1 to created_volume)
-		new /obj/item/stack/sheet/plastic(location)
-
 /datum/chemical_reaction/pax
 	name = /datum/reagent/pax
 	id = /datum/reagent/pax
@@ -681,16 +654,6 @@
 	results = list(/datum/reagent/yuck = 4)
 	required_reagents = list(/datum/reagent/fuel = 3)
 	required_container = /obj/item/reagent_containers/food/snacks/deadmouse
-
-/datum/chemical_reaction/slime_extractification
-	name = "slime extractification"
-	id = "slime extractification"
-	required_reagents = list(/datum/reagent/toxin/slimejelly = 30, /datum/reagent/consumable/frostoil = 5, /datum/reagent/toxin/plasma = 5)
-	mix_message = "The mixture condenses into a ball."
-
-/datum/chemical_reaction/slime_extractification/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	new /obj/item/slime_extract/grey(location)
 
 /datum/chemical_reaction/cellulose_carbonization
 	name = "Cellulose_Carbonization"

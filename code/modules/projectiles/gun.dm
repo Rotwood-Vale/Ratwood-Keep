@@ -9,7 +9,6 @@
 	item_state = "gun"
 	flags_1 =  CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
-	custom_materials = list(/datum/material/iron=2000)
 	w_class = WEIGHT_CLASS_NORMAL
 	possible_item_intents = list(INTENT_GENERIC, RANGED_FIRE)
 	throwforce = 5
@@ -46,105 +45,24 @@
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
-	var/obj/item/firing_pin/pin = /obj/item/firing_pin //standard firing pin for most guns
-
-	var/can_flashlight = FALSE //if a flashlight can be added or removed if it already has one.
-	var/obj/item/flashlight/seclite/gun_light
-	var/mutable_appearance/flashlight_overlay
-	var/datum/action/item_action/toggle_gunlight/alight
-	var/gunlight_state = "flight"
-
-	var/can_bayonet = FALSE //if a bayonet can be added or removed if it already has one.
-	var/obj/item/kitchen/knife/bayonet
-	var/mutable_appearance/knife_overlay
-	var/knife_x_offset = 0
-	var/knife_y_offset = 0
-
 	var/ammo_x_offset = 0 //used for positioning ammo count overlay on sprite
 	var/ammo_y_offset = 0
 	var/flight_x_offset = 0
 	var/flight_y_offset = 0
 
-	//Zooming
-	var/zoomable = FALSE //whether the gun generates a Zoom action on creation
-	var/zoomed = FALSE //Zoom toggle
-	var/zoom_amt = 3 //Distance in TURFs to move the user's screen forward (the "zoom" effect)
-	var/zoom_out_amt = 0
-	var/datum/action/toggle_scope_zoom/azoom
-
 	var/automatic = 0 //can gun use it, 0 is no, anything above 0 is the delay between clicks in ds
 	var/pb_knockback = 0
 
-/obj/item/gun/Initialize()
-	. = ..()
-	if(pin)
-		pin = new pin(src)
-	if(gun_light)
-		alight = new(src)
-	build_zooming()
-
 /obj/item/gun/Destroy()
-	if(isobj(pin)) //Can still be the initial path, then we skip
-		QDEL_NULL(pin)
-	if(gun_light)
-		QDEL_NULL(gun_light)
-	if(bayonet)
-		QDEL_NULL(bayonet)
 	if(chambered) //Not all guns are chambered (EMP'ed energy guns etc)
 		QDEL_NULL(chambered)
-	if(azoom)
-		QDEL_NULL(azoom)
 	return ..()
 
 /obj/item/gun/handle_atom_del(atom/A)
-	if(A == pin)
-		pin = null
 	if(A == chambered)
 		chambered = null
 		update_icon()
-	if(A == bayonet)
-		clear_bayonet()
-	if(A == gun_light)
-		clear_gunlight()
 	return ..()
-
-/obj/item/gun/CheckParts(list/parts_list)
-	..()
-	var/obj/item/gun/G = locate(/obj/item/gun) in contents
-	if(G)
-		G.forceMove(loc)
-		QDEL_NULL(G.pin)
-		visible_message(span_notice("[G] can now fit a new pin, but the old one was destroyed in the process."), null, null, 3)
-		qdel(src)
-
-/obj/item/gun/get_examine_string(mob/user, thats = FALSE)
-	return "[thats? "That's ":""]<b>[get_examine_name(user)]</b>"
-
-/obj/item/gun/examine(mob/user)
-	. = ..()
-//	if(pin)
-//		. += "It has \a [pin] installed."
-//	else
-//		. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
-
-//	if(gun_light)
-//		. += "It has \a [gun_light] [can_flashlight ? "" : "permanently "]mounted on it."
-//		if(can_flashlight) //if it has a light and this is false, the light is permanent.
-//			. += span_info("[gun_light] looks like it can be <b>unscrewed</b> from [src].")
-//	else if(can_flashlight)
-//		. += "It has a mounting point for a <b>seclite</b>."
-
-//	if(bayonet)
-//		. += "It has \a [bayonet] [can_bayonet ? "" : "permanently "]affixed to it."
-//		if(can_bayonet) //if it has a bayonet and this is false, the bayonet is permanent.
-//			. += span_info("[bayonet] looks like it can be <b>unscrewed</b> from [src].")
-//	else if(can_bayonet)
-//		. += "It has a <b>bayonet</b> lug on it."
-
-/obj/item/gun/equipped(mob/living/user, slot)
-	. = ..()
-	if(zoomed && user.get_active_held_item() != src)
-		zoom(user, FALSE) //we can only stay zoomed in if it's in our hands	//yeah and we only unzoom if we're actually zoomed using the gun!!
 
 //called after the gun has successfully fired its chambered ammo.
 /obj/item/gun/proc/process_chamber()
@@ -252,24 +170,6 @@
 				addtimer(CALLBACK(G, TYPE_PROC_REF(/obj/item/gun, process_fire), target, user, TRUE, params, null, bonus_spread), loop_counter)
 
 	return process_fire(target, user, TRUE, params, null, bonus_spread)
-
-
-
-/obj/item/gun/can_trigger_gun(mob/living/user)
-	. = ..()
-	if(!handle_pins(user))
-		return FALSE
-
-/obj/item/gun/proc/handle_pins(mob/living/user)
-	if(pin)
-		if(pin.pin_auth(user) || (pin.obj_flags & EMAGGED))
-			return TRUE
-		else
-			pin.auth_fail(user)
-			return FALSE
-	else
-		to_chat(user, span_warning("[src]'s trigger is locked. This weapon doesn't have a firing pin installed!"))
-	return FALSE
 
 /obj/item/gun/proc/recharge_newshot()
 	return

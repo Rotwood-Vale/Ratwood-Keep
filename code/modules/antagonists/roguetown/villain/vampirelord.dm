@@ -583,7 +583,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	. = ..()
 	set_light(3, 3, 20, l_color = LIGHT_COLOR_BLOOD_MAGIC)
 	playsound(loc, 'sound/misc/portalopen.ogg', 100, FALSE, pressure_affected = FALSE)
-	sleep(600)
 	visible_message(span_boldnotice("[src] shudders before rapidly closing."))
 	qdel(src)
 

@@ -193,14 +193,10 @@
 	..()
 	. = 1
 
-/datum/reagent/drug/krokodil/addiction_act_stage4(mob/living/carbon/human/M)
-	CHECK_DNA_AND_SPECIES(M)
-	if(!istype(M.dna.species, /datum/species/krokodil_addict))
-		to_chat(M, span_danger("My skin falls off easily!"))
-		M.adjustBruteLoss(50*REM, 0) // holy shit my skin just FELL THE FUCK OFF
-		M.set_species(/datum/species/krokodil_addict)
-	else
-		M.adjustBruteLoss(5*REM, 0)
+/datum/reagent/drug/crank/addiction_act_stage4(mob/living/M)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3*REM)
+	M.adjustToxLoss(5*REM, 0)
+	M.adjustBruteLoss(5*REM, 0)
 	..()
 	. = 1
 
