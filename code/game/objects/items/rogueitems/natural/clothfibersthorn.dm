@@ -343,6 +343,29 @@
 	icon2step = 7
 	icon3 = "stickbundle3"
 
+/obj/item/natural/bundle/stick/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	user.changeNext_move(CLICK_CD_MELEE)
+	if(user.used_intent?.blade_class == BCLASS_CUT)
+		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
+		if(do_after(user, 20))
+			user.visible_message(span_notice("[user] sharpens a stick in [src]."), span_notice("I sharpen a stick in [src]."))
+			var/obj/item/grown/log/tree/stake/S = new /obj/item/grown/log/tree/stake(get_turf(src.loc))
+			amount--
+			if (amount == 1)
+				var/turf/T = get_turf(user.loc)
+				var/obj/item/ST = new stacktype(T)
+				if(user.is_holding(src))
+					user.doUnEquip(src, TRUE, T, silent = TRUE)
+				user.put_in_hands(ST)
+				qdel(src)
+			else
+				update_bundle()
+			user.put_in_hands(S)
+			S.pixel_x = rand(-3, 3)
+			S.pixel_y = rand(-3, 3)
+		return
+
 /obj/item/natural/bundle/bone
 	name = "stack of bones"
 	icon_state = "bonestack1"
