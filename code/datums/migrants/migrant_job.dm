@@ -15,6 +15,7 @@
 	max_pq = null
 	min_pq = -100
 	wanderer_examine = TRUE
+	foreign_examine = TRUE
 	advjob_examine = TRUE
 
 	total_positions = 0
