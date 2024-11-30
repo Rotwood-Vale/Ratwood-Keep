@@ -1047,6 +1047,10 @@
 	for(var/turf/affected_turf in view(area_of_effect, T))
 		new /obj/effect/temp_visual/snap_freeze(affected_turf)
 		for(var/mob/living/L in affected_turf.contents)
+			if(L.anti_magic_check())
+				visible_message(span_warning("The ice fades away around you. [L] "))  //antimagic needs some testing
+				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+				return 
 			play_cleave = TRUE
 			L.adjustFireLoss(damage)
 			L.apply_status_effect(/datum/status_effect/buff/frostbite5e/)
@@ -1196,14 +1200,19 @@
 		new /obj/effect/temp_visual/gravity(affected_turf)
 		playsound(T, 'sound/magic/gravity.ogg', 80, TRUE, soundping = FALSE)
 		for(var/mob/living/L in affected_turf.contents) 
+			if(L.anti_magic_check())
+				visible_message(span_warning("The gravity fades away around you [L] "))  //antimagic needs some testing
+				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+				return 
+
 			if(L.STASTR <= 13)
 				L.adjustBruteLoss(30)
 				L.Knockdown(5)
-				to_chat(L, "<span class='userdanger'>You're magically weighed down and lose your footing!</span>")
+				to_chat(L, "<span class='userdanger'>You're magically weighed down, losing your footing!</span>")
 			else
 				L.OffBalance(10)
 				L.adjustBruteLoss(15)
-				to_chat(L, "<span class='userdanger'>You're magically weighed down, your strength resist!</span>")
+				to_chat(L, "<span class='userdanger'>You're magically weighed down, and your strength resist!</span>")
 			
 			
 
