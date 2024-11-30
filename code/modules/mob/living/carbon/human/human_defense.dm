@@ -471,66 +471,64 @@
 		..()
 
 
-/mob/living/carbon/human/ex_act(severity, target, origin, epicenter, heavy_impact_range, light_impact_range)
-	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
-		return
+/mob/living/carbon/human/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	..()
 	if (!severity)
 		return
+	var/ddist = devastation_range
 	var/hdist = heavy_impact_range
 	var/ldist = light_impact_range
+	var/fdist = flame_range
 	var/fodist = get_dist(src, epicenter)
 	var/brute_loss = 0
 	var/burn_loss = 0
 	var/bomb_armor = getarmor(null, "bomb")
 
-//200 max knockdown for EXPLODE_HEAVY
-//160 max knockdown for EXPLODE_LIGHT
-
-
 	switch (severity)
 		if (EXPLODE_DEVASTATE)
-			if(bomb_armor < EXPLODE_GIB_THRESHOLD) //gibs the mob if their bomb armor is lower than EXPLODE_GIB_THRESHOLD
-				for(var/I in contents)
-					var/atom/A = I
-					A.ex_act(severity)
-				gib()
-				return
-			else
-				brute_loss = 500
-				var/atom/throw_target = get_edge_target_turf(src, get_dir(src, get_step_away(src, src)))
-				throw_at(throw_target, 200, 4)
-				damage_clothes(400 - bomb_armor, BRUTE, "bomb")
-
-		if (EXPLODE_HEAVY)
-			brute_loss = (60 * hdist) - (60 * (fodist - 1))
-			burn_loss = (60 * hdist) - (60 * (fodist - 1))
+			brute_loss = (250 * ddist) - (250 * max((fodist - 1), 0))
+			burn_loss = (100 * ddist) - (100 * max((fodist - 1), 0))
 			if(bomb_armor)
-				brute_loss = (60 * (2 - round(bomb_armor*0.01, 0.05)) * hdist) - ((60 * (2 - round(bomb_armor*0.01, 0.05))) * fodist)
-				burn_loss = brute_loss				//damage gets reduced from 120 to up to 60 combined brute+burn
-			damage_clothes(100 - bomb_armor, BRUTE, "bomb")
+				brute_loss = (100 * (2 - round(bomb_armor*0.01, 0.05)) * ddist) - ((100 * (2 - round(bomb_armor*0.01, 0.05))) * fodist)
+				burn_loss = brute_loss
+			damage_clothes(brute_loss - bomb_armor, BRUTE, "bomb")
 //				if (!istype(ears, /obj/item/clothing/ears/earmuffs))
 //					adjustEarDamage(30, 120)
-			Unconscious(20)							//short amount of time for follow up attacks against elusive enemies like wizards
-			Knockdown(200 - (bomb_armor * 1.6)) 	//between ~4 and ~20 seconds of knockdown depending on bomb armor
+			Unconscious((50 * ddist) - (15 * fodist))
+			Knockdown(((30 * ddist) - (30 * fodist)) - (bomb_armor * 1.6))
+
+		if (EXPLODE_HEAVY)
+			brute_loss = (60 * hdist) - (60 * max((fodist - 1), 0))
+			burn_loss = (30 * hdist) - (30 * max((fodist - 1), 0))
+			if(bomb_armor)
+				brute_loss = (60 * (2 - round(bomb_armor*0.01, 0.05)) * hdist) - ((60 * (2 - round(bomb_armor*0.01, 0.05))) * fodist)
+				burn_loss = brute_loss
+			damage_clothes(brute_loss - bomb_armor, BRUTE, "bomb")
+//				if (!istype(ears, /obj/item/clothing/ears/earmuffs))
+//					adjustEarDamage(30, 120)
+			Unconscious((10 * hdist) - (5 * fodist))
+			Knockdown(((30 * hdist) - (30 * fodist)) - (bomb_armor * 1.6))
 
 		if(EXPLODE_LIGHT)
 			brute_loss = (10 * ldist) - (10 * fodist)
 			if(bomb_armor)
 				brute_loss = (10 * (2 - round(bomb_armor*0.01, 0.05)) * ldist) - ((10 * (2 - round(bomb_armor*0.01, 0.05))) * fodist)
-//				damage_clothes(max(50 - bomb_armor, 0), BRUTE, "bomb")
+				damage_clothes(max(brute_loss - bomb_armor, 0), BRUTE, "bomb")
 //				if (!istype(ears, /obj/item/clothing/ears/earmuffs))
 //					adjustEarDamage(15,60)
-			Knockdown(((15 * ldist) - (15 * fodist))  - (bomb_armor * 1.6))		//100 bomb armor will prevent knockdown altogether
+			Knockdown(((15 * ldist) - (15 * fodist))  - (bomb_armor * 1.6))
 
 	take_overall_damage(brute_loss,burn_loss)
+	if(fdist)
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
 
 	//attempt to dismember bodyparts
-	if(severity <= 2)
-		var/max_limb_loss = round(4/severity) //so you don't lose four limbs at severity 3.
+	if(severity >= 2)
+		var/max_limb_loss = rand(0, floor(3/severity))
 		for(var/X in bodyparts)
 			var/obj/item/bodypart/BP = X
-			if(prob(50/severity) && !prob(getarmor(BP, "bomb")) && BP.body_zone != BODY_ZONE_HEAD && BP.body_zone != BODY_ZONE_CHEST)
+			if(prob(25/severity) && !prob(getarmor(BP, "bomb")) && BP.body_zone != BODY_ZONE_HEAD && BP.body_zone != BODY_ZONE_CHEST)
 				BP.brute_dam = BP.max_damage
 				BP.dismember()
 				max_limb_loss--

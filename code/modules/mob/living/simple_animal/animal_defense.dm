@@ -259,29 +259,35 @@
 	Proj.on_hit(src)
 	return BULLET_ACT_HIT
 
-/mob/living/simple_animal/ex_act(severity, target, origin)
-	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
-		return
+/mob/living/simple_animal/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range)
 	..()
-	var/bomb_armor = getarmor(null, "bomb")
+	if (!severity)
+		return
+	var/ddist = devastation_range
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fodist = get_dist(src, epicenter)
+	var/brute_loss = 0
+	var/burn_loss = 0
+
 	switch (severity)
 		if (EXPLODE_DEVASTATE)
-			if(prob(bomb_armor))
-				adjustBruteLoss(500)
-			else
-				gib()
-				return
+			brute_loss = (250 * ddist) - (250 * max((fodist - 1), 0))
+			burn_loss = (250 * ddist) - (250 * max((fodist - 1), 0))
+			Unconscious((50 * ddist) - (15 * fodist))
+			Knockdown((30 * ddist) - (30 * fodist))
+
 		if (EXPLODE_HEAVY)
-			var/bloss = 60
-			if(prob(bomb_armor))
-				bloss = bloss / 1.5
-			adjustBruteLoss(bloss)
+			brute_loss = (60 * hdist) - (60 * max((fodist - 1), 0))
+			burn_loss = (60 * hdist) - (60 * max((fodist - 1), 0))
+			Unconscious((10 * hdist) - (5 * fodist))
+			Knockdown((30 * hdist) - (30 * fodist))
 
 		if(EXPLODE_LIGHT)
-			var/bloss = 30
-			if(prob(bomb_armor))
-				bloss = bloss / 1.5
-			adjustBruteLoss(bloss)
+			brute_loss = (10 * ldist) - (10 * fodist)
+			Knockdown((15 * ldist) - (15 * fodist))
+
+	take_overall_damage(brute_loss,burn_loss)
 
 /mob/living/simple_animal/blob_act(obj/structure/blob/B)
 	adjustBruteLoss(20)

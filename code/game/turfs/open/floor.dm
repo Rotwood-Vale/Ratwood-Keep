@@ -57,7 +57,7 @@
 	if(mapload && prob(33))
 		MakeDirty()
 
-/turf/open/floor/ex_act(severity, target)
+/turf/open/floor/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	var/shielded = is_shielded()
 	..()
 	if(severity != 1 && shielded && target != src)

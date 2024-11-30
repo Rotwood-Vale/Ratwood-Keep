@@ -78,7 +78,7 @@
 //	if(girder_type)
 //		new /obj/item/stack/sheet/metal(src)
 
-/turf/closed/wall/ex_act(severity, target)
+/turf/closed/wall/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	if(target == src)
 		dismantle_wall(1,1)
 		take_damage(INFINITY, BRUTE, "bomb", 0)
@@ -87,7 +87,7 @@
 		if(1)
 			//SN src = null
 			var/turf/NT = ScrapeAway()
-			NT.contents_explosion(severity, target)
+			NT.contents_explosion(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 			return
 		if(2)
 			take_damage(rand(350, 600), BRUTE, "bomb", 0)
