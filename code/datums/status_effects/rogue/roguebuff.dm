@@ -242,6 +242,16 @@
 	desc = "I've sworn an oath to defend this castle. My resolve will not waver."
 	icon_state = "buff"
 
+/atom/movable/screen/alert/status_effect/buff/wardenbuff
+	name = "Woodsman"
+	desc = "I've trekked these woods for some time now. I find traversal easier here."
+	icon_state = "buff"
+
+/datum/status_effect/buff/wardenbuff
+	id = "wardenbuff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/wardenbuff
+	effectedstats = list("speed" = 1, "perception" = 3) 
+
 /datum/status_effect/buff/guardbuffone
 	id = "guardbuffone"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/guardbuffone
@@ -259,6 +269,21 @@
 	var/area/rogue/our_area = get_area(owner)
 	if(!(our_area.town_area))
 		owner.remove_status_effect(/datum/status_effect/buff/guardbuffone)
+
+/datum/status_effect/buff/wardenbuff/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.warden_area))
+		owner.remove_status_effect(/datum/status_effect/buff/wardenbuff)
+
+/datum/status_effect/buff/wardenbuff/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
+
+/datum/status_effect/buff/wardenbuff/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
 
 /datum/status_effect/buff/knightbuff/process()
 
