@@ -613,7 +613,7 @@
 			explosion(get_turf(target), hitdevi, hitheavy, hitlight, 0, 0, 0, visfx = "firespark", soundin = null)
 			var/datum/point/vector/previous = trajectory.return_vector_after_increments(1,-1)
 			T = previous.return_turf()
-			explosion(T, (exp_devi - 1), (exp_heavy - 1), (exp_light - 1), exp_flash, 0, flame_range = exp_fire, hotspot_range = exp_hotspot, soundin = explode_sound)
+			explosion(T, exp_devi, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, hotspot_range = exp_hotspot, soundin = explode_sound)
 			return TRUE
 		else
 			T = target

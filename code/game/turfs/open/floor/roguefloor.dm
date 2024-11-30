@@ -19,6 +19,9 @@
 		icon = smooth_icon
 	. = ..()
 
+/turf/open/floor/rogue/turf_destruction(damage_flag)
+	return //Ignores destruction if not set
+
 /turf/open/floor/rogue/ruinedwood
 	icon_state = "wooden_floor"
 	footstep = FOOTSTEP_WOOD

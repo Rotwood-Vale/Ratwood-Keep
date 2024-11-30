@@ -8,6 +8,7 @@
 	baseturfs = list(/turf/open/floor/rogue/dirt/road)
 	wallclimb = TRUE
 	explosion_block = 10
+	damage_deflection = 0
 	icon = 'icons/turf/roguewall.dmi'
 
 /turf/closed/wall/mineral/rogue/Initialize()
