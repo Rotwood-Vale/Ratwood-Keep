@@ -113,7 +113,7 @@
 
 /obj/item/natural/bundle/attack_turf(turf/T, mob/living/user)
 	var/list/obj/item/stackables = list()
-	for(var/obj/I in T.contents)
+	for(var/obj/item/I in T.contents)
 		if(I.type == stacktype)
 			stackables += I
 	if(stackables.len)
