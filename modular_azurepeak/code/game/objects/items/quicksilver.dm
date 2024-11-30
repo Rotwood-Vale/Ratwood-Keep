@@ -96,6 +96,7 @@
 			I.emote("agony", forced = TRUE)
 			I.Stun(30)
 			I.Knockdown(30)
+			I.Jitter(30)
 			return
 		else
 			M.flash_fullscreen("redflash3")
@@ -105,6 +106,7 @@
 			ADD_TRAIT(M, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
 			M.Stun(30)
 			M.Knockdown(30)
+			M.Jitter(30)
 			return
 		
 
@@ -150,6 +152,7 @@
 		ADD_TRAIT(M, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
 		M.Stun(30)
 		M.Knockdown(30)
+		M.Jitter(30)
 		return
 
 
