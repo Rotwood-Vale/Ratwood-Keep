@@ -24,7 +24,6 @@
 
 /obj/machinery/shower/Destroy()
 	QDEL_NULL(soundloop)
-	QDEL_NULL(reagents)
 	return ..()
 
 /obj/machinery/shower/interact(mob/M)
@@ -125,9 +124,6 @@
 /proc/wash_turf(turf/tile, clean = CLEAN_WEAK)
 	SEND_SIGNAL(tile, COMSIG_COMPONENT_CLEAN_ACT, clean)
 //	tile.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-	for(var/obj/effect/E in tile)
-		if(is_cleanable(E))
-			qdel(E)
 
 
 /proc/wash_mob(mob/living/L, clean = CLEAN_WEAK)

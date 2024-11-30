@@ -26,15 +26,8 @@
 	var/source_z = turf_source.z
 	var/list/listeners = SSmobs.clients_by_zlevel[source_z].Copy()
 
-	var/turf/above_turf = turf_source.above()
-	var/turf/below_turf = turf_source.below()
-
-	if(above_turf)
-		if(!is_in_zweb(turf_source, above_turf))
-			above_turf=null
-	if(below_turf)
-		if(!is_in_zweb(turf_source, below_turf))
-			below_turf=null
+	var/turf/above_turf = GET_TURF_ABOVE(turf_source)
+	var/turf/below_turf = GET_TURF_BELOW(turf_source)
 
 	if(soundping)
 		ping_sound(source)
@@ -51,25 +44,27 @@
 	else
 		if(above_turf)
 			listeners += SSmobs.clients_by_zlevel[above_turf.z]
+			listeners += SSmobs.dead_players_by_zlevel[above_turf.z]
 
 		if(below_turf)
 			listeners += SSmobs.clients_by_zlevel[below_turf.z]
+			listeners += SSmobs.dead_players_by_zlevel[below_turf.z]
+	
+	listeners += SSmobs.dead_players_by_zlevel[source_z]
 
 	. = list()
 
-	for(var/P in listeners)
-		var/mob/M = P
-		if(get_dist(M, turf_source) <= maxdistance)
-			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat))
-				. += M
-	for(var/P in SSmobs.dead_players_by_zlevel[source_z])
-		var/mob/M = P
+	for(var/mob/M as anything in listeners)
 		if(get_dist(M, turf_source) <= maxdistance)
 			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat))
 				. += M
 
 
 /proc/ping_sound(atom/A)
+	if(ishuman(A))
+		var/mob/living/carbon/human/sneaker = A
+		if(HAS_TRAIT(sneaker,TRAIT_LIGHT_STEP))
+			return FALSE //Should stop people with Light Step from appearing on FOV cones. Won't stop their actions (stepping on branches) from alerting people. test with caution.
 	var/image/I = image(icon = 'icons/effects/effects.dmi', loc = A, icon_state = "emote", layer = ABOVE_MOB_LAYER)
 	if(!I)
 		return

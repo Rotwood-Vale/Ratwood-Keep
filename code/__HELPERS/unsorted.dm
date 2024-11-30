@@ -1,4 +1,5 @@
-
+var/list/cardinal = list( NORTH, SOUTH, EAST, WEST )
+var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 
 /*
  * A large number of misc global procs.
@@ -234,64 +235,6 @@ Turf and target are separate in case you want to teleport some distance from a t
 		return TRUE
 	return FALSE
 
-
-//Picks a string of symbols to display as the law number for hacked or ion laws
-/proc/ionnum()
-	return "[pick("!","@","#","$","%","^","&")][pick("!","@","#","$","%","^","&","*")][pick("!","@","#","$","%","^","&","*")][pick("!","@","#","$","%","^","&","*")]"
-
-//Returns a list of unslaved cyborgs
-/proc/active_free_borgs()
-	. = list()
-	for(var/mob/living/silicon/robot/R in GLOB.alive_mob_list)
-		if(R.connected_ai || R.shell)
-			continue
-		if(R.stat == DEAD)
-			continue
-		if(R.emagged || R.scrambledcodes)
-			continue
-		. += R
-
-//Returns a list of AI's
-/proc/active_ais(check_mind=0)
-	. = list()
-	for(var/mob/living/silicon/ai/A in GLOB.alive_mob_list)
-		if(A.stat == DEAD)
-			continue
-		if(A.control_disabled)
-			continue
-		if(check_mind)
-			if(!A.mind)
-				continue
-		. += A
-	return .
-
-//Find an active ai with the least borgs. VERBOSE PROCNAME HUH!
-/proc/select_active_ai_with_fewest_borgs()
-	var/mob/living/silicon/ai/selected
-	var/list/active = active_ais()
-	for(var/mob/living/silicon/ai/A in active)
-		if(!selected || (selected.connected_robots.len > A.connected_robots.len))
-			selected = A
-
-	return selected
-
-/proc/select_active_free_borg(mob/user)
-	var/list/borgs = active_free_borgs()
-	if(borgs.len)
-		if(user)
-			. = input(user,"Unshackled cyborg signals detected:", "Cyborg Selection", borgs[1]) in sortList(borgs)
-		else
-			. = pick(borgs)
-	return .
-
-/proc/select_active_ai(mob/user)
-	var/list/ais = active_ais()
-	if(ais.len)
-		if(user)
-			. = input(user,"AI signals detected:", "AI Selection", ais[1]) in sortList(ais)
-		else
-			. = pick(ais)
-	return .
 
 //Returns a list of all items of interest with their name
 /proc/getpois(mobs_only=0,skip_mindless=0,team=null)
@@ -717,22 +660,19 @@ Turf and target are separate in case you want to teleport some distance from a t
 Checks if that loc and dir has an item on the wall
 */
 GLOBAL_LIST_INIT(WALLITEMS, typecacheof(list(
-	/obj/machinery/power/apc, /obj/machinery/airalarm, /obj/item/radio/intercom,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
-	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
-	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard, /obj/machinery/button,
-	/obj/machinery/computer/security/telescreen, /obj/machinery/embedded_controller/radio/simple_vent_controller,
-	/obj/item/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
-	/obj/structure/mirror, /obj/structure/fireaxecabinet, /obj/machinery/computer/security/telescreen/entertainment,
+	/obj/structure/sign,
+	/obj/structure/noticeboard,
+	/obj/item/storage/secure/safe,
+	/obj/structure/mirror, /obj/structure/fireaxecabinet,
 	/obj/structure/sign/picture_frame
 	)))
 
 GLOBAL_LIST_INIT(WALLITEMS_EXTERNAL, typecacheof(list(
-	/obj/machinery/camera, /obj/structure/camera_assembly,
-	/obj/structure/light_construct, /obj/machinery/light)))
+	/obj/machinery/light)))
 
 GLOBAL_LIST_INIT(WALLITEMS_INVERSE, typecacheof(list(
-	/obj/structure/light_construct, /obj/machinery/light)))
+	/obj/machinery/light)))
 
 
 /proc/gotwallitem(loc, dir, check_external = 0)
@@ -1063,28 +1003,10 @@ B --><-- A
 	A.cut_overlay(O)
 
 /proc/get_random_station_turf()
-	return safepick(get_area_turfs(pick(GLOB.the_station_areas)))
+	return 
 
 /proc/get_safe_random_station_turf() //excludes dense turfs (like walls) and areas that have valid_territory set to FALSE
-	for (var/i in 1 to 5)
-		var/list/L = get_area_turfs(pick(GLOB.the_station_areas))
-		var/turf/target
-		while (L.len && !target)
-			var/I = rand(1, L.len)
-			var/turf/T = L[I]
-			var/area/X = get_area(T)
-			if(!T.density && X.valid_territory)
-				var/clear = TRUE
-				for(var/obj/O in T)
-					if(O.density)
-						clear = FALSE
-						break
-				if(clear)
-					target = T
-			if (!target)
-				L.Cut(I,I+1)
-		if (target)
-			return target
+	return
 
 
 /proc/get_closest_atom(type, list, source)
@@ -1266,12 +1188,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	if(!T)
 		return FALSE
 	for(var/obj/O in T)
-		if(istype(O, /obj/machinery/door/window) && (O.dir == dir_to_check || dir_to_check == FULLTILE_WINDOW_DIR))
-			return FALSE
-		if(istype(O, /obj/structure/windoor_assembly))
-			var/obj/structure/windoor_assembly/W = O
-			if(W.ini_dir == dir_to_check || dir_to_check == FULLTILE_WINDOW_DIR)
-				return FALSE
 		if(istype(O, /obj/structure/window))
 			var/obj/structure/window/W = O
 			if(W.ini_dir == dir_to_check || W.ini_dir == FULLTILE_WINDOW_DIR || dir_to_check == FULLTILE_WINDOW_DIR)
@@ -1576,3 +1492,56 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		return input
 	else
 		return 1
+
+// -------- ECONOMY RELATED GLOBAL LISTS
+GLOBAL_LIST_INIT(ITEM_DOES_NOT_GENERATE_VAULT_RENT, typecacheof(list(
+	/obj/item/roguecoin
+	)))
+
+//Vars that will not be copied when using /DuplicateObject
+GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
+	"tag", "datum_components", "area", "type", "loc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",
+	"power_supply", "contents", "reagents", "stat", "x", "y", "z", "group", "atmos_adjacent_turfs", "comp_lookup"
+	))
+
+/proc/DuplicateObject(atom/original, perfectcopy = TRUE, sameloc, atom/newloc = null, nerf, holoitem)
+	RETURN_TYPE(original.type)
+	if(!original)
+		return
+	var/atom/O
+
+	if(sameloc)
+		O = new original.type(original.loc)
+	else
+		O = new original.type(newloc)
+
+	if(perfectcopy && O && original)
+		for(var/V in original.vars - GLOB.duplicate_forbidden_vars)
+			if(islist(original.vars[V]))
+				var/list/L = original.vars[V]
+				O.vars[V] = L.Copy()
+			else if(istype(original.vars[V], /datum))
+				continue	// this would reference the original's object, that will break when it is used or deleted.
+			else
+				O.vars[V] = original.vars[V]
+
+	if(isobj(O))
+		var/obj/N = O
+		if(holoitem)
+			N.resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF // holoitems do not burn
+
+		if(nerf && isitem(O))
+			var/obj/item/I = O
+			I.damtype = STAMINA // thou shalt not
+
+		N.update_icon()
+
+	if(holoitem)
+		O.flags_1 |= HOLOGRAM_1
+		for(var/atom/thing in O)
+			thing.flags_1 |= HOLOGRAM_1
+		if(ismachinery(O))
+			var/obj/machinery/M = O
+			for(var/atom/contained_atom in M.component_parts)
+				contained_atom.flags_1 |= HOLOGRAM_1
+	return O

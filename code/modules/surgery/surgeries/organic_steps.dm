@@ -33,7 +33,7 @@
 	name = "Clamp bleeders"
 	implements = list(
 		TOOL_HEMOSTAT = 75,
-		TOOL_WIRECUTTER = 60,
+		TOOL_IMPROVHEMOSTAT = 40,
 	)
 	time = 2.4 SECONDS
 	surgery_flags_blocked = SURGERY_CLAMPED
@@ -59,8 +59,7 @@
 	name = "Retract incision"
 	implements = list(
 		TOOL_RETRACTOR = 75,
-		TOOL_SCREWDRIVER = 50,
-		TOOL_WIRECUTTER = 35,
+		TOOL_IMPROVRETRACTOR = 40,
 	)
 	time = 2.4 SECONDS
 	surgery_flags_blocked = SURGERY_RETRACTED
@@ -86,11 +85,12 @@
 	name = "Cauterize wounds"
 	implements = list(
 		TOOL_CAUTERY = 100,
-		TOOL_WELDER = 70,
+		TOOL_ACID = 100,
 		TOOL_HOT = 35,
 	)
 	time = 2.4 SECONDS
 	surgery_flags = SURGERY_BLOODY
+	ignore_clothes = TRUE
 	skill_min = SKILL_LEVEL_NOVICE
 	skill_median = SKILL_LEVEL_APPRENTICE
 
@@ -123,6 +123,7 @@
 	name = "Saw bone"
 	implements = list(
 		TOOL_SAW = 80,
+		TOOL_IMPROVSAW = 60,
 		TOOL_SHOVEL = 50,
 		TOOL_SHARP = 25,
 	)

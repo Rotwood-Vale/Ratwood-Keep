@@ -35,40 +35,6 @@
 		amount += roles[role_type]
 	return amount
 
-/datum/migrant_wave/pilgrim
-	name = "Pilgrimage"
-	downgrade_wave = /datum/migrant_wave/pilgrim_down_one
-	roles = list(
-		/datum/migrant_role/pilgrim = 4,
-	)
-	greet_text = "Fleeing from misfortune and hardship, you and a handful of survivors get closer to Rockhill, looking for refuge and work, finally almost being there, almost..."
-
-/datum/migrant_wave/pilgrim_down_one
-	name = "Pilgrimage"
-	downgrade_wave = /datum/migrant_wave/pilgrim_down_two
-	can_roll = FALSE
-	roles = list(
-		/datum/migrant_role/pilgrim = 3,
-	)
-	greet_text = "Fleeing from misfortune and hardship, you and a handful of survivors get closer to Rockhill, looking for refuge and work, finally almost being there, almost..."
-
-/datum/migrant_wave/pilgrim_down_two
-	name = "Pilgrimage"
-	downgrade_wave = /datum/migrant_wave/pilgrim_down_three
-	can_roll = FALSE
-	roles = list(
-		/datum/migrant_role/pilgrim = 2,
-	)
-	greet_text = "Fleeing from misfortune and hardship, you and a handful of survivors get closer to Rockhill, looking for refuge and work, finally almost being there, almost..."
-
-/datum/migrant_wave/pilgrim_down_three
-	name = "Pilgrimage"
-	can_roll = FALSE
-	roles = list(
-		/datum/migrant_role/pilgrim = 1,
-	)
-	greet_text = "Fleeing from misfortune and hardship, you and a handful of survivors get closer to Rockhill, looking for refuge and work, finally almost being there, almost..."
-
 /datum/migrant_wave/adventurer
 	name = "Adventure Party"
 	downgrade_wave = /datum/migrant_wave/adventurer_down_one
@@ -110,7 +76,7 @@
 	weight = 8
 	spawn_landmark = "Bandit"
 	roles = list(
-		/datum/migrant_role/bandit = 4,
+		/datum/migrant_role/bandit = 2,
 	)
 
 /datum/migrant_wave/bandit_down_one
@@ -119,7 +85,7 @@
 	can_roll = FALSE
 	spawn_landmark = "Bandit"
 	roles = list(
-		/datum/migrant_role/bandit = 3,
+		/datum/migrant_role/bandit = 2,
 	)
 
 /datum/migrant_wave/bandit_down_two
@@ -132,6 +98,15 @@
 	)
 
 /datum/migrant_wave/bandit_down_three
+	name = "Bandit Raid"
+	downgrade_wave = /datum/migrant_wave/bandit_down_four
+	can_roll = FALSE
+	spawn_landmark = "Bandit"
+	roles = list(
+		/datum/migrant_role/bandit = 2,
+	)
+
+/datum/migrant_wave/bandit_down_four
 	name = "Bandit Raid"
 	can_roll = FALSE
 	spawn_landmark = "Bandit"

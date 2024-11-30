@@ -11,7 +11,7 @@
 
 /obj/structure/fluff/testportal/Initialize()
 	name = aportalloc
-	..()
+	return ..()
 
 /obj/structure/fluff/testportal/attack_hand(mob/user)
 	var/fou
@@ -142,7 +142,7 @@
 	user.recent_travel = world.time
 	if(can_gain_with_sight)
 		reveal_travel_trait_to_others(user)
-	if(can_gain_by_walking && the_tile.required_trait && !HAS_TRAIT(user, the_tile.required_trait))
+	if(can_gain_by_walking && the_tile.required_trait && !HAS_TRAIT(user, the_tile.required_trait) && !HAS_TRAIT(user, TRAIT_BLIND)) // If you're blind you can't find your way
 		ADD_TRAIT(user, the_tile.required_trait, TRAIT_GENERIC)
 	if(invis_without_trait && !revealed_to.Find(user))
 		show_travel_tile(user)
@@ -155,7 +155,7 @@
 	if(!HAS_TRAIT(user, required_trait))
 		return
 	for(var/mob/living/carbon/human/H in view(6,src))
-		if(!HAS_TRAIT(H, required_trait))
+		if(!HAS_TRAIT(H, required_trait) && !HAS_TRAIT(H, TRAIT_BLIND))
 			to_chat(H, "<b>I discover a well hidden entrance</b>")
 			ADD_TRAIT(H, required_trait, TRAIT_GENERIC)
 
@@ -190,6 +190,16 @@
 	can_gain_by_walking = TRUE
 	check_other_side = TRUE
 	invis_without_trait = TRUE
+
+/obj/structure/fluff/traveltile/goblin
+	required_trait = TRAIT_GOBLINCAMP
+	can_gain_with_sight = FALSE
+	can_gain_by_walking = FALSE
+	check_other_side = TRUE
+	invis_without_trait = TRUE
+
+/obj/structure/fluff/traveltile/goblin_interior
+	check_other_side = TRUE
 
 /obj/structure/fluff/traveltile/dungeon
 	name = "gate"

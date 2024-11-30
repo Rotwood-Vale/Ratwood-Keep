@@ -15,7 +15,7 @@
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black
-	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	cloak = /obj/item/clothing/cloak/heartfelt
 	armor = /obj/item/clothing/suit/roguetown/armor/heartfelt/lord
@@ -40,7 +40,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("intelligence", 2)

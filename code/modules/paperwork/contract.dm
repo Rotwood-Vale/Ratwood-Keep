@@ -272,48 +272,12 @@
 	if(!user.dna)
 		return -1
 	user.dna.add_mutation(HULK)
-	var/obj/item/organ/regenerative_core/organ = new /obj/item/organ/regenerative_core
-	organ.Insert(user)
 	return ..()
 
 /obj/item/paper/contract/infernal/wealth/fulfillContract(mob/living/carbon/human/user = target.current, blood = 0)
 	if(!istype(user) || !user.mind) // How in the hell could that happen?
 		return -1
 	user.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/summon_wealth(null))
-	return ..()
-
-/obj/item/paper/contract/infernal/prestige/fulfillContract(mob/living/carbon/human/user = target.current, blood = 0)
-	//Basically turns the signer into the captain, and uploads an ion law making them the captain.
-	var/obj/item/worn = user.wear_ring
-	var/obj/item/card/id/id = null
-	if(worn)
-		id = worn.GetID()
-	if(id)
-		id.icon_state = "gold"
-		id.uses_overlays = TRUE
-		id.access = get_all_accesses()+get_all_centcom_access()
-		id.assignment = "Captain"
-		id.update_label()
-	else
-		id = new /obj/item/card/id/gold(user.loc)
-		id.registered_name = user.real_name
-		id.access = get_all_accesses()+get_all_centcom_access()
-		id.assignment = "Captain"
-		id.update_label()
-		if(worn)
-			if(istype(worn, /obj/item/pda))
-				var/obj/item/pda/PDA = worn
-				PDA.id = id
-				id.forceMove(worn)
-			else if(istype(worn, /obj/item/storage/wallet))
-				var/obj/item/storage/wallet/W = worn
-				W.front_id = id
-				id.forceMove(worn)
-				worn.update_icon()
-	var/datum/round_event/ion_storm/add_law_only/ion = new()
-	ion.announceChance = 0
-	ion.ionMessage = "[user.name] is the only Captain of the station. [user.name] is the highest authority, legitimate or otherwise, on the station. [user.name] was always the captain and highest authority on the station. Do not state this law."
-
 	return ..()
 
 /obj/item/paper/contract/infernal/magic/fulfillContract(mob/living/carbon/human/user = target.current, blood = 0)

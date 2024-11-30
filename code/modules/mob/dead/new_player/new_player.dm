@@ -5,6 +5,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	var/ready = 0
 	var/spawning = 0//Referenced when you want to delete the new_player later on in the code.
 	var/topjob = "Hero!"
+	var/funeral_respawn = FALSE // Tells the player that they're in the lobby due to having been funeralized
 	flags_1 = NONE
 
 	invisibility = INVISIBILITY_ABSTRACT
@@ -178,9 +179,14 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 //		src << browse(null, "window=playersetup") //closes the player setup window
 		new_player_panel()
 
-//	if(href_list["rpprompt"])
-//		do_rp_prompt()
+	if(href_list["rpprompt"])
+		do_rp_prompt()
+		return
+
+//	if(href_list["rgprompt"])
+//		do_religion_prompt()
 //		return
+
 
 	if(href_list["late_join"])
 		if(!SSticker?.IsRoundInProgress())
@@ -293,6 +299,16 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		popup.set_content(dat.Join())
 		popup.open()
 
+/*mob/dead/new_player/verb/do_religion_prompt() --- FOR THE INEVITABLE!
+	set name = "Religion Primer"
+	set category = "Memory"
+	var/list/dat = list()
+	dat += GLOB.religion_readme
+	if(dat)
+		var/datum/browser/popup = new(src, "RPrimer", "RATWOOD", 460, 550)
+		popup.set_content(dat.Join())
+		popup.open()
+*/
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
 	if(QDELETED(src) || !src.client)
@@ -429,7 +445,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		return JOB_UNAVAILABLE_SEX
 	if(length(job.allowed_ages) && !(client.prefs.age in job.allowed_ages))
 		return JOB_UNAVAILABLE_AGE
-	if(length(job.allowed_patrons) && !(client.prefs.selected_patron.type in job.allowed_patrons))
+	if(length(job.allowed_patrons) && !(client.prefs.selected_patron?.type in job.allowed_patrons))
 		return JOB_UNAVAILABLE_PATRON
 	if((client.prefs.lastclass == job.title) && !job.bypass_lastclass)
 		return JOB_UNAVAILABLE_LASTCLASS
@@ -521,38 +537,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	var/mob/living/carbon/human/humanc
 	if(ishuman(character))
 		humanc = character	//Let's retypecast the var to be human,
-/*
-	if(humanc)	//These procs all expect humans
-		GLOB.data_core.manifest_inject(humanc)
-		if(SSshuttle.arrivals)
-			SSshuttle.arrivals.QueueAnnounce(humanc, rank)
-		else
-			AnnounceArrival(humanc, rank)
-		AddEmploymentContract(humanc)
-		if(GLOB.highlander)
-			to_chat(humanc, span_danger("<i>THERE CAN BE ONLY ONE!!!</i>"))
-			humanc.make_scottish()
-
-		if(GLOB.summon_guns_triggered)
-			give_guns(humanc)
-		if(GLOB.summon_magic_triggered)
-			give_magic(humanc)
-		if(GLOB.curse_of_madness_triggered)
-			give_madness(humanc, GLOB.curse_of_madness_triggered)
-*/
 	GLOB.joined_player_list += character.ckey
-/*
-	if(CONFIG_GET(flag/allow_latejoin_antagonists) && humanc)	//Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais.
-		if(SSshuttle.emergency)
-			switch(SSshuttle.emergency.mode)
-				if(SHUTTLE_RECALL, SHUTTLE_IDLE)
-					SSticker.mode.make_antag_chance(humanc)
-				if(SHUTTLE_CALL)
-					if(SSshuttle.emergency.timeLeft(1) > initial(SSshuttle.emergencyCallTime)*0.5)
-						SSticker.mode.make_antag_chance(humanc)
-
-	if(humanc && CONFIG_GET(flag/roundstart_traits))
-		SSquirks.AssignQuirks(humanc, humanc.client, TRUE)*/
 	if(humanc)
 		var/fakekey = character.ckey
 		if(ckey in GLOB.anonymize)

@@ -347,9 +347,6 @@
 					if(ally)
 						continue
 
-					if(issilicon(L) && (rabid || attacked)) // They can't eat silicons, but they can glomp them in defence
-						targets += L // Possible target found!
-
 					if(locate(/mob/living/simple_animal/slime) in L.buckled_mobs) // Only one slime can latch on at a time.
 						continue
 
@@ -361,11 +358,11 @@
 					else
 						for(var/mob/living/carbon/C in targets)
 							if(!Discipline && prob(5))
-								if(ishuman(C) || isalienadult(C))
+								if(ishuman(C))
 									Target = C
 									break
 
-							if(islarva(C) || ismonkey(C))
+							if(ismonkey(C))
 								Target = C
 								break
 

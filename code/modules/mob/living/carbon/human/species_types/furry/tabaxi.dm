@@ -5,7 +5,6 @@
 	name = "Tabaxi"
 	id = "tabaxi"
 
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	desc = "<b>Tabaxi</b><br>\
 		Tabaxi are taller than most humans at six to seven feet.\
 		Their bodies are slender and covered in spotted or striped fur.\
@@ -95,6 +94,8 @@
 		/datum/body_marking/sock,
 		/datum/body_marking/socklonger,
 		/datum/body_marking/tips,
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/belly,
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,
@@ -107,6 +108,7 @@
 	)
 	languages = list(
 		/datum/language/common,
+		/datum/language/felid
 	)
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,

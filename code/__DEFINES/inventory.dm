@@ -199,7 +199,7 @@
 #define NOSE		(1<<16)
 #define RIGHT_EYE	(1<<17)
 #define LEFT_EYE	(1<<18)
-#define HAIR		(1<<19) 
+#define HAIR		(1<<19)
 #define EYES		(LEFT_EYE | RIGHT_EYE)
 #define FACE		(MOUTH | NOSE | EYES)
 #define FULL_HEAD	(HEAD | MOUTH | NOSE | EYES | EARS | HAIR)
@@ -237,14 +237,14 @@
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES	(1<<0)
-#define MASKCOVERSEYES		(1<<1)		// get rid of some of the other retardation in these flags
+#define MASKCOVERSEYES		(1<<1)		// get rid of some of the other silliness in these flags
 #define HEADCOVERSEYES		(1<<2)		// feel free to realloc these numbers for other purposes
 #define MASKCOVERSMOUTH		(1<<3)		// on other items, these are just for mask/head
 #define HEADCOVERSMOUTH		(1<<4)
-#define PEPPERPROOF			(1<<5)	//protects against pepperspray
+#define PEPPERPROOF			(1<<5)		//protects against pepperspray
 
-#define TINT_DARKENED 2			//Threshold of tint level to apply weld mask overlay
-#define TINT_BLIND 3			//Threshold of tint level to obscure vision fully
+#define TINT_DARKENED 2					//Threshold of tint level to apply weld mask overlay
+#define TINT_BLIND 3					//Threshold of tint level to obscure vision fully
 
 #define CANT_CADJUST 0
 #define CAN_CADJUST 1
@@ -257,7 +257,6 @@ GLOBAL_LIST_INIT(advanced_hardsuit_allowed, typecacheof(list(
 	/obj/item/ammo_casing,
 	/obj/item/flashlight,
 	/obj/item/gun,
-	/obj/item/melee/baton,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
 	/obj/item/tank/internals)))
@@ -267,8 +266,6 @@ GLOBAL_LIST_INIT(security_hardsuit_allowed, typecacheof(list(
 	/obj/item/ammo_casing,
 	/obj/item/flashlight,
 	/obj/item/gun/ballistic,
-	/obj/item/gun/energy,
-	/obj/item/melee/baton,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
 	/obj/item/tank/internals)))
@@ -280,9 +277,7 @@ GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/flashlight,
 	/obj/item/taperecorder,
 	/obj/item/gun/ballistic,
-	/obj/item/gun/energy,
 	/obj/item/lighter,
-	/obj/item/melee/baton,
 	/obj/item/melee/classic_baton,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
@@ -295,9 +290,7 @@ GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/ammo_casing,
 	/obj/item/flashlight,
 	/obj/item/gun/ballistic,
-	/obj/item/gun/energy,
 	/obj/item/kitchen/knife/combat,
-	/obj/item/melee/baton,
 	/obj/item/melee/classic_baton/telescopic,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
@@ -310,9 +303,7 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
 	/obj/item/flashlight,
 	/obj/item/storage/fancy/cigarettes,
 	/obj/item/gun/ballistic,
-	/obj/item/gun/energy,
 	/obj/item/lighter,
-	/obj/item/melee/baton,
 	/obj/item/melee/classic_baton/telescopic,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,

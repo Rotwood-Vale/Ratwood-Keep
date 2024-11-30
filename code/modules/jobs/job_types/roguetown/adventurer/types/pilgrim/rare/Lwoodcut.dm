@@ -8,7 +8,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/masterwoodcutter
-
+	maximum_possible_slots = 1
 	pickprob = 5
 	category_tags = list(CTAG_PILGRIM)
 	
@@ -24,15 +24,15 @@
 	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 6, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	pants = /obj/item/clothing/under/roguetown/trou
 	head = /obj/item/clothing/head/roguetown/hatfur
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	backr = /obj/item/storage/backpack/rogue/backpack
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

@@ -30,7 +30,7 @@
 	create_bodyparts() //initialize bodyparts
 	create_internal_organs()
 	grant_all_languages(omnitongue=TRUE)
-	..()
+	. = ..()
 
 /mob/living/carbon/true_devil/create_internal_organs()
 	internal_organs += new /obj/item/organ/brain
@@ -101,9 +101,6 @@
 		to_chat(src, span_warning("I are too far away!"))
 		return FALSE
 	return TRUE
-
-/mob/living/carbon/true_devil/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null)
-	return 666
 
 /mob/living/carbon/true_devil/flash_act(intensity = 1, override_blindness_check = 0, affect_silicon = 0, visual = 0)
 	if(mind && has_bane(BANE_LIGHT))

@@ -136,15 +136,14 @@
 
 #define BARKEEP		(1<<0)
 #define ARCHIVIST	(1<<1)
-#define ARMORSMITH	(1<<2)
-#define WEAPONSMITH (1<<3)
-#define ALCHEMIST	(1<<4)
-#define MASON		(1<<5)
-#define TAILOR		(1<<6)
-#define MERCHANT	(1<<7)
-#define SCRIBE		(1<<8)
-#define ELDER		(1<<9)
-#define APOTHECARY	(1<<10)
+#define GUILDSMITH	(1<<2)
+#define ALCHEMIST	(1<<3)
+#define ARTIFICER	(1<<4)
+#define SEAMSTER	(1<<5)
+#define MERCHANT	(1<<6)
+#define SCRIBE		(1<<7)
+#define ELDER		(1<<8)
+#define APOTHECARY	(1<<9)
 
 #define PEASANTS	(1<<5)
 
@@ -166,6 +165,7 @@
 #define PRISONERB	(1<<15)
 #define LUNATIC		(1<<16)
 #define MIGRANT		(1<<17)
+#define BANDIT		(1<<19)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -181,18 +181,19 @@
 
 #define MERCENARIES		(1<<7)
 
-#define DESERT_RIDER	(1<<0)
-#define GRENZELHOFT		(1<<1)
-#define VETERAN		(1<<2)
-#define SELLSWORD		(1<<3)
-#define SEELIE		(1<<4)
+#define MERCENARY	(1<<0)
+#define VETERAN		(1<<1)
+#define SEELIE		(1<<2)
+#define MERC_CLERK	(1<<3)
 
 #define GOBLIN		(1<<8)
 
-#define GOBLINKING	(1<<0)
+#define GOBLINCHIEF	(1<<0)
 #define GOBLINCOOK	(1<<1)
 #define GOBLINGUARD	(1<<2)
 #define GOBLINSMITH	(1<<3)
+#define GOBLINRABBLE	(1<<4)
+#define GOBLINSHAMAN	(1<<5)
 
 #define SLOP		(1<<9)
 
@@ -255,12 +256,13 @@
 
 #define JDO_ARCHIVIST 18
 
-#define JDO_CHIEF 18.1
-#define JDO_ARMORER 19
-#define JDO_WEAPONSMITH 20
+#define JDO_CHIEF 19
+#define JDO_GUILDSMITH 20
 #define JDO_APPRENTICE 21
 
-#define JDO_MASON 22
+#define JDO_ARTIFICER 22
+
+#define JDO_SEAMSTER 23
 
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
@@ -276,11 +278,11 @@
 #define JDO_PILGRIM 30.2
 #define JDO_MIGRANT 32.3
 
-#define JDO_GRENZELHOFT 31
-#define JDO_DESERT_RIDER 31.1
+#define JDO_MERC_CLERK 31
+#define JDO_MERCENARY 31.1
 #define JDO_VET 31.2
-#define JDO_SELLSWORD 31.3
-#define JDO_SEELIE 31.4
+#define JDO_SEELIE 31.3
+#define JDO_BANDIT 31.4
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -290,10 +292,12 @@
 #define JDO_HOSTAGE 35.2
 #define JDO_LUNATIC 35.3
 
-#define JDO_GOBLINKING 36
+#define JDO_GOBLINCHIEF 36
 #define JDO_GOBLINCOOK 37
 #define JDO_GOBLINGUARD 38
 #define JDO_GOBLINSMITH 39
+#define JDO_GOBLINRABBLE 40
+#define JDO_GOBLINSHAMAN 41
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -351,17 +355,19 @@
 	/datum/job/roguetown/woodsman,\
 	/datum/job/roguetown/archivist,\
 	/datum/job/roguetown/barkeep,\
-	/datum/job/roguetown/armorsmith,\
-	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/guildsmith,\
+	/datum/job/roguetown/artificer,\
+	/datum/job/roguetown/seamster, \
 	/datum/job/roguetown/merchant,\
 	/datum/job/roguetown/scribe
 
 #define WANDERER_ROLES \
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
-	/datum/job/roguetown/mercenary/desert_rider,\
-	/datum/job/roguetown/mercenary/grenzelhoft,\
-	/datum/job/roguetown/mercenary/seelie
+	/datum/job/roguetown/guild_clerk,\
+	/datum/job/roguetown/mercenary,\
+	/datum/job/roguetown/seelie,\
+	/datum/job/roguetown/bandit
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\
@@ -370,4 +376,12 @@
 	/datum/job/roguetown/gatemaster,\
 	/datum/job/roguetown/manorguard,\
 	/datum/job/roguetown/sheriff,\
-	/datum/job/roguetown/guardsman
+	/datum/job/roguetown/citywatch
+
+#define GOBLIN_ROLES \
+	/datum/job/roguetown/goblinchief,\
+	/datum/job/roguetown/goblincook,\
+	/datum/job/roguetown/goblinguard,\
+	/datum/job/roguetown/goblinrabble,\
+	/datum/job/roguetown/goblinshaman,\
+	/datum/job/roguetown/goblinsmith

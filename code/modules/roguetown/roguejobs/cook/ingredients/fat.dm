@@ -1,3 +1,4 @@
+/*
 /obj/item/reagent_containers/food/snacks/butter
 	icon = 'icons/roguetown/items/food.dmi'
 	name = "butter"
@@ -39,7 +40,7 @@
 		qdel(src)
 	var/obj/item/I = new path(T)
 	eater.put_in_active_hand(I)
-
+*/
 /obj/item/reagent_containers/food/snacks/butterslice
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "butter_slice"
@@ -58,7 +59,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	w_class = WEIGHT_CLASS_TINY
-
+/*
 /obj/item/reagent_containers/food/snacks/salo
 	name = "salo"
 	desc = "A salty piece of fatty salo. Delicious!"
@@ -99,3 +100,4 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/salo/slice
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	w_class = WEIGHT_CLASS_TINY
+*/

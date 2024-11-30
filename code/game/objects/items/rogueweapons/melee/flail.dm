@@ -11,7 +11,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/whipsflails
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = BLUNTWOOSH_MED
@@ -102,11 +102,11 @@
 	penfactor = 10
 	reach = 2
 	icon_state = "inlash"
-	item_d_type = "slash"
+	item_d_type = "blunt"
 
 /datum/intent/whip/crack
 	name = "crack"
-	blade_class = BCLASS_CUT
+	blade_class = BCLASS_BLUNT
 	attack_verb = list("cracks") //something something dwarf fotresss
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
@@ -114,15 +114,16 @@
 	penfactor = 40
 	reach = 3
 	icon_state = "incrack"
-	item_d_type = "slash"
+	item_d_type = "blunt"
 
 /datum/intent/whip/punish
 	name = "punish"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes")
+	attack_verb = list("punishes")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
+	damfactor = 0.5
 	penfactor = 0
 	reach = 2
 	icon_state = "inpunish"
@@ -139,9 +140,9 @@
 	//dropshrink = 0.75
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_NORMAL
-	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_HIP //| ITEM_SLOT_BELT (Either someone fixes this, or this remains disabled because it's very bugged)
 	associated_skill = /datum/skill/combat/whipsflails
-	anvilrepair = /datum/skill/craft/tanning
+	anvilrepair = /datum/skill/craft/hunting
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = WHIPWOOSH
 	throwforce = 5
@@ -162,7 +163,7 @@
 	force = 29
 	name = "Repenta En"
 	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle. It clearly needs to see more use."
-	minstr = 11
+	minstr = 8
 	icon_state = "gwhip"
 
 

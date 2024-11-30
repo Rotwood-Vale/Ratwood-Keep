@@ -87,7 +87,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	light_range = 3
 	attack_verb = list("brutalized", "eviscerated", "disemboweled", "hacked", "carved", "cleaved") //ONLY THE MOST VISCERAL ATTACK VERBS
 	var/notches = 0 //HOW MANY PEOPLE HAVE BEEN SLAIN WITH THIS BLADE
-	var/obj/item/disk/nuclear/nuke_disk //OUR STORED NUKE DISK
 
 /obj/item/claymore/highlander/Initialize()
 	. = ..()
@@ -95,10 +94,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	START_PROCESSING(SSobj, src)
 
 /obj/item/claymore/highlander/Destroy()
-	if(nuke_disk)
-		nuke_disk.forceMove(get_turf(src))
-		nuke_disk.visible_message(span_warning("The nuke disk is vulnerable!"))
-		nuke_disk = null
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -125,8 +120,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 /obj/item/claymore/highlander/examine(mob/user)
 	. = ..()
 	. += "It has [!notches ? "nothing" : "[notches] notches"] scratched into the blade."
-	if(nuke_disk)
-		. += span_boldwarning("It's holding the nuke disk!")
 
 /obj/item/claymore/highlander/attack(mob/living/target, mob/living/user)
 	. = ..()
@@ -254,18 +247,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 
 		user.put_in_hands(S)
 		to_chat(user, span_notice("I fasten the glass shard to the top of the rod with the cable."))
-
-	else if(istype(I, /obj/item/assembly/igniter) && !(HAS_TRAIT(I, TRAIT_NODROP)))
-		var/obj/item/melee/baton/cattleprod/P = new /obj/item/melee/baton/cattleprod
-
-		remove_item_from_storage(user)
-
-		to_chat(user, span_notice("I fasten [I] to the top of the rod with the cable."))
-
-		qdel(I)
-		qdel(src)
-
-		user.put_in_hands(P)
 	else
 		return ..()
 
@@ -296,6 +277,11 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_range = 0 //throwing these invalidates the speargun
 	attack_verb = list("stabbed", "ripped", "gored", "impaled")
 	embedding = list("embedded_pain_multiplier" = 8, "embed_chance" = 100, "embedded_fall_chance" = 0, "embedded_impact_pain_multiplier" = 15) //55 damage+embed on hit
+
+/obj/item/throwing_star/ninja
+	name = "ninja throwing star"
+	throwforce = 30
+	embedding = list("embedded_pain_multiplier" = 6, "embed_chance" = 100, "embedded_fall_chance" = 0)
 
 /obj/item/switchblade
 	name = "switchblade"

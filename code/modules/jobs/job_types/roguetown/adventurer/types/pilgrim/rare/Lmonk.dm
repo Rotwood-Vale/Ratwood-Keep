@@ -6,7 +6,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/rare
-
+	maximum_possible_slots = 1
 	pickprob = 5
 	category_tags = list(CTAG_PILGRIM)
 
@@ -36,13 +36,13 @@
 		if(/datum/patron/divine/necra) 
 			head = /obj/item/clothing/head/roguetown/necrahood
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 		if(/datum/patron/divine/pestra) 
 			head = /obj/item/clothing/head/roguetown/necrahood
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 		else
@@ -54,9 +54,10 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		if(H.age == AGE_OLD) // Old age debuffs you severely universally, except for intelligence
 			H.change_stat("intelligence", 4)
 			H.change_stat("speed", -3)

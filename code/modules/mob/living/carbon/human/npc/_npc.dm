@@ -20,8 +20,11 @@
 	var/ai_when_client = FALSE
 	var/next_idle = 0
 	var/next_seek = 0
+	var/next_stand = 0
+	var/next_passive_detect = 0
 	var/flee_in_pain = FALSE
 	var/stand_attempts = 0
+	var/ai_currently_active = FALSE
 
 	var/returning_home = FALSE
 
@@ -44,7 +47,7 @@
 //	if(world.time < next_ai_tick)
 //		return
 //	next_ai_tick = world.time + rand(10,20)
-	set_cmode(TRUE)
+	cmode = 1
 	update_cone_show()
 	if(stat == CONSCIOUS)
 		if(on_fire || buckled || restrained() || pulledby)
@@ -52,18 +55,18 @@
 			walk_to(src,0)
 			resist()
 			resisting = FALSE
-		if(!(mobility_flags & MOBILITY_STAND) && (stand_attempts < 3))
-			resisting = TRUE
-			npc_stand()
-			resisting = FALSE
-		else
-			stand_attempts = 0
-			if(!handle_combat())
-				if(mode == AI_IDLE && !pickupTarget)
-					npc_idle()
-					if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
-						if(deaggrodel())
-							return TRUE
+		if(!resisting)
+			if(!(mobility_flags & MOBILITY_STAND) && !stand_attempts)
+				resisting = TRUE
+				npc_stand()
+			else
+				stand_attempts = max(stand_attempts-1, 0)
+				if(!handle_combat())
+					if(mode == AI_IDLE && !pickupTarget)
+						npc_idle()
+						if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
+							if(deaggrodel())
+								return TRUE
 	else
 		walk_to(src,0)
 		return TRUE
@@ -71,8 +74,10 @@
 /mob/living/carbon/human/proc/npc_stand()
 	if(stand_up())
 		stand_attempts = 0
+		resisting = FALSE
 	else
-		stand_attempts += rand(1,3)
+		stand_attempts = rand(10,120)
+		resisting = FALSE
 
 /mob/living/carbon/human/proc/npc_idle()
 	if(m_intent == MOVE_INTENT_SNEAK)
@@ -95,8 +100,7 @@
 
 /mob/living/carbon/human/proc/deaggrodel()
 	if(aggressive)
-		var/list/around = hearers(7, src)  // scan for enemies
-		for(var/mob/living/L in around)
+		for(var/mob/living/L in view(7)) // scan for enemies
 			if( should_target(L) && (L != src))
 				if(L.stat != DEAD)
 					retaliate(L)
@@ -232,7 +236,10 @@
 	if(L == src)
 		return FALSE
 
-	if(!is_in_zweb(src, L))
+	if (L.alpha == 0 && L.rogue_sneaking)
+		return FALSE
+
+	if(!is_in_zweb(src.z,L.z))
 		return FALSE
 
 	if(L.stat == DEAD)
@@ -257,16 +264,22 @@
 		if(AI_IDLE)		// idle
 			if(world.time >= next_seek)
 				next_seek = world.time + 3 SECONDS
-				var/list/around = hearers(7, src) // scan for enemies
-				for(var/mob/living/L in around)
+				for(var/mob/living/L in view(7, src)) // scan for enemies
 					if(should_target(L))
 						retaliate(L)
+					if (world.time >= next_passive_detect && L.alpha == 0 && L.rogue_sneaking && prob(STAPER / 2))
+						if (!npc_detect_sneak(L, -20)) // attempt a passive detect with 20% increased difficulty
+							next_passive_detect = world.time + STAPER SECONDS
 
 		if(AI_HUNT)		// hunting for attacker
 			if(target != null)
 				if(!should_target(target))
-					back_to_idle()
-					return TRUE
+					if (target.alpha == 0 && target.rogue_sneaking) // attempt one detect since we were just fighting them and have lost them
+						if (npc_detect_sneak(target))
+							retaliate(target)
+					else
+						back_to_idle()
+						return TRUE
 				m_intent = MOVE_INTENT_WALK
 				INVOKE_ASYNC(src, PROC_REF(walk2derpless), target)
 
@@ -275,9 +288,9 @@
 				for(var/obj/item/I in view(1,src))
 					if(!isturf(I.loc))
 						continue
-					if(I in blacklistItems)
+					if(blacklistItems[I])
 						continue
-					if(I && I.force > 7)
+					if(I.force > 7)
 						equip_item(I)
 
 //			// switch targets
@@ -405,6 +418,13 @@
 	if(L == src)
 		return
 	if(mode != AI_OFF)
+		if (L.alpha == 0 && L.rogue_sneaking)
+			// we just got hit by something hidden so try and find them
+			if (prob(5))
+				visible_message(span_notice("[src] begins searching around frantically..."))
+			var/extra_chance = (health <= maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
+			if (!npc_detect_sneak(L, extra_chance))
+				return
 		mode = AI_HUNT
 		last_aggro_loss = null
 		face_atom(L)
@@ -412,6 +432,38 @@
 			emote("aggro")
 		target = L
 		enemies |= L
+
+/mob/living/proc/npc_detect_sneak(mob/living/target, extra_prob = 0)
+	if (target.alpha > 0 || !target.rogue_sneaking)
+		return TRUE
+	var/probby = 4 * STAPER //this is 10 by default - npcs get an easier time to detect to slightly thwart cheese
+	probby += extra_prob
+	var/sneak_bonus = 0
+	if(target.mind)
+		if (world.time < target.mob_timers[MT_INVISIBILITY])
+			// we're invisible as per the spell effect, so use the highest of our arcane magic (or holy) skill instead of our sneaking
+			sneak_bonus = (max(target.mind?.get_skill_level(/datum/skill/magic/arcane), target.mind?.get_skill_level(/datum/skill/magic/holy)) * 10)
+			probby -= 20 // also just a fat lump of extra difficulty for the npc since spells are hard, you know?
+		else
+			sneak_bonus = (target.mind?.get_skill_level(/datum/skill/misc/sneaking) * 5)
+		probby -= sneak_bonus
+	if(!target.check_armor_skill())
+		probby += 85 //armor is loud as fuck
+		if (sneak_bonus)
+			probby += sneak_bonus // you don't get sneak bonus in heavy armor at all, on top of that
+	if (target.badluck(5))
+		probby += (10 - target.STALUC) * 5 // drop 5% chance for every bit of fortune we're missing
+	if (target.goodluck(5))
+		probby -= (10 - target.STALUC) * 5 // make it 5% harder for every bit of fortune over 10 that we do have
+
+	if (prob(probby))
+		// whoops it saw us
+		target.mob_timers[MT_FOUNDSNEAK] = world.time
+		to_chat(target, span_danger("[src] sees me! I'm found!"))
+		target.update_sneak_invis(TRUE)
+		return TRUE
+	else
+		return FALSE
 
 
 /mob/living/carbon/human/attackby(obj/item/W, mob/user, params)

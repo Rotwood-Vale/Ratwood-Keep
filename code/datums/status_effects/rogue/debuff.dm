@@ -46,7 +46,7 @@
 /atom/movable/screen/alert/status_effect/debuff/silver_curse
 	name = "Silver Curse"
 	desc = "My BANE!"
-	icon_state = "hunger3"	
+	icon_state = "hunger3"
 
 ////////////////////
 
@@ -220,6 +220,17 @@
 	desc = "With some sleep in a coffin I feel like I could become better."
 	icon_state = "sleepy"
 
+/datum/status_effect/debuff/cumbrained
+	id = "cumbrained"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/cumbrained
+	effectedstats = list("intelligence" = -10, "strength" = -6, "speed" = -6)
+	duration = 60 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/cumbrained
+	name = "Cum Brained"
+	desc = "It's hard to think..."
+	icon_state = "fentanyl"
+
 //Death debuff
 
 /datum/status_effect/debuff/death_weaken
@@ -240,10 +251,12 @@
 /datum/status_effect/debuff/breedable/on_apply()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+	ADD_TRAIT(owner, TRAIT_SPELLCOCKBLOCK, id)
 
 /datum/status_effect/debuff/breedable/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+	REMOVE_TRAIT(owner, TRAIT_SPELLCOCKBLOCK, id)
 
 /atom/movable/screen/alert/status_effect/debuff/breedable
 	name = "Breedable"
@@ -287,3 +300,15 @@
 	name = "Curse of the Seelie"
 	desc = "I've been cursed for my horrific deed..."
 	icon_state = "stressb"
+
+/// Ravox Curses
+/datum/status_effect/debuff/ravox_burden
+	id = "ravox_burden"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_burden
+	effectedstats = list("speed" = -2, "endurance" = -3)
+	duration = 12 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/ravox_burden
+	name = "Ravox's Burden"
+	desc = "Some divine power is straining my mind!"
+	icon_state = "muscles"

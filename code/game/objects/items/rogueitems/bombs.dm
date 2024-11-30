@@ -3,16 +3,15 @@
 	name = "bottle bomb"
 	desc = "Dangerous explosion, in a bottle."
 	icon_state = "clear_bomb"
+	var/lit_state = "clear_bomb_lit"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	w_class = WEIGHT_CLASS_SMALL
-	//dropshrink = 0
 	throwforce = 0
 	slot_flags = ITEM_SLOT_HIP
 	throw_speed = 0.5
 	var/fuze = 50
 	var/lit = FALSE
 	var/prob2fail = 23
-
 
 /obj/item/bomb/spark_act()
 	light()
@@ -28,7 +27,7 @@
 /obj/item/bomb/proc/light()
 	if(!lit)
 		START_PROCESSING(SSfastprocess, src)
-		icon_state = "clear_bomb_lit"
+		icon_state = lit_state
 		lit = TRUE
 		playsound(src.loc, 'sound/items/firelight.ogg', 100)
 		if(ismob(loc))
@@ -43,7 +42,7 @@
 		lit = FALSE
 		STOP_PROCESSING(SSfastprocess, src)
 		playsound(src.loc, 'sound/items/firesnuff.ogg', 100)
-		icon_state = "bbomb"
+		icon_state = initial(icon_state)
 		if(ismob(loc))
 			var/mob/M = loc
 			M.update_inv_hands()

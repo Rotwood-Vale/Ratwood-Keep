@@ -8,7 +8,22 @@
 	max_integrity = 15
 	debris = list(/obj/item/natural/silk = 1)
 
-
+/obj/structure/spider/attacked_by(obj/item/I, mob/living/user) //Snipping action for webs, scissors turning webs into silk fast!
+	var/snip_time = 50
+	var/sewing_skill = user.mind.get_skill_level(/datum/skill/misc/sewing)
+	var/amount = rand(1, 2)
+	if(user.used_intent.type == /datum/intent/snip)
+		snip_time = (50 - (sewing_skill * 10))
+		if(!do_after(user, snip_time, target = user))
+			return TRUE
+		for(var/i = 1; i <= amount; i++)
+			new /obj/item/natural/silk (get_turf(src))
+		user.visible_message(span_notice("[user] snips [src] up into silk."))
+		user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT / 2)) //We're getting experience for harvesting silk!
+		playsound(src, 'sound/items/flint.ogg', 100, TRUE)
+		qdel(src)
+		return TRUE
+	..()
 
 /obj/structure/spider/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	if(damage_type == BURN)//the stickiness of the web mutes all attack sounds except fire damage type
@@ -139,65 +154,15 @@
 		forceMove(user.loc)
 	else
 		..()
-
-/obj/structure/spider/spiderling/process()
-	if(travelling_in_vent)
-		if(isturf(loc))
-			travelling_in_vent = 0
-			entry_vent = null
-	else if(entry_vent)
-		if(get_dist(src, entry_vent) <= 1)
-			var/list/vents = list()
-			var/datum/pipeline/entry_vent_parent = entry_vent.parents[1]
-			for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent in entry_vent_parent.other_atmosmch)
-				vents.Add(temp_vent)
-			if(!vents.len)
-				entry_vent = null
-				return
-			var/obj/machinery/atmospherics/components/unary/vent_pump/exit_vent = pick(vents)
-			if(prob(50))
-				visible_message("<B>[src] scrambles into the ventilation ducts!</B>", \
-								span_hear("I hear something scampering through the ventilation ducts."))
-
-			spawn(rand(20,60))
-				forceMove(exit_vent)
-				var/travel_time = round(get_dist(loc, exit_vent.loc) / 2)
-				spawn(travel_time)
-
-					if(!exit_vent || exit_vent.welded)
-						forceMove(entry_vent)
-						entry_vent = null
-						return
-
-					if(prob(50))
-						audible_message(span_hear("I hear something scampering through the ventilation ducts."))
-					sleep(travel_time)
-
-					if(!exit_vent || exit_vent.welded)
-						forceMove(entry_vent)
-						entry_vent = null
-						return
-					forceMove(exit_vent.loc)
-					entry_vent = null
-					var/area/new_area = get_area(loc)
-					if(new_area)
-						new_area.Entered(src)
 	//=================
 
-	else if(prob(33))
+	if(prob(33))
 		var/list/nearby = oview(10, src)
 		if(nearby.len)
 			var/target_atom = pick(nearby)
 			walk_to(src, target_atom)
 			if(prob(40))
-				src.visible_message(span_notice("\The [src] skitters[pick(" away"," around","")]."))
-	else if(prob(10))
-		//ventcrawl!
-		for(var/obj/machinery/atmospherics/components/unary/vent_pump/v in view(7,src))
-			if(!v.welded)
-				entry_vent = v
-				walk_to(src, entry_vent, 1)
-				break
+				src.visible_message("<span class='notice'>\The [src] skitters[pick(" away"," around","")].</span>")
 	if(isturf(loc))
 		amount_grown += rand(0,2)
 		if(amount_grown >= 100)

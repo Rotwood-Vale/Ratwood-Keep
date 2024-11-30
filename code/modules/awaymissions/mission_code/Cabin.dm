@@ -44,7 +44,7 @@
 	var/active = 1
 
 /obj/structure/firepit/Initialize()
-	..()
+	. = ..()
 	toggleFirepit()
 
 /obj/structure/firepit/interact(mob/living/user)
@@ -103,7 +103,6 @@
 	/datum/mapGeneratorModule/snow/pineTrees, \
 	/datum/mapGeneratorModule/snow/deadTrees, \
 	/datum/mapGeneratorModule/snow/randBushes, \
-	/datum/mapGeneratorModule/snow/randIceRocks, \
 	/datum/mapGeneratorModule/snow/bunnies)
 
 /datum/mapGeneratorModule/snow/checkPlaceAtom(turf/T)
@@ -132,9 +131,6 @@
 /datum/mapGeneratorModule/snow/bunnies
 	//spawnableAtoms = list(/mob/living/simple_animal/chicken/rabbit/normal = 0.1)
 	spawnableAtoms = list(/mob/living/simple_animal/chicken/rabbit = 0.5)
-
-/datum/mapGeneratorModule/snow/randIceRocks
-	spawnableAtoms = list(/obj/structure/flora/rock/icy = 5, /obj/structure/flora/rock/pile/icy = 5)
 
 /obj/effect/landmark/mapGenerator/snowy
 	mapGeneratorType = /datum/mapGenerator/snowy

@@ -60,6 +60,7 @@
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
 		desc = "An open bottle, hopefully a cork is close by."
 		spillable = TRUE
+		to_chat(usr, span_notice("You've uncorked the bottle."))
 	update_icon()
 
 /obj/item/reagent_containers/glass/bottle/Initialize()
@@ -317,11 +318,6 @@
 	name = "Severe Anxiety culture bottle"
 	desc = ""
 	spawned_disease = /datum/disease/anxiety
-
-/obj/item/reagent_containers/glass/bottle/beesease
-	name = "Beesease culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/beesease
 
 /obj/item/reagent_containers/glass/bottle/fluspanish
 	name = "Spanish flu culture bottle"

@@ -1,4 +1,4 @@
-// meat pies etc
+/*
 /obj/item/reagent_containers/food/snacks/rogue/pie
 	name = "pie"
 	desc = ""
@@ -394,3 +394,5 @@
 	name = "plump helmet pie"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/plumphelmet
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+
+*/

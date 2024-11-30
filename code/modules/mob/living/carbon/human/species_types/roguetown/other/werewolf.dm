@@ -19,18 +19,14 @@
 		TRAIT_STRONGBITE,
 		TRAIT_ZJUMP,
 		TRAIT_NOFALLDAMAGE1,
-		TRAIT_NOROGSTAM,
 		TRAIT_BASHDOORS,
-		TRAIT_SHOCKIMMUNE,
 		TRAIT_STEELHEARTED,
-		TRAIT_TOLERANT,
 		TRAIT_BREADY,
 		TRAIT_TOXIMMUNE,
 		TRAIT_ORGAN_EATER,
 		TRAIT_NASTY_EATER,
 		TRAIT_NOSTINK,
 		TRAIT_CRITICAL_RESISTANCE,
-		TRAIT_IGNOREDAMAGESLOWDOWN,
 		TRAIT_HARDDISMEMBER, //Decapping Volfs causes them to bug out, badly, and need admin intervention to fix. Bandaid fix.
 		TRAIT_PIERCEIMMUNE, //Prevents weapon dusting and caltrop effects due to them transforming when killed/stepping on shards.
 		TRAIT_IGNORESLOWDOWN
@@ -44,11 +40,11 @@
 	soundpack_m = /datum/voicepack/werewolf
 	soundpack_f = /datum/voicepack/werewolf
 	specstats = list(
-		"strength" = 8, 
-		"perception" = 7, 
-		"intelligence" = -6, 
-		"constitution" = 8, 
-		"endurance" = 8, 
+		"strength" = 5, 
+		"perception" = 5, 
+		"intelligence" = -3, 
+		"constitution" = 5, 
+		"endurance" = 5, 
 		"speed" = 3, 
 		"fortune" = 0
 		)

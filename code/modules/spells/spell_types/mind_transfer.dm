@@ -60,21 +60,10 @@ Also, you never added distance checking after target is selected. I've went ahea
 			to_chat(user, span_warning("You're killing yourself! You can't concentrate enough to do this!"))
 		return
 
-	var/datum/mind/TM = target.mind
-	if((target.anti_magic_check(TRUE, FALSE) || TM.has_antag_datum(/datum/antagonist/wizard) || TM.has_antag_datum(/datum/antagonist/cult) || TM.has_antag_datum(/datum/antagonist/changeling) || TM.has_antag_datum(/datum/antagonist/rev)) || cmptext(copytext(target.key,1,2),"@"))
+	if((target.anti_magic_check(TRUE, FALSE) || cmptext(copytext(target.key,1,2),"@")))
 		if(!silent)
 			to_chat(user, span_warning("[target.p_their(TRUE)] mind is resisting your spell!"))
 		return
-
-	if(istype(target, /mob/living/simple_animal/hostile/guardian))
-		var/mob/living/simple_animal/hostile/guardian/stand = target
-		if(stand.summoner)
-			if(stand.summoner == user)
-				if(!silent)
-					to_chat(user, span_warning("Swapping minds with your own guardian would just put you back into your own head!"))
-				return
-			else
-				target = stand.summoner
 
 	var/mob/living/victim = target//The target of the spell whos body will be transferred to.
 	var/mob/living/caster = user//The wizard/whomever doing the body transferring.

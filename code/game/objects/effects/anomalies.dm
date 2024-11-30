@@ -8,7 +8,6 @@
 	anchored = TRUE
 	light_range = 3
 	var/movechance = 70
-	var/obj/item/assembly/signaler/anomaly/aSignal
 	var/area/impact_area
 
 	var/lifespan = 990
@@ -23,15 +22,9 @@
 	START_PROCESSING(SSobj, src)
 	impact_area = get_area(src)
 
-	aSignal = new(src)
-	aSignal.name = "[name] core"
-	aSignal.code = rand(1,100)
-	aSignal.anomaly_type = type
-
 	var/frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)
 	if(ISMULTIPLE(frequency, 2))//signaller frequencies are always uneven!
 		frequency++
-	aSignal.set_frequency(frequency)
 
 	if(new_lifespan)
 		lifespan = new_lifespan
@@ -72,11 +65,6 @@
 		O.forceMove(drop_location())
 
 	qdel(src)
-
-
-/obj/effect/anomaly/attackby(obj/item/I, mob/user, params)
-	if(I.tool_behaviour == TOOL_ANALYZER)
-		to_chat(user, span_notice("Analyzing... [src]'s unstable field is fluctuating along frequency [format_frequency(aSignal.frequency)], code [aSignal.code]."))
 
 ///////////////////////
 
@@ -242,43 +230,6 @@
 	sleep(20)
 	M.client.screen -= blueeffect
 	qdel(blueeffect)
-
-/////////////////////
-
-/obj/effect/anomaly/pyro
-	name = "pyroclastic anomaly"
-	icon_state = "mustard"
-	var/ticks = 0
-
-/obj/effect/anomaly/pyro/anomalyEffect()
-	..()
-	ticks++
-	if(ticks < 5)
-		return
-	else
-		ticks = 0
-	var/turf/open/T = get_turf(src)
-	if(istype(T))
-		T.atmos_spawn_air("o2=5;plasma=5;TEMP=1000")
-
-/obj/effect/anomaly/pyro/detonate()
-	INVOKE_ASYNC(src, PROC_REF(makepyroslime))
-
-/obj/effect/anomaly/pyro/proc/makepyroslime()
-	var/turf/open/T = get_turf(src)
-	if(istype(T))
-		T.atmos_spawn_air("o2=500;plasma=500;TEMP=1000") //Make it hot and burny for the new slime
-	var/new_colour = pick("red", "orange")
-	var/mob/living/simple_animal/slime/S = new(T, new_colour)
-	S.rabid = TRUE
-	S.amount_grown = SLIME_EVOLUTION_THRESHOLD
-	S.Evolve()
-
-	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as a pyroclastic anomaly slime?", ROLE_PAI, null, null, 100, S, POLL_IGNORE_PYROSLIME)
-	if(LAZYLEN(candidates))
-		var/mob/dead/observer/chosen = pick(candidates)
-		S.key = chosen.key
-		log_game("[key_name(S.key)] was made into a slime by pyroclastic anomaly at [AREACOORD(T)].")
 
 /////////////////////
 

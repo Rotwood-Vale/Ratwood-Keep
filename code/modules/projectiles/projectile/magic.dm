@@ -113,35 +113,6 @@
 			smoke.set_up(0, t)
 			smoke.start()
 
-/obj/projectile/magic/door
-	name = "bolt of door creation"
-	icon_state = "energy"
-	damage = 0
-	damage_type = OXY
-	nodamage = TRUE
-	var/list/door_types = list(/obj/structure/mineral_door/wood, /obj/structure/mineral_door/iron, /obj/structure/mineral_door/silver, /obj/structure/mineral_door/gold, /obj/structure/mineral_door/uranium, /obj/structure/mineral_door/sandstone, /obj/structure/mineral_door/transparent/plasma, /obj/structure/mineral_door/transparent/diamond)
-
-/obj/projectile/magic/door/on_hit(atom/target)
-	. = ..()
-	if(istype(target, /obj/machinery/door))
-		OpenDoor(target)
-	else
-		var/turf/T = get_turf(target)
-		if(isclosedturf(T) && !isindestructiblewall(T))
-			CreateDoor(T)
-
-/obj/projectile/magic/door/proc/CreateDoor(turf/T)
-	var/door_type = pick(door_types)
-	var/obj/structure/mineral_door/D = new door_type(T)
-	T.ChangeTurf(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
-	D.Open()
-
-/obj/projectile/magic/door/proc/OpenDoor(obj/machinery/door/D)
-	if(istype(D, /obj/machinery/door/airlock))
-		var/obj/machinery/door/airlock/A = D
-		A.locked = FALSE
-	D.open()
-
 /obj/projectile/magic/change
 	name = "bolt of change"
 	icon_state = "ice_1"
@@ -172,51 +143,16 @@
 
 	var/list/contents = M.contents.Copy()
 
-	if(iscyborg(M))
-		var/mob/living/silicon/robot/Robot = M
-		if(Robot.mmi)
-			qdel(Robot.mmi)
-		Robot.notify_ai(NEW_BORG)
-	else
-		for(var/obj/item/W in contents)
-			if(!M.dropItemToGround(W))
-				qdel(W)
+	for(var/obj/item/W in contents)
+		if(!M.dropItemToGround(W))
+			qdel(W)
 
 	var/mob/living/new_mob
 
-	var/randomize = pick("monkey","robot","slime","xeno","humanoid","animal")
+	var/randomize = pick("monkey","humanoid","animal")
 	switch(randomize)
 		if("monkey")
 			new_mob = new /mob/living/carbon/monkey(M.loc)
-
-		if("robot")
-			var/robot = pick(200;/mob/living/silicon/robot,
-							/mob/living/silicon/robot/modules/syndicate,
-							/mob/living/silicon/robot/modules/syndicate/medical,
-							/mob/living/silicon/robot/modules/syndicate/saboteur,
-							200;/mob/living/simple_animal/drone/polymorphed)
-			new_mob = new robot(M.loc)
-			if(issilicon(new_mob))
-				new_mob.gender = M.gender
-				new_mob.invisibility = 0
-				new_mob.job = "Cyborg"
-				var/mob/living/silicon/robot/Robot = new_mob
-				Robot.lawupdate = FALSE
-				Robot.connected_ai = null
-				Robot.mmi.transfer_identity(M)	//Does not transfer key/client.
-				Robot.clear_inherent_laws(0)
-				Robot.clear_zeroth_law(0)
-
-		if("slime")
-			new_mob = new /mob/living/simple_animal/slime/random(M.loc)
-
-		if("xeno")
-			var/Xe
-			if(M.ckey)
-				Xe = pick(/mob/living/carbon/alien/humanoid/hunter,/mob/living/carbon/alien/humanoid/sentinel)
-			else
-				Xe = pick(/mob/living/carbon/alien/humanoid/hunter,/mob/living/simple_animal/hostile/alien/sentinel)
-			new_mob = new Xe(M.loc)
 
 		if("animal")
 			var/path = pick(/mob/living/simple_animal/hostile/carp,
@@ -228,16 +164,6 @@
 							/mob/living/simple_animal/hostile/killertomato,
 							/mob/living/simple_animal/hostile/poison/giant_spider,
 							/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
-							/mob/living/simple_animal/hostile/blob/blobbernaut/independent,
-							/mob/living/simple_animal/hostile/carp/ranged,
-							/mob/living/simple_animal/hostile/carp/ranged/chaos,
-							/mob/living/simple_animal/hostile/asteroid/basilisk/watcher,
-							/mob/living/simple_animal/hostile/asteroid/goliath/beast,
-							/mob/living/simple_animal/hostile/headcrab,
-							/mob/living/simple_animal/hostile/morph,
-							/mob/living/simple_animal/hostile/stickman,
-							/mob/living/simple_animal/hostile/stickman/dog,
-							/mob/living/simple_animal/hostile/megafauna/dragon/lesser,
 							/mob/living/simple_animal/hostile/gorilla,
 							/mob/living/simple_animal/parrot,
 							/mob/living/simple_animal/pet/dog/corgi,
@@ -528,6 +454,11 @@
 	else
 		if(isitem(target))
 			var/obj/item/I = target
+			var/mob/living/carbon/human/carbon_firer
+			if (ishuman(firer))
+				carbon_firer = firer
+				if (carbon_firer?.can_catch_item())
+					throw_target = get_turf(firer)
 			I.throw_at(throw_target, 200, 4)
 
 /obj/projectile/magic/sickness
@@ -640,42 +571,6 @@
 				return Bump(L)
 	..()
 
-/obj/projectile/magic/aoe/lightning
-	name = "lightning bolt"
-	icon_state = "tesla_projectile"	//Better sprites are REALLY needed and appreciated!~
-	damage = 15
-	damage_type = BURN
-	nodamage = FALSE
-	speed = 0.3
-	flag = "magic"
-	light_color = "#ffffff"
-	light_range = 2
-
-	var/tesla_power = 20000
-	var/tesla_range = 15
-	var/tesla_flags = TESLA_MOB_DAMAGE | TESLA_MOB_STUN | TESLA_OBJ_DAMAGE
-	var/chain
-	var/mob/living/caster
-
-/obj/projectile/magic/aoe/lightning/fire(setAngle)
-	if(caster)
-		chain = caster.Beam(src, icon_state = "lightning[rand(1, 12)]", time = INFINITY, maxdistance = INFINITY)
-	..()
-
-/obj/projectile/magic/aoe/lightning/on_hit(target)
-	. = ..()
-	if(ismob(target))
-		var/mob/M = target
-		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with [target]!"))
-			qdel(src)
-			return BULLET_ACT_BLOCK
-	tesla_zap(src, tesla_range, tesla_power, tesla_flags)
-	qdel(src)
-
-/obj/projectile/magic/aoe/lightning/Destroy()
-	qdel(chain)
-	. = ..()
 
 /obj/projectile/magic/aoe/fireball
 	name = "bolt of fireball"
@@ -748,17 +643,25 @@
 	name = "bolt of water"
 	icon_state = "ice_2"
 	flag = "magic"
+	var/area_of_effect = 1
 
 /obj/projectile/magic/water/on_hit(target)
 	. = ..()
 	var/obj/item/reagent_containers/K = new /obj/item/reagent_containers/glass/bucket/wooden/spell_water(get_turf(target))
+	var/turf/T = get_turf(target)
+
 	playsound(target, 'sound/foley/waterenter.ogg', 100, FALSE)
-	if(ismob(target))
-		var/mob/living/mob_target = target
-		K.reagents.reaction(mob_target, TOUCH)
-		mob_target.Slowdown(10)
-		mob_target.log_message("has been hit by a water bolt from [key_name(src)]", LOG_ATTACK)
-	else if(istype(target, /obj/structure/soil))
-		var/obj/structure/soil/target_soil = target
-		target_soil.adjust_water(150)
-	qdel(K)
+
+	if(ismob(target))	//Hit a person
+		var/mob/living/mob_target = target			//Get person hit
+		K.reagents.reaction(mob_target, TOUCH)		//Touch the person with water reagent (extinguish fires)
+		mob_target.Slowdown(10)						//Slowdown the person
+		mob_target.log_message("has been hit by a water bolt from [key_name(src)]", LOG_ATTACK)	//Log it
+
+	else	//Hit anything else
+		for(var/turf/affected_turf in view(area_of_effect, T))		//Loop through all turf tiles in 3x3 grid of hit area
+			for(var/obj/effect/decal/cleanable/C in affected_turf)	//Loop through all cleanable decals in current turf examined
+				qdel(C)												//Delete the cleanable object
+		for(var/obj/structure/soil/affected_soil in view(area_of_effect, T))	//Loop again to check for all soil structures in 3x3 grid of hit area
+			affected_soil.adjust_water(150)										//Adjust water for those soil plants
+	qdel(K)		//Delete the water regeant

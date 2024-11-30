@@ -61,10 +61,7 @@
 	if(istype(AM, /obj/structure/closet/crate/chest) || istype(AM, /obj/structure/closet/burial_shroud))
 		for(var/mob/living/M in contents)
 			return FALSE
-		for(var/obj/structure/closet/C in contents)
-			if(istype(C, /obj/structure/closet/crate/coffin))
-				return TRUE
-			return FALSE
+	if(istype(AM, /obj/structure/closet/crate/coffin))
 		return TRUE
 	. = ..()
 
@@ -197,9 +194,6 @@
 			user.visible_message(span_notice("[user] stuffs [O] into [src]."), \
 							 	 span_notice("I stuff [O] into [src]."), \
 							 	 span_hear("I hear a loud bang."))
-			var/mob/living/L = O
-			if(!issilicon(L))
-				L.Paralyze(40)
 			O.forceMove(T)
 			user_buckle_mob(O, user)
 	else
@@ -218,24 +212,13 @@
 	if(!opened || !can_close(user))
 		return FALSE
 	take_contents()
-	for(var/mob/A in contents)
-		if((A.stat) && (istype(A, /mob/living/carbon/human)))
-			var/mob/living/carbon/human/B = A
-			B.buried = TRUE
-	for(var/obj/structure/closet/crate/coffin/C in contents)
-		for(var/mob/living/carbon/human/D in C.contents)
-			D.buried = TRUE
 	opened = FALSE
 //	update_icon()
 	return TRUE
 
 /obj/structure/closet/dirthole/dump_contents()
-	for(var/mob/A in contents)
-		if((!A.stat) && (istype(A, /mob/living/carbon/human)))
-			var/mob/living/carbon/human/B = A
-			B.buried = FALSE
 	..()
-	
+
 /obj/structure/closet/dirthole/open(mob/living/user)
 	if(opened)
 		return

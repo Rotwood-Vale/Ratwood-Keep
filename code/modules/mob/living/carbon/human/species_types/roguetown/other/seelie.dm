@@ -7,7 +7,7 @@
 	id = "seelie"
 	desc = "<b>Seelie</b><br>\
 	The smallest of Fae-folk, Seelie are a mysterious race and not well understood. \
-    Parentless creatures and apparently only feminine in nature, it is clear that they do not propogate in a typical human way. \
+    Parentless creatures and unable to reproduce naturally, it is clear that they do not propogate in a typical human way. \
     Instead, Seelie tend to appear and gather in places of chaos and misfortune, thriving in such an environment. \
     Seelie are known to have Elemental Attunements, an influence of nature that mystically sprung them into existance. \
     Any tribalism or history regarding the race is scarce and uncommmon, and as such misconception and myth surrounds them. \
@@ -24,7 +24,6 @@
 	disliked_food = NONE
 	liked_food = NONE
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/f/fm.dmi'		//CHANGE THESE TO NEW SPRITEWORK
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'		//All fairies are technically female in code, but are genderless in lore
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
@@ -82,6 +81,8 @@
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 	languages = list(

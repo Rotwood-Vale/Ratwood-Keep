@@ -19,7 +19,6 @@
     "mainsettings" = list(
       "name" = list("desc" = "Name", "type" = "string", "value" = "Bob"),
 			"maxhealth" = list("desc" = "Max. health", "type" = "number", "value" = 100),
-      "access" = list("desc" = "Access ID", "type" = "datum", "path" = "/obj/item/card/id", "value" = "Default"),
 			"objtype" = list("desc" = "Base obj type", "type" = "datum", "path" = "/obj", "value" = "[chosen]"),
 			"googlyeyes" = list("desc" = "Googly eyes", "type" = "boolean", "value" = "No"),
 			"disableai" = list("desc" = "Disable AI", "type" = "boolean", "value" = "Yes"),
@@ -47,11 +46,6 @@
 
 		if (mainsettings["idledamage"]["value"] == "No")
 			basemob.idledamage = FALSE
-
-		if (mainsettings["access"])
-			var/newaccess = text2path(mainsettings["access"]["value"])
-			if (ispath(newaccess))
-				basemob.access_card = new newaccess
 
 		if (mainsettings["maxhealth"]["value"])
 			if (!isnum(mainsettings["maxhealth"]["value"]))

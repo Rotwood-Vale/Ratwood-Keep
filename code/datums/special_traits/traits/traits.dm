@@ -2,7 +2,7 @@
 //// these should still be in the round-start/late join specials as well! It's just these are contextually fitting for Sleep Specials as well!
 /datum/special_trait/nothing
 	name = "Nothing"
-	greet_text = span_notice("You're not special")
+	greet_text = span_notice("You're not special.")
 	weight = 7 //As rare as Vengant Bum, just to remind you it could have been it
 
 /datum/special_trait/nightvision
@@ -11,12 +11,7 @@
 	weight = 100
 
 /datum/special_trait/nightvision/on_apply(mob/living/carbon/human/character, silent)
-	var/obj/item/organ/eyes/eyes = character.getorganslot(ORGAN_SLOT_EYES)
-	if(!eyes)
-		return
-	eyes.see_in_dark = 3
-	eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
-	character.update_sight()
+	ADD_TRAIT(character, TRAIT_DARKVISION, "[type]")
 
 /datum/special_trait/thickskin
 	name = "Tough"
@@ -38,8 +33,8 @@
 
 /datum/special_trait/deadened
 	name = "Deadened"
-	greet_text = span_notice("Ever since <b>it</b> happened, I've never been able to feel anything. Inside or out")
-	weight = 25
+	greet_text = span_notice("Ever since <b>it</b> happened, I've never been able to feel anything. Inside or out.")
+	weight = 50
 
 /datum/special_trait/deadened/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOMOOD, "[type]")
@@ -54,17 +49,35 @@
 /datum/special_trait/value/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_SEEPRICES, "[type]")
 
-/datum/special_trait/lightstep
-	name = "Light Step"
-	greet_text = span_notice("I am quiet, nobody can hear my steps.")
-	weight = 100
+/datum/special_trait/underworldassassin
+	name = "Underworld Assassin"
+	greet_text = span_notice("You've always been an outlier. Even from a young age, socialite activities weren't for you. Be it misfortune, happenstance, or simply good luck - You ended up in the care of one of the many assassin guilds that poliferate this rotten world.")
+	weight = 15 //This is on-par with vengeant bum; but far weaker as it doesn't give you 20 STR/CON/END
+	//This doesn't mean that it won't be changed if it turns out to be problematic - this is a massive buff for some combat playstyles.
 
-/datum/special_trait/lightstep/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/underworldassassin/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
+	character.change_stat("strength", -1)
+	character.change_stat("endurance", 2)
+	character.change_stat("speed", 2)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+
+/datum/special_trait/lightfooted
+	name = "Lightfooted"
+	greet_text = span_notice("You've always been light on your feet. Sneaking around quietly, and quickly has never been a problem for you.")
+	weight = 75 //This is far less stronk
+	//Weaker version of Underworld Assassin.
+
+/datum/special_trait/lightfooted/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
+	character.change_stat("speed", 1)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 
 /datum/special_trait/night_owl
 	name = "Night Owl"
-	greet_text = span_notice("I've always preferred Noc over her sister")
+	greet_text = span_notice("I've always preferred Noc over her sister.")
 	weight = 100
 
 /datum/special_trait/night_owl/on_apply(mob/living/carbon/human/character, silent)
@@ -72,7 +85,7 @@
 
 /datum/special_trait/beautiful
 	name = "Beautiful"
-	greet_text = span_notice("My face is a work of art")
+	greet_text = span_notice("My face is a work of art~")
 	weight = 100
 
 /datum/special_trait/beautiful/on_apply(mob/living/carbon/human/character, silent)
@@ -82,7 +95,7 @@
 /datum/special_trait/duelist
 	name = "Swordmaster Apprentice"
 	greet_text = span_notice("I was the student of a legendary sword master, my skill is rivalled by few! I've also hidden a rapier.")
-	weight = 50
+	weight = 25
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
@@ -93,18 +106,18 @@
 /datum/special_trait/eagle_eyed
 	name = "Eagle Eyed"
 	greet_text = span_notice("With my sharp aim I could always hit distant targets, I've also hidden a crossbow and some bolts.")
-	weight = 50
+	weight = 25
 
 /datum/special_trait/eagle_eyed/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("perception", 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 5, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
 	character.mind.special_items["Crossbow"] = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	character.mind.special_items["Bolts"] = /obj/item/quiver/bolts
+	character.mind.special_items["Bolts"] = /obj/item/ammo_holder/quiver/bolts
 
 /datum/special_trait/mule
 	name = "Mule"
-	greet_text = span_notice("I've been dealing drugs and I have a stash hidden away")
+	greet_text = span_notice("I've been dealing drugs and I have a stash hidden away.")
 	weight = 100
 
 /datum/special_trait/mule/on_apply(mob/living/carbon/human/character, silent)
@@ -115,18 +128,24 @@
 
 /datum/special_trait/cunning_linguist
 	name = "Cunning Linguist"
-	greet_text = span_notice("I know an extra language, and I can be quite seductive")
+	greet_text = span_notice("I know an extra language, and I can be quite seductive~")
 	weight = 100
 
 /datum/special_trait/cunning_linguist/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
-	switch(rand(1,3))
+	switch(rand(1,5))
 		if(1)
 			character.grant_language(/datum/language/elvish)
 		if(2)
 			character.grant_language(/datum/language/hellspeak)
 		if(3)
 			character.grant_language(/datum/language/draconic)
+		if(4)
+			character.grant_language(/datum/language/dwarvish)
+		if(5)
+			character.grant_language(/datum/language/orcish)
+		if(5)
+			character.grant_language(/datum/language/celestial)
 
 /datum/special_trait/corn_fed
 	name = "Corn Fed"
@@ -147,18 +166,17 @@
 
 /datum/special_trait/arsonist
 	name = "Arsonist"
-	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebobms")
+	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebombs!")
 	weight = 100
 
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Firebomb One"] = /obj/item/bomb
 	character.mind.special_items["Firebomb Two"] = /obj/item/bomb
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 1, TRUE)
 
 /datum/special_trait/pineapple
 	name = "The safeword is \"Pineapple\""
-	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I also have a hidden a whip")
-	weight = 50
+	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I also have a hidden a whip.")
+	weight = 25
 
 /datum/special_trait/pineapple/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Whip"] = /obj/item/rogueweapon/whip
@@ -168,7 +186,7 @@
 	name = "Psydon's Drunkest Rider"
 	greet_text = span_notice("I ride! None of the laws shall stop me for that is Psydon's divine will!")
 	req_text = "Worship Psydon"
-	allowed_patrons = list(/datum/patron/old_god)
+	allowed_patrons = list(/datum/patron/psydon)
 	weight = 100
 
 /datum/special_trait/psydons_rider/on_apply(mob/living/carbon/human/character, silent)
@@ -188,6 +206,7 @@
 /datum/special_trait/packed_lunch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/bag = new /obj/item/storage/roguebag/lunch(get_turf(character))
 	character.put_in_hands(bag, forced = TRUE)
+	bag.update_icon() //upon spawn it looks like an empty bag and people often just throws it away
 
 /datum/special_trait/spring_in_my_step
 	name = "Spring in my Step"
@@ -196,14 +215,6 @@
 
 /datum/special_trait/spring_in_my_step/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_ZJUMP, "[type]")
-
-/datum/special_trait/tolerant
-	name = "Tolerant"
-	greet_text = span_notice("I dream of an ideal future, one with peace between all races")
-	weight = 100
-
-/datum/special_trait/tolerant/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_TOLERANT, "[type]")
 
 /datum/special_trait/thief
 	name = "Thief"
@@ -228,6 +239,7 @@
 	character.grant_language(/datum/language/orcish)
 	character.grant_language(/datum/language/beast)
 	character.grant_language(/datum/language/draconic)
+	character.grant_language(/datum/language/faexin)
 
 /datum/special_trait/civilizedbarbarian
 	name = "Tavern Brawler"
@@ -239,22 +251,19 @@
 
 /datum/special_trait/mastercraftsmen
 	name = "Master Craftsman"
-	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 10 arts of the craft."
+	greet_text = "In my youth, I've decided I'd get a grasp on every trade, and pursued the 7 arts of the craft."
 	req_text = "Middle-aged or Old"
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	weight = 100
 
 /datum/special_trait/mastercraftsmen/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/weaponsmithing, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/armorsmithing, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/traps, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/craft/engineering, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/craft/tanning, 2, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 
 /datum/special_trait/bleublood
 	name = "Noble Lineage"
@@ -288,7 +297,7 @@
 
 /datum/special_trait/gourmand
 	name = "Gourmand"
-	greet_text = span_notice("I can eat even the most spoiled, raw, or toxic food and water as if they were delicacies..")
+	greet_text = span_notice("I can eat even the most spoiled, raw, or toxic food and water as if they were delicacies...")
 	weight = 100
 
 /datum/special_trait/gourmand/on_apply(mob/living/carbon/human/character, silent)
@@ -313,8 +322,9 @@
 	weight = 50
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
+	character.mob_size += 1
 	character.change_stat("strength", 2)
-	character.change_stat("constitution", 1)
+	character.change_stat("constitution", 2)
 	character.change_stat("speed", -2)
 	character.transform = character.transform.Scale(1.25, 1.25)
 	character.transform = character.transform.Translate(0, (0.25 * 16))
@@ -338,7 +348,7 @@
 
 /datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("speed", -2)
-	character.change_stat("intelligence", -4)	
+	character.change_stat("intelligence", -4)
 
 /datum/special_trait/hussite
 	name = "Known Heretic"
@@ -349,6 +359,8 @@
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
+	character.add_stress(/datum/stressevent/psycurse)
+	character.devotion.excommunicate()
 
 /datum/special_trait/bounty
 	name = "Hunted Man"
@@ -364,26 +376,26 @@
 	else
 		employer_gender = FEMALE
 	if(employer_gender == MALE)
-		employer = pick(list("Baron", "Lord", "Nobleman", "Prince"))
+		employer = pick(list("Baron", "Lord", "Nobleman", "Heir"))
 	else
-		employer = pick(list("Duchess", "Lady", "Noblelady", "Princess"))
+		employer = pick(list("Duchess", "Lady", "Noblelady", "Heiress"))
 	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
 	var/amount = rand(40,100)
 	switch(rand(1,7))
 		if(1)
-			reason = "murder"
+			reason = "Murder"
 		if(2)
-			reason = "kinslaying"
+			reason = "Kinslaying"
 		if(3)
-			reason = "besmirching a noble's name"
+			reason = "Besmirching a Noble's name"
 		if(4)
-			reason = "treason"
+			reason = "Treason"
 		if(5)
-			reason = "arson"
+			reason = "Arson"
 		if(6)
-			reason = "heresy"
+			reason = "Heresy"
 		if(7)
-			reason = "robbing a noble"
+			reason = "Robbing a Noble"
 	add_bounty(character.real_name, amount, FALSE, reason, employer)
 	if(!silent)
 		to_chat(character, span_notice("Whether I done it or not, I have been accused of [reason], and the [employer] put a bounty on my head!"))
@@ -407,16 +419,15 @@
 
 /datum/special_trait/unlucky
 	name = "Unlucky"
-	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off")
-	weight = 100
+	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off.")
+	weight = 25
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
-	character.STALUC = rand(1, 10)
-
+	character.STALUC -= rand(1, 10)
 
 /datum/special_trait/jesterphobia
 	name = "Jesterphobic"
-	greet_text = span_boldwarning("I have a severe, irrational fear of Jesters")
+	greet_text = span_boldwarning("I have a severe, irrational fear of Jesters!")
 	weight = 50
 
 /datum/special_trait/jesterphobia/on_apply(mob/living/carbon/human/character, silent)
@@ -424,7 +435,7 @@
 
 /datum/special_trait/xenophobic
 	name = "Xenophobic"
-	greet_text = span_boldwarning("Lesser races pollute our land")
+	greet_text = span_boldwarning("Lesser races pollute our land!")
 	weight = 200
 
 /datum/special_trait/xenophobic/on_apply(mob/living/carbon/human/character, silent)
@@ -442,8 +453,8 @@
 
 /datum/special_trait/atrophy
 	name = "Atrophy"
-	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")
-	weight = 200
+	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile.")
+	weight = 50
 
 /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -2)
@@ -452,7 +463,7 @@
 
 /datum/special_trait/lazy
 	name = "Lazy"
-	greet_text = span_boldwarning("I don't care, never did")
+	greet_text = span_boldwarning("I don't care, never did.")
 	weight = 200
 
 /datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
@@ -464,7 +475,7 @@
 
 /datum/special_trait/bad_week
 	name = "Bad Week"
-	greet_text = span_boldwarning("Everything just seems to piss me off")
+	greet_text = span_boldwarning("Everything just seems to piss me off!")
 	weight = 100
 
 /datum/special_trait/bad_week/on_apply(mob/living/carbon/human/character, silent)
@@ -473,7 +484,7 @@
 /datum/special_trait/nude_sleeper
 	name = "Picky Sleeper"
 	greet_text = span_boldwarning("I just can't seem to fall asleep unless I'm <i>truly</i> comfortable...")
-	weight = 25
+	weight = 50
 
 /datum/special_trait/nude_sleeper/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NUDE_SLEEPER, "[type]")
@@ -481,7 +492,7 @@
 //job specials
 /datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
 	name = "Rebellous Daughter"
-	greet_text = span_notice("I am quite rebellious for a princess. Screw Noble Customs!")
+	greet_text = span_notice("I am quite rebellious for a noblewoman. Screw Noble Customs!")
 	req_text = "Be a princess"
 	allowed_sexes = list(FEMALE)
 	allowed_jobs = list(/datum/job/roguetown/prince)
@@ -503,7 +514,7 @@
 	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather(character), SLOT_BELT)
 	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_BELT_R)
 	character.equip_to_slot_or_del(new /obj/item/storage/backpack/rogue/satchel(character), SLOT_BACK_R)
-	character.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/nobleboot(character), SLOT_SHOES)
+	character.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/armor/nobleboot(character), SLOT_SHOES)
 	character.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
@@ -518,11 +529,12 @@
 /datum/special_trait/vengantbum
 	name = "Vengant Bum"
 	greet_text = span_notice("I was once a nobleman, high on life until my father was murdered right in front of me. Thankfully, my mentor took me to safety and taught me all I needed to survive in these disgusting lands. They think I am a lowlife, but that's just an advantage.")
-	req_text = "Be a beggar"
-	allowed_jobs = list(/datum/job/roguetown/beggar)
+	req_text = "Be a beggar or vagabond"
+	allowed_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan)
 	weight = 7
 
 /datum/special_trait/vengantbum/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
 	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")
 	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
@@ -534,8 +546,8 @@
 /datum/special_trait/my_precious
 	name = "My Precious"
 	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")
-	req_text = "Be a beggar"
-	allowed_jobs = list(/datum/job/roguetown/beggar)
+	req_text = "Be a beggar or vagabond"
+	allowed_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan)
 	weight = 50
 
 /datum/special_trait/my_precious/on_apply(mob/living/carbon/human/character, silent)
@@ -545,15 +557,55 @@
 	QDEL_NULL(character.shoes)
 	QDEL_NULL(character.head)
 	var/obj/item/ring = new /obj/item/clothing/ring/dragon_ring(get_turf(character))
+	ring.desc = "The name of [character.real_name] can be seen engraved on ring's inner side."
 	character.put_in_hands(ring, forced = TRUE)
 
 /datum/special_trait/illicit_merchant
 	name = "Illicit Merchant"
-	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device")
+	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device.")
 	req_text = "Be a Shophand"
 	allowed_jobs = list(/datum/job/roguetown/shophand)
-	weight = 50
+	weight = 100
 
 /datum/special_trait/illicit_merchant/on_apply(mob/living/carbon/human/character, silent)
-	character.mind.special_items["Merchant Key"] = /obj/item/roguekey/merchant
+	character.mind.special_items["Merchant Key"] = /obj/item/key/merchant
 	character.mind.special_items["GOLDFACE Gem"] = /obj/item/gem_device/goldface
+
+/datum/special_trait/reps_redemption
+	name = "Reps for Redemption"
+	greet_text = span_notice("Pain has finally transformed into gain.")
+	req_text = "Be a Church Role"
+	allowed_jobs = list(CHURCH_ROLES)
+	weight = 50
+
+/datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)
+	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	character.change_stat("strength", 2)
+	character.change_stat("constitution", 2)
+	character.change_stat("speed", -2)
+
+/datum/special_trait/seed_feed
+	name = "Seed & Feed"
+	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
+	req_text = "Be a Soilson, Towner or Pilgrim."
+	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/pilgrim, /datum/job/roguetown/villager)
+	weight = 100
+
+/datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)
+	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	character.mind.special_items["The Bag"] = /obj/item/storage/roguebag/seedfeed
+	character.mind.special_items["The Sickle"] = /obj/item/rogueweapon/sickle
+
+//Keep that thang on ye, Priest, for the wicked folk will arrive soon.
+/datum/special_trait/priest_akimbo
+	name = "Runic Faith"
+	greet_text = span_notice("I keep two runelocks at me at all times. Unloaded, of course.")
+	req_text = "Be a Priest or Priestess"
+	allowed_jobs = list(/datum/job/roguetown/priest)
+	weight = 5
+
+/datum/special_trait/priest_akimbo/on_apply(mob/living/carbon/human/character, silent)
+	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
+	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_R)
+	character.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)

@@ -79,7 +79,13 @@
 		to_chat(src, span_warning("[pulledby] is restraining my arm!"))
 		return
 
-	A.attack_right(src, params)
+	//TODO VANDERLIN: Refactor this into melee_attack_chain_right so that items can more dynamically work with RMB
+	var/obj/item/held_item = get_active_held_item()
+	if(held_item)
+		if(!held_item.pre_attack_right(A, src, params))
+			A.attack_right(src, params)
+	else
+		A.attack_right(src, params)
 
 /mob/living/attack_right(mob/user, params)
 	. = ..()
@@ -231,7 +237,8 @@
 				caused_wound?.werewolf_infect_attempt()
 				if(prob(30))
 					user.werewolf_feed(src)
-			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
+			// both player and npc deadites can infect
+			if(user.mind.has_antag_datum(/datum/antagonist/zombie) || istype(user, /mob/living/carbon/human/species/deadite))
 				var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)
@@ -364,7 +371,7 @@
 				if(ishuman(src))
 					var/mob/living/carbon/human/H = src
 					jadded += H.get_complex_pain()/50
-					if(!H.check_armor_skill())
+					if(!H.check_armor_skill() || H.legcuffed)
 						jadded += 50
 						jrange = 1
 				if(rogfat_add(min(jadded,100)))
@@ -648,52 +655,6 @@
 			to_chat(src, span_danger("My bite misses [ML]!"))
 
 /*
-	Aliens
-	Defaults to same as monkey in most places
-*/
-/mob/living/carbon/alien/UnarmedAttack(atom/A)
-	A.attack_alien(src)
-
-/atom/proc/attack_alien(mob/living/carbon/alien/user)
-	attack_paw(user)
-	return
-
-/mob/living/carbon/alien/RestrainedClickOn(atom/A)
-	return
-
-// Babby aliens
-/mob/living/carbon/alien/larva/UnarmedAttack(atom/A)
-	A.attack_larva(src)
-/atom/proc/attack_larva(mob/user)
-	return
-
-
-/*
-	Slimes
-	Nothing happening here
-*/
-/mob/living/simple_animal/slime/UnarmedAttack(atom/A)
-	A.attack_slime(src)
-/atom/proc/attack_slime(mob/user)
-	return
-/mob/living/simple_animal/slime/RestrainedClickOn(atom/A)
-	return
-
-
-/*
-	Drones
-*/
-/mob/living/simple_animal/drone/UnarmedAttack(atom/A)
-	A.attack_drone(src)
-
-/atom/proc/attack_drone(mob/living/simple_animal/drone/user)
-	attack_hand(user) //defaults to attack_hand. Override it when you don't want drones to do same stuff as humans.
-
-/mob/living/simple_animal/slime/RestrainedClickOn(atom/A)
-	return
-
-
-/*
 	True Devil
 */
 
@@ -706,15 +667,6 @@
 
 /mob/living/brain/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
 	return
-
-
-/*
-	pAI
-*/
-
-/mob/living/silicon/pai/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
-	return
-
 
 /*
 	Simple animals

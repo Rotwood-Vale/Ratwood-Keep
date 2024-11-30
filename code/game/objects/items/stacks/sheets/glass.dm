@@ -32,11 +32,6 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	user.visible_message(span_suicide("[user] begins to slice [user.p_their()] neck with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return BRUTELOSS
 
-/obj/item/stack/sheet/glass/cyborg
-	custom_materials = null
-	is_cyborg = 1
-	cost = 500
-
 /obj/item/stack/sheet/glass/fifty
 	amount = 50
 
@@ -46,17 +41,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 
 /obj/item/stack/sheet/glass/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
-	if(istype(W, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/CC = W
-		if (get_amount() < 1 || CC.get_amount() < 5)
-			to_chat(user, "<span class='warning>I need five lengths of coil and one sheet of glass to make wired glass!</span>")
-			return
-		CC.use(5)
-		use(1)
-		to_chat(user, span_notice("I attach wire to the [name]."))
-		var/obj/item/stack/light_w/new_tile = new(user.loc)
-		new_tile.add_fingerprint(user)
-	else if(istype(W, /obj/item/stack/rods))
+	if(istype(W, /obj/item/stack/rods))
 		var/obj/item/stack/rods/V = W
 		if (V.get_amount() >= 1 && get_amount() >= 1)
 			var/obj/item/stack/sheet/rglass/RG = new (get_turf(user))
@@ -124,7 +109,6 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
  * Reinforced glass sheets
  */
 GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
-	new/datum/stack_recipe("windoor frame", /obj/structure/windoor_assembly, 5, time = 0, on_floor = TRUE, window_checks = TRUE), \
 	null, \
 	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/reinforced/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/reinforced/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE) \
@@ -147,25 +131,6 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 /obj/item/stack/sheet/rglass/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
 	..()
-
-/obj/item/stack/sheet/rglass/cyborg
-	custom_materials = null
-	var/datum/robot_energy_storage/glasource
-	var/metcost = 250
-	var/glacost = 500
-
-/obj/item/stack/sheet/rglass/cyborg/get_amount()
-	return min(round(source.energy / metcost), round(glasource.energy / glacost))
-
-/obj/item/stack/sheet/rglass/cyborg/use(used, transfer = FALSE) // Requires special checks, because it uses two storages
-	if(get_amount(used)) //ensure we still have enough energy if called in a do_after chain
-		source.use_charge(used * metcost)
-		glasource.use_charge(used * glacost)
-		return TRUE
-
-/obj/item/stack/sheet/rglass/cyborg/add(amount)
-	source.add_charge(amount * metcost)
-	glasource.add_charge(amount * glacost)
 
 /obj/item/stack/sheet/rglass/get_main_recipes()
 	. = ..()

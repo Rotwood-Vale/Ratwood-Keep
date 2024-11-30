@@ -11,6 +11,11 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	max_integrity = 300
 
+/obj/item/storage/roguebag/examine(mob/user)
+	. = ..()
+	if(contents.len)
+		. += span_notice("[contents.len] thing[contents.len > 1 ? "s" : ""] in the sack.")
+
 /obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == SLOT_HEAD)
@@ -68,6 +73,7 @@
 	STR.allow_quick_gather = TRUE
 	STR.allow_quick_empty = TRUE
 	STR.allow_look_inside = FALSE
+	STR.allow_dump_out = TRUE
 	STR.display_numerical_stacking = TRUE
 
 
@@ -104,3 +110,15 @@
 	new /obj/item/reagent_containers/food/snacks/rogue/pieslice(src)
 	new /obj/item/reagent_containers/food/snacks/rogue/pieslice(src)
 	new /obj/item/reagent_containers/glass/bottle/rogue/water(src)
+
+/obj/item/storage/roguebag/seedfeed/PopulateContents()
+	new /obj/item/seeds/apple(src)
+	new /obj/item/seeds/apple(src)
+	new /obj/item/seeds/wheat(src)
+	new /obj/item/seeds/wheat(src)
+	new /obj/item/seeds/cabbage(src)
+	new /obj/item/seeds/cabbage(src)
+	new /obj/item/seeds/onion(src)
+	new /obj/item/seeds/onion(src)
+	new /obj/item/seeds/potato(src)
+	new /obj/item/seeds/potato(src)

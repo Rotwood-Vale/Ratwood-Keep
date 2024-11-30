@@ -10,6 +10,11 @@
 	cost = 3
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 
+/datum/supply_pack/rogue/luxury/coolersigs
+	name = "Swamp Weed Zig"
+	cost = 8
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
+
 /datum/supply_pack/rogue/luxury/perfume
 	name = "Perfume"
 	cost = 15
@@ -30,7 +35,7 @@
 	cost = 20
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
-/datum/supply_pack/rogue/luxury/westspice
+/*/datum/supply_pack/rogue/luxury/westspice
 	name = "Western Herbs"
 	cost = 50
 	contains = list(/obj/item/reagent_containers/food/snacks/grown/westspice)
@@ -39,7 +44,7 @@
 	name = "Eastern Spices"
 	cost = 200
 	contains = list(/obj/item/reagent_containers/food/snacks/grown/eastspice)
-
+*/
 /datum/supply_pack/rogue/luxury/mbox
 	name = "Music Box"
 	cost = 500
@@ -94,3 +99,8 @@
 	name = "Riddle of Steel"
 	cost = 400
 	contains = list(/obj/item/riddleofsteel)
+
+/datum/supply_pack/rogue/luxury/lovepotion
+	name = "Love Potion"
+	cost = 600
+	contains = list(/obj/item/lovepotion)

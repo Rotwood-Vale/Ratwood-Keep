@@ -19,9 +19,10 @@
 	load_sound = 'sound/foley/nockarrow.ogg'
 	fire_sound = 'sound/combat/Ranged/crossbow-small-shot-02.ogg'
 	associated_skill = /datum/skill/combat/crossbows
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	var/damfactor = 2
+	damfactor = 2
+	metalizer_result = /obj/structure/bars/pipe
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()
@@ -90,6 +91,7 @@
 	update_icon()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/attackby(obj/item/A, mob/user, params)
+	..()
 	if(istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing))
 		if(cocked)
 			if((loc == user) && (user.get_inactive_held_item() != src))
@@ -109,9 +111,8 @@
 		spread = 0
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
-		BB.damage = BB.damage * damfactor
 		if(HAS_TRAIT(user, TRAIT_TINY))
-			BB.damage = (BB.damage * 0.3)
+			BB.damage = (BB.damage * 0.1)
 	cocked = FALSE
 	..()
 

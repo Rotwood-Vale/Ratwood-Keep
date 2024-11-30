@@ -79,6 +79,8 @@
 			if(SHEATH_TYPE_NORMAL)
 				if(penis.penis_size == 3)
 					used_name = "a fat sheath"
+				if(penis.penis_size == 1)
+					used_name = "a small sheath"
 				else
 					used_name = "a sheath"
 			if(SHEATH_TYPE_SLIT)

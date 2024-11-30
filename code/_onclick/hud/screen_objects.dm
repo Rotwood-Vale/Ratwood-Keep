@@ -189,8 +189,6 @@
 
 	if(usr.incapacitated())
 		return TRUE
-	if(ismecha(usr.loc)) // stops inventory actions in a mech
-		return TRUE
 
 	if(hud?.mymob && slot_id)
 		var/obj/item/inv_item = hud.mymob.get_item_by_slot(slot_id)
@@ -297,10 +295,6 @@
 	if(usr != user)
 		return TRUE
 	if(world.time <= user.next_move)
-		return TRUE
-//	if(user.incapacitated())
-//		return TRUE
-	if (ismecha(user.loc)) // stops inventory actions in a mech
 		return TRUE
 
 	if(user.active_hand_index == held_index)
@@ -633,10 +627,6 @@
 			L.toggle_cmode()
 			update_icon()
 
-/atom/movable/screen/act_intent/alien
-	icon = 'icons/mob/screen_alien.dmi'
-	screen_loc = ui_movi
-
 /atom/movable/screen/act_intent/robot
 	icon = 'icons/mob/screen_cyborg.dmi'
 	screen_loc = ui_borg_intents
@@ -795,7 +785,7 @@
 	var/mob/living/carbon/human/H = hud.mymob
 	if(H.mind && H.mind.antag_datums)
 		for(var/datum/antagonist/D in H.mind.antag_datums)
-			if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/vampire) || istype(D, /datum/antagonist/bandit))
+			if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/vampire) || istype(D, /datum/antagonist/bandit) || istype(D, /datum/antagonist/lich))
 				qdel(src)
 				return
 	if(H.advsetup)
@@ -968,8 +958,6 @@
 	if(world.time <= usr.next_move)
 		return TRUE
 	if(usr.incapacitated())
-		return TRUE
-	if (ismecha(usr.loc)) // stops inventory actions in a mech
 		return TRUE
 	if(master)
 		var/obj/item/I = usr.get_active_held_item()
@@ -1364,10 +1352,6 @@
 	. += mutable_appearance(overlay_icon, "[hud.mymob.gender == "male" ? "m" : "f"]_[hud.mymob.zone_selected]")
 //	. += mutable_appearance(overlay_icon, "height_arrow[hud.mymob.aimheight]")
 
-/atom/movable/screen/zone_sel/alien
-	icon = 'icons/mob/screen_alien.dmi'
-	overlay_icon = 'icons/mob/screen_alien.dmi'
-
 /atom/movable/screen/zone_sel/robot
 	icon = 'icons/mob/screen_cyborg.dmi'
 
@@ -1393,10 +1377,6 @@
 	name = "health"
 	icon_state = "health0"
 	screen_loc = ui_health
-
-/atom/movable/screen/healths/alien
-	icon = 'icons/mob/screen_alien.dmi'
-	screen_loc = ui_alien_health
 
 /atom/movable/screen/healths/robot
 	icon = 'icons/mob/screen_cyborg.dmi'
@@ -1856,6 +1836,25 @@
 				hud_used.rmb_intent.update_icon()
 				hud_used.rmb_intent.collapse_intents()
 
+/mob/living/proc/cycle_rmb_intent()
+    if(!possible_rmb_intents?.len)
+        return
+
+    // Find the index of the current intent
+    var/index = possible_rmb_intents.Find(rmb_intent)
+
+    if(index == -1)
+        rmb_intent = possible_rmb_intents[1]
+    else
+        // Calculate the next index, wrapping around if at the end
+        index = (index % possible_rmb_intents.len) + 1
+        rmb_intent = possible_rmb_intents[index]
+
+    if(hud_used?.rmb_intent)
+    {
+        hud_used.rmb_intent.update_icon()
+        hud_used.rmb_intent.collapse_intents()
+    }
 
 /atom/movable/screen/time
 	name = "Sir Sun"
@@ -1884,13 +1883,15 @@
 			add_overlay("rainlay")
 
 /atom/movable/screen/rogfat
-	name = "stamina"
+	name = "fatigue"
+	desc = "My long-term weariness. Rest will be needed to recover this."
 	icon_state = "fat100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat
 
 /atom/movable/screen/rogstam
-	name = "fatigue"
+	name = "stamina"
+	desc = "How winded I am. I need only a moment to catch my breath."
 	icon_state = "stam100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat

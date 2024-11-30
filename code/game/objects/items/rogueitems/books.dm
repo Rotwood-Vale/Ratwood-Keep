@@ -121,13 +121,13 @@
 		if(C.orders.len > 4)
 			to_chat(user, span_warning("Too much order."))
 			return
-		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSshuttle.supply_cats)
+		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSmerchant.supply_cats)
 		if(!picked_cat)
 			testing("yeye")
 			return
 		var/list/pax = list()
-		for(var/pack in SSshuttle.supply_packs)
-			var/datum/supply_pack/PA = SSshuttle.supply_packs[pack]
+		for(var/pack in SSmerchant.supply_packs)
+			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == picked_cat)
 				pax += PA
 		var/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
@@ -151,12 +151,12 @@
 		if(P.info)
 			to_chat(user, span_warning("Something is written here already."))
 			return
-		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSshuttle.supply_cats)
+		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSmerchant.supply_cats)
 		if(!picked_cat)
 			return
 		var/list/pax = list()
-		for(var/pack in SSshuttle.supply_packs)
-			var/datum/supply_pack/PA = SSshuttle.supply_packs[pack]
+		for(var/pack in SSmerchant.supply_packs)
+			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == picked_cat)
 				pax += PA
 		var/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
@@ -178,40 +178,50 @@
 	..()
 
 /obj/item/book/rogue/bibble
-	name = "The Book"
-	icon_state = "bibble_0"
-	base_icon_state = "bibble"
-	title = "bible"
-	dat = "gott.json"
+    name = "The Book"
+    icon_state = "bibble_0"
+    base_icon_state = "bibble"
+    title = "bible"
+    dat = "gott.json"
+    var/uses_remaining = 10 // Define uses_remaining
 
 /obj/item/book/rogue/bibble/read(mob/user)
-	if(!open)
-		to_chat(user, span_info("Open me first."))
-		return FALSE
-	if(!user.client || !user.hud_used)
-		return
-	if(!user.hud_used.reads)
-		return
-	if(!user.can_read(src))
-		return
-	if(in_range(user, src) || isobserver(user))
-		user.changeNext_move(CLICK_CD_MELEE)
-		var/m
-		var/list/verses = world.file2list("strings/bibble.txt")
-		m = pick(verses)
-		if(m)
-			user.say(m)
+    if(!open)
+        to_chat(user, span_info("Open me first."))
+        return FALSE
+    if(!user.client || !user.hud_used)
+        return
+    if(!user.hud_used.reads)
+        return
+    if(!user.can_read(src))
+        return
+    if(in_range(user, src) || isobserver(user))
+        user.changeNext_move(CLICK_CD_MELEE)
+        var/m
+        var/list/verses = world.file2list("strings/bibble.txt")
+        m = pick(verses)
+        if(m)
+            user.say(m)
 
 /obj/item/book/rogue/bibble/attack(mob/living/M, mob/user)
-	if(user.mind && user.mind.assigned_role == "Priest")
-		if(!user.can_read(src))
-			to_chat(user, span_warning("I don't understand these scribbly black lines."))
-			return
-		M.apply_status_effect(/datum/status_effect/buff/blessed)
-		M.add_stress(/datum/stressevent/blessed)
-		user.visible_message(span_notice("[user] blesses [M]."))
-		playsound(user, 'sound/magic/bless.ogg', 100, FALSE)
-		return
+    if(user.mind && user.mind.assigned_role == "Priest")
+        if(!user.can_read(src))
+            to_chat(user, span_warning("I don't understand these scribbly black lines."))
+            return
+        if (uses_remaining <= 0)
+            to_chat(user, span_warning("All charges are spent, hope the last poor bastard was worth it."))
+            qdel(src) // Delete the book
+            user << "The book turns to ash in your hands."
+            return
+        if (uses_remaining == 1)
+            to_chat(user, span_notice("This is your last charge. Use it wisely!"))
+        if (M.has_status_effect(/datum/status_effect/debuff/death_weaken))
+            M.remove_status_effect(/datum/status_effect/debuff/death_weaken)
+        M.apply_status_effect(/datum/status_effect/buff/blessed)
+        M.add_stress(/datum/stressevent/blessed)
+        user.visible_message(span_notice("[user] blesses [M]."))
+        playsound(user, 'sound/magic/bless.ogg', 100, FALSE)
+        return
 
 /datum/status_effect/buff/blessed
 	id = "blessed"
@@ -227,7 +237,7 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = ""
+	desc = "Issued by the Chancery of the Kingdom to serve as the legal framework for the realm."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
 	bookfile = "law.json"

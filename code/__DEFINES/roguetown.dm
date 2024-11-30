@@ -50,17 +50,29 @@
 #define RACES_VERY_SHUNNED \
 	/datum/species/halforc
 
-#define RACES_DESPISED \
-	/datum/species/goblinp,\
-	/datum/species/seelie
+#define RACES_GOBLIN \
+	/datum/species/goblinp
 
-#define RACES_ALL_KINDS list(RACES_DESPISED, RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
+#define RACES_SEELIE \
+	/datum/species/seelie	//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS
+
+#define RACES_SMOLFOLK \
+	/datum/species/anthromorphsmall,\
+	/datum/species/kobold
+
+#define RACES_ALL_KINDS list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
+
+#define RACES_NEARLY_ALL_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
 
 #define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
 
+#define RACES_SHUNNED_UP_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED, RACES_SEELIE)
+
 #define RACES_TOLERATED_UP list(RACES_TOLERATED, RACES_RESPECTED)
+
+#define RACES_TOLERATED_UP_PLUS_SMOLFOLK list(RACES_TOLERATED, RACES_SMOLFOLK, RACES_RESPECTED)
 
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
@@ -143,19 +155,32 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 )
+// For their armour sets. Shouldn't need to define the sub species, but oh well.
+#define GOBLIN_RACE_TYPES list(\
+	/datum/species/goblinp,\
+	/datum/species/goblin,\
+	/datum/species/goblin/hell,\
+	/datum/species/goblin/cave,\
+	/datum/species/goblin/sea,\
+	/datum/species/goblin/moon,\
+)
+
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
 	/datum/patron/divine/necra,\
-	/datum/patron/divine/pestra\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum,\
+	/datum/patron/divine/ravox,\
 )
 
 #define ALL_ACOLYTE_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
-	/datum/patron/divine/pestra\
+	/datum/patron/divine/pestra,\
+	/datum/patron/divine/malum\
 )
 
 #define ALL_DIVINE_PATRONS list(\
@@ -198,7 +223,7 @@
 	INHUMEN_CURSES\
 )
 
-#define ALL_NON_INHUMEN_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/old_god)
+#define ALL_NON_INHUMEN_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/psydon)
 
 #define PLATEHIT "plate"
 #define CHAINHIT "chain"
@@ -260,7 +285,8 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
 #define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
-#define CTAG_BOG 		"CAT_BOG" 	// Bog guards
+#define CTAG_BOG 		"CAT_BOG" 	//Vanguard
+#define CTAG_GOBS 		"CAT_GOBS" 	// Goblin Guards
 
 /*
 	Defines for the triumph buy datum categories
@@ -269,3 +295,31 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define TRIUMPH_CAT_CHARACTER "CHARACTER"
 #define TRIUMPH_CAT_MISC "MISC!"
 #define TRIUMPH_CAT_ACTIVE_DATUMS "ACTIVE"
+
+/*	........   Nutrition defines   ................ */
+#define MEAL_FILLING 30
+#define MEAL_GOOD 24
+#define MEAL_AVERAGE 18
+#define MEAL_MEAGRE 15
+#define SNACK_CHUNKY 12
+#define SNACK_NUTRITIOUS 9
+#define SNACK_DECENT 6
+#define SNACK_POOR 3
+
+#define DOUGH_NUTRITION MEAL_MEAGRE
+#define SMALLDOUGH_NUTRITION MEAL_MEAGRE/2
+#define BUTTERDOUGH_NUTRITION DOUGH_NUTRITION+BUTTERSLICE_NUTRITION
+#define BUTTERDOUGHSLICE_NUTRITION BUTTERDOUGH_NUTRITION/2
+#define BUTTER_NUTRITION SNACK_CHUNKY
+#define BUTTERSLICE_NUTRITION BUTTER_NUTRITION/6
+#define MEATSLAB_NUTRITION SNACK_NUTRITIOUS
+#define SAUSAGE_NUTRITION SNACK_NUTRITIOUS
+#define MINCE_NUTRITION MEATSLAB_NUTRITION/2
+#define FRESHCHEESE_NUTRITION SNACK_DECENT
+
+/*	........   Rotting defines   ................ */
+#define SHELFLIFE_EXTREME 270 MINUTES
+#define SHELFLIFE_LONG 135 MINUTES
+#define SHELFLIFE_DECENT 75 MINUTES
+#define SHELFLIFE_SHORT 45 MINUTES
+#define SHELFLIFE_TINY 30 MINUTES

@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(explosions)
 			// Double check for client
 			var/turf/M_turf = get_turf(M)
 			var/turf/E_turf = get_turf(epicenter)
-			if(is_in_zweb(M_turf, E_turf))
+			if(is_in_zweb(M_turf.z, E_turf.z))
 				var/dist = get_dist(M_turf, epicenter)
 				var/baseshakeamount
 				if(orig_max_distance - dist > 0)
@@ -297,12 +297,6 @@ GLOBAL_LIST_EMPTY(explosions)
 	//You need to press the DebugGame verb to see these now....they were getting annoying and we've collected a fair bit of data. Just -test- changes to explosion code using this please so we can compare
 	if(GLOB.Debug2)
 		log_world("## DEBUG: Explosion([x0],[y0],[z0])(d[devastation_range],h[heavy_impact_range],l[light_impact_range]): Took [took] seconds.")
-
-	if(running)	//if we aren't in a hurry
-		//Machines which report explosions.
-		for(var/array in GLOB.doppler_arrays)
-			var/obj/machinery/doppler_array/A = array
-			A.sense_explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, took,orig_dev_range, orig_heavy_range, orig_light_range)
 
 	++stopped
 	qdel(src)

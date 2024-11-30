@@ -137,11 +137,6 @@
 	desc = ""
 	stop_bleeding = 900
 
-/obj/item/stack/medical/gauze/cyborg
-	custom_materials = null
-	is_cyborg = 1
-	cost = 250
-
 /obj/item/stack/medical/ointment
 	name = "ointment"
 	desc = ""
@@ -224,7 +219,7 @@
 	grind_results = list(/datum/reagent/medicine/spaceacillin = 2)
 
 /obj/item/stack/medical/mesh/Initialize()
-	..()
+	. = ..()
 	if(amount == max_amount)	 //only seal full mesh packs
 		is_open = FALSE
 		icon_state = "regen_mesh_closed"

@@ -54,13 +54,13 @@
 	. = ..()
 	if(get_dist(user, target) > 7)
 		return
-	
+
 	user.changeNext_move(CLICK_CD_MELEE)
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/HU = user
 
-		if((HU.job != "King") && (HU.job != "Queen Consort"))
+		if((HU.job != "Duke") && (HU.job != "Duchess"))
 			to_chat(user, span_danger("The rod doesn't obey me."))
 			return
 
@@ -72,7 +72,7 @@
 
 			if(H.anti_magic_check())
 				return
-		
+
 			if(!(H in SStreasury.bank_accounts))
 				return
 
@@ -90,19 +90,29 @@
 				return
 
 /obj/item/rogueweapon/mace/stunmace
-	force = 15
-	force_wielded = 15
+	force = 25
+	force_wielded = 25
 	name = "stunmace"
 	icon_state = "stunmace0"
 	desc = "Pain is our currency here."
 	gripped_intents = null
+	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_NORMAL
 	possible_item_intents = list(/datum/intent/mace/strike/stunner, /datum/intent/mace/smash/stunner)
 	wbalance = 0
 	minstr = 5
-	wdefense = 0
+	wdefense = 5
 	var/charge = 100
 	var/on = FALSE
+
+/obj/item/rogueweapon/mace/stunmace/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.5,"sx" = -8,"sy" = -7,"nx" = 10,"ny" = -7,"wx" = -1,"wy" = -8,"ex" = 1,"ey" = -7,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 91,"sturn" = -90,"wturn" = -90,"eturn" = 90,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.4,"sx" = -3,"sy" = -4,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 70,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 1,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /datum/intent/mace/strike/stunner/afterchange()
 	var/obj/item/rogueweapon/mace/stunmace/I = masteritem
@@ -133,8 +143,13 @@
 /obj/item/rogueweapon/mace/stunmace/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	. = ..()
 	if(on)
-		target.electrocute_act(5, src)
-		charge -= 33
+		if(target.rogfat >= target.maxrogfat)
+			target.electrocute_act(5, src)
+			charge -= 6
+		else//TODO: Check target.STACON!!!!!!!!!!
+			target.rogstam_add(-10)
+			target.rogfat_add(5)
+			charge -= 3
 		if(charge <= 0)
 			on = FALSE
 			charge = 0
@@ -153,6 +168,8 @@
 /obj/item/rogueweapon/mace/stunmace/attack_self(mob/user)
 	if(on)
 		on = FALSE
+		force = 25
+		force_wielded = 25
 	else
 		if(charge <= 33)
 			to_chat(user, span_warning("It's out of juice."))
@@ -160,6 +177,8 @@
 		user.visible_message(span_warning("[user] flicks [src] on."))
 		on = TRUE
 		charge--
+		force = 6
+		force_wielded = 6
 	playsound(user, pick('sound/items/stunmace_toggle (1).ogg','sound/items/stunmace_toggle (2).ogg','sound/items/stunmace_toggle (3).ogg'), 100, TRUE)
 	if(user.a_intent)
 		var/datum/intent/I = user.a_intent
@@ -177,6 +196,8 @@
 	if(charge <= 0)
 		on = FALSE
 		charge = 0
+		force = 25
+		force_wielded = 25
 		update_icon()
 		var/mob/user = loc
 		if(istype(user))
@@ -193,6 +214,8 @@
 			user.electrocute_act(5, src)
 		on = FALSE
 		charge = 0
+		force = 25
+		force_wielded = 25
 		update_icon()
 		playsound(src, pick('sound/items/stunmace_toggle (1).ogg','sound/items/stunmace_toggle (2).ogg','sound/items/stunmace_toggle (3).ogg'), 100, TRUE)
 
@@ -217,7 +240,7 @@
 	wdefense = 4
 	wbalance = 1
 	thrown_bclass = BCLASS_CUT
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 
 /datum/intent/katar

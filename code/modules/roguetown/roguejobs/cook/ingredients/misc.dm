@@ -1,3 +1,4 @@
+/*                      feel free to delete if you want it cleaner. decpreciated old food not Neu food here.
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins
 	name = "raisins"
@@ -207,3 +208,4 @@
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	w_class = WEIGHT_CLASS_SMALL
+*/

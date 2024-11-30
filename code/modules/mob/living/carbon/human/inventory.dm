@@ -119,7 +119,6 @@
 			update_inv_belt()
 		if(SLOT_RING)
 			wear_ring = I
-			sec_hud_set_ID()
 			update_inv_wear_id()
 		if(SLOT_WRISTS)
 
@@ -304,7 +303,6 @@
 			update_inv_belt()
 	else if(I == wear_ring)
 		wear_ring = null
-		sec_hud_set_ID()
 		if(!QDELETED(src))
 			update_inv_wear_id()
 	else if(I == wear_wrists)
@@ -405,16 +403,16 @@
 	for(var/obj/item/I in held_items)
 		qdel(I)
 
-/mob/living/carbon/human/proc/smart_equipbag() // take most recent item out of bag or place held item in bag
+/mob/living/carbon/human/proc/smart_equipbag(slot_id) // take most recent item out of bag or place held item in bag
 	if(incapacitated())
 		return
 	var/obj/item/thing = get_active_held_item()
-	var/obj/item/equipped_back = get_item_by_slot(SLOT_BACK)
+	var/obj/item/equipped_back = get_item_by_slot(slot_id)
 	if(!equipped_back) // We also let you equip a backpack like this
 		if(!thing)
 			to_chat(src, span_warning("I have no backpack to take something out of!"))
 			return
-		if(equip_to_slot_if_possible(thing, SLOT_BACK))
+		if(equip_to_slot_if_possible(thing, slot_id))
 			update_inv_hands()
 		return
 	if(!SEND_SIGNAL(equipped_back, COMSIG_CONTAINS_STORAGE)) // not a storage item

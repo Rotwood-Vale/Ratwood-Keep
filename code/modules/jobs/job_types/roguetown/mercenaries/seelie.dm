@@ -1,4 +1,4 @@
-/datum/job/roguetown/mercenary/seelie
+/datum/job/roguetown/seelie
 	title = "Town Seelie"
 	flag = SEELIE
 	department_flag = MERCENARIES
@@ -8,13 +8,13 @@
 	allowed_races = list(/datum/species/seelie,)
 	allowed_ages = ALL_AGES_LIST
 	tutorial = "You are a fae sprite that came into existance around this town, either recently or long ago. Perhaps you support people in their trade and craft, or you may be a disruptive nuisance that plagues the town. Either way, your miriad of mysterious spells and abilites will support you in your endeavours."
-	outfit = /datum/outfit/job/roguetown/mercenary/seelie
+	outfit = /datum/outfit/job/roguetown/seelie
 	display_order = JDO_SEELIE
-	min_pq = 30
+	min_pq = 20
 	max_pq = null
 	give_bank_account = FALSE
 
-/datum/outfit/job/roguetown/mercenary/seelie/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/seelie/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/roguehood/mage
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
@@ -28,7 +28,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(0,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, pick(0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing , 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
@@ -38,3 +38,4 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell)

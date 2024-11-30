@@ -24,10 +24,6 @@
 	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 1)
 	foodtype = GRAIN | VEGETABLES | DAIRY
 
-/obj/item/reagent_containers/food/snacks/pizza/margherita/robo/Initialize()
-	bonus_reagents += list(/datum/reagent/nanomachines = 70)
-	return ..()
-
 /obj/item/reagent_containers/food/snacks/pizzaslice/margherita
 	name = "margherita slice"
 	desc = ""

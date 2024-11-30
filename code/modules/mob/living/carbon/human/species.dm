@@ -96,6 +96,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//Breathing!
 	var/obj/item/organ/lungs/mutantlungs = null
 	var/breathid = "o2"
+
 	var/override_float = FALSE
 
 	//Bitflag that controls what in game ways can select this species as a spawnable source
@@ -141,20 +142,20 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	)
 
 	var/list/specstats = list(
-		"strength" = 0, 
-		"perception" = 0, 
-		"intelligence" = 0, 
-		"constitution" = 0, 
-		"endurance" = 0, 
-		"speed" = 0, 
+		"strength" = 0,
+		"perception" = 0,
+		"intelligence" = 0,
+		"constitution" = 0,
+		"endurance" = 0,
+		"speed" = 0,
 		"fortune" = 0
 		)
 	var/list/specstats_m = list(
-		"constitution" = 1, 
+		"constitution" = 1,
 		"intelligence" = -1,
 	)
 	var/list/specstats_f = list(
-		"strength" = -1, 
+		"strength" = -1,
 		"speed" = 1,
 	)
 	var/list/specskills
@@ -172,7 +173,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/body_markings
 	var/list/languages = list(/datum/language/common)
 	/// Some species have less than standard gender locks
-	var/gender_swapping = FALSE 
+	var/gender_swapping = FALSE
 	var/stress_examine = FALSE
 	var/stress_desc = null
 
@@ -332,7 +333,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(organ.slot in slots_to_iterate)
 			continue
 		organ.Remove(C, TRUE)
-		QDEL_NULL(organ)
+		qdel(organ)
 	var/list/source_key_list = color_key_source_list_from_carbon(C)
 	for(var/slot in slots_to_iterate)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
@@ -485,7 +486,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(pref_load)
 		pref_load.apply_customizers_to_character(C)
 		pref_load.apply_descriptors(C)
-	
+
 	for(var/language_type in languages)
 		C.grant_language(language_type)
 
@@ -522,7 +523,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	for(var/language_type in languages)
 		C.remove_language(language_type)
-	
+
 	// Clear organ DNA since it wont match as we're changing the species
 	C.dna.organ_dna = list()
 
@@ -607,7 +608,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return FALSE
 
 	var/is_nudist = HAS_TRAIT(H, TRAIT_NUDIST)
-	var/is_retarded = HAS_TRAIT(H, TRAIT_RETARD_ANATOMY)
+	var/is_inhumen = HAS_TRAIT(H, TRAIT_INHUMEN_ANATOMY)
 	var/num_arms = H.get_num_arms(FALSE)
 	var/num_legs = H.get_num_legs(FALSE)
 
@@ -619,7 +620,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(SLOT_WEAR_MASK)
 			if(H.wear_mask)
 				return FALSE
-			if(is_retarded)
+			if(is_inhumen)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_MASK))
 				return FALSE
@@ -696,7 +697,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(SLOT_SHOES)
 			if(H.shoes)
 				return FALSE
-			if(is_nudist || is_retarded)
+			if(is_nudist || is_inhumen)
 				return FALSE
 			if( !(I.slot_flags & ITEM_SLOT_SHOES) )
 				return FALSE
@@ -732,7 +733,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(SLOT_HEAD)
 			if(H.head)
 				return FALSE
-			if(is_retarded)
+			if(is_inhumen)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_HEAD))
 				return FALSE
@@ -852,8 +853,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				if(!disable_warning)
 					to_chat(H, span_warning("The [I.name] is too big to attach!")) //should be src?
 				return FALSE
-			if( istype(I, /obj/item/pda) || istype(I, /obj/item/pen) || is_type_in_list(I, H.wear_armor.allowed) )
-				return TRUE
 			return FALSE
 		if(SLOT_HANDCUFFED)
 			if(H.handcuffed)
@@ -1151,6 +1150,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				user.visible_message(span_warning("[user] stole [target]'s [I.name]!"),
 								span_notice("I stole [target]'s [I.name]!"), null, null, target)
 				to_chat(target, span_danger("[user] stole my [I.name]!"))*/
+		var/def_zone = check_zone(user.zone_selected)
+		var/obj/item/bodypart/affecting = target.get_bodypart(def_zone)
+		for(var/obj/item/embedded in affecting.embedded_objects)
+			target.grabbedby(user, 1, item_override = embedded)
+			return TRUE
 		target.grabbedby(user)
 		return TRUE
 
@@ -1219,7 +1223,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!target.lying_attack_check(user))
 			return 0
 
-		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = user.used_intent.blade_class)
+		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = user.used_intent.blade_class, damage = damage)
 
 		target.lastattacker = user.real_name
 		if(target.mind)
@@ -1427,8 +1431,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.mind.attackedme[user.real_name] = world.time
 			var/selzone = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
-			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
 			var/damage = user.get_punch_dmg() * 1.4
+			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT, damage = damage)
 			target.next_attack_msg.Cut()
 			var/nodmg = FALSE
 			if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
@@ -1600,7 +1604,21 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //	var/armor_block = H.run_armor_check(affecting, "I.d_type", span_notice("My armor has protected my [hit_area]!"), span_warning("My armor has softened a hit to my [hit_area]!"),pen)
 
 	var/Iforce = get_complex_damage(I, user) //to avoid runtimes on the forcesay checks at the bottom. Some items might delete themselves if you drop them. (stunning yourself, ninja swords)
-	var/armor_block = H.run_armor_check(selzone, I.d_type, "", "",pen, damage = Iforce, blade_dulling=user.used_intent.blade_class)
+
+	var/blade_class = user.used_intent?.blade_class
+	if(get_dir(user, H) == H.dir && H.pulledby == user)							//Check for Assassination
+		if(I.can_assin && user.used_intent.ican_assin)
+			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))		//Skill check, 15-95%
+				blade_class = BCLASS_ASSASSIN
+				pen = 100
+
+	if(!get_dist(user, H) && H.pulledby == user)								//Check for Coup de Grace
+		if(I.can_cdg && user.used_intent.ican_cdg)
+			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))		//Skill check, 15-95%
+				blade_class = BCLASS_ASSASSIN
+				pen = 100
+
+	var/armor_block = H.run_armor_check(selzone, I.d_type, "", "",pen, damage = Iforce, blade_dulling=blade_class)
 
 	var/nodmg = FALSE
 
@@ -1615,7 +1633,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(I)
 				I.take_damage(1, BRUTE, I.d_type)
 		if(!nodmg)
-			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(user.used_intent.blade_class, (Iforce * weakness) * ((100-(armor_block+armor))/100), user, selzone, crit_message = TRUE)
+			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(blade_class, (Iforce * weakness) * ((100-(armor_block+armor))/100), user, selzone, crit_message = TRUE)
 			if(should_embed_weapon(crit_wound, I))
 				var/can_impale = TRUE
 				if(!affecting)
@@ -1640,7 +1658,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//dismemberment
 	var/bloody = 0
 	var/probability = I.get_dismemberment_chance(affecting, user)
-	if(affecting.brute_dam && prob(probability) && affecting.dismember(I.damtype, user.used_intent?.blade_class, user, selzone))
+	if(affecting.brute_dam && prob(probability) && affecting.dismember(I.damtype, blade_class, user, selzone))
 		bloody = 1
 		I.add_mob_blood(H)
 		user.update_inv_hands()
@@ -1662,7 +1680,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		switch(hit_area)
 			if(BODY_ZONE_HEAD)
-				if(!I.get_sharpness() && armor_block < 50)
+//				if(!I.get_sharpness() && armor_block < 50)
 //					if(prob(I.force))
 //						H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
 //						if(H.stat == CONSCIOUS)
@@ -1673,11 +1691,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //							H.gain_trauma(/datum/brain_trauma/mild/concussion)
 //					else
 //						H.adjustOrganLoss(ORGAN_SLOT_BRAIN, I.force * 0.2)
-
-					if(H.mind && H.stat == CONSCIOUS && H != user && prob(I.force + ((100 - H.health) * 0.5))) // rev deconversion through blunt trauma.
-						var/datum/antagonist/rev/rev = H.mind.has_antag_datum(/datum/antagonist/rev)
-						if(rev)
-							rev.remove_revolutionary(FALSE, user)
 
 				if(bloody)	//Apply blood
 					if(H.wear_mask)
@@ -1829,8 +1842,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/handle_environment(datum/gas_mixture/environment, mob/living/carbon/human/H)
 	if(!environment)
-		return
-	if(istype(H.loc, /obj/machinery/atmospherics/components/unary/cryo_cell))
 		return
 
 	var/loc_temp = H.get_temperature(environment)
@@ -2062,6 +2073,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			//Target.ForceContractDisease(Disease)	//Disease removed in favor of simply stopping the heart via heart attack
 			Target.set_heartattack(TRUE)
 			Target.visible_message(span_danger("[Target] clutches at [Target.p_their()] chest as if [Target.p_their()] heart stopped!"))
+			Ripper.log_message("[key_name(Ripper)] ripped [key_name(Target)]'s wings.")
+			Target.log_message("[key_name(Target)]'s wings got ripped by [key_name(Ripper)].")
 
 			//CURSE OF THE SEELIE
 			if(!isdead(Target))

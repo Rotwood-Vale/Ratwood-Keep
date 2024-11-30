@@ -268,11 +268,7 @@
 /datum/gas_reaction/fusion/react(datum/gas_mixture/air, datum/holder)
 	var/list/cached_gases = air.gases
 	var/turf/open/location
-	if (istype(holder,/datum/pipeline)) //Find the tile the reaction is occuring on, or a random part of the network if it's a pipenet.
-		var/datum/pipeline/fusion_pipenet = holder
-		location = get_turf(pick(fusion_pipenet.members))
-	else
-		location = get_turf(holder)
+	location = get_turf(holder)
 	if(!air.analyzer_results)
 		air.analyzer_results = new
 	var/list/cached_scan_results = air.analyzer_results
@@ -397,8 +393,6 @@
 	cached_gases[/datum/gas/nitrous_oxide][MOLES] -= reaction_efficency
 	cached_gases[/datum/gas/plasma][MOLES]  -= 2*reaction_efficency
 
-	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, min((reaction_efficency**2)*BZ_RESEARCH_SCALE),BZ_RESEARCH_MAX_AMOUNT)
-
 	if(energy_released > 0)
 		var/new_heat_capacity = air.heat_capacity()
 		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
@@ -432,7 +426,6 @@
 	cached_gases[/datum/gas/tritium][MOLES] -= heat_scale
 	cached_gases[/datum/gas/plasma][MOLES] -= heat_scale
 	cached_gases[/datum/gas/nitryl][MOLES] -= heat_scale
-	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, STIMULUM_RESEARCH_AMOUNT*max(stim_energy_change,0))
 	if(stim_energy_change)
 		var/new_heat_capacity = air.heat_capacity()
 		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
@@ -461,7 +454,6 @@
 	cached_gases[/datum/gas/tritium][MOLES] -= 10*nob_formed
 	cached_gases[/datum/gas/nitrogen][MOLES] -= 20*nob_formed
 	cached_gases[/datum/gas/hypernoblium][MOLES]+= nob_formed
-	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, nob_formed*NOBLIUM_RESEARCH_AMOUNT)
 
 	if (nob_formed)
 		var/new_heat_capacity = air.heat_capacity()
@@ -494,7 +486,6 @@
 
 	//Possibly burning a bit of organic matter through maillard reaction, so a *tiny* bit more heat would be understandable
 	air.temperature += cleaned_air * 0.002
-	SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, cleaned_air*MIASMA_RESEARCH_AMOUNT)//Turns out the burning of miasma is kinda interesting to scientists
 
 /datum/gas_reaction/stim_ball
 	priority = 7
@@ -513,11 +504,7 @@
 	var/list/cached_gases = air.gases
 	var/turf/open/location
 	var/old_heat_capacity = air.heat_capacity()
-	if(istype(holder,/datum/pipeline)) //Find the tile the reaction is occuring on, or a random part of the network if it's a pipenet.
-		var/datum/pipeline/pipenet = holder
-		location = get_turf(pick(pipenet.members))
-	else
-		location = get_turf(holder)
+	location = get_turf(holder)
 	air.assert_gases(/datum/gas/water_vapor,/datum/gas/nitryl,/datum/gas/carbon_dioxide,/datum/gas/nitrogen)
 	var/ball_shot_angle = 180*cos(cached_gases[/datum/gas/water_vapor][MOLES]/cached_gases[/datum/gas/nitryl][MOLES])+180
 	var/stim_used = min(STIM_BALL_GAS_AMOUNT/cached_gases[/datum/gas/plasma][MOLES],cached_gases[/datum/gas/stimulum][MOLES])

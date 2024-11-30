@@ -32,12 +32,12 @@
 	var/windowed = FALSE
 	var/base_state = null
 
-	var/locked = FALSE
+	locked = FALSE
 	var/last_bump = null
 	var/brokenstate = 0
 	var/keylock = FALSE
-	var/lockhash = 0
-	var/lockid = null
+	lockhash = 0
+	lockid = null
 	var/lockbroken = 0
 	var/locksound = 'sound/foley/doors/woodlock.ogg'
 	var/unlocksound = 'sound/foley/doors/woodlock.ogg'
@@ -100,11 +100,11 @@
 	else
 		resident_key_amount = 1
 	for(var/i in 1 to resident_key_amount)
-		var/obj/item/roguekey/key
+		var/obj/item/key/key
 		if(resident_key_type)
 			key = new resident_key_type(get_turf(human))
 		else
-			key = new /obj/item/roguekey(get_turf(human))
+			key = new /obj/item/key(get_turf(human))
 		key.lockid = lockid
 		key.lockhash = lockhash
 		human.put_in_hands(key)
@@ -234,12 +234,6 @@
 					else
 						addtimer(CALLBACK(src, PROC_REF(Close), FALSE), 25)
 
-/obj/structure/mineral_door/attack_ai(mob/user) //those aren't machinery, they're just big fucking slabs of a mineral
-	if(isAI(user)) //so the AI can't open it
-		return
-	else if(iscyborg(user)) //but cyborgs can
-		if(get_dist(user,src) <= 1) //not remotely though
-			return TryToSwitchState(user)
 
 /obj/structure/mineral_door/attack_paw(mob/user)
 	return attack_hand(user)
@@ -290,8 +284,6 @@
 						SwitchState()
 			else
 				SwitchState()
-	else if(ismecha(user))
-		SwitchState()
 	return TRUE
 
 /obj/structure/mineral_door/proc/SwitchState(silent = FALSE)
@@ -367,7 +359,7 @@
 
 /obj/structure/mineral_door/attackby(obj/item/I, mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
-	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/keyring))
+	if(istype(I, /obj/item/key) || istype(I, /obj/item/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
 			rattle()
@@ -429,7 +421,7 @@
 /obj/structure/mineral_door/attack_right(mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
-	if(istype(item, /obj/item/roguekey) || istype(item, /obj/item/keyring))
+	if(istype(item, /obj/item/key) || istype(item, /obj/item/keyring))
 		if(locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the left."))
 			rattle()
@@ -451,7 +443,7 @@
 		if(!R.keys.len)
 			return
 		var/list/keysy = shuffle(R.keys.Copy())
-		for(var/obj/item/roguekey/K in keysy)
+		for(var/obj/item/key/K in keysy)
 			if(user.cmode)
 				if(!do_after(user, 10, TRUE, src))
 					break
@@ -463,7 +455,7 @@
 					rattle()
 		return
 	else
-		var/obj/item/roguekey/K = I
+		var/obj/item/key/K = I
 		if(K.lockhash == lockhash)
 			lock_toggle(user)
 			return
@@ -723,6 +715,7 @@
 	repair_cost_first = /obj/item/grown/log/tree/small
 	repair_cost_second = /obj/item/grown/log/tree/small	
 	repair_skill = /datum/skill/craft/carpentry
+	metalizer_result = /obj/structure/mineral_door/wood/donjon
 
 /obj/structure/mineral_door/wood/Initialize()
 	if(icon_state =="woodhandle")
@@ -733,7 +726,7 @@
 				icon_state = "wcr"
 	if(over_state)
 		add_overlay(mutable_appearance(icon, "[over_state]", ABOVE_MOB_LAYER))
-	..()
+	. = ..()
 
 /obj/structure/mineral_door/wood/blue
 	icon_state = "wcb"
@@ -793,11 +786,13 @@
 	windowed = TRUE
 	desc = ""
 	over_state = "woodwindowopen"
+	metalizer_result = null
 
 /obj/structure/mineral_door/wood/fancywood
 	icon_state = "fancy_wood"
 	desc = ""
 	over_state = "fancy_woodopen"
+	metalizer_result = null
 
 /obj/structure/mineral_door/wood/deadbolt
 	desc = "This door comes with a deadbolt."
@@ -816,7 +811,7 @@
 	lockdir = dir
 
 /obj/structure/mineral_door/wood/deadbolt/Initialize()
-	..()
+	. = ..()
 	lockdir = dir
 	icon_state = base_state
 
@@ -850,6 +845,8 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")		
 	repair_cost_second = /obj/item/ingot/iron
 	repair_skill = /datum/skill/craft/carpentry
+	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/mineral_door/wood/donjon/stone
 	desc = "stone door"
@@ -862,6 +859,7 @@
 	repair_cost_first = /obj/item/natural/stone
 	repair_cost_second = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
+	smeltresult = null
 
 /obj/structure/mineral_door/wood/donjon/stone/view_toggle(mob/user)
 	return
@@ -869,7 +867,7 @@
 /obj/structure/mineral_door/wood/donjon/Initialize()
 	viewportdir = dir
 	icon_state = base_state
-	..()
+	. = ..()
 
 /obj/structure/mineral_door/wood/donjon/attack_right(mob/user)
 	if(user.get_active_held_item())
@@ -932,7 +930,7 @@
 	icon_state = "barsold"
 
 /obj/structure/mineral_door/bars/Initialize()
-	..()
+	. = ..()
 	add_overlay(mutable_appearance(icon, "barsopen", ABOVE_MOB_LAYER))
 
 
@@ -944,7 +942,7 @@
 	locked = TRUE
 	keylock = TRUE
 	grant_resident_key = TRUE
-	resident_key_type = /obj/item/roguekey/townie
+	resident_key_type = /obj/item/key/townie
 	resident_role = /datum/job/roguetown/villager
 	lockid = null //Will be randomized
 
@@ -977,10 +975,6 @@
 	resident_advclass = /datum/advclass/farmer
 	lockid = "towner_farmer"
 
-/obj/structure/mineral_door/wood/towner/seamstress
-	resident_advclass = /datum/advclass/seamstress
-	lockid = "towner_seamstress"
-
 /obj/structure/mineral_door/wood/towner/towndoctor
 	resident_advclass = /datum/advclass/towndoctor
 	lockid = "towner_towndoctor"
@@ -992,3 +986,15 @@
 /obj/structure/mineral_door/wood/towner/fisher
 	resident_advclass = /datum/advclass/fisher
 	lockid = "towner_fisher"
+
+/obj/structure/mineral_door/wood/deadbolt/shutter
+	name = "serving hatch"
+	desc = "Can be locked from the inside."
+	icon_state = "serving"
+	base_state = "serving"
+	max_integrity = 250
+	over_state = "servingopen"
+	openSound = 'modular/Neu_Food/sound/blindsopen.ogg'
+	closeSound = 'modular/Neu_Food/sound/blindsclose.ogg'
+	dir = NORTH
+	locked = TRUE

@@ -29,55 +29,6 @@
 	new/obj/structure/fluff/empty_terrarium(get_turf(src))
 	return ..()
 
-//Ash walker eggs: Spawns in ash walker dens in lavaland. Ghosts become unbreathing lizards that worship the Necropolis and are advised to retrieve corpses to create more ash walkers.
-
-/obj/effect/mob_spawn/human/ash_walker
-	name = "ash walker egg"
-	desc = ""
-	mob_name = "an ash walker"
-	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
-	icon_state = "large_egg"
-	mob_species = /datum/species/lizard/ashwalker
-	outfit = /datum/outfit/ashwalker
-	roundstart = FALSE
-	death = FALSE
-	anchored = FALSE
-	move_resist = MOVE_FORCE_NORMAL
-	density = FALSE
-	flavour_text = "<span class='big bold'>I are an ash walker.</span><b> Your tribe worships <span class='danger'>the Necropolis</span>. The wastes are sacred ground, its monsters a blessed bounty. \
-	You have seen lights in the distance... they foreshadow the arrival of outsiders that seek to tear apart the Necropolis and its domain. Fresh sacrifices for my nest.</b>"
-	assignedrole = "Ash Walker"
-	var/datum/team/ashwalkers/team
-
-/obj/effect/mob_spawn/human/ash_walker/special(mob/living/new_spawn)
-	new_spawn.fully_replace_character_name(null,random_unique_lizard_name(gender))
-	to_chat(new_spawn, "<b>Drag the corpses of men and beasts to my nest. It will absorb them to create more of my kind. Don't leave my nest undefended, protect it with my life. Glory to the Necropolis!</b>")
-
-	new_spawn.grant_language(/datum/language/draconic)
-	var/datum/language_holder/holder = new_spawn.get_language_holder()
-	holder.selected_default_language = /datum/language/draconic
-
-	new_spawn.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
-
-	if(ishuman(new_spawn))
-		var/mob/living/carbon/human/H = new_spawn
-		H.underwear = "Nude"
-		H.update_body()
-
-/obj/effect/mob_spawn/human/ash_walker/Initialize(mapload, datum/team/ashwalkers/ashteam)
-	. = ..()
-	var/area/A = get_area(src)
-	team = ashteam
-	if(A)
-		notify_ghosts("An ash walker egg is ready to hatch in \the [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_ASHWALKER)
-
-/datum/outfit/ashwalker
-	name ="Ashwalker"
-	head = /obj/item/clothing/head/helmet/gladiator
-	uniform = /obj/item/clothing/under/costume/gladiator/ash_walker
-
-
-//Timeless prisons: Spawns in Wish Granter prisons in lavaland. Ghosts become age-old users of the Wish Granter and are advised to seek repentance for their past.
 /obj/effect/mob_spawn/human/exile
 	name = "timeless prison"
 	desc = ""
@@ -104,7 +55,7 @@
 		if(2)
 			to_chat(new_spawn, "<b>I wished for unending wealth, but no amount of money was worth this existence. Maybe charity might redeem my soul?</b>")
 		if(3)
-			to_chat(new_spawn, "<b>I wished for power. Little good it did you, cast out of the light. You are the [gender == MALE ? "king" : "queen"] of a hell that holds no subjects. You feel only remorse.</b>")
+			to_chat(new_spawn, "<b>I wished for power. Little good it did you, cast out of the light. You are the [gender == MALE ? "lord" : "lady"] of a hell that holds no subjects. You feel only remorse.</b>")
 		if(4)
 			to_chat(new_spawn, "<b>I wished for immortality, even as my friends lay dying behind you. No matter how many times you cast myself into the lava, you awaken in this room again within a few days. There is no escape.</b>")
 
@@ -314,7 +265,6 @@
 	name = "Hotel Staff"
 	uniform = /obj/item/clothing/under/misc/assistantformal
 	shoes = /obj/item/clothing/shoes/laceup
-	r_pocket = /obj/item/radio/off
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/mindshield)
 
@@ -337,7 +287,7 @@
 
 /obj/effect/mob_spawn/human/hotel_staff/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
-	..()
+	return ..()
 
 /obj/effect/mob_spawn/human/demonic_friend
 	name = "Essence of friendship"
@@ -373,11 +323,6 @@
 		spell.friend = L
 		spell.charge_counter = spell.charge_max
 		L.mind.hasSoul = FALSE
-		var/mob/living/carbon/human/H = L
-		var/obj/item/worn = H.wear_ring
-		var/obj/item/card/id/id = worn.GetID()
-		id.registered_name = L.real_name
-		id.update_label()
 	else
 		to_chat(L, span_danger("My owner is already dead! You will soon perish."))
 		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, dust), 150)) //Give em a few seconds as a mercy.
@@ -386,10 +331,8 @@
 	name = "Demonic Friend"
 	uniform = /obj/item/clothing/under/misc/assistantformal
 	shoes = /obj/item/clothing/shoes/laceup
-	r_pocket = /obj/item/radio/off
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/mindshield) //No revolutionaries, he's MY friend.
-	id = /obj/item/card/id
 
 /obj/effect/mob_spawn/human/syndicate
 	name = "Syndicate Operative"
@@ -405,10 +348,8 @@
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset/syndicate/alt
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate
 
 /datum/outfit/syndicate_empty/post_equip(mob/living/carbon/human/H)
 	H.faction |= ROLE_SYNDICATE
@@ -454,7 +395,6 @@
 
 /datum/outfit/syndicate_empty/SBC/assault/captain
 	name = "Syndicate Battlecruiser Captain"
-	l_pocket = /obj/item/melee/transforming/energy/sword/saber/red
 	r_pocket = /obj/item/melee/classic_baton/telescopic
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	suit_store = /obj/item/gun/ballistic/revolver/mateba
@@ -480,9 +420,7 @@
 	Work as a team with my fellow survivors and do not abandon them.</b>"
 	uniform = /obj/item/clothing/under/rank/security/officer
 	shoes = /obj/item/clothing/shoes/jackboots
-	id = /obj/item/card/id/away/old/sec
 	r_pocket = /obj/item/restraints/handcuffs
-	l_pocket = /obj/item/assembly/flash/handheld
 	assignedrole = "Ancient Crew"
 
 /obj/effect/mob_spawn/human/oldsec/Destroy()
@@ -505,7 +443,6 @@
 	Work as a team with my fellow survivors and do not abandon them.</b>"
 	uniform = /obj/item/clothing/under/rank/engineering/engineer
 	shoes = /obj/item/clothing/shoes/workboots
-	id = /obj/item/card/id/away/old/eng
 	gloves = /obj/item/clothing/gloves/color/fyellow/old
 	l_pocket = /obj/item/tank/internals/emergency_oxygen
 	assignedrole = "Ancient Crew"
@@ -530,48 +467,9 @@
 	Work as a team with my fellow survivors and do not abandon them.</b>"
 	uniform = /obj/item/clothing/under/rank/rnd/scientist
 	shoes = /obj/item/clothing/shoes/laceup
-	id = /obj/item/card/id/away/old/sci
 	l_pocket = /obj/item/stack/medical/bruise_pack
 	assignedrole = "Ancient Crew"
 
 /obj/effect/mob_spawn/human/oldsci/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
-
-/obj/effect/mob_spawn/human/pirate
-	name = "space pirate sleeper"
-	desc = ""
-	random = TRUE
-	icon = 'icons/obj/machines/sleeper.dmi'
-	icon_state = "sleeper"
-	mob_name = "a space pirate"
-	mob_species = /datum/species/skeleton
-	outfit = /datum/outfit/pirate/space
-	roundstart = FALSE
-	death = FALSE
-	anchored = TRUE
-	density = FALSE
-	show_flavour = FALSE //Flavour only exists for spawners menu
-	flavour_text = "<span class='big bold'>I are a space pirate.</span><b> The station refused to pay for my protection, protect the ship, siphon the credits from the station and raid it for even more loot.</b>"
-	assignedrole = "Space Pirate"
-	var/rank = "Mate"
-
-/obj/effect/mob_spawn/human/pirate/special(mob/living/new_spawn)
-	new_spawn.fully_replace_character_name(new_spawn.real_name,generate_pirate_name())
-	new_spawn.mind.add_antag_datum(/datum/antagonist/pirate)
-
-/obj/effect/mob_spawn/human/pirate/proc/generate_pirate_name()
-	var/beggings = strings(PIRATE_NAMES_FILE, "beginnings")
-	var/endings = strings(PIRATE_NAMES_FILE, "endings")
-	return "[rank] [pick(beggings)][pick(endings)]"
-
-/obj/effect/mob_spawn/human/pirate/Destroy()
-	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
-	return ..()
-
-/obj/effect/mob_spawn/human/pirate/captain
-	rank = "Captain"
-	outfit = /datum/outfit/pirate/space/captain
-
-/obj/effect/mob_spawn/human/pirate/gunner
-	rank = "Gunner"

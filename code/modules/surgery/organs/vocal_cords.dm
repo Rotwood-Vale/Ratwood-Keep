@@ -129,10 +129,7 @@
 
 	var/log_message = uppertext(message)
 	if(!span_list || !span_list.len)
-		if(iscultist(user))
-			span_list = list("narsiesmall")
-		else
-			span_list = list()
+		span_list = list()
 
 	user.say(message, spans = span_list, sanitize = FALSE)
 
@@ -164,10 +161,6 @@
 		//Why are you speaking
 		if(user.mind.assigned_role == "Mime")
 			power_multiplier *= 0.5
-
-	//Cultists are closer to their gods and are more powerful, but they'll give themselves away
-	if(iscultist(user))
-		power_multiplier *= 2
 
 	//Try to check if the speaker specified a name or a job to focus on
 	var/list/specific_listeners = list()
@@ -366,7 +359,7 @@
 				text = devilinfo.truename
 			else
 				text = L.real_name
-			addtimer(CALLBACK(L, /atom/movable/, text), 5 * i)
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom/movable, say), text), 5 * i)
 			i++
 
 	//SAY MY NAME
@@ -374,7 +367,7 @@
 		cooldown = COOLDOWN_MEME
 		for(var/V in listeners)
 			var/mob/living/L = V
-			addtimer(CALLBACK(L, /atom/movable/, user.name), 5 * i)
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom/movable, say), user.name), 5 * i)
 			i++
 
 	//KNOCK KNOCK
@@ -382,14 +375,8 @@
 		cooldown = COOLDOWN_MEME
 		for(var/V in listeners)
 			var/mob/living/L = V
-			addtimer(CALLBACK(L, /atom/movable/, "Who's there?"), 5 * i)
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom/movable, say), "Who's there?"), 5 * i)
 			i++
-
-	//STATE LAWS
-	else if((findtext(message, statelaws_words)))
-		cooldown = COOLDOWN_STUN
-		for(var/mob/living/silicon/S in listeners)
-			S.statelaws(force = 1)
 
 	//MOVE
 	else if((findtext(message, move_words)))
@@ -474,7 +461,7 @@
 		cooldown = COOLDOWN_MEME
 		for(var/V in listeners)
 			var/mob/living/L = V
-			addtimer(CALLBACK(L, /atom/movable/, pick_list_replacements(BRAIN_DAMAGE_FILE, "brain_damage")), 5 * i)
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom/movable, say), pick_list_replacements(BRAIN_DAMAGE_FILE, "brain_damage")), 5 * i)
 			i++
 
 	//GET UP
@@ -516,7 +503,7 @@
 		for(var/V in listeners)
 			var/mob/living/L = V
 			if(prob(25))
-				addtimer(CALLBACK(L, /atom/movable/, "HOW HIGH?!!"), 5 * i)
+				addtimer(CALLBACK(L, TYPE_PROC_REF(/atom/movable, say), "HOW HIGH?!!"), 5 * i)
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living, emote), "jump"), 5 * i)
 			i++
 

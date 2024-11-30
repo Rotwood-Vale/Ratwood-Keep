@@ -93,7 +93,7 @@
 	return
 
 /obj/item/clothing/cloak/tabard/knight/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -109,7 +109,7 @@
 	boobed_detail = FALSE
 
 /obj/item/clothing/cloak/tabard/crusader/Initialize()
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/clothing/cloak/tabard/crusader/attack_right(mob/user)
@@ -145,17 +145,9 @@
 	color = CLOTHING_RED
 	detail_color = CLOTHING_WHITE
 
-/obj/item/clothing/cloak/tabard/crusader/astrata
-	color = "#9B7538"
-	detail_color = CLOTHING_WHITE
-
 /obj/item/clothing/cloak/tabard/crusader/dendor
 	color = "#4B5637"
 	detail_color = "#3D1D1C"
-
-/obj/item/clothing/cloak/tabard/crusader/necra
-	color = "#222223"
-	detail_color = "#CACBC5"
 
 /obj/item/clothing/cloak/tabard/crusader/pestra
 	color = CLOTHING_WHITE
@@ -217,7 +209,7 @@
 		L.update_inv_cloak()
 
 /obj/item/clothing/cloak/tabard/knight/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -243,6 +235,11 @@
 /obj/item/clothing/cloak/tabard/knight/guard/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
+
+/obj/item/clothing/cloak/tabard/musketeer
+	detail_tag = "_psy"
+	color = CLOTHING_BLUE
+	detail_color = CLOTHING_WHITE
 
 
 //////////////////////////
@@ -331,7 +328,7 @@
 		L.update_inv_cloak()
 
 /obj/item/clothing/cloak/stabard/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -358,11 +355,12 @@
 	GLOB.lordcolor -= src
 	return ..()
 
-/obj/item/clothing/cloak/stabard/bog
-	name = "bogman tabard"
-	desc = "A tabard worn by those that protect the citizenry from the horrors of the Terrorbog" // THE BOG DESERVES A BETTER DESCRIPTION!
-	color = CLOTHING_GREEN
-	detail_color = CLOTHING_DARK_GREEN
+/obj/item/clothing/cloak/raincloak/vanguard
+	name = "vanguard cloak"
+	desc = "A nightly cloak worn by those that protect the citizenry from what lurks beyond" // THE BOG DESERVES A BETTER DESCRIPTION!
+	color = CLOTHING_VANGUARD
+	detail_color = CLOTHING_VANGUARD_DETAIL
+
 
 /obj/item/clothing/cloak/stabard/grenzelhoft
 	name = "grenzelhoft mercenary tabard"
@@ -381,7 +379,7 @@
 	detail_tag = "_quad"
 
 /obj/item/clothing/cloak/stabard/mercenary/Initialize()
-	..()
+	. = ..()
 	detail_tag = pick("_quad", "_spl", "_box", "_dim")
 	color = clothing_color2hex(pick(CLOTHING_COLOR_NAMES))
 	detail_color = clothing_color2hex(pick(CLOTHING_COLOR_NAMES))
@@ -480,7 +478,7 @@
 
 
 /obj/item/clothing/cloak/stabard/surcoat/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -533,7 +531,7 @@
 		L.update_inv_cloak()
 
 /obj/item/clothing/cloak/lordcloak/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -583,6 +581,7 @@
 	body_parts_covered = CHEST|GROIN
 	armor = list("blunt" = 25, "slash" = 5, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 24, "acid" = 0)
 	boobed = TRUE
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/cloak/apron/brown
 	color = CLOTHING_BROWN
@@ -643,6 +642,7 @@
 	inhand_mod = TRUE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood
 	toggle_icon_state = FALSE
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/wash_act(clean)
 	. = ..()
@@ -714,6 +714,8 @@
 	icon_state = "furgrey"
 	inhand_mod = FALSE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood/furhood
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/cloak/raincloak/furcloak/crafted/Initialize()
 	. = ..()
@@ -872,6 +874,24 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	flags_inv = null
 	w_class = WEIGHT_CLASS_SMALL
+	salvage_amount = 1
+
+/obj/item/clothing/cloak/half/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 3
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 1
+
+/obj/item/clothing/cloak/half/dropped(mob/living/carbon/human/user)
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		var/list/things = STR.contents()
+		for(var/obj/item/I in things)
+			STR.remove_from_storage(I, get_turf(src))
 
 /obj/item/clothing/cloak/half/brown
 	color = CLOTHING_BROWN
@@ -891,7 +911,7 @@
 	inhand_mod = FALSE
 
 /obj/item/clothing/cloak/half/vet/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -1002,7 +1022,7 @@
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/clothing/shoes/roguetown/boots/armor/blkknight
+/obj/item/clothing/shoes/roguetown/armor/steel/blkknight
 	name = "blacksteel boots"
 	icon_state = "bkboots"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
@@ -1040,7 +1060,7 @@
 		L.update_inv_cloak()
 
 /obj/item/clothing/cloak/stabard/guardhood/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -1066,3 +1086,33 @@
 /obj/item/clothing/cloak/stabard/guardhood/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
+
+///////////////////////////
+///                     ///
+///   TEMPLAR CLOAKS    ///
+///                     ///
+///////////////////////////
+
+/obj/item/clothing/cloak/templar/astratan
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	boobed = FALSE
+	name = "astratan tabard"
+	desc = "The washed out golds of an asratan crusader adorn these fine robes."
+	icon_state = "astratatabard"
+
+/obj/item/clothing/cloak/templar/malummite
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	boobed = FALSE
+	name = "malummite tabard"
+	desc = "Light blacks and greys, with a tinge of red, the everlasting fire of Malum's iron hammer as it strikes."
+	icon_state = "malumtabard"
+
+/obj/item/clothing/cloak/templar/necran
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	boobed = FALSE
+	name = "necran tabard"
+	desc = "Deep dark blacks, swallowing all light as if the night itself."
+	icon_state = "necratabard"

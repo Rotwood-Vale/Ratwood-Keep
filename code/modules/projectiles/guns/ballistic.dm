@@ -87,6 +87,12 @@
 	var/can_be_sawn_off  = FALSE
 	var/verbage = "load"
 
+	/// Damage multiplyer for guns, this will multiply bullet damage by THIS much.
+	var/damfactor = 1
+
+	/// Embed chance that is weapon bound and overides the bullet embed chance
+	var/weapon_embed_chance
+
 /obj/item/gun/ballistic/Initialize()
 	. = ..()
 	if (!spawnwithmagazine)
@@ -284,6 +290,11 @@
 	return FALSE
 
 /obj/item/gun/ballistic/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
+		var/obj/projectile/BB = CB.BB
+		BB.damage = BB.damage * damfactor
+		if(weapon_embed_chance)
+			BB.embedchance = weapon_embed_chance
 	if (sawn_off)
 		bonus_spread += SAWN_OFF_ACC_PENALTY
 	. = ..()
@@ -430,8 +441,7 @@
 #undef BRAINS_BLOWN_THROW_RANGE
 
 GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
-	/obj/item/gun/energy/plasmacutter,
-	/obj/item/melee/transforming/energy,
+
 	)))
 
 ///Handles all the logic of sawing off guns,

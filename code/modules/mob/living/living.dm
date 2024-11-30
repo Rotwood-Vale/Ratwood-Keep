@@ -231,6 +231,7 @@
 	if(!(M.status_flags & CANPUSH))
 		return TRUE
 	if(isliving(M))
+		M.mob_timers[MT_SNEAKATTACK] = world.time //Why shouldn't you know you're walking into someone stealthed? You JUST bumped into them.
 		var/mob/living/L = M
 		if(HAS_TRAIT(L, TRAIT_PUSHIMMUNE))
 			return TRUE
@@ -257,23 +258,6 @@
 		if(!istype(M, /obj/item/clothing))
 			if(prob(I.block_chance*2))
 				return
-
-/mob/living/get_photo_description(obj/item/camera/camera)
-	var/list/mob_details = list()
-	var/list/holding = list()
-	var/len = length(held_items)
-	if(len)
-		for(var/obj/item/I in held_items)
-			if(!holding.len)
-				holding += "They are holding \a [I]"
-			else if(held_items.Find(I) == len)
-				holding += ", and \a [I]."
-			else
-				holding += ", \a [I]"
-	holding += "."
-	mob_details += "You can also see [src] on the photo[health < (maxHealth * 0.75) ? ", looking a bit hurt":""][holding ? ". [holding.Join("")]":"."]."
-	return mob_details.Join("")
-
 //Called when we bump onto an obj
 /mob/living/proc/ObjBump(obj/O)
 	return
@@ -329,6 +313,8 @@
 /mob/living/carbon/proc/kick_attack_check(mob/living/L)
 	if(L == src)
 		return FALSE
+	if(!(src.mobility_flags & MOBILITY_STAND))
+		return TRUE
 	var/list/acceptable = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_R_ARM, BODY_ZONE_CHEST, BODY_ZONE_L_ARM)
 	if( !(check_zone(L.zone_selected) in acceptable) )
 		to_chat(L, span_warning("I can't reach that."))
@@ -494,13 +480,10 @@
 	to_chat(src, span_info("I grab [target]."))
 
 /mob/living/proc/set_pull_offsets(mob/living/M, grab_state = GRAB_PASSIVE)
-	return //rtd fix not updating because no dirchange
-	if(M == src)
-		return
-	if(M.wallpressed)
-		return
 	if(M.buckled)
 		return //don't make them change direction or offset them if they're buckled into something.
+	if(M.dir != turn(get_dir(M,src), 180))
+		M.setDir(get_dir(M, src))
 	var/offset = 0
 	switch(grab_state)
 		if(GRAB_PASSIVE)
@@ -511,24 +494,26 @@
 			offset = GRAB_PIXEL_SHIFT_NECK
 		if(GRAB_KILL)
 			offset = GRAB_PIXEL_SHIFT_NECK
-	M.setDir(get_dir(M, src))
-	switch(M.dir)
+	switch(get_dir(M, src))
 		if(NORTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = offset)
+			M.set_mob_offsets("pulledby", 0, 0+offset)
+			M.layer = MOB_LAYER+0.05
 		if(SOUTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = -offset)
+			M.set_mob_offsets("pulledby", 0, 0-offset)
+			M.layer = MOB_LAYER-0.05
 		if(EAST)
-			if(M.lying == 270) //update the dragged dude's direction if we've turned
-				M.lying = 90
-				M.update_transform() //force a transformation update, otherwise it'll take a few ticks for update_mobility() to do so
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
+			M.set_mob_offsets("pulledby", 0+offset, 0)
+			M.layer = MOB_LAYER
 		if(WEST)
-			if(M.lying == 90)
-				M.lying = 270
-				M.update_transform()
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
+			M.set_mob_offsets("pulledby", 0-offset, 0)
+			M.layer = MOB_LAYER
+
+/mob/living/proc/reset_pull_offsets(mob/living/M, override)
+	if(!override && M.buckled)
+		return
+	M.reset_offsets("pulledby")
+	M.layer = MOB_LAYER
+	//animate(M, pixel_x = 0 , pixel_y = 0, 1)
 
 /mob/living
 	var/list/mob_offsets = list()
@@ -567,6 +552,7 @@
 		if(ismob(pulling))
 			var/mob/living/M = pulling
 			M.reset_offsets("pulledby")
+			reset_pull_offsets(pulling)
 
 		if(forced) //if false, called by the grab item itself, no reason to drop it again
 			if(istype(get_active_held_item(), /obj/item/grabbing))
@@ -684,23 +670,30 @@
 	set category = "IC"
 	set hidden = 1
 	if(stat)
-		return
+		return FALSE
 	if(pulledby)
 		to_chat(src, span_warning("I'm grabbed!"))
-		return
+		return FALSE
 	if(resting)
 		if(isseelie(src))
 			var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
 			if(Wing == null)
 				to_chat(src, span_warning("I can't stand without my wings!"))
-				return
+				return FALSE
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message(span_notice("[src] stands up."))
 			if(move_after(src, 20, target = src))
 				set_resting(FALSE, FALSE)
+				if(resting)
+					src.visible_message(span_warning("[src] tries to stand up."))
+					return FALSE // workaround for broken legs and stuff
+				src.visible_message(span_notice("[src] stands up."))
 				return TRUE
+			else
+				src.visible_message(span_warning("[src] tries to stand up."))
+				return FALSE
 		else
 			src.visible_message(span_warning("[src] tries to stand up."))
+			return FALSE
 
 /mob/living/proc/toggle_rest()
 	set name = "Rest/Stand"
@@ -811,6 +804,9 @@
 		if(mind)
 			if(admin_revive)
 				mind.remove_antag_datum(/datum/antagonist/zombie)
+			else if(mind.funeral && !CONFIG_GET(flag/force_respawn_on_funeral))
+				to_chat(src, span_warning("My funeral rites are undone!"))
+				mind.funeral = FALSE
 			for(var/S in mind.spell_list)
 				var/obj/effect/proc_holder/spell/spell = S
 				spell.updateButtonIcon()
@@ -1129,6 +1125,9 @@
 	var/mob/living/L = pulledby
 	var/combat_modifier = 1
 
+	if(HAS_TRAIT(src, TRAIT_PARALYSIS))//Will stop someone who is paralized from trying to resist
+		to_chat(src, span_warning("I can't move!"))
+		return FALSE
 	if(mind)
 		wrestling_diff += (mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
 	if(L.mind)
@@ -1145,6 +1144,10 @@
 	else if(!cmode && L.cmode)
 		combat_modifier -= 0.3
 
+	for(var/obj/item/grabbing/G in grabbedby)
+		if(G.chokehold == TRUE)
+			combat_modifier -= 0.15
+
 	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 
 	if(moving_resist && client) //we resisted by trying to move
@@ -1159,8 +1162,8 @@
 		pulledby.stop_pulling()
 
 		var/wrestling_cooldown_reduction = 0
-		if(pulledby?.mind?.get_skill_level("wrestling"))
-			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.mind.get_skill_level("wrestling")
+		if(pulledby?.mind?.get_skill_level(/datum/skill/combat/wrestling))
+			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.mind.get_skill_level(/datum/skill/combat/wrestling)
 		TIMER_COOLDOWN_START(src, "broke_free", max(0, 1.6 SECONDS - wrestling_cooldown_reduction))
 
 		return FALSE
@@ -1337,13 +1340,6 @@
 		else
 			src << browse(null,"window=mob[REF(who)]")
 
-/mob/living/singularity_pull(S, current_size)
-	..()
-	if(current_size >= STAGE_SIX) //your puny magboots/wings/whatever will not save you against supermatter singularity
-		throw_at(S, 14, 3, src, TRUE)
-	else if(!src.mob_negates_gravity())
-		step_towards(src,S)
-
 /mob/living/proc/do_jitter_animation(jitteriness)
 	var/amplitude = min(4, (jitteriness/100) + 1)
 	var/pixel_x_diff = rand(-amplitude, amplitude)
@@ -1401,9 +1397,6 @@
 		return FALSE
 	if(invisibility || alpha == 0)//cloaked
 		return FALSE
-	// Now, are they viewable by a camera? (This is last because it's the most intensive check)
-	if(!near_camera(src))
-		return FALSE
 	return TRUE
 
 //used in datum/reagents/reaction() proc
@@ -1435,9 +1428,6 @@
 	return TRUE
 
 /mob/living/proc/update_stamina()
-	return
-
-/mob/living/carbon/alien/update_stamina()
 	return
 
 /mob/living/proc/owns_soul()
@@ -1481,12 +1471,6 @@
 		mind.transfer_to(new_mob)
 	else
 		new_mob.key = key
-
-	for(var/para in hasparasites())
-		var/mob/living/simple_animal/hostile/guardian/G = para
-		G.summoner = new_mob
-		G.Recall()
-		to_chat(G, span_holoparasite("My summoner has changed form!"))
 
 /mob/living/rad_act(amount)
 	. = ..()
@@ -1728,14 +1712,6 @@
 		statpanel("[A.panel]",A.get_panel_text(),A)
 
 /mob/living/lingcheck()
-	if(mind)
-		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
-		if(changeling)
-			if(changeling.changeling_speak)
-				return LINGHIVE_LING
-			return LINGHIVE_OUTSIDER
-	if(mind && mind.linglink)
-		return LINGHIVE_LINK
 	return LINGHIVE_NONE
 
 /mob/living/forceMove(atom/destination)
@@ -1819,7 +1795,6 @@
 			AT.get_remote_view_fullscreens(src)
 		else
 			clear_fullscreen("remote_view", 0)
-		update_pipe_vision()
 
 /mob/living/update_mouse_pointer()
 	..()
@@ -1909,8 +1884,8 @@
 		for(var/mob/living/M in view(7,src))
 			if(M == src)
 				continue
-			if(see_invisible < M.invisibility)
-				continue
+			//if(see_invisible < M.invisibility)
+				//continue
 			if(M.mob_timers[MT_INVISIBILITY] > world.time) // Check if the mob is affected by the invisibility spell
 				continue
 			var/probby = 3 * STAPER
@@ -2073,7 +2048,12 @@
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))
 
 /mob/living/proc/stop_looking()
-//	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
+
+	if(!client)
+		return
+
+	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
+	
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0

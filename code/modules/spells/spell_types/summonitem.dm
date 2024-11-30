@@ -59,7 +59,7 @@
 					var/obj/item/organ/organ = item_to_retrieve
 					if(organ.owner)
 						// If this code ever runs I will be happy
-						log_combat(L, organ.owner, "magically removed [organ.name] from", addition="INTENT: [uppertext(L.a_intent)]")
+						log_combat(L, organ.owner, "magically removed [organ.name] from", addition="INTENT: [uppertext(L.a_intent.name)]")
 						organ.Remove(organ.owner)
 			else
 				while(!isturf(item_to_retrieve.loc) && infinite_recursion < 10) //if it's in something you get the whole thing.
@@ -69,13 +69,6 @@
 							break
 					if(ismob(item_to_retrieve.loc)) //If its on someone, properly drop it
 						var/mob/M = item_to_retrieve.loc
-
-						if(issilicon(M)) //Items in silicons warp the whole silicon
-							M.loc.visible_message(span_warning("[M] suddenly disappears!"))
-							M.forceMove(L.loc)
-							M.loc.visible_message(span_warning("[M] suddenly appears!"))
-							item_to_retrieve = null
-							break
 						M.dropItemToGround(item_to_retrieve)
 
 						if(iscarbon(M)) //Edge case housekeeping
@@ -86,13 +79,6 @@
 									part.remove_embedded_object(item_to_retrieve)
 									to_chat(C, span_warning("The [item_to_retrieve] that was embedded in your [L] has mysteriously vanished. How fortunate!"))
 									break
-
-					else
-						if(istype(item_to_retrieve.loc, /obj/machinery/portable_atmospherics/)) //Edge cases for moved machinery
-							var/obj/machinery/portable_atmospherics/P = item_to_retrieve.loc
-							P.disconnect()
-							P.update_icon()
-
 						item_to_retrieve = item_to_retrieve.loc
 
 					infinite_recursion += 1

@@ -37,12 +37,12 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, pick(0,1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, pick(4,5), TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
@@ -76,12 +76,12 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, pick(0,1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, rand(3,5), TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless

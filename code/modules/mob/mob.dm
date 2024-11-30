@@ -134,12 +134,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 	to_chat(usr, t)
 
 /**
-  * Return the desc of this mob for a photo
-  */
-/mob/proc/get_photo_description(obj/item/camera/camera)
-	return "a ... thing?"
-
-/**
   * Show a message to this mob (visual or audible)
   */
 /mob/proc/show_message(msg, type, alt_msg, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
@@ -204,8 +198,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 		//This entire if/else chain could be in two lines but isn't for readibilties sake.
 		var/msg = message
 		if(M.see_invisible < invisibility)//if src is invisible to M
-			msg = blind_message
-		else if(T != loc && T != src) //if src is inside something and not a turf.
 			msg = blind_message
 //		else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit()) //if it is too dark.
 //			msg = blind_message
@@ -436,9 +428,55 @@ GLOBAL_VAR_INIT(mobids, 1)
 		to_chat(src, span_warning("Something is there but I can't see it!"))
 		return
 
-	if(isturf(A.loc) && isliving(src))
-		face_atom(A)
-		visible_message(span_emote("[src] looks at [A]."))
+
+	if(isliving(src) && src.m_intent != MOVE_INTENT_SNEAK)
+		var/target = "\the [A]"
+		var/message = "[src] looks at"
+		if(A.loc == src)
+			target = "[src.p_their()] [A.name]"
+		if(A.loc.loc == src)
+			message = "[src] looks into"
+			target = "[src.p_their()] [A.loc.name]"
+		if(isliving(A))
+			var/mob/living/T = A
+			var/hitzone = T.simple_limb_hit(zone_selected)
+			var/behind = FALSE
+			var/grabbing = FALSE
+			var/defiancy = TRUE
+			var/uncovered = get_location_accessible(T, zone_selected)
+			var/penised = FALSE
+			var/pussied = FALSE
+			var/strcheck = FALSE
+			if((src != T && src.dir == T.dir)  || (src == T && fixedeye))
+				behind = TRUE
+			if(ishuman(src))
+				var/obj/item/grabbing/G = get_active_held_item()
+				if(istype(G))
+					if(G.grabbed == T)
+						if(G.sublimb_grabbed == zone_selected)
+							grabbing = TRUE
+			if(!ishuman(T))
+				target = "\the [T.name]'s [hitzone]"
+			else if(ishuman(T))
+				var/mob/living/carbon/human/target_human = T
+				if(isliving(src))
+					var/mob/living/L = src
+					if(!L.sexcon.need_to_be_violated(target_human))
+						defiancy = FALSE
+				if(target_human.getorganslot(ORGAN_SLOT_PENIS))
+					penised = TRUE
+				if(target_human.getorganslot(ORGAN_SLOT_VAGINA))
+					pussied = TRUE
+				if(T.STASTR >= 12)
+					strcheck = TRUE
+				if(T == src)
+					var/parsed_zone = parse_zone_fancy(zone_selected, cmode, cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, defiancy, uncovered, penised, pussied, strcheck, TRUE)
+					if(parsed_zone)
+						target = "[src.p_their()] [parsed_zone]"
+				else
+					target = "[T]'s [parse_zone_fancy(zone_selected, cmode, T.cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, defiancy, uncovered, penised, pussied, strcheck)]"
+		visible_message(span_emote("[message] [target]."))
+
 	var/list/result = A.examine(src)
 	if(result)
 		to_chat(src, result.Join("\n"))
@@ -542,9 +580,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 	set name = "Activate Held Object"
 	set hidden = 1
 	set src = usr
-
-	if(ismecha(loc))
-		return
 
 	if(incapacitated())
 		return
@@ -710,8 +745,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 	if(!Adjacent(usr))
 		return
-	if(isAI(M))
-		return
 /**
   * Handle the result of a click drag onto this mob
   *
@@ -719,16 +752,10 @@ GLOBAL_VAR_INIT(mobids, 1)
   */
 /mob/MouseDrop_T(atom/dropping, atom/user)
 	. = ..()
-	if(ismob(dropping) && dropping != user)
+	if(ismob(dropping) && dropping != user && src == user)
 		var/mob/M = dropping
-		if(ismob(user))
-			var/mob/U = user
-			if(!iscyborg(U) || !U.cmode || U.used_intent.type == INTENT_HARM)
-				M.show_inv(U)
-				return TRUE
-		else
-			M.show_inv(user)
-			return TRUE
+		M.show_inv(user)
+		return TRUE
 
 ///Is the mob muzzled (default false)
 /mob/proc/is_muzzled()
@@ -743,6 +770,38 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/Stat()
 	..()
 	// && check_rights(R_ADMIN,0)
+	var/ticker_time = world.time - SSticker.round_start_time
+	var/time_left = SSticker.mode?.round_ends_at - ticker_time
+	var/daytime
+	switch(GLOB.tod)
+		if(0)
+			daytime = "Twilight"
+		if("night")
+			daytime = "Night"
+		if("dawn")
+			daytime = "Dawn"
+		if("day")
+			daytime = "Dae"
+		if("dusk")
+			daytime = "Dusk"
+	var/days
+	switch(GLOB.dayspassed)
+		if(0)
+			days = "Somme Dae"
+		if(1)
+			days = "Sun's Dae"
+		if(2)
+			days = "Moon's Dae"
+		if(3)
+			days = "Tiw's Dae"
+		if(4)
+			days = "Wedding's Dae"
+		if(5)
+			days = "Thule's Dae"
+		if(6)
+			days = "Freyja's Dae"
+		if(7)
+			days = "Saturn's Dae"
 	if(client && client.holder)
 		if(statpanel("Status"))
 			if (client)
@@ -754,8 +813,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 			stat(null, "Round ID: [GLOB.rogue_round_id ? GLOB.rogue_round_id : "NULL"]")
 //			stat(null, "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]")
 			stat(null, "Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
+			if(SSticker.mode?.roundvoteend)
+				stat("Round End: [DisplayTimeText(time_left)]")
 			stat(null, "Round TrueTime: [worldtime2text()] [world.time]")
-			stat(null, "TimeOfDay: [GLOB.tod]")
+			stat(null, "Time Of Dae: [daytime]")
+			stat(null, "Dae of Week: [days]")
 			stat(null, "IC Time: [station_time_timestamp()] [station_time()]")
 			stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
 			if(check_rights(R_ADMIN,0))
@@ -768,7 +830,10 @@ GLOBAL_VAR_INIT(mobids, 1)
 		if(statpanel("RoundInfo"))
 			stat("Round ID: [GLOB.rogue_round_id]")
 			stat("Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
-			stat("TimeOfDay: [GLOB.tod]")
+			if(SSticker.mode?.roundvoteend)
+				stat("Round End: [DisplayTimeText(time_left)]")
+			stat("Time Of Dae: [daytime]")
+			stat("Dae of Week: [days]")
 
 	if(client && client.holder && check_rights(R_ADMIN,0))
 		if(statpanel("MC"))
@@ -792,7 +857,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 				stat(null)
 				for(var/datum/controller/subsystem/SS in Master.subsystems)
 					SS.stat_entry()
-			GLOB.cameranet.stat_entry()
 		if(statpanel("Tickets"))
 			GLOB.ahelp_tickets.stat_entry()
 
@@ -933,9 +997,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 
 /mob/proc/activate_hand(selhand)
 	return
-
-/mob/proc/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null) //For sec bot threat assessment
-	return 0
 
 ///Get the ghost of this mob (from the mind)
 /mob/proc/get_ghost(even_if_they_cant_reenter, ghosts_with_clients)
@@ -1100,9 +1161,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 		//update the datacore records! This is goig to be a bit costly.
 		replace_records_name(oldname,newname)
 
-		//update our pda and id if we have them on our person
-		replace_identification_name(oldname,newname)
-
 		for(var/datum/mind/T in SSticker.minds)
 			for(var/datum/objective/obj in T.get_all_objectives())
 				// Only update if this player is a target
@@ -1114,32 +1172,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/proc/replace_records_name(oldname,newname)
 	return
 
-///update the ID name of this mob
-/mob/proc/replace_identification_name(oldname,newname)
-	var/list/searching = GetAllContents()
-	var/search_id = 1
-	var/search_pda = 1
-
-	for(var/A in searching)
-		if( search_id && istype(A, /obj/item/card/id) )
-			var/obj/item/card/id/ID = A
-			if(ID.registered_name == oldname)
-				ID.registered_name = newname
-				ID.update_label()
-				if(ID.registered_account?.account_holder == oldname)
-					ID.registered_account.account_holder = newname
-				if(!search_pda)
-					break
-				search_id = 0
-
-		else if( search_pda && istype(A, /obj/item/pda) )
-			var/obj/item/pda/PDA = A
-			if(PDA.owner == oldname)
-				PDA.owner = newname
-				PDA.update_label()
-				if(!search_id)
-					break
-				search_pda = 0
 
 /mob/proc/update_stat()
 	return
@@ -1172,10 +1204,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(!client.charging && !atkswinging)
 		if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
 			client.mouse_pointer_icon = examine_cursor_icon
-	else if (ismecha(loc))
-		var/obj/mecha/M = loc
-		if(M.mouse_pointer)
-			client.mouse_pointer_icon = M.mouse_pointer
 	else if (istype(loc, /obj/vehicle/sealed))
 		var/obj/vehicle/sealed/E = loc
 		if(E.mouse_pointer)

@@ -64,7 +64,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "generic_event"
 
 /obj/effect/landmark/events/haunts/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.hauntstart += src
 	icon_state = ""
 
@@ -99,7 +99,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/bogguardlate
 	name = "Bogguardlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Bog Master", "Bog Guard")
+	jobspawn_override = list("Warden", "Vanguard")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vagrantlate
@@ -120,16 +120,22 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Town Seelie")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/desertriderlate
+/obj/effect/landmark/start/desertriderlate // Left behind for map compatibility
 	name = "DesertRiderlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Desert Rider Mercenary", "Sellsword")
+	jobspawn_override = list("Mercenary")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/grenzelhoftlate
+/obj/effect/landmark/start/grenzelhoftlate // Left behind for map compatibility
 	name = "Grenzelhoftlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Grenzelhoft Mercenary", "Sellsword")
+	jobspawn_override = list("Mercenary")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/mercenarylate
+	name = "Mercenarylate"
+	icon_state = "arrow"
+	jobspawn_override = list("Mercenary")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/villagerlate
@@ -139,7 +145,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
-	name = "King"
+	name = "Duke"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knight
@@ -171,7 +177,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/magician
-	name = "Court Magician"
+	name = "Court Magos"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/physician
@@ -183,11 +189,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bogmaster
-	name = "Bog Master"
+	name = "Warden"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bogguardsman
-	name = "Bog Guard"
+	name = "Vanguard"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/marshal
@@ -267,7 +273,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/grabber
-	name = "Grabber"
+	name = "Thug"
 	icon_state = "arrow"
 
 
@@ -279,24 +285,20 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Archivist"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/weaponsmith
-	name = "Weaponsmith"
+/obj/effect/landmark/start/guildsmith
+	name = "Guild Smith"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/armorsmith
-	name = "Armorer"
-	icon_state = "arrow"
-
-/obj/effect/landmark/start/tailor
-	name = "Tailor"
+/obj/effect/landmark/start/seamster
+	name = "Seamster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alchemist
 	name = "Alchemist"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/mason
-	name = "Mason"
+/obj/effect/landmark/start/artificer
+	name = "Artificer"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/scribe
@@ -323,16 +325,20 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Mercenary"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/guild_clerk
+	name = "Guild Clerk"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/vagrant
 	name = "Beggar"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Queen Consort"
+	name = "Duchess"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
-	name = "Prince"
+	name = "Heir"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prisonerr
@@ -407,195 +413,35 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 //goblin
 
-/obj/effect/landmark/start/goblinking
-	name = "Goblin King"
+/obj/effect/landmark/start/goblinchief
+	name = "Goblin Chief"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblincook
 	name = "Goblin Cook"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblinguard
 	name = "Goblin Guard"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/goblinsmith
 	name = "Goblin Smith"
 	icon_state = "arrow"
-
-// START LANDMARKS FOLLOW. Don't change the names unless
-// you are refactoring shitty landmark code.
-/obj/effect/landmark/start/assistant
-	name = "Assistant"
-	icon_state = "Assistant"
-
-/obj/effect/landmark/start/assistant/override
-	jobspawn_override = list("Assistant")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/janitor
-	name = "Janitor"
-	icon_state = "Janitor"
-
-/obj/effect/landmark/start/cargo_technician
-	name = "Cargo Technician"
-	icon_state = "Cargo Technician"
-
-/obj/effect/landmark/start/bartender
-	name = "Bartender"
-	icon_state = "Bartender"
-
-/obj/effect/landmark/start/clown
-	name = "Clown"
-	icon_state = "Clown"
-
-/obj/effect/landmark/start/mime
-	name = "Mime"
-	icon_state = "Mime"
-
-/obj/effect/landmark/start/quartermaster
-	name = "Quartermaster"
-	icon_state = "Quartermaster"
-
-/obj/effect/landmark/start/atmospheric_technician
-	name = "Atmospheric Technician"
-	icon_state = "Atmospheric Technician"
-
-/obj/effect/landmark/start/cook
-	name = "Cook"
-	icon_state = "Cook"
-
-/obj/effect/landmark/start/shaft_miner
-	name = "Shaft Miner"
-	icon_state = "Shaft Miner"
-
-/obj/effect/landmark/start/security_officer
-	name = "Security Officer"
-	icon_state = "Security Officer"
-
-/obj/effect/landmark/start/botanist
-	name = "Botanist"
-	icon_state = "Botanist"
-
-/obj/effect/landmark/start/head_of_security
-	name = "Head of Security"
-	icon_state = "Head of Security"
-
-/obj/effect/landmark/start/captain
-	name = "Captain"
-	icon_state = "Captain"
-
-/obj/effect/landmark/start/detective
-	name = "Detective"
-	icon_state = "Detective"
-
-/obj/effect/landmark/start/warden
-	name = "Warden"
-	icon_state = "Warden"
-
-/obj/effect/landmark/start/chief_engineer
-	name = "Chief Engineer"
-	icon_state = "Chief Engineer"
-
-/obj/effect/landmark/start/head_of_personnel
-	name = "Head of Personnel"
-	icon_state = "Head of Personnel"
-
-/obj/effect/landmark/start/librarian
-	name = "Curator"
-	icon_state = "Curator"
-
-/obj/effect/landmark/start/lawyer
-	name = "Lawyer"
-	icon_state = "Lawyer"
-
-/obj/effect/landmark/start/station_engineer
-	name = "Station Engineer"
-	icon_state = "Station Engineer"
-
-/obj/effect/landmark/start/medical_doctor
-	name = "Medical Doctor"
-	icon_state = "Medical Doctor"
-
-/obj/effect/landmark/start/scientist
-	name = "Scientist"
-	icon_state = "Scientist"
-
-/obj/effect/landmark/start/chemist
-	name = "Chemist"
-	icon_state = "Chemist"
-
-/obj/effect/landmark/start/roboticist
-	name = "Roboticist"
-	icon_state = "Roboticist"
-
-/obj/effect/landmark/start/research_director
-	name = "Research Director"
-	icon_state = "Research Director"
-
-/obj/effect/landmark/start/geneticist
-	name = "Geneticist"
-	icon_state = "Geneticist"
-
-/obj/effect/landmark/start/chief_medical_officer
-	name = "Chief Medical Officer"
-	icon_state = "Chief Medical Officer"
-
-/obj/effect/landmark/start/virologist
-	name = "Virologist"
-	icon_state = "Virologist"
-
-/obj/effect/landmark/start/chaplain
-	name = "Chaplain"
-	icon_state = "Chaplain"
-
-/obj/effect/landmark/start/cyborg
-	name = "Cyborg"
-	icon_state = "Cyborg"
-
-/obj/effect/landmark/start/ai
-	name = "AI"
-	icon_state = "AI"
+/obj/effect/landmark/start/goblinrabble
+	name = "Goblin Rabble"
+	icon_state = "arrow"
 	delete_after_roundstart = FALSE
-	var/primary_ai = TRUE
-	var/latejoin_active = TRUE
 
-/obj/effect/landmark/start/ai/after_round_start()
-	if(latejoin_active && !used)
-		new /obj/structure/AIcore/latejoin_inactive(loc)
-	return ..()
-
-/obj/effect/landmark/start/ai/secondary
-	icon = 'icons/effects/landmarks_static.dmi'
-	icon_state = "ai_spawn"
-	primary_ai = FALSE
-	latejoin_active = FALSE
-
-//Department Security spawns
-
-/obj/effect/landmark/start/depsec
-	name = "department_sec"
-	icon_state = "Security Officer"
-
-/obj/effect/landmark/start/depsec/New()
-	..()
-	GLOB.department_security_spawns += src
-
-/obj/effect/landmark/start/depsec/Destroy()
-	GLOB.department_security_spawns -= src
-	return ..()
-
-/obj/effect/landmark/start/depsec/supply
-	name = "supply_sec"
-
-/obj/effect/landmark/start/depsec/medical
-	name = "medical_sec"
-
-/obj/effect/landmark/start/depsec/engineering
-	name = "engineering_sec"
-
-/obj/effect/landmark/start/depsec/science
-	name = "science_sec"
+/obj/effect/landmark/start/goblinshaman
+	name = "Goblin Shaman"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 //Antagonist spawns
 
@@ -607,6 +453,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/wizard/Initialize()
 	..()
 	GLOB.wizardstart += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/nukeop
 	name = "nukeop"
@@ -616,6 +463,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/nukeop/Initialize()
 	..()
 	GLOB.nukeop_start += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/bandit
 	name = "bandit"
@@ -625,6 +473,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/bandit/Initialize()
 	..()
 	GLOB.bandit_starts += loc
+	return INITIALIZE_HINT_QDEL
 
 
 /obj/effect/landmark/start/delf
@@ -635,6 +484,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/delf/Initialize()
 	..()
 	GLOB.delf_starts += loc
+	return INITIALIZE_HINT_QDEL
 
 
 /obj/effect/landmark/start/nukeop_leader
@@ -645,6 +495,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/nukeop_leader/Initialize()
 	..()
 	GLOB.nukeop_leader_start += loc
+	return INITIALIZE_HINT_QDEL
 
 // Must be immediate because players will
 // join before SSatom initializes everything.
@@ -656,6 +507,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/start/new_player/Initialize()
 	..()
 	GLOB.newplayer_start += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/latejoin
 	name = "JoinLate"
@@ -674,16 +526,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/observer_start
 	name = "Observer-Start"
 	icon_state = "x"
-
-//xenos, morphs and nightmares spawn here
-/obj/effect/landmark/xeno_spawn
-	name = "xeno_spawn"
-	icon_state = "xeno_spawn"
-
-/obj/effect/landmark/xeno_spawn/Initialize(mapload)
-	..()
-	GLOB.xeno_spawn += loc
-	return INITIALIZE_HINT_QDEL
 
 //objects with the stationloving component (nuke disk) respawn here.
 //also blobs that have their spawn forcemoved (running out of time when picking their spawn spot), santa and respawning devils
@@ -778,9 +620,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	layer = HIGH_LANDMARK_LAYER
 
 
-/obj/effect/landmark/event_spawn/New()
+/obj/effect/landmark/event_spawn/Initialize()
 	..()
 	GLOB.generic_event_spawns += src
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/event_spawn/Destroy()
 	GLOB.generic_event_spawns -= src
@@ -818,7 +661,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/underworldcoin
 	name = "ferryman coin"
 
-/obj/effect/landmark/underworldsafe // To prevent demons spawn camping will save a lot of ear rape.
+/obj/effect/landmark/underworldsafe // To prevent demons spawn camping.
 	name = "safe zone"
 
 GLOBAL_LIST_EMPTY(travel_tile_locations)

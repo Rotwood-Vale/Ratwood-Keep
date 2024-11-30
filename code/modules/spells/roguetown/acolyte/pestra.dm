@@ -21,13 +21,14 @@
 		var/mob/living/carbon/human/human_target = targets[1]
 		human_target.check_for_injuries(user)
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/diagnose/secular
 	name = "Secular Diagnosis"
 	overlay_state = "diagnose"
 	range = 1
-	associated_skill = /datum/skill/misc/medicine
+	associated_skill = /datum/skill/misc/treatment
 	miracle = FALSE
 	devotion_cost = 0 //Doctors are not clerics
 
@@ -127,6 +128,7 @@
 				limb.skeletonized = FALSE
 		human_target.update_body()
 		return TRUE
+	revert_cast()
 	return FALSE
 
 // Cure rot
@@ -158,34 +160,24 @@
 		if(target == user)
 			return FALSE
 		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-		var/has_rot = was_zombie
-		if(!has_rot && iscarbon(target))
-			var/mob/living/carbon/stinky = target
-			for(var/obj/item/bodypart/bodypart as anything in stinky.bodyparts)
-				if(bodypart.rotted || bodypart.skeletonized)
-					has_rot = TRUE
-					break
-		if(!has_rot)
-			to_chat(user, span_warning("Nothing happens."))
-			return FALSE
-		if(GLOB.tod == "night")
-			to_chat(user, span_warning("Let there be light."))
+
 		for(var/obj/structure/fluff/psycross/S in oview(5, user))
 			S.AOE_flash(user, range = 8)
 		testing("curerot2")
 		if(was_zombie)
-			if(was_zombie.become_rotman && prob(5)) //5% chance to NOT become a rotman
-				was_zombie.become_rotman = FALSE
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 			target.Unconscious(20 SECONDS)
 			target.emote("breathgasp")
 			target.Jitter(100)
+
 			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
 				adjust_playerquality(unzombification_pq, user.ckey)
 				ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, "[type]")
+
 		var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 		if(rot)
 			rot.amount = 0
+
 		if(iscarbon(target))
 			var/mob/living/carbon/stinky = target
 			for(var/obj/item/bodypart/rotty in stinky.bodyparts)
@@ -194,11 +186,12 @@
 				rotty.update_limb()
 				rotty.update_disabled()
 		target.update_body()
-		if(!HAS_TRAIT(target, TRAIT_ROTMAN))
-			target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
-		else
-			target.visible_message(span_warning("The rot fails to leave [target]'s body!"), span_warning("I feel no different..."))
+		target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+		if(target.mind?.funeral && (target.stat != DEAD) && !CONFIG_GET(flag/force_respawn_on_funeral))
+			to_chat(target, span_warning("My funeral rites are undone!"))
+			target.mind.funeral = FALSE
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/cast_check(skipcharge = 0,mob/user = usr)

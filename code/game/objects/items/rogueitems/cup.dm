@@ -23,7 +23,7 @@
 	cut_overlays()
 
 	if(reagents.total_volume)
-		var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/cooking.dmi', "[icon_state]filling")
+		var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "[icon_state]filling")
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
@@ -37,6 +37,7 @@
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	anvilrepair = null
 	sellprice = 0
+	metalizer_result = /obj/item/reagent_containers/glass/cup
 
 /obj/item/reagent_containers/glass/cup/steel
 	name = "goblet"
@@ -147,6 +148,7 @@
 	sellprice = 1
 	drinksounds = list('sound/items/drink_cup (1).ogg','sound/items/drink_cup (2).ogg','sound/items/drink_cup (3).ogg','sound/items/drink_cup (4).ogg','sound/items/drink_cup (5).ogg')
 	fillsounds = list('sound/items/fillcup.ogg')
+	metalizer_result = /obj/item/roguecoin/copper
 
 /obj/item/reagent_containers/glass/bowl/on_reagent_change(changetype)
 	..()

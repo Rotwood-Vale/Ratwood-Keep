@@ -32,13 +32,6 @@
 
 	name = "brain"
 
-	if(C.mind && C.mind.has_antag_datum(/datum/antagonist/changeling) && !no_id_transfer)	//congrats, you're trapped in a body you don't control
-		if(brainmob && !(C.stat == DEAD || (HAS_TRAIT(C, TRAIT_DEATHCOMA))))
-			to_chat(brainmob, "<span class= danger>I can't feel my body! I'm still just a brain!</span>")
-		forceMove(C)
-		C.update_hair()
-		return
-
 	if(brainmob)
 //		if(C.key)
 //			testing("UHM BASED?? [C]")
@@ -71,7 +64,7 @@
 	C.update_hair()
 
 /obj/item/organ/brain/prepare_eat(mob/living/carbon/human/H)
-	if(iszombie(H) || HAS_TRAIT(H, TRAIT_ROTMAN))//braaaaaains... otherwise, too important to eat.
+	if(iszombie(H))//braaaaaains... otherwise, too important to eat.
 		return ..()
 	return FALSE
 

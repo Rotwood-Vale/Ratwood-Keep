@@ -133,12 +133,6 @@
 /mob/living/carbon/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	var/hurt = TRUE
-	if(istype(throwingdatum, /datum/thrownthing))
-		var/datum/thrownthing/D = throwingdatum
-		if(iscyborg(D.thrower))
-			var/mob/living/silicon/robot/R = D.thrower
-			if(!R.emagged)
-				hurt = FALSE
 	if(hit_atom.density && isturf(hit_atom))
 		if(hurt)
 			if(IsOffBalanced())
@@ -351,11 +345,11 @@
 		buckled.user_unbuckle_mob(src,src)
 
 /mob/living/carbon/resist_fire()
-	fire_stacks -= 5
-	if(fire_stacks > 10)
-		Paralyze(60, TRUE, TRUE)
+	fire_stacks -= 2.5
+	if(fire_stacks > 10 || !(mobility_flags & MOBILITY_STAND))
+		Paralyze(50, TRUE, TRUE)
 		spin(32,2)
-		fire_stacks -= 5
+		fire_stacks -= 7.5
 		visible_message(span_warning("[src] rolls on the ground, trying to put [p_them()]self out!"))
 	else
 		visible_message(span_notice("[src] pats the flames to extinguish them."))
@@ -454,6 +448,8 @@
 		stupid_msg = span_warning("[src] manages to slip out of [I]!")
 	visible_message(stupid_msg)
 	to_chat(src, span_notice("I [cuff_break ? "break" : "slip"] out of [I]!"))
+	if(I == legcuffed)
+		src.remove_movespeed_modifier(MOVESPEED_ID_CUFFED_LEG_SLOWDOWN)
 
 	if(cuff_break)
 		. = !((I == handcuffed) || (I == legcuffed))
@@ -534,12 +530,6 @@
 
 /mob/living/carbon/Stat()
 	..()
-	if(statpanel("Status"))
-		var/obj/item/organ/alien/plasmavessel/vessel = getorgan(/obj/item/organ/alien/plasmavessel)
-		if(vessel)
-			stat(null, "Plasma Stored: [vessel.storedPlasma]/[vessel.max_plasma]")
-		if(locate(/obj/item/assembly/health) in src)
-			stat(null, "Health: [health]")
 	add_abilities_to_panel()
 
 /mob/living/carbon/attack_ui(slot)
@@ -758,8 +748,14 @@
 		if(!isnull(G.lighting_alpha))
 			lighting_alpha = min(lighting_alpha, G.lighting_alpha)
 
-	if(HAS_TRAIT(src, TRAIT_DARKVISION))
+	if(HAS_TRAIT(src, TRAIT_DARKVISION_BETTER))
+		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_DARKVISION_BETTER)
+
+	if(HAS_TRAIT(src, TRAIT_DARKVISION)) //DV special prioritized over Noc's boon because DV special is better
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_DARKVISION)
+
+	if(HAS_TRAIT(src, TRAIT_NOCTURNAL))
+		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_NOC)
 
 	if(HAS_TRAIT(src, TRAIT_THERMAL_VISION))
 		sight |= (SEE_MOBS)
@@ -1069,7 +1065,7 @@
 
 /mob/living/carbon/can_be_revived()
 	. = ..()
-	if(!getorgan(/obj/item/organ/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)))
+	if(!getorgan(/obj/item/organ/brain) && (!mind))
 		testing("norescarbon")
 		return 0
 

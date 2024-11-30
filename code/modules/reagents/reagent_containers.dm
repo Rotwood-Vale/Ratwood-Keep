@@ -18,6 +18,7 @@
 	var/fillsounds
 	var/poursounds
 
+
 /obj/item/reagent_containers/weather_trigger(W)
 	if(W==/datum/weather/rain)
 		START_PROCESSING(SSweather,src)
@@ -128,7 +129,7 @@
 
 	reagents.clear_reagents()
 
-/obj/item/reagent_containers/microwave_act(obj/machinery/microwave/M)
+/obj/item/reagent_containers/heating_act()
 	reagents.expose_temperature(1000)
 	..()
 

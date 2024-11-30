@@ -6,12 +6,12 @@
 	total_positions = 6
 	spawn_positions = 6
 
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	tutorial = "Having proven yourself loyal and capable, you are entrusted to defend the Royal Family and their Court, \
-				trained regularly in combat and siege warfare you stand a small chance of surviving the King's reign. \
-				It's an honor to die as part of His Majesty's retinue, the Marshal reminds you every night."
+				trained regularly in combat and siege warfare you stand a small chance of surviving the Duke's reign. \
+				It's an honor to die as part of His Highness' retinue, the Marshal reminds you every night."
 	display_order = JDO_CASTLEGUARD
 	whitelist_req = TRUE
 
@@ -44,7 +44,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	beltl = /obj/item/keyring/man_at_arms
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel/black
@@ -66,6 +66,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("perception", 2)
 		H.change_stat("constitution", 1)
@@ -73,5 +74,3 @@
 		H.change_stat("speed", 1)
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

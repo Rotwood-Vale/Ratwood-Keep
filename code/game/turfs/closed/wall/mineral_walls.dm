@@ -170,17 +170,6 @@
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null
 
-/turf/closed/wall/mineral/abductor
-	name = "alien wall"
-	desc = ""
-	icon = 'icons/turf/walls/abductor_wall.dmi'
-	icon_state = "abductor"
-	smooth = SMOOTH_TRUE|SMOOTH_DIAGONAL
-	sheet_type = /obj/item/stack/sheet/mineral/abductor
-	slicing_duration = 200   //alien wall takes twice as much time to slice
-	explosion_block = 3
-	canSmoothWith = list(/turf/closed/wall/mineral/abductor, /obj/structure/falsewall/abductor)
-
 /////////////////////Titanium walls/////////////////////
 
 /turf/closed/wall/mineral/titanium //has to use this path due to how building walls works
@@ -192,7 +181,7 @@
 	flags_1 = CAN_BE_DIRTY_1 | CHECK_RICOCHET_1
 	sheet_type = /obj/item/stack/sheet/mineral/titanium
 	smooth = SMOOTH_MORE|SMOOTH_DIAGONAL
-	canSmoothWith = list(/turf/closed/wall/mineral/titanium, /obj/machinery/door/airlock/shuttle, /obj/machinery/door/airlock, /obj/structure/window/shuttle, /obj/structure/shuttle/engine/heater, /obj/structure/falsewall/titanium)
+	canSmoothWith = list(/turf/closed/wall/mineral/titanium, /obj/structure/window/shuttle, /obj/structure/shuttle/engine/heater, /obj/structure/falsewall/titanium)
 
 /turf/closed/wall/mineral/titanium/nodiagonal
 	smooth = SMOOTH_MORE
@@ -236,13 +225,13 @@
 	icon = 'icons/turf/walls/survival_pod_walls.dmi'
 	icon_state = "smooth"
 	smooth = SMOOTH_MORE|SMOOTH_DIAGONAL
-	canSmoothWith = list(/turf/closed/wall/mineral/titanium/survival, /obj/machinery/door/airlock, /obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/shuttle, /obj/structure/shuttle/engine)
+	canSmoothWith = list(/turf/closed/wall/mineral/titanium/survival, /obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/shuttle, /obj/structure/shuttle/engine)
 
 /turf/closed/wall/mineral/titanium/survival/nodiagonal
 	smooth = SMOOTH_MORE
 
 /turf/closed/wall/mineral/titanium/survival/pod
-	canSmoothWith = list(/turf/closed/wall/mineral/titanium/survival, /obj/machinery/door/airlock/survival_pod, /obj/structure/window/shuttle/survival_pod)
+	canSmoothWith = list(/turf/closed/wall/mineral/titanium/survival)
 
 /////////////////////Plastitanium walls/////////////////////
 
@@ -254,7 +243,7 @@
 	explosion_block = 4
 	sheet_type = /obj/item/stack/sheet/mineral/plastitanium
 	smooth = SMOOTH_MORE|SMOOTH_DIAGONAL
-	canSmoothWith = list(/turf/closed/wall/mineral/plastitanium, /obj/machinery/door/airlock/shuttle, /obj/machinery/door/airlock, /obj/structure/window/plasma/reinforced/plastitanium, /obj/structure/shuttle/engine, /obj/structure/falsewall/plastitanium)
+	canSmoothWith = list(/turf/closed/wall/mineral/plastitanium, /obj/structure/window/plasma/reinforced/plastitanium, /obj/structure/shuttle/engine, /obj/structure/falsewall/plastitanium)
 
 /turf/closed/wall/mineral/plastitanium/nodiagonal
 	smooth = SMOOTH_MORE
@@ -268,17 +257,6 @@
 /turf/closed/wall/mineral/plastitanium/overspace
 	icon_state = "map-overspace"
 	fixed_underlay = list("space"=1)
-
-/turf/closed/wall/mineral/plastitanium/explosive/ex_act(severity)
-	var/datum/explosion/acted_explosion = null
-	for(var/datum/explosion/E in GLOB.explosions)
-		if(E.explosion_id == explosion_id)
-			acted_explosion = E
-			break
-	if(acted_explosion && istype(acted_explosion.explosion_source, /obj/item/bombcore))
-		var/obj/item/bombcore/large/bombcore = new(get_turf(src))
-		bombcore.detonate()
-	..()
 
 //have to copypaste this code
 /turf/closed/wall/mineral/plastitanium/interior/copyTurf(turf/T)

@@ -180,12 +180,20 @@
 /datum/status_effect/buff/darkvision/on_apply()
 	. = ..()
 	to_chat(owner, span_warning("The darkness fades somewhat."))
-	ADD_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
+	if(HAS_TRAIT(owner, TRAIT_DARKVISION))
+		ADD_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+	else if(HAS_TRAIT(owner, TRAIT_NOCTURNAL))
+		ADD_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+	else
+		ADD_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
 
 /datum/status_effect/buff/darkvision/on_remove()
 	. = ..()
 	to_chat(owner, span_warning("The darkness returns to normal."))
-	REMOVE_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
+	if(HAS_TRAIT(owner, TRAIT_DARKVISION_BETTER))
+		REMOVE_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+	else	
+		REMOVE_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
 
 /atom/movable/screen/alert/status_effect/buff/haste
 	name = "Haste"
@@ -196,7 +204,7 @@
 	id = "haste"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/haste
 	effectedstats = list("speed" = 3)
-	duration = 1 MINUTES
+	duration = 1.5 MINUTES
 
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"

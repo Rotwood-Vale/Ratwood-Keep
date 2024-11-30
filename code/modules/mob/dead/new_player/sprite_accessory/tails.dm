@@ -49,6 +49,13 @@
 	color_key_names = list("Tail", "Tip")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/snuppy
+	name = "Rattleyote"
+	icon_state = "snuppy"
+	color_keys = 2
+	color_key_names = list("Tail", "Tip")
+	can_wag = TRUE
+
 /datum/sprite_accessory/tail/bats
 	name = "Bat (Short)"
 	icon_state = "bats"
@@ -65,6 +72,11 @@
 /datum/sprite_accessory/tail/catbig
 	name = "Cat, Big"
 	icon_state = "catbig"
+	can_wag = TRUE
+
+/datum/sprite_accessory/tail/twocat
+	name = "Cat, Double"
+	icon_state = "twocat"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/corvid
@@ -128,6 +140,12 @@
 	name = "kangaroo"
 	icon_state = "kangaroo"
 
+/datum/sprite_accessory/tail/kitsune
+	name = "Kitsune"
+	icon_state = "kitsune"
+	color_keys = 2
+	color_key_names = list("Tails", "Tips")
+
 /datum/sprite_accessory/tail/lab
 	name = "Lab"
 	icon_state = "lab"
@@ -182,6 +200,13 @@
 	color_key_names = list("Tail", "Inner")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/australian_shepherd
+	name = "Australian Shepherd"
+	icon_state = "australianshepherd"
+	color_keys = 2
+	color_key_names = list("Tail", "Inner")
+	can_wag = TRUE
+
 /datum/sprite_accessory/tail/skunk
 	name = "Skunk"
 	icon_state = "skunk"
@@ -203,6 +228,12 @@
 	name = "Squirrel"
 	icon_state = "squirrel"
 	can_wag = TRUE
+
+/datum/sprite_accessory/tail/tamamo_kitsune
+	name = "Tamamo Kitsune Tails"
+	icon_state = "9sune"
+	color_keys = 2
+	color_key_names = list("Tails", "Tips")
 
 /datum/sprite_accessory/tail/tiger
 	name = "Tiger"
@@ -262,6 +293,12 @@
 	color_keys = 2
 	color_key_names = list("Tail", "Neons")
 	can_wag = TRUE
+
+/datum/sprite_accessory/tail/sabresune
+	name = "Sabresune"
+	icon_state = "sabresune"
+	color_keys = 2
+	color_key_names = list("Tails", "Tips")
 
 /datum/sprite_accessory/tail/lizard
 	abstract_type = /datum/sprite_accessory/tail/lizard

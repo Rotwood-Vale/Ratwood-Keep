@@ -272,7 +272,7 @@
 	..()
 	if(ishuman(O))
 		var/mob/living/carbon/human/H = O
-		if((H.shoes && !HAS_TRAIT(H, TRAIT_LIGHT_STEP)) || !isseelie(H)) //Seelie hover, so they won't step on blood
+		if(H.shoes && !(HAS_TRAIT(H, TRAIT_LIGHT_STEP) || isseelie(H))) //Seelie hover, so they won't step on blood
 			var/obj/item/clothing/shoes/S = H.shoes
 			if(!S.can_be_bloody)
 				return
@@ -874,7 +874,7 @@
 	icon_state = ""
 
 /turf/open/floor/rogue/carpet/lord/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -897,7 +897,7 @@
 
 /turf/open/floor/rogue/carpet/lord/center/Initialize()
 	dir = pick(GLOB.cardinals)
-	..()
+	return ..()
 
 /turf/open/floor/rogue/carpet/lord/left
 	icon_state = "carpet_l"

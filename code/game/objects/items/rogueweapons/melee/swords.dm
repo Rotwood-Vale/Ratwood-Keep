@@ -23,7 +23,7 @@
 	throwforce = 10
 	thrown_bclass = BCLASS_CUT
 	//dropshrink = 0.75
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	minstr = 7
 	sellprice = 30
@@ -67,6 +67,7 @@
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	swingdelay = 0
 	item_d_type = "slash"
+	ican_cdg = TRUE
 
 /datum/intent/sword/thrust
 	name = "stab"
@@ -79,17 +80,19 @@
 	chargetime = 0
 	swingdelay = 0
 	item_d_type = "stab"
+	ican_cdg = TRUE
 
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
 	name = "arming sword"
 	desc = "A short arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
-	icon_state = "swordshort"
+	icon_state = "shortsword"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = null
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
 	wdefense = 4
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/long
 	force = 25
@@ -397,6 +400,7 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 100
 	sellprice = 10
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/iron/short
 	name = "short sword"
@@ -430,11 +434,13 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 2
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/iron/messer/steel
 	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.
 	desc = "A single edged blade to slice and chop with. This one is made of sturdy steel."
 	icon_state = "smesser"
+	smeltresult = /obj/item/ingot/steel
 	max_integrity = 175 //A stout blade that will last a long time before breakage
 
 /obj/item/rogueweapon/sword/sabre
@@ -459,16 +465,101 @@
 
 /obj/item/rogueweapon/sword/rapier
 	name = "rapier"
-	desc = "A precise rapier, a good stabbing weapon."
+	desc = "A duelist's weapon derived from western battlefield instruments, it features a tapered \
+	blade with a specialized stabbing tip."
+	icon = 'icons/roguetown/weapons/64.dmi'	
 	icon_state = "rapier"
 	max_integrity = 215
+	bigboy = TRUE
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier)
 	gripped_intents = null
-	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
+	parrysound = list(
+		'sound/combat/parry/bladed/bladedthin (1).ogg',
+		'sound/combat/parry/bladed/bladedthin (2).ogg',
+		'sound/combat/parry/bladed/bladedthin (3).ogg',
+	)
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
 	wdefense = 7
 	wbalance = 1
+
+/obj/item/rogueweapon/sword/rapier/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen") return list(
+				"shrink" = 0.5,
+				"sx" = -14,
+				"sy" = -8,
+				"nx" = 15,
+				"ny" = -7,
+				"wx" = -10,
+				"wy" = -5,
+				"ex" = 7,
+				"ey" = -6,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				"nturn" = -13,
+				"sturn" = 110,
+				"wturn" = -60,
+				"eturn" = -30,
+				"nflip" = 1,
+				"sflip" = 1,
+				"wflip" = 8,
+				"eflip" = 1,
+				)
+			if("onback") return list(
+				"shrink" = 0.5,
+				"sx" = -1,
+				"sy" = 2,
+				"nx" = 0,
+				"ny" = 2,
+				"wx" = 2,
+				"wy" = 1,
+				"ex" = 0,
+				"ey" = 1,
+				"nturn" = 0,
+				"sturn" = 0,
+				"wturn" = 70,
+				"eturn" = 15,
+				"nflip" = 1,
+				"sflip" = 1,
+				"wflip" = 1,
+				"eflip" = 1,
+				"northabove" = 1,
+				"southabove" = 0,
+				"eastabove" = 0,
+				"westabove" = 0,
+				)
+			if("onbelt") return list(
+				"shrink" = 0.4,
+				"sx" = -4,
+				"sy" = -6,
+				"nx" = 5,
+				"ny" = -6,
+				"wx" = 0,
+				"wy" = -6,
+				"ex" = -1,
+				"ey" = -6,
+				"nturn" = 100,
+				"sturn" = 156,
+				"wturn" = 90,
+				"eturn" = 180,
+				"nflip" = 0,
+				"sflip" = 0,
+				"wflip" = 0,
+				"eflip" = 0,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				)
 
 /datum/intent/sword/cut/rapier
 	clickcd = 10
@@ -478,33 +569,23 @@
 	clickcd = 8
 
 /obj/item/rogueweapon/sword/rapier/dec
+	desc = "A fine duelist's instrument with a tapered thrusting blade. Its hilt is gilt in gold and inlaid, \
+	and its blade bears twin inscriptions on either side. One reads, 'CAST IN THE NAME OF GODS' while the \
+	obverse reads, 'YE NOT GUILTY'."
 	icon_state = "decrapier"
 	sellprice = 140
 
 /obj/item/rogueweapon/sword/rapier/lord
 	force = 20
 	name = "sword of the Mad Duke"
-	desc = "Passed down through the ages, this decorative sword was recovered from the ashes of Roguetown when it was last destroyed... clutched in the bony fingers of the Mad Duke."
+	desc = "A noble heirloom whose spiraling basket hilt is inlaid with fine cut gems. It bears the burnish of \
+	time, where once sharply defined features have been worn down by so many hands. An old rumor ties this implement \
+	to the siege that smashed the Mad Duke's keep to rubble, and burnt the Duke himself to cinders."
 	icon_state = "lordrap"
 	sellprice = 300
 	max_integrity = 300
 	max_blade_int = 300
 	wdefense = 7
-
-/obj/item/rogueweapon/sword/estoc
-	name = "estoc"
-	desc = "An specialised steel longsword, tailor made for stabbing through armor."
-	force = 18
-	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust) //Better at stabbing than the longsword, worse at everything else. It fits the time period because of our use of bervors and visored sallets.
-	icon_state = "estoc"
-	gripped_intents = list(/datum/intent/sword/cut/rapier, /datum/intent/sword/thrust/estoc, /datum/intent/sword/strike)
-	minstr = 6
-	wdefense = 4
-
-/datum/intent/sword/thrust/estoc // Around 12 or so dmg gets through armor, making it weaker than spears, but more portable.
-	clickcd = 10
-	penfactor = 60
 
 /obj/item/rogueweapon/sword/cutlass
 	name = "cutlass"
@@ -518,9 +599,77 @@
 /obj/item/rogueweapon/sword/sabre/elf
 	force = 25
 	name = "elvish saber"
-	desc = "This finely crafted saber is of elven smithcraft."
+	desc = "This finely crafted saber is of elven design."
 	icon_state = "esaber"
 	item_state = "esaber"
 	max_integrity = 205
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+
+/obj/item/rogueweapon/sword/gladius
+	force = 22
+	name = "Gladius"
+	desc = "A bronze short sword with a slightly wider end, and no guard. Compliments a shield."
+	icon_state = "gladius"
+	gripped_intents = null
+	smeltresult = /obj/item/ingot/bronze
+	max_blade_int = 100
+	max_integrity = 200
+	dropshrink = 0.80
+	wdefense = 2
+/obj/item/rogueweapon/sword/sabre_freeze
+	name = "Freezing Saber"
+	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
+	icon_state = "saber"
+	max_integrity = 150
+	possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze)
+	gripped_intents = null
+	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 5
+	wdefense = 6
+	wbalance = 1
+	damtype = BRUTE
+	light_color = LIGHT_COLOR_BLUE
+	var/on = FALSE
+
+/datum/intent/sword/freeze
+	name = "freeze"
+	icon_state = "instrike"
+	attack_verb = list("freezes")
+	animname = "chop"
+	hitsound = list('sound/combat/hits/pick/genpick (1).ogg')
+	penfactor = 20
+	swingdelay = 6
+	damfactor = 1.2
+	blade_class = BCLASS_BURN	
+
+/datum/intent/sword/cut/sabre/freeze
+	clickcd = 10
+	damfactor = 1
+
+/datum/intent/sword/thrust/freeze
+	clickcd = 10
+	damfactor = 1
+
+/obj/item/rogueweapon/sword/sabre_freeze/update_icon()
+	if(on)
+		icon_state = "saber_freeze"
+	else
+		icon_state = "saber"
+/obj/item/rogueweapon/sword/sabre_freeze/attack_self(mob/user)
+	if(on)
+		on = FALSE
+		damtype = BRUTE
+		possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze)
+	else
+		user.visible_message(span_warning("[user]'s blade lights up with a blue flame."))
+		on = TRUE
+		damtype = BURN
+		possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze, /datum/intent/sword/freeze)
+	playsound(user, pick('sound/magic/magic_nulled.ogg'), 100, TRUE)
+	if(user.a_intent)
+		var/datum/intent/I = user.a_intent
+		if(istype(I))
+			I.afterchange()
+	update_icon()

@@ -39,7 +39,7 @@
 	if(world.time > next_decree)
 		next_decree = world.time + rand(3 MINUTES, 8 MINUTES)
 		if(GLOB.lord_decrees.len)
-			say("The King Decrees: [pick(GLOB.lord_decrees)]", spans = list("info"))
+			say("The [TITLE_LORD] Decrees: [pick(GLOB.lord_decrees)]", spans = list("info"))
 
 /obj/structure/roguemachine/scomm/attack_hand(mob/living/user)
 	. = ..()
@@ -59,10 +59,10 @@
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	var/canread = user.can_read(src, TRUE)
 	var/contents
-	if(SSticker.rulertype == "King")
-		contents += "<center>KING'S DECREES<BR>"
+	if(SSticker.rulertype == "Duke")
+		contents += "<center>DUKE'S DECREES<BR>"
 	else
-		contents += "<center>QUEEN'S DECREES<BR>"
+		contents += "<center>DUCHESS' DECREES<BR>"
 	contents += "-----------<BR><BR></center>"
 	for(var/i = GLOB.lord_decrees.len to 1 step -1)
 		contents += "[i]. <span class='info'>[GLOB.lord_decrees[i]]</span><BR>"
@@ -163,7 +163,7 @@
 
 /obj/item/scomstone
 	name = "gemerald ring"
-	icon_state = "ring_emerald"
+	icon_state = "scomstone"
 	desc = "A golden ring with an gemerald gem."
 	gripped_intents = null
 	dropshrink = 0.75
@@ -171,7 +171,6 @@
 	force = 10
 	throwforce = 10
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_RING
-	obj_flags = null
 	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	flags_1 = HEAR_1
@@ -260,7 +259,7 @@
 
 /obj/item/scomstone/bad
 	name = "serfstone"
-	icon_state = "ring_emerald"
+	icon_state = "scomstone"
 	listening = FALSE
 	sellprice = 2
 
@@ -277,7 +276,6 @@
 	//force = 10
 	//throwforce = 10
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_WRISTS
-	obj_flags = null
 	icon = 'icons/roguetown/clothing/neck.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	flags_1 = HEAR_1

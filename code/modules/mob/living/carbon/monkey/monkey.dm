@@ -89,11 +89,6 @@
 	if(statpanel("Status"))
 		stat(null, "Intent: [a_intent]")
 		stat(null, "Move Mode: [m_intent]")
-		if(client && mind)
-			var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
-			if(changeling)
-				stat("Chemical Storage", "[changeling.chem_charges]/[changeling.chem_storage]")
-				stat("Absorbed DNA", changeling.absorbedcount)
 	return
 
 
@@ -120,42 +115,6 @@
 
 /mob/living/carbon/monkey/canBeHandcuffed()
 	return TRUE
-
-/mob/living/carbon/monkey/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null)
-	if(judgement_criteria & JUDGE_EMAGGED)
-		return 10 //Everyone is a criminal!
-
-	var/threatcount = 0
-
-	//Securitrons can't identify monkeys
-	if( !(judgement_criteria & JUDGE_IGNOREMONKEYS) && (judgement_criteria & JUDGE_IDCHECK) )
-		threatcount += 4
-
-	//Lasertag bullshit
-	if(lasercolor)
-		if(lasercolor == "b")//Lasertag turrets target the opposing team, how great is that? -Sieve
-			if(is_holding_item_of_type(/obj/item/gun/energy/laser/redtag))
-				threatcount += 4
-
-		if(lasercolor == "r")
-			if(is_holding_item_of_type(/obj/item/gun/energy/laser/bluetag))
-				threatcount += 4
-
-		return threatcount
-
-	//Check for weapons
-	if( (judgement_criteria & JUDGE_WEAPONCHECK) && weaponcheck )
-		for(var/obj/item/I in held_items) //if they're holding a gun
-			if(weaponcheck.Invoke(I))
-				threatcount += 4
-		if(weaponcheck.Invoke(back)) //if a weapon is present in the back slot
-			threatcount += 4 //trigger look_for_perp() since they're nonhuman and very likely hostile
-
-	//mindshield implants imply trustworthyness
-	if(HAS_TRAIT(src, TRAIT_MINDSHIELD))
-		threatcount -= 1
-
-	return threatcount
 
 /mob/living/carbon/monkey/IsVocal()
 	if(!getorganslot(ORGAN_SLOT_LUNGS))

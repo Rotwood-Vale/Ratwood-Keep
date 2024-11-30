@@ -36,6 +36,14 @@
 					/obj/item/clothing/mask/rogue/facemask/steel,
 				)
 
+/datum/supply_pack/rogue/armor/mask/steel/hound
+	name = "Steel Hound Mask"
+	cost = 50
+	contains = list(
+					/obj/item/clothing/mask/rogue/facemask/steel/hound,
+					/obj/item/clothing/mask/rogue/facemask/steel/hound,
+				)
+			
 /datum/supply_pack/rogue/armor/bracers
 	name = "Steel Bracers"
 	cost = 50
@@ -56,8 +64,8 @@
 	name = "Steel Boots"
 	cost = 50
 	contains = list(
-					/obj/item/clothing/shoes/roguetown/boots,
-					/obj/item/clothing/shoes/roguetown/boots,
+					/obj/item/clothing/shoes/roguetown/armor,
+					/obj/item/clothing/shoes/roguetown/armor,
 				)
 
 /datum/supply_pack/rogue/armor/gambeson
@@ -70,7 +78,7 @@
 
 /datum/supply_pack/rogue/armor/leather
 	name = "Leather Armor"
-	cost = 20
+	cost = 40
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/leather,
 					/obj/item/clothing/suit/roguetown/armor/leather,

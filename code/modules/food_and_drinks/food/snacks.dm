@@ -73,6 +73,7 @@ All foods are distributed among various categories. Use common sense.
 	var/rotprocess = FALSE
 	var/become_rot_type = null
 
+
 	var/fertamount = 50
 	
 	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
@@ -109,7 +110,7 @@ All foods are distributed among various categories. Use common sense.
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(begin_rotting)))
 	if(cooked_type || fried_type)
 		cooktime = 30 SECONDS
-	..()
+	. = ..()
 
 /obj/item/reagent_containers/food/snacks/proc/begin_rotting()
 	START_PROCESSING(SSobj, src)
@@ -117,7 +118,7 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
-		if(!istype(loc, /obj/structure/closet/crate/chest))
+		if(!istype(loc, /obj/structure/closet/crate/chest) && !(locate(/obj/structure/table) in loc) && !istype(loc, /obj/structure/roguemachine/vendor))
 			warming -= 20 //ssobj processing has a wait of 20
 			if(warming < (-1*rotprocess))
 				if(become_rotten())
@@ -160,12 +161,12 @@ All foods are distributed among various categories. Use common sense.
 		if(cooking < cooktime)
 			cooking = cooking + input
 			if(cooking >= cooktime)
-				return microwave_act(A)
+				return heating_act(A)
 			warming = 5 MINUTES
 			return
 	burning(input)
 
-/obj/item/reagent_containers/food/snacks/microwave_act(atom/A)
+/obj/item/reagent_containers/food/snacks/heating_act(atom/A)
 	if(istype(A,/obj/machinery/light/rogue/oven))
 		var/obj/item/result
 		if(cooked_type)
@@ -471,7 +472,7 @@ All foods are distributed among various categories. Use common sense.
 	S.filling_color = filling_color
 	S.update_snack_overlays(src)
 /*
-/obj/item/reagent_containers/food/snacks/microwave_act(obj/machinery/microwave/M)
+/obj/item/reagent_containers/food/snacks/heating_act(obj/machinery/microwave/M)
 	var/turf/T = get_turf(src)
 	var/obj/item/result
 
