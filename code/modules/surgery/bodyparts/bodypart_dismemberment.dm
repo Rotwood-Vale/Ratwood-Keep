@@ -131,13 +131,6 @@
 		bandage = null
 
 	if(!special)
-		if(was_owner.dna)
-			//some mutations require having specific limbs to be kept.
-			for(var/datum/mutation/human/mutation as anything in was_owner.dna.mutations)
-				if(mutation.limb_req != body_zone)
-					continue
-				was_owner.dna.force_lose(mutation)
-
 		for(var/obj/item/organ/organ as anything in was_owner.internal_organs) //internal organs inside the dismembered limb are dropped.
 			var/org_zone = check_zone(organ.zone)
 			if(org_zone != body_zone)

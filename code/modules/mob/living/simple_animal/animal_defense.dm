@@ -126,16 +126,6 @@
 		next_attack_msg.Cut()
 		return TRUE
 
-/mob/living/simple_animal/attack_hulk(mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	playsound(loc, "punch", 25, TRUE, -1)
-	visible_message(span_danger("[user] punches [src]!"), \
-					span_danger("You're punched by [user]!"), null, COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, span_danger("I punch [src]!"))
-	adjustBruteLoss(15)
-
 /mob/living/simple_animal/attack_paw(mob/living/carbon/monkey/M)
 	if(..()) //successful monkey bite.
 		if(stat != DEAD)
@@ -221,18 +211,6 @@
 		if(target.mind)
 			target.mind.attackedme[user.real_name] = world.time
 		user.rogfat_add(15)
-
-/mob/living/simple_animal/attack_slime(mob/living/simple_animal/slime/M)
-	if(..()) //successful slime attack
-		var/damage = rand(15, 25)
-		if(M.is_adult)
-			damage = rand(20, 35)
-		return attack_threshold_check(damage)
-
-/mob/living/simple_animal/attack_drone(mob/living/simple_animal/drone/M)
-	if(M.used_intent.type == INTENT_HARM) //No kicking dogs even as a rogue drone. Use a weapon.
-		return
-	return ..()
 
 /mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = d_type)
 	var/temp_damage = damage

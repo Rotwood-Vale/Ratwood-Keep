@@ -146,7 +146,6 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/proc/generate_ruleset_body(mob/applicant)
 	var/mob/living/carbon/human/new_character = makeBody(applicant)
-	new_character.dna.remove_all_mutations()
 	return new_character
 
 /datum/dynamic_ruleset/midround/from_ghosts/proc/finish_setup(mob/new_character, index)
@@ -208,35 +207,3 @@
 	var/datum/antagonist/traitor/newTraitor = new
 	M.mind.add_antag_datum(newTraitor)
 	return TRUE
-
-//////////////////////////////////////////////
-//                                          //
-//              WIZARD (GHOST)              //
-//                                          //
-//////////////////////////////////////////////
-
-/datum/dynamic_ruleset/midround/from_ghosts/wizard
-	name = "Wizard"
-	antag_datum = /datum/antagonist/wizard
-	antag_flag = ROLE_WIZARD
-	enemy_roles = list("Security Officer","Detective","Head of Security", "Captain")
-	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
-	required_candidates = 1
-	weight = 1
-	cost = 20
-	requirements = list(90,90,70,40,30,20,10,10,10,10)
-	high_population_requirement = 50
-	repeatable = TRUE
-
-/datum/dynamic_ruleset/midround/from_ghosts/wizard/ready(forced = FALSE)
-	if (required_candidates > (dead_players.len + list_observers.len))
-		return FALSE
-	if(GLOB.wizardstart.len == 0)
-		log_admin("Cannot accept Wizard ruleset. Couldn't find any wizard spawn points.")
-		message_admins("Cannot accept Wizard ruleset. Couldn't find any wizard spawn points.")
-		return FALSE
-	return ..()
-
-/datum/dynamic_ruleset/midround/from_ghosts/wizard/finish_setup(mob/new_character, index)
-	..()
-	new_character.forceMove(pick(GLOB.wizardstart))

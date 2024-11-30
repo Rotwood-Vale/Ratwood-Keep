@@ -16,22 +16,15 @@
 	var/slicing_duration = 100  //default time taken to slice the wall
 	var/sheet_type = null
 	var/sheet_amount = 2
-	var/girder_type = /obj/structure/girder
 
 	canSmoothWith = list(
-	/turf/closed/wall,
-	/turf/closed/wall/r_wall,
-	/obj/structure/falsewall,
-	/obj/structure/falsewall/reinforced,
-	/turf/closed/wall/rust,
-	/turf/closed/wall/r_wall/rust)
+	/turf/closed/wall)
 	smooth = SMOOTH_TRUE
 
 	var/list/dent_decals
 
-/turf/closed/wall/examine(mob/user)
-	. += ..()
-//	. += deconstruction_hints(user)
+/turf/closed/wall/attack_tk()
+	return
 
 /turf/closed/wall/proc/deconstruction_hints(mob/user)
 	return "<span class='notice'>The outer plating is <b>welded</b> firmly in place.</span>"
@@ -113,20 +106,6 @@
 		dismantle_wall(1)
 		return
 
-/turf/closed/wall/attack_hulk(mob/user)
-	..()
-	if(prob(hardness))
-		playsound(src, 'sound/blank.ogg', 100, TRUE)
-		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ), forced = "hulk")
-		dismantle_wall(1)
-	else
-		playsound(src, 'sound/blank.ogg', 50, TRUE)
-		add_dent(WALL_DENT_HIT)
-		user.visible_message("<span class='danger'>[user] smashes \the [src]!</span>", \
-					"<span class='danger'>I smash \the [src]!</span>", \
-					"<span class='hear'>I hear a booming smash!</span>")
-	return TRUE
-
 /turf/closed/wall/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -184,17 +163,6 @@
 	return FALSE
 
 /turf/closed/wall/proc/try_wallmount(obj/item/W, mob/user, turf/T)
-	//check for wall mounted frames
-	if(istype(W, /obj/item/wallframe))
-		var/obj/item/wallframe/F = W
-		if(F.try_build(src, user))
-			F.attach(src, user)
-		return TRUE
-	//Poster stuff
-	else if(istype(W, /obj/item/poster))
-		place_poster(W,user)
-		return TRUE
-
 	return FALSE
 
 /turf/closed/wall/proc/try_decon(obj/item/I, mob/user, turf/T)
@@ -210,11 +178,6 @@
 			return TRUE
 
 	return FALSE
-
-/turf/closed/wall/narsie_act(force, ignore_mobs, probability = 20)
-	. = ..()
-	if(.)
-		ChangeTurf(/turf/closed/wall/mineral/cult)
 
 /turf/closed/wall/get_dumping_location(obj/item/storage/source, mob/user)
 	return null

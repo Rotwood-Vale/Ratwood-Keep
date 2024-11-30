@@ -106,12 +106,6 @@
 /turf/open/floor/proc/gets_drilled()
 	return
 
-/turf/open/floor/proc/break_tile_to_plating()
-	var/turf/open/floor/plating/T = make_plating()
-	if(!istype(T))
-		return
-	T.break_tile()
-
 /turf/open/floor/proc/break_tile()
 	if(broken)
 		return
@@ -148,28 +142,7 @@
 		return 1
 	if(..())
 		return 1
-	if(intact && istype(C, /obj/item/stack/tile))
-		try_replace_tile(C, user, params)
 	return 0
-
-/turf/open/floor/crowbar_act(mob/living/user, obj/item/I)
-	if(intact && pry_tile(I, user))
-		return TRUE
-
-/turf/open/floor/proc/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
-	if(T.turf_type == type)
-		return
-	var/obj/item/crowbar/CB = user.is_holding_item_of_type(/obj/item/crowbar)
-	if(!CB)
-		return
-	var/turf/open/floor/plating/P = pry_tile(CB, user, TRUE)
-	if(!istype(P))
-		return
-	P.attackby(T, user, params)
-
-/turf/open/floor/proc/pry_tile(obj/item/I, mob/user, silent = FALSE)
-	I.play_tool_sound(src, 80)
-	return remove_tile(user, silent)
 
 /turf/open/floor/proc/remove_tile(mob/user, silent = FALSE, make_tile = TRUE)
 	if(broken || burnt)

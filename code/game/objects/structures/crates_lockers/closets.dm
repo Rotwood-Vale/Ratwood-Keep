@@ -27,7 +27,6 @@
 	var/max_mob_size = MOB_SIZE_HUMAN //Biggest mob_size accepted by the container
 	var/mob_storage_capacity = 2 // how many human sized mob/living can fit together inside a closet.
 	var/storage_capacity = 30 //This is so that someone can't pack hundreds of items in a locker/crate then open it in a populated area to crash clients.
-	var/cutting_tool = /obj/item/weldingtool
 	var/open_sound = 'sound/misc/cupboard_open.ogg'
 	var/close_sound = 'sound/misc/cupboard_close.ogg'
 	var/open_sound_volume = 100
@@ -218,7 +217,7 @@
 			return FALSE
 		else if(isitem(AM) && !HAS_TRAIT(AM, TRAIT_NODROP))
 			return TRUE
-		else if(!allow_objects && !istype(AM, /obj/effect/dummy/chameleon))
+		else if(!allow_objects)
 			return FALSE
 //		for(var/mob/living/M in contents)
 //			return FALSE

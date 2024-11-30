@@ -558,9 +558,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 	set hidden = 1
 	set src = usr
 
-	if(ismecha(loc))
-		return
-
 	if(incapacitated())
 		return
 
@@ -1082,23 +1079,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/proc/replace_records_name(oldname,newname)
 	return
 
-///update the ID name of this mob
-/mob/proc/replace_identification_name(oldname,newname)
-	var/list/searching = GetAllContents()
-	var/search_id = 1
-	var/search_pda = 1
-
-	for(var/A in searching)
-		if( search_id && istype(A, /obj/item/card/id) )
-			var/obj/item/card/id/ID = A
-			if(ID.registered_name == oldname)
-				ID.registered_name = newname
-				ID.update_label()
-				if(ID.registered_account?.account_holder == oldname)
-					ID.registered_account.account_holder = newname
-				if(!search_pda)
-					break
-				search_id = 0
 
 /mob/proc/update_stat()
 	return
@@ -1131,11 +1111,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(!client.charging && !atkswinging)
 		if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
 			client.mouse_pointer_icon = examine_cursor_icon
-	else if (istype(loc, /obj/vehicle/sealed))
-		var/obj/vehicle/sealed/E = loc
-		if(E.mouse_pointer)
-			client.mouse_pointer_icon = E.mouse_pointer
-
 
 ///This mob is abile to read books
 /mob/proc/is_literate()
@@ -1206,10 +1181,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 		usr.client.remove_spell(src)
 	if(href_list[VV_HK_GIVE_DISEASE])
 		if(!check_rights(NONE))
-			return
-		usr.client.give_disease(src)
-	if(href_list[VV_HK_GIB])
-		if(!check_rights(R_FUN))
 			return
 		usr.client.cmd_admin_gib(src)
 	if(href_list[VV_HK_BUILDMODE])

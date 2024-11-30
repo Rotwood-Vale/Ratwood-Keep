@@ -371,14 +371,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		traitordatum.equip()
 
 
-	switch(new_character.mind.special_role)
-		if(ROLE_WIZARD)
-			new_character.forceMove(pick(GLOB.wizardstart))
-			var/datum/antagonist/wizard/A = new_character.mind.has_antag_datum(/datum/antagonist/wizard,TRUE)
-			A.equip_wizard()
-
-		else
-			SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)//Or we simply equip them.
+	SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)//Or we simply equip them.
 
 	var/msg = span_adminnotice("[admin] has respawned [player_key] as [new_character.real_name].")
 	message_admins(msg)

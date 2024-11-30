@@ -32,14 +32,14 @@
 	UnregisterSignal(owner.current, COMSIG_MOVABLE_HEAR, PROC_REF(handle_hearing))
 	SSticker.mode.traitors -= owner
 	if(!silent && owner.current)
-		to_chat(owner.current,span_danger("I are no longer the [special_role]!"))
+		to_chat(owner.current,"<span class='danger'>I are no longer the [special_role]!</span>")
 	owner.special_role = null
 	return ..()
 
 /datum/antagonist/traitor/proc/handle_hearing(datum/source, list/hearing_args)
 	var/message = hearing_args[HEARING_MESSAGE]
-	message = GLOB.syndicate_code_phrase_regex.Replace(message, span_blue("$1"))
-	message = GLOB.syndicate_code_response_regex.Replace(message, span_red("$1"))
+	message = GLOB.syndicate_code_phrase_regex.Replace(message, "<span class='blue'>$1</span>")
+	message = GLOB.syndicate_code_response_regex.Replace(message, "<span class='red'>$1</span>")
 	hearing_args[HEARING_MESSAGE] = message
 
 /datum/antagonist/traitor/proc/add_objective(datum/objective/O)
@@ -61,14 +61,6 @@
 		is_hijacker = prob(10)
 	var/martyr_chance = prob(20)
 	var/objective_count = is_hijacker 			//Hijacking counts towards number of objectives
-	if(!SSticker.mode.exchange_blue && SSticker.mode.traitors.len >= 8) 	//Set up an exchange if there are enough traitors
-		if(!SSticker.mode.exchange_red)
-			SSticker.mode.exchange_red = owner
-		else
-			SSticker.mode.exchange_blue = owner
-			assign_exchange_role(SSticker.mode.exchange_red)
-			assign_exchange_role(SSticker.mode.exchange_blue)
-		objective_count += 1					//Exchange counts towards number of objectives
 	var/toa = CONFIG_GET(number/traitor_objectives_amount)
 	for(var/i = objective_count, i < toa, i++)
 		forge_single_objective()
@@ -152,7 +144,7 @@
 			.=2
 
 /datum/antagonist/traitor/greet()
-	to_chat(owner.current, span_alertsyndie("I are the [owner.special_role]."))
+	to_chat(owner.current, "<span class='alertsyndie'>I are the [owner.special_role].</span>")
 	owner.announce_objectives()
 	if(should_give_codewords)
 		give_codewords()
@@ -166,13 +158,11 @@
 	. = ..()
 	var/mob/living/M = mob_override || owner.current
 	add_antag_hud(antag_hud_type, antag_hud_name, M)
-	handle_clown_mutation(M, mob_override ? null : "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming myself.")
 
 /datum/antagonist/traitor/remove_innate_effects(mob/living/mob_override)
 	. = ..()
 	var/mob/living/M = mob_override || owner.current
 	remove_antag_hud(antag_hud_type, M)
-	handle_clown_mutation(M, removing = FALSE)
 
 /datum/antagonist/traitor/proc/give_codewords()
 	if(!owner.current)
@@ -190,50 +180,11 @@
 	antag_memory += "<b>Code Response</b>: <span class='red'>[responses]</span><br>"
 
 	to_chat(traitor_mob, "Use the codewords during regular conversation to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
-	to_chat(traitor_mob, span_alertwarning("I memorize the codewords, allowing you to recognise them when heard."))
+	to_chat(traitor_mob, "<span class='alertwarning'>I memorize the codewords, allowing you to recognise them when heard.</span>")
 
 /datum/antagonist/traitor/proc/equip(silent = FALSE)
 	if(traitor_kind == TRAITOR_HUMAN)
 		owner.equip_traitor(employer, silent, src)
-
-/datum/antagonist/traitor/proc/assign_exchange_role()
-	//set faction
-	var/faction = "red"
-	if(owner == SSticker.mode.exchange_blue)
-		faction = "blue"
-
-	//Assign objectives
-	var/datum/objective/steal/exchange/exchange_objective = new
-	exchange_objective.set_faction(faction,((faction == "red") ? SSticker.mode.exchange_blue : SSticker.mode.exchange_red))
-	exchange_objective.owner = owner
-	add_objective(exchange_objective)
-
-	if(prob(20))
-		var/datum/objective/steal/exchange/backstab/backstab_objective = new
-		backstab_objective.set_faction(faction)
-		backstab_objective.owner = owner
-		add_objective(backstab_objective)
-
-	//Spawn and equip documents
-	var/mob/living/carbon/human/mob = owner.current
-
-	var/obj/item/folder/syndicate/folder
-	if(owner == SSticker.mode.exchange_red)
-		folder = new/obj/item/folder/syndicate/red(mob.loc)
-	else
-		folder = new/obj/item/folder/syndicate/blue(mob.loc)
-
-	var/list/slots = list (
-		"backpack" = SLOT_IN_BACKPACK,
-		"left pocket" = SLOT_L_STORE,
-		"right pocket" = SLOT_R_STORE
-	)
-
-	var/where = "At your feet"
-	var/equipped_slot = mob.equip_in_one_of_slots(folder, slots)
-	if (equipped_slot)
-		where = "In your [equipped_slot]"
-	to_chat(mob, "<BR><BR><span class='info'>[where] is a folder containing <b>secret documents</b> that another Syndicate group wants. We have set up a meeting with one of their agents on station to make an exchange. Exercise extreme caution as they cannot be trusted and may be hostile.</span><BR>")
 
 //TODO Collate
 /datum/antagonist/traitor/roundend_report()
@@ -269,9 +220,9 @@
 	var/special_role_text = lowertext(name)
 
 	if(traitorwin)
-		result += span_greentext("The [special_role_text] was successful!")
+		result += "<span class='greentext'>The [special_role_text] was successful!</span>"
 	else
-		result += span_redtext("The [special_role_text] has failed!")
+		result += "<span class='redtext'>The [special_role_text] has failed!</span>"
 		SEND_SOUND(owner.current, 'sound/blank.ogg')
 
 	return result.Join("<br>")

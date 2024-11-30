@@ -48,23 +48,11 @@
 	dna.transfer_identity(O)
 	O.updateappearance(icon_update=0)
 
-	if(tr_flags & TR_KEEPSE)
-		O.dna.mutation_index = dna.mutation_index
-		O.dna.set_se(1, GET_INITIALIZED_MUTATION(RACEMUT))
-
 	if(suiciding)
 		O.set_suicide(suiciding)
 	if(hellbound)
 		O.hellbound = hellbound
 	O.a_intent = INTENT_HARM
-
-	//keep viruses?
-	if (tr_flags & TR_KEEPVIRUS)
-		O.diseases = diseases
-		diseases = list()
-		for(var/thing in O.diseases)
-			var/datum/disease/D = thing
-			D.affected_mob = O
 
 	//keep damage?
 	if (tr_flags & TR_KEEPDAMAGE)
@@ -210,24 +198,10 @@
 		O.real_name = O.dna.real_name
 	O.name = O.real_name
 
-	if(tr_flags & TR_KEEPSE)
-		O.dna.mutation_index = dna.mutation_index
-		O.dna.set_se(0, GET_INITIALIZED_MUTATION(RACEMUT))
-		O.domutcheck()
-
 	if(suiciding)
 		O.set_suicide(suiciding)
 	if(hellbound)
 		O.hellbound = hellbound
-
-	//keep viruses?
-	if (tr_flags & TR_KEEPVIRUS)
-		O.diseases = diseases
-		diseases = list()
-		for(var/thing in O.diseases)
-			var/datum/disease/D = thing
-			D.affected_mob = O
-		O.med_hud_set_status()
 
 	//keep damage?
 	if (tr_flags & TR_KEEPDAMAGE)

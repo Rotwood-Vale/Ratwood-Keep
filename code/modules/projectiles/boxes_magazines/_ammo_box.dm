@@ -8,7 +8,6 @@
 	item_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
-	custom_materials = list(/datum/material/iron = 30000)
 	throwforce = 2
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 1
@@ -34,14 +33,6 @@
 
 /obj/item/ammo_box/Initialize()
 	. = ..()
-	if (!bullet_cost)
-		for (var/material in custom_materials)
-			var/material_amount = custom_materials[material]
-			LAZYSET(base_cost, material, (material_amount * 0.10))
-
-			material_amount *= 0.90 // 10% for the container
-			material_amount /= max_ammo
-			LAZYSET(bullet_cost, material, material_amount)
 	if(!start_empty)
 		for(var/i = 1, i <= max_ammo, i++)
 			stored_ammo += new ammo_type(src)
@@ -106,7 +97,7 @@
 
 	if(num_loaded)
 		if(!silent)
-			to_chat(user, span_notice("I load [num_loaded] shell\s into \the [src]!"))
+			to_chat(user, "<span class='notice'>I load [num_loaded] shell\s into \the [src]!</span>")
 			playsound(src, 'sound/blank.ogg', 60, TRUE)
 		A.update_icon()
 		update_icon()
@@ -119,7 +110,7 @@
 		if(!user.is_holding(src) || !user.put_in_hands(A))	//incase they're using TK
 			A.bounce_away(FALSE, NONE)
 		playsound(src, 'sound/blank.ogg', 60, TRUE)
-		to_chat(user, span_notice("I remove a round from [src]!"))
+		to_chat(user, "<span class='notice'>I remove a round from [src]!</span>")
 		update_icon()
 
 /obj/item/ammo_box/update_icon()
@@ -130,11 +121,6 @@
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
 	desc = ""
-	for (var/material in bullet_cost)
-		var/material_amount = bullet_cost[material]
-		material_amount = (material_amount*stored_ammo.len) + base_cost[material]
-		custom_materials[material] = material_amount
-	set_custom_materials(custom_materials)//make sure we setup the correct properties again
 
 ///Count of number of bullets in the magazine
 /obj/item/ammo_box/magazine/proc/ammo_count(countempties = TRUE)

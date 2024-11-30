@@ -488,9 +488,6 @@
 /datum/mind/proc/remove_traitor()
 	remove_antag_datum(/datum/antagonist/traitor)
 
-/datum/mind/proc/remove_wizard()
-	remove_antag_datum(/datum/antagonist/wizard)
-	special_role = null
 
 /datum/mind/proc/remove_all_antag() //For the Lazy amongst us.
 	remove_traitor()
@@ -525,21 +522,16 @@
 		all_objectives |= A.objectives
 
 	if(all_objectives.len)
-		output += "\n<B>Objectives:</B>"
+		output += "<B>Objectives:</B>"
 		var/obj_count = 1
 		for(var/datum/objective/objective in all_objectives)
-			output += "\n<B>[objective.flavor] #[obj_count++]</B>: [objective.explanation_text]"
+			output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
 //			var/list/datum/mind/other_owners = objective.get_owners() - src
 //			if(other_owners.len)
 //				output += "<ul>"
 //				for(var/datum/mind/M in other_owners)
 //					output += "<li>Conspirator: [M.name]</li>"
 //				output += "</ul>"
-
-	if(window)
-		recipient << browse(output,"window=memory")
-	else if(all_objectives.len || memory)
-		to_chat(recipient, "<i>[output]</i>")
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))
@@ -700,11 +692,6 @@
 	if(!(has_antag_datum(/datum/antagonist/traitor)))
 		add_antag_datum(/datum/antagonist/traitor)
 
-/datum/mind/proc/make_Wizard()
-	if(!has_antag_datum(/datum/antagonist/wizard))
-		special_role = ROLE_WIZARD
-		assigned_role = ROLE_WIZARD
-		add_antag_datum(/datum/antagonist/wizard)
 
 /datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S)
 	if(!S)
