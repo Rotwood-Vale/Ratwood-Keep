@@ -2689,11 +2689,6 @@
 /obj/structure/chair/bench/couchablack/r,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
-"cpm" = (
-/turf/closed/wall/mineral/rogue/stone{
-	opacity = 0
-	},
-/area/rogue/indoors/town/garrison)
 "cpn" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/rogueweapon/shovel,
@@ -66374,7 +66369,7 @@ hRm
 hXp
 jqw
 xXs
-cpm
+hRm
 ruV
 osd
 vjF
@@ -66531,7 +66526,7 @@ hRm
 wOS
 pkG
 sjW
-cpm
+hRm
 vqp
 vqp
 vqp
@@ -66841,7 +66836,7 @@ oUz
 oUz
 iXt
 oUz
-oUz
+hRm
 xtL
 uTA
 pkG
@@ -66998,7 +66993,7 @@ oUz
 oUz
 dZn
 uEa
-oUz
+hRm
 hhg
 mVa
 uEp
