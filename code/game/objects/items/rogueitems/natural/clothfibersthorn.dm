@@ -367,7 +367,7 @@
 				if(!do_after(user, 20))
 					break
 				S = new /obj/item/grown/log/tree/stake(T)
-a				if(holding)
+				if(holding)
 					user.doUnEquip(ST, TRUE, T, silent = TRUE)
 				qdel(ST)
 			else
