@@ -318,7 +318,7 @@
 	name = "Purest Moondust"
 	description = ""
 	color = "#bfc3b5"
-	overdose_threshold = 50
+	overdose_threshold = 19 
 	metabolization_rate = 0.2
 
 /datum/reagent/moondust_purest/overdose_process(mob/living/M)
