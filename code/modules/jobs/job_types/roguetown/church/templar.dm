@@ -59,6 +59,7 @@
 		if("Ravox")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
+			cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
 		if("Eora")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
 			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
