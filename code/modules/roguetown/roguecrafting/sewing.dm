@@ -255,6 +255,62 @@
 	name = "tabard (crusader) - (2 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/tabard/crusader)
 
+/datum/crafting_recipe/roguetown/sewing/templar/astratan
+	name = "astrata tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/templar/astratan)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/templar/necran
+	name = "noc tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/templar/necran)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/crusader/dendor
+	name = "dendor tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/tabard/crusader/dendor)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/crusader/necra
+	name = "necra tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/templar/necran)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/templar/malummite
+	name = "malum tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/templar/malummite)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/crusader/eora
+	name = "eora tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/tabard/crusader/eora)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/crusader/pestra
+	name = "pestra tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/tabard/crusader/pestra)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/crusader/ravox
+	name = "ravox tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/tabard/crusader/ravox)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
 /* craftdif of 4 EXPERT */
 
 /datum/crafting_recipe/roguetown/sewing/stockdress
