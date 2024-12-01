@@ -723,20 +723,20 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/eoramask
-	name = "eora mask - - (4 silk; EXPERT)"
+	name = "eora mask - (3 silk, silver ingot; EXPERT)"
 	result = list(/obj/item/clothing/head/roguetown/eoramask)
-	reqs = list(/obj/item/ingot/silver,
-				/obj/item/natural/silk = 4)
+	reqs = list(/obj/item/ingot/silver = 1,
+				/obj/item/natural/silk = 3)
 	craftdiff = 3
-	sellprice = 20
+	sellprice = 75
 
 /datum/crafting_recipe/roguetown/sewing/eorarobes
-	name = "eora robes - - (2 cloth, silk; EXPERT)"
+	name = "eora robes - (3 cloth, silk; EXPERT)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/eora)
-	reqs = list(/obj/item/natural/cloth = 2,
+	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
-	sellprice = 20
+
 
 /* craftdif of 6 = LEGENDARY */
 
