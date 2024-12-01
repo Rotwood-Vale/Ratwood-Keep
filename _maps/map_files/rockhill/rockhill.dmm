@@ -6980,7 +6980,11 @@
 	icon_state = "churchtable_mid_alt"
 	},
 /obj/item/clothing/neck/roguetown/psicross{
-	pixel_y = 6
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/obj/item/clothing/neck/roguetown/psicross/ravox{
+	pixel_x = 13
 	},
 /turf/open/floor/rogue/tile/bfloorz,
 /area/rogue/indoors/town/church)
@@ -9255,10 +9259,15 @@
 	},
 /area/rogue/indoors/town/dwarfin)
 "hhw" = (
-/obj/item/clothing/neck/roguetown/psicross/astrata,
-/obj/item/clothing/neck/roguetown/psicross/astrata,
+/obj/item/clothing/neck/roguetown/psicross/astrata{
+	pixel_x = -5
+	},
 /obj/structure/table/church/m{
 	icon_state = "churchtable_mid_alt"
+	},
+/obj/item/clothing/neck/roguetown/psicross/malum{
+	pixel_y = 10;
+	pixel_x = 10
 	},
 /turf/open/floor/rogue/tile/bfloorz,
 /area/rogue/indoors/town/church)
@@ -20928,6 +20937,9 @@
 /obj/item/clothing/neck/roguetown/psicross/necra{
 	pixel_x = 7;
 	pixel_y = 4
+	},
+/obj/item/clothing/neck/roguetown/psicross/pestra{
+	pixel_x = -7
 	},
 /turf/open/floor/rogue/tile/bfloorz,
 /area/rogue/indoors/town/church)
