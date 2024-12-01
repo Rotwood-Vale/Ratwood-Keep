@@ -115,6 +115,19 @@
 
 	check_cremation()
 
+	//Seelie luck aura
+	if(isseelie(src) && !IsSleeping())
+		for(var/mob/living/carbon/human/H in view(1, src))
+			if(!H || isseelie(H))
+				continue
+			switch(src.aura)
+				if(FALSE)
+					H.apply_status_effect(/datum/status_effect/buff/seelie/sad)
+					H.remove_status_effect(/datum/status_effect/buff/seelie/happy)
+				if(TRUE)
+					H.apply_status_effect(/datum/status_effect/buff/seelie/happy)
+					H.remove_status_effect(/datum/status_effect/buff/seelie/sad)
+
 	if(stat != DEAD)
 		return 1
 

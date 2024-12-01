@@ -87,6 +87,8 @@
 			change_stat("fortune", -3)
 			H.voice_color = "c71d76"
 			set_eye_color(H, "#c71d76", "#c71d76")
+		if(isseelie(src))	//Check necessary to prevent seelie getting default stats when no other changes apply
+			change_stat("strength", -9)
 
 /mob/living/proc/change_stat(stat, amt, index)
 	if(!stat)
