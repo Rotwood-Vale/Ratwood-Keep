@@ -98,7 +98,7 @@
 			if("Malum")
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 				beltr = /obj/item/rogueweapon/mace/warhammer/steel
-		else
+			else
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 				beltr = /obj/item/rogueweapon/sword/long
 		H.change_stat("strength", 3)
