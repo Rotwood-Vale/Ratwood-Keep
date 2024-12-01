@@ -233,6 +233,12 @@
 	. = 1
 
 /datum/reagent/ozium/on_mob_life(mob/living/carbon/M)
+	if(M.reagents.has_reagent(/datum/reagent/moondust) || M.reagents.has_reagent(/datum/reagent/moondust_purest))
+		M.Dizzy(10)
+		M.Jitter(5)
+		M.slurring += 3
+		M.confused += 2
+		M.losebreath += 2
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/ozium)
@@ -258,7 +264,10 @@
 
 /datum/reagent/moondust
 	name = "Moondust"
-
+	description = ""
+	color = "#bfc3b5"
+	overdose_threshold = 16
+	metabolization_rate = 0.2
 
 /datum/reagent/moondust/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.25*REM, 0)
@@ -276,10 +285,13 @@
 
 /datum/reagent/moondust/on_mob_life(mob/living/carbon/M)
 	narcolepsy_drug_up(M)
+	M.Sleeping(-40)
 	if(M.reagents.has_reagent(/datum/reagent/moondust_purest))
-		M.Sleeping(40, 0)
-	else
-		M.Sleeping(-40)
+		overdosed = TRUE
+		M.Jitter(5)
+		M.losebreath += 1 //This doesn't kill the user, the overdose does
+		if(prob(10))
+			to_chat(M, span_warning("[pick("MY HEART HURTS!!", "Oh fuck... Oh fuck.", "IM DYING!!")]"))
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/moondust)
@@ -309,7 +321,7 @@
 	name = "Purest Moondust"
 	description = ""
 	color = "#bfc3b5"
-	overdose_threshold = 50
+	overdose_threshold = 19 
 	metabolization_rate = 0.2
 
 /datum/reagent/moondust_purest/overdose_process(mob/living/M)
@@ -331,10 +343,7 @@
 
 /datum/reagent/moondust_purest/on_mob_life(mob/living/carbon/M)
 	narcolepsy_drug_up(M)
-	if(M.reagents.has_reagent(/datum/reagent/moondust))
-		M.Sleeping(40, 0)
-	else
-		M.Sleeping(-40)
+	M.Sleeping(-40)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	M.apply_status_effect(/datum/status_effect/buff/moondust_purest)
