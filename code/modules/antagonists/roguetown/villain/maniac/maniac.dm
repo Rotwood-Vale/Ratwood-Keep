@@ -22,7 +22,6 @@
 		TRAIT_STEELHEARTED,
 		TRAIT_NOMOOD,
 		TRAIT_SCHIZO_AMBIENCE,
-		TRAIT_NOROGSTAM,
 		TRAIT_DARKVISION,
 	)
 	/// Traits that only get applied in the final sequence
@@ -94,9 +93,9 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
 			STAEND = dreamer.STAEND
-			dreamer.STASTR = 18
-			dreamer.STACON = 18
-			dreamer.STAEND = 18
+			dreamer.STASTR = 16
+			dreamer.STACON = 16
+			dreamer.STAEND = 16
 			if(heart) // clear any inscryptions, in case of being made maniac midround
 				heart.inscryptions = list()
 				heart.inscryption_keys = list()
