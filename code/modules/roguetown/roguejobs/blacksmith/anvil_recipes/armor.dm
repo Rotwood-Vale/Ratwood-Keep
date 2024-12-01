@@ -326,6 +326,20 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/dendor
 	craftdiff = 2
 
+/datum/anvil_recipe/armor/steel/ravoxian
+	name = "Ravoxian Helmet (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
+	craftdiff = 2
+
+/datum/anvil_recipe/armor/steel/eoran
+	name = "Eoran Helmet (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
+	craftdiff = 2
+
 /datum/anvil_recipe/armor/steel/belt_steel
 	name = "Steel Belt"
 	req_bar = /obj/item/ingot/steel
