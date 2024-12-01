@@ -267,10 +267,10 @@
 /obj/projectile/magic/aoe/rogue2
 	name = "spitfire"
 	icon_state = "fireball"
-	exp_heavy = 0
-	exp_light = 0
-	exp_flash = 1
-	exp_fire = 0
+	var/exp_heavy = 0
+	var/exp_light = 0
+	var/exp_flash = 1
+	var/exp_fire = 0
 	damage = 15	//no armor really has burn protection. So assuming all three connect, 45 burn damage- average damage of fireball with firestacks nerfed. Thats a big 'if' however. Notably, won't cause wounds,
 	damage_type = BURN
 	homing = TRUE

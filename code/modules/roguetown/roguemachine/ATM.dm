@@ -11,6 +11,9 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
+	if(H.mind?.special_role == "Bandit")
+		to_chat(H, "<span class='warning'>The idea of giving hard won coin to nobles repulses me!</span>")
+		return
 
 	if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
 		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
