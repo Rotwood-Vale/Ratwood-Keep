@@ -23,7 +23,7 @@
 
 /datum/outfit/job/roguetown/shophand/pre_equip(mob/living/carbon/human/H)
 	..()
-	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, "[type]")
+	ADD_TRAIT(H, RTRAIT_SEEPRICES, type)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
