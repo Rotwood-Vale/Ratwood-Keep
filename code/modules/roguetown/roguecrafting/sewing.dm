@@ -42,13 +42,13 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/sewing/ropecollar
-	name = "rope collar"
-	result = list(/obj/item/clothing/neck/roguetown/ropecollar = 1)
+	name = "rope collar (rope) - (1 rope; NONE)"
+	result = list(/obj/item/clothing/neck/roguetown/collar = 1)
 	reqs = list(/obj/item/rope = 1)
 	craftdiff = 0
 /datum/crafting_recipe/roguetown/sewing/leash
-	name = "leash"
-	result = list(/obj/item/clothing/erp_leash = 1)
+	name = "rope leash (rope) - (1 rope; NONE)"
+	result = list(/obj/item/leash = 1)
 	reqs = list(/obj/item/rope = 1)
 	craftdiff = 0
 
@@ -420,6 +420,12 @@
 /datum/crafting_recipe/roguetown/sewing/belt
 	name = "leather belt (leather; APPRENTICE)"
 	result = /obj/item/storage/belt/rogue/leather
+	reqs = list(/obj/item/natural/hide/cured = 1)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/sewing/collarleather
+	name = "leather belt (leather; APPRENTICE)"
+	result = /obj/item/clothing/neck/roguetown/collar/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	craftdiff = 2
 

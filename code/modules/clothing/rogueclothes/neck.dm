@@ -148,6 +148,10 @@
 	name = "cursed collar"
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 	clothing_flags = null
+	icon = 'modular/icons/obj/items/leashes_collars.dmi'
+	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
+	icon_state = "collar_leather"
+	color = "#351101"
 
 /obj/item/clothing/neck/roguetown/gorget/prisoner/dropped(mob/living/carbon/human/user)
 	. = ..()
@@ -307,7 +311,7 @@
 	sellprice = 15
 	anvilrepair = /datum/skill/craft/blacksmithing
 
-/obj/item/clothing/neck/roguetown/ropecollar
+/obj/item/clothing/neck/roguetown/collar
 	name = "rope collar"
 	desc = ""
 	icon = 'modular/icons/obj/items/leashes_collars.dmi'
@@ -316,4 +320,15 @@
 	color = "#d7bb9f"
 	//dropshrink = 0.75
 	slot_flags = ITEM_SLOT_NECK
-	sellprice = 10
+	salvage_amount = 1
+	salvage_result = /obj/item/rope
+
+/obj/item/clothing/neck/roguetown/collar/leather
+	name = "leather collar"
+	desc = ""
+	icon_state = "collar_leather"
+	color = "#442203"
+	//dropshrink = 0.75
+	slot_flags = ITEM_SLOT_NECK
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
