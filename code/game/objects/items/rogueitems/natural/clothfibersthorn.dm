@@ -343,6 +343,40 @@
 	icon2step = 7
 	icon3 = "stickbundle3"
 
+/obj/item/natural/bundle/stick/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	user.changeNext_move(CLICK_CD_MELEE)
+	if(user.used_intent?.blade_class == BCLASS_CUT)
+		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
+		user.visible_message(span_info("[user] starts sharpening the sticks in [src]..."), span_info("I start sharpening the sticks in [src]...."))
+		for(var/i in 1 to (amount - 1))
+			if(!do_after(user, 20))
+				break
+			var/turf/T = get_turf(user.loc)
+			var/obj/item/grown/log/tree/stake/S = new /obj/item/grown/log/tree/stake(T)
+			amount--
+			// If there's only one stick left in the bundle...
+			if (amount == 1)
+				// Replace the bundle with a single stick
+				var/obj/item/ST = new stacktype(T)
+				if(user.is_holding(src))
+					user.doUnEquip(src, TRUE, T, silent = TRUE)
+				qdel(src)
+				var/holding = user.put_in_hands(ST)
+				// And automatically have us try and carve the last new stick, assuming we're still holding it!
+				if(!do_after(user, 20))
+					break
+				S = new /obj/item/grown/log/tree/stake(T)
+				if(holding)
+					user.doUnEquip(ST, TRUE, T, silent = TRUE)
+				qdel(ST)
+			else
+				update_bundle()
+			user.put_in_hands(S)
+			S.pixel_x = rand(-3, 3)
+			S.pixel_y = rand(-3, 3)
+		return
+
 /obj/item/natural/bundle/bone
 	name = "stack of bones"
 	icon_state = "bonestack1"
