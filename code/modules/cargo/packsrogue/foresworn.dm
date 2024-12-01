@@ -32,7 +32,7 @@
 
 /datum/supply_pack/rogue/bandit/foresworn/coif/steel
 	name = "Steel Coif"
-	cost = 100
+	cost = 80
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
 /datum/supply_pack/rogue/bandit/foresworn/chainlegs

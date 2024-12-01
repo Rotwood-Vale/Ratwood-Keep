@@ -70,12 +70,12 @@
 
 /datum/supply_pack/rogue/bandit/Stuff/masks
 	name = "Steel Mask"
-	cost = 40
+	cost = 80
 	contains = list(/obj/item/clothing/mask/rogue/facemask/steel)
 
 /datum/supply_pack/rogue/bandit/Stuff/maskhound
 	name = "Hound Mask"
-	cost = 40
+	cost = 80
 	contains = list(/obj/item/clothing/mask/rogue/facemask/steel/hound)
 
 /datum/supply_pack/rogue/bandit/Stuff/maskgold
