@@ -2,6 +2,8 @@
 	category = CATEGORY_CARBON
 	weight = WEIGHT_MOB
 
+/datum/keybinding/carbon/can_use(client/user)
+	return iscarbon(user.mob)
 
 /datum/keybinding/carbon/toggle_throw_mode
 	hotkey_keys = list("R")

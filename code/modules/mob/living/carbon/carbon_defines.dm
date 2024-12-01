@@ -90,3 +90,4 @@
 	var/vitae_bank = 9000
 
 	var/aura = TRUE //Used to switch between good luck and bad luck auras
+	var/next_smell = 0
