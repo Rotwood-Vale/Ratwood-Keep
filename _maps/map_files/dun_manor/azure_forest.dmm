@@ -2255,12 +2255,6 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)
-"rn" = (
-/obj/effect/landmark/threatspawner{
-	spawn_range = 8
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/beach/forest)
 "ro" = (
 /obj/structure/fluff/railing/fence,
 /turf/open/floor/rogue/grass,
@@ -28508,7 +28502,7 @@ vk
 vk
 vk
 vk
-rn
+vk
 OA
 RI
 Rv

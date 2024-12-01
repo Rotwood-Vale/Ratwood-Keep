@@ -12,8 +12,8 @@
 *	cycle repeats for the rest of the round.
 */
 
-GLOBAL_VAR_INIT(threatspawner_cd_min, 8 MINUTES)
-GLOBAL_VAR_INIT(threatspawner_cd_max, 15 MINUTES)
+GLOBAL_VAR_INIT(threatspawner_cd_min, 20 MINUTES)
+GLOBAL_VAR_INIT(threatspawner_cd_max, 25 MINUTES)
 // Determines different min/max possible ranges for # of enemies spawned.
 // Makes it much more common that only a couple enemies spawn
 // while making it unlikely but possible that a bunch of enemies spawn as a !!FUN SURPRISE!!
