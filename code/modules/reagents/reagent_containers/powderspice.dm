@@ -264,7 +264,10 @@
 
 /datum/reagent/moondust
 	name = "Moondust"
-
+	description = ""
+	color = "#bfc3b5"
+	overdose_threshold = 16
+	metabolization_rate = 0.2
 
 /datum/reagent/moondust/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.25*REM, 0)
