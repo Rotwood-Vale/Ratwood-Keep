@@ -94,12 +94,13 @@
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		if("Malum")
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-			beltr = /obj/item/rogueweapon/mace/warhammer/steel
+		switch(H.patron.name)
+			if("Malum")
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+				beltr = /obj/item/rogueweapon/mace/warhammer/steel
 		else
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			beltr = /obj/item/rogueweapon/sword/long
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+				beltr = /obj/item/rogueweapon/sword/long
 		H.change_stat("strength", 3)
 		H.change_stat("perception", 2)
 		H.change_stat("intelligence", 2)
