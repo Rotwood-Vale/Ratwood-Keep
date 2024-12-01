@@ -41,6 +41,17 @@
 				/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/ropecollar
+	name = "rope collar"
+	result = list(/obj/item/clothing/neck/roguetown/ropecollar = 1)
+	reqs = list(/obj/item/rope = 1)
+	craftdiff = 0
+/datum/crafting_recipe/roguetown/sewing/leash
+	name = "leash"
+	result = list(/obj/item/clothing/erp_leash = 1)
+	reqs = list(/obj/item/rope = 1)
+	craftdiff = 0
+
 /* craftdif of 1 = NOVICE */
 
 /datum/crafting_recipe/roguetown/sewing/knitcap

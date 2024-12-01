@@ -117,7 +117,7 @@ Icons, maybe?
 	if(C.has_status_effect(/datum/status_effect/leash_target)) //If the pet is already leashed, do not leash them. For the love of god.
 		to_chat(user, span_notice("[C] has already been leashed."))
 		return
-	if(istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/slavecollar) || istype(C.get_item_by_slot(SLOT_HANDCUFFED), /obj/item/rope/chain))
+	if(istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/ropecollar) || istype(C.get_item_by_slot(SLOT_HANDCUFFED), /obj/item/rope/chain))
 		var/leashtime = 50
 		if(C.handcuffed)
 			leashtime = 5

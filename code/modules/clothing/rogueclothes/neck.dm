@@ -306,3 +306,5 @@
 	resistance_flags = FIRE_PROOF
 	sellprice = 15
 	anvilrepair = /datum/skill/craft/blacksmithing
+
+
