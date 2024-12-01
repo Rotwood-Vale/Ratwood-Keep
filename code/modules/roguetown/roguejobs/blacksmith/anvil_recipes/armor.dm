@@ -334,9 +334,8 @@
 	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/eoran
-	name = "Eoran Helmet (+1 Steel)"
+	name = "Eoran Helmet"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
 	craftdiff = 2
 
