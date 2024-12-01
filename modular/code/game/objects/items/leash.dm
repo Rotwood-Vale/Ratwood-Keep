@@ -71,8 +71,9 @@ Icons, maybe?
 	name = "leash"
 	desc = "A simple rope, with a knot at the end for easy attachment onto bindings."
 	icon = 'modular/icons/obj/items/leashes_collars.dmi'
-	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
 	icon_state = "leash"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	equip_sound = 'sound/foley/equip/rummaging-01.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	throw_range = 4
