@@ -7521,6 +7521,16 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"fNA" = (
+/obj/structure/rack/rogue/shelf/big{
+	pixel_y = 0
+	},
+/obj/item/clothing/suit/roguetown/shirt/robe/eora/alt,
+/obj/item/clothing/suit/roguetown/shirt/robe/eora,
+/obj/item/clothing/head/roguetown/eoramask,
+/obj/item/clothing/head/peaceflower,
+/turf/open/floor/rogue/ruinedwood/chevron,
+/area/rogue/indoors/town/church)
 "fNB" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
@@ -20758,16 +20768,6 @@
 /obj/item/rogueweapon/mace/woodclub/crafted,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/manor)
-"qib" = (
-/obj/structure/rack/rogue/shelf/big{
-	pixel_y = 0
-	},
-/obj/item/clothing/suit/roguetown/shirt/robe/eora/alt,
-/obj/item/clothing/suit/roguetown/shirt/robe/eora,
-/obj/item/clothing/head/roguetown/eoramask,
-/obj/item/clothing/head/peaceflower,
-/turf/open/floor/rogue/ruinedwood/chevron,
-/area/rogue/indoors/town/church)
 "qil" = (
 /obj/structure/bars/passage{
 	redstone_id = "tourneytop"
@@ -29596,13 +29596,6 @@
 /obj/item/rogueweapon/sword,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"wZV" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/obj/item/clothing/head/roguetown/eoramask,
-/turf/open/floor/rogue/churchrough,
-/area/rogue/indoors/town/church/chapel)
 "xaa" = (
 /obj/structure/mineral_door/wood{
 	lockid = "fancyroomi";
@@ -424083,7 +424076,7 @@ fZJ
 oUZ
 vNq
 vNq
-wZV
+bsv
 dGr
 dGr
 dGr
@@ -429720,7 +429713,7 @@ vjF
 eCn
 eCn
 eCn
-qib
+fNA
 pHA
 uKB
 uKB
