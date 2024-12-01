@@ -23,6 +23,7 @@
 		TRAIT_NOMOOD,
 		TRAIT_SCHIZO_AMBIENCE,
 		TRAIT_DARKVISION,
+		TRAIT_NOSLEEP, //Buddy, You're trying to wake up.
 	)
 	/// Traits that only get applied in the final sequence
 	var/static/list/final_traits = list(
@@ -102,7 +103,8 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 				heart.maniacs2wonder_ids = list()
 				heart.maniacs = list()
 			dreamer.remove_stress(/datum/stressevent/saw_wonder)
-			dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
+			dreamer.remove_curse(/datum/curse/zizo, TRUE)
+		//	dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
 		for(var/trait in applied_traits)
 			ADD_TRAIT(owner.current, trait, "[type]")
 		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)

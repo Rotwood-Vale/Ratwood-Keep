@@ -158,7 +158,8 @@
 	if(H && !QDELETED(dream_master))
 		if(!length(H.maniacs))
 			V.add_stress(/datum/stressevent/saw_wonder)
-			V.add_client_colour(/datum/client_colour/maniac_marked)
+			V.add_curse(/datum/curse/zizo, TRUE)
+		//	V.add_client_colour(/datum/client_colour/maniac_marked) //Hurt peoples's eyes, we instead give them zizo's curse which make them experience the maniac's hallucinations, how cool.
 		if(!(dream_master in H.maniacs))
 			var/inscryption = "[key_text] - [key_num]"
 			LAZYSET(H.inscryptions, dream_master, inscryption)
