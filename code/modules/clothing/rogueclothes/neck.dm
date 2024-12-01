@@ -307,4 +307,13 @@
 	sellprice = 15
 	anvilrepair = /datum/skill/craft/blacksmithing
 
-
+/obj/item/clothing/neck/roguetown/ropecollar
+	name = "rope collar"
+	desc = ""
+	icon = 'modular/icons/obj/items/leashes_collars.dmi'
+	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
+	icon_state = "collar_rope"
+	color = "#d7bb9f"
+	//dropshrink = 0.75
+	slot_flags = ITEM_SLOT_NECK
+	sellprice = 10
