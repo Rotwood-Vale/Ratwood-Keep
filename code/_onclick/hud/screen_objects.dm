@@ -1518,34 +1518,31 @@
 /atom/movable/screen/stress/update_icon()
 	cut_overlays()
 	var/state2use = "stress1"
-	if(ishuman(hud.mymob))
-		var/mob/living/carbon/H = hud.mymob
-		if(H.stress)
-			state2use = "stress1"
-			if(H.stress == STRESS_VGOOD)
-				state2use = "stress1"
-			if(H.stress >= STRESS_GOOD)
-				state2use = "stress1"
-			if(H.stress >= STRESS_BAD)
+	if(ishuman(usr))
+		var/mob/living/carbon/human/H = usr
+		if(!HAS_TRAIT(H, TRAIT_NOMOOD))
+			var/stress_amt = H.get_stress_amount()
+			if(stress_amt > 0)
 				state2use = "stress2"
-			if(H.stress >= STRESS_VBAD)
+			if(stress_amt >= 5)
 				state2use = "stress3"
-			if(H.stress == STRESS_INSANE)
+			if(stress_amt >= 15)
 				state2use = "stress4"
-			if(H.stress > STRESS_INSANE)
+			if(stress_amt >= 25)
 				state2use = "stress5"
-			if(H.has_status_effect(/datum/status_effect/buff/drunk))
-				state2use = "mood_drunk"
-			if(H.has_status_effect(/datum/status_effect/buff/druqks))
-				state2use = "mood_high"
-			if(H.InFullCritical())
-				state2use = "mood_fear"
-			if(H.mind)
-				if(H.mind.has_antag_datum(/datum/antagonist/zombie))
-					state2use = "mood_fear"
-			if(H.stat == DEAD)
-				state2use = "mood_dead"
+		if(H.has_status_effect(/datum/status_effect/buff/drunk))
+			state2use = "mood_drunk"
+		if(H.has_status_effect(/datum/status_effect/buff/druqks))
+			state2use = "mood_drunk"
+		if(H.InFullCritical())
+			state2use = "stress4"
+		if(H.mind)
+			if(H.mind.has_antag_datum(/datum/antagonist/zombie))
+				state2use = "stress4"
+		if(H.stat == DEAD)
+			state2use = "mood_dead"
 	add_overlay(state2use)
+
 
 /atom/movable/screen/stress/Click(location,control,params)
 	var/list/modifiers = params2list(params)
@@ -1555,14 +1552,15 @@
 		if(modifiers["left"])
 			if(M.charflaw)
 				to_chat(M, "*----*")
-				to_chat(M, "<span class='info'>[M.charflaw.desc]</span>")
+				to_chat(M, span_info("[M.charflaw.desc]"))
 			to_chat(M, "*--------*")
 			var/list/already_printed = list()
-			for(var/datum/stressevent/S in M.positive_stressors)
+			var/list/pos_stressors = M.get_positive_stressors()
+			for(var/datum/stressevent/S in pos_stressors)
 				if(S in already_printed)
 					continue
 				var/cnt = 1
-				for(var/datum/stressevent/CS in M.positive_stressors)
+				for(var/datum/stressevent/CS in pos_stressors)
 					if(CS == S)
 						continue
 					if(CS.type == S.type)
@@ -1572,14 +1570,15 @@
 				if(islist(S.desc))
 					ddesc = pick(S.desc)
 				if(cnt > 1)
-					to_chat(M, "• [ddesc] (x[cnt])")
+					to_chat(M, "[ddesc] (x[cnt])")
 				else
-					to_chat(M, "• [ddesc]")
-			for(var/datum/stressevent/S in M.negative_stressors)
+					to_chat(M, "[ddesc]")
+			var/list/neg_stressors = M.get_negative_stressors()
+			for(var/datum/stressevent/S in neg_stressors)
 				if(S in already_printed)
 					continue
 				var/cnt = 1
-				for(var/datum/stressevent/CS in M.negative_stressors)
+				for(var/datum/stressevent/CS in neg_stressors)
 					if(CS == S)
 						continue
 					if(CS.type == S.type)
@@ -1596,11 +1595,11 @@
 			to_chat(M, "*--------*")
 		if(modifiers["right"])
 			if(M.get_triumphs() <= 0)
-				to_chat(M, "<span class='warning'>I haven't TRIUMPHED.</span>")
+				to_chat(M, span_warning("I haven't TRIUMPHED."))
 				return
 			if(alert("Do you want to remember a TRIUMPH?", "", "Yes", "No") == "Yes")
-				var/mob/living/carbon/V = M
-				if(V.add_stress(/datum/stressevent/triumph))
+				if(!M.has_stress_event(/datum/stressevent/triumph))
+					M.add_stress(/datum/stressevent/triumph)
 					M.adjust_triumphs(-1)
 					M.playsound_local(M, 'sound/misc/notice (2).ogg', 100, FALSE)
 
@@ -1794,6 +1793,17 @@
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat
 	layer = HUD_LAYER+0.1
+
+/atom/movable/screen/grain
+	icon = 'icons/grain.dmi'
+	icon_state = "grain"
+	name = ""
+	screen_loc = "1,1"
+	mouse_opacity = 0
+	alpha = 0
+	layer = 13
+	plane = 0
+	blend_mode = 4
 
 /atom/movable/screen/scannies
 	icon = 'icons/mob/roguehudback2.dmi'

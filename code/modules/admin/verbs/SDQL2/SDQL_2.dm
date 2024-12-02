@@ -1068,16 +1068,12 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				v = SSticker
 			if("SStimer")
 				v = SStimer
-			if("SSradiation")
-				v = SSradiation
 			if("SSnpcpool")
 				v = SSnpcpool
 			if("SSmobs")
 				v = SSmobs
 			if("SSmood")
 				v = SSmood
-			if("SSquirks")
-				v = SSquirks
 			if("SSwet_floors")
 				v = SSwet_floors
 			if("SSshuttle")

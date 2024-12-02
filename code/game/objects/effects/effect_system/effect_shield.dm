@@ -16,6 +16,3 @@
 	var/turf/location = get_turf(src)
 	location.heat_capacity=old_heat_capacity
 	..()
-
-/obj/effect/shield/singularity_act()
-	return

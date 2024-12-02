@@ -196,9 +196,6 @@ Actual Adjacent procs :
 /turf/proc/LinkBlockedWithAccess(turf/T, caller, ID)
 	var/adir = get_dir(src, T)
 	var/rdir = ((adir & MASK_ODD)<<1)|((adir & MASK_EVEN)>>1)
-	for(var/obj/structure/window/W in src)
-		if(!W.CanAStarPass(ID, adir))
-			return TRUE
 	for(var/obj/O in T)
 		if(!O.CanAStarPass(ID, rdir, caller))
 			return TRUE

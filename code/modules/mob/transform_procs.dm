@@ -3,15 +3,7 @@
 		return
 	//Handle items on mob
 
-	//first implants & organs
-	var/list/stored_implants = list()
 	var/list/int_organs = list()
-
-	if (tr_flags & TR_KEEPIMPLANTS)
-		for(var/X in implants)
-			var/obj/item/implant/IMP = X
-			stored_implants += IMP
-			IMP.removed(src, 1, 1)
 
 	var/list/missing_bodyparts_zones = get_missing_limbs()
 
@@ -63,13 +55,6 @@
 		O.adjustFireLoss(getFireLoss(), 0)
 		O.setOrganLoss(ORGAN_SLOT_BRAIN, getOrganLoss(ORGAN_SLOT_BRAIN))
 		O.updatehealth()
-		O.radiation = radiation
-
-	//re-add implants to new mob
-	if (tr_flags & TR_KEEPIMPLANTS)
-		for(var/Y in implants)
-			var/obj/item/implant/IMP = Y
-			IMP.implant(O, null, 1)
 
 	//re-add organs to new mob. this order prevents moving the mind to a brain at any point
 	if(tr_flags & TR_KEEPORGANS)
@@ -121,8 +106,9 @@
 	if(mind)
 		mind.transfer_to(O)
 
+
 	if (tr_flags & TR_DEFAULTMSG)
-		to_chat(O, "<B>I are now a monkey.</B>")
+		to_chat(O, "<B>I am now a monkey.</B>")
 
 	for(var/A in loc.vars)
 		if(loc.vars[A] == src)
@@ -142,15 +128,7 @@
 		return
 	//Handle items on mob
 
-	//first implants & organs
-	var/list/stored_implants = list()
 	var/list/int_organs = list()
-
-	if (tr_flags & TR_KEEPIMPLANTS)
-		for(var/X in implants)
-			var/obj/item/implant/IMP = X
-			stored_implants += IMP
-			IMP.removed(src, 1, 1)
 
 	var/list/missing_bodyparts_zones = get_missing_limbs()
 
@@ -212,13 +190,6 @@
 		O.adjustFireLoss(getFireLoss(), 0)
 		O.adjustOrganLoss(ORGAN_SLOT_BRAIN, getOrganLoss(ORGAN_SLOT_BRAIN))
 		O.updatehealth()
-		O.radiation = radiation
-
-	//re-add implants to new mob
-	if (tr_flags & TR_KEEPIMPLANTS)
-		for(var/Y in implants)
-			var/obj/item/implant/IMP = Y
-			IMP.implant(O, null, 1)
 
 	if(tr_flags & TR_KEEPORGANS)
 		for(var/X in O.internal_organs)
@@ -227,7 +198,6 @@
 
 		if(mind)
 			mind.transfer_to(O)
-
 		for(var/X in internal_organs)
 			var/obj/item/organ/I = X
 			int_organs += I
@@ -271,7 +241,7 @@
 
 	O.a_intent = INTENT_HELP
 	if (tr_flags & TR_DEFAULTMSG)
-		to_chat(O, "<B>I are now a human.</B>")
+		to_chat(O, "<B>I am now a human.</B>")
 
 	transfer_observers_to(O)
 
@@ -281,38 +251,6 @@
 		if(loc.vars[A] == src)
 			loc.vars[A] = O
 
-	qdel(src)
-
-/mob/living/carbon/human/proc/slimeize(reproduce as num)
-	if (notransform)
-		return
-	notransform = TRUE
-	mobility_flags = NONE
-	for(var/obj/item/W in src)
-		dropItemToGround(W)
-	regenerate_icons()
-	icon = null
-	invisibility = INVISIBILITY_MAXIMUM
-	for(var/t in bodyparts)
-		qdel(t)
-
-	var/mob/living/simple_animal/slime/new_slime
-	if(reproduce)
-		var/number = pick(14;2,3,4)	//reproduce (has a small chance of producing 3 or 4 offspring)
-		var/list/babies = list()
-		for(var/i=1,i<=number,i++)
-			var/mob/living/simple_animal/slime/M = new/mob/living/simple_animal/slime(loc)
-			M.set_nutrition(round(nutrition/number))
-			step_away(M,src)
-			babies += M
-		new_slime = pick(babies)
-	else
-		new_slime = new /mob/living/simple_animal/slime(loc)
-	new_slime.a_intent = INTENT_HARM
-	new_slime.key = key
-
-	to_chat(new_slime, "<B>I are now a slime. Skreee!</B>")
-	. = new_slime
 	qdel(src)
 
 /mob/living/carbon/human/proc/corgize()
@@ -332,34 +270,8 @@
 	new_corgi.a_intent = INTENT_HARM
 	new_corgi.key = key
 
-	to_chat(new_corgi, "<B>I are now a Corgi. Yap Yap!</B>")
+	to_chat(new_corgi, "<B>I am now a Corgi. Yap Yap!</B>")
 	. = new_corgi
-	qdel(src)
-
-/mob/living/carbon/proc/gorillize()
-	if(notransform)
-		return
-	notransform = TRUE
-	Paralyze(1, ignore_canstun = TRUE)
-
-	SSblackbox.record_feedback("amount", "gorillas_created", 1)
-
-	var/Itemlist = get_equipped_items(TRUE)
-	Itemlist += held_items
-	for(var/obj/item/W in Itemlist)
-		dropItemToGround(W, TRUE)
-
-	regenerate_icons()
-	icon = null
-	invisibility = INVISIBILITY_MAXIMUM
-	var/mob/living/simple_animal/hostile/gorilla/new_gorilla = new (get_turf(src))
-	new_gorilla.a_intent = INTENT_HARM
-	if(mind)
-		mind.transfer_to(new_gorilla)
-	else
-		new_gorilla.key = key
-	to_chat(new_gorilla, "<B>I are now a gorilla. Ooga ooga!</B>")
-	. = new_gorilla
 	qdel(src)
 
 /mob/living/carbon/human/Animalize()
@@ -368,7 +280,7 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, span_danger("Sorry but this mob type is currently unavailable."))
+		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
 		return
 
 	if(notransform)
@@ -392,7 +304,7 @@
 	new_mob.a_intent = INTENT_HARM
 
 
-	to_chat(new_mob, span_boldnotice("I suddenly feel more... animalistic."))
+	to_chat(new_mob, "<span class='boldnotice'>I suddenly feel more... animalistic.</span>")
 	. = new_mob
 	qdel(src)
 
@@ -402,14 +314,14 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, span_danger("Sorry but this mob type is currently unavailable."))
+		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
 		return
 
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
 	new_mob.a_intent = INTENT_HARM
-	to_chat(new_mob, span_boldnotice("I feel more... animalistic."))
+	to_chat(new_mob, "<span class='boldnotice'>I feel more... animalistic.</span>")
 
 	. = new_mob
 	qdel(src)
@@ -425,28 +337,11 @@
 	if(!MP)
 		return 0	//Sanity, this should never happen.
 
-	if(ispath(MP, /mob/living/simple_animal/hostile/construct))
-		return 0 //Verbs do not appear for players.
-
 //Good mobs!
 	if(ispath(MP, /mob/living/simple_animal/pet/cat))
 		return 1
 	if(ispath(MP, /mob/living/simple_animal/pet/dog/corgi))
 		return 1
-	if(ispath(MP, /mob/living/simple_animal/crab))
-		return 1
-	if(ispath(MP, /mob/living/simple_animal/hostile/carp))
-		return 1
-	if(ispath(MP, /mob/living/simple_animal/hostile/mushroom))
-		return 1
-	if(ispath(MP, /mob/living/simple_animal/shade))
-		return 1
-	if(ispath(MP, /mob/living/simple_animal/hostile/killertomato))
-		return 1
-	if(ispath(MP, /mob/living/simple_animal/mouse))
-		return 1 //It is impossible to pull up the player panel for mice (Fixed! - Nodrak)
-	if(ispath(MP, /mob/living/simple_animal/hostile/bear))
-		return 1 //Bears will auto-attack mobs, even if they're player controlled (Fixed! - Nodrak)
 	if(ispath(MP, /mob/living/simple_animal/parrot))
 		return 1 //Parrots are no longer unfinished! -Nodrak
 

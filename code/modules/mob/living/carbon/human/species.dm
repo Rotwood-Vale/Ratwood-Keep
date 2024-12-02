@@ -1026,7 +1026,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			H.remove_stress_list(list(/datum/stressevent/thirst,/datum/stressevent/drym))
 			H.apply_status_effect(/datum/status_effect/debuff/thirstyt3)
 
-
 /datum/species/proc/update_health_hud(mob/living/carbon/human/H)
 	return 0
 

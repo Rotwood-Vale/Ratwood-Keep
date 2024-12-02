@@ -314,14 +314,6 @@
 		if("anime")
 			if(!check_rights(R_FUN))
 				return
-			var/animetype = alert("Would you like to have the clothes be changed?",,"Yes","No","Cancel")
-
-			var/droptype
-			if(animetype =="Yes")
-				droptype = alert("Make the uniforms Nodrop?",,"Yes","No","Cancel")
-
-			if(animetype == "Cancel" || droptype == "Cancel")
-				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Chinese Cartoons"))
 			message_admins("[key_name_admin(usr)] made everything kawaii.")
 			for(var/i in GLOB.human_list)
@@ -339,15 +331,7 @@
 					var/forename = names.len > 1 ? names[2] : names[1]
 					var/newname = "[forename]-[pick(honorifics["[H.gender]"])]"
 					H.fully_replace_character_name(H.real_name,newname)
-					if(animetype == "Yes")
-						var/seifuku = pick(typesof(/obj/item/clothing/under/costume/schoolgirl))
-						var/obj/item/clothing/under/costume/schoolgirl/I = new seifuku
-						var/olduniform = H.wear_pants
-						H.temporarilyRemoveItemFromInventory(H.wear_pants, TRUE, FALSE)
-						H.equip_to_slot_or_del(I, SLOT_PANTS)
-						qdel(olduniform)
-						if(droptype == "Yes")
-							ADD_TRAIT(I, TRAIT_NODROP, ADMIN_TRAIT)
+					H.update_mutant_bodyparts()
 				else
 					to_chat(H, "<span class='warning'>You're not kawaii enough for this!</span>")
 
@@ -382,20 +366,6 @@
 				B.facial_hairstyle = "Dward Beard"
 				B.update_hair()
 			message_admins("[key_name_admin(usr)] activated dorf mode")
-		if("masspurrbation")
-			if(!check_rights(R_FUN))
-				return
-			mass_purrbation()
-			message_admins("[key_name_admin(usr)] has put everyone on \
-				purrbation!")
-			log_admin("[key_name(usr)] has put everyone on purrbation.")
-		if("massremovepurrbation")
-			if(!check_rights(R_FUN))
-				return
-			mass_remove_purrbation()
-			message_admins("[key_name_admin(usr)] has removed everyone from \
-				purrbation.")
-			log_admin("[key_name(usr)] has removed everyone from purrbation.")
 
 	if(E)
 		E.processing = FALSE

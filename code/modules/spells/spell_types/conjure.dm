@@ -47,18 +47,6 @@
 /obj/effect/proc_holder/spell/aoe_turf/conjure/proc/post_summon(atom/summoned_object, mob/user)
 	return
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/linkWorlds
-	name = "Link Worlds"
-	desc = ""
-	invocation = "WTF"
-	clothes_req = FALSE
-	charge_max = 600
-	cooldown_min = 200
-	summon_type = list(/obj/structure/spawner/nether)
-	summon_amt = 1
-	range = 1
-	cast_sound = 'sound/blank.ogg'
-
 /obj/effect/proc_holder/spell/targeted/conjure_item
 	name = "Summon weapon"
 	desc = ""

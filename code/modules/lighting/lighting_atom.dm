@@ -192,4 +192,3 @@
 /mob/living/proc/mob_light(_color, _range, _power, _duration)
 	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = new (src, _color, _range, _power, _duration)
 	return mob_light_obj
-

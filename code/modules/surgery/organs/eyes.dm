@@ -374,7 +374,6 @@
 		clear_visuals()
 	var/turf/scanning = scanfrom
 	var/stop = FALSE
-	on_mob.set_light_flags(on_mob.light_flags & ~LIGHT_ATTACHED)
 	on_mob.forceMove(scanning)
 	for(var/i in 1 to light_beam_distance)
 		scanning = get_step(scanning, scandir)
@@ -395,7 +394,6 @@
 			var/obj/effect/abstract/eye_lighting/L = i
 			L.forceMove(src)
 		if(!QDELETED(on_mob))
-			on_mob.set_light_flags(on_mob.light_flags | LIGHT_ATTACHED)
 			on_mob.forceMove(src)
 
 /obj/item/organ/eyes/robotic/glow/proc/start_visuals()
@@ -426,25 +424,13 @@
 		on_mob.set_light(1, 1, 1, l_color = current_color_string)
 
 /obj/effect/abstract/eye_lighting
-	light_system = MOVABLE_LIGHT
 	var/obj/item/organ/eyes/robotic/glow/parent
 
-
-/obj/effect/abstract/eye_lighting/Initialize(mapload, light_object_range, light_object_power, current_color_string, light_flags)
+/obj/effect/abstract/eye_lighting/Initialize()
 	. = ..()
 	parent = loc
 	if(!istype(parent))
-		stack_trace("/obj/effect/abstract/eye_lighting added to improper parent ([loc]). Deleting.")
 		return INITIALIZE_HINT_QDEL
-	if(!isnull(light_object_range))
-		set_light_range(light_object_range)
-	if(!isnull(light_object_power))
-		set_light_power(light_object_power)
-	if(!isnull(current_color_string))
-		set_light_color(current_color_string)
-	if(!isnull(light_flags))
-		set_light_flags(light_flags)
-
 
 /obj/item/organ/eyes/moth
 	name = "fluvian eyes"

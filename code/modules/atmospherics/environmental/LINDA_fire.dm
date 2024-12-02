@@ -187,9 +187,6 @@
 		var/mob/living/L = AM
 		L.fire_act(3, 20)
 
-/obj/effect/hotspot/singularity_pull()
-	return
-
 /obj/effect/dummy/lighting_obj/moblight/fire
 	name = "fire"
 	light_color = LIGHT_COLOR_FIRE

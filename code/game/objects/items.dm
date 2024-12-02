@@ -775,8 +775,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			M.become_blind(EYE_DAMAGE)
 			to_chat(M, span_danger("I go blind!"))
 
-/obj/item/singularity_pull()
-
 /obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(hit_atom && !QDELETED(hit_atom))
 		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
@@ -939,9 +937,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
 	return
-
-/obj/item/attack_hulk(mob/living/carbon/human/user)
-	return FALSE
 
 /obj/item/attack_animal(mob/living/simple_animal/M)
 	if (obj_flags & CAN_BE_HIT)
@@ -1137,10 +1132,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		wielded = FALSE
 		if(force_wielded)
 			force = initial(force)
-		wdefense = initial(wdefense)
-		var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
-		if(O && istype(O))
-			O.unwield()
+		wdefense = wdefense - 1
 	if(altgripped)
 		altgripped = FALSE
 	update_transform()
@@ -1149,7 +1141,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		user.update_inv_hands()
 	if(show_message)
-		to_chat(user, span_notice("I wield [src] normally."))
+		to_chat(user, "<span class='notice'>I wield [src] normally.</span>")
 	if(user.get_active_held_item() == src)
 		user.update_a_intents()
 	return
@@ -1180,10 +1172,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	update_transform()
 	to_chat(user, span_notice("I wield [src] with both hands."))
 	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)
-	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
-	O.name = "[name] - offhand"
-	O.wielded = TRUE
-	user.put_in_inactive_hand(O)
 	if(twohands_required)
 		if(!wielded)
 			user.dropItemToGround(src)
@@ -1207,6 +1195,3 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(..())
 		if(altgripped || wielded)
 			ungrip(M, FALSE)
-
-/obj/item/proc/on_embed(obj/item/bodypart/bp)
-	return

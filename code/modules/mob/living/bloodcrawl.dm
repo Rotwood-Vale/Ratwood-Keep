@@ -17,9 +17,6 @@
 /obj/effect/dummy/phased_mob/slaughter/bullet_act()
 	return BULLET_ACT_FORCE_PIERCE
 
-/obj/effect/dummy/phased_mob/slaughter/singularity_act()
-	return
-
 /mob/living/proc/phaseout(obj/effect/decal/cleanable/B)
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src

@@ -7,12 +7,6 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = 0
 
-/obj/effect/projectile/singularity_pull()
-	return
-
-/obj/effect/projectile/singularity_act()
-	return
-
 /obj/effect/projectile/proc/scale_to(nx,ny,override=TRUE)
 	var/matrix/M
 	if(!override)

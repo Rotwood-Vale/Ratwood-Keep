@@ -207,12 +207,6 @@ Turf and target are separate in case you want to teleport some distance from a t
 			switch(role)
 				if("human")
 					newname = random_unique_name(gender)
-				if("clown")
-					newname = pick(GLOB.clown_names)
-				if("mime")
-					newname = pick(GLOB.mime_names)
-				if("ai")
-					newname = pick(GLOB.ai_names)
 				else
 					return FALSE
 
@@ -643,6 +637,89 @@ will handle it, but:
 	if(!weapon.embedding?.embed_chance)
 		return FALSE
 	return TRUE
+
+/proc/wash_atom(atom/A, clean = CLEAN_WEAK)
+	SEND_SIGNAL(A, COMSIG_COMPONENT_CLEAN_ACT, clean)
+	if(isobj(A))
+		wash_obj(A,clean)
+		var/obj/O = A
+		O.wash_act(clean)
+	else if(isturf(A))
+		wash_turf(A,clean)
+	else if(isliving(A))
+		wash_mob(A,clean)
+
+/obj/proc/wash_act(clean = CLEAN_WEAK)
+	return
+
+/proc/wash_obj(obj/O, clean = CLEAN_WEAK)
+	. = SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, clean)
+
+/proc/wash_turf(turf/tile, clean = CLEAN_WEAK)
+	SEND_SIGNAL(tile, COMSIG_COMPONENT_CLEAN_ACT, clean)
+	for(var/obj/effect/E in tile)
+		if(is_cleanable(E))
+			qdel(E)
+
+/proc/wash_mob(mob/living/L, clean = CLEAN_WEAK)
+	SEND_SIGNAL(L, COMSIG_COMPONENT_CLEAN_ACT, clean)
+	if(iscarbon(L))
+		var/mob/living/carbon/M = L
+		. = TRUE
+
+		for(var/obj/item/I in M.held_items)
+			wash_obj(I)
+
+		if(M.back && wash_obj(M.back))
+			M.update_inv_back(0)
+
+		var/list/obscured = M.check_obscured_slots()
+
+		if(M.head && wash_obj(M.head,clean))
+			M.update_inv_head()
+
+		if(M.glasses && !(SLOT_GLASSES in obscured) && wash_obj(M.glasses,clean))
+			M.update_inv_glasses()
+
+		if(M.wear_mask && !(SLOT_WEAR_MASK in obscured) && wash_obj(M.wear_mask,clean))
+			M.update_inv_wear_mask()
+
+		if(M.ears && !(HIDEEARS in obscured) && wash_obj(M.ears,clean))
+			M.update_inv_ears()
+
+		if(M.wear_neck && !(SLOT_NECK in obscured) && wash_obj(M.wear_neck,clean))
+			M.update_inv_neck()
+
+		if(M.shoes && !(HIDESHOES in obscured) && wash_obj(M.shoes,clean))
+			M.update_inv_shoes()
+
+		var/washgloves = FALSE
+		if(M.gloves && !(HIDEGLOVES in obscured))
+			washgloves = TRUE
+
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+
+			if(H.wear_armor && wash_obj(H.wear_armor,clean))
+				H.update_inv_armor()
+			else if(H.wear_shirt && wash_obj(H.wear_shirt,clean))
+				H.update_inv_shirt()
+			else if(H.wear_pants && wash_obj(H.wear_pants,clean))
+				H.update_inv_pants()
+
+			if(washgloves)
+				SEND_SIGNAL(H, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
+
+			if(!H.is_mouth_covered())
+				H.lip_style = null
+				H.update_body()
+
+			if(H.belt && wash_obj(H.belt,clean))
+				H.update_inv_belt()
+		else
+			SEND_SIGNAL(M, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
+	else
+		SEND_SIGNAL(L, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
 
 /*
 Checks if that loc and dir has an item on the wall
@@ -1310,6 +1387,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	else if(isatom(target))
 		var/atom/the_atom2 = target
 		ADD_TRAIT(the_atom2,trait,source)
+	SEND_GLOBAL_SIGNAL(COMSIG_ATOM_ADD_TRAIT, target, trait)
 
 ///DO NOT USE ___TraitAdd OR ___TraitRemove as a replacement for ADD_TRAIT / REMOVE_TRAIT defines. To be used explicitly for callback.
 /proc/___TraitRemove(target,trait,source)
@@ -1324,6 +1402,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	else if(isatom(target))
 		var/atom/the_atom2 = target
 		REMOVE_TRAIT(the_atom2,trait,source)
+	SEND_GLOBAL_SIGNAL(COMSIG_ATOM_REMOVE_TRAIT, target, trait)
 
 /proc/get_random_food()
 	var/list/blocked = list(
@@ -1331,7 +1410,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		/obj/item/reagent_containers/food/snacks/meat,
 		/obj/item/reagent_containers/food/snacks/meat/slab,
 		/obj/item/reagent_containers/food/snacks/grown,
-		/obj/item/reagent_containers/food/snacks/grown/nettle
 		)
 
 	return pick(subtypesof(/obj/item/reagent_containers/food/snacks) - blocked)

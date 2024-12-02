@@ -97,11 +97,6 @@
 	if(human_owner && human_owner.client)
 		SSdroning.play_area_sound(get_area(src), human_owner.client)
 		SSdroning.play_loop(get_area(src), human_owner.client)
-	if(sleptonground)
-		if(HAS_TRAIT(human_owner, TRAIT_NOBLE))
-			human_owner.add_stress(/datum/stressevent/sleepfloornoble)
-		else
-			human_owner.add_stress(/datum/stressevent/sleepfloor)
 	. = ..()
 
 /datum/status_effect/incapacitating/sleeping/Destroy()
@@ -117,17 +112,13 @@
 			healing -= 0.3
 		else if((locate(/obj/structure/table) in owner.loc))
 			healing -= 0.1
-		if(locate(/obj/structure/bed/rogue/sleepingbag) in owner.loc)
-			sleptonground = TRUE
 		for(var/obj/item/bedsheet/bedsheet in range(owner.loc,0))
 			if(bedsheet.loc != owner.loc) //bedsheets in my backpack/neck don't give you comfort
 				continue
 			healing -= 0.1
 			break //Only count the first bedsheet
 		if(health_ratio > 0.8)
-			owner.adjustBruteLoss(healing)
-			owner.adjustFireLoss(healing)
-			owner.adjustToxLoss(healing * 0.5, TRUE, TRUE)
+			owner.adjustToxLoss(healing * 0.5, FALSE, TRUE)
 		owner.adjustStaminaLoss(healing)
 	if(human_owner && human_owner.drunkenness)
 		human_owner.drunkenness *= 0.997 //reduce drunkenness by 0.3% per tick, 6% per 2 seconds
@@ -435,29 +426,6 @@
 					to_chat(owner, "<span class='warning'>My arm spasms!</span>")
 					owner.log_message("threw [I] due to a Muscle Spasm", LOG_ATTACK)
 					owner.throw_item(pick(targets))
-
-/datum/status_effect/dna_melt
-	id = "dna_melt"
-	duration = 600
-	status_type = STATUS_EFFECT_REPLACE
-	alert_type = /atom/movable/screen/alert/status_effect/dna_melt
-	var/kill_either_way = FALSE //no amount of removing mutations is gonna save you now
-
-/datum/status_effect/dna_melt/on_creation(mob/living/new_owner, set_duration, updating_canmove)
-	. = ..()
-	to_chat(new_owner, "<span class='boldwarning'>My body can't handle the mutations! I need to get my mutations removed fast!</span>")
-
-/datum/status_effect/dna_melt/on_remove()
-	if(!ishuman(owner))
-		owner.gib() //fuck you in particular
-		return
-	var/mob/living/carbon/human/H = owner
-	H.something_horrible(kill_either_way)
-
-/atom/movable/screen/alert/status_effect/dna_melt
-	name = "Genetic Breakdown"
-	desc = ""
-	icon_state = "dna_melt"
 
 /datum/status_effect/go_away
 	id = "go_away"

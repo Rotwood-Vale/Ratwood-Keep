@@ -135,7 +135,6 @@
 				if(!target.reagents.total_volume)
 					break
 				target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user)
-				onfill(target, user, silent = TRUE)
 			else
 				break
 
@@ -181,7 +180,6 @@
 			else
 				to_chat(user, span_notice("I break [E] in [src]."))
 				E.reagents.trans_to(src, E.reagents.total_volume, transfered_by = user)
-				onfill(E, user, silent = FALSE)
 				qdel(E)
 			return
 	..()
@@ -194,7 +192,7 @@
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	icon_state = "woodbucket"
 	item_state = "woodbucket"
-	custom_materials = list(/datum/material/iron=200)
+	max_integrity = 300
 	w_class = WEIGHT_CLASS_BULKY
 	amount_per_transfer_from_this = 9
 	possible_transfer_amounts = list(9)
@@ -221,7 +219,6 @@
 	icon_state = "woodbucket"
 	item_state = "woodbucket"
 	icon = 'icons/roguetown/items/misc.dmi'
-	custom_materials = null
 	force = 5
 	throwforce = 10
 	amount_per_transfer_from_this = 9
@@ -304,135 +301,6 @@
 		return
 	return ..()
 
-/obj/item/reagent_containers/glass/waterbottle
-	name = "bottle of water"
-	desc = ""
-	icon = 'icons/obj/drinks.dmi'
-	icon_state = "smallbottle"
-	item_state = "bottle"
-	list_reagents = list(/datum/reagent/water = 49.5, /datum/reagent/fluorine = 0.5)//see desc, don't think about it too hard
-	custom_materials = list(/datum/material/plastic=1000)
-	volume = 50
-	amount_per_transfer_from_this = 10
-	fill_icon_thresholds = list(0, 10, 25, 50, 75, 80, 90)
-
-	// The 2 bottles have separate cap overlay icons because if the bottle falls over while bottle flipping the cap stays fucked on the moved overlay
-	var/cap_icon_state = "bottle_cap_small"
-	var/cap_on = TRUE
-	var/cap_lost = FALSE
-	var/mutable_appearance/cap_overlay
-	var/flip_chance = 10
-
-/obj/item/reagent_containers/glass/waterbottle/Initialize()
-	. = ..()
-	cap_overlay = mutable_appearance(icon, cap_icon_state)
-	if(cap_on)
-		spillable = FALSE
-		add_overlay(cap_overlay, TRUE)
-
-/obj/item/reagent_containers/glass/waterbottle/examine(mob/user)
-	. = ..()
-	if(cap_lost)
-		. += span_notice("The cap seems to be missing.")
-	else if(cap_on)
-		. += span_notice("The cap is firmly on to prevent spilling. Alt-click to remove the cap.")
-	else
-		. += span_notice("The cap has been taken off. Alt-click to put a cap on.")
-
-/obj/item/reagent_containers/glass/waterbottle/AltClick(mob/user)
-	. = ..()
-	if(cap_lost)
-		to_chat(user, span_warning("The cap seems to be missing! Where did it go?"))
-		return
-
-	var/fumbled = HAS_TRAIT(user, TRAIT_CLUMSY) && prob(5)
-	if(cap_on || fumbled)
-		cap_on = FALSE
-		spillable = TRUE
-		cut_overlay(cap_overlay, TRUE)
-		animate(src, transform = null, time = 2, loop = 0)
-		if(fumbled)
-			to_chat(user, span_warning("I fumble with [src]'s cap! The cap falls onto the ground and simply vanishes. Where the hell did it go?"))
-			cap_lost = TRUE
-		else
-			to_chat(user, span_notice("I remove the cap from [src]."))
-	else
-		cap_on = TRUE
-		spillable = FALSE
-		add_overlay(cap_overlay, TRUE)
-		to_chat(user, span_notice("I put the cap on [src]."))
-	update_icon()
-
-/obj/item/reagent_containers/glass/waterbottle/is_refillable()
-	if(cap_on)
-		return FALSE
-	. = ..()
-
-/obj/item/reagent_containers/glass/waterbottle/is_drainable()
-	if(cap_on)
-		return FALSE
-	. = ..()
-
-/obj/item/reagent_containers/glass/waterbottle/attack(mob/M, mob/user, obj/target)
-	if(cap_on && reagents.total_volume && istype(M))
-		to_chat(user, span_warning("I must remove the cap before you can do that!"))
-		return
-	. = ..()
-
-/obj/item/reagent_containers/glass/waterbottle/afterattack(obj/target, mob/user, proximity)
-	if(cap_on && (target.is_refillable() || target.is_drainable() || (reagents.total_volume && user.used_intent.type == INTENT_HARM)))
-		to_chat(user, span_warning("I must remove the cap before you can do that!"))
-		return
-
-	else if(istype(target, /obj/item/reagent_containers/glass/waterbottle))
-		var/obj/item/reagent_containers/glass/waterbottle/WB = target
-		if(WB.cap_on)
-			to_chat(user, span_warning("[WB] has a cap firmly twisted on!"))
-	. = ..()
-
-// heehoo bottle flipping
-/obj/item/reagent_containers/glass/waterbottle/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	. = ..()
-	if(cap_on && reagents.total_volume)
-		if(prob(flip_chance)) // landed upright
-			src.visible_message(span_notice("[src] lands upright!"))
-			SEND_SIGNAL(throwingdatum.thrower, COMSIG_ADD_MOOD_EVENT, "bottle_flip", /datum/mood_event/bottle_flip)
-		else // landed on it's side
-			animate(src, transform = matrix(prob(50)? 90 : -90, MATRIX_ROTATE), time = 3, loop = 0)
-
-/obj/item/reagent_containers/glass/waterbottle/pickup(mob/user)
-	. = ..()
-	animate(src, transform = null, time = 1, loop = 0)
-
-/obj/item/reagent_containers/glass/waterbottle/empty
-	list_reagents = list()
-	cap_on = FALSE
-
-/obj/item/reagent_containers/glass/waterbottle/large
-	desc = ""
-	icon_state = "largebottle"
-	custom_materials = list(/datum/material/plastic=3000)
-	list_reagents = list(/datum/reagent/water = 100)
-	volume = 100
-	amount_per_transfer_from_this = 20
-	cap_icon_state = "bottle_cap"
-
-/obj/item/reagent_containers/glass/waterbottle/large/empty
-	list_reagents = list()
-	cap_on = FALSE
-
-// Admin spawn
-/obj/item/reagent_containers/glass/waterbottle/relic
-	name = "mysterious bottle"
-	desc = ""
-	flip_chance = 100 // FLIPP
-
-/obj/item/reagent_containers/glass/waterbottle/relic/Initialize()
-	var/datum/reagent/random_reagent = get_random_reagent_id()
-	list_reagents = list(random_reagent = 50)
-	. = ..()
-	desc +=  span_notice("The writing reads '[random_reagent.name]'.")
-
 /obj/item/pestle
 	name = "pestle"
 	desc = "A small, round-end stone tool oft used by physicians to crush and mix medicine."
@@ -470,7 +338,6 @@
 					to_chat(user, span_notice("I juice [grinded] into a fine liquid."))
 					if(grinded.reagents) //food and pills
 						grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
-						onfill(grinded, user, silent = FALSE)
 					QDEL_NULL(grinded)
 					return
 				grinded.on_grind()
@@ -508,7 +375,6 @@
 						break
 					if(!I.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user))
 						reagents.reaction(src, TOUCH, amount_per_transfer_from_this)
-					onfill(I, user, silent = TRUE)
 				else
 					break
 			return
@@ -543,27 +409,3 @@
 		grinded = I
 		return
 	to_chat(user, span_warning("I can't grind this!"))
-
-/obj/item/reagent_containers/glass/saline
-	name = "saline canister"
-	volume = 5000
-	list_reagents = list(/datum/reagent/medicine/salglu_solution = 5000)
-
-/obj/item/reagent_containers/glass/colocup
-	name = "colo cup"
-	desc = ""
-	icon = 'icons/obj/drinks.dmi'
-	icon_state = "colocup"
-	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
-	item_state = "colocup"
-	custom_materials = list(/datum/material/plastic = 1000)
-	possible_transfer_amounts = list(5, 10, 15, 20)
-	volume = 20
-	amount_per_transfer_from_this = 5
-
-/obj/item/reagent_containers/glass/colocup/Initialize()
-	.=..()
-	icon_state = "colocup[rand(0, 6)]"
-	pixel_x = rand(-4,4)
-	pixel_y = rand(-4,4)

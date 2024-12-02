@@ -328,49 +328,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/get_temperature()
 	return lit * heat
 
-// Cigarette brands.
-
-/obj/item/clothing/mask/cigarette/space_cigarette
-	desc = ""
-
-/obj/item/clothing/mask/cigarette/dromedary
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/nicotine = 13, /datum/reagent/water = 5) //camel has water
-
-/obj/item/clothing/mask/cigarette/uplift
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/nicotine = 13, /datum/reagent/consumable/menthol = 5)
-
-/obj/item/clothing/mask/cigarette/robust
-	desc = ""
-
-/obj/item/clothing/mask/cigarette/robustgold
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/nicotine = 15, /datum/reagent/gold = 3) // Just enough to taste a hint of expensive metal.
-
-/obj/item/clothing/mask/cigarette/carp
-	desc = ""
-
-/obj/item/clothing/mask/cigarette/carp/Initialize()
-	. = ..()
-	if(prob(5))
-		list_reagents = list(/datum/reagent/drug/nicotine = 15, /datum/reagent/toxin/carpotoxin = 3) //they lied
-
-/obj/item/clothing/mask/cigarette/syndicate
-	desc = ""
-	chem_volume = 60
-	smoketime = 60
-	smoke_all = TRUE
-	list_reagents = list(/datum/reagent/drug/nicotine = 10, /datum/reagent/medicine/omnizine = 15)
-
-/obj/item/clothing/mask/cigarette/shadyjims
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/nicotine = 15, /datum/reagent/toxin/lipolicide = 4, /datum/reagent/ammonia = 2, /datum/reagent/toxin/plantbgone = 1, /datum/reagent/toxin = 1.5)
-
-/obj/item/clothing/mask/cigarette/xeno
-	desc = ""
-	list_reagents = list (/datum/reagent/drug/nicotine = 20, /datum/reagent/medicine/regen_jelly = 15, /datum/reagent/drug/krokodil = 4)
-
 // Rollies.
 
 /obj/item/clothing/mask/cigarette/rollie
@@ -404,23 +361,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/rollie/mindbreaker
 	list_reagents = list(/datum/reagent/toxin/mindbreaker = 35, /datum/reagent/toxin/lipolicide = 15)
-
-/obj/item/clothing/mask/cigarette/candy
-	name = "Little Timmy's candy cigarette"
-	desc = ""
-	smoketime = 120
-	icon_on = "candyon"
-	icon_off = "candyoff" //make sure to add positional sprites in icons/obj/cigarettes.dmi if you add more.
-	item_state = "candyoff"
-	icon_state = "candyoff"
-	type_butt = /obj/item/reagent_containers/food/snacks/candy_trash
-	list_reagents = list(/datum/reagent/consumable/sugar = 10, /datum/reagent/consumable/caramel = 10)
-
-/obj/item/clothing/mask/cigarette/candy/nicotine
-	desc = ""
-	type_butt = /obj/item/reagent_containers/food/snacks/candy_trash/nicotine
-	list_reagents = list(/datum/reagent/consumable/sugar = 10, /datum/reagent/consumable/caramel = 10, /datum/reagent/drug/nicotine = 20) //oh no!
-	smoke_all = TRUE //timmy's not getting out of this one
 
 /obj/item/cigbutt/roach
 	name = "roach"
@@ -795,17 +735,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/lighter/greyscale/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
 		. = span_notice("After some fiddling, [user] manages to light [A] with [src].")
-
-
-/obj/item/lighter/slime
-	name = "slime zippo"
-	desc = ""
-	icon_state = "slighter"
-	heat = 3000 //Blue flame!
-	light_color = LIGHT_COLOR_CYAN
-	overlay_state = "slime"
-	grind_results = list(/datum/reagent/iron = 1, /datum/reagent/fuel = 5, /datum/reagent/medicine/pyroxadone = 5)
-
 
 ///////////
 //ROLLING//

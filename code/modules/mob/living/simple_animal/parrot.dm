@@ -46,7 +46,6 @@
 
 	speak_chance = 1 //1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/cracker/ = 1)
 	melee_damage_upper = 10
 	melee_damage_lower = 5
 
@@ -132,7 +131,7 @@
 		stat("Held Item", held_item)
 		stat("Mode",a_intent)
 
-/mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, message_mode, original_message)
+/mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, message_mode)
 	. = ..()
 	if(speaker != src && prob(50)) //Dont imitate ourselves
 		if(!radio_freq || prob(10))
@@ -210,7 +209,7 @@
 
 //Mobs with objects
 /mob/living/simple_animal/parrot/attackby(obj/item/O, mob/living/user, params)
-	if(!stat && !client && !istype(O, /obj/item/stack/medical) && !istype(O, /obj/item/reagent_containers/food/snacks/cracker))
+	if(!stat && !client)
 		if(O.force)
 			if(parrot_state == PARROT_PERCH)
 				parrot_sleep_dur = parrot_sleep_max //Reset it's sleep timer if it was perched
@@ -223,13 +222,6 @@
 				parrot_state |= PARROT_FLEE
 			icon_state = icon_living
 			drop_held_item(0)
-	else if(istype(O, /obj/item/reagent_containers/food/snacks/cracker)) //Poly wants a cracker.
-		qdel(O)
-		if(health < maxHealth)
-			adjustBruteLoss(-10)
-		speak_chance *= 1.27 // 20 crackers to go from 1% to 100%
-		speech_shuffle_rate += 10
-		to_chat(user, span_notice("[src] eagerly devours the cracker."))
 	..()
 	return
 
@@ -307,6 +299,10 @@
 			if(speak.len)
 				var/list/newspeak = list()
 
+				for(var/possible_phrase in speak)
+					if((copytext(possible_phrase,1,2) in GLOB.department_radio_prefixes) && (copytext(possible_phrase,2,3) in GLOB.department_radio_keys))
+						possible_phrase = copytext(possible_phrase,3) //crop out the channel prefix
+					newspeak.Add(possible_phrase)
 				speak = newspeak
 
 			//Search for item to steal
@@ -376,7 +372,7 @@
 				if(!parrot_perch || parrot_interest.loc != parrot_perch.loc)
 					held_item = parrot_interest
 					parrot_interest.forceMove(src)
-					visible_message(span_notice("[src] grabs [held_item]!"), span_notice("I grab [held_item]!"), span_hear("I hear the sounds of wings flapping furiously."))
+					visible_message("<span class='notice'>[src] grabs [held_item]!</span>", "<span class='notice'>I grab [held_item]!</span>", "<span class='hear'>I hear the sounds of wings flapping furiously.</span>")
 
 			parrot_interest = null
 			parrot_state = PARROT_SWOOP | PARROT_RETURN
@@ -556,7 +552,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, span_warning("I are already holding [held_item]!"))
+		to_chat(src, "<span class='warning'>I are already holding [held_item]!</span>")
 		return 1
 
 	for(var/obj/item/I in view(1,src))
@@ -569,10 +565,10 @@
 
 			held_item = I
 			I.forceMove(src)
-			visible_message(span_notice("[src] grabs [held_item]!"), span_notice("I grab [held_item]!"), span_hear("I hear the sounds of wings flapping furiously."))
+			visible_message("<span class='notice'>[src] grabs [held_item]!</span>", "<span class='notice'>I grab [held_item]!</span>", "<span class='hear'>I hear the sounds of wings flapping furiously.</span>")
 			return held_item
 
-	to_chat(src, span_warning("There is nothing of interest to take!"))
+	to_chat(src, "<span class='warning'>There is nothing of interest to take!</span>")
 	return 0
 
 /mob/living/simple_animal/parrot/proc/steal_from_mob()
@@ -584,7 +580,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, span_warning("I are already holding [held_item]!"))
+		to_chat(src, "<span class='warning'>I are already holding [held_item]!</span>")
 		return 1
 
 	var/obj/item/stolen_item = null
@@ -598,10 +594,10 @@
 		if(stolen_item)
 			C.transferItemToLoc(stolen_item, src, TRUE)
 			held_item = stolen_item
-			visible_message(span_notice("[src] grabs [held_item] out of [C]'s hand!"), span_notice("I snag [held_item] out of [C]'s hand!"), span_hear("I hear the sounds of wings flapping furiously."))
+			visible_message("<span class='notice'>[src] grabs [held_item] out of [C]'s hand!</span>", "<span class='notice'>I snag [held_item] out of [C]'s hand!</span>", "<span class='hear'>I hear the sounds of wings flapping furiously.</span>")
 			return held_item
 
-	to_chat(src, span_warning("There is nothing of interest to take!"))
+	to_chat(src, "<span class='warning'>There is nothing of interest to take!</span>")
 	return 0
 
 /mob/living/simple_animal/parrot/verb/drop_held_item_player()
@@ -626,30 +622,10 @@
 
 	if(!held_item)
 		if(src == usr) //So that other mobs wont make this message appear when they're bludgeoning you.
-			to_chat(src, span_warning("I have nothing to drop!"))
+			to_chat(src, "<span class='warning'>I have nothing to drop!</span>")
 		return 0
 
-
-//parrots will eat crackers instead of dropping them
-	if(istype(held_item, /obj/item/reagent_containers/food/snacks/cracker) && (drop_gently))
-		qdel(held_item)
-		held_item = null
-		if(health < maxHealth)
-			adjustBruteLoss(-10)
-		emote("me", 1, "[src] eagerly downs the cracker.")
-		return 1
-
-
-	if(!drop_gently)
-		if(istype(held_item, /obj/item/grenade))
-			var/obj/item/grenade/G = held_item
-			G.forceMove(drop_location())
-			G.prime()
-			to_chat(src, span_danger("I let go of [held_item]!"))
-			held_item = null
-			return 1
-
-	to_chat(src, span_notice("I drop [held_item]."))
+	to_chat(src, "<span class='notice'>I drop [held_item].</span>")
 
 	held_item.forceMove(drop_location())
 	held_item = null
@@ -671,7 +647,7 @@
 					icon_state = icon_sit
 					parrot_state = PARROT_PERCH
 					return
-	to_chat(src, span_warning("There is no perch nearby to sit on!"))
+	to_chat(src, "<span class='warning'>There is no perch nearby to sit on!</span>")
 	return
 
 /mob/living/simple_animal/parrot/Moved(oldLoc, dir)
@@ -696,12 +672,12 @@
 				continue
 			perch_on_human(H)
 			return
-		to_chat(src, span_warning("There is nobody nearby that you can sit on!"))
+		to_chat(src, "<span class='warning'>There is nobody nearby that you can sit on!</span>")
 	else
 		icon_state = icon_living
 		parrot_state = PARROT_WANDER
 		if(buckled)
-			to_chat(src, span_notice("I are no longer sitting on [buckled]'s shoulder."))
+			to_chat(src, "<span class='notice'>I are no longer sitting on [buckled]'s shoulder.</span>")
 			buckled.unbuckle_mob(src, TRUE)
 		buckled = null
 		pixel_x = initial(pixel_x)
@@ -718,7 +694,7 @@
 		pixel_x = pick(-8,8) //pick left or right shoulder
 		icon_state = icon_sit
 		parrot_state = PARROT_PERCH
-		to_chat(src, span_notice("I sit on [H]'s shoulder."))
+		to_chat(src, "<span class='notice'>I sit on [H]'s shoulder.</span>")
 
 
 /mob/living/simple_animal/parrot/proc/toggle_mode()
@@ -735,7 +711,7 @@
 	else
 		melee_damage_upper = parrot_damage_upper
 		a_intent = INTENT_HARM
-	to_chat(src, span_notice("I will now [a_intent] others."))
+	to_chat(src, "<span class='notice'>I will now [a_intent] others.</span>")
 	return
 
 /*
@@ -838,7 +814,6 @@
 	speak_chance = 20
 	status_flags = GODMODE
 	incorporeal_move = INCORPOREAL_MOVE_BASIC
-	butcher_results = list(/obj/item/ectoplasm = 1)
 
 /mob/living/simple_animal/parrot/Poly/ghost/Initialize()
 	memory_saved = TRUE //At this point nothing is saved

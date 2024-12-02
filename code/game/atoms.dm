@@ -170,7 +170,6 @@
 		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
 
 	ComponentInitialize()
-	InitializeAIController()
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -218,7 +217,6 @@
 	LAZYCLEARLIST(priority_overlays)
 
 	QDEL_NULL(light)
-	QDEL_NULL(ai_controller)
 
 	return ..()
 
@@ -842,7 +840,6 @@
 	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "Modify Transform")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
-	VV_DROPDOWN_OPTION(VV_HK_ADD_AI, "Add AI controller")
 
 /atom/vv_do_topic(list/href_list)
 	. = ..()
@@ -881,14 +878,6 @@
 					message_admins("<span class='notice'>[key_name(usr)] has added [amount] units of [chosen_id] to [src]</span>")
 	if(href_list[VV_HK_TRIGGER_EXPLOSION] && check_rights(R_FUN))
 		usr.client.cmd_admin_explosion(src)
-
-	if(href_list[VV_HK_ADD_AI])
-		if(!check_rights(R_VAREDIT))
-			return
-		var/result = input(usr, "Choose the AI controller to apply to this atom WARNING: Not all AI works on all atoms.", "AI controller") as null|anything in subtypesof(/datum/ai_controller)
-		if(!result)
-			return
-		ai_controller = new result(src)
 
 	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
 		var/result = input(usr, "Choose the transformation to apply","Transform Mod") as null|anything in list("Scale","Translate","Rotate")
@@ -1136,6 +1125,10 @@
 	filter_data[name] = p
 	update_filters()
 
+/atom/movable/proc/remove_filter(name_or_names)
+	if(!filter_data)
+		return
+
 /atom/movable/proc/update_filters()
 	filters = null
 	sortTim(filter_data,associative = TRUE)
@@ -1190,12 +1183,3 @@
 	// force_no_gravity has been removed because this is Roguetown code
 	// it'd be trivial to readd if you needed it, though
 	return SSmapping.gravity_by_z_level["[gravity_turf.z]"] || turf_area.has_gravity
-
-/**
-* Instantiates the AI controller of this atom. Override this if you want to assign variables first.
-*
-* This will work fine without manually passing arguments.
-+*/
-/atom/proc/InitializeAIController()
-	if(ai_controller)
-		ai_controller = new ai_controller(src)

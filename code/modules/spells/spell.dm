@@ -67,12 +67,6 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		remove_ranged_ability()
 	return ..()
 
-/obj/effect/proc_holder/singularity_act()
-	return
-
-/obj/effect/proc_holder/singularity_pull()
-	return
-
 /obj/effect/proc_holder/proc/InterceptClickOn(mob/living/caller, params, atom/A)
 	if(caller.ranged_ability != src || ranged_ability_user != caller) //I'm not actually sure how these would trigger, but, uh, safety, I guess?
 		to_chat(caller, span_info("<b>[caller.ranged_ability.name]</b> has been disabled."))
@@ -274,16 +268,6 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			to_chat(user, span_warning("I can't get the words out!"))
 			return FALSE
 
-		var/list/casting_clothes = typecacheof(list(/obj/item/clothing/suit/wizrobe,
-		/obj/item/clothing/head/wizard))
-
-		if(clothes_req) //clothes check
-			if(!is_type_in_typecache(H.wear_armor, casting_clothes))
-				to_chat(H, span_warning("I don't feel strong enough without your robe!"))
-				return FALSE
-			if(!is_type_in_typecache(H.head, casting_clothes))
-				to_chat(H, span_warning("I don't feel strong enough without your hat!"))
-				return FALSE
 		if(miracle && !H.devotion?.check_devotion(src))
 			to_chat(H, span_warning("I don't have enough devotion!"))
 			return FALSE

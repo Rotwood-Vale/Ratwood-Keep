@@ -281,7 +281,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(health <= 0)
 			death()
 			return
-	med_hud_set_status()
 	if(footstep_type)
 		AddComponent(/datum/component/footstep, footstep_type)
 
@@ -667,9 +666,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(A.update_remote_sight(src)) //returns 1 if we override all other sight updates.
 			return
 	sync_lighting_plane_alpha()
-
-/mob/living/simple_animal/get_idcard(hand_first)
-	return access_card
 
 /mob/living/simple_animal/can_hold_items()
 	return dextrous

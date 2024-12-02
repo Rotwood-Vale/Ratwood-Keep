@@ -19,7 +19,6 @@
 	name = "Implant limb"
 	implements = list(
 		/obj/item/bodypart = 80,
-		/obj/item/organ_storage = 80,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	possible_locs = list(
@@ -37,15 +36,6 @@
 	skill_median = SKILL_LEVEL_EXPERT
 
 /datum/surgery_step/add_prosthetic/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	if(istype(tool, /obj/item/organ_storage))
-		if(!length(tool.contents))
-			to_chat(user, span_warning("There is nothing inside [tool]!"))
-			return FALSE
-		tool = tool.contents[1]
-		if(!isbodypart(tool))
-			to_chat(user, span_warning("[tool] cannot be attached!"))
-			return FALSE
-
 	var/obj/item/bodypart/bodypart = tool
 	if(ismonkey(target) && bodypart.animal_origin != MONKEY_BODYPART)
 		to_chat(user, span_warning("[bodypart] doesn't match the patient's morphology."))
