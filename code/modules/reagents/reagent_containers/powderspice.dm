@@ -233,10 +233,24 @@
 	. = 1
 
 /datum/reagent/ozium/on_mob_life(mob/living/carbon/M)
+	if(M.reagents.has_reagent(/datum/reagent/moondust) || M.reagents.has_reagent(/datum/reagent/moondust_purest))
+		M.Dizzy(10)
+		M.Jitter(5)
+		M.slurring += 3
+		M.confused += 2
+		M.losebreath += 2
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
-	M.apply_status_effect(/datum/status_effect/buff/ozium)
 	..()
+
+/datum/reagent/ozium/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/ozium)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/ozium)
 
 /datum/reagent/ozium/overdose_start(mob/living/M)
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
@@ -258,7 +272,10 @@
 
 /datum/reagent/moondust
 	name = "Moondust"
-
+	description = ""
+	color = "#bfc3b5"
+	overdose_threshold = 16
+	metabolization_rate = 0.2
 
 /datum/reagent/moondust/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.25*REM, 0)
@@ -276,16 +293,25 @@
 
 /datum/reagent/moondust/on_mob_life(mob/living/carbon/M)
 	narcolepsy_drug_up(M)
+	M.Sleeping(-40)
 	if(M.reagents.has_reagent(/datum/reagent/moondust_purest))
-		M.Sleeping(40, 0)
-	else
-		M.Sleeping(-40)
+		overdosed = TRUE
+		M.Jitter(5)
+		M.losebreath += 1 //This doesn't kill the user, the overdose does
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
-	M.apply_status_effect(/datum/status_effect/buff/moondust)
 	if(prob(10))
 		M.flash_fullscreen("whiteflash")
 	..()
+
+/datum/reagent/moondust/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/moondust)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/moondust)
 
 /datum/reagent/moondust/overdose_start(mob/living/M)
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
@@ -309,7 +335,7 @@
 	name = "Purest Moondust"
 	description = ""
 	color = "#bfc3b5"
-	overdose_threshold = 50
+	overdose_threshold = 19 
 	metabolization_rate = 0.2
 
 /datum/reagent/moondust_purest/overdose_process(mob/living/M)
@@ -331,16 +357,21 @@
 
 /datum/reagent/moondust_purest/on_mob_life(mob/living/carbon/M)
 	narcolepsy_drug_up(M)
-	if(M.reagents.has_reagent(/datum/reagent/moondust))
-		M.Sleeping(40, 0)
-	else
-		M.Sleeping(-40)
+	M.Sleeping(-40)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
-	M.apply_status_effect(/datum/status_effect/buff/moondust_purest)
 	if(prob(20))
 		M.flash_fullscreen("whiteflash")
 	..()
+
+/datum/reagent/moondust_purest/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/moondust_purest)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/moondust_purest)
 
 /datum/reagent/moondust_purest/overdose_start(mob/living/M)
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)

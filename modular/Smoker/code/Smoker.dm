@@ -50,6 +50,14 @@
 		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
 		M.remove_stress(/datum/stressevent/sleepytime)
 		M.mind.sleep_adv.advance_cycle()
+	if(M.reagents.has_reagent(/datum/reagent/moondust) || M.reagents.has_reagent(/datum/reagent/moondust_purest))
+		M.Dizzy(10)
+		M.Jitter(5)
+		M.slurring += 3
+		M.confused += 2
+		M.losebreath += 2
+		if(prob(5))
+			M.visible_message(span_warning("Blood runs from [M]'s nose."))
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	..()
@@ -117,11 +125,8 @@
 			PM.backdrop(owner)
 	owner.add_stress(/datum/stressevent/snekbt)
 	ADD_TRAIT(owner, TRAIT_PROSOPAGNOSIA, TRAIT_GENERIC)
-	ADD_TRAIT(owner, TRAIT_FAKEDEATH, TRAIT_GENERIC)
-	ADD_TRAIT(owner, TRAIT_NODISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-	ADD_TRAIT(owner, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_SCHIZO_AMBIENCE, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
 
@@ -140,11 +145,8 @@
 	owner.rogfat_add(2500) // crash you fucking junkie.
 	owner.update_body_parts_head_only()
 	REMOVE_TRAIT(owner, TRAIT_PROSOPAGNOSIA, TRAIT_GENERIC)
-	REMOVE_TRAIT(owner, TRAIT_FAKEDEATH, TRAIT_GENERIC)
-	REMOVE_TRAIT(owner, TRAIT_NODISMEMBER, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-	REMOVE_TRAIT(owner, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_SCHIZO_AMBIENCE, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
 	. = ..()

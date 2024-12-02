@@ -5,6 +5,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	show_wanderer_examine = FALSE
+	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/musketeer/musketeer/pre_equip(mob/living/carbon/human/H)
 	..()

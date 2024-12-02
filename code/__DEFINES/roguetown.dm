@@ -173,6 +173,7 @@
 	/datum/patron/divine/pestra,\
 	/datum/patron/divine/malum,\
 	/datum/patron/divine/ravox,\
+	/datum/patron/divine/eora,\
 )
 
 #define ALL_ACOLYTE_PATRONS list(\
@@ -180,7 +181,8 @@
 	/datum/patron/divine/noc,\
 	/datum/patron/divine/dendor,\
 	/datum/patron/divine/pestra,\
-	/datum/patron/divine/malum\
+	/datum/patron/divine/malum,\
+	/datum/patron/divine/eora,\
 )
 
 #define ALL_DIVINE_PATRONS list(\

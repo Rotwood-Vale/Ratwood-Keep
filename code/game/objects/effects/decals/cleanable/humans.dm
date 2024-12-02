@@ -28,6 +28,8 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = NO_CLIENT_COLOR
 	var/blood_timer
+	var/wash_precent = 0
+	COOLDOWN_DECLARE(wash_cooldown)
 
 /obj/effect/decal/cleanable/blood/attack_hand(mob/living/user)
 	. = ..()
@@ -37,6 +39,15 @@
 		H.bloody_hands++
 		H.update_inv_gloves()
 
+/obj/effect/decal/cleanable/blood/weather_act_on(weather_trait, severity)
+	if(weather_trait != PARTICLEWEATHER_RAIN || !COOLDOWN_FINISHED(src, wash_cooldown))
+		return
+	wash_precent += min(10, severity / 4)
+	alpha = 255 *((100 - wash_precent) * 0.01)
+	if(wash_precent >= 100)
+		qdel(src)
+	COOLDOWN_START(src, wash_cooldown, 15 SECONDS)
+
 /obj/effect/decal/cleanable/blood/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
@@ -44,7 +55,7 @@
 	pixel_x = rand(-5,5)
 	pixel_y = rand(5,5)
 	blood_timer = addtimer(CALLBACK(src, PROC_REF(become_dry)), rand(5 MINUTES,8 MINUTES), TIMER_STOPPABLE)
-
+	GLOB.weather_act_upon_list += src
 
 /obj/effect/decal/cleanable/blood/proc/become_dry()
 	if(QDELETED(src))
@@ -64,6 +75,7 @@
 /obj/effect/decal/cleanable/blood/Destroy()
 	deltimer(blood_timer)
 	blood_timer = null
+	GLOB.weather_act_upon_list -= src
 	return ..()
 
 /obj/effect/decal/cleanable/blood/old
