@@ -258,7 +258,7 @@
 	volume = 100
 
 /datum/looping_sound/drill
-	mid_sounds = list('sound/combat/chainsaw_loop.ogg')
+	mid_sounds = list('sound/combat/drill_loop.ogg')
 	mid_length = 85
 	volume = 100
 

@@ -11,7 +11,7 @@
 
 	outfit = /datum/outfit/job/roguetown/architect
 	display_order = JDO_ARCHITECT
-	min_pq = 0
+	min_pq = 12
 	max_pq = null
 
 /datum/outfit/job/roguetown/architect/pre_equip(mob/living/carbon/human/H)         ///////////// fuck being a dumb virgin
@@ -38,8 +38,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)

@@ -2372,6 +2372,7 @@
 #include "code\modules\jobs\job_types\roguetown\peasants\soilson.dm"
 #include "code\modules\jobs\job_types\roguetown\yeomen\alchemist.dm"
 #include "code\modules\jobs\job_types\roguetown\yeomen\architect.dm"
+#include "code\modules\jobs\job_types\roguetown\yeomen\archivist.dm"
 #include "code\modules\jobs\job_types\roguetown\yeomen\artificier.dm"
 #include "code\modules\jobs\job_types\roguetown\yeomen\barkeep.dm"
 #include "code\modules\jobs\job_types\roguetown\yeomen\blacksmith.dm"
