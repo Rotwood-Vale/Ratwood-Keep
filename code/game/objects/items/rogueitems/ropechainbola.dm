@@ -39,6 +39,9 @@
 		if(M.legcuffed == src)
 			M.legcuffed = null
 			M.update_inv_legcuffed()
+		if(M.leashed == src)
+			M.leashed = null
+			M.update_inv_leashed()
 	return ..()
 
 /obj/item/rope/dropped(mob/user, silent)
