@@ -66,14 +66,6 @@
 	var/mob/mobhook_leash_master //Needed to watch for these entities to move
 	var/mob/mobhook_leash_freepet
 
-/datum/intent/leash
-	name = "leash"
-	chargetime = 0
-	noaa = TRUE
-	candodge = FALSE
-	canparry = FALSE
-	misscost = 0
-
 /obj/item/rope/leash/process(delta_time)
 	if(!leash_pet) //No pet, break loop
 		return PROCESS_KILL
@@ -99,7 +91,7 @@
 		return PROCESS_KILL
 
 /obj/item/rope/leash/attack(mob/living/carbon/C, mob/living/user)
-	if(user.used_intent.type != /datum/intent/tie || /datum/intent/leash)
+	if(user.used_intent.type != /datum/intent/tie || user.used_intent.type != /datum/intent/leash)
 		..()
 		return
 
