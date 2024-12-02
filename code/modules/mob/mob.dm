@@ -203,17 +203,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 		var/msg = message
 		if(M.see_invisible < invisibility)//if src is invisible to M
 			msg = blind_message
-		else if(T != loc && T != src) //if src is inside something and not a turf.
-			msg = blind_message
-//		else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit()) //if it is too dark.
-//			msg = blind_message
 		if(!msg)
 			continue
 		M.show_message(msg, MSG_VISUAL, blind_message, MSG_AUDIBLE)
-		if(runechat_message && M.can_see_runechat(src) && M.can_hear())
+		if(runechat_message && M.can_hear())
 			M.create_chat_message(src, raw_message = runechat_message, spans = list("emote"))
-	if(log_seen)
-		log_seen(src, null, hearers, (log_seen_msg ? log_seen_msg : message), log_seen)
 
 ///Adds the functionality to self_message.
 /mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null)
@@ -239,8 +233,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
 		if(runechat_message && M.can_see_runechat(src) && M.can_hear())
 			M.create_chat_message(src, raw_message = runechat_message, spans = list("emote"))
-	if(log_seen)
-		log_seen(src, null, hearers, (log_seen_msg ? log_seen_msg : message), log_seen)
 
 /**
   * Show a message to all mobs in earshot of this one
@@ -1064,9 +1056,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(oldname)
 		//update the datacore records! This is goig to be a bit costly.
 		replace_records_name(oldname,newname)
-
-		//update our pda and id if we have them on our person
-		replace_identification_name(oldname,newname)
 
 		for(var/datum/mind/T in SSticker.minds)
 			for(var/datum/objective/obj in T.get_all_objectives())

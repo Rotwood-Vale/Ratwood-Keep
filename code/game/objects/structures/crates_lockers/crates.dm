@@ -3,7 +3,6 @@
 	desc = ""
 	icon = 'icons/obj/crates.dmi'
 	icon_state = "crate"
-	w_class = WEIGHT_CLASS_BULKY
 	req_access = null
 	can_weld_shut = FALSE
 	horizontal = TRUE

@@ -94,14 +94,16 @@
 	if(turf_integrity == null)
 		turf_integrity = max_integrity
 
-	var/turf/T = SSmapping.get_turf_above(src)
+	var/turf/T = GET_TURF_ABOVE(src)
 	if(T)
 		T.multiz_turf_new(src, DOWN)
 		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, DOWN)
-	T = SSmapping.get_turf_below(src)
+	T = GET_TURF_BELOW(src)
 	if(T)
 		T.multiz_turf_new(src, UP)
 		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, UP)
+	if(!mapload)
+		reassess_stack()
 
 	if (opacity)
 		has_opaque_atom = TRUE
@@ -120,10 +122,10 @@
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
 	changing_turf = FALSE
-	var/turf/T = SSmapping.get_turf_above(src)
+	var/turf/T = GET_TURF_ABOVE(src)
 	if(T)
 		T.multiz_turf_del(src, DOWN)
-	T = SSmapping.get_turf_below(src)
+	T = GET_TURF_BELOW(src)
 	if(T)
 		T.multiz_turf_del(src, UP)
 	STOP_PROCESSING(SSweather,src)
@@ -227,8 +229,10 @@
 	user.Move_Pulled(src)
 
 /turf/proc/multiz_turf_del(turf/T, dir)
+	reassess_stack()
 
 /turf/proc/multiz_turf_new(turf/T, dir)
+	reassess_stack()
 
 //zPassIn doesn't necessarily pass an atom!
 //direction is direction of travel of air
@@ -256,50 +260,14 @@
 		if(flags & FALL_STOP_INTERCEPTING)
 			break
 	if(prev_turf && !(flags & FALL_NO_MESSAGE))
-		prev_turf.visible_message("<span class='danger'>[mov_name] falls through [prev_turf]!</span>")
+		prev_turf.visible_message(span_danger("[mov_name] falls through [prev_turf]!"))
 	if(flags & FALL_INTERCEPTED)
 		return
 	if(zFall(A, ++levels))
 		return FALSE
-	if(isliving(A))
-		var/mob/living/O = A
-		var/dex_save = O.mind?.get_skill_level(/datum/skill/misc/climbing)
-		if(dex_save >= 5)
-			if(O.m_intent != MOVE_INTENT_SNEAK) // If we're sneaking, don't show a message to anybody, shhh!
-				O.visible_message("<span class='danger'>[A] gracefully lands on top of [src]!</span>")
-		else
-			A.visible_message("<span class='danger'>[A] crashes into [src]!</span>")
-			if(A.fall_damage())
-				for(var/mob/living/M in contents)
-					visible_message("<span class='danger'>\The [src] falls on \the [M.name]!</span>")
-					M.Stun(1)
-					M.take_overall_damage(A.fall_damage()*2)
-	if(A.fall_damage())
-		for(var/mob/living/M in contents)
-			visible_message("<span class='danger'>\The [src] falls on \the [M.name]!</span>")
-			M.Stun(1)
-			M.take_overall_damage(A.fall_damage()*2)
+	A.visible_message(span_danger("[A] crashes into [src]!"))
 	A.onZImpact(src, levels)
 	return TRUE
-
-/atom/movable/proc/fall_damage()
-	return 0
-
-/obj/item/fall_damage()
-	if(w_class == WEIGHT_CLASS_TINY)
-		return 0
-	if(w_class == WEIGHT_CLASS_GIGANTIC)
-		return 300
-	var/bsc = 3**(w_class-1)
-	return bsc
-
-/obj/structure/fall_damage()
-	if(w_class == WEIGHT_CLASS_TINY)
-		return 0
-	if(w_class == WEIGHT_CLASS_GIGANTIC)
-		return 300
-	var/bsc = 3**(w_class-1)
-	return bsc
 
 /turf/proc/can_zFall(atom/movable/A, levels = 1, turf/target)
 	return zPassOut(A, DOWN, target) && target.zPassIn(A, DOWN, src)
@@ -458,12 +426,6 @@
 		if(O.level == 1 && (O.flags_1 & INITIALIZED_1))
 			O.hide(src.intact)
 
-// override for space turfs, since they should never hide anything
-/turf/open/space/levelupdate()
-	for(var/obj/O in src)
-		if(O.level == 1 && (O.flags_1 & INITIALIZED_1))
-			O.hide(0)
-
 // Removes all signs of lattice on the pos of the turf -Donkieyo
 /turf/proc/RemoveLattice()
 	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
@@ -519,7 +481,7 @@
 
 /turf/proc/is_shielded()
 
-/turf/contents_explosion(severity, target)
+/turf/contents_explosion(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	var/affecting_level
 	if(severity == 1)
 		affecting_level = 1
@@ -537,7 +499,7 @@
 				var/atom/movable/AM = A
 				if(!AM.ex_check(explosion_id))
 					continue
-			A.ex_act(severity, target)
+			A.ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 			CHECK_TICK
 
 /turf/narsie_act(force, ignore_mobs, probability = 20)
@@ -648,4 +610,3 @@
 //Should return new turf
 /turf/proc/Melt()
 	return ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-

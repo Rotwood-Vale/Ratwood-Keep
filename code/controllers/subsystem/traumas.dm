@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(traumas)
 		"lizards"   = typecacheof(list(
 									/obj/item/organ/tail/lizard)),
 
-		"skeletons" = typecacheof(list(/obj/item/organ/tongue/bone, /obj/item/alch/bone,
+		"skeletons" = typecacheof(list(/obj/item/organ/tongue/bone,
 										/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/skeleton,
 										/obj/effect/decal/remains/human)),
 

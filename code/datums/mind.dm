@@ -491,7 +491,6 @@
 
 /datum/mind/proc/remove_all_antag() //For the Lazy amongst us.
 	remove_traitor()
-	remove_wizard()
 
 /datum/mind/proc/equip_traitor(employer = "The Syndicate", silent = FALSE, datum/antagonist/uplink_owner)
 	return
@@ -684,7 +683,7 @@
 	for(var/objective in get_all_objectives())
 		var/datum/objective/O = objective
 		O.update_explanation_text()
-		to_chat(current, "<B>[O.flavor] #[obj_count]</B>: [O.explanation_text]")
+		to_chat(current, "<B>Objective #[obj_count]</B>: [O.explanation_text]")
 		obj_count++
 
 

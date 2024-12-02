@@ -113,24 +113,6 @@
 			smoke.set_up(0, t)
 			smoke.start()
 
-/obj/projectile/magic/change
-	name = "bolt of change"
-	icon_state = "ice_1"
-	damage = 0
-	damage_type = BURN
-	nodamage = TRUE
-
-/obj/projectile/magic/change/on_hit(atom/change)
-	. = ..()
-	if(ismob(change))
-		var/mob/M = change
-		if(M.anti_magic_check())
-			M.visible_message(span_warning("[src] fizzles on contact with [M]!"))
-			qdel(src)
-			return BULLET_ACT_BLOCK
-	wabbajack(change)
-	qdel(src)
-
 /obj/projectile/magic/spellblade
 	name = "blade energy"
 	icon_state = "lavastaff"

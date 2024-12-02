@@ -28,7 +28,7 @@
 	desc_uncorked = "Bronze tubes spiral about from the mouth of this waterskin in complex, dizzying patterns. The cap on the mouth is off."
 	var/filtered_reagents = list(/datum/reagent/water/gross) // List of liquids it turns into drinkable water
 
-/obj/item/reagent_containers/glass/bottle/waterskin/purifier/onfill(obj/target, mob/user, silent = FALSE)
+/obj/item/reagent_containers/glass/bottle/waterskin/purifier/fill(obj/target, mob/user, silent = FALSE)
 	. = ..()
 	cleanwater(user, silent)
 

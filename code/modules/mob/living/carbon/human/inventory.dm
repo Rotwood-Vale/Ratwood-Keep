@@ -219,7 +219,6 @@
 	//Item is handled and in slot, valid to call callback, for this proc should always be true
 	if(!not_handled)
 		I.equipped(src, slot, initial)
-		check_armor_class()
 
 	if(hud_used)
 		hud_used.throw_icon?.update_icon()
@@ -358,7 +357,6 @@
 		update_hair()
 	if(I.flags_inv & HIDEEYES)
 		update_inv_glasses()
-	check_armor_class()
 	..()
 
 /mob/living/carbon/human/head_update(obj/item/I, forced)
@@ -372,7 +370,6 @@
 		update_inv_glasses()
 	if(I.flags_inv & HIDEEARS || forced)
 		update_body()
-	check_armor_class()
 	..()
 
 /mob/living/carbon/human/proc/equipOutfit(outfit, visualsOnly = FALSE)

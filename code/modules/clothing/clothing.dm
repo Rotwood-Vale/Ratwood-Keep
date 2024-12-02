@@ -429,11 +429,6 @@ BLIND     // can't see anything
 			if(3)
 				to_chat(usr, span_notice("My suit will now report my exact vital lifesigns as well as my coordinate position."))
 
-	if(ishuman(loc))
-		var/mob/living/carbon/human/H = loc
-		if(H.wear_pants == src)
-			H.update_suit_sensors()
-
 /obj/item/clothing/under/AltClick(mob/user)
 	if(..())
 		return 1

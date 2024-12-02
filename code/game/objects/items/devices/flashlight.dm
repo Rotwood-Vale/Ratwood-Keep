@@ -143,7 +143,6 @@
 	fuel = 30 MINUTES
 	light_depth = 0
 	light_height = 0
-	metalizer_result = /obj/item/flashlight/flare/torch/lantern
 
 /obj/item/flashlight/flare/torch/getonmobprop(tag)
 	. = ..()
@@ -255,7 +254,6 @@
 	light_outer_range = 6
 	fuel = 120 MINUTES
 	should_self_destruct = TRUE
-	metalizer_result = null
 
 /obj/item/flashlight/flare/torch/metal/afterattack(atom/movable/A, mob/user, proximity)
 	. = ..()
@@ -285,7 +283,6 @@
 	on_damage = 5
 	fuel = 120 MINUTES
 	should_self_destruct = FALSE
-	metalizer_result = null
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/flashlight/flare/torch/lantern/afterattack(atom/movable/A, mob/user, proximity)

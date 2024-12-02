@@ -241,8 +241,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	H.regenerate_icons()
 
 	log_admin("[key_name(usr)] changed the equipment of [key_name(H)] to [dresscode].")
-	message_admins(span_adminnotice("[key_name_admin(usr)] changed the equipment of [ADMIN_LOOKUPFLW(H)] to [dresscode]."))
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] changed the equipment of [ADMIN_LOOKUPFLW(H)] to [dresscode].</span>")
 
+/client/proc/robust_dress_shop()
 
 	var/list/baseoutfits = list("Naked","Custom", "As Roguetown Job...")
 	var/list/outfits = list()

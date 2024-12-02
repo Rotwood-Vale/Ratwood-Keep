@@ -473,12 +473,10 @@ SUBSYSTEM_DEF(ticker)
 
 	SSdbcore.SetRoundStart()
 
-	message_admins("<span class='notice'><B>Welcome to [station_name()], enjoy your stay!</B></span>")
+	message_admins(span_notice("<B>Welcome to [station_name()], enjoy your stay!</B>"))
 
 	for(var/client/C in GLOB.clients)
-		if(C.mob == SSticker.rulermob)
-			C.mob.playsound_local(C.mob, 'sound/misc/royal_roundstart.ogg', 100, FALSE)
-		else
+		if(C.mob)
 			C.mob.playsound_local(C.mob, 'sound/misc/roundstart.ogg', 100, FALSE)
 
 //	SEND_SOUND(world, sound('sound/misc/roundstart.ogg'))

@@ -21,29 +21,11 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	fillsounds = list('sound/items/fillcup.ogg')
 	poursounds = list('sound/items/fillbottle.ogg')
 	experimental_onhip = TRUE
+	var/desc_uncorked = "An open bottle, hopefully a cork is close by."
 	var/fancy		// for bottles with custom descriptors that you don't want to change when bottle manipulated
 
 /obj/item/reagent_containers/glass/bottle/rogue
 	volume = 70
-
-/obj/item/reagent_containers/glass/bottle/attackby(obj/item/I, mob/user, params)
-	if(reagents.total_volume)
-		return
-	if(closed)
-		return
-	if(istype(I, /obj/item/paper/scroll))
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			var/obj/item/paper/scroll/P = I
-			var/obj/item/bottlemessage/BM = new
-
-			P.forceMove(BM)
-			BM.contained = P
-			H.put_in_active_hand(BM)
-			playsound(src, 'sound/items/scroll_open.ogg', 100, FALSE)
-			qdel(src)
-	else
-		return ..()
 
 /obj/item/reagent_containers/glass/bottle/update_icon(dont_fill=FALSE)
 	if(!fill_icon_thresholds || dont_fill)
@@ -83,6 +65,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		reagent_flags = OPENCONTAINER
 		reagents.flags = reagent_flags
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
+		desc = desc_uncorked
 		spillable = TRUE
 		if(!fancy)
 			desc = "An open bottle, hopefully a cork is close by."

@@ -162,20 +162,13 @@
 	return ..()
 
 /obj/effect/mob_spawn/human/equip(mob/living/carbon/human/H)
+	H.setDir(pick(GLOB.alldirs))
 	if(mob_species)
 		H.set_species(mob_species)
-	H.cure_husk()
-	H.underwear = "Nude"
-	H.undershirt = "Nude"
-	H.socks = "Nude"
-	if(hairstyle)
-		H.hairstyle = hairstyle
-	else
-		H.hairstyle = random_hairstyle(H.gender)
-	if(facial_hairstyle)
-		H.facial_hairstyle = facial_hairstyle
-	else
-		H.facial_hairstyle = random_facial_hairstyle(H.gender)
+	if(husk)
+		H.Drain()
+	else //Because for some reason I can't track down, things are getting turned into husks even if husk = false. It's in some damage proc somewhere.
+		H.cure_husk()
 	if(skin_tone)
 		H.skin_tone = skin_tone
 	else

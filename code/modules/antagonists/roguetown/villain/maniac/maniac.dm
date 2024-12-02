@@ -274,15 +274,11 @@
 		for(var/datum/objective/objective in objectives)
 			objective.update_explanation_text()
 			if(objective.check_completion())
-				to_chat(world, "<B>[objective.flavor] #[count]</B>: [objective.explanation_text] <span class='greentext'>TRIUMPH!</span>")
+				to_chat(world, "<B>Goal #[count]</B>: [objective.explanation_text] <span class='greentext'>TRIUMPH!</span>")
 			else
-				to_chat(world, "<B>[objective.flavor] #[count]</B>: [objective.explanation_text] <span class='redtext'>Failure.</span>")
+				to_chat(world, "<B>Goal #[count]</B>: [objective.explanation_text] <span class='redtext'>Failure.</span>")
 				traitorwin = FALSE
 			count += objective.triumph_count
-
-	var/special_role_text = lowertext(name)
-	if(!considered_alive(owner))
-		traitorwin = FALSE
 
 	if(traitorwin)
 		if(count)
