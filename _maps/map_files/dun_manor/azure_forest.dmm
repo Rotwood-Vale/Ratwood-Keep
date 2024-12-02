@@ -103,10 +103,6 @@
 "aK" = (
 /turf/open/floor/rogue/herringbone,
 /area/rogue/outdoors/woods)
-"aL" = (
-/obj/effect/landmark/threatspawner/shortinit,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/woods)
 "aM" = (
 /obj/structure/spacevine,
 /turf/open/water/swamp/deep,
@@ -337,6 +333,10 @@
 	dir = 10
 	},
 /turf/open/water/pond,
+/area/rogue/outdoors/woods)
+"cr" = (
+/obj/effect/landmark/threatspawner/skeleton/shortinit,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)
 "cs" = (
 /obj/structure/fluff/railing/border{
@@ -3598,6 +3598,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"BL" = (
+/obj/effect/landmark/threatspawner/wolf/shortinit,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/woods)
 "BO" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -4678,6 +4682,10 @@
 /obj/item/rogueweapon/shovel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter/woods)
+"Ke" = (
+/obj/effect/landmark/threatspawner/goblin/sea,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/beach/forest)
 "Kg" = (
 /obj/structure/spacevine,
 /obj/effect/decal/cleanable/greenglow{
@@ -5242,7 +5250,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/beach/forest)
 "OC" = (
-/obj/effect/landmark/threatspawner/shortinit,
+/obj/effect/landmark/threatspawner/skeleton/shortinit,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
 "OJ" = (
@@ -5519,6 +5527,10 @@
 /obj/structure/closet/crate/coffin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"Rn" = (
+/obj/effect/landmark/threatspawner/goblin/shortinit,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods)
 "Rp" = (
 /obj/item/grown/log/tree/small,
 /turf/open/floor/rogue/dirt/road,
@@ -6207,12 +6219,6 @@
 /obj/item/flashlight/flare/torch/metal,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/woods)
-"WG" = (
-/obj/effect/landmark/threatspawner/shortinit{
-	spawn_range = 7
-	},
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/woods)
 "WJ" = (
 /obj/structure/spacevine,
 /turf/open/water/swamp/deep,
@@ -6348,10 +6354,6 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
-"XU" = (
-/obj/effect/landmark/threatspawner/shortinit,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/shelter/woods)
 "XV" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -28813,7 +28815,7 @@ RI
 OA
 OA
 OA
-OA
+Ke
 OA
 Rv
 RI
@@ -39987,7 +39989,7 @@ nt
 nt
 nt
 Yi
-aL
+Yi
 Yi
 By
 jW
@@ -42829,7 +42831,7 @@ jW
 jW
 RB
 nt
-nE
+BL
 nt
 nt
 Ek
@@ -43250,7 +43252,7 @@ nt
 nt
 nt
 nt
-nt
+cr
 nt
 nt
 nt
@@ -45207,7 +45209,7 @@ jW
 jW
 jW
 jW
-jW
+Rn
 jW
 yo
 yo
@@ -45763,7 +45765,7 @@ nt
 nt
 nt
 jW
-WG
+nt
 nt
 nt
 nt
@@ -46771,7 +46773,7 @@ yo
 nt
 rz
 Eo
-XU
+Eo
 Eo
 LQ
 eT
