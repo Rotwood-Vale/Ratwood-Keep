@@ -28,14 +28,6 @@
 	canparry = FALSE
 	misscost = 0
 
-/datum/intent/leash
-	name = "leash"
-	chargetime = 0
-	noaa = TRUE
-	candodge = FALSE
-	canparry = FALSE
-	misscost = 0
-
 /obj/item/rope/Destroy()
 	if(iscarbon(loc))
 		var/mob/living/carbon/M = loc

@@ -66,6 +66,15 @@
 	var/mob/mobhook_leash_master //Needed to watch for these entities to move
 	var/mob/mobhook_leash_freepet
 
+/datum/intent/leash
+	name = "leash"
+	iconstate = "inuse"
+	chargetime = 0
+	noaa = TRUE
+	candodge = FALSE
+	canparry = FALSE
+	misscost = 0
+
 /obj/item/rope/leash/process(delta_time)
 	if(!leash_pet) //No pet, break loop
 		return PROCESS_KILL
