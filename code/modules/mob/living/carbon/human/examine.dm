@@ -63,6 +63,10 @@
 		var/used_name = name
 		var/used_title = get_role_title()
 		var/display_as_wanderer = FALSE
+		var/display_as_foreign = FALSE
+		var/am_foreign = FALSE
+		var/are_mercenary = FALSE
+		var/am_mercenary = FALSE
 		var/is_returning = FALSE
 		if(observer_privilege)
 			used_name = real_name
@@ -70,12 +74,29 @@
 			var/datum/migrant_role/migrant = MIGRANT_ROLE(migrant_type)
 			if(migrant.show_wanderer_examine)
 				display_as_wanderer = TRUE
+			if(migrant.show_foreign_examine)
+				display_as_foreign = TRUE
 		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
 			if(J.wanderer_examine)
 				display_as_wanderer = TRUE
-			if(islatejoin)
+			if(J.foreign_examine)
+				display_as_foreign = TRUE
+			if(J.flag == MERCENARY)
+				are_mercenary = TRUE
+			if(islatejoin && !are_mercenary)
 				is_returning = TRUE
+		if(user.migrant_type)
+			var/datum/migrant_role/am_migrant = MIGRANT_ROLE(user.migrant_type)
+			if(am_migrant.show_foreign_examine)
+				am_foreign = TRUE
+		else if(user.job)
+			var/datum/job/OJ = SSjob.GetJob(user.job)
+			if(OJ.foreign_examine)
+				am_foreign = TRUE
+			if(OJ.flag == MERCENARY)
+				am_mercenary = TRUE
+
 		if(display_as_wanderer)
 			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
 		else if(used_title)
@@ -114,6 +135,12 @@
 			var/mob/living/carbon/human/H = user
 			if(H.marriedto == name)
 				. += span_love("It's my spouse.")
+
+		if(display_as_foreign && user != src)
+			if(are_mercenary && am_mercenary)
+				. += span_notice("A Mercenary")
+			else if(!am_foreign)
+				. += span_phobia("A Foreigner...")
 
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
@@ -256,8 +283,8 @@
 	if(!(SLOT_GLASSES in obscured))
 		if(glasses)
 			. += "[m3] [glasses.get_examine_string(user)] covering [m2] eyes."
-		else if(eye_color == BLOODCULT_EYE && iscultist(src) && HAS_TRAIT(src, CULT_EYES))
-			. += span_warning("<B>[m2] eyes are glowing an unnatural red!</B>")
+		else if(eye_color == BLOODCULT_EYE)
+			. += "<span class='warning'><B>[m2] eyes are glowing an unnatural red!</B></span>"
 
 	//ears
 	if(ears && !(SLOT_HEAD in obscured))
@@ -457,7 +484,7 @@
 			msg += span_warning("[m1] barely conscious.")
 		else
 			if(stat >= UNCONSCIOUS)
-				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"]."
+				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"].[client ? "" : " <b>They won't be waking up for a while.</b>"]"
 			else if(eyesclosed)
 				msg += "[capitalize(m2)] eyes are closed."
 			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))

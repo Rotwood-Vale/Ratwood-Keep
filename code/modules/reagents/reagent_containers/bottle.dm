@@ -54,6 +54,7 @@
 		reagents.flags = reagent_flags
 		desc = "A bottle with a cork."
 		spillable = FALSE
+		to_chat(usr, span_notice("You put the cork back in."))
 	else
 		reagent_flags = OPENCONTAINER
 		reagents.flags = reagent_flags
@@ -318,11 +319,6 @@
 	name = "Severe Anxiety culture bottle"
 	desc = ""
 	spawned_disease = /datum/disease/anxiety
-
-/obj/item/reagent_containers/glass/bottle/beesease
-	name = "Beesease culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/beesease
 
 /obj/item/reagent_containers/glass/bottle/fluspanish
 	name = "Spanish flu culture bottle"

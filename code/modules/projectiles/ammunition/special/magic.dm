@@ -26,10 +26,6 @@
 	projectile_type = /obj/projectile/magic/safety
 	harmful = FALSE
 
-/obj/item/ammo_casing/magic/door
-	projectile_type = /obj/projectile/magic/door
-	harmful = FALSE
-
 /obj/item/ammo_casing/magic/fireball
 	projectile_type = /obj/projectile/magic/aoe/fireball
 

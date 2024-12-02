@@ -262,14 +262,6 @@
 	if(istype(H))
 		H.toggle_welding_screen(owner)
 
-/datum/action/item_action/toggle_welding_screen/plasmaman
-	name = "Toggle Welding Screen"
-
-/datum/action/item_action/toggle_welding_screen/plasmaman/Trigger()
-	var/obj/item/clothing/head/helmet/space/plasmaman/H = target
-	if(istype(H))
-		H.toggle_welding_screen(owner)
-
 /datum/action/item_action/toggle_headphones
 	name = "Toggle Headphones"
 	desc = ""
@@ -279,26 +271,6 @@
 	if(istype(H))
 		H.toggle(owner)
 
-/datum/action/item_action/toggle_unfriendly_fire
-	name = "Toggle Friendly Fire \[ON\]"
-	desc = ""
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
-	button_icon_state = "vortex_ff_on"
-
-/datum/action/item_action/toggle_unfriendly_fire/Trigger()
-	if(..())
-		UpdateButtonIcon()
-
-/datum/action/item_action/toggle_unfriendly_fire/UpdateButtonIcon(status_only = FALSE, force)
-	if(istype(target, /obj/item/hierophant_club))
-		var/obj/item/hierophant_club/H = target
-		if(H.friendly_fire_check)
-			button_icon_state = "vortex_ff_off"
-			name = "Toggle Friendly Fire \[OFF\]"
-		else
-			button_icon_state = "vortex_ff_on"
-			name = "Toggle Friendly Fire \[ON\]"
-	..()
 
 /datum/action/item_action/synthswitch
 	name = "Change Synthesizer Instrument"
@@ -310,18 +282,6 @@
 		return synth.selectInstrument()
 	return ..()
 
-/datum/action/item_action/vortex_recall
-	name = "Vortex Recall"
-	desc = ""
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
-	button_icon_state = "vortex_recall"
-
-/datum/action/item_action/vortex_recall/IsAvailable()
-	if(istype(target, /obj/item/hierophant_club))
-		var/obj/item/hierophant_club/H = target
-		if(H.teleporting)
-			return 0
-	return ..()
 
 /datum/action/item_action/toggle_helmet_flashlight
 	name = "Toggle Helmet Flashlight"
@@ -379,18 +339,6 @@
 
 /datum/action/item_action/toggle_helmet
 	name = "Toggle Helmet"
-
-/datum/action/item_action/toggle_jetpack
-	name = "Toggle Jetpack"
-
-/datum/action/item_action/jetpack_stabilization
-	name = "Toggle Jetpack Stabilization"
-
-/datum/action/item_action/jetpack_stabilization/IsAvailable()
-	var/obj/item/tank/jetpack/J = target
-	if(!istype(J) || !J.on)
-		return 0
-	return ..()
 
 /datum/action/item_action/hands_free
 	check_flags = AB_CHECK_CONSCIOUS
@@ -456,38 +404,6 @@
 	..()
 	name = "Use [target.name]"
 	button.name = name
-
-/datum/action/item_action/cult_dagger
-	name = "Draw Blood Rune"
-	desc = ""
-	icon_icon = 'icons/mob/actions/actions_cult.dmi'
-	button_icon_state = "draw"
-	buttontooltipstyle = "cult"
-	background_icon_state = "bg_demon"
-
-/datum/action/item_action/cult_dagger/Grant(mob/M)
-	if(iscultist(M))
-		..()
-		button.screen_loc = "6:157,4:-2"
-		button.moved = "6:157,4:-2"
-	else
-		Remove(owner)
-
-/datum/action/item_action/cult_dagger/Trigger()
-	for(var/obj/item/H in owner.held_items) //In case we were already holding another dagger
-		if(istype(H, /obj/item/melee/cultblade/dagger))
-			H.attack_self(owner)
-			return
-	var/obj/item/I = target
-	if(owner.can_equip(I, SLOT_HANDS))
-		owner.temporarilyRemoveItemFromInventory(I)
-		owner.put_in_hands(I)
-		I.attack_self(owner)
-	else
-		if (owner.get_num_arms() <= 0)
-			to_chat(owner, span_warning("I dont have any usable hands!"))
-		else
-			to_chat(owner, span_warning("My hands are full!"))
 
 ///MGS BOX!
 /datum/action/item_action/agent_box
@@ -564,16 +480,6 @@
 	var/obj/effect/proc_holder/spell/S = target
 	if(owner)
 		return S.can_cast(owner)
-	return FALSE
-
-/datum/action/spell_action/alien
-
-/datum/action/spell_action/alien/IsAvailable()
-	if(!target)
-		return FALSE
-	var/obj/effect/proc_holder/alien/ab = target
-	if(owner)
-		return ab.cost_check(ab.check_turf,owner,1)
 	return FALSE
 
 

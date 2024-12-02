@@ -313,10 +313,6 @@
 	if(..()) //successful monkey bite.
 		attacked += 10
 
-/mob/living/simple_animal/slime/attack_larva(mob/living/carbon/alien/larva/L)
-	if(..()) //successful larva bite.
-		attacked += 10
-
 /mob/living/simple_animal/slime/attack_hulk(mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
@@ -373,12 +369,6 @@
 					return TRUE
 		if(..()) //successful attack
 			attacked += 10
-
-/mob/living/simple_animal/slime/attack_alien(mob/living/carbon/alien/humanoid/M)
-	if(..()) //if harm or disarm intent.
-		attacked += 10
-		discipline_slime(M)
-
 
 /mob/living/simple_animal/slime/attackby(obj/item/W, mob/living/user, params)
 	if(stat == DEAD && !user.cmode)

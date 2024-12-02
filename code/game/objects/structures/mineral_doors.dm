@@ -64,6 +64,7 @@
 	var/obj/item/repair_cost_first = null
 	var/obj/item/repair_cost_second = null	
 	var/repair_skill = null
+	var/mob/last_bumper = null
 
 /obj/structure/mineral_door/proc/try_award_resident_key(mob/user)
 	if(!grant_resident_key)
@@ -223,6 +224,9 @@
 				user.visible_message(span_warning("[user] smashes through [src]!"))
 			return
 		if(locked)
+			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/keyring))
+				src.attackby(user.get_active_held_item(), user, TRUE)
+				return
 			rattle()
 			return
 		if(TryToSwitchState(AM))
@@ -234,12 +238,6 @@
 					else
 						addtimer(CALLBACK(src, PROC_REF(Close), FALSE), 25)
 
-/obj/structure/mineral_door/attack_ai(mob/user) //those aren't machinery, they're just big fucking slabs of a mineral
-	if(isAI(user)) //so the AI can't open it
-		return
-	else if(iscyborg(user)) //but cyborgs can
-		if(get_dist(user,src) <= 1) //not remotely though
-			return TryToSwitchState(user)
 
 /obj/structure/mineral_door/attack_paw(mob/user)
 	return attack_hand(user)
@@ -290,8 +288,6 @@
 						SwitchState()
 			else
 				SwitchState()
-	else if(ismecha(user))
-		SwitchState()
 	return TRUE
 
 /obj/structure/mineral_door/proc/SwitchState(silent = FALSE)
@@ -319,7 +315,7 @@
 		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
 	SEND_SIGNAL(src, COMSIG_DOOR_OPEN, src)
 
-/obj/structure/mineral_door/proc/Close(silent = FALSE)
+/obj/structure/mineral_door/proc/Close(silent = FALSE, autobump = FALSE)
 	if(isSwitchingStates || !door_opened)
 		return
 	var/turf/T = get_turf(src)
@@ -339,6 +335,10 @@
 	update_icon()
 	isSwitchingStates = FALSE
 	SEND_SIGNAL(src, COMSIG_DOOR_CLOSED, src)
+	if(autobump && src.Adjacent(last_bumper))
+		if(istype(last_bumper.get_active_held_item(), /obj/item/key) || istype(last_bumper.get_active_held_item(), /obj/item/keyring))
+			src.attack_right(last_bumper)
+	last_bumper = null
 
 /obj/structure/mineral_door/update_icon()
 	icon_state = "[base_state][door_opened ? "open":""]"
@@ -365,14 +365,19 @@
 	animate(pixel_x = oldx-1, time = 0.5)
 	animate(pixel_x = oldx, time = 0.5)
 
-/obj/structure/mineral_door/attackby(obj/item/I, mob/user)
+/obj/structure/mineral_door/attackby(obj/item/I, mob/user, autobump = FALSE)
 	user.changeNext_move(CLICK_CD_FAST)
 	if(istype(I, /obj/item/key) || istype(I, /obj/item/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
 			rattle()
 			return
-		trykeylock(I, user)
+		if(autobump == TRUE) //Attackby passes UI coordinate onclick stuff, so forcing check to TRUE
+			trykeylock(I, user, autobump)
+			return
+		else
+			trykeylock(I, user)
+			return
 //	else if(user.used_intent.type != INTENT_HARM)
 //		return attack_hand(user)
 	else
@@ -438,7 +443,7 @@
 	else
 		return ..()
 
-/obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user)
+/obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user, autobump = FALSE)
 	if(door_opened || isSwitchingStates)
 		return
 	if(!keylock)
@@ -457,17 +462,28 @@
 					break
 			if(K.lockhash == lockhash)
 				lock_toggle(user)
-				break
+				if(autobump && !locked)
+					src.Open()
+					addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
+					src.last_bumper = user
+				return
 			else
 				if(user.cmode)
 					rattle()
+		to_chat(user, span_warning("None of the keys on my keyring go to this door."))
+		rattle()
 		return
 	else
 		var/obj/item/key/K = I
 		if(K.lockhash == lockhash)
 			lock_toggle(user)
+			if(autobump)
+				src.Open()
+				addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
+				src.last_bumper = user
 			return
 		else
+			to_chat(user, span_warning("This is not the correct key that goes to this door."))
 			rattle()
 		return
 

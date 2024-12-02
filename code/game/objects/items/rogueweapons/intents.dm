@@ -45,6 +45,8 @@
 	var/reach = 1 //In tiles, how far this weapon can reach; 1 for adjacent, which is default
 	var/miss_text //THESE ARE FOR UNARMED MISSING ATTACKS
 	var/miss_sound //THESE ARE FOR UNARMED MISSING ATTACKS
+	var/ican_assin = FALSE			//Intent: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
+	var/ican_cdg = FALSE			//Intent: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
 /datum/intent/Destroy()
 	if(chargedloop)
@@ -58,6 +60,8 @@
 	inspec += "<br><span class='notice'><b>[name]</b> intent</span>"
 	if(desc)
 		inspec += "\n[desc]"
+	if(reach != 1)
+		inspec += "\n<b>Reach:</b> [reach]"
 	if(damfactor != 1)
 		inspec += "\n<b>Damage:</b> [damfactor]"
 	if(penfactor)

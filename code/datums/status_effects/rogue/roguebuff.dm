@@ -83,9 +83,6 @@
 	effectedstats = list("speed" = 4, "endurance" = 4, "perception" = -3)
 	duration = 30 SECONDS
 
-/datum/status_effect/buff/moondust/nextmove_modifier()
-	return 0.5
-
 /datum/status_effect/buff/moondust/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/moondust)
@@ -100,9 +97,6 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
 	effectedstats = list("speed" = 5, "endurance" = 5, "perception" = -2)
 	duration = 40 SECONDS
-
-/datum/status_effect/buff/moondust_purest/nextmove_modifier()
-	return 0.5
 
 /datum/status_effect/buff/moondust_purest/on_apply()
 	. = ..()
@@ -180,12 +174,20 @@
 /datum/status_effect/buff/darkvision/on_apply()
 	. = ..()
 	to_chat(owner, span_warning("The darkness fades somewhat."))
-	ADD_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
+	if(HAS_TRAIT(owner, TRAIT_DARKVISION))
+		ADD_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+	else if(HAS_TRAIT(owner, TRAIT_NOCTURNAL))
+		ADD_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+	else
+		ADD_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
 
 /datum/status_effect/buff/darkvision/on_remove()
 	. = ..()
 	to_chat(owner, span_warning("The darkness returns to normal."))
-	REMOVE_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
+	if(HAS_TRAIT(owner, TRAIT_DARKVISION_BETTER))
+		REMOVE_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+	else	
+		REMOVE_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
 
 /atom/movable/screen/alert/status_effect/buff/haste
 	name = "Haste"

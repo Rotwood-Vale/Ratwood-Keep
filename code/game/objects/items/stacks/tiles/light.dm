@@ -18,13 +18,3 @@
 		state = 1 //flickering occasionally
 	else
 		state = 0 //fine
-
-/obj/item/stack/tile/light/attackby(obj/item/O, mob/user, params)
-	if(O.tool_behaviour == TOOL_CROWBAR)
-		new/obj/item/stack/sheet/metal(user.loc)
-		amount--
-		new/obj/item/stack/light_w(user.loc)
-		if(amount <= 0)
-			qdel(src)
-	else
-		return ..()

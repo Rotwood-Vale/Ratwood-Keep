@@ -89,7 +89,7 @@
 	P.info += "<h4>Stamp below to confirm receipt of goods:</h4>"
 
 	if(P.errors & MANIFEST_ERROR_ITEM)
-		if(istype(C, /obj/structure/closet/crate/secure) || istype(C, /obj/structure/closet/crate/large))
+		if( istype(C, /obj/structure/closet/crate/large))
 			P.errors &= ~MANIFEST_ERROR_ITEM
 		else
 			var/lost = max(round(C.contents.len / 10), 1)

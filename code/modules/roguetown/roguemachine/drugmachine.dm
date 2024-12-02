@@ -240,7 +240,6 @@
 	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(35,55),"NAME" = "alembic")
 	held_items[/obj/item/storage/fancy/pilltin/wake] = list("PRICE" = rand(35,45),"NAME" = "pep pills tin")
 	held_items[/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify] = list("PRICE" = rand(25,30),"NAME" = "PURIFY")
-	held_items[/obj/item/storage/fancy/pilltin/pink] = list("PRICE" = rand(35,55),"NAME" = "pink pill tin")
 	held_items[/obj/item/natural/bundle/cloth/bandage/full] = list("PRICE" = rand(15,35),"NAME" = "roll of bandages")
 
 #undef DRUGRADE_MONEYA

@@ -16,23 +16,13 @@
 	rogue_enabled = TRUE
 	/// Traits we apply to the owner
 	var/static/list/applied_traits = list(
-		TRAIT_CRITICAL_RESISTANCE,
 		TRAIT_DECEIVING_MEEKNESS,
 		TRAIT_NOSTINK,
 		TRAIT_EMPATH,
-		TRAIT_NOROGSTAM,
-		TRAIT_NOPAIN,
-		TRAIT_NOPAINSTUN,
 		TRAIT_STEELHEARTED,
 		TRAIT_NOMOOD,
-		TRAIT_HARDDISMEMBER,
-		TRAIT_NOSLEEP,
-		TRAIT_SHOCKIMMUNE,
-		TRAIT_STABLEHEART,
-		TRAIT_STABLELIVER,
-		TRAIT_ANTIMAGIC,
 		TRAIT_SCHIZO_AMBIENCE,
-		TRAIT_BLOODLOSS_IMMUNE,
+		TRAIT_DARKVISION,
 	)
 	/// Traits that only get applied in the final sequence
 	var/static/list/final_traits = list(
@@ -41,7 +31,7 @@
 	)
 	/// Cached old stats in case we get removed
 	var/STASTR
-	var/STACON 
+	var/STACON
 	var/STAEND
 	/// Weapons we can give to the dreamer
 	var/static/list/possible_weapons = list(
@@ -51,12 +41,12 @@
 	)
 	/// Wonder recipes
 	var/static/list/recipe_progression = list(
-		/datum/crafting_recipe/roguetown/structure/wonder/first, 
-		/datum/crafting_recipe/roguetown/structure/wonder/second, 
-		/datum/crafting_recipe/roguetown/structure/wonder/third, 
+		/datum/crafting_recipe/roguetown/structure/wonder/first,
+		/datum/crafting_recipe/roguetown/structure/wonder/second,
+		/datum/crafting_recipe/roguetown/structure/wonder/third,
 		/datum/crafting_recipe/roguetown/structure/wonder/fourth,
 	)
-	/// Key number > Key text 
+	/// Key number > Key text
 	var/list/num_keys = list()
 	/// Key text > key number
 	var/list/key_nums = list()
@@ -95,17 +85,17 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
 			dreamer.cmode_music = 'sound/music/combat_maniac2.ogg'
-			owner.adjust_skillrank(/datum/skill/combat/knives, 6, TRUE)
-			owner.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-			owner.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/misc/treatment, 3, TRUE) 
+			owner.adjust_skillrank_up_to(/datum/skill/combat/knives, 6, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/misc/treatment, 3, TRUE)
+			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
 			STAEND = dreamer.STAEND
-			dreamer.STASTR = 20
-			dreamer.STACON = 20
-			dreamer.STAEND = 20
-			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
+			dreamer.STASTR = 16
+			dreamer.STACON = 16
+			dreamer.STAEND = 16
 			if(heart) // clear any inscryptions, in case of being made maniac midround
 				heart.inscryptions = list()
 				heart.inscryption_keys = list()
@@ -167,7 +157,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		//Stick then in the lists, continue the loop
 		num_keys[randumb] = rantelligent
 		key_nums[rantelligent] = randumb
-	
+
 	sum_keys = 0
 	for(var/i in num_keys)
 		sum_keys += text2num(i)
@@ -259,8 +249,8 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		var/static/list/slop_lore = list(
 			span_deadsay("... Rockhill? No ... It doesn't exist ..."),
 			span_deadsay("... My name is Trey. Trey Liam, Scientific Overseer ..."),
-			span_deadsay("... I'm on NT Aeon, a self sustaining ship, used to preserve what remains of humanity ..."),
-			span_deadsay("... Launched into the stars, INRL preserves their memories ... Their personalities ..."),
+			span_deadsay("... I'm on the Aeon, a self sustaining ship, used to preserve what remains of humanity ..."),
+			span_deadsay("... Launched into the stars, preserving their memories ... Their personalities ..."),
 			span_deadsay("... Keeps them alive in cyberspace, oblivious to the catastrophe ..."),
 			span_deadsay("... There is no hope left. Only the cyberspace deck lets me live in the forgery ..."),
 			span_deadsay("... What have I done!? ..."),

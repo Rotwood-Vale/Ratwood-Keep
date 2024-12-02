@@ -165,11 +165,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 	. = ..()
 	if(!proximity)
 		return
-	if(isfloorturf(A))
-		to_chat(user, span_notice("I hit the floor with the bible."))
-		if(user.mind && (user.mind.isholy))
-			for(var/obj/effect/rune/R in orange(2,user))
-				R.invisibility = 0
 	if(user.mind && (user.mind.isholy))
 		if(A.reagents && A.reagents.has_reagent(/datum/reagent/water)) // blesses all the water in the holder
 			to_chat(user, span_notice("I bless [A]."))
@@ -187,25 +182,8 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 			B.name = name
 			B.icon_state = icon_state
 			B.item_state = item_state
-	if(istype(A, /obj/item/twohanded/required/cult_bastard) && !iscultist(user))
-		var/obj/item/twohanded/required/cult_bastard/sword = A
-		to_chat(user, span_notice("I begin to exorcise [sword]."))
-		playsound(src,'sound/blank.ogg',40,TRUE)
-		if(do_after(user, 40, target = sword))
-			playsound(src,'sound/blank.ogg',60,TRUE)
-			for(var/obj/item/soulstone/SS in sword.contents)
-				SS.usability = TRUE
-				for(var/mob/living/simple_animal/shade/EX in SS)
-					SSticker.mode.remove_cultist(EX.mind, 1, 0)
-					EX.icon_state = "ghost1"
-					EX.name = "Purified [EX.name]"
-				SS.release_shades(user)
-				qdel(SS)
-			new /obj/item/nullrod/claymore(get_turf(sword))
-			user.visible_message(span_notice("[user] has purified [sword]!"))
-			qdel(sword)
 
-	else if(istype(A, /obj/item/soulstone) && !iscultist(user))
+	else if(istype(A, /obj/item/soulstone))
 		var/obj/item/soulstone/SS = A
 		if(SS.purified)
 			return
@@ -219,8 +197,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 			for(var/mob/M in SS.contents)
 				if(M.mind)
 					SS.icon_state = "purified_soulstone2"
-					if(iscultist(M))
-						SSticker.mode.remove_cultist(M.mind, FALSE, FALSE)
 			for(var/mob/living/simple_animal/shade/EX in SS)
 				EX.icon_state = "ghost1"
 				EX.name = "Purified [initial(EX.name)]"

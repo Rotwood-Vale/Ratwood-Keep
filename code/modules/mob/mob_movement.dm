@@ -9,8 +9,6 @@
   */
 /client/verb/drop_item()
 	set hidden = 1
-	if(!iscyborg(mob) && mob.stat == CONSCIOUS)
-		mob.dropItemToGround(mob.get_active_held_item(), silent = FALSE)
 	return
 
 /**
@@ -115,9 +113,6 @@
 
 	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
 		return mob.remote_control.relaymove(mob, direct)
-
-	if(isAI(mob))
-		return AIMove(n,direct,mob)
 
 	if(Process_Grab()) //are we restrained by someone's grip?
 		return
@@ -230,6 +225,13 @@
 			move_delay = world.time + 10
 			to_chat(src, span_warning("I can't move!"))
 			return TRUE
+	if(mob.pulling && isliving(mob.pulling))
+		var/mob/living/L = mob.pulling
+		var/mob/living/M = mob
+		if(L.cmode && !L.resting && !L.incapacitated() && M.grab_state < GRAB_AGGRESSIVE)
+			move_delay = world.time + 10
+			to_chat(src, span_warning("[L] still has footing! I need a stronger grip!"))
+			return TRUE    
 
 /**
   * Allows mobs to ignore density and phase through objects
@@ -302,10 +304,6 @@
 			if(stepTurf)
 				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
 					to_chat(L, span_warning("[S] bars your passage!"))
-					if(isrevenant(L))
-						var/mob/living/simple_animal/revenant/R = L
-						R.reveal(20)
-						R.stun(20)
 					return
 				if(stepTurf.flags_1 & NOJAUNT_1)
 					to_chat(L, span_warning("Some strange aura is blocking the way."))

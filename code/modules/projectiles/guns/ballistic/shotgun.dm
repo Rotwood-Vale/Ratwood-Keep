@@ -200,30 +200,11 @@
 	unique_reskin = null
 	var/slung = FALSE
 
-/obj/item/gun/ballistic/shotgun/doublebarrel/improvised/attackby(obj/item/A, mob/user, params)
-	..()
-	if(istype(A, /obj/item/stack/cable_coil) && !sawn_off)
-		var/obj/item/stack/cable_coil/C = A
-		if(C.use(10))
-			slot_flags = ITEM_SLOT_BACK
-			to_chat(user, span_notice("I tie the lengths of cable to the shotgun, making a sling."))
-			slung = TRUE
-			update_icon()
-		else
-			to_chat(user, span_warning("I need at least ten lengths of cable if you want to make a sling!"))
-
 /obj/item/gun/ballistic/shotgun/doublebarrel/improvised/update_icon()
 	..()
 	if(slung)
 		add_overlay("ishotgunsling")
 		item_state = "ishotgunsling"
-
-/obj/item/gun/ballistic/shotgun/doublebarrel/improvised/sawoff(mob/user)
-	. = ..()
-	if(. && slung) //sawing off the gun removes the sling
-		new /obj/item/stack/cable_coil(get_turf(src), 10)
-		slung = 0
-		update_icon()
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/improvised/sawn
 	name = "sawn-off improvised shotgun"
@@ -233,48 +214,3 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	sawn_off = TRUE
 	slot_flags = ITEM_SLOT_BELT
-
-/obj/item/gun/ballistic/shotgun/doublebarrel/hook
-	name = "hook modified sawn-off shotgun"
-	desc = ""
-	icon_state = "hookshotgun"
-	item_state = "shotgun"
-	load_sound = "sound/weapons/shotguninsert.ogg"
-	mag_type = /obj/item/ammo_box/magazine/internal/shot/bounty
-	w_class = WEIGHT_CLASS_BULKY
-	weapon_weight = WEAPON_MEDIUM
-	can_be_sawn_off = FALSE
-	force = 16 //it has a hook on it
-	attack_verb = list("slashed", "hooked", "stabbed")
-	hitsound = 'sound/blank.ogg'
-	//our hook gun!
-	var/obj/item/gun/magic/hook/bounty/hook
-	var/toggled = FALSE
-
-/obj/item/gun/ballistic/shotgun/doublebarrel/hook/Initialize()
-	. = ..()
-	hook = new /obj/item/gun/magic/hook/bounty(src)
-
-/obj/item/gun/ballistic/shotgun/doublebarrel/hook/AltClick(mob/user)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
-		return
-	if(toggled)
-		to_chat(user,span_notice("I switch to the shotgun."))
-		fire_sound = initial(fire_sound)
-	else
-		to_chat(user,span_notice("I switch to the hook."))
-		fire_sound = 'sound/blank.ogg'
-	toggled = !toggled
-
-/obj/item/gun/ballistic/shotgun/doublebarrel/hook/examine(mob/user)
-	. = ..()
-	if(toggled)
-		. += span_notice("Alt-click to switch to the shotgun.")
-	else
-		. += span_notice("Alt-click to switch to the hook.")
-
-/obj/item/gun/ballistic/shotgun/doublebarrel/hook/afterattack(atom/target, mob/living/user, flag, params)
-	if(toggled)
-		hook.afterattack(target, user, flag, params)
-	else
-		return ..()

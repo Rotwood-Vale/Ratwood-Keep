@@ -189,8 +189,6 @@
 
 	if(usr.incapacitated())
 		return TRUE
-	if(ismecha(usr.loc)) // stops inventory actions in a mech
-		return TRUE
 
 	if(hud?.mymob && slot_id)
 		var/obj/item/inv_item = hud.mymob.get_item_by_slot(slot_id)
@@ -297,10 +295,6 @@
 	if(usr != user)
 		return TRUE
 	if(world.time <= user.next_move)
-		return TRUE
-//	if(user.incapacitated())
-//		return TRUE
-	if (ismecha(user.loc)) // stops inventory actions in a mech
 		return TRUE
 
 	if(user.active_hand_index == held_index)
@@ -633,10 +627,6 @@
 			L.toggle_cmode()
 			update_icon()
 
-/atom/movable/screen/act_intent/alien
-	icon = 'icons/mob/screen_alien.dmi'
-	screen_loc = ui_movi
-
 /atom/movable/screen/act_intent/robot
 	icon = 'icons/mob/screen_cyborg.dmi'
 	screen_loc = ui_borg_intents
@@ -968,8 +958,6 @@
 	if(world.time <= usr.next_move)
 		return TRUE
 	if(usr.incapacitated())
-		return TRUE
-	if (ismecha(usr.loc)) // stops inventory actions in a mech
 		return TRUE
 	if(master)
 		var/obj/item/I = usr.get_active_held_item()
@@ -1364,10 +1352,6 @@
 	. += mutable_appearance(overlay_icon, "[hud.mymob.gender == "male" ? "m" : "f"]_[hud.mymob.zone_selected]")
 //	. += mutable_appearance(overlay_icon, "height_arrow[hud.mymob.aimheight]")
 
-/atom/movable/screen/zone_sel/alien
-	icon = 'icons/mob/screen_alien.dmi'
-	overlay_icon = 'icons/mob/screen_alien.dmi'
-
 /atom/movable/screen/zone_sel/robot
 	icon = 'icons/mob/screen_cyborg.dmi'
 
@@ -1393,10 +1377,6 @@
 	name = "health"
 	icon_state = "health0"
 	screen_loc = ui_health
-
-/atom/movable/screen/healths/alien
-	icon = 'icons/mob/screen_alien.dmi'
-	screen_loc = ui_alien_health
 
 /atom/movable/screen/healths/robot
 	icon = 'icons/mob/screen_cyborg.dmi'

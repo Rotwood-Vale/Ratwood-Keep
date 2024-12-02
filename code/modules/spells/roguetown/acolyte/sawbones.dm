@@ -3,6 +3,10 @@
 
 //// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
 
+// Fuck you Mori, you're a dickhead that self inserts your OCs and cries when people complain about balance, and rightfully so.
+// You could have had your fuckin' self inserts and your shitcode, all you had to do was not act like a cunt, not throw a bitchfit. 
+// You wonder why everyone ended up hating you, read your above comments and get it through your fucking head. -- AnalWerewolf
+
 ///////////////////////////////////////////////////////-----------------------------------------doc surgeries and functions---------------------------------------//////////////////////////////////////////////////
 
 
@@ -148,16 +152,11 @@
 		return FALSE
 
 	var/mob/living/target = targets[1]
-	
+
 	if(target == user)
 		return FALSE
 
 	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-	var/has_rot = was_zombie
-
-	if(!has_rot)
-		to_chat(user, span_warning("Nothing happens."))
-		return FALSE
 
 	testing("curerot2")
 
@@ -169,7 +168,7 @@
 		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
 			adjust_playerquality(unzombification_pq, user.ckey)
 			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
-	
+
 	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 
 	if(rot)
@@ -544,7 +543,7 @@
 	overdose_threshold = null
 
 /datum/reagent/alch/syrumf
-	name = "fishyy syrum"
+	name = "fishy syrum"
 	description = "refined viscous fishy smelling gunk"
 	reagent_state = LIQUID
 	color = "#ff7f7f"
@@ -1160,7 +1159,7 @@
 	desc = "A handful of pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
-	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 24) //mug of red, bottle is 45u
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15) 
 	dissolvable = FALSE
 	grind_results = null
 
@@ -1529,35 +1528,3 @@
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/grown/log/tree/stick = 1,)
 	craftdiff = 2
 	skillcraft = /datum/skill/misc/treatment*/
-
-
-
-//////////////////////////////////////------------------reskins of existing items-------------------//////////////////////           none of these implimented, has to be spawned.
-
-
-/obj/item/rogueweapon/mace/pipe        ////////////// reskin of iron mace but bigger
-	possible_item_intents = list(/datum/intent/mace/strike)
-	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	name = "pipe"
-	desc = "Beloved problem solver."
-	icon_state = "leadpipe"
-	icon = 'icons/roguetown/weapons/64.dmi'
-	smeltresult = /obj/item/ash
-	parrysound = "parrywood"
-	swingsound = BLUNTWOOSH_MED
-	wlength = WLENGTH_LONG
-	w_class = WEIGHT_CLASS_BULKY
-	minstr = 7
-	wdefense = 3
-	pixel_y = -16
-	pixel_x = -16
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	bigboy = TRUE
-	gripsprite = TRUE
-
-/obj/item/rogueweapon/huntingknife/skin                                    ///////////// reSKINNED hunting knife
-	name = "skinning knife"
-	desc = "More than one way to skin a seelie."
-	icon_state = "skinningknife"
-

@@ -68,8 +68,6 @@
 	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
 	qdel(src)
 
-/obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
-	boom()
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
 	boom()
@@ -162,12 +160,6 @@
 	icon_state = "beer"
 	reagent_id = /datum/reagent/consumable/ethanol/beer
 
-/obj/structure/reagent_dispensers/beerkeg/blob_act(obj/structure/blob/B)
-	explosion(src.loc,0,3,5,7,10)
-	if(!QDELETED(src))
-		qdel(src)
-
-
 /obj/structure/reagent_dispensers/virusfood
 	name = "virus food dispenser"
 	desc = ""
@@ -183,25 +175,3 @@
 	icon_state = "vat"
 	anchored = TRUE
 	reagent_id = /datum/reagent/consumable/cooking_oil
-
-/obj/structure/reagent_dispensers/plumbed
-	name = "stationairy water tank"
-	anchored = TRUE
-	icon_state = "water_stationairy"
-	desc = ""
-
-/obj/structure/reagent_dispensers/plumbed/wrench_act(mob/living/user, obj/item/I)
-	..()
-	default_unfasten_wrench(user, I)
-	return TRUE
-
-/obj/structure/reagent_dispensers/plumbed/ComponentInitialize()
-	AddComponent(/datum/component/plumbing/simple_supply)
-
-/obj/structure/reagent_dispensers/plumbed/storage
-	name = "stationairy storage tank"
-	icon_state = "tank_stationairy"
-	reagent_id = null //start empty
-
-/obj/structure/reagent_dispensers/plumbed/storage/ComponentInitialize()
-	AddComponent(/datum/component/plumbing/tank)

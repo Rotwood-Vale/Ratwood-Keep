@@ -523,10 +523,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/mob/living/L = the_target
 		if(L.stat == DEAD)
 			return FALSE
-	if (ismecha(the_target))
-		var/obj/mecha/M = the_target
-		if (M.occupant)
-			return FALSE
 	return TRUE
 
 mob/living/simple_animal/handle_fire()
@@ -669,9 +665,6 @@ mob/living/simple_animal/handle_fire()
 		if(A.update_remote_sight(src)) //returns 1 if we override all other sight updates.
 			return
 	sync_lighting_plane_alpha()
-
-/mob/living/simple_animal/get_idcard(hand_first)
-	return access_card
 
 /mob/living/simple_animal/can_hold_items()
 	return dextrous

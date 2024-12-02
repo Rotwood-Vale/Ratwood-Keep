@@ -78,7 +78,6 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 
 /obj/item/stack/rods/cyborg
 	custom_materials = null
-	is_cyborg = 1
 	cost = 250
 
 /obj/item/stack/rods/cyborg/update_icon()
