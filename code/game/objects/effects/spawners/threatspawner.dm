@@ -156,7 +156,7 @@ GLOBAL_LIST_INIT(threatspawner_quantities, list(
 	next_spawn_time = world.time + rand(GLOB.threatspawner_cd_min, GLOB.threatspawner_cd_max)
 
 /obj/effect/landmark/threatspawner/proc/start_check_cooldown()
-	next_mob_check = world.time + 5 SECONDS 
+	next_mob_check = world.time + 30 SECONDS 
 
 
 /// Subtype of threat spawner with a short initial cooldown, intended for places that will be cleared out pretty early on.
