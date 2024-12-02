@@ -64,6 +64,7 @@
 #define SLOT_PANTS			18
 #define SLOT_IN_BACKPACK	19
 #define SLOT_LEGCUFFED		20
+#define SLOT_LEASHED		21
 
 #define ALL_ITEM_SLOTS list(,\
 	SLOT_BACK_L,\
@@ -86,6 +87,7 @@
 	SLOT_PANTS,\
 	SLOT_IN_BACKPACK,\
 	SLOT_LEGCUFFED,\
+	SLOT_LEASHED,\
 )
 
 

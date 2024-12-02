@@ -308,6 +308,9 @@
 	if(legcuffed)
 		. += "<A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'><span class='warning'>[m3] \a [legcuffed] around [m2] legs!</span></A>"
 
+	if(leashed)
+		. += "<A href='?src=[REF(src)];item=[SLOT_LEASHED]'><span class='warning'>[m3] \a [leashed] hooked to [m2] collar!</span></A>"
+
 	//Gets encapsulated with a warning span
 	var/list/msg = list()
 

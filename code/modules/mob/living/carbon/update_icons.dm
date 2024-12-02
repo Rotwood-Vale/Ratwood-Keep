@@ -58,6 +58,7 @@
 	update_inv_hands()
 	update_inv_handcuffed()
 	update_inv_legcuffed()
+	update_inv_leashed()
 	update_fire()
 
 /*

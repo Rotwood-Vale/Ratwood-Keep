@@ -16,6 +16,9 @@
 /mob/proc/update_inv_legcuffed()
 	return
 
+/mob/proc/update_inv_leashed
+	return
+
 /mob/proc/update_inv_back()
 	return
 

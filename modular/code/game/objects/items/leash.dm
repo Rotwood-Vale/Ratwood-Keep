@@ -48,20 +48,6 @@ Icons, maybe?
 		to_chat(owner, span_userdanger("You have been leashed!"))
 	return ..()
 
-//This lets the pet resist their leash
-/datum/status_effect/leash_pet/proc/owner_resist()
-	if(!owner)
-		owner.visible_message(span_warning("[owner] reaches for the hook on their collar!"))
-	to_chat(owner, span_notice("You reach for the hook on your collar"))
-	//Determine how long it takes to remove the leash
-	var/deleash = 15
-	//if(owner.get_item_by_slot(SLOT_HANDCUFFED))  //Commented out because there is no clear way to make this proc BEFORE decuff on resist.
-		//deleash = 100
-	if(do_mob(owner, owner, deleash))//do_mob creates a progress bar and then enacts the code after. Owner, owner, because it's an act on themself
-		if(!QDELETED(src))
-			to_chat(owner, span_warning("[owner] has removed their leash!"))
-			owner.remove_status_effect(/datum/status_effect/leash_pet)
-
 ///// OBJECT /////
 //The leash object itself
 //The component variables are used for hooks, used later.
