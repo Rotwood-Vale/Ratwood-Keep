@@ -3,7 +3,7 @@
 
 //// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
 
-// Fuck you Mori, you're a dickhead that self inserts your OCs and cries when people complaining about balance, and rightfully so.
+// Fuck you Mori, you're a dickhead that self inserts your OCs and cries when people complain about balance, and rightfully so.
 // You could have had your fuckin' self inserts and your shitcode, all you had to do was not act like a cunt, not throw a bitchfit. 
 // You wonder why everyone ended up hating you, read your above comments and get it through your fucking head. -- AnalWerewolf
 
