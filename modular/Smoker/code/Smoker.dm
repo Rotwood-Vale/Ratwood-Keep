@@ -50,6 +50,14 @@
 		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
 		M.remove_stress(/datum/stressevent/sleepytime)
 		M.mind.sleep_adv.advance_cycle()
+	if(M.reagents.has_reagent(/datum/reagent/moondust) || M.reagents.has_reagent(/datum/reagent/moondust_purest))
+		M.Dizzy(10)
+		M.Jitter(5)
+		M.slurring += 3
+		M.confused += 2
+		M.losebreath += 2
+		if(prob(5))
+			M.visible_message(span_warning("Blood runs from [M]'s nose."))
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	..()
