@@ -14,7 +14,7 @@
 	show_in_credits = FALSE
 	give_bank_account = FALSE
 
-	cmode_music = 'sound/music/combat_weird.ogg'
+	cmode_music = 'sound/music/antag/combatskeleton.ogg'
 
 /datum/job/roguetown/skeleton/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -50,6 +50,7 @@
 		H.faction = list("undead")
 		H.name = "skelelon"
 		H.real_name = "skelelon"
+		H.cmode_music = 'sound/music/antag/combatskeleton.ogg'
 		ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
