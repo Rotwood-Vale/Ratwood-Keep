@@ -4,13 +4,14 @@
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "slamp1_nozap"
 	base_state = "slamp"
-	brightness = 10.9
+	brightness = 10
+	light_power = 15
 	nightshift_allowed = FALSE
 	plane = GAME_PLANE_UPPER
 	layer = 4.81
 	fueluse = 0
 	bulb_colour = "#58dd90"
-	bulb_power = 0.95
+	bulb_power = 1
 	max_integrity = 0
 	use_power = NO_POWER_USE
 	pass_flags = LETPASSTHROW
@@ -27,9 +28,7 @@
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "o_slamp1_nozap"
 	base_state = "o_slamp"
-	brightness = 10.9
 	bulb_colour = "#da8c45"
-	bulb_power = 1
 
 /obj/machinery/light/roguestreet/orange/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'
@@ -43,7 +42,7 @@
 	desc = "An eerily glowing lamp attached to the wall via a caste iron frame. A promise of new technology at the dawn of a new age."
 	icon_state = "o_wlamp1_nozap"
 	base_state = "o_wlamp"
-	brightness = 7.8
+	brightness = 10
 	density = FALSE
 
 /obj/machinery/light/roguestreet/proc/lights_out()
@@ -84,6 +83,7 @@
 	fueluse = 60 MINUTES
 	bulb_colour = "#f9ad80"
 	bulb_power = 1
+	light_power = 15
 	flags_1 = NODECONSTRUCT_1
 	use_power = NO_POWER_USE
 	var/datum/looping_sound/soundloop = /datum/looping_sound/fireloop
@@ -426,7 +426,7 @@
 	pixel_x = -32
 
 /obj/machinery/light/rogue/wallfire/candle/weak
-	light_power = 0.9
+	light_power = 2
 	light_outer_range =  6
 /obj/machinery/light/rogue/wallfire/candle/weak/l
 	pixel_x = -32
@@ -440,6 +440,7 @@
 	icon_state = "torchwall1"
 	base_state = "torchwall"
 	brightness = 5
+	light_power = 5
 	density = FALSE
 	var/obj/item/flashlight/flare/torch/torchy
 	fueluse = 0 //we use the torch's fuel

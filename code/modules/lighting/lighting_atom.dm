@@ -55,7 +55,7 @@
 		else
 			. = loc
 
-		if(light) // Update the light or create it if it does not exist.
+		if (light) // Update the light or create it if it does not exist.
 			light.update(.)
 		else
 			light = new/datum/light_source(src, .)
@@ -112,31 +112,32 @@
 /atom/movable/Destroy()
 	var/turf/T = loc
 	. = ..()
-	if(opacity && istype(T))
+	if (opacity && istype(T))
 		var/old_has_opaque_atom = T.has_opaque_atom
 		T.recalc_atom_opacity()
-		if(old_has_opaque_atom != T.has_opaque_atom)
+		if (old_has_opaque_atom != T.has_opaque_atom)
 			T.reconsider_lights()
 
 // Should always be used to change the opacity of an atom.
 // It notifies (potentially) affected light sources so they can update (if needed).
 /atom/proc/set_opacity(new_opacity)
-	if(new_opacity == opacity)
+	if (new_opacity == opacity)
 		return
 
 	opacity = new_opacity
 	var/turf/T = loc
-	if(!isturf(T))
+	if (!isturf(T))
 		return
 
-	if(new_opacity)
+	if (new_opacity == TRUE)
 		T.has_opaque_atom = TRUE
 		T.reconsider_lights()
 	else
 		var/old_has_opaque_atom = T.has_opaque_atom
 		T.recalc_atom_opacity()
-		if(old_has_opaque_atom != T.has_opaque_atom)
+		if (old_has_opaque_atom != T.has_opaque_atom)
 			T.reconsider_lights()
+
 
 /atom/movable/Moved(atom/OldLoc, Dir)
 	. = ..()
@@ -153,38 +154,28 @@
 			datum_flags |= DF_VAR_EDITED
 			return TRUE
 
-		if (NAMEOF(src, light_power))
-			if(light_system == STATIC_LIGHT)
-				set_light(l_power = var_value)
-			else
-				set_light_power(var_value)
+		if ("light_power")
+			set_light(l_power=var_value)
 			datum_flags |= DF_VAR_EDITED
 			return TRUE
 
-		if (NAMEOF(src, light_color))
-			if(light_system == STATIC_LIGHT)
-				set_light(l_color = var_value)
-			else
-				set_light_color(var_value)
+		if ("light_color")
+			set_light(l_color=var_value)
 			datum_flags |= DF_VAR_EDITED
 			return TRUE
 
 	return ..()
 
 
-/atom/proc/flash_lighting_fx(_range = FLASH_LIGHT_RANGE, _power = FLASH_LIGHT_POWER, _color = COLOR_WHITE, _duration = FLASH_LIGHT_DURATION)
+/atom/proc/flash_lighting_fx(_range = FLASH_LIGHT_RANGE, _power = FLASH_LIGHT_POWER, _color = LIGHT_COLOR_WHITE, _duration = FLASH_LIGHT_DURATION, _reset_lighting = TRUE)
 	return
 
-
-/turf/flash_lighting_fx(_range = FLASH_LIGHT_RANGE, _power = FLASH_LIGHT_POWER, _color = COLOR_WHITE, _duration = FLASH_LIGHT_DURATION)
+/turf/flash_lighting_fx(_range = FLASH_LIGHT_RANGE, _power = FLASH_LIGHT_POWER, _color = LIGHT_COLOR_WHITE, _duration = FLASH_LIGHT_DURATION, _reset_lighting = TRUE)
 	if(!_duration)
 		stack_trace("Lighting FX obj created on a turf without a duration")
-	new /obj/effect/dummy/lighting_obj (src, _range, _power, _color, _duration)
-
+	new /obj/effect/dummy/lighting_obj (src, _color, _range, _power, _duration)
 
 /obj/flash_lighting_fx(_range = FLASH_LIGHT_RANGE, _power = FLASH_LIGHT_POWER, _color = LIGHT_COLOR_WHITE, _duration = FLASH_LIGHT_DURATION, _reset_lighting = TRUE)
-	if(!_duration)
-		stack_trace("Lighting FX obj created on a obj without a duration")
 	var/temp_color
 	var/temp_power
 	var/temp_range
@@ -195,17 +186,10 @@
 	set_light(_range, light_inner_range, _power, l_color =_color)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), _reset_lighting ? initial(light_outer_range) : temp_range, initial(light_inner_range), _reset_lighting ? initial(light_power) : temp_power, _reset_lighting ? initial(light_color) : temp_color), _duration, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/mob/living/flash_lighting_fx(_range = FLASH_LIGHT_RANGE, _power = FLASH_LIGHT_POWER, _color = COLOR_WHITE, _duration = FLASH_LIGHT_DURATION)
-	mob_light(_range, _power, _color, _duration)
+/mob/living/flash_lighting_fx(_range = FLASH_LIGHT_RANGE, _power = FLASH_LIGHT_POWER, _color = LIGHT_COLOR_WHITE, _duration = FLASH_LIGHT_DURATION, _reset_lighting = TRUE)
+	mob_light(_color, _range, _power, _duration)
 
-
-/mob/living/proc/mob_light(_range, _power, _color, _duration)
-	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = new (src, _range, _power, _color, _duration)
+/mob/living/proc/mob_light(_color, _range, _power, _duration)
+	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = new (src, _color, _range, _power, _duration)
 	return mob_light_obj
 
-/atom/proc/set_light_flags(new_value)
-	if(new_value == light_flags)
-		return
-	SEND_SIGNAL(src, COMSIG_ATOM_SET_LIGHT_FLAGS, new_value)
-	. = light_flags
-	light_flags = new_value
