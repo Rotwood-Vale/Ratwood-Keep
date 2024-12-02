@@ -25,6 +25,7 @@
 	var/light_falloff_curve = LIGHTING_DEFAULT_FALLOFF_CURVE
 	var/light_depth		//multiz
 	var/light_height
+	var/light_color    // The colour of the light, string, decomposed by parse_light_color()
 
 	// Variables for keeping track of the colour.
 	var/lum_r
@@ -42,9 +43,6 @@
 	var/applied = FALSE // Whether we have applied our light yet or not.
 
 	var/needs_update = LIGHTING_NO_UPDATE    // Whether we are queued for an update.
-
-	var/light_color    // The colour of the light, string, decomposed by parse_light_color()
-
 
 /datum/light_source/New(atom/owner, atom/top)
 	source_atom = owner // Set our new owner.
