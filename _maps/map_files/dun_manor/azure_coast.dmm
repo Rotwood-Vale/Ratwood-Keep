@@ -4923,10 +4923,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach)
-"LT" = (
-/obj/effect/landmark/threatspawner/goblin/sea/longinit,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/beach/forest)
 "LU" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood,
@@ -5077,6 +5073,10 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/beach)
+"MW" = (
+/obj/effect/landmark/threatspawner/goblin/sea/longinit,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/beach/forest)
 "Na" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 9
@@ -41756,7 +41756,7 @@ cE
 XK
 XK
 pz
-pz
+MW
 pz
 pa
 pa
@@ -42267,7 +42267,7 @@ pz
 XK
 XK
 XK
-LT
+pa
 QB
 pa
 pa
