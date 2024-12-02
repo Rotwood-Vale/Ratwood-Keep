@@ -55,6 +55,7 @@ GLOBAL_LIST_INIT(threatspawner_quantities, list(
 /obj/effect/landmark/threatspawner/proc/consider_spawning()
 	// I shamelessly stole a lot of this from ambush code hehehehe
 	if(!can_spawn)
+		start_cooldown()
 		return
 	var/turf/T = get_turf(src)
 	if(!T)
