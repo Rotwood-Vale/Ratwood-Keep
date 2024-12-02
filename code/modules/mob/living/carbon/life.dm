@@ -115,6 +115,19 @@
 
 	check_cremation()
 
+	//Seelie luck aura
+	if(isseelie(src) && !IsSleeping())
+		for(var/mob/living/carbon/human/H in view(1, src))
+			if(!H || isseelie(H))
+				continue
+			switch(src.aura)
+				if(FALSE)
+					H.apply_status_effect(/datum/status_effect/buff/seelie/sad)
+					H.remove_status_effect(/datum/status_effect/buff/seelie/happy)
+				if(TRUE)
+					H.apply_status_effect(/datum/status_effect/buff/seelie/happy)
+					H.remove_status_effect(/datum/status_effect/buff/seelie/sad)
+
 	if(stat != DEAD)
 		return 1
 
@@ -190,6 +203,9 @@
 		var/turf/open/T = loc
 		if(reagents&& T.pollution)
 			T.pollution.breathe_act(src)
+			if(next_smell <= world.time)
+				next_smell = world.time + 30 SECONDS
+				T.pollution.smell_act(src)
 
 /mob/living/proc/handle_inwater()
 	ExtinguishMob()

@@ -3,6 +3,9 @@
 	weight = WEIGHT_MOB
 
 
+/datum/keybinding/living/can_use(client/user)
+	return isliving(user.mob)
+
 /datum/keybinding/living/swap_left
 	hotkey_keys = list("Q")
 	classic_keys = list("Q") // PAGEUP

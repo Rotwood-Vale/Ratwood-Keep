@@ -105,7 +105,6 @@
 
 /obj/item/clothing/cloak/tabard/crusader
 	detail_tag = "_psy"
-	detail_color = CLOTHING_RED
 	boobed_detail = FALSE
 
 /obj/item/clothing/cloak/tabard/crusader/Initialize()
@@ -146,16 +145,48 @@
 	detail_color = CLOTHING_WHITE
 
 /obj/item/clothing/cloak/tabard/crusader/dendor
-	color = "#4B5637"
-	detail_color = "#3D1D1C"
+	name = "surcoat of the dendorian order"
+	icon_state = "tabard_dendor"
+	item_state = "tabard_dendor"
 
 /obj/item/clothing/cloak/tabard/crusader/pestra
-	color = CLOTHING_WHITE
-	detail_color = CLOTHING_GREEN
+	name = "surcoat of the pestran order"
+	icon_state = "tabard_pestra"
+	item_state = "tabard_pestra"
 
 /obj/item/clothing/cloak/tabard/crusader/noc
-	color = "#2C2231"
-	detail_color = "#9AB0B0"
+	name = "surcoat of the lunar order"
+	icon_state = "tabard_noc"
+	item_state = "tabard_noc"
+
+/obj/item/clothing/cloak/tabard/crusader/noc/alt
+	icon_state = "tabard_noc_alt"
+	item_state = "tabard_noc_alt"
+
+/obj/item/clothing/cloak/tabard/crusader/eora
+	name = "surcoat of the eoran order"
+	icon_state = "tabard_eora"
+	item_state = "tabard_eora"
+
+/obj/item/clothing/cloak/tabard/crusader/pestra
+	name = "surcoat of the pestran order"
+	icon_state = "tabard_pestra"
+	item_state = "tabard_pestra"
+
+/obj/item/clothing/cloak/tabard/crusader/abyssor
+	name = "surcoat of the abyssal order"
+	icon_state = "tabard_abyssor"
+	item_state = "tabard_abyssor"
+
+/obj/item/clothing/cloak/tabard/crusader/ravox
+	name = "surcoat of the ravoxian order"
+	icon_state = "tabard_ravox"
+	item_state = "tabard_ravox"
+
+/obj/item/clothing/cloak/tabard/crusader/xylix
+	name = "surcoat of the xylixian order"
+	icon_state = "tabard_xylix"
+	item_state = "tabard_xylix"
 
 /obj/item/clothing/cloak/tabard/crusader/tief/attack_right(mob/user)
 	if(picked)

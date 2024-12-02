@@ -84,6 +84,8 @@ All foods are distributed among various categories. Use common sense.
 	smeltresult = /obj/item/ash
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 
+	var/cooked_smell
+
 /datum/intent/food
 	name = "feed"
 	noaa = TRUE
@@ -171,6 +173,8 @@ All foods are distributed among various categories. Use common sense.
 		var/obj/item/result
 		if(cooked_type)
 			result = new cooked_type(A)
+			if(cooked_smell)
+				result.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
 		else
 			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
 		initialize_cooked_food(result, 1)
@@ -179,6 +183,8 @@ All foods are distributed among various categories. Use common sense.
 		var/obj/item/result
 		if(fried_type)
 			result = new fried_type(A)
+			if(cooked_smell)
+				result.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
 		else
 			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
 		initialize_cooked_food(result, 1)
@@ -471,25 +477,15 @@ All foods are distributed among various categories. Use common sense.
 				S.reagents.add_reagent(r_id, amount)
 	S.filling_color = filling_color
 	S.update_snack_overlays(src)
-/*
-/obj/item/reagent_containers/food/snacks/heating_act(obj/machinery/microwave/M)
-	var/turf/T = get_turf(src)
-	var/obj/item/result
 
-	if(cooked_type)
-		result = new cooked_type(T)
-		if(istype(M))
-			initialize_cooked_food(result, M.efficiency)
-		else
-			initialize_cooked_food(result, 1)
-		SSblackbox.record_feedback("tally", "food_made", 1, result.type)
-	else
-		result = new /obj/item/reagent_containers/food/snacks/badrecipe(T)
-		if(istype(M) && M.dirty < 100)
-			M.dirty++
-	qdel(src)
-
-	return result*/
+/obj/item/reagent_containers/food/snacks/proc/changefood(path, mob/living/eater)
+	if(!path || !eater)
+		return
+	var/turf/T = get_turf(eater)
+	if(eater.dropItemToGround(src))
+		qdel(src)
+	var/obj/item/I = new path(T)
+	eater.put_in_active_hand(I)
 
 /obj/item/reagent_containers/food/snacks/Destroy()
 	STOP_PROCESSING(SSobj, src)

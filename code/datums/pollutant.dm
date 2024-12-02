@@ -63,7 +63,7 @@
 	scent = "debug scent"
 	color = "#000000"
 
-	descriptor = "scent"
+	descriptor = "fragrance"
 
 /datum/pollutant/fragrance/lavender
 	name = "lavender"

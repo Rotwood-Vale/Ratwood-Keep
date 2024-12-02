@@ -58,6 +58,12 @@
 	icon_state = "ravoxhelm"
 	item_state = "ravoxhelm"
 
+/obj/item/clothing/head/roguetown/helmet/sallet/eoran
+	name = "eora helmet"
+	desc = "A standard helmet forged in the style typical of Eoran worshippers, a simple yet practical protective piece of equipment. Upon it lays several laurels of flowers and other colorful ornaments, followed by several symbols and standards of the user's chapter, accomplishments or even punishment"
+	icon_state = "eorahelm"
+	item_state = "eorahelm"
+
 /obj/item/clothing/head/roguetown/helmet/heavy/templar/AdjustClothes(mob/user)
 	if(loc == user)
 		playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
