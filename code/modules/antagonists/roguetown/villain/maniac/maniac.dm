@@ -23,7 +23,6 @@
 		TRAIT_NOMOOD,
 		TRAIT_SCHIZO_AMBIENCE,
 		TRAIT_DARKVISION,
-		TRAIT_NOSLEEP, //Buddy, You're trying to wake up.
 	)
 	/// Traits that only get applied in the final sequence
 	var/static/list/final_traits = list(
