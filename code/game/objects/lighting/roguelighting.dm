@@ -5,7 +5,8 @@
 	icon_state = "slamp1_nozap"
 	base_state = "slamp"
 	brightness = 10
-	light_power = 15
+	light_inner_range = 10
+	light_outer_range = 7
 	nightshift_allowed = FALSE
 	plane = GAME_PLANE_UPPER
 	layer = 4.81
@@ -21,6 +22,8 @@
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "midlamp1_nozap"
 	base_state = "midlamp"
+	light_inner_range = 10
+	light_outer_range = 7
 	pixel_x = -16
 	density = TRUE
 
@@ -28,12 +31,16 @@
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "o_slamp1_nozap"
 	base_state = "o_slamp"
+	light_inner_range = 10
+	light_outer_range = 7
 	bulb_colour = "#da8c45"
 
 /obj/machinery/light/roguestreet/orange/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "o_midlamp1_nozap"
 	base_state = "o_midlamp"
+	light_inner_range = 10
+	light_outer_range = 7
 	pixel_x = -16
 	density = TRUE
 
@@ -42,6 +49,8 @@
 	desc = "An eerily glowing lamp attached to the wall via a caste iron frame. A promise of new technology at the dawn of a new age."
 	icon_state = "o_wlamp1_nozap"
 	base_state = "o_wlamp"
+	light_inner_range = 10
+	light_outer_range = 7
 	brightness = 10
 	density = FALSE
 
@@ -83,6 +92,8 @@
 	fueluse = 60 MINUTES
 	bulb_colour = "#f9ad80"
 	bulb_power = 1
+	light_inner_range = 5
+	light_outer_range = 2
 	light_power = 15
 	flags_1 = NODECONSTRUCT_1
 	use_power = NO_POWER_USE
@@ -281,6 +292,8 @@
 	climbable = TRUE
 	cookonme = TRUE
 	fueluse = 0
+	light_inner_range = 5
+	light_outer_range = 3
 	max_integrity = 150
 
 /obj/machinery/light/rogue/firebowl/CanPass(atom/movable/mover, turf/target)
@@ -375,6 +388,8 @@
 	fueluse = 0
 	crossfire = FALSE
 	cookonme = TRUE
+	light_inner_range = 3
+	light_outer_range = 2
 
 /obj/machinery/light/rogue/wallfire/candle
 	name = "candles"
@@ -440,7 +455,8 @@
 	icon_state = "torchwall1"
 	base_state = "torchwall"
 	brightness = 5
-	light_power = 5
+	light_inner_range = 5
+	light_outer_range = 3
 	density = FALSE
 	var/obj/item/flashlight/flare/torch/torchy
 	fueluse = 0 //we use the torch's fuel
@@ -570,6 +586,8 @@
 	base_state = "chand"
 	icon = 'icons/roguetown/misc/tallwide.dmi'
 	density = FALSE
+	light_inner_range = 10
+	light_outer_range = 8
 	brightness = 10
 	pixel_x = -10
 	pixel_y = -10
@@ -591,6 +609,7 @@
 	name = "hearth"
 	icon_state = "hearth1"
 	base_state = "hearth"
+	light_inner_range = 2
 	density = FALSE
 	anchored = TRUE
 	layer = 2.8
@@ -847,6 +866,7 @@
 	icon_state = "badfire1"
 	base_state = "badfire"
 	density = FALSE
+	light_inner_range = 6
 	layer = 2.8
 	brightness = 5
 	fueluse = 10 MINUTES
