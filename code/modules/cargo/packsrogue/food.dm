@@ -32,7 +32,7 @@
 
 /datum/supply_pack/rogue/food/meat
 	name = "Dry Meat"
-	cost = 15
+	cost = 20
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
 					/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
@@ -43,7 +43,7 @@
 
 /datum/supply_pack/rogue/food/raisinbreads
 	name = "Raisin Bread"
-	cost = 30
+	cost = 45
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/rogue/raisinbread,
 					/obj/item/reagent_containers/food/snacks/rogue/raisinbread,
@@ -71,7 +71,7 @@
 
 /datum/supply_pack/rogue/food/butter
 	name = "Butter"
-	cost = 40
+	cost = 35
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/butter,
 					/obj/item/reagent_containers/food/snacks/butter,
