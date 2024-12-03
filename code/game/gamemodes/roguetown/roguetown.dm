@@ -208,11 +208,12 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Goblin Smith",
 	"Goblin Shaman")
 	var/num_bandits = 0
+	var/limit_bandits = pick(4,6,7,7,8)
 	if(num_players() >= 12)
 		// 1 bandit per 12 players,
 		num_bandits = round(num_players() / 12)
-		if(num_bandits >= 8)	//caps bandits at 8
-			num_bandits = 8
+		if(num_bandits >= limit_bandits)	//caps bandits at a number between 4-8
+			num_bandits = limit_bandits
 		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
 		bandit_job.total_positions = num_bandits
 		bandit_job.spawn_positions = num_bandits
@@ -394,7 +395,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		if(villain.assigned_role in GLOB.youngfolk_positions)
 			blockme = TRUE
 		if(blockme)
-			return	
+			return
 		allantags -= villain
 		pre_cultists += villain
 		villain.special_role = "cultist"
