@@ -270,6 +270,12 @@
 /mob/living/carbon/human/species/goblin/npc/ambush,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
+"bW" = (
+/obj/structure/fluff/railing/fence{
+	dir = 1
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/woods)
 "bX" = (
 /obj/structure/chair/stool/rogue,
 /obj/structure/fluff/railing/border{
@@ -50803,7 +50809,7 @@ nt
 nt
 nt
 By
-jW
+Oe
 nt
 RR
 RR
@@ -50958,13 +50964,13 @@ nt
 Ek
 jW
 jW
-wM
+MK
+MK
+Oe
+MK
 wM
 QO
-MK
-MK
-jW
-jW
+QO
 MK
 jW
 MK
@@ -51114,13 +51120,13 @@ jW
 MK
 jW
 jW
-wM
-wM
-wM
-MK
-jW
 MK
 MK
+MK
+bW
+QO
+wM
+wM
 MK
 jW
 jW
@@ -51274,7 +51280,7 @@ nt
 jW
 jW
 nt
-nt
+xx
 nt
 jW
 fx
@@ -51588,7 +51594,7 @@ jW
 jW
 jW
 jW
-jW
+Oe
 jW
 nt
 Ek
@@ -51745,7 +51751,7 @@ jW
 jW
 jW
 jW
-jW
+Oe
 nt
 nt
 Ek
