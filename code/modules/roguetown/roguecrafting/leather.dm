@@ -88,6 +88,14 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 28
 
+/datum/crafting_recipe/roguetown/hunting/bulletpouch
+	name = "bullet pouch"
+	result = /obj/item/ammo_holder/bullet
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 2)
+	sellprice = 28
+
+
 /datum/crafting_recipe/roguetown/hunting/saddle
 	name = "saddle"
 	result = /obj/item/natural/saddle
