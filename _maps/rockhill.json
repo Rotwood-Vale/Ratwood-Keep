@@ -2,14 +2,8 @@
     "map_name": "Rockhill",
     "map_path": "map_files/rockhill",
     "map_file": "rockhill.dmm",
-	"traits": [{"Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true}],
+	"traits": [{"Up": true}, {"Up": true, "Down": true, "Baseturf": "/turf/open/transparent/openspace"}, {"Up": true, "Down": true, "Baseturf": "/turf/open/transparent/openspace"}, {"Down": true, "Baseturf": "/turf/open/transparent/openspace"}],
 	"minetype": null,
 	"space_empty_levels": 0,
-	"space_ruin_levels": 0,
-	"shuttles": {
-	    "cargo": "cargo_rogue",
-	    "ferry": "ferry_fancy",
-	    "whiteship": "whiteship_box",
-	    "emergency": "emergency_rogue"
-    }
+	"space_ruin_levels": 0
 }
