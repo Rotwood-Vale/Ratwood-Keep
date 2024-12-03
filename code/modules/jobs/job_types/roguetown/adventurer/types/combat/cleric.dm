@@ -19,20 +19,29 @@
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
+			cloak = /obj/item/clothing/cloak/templar/astratan
 		if(/datum/patron/divine/noc)
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
+			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 		if(/datum/patron/divine/dendor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
+			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
 			H.mind.adjust_skillrank(/datum/skill/magic/druidic, 2, TRUE) // enough to craft druid mask, at least
 		if(/datum/patron/divine/necra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
+			cloak = /obj/item/clothing/cloak/templar/necran
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
+			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 		if(/datum/patron/divine/malum)
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
+			cloak = /obj/item/clothing/cloak/templar/malummite
 		if(/datum/patron/divine/ravox)
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
-
+		if(/datum/patron/divine/eora)
+			neck = /obj/item/clothing/neck/roguetown/psicross/eora
+			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
+			
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
 	var/classes = list("Life Cleric","War Cleric")

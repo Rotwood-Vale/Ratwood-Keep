@@ -5,6 +5,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	show_wanderer_examine = FALSE
+	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/slaver/master/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -55,6 +56,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/slaver/slavemercsword/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -106,7 +108,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
-	show_wanderer_examine = FALSE
+	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/slaver/slavemercwhip/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -158,6 +160,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/slaver/slavemercbow/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -209,6 +212,7 @@
 	allowed_races = RACES_ALL_KINDS
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -6,6 +6,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/lord/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -58,6 +59,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/lady/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -99,6 +101,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/hand/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -141,6 +144,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/knight/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -213,6 +217,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/magos
 	allowed_patrons = list(/datum/patron/divine/noc)
@@ -272,6 +277,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 
 /datum/outfit/job/roguetown/heartfelt/prior

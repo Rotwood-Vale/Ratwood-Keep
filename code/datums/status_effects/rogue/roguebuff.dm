@@ -31,6 +31,13 @@
 	effectedstats = list("intelligence" = 5,"speed" = 3,"fortune" = -5)
 	duration = 10 SECONDS
 
+/datum/status_effect/buff/eoradruqks
+	id = "druqks"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
+	effectedstats = list("speed" = -3,"fortune" = -5, "intelligence" = -2)
+	duration = 20 SECONDS
+
+
 /datum/status_effect/buff/druqks/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/high)
@@ -83,9 +90,6 @@
 	effectedstats = list("speed" = 4, "endurance" = 4, "perception" = -3)
 	duration = 30 SECONDS
 
-/datum/status_effect/buff/moondust/nextmove_modifier()
-	return 0.5
-
 /datum/status_effect/buff/moondust/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/moondust)
@@ -100,9 +104,6 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
 	effectedstats = list("speed" = 5, "endurance" = 5, "perception" = -2)
 	duration = 40 SECONDS
-
-/datum/status_effect/buff/moondust_purest/nextmove_modifier()
-	return 0.5
 
 /datum/status_effect/buff/moondust_purest/on_apply()
 	. = ..()

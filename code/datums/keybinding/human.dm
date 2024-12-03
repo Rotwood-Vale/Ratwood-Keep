@@ -2,9 +2,12 @@
 	category = CATEGORY_HUMAN
 	weight = WEIGHT_MOB
 
-// Left commented because quick equip can put items into slots that are not in the UI, blame Roguetown.
-/* /datum/keybinding/human/quick_equip
-	hotkey_keys = list() // Keeping it empty lets the user set their own keybind since E is used
+/datum/keybinding/human/can_use(client/user)
+	return ishuman(user.mob)
+
+/*
+/datum/keybinding/human/quick_equip
+	hotkey_keys = list("E")
 	name = "quick_equip"
 	full_name = "Quick Equip"
 	description = "Quickly puts an item in the best slot available"

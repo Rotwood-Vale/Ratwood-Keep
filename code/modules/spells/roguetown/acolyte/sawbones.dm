@@ -7,9 +7,17 @@ Sprites for this by:
 Comm'd by:
 	- Dragon Lee
 
-
 I'ma be real, this entire thing is a mess and needs to be separated into various files. Modularised as it might be, it's useless in one big pile.
 Someone else can take the five minutes it costs to do so, as well. I'm lazy.
+
+On another note, have some funny coder-bickering commentary below.
+- - -
+//// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
+
+// Fuck you Mori, you're a dickhead that self inserts your OCs and cries when people complain about balance, and rightfully so.
+// You could have had your fuckin' self inserts and your shitcode, all you had to do was not act like a cunt, not throw a bitchfit. 
+// You wonder why everyone ended up hating you, read your above comments and get it through your fucking head. -- AnalWerewolf
+- - -
 
 Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAAAAAA!!!!!!!!!!!
 */
@@ -1164,7 +1172,7 @@ Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAA
 	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
-	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 24) //mug of red, bottle is 45u
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15) 
 	dissolvable = FALSE
 	grind_results = null
 
@@ -1531,34 +1539,3 @@ Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAA
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/grown/log/tree/stick = 1,)
 	craftdiff = 2
 	skillcraft = /datum/skill/misc/treatment*/
-
-
-
-//------------------reskins of existing items-------------------//
-
-/obj/item/rogueweapon/mace/pipe// reskin of iron mace but bigger
-	possible_item_intents = list(/datum/intent/mace/strike)
-	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	name = "pipe"
-	desc = "Beloved problem solver."
-	icon_state = "leadpipe"
-	icon = 'icons/roguetown/weapons/64.dmi'
-	smeltresult = /obj/item/ash
-	parrysound = "parrywood"
-	swingsound = BLUNTWOOSH_MED
-	wlength = WLENGTH_LONG
-	w_class = WEIGHT_CLASS_BULKY
-	minstr = 7
-	wdefense = 3
-	pixel_y = -16
-	pixel_x = -16
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	bigboy = TRUE
-	gripsprite = TRUE
-
-/obj/item/rogueweapon/huntingknife/skin// reSKINNED hunting knife
-	name = "skinning knife"
-	desc = "More than one way to skin a seelie."
-	icon_state = "skinningknife"
-

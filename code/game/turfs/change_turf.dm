@@ -89,6 +89,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_dynamic_lighting = dynamic_lighting
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_object = lighting_object
+	var/old_outdoor_effect = outdoor_effect
 	var/old_corners = corners
 
 	var/old_exl = explosion_level
@@ -143,6 +144,10 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 				break
 
 	if(SSlighting.initialized)
+		if(SSoutdoor_effects.initialized)
+			outdoor_effect = old_outdoor_effect
+			get_sky_and_weather_states()
+
 		recalc_atom_opacity()
 		lighting_object = old_lighting_object
 		affecting_lights = old_affecting_lights
