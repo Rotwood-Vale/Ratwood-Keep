@@ -7,8 +7,6 @@
 	desc = "It barely covers anything at all!"
 	body_parts_covered = null
 	icon_state = "strapless"
-	sleevetype = null
-	sleeved = null
 
 //COLORS
 

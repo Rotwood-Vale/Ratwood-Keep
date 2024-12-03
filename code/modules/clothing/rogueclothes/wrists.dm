@@ -1,9 +1,7 @@
 /obj/item/clothing/wrists/roguetown
 	slot_flags = ITEM_SLOT_WRISTS
-	sleeved = 'icons/roguetown/clothing/onmob/wrists.dmi'
 	icon = 'icons/roguetown/clothing/wrists.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/wrists.dmi'
-	sleevetype = "shirt"
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 	fiber_salvage = FALSE

@@ -8,15 +8,9 @@
 	equip_sound = 'sound/blank.ogg'
 	drop_sound = 'sound/blank.ogg'
 	pickup_sound =  'sound/blank.ogg'
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
-	sleevetype = "leg"
 	equip_delay_self = 30
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
-	r_sleeve_zone = BODY_ZONE_R_LEG
-	l_sleeve_zone = BODY_ZONE_L_LEG
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -67,13 +61,10 @@
 	color = "#865c9c"
 
 /obj/item/clothing/under/roguetown/tights/vagrant
-	r_sleeve_status = SLEEVE_TORN
 	body_parts_covered = GROIN|LEG_LEFT
 	torn_sleeve_number = 1
 
 /obj/item/clothing/under/roguetown/tights/vagrant/l
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_TORN
 	body_parts_covered = GROIN|LEG_RIGHT
 
 /obj/item/clothing/under/roguetown/tights/vagrant/Initialize()
@@ -90,8 +81,6 @@
 	gender = PLURAL
 	icon_state = "webs"
 	item_state = "webs"
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/under/roguetown/trou
@@ -106,8 +95,6 @@
 	prevent_crits = list(BCLASS_CUT)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 
@@ -127,8 +114,6 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
 
@@ -147,8 +132,6 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FIRE_PROOF
 
@@ -175,8 +158,6 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FIRE_PROOF
 
@@ -185,9 +166,6 @@
 	desc = "Covers your dignity, but only just."
 	icon_state = "loincloth"
 	item_state = "loincloth"
-//	adjustable = CAN_CADJUST
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	fiber_salvage = FALSE
 	salvage_amount = 1
 
@@ -202,7 +180,6 @@
 	desc = "Padded pants for extra comfort and protection, adorned in vibrant colors."
 	icon_state = "grenzelpants"
 	item_state = "grenzelpants"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	detail_tag = "_detail"
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_BLUNT)
@@ -229,8 +206,6 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	armor_class = ARMOR_CLASS_MEDIUM
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
@@ -255,5 +230,3 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/blacksteel
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD

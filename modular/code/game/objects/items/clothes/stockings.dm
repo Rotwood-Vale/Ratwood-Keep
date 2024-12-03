@@ -4,8 +4,6 @@
 	icon = 'modular/icons/obj/items/clothes/stockings.dmi'
 	mob_overlay_icon = 'modular/icons/obj/items/clothes/on_mob/stockings.dmi'
 	icon_state = "stockings"
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	body_parts_covered = null
 	flags_inv = null
 	salvage_amount = 1

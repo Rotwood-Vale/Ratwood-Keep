@@ -2,11 +2,9 @@
 /obj/item/clothing/gloves/roguetown
 	slot_flags = ITEM_SLOT_GLOVES
 	body_parts_covered = HANDS
-	sleeved = 'icons/roguetown/clothing/onmob/gloves.dmi'
 	icon = 'icons/roguetown/clothing/gloves.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/gloves.dmi'
 	bloody_icon_state = "bloodyhands"
-	sleevetype = "shirt"
 	siemens_coefficient = 1 //Who in astrata's name forgot to set this to 1? No more immunity from lightning due to gloves.
 	max_heat_protection_temperature = 361
 	w_class = WEIGHT_CLASS_SMALL
@@ -68,7 +66,6 @@
 	desc = "Fancy gloves worn by foreign mercenaries."
 	icon_state = "grenzelgloves"
 	item_state = "grenzelgloves"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	resistance_flags = null

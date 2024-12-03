@@ -156,14 +156,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/can_assin = FALSE		//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
 	var/can_cdg = FALSE			//Weapon: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
-	var/sleeved = null
-	var/sleevetype = null
-	var/nodismemsleeves = FALSE
 	var/inhand_mod = FALSE
-	var/r_sleeve_status = SLEEVE_NOMOD //SLEEVE_TORN or SLEEVE_ROLLED
-	var/l_sleeve_status = SLEEVE_NOMOD
-	var/r_sleeve_zone = BODY_ZONE_R_ARM
-	var/l_sleeve_zone = BODY_ZONE_L_ARM
+
 
 	var/twohands_required = FALSE
 

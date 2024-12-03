@@ -6,8 +6,7 @@
 	equip_sound = 'sound/blank.ogg'
 	drop_sound = 'sound/blank.ogg'
 	pickup_sound =  'sound/blank.ogg'
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
-	sleevetype = "shirt"
+
 	edelay_type = 1
 	equip_delay_self = 25
 	bloody_icon_state = "bodyblood"
@@ -21,15 +20,12 @@
 	desc = ""
 	icon_state = "undershirt"
 	item_state = "undershirt"
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 	body_parts_covered = CHEST|ARMS|VITALS
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 	name = "undervestments"
 	desc = ""
 	icon_state = "priestunder"
-	sleeved = null
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
@@ -99,13 +95,10 @@
 	icon_state = "sailorreds"
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
-	r_sleeve_status = SLEEVE_TORN
 	body_parts_covered = CHEST|ARM_LEFT|VITALS
 	torn_sleeve_number = 1
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_TORN
 	body_parts_covered = CHEST|ARM_RIGHT|VITALS
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/Initialize()
@@ -117,8 +110,6 @@
 	desc = "A simple shirt."
 	icon_state = "shortshirt"
 	item_state = "shortshirt"
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt/random/Initialize()
 	color = pick("#6b5445", "#435436", "#704542", "#79763f")
@@ -129,8 +120,6 @@
 	desc = ""
 	icon_state = "shortshirt"
 	item_state = "shortshirt"
-	r_sleeve_status = SLEEVE_TORN
-	l_sleeve_status = SLEEVE_TORN
 	body_parts_covered = CHEST|VITALS
 	torn_sleeve_number = 2
 
@@ -145,8 +134,6 @@
 	color = "#b0b0b0"
 	icon_state = "rags"
 	item_state = "rags"
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB
 	fiber_salvage = FALSE
 
@@ -158,9 +145,6 @@
 	boobed = FALSE
 	icon_state = "tunic"
 	item_state = "undershirt"
-	sleevetype = "tunic"
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/green
@@ -196,8 +180,6 @@
 	icon_state = "dress"
 	item_state = "dress"
 	allowed_sex = list(MALE, FEMALE)
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen
@@ -296,8 +278,6 @@
 	desc = ""
 	body_parts_covered = null
 	icon_state = "sexydress"
-	sleevetype = null
-	sleeved = null
 	color = "#a90707"
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/Initialize()
@@ -313,8 +293,6 @@
 	desc = "Exotic silk finely woven into.. this? Might as well be wearing a spiderweb"
 	icon_state = "webs"
 	item_state = "webs"
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 	body_parts_covered = CHEST|ARMS|VITALS
 	color = null
 	salvage_amount = 1
@@ -328,10 +306,7 @@
 	icon_state = "jestershirt"
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	boobed = TRUE
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
@@ -340,12 +315,9 @@
 	desc = ""
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "grenzelshirt"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	boobed = TRUE
 	detail_tag = "_detail"
 	detail_color = CLOTHING_WHITE
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
 	var/picked = FALSE
 	colorgrenz = TRUE
 
