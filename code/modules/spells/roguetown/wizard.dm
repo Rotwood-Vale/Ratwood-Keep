@@ -280,7 +280,8 @@
 	aoe_range = 0
 	speed = 3.5
 	light_color = "#f8af07"
-	light_range = 2
+	light_outer_range = 1
+	light_inner_range = 1
 
 /obj/projectile/magic/aoe/rogue2/on_hit(target)
 	if(ismob(target))
