@@ -29,6 +29,7 @@ SUBSYSTEM_DEF(pollution)
 		if(!length(pollutant_cast::name))
 			continue
 		singletons[type] = new type()
+	return ..()
 
 /datum/controller/subsystem/pollution/fire(resumed = FALSE)
 	var/list/current_run_cache = current_run

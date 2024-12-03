@@ -144,6 +144,7 @@
 #define SCRIBE		(1<<7)
 #define ELDER		(1<<8)
 #define APOTHECARY	(1<<9)
+#define ARCHITECT	(1<<10)
 
 #define PEASANTS	(1<<5)
 
@@ -260,7 +261,8 @@
 #define JDO_GUILDSMITH 20
 #define JDO_APPRENTICE 21
 
-#define JDO_ARTIFICER 22
+#define JDO_ARCHITECT 22
+#define JDO_ARTIFICER 22.1
 
 #define JDO_SEAMSTER 23
 
@@ -354,6 +356,7 @@
 #define YEOMEN_ROLES \
 	/datum/job/roguetown/woodsman,\
 	/datum/job/roguetown/archivist,\
+	/datum/job/roguetown/architect,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/guildsmith,\
 	/datum/job/roguetown/artificer,\

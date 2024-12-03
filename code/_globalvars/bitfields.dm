@@ -179,11 +179,6 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"RAD_PROTECT_CONTENTS" = RAD_PROTECT_CONTENTS,
 		"RAD_NO_CONTAMINATE" = RAD_NO_CONTAMINATE,
 		),
-	"disease_flags" = list (
-		"CURABLE" = CURABLE,
-		"CAN_CARRY"	= CAN_CARRY,
-		"CAN_RESIST" = CAN_RESIST
-		),
 	"mob_biotypes" = list (
 		"MOB_ORGANIC" = MOB_ORGANIC,
 		"MOB_MINERAL" = MOB_MINERAL,
