@@ -1,7 +1,7 @@
 /datum/antagonist/ascendant
 	name = "Ascendant"
 	roundend_category = "maniacs"
-	antagpanel_category = "Maniac"
+	antagpanel_category = "LISTENER"
 	antag_memory = "<b>PSYDON IS DEAD. The Old Pantheon ARE WEAK, and the New Gods ARE FOOLISH. The WORLD IS DYING, AND I AM THE ONLY THING THAT MAY SAVE IT- COMET SYON'S BLADE BLOODY ME UNTIL IT IS DONE.</b>"
 	job_rank = ROLE_ASCENDANT
 	antag_hud_type = ANTAG_HUD_TRAITOR

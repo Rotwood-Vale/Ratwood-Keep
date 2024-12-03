@@ -1,3 +1,5 @@
+GLOBAL_LIST_INIT(stress_messages, world.file2list("strings/rt/stress_messages.txt"))
+
 /mob/proc/add_stress(event_type)
 	return
 
@@ -114,6 +116,9 @@
 				to_chat(src, span_boldred("I'M FREAKING OUT!!!"))
 				apply_status_effect(/datum/status_effect/mood/vbad)
 
+	if(new_stress >=15)
+		random_stress_message()
+
 	if(new_stress >= 20)
 		roll_streak_freakout()
 
@@ -199,6 +204,15 @@
 			continue
 		animate(whole_screen, transform = newmatrix, time = 1, easing = QUAD_EASING)
 		animate(transform = -newmatrix, time = 30, easing = QUAD_EASING)
+
+/mob/living/carbon/proc/random_stress_message()
+	if(mob_timers["next_stress_message"])
+		if(world.time < mob_timers["next_stress_message"])
+			return
+	mob_timers["next_stress_message"] = world.time + rand(80 SECONDS, 160 SECONDS) //not as important as freakout
+	var/stress_message_picked = pick(GLOB.stress_messages)
+	to_chat(client, span_danger("<b>[stress_message_picked]</b>"))
+
 
 /mob/living/carbon/get_stress_amount()
 	if(HAS_TRAIT(src, TRAIT_NOMOOD))
