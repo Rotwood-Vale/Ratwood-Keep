@@ -179,7 +179,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		//if(4)
 		//	log_game("Major Antagonist: None")
 
-	pick_bandits()
+	if(prob(100))
+		pick_bandits()
 		log_game("Minor Antagonist: Bandit")
 
 	if(prob(45))
