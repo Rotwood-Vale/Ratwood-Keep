@@ -111,6 +111,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/breedchildren = 3
 
 	///Simple_animal access.
+	var/list/lock_hashes
 	///Innate access uses an internal ID card.
 	var/obj/item/card/id/access_card = null
 	///In the event that you want to have a buffing effect on the mob, but don't want it to stack with other effects, any outside force that applies a buff to a simple mob should at least set this to 1, so we have something to check against.
