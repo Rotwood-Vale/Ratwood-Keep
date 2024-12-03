@@ -12,6 +12,7 @@ Someone else can take the five minutes it costs to do so, as well. I'm lazy.
 
 On another note, have some funny coder-bickering commentary below.
 - - -
+/////// SHITCODE MADE BY MORIBUND and modularized so you dickless pricks can cannibalize and swipe it easier. Sprites for this by SINNERPEN and INFRARED BARON. payed for by dragon lee. you gonna swip this shit credit thos due.
 //// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
 
 // Fuck you Mori, you're a dickhead that self inserts your OCs and cries when people complain about balance, and rightfully so.
