@@ -192,7 +192,7 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/decal/cleanable/dirt/cobweb{
 	icon_state = "cobweb2"
 	},
 /obj/item/handheld_bell,
@@ -359,7 +359,7 @@
 /area/rogue/indoors/town/physician)
 "akY" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "ala" = (
@@ -964,7 +964,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/tavern)
 "aLV" = (
-/mob/living/simple_animal/pet/cat/black{
+/mob/living/simple_animal/pet/cat/rogue/black{
 	name = "Morticia"
 	},
 /turf/open/floor/rogue/cobble,
@@ -2520,7 +2520,7 @@
 	pixel_x = 10;
 	pixel_y = 6
 	},
-/obj/item/staff/broom{
+/obj/item/broom{
 	pixel_x = -7;
 	pixel_y = 7
 	},
@@ -4901,7 +4901,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town/dwarfin)
 "enl" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "ent" = (
@@ -5087,7 +5087,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
 "evf" = (
-/obj/item/reagent_containers/food/snacks/cracker{
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked{
 	pixel_x = 6;
 	pixel_y = 15
 	},
@@ -6618,7 +6618,7 @@
 /obj/structure/fluff/walldeco/stone{
 	pixel_y = 32
 	},
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave)
 "fXV" = (
@@ -9956,7 +9956,7 @@
 /area/rogue/indoors/town/garrison)
 "jfd" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
@@ -10399,7 +10399,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church/chapel)
 "jDA" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -11362,7 +11362,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/manor)
 "kye" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/sewer)
 "kyo" = (
@@ -11979,7 +11979,7 @@
 	},
 /area/rogue/indoors/town/physician)
 "kTP" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /obj/structure/table/wood{
 	dir = 1;
@@ -14193,7 +14193,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "mZF" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave)
 "mZT" = (
@@ -14290,7 +14290,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
 "ncB" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
@@ -14332,7 +14332,7 @@
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
 /obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
 /turf/open/floor/rogue/blocks,
@@ -14841,7 +14841,7 @@
 "nEh" = (
 /obj/structure/table/wood,
 /obj/item/rogueweapon/huntingknife/stoneknife,
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "nFb" = (
@@ -16895,7 +16895,7 @@
 	},
 /area/rogue/under/town/sewer)
 "pqy" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "prt" = (
@@ -17692,7 +17692,7 @@
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/rtfield)
 "qao" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /obj/structure/chair/wood/rogue/fancy,
 /obj/structure/fluff/walldeco/moon{
 	pixel_y = 32
@@ -17908,7 +17908,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "qnG" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /obj/structure/rack/rogue,
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/item/clothing/shoes/roguetown/boots,
@@ -18130,7 +18130,7 @@
 /obj/item/cooking/platter,
 /obj/item/cooking/platter,
 /obj/item/cooking/platter,
-/obj/effect/decal/cleanable/cobweb{
+/obj/effect/decal/cleanable/dirt/cobweb{
 	icon_state = "cobweb2"
 	},
 /turf/open/floor/rogue/cobble,
@@ -19113,7 +19113,7 @@
 /area/rogue/indoors/town/garrison)
 "rvq" = (
 /obj/machinery/light/rogue/firebowl/standing,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "rvA" = (
@@ -19759,7 +19759,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/cell)
 "rYA" = (
-/obj/item/reagent_containers/food/snacks/cracker{
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked{
 	pixel_x = -14;
 	pixel_y = -10
 	},
@@ -22514,7 +22514,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "uBe" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt/cobweb,
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
@@ -23011,7 +23011,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "vcp" = (
-/obj/item/reagent_containers/food/snacks/cracker,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
 /obj/item/reagent_containers/food/snacks/crow{
 	dir = 1
 	},
@@ -23801,7 +23801,7 @@
 /obj/structure/fluff/walldeco/stone{
 	pixel_y = 32
 	},
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave)
 "vYh" = (
@@ -25033,7 +25033,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "wWu" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /obj/item/roguecoin/gold/pile,
 /turf/open/floor/rogue/tile{
 	icon_state = "linoleum"

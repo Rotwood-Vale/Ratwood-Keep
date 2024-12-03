@@ -263,25 +263,24 @@
 
 
 
-/mob/living/simple_animal/pet/cat/rogue/attack_hand(mob/living/carbon/human/M) // Gato Basado - not all pets are welcome
+/mob/living/simple_animal/pet/cat/inn/attack_hand(mob/living/carbon/human/M) // Gato Basado - not all pets are welcome
 	. = ..()
-	if(stat != DEAD) // Don't do this if they're dead!!! Jeez!!
-		if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord)) // Cats always hiss at vampires
-			visible_message("<span class='notice'>\The [src] hisses at [M] and recoils in disgust.</span>")
-			icon_state = "[icon_living]"
-			set_resting(FALSE)
-			update_mobility()
-			playsound(get_turf(src), 'modular/Creechers/sound/cathiss.ogg', 80, TRUE, -1)
-			dir = pick(GLOB.alldirs)
-			step(src, dir)
-			personal_space()
-		if(isracist) // But only judgemental ones hiss at dark elves.
-			if((isdarkelf(M)))  // l´cursed bonbonbon
-				visible_message("<span class='notice'>\The [src] hisses at [M] and recoils in disgust.</span>")
-				icon_state = "[icon_living]"
-				set_resting(FALSE)
-				update_mobility()
-				playsound(get_turf(src), 'modular/Creechers/sound/cathiss.ogg', 80, TRUE, -1)
-				dir = pick(GLOB.alldirs)
-				step(src, dir)
-				personal_space()
+	if((isdarkelf(M)))  // l´cursed bonbonbon
+		visible_message("<span class='notice'>The cat hisses at [M] and recoils in disgust.</span>")
+		icon_state = "[icon_living]"
+		set_resting(FALSE)
+		update_mobility()
+		playsound(get_turf(src), 'modular/Creechers/sound/cathiss.ogg', 80, TRUE, -1)
+		dir = pick(GLOB.alldirs)
+		step(src, dir)
+		personal_space()
+
+	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord))
+		visible_message("<span class='notice'>The cat hisses at [M] and recoils in disgust.</span>")
+		icon_state = "[icon_living]"
+		set_resting(FALSE)
+		update_mobility()
+		playsound(get_turf(src), 'modular/Creechers/sound/cathiss.ogg', 80, TRUE, -1)
+		dir = pick(GLOB.alldirs)
+		step(src, dir)
+		personal_space()

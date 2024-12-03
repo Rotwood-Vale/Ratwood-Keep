@@ -6,6 +6,7 @@
 	invocation_type = "none" //you scream on connecting, not summoning
 	include_user = TRUE
 	range = -1
+	var/castdrain = FALSE // value for if you want a summonable weapon to cost rogfat
 
 /obj/effect/proc_holder/spell/targeted/touch/Destroy()
 	remove_hand()
@@ -49,9 +50,11 @@
 	if(!user.put_in_hands(attached_hand))
 		remove_hand(TRUE)
 		if (user.get_num_arms() <= 0)
-			to_chat(user, "<span class='warning'>I dont have any usable hands!</span>")
+			to_chat(user, span_warning("I dont have any usable hands!"))
 		else
-			to_chat(user, "<span class='warning'>My hands are full!</span>")
+			to_chat(user, span_warning("My hands are full!"))
 		return FALSE
-	to_chat(user, "<span class='notice'>[drawmessage]</span>")
+	if(castdrain)
+		user.rogfat_add(castdrain)
+	to_chat(user, span_notice("[drawmessage]"))
 	return TRUE

@@ -767,12 +767,6 @@
 	if(race)
 		set_species(race)
 
-//mob/living/carbon/human/species/skeleton
-//	race = /datum/species/skeleton
-
-/mob/living/carbon/human/species/vampire
-	race = /datum/species/vampire
-
 //Vrell - Moving this here to fix load order bugs
 /mob/living/carbon/human/has_penis()
 	return getorganslot(ORGAN_SLOT_PENIS)

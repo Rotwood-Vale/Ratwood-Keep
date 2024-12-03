@@ -236,10 +236,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/otherZ = list()
 
 	if(config.map_name == "Dun Manor")
-		otherZ += load_map_config("_maps/map_files/dun_manor/azure_coast.json")
-		otherZ += load_map_config("_maps/map_files/dun_manor/azure_forest.json")
-		otherZ += load_map_config("_maps/map_files/dun_manor/smalldecap.json")
-		otherZ += load_map_config("_maps/map_files/dun_manor/smallforest.json")
+		otherZ += load_map_config("_maps/dun_manor.json")
 		// Add dungeon map files here later, maybe we can pick from a list of them?
 
 	if(otherZ.len)

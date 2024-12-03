@@ -36,7 +36,7 @@
 	. = ..()
 
 /obj/structure/guillotine/attackby(obj/item/I, mob/user)
-	if (istype(W, /obj/item/natural/stone))
+	if (istype(I, /obj/item/natural/stone))
 		add_fingerprint(user)
 		if (blade_status == GUILLOTINE_BLADE_SHARPENING)
 			return

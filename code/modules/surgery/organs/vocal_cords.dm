@@ -139,10 +139,6 @@
 		if(L.can_hear() && !L.anti_magic_check(FALSE, TRUE) && L.stat != DEAD)
 			if(L == user && !include_speaker)
 				continue
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
-				if(istype(H.ears, /obj/item/clothing/ears/earmuffs))
-					continue
 			listeners += L
 
 	if(!listeners.len)

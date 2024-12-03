@@ -13,8 +13,8 @@
 	var/buttontooltipstyle = ""
 	var/transparent_when_unavailable = TRUE
 
-	var/button_icon = 'icons/mob/actions/backgrounds.dmi' //This is the file for the BACKGROUND icon
-	var/background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND //And this is the state for the background icon
+	var/button_icon = 'icons/mob/actions/roguespells.dmi' //This is the file for the BACKGROUND icon
+	var/background_icon_state = "spell" //And this is the state for the background icon
 
 	var/icon_icon = 'icons/mob/actions.dmi' //This is the file for the ACTION icon
 	var/button_icon_state = "default" //And this is the state for the action icon
@@ -232,6 +232,7 @@
 /datum/action/item_action/toggle_paddles
 	name = "Toggle Paddles"
 
+
 /datum/action/item_action/pick_color
 	name = "Choose A Color"
 
@@ -268,19 +269,6 @@
 
 /datum/action/item_action/change
 	name = "Change"
-
-/datum/action/item_action/nano_picket_sign
-	name = "Retext Nano Picket Sign"
-	var/obj/item/picket_sign/S
-
-/datum/action/item_action/nano_picket_sign/New(Target)
-	..()
-	if(istype(Target, /obj/item/picket_sign))
-		S = Target
-
-/datum/action/item_action/nano_picket_sign/Trigger()
-	if(istype(S))
-		S.retext(owner)
 
 /datum/action/item_action/adjust
 
@@ -327,7 +315,7 @@
 			owner.research_scanner++
 		else
 			owner.research_scanner--
-		to_chat(owner, span_notice("[target] research scanner has been [active ? "activated" : "deactivated"]."))
+		to_chat(owner, "<span class='notice'>[target] research scanner has been [active ? "activated" : "deactivated"].</span>")
 		return 1
 
 /datum/action/item_action/toggle_research_scanner/Remove(mob/M)
@@ -398,8 +386,6 @@
 	if(owner)
 		return S.can_cast(owner)
 	return FALSE
-
-/datum/action/spell_action/alien
 
 
 
@@ -507,56 +493,6 @@
 	desc = ""
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "kindleKicks"
-
-//Small sprites
-/datum/action/small_sprite
-	name = "Toggle Giant Sprite"
-	desc = ""
-	icon_icon = 'icons/mob/actions/actions_xeno.dmi'
-	button_icon_state = "smallqueen"
-	background_icon_state = "bg_alien"
-	var/small = FALSE
-	var/small_icon
-	var/small_icon_state
-
-/datum/action/small_sprite/queen
-	small_icon = 'icons/mob/alien.dmi'
-	small_icon_state = "alienq"
-
-/datum/action/small_sprite/megafauna
-	icon_icon = 'icons/mob/actions/actions_xeno.dmi'
-	button_icon_state = "smallqueen"
-	background_icon_state = "bg_alien"
-	small_icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
-
-/datum/action/small_sprite/megafauna/drake
-	small_icon_state = "ash_whelp"
-
-/datum/action/small_sprite/megafauna/colossus
-	small_icon_state = "Basilisk"
-
-/datum/action/small_sprite/megafauna/bubblegum
-	small_icon_state = "goliath2"
-
-/datum/action/small_sprite/megafauna/legion
-	small_icon_state = "mega_legion"
-
-/datum/action/small_sprite/megafauna/spacedragon
-	small_icon = 'icons/mob/carp.dmi'
-	small_icon_state = "carp"
-
-/datum/action/small_sprite/Trigger()
-	..()
-	if(!small)
-		var/image/I = image(icon = small_icon, icon_state = small_icon_state, loc = owner)
-		I.override = TRUE
-		I.pixel_x -= owner.pixel_x
-		I.pixel_y -= owner.pixel_y
-		owner.add_alt_appearance(/datum/atom_hud/alternate_appearance/basic, "smallsprite", I, AA_TARGET_SEE_APPEARANCE | AA_MATCH_TARGET_OVERLAYS)
-		small = TRUE
-	else
-		owner.remove_alt_appearance("smallsprite")
-		small = FALSE
 
 /datum/action/item_action/storage_gather_mode
 	name = "Switch gathering mode"

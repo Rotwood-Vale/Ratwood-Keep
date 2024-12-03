@@ -462,15 +462,3 @@
 	var/turf/T = get_turf(target)
 	for(var/i=0, i<50, i+=10)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), T, -1, exp_heavy, exp_light, exp_flash, FALSE, FALSE, exp_fire), i)
-
-//still magic related, but a different path
-
-/obj/projectile/temp/chill
-	name = "bolt of chills"
-	icon_state = "ice_2"
-	damage = 0
-	damage_type = BURN
-	nodamage = FALSE
-	armor_penetration = 100
-	temperature = 50
-	flag = "magic"

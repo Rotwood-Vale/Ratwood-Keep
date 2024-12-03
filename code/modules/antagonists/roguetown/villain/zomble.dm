@@ -283,23 +283,6 @@
 	to_chat(src, span_warning("[closest_dist] meters away, [dir2text(the_dir)]..."))
 	return TRUE
 
-/// Use this to attempt to add the zombie antag datum to a human
-/mob/living/carbon/human/proc/zombie_check()
-	if(!mind)
-		return
-	var/already_zombie = mind.has_antag_datum(/datum/antagonist/zombie)
-	if(already_zombie)
-		return already_zombie
-	if(mind.has_antag_datum(/datum/antagonist/vampirelord))
-		return
-	if(mind.has_antag_datum(/datum/antagonist/werewolf))
-		return
-	if(mind.has_antag_datum(/datum/antagonist/skeleton))
-		return
-	if(HAS_TRAIT(src, TRAIT_ZOMBIE_IMMUNE))
-		return
-	return mind.add_antag_datum(/datum/antagonist/zombie)
-
 /**
  * This occurs when one zombie infects a living human, going into instadeath from here is kind of shit and confusing
  * We instead just transform at the end

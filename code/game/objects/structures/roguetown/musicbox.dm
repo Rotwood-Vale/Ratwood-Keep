@@ -36,7 +36,7 @@
 	var/list/music_tracks
 
 /obj/structure/roguemachine/musicbox/Initialize()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 	music_tracks = MUSIC_TAV
 	. = ..()
 

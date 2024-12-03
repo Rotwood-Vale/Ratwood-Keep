@@ -78,9 +78,3 @@
 	throwforce = 0
 	custom_price = 5
 	var/break_chance = 25
-
-/obj/item/kitchen/knife/plastic/afterattack(mob/living/carbon/user)
-	.=..()
-	if(prob(break_chance))
-		user.visible_message(span_danger("[user]'s spoon snaps into tiny pieces in their hand."))
-		qdel(src)

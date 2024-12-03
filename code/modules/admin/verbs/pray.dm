@@ -61,9 +61,6 @@
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Prayer") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	//log_admin("HELP: [key_name(src)]: [msg]")
-	var/datum/antagonist/maniac/maniac = mind?.has_antag_datum(/datum/antagonist/maniac)
-	if(maniac && (text2num(msg_tmp) == maniac.sum_keys))
-		maniac.wake_up()
 
 /proc/CentCom_announce(text , mob/Sender)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)
@@ -97,15 +94,6 @@
 		var/mob/living/living_user = src
 		if(istype(living_user.patron))
 			deity = " to [living_user.patron.name]"
-
-	var/datum/antagonist/maniac/maniac = mind?.has_antag_datum(/datum/antagonist/maniac)
-	if(maniac)
-		if(text2num(msg) == maniac.sum_keys)
-			deity = " to THE GODHEAD"
-			INVOKE_ASYNC(maniac, TYPE_PROC_REF(/datum/antagonist/maniac, wake_up))
-		else
-			var/datum/patron/zizo = GLOB.patronlist[/datum/patron/inhumen/zizo]
-			deity = " to [zizo.name]"
 	
 	var/display_name = "[real_name || src.name]"
 

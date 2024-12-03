@@ -431,3 +431,19 @@
 	card_throw_range = 7
 	card_attack_verb = list("attacked", "sliced", "diced", "slashed", "cut")
 	resistance_flags = NONE
+
+/obj/item/toy/cards/deck/tarot
+	name = "tarot deck"
+	desc = "The Mouthpiece of Xylix, given to mortals long ago. See fate. Never bend a corner."
+	icon_state = "deck_tarot_full"
+	deckstyle = "tarot"
+
+/obj/item/toy/cards/deck/tarot/populate_deck()
+	icon_state = "deck_[deckstyle]_full"
+	for(var/suit in list("Hearts", "Pikes", "Clovers", "Tiles"))
+		for(var/i in 1 to 10)
+			cards += "[i] of [suit]"
+		for(var/person in list("Valet", "Chevalier", "Dame", "Roi"))
+			cards += "[person] of [suit]"
+	for(var/trump in list("The Magician", "The High Priestess", "The Empress", "The Emperor", "The Hierophant", "The Lover", "The Chariot", "Justice", "The Hermit", "The Wheel of Fortune", "Strength", "The Hanged Man", "Death", "Temperance", "The Devil", "The Tower", "The Star", "The Moon", "The Sun", "Judgement", "The World", "The Fool"))
+		cards += trump
