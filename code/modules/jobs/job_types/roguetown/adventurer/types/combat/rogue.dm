@@ -25,7 +25,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, pick(1,2), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
@@ -87,8 +87,8 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/sword/rapier
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor	
-			H.change_stat("intelligence", pick(0,1,1))
-			H.change_stat("speed", pick(2,3))
+			H.change_stat("intelligence", 1)
+			H.change_stat("speed", 3)
 			H.change_stat("endurance", 1)
 			H.cmode_music = 'sound/music/combat_duelist.ogg'
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

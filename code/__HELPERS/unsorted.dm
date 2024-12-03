@@ -243,7 +243,6 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/list/pois = list()
 	for(var/mob/M in mobs)
 		if(skip_mindless && (!M.mind || !M.ckey))
-//			if(!isbot(M) && !iscameramob(M) && !ismegafauna(M))
 			continue
 		if(M.client && M.client.holder && M.client.holder.fakekey) //stealthmins
 			continue
@@ -253,10 +252,6 @@ Turf and target are separate in case you want to teleport some distance from a t
 			name += " \[[M.real_name]\]"
 		if(M.stat == DEAD)
 			continue
-/*			if(isobserver(M))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"*/
 		pois[name] = M
 
 	if(!mobs_only)
@@ -1001,12 +996,6 @@ B --><-- A
 	A.add_overlay(O)
 	sleep(duration)
 	A.cut_overlay(O)
-
-/proc/get_random_station_turf()
-	return 
-
-/proc/get_safe_random_station_turf() //excludes dense turfs (like walls) and areas that have valid_territory set to FALSE
-	return
 
 
 /proc/get_closest_atom(type, list, source)

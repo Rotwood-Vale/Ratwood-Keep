@@ -820,18 +820,6 @@
 		return current_reagent.data
 
 	var/list/trans_data = current_reagent.data.Copy()
-
-	// We do this so that introducing a virus to a blood sample
-	// doesn't automagically infect all other blood samples from
-	// the same donor.
-	//
-	// Technically we should probably copy all data lists, but
-	// that could possibly eat up a lot of memory needlessly
-	// if most data lists are read-only.
-	if(trans_data["viruses"])
-		var/list/v = trans_data["viruses"]
-		trans_data["viruses"] = v.Copy()
-
 	return trans_data
 
 /datum/reagents/proc/get_reagent(type)

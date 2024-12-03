@@ -164,6 +164,7 @@
 	name = "psycross"
 	desc = ""
 	icon_state = "psicross"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/neck.dmi'
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
@@ -194,10 +195,12 @@
 /obj/item/clothing/neck/roguetown/psicross/pestra
 	name = "amulet of Pestra"
 	desc = ""
+	icon_state = "pestra"
 
 /obj/item/clothing/neck/roguetown/psicross/ravox
 	name = "amulet of Ravox"
 	desc = ""
+	icon_state = "ravox"
 
 /obj/item/clothing/neck/roguetown/psicross/malum
 	name = "amulet of Malum"

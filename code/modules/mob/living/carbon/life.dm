@@ -50,8 +50,14 @@
 
 		//Healing while sleeping in a bed
 		if(IsSleeping())
-			var/sleepy_mod = buckled?.sleepy || 0.5
+			var/sleepy_mod = 0.5
 			var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
+			if(buckled?.sleepy)
+				sleepy_mod = buckled.sleepy
+			else if(isturf(loc)) //No illegal tech.
+				var/obj/structure/bed/rogue/bed = locate() in loc
+				if(bed)
+					sleepy_mod = bed.sleepy
 			if(nutrition > 0 || yess)
 				rogstam_add(sleepy_mod * 15)
 			if(hydration > 0 || yess)
@@ -72,7 +78,14 @@
 					Sleeping(300)
 		else if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			// Resting on a bed or something
+			var/sleepy_mod = 0
 			if(buckled?.sleepy)
+				sleepy_mod = buckled.sleepy
+			else if(isturf(loc) && !(mobility_flags & MOBILITY_STAND))
+				var/obj/structure/bed/rogue/bed = locate() in loc
+				if(bed)
+					sleepy_mod = bed.sleepy
+			if(sleepy_mod > 0)
 				if((eyesclosed && !cant_fall_asleep) || (eyesclosed && !(fallingas >= 14 && cant_fall_asleep)) || InCritical()) // its a little slop but im not sure on how to else
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon..."))
@@ -86,6 +99,7 @@
 					fallingas = 1
 				else
 					rogstam_add(buckled.sleepy * 10)
+					rogstam_add(sleepy_mod * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
 				if((eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !cant_fall_asleep) || (eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !(fallingas >= 14 && cant_fall_asleep)) || InCritical())
@@ -114,6 +128,19 @@
 
 
 	check_cremation()
+
+	//Seelie luck aura
+	if(isseelie(src) && !IsSleeping())
+		for(var/mob/living/carbon/human/H in view(1, src))
+			if(!H || isseelie(H))
+				continue
+			switch(src.aura)
+				if(FALSE)
+					H.apply_status_effect(/datum/status_effect/buff/seelie/sad)
+					H.remove_status_effect(/datum/status_effect/buff/seelie/happy)
+				if(TRUE)
+					H.apply_status_effect(/datum/status_effect/buff/seelie/happy)
+					H.remove_status_effect(/datum/status_effect/buff/seelie/sad)
 
 	if(stat != DEAD)
 		return 1
@@ -430,12 +457,6 @@
 	//MIASMA
 	if(breath_gases[/datum/gas/miasma])
 		var/miasma_partialpressure = (breath_gases[/datum/gas/miasma][MOLES]/breath.total_moles())*breath_pressure
-
-		if(prob(1 * miasma_partialpressure))
-			var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(2,3)
-			miasma_disease.name = "Unknown"
-			ForceContractDisease(miasma_disease, TRUE, TRUE)
-
 		//Miasma side effects
 		switch(miasma_partialpressure)
 			if(0.25 to 5)
@@ -516,15 +537,6 @@
 		for(var/V in internal_organs)
 			var/obj/item/organ/O = V
 			O.on_death() //Needed so organs decay while inside the body.
-
-/mob/living/carbon/handle_diseases()
-	for(var/thing in diseases)
-		var/datum/disease/D = thing
-		if(prob(D.infectivity))
-			D.spread()
-
-		if(stat != DEAD || D.process_dead)
-			D.stage_act()
 
 /mob/living/carbon/handle_mutations_and_radiation()
 	if(dna && dna.temporary_mutations.len)

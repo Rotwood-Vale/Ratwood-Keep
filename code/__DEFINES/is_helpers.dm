@@ -133,11 +133,9 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 
 #define ishostile(A) (istype(A, /mob/living/simple_animal/hostile))
 
-#define isguardian(A) (istype(A, /mob/living/simple_animal/hostile/guardian))
 
 #define isconstruct(A) (istype(A, /mob/living/simple_animal/hostile/construct))
 
-#define ismegafauna(A) (istype(A, /mob/living/simple_animal/hostile/megafauna))
 
 #define isclown(A) (istype(A, /mob/living/simple_animal/hostile/retaliate/clown))
 
