@@ -211,12 +211,6 @@
 #define LEFT_HANDS 1
 #define RIGHT_HANDS 2
 
-/// sleeve flags
-#define SLEEVE_NORMAL 0
-#define SLEEVE_TORN 1
-#define SLEEVE_ROLLED 2
-#define SLEEVE_NOMOD 3
-
 //flags for female outfits: How much the game can safely "take off" the uniform without it looking weird
 #define NO_FEMALE_UNIFORM			0
 #define FEMALE_UNIFORM_FULL			1
