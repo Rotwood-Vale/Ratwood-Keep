@@ -491,3 +491,6 @@
 	name = "naledian warstaff"
 	desc = "A staff carrying the crescent moon of Psydon's knowledge, as well as the black and gold insignia of the war scholars."
 	icon_state = "naledistaff"
+	force = 18
+	force_wielded = 22
+	max_integrity = 250
