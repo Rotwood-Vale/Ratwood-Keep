@@ -5255,10 +5255,6 @@
 "OA" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/beach/forest)
-"OC" = (
-/obj/effect/landmark/threatspawner/skeleton/shortinit,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/woods)
 "OJ" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/outdoors/beach/forest)
@@ -50324,7 +50320,7 @@ jW
 jW
 jW
 jW
-OC
+Rn
 jW
 By
 jW
