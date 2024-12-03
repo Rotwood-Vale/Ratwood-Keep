@@ -13442,6 +13442,7 @@
 /area/rogue/outdoors/rtfield)
 "ksR" = (
 /obj/structure/bed/rogue,
+/obj/effect/landmark/start/architect,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "ksW" = (
@@ -21701,7 +21702,6 @@
 "qVv" = (
 /obj/structure/bed/rogue,
 /obj/effect/landmark/start/artificer,
-/obj/effect/landmark/start/architect,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
