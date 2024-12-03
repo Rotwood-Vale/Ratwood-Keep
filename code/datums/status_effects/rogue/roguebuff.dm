@@ -31,6 +31,13 @@
 	effectedstats = list("intelligence" = 5,"speed" = 3,"fortune" = -5)
 	duration = 10 SECONDS
 
+/datum/status_effect/buff/eoradruqks
+	id = "druqks"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
+	effectedstats = list("speed" = -3,"fortune" = -5, "intelligence" = -2)
+	duration = 20 SECONDS
+
+
 /datum/status_effect/buff/druqks/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/high)
@@ -60,39 +67,6 @@
 	name = "High"
 	desc = ""
 	icon_state = "acid"
-
-/datum/status_effect/buff/eoradruqks
-	id = "druqks"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = -3,"fortune" = -5, "constitution" = -2)
-	duration = 20 SECONDS
-
-/datum/status_effect/buff/eoradruqks/on_apply()
-	. = ..()
-	owner.add_movespeed_modifier("eoraslowdown", multiplicative_slowdown = 2)
-	owner.add_stress(/datum/stressevent/high)
-	if(owner?.client)
-		if(owner.client.screen && owner.client.screen.len)
-			var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in owner.client.screen
-			PM.backdrop(owner)
-			PM = locate(/atom/movable/screen/plane_master/game_world_fov_hidden) in owner.client.screen
-			PM.backdrop(owner)
-			PM = locate(/atom/movable/screen/plane_master/game_world_above) in owner.client.screen
-			PM.backdrop(owner)
-
-/datum/status_effect/buff/eoradruqks/on_remove()
-	owner.remove_stress(/datum/stressevent/high)
-	owner.remove_movespeed_modifier("eoraslowdown")
-	if(owner?.client)
-		if(owner.client.screen && owner.client.screen.len)
-			var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in owner.client.screen
-			PM.backdrop(owner)
-			PM = locate(/atom/movable/screen/plane_master/game_world_fov_hidden) in owner.client.screen
-			PM.backdrop(owner)
-			PM = locate(/atom/movable/screen/plane_master/game_world_above) in owner.client.screen
-			PM.backdrop(owner)
-
-	. = ..()
 
 /datum/status_effect/buff/ozium
 	id = "ozium"
