@@ -31,6 +31,13 @@
 	effectedstats = list("intelligence" = 5,"speed" = 3,"fortune" = -5)
 	duration = 10 SECONDS
 
+/datum/status_effect/buff/eoradruqks
+	id = "druqks"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
+	effectedstats = list("speed" = -3,"fortune" = -5, "intelligence" = -2)
+	duration = 20 SECONDS
+
+
 /datum/status_effect/buff/druqks/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/high)
