@@ -179,6 +179,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		//if(4)
 		//	log_game("Major Antagonist: None")
 
+	pick_bandits()
+		log_game("Minor Antagonist: Bandit")
+
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
@@ -212,7 +215,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	if(num_players() >= 12)
 		// 1 bandit per 12 players,
 		num_bandits = round(num_players() / 12)
-		if(num_bandits >= limit_bandits)	//caps bandits at a number between 4-8
+		if(num_bandits >= limit_bandits)	//caps bandits at 8
 			num_bandits = limit_bandits
 		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
 		bandit_job.total_positions = num_bandits
