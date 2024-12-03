@@ -209,9 +209,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	/// Temporary snowflake var to be used in the rare cases clothing doesn't require fibers to sew, to avoid material duping
 	var/fiber_salvage = FALSE
 
-	/// Number of torn sleves, important for salvaging calculations and examine text
-	var/torn_sleeve_number = 0
-
 /obj/item/Initialize()
 	. = ..()
 	if(!pixel_x && !pixel_y && !bigboy)

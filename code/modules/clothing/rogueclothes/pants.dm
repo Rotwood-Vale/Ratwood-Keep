@@ -62,7 +62,6 @@
 
 /obj/item/clothing/under/roguetown/tights/vagrant
 	body_parts_covered = GROIN|LEG_LEFT
-	torn_sleeve_number = 1
 
 /obj/item/clothing/under/roguetown/tights/vagrant/l
 	body_parts_covered = GROIN|LEG_RIGHT

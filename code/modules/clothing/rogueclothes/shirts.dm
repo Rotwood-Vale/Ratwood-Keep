@@ -96,7 +96,6 @@
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	body_parts_covered = CHEST|ARM_LEFT|VITALS
-	torn_sleeve_number = 1
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	body_parts_covered = CHEST|ARM_RIGHT|VITALS
@@ -121,7 +120,6 @@
 	icon_state = "shortshirt"
 	item_state = "shortshirt"
 	body_parts_covered = CHEST|VITALS
-	torn_sleeve_number = 2
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt/bog
 	color = "#9ac878"

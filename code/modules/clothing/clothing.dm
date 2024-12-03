@@ -89,14 +89,6 @@
 		if(armor_class == ARMOR_CLASS_LIGHT)
 			to_chat(usr, "AC: <b>LIGHT</b>")
 
-/obj/item/clothing/examine(mob/user)
-	. = ..()
-	if(torn_sleeve_number)
-		if(torn_sleeve_number == 1)
-			. += span_notice("It has one torn sleeve.")
-		else
-			. += span_notice("Both its sleeves have been torn!")
-
 /obj/item/proc/get_detail_tag() //this is for extra layers on clothes
 	return detail_tag
 
