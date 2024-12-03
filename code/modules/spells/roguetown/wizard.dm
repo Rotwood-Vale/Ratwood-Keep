@@ -244,7 +244,7 @@
 	desc = "Shoot out a series of low-powered balls of fire that shines brightly on impact, potentially blinding a target."
 	clothes_req = FALSE
 	range = 8
-	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
+	projectile_type = /obj/projectile/magic/aoe/rogue2
 	overlay_state = "fireball_multi"
 	sound = list('sound/magic/whiteflame.ogg')
 	invocation = "Sol'Igniculus!!"
@@ -264,12 +264,13 @@
 	cost = 3
 	xp_gain = TRUE
 
-/obj/projectile/magic/aoe/fireball/rogue2
+/obj/projectile/magic/aoe/rogue2
 	name = "spitfire"
-	exp_heavy = 0
-	exp_light = 0
-	exp_flash = 1
-	exp_fire = 0
+	icon_state = "fireball"
+	var/exp_heavy = 0
+	var/exp_light = 0
+	var/exp_flash = 1
+	var/exp_fire = 0
 	damage = 15	//no armor really has burn protection. So assuming all three connect, 45 burn damage- average damage of fireball with firestacks nerfed. Thats a big 'if' however. Notably, won't cause wounds,
 	damage_type = BURN
 	homing = TRUE
@@ -278,9 +279,10 @@
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
 	speed = 3.5
+	light_color = "#f8af07"
+	light_range = 2
 
-/obj/projectile/magic/aoe/fireball/rogue2/on_hit(target)
-	. = ..()
+/obj/projectile/magic/aoe/rogue2/on_hit(target)
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
@@ -288,6 +290,13 @@
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
+	var/turf/T
+	if(isturf(target))
+		T = target
+	else
+		T = get_turf(target)
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+
 
 /obj/effect/proc_holder/spell/invoked/projectile/arcanebolt
 	name = "Arcane Bolt"
