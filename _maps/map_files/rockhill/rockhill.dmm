@@ -21701,6 +21701,7 @@
 "qVv" = (
 /obj/structure/bed/rogue,
 /obj/effect/landmark/start/artificer,
+/obj/effect/landmark/start/architect,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
