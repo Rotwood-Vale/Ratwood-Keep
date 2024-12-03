@@ -67,7 +67,7 @@
 /datum/supply_pack/rogue/food/pepper
 	name = "Pepper"
 	cost = 30
-	contains = list(/obj/item/reagent_containers/food/condiment/peppermill/mill)
+	contains = list(/obj/item/reagent_containers/peppermill)
 
 /datum/supply_pack/rogue/food/butter
 	name = "Butter"
