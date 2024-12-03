@@ -6,7 +6,7 @@
 
 /datum/supply_pack/rogue/armor/helmet
 	name = "Steel Helmet"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet,
 					/obj/item/clothing/head/roguetown/helmet,
@@ -22,7 +22,7 @@
 
 /datum/supply_pack/rogue/armor/coif/steel
 	name = "Steel Coif"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/clothing/neck/roguetown/chaincoif,
 					/obj/item/clothing/neck/roguetown/chaincoif,
@@ -30,7 +30,7 @@
 
 /datum/supply_pack/rogue/armor/mask/steel
 	name = "Steel Mask"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/clothing/mask/rogue/facemask/steel,
 					/obj/item/clothing/mask/rogue/facemask/steel,
@@ -78,7 +78,7 @@
 
 /datum/supply_pack/rogue/armor/hauberk
 	name = "Hauberk"
-	cost = 110
+	cost = 80
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
 					/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
@@ -102,7 +102,7 @@
 
 /datum/supply_pack/rogue/armor/bracers
 	name = "Steel Bracers"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/clothing/wrists/roguetown/bracers,
 					/obj/item/clothing/wrists/roguetown/bracers,
@@ -110,7 +110,7 @@
 
 /datum/supply_pack/rogue/armor/chaingauntlets
 	name = "Steel Chain Gauntlets"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/clothing/gloves/roguetown/chain,
 					/obj/item/clothing/gloves/roguetown/chain,
@@ -127,16 +127,16 @@
 
 /datum/supply_pack/rogue/armor/pants/chain
 	name = "Steel Plated Chausses"
-	cost = 130
+	cost = 120
 	contains = list(
-					/obj/item/clothing/under/roguetown/platelegs/skirt,
-					/obj/item/clothing/under/roguetown/platelegs/skirt,
+					/obj/item/clothing/under/roguetown/platelegs,
+					/obj/item/clothing/under/roguetown/platelegs,
 				)
 
 
 /datum/supply_pack/rogue/armor/boots
 	name = "Steel Boots"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/boots/armor,
 					/obj/item/clothing/shoes/roguetown/boots/armor,
