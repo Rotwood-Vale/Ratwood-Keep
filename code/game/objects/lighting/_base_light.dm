@@ -129,8 +129,7 @@
 	cut_overlays()
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
-			var/area/A = get_area(src)
-			if(emergency_mode || (A && A.fire))
+			if(emergency_mode)
 				icon_state = "[base_state]_emergency"
 				icon_state = null
 			else
@@ -157,10 +156,7 @@
 		var/CO = bulb_colour
 		if(color)
 			CO = color
-		var/area/A = get_area(src)
-		if (A && A.fire)
-			CO = bulb_emergency_colour
-		else if (nightshift_enabled)
+		if (nightshift_enabled)
 			switch(nightshift_enabled)
 				if("night")
 					BR = nightshift_brightness
@@ -192,13 +188,10 @@
 			else
 				use_power = ACTIVE_POWER_USE
 				set_light(BR, light_inner_range, PO, l_color = CO)
-	else if(!turned_off())
+	else
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
 		START_PROCESSING(SSmachines, src)
-	else
-		use_power = IDLE_POWER_USE
-		set_light(0)
 	update_icon()
 
 	broken_sparks(start_only=TRUE)
@@ -313,12 +306,6 @@
 					playsound(loc, 'sound/blank.ogg', 90, TRUE)
 		if(BURN)
 			playsound(src.loc, 'sound/blank.ogg', 100, TRUE)
-
-// returns if the light has power /but/ is manually turned off
-// if a light is turned off, it won't activate emergency power
-/obj/machinery/light/proc/turned_off()
-	var/area/A = get_area(src)
-	return !A.lightswitch && A.power_light || flickering
 
 // returns whether this light has power
 // true if area has power and lightswitch is on

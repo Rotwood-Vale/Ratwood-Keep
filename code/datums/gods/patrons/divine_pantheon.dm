@@ -140,9 +140,9 @@
 	desc = "Blind love for all, without a shred of hate in her heart."
 	worshippers = "Lovers, Harlots, Doting Grandparents"
 	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
-	t1 = /obj/effect/proc_holder/spell/invoked/bud
-	t2 = /obj/effect/proc_holder/spell/invoked/eoracurse
-	t3 = null
+	t1 = /obj/effect/proc_holder/spell/invoked/eoracurse
+	t2 = /obj/effect/proc_holder/spell/invoked/bud
+	t3 = /obj/effect/proc_holder/spell/invoked/eoracharm
 	confess_lines = list(
 		"EORA BRINGS US TOGETHER!",
 		"HER BEAUTY IS EVEN IN THIS TORMENT!",

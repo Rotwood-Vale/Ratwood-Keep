@@ -217,8 +217,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		M.Jitter(350)
 
 	if(prob(1) && iscarbon(M))
-		var/datum/disease/D = new /datum/disease/heart_failure
-		M.ForceContractDisease(D)
 		to_chat(M, span_danger("You're pretty sure you just felt my heart stop for a second there.."))
 		M.playsound_local(M, 'sound/blank.ogg', 100, 0)
 

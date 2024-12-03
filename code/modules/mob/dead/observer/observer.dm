@@ -684,7 +684,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/list/pois = list()
 	for(var/mob/M in mobs)
 		if((!M.mind || !M.ckey))
-//			if(!isbot(M) && !iscameramob(M) && !ismegafauna(M))
 			continue
 		if(M.client && M.client.holder && M.client.holder.fakekey) //stealthmins
 			continue
@@ -926,11 +925,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!target)
 		return FALSE
 
-	if(ismegafauna(target))
-		to_chat(src, span_warning("This creature is too powerful for you to possess!"))
-		return FALSE
-
-	if(can_reenter_corpse && mind?.current)
+	if(can_reenter_corpse && mind && mind.current)
 		if(alert(src, "Your soul is still tied to your former life as [mind.current.name], if you go forward there is no going back to that life. Are you sure you wish to continue?", "Move On", "Yes", "No") == "No")
 			return FALSE
 	if(target.key)

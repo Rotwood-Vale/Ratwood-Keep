@@ -58,14 +58,6 @@
 		O.hellbound = hellbound
 	O.a_intent = INTENT_HARM
 
-	//keep viruses?
-	if (tr_flags & TR_KEEPVIRUS)
-		O.diseases = diseases
-		diseases = list()
-		for(var/thing in O.diseases)
-			var/datum/disease/D = thing
-			D.affected_mob = O
-
 	//keep damage?
 	if (tr_flags & TR_KEEPDAMAGE)
 		O.setToxLoss(getToxLoss(), 0)
@@ -220,15 +212,6 @@
 		O.set_suicide(suiciding)
 	if(hellbound)
 		O.hellbound = hellbound
-
-	//keep viruses?
-	if (tr_flags & TR_KEEPVIRUS)
-		O.diseases = diseases
-		diseases = list()
-		for(var/thing in O.diseases)
-			var/datum/disease/D = thing
-			D.affected_mob = O
-		O.med_hud_set_status()
 
 	//keep damage?
 	if (tr_flags & TR_KEEPDAMAGE)
