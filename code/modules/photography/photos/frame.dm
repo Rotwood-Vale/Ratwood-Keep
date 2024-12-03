@@ -18,12 +18,8 @@
 	if(!(ndir in GLOB.cardinals))
 		return
 	var/turf/T = get_turf(user)
-	var/area/A = get_area(T)
 	if(!isfloorturf(T))
 		to_chat(user, "<span class='warning'>I cannot place [src] on this spot!</span>")
-		return
-	if(A.always_unpowered)
-		to_chat(user, "<span class='warning'>I cannot place [src] in this area!</span>")
 		return
 	if(gotwallitem(T, ndir, inverse*2))
 		to_chat(user, "<span class='warning'>There's already an item on this wall!</span>")

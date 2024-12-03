@@ -60,8 +60,6 @@
 /obj/vehicle/sealed/car/clowncar/Bump(atom/movable/M)
 	. = ..()
 	if(isliving(M))
-		if(ismegafauna(M))
-			return
 		var/mob/living/L = M
 		if(iscarbon(L))
 			var/mob/living/carbon/C = L
