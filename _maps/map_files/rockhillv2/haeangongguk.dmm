@@ -2349,10 +2349,10 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "tp" = (
-/obj/item/keyring,
-/obj/item/keyring,
-/obj/item/keyring,
-/obj/item/keyring,
+/obj/item/storage/keyring,
+/obj/item/storage/keyring,
+/obj/item/storage/keyring,
+/obj/item/storage/keyring,
 /obj/structure/table/wood,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
@@ -3210,7 +3210,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "Bd" = (
-/obj/item/keyring/priest,
+/obj/item/storage/keyring/priest,
 /obj/structure/fluff/walldeco/painting/seraphina{
 	pixel_x = 32;
 	pixel_y = 0
@@ -5627,11 +5627,11 @@
 /area/rogue)
 "TM" = (
 /obj/structure/rack/rogue,
-/obj/item/keyring,
-/obj/item/keyring,
-/obj/item/keyring,
-/obj/item/keyring,
-/obj/item/keyring,
+/obj/item/storage/keyring,
+/obj/item/storage/keyring,
+/obj/item/storage/keyring,
+/obj/item/storage/keyring,
+/obj/item/storage/keyring,
 /obj/item/roguekey/church,
 /obj/item/roguekey/church,
 /obj/item/roguekey/church,
@@ -5879,9 +5879,9 @@
 /area/rogue)
 "Vy" = (
 /obj/structure/rack/rogue,
-/obj/item/keyring,
-/obj/item/keyring,
-/obj/item/keyring,
+/obj/item/storage/keyring,
+/obj/item/storage/keyring,
+/obj/item/storage/keyring,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "VC" = (
