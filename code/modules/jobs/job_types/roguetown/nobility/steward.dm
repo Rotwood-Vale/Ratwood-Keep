@@ -23,7 +23,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/keyring/steward
+	beltr = /obj/item/storage/keyring/steward
 
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 	

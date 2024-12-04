@@ -27,7 +27,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights
 	armor = /obj/item/clothing/suit/roguetown/shirt/jester
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/keyring/servant
+	beltr = /obj/item/storage/keyring/servant
 	beltl = /obj/item/storage/belt/rogue/pouch
 	head = /obj/item/clothing/head/roguetown/jester
 	neck = /obj/item/clothing/neck/roguetown/coif

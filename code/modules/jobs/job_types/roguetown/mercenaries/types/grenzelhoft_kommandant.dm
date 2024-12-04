@@ -28,7 +28,7 @@
 	..()
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/keyring/mercenary_boss
+	beltl = /obj/item/storage/keyring/mercenary_boss
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
