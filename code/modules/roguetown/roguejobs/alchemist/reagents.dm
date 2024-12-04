@@ -75,3 +75,12 @@
 	color = "#ebebeb"
 	taste_description = "salty and tangy"
 	metabolization_rate = 0.1
+
+/datum/crafting_recipe/roguetown/cooking/soap
+	name = "soap"
+	reqs = list(
+		/obj/item/ash = 1,
+		/datum/reagent/water = 10,
+		/obj/item/reagent_containers/food/snacks/fat = 1)
+	result = /obj/item/soap
+	craftdiff = 5

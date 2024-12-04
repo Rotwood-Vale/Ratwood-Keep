@@ -2521,8 +2521,8 @@
 /area/rogue/indoors/shelter/town)
 "cbP" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "cbU" = (
@@ -5736,11 +5736,11 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "eyx" = (
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /obj/structure/closet/crate/chest{
 	lockid = "bog_gatehouse"
 	},
@@ -30357,8 +30357,8 @@
 /obj/structure/closet/crate/chest{
 	lockid = "clinic"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/crackers,
-/obj/item/reagent_containers/food/snacks/rogue/crackers,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw,
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/town/basement)
 "xCs" = (
