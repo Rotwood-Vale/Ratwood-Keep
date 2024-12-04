@@ -287,7 +287,6 @@ GLOBAL_LIST_EMPTY(cuckolds)
 #define FAMILY_PARTIAL 2
 
 
-GLOBAL_LIST_EMPTY(sunlights)
 GLOBAL_LIST_EMPTY(head_bounties)
 GLOBAL_LIST_EMPTY(job_respawn_delays)
 

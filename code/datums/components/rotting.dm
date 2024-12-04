@@ -97,7 +97,7 @@
 	if(findonerotten)
 		var/turf/open/T = C.loc
 		if(istype(T))
-			T.add_pollutants(/datum/pollutant/rot, 5)
+			T.pollute_turf(/datum/pollutant/rot, 50)
 			if(soundloop && soundloop.stopped && !is_zombie)
 				soundloop.start()
 		else
@@ -118,17 +118,18 @@
 /datum/component/rot/simple/process()
 	..()
 	var/mob/living/L = parent
+	var/datum/component/rot/R = src
 	if(L.stat != DEAD)
-		qdel(src)
+		qdel(R)
 		return
-	if(amount > 15 MINUTES)
+	if(amount > 10 MINUTES)
 		if(soundloop && soundloop.stopped)
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
-			T.add_pollutants(/datum/pollutant/rot, 5)
-	if(amount > 25 MINUTES)
-		qdel(src)
+			T.pollute_turf(/datum/pollutant/rot, 50)
+	if(amount > 20 MINUTES)
+		qdel(R)
 		return L.dust(drop_items=TRUE)
 
 /datum/component/rot/gibs
