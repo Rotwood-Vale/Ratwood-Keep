@@ -28,7 +28,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/black
-	beltl = /obj/item/keyring/councillor
+	beltl = /obj/item/storage/keyring/councillor
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 	if(H.mind)

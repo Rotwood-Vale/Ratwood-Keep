@@ -171,8 +171,8 @@
 		else
 			to_chat(user, span_warning("Wrong key."))
 			return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
 		for(var/obj/item/key/KE in K.keys)
 			if(KE.lockid == "merchant")
 				locked = !locked

@@ -34,7 +34,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
-	beltr = /obj/item/keyring/hand
+	beltr = /obj/item/storage/keyring/hand
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	backl = /obj/item/clothing/suit/roguetown/armor/leather/hand
 	backr = /obj/item/storage/backpack/rogue/satchel

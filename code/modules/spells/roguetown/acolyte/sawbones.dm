@@ -1315,10 +1315,11 @@ Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAA
 /obj/item/reagent_containers/glass/alembic/Initialize()
 	create_reagents(100, REFILLABLE | DRAINABLE | AMOUNT_VISIBLE) // 2 Bottles capacity
 	icon_state = "alembic_empty"
-	..()
+	boilloop = new(list(src), FALSE)
+	. = ..()
 
 /obj/item/reagent_containers/glass/alembic/examine(mob/user)
-	..()
+	. = ..()
 	if (active_brews.len == 0)
 		. += span_notice("The alembic is not brewing.")
 	else
@@ -1340,7 +1341,7 @@ Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAA
 	else
 		icon_state = "alembic_empty"
 	playsound(src, "bubbles", 60, TRUE)
-	if(boilloop) boilloop.stop() // Stop the looping sound once brewing is done
+	boilloop.stop() // Stop the looping sound once brewing is done
 	brewing_started = FALSE // Reset brewing status after brewing completes
 
 /obj/item/reagent_containers/glass/alembic/attackby(obj/item/I, mob/user, params)
@@ -1362,7 +1363,7 @@ Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAA
 		I.brewing_time = 600
 		active_brews += I
 		icon_state = "alembic_brew"
-		boilloop = playsound(src, "sound/misc/boiling.ogg", 50, TRUE)
+		boilloop.start()
 		addtimer(CALLBACK(src, /obj/item/reagent_containers/glass/alembic/proc/makebrew, I), I.brewing_time)
 		return TRUE
 	return ..()

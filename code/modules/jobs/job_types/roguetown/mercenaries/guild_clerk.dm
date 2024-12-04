@@ -53,5 +53,5 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich//To pay out contracts, if the issuer flakes.
 	backl = /obj/item/rogueweapon/mace
-	beltl = /obj/item/keyring/mercenary_boss//So they can access the Captain's office.
+	beltl = /obj/item/storage/keyring/mercenary_boss//So they can access the Captain's office.
 	backr = /obj/item/storage/backpack/rogue/satchel
