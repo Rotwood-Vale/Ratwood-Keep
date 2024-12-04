@@ -197,10 +197,14 @@ GLOBAL_VAR_INIT(mobids, 1)
 			continue
 		//This entire if/else chain could be in two lines but isn't for readibilties sake.
 		var/msg = message
-		if(M.see_invisible < invisibility)//if src is invisible to M
-			msg = blind_message
-//		else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit()) //if it is too dark.
-//			msg = blind_message
+		/// Visible messages are shown to things which contain them and vice versa, mostly to help with vore system UX. Also - dont hide msg from self
+		if(!in_contents_recursive(src, M) && !in_contents_recursive(M, src) && M != src)
+			if(M.see_invisible < invisibility)//if src is invisible to M
+				msg = blind_message
+			else if(T != loc && T != src) //if src is inside something and not a turf.
+				msg = blind_message
+			//else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit()) //if it is too dark.
+			//	msg = blind_message
 		if(!msg)
 			continue
 		M.show_message(msg, MSG_VISUAL, blind_message, MSG_AUDIBLE)
@@ -208,6 +212,21 @@ GLOBAL_VAR_INIT(mobids, 1)
 			M.create_chat_message(src, raw_message = runechat_message, spans = list("emote"))
 	if(log_seen)
 		log_seen(src, null, hearers, (log_seen_msg ? log_seen_msg : message), log_seen)
+
+/// Checks whether `thing` is somewhere inside `target`
+/proc/in_contents_recursive(atom/movable/thing, atom/movable/target)
+	var/atom/location = thing.loc
+	/// Theoretically a while(TRUE) but it's an i++ to 100 for safety
+	for(var/i in 1 to 100)
+		if(isnull(location))
+			break
+		if(isturf(location))
+			break
+		if(location == target)
+			return TRUE
+		else
+			location = location.loc
+	return FALSE
 
 ///Adds the functionality to self_message.
 /mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, runechat_message = null, log_seen = NONE, log_seen_msg = null)
