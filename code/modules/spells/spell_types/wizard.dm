@@ -181,21 +181,6 @@
 	new /obj/effect/timestop/magic(get_turf(user), timestop_range, timestop_duration, list(user))
 
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/creature
-	name = "Summon Creature Swarm"
-	desc = ""
-
-	school = "conjuration"
-	charge_max = 1200
-	clothes_req = FALSE
-	invocation = "IA IA"
-	invocation_type = "shout"
-	summon_amt = 10
-	range = 3
-
-	summon_type = list(/mob/living/simple_animal/hostile/netherworld)
-	cast_sound = 'sound/blank.ogg'
-
 /obj/effect/proc_holder/spell/targeted/trigger/blind
 	name = "Blind"
 	desc = ""
@@ -211,14 +196,6 @@
 	starting_spells = list("/obj/effect/proc_holder/spell/targeted/inflict_handler/blind","/obj/effect/proc_holder/spell/targeted/genetic/blind")
 
 	action_icon_state = "blind"
-
-/obj/effect/proc_holder/spell/aoe_turf/conjure/creature/cult
-	name = "Summon Creatures (DANGEROUS)"
-	clothes_req = TRUE
-	charge_max = 5000
-	summon_amt = 2
-
-
 
 /obj/effect/proc_holder/spell/targeted/inflict_handler/blind
 	amt_eye_blind = 10
@@ -330,19 +307,6 @@
 		var/mob/living/U = user
 		if(!U.anti_magic_check(TRUE, TRUE))
 			U.IgniteMob()
-
-/obj/effect/proc_holder/spell/targeted/conjure_item/spellpacket
-	name = "Thrown Lightning"
-	desc = ""
-	clothes_req = TRUE
-	item_type = /obj/item/spellpacket/lightningbolt
-	charge_max = 10
-	action_icon_state = "thrownlightning"
-
-/obj/effect/proc_holder/spell/targeted/conjure_item/spellpacket/cast(list/targets, mob/user = usr)
-	..()
-	for(var/mob/living/carbon/C in targets)
-		C.throw_mode_on()
 
 /obj/item/spellpacket/lightningbolt
 	name = "\improper Lightning bolt Spell Packet"

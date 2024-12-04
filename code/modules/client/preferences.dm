@@ -1875,8 +1875,6 @@ Slots: [job.spawn_positions]</span>
 					toggles ^= COMBOHUD_LIGHTING
 				if("toggle_dead_chat")
 					user.client.deadchat()
-				if("toggle_radio_chatter")
-					user.client.toggle_hear_radio()
 				if("toggle_prayers")
 					user.client.toggleprayers()
 				if("toggle_deadmin_always")

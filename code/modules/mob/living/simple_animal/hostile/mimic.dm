@@ -94,8 +94,6 @@
 		O.forceMove(C)
 	..()
 
-GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/window))
-
 /mob/living/simple_animal/hostile/mimic/copy
 	health = 100
 	maxHealth = 100
@@ -134,11 +132,6 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/wi
 		LoseTarget()
 		creator = owner
 		faction |= "[REF(owner)]"
-
-/mob/living/simple_animal/hostile/mimic/copy/proc/CheckObject(obj/O)
-	if((isitem(O) || isstructure(O)) && !is_type_in_list(O, GLOB.protected_objects))
-		return 1
-	return 0
 
 /mob/living/simple_animal/hostile/mimic/copy/proc/CopyObject(obj/O, mob/living/user, destroy_original = 0)
 	if(destroy_original || CheckObject(O))

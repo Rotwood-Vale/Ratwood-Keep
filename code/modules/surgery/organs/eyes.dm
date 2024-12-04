@@ -226,26 +226,6 @@
 	tint = INFINITY
 	var/obj/item/flashlight/eyelight/eye
 
-/obj/item/organ/eyes/robotic/flashlight/emp_act(severity)
-	return
-
-/obj/item/organ/eyes/robotic/flashlight/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = FALSE)
-	..()
-	if(!eye)
-		eye = new /obj/item/flashlight/eyelight()
-	eye.on = TRUE
-	eye.forceMove(M)
-	eye.update_brightness(M)
-	M.become_blind("flashlight_eyes")
-
-
-/obj/item/organ/eyes/robotic/flashlight/Remove(mob/living/carbon/M, special = 0)
-	eye.on = FALSE
-	eye.update_brightness(M)
-	eye.forceMove(src)
-	M.cure_blind("flashlight_eyes")
-	..()
-
 // Welding shield implant
 /obj/item/organ/eyes/robotic/shield
 	name = "shielded robotic eyes"

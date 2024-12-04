@@ -127,7 +127,7 @@
 	..()
 
 /atom/proc/animate_atom_living(mob/living/owner = null)
-	if((isitem(src) || istype(src, /obj/structure/closet/crate/chest) || istype(src, /obj/structure/handcart ) || istype(src, /obj/structure/chair/wood/rogue )) && !is_type_in_list(src, GLOB.protected_objects))
+	if((isitem(src) || istype(src, /obj/structure/closet/crate/chest) || istype(src, /obj/structure/handcart ) || istype(src, /obj/structure/chair/wood/rogue )))
 		if(istype(src, /obj/structure/statue/petrified))
 			var/obj/structure/statue/petrified/P = src
 			if(P.petrified_mob)
@@ -144,7 +144,7 @@
 				if(L.mind)
 					L.mind.transfer_to(S)
 					if(owner)
-						to_chat(S, span_danger("I are an animate statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], my creator."))
+						to_chat(S, span_danger("You are an animate statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], my creator."))
 				P.forceMove(S)
 				return
 		else

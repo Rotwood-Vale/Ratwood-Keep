@@ -497,4 +497,4 @@
 	lefthand_file = 'icons/mob/inhands/equipment/mining_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/mining_righthand.dmi'
 	desc = ""
-	light_outer_range = 6			// luminosity when on
+	light_range = 6			// luminosity when on

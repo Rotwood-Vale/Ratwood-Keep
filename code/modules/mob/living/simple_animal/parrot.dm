@@ -46,7 +46,6 @@
 
 	speak_chance = 1 //1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/cracker/ = 1)
 	melee_damage_upper = 10
 	melee_damage_lower = 5
 
@@ -210,7 +209,7 @@
 
 //Mobs with objects
 /mob/living/simple_animal/parrot/attackby(obj/item/O, mob/living/user, params)
-	if(!stat && !client && !istype(O, /obj/item/stack/medical) && !istype(O, /obj/item/reagent_containers/food/snacks/cracker))
+	if(!stat && !client && !istype(O, /obj/item/stack/medical))
 		if(O.force)
 			if(parrot_state == PARROT_PERCH)
 				parrot_sleep_dur = parrot_sleep_max //Reset it's sleep timer if it was perched
@@ -223,13 +222,6 @@
 				parrot_state |= PARROT_FLEE
 			icon_state = icon_living
 			drop_held_item(0)
-	else if(istype(O, /obj/item/reagent_containers/food/snacks/cracker)) //Poly wants a cracker.
-		qdel(O)
-		if(health < maxHealth)
-			adjustBruteLoss(-10)
-		speak_chance *= 1.27 // 20 crackers to go from 1% to 100%
-		speech_shuffle_rate += 10
-		to_chat(user, span_notice("[src] eagerly devours the cracker."))
 	..()
 	return
 
@@ -632,16 +624,6 @@
 		if(src == usr) //So that other mobs wont make this message appear when they're bludgeoning you.
 			to_chat(src, span_warning("I have nothing to drop!"))
 		return 0
-
-
-//parrots will eat crackers instead of dropping them
-	if(istype(held_item, /obj/item/reagent_containers/food/snacks/cracker) && (drop_gently))
-		qdel(held_item)
-		held_item = null
-		if(health < maxHealth)
-			adjustBruteLoss(-10)
-		emote("me", 1, "[src] eagerly downs the cracker.")
-		return 1
 
 	to_chat(src, "<span class='notice'>I drop [held_item].</span>")
 

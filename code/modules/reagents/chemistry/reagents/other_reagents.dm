@@ -485,21 +485,6 @@
 	race = /datum/species/android
 	taste_description = "circuitry and steel"
 
-//BLACKLISTED RACES
-/datum/reagent/mutationtoxin/skeleton
-	name = "Skeleton Mutation Toxin"
-	description = "A scary toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/skeleton
-	taste_description = "milk... and lots of it"
-
-/datum/reagent/mutationtoxin/zombie
-	name = "Zombie Mutation Toxin"
-	description = "An undead toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/zombie //Not the infectious kind. The days of xenobio zombie outbreaks are long past.
-	taste_description = "brai...nothing in particular"
-
 //DANGEROUS RACES
 /datum/reagent/mutationtoxin/shadow
 	name = "Shadow Mutation Toxin"
@@ -1389,13 +1374,6 @@
 	metabolization_rate = INFINITY
 	can_synth = FALSE
 	taste_description = "brains"
-
-/datum/reagent/romerol/reaction_mob(mob/living/carbon/human/H, method=TOUCH, reac_volume)
-	// Silently add the zombie infection organ to be activated upon death
-	if(!H.getorganslot(ORGAN_SLOT_ZOMBIE))
-		var/obj/item/organ/zombie_infection/nodamage/ZI = new()
-		ZI.Insert(H)
-	..()
 
 /datum/reagent/magillitis
 	name = "Magillitis"

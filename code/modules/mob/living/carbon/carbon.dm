@@ -586,9 +586,8 @@
 		else
 			if(message)
 				visible_message(span_danger("[src] pukes!"), span_danger("I puke!"))
-				if(!isflyperson(src))
-					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomit)
-					add_stress(/datum/stressevent/vomit)
+				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomit)
+				add_stress(/datum/stressevent/vomit)
 	else
 		if(NOBLOOD in dna?.species?.species_traits)
 			return TRUE

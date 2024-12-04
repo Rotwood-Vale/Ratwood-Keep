@@ -370,12 +370,7 @@
 	metabolization_rate = 0.15 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/garlic/on_mob_life(mob/living/carbon/M)
-	if(isvampire(M)) //incapacitating but not lethal. Unfortunately, vampires cannot vomit.
-		if(prob(min(25,current_cycle)))
-			to_chat(M, span_danger("I can't get the scent of garlic out of my nose! You can barely think..."))
-			M.Paralyze(10)
-			M.Jitter(10)
-	else if(ishuman(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.job == "Cook")
 			if(prob(20)) //stays in the system much longer than sprinkles/banana juice, so heals slower to partially compensate

@@ -59,24 +59,6 @@
 	update_icon()
 
 /*
- * Donut Box
- */
-
-/obj/item/storage/fancy/donut_box
-	icon = 'icons/obj/food/containers.dmi'
-	icon_state = "donutbox6"
-	icon_type = "donut"
-	name = "donut box"
-	spawn_type = /obj/item/reagent_containers/food/snacks/donut
-	fancy_open = TRUE
-
-/obj/item/storage/fancy/donut_box/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 6
-	STR.set_holdable(list(/obj/item/reagent_containers/food/snacks/donut))
-
-/*
  * Egg Box
  */
 

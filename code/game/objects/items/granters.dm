@@ -229,19 +229,6 @@
 
 	stored_swap = null
 
-/obj/item/book/granter/spell/forcewall
-	spell = /obj/effect/proc_holder/spell/targeted/forcewall
-	spellname = "forcewall"
-	icon_state ="bookforcewall"
-	desc = ""
-	remarks = list("I can go through the wall! Neat.", "Why are there so many mime references...?", "This would cause much grief in a hallway...", "This is some surprisingly strong magic to create a wall nobody can pass through...", "Why the dumb stance? It's just a flick of the hand...", "Why are the pages so hard to turn, is this even paper?", "I can't mo Oh, i'm fine...")
-
-/obj/item/book/granter/spell/forcewall/recoil(mob/living/user)
-	..()
-	to_chat(user,span_warning("I suddenly feel very solid!"))
-	user.Stun(40, ignore_canstun = TRUE)
-	user.petrify(30)
-
 /obj/item/book/granter/spell/knock
 	spell = /obj/effect/proc_holder/spell/aoe_turf/knock
 	spellname = "knock"
@@ -253,24 +240,6 @@
 	..()
 	to_chat(user,span_warning("You're knocked down!"))
 	user.Paralyze(40)
-
-/obj/item/book/granter/spell/barnyard
-	spell = /obj/effect/proc_holder/spell/targeted/barnyardcurse
-	spellname = "barnyard"
-	icon_state ="bookhorses"
-	desc = ""
-	remarks = list("Moooooooo!","Moo!","Moooo!", "NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!", "Oink!", "Squeeeeeeee!", "Oink Oink!", "Ree!!", "Reee!!", "REEE!!", "REEEEE!!")
-
-/obj/item/book/granter/spell/barnyard/recoil(mob/living/carbon/user)
-	if(ishuman(user))
-		to_chat(user,"<font size='15' color='red'><b>HORSIE HAS RISEN</b></font>")
-		var/obj/item/clothing/magichead = new /obj/item/clothing/mask/horsehead/cursed(user.drop_location())
-		if(!user.dropItemToGround(user.wear_mask))
-			qdel(user.wear_mask)
-		user.equip_to_slot_if_possible(magichead, SLOT_WEAR_MASK, TRUE, TRUE)
-		qdel(src)
-	else
-		to_chat(user,span_notice("I say thee neigh")) //It still lives here
 
 /obj/item/book/granter/spell/summonitem
 	spell = /obj/effect/proc_holder/spell/targeted/summonitem
@@ -289,7 +258,7 @@
 
 /obj/item/book/granter/spell/random/Initialize()
 	. = ..()
-	var/static/banned_spells = list(/obj/item/book/granter/spell/mimery_blockade, /obj/item/book/granter/spell/mimery_guns)
+	var/static/banned_spells = list()
 	var/real_type = pick(subtypesof(/obj/item/book/granter/spell) - banned_spells)
 	new real_type(loc)
 	return INITIALIZE_HINT_QDEL

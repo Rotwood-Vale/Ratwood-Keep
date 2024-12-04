@@ -127,12 +127,6 @@
 		if((pressure <= 20) || (pressure >= 550))
 			continue
 
-		if(extended_safety_checks)
-			if(islava(F)) //chasms aren't /floor, and so are pre-filtered
-				var/turf/open/lava/L = F
-				if(!L.is_safe())
-					continue
-
 		// DING! You have passed the gauntlet, and are "probably" safe.
 		return F
 
