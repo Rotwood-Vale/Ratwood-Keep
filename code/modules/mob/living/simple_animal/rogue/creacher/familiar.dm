@@ -45,7 +45,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Life()
 	. = ..()
 	timeleft--
-	if(!timeleft || stat == DEAD)
+	if(!timeleft)
 		src.dissapear()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/DeadLife()
@@ -53,6 +53,5 @@
 	src.dissapear()
 
 /mob/living/proc/dissapear()
-	death(TRUE)
 	spill_embedded_objects()
 	qdel(src)
