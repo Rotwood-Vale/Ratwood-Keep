@@ -8,13 +8,13 @@
 #define BELLIES_DESC_MAX 1024
 
 /mob/living/carbon/verb/toggle_vore_mode_verb()
-	set name = "Toggle Vore Mode"
-	set category = "Accursed"
+	set name = "Hunger for Seelie"
+	set category = "Emotes"
 	toggle_vore_mode()
 
 /mob/living/verb/insidePanel()
 	set name = "Vore Panel"
-	set category = "Accursed"
+	set category = "Options"
 
 	init_vore()
 
