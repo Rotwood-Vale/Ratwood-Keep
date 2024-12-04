@@ -1,6 +1,6 @@
 /datum/job/roguetown/architect
 	title = "Architect"
-	tutorial = " The Archivist meticulously preserves and organizes ancient scrolls and tomes, safeguarding the collective knowledge of the realm for generations to come. Nobles and Peasants alike often seek the Archivists expertise on matters of history and fact."
+	tutorial = "There are ancient secrets within stone, something your creed has known since man built upon dirt. You've pride in your work, youre the only reason this place doesn't fall apart."
 	flag = ARCHITECT
 	department_flag = COURTIERS
 	faction = "Station"
