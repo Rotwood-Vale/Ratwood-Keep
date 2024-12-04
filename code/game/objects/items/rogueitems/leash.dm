@@ -45,7 +45,7 @@
 //The leash object itself
 //The component variables are used for hooks, used later.
 
-/obj/item/rope/leash
+/obj/item/leash
 	name = "rope leash"
 	desc = "A simple rope, with a knot at the end for easy attachment onto bindings."
 	icon = 'modular/icons/obj/items/leashes_collars.dmi'
@@ -59,23 +59,14 @@
 	force = 1
 	throwforce = 1
 	w_class = WEIGHT_CLASS_SMALL
-	possible_item_intents = list(/datum/intent/leash, /datum/intent/tie)
 	var/mob/living/leash_pet = null //Variable to store our pet later
 	var/mob/living/leash_master = null //And our master too
 	var/mob/mobhook_leash_pet
 	var/mob/mobhook_leash_master //Needed to watch for these entities to move
 	var/mob/mobhook_leash_freepet
+	var/cuffsound = 'sound/blank.ogg'
 
-/datum/intent/leash
-	name = "leash"
-	iconstate = "inuse"
-	chargetime = 0
-	noaa = TRUE
-	candodge = FALSE
-	canparry = FALSE
-	misscost = 0
-
-/obj/item/rope/leash/process(delta_time)
+/obj/item/leash/process(delta_time)
 	if(!leash_pet) //No pet, break loop
 		return PROCESS_KILL
 	if(!(leash_pet.get_item_by_slot(ITEM_SLOT_NECK))) //The pet has slipped their collar and is not the pet anymore.
@@ -99,29 +90,25 @@
 		leash_pet = null
 		return PROCESS_KILL
 
-/obj/item/rope/leash/attack(mob/living/carbon/C, mob/living/user)
-	if(user.used_intent.type != /datum/intent/tie || user.used_intent.type != /datum/intent/leash)
-		..()
-		return
+/obj/item/leash/Destroy()
+	if(iscarbon(loc))
+		var/mob/living/carbon/M = loc
+		if(M.leashed == src)
+			M.leashed = null
+			M.update_inv_leashed()
+	return ..()
 
+/obj/item/leash/attack(mob/living/carbon/C, mob/living/user)
 	if(!istype(C))
 		return
 	
-	if(user.used_intent.type == /datum/intent/leash)
+	if(user.used_intent.type == /datum/intent/use)
 		try_leash(C,user)
-		return
-
-	if(user.aimheight > 4)
-		try_cuff_arms(C, user)
-		return
-
-	if(user.aimheight <= 4)
-		try_cuff_legs(C, user)
 		return
 
 //Triggers after clicking is cleared as viable
 
-/obj/item/rope/leash/proc/try_leash(mob/living/carbon/C, mob/living/user)
+/obj/item/leash/proc/try_leash(mob/living/carbon/C, mob/living/user)
 	if(C.leashed) //No multileash drifting pls
 		return
 
@@ -158,7 +145,7 @@
 	SSblackbox.record_feedback("tally", "leashes", 1, type)
 	log_combat(user, C, "leashed", addition="playfully")
 
-/obj/item/rope/leash/proc/apply_leash(mob/living/carbon/target, mob/living/user)
+/obj/item/leash/proc/apply_leash(mob/living/carbon/target, mob/living/user)
 	if(target.leashed)
 		return
 
@@ -185,7 +172,7 @@
 
 //Called when the leash is used in hand
 //Tugs the pet closer
-/obj/item/rope/leash/attack_self(mob/living/user)
+/obj/item/leash/attack_self(mob/living/user)
 	if(!leash_pet) //No pet, no tug.
 		return
 	//Yank the pet. Yank em in close.
@@ -193,7 +180,7 @@
 	log_combat(leash_master, leash_pet, "leash-yanked")
 	leash_pet.visible_message(span_warning("[leash_master] yanks [leash_pet] closer with \the [src.name]."))
 
-/obj/item/rope/leash/proc/on_master_move()
+/obj/item/leash/proc/on_master_move()
 	SIGNAL_HANDLER
 	//Make sure the dom still has a pet
 	if(!leash_master) //There must be a master
@@ -209,7 +196,7 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(after_master_move)), 0.2 SECONDS)
 
-/obj/item/rope/leash/proc/after_master_move()
+/obj/item/leash/proc/after_master_move()
 	//If the master moves, pull the pet in behind
 	//Also, the timer means that the distance check for master happens before the pet, to prevent both from proccing.
 
@@ -257,7 +244,7 @@
 		leash_pet = null
 		leash_master = null
 
-/obj/item/rope/leash/proc/on_pet_move()
+/obj/item/leash/proc/on_pet_move()
 	SIGNAL_HANDLER
 	//This should only work if there is a pet and a master.
 	//This is here pretty much just to stop the console from flooding with errors
@@ -277,7 +264,7 @@
 	//If the pet gets too far away, they get tugged back
 	addtimer(CALLBACK(src, PROC_REF(after_pet_move)), 0.3 SECONDS) //A short timer so the pet kind of bounces back after they make the step
 
-/obj/item/rope/leash/proc/after_pet_move()
+/obj/item/leash/proc/after_pet_move()
 	if(!leash_master)
 		return
 	if(!leash_pet)
@@ -285,7 +272,7 @@
 	for(var/i in 2 to get_dist(leash_pet, leash_master)) // Move the pet to a minimum of 1 tiles away from the master, so the pet trails behind them.
 		step_towards(leash_pet, leash_master)
 
-/obj/item/rope/leash/proc/on_freepet_move()
+/obj/item/leash/proc/on_freepet_move()
 	SIGNAL_HANDLER
 	//Pet is on the run. Let's drag the leash behind them.
 	if(leash_master) //If there is a master, don't do this
@@ -298,7 +285,7 @@
 	//If the pet gets too far away, we get tugged to them.
 	addtimer(CALLBACK(src, PROC_REF(after_freepet_move)), 0.1 SECONDS, TIMER_UNIQUE) //A short timer so the leash trails behind us.
 
-/obj/item/rope/leash/proc/after_freepet_move()
+/obj/item/leash/proc/after_freepet_move()
 	if(!leash_pet)
 		return
 
@@ -323,7 +310,7 @@
 
 //The proc below in question is the one causing all the errors apparently
 
-/obj/item/rope/leash/dropped(mob/user, silent)
+/obj/item/leash/dropped(mob/user, silent)
 	 //Drop the leash, and the leash effects stop
 	. = ..()
 	if(!leash_pet) //There is no pet. Stop this silliness
@@ -333,7 +320,7 @@
 	//Dropping procs any time the leash changes slots. So, we will wait a tick and see if the leash was actually dropped
 	addtimer(CALLBACK(src, PROC_REF(drop_effects), user, silent), 1)
 
-/obj/item/rope/leash/proc/drop_effects(mob/user, silent)
+/obj/item/leash/proc/drop_effects(mob/user, silent)
 	SIGNAL_HANDLER
 	if(leash_master.is_holding(src) || leash_master.get_item_by_slot(ITEM_SLOT_BELT) == src)
 		return  //Dom still has the leash as it turns out. Cancel the proc.
@@ -348,13 +335,13 @@
 	//QDEL_NULL(mobhook_leash_master)
 	UnregisterSignal(mobhook_leash_master, COMSIG_MOVABLE_MOVED)
 
-/obj/item/rope/leash/equipped(mob/user)
+/obj/item/leash/equipped(mob/user)
 	. = ..()
 	if(!leash_pet) //Don't apply statuses with a petless leash.
 		return
 	addtimer(CALLBACK(src, PROC_REF(equip_effects), user), 2)
 
-/obj/item/rope/leash/proc/equip_effects(mob/user)
+/obj/item/leash/proc/equip_effects(mob/user)
 	if(!leash_pet)
 		return
 	if(leash_master == user)
