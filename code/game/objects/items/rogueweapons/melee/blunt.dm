@@ -183,7 +183,7 @@
 /datum/intent/mace/warhammer/pick
 	name = "pick"
 	icon_state = "inpick"
-	blade_class = BCLASS_PICK
+	blade_class = BCLASS_STAB
 	attack_verb = list("picks", "impales")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 14
