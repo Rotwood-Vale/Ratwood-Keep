@@ -41,3 +41,18 @@
 		return
 	var/chosen_target = pick(Targets)//Pick the remaining targets (if any) at random
 	return chosen_target
+
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Life()
+	. = ..()
+	timeleft--
+	if(!timeleft || stat == DEAD)
+		src.dissapear()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/DeadLife()
+	. = ..()
+	src.dissapear()
+
+/mob/living/proc/dissapear()
+	death(TRUE)
+	spill_embedded_objects()
+	qdel(src)
