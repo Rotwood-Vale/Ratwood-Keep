@@ -211,7 +211,7 @@
 	
 	var/probby =  clamp((((4 + (((user.STASTR - STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)
 
-	if(!prob(probby) && !instant && !stat)
+	if(prob(probby) && !instant && !stat && cmode) //slopcode
 		visible_message(span_warning("[user] struggles with [src]!"),
 						span_warning("[user] struggles to restrain me!"), span_hear("I hear aggressive shuffling!"), null, user)
 		if(src.client?.prefs.showrolls)
