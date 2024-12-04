@@ -204,6 +204,8 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/attack(mob/living/carbon/human/M, mob/user)
 	if(M == user)
 		return ..() //Eat it
+	if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		return ..() //Make THEM eat it.
 	if(!M.get_bleed_rate())
 		to_chat(user, span_warning("There is no blood to wick into the flower bud."))
 		return
@@ -237,7 +239,7 @@
 	tastes = list("tastes like a burning coal and fire and blood" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
-	rotprocess = 15 SECONDS
+	rotprocess = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/bloodied/become_rotten()
 	visible_message(span_danger("[src] burns into ash!"))
