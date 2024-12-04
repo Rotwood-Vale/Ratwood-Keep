@@ -207,9 +207,13 @@
 			return FALSE
 	
 	if(isseelie(src))
-		if(user.pulling == src)
-			if(user.grab_state == GRAB_AGGRESSIVE)
-				src.gib()
+		if(user.patron.type == /datum/patron/inhumen/graggar)
+			if(user.pulling == src)
+				if(user.grab_state == GRAB_AGGRESSIVE)
+					visible_message(span_danger("[user] is putting [src] in their mouth!"), \
+									span_userdanger("[user] is putting me in their mouth!"))
+					if(do_after(user, 5 SECONDS, target = src))
+						src.gib()
 
 	var/obj/item/bodypart/affecting = get_bodypart(check_zone(def_zone))
 	if(!affecting)
