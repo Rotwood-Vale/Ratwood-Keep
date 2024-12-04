@@ -184,7 +184,7 @@
 // internal slimy button in case the loop stops playing but the player wants to hear it
 /mob/living/verb/preyloop_refresh()
 	set name = "Internal loop refresh"
-	set category = "Accursed"
+	set category = "Options"
 	src.stop_sound_channel(CHANNEL_PREYLOOP) // sanity just in case
 	if(isbelly(loc))
 		var/sound/preyloop = sound('modular_causticcove/sound/vore/prey/loop.ogg')
