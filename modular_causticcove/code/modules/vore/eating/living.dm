@@ -277,7 +277,7 @@
 //
 /mob/living/verb/lick()
 	set name = "Lick Someone"
-	set category = "Accursed"
+	set category = "Emotes"
 	set desc = "Lick someone nearby!"
 
 	if(incapacitated(ignore_restraints = TRUE))
