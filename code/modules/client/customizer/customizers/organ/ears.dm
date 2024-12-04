@@ -179,3 +179,18 @@
 		/datum/sprite_accessory/ears/big/acrador_long,
 		/datum/sprite_accessory/ears/big/acrador_short,
 		)
+
+/datum/customizer/organ/ears/lizard
+	name = "Hood"
+	customizer_choices = list(/datum/customizer_choice/organ/ears/lizard)
+	allows_disabling = TRUE
+	default_disabled = TRUE
+
+/datum/customizer_choice/organ/ears/lizard
+	name = "Sissean Hood"
+	organ_type = /obj/item/organ/ears/anthro
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/cobrahood,
+		/datum/sprite_accessory/ears/cobrahoodears,
+		)
