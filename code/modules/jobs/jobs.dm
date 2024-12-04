@@ -100,11 +100,12 @@ GLOBAL_LIST_INIT(church_positions, list(
 
 GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Merchant",
-	"Barkeep",
 	"Archivist",
+	"Barkeep",
 	"Guild Smith",
 	"Seamster",
 	"Alchemist",
+	"Architect",
 	"Artificer",
 	"Scribe",
 	"Village Elder",

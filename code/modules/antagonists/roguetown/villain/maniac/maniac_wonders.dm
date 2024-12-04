@@ -15,7 +15,7 @@
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/structure/wonder/first
-	name = "first wonder"
+	name = "first wonder (2 bodyparts, 1 stomach)"
 	result = /obj/structure/wonder
 	reqs = list(
 		/obj/item/bodypart = 2,
@@ -23,7 +23,7 @@
 	)
 
 /datum/crafting_recipe/roguetown/structure/wonder/second
-	name = "second wonder"
+	name = "second wonder (2 bodyparts, 2 lungs)"
 	result = /obj/structure/wonder
 	reqs = list(
 		/obj/item/bodypart = 2,
@@ -31,7 +31,7 @@
 	)
 
 /datum/crafting_recipe/roguetown/structure/wonder/third
-	name = "third wonder"
+	name = "third wonder (2 bodyparts, 3 heads, 2 stomachs)"
 	result = /obj/structure/wonder
 	reqs = list(
 		/obj/item/bodypart/head = 3,
@@ -40,7 +40,7 @@
 	)
 
 /datum/crafting_recipe/roguetown/structure/wonder/fourth
-	name = "fourth wonder"
+	name = "fourth wonder (4 tongues, 3 eyes, 4 livers)"
 	result = /obj/structure/wonder
 	reqs = list(
 		/obj/item/organ/tongue = 4,
@@ -158,7 +158,8 @@
 	if(H && !QDELETED(dream_master))
 		if(!length(H.maniacs))
 			V.add_stress(/datum/stressevent/saw_wonder)
-			V.add_client_colour(/datum/client_colour/maniac_marked)
+			V.add_curse(/datum/curse/zizo, TRUE)
+		//	V.add_client_colour(/datum/client_colour/maniac_marked) //Hurt peoples's eyes, we instead give them zizo's curse which make them experience the maniac's hallucinations, how cool.
 		if(!(dream_master in H.maniacs))
 			var/inscryption = "[key_text] - [key_num]"
 			LAZYSET(H.inscryptions, dream_master, inscryption)

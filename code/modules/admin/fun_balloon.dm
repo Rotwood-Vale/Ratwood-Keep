@@ -154,8 +154,3 @@
 /obj/effect/forcefield/arena_shuttle_entrance/proc/do_bloodbath(mob/living/L)
 	var/obj/effect/mine/pickup/bloodbath/B = new (L)
 	B.mineEffect(L)
-
-/area/shuttle_arena
-	name = "arena"
-	has_gravity = STANDARD_GRAVITY
-	requires_power = FALSE

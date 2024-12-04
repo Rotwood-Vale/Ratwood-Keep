@@ -79,6 +79,8 @@
 		return TRUE
 	var/list/worn_items = get_all_worn_items(human)
 	for(var/obj/item/item as anything in worn_items)
+		if(item.worn_in == SLOT_BELT_L || item.worn_in == SLOT_BELT_R)
+			continue
 		if(item.flags_inv & flags_inv)
 			return FALSE
 	return TRUE
@@ -90,5 +92,6 @@
 		var/obj/item/item = human.get_item_by_slot(slot)
 		if(!item)
 			continue
+		item.worn_in = slot 
 		worn_items += item
 	return worn_items
