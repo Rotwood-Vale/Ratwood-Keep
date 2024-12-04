@@ -187,7 +187,7 @@
 	set category = "Options"
 	src.stop_sound_channel(CHANNEL_PREYLOOP) // sanity just in case
 	if(isbelly(loc))
-		var/sound/preyloop = sound('modular_causticcove/sound/vore/prey/loop.ogg')
+		var/sound/preyloop = sound('modular/vore/sound/vore/prey/loop.ogg')
 		SEND_SOUND(src, preyloop)
 	else
 		to_chat(src, "<span class='alert'>You aren't inside anything, you clod.</span>")
