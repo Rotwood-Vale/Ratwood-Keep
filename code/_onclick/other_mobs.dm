@@ -205,6 +205,11 @@
 	if(user.pulling != src)
 		if(!lying_attack_check(user))
 			return FALSE
+	
+	if(isseelie(src))
+		if(user.pulling == src)
+			if(user.grab_state == GRAB_AGGRESSIVE)
+				src.gib()
 
 	var/obj/item/bodypart/affecting = get_bodypart(check_zone(def_zone))
 	if(!affecting)
