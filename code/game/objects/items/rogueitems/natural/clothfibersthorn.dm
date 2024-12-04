@@ -2,7 +2,7 @@
 	name = "fibers"
 	icon_state = "fibers"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Plant fibers. The peasants make their living making these into clothing."
+	desc = "Plant fibers. Peasants make their living turning these into clothing."
 	force = 0
 	throwforce = 0
 	obj_flags = null
@@ -44,7 +44,7 @@
 	name = "silk"
 	icon_state = "fibers"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Silken strands. Their usage in clothing is exotic in all places save the underdark"
+	desc = "Strands of spider silk. Clothing made with this is considered exotic in all places but the Underdark."
 	force = 0
 	throwforce = 0
 	obj_flags = null
@@ -97,7 +97,7 @@
 	name = "cloth"
 	icon_state = "cloth"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "This piece of fabric is ready to be worked, or used."
+	desc = "A bolt of woven fibers. Useful as bandages and in dozens upon dozens of crafts."
 	force = 0
 	throwforce = 0
 	obj_flags = null
@@ -227,7 +227,7 @@
 /obj/item/natural/thorn
 	name = "thorn"
 	icon_state = "thorn"
-	desc = "This bog-grown thorn is sharp and resistant like a needle."
+	desc = "The sharp and pointy growth of many a bush. It's somewhat shaped like a needle."
 	force = 10
 	throwforce = 0
 	possible_item_intents = list(/datum/intent/stab)
@@ -259,7 +259,7 @@
 	name = "fiber bundle"
 	icon_state = "fibersroll1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Fibers, bundled together."
+	desc = "Numerous plant fibers are bundled together in a tight coil."
 	force = 0
 	throwforce = 0
 	maxamount = 6
@@ -285,7 +285,7 @@
 	name = "silken weave"
 	icon_state = "fibersroll1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Silk neatly woven together."
+	desc = "Multiple lengths of spider silk have been tied neatly together into a tight coil."
 	force = 0
 	throwforce = 0
 	maxamount = 6
@@ -306,7 +306,7 @@
 	name = "bundle of cloth"
 	icon_state = "clothroll1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "A cloth roll of several pieces of fabric."
+	desc = "Multiple bolts of fabric have been rolled up together for easier transport."
 	force = 0
 	throwforce = 0
 	maxamount = 10
@@ -326,7 +326,7 @@
 	name = "bundle of sticks"
 	icon_state = "stickbundle1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "Stick alone.. Weak. Stick together.. Strong."
+	desc = "Stick alone: Weak. Stick together: Strong."
 	maxamount = 10
 	force = 0
 	throwforce = 0
@@ -343,11 +343,45 @@
 	icon2step = 7
 	icon3 = "stickbundle3"
 
+/obj/item/natural/bundle/stick/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	user.changeNext_move(CLICK_CD_MELEE)
+	if(user.used_intent?.blade_class == BCLASS_CUT)
+		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
+		user.visible_message(span_info("[user] starts sharpening the sticks in [src]..."), span_info("I start sharpening the sticks in [src]...."))
+		for(var/i in 1 to (amount - 1))
+			if(!do_after(user, 20))
+				break
+			var/turf/T = get_turf(user.loc)
+			var/obj/item/grown/log/tree/stake/S = new /obj/item/grown/log/tree/stake(T)
+			amount--
+			// If there's only one stick left in the bundle...
+			if (amount == 1)
+				// Replace the bundle with a single stick
+				var/obj/item/ST = new stacktype(T)
+				if(user.is_holding(src))
+					user.doUnEquip(src, TRUE, T, silent = TRUE)
+				qdel(src)
+				var/holding = user.put_in_hands(ST)
+				// And automatically have us try and carve the last new stick, assuming we're still holding it!
+				if(!do_after(user, 20))
+					break
+				S = new /obj/item/grown/log/tree/stake(T)
+				if(holding)
+					user.doUnEquip(ST, TRUE, T, silent = TRUE)
+				qdel(ST)
+			else
+				update_bundle()
+			user.put_in_hands(S)
+			S.pixel_x = rand(-3, 3)
+			S.pixel_y = rand(-3, 3)
+		return
+
 /obj/item/natural/bundle/bone
 	name = "stack of bones"
 	icon_state = "bonestack1"
 	possible_item_intents = list(/datum/intent/use)
-	desc = "bones, stacked together."
+	desc = "These remains of the dead have been bundled together."
 	force = 0
 	throwforce = 0
 	maxamount = 6
@@ -390,7 +424,7 @@
 
 /obj/item/natural/bowstring
 	name = "fibre bowstring"
-	desc = "A simple cord of bowstring."
+	desc = "A tough and durable length of woven plant fiber, prepared to launch many an arrow."
 	icon_state = "fibers"
 	possible_item_intents = list(/datum/intent/use)
 	force = 0
@@ -407,7 +441,7 @@
 
 /obj/item/natural/bundle/worms
 	name = "worms"
-	desc = "Multiple wriggly worms."
+	desc = "Multiple tiny creatures of the earth squirm and writhe together in a small pile."
 	color = "#964B00"
 	maxamount = 12
 	icon_state = "worm2"

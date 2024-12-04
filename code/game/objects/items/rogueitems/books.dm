@@ -226,7 +226,7 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = "The Tome of laws as passed by the Holy See to its many Ten-worshipping communities."
+	desc = "The Tome of Laws, as passed from the Holy See to its many Ten-worshipping communities."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
 	bookfile = "law_2.json"
@@ -422,7 +422,7 @@
 	"Brown with embossed gold" = "book1",
 	"Brown without embossed material" = "basic_book")
 	name = "unknown title"
-	desc = "by an unknown author"
+	desc = "Penned by an unknown author."
 	icon_state = "basic_book_0"
 	base_icon_state = "basic_book"
 	override_find_book = TRUE
@@ -473,7 +473,7 @@
 
 /obj/item/manuscript
 	name = "2 page manuscript"
-	desc = "A 2 page written piece, with aspirations of becoming a book."
+	desc = "A 2 page written piece aspiring to one dae become a book."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "manuscript"
 	dir = 2
@@ -505,7 +505,7 @@
 
 	++number_of_pages
 	name = "[number_of_pages] page manuscript"
-	desc = "A [number_of_pages] page written piece, with aspirations of becoming a book."
+	desc = "A [number_of_pages] page written piece aspiring to one dae become a book."
 	page_texts += P.info
 	compiled_pages += "<p>[P.info]</p>"
 	qdel(P)
@@ -608,13 +608,13 @@
 		else
 			update_icon()
 			name = "[number_of_pages] page manuscript"
-			desc = "A [number_of_pages] page written piece, with aspirations of becoming a book."
+			desc = "A [number_of_pages] page written piece aspiring to one dae become a book."
 			return
 
 	. = ..()
 
 /obj/item/book_crafting_kit
 	name = "book crafting kit"
-	desc = "Apply on a written manuscript to create a book"
+	desc = "Apply on a written manuscript to create a book."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "book_crafting_kit"

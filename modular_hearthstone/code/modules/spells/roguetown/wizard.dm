@@ -222,7 +222,8 @@
 		/obj/effect/proc_holder/spell/invoked/fortitude,
 		/obj/effect/proc_holder/spell/invoked/snap_freeze,
 		/obj/effect/proc_holder/spell/invoked/projectile/frostbolt,
-		/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt
+		/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt,
+		/obj/effect/proc_holder/spell/invoked/gravity
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
@@ -837,7 +838,7 @@
 /datum/status_effect/buff/acidsplash5e
 	id = "acid splash"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/acidsplash5e
-	duration = 10 SECONDS
+	duration = 20 SECONDS
 
 /datum/status_effect/buff/acidsplash5e/on_apply()
 	. = ..()
@@ -847,7 +848,7 @@
 
 /datum/status_effect/buff/acidsplash5e/tick()
 	var/mob/living/target = owner
-	target.adjustFireLoss(2)
+	target.adjustFireLoss(3)
 
 /atom/movable/screen/alert/status_effect/buff/acidsplash5e
 	name = "Acid Burn"
@@ -992,12 +993,14 @@
 
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/snap_freeze
+/obj/effect/proc_holder/spell/invoked/snap_freeze // to do: get scroll icon
 	name = "Snap Freeze"
 	desc = "Freeze the air in a small area in an instant, slowing and mildly damaging those affected."
 	cost = 2
 	xp_gain = TRUE
 	releasedrain = 30
+	overlay = 'icons/effects/effects.dmi'
+	overlay_state = "shieldsparkles"
 	chargedrain = 1
 	chargetime = 15
 	charge_max = 13 SECONDS
@@ -1008,8 +1011,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	var/delay = 6
-	var/damage = 40 // less then fireball, more then lighting bolt
-	var/area_of_effect = 1
+	var/damage = 50 // less then fireball, more then lighting bolt
+	var/area_of_effect = 2
 
 /obj/effect/temp_visual/trapice
 	icon = 'icons/effects/effects.dmi'
@@ -1044,6 +1047,10 @@
 	for(var/turf/affected_turf in view(area_of_effect, T))
 		new /obj/effect/temp_visual/snap_freeze(affected_turf)
 		for(var/mob/living/L in affected_turf.contents)
+			if(L.anti_magic_check())
+				visible_message(span_warning("The ice fades away around you. [L] "))  //antimagic needs some testing
+				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+				return 
 			play_cleave = TRUE
 			L.adjustFireLoss(damage)
 			L.apply_status_effect(/datum/status_effect/buff/frostbite5e/)
@@ -1056,7 +1063,7 @@
 	return TRUE
 
 
-/obj/effect/proc_holder/spell/invoked/projectile/frostbolt
+/obj/effect/proc_holder/spell/invoked/projectile/frostbolt // to do: get scroll icon
 	name = "Frost Bolt"
 	desc = "A ray of frozen energy, slowing the first thing it touches and lightly damaging it."
 	range = 8
@@ -1090,7 +1097,7 @@
 /obj/projectile/magic/frostbolt
 	name = "Frost Dart"
 	icon_state = "ice_2"
-	damage = 15
+	damage = 25
 	damage_type = BURN
 	flag = "magic"
 	range = 10
@@ -1159,6 +1166,66 @@
 		playsound(get_turf(target), 'sound/combat/hits/blunt/shovel_hit2.ogg', 100) //CLANG
 	else
 		return
+
+/obj/effect/proc_holder/spell/invoked/gravity // to do: get scroll icon
+	name = "Gravity"
+	desc = "Weighten space around someone, crushing them and knocking them to the floor. Stronger opponets will resist and be off-balanced."
+	cost = 1
+	xp_gain = TRUE
+	releasedrain = 20
+	chargedrain = 1
+	chargetime = 7
+	charge_max = 15 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	var/delay = 3
+	var/damage = 0 // damage based off your str 
+	var/area_of_effect = 0
+
+
+
+/obj/effect/proc_holder/spell/invoked/gravity/cast(list/targets, mob/user)
+	var/turf/T = get_turf(targets[1])
+
+	for(var/turf/affected_turf in view(area_of_effect, T))
+		if(affected_turf.density)
+			continue
+			
+
+	for(var/turf/affected_turf in view(area_of_effect, T))
+		new /obj/effect/temp_visual/gravity(affected_turf)
+		playsound(T, 'sound/magic/gravity.ogg', 80, TRUE, soundping = FALSE)
+		for(var/mob/living/L in affected_turf.contents) 
+			if(L.anti_magic_check())
+				visible_message(span_warning("The gravity fades away around you [L] "))  //antimagic needs some testing
+				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+				return 
+
+			if(L.STASTR <= 13)
+				L.adjustBruteLoss(30)
+				L.Knockdown(5)
+				to_chat(L, "<span class='userdanger'>You're magically weighed down, losing your footing!</span>")
+			else
+				L.OffBalance(10)
+				L.adjustBruteLoss(15)
+				to_chat(L, "<span class='userdanger'>You're magically weighed down, and your strength resist!</span>")
+			
+			
+
+/obj/effect/temp_visual/gravity
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "hierophant_squares"
+	name = "gravity magic"
+	desc = "Get out of the way!"
+	randomdir = FALSE
+	duration = 3 SECONDS
+	layer = MASSIVE_OBJ_LAYER
+	light_range = 2
+	light_color = COLOR_PALE_PURPLE_GRAY
 
 
 #undef PRESTI_CLEAN

@@ -95,6 +95,13 @@
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/goden
 
+/datum/anvil_recipe/weapons/iron/tossblade
+	name = "Iron Tossblades (four)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/huntingknife/throwingknife
+	craftdiff = 0
+	createditem_num = 4
+
 /// STEEL WEAPONS
 
 /datum/anvil_recipe/weapons/steel/dagger
@@ -249,6 +256,12 @@
 	created_item = /obj/item/rogueweapon/mace/goden/steel
 	craftdiff = 3
 
+/datum/anvil_recipe/weapons/steel/tossblade
+	name = "Steel Tossblades (four)"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/throwingknife/steel
+	craftdiff = 0
+	createditem_num = 4
 
 /// UPGRADED WEAPONS
 
@@ -310,7 +323,7 @@
 	craftdiff = 3
 
 /datum/anvil_recipe/weapons/silver/dagger
-	name = "Dagger"
+	name = "Silver Dagger"
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver
 	craftdiff = 2
@@ -335,6 +348,13 @@
 	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/mace/silver
 	craftdiff = 3
+
+/datum/anvil_recipe/weapons/silver/tossblade
+	name = "Silver Tossblades (four)"
+	req_bar = /obj/item/ingot/silver
+	created_item = /obj/item/rogueweapon/huntingknife/throwingknife/psydon
+	craftdiff = 3
+	createditem_num = 4
 
 // ------ BRONZE ------
 
@@ -388,7 +408,7 @@
 	createditem_num = 5
 	i_type = "Ammo"
 
-/// BOWS
+/// RANGED
 /datum/anvil_recipe/weapons/iron/arrows
 	name = "Arrows 5x (+1 Stick)"
 	req_bar = /obj/item/ingot/iron

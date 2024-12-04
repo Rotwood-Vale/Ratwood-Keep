@@ -23,6 +23,42 @@
 	if(locate(/obj/machinery/anvil) in attacked_object.loc)
 		repair_percent *= 2 // Double the repair amount if we're using an anvil
 	var/exp_gained = 0
+
+	if(isbodypart(attacked_object) && !user.cmode)
+		var/obj/item/bodypart/attacked_prosthetic = attacked_object
+		if(!attacked_prosthetic.anvilrepair) //No hammering flesh limbs
+			return
+		if(attacked_prosthetic.obj_integrity >= attacked_prosthetic.max_integrity && attacked_prosthetic.brute_dam == 0 && attacked_prosthetic.burn_dam == 0 && attacked_prosthetic.wounds == null && attacked_prosthetic.disabled == BODYPART_NOT_DISABLED) //A mouthful
+			to_chat(user, span_warning("There is nothing to further repair on [attacked_prosthetic]."))
+			return
+		if(blacksmith_mind.get_skill_level(attacked_prosthetic.anvilrepair) <= 0)
+			if(prob(30))
+				repair_percent = 0.01
+			else
+				repair_percent = 0
+		else
+			repair_percent *= blacksmith_mind.get_skill_level(attacked_prosthetic.anvilrepair)
+		playsound(src,'sound/items/bsmith3.ogg', 100, FALSE)
+		if(repair_percent)
+			repair_percent *= attacked_prosthetic.max_integrity
+			exp_gained = min(attacked_prosthetic.obj_integrity + repair_percent, attacked_prosthetic.max_integrity) - attacked_prosthetic.obj_integrity
+			attacked_prosthetic.obj_integrity = min(attacked_prosthetic.obj_integrity + repair_percent, attacked_prosthetic.max_integrity)
+			attacked_prosthetic.brute_dam = max(attacked_prosthetic.brute_dam - 10, 0)
+			attacked_prosthetic.burn_dam = max(attacked_prosthetic.burn_dam - 10, 0)
+			attacked_prosthetic.wounds = null //Fixing fractures
+			attacked_prosthetic.disabled = BODYPART_NOT_DISABLED
+			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
+				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_prosthetic]."))
+			else
+				user.visible_message(span_info("[user] repairs [attacked_prosthetic]!"))
+			blacksmith_mind.add_sleep_experience(attacked_prosthetic.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
+			if(do_after(user, CLICK_CD_MELEE, target = attacked_object))
+				attack_obj(attacked_object, user)
+			return
+		else
+			user.visible_message(span_warning("[user] fumbles trying to repair [attacked_prosthetic]!"))
+			return
+
 	if(isitem(attacked_object) && !user.cmode)
 		var/obj/item/attacked_item = attacked_object
 		if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))

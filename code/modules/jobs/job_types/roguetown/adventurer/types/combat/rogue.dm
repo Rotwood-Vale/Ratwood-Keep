@@ -60,7 +60,9 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
-	backpack_contents = list(/obj/item/lockpickring/mundane)
+	backpack_contents = list(
+						/obj/item/lockpickring/mundane,
+						/obj/item/flashlight/flare/torch = 1,)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
@@ -98,7 +100,7 @@
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	belt = /obj/item/storage/belt/rogue/leather/knifebelt
+	belt = /obj/item/storage/belt/rogue/leather/knifebelt/iron
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -113,7 +115,11 @@
 	H.change_stat("intelligence", 2)
 	H.cmode_music = 'sound/music/combat_rogue.ogg'
 	to_chat(H, span_info("I honed my skills as a rogue through the years, and was skilled enough to become an assassin. Now it depends to me how I use my abilities."))
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/lockpickring/mundane)
+	backpack_contents = list(
+						/obj/item/rogueweapon/huntingknife/idagger/steel,
+						/obj/item/lockpickring/mundane,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 
 /datum/outfit/job/roguetown/adventurer/rogue/proc/duelistarch(mob/living/carbon/human/H)
 	//less of other skills, more sword and knife combat skills.
@@ -149,7 +155,10 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/rogueweapon/sword/rapier
 	beltr = /obj/item/rogueweapon/shield/buckler
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
+	backpack_contents = list(
+						/obj/item/rogueweapon/huntingknife/idagger/steel/parrying,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
 	H.change_stat("strength", 1)

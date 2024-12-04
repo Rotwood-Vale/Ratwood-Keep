@@ -66,13 +66,13 @@
 					user.put_in_hands(H)
 					qdel(B)
 			else
-				to_chat(user, "You add the [W] to the [src].")
+				to_chat(user, "I add the [W] to the [src].")
 				src.amount += B.amount
 				update_bundle()
 				qdel(B)
 	else if(istype(W, stacktype))
 		if(src.amount < src.maxamount)
-			to_chat(user, "You add the [W] to the [src].")
+			to_chat(user, "I add the [W] to the [src].")
 			src.amount++
 			qdel(W)
 		else
@@ -108,8 +108,31 @@
 			amount -= 1
 			var/obj/F = new stacktype(src.loc)
 			H.put_in_hands(F)
-			user.visible_message("[user] removes [F] from [src]")
+			user.visible_message("[user] removes [F] from [src].", "I remove [F] from [src].")
 	update_bundle()
+
+/obj/item/natural/bundle/attack_turf(turf/T, mob/living/user)
+	var/list/obj/item/stackables = list()
+	for(var/obj/I in T.contents)
+		if(I.type == stacktype)
+			stackables += I
+	if(stackables.len)
+		if(amount >= maxamount)
+			to_chat(user, span_info("[src] can't hold any more without falling apart."))
+			return
+		to_chat(user, span_info("I begin filling [src]..."))
+		for(var/obj/I in stackables)
+			if(amount >= maxamount)
+				break
+			if(I.type == stacktype)
+				if(!do_after(user, 5, TRUE, src))
+					break
+				if(!(I in T.contents))
+					continue
+				qdel(I)
+				src.amount++
+				update_bundle()
+
 
 /obj/item/natural/bundle/examine(mob/user)
 	. = ..()

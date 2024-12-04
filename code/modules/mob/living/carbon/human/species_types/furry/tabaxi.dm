@@ -7,13 +7,14 @@
 
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	desc = "<b>Tabaxi</b><br>\
-		Tabaxi are taller than most humans at six to seven feet.\
-		Their bodies are slender and covered in spotted or striped fur.\
-		Like most felines, Tabaxi have long tails and retractable claws.\
-		Tabaxi fur color ranges from light yellow to brownish red.\
-		Tabaxi eyes are slit-pupilled and usually green or yellow.\
-		Tabaxi are competent swimmers and climbers as well as speedy runners.\
-		They have a good sense of balance and an acute sense of smell."
+		Tabaxi are taller than most humans at six to seven feet. \
+		Their bodies are slender and covered in spotted or striped fur. \
+		Like most felines, Tabaxi have long tails and retractable claws. \
+		Tabaxi fur color ranges from light yellow to brownish red. \
+		Tabaxi eyes are slit-pupilled and usually green or yellow. \
+		Tabaxi are competent swimmers and climbers as well as speedy runners. \
+		They have a good sense of balance and an acute sense of smell.<br>\
+		(+1 Speed, -1 Intelligence)"
 	skin_tone_wording = "Fur Colors"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE, MUTCOLORS)
 	possible_ages = ALL_AGES_LIST

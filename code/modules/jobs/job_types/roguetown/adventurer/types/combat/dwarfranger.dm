@@ -23,7 +23,10 @@
 	beltl = /obj/item/quiver/bolts
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
+	backpack_contents = list(
+						/obj/item/rogueweapon/huntingknife = 1,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	if(prob(23))
 		shoes = /obj/item/clothing/shoes/roguetown/boots
 	if(prob(23))

@@ -69,3 +69,6 @@
 	name = "beartrap"
 	probby = 50
 	spawned = list(/obj/item/restraints/legcuffs/beartrap/armed/camouflage)
+
+/obj/effect/spawner/lootdrop/roguetown
+	fan_out_items = TRUE
