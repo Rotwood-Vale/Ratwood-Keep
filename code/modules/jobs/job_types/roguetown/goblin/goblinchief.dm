@@ -7,7 +7,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/goblinp, /datum/species/halforc)
+	allowed_races = list(/datum/species/goblinp, /datum/species/halforc, /datum/species/elf/dark)
 	tutorial = "You're the Chief of the local Goblin tribe, assuring Graggar's rule is spread to the surrounding lands. \
 	Currently, you're in hiding, beneath the town and, thankfully, bypassing the Mire's gate. \
 	Have your subjects trudge through the sewers, in the name of Gragger, robbing passerby."
