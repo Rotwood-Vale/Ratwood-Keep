@@ -20,8 +20,8 @@
 	var/human_prey_swallow_time = 100		// Time in deciseconds to swallow /mob/living/carbon/human
 	var/nonhuman_prey_swallow_time = 30		// Time in deciseconds to swallow anything else
 	var/emote_time = 60 SECONDS				// How long between stomach emotes at prey
-	var/digest_brute = 2					// Brute damage per tick in digestion mode
-	var/digest_burn = 2						// Burn damage per tick in digestion mode
+	var/digest_brute = 3					// Brute damage per tick in digestion mode
+	var/digest_burn = 3						// Burn damage per tick in digestion mode
 	var/immutable = FALSE					// Prevents this belly from being deleted
 	var/escapable = TRUE					// Belly can be resisted out of at any time
 	var/escapetime = 20 SECONDS				// Deciseconds, how long to escape this belly
@@ -540,18 +540,12 @@
 				to_chat(owner,"<span class='notice'>The attempt to escape from your [lowertext(name)] has failed!</span>")
 				return
 
-	var/struggle_outer_message = pick(struggle_messages_outside)
 	var/struggle_user_message = pick(struggle_messages_inside)
-
-	struggle_outer_message = replacetext(struggle_outer_message,"%pred",owner)
-	struggle_outer_message = replacetext(struggle_outer_message,"%prey",R)
-	struggle_outer_message = replacetext(struggle_outer_message,"%belly",lowertext(name))
 
 	struggle_user_message = replacetext(struggle_user_message,"%pred",owner)
 	struggle_user_message = replacetext(struggle_user_message,"%prey",R)
 	struggle_user_message = replacetext(struggle_user_message,"%belly",lowertext(name))
 
-	struggle_outer_message = "<span class='alert'>" + struggle_outer_message + "</span>"
 	struggle_user_message = "<span class='alert'>" + struggle_user_message + "</span>"
 
 	var/sound/pred_struggle_snuggle = sound(get_sfx("struggle_sound"))
@@ -575,10 +569,6 @@
 		for(var/mob/living/H in hearing_mobs)
 			if(H && H.client)
 				H.playsound_local(owner.loc, struggle_rustle, vol = 75, vary = 1, falloff = VORE_SOUND_FALLOFF)
-
-	for(var/mob/living/H in hearing_mobs)
-		if(H && H.client && (isturf(H.loc)))
-			H.show_message(struggle_outer_message, MSG_VISUAL) // visible
 
 	to_chat(R,struggle_user_message)
 

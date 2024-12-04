@@ -112,6 +112,7 @@
 				// Deal digestion damage (and feed the pred)
 				if(!(M.status_flags & GODMODE))
 					M.adjustFireLoss(digest_burn)
+					M.adjustBruteLoss(digest_brute)
 					owner.adjust_nutrition(1)
 
 			//Contaminate or gurgle items
@@ -183,6 +184,7 @@
 				// Deal digestion damage (and feed the pred)
 				if(!(M.status_flags & GODMODE))
 					M.adjustFireLoss(digest_burn)
+					M.adjustBruteLoss(digest_brute)
 					M.adjustToxLoss(2) // something something plasma based acids
 					M.adjustCloneLoss(1) // eventually this'll kill you if you're healing everything else, you nerds.
 				//Contaminate or gurgle items

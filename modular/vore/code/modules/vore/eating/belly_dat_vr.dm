@@ -18,8 +18,8 @@
 	var/human_prey_swallow_time = 10 SECONDS		// Time in deciseconds to swallow /mob/living/carbon/human
 	var/nonhuman_prey_swallow_time = 5 SECONDS		// Time in deciseconds to swallow anything else
 	var/emoteTime = 30 SECONDS				// How long between stomach emotes at prey
-	var/digest_brute = 0					// Brute damage per tick in digestion mode
-	var/digest_burn = 1						// Burn damage per tick in digestion mode
+	var/digest_brute = 3					// Brute damage per tick in digestion mode
+	var/digest_burn = 3						// Burn damage per tick in digestion mode
 	var/digest_tickrate = 9					// Modulus this of air controller tick number to iterate gurgles on
 	var/immutable = FALSE					// Prevents this belly from being deleted
 	var/escapable = FALSE					// Belly can be resisted out of at any time
