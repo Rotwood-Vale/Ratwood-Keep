@@ -204,6 +204,8 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/attack(mob/living/carbon/human/M, mob/user)
 	if(M == user)
 		return ..() //Eat it
+	if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		return ..() //Make THEM eat it.
 	if(!M.get_bleed_rate())
 		to_chat(user, span_warning("There is no blood to wick into the flower bud."))
 		return

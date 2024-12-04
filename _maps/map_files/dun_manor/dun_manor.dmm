@@ -5942,7 +5942,6 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/scomstone,
 /obj/item/rogueweapon/whip/antique,
-/obj/item/quicksilver,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/town/basement)
 "ftb" = (
@@ -21650,6 +21649,9 @@
 	dir = 8;
 	icon_state = "largetable"
 	},
+/obj/item/paper/inquisition_poultice_info,
+/obj/item/quicksilver,
+/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church)
 "tGy" = (
