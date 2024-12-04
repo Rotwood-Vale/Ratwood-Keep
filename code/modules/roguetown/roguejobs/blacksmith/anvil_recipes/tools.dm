@@ -23,7 +23,7 @@
 /datum/anvil_recipe/general/iron/keyring
 	name = "Keyrings 3x"
 	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/keyring, /obj/item/keyring, /obj/item/keyring)
+	created_item = list(/obj/item/storage/keyring, /obj/item/storage/keyring, /obj/item/storage/keyring)
 
 /datum/anvil_recipe/general/iron/sewingneedle
 	name = "Sewing Needles 5x"
@@ -108,7 +108,7 @@
 	craftdiff = 1
 
 /datum/anvil_recipe/tools/iron/bowl
-	name = "Iron Bowl"
+	name = "Iron Bowl x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/reagent_containers/glass/bowl/iron,
 						/obj/item/reagent_containers/glass/bowl/iron,
@@ -116,6 +116,16 @@
 					)
 
 	craftdiff = 1
+
+/datum/anvil_recipe/general/iron/ramrod
+	name = "Replacement Ramrods x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/ramrod,
+						/obj/item/ramrod,
+						/obj/item/ramrod
+					)
+
+	craftdiff = 0
 
 // --------- Steel -----------
 

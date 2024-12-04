@@ -54,6 +54,7 @@
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
 #define TRAIT_CHOSEN "Astrata's Chosen"
 #define TRAIT_NOCTURNAL "Noc's Moonlight" //Grants weak darkvision- lighting alpha 145, amplified for mages using the DV spell- alpha 200
+#define TRAIT_FORGEBLESSED "Malum's Devout" //Reduces the fatigue cost of smithing a bit.
 
 #define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
 #define TRAIT_BASHDOORS "bashdoors"
@@ -398,7 +399,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define ABDUCTOR_ANTAGONIST "abductor-antagonist"
 #define NUKEOP_TRAIT "nuke-op"
 #define DEATHSQUAD_TRAIT "deathsquad"
-#define MEGAFAUNA_TRAIT "megafauna"
 #define CLOWN_NUKE_TRAIT "clown-nuke"
 #define STICKY_MOUSTACHE_TRAIT "sticky-moustache"
 #define CHAINSAW_FRENZY_TRAIT "chainsaw-frenzy"

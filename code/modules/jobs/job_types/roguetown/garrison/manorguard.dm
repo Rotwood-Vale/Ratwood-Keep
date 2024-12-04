@@ -45,7 +45,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-	beltl = /obj/item/keyring/man_at_arms
+	beltl = /obj/item/storage/keyring/man_at_arms
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)

@@ -64,6 +64,7 @@
 	var/obj/item/repair_cost_first = null
 	var/obj/item/repair_cost_second = null	
 	var/repair_skill = null
+	var/mob/last_bumper = null
 
 /obj/structure/mineral_door/proc/try_award_resident_key(mob/user)
 	if(!grant_resident_key)
@@ -223,6 +224,9 @@
 				user.visible_message(span_warning("[user] smashes through [src]!"))
 			return
 		if(locked)
+			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/storage/keyring))
+				src.attackby(user.get_active_held_item(), user, TRUE)
+				return
 			rattle()
 			return
 		if(TryToSwitchState(AM))
@@ -311,7 +315,7 @@
 		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
 	SEND_SIGNAL(src, COMSIG_DOOR_OPEN, src)
 
-/obj/structure/mineral_door/proc/Close(silent = FALSE)
+/obj/structure/mineral_door/proc/Close(silent = FALSE, autobump = FALSE)
 	if(isSwitchingStates || !door_opened)
 		return
 	var/turf/T = get_turf(src)
@@ -331,6 +335,10 @@
 	update_icon()
 	isSwitchingStates = FALSE
 	SEND_SIGNAL(src, COMSIG_DOOR_CLOSED, src)
+	if(autobump && src.Adjacent(last_bumper))
+		if(istype(last_bumper.get_active_held_item(), /obj/item/key) || istype(last_bumper.get_active_held_item(), /obj/item/storage/keyring))
+			src.attack_right(last_bumper)
+	last_bumper = null
 
 /obj/structure/mineral_door/update_icon()
 	icon_state = "[base_state][door_opened ? "open":""]"
@@ -357,14 +365,19 @@
 	animate(pixel_x = oldx-1, time = 0.5)
 	animate(pixel_x = oldx, time = 0.5)
 
-/obj/structure/mineral_door/attackby(obj/item/I, mob/user)
+/obj/structure/mineral_door/attackby(obj/item/I, mob/user, autobump = FALSE)
 	user.changeNext_move(CLICK_CD_FAST)
-	if(istype(I, /obj/item/key) || istype(I, /obj/item/keyring))
+	if(istype(I, /obj/item/key) || istype(I, /obj/item/storage/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
 			rattle()
 			return
-		trykeylock(I, user)
+		if(autobump == TRUE) //Attackby passes UI coordinate onclick stuff, so forcing check to TRUE
+			trykeylock(I, user, autobump)
+			return
+		else
+			trykeylock(I, user)
+			return
 //	else if(user.used_intent.type != INTENT_HARM)
 //		return attack_hand(user)
 	else
@@ -421,7 +434,7 @@
 /obj/structure/mineral_door/attack_right(mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
-	if(istype(item, /obj/item/key) || istype(item, /obj/item/keyring))
+	if(istype(item, /obj/item/key) || istype(item, /obj/item/storage/keyring))
 		if(locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the left."))
 			rattle()
@@ -430,7 +443,7 @@
 	else
 		return ..()
 
-/obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user)
+/obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user, autobump = FALSE)
 	if(door_opened || isSwitchingStates)
 		return
 	if(!keylock)
@@ -438,28 +451,39 @@
 	if(lockbroken)
 		to_chat(user, span_warning("The lock to this door is broken."))
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(istype(I,/obj/item/keyring))
-		var/obj/item/keyring/R = I
-		if(!R.keys.len)
+	if(istype(I,/obj/item/storage/keyring))
+		var/obj/item/storage/keyring/R = I
+		if(!R.contents.len)
 			return
-		var/list/keysy = shuffle(R.keys.Copy())
+		var/list/keysy = shuffle(R.contents.Copy())
 		for(var/obj/item/key/K in keysy)
 			if(user.cmode)
 				if(!do_after(user, 10, TRUE, src))
 					break
 			if(K.lockhash == lockhash)
 				lock_toggle(user)
-				break
+				if(autobump && !locked)
+					src.Open()
+					addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
+					src.last_bumper = user
+				return
 			else
 				if(user.cmode)
 					rattle()
+		to_chat(user, span_warning("None of the keys on my keyring go to this door."))
+		rattle()
 		return
 	else
 		var/obj/item/key/K = I
 		if(K.lockhash == lockhash)
 			lock_toggle(user)
+			if(autobump)
+				src.Open()
+				addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
+				src.last_bumper = user
 			return
 		else
+			to_chat(user, span_warning("This is not the correct key that goes to this door."))
 			rattle()
 		return
 

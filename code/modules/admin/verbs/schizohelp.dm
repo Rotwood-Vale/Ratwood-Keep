@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	if(length(answers) >= max_answers)
 		qdel(src)
 
-	log_game("([voice.key || "NO KEY"]) answered ([owner.key || "NO KEY"])'s mentorhelp: [answer]")
+	log_game("([voice?.key || "NO KEY"]) answered ([owner?.key || "NO KEY"])'s mentorhelp: [answer]")
 
 /datum/schizohelp/proc/owner_qdeleted(mob/source)
 	if(QDELETED(src))

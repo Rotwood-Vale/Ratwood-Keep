@@ -244,6 +244,25 @@
 /datum/status_effect/pacify/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "status_effect")
 
+/datum/status_effect/eorapacify
+	id = "pacify"
+	status_type = STATUS_EFFECT_REPLACE
+	tick_interval = 1
+	duration = 85
+	alert_type = null
+
+/datum/status_effect/eorapacify/on_creation(mob/living/new_owner, set_duration)
+	if(isnum(set_duration))
+		duration = set_duration
+	. = ..()
+
+/datum/status_effect/eorapacify/on_apply()
+	ADD_TRAIT(owner, TRAIT_PACIFISM, "status_effect")
+	return ..()
+
+/datum/status_effect/eorapacify/on_remove()
+	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "status_effect")
+
 /datum/status_effect/his_wrath //does minor damage over time unless holding His Grace
 	id = "his_wrath"
 	duration = -1

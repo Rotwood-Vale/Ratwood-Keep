@@ -34,7 +34,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
-	beltr = /obj/item/keyring/hand
+	beltr = /obj/item/storage/keyring/hand
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	backl = /obj/item/clothing/suit/roguetown/armor/leather/hand
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -62,4 +62,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)			//Rous taming still makes sense for a Hand, a 'master of words' vibe. Summoning rats however does not - its undignified
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe)	//Immobilizes for 3 seconds in a 3x3, seems fitting for a Hand to be able to calm the court room when theres chaos
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	if(!isseelie(H))	//Only give heavy armor trait for non-seelie hands
+		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	else if(isseelie(H))	//Since seelie hands no longer get heavy armor, giving them dodge expert instead
+		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

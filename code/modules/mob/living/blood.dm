@@ -227,12 +227,6 @@
 		var/mob/living/carbon/C = AM
 		if(blood_id == C.get_blood_id())//both mobs have the same blood substance
 			if(blood_id == /datum/reagent/blood) //normal blood
-				if(blood_data["viruses"])
-					for(var/thing in blood_data["viruses"])
-						var/datum/disease/D = thing
-						if((D.spread_flags & DISEASE_SPREAD_SPECIAL) || (D.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS))
-							continue
-						C.ForceContractDisease(D)
 				if(!(blood_data["blood_type"] in get_safe_blood(C.dna.blood_type)))
 					C.reagents.add_reagent(/datum/reagent/toxin, amount * 0.5)
 					return 1
@@ -252,11 +246,6 @@
 		var/blood_data = list()
 		//set the blood data
 		blood_data["donor"] = src
-		blood_data["viruses"] = list()
-
-		for(var/thing in diseases)
-			var/datum/disease/D = thing
-			blood_data["viruses"] += D.Copy()
 
 		blood_data["blood_DNA"] = copytext(dna.unique_enzymes,1,0)
 		if(disease_resistances && disease_resistances.len)
@@ -348,7 +337,8 @@
 		W.water_color = "#c43c3c"
 		W.update_icon()
 		return
-	new /obj/effect/decal/cleanable/blood/splatter(T, get_static_viruses())
+	new /obj/effect/decal/cleanable/blood/splatter(T)
+	T?.pollute_turf(/datum/pollutant/metallic_scent, 30)
 
 /mob/living/proc/add_drip_floor(turf/T, amt)
 	if(!iscarbon(src))
@@ -377,7 +367,7 @@
 			D.drips++
 			D.update_icon()
 		else
-			new /obj/effect/decal/cleanable/blood/drip(T, get_static_viruses())
+			new /obj/effect/decal/cleanable/blood/drip(T)
 
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
 	if(!(NOBLOOD in dna.species.species_traits))

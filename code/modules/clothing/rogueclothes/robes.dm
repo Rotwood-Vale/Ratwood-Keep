@@ -168,3 +168,18 @@
 	flags_inv = HIDEBOOB|HIDETAIL //DO NOT CHANGE THIS, I WILL THROW HANDS WITH YOU IDIOTS
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	
+/obj/item/clothing/suit/roguetown/shirt/robe/eora
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "eoran robe"
+	desc = "Holy robes, intended for use by followers of Eora"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	icon_state = "eorarobes"
+	icon = 'icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	boobed = TRUE
+	color = null
+	flags_inv = HIDEBOOB|HIDECROTCH
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL

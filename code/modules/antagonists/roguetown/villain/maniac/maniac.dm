@@ -22,12 +22,17 @@
 		TRAIT_STEELHEARTED,
 		TRAIT_NOMOOD,
 		TRAIT_SCHIZO_AMBIENCE,
+		TRAIT_DARKVISION,
 	)
 	/// Traits that only get applied in the final sequence
 	var/static/list/final_traits = list(
 		TRAIT_MANIAC_AWOKEN,
 		TRAIT_SCREENSHAKE,
 	)
+	/// Cached old stats in case we get removed
+	var/STASTR
+	var/STACON
+	var/STAEND
 	/// Weapons we can give to the dreamer
 	var/static/list/possible_weapons = list(
 		/obj/item/rogueweapon/huntingknife/cleaver,
@@ -85,13 +90,20 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			owner.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
 			owner.adjust_skillrank_up_to(/datum/skill/misc/treatment, 3, TRUE)
 			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
+			STASTR = dreamer.STASTR
+			STACON = dreamer.STACON
+			STAEND = dreamer.STAEND
+			dreamer.STASTR = 16
+			dreamer.STACON = 16
+			dreamer.STAEND = 16
 			if(heart) // clear any inscryptions, in case of being made maniac midround
 				heart.inscryptions = list()
 				heart.inscryption_keys = list()
 				heart.maniacs2wonder_ids = list()
 				heart.maniacs = list()
 			dreamer.remove_stress(/datum/stressevent/saw_wonder)
-			dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
+			dreamer.remove_curse(/datum/curse/zizo, TRUE)
+		//	dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
 		for(var/trait in applied_traits)
 			ADD_TRAIT(owner.current, trait, "[type]")
 		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
@@ -111,6 +123,9 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			to_chat(owner.current,span_danger("I am no longer a MANIAC!"))
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
+			dreamer.STASTR = STASTR
+			dreamer.STACON = STACON
+			dreamer.STAEND = STAEND
 			var/client/clinet = dreamer?.client
 			if(clinet) //clear screenshake animation
 				animate(clinet, dreamer.pixel_y)

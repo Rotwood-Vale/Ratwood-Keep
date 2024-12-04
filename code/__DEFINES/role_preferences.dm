@@ -33,7 +33,6 @@
 #define ROLE_MONKEY				"Monkey"
 #define ROLE_ABDUCTOR			"Abductor"
 #define ROLE_REVENANT			"Revenant"
-#define ROLE_DEVIL				"Devil"
 #define ROLE_BROTHER			"Blood Brother"
 #define ROLE_BRAINWASHED		"Brainwashed Victim"
 #define ROLE_OVERTHROW			"Syndicate Mutineer"		//Role removed, left here for safety.
@@ -55,10 +54,8 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_BLOB,
 	ROLE_NINJA,
 	ROLE_OBSESSED,
-	ROLE_MONKEY = /datum/game_mode/monkey,
 	ROLE_REVENANT,
 	ROLE_ABDUCTOR,
-	ROLE_DEVIL = /datum/game_mode/devil,
 	ROLE_SENTIENCE
 ))
 

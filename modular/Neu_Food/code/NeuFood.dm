@@ -67,15 +67,6 @@
 	var/chopping_sound = FALSE // does it play a choppy sound when batch sliced?
 	var/slice_sound = FALSE // does it play the slice sound when sliced?
 
-/obj/item/reagent_containers/food/snacks/proc/changefood(path, mob/living/eater)
-	if(!path || !eater)
-		return
-	var/turf/T = get_turf(eater)
-	if(eater.dropItemToGround(src))
-		qdel(src)
-	var/obj/item/I = new path(T)
-	eater.put_in_active_hand(I)
-
 /obj/effect/decal/cleanable/food/mess // decal applied when throwing minced meat for example
 	name = "mess"
 	desc = ""
