@@ -1096,8 +1096,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Initialize(mapload, mob/user)
 	. = ..()
-	if(timeleft)
-		QDEL_IN(src, timeleft) //delete after it runs out, see code/modules/mob/living/simple_animal/rogue/creacher/familiar.dm for timeleft var
 	summoner = user
 
 /obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets, mob/user = usr)
