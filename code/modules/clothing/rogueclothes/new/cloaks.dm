@@ -1,6 +1,6 @@
 /obj/item/clothing/cloak/shadow
-	name = "shadow cloak"
-	desc = "."
+	name = "silk cloak"
+	desc = "A silk cloak, made by an expert seamster to be worn by the nobles or the wealthy."
 	icon = 'icons/roguetown/clothing/newclothes/objshadowcloak.dmi'
 	icon_state = "shadowcloak"
 	item_state = "shadowcloak"

@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/roguetown/armor/leathercoat
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "leather coat"
-	desc = "."
+	desc = "A long leather coat made with quality materials for experienced hunters or noble explorers. The leather still offers some protection."
 	icon = 'icons/roguetown/clothing/newclothes/dripobj.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/onmobdrip.dmi'
 	sleeved = 'icons/roguetown/clothing/newclothes/onmob/sleeves_armor.dmi'
@@ -22,7 +22,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/leathercoat/heavy
 	name = "heavy leather coat"
-	desc = "."
+	desc = "A long leather coat made with the best furs around. Thicker than the common coat, offers exceptional protection."
 	icon_state = "bleathercoat"
 	armor = list("blunt" = 70, "slash" = 40, "stab" = 50, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)

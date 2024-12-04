@@ -1,21 +1,22 @@
 /obj/item/clothing/mask/rogue/pestra
 	name = "pestran mask"
-	desc = "."
+	desc = "A mask made in such a way to keep away the rot away as much as possible from you. Some of the smell still goes through."
 	icon = 'icons/roguetown/clothing/newclothes/objmasks.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/masks.dmi'
 	icon_state = "feldmask"
-	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDEEARS
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
 
 /obj/item/clothing/mask/rogue/pestra/court
 	name = "court physician mask"
+	desc = "A mask specially made for the court physician, one of the most experienced pestrans around."
 	icon_state = "pestramask"
 
 /obj/item/clothing/mask/rogue/rag
 	name = "rag mask"
-	desc = "."
+	desc = "A piece of cloth folded in a way to make it easy to protect your identity or your nose from the rot."
 	icon = 'icons/roguetown/clothing/newclothes/objmasks.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/masks.dmi'
 	icon_state = "ragmask"

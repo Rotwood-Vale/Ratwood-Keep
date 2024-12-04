@@ -1,6 +1,6 @@
 /obj/item/clothing/under/roguetown/shadow
-	name = "shadow pants"
-	desc = "."
+	name = "silk pants"
+	desc = "Pants made from silk, famous choice for wealthy people that don't have to worry about it getting dirty with mud."
 	gender = PLURAL
 	icon = 'icons/roguetown/clothing/newclothes/silkpants.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/onmobsilkpants.dmi'
