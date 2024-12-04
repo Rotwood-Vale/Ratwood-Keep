@@ -1,3 +1,4 @@
+//intent datums ฅ^•ﻌ•^ฅ
 
 /datum/intent/spear/thrust
 	name = "thrust"
@@ -30,6 +31,38 @@
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	reach = 2
 	item_d_type = "slash"
+
+/datum/intent/spear/cut/halberd
+	damfactor = 0.9
+	swingdelay = 10
+
+/datum/intent/sword/cut/zwei
+	reach = 2
+
+/datum/intent/sword/thrust/zwei
+	reach = 2
+
+/datum/intent/sword/thrust/estoc
+	name = "thrust"
+	penfactor = 50
+	recovery = 20
+	clickcd = 10
+
+/datum/intent/sword/lunge
+	name = "lunge"
+	icon_state = "inimpale"
+	attack_verb = list("lunges")
+	animname = "stab"
+	blade_class = BCLASS_STAB
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	reach = 2
+	penfactor = 30
+	damfactor = 1.2
+	chargetime = 5
+	recovery = 20
+	clickcd = 10
+
+//polearm objs ฅ^•ﻌ•^ฅ
 
 /obj/item/rogueweapon/woodstaff
 	force = 10
@@ -250,10 +283,6 @@
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
 
-/datum/intent/spear/cut/halberd
-	damfactor = 0.9
-	swingdelay = 10
-
 /obj/item/rogueweapon/eaglebeak
 	force = 15
 	force_wielded = 30
@@ -368,12 +397,6 @@
 	max_blade_int = 200
 	wdefense = 4
 
-/datum/intent/sword/cut/zwei
-	reach = 2
-
-/datum/intent/sword/thrust/zwei
-	reach = 2
-
 /obj/item/rogueweapon/greatsword/grenz
 	name = "steel zweihander"
 	icon_state = "steelzwei"
@@ -465,27 +488,6 @@
 					"wflip" = 8,
 					"eflip" = 0,
 					)
-
-/datum/intent/sword/thrust/estoc
-	name = "thrust"
-	penfactor = 50
-	recovery = 20
-	clickcd = 10
-
-
-/datum/intent/sword/lunge
-	name = "lunge"
-	icon_state = "inimpale"
-	attack_verb = list("lunges")
-	animname = "stab"
-	blade_class = BCLASS_STAB
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	reach = 2
-	penfactor = 30
-	damfactor = 1.2
-	chargetime = 5
-	recovery = 20
-	clickcd = 10
 
 /obj/item/rogueweapon/woodstaff/naledi
 	name = "naledian warstaff"
