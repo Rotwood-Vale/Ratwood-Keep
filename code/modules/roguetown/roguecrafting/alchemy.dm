@@ -85,8 +85,13 @@
 	reqs = list(/obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 3, /obj/item/natural/worms/leech = 2)
 	craftdiff = 4
 
-/// bottle craft
+/datum/crafting_recipe/roguetown/alchemy/quicksilver
+	name = "quicksilver"
+	result = list(/obj/item/quicksilver = 1)
+	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/bloodied = 1, /datum/reagent/water/blessed = 45, /obj/item/natural/cloth = 1, /obj/item/ingot/silver = 1)
+	craftdiff = 4
 
+/// bottle craft
 
 /datum/crafting_recipe/roguetown/alchemy/glassbottles
 	name = "2x glass bottles"

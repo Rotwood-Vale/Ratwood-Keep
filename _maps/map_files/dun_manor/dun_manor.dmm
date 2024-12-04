@@ -5942,6 +5942,7 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/scomstone,
 /obj/item/rogueweapon/whip/antique,
+/obj/item/quicksilver,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/town/basement)
 "ftb" = (
