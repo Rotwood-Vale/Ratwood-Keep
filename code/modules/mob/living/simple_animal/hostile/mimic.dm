@@ -133,6 +133,11 @@
 		creator = owner
 		faction |= "[REF(owner)]"
 
+/mob/living/simple_animal/hostile/mimic/copy/proc/CheckObject(obj/O)
+	if((isitem(O) || isstructure(O)))
+		return TRUE
+	return FALSE
+
 /mob/living/simple_animal/hostile/mimic/copy/proc/CopyObject(obj/O, mob/living/user, destroy_original = 0)
 	if(destroy_original || CheckObject(O))
 		O.forceMove(src)

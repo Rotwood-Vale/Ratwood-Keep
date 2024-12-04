@@ -154,3 +154,29 @@
 /turf/closed/indestructible/Melt()
 	to_be_destroyed = FALSE
 	return src
+
+
+/turf/closed/indestructible/splashscreen
+	name = ""
+	icon = 'icons/default_title.dmi'
+	icon_state = ""
+	layer = FLY_LAYER
+	bullet_bounce_sound = null
+
+/turf/closed/indestructible/splashscreen/New()
+	SStitle.splash_turf = src
+	if(SStitle.icon)
+		icon = SStitle.icon
+	..()
+
+/turf/closed/indestructible/splashscreen/vv_edit_var(var_name, var_value)
+	. = ..()
+	if(.)
+		switch(var_name)
+			if("icon")
+				SStitle.icon = icon
+
+/turf/closed/indestructible/riveted
+	icon = 'icons/turf/walls/riveted.dmi'
+	icon_state = "riveted"
+	smooth = SMOOTH_TRUE

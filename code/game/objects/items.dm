@@ -1151,7 +1151,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		wielded = FALSE
 		if(force_wielded)
 			force = initial(force)
-		initial(wdefense)
+		wdefense = initial(wdefense)
 	if(altgripped)
 		altgripped = FALSE
 	update_transform()

@@ -2963,10 +2963,6 @@
 /obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
-"csS" = (
-/obj/effect/mob_spawn/human/skeleton/alive,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
 "cty" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/cobble,
@@ -3107,9 +3103,6 @@
 	dir = 6;
 	icon_state = "largetable"
 	},
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "cyw" = (
@@ -5714,11 +5707,6 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/tavern)
-"exx" = (
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
-/obj/effect/mob_spawn/human/skeleton/alive,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/shelter/mountains)
 "exZ" = (
 /obj/item/needle,
 /obj/item/needle,
@@ -9980,10 +9968,6 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-"hKC" = (
-/obj/effect/mob_spawn/human/skeleton/alive,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
 "hKU" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
 	dir = 1
@@ -11375,7 +11359,6 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/effect/mob_spawn/human/skeleton/alive,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church)
 "iOE" = (
@@ -16514,10 +16497,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
-"mVO" = (
-/obj/effect/mob_spawn/human/skeleton/alive,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
 "mWb" = (
 /obj/structure/roguemachine/withdraw{
 	pixel_x = 1
@@ -17026,7 +17005,6 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "nqu" = (
-/obj/structure/fluff/drake_statue/falling,
 /obj/structure/fluff/statue,
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/under/town/basement)
@@ -18911,10 +18889,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"oHh" = (
-/obj/effect/mob_spawn/human/skeleton/alive,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "oHv" = (
 /obj/structure/stairs{
 	dir = 4
@@ -21513,10 +21487,6 @@
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
-"qOb" = (
-/obj/effect/mob_spawn/human/skeleton/alive,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors)
 "qOH" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/water/bath,
@@ -22473,7 +22443,6 @@
 "ryv" = (
 /obj/structure/bed/rogue/shit,
 /obj/effect/decal/cleanable/cobweb,
-/obj/effect/mob_spawn/human/skeleton/alive,
 /obj/effect/landmark/start/prisonerb,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/town/basement)
@@ -25650,12 +25619,6 @@
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
@@ -26186,12 +26149,6 @@
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
@@ -27381,11 +27338,6 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-"vly" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/effect/mob_spawn/human/skeleton/alive,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
 "vlS" = (
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/blocks,
@@ -82885,7 +82837,7 @@ whb
 txa
 cBf
 cBf
-hKC
+cBf
 cBf
 cBf
 gaw
@@ -97638,7 +97590,7 @@ iTw
 iTw
 iTw
 iTw
-csS
+iTw
 txa
 sYw
 jyI
@@ -260940,7 +260892,7 @@ aUc
 vIa
 vIa
 vIa
-exx
+ldB
 vIa
 dwf
 dwf
@@ -293959,7 +293911,7 @@ fxx
 fxx
 hHI
 hHI
-oHh
+wlD
 fBT
 fBT
 rfm
@@ -296364,7 +296316,7 @@ fxx
 fxx
 fxx
 fxx
-mVO
+qvR
 opD
 uaL
 qvR
@@ -299184,7 +299136,7 @@ qvR
 uaL
 uaL
 pAV
-qOb
+hHF
 hHF
 hHF
 pTM
@@ -402098,7 +402050,7 @@ gkv
 gkv
 pAV
 pAV
-vly
+egV
 pTM
 pTM
 pTM
