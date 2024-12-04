@@ -1035,6 +1035,10 @@
 	var/obj/item/organ/brain/B = getorgan(/obj/item/organ/brain)
 	if(B)
 		B.brain_death = FALSE
+	for(var/thing in diseases)
+		var/datum/disease/D = thing
+		if(D.severity != DISEASE_SEVERITY_POSITIVE)
+			D.cure(FALSE)
 	var/datum/component/rot/corpse/CR = GetComponent(/datum/component/rot/corpse)
 	if(CR)
 		CR.amount = 0

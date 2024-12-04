@@ -148,6 +148,7 @@
 	var/list/SPECIALS = list(
 		/area/shuttle,
 		/area/centcom,
+		/area/asteroid,
 		/area/tdome,
 		/area/wizard_station
 	)

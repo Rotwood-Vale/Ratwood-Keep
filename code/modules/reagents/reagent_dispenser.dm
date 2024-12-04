@@ -160,6 +160,14 @@
 	icon_state = "beer"
 	reagent_id = /datum/reagent/consumable/ethanol/beer
 
+/obj/structure/reagent_dispensers/virusfood
+	name = "virus food dispenser"
+	desc = ""
+	icon_state = "virus_food"
+	anchored = TRUE
+	density = FALSE
+	reagent_id = /datum/reagent/consumable/virus_food
+
 
 /obj/structure/reagent_dispensers/cooking_oil
 	name = "vat of cooking oil"

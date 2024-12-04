@@ -153,7 +153,7 @@
 	name = "dried vomit"
 	desc = ""
 
-/obj/effect/decal/cleanable/vomit/old/Initialize(mapload)
+/obj/effect/decal/cleanable/vomit/old/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
 	icon_state += "-old"
 

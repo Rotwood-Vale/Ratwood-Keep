@@ -136,6 +136,18 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 /obj/effect/mapping_helpers/component_injector/proc/build_args()
 	return list(component_type)
 
+/obj/effect/mapping_helpers/component_injector/infective
+	name = "Infective Injector"
+	icon_state = "component_infective"
+	component_type = /datum/component/infective
+	var/disease_type
+
+/obj/effect/mapping_helpers/component_injector/infective/build_args()
+	if(!ispath(disease_type,/datum/disease))
+		CRASH("Wrong disease type passed in.")
+	var/datum/disease/D = new disease_type()
+	return list(component_type,D)
+
 /obj/effect/mapping_helpers/dead_body_placer
 	name = "Dead Body placer"
 	late = TRUE

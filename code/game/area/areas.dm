@@ -17,10 +17,20 @@
 	var/map_name // Set in New(); preserves the name set by the map maker, even if renamed by the Blueprints.
 
 	var/valid_territory = TRUE // If it's a valid territory for cult summoning or the CRAB-17 phone to spawn
+	var/blob_allowed = TRUE // If blobs can spawn there and if it counts towards their score.
+
+	var/fire = null
+//	var/atmos = TRUE
+	var/atmosalm = FALSE
+	var/poweralm = TRUE
+	var/lightswitch = TRUE
 
 	var/totalbeauty = 0 //All beauty in this area combined, only includes indoor area.
 	var/beauty = 0 // Beauty average per open turf in the area
 	var/beauty_threshold = 150 //If a room is too big it doesn't have beauty.
+
+	var/requires_power = TRUE
+	var/always_unpowered = FALSE	// This gets overridden to 1 for space in area/Initialize().
 
 	var/outdoors = FALSE //For space, the asteroid, lavaland, etc. Used with blueprints to determine if we are adding a new area (vs editing a station room)
 
@@ -30,6 +40,16 @@
 	var/mood_bonus = 0
 	/// Mood message for being here, only shows up if mood_bonus != 0
 	var/mood_message = span_nicegreen("This area is pretty nice!\n")
+
+	var/power_equip = TRUE
+	var/power_light = TRUE
+	var/power_environ = TRUE
+	var/used_equip = 0
+	var/used_light = 0
+	var/used_environ = 0
+	var/static_equip
+	var/static_light = 0
+	var/static_environ
 
 	var/has_gravity = 0
 	///Are you forbidden from teleporting to the area? (centcom, mobs, wizard, hand teleporter)
@@ -75,6 +95,12 @@
 
 	var/first_time_text = null
 
+	var/list/firedoors
+	var/list/cameras
+	var/list/firealarms
+	var/firedoors_last_closed_on = 0
+	/// Can the Xenobio management console transverse this area by default?
+	var/xenobiology_compatible = FALSE
 	/// typecache to limit the areas that atoms in this area can smooth with, used for shuttles IIRC
 	var/list/canSmoothWithAreas
 
@@ -150,12 +176,18 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	map_name = name // Save the initial (the name set in the map) name of the area.
 	canSmoothWithAreas = typecacheof(canSmoothWithAreas)
 
-
-	if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
-		dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	if(requires_power)
 		luminosity = 0
-	else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
-		dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	else
+		power_light = TRUE
+		power_equip = TRUE
+		power_environ = TRUE
+
+		if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
+			dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+			luminosity = 0
+		else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
+			dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	if(dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
 		dynamic_lighting = CONFIG_GET(flag/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
 
@@ -239,6 +271,97 @@ GLOBAL_LIST_EMPTY(teleportlocs)
   */
 /area/space/update_icon_state()
 	icon_state = null
+
+
+/**
+  * Returns int 1 or 0 if the area has power for the given channel
+  *
+  * evalutes a mixture of variables mappers can set, requires_power, always_unpowered and then
+  * per channel power_equip, power_light, power_environ
+  */
+/area/proc/powered(chan)		// return true if the area has power to given channel
+
+	if(!requires_power)
+		return 1
+	if(always_unpowered)
+		return 0
+	switch(chan)
+		if(EQUIP)
+			return power_equip
+		if(LIGHT)
+			return power_light
+		if(ENVIRON)
+			return power_environ
+
+	return 0
+
+/**
+  * Space is not powered ever, so this returns 0
+  */
+/area/space/powered(chan) //Nope.avi
+	return 0
+
+/**
+  * Return the usage of power per channel
+  */
+/area/proc/usage(chan)
+	var/used = 0
+	switch(chan)
+		if(LIGHT)
+			used += used_light
+		if(EQUIP)
+			used += used_equip
+		if(ENVIRON)
+			used += used_environ
+		if(TOTAL)
+			used += used_light + used_equip + used_environ
+		if(STATIC_EQUIP)
+			used += static_equip
+		if(STATIC_LIGHT_A)
+			used += static_light
+		if(STATIC_ENVIRON)
+			used += static_environ
+	return used
+
+/**
+  * Add a static amount of power load to an area
+  *
+  * Possible channels
+  * *STATIC_EQUIP
+  * *STATIC_LIGHT
+  * *STATIC_ENVIRON
+  */
+/area/proc/addStaticPower(value, powerchannel)
+	switch(powerchannel)
+		if(STATIC_EQUIP)
+			static_equip += value
+		if(STATIC_LIGHT_A)
+			static_light += value
+		if(STATIC_ENVIRON)
+			static_environ += value
+
+/**
+  * Clear all power usage in area
+  *
+  * Clears all power used for equipment, light and environment channels
+  */
+/area/proc/clear_usage()
+	used_equip = 0
+	used_light = 0
+	used_environ = 0
+
+/**
+  * Add a power value amount to the stored used_x variables
+  */
+/area/proc/use_power(amount, chan)
+
+	switch(chan)
+		if(EQUIP)
+			used_equip += amount
+		if(LIGHT)
+			used_light += amount
+		if(ENVIRON)
+			used_environ += amount
 
 /**
   * Call back when an atom enters an area
@@ -360,7 +483,12 @@ GLOBAL_LIST_EMPTY(teleportlocs)
   */
 /area/proc/setup(a_name)
 	name = a_name
+	power_equip = FALSE
+	power_light = FALSE
+	power_environ = FALSE
+	always_unpowered = FALSE
 	valid_territory = FALSE
+	blob_allowed = FALSE
 	addSorted()
 /**
   * Set the area size of the area

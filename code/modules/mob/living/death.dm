@@ -23,7 +23,7 @@
 	return
 
 /mob/living/proc/spawn_gibs()
-	new /obj/effect/gibspawner/generic(drop_location(), src)
+	new /obj/effect/gibspawner/generic(drop_location(), src, get_static_viruses())
 
 /mob/living/proc/spill_embedded_objects()
 	for(var/obj/item/embedded_item as anything in simple_embedded_objects)

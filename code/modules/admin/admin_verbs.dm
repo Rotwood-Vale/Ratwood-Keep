@@ -684,6 +684,21 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 			message_admins(span_adminnotice("[key_name_admin(usr)] removed the spell [S] from [key_name_admin(T)]."))
 			SSblackbox.record_feedback("tally", "admin_verb", 1, "Remove Spell") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/give_disease(mob/living/T in GLOB.mob_living_list)
+	set category = "Fun"
+	set name = "Give Disease"
+	set desc = ""
+	if(!istype(T))
+		to_chat(src, span_notice("I can only give a disease to a mob of type /mob/living."))
+		return
+	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in sortList(SSdisease.diseases, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	if(!D)
+		return
+	T.ForceContractDisease(new D, FALSE, TRUE)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Give Disease") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_admin("[key_name(usr)] gave [key_name(T)] the disease [D].")
+	message_admins(span_adminnotice("[key_name_admin(usr)] gave [key_name_admin(T)] the disease [D]."))
+
 /client/proc/object_say(obj/O in world)
 	set category = "Special Verbs"
 	set name = "OSay"
@@ -768,7 +783,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(!holder)
 		return
 	var/player_book = input(src, "What is the book file you want to delete? (spaces and other characters are their url encode versions for the file name, so for example spaces are +)")
-	if(player_book)
+	if(player_book)	
 		SSlibrarian.del_player_book(player_book)
 		message_admins("[src] has deleted the player book: [player_book]")
 	else

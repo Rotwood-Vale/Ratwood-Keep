@@ -589,6 +589,56 @@
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "kindleKicks"
 
+//Small sprites
+/datum/action/small_sprite
+	name = "Toggle Giant Sprite"
+	desc = ""
+	icon_icon = 'icons/mob/actions/actions_xeno.dmi'
+	button_icon_state = "smallqueen"
+	background_icon_state = "bg_alien"
+	var/small = FALSE
+	var/small_icon
+	var/small_icon_state
+
+/datum/action/small_sprite/queen
+	small_icon = 'icons/mob/alien.dmi'
+	small_icon_state = "alienq"
+
+/datum/action/small_sprite/megafauna
+	icon_icon = 'icons/mob/actions/actions_xeno.dmi'
+	button_icon_state = "smallqueen"
+	background_icon_state = "bg_alien"
+	small_icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
+
+/datum/action/small_sprite/megafauna/drake
+	small_icon_state = "ash_whelp"
+
+/datum/action/small_sprite/megafauna/colossus
+	small_icon_state = "Basilisk"
+
+/datum/action/small_sprite/megafauna/bubblegum
+	small_icon_state = "goliath2"
+
+/datum/action/small_sprite/megafauna/legion
+	small_icon_state = "mega_legion"
+
+/datum/action/small_sprite/megafauna/spacedragon
+	small_icon = 'icons/mob/carp.dmi'
+	small_icon_state = "carp"
+
+/datum/action/small_sprite/Trigger()
+	..()
+	if(!small)
+		var/image/I = image(icon = small_icon, icon_state = small_icon_state, loc = owner)
+		I.override = TRUE
+		I.pixel_x -= owner.pixel_x
+		I.pixel_y -= owner.pixel_y
+		owner.add_alt_appearance(/datum/atom_hud/alternate_appearance/basic, "smallsprite", I, AA_TARGET_SEE_APPEARANCE | AA_MATCH_TARGET_OVERLAYS)
+		small = TRUE
+	else
+		owner.remove_alt_appearance("smallsprite")
+		small = FALSE
+
 /datum/action/item_action/storage_gather_mode
 	name = "Switch gathering mode"
 	desc = ""

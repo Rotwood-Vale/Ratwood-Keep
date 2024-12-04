@@ -65,6 +65,11 @@
 	for(var/organ in M.internal_organs)
 		var/obj/item/organ/O = organ
 		O.setOrganDamage(0)
+	for(var/thing in M.diseases)
+		var/datum/disease/D = thing
+		if(D.severity == DISEASE_SEVERITY_POSITIVE)
+			continue
+		D.cure()
 	..()
 	. = 1
 
@@ -434,6 +439,8 @@
 
 /datum/reagent/medicine/ephedrine/overdose_process(mob/living/M)
 	if(prob(2) && iscarbon(M))
+		var/datum/disease/D = new /datum/disease/heart_failure
+		M.ForceContractDisease(D)
 		to_chat(M, span_danger("You're pretty sure you just felt my heart stop for a second there.."))
 		M.playsound_local(M, 'sound/blank.ogg', 100, 0)
 

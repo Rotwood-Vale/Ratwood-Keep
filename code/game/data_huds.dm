@@ -81,6 +81,18 @@
 
 //HELPERS
 
+//called when a carbon changes virus
+/mob/living/carbon/proc/check_virus()
+	var/threat
+	var/severity
+	for(var/thing in diseases)
+		var/datum/disease/D = thing
+		if(!(D.visibility_flags & HIDDEN_SCANNER))
+			if(!threat || get_disease_severity_value(D.severity) > threat) //a buffing virus gets an icon
+				threat = get_disease_severity_value(D.severity)
+				severity = D.severity
+	return severity
+
 //helper for getting the appropriate health status
 /proc/RoundHealth(mob/living/M)
 	if(M.stat == DEAD || (HAS_TRAIT(M, TRAIT_FAKEDEATH)))
@@ -163,6 +175,7 @@
 /mob/living/carbon/med_hud_set_status()
 	var/image/holder = hud_list[STATUS_HUD]
 	var/icon/I = icon(icon, icon_state, dir)
+	var/virus_threat = check_virus()
 	holder.pixel_y = I.Height() - world.icon_size
 	if(stat == DEAD || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		if(tod)
@@ -172,7 +185,23 @@
 				return
 		holder.icon_state = "huddead"
 	else
-		holder.icon_state = "hudhealthy"
+		switch(virus_threat)
+			if(DISEASE_SEVERITY_BIOHAZARD)
+				holder.icon_state = "hudill5"
+			if(DISEASE_SEVERITY_DANGEROUS)
+				holder.icon_state = "hudill4"
+			if(DISEASE_SEVERITY_HARMFUL)
+				holder.icon_state = "hudill3"
+			if(DISEASE_SEVERITY_MEDIUM)
+				holder.icon_state = "hudill2"
+			if(DISEASE_SEVERITY_MINOR)
+				holder.icon_state = "hudill1"
+			if(DISEASE_SEVERITY_NONTHREAT)
+				holder.icon_state = "hudill0"
+			if(DISEASE_SEVERITY_POSITIVE)
+				holder.icon_state = "hudbuff"
+			if(null)
+				holder.icon_state = "hudhealthy"
 
 
 /***********************************************

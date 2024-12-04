@@ -18,7 +18,8 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	/datum/hallucination/self_delusion = 2,
 	/datum/hallucination/delusion = 2,
 	/datum/hallucination/shock = 1,
-	/datum/hallucination/death = 1
+	/datum/hallucination/death = 1,
+	/datum/hallucination/oh_yeah = 1
 	))
 
 
@@ -152,6 +153,67 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 /obj/effect/hallucination/simple/clown/scary
 	image_state = "scary_clown"
+
+/obj/effect/hallucination/simple/bubblegum
+	name = "Bubblegum"
+	image_icon = 'icons/mob/lavaland/96x96megafauna.dmi'
+	image_state = "bubblegum"
+	px = -32
+
+/datum/hallucination/oh_yeah
+	var/obj/effect/hallucination/simple/bubblegum/bubblegum
+	var/image/fakebroken
+	var/image/fakerune
+
+/datum/hallucination/oh_yeah/New(mob/living/carbon/C, forced = TRUE)
+	set waitfor = FALSE
+	. = ..()
+	var/turf/closed/wall/wall
+	for(var/turf/closed/wall/W in range(7,target))
+		wall = W
+		break
+	if(!wall)
+		return INITIALIZE_HINT_QDEL
+	feedback_details += "Source: [wall.x],[wall.y],[wall.z]"
+
+	fakebroken = image('icons/turf/floors.dmi', wall, "plating", layer = TURF_LAYER)
+	var/turf/landing = get_turf(target)
+	var/turf/landing_image_turf = get_step(landing, SOUTHWEST) //the icon is 3x3
+	fakerune = image('icons/effects/96x96.dmi', landing_image_turf, "landing", layer = ABOVE_OPEN_TURF_LAYER)
+	fakebroken.override = TRUE
+	if(target.client)
+		target.client.images |= fakebroken
+		target.client.images |= fakerune
+	target.playsound_local(wall,'sound/blank.ogg', 150, 1)
+	bubblegum = new(wall, target)
+	addtimer(CALLBACK(src, PROC_REF(bubble_attack), landing), 10)
+
+/datum/hallucination/oh_yeah/proc/bubble_attack(turf/landing)
+	var/charged = FALSE //only get hit once
+	while(get_turf(bubblegum) != landing && target && target.stat != DEAD)
+		bubblegum.forceMove(get_step_towards(bubblegum, landing))
+		bubblegum.setDir(get_dir(bubblegum, landing))
+		target.playsound_local(get_turf(bubblegum), 'sound/blank.ogg', 150, 1)
+		shake_camera(target, 2, 1)
+		if(bubblegum.Adjacent(target) && !charged)
+			charged = TRUE
+			target.Paralyze(80)
+			target.adjustStaminaLoss(40)
+			step_away(target, bubblegum)
+			shake_camera(target, 4, 3)
+			target.visible_message(span_warning("[target] jumps backwards, falling on the ground!"),span_danger("[bubblegum] slams into you!"))
+		sleep(2)
+	sleep(30)
+	qdel(src)
+
+/datum/hallucination/oh_yeah/Destroy()
+	if(target.client)
+		target.client.images.Remove(fakebroken)
+		target.client.images.Remove(fakerune)
+	QDEL_NULL(fakebroken)
+	QDEL_NULL(fakerune)
+	QDEL_NULL(bubblegum)
+	return ..()
 
 /datum/hallucination/battle
 

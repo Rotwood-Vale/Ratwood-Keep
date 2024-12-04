@@ -45,6 +45,8 @@
 			for(var/datum/wound/wound as anything in get_wounds())
 				wound.heal_wound(1)
 
+		handle_diseases()// DEAD check is in the proc itself; we want it to spread even if the mob is dead, but to handle its disease-y properties only if you're not.
+
 		if (QDELETED(src)) // diseases can qdel the mob via transformations
 			return
 
@@ -97,6 +99,9 @@
 
 /mob/living/proc/handle_mutations_and_radiation()
 	radiation = 0 //so radiation don't accumulate in simple animals
+	return
+
+/mob/living/proc/handle_diseases()
 	return
 
 /mob/living/proc/handle_random_events()

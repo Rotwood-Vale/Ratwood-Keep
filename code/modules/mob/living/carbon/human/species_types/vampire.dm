@@ -49,6 +49,12 @@
 		if(H)
 			H.shape.dust() //make sure we're killing the bat if you are out of blood, if you don't it creates weird situations where the bat is alive but the caster is dusted.
 		C.dust()
+	var/area/A = get_area(C)
+	if(istype(A, /area/chapel))
+		to_chat(C, span_warning("I don't belong here!"))
+		C.adjustFireLoss(20)
+		C.adjust_fire_stacks(6)
+		C.IgniteMob()
 
 /datum/species/vampire/check_species_weakness(obj/item/weapon, mob/living/attacker)
 	if(istype(weapon, /obj/item/nullrod/whip))

@@ -217,6 +217,23 @@
 	item_state = "salpen"
 	list_reagents = list(/datum/reagent/medicine/salbutamol = 10)
 
+/obj/item/reagent_containers/hypospray/medipen/tuberculosiscure
+	name = "BVAK autoinjector"
+	desc = ""
+	icon_state = "tbpen"
+	item_state = "tbpen"
+	volume = 20
+	amount_per_transfer_from_this = 10
+	list_reagents = list(/datum/reagent/vaccine/fungal_tb = 20)
+
+/obj/item/reagent_containers/hypospray/medipen/tuberculosiscure/update_icon()
+	if(reagents.total_volume > 30)
+		icon_state = initial(icon_state)
+	else if (reagents.total_volume > 0)
+		icon_state = "[initial(icon_state)]1"
+	else
+		icon_state = "[initial(icon_state)]0"
+
 /obj/item/reagent_containers/hypospray/medipen/survival
 	name = "survival medipen"
 	desc = ""
@@ -232,6 +249,13 @@
 	icon_state = "atropen"
 	item_state = "atropen"
 	list_reagents = list(/datum/reagent/medicine/atropine = 10)
+
+/obj/item/reagent_containers/hypospray/medipen/snail
+	name = "snail shot"
+	desc = ""
+	icon_state = "snail"
+	item_state = "snail"
+	list_reagents = list(/datum/reagent/snail = 10)
 
 /obj/item/reagent_containers/hypospray/medipen/magillitis
 	name = "experimental autoinjector"

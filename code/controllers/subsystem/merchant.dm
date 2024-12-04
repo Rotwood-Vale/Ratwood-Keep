@@ -20,4 +20,3 @@ SUBSYSTEM_DEF(merchant)
 		supply_packs[P.type] = P
 		if(!(P.group in supply_cats))
 			supply_cats += P.group
-	return ..()

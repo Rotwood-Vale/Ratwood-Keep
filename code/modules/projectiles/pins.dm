@@ -104,6 +104,7 @@
 	name = "mindshield firing pin"
 	desc = ""
 	icon_state = "firing_pin_loyalty"
+	req_implant = /obj/item/implant/mindshield
 
 /obj/item/firing_pin/implant/pindicate
 	name = "syndicate firing pin"

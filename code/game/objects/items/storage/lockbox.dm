@@ -67,6 +67,15 @@
 	open = TRUE
 	update_icon()
 
+/obj/item/storage/lockbox/loyalty
+	name = "lockbox of mindshield implants"
+	req_access = list(ACCESS_SECURITY)
+
+/obj/item/storage/lockbox/loyalty/PopulateContents()
+	for(var/i in 1 to 3)
+		new /obj/item/implantcase/mindshield(src)
+	new /obj/item/implanter/mindshield(src)
+
 /obj/item/storage/lockbox/clusterbang
 	name = "lockbox of clusterbangs"
 	desc = ""

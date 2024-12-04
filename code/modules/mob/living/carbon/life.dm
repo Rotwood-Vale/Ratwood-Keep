@@ -456,6 +456,12 @@
 	//MIASMA
 	if(breath_gases[/datum/gas/miasma])
 		var/miasma_partialpressure = (breath_gases[/datum/gas/miasma][MOLES]/breath.total_moles())*breath_pressure
+
+		if(prob(1 * miasma_partialpressure))
+			var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(2,3)
+			miasma_disease.name = "Unknown"
+			ForceContractDisease(miasma_disease, TRUE, TRUE)
+
 		//Miasma side effects
 		switch(miasma_partialpressure)
 			if(0.25 to 5)
@@ -536,6 +542,15 @@
 		for(var/V in internal_organs)
 			var/obj/item/organ/O = V
 			O.on_death() //Needed so organs decay while inside the body.
+
+/mob/living/carbon/handle_diseases()
+	for(var/thing in diseases)
+		var/datum/disease/D = thing
+		if(prob(D.infectivity))
+			D.spread()
+
+		if(stat != DEAD || D.process_dead)
+			D.stage_act()
 
 /mob/living/carbon/handle_mutations_and_radiation()
 	if(dna && dna.temporary_mutations.len)

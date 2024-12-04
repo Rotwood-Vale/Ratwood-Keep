@@ -266,6 +266,7 @@
 	uniform = /obj/item/clothing/under/misc/assistantformal
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack
+	implants = list(/obj/item/implant/mindshield)
 
 /obj/effect/mob_spawn/human/hotel_staff/security
 	name = "hotel security sleeper"
@@ -331,6 +332,7 @@
 	uniform = /obj/item/clothing/under/misc/assistantformal
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack
+	implants = list(/obj/item/implant/mindshield) //No revolutionaries, he's MY friend.
 
 /obj/effect/mob_spawn/human/syndicate
 	name = "Syndicate Operative"

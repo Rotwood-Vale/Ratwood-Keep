@@ -646,6 +646,9 @@
 			to_chat(name, span_danger("I bite [ML]!"))
 			if(armor >= 2)
 				return
+			for(var/thing in diseases)
+				var/datum/disease/D = thing
+				ML.ForceContractDisease(D)
 		else
 			ML.visible_message(span_danger("[src]'s bite misses [ML]!"), \
 							span_danger("I avoid [src]'s bite!"), span_hear("I hear jaws snapping shut!"), COMBAT_MESSAGE_RANGE, src)

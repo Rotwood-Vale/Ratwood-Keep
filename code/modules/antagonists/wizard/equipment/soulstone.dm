@@ -79,7 +79,7 @@
 		return
 	if(!ishuman(M))//If target is not a human.
 		return ..()
-	if(!M.mind.hasSoul)
+	if(!M.mind.hasSoul || is_devil(M))
 		to_chat(user, span_warning("This... thing has no soul! It's filled with evil!"))
 		return
 	log_combat(user, M, "captured [M.name]'s soul", src)

@@ -92,6 +92,7 @@
 #define VV_HK_GIB "gib"
 #define VV_HK_GIVE_SPELL "give_spell"
 #define VV_HK_REMOVE_SPELL "remove_spell"
+#define VV_HK_GIVE_DISEASE "give_disease"
 #define VV_HK_GODMODE "godmode"
 #define VV_HK_DROP_ALL "dropall"
 #define VV_HK_REGEN_ICONS "regen_icons"

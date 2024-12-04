@@ -1,5 +1,5 @@
 /datum/reagent/blood
-	data = list("donor"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null)
+	data = list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null)
 	name = "Blood"
 	color = "#C80000" // rgb: 200, 0, 0
 	metabolization_rate = 5 //fast rate so it disappears fast.
@@ -11,6 +11,18 @@
 	shot_glass_icon_state = "shotglassred"
 
 /datum/reagent/blood/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
+	if(data && data["viruses"])
+		for(var/thing in data["viruses"])
+			var/datum/disease/D = thing
+
+			if((D.spread_flags & DISEASE_SPREAD_SPECIAL) || (D.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS))
+				continue
+
+			if((method == TOUCH || method == VAPOR) && (D.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
+				L.ContactContractDisease(D)
+			else //ingest, patch or inject
+				L.ForceContractDisease(D)
+
 	if(iscarbon(L))
 		var/mob/living/carbon/C = L
 		if(C.get_blood_id() == /datum/reagent/blood && (method == INJECT || (method == INGEST && C.dna && C.dna.species && (DRINKSBLOOD in C.dna.species.species_traits))))
@@ -20,11 +32,42 @@
 				C.blood_volume = min(C.blood_volume + round(reac_volume, 0.1), BLOOD_VOLUME_MAXIMUM)
 
 
+/datum/reagent/blood/on_new(list/data)
+	if(istype(data))
+		SetViruses(src, data)
+
 /datum/reagent/blood/on_merge(list/mix_data)
 	if(data && mix_data)
 		if(data["blood_DNA"] != mix_data["blood_DNA"])
 			data["cloneable"] = 0 //On mix, consider the genetic sampling unviable for pod cloning if the DNA sample doesn't match.
+		if(data["viruses"] || mix_data["viruses"])
+
+			var/list/mix1 = data["viruses"]
+			var/list/mix2 = mix_data["viruses"]
+
+			// Stop issues with the list changing during mixing.
+			var/list/to_mix = list()
+
+			for(var/datum/disease/advance/AD in mix1)
+				to_mix += AD
+			for(var/datum/disease/advance/AD in mix2)
+				to_mix += AD
+
+			var/datum/disease/advance/AD = Advance_Mix(to_mix)
+			if(AD)
+				var/list/preserve = list(AD)
+				for(var/D in data["viruses"])
+					if(!istype(D, /datum/disease/advance))
+						preserve += D
+				data["viruses"] = preserve
 	return 1
+
+/datum/reagent/blood/proc/get_diseases()
+	. = list()
+	if(data && data["viruses"])
+		for(var/thing in data["viruses"])
+			var/datum/disease/D = thing
+			. += D
 
 /datum/reagent/blood/reaction_turf(turf/T, reac_volume)//splash the blood all over the place
 	if(!istype(T))
@@ -47,6 +90,36 @@
 	description = "You don't even want to think about what's in here."
 	taste_description = "gross iron"
 	shot_glass_icon_state = "shotglassred"
+
+/datum/reagent/vaccine
+	//data must contain virus type
+	name = "Vaccine"
+	color = "#C81040" // rgb: 200, 16, 64
+	taste_description = "slime"
+
+/datum/reagent/vaccine/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
+	if(islist(data) && (method == INGEST || method == INJECT))
+		for(var/thing in L.diseases)
+			var/datum/disease/D = thing
+			if(D.GetDiseaseID() in data)
+				D.cure()
+		L.disease_resistances |= data
+
+/datum/reagent/vaccine/on_merge(list/data)
+	if(istype(data))
+		src.data |= data.Copy()
+
+/datum/reagent/vaccine/fungal_tb
+
+/datum/reagent/vaccine/fungal_tb/New(data)
+	. = ..()
+	var/list/cached_data
+	if(!data)
+		cached_data = list()
+	else
+		cached_data = data
+	cached_data |= "[/datum/disease/tuberculosis]"
+	src.data = cached_data
 
 /datum/reagent/water
 	name = "Water"
@@ -772,6 +845,12 @@
 		C.blood_volume += 0.5
 	..()
 
+/datum/reagent/iron/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if(M.has_bane(BANE_IRON)) //If the target is weak to cold iron, then poison them.
+		if(holder && holder.chem_temp < 100) // COLD iron.
+			M.reagents.add_reagent(/datum/reagent/toxin, reac_volume)
+	..()
+
 /datum/reagent/gold
 	name = "Gold"
 	description = "Gold is a dense, soft, shiny metal and the most malleable and ductile metal known."
@@ -785,6 +864,11 @@
 	reagent_state = SOLID
 	color = "#D0D0D0" // rgb: 208, 208, 208
 	taste_description = "expensive yet reasonable metal"
+
+/datum/reagent/silver/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if(M.has_bane(BANE_SILVER))
+		M.reagents.add_reagent(/datum/reagent/toxin, reac_volume)
+	..()
 
 /datum/reagent/uranium
 	name ="Uranium"
@@ -971,6 +1055,28 @@
 	if(prob(10))
 		M.emote("drool")
 	..()
+
+/datum/reagent/fungalspores
+	name = "Tubercle bacillus Cosmosis microbes"
+	description = "Active fungal spores."
+	color = "#92D17D" // rgb: 146, 209, 125
+	can_synth = FALSE
+	taste_description = "slime"
+
+/datum/reagent/fungalspores/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
+	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
+		L.ForceContractDisease(new /datum/disease/tuberculosis(), FALSE, TRUE)
+
+/datum/reagent/snail
+	name = "Agent-S"
+	description = "Virological agent that infects the subject with Gastrolosis."
+	color = "#003300" // rgb(0, 51, 0)
+	taste_description = "goo"
+	can_synth = FALSE //special orange man request
+
+/datum/reagent/snail/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
+	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
+		L.ForceContractDisease(new /datum/disease/gastrolosis(), FALSE, TRUE)
 
 /datum/reagent/fluorosurfactant//foam precursor
 	name = "Fluorosurfactant"
@@ -1527,6 +1633,50 @@
 		qdel(O)
 		new /obj/item/clothing/shoes/galoshes/dry(t_loc)
 
+// Virology virus food chems.
+
+/datum/reagent/toxin/mutagen/mutagenvirusfood
+	name = "mutagenic agar"
+	color = "#A3C00F" // rgb: 163,192,15
+	taste_description = "sourness"
+
+/datum/reagent/toxin/mutagen/mutagenvirusfood/sugar
+	name = "sucrose agar"
+	color = "#41B0C0" // rgb: 65,176,192
+	taste_description = "sweetness"
+
+/datum/reagent/medicine/synaptizine/synaptizinevirusfood
+	name = "virus rations"
+	color = "#D18AA5" // rgb: 209,138,165
+	taste_description = "bitterness"
+
+/datum/reagent/toxin/plasma/plasmavirusfood
+	name = "virus plasma"
+	color = "#A270A8" // rgb: 166,157,169
+	taste_description = "bitterness"
+	taste_mult = 1.5
+
+/datum/reagent/toxin/plasma/plasmavirusfood/weak
+	name = "weakened virus plasma"
+	color = "#A28CA5" // rgb: 206,195,198
+	taste_description = "bitterness"
+	taste_mult = 1.5
+
+/datum/reagent/uranium/uraniumvirusfood
+	name = "decaying uranium gel"
+	color = "#67ADBA" // rgb: 103,173,186
+	taste_description = "the inside of a reactor"
+
+/datum/reagent/uranium/uraniumvirusfood/unstable
+	name = "unstable uranium gel"
+	color = "#2FF2CB" // rgb: 47,242,203
+	taste_description = "the inside of a reactor"
+
+/datum/reagent/uranium/uraniumvirusfood/stable
+	name = "stable uranium gel"
+	color = "#04506C" // rgb: 4,80,108
+	taste_description = "the inside of a reactor"
+
 // Bee chemicals
 
 /datum/reagent/royal_bee_jelly
@@ -1693,6 +1843,18 @@
 	if(prob(30))
 		to_chat(M, "You should sit down and take a rest...")
 	..()
+
+/datum/reagent/tranquility
+	name = "Tranquility"
+	description = "A highly mutative liquid of unknown origin."
+	color = "#9A6750" //RGB: 154, 103, 80
+	taste_description = "inner peace"
+	can_synth = FALSE
+
+/datum/reagent/tranquility/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
+	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
+		L.ForceContractDisease(new /datum/disease/transformation/gondola(), FALSE, TRUE)
+
 
 /datum/reagent/spider_extract
 	name = "Spider Extract"

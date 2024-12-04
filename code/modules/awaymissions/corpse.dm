@@ -22,6 +22,7 @@
 	var/brute_damage = 0
 	var/oxy_damage = 0
 	var/burn_damage = 0
+	var/datum/disease/disease = null //Do they start with a pre-spawned disease?
 	var/mob_color //Change the mob's color
 	var/assignedrole
 	var/show_flavour = TRUE
@@ -80,6 +81,8 @@
 		M.gender = mob_gender
 	if(faction)
 		M.faction = list(faction)
+	if(disease)
+		M.ForceContractDisease(new disease)
 	if(death)
 		M.death(1) //Kills the new mob
 

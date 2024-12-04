@@ -148,7 +148,7 @@
 			else
 				used_limb = affecting.body_zone
 		return used_limb
-
+	
 	affecting = get_bodypart(check_zone(override_zone))
 	if(override_zone && affecting)
 		if(override_zone in affecting.grabtargets)
@@ -253,6 +253,16 @@
 		to_chat(user, span_warning("[src] is missing that."))
 		return FALSE
 
+	for(var/thing in diseases)
+		var/datum/disease/D = thing
+		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
+			user.ContactContractDisease(D)
+
+	for(var/thing in user.diseases)
+		var/datum/disease/D = thing
+		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
+			ContactContractDisease(D)
+
 	if(!user.cmode)
 		var/try_to_fail = !istype(user.rmb_intent, /datum/rmb_intent/weak)
 		var/list/possible_steps = list()
@@ -283,11 +293,25 @@
 
 
 /mob/living/carbon/attack_paw(mob/living/carbon/monkey/M)
+	if(can_inject(M, TRUE))
+		for(var/thing in diseases)
+			var/datum/disease/D = thing
+			if((D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN) && prob(85))
+				M.ContactContractDisease(D)
+
+	for(var/thing in M.diseases)
+		var/datum/disease/D = thing
+		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
+			ContactContractDisease(D)
+
 	if(M.used_intent.type == INTENT_HELP)
 		help_shake_act(M)
 		return 0
 
 	if(..()) //successful monkey bite.
+		for(var/thing in M.diseases)
+			var/datum/disease/D = thing
+			ForceContractDisease(D)
 		return 1
 
 /mob/living/carbon/proc/dismembering_strike(mob/living/attacker, dam_zone)
@@ -369,7 +393,7 @@
 //		if(buckled)
 //			to_chat(M, span_warning("I need to unbuckle [src] first to do that!"))
 //			return
-//		M.visible_message(span_notice("[M] shakes [src] trying to get [p_them()] up!"), span_notice("I shake [src] trying to get [p_them()] up!"))
+//		M.visible_message(span_notice("[M] shakes [src] trying to get [p_them()] up!"), span_notice("I shake [src] trying to get [p_them()] up!"))					
 //	else
 	M.visible_message(span_notice("[M] shakes [src]."), \
 				span_notice("I shake [src] to get [p_their()] attention."))
@@ -394,7 +418,7 @@
 		if(Wing == null)
 			to_chat(M, span_warning("They cant stand without their wings!"))
 			return
-
+	
 	set_resting(FALSE)
 
 	playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
@@ -442,10 +466,14 @@
 
 			else
 				to_chat(src, span_warning("My eyes are really starting to hurt. This can't be good for you!"))
+		if(has_bane(BANE_LIGHT))
+			mind.disrupt_spells(-500)
 		return 1
 	else if(damage == 0) // just enough protection
 		if(prob(20))
 			to_chat(src, span_notice("Something bright flashes in the corner of my vision!"))
+		if(has_bane(BANE_LIGHT))
+			mind.disrupt_spells(0)
 
 
 /mob/living/carbon/soundbang_act(intensity = 1, stun_pwr = 20, damage_pwr = 5, deafen_pwr = 15)
