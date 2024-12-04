@@ -62,7 +62,7 @@
 
 /datum/vore_look/proc/gen_vui(var/mob/living/user)
 	var/dat
-	dat += "Remember to toggle the vore mode, it's to the left of your combat toggle. Open mouth means you're voracious!<br>"
+	dat += "You need to click 'Hunger for Seelie' in the emote tab to eat a seelie. They also need to have the devourable and feedable options selected.<br>"
 	dat += "Remember that the prey is blind, use audible mode subtle messages to communicate to them with posts!<br>"
 	dat += "<HR>"
 	var/atom/userloc = user.loc
