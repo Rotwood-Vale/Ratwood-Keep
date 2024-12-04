@@ -212,7 +212,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Goblin Smith",
 	"Goblin Shaman")
 	var/num_bandits = 0
-	var/limit_bandits = pick(4,6,7,7,8)
+	var/limit_bandits = pick(4,5,6,7,8)
 	if(num_players() >= 12)
 		// 1 bandit per 12 players,
 		num_bandits = round(num_players() / 12)
