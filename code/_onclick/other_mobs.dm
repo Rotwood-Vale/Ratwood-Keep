@@ -212,7 +212,7 @@
 				if(user.grab_state == GRAB_AGGRESSIVE)
 					visible_message(span_danger("[user] is putting [src] in their mouth!"), \
 									span_userdanger("[user] is putting me in their mouth!"))
-					if(do_after(user, 5 SECONDS, target = src))
+					if(do_after(user, 10 SECONDS, target = src))
 						src.gib()
 
 	var/obj/item/bodypart/affecting = get_bodypart(check_zone(def_zone))
