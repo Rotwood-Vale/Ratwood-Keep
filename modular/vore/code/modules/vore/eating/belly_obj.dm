@@ -99,8 +99,7 @@
 		"%pred's %belly churns you down into a hot slush. Your nutrient-rich remains course through their digestive track with a series of long, wet glorps.")
 
 	var/list/examine_messages = list(
-		"They have something solid in their %belly!",
-		"It looks like they have something in their %belly!")
+		"They've got fairy dust on them...")
 
 	//Mostly for being overridden on precreated bellies on mobs. Could be VV'd into
 	//a carbon's belly if someone really wanted. No UI for carbons to adjust this.
