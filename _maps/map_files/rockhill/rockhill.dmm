@@ -23184,6 +23184,8 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/flint,
 /obj/item/clothing/under/roguetown/tights/stockings/silk/random,
+/obj/item/clothing/suit/roguetown/shirt/steward/dress,
+/obj/item/clothing/suit/roguetown/shirt/steward,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "sbQ" = (
