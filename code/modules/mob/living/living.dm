@@ -1029,6 +1029,11 @@
 		log_combat(src, pulledby, "resisted grab")
 		resist_grab()
 		return
+	
+	// CIT CHANGE - climbing out of a gut.
+	if(vore_process_resist())
+		//Sure, give clickdelay for anti spam. shouldn't be combat voring anyways.
+		return TRUE
 
 	//unbuckling yourself
 	if(buckled && last_special <= world.time)

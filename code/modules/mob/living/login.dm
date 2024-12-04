@@ -30,7 +30,8 @@
 	if(ranged_ability)
 		ranged_ability.add_ranged_ability(src, span_notice("I currently have <b>[ranged_ability]</b> active!"))
 
-
+	if((vore_flags & VORE_INIT) && !(vore_flags & VOREPREF_INIT)) //Vore's been initialized, voreprefs haven't. If this triggers then that means that voreprefs failed to load due to the client being missing.
+		copy_from_prefs_vr()
 
 /mob/living/proc/login_fade()
 	set waitfor = FALSE
