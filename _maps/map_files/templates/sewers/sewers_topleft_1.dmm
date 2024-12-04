@@ -108,7 +108,7 @@
 /obj/structure/table/wood{
 	icon_state = "largetable"
 	},
-/obj/item/keyring,
+/obj/item/storage/keyring,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "z" = (

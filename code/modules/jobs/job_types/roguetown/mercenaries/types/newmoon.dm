@@ -25,7 +25,7 @@
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/newmoon
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
-	beltr = /obj/item/keyring/mercenary
+	beltr = /obj/item/storage/keyring/mercenary
 	beltl = /obj/item/rogueweapon/huntingknife/idagger
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/sword/sabre_freeze

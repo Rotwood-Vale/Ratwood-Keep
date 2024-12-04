@@ -399,7 +399,7 @@
 					return
 				if(src.incapacitated(ignore_restraints = TRUE))
 					return
-				if(!get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs="other"))
+				if(is_mouth_covered())
 					to_chat(src, span_warning("My mouth is blocked."))
 					return
 				if(HAS_TRAIT(src, TRAIT_NO_BITE))
