@@ -145,6 +145,19 @@
                 /obj/item/natural/fibers = 1)
 	craftdiff = 2
 
+/datum/crafting_recipe/roguetown/sewing/fauld
+	name = "fauld - (2 cloths, fiber; APPRENTICE)"
+	result = list(/obj/item/clothing/cloak/fauld)
+	reqs =  list(/obj/item/natural/cloth = 2,
+                /obj/item/natural/fibers = 1)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/sewing/fauld
+	name = "battle skirt - (2 cloths, fiber; APPRENTICE)"
+	result = list(/obj/item/clothing/cloak/fauld/battleskirt)
+	reqs =  list(/obj/item/natural/cloth = 2,
+                /obj/item/natural/fibers = 1)
+	craftdiff = 2
 /* craftdif of 3 = JOURNEYMAN */
 
 /datum/crafting_recipe/roguetown/sewing/armingjacket
