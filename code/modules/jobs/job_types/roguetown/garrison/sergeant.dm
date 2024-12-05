@@ -34,11 +34,11 @@
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "man-at-arms jupon ([index])"
+			S.name = "sergeant jupon ([index])"
 
 /datum/outfit/job/roguetown/sergeant/pre_equip(mob/living/carbon/human/H)
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	cloak = /obj/item/clothing/cloak/stabard/guard
+	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather/black
@@ -51,7 +51,8 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale	
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-	backpack_contents = list(/obj/item/signal_horn = 1)
+	id = /obj/item/scomstone
+	backpack_contents = list(/obj/item/signal_horn = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
