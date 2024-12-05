@@ -450,8 +450,8 @@
 /datum/sex_controller/proc/update_blueballs()
 	if(arousal >= BLUEBALLS_GAIN_THRESHOLD)
 		user.add_stress(/datum/stressevent/blueb)
-	else if (arousal <= BLUEBALLS_LOOSE_THRESHOLD)
-		user.remove_stress(/datum/stressevent/blueb)
+	else if (arousal >= BLUEBALLS_GAIN_THRESHOLD) && (!HAS_TRAIT(M, TRAIT_CRACKHEAD))
+		user.add_stress(/datum/stressevent/baothanblueb)
 
 /datum/sex_controller/proc/check_active_ejaculation()
 	if(arousal < ACTIVE_EJAC_THRESHOLD)

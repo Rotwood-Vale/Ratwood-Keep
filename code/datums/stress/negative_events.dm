@@ -8,6 +8,11 @@
 	stressadd = 2
 	desc = span_red("Smells like death here.")
 
+/datum/stressevent/miasmagas/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_ORGAN_EATER) && !HAS_TRAIT(M, TRAIT_NASTY_EATER) && !HAS_TRAIT(M, TRAIT_NOSTINK))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/peckish
 	timer = 10 MINUTES
 	stressadd = 1
@@ -43,6 +48,11 @@
 	stressadd = 5
 	desc = span_boldred("I've lost a limb.")
 
+/datum/stressevent/dismembered/can_apply(mob/living/user)
+	if(user.has_flaw(/datum/charflaw/masochist))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/dwarfshaved
 	timer = 40 MINUTES
 	stressadd = 6
@@ -65,6 +75,11 @@
 	stressadd_per_extra_stack = 2
 	desc = span_red("Butchery.")
 
+/datum/stressevent/viewdismember/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_ORGAN_EATER) && !HAS_TRAIT(M, TRAIT_STEELHEARTED))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/fviewdismember
 	timer = 1 MINUTES
 	max_stacks = 10
@@ -72,10 +87,20 @@
 	stressadd_per_extra_stack = 1
 	desc = span_red("I saw something horrible!")
 
+/datum/stressevent/fviewdismember/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_ORGAN_EATER) && !HAS_TRAIT(M, TRAIT_STEELHEARTED))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/viewgib
 	timer = 5 MINUTES
 	stressadd = 2
 	desc = span_red("I saw something ghastly.")
+
+/datum/stressevent/viewgib/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_ORGAN_EATER))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/bleeding
 	timer = 2 MINUTES
@@ -108,19 +133,34 @@
 	desc = span_red("I fell. I'm a fool.")
 
 /datum/stressevent/hatezizo
-	timer = 99999 MINUTES
+	timer = 999 MINUTES
 	stressadd = 10
 	desc = "<span class='red'>ZIZOZIZOZIZO</span>"
+
+/datum/stressevent/hatezizo/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_ZIZO_MARKED))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/burntmeal
 	timer = 2 MINUTES
 	stressadd = 2
 	desc = span_red("YUCK!")
 
+/datum/stressevent/burntmeal/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/rotfood
 	timer = 2 MINUTES
 	stressadd = 4
 	desc = span_red("YUCK!")
+
+/datum/stressevent/rotfood/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/psycurse
 	timer = 999 MINUTES
@@ -137,12 +177,22 @@
 	stressadd = 2
 	desc = span_red("It tastes VILE!")
 
+/datum/stressevent/badmeal/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/vomit
 	timer = 3 MINUTES
 	stressadd = 2
 	max_stacks = 3
 	stressadd_per_extra_stack = 2
 	desc = span_red("I puked!")
+
+/datum/stressevent/vomit/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/vomitself
 	timer = 3 MINUTES
@@ -156,15 +206,30 @@
 	stressadd = 5
 	desc = span_boldred("I was violated.")
 
+/datum/stressevent/cumbad/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_CRACKHEAD))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/cumcorpse
 	timer = 1 MINUTES
 	stressadd = 10
 	desc = span_boldred("What have I done?")
 
+/datum/stressevent/cumcorpse/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_CRACKHEAD))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/blueb
 	timer = 1 MINUTES
 	stressadd = 2
 	desc = span_red("My loins ache!")
+
+/datum/stressevent/blueb/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_CRACKHEAD))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/leechcult
 	timer = 1 MINUTES
@@ -184,7 +249,7 @@
 /datum/stressevent/shunned_race_xenophobic
 	timer = 2 MINUTES
 	stressadd = 5
-	desc = span_red("Better stay away.")
+	desc = span_red("Disgusting lesser, get them away.")
 
 /datum/stressevent/paracrowd
 	timer = 15 SECONDS
@@ -195,6 +260,11 @@
 	timer = 15 SECONDS
 	stressadd = 3
 	desc = span_red("There is so much blood here.. it's like a battlefield!")
+
+/datum/stressevent/viewdismember/can_apply(mob/living/user)
+	if(!HAS_TRAIT(M, TRAIT_ORGAN_EATER) && !HAS_TRAIT(M, TRAIT_STEELHEARTED))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/parastr
 	timer = 2 MINUTES
@@ -227,6 +297,11 @@
 	stressadd_per_extra_stack = 2
 	desc = span_boldred("I'm broken.")
 	timer = 60 SECONDS
+
+/datum/stressevent/tortured/can_apply(mob/living/user)
+	if(user.has_flaw(/datum/charflaw/masochist))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/confessed
 	stressadd = 3
