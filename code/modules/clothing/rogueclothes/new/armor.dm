@@ -20,6 +20,31 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	salvage_result = /obj/item/natural/hide/cured
 
+/obj/item/clothing/suit/roguetown/armor/leathercoat/attack_right(mob/user)
+	if(detail_tag)
+		return
+	var/the_time = world.time
+	var/pickedcolor = input(user, "Select a color.","Coat Color") as null|anything in CLOTHING_COLOR_NAMES
+	if(!pickedcolor)
+		return
+	if(world.time > (the_time + 30 SECONDS))
+		return
+	detail_tag = "_det"
+	detail_color = clothing_color2hex(pickedcolor)
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_armor()
+
+/obj/item/clothing/suit/roguetown/armor/leathercoat/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
 /obj/item/clothing/suit/roguetown/armor/leathercoat/heavy
 	name = "heavy leather coat"
 	desc = "A long leather coat made with the best furs around. Thicker than the common coat, offers exceptional protection."
