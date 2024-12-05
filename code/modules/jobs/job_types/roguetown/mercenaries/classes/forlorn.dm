@@ -10,38 +10,118 @@
 
 /datum/outfit/job/roguetown/mercenary/forlorn/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots
-	neck = /obj/item/clothing/neck/roguetown/gorget/forlorncollar
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-	pants = /obj/item/clothing/under/roguetown/tights/black
-	gloves = /obj/item/clothing/gloves/roguetown/leather/black
-	belt = /obj/item/storage/belt/rogue/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/rogueweapon/mace/warhammer/steel
-	backr = /obj/item/storage/backpack/rogue/satchel
-	backl = /obj/item/rogueweapon/shield/heater
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife, /obj/item/roguekey/mercenary)
 
-	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("endurance", 3) // tuff boys
-		H.change_stat("constitution", 2) 
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	H.adjust_blindness(-3)
+	var/classes = list("Bindbreaker","Lashturner","Bladehand")
+	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
+	switch(classchoice)
+		if("Bindbreaker")
+			H.set_blindness(0)
+			to_chat(H, span_warning("There is no better tool to break through the armoured hands that hold those in binds, than that of the simple hammer; and so you use it well to this day- even if now it is a tool fit for war, more than smithing."))
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+			shoes = /obj/item/clothing/shoes/roguetown/boots
+			neck = /obj/item/clothing/neck/roguetown/gorget/forlorncollar
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
+			pants = /obj/item/clothing/under/roguetown/tights/black
+			gloves = /obj/item/clothing/gloves/roguetown/leather/black
+			belt = /obj/item/storage/belt/rogue/leather
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
+			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
+			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+			beltl = /obj/item/rogueweapon/mace/warhammer/steel
+			backr = /obj/item/storage/backpack/rogue/satchel
+			backl = /obj/item/rogueweapon/shield/heater
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife, /obj/item/roguekey/mercenary)
+			H.change_stat("strength", 2)
+			H.change_stat("endurance", 3) // tuff boys
+			H.change_stat("constitution", 2) 
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+		if("Lashturner")
+			H.set_blindness(0)
+			to_chat(H, span_warning("The whip may be seen as a tool of captors and slavers by most, perhaps even your comrades; but to you it holds another meaning, to turn the arms and abuse of your former masters unto themselves."))
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+			shoes = /obj/item/clothing/shoes/roguetown/boots
+			neck = /obj/item/clothing/neck/roguetown/gorget/forlorncollar
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
+			pants = /obj/item/clothing/under/roguetown/tights/black
+			gloves = /obj/item/clothing/gloves/roguetown/leather/black
+			belt = /obj/item/storage/belt/rogue/leather
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
+			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
+			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+			beltl = /obj/item/rogueweapon/whip
+			backr = /obj/item/storage/backpack/rogue/satchel
+			backl = /obj/item/rogueweapon/shield/heater
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife, /obj/item/roguekey/mercenary)
+			H.change_stat("strength", 2)
+			H.change_stat("endurance", 3) // tuff boys
+			H.change_stat("constitution", 2) 
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+		if("Bladehand")
+			H.set_blindness(0)
+			to_chat(H, span_warning("Come the time of your freedom, you had used the knives and shears of your captors to slit their throats and spill their bowels; though those times have passed- your aptitude for knives has not."))
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+			shoes = /obj/item/clothing/shoes/roguetown/boots
+			neck = /obj/item/clothing/neck/roguetown/gorget/forlorncollar
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
+			pants = /obj/item/clothing/under/roguetown/tights/black
+			gloves = /obj/item/clothing/gloves/roguetown/leather/black
+			belt = /obj/item/storage/belt/rogue/leather
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
+			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
+			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
+			beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+			backr = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife, /obj/item/roguekey/mercenary,/obj/item/storage/belt/rogue/pouch/coins/poor)
+			H.change_stat("strength", 2)
+			H.change_stat("endurance", 3) // tuff boys
+			H.change_stat("constitution", 2) 
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
