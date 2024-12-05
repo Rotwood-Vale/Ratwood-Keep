@@ -164,7 +164,7 @@
                 /obj/item/natural/fibers = 1)
 	craftdiff = 2
 
-/datum/crafting_recipe/roguetown/sewing/fauld
+/datum/crafting_recipe/roguetown/sewing/skirt
 	name = "battle skirt - (2 cloths, fiber; APPRENTICE)"
 	result = list(/obj/item/clothing/cloak/fauld/battleskirt)
 	reqs =  list(/obj/item/natural/cloth = 2,
