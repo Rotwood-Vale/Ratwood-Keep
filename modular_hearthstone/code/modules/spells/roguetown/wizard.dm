@@ -1216,7 +1216,7 @@
 	randomdir = FALSE
 	duration = 3 SECONDS
 	layer = MASSIVE_OBJ_LAYER
-	light_range = 2
+	light_outer_range = 2
 	light_color = COLOR_PALE_PURPLE_GRAY
 
 

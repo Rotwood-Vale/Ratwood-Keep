@@ -210,10 +210,8 @@
 					caused_wound?.werewolf_infect_attempt()
 					if(prob(30))
 						user.werewolf_feed(src, 10)
-			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
-				var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
-				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
-					user.mind.adjust_triumphs(1)
+				if(user.mind.has_antag_datum(/datum/antagonist/zombie) && !src.mind.has_antag_datum(/datum/antagonist/zombie))
+					INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, zombie_infect_attempt))
 
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)
