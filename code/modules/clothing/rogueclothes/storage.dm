@@ -315,6 +315,10 @@
 		STR.max_combined_w_class = 18
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 4
+		STR.click_gather = TRUE
+		STR.allow_quick_empty = TRUE
+		STR.allow_dump_out = TRUE
+
 
 /obj/item/storage/backpack/rogue/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -344,6 +348,7 @@
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
+		STR.allow_dump_out = TRUE
 /*
 /obj/item/storage/belt/rogue/pickles
 	name = "jar of pickles"

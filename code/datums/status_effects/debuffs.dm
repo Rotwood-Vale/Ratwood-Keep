@@ -248,7 +248,7 @@
 	id = "pacify"
 	status_type = STATUS_EFFECT_REPLACE
 	tick_interval = 1
-	duration = 75
+	duration = 85
 	alert_type = null
 
 /datum/status_effect/eorapacify/on_creation(mob/living/new_owner, set_duration)

@@ -15,7 +15,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	backr = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather
-	backpack_contents = list(/obj/item/bait = 1, /obj/item/flashlight/flare/torch/metal = 1)
+	backpack_contents = list(/obj/item/bait = 1, /obj/item/flashlight/flare/torch/metal = 1, /obj/item/lockpick = 1)
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -42,6 +42,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("perception", 1)
 		H.change_stat("intelligence", 1)

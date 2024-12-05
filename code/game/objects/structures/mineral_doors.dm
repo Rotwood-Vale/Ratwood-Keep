@@ -223,7 +223,7 @@
 				user.visible_message(span_warning("[user] smashes through [src]!"))
 			return
 		if(locked)
-			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/keyring))
+			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/storage/keyring))
 				src.attackby(user.get_active_held_item(), user, TRUE)
 				return
 			rattle()
@@ -335,7 +335,7 @@
 	isSwitchingStates = FALSE
 	SEND_SIGNAL(src, COMSIG_DOOR_CLOSED, src)
 	if(autobump && src.Adjacent(last_bumper))
-		if(istype(last_bumper.get_active_held_item(), /obj/item/key) || istype(last_bumper.get_active_held_item(), /obj/item/keyring))
+		if(istype(last_bumper.get_active_held_item(), /obj/item/key) || istype(last_bumper.get_active_held_item(), /obj/item/storage/keyring))
 			src.attack_right(last_bumper)
 	last_bumper = null
 
@@ -366,7 +366,7 @@
 
 /obj/structure/mineral_door/attackby(obj/item/I, mob/user, autobump = FALSE)
 	user.changeNext_move(CLICK_CD_FAST)
-	if(istype(I, /obj/item/key) || istype(I, /obj/item/keyring))
+	if(istype(I, /obj/item/key) || istype(I, /obj/item/storage/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
 			rattle()
@@ -379,6 +379,8 @@
 			return
 //	else if(user.used_intent.type != INTENT_HARM)
 //		return attack_hand(user)
+	if(istype(I, /obj/item/lockpick))
+		trypicklock(I, user)
 	else
 		if(repairable && (user.mind.get_skill_level(repair_skill) > 0) && ((istype(I, repair_cost_first)) || (istype(I, repair_cost_second)))) // At least 1 skill level needed
 			repairdoor(I,user)
@@ -433,7 +435,7 @@
 /obj/structure/mineral_door/attack_right(mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
-	if(istype(item, /obj/item/key) || istype(item, /obj/item/keyring))
+	if(istype(item, /obj/item/key) || istype(item, /obj/item/storage/keyring))
 		if(locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the left."))
 			rattle()
@@ -450,11 +452,11 @@
 	if(lockbroken)
 		to_chat(user, span_warning("The lock to this door is broken."))
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(istype(I,/obj/item/keyring))
-		var/obj/item/keyring/R = I
-		if(!R.keys.len)
+	if(istype(I,/obj/item/storage/keyring))
+		var/obj/item/storage/keyring/R = I
+		if(!R.contents.len)
 			return
-		var/list/keysy = shuffle(R.keys.Copy())
+		var/list/keysy = shuffle(R.contents.Copy())
 		for(var/obj/item/key/K in keysy)
 			if(user.cmode)
 				if(!do_after(user, 10, TRUE, src))
@@ -486,6 +488,62 @@
 			rattle()
 		return
 
+/obj/structure/mineral_door/proc/trypicklock(obj/item/I, mob/user)
+	if(door_opened || isSwitchingStates)
+		to_chat(user, "<span class='warning'>This cannot be picked while it is open.</span>")
+		return
+	if(!keylock)
+		return
+	if(lockbroken)
+		to_chat(user, "<span class='warning'>The lock to this door is broken.</span>")
+		user.changeNext_move(CLICK_CD_MELEE)
+	else
+		var/lockprogress = 0
+		var/locktreshold = 100
+
+		var/mob/living/L = user
+
+		var/pickskill = user.mind.get_skill_level(/datum/skill/misc/lockpicking)
+		var/perbonus = L.STAPER/2
+		var/luckbonus = L.STALUC/4
+		var/picktime = 70
+		var/pickchance = 35
+		var/moveup = 10
+
+		picktime -= (pickskill * 10)
+		picktime = clamp(picktime, 10, 70)
+
+		moveup += (pickskill * 3)
+		moveup = clamp(moveup, 10, 30)
+
+		pickchance += pickskill * 10
+		pickchance += perbonus
+		pickchance += luckbonus
+		pickchance = clamp(pickchance, 1, 95)
+
+		while(!QDELETED(I) &&(lockprogress < locktreshold))
+			if(!do_after(user, picktime, target = src))
+				break
+			if(prob(pickchance))
+				lockprogress += moveup
+				playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
+				to_chat(user, "<span class='warning'>Click...</span>")
+				if(L.mind)
+					var/amt2raise = L.STAINT
+					var/boon = L.STALUC/4
+					L.mind.adjust_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
+				if(lockprogress >= locktreshold)
+					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
+					lock_toggle(user)
+					break
+				else
+					continue
+			else
+				playsound(loc, 'sound/items/pickbad.ogg', 40, TRUE)
+				I.take_damage(1)
+				to_chat(user, "<span class='warning'>Clack.</span>")
+				continue
+		return
 
 /obj/structure/mineral_door/proc/lock_toggle(mob/user)
 	if(isSwitchingStates || door_opened)

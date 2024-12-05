@@ -55,39 +55,38 @@
 	else
 		icon_regular_floor = icon_state
 
-/turf/open/floor/ex_act(severity, target)
+/turf/open/floor/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	var/shielded = is_shielded()
 	..()
 	if(severity != 1 && shielded && target != src)
 		return
 	if(target == src)
 		ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+		take_damage(INFINITY, BRUTE, "bomb", 0)
 		return
-	if(target != null)
-		severity = 3
+	var/ddist = devastation_range
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fdist = flame_range
+	var/fodist = get_dist(src, epicenter)
+	var/brute_loss = 0
+	var/dmgmod = round(rand(0.1, 2), 0.1)
 
-	switch(severity)
-		if(1)
-			ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
-		if(2)
-			switch(pick(1,2;75,3))
-				if(1)
-					if(!length(baseturfs))
-						ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-					else
-						ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
-				if(2)
-					ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
-				if(3)
-					if(prob(80))
-						ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-					else
-						break_tile()
-					hotspot_expose(1000,CELL_VOLUME)
-		if(3)
-			if (prob(50))
-				src.break_tile()
-				src.hotspot_expose(1000,CELL_VOLUME)
+	switch (severity)
+		if (EXPLODE_DEVASTATE)
+			brute_loss = ((250 * ddist) - (250 * fodist) * dmgmod)
+
+		if (EXPLODE_HEAVY)
+			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod)
+
+		if(EXPLODE_LIGHT)
+			brute_loss = ((25 * ldist) - (25 * fodist) * dmgmod)
+
+	take_damage(brute_loss, BRUTE, "bomb", 0)
+
+	if(fdist && !QDELETED(src))
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
 
 /turf/open/floor/is_shielded()
 	for(var/obj/structure/A in contents)
