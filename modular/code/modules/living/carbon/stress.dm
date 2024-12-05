@@ -28,7 +28,7 @@
 	stressadd = -5
 	desc = "<span class='green'>Pain makes it better.</span>"
 
-/datum/stressevent/baothanblueb
-	timer = 3 MINUTES
-	stressadd = -10
-	desc = "<span class='green'>My loins ache in ecstacy!.</span>"
+// /datum/stressevent/baothanblueb
+// 	timer = 3 MINUTES
+// 	stressadd = -10
+// 	desc = "<span class='green'>My loins ache in ecstacy!.</span>"
