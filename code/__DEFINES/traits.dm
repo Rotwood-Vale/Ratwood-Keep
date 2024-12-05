@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_VINE_WALKER = "I can gracefully cross through weepvines.",
 	TRAIT_SOUL_EXAMINE = span_deadsay("I know when someone's soul has departed."),
 	TRAIT_CRACKHEAD = span_love("I can use drugs as much as I want!"),
-	TRAIT_ZIZO_MARKED = span_zizo("Zizo is steering me to evil and chaos, it feels amazing"),
+	TRAIT_ZIZO_MARKED = span_info("Zizo is steering me to evil and chaos, it feels amazing"),
 	TRAIT_COMMIE = span_bloody("I can recognize other free men, and they can recognize me too."),
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
