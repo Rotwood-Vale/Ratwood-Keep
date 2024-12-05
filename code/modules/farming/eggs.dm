@@ -11,9 +11,7 @@
 	foodtype = MEAT
 	grind_results = list()
 	rotprocess = 15 MINUTES
-	become_rot_type = /obj/item/reagent_containers/food/snacks/rotten/egg
-
-	var/fertile = FALSE
+	var/fertile = TRUE
 
 /obj/item/reagent_containers/food/snacks/egg/become_rotten()
 	. = ..()

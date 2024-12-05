@@ -1417,12 +1417,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		var/atom/the_atom2 = target
 		REMOVE_TRAIT(the_atom2,trait,source)
 
-/proc/get_random_food()
-	var/list/blocked = list()
-	blocked |= typesof(/obj/item/reagent_containers/food/snacks/customizable)
-
-	return pick(subtypesof(/obj/item/reagent_containers/food/snacks) - blocked)
-
 //For these two procs refs MUST be ref = TRUE format like typecaches!
 /proc/weakref_filter_list(list/things, list/refs)
 	if(!islist(things) || !islist(refs))
