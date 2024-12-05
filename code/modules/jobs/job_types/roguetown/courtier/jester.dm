@@ -42,6 +42,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 		if(!isseelie(H))	
 			H.STASTR = clamp(roll("4d6-4"), 1, 20)
 			H.STAINT = clamp(roll("4d6-4"), 1, 20)

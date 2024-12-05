@@ -6607,6 +6607,13 @@
 /obj/structure/roguewindow/openclose,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"fcU" = (
+/obj/structure/bed/rogue,
+/obj/effect/landmark/start/artificer,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town)
 "fdc" = (
 /obj/item/chair/rogue/crafted,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -13440,11 +13447,6 @@
 /obj/structure/fluff/railing/fence,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-"ksR" = (
-/obj/structure/bed/rogue,
-/obj/effect/landmark/start/architect,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/dwarfin)
 "ksW" = (
 /turf/open/floor/rogue/rooftop/green,
 /area/rogue/outdoors/rtfield)
@@ -17095,6 +17097,11 @@
 /obj/structure/plough,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"nuA" = (
+/obj/structure/bed/rogue,
+/obj/effect/landmark/start/architect,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/dwarfin)
 "nuH" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/rtfield)
@@ -21699,13 +21706,6 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/town)
-"qVv" = (
-/obj/structure/bed/rogue,
-/obj/effect/landmark/start/artificer,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town)
 "qVN" = (
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 8
@@ -23023,6 +23023,14 @@
 	dir = 4
 	},
 /area/rogue/indoors/town/manor)
+"rUg" = (
+/obj/structure/closet/crate/roguecloset,
+/obj/item/flint,
+/obj/item/clothing/under/roguetown/tights/stockings/silk/random,
+/obj/item/clothing/suit/roguetown/shirt/steward/dress,
+/obj/item/clothing/suit/roguetown/shirt/steward,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor)
 "rUt" = (
 /turf/open/floor/rogue/rooftop/green{
 	dir = 4
@@ -23203,12 +23211,6 @@
 /obj/structure/fluff/walldeco/stone,
 /turf/closed/wall/mineral/rogue/stone/red_moss,
 /area/rogue/indoors/town/bath)
-"sbM" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/flint,
-/obj/item/clothing/under/roguetown/tights/stockings/silk/random,
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/manor)
 "sbQ" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -393159,7 +393161,7 @@ jFa
 mvp
 sco
 mvp
-ksR
+nuA
 sco
 fZJ
 fZJ
@@ -394365,7 +394367,7 @@ mvp
 mvp
 sco
 mvp
-ksR
+nuA
 sco
 fZJ
 fZJ
@@ -395571,7 +395573,7 @@ evV
 mvp
 sco
 mvp
-ksR
+nuA
 sco
 fZJ
 fZJ
@@ -401184,7 +401186,7 @@ fZJ
 fZJ
 fZJ
 nvm
-qVv
+fcU
 bmi
 bMm
 bmi
@@ -402390,7 +402392,7 @@ fZJ
 fZJ
 fZJ
 uEt
-qVv
+fcU
 vWs
 thT
 ahL
@@ -500841,7 +500843,7 @@ xAt
 gLq
 usG
 oif
-sbM
+rUg
 gkZ
 xMp
 bTC

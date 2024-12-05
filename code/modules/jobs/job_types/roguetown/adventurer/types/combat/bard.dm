@@ -41,6 +41,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, pick(4,5), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/tights/random
@@ -54,6 +55,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			backpack_contents = list(/obj/item/lockpick = 1)
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 2)
 			H.change_stat("endurance", 1)

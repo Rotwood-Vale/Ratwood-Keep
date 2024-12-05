@@ -27,7 +27,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
-	backpack_contents = list(/obj/item/reagent_containers/powder/spice = 3, /obj/item/reagent_containers/glass/bottle/mercury = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 2,)
+	backpack_contents = list(/obj/item/reagent_containers/powder/spice = 3, /obj/item/reagent_containers/glass/bottle/mercury = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 2, /obj/item/lockpick = 1)
 	
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_GOODRUNNER, TRAIT_GENERIC)
@@ -43,6 +43,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 	H.change_stat("strength", -2)
 	H.change_stat("perception", 1)
 	H.change_stat("intelligence", 2)

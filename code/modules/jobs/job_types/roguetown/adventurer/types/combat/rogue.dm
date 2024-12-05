@@ -37,7 +37,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -51,6 +51,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
+			backpack_contents = list(/obj/item/lockpick = 1)
 			H.change_stat("strength", -1)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 3)
