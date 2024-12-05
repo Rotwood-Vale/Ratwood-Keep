@@ -414,7 +414,7 @@
 		to_chat(src, span_warning("I can't do that right now!"))
 		return FALSE
 	if(!Adjacent(M) && (M.loc != src))
-		if((be_close == FALSE) || (!no_tk && (dna.check_mutation(TK) && tkMaxRangeCheck(src, M))))
+		if((be_close == FALSE) || (!no_tk && (tkMaxRangeCheck(src, M))))
 			return TRUE
 		to_chat(src, span_warning("I am too far away!"))
 		return FALSE
@@ -665,26 +665,6 @@
 		if(!check_rights(R_SPAWN))
 			return
 		copy_outfit()
-	if(href_list[VV_HK_MOD_MUTATIONS])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/list/options = list("Clear"="Clear")
-		for(var/x in subtypesof(/datum/mutation/human))
-			var/datum/mutation/human/mut = x
-			var/name = initial(mut.name)
-			options[dna.check_mutation(mut) ? "[name] (Remove)" : "[name] (Add)"] = mut
-
-		var/result = input(usr, "Choose mutation to add/remove","Mutation Mod") as null|anything in sortList(options)
-		if(result)
-			if(result == "Clear")
-				dna.remove_all_mutations()
-			else
-				var/mut = options[result]
-				if(dna.check_mutation(mut))
-					dna.remove_mutation(mut)
-				else
-					dna.add_mutation(mut)
 	if(href_list[VV_HK_MOD_QUIRKS])
 		if(!check_rights(R_SPAWN))
 			return

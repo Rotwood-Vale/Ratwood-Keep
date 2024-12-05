@@ -313,7 +313,3 @@
 	if(value > values)
 		value = values
 	return value
-
-/mob/living/carbon/human/proc/MixDNA(mob/living/carbon/human/father = "", mob/living/carbon/human/mother = "", override = FALSE)
-	if(override == FALSE && dna.parent_mix)
-		dna.parent_mix = "[father]/[mother]"
