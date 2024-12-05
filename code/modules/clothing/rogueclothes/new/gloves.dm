@@ -15,7 +15,7 @@
 
 /obj/item/clothing/gloves/roguetown/wrap
 	name = "cloth wrappings"
-	desc = "Some cloth wrapped used to be wrapped around your hands. It won't protect them from much."
+	desc = "Some cloth used to be wrapped around your hands. It won't protect them from much."
 	icon = 'icons/roguetown/clothing/newclothes/objgloves.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/onmobgloves.dmi'
 	sleeved = 'icons/roguetown/clothing/newclothes/onmob/onmobgloves.dmi'

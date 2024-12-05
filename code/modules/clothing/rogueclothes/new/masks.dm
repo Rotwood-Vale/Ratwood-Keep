@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/rogue/pestra
 	name = "pestran mask"
-	desc = "A mask made in such a way to keep away the rot away as much as possible from you. Some of the smell still goes through."
+	desc = "A mask made in such a way to keep the rot away as much as possible from you. Some of the smell still goes through."
 	icon = 'icons/roguetown/clothing/newclothes/objmasks.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/masks.dmi'
 	icon_state = "feldmask"
