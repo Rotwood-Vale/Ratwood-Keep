@@ -17,7 +17,7 @@
 
 /obj/structure/Initialize()
 	if (!armor)
-		armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+		armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 50, "acid" = 50)
 	. = ..()
 	if(smooth)
 		queue_smooth(src)

@@ -3,13 +3,11 @@
 	icon_state = "slamp1"
 	base_state = "slamp"
 	brightness = 10
-	nightshift_allowed = FALSE
+	//nightshift_allowed = FALSE
 	fueluse = 0
 	bulb_colour = "#f9e080"
-	bulb_power = 0.85
+	bulb_power = 1
 	max_integrity = 0
-	use_power = NO_POWER_USE
-	var/datum/looping_sound/soundloop
 	pass_flags = LETPASSTHROW
 
 /obj/machinery/light/roguestreet/midlamp
@@ -20,8 +18,6 @@
 	density = TRUE
 
 /obj/machinery/light/roguestreet/proc/lights_out()
-	if(soundloop)
-		soundloop.stop()
 	on = FALSE
 	set_light(0)
 	update_icon()
@@ -31,8 +27,6 @@
 	on = TRUE
 	update()
 	update_icon()
-	if(soundloop)
-		soundloop.start()
 
 /obj/machinery/light/roguestreet/update_icon()
 	if(on)
@@ -48,10 +42,7 @@
 		GLOB.fires_list -= src
 
 /obj/machinery/light/roguestreet/Initialize()
-	soundloop = pick(/datum/looping_sound/streetlamp1,/datum/looping_sound/streetlamp2,/datum/looping_sound/streetlamp3)
-	if(soundloop)
-		soundloop = new soundloop(src, FALSE)
-		soundloop.start()
+	lights_on()
 	GLOB.streetlamp_list += src
 	update_icon()
 	. = ..()

@@ -64,6 +64,7 @@
 	icon_state = null
 
 /obj/item/roguegem/random/Initialize()
+	..()
 	var/newgem = list(/obj/item/roguegem = 5, /obj/item/roguegem/green = 15, /obj/item/roguegem/blue = 10, /obj/item/roguegem/yellow = 20, /obj/item/roguegem/violet = 10, /obj/item/roguegem/diamond = 5, /obj/item/riddleofsteel = 1, /obj/item/rogueore/silver = 3)
 	var/pickgem = pickweight(newgem)
 	new pickgem(get_turf(src))

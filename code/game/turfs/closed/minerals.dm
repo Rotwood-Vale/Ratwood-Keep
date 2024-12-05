@@ -16,13 +16,13 @@
 	var/turf/open/floor/turf_type = /turf/open/floor
 	var/obj/item/mineralType = null
 	var/obj/item/natural/rock/rockType = null
+	var/mob/living/lastminer //for xp gain and luck shenanigans
 	var/mineralAmt = 3
 	var/spread = 0 //will the seam spread?
 	var/spreadChance = 0 //the percentual chance of an ore spreading to the neighbouring tiles
 	var/last_act = 0
 	var/scan_state = "" //Holder for the image we display when we're pinged by a mining scanner
 	var/defer_change = 0
-	var/mob/living/lastminer //for xp gain and luck shenanigans
 	blade_dulling = DULLING_PICK
 	max_integrity = 1000
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
@@ -37,6 +37,10 @@
 //	transform = M
 	icon = smooth_icon
 	. = ..()
+
+/turf/closed/mineral/Destroy()
+	. = ..()
+	lastminer = null
 
 /turf/closed/mineral/LateInitialize()
 	. = ..()
@@ -58,13 +62,13 @@
 	return ..()
 
 
-/turf/closed/mineral/attackby(obj/item/I, mob/user, params, multiplier)
+/turf/closed/mineral/attackby(obj/item/I, mob/user, params)
 	if (!user.IsAdvancedToolUser())
 		to_chat(usr, span_warning("I don't have the dexterity to do this!"))
 		return
 	lastminer = user
-	..()
 	var/olddam = turf_integrity
+	..()
 	if(turf_integrity && turf_integrity > 10)
 		if(turf_integrity < olddam)
 			if(prob(50))
@@ -83,13 +87,35 @@
 	..()
 
 /turf/closed/mineral/turf_destruction(damage_flag)
-	if(lastminer.goodluck(2) && mineralType)
-		new mineralType(src)
-	gets_drilled(lastminer)
-	queue_smooth_neighbors(src)
+	if(!(istype(src, /turf/closed)))
+		return
+	if(damage_flag == "blunt")
+		var/obj/item/explo_mineral = mineralType
+		var/explo_mineral_amount = mineralAmt
+		var/obj/item/natural/rock/explo_rock = rockType
+		ScrapeAway()
+		queue_smooth_neighbors(src)
+		new /obj/item/natural/stone(src)
+		if(prob(30))
+			new /obj/item/natural/stone(src)
+		if (explo_mineral && (explo_mineral_amount > 0))
+			if(prob(33)) //chance to spawn ore directly
+				new explo_mineral(src)
+			if(explo_rock)
+				if(prob(23))
+					new explo_rock(src)
+			SSblackbox.record_feedback("tally", "ore_mined", explo_mineral_amount, explo_mineral)
+		else
+			return
+	else
+		if(lastminer.goodluck(2) && mineralType)
+	//		to_chat(lastminer, span_notice("Bonus ducks!"))
+			new mineralType(src)
+		gets_drilled(lastminer, give_exp = FALSE)
+		queue_smooth_neighbors(src)
 	..()
 
-/turf/closed/mineral/proc/gets_drilled(mob/living/user, triggered_by_explosion = FALSE)
+/turf/closed/mineral/proc/gets_drilled(mob/living/user, triggered_by_explosion = FALSE, give_exp = TRUE)
 	new /obj/item/natural/stone(src)
 	if(prob(30))
 		new /obj/item/natural/stone(src)
@@ -103,8 +129,8 @@
 		SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
 	else if(user.goodluck(2))
 		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
-		new newthing(src)
 
+		new newthing(src)
 	var/flags = NONE
 	if(defer_change) // TODO: make the defer change var a var for any changeturf flag
 		flags = CHANGETURF_DEFER_CHANGE
@@ -282,12 +308,24 @@
 	spread = 2
 
 /turf/closed/mineral/rogue/bedrock
+	name = "rock"
+	desc = "seems barren, and nigh indestructable"
 	icon_state = "rockyashbed"
 //	smooth_icon = 'icons/turf/walls/hardrock.dmi'
-	max_integrity = 9000
+	max_integrity = 10000000
+	damage_deflection = 99999999
 	above_floor = /turf/closed/mineral/rogue/bedrock
 
-/turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params, multiplier)
-	..()
+/turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params)
 	to_chat(user, span_warning("TOO HARD!"))
-	turf_integrity = max_integrity
+	return FALSE
+
+/turf/closed/mineral/rogue/bedrock/TerraformTurf(path, new_baseturf, flags, defer_change = FALSE, ignore_air = FALSE)
+	return
+
+/turf/closed/mineral/rogue/bedrock/acid_act(acidpwr, acid_volume, acid_id)
+	return 0
+
+/turf/closed/mineral/rogue/bedrock/Melt()
+	to_be_destroyed = FALSE
+	return src

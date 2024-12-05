@@ -7,6 +7,7 @@
 	gravity                = list(0, -2, 0.1)
 	drift                  = generator("circle", 0, 3) // Some random movement for variation
 	friction               = 0.3  // shed 30% of velocity and drift every 0.1s
+	transform 			   = null // Looks weird without it
 	//Weather effects, max values
 	maxSpawning           = 50
 	minSpawning           = 10
@@ -19,7 +20,7 @@
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
-	weather_messages = list("It's snowing!","You feel a chill/")
+	weather_messages = list("It's snowing!")
 
 	minSeverity = 1
 	maxSeverity = 10
@@ -41,7 +42,7 @@
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
-	weather_messages = list("You feel a chill/", "The cold wind is freezing you to the bone", "How can a man who is warm, understand a man who is cold?")
+	weather_messages = list("A snow storm picks up...")
 
 	minSeverity = 40
 	maxSeverity = 100

@@ -288,6 +288,8 @@
  * We instead just transform at the end
  */
 /mob/living/carbon/human/proc/zombie_infect_attempt()
+	if(!prob(7))
+		return
 	var/datum/antagonist/zombie/zombie_antag = zombie_check()
 	if(!zombie_antag)
 		return
@@ -308,4 +310,5 @@
 	emote("scream") // heres your warning to others bro
 	Knockdown(1)
 	zombie_antag.wake_zombie(TRUE)
+
 	return TRUE

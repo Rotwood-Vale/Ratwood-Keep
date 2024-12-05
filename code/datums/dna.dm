@@ -166,6 +166,7 @@
 		if(pref_load)
 			dna.features = pref_load.features.Copy()
 			dna.body_markings = deepCopyList(pref_load.body_markings)
+			dna.real_name = pref_load.real_name
 		dna.species.on_species_gain(src, old_species, pref_load)
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, datum/preferences/pref_load = null)

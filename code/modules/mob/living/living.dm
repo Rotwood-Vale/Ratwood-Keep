@@ -37,6 +37,7 @@
 	sharedSoullinks = null
 	return ..()
 
+
 /mob/living/onZImpact(turf/T, levels)
 	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
 		if(levels <= 2)
@@ -278,7 +279,6 @@
 		now_pushing = FALSE
 		return
 
-
 	var/current_dir
 	if(isliving(AM))
 		current_dir = AM.dir
@@ -361,18 +361,6 @@
 
 	changeNext_move(CLICK_CD_GRABBING)
 
-//	if(AM.pulledby && AM.pulledby != src)
-//		if(AM == src)
-//			to_chat(src, "<span class='warning'>I'm being grabbed by something!</span>")
-//			return FALSE
-//		else
-//			if(!supress_message)
-//				AM.visible_message("<span class='danger'>[src] has pulled [AM] from [AM.pulledby]'s grip.</span>", "<span class='danger'>[src] has pulled me from [AM.pulledby]'s grip.</span>", null, null, src)
-//
-//				to_chat(src, "<span class='notice'>I pull [AM] from [AM.pulledby]'s grip!</span>")
-//			log_combat(AM, AM.pulledby, "pulled from", src)
-//			AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
-
 	if(AM != src)
 		pulling = AM
 		AM.pulledby = src
@@ -454,40 +442,6 @@
 
 /mob/living/proc/set_pull_offsets(mob/living/M, grab_state = GRAB_PASSIVE)
 	return //rtd fix not updating because no dirchange
-/* 	if(M == src)
-		return
-	if(M.wallpressed)
-		return
-	if(M.buckled)
-		return //don't make them change direction or offset them if they're buckled into something.
-	var/offset = 0
-	switch(grab_state)
-		if(GRAB_PASSIVE)
-			offset = GRAB_PIXEL_SHIFT_PASSIVE
-		if(GRAB_AGGRESSIVE)
-			offset = GRAB_PIXEL_SHIFT_AGGRESSIVE
-		if(GRAB_NECK)
-			offset = GRAB_PIXEL_SHIFT_NECK
-		if(GRAB_KILL)
-			offset = GRAB_PIXEL_SHIFT_NECK
-	M.setDir(get_dir(M, src))
-	switch(M.dir)
-		if(NORTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = offset)
-		if(SOUTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = -offset)
-		if(EAST)
-			if(M.lying == 270) //update the dragged dude's direction if we've turned
-				M.lying = 90
-				M.update_transform() //force a transformation update, otherwise it'll take a few ticks for update_mobility() to do so
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
-		if(WEST)
-			if(M.lying == 90)
-				M.lying = 270
-				M.update_transform()
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0) */
 
 /mob/living
 	var/list/mob_offsets = list()
@@ -497,16 +451,11 @@
 		if(mob_offsets[index])
 			reset_offsets(index)
 		mob_offsets[index] = list("x" = _x, "y" = _y)
-//		pixel_x = pixel_x + mob_offsets[index]["x"]
-//		pixel_y = pixel_y + mob_offsets[index]["y"]
 	update_transform()
 
 /mob/living/proc/reset_offsets(index)
 	if(index)
 		if(mob_offsets[index])
-//			animate(src, pixel_x = pixel_x - mob_offsets[index]["x"], pixel_y = pixel_y - mob_offsets[index]["y"], 1)
-//			pixel_x = pixel_x - mob_offsets[index]["x"]
-//			pixel_y = pixel_y - mob_offsets[index]["y"]
 			mob_offsets[index] = null
 	update_transform()
 
@@ -692,6 +641,7 @@
 		else
 			to_chat(src, "<span class='warning'>I fail to get up!</span>")
 	update_cone_show()
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_RESTING, rest)
 
 /mob/living/proc/update_resting()
 	update_rest_hud_icon()
@@ -786,7 +736,6 @@
 	setCloneLoss(0, 0)
 	remove_CC(FALSE)
 	set_disgust(0)
-	radiation = 0
 	set_nutrition(NUTRITION_LEVEL_FED + 50)
 	bodytemperature = BODYTEMP_NORMAL
 	set_blindness(0)
@@ -1365,21 +1314,6 @@
 	else
 		new_mob.key = key
 
-/mob/living/rad_act(amount)
-	. = ..()
-
-	if(!amount || (amount < RAD_MOB_SKIN_PROTECTION) || HAS_TRAIT(src, TRAIT_RADIMMUNE))
-		return
-
-	amount -= RAD_BACKGROUND_RADIATION // This will always be at least 1 because of how skin protection is calculated
-
-	var/blocked = getarmor(null, "rad")
-
-	if(amount > RAD_BURN_THRESHOLD)
-		apply_damage(log(amount)*2, BURN, null, blocked)
-
-	apply_effect((amount*RAD_MOB_COEFFICIENT)/max(1, (radiation**2)*RAD_OVERDOSE_REDUCTION), EFFECT_IRRADIATE, blocked)
-
 /mob/living/anti_magic_check(magic = TRUE, holy = FALSE, tinfoil = FALSE, chargecost = 1, self = FALSE)
 	. = ..()
 	if(.)
@@ -1392,9 +1326,6 @@
 
 /mob/living/proc/fakefire()
 	return
-
-/mob/living/proc/unfry_mob() //Callback proc to tone down spam from multiple sizzling frying oil dipping.
-	REMOVE_TRAIT(src, TRAIT_OIL_FRIED, "cooking_oil_react")
 
 //Mobs on Fire
 /mob/living/proc/IgniteMob()
@@ -1518,6 +1449,7 @@
 	else
 		mobility_flags |= MOBILITY_STAND
 		lying = 0
+	update_cone_show()
 
 /*
 	if(should_be_lying || restrained || incapacitated())

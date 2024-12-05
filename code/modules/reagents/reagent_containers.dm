@@ -9,7 +9,6 @@
 	var/volume = 30
 	var/reagent_flags
 	var/list/list_reagents = null
-	var/spawned_disease = null
 	var/disease_amount = 20
 	var/spillable = FALSE
 	var/list/fill_icon_thresholds = null

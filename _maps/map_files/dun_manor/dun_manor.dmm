@@ -1481,11 +1481,6 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
-"biS" = (
-/obj/structure/fermenting_barrel/random/water,
-/obj/item/storage/box/matches,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement/keep)
 "biU" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/red/cand,
 /area/rogue/under/cave)
@@ -11710,7 +11705,6 @@
 /turf/open/floor/rogue/grassred,
 /area/rogue/outdoors/exposed/town/keep)
 "kNq" = (
-/obj/structure/table/wood/bar,
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave)
@@ -12427,10 +12421,6 @@
 "lms" = (
 /turf/closed/wall/mineral/rogue/wooddark/slitted,
 /area/rogue/under/town/basement/keep)
-"lmE" = (
-/obj/structure/table/wood/bar,
-/turf/open/floor/rogue/concrete,
-/area/rogue/under/cave)
 "lmN" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
@@ -15085,10 +15075,6 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/garrison)
 "nNH" = (
-/obj/structure/toilet/greyscale{
-	color = "#ffee00";
-	name = "The Royal Shitter"
-	},
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
@@ -22492,7 +22478,6 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/cell)
 "uyX" = (
-/obj/structure/table/wood/bar,
 /obj/item/candle/skull,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave)
@@ -39811,9 +39796,9 @@ heh
 eEq
 qey
 cVR
-lmE
+cVR
 kNq
-lmE
+cVR
 cVR
 qey
 eEq
@@ -43748,7 +43733,7 @@ dCX
 dCX
 dCX
 dCX
-biS
+kgb
 diY
 dCX
 iNh

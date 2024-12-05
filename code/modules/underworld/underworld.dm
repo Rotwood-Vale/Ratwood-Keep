@@ -280,6 +280,17 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 				span_danger("\The [src] paralyzes me!"))
 		emote("laugh")
 
+/datum/intent/simple/slash
+	name = "chop"
+	icon_state = "inchop"
+	attack_verb = list("cuts", "slashes")
+	animname = "cut"
+	blade_class = BCLASS_CHOP
+	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
+	chargetime = 0
+	penfactor = 10
+	swingdelay = 3
+
 /obj/effect/landmark/underworldsafe/Crossed(atom/movable/AM, oldloc)
 	if(istype(AM, /mob/living/simple_animal/hostile/rogue/dragger))
 		for(var/mob/living/carbon/human/A in view(4))

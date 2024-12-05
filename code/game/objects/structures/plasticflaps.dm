@@ -4,7 +4,7 @@
 	gender = PLURAL
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "plasticflaps"
-	armor = list("blunt" = 100, "slash" = 80, "stab" = 90, "bullet" = 80, "laser" = 80, "energy" = 100, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 50, "acid" = 50) //what?
+	armor = list("blunt" = 100, "slash" = 80, "stab" = 90, "piercing" = 80, "fire" = 50, "acid" = 50) //what?
 	density = FALSE
 	anchored = TRUE
 	CanAtmosPass = ATMOS_PASS_NO

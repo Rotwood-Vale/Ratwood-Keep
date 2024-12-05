@@ -159,4 +159,4 @@
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	chargetime = 0
 	penfactor = 10
-	swingdelay = 8
+	swingdelay = 3

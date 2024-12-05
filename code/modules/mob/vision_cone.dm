@@ -43,7 +43,7 @@
 /mob/dead/BehindAtom(mob/center = usr, dir = NORTH)//So ghosts aren't calculated.
 	return
 
-/atom/proc/BehindAtom(atom/center = usr, dir = NORTH) //Returns TRUE if center is behind src
+/atom/proc/BehindAtom(atom/center = usr, dir = NORTH)
 	switch(dir)
 		if(NORTH)
 			if(y > center.y)
@@ -101,7 +101,7 @@
 	I.pixel_y = 0
 	client.images += I
 	client.hidden_images += I
-	I.appearance_flags = RESET_TRANSFORM|KEEP_TOGETHER|PIXEL_SCALE
+	I.appearance_flags = RESET_TRANSFORM|KEEP_TOGETHER
 	if(buckled)
 		var/image/IB = image(buckled, buckled)
 		IB.override = 1
@@ -255,7 +255,7 @@
 		return hide_cone()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		if(!(H.mobility_flags & MOBILITY_STAND))
+		if(H.resting || H.lying)
 			return hide_cone()
 		if(!H.client && (H.mode != AI_OFF))
 			return hide_cone()
