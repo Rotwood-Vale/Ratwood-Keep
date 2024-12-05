@@ -210,10 +210,11 @@
 		if(user.patron.type == /datum/patron/inhumen/graggar)
 			if(user.pulling == src)
 				if(user.grab_state == GRAB_AGGRESSIVE)
-					visible_message(span_danger("[user] is putting [src] in their mouth!"), \
-									span_userdanger("[user] is putting me in their mouth!"))
-					if(do_after(user, 10 SECONDS, target = src))
-						src.gib()
+					visible_message(span_danger("[user] is putting [src]'s head in their mouth!"), \
+									span_userdanger("[user] is putting my head in their mouth!"))
+					if(do_after(user, 8 SECONDS, target = src))
+						var/obj/item/bodypart/head/head = H.get_bodypart("head")
+						head.dismember()
 
 	var/obj/item/bodypart/affecting = get_bodypart(check_zone(def_zone))
 	if(!affecting)
