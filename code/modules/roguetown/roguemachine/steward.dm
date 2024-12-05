@@ -15,8 +15,7 @@
 	max_integrity = 0
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
-	locked = FALSE
-	lockid = "steward"
+	var/keycontrol = "steward"
 	var/current_tab = TAB_MAIN
 	var/compact = FALSE
 
@@ -24,7 +23,7 @@
 /obj/structure/roguemachine/steward/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/key))
 		var/obj/item/key/K = P
-		if(K.lockid == lockid)
+		if(K.lockid == keycontrol)
 			locked = !locked
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			update_icon()
@@ -33,15 +32,15 @@
 			to_chat(user, span_warning("Wrong key."))
 			return
 	if(istype(P, /obj/item/storage/keyring))
-		var/obj/item/storage/keyring/K = P
-		for(var/obj/item/key/KE in K.keys)
-			if(KE.lockid == lockid)
+		for(var/obj/item/key/KE in P.contents)
+			if(KE.lockid == keycontrol)
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
 				return
-		to_chat(user, span_warning("Wrong key."))
-		return
+			else
+				to_chat(user, span_warning("Wrong key."))
+				return
 	return ..()
 
 
