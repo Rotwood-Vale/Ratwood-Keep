@@ -78,24 +78,37 @@
 //	if(girder_type)
 //		new /obj/item/stack/sheet/metal(src)
 
-/turf/closed/wall/ex_act(severity, target)
+/turf/closed/wall/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	if(target == src)
 		dismantle_wall(1,1)
+		take_damage(INFINITY, BRUTE, "bomb", 0)
 		return
-	switch(severity)
-		if(1)
-			//SN src = null
-			var/turf/NT = ScrapeAway()
-			NT.contents_explosion(severity, target)
-			return
-		if(2)
-			if (prob(50))
-				dismantle_wall(0,1)
-			else
-				dismantle_wall(1,1)
-		if(3)
-			if (prob(hardness))
-				dismantle_wall(0,1)
+	var/ddist = devastation_range
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fdist = flame_range
+	var/fodist = get_dist(src, epicenter)
+	var/brute_loss = 0
+	var/dmgmod = round(rand(0.1, 2), 0.1)
+
+	switch (severity)
+		if (EXPLODE_DEVASTATE)
+			brute_loss = ((250 * ddist) - (250 * fodist) * dmgmod)
+
+		if (EXPLODE_HEAVY)
+			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod)
+
+		if(EXPLODE_LIGHT)
+			brute_loss = ((25 * ldist) - (25 * fodist) * dmgmod)
+
+	if(fodist == 0)
+		brute_loss *= 2
+	take_damage(brute_loss, BRUTE, "bomb", 0)
+
+	if(fdist && !QDELETED(src))
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
+
 	if(!density)
 		..()
 
