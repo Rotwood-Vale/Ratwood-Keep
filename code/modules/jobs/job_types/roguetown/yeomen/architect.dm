@@ -1,6 +1,6 @@
 /datum/job/roguetown/architect
 	title = "Architect"
-	tutorial = " The Archivist meticulously preserves and organizes ancient scrolls and tomes, safeguarding the collective knowledge of the realm for generations to come. Nobles and Peasants alike often seek the Archivists expertise on matters of history and fact."
+	tutorial = "There are ancient secrets within stone, something your creed has known since man built upon dirt. You've pride in your work, youre the only reason this place doesn't fall apart."
 	flag = ARCHITECT
 	department_flag = COURTIERS
 	faction = "Station"
@@ -31,27 +31,27 @@
 	neck = /obj/item/powderflask
 
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("intelligence", 4)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+
+		H.change_stat("strength", 1)
+		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", -1)
-		H.change_stat("endurance", 2)
+		H.change_stat("endurance", 1)
 
 
 
