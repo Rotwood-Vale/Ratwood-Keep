@@ -28,6 +28,9 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/rogueweapon/huntingknife
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots

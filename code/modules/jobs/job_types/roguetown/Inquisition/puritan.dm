@@ -16,7 +16,7 @@
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
 	give_bank_account = 30
-	min_pq = 10 //Woah there buddy. Here's a soft antagging role. You're gonna need to be a Cool Guy:tm: to start doing this work. Usually a high strain role, and can actually ruin rounds for people if not done proper.
+	min_pq = 10
 	max_pq = null
 	round_contrib_points = 2
 
@@ -28,7 +28,7 @@
 /datum/outfit/job/roguetown/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/psydon
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	pants = /obj/item/clothing/under/roguetown/tights/black
@@ -64,6 +64,7 @@
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
 
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Extract Confession"

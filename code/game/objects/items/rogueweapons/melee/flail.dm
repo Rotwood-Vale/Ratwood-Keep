@@ -132,7 +132,7 @@
 	force = 21
 	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	name = "whip"
-	desc = "A leather whip, built to last with an sharp stone for a tip"
+	desc = "A leather whip. Built to last, with a sharp stone for a tip."
 	icon_state = "whip"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT

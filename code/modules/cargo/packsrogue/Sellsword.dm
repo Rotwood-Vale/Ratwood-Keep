@@ -94,7 +94,7 @@
 /datum/supply_pack/rogue/Sellsword/Bevor
 	name = "Bevor"
 	cost = 20
-	contains = /obj/item/clothing/neck/roguetown/bevor
+	contains = list(/obj/item/clothing/neck/roguetown/bevor)
 
 
 /datum/supply_pack/rogue/Sellsword/gorget

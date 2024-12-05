@@ -23,6 +23,9 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltl = /obj/item/rogueweapon/pick
 	backl = /obj/item/storage/backpack/rogue/backpack
+	backpack_contents = list(
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)

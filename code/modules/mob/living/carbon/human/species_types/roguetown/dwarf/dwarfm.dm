@@ -8,18 +8,18 @@
 	desc = "<b>Dwarf</b><br>\
 	A proud and robust race of short mountain folk, \
 	the dwarves are known for their pride in martial strength \
-	and their tenacity towards their ancient traditions.\
-	A Dwarf, much like the rock that they carve their fortress out of \
+	and the tenacity with which they adhere to their ancient traditions. \
+	A Dwarf, much like the rock that they carve their fortresses out of, \
 	is stubborn and ancient, with their race being the longest lived of all \
-	of the weeping gods creation. They, like stone: also rarely change \
+	of the Weeping God's creations. They, like stone, also rarely change \
 	and tend to shun the modernization of the world around them. \
-	Instead, a Dwarf looks to his ancestorial heritage for guidance on \
-	the various challenges they face. Even if, in some irony: this behaviour \
-	leads the race towards technological advacement as they continue \
-	to improve their craft through powerful mechanization and forging \
+	Instead, a Dwarf looks to their ancestorial heritage for guidance on \
+	the various challenges they face. Even if, ironically, this behaviour \
+	leads their kind towards technological advacement as they continue \
+	to improve their crafts, both in engineering workshops and the forges. \
 	Dwarves are hearty, but are not known for their speed or eyesight... \
-	Each dwarf hails from a ancient fortress named after the most plentiful mineral. \
-	+1 Constitution."
+	Each dwarf hails from a ancient fortress named after the most plentiful mineral.<br>\
+	(+1 Constitution)"
 
 	skin_tone_wording = "Dwarf Fortress"
 

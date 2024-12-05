@@ -41,7 +41,10 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black 
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 	beltl = /obj/item/rogueweapon/huntingknife
-	backpack_contents = list(/obj/item/flint = 1)
+	backpack_contents = list(
+						/obj/item/flint = 1,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	H.change_stat("strength", 4)
 	H.change_stat("constitution", 1)
 	H.change_stat("perception", 1)

@@ -498,7 +498,7 @@
 		return
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		if(istype(H.wear_neck, /obj/item/clothing/neck/roguetown/psicross/silver))
+		if(istype(H.wear_neck, /obj/item/clothing/neck/roguetown/psicross/silver) || HAS_TRAIT(H, TRAIT_SILVER_BLESSED))
 			to_chat(user, span_userdanger("SILVER! HISSS!!!"))
 			return
 	last_drink = world.time

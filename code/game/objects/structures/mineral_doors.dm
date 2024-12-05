@@ -49,6 +49,7 @@
 	var/obj/item/repair_cost_second = null	
 	var/repair_skill = null
 	damage_deflection = 10
+	var/mob/last_bumper = null
 
 /obj/structure/mineral_door/onkick(mob/user)
 	if(isSwitchingStates)
@@ -153,6 +154,9 @@
 				user.visible_message(span_warning("[user] smashes through [src]!"))
 			return
 		if(locked)
+			if(istype(user.get_active_held_item(), /obj/item/roguekey) || istype(user.get_active_held_item(), /obj/item/storage/keyring))
+				src.attackby(user.get_active_held_item(), user, TRUE)
+				return
 			door_rattle()
 			return
 		if(TryToSwitchState(AM))
@@ -238,7 +242,7 @@
 	if(close_delay != -1)
 		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
 
-/obj/structure/mineral_door/proc/Close(silent = FALSE)
+/obj/structure/mineral_door/proc/Close(silent = FALSE, autobump = FALSE)
 	if(isSwitchingStates || !door_opened)
 		return
 	var/turf/T = get_turf(src)
@@ -257,6 +261,10 @@
 	air_update_turf(1)
 	update_icon()
 	isSwitchingStates = FALSE
+	if(autobump && src.Adjacent(last_bumper))
+		if(istype(last_bumper.get_active_held_item(), /obj/item/roguekey) || istype(last_bumper.get_active_held_item(), /obj/item/storage/keyring))
+			src.attack_right(last_bumper)
+	last_bumper = null
 
 /obj/structure/mineral_door/update_icon()
 	icon_state = "[base_state][door_opened ? "open":""]"
@@ -282,14 +290,19 @@
 	animate(pixel_x = oldx-1, time = 0.5)
 	animate(pixel_x = oldx, time = 0.5)
 
-/obj/structure/mineral_door/attackby(obj/item/I, mob/user)
+/obj/structure/mineral_door/attackby(obj/item/I, mob/user, autobump = FALSE)
 	user.changeNext_move(CLICK_CD_FAST)
 	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/storage/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
 			door_rattle()
 			return
-		trykeylock(I, user)
+		if(autobump == TRUE) //Attackby passes UI coordinate onclick stuff, so forcing check to TRUE
+			trykeylock(I, user, autobump)
+			return
+		else
+			trykeylock(I, user)
+			return
 	if(istype(I, /obj/item/lockpick))
 		trypicklock(I, user)
 	if(istype(I,/obj/item/lockpickring))
@@ -362,7 +375,7 @@
 	else
 		return ..()
 
-/obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user)
+/obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user, autobump = FALSE)
 	if(door_opened || isSwitchingStates)
 		return
 	if(!keylock)
@@ -381,17 +394,28 @@
 					break
 			if(K.lockhash == lockhash)
 				lock_toggle(user)
-				break
+				if(autobump && !locked)
+					src.Open()
+					addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
+					src.last_bumper = user
+				return
 			else
 				if(user.cmode)
 					door_rattle()
+		to_chat(user, span_warning("None of the keys on my keyring go to this door."))
+		door_rattle()
 		return
 	else
 		var/obj/item/roguekey/K = I
 		if(K.lockhash == lockhash)
 			lock_toggle(user)
+			if(autobump)
+				src.Open()
+				addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
+				src.last_bumper = user
 			return
 		else
+			to_chat(user, span_warning("This is not the correct key that goes to this door."))
 			door_rattle()
 		return
 

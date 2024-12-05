@@ -40,7 +40,7 @@
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 		if(src.gamblingprice + (P.sellprice * P.quantity) < src.mintithing)
-			say("This is is below [src.mintithing] mammons.")
+			say("This is below [src.mintithing] mammons.")
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return
 

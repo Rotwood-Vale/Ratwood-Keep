@@ -114,7 +114,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	beltl = /obj/item/flashlight/flare/torch
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	
+
 
 	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/rogueweapon/huntingknife/idagger/navaja, /obj/item/clothing/neck/roguetown/shalal)
 

@@ -36,6 +36,8 @@
 		/obj/item/clothing/gloves/roguetown/leather = 4,
 		/obj/item/clothing/shoes/roguetown/boots = 4,
 		/obj/item/clothing/shoes/roguetown/boots/leather = 4,
+		/obj/item/storage/belt/rogue/leather/knifebelt/iron = 2,
+		/obj/item/storage/belt/rogue/leather/knifebelt/black/steel = 1,
 
 		// Money
 		/obj/item/roguecoin/copper = 5,
@@ -67,9 +69,9 @@
 		/obj/item/paper = 3,
 		/obj/item/reagent_containers/glass/bowl = 3,
 		/obj/item/storage/bag/tray = 3,
-		/obj/item/mundane/puzzlebox/medium = 1,
+		/obj/item/mundane/puzzlebox/medium = 3,
 		/obj/item/mundane/puzzlebox/easy = 1,
-		/obj/item/mundane/puzzlebox/impossible = 1,
+		/obj/item/mundane/puzzlebox/impossible = 2,
 
 		//medical
 		/obj/item/needle = 4,
@@ -103,6 +105,7 @@
 		/obj/item/rogueweapon/eaglebeak/lucerne = 1,
 		/obj/item/rogueweapon/eaglebeak = 1,
 		/obj/item/rogueweapon/spear/billhook = 1,
+		/obj/item/rogueweapon/huntingknife/throwingknife/steel = 1,
 
 		// tools
 		/obj/item/rogueweapon/shovel = 3,
