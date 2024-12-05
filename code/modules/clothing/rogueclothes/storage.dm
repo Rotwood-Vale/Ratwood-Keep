@@ -288,7 +288,7 @@
 				A.forceMove(src)
 			arrows += A
 			update_icon()
-			to_chat(usr, span_notice("I discretely slip [A] into [src]."))
+			to_chat(usr, span_notice("I discreetly slip [A] into [src]."))
 		else
 			to_chat(loc, span_warning("Full!"))
 		return
