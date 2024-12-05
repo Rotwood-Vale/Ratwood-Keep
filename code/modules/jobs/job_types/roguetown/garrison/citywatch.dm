@@ -32,7 +32,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/citywatch
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	shoes = /obj/item/clothing/shoes/roguetown/armor
-	beltl = /obj/item/storage/keyring/town_watch
+	beltl = /obj/item/keyring/town_watch
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/rogueweapon/mace/stunmace
 	wrists = /obj/item/clothing/wrists/roguetown/bracers

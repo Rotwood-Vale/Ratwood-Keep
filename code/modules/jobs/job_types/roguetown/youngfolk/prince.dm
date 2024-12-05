@@ -30,7 +30,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/heir
 		shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/storage/keyring/royal
+		beltl = /obj/item/keyring/royal
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backr = /obj/item/storage/backpack/rogue/satchel
 		if(H.mind)
@@ -54,7 +54,7 @@
 			H.change_stat("intelligence", 2)
 
 	else
-		beltl = /obj/item/storage/keyring/royal
+		beltl = /obj/item/keyring/royal
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/heiress

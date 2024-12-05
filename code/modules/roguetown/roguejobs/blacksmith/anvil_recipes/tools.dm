@@ -23,7 +23,7 @@
 /datum/anvil_recipe/general/iron/keyring
 	name = "Keyrings 3x"
 	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/storage/keyring, /obj/item/storage/keyring, /obj/item/storage/keyring)
+	created_item = list(/obj/item/keyring, /obj/item/keyring, /obj/item/keyring)
 
 /datum/anvil_recipe/general/iron/sewingneedle
 	name = "Sewing Needles 5x"

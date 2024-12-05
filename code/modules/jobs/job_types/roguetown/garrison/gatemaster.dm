@@ -53,7 +53,7 @@
 	beltr = /obj/item/ammo_holder/quiver/arrows
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-	backpack_contents = list(/obj/item/storage/keyring/gatemaster = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
+	backpack_contents = list(/obj/item/keyring/gatemaster = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)

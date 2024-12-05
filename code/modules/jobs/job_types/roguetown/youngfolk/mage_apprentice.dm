@@ -25,7 +25,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltr = /obj/item/storage/keyring/mage
+	beltr = /obj/item/keyring/mage
 	r_hand = /obj/item/rogueweapon/woodstaff
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

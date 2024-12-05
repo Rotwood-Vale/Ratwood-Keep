@@ -79,7 +79,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/bog
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-	beltl = /obj/item/storage/keyring/bog_guard
+	beltl = /obj/item/keyring/bog_guard
 	belt = /obj/item/storage/belt/rogue/leather
 
 /datum/outfit/job/roguetown/ranger/pre_equip(mob/living/carbon/human/H)

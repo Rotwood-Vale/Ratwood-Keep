@@ -36,7 +36,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	beltl = /obj/item/storage/keyring/marshal
+	beltl = /obj/item/keyring/marshal
 	beltr = /obj/item/rogueweapon/mace
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/marshal
 	gloves = /obj/item/clothing/gloves/roguetown/leather/angle

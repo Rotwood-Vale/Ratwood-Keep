@@ -1,6 +1,6 @@
 /////////////////// KEYRING ////////////////////
 
-/obj/item/storage/keyring
+/obj/item/keyring
 	name = "keyring"
 	desc = "Will help you organize your keys."
 	icon_state = "keyring0"
@@ -12,72 +12,18 @@
 	throwforce = 0
 	var/list/keys = list()
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_MOUTH|ITEM_SLOT_WRISTS
-	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 
-/obj/item/storage/keyring/Initialize()
-    . = ..()
-    if(keys.len)
-        for(var/X in keys)
-            new X(src)
-            keys -= X
-    update_icon()
-    update_desc()
-
-/obj/item/storage/keyring/ComponentInitialize()
+/obj/item/keyring/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 20
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = 9
-		STR.attack_hand_interact = FALSE
-		STR.click_gather = TRUE
-		STR.allow_dump_out = TRUE
-		STR.rustle_sound = FALSE
-		STR.set_holdable(list(
-			/obj/item/key,
-		))
+	if(keys.len)
+		for(var/X in keys)
+			addtoring(new X())
+			keys -= X
+	update_icon()
+	update_desc()
 
-/obj/item/storage/keyring/attack_right(mob/user)
-	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
-	if(CP)
-		CP.rmb_show(user)
-		return TRUE
-
-/obj/item/storage/keyring/update_icon()
-    ..()
-    switch(contents.len)
-        if(0)
-            icon_state = "keyring0"
-        if(1)
-            icon_state = "keyring1"
-        if(2)
-            icon_state = "keyring2"
-        if(3)
-            icon_state = "keyring3"
-        if(4)
-            icon_state = "keyring4"
-        else
-            icon_state = "keyring5"
-
-/obj/item/storage/keyring/proc/update_desc()
-	if(contents.len)
-		desc = span_info("Holds \Roman[contents.len] key\s, including:")
-		for(var/obj/item/key/KE in contents)
-			desc += span_info("\n- [KE.name ? "A [KE.name]." : "	An unknown key."]")
-	else
-		desc = ""
-
-/obj/item/storage/keyring/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
-    . = ..()
-    playsound(src, "sound/items/gems (1).ogg", 100, FALSE)
-    update_desc()
-
-/obj/item/storage/keyring/Exited(atom/movable/gone, direction)
-    . = ..()
-
-/obj/item/storage/keyring/getonmobprop(tag)
+/obj/item/keyring/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -106,113 +52,188 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/storage/keyring/marshal
+/obj/item/keyring/proc/addtoring(obj/item/I)
+	if(!I || !istype(I))
+		return 0
+	I.loc = src
+	keys += I
+	update_icon()
+	update_desc()
+
+/obj/item/keyring/proc/removefromring(mob/user)
+	if(!keys.len)
+		return
+	var/obj/item/key/K = keys[keys.len]
+	keys -= K
+	K.loc = user.loc
+	update_icon()
+	update_desc()
+	return K
+
+/obj/item/keyring/pre_attack(target, user, params)
+	. = ..()
+	var/used_hash
+	if(istype(target, /obj/structure/closet))
+		var/obj/structure/closet/C = target
+		if(C.masterkey)
+			used_hash = C.lockhash
+	if(istype(target, /obj/structure/mineral_door))
+		var/obj/structure/mineral_door/D = target
+		if(D.masterkey)
+			used_hash = D.lockhash
+	for(var/obj/item/key/K in keys)
+		if(istype(K, /obj/item/key/lord))
+			K.lockhash = used_hash
+
+/obj/item/keyring/attackby(obj/item/I, mob/user)
+	if(istype(I,/obj/item/key))
+		if(keys.len >= 20) //could be made per keyring
+			to_chat(user, span_warning("Too many keys."))
+			return
+		user.dropItemToGround(I)
+		addtoring(I)
+	else
+		return ..()
+
+/obj/item/keyring/attack_right(mob/user)
+	if(keys.len)
+		to_chat(user, span_notice("I steal a key off the ring."))
+		var/obj/item/key/K = removefromring(user)
+		user.put_in_active_hand(K)
+
+/obj/item/keyring/update_icon()
+	..()
+	if(!keys.len)
+		icon_state = "keyring0"
+		return
+	if(keys.len >= 5)
+		icon_state = "keyring5"
+		return
+	switch(keys.len)
+		if(1)
+			icon_state = "keyring1"
+		if(2)
+			icon_state = "keyring2"
+		if(3)
+			icon_state = "keyring3"
+		if(4)
+			icon_state = "keyring4"
+
+/obj/item/keyring/proc/update_desc()
+	if(keys.len)
+		desc = span_info("Holds \Roman[keys.len] key\s, including:")
+		for(var/obj/item/key/KE in keys)
+			desc += span_info("\n- [KE.name ? "A [KE.name]." : "An unknown key."]")
+	else
+		desc = ""
+
+/obj/item/keyring/marshal
 	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor)
 
-/obj/item/storage/keyring/councillor
+/obj/item/keyring/councillor
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon,  /obj/item/key/manor)
 
-/obj/item/storage/keyring/bog_guard
+/obj/item/keyring/bog_guard
 	keys = list(/obj/item/key/bog_gatehouse)
 
-/obj/item/storage/keyring/bog_master
+/obj/item/keyring/bog_master
 	keys = list(/obj/item/key/bog_gatehouse, /obj/item/key/bog_master)
 
-/obj/item/storage/keyring/town_watch
+/obj/item/keyring/town_watch
 	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/town_armory)
 
-/obj/item/storage/keyring/sheriff
+/obj/item/keyring/sheriff
 	keys = list(/obj/item/key/sheriff_office, /obj/item/key/town_armory, /obj/item/key/town_barracks, /obj/item/key/town_dungeon)
 
-/obj/item/storage/keyring/man_at_arms
+/obj/item/keyring/man_at_arms
 	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
 
-/obj/item/storage/keyring/captain
+/obj/item/keyring/captain
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
 
-/obj/item/storage/keyring/dungeoneer
+/obj/item/keyring/dungeoneer
 	keys = list(/obj/item/key/keep_dungeon, /obj/item/key/keep_dungeon_torture, /obj/item/key/town_dungeon, /obj/item/key/bog_gatehouse, /obj/item/key/manor, /obj/item/key/keep_barracks)
 
-/obj/item/storage/keyring/veteran
+/obj/item/keyring/veteran
 	keys = list(/obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
 
-/obj/item/storage/keyring/knight
+/obj/item/keyring/knight
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
 
-/obj/item/storage/keyring/velder
+/obj/item/keyring/velder
 	keys = list(/obj/item/key/velder, /obj/item/key/blacksmith/town, /obj/item/key/farm, /obj/item/key/butcher)
 
-/obj/item/storage/keyring/Butcher
+/obj/item/keyring/Butcher
 	keys = list(/obj/item/key/farm, /obj/item/key/butcher)
 
-/obj/item/storage/keyring/vtavern
+/obj/item/keyring/vtavern
 	keys = list(/obj/item/key/tavern/village, /obj/item/key/roomvi/village, /obj/item/key/roomv/village, /obj/item/key/roomiv/village, /obj/item/key/roomiii/village, /obj/item/key/roomii/village, /obj/item/key/roomi/village)
 
-/obj/item/storage/keyring/gatemaster
+/obj/item/keyring/gatemaster
 	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
 
-/obj/item/storage/keyring/merchant
+/obj/item/keyring/merchant
 	keys = list(/obj/item/key/shop, /obj/item/key/merchant)
 
-/obj/item/storage/keyring/shophand
+/obj/item/keyring/shophand
 	keys = list(/obj/item/key/shop)
 
-/obj/item/storage/keyring/mage
+/obj/item/keyring/mage
 	keys = list(/obj/item/key/manor, /obj/item/key/tower, /obj/item/key/mage)
 
-/obj/item/storage/keyring/innkeep
+/obj/item/keyring/innkeep
 	keys = list(/obj/item/key/tavern, /obj/item/key/fancyroomiii, /obj/item/key/fancyroomii, /obj/item/key/fancyroomi, /obj/item/key/roomvi, /obj/item/key/roomv, /obj/item/key/roomiv, /obj/item/key/roomiii, /obj/item/key/roomii, /obj/item/key/roomi)
 
-/obj/item/storage/keyring/priest
+/obj/item/keyring/priest
 	keys = list(/obj/item/key/priest, /obj/item/key/confession, /obj/item/key/church, /obj/item/key/graveyard)
 
-/obj/item/storage/keyring/puritan
+/obj/item/keyring/puritan
 	keys = list(/obj/item/key/puritan, /obj/item/key/manor, /obj/item/key/confession, /obj/item/key/church)
 
-/obj/item/storage/keyring/shepherd
+/obj/item/keyring/shepherd
 	keys = list(/obj/item/key/confession, /obj/item/key/church)
 
-/obj/item/storage/keyring/nightman
+/obj/item/keyring/nightman
 	keys = list(/obj/item/key/nightman, /obj/item/key/nightmaiden)
 
-/obj/item/storage/keyring/hand
+/obj/item/keyring/hand
 	keys = list(/obj/item/key/keep_armory, /obj/item/key/steward, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_gatehouse, /obj/item/key/councillor_rooms, /obj/item/key/hand, /obj/item/key/walls, /obj/item/key/keep_dungeon, /obj/item/key/keep_barracks, /obj/item/key/manor)
 
-/obj/item/storage/keyring/steward
+/obj/item/keyring/steward
 	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor)
 
-/obj/item/storage/keyring/clerk
+/obj/item/keyring/clerk
 	keys = list(/obj/item/key/walls, /obj/item/key/manor)
 
-/obj/item/storage/keyring/servant
+/obj/item/keyring/servant
 	keys = list(/obj/item/key/manor, /obj/item/key/keep_barracks)
 
-/obj/item/storage/keyring/archivist
+/obj/item/keyring/archivist
 	keys = list(/obj/item/key/manor, /obj/item/key/archive)
 
-/obj/item/storage/keyring/architect
+/obj/item/keyring/architect
 	keys = list(/obj/item/key/artificer)
 
-/obj/item/storage/keyring/physician
+/obj/item/keyring/physician
 	keys = list(/obj/item/key/manor, /obj/item/key/keep_barracks, /obj/item/key/physician, /obj/item/key/keep_dungeon_torture)
 
-/obj/item/storage/keyring/royal
+/obj/item/keyring/royal
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/prince_rooms, /obj/item/key/manor, /obj/item/key/royal)
 
-/obj/item/storage/keyring/gravedigger
+/obj/item/keyring/gravedigger
 	keys = list(/obj/item/key/graveyard, /obj/item/key/church)
 
-/obj/item/storage/keyring/mercenary
+/obj/item/keyring/mercenary
 	keys = list(/obj/item/key/mercenary)
 
-/obj/item/storage/keyring/mercenary_boss
+/obj/item/keyring/mercenary_boss
 	keys = list(/obj/item/key/mercenary, /obj/item/key/mercenary_boss)
 
-/obj/item/storage/keyring/goblin
+/obj/item/keyring/goblin
 	keys = list(/obj/item/key/goblin)
 
-/obj/item/storage/keyring/goblinguard
+/obj/item/keyring/goblinguard
 	keys = list(/obj/item/key/goblin, /obj/item/key/goblinguard)
 
-/obj/item/storage/keyring/goblinchief
+/obj/item/keyring/goblinchief
 	keys = list(/obj/item/key/goblin, /obj/item/key/goblinguard, /obj/item/key/goblinchief)

@@ -95,8 +95,8 @@
 			to_chat(user, span_warning("Wrong key."))
 			playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
 			return
-	if(istype(P, /obj/item/storage/keyring))
-		var/obj/item/storage/keyring/K = P
+	if(istype(P, /obj/item/keyring))
+		var/obj/item/keyring/K = P
 		for(var/obj/item/key/KE in K.keys)
 			if(KE.lockid in accepted_id)
 				togglelock(user)

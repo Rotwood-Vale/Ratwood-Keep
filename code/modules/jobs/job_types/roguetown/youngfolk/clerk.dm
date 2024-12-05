@@ -43,5 +43,5 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/storage/keyring/clerk
+	beltl = /obj/item/keyring/clerk
 	backr = /obj/item/storage/backpack/rogue/satchel

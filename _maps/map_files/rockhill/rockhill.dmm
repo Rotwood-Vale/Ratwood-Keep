@@ -7102,7 +7102,7 @@
 "fyN" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/cup/skull,
-/obj/item/storage/keyring,
+/obj/item/keyring,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -16734,9 +16734,9 @@
 /area/rogue/indoors/town/manor)
 "nda" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/keyring,
-/obj/item/storage/keyring,
-/obj/item/storage/keyring,
+/obj/item/keyring,
+/obj/item/keyring,
+/obj/item/keyring,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "ndt" = (
@@ -23678,7 +23678,7 @@
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/church)
 "svu" = (
-/obj/item/storage/keyring,
+/obj/item/keyring,
 /obj/structure/table/wood{
 	dir = 10;
 	icon_state = "largetable"
@@ -26154,11 +26154,11 @@
 /area/rogue/indoors/town/manor)
 "upd" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/keyring,
-/obj/item/storage/keyring,
-/obj/item/storage/keyring,
-/obj/item/storage/keyring,
-/obj/item/storage/keyring,
+/obj/item/keyring,
+/obj/item/keyring,
+/obj/item/keyring,
+/obj/item/keyring,
+/obj/item/keyring,
 /obj/item/key/church,
 /obj/item/key/church,
 /obj/item/key/church,
@@ -28276,7 +28276,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/storage/keyring,
+/obj/item/keyring,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "vXe" = (
@@ -28436,7 +28436,7 @@
 /area/rogue/indoors)
 "wdY" = (
 /obj/structure/table/vtable/v2,
-/obj/item/storage/keyring/priest,
+/obj/item/keyring/priest,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church)
 "weg" = (
@@ -29357,9 +29357,9 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/storage/keyring,
-/obj/item/storage/keyring,
-/obj/item/storage/keyring,
+/obj/item/keyring,
+/obj/item/keyring,
+/obj/item/keyring,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
 "wQD" = (
@@ -29844,8 +29844,8 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/storage/keyring,
-/obj/item/storage/keyring,
+/obj/item/keyring,
+/obj/item/keyring,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "xjS" = (

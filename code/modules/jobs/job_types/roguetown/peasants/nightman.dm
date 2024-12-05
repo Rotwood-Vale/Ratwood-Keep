@@ -23,7 +23,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
-	beltr = /obj/item/storage/keyring/nightman
+	beltr = /obj/item/keyring/nightman
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)

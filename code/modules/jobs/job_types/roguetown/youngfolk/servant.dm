@@ -47,7 +47,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/storage/keyring/servant
+		beltr = /obj/item/keyring/servant
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	else
@@ -56,5 +56,5 @@
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		cloak = /obj/item/clothing/cloak/apron/waist
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/storage/keyring/servant
+		beltr = /obj/item/keyring/servant
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor

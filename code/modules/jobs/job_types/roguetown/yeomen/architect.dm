@@ -24,7 +24,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	backr = /obj/item/gun/ballistic/blunderbuss
 	backl = /obj/item/rogueweapon/pick/drill
-	wrists = /obj/item/storage/keyring/architect
+	wrists = /obj/item/keyring/architect
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltl = /obj/item/ammo_holder/bullet/grapeshot
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden
