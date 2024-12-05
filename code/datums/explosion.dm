@@ -225,7 +225,7 @@ GLOBAL_LIST_EMPTY(explosions)
 				if(!QDELETED(A))
 					A.ex_act(dist, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 
-		if(hotspot_dist && !isspaceturf(T))
+		if(hotspot_dist)
 			new /obj/effect/hotspot(T)		//Burning turf
 
 		if(dist > EXPLODE_NONE)

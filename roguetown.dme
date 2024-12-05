@@ -915,6 +915,7 @@
 #include "code\game\turfs\closed\wall\mineral_walls.dm"
 #include "code\game\turfs\closed\wall\roguewalls.dm"
 #include "code\game\turfs\open\_open.dm"
+#include "code\game\turfs\open\dark_filler.dm"
 #include "code\game\turfs\open\floor.dm"
 #include "code\game\turfs\open\lava.dm"
 #include "code\game\turfs\open\openspace.dm"
