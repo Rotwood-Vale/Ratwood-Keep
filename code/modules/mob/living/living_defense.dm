@@ -54,7 +54,7 @@
 		if(!apply_damage(P.damage, P.damage_type, def_zone, armor))
 			nodmg = TRUE
 			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
-		apply_effects(P.stun, 0, 0, 0,0, 0, 0, 0, armor, 0, P.jitter, P.paralyze, 0)
+		apply_effects(P.stun, P.knockdown, P.unconscious, P.irradiate, P.slur, P.stutter, P.eyeblur, P.drowsy, armor, P.stamina, P.jitter, P.paralyze, P.immobilize)
 		if(!nodmg)
 			if(P.dismemberment)
 				check_projectile_dismemberment(P, def_zone,armor)
