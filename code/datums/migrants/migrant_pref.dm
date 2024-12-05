@@ -31,9 +31,9 @@
 		if(SSmigrants.can_be_role(prefs.parent, role_type))
 			role_preferences += role_type
 			var/datum/migrant_role/role = MIGRANT_ROLE(role_type)
-			to_chat(prefs.parent, span_nicegreen("You have prioritizd the [role.name]. This does not guarantee getting the role"))
+			to_chat(prefs.parent, span_nicegreen("You have prioritizd the [role.name]. This does not guarantee getting the role."))
 		else
-			to_chat(prefs.parent, span_warning("You can't be this role. (Wrong species, gender or age)"))
+			to_chat(prefs.parent, span_warning("You can't be this role. (Wrong species, gender, or age.)"))
 
 /datum/migrant_pref/proc/post_spawn()
 	set_active(FALSE, TRUE)
