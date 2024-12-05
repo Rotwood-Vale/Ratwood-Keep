@@ -10,18 +10,6 @@
 	importexport_amt = 10
 	passive_generation = 5
 
-/datum/roguestock/stockpile/stone
-	name = "Stone"
-	desc = "High quality rocks of stone used for construction."
-	item_type = /obj/item/natural/stone
-	held_items = list(2, 0)
-	payout_price = 2
-	withdraw_price = 4
-	transport_fee = 3
-	export_price = 4
-	importexport_amt = 10
-	passive_generation = 5
-
 /datum/roguestock/stockpile/coal
 	name = "Coal"
 	desc = "Chunks of coal used for fuel and alloying."
