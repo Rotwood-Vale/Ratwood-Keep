@@ -330,7 +330,7 @@
 		sharpness = IS_BLUNT
 		wdefense = 2
 
-/obj/item/rogueweapon/huntingknife/throwingknife
+/obj/item/rogueweapon/huntingknife/throwingknife/iron
 	name = "iron tossblade"
 	desc = "Paradoxical; why is it called a blade when it is meant for tossing? Or is it the act of cutting post-toss that makes it a blade? ...Are arrows tossblades, too?"
 	item_state = "bone_dagger"

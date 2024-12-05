@@ -288,6 +288,7 @@
 				A.forceMove(src)
 			arrows += A
 			update_icon()
+			to_chat(usr, span_notice("I discretely slip [A] into [src]."))
 		else
 			to_chat(loc, span_warning("Full!"))
 		return
@@ -310,7 +311,7 @@
 /obj/item/storage/belt/rogue/leather/knifebelt/iron/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/rogueweapon/huntingknife/throwingknife/A = new()
+		var/obj/item/rogueweapon/huntingknife/throwingknife/iron/A = new()
 		arrows += A
 	update_icon()
 
@@ -323,7 +324,7 @@
 /obj/item/storage/belt/rogue/leather/knifebelt/black/iron/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/rogueweapon/huntingknife/throwingknife/A = new()
+		var/obj/item/rogueweapon/huntingknife/throwingknife/iron/A = new()
 		arrows += A
 	update_icon()
 
