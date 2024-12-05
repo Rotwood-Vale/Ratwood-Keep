@@ -8,7 +8,7 @@
 	stressadd = 2
 	desc = span_red("Smells like death here.")
 
-/datum/stressevent/miasmagas/can_apply(mob/living/user,)
+/datum/stressevent/miasmagas/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER) && !HAS_TRAIT(user, TRAIT_NASTY_EATER) && !HAS_TRAIT(user, TRAIT_NOSTINK))
 		return FALSE
 	return TRUE
@@ -48,7 +48,7 @@
 	stressadd = 5
 	desc = span_boldred("I've lost a limb.")
 
-/datum/stressevent/dismembered/can_apply(mob/living/user,)
+/datum/stressevent/dismembered/can_apply(mob/living/user)
 	if(user.has_flaw(/datum/charflaw/masochist))
 		return FALSE
 	return TRUE
@@ -75,7 +75,7 @@
 	stressadd_per_extra_stack = 2
 	desc = span_red("Butchery.")
 
-/datum/stressevent/viewdismember/can_apply(mob/living/user,)
+/datum/stressevent/viewdismember/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER) && !HAS_TRAIT(user, TRAIT_STEELHEARTED))
 		return FALSE
 	return TRUE
@@ -87,7 +87,7 @@
 	stressadd_per_extra_stack = 1
 	desc = span_red("I saw something horrible!")
 
-/datum/stressevent/fviewdismember/can_apply(mob/living/user,)
+/datum/stressevent/fviewdismember/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER) && !HAS_TRAIT(user, TRAIT_STEELHEARTED))
 		return FALSE
 	return TRUE
@@ -97,7 +97,7 @@
 	stressadd = 2
 	desc = span_red("I saw something ghastly.")
 
-/datum/stressevent/viewgib/can_apply(mob/living/user,)
+/datum/stressevent/viewgib/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
 		return FALSE
 	return TRUE
@@ -107,7 +107,7 @@
 	stressadd = 2
 	desc = list(span_red("I think I'm bleeding."),span_red("I'm bleeding."))
 
-/datum/stressevent/bleeding/can_apply(mob/living/user,)
+/datum/stressevent/bleeding/can_apply(mob/living/user)
 	if(user.has_flaw(/datum/charflaw/masochist))
 		return FALSE
 	return TRUE
@@ -117,7 +117,7 @@
 	stressadd = 2
 	desc = span_red("THE PAIN!")
 
-/datum/stressevent/painmax/can_apply(mob/living/user,)
+/datum/stressevent/painmax/can_apply(mob/living/user)
 	if(user.has_flaw(/datum/charflaw/masochist))
 		return FALSE
 	return TRUE
@@ -137,7 +137,7 @@
 	stressadd = 10
 	desc = "<span class='red'>ZIZOZIZOZIZO</span>"
 
-/datum/stressevent/hatezizo/can_apply(mob/living/user,)
+/datum/stressevent/hatezizo/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
 		return FALSE
 	return TRUE
@@ -147,7 +147,7 @@
 	stressadd = 2
 	desc = span_red("YUCK!")
 
-/datum/stressevent/burntmeal/can_apply(mob/living/user,)
+/datum/stressevent/burntmeal/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_NASTY_EATER))
 		return FALSE
 	return TRUE
@@ -157,7 +157,7 @@
 	stressadd = 4
 	desc = span_red("YUCK!")
 
-/datum/stressevent/rotfood/can_apply(mob/living/user,)
+/datum/stressevent/rotfood/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_NASTY_EATER))
 		return FALSE
 	return TRUE
@@ -177,7 +177,7 @@
 	stressadd = 2
 	desc = span_red("It tastes VILE!")
 
-/datum/stressevent/badmeal/can_apply(mob/living/user,)
+/datum/stressevent/badmeal/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_NASTY_EATER))
 		return FALSE
 	return TRUE
@@ -189,7 +189,7 @@
 	stressadd_per_extra_stack = 2
 	desc = span_red("I puked!")
 
-/datum/stressevent/vomit/can_apply(mob/living/user,)
+/datum/stressevent/vomit/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_NASTY_EATER))
 		return FALSE
 	return TRUE
@@ -206,7 +206,7 @@
 	stressadd = 5
 	desc = span_boldred("I was violated.")
 
-/datum/stressevent/cumbad/can_apply(mob/living/user,)
+/datum/stressevent/cumbad/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_CRACKHEAD))
 		return FALSE
 	return TRUE
@@ -216,7 +216,7 @@
 	stressadd = 10
 	desc = span_boldred("What have I done?")
 
-/datum/stressevent/cumcorpse/can_apply(mob/living/user,)
+/datum/stressevent/cumcorpse/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_CRACKHEAD))
 		return FALSE
 	return TRUE
@@ -226,7 +226,7 @@
 	stressadd = 2
 	desc = span_red("My loins ache!")
 
-/datum/stressevent/blueb/can_apply(mob/living/user,)
+/datum/stressevent/blueb/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_CRACKHEAD))
 		return FALSE
 	return TRUE
@@ -261,7 +261,7 @@
 	stressadd = 3
 	desc = span_red("There is so much blood here.. it's like a battlefield!")
 
-/datum/stressevent/viewdismember/can_apply(mob/living/user,)
+/datum/stressevent/viewdismember/can_apply(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER) && !HAS_TRAIT(user, TRAIT_STEELHEARTED))
 		return FALSE
 	return TRUE
@@ -298,7 +298,7 @@
 	desc = span_boldred("I'm broken.")
 	timer = 60 SECONDS
 
-/datum/stressevent/tortured/can_apply(mob/living/user,)
+/datum/stressevent/tortured/can_apply(mob/living/user)
 	if(user.has_flaw(/datum/charflaw/masochist))
 		return FALSE
 	return TRUE
