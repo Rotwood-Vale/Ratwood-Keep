@@ -75,7 +75,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 			head = /obj/item/clothing/head/roguetown/helmet/tricorn
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
