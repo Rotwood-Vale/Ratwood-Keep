@@ -504,7 +504,7 @@
 
 /turf/proc/is_shielded()
 
-/turf/contents_explosion(severity, target)
+/turf/contents_explosion(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	var/affecting_level
 	if(severity == 1)
 		affecting_level = 1
@@ -522,7 +522,7 @@
 				var/atom/movable/AM = A
 				if(!AM.ex_check(explosion_id))
 					continue
-			A.ex_act(severity, target)
+			A.ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 			CHECK_TICK
 
 /turf/narsie_act(force, ignore_mobs, probability = 20)

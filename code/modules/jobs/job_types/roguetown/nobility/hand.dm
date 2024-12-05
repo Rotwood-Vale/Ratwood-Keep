@@ -38,7 +38,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	backl = /obj/item/clothing/suit/roguetown/armor/leather/hand
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/lockpick = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
@@ -53,6 +53,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
 		if(!isseelie(H))	//No stat changes for Seelie hands
 			H.change_stat("strength", 2)
 			H.change_stat("perception", 3)
