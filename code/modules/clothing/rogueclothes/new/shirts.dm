@@ -21,8 +21,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/shadow
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
-	name = "silk robes"
-	desc = "A silk robe, usually preferred than the cloth ones by those who can afford it."
+	name = "vanguard uniform"
+	desc = "A nightly uniform worn by those that protect the citizenry from what lurks beyond."
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS
 	icon = 'icons/roguetown/clothing/newclothes/dripobj.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/onmobdrip.dmi'

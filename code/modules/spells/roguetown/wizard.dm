@@ -885,9 +885,12 @@
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
 		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
 		L.apply_damage(damage, BRUTE, def_zone)
-		BP.add_wound(/datum/wound/fracture)
+
+		if(prob(33))
+			var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
+			BP.add_wound(/datum/wound/fracture)
+
 		L.adjustBruteLoss(damage)
 		playsound(T, "genslash", 80, TRUE)
 		to_chat(L, "<span class='userdanger'>I'm cut by blades rising from the floor!</span>")

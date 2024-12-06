@@ -38,9 +38,8 @@
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
 				return
-			else
-				to_chat(user, span_warning("Wrong key."))
-				return
+		to_chat(user, span_warning("Wrong key."))
+		return
 	return ..()
 
 
