@@ -4,7 +4,7 @@
 	action_cooldown = 0
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
 	/// How far do we try to run? Further makes for smoother running, but potentially weirder pathfinding
-	var/run_distance = 9
+	var/run_distance = 8
 	var/until_destination = FALSE
 
 /datum/ai_behavior/run_away_from_target/setup(datum/ai_controller/controller, target_key, hiding_location_key)
@@ -31,7 +31,11 @@
 /datum/ai_behavior/run_away_from_target/proc/plot_path_away_from(datum/ai_controller/controller, atom/target)
 	var/run_direction = get_dir(controller.pawn, get_step_away(controller.pawn, target))
 	var/turf/target_destination = get_ranged_target_turf(controller.pawn, run_direction, run_distance)
-	controller.set_movement_target(target_destination)
+
+	if (target_destination)
+		controller.set_movement_target(controller, target_destination)
+	else 
+		return
 
 
 /datum/ai_behavior/run_away_from_target/until_destination

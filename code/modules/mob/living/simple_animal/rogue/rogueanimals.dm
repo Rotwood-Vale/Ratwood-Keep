@@ -43,6 +43,14 @@
 	var/eat_forever
 	candodge = TRUE
 
+	//If the creature is doing something they should STOP MOVING.
+	var/can_act = TRUE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/Move()
+	//If you cant act and dont have a player stop moving.
+	if(!can_act && !client)
+		return FALSE
+	..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/apply_damage(damage = 0,damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE)
 	..()
@@ -105,6 +113,12 @@
 			Goto(T,move_to_delay,0)
 			return TRUE
 	return FALSE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/AttackingTarget()
+	//If you can't act and dont have a player stop moving.
+	if(!can_act && !client)
+		return FALSE
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/proc/eat_bodies()
 	var/mob/living/L

@@ -971,7 +971,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		. = ""
 
 /obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
-	return
+	return SEND_SIGNAL(src, COMSIG_ATOM_HITBY, AM, skipcatch, hitpush, blocked, throwingdatum, d_type)
+	//return crix
+
 
 /obj/item/attack_hulk(mob/living/carbon/human/user)
 	return FALSE

@@ -175,7 +175,7 @@
 			CancelActions()
 			blackboard[BB_HOSTILE_ORDER_MODE] = HOSTILE_COMMAND_FOLLOW
 			blackboard[BB_FOLLOW_TARGET] = WEAKREF(commander)
-			set_movement_target(commander)
+			set_movement_target(commander) //crix
 			var/mob/living/living_pawn = pawn
 			if(living_pawn.buckled)
 				queue_behavior(/datum/ai_behavior/resist)//in case they are in bed or something

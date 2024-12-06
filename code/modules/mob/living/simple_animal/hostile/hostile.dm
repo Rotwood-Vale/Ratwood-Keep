@@ -84,11 +84,11 @@
 		return 0
 
 /mob/living/simple_animal/hostile/handle_automated_action()
+	if(AIStatus == AI_OFF)
+		return 0
 	if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
 		if(deaggrodel())
 			return
-	if(AIStatus == AI_OFF)
-		return 0
 	if(has_buckled_mobs() && tame)
 		return 0
 	var/list/possible_targets = ListTargets() //we look around for potential targets and make it a list for later use.
@@ -280,6 +280,7 @@
 	return FALSE
 
 /mob/living/simple_animal/hostile/proc/GiveTarget(new_target)//Step 4, give us our selected target
+
 	target = new_target
 	LosePatience()
 	if(target != null)
@@ -384,6 +385,7 @@
 /mob/living/simple_animal/hostile/proc/AttackingTarget()
 	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)
 	in_melee = TRUE
+
 	return target.attack_animal(src)
 
 /mob/living/simple_animal/hostile/proc/Aggro()

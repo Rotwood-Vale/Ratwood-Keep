@@ -139,6 +139,8 @@
 
 #include "code\__DEFINES\dcs\signals.dm"
 #include "code\__DEFINES\dcs\signals_atom_lighting.dm"
+
+//#include "code\__DEFINES\dcs\signals\signals_movable.dm" //crix reinclude after cleanup?
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_living.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob.dm"
 

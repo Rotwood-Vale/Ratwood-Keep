@@ -159,3 +159,8 @@
 	candodge = TRUE
 	canparry = TRUE
 	item_d_type = "stab"
+
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe/test
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
+	ai_controller = /datum/ai_controller/minotaur

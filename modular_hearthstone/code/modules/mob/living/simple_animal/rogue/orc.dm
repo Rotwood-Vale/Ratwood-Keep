@@ -222,11 +222,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/basic_test
 	can_have_ai = FALSE //disable native ai
-	//wander = false
 	ai_controller = /datum/ai_controller/orc
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/ranged/basic_test
 	can_have_ai = FALSE //disable native ai
-	//wander = false
-
 	ai_controller = /datum/ai_controller/orc_ranged
