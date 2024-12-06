@@ -10,6 +10,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	flags_1 = null
 	slot_flags = ITEM_SLOT_BELT
+	light_system = MOVABLE_LIGHT
 	possible_item_intents = list(INTENT_GENERIC)
 	var/on = FALSE
 
