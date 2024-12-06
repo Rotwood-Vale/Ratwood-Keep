@@ -97,10 +97,67 @@
 			return
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/K = P
-		for(var/obj/item/key/KE in K.keys)
+		for(var/obj/item/key/KE in K.contents)
 			if(KE.lockid in accepted_id)
 				togglelock(user)
 				return
+	if(istype(P, /obj/item/lockpick))
+		trypicklock(P, user)
+		return
+
+/obj/structure/pillory/proc/trypicklock(obj/item/I, mob/user)
+	if(!latched)
+		to_chat(user, "<span class='warning'>This cannot be picked while it is unlatched.</span>")
+		return
+	if(!keylock)
+		return
+	else
+		var/lockprogress = 0
+		var/locktreshold = 100
+
+		var/mob/living/L = user
+
+		var/pickskill = user.mind.get_skill_level(/datum/skill/misc/lockpicking)
+		var/perbonus = L.STAPER/2
+		var/luckbonus = L.STALUC/4
+		var/picktime = 70
+		var/pickchance = 35
+		var/moveup = 10
+
+		picktime -= (pickskill * 10)
+		picktime = clamp(picktime, 10, 70)
+
+		moveup += (pickskill * 3)
+		moveup = clamp(moveup, 10, 30)
+
+		pickchance += pickskill * 10
+		pickchance += perbonus
+		pickchance += luckbonus
+		pickchance = clamp(pickchance, 1, 95)
+
+		while(!QDELETED(I) &&(lockprogress < locktreshold))
+			if(!do_after(user, picktime, target = src))
+				break
+			if(prob(pickchance))
+				lockprogress += moveup
+				playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
+				to_chat(user, "<span class='warning'>Click...</span>")
+				if(L.mind)
+					var/amt2raise = L.STAINT
+					var/boon = L.STALUC/4
+					L.mind.adjust_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
+				if(lockprogress >= locktreshold)
+					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
+					togglelock(user)
+					break
+				else
+					continue
+			else
+				playsound(loc, 'sound/items/pickbad.ogg', 40, TRUE)
+				I.take_damage(1)
+				to_chat(user, "<span class='warning'>Clack.</span>")
+				continue
+		return
 
 /obj/structure/pillory/proc/togglelatch(mob/living/user, silent)
 	user.changeNext_move(CLICK_CD_MELEE)

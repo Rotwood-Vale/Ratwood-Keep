@@ -105,6 +105,9 @@
 		reconsider_lights()
 
 /turf/proc/change_area(area/old_area, area/new_area)
+	GLOB.SUNLIGHT_QUEUE_WORK += src
+	if(outdoor_effect)
+		GLOB.SUNLIGHT_QUEUE_UPDATE += outdoor_effect
 	if(SSlighting.initialized)
 		if(new_area.dynamic_lighting != old_area.dynamic_lighting)
 			if(new_area.dynamic_lighting)

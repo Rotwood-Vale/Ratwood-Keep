@@ -123,8 +123,26 @@
 	created_item = list(/obj/item/ramrod,
 						/obj/item/ramrod,
 						/obj/item/ramrod
-					)
+						)
 
+	craftdiff = 0
+
+/datum/anvil_recipe/tools/lockpicks
+	name = "Lockpicks x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/lockpick,
+						/obj/item/lockpick,
+						/obj/item/lockpick
+						)
+	craftdiff = 1
+
+/datum/anvil_recipe/tools/lockpickring
+	name = "Lockpickrings x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/lockpickring,
+						/obj/item/lockpickring,
+						/obj/item/lockpickring
+						)
 	craftdiff = 0
 
 // --------- Steel -----------
