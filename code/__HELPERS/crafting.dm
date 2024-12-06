@@ -111,7 +111,7 @@ proc/check_tools(mob/user, datum/crafting_recipe/R, list/contents)
 			return FALSE
 	return TRUE
 
-/// Takes a recipe and a user, call all the checking procs, calls do_after, checks all the things again, calls del_reqs, creates result, calls CheckParts of said result with argument being list returned by deel_reqs.
+/// Attempts to build the result of a recipe.
 proc/construct_item(mob/user, datum/crafting_recipe/R)
 	if(user.doing)
 		return
@@ -119,11 +119,13 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 	var/turf/T = get_step(user, user.dir)
 	var/obj/N
 	var/result_name
+
 	if(islist(R.result))
 		N = R.result[1]
 	else
 		N = R.result
 	result_name = N.name
+
 	if(isopenturf(T) && R.wallcraft)
 		to_chat(user, span_warning("Need to craft this on a wall."))
 		return
@@ -197,6 +199,7 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 						to_chat(user, span_danger("I've failed to craft \the [result_name]."))
 						continue
 					var/list/parts = del_reqs(R, user)
+
 					if(islist(R.result))
 						var/list/L = R.result
 						for(var/IT in L)
@@ -229,6 +232,71 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 		return
 	return ", missing component."
 
+
+// Used for multi-stage structures.
+/// Checks if the user can craft the given recipe.
+proc/check_constructability(mob/user, datum/crafting_recipe/R)
+
+	R = new R()
+
+	if(user.doing)
+		return
+	var/list/contents = get_surroundings(user)
+	var/turf/T = get_step(user, user.dir)
+	var/obj/N
+	var/result_name
+
+	if(check_contents(R, contents))
+		if(check_tools(user, R, contents))
+			if(R.craftsound)
+				playsound(T, R.craftsound, 100, TRUE)
+			var/time2use = 10
+			for(var/i = 1 to 100)
+				if(do_after(user, time2use, target = user))
+					contents = get_surroundings(user)
+					if(!check_contents(R, contents))
+						to_chat(usr, span_warning("I'm missing a component."))
+						return FALSE
+					if(!check_tools(user, R, contents))
+						to_chat(usr, span_warning("I'm missing a tool."))
+						return FALSE
+
+					var/prob2craft = 25
+					if(R.skill_level)
+						prob2craft -= (25*R.skill_level)
+					if(R.skillcraft)
+						if(user.mind)
+							prob2craft += (user.mind.get_skill_level(R.skillcraft) * 25)
+					else
+						prob2craft = 100
+					if(isliving(user))
+						var/mob/living/L = user
+						if(L.STAINT > 10)
+							prob2craft += ((10-L.STAINT)*-1)*2
+					prob2craft = CLAMP(prob2craft, 0, 99)
+					if(!prob(prob2craft))
+						if(user.client?.prefs.showrolls)
+							to_chat(user, span_danger("I've failed to craft \the [result_name]... [prob2craft]%"))
+							continue
+						to_chat(user, span_danger("I've failed to craft \the [result_name]."))
+						continue
+					var/list/parts = del_reqs(R, user)
+
+					if(user.mind && R.skillcraft)
+						if(isliving(user))
+							var/mob/living/L = user
+							var/amt2raise = L.STAINT * 2// its different over here
+							if(R.skill_level > 0) //difficult recipe
+								amt2raise += (R.skill_level * 10) // also gets more
+							if(amt2raise > 0)
+								user.mind.add_sleep_experience(R.skillcraft, amt2raise, FALSE)
+					return TRUE
+				return FALSE
+			return FALSE
+		to_chat(usr, span_warning("I'm missing a tool."))
+		return FALSE
+	to_chat(usr, span_warning("I'm missing a component."))
+	return FALSE
 
 /*Del reqs works like this:
 

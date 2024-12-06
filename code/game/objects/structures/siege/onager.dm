@@ -22,7 +22,6 @@
 	var/aim_sounds = list("sound/catapult/aim.ogg", "sound/catapult/aim2.ogg")
 	var/directions = list("NORTH", "SOUTH", "EAST", "WEST")
 
-
 	/**
 	* State variables
 	* IDLE -> READY -> LOADED -> LAUNCHED -> IDLE ...
@@ -291,6 +290,7 @@
 		visible_message(span_notice("[usr] sets the [src] to fire at the distance of [target_distance] meters."))
 
 	being_used = FALSE
+
 /// Unpacks the onager, unanchoring it.
 /obj/structure/onager/proc/unpack()
 

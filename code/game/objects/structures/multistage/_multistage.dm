@@ -1,7 +1,7 @@
 /obj/structure/multistage
 
 	/// Current stage of the multi-stage structure.
-	var/stage = 0
+	var/stage = 1
 
 	/// List of crafting stages for this structure. THEY NEED TO BE IN ORDER.
 	var/list/stages
@@ -23,7 +23,7 @@
 	/// Recipe associated with this stage. Contains required items, tools, skills, etc.
 	var/datum/crafting_recipe/recipe
 
-/datum/crafting_recipe/roguetown/multistage
+/datum/crafting_recipe/roguetown/structure/multistage
 
 	// We dont want stages recipes to be shown in crafting menu
 	always_available = FALSE
@@ -33,11 +33,11 @@
 	. = ..()
 	desc = base_desc + stages[stage].description
 
-/obj/structure/multistage/proc/try_progress_stage()
+/obj/structure/multistage/proc/try_progress_stage(mob/living/carbon/user)
 
 	if(stage < stages.len)
 		// Update stage icon and description if successful.
-		if(construct_item(usr, stages[stage].recipe))
+		if(check_constructability(user, stages[stage].recipe))
 			icon_state = stages[stage].icon_state
 			desc = base_desc + stages[stage+1].description //we want the user to know the next required materials
 			stage++
@@ -46,11 +46,11 @@
 
 	// If we are at the final stage, spawn the final product and delete the unfinished structure.
 	if(stage == stages.len)
-		if(construct_item(usr, stages[stage].recipe))
-			spawn(final_product)
+		if(check_constructability(user, stages[stage].recipe))
+			final_product = new final_product(user.loc)
 			del(src)
 			return TRUE
 
 /obj/structure/multistage/attackby(obj/item/I, mob/living/carbon/user)
-	try_progress_stage()
+	try_progress_stage(user)
 	..()
