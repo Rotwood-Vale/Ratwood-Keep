@@ -172,7 +172,7 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/eora
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "eoran robe"
-	desc = "Holy robes, intended for use by followers of Eora"
+	desc = "Holy robes, intended for use by followers of Eora."
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "eorarobes"
 	icon = 'icons/roguetown/clothing/armor.dmi'
@@ -183,3 +183,34 @@
 	flags_inv = HIDEBOOB|HIDECROTCH
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	var/fanatic_wear = FALSE
+
+/obj/item/clothing/suit/roguetown/shirt/robe/eora/alt
+	name = "raised eoran robe"
+	desc = "A raised robe that exposes legs and makes getting around the terrain more comfortable."
+	body_parts_covered = null
+	icon_state = "eorastraps"
+	fanatic_wear = TRUE
+
+/obj/item/clothing/suit/roguetown/shirt/robe/eora/attack_right(mob/user)
+	switch(fanatic_wear)
+		if(FALSE)
+			name = "raised eoran robe"
+			desc = "A raised eoran robe that exposes legs and makes getting around the terrain more comfortable."
+			body_parts_covered = CHEST|GROIN|ARMS|VITALS
+			icon_state = "eorastraps"
+			fanatic_wear = TRUE
+			flags_inv = HIDEBOOB|HIDECROTCH
+			to_chat(usr, span_warning("Now wearing differently."))
+		if(TRUE)
+			name = "eoran robe"
+			desc = "Holy robes, intended for use by followers of Eora."
+			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+			icon_state = "eorarobes"
+			fanatic_wear = FALSE
+			flags_inv = HIDEBOOB|HIDECROTCH
+			to_chat(usr, span_warning("Now wearing normally."))
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_armor()

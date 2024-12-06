@@ -1,7 +1,7 @@
 /obj/effect/particle_effect/expl_particles
 	name = "fire"
 	icon_state = "explosion_particle"
-	opacity = 1
+	opacity = 0
 	anchored = TRUE
 
 /obj/effect/particle_effect/expl_particles/Initialize()
@@ -14,7 +14,7 @@
 	for(var/j in 1 to steps_amt)
 		step(src, direct)
 		sleep(1)
-	qdel(src)
+	qdel(src, 6)
 
 /datum/effect_system/expl_particles
 	number = 10

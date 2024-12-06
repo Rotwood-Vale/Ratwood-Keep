@@ -1,7 +1,7 @@
 
 /mob/living/proc/run_armor_check(def_zone = null, attack_flag = "blunt", absorb_text = null, soften_text = null, armor_penetration, penetrated_text, damage, blade_dulling)
 	var/armor = getarmor(def_zone, attack_flag, damage, armor_penetration, blade_dulling)
-	src.mob_timers[MT_SNEAKATTACK] = world.time //Stops you from sneaking after being hit. (Should work!)
+
 	//the if "armor" check is because this is used for everything on /living, including humans
 	if(armor > 0 && armor_penetration)
 		armor = max(0, armor - armor_penetration)
@@ -211,7 +211,7 @@
 	
 	var/probby =  clamp((((4 + (((user.STASTR - STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)
 
-	if(prob(probby) && !instant && !stat && cmode) //slopcode
+	if(!prob(probby) && !instant && !stat && cmode) //slopcode
 		visible_message(span_warning("[user] struggles with [src]!"),
 						span_warning("[user] struggles to restrain me!"), span_hear("I hear aggressive shuffling!"), null, user)
 		if(src.client?.prefs.showrolls)
@@ -375,9 +375,7 @@
 		return FALSE
 	return TRUE
 
-/mob/living/ex_act(severity, target, origin)
-	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
-		return
+/mob/living/ex_act(severity, target)
 	..()
 
 /mob/living/attack_paw(mob/living/carbon/monkey/M)
