@@ -29,6 +29,7 @@
 	backpack_contents = list(/obj/item/keyring/goblin = 1)
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, round(rand(1,5)), TRUE)

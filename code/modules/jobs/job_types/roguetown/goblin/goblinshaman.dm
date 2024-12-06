@@ -8,7 +8,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
-	/obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose)
+	/obj/effect/proc_holder/spell/invoked/message, /obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose)
 	tutorial = "Were you Humen, they'd call you a sorcerer. Perhaps a witch, even. But you know better than the rest. \
 	You're one of Graggar's chosen. A vessel for his power in this world, for better or worse. Serve as a spiritual advisor to your Chief. \
 	Assure he has all he needs to succeed, and, should he fail, take his place."
@@ -32,8 +32,10 @@
 	id = /obj/item/clothing/ringP/graggar
 	backpack_contents = list(/obj/item/keyring/goblinchief = 1,
 							/obj/item/storage/fancy/ifak = 1,
-							/obj/item/storage/fancy/skit = 1)
+							/obj/item/storage/fancy/skit = 1,
+							/obj/item/scrying/eye = 1)
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
