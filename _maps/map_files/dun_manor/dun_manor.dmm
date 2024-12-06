@@ -5546,12 +5546,10 @@
 /area/rogue/indoors/town/tavern)
 "eZb" = (
 /obj/structure/closet/crate/chest,
-/obj/item/natural/bundle/cloth{
-	amount = 8
-	},
 /obj/item/rope/chain,
 /obj/item/rope/chain,
 /obj/item/needle/thorn,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/town/basement/keep)
 "eZg" = (
@@ -6057,6 +6055,12 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
+"fxE" = (
+/obj/structure/fermenting_barrel/hagwoodbitter,
+/turf/open/floor/rogue/tile{
+	icon_state = "greenstone"
+	},
+/area/rogue/under/town/basement/keep)
 "fyl" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10;
@@ -15299,7 +15303,10 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/natural/feather,
+/obj/item/toy/cards/deck,
+/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/mask/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/town/basement/keep)
 "nYu" = (
@@ -17699,7 +17706,7 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/candle/yellow,
+/obj/item/book/rogue/law,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/town/basement/keep)
 "qgx" = (
@@ -20634,6 +20641,7 @@
 	dir = 1
 	},
 /obj/item/paper/scroll,
+/obj/item/natural/feather,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/town/basement/keep)
 "sNI" = (
@@ -46842,7 +46850,7 @@ jBG
 jBG
 dCX
 mrG
-tRT
+fxE
 uWc
 dCX
 diY
