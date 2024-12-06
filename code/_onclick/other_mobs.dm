@@ -566,7 +566,9 @@
 	A.attack_animal(src)
 
 /atom/proc/attack_animal(mob/user)
+	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ANIMAL, user) //hmm... TBI crix
 	return
+	
 
 /mob/living/RestrainedClickOn(atom/A)
 	return

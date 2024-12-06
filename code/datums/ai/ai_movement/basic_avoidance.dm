@@ -16,8 +16,10 @@
 			can_move = FALSE
 		var/current_loc = get_turf(movable_pawn)
 		var/turf/target_turf = get_step_towards(movable_pawn, controller.current_movement_target)
+
 		if(!is_type_in_typecache(target_turf, GLOB.dangerous_turfs) && can_move)
 			step_to(movable_pawn, controller.current_movement_target, controller.blackboard[BB_CURRENT_MIN_MOVE_DISTANCE], controller.movement_delay)
+			
 		if(current_loc == get_turf(movable_pawn)) //Did we even move after trying to move?
 			controller.pathing_attempts++
 			if(controller.pathing_attempts >= max_pathing_attempts)

@@ -1,7 +1,7 @@
 /// Use the currently held item, or unarmed, on an object in the world
 /datum/ai_behavior/use_on_object
 	required_distance = 1
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
 /datum/ai_behavior/use_on_object/perform(delta_time, datum/ai_controller/controller)
 	. = ..()
 	var/mob/living/pawn = controller.pawn

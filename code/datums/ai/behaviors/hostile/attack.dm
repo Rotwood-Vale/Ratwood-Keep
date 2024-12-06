@@ -16,7 +16,7 @@
 	if(istype(living_target) && (living_target.stat == DEAD))
 		finish_action(controller, TRUE)
 		return
-	controller.current_movement_target = living_target
+	set_movement_target(controller, (living_target))
 	attack(controller, living_target)
 /datum/ai_behavior/attack/finish_action(datum/ai_controller/controller, succeeded)
 	. = ..()

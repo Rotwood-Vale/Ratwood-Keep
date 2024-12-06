@@ -1,5 +1,5 @@
-/datum/ai_controller/testing_orc
-	move_delay = 0.5 SECONDS
+/datum/ai_controller/orc
+	movement_delay = 1 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 
@@ -14,8 +14,8 @@
 
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 
-/datum/ai_controller/testing_orc_ranged
-	move_delay = 0.5 SECONDS
+/datum/ai_controller/orc_ranged
+	movement_delay = 1 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

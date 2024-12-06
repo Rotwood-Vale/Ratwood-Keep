@@ -26,7 +26,10 @@
 	attack_same = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	blood_volume = BLOOD_VOLUME_NORMAL
-	food_type = list(/obj/item/reagent_containers/food/snacks/grown)
+	food_type = list(
+		/obj/item/reagent_containers/food/snacks/grown
+		)
+	var/food_max = 50
 	var/obj/item/udder/udder = null
 	footstep_type = FOOTSTEP_MOB_SHOE
 	var/milkies = FALSE

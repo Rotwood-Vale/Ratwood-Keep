@@ -76,7 +76,7 @@
 	else
 		blackboard[BB_HOSTILE_FRIEND] = null
 
-	if(in_range(pawn, new_friend))
+	if(pawn.Adjacent(pawn, new_friend))
 		new_friend.visible_message("<b>[pawn]</b> looks at [new_friend] in a friendly manner!", span_notice("[pawn] looks at you in a friendly manner!"))
 	blackboard[BB_HOSTILE_FRIEND] = friend_ref
 	RegisterSignal(new_friend, COMSIG_MOB_SAY, PROC_REF(check_verbal_command))
@@ -175,7 +175,7 @@
 			CancelActions()
 			blackboard[BB_HOSTILE_ORDER_MODE] = HOSTILE_COMMAND_FOLLOW
 			blackboard[BB_FOLLOW_TARGET] = WEAKREF(commander)
-			current_movement_target = commander
+			set_movement_target(commander)
 			var/mob/living/living_pawn = pawn
 			if(living_pawn.buckled)
 				queue_behavior(/datum/ai_behavior/resist)//in case they are in bed or something

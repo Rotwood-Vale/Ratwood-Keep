@@ -141,3 +141,11 @@
 			return "foreleg"
 	return ..()
 
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/wolftest
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
+	ai_controller = /datum/ai_controller/volf
+
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/wolftest/Initialize()
+	. = ..()
+	AddElement(/datum/element/ai_flee_while_injured, 0.75, 0.4)
