@@ -12,7 +12,6 @@
 	spread = 10
 	recoil = 3
 	associated_skill = /datum/skill/combat/firearms
-	pin = /obj/item/firing_pin
 	force = 10
 	var/cocked = FALSE
 	cartridge_wording = "musketball"

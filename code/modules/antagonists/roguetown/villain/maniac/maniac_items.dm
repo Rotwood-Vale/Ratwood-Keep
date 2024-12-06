@@ -22,6 +22,11 @@
 	mob_overlay_icon = 'icons/roguetown/maniac/clothing_mob.dmi'
 	icon_state = "pants"
 
+/obj/item/clothing/shoes/laceup
+	name = "laceup shoes"
+	desc = ""
+	icon_state = "laceups"
+
 /datum/outfit/treyliam
 	name = "Trey Liam"
 	head = /obj/item/clothing/head/roguetown/cyberdeck

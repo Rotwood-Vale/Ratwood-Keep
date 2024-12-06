@@ -182,9 +182,6 @@ SUBSYSTEM_DEF(job)
 		if(!job)
 			continue
 
-//		if(istype(job, GetJob(SSjob.overflow_role))) // We don't want to give him assistant, that's boring!
-//			continue
-
 		if(job.title in GLOB.noble_positions) //If you want a command position, select it!
 			continue
 
@@ -254,10 +251,6 @@ SUBSYSTEM_DEF(job)
 		if(CONFIG_GET(flag/usewhitelist))
 			if(job.whitelist_req && (!player.client.whitelisted()))
 				continue
-
-//		if((player.client.prefs.lastclass == job.title) && (!job.bypass_lastclass))
-//			JobDebug("GRJ incompatible with lastclass, Player: [player], Job: [job.title]")
-//			continue
 
 		if(job.spawn_positions)
 			if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
@@ -366,9 +359,6 @@ SUBSYSTEM_DEF(job)
 	if(unassigned.len == 0)
 		return validate_required_jobs(required_jobs)
 
-	//Scale number of open security officer slots to population
-//	setup_officer_positions()
-
 	//Jobs will have fewer access permissions if the number of players exceeds the threshold defined in game_options.txt
 	var/mat = CONFIG_GET(number/minimal_access_threshold)
 	if(mat)
@@ -382,27 +372,11 @@ SUBSYSTEM_DEF(job)
 
 	HandleFeedbackGathering()
 
-	//People who wants to be the overflow role, sure, go on.
-//	JobDebug("DO, Running Overflow Check 1")
-//	var/datum/job/overflow = GetJob(SSjob.overflow_role)
-//	var/list/overflow_candidates = FindOccupationCandidates(overflow, JP_LOW)
-//	JobDebug("AC1, Candidates: [overflow_candidates.len]")
-//	for(var/mob/dead/new_player/player in overflow_candidates)
-//		JobDebug("AC1 pass, Player: [player]")
-//		AssignRole(player, SSjob.overflow_role)
-//		overflow_candidates -= player
-//	JobDebug("DO, AC1 end")
 
 	//Select one head
 	JobDebug("DO, Running Head Check")
-//	FillHeadPosition()
 	do_required_jobs()
 	JobDebug("DO, Head Check end")
-
-	//Check for an AI
-//	JobDebug("DO, Running AI Check")
-//	FillAIPosition()
-//	JobDebug("DO, AI Check end")
 
 	//Other jobs are now checked
 	JobDebug("DO, Running Standard Check")
@@ -513,9 +487,6 @@ SUBSYSTEM_DEF(job)
 	//Mop up people who can't leave.
 	for(var/mob/dead/new_player/player in unassigned) //Players that wanted to back out but couldn't because they're antags (can you feel the edge case?)
 		RejectPlayer(player)
-//		if(!GiveRandomJob(player))
-//			if(!AssignRole(player, SSjob.overflow_role)) //If everything is already filled, make them an assistant
-//				return FALSE //Living on the edge, the forced antagonist couldn't be assigned to overflow role (bans, client age) - just reroll
 
 	return validate_required_jobs(required_jobs)
 
@@ -699,21 +670,10 @@ SUBSYSTEM_DEF(job)
 			else
 				handle_auto_deadmin_roles(M.client, rank)
 
-//	if(job)
-//		to_chat(M, "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
-//		job.radio_help_message(M)
-////		if(job.req_admin_notify)
-//			to_chat(M, "<b>I are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
-//		if(CONFIG_GET(number/minimal_access_threshold))
-//			to_chat(M, span_notice("<B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B>"))
-//		if(job.tutorial)
-//			to_chat(M, job.tutorial)
 	var/related_policy = get_policy(rank)
 	if(related_policy)
 		to_chat(M,related_policy)
-//	if(ishuman(H))
-//		var/mob/living/carbon/human/wageslave = H
-//		H.add_memory("Your account ID is [wageslave.account_id].")
+
 	if(job && H)
 		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 

@@ -12,7 +12,6 @@
 	var/mode = SYRINGE_DRAW
 	var/busy = FALSE		// needed for delayed drawing of blood
 	var/proj_piercing = 0 //does it pierce through thick clothes when shot with syringe gun
-	custom_materials = list(/datum/material/iron=10, /datum/material/glass=20)
 	reagent_flags = TRANSPARENT
 
 /obj/item/reagent_containers/syringe/Initialize()
@@ -173,100 +172,3 @@
 				injoverlay = "inject"
 		add_overlay(injoverlay)
 		M.update_inv_hands()
-
-/obj/item/reagent_containers/syringe/epinephrine
-	name = "syringe (epinephrine)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/epinephrine = 15)
-
-/obj/item/reagent_containers/syringe/multiver
-	name = "syringe (multiver)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/C2/multiver = 6, /datum/reagent/medicine/granibitaluri = 9)
-
-/obj/item/reagent_containers/syringe/convermol
-	name = "syringe (convermol)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/C2/convermol = 6, /datum/reagent/medicine/granibitaluri = 9)
-
-/obj/item/reagent_containers/syringe/antiviral
-	name = "syringe (spaceacillin)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/spaceacillin = 15)
-
-/obj/item/reagent_containers/syringe/bioterror
-	name = "bioterror syringe"
-	desc = ""
-	list_reagents = list(/datum/reagent/consumable/ethanol/neurotoxin = 5, /datum/reagent/toxin/mutetoxin = 5, /datum/reagent/toxin/sodium_thiopental = 5)
-
-/obj/item/reagent_containers/syringe/calomel
-	name = "syringe (calomel)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/calomel = 15)
-
-/obj/item/reagent_containers/syringe/plasma
-	name = "syringe (plasma)"
-	desc = ""
-	list_reagents = list(/datum/reagent/toxin/plasma = 15)
-
-/obj/item/reagent_containers/syringe/lethal
-	name = "lethal injection syringe"
-	desc = ""
-	amount_per_transfer_from_this = 50
-	volume = 50
-
-/obj/item/reagent_containers/syringe/lethal/choral
-	list_reagents = list(/datum/reagent/toxin/chloralhydrate = 50)
-
-/obj/item/reagent_containers/syringe/lethal/execution
-	list_reagents = list(/datum/reagent/toxin/plasma = 15, /datum/reagent/toxin/formaldehyde = 15, /datum/reagent/toxin/cyanide = 10, /datum/reagent/toxin/acid/fluacid = 10)
-
-/obj/item/reagent_containers/syringe/mulligan
-	name = "Mulligan"
-	desc = ""
-	amount_per_transfer_from_this = 1
-	volume = 1
-	list_reagents = list(/datum/reagent/mulligan = 1)
-
-/obj/item/reagent_containers/syringe/bluespace
-	name = "bluespace syringe"
-	desc = ""
-	amount_per_transfer_from_this = 20
-	volume = 60
-
-/obj/item/reagent_containers/syringe/noreact
-	name = "cryo syringe"
-	desc = ""
-	volume = 20
-	reagent_flags = TRANSPARENT | NO_REACT
-
-/obj/item/reagent_containers/syringe/piercing
-	name = "piercing syringe"
-	desc = ""
-	volume = 10
-	proj_piercing = 1
-
-/obj/item/reagent_containers/syringe/spider_extract
-	name = "spider extract syringe"
-	desc = ""
-	list_reagents = list(/datum/reagent/spider_extract = 1)
-
-/obj/item/reagent_containers/syringe/oxandrolone
-	name = "syringe (oxandrolone)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/oxandrolone = 15)
-
-/obj/item/reagent_containers/syringe/salacid
-	name = "syringe (salicylic acid)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/sal_acid = 15)
-
-/obj/item/reagent_containers/syringe/penacid
-	name = "syringe (pentetic acid)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/pen_acid = 15)
-
-/obj/item/reagent_containers/syringe/syriniver
-	name = "syringe (syriniver)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/C2/syriniver = 15)

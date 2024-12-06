@@ -174,58 +174,6 @@
 	else
 		holder.icon_state = "hudhealthy"
 
-
-/***********************************************
- Security HUDs! Basic mode shows only the job.
-************************************************/
-
-//HOOKS
-
-/mob/living/proc/sec_hud_set_implants()
-	var/image/holder
-	for(var/i in list(IMPTRACK_HUD, IMPLOYAL_HUD, IMPCHEM_HUD))
-		holder = hud_list[i]
-		holder.icon_state = null
-	for(var/obj/item/implant/I in implants)
-		if(istype(I, /obj/item/implant/tracking))
-			holder = hud_list[IMPTRACK_HUD]
-			var/icon/IC = icon(icon, icon_state, dir)
-			holder.pixel_y = IC.Height() - world.icon_size
-			holder.icon_state = "hud_imp_tracking"
-		else if(istype(I, /obj/item/implant/chem))
-			holder = hud_list[IMPCHEM_HUD]
-			var/icon/IC = icon(icon, icon_state, dir)
-			holder.pixel_y = IC.Height() - world.icon_size
-			holder.icon_state = "hud_imp_chem"
-	if(HAS_TRAIT(src, TRAIT_MINDSHIELD))
-		holder = hud_list[IMPLOYAL_HUD]
-		var/icon/IC = icon(icon, icon_state, dir)
-		holder.pixel_y = IC.Height() - world.icon_size
-		holder.icon_state = "hud_imp_loyal"
-
-/mob/living/carbon/human/proc/sec_hud_set_security_status()
-	var/image/holder = hud_list[WANTED_HUD]
-	var/icon/I = icon(icon, icon_state, dir)
-	holder.pixel_y = I.Height() - world.icon_size
-	var/perpname = get_face_name(get_id_name(""))
-	if(perpname && GLOB.data_core)
-		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.security)
-		if(R)
-			switch(R.fields["criminal"])
-				if("*Arrest*")
-					holder.icon_state = "hudwanted"
-					return
-				if("Incarcerated")
-					holder.icon_state = "hudincarcerated"
-					return
-				if("Paroled")
-					holder.icon_state = "hudparolled"
-					return
-				if("Discharged")
-					holder.icon_state = "huddischarged"
-					return
-	holder.icon_state = null
-
 /***********************************************
  Diagnostic HUDs!
 ************************************************/

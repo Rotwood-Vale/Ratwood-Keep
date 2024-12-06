@@ -72,7 +72,6 @@ Sunlight System
 
 //non-weatherproof turfs
 /turf/var/weatherproof = TRUE
-/turf/open/openspace/weatherproof = FALSE
 /turf/open/transparent/openspace/weatherproof = FALSE
 
 /turf/proc/reassess_stack()

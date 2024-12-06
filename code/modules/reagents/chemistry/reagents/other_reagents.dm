@@ -132,37 +132,17 @@
 /datum/reagent/water/reaction_turf(turf/open/T, reac_volume)
 	if(!istype(T))
 		return
-//	var/CT = cooling_temperature
-
 	if(reac_volume >= 5)
-//		T.MakeSlippery(TURF_WET_WATER, reac_volume*1.5 SECONDS, reac_volume*1.5 SECONDS)
 		T.add_water(reac_volume * 3) //nuproc
 	
 	var/obj/structure/soil/soil = get_soil_on_turf(T)
 	if(soil)
 		soil.adjust_water(reac_volume)
 
-//	for(var/mob/living/simple_animal/slime/M in T)
-//		M.apply_water()
-
-//	if(reac_volume >= 100)
-//		for(var/obj/effect/decal/cleanable/blood/target in T)
-//			qdel(target)
-//		for(var/obj/effect/decal/cleanable/trail_holder/target in T)
-//			qdel(target)
-
 	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in T)
-	if(hotspot && !isspaceturf(T))
-//		if(T.air)
-//			var/datum/gas_mixture/G = T.air
-//			G.temperature = max(min(G.temperature-(CT*1000),G.temperature/CT),TCMB)
-//			G.react(src)
+	if(hotspot)
 		new /obj/effect/temp_visual/small_smoke(T)
 		qdel(hotspot)
-	//fixed
-//	var/obj/effect/acid/A = (locate(/obj/effect/acid) in T)
-//	if(A)
-//		A.acid_level = max(A.acid_level - reac_volume*50, 0)
 
 /*
  *	Water reaction to an object
@@ -171,12 +151,9 @@
 /datum/reagent/water/reaction_obj(obj/O, reac_volume)
 	O.extinguish()
 	O.acid_level = 0
-	// Monkey cube
-	if(istype(O, /obj/item/reagent_containers/food/snacks/monkeycube))
-		var/obj/item/reagent_containers/food/snacks/monkeycube/cube = O
-		cube.Expand()
 
-	else if(istype(O, /obj/item/roguebin))
+
+	if(istype(O, /obj/item/roguebin))
 		var/obj/item/roguebin/RB = O
 		if(!RB.kover)
 			if(RB.reagents)
@@ -491,34 +468,6 @@
 	race = /datum/species/lizard
 	taste_description = "dragon's breath but not as cool"
 
-/datum/reagent/mutationtoxin/fly
-	name = "Fly Mutation Toxin"
-	description = "An insectifying toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/fly
-	taste_description = "trash"
-
-/datum/reagent/mutationtoxin/moth
-	name = "Moth Mutation Toxin"
-	description = "A glowing toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/moth
-	taste_description = "clothing"
-
-/datum/reagent/mutationtoxin/pod
-	name = "Podperson Mutation Toxin"
-	description = "A vegetalizing toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/pod
-	taste_description = "flowers"
-
-/datum/reagent/mutationtoxin/golem
-	name = "Golem Mutation Toxin"
-	description = "A crystal toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/golem/random
-	taste_description = "rocks"
-
 /datum/reagent/mutationtoxin/abductor
 	name = "Abductor Mutation Toxin"
 	description = "An alien toxin."
@@ -533,21 +482,6 @@
 	race = /datum/species/android
 	taste_description = "circuitry and steel"
 
-//BLACKLISTED RACES
-/datum/reagent/mutationtoxin/skeleton
-	name = "Skeleton Mutation Toxin"
-	description = "A scary toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/skeleton
-	taste_description = "milk... and lots of it"
-
-/datum/reagent/mutationtoxin/zombie
-	name = "Zombie Mutation Toxin"
-	description = "An undead toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/zombie //Not the infectious kind. The days of xenobio zombie outbreaks are long past.
-	taste_description = "brai...nothing in particular"
-
 //DANGEROUS RACES
 /datum/reagent/mutationtoxin/shadow
 	name = "Shadow Mutation Toxin"
@@ -555,13 +489,6 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/shadow
 	taste_description = "the night"
-
-/datum/reagent/mutationtoxin/plasma
-	name = "Plasma Mutation Toxin"
-	description = "A plasma-based toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/plasmaman
-	taste_description = "plasma"
 
 #undef MUT_MSG_IMMEDIATE
 #undef MUT_MSG_EXTENDED
@@ -621,13 +548,6 @@
 	color = "#6E3B08" // rgb: 110, 59, 8
 	taste_description = "metal"
 
-/datum/reagent/copper/reaction_obj(obj/O, reac_volume)
-	if(istype(O, /obj/item/stack/sheet/metal))
-		var/obj/item/stack/sheet/metal/M = O
-		reac_volume = min(reac_volume, M.amount)
-		new/obj/item/stack/tile/bronze(get_turf(M), reac_volume)
-		M.use(reac_volume)
-
 /datum/reagent/nitrogen
 	name = "Nitrogen"
 	description = "A colorless, odorless, tasteless gas. A simple asphyxiant that can silently displace vital oxygen."
@@ -668,7 +588,7 @@
 	taste_mult = 0 // apparently tasteless.
 
 /datum/reagent/mercury/on_mob_life(mob/living/carbon/M)
-	if((M.mobility_flags & MOBILITY_MOVE) && !isspaceturf(M.loc))
+	if((M.mobility_flags & MOBILITY_MOVE))
 		step(M, pick(GLOB.cardinals))
 	if(prob(5))
 		M.emote(pick("twitch","drool","moan"))
@@ -690,10 +610,9 @@
 	taste_description = "sour chalk"
 
 /datum/reagent/carbon/reaction_turf(turf/T, reac_volume)
-	if(!isspaceturf(T))
-		var/obj/effect/decal/cleanable/dirt/D = locate() in T.contents
-		if(!D)
-			new /obj/effect/decal/cleanable/dirt(T)
+	var/obj/effect/decal/cleanable/dirt/D = locate() in T.contents
+	if(!D)
+		new /obj/effect/decal/cleanable/dirt(T)
 
 /datum/reagent/chlorine
 	name = "Chlorine"
@@ -741,7 +660,7 @@
 	taste_description = "metal"
 
 /datum/reagent/lithium/on_mob_life(mob/living/carbon/M)
-	if((M.mobility_flags & MOBILITY_MOVE) && !isspaceturf(M.loc))
+	if((M.mobility_flags & MOBILITY_MOVE))
 		step(M, pick(GLOB.cardinals))
 	if(prob(5))
 		M.emote(pick("twitch","drool","moan"))
@@ -800,11 +719,10 @@
 
 /datum/reagent/uranium/reaction_turf(turf/T, reac_volume)
 	if(reac_volume >= 3)
-		if(!isspaceturf(T))
-			var/obj/effect/decal/cleanable/greenglow/GG = locate() in T.contents
-			if(!GG)
-				GG = new/obj/effect/decal/cleanable/greenglow(T)
-			GG.reagents.add_reagent(type, reac_volume)
+		var/obj/effect/decal/cleanable/greenglow/GG = locate() in T.contents
+		if(!GG)
+			GG = new/obj/effect/decal/cleanable/greenglow(T)
+		GG.reagents.add_reagent(type, reac_volume)
 
 /datum/reagent/uranium/radium
 	name = "Radium"
@@ -1270,101 +1188,6 @@
 	color = "#BC8A00"
 	taste_description = "metal"
 
-/datum/reagent/carpet
-	name = "Carpet"
-	description = "For those that need a more creative way to roll out a red carpet."
-	reagent_state = LIQUID
-	color = "#771100"
-	taste_description = "carpet" // Your tounge feels furry.
-	var/carpet_type = /turf/open/floor/carpet
-
-/datum/reagent/carpet/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(carpet_type, flags = CHANGETURF_INHERIT_AIR)
-	..()
-
-/datum/reagent/carpet/black
-	name = "Black Carpet"
-	description = "The carpet also comes in... BLAPCK" //yes, the typo is intentional
-	color = "#1E1E1E"
-	taste_description = "licorice"
-	carpet_type = /turf/open/floor/carpet/black
-
-/datum/reagent/carpet/blue
-	name = "Blue Carpet"
-	description = "For those that really need to chill out for a while."
-	color = "#0000DC"
-	taste_description = "frozen carpet"
-	carpet_type = /turf/open/floor/carpet/blue
-
-/datum/reagent/carpet/cyan
-	name = "Cyan Carpet"
-	description = "For those that need a throwback to the years of using poison as a construction material. Smells like asbestos."
-	color = "#00B4FF"
-	taste_description = "asbestos"
-	carpet_type = /turf/open/floor/carpet/cyan
-
-/datum/reagent/carpet/green
-	name = "Green Carpet"
-	description = "For those that need the perfect flourish for green eggs and ham."
-	color = "#A8E61D"
-	taste_description = "Green" //the caps is intentional
-	carpet_type = /turf/open/floor/carpet/green
-
-/datum/reagent/carpet/orange
-	name = "Orange Carpet"
-	description = "For those that prefer a healthy carpet to go along with their healthy diet."
-	color = "#E78108"
-	taste_description = "orange juice"
-	carpet_type = /turf/open/floor/carpet/orange
-
-/datum/reagent/carpet/purple
-	name = "Purple Carpet"
-	description = "For those that need to waste copious amounts of healing jelly in order to look fancy."
-	color = "#91D865"
-	taste_description = "jelly"
-	carpet_type = /turf/open/floor/carpet/purple
-
-/datum/reagent/carpet/red
-	name = "Red Carpet"
-	description = "For those that need an even redder carpet."
-	color = "#731008"
-	taste_description = "blood and gibs"
-	carpet_type = /turf/open/floor/carpet/red
-
-/datum/reagent/carpet/royal
-	name = "Royal Carpet?"
-	description = "For those that break the game and need to make an issue report."
-
-/datum/reagent/carpet/royal/on_mob_life(mob/living/carbon/M)
-	. = ..()
-	if(!M.mind?.assigned_role)
-		return
-	switch(M.mind.assigned_role)
-		if("Chief Medical Officer", "Captain", "Chief Engineer", "Research Director", "Head of Personnel")
-			if(prob(10))
-				to_chat(M, "You feel like royalty.")
-			if(prob(5))
-				M.say(pick("Peasants..","This carpet is worth more than my contracts!","I could fire you at any time..."), forced = "royal carpet")
-		if("Quartermaster")
-			if(prob(15))
-				to_chat(M, "You feel like an impostor...")
-
-/datum/reagent/carpet/royal/black
-	name = "Royal Black Carpet"
-	description = "For those that feel the need to show off their timewasting skills."
-	color = "#000000"
-	taste_description = "royalty"
-	carpet_type = /turf/open/floor/carpet/royalblack
-
-/datum/reagent/carpet/royal/blue
-	name = "Royal Blue Carpet"
-	description = "For those that feel the need to show off their timewasting skills.. in BLUE."
-	color = "#5A64C8"
-	taste_description = "blueyalty" //also intentional
-	carpet_type = /turf/open/floor/carpet/royalblue
-
 /datum/reagent/bromine
 	name = "Bromine"
 	description = "A brownish liquid that's highly reactive. Useful for stopping free radicals, but not intended for human consumption."
@@ -1503,6 +1326,13 @@
 	color = "#60A584" // rgb: 96, 165, 132
 	taste_description = "cool salt"
 
+/datum/reagent/charcoal
+	name = "Charcoal"
+	description = "Burnt wood."
+	reagent_state = SOLID
+	color = "#020202" // rgb: 96, 165, 132
+	taste_description = "ash"
+
 /datum/reagent/lye
 	name = "Lye"
 	description = "Also known as sodium hydroxide. As a profession making this is somewhat underwhelming."
@@ -1520,12 +1350,6 @@
 /datum/reagent/drying_agent/reaction_turf(turf/open/T, reac_volume)
 	if(istype(T))
 		T.MakeDry(ALL, TRUE, reac_volume * 5 SECONDS)		//50 deciseconds per unit
-
-/datum/reagent/drying_agent/reaction_obj(obj/O, reac_volume)
-	if(O.type == /obj/item/clothing/shoes/galoshes)
-		var/t_loc = get_turf(O)
-		qdel(O)
-		new /obj/item/clothing/shoes/galoshes/dry(t_loc)
 
 // Bee chemicals
 
@@ -1554,13 +1378,6 @@
 	metabolization_rate = INFINITY
 	can_synth = FALSE
 	taste_description = "brains"
-
-/datum/reagent/romerol/reaction_mob(mob/living/carbon/human/H, method=TOUCH, reac_volume)
-	// Silently add the zombie infection organ to be activated upon death
-	if(!H.getorganslot(ORGAN_SLOT_ZOMBIE))
-		var/obj/item/organ/zombie_infection/nodamage/ZI = new()
-		ZI.Insert(H)
-	..()
 
 /datum/reagent/magillitis
 	name = "Magillitis"

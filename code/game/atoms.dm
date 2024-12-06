@@ -318,12 +318,6 @@
 
 	return FALSE
 
-
-
-///This atom has been hit by a hulkified mob in hulk mode (user)
-/atom/proc/attack_hulk(mob/living/carbon/human/user)
-	SEND_SIGNAL(src, COMSIG_ATOM_HULK_ATTACK, user)
-
 /**
   * Ensure a list of atoms/reagents exists inside this atom
   *
@@ -639,13 +633,6 @@
 	if(!blood_dna)
 		return FALSE
 	return add_blood_DNA(blood_dna)
-
-///Is this atom in space
-/atom/proc/isinspace()
-	if(isspaceturf(get_turf(src)))
-		return TRUE
-	else
-		return FALSE
 
 ///Called when gravity returns after floating I think
 /atom/proc/handle_fall()

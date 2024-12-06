@@ -241,10 +241,6 @@ Class Procs:
 	else
 		if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SILICON)
 			return FALSE
-		if(!Adjacent(user))
-			var/mob/living/carbon/H = user
-			if(!(istype(H) && H.has_dna() && H.dna.check_mutation(TK)))
-				return FALSE
 	return TRUE
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -273,11 +269,6 @@ Class Procs:
 /obj/machinery/attack_paw(mob/living/user)
 	if(user.used_intent.type != INTENT_HARM)
 		return attack_hand(user)
-	else
-		user.changeNext_move(CLICK_CD_MELEE)
-//		user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
-		user.visible_message("<span class='danger'>[user.name] smashes against \the [src.name] with its paws.</span>", null, null, COMBAT_MESSAGE_RANGE)
-		take_damage(4, BRUTE, "melee", 1)
 
 /obj/machinery/_try_interact(mob/user)
 	if((interaction_flags_machine & INTERACT_MACHINE_WIRES_IF_OPEN) && panel_open)
@@ -355,8 +346,8 @@ Class Procs:
 	return 0
 
 /obj/proc/can_be_unfasten_wrench(mob/user, silent) //if we can unwrench this object; returns SUCCESSFUL_UNFASTEN and FAILED_UNFASTEN, which are both TRUE, or CANT_UNFASTEN, which isn't.
-	if(!(isfloorturf(loc) || istype(loc, /turf/open/indestructible)) && !anchored)
-		to_chat(user, span_warning("[src] needs to be on the floor to be secured!"))
+	if(!(isfloorturf(loc)) && !anchored)
+		to_chat(user, "<span class='warning'>[src] needs to be on the floor to be secured!</span>")
 		return FAILED_UNFASTEN
 	return SUCCESSFUL_UNFASTEN
 

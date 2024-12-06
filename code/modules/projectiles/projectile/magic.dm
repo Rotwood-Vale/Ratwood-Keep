@@ -113,120 +113,6 @@
 			smoke.set_up(0, t)
 			smoke.start()
 
-/obj/projectile/magic/change
-	name = "bolt of change"
-	icon_state = "ice_1"
-	damage = 0
-	damage_type = BURN
-	nodamage = TRUE
-
-/obj/projectile/magic/change/on_hit(atom/change)
-	. = ..()
-	if(ismob(change))
-		var/mob/M = change
-		if(M.anti_magic_check())
-			M.visible_message(span_warning("[src] fizzles on contact with [M]!"))
-			qdel(src)
-			return BULLET_ACT_BLOCK
-	wabbajack(change)
-	qdel(src)
-
-/proc/wabbajack(mob/living/M)
-	if(!istype(M) || M.stat == DEAD || M.notransform || (GODMODE & M.status_flags))
-		return
-
-	M.notransform = TRUE
-	M.mobility_flags = NONE
-	M.icon = null
-	M.cut_overlays()
-	M.invisibility = INVISIBILITY_ABSTRACT
-
-	var/list/contents = M.contents.Copy()
-
-	for(var/obj/item/W in contents)
-		if(!M.dropItemToGround(W))
-			qdel(W)
-
-	var/mob/living/new_mob
-
-	var/randomize = pick("monkey","humanoid","animal")
-	switch(randomize)
-		if("monkey")
-			new_mob = new /mob/living/carbon/monkey(M.loc)
-
-		if("animal")
-			var/path = pick(/mob/living/simple_animal/hostile/carp,
-							/mob/living/simple_animal/hostile/bear,
-							/mob/living/simple_animal/hostile/mushroom,
-							/mob/living/simple_animal/hostile/statue,
-							/mob/living/simple_animal/hostile/retaliate/bat,
-							/mob/living/simple_animal/hostile/retaliate/goat,
-							/mob/living/simple_animal/hostile/killertomato,
-							/mob/living/simple_animal/hostile/poison/giant_spider,
-							/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
-							/mob/living/simple_animal/hostile/gorilla,
-							/mob/living/simple_animal/parrot,
-							/mob/living/simple_animal/pet/dog/corgi,
-							/mob/living/simple_animal/crab,
-							/mob/living/simple_animal/pet/dog/pug,
-							/mob/living/simple_animal/pet/cat,
-							/mob/living/simple_animal/mouse,
-							/mob/living/simple_animal/chicken,
-							/mob/living/simple_animal/cow,
-							/mob/living/simple_animal/hostile/lizard,
-							/mob/living/simple_animal/pet/fox,
-							/mob/living/simple_animal/butterfly,
-							/mob/living/simple_animal/pet/cat/cak,
-							/mob/living/simple_animal/chick)
-			new_mob = new path(M.loc)
-
-		if("humanoid")
-			new_mob = new /mob/living/carbon/human(M.loc)
-
-			if(prob(50))
-				var/list/chooseable_races = list()
-				for(var/speciestype in subtypesof(/datum/species))
-					var/datum/species/S = speciestype
-					if(initial(S.changesource_flags) & WABBAJACK)
-						chooseable_races += speciestype
-
-				if(chooseable_races.len)
-					new_mob.set_species(pick(chooseable_races))
-
-			var/datum/preferences/A = new()	//Randomize appearance for the human
-			A.copy_to(new_mob, icon_updates=0)
-
-			var/mob/living/carbon/human/H = new_mob
-			H.update_body()
-			H.update_hair()
-			H.update_body_parts()
-			H.dna.update_dna_identity()
-
-	if(!new_mob)
-		return
-	new_mob.grant_language(/datum/language/common)
-
-	// Some forms can still wear some items
-	for(var/obj/item/W in contents)
-		new_mob.equip_to_appropriate_slot(W)
-
-	M.log_message("became [new_mob.real_name]", LOG_ATTACK, color="orange")
-
-	new_mob.a_intent = INTENT_HARM
-
-	M.wabbajack_act(new_mob)
-
-	to_chat(new_mob, span_warning("My form morphs into that of a [randomize]."))
-
-	var/poly_msg = get_policy(POLICY_POLYMORPH)
-	if(poly_msg)
-		to_chat(new_mob, poly_msg)
-
-	M.transfer_observers_to(new_mob)
-
-	qdel(M)
-	return new_mob
-
 /obj/projectile/magic/animate
 	name = "bolt of animation"
 	icon_state = "red_1"
@@ -241,7 +127,7 @@
 	..()
 
 /atom/proc/animate_atom_living(mob/living/owner = null)
-	if((isitem(src) || istype(src, /obj/structure/closet/crate/chest) || istype(src, /obj/structure/handcart ) || istype(src, /obj/structure/chair/wood/rogue )) && !is_type_in_list(src, GLOB.protected_objects))
+	if((isitem(src) || istype(src, /obj/structure/closet/crate/chest) || istype(src, /obj/structure/handcart ) || istype(src, /obj/structure/chair/wood/rogue )))
 		if(istype(src, /obj/structure/statue/petrified))
 			var/obj/structure/statue/petrified/P = src
 			if(P.petrified_mob)
@@ -258,7 +144,7 @@
 				if(L.mind)
 					L.mind.transfer_to(S)
 					if(owner)
-						to_chat(S, span_danger("I are an animate statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], my creator."))
+						to_chat(S, span_danger("You are an animate statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], my creator."))
 				P.forceMove(S)
 				return
 		else
@@ -638,17 +524,6 @@
 	for(var/i=0, i<50, i+=10)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), T, -1, exp_heavy, exp_light, exp_flash, FALSE, FALSE, exp_fire), i)
 
-//still magic related, but a different path
-
-/obj/projectile/temp/chill
-	name = "bolt of chills"
-	icon_state = "ice_2"
-	damage = 0
-	damage_type = BURN
-	nodamage = FALSE
-	armor_penetration = 100
-	temperature = 50
-	flag = "magic"
 
 /obj/projectile/magic/water
 	name = "bolt of water"

@@ -416,9 +416,6 @@ force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.adm
 		if("styleInvisible")
 			temp_pod.setStyle(STYLE_INVISIBLE)
 			. = TRUE
-		if("styleGondola")
-			temp_pod.setStyle(STYLE_GONDOLA)
-			. = TRUE
 		if("styleSeeThrough")
 			temp_pod.setStyle(STYLE_SEETHROUGH)
 			. = TRUE

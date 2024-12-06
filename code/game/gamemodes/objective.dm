@@ -53,8 +53,6 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 /datum/objective/proc/considered_escaped(datum/mind/M)
 	if(!considered_alive(M))
 		return FALSE
-	if(considered_exiled(M))
-		return FALSE
 	if(M.force_escaped)
 		return TRUE
 	var/area/A = get_area(M.current)
@@ -206,7 +204,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	..()
 
 /datum/objective/mutiny/check_completion()
-	if(!target || !considered_alive(target) || considered_afk(target) || considered_exiled(target))
+	if(!target || !considered_alive(target) || considered_afk(target))
 		return TRUE
 	var/turf/T = get_turf(target.current)
 	return !T || !is_station_level(T.z)
@@ -518,62 +516,6 @@ GLOBAL_LIST_EMPTY(possible_items)
 					return TRUE
 	return FALSE
 
-GLOBAL_LIST_EMPTY(possible_items_special)
-/datum/objective/steal/special //ninjas are so special they get their own subtype good for them
-	name = "steal special"
-
-/datum/objective/steal/special/New()
-	..()
-	if(!GLOB.possible_items_special.len)
-		for(var/I in subtypesof(/datum/objective_item/special) + subtypesof(/datum/objective_item/stack))
-			new I
-
-/datum/objective/steal/special/find_target(dupe_search_range)
-	return set_target(pick(GLOB.possible_items_special))
-
-/datum/objective/steal/exchange
-	name = "exchange"
-	martyr_compatible = 0
-
-/datum/objective/steal/exchange/admin_edit(mob/admin)
-	return
-
-/datum/objective/steal/exchange/proc/set_faction(faction,otheragent)
-	target = otheragent
-	if(faction == "red")
-		targetinfo = new/datum/objective_item/unique/docs_blue
-	else if(faction == "blue")
-		targetinfo = new/datum/objective_item/unique/docs_red
-	explanation_text = "Acquire [targetinfo.name] held by [target.current.real_name], the [target.assigned_role] and syndicate agent"
-	steal_target = targetinfo.targetitem
-
-
-/datum/objective/steal/exchange/update_explanation_text()
-	..()
-	if(target && target.current)
-		explanation_text = "Acquire [targetinfo.name] held by [target.name], the [target.assigned_role] and syndicate agent"
-	else
-		explanation_text = "Free Objective"
-
-
-/datum/objective/steal/exchange/backstab
-	name = "prevent exchange"
-
-/datum/objective/steal/exchange/backstab/set_faction(faction)
-	if(faction == "red")
-		targetinfo = new/datum/objective_item/unique/docs_red
-	else if(faction == "blue")
-		targetinfo = new/datum/objective_item/unique/docs_blue
-	explanation_text = "Do not give up or lose [targetinfo.name]."
-	steal_target = targetinfo.targetitem
-
-
-/datum/objective/download/admin_edit(mob/admin)
-	var/count = input(admin,"How many nodes ?","Nodes",target_amount) as num|null
-	if(count)
-		target_amount = count
-	update_explanation_text()
-
 /datum/objective/capture
 	name = "capture"
 
@@ -683,7 +625,6 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		/datum/objective/survive,
 		/datum/objective/martyr,
 		/datum/objective/steal,
-		/datum/objective/download,
 		/datum/objective/capture,
 		/datum/objective/custom
 	),/proc/cmp_typepaths_asc)

@@ -271,8 +271,6 @@
 
 	var/list/ripples = list()
 	var/engine_coeff = 1 //current engine coeff
-	var/current_engines = 0 //current engine power
-	var/initial_engines = 0 //initial engine power
 	var/list/engine_list = list()
 	var/can_move_docking_ports = FALSE //if this shuttle can move docking ports other than the one it is docked at
 	var/list/hidden_turfs = list()
@@ -305,9 +303,6 @@
 		var/area/cur_area = curT.loc
 		if(istype(cur_area, area_type))
 			shuttle_areas[cur_area] = TRUE
-
-	initial_engines = count_engines()
-	current_engines = initial_engines
 
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#0f0")
@@ -483,9 +478,6 @@
 	for(var/t in return_turfs())
 		var/turf/T = t
 		for(var/mob/living/M in T.GetAllContents())
-			// If they have a mind and they're not in the brig, they escaped
-			if(M.mind && !istype(t, /turf/open/floor/plasteel/shuttle/red) && !istype(t, /turf/open/floor/mineral/plastitanium/red/brig))
-				M.mind.force_escaped = TRUE
 			// Ghostize them and put them in nullspace stasis (for stat & possession checks)
 			M.notransform = TRUE
 			M.ghostize(FALSE)
@@ -762,40 +754,10 @@
 	if(mod == 0)
 		return
 	var/old_coeff = engine_coeff
-	engine_coeff = get_engine_coeff(current_engines,mod)
-	current_engines = max(0,current_engines + mod)
+	engine_coeff = 1
 	if(in_flight())
 		var/delta_coeff = engine_coeff / old_coeff
 		modTimer(delta_coeff)
-
-/obj/docking_port/mobile/proc/count_engines()
-	. = 0
-	for(var/thing in shuttle_areas)
-		var/area/shuttle/areaInstance = thing
-		for(var/obj/structure/shuttle/engine/E in areaInstance.contents)
-			if(!QDELETED(E))
-				engine_list += E
-				. += E.engine_power
-
-// Double initial engines to get to 0.5 minimum
-// Lose all initial engines to get to 2
-//For 0 engine shuttles like BYOS 5 engines to get to doublespeed
-/obj/docking_port/mobile/proc/get_engine_coeff(current,engine_mod)
-	var/new_value = max(0,current + engine_mod)
-	if(new_value == initial_engines)
-		return 1
-	if(new_value > initial_engines)
-		var/delta = new_value - initial_engines
-		var/change_per_engine = (1 - ENGINE_COEFF_MIN) / ENGINE_DEFAULT_MAXSPEED_ENGINES // 5 by default
-		if(initial_engines > 0)
-			change_per_engine = (1 - ENGINE_COEFF_MIN) / initial_engines // or however many it had
-		return CLAMP(1 - delta * change_per_engine,ENGINE_COEFF_MIN,ENGINE_COEFF_MAX)
-	if(new_value < initial_engines)
-		var/delta = initial_engines - new_value
-		var/change_per_engine = 1 //doesn't really matter should not be happening for 0 engine shuttles
-		if(initial_engines > 0)
-			change_per_engine = (ENGINE_COEFF_MAX -  1) / initial_engines //just linear drop to max delay
-		return CLAMP(1 + delta * change_per_engine,ENGINE_COEFF_MIN,ENGINE_COEFF_MAX)
 
 
 /obj/docking_port/mobile/proc/in_flight()

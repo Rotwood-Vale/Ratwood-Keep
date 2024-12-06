@@ -431,12 +431,6 @@
 		if(O.level == 1 && (O.flags_1 & INITIALIZED_1))
 			O.hide(src.intact)
 
-// override for space turfs, since they should never hide anything
-/turf/open/space/levelupdate()
-	for(var/obj/O in src)
-		if(O.level == 1 && (O.flags_1 & INITIALIZED_1))
-			O.hide(0)
-
 // Removes all signs of lattice on the pos of the turf -Donkieyo
 /turf/proc/RemoveLattice()
 	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
@@ -497,12 +491,6 @@
 				O.singularity_act()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 	return(2)
-
-/turf/proc/can_have_cabling()
-	return TRUE
-
-/turf/proc/can_lay_cable()
-	return can_have_cabling() & !intact
 
 /turf/proc/burn_tile()
 

@@ -38,19 +38,6 @@
 	else
 		return TRUE
 
-/obj/structure/plasticflaps/wirecutter_act(mob/living/user, obj/item/W)
-	. = ..()
-	if(!anchored)
-		user.visible_message(span_warning("[user] cuts apart [src]."), span_notice("I start to cut apart [src]."), span_hear("I hear cutting."))
-		if(W.use_tool(src, user, 50, volume=100))
-			if(anchored)
-				return TRUE
-			to_chat(user, span_notice("I cut apart [src]."))
-			var/obj/item/stack/sheet/plastic/five/P = new(loc)
-			P.add_fingerprint(user)
-			qdel(src)
-		return TRUE
-
 /obj/structure/plasticflaps/proc/check_anchored_state(check_anchored)
 	if(anchored != check_anchored)
 		return FALSE
@@ -74,21 +61,11 @@
 	if(istype(A, /obj/structure/bed) && (B.has_buckled_mobs() || B.density))//if it's a bed/chair and is dense or someone is buckled, it will not pass
 		return FALSE
 
-	if(istype(A, /obj/structure/closet/cardboard))
-		var/obj/structure/closet/cardboard/C = A
-		if(C.move_delay)
-			return FALSE
-
 	else if(isliving(A)) // You Shall Not Pass!
 		var/mob/living/M = A
 		if((M.mobility_flags & MOBILITY_STAND) && !M.ventcrawler && M.mob_size != MOB_SIZE_TINY)	//If your not laying down, or a ventcrawler or a small creature, no pass.
 			return FALSE
 	return ..()
-
-/obj/structure/plasticflaps/deconstruct(disassembled = TRUE)
-	if(!(flags_1 & NODECONSTRUCT_1))
-		new /obj/item/stack/sheet/plastic/five(loc)
-	qdel(src)
 
 /obj/structure/plasticflaps/Initialize()
 	. = ..()
