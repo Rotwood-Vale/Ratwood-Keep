@@ -32,11 +32,7 @@
 	var/run_direction = get_dir(controller.pawn, get_step_away(controller.pawn, target))
 	var/turf/target_destination = get_ranged_target_turf(controller.pawn, run_direction, run_distance)
 
-	if (target_destination)
-		controller.set_movement_target(controller, target_destination)
-	else 
-		return
-
+	controller.set_movement_target(controller, target_destination)
 
 /datum/ai_behavior/run_away_from_target/until_destination
 	until_destination = TRUE

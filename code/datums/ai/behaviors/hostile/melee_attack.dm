@@ -11,11 +11,16 @@
 
 	//Hiding location is priority
 	var/atom/target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
-	if(QDELETED(target) || !target)
+	if(QDELETED(target))
 		return FALSE
-	set_movement_target(controller, (target))
+	set_movement_target(controller, target)
 
 /datum/ai_behavior/basic_melee_attack/perform(delta_time, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
+	if (isliving(controller.pawn))
+		var/mob/living/pawn = controller.pawn
+		if (world.time < pawn.next_move)
+			return
+
 	. = ..()
 	var/mob/living/simple_animal/basic_mob = controller.pawn
 	//targetting datum will kill the action if not real anymore
@@ -32,6 +37,7 @@
 
 	basic_mob.face_atom()
 	basic_mob.a_intent = pick(basic_mob.possible_a_intents)
+	
 	if(hiding_target) //Slap it!
 		basic_mob.ClickOn(hiding_target, list())
 	else
