@@ -19,7 +19,6 @@
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/kobold,\
-	/datum/species/goblinp,\
 	/datum/species/seelie,\
 )
 
@@ -44,6 +43,7 @@
 #define RACES_SHUNNED \
 	/datum/species/elf/dark,\
 	/datum/species/tieberian,\
+	/datum/species/goblinp,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
 
