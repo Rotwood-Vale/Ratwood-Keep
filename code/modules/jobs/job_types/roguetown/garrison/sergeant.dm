@@ -114,9 +114,9 @@
 			if(!HAS_TRAIT(target, TRAIT_GUARDSMAN))
 				to_chat(user, span_alert("I cannot order one not of my ranks!"))
 				return
-		if(HAS_TRAIT(user, TRAIT_KNIGHTSMAN))
+		if(user.job == "Guard Captain")
 			if(!HAS_TRAIT(target, TRAIT_KNIGHTSMAN))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
+				to_chat(user, span_alert("I cannot order one not of my noble ranks!"))
 				return		
 		if(target == user)
 			to_chat(user, span_alert("I cannot order myself!"))
@@ -176,9 +176,10 @@
 			if(!HAS_TRAIT(target, TRAIT_GUARDSMAN))
 				to_chat(user, span_alert("I cannot order one not of my ranks!"))
 				return
-		if(HAS_TRAIT(user, TRAIT_KNIGHTSMAN))
+		if(user.job == "Guard Captain")
 			if(!HAS_TRAIT(target, TRAIT_KNIGHTSMAN))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
+				to_chat(user, span_alert("I cannot order one not of my noble ranks!"))
+				return
 		if(target == user)
 			to_chat(user, span_alert("I cannot order myself!"))
 			return
@@ -206,9 +207,10 @@
 			if(!HAS_TRAIT(target, TRAIT_GUARDSMAN))
 				to_chat(user, span_alert("I cannot order one not of my ranks!"))
 				return
-		if(HAS_TRAIT(user, TRAIT_KNIGHTSMAN))
+		if(user.job == "Guard Captain")
 			if(!HAS_TRAIT(target, TRAIT_KNIGHTSMAN))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
+				to_chat(user, span_alert("I cannot order one not of my noble ranks!"))
+				return
 		if(target == user)
 			to_chat(user, span_alert("I cannot order myself!"))
 			return
@@ -263,9 +265,10 @@
 			if(!HAS_TRAIT(target, TRAIT_GUARDSMAN))
 				to_chat(user, span_alert("I cannot order one not of my ranks!"))
 				return
-		if(HAS_TRAIT(user, TRAIT_KNIGHTSMAN))
+		if(user.job == "Guard Captain")
 			if(!HAS_TRAIT(target, TRAIT_KNIGHTSMAN))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
+				to_chat(user, span_alert("I cannot order one not of my noble ranks!"))
+				return
 		if(target == user)
 			to_chat(user, span_alert("I cannot order myself!"))
 			return
