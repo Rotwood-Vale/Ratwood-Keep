@@ -49,7 +49,6 @@
 	range = -1
 	include_user = TRUE
 
-	mutations = list(LASEREYES, HULK)
 	duration = 300
 	cooldown_min = 300 //25 deciseconds reduction per rank
 
@@ -180,52 +179,6 @@
 /obj/effect/proc_holder/spell/aoe_turf/timestop/cast(list/targets, mob/user = usr)
 	new /obj/effect/timestop/magic(get_turf(user), timestop_range, timestop_duration, list(user))
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/carp
-	name = "Summon Carp"
-	desc = ""
-
-	school = "conjuration"
-	charge_max = 1200
-	clothes_req = TRUE
-	invocation = "NOUK FHUNMM SACP RISSKA"
-	invocation_type = "shout"
-	range = 1
-
-	summon_type = list(/mob/living/simple_animal/hostile/carp)
-	cast_sound = 'sound/blank.ogg'
-
-
-/obj/effect/proc_holder/spell/aoe_turf/conjure/construct
-	name = "Artificer"
-	desc = ""
-
-	school = "conjuration"
-	charge_max = 600
-	clothes_req = FALSE
-	invocation = "none"
-	invocation_type = "none"
-	range = 0
-
-	summon_type = list(/obj/structure/constructshell)
-
-	action_icon_state = "artificer"
-	cast_sound = 'sound/blank.ogg'
-
-
-/obj/effect/proc_holder/spell/aoe_turf/conjure/creature
-	name = "Summon Creature Swarm"
-	desc = ""
-
-	school = "conjuration"
-	charge_max = 1200
-	clothes_req = FALSE
-	invocation = "IA IA"
-	invocation_type = "shout"
-	summon_amt = 10
-	range = 3
-
-	summon_type = list(/mob/living/simple_animal/hostile/netherworld)
-	cast_sound = 'sound/blank.ogg'
 
 /obj/effect/proc_holder/spell/targeted/trigger/blind
 	name = "Blind"
@@ -243,21 +196,12 @@
 
 	action_icon_state = "blind"
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/creature/cult
-	name = "Summon Creatures (DANGEROUS)"
-	clothes_req = TRUE
-	charge_max = 5000
-	summon_amt = 2
-
-
-
 /obj/effect/proc_holder/spell/targeted/inflict_handler/blind
 	amt_eye_blind = 10
 	amt_eye_blurry = 20
 	sound = 'sound/blank.ogg'
 
 /obj/effect/proc_holder/spell/targeted/genetic/blind
-	mutations = list(BLINDMUT)
 	duration = 300
 	charge_max = 400 // needs to be higher than the duration or it'll be permanent
 	sound = 'sound/blank.ogg'
@@ -361,19 +305,6 @@
 		var/mob/living/U = user
 		if(!U.anti_magic_check(TRUE, TRUE))
 			U.IgniteMob()
-
-/obj/effect/proc_holder/spell/targeted/conjure_item/spellpacket
-	name = "Thrown Lightning"
-	desc = ""
-	clothes_req = TRUE
-	item_type = /obj/item/spellpacket/lightningbolt
-	charge_max = 10
-	action_icon_state = "thrownlightning"
-
-/obj/effect/proc_holder/spell/targeted/conjure_item/spellpacket/cast(list/targets, mob/user = usr)
-	..()
-	for(var/mob/living/carbon/C in targets)
-		C.throw_mode_on()
 
 /obj/item/spellpacket/lightningbolt
 	name = "\improper Lightning bolt Spell Packet"

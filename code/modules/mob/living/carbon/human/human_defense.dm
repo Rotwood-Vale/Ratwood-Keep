@@ -247,21 +247,6 @@
 	// the attacked_by code varies among species
 	return dna.species.spec_attacked_by(I, user, affecting, used_intent, src, useder)
 
-
-/mob/living/carbon/human/attack_hulk(mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	var/hulk_verb = pick("smash","pummel")
-	if(check_shields(user, 15, "the [hulk_verb]ing"))
-		return
-	..()
-	playsound(loc, user.dna.species.attack_sound, 25, TRUE, -1)
-	visible_message(span_danger("[user] [hulk_verb]ed [src]!"), \
-					span_danger("[user] [hulk_verb]ed [src]!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), null, user)
-	to_chat(user, span_danger("I [hulk_verb] [src]!"))
-	adjustBruteLoss(15)
-
 /mob/living/carbon/human/attack_hand(mob/user)
 	if(..())	//to allow surgery to return properly.
 		return
@@ -387,8 +372,6 @@
 				brute_loss = ((30 * (2 - round(bomb_armor*0.01, 0.05)) * hdist) - ((30 * (2 - round(bomb_armor*0.01, 0.05))) * fodist) * dmgmod)
 				burn_loss = brute_loss
 			damage_clothes(max(brute_loss - bomb_armor, 0), BRUTE, "bomb")
-//				if (!istype(ears, /obj/item/clothing/ears/earmuffs))
-//					adjustEarDamage(30, 120)
 			Unconscious((10 * hdist) - (5 * fodist))
 			Knockdown(((30 * hdist) - (30 * fodist)) - (bomb_armor * 1.6))
 
@@ -397,8 +380,6 @@
 			if(bomb_armor)
 				brute_loss = (10 * (2 - round(bomb_armor*0.01, 0.05)) * ldist) - ((10 * (2 - round(bomb_armor*0.01, 0.05))) * fodist)
 				damage_clothes(max(brute_loss - bomb_armor, 0), BRUTE, "bomb")
-//				if (!istype(ears, /obj/item/clothing/ears/earmuffs))
-//					adjustEarDamage(15,60)
 
 	take_overall_damage(brute_loss,burn_loss)
 

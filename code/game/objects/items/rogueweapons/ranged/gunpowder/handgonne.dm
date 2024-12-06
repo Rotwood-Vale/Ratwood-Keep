@@ -23,7 +23,6 @@
 	spread = 0
 
 	can_parry = TRUE
-	pin = /obj/item/firing_pin
 	minstr = 6
 	walking_stick = TRUE
 	experimental_onback = TRUE

@@ -102,16 +102,6 @@
 /obj/proc/hulk_damage()
 	return 150 //the damage hulks do on punches to this object, is affected by melee armor
 
-/obj/attack_hulk(mob/living/carbon/human/user)
-	..()
-	user.visible_message(span_danger("[user] smashes [src]!"), span_danger("I smash [src]!"), null, COMBAT_MESSAGE_RANGE)
-	if(density)
-		playsound(src.loc, 'sound/blank.ogg', 100, TRUE)
-	else
-		playsound(src, 'sound/blank.ogg', 50, TRUE)
-	take_damage(hulk_damage(), BRUTE, "blunt", 0, get_dir(src, user))
-	return TRUE
-
 /obj/proc/attack_generic(mob/user, damage_amount = 0, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, armor_penetration = 0) //used by attack_alien, attack_animal, and attack_slime
 	user.do_attack_animation(src)
 	user.changeNext_move(CLICK_CD_MELEE)

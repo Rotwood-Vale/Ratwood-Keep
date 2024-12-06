@@ -161,15 +161,6 @@
 					is_in_use = TRUE
 					ui_interact(usr)
 
-		// check for TK users
-
-		if(ishuman(usr))
-			var/mob/living/carbon/human/H = usr
-			if(!(usr in nearby))
-				if(usr.client && usr.machine==src)
-					if(H.dna.check_mutation(TK))
-						is_in_use = TRUE
-						ui_interact(usr)
 		if (is_in_use)
 			obj_flags |= IN_USE
 		else

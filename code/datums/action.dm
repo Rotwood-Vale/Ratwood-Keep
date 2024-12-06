@@ -232,15 +232,6 @@
 /datum/action/item_action/toggle_paddles
 	name = "Toggle Paddles"
 
-/datum/action/item_action/set_internals
-	name = "Set Internals"
-
-/datum/action/item_action/set_internals/UpdateButtonIcon(status_only = FALSE, force)
-	if(..()) //button available
-		if(iscarbon(owner))
-			var/mob/living/carbon/C = owner
-			if(target == C.internal)
-				button.icon_state = "template_active"
 
 /datum/action/item_action/pick_color
 	name = "Choose A Color"
@@ -253,35 +244,6 @@
 
 /datum/action/item_action/toggle_helmet_light
 	name = "Toggle Helmet Light"
-
-/datum/action/item_action/toggle_welding_screen
-	name = "Toggle Welding Screen"
-
-/datum/action/item_action/toggle_welding_screen/Trigger()
-	var/obj/item/clothing/head/hardhat/weldhat/H = target
-	if(istype(H))
-		H.toggle_welding_screen(owner)
-
-/datum/action/item_action/toggle_headphones
-	name = "Toggle Headphones"
-	desc = ""
-
-/datum/action/item_action/toggle_headphones/Trigger()
-	var/obj/item/clothing/ears/headphones/H = target
-	if(istype(H))
-		H.toggle(owner)
-
-
-/datum/action/item_action/synthswitch
-	name = "Change Synthesizer Instrument"
-	desc = ""
-
-/datum/action/item_action/synthswitch/Trigger()
-	if(istype(target, /obj/item/instrument/piano_synth))
-		var/obj/item/instrument/piano_synth/synth = target
-		return synth.selectInstrument()
-	return ..()
-
 
 /datum/action/item_action/toggle_helmet_flashlight
 	name = "Toggle Helmet Flashlight"
@@ -307,19 +269,6 @@
 
 /datum/action/item_action/change
 	name = "Change"
-
-/datum/action/item_action/nano_picket_sign
-	name = "Retext Nano Picket Sign"
-	var/obj/item/picket_sign/S
-
-/datum/action/item_action/nano_picket_sign/New(Target)
-	..()
-	if(istype(Target, /obj/item/picket_sign))
-		S = Target
-
-/datum/action/item_action/nano_picket_sign/Trigger()
-	if(istype(S))
-		S.retext(owner)
 
 /datum/action/item_action/adjust
 
@@ -375,17 +324,6 @@
 		active = FALSE
 	..()
 
-/datum/action/item_action/instrument
-	name = "Use Instrument"
-	desc = ""
-
-/datum/action/item_action/instrument/Trigger()
-	if(istype(target, /obj/item/instrument))
-		var/obj/item/instrument/I = target
-		I.interact(usr)
-		return
-	return ..()
-
 /datum/action/item_action/organ_action
 	check_flags = AB_CHECK_CONSCIOUS
 
@@ -404,39 +342,6 @@
 	..()
 	name = "Use [target.name]"
 	button.name = name
-
-///MGS BOX!
-/datum/action/item_action/agent_box
-	name = "Deploy Box"
-	desc = ""
-	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUN|AB_CHECK_CONSCIOUS
-	background_icon_state = "bg_agent"
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
-	button_icon_state = "deploy_box"
-	///Cooldown between deploys. Uses world.time
-	var/cooldown = 0
-	///The type of closet this action spawns.
-	var/boxtype = /obj/structure/closet/cardboard/agent
-
-///Handles opening and closing the box.
-/datum/action/item_action/agent_box/Trigger()
-	. = ..()
-	if(!.)
-		return FALSE
-	if(istype(owner.loc, /obj/structure/closet/cardboard/agent))
-		var/obj/structure/closet/cardboard/agent/box = owner.loc
-		owner.playsound_local(box, 'sound/blank.ogg', 50, TRUE)
-		box.open()
-		return
-	//Box closing from here on out.
-	if(!isturf(owner.loc)) //Don't let the player use this to escape mechs/welded closets.
-		to_chat(owner, span_warning("I need more space to activate this implant!"))
-		return
-	if(cooldown < world.time - 100)
-		var/box = new boxtype(owner.drop_location())
-		owner.forceMove(box)
-		cooldown = world.time
-		owner.playsound_local(box, 'sound/blank.ogg', 50, TRUE)
 
 //Preset for spells
 /datum/action/spell_action

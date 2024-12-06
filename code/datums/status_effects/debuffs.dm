@@ -263,26 +263,6 @@
 /datum/status_effect/eorapacify/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "status_effect")
 
-/datum/status_effect/his_wrath //does minor damage over time unless holding His Grace
-	id = "his_wrath"
-	duration = -1
-	tick_interval = 4
-	alert_type = /atom/movable/screen/alert/status_effect/his_wrath
-
-/atom/movable/screen/alert/status_effect/his_wrath
-	name = "His Wrath"
-	desc = ""
-	icon_state = "his_grace"
-	alerttooltipstyle = "hisgrace"
-
-/datum/status_effect/his_wrath/tick()
-	for(var/obj/item/his_grace/HG in owner.held_items)
-		qdel(src)
-		return
-	owner.adjustBruteLoss(0.1)
-	owner.adjustFireLoss(0.1)
-	owner.adjustToxLoss(0.2, TRUE, TRUE)
-
 /datum/status_effect/stacking/saw_bleed
 	id = "saw_bleed"
 	tick_interval = 6
@@ -453,29 +433,6 @@
 					owner.log_message("threw [I] due to a Muscle Spasm", LOG_ATTACK)
 					owner.throw_item(pick(targets))
 
-/datum/status_effect/dna_melt
-	id = "dna_melt"
-	duration = 600
-	status_type = STATUS_EFFECT_REPLACE
-	alert_type = /atom/movable/screen/alert/status_effect/dna_melt
-	var/kill_either_way = FALSE //no amount of removing mutations is gonna save you now
-
-/datum/status_effect/dna_melt/on_creation(mob/living/new_owner, set_duration, updating_canmove)
-	. = ..()
-	to_chat(new_owner, span_boldwarning("My body can't handle the mutations! I need to get my mutations removed fast!"))
-
-/datum/status_effect/dna_melt/on_remove()
-	if(!ishuman(owner))
-		owner.gib() //fuck you in particular
-		return
-	var/mob/living/carbon/human/H = owner
-	H.something_horrible(kill_either_way)
-
-/atom/movable/screen/alert/status_effect/dna_melt
-	name = "Genetic Breakdown"
-	desc = ""
-	icon_state = "dna_melt"
-
 /datum/status_effect/go_away
 	id = "go_away"
 	duration = 100
@@ -541,3 +498,4 @@
 		to_chat(owner, fake_msg)
 
 	msg_stage++
+

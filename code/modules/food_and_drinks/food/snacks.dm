@@ -512,7 +512,7 @@ All foods are distributed among various categories. Use common sense.
 	. = ..()
 	if(!dunkable || !proximity)
 		return
-	if(istype(M, /obj/item/reagent_containers/glass) || istype(M, /obj/item/reagent_containers/food/drinks))	//you can dunk dunkable snacks into beakers or drinks
+	if(istype(M, /obj/item/reagent_containers/glass))	//you can dunk dunkable snacks into beakers or drinks
 		if(!M.is_drainable())
 			to_chat(user, span_warning("[M] is unable to be dunked in!"))
 			return
@@ -559,3 +559,13 @@ All foods are distributed among various categories. Use common sense.
 	else
 		return ..()
 
+
+/obj/item/reagent_containers/food/snacks/badrecipe
+	name = "burned mess"
+	desc = ""
+	icon_state = "badrecipe"
+	list_reagents = list(/datum/reagent/toxin/bad_food = 30)
+	filling_color = "#8B4513"
+	foodtype = GROSS
+	burntime = 0
+	cooktime = 0

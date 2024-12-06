@@ -26,21 +26,3 @@
 	if(!iscarbon(eater))
 		return 0
 	return 1 // Masks were stopping people from "eating" patches. Thanks, inheritance.
-
-/obj/item/reagent_containers/pill/patch/libital
-	name = "libital patch (brute)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/C2/libital = 2, /datum/reagent/medicine/granibitaluri = 8) //10 iterations
-	icon_state = "bandaid_brute"
-
-/obj/item/reagent_containers/pill/patch/aiuri
-	name = "aiuri patch (burn)"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/C2/aiuri = 1, /datum/reagent/medicine/granibitaluri = 9)
-	icon_state = "bandaid_burn"
-
-/obj/item/reagent_containers/pill/patch/instabitaluri
-	name = "instabitaluri patch"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/C2/instabitaluri = 20)
-	icon_state = "bandaid_both"

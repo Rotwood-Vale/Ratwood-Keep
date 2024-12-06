@@ -182,12 +182,7 @@
 	if (effectMissile) //If we are acting like a missile, then right after we land and finish fucking shit up w explosions, we should delete
 		opened = TRUE //We set opened to TRUE to avoid spending time trying to open (due to being deleted) during the Destroy() proc
 		qdel(src)
-	if (style == STYLE_GONDOLA) //Checks if we are supposed to be a gondola pod. If so, create a gondolapod mob, and move this pod to nullspace. I'd like to give a shout out, to my man oranges
-		var/mob/living/simple_animal/pet/gondola/gondolapod/benis = new(get_turf(src), src)
-		benis.contents |= contents //Move the contents of this supplypod into the gondolapod mob.
-		moveToNullspace()
-		addtimer(CALLBACK(src, PROC_REF(open), benis), openingDelay) //After the openingDelay passes, we use the open proc from this supplyprod while referencing the contents of the "holder", in this case the gondolapod mob
-	else if (style == STYLE_SEETHROUGH)
+	if (style == STYLE_SEETHROUGH)
 		open(src)
 	else
 		addtimer(CALLBACK(src, PROC_REF(open), src), openingDelay) //After the openingDelay passes, we use the open proc from this supplypod, while referencing this supplypod's contents
@@ -351,12 +346,3 @@
 		M.forceMove(pod)
 	pod.preOpen() //Begin supplypod open procedures. Here effects like explosions, damage, and other dangerous (and potentially admin-caused, if the centcom_podlauncher datum was used) memes will take place
 	qdel(src) //The target's purpose is complete. It can rest easy now
-
-//------------------------------------UPGRADES-------------------------------------//
-/obj/item/disk/cargo/bluespace_pod //Disk that can be inserted into the Express Console to allow for Advanced Bluespace Pods
-	name = "Bluespace Drop Pod Upgrade"
-	desc = ""
-	icon = 'icons/obj/module.dmi'
-	icon_state = "cargodisk"
-	item_state = "card-id"
-	w_class = WEIGHT_CLASS_SMALL

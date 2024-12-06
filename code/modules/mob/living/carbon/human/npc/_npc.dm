@@ -418,7 +418,7 @@
 	if(L == src)
 		return
 	if(mode != AI_OFF)
-		if (L.alpha == 0 && L.rogue_sneaking)
+		if(L.alpha == 0 && L.rogue_sneaking)
 			// we just got hit by something hidden so try and find them
 			if (prob(5))
 				visible_message(span_notice("[src] begins searching around frantically..."))
@@ -465,11 +465,9 @@
 	else
 		return FALSE
 
-
 /mob/living/carbon/human/attackby(obj/item/W, mob/user, params)
 	. = ..()
 	if((W.force) && (!target) && (W.damtype != STAMINA) )
 		retaliate(user)
-
 
 #undef MAX_RANGE_FIND

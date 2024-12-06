@@ -219,16 +219,6 @@
 				used_materials[getmaterialref(i)] = R.req_amount / R.res_amount * (MINERAL_MATERIAL_AMOUNT / custom_materials.len)
 			O.set_custom_materials(used_materials)
 
-		//START: oh fuck i'm so sorry
-		if(istype(O, /obj/structure/window))
-			var/obj/structure/window/W = O
-			W.ini_dir = W.dir
-		//END: oh fuck i'm so sorry
-
-		else if(istype(O, /obj/item/restraints/handcuffs/cable))
-			var/obj/item/cuffs = O
-			cuffs.color = color
-
 		if (QDELETED(O))
 			return //It's a stack and has already been merged
 
@@ -251,10 +241,6 @@
 		return FALSE
 	var/turf/T = get_turf(usr)
 
-	var/obj/D = R.result_type
-	if(R.window_checks && !valid_window_location(T, initial(D.dir) == FULLTILE_WINDOW_DIR ? FULLTILE_WINDOW_DIR : usr.dir))
-		to_chat(usr, span_warning("The [R.title] won't fit here!"))
-		return FALSE
 	if(R.one_per_turf && (locate(R.result_type) in T))
 		to_chat(usr, span_warning("There is another [R.title] here!"))
 		return FALSE
@@ -267,10 +253,6 @@
 				continue
 			if(istype(AM,/obj/structure/table))
 				continue
-			if(istype(AM,/obj/structure/window))
-				var/obj/structure/window/W = AM
-				if(!W.fulltile)
-					continue
 			if(AM.density)
 				to_chat(usr, span_warning("Theres a [AM.name] here. You cant make a [R.title] here!"))
 				return FALSE
