@@ -63,7 +63,7 @@
 		H.update_body()
 		decreaseUses(user)
 		return
-	else if(istype(target, /obj/structure/window))
+	else if(istype(target, /obj/structure/roguewindow))
 		user.visible_message(span_notice("[user] begins to clean \the [target.name] with [src]..."), span_notice("I begin to clean \the [target.name] with [src]..."))
 		if(do_after(user, src.cleanspeed, target = target))
 			to_chat(user, span_notice("I clean \the [target.name]."))
