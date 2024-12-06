@@ -174,7 +174,7 @@
 	 * if you really need to cancel someone who is sneaking, call update_sneak_invis(TRUE).*/
 	var/rogue_sneaking = FALSE
 	/* Can be used to change the lighting threshholds at which players can sneak.*/
-	var/rogue_sneaking_light_threshhold = 0.15 //Default. Will be modified later~
+	var/rogue_sneaking_light_threshhold = 0.15
 
 
 	/// Voice pitch for audible emotes

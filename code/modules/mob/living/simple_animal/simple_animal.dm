@@ -513,7 +513,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		..()
 
 /mob/living/simple_animal/proc/CanAttack(atom/the_target)
-	if(see_invisible < the_target.invisibility) //Makes sneaking useful vs mobs now!
+	if(see_invisible < the_target.invisibility)
 		return FALSE
 	if(ismob(the_target))
 		var/mob/M = the_target
