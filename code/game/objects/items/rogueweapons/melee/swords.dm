@@ -617,11 +617,12 @@
 	max_integrity = 200
 	dropshrink = 0.80
 	wdefense = 2
+
 /obj/item/rogueweapon/sword/sabre_freeze
 	name = "Freezing Saber"
 	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
 	icon_state = "saber"
-	max_integrity = 150
+	max_integrity = 200
 	possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze)
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
