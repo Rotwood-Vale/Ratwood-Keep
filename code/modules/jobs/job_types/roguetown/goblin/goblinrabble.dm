@@ -26,7 +26,7 @@
 	l_hand = /obj/item/rogueweapon/huntingknife/stoneknife
 	belt = /obj/item/storage/belt/rogue/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/keyring/goblin = 1)
+	backpack_contents = list(/obj/item/storage/keyring/goblin = 1)
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)

@@ -34,6 +34,18 @@
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/ragmask
+	name = "half-mask (rag) - (cloth; NONE)"
+	result = list(/obj/item/clothing/mask/rogue/rag)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/sewing/ragglove
+	name = "hand wrappings - (cloth; NONE)"
+	result = list(/obj/item/clothing/gloves/roguetown/wrap)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/sewing/bag
 	name = "sack (cloth, fiber; NONE)"
 	result = /obj/item/storage/roguebag/crafted
@@ -118,6 +130,13 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/sewing/tunic
+	name = "tunic (cloth) - (2 cloths, fiber; NOVICE)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/tunic)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 1
+
 /datum/crafting_recipe/roguetown/sewing/burial_shroud
 	name = "winding sheet (2 cloths; NOVICE)"
 	result = list(/obj/item/burial_shroud)
@@ -145,6 +164,19 @@
                 /obj/item/natural/fibers = 1)
 	craftdiff = 2
 
+/datum/crafting_recipe/roguetown/sewing/fauld
+	name = "fauld - (2 cloths, fiber; APPRENTICE)"
+	result = list(/obj/item/clothing/cloak/fauld)
+	reqs =  list(/obj/item/natural/cloth = 2,
+                /obj/item/natural/fibers = 1)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/sewing/skirt
+	name = "battle skirt - (2 cloths, fiber; APPRENTICE)"
+	result = list(/obj/item/clothing/cloak/fauld/battleskirt)
+	reqs =  list(/obj/item/natural/cloth = 2,
+                /obj/item/natural/fibers = 1)
+	craftdiff = 2
 /* craftdif of 3 = JOURNEYMAN */
 
 /datum/crafting_recipe/roguetown/sewing/armingjacket
@@ -253,10 +285,6 @@
 /datum/crafting_recipe/roguetown/sewing/stabard/guard
 	name = "surcoat (guard) - (2 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/stabard/guard)
-
-/datum/crafting_recipe/roguetown/sewing/cloak/vanguard
-	name = "cloak (vanguard) - (2 cloths, fiber; JOURNEYMAN)"
-	result = list(/obj/item/clothing/cloak/raincloak/vanguard)
 
 /datum/crafting_recipe/roguetown/sewing/tabard
 	name = "tabard (2 cloths, fiber; JOURNEYMAN)"
@@ -495,6 +523,20 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
 
+/datum/crafting_recipe/roguetown/sewing/leathercoat
+	name = "leather coat"
+	result = /obj/item/clothing/suit/roguetown/armor/leathercoat
+	reqs = list(/obj/item/natural/hide/cured = 4,
+				/obj/item/natural/fur = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/sewing/leathercoat
+	name = "heavy leather coat"
+	result = /obj/item/clothing/suit/roguetown/armor/leathercoat/heavy
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fur = 4,
+				/obj/item/natural/fibers = 1)
 /datum/crafting_recipe/roguetown/sewing/shoes
 	name = "simple shoes (leather; NOVICE)"
 	result = list(/obj/item/clothing/shoes/roguetown/simpleshoes)
@@ -676,6 +718,13 @@
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/sewing/shadowgloves
+	name = "gloves (silk) - (cloth, silk; LOOM, NOVICE)"
+	result = list(/obj/item/clothing/gloves/roguetown/shadow)
+	reqs = list(/obj/item/natural/cloth = 1,
+				/obj/item/natural/silk = 1)
+	craftdiff = 1
+
 /* craftdif of 2 = APPRENTICE */
 
 /* craftdif of 3 = JOURNEYMAN */
@@ -686,6 +735,20 @@
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/shadowcloak
+	name = "vanguard cloak - (cloth, 3 silk; LOOM, JOURNEYMAN)"
+	result = list(/obj/item/clothing/cloak/shadow)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/silk = 3)
+	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/sewing/shadowrobe
+	name = "vanguard uniform - (2 cloths, 3 silk; LOOM, JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/shadow)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/silk = 3)
+	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/nochood
 	name = "hood (moon/Noc) - (2 cloths, silk; LOOM, JOURNEYMAN)"
@@ -715,6 +778,13 @@
 	craftdiff = 3
 
 /* craftdif of 4 = EXPERT */
+
+/datum/crafting_recipe/roguetown/sewing/shadowpant
+	name = "pants (silk) - (cloth, 3 silk; LOOM, EXPERT)"
+	result = list(/obj/item/clothing/under/roguetown/shadow)
+	reqs = list(/obj/item/natural/cloth = 1,
+				/obj/item/natural/silk = 3)
+	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/astratarobe
 	name = "robes (Astrata) - (3 cloths, silk; LOOM, EXPERT)"

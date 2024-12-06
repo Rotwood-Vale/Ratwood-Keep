@@ -158,9 +158,8 @@
 				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
 	else
 		if(L.dir != target_dir)
-			// Remove sprint intent if we change direction, but only if we sprinted atleast 1 tile
-			if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
-				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
+			// Reset our sprint counter if we change direction
+			L.sprinted_tiles = 0
 
 	. = ..()
 
@@ -590,9 +589,6 @@
 
 //* Updates a mob's sneaking status, rendering them invisible or visible in accordance to their status. TODO:Fix people bypassing the sneak fade by turning, and add a proc var to have a timer after resetting visibility.
 /mob/living/update_sneak_invis(reset = FALSE) //Why isn't this in mob/living/living_movements.dm? Why, I'm glad you asked!
-	if(ishuman(src))
-		if(mind)
-			rogue_sneaking_light_threshhold = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.092)+0.1 //THIS IS WHERE WE DO A LITTLE TROLLING. At 6 sneak skill, this raises the lumcount max from 0.15 to 1.0 (massive); but at 0 sneak skill... you are now brutually punished by needing pitch black to sneak!
 	if(!reset && world.time < mob_timers[MT_INVISIBILITY]) // Check if the mob is affected by the invisibility spell
 		rogue_sneaking = TRUE
 		return
@@ -603,21 +599,16 @@
 		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
 
 	if(rogue_sneaking) //If sneaking, check if they should be revealed
-		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold || (world.time < mob_timers[MT_SNEAKATTACK] + 6 SECONDS) || (world.time < mob_timers[MT_SPELLSNEAK] + 25 SECONDS)) //SEVERELY nerfs sneak attacking.
+		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold)
 			used_time = round(clamp((50 - (used_time*1.75)), 5, 50),1)
 			animate(src, alpha = initial(alpha), time =	used_time) //sneak skill makes you reveal slower but not as drastic as disappearing speed
-			spawn(used_time) regenerate_icons() //why does this use spawn what the fuck??? I'm not changing this anyway..
-			invisibility = initial(invisibility) //Ensure to set this back to default (SHOULD ALWAYS BE ZERO)
+			spawn(used_time) regenerate_icons()
 			rogue_sneaking = FALSE
 			return
+
 	else //not currently sneaking, check if we can sneak
 		if(light_amount < rogue_sneaking_light_threshhold && m_intent == MOVE_INTENT_SNEAK)
 			animate(src, alpha = 0, time = used_time)
-			if(ishuman(src))
-				invisibility = (SEE_INVISIBLE_LIVING + (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.75))+1 //At 5 sneak, you get a total of ~24 invis - 3.75 bonus
-			else
-				invisibility = (SEE_INVISIBLE_LIVING + 1) //fixes ghosts being unable to see these guys
-			alpha = 150 //Forcibly set these guys to have an alpha of 150 (to differentiate for admemes)
 			spawn(used_time + 5) regenerate_icons()
 			rogue_sneaking = TRUE
 	return

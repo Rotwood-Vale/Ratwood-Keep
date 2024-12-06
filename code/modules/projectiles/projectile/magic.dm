@@ -582,10 +582,12 @@
 	light_range = 2
 
 	//explosion values
+	var/exp_devi = -1
 	var/exp_heavy = 0
 	var/exp_light = 2
 	var/exp_flash = 3
 	var/exp_fire = 2
+	var/exp_hotspot = 0
 
 /obj/projectile/magic/aoe/fireball/on_hit(target)
 	. = ..()
@@ -598,10 +600,26 @@
 //		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, my at about 65 damage if you stop drop and roll immediately
 	var/turf/T
 	if(isturf(target))
-		T = target
+		if(isclosedturf(target))
+			var/hitdevi = 0
+			var/hitheavy = 0
+			var/hitlight = 0
+			if(exp_devi > 0)
+				hitdevi = 1
+			if(exp_heavy > 0)
+				hitheavy = 1
+			if(exp_light > 0)
+				hitlight = 1
+			explosion(get_turf(target), hitdevi, hitheavy, hitlight, 0, 0, 0, visfx = "firespark", soundin = null)
+			var/datum/point/vector/previous = trajectory.return_vector_after_increments(1,-1)
+			T = previous.return_turf()
+			explosion(T, exp_devi, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, hotspot_range = exp_hotspot, soundin = explode_sound)
+			return TRUE
+		else
+			T = target
 	else
 		T = get_turf(target)
-	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+	explosion(T, exp_devi, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, hotspot_range = exp_hotspot, soundin = explode_sound)
 
 /obj/projectile/magic/aoe/fireball/infernal
 	name = "infernal fireball"

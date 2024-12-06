@@ -103,6 +103,8 @@
 	if(T)
 		T.multiz_turf_new(src, UP)
 		SEND_SIGNAL(T, COMSIG_TURF_MULTIZ_NEW, src, UP)
+	if(!mapload)
+		reassess_stack()
 
 	if (opacity)
 		has_opaque_atom = TRUE
@@ -228,8 +230,10 @@
 	user.Move_Pulled(src)
 
 /turf/proc/multiz_turf_del(turf/T, dir)
+	reassess_stack()
 
 /turf/proc/multiz_turf_new(turf/T, dir)
+	reassess_stack()
 
 //zPassIn doesn't necessarily pass an atom!
 //direction is direction of travel of air
@@ -504,7 +508,7 @@
 
 /turf/proc/is_shielded()
 
-/turf/contents_explosion(severity, target)
+/turf/contents_explosion(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	var/affecting_level
 	if(severity == 1)
 		affecting_level = 1
@@ -522,7 +526,7 @@
 				var/atom/movable/AM = A
 				if(!AM.ex_check(explosion_id))
 					continue
-			A.ex_act(severity, target)
+			A.ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 			CHECK_TICK
 
 /turf/narsie_act(force, ignore_mobs, probability = 20)

@@ -27,7 +27,7 @@
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rope/chain = 2, /obj/item/keyring/goblinguard = 1)
+	backpack_contents = list(/obj/item/rope/chain = 2, /obj/item/storage/keyring/goblinguard = 1)
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 

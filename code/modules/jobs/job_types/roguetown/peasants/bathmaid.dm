@@ -43,6 +43,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE) // Don't go picking any COCKS around here or we're going to have a real problem.
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)

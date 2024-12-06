@@ -30,7 +30,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/woodstaff
 	id = /obj/item/clothing/ringP/graggar
-	backpack_contents = list(/obj/item/keyring/goblinchief = 1,
+	backpack_contents = list(/obj/item/storage/keyring/goblinchief = 1,
 							/obj/item/storage/fancy/ifak = 1,
 							/obj/item/storage/fancy/skit = 1,
 							/obj/item/scrying/eye = 1)

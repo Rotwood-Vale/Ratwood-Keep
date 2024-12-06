@@ -25,7 +25,7 @@
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/newmoon
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
-	beltr = /obj/item/keyring/mercenary
+	beltr = /obj/item/storage/keyring/mercenary
 	beltl = /obj/item/rogueweapon/huntingknife/idagger
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/sword/sabre_freeze
@@ -51,6 +51,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 		H.mind.adjust_spellpoints(4)
 		if(H.age == AGE_OLD)
 			head = /obj/item/clothing/head/roguetown/wizhat/gen

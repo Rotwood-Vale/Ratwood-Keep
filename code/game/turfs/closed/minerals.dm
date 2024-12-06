@@ -25,6 +25,8 @@
 	var/mob/living/lastminer //for xp gain and luck shenanigans
 	blade_dulling = DULLING_PICK
 	max_integrity = 1000
+	explosion_block = 20
+	damage_deflection = 10
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
 	attacked_sound = list('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg')
 	neighborlay = "dirtedge"
@@ -73,11 +75,32 @@
 					S.forceMove(get_turf(user))
 
 /turf/closed/mineral/turf_destruction(damage_flag)
-	if(lastminer.goodluck(2) && mineralType)
-//		to_chat(lastminer, span_notice("Bonus ducks!"))
-		new mineralType(src)
-	gets_drilled(lastminer, give_exp = FALSE)
-	queue_smooth_neighbors(src)
+	if(!(istype(src, /turf/closed)))
+		return
+	if(damage_flag == "bomb")
+		var/obj/item/explo_mineral = mineralType
+		var/explo_mineral_amount = mineralAmt
+		var/obj/item/natural/rock/explo_rock = rockType
+		ScrapeAway()
+		queue_smooth_neighbors(src)
+		new /obj/item/natural/stone(src)
+		if(prob(30))
+			new /obj/item/natural/stone(src)
+		if (explo_mineral && (explo_mineral_amount > 0))
+			if(prob(33)) //chance to spawn ore directly
+				new explo_mineral(src)
+			if(explo_rock)
+				if(prob(23))
+					new explo_rock(src)
+			SSblackbox.record_feedback("tally", "ore_mined", explo_mineral_amount, explo_mineral)
+		else
+			return
+	else
+		if(lastminer.goodluck(2) && mineralType)
+	//		to_chat(lastminer, span_notice("Bonus ducks!"))
+			new mineralType(src)
+		gets_drilled(lastminer, give_exp = FALSE)
+		queue_smooth_neighbors(src)
 	..()
 
 /turf/closed/mineral/proc/gets_drilled(mob/living/user, give_exp = TRUE)
@@ -132,18 +155,38 @@
 /turf/closed/mineral/acid_melt()
 	ScrapeAway()
 
-/turf/closed/mineral/ex_act(severity, target)
-	..()
-	switch(severity)
-		if(3)
-			if (prob(75))
-				gets_drilled(null, 1)
-		if(2)
-			if (prob(90))
-				gets_drilled(null, 1)
-		if(1)
-			gets_drilled(null, 1)
-	return
+/turf/closed/mineral/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
+	if(target == src)
+		ScrapeAway()
+		return
+	var/ddist = devastation_range
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fdist = flame_range
+	var/fodist = get_dist(src, epicenter)
+	var/brute_loss = 0
+	var/dmgmod = round(rand(0.1, 2), 0.1)
+
+	switch (severity)
+		if (EXPLODE_DEVASTATE)
+			brute_loss = ((250 * ddist) - (250 * fodist) * dmgmod)
+
+		if (EXPLODE_HEAVY)
+			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod)
+
+		if(EXPLODE_LIGHT)
+			brute_loss = ((25 * ldist) - (25 * fodist) * dmgmod)
+
+	if(fodist == 0)
+		brute_loss *= 2
+	take_damage(brute_loss, BRUTE, "bomb", 0)
+
+	if(fdist && !QDELETED(src))
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
+
+	if(!density)
+		..()
 
 /turf/closed/mineral/Spread(turf/T)
 	T.ChangeTurf(type)
@@ -597,8 +640,8 @@
 /turf/closed/mineral/rogue/bedrock
 	icon_state = "rockyashbed"
 //	smooth_icon = 'icons/turf/walls/hardrock.dmi'
-	max_integrity = 900
-	above_floor = /turf/closed/mineral/rogue/bedrock
+	max_integrity = -1
+	damage_deflection = 99999999
 
 /turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params)
 	..()
