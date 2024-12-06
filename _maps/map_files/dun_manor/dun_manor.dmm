@@ -9922,6 +9922,10 @@
 /obj/item/clothing/shoes/roguetown/psydonboots,
 /obj/item/clothing/shoes/roguetown/psydonboots,
 /obj/item/clothing/shoes/roguetown/psydonboots,
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm,
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm,
+/obj/item/clothing/head/roguetown/roguehood/psydon,
+/obj/item/clothing/head/roguetown/roguehood/psydon,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "jiM" = (
@@ -17167,6 +17171,10 @@
 /obj/item/clothing/cloak/psydontabard,
 /obj/item/clothing/cloak/psydontabard,
 /obj/item/clothing/cloak/psydontabard,
+/obj/item/clothing/mask/rogue/facemask/psydonmask,
+/obj/item/clothing/mask/rogue/facemask/psydonmask,
+/obj/item/clothing/head/roguetown/roguehood/psydon,
+/obj/item/clothing/head/roguetown/roguehood/psydon,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "pGZ" = (
