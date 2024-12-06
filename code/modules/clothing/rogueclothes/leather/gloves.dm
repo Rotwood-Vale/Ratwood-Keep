@@ -2,7 +2,7 @@
 /obj/item/clothing/gloves/roguetown/leather
 	name = "leather gloves"
 	desc = "Leather gloves usually worn by laborers."
-	icon_state = "leathergloves"
+	icon_state = "leather_gloves"
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	resistance_flags = null

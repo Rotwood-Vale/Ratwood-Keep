@@ -2,5 +2,3 @@
 #define MT_PSYPRAY "2"
 #define MT_FOUNDSNEAK "3"	
 #define MT_INVISIBILITY "4" 
-#define MT_SNEAKATTACK "5"	
-#define MT_SPELLSNEAK "6"

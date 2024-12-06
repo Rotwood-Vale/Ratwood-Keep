@@ -34,6 +34,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross/eora)
 	sound = list('sound/magic/whiteflame.ogg')
+	invocation = "Nulla felicitas sine amore!"
+	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 30 SECONDS
@@ -57,6 +59,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	chargedloop = /datum/looping_sound/invokegen
+	req_items = list(/obj/item/clothing/neck/roguetown/psicross/eora)
 	sound = list('sound/magic/whiteflame.ogg')
 	invocation = "Experiamur vim amoris!"
 	invocation_type = "shout"
@@ -73,6 +76,5 @@
 		var/charm_to_target = pick("<b style='color:pink'>Your eyes cannot move away from [user].</b>", "<b style='color:pink'>You are enchanted by the beauty of the follower of Eora.</b>")
 		target.visible_message(span_warning("[charm_to_public]"), span_warning("[charm_to_target]"))
 		target.apply_status_effect(/datum/status_effect/eorapacify)
-		target.Immobilize(75)
-		target.Jitter(40)
+		target.Immobilize(85)
 	return FALSE

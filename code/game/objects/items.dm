@@ -1,7 +1,5 @@
 GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/effects/fire.dmi', "fire"))
 
-
-GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 // if true, everyone item when created will have its name changed to be
 // more... RPG-like.
 
@@ -145,6 +143,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/list/gripped_intents //intents while gripped, replacing main intents
 	var/force_wielded = 0
 	var/gripsprite = FALSE //use alternate grip sprite for inhand
+	var/gripspriteonmob = FALSE //use alternate sprite for onmob
 
 	var/dropshrink = 0
 
@@ -244,9 +243,23 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 					B.remove()
 					B.generate_appearance()
 					B.apply()
+			if(gripspriteonmob)
+				item_state = "[initial(item_state)]1"
+				var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
+				if(B)
+					B.remove()
+					B.generate_appearance()
+					B.apply()
 			return
 		if(gripsprite)
 			icon_state = initial(icon_state)
+			var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
+			if(B)
+				B.remove()
+				B.generate_appearance()
+				B.apply()
+		if(gripspriteonmob)
+			item_state = initial(item_state)
 			var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
 			if(B)
 				B.remove()
@@ -294,9 +307,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	for(var/path in actions_types)
 		new path(src)
 	actions_types = null
-
-	if(GLOB.rpg_loot_items)
-		AddComponent(/datum/component/fantasy)
 
 	if(force_string)
 		item_flags |= FORCE_STRING_OVERRIDE
@@ -479,12 +489,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(user.get_num_arms() < 2)
 			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
-		var/obj/item/twohanded/required/H
-		H = user.get_inactive_held_item()
 		if(get_dist(src,user) > 1)
-			return
-		if(H != null)
-			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
 
 	if(w_class == WEIGHT_CLASS_GIGANTIC)
@@ -656,13 +661,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(altgripped || wielded)
 			ungrip(user, FALSE)
 	if(twohands_required)
-		var/slotbit = slotdefine2slotbit(slot)
-		if(slot_flags & slotbit)
-			var/datum/O = user.is_holding_item_of_type(/obj/item/twohanded/offhand)
-			if(!O || QDELETED(O))
-				return
-			qdel(O)
-			return
 		if(slot == SLOT_HANDS)
 			wield(user)
 		else
@@ -947,8 +945,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
 	return
 
-/obj/item/attack_hulk(mob/living/carbon/human/user)
-	return FALSE
 
 /obj/item/attack_animal(mob/living/simple_animal/M)
 	if (obj_flags & CAN_BE_HIT)
@@ -1145,9 +1141,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(force_wielded)
 			force = initial(force)
 		wdefense = initial(wdefense)
-		var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
-		if(O && istype(O))
-			O.unwield()
 	if(altgripped)
 		altgripped = FALSE
 	update_transform()
@@ -1190,10 +1183,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	update_transform()
 	to_chat(user, span_notice("I wield [src] with both hands."))
 	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)
-	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
-	O.name = "[name] - offhand"
-	O.wielded = TRUE
-	user.put_in_inactive_hand(O)
 	if(twohands_required)
 		if(!wielded)
 			user.dropItemToGround(src)

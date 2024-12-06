@@ -184,9 +184,9 @@
 /obj/projectile/magic/aoe/fireball/rogue
 	name = "fireball"
 	exp_heavy = 0
-	exp_light = 0
+	exp_light = 3
 	exp_flash = 0
-	exp_fire = 1
+	exp_fire = 3
 	damage = 10
 	damage_type = BURN
 	nodamage = FALSE
@@ -220,9 +220,9 @@
 	invocation_type = "shout"
 	active = FALSE
 	releasedrain = 50
-	chargedrain = 1
+	chargedrain = 3
 	chargetime = 15
-	charge_max = 10 SECONDS
+	charge_max = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
@@ -232,19 +232,21 @@
 
 /obj/projectile/magic/aoe/fireball/rogue/great
 	name = "fireball"
-	exp_heavy = 0
-	exp_light = 1
-	exp_flash = 2
-	exp_fire = 2
+	exp_devi = 0
+	exp_heavy = 1
+	exp_light = 5
+	exp_flash = 0
+	exp_fire = 4
+	exp_hotspot = 0
 	flag = "magic"
-	speed = 4
+	speed = 6
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire
 	name = "Spitfire"
 	desc = "Shoot out a series of low-powered balls of fire that shines brightly on impact, potentially blinding a target."
 	clothes_req = FALSE
 	range = 8
-	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
+	projectile_type = /obj/projectile/magic/aoe/rogue2
 	overlay_state = "fireball_multi"
 	sound = list('sound/magic/whiteflame.ogg')
 	invocation = "Sol'Igniculus!!"
@@ -264,12 +266,13 @@
 	cost = 3
 	xp_gain = TRUE
 
-/obj/projectile/magic/aoe/fireball/rogue2
+/obj/projectile/magic/aoe/rogue2
 	name = "spitfire"
-	exp_heavy = 0
-	exp_light = 0
-	exp_flash = 1
-	exp_fire = 0
+	icon_state = "fireball"
+	var/exp_heavy = 0
+	var/exp_light = 0
+	var/exp_flash = 1
+	var/exp_fire = 0
 	damage = 15	//no armor really has burn protection. So assuming all three connect, 45 burn damage- average damage of fireball with firestacks nerfed. Thats a big 'if' however. Notably, won't cause wounds,
 	damage_type = BURN
 	homing = TRUE
@@ -278,9 +281,10 @@
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
 	speed = 3.5
+	light_color = "#f8af07"
+	light_range = 2
 
-/obj/projectile/magic/aoe/fireball/rogue2/on_hit(target)
-	. = ..()
+/obj/projectile/magic/aoe/rogue2/on_hit(target)
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
@@ -288,6 +292,13 @@
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
+	var/turf/T
+	if(isturf(target))
+		T = target
+	else
+		T = get_turf(target)
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+
 
 /obj/effect/proc_holder/spell/invoked/projectile/arcanebolt
 	name = "Arcane Bolt"
@@ -514,15 +525,7 @@
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	cleanspeed = initial(cleanspeed) - (skill_level * 3) // 3 cleanspeed per skill level, from 35 down to a maximum of 17 (pretty quick)
 
-	if (istype(target, /obj/structure/window))
-		user.visible_message(span_notice("[user] gestures at \the [target.name], tiny motes of arcyne power running across its surface..."), span_notice("I begin to clean \the [target.name] with my arcyne power..."))
-		if (do_after(user, src.cleanspeed, target = target))
-			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-			target.set_opacity(initial(target.opacity))
-			to_chat(user, span_notice("I render \the [target.name] clean."))
-			return TRUE
-		return FALSE
-	else if (istype(target, /obj/effect/decal/cleanable))
+	if (istype(target, /obj/effect/decal/cleanable))
 		user.visible_message(span_notice("[user] gestures at \the [target.name], arcyne power slowly scouring it away..."), span_notice("I begin to scour \the [target.name] away with my arcyne power..."))
 		if (do_after(user, src.cleanspeed, target = target))
 			to_chat(user, span_notice("I expunge \the [target.name] with my mana."))
@@ -882,9 +885,12 @@
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
 		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
 		L.apply_damage(damage, BRUTE, def_zone)
-		BP.add_wound(/datum/wound/fracture)
+
+		if(prob(33))
+			var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
+			BP.add_wound(/datum/wound/fracture)
+
 		L.adjustBruteLoss(damage)
 		playsound(T, "genslash", 80, TRUE)
 		to_chat(L, "<span class='userdanger'>I'm cut by blades rising from the floor!</span>")
@@ -1087,8 +1093,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Initialize(mapload, mob/user)
 	. = ..()
-	if(timeleft)
-		QDEL_IN(src, timeleft) //delete after it runs out, see code/modules/mob/living/simple_animal/rogue/creacher/familiar.dm for timeleft var
 	summoner = user
 
 /obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets, mob/user = usr)

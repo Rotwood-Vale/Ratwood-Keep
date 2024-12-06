@@ -10,7 +10,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	/datum/hallucination/fake_alert = 12,
 	/datum/hallucination/weird_sounds = 8,
 	/datum/hallucination/stationmessage = 7,
-	/datum/hallucination/stray_bullet = 7,
 	/datum/hallucination/items_other = 7,
 	/datum/hallucination/husks = 7,
 	/datum/hallucination/items = 4,
@@ -18,8 +17,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	/datum/hallucination/self_delusion = 2,
 	/datum/hallucination/delusion = 2,
 	/datum/hallucination/shock = 1,
-	/datum/hallucination/death = 1,
-	/datum/hallucination/oh_yeah = 1
+	/datum/hallucination/death = 1
 	))
 
 
@@ -153,67 +151,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 /obj/effect/hallucination/simple/clown/scary
 	image_state = "scary_clown"
-
-/obj/effect/hallucination/simple/bubblegum
-	name = "Bubblegum"
-	image_icon = 'icons/mob/lavaland/96x96megafauna.dmi'
-	image_state = "bubblegum"
-	px = -32
-
-/datum/hallucination/oh_yeah
-	var/obj/effect/hallucination/simple/bubblegum/bubblegum
-	var/image/fakebroken
-	var/image/fakerune
-
-/datum/hallucination/oh_yeah/New(mob/living/carbon/C, forced = TRUE)
-	set waitfor = FALSE
-	. = ..()
-	var/turf/closed/wall/wall
-	for(var/turf/closed/wall/W in range(7,target))
-		wall = W
-		break
-	if(!wall)
-		return INITIALIZE_HINT_QDEL
-	feedback_details += "Source: [wall.x],[wall.y],[wall.z]"
-
-	fakebroken = image('icons/turf/floors.dmi', wall, "plating", layer = TURF_LAYER)
-	var/turf/landing = get_turf(target)
-	var/turf/landing_image_turf = get_step(landing, SOUTHWEST) //the icon is 3x3
-	fakerune = image('icons/effects/96x96.dmi', landing_image_turf, "landing", layer = ABOVE_OPEN_TURF_LAYER)
-	fakebroken.override = TRUE
-	if(target.client)
-		target.client.images |= fakebroken
-		target.client.images |= fakerune
-	target.playsound_local(wall,'sound/blank.ogg', 150, 1)
-	bubblegum = new(wall, target)
-	addtimer(CALLBACK(src, PROC_REF(bubble_attack), landing), 10)
-
-/datum/hallucination/oh_yeah/proc/bubble_attack(turf/landing)
-	var/charged = FALSE //only get hit once
-	while(get_turf(bubblegum) != landing && target && target.stat != DEAD)
-		bubblegum.forceMove(get_step_towards(bubblegum, landing))
-		bubblegum.setDir(get_dir(bubblegum, landing))
-		target.playsound_local(get_turf(bubblegum), 'sound/blank.ogg', 150, 1)
-		shake_camera(target, 2, 1)
-		if(bubblegum.Adjacent(target) && !charged)
-			charged = TRUE
-			target.Paralyze(80)
-			target.adjustStaminaLoss(40)
-			step_away(target, bubblegum)
-			shake_camera(target, 4, 3)
-			target.visible_message(span_warning("[target] jumps backwards, falling on the ground!"),span_danger("[bubblegum] slams into you!"))
-		sleep(2)
-	sleep(30)
-	qdel(src)
-
-/datum/hallucination/oh_yeah/Destroy()
-	if(target.client)
-		target.client.images.Remove(fakebroken)
-		target.client.images.Remove(fakerune)
-	QDEL_NULL(fakebroken)
-	QDEL_NULL(fakerune)
-	QDEL_NULL(bubblegum)
-	return ..()
 
 /datum/hallucination/battle
 
@@ -1099,26 +1036,4 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			if(target.client)
 				target.client.images -= target.halbody
 			QDEL_NULL(target.halbody)
-	qdel(src)
-
-//hallucination projectile code in code/modules/projectiles/projectile/special.dm
-/datum/hallucination/stray_bullet
-
-/datum/hallucination/stray_bullet/New(mob/living/carbon/C, forced = TRUE)
-	set waitfor = FALSE
-	..()
-	var/list/turf/startlocs = list()
-	for(var/turf/open/T in view(world.view+1,target)-view(world.view,target))
-		startlocs += T
-	if(!startlocs.len)
-		qdel(src)
-		return
-	var/turf/start = pick(startlocs)
-	var/proj_type = pick(subtypesof(/obj/projectile/hallucination))
-	feedback_details += "Type: [proj_type]"
-	var/obj/projectile/hallucination/H = new proj_type(start)
-	target.playsound_local(start, H.hal_fire_sound, 60, 1)
-	H.hal_target = target
-	H.preparePixelProjectile(target, start)
-	H.fire()
 	qdel(src)

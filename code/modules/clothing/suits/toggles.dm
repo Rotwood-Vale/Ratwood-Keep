@@ -44,17 +44,9 @@
 	flags_inv = initial(flags_inv)
 	flags_cover = initial(flags_cover)
 	block2add = initial(block2add)
+	body_parts_covered = initial(body_parts_covered)
+	prevent_crits = initial(prevent_crits)
 
-/*
-/obj/item/clothing/ui_action_click()
-	. = ..()
-	if(hoodtype)
-		ToggleHood()
-
-/obj/item/clothing/item_action_slot_check(slot, mob/user)
-	if(slot == SLOT_ARMOR|SLOT_CLOAK)
-		return 1
-*/
 /obj/item/clothing/equipped(mob/user, slot)
 	if(hoodtype && slot != SLOT_ARMOR|SLOT_CLOAK)
 		RemoveHood()
@@ -117,9 +109,7 @@
 				H.update_inv_neck()
 				H.update_inv_pants()
 				H.update_fov_angles()
-//				for(var/X in actions)
-//					var/datum/action/A = X
-//					A.UpdateButtonIcon()
+
 	else
 		RemoveHood()
 	testing("endtoggle")

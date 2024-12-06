@@ -139,10 +139,6 @@
 		if(L.can_hear() && !L.anti_magic_check(FALSE, TRUE) && L.stat != DEAD)
 			if(L == user && !include_speaker)
 				continue
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
-				if(istype(H.ears, /obj/item/clothing/ears/earmuffs))
-					continue
 			listeners += L
 
 	if(!listeners.len)
@@ -171,15 +167,7 @@
 
 	for(var/V in listeners)
 		var/mob/living/L = V
-		var/datum/antagonist/devil/devilinfo = is_devil(L)
-		if(devilinfo && findtext(message, devilinfo.truename))
-			var/start = findtext(message, devilinfo.truename)
-			listeners = list(L) //Devil names are unique.
-			power_multiplier *= 5 //if you're a devil and god himself addressed you, you fucked up
-			//Cut out the name so it doesn't trigger commands
-			message = copytext(message, 0, start)+copytext(message, start + length(devilinfo.truename), length(message) + 1)
-			break
-		else if(dd_hasprefix(message, L.real_name))
+		if(dd_hasprefix(message, L.real_name))
 			specific_listeners += L //focus on those with the specified name
 			//Cut out the name so it doesn't trigger commands
 			found_string = L.real_name
@@ -354,11 +342,7 @@
 		for(var/V in listeners)
 			var/mob/living/L = V
 			var/text = ""
-			if(is_devil(L))
-				var/datum/antagonist/devil/devilinfo = is_devil(L)
-				text = devilinfo.truename
-			else
-				text = L.real_name
+			text = L.real_name
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom/movable, say), text), 5 * i)
 			i++
 

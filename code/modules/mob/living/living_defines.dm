@@ -48,8 +48,6 @@
 	var/incorporeal_move = FALSE //FALSE is off, INCORPOREAL_MOVE_BASIC is normal, INCORPOREAL_MOVE_SHADOW is for ninjas
 								 //and INCORPOREAL_MOVE_JAUNT is blocked by holy water/salt
 
-	var/list/roundstart_quirks
-
 	var/list/surgeries //a list of surgery steps. generally empty, they're added when the player is performing them.
 
 	var/now_pushing = null //used by living/Bump() and living/PushAM() to prevent potential infinite loop.
@@ -176,7 +174,7 @@
 	 * if you really need to cancel someone who is sneaking, call update_sneak_invis(TRUE).*/
 	var/rogue_sneaking = FALSE
 	/* Can be used to change the lighting threshholds at which players can sneak.*/
-	var/rogue_sneaking_light_threshhold = 0.15 //Default. Will be modified later~
+	var/rogue_sneaking_light_threshhold = 0.15
 
 
 	/// Voice pitch for audible emotes

@@ -1076,8 +1076,6 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				v = SSmobs
 			if("SSmood")
 				v = SSmood
-			if("SSquirks")
-				v = SSquirks
 			if("SSwet_floors")
 				v = SSwet_floors
 			if("SSshuttle")

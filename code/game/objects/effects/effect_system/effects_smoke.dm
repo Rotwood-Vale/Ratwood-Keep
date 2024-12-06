@@ -75,8 +75,6 @@
 		return 0
 	if(lifetime<1)
 		return 0
-	if(C.internal != null || C.has_smoke_protection())
-		return 0
 	if(C.smoke_delay)
 		return 0
 	C.smoke_delay++
@@ -256,11 +254,8 @@
 		return 0
 	if(!istype(M))
 		return 0
-	var/mob/living/carbon/C = M
-	if(C.internal != null || C.has_smoke_protection())
-		return 0
 	var/fraction = 1/initial(lifetime)
-	reagents.copy_to(C, fraction*reagents.total_volume)
+	reagents.copy_to(M, fraction*reagents.total_volume)
 	reagents.reaction(M, INGEST, fraction)
 	return 1
 

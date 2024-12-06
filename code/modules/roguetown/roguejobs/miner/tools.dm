@@ -53,3 +53,39 @@
 	gripped_intents = list(/datum/intent/pick)
 	max_integrity = 600
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/rogueweapon/pick/drill
+	name = "clockwork drill"
+	desc = "A wonderfully complex work of engineering capable of shredding walls in seconds as opposed to hours."
+	force_wielded = 30
+	icon_state = "drill"
+	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
+	item_state = "drill"
+	possible_item_intents = list(/datum/intent/mace/smash)
+	gripped_intents = list(/datum/intent/drill)
+	experimental_inhand = FALSE
+	experimental_onback = FALSE
+	slot_flags = ITEM_SLOT_BACK
+	gripspriteonmob = TRUE
+	var/datum/looping_sound/drill/drill_loop
+
+/obj/item/rogueweapon/pick/drill/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+	drill_loop = new(list(src), FALSE)
+
+/obj/item/rogueweapon/pick/drill/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/item/rogueweapon/pick/drill/process()
+	update_sound()
+
+/obj/item/rogueweapon/pick/drill/proc/update_sound()
+	var/datum/looping_sound/drill/loop = drill_loop
+	if(!wielded)
+		loop.stop()
+		return
+	loop.start()

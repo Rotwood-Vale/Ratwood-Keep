@@ -26,8 +26,6 @@
 				qdel(nest)
 			for(var/mob/living/simple_animal/monster in T)
 				qdel(monster)
-			for(var/obj/structure/flora/plant in T)
-				qdel(plant)
 
 		load(central_turf,centered = TRUE)
 		loaded++

@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(title)
 	var/file_path
 	var/icon/icon
 	var/icon/previous_icon
-	var/turf/closed/indestructible/splashscreen/splash_turf
+	var/turf/closed/splashscreen/splash_turf
 
 /datum/controller/subsystem/title/Initialize()
 	if(file_path && icon)

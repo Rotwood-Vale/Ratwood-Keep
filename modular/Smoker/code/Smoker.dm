@@ -87,10 +87,7 @@
 	filters += filter(type="angular_blur",x=5,y=5,size=1)
 
 /datum/reagent/drug/snekbt/overdose_start(mob/living/M, can_overdose = TRUE)
-	if(HAS_TRAIT(M, TRAIT_CRACKHEAD))// boathian bullshit isnt going to help you here. its a toxin not a drug
-		can_overdose = TRUE
-	to_chat(M, span_danger("you really..... really shouldnt of done that..."))
-	M.ForceContractDisease(new /datum/disease/heart_failure(), FALSE, TRUE)
+	to_chat(M, span_danger("you really... really shouldn't have done that..."))
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overdose, name)
 
 /datum/reagent/drug/snekbt/overdose_process(mob/living/M)
