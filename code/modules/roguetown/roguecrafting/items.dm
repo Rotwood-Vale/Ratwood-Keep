@@ -479,3 +479,9 @@
 	reqs = list(/obj/item/gun/ballistic/arquebus = 1)
 	skill_level = 0
 	tools = list(/obj/item/rogueweapon/surgery/saw = 1)
+
+/datum/crafting_recipe/roguetown/boulder
+	name = "boulder"
+	result = /obj/item/boulder
+	reqs = list(/obj/item/natural/stone = 5)
+	always_available = TRUE
