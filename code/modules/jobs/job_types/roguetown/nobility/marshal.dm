@@ -36,7 +36,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	beltl = /obj/item/keyring/marshal
+	beltl = /obj/item/storage/keyring/marshal
 	beltr = /obj/item/rogueweapon/mace
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/marshal
 	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
@@ -47,6 +47,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)

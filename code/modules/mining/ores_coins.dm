@@ -205,100 +205,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	item_state = "slag"
 	singular_name = "slag chunk"
 
-/obj/item/twohanded/required/gibtonite
-	name = "gibtonite ore"
-	desc = ""
-	icon = 'icons/obj/mining.dmi'
-	icon_state = "Gibtonite ore"
-	item_state = "Gibtonite ore"
-	w_class = WEIGHT_CLASS_BULKY
-	throw_range = 0
-	var/primed = FALSE
-	var/det_time = 100
-	var/quality = GIBTONITE_QUALITY_LOW //How pure this gibtonite is, determines the explosion produced by it and is derived from the det_time of the rock wall it was taken from, higher value = better
-	var/attacher = "UNKNOWN"
-	var/det_timer
-
-/obj/item/twohanded/required/gibtonite/Destroy()
-	qdel(wires)
-	wires = null
-	return ..()
-
-/obj/item/twohanded/required/gibtonite/attackby(obj/item/I, mob/user, params)
-	if(!wires && istype(I, /obj/item/assembly/igniter))
-		user.visible_message(span_notice("[user] attaches [I] to [src]."), span_notice("I attach [I] to [src]."))
-		wires = new /datum/wires/explosive/gibtonite(src)
-		attacher = key_name(user)
-		qdel(I)
-		add_overlay("Gibtonite_igniter")
-		return
-
-	if(wires && !primed)
-		if(is_wire_tool(I))
-			wires.interact(user)
-			return
-
-	if(I.tool_behaviour == TOOL_MINING || istype(I, /obj/item/resonator) || I.force >= 10)
-		GibtoniteReaction(user)
-		return
-	if(primed)
-		if(istype(I, /obj/item/mining_scanner) || istype(I, /obj/item/t_scanner/adv_mining_scanner) || I.tool_behaviour == TOOL_MULTITOOL)
-			primed = FALSE
-			if(det_timer)
-				deltimer(det_timer)
-			user.visible_message(span_notice("The chain reaction was stopped! ...The ore's quality looks diminished."), span_notice("I stopped the chain reaction. ...The ore's quality looks diminished."))
-			icon_state = "Gibtonite ore"
-			quality = GIBTONITE_QUALITY_LOW
-			return
-	..()
-
-/obj/item/twohanded/required/gibtonite/attack_self(user)
-	if(wires)
-		wires.interact(user)
-	else
-		..()
-
-/obj/item/twohanded/required/gibtonite/bullet_act(obj/projectile/P)
-	GibtoniteReaction(P.firer)
-	. = ..()
-
-/obj/item/twohanded/required/gibtonite/ex_act()
-	GibtoniteReaction(null, 1)
-
-/obj/item/twohanded/required/gibtonite/proc/GibtoniteReaction(mob/user, triggered_by = 0)
-	if(!primed)
-		primed = TRUE
-		playsound(src,'sound/blank.ogg',50,TRUE)
-		icon_state = "Gibtonite active"
-		var/notify_admins = FALSE
-		if(z != 5)//Only annoy the admins ingame if we're triggered off the mining zlevel
-			notify_admins = TRUE
-
-		if(triggered_by == 1)
-			log_bomber(null, "An explosion has primed a", src, "for detonation", notify_admins)
-		else if(triggered_by == 2)
-			var/turf/bombturf = get_turf(src)
-			if(notify_admins)
-				message_admins("A signal has triggered a [name] to detonate at [ADMIN_VERBOSEJMP(bombturf)]. Igniter attacher: [ADMIN_LOOKUPFLW(attacher)]")
-			var/bomb_message = "A signal has primed a [name] for detonation at [AREACOORD(bombturf)]. Igniter attacher: [key_name(attacher)]."
-			log_game(bomb_message)
-			GLOB.bombers += bomb_message
-		else
-			user.visible_message(span_warning("[user] strikes \the [src], causing a chain reaction!"), span_danger("I strike \the [src], causing a chain reaction."))
-			log_bomber(user, "has primed a", src, "for detonation", notify_admins)
-		det_timer = addtimer(CALLBACK(src, PROC_REF(detonate), notify_admins), det_time, TIMER_STOPPABLE)
-
-/obj/item/twohanded/required/gibtonite/proc/detonate(notify_admins)
-	if(primed)
-		switch(quality)
-			if(GIBTONITE_QUALITY_HIGH)
-				explosion(src,2,4,9,adminlog = notify_admins)
-			if(GIBTONITE_QUALITY_MEDIUM)
-				explosion(src,1,2,5,adminlog = notify_admins)
-			if(GIBTONITE_QUALITY_LOW)
-				explosion(src,0,1,3,adminlog = notify_admins)
-		qdel(src)
-
 /obj/item/stack/ore/Initialize()
 	. = ..()
 	pixel_x = rand(0,16)-8
@@ -325,7 +231,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	w_class = WEIGHT_CLASS_TINY
 	custom_materials = list(/datum/material/iron = 400)
 	material_flags = MATERIAL_ADD_PREFIX | MATERIAL_COLOR
-	var/string_attached
 	var/list/sideslist = list("heads","tails")
 	var/cooldown = 0
 	var/value
@@ -372,39 +277,10 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	. = ..()
 	. += span_info("It's worth [value] credit\s.")
 
-/obj/item/coin/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/CC = W
-		if(string_attached)
-			to_chat(user, span_warning("There already is a string attached to this coin!"))
-			return
 
-		if (CC.use(1))
-			add_overlay("coin_string_overlay")
-			string_attached = 1
-			to_chat(user, span_notice("I attach a string to the coin."))
-		else
-			to_chat(user, span_warning("I need one length of cable to attach a string to the coin!"))
-			return
-	else
-		..()
-
-/obj/item/coin/wirecutter_act(mob/living/user, obj/item/I)
-	..()
-	if(!string_attached)
-		return TRUE
-
-	new /obj/item/stack/cable_coil(drop_location(), 1)
-	overlays = list()
-	string_attached = null
-	to_chat(user, span_notice("I detach the string from the coin."))
-	return TRUE
 
 /obj/item/coin/attack_self(mob/user)
 	if(cooldown < world.time)
-		if(string_attached) //does the coin have a wire attached
-			to_chat(user, span_warning("The coin won't flip very well with something attached!") )
-			return FALSE//do not flip the coin
 		cooldown = world.time + 15
 		flick("coin_[coinflip]_flip", src)
 		coinflip = pick(sideslist)
@@ -439,8 +315,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/coin/bananium
 	custom_materials = list(/datum/material/bananium = 400)
 
-/obj/item/coin/adamantine
-	custom_materials = list(/datum/material/adamantine = 400)
 
 /obj/item/coin/mythril
 	custom_materials = list(/datum/material/mythril = 400)

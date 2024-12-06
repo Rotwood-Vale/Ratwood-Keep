@@ -23,7 +23,7 @@
 	max_integrity = 200
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
 	var/state = 0
-	var/list/allowed_books = list(/obj/item/book, /obj/item/spellbook, /obj/item/storage/book) //Things allowed in the bookcase
+	var/list/allowed_books = list(/obj/item/book, /obj/item/storage/book) //Things allowed in the bookcase
 
 /obj/structure/bookcase/examine(mob/user)
 	. = ..()
@@ -89,7 +89,7 @@
 				update_icon()
 			else if(STR)
 				for(var/obj/item/T in I.contents)
-					if(istype(T, /obj/item/book) || istype(T, /obj/item/spellbook))
+					if(istype(T, /obj/item/book))
 						STR.remove_from_storage(T, src)
 				to_chat(user, span_notice("I empty \the [I] into \the [src]."))
 				update_icon()

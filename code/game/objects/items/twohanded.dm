@@ -42,10 +42,7 @@
 	else
 		user.update_inv_hands()
 	if(show_message)
-		if(iscyborg(user))
-			to_chat(user, span_notice("I free up your module."))
-		else
-			to_chat(user, span_notice("I are now carrying [src] with one hand."))
+		to_chat(user, span_notice("I are now carrying [src] with one hand."))
 	var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
 	if(O && istype(O))
 		O.unwield()
@@ -68,10 +65,7 @@
 		force = force_wielded
 	name = "[name] (Wielded)"
 	update_icon()
-	if(iscyborg(user))
-		to_chat(user, span_notice("I dedicate your module to [src]."))
-	else
-		to_chat(user, span_notice("I grab [src] with both hands."))
+	to_chat(user, span_notice("I grab [src] with both hands."))
 	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
 	O.name = "[name] - offhand"
 	O.desc = ""
@@ -342,6 +336,10 @@
 		return
 	if((wielded) && prob(50))
 		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
+
+/mob/proc/dance_flip()
+	if(dir == WEST)
+		emote("flip")
 
 /obj/item/twohanded/dualsaber/proc/jedi_spin(mob/living/user)
 	dance_rotate(user, CALLBACK(user, TYPE_PROC_REF(/mob, dance_flip)))
@@ -692,36 +690,6 @@
 /obj/item/twohanded/pitchfork/suicide_act(mob/user)
 	user.visible_message(span_suicide("[user] impales [user.p_them()]self in [user.p_their()] abdomen with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return (BRUTELOSS)
-
-/obj/item/twohanded/pitchfork/demonic/pickup(mob/living/user)
-	. = ..()
-	if(isliving(user) && user.mind && user.owns_soul() && !is_devil(user))
-		var/mob/living/U = user
-		U.visible_message(span_warning("As [U] picks [src] up, [U]'s arms briefly catch fire."), \
-			span_warning("\"As you pick up [src] your arms ignite, reminding you of all your past sins.\""))
-		if(ishuman(U))
-			var/mob/living/carbon/human/H = U
-			H.apply_damage(rand(force/2, force), BURN, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
-		else
-			U.adjustFireLoss(rand(force/2,force))
-
-/obj/item/twohanded/pitchfork/demonic/attack(mob/target, mob/living/carbon/human/user)
-	if(user.mind && user.owns_soul() && !is_devil(user))
-		to_chat(user, span_warning("[src] burns in your hands."))
-		user.apply_damage(rand(force/2, force), BURN, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
-	..()
-
-/obj/item/twohanded/pitchfork/demonic/ascended/afterattack(atom/target, mob/user, proximity)
-	. = ..()
-	if(!proximity || !wielded)
-		return
-	if(iswallturf(target))
-		var/turf/closed/wall/W = target
-		user.visible_message(span_danger("[user] blasts \the [target] with \the [src]!"))
-		playsound(target, 'sound/blank.ogg', 100, TRUE)
-		W.break_wall()
-		W.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-		return
 
 //HF blade
 

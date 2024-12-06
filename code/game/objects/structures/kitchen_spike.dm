@@ -1,5 +1,5 @@
 //////Kitchen Spike
-#define VIABLE_MOB_CHECK(X) (isliving(X) && !issilicon(X) && !isbot(X))
+#define VIABLE_MOB_CHECK(X) (isliving(X))
 
 /obj/structure/kitchenspike_frame
 	name = "meatspike frame"

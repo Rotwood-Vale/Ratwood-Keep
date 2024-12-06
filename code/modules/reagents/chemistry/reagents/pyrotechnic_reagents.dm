@@ -198,11 +198,6 @@
 		M.adjust_bodytemperature(-15)
 	..()
 
-/datum/reagent/cryostylane/reaction_turf(turf/T, reac_volume)
-	if(reac_volume >= 5)
-		for(var/mob/living/simple_animal/slime/M in T)
-			M.adjustToxLoss(rand(15,30))
-
 /datum/reagent/pyrosium
 	name = "Pyrosium"
 	description = "Comes into existence at 20K. As long as there is sufficient oxygen for it to react with, Pyrosium slowly heats all other reagents in the container."
@@ -246,24 +241,6 @@
 	if(!istype(L))
 		return
 	L.physiology.siemens_coeff *= 0.5
-
-/datum/reagent/teslium/energized_jelly
-	name = "Energized Jelly"
-	description = "Electrically-charged jelly. Boosts jellypeople's nervous system, but only shocks other lifeforms."
-	reagent_state = LIQUID
-	color = "#CAFF43"
-	taste_description = "jelly"
-
-/datum/reagent/teslium/energized_jelly/on_mob_life(mob/living/carbon/M)
-	if(isjellyperson(M))
-		shock_timer = 0 //immune to shocks
-		M.AdjustAllImmobility(-40, FALSE)
-		M.adjustStaminaLoss(-2, 0)
-		if(isluminescent(M))
-			var/mob/living/carbon/human/H = M
-			var/datum/species/jelly/luminescent/L = H.dna.species
-			L.extract_cooldown = max(0, L.extract_cooldown - 20)
-	..()
 
 /datum/reagent/firefighting_foam
 	name = "Firefighting Foam"

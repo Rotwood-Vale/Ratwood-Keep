@@ -20,6 +20,8 @@
 			/obj/item/clothing/cloak/raincloak,
 			/obj/item/clothing/cloak/cape,
 			/obj/item/clothing/cloak/half,
+			/obj/item/clothing/cloak/fauld,
+			/obj/item/clothing/cloak/fauld/battleskirt,
 			/obj/item/clothing/head/roguetown/roguehood,
 			/obj/item/clothing/head/roguetown/headband,
 			/obj/item/clothing/head/roguetown/armingcap,

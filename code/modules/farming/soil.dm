@@ -295,11 +295,18 @@
 
 /obj/structure/soil/Initialize()
 	START_PROCESSING(SSprocessing, src)
+	GLOB.weather_act_upon_list += src
 	. = ..()
 
 /obj/structure/soil/Destroy()
 	STOP_PROCESSING(SSprocessing, src)
+	GLOB.weather_act_upon_list -= src
 	. = ..()
+
+/obj/structure/soil/weather_act_on(weather_trait, severity)
+	if(weather_trait != PARTICLEWEATHER_RAIN)
+		return
+	water = min(MAX_PLANT_WATER, water + min(5, severity / 4))
 
 /obj/structure/soil/process()
 	var/dt = 10

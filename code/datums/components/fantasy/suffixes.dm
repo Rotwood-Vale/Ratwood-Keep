@@ -100,7 +100,6 @@
 		// Some types to remove them and their subtypes
 		possible_mobtypes -= typecacheof(list(
 			/mob/living/carbon/human/species,
-			/mob/living/simple_animal/hostile/megafauna,
 			))
 
 	var/mob/picked_mobtype = pick(possible_mobtypes)
@@ -124,21 +123,21 @@
 /datum/fantasy_affix/shrapnel/apply(datum/component/fantasy/comp, newName)
 	. = ..()
 	// higher means more likely
-	var/list/weighted_projectile_types = list(/obj/projectile/meteor = 1,
-											  /obj/projectile/energy/nuclear_particle = 1,
-											  /obj/projectile/beam/pulse = 1,
-											  /obj/projectile/bullet/honker = 15,
-											  /obj/projectile/temp = 15,
-											  /obj/projectile/ion = 15,
-											  /obj/projectile/magic/door = 15,
-											  /obj/projectile/magic/locker = 15,
-											  /obj/projectile/magic/fetch = 15,
-											  /obj/projectile/beam/emitter = 15,
-											  /obj/projectile/magic/flying = 15,
-											  /obj/projectile/energy/net = 15,
-											  /obj/projectile/bullet/incendiary/c9mm = 15,
-											  /obj/projectile/temp/hot = 15,
-											  /obj/projectile/beam/disabler = 15)
+	var/list/weighted_projectile_types = list(
+		/obj/projectile/meteor = 1,
+		/obj/projectile/energy/nuclear_particle = 1,
+		/obj/projectile/beam/pulse = 1,
+		/obj/projectile/bullet/honker = 15,
+		/obj/projectile/temp = 15,
+		/obj/projectile/ion = 15,
+		/obj/projectile/magic/locker = 15,
+		/obj/projectile/magic/fetch = 15,
+		/obj/projectile/beam/emitter = 15,
+		/obj/projectile/magic/flying = 15,
+		/obj/projectile/bullet/incendiary/c9mm = 15,
+		/obj/projectile/temp/hot = 15,
+		/obj/projectile/beam/disabler = 15
+	)
 
 	var/obj/projectile/picked_projectiletype = pickweight(weighted_projectile_types)
 

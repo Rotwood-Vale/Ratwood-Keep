@@ -50,8 +50,14 @@
 
 		//Healing while sleeping in a bed
 		if(IsSleeping())
-			var/sleepy_mod = buckled?.sleepy || 0.5
+			var/sleepy_mod = 0.5
 			var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
+			if(buckled?.sleepy)
+				sleepy_mod = buckled.sleepy
+			else if(isturf(loc)) //No illegal tech.
+				var/obj/structure/bed/rogue/bed = locate() in loc
+				if(bed)
+					sleepy_mod = bed.sleepy
 			if(nutrition > 0 || yess)
 				rogstam_add(sleepy_mod * 15)
 			if(hydration > 0 || yess)
@@ -72,7 +78,14 @@
 					Sleeping(300)
 		else if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			// Resting on a bed or something
+			var/sleepy_mod = 0
 			if(buckled?.sleepy)
+				sleepy_mod = buckled.sleepy
+			else if(isturf(loc) && !(mobility_flags & MOBILITY_STAND))
+				var/obj/structure/bed/rogue/bed = locate() in loc
+				if(bed)
+					sleepy_mod = bed.sleepy
+			if(sleepy_mod > 0)
 				if((eyesclosed && !cant_fall_asleep) || (eyesclosed && !(fallingas >= 14 && cant_fall_asleep)) || InCritical()) // its a little slop but im not sure on how to else
 					if(!fallingas)
 						to_chat(src, span_warning("I'll fall asleep soon..."))
@@ -85,7 +98,7 @@
 					to_chat(src, span_boldwarning("I can't sleep...[cause]"))
 					fallingas = 1
 				else
-					rogstam_add(buckled.sleepy * 10)
+					rogstam_add(sleepy_mod * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
 				if((eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !cant_fall_asleep) || (eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !(fallingas >= 14 && cant_fall_asleep)) || InCritical())
@@ -114,6 +127,7 @@
 
 
 	check_cremation()
+
 	//Seelie luck aura
 	if(isseelie(src) && !IsSleeping())
 		for(var/mob/living/carbon/human/H in view(1, src))
@@ -126,8 +140,6 @@
 				if(TRUE)
 					H.apply_status_effect(/datum/status_effect/buff/seelie/happy)
 					H.remove_status_effect(/datum/status_effect/buff/seelie/sad)
-	//Updates the number of stored chemicals for powers
-//	handle_changeling()
 
 	if(stat != DEAD)
 		return 1
@@ -202,11 +214,11 @@
 			adjustOxyLoss(5)
 	if(isopenturf(loc))
 		var/turf/open/T = loc
-		if(reagents&& T.pollutants)
-			var/obj/effect/pollutant_effect/P = T.pollutants
-			for(var/datum/pollutant/X in P.pollute_list)
-				for(var/A in X.reagents_on_breathe)
-					reagents.add_reagent(A, X.reagents_on_breathe[A])
+		if(reagents&& T.pollution)
+			T.pollution.breathe_act(src)
+			if(next_smell <= world.time)
+				next_smell = world.time + 30 SECONDS
+				T.pollution.smell_act(src)
 
 /mob/living/proc/handle_inwater()
 	ExtinguishMob()
@@ -270,8 +282,6 @@
 /mob/living/carbon/proc/breathe()
 	var/obj/item/organ/lungs = getorganslot(ORGAN_SLOT_LUNGS)
 	if(reagents.has_reagent(/datum/reagent/toxin/lexorin, needs_metabolizing = TRUE))
-		return
-	if(istype(loc, /obj/machinery/atmospherics/components/unary/cryo_cell))
 		return
 
 	var/datum/gas_mixture/environment
@@ -446,12 +456,6 @@
 	//MIASMA
 	if(breath_gases[/datum/gas/miasma])
 		var/miasma_partialpressure = (breath_gases[/datum/gas/miasma][MOLES]/breath.total_moles())*breath_pressure
-
-		if(prob(1 * miasma_partialpressure))
-			var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(2,3)
-			miasma_disease.name = "Unknown"
-			ForceContractDisease(miasma_disease, TRUE, TRUE)
-
 		//Miasma side effects
 		switch(miasma_partialpressure)
 			if(0.25 to 5)
@@ -532,27 +536,6 @@
 		for(var/V in internal_organs)
 			var/obj/item/organ/O = V
 			O.on_death() //Needed so organs decay while inside the body.
-
-/mob/living/carbon/handle_diseases()
-	for(var/thing in diseases)
-		var/datum/disease/D = thing
-		if(prob(D.infectivity))
-			D.spread()
-
-		if(stat != DEAD || D.process_dead)
-			D.stage_act()
-
-//todo generalize this and move hud out
-/mob/living/carbon/proc/handle_changeling()
-	if(mind && hud_used && hud_used.lingchemdisplay)
-		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
-		if(changeling)
-			changeling.regenerate()
-			hud_used.lingchemdisplay.invisibility = 0
-			hud_used.lingchemdisplay.maptext = "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='#dd66dd'>[round(changeling.chem_charges)]</font></div>"
-		else
-			hud_used.lingchemdisplay.invisibility = INVISIBILITY_ABSTRACT
-
 
 /mob/living/carbon/handle_mutations_and_radiation()
 	if(dna && dna.temporary_mutations.len)

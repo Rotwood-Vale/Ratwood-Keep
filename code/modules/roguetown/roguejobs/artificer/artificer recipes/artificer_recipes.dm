@@ -339,6 +339,54 @@
 	name = "Steel Right Leg (+1 Steel, +1 Cog)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/steel
 
+// --------- GUNS -----------
+
+/datum/artificer_recipe/guns
+	i_type = "Firearms"
+
+/datum/artificer_recipe/guns/barrel
+	name = "Gun Barrel (+1 Steel)"
+	required_item = /obj/item/ingot/steel
+	created_item = /obj/item/gunbarrel
+	additional_items = list(/obj/item/ingot/steel = 1)
+	hammers_per_item = 5
+	craftdiff = 2
+
+/datum/artificer_recipe/guns/parts
+	name = "Gun Lock (+1 Cog)"
+	required_item = /obj/item/ingot/steel
+	created_item = /obj/item/gunlock
+	additional_items = list(/obj/item/roguegear/bronze = 1)
+	hammers_per_item = 5
+	craftdiff = 3
+
+/datum/artificer_recipe/guns/stock
+	name = "Gun Stock"
+	required_item = /obj/item/natural/wood/plank
+	created_item = /obj/item/gunstock
+	hammers_per_item = 5
+	craftdiff = 2
+
+/datum/artificer_recipe/guns/arquebus
+	name = "Arquebus (+1 Stock, Lock, and Barrel)"
+	required_item = /obj/item/ingot/steel
+	additional_items = list(/obj/item/gunlock = 1,
+							/obj/item/gunstock = 1,
+							/obj/item/gunbarrel = 1)
+	created_item = list(/obj/item/gun/ballistic/arquebus)
+	hammers_per_item = 10
+	craftdiff = 4
+
+/datum/artificer_recipe/guns/blunderbuss
+	name = "Blunderbuss (+1 Stock, Lock, and Barrel)"
+	required_item = /obj/item/ingot/steel
+	additional_items = list(/obj/item/gunlock = 1,
+							/obj/item/gunstock = 1,
+							/obj/item/gunbarrel = 1)
+	created_item = list(/obj/item/gun/ballistic/blunderbuss)
+	hammers_per_item = 10
+	craftdiff = 4
+
 // --------- IRON -----------
 
 /datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives

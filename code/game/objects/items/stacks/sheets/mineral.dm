@@ -24,7 +24,6 @@ Mineral Sheets
  */
 
 GLOBAL_LIST_INIT(sandstone_recipes, list ( \
-	new/datum/stack_recipe("pile of dirt", /obj/machinery/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("sandstone door", /obj/structure/mineral_door/sandstone, 10, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("Assistant Statue", /obj/structure/statue/sandstone/assistant, 5, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("Breakdown into sand", /obj/item/stack/ore/glass, 1, one_per_turf = 0, on_floor = 1) \
@@ -48,45 +47,6 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/sandstone/thirty
 	amount = 30
-
-/*
- * Sandbags
- */
-
-/obj/item/stack/sheet/mineral/sandbags
-	name = "sandbags"
-	icon_state = "sandbags"
-	singular_name = "sandbag"
-	layer = LOW_ITEM_LAYER
-	novariants = TRUE
-	merge_type = /obj/item/stack/sheet/mineral/sandbags
-
-GLOBAL_LIST_INIT(sandbag_recipes, list ( \
-	new/datum/stack_recipe("sandbags", /obj/structure/barricade/sandbags, 1, time = 25, one_per_turf = 1, on_floor = 1), \
-	))
-
-/obj/item/stack/sheet/mineral/sandbags/get_main_recipes()
-	. = ..()
-	. += GLOB.sandbag_recipes
-
-/obj/item/emptysandbag
-	name = "empty sandbag"
-	desc = ""
-	icon = 'icons/obj/items_and_weapons.dmi'
-	icon_state = "sandbag"
-	w_class = WEIGHT_CLASS_TINY
-
-/obj/item/emptysandbag/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/stack/ore/glass))
-		var/obj/item/stack/ore/glass/G = W
-		to_chat(user, span_notice("I fill the sandbag."))
-		var/obj/item/stack/sheet/mineral/sandbags/I = new /obj/item/stack/sheet/mineral/sandbags(drop_location())
-		qdel(src)
-		if (Adjacent(user) && !issilicon(user))
-			user.put_in_hands(I)
-		G.use(1)
-	else
-		return ..()
 
 /*
  * Diamond
@@ -358,27 +318,6 @@ GLOBAL_LIST_INIT(snow_recipes, list ( \
 /****************************** Others ****************************/
 
 /*
- * Adamantine
-*/
-
-
-GLOBAL_LIST_INIT(adamantine_recipes, list(
-	new /datum/stack_recipe("incomplete servant golem shell", /obj/item/golem_shell/servant, req_amount=1, res_amount=1),
-	))
-
-/obj/item/stack/sheet/mineral/adamantine
-	name = "adamantine"
-	icon_state = "sheet-adamantine"
-	item_state = "sheet-adamantine"
-	singular_name = "adamantine sheet"
-	custom_materials = list(/datum/material/adamantine=MINERAL_MATERIAL_AMOUNT)
-	merge_type = /obj/item/stack/sheet/mineral/adamantine
-
-/obj/item/stack/sheet/mineral/adamantine/get_main_recipes()
-	. = ..()
-	. += GLOB.adamantine_recipes
-
-/*
  * Runite
  */
 
@@ -405,30 +344,6 @@ GLOBAL_LIST_INIT(adamantine_recipes, list(
 	custom_materials = list(/datum/material/mythril=MINERAL_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/sheet/mineral/mythril
 
-/*
- * Alien Alloy
- */
-/obj/item/stack/sheet/mineral/abductor
-	name = "alien alloy"
-	icon = 'icons/obj/abductor.dmi'
-	icon_state = "sheet-abductor"
-	item_state = "sheet-abductor"
-	singular_name = "alien alloy sheet"
-	sheettype = "abductor"
-	merge_type = /obj/item/stack/sheet/mineral/abductor
-
-GLOBAL_LIST_INIT(abductor_recipes, list ( \
-	new/datum/stack_recipe("alien bed", /obj/structure/bed/abductor, 2, one_per_turf = 1, on_floor = 1), \
-	new/datum/stack_recipe("alien locker", /obj/structure/closet/abductor, 2, time = 15, one_per_turf = 1, on_floor = 1), \
-	new/datum/stack_recipe("alien table frame", /obj/structure/table_frame/abductor, 1, time = 15, one_per_turf = 1, on_floor = 1), \
-	new/datum/stack_recipe("alien airlock assembly", /obj/structure/door_assembly/door_assembly_abductor, 4, time = 20, one_per_turf = 1, on_floor = 1), \
-	null, \
-	new/datum/stack_recipe("alien floor tile", /obj/item/stack/tile/mineral/abductor, 1, 4, 20), \
-	))
-
-/obj/item/stack/sheet/mineral/abductor/get_main_recipes()
-	. = ..()
-	. += GLOB.abductor_recipes
 
 /*
  * Coal

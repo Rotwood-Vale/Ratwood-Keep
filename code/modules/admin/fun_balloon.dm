@@ -64,15 +64,6 @@
 		body.key = C.key
 		new /obj/effect/temp_visual/gravpush(get_turf(body))
 
-/obj/effect/fun_balloon/sentience/emergency_shuttle
-	name = "shuttle sentience fun balloon"
-	var/trigger_time = 60
-
-/obj/effect/fun_balloon/sentience/emergency_shuttle/check()
-	. = FALSE
-	if(SSshuttle.emergency && (SSshuttle.emergency.timeLeft() <= trigger_time) && (SSshuttle.emergency.mode == SHUTTLE_CALL))
-		. = TRUE
-
 /obj/effect/fun_balloon/scatter
 	name = "scatter fun balloon"
 	desc = ""
@@ -163,8 +154,3 @@
 /obj/effect/forcefield/arena_shuttle_entrance/proc/do_bloodbath(mob/living/L)
 	var/obj/effect/mine/pickup/bloodbath/B = new (L)
 	B.mineEffect(L)
-
-/area/shuttle_arena
-	name = "arena"
-	has_gravity = STANDARD_GRAVITY
-	requires_power = FALSE

@@ -62,10 +62,6 @@
 	material_id = /datum/material/titanium
 	message = "cm3 of titanium"
 
-/datum/export/material/adamantine
-	cost = 500
-	material_id = /datum/material/adamantine
-	message = "cm3 of adamantine"
 
 /datum/export/material/mythril
 	cost = 1500

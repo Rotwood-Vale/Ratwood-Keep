@@ -129,10 +129,7 @@
 
 	var/log_message = uppertext(message)
 	if(!span_list || !span_list.len)
-		if(iscultist(user))
-			span_list = list("narsiesmall")
-		else
-			span_list = list()
+		span_list = list()
 
 	user.say(message, spans = span_list, sanitize = FALSE)
 
@@ -165,10 +162,6 @@
 		if(user.mind.assigned_role == "Mime")
 			power_multiplier *= 0.5
 
-	//Cultists are closer to their gods and are more powerful, but they'll give themselves away
-	if(iscultist(user))
-		power_multiplier *= 2
-
 	//Try to check if the speaker specified a name or a job to focus on
 	var/list/specific_listeners = list()
 	var/found_string = null
@@ -178,15 +171,7 @@
 
 	for(var/V in listeners)
 		var/mob/living/L = V
-		var/datum/antagonist/devil/devilinfo = is_devil(L)
-		if(devilinfo && findtext(message, devilinfo.truename))
-			var/start = findtext(message, devilinfo.truename)
-			listeners = list(L) //Devil names are unique.
-			power_multiplier *= 5 //if you're a devil and god himself addressed you, you fucked up
-			//Cut out the name so it doesn't trigger commands
-			message = copytext(message, 0, start)+copytext(message, start + length(devilinfo.truename), length(message) + 1)
-			break
-		else if(dd_hasprefix(message, L.real_name))
+		if(dd_hasprefix(message, L.real_name))
 			specific_listeners += L //focus on those with the specified name
 			//Cut out the name so it doesn't trigger commands
 			found_string = L.real_name
@@ -361,11 +346,7 @@
 		for(var/V in listeners)
 			var/mob/living/L = V
 			var/text = ""
-			if(is_devil(L))
-				var/datum/antagonist/devil/devilinfo = is_devil(L)
-				text = devilinfo.truename
-			else
-				text = L.real_name
+			text = L.real_name
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom/movable, say), text), 5 * i)
 			i++
 
@@ -384,12 +365,6 @@
 			var/mob/living/L = V
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom/movable, say), "Who's there?"), 5 * i)
 			i++
-
-	//STATE LAWS
-	else if((findtext(message, statelaws_words)))
-		cooldown = COOLDOWN_STUN
-		for(var/mob/living/silicon/S in listeners)
-			S.statelaws(force = 1)
 
 	//MOVE
 	else if((findtext(message, move_words)))

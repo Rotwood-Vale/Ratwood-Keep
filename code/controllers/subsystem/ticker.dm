@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(ticker)
 	var/start_at
 	//576000 dusk
 	//376000 day
-	var/gametime_offset = 288001		//Deciseconds to add to world.time for station time.
+	var/gametime_offset = 279000				//Deciseconds to add to world.time for station time.
 	var/station_time_rate_multiplier = 50		//factor of station time progressal vs real time.
 	var/time_until_vote = 150 MINUTES
 	var/last_vote_time = null
@@ -262,48 +262,8 @@ SUBSYSTEM_DEF(ticker)
 						if(player.IsJobUnavailable(V) != JOB_AVAILABLE)
 							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
 							continue
-				readied_jobs.Add(V)
-		/*
-			// These else conditions stop the round from starting unless there is a merchant, duke and duchess.
-		else
-			var/list/stuffy = list("Set a Ruler to 'high' in your class preferences to start the game!", "PLAY Ruler NOW!", "A Ruler is required to start.", "Pray for a Ruler.", "One day, there will be a Ruler.", "Just try playing Ruler.", "If you don't play Ruler, the game will never start.", "We need at least one Ruler to start the game.", "We're waiting for you to pick Ruler to start.", "Still no Ruler is readied..", "I'm going to lose my mind if we don't get a Ruler readied up.","No. The game will not start because there is no Ruler.","What's the point of ROGUETOWN without a Ruler?")
-			to_chat(world, span_purple("[pick(stuffy)]"))
-			return FALSE
-	else
-		var/list/stuffy = list("Set Merchant to 'high' in your class preferences to start the game!", "PLAY Merchant NOW!", "A Merchant is required to start.", "Pray for a Merchant.", "One day, there will be a Merchant.", "Just try playing Merchant.", "If you don't play Merchant, the game will never start.", "We need at least one Merchant to start the game.", "We're waiting for you to pick Merchant to start.", "Still no Merchant is readied..", "I'm going to lose my mind if we don't get a Merchant readied up.","No. The game will not start because there is no Merchant.","What's the point of ROGUETOWN without a Merchant?")
-		to_chat(world, span_purple("[pick(stuffy)]"))
-		return FALSE
-	*/
+					readied_jobs.Add(V)
 
-	/*
-		This prevents any gamemode from starting unless theres at least 2 players ready, but the comments say 20 or it defaults into a deathmatch mode.
-		It is commented out and just left here for posterity
-	*/
-	/*
-	var/amt_ready = 0
-	for(var/mob/dead/new_player/player in GLOB.player_list)
-		if(!player)
-			continue
-		if(player.ready == PLAYER_READY_TO_PLAY)
-			amt_ready++
-
-	if(amt_ready < 2)
-		to_chat(world, span_purple("[amt_ready]/20 players ready."))
-		failedstarts++
-		if(failedstarts > 7)
-			to_chat(world, span_purple("[failedstarts]/13"))
-		if(failedstarts >= 13)
-			to_chat(world, span_greentext("Starting ROGUEFIGHT..."))
-			var/icon/ikon
-			var/file_path = "icons/roguefight_title.dmi"
-			ASSERT(fexists(file_path))
-			ikon = new(fcopy_rsc(file_path))
-			if(SStitle.splash_turf && ikon)
-				SStitle.splash_turf.icon = ikon
-			for(var/mob/dead/new_player/player in GLOB.player_list)
-				player.playsound_local(player, 'sound/music/wartitle.ogg', 100, TRUE)
-		return FALSE
-	*/
 	job_change_locked = TRUE
 	return TRUE
 
@@ -448,7 +408,7 @@ SUBSYSTEM_DEF(ticker)
 				qdel(L)
 
 	log_game("GAME SETUP: Game start took [(world.timeofday - init_start)/10]s")
-	round_start_time = world.time
+	round_start_time = world.time - (world.timeofday - init_start)
 	round_start_irl = REALTIMEOFDAY
 //	SSshuttle.emergency.startTime = world.time
 //	SSshuttle.emergency.setTimer(ROUNDTIMERBOAT)
@@ -481,8 +441,6 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/PostSetup()
 	set waitfor = FALSE
 	mode.post_setup()
-	GLOB.start_state = new /datum/station_state()
-	GLOB.start_state.count()
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
@@ -833,7 +791,6 @@ SUBSYSTEM_DEF(ticker)
 		world.Reboot()
 
 /datum/controller/subsystem/ticker/Shutdown()
-	gather_newscaster() //called here so we ensure the log is created even upon admin reboot
 	save_admin_data()
 	update_everything_flag_in_db()
 

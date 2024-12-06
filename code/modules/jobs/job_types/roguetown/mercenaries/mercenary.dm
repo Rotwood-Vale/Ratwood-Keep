@@ -17,6 +17,7 @@
 	advclass_cat_rolls = list(CTAG_MERCENARY = 20)
 	PQ_boost_divider = 10
 	wanderer_examine = FALSE
+	foreign_examine = TRUE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = TRUE

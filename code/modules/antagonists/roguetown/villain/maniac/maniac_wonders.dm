@@ -15,7 +15,7 @@
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/structure/wonder/first
-	name = "first wonder"
+	name = "first wonder (2 bodyparts, 1 stomach)"
 	result = /obj/structure/wonder
 	reqs = list(
 		/obj/item/bodypart = 2,
@@ -23,7 +23,7 @@
 	)
 
 /datum/crafting_recipe/roguetown/structure/wonder/second
-	name = "second wonder"
+	name = "second wonder (2 bodyparts, 2 lungs)"
 	result = /obj/structure/wonder
 	reqs = list(
 		/obj/item/bodypart = 2,
@@ -31,7 +31,7 @@
 	)
 
 /datum/crafting_recipe/roguetown/structure/wonder/third
-	name = "third wonder"
+	name = "third wonder (2 bodyparts, 3 heads, 2 stomachs)"
 	result = /obj/structure/wonder
 	reqs = list(
 		/obj/item/bodypart/head = 3,
@@ -40,7 +40,7 @@
 	)
 
 /datum/crafting_recipe/roguetown/structure/wonder/fourth
-	name = "fourth wonder"
+	name = "fourth wonder (4 tongues, 3 eyes, 4 livers)"
 	result = /obj/structure/wonder
 	reqs = list(
 		/obj/item/organ/tongue = 4,
@@ -94,7 +94,7 @@
 		if(wonder_id >= 4)
 			if(GLOB.maniac_highlander) // Has a Maniac already TRIUMPHED?
 				to_chat(user, span_danger("IT WAS ALL FOR NAUGHT! I CAN'T WAKE UP!"))
-			else	
+			else
 				to_chat(user, span_userdanger("I must SUM the keys. I am WAKING up!"))
 				dream_master.agony(user)
 				for(var/mob/living/carbon/C in GLOB.carbon_list - user) // Notify any other maniacs
@@ -112,7 +112,7 @@
 		user.log_message("crafted [wonder_id_desc] Maniac Wonder [key_text].", LOG_GAME)
 		message_admins("[wonder_id_desc] Maniac Wonder [key_text] constructed. [ADMIN_JMP(src)]")
 	START_PROCESSING(SSobj, src)
-	
+
 /obj/structure/wonder/examine(mob/user)
 	. = ..()
 	if(!QDELETED(dream_master))
@@ -158,9 +158,10 @@
 	if(H && !QDELETED(dream_master))
 		if(!length(H.maniacs))
 			V.add_stress(/datum/stressevent/saw_wonder)
-			V.add_client_colour(/datum/client_colour/maniac_marked)
+			V.add_curse(/datum/curse/zizo, TRUE)
+		//	V.add_client_colour(/datum/client_colour/maniac_marked) //Hurt peoples's eyes, we instead give them zizo's curse which make them experience the maniac's hallucinations, how cool.
 		if(!(dream_master in H.maniacs))
-			var/inscryption = "<b>INRL</b> - [key_text] - [key_num]"
+			var/inscryption = "[key_text] - [key_num]"
 			LAZYSET(H.inscryptions, dream_master, inscryption)
 			LAZYSET(H.inscryption_keys, dream_master, key_text)
 			LAZYSET(H.maniacs2wonder_ids, dream_master, wonder_id)

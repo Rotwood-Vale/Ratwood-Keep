@@ -513,7 +513,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		..()
 
 /mob/living/simple_animal/proc/CanAttack(atom/the_target)
-	if(see_invisible < the_target.invisibility) //Makes sneaking useful vs mobs now!
+	if(see_invisible < the_target.invisibility)
 		return FALSE
 	if(ismob(the_target))
 		var/mob/M = the_target
@@ -522,10 +522,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if (isliving(the_target))
 		var/mob/living/L = the_target
 		if(L.stat == DEAD)
-			return FALSE
-	if (ismecha(the_target))
-		var/obj/mecha/M = the_target
-		if (M.occupant)
 			return FALSE
 	return TRUE
 
@@ -669,9 +665,6 @@ mob/living/simple_animal/handle_fire()
 		if(A.update_remote_sight(src)) //returns 1 if we override all other sight updates.
 			return
 	sync_lighting_plane_alpha()
-
-/mob/living/simple_animal/get_idcard(hand_first)
-	return access_card
 
 /mob/living/simple_animal/can_hold_items()
 	return dextrous

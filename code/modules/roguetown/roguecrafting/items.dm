@@ -16,6 +16,22 @@
 	reqs = list(/obj/item/natural/stone = 2)
 	skill_level = 1
 
+/datum/crafting_recipe/roguetown/cloth5x
+	name = "cloth 5x (10 fibers; none)"
+	result = list(
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				/obj/item/natural/cloth,
+				)
+	reqs = list(/obj/item/natural/fibers = 10)
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	verbage_simple = "sew"
+	verbage = "sews"
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/clothbelt
 	name = "cloth belt"
 	result = /obj/item/storage/belt/rogue/leather/cloth
@@ -301,6 +317,21 @@
 
 	req_table = TRUE
 
+/datum/crafting_recipe/roguetown/sackx5
+	name = "sack x5 (5 cloth, 5 fibers; NONE)"
+	result = list(
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				/obj/item/storage/roguebag/crafted,
+				)
+	reqs = list(/obj/item/natural/fibers = 5,
+				/obj/item/natural/cloth = 5)
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+	req_table = FALSE
+
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
 
@@ -441,3 +472,10 @@
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/stone = 1)
 	skill_level = 2
+
+/datum/crafting_recipe/roguetown/sawedoff
+	name = "handgonne"
+	result = /obj/item/gun/ballistic/handgonne
+	reqs = list(/obj/item/gun/ballistic/arquebus = 1)
+	skill_level = 0
+	tools = list(/obj/item/rogueweapon/surgery/saw = 1)

@@ -56,7 +56,7 @@
 
 /datum/species/golem/random
 	name = "Random Golem"
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP
 	var/static/list/random_golem_types
 
 /datum/species/golem/random/on_species_gain(mob/living/carbon/C, datum/species/old_species)
@@ -270,17 +270,6 @@
 	. = ..()
 	C.weather_immunities -= "ash"
 	C.weather_immunities -= "lava"
-
-//Fast and regenerates... but can only speak like an abductor
-/datum/species/golem/alloy
-	name = "Alien Alloy Golem"
-	id = "alloy golem"
-	fixed_mut_color = "333"
-	meat = /obj/item/stack/sheet/mineral/abductor
-	speedmod = 1 //faster
-	info_text = "As an <span class='danger'>Alloy Golem</span>, you are made of advanced alien materials: you are faster and regenerate over time. You are, however, only able to be heard by other alloy golems."
-	prefix = "Alien"
-	special_names = list("Outsider", "Technology", "Watcher", "Stranger") //ominous and unknown
 
 //Regenerates because self-repairing super-advanced alien tech
 /datum/species/golem/alloy/spec_life(mob/living/carbon/human/H)
@@ -989,7 +978,6 @@
 			return //Do not affect our brothers
 
 		to_chat(L, span_cultlarge("A spine-chilling sound chills you to the bone!"))
-		L.apply_status_effect(/datum/status_effect/bonechill)
 		SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "spooked", /datum/mood_event/spooked)
 
 /datum/species/golem/snow

@@ -482,4 +482,4 @@
 	eye_color = "#663702"
 	tint = INFINITY
 	sight_flags = BLIND
-	metalizer_result = /obj/item/ammo_casing/caseless/rogue/bullet
+	metalizer_result = /obj/item/ammo_casing/caseless/lead

@@ -89,12 +89,7 @@
 
 
 /obj/item/weldingtool/attackby(obj/item/I, mob/user, params)
-	if(I.tool_behaviour == TOOL_SCREWDRIVER)
-		flamethrower_screwdriver(I, user)
-	else if(istype(I, /obj/item/stack/rods))
-		flamethrower_rods(I, user)
-	else
-		. = ..()
+	. = ..()
 	update_icon()
 
 /obj/item/weldingtool/proc/explode()
@@ -276,34 +271,6 @@
 		to_chat(user, span_warning("I need more welding fuel to complete this task!"))
 		return FALSE
 
-
-/obj/item/weldingtool/proc/flamethrower_screwdriver(obj/item/I, mob/user)
-	if(welding)
-		to_chat(user, span_warning("Turn it off first!"))
-		return
-	status = !status
-	if(status)
-		to_chat(user, span_notice("I resecure [src] and close the fuel tank."))
-		DISABLE_BITFIELD(reagents.flags, OPENCONTAINER)
-	else
-		to_chat(user, span_notice("[src] can now be attached, modified, and refuelled."))
-		ENABLE_BITFIELD(reagents.flags, OPENCONTAINER)
-	add_fingerprint(user)
-
-/obj/item/weldingtool/proc/flamethrower_rods(obj/item/I, mob/user)
-	if(!status)
-		var/obj/item/stack/rods/R = I
-		if (R.use(1))
-			var/obj/item/flamethrower/F = new /obj/item/flamethrower(user.loc)
-			if(!remove_item_from_storage(F))
-				user.transferItemToLoc(src, F, TRUE)
-			F.weldtool = src
-			add_fingerprint(user)
-			to_chat(user, span_notice("I add a rod to a welder, starting to build a flamethrower."))
-			user.put_in_hands(F)
-		else
-			to_chat(user, span_warning("I need one rod to start building a flamethrower!"))
-
 /obj/item/weldingtool/ignition_effect(atom/A, mob/user)
 	if(use_tool(A, user, 0, amount=1))
 		return span_notice("[user] casually lights [A] with [src], what a badass.")
@@ -317,22 +284,6 @@
 	max_fuel = 40
 	custom_materials = list(/datum/material/glass=60)
 
-/obj/item/weldingtool/largetank/flamethrower_screwdriver()
-	return
-
-/obj/item/weldingtool/largetank/cyborg
-	name = "integrated welding tool"
-	desc = ""
-	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "indwelder_cyborg"
-	toolspeed = 0.5
-
-/obj/item/weldingtool/largetank/cyborg/cyborg_unequip(mob/user)
-	if(!isOn())
-		return
-	switched_on(user)
-
-
 /obj/item/weldingtool/mini
 	name = "emergency welding tool"
 	desc = ""
@@ -341,9 +292,6 @@
 	w_class = WEIGHT_CLASS_TINY
 	custom_materials = list(/datum/material/iron=30, /datum/material/glass=10)
 	change_icons = 0
-
-/obj/item/weldingtool/mini/flamethrower_screwdriver()
-	return
 
 /obj/item/weldingtool/abductor
 	name = "alien welding tool"

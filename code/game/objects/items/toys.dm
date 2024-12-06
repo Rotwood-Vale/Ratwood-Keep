@@ -444,9 +444,9 @@
 		pop_burst()
 
 /obj/item/toy/snappop/Crossed(H as mob|obj)
-	if(ishuman(H) || issilicon(H)) //i guess carp and shit shouldn't set them off
+	if(ishuman(H)) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
-		if(issilicon(H) || M.m_intent == MOVE_INTENT_RUN)
+		if(M.m_intent == MOVE_INTENT_RUN)
 			to_chat(M, span_danger("I step on the snap pop!"))
 			pop_burst(2, 0)
 
@@ -570,10 +570,6 @@
 	var/chattering = FALSE
 	var/phomeme
 
-// Talking toys are language universal, and thus all species can use them
-/obj/item/toy/talking/attack_alien(mob/user)
-	return attack_hand(user)
-
 /obj/item/toy/talking/attack_self(mob/user)
 	if(!cooldown)
 		activation_message(user)
@@ -604,44 +600,6 @@
 	user.loc.visible_message(span_say("[icon2html(src, viewers(user.loc))] [message]"))
 	if(chattering)
 		chatter(message, phomeme, user)
-
-/*
- * AI core prizes
- */
-/obj/item/toy/talking/AI
-	name = "toy AI"
-	desc = ""
-	icon_state = "AI"
-	w_class = WEIGHT_CLASS_SMALL
-
-/obj/item/toy/talking/AI/generate_messages()
-	return list(generate_ion_law())
-
-/obj/item/toy/talking/codex_gigas
-	name = "Toy Codex Gigas"
-	desc = ""
-	icon = 'icons/obj/library.dmi'
-	icon_state = "demonomicon"
-	lefthand_file = 'icons/mob/inhands/misc/books_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/books_righthand.dmi'
-	w_class = WEIGHT_CLASS_SMALL
-	recharge_time = 60
-
-/obj/item/toy/talking/codex_gigas/activation_message(mob/user)
-	user.visible_message(
-		span_notice("[user] presses the button on \the [src]."),
-		span_notice("I press the button on \the [src]."),
-		span_notice("I hear a soft click."))
-
-/obj/item/toy/talking/codex_gigas/generate_messages()
-	var/datum/fakeDevil/devil = new
-	var/list/messages = list()
-	messages += "Some fun facts about: [devil.truename]"
-	messages += "[GLOB.lawlorify[LORE][devil.bane]]"
-	messages += "[GLOB.lawlorify[LORE][devil.obligation]]"
-	messages += "[GLOB.lawlorify[LORE][devil.ban]]"
-	messages += "[GLOB.lawlorify[LORE][devil.banish]]"
-	return messages
 
 /obj/item/toy/talking/owl
 	name = "owl action figure"
@@ -696,7 +654,6 @@
 	icon_state = "deck_nanotrasen_full"
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
-	var/obj/machinery/computer/holodeck/holo = null // Holodeck cards should not be infinite
 	var/list/cards = list()
 
 /obj/item/toy/cards/deck/Initialize()
@@ -728,8 +685,6 @@
 		to_chat(user, span_warning("There are no more cards to draw!"))
 		return
 	var/obj/item/toy/cards/singlecard/H = new/obj/item/toy/cards/singlecard(user.loc)
-	if(holo)
-		holo.spawned += H // track them leaving the holodeck
 	choice = cards[1]
 	H.cardname = choice
 	H.parentdeck = src
@@ -1061,7 +1016,7 @@
 	if(!..())
 		playsound(src, 'sound/blank.ogg', 40, TRUE)
 		for(var/mob/M in urange(10, src))
-			if(!M.stat && !isAI(M))
+			if(!M.stat)
 				shake_camera(M, 3, 1)
 		qdel(src)
 
@@ -1082,7 +1037,7 @@
 		user.visible_message(span_warning("[user] presses the big red button."), span_notice("I press the button, it plays a loud noise!"), span_hear("The button clicks loudly."))
 		playsound(src, 'sound/blank.ogg', 50, FALSE)
 		for(var/mob/M in urange(10, src)) // Checks range
-			if(!M.stat && !isAI(M)) // Checks to make sure whoever's getting shaken is alive/not the AI
+			if(!M.stat) // Checks to make sure whoever's getting shaken is alive/not the AI
 				sleep(8) // Short delay to match up with the explosion sound
 				shake_camera(M, 2, 1) // Shakes player camera 2 squares for 1 second.
 

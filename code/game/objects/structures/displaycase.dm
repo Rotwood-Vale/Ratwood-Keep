@@ -13,7 +13,6 @@
 	var/alert = TRUE
 	var/open = FALSE
 	var/openable = TRUE
-	var/obj/item/electronics/airlock/electronics
 	var/start_showpiece_type = null //add type for items on display
 	var/list/start_showpieces = list() //Takes sublists in the form of list("type" = /obj/item/bikehorn, "trophy_message" = "henk")
 	var/trophy_message = ""
@@ -31,8 +30,6 @@
 	update_icon()
 
 /obj/structure/displaycase/Destroy()
-	if(electronics)
-		QDEL_NULL(electronics)
 	if(showpiece)
 		QDEL_NULL(showpiece)
 	return ..()
@@ -64,7 +61,6 @@
 		dump()
 		if(!disassembled)
 			new /obj/item/shard( src.loc )
-			trigger_alarm()
 	qdel(src)
 
 /obj/structure/displaycase/obj_break(damage_flag)
@@ -74,15 +70,7 @@
 		new /obj/item/shard( src.loc )
 		playsound(src, "shatter", 70, TRUE)
 		update_icon()
-		trigger_alarm()
 	..()
-
-/obj/structure/displaycase/proc/trigger_alarm()
-	//Activate Anti-theft
-	if(alert)
-		var/area/alarmed = get_area(src)
-		alarmed.burglaralert(src)
-		playsound(src, 'sound/blank.ogg', 50, TRUE)
 
 /obj/structure/displaycase/update_icon()
 	var/icon/I
@@ -200,13 +188,6 @@
 			new /obj/item/stack/sheet/mineral/wood(get_turf(src), 5)
 			qdel(src)
 
-	else if(istype(I, /obj/item/electronics/airlock))
-		to_chat(user, span_notice("I start installing the electronics into [src]..."))
-		I.play_tool_sound(src)
-		if(do_after(user, 30, target = src) && user.transferItemToLoc(I,src))
-			electronics = I
-			to_chat(user, span_notice("I install the airlock electronics."))
-
 	else if(istype(I, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/G = I
 		if(G.get_amount() < 10)
@@ -215,30 +196,10 @@
 		to_chat(user, span_notice("I start adding [G] to [src]..."))
 		if(do_after(user, 20, target = src))
 			G.use(10)
-			var/obj/structure/displaycase/display = new(src.loc)
-			if(electronics)
-				electronics.forceMove(display)
-				display.electronics = electronics
-				if(electronics.one_access)
-					display.req_one_access = electronics.accesses
-				else
-					display.req_access = electronics.accesses
+			new /obj/structure/displaycase(src.loc)
 			qdel(src)
 	else
 		return ..()
-
-//The captains display case requiring specops ID access is intentional.
-//The lab cage and captains display case do not spawn with electronics, which is why req_access is needed.
-/obj/structure/displaycase/captain
-	alert = TRUE
-	start_showpiece_type = /obj/item/gun/energy/laser/captain
-	req_access = list(ACCESS_CENT_SPECOPS)
-
-/obj/structure/displaycase/labcage
-	name = "lab cage"
-	desc = ""
-	start_showpiece_type = /obj/item/clothing/mask/facehugger/lamarr
-	req_access = list(ACCESS_RD)
 
 /obj/structure/displaycase/trophy
 	name = "trophy display case"
@@ -281,15 +242,6 @@
 	if(!added_roundstart)
 		to_chat(user, span_warning("You've already put something new in this case!"))
 		return
-
-	if(is_type_in_typecache(W, GLOB.blacklisted_cargo_types))
-		to_chat(user, span_warning("The case rejects the [W]!"))
-		return
-
-	for(var/a in W.GetAllContents())
-		if(is_type_in_typecache(a, GLOB.blacklisted_cargo_types))
-			to_chat(user, span_warning("The case rejects the [W]!"))
-			return
 
 	if(user.transferItemToLoc(W, src))
 

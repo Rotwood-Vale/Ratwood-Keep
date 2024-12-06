@@ -44,14 +44,8 @@
 	STASPD = 10
 	STALUC = 10
 	for(var/S in MOBSTATS)
-		if(prob(33))
-			change_stat(S, 1)
-			if(prob(33))
-				change_stat(S, -1)
-		else
-			change_stat(S, -1)
-			if(prob(33))
-				change_stat(S, 1)
+		var/how_much = pick(-1, 0, 1)
+		change_stat(S, how_much)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.dna.species)
@@ -93,6 +87,8 @@
 			change_stat("fortune", -3)
 			H.voice_color = "c71d76"
 			set_eye_color(H, "#c71d76", "#c71d76")
+		if(isseelie(src))	//Check necessary to prevent seelie getting default stats when no other changes apply
+			change_stat("strength", -9)
 
 /mob/living/proc/change_stat(stat, amt, index)
 	if(!stat)
@@ -155,8 +151,7 @@
 				newamt--
 				BUFPER++
 			STAPER = newamt
-			see_override = initial(src.see_invisible) + (STAPER/5) // this is pretty bad but 20 PERCEPTION will give you 4 see_invis (significant)
-			update_sight() //Needed.
+
 			update_fov_angles()
 
 		if("intelligence")

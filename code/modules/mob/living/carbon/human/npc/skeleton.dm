@@ -85,9 +85,9 @@
 	if(prob(40))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(70))
-		gloves = /obj/item/clothing/gloves/roguetown/chain
+		gloves = /obj/item/clothing/gloves/roguetown/chain/iron
 	if(prob(70))
-		neck = /obj/item/clothing/neck/roguetown/chaincoif
+		neck = /obj/item/clothing/neck/roguetown/coif
 	if(H.gender == FEMALE)
 		H.STASTR = rand(8,10)
 	else
@@ -97,7 +97,7 @@
 	H.STAEND = 15
 	H.STAINT = 1
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/sword
+		r_hand = /obj/item/rogueweapon/sword/iron
 	else
 		r_hand = /obj/item/rogueweapon/mace
 

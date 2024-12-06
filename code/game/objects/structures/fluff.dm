@@ -1036,13 +1036,10 @@
 	max_integrity = 80
 	chance2hear = 10
 
-/obj/structure/fluff/psycross/attackby(obj/item/W, mob/user, params)
+/obj/structure/fluff/psycross/attackby(obj/item/W, mob/living/carbon/human/user, params)
 	if(user.mind)
-		if(user.mind.assigned_role == "Priest")
+		if((user.mind.assigned_role == "Priest") || ((user.mind.assigned_role == "Acolyte") && (user.patron.type == /datum/patron/divine/eora)))
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
-				if(!istype(get_area(user), /area/rogue/indoors/town/church/chapel))
-					to_chat(user, span_warning("I need to do this in the chapel."))
-					return FALSE
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
 				if(A.bitten_names.len)
@@ -1098,7 +1095,7 @@
 							SecondPerson.marriedto = FirstPerson.real_name
 							FirstPerson.adjust_triumphs(1)
 							SecondPerson.adjust_triumphs(1)
-							priority_announce("[FirstPerson.real_name] has married [SecondPersonFirstName]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+							priority_announce("Rejoice, for [user.real_name] has united [FirstPerson.real_name] and [SecondPersonFirstName] in marriage!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 							marriage = TRUE
 							qdel(A)
 //							if(FirstPerson.has_stress(/datum/stressevent/nobel))

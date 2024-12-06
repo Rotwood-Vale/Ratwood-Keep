@@ -26,7 +26,7 @@
 	var/require_comms_key = FALSE
 
 /datum/world_topic/proc/TryRun(list/input)
-	key_valid = config && (CONFIG_GET(string/comms_key) == input["key"])
+	key_valid = (CONFIG_GET(string/comms_key) == input["key"]) && CONFIG_GET(string/comms_key) && input["key"]
 	if(require_comms_key && !key_valid)
 		return "Bad Key"
 	input -= "key"
@@ -80,15 +80,6 @@
 
 /datum/world_topic/ahelp_relay/Run(list/input)
 	relay_msg_admins(span_adminnotice("<b><font color=red>HELP: </font> [input["source"]] [input["message_sender"]]: [input["message"]]</b>"))
-
-/datum/world_topic/comms_console
-	keyword = "Comms_Console"
-	require_comms_key = TRUE
-
-/datum/world_topic/comms_console/Run(list/input)
-	minor_announce(input["message"], "Incoming message from [input["message_sender"]]")
-	for(var/obj/machinery/computer/communications/CM in GLOB.machines)
-		CM.overrideCooldown()
 
 /datum/world_topic/news_report
 	keyword = "News_Report"
@@ -164,7 +155,6 @@
 			.["real_mode"] = SSticker.mode.name
 			// Key-authed callers may know the truth behind the "secret"
 
-	.["security_level"] = get_security_level()
 	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
 	// Amount of world's ticks in seconds, useful for calculating round duration
 	

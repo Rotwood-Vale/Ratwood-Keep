@@ -29,9 +29,6 @@
 /mob/living/proc/can_be_implanted()
 	return TRUE
 
-/mob/living/silicon/can_be_implanted()
-	return FALSE
-
 /mob/living/simple_animal/can_be_implanted()
 	return healable //Applies to robots and most non-organics, exceptions can override.
 

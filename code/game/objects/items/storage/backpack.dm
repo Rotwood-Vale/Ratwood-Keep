@@ -220,9 +220,6 @@
 	icon_state = "satchel"
 	item_state = "satchel"
 
-/obj/item/storage/backpack/satchel/leather/withwallet/PopulateContents()
-	new /obj/item/storage/wallet/random(src)
-
 /obj/item/storage/backpack/satchel/fireproof
 	resistance_flags = FIRE_PROOF
 
@@ -313,6 +310,7 @@
 		icon_state = initial(icon_state)
 		REMOVE_TRAIT(src, TRAIT_T_RAY_VISIBLE, TRAIT_GENERIC)
 
+
 /obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
 	new /obj/item/stack/tile/plasteel(src)
 	new /obj/item/crowbar(src)
@@ -400,7 +398,6 @@
 	new /obj/item/wrench(src)
 	new /obj/item/weldingtool(src)
 	new /obj/item/crowbar(src)
-	new /obj/item/stack/cable_coil(src)
 	new /obj/item/wirecutters(src)
 	new /obj/item/multitool(src)
 
@@ -438,7 +435,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/hitman/PopulateContents()
 	new /obj/item/clothing/under/suit/black(src)
 	new /obj/item/clothing/accessory/waistcoat(src)
-	new /obj/item/clothing/suit/toggle/lawyer/black(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/gloves/color/black(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
@@ -466,55 +462,6 @@
 	new /obj/item/surgical_drapes(src)
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/clothing/mask/muzzle(src)
-	new /obj/item/mmi/syndie(src)
-
-/obj/item/storage/backpack/duffelbag/syndie/ammo
-	name = "ammunition duffel bag"
-	desc = ""
-	icon_state = "duffel-syndieammo"
-	item_state = "duffel-syndieammo"
-
-/obj/item/storage/backpack/duffelbag/syndie/ammo/shotgun
-	desc = ""
-
-/obj/item/storage/backpack/duffelbag/syndie/ammo/shotgun/PopulateContents()
-	for(var/i in 1 to 6)
-		new /obj/item/ammo_box/magazine/m12g(src)
-	new /obj/item/ammo_box/magazine/m12g/slug(src)
-	new /obj/item/ammo_box/magazine/m12g/slug(src)
-	new /obj/item/ammo_box/magazine/m12g/dragon(src)
-
-/obj/item/storage/backpack/duffelbag/syndie/ammo/smg
-	desc = ""
-
-/obj/item/storage/backpack/duffelbag/syndie/ammo/smg/PopulateContents()
-	for(var/i in 1 to 9)
-		new /obj/item/ammo_box/magazine/smgm45(src)
-
-/obj/item/storage/backpack/duffelbag/syndie/ammo/dark_gygax
-	desc = ""
-
-/obj/item/storage/backpack/duffelbag/syndie/ammo/dark_gygax/PopulateContents()
-	new /obj/item/mecha_ammo/incendiary(src)
-	new /obj/item/mecha_ammo/incendiary(src)
-	new /obj/item/mecha_ammo/incendiary(src)
-	new /obj/item/mecha_ammo/flashbang(src)
-	new /obj/item/mecha_ammo/flashbang(src)
-	new /obj/item/mecha_ammo/flashbang(src)
-
-/obj/item/storage/backpack/duffelbag/syndie/ammo/mauler
-	desc = ""
-
-/obj/item/storage/backpack/duffelbag/syndie/ammo/mauler/PopulateContents()
-	new /obj/item/mecha_ammo/lmg(src)
-	new /obj/item/mecha_ammo/lmg(src)
-	new /obj/item/mecha_ammo/lmg(src)
-	new /obj/item/mecha_ammo/scattershot(src)
-	new /obj/item/mecha_ammo/scattershot(src)
-	new /obj/item/mecha_ammo/scattershot(src)
-	new /obj/item/mecha_ammo/missiles_he(src)
-	new /obj/item/mecha_ammo/missiles_he(src)
-	new /obj/item/mecha_ammo/missiles_he(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/c20rbundle
 	desc = ""
@@ -532,7 +479,6 @@
 	new /obj/item/gun/ballistic/shotgun/bulldog(src)
 	new /obj/item/ammo_box/magazine/m12g(src)
 	new /obj/item/ammo_box/magazine/m12g(src)
-	new /obj/item/clothing/glasses/thermal/syndi(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle
 	desc = ""
@@ -548,22 +494,12 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/med/bioterrorbundle/PopulateContents()
 	new /obj/item/reagent_containers/spray/chemsprayer/bioterror(src)
-	new /obj/item/storage/box/syndie_kit/chemical(src)
 	new /obj/item/gun/syringe/syndicate(src)
 	new /obj/item/gun/ballistic/automatic/c20r/toy(src)
 	new /obj/item/storage/box/syringes(src)
 	new /obj/item/ammo_box/foambox/riot(src)
-	new /obj/item/grenade/chem_grenade/bioterrorfoam(src)
 	if(prob(5))
 		new /obj/item/reagent_containers/food/snacks/pizza/pineapple(src)
-
-/obj/item/storage/backpack/duffelbag/syndie/c4/PopulateContents()
-	for(var/i in 1 to 10)
-		new /obj/item/grenade/c4(src)
-
-/obj/item/storage/backpack/duffelbag/syndie/x4/PopulateContents()
-	for(var/i in 1 to 3)
-		new /obj/item/grenade/c4/x4(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter
 	desc = ""
@@ -571,7 +507,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/firestarter/PopulateContents()
 	new /obj/item/clothing/under/syndicate/soviet(src)
 	new /obj/item/watertank/op(src)
-	new /obj/item/clothing/suit/space/hardsuit/syndi/elite(src)
 	new /obj/item/gun/ballistic/automatic/pistol/APS(src)
 	new /obj/item/ammo_box/magazine/pistolm9mm(src)
 	new /obj/item/ammo_box/magazine/pistolm9mm(src)
@@ -587,7 +522,6 @@
 	STR.silent = TRUE
 
 /obj/item/storage/backpack/duffelbag/clown/syndie/PopulateContents()
-	new /obj/item/pda/clown(src)
 	new /obj/item/clothing/under/rank/civilian/clown(src)
 	new /obj/item/clothing/shoes/clown_shoes(src)
 	new /obj/item/clothing/mask/gas/clown_hat(src)
