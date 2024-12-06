@@ -1,6 +1,6 @@
 /obj/item/boulder
 	name = "boulder"
-	icon = 'icons/obj/structures/siege/onager.dmi'
+	icon = 'icons/obj/structures/siege/onager/onager.dmi'
 	icon_state = "boulder"
 	w_class = 5
 	var/launched = FALSE

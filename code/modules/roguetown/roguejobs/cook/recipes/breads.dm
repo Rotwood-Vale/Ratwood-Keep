@@ -5,7 +5,7 @@
 		/obj/item/reagent_containers/powder/flour= 2)
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough
 	subtype_reqs = FALSE
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/cooking/doughslice
 	name = "smalldough"
@@ -14,7 +14,7 @@
 		/obj/item/reagent_containers/powder/flour= 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/doughslice
 	subtype_reqs = FALSE
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/cooking/comdough
 	name = "combine dough"
@@ -29,7 +29,7 @@
 	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/dough=1)
 	result = list(/obj/item/reagent_containers/food/snacks/rogue/doughslice=2)
 	subtype_reqs = FALSE
-	craftdiff = 0
+	skill_level = 0
 	skillcraft = null
 
 /datum/crafting_recipe/roguetown/cooking/crackers
@@ -118,7 +118,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/cheddarslice = 3,
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/cheeseegg
-	craftdiff = 1
+	skill_level = 1
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/cheeseegg
@@ -233,7 +233,7 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/bun
 	subtype_reqs = FALSE
-	craftdiff = 0
+	skill_level = 0
 
 /obj/item/reagent_containers/food/snacks/rogue/biscuitcooked/butter
 	name = "biscuit of butter"
@@ -254,7 +254,7 @@
 		/datum/reagent/consumable/sugar = 5)
 	result = /obj/item/reagent_containers/food/snacks/rogue/sweetroll
 	subtype_reqs = FALSE
-	craftdiff = 0
+	skill_level = 0
 
 /obj/item/reagent_containers/food/snacks/rogue/sweetroll
 	name = "sweetroll"
@@ -276,7 +276,7 @@
 		/datum/reagent/consumable/honey = 5)
 	result = /obj/item/reagent_containers/food/snacks/rogue/honeybun
 	subtype_reqs = FALSE
-	craftdiff = 1
+	skill_level = 1
 
 /obj/item/reagent_containers/food/snacks/rogue/honeybun
 	name = "honey bun"
@@ -297,7 +297,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice/toast = 1,
 		/obj/item/reagent_containers/food/snacks/butterslice = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/breadslice/toastbuttered
-	craftdiff = 0
+	skill_level = 0
 	skillcraft = null
 	subtype_reqs = FALSE
 
@@ -319,7 +319,7 @@
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/dough = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins = 2)
-	craftdiff = 1
+	skill_level = 1
 	result = /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
 
 	subtype_reqs = FALSE
@@ -394,7 +394,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice = 1,
 		/obj/item/reagent_containers/food/snacks/butterslice = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/biscuituncooked
-	craftdiff = 0
+	skill_level = 0
 
 	subtype_reqs = FALSE
 
@@ -434,7 +434,7 @@
 		/obj/item/reagent_containers/food/snacks/egg = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/cheese = 2)
 	result = /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked
-	craftdiff = 1
+	skill_level = 1
 	subtype_reqs = FALSE
 
 /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked

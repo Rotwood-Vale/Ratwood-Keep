@@ -152,7 +152,7 @@
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich
-	craftdiff = 0
+	skill_level = 0
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/fullroast
@@ -196,7 +196,7 @@
 		/obj/item/reagent_containers/powder/salt = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/fullroast
-	craftdiff = 4
+	skill_level = 4
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/eggplantparm
@@ -219,7 +219,7 @@
 		/obj/item/reagent_containers/powder/flour = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/eggplantparm
-	craftdiff = 3
+	skill_level = 3
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/sauteedeggplant
@@ -242,7 +242,7 @@
 		/datum/reagent/consumable/cooking_oil = 3
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/sauteedeggplant
-	craftdiff = 2
+	skill_level = 2
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/etruscansalad
@@ -265,7 +265,7 @@
 		/datum/reagent/consumable/cooking_oil = 3
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/etruscansalad
-	craftdiff = 3
+	skill_level = 3
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/moussaka
@@ -304,7 +304,7 @@
 		/obj/item/reagent_containers/food/snacks/butterslice = 3
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/moussaka
-	craftdiff = 3
+	skill_level = 3
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/stuffedtiefling
@@ -337,7 +337,7 @@
 		/datum/reagent/consumable/blackpepper = 3
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/stuffedtiefling
-	craftdiff = 4
+	skill_level = 4
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/jadepheasant
@@ -362,7 +362,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/onion = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/jadepheasant
-	craftdiff = 5
+	skill_level = 5
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/cornedbeef
@@ -385,7 +385,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/sauerkraut = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/cornedbeef
-	craftdiff = 2
+	skill_level = 2
 	subtype_reqs = TRUE
 
 */

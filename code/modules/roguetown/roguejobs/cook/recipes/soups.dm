@@ -25,7 +25,7 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/beanstew
-	craftdiff = 1
+	skill_level = 1
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/oatstew
@@ -52,7 +52,7 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/oatstew
-	craftdiff = 1
+	skill_level = 1
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/riceporridge
@@ -77,7 +77,7 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/riceporridge
-	craftdiff = 0
+	skill_level = 0
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/cheesyporridge
@@ -103,7 +103,7 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/cheesyporridge
-	craftdiff = 0
+	skill_level = 0
 	subtype_reqs = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/tieflingrice
@@ -130,7 +130,7 @@
 		/datum/reagent/water = 15
 	)
 	result = /obj/item/reagent_containers/food/snacks/rogue/tieflingrice
-	craftdiff = 2
+	skill_level = 2
 	subtype_reqs = TRUE
 
 */

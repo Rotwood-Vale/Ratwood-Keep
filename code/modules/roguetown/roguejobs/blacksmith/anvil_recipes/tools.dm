@@ -96,7 +96,7 @@
 	name = "Iron Fork x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/kitchen/ironfork
-	craftdiff = 1
+	skill_level = 1
 
 /datum/anvil_recipe/tools/iron/spoon
 	name = "Iron Spoon x3"
@@ -105,7 +105,7 @@
 						/obj/item/kitchen/ironspoon,
 						/obj/item/kitchen/ironspoon
 					)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/anvil_recipe/tools/iron/bowl
 	name = "Iron Bowl"
@@ -115,7 +115,7 @@
 						/obj/item/reagent_containers/glass/bowl/iron
 					)
 
-	craftdiff = 1
+	skill_level = 1
 
 // --------- Steel -----------
 

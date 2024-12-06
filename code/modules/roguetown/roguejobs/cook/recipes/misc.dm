@@ -7,7 +7,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins
 	structurecraft = /obj/machinery/tanningrack
 	req_table = FALSE
-	craftdiff = 0
+	skill_level = 0
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/butter
@@ -47,7 +47,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/cucumber = 4,
 		/obj/item/reagent_containers/glass/bottle = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/cucumberjar
-	craftdiff = 1
+	skill_level = 1
 */
 /datum/crafting_recipe/roguetown/cooking/soap
 	name = "soap"
@@ -56,4 +56,4 @@
 		/datum/reagent/water = 10,
 		/obj/item/reagent_containers/food/snacks/fat = 1)
 	result = /obj/item/soap
-	craftdiff = 5
+	skill_level = 5

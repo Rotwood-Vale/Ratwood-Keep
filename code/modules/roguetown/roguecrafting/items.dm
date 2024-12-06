@@ -1,5 +1,5 @@
 /datum/crafting_recipe/roguetown
-	always_availible = TRUE
+	always_available = TRUE
 	skillcraft = /datum/skill/craft/crafting
 
 
@@ -8,19 +8,19 @@
 	result = /obj/item/needle/thorn
 	reqs = list(/obj/item/natural/thorn = 1,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/whet
 	name = "whet stone"
 	result = /obj/item/natural/whet
 	reqs = list(/obj/item/natural/stone = 2)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/clothbelt
 	name = "cloth belt"
 	result = /obj/item/storage/belt/rogue/leather/cloth
 	reqs = list(/obj/item/natural/cloth = 1)
-	craftdiff = 0
+	skill_level = 0
 	verbage_simple = "tie"
 	verbage = "ties"
 
@@ -47,7 +47,7 @@
 	name = "untie cloth belt"
 	result = /obj/item/natural/cloth
 	reqs = list(/obj/item/storage/belt/rogue/leather/cloth = 1)
-	craftdiff = 0
+	skill_level = 0
 	verbage_simple = "untie"
 	verbage = "unties"
 
@@ -55,7 +55,7 @@
 	name = "rope belt"
 	result = /obj/item/storage/belt/rogue/leather/rope
 	reqs = list(/obj/item/rope = 1)
-	craftdiff = 0
+	skill_level = 0
 	verbage_simple = "tie"
 	verbage = "ties"
 
@@ -63,7 +63,7 @@
 	name = "untie rope belt"
 	result = /obj/item/rope
 	reqs = list(/obj/item/storage/belt/rogue/leather/rope = 1)
-	craftdiff = 0
+	skill_level = 0
 	verbage_simple = "untie"
 	verbage = "unties"
 
@@ -96,14 +96,14 @@
 	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
 	verbage = "strings together"
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/torch
 	name = "torch"
 	result = /obj/item/flashlight/flare/torch
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/candle
 	name = "candle (x3)"
@@ -124,14 +124,14 @@
 	result = /obj/item/rogueweapon/huntingknife/stoneknife
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/stone = 1)
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/stonespear
 	name = "stone spear"
 	result = /obj/item/rogueweapon/spear/stone
 	reqs = list(/obj/item/rogueweapon/woodstaff = 1,
 				/obj/item/natural/stone = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/woodclub
 	name = "wood club"
@@ -144,7 +144,7 @@
 	reqs = list(/obj/item/rogueweapon/sickle = 1,
 				/obj/item/rope = 1,
 				/obj/item/grown/log/tree/small = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/goedendag
 	name = "goedendag"
@@ -152,7 +152,7 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/hoe = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/peasantwarflail
 	name = "peasant war flail"
@@ -160,7 +160,7 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/thresher = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /obj/item/rogueweapon/mace/woodclub/crafted
 	sellprice = 8
@@ -179,7 +179,7 @@
 				/obj/item/rogueweapon/mace/wsword)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/woodbucket
 	name = "wooden bucket"
@@ -387,7 +387,7 @@
 				/obj/item/natural/fibers = 2,
 				/obj/item/ingot/iron = 1)
 	req_table = TRUE
-	craftdiff = 1
+	skill_level = 1
 	verbage_simple = "put together"
 	verbage = "puts together"
 
@@ -402,7 +402,7 @@
 	/datum/reagent/water = 50)
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
 	structurecraft = /obj/machinery/tanningrack
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/parchment
 	name = "paper parchment (x8)"
@@ -418,7 +418,7 @@
 	/datum/reagent/water = 30)
 	tools = list(/obj/item/rogueweapon/huntingknife = 1)
 	structurecraft = /obj/machinery/tanningrack
-	craftdiff = 1
+	skill_level = 1
 
 
 /datum/crafting_recipe/roguetown/briarmask
@@ -427,7 +427,7 @@
 	reqs = list(/obj/item/grown/log/tree/stick = 4,
 				/obj/item/natural/fibers = 3)
 	skillcraft = /datum/skill/magic/druidic
-	craftdiff = 2 // druids & dendor clerics can craft
+	skill_level = 2 // druids & dendor clerics can craft
 
 // Woodcutting recipe
 
@@ -440,4 +440,4 @@
 	result = /obj/item/roguegear/wood/basic
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/natural/stone = 1)
-	craftdiff = 2
+	skill_level = 2

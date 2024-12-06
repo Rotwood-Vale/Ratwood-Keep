@@ -1,7 +1,7 @@
 /obj/structure/onager
 	name = "Onager"
 	desc = "A torsion-powered siege engine designed to throw massive projectiles."
-	icon = 'icons/obj/structures/siege/onager.dmi'
+	icon = 'icons/obj/structures/siege/onager/onager.dmi'
 	icon_state = "idle"
 
 	anchored = TRUE // Can't be moved unless packed
@@ -99,7 +99,7 @@
 
 	if(loaded) // Idle icon with a boulder
 		icon_state = "idle"
-		add_overlay(image(icon='icons/obj/structures/siege/onager.dmi',icon_state="boulder_overlay"), HIGH_OBJ_LAYER)
+		add_overlay(image(icon='icons/obj/structures/siege/onager/onager.dmi',icon_state="boulder_overlay"), HIGH_OBJ_LAYER)
 	
 	if(launched) // Launched icon without a boulder
 		icon_state = "launched"
