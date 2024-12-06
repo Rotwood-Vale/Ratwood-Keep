@@ -1316,16 +1316,16 @@
 /area/rogue/indoors/shelter/mountains)
 "baO" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
-/obj/item/clothing/cloak/raincloak/vanguard,
+/obj/item/clothing/cloak/shadow,
+/obj/item/clothing/cloak/shadow,
+/obj/item/clothing/cloak/shadow,
+/obj/item/clothing/cloak/shadow,
+/obj/item/clothing/cloak/shadow,
+/obj/item/clothing/cloak/shadow,
+/obj/item/clothing/cloak/shadow,
+/obj/item/clothing/cloak/shadow,
+/obj/item/clothing/cloak/shadow,
+/obj/item/clothing/cloak/shadow,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "baS" = (
@@ -7075,6 +7075,16 @@
 /obj/structure/closet/crate/chest{
 	lockid = "bog_gatehouse"
 	},
+/obj/item/clothing/suit/roguetown/shirt/shadow,
+/obj/item/clothing/suit/roguetown/shirt/shadow,
+/obj/item/clothing/suit/roguetown/shirt/shadow,
+/obj/item/clothing/suit/roguetown/shirt/shadow,
+/obj/item/clothing/suit/roguetown/shirt/shadow,
+/obj/item/clothing/suit/roguetown/shirt/shadow,
+/obj/item/clothing/suit/roguetown/shirt/shadow,
+/obj/item/clothing/suit/roguetown/shirt/shadow,
+/obj/item/clothing/suit/roguetown/shirt/shadow,
+/obj/item/clothing/suit/roguetown/shirt/shadow,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "fxQ" = (
