@@ -1156,7 +1156,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = LEGS|GROIN
-	slot_flags = ITEM_SLOT_CLOAK|ITEM_SLOT_BELT|ITEM_SLOT_PANTS
+	slot_flags = ITEM_SLOT_CLOAK|ITEM_SLOT_PANTS
 	flags_inv = HIDECROTCH
 	detail_tag = "_belt"
 

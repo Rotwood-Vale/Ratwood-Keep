@@ -589,6 +589,19 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(!holder)
 		return
 
+/client/verb/runm()
+	set name = "Run Mode"
+	set desc = "Changes if you run continually or if you stop running when you turn"
+	set category = "Options"
+	usr.client.prefs.toggles ^= runm
+	usr.client.prefs.save_preferences()
+	if(usr.client.prefs.toggles & runm)
+		to_chat(usr, "You will now stop running when you turn.")
+	else
+		to_chat(usr, "You will now stop running when you turn.")
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Run Mode", "[usr.client.prefs.toggles & runm ? "Enabled" : "Disabled"]")) 
+	return C.prefs.toggles & runm
+
 	//Collect keywords
 	var/list/keywords = mob.get_policy_keywords()
 	var/header = get_policy(POLICY_VERB_HEADER)
