@@ -30,7 +30,7 @@
 	skillcraft = /datum/skill/misc/sewing
 	verbage_simple = "sew"
 	verbage = "sews"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/clothbelt
 	name = "cloth belt"

@@ -83,4 +83,4 @@
 		/datum/reagent/water = 10,
 		/obj/item/reagent_containers/food/snacks/fat = 1)
 	result = /obj/item/soap
-	craftdiff = 5
+	skill_level = 5

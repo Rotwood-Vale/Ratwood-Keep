@@ -350,7 +350,7 @@
 	created_item = /obj/item/gunbarrel
 	additional_items = list(/obj/item/ingot/steel = 1)
 	hammers_per_item = 5
-	craftdiff = 2
+	skill_level = 2
 
 /datum/artificer_recipe/guns/parts
 	name = "Gun Lock (+1 Cog)"
@@ -358,14 +358,14 @@
 	created_item = /obj/item/gunlock
 	additional_items = list(/obj/item/roguegear/bronze = 1)
 	hammers_per_item = 5
-	craftdiff = 3
+	skill_level = 3
 
 /datum/artificer_recipe/guns/stock
 	name = "Gun Stock"
 	required_item = /obj/item/natural/wood/plank
 	created_item = /obj/item/gunstock
 	hammers_per_item = 5
-	craftdiff = 2
+	skill_level = 2
 
 /datum/artificer_recipe/guns/arquebus
 	name = "Arquebus (+1 Stock, Lock, and Barrel)"
@@ -375,7 +375,7 @@
 							/obj/item/gunbarrel = 1)
 	created_item = list(/obj/item/gun/ballistic/arquebus)
 	hammers_per_item = 10
-	craftdiff = 4
+	skill_level = 4
 
 /datum/artificer_recipe/guns/blunderbuss
 	name = "Blunderbuss (+1 Stock, Lock, and Barrel)"
@@ -385,7 +385,7 @@
 							/obj/item/gunbarrel = 1)
 	created_item = list(/obj/item/gun/ballistic/blunderbuss)
 	hammers_per_item = 10
-	craftdiff = 4
+	skill_level = 4
 
 // --------- IRON -----------
 

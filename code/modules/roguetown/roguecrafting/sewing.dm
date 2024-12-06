@@ -32,19 +32,19 @@
 	name = "rags (2 cloths; NONE)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/rags)
 	reqs = list(/obj/item/natural/cloth = 2)
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/sewing/ragmask
 	name = "half-mask (rag) - (cloth; NONE)"
 	result = list(/obj/item/clothing/mask/rogue/rag)
 	reqs = list(/obj/item/natural/cloth = 1)
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/sewing/ragglove
 	name = "hand wrappings - (cloth; NONE)"
 	result = list(/obj/item/clothing/gloves/roguetown/wrap)
 	reqs = list(/obj/item/natural/cloth = 1)
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/sewing/bag
 	name = "sack (cloth, fiber; NONE)"
@@ -107,14 +107,14 @@
 	result = list(/obj/item/clothing/under/roguetown/trou)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/sewing/tights
 	name = "tights (2 cloths, fiber; NOVICE)"
 	result = list(/obj/item/clothing/under/roguetown/tights)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/sewing/workervest
 	name = "tunic (striped) - (2 cloths, 2 fibers; NOVICE)"
@@ -142,7 +142,7 @@
 	result = list(/obj/item/clothing/suit/roguetown/shirt/tunic)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/sewing/burial_shroud
 	name = "winding sheet (2 cloths; NOVICE)"
@@ -176,21 +176,21 @@
 	result = list(/obj/item/clothing/cloak/fauld)
 	reqs =  list(/obj/item/natural/cloth = 2,
                 /obj/item/natural/fibers = 1)
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/sewing/fauld
 	name = "fauld - (2 cloths, fiber; APPRENTICE)"
 	result = list(/obj/item/clothing/cloak/fauld)
 	reqs =  list(/obj/item/natural/cloth = 2,
                 /obj/item/natural/fibers = 1)
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/sewing/skirt
 	name = "battle skirt - (2 cloths, fiber; APPRENTICE)"
 	result = list(/obj/item/clothing/cloak/fauld/battleskirt)
 	reqs =  list(/obj/item/natural/cloth = 2,
                 /obj/item/natural/fibers = 1)
-	craftdiff = 2
+	skill_level = 2
 /* craftdif of 3 = JOURNEYMAN */
 
 /datum/crafting_recipe/roguetown/sewing/armingjacket
@@ -281,7 +281,7 @@
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/wizard)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/stockings_white
 	name = "stockings (cloth, fiber; JOURNEYMAN)"
@@ -323,56 +323,56 @@
 	result = list(/obj/item/clothing/cloak/templar/astratan)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/templar/necran
 	name = "noc tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/templar/necran)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/crusader/dendor
 	name = "dendor tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/tabard/crusader/dendor)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/crusader/necra
 	name = "necra tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/templar/necran)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/templar/malummite
 	name = "malum tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/templar/malummite)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/crusader/eora
 	name = "eora tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/tabard/crusader/eora)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/crusader/pestra
 	name = "pestra tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/tabard/crusader/pestra)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/crusader/ravox
 	name = "ravox tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/tabard/crusader/ravox)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /* craftdif of 4 EXPERT */
 
@@ -402,7 +402,7 @@
 	result = list(/obj/item/clothing/head/roguetown/chaperon)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/chaperon
 	name = "hat (reinforced hood) - (2 fur, hood; EXPERT)"
@@ -410,7 +410,7 @@
 	reqs = list(/obj/item/clothing/head/roguetown/roguehood = 2,
 				/obj/item/natural/fibers = 1,
 				/obj/item/natural/fur = 2)
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/jupon
 	name = "jupon (2 cloths, fiber; EXPERT)"
@@ -434,7 +434,7 @@
 	result = list(/obj/item/clothing/under/roguetown/tights/stockings/silk/white)
 	reqs = list(/obj/item/natural/silk = 1,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 5
+	skill_level = 5
 
 /datum/crafting_recipe/roguetown/sewing/nobledress
 	name = "dress (noble) (4 cloths, 2 silk, 3 fibers; MASTER)"
@@ -442,7 +442,7 @@
 	reqs = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 2)
-	craftdiff = 5
+	skill_level = 5
 
 /* craftdif of 6 = LEGENDARY */
 
@@ -548,7 +548,7 @@
 	result = /obj/item/storage/backpack/rogue/backpack
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/leathercoat
 	name = "leather coat"
@@ -556,7 +556,7 @@
 	reqs = list(/obj/item/natural/hide/cured = 4,
 				/obj/item/natural/fur = 1,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/leathercoat
 	name = "heavy leather coat"
@@ -568,28 +568,28 @@
 	name = "simple shoes (leather; NOVICE)"
 	result = list(/obj/item/clothing/shoes/roguetown/simpleshoes)
 	reqs = list(/obj/item/natural/hide/cured = 1)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/sewing/shortboots
 	name = "shortboots (leather, cloth; NOVICE)"
 	result = /obj/item/clothing/shoes/roguetown/shortboots
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/cloth = 1)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/sewing/sandals
 	name = "sandals (leather, fiber; NOVICE)"
 	result = /obj/item/clothing/shoes/roguetown/sandals
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/sewing/gladiator
 	name = "caligae (leather, fiber; APPRENTICE)"
 	result = /obj/item/clothing/shoes/roguetown/gladiator
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/sewing/ridingboots
 	name = "riding boots (leather, cloth, 2 fiber; APPRENTICE)"
@@ -597,7 +597,7 @@
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 2,
 				/obj/item/natural/cloth = 1)
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/sewing/blackboots
 	name = "black boots (2 leather, cloth, 2 fiber; JOURNEYMAN)"
@@ -605,7 +605,7 @@
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 2,
 				/obj/item/natural/cloth = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/nobleboot
 	name = "noble boots (2 leather, 2 cloth, 2 fiber; MASTER)"
@@ -613,7 +613,7 @@
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 2,
 				/obj/item/natural/cloth = 2)
-	craftdiff = 5
+	skill_level = 5
 
 /// ADVANCED LEATHER
 
@@ -743,14 +743,14 @@
 	name = "trousers (webbed) - (2 silks; LOOM, NOVICE)"
 	result = list(/obj/item/clothing/under/roguetown/webs)
 	reqs = list(/obj/item/natural/silk = 2)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/sewing/shadowgloves
 	name = "gloves (silk) - (cloth, silk; LOOM, NOVICE)"
 	result = list(/obj/item/clothing/gloves/roguetown/shadow)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 1)
-	craftdiff = 1
+	skill_level = 1
 
 /* craftdif of 2 = APPRENTICE */
 
@@ -761,21 +761,21 @@
 	result = list(/obj/item/clothing/cloak/half)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 1)
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/shadowcloak
 	name = "vanguard cloak - (cloth, 3 silk; LOOM, JOURNEYMAN)"
 	result = list(/obj/item/clothing/cloak/shadow)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 3)
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/shadowrobe
 	name = "vanguard uniform - (2 cloths, 3 silk; LOOM, JOURNEYMAN)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/shadow)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 3)
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/nochood
 	name = "hood (moon/Noc) - (2 cloths, silk; LOOM, JOURNEYMAN)"
@@ -811,7 +811,7 @@
 	result = list(/obj/item/clothing/under/roguetown/shadow)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 3)
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/astratarobe
 	name = "robes (Astrata) - (3 cloths, silk; LOOM, EXPERT)"
@@ -864,7 +864,7 @@
 	result = list (/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random)
 	reqs = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/silk = 3)
-	craftdiff = 5
+	skill_level = 5
 
 /datum/crafting_recipe/roguetown/sewing/nmjacket
 	name = "newmoon coat - (2 leather, 3 cloth, 2 silk, amulet of noc, LOOM, EXPERT)"
@@ -873,14 +873,14 @@
 				/obj/item/natural/silk = 2,
 				/obj/item/natural/hide/cured = 2,
 				/obj/item/clothing/neck/roguetown/psicross/noc)
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/eoramask
 	name = "eora mask - (3 silk, silver ingot; EXPERT)"
 	result = list(/obj/item/clothing/head/roguetown/eoramask)
 	reqs = list(/obj/item/ingot/silver = 1,
 				/obj/item/natural/silk = 3)
-	craftdiff = 3
+	skill_level = 3
 	sellprice = 75
 
 /datum/crafting_recipe/roguetown/sewing/eorarobes
@@ -888,7 +888,7 @@
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/eora)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
-	craftdiff = 3
+	skill_level = 3
 
 
 /* craftdif of 6 = LEGENDARY */
@@ -899,4 +899,4 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 4)
-	craftdiff = 6
+	skill_level = 6

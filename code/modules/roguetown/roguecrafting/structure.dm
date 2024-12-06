@@ -541,7 +541,7 @@
 	craftsound = null
 	wallcraft = TRUE
 	skillcraft = /datum/skill/craft/masonry
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/grindstone
 	name = "grindstone"

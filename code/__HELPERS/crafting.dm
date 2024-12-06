@@ -243,7 +243,6 @@ proc/check_constructability(mob/user, datum/crafting_recipe/R)
 		return
 	var/list/contents = get_surroundings(user)
 	var/turf/T = get_step(user, user.dir)
-	var/obj/N
 	var/result_name
 
 	if(check_contents(R, contents))
@@ -280,7 +279,7 @@ proc/check_constructability(mob/user, datum/crafting_recipe/R)
 							continue
 						to_chat(user, span_danger("I've failed to craft \the [result_name]."))
 						continue
-					var/list/parts = del_reqs(R, user)
+					del_reqs(R, user)
 
 					if(user.mind && R.skillcraft)
 						if(isliving(user))
