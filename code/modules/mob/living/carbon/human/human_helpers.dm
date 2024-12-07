@@ -70,6 +70,8 @@
 		return if_no_face		//Likewise for hats
 	if( wear_neck && (wear_neck.flags_inv&HIDEFACE) )
 		return if_no_face		//Likewise for hats
+	if( istype(src, /mob/living/carbon/human/species/skeleton)) //SPOOKY BONES
+		return real_name
 	var/obj/item/bodypart/O = get_bodypart(BODY_ZONE_HEAD)
 	if( !O || (HAS_TRAIT(src, TRAIT_DISFIGURED)) || !real_name || (O.skeletonized && !mind?.has_antag_datum(/datum/antagonist/lich)))	//disfigured. use id-name if possible
 		return if_no_face
