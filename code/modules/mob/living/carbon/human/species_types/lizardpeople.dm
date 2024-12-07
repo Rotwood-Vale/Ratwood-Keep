@@ -9,7 +9,7 @@
 	coldmod = 1.5
 	heatmod = 0.67
 	default_features = MANDATORY_FEATURE_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | SLIME_EXTRACT
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'
 	miss_sound = 'sound/blank.ogg'
@@ -18,7 +18,6 @@
 	exotic_bloodtype = "L"
 	disliked_food = GRAIN | DAIRY
 	liked_food = GROSS | MEAT
-	inert_mutation = FIREBREATH
 	deathsound = 'sound/blank.ogg'
 	wings_icon = "Dragon"
 	organs = list(

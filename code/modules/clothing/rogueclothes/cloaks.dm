@@ -105,7 +105,6 @@
 
 /obj/item/clothing/cloak/tabard/crusader
 	detail_tag = "_psy"
-	detail_color = CLOTHING_RED
 	boobed_detail = FALSE
 
 /obj/item/clothing/cloak/tabard/crusader/Initialize()
@@ -146,16 +145,48 @@
 	detail_color = CLOTHING_WHITE
 
 /obj/item/clothing/cloak/tabard/crusader/dendor
-	color = "#4B5637"
-	detail_color = "#3D1D1C"
+	name = "surcoat of the dendorian order"
+	icon_state = "tabard_dendor"
+	item_state = "tabard_dendor"
 
 /obj/item/clothing/cloak/tabard/crusader/pestra
-	color = CLOTHING_WHITE
-	detail_color = CLOTHING_GREEN
+	name = "surcoat of the pestran order"
+	icon_state = "tabard_pestra"
+	item_state = "tabard_pestra"
 
 /obj/item/clothing/cloak/tabard/crusader/noc
-	color = "#2C2231"
-	detail_color = "#9AB0B0"
+	name = "surcoat of the lunar order"
+	icon_state = "tabard_noc"
+	item_state = "tabard_noc"
+
+/obj/item/clothing/cloak/tabard/crusader/noc/alt
+	icon_state = "tabard_noc_alt"
+	item_state = "tabard_noc_alt"
+
+/obj/item/clothing/cloak/tabard/crusader/eora
+	name = "surcoat of the eoran order"
+	icon_state = "tabard_eora"
+	item_state = "tabard_eora"
+
+/obj/item/clothing/cloak/tabard/crusader/pestra
+	name = "surcoat of the pestran order"
+	icon_state = "tabard_pestra"
+	item_state = "tabard_pestra"
+
+/obj/item/clothing/cloak/tabard/crusader/abyssor
+	name = "surcoat of the abyssal order"
+	icon_state = "tabard_abyssor"
+	item_state = "tabard_abyssor"
+
+/obj/item/clothing/cloak/tabard/crusader/ravox
+	name = "surcoat of the ravoxian order"
+	icon_state = "tabard_ravox"
+	item_state = "tabard_ravox"
+
+/obj/item/clothing/cloak/tabard/crusader/xylix
+	name = "surcoat of the xylixian order"
+	icon_state = "tabard_xylix"
+	item_state = "tabard_xylix"
 
 /obj/item/clothing/cloak/tabard/crusader/tief/attack_right(mob/user)
 	if(picked)
@@ -235,6 +266,11 @@
 /obj/item/clothing/cloak/tabard/knight/guard/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
+
+/obj/item/clothing/cloak/tabard/musketeer
+	detail_tag = "_psy"
+	color = CLOTHING_BLUE
+	detail_color = CLOTHING_WHITE
 
 
 //////////////////////////
@@ -1111,3 +1147,36 @@
 	name = "necran tabard"
 	desc = "Deep dark blacks, swallowing all light as if the night itself."
 	icon_state = "necratabard"
+
+/obj/item/clothing/cloak/fauld
+	name = "fauld"
+	desc = "A piece of cloth usually worn to cover the hips and part of the legs."
+	color = null
+	icon_state = "faulds"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	body_parts_covered = LEGS|GROIN
+	slot_flags = ITEM_SLOT_CLOAK|ITEM_SLOT_PANTS
+	flags_inv = HIDECROTCH
+	detail_tag = "_belt"
+
+/obj/item/clothing/cloak/fauld/update_icon()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/cloak/fauld/battleskirt
+	name = "battle skirt"
+	desc = "A skirt usually worn on battle with the colors of the wearer."
+	icon_state = "battleskirt"
+
+/obj/item/clothing/cloak/fauld/battleskirt/update_icon()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)

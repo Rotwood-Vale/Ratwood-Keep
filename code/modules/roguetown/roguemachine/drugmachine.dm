@@ -34,9 +34,9 @@
 		else
 			to_chat(user, span_warning("Wrong key."))
 			return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
-		for(var/obj/item/key/KE in K.keys)
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
+		for(var/obj/item/key/KE in K.contents)
 			if(KE.lockid == "nightman")
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -240,7 +240,6 @@
 	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(35,55),"NAME" = "alembic")
 	held_items[/obj/item/storage/fancy/pilltin/wake] = list("PRICE" = rand(35,45),"NAME" = "pep pills tin")
 	held_items[/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify] = list("PRICE" = rand(25,30),"NAME" = "PURIFY")
-	held_items[/obj/item/storage/fancy/pilltin/pink] = list("PRICE" = rand(35,55),"NAME" = "pink pill tin")
 	held_items[/obj/item/natural/bundle/cloth/bandage/full] = list("PRICE" = rand(15,35),"NAME" = "roll of bandages")
 
 #undef DRUGRADE_MONEYA

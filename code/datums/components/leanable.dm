@@ -49,6 +49,5 @@
 		pressing_mob.Move(get_step(pressing_mob, leaning_mob))
 		pressing_mob.setDir(get_dir(pressing_mob, parent))
 		press_msg = "[leaning_mob] is pushed against [parent] by [pressing_mob]."
-	if(leaning_mob.invisibility <= 25) //We're sneeky breeki above these variables. Don't echo to other players.
-		leaning_mob.visible_message(span_info(press_msg))
+	leaning_mob.visible_message(span_info(press_msg))
 	leaning_mob.AddComponent(/datum/component/leaning, parent)

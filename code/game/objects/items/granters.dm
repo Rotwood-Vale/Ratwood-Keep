@@ -91,34 +91,28 @@
 	G.Grant(user)
 	onlearned(user)
 
-/obj/item/book/granter/action/origami
-	granted_action = /datum/action/innate/origami
-	name = "The Art of Origami"
+//Crafting Recipe books
+
+/obj/item/book/granter/crafting_recipe
+	var/list/crafting_recipe_types = list()
+
+/obj/item/book/granter/crafting_recipe/on_reading_finished(mob/user)
+	. = ..()
+	if(!user.mind)
+		return
+	for(var/crafting_recipe_type in crafting_recipe_types)
+		var/datum/crafting_recipe/R = crafting_recipe_type
+		user.mind.teach_crafting_recipe(crafting_recipe_type)
+		to_chat(user,"<span class='notice'>I learned how to make [initial(R.name)].</span>")
+
+/obj/item/book/granter/crafting_recipe/cooking_sweets_101
+	name = "Cooking Desserts 101"
 	desc = ""
-	icon_state = "origamibook"
-	actionname = "origami"
-	oneuse = TRUE
-	remarks = list("Dead-stick stability...", "Symmetry seems to play a rather large factor...", "Accounting for crosswinds... really?", "Drag coefficients of various paper types...", "Thrust to weight ratios?", "Positive dihedral angle?", "Center of gravity forward of the center of lift...")
+	icon_state = "cooking_learing_sweets"
+	oneuse = FALSE
+	remarks = list("So that is how icing is made!", "Placing fruit on top? How simple...", "Huh layering cake seems harder then this...", "This book smells like candy", "A clown must have made this page, or they forgot to spell check it before printing...", "Wait, a way to cook slime to be safe?")
 
-/datum/action/innate/origami
-	name = "Origami Folding"
-	desc = ""
-	button_icon_state = "origami_off"
-	check_flags = NONE
-
-/datum/action/innate/origami/Activate()
-	to_chat(owner, span_notice("I will now fold origami planes."))
-	button_icon_state = "origami_on"
-	active = TRUE
-	UpdateButtonIcon()
-
-/datum/action/innate/origami/Deactivate()
-	to_chat(owner, span_notice("I will no longer fold origami planes."))
-	button_icon_state = "origami_off"
-	active = FALSE
-	UpdateButtonIcon()
-
-///SPELLS///
+//! --MAGICK SCROLLS-- !/
 
 /obj/item/book/granter/spell
 	var/spell
@@ -130,10 +124,7 @@
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == spell)
 			if(user.mind)
-				if(iswizard(user))
-					to_chat(user,span_warning("You're already far more versed in this spell than this flimsy how-to book can provide!"))
-				else
-					to_chat(user,span_warning("You've already read this one!"))
+				to_chat(user,span_warning("You've already read this one!"))
 			return TRUE
 	return FALSE
 
@@ -238,19 +229,6 @@
 
 	stored_swap = null
 
-/obj/item/book/granter/spell/forcewall
-	spell = /obj/effect/proc_holder/spell/targeted/forcewall
-	spellname = "forcewall"
-	icon_state ="bookforcewall"
-	desc = ""
-	remarks = list("I can go through the wall! Neat.", "Why are there so many mime references...?", "This would cause much grief in a hallway...", "This is some surprisingly strong magic to create a wall nobody can pass through...", "Why the dumb stance? It's just a flick of the hand...", "Why are the pages so hard to turn, is this even paper?", "I can't mo Oh, i'm fine...")
-
-/obj/item/book/granter/spell/forcewall/recoil(mob/living/user)
-	..()
-	to_chat(user,span_warning("I suddenly feel very solid!"))
-	user.Stun(40, ignore_canstun = TRUE)
-	user.petrify(30)
-
 /obj/item/book/granter/spell/knock
 	spell = /obj/effect/proc_holder/spell/aoe_turf/knock
 	spellname = "knock"
@@ -262,36 +240,6 @@
 	..()
 	to_chat(user,span_warning("You're knocked down!"))
 	user.Paralyze(40)
-
-/obj/item/book/granter/spell/barnyard
-	spell = /obj/effect/proc_holder/spell/targeted/barnyardcurse
-	spellname = "barnyard"
-	icon_state ="bookhorses"
-	desc = ""
-	remarks = list("Moooooooo!","Moo!","Moooo!", "NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!", "Oink!", "Squeeeeeeee!", "Oink Oink!", "Ree!!", "Reee!!", "REEE!!", "REEEEE!!")
-
-/obj/item/book/granter/spell/barnyard/recoil(mob/living/carbon/user)
-	if(ishuman(user))
-		to_chat(user,"<font size='15' color='red'><b>HORSIE HAS RISEN</b></font>")
-		var/obj/item/clothing/magichead = new /obj/item/clothing/mask/horsehead/cursed(user.drop_location())
-		if(!user.dropItemToGround(user.wear_mask))
-			qdel(user.wear_mask)
-		user.equip_to_slot_if_possible(magichead, SLOT_WEAR_MASK, TRUE, TRUE)
-		qdel(src)
-	else
-		to_chat(user,span_notice("I say thee neigh")) //It still lives here
-
-/obj/item/book/granter/spell/charge
-	spell = /obj/effect/proc_holder/spell/targeted/charge
-	spellname = "charge"
-	icon_state ="bookcharge"
-	desc = ""
-	remarks = list("I feel ALIVE!", "I CAN TASTE THE MANA!", "What a RUSH!", "I'm FLYING through these pages!", "THIS GENIUS IS MAKING IT!", "This book is ACTION PAcKED!", "HE'S DONE IT", "LETS GOOOOOOOOOOOO")
-
-/obj/item/book/granter/spell/charge/recoil(mob/user)
-	..()
-	to_chat(user,span_warning("[src] suddenly feels very warm!"))
-	empulse(src, 1, 1)
 
 /obj/item/book/granter/spell/summonitem
 	spell = /obj/effect/proc_holder/spell/targeted/summonitem
@@ -310,119 +258,11 @@
 
 /obj/item/book/granter/spell/random/Initialize()
 	. = ..()
-	var/static/banned_spells = list(/obj/item/book/granter/spell/mimery_blockade, /obj/item/book/granter/spell/mimery_guns)
+	var/static/banned_spells = list()
 	var/real_type = pick(subtypesof(/obj/item/book/granter/spell) - banned_spells)
 	new real_type(loc)
 	return INITIALIZE_HINT_QDEL
 
-///MARTIAL ARTS///
-
-/obj/item/book/granter/martial
-	var/martial
-	var/martialname = "bug jitsu"
-	var/greet = "You feel like you have mastered the art in breaking code. Nice work, jackass."
-
-
-/obj/item/book/granter/martial/already_known(mob/user)
-	if(!martial)
-		return TRUE
-	var/datum/martial_art/MA = martial
-	if(user.mind.has_martialart(initial(MA.id)))
-		to_chat(user,span_warning("I already know [martialname]!"))
-		return TRUE
-	return FALSE
-
-/obj/item/book/granter/martial/on_reading_start(mob/user)
-	to_chat(user, span_notice("I start reading about [martialname]..."))
-
-/obj/item/book/granter/martial/on_reading_finished(mob/user)
-	to_chat(user, "[greet]")
-	var/datum/martial_art/MA = new martial
-	MA.teach(user)
-	user.log_message("learned the martial art [martialname] ([MA])", LOG_ATTACK, color="orange")
-	onlearned(user)
-
-/obj/item/book/granter/martial/cqc
-	martial = /datum/martial_art/cqc
-	name = "old manual"
-	martialname = "close quarters combat"
-	desc = ""
-	greet = span_boldannounce("You've mastered the basics of CQC.")
-	icon_state = "cqcmanual"
-	remarks = list("Kick... Slam...", "Lock... Kick...", "Strike their abdomen, neck and back for critical damage...", "Slam... Lock...", "I could probably combine this with some other martial arts!", "Words that kill...", "The last and final moment is yours...")
-
-/obj/item/book/granter/martial/cqc/onlearned(mob/living/carbon/user)
-	..()
-	if(oneuse == TRUE)
-		to_chat(user, span_warning("[src] beeps ominously..."))
-
-/obj/item/book/granter/martial/cqc/recoil(mob/living/carbon/user)
-	to_chat(user, span_warning("[src] explodes!"))
-	playsound(src,'sound/blank.ogg',40,TRUE)
-	user.flash_act(1, 1)
-	user.adjustBruteLoss(6)
-	user.adjustFireLoss(6)
-	qdel(src)
-
-/obj/item/book/granter/martial/carp
-	martial = /datum/martial_art/the_sleeping_carp
-	name = "mysterious scroll"
-	martialname = "sleeping carp"
-	desc = ""
-	greet = "<span class='sciradio'>I have learned the ancient martial art of the Sleeping Carp! Your hand-to-hand combat has become much more effective, and you are now able to deflect any projectiles \
-	directed toward you. However, you are also unable to use any ranged weaponry. You can learn more about my newfound art by using the Recall Teachings verb in the Sleeping Carp tab.</span>"
-	icon = 'icons/obj/wizard.dmi'
-	icon_state = "scroll2"
-	remarks = list("I must prove myself worthy to the masters of the sleeping carp...", "Stance means everything...", "Focus... And you'll be able to incapacitate any foe in seconds...", "I must pierce armor for maximum damage...", "I don't think this would combine with other martial arts...", "Grab them first so they don't retaliate...", "I must prove myself worthy of this power...")
-
-/obj/item/book/granter/martial/carp/onlearned(mob/living/carbon/user)
-	..()
-	if(oneuse == TRUE)
-		desc = ""
-		name = "empty scroll"
-		icon_state = "blankscroll"
-
-/obj/item/book/granter/martial/plasma_fist
-	martial = /datum/martial_art/plasma_fist
-	name = "frayed scroll"
-	martialname = "plasma fist"
-	desc = ""
-	greet = "<span class='boldannounce'>I have learned the ancient martial art of Plasma Fist. Your combos are extremely hard to pull off, but include some of the most deadly moves ever seen including \
-	the plasma fist, which when pulled off will make someone violently explode.</span>"
-	icon = 'icons/obj/wizard.dmi'
-	icon_state ="scroll2"
-	remarks = list("Balance...", "Power...", "Control...", "Mastery...", "Vigilance...", "Skill...")
-
-/obj/item/book/granter/martial/plasma_fist/onlearned(mob/living/carbon/user)
-	..()
-	if(oneuse == TRUE)
-		desc = ""
-		name = "empty scroll"
-		icon_state = "blankscroll"
-
-// I did not include mushpunch's grant, it is not a book and the item does it just fine.
-
-//Crafting Recipe books
-
-/obj/item/book/granter/crafting_recipe
-	var/list/crafting_recipe_types = list()
-
-/obj/item/book/granter/crafting_recipe/on_reading_finished(mob/user)
-	. = ..()
-	if(!user.mind)
-		return
-	for(var/crafting_recipe_type in crafting_recipe_types)
-		var/datum/crafting_recipe/R = crafting_recipe_type
-		user.mind.teach_crafting_recipe(crafting_recipe_type)
-		to_chat(user,span_notice("I learned how to make [initial(R.name)]."))
-
-//! --BLACKSTONE SCROLLS-- !/
-/obj/item/book/granter/spell/blackstone/
-    desc = "A scroll of potential known only to those that can decipher its secrets."
-    icon = 'icons/roguetown/items/misc.dmi'
-    oneuse = TRUE
-    drop_sound = 'sound/foley/dropsound/paper_drop.ogg'
-    pickup_sound =  'sound/blank.ogg'
 
 /obj/item/book/granter/spell/blackstone/onlearned(mob/living/carbon/user)
 	..()

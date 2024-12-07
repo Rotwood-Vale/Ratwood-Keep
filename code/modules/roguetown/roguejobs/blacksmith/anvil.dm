@@ -74,7 +74,10 @@
 			var/mob/living/carbon/carbon_user = user
 			if(carbon_user.domhand)
 				used_str = carbon_user.get_str_arms(carbon_user.used_hand)
-			carbon_user.rogfat_add(max(30 - (used_str * 3), 0))
+			if(HAS_TRAIT(carbon_user, TRAIT_FORGEBLESSED))
+				carbon_user.rogfat_add(max(21 - (used_str * 3), 0))
+			else
+				carbon_user.rogfat_add(max(30 - (used_str * 3), 0))
 		var/total_chance = 7 * user.mind.get_skill_level(hingot.currecipe.appro_skill)
 		var/breakthrough = 0
 		if(prob(1 + total_chance)) //Small chance to flash

@@ -209,7 +209,6 @@
 			H.update_body()
 			H.update_hair()
 			H.update_body_parts()
-			H.update_mutations_overlay() // no hulk lizard
 
 		if("gender")
 			if(!(H.gender in list("male", "female"))) //blame the patriarchy
@@ -233,7 +232,6 @@
 					return
 			H.dna.update_ui_block(DNA_GENDER_BLOCK)
 			H.update_body()
-			H.update_mutations_overlay() //(hulk male/female)
 
 		if("hair")
 			var/hairchoice = alert(H, "Hairstyle or hair color?", "Change Hair", "Style", "Color")

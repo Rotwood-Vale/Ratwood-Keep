@@ -144,6 +144,7 @@
 #define SCRIBE		(1<<7)
 #define ELDER		(1<<8)
 #define APOTHECARY	(1<<9)
+#define ARCHITECT	(1<<10)
 
 #define PEASANTS	(1<<5)
 
@@ -184,6 +185,7 @@
 #define MERCENARY	(1<<0)
 #define VETERAN		(1<<1)
 #define SEELIE		(1<<2)
+#define MERC_CLERK	(1<<3)
 
 #define GOBLIN		(1<<8)
 
@@ -192,6 +194,7 @@
 #define GOBLINGUARD	(1<<2)
 #define GOBLINSMITH	(1<<3)
 #define GOBLINRABBLE	(1<<4)
+#define GOBLINSHAMAN	(1<<5)
 
 #define SLOP		(1<<9)
 
@@ -258,7 +261,8 @@
 #define JDO_GUILDSMITH 20
 #define JDO_APPRENTICE 21
 
-#define JDO_ARTIFICER 22
+#define JDO_ARCHITECT 22
+#define JDO_ARTIFICER 22.1
 
 #define JDO_SEAMSTER 23
 
@@ -276,10 +280,11 @@
 #define JDO_PILGRIM 30.2
 #define JDO_MIGRANT 32.3
 
-#define JDO_MERCENARY 31
-#define JDO_VET 31.1
-#define JDO_SEELIE 31.2
-#define JDO_BANDIT 31.3
+#define JDO_MERC_CLERK 31
+#define JDO_MERCENARY 31.1
+#define JDO_VET 31.2
+#define JDO_SEELIE 31.3
+#define JDO_BANDIT 31.4
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -294,6 +299,7 @@
 #define JDO_GOBLINGUARD 38
 #define JDO_GOBLINSMITH 39
 #define JDO_GOBLINRABBLE 40
+#define JDO_GOBLINSHAMAN 41
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -350,6 +356,7 @@
 #define YEOMEN_ROLES \
 	/datum/job/roguetown/woodsman,\
 	/datum/job/roguetown/archivist,\
+	/datum/job/roguetown/architect,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/guildsmith,\
 	/datum/job/roguetown/artificer,\
@@ -360,8 +367,10 @@
 #define WANDERER_ROLES \
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
+	/datum/job/roguetown/guild_clerk,\
 	/datum/job/roguetown/mercenary,\
 	/datum/job/roguetown/seelie,\
+	/datum/job/roguetown/grabber,\
 	/datum/job/roguetown/bandit
 
 #define GARRISON_ROLES \
@@ -372,3 +381,11 @@
 	/datum/job/roguetown/manorguard,\
 	/datum/job/roguetown/sheriff,\
 	/datum/job/roguetown/citywatch
+
+#define GOBLIN_ROLES \
+	/datum/job/roguetown/goblinchief,\
+	/datum/job/roguetown/goblincook,\
+	/datum/job/roguetown/goblinguard,\
+	/datum/job/roguetown/goblinrabble,\
+	/datum/job/roguetown/goblinshaman,\
+	/datum/job/roguetown/goblinsmith

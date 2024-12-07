@@ -160,10 +160,7 @@
 		if(target == user)
 			return FALSE
 		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-		var/has_rot = was_zombie
-		if(!has_rot)
-			to_chat(user, span_warning("Nothing happens."))
-			return FALSE
+
 		for(var/obj/structure/fluff/psycross/S in oview(5, user))
 			S.AOE_flash(user, range = 8)
 		testing("curerot2")

@@ -92,8 +92,6 @@
 	quality = NEGATIVE
 
 /datum/spacevine_mutation/toxicity/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(issilicon(crosser))
-		return
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
 		to_chat(crosser, span_alert("I accidentally touch the vine and feel a strange sensation."))
 		crosser.adjustToxLoss(5)
@@ -259,46 +257,6 @@
 	else
 		. = expected_damage
 
-/datum/spacevine_mutation/woodening/can_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(isvineimmune(crosser))
-		return TRUE
-	else
-		return FALSE
-
-/datum/spacevine_mutation/flowering
-	name = "flowering"
-	hue = "#0A480D"
-	quality = NEGATIVE
-	severity = 10
-
-/datum/spacevine_mutation/flowering/on_grow(obj/structure/spacevine/holder)
-	if(holder.energy == 2 && prob(severity) && !locate(/obj/structure/alien/resin/flower_bud_enemy) in range(5,holder))
-		new/obj/structure/alien/resin/flower_bud_enemy(get_turf(holder))
-
-/datum/spacevine_mutation/flowering/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(prob(25))
-		holder.entangle(crosser)
-
-/datum/spacevine_mutation/earthy
-	name = "earthy"
-	hue = "#213311"
-	quality = NEGATIVE
-	severity = 10
-
-/datum/spacevine_mutation/earthy/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(prob(10) && !isvineimmune(crosser))
-		holder.entangle(crosser)
-	if(!isvineimmune(crosser))
-		if(crosser.apply_damage(5, BRUTE))
-			to_chat(crosser, span_alert("I cut myself on the thorny vines."))
-
-/datum/spacevine_mutation/earthy/can_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if((prob(30) && !isvineimmune(crosser)) || (prob(5)))
-		to_chat(crosser, span_warning("I feel stuck on the vines."))
-		return FALSE
-	else
-		return TRUE	
-
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
 	name = "weepvine"
@@ -319,6 +277,26 @@
 	var/list/mutations = list()
 	break_sound = "plantcross"
 	destroy_sound = null
+
+/datum/spacevine_mutation/earthy
+	name = "earthy"
+	hue = "#213311"
+	quality = NEGATIVE
+	severity = 10
+
+/datum/spacevine_mutation/earthy/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
+	if(prob(10) && !isvineimmune(crosser))
+		holder.entangle(crosser)
+	if(!isvineimmune(crosser))
+		if(crosser.apply_damage(5, BRUTE))
+			to_chat(crosser, span_alert("I cut myself on the thorny vines."))
+
+/datum/spacevine_mutation/earthy/can_cross(obj/structure/spacevine/holder, mob/living/crosser)
+	if((prob(30) && !isvineimmune(crosser)) || (prob(5)))
+		to_chat(crosser, span_warning("I feel stuck on the vines."))
+		return FALSE
+	else
+		return TRUE	
 
 /obj/structure/spacevine/Initialize()
 	. = ..()
@@ -407,9 +385,6 @@
 	for(var/datum/spacevine_mutation/SM in mutations)
 		SM.on_hit(src, user)
 	user_unbuckle_mob(user,user)
-
-/obj/structure/spacevine/attack_alien(mob/living/user)
-	eat(user)
 
 /datum/spacevine_controller
 	var/list/obj/structure/spacevine/vines
@@ -571,7 +546,7 @@
 /obj/structure/spacevine/proc/spread()
 	var/direction = pick(GLOB.cardinals)
 	var/turf/stepturf = get_step(src,direction)
-	if (!isspaceturf(stepturf) && stepturf.Enter(src))
+	if (stepturf.Enter(src))
 		for(var/datum/spacevine_mutation/SM in mutations)
 			SM.on_spread(src, stepturf)
 			stepturf = get_step(src,direction) //in case turf changes, to make sure no runtimes happen

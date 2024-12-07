@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP
 
 	tutorial = "Liquor Lodging and Lavish Baths, youre the life of the party and a rich bastard because of it. Well before that pesky merchant came around and convinced people to take up the bottle instead of the tankred, you were the reason the hardworking men and women of this town could rest."
 
@@ -32,7 +32,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-		neck = /obj/item/keyring/innkeep
+		neck = /obj/item/storage/keyring/innkeep
 		cloak = /obj/item/clothing/cloak/apron/waist
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 1)
@@ -40,6 +40,6 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		beltl = /obj/item/keyring/innkeep
+		beltl = /obj/item/storage/keyring/innkeep
 		H.change_stat("endurance", 1)
 		H.change_stat("constitution", 1)

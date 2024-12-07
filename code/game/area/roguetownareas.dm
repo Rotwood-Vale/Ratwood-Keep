@@ -2,18 +2,18 @@ GLOBAL_LIST_EMPTY(chosen_music)
 
 GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town,/area/rogue/outdoors/town,/area/rogue/under/town)) //hey
 
+/area/start
+	name = "start area"
+	icon_state = "start"
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	has_gravity = STANDARD_GRAVITY
+
 /area/rogue
 	name = "roguetown"
 	icon_state = "rogue"
 	has_gravity = STANDARD_GRAVITY
 	ambientsounds = null
-	always_unpowered = TRUE
-	poweralm = FALSE
-	power_environ = TRUE
-	power_equip = TRUE
-	power_light = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
-	requires_power = FALSE
 //	var/previous_ambient = ""
 
 /area/rogue/indoors
@@ -710,174 +710,3 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	first_time_text = "The Forest of Repentence"
-
-/area/rogue/under/deep_caverns
-    name = "Deep Caverns"
-    icon_state = "deep_caverns"
-    droning_sound = 'sound/music/area/caves.ogg'
-    var/generation_attempted = FALSE
-
-    // Override the New() proc to call the generation logic upon creation
-    New()
-        ..()
-        spawn(20) // 20 ticks delay
-        if (!generation_attempted)
-            call_deep_caverns_generation_logic()
-
-// Proc to initiate the generation logic
-/area/rogue/under/deep_caverns/proc/call_deep_caverns_generation_logic()
-    generation_attempted = TRUE
-    // Run the generation logic in the background
-    spawn(1) generate_deep_caverns_layout()
-
-// Proc to generate the cavern layout dynamically
-/area/rogue/under/deep_caverns/proc/generate_deep_caverns_layout()
-    var/list/turfs = list()
-
-    for (var/turf/T in world)
-        if (T.loc == src)
-            turfs += T
-
-    var/total_turfs = length(turfs)
-
-    if (total_turfs == 0)
-        return
-
-    var/grid_width = sqrt(total_turfs)
-    var/grid_height = grid_width
-
-    // Initialize grid
-    var/list/grid = list()
-    for (var/i = 1 to grid_width)
-        grid += list(new/list(grid_height))
-
-    // Adjust initial probability to favor open tiles slightly
-    var/initial_wall_prob = 30 // 30% chance of being a wall
-
-    // Randomly fill grid
-    for (var/x = 1 to grid_width)
-        for (var/y = 1 to grid_height)
-            grid[x][y] = prob(initial_wall_prob) // Set probability for walls
-
-    // Cellular automata iterations
-    var/iterations = 0
-    var/max_iterations = 4
-    while (iterations < max_iterations)
-        grid = do_cellular_automaton_iteration(grid, grid_width, grid_height)
-        iterations++
-        sleep(5) // Sleep for a few ticks to prevent blocking
-
-    // Apply grid to turfs
-    var/water_count = 0
-    var/index = 1
-    for (var/x = 1 to grid_width)
-        for (var/y = 1 to grid_height)
-            if (index > total_turfs)
-                break
-            var/turf/T = turfs[index]
-            if (grid[x][y])
-                T.ChangeTurf(/turf/closed/mineral/random/rogue/high) // Updated closed tile rock
-                water_count++ // Update water_count if you use it later
-            else
-                if (prob(10) && water_count < total_turfs * 0.05) // 5% water
-                    T.ChangeTurf(/turf/open/water/swamp)
-                    water_count++
-                else
-                    // Randomly choose between naturalstone and dirt
-                    if (prob(50)) // 50% chance
-                        T.ChangeTurf(/turf/open/floor/rogue/naturalstone)
-                    else
-                        T.ChangeTurf(/turf/open/floor/rogue/dirt)
-            index++
-
-    // Connectivity checks
-    var/list/open_turfs = list()
-    for (var/turf/T in turfs)
-        if (istype(T, /turf/open/floor/rogue/naturalstone) || istype(T, /turf/open/floor/rogue/dirt))
-            open_turfs += T
-
-    var/connected_threshold = total_turfs * 0.70 // 70% connected
-
-    if (length(open_turfs) > 0)
-        var/turf/starting_turf = pick(open_turfs)
-        var/list/visited_turfs = list()
-        var/list/queue = list(starting_turf)
-        visited_turfs += starting_turf
-
-        while (length(queue) > 0)
-            var/turf/current_turf = queue[1]
-            queue.Remove(current_turf)
-
-            for (var/turf/neighbor in orange(1, current_turf))
-                if ((istype(neighbor, /turf/open/floor/rogue/naturalstone) || istype(neighbor, /turf/open/floor/rogue/dirt)) && !(neighbor in visited_turfs))
-                    queue += neighbor
-                    visited_turfs += neighbor
-
-        if (length(visited_turfs) < connected_threshold)
-            return
-    else
-        return
-
-    // Unified list of items, objects, and mobs to be spawned
-    var/list/spawnables = list(
-    // Not rare objects
-    list(/obj/structure/spider/stickyweb, 0.45),
-    list(/obj/structure/flora/rogueshroom, 0.30),
-    list(/obj/structure/glowshroom, 0.20),
-    list(/obj/effect/spawner/lootdrop/roguetown/dungeon/misc, 0.085),
-
-    // Rare objects
-    list(/obj/effect/decal/remains/human, 0.02),
-    list(/obj/effect/decal/cleanable/blood/old, 0.02),
-    list(/obj/item/rogueweapon/pick, 0.015),
-    list(/mob/living/simple_animal/hostile/retaliate/rogue/mole, 0.02),
-    list(/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated, 0.05),
-
-    // Superrare objects
-    list(/obj/item/roguegem, 0.010),
-    list(/obj/item/roguecoin/silver/pile, 0.005),
-    list(/obj/structure/bed/rogue/shit, 0.01),
-    list(/obj/item/rope/chain, 0.009)
-)
-
-    var/list/placed_objects = list()
-
-    for (var/list/spawnable in spawnables)
-        var/obj_type = spawnable[1]
-        var/spawn_prob = spawnable[2]
-
-        for (var/turf/T in turfs)
-            if (istype(T, /turf/open/floor/rogue/naturalstone) || istype(T, /turf/open/floor/rogue/dirt))
-                if (prob(spawn_prob))
-                    var/obj/new_object = new obj_type
-                    new_object.loc = T
-                    placed_objects += T
-
-// Cellular automaton iteration
-/area/rogue/under/deep_caverns/proc/do_cellular_automaton_iteration(list/grid, width, height)
-    var/list/new_grid = list()
-    for (var/i = 1 to width)
-        new_grid += list(new/list(height))
-
-    for (var/x = 1 to width)
-        for (var/y = 1 to height)
-            var/wall_count = count_neighbor_walls(grid, x, y, width, height)
-            if (grid[x][y])
-                new_grid[x][y] = (wall_count >= 4)
-            else
-                new_grid[x][y] = (wall_count >= 5)
-
-    return new_grid
-
-// Count neighbor walls
-/area/rogue/under/deep_caverns/proc/count_neighbor_walls(list/grid, x, y, width, height)
-    var/count = 0
-    for (var/dx = -1 to 1)
-        for (var/dy = -1 to 1)
-            var/nx = x + dx
-            var/ny = y + dy
-            if (nx > 0 && nx <= width && ny > 0 && ny <= height)
-                count += grid[nx][ny]
-            else
-                count++ // Count out-of-bounds as walls
-    return count

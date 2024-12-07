@@ -9,8 +9,6 @@
   */
 /client/verb/drop_item()
 	set hidden = 1
-	if(!iscyborg(mob) && mob.stat == CONSCIOUS)
-		mob.dropItemToGround(mob.get_active_held_item(), silent = FALSE)
 	return
 
 /**
@@ -116,9 +114,6 @@
 	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
 		return mob.remote_control.relaymove(mob, direct)
 
-	if(isAI(mob))
-		return AIMove(n,direct,mob)
-
 	if(Process_Grab()) //are we restrained by someone's grip?
 		return
 
@@ -162,10 +157,13 @@
 			if(L.m_intent == MOVE_INTENT_RUN)
 				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
 	else
-		if(L.dir != target_dir)
-			// Remove sprint intent if we change direction, but only if we sprinted atleast 1 tile
-			if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
-				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
+		if(prefs.toggles & RUN_MODE)
+			if(L.dir != target_dir)
+				if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
+					L.toggle_rogmove_intent(MOVE_INTENT_WALK)
+		else if(L.dir != target_dir)
+			L.sprinted_tiles = 0
+
 
 	. = ..()
 
@@ -230,6 +228,13 @@
 			move_delay = world.time + 10
 			to_chat(src, span_warning("I can't move!"))
 			return TRUE
+	if(mob.pulling && isliving(mob.pulling))
+		var/mob/living/L = mob.pulling
+		var/mob/living/M = mob
+		if(L.cmode && !L.resting && !L.incapacitated() && M.grab_state < GRAB_AGGRESSIVE)
+			move_delay = world.time + 10
+			to_chat(src, span_warning("[L] still has footing! I need a stronger grip!"))
+			return TRUE    
 
 /**
   * Allows mobs to ignore density and phase through objects
@@ -302,10 +307,6 @@
 			if(stepTurf)
 				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
 					to_chat(L, span_warning("[S] bars your passage!"))
-					if(isrevenant(L))
-						var/mob/living/simple_animal/revenant/R = L
-						R.reveal(20)
-						R.stun(20)
 					return
 				if(stepTurf.flags_1 & NOJAUNT_1)
 					to_chat(L, span_warning("Some strange aura is blocking the way."))
@@ -348,8 +349,6 @@
 			continue
 		else if(isturf(A))
 			var/turf/turf = A
-			if(isspaceturf(turf))
-				continue
 			if(!turf.density && !mob_negates_gravity())
 				continue
 			return A
@@ -592,9 +591,6 @@
 
 //* Updates a mob's sneaking status, rendering them invisible or visible in accordance to their status. TODO:Fix people bypassing the sneak fade by turning, and add a proc var to have a timer after resetting visibility.
 /mob/living/update_sneak_invis(reset = FALSE) //Why isn't this in mob/living/living_movements.dm? Why, I'm glad you asked!
-	if(ishuman(src))
-		if(mind)
-			rogue_sneaking_light_threshhold = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.092)+0.1 //THIS IS WHERE WE DO A LITTLE TROLLING. At 6 sneak skill, this raises the lumcount max from 0.15 to 1.0 (massive); but at 0 sneak skill... you are now brutually punished by needing pitch black to sneak!
 	if(!reset && world.time < mob_timers[MT_INVISIBILITY]) // Check if the mob is affected by the invisibility spell
 		rogue_sneaking = TRUE
 		return
@@ -605,21 +601,16 @@
 		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
 
 	if(rogue_sneaking) //If sneaking, check if they should be revealed
-		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold || (world.time < mob_timers[MT_SNEAKATTACK] + 6 SECONDS) || (world.time < mob_timers[MT_SPELLSNEAK] + 25 SECONDS)) //SEVERELY nerfs sneak attacking.
+		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold)
 			used_time = round(clamp((50 - (used_time*1.75)), 5, 50),1)
 			animate(src, alpha = initial(alpha), time =	used_time) //sneak skill makes you reveal slower but not as drastic as disappearing speed
-			spawn(used_time) regenerate_icons() //why does this use spawn what the fuck??? I'm not changing this anyway..
-			invisibility = initial(invisibility) //Ensure to set this back to default (SHOULD ALWAYS BE ZERO)
+			spawn(used_time) regenerate_icons()
 			rogue_sneaking = FALSE
 			return
+
 	else //not currently sneaking, check if we can sneak
 		if(light_amount < rogue_sneaking_light_threshhold && m_intent == MOVE_INTENT_SNEAK)
 			animate(src, alpha = 0, time = used_time)
-			if(ishuman(src))
-				invisibility = (SEE_INVISIBLE_LIVING + (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.75))+1 //At 5 sneak, you get a total of ~24 invis - 3.75 bonus
-			else
-				invisibility = (SEE_INVISIBLE_LIVING + 1) //fixes ghosts being unable to see these guys
-			alpha = 150 //Forcibly set these guys to have an alpha of 150 (to differentiate for admemes)
 			spawn(used_time + 5) regenerate_icons()
 			rogue_sneaking = TRUE
 	return

@@ -23,7 +23,7 @@
 	return
 
 /mob/living/proc/spawn_gibs()
-	new /obj/effect/gibspawner/generic(drop_location(), src, get_static_viruses())
+	new /obj/effect/gibspawner/generic(drop_location(), src)
 
 /mob/living/proc/spill_embedded_objects()
 	for(var/obj/item/embedded_item as anything in simple_embedded_objects)
@@ -100,6 +100,7 @@
 
 	. = ..()
 
+	SEND_SIGNAL(src, COMSIG_LIVING_DEATH, gibbed)
 	if(client)
 		client.move_delay = initial(client.move_delay)
 		var/atom/movable/screen/gameover/hog/H = new()

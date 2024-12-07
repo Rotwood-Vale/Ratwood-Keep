@@ -5,6 +5,8 @@
 	clothes_req = FALSE
 	overlay_state = "lightning"
 	sound = 'sound/magic/lightning.ogg'
+	invocation = "Qo'Strun!"
+	invocation_type = "shout"
 	range = 8
 	projectile_type = /obj/projectile/magic/lightning
 	releasedrain = 30
@@ -163,6 +165,8 @@
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
 	overlay_state = "fireball"
 	sound = list('sound/magic/fireball.ogg')
+	invocation = "GAAR'ARDE!!"
+	invocation_type = "shout"
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
@@ -180,9 +184,9 @@
 /obj/projectile/magic/aoe/fireball/rogue
 	name = "fireball"
 	exp_heavy = 0
-	exp_light = 0
+	exp_light = 3
 	exp_flash = 0
-	exp_fire = 1
+	exp_fire = 3
 	damage = 10
 	damage_type = BURN
 	nodamage = FALSE
@@ -212,11 +216,13 @@
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great
 	overlay_state = "fireball_wide"
 	sound = list('sound/magic/fireball.ogg')
+	invocation = "GAAR'SOL'ARDE!!"
+	invocation_type = "shout"
 	active = FALSE
 	releasedrain = 50
-	chargedrain = 1
+	chargedrain = 3
 	chargetime = 15
-	charge_max = 10 SECONDS
+	charge_max = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
@@ -226,21 +232,25 @@
 
 /obj/projectile/magic/aoe/fireball/rogue/great
 	name = "fireball"
-	exp_heavy = 0
-	exp_light = 1
-	exp_flash = 2
-	exp_fire = 2
+	exp_devi = 0
+	exp_heavy = 1
+	exp_light = 5
+	exp_flash = 0
+	exp_fire = 4
+	exp_hotspot = 0
 	flag = "magic"
-	speed = 4
+	speed = 6
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire
 	name = "Spitfire"
 	desc = "Shoot out a series of low-powered balls of fire that shines brightly on impact, potentially blinding a target."
 	clothes_req = FALSE
 	range = 8
-	projectile_type = /obj/projectile/magic/aoe/fireball/rogue2
+	projectile_type = /obj/projectile/magic/aoe/rogue2
 	overlay_state = "fireball_multi"
 	sound = list('sound/magic/whiteflame.ogg')
+	invocation = "Sol'Igniculus!!"
+	invocation_type = "shout"
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
@@ -256,12 +266,13 @@
 	cost = 3
 	xp_gain = TRUE
 
-/obj/projectile/magic/aoe/fireball/rogue2
+/obj/projectile/magic/aoe/rogue2
 	name = "spitfire"
-	exp_heavy = 0
-	exp_light = 0
-	exp_flash = 1
-	exp_fire = 0
+	icon_state = "fireball"
+	var/exp_heavy = 0
+	var/exp_light = 0
+	var/exp_flash = 1
+	var/exp_fire = 0
 	damage = 15	//no armor really has burn protection. So assuming all three connect, 45 burn damage- average damage of fireball with firestacks nerfed. Thats a big 'if' however. Notably, won't cause wounds,
 	damage_type = BURN
 	homing = TRUE
@@ -270,9 +281,10 @@
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
 	speed = 3.5
+	light_color = "#f8af07"
+	light_range = 2
 
-/obj/projectile/magic/aoe/fireball/rogue2/on_hit(target)
-	. = ..()
+/obj/projectile/magic/aoe/rogue2/on_hit(target)
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
@@ -280,6 +292,13 @@
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
+	var/turf/T
+	if(isturf(target))
+		T = target
+	else
+		T = get_turf(target)
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+
 
 /obj/effect/proc_holder/spell/invoked/projectile/arcanebolt
 	name = "Arcane Bolt"
@@ -289,6 +308,8 @@
 	projectile_type = /obj/projectile/energy/rogue3
 	overlay_state = "force_dart"
 	sound = list('sound/magic/vlightning.ogg')
+	invocation = "Lah'Arundo!"
+	invocation_type = "shout"
 	active = FALSE
 	releasedrain = 20
 	chargedrain = 1
@@ -333,6 +354,8 @@
 	projectile_type = /obj/projectile/magic/fetch
 	overlay_state = ""
 	sound = list('sound/magic/magnet.ogg')
+	invocation = "Rapto."
+	invocation_type = "whisper"
 	active = FALSE
 	releasedrain = 5
 	chargedrain = 0
@@ -368,6 +391,8 @@
 	dropmessage = "I release my minor arcyne focus."
 	school = "transmutation"
 	overlay_state = "prestidigitation"
+	invocation = "Aura!"
+	invocation_type = "whisper"
 	chargedrain = 0
 	chargetime = 0
 	releasedrain = 5 // this influences -every- cost involved in the spell's functionality, if you want to edit specific features, do so in handle_cost
@@ -500,15 +525,7 @@
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	cleanspeed = initial(cleanspeed) - (skill_level * 3) // 3 cleanspeed per skill level, from 35 down to a maximum of 17 (pretty quick)
 
-	if (istype(target, /obj/structure/window))
-		user.visible_message(span_notice("[user] gestures at \the [target.name], tiny motes of arcyne power running across its surface..."), span_notice("I begin to clean \the [target.name] with my arcyne power..."))
-		if (do_after(user, src.cleanspeed, target = target))
-			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-			target.set_opacity(initial(target.opacity))
-			to_chat(user, span_notice("I render \the [target.name] clean."))
-			return TRUE
-		return FALSE
-	else if (istype(target, /obj/effect/decal/cleanable))
+	if (istype(target, /obj/effect/decal/cleanable))
 		user.visible_message(span_notice("[user] gestures at \the [target.name], arcyne power slowly scouring it away..."), span_notice("I begin to scour \the [target.name] away with my arcyne power..."))
 		if (do_after(user, src.cleanspeed, target = target))
 			to_chat(user, span_notice("I expunge \the [target.name] with my mana."))
@@ -603,6 +620,8 @@
 	clothes_req = FALSE
 	active = FALSE
 	sound = 'sound/blank.ogg'
+	invocation = "Tiid'Disseptum!"
+	invocation_type = "shout"
 	overlay_state = "forcewall"
 	range = -1
 	chargedloop = /datum/looping_sound/invokegen
@@ -682,6 +701,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	range = 6
+	invocation = "Capio!"
+	invocation_type = "shout"
 	overlay_state = "ensnare"
 	var/area_of_effect = 1
 	var/duration = 4 SECONDS
@@ -775,6 +796,8 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Gaar'Iaculatio!!"
+	invocation_type = "shout"
 	var/stun_amt = 5
 	var/maxthrow = 3
 	var/sparkle_path = /obj/effect/temp_visual/gravpush
@@ -832,6 +855,8 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Medeis Kest!"
+	invocation_type = "shout"
 	overlay_state = "blade_burst"
 	var/delay = 7
 	var/damage = 45
@@ -860,9 +885,12 @@
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
 		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
 		L.apply_damage(damage, BRUTE, def_zone)
-		BP.add_wound(/datum/wound/fracture)
+
+		if(prob(33))
+			var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
+			BP.add_wound(/datum/wound/fracture)
+
 		L.adjustBruteLoss(damage)
 		playsound(T, "genslash", 80, TRUE)
 		to_chat(L, "<span class='userdanger'>I'm cut by blades rising from the floor!</span>")
@@ -944,6 +972,8 @@
 	charge_max = 2 MINUTES
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Lux'Oculus."
+	invocation_type = "Whisper"
 	hand_path = /obj/item/melee/touch_attack/darkvision
 	xp_gain = TRUE
 	cost = 2
@@ -991,6 +1021,8 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Leve Pondus!"
+	invocation_type = "shout"
 	overlay_state = "jump"
 
 /obj/effect/proc_holder/spell/invoked/featherfall/cast(list/targets, mob/user = usr)
@@ -1018,6 +1050,8 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Su Volo!"
+	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/invoked/haste/cast(list/targets, mob/user)
 	var/atom/A = targets[1]
@@ -1059,8 +1093,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Initialize(mapload, mob/user)
 	. = ..()
-	if(timeleft)
-		QDEL_IN(src, timeleft) //delete after it runs out, see code/modules/mob/living/simple_animal/rogue/creacher/familiar.dm for timeleft var
 	summoner = user
 
 /obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets, mob/user = usr)
