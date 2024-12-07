@@ -73,7 +73,7 @@
 /datum/crafting_recipe/roguetown/sewing/tunic
 	name = "tunic"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/tunic/white)
-	req = list(obj/item/natural/cloth = 2)
+	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/sewing/clothshirt
