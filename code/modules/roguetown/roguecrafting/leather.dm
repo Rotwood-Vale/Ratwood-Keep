@@ -335,3 +335,10 @@
 				/obj/item/natural/hide = 4)
 	craftdiff = 3
 	sellprice = 80
+
+/datum/crafting_recipe/roguetown/leather/armordress
+	name = "armored dress"
+	result = list(/obj/item/clothing/suit/roguetown/armor/armordress)
+	reqs = list(/obj/item/natural/hide = 3)
+	craftdiff = 3
+	sellprice = 80
