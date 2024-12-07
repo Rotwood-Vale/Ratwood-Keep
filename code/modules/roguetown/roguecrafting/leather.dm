@@ -73,7 +73,7 @@
 	sellprice = 30
 
 /datum/crafting_recipe/roguetown/leather/belt/knifebelt
-	name = "leather belt"
+	name = "leather knifebelt"
 	result = /obj/item/storage/belt/rogue/leather/knifebelt
 	reqs = list(/obj/item/natural/hide = 2,
 				/obj/item/natural/fibers = 2)

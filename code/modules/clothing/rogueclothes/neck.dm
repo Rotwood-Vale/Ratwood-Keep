@@ -153,6 +153,11 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
+/obj/item/clothing/neck/roguetown/gorget/forlorncollar
+	name = "forlorn collar"
+	desc = "A old reminder."
+	icon_state = "iwolfcollaralt"
+
 /obj/item/clothing/neck/roguetown/gorget/steel
 	name ="steel gorget"
 	smeltresult = /obj/item/ingot/steel

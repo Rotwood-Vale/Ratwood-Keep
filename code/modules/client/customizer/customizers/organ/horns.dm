@@ -10,9 +10,9 @@
 
 /datum/customizer/organ/horns/humanoid
 	customizer_choices = list(/datum/customizer_choice/organ/horns/humanoid)
+	allows_disabling = TRUE
 
 /datum/customizer/organ/horns/humanoid/sissean
-	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/horns/humanoid
