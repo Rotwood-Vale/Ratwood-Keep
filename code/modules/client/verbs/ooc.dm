@@ -581,6 +581,16 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		winset(src, "mainwindow.split", "splitter=[pct]")
 
 
+/client/verb/runm()
+	set name = "Run Mode"
+	set desc = "Changes if you run continually or if you stop running when you turn"
+	set category = "Options"
+	prefs.toggles ^= RUN_MODE
+	if(prefs.toggles & RUN_MODE)
+		to_chat(usr, "Running changed (no turning)")
+	else
+		to_chat(usr, "Running changed (turning)")
+
 /client/verb/policy()
 	set name = "Show Policy"
 	set desc = ""
