@@ -8395,8 +8395,11 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/bath)
 "hKO" = (
-/obj/structure/rack/rogue,
 /obj/item/reagent_containers/food/snacks/fat,
+/obj/structure/closet/crate/chest{
+	base_icon_state = "woodchestalt";
+	icon_state = "woodchestalt"
+	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "hLv" = (
@@ -15105,10 +15108,13 @@
 	},
 /area/rogue/indoors/town/manor)
 "nQe" = (
-/obj/structure/rack/rogue,
 /obj/item/reagent_containers/food/snacks/tallow,
 /obj/item/reagent_containers/food/snacks/tallow,
 /obj/item/reagent_containers/food/snacks/tallow,
+/obj/structure/closet/crate/chest{
+	base_icon_state = "woodchestalt";
+	icon_state = "woodchestalt"
+	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "nQj" = (
@@ -17833,6 +17839,10 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town/roofs/keep)
+"qlx" = (
+/obj/item/clothing/suit/roguetown/armor/armordress,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cave)
 "qly" = (
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
@@ -29563,7 +29573,7 @@ tCj
 tCj
 tCj
 dSI
-dSI
+qlx
 dSI
 dKO
 dKO
