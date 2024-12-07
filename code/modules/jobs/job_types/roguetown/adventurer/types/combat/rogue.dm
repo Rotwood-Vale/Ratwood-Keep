@@ -51,7 +51,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
-			backpack_contents = list(/obj/item/lockpick = 1)
+			backpack_contents = list(/obj/item/lockpickring/mundane = 1)
 			H.change_stat("strength", -1)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 3)
