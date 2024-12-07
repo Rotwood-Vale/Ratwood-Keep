@@ -157,7 +157,7 @@
 			if(L.m_intent == MOVE_INTENT_RUN)
 				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
 	else
-		if(usr.client.prefs.toggles & RUN_MODE)
+		if(prefs.toggles & RUN_MODE)
 			if(L.dir != target_dir)
 				if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
 					L.toggle_rogmove_intent(MOVE_INTENT_WALK)
