@@ -184,8 +184,8 @@
 /// Fires the onager
 /obj/structure/onager/proc/fire()
 
-	var/xoffset = rand(-6, 6)
-	var/yoffset = rand(-6, 6)
+	var/xoffset = rand(-3, 3)
+	var/yoffset = rand(-3, 3)
 	var/turf/targetx = get_ranged_target_turf(src, dir, target_distance).x
 	var/turf/targety = get_ranged_target_turf(src, dir, target_distance).y
 	var/turf/T = locate(targetx + xoffset, targety + yoffset, src.z)
@@ -202,10 +202,6 @@
 
 		// Start one level above
 		var/z_position = src.z + 1
-
-		// If no z-level above, stay on the current z-level
-		if (!isturf(locate(src.x, src.y, z_position)))
-			z_position = src.z
 
 		for(var/atom/movable/AM in src)
 			qdel(AM)

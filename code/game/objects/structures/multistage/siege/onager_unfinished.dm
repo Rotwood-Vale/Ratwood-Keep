@@ -18,21 +18,21 @@
 
 /datum/crafting_stage/onager_unfinished_stage_1
 	icon_state = "build_stage_1"
-	description = "\n Required materials: 5 iron ingots.\
+	description = "\n Required materials: 3 iron ingots.\
 					\n Required tools: hammer.\
 					\n Required skills: carpentry."	
 	recipe = /datum/crafting_recipe/roguetown/structure/multistage/onager_unfinished_stage_1
 
 /datum/crafting_stage/onager_unfinished_stage_2
 	icon_state = "build_stage_2"
-	description = "\n Required materials: 7 ropes, 5 bronze cogs.\
+	description = "\n Required materials: 5 ropes, 3 bronze cogs.\
 					\n Required tools: hammer.\
 					\n Required skills: engineering."	
 	recipe = /datum/crafting_recipe/roguetown/structure/multistage/onager_unfinished_stage_2
 
 /datum/crafting_stage/onager_unfinished_stage_3
 	icon_state = "build_stage_3"
-	description = "\n Required materials: 4 steel ingots.\
+	description = "\n Required materials: 2 steel ingots.\
 					\n Required tools: hammer.\
 					\n Required skills: blacksmithing."	
 	recipe = /datum/crafting_recipe/roguetown/structure/multistage/onager_unfinished_stage_3
@@ -54,7 +54,7 @@
 	name = "Unfinished Onager"
 
 	tools = list(/obj/item/rogueweapon/hammer = 1)
-	reqs = list(/obj/item/ingot/iron = 5)
+	reqs = list(/obj/item/ingot/iron = 3)
 
 	skillcraft = /datum/skill/craft/carpentry
 	skill_level = 3
@@ -63,7 +63,7 @@
 	name = "Unfinished Onager"
 
 	tools = list(/obj/item/rogueweapon/hammer = 1)
-	reqs = list(/obj/item/rope = 7, /obj/item/roguegear/bronze= 5)
+	reqs = list(/obj/item/rope = 5, /obj/item/roguegear/bronze= 3)
 
 	skillcraft = /datum/skill/craft/engineering
 	skill_level = 3
@@ -72,7 +72,7 @@
 	name = "Unfinished Onager"
 
 	tools = list(/obj/item/rogueweapon/hammer = 1)
-	reqs = list(/obj/item/ingot/steel = 4)
+	reqs = list(/obj/item/ingot/steel = 2)
 
 	skillcraft = /datum/skill/craft/blacksmithing
 	skill_level = 3
