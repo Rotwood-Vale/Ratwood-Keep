@@ -156,6 +156,28 @@
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 27
 
+/datum/crafting_recipe/roguetown/leather/boots/furlinedboots
+	name = "fur-lined boots"
+	result = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/fur = 1)
+
+/datum/crafting_recipe/roguetown/leather/boots/short
+	name = "shortboots"
+	result = /obj/item/clothing/shoes/roguetown/shortboots
+	reqs = list(/obj/item/natural/hide = 1)
+
+/datum/crafting_recipe/roguetown/leather/boots/dark
+	name = "dark boots"
+	result = /obj/item/clothing/shoes/roguetown/boots
+	reqs = list(/obj/item/natural/hide = 1)
+
+/datum/crafting_recipe/roguetown/leather/boots/noble
+	name = "noble boots"
+	result = /obj/item/clothing/shoes/roguetown/nobleboot
+	reqs = list(/obj/item/natural/hide = 3,
+				/obj/item/natural/fur = 1)
+
 /datum/crafting_recipe/roguetown/leather/helmet
 	name = "leather helmet"
 	result = /obj/item/clothing/head/roguetown/helmet/leather
