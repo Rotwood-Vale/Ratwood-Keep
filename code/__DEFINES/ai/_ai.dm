@@ -2,6 +2,7 @@
 #define HAS_AI_CONTROLLER_TYPE(thing, type) istype(thing?.ai_controller, type)
 #define AI_STATUS_ON		1
 #define AI_STATUS_OFF		2
+#define AI_STATUS_IDLE		3
 
 ///Carbon checks
 #define SHOULD_RESIST(source) (source.on_fire || source.buckled || HAS_TRAIT(source, TRAIT_RESTRAINED) || (source.pulledby && source.pulledby.grab_state > GRAB_PASSIVE))

@@ -36,7 +36,7 @@
 	controller.set_blackboard_key(hiding_location_key, hiding_target)
 
 	basic_mob.face_atom()
-	basic_mob.a_intent = pick(basic_mob.possible_a_intents)
+	basic_mob.a_intent = pick(basic_mob.possible_a_intents) //randomized intent
 	
 	if(hiding_target) //Slap it!
 		basic_mob.ClickOn(hiding_target, list())

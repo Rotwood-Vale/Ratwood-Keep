@@ -468,15 +468,22 @@
 #include "code\datums\ai\behaviors\hostile\find_potential_targets.dm"
 #include "code\datums\ai\behaviors\hostile\melee_attack.dm"
 
-#include "code\datums\ai\controllers\volf.dm"
+
 #include "code\datums\ai\controllers\minotaur.dm"
+#include "code\datums\ai\controllers\mole.dm"
+#include "code\datums\ai\controllers\orc.dm"
 #include "code\datums\ai\controllers\rous.dm"
+#include "code\datums\ai\controllers\spider.dm"
+#include "code\datums\ai\controllers\troll.dm"
+#include "code\datums\ai\controllers\volf.dm"
 
 #include "code\datums\ai\hostile\_hostile_controller.dm"
-#include "code\datums\ai\hostile\testing_orc.dm"
+
 
 #include "code\datums\ai\idle_behaviors\random_walk.dm"
 
+#include "code\datums\ai\subtrees\attack_adjacent_target.dm"
+#include "code\datums\ai\subtrees\attack_obstacle_in_path.dm"
 #include "code\datums\ai\subtrees\find_food.dm"
 #include "code\datums\ai\subtrees\flee_nearest_target.dm"
 #include "code\datums\ai\subtrees\flee_target.dm"

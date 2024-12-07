@@ -70,6 +70,9 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 /datum/ai_controller/Destroy(force, ...)
 	set_ai_status(AI_STATUS_OFF)
+	set_movement_target(type, null)
+	if (ai_movement.moving_controllers[src])
+		ai_movement.stop_moving_towards(src)
 	UnpossessPawn(FALSE)
 	return ..()
 
@@ -156,10 +159,10 @@ have ways of interacting with a specific atom and control it. They posses a blac
 		return AI_STATUS_ON
 
 	var/mob/living/mob_pawn = pawn
-	if(!continue_processing_when_client && mob_pawn.client)
+	if(!continue_processing_when_client && mob_pawn.client) // under player control
 		return AI_STATUS_OFF
 
-	if(mob_pawn.stat == DEAD)
+	if(mob_pawn.stat == DEAD) // they're dead
 		return AI_STATUS_OFF
 
 	var/turf/pawn_turf = get_turf(mob_pawn)
@@ -167,7 +170,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	if(!pawn_turf)
 		CRASH("AI controller [src] controlling pawn ([pawn]) is not on a turf.")
 #endif
-	if(!length(SSmobs.clients_by_zlevel[pawn_turf?.z]))
+	if(!length(SSmobs.clients_by_zlevel[pawn_turf?.z]) && (!length(SSmobs.dead_players_by_zlevel[pawn_turf?.z]))) //performance: check both ghost and player z levels
 		return AI_STATUS_OFF
 	return AI_STATUS_ON
 
@@ -296,6 +299,9 @@ have ways of interacting with a specific atom and control it. They posses a blac
 		if(AI_STATUS_OFF)
 			STOP_PROCESSING(SSai_behaviors, src)
 			SSai_controllers.active_ai_controllers -= src
+			CancelActions()
+		if(AI_STATUS_IDLE)
+			STOP_PROCESSING(SSai_behaviors, src)
 			CancelActions()
 
 /datum/ai_controller/proc/PauseAi(time)

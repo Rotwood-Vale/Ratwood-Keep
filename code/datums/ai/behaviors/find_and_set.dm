@@ -85,11 +85,6 @@
 		return null
 	return pick(found)
 
-/datum/ai_behavior/find_and_set/dead_bodies/bog_troll/finish_action(datum/ai_controller/controller, succeeded, ...)
-	. = ..()
-	if(succeeded)
-		controller.pawn.icon_state = "Trolla"
-
 /datum/ai_behavior/find_and_set/dead_bodies/mimic/finish_action(datum/ai_controller/controller, succeeded, ...)
 	. = ..()
 	if(succeeded)
