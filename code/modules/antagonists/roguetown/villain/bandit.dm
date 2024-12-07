@@ -38,7 +38,7 @@
 
 /* /datum/antagonist/bandit/greet()
 	to_chat(owner.current, span_alertsyndie("I am a BANDIT!"))
-	to_chat(owner.current, span_info("Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn. I must feed the idol money and valuable metals to satisfy my greed!"))
+	to_chat(owner.current, span_info("Long ago I did a crime worthy of my bounty being hung on the wall outside of the local inn. I must feed the idol money and valuable metals to satisfy my greed! As a member of the free men, I worship Matthios first and foremost, though I may have allegiance to other deities."))
 	owner.announce_objectives()
 	..() */ //commenting out until they get a proper objective implementation or whatever.
 
