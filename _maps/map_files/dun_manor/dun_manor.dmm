@@ -583,6 +583,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
+"atO" = (
+/obj/item/clothing/suit/roguetown/armor/armordress,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cave)
 "atU" = (
 /obj/structure/chair/bench/church/smallbench,
 /turf/open/floor/rogue/woodturned,
@@ -8400,6 +8404,7 @@
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
 	},
+/obj/item/reagent_containers/food/snacks/fat,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "hLv" = (
@@ -13513,10 +13518,6 @@
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/under/town/sewer)
 "mva" = (
-/obj/structure/closet/crate/chest{
-	base_icon_state = "woodchestalt";
-	icon_state = "woodchestalt"
-	},
 /obj/item/natural/bundle/cloth,
 /obj/item/natural/bundle/cloth{
 	pixel_x = 5
@@ -13530,6 +13531,7 @@
 /obj/item/natural/bundle/cloth{
 	pixel_x = 5
 	},
+/obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "mvj" = (
@@ -15896,10 +15898,6 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "ozA" = (
-/obj/structure/closet/crate/chest{
-	base_icon_state = "woodchestalt";
-	icon_state = "woodchestalt"
-	},
 /obj/item/natural/bundle/silk{
 	pixel_x = 5
 	},
@@ -15908,6 +15906,7 @@
 	pixel_x = -5
 	},
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "ozE" = (
@@ -17839,10 +17838,6 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town/roofs/keep)
-"qlx" = (
-/obj/item/clothing/suit/roguetown/armor/armordress,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cave)
 "qly" = (
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
@@ -26688,10 +26683,6 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/town/roofs/keep)
 "yjt" = (
-/obj/structure/closet/crate/chest{
-	base_icon_state = "woodchestalt";
-	icon_state = "woodchestalt"
-	},
 /obj/item/natural/bundle/fibers/full{
 	pixel_x = -5
 	},
@@ -26705,6 +26696,7 @@
 /obj/item/natural/bundle/fibers/full{
 	pixel_x = 5
 	},
+/obj/structure/rack/rogue,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "yjG" = (
@@ -29573,7 +29565,7 @@ tCj
 tCj
 tCj
 dSI
-qlx
+atO
 dSI
 dKO
 dKO
