@@ -71,6 +71,7 @@
 	var/detail_tag
 	var/detail_color
 	var/boobed_detail = TRUE //Whether details have their own boobed sprite
+	var/sleeved_detail = TRUE
 
 /obj/item/clothing/New()
 	..()

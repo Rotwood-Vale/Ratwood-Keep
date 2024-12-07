@@ -221,6 +221,8 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	sleeved_detail = FALSE
+	boobed_detail = FALSE
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()
 	. = ..()

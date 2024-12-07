@@ -19,6 +19,7 @@
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
 	pickup_sound = 'sound/foley/equip/swordlarge1.ogg'
+	sheathe_sound = 'sound/items/wood_sharpen.ogg'
 	flags_1 = CONDUCT_1
 	throwforce = 10
 	thrown_bclass = BCLASS_CUT
