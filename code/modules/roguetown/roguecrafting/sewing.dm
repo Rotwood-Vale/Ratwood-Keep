@@ -178,13 +178,6 @@
                 /obj/item/natural/fibers = 1)
 	skill_level = 2
 
-/datum/crafting_recipe/roguetown/sewing/fauld
-	name = "fauld - (2 cloths, fiber; APPRENTICE)"
-	result = list(/obj/item/clothing/cloak/fauld)
-	reqs =  list(/obj/item/natural/cloth = 2,
-                /obj/item/natural/fibers = 1)
-	skill_level = 2
-
 /datum/crafting_recipe/roguetown/sewing/skirt
 	name = "battle skirt - (2 cloths, fiber; APPRENTICE)"
 	result = list(/obj/item/clothing/cloak/fauld/battleskirt)
