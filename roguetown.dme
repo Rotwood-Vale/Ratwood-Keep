@@ -984,7 +984,6 @@
 #include "code\game\objects\items\rogueitems\ropechainbola.dm"
 #include "code\game\objects\items\rogueitems\signal_horn.dm"
 #include "code\game\objects\items\rogueitems\undies.dm"
-#include "code\game\objects\items\rogueitems\util.dm"
 #include "code\game\objects\items\rogueitems\waterskin.dm"
 #include "code\game\objects\items\rogueitems\natural\animals.dm"
 #include "code\game\objects\items\rogueitems\natural\ash.dm"

@@ -19,8 +19,8 @@
 	var/obj/item/handcuffed = null
 	///Same as handcuffs but for legs. Bear traps use this.
 	var/obj/item/legcuffed = null
-	///Same as handcuffs but for leashes. Leashes use this.
-	var/obj/item/leashed = null
+	///Similar to handcuffs but for leashes. Cares about the leashed mob, not the leash object.
+	var/leashed = null
 
 	var/disgust = 0
 

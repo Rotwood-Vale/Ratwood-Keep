@@ -288,16 +288,11 @@
 
 	dat += "<BR><B>Back:</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back : "Nothing"]</A>"
 
-
-	if(istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank))
-		dat += "<BR><A href='?src=[REF(src)];internal=1'>[internal ? "Disable Internals" : "Set Internals"]</A>"
-
 	if(handcuffed)
 		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>Handcuffed</A>"
 	if(legcuffed)
 		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>Legcuffed</A>"
-	if(leashed)
-		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_LEASHED]'>Leashed</A>"
+
 	dat += {"
 	<BR>
 	<BR><A href='?src=[REF(user)];mach_close=mob[REF(src)]'>Close</A>
@@ -368,9 +363,6 @@
 	else if(legcuffed)
 		I = legcuffed
 		type = 2
-	else if(leashed)
-		I = leashed
-		type = 3
 	if(I)
 		if(type == 1)
 			changeNext_move(CLICK_CD_BREAKOUT)
@@ -378,10 +370,8 @@
 		if(type == 2)
 			changeNext_move(CLICK_CD_RANGE)
 			last_special = world.time + CLICK_CD_RANGE
-		if(type == 3)
-			changeNext_move(CLICK_CD_RANGE)
-			last_special = world.time + CLICK_CD_RANGE
 		cuff_resist(I)
+
 
 /mob/living/carbon/proc/cuff_resist(obj/item/I, breakouttime = 600, cuff_break = 0)
 	if(I.item_flags & BEING_REMOVED)
@@ -441,24 +431,11 @@
 				W.layer = initial(W.layer)
 				W.plane = initial(W.plane)
 		changeNext_move(0)
-	if (leashed)
-		var/obj/item/W = leashed
-		leashed = null
-		update_inv_leashed()
-		if (client)
-			client.screen -= W
-		if (W)
-			W.forceMove(drop_location())
-			W.dropped(src)
-			if (W)
-				W.layer = initial(W.layer)
-				W.plane = initial(W.plane)
-		changeNext_move(0)
 
 /mob/living/carbon/proc/clear_cuffs(obj/item/I, cuff_break)
 	if(!I.loc || buckled)
 		return FALSE
-	if(I != handcuffed && I != legcuffed && I != leashed)
+	if(I != handcuffed && I != legcuffed)
 		return FALSE
 	var/stupid_msg = "[src] manages to [cuff_break ? "break" : "slip"] out of [I]!"
 	if(cuff_break)
@@ -469,11 +446,9 @@
 	to_chat(src, span_notice("I [cuff_break ? "break" : "slip"] out of [I]!"))
 	if(I == legcuffed)
 		src.remove_movespeed_modifier(MOVESPEED_ID_CUFFED_LEG_SLOWDOWN)
-	if(I == leashed)
-		src.remove_status_effect(/datum/status_effect/leash_pet)
 
 	if(cuff_break)
-		. = !((I == handcuffed) || (I == legcuffed) || (I == leashed))
+		. = !((I == handcuffed) || (I == legcuffed))
 		qdel(I)
 		return TRUE
 
@@ -491,12 +466,6 @@
 			legcuffed.dropped()
 			legcuffed = null
 			update_inv_legcuffed()
-			return TRUE
-		if(I == leashed)
-			leashed.forceMove(drop_location())
-			leashed.dropped()
-			leashed = null
-			update_inv_leashed()
 			return TRUE
 
 /mob/living/carbon/get_standard_pixel_y_offset(lying = 0)
@@ -617,9 +586,8 @@
 		else
 			if(message)
 				visible_message(span_danger("[src] pukes!"), span_danger("I puke!"))
-				if(!isflyperson(src))
-					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomit)
-					add_stress(/datum/stressevent/vomit)
+				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomit)
+				add_stress(/datum/stressevent/vomit)
 	else
 		if(NOBLOOD in dna?.species?.species_traits)
 			return TRUE
@@ -1062,10 +1030,6 @@
 	var/obj/item/organ/brain/B = getorgan(/obj/item/organ/brain)
 	if(B)
 		B.brain_death = FALSE
-	for(var/thing in diseases)
-		var/datum/disease/D = thing
-		if(D.severity != DISEASE_SEVERITY_POSITIVE)
-			D.cure(FALSE)
 	var/datum/component/rot/corpse/CR = GetComponent(/datum/component/rot/corpse)
 	if(CR)
 		CR.amount = 0
