@@ -2,7 +2,7 @@
 	title = "Architect"
 	tutorial = "There are ancient secrets within stone, something your creed has known since man built upon dirt. You've pride in your work, youre the only reason this place doesn't fall apart."
 	flag = ARCHITECT
-	department_flag = COURTIERS
+	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -22,18 +22,17 @@
 	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	backr = /obj/item/gun/ballistic/blunderbuss
-	backl = /obj/item/rogueweapon/pick/drill
+	backr = /obj/item/rogueweapon/pick/drill
+	backl = /obj/item/storage/backpack/rogue/backpack
 	wrists = /obj/item/storage/keyring/architect
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltl = /obj/item/ammo_holder/bullet/grapeshot
+	beltl = /obj/item/lockpickring/mundane
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden
-	neck = /obj/item/powderflask
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
