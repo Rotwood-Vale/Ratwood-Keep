@@ -1211,7 +1211,6 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "aWU" = (
-/obj/item/cigbutt/roach,
 /obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
@@ -9627,11 +9626,6 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/veil/toll,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/table/church{
 	icon_state = "churchtable_alt"
 	},
@@ -11259,10 +11253,6 @@
 "iCu" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/indoors/shelter/mountains)
-"iCV" = (
-/obj/item/cigbutt/roach,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/bath)
 "iDg" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -21942,11 +21932,6 @@
 "qLO" = (
 /obj/structure/bed/rogue,
 /obj/effect/landmark/veil/toll,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/bed/rogue,
 /obj/effect/landmark/start/architect,
 /turf/open/floor/rogue/wood,
@@ -28314,10 +28299,6 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/beach)
-"vFq" = (
-/obj/item/cigbutt/roach,
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/indoors/town/bath)
 "vFA" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/carpet/lord/left,
@@ -180519,7 +180500,7 @@ ikA
 nqQ
 nqQ
 nqQ
-iCV
+oXU
 fsU
 bpD
 bpD
@@ -180916,7 +180897,7 @@ kHR
 kHR
 fsU
 ijD
-vFq
+aVC
 aVC
 aVC
 kmx
