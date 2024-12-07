@@ -115,13 +115,16 @@
 
 /datum/species/tieberian/get_skin_list()
 	return list(
-		"Castillian" = SKIN_COLOR_CASTILLIAN,
-		"Mysterious" = SKIN_COLOR_MYSTERIOUS,
-		"Succubus" = SKIN_COLOR_SUCCUBUS,
-		"Incubus" = SKIN_COLOR_INCUBUS,
-		"Mephistopheles" = SKIN_COLOR_MEPHISTOPHELES,
 		"Zariel" = SKIN_COLOR_ZARIEL,
+		"Levistus" = SKIN_COLOR_LEVISTUS,
+		"Glasya" = SKIN_COLOR_GLASYA,
+		"Asmodeus" = SKIN_COLOR_ASMODEUS,
+		"Baalzebul" = SKIN_COLOR_BAALZEBUL,
+		"Mephistopheles" = SKIN_COLOR_MEPHISTOPHELES,
+		"Fierna" = SKIN_COLOR_FIERNA,
 		"Dispater" = SKIN_COLOR_DISPATER,
+		"Nymsea" = SKIN_COLOR_NYMSEA,
+		"Mammon" = SKIN_COLOR_MAMMON
 	)
 
 /datum/species/tieberian/get_hairc_list()
