@@ -28,8 +28,8 @@
 	experimental_onhip = TRUE
 	experimental_onback = TRUE
 	embedding = list(
-		"embed_chance" = 20, 
-		"embedded_pain_multiplier" = 1, 
+		"embed_chance" = 20,
+		"embedded_pain_multiplier" = 1,
 		"embedded_fall_chance" = 0,
 	)
 	var/initial_sl
@@ -41,6 +41,9 @@
 	if(!destroy_message)
 		var/yea = pick("[src] is broken!", "[src] is useless!", "[src] is destroyed!")
 		destroy_message = span_warning("[yea]")
+
+/obj/item/rogueweapon/get_examine_string(mob/user, thats = FALSE)
+	return "[thats? "That's ":""]<b>[get_examine_name(user)]</b>"
 
 /obj/item/rogueweapon/pickup(mob/user)
 	. = ..()
