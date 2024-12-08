@@ -17,12 +17,6 @@
 
 // this is kind of an hack that simulates picking up the toll
 /obj/item/veil/toll/attack_ghost(mob/dead/observer/rogue/veil/ghost)
-
-	if(!ghost)
-		return FALSE
-
-	if(!istype(ghost, /mob/dead/observer/rogue/veil))
-		return FALSE
 	
 	if(!ghost.Adjacent(src))
 		return FALSE
@@ -35,3 +29,5 @@
 	ghost << sound('sound/misc/carriage4.ogg', 0, 0 ,0, 50)
 	ghost.collected_toll = TRUE
 	qdel(src)
+
+	

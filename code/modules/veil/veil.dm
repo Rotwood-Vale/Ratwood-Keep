@@ -1,36 +1,13 @@
-/mob/dead/observer/rogue/veil
-	name = "veil ghost"
-
-	/// Tracks if the user has collected a toll from the ground
-	var/collected_toll = FALSE
-
-	/// Tracks if the user has paid the toll to the carriageman
-	var/paid_toll = FALSE
-
-/mob/dead/observer/rogue/veil/Initialize(mapload)
-	. = ..()
-	GLOB.veil_ghost_list += src
-
-	// give them a toll after 15 minutes
-	addtimer(CALLBACK(src, PROC_REF(get_toll)), 15 MINUTES)
-
-/mob/dead/observer/rogue/veil/Destroy()
-	GLOB.veil_ghost_list -= src
-	return ..()
-
-/// Gives the user a toll
-/mob/dead/observer/rogue/veil/proc/get_toll()
-	src << sound('sound/misc/carriage4.ogg', 0, 0 ,0, 50)
-	to_chat(src, span_bold("Necra extends a dying arm to give you a toll."))
-	collected_toll = TRUE
-
-
 /**
  * This overlay should only be used for entities that have one appearance in the living world, and another in the veil.
- * The Carriage is a such example.
+ * The Carriage or living characters are a such example.
  * For entities that are only visible to ghosts, like tolls, use invisibility = INVISIBILITY_OBSERVER.
  */
 /datum/atom_hud/alternate_appearance/basic/veil/mobShouldSee(mob/M)
+
+	// Observing admins shouldnt see the veil overlay on humans
+	if(istype(target, /mob/living/carbon/human) && M.type == /mob/dead/observer/admin)
+		return FALSE
 
 	if(M.type == /mob/dead/observer/rogue/veil || M.type == /mob/dead/observer/admin)
 		return TRUE
@@ -42,6 +19,25 @@
 	I.override = TRUE
 	A.add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/veil, "veil", I)
 
+/**
+ * This makes humans hard to recognize while in the veil.
+ * Shouldnt be performance heavy.
+ */
+/mob/living/carbon/human
+	var/veil_icon
+
+/mob/living/carbon/human/Initialize()
+	. = ..()
+	veil_icon = image(
+				icon = 'icons/roguetown/maniac/dreamer_mobs.dmi',
+				icon_state = "M3",
+				loc = src
+			)
+	apply_veil(veil_icon, src)
+
+/mob/living/carbon/human/update_icon()
+	. = ..()
+	apply_veil(veil_icon, src)
 
 /// Proc that will search inside a given atom for any corpses, and send the associated ghost to the lobby if possible
 /proc/pacify_coffin(atom/movable/coffin, mob/user, deep = TRUE, give_pq = PQ_GAIN_BURIAL)

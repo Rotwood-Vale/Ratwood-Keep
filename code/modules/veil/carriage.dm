@@ -19,7 +19,8 @@
 	plane = GAME_PLANE_UPPER
 	anchored = TRUE
 	density = TRUE
-	var/image/veil_icon
+
+	var/veil_icon
 
 /obj/structure/veil/carriage/Initialize()
 	. = ..()

@@ -1917,6 +1917,7 @@
 #include "code\modules\veil\demon.dm"
 #include "code\modules\veil\dragger.dm"
 #include "code\modules\veil\lantern.dm"
+#include "code\modules\veil\observer.dm"
 #include "code\modules\veil\toll.dm"
 #include "code\modules\veil\veil.dm"
 #include "interface\interface.dm"
