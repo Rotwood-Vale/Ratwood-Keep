@@ -33,8 +33,9 @@
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
 	gold_core_spawnable = FRIENDLY_SPAWN
-
 	footstep_type = FOOTSTEP_MOB_CLAW
+
+	var/hates_vampires = TRUE
 
 /mob/living/simple_animal/pet/cat/Initialize()
 	. = ..()
@@ -80,6 +81,7 @@
 	icon_state = "cat"
 	icon_living = "cat"
 	icon_dead = "cat_dead"
+	hates_vampires = FALSE
 
 /mob/living/simple_animal/pet/cat/original
 	name = "Batsy"
@@ -127,19 +129,18 @@
 
 	make_babies()
 
-// Life proc inherent to roguecats only
 /mob/living/simple_animal/pet/cat/Life()
 	..()
-	// Gato Basado - catches RT rats too when not too lazy
+	// Catches rats too when not too lazy
 	if((src.loc) && isturf(src.loc))
 		if(!resting && !buckled && stat != DEAD)
-			for(var/obj/item/reagent_containers/food/snacks/smallrat/M in view(1,src))
+			for(var/mob/living/simple_animal/mouse/M in view(1,src))
 				if(Adjacent(M))
-					if(!M.dead)
+					if(M.stat != DEAD)
 						walk_towards(src, M, 1)
 						sleep(3)
-						visible_message("<span class='notice'>\The [src] kills the rat!</span>")
-						M.obj_destruction()
+						visible_message(span_notice("\The [src] eats the rat!"))
+						M.death(gibbed = FALSE)
 						stop_automated_movement = 0
 						break
 
@@ -164,10 +165,10 @@
 			if(M && stat != DEAD)
 				emote("me", 1, "hisses!")
 
-/mob/living/simple_animal/pet/cat/rogue/attack_hand(mob/living/carbon/human/M) // Gato Basado - not all pets are welcome
+/mob/living/simple_animal/pet/cat/attack_hand(mob/living/carbon/human/M)
 	. = ..()
-	if(stat != DEAD) // Don't do this if they're dead!!! Jeez!!
-		if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord)) // Cats always hiss at vampires
+	if(stat != DEAD)
+		if(hates_vampires && M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord)) // Cats always hiss at vampires
 			visible_message(span_notice("\The [src] hisses at [M] and recoils in disgust."))
 			icon_state = "[icon_living]"
 			set_resting(FALSE)
