@@ -19,6 +19,7 @@
 	plane = GAME_PLANE_UPPER
 	anchored = TRUE
 	density = TRUE
+	resistance_flags = INDESTRUCTIBLE
 
 	var/veil_icon
 
