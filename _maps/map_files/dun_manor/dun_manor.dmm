@@ -648,12 +648,6 @@
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
-"avz" = (
-/obj/structure/floordoor{
-	redstone_id = "manortrapdoor"
-	},
-/turf/open/transparent/openspace,
-/area/rogue/indoors/town/manor)
 "avT" = (
 /obj/structure/roguewindow/openclose,
 /turf/open/floor/rogue/blocks,
@@ -12995,11 +12989,6 @@
 /area/rogue/indoors/town/bath)
 "lHD" = (
 /obj/structure/table/wood,
-/obj/structure/lever{
-	pixel_y = 14;
-	layer = 3;
-	redstone_id = "manortrapdoor"
-	},
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/indoors/town/manor)
 "lHX" = (
@@ -70200,7 +70189,7 @@ iNg
 oQd
 sZw
 bDL
-avz
+oQd
 oQd
 oQd
 rDb
