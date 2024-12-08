@@ -156,12 +156,6 @@
 	results = list(/datum/reagent/consumable/ethanol/beepsky_smash = 5)
 	required_reagents = list(/datum/reagent/consumable/limejuice = 2, /datum/reagent/consumable/ethanol/quadruple_sec = 2, /datum/reagent/iron = 1)
 
-/datum/chemical_reaction/doctor_delight
-	name = "The Doctor's Delight"
-	id = "doctordelight"
-	results = list(/datum/reagent/consumable/doctor_delight = 5)
-	required_reagents = list(/datum/reagent/consumable/limejuice = 1, /datum/reagent/consumable/tomatojuice = 1, /datum/reagent/consumable/orangejuice = 1, /datum/reagent/consumable/cream = 1, /datum/reagent/medicine/cryoxadone = 1)
-
 /datum/chemical_reaction/irish_cream
 	name = "Irish Cream"
 	id = /datum/reagent/consumable/ethanol/irish_cream
@@ -376,12 +370,6 @@
 	id = /datum/reagent/consumable/ethanol/andalusia
 	results = list(/datum/reagent/consumable/ethanol/andalusia = 3)
 	required_reagents = list(/datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/ethanol/whiskey = 1, /datum/reagent/consumable/lemonjuice = 1)
-
-/datum/chemical_reaction/neurotoxin
-	name = "Neurotoxin"
-	id = /datum/reagent/consumable/ethanol/neurotoxin
-	results = list(/datum/reagent/consumable/ethanol/neurotoxin = 2)
-	required_reagents = list(/datum/reagent/consumable/ethanol/gargle_blaster = 1, /datum/reagent/medicine/morphine = 1)
 
 /datum/chemical_reaction/snowwhite
 	name = "Snow White"

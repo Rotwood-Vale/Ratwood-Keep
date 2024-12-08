@@ -190,7 +190,7 @@
 	var/new_heights = calculate_height(total_share_amount)
 	var/obj/effect/abstract/pollution/new_overlay = get_overlay(total_share_pollutants, total_share_amount)
 	for(var/turf/open/open_turf as anything in sharing_turfs)
-		if(!isopenturf(open_turf) || isspaceturf(open_turf) || QDELING(open_turf))
+		if(!isopenturf(open_turf) || QDELING(open_turf))
 			continue
 
 		assert_pollution(open_turf)
@@ -297,9 +297,3 @@
 	if(cap && pollution.total_amount >= cap)
 		return
 	pollution.add_pollutant_list(pollutions)
-
-/turf/open/space/pollute_turf(pollution_type, amount, cap)
-	return
-
-/turf/open/space/pollute_turf_list(list/pollutions, cap)
-	return

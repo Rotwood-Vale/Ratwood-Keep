@@ -19,7 +19,6 @@
 	var/lifetime = 40
 	var/reagent_divisor = 7
 	var/static/list/blacklisted_turfs = typecacheof(list(
-	/turf/open/space/transit,
 	/turf/open/lava))
 	var/slippery_foam = TRUE
 
@@ -119,8 +118,6 @@
 	STOP_PROCESSING(SSfastprocess, src)
 	if(metal)
 		var/turf/T = get_turf(src)
-		if(isspaceturf(T)) //Block up any exposed space
-			T.PlaceOnTop(/turf/open/floor/plating/foam, flags = CHANGETURF_INHERIT_AIR)
 		for(var/direction in GLOB.cardinals)
 			var/turf/cardinal_turf = get_step(T, direction)
 			if(get_area(cardinal_turf) != get_area(T)) //We're at an area boundary, so let's block off this turf!

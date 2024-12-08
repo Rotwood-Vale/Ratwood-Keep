@@ -134,3 +134,13 @@
 	name = "Mancatcher"
 	cost = 50
 	contains = list(/obj/item/restraints/legcuffs/beartrap)
+
+/datum/supply_pack/rogue/bandit/Knave/lockpick
+	name = "lockpick"
+	cost = 40
+	contains = list(/obj/item/lockpick)
+	
+/datum/supply_pack/rogue/bandit/Knave/lockpickring
+	name = "Full lockpicking ring"
+	cost = 150
+	contains = list(/obj/item/lockpickring/mundane)

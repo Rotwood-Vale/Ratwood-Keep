@@ -93,22 +93,9 @@
 /turf/open/lava/TakeTemperature(temp)
 
 
-/turf/open/lava/proc/is_safe()
-	//if anything matching this typecache is found in the lava, we don't burn things
-	var/static/list/lava_safeties_typecache = typecacheof(list(/obj/structure/lattice/catwalk, /obj/structure/stone_tile))
-	var/list/found_safeties = typecache_filter_list(contents, lava_safeties_typecache)
-	for(var/obj/structure/stone_tile/S in found_safeties)
-		if(S.fallen)
-			LAZYREMOVE(found_safeties, S)
-	return LAZYLEN(found_safeties)
-
-
 /turf/open/lava/proc/burn_stuff(AM)
 	. = 0
-
-	if(is_safe())
-		return FALSE
-
+	
 	var/thing_to_check = src
 	if (AM)
 		thing_to_check = list(AM)
@@ -193,9 +180,6 @@
 
 /turf/open/lava/acid/burn_stuff(AM)
 	. = 0
-
-	if(is_safe())
-		return FALSE
 
 	var/thing_to_check = src
 	if (AM)

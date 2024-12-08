@@ -221,7 +221,6 @@
 	if(!(M.status_flags & CANPUSH))
 		return TRUE
 	if(isliving(M))
-		M.mob_timers[MT_SNEAKATTACK] = world.time //Why shouldn't you know you're walking into someone stealthed? You JUST bumped into them.
 		var/mob/living/L = M
 		if(HAS_TRAIT(L, TRAIT_PUSHIMMUNE))
 			return TRUE
@@ -272,14 +271,7 @@
 	if((AM.anchored && !push_anchored) || (force < (AM.move_resist * MOVE_FORCE_PUSH_RATIO)))
 		now_pushing = FALSE
 		return
-	if (istype(AM, /obj/structure/window))
-		var/obj/structure/window/W = AM
-		if(W.fulltile)
-			for(var/obj/structure/window/win in get_step(W,t))
-				now_pushing = FALSE
-				return
-//	if(pulling == AM)
-//		stop_pulling()
+
 	var/current_dir
 	if(isliving(AM))
 		current_dir = AM.dir
@@ -366,18 +358,6 @@
 		stop_pulling()
 
 	changeNext_move(CLICK_CD_GRABBING)
-
-//	if(AM.pulledby && AM.pulledby != src)
-//		if(AM == src)
-//			to_chat(src, span_warning("I'm being grabbed by something!"))
-//			return FALSE
-//		else
-//			if(!supress_message)
-//				AM.visible_message(span_danger("[src] has pulled [AM] from [AM.pulledby]'s grip."), span_danger("[src] has pulled me from [AM.pulledby]'s grip."), null, null, src)
-//								
-//				to_chat(src, span_notice("I pull [AM] from [AM.pulledby]'s grip!"))
-//			log_combat(AM, AM.pulledby, "pulled from", src)
-//			AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
 
 	if(AM != src)
 		pulling = AM
@@ -502,16 +482,11 @@
 		if(mob_offsets[index])
 			reset_offsets(index)
 		mob_offsets[index] = list("x" = _x, "y" = _y)
-//		pixel_x = pixel_x + mob_offsets[index]["x"]
-//		pixel_y = pixel_y + mob_offsets[index]["y"]
 	update_transform()
 
 /mob/living/proc/reset_offsets(index)
 	if(index)
 		if(mob_offsets[index])
-//			animate(src, pixel_x = pixel_x - mob_offsets[index]["x"], pixel_y = pixel_y - mob_offsets[index]["y"], 1)
-//			pixel_x = pixel_x - mob_offsets[index]["x"]
-//			pixel_y = pixel_y - mob_offsets[index]["y"]
 			mob_offsets[index] = null
 	update_transform()
 
@@ -735,8 +710,6 @@
 	for(var/i in ret.Copy())			//iterate storage objects
 		var/atom/A = i
 		SEND_SIGNAL(A, COMSIG_TRY_STORAGE_RETURN_INVENTORY, ret)
-	for(var/obj/item/folder/F in ret.Copy())		//very snowflakey-ly iterate folders
-		ret |= F.contents
 	return ret
 
 // Living mobs use can_inject() to make sure that the mob is not syringe-proof in general.
@@ -1336,9 +1309,6 @@
 		var/obj_temp = oloc.return_temperature()
 		if(obj_temp != null)
 			loc_temp = obj_temp
-	else if(isspaceturf(get_turf(src)))
-		var/turf/heat_turf = get_turf(src)
-		loc_temp = heat_turf.temperature
 	return loc_temp
 
 /mob/living/proc/get_standard_pixel_x_offset(lying = 0)
@@ -1840,8 +1810,8 @@
 		for(var/mob/living/M in view(7,src))
 			if(M == src)
 				continue
-			//if(see_invisible < M.invisibility)
-				//continue
+			if(see_invisible < M.invisibility)
+				continue
 			if(M.mob_timers[MT_INVISIBILITY] > world.time) // Check if the mob is affected by the invisibility spell
 				continue
 			var/probby = 3 * STAPER

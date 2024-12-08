@@ -10,7 +10,7 @@
 
 	var/max_mobs = 5
 	var/spawn_time = 300 //30 seconds default
-	var/mob_types = list(/mob/living/simple_animal/hostile/carp)
+	var/mob_types = list(/mob/living/simple_animal/hostile/rogue/werewolf)
 	var/spawn_text = "emerges from"
 	var/faction = list("hostile")
 	var/spawner_type = /datum/component/spawner
@@ -23,36 +23,3 @@
 	if(faction_check(faction, M.faction, FALSE)&&!M.client)
 		return
 	..()
-
-
-/obj/structure/spawner/syndicate
-	name = "warp beacon"
-	icon = 'icons/obj/device.dmi'
-	icon_state = "syndbeacon"
-	spawn_text = "warps in from"
-	mob_types = list(/mob/living/simple_animal/hostile/syndicate/ranged)
-	faction = list(ROLE_SYNDICATE)
-
-/obj/structure/spawner/skeleton
-	name = "bone pit"
-	desc = ""
-	icon_state = "hole"
-	icon = 'icons/mob/nest.dmi'
-	max_integrity = 150
-	max_mobs = 15
-	spawn_time = 150
-	mob_types = list(/mob/living/simple_animal/hostile/skeleton)
-	spawn_text = "climbs out of"
-	faction = list("skeleton")
-
-/obj/structure/spawner/clown
-	name = "Laughing Larry"
-	desc = ""
-	icon_state = "clownbeacon"
-	icon = 'icons/obj/device.dmi'
-	max_integrity = 200
-	max_mobs = 15
-	spawn_time = 150
-	mob_types = list(/mob/living/simple_animal/hostile/retaliate/clown, /mob/living/simple_animal/hostile/retaliate/clown/fleshclown, /mob/living/simple_animal/hostile/retaliate/clown/clownhulk, /mob/living/simple_animal/hostile/retaliate/clown/longface, /mob/living/simple_animal/hostile/retaliate/clown/clownhulk/chlown, /mob/living/simple_animal/hostile/retaliate/clown/clownhulk/honcmunculus, /mob/living/simple_animal/hostile/retaliate/clown/mutant/blob, /mob/living/simple_animal/hostile/retaliate/clown/banana, /mob/living/simple_animal/hostile/retaliate/clown/honkling, /mob/living/simple_animal/hostile/retaliate/clown/lube)
-	spawn_text = "climbs out of"
-	faction = list("clown")

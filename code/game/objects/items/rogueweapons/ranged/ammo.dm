@@ -105,7 +105,7 @@
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	poisontype = /datum/reagent/berrypoison //Support for future variations of poison for arrow-crafting
 	poisonfeel = "burning" //Ditto
-	poisonamount = 5 //Support and balance for bodkins, which will hold less poison due to how
+	poisonamount = 2 //Support and balance for bodkins, which will hold less poison due to how
 
 /obj/projectile/bullet/reusable/arrow/poison/stone
 	name = "stone arrow"

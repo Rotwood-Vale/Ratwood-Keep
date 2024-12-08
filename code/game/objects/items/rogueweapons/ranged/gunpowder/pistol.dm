@@ -13,7 +13,6 @@
 	randomspread = 1
 	spread = 0
 	can_parry = TRUE
-	pin = /obj/item/firing_pin
 	minstr = 6
 	walking_stick = FALSE
 	cartridge_wording = "lead ball"

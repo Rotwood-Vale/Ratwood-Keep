@@ -751,7 +751,13 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 	function = /proc/criminalstool
 
-/proc/criminalstool(var/mob/user, var/turf/C)
+/obj/item/soap/cult
+	name = "accursed soap"
+	desc = "It is pulsating."
+	uses = 9
+	cleanspeed = 1
+
+/proc/criminalstool(mob/user, turf/C)
 	new /obj/item/soap/cult(C)
 	to_chat(user.mind, span_notice("The Criminal's Tool. Could be useful for hiding tracks or getting rid of sigils."))
 

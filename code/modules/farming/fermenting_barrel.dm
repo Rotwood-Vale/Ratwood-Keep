@@ -83,7 +83,7 @@
 /datum/crafting_recipe/fermenting_barrel
 	name = "Wooden Barrel"
 	result = /obj/structure/fermenting_barrel
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 30)
+	reqs = list(/obj/item/grown/log/tree/small = 2)
 	time = 50
 	category = CAT_NONE
 
