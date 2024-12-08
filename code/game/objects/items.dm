@@ -1,7 +1,5 @@
 GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/effects/fire.dmi', "fire"))
 
-
-GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 // if true, everyone item when created will have its name changed to be
 // more... RPG-like.
 
@@ -204,6 +202,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	///played when an item that is equipped blocks a hit
 	var/list/blocksound 
 
+	// played when item is placed on hip_r or hip_l, the belt side slots
+	var/sheathe_sound
+
 	/// This is what we get when we either tear up or salvage a piece of clothing
 	var/obj/item/salvage_result = null
 
@@ -318,9 +319,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	for(var/path in actions_types)
 		new path(src)
 	actions_types = null
-
-	if(GLOB.rpg_loot_items)
-		AddComponent(/datum/component/fantasy)
 
 	if(force_string)
 		item_flags |= FORCE_STRING_OVERRIDE
@@ -503,12 +501,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(user.get_num_arms() < 2)
 			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
-		var/obj/item/twohanded/required/H
-		H = user.get_inactive_held_item()
 		if(get_dist(src,user) > 1)
-			return
-		if(H != null)
-			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
 
 	if(w_class == WEIGHT_CLASS_GIGANTIC)
@@ -660,6 +653,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 // user is mob that equipped it
 // slot uses the slot_X defines found in setup.dm
 // for items that can be placed in multiple slots
+// The slot == refers to the new location of the item
 // Initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it
 /obj/item/proc/equipped(mob/user, slot, initial = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -670,10 +664,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
 	if(!initial)
-		if(equip_sound &&(slot_flags & slotdefine2slotbit(slot)))
-			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
-		else if(slot == SLOT_HANDS)
+		var/slotbit = slotdefine2slotbit(slot)
+		if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)
+		if(slotbit == ITEM_SLOT_HIP)
+			playsound(src, sheathe_sound, SHEATHE_SOUND_VOLUME, ignore_walls = FALSE)
+		else if(equip_sound &&(slot_flags & slotbit))
+			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
 	user.update_equipment_speed_mods()
 
 	if(!user.is_holding(src))
@@ -681,13 +678,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			ungrip(user, FALSE)
 	if(twohands_required)
 		var/slotbit = slotdefine2slotbit(slot)
-		if(slot_flags & slotbit)
-			var/datum/O = user.is_holding_item_of_type(/obj/item/twohanded/offhand)
-			if(!O || QDELETED(O))
-				return
-			qdel(O)
-			return
-		if(slot == SLOT_HANDS)
+		if(slotbit == ITEM_SLOT_HANDS)
 			wield(user)
 		else
 			ungrip(user)
@@ -971,8 +962,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
 	return
 
-/obj/item/attack_hulk(mob/living/carbon/human/user)
-	return FALSE
 
 /obj/item/attack_animal(mob/living/simple_animal/M)
 	if (obj_flags & CAN_BE_HIT)
@@ -1169,9 +1158,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(force_wielded)
 			force = initial(force)
 		wdefense = initial(wdefense)
-		var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
-		if(O && istype(O))
-			O.unwield()
 	if(altgripped)
 		altgripped = FALSE
 	update_transform()
@@ -1214,10 +1200,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	update_transform()
 	to_chat(user, span_notice("I wield [src] with both hands."))
 	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)
-	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
-	O.name = "[name] - offhand"
-	O.wielded = TRUE
-	user.put_in_inactive_hand(O)
 	if(twohands_required)
 		if(!wielded)
 			user.dropItemToGround(src)

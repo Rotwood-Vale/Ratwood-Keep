@@ -106,10 +106,6 @@
 				typecounts[I.type] = 1
 		O.backpack_contents = typecounts
 		//TODO : Copy varedits from backpack stuff too.
-	//Copy implants
-	O.implants = list()
-	for(var/obj/item/implant/I in implants)
-		O.implants |= I.type
 	//Copy to outfit cache
 	var/outfit_name = stripped_input(usr,"Enter the outfit name")
 	O.name = outfit_name

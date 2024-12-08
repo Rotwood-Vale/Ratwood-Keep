@@ -27,7 +27,6 @@
 	myturf.lighting_object = src
 	myturf.luminosity = 0
 
-
 	needs_update = TRUE
 	SSlighting.objects_queue += src
 

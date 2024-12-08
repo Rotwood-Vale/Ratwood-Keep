@@ -157,9 +157,13 @@
 			if(L.m_intent == MOVE_INTENT_RUN)
 				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
 	else
-		if(L.dir != target_dir)
-			// Reset our sprint counter if we change direction
+		if(prefs.toggles & RUN_MODE)
+			if(L.dir != target_dir)
+				if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
+					L.toggle_rogmove_intent(MOVE_INTENT_WALK)
+		else if(L.dir != target_dir)
 			L.sprinted_tiles = 0
+
 
 	. = ..()
 
@@ -345,8 +349,6 @@
 			continue
 		else if(isturf(A))
 			var/turf/turf = A
-			if(isspaceturf(turf))
-				continue
 			if(!turf.density && !mob_negates_gravity())
 				continue
 			return A

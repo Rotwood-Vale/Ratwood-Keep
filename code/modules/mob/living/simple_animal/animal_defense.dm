@@ -126,16 +126,6 @@
 		next_attack_msg.Cut()
 		return TRUE
 
-/mob/living/simple_animal/attack_hulk(mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	playsound(loc, "punch", 25, TRUE, -1)
-	visible_message(span_danger("[user] punches [src]!"), \
-					span_danger("You're punched by [user]!"), null, COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, span_danger("I punch [src]!"))
-	adjustBruteLoss(15)
-
 /mob/living/simple_animal/attack_paw(mob/living/carbon/monkey/M)
 	if(..()) //successful monkey bite.
 		if(stat != DEAD)
@@ -202,7 +192,7 @@
 			target.mind.attackedme[user.real_name] = world.time
 		user.rogfat_add(15)
 
-/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = "melee")
+/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = d_type)
 	var/temp_damage = damage
 	if(!damage_coeff[damagetype])
 		temp_damage = 0

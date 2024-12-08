@@ -544,11 +544,6 @@
 
 //This proc is called when you want to place an item into the storage item.
 /datum/component/storage/proc/attackby(datum/source, obj/item/I, mob/M, params)
-	if(istype(I, /obj/item/hand_labeler))
-		var/obj/item/hand_labeler/labeler = I
-		if(labeler.mode)
-			return FALSE
-//	. = TRUE //no afterattack
 	//Vrell - Adding a block here to allow sewing/hammering to repair containers. Clicking while trying to sew will bypass this requirement.
 	if(isitem(parent))
 		if(istype(I, /obj/item/rogueweapon/hammer))

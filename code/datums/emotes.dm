@@ -85,8 +85,6 @@
 	var/pitch = 1 //bespoke vary system so deep voice/high voiced humans
 	if(isliving(user))
 		var/mob/living/L = user
-		for(var/obj/item/implant/I in L.implants)
-			I.trigger(key, L)
 		if(L.voice_pitch)
 			pitch = L.voice_pitch
 

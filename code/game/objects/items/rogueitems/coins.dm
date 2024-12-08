@@ -79,10 +79,7 @@
 		return
 	if(G.base_type != base_type)
 		return
-	if(user)
-		if(user.get_inactive_held_item() != G && !isturf(G.loc))
-			return
-	
+
 	var/amt_to_merge = min(G.quantity, MAX_COIN_STACK_SIZE - quantity)
 	if(amt_to_merge <= 0)
 		return
@@ -174,7 +171,7 @@
 /obj/item/roguecoin/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/roguecoin))
 		var/obj/item/roguecoin/G = I
-		G.merge(src, user)
+		merge(G, user)
 		return
 	return ..()
 

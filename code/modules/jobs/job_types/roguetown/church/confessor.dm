@@ -5,12 +5,11 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = list(
 		/datum/patron/psydon
 	)
-	allowed_sexes = list(MALE)
 
 	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. \
 	As the most fanatical members of the clergy, their main concern is assisting the local Inquisitor with their work. \
@@ -27,6 +26,7 @@
 /datum/outfit/job/roguetown/shepherd
 	name = "Confessor"
 	jobtype = /datum/job/roguetown/shepherd
+	allowed_patrons = list(/datum/patron/psydon)
 
 /datum/outfit/job/roguetown/shepherd/pre_equip(mob/living/carbon/human/H)
 	..()

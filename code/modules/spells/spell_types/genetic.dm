@@ -23,8 +23,6 @@
 			continue
 		if(!target.dna)
 			continue
-		for(var/A in mutations)
-			target.dna.add_mutation(A)
 		for(var/A in traits)
 			ADD_TRAIT(target, A, GENETICS_SPELL)
 		active_on += target
@@ -39,7 +37,5 @@
 /obj/effect/proc_holder/spell/targeted/genetic/proc/remove(mob/living/carbon/target)
 	active_on -= target
 	if(!QDELETED(target))
-		for(var/A in mutations)
-			target.dna.remove_mutation(A)
 		for(var/A in traits)
 			REMOVE_TRAIT(target, A, GENETICS_SPELL)
