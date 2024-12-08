@@ -758,7 +758,7 @@
 
 /obj/effect/proc_holder/spell/invoked/message/cast(list/targets, mob/user)
 	. = ..()
-	var/input = stripped_input(user, "Who are you trying to contact?")
+	var/input = html_decode(input(user, "Who are you trying to contact?"))
 	if(!input)
 		return
 	if(!user.key)
