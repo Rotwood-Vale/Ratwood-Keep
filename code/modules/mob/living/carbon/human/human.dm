@@ -174,8 +174,7 @@
 		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>Remove [handcuffed]</A></td></tr>"
 	if(legcuffed)
 		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>Remove [legcuffed]</A></td></tr>"
-	if(leashed)
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_LEASHED]'>Remove [leashed]</A></td></tr>"
+
 
 	dat += "<tr><td><hr></td></tr>"
 

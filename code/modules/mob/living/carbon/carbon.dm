@@ -354,6 +354,18 @@
 		ExtinguishMob(TRUE)
 	return
 
+/mob/living/carbon/resist_leash()
+	to_chat(owner, "You reach for the hook on your collar...")
+	//Determine how long it takes to remove the leash
+	var/deleash = 15
+	if(owner.handcuffed)
+		deleash = 60
+	if(do_mob(owner, owner, deleash))//do_mob creates a progress bar and then enacts the code after. Owner, owner, because it's an act on themself
+		if(!QDELETED(src))
+			to_chat(owner, "<span class='warning'>[owner] has removed their leash!</span>")
+			owner.remove_status_effect(/datum/status_effect/leash_pet)
+
+
 /mob/living/carbon/resist_restraints()
 	var/obj/item/I = null
 	var/type = 0

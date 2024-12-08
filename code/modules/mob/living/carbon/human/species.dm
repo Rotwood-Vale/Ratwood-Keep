@@ -870,12 +870,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(num_legs < 2)
 				return FALSE
 			return TRUE
-		if(SLOT_LEASHED)
-			if(H.leashed)
-				return FALSE
-			if(!I.breakouttime)
-				return FALSE
-			return TRUE
+			
 		if(SLOT_IN_BACKPACK)
 			testing("STARTYES")
 			if(H.backr)

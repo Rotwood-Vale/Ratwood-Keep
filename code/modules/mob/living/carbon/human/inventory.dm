@@ -14,8 +14,6 @@
 			return handcuffed
 		if(SLOT_LEGCUFFED)
 			return legcuffed
-		if(SLOT_LEASHED)
-			return leashed
 		if(SLOT_BELT)
 			return belt
 		if(SLOT_RING)
@@ -65,7 +63,6 @@
 		s_store,
 		handcuffed,
 		legcuffed,
-		leashed,
 		wear_armor,
 		gloves,
 		shoes,
