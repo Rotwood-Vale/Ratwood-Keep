@@ -34,7 +34,7 @@
 
 /atom/movable/screen/alert/status_effect/leash_pet
 	name = "Leashed Pet"
-	desc = "You're on the leash now! Be good for your Master!"
+	desc = "You're on the leash now! Be good for your Master now.."
 	icon_state = "leash_pet"
 
 
@@ -61,7 +61,7 @@
 	equip_sound = 'sound/foley/equip/rummaging-01.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	throw_range = 4
-	slot_flags = ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BELT
 	force = 1
 	throwforce = 1
 	w_class = WEIGHT_CLASS_SMALL
@@ -82,8 +82,22 @@
 	if(C.cmode && C.mobility_flags & MOBILITY_STAND)
 		to_chat(user, span_warning("I can't leash them, they're too tense!"))
 		return
+	
+	if(src.leash_pet != null)
+		to_chat(user, span_warning("This leash is already attached to [leash_pet]!"))
+		return
 
 	if(istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/collar) || istype(C.get_item_by_slot(SLOT_HANDCUFFED), /obj/item/rope/chain) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/talkstone) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/gorget/prisoner) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/gorget/alt))
+		
+		var/leash_attempt_message = "[user] raises \the [src] to [C]'s neck!"
+		for(var/mob/viewing in viewers(C, null))
+			if(viewing == C)
+				to_chat(C, "<span class='warning'>[user] begins raising \the [src] to my neck!</span>")
+			else if(viewing == user)
+				to_chat(user, "<span class='warning'>I begin raising \the [src] to [C]'s neck!</span>")
+			else
+				viewing.show_message("<span class='warning'>[leash_attempt_message]</span>", 1)
+		
 		var/leashtime = 50
 		if(C.handcuffed)
 			leashtime = 5
@@ -106,9 +120,12 @@
 				leash_pet.add_movespeed_modifier(MOVESPEED_ID_LEASH)
 			for(var/mob/viewing in viewers(user, null))
 				if(viewing == leash_master)
-					to_chat(leash_master, "<span class='warning'>You have hooked a leash onto [leash_pet]!</span>")
+					to_chat(leash_master, "<span class='warning'>You have hooked \the [src] onto [leash_pet]!</span>")
+				else if(viewing == leash_pet)
+					to_chat(leash_pet, "<span class='warning'>[leash_master] has hooked \a [src] onto my collar!</span>")
 				else
 					viewing.show_message("<span class='warning'>[leash_pet] has been leashed by [leash_master]!</span>", 1)
+			
 			if(leash_pet.has_status_effect(/datum/status_effect/leash_owner)) //Pet leashed themself. They are not the dom
 				leash_pet.apply_status_effect(/datum/status_effect/leash_freepet)
 				leash_pet.remove_status_effect(/datum/status_effect/leash_owner)
@@ -124,11 +141,11 @@
 					leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
 
 				if(!leash_pet.has_status_effect(/datum/status_effect/leash_pet)) //If there is no pet, there is no dom. Loop breaks.
-					//QDEL_NULL(mobhook_leash_master)
+					mobhook_leash_master = null
 					UnregisterSignal(mobhook_leash_master, COMSIG_MOVABLE_MOVED)
-					//QDEL_NULL(mobhook_leash_pet)
+					mobhook_leash_pet = null
 					UnregisterSignal(mobhook_leash_pet, COMSIG_MOVABLE_MOVED)
-					//QDEL_NULL(mobhook_leash_freepet)
+					mobhook_leash_freepet = null
 					UnregisterSignal(mobhook_leash_freepet, COMSIG_MOVABLE_MOVED)
 					if(leash_pet.has_status_effect(/datum/status_effect/leash_freepet))
 						leash_pet.remove_status_effect(/datum/status_effect/leash_freepet)
@@ -149,6 +166,7 @@
 /obj/item/leash/attack_self(mob/living/user)
 	if(!leash_pet == "null") //No pet, no tug.
 		return
+
 	//Yank the pet. Yank em in close.
 	if(leash_pet.x > leash_master.x + 1)
 		step(leash_pet, WEST, 1) //"1" is the speed of movement. We want the tug to be faster than their slow current walk speed.
@@ -174,6 +192,9 @@
 			step(leash_pet, WEST, 1)
 		if(leash_pet.x < leash_master.x)
 			step(leash_pet, EAST, 1)
+			
+	log_combat(leash_master, leash_pet, "leash-yanked")
+	leash_pet.visible_message(span_warning("[leash_master] yanks [leash_pet] closer with \the [src.name]."))
 
 /obj/item/leash/proc/on_master_move()
 	//Make sure the dom still has a pet
@@ -184,7 +205,7 @@
 	if(leash_pet == leash_master) //Pet is the master
 		return
 	if(!leash_pet.has_status_effect(/datum/status_effect/leash_pet))
-		//QDEL_NULL(mobhook_leash_master) //Probably redundant, but it's nice to be safe
+		mobhook_leash_master = null //Probably redundant, but it's nice to be safe
 		UnregisterSignal(mobhook_leash_master, COMSIG_MOVABLE_MOVED)
 		leash_master.remove_status_effect(/datum/status_effect/leash_owner)
 		return
@@ -240,7 +261,7 @@
 		return
 	if(leash_pet == "null")
 		return
-	if(leash_pet.x > leash_master.x + 5 || leash_pet.x < leash_master.x - 5 || leash_pet.y > leash_master.y + 5 || leash_pet.y < leash_master.y - 5)
+	if(leash_pet.x > leash_master.x + 4 || leash_pet.x < leash_master.x - 4 || leash_pet.y > leash_master.y + 4 || leash_pet.y < leash_master.y - 4)
 		var/leash_break_message = "The leash snapped free from [leash_pet]!"
 		for(var/mob/viewing in viewers(leash_pet, null))
 			if(viewing == leash_master)
@@ -254,9 +275,9 @@
 		leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
 		leash_pet.remove_movespeed_modifier(MOVESPEED_ID_LEASH)
 		leash_master.remove_status_effect(/datum/status_effect/leash_owner)
-		//QDEL_NULL(mobhook_leash_master)
+		mobhook_leash_master = null
 		UnregisterSignal(mobhook_leash_master, COMSIG_MOVABLE_MOVED)
-		//QDEL_NULL(mobhook_leash_pet)
+		mobhook_leash_pet = null
 		UnregisterSignal(mobhook_leash_pet, COMSIG_MOVABLE_MOVED)
 		leash_pet = "null"
 		leash_master = "null"
@@ -271,7 +292,7 @@
 		return
 	//Make sure the pet is still a pet
 	if(!leash_pet.has_status_effect(/datum/status_effect/leash_pet))
-		//QDEL_NULL(mobhook_leash_pet) //Probably redundant, but it's nice to be safe
+		mobhook_leash_pet = null //Probably redundant, but it's nice to be safe
 		UnregisterSignal(mobhook_leash_pet, COMSIG_MOVABLE_MOVED)
 		return
 
@@ -301,14 +322,18 @@
 /obj/item/leash/proc/on_freepet_move()
 	//Pet is on the run. Let's drag the leash behind them.
 	if(!leash_master == "null") //If there is a master, don't do this
+		src.visible_message("DEBUG LEASH MASTER NOT NULL, DISENGAGE FREEPET MOVE")
 		return
 	if(leash_pet == "null") //If there is no pet, don't do this
+		src.visible_message("DEBUG LEASH PET NULL, DISENGAGE FREEPET MOVE")
 		return
 	if(leash_pet.is_holding_item_of_type(/obj/item/leash)) //If the pet is holding the leash, don't do this
+		src.visible_message("DEBUG PET HOLDING LEASH, DISENGAGE FREEPET MOVE")
 		return
 
 	sleep(2)
 	if(leash_pet == "null")
+		src.visible_message("DEBUG LEASH PET NULL POST SLEEP, DISENGAGE FREEPET MOVE")
 		return
 	//Double move to catch the leash up to the pet
 	if(src.x > leash_pet.x + 2)
@@ -348,8 +373,9 @@
 	sleep(1)
 	//Just to prevent error messages
 	if(leash_pet == "null")
+		src.visible_message("DEBUG LEASH PET NULL POST MOVEMENT, DISENGAGE FREEPET MOVE")
 		return
-	if(src.x > leash_pet.x + 5 || src.x < leash_pet.x - 5 || src.y > leash_pet.y + 5 || src.y < leash_pet.y - 5)
+	if(src.x > leash_pet.x + 4 || src.x < leash_pet.x - 4 || src.y > leash_pet.y + 4 || src.y < leash_pet.y - 4)
 		var/leash_break_message = "The leash snapped free from [leash_pet]!"
 		for(var/mob/viewing in viewers(leash_pet, null))
 			if(viewing == leash_pet)
@@ -360,9 +386,9 @@
 		leash_pet.adjustOxyLoss(5)
 		leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
 		leash_pet.remove_status_effect(/datum/status_effect/leash_freepet)
-		//QDEL_NULL(mobhook_leash_pet)
+		mobhook_leash_pet = null
 		UnregisterSignal(mobhook_leash_pet, COMSIG_MOVABLE_MOVED)
-		//QDEL_NULL(mobhook_leash_freepet)
+		mobhook_leash_freepet = null
 		UnregisterSignal(mobhook_leash_freepet, COMSIG_MOVABLE_MOVED)
 		leash_pet = "null"
 		leash_used = 0
@@ -370,17 +396,22 @@
 //The proc below in question is the one causing all the errors apparently
 
 /obj/item/leash/dropped(mob/user, silent)
+	src.visible_message("DEBUG LEASH SLOTDROP CHANGED")
 	 //Drop the leash, and the leash effects stop
 	. = ..()
 	if(leash_pet == "null") //There is no pet. Stop this silliness
+		src.visible_message("DEBUG LEASH_PET == NULL")
 		return
 	if(leash_master == "null")
+		src.visible_message("DEBUG LEASH_MASTER == NULL")
 		return
 	//Dropping procs any time the leash changes slots. So, we will wait a tick and see if the leash was actually dropped
 	addtimer(CALLBACK(src, .proc/drop_effects, user, silent), 1)
 
 /obj/item/leash/proc/drop_effects(mob/user, silent)
+	src.visible_message("DEBUG DROP_EFFECTS PROCCED")
 	if(leash_master.is_holding_item_of_type(/obj/item/leash) || istype(leash_master.get_item_by_slot(SLOT_BELT), /obj/item/leash))
+		src.visible_message("DEBUG DOM STILL HAS LEASH, CANCEL DROP EFFECTS")
 		return  //Dom still has the leash as it turns out. Cancel the proc.
 	for(var/mob/viewing in viewers(leash_master, null))
 		viewing.show_message("<span class='notice'>[leash_master] has dropped the leash.</span>", 1)
@@ -389,29 +420,41 @@
 	//mobhook_leash_freepet = leash_pet.AddComponent(/datum/component/redirect, list(COMSIG_MOVABLE_MOVED = CALLBACK(src, .proc/on_freepet_move)))
 	RegisterSignal(leash_pet, COMSIG_MOVABLE_MOVED, .proc/on_freepet_move)
 	mobhook_leash_freepet = leash_pet
+	src.visible_message("DEBUG MOBHOOK FREEPET = LEASH_PET")
 	leash_master.remove_status_effect(/datum/status_effect/leash_owner) //No dom with no leash. We will get a new dom if the leash is picked back up.
 	leash_master = "null"
-	//QDEL_NULL(mobhook_leash_master)
+	src.visible_message("DEBUG LEASH MASTER NULLED, STATUS OWNER REMOVED")
+	mobhook_leash_master = null
 	UnregisterSignal(mobhook_leash_master, COMSIG_MOVABLE_MOVED)
+	src.visible_message("DEBUG UNREGISTER LEASH MASTER MOBHOOK AND NULLED")
 
 /obj/item/leash/equipped(mob/user)
 	. = ..()
 	if(leash_used == 0) //Don't apply statuses with a fresh leash. Keeps things clean on the backend.
+		src.visible_message("DEBUG FRESH LEASH NO STATUS, LEASH UNUSED")
 		return
 	addtimer(CALLBACK(src, .proc/equip_effects, user), 2)
 
 /obj/item/leash/proc/equip_effects(mob/user)
+	src.visible_message("DEBUG EQUIP_EFFECTS PROCCED")
 	if(leash_pet == "null")
 		return
 	leash_master = user
 	if(leash_master.has_status_effect(/datum/status_effect/leash_freepet) || leash_master.has_status_effect(/datum/status_effect/leash_pet)) //Pet picked up their own leash.
 		leash_master = "null"
+		src.visible_message("DEBUG EQUIP_EFFECTS LEASH MASTER HAS FREEPET OR LEASHPET, LEASH MASTER NULLED, ABORT EQUIP EFFECTS PROC")
 		return
 	leash_master.apply_status_effect(/datum/status_effect/leash_owner)
+	src.visible_message("DEBUG EQUIP_EFFECTS APPLIED LEASH_OWNER STATUS TO LEASH MASTER")
 	//mobhook_leash_master = leash_master.AddComponent(/datum/component/redirect, list(COMSIG_MOVABLE_MOVED = CALLBACK(src, .proc/on_master_move)))
 	RegisterSignal(leash_master, COMSIG_MOVABLE_MOVED, .proc/on_master_move)
 	mobhook_leash_master = leash_master
+	src.visible_message("DEBUG EQUIP_EFFECTS LEASH MASTER MOBHOOK = LEASH MASTER")
 	leash_pet.remove_status_effect(/datum/status_effect/leash_freepet)
-	//QDEL_NULL(mobhook_leash_freepet)
+	src.visible_message("DEBUG EQUIP_EFFECTS LEASH PET FREEPET STATUS REMOVED")
+	mobhook_leash_freepet = null
 	UnregisterSignal(mobhook_leash_freepet, COMSIG_MOVABLE_MOVED)
+	src.visible_message("DEBUG EQUIP_EFFECTS MOBHOOK FREEPET UNREGISTERED AND NULLED")
 	leash_pet.add_movespeed_modifier(MOVESPEED_ID_LEASH)
+
+/obj/item/leash/proc/
