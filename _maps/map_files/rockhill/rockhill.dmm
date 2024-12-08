@@ -1202,7 +1202,6 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "aWU" = (
-/obj/item/cigbutt/roach,
 /obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
@@ -2265,6 +2264,10 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/shop)
+"bQh" = (
+/obj/machinery/light/rogue/oven/west,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "bQo" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/wood,
@@ -11078,9 +11081,9 @@
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/indoors/shelter/mountains)
 "iCV" = (
-/obj/item/cigbutt/roach,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/bath)
+/obj/structure/closet/crate/chest,
+/turf/open/floor/rogue/metal,
+/area/rogue/indoors)
 "iDg" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -27964,9 +27967,9 @@
 	},
 /area/rogue/outdoors/beach)
 "vFq" = (
-/obj/item/cigbutt/roach,
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/indoors/town/bath)
+/obj/structure/fluff/millstone,
+/turf/open/floor/rogue/metal,
+/area/rogue/indoors)
 "vFA" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/carpet/lord/left,
@@ -180292,7 +180295,7 @@ ikA
 nqQ
 nqQ
 nqQ
-iCV
+oXU
 fsU
 bpD
 bpD
@@ -180689,7 +180692,7 @@ kHR
 kHR
 fsU
 ijD
-vFq
+aVC
 aVC
 aVC
 kmx
@@ -387398,7 +387401,7 @@ pAV
 pAV
 uqa
 pAV
-qrn
+vFq
 oBq
 jCh
 jCh
@@ -387800,7 +387803,7 @@ pAV
 rfI
 hHC
 pAV
-qrn
+iCV
 kYX
 jCh
 jCh
@@ -390216,7 +390219,7 @@ qrn
 wlD
 ddv
 ddv
-ddv
+bQh
 aQJ
 hHI
 hHI
