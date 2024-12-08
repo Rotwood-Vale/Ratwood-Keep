@@ -22,41 +22,41 @@
 
 /atom/movable/screen/alert/status_effect/leash_freepet
 	name = "Escaped Pet"
-	desc = "You're on a leash, but you've no master. If anyone grabs the leash they'll gain control!"
+	desc = "You're on a leash, but you've no Master. If anyone grabs the leash they'll gain control!"
 	icon_state = "leash_freepet"
 
 
 /datum/status_effect/leash_pet
 	id = "leashed"
 	status_type = STATUS_EFFECT_UNIQUE
-	var/mob/redirect_component
+	//var/mob/redirect_component
 	alert_type = /atom/movable/screen/alert/status_effect/leash_pet
 
 /atom/movable/screen/alert/status_effect/leash_pet
 	name = "Leashed Pet"
-	desc = "You're on the hook now! Be good for your master."
+	desc = "You're on the leash now! Be good for your Master!"
 	icon_state = "leash_pet"
 
 
 /datum/status_effect/leash_pet/on_apply()
 	//redirect_component = WEAKREF(owner.AddComponent(/datum/component/redirect, list(COMSIG_LIVING_RESIST = CALLBACK(src, .proc/owner_resist))))
-	RegisterSignal(owner, COMSIG_LIVING_RESIST, .proc/owner_resist)
-	redirect_component = owner
+	//RegisterSignal(owner, COMSIG_LIVING_RESIST, .proc/owner_resist)
+	//redirect_component = owner
 	if(!owner.stat)
 		to_chat(owner, "<span class='userdanger'>You have been leashed!</span>")
 	return ..()
 
 //This lets the pet resist their leash
-/datum/status_effect/leash_pet/proc/owner_resist()
-	to_chat(owner, "You reach for the hook on your collar...")
+///datum/status_effect/leash_pet/proc/owner_resist()
+//	to_chat(owner, "You reach for the hook on your collar...")
 	//Determine how long it takes to remove the leash
-	var/deleash = 15
+//	var/deleash = 15
 	//if(owner.get_item_by_slot(SLOT_HANDCUFFED))  //Commented out because there is no clear way to make this proc BEFORE decuff on resist.
 		//deleash = 100
-	if(do_mob(owner, owner, deleash))//do_mob creates a progress bar and then enacts the code after. Owner, owner, because it's an act on themself
-		if(!QDELETED(src))
-			to_chat(owner, "<span class='warning'>[owner] has removed their leash!</span>")
-			owner.remove_status_effect(/datum/status_effect/leash_pet)
+//	if(do_mob(owner, owner, deleash))//do_mob creates a progress bar and then enacts the code after. Owner, owner, because it's an act on themself
+//		if(!QDELETED(src))
+//			to_chat(owner, "<span class='warning'>[owner] has removed their leash!</span>")
+//			owner.remove_status_effect(/datum/status_effect/leash_pet)
 
 ///// OBJECT /////
 //The leash object itself
