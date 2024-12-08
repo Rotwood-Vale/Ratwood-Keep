@@ -484,9 +484,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!can_reenter_corpse)
 		to_chat(src, span_warning("I cannot re-enter my body."))
 		return
+	// Allow ghosts to re-enter their body if it hasnt risen from the dead yet. Works post-derotting too.
 	if(mind.has_antag_datum(/datum/antagonist/zombie))
-		to_chat(src, span_warning("My body has rotted beyond Necra's grasp."))
-		return
+		var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
+		if(existing_zomble.has_turned)
+			to_chat(src, span_warning("My body has rotted beyond Necra's grasp."))
+			return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
 		to_chat(usr, span_warning("Another consciousness is in my body... It is resisting me."))
 		return
@@ -496,7 +499,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SSdroning.kill_droning(src.client)
 	remove_client_colour(/datum/client_colour/glass_colour/lightblue)
 	client.change_view(CONFIG_GET(string/default_view))
-	client?.verbs -= GLOB.ghost_verbs
 	SStgui.on_transfer(src, mind.current) // Transfer NanoUIs.
 	mind.current.key = key
 	return TRUE

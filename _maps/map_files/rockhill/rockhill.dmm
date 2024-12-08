@@ -1997,6 +1997,7 @@
 "bBu" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "bBH" = (
@@ -6253,6 +6254,13 @@
 /obj/item/rogueweapon/pitchfork,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
+"eMu" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
+/area/rogue/outdoors/beach)
 "eMv" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -6929,6 +6937,10 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"fjR" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/town/basement)
 "fjX" = (
 /obj/structure/lever/wall{
 	dir = 4;
@@ -7615,6 +7627,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town)
+"fMl" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors)
 "fMT" = (
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/double_pelt,
@@ -9148,6 +9164,10 @@
 "hag" = (
 /obj/structure/rack/rogue,
 /obj/item/reagent_containers/glass/bucket/wooden,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
+"han" = (
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "haq" = (
@@ -13297,6 +13317,7 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/candle/yellow/lit,
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/tile{
 	icon_state = "greenstone"
 	},
@@ -13522,6 +13543,10 @@
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"koS" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/bog)
 "koY" = (
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
@@ -13607,6 +13632,10 @@
 /obj/structure/fluff/railing/fence,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"ksS" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "ksW" = (
 /turf/open/floor/rogue/rooftop/green,
 /area/rogue/outdoors/rtfield)
@@ -19641,6 +19670,15 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/town/basement)
+"oUi" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town)
 "oUS" = (
 /obj/structure/roguewindow/openclose{
 	dir = 1
@@ -20838,6 +20876,7 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
 	},
+/obj/effect/landmark/veil/toll,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "pUq" = (
@@ -27849,6 +27888,12 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
+"vpx" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "horzw"
+	},
+/area/rogue/under/town/basement)
 "vpz" = (
 /obj/structure/stairs{
 	dir = 4
@@ -188037,7 +188082,7 @@ whb
 whb
 nWS
 qxy
-vpo
+vpx
 vpo
 bko
 pjI
@@ -198570,7 +198615,7 @@ fyc
 sYw
 txa
 dlu
-iTw
+han
 czb
 iTw
 sTe
@@ -207677,7 +207722,7 @@ xaf
 dVO
 dVO
 dVO
-dVO
+ksS
 dVO
 ovn
 ovn
@@ -208225,7 +208270,7 @@ vRu
 vRu
 txa
 dWd
-cBf
+puv
 cBf
 cBf
 iTw
@@ -211502,7 +211547,7 @@ uSS
 rqd
 rqd
 rqd
-rqd
+fjR
 kyX
 rqd
 rqd
@@ -219155,7 +219200,7 @@ gjl
 xjC
 jqM
 xjC
-xjC
+eMu
 lEp
 gYr
 gYr
@@ -266966,7 +267011,7 @@ uaL
 uaL
 geO
 nqU
-ltT
+fMl
 ltT
 ltT
 ltT
@@ -290846,7 +290891,7 @@ jqh
 wGD
 wGD
 wGD
-wGD
+koS
 wGD
 qFl
 qFl
@@ -312061,7 +312106,7 @@ uaL
 dHZ
 vtg
 bkZ
-xkD
+oUi
 dHZ
 qvR
 spp

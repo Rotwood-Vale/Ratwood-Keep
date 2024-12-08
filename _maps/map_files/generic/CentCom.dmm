@@ -2560,6 +2560,14 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/goblin)
+"Ck" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "largetable_mid"
+	},
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/banditcamp)
 "Cm" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/banditcamp)
@@ -2809,6 +2817,10 @@
 /obj/machinery/light/rogue/hearth,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/banditcamp)
+"Ho" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/under/town/goblin)
 "Hp" = (
 /obj/structure/table/wood{
 	icon_state = "largetable"
@@ -3024,6 +3036,14 @@
 /obj/item/flashlight/flare/torch,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/goblin)
+"Lt" = (
+/obj/structure/bed/rogue/shit,
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/banditcamp)
 "LE" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -3138,6 +3158,10 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
+"NA" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/dirt,
+/area/rogue/indoors)
 "NE" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavewet/bogcaves)
@@ -3192,6 +3216,14 @@
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
+"OX" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "largetable"
+	},
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/town/goblin)
 "Pd" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -3330,6 +3362,10 @@
 /obj/effect/landmark/start/bandit,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/banditcamp)
+"RL" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/goblin)
 "RN" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -3397,6 +3433,14 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/banditcamp)
+"SF" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "largetable_mid"
+	},
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/carpet/inn,
+/area/rogue/indoors)
 "Tb" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -3636,6 +3680,10 @@
 /obj/item/clothing/neck/roguetown/talkstone,
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/blocks,
+/area/rogue/under/town/goblin)
+"XA" = (
+/obj/effect/landmark/veil/toll,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/goblin)
 "XC" = (
 /obj/effect/proc_holder/spell/invoked/heal,
@@ -5954,7 +6002,7 @@ yw
 RB
 RB
 sN
-eb
+Ck
 eb
 jd
 TG
@@ -8476,7 +8524,7 @@ Cm
 Cm
 nX
 pg
-mQ
+Lt
 pb
 so
 pb
@@ -11480,7 +11528,7 @@ pg
 Cm
 pg
 Tw
-mQ
+Lt
 pg
 nX
 nX
@@ -17003,7 +17051,7 @@ bY
 ch
 ch
 eP
-ch
+SF
 cy
 bO
 Zl
@@ -18395,7 +18443,7 @@ dQ
 cZ
 da
 dp
-dp
+NA
 cZ
 WB
 Te
@@ -44843,7 +44891,7 @@ xd
 xd
 Sf
 xd
-nW
+XA
 xd
 xd
 xd
@@ -48065,7 +48113,7 @@ gE
 Af
 yK
 ZB
-zw
+Ho
 hV
 Hf
 GG
@@ -48308,7 +48356,7 @@ xd
 lW
 xd
 sd
-mJ
+OX
 Bk
 mY
 YM
@@ -51294,7 +51342,7 @@ yK
 pu
 Af
 Af
-Af
+RL
 Af
 Af
 Af
@@ -52428,7 +52476,7 @@ Jg
 rI
 rI
 rI
-nW
+XA
 nW
 nW
 nW
