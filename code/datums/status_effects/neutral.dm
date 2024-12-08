@@ -164,7 +164,7 @@ var/wheeleffect
 	id = "lucky(?)"
 	status_type = STATUS_EFFECT_UNIQUE
 	effectedstats = list("fortune" = "?")
-	duration = 500
+	duration = 3000 //five minutes
 	
 /datum/status_effect/wheel/on_apply()
 	. = ..()
