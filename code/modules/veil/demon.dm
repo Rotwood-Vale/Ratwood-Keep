@@ -1,3 +1,4 @@
+// currently unused
 /mob/living/simple_animal/hostile/rogue/demon
 	name = "haunt"
 	desc = ""
