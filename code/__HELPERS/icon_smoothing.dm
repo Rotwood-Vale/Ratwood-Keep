@@ -181,11 +181,6 @@
 				underlay_appearance.icon_state = DEFAULT_UNDERLAY_ICON_STATE
 		underlays = U
 
-		// Drop posters which were previously placed on this wall.
-		for(var/obj/structure/sign/poster/P in src)
-			P.roll_and_drop(src)
-
-
 /atom/proc/cardinal_smooth(adjacencies)
 	//NW CORNER
 	var/nw = "1-i"
@@ -393,12 +388,3 @@
 	SSicon_smooth.smooth_queue += A
 	SSicon_smooth.can_fire = 1
 	A.smooth |= SMOOTH_QUEUED
-
-
-//Example smooth wall
-/turf/closed/wall/smooth
-	name = "smooth wall"
-	icon = 'icons/turf/smooth_wall.dmi'
-	icon_state = "smooth"
-	smooth = SMOOTH_TRUE|SMOOTH_DIAGONAL|SMOOTH_BORDER
-	canSmoothWith = null

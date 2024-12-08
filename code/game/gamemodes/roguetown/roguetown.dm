@@ -1,5 +1,5 @@
 // This mode will become the main basis for the typical roguetown round. Based off of chaos mode.
-var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "Extended", "Aspirants", "Bandits", "Maniac", "Cultists", "Lich", "CANCEL") // This is mainly used for forcemgamemodes
+var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "None", "Aspirants", "Bandits", "Maniac", "Cultists", "Lich", "CANCEL") // This is mainly used for forcemgamemodes
 
 /datum/game_mode/chaosmode
 	name = "roguemode"
@@ -159,28 +159,30 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				if("Cultists")
 					pick_cultist()
 					log_game("Major Antagonist: Cultists")
-				if("Extended")
-					log_game("Major Antagonist: Extended")
+				if("None")
+					log_game("Major Antagonist: None")
 		return TRUE
 
-	var/major_roll = rand(1,100)
+	var/major_roll = pick(1,2,3)
 	switch(major_roll)
-		if(0 to 25)
+		if(1)
 			pick_rebels()
-			log_game("Major Antagonist: Rebellion")
-		if(26 to 51)
+			log_game("Major Antagonist: Peasant Rebellion")
+		if(2)
 			pick_cultist()
 			log_game("Major Antagonist: Cultists")
-		if(52 to 76)
+		if(3)
 			//WWs and Vamps now normally roll together
-			// pick_vampires()
+			pick_vampires()
 			pick_werewolves()
-			log_game("Major Antagonist: Werewolves")
-		if(77 to 99)
-			log_game("Major Antagonist: Extended") //gotta put something here.
+			log_game("Major Antagonist: Vampires and Werewolves")
+		//if(4)
+		//	log_game("Major Antagonist: None")
 
-	pick_bandits()
-	log_game("Minor Antagonist: Bandit")
+	if(prob(100))
+		pick_bandits()
+		log_game("Minor Antagonist: Bandit")
+
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
@@ -189,9 +191,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 		pick_lich()
 		log_game("Minor Antagonist: Lich")
 
-	// if(prob(10))
-	// 	pick_maniac()
-	// 	log_game("Minor Antagonist: Maniac")
+	if(prob(10))
+		pick_maniac()
+		log_game("Minor Antagonist: Maniac")
 
 	return TRUE
 
@@ -210,11 +212,12 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	"Goblin Smith",
 	"Goblin Shaman")
 	var/num_bandits = 0
+	var/limit_bandits = pick(4,5,6,7,8)
 	if(num_players() >= 12)
 		// 1 bandit per 12 players,
 		num_bandits = round(num_players() / 12)
-		if(num_bandits >= 8)	//caps bandits at 8
-			num_bandits = 8
+		if(num_bandits >= limit_bandits)	//caps bandits at 8
+			num_bandits = limit_bandits
 		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
 		bandit_job.total_positions = num_bandits
 		bandit_job.spawn_positions = num_bandits
@@ -411,10 +414,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 /datum/game_mode/chaosmode/proc/pick_lich()
 
-	// High pop only
-	if(num_players() < 70)
-		return FALSE
-
 	restricted_jobs = list(
 	"Duke",
 	"Duchess",
@@ -500,6 +499,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 			blockme = TRUE
 		if(blockme)
 			continue
+
 		allantags -= vampire
 		pre_vampires += vampire
 		vampire.special_role = "vampire"

@@ -17,13 +17,13 @@
 
 /datum/particle_weather/rain_gentle
 	name = "Rain"
-	desc = "Gentle Rain, la la description."
+	desc = "Gentle rain, la la description."
 	particleEffectType = /particles/weather/rain
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/rain)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
-	weather_messages = list("The rain cools your skin.")
+	weather_messages = list("The rain makes you shiver a little.")
 
 	minSeverity = 1
 	maxSeverity = 15
@@ -38,14 +38,14 @@
 	L.adjust_bodytemperature(-rand(1,3))
 
 /datum/particle_weather/rain_storm
-	name = "Rain"
-	desc = "Gentle Rain, la la description."
+	name = "Rain storm"
+	desc = "Heavy rain, la la description."
 	particleEffectType = /particles/weather/rain
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/storm)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
-	weather_messages = list("The rain cools your skin.", "The storm is really picking up!")
+	weather_messages = list("The rain makes you shiver a little.", "The storm is really picking up!")
 
 	minSeverity = 4
 	maxSeverity = 100

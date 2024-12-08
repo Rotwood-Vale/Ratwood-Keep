@@ -247,21 +247,6 @@
 	// the attacked_by code varies among species
 	return dna.species.spec_attacked_by(I, user, affecting, used_intent, src, useder)
 
-
-/mob/living/carbon/human/attack_hulk(mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	var/hulk_verb = pick("smash","pummel")
-	if(check_shields(user, 15, "the [hulk_verb]ing"))
-		return
-	..()
-	playsound(loc, user.dna.species.attack_sound, 25, TRUE, -1)
-	visible_message(span_danger("[user] [hulk_verb]ed [src]!"), \
-					span_danger("[user] [hulk_verb]ed [src]!"), span_hear("I hear a sickening sound of flesh hitting flesh!"), null, user)
-	to_chat(user, span_danger("I [hulk_verb] [src]!"))
-	adjustBruteLoss(15)
-
 /mob/living/carbon/human/attack_hand(mob/user)
 	if(..())	//to allow surgery to return properly.
 		return
@@ -349,63 +334,61 @@
 		else
 			retaliate(M)
 
-/mob/living/carbon/human/ex_act(severity, target, origin)
-	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
-		return
+/mob/living/carbon/human/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	..()
 	if (!severity)
 		return
+	var/ddist = devastation_range
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fdist = flame_range
+	var/fodist = get_dist(src, epicenter)
 	var/brute_loss = 0
 	var/burn_loss = 0
+	var/dmgmod = round(rand(0.5, 1.5), 0.1)
 	var/bomb_armor = getarmor(null, "bomb")
 
-//200 max knockdown for EXPLODE_HEAVY
-//160 max knockdown for EXPLODE_LIGHT
+	if(fdist)
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
 
-
-	switch (severity)
-		if (EXPLODE_DEVASTATE)
-			if(bomb_armor < EXPLODE_GIB_THRESHOLD) //gibs the mob if their bomb armor is lower than EXPLODE_GIB_THRESHOLD
-				for(var/I in contents)
-					var/atom/A = I
-					A.ex_act(severity)
-				gib()
-				return
-			else
-				brute_loss = 500
-				var/atom/throw_target = get_edge_target_turf(src, get_dir(src, get_step_away(src, src)))
-				throw_at(throw_target, 200, 4)
-				damage_clothes(400 - bomb_armor, BRUTE, "bomb")
-
-		if (EXPLODE_HEAVY)
-			brute_loss = 60
-			burn_loss = 60
+	switch(severity)
+		if(EXPLODE_DEVASTATE)
+			brute_loss = ((120 * ddist) - (120 * fodist) * dmgmod)
+			burn_loss = ((60 * ddist) - (60 * fodist) * dmgmod)
 			if(bomb_armor)
-				brute_loss = 30*(2 - round(bomb_armor*0.01, 0.05))
-				burn_loss = brute_loss				//damage gets reduced from 120 to up to 60 combined brute+burn
-			damage_clothes(100 - bomb_armor, BRUTE, "bomb")
-//			if (!istype(ears, /obj/item/clothing/ears/earmuffs))
-//				adjustEarDamage(30, 120)
-			Unconscious(20)							//short amount of time for follow up attacks against elusive enemies like wizards
-			Knockdown(200 - (bomb_armor * 1.6)) 	//between ~4 and ~20 seconds of knockdown depending on bomb armor
+				brute_loss = ((100 * (2 - round(bomb_armor*0.01, 0.05)) * ddist) - ((100 * (2 - round(bomb_armor*0.01, 0.05))) * fodist) * dmgmod)
+				burn_loss = brute_loss
+			damage_clothes(max(brute_loss - bomb_armor, 0), BRUTE, "bomb")
+//				if (!istype(ears, /obj/item/clothing/ears/earmuffs))
+//					adjustEarDamage(30, 120)
+			Unconscious((50 * ddist) - (15 * fodist))
+			Knockdown(((30 * ddist) - (30 * fodist)) - (bomb_armor * 1.6))
+
+		if(EXPLODE_HEAVY)
+			brute_loss = ((40 * hdist) - (40 * fodist) * dmgmod)
+			burn_loss = ((20 * hdist) - (20 * fodist) * dmgmod)
+			if(bomb_armor)
+				brute_loss = ((30 * (2 - round(bomb_armor*0.01, 0.05)) * hdist) - ((30 * (2 - round(bomb_armor*0.01, 0.05))) * fodist) * dmgmod)
+				burn_loss = brute_loss
+			damage_clothes(max(brute_loss - bomb_armor, 0), BRUTE, "bomb")
+			Unconscious((10 * hdist) - (5 * fodist))
+			Knockdown(((30 * hdist) - (30 * fodist)) - (bomb_armor * 1.6))
 
 		if(EXPLODE_LIGHT)
-			brute_loss = 5
+			brute_loss = ((10 * ldist) - (10 * fodist) * dmgmod)
 			if(bomb_armor)
-				brute_loss = 5*(2 - round(bomb_armor*0.01, 0.05))
-//			damage_clothes(max(50 - bomb_armor, 0), BRUTE, "bomb")
-//			if (!istype(ears, /obj/item/clothing/ears/earmuffs))
-//				adjustEarDamage(15,60)
-			Knockdown(160 - (bomb_armor * 1.6))		//100 bomb armor will prevent knockdown altogether
+				brute_loss = (10 * (2 - round(bomb_armor*0.01, 0.05)) * ldist) - ((10 * (2 - round(bomb_armor*0.01, 0.05))) * fodist)
+				damage_clothes(max(brute_loss - bomb_armor, 0), BRUTE, "bomb")
 
 	take_overall_damage(brute_loss,burn_loss)
 
 	//attempt to dismember bodyparts
 	if(severity <= 2)
-		var/max_limb_loss = round(4/severity) //so you don't lose four limbs at severity 3.
+		var/max_limb_loss = rand(0, floor(3/severity))
 		for(var/X in bodyparts)
 			var/obj/item/bodypart/BP = X
-			if(prob(50/severity) && !prob(getarmor(BP, "bomb")) && BP.body_zone != BODY_ZONE_HEAD && BP.body_zone != BODY_ZONE_CHEST)
+			if(prob(25/severity) && !prob(getarmor(BP, "bomb")) && BP.body_zone != BODY_ZONE_HEAD && BP.body_zone != BODY_ZONE_CHEST)
 				BP.brute_dam = BP.max_damage
 				BP.dismember()
 				max_limb_loss--
@@ -677,7 +660,7 @@
 			examination += span_danger("[m1] TETRAPLEGIC!")
 	else if(HAS_TRAIT(src, TRAIT_PARALYSIS_R_LEG) && HAS_TRAIT(src, TRAIT_PARALYSIS_L_LEG))
 		examination += span_warning("[m1] PARAPLEGIC!")
-	
+
 	var/static/list/body_zones = list(
 		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
@@ -714,7 +697,7 @@
 		examination += span_notice("Let's see how [src]'s [parse_zone(choice)] is doing.")
 		if(!user.stat && !silent)
 			visible_message(span_notice("[user] examines [src]'s [parse_zone(choice)]."))
-	
+
 	var/obj/item/bodypart/examined_part = get_bodypart(choice)
 	if(examined_part)
 		examination += examined_part.check_for_injuries(user, advanced)

@@ -72,8 +72,13 @@ Sunlight System
 
 //non-weatherproof turfs
 /turf/var/weatherproof = TRUE
-/turf/open/openspace/weatherproof = FALSE
 /turf/open/transparent/openspace/weatherproof = FALSE
+
+/turf/proc/reassess_stack()
+	GLOB.SUNLIGHT_QUEUE_WORK += src
+	var/turf/T = SSmapping.get_turf_below(src)
+	if(T)
+		T.reassess_stack()
 
 /* check ourselves and neighbours to see what outdoor effects we need */
 /* turf won't initialize an outdoor_effect if sky_blocked*/

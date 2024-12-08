@@ -241,8 +241,16 @@
 		M.losebreath += 2
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
-	M.apply_status_effect(/datum/status_effect/buff/ozium)
 	..()
+
+/datum/reagent/ozium/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/ozium)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/ozium)
 
 /datum/reagent/ozium/overdose_start(mob/living/M)
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
@@ -290,14 +298,20 @@
 		overdosed = TRUE
 		M.Jitter(5)
 		M.losebreath += 1 //This doesn't kill the user, the overdose does
-		if(prob(10))
-			to_chat(M, span_warning("[pick("MY HEART HURTS!!", "Oh fuck... Oh fuck.", "IM DYING!!")]"))
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
-	M.apply_status_effect(/datum/status_effect/buff/moondust)
 	if(prob(10))
 		M.flash_fullscreen("whiteflash")
 	..()
+
+/datum/reagent/moondust/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/moondust)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/moondust)
 
 /datum/reagent/moondust/overdose_start(mob/living/M)
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)
@@ -346,10 +360,18 @@
 	M.Sleeping(-40)
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
-	M.apply_status_effect(/datum/status_effect/buff/moondust_purest)
 	if(prob(20))
 		M.flash_fullscreen("whiteflash")
 	..()
+
+/datum/reagent/moondust_purest/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/moondust_purest)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/moondust_purest)
 
 /datum/reagent/moondust_purest/overdose_start(mob/living/M)
 	M.playsound_local(M, 'sound/misc/heroin_rush.ogg', 100, FALSE)

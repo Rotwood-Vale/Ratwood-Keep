@@ -124,17 +124,6 @@
 			showpiece = W
 			to_chat(user, span_notice("I put [W] on display."))
 			update_icon()
-	else if(istype(W, /obj/item/stack/sheet/glass) && broken)
-		var/obj/item/stack/sheet/glass/G = W
-		if(G.get_amount() < 2)
-			to_chat(user, span_warning("I need two glass sheets to fix the case!"))
-			return
-		to_chat(user, span_notice("I start fixing [src]..."))
-		if(do_after(user, 20, target = src))
-			G.use(2)
-			broken = 0
-			obj_integrity = max_integrity
-			update_icon()
 	else
 		return ..()
 
@@ -168,38 +157,6 @@
 		log_combat(user, src, "kicks")
 		user.do_attack_animation(src, ATTACK_EFFECT_KICK)
 		take_damage(2)
-
-/obj/structure/displaycase_chassis
-	anchored = TRUE
-	density = FALSE
-	name = "display case chassis"
-	desc = ""
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "glassbox_chassis"
-	var/obj/item/electronics/airlock/electronics
-
-
-/obj/structure/displaycase_chassis/attackby(obj/item/I, mob/user, params)
-	if(I.tool_behaviour == TOOL_WRENCH) //The player can only deconstruct the wooden frame
-		to_chat(user, span_notice("I start disassembling [src]..."))
-		I.play_tool_sound(src)
-		if(I.use_tool(src, user, 30))
-			playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
-			new /obj/item/stack/sheet/mineral/wood(get_turf(src), 5)
-			qdel(src)
-
-	else if(istype(I, /obj/item/stack/sheet/glass))
-		var/obj/item/stack/sheet/glass/G = I
-		if(G.get_amount() < 10)
-			to_chat(user, span_warning("I need ten glass sheets to do this!"))
-			return
-		to_chat(user, span_notice("I start adding [G] to [src]..."))
-		if(do_after(user, 20, target = src))
-			G.use(10)
-			new /obj/structure/displaycase(src.loc)
-			qdel(src)
-	else
-		return ..()
 
 /obj/structure/displaycase/trophy
 	name = "trophy display case"

@@ -40,6 +40,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 	if(prob(30))
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 	H.change_stat("strength", 4)

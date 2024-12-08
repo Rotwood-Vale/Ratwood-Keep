@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/arquebus_pistol
 	name = "arquebus pistol"
-	desc = "A gunpowder weapon that shoots an armor piercing metal ball."
+	desc = "A small gunpowder weapon that shoots an armor piercing metal ball. While it has the same power as a regular handgonne, it is balanced to be used accurately in a single hand."
 	icon = 'icons/roguetown/weapons/32.dmi'
 	icon_state = "pistol"
 	item_state = "pistol"
@@ -13,7 +13,6 @@
 	randomspread = 1
 	spread = 0
 	can_parry = TRUE
-	pin = /obj/item/firing_pin
 	minstr = 6
 	walking_stick = FALSE
 	cartridge_wording = "lead ball"

@@ -126,16 +126,6 @@
 		next_attack_msg.Cut()
 		return TRUE
 
-/mob/living/simple_animal/attack_hulk(mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	playsound(loc, "punch", 25, TRUE, -1)
-	visible_message(span_danger("[user] punches [src]!"), \
-					span_danger("You're punched by [user]!"), null, COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, span_danger("I punch [src]!"))
-	adjustBruteLoss(15)
-
 /mob/living/simple_animal/attack_paw(mob/living/carbon/monkey/M)
 	if(..()) //successful monkey bite.
 		if(stat != DEAD)
@@ -202,7 +192,7 @@
 			target.mind.attackedme[user.real_name] = world.time
 		user.rogfat_add(15)
 
-/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = "melee")
+/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = d_type)
 	var/temp_damage = damage
 	if(!damage_coeff[damagetype])
 		temp_damage = 0
@@ -221,29 +211,40 @@
 	Proj.on_hit(src)
 	return BULLET_ACT_HIT
 
-/mob/living/simple_animal/ex_act(severity, target, origin)
-	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
-		return
+/mob/living/simple_animal/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	..()
-	var/bomb_armor = getarmor(null, "bomb")
-	switch (severity)
-		if (EXPLODE_DEVASTATE)
-			if(prob(bomb_armor))
-				adjustBruteLoss(500)
-			else
-				gib()
-				return
-		if (EXPLODE_HEAVY)
-			var/bloss = 60
-			if(prob(bomb_armor))
-				bloss = bloss / 1.5
-			adjustBruteLoss(bloss)
+	if (!severity)
+		return
+	var/ddist = devastation_range
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fdist = flame_range
+	var/fodist = get_dist(src, epicenter)
+	var/brute_loss = 0
+	var/burn_loss = 0
+	var/dmgmod = round(rand(0.5, 1.5), 0.1)
+
+	if(fdist)
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
+
+	switch(severity)
+		if(EXPLODE_DEVASTATE)
+			brute_loss = ((120 * ddist) - (120 * fodist) * dmgmod)
+			burn_loss = ((60 * ddist) - (60 * fodist) * dmgmod)
+			Unconscious((50 * ddist) - (15 * fodist))
+			Knockdown((30 * ddist) - (30 * fodist))
+
+		if(EXPLODE_HEAVY)
+			brute_loss = ((40 * hdist) - (40 * fodist) * dmgmod)
+			burn_loss = ((20 * hdist) - (20 * fodist) * dmgmod)
+			Unconscious((10 * hdist) - (5 * fodist))
+			Knockdown((30 * hdist) - (30 * fodist))
 
 		if(EXPLODE_LIGHT)
-			var/bloss = 30
-			if(prob(bomb_armor))
-				bloss = bloss / 1.5
-			adjustBruteLoss(bloss)
+			brute_loss = ((10 * ldist) - (10 * fodist) * dmgmod)
+
+	take_overall_damage(brute_loss,burn_loss)
 
 /mob/living/simple_animal/do_attack_animation(atom/A, visual_effect_icon, used_item, no_effect)
 	if(!no_effect && !visual_effect_icon && melee_damage_upper)
