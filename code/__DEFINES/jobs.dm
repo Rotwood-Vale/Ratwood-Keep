@@ -370,6 +370,7 @@
 	/datum/job/roguetown/guild_clerk,\
 	/datum/job/roguetown/mercenary,\
 	/datum/job/roguetown/seelie,\
+	/datum/job/roguetown/grabber,\
 	/datum/job/roguetown/bandit
 
 #define GARRISON_ROLES \

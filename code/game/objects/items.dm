@@ -202,6 +202,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	///played when an item that is equipped blocks a hit
 	var/list/blocksound 
 
+	// played when item is placed on hip_r or hip_l, the belt side slots
+	var/sheathe_sound
+
 	/// This is what we get when we either tear up or salvage a piece of clothing
 	var/obj/item/salvage_result = null
 
@@ -650,6 +653,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 // user is mob that equipped it
 // slot uses the slot_X defines found in setup.dm
 // for items that can be placed in multiple slots
+// The slot == refers to the new location of the item
 // Initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it
 /obj/item/proc/equipped(mob/user, slot, initial = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -660,17 +664,21 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
 	if(!initial)
-		if(equip_sound &&(slot_flags & slotdefine2slotbit(slot)))
-			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
-		else if(slot == SLOT_HANDS)
+		var/slotbit = slotdefine2slotbit(slot)
+		if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)
+		if(slotbit == ITEM_SLOT_HIP)
+			playsound(src, sheathe_sound, SHEATHE_SOUND_VOLUME, ignore_walls = FALSE)
+		else if(equip_sound &&(slot_flags & slotbit))
+			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
 	user.update_equipment_speed_mods()
 
 	if(!user.is_holding(src))
 		if(altgripped || wielded)
 			ungrip(user, FALSE)
 	if(twohands_required)
-		if(slot == SLOT_HANDS)
+		var/slotbit = slotdefine2slotbit(slot)
+		if(slotbit == ITEM_SLOT_HANDS)
 			wield(user)
 		else
 			ungrip(user)

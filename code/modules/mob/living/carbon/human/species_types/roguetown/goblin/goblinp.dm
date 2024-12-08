@@ -76,6 +76,9 @@
 		/datum/language/orcish
 	)
 
+	stress_examine = TRUE
+	stress_desc = span_boldred("A creature of Graggar!")
+
 /datum/species/goblinp/check_roundstart_eligible()
 	return TRUE
 
