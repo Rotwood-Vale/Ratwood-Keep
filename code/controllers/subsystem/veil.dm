@@ -4,7 +4,7 @@
  */
 GLOBAL_VAR_INIT(veil_tolls, 0)
 
-#define MINIMUM_VEIL_TOLLS 30
+#define MINIMUM_VEIL_TOLLS 40
 
 /**
  * This tiny subsystem is responsible for managing the veil tolls.
