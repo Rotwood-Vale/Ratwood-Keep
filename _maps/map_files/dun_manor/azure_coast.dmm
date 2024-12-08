@@ -1379,6 +1379,10 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/shelter/beach/forest)
+"jH" = (
+/obj/effect/landmark/threatspawner/searaider/longinit,
+/turf/open/floor/rogue/dirt,
+/area/rogue/indoors/cave)
 "jJ" = (
 /mob/living/carbon/human/species/human/northern/searaider/ambush,
 /turf/open/floor/rogue/naturalstone,
@@ -2140,15 +2144,6 @@
 /area/rogue/outdoors/beach)
 "pZ" = (
 /turf/closed/mineral/rogue/bedrock,
-/area/rogue/outdoors/beach/forest)
-"qc" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4
-	},
-/obj/structure/fluff/railing/border{
-	dir = 10
-	},
-/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/beach/forest)
 "qe" = (
 /obj/structure/fluff/statue/knight/interior,
@@ -31441,7 +31436,7 @@ RL
 ms
 ms
 ms
-ms
+jH
 ms
 ms
 ms
@@ -51395,11 +51390,11 @@ XK
 XK
 XK
 XK
-pz
-pz
-pz
-pz
-RL
+XK
+XK
+XK
+DF
+UR
 RL
 RL
 RL
@@ -51915,11 +51910,11 @@ XK
 XK
 XK
 XK
-XK
-XK
-XK
-DF
-UR
+pa
+pz
+pz
+pz
+RL
 RL
 RL
 RL
@@ -52046,9 +52041,9 @@ XK
 XK
 XK
 pa
-pz
+pa
 GD
-pz
+pa
 RL
 RL
 RL
@@ -53216,7 +53211,7 @@ XL
 XL
 XL
 XL
-qc
+Jg
 fP
 PW
 fP
@@ -68677,8 +68672,8 @@ BA
 BA
 BA
 BA
-BA
 xh
+Lz
 Lz
 Lz
 Lz
@@ -68807,8 +68802,8 @@ BA
 BA
 BA
 BA
-BA
 dp
+ym
 ym
 Ga
 ym
@@ -68937,8 +68932,8 @@ BA
 BA
 BA
 BA
-BA
 dp
+ym
 ym
 Uc
 qg
@@ -69067,8 +69062,8 @@ BA
 BA
 BA
 BA
-BA
 dp
+ym
 ym
 AV
 LJ
@@ -69197,8 +69192,8 @@ BA
 BA
 BA
 BA
-BA
 dp
+ym
 ym
 sk
 LJ
@@ -69327,8 +69322,8 @@ BA
 BA
 BA
 BA
-BA
 GH
+aF
 aF
 qg
 qQ
