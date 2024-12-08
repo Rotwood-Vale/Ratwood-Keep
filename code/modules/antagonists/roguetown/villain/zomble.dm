@@ -115,6 +115,7 @@
 	zombie.regenerate_organs()
 	if(has_turned)
 		to_chat(zombie, span_green("I no longer crave for flesh..."))
+		has_turned = FALSE
 		
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
 		zombie_part.rotted = FALSE

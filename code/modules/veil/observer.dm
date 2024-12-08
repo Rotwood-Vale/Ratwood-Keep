@@ -18,7 +18,7 @@
 	addtimer(CALLBACK(src, PROC_REF(give_toll)), 15 MINUTES)
 
 /mob/dead/observer/rogue/veil/proc/intro()
-	to_chat(usr, span_rose("I feel ripped away from my own body.\nMy spirit is now bound to the veil.\nI must wander this alternate reality and find a toll... The Carriageman awaits."))
+	to_chat(usr, span_green("I feel ripped away from my own body...\nMy spirit is now bound to the veil...\nI must wander this alternate reality and find a toll... The Carriageman awaits by the bastion."))
 
 /mob/dead/observer/rogue/veil/Destroy()
 	GLOB.veil_ghost_list -= src
