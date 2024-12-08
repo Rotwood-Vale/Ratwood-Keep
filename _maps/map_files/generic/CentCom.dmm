@@ -1543,7 +1543,8 @@
 /area/rogue/under/town/goblin)
 "gM" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	lockid = "gobbo_chief"
+	lockid = "gobbo_guards";
+	name = "Shaman's Room"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/goblin)
@@ -1598,8 +1599,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "hV" = (
-/obj/effect/landmark/start/goblinshaman,
-/turf/open/floor/rogue/cobble,
+/obj/effect/landmark/start/goblinguard,
+/turf/open/floor/rogue/blocks{
+	icon_state = "paving"
+	},
 /area/rogue/under/town/goblin)
 "ie" = (
 /obj/structure/table/wood{
@@ -1619,7 +1622,8 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
 	lockid = "gobbo_guards";
-	locked = 1
+	locked = 1;
+	name = "Guard's Quarters"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/goblin)
@@ -1717,7 +1721,8 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
 	lockid = "gobbo";
-	locked = 1
+	locked = 1;
+	name = "Armory"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
@@ -1919,7 +1924,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "oo" = (
-/obj/effect/landmark/start/goblinsmith,
+/obj/structure/fluff/nest,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "pb" = (
@@ -2078,6 +2083,9 @@
 /obj/structure/fluff/railing/border{
 	dir = 9
 	},
+/obj/effect/landmark/start/goblinrabble{
+	dir = 1
+	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
 "ro" = (
@@ -2120,7 +2128,12 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/banditcamp)
 "ry" = (
-/obj/effect/landmark/start/goblinguard,
+/obj/structure/mineral_door/wood/donjon{
+	dir = 8;
+	lockid = "gobbo";
+	locked = 1;
+	name = "Outside"
+	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
 "rC" = (
@@ -2246,16 +2259,12 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "uF" = (
-/obj/effect/landmark/start/goblinrabble{
-	dir = 1
-	},
-/turf/open/floor/rogue/blocks,
+/obj/effect/landmark/start/goblinsmith,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/under/town/goblin)
 "uW" = (
-/obj/effect/landmark/start/goblinrabble{
-	dir = 4
-	},
-/turf/open/floor/rogue/cobble,
+/obj/effect/landmark/start/goblinshaman,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/under/town/goblin)
 "vl" = (
 /obj/structure/table/wood{
@@ -2442,7 +2451,8 @@
 "zX" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	lockid = "gobbo_chief";
-	locked = 1
+	locked = 1;
+	name = "Chief's Room"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -2538,7 +2548,8 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
 	lockid = "gobbo";
-	locked = 1
+	locked = 1;
+	name = "Smithery"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
@@ -2713,7 +2724,8 @@
 "FP" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 8;
-	lockid = "gobbo"
+	lockid = "gobbo";
+	name = "Kitchen"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -2743,8 +2755,10 @@
 	},
 /area/rogue/indoors)
 "Gw" = (
-/obj/effect/landmark/start/goblinrabble,
-/turf/open/floor/rogue/cobble/mossy,
+/obj/effect/landmark/start/goblincook{
+	dir = 4
+	},
+/turf/open/floor/rogue/metal,
 /area/rogue/under/town/goblin)
 "Gz" = (
 /obj/structure/closet/crate/coffin/vampire,
@@ -2755,8 +2769,10 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/banditcamp)
 "GG" = (
-/obj/effect/landmark/start/goblinchief,
-/turf/open/floor/carpet/red,
+/obj/effect/landmark/start/goblinrabble{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "GY" = (
 /obj/structure/mineral_door/wood/deadbolt{
@@ -2923,10 +2939,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/banditcamp)
-"JR" = (
-/obj/effect/landmark/start/goblincook,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/goblin)
 "Ka" = (
 /obj/item/paper,
 /obj/item/paper,
@@ -3080,7 +3092,8 @@
 "MA" = (
 /obj/structure/mineral_door/wood/donjon{
 	lockid = "gobbo_guards";
-	locked = 1
+	locked = 1;
+	name = "Armory"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
@@ -3120,7 +3133,8 @@
 "Ns" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
-	lockid = "gobbo_guards"
+	lockid = "gobbo_guards";
+	name = "Barracks"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
@@ -3234,7 +3248,8 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
 	lockid = "gobbo";
-	locked = 1
+	locked = 1;
+	name = "Storage"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
@@ -3357,7 +3372,8 @@
 /obj/structure/mineral_door/wood/donjon{
 	armor = list(blunt=90, slash=90, stab=90, bullet=0, laser=0, energy=100, bomb=10, bio=100, rad=100, fire=50, acid=50);
 	lockid = "gobbo_chief";
-	locked = 1
+	locked = 1;
+	name = "Riches"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
@@ -3444,6 +3460,9 @@
 	pixel_x = 3
 	},
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/start/goblinrabble{
+	dir = 1
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "TV" = (
@@ -3563,11 +3582,10 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/banditcamp)
 "WG" = (
-/obj/item/reagent_containers/food/snacks/rogue/bread,
-/obj/structure/closet/crate/chest,
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
+/obj/structure/fluff/nest,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
 "WI" = (
@@ -3681,6 +3699,7 @@
 /area/rogue/indoors)
 "ZB" = (
 /obj/structure/chair/wood/rogue/throne,
+/obj/effect/landmark/start/goblinchief,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/under/town/goblin)
 
@@ -44596,14 +44615,14 @@ yK
 rk
 nW
 Af
-ry
-ry
+xd
+xd
 ik
 AJ
 AJ
 NE
 ik
-xd
+KP
 pS
 nS
 xd
@@ -45057,14 +45076,14 @@ nW
 nW
 nW
 xd
-ry
+xd
 lu
 AJ
 qQ
 FA
 lu
 Ay
-JR
+Af
 Af
 xd
 kM
@@ -45742,7 +45761,7 @@ Vp
 yK
 xd
 yK
-rk
+WG
 xd
 Af
 MO
@@ -46202,15 +46221,15 @@ GY
 yK
 sO
 yK
+tf
 xd
 xd
-xd
 yK
 yK
 yK
 yK
 yK
-Cd
+ry
 yK
 yK
 yK
@@ -46422,7 +46441,7 @@ tN
 HH
 yK
 Rc
-hV
+Af
 Af
 gM
 Hf
@@ -46892,7 +46911,7 @@ xd
 yK
 xd
 gC
-Af
+oo
 Af
 yK
 yK
@@ -47369,7 +47388,7 @@ YM
 lu
 YM
 Af
-uW
+Af
 Xd
 xd
 YM
@@ -47588,7 +47607,7 @@ yK
 tq
 DK
 rG
-rG
+Gw
 hI
 Af
 Af
@@ -47601,7 +47620,7 @@ YM
 wO
 mJ
 TF
-iW
+xd
 YM
 yK
 HH
@@ -47815,13 +47834,13 @@ KO
 lu
 zX
 yK
-zw
+uF
 NN
-DK
+hV
 Nb
 rm
-xd
-Af
+iW
+GG
 yK
 Nb
 xd
@@ -47831,7 +47850,7 @@ xd
 sd
 XX
 Hp
-iW
+xd
 NJ
 yK
 yK
@@ -48047,18 +48066,18 @@ Af
 yK
 ZB
 zw
-DK
+hV
 Hf
-Af
-Af
-Af
+GG
+GG
+GG
 YL
 Nb
 xd
 xd
 lW
 xd
-Gw
+xd
 mJ
 Hp
 mY
@@ -48275,13 +48294,13 @@ Af
 Af
 Af
 yK
-zw
+uW
 tq
-DK
+hV
 Hf
 TQ
-Af
-xd
+GG
+iW
 yK
 Nb
 xd
@@ -48499,7 +48518,7 @@ tN
 HH
 lu
 iQ
-GG
+tq
 Af
 Af
 VM
@@ -48518,10 +48537,10 @@ xd
 xd
 yK
 YM
-Gw
+xd
 Tt
 KN
-uF
+YM
 YM
 yK
 HH
@@ -51275,7 +51294,7 @@ yK
 pu
 Af
 Af
-oo
+Af
 Af
 Af
 Af
