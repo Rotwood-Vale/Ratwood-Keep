@@ -6,8 +6,6 @@
 	gender = PLURAL
 	slot_flags = ITEM_SLOT_SHOES
 	body_parts_covered = FEET
-	sleeved = 'icons/roguetown/clothing/onmob/feet.dmi'
-	sleevetype = "leg"
 	bloody_icon_state = "shoeblood"
 	equip_delay_self = 30
 	w_class = WEIGHT_CLASS_SMALL
@@ -136,5 +134,4 @@
 	desc = "A pair of fine boots worn by mercenaries."
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)

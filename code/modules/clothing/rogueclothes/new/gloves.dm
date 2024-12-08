@@ -3,7 +3,6 @@
 	desc = "Silken gloves, usually used by the wealthy for the material, or by thieves for the light weight and smooth material."
 	icon = 'icons/roguetown/clothing/newclothes/objgloves.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/onmobgloves.dmi'
-	sleeved = 'icons/roguetown/clothing/newclothes/onmob/onmobgloves.dmi'
 	icon_state = "shadowgloves"
 	resistance_flags = null
 	blocksound = SOFTHIT
@@ -18,7 +17,6 @@
 	desc = "Some cloth used to be wrapped around your hands. It won't protect them from much."
 	icon = 'icons/roguetown/clothing/newclothes/objgloves.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/onmobgloves.dmi'
-	sleeved = 'icons/roguetown/clothing/newclothes/onmob/onmobgloves.dmi'
 	icon_state = "clothwraps"
 	resistance_flags = null
 	blocksound = SOFTHIT

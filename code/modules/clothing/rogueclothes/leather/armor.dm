@@ -11,7 +11,6 @@
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sewrepair = TRUE
-	nodismemsleeves = TRUE
 	max_integrity = 150
 	sellprice = 20
 	armor_class = ARMOR_CLASS_LIGHT
@@ -49,7 +48,6 @@
 	blocksound = SOFTHIT
 	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
-	nodismemsleeves = TRUE
 	body_parts_covered = CHEST|GROIN|VITALS
 	max_integrity = 300
 	sellprice = 25
@@ -70,8 +68,6 @@
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sewrepair = TRUE
-	sleevetype = null
-	sleeved = null
 	armor_class = ARMOR_CLASS_LIGHT
 	salvage_result = /obj/item/natural/hide/cured
 
@@ -81,8 +77,6 @@
 	icon_state = "sailorvest"
 	color = null
 	slot_flags = ITEM_SLOT_ARMOR
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
-	sleevetype = "shirt"
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/ComponentInitialize()
 	. = ..()
@@ -105,7 +99,6 @@
 	name = "silk jacket"
 	desc = "A soft and comfortable jacket."
 	icon_state = "nightman"
-	sleeved = 'icons/roguetown/clothing/onmob/armor.dmi'
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 

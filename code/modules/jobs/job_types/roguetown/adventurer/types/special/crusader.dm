@@ -86,7 +86,6 @@
 	icon_state = "crusader_surcoat"
 	icon = 'icons/roguetown/clothing/special/crusader.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/crusader.dmi'
-	sleeved = 'icons/roguetown/clothing/special/onmob/crusader.dmi'
 
 /obj/item/clothing/cloak/stabard/crusader/t
 	name = "surcoat of the silver order"
@@ -97,7 +96,6 @@
 	icon_state = "crusader_cloak"
 	icon = 'icons/roguetown/clothing/special/crusader.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/crusader.dmi'
-	sleeved = 'icons/roguetown/clothing/special/onmob/crusader.dmi'
 
 /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	name = "bucket helm"
