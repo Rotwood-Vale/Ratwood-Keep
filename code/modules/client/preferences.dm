@@ -127,6 +127,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/mastervol = 50
 
 	var/anonymize = TRUE
+	var/masked_examine = FALSE
 
 	var/lastclass
 

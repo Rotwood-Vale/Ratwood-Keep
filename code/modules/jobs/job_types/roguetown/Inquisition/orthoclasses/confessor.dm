@@ -32,8 +32,8 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/boots
-	mask = /obj/item/clothing/mask/rogue/facemask
-	head = /obj/item/clothing/head/roguetown/roguehood/black
+	mask = /obj/item/clothing/mask/rogue/facemask/psydonmask
+	head = /obj/item/clothing/head/roguetown/roguehood/psydon
 	backpack_contents = list(/obj/item/roguekey/inquisition = 1, /obj/item/lockpickring/mundane = 1)
 	H.change_stat("strength", -1) // weasel
 	H.change_stat("endurance", 3)
