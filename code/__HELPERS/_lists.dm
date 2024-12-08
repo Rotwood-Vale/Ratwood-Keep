@@ -13,6 +13,8 @@
 #define UNSETEMPTY(L) if (L && !length(L)) L = null
 #define LAZYREMOVE(L, I) if(L) { L -= I; if(!length(L)) { L = list(); } }
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
+///This is used to add onto lazy assoc list when the value you're adding is a /list/. This one has extra safety over lazyaddassoc because the value could be null (and thus cant be used to += objects)
+#define LAZYADDASSOCLIST(L, K, V) if(!L) { L = list(); } L[K] += list(V);
 #define LAZYOR(L, I) if(!L) { L = list(); } L |= I;
 #define LAZYFIND(L, V) L ? L.Find(V) : 0
 #define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)

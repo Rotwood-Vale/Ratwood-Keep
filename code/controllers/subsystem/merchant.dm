@@ -12,6 +12,9 @@ SUBSYSTEM_DEF(merchant)
 	var/list/orderhistory = list()
 
 
+	var/datum/lift_master/tram/cargo_boat
+	var/cargo_docked = TRUE
+
 /datum/controller/subsystem/merchant/Initialize(timeofday)
 	for(var/pack in subtypesof(/datum/supply_pack/rogue))
 		var/datum/supply_pack/P = new pack()
@@ -21,3 +24,43 @@ SUBSYSTEM_DEF(merchant)
 		if(!(P.group in supply_cats))
 			supply_cats += P.group
 	return ..()
+
+
+/datum/controller/subsystem/merchant/proc/prepare_cargo_shipment()
+	if(!cargo_boat || !cargo_docked)
+		return
+	if(!length(requestlist))
+		return
+
+	cargo_boat.show_tram()
+	var/list/boat_spaces = list()
+	for(var/obj/structure/industrial_lift/lift in cargo_boat.lift_platforms)
+		boat_spaces |= lift.locs
+		boat_spaces -= get_turf(lift)
+	for(var/atom/movable/request as anything in requestlist)
+		var/turf/boat_turf = pick_n_take(boat_spaces)
+		var/atom/movable/new_item = new request
+		new_item.forceMove(boat_turf)
+		for(var/obj/structure/industrial_lift/lift in cargo_boat.lift_platforms)
+			lift.held_cargo |= new_item
+	cargo_docked = FALSE
+	SEND_GLOBAL_SIGNAL(COMSIG_DISPATCH_CARGO, cargo_boat)
+
+/datum/controller/subsystem/merchant/proc/send_cargo_ship_back()
+	var/obj/effect/landmark/tram/queued_path/cargo_stop/cargo_stop = cargo_boat.idle_platform
+	cargo_stop.UnregisterSignal(cargo_boat, COMSIG_TRAM_EMPTY)
+	if(!SSticker.HasRoundStarted())
+		return
+	if(!cargo_stop.next_path_id)
+		return
+	var/obj/effect/landmark/tram/destination_platform
+	for (var/obj/effect/landmark/tram/destination as anything in GLOB.tram_landmarks[cargo_stop.specific_lift_id])
+		if(destination.platform_code == cargo_stop.next_path_id)
+			destination_platform = destination
+			break
+
+	if (!destination_platform)
+		return FALSE
+
+	cargo_boat.tram_travel(destination_platform, rapid = FALSE)
+	cargo_boat.callback_platform = destination_platform
