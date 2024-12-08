@@ -196,11 +196,6 @@
 	icon_state = "bottle1"
 	list_reagents = list(/datum/reagent/medicine/salglu_solution = 30)
 
-/obj/item/reagent_containers/glass/bottle/romerol
-	name = "romerol bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/romerol = 30)
-
 //Oldstation.dmm chemical storage bottles
 
 /obj/item/reagent_containers/glass/bottle/hydrogen

@@ -223,21 +223,6 @@
 	required_reagents = list(/datum/reagent/fuel/oil = 1)
 	required_temp = 480
 
-//monkey powder heehoo
-/datum/chemical_reaction/monkey_powder
-	name = /datum/reagent/monkey_powder
-	id = /datum/reagent/monkey_powder
-	results = list(/datum/reagent/monkey_powder = 3)
-	required_reagents = list(/datum/reagent/consumable/banana = 1, /datum/reagent/consumable/nutriment=2,/datum/reagent/liquidgibs = 1)
-
-/datum/chemical_reaction/monkey
-	name = "monkey"
-	id = "monkey"
-	required_reagents = list(/datum/reagent/monkey_powder = 30, /datum/reagent/water = 1)
-
-/datum/chemical_reaction/monkey/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	new /mob/living/carbon/monkey(location)
 //water electrolysis
 /datum/chemical_reaction/electrolysis
 	name = "electrolysis"
@@ -275,24 +260,11 @@
 	results = list(/datum/reagent/lye = 2)
 	required_reagents = list(/datum/reagent/ash = 1, /datum/reagent/water = 1, /datum/reagent/carbon = 1)
 
-/datum/chemical_reaction/royal_bee_jelly
-	name = "royal bee jelly"
-	id = /datum/reagent/royal_bee_jelly
-	results = list(/datum/reagent/royal_bee_jelly = 5)
-	required_reagents = list(/datum/reagent/toxin/mutagen = 10, /datum/reagent/consumable/honey = 40)
-
 /datum/chemical_reaction/laughter
 	name = /datum/reagent/consumable/laughter
 	id = /datum/reagent/consumable/laughter
 	results = list(/datum/reagent/consumable/laughter = 10) // Fuck it. I'm not touching this one.
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/banana = 1)
-
-/datum/chemical_reaction/cellulose_carbonization
-	name = "Cellulose_Carbonization"
-	id = /datum/reagent/carbon
-	results = list(/datum/reagent/carbon = 1)
-	required_reagents = list(/datum/reagent/cellulose = 1)
-	required_temp = 512
 
 /datum/chemical_reaction/hydrogen_peroxide
 	name = "Hydrogen peroxide"
