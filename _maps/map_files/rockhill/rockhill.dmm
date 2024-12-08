@@ -4099,6 +4099,13 @@
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "dkT" = (
@@ -11082,6 +11089,22 @@
 /area/rogue/indoors/shelter/mountains)
 "iCV" = (
 /obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
 /turf/open/floor/rogue/metal,
 /area/rogue/indoors)
 "iDg" = (
@@ -23523,6 +23546,11 @@
 	dir = 6;
 	icon_state = "largetable"
 	},
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "sjo" = (
