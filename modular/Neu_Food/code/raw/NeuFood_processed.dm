@@ -221,7 +221,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/salami
 	req_table = FALSE
 	structurecraft = /obj/machinery/tanningrack
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/cooking/coppiette
 	name = "coppiette"
@@ -230,7 +230,7 @@
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette
 	req_table = FALSE
-	craftdiff = 0
+	skill_level = 0
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/salo
@@ -239,7 +239,7 @@
 		/obj/item/reagent_containers/food/snacks/fat = 1,
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/fat/salo
-	craftdiff = 0
+	skill_level = 0
 	structurecraft = /obj/machinery/tanningrack
 	req_table = FALSE
 
@@ -252,7 +252,7 @@
 		/obj/item/reagent_containers/food/snacks/fish = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/saltfish
 	req_table = FALSE
-	craftdiff = 0
+	skill_level = 0
 	subtype_reqs = TRUE
 	structurecraft = /obj/machinery/tanningrack
 
@@ -264,7 +264,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins
 	structurecraft = /obj/machinery/tanningrack
 	req_table = FALSE
-	craftdiff = 0
+	skill_level = 0
 	subtype_reqs = TRUE
 
 
