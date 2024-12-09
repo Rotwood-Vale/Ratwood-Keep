@@ -96,11 +96,11 @@
 	chargetime = 2 SECONDS
 	chargedloop = null
 	sound = 'sound/foley/bubb (1).ogg'
-	invocation = "The sea calls you; listen!"
+	invocation = "From the abyss, rise!"
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	charge_max = 60 SECONDS
+	charge_max = 180 SECONDS
 	miracle = TRUE
 	devotion_cost = 100
 	var/townercrab = FALSE
