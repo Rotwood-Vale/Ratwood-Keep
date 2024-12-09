@@ -20,6 +20,7 @@
 	var/grant_lit_torch = FALSE
 	//Whether to display "wandering Human" rather than their job title
 	var/show_wanderer_examine = TRUE
+	var/show_foreign_examine = TRUE
 	var/advjob_examine = TRUE
 	var/banned_leprosy = TRUE
 	var/banned_lunatic = TRUE
@@ -31,10 +32,10 @@
 	name = "Adventurer"
 	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)
 
-/*
+
 /datum/migrant_role/bandit
 	name = "Bandit"
 	antag_datum = /datum/antagonist/bandit
 	advclass_cat_rolls = list(CTAG_BANDIT = 20)
 	grant_lit_torch = TRUE
-*/
+

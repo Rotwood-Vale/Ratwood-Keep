@@ -27,7 +27,6 @@
 	disliked_food = NONE
 	liked_food = NONE
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -88,6 +87,8 @@
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 	languages = list(
@@ -114,13 +115,16 @@
 
 /datum/species/tieberian/get_skin_list()
 	return list(
-		"Castillian" = SKIN_COLOR_CASTILLIAN,
-		"Mysterious" = SKIN_COLOR_MYSTERIOUS,
-		"Succubus" = SKIN_COLOR_SUCCUBUS,
-		"Incubus" = SKIN_COLOR_INCUBUS,
-		"Mephistopheles" = SKIN_COLOR_MEPHISTOPHELES,
 		"Zariel" = SKIN_COLOR_ZARIEL,
+		"Levistus" = SKIN_COLOR_LEVISTUS,
+		"Glasya" = SKIN_COLOR_GLASYA,
+		"Asmodeus" = SKIN_COLOR_ASMODEUS,
+		"Baalzebul" = SKIN_COLOR_BAALZEBUL,
+		"Mephistopheles" = SKIN_COLOR_MEPHISTOPHELES,
+		"Fierna" = SKIN_COLOR_FIERNA,
 		"Dispater" = SKIN_COLOR_DISPATER,
+		"Nymsea" = SKIN_COLOR_NYMSEA,
+		"Mammon" = SKIN_COLOR_MAMMON
 	)
 
 /datum/species/tieberian/get_hairc_list()

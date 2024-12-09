@@ -19,6 +19,7 @@
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
 	pickup_sound = 'sound/foley/equip/swordlarge1.ogg'
+	sheathe_sound = 'sound/items/wood_sharpen.ogg'
 	flags_1 = CONDUCT_1
 	throwforce = 10
 	thrown_bclass = BCLASS_CUT
@@ -67,6 +68,7 @@
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	swingdelay = 0
 	item_d_type = "slash"
+	ican_cdg = TRUE
 
 /datum/intent/sword/thrust
 	name = "stab"
@@ -79,6 +81,7 @@
 	chargetime = 0
 	swingdelay = 0
 	item_d_type = "stab"
+	ican_cdg = TRUE
 
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
@@ -90,6 +93,7 @@
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
 	wdefense = 4
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/long
 	force = 25
@@ -397,6 +401,7 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 100
 	sellprice = 10
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/iron/short
 	name = "short sword"
@@ -430,6 +435,7 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 2
+	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/iron/messer/steel
 	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.
@@ -612,3 +618,59 @@
 	max_integrity = 200
 	dropshrink = 0.80
 	wdefense = 2
+/obj/item/rogueweapon/sword/sabre_freeze
+	name = "Freezing Saber"
+	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
+	icon_state = "saber"
+	max_integrity = 150
+	possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze)
+	gripped_intents = null
+	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
+	swingsound = BLADEWOOSH_SMALL
+	minstr = 5
+	wdefense = 6
+	wbalance = 1
+	damtype = BRUTE
+	light_color = LIGHT_COLOR_BLUE
+	var/on = FALSE
+
+/datum/intent/sword/freeze
+	name = "freeze"
+	icon_state = "instrike"
+	attack_verb = list("freezes")
+	animname = "chop"
+	hitsound = list('sound/combat/hits/pick/genpick (1).ogg')
+	penfactor = 20
+	swingdelay = 6
+	damfactor = 1.2
+	blade_class = BCLASS_BURN	
+
+/datum/intent/sword/cut/sabre/freeze
+	clickcd = 10
+	damfactor = 1
+
+/datum/intent/sword/thrust/freeze
+	clickcd = 10
+	damfactor = 1
+
+/obj/item/rogueweapon/sword/sabre_freeze/update_icon()
+	if(on)
+		icon_state = "saber_freeze"
+	else
+		icon_state = "saber"
+/obj/item/rogueweapon/sword/sabre_freeze/attack_self(mob/user)
+	if(on)
+		on = FALSE
+		damtype = BRUTE
+		possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze)
+	else
+		user.visible_message(span_warning("[user]'s blade lights up with a blue flame."))
+		on = TRUE
+		damtype = BURN
+		possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze, /datum/intent/sword/freeze)
+	playsound(user, pick('sound/magic/magic_nulled.ogg'), 100, TRUE)
+	if(user.a_intent)
+		var/datum/intent/I = user.a_intent
+		if(istype(I))
+			I.afterchange()
+	update_icon()

@@ -10,6 +10,8 @@
 	density = TRUE
 	damage_deflection = 25
 	climbable = TRUE
+	smeltresult = /obj/item/ingot/iron
+	var/advance_multiplier = 1 //Lower for auto-striking
 
 /obj/machinery/anvil/crafted
 	icon_state = "caveanvil"
@@ -24,14 +26,18 @@
 		var/obj/item/rogueweapon/tongs/T = W
 		if(hingot)
 			if(T.hingot)
-				..()
+				if(hingot.currecipe && hingot.currecipe.needed_item && istype(T.hingot, hingot.currecipe.needed_item))
+					hingot.currecipe.item_added(user)
+					qdel(T.hingot)
+					T.hingot = null
+					T.update_icon()
+					update_icon()
+					return
 				return
 			else
 				hingot.forceMove(T)
 				T.hingot = hingot
 				hingot = null
-				T.hott = null
-				hott = null
 				T.update_icon()
 				update_icon()
 				return
@@ -59,37 +65,49 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 		if(!hingot)
 			return
-		if(!hott)
-			to_chat(user, span_warning("It's too cold."))
-			return
 		if(!hingot.currecipe)
 			if(!choose_recipe(user))
 				return
-			user.flash_fullscreen("whiteflash")
-			shake_camera(user, 1, 1)
-			playsound(src,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
-		var/used_str = user.STASTR
-		if(iscarbon(user))
-			var/mob/living/carbon/carbon_user = user
-			if(carbon_user.domhand)
-				used_str = carbon_user.get_str_arms(carbon_user.used_hand)
-			carbon_user.rogfat_add(max(30 - (used_str * 3), 0))
-		var/total_chance = 7 * user.mind.get_skill_level(hingot.currecipe.appro_skill)
-		var/breakthrough = 0
-		if(prob(1 + total_chance)) //Small chance to flash
-			user.flash_fullscreen("whiteflash")
-			var/datum/effect_system/spark_spread/S = new()
-			var/turf/front = get_turf(src)
-			S.set_up(1, 1, front)
-			S.start()
-			breakthrough = 1
+		advance_multiplier = 1 //Manual striking more effective than manual striking.
+		user.doing = FALSE
+		spawn(1)
+			while(hingot)
+				if(!hott)
+					to_chat(user, span_warning("It's too cold."))
+					return
+				if(!hingot.currecipe)
+					return
+				var/used_str = user.STASTR
+				if(iscarbon(user))
+					var/mob/living/carbon/carbon_user = user
+					if(carbon_user.domhand)
+						used_str = carbon_user.get_str_arms(carbon_user.used_hand)
+					if(HAS_TRAIT(carbon_user, TRAIT_FORGEBLESSED))
+						carbon_user.rogfat_add(max(21 - (used_str * 3), 0)*advance_multiplier)
+					else
+						carbon_user.rogfat_add(max(30 - (used_str * 3), 0)*advance_multiplier)
+				var/total_chance = 7 * user.mind.get_skill_level(hingot.currecipe.appro_skill) * user.STAPER/10
+				var/breakthrough = 0
+				if(prob((1 + total_chance)*advance_multiplier)) //Small chance to flash
+					user.flash_fullscreen("whiteflash")
+					var/datum/effect_system/spark_spread/S = new()
+					var/turf/front = get_turf(src)
+					S.set_up(1, 1, front)
+					S.start()
+					breakthrough = 1
 
-		if(!hingot.currecipe.advance(user, breakthrough))
-			shake_camera(user, 1, 1)
-			playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
-		playsound(src,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
+				if(!hingot.currecipe.advance(user, breakthrough, advance_multiplier))
+					shake_camera(user, 1, 1)
+					playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
+					break
+				playsound(src,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
+				if(do_after(user, 20, target = src)) //Let's do it all over again!
+					advance_multiplier = 0.50
+				else
+					break
 
 		return
+
 
 	if(hingot && hingot.currecipe && hingot.currecipe.needed_item && istype(W, hingot.currecipe.needed_item))
 		hingot.currecipe.item_added(user)

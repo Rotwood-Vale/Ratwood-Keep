@@ -133,7 +133,7 @@
 
 /obj/structure/fluff/walldeco/stone/Initialize()
 	icon_state = "walldec[rand(1,6)]"
-	..()
+	return ..()
 
 /obj/structure/fluff/walldeco/maidensigil
 	name = "stone sigil"
@@ -173,10 +173,11 @@
 	buckle_lying = 0
 	breakoutextra = 10 MINUTES
 	buckleverb = "tie"
+	smeltresult = /obj/item/rope/chain
 
 /obj/structure/fluff/walldeco/chains/Initialize()
 	icon_state = "chains[rand(1,8)]"
-	..()
+	return ..()
 
 /obj/structure/fluff/walldeco/customflag
 	name = "rockhill flag"
@@ -184,7 +185,7 @@
 	icon_state = "wallflag"
 
 /obj/structure/fluff/walldeco/customflag/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else

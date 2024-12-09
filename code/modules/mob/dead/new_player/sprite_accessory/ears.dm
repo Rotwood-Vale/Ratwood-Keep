@@ -297,3 +297,27 @@
 	name = "Goblin"
 	icon_state = "goblin"
 	color_key_defaults = list(KEY_SKIN_COLOR)
+
+/datum/sprite_accessory/ears/big
+	icon = 'icons/mob/sprite_accessory/ears/ears_big.dmi'
+
+/datum/sprite_accessory/ears/big/rabbit_large
+	name = "Rabbit Ears (Large)"
+	icon_state = "rabbit_large"
+	color_keys = 3
+	color_key_names = list("Ears", "Inner", "Tips")
+	relevant_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/ears/big/acrador_long
+	icon_state = "acrador_long"
+	name = "Acrador (Long)"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+	relevant_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/ears/big/acrador_short
+	icon_state = "acrador_short"
+	name = "Acrador (Short)"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+	relevant_layers = list(BODY_ADJ_LAYER)

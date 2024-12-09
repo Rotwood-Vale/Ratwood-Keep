@@ -1,6 +1,6 @@
 /obj/item/storage/fancy/shhig
 	name = "Shhig Brand Zigs"
-	desc = "Dr. V's Shhig's; much like the image of serpents these zigs are synonymous with both healing and killing. Your life expectancy isnt very high anyway."
+	desc = "Shhig's Brand Zigs; much like the image of serpents these zigs are synonymous with both healing and killing. Your life expectancy isnt very high anyway."
 	icon = 'modular/Smoker/icon/smokable.dmi'
 	icon_state = "smokebox"
 	icon_type = "smoke"
@@ -21,18 +21,18 @@
 	return
 
 /obj/item/clothing/mask/cigarette/rollie/snek
-	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/consumable/honey = 30, /datum/reagent/toxin/venom = 10) //honey will give heal. it is NOT great 55% chance per unit tick to heal 1brute,burn,tox. high end perfect rolls 30hp. unlikely. degrades into sugar (chance) which has a chance to degrade into nutrients. simulates appetite surpressant effect.
+	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/consumable/honey = 3, /datum/reagent/toxin/venom = 10) //honey will give heal. it is NOT great 55% chance per unit tick to heal 1brute,burn,tox. high end perfect rolls 30hp. unlikely. degrades into sugar (chance) which has a chance to degrade into nutrients. simulates appetite surpressant effect.
 
 /obj/item/reagent_containers/hypospray/medipen/sty/snekbt
 	name = "Snake Bite"
-	desc = "Dr. V's;.....vim....and- Ask yourself this; What am I doing? It is litterally a fucking glowing viscous sludge you are about to put into your vascular system..."
+	desc = "Ask yourself this; What am I doing? It is litterally a fucking glowing viscous sludge you are about to put into your vascular system..."
 	volume = 10
 	amount_per_transfer_from_this = 10
 	list_reagents = list(/datum/reagent/drug/snekbt = 5, /datum/reagent/toxin/venom = 5)
 
 /obj/item/reagent_containers/hypospray/medipen/sty/nourish
 	name = "NOURISH"
-	desc = "Dr. V's nutritional suppliment; normal people eat and drink, but true champions NOURISH."
+	desc = "A nutritional suppliment; normal people eat and drink, but true champions NOURISH."
 	volume = 85
 	amount_per_transfer_from_this = 85
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/vitamin = 3, /datum/reagent/water = 50) // as much water as a bottle. enough honey to IF good rng rolls get 30hp. 33% chance to decay into sugar, sugar has a 33% chance to decay into nutrients. so saturation varies.
@@ -50,6 +50,14 @@
 		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
 		M.remove_stress(/datum/stressevent/sleepytime)
 		M.mind.sleep_adv.advance_cycle()
+	if(M.reagents.has_reagent(/datum/reagent/moondust) || M.reagents.has_reagent(/datum/reagent/moondust_purest))
+		M.Dizzy(10)
+		M.Jitter(5)
+		M.slurring += 3
+		M.confused += 2
+		M.losebreath += 2
+		if(prob(5))
+			M.visible_message(span_warning("Blood runs from [M]'s nose."))
 	if(M.has_flaw(/datum/charflaw/addiction/junkie))
 		M.sate_addiction()
 	..()
@@ -68,21 +76,12 @@
 	alpha = 255
 	show_when_dead = FALSE
 
-/datum/reagent/drug/snekbt/on_mob_end_metabolize(mob/living/M)
-	M.rogstam_add(-2500)
-	M.rogfat_add(2500) // crash you fucking junkie.
-	..()
-	. = 1
-
 /atom/movable/screen/fullscreen/bittensm/Initialize()
-	..()
+	. = ..()
 	filters += filter(type="angular_blur",x=5,y=5,size=1)
 
 /datum/reagent/drug/snekbt/overdose_start(mob/living/M, can_overdose = TRUE)
-	if(HAS_TRAIT(M, TRAIT_CRACKHEAD))// boathian bullshit isnt going to help you here. its a toxin not a drug
-		can_overdose = TRUE
-	to_chat(M, span_danger("you really..... really shouldnt of done that..."))
-	M.ForceContractDisease(new /datum/disease/heart_failure(), FALSE, TRUE)
+	to_chat(M, span_danger("you really... really shouldn't have done that..."))
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overdose, name)
 
 /datum/reagent/drug/snekbt/overdose_process(mob/living/M)
@@ -117,11 +116,8 @@
 			PM.backdrop(owner)
 	owner.add_stress(/datum/stressevent/snekbt)
 	ADD_TRAIT(owner, TRAIT_PROSOPAGNOSIA, TRAIT_GENERIC)
-	ADD_TRAIT(owner, TRAIT_FAKEDEATH, TRAIT_GENERIC)
-	ADD_TRAIT(owner, TRAIT_NODISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-	ADD_TRAIT(owner, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_SCHIZO_AMBIENCE, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
 
@@ -136,15 +132,10 @@
 			PM.backdrop(owner)
 	owner.remove_stress(/datum/stressevent/snekbt)
 	owner.clear_fullscreen("snekbt")
-	owner.rogstam_add(-2500)
-	owner.rogfat_add(2500) // crash you fucking junkie.
 	owner.update_body_parts_head_only()
 	REMOVE_TRAIT(owner, TRAIT_PROSOPAGNOSIA, TRAIT_GENERIC)
-	REMOVE_TRAIT(owner, TRAIT_FAKEDEATH, TRAIT_GENERIC)
-	REMOVE_TRAIT(owner, TRAIT_NODISMEMBER, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-	REMOVE_TRAIT(owner, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_SCHIZO_AMBIENCE, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
 	. = ..()

@@ -53,7 +53,7 @@
 	color = CLOTHING_RED
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guard/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -68,7 +68,7 @@
 	color = CLOTHING_PURPLE
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
 	else
@@ -84,7 +84,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random/Initialize()
 	color = pick("#6b5445", "#435436", "#704542", "#79763f")
-	..()
+	return ..()
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	name = "formal silks"
@@ -110,7 +110,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/Initialize()
 	color = pick("#6b5445", "#435436", "#704542", "#79763f")
-	..()
+	return ..()
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	name = "shirt"
@@ -122,7 +122,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt/random/Initialize()
 	color = pick("#6b5445", "#435436", "#704542", "#79763f")
-	..()
+	return ..()
 
 /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
 	name = "shirt"
@@ -181,9 +181,13 @@
 /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored
 	color = COLOR_GRAY
 
+/obj/item/clothing/suit/roguetown/shirt/tunic/newmoon
+	color = "#78a3c9"
+
 /obj/item/clothing/suit/roguetown/shirt/tunic/random/Initialize()
 	color = pick(CLOTHING_PURPLE, CLOTHING_RED, CLOTHING_BLUE, CLOTHING_GREEN)
-	..()
+	return ..()
+
 /obj/item/clothing/suit/roguetown/shirt/dress
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "dress"
@@ -216,7 +220,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/random/Initialize()
 	color = pick("#6b5445", "#435436", "#704542", "#79763f", CLOTHING_BLUE)
-	..()
+	return ..()
 
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -299,6 +303,10 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/Initialize()
 	. = ..()
 	color = pick("#a90707", "#16239a", "#d68fbd", CLOTHING_BLACK)
+
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/black/Initialize()
+	. = ..()
+	color = CLOTHING_BLACK
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/webs
 	name = "webbed shirt"

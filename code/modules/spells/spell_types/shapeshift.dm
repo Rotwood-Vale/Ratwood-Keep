@@ -19,10 +19,7 @@
 	var/shapeshift_type
 	var/list/possible_shapes = list(/mob/living/simple_animal/mouse,\
 		/mob/living/simple_animal/pet/dog/corgi,\
-		/mob/living/simple_animal/hostile/carp/ranged/chaos,\
-		/mob/living/simple_animal/bot/secbot/ed209,\
-		/mob/living/simple_animal/hostile/poison/giant_spider/hunter/viper,\
-		/mob/living/simple_animal/hostile/construct/armored)
+		/mob/living/simple_animal/hostile/poison/giant_spider/hunter/viper)
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/cast(list/targets,mob/user = usr)
 	if(src in user.mob_spell_list)
@@ -81,16 +78,6 @@
 
 	clothes_req = initial(clothes_req)
 	human_req = initial(human_req)
-
-/obj/effect/proc_holder/spell/targeted/shapeshift/dragon
-	name = "Dragon Form"
-	desc = ""
-	invocation = "RAAAAAAAAWR!"
-	convert_damage = FALSE
-
-
-	shapeshift_type = /mob/living/simple_animal/hostile/megafauna/dragon/lesser
-
 
 /obj/shapeshift_holder
 	name = "Shapeshift holder"

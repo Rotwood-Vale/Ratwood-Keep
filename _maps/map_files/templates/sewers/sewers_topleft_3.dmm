@@ -1,75 +1,862 @@
-"a" = (/turf/closed/mineral/rogue,/area/rogue/under/town/sewer)
-"b" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 5},/obj/item/reagent_containers/glass/cup/wooden,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"c" = (/obj/structure/table/wood{icon_state = "largetable"},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"d" = (/obj/structure/mineral_door/wood,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"e" = (/obj/structure/bed/rogue/shit,/obj/effect/decal/cleanable/cobweb/cobweb2,/obj/effect/landmark/start/vagrantlate{dir = 8},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"f" = (/obj/structure/table/wood{icon_state = "tablewood1"; dir = 1},/obj/item/cooking/pan,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"g" = (/obj/structure/bed/rogue/shit,/obj/machinery/light/rogue/wallfire/candle,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"h" = (/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"i" = (/obj/machinery/light/rogue/torchholder/l,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"j" = (/obj/structure/table/wood{icon_state = "largetable"},/obj/item/reagent_containers/glass/cup/wooden,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"k" = (/obj/machinery/light/rogue/oven/south,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"l" = (/obj/item/reagent_containers/glass/cup/wooden,/obj/structure/table/wood{icon_state = "largetable"; dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"m" = (/obj/structure/fermenting_barrel/random/water,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"n" = (/obj/structure/bed/rogue/shit,/obj/effect/decal/remains/human/grave,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"o" = (/obj/machinery/light/rogue/torchholder/c,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"p" = (/obj/machinery/light/rogue/torchholder,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
-"q" = (/obj/structure/mineral_door/swing_door,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"r" = (/obj/structure/table/wood{icon_state = "largetable"},/obj/item/reagent_containers/food/snacks/rogue/crackers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"s" = (/obj/effect/decal/cleanable/blood/tracks,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"t" = (/obj/structure/toilet,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"u" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
-"v" = (/obj/structure/chair/wood/rogue/chair3{dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"w" = (/obj/effect/decal/cleanable/cobweb,/obj/machinery/light/rogue/hearth,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"x" = (/obj/structure/chair/wood/rogue/chair3,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"y" = (/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"z" = (/obj/effect/decal/remains/human/grave,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"A" = (/obj/effect/decal/cleanable/blood/gibs,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"B" = (/obj/structure/spider/stickyweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"C" = (/obj/effect/landmark/start/vagrantlate{dir = 8},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"D" = (/obj/effect/decal/cleanable/cobweb/cobweb2,/obj/structure/closet/crate/roguecloset/crafted,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"E" = (/obj/structure/table/wood{icon_state = "largetable"},/obj/item/reagent_containers/glass/bowl,/obj/item/reagent_containers/food/snacks/rogue/friedrat,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"F" = (/obj/effect/decal/remains/bigrat,/obj/item/natural/dirtclod,/obj/effect/decal/cleanable/blood/old,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"G" = (/obj/structure/closet/crate/chest,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"H" = (/obj/effect/decal/cleanable/blood/tracks,/obj/effect/decal/cleanable/blood/old,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"I" = (/obj/structure/closet/crate/chest,/obj/item/reagent_containers/powder/salt,/obj/item/reagent_containers/powder/salt,/obj/item/reagent_containers/food/snacks/egg,/obj/item/reagent_containers/food/snacks/egg,/obj/item/reagent_containers/powder/flour,/obj/item/reagent_containers/powder/flour,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"J" = (/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/blood/tracks,/obj/effect/decal/cleanable/blood/tracks,/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/under/town/sewer)
-"K" = (/obj/structure/chair/stool/rogue,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"L" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 1},/obj/item/reagent_containers/food/snacks/rogue/crackers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"M" = (/obj/structure/roguemachine/scomm,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"N" = (/obj/structure/bed/rogue/shit,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"O" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"P" = (/obj/structure/chair/wood/rogue/chair3{dir = 4},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"Q" = (/obj/structure/fermenting_barrel/random/beer,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"R" = (/obj/item/natural/dirtclod,/obj/item/natural/dirtclod,/obj/item/natural/dirtclod,/obj/item/natural/dirtclod,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"S" = (/obj/item/roguebin/crackers,/obj/effect/decal/cleanable/cobweb,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"T" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 9},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"U" = (/obj/structure/bonfire/prelit,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"V" = (/obj/structure/bed/rogue/shit,/obj/effect/decal/cleanable/cobweb/cobweb2,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"W" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 6},/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"X" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 10},/obj/item/reagent_containers/food/snacks/rogue/meat/salami,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"Y" = (/obj/structure/closet/crate/roguecloset/crafted,/obj/effect/spawner/lootdrop/roguetown/sewers,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
-"Z" = (/obj/structure/table/wood{icon_state = "largetable"; dir = 1},/obj/item/reagent_containers/glass/bowl,/obj/item/reagent_containers/food/snacks/rogue/friedrat,/turf/open/floor/rogue/cobble,/area/rogue/under/town/sewer)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ay" = (
+/obj/structure/chair/wood/rogue/chair3{
+	dir = 4
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"bk" = (
+/obj/structure/table/wood{
+	icon_state = "largetable";
+	dir = 9
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"cd" = (
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"db" = (
+/turf/closed/mineral/rogue,
+/area/rogue/under/town/sewer)
+"gz" = (
+/obj/structure/bed/rogue/shit,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/landmark/start/vagrantlate{
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"gR" = (
+/obj/structure/mineral_door/wood,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"hF" = (
+/obj/structure/bed/rogue/shit,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"hP" = (
+/obj/machinery/light/rogue/torchholder,
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue/under/town/sewer)
+"iU" = (
+/obj/effect/landmark/start/vagrantlate{
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"jV" = (
+/obj/structure/table/wood{
+	icon_state = "largetable"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"kk" = (
+/obj/machinery/light/rogue/torchholder/c,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"kr" = (
+/obj/structure/closet/crate/chest,
+/obj/effect/spawner/lootdrop/roguetown/sewers,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"ll" = (
+/obj/structure/bed/rogue/shit,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"mQ" = (
+/obj/structure/table/wood{
+	icon_state = "largetable";
+	dir = 10
+	},
+/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"oj" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"pn" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"pV" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"rL" = (
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"sz" = (
+/obj/effect/decal/remains/human/grave,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"sB" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/closet/crate/roguecloset/crafted,
+/obj/effect/spawner/lootdrop/roguetown/sewers,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"tW" = (
+/obj/structure/chair/wood/rogue/chair3,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"wD" = (
+/obj/machinery/light/rogue/torchholder/l,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"xN" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/light/rogue/hearth,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"yJ" = (
+/obj/structure/closet/crate/chest,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/powder/flour,
+/obj/item/reagent_containers/powder/flour,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"yN" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"zl" = (
+/obj/effect/decal/remains/bigrat,
+/obj/item/natural/dirtclod,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"zn" = (
+/obj/structure/toilet,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"zQ" = (
+/obj/structure/bed/rogue/shit,
+/obj/effect/decal/remains/human/grave,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"AN" = (
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue/under/town/sewer)
+"Bi" = (
+/obj/machinery/light/rogue/oven/south,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"BB" = (
+/obj/structure/table/wood{
+	icon_state = "largetable";
+	dir = 1
+	},
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"CB" = (
+/obj/structure/table/wood{
+	icon_state = "largetable";
+	dir = 1
+	},
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/food/snacks/rogue/friedrat,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"FA" = (
+/mob/living/carbon/human/species/human/northern/bum/boss,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"GI" = (
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/structure/table/wood{
+	icon_state = "largetable";
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"Hd" = (
+/obj/structure/chair/wood/rogue/chair3{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"HA" = (
+/obj/structure/table/wood{
+	icon_state = "largetable"
+	},
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"IJ" = (
+/obj/structure/fermenting_barrel/random/water,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"JR" = (
+/obj/structure/closet/crate/roguecloset/crafted,
+/obj/effect/spawner/lootdrop/roguetown/sewers,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"KS" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"Lw" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"MC" = (
+/obj/structure/fermenting_barrel/random/beer,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"MZ" = (
+/obj/item/natural/dirtclod,
+/obj/item/natural/dirtclod,
+/obj/item/natural/dirtclod,
+/obj/item/natural/dirtclod,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"Nm" = (
+/obj/structure/table/wood{
+	icon_state = "largetable";
+	dir = 5
+	},
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"OB" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue/under/town/sewer)
+"OK" = (
+/obj/structure/table/wood{
+	icon_state = "largetable"
+	},
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/food/snacks/rogue/friedrat,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"OM" = (
+/obj/structure/bed/rogue/shit,
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"PK" = (
+/obj/structure/mineral_door/swing_door,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"Rf" = (
+/obj/item/roguebin/crackers,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"TU" = (
+/obj/structure/table/wood{
+	icon_state = "largetable";
+	dir = 6
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"Wg" = (
+/mob/living/carbon/human/species/human/northern/bum/ambush,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"XL" = (
+/obj/structure/table/wood{
+	icon_state = "largetable"
+	},
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"XM" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1";
+	dir = 1
+	},
+/obj/item/cooking/pan,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
+"YS" = (
+/obj/structure/table/wood{
+	icon_state = "largetable";
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 
 (1,1,1) = {"
-auuuuuuuuuuuJuuuuuuuuuuuap
-auwhkfhhohKhMhhDuyNhgzeuau
-auIhhhhTlLZObKhhuhhhhhhuau
-auhhhhKXcEjrWhhhuhhhNhnuau
-aumhhhhhhKhKhhhhqhhhhhhuau
-auQhhhhhhhhhhhhhuhhhhhNuau
-auhhhhhhhhhhhhhhutRhhhhuau
-auhhhAhhhhhuupduuuuuuuuuau
-auihhHhhhhYuauhuaaaaaaaaau
-auhhhsuuuuuuauBuaaaaaaaaau
-auhhhsuaaaaaauhuaaaaaaaaau
-auhhhsuaauuuuuBuuuuaaaaaau
-auhhhsuaauShhhhhhVuaaaaaau
-auFhhsuaauhhxhhhhhuaaaaaau
-auuuuduaauhPUhhChhuuuuuuuu
-aaaauBuaauhhvhhhhhdhBBhhBB
-aaaauBuaauhhhhhhGGuuuuuuuu
-aaaauBuaauuuuuuuuuuaaaaaau
-aaaauBuaaaaaaaaaaaaaaaaaau
-uuuuuBuuuuuuuuuuuuuuuuuuuu
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+AN
+"}
+(2,1,1) = {"
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+db
+db
+db
+db
+AN
+"}
+(3,1,1) = {"
+AN
+xN
+yJ
+cd
+IJ
+MC
+cd
+cd
+wD
+cd
+cd
+cd
+cd
+zl
+AN
+db
+db
+db
+db
+AN
+"}
+(4,1,1) = {"
+AN
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+AN
+db
+db
+db
+db
+AN
+"}
+(5,1,1) = {"
+AN
+Bi
+cd
+cd
+Wg
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+AN
+AN
+AN
+AN
+AN
+AN
+"}
+(6,1,1) = {"
+AN
+XM
+cd
+cd
+cd
+cd
+cd
+pV
+oj
+KS
+KS
+KS
+KS
+KS
+gR
+pn
+pn
+pn
+pn
+pn
+"}
+(7,1,1) = {"
+AN
+cd
+cd
+Lw
+cd
+cd
+cd
+cd
+cd
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+"}
+(8,1,1) = {"
+AN
+cd
+bk
+mQ
+cd
+cd
+FA
+cd
+cd
+AN
+db
+db
+db
+db
+db
+db
+db
+db
+db
+AN
+"}
+(9,1,1) = {"
+AN
+kk
+GI
+jV
+cd
+cd
+cd
+cd
+cd
+AN
+db
+db
+db
+db
+db
+db
+db
+db
+db
+AN
+"}
+(10,1,1) = {"
+AN
+cd
+BB
+OK
+Lw
+cd
+cd
+cd
+cd
+AN
+db
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+db
+AN
+"}
+(11,1,1) = {"
+AN
+Lw
+CB
+HA
+cd
+cd
+cd
+cd
+JR
+AN
+db
+AN
+Rf
+cd
+cd
+cd
+cd
+AN
+db
+AN
+"}
+(12,1,1) = {"
+AN
+cd
+YS
+XL
+Lw
+cd
+cd
+AN
+AN
+AN
+db
+AN
+cd
+cd
+ay
+cd
+cd
+AN
+db
+AN
+"}
+(13,1,1) = {"
+OB
+rL
+Nm
+TU
+cd
+cd
+cd
+AN
+db
+db
+db
+AN
+cd
+tW
+cd
+Hd
+cd
+AN
+db
+AN
+"}
+(14,1,1) = {"
+AN
+cd
+Lw
+cd
+cd
+cd
+cd
+hP
+AN
+AN
+AN
+AN
+cd
+cd
+cd
+cd
+cd
+AN
+db
+AN
+"}
+(15,1,1) = {"
+AN
+cd
+Wg
+cd
+cd
+cd
+cd
+gR
+cd
+pn
+cd
+pn
+cd
+cd
+cd
+cd
+cd
+AN
+db
+AN
+"}
+(16,1,1) = {"
+AN
+sB
+cd
+cd
+cd
+cd
+cd
+AN
+AN
+AN
+AN
+AN
+cd
+cd
+iU
+cd
+cd
+AN
+db
+AN
+"}
+(17,1,1) = {"
+AN
+AN
+AN
+AN
+PK
+AN
+AN
+AN
+db
+db
+db
+AN
+cd
+cd
+cd
+cd
+kr
+AN
+db
+AN
+"}
+(18,1,1) = {"
+AN
+yN
+cd
+cd
+cd
+cd
+zn
+AN
+db
+db
+db
+AN
+ll
+cd
+cd
+cd
+kr
+AN
+db
+AN
+"}
+(19,1,1) = {"
+AN
+hF
+cd
+cd
+cd
+cd
+MZ
+AN
+db
+db
+db
+AN
+AN
+AN
+AN
+gR
+AN
+AN
+db
+AN
+"}
+(20,1,1) = {"
+AN
+cd
+cd
+cd
+cd
+cd
+cd
+AN
+db
+db
+db
+db
+db
+db
+AN
+cd
+AN
+db
+db
+AN
+"}
+(21,1,1) = {"
+AN
+OM
+cd
+hF
+cd
+cd
+cd
+AN
+db
+db
+db
+db
+db
+db
+AN
+pn
+AN
+db
+db
+AN
+"}
+(22,1,1) = {"
+AN
+sz
+cd
+cd
+cd
+cd
+cd
+AN
+db
+db
+db
+db
+db
+db
+AN
+pn
+AN
+db
+db
+AN
+"}
+(23,1,1) = {"
+AN
+gz
+cd
+zQ
+cd
+hF
+cd
+AN
+db
+db
+db
+db
+db
+db
+AN
+cd
+AN
+db
+db
+AN
+"}
+(24,1,1) = {"
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+db
+db
+db
+db
+db
+db
+AN
+cd
+AN
+db
+db
+AN
+"}
+(25,1,1) = {"
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+db
+AN
+pn
+AN
+db
+db
+AN
+"}
+(26,1,1) = {"
+hP
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+pn
+AN
+AN
+AN
+AN
 "}

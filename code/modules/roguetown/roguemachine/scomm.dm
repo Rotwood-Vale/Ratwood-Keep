@@ -125,7 +125,7 @@
 	if(H.voicecolor_override)
 		usedcolor = H.voicecolor_override
 	if(raw_message)
-		if(lowertext(raw_message) == "say laws")
+		if(lowertext(raw_message) == pick("say laws.", "state laws."))
 			dictate_laws()
 			return
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
@@ -163,7 +163,7 @@
 
 /obj/item/scomstone
 	name = "gemerald ring"
-	icon_state = "ring_emerald"
+	icon_state = "scomstone"
 	desc = "A golden ring with an gemerald gem."
 	gripped_intents = null
 	dropshrink = 0.75
@@ -171,7 +171,6 @@
 	force = 10
 	throwforce = 10
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_RING
-	obj_flags = null
 	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	flags_1 = HEAR_1
@@ -260,7 +259,7 @@
 
 /obj/item/scomstone/bad
 	name = "serfstone"
-	icon_state = "ring_emerald"
+	icon_state = "scomstone"
 	listening = FALSE
 	sellprice = 2
 
@@ -277,7 +276,6 @@
 	//force = 10
 	//throwforce = 10
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_WRISTS
-	obj_flags = null
 	icon = 'icons/roguetown/clothing/neck.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	flags_1 = HEAR_1

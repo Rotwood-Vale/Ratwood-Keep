@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "cultist"
 	confess_lines = list(
-		"DEATH TO THE SUCCESSORS!", 
+		"DEATH TO THE SUCCESSORS!",
 		"PRAISE ZIZO!",
 		"THE GODHEAD FAVORS ME!",
 	)
@@ -222,7 +222,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	if(iszizocultist(user) || iszizolackey(user))
 		to_chat(user, "It is of the [sigil_type] circle.")
 
-/obj/effect/decal/cleanable/sigil/Initialize(mapload, list/datum/disease/diseases)
+/obj/effect/decal/cleanable/sigil/Initialize(mapload)
 	. = ..()
 	if(!LAZYLEN(GLOB.ritualslist))
 		testing("initializing ritualslist")
@@ -528,7 +528,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(H == user)
 			return
 		if(iszizocultist(H))
-			to_chat(H.mind, span_danger("\"I'm not gonna let my strongest follower become a mindless brute.\""))
+			to_chat(user.mind, span_danger("\"I'm not gonna let my strongest follower become a mindless brute.\""))
 			return
 		if(H.mind)
 			H.mind.special_role = "Cult Summon"
@@ -704,7 +704,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	n_req = /obj/item/natural/worms/leech
 
 	function = /proc/heartache
-	
+
 /proc/heartache(mob/user, turf/C)
 	new /obj/item/corruptedheart(C)
 	to_chat(user.mind, span_notice("A corrupted heart. When used on a non-enlightened mortal their heart shall ache and they will be immobilized and too stunned to speak. Perfect for getting new soon-to-be enlightened. Now, just don't use it at the combat ready."))
@@ -751,7 +751,13 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 	function = /proc/criminalstool
 
-/proc/criminalstool(var/mob/user, var/turf/C)
+/obj/item/soap/cult
+	name = "accursed soap"
+	desc = "It is pulsating."
+	uses = 9
+	cleanspeed = 1
+
+/proc/criminalstool(mob/user, turf/C)
 	new /obj/item/soap/cult(C)
 	to_chat(user.mind, span_notice("The Criminal's Tool. Could be useful for hiding tracks or getting rid of sigils."))
 
@@ -943,9 +949,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /proc/fleshform(var/mob/user, var/turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		if(iszizocultist(H))
-			to_chat(H.mind, span_danger("\"I'm not letting my strongest follower become a mindless brute.\""))
+			to_chat(user.mind, span_danger("\"I'm not letting my strongest follower become a mindless brute.\""))
 			return
-		to_chat(user.mind, span_danger("SOON I WILL BECOME A HIGHER FORM!!!"))
+		to_chat(H.mind, span_danger("SOON I WILL BECOME A HIGHER FORM!!!"))
 		sleep(5 SECONDS)
 		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood(H)
 		trl.forceMove(H)
@@ -1004,7 +1010,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended(C)
 		trl.ckey = H.ckey
 		H.gib()
-		to_chat(world, "\n<font color='purple'>15 minutes remain.</font>")
+		to_chat(world, "\n<font color='purple'>The fabric of reality begins to weep. Fifteen minutes remain until the end.</font>")
 		for(var/mob/living/carbon/human/V in GLOB.human_list)
 			if(V.mind in CM.cultists)
 				V.add_stress(/datum/stressevent/lovezizo)

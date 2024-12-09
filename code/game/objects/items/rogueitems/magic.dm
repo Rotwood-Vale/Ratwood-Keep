@@ -37,7 +37,7 @@
 	. = ..()
 	if(!user.mind)
 		return
-	var/input = stripped_input(user, "Who are you looking for?", "Scrying Orb")
+	var/input = html_decode(input(user, "Who are you looking for?", "Scrying Orb"))
 	if(!input)
 		return
 	if(!user.key)
@@ -80,7 +80,7 @@
 				success_chance = 90
 			if(SKILL_LEVEL_EXPERT)
 				success_chance = 94
-			if(SKILL_LEVEL_MASTER || SKILL_LEVEL_LEGENDARY) // Magus has this
+			if(SKILL_LEVEL_MASTER to SKILL_LEVEL_LEGENDARY) // Magus has this
 				success_chance = 100
 	if(!prob(success_chance))
 		to_chat(user, span_boldwarning("You focus your thoughts on the orb, but feel a sharp pain!"))

@@ -5,7 +5,6 @@
 	desc = "Plant fibers. The peasants make their living making these into clothing."
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	color = "#454032"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
@@ -41,7 +40,6 @@
 	desc = "Silken strands. Their usage in clothing is exotic in all places save the underdark"
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	color = "#e6e3db"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
@@ -94,10 +92,9 @@
 	desc = "This piece of fabric is ready to be worked, or used."
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
-	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
+	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP|ITEM_SLOT_MASK
 	body_parts_covered = null
 	experimental_onhip = TRUE
 	max_integrity = 20
@@ -108,6 +105,33 @@
 	var/wet = 0
 	/// Effectiveness when used as a bandage, how much bloodloss we can tampon
 	var/bandage_effectiveness = 0.9
+
+/obj/item/natural/cloth/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot == SLOT_WEAR_MASK)
+		user.become_blind("blindfold_[REF(src)]")
+
+/obj/item/natural/cloth/dropped(mob/living/carbon/human/user)
+	..()
+	user.cure_blind("blindfold_[REF(src)]")
+
+/obj/item/natural/cloth/attack_right(mob/user)
+	to_chat(user, span_warning("I start to collect [src]..."))
+	if(move_after(user, 1 SECONDS, target = src))
+		var/clothcount = 0
+		for(var/obj/item/natural/cloth/F in get_turf(src))
+			clothcount++
+		while(clothcount > 0)
+			if(clothcount == 1)
+				new /obj/item/natural/cloth(get_turf(user))
+				clothcount--
+			else if(clothcount >= 2)
+				var/obj/item/natural/bundle/cloth/B = new(get_turf(user))
+				B.amount = clamp(clothcount, 2, 10)
+				B.update_bundle()
+				clothcount -= clamp(clothcount, 2, 10)
+		for(var/obj/item/natural/cloth/F in get_turf(src))
+			qdel(F)
 
 /obj/item/natural/cloth/examine(mob/user)
 	. = ..()
@@ -227,6 +251,8 @@
 		if(prob(prob2break))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
 			qdel(src)
+			if (L.alpha == 0 && L.rogue_sneaking) // not anymore you're not
+				L.update_sneak_invis(TRUE)
 			L.consider_ambush()
 
 /obj/item/natural/bundle/fibers
@@ -237,7 +263,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 6
-	obj_flags = null
 	color = "#454032"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
@@ -263,7 +288,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 6
-	obj_flags = null
 	color = "#e6e3db"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
@@ -284,7 +308,6 @@
 	force = 0
 	throwforce = 0
 	maxamount = 10
-	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
@@ -304,7 +327,6 @@
 	maxamount = 10
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
@@ -317,6 +339,40 @@
 	icon2step = 7
 	icon3 = "stickbundle3"
 
+/obj/item/natural/bundle/stick/attackby(obj/item/W, mob/living/user)
+	. = ..()
+	user.changeNext_move(CLICK_CD_MELEE)
+	if(user.used_intent?.blade_class == BCLASS_CUT)
+		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
+		user.visible_message(span_info("[user] starts sharpening the sticks in [src]..."), span_info("I start sharpening the sticks in [src]...."))
+		for(var/i in 1 to (amount - 1))
+			if(!do_after(user, 20))
+				break
+			var/turf/T = get_turf(user.loc)
+			var/obj/item/grown/log/tree/stake/S = new /obj/item/grown/log/tree/stake(T)
+			amount--
+			// If there's only one stick left in the bundle...
+			if (amount == 1)
+				// Replace the bundle with a single stick
+				var/obj/item/ST = new stacktype(T)
+				if(user.is_holding(src))
+					user.doUnEquip(src, TRUE, T, silent = TRUE)
+				qdel(src)
+				var/holding = user.put_in_hands(ST)
+				// And automatically have us try and carve the last new stick, assuming we're still holding it!
+				if(!do_after(user, 20))
+					break
+				S = new /obj/item/grown/log/tree/stake(T)
+				if(holding)
+					user.doUnEquip(ST, TRUE, T, silent = TRUE)
+				qdel(ST)
+			else
+				update_bundle()
+			user.put_in_hands(S)
+			S.pixel_x = rand(-3, 3)
+			S.pixel_y = rand(-3, 3)
+		return
+
 /obj/item/natural/bowstring
 	name = "fibre bowstring"
 	desc = "A simple cord of bowstring."
@@ -324,7 +380,6 @@
 	possible_item_intents = list(/datum/intent/use)
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	color = COLOR_BEIGE
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE

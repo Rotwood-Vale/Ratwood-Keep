@@ -155,6 +155,7 @@ SUBSYSTEM_DEF(vote)
 						log_game("LOG VOTE: ROUNDVOTEEND [REALTIMEOFDAY]")
 						to_chat(world, "\n<font color='purple'>[ROUND_END_TIME_VERBAL] remain.</font>")
 						C.roundvoteend = TRUE
+						C.round_ends_at = GLOB.round_timer + ROUND_END_TIME
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)
@@ -184,7 +185,7 @@ SUBSYSTEM_DEF(vote)
 					if(H.stat != DEAD)
 						vote_power += 3
 					if(H.job)
-						var/list/list_of_powerful = list("Duke", "Duchess Consort", "Priest", "Steward", "Hand")
+						var/list/list_of_powerful = list("Duke", "Duchess", "Priest", "Steward", "Hand")
 						if(H.job in list_of_powerful)
 							vote_power += 5
 						else

@@ -236,15 +236,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 //	show_data_huds()
 //	data_huds_on = 1
 
-/mob/dead/observer/Login()
-	. = ..()
-	if(!(istype(src, /mob/dead/observer/rogue/arcaneeye)))
-		client?.verbs += GLOB.ghost_verbs
-
-/mob/dead/observer/get_photo_description(obj/item/camera/camera)
-	if(!invisibility || camera.see_ghosts)
-		return "You can also see a g-g-g-g-ghooooost!"
-
 /mob/dead/observer/narsie_act()
 	var/old_color = color
 	color = "#960000"
@@ -268,7 +259,13 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 /mob/dead/CanPass(atom/movable/mover, turf/target)
 	return 1
 
-
+/mob/dead/observer/rogue/Login()
+	. = ..()
+	if(mind?.funeral)
+		if(CONFIG_GET(flag/force_respawn_on_funeral))
+			to_chat(src, span_rose("With my body buried in creation, my soul passes on in peace..."))
+			burial_rite_return_ghost_to_lobby(src)
+			return
 /mob/dead/observer/rogue/CanPass(atom/movable/mover, turf/target)
 	if(!isinhell)
 		if(istype(mover, /mob/dead/observer/rogue))
@@ -687,7 +684,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/list/pois = list()
 	for(var/mob/M in mobs)
 		if((!M.mind || !M.ckey))
-//			if(!isbot(M) && !iscameramob(M) && !ismegafauna(M))
 			continue
 		if(M.client && M.client.holder && M.client.holder.fakekey) //stealthmins
 			continue
@@ -929,11 +925,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!target)
 		return FALSE
 
-	if(ismegafauna(target))
-		to_chat(src, span_warning("This creature is too powerful for you to possess!"))
-		return FALSE
-
-	if(can_reenter_corpse && mind?.current)
+	if(can_reenter_corpse && mind && mind.current)
 		if(alert(src, "Your soul is still tied to your former life as [mind.current.name], if you go forward there is no going back to that life. Are you sure you wish to continue?", "Move On", "Yes", "No") == "No")
 			return FALSE
 	if(target.key)
@@ -1149,21 +1141,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			mob_eye.observers |= src
 			mob_eye.hud_used.show_hud(mob_eye.hud_used.hud_version, src)
 			observetarget = mob_eye
-
-/mob/dead/observer/verb/register_pai_candidate()
-	set category = "Ghost"
-	set name = "pAI Setup"
-	set desc = ""
-	set hidden = 1
-	if(!check_rights(R_WATCH))
-		return
-	register_pai()
-
-/mob/dead/observer/proc/register_pai()
-	if(isobserver(src))
-		SSpai.recruitWindow(src)
-	else
-		to_chat(usr, span_warning("Can't become a pAI candidate while not dead!"))
 
 /mob/dead/observer/CtrlShiftClick(mob/user)
 	if(isobserver(user) && check_rights(R_SPAWN))

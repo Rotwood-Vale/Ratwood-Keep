@@ -31,6 +31,8 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 		if("Ravox")
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
+		if("Eora")
+			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 
 
 	H.adjust_blindness(-3)
@@ -86,6 +88,8 @@
 					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 				if("Malum")
 					cloak = /obj/item/clothing/cloak/templar/malummite
+				if("Eora")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 			if(H.age == AGE_OLD)
 				beltr = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
 				head = /obj/item/clothing/neck/roguetown/chaincoif
@@ -143,6 +147,8 @@
 					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 				if("Malum")
 					cloak = /obj/item/clothing/cloak/templar/malummite
+				if("Eora")
+					cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 			backr = /obj/item/rogueweapon/flail
 			if(prob(50))
 				l_hand = /obj/item/rogueweapon/shield/wood
@@ -158,7 +164,6 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	if(H.dna.species.type == /datum/species/tieberian)
 		cloak = /obj/item/clothing/cloak/tabard/crusader/tief

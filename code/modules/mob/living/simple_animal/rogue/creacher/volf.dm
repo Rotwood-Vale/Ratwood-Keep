@@ -24,6 +24,7 @@
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_NONE
+	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
 	milkies = FALSE
@@ -33,6 +34,7 @@
 	STACON = 7
 	STASTR = 7
 	STASPD = 13
+	simple_detect_bonus = 20
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10

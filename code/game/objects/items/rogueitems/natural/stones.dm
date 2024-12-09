@@ -135,7 +135,6 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	force = 10
 	throwforce = 15
 	slot_flags = ITEM_SLOT_MOUTH
-	obj_flags = null
 	w_class = WEIGHT_CLASS_TINY
 	mill_result = /obj/item/reagent_containers/powder/alch/stone
 
@@ -267,7 +266,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	gripped_intents = list(INTENT_GENERIC)
 	w_class = WEIGHT_CLASS_HUGE
 	twohands_required = TRUE
-	var/obj/item/stack/ore/mineralType = null
+	var/obj/item/rogueore/mineralType = null
 	var/mineralAmt = 1
 	blade_dulling = DULLING_BASH
 	max_integrity = 90
@@ -277,7 +276,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/rock/Initialize()
 	icon_state = "stonebig[rand(1,2)]"
-	..()
+	. = ..()
 
 
 /obj/item/natural/rock/Crossed(mob/living/L)
@@ -341,7 +340,6 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	force = 10
 	throwforce = 15
 	slot_flags = ITEM_SLOT_MOUTH
-	obj_flags = null
 	w_class = WEIGHT_CLASS_TINY
 	mill_result = /obj/item/reagent_containers/powder/alch/stone
 

@@ -12,7 +12,7 @@
 
 
 /obj/item/paper/scroll/attackby(obj/item/P, mob/living/carbon/human/user, params)
-	if(istype(P, /obj/item/pen) || istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
+	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
 		if(!open)
 			to_chat(user, span_warning("Open me."))
 			return
@@ -73,9 +73,8 @@
 		return span_warning("I'm too far away to read it.")
 
 /obj/item/paper/scroll/Initialize()
-	open = FALSE
+	. = ..()
 	update_icon_state()
-	..()
 
 /obj/item/paper/scroll/rmb_self(mob/user)
 	attack_right(user)

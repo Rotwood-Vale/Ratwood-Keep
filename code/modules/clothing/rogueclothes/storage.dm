@@ -16,7 +16,7 @@
 	sewrepair = TRUE
 	fiber_salvage = TRUE
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 	var/datum/wound/artery/artery_wound
 
 /obj/item/storage/belt/rogue/ComponentInitialize()
@@ -255,19 +255,19 @@
 	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
 
 /obj/item/storage/belt/rogue/pouch/ammo
-	name = "rune ball pouch"
-	desc = "Usually used for holding runelock balls."
+	name = "sphere pouch"
+	desc = "Usually used for holding runelock sphreres."
 
 /obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
-	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
-	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
-	new /obj/item/ammo_casing/caseless/rogue/bullet(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
 
 /obj/item/storage/backpack/rogue //holding salvage vars for children
 	sewrepair = TRUE
 	fiber_salvage = TRUE
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/storage/backpack/rogue/satchel
 	name = "satchel"
@@ -301,6 +301,9 @@
 			if(4)
 				new /obj/item/reagent_containers/powder/spice(src)
 
+/obj/item/storage/backpack/rogue/satchel/musketeer/PopulateContents()
+	new /obj/item/powderflask(src)
+	new /obj/item/storage/belt/rogue/pouch/coins/mid(src)
 
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK
@@ -312,6 +315,10 @@
 		STR.max_combined_w_class = 18
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 4
+		STR.click_gather = TRUE
+		STR.allow_quick_empty = TRUE
+		STR.allow_dump_out = TRUE
+
 
 /obj/item/storage/backpack/rogue/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -341,6 +348,7 @@
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
+		STR.allow_dump_out = TRUE
 /*
 /obj/item/storage/belt/rogue/pickles
 	name = "jar of pickles"

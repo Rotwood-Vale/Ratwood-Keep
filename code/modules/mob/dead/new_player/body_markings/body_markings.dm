@@ -42,6 +42,20 @@
 
 	return colors
 
+/datum/body_marking/flushed_cheeks
+	icon = 'icons/mob/body_markings/other_markings.dmi'
+	name = "Flushed Cheeks"
+	icon_state = "flushed_cheeks"
+	default_color = "FF0000"
+	affected_bodyparts = HEAD
+
+/datum/body_marking/eyeliner
+	icon = 'icons/mob/body_markings/other_markings.dmi'
+	name = "Eyeliner"
+	icon_state = "eyeliner"
+	default_color = "FF0000"
+	affected_bodyparts = HEAD
+
 /datum/body_marking/plain
 	icon = 'icons/mob/body_markings/plain_markings.dmi'
 	name = "Plain"
@@ -92,6 +106,23 @@
 	icon_state = "tips"
 	affected_bodyparts = HAND_LEFT | HAND_RIGHT | LEG_LEFT | LEG_RIGHT
 	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/wolf
+	icon = 'icons/mob/body_markings/chest_markings.dmi'
+	name = "Wolf"
+	icon_state = "wolf"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
+
+/datum/body_marking/fox
+	icon = 'icons/mob/body_markings/chest_markings.dmi'
+	name = "Fox"
+	icon_state = "fox"
+	affected_bodyparts = CHEST
+	default_color = DEFAULT_SECONDARY
+	covers_chest = TRUE
+
 
 /datum/body_marking/bellyscale
 	icon = 'icons/mob/body_markings/chest_markings.dmi'

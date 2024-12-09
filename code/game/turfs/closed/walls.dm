@@ -16,25 +16,12 @@
 	var/slicing_duration = 100  //default time taken to slice the wall
 	var/sheet_type = null
 	var/sheet_amount = 2
-	var/girder_type = /obj/structure/girder
 
 	canSmoothWith = list(
-	/turf/closed/wall,
-	/turf/closed/wall/r_wall,
-	/obj/structure/falsewall,
-	/obj/structure/falsewall/reinforced,
-	/turf/closed/wall/rust,
-	/turf/closed/wall/r_wall/rust)
+	/turf/closed/wall)
 	smooth = SMOOTH_TRUE
 
 	var/list/dent_decals
-
-/turf/closed/wall/examine(mob/user)
-	. += ..()
-//	. += deconstruction_hints(user)
-
-/turf/closed/wall/proc/deconstruction_hints(mob/user)
-	return span_notice("The outer plating is <b>welded</b> firmly in place.")
 
 /turf/closed/wall/attack_tk()
 	return
@@ -54,75 +41,42 @@
 	dismantle_wall(1,0)
 
 /turf/closed/wall/proc/dismantle_wall(devastated=0, explode=0)
-	if(devastated)
-		devastate_wall()
-	else
-		playsound(src, 'sound/blank.ogg', 100, TRUE)
-		var/newgirder = break_wall()
-		if(newgirder) //maybe we don't /want/ a girder!
-			transfer_fingerprints_to(newgirder)
-
-	for(var/obj/O in src.contents) //Eject contents!
-		if(istype(O, /obj/structure/sign/poster))
-			var/obj/structure/sign/poster/P = O
-			P.roll_and_drop(src)
-
+	playsound(src, 'sound/blank.ogg', 100, TRUE)
 	ScrapeAway()
 
-/turf/closed/wall/proc/break_wall()
-//	new sheet_type(src, sheet_amount)
-//	return new girder_type(src)
-
-/turf/closed/wall/proc/devastate_wall()
-//	new sheet_type(src, sheet_amount)
-//	if(girder_type)
-//		new /obj/item/stack/sheet/metal(src)
-
-/turf/closed/wall/ex_act(severity, target)
+/turf/closed/wall/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	if(target == src)
 		dismantle_wall(1,1)
+		take_damage(INFINITY, BRUTE, "bomb", 0)
 		return
-	switch(severity)
-		if(1)
-			//SN src = null
-			var/turf/NT = ScrapeAway()
-			NT.contents_explosion(severity, target)
-			return
-		if(2)
-			if (prob(50))
-				dismantle_wall(0,1)
-			else
-				dismantle_wall(1,1)
-		if(3)
-			if (prob(hardness))
-				dismantle_wall(0,1)
+	var/ddist = devastation_range
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fdist = flame_range
+	var/fodist = get_dist(src, epicenter)
+	var/brute_loss = 0
+	var/dmgmod = round(rand(0.1, 2), 0.1)
+
+	switch (severity)
+		if (EXPLODE_DEVASTATE)
+			brute_loss = ((250 * ddist) - (250 * fodist) * dmgmod)
+
+		if (EXPLODE_HEAVY)
+			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod)
+
+		if(EXPLODE_LIGHT)
+			brute_loss = ((25 * ldist) - (25 * fodist) * dmgmod)
+
+	if(fodist == 0)
+		brute_loss *= 2
+	take_damage(brute_loss, BRUTE, "bomb", 0)
+
+	if(fdist && !QDELETED(src))
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
+
 	if(!density)
 		..()
-
-
-/turf/closed/wall/blob_act(obj/structure/blob/B)
-	if(prob(50))
-		dismantle_wall()
-	else
-		add_dent(WALL_DENT_HIT)
-
-/turf/closed/wall/mech_melee_attack(obj/mecha/M)
-	M.do_attack_animation(src)
-	switch(M.damtype)
-		if(BRUTE)
-			playsound(src, 'sound/blank.ogg', 50, TRUE)
-			M.visible_message(span_danger("[M.name] hits [src]!"), \
-							span_danger("I hit [src]!"), null, COMBAT_MESSAGE_RANGE)
-			if(prob(hardness + M.force) && M.force > 20)
-				dismantle_wall(1)
-				playsound(src, 'sound/blank.ogg', 100, TRUE)
-			else
-				add_dent(WALL_DENT_HIT)
-		if(BURN)
-			playsound(src, 'sound/blank.ogg', 100, TRUE)
-		if(TOX)
-			playsound(src, 'sound/blank.ogg', 100, TRUE)
-			return FALSE
 
 /turf/closed/wall/attack_paw(mob/living/user)
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -137,19 +91,14 @@
 		dismantle_wall(1)
 		return
 
-/turf/closed/wall/attack_hulk(mob/user)
-	..()
-	if(prob(hardness))
-		playsound(src, 'sound/blank.ogg', 100, TRUE)
-		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ), forced = "hulk")
-		dismantle_wall(1)
-	else
-		playsound(src, 'sound/blank.ogg', 50, TRUE)
-		add_dent(WALL_DENT_HIT)
-		user.visible_message(span_danger("[user] smashes \the [src]!"), \
-					span_danger("I smash \the [src]!"), \
-					span_hear("I hear a booming smash!"))
-	return TRUE
+/turf/closed/wall/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	to_chat(user, "<span class='notice'>I push the wall but nothing happens!</span>")
+	playsound(src, 'sound/blank.ogg', 25, TRUE)
+	add_fingerprint(user)
 
 /turf/closed/wall/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -190,17 +139,6 @@
 	return FALSE
 
 /turf/closed/wall/proc/try_wallmount(obj/item/W, mob/user, turf/T)
-	//check for wall mounted frames
-	if(istype(W, /obj/item/wallframe))
-		var/obj/item/wallframe/F = W
-		if(F.try_build(src, user))
-			F.attach(src, user)
-		return TRUE
-	//Poster stuff
-	else if(istype(W, /obj/item/poster))
-		place_poster(W,user)
-		return TRUE
-
 	return FALSE
 
 /turf/closed/wall/proc/try_decon(obj/item/I, mob/user, turf/T)
@@ -217,24 +155,6 @@
 
 	return FALSE
 
-/turf/closed/wall/singularity_pull(S, current_size)
-	..()
-	wall_singularity_pull(current_size)
-
-/turf/closed/wall/proc/wall_singularity_pull(current_size)
-	if(current_size >= STAGE_FIVE)
-		if(prob(50))
-			dismantle_wall()
-		return
-	if(current_size == STAGE_FOUR)
-		if(prob(30))
-			dismantle_wall()
-
-/turf/closed/wall/narsie_act(force, ignore_mobs, probability = 20)
-	. = ..()
-	if(.)
-		ChangeTurf(/turf/closed/wall/mineral/cult)
-
 /turf/closed/wall/get_dumping_location(obj/item/storage/source, mob/user)
 	return null
 
@@ -245,20 +165,6 @@
 
 /turf/closed/wall/acid_melt()
 	dismantle_wall(1)
-
-/turf/closed/wall/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	switch(the_rcd.mode)
-		if(RCD_DECONSTRUCT)
-			return list("mode" = RCD_DECONSTRUCT, "delay" = 40, "cost" = 26)
-	return FALSE
-
-/turf/closed/wall/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	switch(passed_mode)
-		if(RCD_DECONSTRUCT)
-			to_chat(user, span_notice("I deconstruct the wall."))
-			ScrapeAway()
-			return TRUE
-	return FALSE
 
 /turf/closed/wall/proc/add_dent(denttype, x=rand(-8, 8), y=rand(-8, 8))
 	if(LAZYLEN(dent_decals) >= MAX_DENT_DECALS)
@@ -283,3 +189,23 @@
 	add_overlay(dent_decals)
 
 #undef MAX_DENT_DECALS
+
+/turf/closed/splashscreen
+	name = ""
+	icon = 'icons/default_title.dmi'
+	icon_state = ""
+	layer = FLY_LAYER
+	bullet_bounce_sound = null
+
+/turf/closed/splashscreen/New()
+	SStitle.splash_turf = src
+	if(SStitle.icon)
+		icon = SStitle.icon
+	..()
+
+/turf/closed/splashscreen/vv_edit_var(var_name, var_value)
+	. = ..()
+	if(.)
+		switch(var_name)
+			if("icon")
+				SStitle.icon = icon

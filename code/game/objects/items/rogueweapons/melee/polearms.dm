@@ -53,6 +53,7 @@
 	bigboy = TRUE
 	gripsprite = TRUE
 	associated_skill = /datum/skill/combat/polearms
+	metalizer_result = /obj/item/rogueweapon/spear/bronze
 
 /obj/item/rogueweapon/woodstaff/getonmobprop(tag)
 	. = ..()
@@ -133,7 +134,7 @@
 
 /obj/item/rogueweapon/spear/billhook
 	name = "billhook"
-	desc = "A neat hook."
+	desc = "A neat, steel hook."
 	icon_state = "billhook"
 	force_wielded = 30
 	smeltresult = /obj/item/ingot/steel
@@ -182,7 +183,7 @@
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
 	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
 	name = "halberd"
-	desc = "An iron halberd, mostly used by town guards."
+	desc = "A steel halberd, mostly used by town guards."
 	icon_state = "halberd"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -218,7 +219,7 @@
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/halberd, /datum/intent/axe/chop, SPEAR_BASH)
 	name = "bardiche"
-	desc = "A beautiful variant of the halberd."
+	desc = "A beautiful, iron variant of the halberd."
 	icon_state = "bardiche"
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
@@ -289,6 +290,7 @@
 	smeltresult = /obj/item/ingot/bronze
 	force = 20
 	force_wielded = 25
+	gripsprite = FALSE //someone really should make a grip sprite
 
 /obj/item/rogueweapon/greatsword
 	force = 12
@@ -329,8 +331,10 @@
 	name = "zweihander"
 	desc = "This is much longer than a common greatsword, and well balanced too!"
 	icon_state = "zwei"
+	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
 	wdefense = 4
+
 
 /datum/intent/sword/cut/zwei
 	reach = 2

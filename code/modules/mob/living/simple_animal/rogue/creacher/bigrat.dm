@@ -55,16 +55,13 @@
 	pixel_y = -8
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/Initialize()
-	..()
-	gender = MALE
-	if(prob(50))
-		gender = FEMALE
+	gender = pick(MALE, FEMALE)
 	if(gender == FEMALE)
 		icon_state = "Frat"
 		icon_living = "Frat"
 		icon_dead = "Frat1"
-		milkies = TRUE
-		udder = new()
+		milkies = TRUE // must be done before ..()
+	. = ..()
 	update_icon()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/tamed()
@@ -180,4 +177,3 @@
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
 	return ..()
-

@@ -77,8 +77,9 @@
 	dropshrink = 0.8
 	wdefense = 15
 	coverage = 40
+	metalizer_result = /obj/item/cooking/pan
 
-/obj/item/rogueweapon/shield/wood/attack_hand(mob/user)
+/obj/item/rogueweapon/shield/wood/attack_right(mob/user)
 	if(!overlays.len)
 		var/icon/J = new('icons/roguetown/weapons/wood_heraldry.dmi')
 		var/list/istates = J.IconStates()
@@ -91,6 +92,8 @@
 		var/mutable_appearance/MU = mutable_appearance(icon, "woodsh_detail")
 		MU.alpha = 114
 		add_overlay(MU)
+		if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+			cut_overlays()
 	else
 		..()
 
@@ -156,7 +159,7 @@
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 	return ..()
 
-/obj/item/rogueweapon/shield/tower/metal/attack_hand(mob/user)
+/obj/item/rogueweapon/shield/tower/metal/attack_right(mob/user)
 	if(!overlays.len)
 		var/icon/J = new('icons/roguetown/weapons/shield_heraldry.dmi')
 		var/list/istates = J.IconStates()
@@ -169,6 +172,8 @@
 		var/mutable_appearance/MU = mutable_appearance(icon, "ironsh_detail")
 		MU.alpha = 90
 		add_overlay(MU)
+		if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+			cut_overlays()
 	else
 		..()
 

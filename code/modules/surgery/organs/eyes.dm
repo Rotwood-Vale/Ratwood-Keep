@@ -226,26 +226,6 @@
 	tint = INFINITY
 	var/obj/item/flashlight/eyelight/eye
 
-/obj/item/organ/eyes/robotic/flashlight/emp_act(severity)
-	return
-
-/obj/item/organ/eyes/robotic/flashlight/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = FALSE)
-	..()
-	if(!eye)
-		eye = new /obj/item/flashlight/eyelight()
-	eye.on = TRUE
-	eye.forceMove(M)
-	eye.update_brightness(M)
-	M.become_blind("flashlight_eyes")
-
-
-/obj/item/organ/eyes/robotic/flashlight/Remove(mob/living/carbon/M, special = 0)
-	eye.on = FALSE
-	eye.update_brightness(M)
-	eye.forceMove(src)
-	M.cure_blind("flashlight_eyes")
-	..()
-
 // Welding shield implant
 /obj/item/organ/eyes/robotic/shield
 	name = "shielded robotic eyes"
@@ -474,3 +454,12 @@
 	eyes.update_accessory_colors()
 	if(eyes.owner)
 		eyes.owner.update_body_parts(TRUE)
+
+/obj/item/organ/eyes/robotic/wooden
+	name = "wooden eyeball"
+	desc = "This is just a wooden ball."
+	icon_state = "weyeball"
+	eye_color = "#663702"
+	tint = INFINITY
+	sight_flags = BLIND
+	metalizer_result = /obj/item/ammo_casing/caseless/lead

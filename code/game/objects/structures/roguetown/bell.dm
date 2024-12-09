@@ -59,28 +59,4 @@
 		playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
 		if(!do_after(user, 30, target = src))
 			return
-	var/realbribe = bribeprice - (round(((world.time - SSticker.round_start_time) / 9000))*100)
-	if(user.mind)
-		if(user.mind.has_antag_datum(/datum/antagonist/skeleton))
-			realbribe = 0
-	if(bribe < realbribe)
-		to_chat(user, span_warning("Not enough mammon to make the navigators betray the schedule."))
-		return
-//	SSshuttle.requestEvac(user, href_list["call"])
-	if(SSshuttle.emergency.mode != SHUTTLE_DOCKED)
-		return
-	if(SSshuttle.emergency.earlyLaunch == TRUE)
-		SSshuttle.emergency.earlyLaunch = FALSE
-//		SSshuttle.emergency.setTimer(max(SSshuttle.emergency.startTime + ROUNDTIMERBOAT - world.time, 5 MINUTES))
-		//announce delayed
-		priority_announce("The last boat was delayed.")
-	else
-		if(SSshuttle.emergency.timer < 5 MINUTES)
-			priority_announce("The last boat was delayed.")
-		else
-			priority_announce("The last boat is leaving early.", null, 'sound/misc/boatleave.ogg')
-		SSshuttle.emergency.earlyLaunch = TRUE
-		SSshuttle.emergency.setTimer(5 MINUTES)
-//	SSshuttle.moveShuttle("supply", "supply_away", TRUE)
-//	playsound(src, 'sound/misc/boatbell.ogg', 100, extrarange = 5)
 

@@ -26,10 +26,20 @@
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 	anchored = TRUE
-	density = TRUE	
+	density = TRUE
+
+/obj/structure/underworld/carriage_normal
+	name = "Carriage"
+	desc = "The ride stopped here..."
+	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
+	icon_state = "carriage_normal"
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	anchored = TRUE
+	density = TRUE
 
 /obj/structure/underworld/carriageman/Initialize()
-	..()
+	. = ..()
 	set_light(5, 30, LIGHT_COLOR_BLUE)
 
 /obj/structure/underworld/carriageman/attack_hand(mob/living/carbon/spirit/user)
@@ -72,11 +82,11 @@
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 	anchored = TRUE
-	density = TRUE	
+	density = TRUE
 
 
 /obj/structure/underworld/carriage/Initialize()
-	..()
+	. = ..()
 	set_light(5, 30, LIGHT_COLOR_BLUE)
 
 /obj/structure/underworld/carriage/attack_hand(mob/living/carbon/spirit/user)
@@ -130,7 +140,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	if(GLOB.underworld_coins < 8)
 		for(var/obj/effect/landmark/underworldcoin/B in GLOB.landmarks_list)
 			new /obj/item/underworld/coin(B.loc)
-	
+
 
 // why not also some mob stuff too
 /mob/living/simple_animal/hostile/rogue/dragger
@@ -250,7 +260,7 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 
 /mob/living/simple_animal/hostile/rogue/dragger/Life()
 	. = ..()
-	
+
 /mob/living/simple_animal/hostile/rogue/dragger/get_sound(input)
 	switch(input)
 		if("laugh")

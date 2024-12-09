@@ -14,7 +14,7 @@
 
 /obj/item/rogueore/gold/Initialize()
 	icon_state = "oregold[rand(1,3)]"
-	..()
+	. = ..()
 
 
 /obj/item/rogueore/silver
@@ -27,7 +27,7 @@
 
 /obj/item/rogueore/silver/Initialize()
 	icon_state = "oresilv[rand(1,3)]"
-	..()
+	. = ..()
 
 
 /obj/item/rogueore/iron
@@ -40,7 +40,7 @@
 
 /obj/item/rogueore/iron/Initialize()
 	icon_state = "oreiron[rand(1,3)]"
-	..()
+	. = ..()
 
 
 /obj/item/rogueore/copper
@@ -53,7 +53,7 @@
 
 /obj/item/rogueore/copper/Initialize()
 	icon_state = "orecop[rand(1,3)]"
-	..()
+	return ..()
 
 /obj/item/rogueore/tin
 	name = "raw tin"
@@ -70,14 +70,14 @@
 	name = "coal"
 	desc = "Dark lumps that become smoldering embers later in life."
 	icon_state = "orecoal1"
-	firefuel = 60 MINUTES
+	firefuel = 30 MINUTES
 	smeltresult = /obj/item/rogueore/coal
 	grind_results = list(/datum/reagent/fuel/oil = 15)
 	sellprice = 1
 
 /obj/item/rogueore/coal/Initialize()
 	icon_state = "orecoal[rand(1,3)]"
-	..()
+	return ..()
 
 /obj/item/rogueore/cinnabar
 	name = "cinnabar"
@@ -112,7 +112,7 @@
 		var/obj/machinery/anvil/A = loc
 		A.hingot = null
 		A.update_icon()
-	..()
+	return ..()
 
 /obj/item/ingot/gold
 	name = "gold bar"

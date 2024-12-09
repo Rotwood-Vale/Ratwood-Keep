@@ -415,13 +415,13 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			if((butcher_results || guaranteed_butcher_results) && held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 				var/used_time = 210
 				if(user.mind)
-					used_time -= (user.mind.get_skill_level(/datum/skill/labor/butchering) * 30)
+					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
 				visible_message("[user] begins to butcher [src].")
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				if(do_after(user, used_time, target = src))
 					gib()
 					if(user.mind)
-						user.mind.add_sleep_experience(/datum/skill/labor/butchering, user.STAINT * 4)
+						user.mind.add_sleep_experience(/datum/skill/craft/hunting, user.STAINT * 4)
 	..()
 
 /mob/living/simple_animal/gib()
@@ -513,7 +513,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		..()
 
 /mob/living/simple_animal/proc/CanAttack(atom/the_target)
-	if(see_invisible < the_target.invisibility) //Makes sneaking useful vs mobs now!
+	if(see_invisible < the_target.invisibility)
 		return FALSE
 	if(ismob(the_target))
 		var/mob/M = the_target
@@ -522,10 +522,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if (isliving(the_target))
 		var/mob/living/L = the_target
 		if(L.stat == DEAD)
-			return FALSE
-	if (ismecha(the_target))
-		var/obj/mecha/M = the_target
-		if (M.occupant)
 			return FALSE
 	return TRUE
 
@@ -670,9 +666,6 @@ mob/living/simple_animal/handle_fire()
 			return
 	sync_lighting_plane_alpha()
 
-/mob/living/simple_animal/get_idcard(hand_first)
-	return access_card
-
 /mob/living/simple_animal/can_hold_items()
 	return dextrous
 
@@ -700,13 +693,6 @@ mob/living/simple_animal/handle_fire()
 		return ..()
 	if(!hand_index)
 		hand_index = (active_hand_index % held_items.len)+1
-	var/obj/item/held_item = get_active_held_item()
-	if(held_item)
-		if(istype(held_item, /obj/item/twohanded))
-			var/obj/item/twohanded/T = held_item
-			if(T.wielded == 1)
-				to_chat(usr, span_warning("My other hand is too busy holding [T]."))
-				return FALSE
 	var/oindex = active_hand_index
 	active_hand_index = hand_index
 	if(hud_used)

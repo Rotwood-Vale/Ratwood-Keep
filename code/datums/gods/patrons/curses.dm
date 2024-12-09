@@ -12,22 +12,24 @@
 	var/trait
 
 /datum/curse/proc/on_life()
-	return 
-
-/datum/curse/proc/on_death()
-	return 
-
-/datum/curse/proc/on_gain(mob/living/carbon/human/owner)
-	ADD_TRAIT(owner, trait, TRAIT_CURSE)
-	to_chat(owner, span_userdanger("Something is wrong... I feel cursed."))
-	to_chat(owner, span_danger(description))
-	owner.playsound_local(get_turf(owner), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
 	return
 
-/datum/curse/proc/on_loss(mob/living/carbon/human/owner)
+/datum/curse/proc/on_death()
+	return
+
+/datum/curse/proc/on_gain(mob/living/carbon/human/owner, silent)
+	ADD_TRAIT(owner, trait, TRAIT_CURSE)
+	if(!silent)
+		to_chat(owner, span_userdanger("Something is wrong... I feel cursed."))
+		to_chat(owner, span_danger(description))
+		owner.playsound_local(get_turf(owner), 'sound/misc/cursed.ogg', 80, FALSE, pressure_affected = FALSE)
+	return
+
+/datum/curse/proc/on_loss(mob/living/carbon/human/owner, silent)
 	REMOVE_TRAIT(owner, trait, TRAIT_CURSE)
-	to_chat(owner, span_userdanger("Something has changed... I feel relieved."))
-	owner.playsound_local(get_turf(owner), 'sound/misc/curse_lifted.ogg', 80, FALSE, pressure_affected = FALSE)
+	if(!silent)
+		to_chat(owner, span_userdanger("Something has changed... I feel relieved."))
+		owner.playsound_local(get_turf(owner), 'sound/misc/curse_lifted.ogg', 80, FALSE, pressure_affected = FALSE)
 	qdel(src)
 	return
 
@@ -36,22 +38,28 @@
 		var/datum/curse/C = curse
 		C.on_life(src)
 
-/mob/living/carbon/human/proc/add_curse(datum/curse/C)
+/mob/living/carbon/human/proc/add_curse(datum/curse/C, silent)
 	if(is_cursed(C))
 		return FALSE
 
 	C = new C()
 	curses += C
-	C.on_gain(src)
+	if(!silent)
+		C.on_gain(src)
+	else
+		C.on_gain(src, TRUE)
 	return TRUE
 
-/mob/living/carbon/human/proc/remove_curse(datum/curse/C)
+/mob/living/carbon/human/proc/remove_curse(datum/curse/C, silent)
 	if(!is_cursed(C))
 		return FALSE
-	
+
 	for(var/datum/curse/curse in curses)
 		if(curse.name == C.name)
-			curse.on_loss(src)
+			if(!silent)
+				curse.on_loss(src)
+			else
+				curse.on_loss(src, TRUE)
 			curses -= curse
 			return TRUE
 			break
@@ -65,7 +73,7 @@
 	for(var/datum/curse/curse in curses)
 		if(curse.name == C.name)
 			return TRUE
-	
+
 	return FALSE
 
 //////////////////////
@@ -135,7 +143,7 @@
 /datum/curse/matthios
 	name = "Matthios' Curse"
 	description = "I hate the sight of wealth, and I cannot have anything to do with mammons."
-	trait = TRAIT_MATTHIOS_CURSE	
+	trait = TRAIT_MATTHIOS_CURSE
 
 /datum/curse/baotha
 	name = "Baotha's Curse"
@@ -179,7 +187,7 @@
 //////////////////////
 
 /datum/curse/pestra/on_life(mob/living/carbon/human/owner)
-	. = ..()		
+	. = ..()
 	if(owner.mob_timers["pestra_curse"])
 		if(world.time < owner.mob_timers["pestra_curse"] + rand(30,60)SECONDS)
 			return
@@ -200,10 +208,19 @@
 
 /datum/curse/baotha/on_life(mob/living/carbon/human/owner)
 	. = ..()
+	if(owner.mob_timers["baotha_curse_passive"])
+		if(world.time < owner.mob_timers["baotha_curse"] + rand(2,10)SECONDS)
+			return
+	owner.mob_timers["baotha_curse_passive"] = world.time
+	owner.sexcon.arousal += 1
+
 	if(owner.mob_timers["baotha_curse"])
-		if(world.time < owner.mob_timers["baotha_curse"] + rand(15,60)SECONDS)
+		if(world.time < owner.mob_timers["baotha_curse"] + rand(15,90)SECONDS)
 			return
 	owner.mob_timers["baotha_curse"] = world.time
+
+	owner.sexcon.arousal += rand(-20,50)
+	owner.sexcon.charge += rand(20, 50)
 
 	var/effect = rand(1, 3)
 	if(owner.gender == "female")
@@ -213,11 +230,11 @@
 			if(2)
 				owner.emote("sexmoanlight")
 			if(3)
-				owner.cursed_freak_out()
+				owner.emote("sexmoanlight")
 	//else //we dont have male moans yet
 
 /datum/curse/graggar/on_life(mob/living/carbon/human/owner)
-	. = ..()		
+	. = ..()
 	if(owner.mob_timers["graggar_curse"])
 		if(world.time < owner.mob_timers["graggar_curse"] + rand(15,60)SECONDS)
 			return
@@ -262,11 +279,11 @@
 	if(hud_used)
 		var/matrix/skew = matrix()
 		skew.Scale(2)
-		var/matrix/newmatrix = skew 
+		var/matrix/newmatrix = skew
 		for(var/C in hud_used.plane_masters)
 			var/atom/movable/screen/plane_master/whole_screen = hud_used.plane_masters[C]
 			if(whole_screen.plane == HUD_PLANE)
 				continue
 			animate(whole_screen, transform = newmatrix, time = 1, easing = QUAD_EASING)
 			animate(transform = -newmatrix, time = 30, easing = QUAD_EASING)
-	
+

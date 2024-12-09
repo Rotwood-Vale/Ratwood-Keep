@@ -544,13 +544,6 @@
 
 //This proc is called when you want to place an item into the storage item.
 /datum/component/storage/proc/attackby(datum/source, obj/item/I, mob/M, params)
-	if(istype(I, /obj/item/hand_labeler))
-		var/obj/item/hand_labeler/labeler = I
-		if(labeler.mode)
-			return FALSE
-//	. = TRUE //no afterattack
-	if(iscyborg(M))
-		return
 	//Vrell - Adding a block here to allow sewing/hammering to repair containers. Clicking while trying to sew will bypass this requirement.
 	if(isitem(parent))
 		if(istype(I, /obj/item/rogueweapon/hammer))
@@ -608,8 +601,6 @@
 	if(!ismob(M))
 		return
 	if(!over_object)
-		return
-	if(ismecha(M.loc)) // stops inventory actions in a mech
 		return
 	if(M.incapacitated() || !M.canUseStorage())
 		return
@@ -671,7 +662,7 @@
 /datum/component/storage/proc/mousedrop_receive(datum/source, atom/movable/O, mob/M)
 	if(isitem(O))
 		var/obj/item/I = O
-		if(iscarbon(M) || isdrone(M))
+		if(iscarbon(M))
 			var/mob/living/L = M
 			if(!L.incapacitated() && I == L.get_active_held_item())
 				if(!SEND_SIGNAL(I, COMSIG_CONTAINS_STORAGE) && can_be_inserted(I, FALSE))	//If it has storage it should be trying to dump, not insert.

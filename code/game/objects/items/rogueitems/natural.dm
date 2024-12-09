@@ -19,7 +19,7 @@
 			else
 				to_chat(user, "There's not enough space in [W].")
 			return
-	else if(istype(W, /obj/item/natural/))
+	else if(istype(W, /obj/item/natural))
 		var/obj/item/natural/B = W
 		if(B.bundletype == src.bundletype && src.bundletype != null)
 			var/obj/item/natural/bundle/N = new bundletype(src.loc)
@@ -95,6 +95,28 @@
 			H.put_in_hands(F)
 			user.visible_message("[user] removes [F] from [src]")
 	update_bundle()
+
+/obj/item/natural/bundle/attack_turf(turf/T, mob/living/user)
+	var/list/obj/item/stackables = list()
+	for(var/obj/I in T.contents)
+		if(I.type == stacktype)
+			stackables += I
+	if(stackables.len)
+		if(amount >= maxamount)
+			to_chat(user, span_info("[src] can't hold any more without falling apart."))
+			return
+		to_chat(user, span_info("I begin filling [src]..."))
+		for(var/obj/I in stackables)
+			if(amount >= maxamount)
+				break
+			if(I.type == stacktype)
+				if(!do_after(user, 5, TRUE, src))
+					break
+				if(!(I in T.contents))
+					continue
+				qdel(I)
+				src.amount++
+				update_bundle()
 
 /obj/item/natural/bundle/examine(mob/user)
 	. = ..()

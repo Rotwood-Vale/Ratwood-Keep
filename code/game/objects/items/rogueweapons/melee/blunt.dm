@@ -249,7 +249,6 @@
 	force = 5
 	force_wielded = 8
 	icon_state = "wsword"
-	//dropshrink = 0.75
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
 	smeltresult = /obj/item/ash
@@ -257,7 +256,7 @@
 	wdefense = 5
 	wbalance = 0
 	associated_skill = /datum/skill/combat/swords
-
+	metalizer_result = /obj/item/rogueweapon/sword/gladius
 
 /obj/item/rogueweapon/mace/wsword/getonmobprop(tag)
 	. = ..()

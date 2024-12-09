@@ -84,6 +84,8 @@ All foods are distributed among various categories. Use common sense.
 	smeltresult = /obj/item/ash
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 
+	var/cooked_smell
+
 /datum/intent/food
 	name = "feed"
 	noaa = TRUE
@@ -110,7 +112,7 @@ All foods are distributed among various categories. Use common sense.
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(begin_rotting)))
 	if(cooked_type || fried_type)
 		cooktime = 30 SECONDS
-	..()
+	. = ..()
 
 /obj/item/reagent_containers/food/snacks/proc/begin_rotting()
 	START_PROCESSING(SSobj, src)
@@ -161,16 +163,18 @@ All foods are distributed among various categories. Use common sense.
 		if(cooking < cooktime)
 			cooking = cooking + input
 			if(cooking >= cooktime)
-				return microwave_act(A)
+				return heating_act(A)
 			warming = 5 MINUTES
 			return
 	burning(input)
 
-/obj/item/reagent_containers/food/snacks/microwave_act(atom/A)
+/obj/item/reagent_containers/food/snacks/heating_act(atom/A)
 	if(istype(A,/obj/machinery/light/rogue/oven))
 		var/obj/item/result
 		if(cooked_type)
 			result = new cooked_type(A)
+			if(cooked_smell)
+				result.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
 		else
 			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
 		initialize_cooked_food(result, 1)
@@ -179,6 +183,8 @@ All foods are distributed among various categories. Use common sense.
 		var/obj/item/result
 		if(fried_type)
 			result = new fried_type(A)
+			if(cooked_smell)
+				result.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
 		else
 			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
 		initialize_cooked_food(result, 1)
@@ -471,25 +477,15 @@ All foods are distributed among various categories. Use common sense.
 				S.reagents.add_reagent(r_id, amount)
 	S.filling_color = filling_color
 	S.update_snack_overlays(src)
-/*
-/obj/item/reagent_containers/food/snacks/microwave_act(obj/machinery/microwave/M)
-	var/turf/T = get_turf(src)
-	var/obj/item/result
 
-	if(cooked_type)
-		result = new cooked_type(T)
-		if(istype(M))
-			initialize_cooked_food(result, M.efficiency)
-		else
-			initialize_cooked_food(result, 1)
-		SSblackbox.record_feedback("tally", "food_made", 1, result.type)
-	else
-		result = new /obj/item/reagent_containers/food/snacks/badrecipe(T)
-		if(istype(M) && M.dirty < 100)
-			M.dirty++
-	qdel(src)
-
-	return result*/
+/obj/item/reagent_containers/food/snacks/proc/changefood(path, mob/living/eater)
+	if(!path || !eater)
+		return
+	var/turf/T = get_turf(eater)
+	if(eater.dropItemToGround(src))
+		qdel(src)
+	var/obj/item/I = new path(T)
+	eater.put_in_active_hand(I)
 
 /obj/item/reagent_containers/food/snacks/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -516,7 +512,7 @@ All foods are distributed among various categories. Use common sense.
 	. = ..()
 	if(!dunkable || !proximity)
 		return
-	if(istype(M, /obj/item/reagent_containers/glass) || istype(M, /obj/item/reagent_containers/food/drinks))	//you can dunk dunkable snacks into beakers or drinks
+	if(istype(M, /obj/item/reagent_containers/glass))	//you can dunk dunkable snacks into beakers or drinks
 		if(!M.is_drainable())
 			to_chat(user, span_warning("[M] is unable to be dunked in!"))
 			return
@@ -563,3 +559,13 @@ All foods are distributed among various categories. Use common sense.
 	else
 		return ..()
 
+
+/obj/item/reagent_containers/food/snacks/badrecipe
+	name = "burned mess"
+	desc = ""
+	icon_state = "badrecipe"
+	list_reagents = list(/datum/reagent/toxin/bad_food = 30)
+	filling_color = "#8B4513"
+	foodtype = GROSS
+	burntime = 0
+	cooktime = 0

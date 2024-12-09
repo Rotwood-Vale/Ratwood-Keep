@@ -137,6 +137,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .reptile				{font-family: "Kingthings Petrock", Pterra; font-size: 120%;}
 .faexin					{font-family: "Sweet Dreams", Pterra;}
 .lupian					{font-family: "Emperialisme", Pterra; font-size: 120%;}
+.felid					{font-family: "Rasyideen", Pterra; font-size: 120%;}
 
 .torture				{color: #42ff20}
 

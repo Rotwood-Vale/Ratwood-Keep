@@ -14,25 +14,6 @@
 	fiber_salvage = FALSE
 	salvage_amount = 1
 
-/obj/item/clothing/gloves/roguetown/leather
-	name = "leather gloves"
-	desc = "Leather gloves usually worn by laborers."
-	icon_state = "leather_gloves"
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
-	resistance_flags = null
-	blocksound = SOFTHIT
-	blade_dulling = DULLING_BASHCHOP
-	break_sound = 'sound/foley/cloth_rip.ogg'
-	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	salvage_result = /obj/item/natural/hide
-
-/obj/item/clothing/gloves/roguetown/leather/black
-	desc = "Leather gloves usually worn by laborers. Dyed black."
-	color = "#151615"
-/obj/item/clothing/gloves/roguetown/leather/black
-	icon_state = "gloves_black"
-
 /obj/item/clothing/gloves/roguetown/fingerless
 	name = "fingerless gloves"
 	desc = "Gloves with holes for fingers, preferred by archers."
@@ -42,21 +23,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-
-
-/obj/item/clothing/gloves/roguetown/angle
-	name = "heavy leather gloves"
-	desc = "A thick pair of leather gloves."
-	icon_state = "angle"
-	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
-	resistance_flags = null
-	blocksound = SOFTHIT
-	max_integrity = 100
-	blade_dulling = DULLING_BASHCHOP
-	break_sound = 'sound/foley/cloth_rip.ogg'
-	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/gloves/roguetown/chain
 	name = "chain gauntlets"

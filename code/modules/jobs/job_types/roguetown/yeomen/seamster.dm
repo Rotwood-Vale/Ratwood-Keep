@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_races = RACES_ALL_KINDS_PLUS_SEELIE
+	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE
 	tutorial = "You are the Seamster. Be it repairing a brigand's leather armour, a Lord's cape, the garnments of common folk and clergy alike, you have done it all. \
 				Through many sleepless nights and by the sweat of your brow you have now managed to purchase your own workshop. \
 				What you do now is up to you, a needle, and a thread..."
@@ -24,7 +24,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	beltr = /obj/item/rogueweapon/huntingknife/scissors
-	beltl = /obj/item/roguekey/seamster
+	beltl = /obj/item/key/seamster
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle = 1)
 	if(H.gender == MALE) // We're givign males male specific clothes so they don't walk around in a dress
@@ -40,11 +40,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 		H.change_stat("intelligence", 2)
-		H.change_stat("speed", 2)  
+		H.change_stat("speed", 2)
 		H.change_stat("perception", 1)
 		H.change_stat("strength", -1)
 		if(isseelie(H))

@@ -4,6 +4,8 @@
 	outfit = /datum/outfit/job/roguetown/fablefield/goliard
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
+	show_wanderer_examine = FALSE
+	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/fablefield/goliard
 	allowed_patrons = list(/datum/patron/divine/xylix)
@@ -54,6 +56,8 @@
 	outfit = /datum/outfit/job/roguetown/fablefield/troubadour
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
+	show_wanderer_examine = FALSE
+	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/fablefield/troubadour
 	allowed_patrons = list(/datum/patron/divine/xylix)

@@ -47,9 +47,6 @@
 
 /obj/effect/dummy/phased_mob/shadow/relaymove(mob/user, direction)
 	var/turf/newLoc = get_step(src,direction)
-	if(isspaceturf(newLoc))
-		to_chat(user, span_warning("It really would not be wise to go into space."))
-		return
 	forceMove(newLoc)
 	check_light_level()
 

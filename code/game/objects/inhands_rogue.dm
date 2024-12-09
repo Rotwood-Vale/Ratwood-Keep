@@ -2,6 +2,7 @@
 	/// A lazylist to store inhands data.
 	var/list/onprop
 	var/d_type = "blunt"
+	var/worn_in
 //#ifdef TESTSERVER
 	var/force_reupdate_inhand = TRUE
 //#else

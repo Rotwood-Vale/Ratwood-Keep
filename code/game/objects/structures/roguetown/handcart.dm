@@ -16,45 +16,14 @@
 	var/arbitrary_living_creature_weight = 10 // The arbitrary weight for any thing of a mob and living variety
 	/// This is the carts upgrade level, capacity increases with upgrade level
 	var/upgrade_level = 0
-	var/obj/item/cart_upgrade/upgrade = null
+	var/obj/item/roguegear/wood/upgrade = null
 	facepull = FALSE
 	throw_range = 1
 
-/obj/item/cart_upgrade
-	name = "Exemple upgrade cog"
-	desc = "Exemple upgrade."
-	icon_state = "upgrade"
-	icon = 'icons/roguetown/misc/structure.dmi'
-	var/ulevel = 0
-
-/obj/item/cart_upgrade/level_1
-	name = "upgrade cog"
-	desc = "A cog that can increase the carry capacity of a wooden cart."
-	icon_state = "upgrade"
-	ulevel = 1
-	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(26, 13, 150, 150))
-
-/obj/item/cart_upgrade/level_2
-	name = "advanced upgrade cog"
-	desc = "A cog that can further increase the carry capacity of a wooden cart. The first upgrade is required for this one to function."
-	icon_state = "upgrade2"
-	ulevel = 2
-	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(32, 196, 218, 200))
-
 /obj/structure/handcart/examine(mob/user)
 	. = ..()
-	if(upgrade_level == 1)
-		. += span_notice("This cart has a <i>level 1</i> cog instaled.")
-	else if(upgrade_level == 2)
-		. += span_notice("This cart has a <i>level 2</i> cog instaled.")
-
-/obj/structure/handcart/proc/manage_upgrade()
-	switch(upgrade_level)
-		if(1)
-			maximum_capacity = 90
-		if(2)
-			maximum_capacity = 120
-	update_icon()
+	if(upgrade)
+		. += span_notice("This cart has a [upgrade.name] instaled.")
 
 /obj/structure/handcart/Initialize(mapload)
 	if(mapload)		// if closed, any item at the crate's loc is put in the contents
@@ -111,30 +80,15 @@
 		return TRUE
 
 /obj/structure/handcart/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/cart_upgrade))
-		var/obj/item/cart_upgrade/item = I
-		if(item.ulevel == 1)
-			if(upgrade_level != 0)
-				to_chat(user, "<span class='warning'>This cog is obsolete.</span>")
-				return
-			else
-				upgrade = item
-				upgrade_level = item.ulevel
-				qdel(item)
-				manage_upgrade()
-				playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
-				return
-		if(item.ulevel == 2)
-			if(upgrade_level != 1)
-				to_chat(user, "<span class='warning'>The cart needs a normal upgrade cog before this one can be used!</span>")
-				return
-			else
-				upgrade = item
-				upgrade_level = item.ulevel
-				qdel(item)
-				manage_upgrade()
-				playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
-				return
+	if(istype(I, /obj/item/roguegear/wood))
+		var/obj/item/roguegear/wood/cog = I
+		upgrade = I
+		maximum_capacity = cog.cart_capacity
+		qdel(cog)
+		playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
+		shake_camera(user, 1, 1)
+		to_chat(user, "<span class='warning'>[cog.name] inserted!</span>")
+		return
 	if(!user.cmode)
 		if(!insertion_allowed(I))
 			return

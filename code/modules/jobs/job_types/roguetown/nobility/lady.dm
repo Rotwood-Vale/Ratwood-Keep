@@ -1,5 +1,5 @@
 /datum/job/roguetown/lady
-	title = "Duchess Consort"
+	title = "Duchess"
 	flag = LADY
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -39,14 +39,12 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
-	beltl = /obj/item/keyring/royal
+	beltl = /obj/item/storage/keyring/royal
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-	if(isdwarf(H))
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress
-	else
-		armor = /obj/item/clothing/suit/roguetown/armor/armordress
-	head = /obj/item/clothing/head/roguetown/hennin
+	head = /obj/item/clothing/head/roguetown/duchess_hood
+	backl = /obj/item/clothing/suit/roguetown/armor/leather/duchess
+	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 //		SSticker.rulermob = H
 
 	id = /obj/item/clothing/ring/silver
@@ -59,6 +57,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.change_stat("intelligence", 3)
@@ -70,6 +69,7 @@
 /obj/effect/proc_holder/spell/self/convertrole/servant
 	name = "Recruit Servant"
 	new_role = "Servant"
+	overlay_state = "recruit_servant"
 	recruitment_faction = "Servants"
 	recruitment_message = "Serve the duchy, %RECRUIT!"
 	accept_message = "Yes, your highness!"

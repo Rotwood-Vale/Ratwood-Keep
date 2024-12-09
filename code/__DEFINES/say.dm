@@ -33,7 +33,6 @@
 #define MODE_DEADMIN "deadmin"
 #define MODE_KEY_DEADMIN "d"
 
-#define MODE_ALIEN "alientalk"
 #define MODE_HOLOPAD "holopad"
 
 #define MODE_CHANGELING "changeling"
@@ -62,6 +61,7 @@
 #define SPAN_DELF "delf"
 #define SPAN_HELL "hellspeak"
 #define SPAN_LUPIAN "lupian"
+#define SPAN_FELID "felid"
 #define SPAN_BEAST "beast"
 #define SPAN_ORC "orc"
 #define SPAN_DRACONIC "reptile"

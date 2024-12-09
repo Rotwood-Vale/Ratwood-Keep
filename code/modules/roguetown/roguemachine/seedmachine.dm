@@ -16,7 +16,7 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/list/held_items = list()
-	var/locked = FALSE
+	locked = FALSE
 	var/budget = 0
 	var/secret_budget = 0
 	var/recent_payments = 0
@@ -34,8 +34,8 @@
 		else
 			to_chat(user, span_warning("Wrong key."))
 			return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
 			if(KE.lockid == "null")
 				locked = !locked
