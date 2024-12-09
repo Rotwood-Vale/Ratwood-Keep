@@ -222,40 +222,14 @@
 	var milk_amount
 
 	if(isseelie(user))
-		switch(breasts.breast_size)
-			if(0)
-				milk_amount = 5
-			if(1)
-				milk_amount = 6
-			if(2)
-				milk_amount = 7
-			if(3)
-				milk_amount = 8
-			if(4)
-				milk_amount = 9
-			if(5)
-				milk_amount = 10
-		
+		milk_amount = 1
 		if(vagina.pregnant)
-			milk_amount = milk_amount + 5
+			milk_amount = milk_amount + 2 //If anyone is doing this... Shame on you
 	else
-		switch(breasts.breast_size)
-			if(0)
-				milk_amount = 10
-			if(1)
-				milk_amount = 15
-			if(2)
-				milk_amount = 20
-			if(3)
-				milk_amount = 30
-			if(4)
-				milk_amount = 35
-			if(5)
-				milk_amount = 40
-				
+		milk_amount = 5
 		if(vagina.pregnant)
-			milk_amount = milk_amount + 20
-	return milk_amount = round(milk_amount * (min((world.time - breasts.last_milked)/(2 MINUTES), 1) * (((user.nutrition + user.hydration)/2)/500)))
+			milk_amount = milk_amount + 10 //I ran the numbers, a breastfeeding woman can produce a stick of butter with one session
+	return milk_amount = round(milk_amount * (((user.nutrition + user.hydration)/2)/500))
 
 /datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
@@ -264,9 +238,9 @@
 	user.visible_message(span_lovebold("[user] lactates into [C]!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	milk_amount = calculate_milk()
-	C.reagents.add_reagent(/datum/reagent/consumable/breastmilk, milk_amount)
-	user.adjust_hydration(-(milk_amount * 10))
-	user.adjust_nutrition(-(milk_amount * 5))
+	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
+	user.adjust_hydration(-(milk_amount * 20))
+	user.adjust_nutrition(-(milk_amount * 20))
 	breasts.last_milked = world.time
 	after_milking()
 
