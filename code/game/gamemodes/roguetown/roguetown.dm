@@ -155,7 +155,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					log_game("Minor Antagonist: Maniac")
 				if("Lich")
 					pick_lich()
-					log_game("Minor Antagonist: Lich")
+					log_game("Major Antagonist: Lich")
 				if("Cultists")
 					pick_cultist()
 					log_game("Major Antagonist: Cultists")
@@ -163,7 +163,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					log_game("Major Antagonist: None")
 		return TRUE
 
-	var/major_roll = pick(1,2,3)
+	var/major_roll = pick(1,2,3,4)
 	switch(major_roll)
 		if(1)
 			pick_rebels()
@@ -176,8 +176,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 			pick_vampires()
 			pick_werewolves()
 			log_game("Major Antagonist: Vampires and Werewolves")
-		//if(4)
-		//	log_game("Major Antagonist: None")
+		if(4)
+			pick_lich()
+			log_game("Major Antagonist: Lich")
 
 	if(prob(100))
 		pick_bandits()
@@ -186,10 +187,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
-
-	if(prob(30))
-		pick_lich()
-		log_game("Minor Antagonist: Lich")
 
 	if(prob(10))
 		pick_maniac()
