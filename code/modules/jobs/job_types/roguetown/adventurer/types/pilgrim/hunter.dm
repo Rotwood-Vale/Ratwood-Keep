@@ -25,6 +25,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE) //firing both bows and crossbows at animals, checks out.
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) //spear hunting
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
