@@ -315,9 +315,6 @@
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/detailed/tabards.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/detailed/tabards.dmi'
-	sleevetype = "shirt"
-	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
 	var/picked
@@ -599,9 +596,6 @@
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	boobed = TRUE
-	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
-	sleevetype = "shirt"
-	nodismemsleeves = TRUE
 	inhand_mod = TRUE
 //	allowed_sex = list(MALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
@@ -730,9 +724,6 @@
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 //	body_parts_covered = ARMS|CHEST
 	boobed = TRUE
-	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
-	sleevetype = "shirt"
-	nodismemsleeves = TRUE
 	inhand_mod = TRUE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood
 	toggle_icon_state = FALSE
@@ -834,9 +825,6 @@
 	item_state = "cape"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	boobed = TRUE
-	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
-	sleevetype = "shirt"
-	nodismemsleeves = TRUE
 	inhand_mod = FALSE
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 
@@ -899,20 +887,15 @@
 	desc = ""
 	icon_state = "chasuble"
 	body_parts_covered = CHEST|GROIN|ARMS
-	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
-	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
-	nodismemsleeves = TRUE
 
 
 /obj/item/clothing/cloak/stole
 	name = "stole"
 	desc = "Garments of a priest, usually worn when giving mass to the people."
 	icon_state = "stole_gold"
-	sleeved = null
-	sleevetype = null
 	body_parts_covered = null
 	flags_inv = null
 
@@ -927,26 +910,20 @@
 	desc = ""
 	icon_state = "black_cloak"
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
-	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
-	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	sellprice = 50
-	nodismemsleeves = TRUE
 
 /obj/item/clothing/cloak/heartfelt
 	name = "red cloak"
 	desc = ""
 	icon_state = "heartfelt_cloak"
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
-	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
-	sleevetype = "shirt"
 	slot_flags = ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	sellprice = 50
-	nodismemsleeves = TRUE
 
 /obj/item/clothing/cloak/half
 	name = "halfcloak"
@@ -957,9 +934,6 @@
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 //	body_parts_covered = ARMS|CHEST
 	boobed = TRUE
-	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
-	sleevetype = "shirt"
-	nodismemsleeves = TRUE
 	inhand_mod = TRUE
 	hoodtype = null
 	toggle_icon_state = FALSE
@@ -1021,7 +995,6 @@
 	icon_state = "bkcape"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
-	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 
 /obj/item/clothing/head/roguetown/helmet/heavy/blkknight
 	name = "blacksteel helmet"
@@ -1042,7 +1015,6 @@
 	icon_state = "bklegs"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
-	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/gloves/roguetown/plate/blk
@@ -1050,7 +1022,6 @@
 	icon_state = "bkgloves"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
-	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/neck/roguetown/blkknight
@@ -1108,12 +1079,9 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "blacksteel plate"
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	icon_state = "bkarmor"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
-	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/shoes/roguetown/armor/steel/blkknight
@@ -1121,7 +1089,6 @@
 	icon_state = "bkboots"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
-	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 
 //Short hoods for guards

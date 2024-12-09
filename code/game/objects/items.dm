@@ -155,14 +155,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/can_assin = FALSE		//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
 	var/can_cdg = FALSE			//Weapon: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
-	var/sleeved = null
-	var/sleevetype = null
-	var/nodismemsleeves = FALSE
 	var/inhand_mod = FALSE
-	var/r_sleeve_status = SLEEVE_NOMOD //SLEEVE_TORN or SLEEVE_ROLLED
-	var/l_sleeve_status = SLEEVE_NOMOD
-	var/r_sleeve_zone = BODY_ZONE_R_ARM
-	var/l_sleeve_zone = BODY_ZONE_L_ARM
+
 
 	var/twohands_required = FALSE
 
@@ -216,9 +210,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	/// Temporary snowflake var to be used in the rare cases clothing doesn't require fibers to sew, to avoid material duping
 	var/fiber_salvage = FALSE
-
-	/// Number of torn sleves, important for salvaging calculations and examine text
-	var/torn_sleeve_number = 0
 
 /obj/item/Initialize()
 	. = ..()
