@@ -255,7 +255,7 @@
 								//leaving this code in case someone decides to add drawbacks to having large breasts
 		if(vagina.pregnant)
 			milk_amount = milk_amount + 10 //I ran the numbers, a breastfeeding woman can produce a stick of butter with one session
-	return milk_amount = round(milk_amount * (((user.nutrition + user.hydration)/2)/500)))
+	return milk_amount = round(milk_amount * (((user.nutrition + user.hydration)/2)/500))
 
 /datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
 	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
