@@ -16,7 +16,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/hammer
 	beltl = /obj/item/rogueweapon/tongs
-	// neck = /obj/item/storage/belt/rogue/pouch/coins/rich NO POUCH - gets gems
+	neck = /obj/item/storage/belt/rogue/pouch //NO MONEY, GETS GEMS
 	mouth = /obj/item/rogueweapon/huntingknife
 
 	gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -34,11 +34,13 @@
 
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 5) // Hammer.
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3)
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 5)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 6)
+			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 3)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1)
 			if(H.age == AGE_OLD)
 				H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1)
