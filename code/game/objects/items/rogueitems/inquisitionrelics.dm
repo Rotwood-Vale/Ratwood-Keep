@@ -1,4 +1,4 @@
-// Soul Churner - Music box which applies magic resistance to PSYDON worshippers, greatly mood debuffs everyone else.
+// Soul Churner - Music box which applies magic resistance to Inquisition members, greatly mood debuffs everyone not a Psydon worshipper.
 /obj/item/psydonmusicbox
 	name = "melancholic crankbox"
 	desc = ""
