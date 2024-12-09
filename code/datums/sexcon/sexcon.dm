@@ -222,37 +222,11 @@
 	var milk_amount
 
 	if(isseelie(user))
-		switch(breasts.breast_size)
-			if(0)
-				milk_amount = 1
-			if(1)
-				milk_amount = 1
-			if(2)
-				milk_amount = 1
-			if(3)
-				milk_amount = 1
-			if(4)
-				milk_amount = 1
-			if(5)
-				milk_amount = 1
-		
+		milk_amount = 1
 		if(vagina.pregnant)
 			milk_amount = milk_amount + 2 //If anyone is doing this... Shame on you
 	else
-		switch(breasts.breast_size)
-			if(0)
-				milk_amount = 5
-			if(1)
-				milk_amount = 5
-			if(2)
-				milk_amount = 5
-			if(3)
-				milk_amount = 5
-			if(4)
-				milk_amount = 5
-			if(5)
-				milk_amount = 5
-								//leaving this code in case someone decides to add drawbacks to having large breasts
+		milk_amount = 5
 		if(vagina.pregnant)
 			milk_amount = milk_amount + 10 //I ran the numbers, a breastfeeding woman can produce a stick of butter with one session
 	return milk_amount = round(milk_amount * (((user.nutrition + user.hydration)/2)/500))
