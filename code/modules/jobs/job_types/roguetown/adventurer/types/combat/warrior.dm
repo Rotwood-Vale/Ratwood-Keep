@@ -41,7 +41,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE) //Used to stitching themselves up in times of no clerics
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 2) // Slightly worse stats since they're now actually skilled
-			H.change_stat("constitution", 1)
+			H.change_stat("constitution", 2)
 			H.change_stat("speed", 1)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			gloves = /obj/item/clothing/gloves/roguetown/leather
