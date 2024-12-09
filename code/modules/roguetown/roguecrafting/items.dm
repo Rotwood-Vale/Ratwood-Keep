@@ -147,7 +147,7 @@
 	result = /obj/item/rogueweapon/spear/stone
 	reqs = list(/obj/item/rogueweapon/woodstaff = 1,
 				/obj/item/natural/stone = 1)
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/woodclub
 	name = "wood club"
@@ -160,7 +160,7 @@
 	reqs = list(/obj/item/rogueweapon/sickle = 1,
 				/obj/item/rope = 1,
 				/obj/item/grown/log/tree/small = 1)
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/goedendag
 	name = "goedendag"
@@ -168,7 +168,7 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/hoe = 1)
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/peasantwarflail
 	name = "peasant war flail"
@@ -176,7 +176,7 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rope = 1,
 				/obj/item/rogueweapon/thresher = 1)
-	craftdiff = 3
+	craftdiff = 2
 
 /obj/item/rogueweapon/mace/woodclub/crafted
 	sellprice = 8
