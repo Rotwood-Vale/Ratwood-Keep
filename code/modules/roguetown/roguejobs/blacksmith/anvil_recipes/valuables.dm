@@ -21,7 +21,7 @@
 
 /datum/anvil_recipe/valuables
 	appro_skill = /datum/skill/craft/blacksmithing
-	craftdiff = 2
+	skill_level = 2
 
 /datum/anvil_recipe/valuables/gold
 	name = "Statue"
