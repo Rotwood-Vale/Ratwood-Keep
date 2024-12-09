@@ -1175,6 +1175,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr,span_warning("NO...IT COULDN'T BE... (Needs to be a carbon!)"))
 				return
 			var/mob/living/carbon/human/humie = target
+			playsound(src, 'sound/villain/dreamer_win.ogg', 100, FALSE, -1)
 			humie.gender = MALE
 			humie.skin_tone = "ffe0d1"
 			humie.hair_color = "999999"
@@ -1191,10 +1192,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				span_deadsay("... Azure Peak? No ... It doesn't exist ..."),
 				span_deadsay("... My name is Trey. Trey Liam, Liamtific Troverseer ..."),
 				span_deadsay("... I'm on NT Liam, a self Treystaining ship, used to Treyserve what Liamains of roguemanity ..."),
-				span_deadsay("... Launched into the Grim Darkness, Fart Grimness preserves their grimness ... Their edge ..."),
-				span_deadsay("... Keeps them alive in the grim future, where there is only grimdarkness ..."),
-				span_deadsay("... There is no hope left. Only the Space Station 13 lets me live in the Trey Liam ..."),
+				span_deadsay("... Launched into the Grim Darkness, War and Grim Darkness preserves their grimness ... Their edge ..."),
+				span_deadsay("... Keeps them alive in the grimdark future, where there is only war  ..."),
+				span_deadsay("... There is no hope left. Only the Space Station 13 (TRADEMARK TITLE DROP) lets me live in the Trey Liam ..."),
 				span_deadsay("... What have I done!? ..."),
+				span_reallybig("... OH SHIT WHY IS THERE A TALKING DOG?! ..."),
 		)
 			for(var/slop in slop_lore)
 				to_chat(humie, slop)
