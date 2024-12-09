@@ -2684,9 +2684,11 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/mountains)
 "clX" = (
-/obj/structure/table/wood,
-/turf/closed,
-/area/rogue/under/town/sewer)
+/obj/structure/floordoor{
+	redstone_id = "manortrapdoor"
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/town/manor)
 "cmz" = (
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/dwarfin)
@@ -12989,6 +12991,11 @@
 /area/rogue/indoors/town/bath)
 "lHD" = (
 /obj/structure/table/wood,
+/obj/structure/lever{
+	pixel_y = 14;
+	redstone_id = "manortrapdoor";
+	layer = 3
+	},
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/indoors/town/manor)
 "lHX" = (
@@ -38819,7 +38826,7 @@ pmA
 gJF
 bHA
 jRM
-clX
+bku
 ipJ
 cVE
 heh
@@ -43666,7 +43673,7 @@ dCX
 dCX
 dCX
 dCX
-pNQ
+dCX
 pNQ
 pNQ
 pNQ
@@ -43815,8 +43822,8 @@ bLJ
 xUt
 dCX
 dCX
-ixc
-ixc
+dCX
+dCX
 dCX
 dCX
 dCX
@@ -43825,7 +43832,7 @@ sid
 dCX
 dCX
 dCX
-ixc
+dCX
 dCX
 pNQ
 ixc
@@ -44122,7 +44129,7 @@ pNQ
 pNQ
 pNQ
 pNQ
-ixc
+dCX
 kAu
 bLJ
 bLJ
@@ -44748,7 +44755,7 @@ pNQ
 pNQ
 pNQ
 pNQ
-ixc
+dCX
 wzU
 iuO
 ruG
@@ -44769,7 +44776,7 @@ dCX
 cMd
 wzx
 eZb
-ixc
+dCX
 rcD
 tsh
 pJq
@@ -44905,7 +44912,7 @@ pNQ
 pNQ
 pNQ
 pNQ
-ixc
+dCX
 vMo
 ruG
 ruG
@@ -44926,7 +44933,7 @@ dCX
 dbh
 dbh
 dbh
-ixc
+dCX
 rcD
 rcD
 ixc
@@ -45550,8 +45557,8 @@ shO
 iuO
 iuO
 vWW
-ixc
-ixc
+dCX
+dCX
 pNQ
 pNQ
 pNQ
@@ -45708,7 +45715,7 @@ iuO
 iuO
 iuO
 diY
-ixc
+dCX
 qGI
 oGK
 oGK
@@ -46178,7 +46185,7 @@ xeM
 iuO
 iuO
 xeM
-ixc
+dCX
 dCX
 pNQ
 pNQ
@@ -46475,7 +46482,7 @@ xlI
 xlI
 xlI
 ekq
-ixc
+dCX
 wzU
 iuO
 ruG
@@ -46632,7 +46639,7 @@ dCX
 dCX
 dCX
 dCX
-ixc
+dCX
 vMo
 ruG
 ruG
@@ -46789,7 +46796,7 @@ pNQ
 pNQ
 pNQ
 pNQ
-ixc
+dCX
 iuO
 ruG
 ruG
@@ -46806,7 +46813,7 @@ iuO
 iuO
 iuO
 cxO
-dCX
+ixc
 pNQ
 pNQ
 lBj
@@ -47120,7 +47127,7 @@ dCX
 pgy
 dCX
 dCX
-ixc
+dCX
 pNQ
 pNQ
 ixc
@@ -47429,7 +47436,7 @@ dCX
 iIK
 vxB
 vxB
-dCX
+ixc
 iuO
 iuO
 iuO
@@ -47733,7 +47740,7 @@ pNQ
 pNQ
 pNQ
 pNQ
-ixc
+dCX
 icI
 bvL
 lvu
@@ -47890,15 +47897,15 @@ pNQ
 pNQ
 pNQ
 pNQ
+dCX
 ixc
 ixc
 ixc
+dCX
+dCX
+dCX
 ixc
-dCX
-dCX
-dCX
-dCX
-dCX
+ixc
 dCX
 dCX
 uUe
@@ -70189,7 +70196,7 @@ iNg
 oQd
 sZw
 bDL
-oQd
+clX
 oQd
 oQd
 rDb
