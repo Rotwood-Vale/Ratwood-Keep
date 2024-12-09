@@ -49,7 +49,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			pants = /obj/item/clothing/under/roguetown/tights
 			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
-			armor = /obj/item/clothing/cloak/templar/abyssor			
+			armor = /obj/item/clothing/cloak/tabard/crusader/abyssor			
 		if(/datum/patron/divine/dendor) //Dendorites all busted. Play Druid.
 			head = /obj/item/clothing/head/roguetown/dendormask
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
