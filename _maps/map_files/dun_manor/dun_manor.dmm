@@ -2683,12 +2683,6 @@
 "clT" = (
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/mountains)
-"clX" = (
-/obj/structure/floordoor{
-	redstone_id = "manortrapdoor"
-	},
-/turf/open/transparent/openspace,
-/area/rogue/indoors/town/manor)
 "cmz" = (
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/dwarfin)
@@ -12991,11 +12985,6 @@
 /area/rogue/indoors/town/bath)
 "lHD" = (
 /obj/structure/table/wood,
-/obj/structure/lever{
-	pixel_y = 14;
-	redstone_id = "manortrapdoor";
-	layer = 3
-	},
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/indoors/town/manor)
 "lHX" = (
@@ -70196,7 +70185,7 @@ iNg
 oQd
 sZw
 bDL
-clX
+oQd
 oQd
 oQd
 rDb
