@@ -225,3 +225,29 @@
 		if(C && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
 			C.chatOutput.stopMusic()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stop All Playing Sounds") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+GLOBAL_LIST_INIT(ambience_files, list(
+	'sound/music/area/bath.ogg',
+	'sound/music/area/bog.ogg',
+	'sound/music/area/caves.ogg',
+	'sound/music/area/church.ogg',
+	'sound/music/area/dwarf.ogg',
+	'sound/music/area/field.ogg',
+	'sound/music/area/magiciantower.ogg',
+	'sound/music/area/manorgarri.ogg',
+	'sound/music/area/septimus.ogg',
+	'sound/music/area/sewers.ogg',
+	'sound/music/area/shop.ogg',
+	'sound/music/area/towngen.ogg',
+	'sound/music/area/townstreets.ogg',
+	'sound/music/area/sleeping.ogg',
+	'sound/music/jukeboxes/tav3.ogg'
+	))
+
+/client/verb/preload_sounds()
+	set category = "Options"
+	set name = "Preload Ambience"
+
+	for(var/music in GLOB.ambience_files)
+		mob.playsound_local(mob, music, 0.1)
+		sleep(10)
