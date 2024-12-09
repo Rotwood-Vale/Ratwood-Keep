@@ -29,16 +29,10 @@ SUBSYSTEM_DEF(traumas)
 	)
 
 	phobia_mobs = list(
-		"spiders"          = typecacheof(list(/mob/living/simple_animal/hostile/poison/giant_spider)),
-
-		"lizards"          = typecacheof(list(/mob/living/simple_animal/hostile/lizard)),
-		"snakes"           = typecacheof(list(/mob/living/simple_animal/hostile/retaliate/poison/snake)),
 		"birds"            = typecacheof(list(/mob/living/simple_animal/parrot))
 	)
 
 	phobia_objs = list(
-		"spiders"   = typecacheof(list(/obj/structure/spider)),
-
 		"lizards"   = typecacheof(list(
 									/obj/item/organ/tail/lizard)),
 

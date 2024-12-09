@@ -58,16 +58,3 @@
 		return FALSE
 	to_chat(user, span_notice("[drawmessage]"))
 	return TRUE
-
-/obj/effect/proc_holder/spell/targeted/touch/flesh_to_stone
-	name = "Flesh to Stone"
-	desc = ""
-	hand_path = /obj/item/melee/touch_attack/fleshtostone
-
-	school = "transmutation"
-	charge_max = 600
-	clothes_req = TRUE
-	cooldown_min = 200 //100 deciseconds reduction per rank
-
-	action_icon_state = "statue"
-	sound = 'sound/blank.ogg'

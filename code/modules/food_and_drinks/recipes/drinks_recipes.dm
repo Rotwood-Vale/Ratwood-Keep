@@ -752,12 +752,6 @@
 	required_reagents = list(/datum/reagent/consumable/ethanol/champagne = 2, /datum/reagent/consumable/ethanol/lizardwine = 2, /datum/reagent/consumable/eggyolk = 1, /datum/reagent/gold = 1)
 	mix_message = "The liquid's color starts shifting as the nanogold is alternately corroded and redeposited."
 
-/datum/chemical_reaction/red_queen
-	name = "Red Queen"
-	id = /datum/reagent/consumable/red_queen
-	results = list(/datum/reagent/consumable/red_queen = 10)
-	required_reagents = list(/datum/reagent/consumable/tea = 6, /datum/reagent/mercury = 2, /datum/reagent/consumable/blackpepper = 1, /datum/reagent/growthserum = 1)
-
 /datum/chemical_reaction/mauna_loa
 	name = "Mauna Loa"
 	id = /datum/reagent/consumable/ethanol/mauna_loa
