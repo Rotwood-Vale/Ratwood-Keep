@@ -1107,7 +1107,7 @@
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	playsound(loc, 'sound/misc/keyboard_type (3).ogg', 100)
+	playsound(loc, 'sound/misc/toggle_lamp.ogg', 100)
 	toggle_helmet_light(user)
 	to_chat(user, span_info("I toggle [src] [on ? "on" : "off"]."))
 
