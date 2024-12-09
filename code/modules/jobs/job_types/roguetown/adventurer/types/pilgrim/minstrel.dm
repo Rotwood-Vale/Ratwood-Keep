@@ -8,12 +8,13 @@
 
 /datum/outfit/job/roguetown/adventurer/minstrel/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE) //guaranteed better than bard
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE) //option between knives and swords
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) //performing takes a lot of effort okay ?
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
@@ -28,6 +29,7 @@
 	beltr = /obj/item/rogueweapon/huntingknife/idagger
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/rogue/instrument/lute = 1, /obj/item/rogue/instrument/flute = 1, /obj/item/rogue/instrument/drum = 1)
+	H.change_stat("endurance", 4) //infinite sex
 	H.change_stat("speed", 1)  
 	H.change_stat("fortune", 1)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
