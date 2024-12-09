@@ -15,8 +15,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE) //idk why the fisher gets bows
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE) //knives have low defence and fishers dont really have armour proficiencies or dodge skills so IMO let them have this
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE) //knives have low defence and fishers dont really have armour proficiencies or dodge skills so IMO let them have this
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) //polearms because fishing pole
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
@@ -30,7 +30,7 @@
 
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 2)
-		H.change_stat("constitution", 1)
+		H.change_stat("constitution", 2)//fish diet
 		H.change_stat("speed", 1)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 5, TRUE)
