@@ -304,9 +304,9 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/sewing/templar/necran
+/datum/crafting_recipe/roguetown/sewing/crusader/noc
 	name = "noc tabard (templar) - (3 cloths, fiber; JOURNEYMAN)"
-	result = list(/obj/item/clothing/cloak/templar/necran)
+	result = list(/obj/item/clothing/cloak/tabard/crusader/noc)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
