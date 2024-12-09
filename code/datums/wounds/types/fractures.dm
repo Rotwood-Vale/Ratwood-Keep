@@ -79,6 +79,7 @@
 	if(paralysis)
 		ADD_TRAIT(affected, TRAIT_NO_BITE, "[type]")
 		ADD_TRAIT(affected, TRAIT_PARALYSIS, "[type]")
+		ADD_TRAIT(affected, TRAIT_NOPAIN, "[type]")
 		if(iscarbon(affected))
 			var/mob/living/carbon/carbon_affected = affected
 			carbon_affected.update_disabled_bodyparts()
@@ -91,6 +92,7 @@
 	if(paralysis)
 		REMOVE_TRAIT(affected, TRAIT_NO_BITE, "[type]")
 		REMOVE_TRAIT(affected, TRAIT_PARALYSIS, "[type]")
+		REMOVE_TRAIT(affected, TRAIT_NOPAIN, "[type]")
 		if(iscarbon(affected))
 			var/mob/living/carbon/carbon_affected = affected
 			carbon_affected.update_disabled_bodyparts()
@@ -185,6 +187,7 @@
 /datum/wound/fracture/neck/on_mob_gain(mob/living/affected)
 	. = ..()
 	ADD_TRAIT(affected, TRAIT_PARALYSIS, "[type]")
+	ADD_TRAIT(affected, TRAIT_NOPAIN, "[type]")
 	if(iscarbon(affected))
 		var/mob/living/carbon/carbon_affected = affected
 		carbon_affected.update_disabled_bodyparts()
@@ -194,6 +197,7 @@
 /datum/wound/fracture/neck/on_mob_loss(mob/living/affected)
 	. = ..()
 	REMOVE_TRAIT(affected, TRAIT_PARALYSIS, "[type]")
+	REMOVE_TRAIT(affected, TRAIT_NOPAIN, "[type]")
 	if(iscarbon(affected))
 		var/mob/living/carbon/carbon_affected = affected
 		carbon_affected.update_disabled_bodyparts()
