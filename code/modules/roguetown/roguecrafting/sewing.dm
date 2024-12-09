@@ -183,7 +183,15 @@
 	result = list(/obj/item/clothing/cloak/fauld/battleskirt)
 	reqs =  list(/obj/item/natural/cloth = 2,
                 /obj/item/natural/fibers = 1)
-	skill_level = 2
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/sewing/lgambeson
+    name = "light gambeson (3 cloths, fiber; APPRENTICE)"
+    result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
+    reqs = list(/obj/item/natural/cloth = 3,
+                /obj/item/natural/fibers = 1)
+    craftdiff = 2
+
 /* craftdif of 3 = JOURNEYMAN */
 
 /datum/crafting_recipe/roguetown/sewing/armingjacket
@@ -225,13 +233,6 @@
 	result = list(/obj/item/clothing/neck/roguetown/coif)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
-	skill_level = 3
-
-/datum/crafting_recipe/roguetown/sewing/armordress
-	name = "dress (padded) - (5 cloths, fiber; JOURNEYMAN)"
-	result = /obj/item/clothing/suit/roguetown/armor/armordress
-	reqs = list(/obj/item/natural/cloth = 5,
-				/obj/item/natural/fibers = 2)
 	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/strapless_dress
@@ -411,6 +412,20 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/hgambeson
+    name = "padded gambeson (6 cloths, 4 fibers; EXPERT)"
+    result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
+    reqs = list(/obj/item/natural/cloth = 6,
+                /obj/item/natural/fibers = 4)
+    skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/armordress
+	name = "dress (padded) - (6 cloths, 4 fibers; EXPERT)"
+	result = /obj/item/clothing/suit/roguetown/armor/armordress
+	reqs = list(/obj/item/natural/cloth = 6,
+				/obj/item/natural/fibers = 4)
+	craftdiff = 3
 
 /* craftdif of 5 = MASTER */
 
