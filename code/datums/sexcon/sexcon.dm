@@ -265,8 +265,8 @@
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	milk_amount = calculate_milk()
 	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
-	user.adjust_hydration(-(milk_amount * 15))
-	user.adjust_nutrition(-(milk_amount * 15))
+	user.adjust_hydration(-(milk_amount * 30))
+	user.adjust_nutrition(-(milk_amount * 30))
 	breasts.last_milked = world.time
 	after_milking()
 
