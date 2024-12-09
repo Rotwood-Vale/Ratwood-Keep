@@ -9,9 +9,9 @@
 
 /datum/outfit/job/roguetown/adventurer/farmer/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE) //dont fuck with the guy who toils the field all day
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/labor/farming, 4, TRUE)
@@ -37,6 +37,5 @@
 		pants = null
 	backpack_contents = list(/obj/item/seeds/wheat=1,/obj/item/seeds/apple=1,/obj/item/ash=1)
 	H.change_stat("strength", 1)
-	H.change_stat("endurance", 1)
-	H.change_stat("intelligence", -2)
-	H.change_stat("speed", -1)
+	H.change_stat("endurance", 2)
+	H.change_stat("constitution", 3) //He grows his own food.
