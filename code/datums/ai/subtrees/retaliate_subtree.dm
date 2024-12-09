@@ -19,6 +19,11 @@
 	target_key = BB_BASIC_MOB_FLEE_TARGET
 	hiding_place_key = BB_BASIC_MOB_FLEE_TARGET_HIDING_LOCATION
 
+/*
+	A tamed creature has a chance of calming down, beginning X seconds after it was last attacked.
+*/
+/datum/ai_planning_subtree/target_retaliate/can_calm
+
 /**
  * Picks a target from a provided list of atoms who have been pissing you off
  * You will probably need /datum/element/ai_retaliate to take advantage of this unless you're populating the blackboard yourself

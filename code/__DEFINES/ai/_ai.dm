@@ -36,6 +36,8 @@
 ///AI flags
 #define STOP_MOVING_WHEN_PULLED (1<<0)
 
+//Blackboard
+
 //Generic BB keys
 #define BB_CURRENT_MIN_MOVE_DISTANCE "min_move_distance"
 
@@ -52,3 +54,11 @@
 #define BB_NEXT_HUNGRY "BB_NEXT_HUNGRY"
 ///what we're going to eat next
 #define BB_FOOD_TARGET "bb_food_target"
+
+#define BB_RETALIATE_CALM
+
+//farm animals ai
+#define BB_CHICKEN_LAY_EGG "BB_chicken_lay_egg"
+#define BB_CHICKEN_NESTING_BOX "BB_chicken_nest_box"
+#define BB_COW_TIP_REACTING "BB_cow_tip_reacting",
+#define	BB_COW_TIPPER "BB_cow_tipper",

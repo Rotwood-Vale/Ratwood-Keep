@@ -13,9 +13,11 @@
 		CRASH("You forgot to tell this mob where to find its ability")
 	if (!(target_key in controller.blackboard))
 		return
-	var/obj/effect/proc_holder/spell/using_action = controller.blackboard[ability_key]
-	if (!using_action?.recharging)
+	//var/obj/effect/proc_holder/spell/using_action = controller.blackboard[ability_key]
+	var/datum/action/cooldown/mob_cooldown/using_action = controller.blackboard[ability_key]
+	if (!using_action?.IsAvailable())
 		return
+	/*if(using_action?.cast_check()) */ // needs mind 
 	controller.queue_behavior(use_ability_behaviour, ability_key, target_key)
 	if (finish_planning)
 		return SUBTREE_RETURN_FINISH_PLANNING

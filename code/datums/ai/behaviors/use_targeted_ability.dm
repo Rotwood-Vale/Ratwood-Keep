@@ -4,14 +4,18 @@
  */
 /datum/ai_behavior/targeted_mob_ability
 /datum/ai_behavior/targeted_mob_ability/perform(seconds_per_tick, datum/ai_controller/controller, ability_key, target_key)
-	var/obj/effect/proc_holder/spell/ability = controller.blackboard[ability_key]
+	//var/obj/effect/proc_holder/spell/ability = controller.blackboard[ability_key]
+	var/datum/action/cooldown/mob_cooldown/ability = controller.blackboard[ability_key]
 	var/mob/living/target = controller.blackboard[target_key]
 	if(QDELETED(ability) || QDELETED(target))
 		finish_action(controller, FALSE, ability_key, target_key)
 		return
 	var/mob/pawn = controller.pawn
 	pawn.face_atom(target)
-	var/result = ability.perform(targets = list(target))
+	var/result = ability.Trigger(target = target)
+
+
+	//var/result = ability.perform(list(target), TRUE, pawn)
 	finish_action(controller, result, ability_key, target_key)
 /datum/ai_behavior/targeted_mob_ability/finish_action(datum/ai_controller/controller, succeeded, ability_key, target_key)
 	. = ..()

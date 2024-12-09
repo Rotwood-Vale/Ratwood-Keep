@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat
 	icon = 'icons/roguetown/mob/monster/bigrat.dmi'
 	name = "rous"
+	desc = "This is a big rat with beady red eyes, drawn to decay and filth."
 	icon_state = "rat"
 	icon_living = "rat"
 	icon_dead = "rat1"
