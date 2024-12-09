@@ -35,7 +35,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("strength", 1)
 		H.change_stat("fortune", 2)
+		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_GOODRUNNER, TRAIT_GENERIC) //for running from guards or evading guards
 		if(H.patron.type == /datum/patron/divine/xylix)
 			ADD_TRAIT(H, TRAIT_CRACKHEAD, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_GOODRUNNER, TRAIT_GENERIC) //for running from guards or evading guards
