@@ -183,14 +183,14 @@
 	result = list(/obj/item/clothing/cloak/fauld/battleskirt)
 	reqs =  list(/obj/item/natural/cloth = 2,
                 /obj/item/natural/fibers = 1)
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/sewing/lgambeson
     name = "light gambeson (3 cloths, fiber; APPRENTICE)"
     result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
     reqs = list(/obj/item/natural/cloth = 3,
                 /obj/item/natural/fibers = 1)
-    craftdiff = 2
+    skill_level = 2
 
 /* craftdif of 3 = JOURNEYMAN */
 
@@ -425,7 +425,7 @@
 	result = /obj/item/clothing/suit/roguetown/armor/armordress
 	reqs = list(/obj/item/natural/cloth = 6,
 				/obj/item/natural/fibers = 4)
-	craftdiff = 3
+	skill_level = 3
 
 /* craftdif of 5 = MASTER */
 
