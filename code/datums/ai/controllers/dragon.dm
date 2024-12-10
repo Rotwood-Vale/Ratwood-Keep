@@ -10,8 +10,10 @@
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 
 	planning_subtrees = list(
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/opportunistic,
-		/datum/ai_planning_subtree/simple_find_target,
-		/datum/ai_planning_subtree/move_to_cardinal,
+		/datum/ai_planning_subtree/simple_find_target/dragon,
 		/datum/ai_planning_subtree/targeted_mob_ability,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
+
+		//datum/ai_planning_subtree/move_to_cardinal,
+
 	)

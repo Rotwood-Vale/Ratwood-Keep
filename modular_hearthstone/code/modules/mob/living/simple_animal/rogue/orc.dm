@@ -62,6 +62,8 @@
 	icon_state = "orcmarauder"
 	icon_living = "orcmarauder"
 	icon_dead = "orcmarauder"
+	base_intents = list(/datum/intent/sword/cut)
+	ai_controller = /datum/ai_controller/elite_orc
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 	armor_penetration = 35
@@ -75,7 +77,8 @@
 	icon_state = "orcmarauder_spear"
 	icon_living = "orcmarauder_spear"
 	icon_dead = "orcmarauder_spear"
-	base_intents = list(/datum/intent/simple/spear)
+	base_intents = list(/datum/intent/spear/thrust/orcthrust)
+	ai_controller = /datum/ai_controller/elite_orc
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/orcmarauder,
 			/obj/item/rogueweapon/spear,
 			/obj/effect/decal/cleanable/blood)
@@ -84,6 +87,7 @@
 	icon_state = "orcravager"
 	icon_living = "orcravager"
 	icon_dead = "orcravager"
+	ai_controller = /datum/ai_controller/elite_orc
 	melee_damage_lower = 40
 	melee_damage_upper = 50
 	armor_penetration = 40
@@ -97,7 +101,8 @@
 	icon_state = "savageorc_spear"
 	icon_living = "savageorc_spear"
 	icon_dead = "savageorc_spear"
-	base_intents = list(/datum/intent/simple/spear)
+	ai_controller = /datum/ai_controller/elite_orc
+	base_intents = list(/datum/intent/spear/thrust/orcthrust)
 	melee_damage_lower = 30
 	melee_damage_upper = 30
 	armor_penetration = 35
@@ -115,9 +120,15 @@
 	icon_state = "savageorc_spear2"
 	icon_living = "savageorc_spear2"
 	icon_dead = "savageorc_spear2"
+	ai_controller = /datum/ai_controller/elite_orc
+	base_intents = list(/datum/intent/spear/thrust/orcthrust)
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc2,
 			/obj/item/rogueweapon/spear/bonespear,
 			/obj/effect/decal/cleanable/blood)
+
+/datum/intent/spear/thrust/orcthrust
+	clickcd = 2.5
+	//slower swing timer
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/get_sound(input)
 	switch(input)

@@ -21,7 +21,7 @@
 						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 2)
 	faction = list("caves")
 
-	health = 500
+	health = 600
 	maxHealth = 600
 	melee_damage_lower = 55
 	melee_damage_upper = 80
@@ -57,7 +57,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/Initialize()
 	. = ..()
 	update_icon()
-	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC) //maybe excessive? tune it back if it is
+	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BASHDOORS, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/female
@@ -174,6 +174,7 @@
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
+	reach = 1 
 	item_d_type = "stab"
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/original

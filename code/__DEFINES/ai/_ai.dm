@@ -62,3 +62,6 @@
 #define BB_CHICKEN_NESTING_BOX "BB_chicken_nest_box"
 #define BB_COW_TIP_REACTING "BB_cow_tip_reacting",
 #define	BB_COW_TIPPER "BB_cow_tipper",
+
+//Move then recheck ai
+#define MOVEMENT_LOOP_START_FAST (1<<0)

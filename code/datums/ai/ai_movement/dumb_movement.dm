@@ -19,8 +19,10 @@
 
 		var/current_loc = get_turf(movable_pawn)
 		var/turf/target_turf = get_step_towards(movable_pawn, controller.current_movement_target)
-		if(!is_type_in_typecache(target_turf, GLOB.dangerous_turfs) && can_move)
+
+		if (can_move && target_turf?.can_traverse_safely(movable_pawn))
 			movable_pawn.Move(target_turf, get_dir(current_loc, target_turf))
+
 		if(current_loc == get_turf(movable_pawn)) //Did we even move after trying to move?
 			controller.pathing_attempts++
 			if(controller.pathing_attempts >= max_pathing_attempts)

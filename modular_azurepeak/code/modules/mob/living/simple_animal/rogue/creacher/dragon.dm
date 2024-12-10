@@ -13,7 +13,7 @@
 	speak_emote = list("growls")
 	see_in_dark = 6
 	move_to_delay = 3
-	base_intents = list(/datum/intent/simple/dragon_bite)
+	base_intents = list(/datum/intent/simple/bite/dragon_bite)
 	minbodytemp = 0
 	maxbodytemp = INFINITY
 	damage_coeff = list(BRUTE = 1, BURN = 0.2, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
@@ -45,11 +45,15 @@
 	attack_sound = list('sound/combat/hits/blunt/genblunt (1).ogg','sound/combat/hits/blunt/genblunt (2).ogg','sound/combat/hits/blunt/genblunt (3).ogg','sound/combat/hits/blunt/flailhit.ogg')
 	dodgetime = 30
 	aggressive = 1
+
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
+	ai_controller = /datum/ai_controller/dragon
 //	stat_attack = UNCONSCIOUS
 
 /*
 Working with this:
-Wyrm/Whelp (no fire, quite weak)
+Wyrm/Whelp (no fire, quite weak, probably a summon for broodmother)
 Young (regular) (fire but long CD)
 Adult (broodmother) (fire short CD)
 Ancient (?)
@@ -82,11 +86,6 @@ Greatwyrm (?)
 	ADD_TRAIT(src, TRAIT_STRONGBITE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
-
-	/*src.mind_initialize()
-	var/obj/effect/proc_holder/spell/invoked/projectile/dragon_breath/S = new(src)
-	src.mind.AddSpell(S)
-	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, S)*/
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/death(gibbed)
 	..()
@@ -170,38 +169,34 @@ Greatwyrm (?)
 			return "foreleg"
 	return ..()
 
-/datum/intent/simple/dragon_bite //the model/hitbox is too big so it never got to attack. Increase range
-	name = "bite"
-	icon_state = "instrike"
-	attack_verb = list("bites")
-	animname = "blank22"
-	blade_class = BCLASS_CUT
-	hitsound = "smallslash"
-	chargetime = 0
-	penfactor = 0
-	reach = 3
+/datum/intent/simple/bite/dragon_bite //the model/hitbox is too big so it never got to attack. Increase reach
+	reach = 2
 	swingdelay = 3
-	candodge = TRUE
-	canparry = TRUE
-	item_d_type = "stab"
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother
 	health = 1600
 	maxHealth = 1600
 	name = "dragon broodmother"
-//	projectiletype = /obj/projectile/magic/aoe/dragon_breath
+	projectiletype = /obj/projectile/magic/aoe/dragon_breath
 	projectilesound = 'sound/blank.ogg'
-	ranged = 1
+	ranged = 0
 	ranged_message = "breathes fire"
 	ranged_cooldown_time = 20 SECONDS
+	var/datum/action/cooldown/mob_cooldown/fire_breath/cone/fire_breath
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother/Initialize()
 	. = ..()
-	/*src.mind.RemoveAllSpells()
-	var/obj/effect/proc_holder/spell/invoked/projectile/dragon_breath/adult/S = new(src)
-	src.mind.AddSpell(S)
-	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, S)*/
+
+	fire_breath = new(src)
+	fire_breath.Grant(src)
+
+	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, fire_breath)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother/Destroy()
+	fire_breath.Remove(src)
+	QDEL_NULL(fire_breath)
+	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/test
 	//new ai, old ai off

@@ -17,7 +17,7 @@
 	var/datum/action/cooldown/mob_cooldown/using_action = controller.blackboard[ability_key]
 	if (!using_action?.IsAvailable())
 		return
-	/*if(using_action?.cast_check()) */ // needs mind 
+	/*if(using_action?.cast_check()) */ // needs, re-add if go back to spells
 	controller.queue_behavior(use_ability_behaviour, ability_key, target_key)
 	if (finish_planning)
 		return SUBTREE_RETURN_FINISH_PLANNING
