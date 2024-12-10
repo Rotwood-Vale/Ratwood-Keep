@@ -155,9 +155,9 @@ SUBSYSTEM_DEF(family)
 			var/datum/relation/HH_rel = lord_family.getRel(lord,HH)
 
 			var/new_rel = REL_TYPE_RELATIVE
-			switch(H_rel)
+			switch(H_rel.rel_type)
 				if(REL_TYPE_SPOUSE)
-					switch(HH_rel)
+					switch(HH_rel.rel_type)
 						if(REL_TYPE_PARENT)
 							new_rel = REL_TYPE_OFFSPRING
 				if(REL_TYPE_OFFSPRING)
