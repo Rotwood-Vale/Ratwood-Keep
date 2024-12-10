@@ -21,16 +21,16 @@ GLOBAL_VAR(lordsecondary)
 		addtimer(CALLBACK(src, PROC_REF(lord_color_choice)), 50)
 		return
 	var/list/lordcolors = list(
-"PURPLE"="#8747b1",
-"RED"="#8b2323", 
-"BLACK"="#2b292e", 
-"BROWN"="#61462c", 
-"GREEN"="#264d26", 
-"BLUE"="#173266", 
-"YELLOW"="#ffcd43",
+"PURPLE"="#865c9c",
+"RED"="#933030",
+"BLACK"="#2f352f",
+"BROWN"="#685542",
+"GREEN"="#79763f",
+"BLUE"="#395480",
+"YELLOW"="#b5b004",
 "TEAL"="#249589",
 "WHITE"="#ffffff",
-"ORANGE"="#df8405",
+"ORANGE"="#b86f0c",
 "MAJENTA"="#962e5c")
 	var/prim
 	var/sec
