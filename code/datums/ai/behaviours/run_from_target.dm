@@ -1,3 +1,27 @@
+/**
+ * Get ranged target turf, but with direct targets as opposed to directions
+ *
+ * Starts at atom starting_atom and gets the exact angle between starting_atom and target
+ * Moves from starting_atom with that angle, Range amount of times, until it stops, bound to map size
+ * Arguments:
+ * * starting_atom - Initial Firer / Position
+ * * target - Target to aim towards
+ * * range - Distance of returned target turf from starting_atom
+ * * offset - Angle offset, 180 input would make the returned target turf be in the opposite direction
+ */
+/proc/get_ranged_target_turf_direct(atom/starting_atom, atom/target, range, offset)
+	var/angle = ATAN2(target.x - starting_atom.x, target.y - starting_atom.y)
+	if(offset)
+		angle += offset
+	var/turf/starting_turf = get_turf(starting_atom)
+	for(var/i in 1 to range)
+		var/turf/check = locate(starting_atom.x + cos(angle) * i, starting_atom.y + sin(angle) * i, starting_atom.z)
+		if(!check)
+			break
+		starting_turf = check
+
+	return starting_turf
+
 // Move to a position further away from your current target
 /datum/ai_behavior/run_away_from_target
 	required_distance = 0
@@ -31,10 +55,31 @@
 	plot_path_away_from(controller, target)
 
 /datum/ai_behavior/run_away_from_target/proc/plot_path_away_from(datum/ai_controller/controller, atom/target)
-	var/run_direction = get_dir(controller.pawn, get_step_away(controller.pawn, target))
-	var/turf/target_destination = get_ranged_target_turf(controller.pawn, run_direction, run_distance)
-	controller.set_movement_target(target_destination)
+	var/turf/target_destination = get_turf(controller.pawn)
+	var/static/list/offset_angles = list(45, 90, 135, 180, 225, 270)
+	for(var/angle in offset_angles)
+		var/turf/test_turf = get_furthest_turf(controller.pawn, angle, target)
+		if(isnull(test_turf))
+			continue
+		var/distance_from_target = get_dist(target, test_turf)
+		if(distance_from_target <= get_dist(target, target_destination))
+			continue
+		target_destination = test_turf
+		if(distance_from_target == run_distance) //we already got the max running distance
+			break
+	if (target_destination == get_turf(controller.pawn))
+		return FALSE
+	set_movement_target(controller, target_destination)
+	return TRUE
 
+/datum/ai_behavior/run_away_from_target/proc/get_furthest_turf(atom/source, angle, atom/target)
+	var/turf/return_turf
+	for(var/i in 1 to run_distance)
+		var/turf/test_destination = get_ranged_target_turf_direct(source, target, range = i, offset = angle)
+		if(is_blocked_turf(test_destination, exclude_mobs = !source.density))
+			break
+		return_turf = test_destination
+	return return_turf
 
 /datum/ai_behavior/run_away_from_target/until_destination
 	until_destination = TRUE
