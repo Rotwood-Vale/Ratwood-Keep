@@ -147,18 +147,18 @@ SUBSYSTEM_DEF(family)
 		if(ref == lord_family.members[1]) //skip the lord.
 			continue
 		var/mob/living/carbon/human/H = lord_family.members[ref]:resolve()
-		var/datum/relation/H_rel = lord_family.getRel(lord,H)
+		var/datum/relation/H_rel = lord_family.getTrueRel(lord,H)
 		for(var/ref2 in lord_family.members)
 			if(ref2 == lord_family.members[1] || ref2 == ref) //skip the lord and first member.
 				continue
 			var/mob/living/carbon/human/HH = lord_family.members[ref2]:resolve()
-			var/datum/relation/HH_rel = lord_family.getRel(lord,HH)
+			var/datum/relation/HH_rel = lord_family.getTrueRel(lord,HH)
 
 			var/new_rel = REL_TYPE_RELATIVE
 			switch(H_rel.rel_type)
 				if(REL_TYPE_SPOUSE)
 					switch(HH_rel.rel_type)
-						if(REL_TYPE_PARENT)
+						if(REL_TYPE_OFFSPRING)
 							new_rel = REL_TYPE_OFFSPRING
 				if(REL_TYPE_OFFSPRING)
 					switch(HH_rel)
@@ -203,6 +203,11 @@ SUBSYSTEM_DEF(family)
 /datum/family/proc/getRel(var/mob/living/carbon/human/holder,var/mob/living/carbon/human/target) //Returns relationship shared by holder & target.
 	for(var/datum/relation/R in relations)
 		if(WEAKREF(holder) == R.holder && members[target.name] == R.target)
+			return R
+
+/datum/family/proc/getTrueRel(var/mob/living/carbon/human/holder,var/mob/living/carbon/human/target) //Returns true relationship shared by holder & target.
+	for(var/datum/relation/R in relations)
+		if(WEAKREF(holder) == R.holder && WEAKREF(target) == R.target)
 			return R
 
 /datum/family/proc/addRel(var/mob/living/carbon/human/target, var/mob/living/carbon/human/holder,var/rel_type, var/announce = FALSE) //creates a relation for two members.
