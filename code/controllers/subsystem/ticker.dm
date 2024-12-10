@@ -387,6 +387,8 @@ SUBSYSTEM_DEF(ticker)
 				if(H.client.prefs.family)
 					SSfamily.family_candidates += H
 
+
+		SSfamily.SetupLordFamily()
 		SSfamily.SetupFamilies()
 
 	for(var/I in round_start_events)
@@ -759,6 +761,10 @@ SUBSYSTEM_DEF(ticker)
 		return
 
 	SStriumphs.end_triumph_saving_time()
+
+	// Write key logs for all players before rebooting
+	world.write_all_key_logs()
+
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time

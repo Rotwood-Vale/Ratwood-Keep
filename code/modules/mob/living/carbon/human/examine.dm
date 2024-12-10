@@ -136,7 +136,7 @@
 			if(H.isFamily(src))
 				var/datum/relation/R = H.getRelationship(src)
 				if(R)
-					. += "It's my [R.getName()]!"
+					. += "It's my [R.name]!"
 			else if(family)
 				var/datum/family/F = getFamily()
 				if(F)

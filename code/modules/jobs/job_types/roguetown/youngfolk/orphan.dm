@@ -20,6 +20,7 @@
 	banned_leprosy = FALSE
 
 	cmode_music = 'sound/music/combat_bum.ogg'
+	family_blacklisted = TRUE
 
 /datum/job/roguetown/orphan/New()
 	. = ..()

@@ -18,6 +18,10 @@
 	min_pq = 2
 	max_pq = null
 
+	family_blacklisted = TRUE
+	lord_family = TRUE
+	lord_rel_type = REL_TYPE_SPOUSE
+
 /datum/job/roguetown/exlady //just used to change the ladys title
 	title = "Duchess Dowager"
 	flag = LADY

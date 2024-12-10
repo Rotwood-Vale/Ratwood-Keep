@@ -42,6 +42,8 @@
 		return "old"
 	else if (human.age == AGE_MIDDLEAGED)
 		return "middle-aged"
+	else if (H.age == AGE_YOUNG)
+		return "young"
 	else
 		return "adult"
 
