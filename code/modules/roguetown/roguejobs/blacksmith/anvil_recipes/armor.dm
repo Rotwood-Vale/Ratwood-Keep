@@ -197,14 +197,9 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet
 
 /datum/anvil_recipe/armor/steel/bervor
-	name = "Bevor"
+	name = "Bervor"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/neck/roguetown/bervor
-
-/datum/anvil_recipe/armor/steel/sgorget
-	name = "Steel Gorget"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/neck/roguetown/gorget/steel
 
 /datum/anvil_recipe/armor/steel/kettle
 	name = "Kettle"
@@ -212,12 +207,12 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/kettle
 
 /datum/anvil_recipe/armor/steel/winged
-	name = "Winged Cap"
+	name = "Winged cap"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/winged
 
 /datum/anvil_recipe/armor/steel/horned
-	name = "Horned Cap"
+	name = "Horned cap"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/horned
 
@@ -259,8 +254,6 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet
 	craftdiff = 2
-
-
 
 /datum/anvil_recipe/armor/steel/helmetknight
 	name = "Knight's Helmet (+1 Steel)"

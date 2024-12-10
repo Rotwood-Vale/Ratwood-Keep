@@ -10,7 +10,7 @@
 	//righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	wlength = WLENGTH_SHORT
 	sharpness = IS_BLUNT
-	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
+	slot_flags = ITEM_SLOT_HIP
 	can_parry = TRUE
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
 	wdefense = 5
