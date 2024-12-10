@@ -549,6 +549,51 @@
 	else if(bodytemperature > maxbodytemp)
 		adjustBruteLoss(20)
 
+//Friendly spider
+/mob/living/simple_animal/hostile/poison/giant_spider_friendly
+	name = "giant spider"
+	desc = ""
+	icon_state = "guard"
+	icon_living = "guard"
+	icon_dead = "guard_dead"
+	mob_biotypes = MOB_ORGANIC|MOB_BUG
+	speak_emote = list("chitters")
+	emote_hear = list("chitters")
+	speak_chance = 5
+	turns_per_move = 5
+	see_in_dark = 4
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1)
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "gently pushes aside"
+	response_disarm_simple = "gently push aside"
+	maxHealth = 200
+	health = 200
+	obj_damage = 60
+	melee_damage_lower = 15
+	melee_damage_upper = 20
+	faction = list("spiders")
+	var/busy = SPIDER_IDLE
+	pass_flags = PASSTABLE
+	move_to_delay = 6
+	ventcrawler = VENTCRAWLER_ALWAYS
+	attack_verb_continuous = "bites"
+	attack_verb_simple = "bite"
+	attack_sound = 'sound/blank.ogg'
+	unique_name = 1
+	gold_core_spawnable = HOSTILE_SPAWN
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	footstep_type = FOOTSTEP_MOB_CLAW
+	var/playable_spider = FALSE
+	var/datum/action/innate/spider/lay_web/lay_web
+	var/directive = "" //Message passed down to children, to relay the creator's orders
+	var/aggressive = 0
+
+/mob/living/simple_animal/hostile/poison/giant_spider_friendly/Initialize()
+	. = ..()
+	lay_web = new
+	lay_web.Grant(src)
+
 #undef SPIDER_IDLE
 #undef SPINNING_WEB
 #undef LAYING_EGGS

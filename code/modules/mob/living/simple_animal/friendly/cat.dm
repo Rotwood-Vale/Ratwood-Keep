@@ -81,6 +81,14 @@
 	pass_flags = PASSMOB
 	mob_size = MOB_SIZE_SMALL
 
+/mob/living/simple_animal/pet/cat/Murin
+	name = "Murin"
+	desc = ""
+	icon = 'icons/roguetown/topadd/takyon/Cat.dmi'
+	icon_state = "cat"
+	icon_living = "cat"
+	icon_dead = "cat_dead"
+
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
 /mob/living/simple_animal/pet/cat/Runtime
 	name = "Runtime"
