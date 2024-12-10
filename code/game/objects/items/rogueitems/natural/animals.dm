@@ -27,6 +27,24 @@
 	icon2 = "leatherroll2"
 	icon2step = 10
 
+/obj/item/natural/hide/cured/attack_right(mob/user)
+	to_chat(user, span_warning("I start to collect [src]..."))
+	if(move_after(user, 1 SECONDS, target = src))
+		var/curredcount = 0
+		for(var/obj/item/natural/hide/cured/F in get_turf(src))
+			curredcount++
+		while(curredcount > 0)
+			if(curredcount == 1)
+				new /obj/item/natural/hide/cured(get_turf(user))
+				curredcount--
+			else if(curredcount >= 2)
+				var/obj/item/natural/bundle/curred_hide/B = new(get_turf(user))
+				B.amount = clamp(curredcount, 2, 10)
+				B.update_bundle()
+				curredcount -= clamp(curredcount, 2, 10)
+		for(var/obj/item/natural/hide/cured/F in get_turf(src))
+			qdel(F)
+
 /obj/item/natural/cured/essence
 	name = "essence of wilderness"
 	icon_state = "wessence"

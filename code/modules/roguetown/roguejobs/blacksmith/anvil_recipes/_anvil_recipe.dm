@@ -4,7 +4,7 @@
 	var/appro_skill = /datum/skill/craft/blacksmithing
 	var/req_bar
 	var/created_item
-	var/craftdiff = 0
+	var/skill_level = 0
 	var/obj/item/needed_item
 	var/quality_mod = 0
 	var/progress
@@ -29,7 +29,7 @@
 	var/proab = 3
 	if(user.mind)
 		moveup += round((user.mind.get_skill_level(appro_skill) * 6) * (breakthrough == 1 ? 1.5 : 1))
-		moveup -= 3 * craftdiff
+		moveup -= 3 * skill_level
 		if(!user.mind.get_skill_level(appro_skill))
 			proab = 50
 	if(prob(proab))
