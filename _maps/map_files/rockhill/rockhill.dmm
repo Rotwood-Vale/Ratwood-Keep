@@ -707,6 +707,19 @@
 /obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"aBy" = (
+/obj/structure/closet/crate/chest{
+	lockid = "blacksmith";
+	locked = 1
+	},
+/obj/item/ingot/iron,
+/obj/item/ingot/iron,
+/obj/item/ingot/iron,
+/obj/item/ingot/iron,
+/obj/item/ingot/steel,
+/obj/item/ingot/steel,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/dwarfin)
 "aBD" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/generic,
@@ -5795,16 +5808,15 @@
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town)
 "etA" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 1
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
 	},
-/obj/structure/closet/crate/chest{
-	lockid = "blacksmith"
+/obj/structure/table/wood,
+/obj/structure/bars/passage/shutter{
+	redstone_id = "smith_shutter02"
 	},
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/obj/item/grown/log/tree/stick,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "euY" = (
 /obj/structure/chair/bench/couchablack,
@@ -7072,6 +7084,13 @@
 /obj/item/flint,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
+"fqm" = (
+/obj/structure/table/wood,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/dwarfin)
 "fqH" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/machinery/light/rogue/torchholder{
@@ -7220,12 +7239,12 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/under/cavewet/bogcaves)
 "fyd" = (
-/obj/structure/table/wood,
-/obj/item/ingot/iron,
-/obj/item/ingot/iron,
-/obj/item/ingot/iron,
-/obj/item/ingot/iron,
-/turf/open/floor/rogue/blocks,
+/obj/structure/roguemachine/mail{
+	mailtag = "Artisan Guild"
+	},
+/turf/open/floor/rogue/blocks{
+	icon_state = "paving"
+	},
 /area/rogue/indoors/town/dwarfin)
 "fyg" = (
 /obj/structure/chair/wood/rogue/fancy{
@@ -9788,6 +9807,18 @@
 /obj/item/chair/rogue/crafted,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
+"hAl" = (
+/obj/structure/closet/crate/chest{
+	lockid = "blacksmith"
+	},
+/obj/machinery/light/rogue/torchholder{
+	dir = 1
+	},
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/dwarfin)
 "hAI" = (
 /obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/carpet/lord/right,
@@ -16578,6 +16609,15 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/manor)
+"mGC" = (
+/obj/structure/rack/rogue,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/obj/item/natural/feather,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/dwarfin)
 "mHb" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
@@ -20368,7 +20408,12 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town/roofs)
 "pxS" = (
-/turf/closed/wall/mineral/rogue/wooddark,
+/obj/structure/table/wood,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
 "pyh" = (
 /turf/open/transparent/openspace,
@@ -23032,7 +23077,6 @@
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
-/obj/item/roguebin/water/gross,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "rCw" = (
@@ -26156,10 +26200,13 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "tTm" = (
-/obj/structure/roguemachine/mail{
-	mailtag = "Artisan Guild"
-	},
-/turf/open/floor/rogue/blocks/stonered,
+/obj/structure/rack/rogue,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
 "tTw" = (
 /obj/structure/mineral_door/wood{
@@ -30154,6 +30201,7 @@
 /obj/item/natural/cloth,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
+/obj/item/natural/feather,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "wVc" = (
@@ -31347,10 +31395,8 @@
 	},
 /area/rogue/indoors/town/church/chapel)
 "xJE" = (
-/obj/structure/table/wood,
-/obj/item/ingot/steel,
-/obj/item/ingot/steel,
-/turf/open/floor/rogue/blocks,
+/obj/item/roguebin/water/gross,
+/turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "xKg" = (
 /obj/structure/roguemachine/scomm/l,
@@ -291823,7 +291869,7 @@ wbg
 ylJ
 wVI
 sco
-uAe
+fyd
 uAe
 rok
 rok
@@ -293432,9 +293478,9 @@ wVI
 wBH
 sco
 sco
-tTm
-eah
-gsM
+eAr
+yiU
+ooF
 gsM
 aKi
 uGP
@@ -293833,10 +293879,10 @@ wbg
 tTh
 wVI
 wVI
-sco
-eAr
-yiU
-ooF
+etA
+xyu
+eah
+gsM
 gsM
 aKi
 aKi
@@ -294236,7 +294282,7 @@ wVI
 wVI
 wVI
 hHd
-xyu
+eah
 eah
 eah
 gsM
@@ -294639,8 +294685,8 @@ wVI
 wVI
 ozV
 eah
-eah
-eah
+xJE
+rMy
 gsM
 aKi
 aKi
@@ -295041,13 +295087,13 @@ wVI
 hJS
 sco
 rCt
-rMy
+gnI
 gnI
 gsM
 gsM
 gsM
-xJE
-sco
+gsM
+fqm
 sco
 sco
 sco
@@ -295443,14 +295489,14 @@ wVI
 wVI
 ozV
 eah
-eah
-eah
+xJE
+rMy
 gsM
 gsM
 gsM
-fyd
+gsM
+pxS
 sco
-mvp
 xgP
 kha
 lfV
@@ -295844,15 +295890,15 @@ wVI
 wVI
 wVI
 uGK
-wKp
 eah
 eah
+eah
+gsM
 gsM
 gsM
 gsM
 gsM
 svc
-mvp
 mvp
 mvp
 mvp
@@ -296245,17 +296291,17 @@ wbg
 ylJ
 wVI
 wVI
-sco
-eAr
-yiU
-ooF
+uGK
+wKp
+eah
+gsM
+gsM
 gsM
 gsM
 gsM
 gsM
 sco
 xtc
-mvp
 mvp
 mvp
 svc
@@ -296648,15 +296694,15 @@ wVI
 wBH
 sco
 sco
-eah
-eah
+eAr
+yiU
+ooF
 gsM
 gsM
 gsM
 gsM
-gsM
+nCW
 sco
-mvp
 cNk
 mvp
 mvp
@@ -297056,9 +297102,9 @@ gsM
 gsM
 gsM
 gsM
-etA
+gsM
+hAl
 sco
-pxS
 bLf
 saW
 vXm
@@ -297456,9 +297502,9 @@ gsM
 gsM
 bGD
 ugV
-gsM
-gsM
-nCW
+mGC
+tTm
+aBy
 sco
 sco
 sco
