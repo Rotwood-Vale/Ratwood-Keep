@@ -35,7 +35,7 @@
 /obj/effect/proc_holder/spell/invoked/abyssheal
 	name = "Abyssal Healing"
 	overlay_state = "thebends"
-	releasedrain = 50
+	releasedrain = 15
 	chargedrain = 0
 	chargetime = 1 SECONDS
 	range = 2
@@ -91,7 +91,7 @@
 	range = 7
 	no_early_release = TRUE
 	charging_slowdown = 1
-	releasedrain = 100
+	releasedrain = 20
 	chargedrain = 0
 	chargetime = 2 SECONDS
 	chargedloop = null
