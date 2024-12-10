@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(family)
 			switch(H_rel)
 				if(REL_TYPE_SPOUSE)
 					switch(HH_rel)
-						if(REL_TYPE_OFFSPRING)
+						if(REL_TYPE_PARENT)
 							new_rel = REL_TYPE_OFFSPRING
 				if(REL_TYPE_OFFSPRING)
 					switch(HH_rel)
@@ -168,7 +168,6 @@ SUBSYSTEM_DEF(family)
 							new_rel = REL_TYPE_PARENT
 
 			lord_family.addRel(H,HH,new_rel,TRUE)
-			lord_family.addRel(HH,H,getMatchingRel(new_rel),TRUE)
 
 /datum/family
 	var/name = "ERROR"
