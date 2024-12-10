@@ -146,12 +146,12 @@ SUBSYSTEM_DEF(family)
 	for(var/ref in lord_family.members) //loop through all other members and connect them.
 		if(ref == lord_family.members[1]) //skip the lord.
 			continue
-		var/mob/living/carbon/human/H = ref:resolve()
+		var/mob/living/carbon/human/H = lord_family.members[ref]:resolve()
 		var/datum/relation/H_rel = lord_family.getRel(lord,H)
 		for(var/ref2 in lord_family.members)
 			if(ref2 == lord_family.members[1] || ref2 == ref) //skip the lord and first member.
 				continue
-			var/mob/living/carbon/human/HH = ref2:resolve()
+			var/mob/living/carbon/human/HH = lord_family.members[ref2]:resolve()
 			var/datum/relation/HH_rel = lord_family.getRel(lord,HH)
 
 			var/new_rel = REL_TYPE_RELATIVE
