@@ -29,8 +29,6 @@ SUBSYSTEM_DEF(merchant)
 /datum/controller/subsystem/merchant/proc/prepare_cargo_shipment()
 	if(!cargo_boat || !cargo_docked)
 		return
-	if(!length(requestlist))
-		return
 
 	cargo_boat.show_tram()
 	var/list/boat_spaces = list()
@@ -43,6 +41,8 @@ SUBSYSTEM_DEF(merchant)
 		new_item.forceMove(boat_turf)
 		for(var/obj/structure/industrial_lift/lift in cargo_boat.lift_platforms)
 			lift.held_cargo |= new_item
+
+	requestlist = list()
 	cargo_docked = FALSE
 	SEND_GLOBAL_SIGNAL(COMSIG_DISPATCH_CARGO, cargo_boat)
 

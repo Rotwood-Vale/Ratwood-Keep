@@ -217,6 +217,10 @@
 /obj/item/storage/keyring/goblinchief
 	keys = list(/obj/item/key/goblin, /obj/item/key/goblinguard, /obj/item/key/goblinchief)
 
+/obj/item/storage/keyring/harbormaster
+	keys = list(/obj/item/key/harbor, /obj/item/key/ship)
+
+
 /obj/item/lockpickring
 	name = "lockpickring"
 	desc = "A piece of bent wire to store lockpicking tools. Too bulky for fine work."

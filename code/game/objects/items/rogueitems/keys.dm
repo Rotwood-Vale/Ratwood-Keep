@@ -497,4 +497,16 @@
 	icon_state = "eyekey"
 	lockid = "porta"
 
-// Towner homes keys
+// Ship key
+/obj/item/key/ship
+	name = "ship key"
+	desc = "This rusty key should open the lower dock of the harbor ship."
+	icon_state = "rustkey"
+	lockid = "ship"
+
+// Harbor key
+/obj/item/key/harbor
+	name = "harbor key"
+	desc = "This iron key should open harbor office, barracks and the watchtower."
+	icon_state = "spikekey"
+	lockid = "harbor"

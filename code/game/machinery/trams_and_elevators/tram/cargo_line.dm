@@ -1,20 +1,26 @@
-/obj/effect/landmark/tram/queued_path/cargo_exit
-	platform_code = "cargo_exit"
-
 /obj/effect/landmark/tram/queued_path/cargo_pre_enter
 	platform_code = "cargo_pre_enter"
 
-
+/obj/effect/landmark/tram/queued_path/cargo_map_exit
+	platform_code = "cargo_map_exit"
+	next_path_id = "cargo_storage_point"
 
 /obj/effect/landmark/tram/queued_path/cargo_storage_point
 	platform_code = "cargo_storage_point"
 	next_path_id = "cargo_map_enter"
 
-
 /obj/effect/landmark/tram/queued_path/cargo_map_enter
 	platform_code = "cargo_map_enter"
 	next_path_id = "cargo_stop"
 	var/datum/lift_master/tram/held_tram
+
+/obj/effect/landmark/tram/queued_path/cargo_stop
+	platform_code = "cargo_stop"
+	next_path_id = "cargo_exit"
+
+/obj/effect/landmark/tram/queued_path/cargo_exit
+	platform_code = "cargo_exit"
+
 
 /obj/effect/landmark/tram/queued_path/cargo_map_enter/Initialize(mapload)
 	. = ..()
@@ -47,17 +53,6 @@
 
 	return TRUE
 
-/obj/effect/landmark/tram/queued_path/cargo_map_exit
-	platform_code = "cargo_map_exit"
-	next_path_id = "cargo_storage_point"
-
-
-
-/obj/effect/landmark/tram/queued_path/cargo_stop
-	platform_code = "cargo_stop"
-
-	next_path_id = "cargo_exit"
-
 /obj/effect/landmark/tram/queued_path/cargo_stop/tram_reached_travel_point(datum/source, datum/lift_master/tram/tram)
 	RegisterSignal(tram, COMSIG_TRAM_EMPTY, PROC_REF(send_cargo_boat))
 
@@ -81,5 +76,6 @@
 
 
 /obj/effect/landmark/tram/queued_path/cargo_map_exit/tram_reached_travel_point(datum/source, datum/lift_master/tram/tram)
+	tram.try_process_order()
 	tram.hide_tram()
 	. = ..()

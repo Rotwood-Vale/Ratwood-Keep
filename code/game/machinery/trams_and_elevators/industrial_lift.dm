@@ -72,6 +72,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 
 	///this is our held_cargo
 	var/list/held_cargo = list()
+	var/list/moving_lifts = list()
 
 /obj/structure/industrial_lift/Initialize(mapload)
 	. = ..()
@@ -255,12 +256,12 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 			if(y_pixel_offset > last_y * 32)
 				continue //why
 
-			other_lift.pixel_x = x_pixel_offset
-			other_lift.pixel_y = y_pixel_offset
+			//other_lift.pixel_x = x_pixel_offset
+			//other_lift.pixel_y = y_pixel_offset
 
 			if(other_lift != src)
 				other_lift.cut_overlays()
-			overlays += other_lift
+			//overlays += other_lift
 	pixel_x = 0
 	pixel_y = 0
 
@@ -275,7 +276,8 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 		if(other_lift.initial_contents)
 			initial_contents |= other_lift.initial_contents
 
-		qdel(other_lift)
+		//qdel(other_lift)
+		moving_lifts |= other_lift
 
 	lift_master_datum.multitile_platform = TRUE
 
@@ -457,6 +459,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 	if(loc != our_dest || QDELETED(src))//check if our movement succeeded, if it didnt then the movers cant be moved
 		return FALSE
 
+	changed_gliders |= moving_lifts
 	for(var/atom/movable/mover as anything in changed_gliders)
 		if(QDELETED(mover))
 			movers -= mover
@@ -467,6 +470,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 
 	changed_gliders.Cut()
 
+	movers |= moving_lifts
 	for(var/atom/movable/mover as anything in movers)
 		if(QDELETED(mover))
 			movers -= mover

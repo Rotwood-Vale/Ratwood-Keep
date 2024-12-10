@@ -578,11 +578,19 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 		platform.obj_flags &= ~BLOCK_Z_OUT_DOWN
 		platform.alpha = 0
 		for(var/atom/movable/movable in platform.lift_load)
+			if(ismob(movable))
+				platform.RemoveItemFromLift(movable)
+				continue
 			objects_pre_alpha |= movable
 			objects_pre_alpha[movable] = movable.alpha
 			ADD_TRAIT(movable, TRAIT_I_AM_INVISIBLE_ON_A_BOAT, REF(src))
 			movable.density = FALSE
 			movable.alpha = 0
+
+		for(var/obj/structure/industrial_lift/tram/moving_platform in platform.moving_lifts)
+			moving_platform.horizontal_speed = 0.1
+			moving_platform.obj_flags &= ~BLOCK_Z_OUT_DOWN
+			moving_platform.alpha = 0
 
 /datum/lift_master/tram/proc/show_tram()
 	ignore_pathing_obstacles = FALSE
@@ -597,3 +605,67 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 			REMOVE_TRAIT(movable, TRAIT_I_AM_INVISIBLE_ON_A_BOAT, REF(src))
 			objects_pre_alpha -= movable
 			movable.density = initial(movable.density)
+
+		for(var/obj/structure/industrial_lift/tram/moving_platform in platform.moving_lifts)
+			moving_platform.horizontal_speed = 4
+			moving_platform.obj_flags |= BLOCK_Z_OUT_DOWN
+			moving_platform.alpha = 255
+
+/datum/lift_master/tram/proc/try_process_order()
+	var/total_coin_value = 0
+	var/list/requested_supplies = list()
+	for(var/obj/structure/industrial_lift/tram/platform in lift_platforms)
+		for(var/atom/movable/listed_atom in platform.lift_load)
+			if(istype(listed_atom, /obj/item/paper/scroll/cargo))
+				var/obj/item/paper/scroll/cargo/cargo_manifest = listed_atom
+				requested_supplies = cargo_manifest.orders.Copy()
+				qdel(listed_atom)
+
+			if(istype(listed_atom, /obj/item/roguecoin))
+				total_coin_value += listed_atom.get_real_price()
+				qdel(listed_atom)
+
+		if(!length(requested_supplies))
+			spawn_coins(total_coin_value, platform)
+			continue
+
+		for(var/datum/supply_pack/requested as anything in requested_supplies)
+			if(total_coin_value >= requested.cost)
+				total_coin_value -= requested.cost
+				SSmerchant.requestlist |= requested.contains
+
+		spawn_coins(total_coin_value, platform)
+
+
+/datum/lift_master/tram/proc/spawn_coins(total_coin_value, obj/structure/industrial_lift/tram/platform)
+
+	var/obj/structure/industrial_lift/tram/picked = pick(platform.moving_lifts)
+	var/turf/location = get_turf(picked)
+
+	var/gold = floor(total_coin_value/10)
+	new /obj/item/roguecoin/gold(location, gold)
+	total_coin_value -= gold*10
+	if(!total_coin_value)
+		return
+
+	var/silver = floor(total_coin_value/5)
+	new /obj/item/roguecoin/silver(location, silver)
+	total_coin_value -= silver*5
+	if(!total_coin_value)
+		return
+
+	var/copper = floor(total_coin_value)
+	new /obj/item/roguecoin/copper(location, copper)
+	total_coin_value -= copper
+
+	var/obj/structure/closet/crate/chest/chest = new /obj/structure/closet/crate/chest(location)
+	chest.open() //teehee
+	chest.close()
+
+/datum/lift_master/tram/proc/check_living()
+	for(var/obj/structure/industrial_lift/tram/platform in lift_platforms)
+		var/mob/living/mob = locate(/mob/living) in platform
+		if(istype(mob))
+			return FALSE
+
+	return TRUE
