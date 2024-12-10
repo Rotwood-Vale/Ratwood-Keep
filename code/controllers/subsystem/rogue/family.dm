@@ -159,13 +159,13 @@ SUBSYSTEM_DEF(family)
 				if(REL_TYPE_SPOUSE)
 					switch(HH_rel.rel_type)
 						if(REL_TYPE_OFFSPRING)
-							new_rel = REL_TYPE_OFFSPRING
+							new_rel = REL_TYPE_PARENT
 				if(REL_TYPE_OFFSPRING)
 					switch(HH_rel)
 						if(REL_TYPE_OFFSPRING)
 							new_rel = REL_TYPE_SIBLING
 						if(REL_TYPE_SPOUSE)
-							new_rel = REL_TYPE_PARENT
+							new_rel = REL_TYPE_OFFSPRING
 
 			lord_family.addRel(H,HH,new_rel,TRUE)
 
