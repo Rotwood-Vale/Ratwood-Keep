@@ -149,14 +149,14 @@ SUBSYSTEM_DEF(family)
 		var/mob/living/carbon/human/H = lord_family.members[ref]:resolve()
 		var/datum/relation/H_rel = lord_family.getTrueRel(lord,H)
 
-		world << "H: [H.real_name] [H_rel]"
+		world << "H: [H.real_name] [H_rel.rel_type]"
 		for(var/ref2 in lord_family.members)
 			if(ref2 == lord_family.members[1] || ref2 == ref) //skip the lord and first member.
 				continue
 			var/mob/living/carbon/human/HH = lord_family.members[ref2]:resolve()
 			var/datum/relation/HH_rel = lord_family.getTrueRel(lord,HH)
 
-			world << "HH: [HH.real_name] [HH_rel]"
+			world << "HH: [HH.real_name] [HH_rel.rel_type]"
 			var/new_rel = REL_TYPE_RELATIVE
 			switch(H_rel.rel_type)
 				if(REL_TYPE_SPOUSE)
@@ -170,6 +170,7 @@ SUBSYSTEM_DEF(family)
 						if(REL_TYPE_SPOUSE)
 							new_rel = REL_TYPE_OFFSPRING
 
+			world << "RESULT:[new_rel]<BR>"
 			lord_family.addRel(H,HH,new_rel,TRUE)
 
 /datum/family
