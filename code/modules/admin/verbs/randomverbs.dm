@@ -1175,7 +1175,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr,span_warning("NO...IT COULDN'T BE... (Needs to be a carbon!)"))
 				return
 			var/mob/living/carbon/human/humie = target
-			playsound(src, 'sound/villain/dreamer_win.ogg', 100, FALSE, -1)
+			playsound(humie, 'sound/villain/dreamer_win.ogg', 100, FALSE, -1)
 			humie.gender = MALE
 			humie.skin_tone = "ffe0d1"
 			humie.hair_color = "999999"
