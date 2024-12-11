@@ -1176,7 +1176,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				return
 			var/mob/living/carbon/human/humie = target
 			playsound(humie, 'sound/villain/dreamer_win.ogg', 100, FALSE, -1)
-			new /obj/structure/chair/wood(humie.loc).buckle_mob(humie)
 			humie.gender = MALE
 			humie.skin_tone = "ffe0d1"
 			humie.hair_color = "999999"
