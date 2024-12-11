@@ -355,6 +355,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_mcolor2"]					>> features["mcolor2"]
 	S["feature_mcolor3"]					>> features["mcolor3"]
 	S["feature_ethcolor"]					>> features["ethcolor"]
+	S["virginity"]							>> virginity
 
 /datum/preferences/proc/load_character(slot)
 	if(!path)
@@ -475,6 +476,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	body_markings = SANITIZE_LIST(body_markings)
 	validate_body_markings()
 
+	virginity = sanitize_integer(virginity, FALSE, TRUE, FALSE)
+
 	S["descriptor_entries"] >> descriptor_entries
 	descriptor_entries = SANITIZE_LIST(descriptor_entries)
 	S["custom_descriptors"] >> custom_descriptors
@@ -540,6 +543,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_mcolor3"]					, features["mcolor3"])
 	WRITE_FILE(S["feature_ethcolor"]					, features["ethcolor"])
 
+	//virginity
+	WRITE_FILE(S["virginity"], virginity)
+	
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		var/savefile_slot_name = custom_name_id + "_name" //TODO remove this

@@ -29,7 +29,6 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		head = /obj/item/clothing/head/roguetown/nightman
-	H.virginity = TRUE
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -48,4 +47,6 @@
 		H.change_stat("constitution", -2)
 		H.change_stat("speed", -2)
 
-
+/datum/outfit/job/roguetown/archivist/post_equip(mob/living/carbon/human/H)         ///////////// gave a lil love with a satchel and dagger. virgin ass needs it.
+	..()
+	H.virginity = TRUE
