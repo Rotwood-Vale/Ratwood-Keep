@@ -25204,7 +25204,10 @@
 /turf/closed/wall/mineral/rogue/roofwall/innercorner,
 /area/rogue/outdoors/town)
 "teE" = (
-/obj/structure/roguewindow/curtain,
+/obj/structure/mannequin/male,
+/obj/machinery/light/rogue/torchholder{
+	pixel_y = 26
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
 "teF" = (
@@ -297209,7 +297212,7 @@ wbg
 wbg
 wbg
 wVI
-teE
+sco
 pdo
 uBf
 gsM
@@ -297611,8 +297614,8 @@ wbg
 wbg
 wbg
 wVI
+sco
 teE
-uBf
 pdo
 gsM
 gsM
