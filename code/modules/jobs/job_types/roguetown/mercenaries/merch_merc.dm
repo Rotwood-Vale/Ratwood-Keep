@@ -9,9 +9,9 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
-	tutorial = "A mercenary of the Merchant's Guild is paid well, but given little to no training. That's what you are in title. A mercenary. \
+	tutorial = "A mercenary of the Merchant's Guild is paid well, but given little to no training. \
 	In practice? You're a paid thug. There to act as a guard dog. Nothing more. \
-	Try to retain the favour of your current employer, for you've no other contacts to the guild."
+	You try to retain the favor of your employer, occasionally butting heads with the longshoremen over missing goods."
 
 	outfit = /datum/outfit/job/roguetown/grabber
 	display_order = JDO_GRABBER

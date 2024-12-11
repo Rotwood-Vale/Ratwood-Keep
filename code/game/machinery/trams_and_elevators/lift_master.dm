@@ -618,7 +618,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 		for(var/atom/movable/listed_atom in platform.lift_load)
 			if(istype(listed_atom, /obj/item/paper/scroll/cargo))
 				var/obj/item/paper/scroll/cargo/cargo_manifest = listed_atom
-				requested_supplies = cargo_manifest.orders.Copy()
+				requested_supplies += cargo_manifest.orders.Copy()
 				qdel(listed_atom)
 
 			if(istype(listed_atom, /obj/item/roguecoin))
@@ -669,3 +669,39 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 			return FALSE
 
 	return TRUE
+
+/datum/lift_master/tram/proc/try_sell_items()
+	var/total_coin_value = 0
+
+	for(var/obj/structure/industrial_lift/tram/platform in lift_platforms)
+		var/list/atom/movable/original_contents = list()
+		for(var/datum/weakref/initial_contents_ref as anything in platform.initial_contents)
+			if(!initial_contents_ref)
+				continue
+
+			var/atom/movable/resolved_contents = initial_contents_ref.resolve()
+
+			if(!resolved_contents)
+				continue
+
+			if(!(resolved_contents in platform.lift_load))
+				continue
+
+			original_contents += resolved_contents
+
+		for(var/atom/movable/listed_atom in platform.lift_load)
+			if(listed_atom in original_contents)
+				continue
+			if(!listed_atom.sellprice)
+				continue
+			if(istype(listed_atom, /obj/item/paper/scroll/cargo))
+				continue
+			if(istype(listed_atom, /obj/structure/closet/crate/chest))
+				continue
+			if(istype(listed_atom, /obj/item/roguecoin))
+				continue
+
+			total_coin_value += listed_atom.sellprice
+			qdel(listed_atom)
+
+		spawn_coins(total_coin_value, platform)
