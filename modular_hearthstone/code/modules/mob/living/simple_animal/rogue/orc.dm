@@ -127,8 +127,8 @@
 			/obj/effect/decal/cleanable/blood)
 
 /datum/intent/spear/thrust/orcthrust
-	clickcd = 2.5
-	//slower swing timer
+	clickcd = CLICK_CD_MELEE + 2.5
+	//slower swing timer because it has 2 reach
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/get_sound(input)
 	switch(input)

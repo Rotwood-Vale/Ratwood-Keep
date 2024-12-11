@@ -207,7 +207,8 @@ have ways of interacting with a specific atom and control it. They posses a blac
 		var/action_delta_time = max(current_behavior.action_cooldown * 0.1, delta_time)
 
 		if(current_behavior.behavior_flags & AI_BEHAVIOR_REQUIRE_MOVEMENT) //Might need to move closer
-			if(!current_movement_target)
+			if(isnull(current_movement_target))
+				//fail_behavior(current_behavior) 
 				stack_trace("[pawn] wants to perform action type [current_behavior.type] which requires movement, but has no current movement target!")
 				return //This can cause issues, so don't let these slide.
 
@@ -622,6 +623,14 @@ have ways of interacting with a specific atom and control it. They posses a blac
 				next_to_clear -= inner_value
 
 		index += 1
+
+///No runtime when we fail our current behavior, just finish it.
+/datum/ai_controller/proc/fail_behavior(datum/ai_behavior/current_behavior)
+	var/list/arguments = list(src, FALSE)
+	var/list/stored_arguments = behavior_args[current_behavior.type]
+	if(stored_arguments)
+		arguments += stored_arguments
+	current_behavior.finish_action(arglist(arguments))
 
 #undef TRACK_AI_DATUM_TARGET
 #undef CLEAR_AI_DATUM_TARGET

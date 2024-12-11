@@ -43,8 +43,8 @@
 	for(var/turf/target_turf in burn_turfs)
 		if (target_turf.is_blocked_turf(exclude_mobs = TRUE))
 			var/exp_heavy = 0
-			var/exp_light = 0
-			var/exp_flash = 0
+			var/exp_light = 1
+			var/exp_flash = 1
 			var/exp_fire = 1
 			explosion(target_turf, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
 			return

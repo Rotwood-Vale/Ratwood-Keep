@@ -34,13 +34,23 @@
 		if (current_health_percentage < stop_fleeing_at)
 			return
 		source.ai_controller.CancelActions() // Stop fleeing go back to whatever you were doing
-		source.ai_controller.blackboard[BB_BASIC_MOB_FLEEING] = FALSE
+		source.ai_controller.set_blackboard_key(BB_BASIC_MOB_FLEEING, FALSE)
 		return
+
+	if(BB_BASIC_MOB_NEXT_FLEEING in source.ai_controller.blackboard)
+		if(source.ai_controller.blackboard[BB_BASIC_MOB_NEXT_FLEEING] > world.time)
+			return
 
 	if (current_health_percentage > start_fleeing_below)
 		return
 	source.ai_controller.CancelActions()
-	source.ai_controller.blackboard[BB_BASIC_MOB_FLEEING] = TRUE
+	source.ai_controller.set_blackboard_key(BB_BASIC_MOB_FLEEING, TRUE)
+	source.ai_controller.set_blackboard_key(BB_BASIC_MOB_NEXT_FLEEING, world.time + 60 SECONDS)
 
 	///we don't want ai's to run forever this makes us run for 10 seconds then fight until
-	addtimer(CALLBACK(source.ai_controller, TYPE_PROC_REF(/datum/ai_controller, set_blackboard_key), BB_BASIC_MOB_FLEEING, FALSE), 10 SECONDS, flags = TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(cancel_flee), source), 10 SECONDS, flags = TIMER_UNIQUE)
+
+/datum/element/ai_flee_while_injured/proc/cancel_flee(mob/living/source)
+	if(!QDELETED(source))
+		source.ai_controller.CancelActions()
+		source.ai_controller.set_blackboard_key(BB_BASIC_MOB_FLEEING, FALSE)

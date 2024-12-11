@@ -472,6 +472,7 @@
 #include "code\datums\ai\behaviors\perform_emote.dm"
 #include "code\datums\ai\behaviors\perform_speech.dm"
 #include "code\datums\ai\behaviors\resist.dm"
+#include "code\datums\ai\behaviors\recuperate.dm"
 #include "code\datums\ai\behaviors\run_from_target.dm"
 #include "code\datums\ai\behaviors\use_in_hand.dm"
 #include "code\datums\ai\behaviors\use_on_object.dm"
@@ -481,6 +482,7 @@
 #include "code\datums\ai\behaviors\hostile\find_potential_targets.dm"
 #include "code\datums\ai\behaviors\hostile\melee_attack.dm"
 #include "code\datums\ai\behaviors\hostile\find_nearest_target.dm"
+
 
 
 #include "code\datums\ai\controllers\dragger.dm"
@@ -516,9 +518,11 @@
 #include "code\datums\ai\subtrees\melee_spacing.dm"
 #include "code\datums\ai\subtrees\random_speech.dm"
 #include "code\datums\ai\subtrees\retaliate_subtree.dm"
+#include "code\datums\ai\subtrees\self_recovery.dm"
 #include "code\datums\ai\subtrees\simple_find_target.dm"
 #include "code\datums\ai\subtrees\simple_melee_subtree.dm"
 #include "code\datums\ai\subtrees\targeted_ability_use.dm"
+
 
 #include "code\datums\ai\targetting_datum\simple_targetting_datum.dm"
 #include "code\datums\ai\targetting_datum\simple_targetting_allow_item.dm"

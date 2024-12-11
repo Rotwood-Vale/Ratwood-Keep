@@ -35,7 +35,7 @@
 /datum/ai_planning_subtree/simple_find_target/bog_troll/SelectBehaviors(datum/ai_controller/controller, delta_time)
 	controller.queue_behavior(/datum/ai_behavior/find_potential_targets/bog_troll, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 
-/datum/ai_planning_subtree/simple_find_target/dragon //nearest
+/datum/ai_planning_subtree/simple_find_target/closest //nearest
 
-/datum/ai_planning_subtree/simple_find_target/dragon/SelectBehaviors(datum/ai_controller/controller, delta_time)
+/datum/ai_planning_subtree/simple_find_target/closest/SelectBehaviors(datum/ai_controller/controller, delta_time)
 	controller.queue_behavior(/datum/ai_behavior/find_potential_targets/nearest, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
