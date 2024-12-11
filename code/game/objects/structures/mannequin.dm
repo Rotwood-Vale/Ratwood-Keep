@@ -349,18 +349,14 @@
 	var/is_female = (gender == FEMALE ? TRUE : FALSE)
 	var/clothing_layer
 	var/fitting
-	//If we run the sleeve formatting proc
-	var/sleeves = FALSE
 	switch(slot_worn_on)
 		if(SLOT_MANNEQUIN_FEET)
 			clothing_layer = SHOES_LAYER
 			overlay_icon = 'icons/roguetown/clothing/onmob/feet.dmi'
 		if(SLOT_MANNEQUIN_GLOVES)
-			sleeves = TRUE
 			clothing_layer = GLOVES_LAYER
 			overlay_icon = 'icons/roguetown/clothing/onmob/gloves.dmi'
 		if(SLOT_MANNEQUIN_ARMOR)
-			sleeves = TRUE
 			clothing_layer = ARMOR_LAYER
 			overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
 		if(SLOT_MANNEQUIN_MASK)
@@ -371,7 +367,6 @@
 			clothing_layer = BELT_LAYER
 			overlay_icon = 'icons/roguetown/clothing/onmob/belts.dmi'
 		if(SLOT_MANNEQUIN_SHIRT)
-			sleeves = TRUE
 			clothing_layer = SHIRT_LAYER
 			overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
 		if(SLOT_MANNEQUIN_PANTS)
@@ -382,7 +377,6 @@
 			clothing_layer = HEAD_LAYER
 			overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
 		if(SLOT_MANNEQUIN_CLOAK)
-			sleeves = TRUE
 			clothing_layer = CLOAK_LAYER
 			overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 
@@ -399,80 +393,11 @@
 		underlays += added_overlays
 	else
 		mannequin_overlays += added_overlays
-	if(sleeves)
-		mannequin_overlays += MakeSleeveLayer(worn_thing, slot_worn_on)
 	return mannequin_overlays
 
 // Nightmare having to APPLY BODYPARTS TO THIS.
 /obj/structure/mannequin/proc/bodypartsNightmare()
 	return
-
-/*
-* The fact that the side profiles of
-* things require a seperate icon
-* is a nightmare. This proc forms the
-* sleeve icons.
-* taken from /mob/living/carbon/proc/get_sleeves_layer()
-*/
-/obj/structure/mannequin/proc/MakeSleeveLayer(obj/item/I, cloth_slot, layer2use = ARMORSLEEVE_LAYER, sleeveindex = 4)
-	switch(cloth_slot)
-		if(SLOT_MANNEQUIN_GLOVES)
-			layer2use = GLOVESLEEVE_LAYER
-		if(SLOT_MANNEQUIN_ARMOR)
-			layer2use = ARMORSLEEVE_LAYER
-		if(SLOT_MANNEQUIN_SHIRT)
-			layer2use = SHIRTSLEEVE_LAYER
-		if(SLOT_MANNEQUIN_CLOAK)
-			layer2use = CLOAK_LAYER
-
-	if(!cloth_slot)
-		return
-	if(!I)
-		return
-	var/list/sleeves = list()
-
-	if(I.r_sleeve_status == SLEEVE_TORN || I.r_sleeve_status == SLEEVE_ROLLED)
-		if(sleeveindex == 4 || sleeveindex == 2)
-			sleeveindex -= 1
-	if(I.l_sleeve_status == SLEEVE_TORN || I.l_sleeve_status == SLEEVE_ROLLED)
-		if(sleeveindex == 4 || sleeveindex == 3)
-			sleeveindex -= 2
-
-	var/index = "[I.icon_state][gender == FEMALE ? "_f" : ""]"
-	var/static/list/bloody_r = list()
-	var/static/list/bloody_l = list()
-	if(I.nodismemsleeves && sleeveindex) //armor pauldrons that show up above arms but don't get dismembered
-		sleeveindex = 4
-
-	//Right Sleeve
-	if(sleeveindex == 2 || sleeveindex == 4 || !sleeveindex)
-		sleeves += SleeveDetails(I, index, "r", layer2use, bloody_r, sleeveindex)
-	//Left Sleeve
-	if(sleeveindex == 3 || sleeveindex == 4 || !sleeveindex)
-		sleeves += SleeveDetails(I, index, "l", layer2use, bloody_l, sleeveindex)
-
-	return sleeves
-
-// This code was run in MakeSleeveLayer() twice so im turning it into a proc.
-/obj/structure/mannequin/proc/SleeveDetails(obj/item/I, the_index, left_right, layer_used, list/bloody_layer, sleeve_index)
-	. = list()
-	var/used = "[left_right]_[the_index]"
-	if(!sleeve_index)
-		used = "x[left_right]_[the_index]"
-	var/mutable_appearance/sleeve_overlay = mutable_appearance(I.sleeved, used, layer=-layer_used)
-	sleeve_overlay.color = I.color
-	sleeve_overlay.alpha = I.alpha
-	. += sleeve_overlay
-
-	if(HAS_BLOOD_DNA(I))
-		var/icon/blood_overlay = bloody_layer[used]
-		if(!blood_overlay)
-			blood_overlay = icon(I.sleeved, used)
-			blood_overlay.Blend("#fff", ICON_ADD) 			//fills the icon_state with white (except where it's transparent)
-			blood_overlay.Blend(icon(I.bloody_icon, I.bloody_icon_state), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
-			bloody_layer[used] = fcopy_rsc(blood_overlay)
-		var/mutable_appearance/pic = mutable_appearance(blood_overlay, layer=-layer_used)
-		. += pic
 
 //For dropping all clothing unless the mannequin is unchangeable.
 /obj/structure/mannequin/proc/DropAll()
