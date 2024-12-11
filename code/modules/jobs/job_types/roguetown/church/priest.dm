@@ -72,7 +72,7 @@
 //		H.underwear_color = CLOTHING_BLACK
 //		H.update_body()
 
-/datum/outfit/job/roguetown/priest/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/priest/post_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE
 
