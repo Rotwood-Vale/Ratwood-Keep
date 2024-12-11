@@ -107,7 +107,7 @@
  * literally ripping itself apart. all of the actual movement is handled by SStramprocess
  * Arguments: destination platform, rapid (bypass some safety checks)
  */
-/datum/lift_master/tram/proc/tram_travel(obj/effect/landmark/tram/destination_platform, rapid = FALSE)
+/datum/lift_master/tram/proc/tram_travel(obj/effect/landmark/tram/destination_platform, rapid = TRUE)
 	if(destination_platform == idle_platform)
 		return
 

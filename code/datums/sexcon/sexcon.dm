@@ -217,7 +217,6 @@
 	after_ejaculation()
 
 /datum/sex_controller/proc/calculate_milk()
-	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
 	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
 	var milk_amount
 
