@@ -176,7 +176,7 @@
 	if(icon_update)
 		update_body()
 		update_hair()
-		update_body_parts(TRUE)
+		update_body_parts(TRUE)	
 
 /mob/proc/has_dna()
 	return

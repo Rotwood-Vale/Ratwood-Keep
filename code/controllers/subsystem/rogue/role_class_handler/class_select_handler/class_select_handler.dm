@@ -192,9 +192,8 @@
 	<html>
 		<head>
 			<style>
-				@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
-				@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
-				@import url("https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap");
+				@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+				@import url('https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap');
 			</style>
 			<link rel='stylesheet' type='text/css' href='slop_menustyle2.css'>
 		</head>
@@ -204,8 +203,9 @@
 	data += "<body>"
 
 	//Class href fill-in
-	data += "<div id='top_handwriting'> The stars align... </div>"
+	data += "<div id='top_handwriting'> The fates giveth... </div>"
 	data += "<div id='class_select_box_div'>"
+
 	var/mob/living/carbon/human/H = linked_client.mob
 	if(!H.job)
 		return
@@ -219,7 +219,7 @@
 
 				for(var/i in 1 to plus_factor)
 					plus_str += "+" */
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>"
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='haha_skull.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='haha_skull.gif' width=32 height=32></a></div>"
 	else if(!showing_combat_classes)
 		for(var/datum/advclass/datums in rolled_classes)
 			var/plus_str = ""
@@ -228,11 +228,11 @@
 
 				for(var/i in 1 to plus_factor)
 					plus_str += "+" */
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>"
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='haha_skull.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='haha_skull.gif' width=32 height=32></a></div>"
 
 	if(special_session_queue && special_session_queue.len)
 		for(var/datum/advclass/datums in special_session_queue)
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>"
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='haha_skull.gif' width=32 height=32>[datums.name]<img class='ninetysskull' src='haha_skull.gif' width=32 height=32></a></div>"
 
 	if(showing_combat_classes)
 		for(var/datum/advclass/datums in rolled_classes)
@@ -244,7 +244,7 @@
 
 				for(var/i in 1 to plus_factor)
 					plus_str += "+" */
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>"
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='haha_skull.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='haha_skull.gif' width=32 height=32></a></div>"
 	data += "</div>"
 
 	//Buttondiv Segment
@@ -262,7 +262,7 @@
 	</html>
 	"}
 
-	linked_client << browse(data, "window=class_handler_main;size=330x430;can_close=0;can_minimize=0;can_maximize=0;can_resize=0;titlebar=0;border=0")
+	linked_client << browse(data, "window=class_handler_main;size=330x430;can_close=0;can_minimize=0;can_maximize=0;can_resize=1;titlebar=1")
 
 /datum/class_select_handler/proc/class_select_slop()
 
@@ -272,14 +272,14 @@
 	<html>
 		<head>
 			<style>
-				@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
-				@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
-				@import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
+				@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+				@import url('https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap');
+				@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 			</style>
 			<link rel='stylesheet' type='text/css' href='slop_menustyle2.css'>
 		</head>
 		<body>
-			<div id="button_div">
+			<div id="top_bloc">
 				<span class="title_shit">Class Name:</span> <span class="post_title_shit">[cur_picked_class]</span><br>
 				<span class="title_shit">Description:</span> <span class="post_title_shit">[cur_picked_class.tutorial]</span>
 			</div>
@@ -292,7 +292,7 @@
 	</html>
 	"}
 
-	linked_client << browse(data, "window=class_select_yea;size=610x300;can_close=0;can_minimize=0;can_maximize=0;can_resize=0;titlebar=0;border=0")
+	linked_client << browse(data, "window=class_select_yea;size=610x300;can_close=0;can_minimize=0;can_maximize=0;can_resize=0;titlebar=1")
 
 /datum/class_select_handler/Topic(href, href_list)
 	. = ..()

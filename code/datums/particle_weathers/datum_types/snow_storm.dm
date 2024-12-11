@@ -20,7 +20,6 @@
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
-	weather_messages = list("It's snowing!")
 
 	minSeverity = 1
 	maxSeverity = 10
@@ -42,7 +41,6 @@
 
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/snow)
-	weather_messages = list("A snow storm picks up...")
 
 	minSeverity = 40
 	maxSeverity = 100

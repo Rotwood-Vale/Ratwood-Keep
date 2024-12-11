@@ -211,7 +211,7 @@
 /obj/item/net/proc/ensnare(mob/living/carbon/C)
 	if(!C.legcuffed && C.get_num_legs(FALSE) >= 2)
 		visible_message("<span class='danger'>\The [src] ensnares [C]!</span>")
-		C.legcuffed = src 
+		C.legcuffed = src
 		forceMove(C)
 		C.update_inv_legcuffed()
 		SSblackbox.record_feedback("tally", "handcuffs", 1, type)

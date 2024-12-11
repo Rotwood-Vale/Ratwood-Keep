@@ -3,18 +3,17 @@
 	animate_movement = SLIDE_STEPS
 	speech_span = SPAN_ROBOT
 	var/obj_flags = CAN_BE_HIT
-	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
-	var/set_obj_flags 
+	/// This Var ensures the object ignores all object flags, which is extremely important for contraptions (which are supposed ot interact with all objects even if it does not produce a result)
+	var/obj_flags_ignore = FALSE
+	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
 
 	var/damtype = BRUTE
 	var/force = 0
 
 	var/datum/armor/armor
-	///defaults to max_integrity
-	var/obj_integrity
+	var/obj_integrity	//defaults to max_integrity
 	var/max_integrity = 500
-	///0 if we have no special broken behavior, otherwise is a percentage of at what point the obj breaks. 0.5 being 50%
-	var/integrity_failure = 0 
+	var/integrity_failure = 0 //0 if we have no special broken behavior, otherwise is a percentage of at what point the obj breaks. 0.5 being 50%
 	///Damage under this value will be completely ignored
 	var/damage_deflection = 0
 	var/obj_broken = FALSE
@@ -22,15 +21,11 @@
 
 	var/resistance_flags = NONE // INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ON_FIRE | UNACIDABLE | ACID_PROOF
 
-	///how much acid is on that obj
-	var/acid_level = 0 
+	var/acid_level = 0 //how much acid is on that obj
 
-	///have something WAY too amazing to live to the next round? Set a new path here. Overuse of this var will make me upset.
-	var/persistence_replacement 
-	///Has the item been reskinned?
-	var/current_skin            
-	///List of options to reskin.
-	var/list/unique_reskin      
+	var/persistence_replacement //have something WAY too amazing to live to the next round? Set a new path here. Overuse of this var will make me upset.
+	var/current_skin //Has the item been reskinned?
+	var/list/unique_reskin //List of options to reskin.
 
 	// Access levels, used in modules\jobs\access.dm
 	var/list/req_access
@@ -38,11 +33,9 @@
 	var/list/req_one_access
 	var/req_one_access_txt = "0"
 
-	///set when a player uses a pen on a renamable object
-	var/renamedByPlayer = FALSE 
+	var/renamedByPlayer = FALSE //set when a player uses a pen on a renamable object
 
-	/// Amont of multiplicative slowdown applied if pulled. >1 makes you slower, <1 makes you faster.
-	var/drag_slowdown 
+	var/drag_slowdown // Amont of multiplicative slowdown applied if pulled. >1 makes you slower, <1 makes you faster.
 
 	var/blade_dulling = DULLING_BASHCHOP
 
@@ -108,9 +101,9 @@
 	anchored = anchorvalue
 
 /obj/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force)
-	. = ..()
+	..()
 	if(obj_flags & FROZEN)
-		visible_message(span_danger("[src] shatters into a million pieces!"))
+		visible_message("<span class='danger'>[src] shatters into a million pieces!</span>")
 		qdel(src)
 
 
@@ -225,7 +218,6 @@
 	VV_DROPDOWN_OPTION("", "---")
 	VV_DROPDOWN_OPTION(VV_HK_MASS_DEL_TYPE, "Delete all of type")
 	VV_DROPDOWN_OPTION(VV_HK_OSAY, "Object Say")
-	VV_DROPDOWN_OPTION(VV_HK_ARMOR_MOD, "Modify armor values")
 
 /obj/vv_do_topic(list/href_list)
 	if(!(. = ..()))
@@ -275,9 +267,9 @@
 /obj/examine(mob/user)
 	. = ..()
 //	if(obj_flags & UNIQUE_RENAME)
-//		. += span_notice("Use a pen on it to rename it or change its description.")
+//		. += "<span class='notice'>Use a pen on it to rename it or change its description.</span>"
 	if(unique_reskin && !current_skin)
-		. += span_notice("Alt-click it to reskin it.")
+		. += "<span class='notice'>Alt-click it to reskin it.</span>"
 
 /obj/AltClick(mob/user)
 	. = ..()

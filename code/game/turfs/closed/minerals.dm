@@ -62,9 +62,9 @@
 	return ..()
 
 
-/turf/closed/mineral/attackby(obj/item/I, mob/user, params)
+/turf/closed/mineral/attackby(obj/item/I, mob/user, params, multiplier)
 	if (!user.IsAdvancedToolUser())
-		to_chat(usr, span_warning("I don't have the dexterity to do this!"))
+		to_chat(user, span_warning("I don't have the dexterity to do this!"))
 		return
 	lastminer = user
 	var/olddam = turf_integrity
@@ -131,6 +131,7 @@
 		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
 
 		new newthing(src)
+
 	var/flags = NONE
 	if(defer_change) // TODO: make the defer change var a var for any changeturf flag
 		flags = CHANGETURF_DEFER_CHANGE
@@ -145,18 +146,38 @@
 /turf/closed/mineral/acid_melt()
 	ScrapeAway()
 
-/turf/closed/mineral/ex_act(severity, target)
-	..()
-	switch(severity)
-		if(3)
-			if (prob(75))
-				gets_drilled(null, triggered_by_explosion = TRUE)
-		if(2)
-			if (prob(90))
-				gets_drilled(null, triggered_by_explosion = TRUE)
-		if(1)
-			gets_drilled(null, triggered_by_explosion = TRUE)
-	return
+/turf/closed/mineral/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
+	if(target == src)
+		ScrapeAway()
+		return
+	var/ddist = devastation_range
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fdist = flame_range
+	var/fodist = get_dist(src, epicenter)
+	var/brute_loss = 0
+	var/dmgmod = round(rand(0.1, 2), 0.1)
+
+	switch (severity)
+		if (EXPLODE_DEVASTATE)
+			brute_loss = ((250 * ddist) - (250 * fodist) * dmgmod)
+
+		if (EXPLODE_HEAVY)
+			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod)
+
+		if(EXPLODE_LIGHT)
+			brute_loss = ((25 * ldist) - (25 * fodist) * dmgmod)
+
+	if(fodist == 0)
+		brute_loss *= 2
+	take_damage(brute_loss, BRUTE, "blunt", 0)
+
+	if(fdist && !QDELETED(src))
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
+
+	if(!density)
+		..()
 
 /turf/closed/mineral/Spread(turf/T)
 	T.ChangeTurf(type)
@@ -186,20 +207,6 @@
 			M.baseturfs = src.baseturfs
 			src = M
 			M.levelupdate()
-
-/turf/closed/mineral/strong/gets_drilled(user, triggered_by_explosion = FALSE)
-	var/flags = NONE
-	if(defer_change) // TODO: make the defer change var a var for any changeturf flag
-		flags = CHANGETURF_DEFER_CHANGE
-	ScrapeAway(flags=flags)
-	addtimer(CALLBACK(src, PROC_REF(AfterChange)), 1, TIMER_UNIQUE)
-	playsound(src, 'sound/blank.ogg', 50, TRUE) //beautiful destruction
-
-/turf/closed/mineral/strong/acid_melt()
-	return
-
-/turf/closed/mineral/strong/ex_act(severity, target)
-	return
 
 /turf/closed/mineral/random/rogue
 //	layer = ABOVE_MOB_LAYER
@@ -316,7 +323,7 @@
 	damage_deflection = 99999999
 	above_floor = /turf/closed/mineral/rogue/bedrock
 
-/turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params)
+/turf/closed/mineral/rogue/bedrock/attackby(obj/item/I, mob/user, params, multiplier)
 	to_chat(user, span_warning("TOO HARD!"))
 	return FALSE
 

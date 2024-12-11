@@ -176,14 +176,14 @@
 
 /atom/movable/screen/alert/status_effect/debuff/netted
 	name = "Net"
-	desc = "<span class='boldwarning'>A net was thrown on me.. how can I move?</span>\n"
+	desc = "A net was thrown on me.. how can I move?"
 	icon_state = "muscles"
 
 /datum/status_effect/debuff/netted
 	id = "net"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/netted
-	duration = 2 MINUTES
 	effectedstats = list("speed" = -5, "endurance" = -2)
+	duration = 3 MINUTES
 
 /datum/status_effect/debuff/netted/on_apply()
 		. = ..()
@@ -194,11 +194,9 @@
 	. = ..()
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
-		C.remove_movespeed_modifier(MOVESPEED_ID_NET_SLOWDOWN)
-		// Already handled in uncuff()
-		/*
 		C.legcuffed = null
-		C.update_inv_legcuffed()*/
+		C.update_inv_legcuffed()
+		C.remove_movespeed_modifier(MOVESPEED_ID_NET_SLOWDOWN)
 
 /atom/movable/screen/alert/status_effect/debuff/sleepytime
 	name = "Tired"

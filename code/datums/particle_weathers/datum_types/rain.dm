@@ -23,7 +23,6 @@
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/rain)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
-	weather_messages = list("The rain cools your skin.")
 
 	minSeverity = 1
 	maxSeverity = 15
@@ -45,7 +44,6 @@
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/storm)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
-	weather_messages = list("The rain cools your skin.", "The storm is really picking up!")
 
 	minSeverity = 4
 	maxSeverity = 100

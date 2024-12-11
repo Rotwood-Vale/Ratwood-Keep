@@ -6,7 +6,7 @@
 /datum/looping_sound/indoor_rain
 	mid_sounds = 'sound/weather/rain/weather_rain_indoors.ogg'
 	mid_length = 15 SECONDS
-	volume = 200
+	volume = 500
 
 /datum/looping_sound/storm
 	mid_sounds = 'sound/weather/rain/weather_storm.ogg'

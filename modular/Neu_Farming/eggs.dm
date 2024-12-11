@@ -1,17 +1,26 @@
+/obj/item/reagent_containers/food/snacks/rogue/friedegg
+	trash = null
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	tastes = list("eggs" = 1)
+	name = "fried egg"
+	desc = ""
+	icon_state = "friedegg"
+	foodtype = MEAT
+	warming = 10 MINUTES
 
 /obj/item/reagent_containers/food/snacks/egg
 	icon = 'modular/Neu_Food/icons/food.dmi'
 	name = "cackleberry"
 	desc = ""
-	icon_state = "egg"
+	icon_state = "egg" 
 	list_reagents = list(/datum/reagent/consumable/eggyolk = 5)
 	cooked_type = null
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/friedegg
 	filling_color = "#F0E68C"
 	foodtype = MEAT
 	grind_results = list()
+	var/static/chick_count = 0 //I copied this from the chicken_count (note the "en" in there) variable from chicken code.
 	rotprocess = 15 MINUTES
-
 	var/fertile = FALSE
 
 /obj/item/reagent_containers/food/snacks/egg/become_rotten()
@@ -27,5 +36,5 @@
 		var/obj/O = new /obj/effect/decal/cleanable/food/egg_smudge(T)
 		O.pixel_x = rand(-8,8)
 		O.pixel_y = rand(-8,8)
-		visible_message("<span class='warning'>[H] crushes [src] underfoot.</span>")
+		visible_message(span_warning("[H] crushes [src] underfoot."))
 		qdel(src)

@@ -80,6 +80,8 @@
 		to_chat(src, span_warning("[pulledby] is restraining my arm!"))
 		return
 
+	A.attack_right(src, params)
+
 /mob/living/attack_right(mob/user, params)
 	. = ..()
 //	if(!user.Adjacent(src)) //alreadyu checked in rmb_on
