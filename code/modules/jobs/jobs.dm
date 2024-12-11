@@ -109,6 +109,8 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Artificer",
 	"Scribe",
 	"Village Elder",
+	"Harbormaster",
+	"Longshoreman",
 ))
 
 GLOBAL_LIST_INIT(peasant_positions, list(
@@ -123,7 +125,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Towner",
 	"Grabber",
 	"Nightmaster",
-	"Bath Swain",
+	"Prostitute",
 	"Docker",
 	"Prisoner",
 	"Beggar",

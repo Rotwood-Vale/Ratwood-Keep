@@ -109,6 +109,33 @@
 		/datum/descriptor_choice/prominent_four,
 	)
 
+/datum/species/akula/random_name(gender,unique,lastname)
+	var/randname
+	if(gender == MALE)
+		randname = pick(world.file2list("strings/names/roguetown/axianmale.txt"))
+	if(gender == FEMALE)
+		randname = pick(world.file2list("strings/names/roguetown/axianfemale.txt"))
+	if(prob(33))
+		//Prefix
+		var/prefix = pick(world.file2list("strings/names/roguetown/axianprefix.txt"))
+		randname = "[prefix] [randname]"
+	else
+		//Suffix
+		var/suffix = pick(world.file2list("strings/names/roguetown/axiansuffix.txt"))
+		randname = "[randname] [suffix]"
+	return randname
+
+/datum/species/akula/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	..()
+	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+
+/datum/species/akula/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	UnregisterSignal(C, COMSIG_MOB_SAY)
+
+/datum/species/akula/get_accent(mob/living/carbon/human/H)
+	return strings("pirate_replacement.json", "pirate")
+
 /datum/species/akula/check_roundstart_eligible()
 	return TRUE
 

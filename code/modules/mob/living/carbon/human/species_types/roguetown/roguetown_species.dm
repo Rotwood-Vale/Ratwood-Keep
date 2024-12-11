@@ -4,6 +4,9 @@
 /datum/species/proc/get_accent(mob/living/carbon/human)
 	return
 
+/datum/species/proc/post_accent_treatment(mob/living/carbon/human, message)
+	return message
+
 /datum/species/proc/get_accent_start(mob/living/carbon/human)
 	return
 
