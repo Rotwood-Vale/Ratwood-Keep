@@ -476,7 +476,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	body_markings = SANITIZE_LIST(body_markings)
 	validate_body_markings()
 
-	virginity	= sanitize_integer(virginity, FALSE, TRUE, FALSE)
+	virginity = sanitize_integer(virginity, FALSE, TRUE, FALSE)
 
 	S["descriptor_entries"] >> descriptor_entries
 	descriptor_entries = SANITIZE_LIST(descriptor_entries)
