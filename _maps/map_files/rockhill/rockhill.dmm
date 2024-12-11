@@ -3008,6 +3008,7 @@
 /obj/item/powderflask,
 /obj/item/ammo_holder/bullet/lead,
 /obj/item/gun/ballistic/arquebus_pistol,
+/obj/item/book/rogue/secret/ledger,
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/shop)
 "clE" = (
@@ -27814,11 +27815,14 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "uey" = (
-/obj/item/book/rogue/secret/ledger,
-/turf/open/floor/rogue/tile{
-	icon_state = "linoleum"
+/obj/structure/fluff/railing/wood{
+	pixel_y = 1;
+	dir = 4;
+	pixel_x = 3
 	},
-/area/rogue/indoors/town/shop)
+/obj/machinery/light/rogue/lanternpost,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/town/harbor)
 "ueA" = (
 /obj/machinery/light/rogue/wallfire{
 	pixel_x = 32
@@ -31224,7 +31228,6 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/book/rogue/secret/ledger,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "wEY" = (
@@ -321791,11 +321794,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
 mZP
 kJN
+kJN
+kJN
 mtp
-iXq
 iXq
 iXq
 iXq
@@ -324817,8 +324820,8 @@ rNi
 iXq
 mZP
 kJN
-kJN
 oEp
+kJN
 mtp
 iXq
 iXq
@@ -332161,8 +332164,8 @@ iXq
 iXq
 iXq
 iXq
-iXq
 oQS
+iXq
 iXq
 iXq
 iXq
@@ -335193,7 +335196,7 @@ iXq
 iXq
 iXq
 iXq
-ghY
+iXq
 iXq
 iXq
 iXq
@@ -335625,7 +335628,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+ghY
 iXq
 iXq
 iXq
@@ -336925,7 +336928,7 @@ iXq
 iXq
 iXq
 iXq
-cLU
+iXq
 iXq
 iXq
 iXq
@@ -337357,7 +337360,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+cLU
 iXq
 iXq
 iXq
@@ -342570,7 +342573,7 @@ iXq
 kGQ
 jjk
 rws
-rws
+uey
 sIQ
 kdR
 cky
@@ -343852,8 +343855,8 @@ iXq
 iXq
 iXq
 iXq
-iXq
 mls
+iXq
 iXq
 iXq
 itw
@@ -346007,7 +346010,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+stn
 iXq
 iXq
 iXq
@@ -346439,7 +346442,7 @@ iXq
 iXq
 iXq
 iXq
-stn
+iXq
 iXq
 iXq
 iXq
@@ -349455,7 +349458,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+iuU
 iXq
 iXq
 iXq
@@ -349887,7 +349890,7 @@ iXq
 iXq
 iXq
 iXq
-iuU
+iXq
 iXq
 iXq
 iXq
@@ -352041,7 +352044,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+juU
 iXq
 iXq
 iXq
@@ -352905,7 +352908,7 @@ iXq
 iXq
 iXq
 iXq
-juU
+iXq
 iXq
 iXq
 iXq
@@ -357213,7 +357216,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+wvr
 iXq
 iXq
 iXq
@@ -358077,7 +358080,7 @@ iXq
 iXq
 iXq
 iXq
-wvr
+iXq
 iXq
 iXq
 iXq
@@ -438101,7 +438104,7 @@ oOh
 pFW
 btk
 nDX
-uey
+qAB
 dKS
 gto
 nDX
