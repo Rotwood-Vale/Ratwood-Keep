@@ -8,7 +8,7 @@
 	volume = 15
 	list_reagents = list(/datum/reagent/vitae = 5)
 	grind_results = list(/datum/reagent/vitae = 5)
-	sellprice = 80
+	sellprice = 90
 
 /datum/reagent/vitae
 	name = "Vitae"
