@@ -103,7 +103,7 @@
 	charge_max = 180 SECONDS
 	miracle = TRUE
 	devotion_cost = 100
-	var/townercrab = FALSE
+	var/townercrab = TRUE //I was looking at this for three days and i am utterly stupid for not fixing it
 /obj/effect/proc_holder/spell/invoked/call_mossback/cast(list/targets, mob/living/user)
 	. = ..()
 	var/turf/T = get_turf(targets[1])

@@ -44,7 +44,9 @@
 	if(user)
 		friends += user.name
 		if (townercrab)
-			faction = "Station"
+			faction = list("neutral")
+			tamed(1)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/mossback/get_sound(input)
 	switch(input)
 		if("idle")
