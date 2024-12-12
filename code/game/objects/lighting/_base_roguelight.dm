@@ -42,10 +42,10 @@
 				minsleft = "less than a minute"
 			else
 				minsleft = "[round(minsleft)] minutes"
-			. += "<span class='info'>The fire will last for [minsleft].</span>"
+			. += span_info("The fire will last for [minsleft].")
 		else
 			if(initial(fueluse) > 0)
-				. += "<span class='warning'>The fire is burned out and hungry...</span>"
+				. += span_warning("The fire is burned out and hungry...")
 
 
 /obj/machinery/light/rogue/extinguish()
@@ -53,8 +53,6 @@
 		burn_out()
 		new /obj/effect/temp_visual/small_smoke(src.loc)
 	..()
-
-
 
 /obj/machinery/light/rogue/burn_out()
 	if(soundloop)

@@ -1,4 +1,4 @@
-	/**********************Mineral deposits**************************/
+/**********************Mineral deposits**************************/
 
 /turf/closed/mineral //wall piece
 	name = "rock"
@@ -61,14 +61,13 @@
 		return TRUE
 	return ..()
 
-
 /turf/closed/mineral/attackby(obj/item/I, mob/user, params, multiplier)
 	if (!user.IsAdvancedToolUser())
-		to_chat(user, span_warning("I don't have the dexterity to do this!"))
+		to_chat(usr, span_warning("I don't have the dexterity to do this!"))
 		return
 	lastminer = user
-	var/olddam = turf_integrity
 	..()
+	var/olddam = turf_integrity
 	if(turf_integrity && turf_integrity > 10)
 		if(turf_integrity < olddam)
 			if(prob(50))
@@ -111,7 +110,7 @@
 		if(lastminer.goodluck(2) && mineralType)
 	//		to_chat(lastminer, span_notice("Bonus ducks!"))
 			new mineralType(src)
-		gets_drilled(lastminer, give_exp = FALSE)
+		gets_drilled(lastminer)
 		queue_smooth_neighbors(src)
 	..()
 
@@ -129,9 +128,8 @@
 		SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
 	else if(user.goodluck(2))
 		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
-
+//		to_chat(user, "<span class='notice'>Bonus ducks!</span>")
 		new newthing(src)
-
 	var/flags = NONE
 	if(defer_change) // TODO: make the defer change var a var for any changeturf flag
 		flags = CHANGETURF_DEFER_CHANGE
@@ -146,45 +144,26 @@
 /turf/closed/mineral/acid_melt()
 	ScrapeAway()
 
-/turf/closed/mineral/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
-	if(target == src)
-		ScrapeAway()
-		return
-	var/ddist = devastation_range
-	var/hdist = heavy_impact_range
-	var/ldist = light_impact_range
-	var/fdist = flame_range
-	var/fodist = get_dist(src, epicenter)
-	var/brute_loss = 0
-	var/dmgmod = round(rand(0.1, 2), 0.1)
-
-	switch (severity)
-		if (EXPLODE_DEVASTATE)
-			brute_loss = ((250 * ddist) - (250 * fodist) * dmgmod)
-
-		if (EXPLODE_HEAVY)
-			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod)
-
-		if(EXPLODE_LIGHT)
-			brute_loss = ((25 * ldist) - (25 * fodist) * dmgmod)
-
-	if(fodist == 0)
-		brute_loss *= 2
-	take_damage(brute_loss, BRUTE, "blunt", 0)
-
-	if(fdist && !QDELETED(src))
-		var/stacks = ((fdist - fodist) * 2)
-		fire_act(stacks)
-
-	if(!density)
-		..()
+/turf/closed/mineral/ex_act(severity, target)
+	..()
+	switch(severity)
+		if(3)
+			if (prob(75))
+				gets_drilled(null, triggered_by_explosion = TRUE)
+		if(2)
+			if (prob(90))
+				gets_drilled(null, triggered_by_explosion = TRUE)
+		if(1)
+			gets_drilled(null, triggered_by_explosion = TRUE)
+	return
 
 /turf/closed/mineral/Spread(turf/T)
 	T.ChangeTurf(type)
 
 /turf/closed/mineral/random
+	///if this isn't empty, swaps to one of them via pickweight
 	var/list/mineralSpawnChanceList = list()
-		//Currently, Adamantine won't spawn as it has no uses. -Durandan
+	///the chance to swap to something useful
 	var/mineralChance = 13
 	var/display_icon_state = "rock"
 

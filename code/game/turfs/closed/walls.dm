@@ -111,14 +111,14 @@
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	to_chat(user, "<span class='notice'>I push the wall but nothing happens!</span>")
+	to_chat(user, span_notice("I push the wall but nothing happens!"))
 	playsound(src, 'sound/blank.ogg', 25, TRUE)
 	add_fingerprint(user)
 
 /turf/closed/wall/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	if (!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>I don't have the dexterity to do this!</span>")
+		to_chat(user, span_warning("I don't have the dexterity to do this!"))
 		return
 
 	//get the user's location
@@ -131,15 +131,6 @@
 
 	//the istype cascade has been spread among various procs for easy overriding
 	if(try_clean(W, user, T) || try_wallmount(W, user, T) || try_decon(W, user, T))
-		return
-
-	// Are you trying to break your instrument? Go ahead!
-	if(istype(W, /obj/item/rogue/instrument))
-		if(T.attacked_by(src, user))
-			user.do_attack_animation(src)
-		visible_message("<span class='warning'>[user] slams \the [W] against \the [src]!</span>",
-						"<span class='warning'>I slam \the [W] against \the [src]!</span>",null ,COMBAT_MESSAGE_RANGE)
-		W.take_damage(10, BRUTE, "melee")
 		return
 
 	return ..()

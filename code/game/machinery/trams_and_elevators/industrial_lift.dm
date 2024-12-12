@@ -374,10 +374,6 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 					do_sparks(2, FALSE, collided_wall)
 					collided_wall.dismantle_wall(devastated = TRUE)
 
-				if(ismineralturf(dest_turf))
-					var/turf/closed/mineral/dest_mineral_turf = dest_turf
-					dest_mineral_turf.gets_drilled(give_exp = FALSE)
-
 				for(var/obj/structure/victim_structure in dest_turf.contents)
 					if(QDELING(victim_structure))
 						continue
