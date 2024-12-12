@@ -160,7 +160,7 @@
 /area/rogue/under/town/basement)
 "adQ" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	locked = 1;
 	name = "Secret Harbour"
 	},
@@ -3267,13 +3267,6 @@
 "cuk" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors)
-"cup" = (
-/obj/structure/stairs{
-	dir = 8;
-	icon_state = "stairs"
-	},
-/turf/open/floor/rogue/carpet/lord/right,
-/area/rogue/indoors/shelter/town/harbor)
 "cuw" = (
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/carpet,
@@ -4486,10 +4479,9 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/harbor)
 "dkH" = (
-/obj/structure/mineral_door/bars{
-	lockid = "merc";
-	locked = 1;
-	name = "Cell"
+/obj/structure/stairs{
+	dir = 8;
+	icon_state = "stairs"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/harbor)
@@ -4813,16 +4805,16 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
-"dtR" = (
-/obj/structure/fluff/walldeco/wantedposter,
-/turf/open/floor/rogue/carpet/lord/left,
-/area/rogue/indoors/shelter/town/harbor)
 "dud" = (
 /obj/structure/rack/rogue,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors/shelter/town/harbor)
+"dun" = (
+/obj/structure/pillory/town_square,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/harbor)
 "duq" = (
 /obj/structure/chair/wood/rogue{
@@ -5346,7 +5338,7 @@
 /area/rogue/indoors/town/garrison)
 "dPq" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "Criminals Quarters";
 	locked = 1
 	},
@@ -6187,7 +6179,7 @@
 /area/rogue/indoors/town/dwarfin)
 "ept" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "Whitevein Lounge";
 	dir = 8;
 	locked = 1
@@ -7143,7 +7135,7 @@
 /area/rogue/indoors)
 "eVP" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	locked = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -7763,7 +7755,7 @@
 /area/rogue/outdoors/rtfield)
 "fpO" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "PRIVATE Quarters";
 	locked = 1
 	},
@@ -8551,9 +8543,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/roofs)
-"fRM" = (
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/town/harbor)
 "fRN" = (
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/shop)
@@ -8697,6 +8686,10 @@
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church/chapel)
+"fYf" = (
+/obj/structure/bed/rogue/inn/hay,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/town/harbor)
 "fYD" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -9590,7 +9583,7 @@
 "gHH" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "Bath Room 02"
 	},
 /turf/open/floor/rogue/herringbone,
@@ -11685,7 +11678,7 @@
 /area/rogue/outdoors/rtfield)
 "igv" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	locked = 1;
 	name = "Negotiations"
 	},
@@ -13213,10 +13206,6 @@
 	lockid = "harbor"
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/indoors/shelter/town/harbor)
-"jhn" = (
-/obj/structure/bars,
-/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/harbor)
 "jhy" = (
 /obj/structure/table/vtable/v2,
@@ -16767,6 +16756,14 @@
 /obj/effect/landmark/start/bogmaster,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
+"lPj" = (
+/obj/structure/mineral_door/bars{
+	lockid = "merc";
+	locked = 1;
+	name = "Cell"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/town/harbor)
 "lQu" = (
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
@@ -17094,7 +17091,7 @@
 /area/rogue/under/town/basement)
 "mbA" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "Whitevein Lounge";
 	dir = 1;
 	locked = 1
@@ -19390,7 +19387,8 @@
 /area/rogue/outdoors/town/harbor)
 "nKv" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightman"
+	lockid = "nightmaiden";
+	name = "Cellar"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/bath)
@@ -19536,8 +19534,8 @@
 /area/rogue/outdoors/town/harbor)
 "nPr" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightman";
-	name = "Bath Wench Quarters"
+	lockid = "nightmaiden";
+	name = "Prostitutes Quarters"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
@@ -19656,7 +19654,7 @@
 /area/rogue/indoors)
 "nTJ" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "PRIVATE Quarters";
 	locked = 1
 	},
@@ -20307,6 +20305,9 @@
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church)
+"omJ" = (
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/town/harbor)
 "omU" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	lockid = "farm";
@@ -22647,10 +22648,6 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/mountains)
-"pTg" = (
-/obj/effect/decal/cleanable/vomit/old,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/town/harbor)
 "pTG" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -22799,6 +22796,10 @@
 /obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
+"pZS" = (
+/obj/structure/fluff/walldeco/wantedposter,
+/turf/open/floor/rogue/carpet/lord/left,
+/area/rogue/indoors/shelter/town/harbor)
 "qas" = (
 /obj/item/reagent_containers/food/snacks/grown/apple,
 /turf/open/floor/rogue/ruinedwood,
@@ -23044,7 +23045,7 @@
 /area/rogue/indoors/town/tavern)
 "qkA" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "Sewer Room";
 	locked = 1
 	},
@@ -23099,6 +23100,10 @@
 "qlO" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/shelter/town/harbor)
+"qma" = (
+/obj/structure/bars,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/town/harbor)
 "qml" = (
 /obj/structure/lever{
 	redstone_id = "bogguardjail4"
@@ -23136,13 +23141,6 @@
 "qnx" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/cobble/mossy,
-/area/rogue/indoors/shelter/town/harbor)
-"qnC" = (
-/obj/structure/stairs{
-	dir = 8;
-	icon_state = "stairs"
-	},
-/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/harbor)
 "qnQ" = (
 /obj/structure/fluff/railing/border{
@@ -23726,7 +23724,7 @@
 "qJO" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	dir = 8;
 	name = "Bath Room 01"
 	},
@@ -24368,7 +24366,7 @@
 /area/rogue/under/town/basement)
 "rkY" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "Borrowed goods";
 	locked = 1
 	},
@@ -24992,6 +24990,13 @@
 /obj/item/reagent_containers/powder/salt,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
+"rEl" = (
+/obj/structure/stairs{
+	dir = 8;
+	icon_state = "stairs"
+	},
+/turf/open/floor/rogue/carpet/lord/right,
+/area/rogue/indoors/shelter/town/harbor)
 "rET" = (
 /obj/structure/chair/bench/church/r{
 	dir = 1
@@ -26806,7 +26811,7 @@
 "sVs" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "Dungeon Room";
 	dir = 1
 	},
@@ -27094,7 +27099,7 @@
 /area/rogue/indoors/town/bath)
 "tei" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightman";
+	lockid = "nightmaiden";
 	name = "Bath Wench Quarters";
 	locked = 1
 	},
@@ -28306,10 +28311,6 @@
 	icon_state = "plating2"
 	},
 /area/rogue/indoors/town/shop)
-"tTd" = (
-/obj/structure/pillory/town_square,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/town/harbor)
 "tTh" = (
 /obj/machinery/light/roguestreet/orange,
 /turf/open/floor/rogue/blocks,
@@ -29424,7 +29425,8 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/town/harbor)
 "uHa" = (
-/turf/open/floor/rogue/blocks,
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/harbor)
 "uHg" = (
 /obj/machinery/light/rogue/wallfire/candle{
@@ -33817,6 +33819,9 @@
 /obj/item/rogueweapon/hoe,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
+"xHQ" = (
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/shelter/town/harbor)
 "xHT" = (
 /obj/structure/ladder,
 /obj/structure/ladder,
@@ -34572,10 +34577,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
-"yiX" = (
-/obj/structure/bed/rogue/inn/hay,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/town/harbor)
 "yje" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -120239,7 +120240,7 @@ bpD
 bpD
 clJ
 clJ
-qnC
+dkH
 clJ
 clJ
 bpD
@@ -120670,9 +120671,9 @@ bpD
 bpD
 bpD
 clJ
-uHa
-fRM
-uHa
+xHQ
+omJ
+xHQ
 clJ
 bpD
 bpD
@@ -121102,9 +121103,9 @@ bpD
 bpD
 bpD
 clJ
-fRM
-fRM
-fRM
+omJ
+omJ
+omJ
 clJ
 bpD
 bpD
@@ -121534,9 +121535,9 @@ bpD
 bpD
 bpD
 clJ
-jhn
-dkH
-jhn
+qma
+lPj
+qma
 clJ
 bpD
 bpD
@@ -121966,9 +121967,9 @@ bpD
 bpD
 bpD
 clJ
-tTd
-fRM
-pTg
+dun
+omJ
+uHa
 clJ
 bpD
 bpD
@@ -122398,9 +122399,9 @@ bpD
 bpD
 bpD
 clJ
-uHa
-yiX
-uHa
+xHQ
+fYf
+xHQ
 clJ
 bpD
 bpD
@@ -125862,7 +125863,7 @@ lUg
 nKv
 lUg
 lUg
-tei
+nPr
 lUg
 lUg
 lUg
@@ -126293,8 +126294,8 @@ ykf
 dwo
 fgs
 fgs
-fgs
-fgs
+gwx
+gwx
 fgs
 lUg
 bpD
@@ -228240,7 +228241,7 @@ otl
 hkm
 otl
 clJ
-dtR
+pZS
 xZO
 dPj
 dnO
@@ -229968,7 +229969,7 @@ otl
 nYV
 nYV
 clJ
-cup
+rEl
 kKA
 xBV
 akz
