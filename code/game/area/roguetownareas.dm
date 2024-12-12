@@ -96,12 +96,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	name = "deception"
 	icon_state = "deception"
 	first_time_text = "THE CANYON OF DECEPTION"
-	ambush_types = list(
-				/turf/open/floor/rogue/dirt)
-	ambush_mobs = list(
-				/mob/living/simple_animal/hostile/retaliate/rogue/troll = 30,
-				/mob/living/carbon/human/species/skeleton/npc/ambush = 30,
-				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 60)
 
 /area/rogue/outdoors/mountains/decap
 	name = "mt decapitation"

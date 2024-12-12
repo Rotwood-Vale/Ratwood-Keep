@@ -1,3 +1,18 @@
+/obj/item
+	/// A lazylist to store inhands data.
+	var/list/onprop
+	var/d_type = "blunt"
+	var/worn_in
+	var/force_reupdate_inhand = TRUE
+	
+// Initalize addon for the var for custom inhands 32x32.
+
+/obj/item/Initialize()
+	. = ..()
+	if(!experimental_inhand)
+		inhand_x_dimension = 32
+		inhand_y_dimension = 32
+
 // Helper items for spriters so they can see how in-hands look in game.
 // They're basically red square sprites placed on the floor so spriters can adjust their sprites properly
 // Used on admin testing area only.
