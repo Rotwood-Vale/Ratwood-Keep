@@ -239,18 +239,16 @@
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-	item_damage_type = "stab"
 
 /datum/intent/simple/minotaur_axe
 	name = "minotaur axe"
 	icon_state = "instrike"
 	attack_verb = list("hacks at", "slashes", "chops", "steps on", "crushes", "bites")
 	animname = "blank22"
-	blade_class = BCLASS_CUT
+	blade_class = BCLASS_STAB
 	hitsound = "genchop"
 	chargetime = 20
 	penfactor = 10
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-	item_damage_type = "stab"

@@ -16,10 +16,8 @@
 
 /datum/ai_planning_subtree/find_dead_bodies/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
-	if(istype(controller.pawn, /mob/living/simple_animal))
-		var/mob/living/simple_animal/hostile/retaliate/rogue/mob = controller.pawn
-		if(mob.food == mob.food_max && !mob.eat_forever)
-			return // not hungry
+
+	// not checking for hunger level might make them always go for dead bodies
 
 	var/atom/target = controller.blackboard[BB_BASIC_MOB_FOOD_TARGET]
 	if(!QDELETED(target))

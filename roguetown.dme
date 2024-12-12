@@ -446,8 +446,6 @@
 #include "code\datums\ai\behaviours\hostile\find_potential_targets.dm"
 #include "code\datums\ai\behaviours\hostile\melee_attack.dm"
 #include "code\datums\ai\controllers\big_rat.dm"
-#include "code\datums\ai\controllers\bog_bug.dm"
-#include "code\datums\ai\controllers\headless.dm"
 #include "code\datums\ai\controllers\minoutaur.dm"
 #include "code\datums\ai\controllers\spider.dm"
 #include "code\datums\ai\controllers\volf.dm"

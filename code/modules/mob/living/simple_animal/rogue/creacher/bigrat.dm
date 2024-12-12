@@ -45,7 +45,6 @@
 	aggressive = 1
 	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/bigrat
-	body_eater = TRUE
 
 	AIStatus = AI_OFF
 	can_have_ai = FALSE

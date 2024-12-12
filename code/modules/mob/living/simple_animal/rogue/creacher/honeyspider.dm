@@ -39,7 +39,6 @@
 	attack_sound = list('sound/vo/mobs/spider/attack (1).ogg','sound/vo/mobs/spider/attack (2).ogg','sound/vo/mobs/spider/attack (3).ogg','sound/vo/mobs/spider/attack (4).ogg')
 	aggressive = TRUE
 	stat_attack = UNCONSCIOUS
-	body_eater = TRUE
 
 	ai_controller = /datum/ai_controller/spider
 	AIStatus = AI_OFF

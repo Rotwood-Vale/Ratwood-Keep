@@ -222,15 +222,6 @@
 				force_open()
 				user.visible_message(span_warning("[user] smashes through [src]!"))
 			return
-		if(HAS_TRAIT(user, TRAIT_ROTMAN))
-			if(locked)
-				user.visible_message(span_warning("The deadite bashes into [src]!"))
-				take_damage(50, "brute", "blunt", 1)
-			else
-				playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 90)
-				force_open()
-				user.visible_message(span_warning("The deadite smashes through [src]!"))
-			return
 		if(locked)
 			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/storage/keyring))
 				src.attackby(user.get_active_held_item(), user, TRUE)

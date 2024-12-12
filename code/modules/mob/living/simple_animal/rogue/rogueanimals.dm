@@ -273,18 +273,18 @@
 
 /obj/item/gudder/Initialize()
 	create_reagents(100)
-	reagents.add_reagent(/datum/reagent/consumable/milk/gote, rand(0,20))
+	reagents.add_reagent(/datum/reagent/consumable/milk, rand(0,20))
 	. = ..()
 
 /obj/item/gudder/proc/generateMilk()
-	reagents.add_reagent(/datum/reagent/consumable/milk/gote, 1)
+	reagents.add_reagent(/datum/reagent/consumable/milk, 1)
 
 /obj/item/gudder/proc/milkAnimal(obj/O, mob/living/user = usr)
 	var/obj/item/reagent_containers/glass/G = O
 	if(G.reagents.total_volume >= G.volume)
 		to_chat(user, span_warning("[O] is full."))
 		return
-	if(!reagents.has_reagent(/datum/reagent/consumable/milk/gote, 5))
+	if(!reagents.has_reagent(/datum/reagent/consumable/milk, 5))
 		to_chat(user, span_warning("The udder is dry. Wait a bit longer..."))
 		user.changeNext_move(10)
 		return
