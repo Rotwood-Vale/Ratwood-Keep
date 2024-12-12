@@ -2,7 +2,7 @@
 	/// Blackboard key holding atom we want to stay away from
 	var/target_key = BB_BASIC_MOB_CURRENT_TARGET
 	/// How close will we allow our target to get?
-	var/minimum_distance = 2
+	var/minimum_distance = 1
 	/// How far away will we allow our target to get?
 	var/maximum_distance = 4
 
@@ -15,15 +15,19 @@
 	var/atom/target = controller.blackboard[target_key]
 	var/mob/living/living_pawn = controller.pawn
 
-	if (!isliving(target) || !can_see(controller.pawn, target, view_distance))
+	if (!isliving(target))// || !can_see(controller.pawn, target, view_distance)) //Chase into vision if need be. Keep pressure on
 		return
 	
 	var/range = get_dist(living_pawn, target)
+	
 	if ((range < minimum_distance) || (living_pawn.next_move > world.time)) // take a step back -- buy time till next attack
 		controller.queue_behavior(run_away_behavior, target_key, minimum_distance)
 		return
-	if ((range > maximum_distance) || (living_pawn.next_move < world.time)) // next attack ready or target too far for us
-		controller.queue_behavior(/datum/ai_behavior/pursue_to_range, target_key, living_pawn.a_intent.reach)
+	var/canReach = living_pawn.CanReach(target)
+	if ((range > maximum_distance) || (living_pawn.next_move < world.time) || !canReach) // next attack ready or target too far for us
+		if(!canReach) //living_pawn.a_intent.reach if we can't raech then move into melee - probably on a corner
+			minimum_distance = 1
+		controller.queue_behavior(/datum/ai_behavior/pursue_to_range, target_key, minimum_distance)
 		return
 
 /datum/ai_planning_subtree/melee_spacing/cover_minimum_distance
@@ -72,6 +76,7 @@
 /// Pursue a target until we are within a provided range
 /datum/ai_behavior/pursue_to_range
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION | AI_BEHAVIOR_MOVE_AND_PERFORM
+	action_cooldown = 0.2 SECONDS
 
 /datum/ai_behavior/pursue_to_range/setup(datum/ai_controller/controller, target_key, range)
 	. = ..()

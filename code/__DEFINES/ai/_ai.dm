@@ -55,7 +55,7 @@
 ///what we're going to eat next
 #define BB_FOOD_TARGET "bb_food_target"
 
-#define BB_RETALIATE_CALM
+#define BB_BASIC_MOB_TAMED "BB_basic_mob_tamed"
 
 //farm animals ai
 #define BB_CHICKEN_LAY_EGG "BB_chicken_lay_egg"

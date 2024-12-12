@@ -13,12 +13,9 @@
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 
 	planning_subtrees = list(
-		/datum/ai_planning_subtree/target_retaliate,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree,
+		//datum/ai_planning_subtree/farmyard_retaliate
 		/datum/ai_planning_subtree/eat_food/farm_animals,
 		/datum/ai_planning_subtree/find_food,
-//tbi
-//chicken eggs
-//make nest
+
 		
 	)
