@@ -2285,6 +2285,10 @@
 /obj/structure/fluff/grindwheel,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/shelter/town)
+"bEr" = (
+/obj/structure/fermenting_barrel/random/water,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/bath)
 "bER" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/shortshirt,
@@ -4481,7 +4485,7 @@
 "dkH" = (
 /obj/structure/mineral_door/wood/red{
 	lockid = "nightman";
-	name = "Bath Wench Quarters";
+	name = "Prostitutes Quarters";
 	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
@@ -10392,6 +10396,7 @@
 	dir = 4;
 	icon_state = "stonestairs"
 	},
+/obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "hnw" = (
@@ -26698,6 +26703,7 @@
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
+/obj/structure/roguemachine/mail/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
 "sSW" = (
@@ -350074,7 +350080,7 @@ qrz
 rbI
 xLM
 oXU
-hnt
+lUg
 hnt
 lUg
 lUg
@@ -350508,7 +350514,7 @@ xvc
 oXU
 oXU
 oXU
-hpu
+bEr
 hNe
 dVx
 dVx
