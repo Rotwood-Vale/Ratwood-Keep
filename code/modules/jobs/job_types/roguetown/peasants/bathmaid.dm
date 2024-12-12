@@ -26,7 +26,6 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	r_hand = /obj/item/soap/bath
 	l_hand = /obj/item/rogue/instrument/harp
-	mouth = /obj/item/key/nightmaiden
 	if(H.gender == MALE)
 		pants =	/obj/item/clothing/under/roguetown/loincloth
 		belt =	/obj/item/storage/belt/rogue/leather/cloth
@@ -35,7 +34,7 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 		pants =	/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random
 
-	beltr = /obj/item/storage/keyring/nightmaster
+	beltr = /obj/item/storage/keyring/nightman
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
