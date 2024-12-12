@@ -1,11 +1,11 @@
-/datum/ai_controller/farm_animals/cow
+/datum/ai_controller/farm_animals/tamed_cow
 	movement_delay = 0.4 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items()
-
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items(),
+		BB_BASIC_MOB_TAMED = TRUE,
 	)
 
 	ai_traits = STOP_MOVING_WHEN_PULLED

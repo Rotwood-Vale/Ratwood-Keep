@@ -172,7 +172,8 @@ Greatwyrm (?)
 
 /datum/intent/simple/bite/dragon_bite //the model/hitbox is too big so it never got to attack. Increase reach
 	reach = 2
-	swingdelay = 3
+	swingdelay = 2
+	penfactor = 60 // It is a dragon so it bites hard
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother
