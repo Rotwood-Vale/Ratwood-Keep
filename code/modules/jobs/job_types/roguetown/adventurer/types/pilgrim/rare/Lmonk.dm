@@ -12,7 +12,6 @@
 
 /datum/outfit/job/roguetown/adventurer/rare/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	switch(H.patron?.type)
@@ -73,3 +72,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+
+/datum/outfit/job/roguetown/adventurer/rare/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = TRUE

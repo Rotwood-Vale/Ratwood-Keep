@@ -2869,9 +2869,6 @@
 /turf/open/floor/rogue/metal,
 /area/rogue/under/town/goblin)
 "IC" = (
-/mob/living/simple_animal/pet/fox/Swiper{
-	dir = 4
-	},
 /obj/structure/chair/wood/rogue{
 	dir = 4
 	},

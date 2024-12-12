@@ -95,7 +95,6 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 28
 
-
 /datum/crafting_recipe/roguetown/hunting/saddle
 	name = "saddle"
 	result = /obj/item/natural/saddle
@@ -113,3 +112,9 @@
 	result = /obj/item/rogue/instrument/drum
 	reqs = list(/obj/item/natural/hide/cured = 1,/obj/item/grown/log/tree/small = 1)
 	sellprice = 5
+
+/datum/crafting_recipe/roguetown/hunting/bedroll
+	name = "bedroll"
+	result = /obj/item/bedroll
+	reqs = list(/obj/item/natural/hide/cured = 2, /obj/item/natural/cloth = 2, /obj/item/rope = 1)
+	sellprice = 50

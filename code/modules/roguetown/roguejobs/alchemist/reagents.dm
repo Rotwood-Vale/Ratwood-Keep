@@ -63,7 +63,9 @@
 	metabolization_rate = 0.1
 
 /datum/reagent/organpoison/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER) && !HAS_TRAIT(M, TRAIT_ORGAN_EATER))
+	if(HAS_TRAIT(M, TRAIT_NASTY_EATER) || HAS_TRAIT(M, TRAIT_ORGAN_EATER) || HAS_TRAIT(M, TRAIT_WILD_EATER))
+		return ..()
+	else
 		M.add_nausea(9)
 		M.adjustToxLoss(3, 0)
 	return ..()
@@ -83,4 +85,4 @@
 		/datum/reagent/water = 10,
 		/obj/item/reagent_containers/food/snacks/fat = 1)
 	result = /obj/item/soap
-	craftdiff = 5
+	skill_level = 5

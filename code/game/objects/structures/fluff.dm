@@ -1219,7 +1219,7 @@ obj/structure/bars/steel
 	reqs = list(/obj/item/natural/cloth = 4, /obj/item/natural/fibers)
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/littlebanners/greenblue
 	name = "fair banners green-blue"
@@ -1312,7 +1312,7 @@ obj/structure/bars/steel
 				/obj/item/natural/cloth = 2)
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/booth02
 	name = "market booth"
@@ -1321,7 +1321,7 @@ obj/structure/bars/steel
 				/obj/item/natural/cloth = 2)
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/booth_green
 	name = "green market booth"
@@ -1330,7 +1330,7 @@ obj/structure/bars/steel
 				/obj/item/natural/cloth = 2)
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/booth_green_02
 	name = "green market booth02"
@@ -1339,7 +1339,7 @@ obj/structure/bars/steel
 				/obj/item/natural/cloth = 2)
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 0
+	skill_level = 0
 
 /obj/structure/fluff/canopy/MouseDrop(over_object, src_location, over_location)
 	. = ..()
