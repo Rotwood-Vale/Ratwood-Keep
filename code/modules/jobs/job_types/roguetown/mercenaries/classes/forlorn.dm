@@ -4,7 +4,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/forlorn
-	maximum_possible_slots = 3
 	min_pq = 2
 	cmode_music = 'sound/music/combat_blackstar.ogg'
 	category_tags = list(CTAG_MERCENARY)

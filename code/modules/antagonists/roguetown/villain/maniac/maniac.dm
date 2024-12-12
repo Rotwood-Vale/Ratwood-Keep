@@ -46,7 +46,7 @@
 	/// Weapons we can give to the dreamer
 	var/static/list/possible_weapons = list(
 		/obj/item/rogueweapon/huntingknife/cleaver,
-		/obj/item/rogueweapon/huntingknife/cleaver/combat,
+		/obj/item/rogueweapon/huntingknife/combat,
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special,
 	)
 	/// Key number > Key text
@@ -149,6 +149,76 @@
 
 /datum/antagonist/maniac/proc/forge_villain_objectives()
 	return
+
+/datum/antagonist/maniac/proc/wake_up()
+	STOP_PROCESSING(SSobj, src)
+	triumphed = TRUE
+	waking_up = FALSE
+	var/mob/living/carbon/dreamer = owner.current
+	// var/client/dreamer_client = dreamer.client // Trust me, we need it later
+	dreamer.clear_fullscreen("dream")
+	dreamer.clear_fullscreen("wakeup")
+	for(var/datum/objective/objective in objectives)
+		objective.completed = TRUE
+	for(var/mob/connected_player in GLOB.player_list)
+		if(!connected_player.client)
+			continue
+		SEND_SOUND(connected_player, sound(null))
+		SEND_SOUND(connected_player, 'sound/villain/dreamer_win.ogg')
+	var/mob/living/carbon/human/trey_liam = spawn_trey_liam()
+	if(trey_liam)
+		owner.transfer_to(trey_liam)
+		//Explodie all our wonders
+		for(var/obj/structure/wonder/wondie as anything in wonders_made)
+			if(istype(wondie))
+				explosion(wondie, 8, 16, 32, 64)
+		var/obj/item/organ/brain/brain = dreamer.getorganslot(ORGAN_SLOT_BRAIN)
+		var/obj/item/bodypart/head/head = dreamer.get_bodypart(BODY_ZONE_HEAD)
+		if(head)
+			head.dismember(BURN)
+			if(!QDELETED(head))
+				qdel(head)
+		if(brain)
+			qdel(brain)
+		trey_liam.SetSleeping(25 SECONDS)
+		trey_liam.add_stress(/datum/stressevent/maniac_woke_up)
+		sleep(1.5 SECONDS)
+		to_chat(trey_liam, span_deadsay("<span class='reallybig'>... WHERE AM I? ...</span>"))
+		sleep(1.5 SECONDS)
+		var/static/list/slop_lore = list(
+			span_deadsay("... Azure Peak? No ... It doesn't exist ..."),
+			span_deadsay("... My name is Trey. Trey Liam, Liamtific Troverseer ..."),
+			span_deadsay("... I'm on NT Liam, a self Treystaining ship, used to Treyserve what Liamains of roguemanity ..."),
+			span_deadsay("... Launched into the Grim Darkness, Fart Grimness preserves their grimness ... Their edge ..."),
+			span_deadsay("... Keeps them alive in the grim future, where there is only grimdarkness ..."),
+			span_deadsay("... There is no hope left. Only the Space Station 13 lets me live in the Trey Liam ..."),
+			span_deadsay("... What have I done!? ..."),
+		)
+		for(var/slop in slop_lore)
+			to_chat(trey_liam, slop)
+			sleep(5 SECONDS)
+	else
+		INVOKE_ASYNC(src, PROC_REF(cant_wake_up), dreamer)
+	sleep(15 SECONDS)
+	to_chat(world, span_deadsay("<span class='reallybig'>The Maniac has TRIUMPHED!</span>"))
+	SSticker.declare_completion()
+
+/datum/antagonist/maniac/proc/cant_wake_up(mob/living/dreamer)
+	if(!iscarbon(dreamer))
+		return
+	to_chat(dreamer, span_deadsay("<span class='reallybig'>I CAN'T WAKE UP.</span>"))
+	sleep(2 SECONDS)
+	for(var/i in 1 to 10)
+		to_chat(dreamer, span_deadsay("<span class='reallybig'>ICANTWAKEUP</span>"))
+		sleep(0.5 SECONDS)
+	var/obj/item/organ/brain/brain = dreamer.getorganslot(ORGAN_SLOT_BRAIN)
+	var/obj/item/bodypart/head/head = dreamer.get_bodypart(BODY_ZONE_HEAD)
+	if(head)
+		head.dismember(BURN)
+		if(!QDELETED(head))
+			qdel(head)
+	if(brain)
+		qdel(brain)
 
 //TODO Collate
 /datum/antagonist/roundend_report()

@@ -98,7 +98,7 @@
 /datum/anvil_recipe/weapons/iron/tossblade
 	name = "Iron Tossblades (four)"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/rogueweapon/huntingknife/throwingknife
+	created_item = /obj/item/rogueweapon/huntingknife/throwingknife/iron
 	craftdiff = 0
 	createditem_num = 4
 
@@ -177,7 +177,7 @@
 	name = "Combat Knife (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/rogueweapon/huntingknife/cleaver/combat
+	created_item = /obj/item/rogueweapon/huntingknife/combat
 	craftdiff = 2
 
 /datum/anvil_recipe/weapons/steel/mace
