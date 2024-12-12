@@ -427,6 +427,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["nudeshot_link"]			>> nudeshot_link
 	if(!valid_headshot_link(null, nudeshot_link, TRUE))
 		nudeshot_link = null
+	
+	S["char_accent"]		>> char_accent
+	if (!char_accent)
+		char_accent = "No accent"
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
@@ -542,6 +546,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_mcolor2"]					, features["mcolor2"])
 	WRITE_FILE(S["feature_mcolor3"]					, features["mcolor3"])
 	WRITE_FILE(S["feature_ethcolor"]					, features["ethcolor"])
+	WRITE_FILE(S["char_accent"] 						, char_accent)
 
 	//virginity
 	WRITE_FILE(S["virginity"], virginity)
