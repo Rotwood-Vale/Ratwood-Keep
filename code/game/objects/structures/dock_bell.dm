@@ -13,7 +13,7 @@
 /obj/structure/dock_bell/attack_hand(mob/user)
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, ring_bell))
-		visible_message(span_notice("I should wait..."))
+		to_chat(user, span_notice("I should wait..."))
 		return
 	if(!do_after(user, 5 SECONDS, target = src))
 		return
