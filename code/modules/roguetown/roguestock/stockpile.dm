@@ -13,7 +13,7 @@
 	name = "Wood Plank"
 	desc = "Wooden planks ready to be worked."
 	item_type = /obj/item/natural/wood/plank
-	held_items = 2
+	held_items = list(2, 2)
 	payout_price = 4
 	withdraw_price = 5
 	transport_fee = 3
