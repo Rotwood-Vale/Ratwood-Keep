@@ -1989,10 +1989,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/rtfield)
-"btv" = (
-/obj/structure/fermenting_barrel/random/water,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town/bath)
 "btA" = (
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -10338,6 +10334,10 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"hkA" = (
+/obj/structure/fermenting_barrel/random/water,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/bath)
 "hkI" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -12325,6 +12325,16 @@
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"iCc" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood3"
+	},
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/bath)
 "iCj" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/rogueweapon/huntingknife/elvish/drow,
@@ -132340,7 +132350,7 @@ qMQ
 oFG
 lUg
 fgs
-fgs
+jKu
 sCJ
 ncT
 dYs
@@ -132772,7 +132782,7 @@ qMQ
 oFG
 sVs
 fgs
-fgs
+iCc
 sCJ
 sCJ
 sCJ
@@ -350514,7 +350524,7 @@ xvc
 oXU
 oXU
 oXU
-btv
+hkA
 hNe
 dVx
 dVx
