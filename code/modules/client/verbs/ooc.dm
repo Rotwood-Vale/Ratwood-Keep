@@ -14,12 +14,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(!mob)
 		return
 
-	/*
-	if(get_playerquality(ckey) <= -5)
-		to_chat(src, span_danger("I can't use that."))
-		return
-	*/
-
 	if(!holder)
 		if(!GLOB.ooc_allowed)
 			to_chat(src, span_danger("OOC is globally muted."))
