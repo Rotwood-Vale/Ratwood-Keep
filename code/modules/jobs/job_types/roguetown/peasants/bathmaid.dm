@@ -33,6 +33,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 		pants =	/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random
+		belt =	/obj/item/storage/belt/rogue/leather/cloth
 
 	beltr = /obj/item/storage/keyring/nightman
 	if(H.mind)

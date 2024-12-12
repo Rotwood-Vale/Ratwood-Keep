@@ -31,6 +31,15 @@
 	var/climb_offset = 0 //offset up when climbed
 	var/mob/living/structureclimber
 
+	var/use_power = IDLE_POWER_USE
+		//0 = dont run the auto
+		//1 = run auto, use idle
+		//2 = run auto, use active
+	var/idle_power_usage = 0
+	var/active_power_usage = 0
+	var/power_channel = EQUIP
+		//EQUIP,ENVIRON or LIGHT
+
 /obj/machinery/Initialize()
 	if(!armor)
 		armor = list("blunt" = 25, "slash" = 15, "stab" = 10, "bullet" = 10, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 70)
@@ -62,6 +71,9 @@
 
 /obj/machinery/proc/locate_machinery()
 	return
+
+/obj/machinery/proc/auto_use_power()
+	return TRUE
 
 /obj/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL
