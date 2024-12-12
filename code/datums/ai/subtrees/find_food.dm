@@ -43,11 +43,6 @@
 /datum/ai_planning_subtree/find_food/troll
 	vision_range = 7
 
-
-/datum/ai_planning_subtree/find_dead_bodies/bog_troll
-	vision_range = 7
-	behavior = /datum/ai_behavior/find_and_set/dead_bodies/bog_troll
-
 /datum/ai_planning_subtree/find_dead_bodies/mimic
 	vision_range = 2
 	behavior = /datum/ai_behavior/find_and_set/dead_bodies/mimic
