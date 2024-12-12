@@ -94,8 +94,8 @@ SUBSYSTEM_DEF(droning)
 
 	//kill the previous droning sound
 	kill_droning(dreamer)
-	var/sound/combat_music = sound(pick(music), repeat = TRUE, wait = 0, channel = CHANNEL_BUZZ, 
-volume = (dreamer?.prefs.musicvol)*1.2)
+	var/sound/combat_music = sound(pick(music), repeat = TRUE, wait = 0, channel = CHANNEL_BUZZ, volume = dreamer?.prefs.musicvol)
+	SEND_SOUND(dreamer, combat_music)
 	dreamer.droning_sound = combat_music
 	dreamer.last_droning_sound = combat_music.file
 
