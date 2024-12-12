@@ -34,6 +34,8 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 		pants =	/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random
+
+	beltr = /obj/item/storage/keyring/nightmaster
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)

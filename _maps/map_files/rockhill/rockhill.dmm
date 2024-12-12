@@ -26527,13 +26527,6 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town/roofs)
-"sMJ" = (
-/obj/structure/roguemachine/drugmachine{
-	density = 0;
-	pixel_y = 32
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/town/tavern)
 "sMN" = (
 /obj/effect/landmark/start/merchant,
 /turf/open/floor/carpet/stellar,
@@ -212249,7 +212242,7 @@ lrs
 lrs
 lrs
 orb
-sMJ
+cVS
 cVS
 cVS
 vPI

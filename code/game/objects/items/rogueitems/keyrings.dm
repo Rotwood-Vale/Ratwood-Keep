@@ -173,7 +173,7 @@
 	keys = list(/obj/item/key/confession, /obj/item/key/church)
 
 /obj/item/storage/keyring/nightman
-	keys = list(/obj/item/key/nightman, /obj/item/key/nightmaiden)
+	keys = list(/obj/item/key/nightman)
 
 /obj/item/storage/keyring/hand
 	keys = list(/obj/item/key/keep_armory, /obj/item/key/steward, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_gatehouse, /obj/item/key/councillor_rooms, /obj/item/key/hand, /obj/item/key/walls, /obj/item/key/keep_dungeon, /obj/item/key/keep_barracks, /obj/item/key/manor)

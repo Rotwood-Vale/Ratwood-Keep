@@ -334,15 +334,9 @@
 
 /obj/item/key/nightman
 	name = "nightmaster's key"
-	desc = "This regal key opens a few doors within the castle."
+	desc = "This rusted key opens the brothel."
 	icon_state = "greenkey"
 	lockid = "nightman"
-
-/obj/item/key/nightmaiden
-	name = "nightmaiden's key"
-	desc = "This regal key opens a few doors within the castle."
-	icon_state = "brownkey"
-	lockid = "nightmaiden"
 
 /obj/item/key/mercenary
 	name = "mercenary key"
