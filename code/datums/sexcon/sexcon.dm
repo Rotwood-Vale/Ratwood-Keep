@@ -483,7 +483,7 @@
 
 /datum/sex_controller/proc/can_use_penis()
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
-		return FALSE
+		return TRUE //The fact that you can just go and manually stick a vampire's dick in you and bounce on it until you get off, but they cannot *personally* stick their dick in and need their partner to put it in, is stupid. Especially because they *can* titfuck or thighfuck you as is. This lets them ream you but still prevents cumming. Forever edging is the real curse :3
 	return TRUE
 
 /datum/sex_controller/proc/considered_limp()

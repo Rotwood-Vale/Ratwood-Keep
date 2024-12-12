@@ -61,6 +61,7 @@
 /obj/item/organ/tail/tiefling
 	name = "tiefling tail"
 	accessory_type =  /datum/sprite_accessory/tail/tiefling
+	can_penetrate = TRUE
 
 /obj/item/organ/tail/akula
 	name = "axian tail"

@@ -195,6 +195,3 @@
 /datum/species/akula/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-
-/datum/species/akula/get_accent(mob/living/carbon/human/H)
-	return strings("pirate_replacement.json", "full")

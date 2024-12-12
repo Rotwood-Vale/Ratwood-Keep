@@ -15,7 +15,6 @@
 
 /datum/outfit/job/roguetown/adventurer/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -155,3 +154,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+
+/datum/outfit/job/roguetown/adventurer/cleric/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = TRUE
