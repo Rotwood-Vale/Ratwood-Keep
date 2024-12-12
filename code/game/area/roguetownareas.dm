@@ -448,13 +448,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 /area/rogue/indoors/town/bath
 	name = "Baths"
 	icon_state = "bath"
-	droning_sound = 'sound/music/area/bath.ogg'
+	droning_sound = 'sound/music/jukeboxes/tav4.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/bath
 /area/rogue/outdoors/exposed/bath
 	icon_state = "bath"
-	droning_sound = 'sound/music/area/bath.ogg'
+	droning_sound = 'sound/music/jukeboxes/tav4.ogg'
 
 /area/rogue/indoors/town/garrison
 	name = "Garrison"

@@ -510,3 +510,10 @@
 	desc = "This iron key should open harbor office, barracks and the watchtower."
 	icon_state = "spikekey"
 	lockid = "harbor"
+
+//Port Shop Key
+/obj/item/key/portshop
+	name = "port shop key"
+	desc = "This old key opens shop in port area."
+	icon_state = "rustkey"
+	lockid = "portshop"
