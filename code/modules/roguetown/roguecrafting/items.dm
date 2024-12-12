@@ -75,6 +75,15 @@
 	verbage_simple = "braid"
 	verbage = "braids"
 
+/datum/crafting_recipe/roguetown/net
+	name = "net"
+	result = /obj/item/net
+	craftdiff = 2
+	reqs = list(/obj/item/rope = 2,
+				/obj/item/natural/stone = 3)
+	verbage_simple = "braid"
+	verbage = "braids"
+
 /datum/crafting_recipe/roguetown/bowstring
 	name = "fiber bowstring"
 	result = /obj/item/natural/bowstring
@@ -575,6 +584,13 @@
 			/obj/item/grown/log/tree/stick = 1)
 /obj/item/rogueweapon/shovel/small/crafted
 	sellprice = 5
+
+/datum/crafting_recipe/roguetown/broom
+	name = "broom"
+	result = /obj/item/broom
+	reqs = list(/obj/item/natural/fibers = 1,
+			/obj/item/grown/log/tree/stick = 4)
+	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/book_crafting_kit
 	name = "book crafting kit"

@@ -1130,7 +1130,7 @@
 	desc = "A leather kettle-like helmet with a headlamp, fueled by magiks."
 	icon_state = "minerslamp"
 	var/on = FALSE
-	light_range = 4 //less than a torch; basically good for one person.
+	light_outer_range = 4 //less than a torch; basically good for one person.
 	light_power = 1
 	light_color = LIGHT_COLOR_ORANGE
 	light_system = MOVABLE_LIGHT
