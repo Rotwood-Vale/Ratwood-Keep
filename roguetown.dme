@@ -449,6 +449,7 @@
 #include "code\datums\actions\ninja.dm"
 
 #include "code\datums\actions\mobs\dragonbreath.dm"
+#include "code\datums\actions\mobs\dragon_swoop.dm"
 
 #include "code\datums\action.dm"
 
