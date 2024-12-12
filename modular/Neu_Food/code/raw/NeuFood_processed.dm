@@ -411,15 +411,15 @@
 		short_cooktime = (70 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
 		long_cooktime = (120 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/powder/salt))
-		if(!reagents.has_reagent(/datum/reagent/consumable/milk, 24))
+		if(!reagents.has_reagent(/datum/reagent/consumable/milk, 15))
 			to_chat(user, "<span class='warning'>Not enough milk.</span>")
 			return
 		to_chat(user, "<span class='warning'>Adding salt to the milk.</span>")
 		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 		if(do_after(user,2 SECONDS, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			reagents.remove_reagent(/datum/reagent/consumable/milk, 24)
-			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 24)		
+			reagents.remove_reagent(/datum/reagent/consumable/milk, 15)
+			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 15)		
 			qdel(I)
 
 /*	............   Churning butter   ................ */
@@ -427,14 +427,14 @@
 	if(user.mind)
 		long_cooktime = (200 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*20))	
 	if(istype(I, /obj/item/kitchen/spoon))
-		if(!reagents.has_reagent(/datum/reagent/consumable/milk/salted, 16))
+		if(!reagents.has_reagent(/datum/reagent/consumable/milk/salted, 15))
 			to_chat(user, "<span class='warning'>Not enough salted milk.</span>")
 			return
 		user.visible_message("<span class='info'>[user] churns butter...</span>")
 		playsound(get_turf(user), 'modular/Neu_Food/sound/churn.ogg', 100, TRUE, -1)
 		if(do_after(user,long_cooktime, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 16)
+			reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 15)
 			new /obj/item/reagent_containers/food/snacks/butter(drop_location())
 		return
 	..()
@@ -487,12 +487,12 @@
 	if(user.mind)
 		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/natural/cloth))
-		if(reagents.has_reagent(/datum/reagent/consumable/milk/salted, 6))
+		if(reagents.has_reagent(/datum/reagent/consumable/milk/salted, 5))
 			user.visible_message("<span class='info'>[user] strains fresh cheese...</span>")
 			playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 			if(do_after(user,long_cooktime, target = src))
 				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 6)
+				reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 5)
 				new /obj/item/reagent_containers/food/snacks/rogue/cheese(drop_location())
 
 		var/obj/item/natural/cloth/T = I
