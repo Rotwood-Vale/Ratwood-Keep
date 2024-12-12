@@ -160,7 +160,7 @@
 /area/rogue/under/town/basement)
 "adQ" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	locked = 1;
 	name = "Secret Harbour"
 	},
@@ -3267,6 +3267,13 @@
 "cuk" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors)
+"cup" = (
+/obj/structure/stairs{
+	dir = 8;
+	icon_state = "stairs"
+	},
+/turf/open/floor/rogue/carpet/lord/right,
+/area/rogue/indoors/shelter/town/harbor)
 "cuw" = (
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/carpet,
@@ -4479,8 +4486,12 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/harbor)
 "dkH" = (
-/obj/structure/fluff/walldeco/wantedposter,
-/turf/open/floor/rogue/carpet/lord/center,
+/obj/structure/mineral_door/bars{
+	lockid = "merc";
+	locked = 1;
+	name = "Cell"
+	},
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/harbor)
 "dkL" = (
 /obj/structure/rack/rogue,
@@ -4802,6 +4813,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
+"dtR" = (
+/obj/structure/fluff/walldeco/wantedposter,
+/turf/open/floor/rogue/carpet/lord/left,
+/area/rogue/indoors/shelter/town/harbor)
 "dud" = (
 /obj/structure/rack/rogue,
 /obj/item/rope/chain,
@@ -5331,7 +5346,7 @@
 /area/rogue/indoors/town/garrison)
 "dPq" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "Criminals Quarters";
 	locked = 1
 	},
@@ -6172,7 +6187,7 @@
 /area/rogue/indoors/town/dwarfin)
 "ept" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "Whitevein Lounge";
 	dir = 8;
 	locked = 1
@@ -7128,7 +7143,7 @@
 /area/rogue/indoors)
 "eVP" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	locked = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -7748,7 +7763,7 @@
 /area/rogue/outdoors/rtfield)
 "fpO" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "PRIVATE Quarters";
 	locked = 1
 	},
@@ -8536,6 +8551,9 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/roofs)
+"fRM" = (
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/town/harbor)
 "fRN" = (
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/shop)
@@ -9572,7 +9590,7 @@
 "gHH" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "Bath Room 02"
 	},
 /turf/open/floor/rogue/herringbone,
@@ -11667,7 +11685,7 @@
 /area/rogue/outdoors/rtfield)
 "igv" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	locked = 1;
 	name = "Negotiations"
 	},
@@ -13195,6 +13213,10 @@
 	lockid = "harbor"
 	},
 /turf/open/floor/rogue/cobble,
+/area/rogue/indoors/shelter/town/harbor)
+"jhn" = (
+/obj/structure/bars,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/harbor)
 "jhy" = (
 /obj/structure/table/vtable/v2,
@@ -17072,7 +17094,7 @@
 /area/rogue/under/town/basement)
 "mbA" = (
 /obj/structure/mineral_door/wood/donjon{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "Whitevein Lounge";
 	dir = 1;
 	locked = 1
@@ -19368,7 +19390,7 @@
 /area/rogue/outdoors/town/harbor)
 "nKv" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden"
+	lockid = "nightman"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/bath)
@@ -19514,7 +19536,7 @@
 /area/rogue/outdoors/town/harbor)
 "nPr" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "Bath Wench Quarters"
 	},
 /turf/open/floor/rogue/cobble/mossy,
@@ -19634,7 +19656,7 @@
 /area/rogue/indoors)
 "nTJ" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "PRIVATE Quarters";
 	locked = 1
 	},
@@ -22625,6 +22647,10 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/mountains)
+"pTg" = (
+/obj/effect/decal/cleanable/vomit/old,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/town/harbor)
 "pTG" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -23018,7 +23044,7 @@
 /area/rogue/indoors/town/tavern)
 "qkA" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "Sewer Room";
 	locked = 1
 	},
@@ -23110,6 +23136,13 @@
 "qnx" = (
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors/shelter/town/harbor)
+"qnC" = (
+/obj/structure/stairs{
+	dir = 8;
+	icon_state = "stairs"
+	},
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/harbor)
 "qnQ" = (
 /obj/structure/fluff/railing/border{
@@ -23693,7 +23726,7 @@
 "qJO" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	dir = 8;
 	name = "Bath Room 01"
 	},
@@ -24335,7 +24368,7 @@
 /area/rogue/under/town/basement)
 "rkY" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "Borrowed goods";
 	locked = 1
 	},
@@ -26773,7 +26806,7 @@
 "sVs" = (
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "Dungeon Room";
 	dir = 1
 	},
@@ -27061,7 +27094,7 @@
 /area/rogue/indoors/town/bath)
 "tei" = (
 /obj/structure/mineral_door/wood/red{
-	lockid = "nightmaiden";
+	lockid = "nightman";
 	name = "Bath Wench Quarters";
 	locked = 1
 	},
@@ -28273,6 +28306,10 @@
 	icon_state = "plating2"
 	},
 /area/rogue/indoors/town/shop)
+"tTd" = (
+/obj/structure/pillory/town_square,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/town/harbor)
 "tTh" = (
 /obj/machinery/light/roguestreet/orange,
 /turf/open/floor/rogue/blocks,
@@ -29387,8 +29424,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/town/harbor)
 "uHa" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/carpet/lord/center,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter/town/harbor)
 "uHg" = (
 /obj/machinery/light/rogue/wallfire/candle{
@@ -34536,6 +34572,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"yiX" = (
+/obj/structure/bed/rogue/inn/hay,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/town/harbor)
 "yje" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -119766,9 +119806,9 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
+clJ
+clJ
+clJ
 bpD
 bpD
 bpD
@@ -120197,11 +120237,11 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+clJ
+clJ
+qnC
+clJ
+clJ
 bpD
 bpD
 bpD
@@ -120629,11 +120669,11 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+clJ
+uHa
+fRM
+uHa
+clJ
 bpD
 bpD
 bpD
@@ -121061,11 +121101,11 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+clJ
+fRM
+fRM
+fRM
+clJ
 bpD
 bpD
 bpD
@@ -121493,11 +121533,11 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+clJ
+jhn
+dkH
+jhn
+clJ
 bpD
 bpD
 bpD
@@ -121925,11 +121965,11 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+clJ
+tTd
+fRM
+pTg
+clJ
 bpD
 bpD
 bpD
@@ -122357,11 +122397,11 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+clJ
+uHa
+yiX
+uHa
+clJ
 bpD
 bpD
 bpD
@@ -122789,11 +122829,11 @@ bpD
 bpD
 bpD
 bpD
-bpD
-bpD
-bpD
-bpD
-bpD
+clJ
+clJ
+clJ
+clJ
+clJ
 bpD
 bpD
 bpD
@@ -228200,7 +228240,7 @@ otl
 hkm
 otl
 clJ
-dnO
+dtR
 xZO
 dPj
 dnO
@@ -228628,9 +228668,9 @@ hkm
 hkm
 hkm
 otl
-nYV
-nYV
-nYV
+clJ
+clJ
+clJ
 clJ
 lOH
 gBx
@@ -229064,7 +229104,7 @@ nYV
 nYV
 nYV
 clJ
-uHa
+lOH
 jMG
 eDv
 ijD
@@ -229496,7 +229536,7 @@ nYV
 nYV
 nYV
 clJ
-dkH
+lOH
 ycb
 jZn
 ijD
@@ -229928,7 +229968,7 @@ otl
 nYV
 nYV
 clJ
-akz
+cup
 kKA
 xBV
 akz
@@ -230356,18 +230396,18 @@ hkm
 hkm
 hkm
 otl
-qMC
+otl
 nYV
 nYV
 clJ
-clJ
+sPC
 clJ
 clJ
 qjN
 clJ
 clJ
 clJ
-clJ
+nYV
 qMC
 ksm
 ksm
@@ -230791,15 +230831,15 @@ otl
 otl
 nYV
 nYV
-nYV
-nYV
+clJ
+clJ
 clJ
 acC
-bos
 bos
 xSC
 vFA
 clJ
+nYV
 nYV
 ksm
 eVz
@@ -231230,8 +231270,8 @@ bos
 bos
 bos
 bos
-bos
 clJ
+nYV
 nYV
 lUg
 xox
@@ -231662,8 +231702,8 @@ bos
 lrU
 bos
 bos
-bos
 clJ
+nYV
 nYV
 lUg
 gut
@@ -232094,8 +232134,8 @@ bos
 bos
 bos
 bos
-bos
 clJ
+nYV
 nYV
 lUg
 kzX
@@ -232525,9 +232565,9 @@ clJ
 oBX
 lGa
 fNo
-bos
 ddQ
 clJ
+nYV
 nYV
 lUg
 ryJ
@@ -232959,7 +232999,7 @@ clJ
 clJ
 clJ
 clJ
-clJ
+nYV
 nYV
 lUg
 bjS
