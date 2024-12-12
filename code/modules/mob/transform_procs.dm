@@ -276,32 +276,6 @@
 	. = new_corgi
 	qdel(src)
 
-/mob/living/carbon/proc/gorillize()
-	if(notransform)
-		return
-	notransform = TRUE
-	Paralyze(1, ignore_canstun = TRUE)
-
-	SSblackbox.record_feedback("amount", "gorillas_created", 1)
-
-	var/Itemlist = get_equipped_items(TRUE)
-	Itemlist += held_items
-	for(var/obj/item/W in Itemlist)
-		dropItemToGround(W, TRUE)
-
-	regenerate_icons()
-	icon = null
-	invisibility = INVISIBILITY_MAXIMUM
-	var/mob/living/simple_animal/hostile/gorilla/new_gorilla = new (get_turf(src))
-	new_gorilla.a_intent = INTENT_HARM
-	if(mind)
-		mind.transfer_to(new_gorilla)
-	else
-		new_gorilla.key = key
-	to_chat(new_gorilla, "<B>I are now a gorilla. Ooga ooga!</B>")
-	. = new_gorilla
-	qdel(src)
-
 /mob/living/carbon/human/Animalize()
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
@@ -370,8 +344,6 @@
 		return 1
 	if(ispath(MP, /mob/living/simple_animal/pet/dog/corgi))
 		return 1
-	if(ispath(MP, /mob/living/simple_animal/mouse))
-		return 1 //It is impossible to pull up the player panel for mice (Fixed! - Nodrak)
 	if(ispath(MP, /mob/living/simple_animal/parrot))
 		return 1 //Parrots are no longer unfinished! -Nodrak
 
