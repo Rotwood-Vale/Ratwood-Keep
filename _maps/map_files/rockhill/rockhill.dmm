@@ -10813,6 +10813,16 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
+"ilv" = (
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	pixel_x = 4
+	},
+/obj/structure/treating_furnace,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/dwarfin)
 "ily" = (
 /obj/structure/roguemachine/merchantvend{
 	density = 0;
@@ -19259,6 +19269,16 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
+"oxe" = (
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	pixel_x = 4
+	},
+/obj/structure/fluff/grindwheel,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/dwarfin)
 "oxp" = (
 /obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/dirt,
@@ -293420,8 +293440,8 @@ fyd
 dMk
 uAe
 bdS
-bdS
-bdS
+oxe
+ilv
 hrD
 aKi
 kHO
