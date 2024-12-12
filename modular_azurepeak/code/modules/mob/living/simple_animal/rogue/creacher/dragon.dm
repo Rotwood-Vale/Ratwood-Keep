@@ -87,11 +87,11 @@ Greatwyrm (?)
 	ADD_TRAIT(src, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
 
-	var/datum/action/cooldown/mob_cooldown/dragon_swoop/swoop = new(src)
+	var/datum/action/cooldown/mob_cooldown/dragon_leap/leap = new(src)
 
-	swoop.Grant(src)
+	leap.Grant(src)
 
-	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, swoop)
+	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, leap)
 	
 	//ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC) // Need a weakness
 
@@ -180,7 +180,7 @@ Greatwyrm (?)
 /datum/intent/simple/bite/dragon_bite //the model/hitbox is too big so it never got to attack. Increase reach
 	reach = 2
 	swingdelay = 2
-	clickcd = CLICK_CD_MELEE * 0.75 //It is a dragon so it bites slightly faster
+	clickcd = CLICK_CD_MELEE * 0.90 //It is a dragon so it bites slightly faster
 	penfactor = 60 // It is a dragon so it bites hard
 
 
