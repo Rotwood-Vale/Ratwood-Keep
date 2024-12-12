@@ -427,14 +427,14 @@
 	if(user.mind)
 		long_cooktime = (200 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*20))	
 	if(istype(I, /obj/item/kitchen/spoon))
-		if(!reagents.has_reagent(/datum/reagent/consumable/milk/salted, 20))
+		if(!reagents.has_reagent(/datum/reagent/consumable/milk/salted, 16))
 			to_chat(user, "<span class='warning'>Not enough salted milk.</span>")
 			return
 		user.visible_message("<span class='info'>[user] churns butter...</span>")
 		playsound(get_turf(user), 'modular/Neu_Food/sound/churn.ogg', 100, TRUE, -1)
 		if(do_after(user,long_cooktime, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 20)
+			reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 16)
 			new /obj/item/reagent_containers/food/snacks/butter(drop_location())
 		return
 	..()
@@ -487,12 +487,12 @@
 	if(user.mind)
 		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/natural/cloth))
-		if(reagents.has_reagent(/datum/reagent/consumable/milk/salted, 24))
+		if(reagents.has_reagent(/datum/reagent/consumable/milk/salted, 6))
 			user.visible_message("<span class='info'>[user] strains fresh cheese...</span>")
 			playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 			if(do_after(user,long_cooktime, target = src))
 				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 8)
+				reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 6)
 				new /obj/item/reagent_containers/food/snacks/rogue/cheese(drop_location())
 
 		var/obj/item/natural/cloth/T = I
