@@ -1989,6 +1989,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/rtfield)
+"btv" = (
+/obj/structure/fermenting_barrel/random/water,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/bath)
 "btA" = (
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -2285,10 +2289,6 @@
 /obj/structure/fluff/grindwheel,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/shelter/town)
-"bEr" = (
-/obj/structure/fermenting_barrel/random/water,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town/bath)
 "bER" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/shortshirt,
@@ -21523,8 +21523,8 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "pac" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/obj/structure/bookcase/random,
+/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "pai" = (
 /obj/structure/mineral_door/wood{
@@ -236460,9 +236460,9 @@ lUg
 njY
 jGU
 imf
-mWg
-mWg
-mWg
+pac
+pac
+pac
 ksm
 kzX
 jIa
@@ -236892,9 +236892,9 @@ dMF
 ldh
 iBn
 oXU
-mWg
-eVz
-eVz
+pac
+oXU
+oXU
 ksm
 kzX
 rFF
@@ -237326,7 +237326,7 @@ oXU
 oXU
 eez
 kzX
-eVz
+oXU
 adQ
 khT
 jIa
@@ -237756,9 +237756,9 @@ oXU
 vlM
 lqQ
 bht
-mWg
-eVz
 pac
+oXU
+nZd
 ksm
 khT
 jIa
@@ -350514,7 +350514,7 @@ xvc
 oXU
 oXU
 oXU
-bEr
+btv
 hNe
 dVx
 dVx
