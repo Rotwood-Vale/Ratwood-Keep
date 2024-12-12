@@ -5712,7 +5712,6 @@
 /obj/item/key/blacksmith,
 /obj/item/key/blacksmith,
 /obj/item/key/tavern,
-/obj/item/key/nightmaiden,
 /obj/item/key/bog_gatehouse,
 /obj/item/key/town_armory,
 /obj/item/key/town_armory,
@@ -11767,13 +11766,6 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-"ily" = (
-/obj/structure/roguemachine/merchantvend{
-	density = 0;
-	pixel_y = 32
-	},
-/turf/open/floor/rogue/concrete,
-/area/rogue/indoors/town/shop)
 "ilS" = (
 /obj/structure/bars/passage/steel{
 	redstone_id = "dungeonpit"
@@ -16525,10 +16517,6 @@
 /obj/structure/closet/crate/roguecloset/inn/south{
 	pixel_y = 6
 	},
-/obj/item/key/nightmaiden,
-/obj/item/key/nightmaiden,
-/obj/item/key/nightmaiden,
-/obj/item/key/nightmaiden,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
 "lGD" = (
@@ -328479,7 +328467,7 @@ hUt
 toW
 toW
 toW
-ily
+pKQ
 adK
 pKQ
 pKQ
