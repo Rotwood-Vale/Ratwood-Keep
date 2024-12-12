@@ -4481,7 +4481,7 @@
 "dkH" = (
 /obj/structure/mineral_door/wood/red{
 	lockid = "nightman";
-	name = "Bath Wench Quarters";
+	name = "Prostitutes Quarters";
 	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
@@ -10333,6 +10333,10 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"hkA" = (
+/obj/structure/fermenting_barrel/random/water,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/bath)
 "hkI" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -10391,6 +10395,7 @@
 	dir = 4;
 	icon_state = "stonestairs"
 	},
+/obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "hnw" = (
@@ -12312,6 +12317,16 @@
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"iCc" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood3"
+	},
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/bath)
 "iCj" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/rogueweapon/huntingknife/elvish/drow,
@@ -21506,8 +21521,8 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "pac" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/obj/structure/bookcase/random,
+/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "pai" = (
 /obj/structure/mineral_door/wood{
@@ -26679,6 +26694,7 @@
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
+/obj/structure/roguemachine/mail/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
 "sSW" = (
@@ -132315,7 +132331,7 @@ qMQ
 oFG
 lUg
 fgs
-fgs
+jKu
 sCJ
 ncT
 dYs
@@ -132747,7 +132763,7 @@ qMQ
 oFG
 sVs
 fgs
-fgs
+iCc
 sCJ
 sCJ
 sCJ
@@ -236435,9 +236451,9 @@ lUg
 njY
 jGU
 imf
-mWg
-mWg
-mWg
+pac
+pac
+pac
 ksm
 kzX
 jIa
@@ -236867,9 +236883,9 @@ dMF
 ldh
 iBn
 oXU
-mWg
-eVz
-eVz
+pac
+oXU
+oXU
 ksm
 kzX
 rFF
@@ -237301,7 +237317,7 @@ oXU
 oXU
 eez
 kzX
-eVz
+oXU
 adQ
 khT
 jIa
@@ -237731,9 +237747,9 @@ oXU
 vlM
 lqQ
 bht
-mWg
-eVz
 pac
+oXU
+nZd
 ksm
 khT
 jIa
@@ -350055,7 +350071,7 @@ qrz
 rbI
 xLM
 oXU
-hnt
+lUg
 hnt
 lUg
 lUg
@@ -350489,7 +350505,7 @@ xvc
 oXU
 oXU
 oXU
-hpu
+hkA
 hNe
 dVx
 dVx
