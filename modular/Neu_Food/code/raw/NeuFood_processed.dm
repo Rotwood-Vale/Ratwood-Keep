@@ -411,15 +411,15 @@
 		short_cooktime = (70 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
 		long_cooktime = (120 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/powder/salt))
-		if(!reagents.has_reagent(/datum/reagent/consumable/milk, 24))
+		if(!reagents.has_reagent(/datum/reagent/consumable/milk, 32))
 			to_chat(user, "<span class='warning'>Not enough milk.</span>")
 			return
 		to_chat(user, "<span class='warning'>Adding salt to the milk.</span>")
 		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 		if(do_after(user,2 SECONDS, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			reagents.remove_reagent(/datum/reagent/consumable/milk, 24)
-			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 24)		
+			reagents.remove_reagent(/datum/reagent/consumable/milk, 32)
+			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 32)		
 			qdel(I)
 
 /*	............   Churning butter   ................ */
