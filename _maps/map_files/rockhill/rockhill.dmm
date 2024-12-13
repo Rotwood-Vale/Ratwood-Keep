@@ -10213,6 +10213,16 @@
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"hjI" = (
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "tablewood2"
+	},
+/obj/item/gun/ballistic/arquebus_pistol,
+/obj/item/powderflask,
+/obj/item/book/rogue/secret/ledger,
+/turf/open/floor/carpet/stellar,
+/area/rogue/outdoors/town/harbor)
 "hjO" = (
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/rogue/tile/checker,
@@ -451737,7 +451747,7 @@ oJM
 oJM
 jWo
 wnm
-xRD
+hjI
 oJM
 iXq
 iXq
