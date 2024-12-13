@@ -24,7 +24,6 @@
 		buckled.unbuckle_mob(src,force=1)
 
 	GLOB.mob_living_list -= src
-	QDEL_LIST(diseases)
 	for(var/s in ownedSoullinks)
 		var/datum/soullink/S = s
 		S.ownerDies(FALSE)
