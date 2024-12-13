@@ -12697,7 +12697,9 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "luM" = (
-/obj/structure/pillory,
+/obj/structure/pillory{
+	lockid = list("church")
+	},
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/town)
 "lvh" = (
