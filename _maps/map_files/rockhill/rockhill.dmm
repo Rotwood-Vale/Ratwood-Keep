@@ -263,6 +263,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 5
 	},
+/obj/effect/landmark/start/grabber,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "ajl" = (
@@ -4733,10 +4734,8 @@
 "dpK" = (
 /obj/structure/telescope,
 /obj/effect/sunlight,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/shop)
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors/shelter/town/harbor)
 "dpP" = (
 /turf/closed/mineral/rogue/salt,
 /area/rogue/under/cavewet/bogcaves)
@@ -14950,15 +14949,6 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/manor)
-"kvT" = (
-/obj/structure/lever/wall{
-	dir = 4;
-	redstone_id = "merchroofshutt"
-	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/shop)
 "kwa" = (
 /obj/item/clothing/suit/roguetown/shirt/robe/noc,
 /turf/open/floor/rogue/churchmarble,
@@ -17423,12 +17413,6 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-"mpL" = (
-/obj/machinery/light/rogue/torchholder/c,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/shop)
 "mpP" = (
 /obj/structure/roguewindow/openclose{
 	dir = 8
@@ -19667,13 +19651,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
-"nWE" = (
-/obj/structure/roguemachine/merchantvend{
-	density = 0;
-	pixel_y = 32
-	},
-/turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/town/harbor)
 "nWI" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/outdoors/town/roofs)
@@ -20516,19 +20493,12 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/tavern)
 "owa" = (
-/obj/structure/stairs{
-	dir = 4
-	},
 /obj/structure/fluff/railing/wood{
 	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
+	pixel_y = -1
 	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/shop)
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/shelter/town/harbor)
 "owb" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -21259,16 +21229,6 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
-"oSR" = (
-/obj/structure/mineral_door/wood{
-	icon_state = "wcv";
-	locked = 1;
-	lockid = "shop"
-	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/shop)
 "oTD" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town)
@@ -25438,15 +25398,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/bog)
-"sdn" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	layer = 2.7;
-	pixel_x = 1;
-	pixel_y = 7
-	},
-/turf/open/transparent/openspace,
-/area/rogue/indoors/town/shop)
 "sdo" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -26003,9 +25954,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/town/harbor)
 "swZ" = (
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
+/turf/closed/wall/mineral/rogue/roofwall/center,
 /area/rogue/indoors/town/shop)
 "sxn" = (
 /obj/structure/bed/rogue/shit,
@@ -30560,10 +30509,6 @@
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
-"vBq" = (
-/obj/effect/landmark/start/grabber,
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/outdoors/town/harbor)
 "vBD" = (
 /obj/structure/chair/wood/rogue{
 	dir = 1
@@ -33367,6 +33312,7 @@
 	pixel_y = 22;
 	pixel_x = 9
 	},
+/obj/effect/landmark/start/grabber,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "xAL" = (
@@ -338605,7 +338551,7 @@ nhZ
 btI
 btI
 btI
-vBq
+btI
 btI
 vmf
 oME
@@ -339037,7 +338983,7 @@ mHV
 mHV
 uZn
 cEd
-vBq
+btI
 btI
 iJd
 oME
@@ -339468,7 +339414,7 @@ uZn
 iXq
 iXq
 uZn
-nWE
+xjC
 xjC
 uZn
 uZn
@@ -546467,12 +546413,12 @@ xAt
 qls
 qls
 rqp
-yho
-fmR
-fmR
-fmR
-yho
-yho
+swZ
+swZ
+swZ
+swZ
+swZ
+rbt
 rOt
 xAt
 xAt
@@ -546899,7 +546845,7 @@ lLa
 qls
 qls
 rqp
-fmR
+swZ
 swZ
 swZ
 swZ
@@ -547331,12 +547277,12 @@ lLa
 qls
 qls
 rqp
-fmR
-mpL
 swZ
 swZ
-yho
-yho
+swZ
+swZ
+swZ
+rbt
 rOt
 rOt
 xAt
@@ -547763,11 +547709,11 @@ lLa
 qls
 qls
 rqp
-fmR
 swZ
 swZ
-kvT
-fmR
+swZ
+swZ
+swZ
 rbt
 rOt
 rOt
@@ -548195,11 +548141,11 @@ xyI
 qls
 qls
 rqp
-fmR
-eSt
-oSR
-eSt
-yho
+swZ
+swZ
+swZ
+swZ
+swZ
 rbt
 rOt
 rOt
@@ -548627,11 +548573,11 @@ nib
 qls
 qls
 rqp
-fmR
 swZ
 swZ
-sdn
-fmR
+swZ
+swZ
+swZ
 rbt
 rOt
 rOt
@@ -549059,11 +549005,11 @@ nib
 qls
 qls
 rqp
-fmR
-mpL
 swZ
-owa
-fmR
+swZ
+swZ
+swZ
+swZ
 rbt
 rOt
 rOt
@@ -549491,11 +549437,11 @@ nib
 qls
 qls
 rqp
-fmR
-dpK
 swZ
 swZ
-fmR
+swZ
+swZ
+swZ
 rbt
 rOt
 rOt
@@ -549923,11 +549869,11 @@ xAt
 qls
 qls
 rqp
-yho
-fmR
-fmR
-fmR
-yho
+swZ
+swZ
+swZ
+swZ
+swZ
 rbt
 rOt
 xAt
@@ -572752,8 +572698,8 @@ iXq
 iXq
 iXq
 iXq
-iIs
-cIv
+owa
+dpK
 cIv
 cIv
 cIv

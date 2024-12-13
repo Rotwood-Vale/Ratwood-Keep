@@ -11,7 +11,8 @@
 	tutorial = "A long retired captain, \
 	you have seen everything the many ports of the known world have to offer. \
 	During the dae, you comfortably sit back and manage the flow of goods of the local harbor, \
-	but at night your mind looks to the south, to the great maritime cities and exotic markets of Grenzelhoft and Zybantium, now fallen to the Rot."
+	but at night your mind looks to the south, to the great maritime cities and exotic markets of Grenzelhoft and Zybantium, now fallen to the Rot. \
+	You work closely with the merchant, ensuring the safety of the harbor and the goods that pass through it."
 
 	display_order = JDO_HARBORMASTER
 	whitelist_req = FALSE

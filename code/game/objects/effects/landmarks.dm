@@ -273,7 +273,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/grabber
-	name = "Thug"
+	name = "Henchman"
 	icon_state = "arrow"
 
 
