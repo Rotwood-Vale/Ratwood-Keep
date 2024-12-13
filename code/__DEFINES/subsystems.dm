@@ -192,7 +192,7 @@
 //! ## Overlays subsystem
 // A reasonable number of maximum overlays an object needs
 // If you think you need more, rethink it
-#define MAX_ATOM_OVERLAYS 200
+#define MAX_ATOM_OVERLAYS 250
 
 ///Compile all the overlays for an atom from the cache lists
 #define POST_OVERLAY_CHANGE(changed_on) \
