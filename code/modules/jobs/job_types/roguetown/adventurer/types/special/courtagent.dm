@@ -14,4 +14,6 @@
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
 			GLOB.court_agents += H.real_name
+			if(H.mind)
+				H.mind.special_role = "Court Agent" //For obfuscating them in the Actors list: _job.dm L:216
 			..()
