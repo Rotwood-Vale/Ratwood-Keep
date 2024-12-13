@@ -203,7 +203,7 @@ SUBSYSTEM_DEF(family)
 /datum/family/proc/getRelations(var/mob/living/carbon/human/member,var/rel_type) //Returns all relations of the specified type.
 	var/list/rels = list()
 	for(var/datum/relation/R in relations)
-		if(R.holder == member && (!rel_type || R.type == rel_type))
+		if(R.holder == WEAKREF(member) && (!rel_type || R.rel_type == rel_type))
 			rels += R
 
 	return rels

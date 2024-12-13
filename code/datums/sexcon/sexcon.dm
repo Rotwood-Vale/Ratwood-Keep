@@ -252,6 +252,8 @@
 	if(HAS_TRAIT(user, TRAIT_BAOTHA_CURSE))
 		user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
 	SSticker.cums++
+	cuckold_check()
+
 
 /datum/sex_controller/proc/after_milking()
 	set_arousal(80)
@@ -803,10 +805,7 @@
 		if(SEX_FORCE_EXTREME)
 			return "<span class='love_extreme'>[string]</span>"
 
-
 /datum/sex_controller/proc/cuckold_check()
-	if(!target || target == user)
-		return
 	//First, check if the target has a family.
 	var/datum/family/F = target.getFamily(TRUE)
 	if(!F)
