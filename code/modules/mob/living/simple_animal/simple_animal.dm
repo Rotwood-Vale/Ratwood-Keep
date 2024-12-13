@@ -883,14 +883,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 //		eat_plants()
 
 /mob/living/simple_animal/proc/eat_plants()
-//	if(food >= 10 MINUTES)
-//		return
-
-//	var/obj/structure/spacevine/SV = locate(/obj/structure/spacevine) in loc
-//	if(SV)
-//		SV.eat(src)
-//		eaten = TRUE
-//		food = min(food + 5 MINUTES, 10 MINUTES)
 
 	var/obj/item/reagent_containers/food/I = locate(/obj/item/reagent_containers/food) in loc
 	if(is_type_in_list(I, food_type))
