@@ -40,7 +40,7 @@
 		pants = /obj/item/clothing/under/roguetown/tights/sailor
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		beltr = /obj/item/rogueweapon/mace/woodclub
-		beltl = /obj/item/storage/keyring/shophand
+		beltl = /obj/item/storage/keyring/nightman
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		if(prob(30))
