@@ -10,11 +10,13 @@
 	var/fire_sound = 'sound/magic/fireball.ogg'
 	/// Time to wait between spawning each fire turf
 	var/fire_delay = 0.25 SECONDS
+	var/cast_time = 2 SECONDS
 	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
 
 /datum/action/cooldown/mob_cooldown/fire_breath/Activate(atom/target_atom)
 	disable_cooldown_actions()
-	attack_sequence(target_atom)
+	owner.visible_message(span_alert("[owner] inhales deeply, warmth emanating from their form."))
+	addtimer(CALLBACK(src, PROC_REF(attack_sequence), target_atom), cast_time)
 	StartCooldown()
 	enable_cooldown_actions()
 	return TRUE
@@ -43,9 +45,9 @@
 	for(var/turf/target_turf in burn_turfs)
 		if (target_turf.is_blocked_turf(exclude_mobs = TRUE))
 			var/exp_heavy = 0
-			var/exp_light = 1
-			var/exp_flash = 1
-			var/exp_fire = 1
+			var/exp_light = 2
+			var/exp_flash = 3
+			var/exp_fire = 3
 			explosion(target_turf, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
 			return
 		burn_turf(target_turf, hit_list, owner)

@@ -1,4 +1,8 @@
-/datum/ai_controller/dragon //todo: non-breath dragon can be kited over lava crix
+/*
+	Melee dragon can 'leap'
+	Caster dragon can emit a fire cone. Technically it also has leap but AI won't use it.
+*/
+/datum/ai_controller/dragon
 	movement_delay = 0.5 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -11,9 +15,8 @@
 
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/simple_find_target/closest,
-		/datum/ai_planning_subtree/targeted_mob_ability,
+		/datum/ai_planning_subtree/targeted_mob_ability/continue_planning,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
-		/datum/ai_planning_subtree/self_recovery
-		//datum/ai_planning_subtree/move_to_cardinal,
+		/datum/ai_planning_subtree/simple_self_recovery/dragon
 
 	)

@@ -46,4 +46,5 @@
 
 /datum/action/cooldown/mob_cooldown/dragon_leap/proc/leapt_on_target(mob/living/victim)
 	owner.visible_message(span_alert("[owner] leaps into the air and lands atop [victim]!"))
-	victim.OffBalance(30)
+	if(!QDELETED(victim))
+		victim.OffBalance(30)

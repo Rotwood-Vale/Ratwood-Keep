@@ -449,7 +449,7 @@
 #include "code\datums\actions\ninja.dm"
 
 #include "code\datums\actions\mobs\dragonbreath.dm"
-#include "code\datums\actions\mobs\dragon_swoop.dm"
+#include "code\datums\actions\mobs\dragon_leap.dm"
 
 #include "code\datums\action.dm"
 
@@ -493,6 +493,7 @@
 #include "code\datums\ai\controllers\haunt.dm"
 #include "code\datums\ai\controllers\minotaur.dm"
 #include "code\datums\ai\controllers\mole.dm"
+#include "code\datums\ai\controllers\mossback.dm"
 #include "code\datums\ai\controllers\mudcrab.dm"
 #include "code\datums\ai\controllers\orc.dm"
 #include "code\datums\ai\controllers\rous.dm"

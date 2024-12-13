@@ -1,3 +1,5 @@
+/*NOT CURRENTLY IN USE
+
 /obj/projectile/magic/aoe/dragon_breath
     name = "dragon's breath"
     icon_state = "fireball"
@@ -59,3 +61,4 @@
 	desc = "The breath of an elder dragon. It's hot!"
 	chargetime = 20
 	charge_max = 15 SECONDS
+*/

@@ -1,5 +1,5 @@
 // Move to a position further away from your current target
-//Could possibly redo if we lose target to run away from their last known coordinates crix
+//todo: Could possibly redo if we lose target to run away from their last known coordinates
 /datum/ai_behavior/run_away_from_target
 	required_distance = 0
 	action_cooldown = 0

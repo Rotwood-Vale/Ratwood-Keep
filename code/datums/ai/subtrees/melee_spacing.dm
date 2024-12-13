@@ -15,7 +15,7 @@
 	var/atom/target = controller.blackboard[target_key]
 	var/mob/living/living_pawn = controller.pawn
 
-	if (!isliving(target))// || !can_see(controller.pawn, target, view_distance)) //Chase into vision if need be. Keep pressure on
+	if (!isliving(target))// || !can_see(controller.pawn, target, view_distance)) //Chase into vision if need be.
 		return
 	
 	var/range = get_dist(living_pawn, target)
@@ -23,7 +23,7 @@
 	if ((range < minimum_distance) || (living_pawn.next_move > world.time)) // take a step back -- buy time till next attack
 		controller.queue_behavior(run_away_behavior, target_key, minimum_distance)
 		return
-	var/canReach = living_pawn.CanReach(target)
+	var/canReach = living_pawn.Adjacent(target) || living_pawn.CanReach(target) //Check adjacency first because (probably) cheaper
 	if ((range > maximum_distance) || (living_pawn.next_move < world.time) || !canReach) // next attack ready or target too far for us
 		if(!canReach) //living_pawn.a_intent.reach if we can't raech then move into melee - probably on a corner
 			minimum_distance = 1

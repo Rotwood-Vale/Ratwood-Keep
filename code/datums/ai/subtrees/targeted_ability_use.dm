@@ -1,4 +1,6 @@
 /// Attempts to use a mob ability on a target
+///todo: possibly go back to using spells than actions
+///use continue planning to continue the subtree iterations
 /datum/ai_planning_subtree/targeted_mob_ability
 	/// Blackboard key for the ability
 	var/ability_key = BB_TARGETED_ACTION
@@ -21,5 +23,7 @@
 	controller.queue_behavior(use_ability_behaviour, ability_key, target_key)
 	if (finish_planning)
 		return SUBTREE_RETURN_FINISH_PLANNING
+	return
+	
 /datum/ai_planning_subtree/targeted_mob_ability/continue_planning
 	finish_planning = FALSE

@@ -486,8 +486,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 			return FALSE
 		if(current.opacity)
 			return FALSE
-		for(var/thing in current) //crix - probably can do this better
-			var/atom/A = thing
+		for(var/atom/A in current)
 			if(A.opacity)
 				return FALSE
 		current = get_step_towards(current, target_turf)

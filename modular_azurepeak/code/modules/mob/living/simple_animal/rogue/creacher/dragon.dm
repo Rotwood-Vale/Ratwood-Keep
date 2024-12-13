@@ -22,7 +22,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 800
 	maxHealth = 800
-	melee_damage_lower = 45
+	melee_damage_lower = 50
 	melee_damage_upper = 70
 	vision_range = 7
 	aggro_vision_range = 9
@@ -53,15 +53,12 @@
 
 /*
 Working with this:
-Wyrm/Whelp (no fire, quite weak, probably a summon for broodmother)
-Young (regular) (fire but long CD)
+Wyrm/Whelp (no fire, quite weak, probably a summon for broodmother at some point)
+Young (regular) (leap)
 Adult (broodmother) (fire short CD)
 Ancient (?)
 Greatwyrm (?)
 */
-
-//todo: code cleanup
-
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/Initialize()
 	. = ..()
@@ -188,10 +185,10 @@ Greatwyrm (?)
 	health = 1600
 	maxHealth = 1600
 	name = "dragon broodmother"
-	projectiletype = /obj/projectile/magic/aoe/dragon_breath
-	projectilesound = 'sound/blank.ogg'
-	ranged = 0
-	ranged_message = "breathes fire"
+	//projectiletype = /obj/projectile/magic/aoe/dragon_breath
+	//projectilesound = 'sound/blank.ogg'
+	//ranged = 0
+	//ranged_message = "breathes fire"
 	ranged_cooldown_time = 20 SECONDS
 	var/datum/action/cooldown/mob_cooldown/fire_breath/cone/fire_breath
 
@@ -207,26 +204,3 @@ Greatwyrm (?)
 	fire_breath.Remove(src)
 	QDEL_NULL(fire_breath)
 	return ..()
-
-/mob/living/simple_animal/hostile/retaliate/rogue/dragon/test
-	//new ai, old ai off
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
-	ai_controller = /datum/ai_controller/dragon
-
-/mob/living/simple_animal/hostile/retaliate/rogue/dragon/test/Initialize()
-	. = ..()
-
-	var/datum/action/cooldown/mob_cooldown/fire_breath/cone/fire_breath = new(src)
-
-	fire_breath.Grant(src)
-
-	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, fire_breath)
-	
-	/*var/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater/fireball = new()
-	fireball.charge_max = 30 SECONDS
-	fireball.charge_type = "recharge"
-	AddSpell(fireball)
-	
-	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, fireball)*/
-
