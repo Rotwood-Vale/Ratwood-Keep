@@ -4304,6 +4304,10 @@
 /obj/structure/fermenting_barrel/random,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/shelter/mountains)
+"cZY" = (
+/obj/effect/landmark/tram/queued_path/cargo_stop,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town/harbor)
 "daI" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/armor/plate/half,
@@ -9754,6 +9758,12 @@
 "gPy" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/manor)
+"gPY" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/town/harbor)
 "gQq" = (
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
@@ -11637,6 +11647,12 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/church/chapel)
+"ifT" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/town/harbor)
 "igb" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -232734,10 +232750,10 @@ hkm
 hkm
 hkm
 hkm
+ifT
 hkm
 hkm
-hkm
-hkm
+ifT
 hkm
 hkm
 qcG
@@ -236190,10 +236206,10 @@ hkm
 hkm
 hkm
 hkm
+gPY
 hkm
 hkm
-hkm
-hkm
+gPY
 hkm
 hkm
 qcG
@@ -344619,7 +344635,7 @@ iXq
 iXq
 iXq
 iXq
-stn
+cZY
 iXq
 iXq
 iXq
@@ -351099,7 +351115,7 @@ iXq
 iXq
 iXq
 iXq
-iuU
+stn
 iXq
 iXq
 iXq
@@ -353685,7 +353701,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+iuU
 iXq
 iXq
 iXq
