@@ -29,6 +29,7 @@
 	defprob = 50
 	aggressive = 1
 	tame = TRUE
+	pooptype = null
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
