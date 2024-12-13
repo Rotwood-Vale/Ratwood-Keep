@@ -4717,6 +4717,10 @@
 /obj/item/rogueweapon/huntingknife,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
+"dJU" = (
+/obj/structure/fluff/wallclock,
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/mountains)
 "dKq" = (
 /obj/structure/fluff/walldeco/rpainting/forest{
 	pixel_x = 32
@@ -523392,7 +523396,7 @@ qPA
 kQz
 kQz
 oKK
-iSF
+dJU
 iSF
 xGS
 qPA
