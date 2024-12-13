@@ -3595,6 +3595,9 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"cDy" = (
+/turf/closed/wall/mineral/rogue/stone/window,
+/area/rogue/outdoors/town/harbor)
 "cDC" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/cobble,
@@ -4026,6 +4029,10 @@
 /obj/structure/closet/crate/chest{
 	lockid = "keep_armory"
 	},
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
@@ -6715,6 +6722,17 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
+"eJz" = (
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "tablewood2"
+	},
+/obj/item/gun/ballistic/arquebus_pistol,
+/obj/item/powderflask,
+/obj/item/book/rogue/secret/ledger,
+/obj/item/ammo_holder/bullet/lead,
+/turf/open/floor/carpet/stellar,
+/area/rogue/outdoors/town/harbor)
 "eJI" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -10213,16 +10231,6 @@
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
-"hjI" = (
-/obj/structure/table/wood{
-	dir = 10;
-	icon_state = "tablewood2"
-	},
-/obj/item/gun/ballistic/arquebus_pistol,
-/obj/item/powderflask,
-/obj/item/book/rogue/secret/ledger,
-/turf/open/floor/carpet/stellar,
-/area/rogue/outdoors/town/harbor)
 "hjO" = (
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/rogue/tile/checker,
@@ -14929,6 +14937,15 @@
 	},
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/outdoors/rtfield)
+"ktN" = (
+/obj/structure/mineral_door/wood/donjon{
+	dir = 8;
+	locked = 1;
+	lockid = "shop";
+	masterkey = 0
+	},
+/turf/open/floor/rogue/woodturned,
+/area/rogue/outdoors/town/harbor)
 "kuV" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -233145,10 +233162,10 @@ hkm
 hkm
 hkm
 hkm
+qcG
 hkm
 hkm
-hkm
-hkm
+qcG
 hkm
 hkm
 qcG
@@ -233577,10 +233594,10 @@ hkm
 hkm
 hkm
 hkm
+qcG
 hkm
 hkm
-hkm
-hkm
+qcG
 hkm
 hkm
 qcG
@@ -235305,10 +235322,10 @@ hkm
 hkm
 hkm
 hkm
+qcG
 hkm
 hkm
-hkm
-hkm
+qcG
 hkm
 hkm
 qcG
@@ -235737,10 +235754,10 @@ hkm
 hkm
 hkm
 hkm
+qcG
 hkm
 hkm
-hkm
-hkm
+qcG
 hkm
 hkm
 qcG
@@ -332913,7 +332930,7 @@ iXq
 iXq
 iXq
 iXq
-oQS
+iXq
 iXq
 iXq
 iXq
@@ -335505,7 +335522,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+oQS
 iXq
 iXq
 iXq
@@ -336377,7 +336394,7 @@ iXq
 iXq
 iXq
 iXq
-ghY
+iXq
 iXq
 iXq
 iXq
@@ -338109,7 +338126,7 @@ iXq
 iXq
 iXq
 iXq
-cLU
+iXq
 iXq
 iXq
 iXq
@@ -338969,7 +338986,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+ghY
 iXq
 iXq
 iXq
@@ -340701,7 +340718,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+cLU
 iXq
 iXq
 iXq
@@ -341147,14 +341164,14 @@ iXq
 iXq
 iXq
 iXq
-uZn
+cDy
 qsr
 vSv
 vSv
 nbi
 cad
 cad
-flB
+hLy
 fPw
 fPw
 fPw
@@ -341581,10 +341598,10 @@ iXq
 iXq
 uZn
 uZn
+cDy
 uZn
 uZn
-uZn
-hLy
+ktN
 flB
 uZn
 fPw
@@ -343305,12 +343322,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+sPt
+sPt
+sPt
+sPt
+sPt
+sPt
 sPt
 oGl
 tQA
@@ -343737,12 +343754,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+sPt
+sPt
+sPt
+sPt
+sPt
+sPt
 sPt
 oGl
 oGl
@@ -344598,7 +344615,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+stn
 iXq
 iXq
 iXq
@@ -345465,12 +345482,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+sPt
+sPt
+sPt
+sPt
+sPt
+sPt
 sPt
 oGl
 oGl
@@ -345897,12 +345914,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+sPt
+sPt
+sPt
+sPt
+sPt
+sPt
 sPt
 oGl
 tQA
@@ -346759,7 +346776,7 @@ iXq
 iXq
 iXq
 iXq
-stn
+iXq
 iXq
 iXq
 iXq
@@ -350207,7 +350224,7 @@ iXq
 iXq
 iXq
 iXq
-iuU
+iXq
 iXq
 iXq
 iXq
@@ -351078,7 +351095,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+iuU
 iXq
 iXq
 iXq
@@ -352793,7 +352810,7 @@ iXq
 iXq
 iXq
 iXq
-juU
+iXq
 iXq
 iXq
 iXq
@@ -356669,6 +356686,7 @@ iXq
 iXq
 iXq
 iXq
+wvr
 iXq
 iXq
 iXq
@@ -356680,8 +356698,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
+juU
 iXq
 iXq
 iXq
@@ -357965,7 +357982,7 @@ iXq
 iXq
 iXq
 iXq
-wvr
+iXq
 iXq
 iXq
 iXq
@@ -451747,7 +451764,7 @@ oJM
 oJM
 jWo
 wnm
-hjI
+eJz
 oJM
 iXq
 iXq
