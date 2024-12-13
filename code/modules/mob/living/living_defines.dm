@@ -116,13 +116,8 @@
 
 	var/can_be_held = FALSE	//whether this can be picked up and held.
 
-	var/radiation = 0 //If the mob is irradiated.
 	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
 	var/losebreath = 0
-
-	//List of active diseases
-	var/list/diseases = list() // list of all diseases in a mob
-	var/list/disease_resistances = list()
 
 	var/slowed_by_drag = TRUE //Whether the mob is slowed down when dragging another prone mob
 
@@ -178,6 +173,6 @@
 	/* Can be used to change the lighting threshholds at which players can sneak.*/
 	var/rogue_sneaking_light_threshhold = 0.15
 
+	var/voice_pitch = 1
 
-	/// Voice pitch for audible emotes
-	var/voice_pitch
+	var/domhand = 0

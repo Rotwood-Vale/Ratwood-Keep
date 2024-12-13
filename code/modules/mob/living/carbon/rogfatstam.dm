@@ -102,7 +102,6 @@
 	if(!heart_attacking)
 		var/mob/living/carbon/C = src
 		set_heartattack(TRUE) // Using set_heartattack rather than heart_attack(true) since heart_attack doesn't kill you for some reason????
-		C.reagents.add_reagent(/datum/reagent/medicine/C2/penthrite, 2) // TG had a really good idea with using this on heart_failure, gives the player enough time to do something dramatic before dropping.
 		C.visible_message(C, "<span class='danger'>[C] clutches at [C.p_their()] chest!</span>") // Other people know something is wrong.
 		emote("breathgasp", forced = TRUE)
 		shake_camera(src, 1, 3)

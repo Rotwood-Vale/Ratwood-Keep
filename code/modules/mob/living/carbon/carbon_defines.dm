@@ -87,8 +87,6 @@
 	///knocks you down
 	var/stam_paralyzed = FALSE
 
-	var/domhand = 0
-
 /// Amount of remaining vitae that can be drained from this mob
 	var/vitae_pool = 8000
 

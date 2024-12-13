@@ -346,32 +346,6 @@
 	M.silent = max(M.silent, 3)
 	..()
 
-/datum/reagent/toxin/staminatoxin
-	name = "Tirizene"
-	description = "A nonlethal poison that causes extreme fatigue and weakness in its victim."
-	silent_toxin = TRUE
-	color = "#6E2828"
-	data = 13
-	toxpwr = 0
-
-/datum/reagent/toxin/staminatoxin/on_mob_life(mob/living/carbon/M)
-	M.adjustStaminaLoss(REM * data, 0)
-	data = max(data - 1, 3)
-	..()
-	. = 1
-
-/datum/reagent/toxin/polonium
-	name = "Polonium"
-	description = "An extremely radioactive material in liquid form. Ingestion results in fatal irradiation."
-	reagent_state = LIQUID
-	color = "#787878"
-	metabolization_rate = 0.125 * REAGENTS_METABOLISM
-	toxpwr = 0
-
-/datum/reagent/toxin/polonium/on_mob_life(mob/living/carbon/M)
-	M.radiation += 4
-	..()
-
 /datum/reagent/toxin/histamine
 	name = "Histamine"
 	description = "Histamine's effects become more dangerous depending on the dosage amount. They range from mildly annoying to incredibly lethal."

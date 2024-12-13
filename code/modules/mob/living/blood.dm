@@ -251,8 +251,6 @@
 		blood_data["donor"] = src
 
 		blood_data["blood_DNA"] = copytext(dna.unique_enzymes,1,0)
-		if(disease_resistances && disease_resistances.len)
-			blood_data["resistances"] = disease_resistances.Copy()
 		var/list/temp_chem = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			temp_chem[R.type] = R.volume

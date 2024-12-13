@@ -79,6 +79,7 @@
 		user.visible_message("<span class='notice'>[user] inserts [I] into [src]'s receptable.</span>")
 
 		inserted = I
+		ui_interact(user)
 	else
 		return ..()
 
