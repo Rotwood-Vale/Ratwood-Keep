@@ -14054,6 +14054,16 @@
 /obj/item/natural/bundle/stick,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
+"jMi" = (
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	icon_state = "border"
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town/harbor)
 "jMl" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/under/town/basement)
@@ -28912,6 +28922,13 @@
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/outdoors/beach)
+"uun" = (
+/obj/structure/industrial_lift/tram{
+	icon_state = "vertw"
+	},
+/obj/machinery/light/rogue/torchholder/l,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town/harbor)
 "uuq" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -31759,6 +31776,15 @@
 /obj/machinery/light/rogue/hearth,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"wul" = (
+/obj/structure/industrial_lift/tram,
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	icon_state = "border"
+	},
+/obj/machinery/light/rogue/torchholder/r,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town/harbor)
 "wun" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -325173,9 +325199,9 @@ iXq
 iXq
 iXq
 mZP
+wul
 bCC
-bCC
-bCC
+wul
 mtp
 iXq
 iXq
@@ -325605,9 +325631,9 @@ iXq
 rNi
 iXq
 mZP
-kJN
+jMi
 oEp
-kJN
+jMi
 mtp
 iXq
 iXq
@@ -326037,9 +326063,9 @@ iXq
 iXq
 iXq
 mZP
+uun
 idV
-idV
-idV
+uun
 mtp
 iXq
 iXq
