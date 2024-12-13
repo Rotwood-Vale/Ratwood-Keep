@@ -2855,6 +2855,12 @@
 /obj/item/clothing/neck/roguetown/psicross,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"ccV" = (
+/obj/structure/bell_common{
+	pixel_y = -11
+	},
+/turf/open/floor/rogue/sand,
+/area/rogue/outdoors/town/harbor)
 "cdc" = (
 /obj/structure/roguemachine/scomm/l,
 /turf/open/floor/rogue/blocks,
@@ -9213,6 +9219,10 @@
 	dir = 4
 	},
 /area/rogue/outdoors/rtfield)
+"gvl" = (
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/bath)
 "gvu" = (
 /obj/structure/table/wood{
 	icon_state = "largetable"
@@ -229350,7 +229360,7 @@ hqi
 clJ
 otl
 otl
-otl
+ccV
 ksm
 ksm
 caV
@@ -230647,7 +230657,7 @@ clJ
 nYV
 nYV
 ksm
-eVz
+gvl
 eVz
 vgq
 vgq
