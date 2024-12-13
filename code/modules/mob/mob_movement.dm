@@ -587,9 +587,7 @@
 		rogue_sneaking = TRUE
 		return
 	var/turf/T = get_turf(src)
-	var/light_amount = 0
-	if(T)
-		light_amount = T.get_lumcount()
+	var/light_amount = T.get_lumcount()
 	var/used_time = 50
 	if(mind)
 		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)

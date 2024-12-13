@@ -70,13 +70,6 @@
 	icon_state = "standingb1"
 	base_state = "standingb"
 
-/obj/machinery/light/rogue/firebowl/standing/blue/burn_out()
-	return FALSE
-
-/obj/machinery/light/rogue/firebowl/standing/blue/extinguish()
-	return FALSE
-
-
 /obj/machinery/light/rogue/firebowl/standing/proc/knock_over() //use this later for jump impacts and shit
 	icon_state = "[base_state]over"
 
@@ -153,12 +146,6 @@
 	bulb_colour = "#b9bcff"
 	icon_state = "wallcandleb1"
 	base_state = "wallcandleb"
-
-/obj/machinery/light/rogue/wallfire/candle/blue/extinguish()
-	return FALSE
-
-/obj/machinery/light/rogue/wallfire/candle/blue/burn_out()
-	return FALSE
 
 /obj/machinery/light/rogue/wallfire/candle/blue/r
 	pixel_y = 0
@@ -344,6 +331,16 @@
 /obj/machinery/light/rogue/hearth/Initialize()
 	boilloop = new(src, FALSE)
 	. = ..()
+
+/obj/machinery/light/rogue/hearth/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover) && (mover.pass_flags & PASSTABLE))
+		return 1
+	if(mover.throwing)
+		return 1
+	if(locate(/obj/structure/table) in get_turf(mover))
+		return 1
+	else
+		return !density
 
 /obj/machinery/light/rogue/hearth/attackby(obj/item/W, mob/living/user, params)
 	if(!attachment)

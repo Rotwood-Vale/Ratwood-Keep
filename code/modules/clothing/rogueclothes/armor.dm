@@ -707,7 +707,7 @@
 	icon_state = "light_brigandine"
 	blocksound = SOFTHIT
 	body_parts_covered = CHEST|GROIN|VITALS
-	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "piercing" = 70, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "piercing" = 70, "fire" = 0, "acid" = 0)
 	max_integrity = 350
 	smeltresult = /obj/item/ingot/iron
 	equip_delay_self = 40
