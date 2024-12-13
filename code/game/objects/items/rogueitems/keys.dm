@@ -120,13 +120,13 @@
 			lockhash = D.lockhash
 
 /obj/item/key/royal
-	name = "Royal Key"
+	name = "royal Key"
 	desc = "The Key to the royal chambers. It even feels pretentious."
 	icon_state = "ekey"
 	lockid = "royal"
 
 /obj/item/key/prince_rooms
-	name = "Princely Key"
+	name = "princely Key"
 	desc = "The Key to the heirs chambers."
 	icon_state = "ekey"
 	lockid = "prince"
@@ -391,6 +391,12 @@
 	desc = "This key looks barely used."
 	icon_state = "ekey"
 	lockid = "archive"
+
+/obj/item/key/architect
+	name = "architect's key"
+	desc = "This key looks skillfully made."
+	icon_state = "ekey"
+	lockid = "architect"
 
 /obj/item/key/manor
 	name = "manor key"

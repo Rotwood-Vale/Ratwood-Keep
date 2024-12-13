@@ -191,7 +191,7 @@
 	keys = list(/obj/item/key/manor, /obj/item/key/archive)
 
 /obj/item/storage/keyring/architect
-	keys = list(/obj/item/key/blacksmith)
+	keys = list(/obj/item/key/manor, /obj/item/key/walls, /obj/item/key/architect)
 
 /obj/item/storage/keyring/physician
 	keys = list(/obj/item/key/manor, /obj/item/key/keep_barracks, /obj/item/key/physician, /obj/item/key/keep_dungeon_torture)
