@@ -23,7 +23,6 @@
 
 /datum/outfit/job/roguetown/templar/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 	switch(H.patron.name)
@@ -113,3 +112,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+
+/datum/outfit/job/roguetown/templar/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = TRUE

@@ -119,6 +119,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	..()
 	head = /obj/item/clothing/head/roguetown/crown/fakecrown //Prevents the crown of woe from happening again.
 
+/datum/outfit/job/roguetown/lord/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = FALSE
+
 /proc/give_lord_surname(mob/living/carbon/human/family_guy, preserve_original = FALSE)
 	if(!GLOB.lordsurname)
 		return
