@@ -255,7 +255,6 @@
 
 #define JDO_MERCHANT 17
 #define JDO_SHOPHAND 17.1
-#define JDO_GRABBER 17.2
 
 #define JDO_ARCHIVIST 18
 
@@ -275,7 +274,9 @@
 #define JDO_SOILSON 27.2
 
 #define JDO_NIGHTMASTER 28
-#define JDO_WENCH 28.1
+#define JDO_GRABBER 28.1
+#define JDO_WENCH 28.2
+
 
 #define JDO_HARBORMASTER 29
 #define JDO_LONGSHOREMAN 29.1
