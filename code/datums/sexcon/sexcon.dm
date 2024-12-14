@@ -802,3 +802,25 @@
 			return "<span class='love_high'>[string]</span>"
 		if(SEX_FORCE_EXTREME)
 			return "<span class='love_extreme'>[string]</span>"
+
+
+/datum/sex_controller/proc/cuckold_check()
+	if(!target || target == user)
+		return
+	//First, check if the target has a family.
+	var/datum/family/F = target.getFamily(TRUE)
+	if(!F)
+		return
+
+
+	//Second, check if target has a spouse relation.
+	var/list/rels = F.getRelations(target,REL_TYPE_SPOUSE)
+
+	if(!length(rels))
+		return
+
+	for(var/datum/relation/R in rels) //Loop through all the spouses (Should only be one.)
+		var/mob/living/carbon/human/cuckold = R.target:resolve()
+		if(!cuckold || cuckold == user)
+			continue
+		GLOB.cuckolds |= "[cuckold.job] [cuckold.real_name] (by [user.real_name])"
