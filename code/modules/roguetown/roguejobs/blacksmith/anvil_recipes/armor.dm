@@ -211,6 +211,11 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/neck/roguetown/gorget/steel
 
+/datum/anvil_recipe/armor/steel/sgorget/oring
+	name = "Ringed Steel Gorget"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/neck/roguetown/gorget/steel/oring
+
 /datum/anvil_recipe/armor/steel/kettle
 	name = "Kettle"
 	req_bar = /obj/item/ingot/steel

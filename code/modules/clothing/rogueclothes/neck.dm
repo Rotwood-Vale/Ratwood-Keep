@@ -140,6 +140,9 @@
 	max_integrity = 300
 	icon_state = "sgorget"
 
+/obj/item/clothing/neck/roguetown/gorget/steel/oring
+	desc = "A steel gorget to protect the neck, this one has an odd ring mounted on the front."
+	name ="ringed steel gorget"
 
 /obj/item/clothing/neck/roguetown/leather
 	name = "hardened leather gorget"

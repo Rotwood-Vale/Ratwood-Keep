@@ -106,7 +106,7 @@
 		to_chat(user, span_warning("This leash is already attached to [leash_pet]!"))
 		return
 
-	if(istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/collar) || istype(C.get_item_by_slot(SLOT_HANDCUFFED), /obj/item/rope/chain) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/talkstone) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/gorget/oring || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/listenstone)))
+	if(istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/collar) || istype(C.get_item_by_slot(SLOT_HANDCUFFED), /obj/item/rope/chain) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/talkstone) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/gorget/oring) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/listenstone) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/roguetown/gorget/steel/oring))
 		var/leash_attempt_message = "[user] raises \the [src] to [C]'s neck!"
 		for(var/mob/viewing in viewers(C, null))
 			if(viewing == C)
