@@ -8,7 +8,7 @@
 	)
 
 	planning_subtrees = list(
-		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/simple_find_target/closest,
 		/datum/ai_planning_subtree/melee_spacing,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/spearorc,
 		

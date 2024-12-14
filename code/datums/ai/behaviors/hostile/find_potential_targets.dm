@@ -4,7 +4,7 @@
 	var/vision_range = 9
 
 /datum/ai_behavior/find_potential_targets/perform(seconds_per_tick, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
-	. = ..()
+
 	var/mob/living/living_mob = controller.pawn
 	var/datum/targetting_datum/targetting_datum = controller.blackboard[targetting_datum_key]
 
@@ -19,7 +19,7 @@
 	controller.clear_blackboard_key(target_key)
 	var/list/potential_targets = hearers(vision_range, controller.pawn) - living_mob //Remove self, so we don't suicide
 
-	if(!potential_targets.len)
+	if(!potential_targets.len) // Couldn't find valid targets
 		finish_action(controller, succeeded = FALSE)
 		return
 

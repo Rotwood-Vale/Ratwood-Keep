@@ -31,5 +31,5 @@
 /datum/ai_planning_subtree/basic_melee_attack_subtree/mimic
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/mimic
 
-/datum/ai_planning_subtree/basic_melee_attack_subtree/spearorc
+/datum/ai_planning_subtree/basic_melee_attack_subtree/spearorc //Spacing takes care of our movement
 	melee_attack_behavior = /datum/ai_behavior/static_melee_attack

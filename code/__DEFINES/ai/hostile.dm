@@ -8,6 +8,10 @@
 
 /// Basically, what is our vision/hearing range.
 #define BB_HOSTILE_VISION_RANGE 10
+
+//Limit of how many enemies a unit can target through
+#define AI_MAX_ENEMIES 99
+
 /// After either being given a verbal order or a pointing order, ignore further of each for this duration
 #define AI_HOSTILE_COMMAND_COOLDOWN (2 SECONDS)
 
