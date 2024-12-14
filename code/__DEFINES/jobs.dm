@@ -114,6 +114,8 @@
 #define BOGGUARD	(1<<4)
 #define BOGMASTER	(1<<5)
 #define SHERIFF		(1<<6)
+#define HARBORMASTER	(1<<7)
+#define LONGSHOREMAN	(1<<8)
 
 #define CHURCHMEN		(1<<2)
 
@@ -253,7 +255,6 @@
 
 #define JDO_MERCHANT 17
 #define JDO_SHOPHAND 17.1
-#define JDO_GRABBER 17.2
 
 #define JDO_ARCHIVIST 18
 
@@ -273,7 +274,12 @@
 #define JDO_SOILSON 27.2
 
 #define JDO_NIGHTMASTER 28
-#define JDO_WENCH 28.1
+#define JDO_GRABBER 28.1
+#define JDO_WENCH 28.2
+
+
+#define JDO_HARBORMASTER 29
+#define JDO_LONGSHOREMAN 29.1
 
 #define JDO_VILLAGER 30
 #define JDO_ADVENTURER 30.1

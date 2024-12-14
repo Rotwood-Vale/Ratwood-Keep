@@ -426,3 +426,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TIMESTOP_TRAIT "timestop"
 #define HUGBOX_TRAIT "hugbox"
 #define ADVENTURER_TRAIT "adventurer"
+
+#define TRAIT_I_AM_INVISIBLE_ON_A_BOAT "invisible_on_tram"
