@@ -1,7 +1,7 @@
 
 /obj/structure/roguemachine/scomm
 	name = "SCOM"
-	desc = "The Supernatural Communication Optical Machine is a wonder of magic and technology."
+	desc = "The Supernatural Communication Optical Machine is a wonder of magic and technology. There's a button in the middle with 'JABBER' etched on it."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "scomm1"
 	density = FALSE
