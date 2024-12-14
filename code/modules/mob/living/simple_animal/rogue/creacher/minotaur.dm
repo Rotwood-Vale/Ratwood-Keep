@@ -245,7 +245,7 @@
 	icon_state = "instrike"
 	attack_verb = list("hacks at", "slashes", "chops", "steps on", "crushes", "bites")
 	animname = "blank22"
-	blade_class = BCLASS_STAB
+	blade_class = BCLASS_CHOP
 	hitsound = "genchop"
 	chargetime = 20
 	penfactor = 10
