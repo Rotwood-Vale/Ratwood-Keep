@@ -20,6 +20,10 @@
 		return
 	controller.queue_behavior(ranged_attack_behavior, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 	return SUBTREE_RETURN_FINISH_PLANNING //we are going into battle...no distractions.
-	
+
+
+/datum/ai_planning_subtree/basic_melee_attack_subtree/bog_troll
+	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/bog_troll
+
 /datum/ai_planning_subtree/basic_melee_attack_subtree/mimic
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/mimic

@@ -248,7 +248,7 @@
 	blade_class = BCLASS_CHOP
 	hitsound = "genchop"
 	chargetime = 20
-	penfactor = 10
+	penfactor = 5
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE

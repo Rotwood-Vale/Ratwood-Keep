@@ -82,3 +82,12 @@
 
 /datum/ai_behavior/find_potential_targets/troll
 	vision_range = 7
+
+/datum/ai_behavior/find_potential_targets/bog_troll
+	vision_range = 2
+
+/datum/ai_behavior/find_potential_targets/bog_troll/finish_action(datum/ai_controller/controller, succeeded, ...)
+	. = ..()
+	if (succeeded)
+		controller.CancelActions()
+		controller.pawn.icon_state = "Trolla"

@@ -18,8 +18,10 @@
 
 /datum/ai_planning_subtree/find_dead_bodies/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
-
-	// not checking for hunger level might make them always go for dead bodies
+	if(istype(controller.pawn, /mob/living/simple_animal))
+		var/mob/living/simple_animal/hostile/retaliate/rogue/mob = controller.pawn
+		if(mob.food == mob.food_max && !mob.eat_forever)
+			return // not hungry
 
 	var/atom/target = controller.blackboard[BB_BASIC_MOB_FOOD_TARGET]
 	if(!QDELETED(target))
@@ -42,6 +44,11 @@
 
 /datum/ai_planning_subtree/find_food/troll
 	vision_range = 7
+
+
+/datum/ai_planning_subtree/find_dead_bodies/bog_troll
+	vision_range = 7
+	behavior = /datum/ai_behavior/find_and_set/dead_bodies/bog_troll
 
 /datum/ai_planning_subtree/find_dead_bodies/mimic
 	vision_range = 2
