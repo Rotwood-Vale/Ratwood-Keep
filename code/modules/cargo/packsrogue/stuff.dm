@@ -132,3 +132,18 @@
 	name = "Wine"
 	cost = 100
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/wine)
+
+/datum/supply_pack/rogue/bandit/Stuff/Collar
+	name = "Leather Collar & Leash"
+	cost = 25
+	contains = list(/obj/item/clothing/neck/roguetown/collar/leather, /obj/item/leash)
+
+/datum/supply_pack/rogue/bandit/Stuff/collarcat
+	name = "Leather Cat Collar & Leash"
+	cost = 45
+	contains = list(/obj/item/clothing/neck/roguetown/collar/leather/bell, /obj/item/leash)
+
+/datum/supply_pack/rogue/bandit/Stuff/collarcow
+	name = "Leather Cow Collar & Leash"
+	cost = 45
+	contains = list(/obj/item/clothing/neck/roguetown/collar/leather/bell/cow, /obj/item/leash)
