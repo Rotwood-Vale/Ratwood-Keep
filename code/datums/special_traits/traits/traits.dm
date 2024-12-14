@@ -1,5 +1,6 @@
 //// Sleep Specials
 //// these should still be in the round-start/late join specials as well! It's just these are contextually fitting for Sleep Specials as well!
+/*
 /datum/special_trait/nothing
 	name = "Nothing"
 	greet_text = span_notice("You're not special.")
@@ -442,7 +443,34 @@
 	var/turf/location = get_spawn_turf_for_job("Pilgrim")
 	character.forceMove(location)
 	grant_lit_torch(character)
+*/
+/datum/special_trait/captured_noble
+	name = "Captured Noble"
+	req_text = "Be a heir or hand."
+	greet_text = span_boldwarning("You have been captured by foul bandits!")
+	allowed_jobs = list(/datum/job/roguetown/prince, /datum/job/roguetown/hand)
+	weight = 50
 
+/datum/special_trait/captured_noble/on_apply(mob/living/carbon/human/character, silent)
+	var/turf/location = get_spawn_turf_for_job("capturednoble")
+	character.forceMove(location)
+	QDEL_NULL(character.wear_shirt)
+	QDEL_NULL(character.wear_armor)
+	QDEL_NULL(character.shoes)
+	QDEL_NULL(character.belt)
+	QDEL_NULL(character.beltl)
+	QDEL_NULL(character.beltr)
+	QDEL_NULL(character.backr)
+	QDEL_NULL(character.backl)
+	QDEL_NULL(character.head)
+	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_BELT_R)
+	character.equip_to_slot_or_del(new /obj/item/reagent_containers/glass/bottle/rogue/water(character), SLOT_BELT_L)
+	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather(character), SLOT_BELT)
+	character.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/tights/random(character), SLOT_PANTS)
+	character.change_stat("constitution", 1)
+	character.change_stat("endurance", 1)
+	character.change_stat("strength", -1)
+/*
 /datum/special_trait/atrophy
 	name = "Atrophy"
 	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile.")
@@ -601,3 +629,4 @@
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_R)
 	character.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
+*/

@@ -3700,6 +3700,10 @@
 /obj/effect/landmark/start/goblinchief,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/under/town/goblin)
+"ZV" = (
+/obj/effect/landmark/start/capturenoble,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/banditcamp)
 
 (1,1,1) = {"
 rQ
@@ -8244,7 +8248,7 @@ Cm
 Cm
 nX
 pg
-js
+ZV
 js
 Rt
 xr
@@ -9164,7 +9168,7 @@ Cm
 Cm
 nX
 pg
-js
+ZV
 js
 qf
 js
