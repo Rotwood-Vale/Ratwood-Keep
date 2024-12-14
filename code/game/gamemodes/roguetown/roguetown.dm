@@ -176,7 +176,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				log_game("Antagonists: Lich")
 			if(90 to 100)
 				pick_vampires()
-				log_game("Antagonists: Lich")
+				log_game("Antagonists: Vampyr")
 			/* we've been having a lot of this, we can reimplement a random extended chance after seeing how the antags go
 			if(81 to 100)
 				log_game("Major Antagonist: Extended") //gotta put something here.
