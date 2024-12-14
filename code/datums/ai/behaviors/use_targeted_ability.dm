@@ -3,6 +3,8 @@
  * Attempts to use a mob's cooldown ability on a target
  */
 /datum/ai_behavior/targeted_mob_ability
+	action_cooldown = 5 SECONDS
+
 /datum/ai_behavior/targeted_mob_ability/perform(seconds_per_tick, datum/ai_controller/controller, ability_key, target_key)
 	//var/obj/effect/proc_holder/spell/ability = controller.blackboard[ability_key]
 	var/datum/action/cooldown/mob_cooldown/ability = controller.blackboard[ability_key]
