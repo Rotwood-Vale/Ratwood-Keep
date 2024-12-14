@@ -14,7 +14,6 @@
 "n" = (/obj/structure/fluff/railing/border{icon_state = "border"; dir = 1},/obj/structure/fluff/railing/border{icon_state = "border"; dir = 4},/obj/structure/fluff/railing/border{icon_state = "border"; dir = 5},/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/shuttle/supply)
 "o" = (/obj/structure/fluff/railing/border{icon_state = "border"; dir = 1},/obj/structure/fluff/railing/border,/obj/effect/decal/cobbleedge{icon_state = "jagged"; dir = 4},/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/shuttle/supply)
 "p" = (/obj/machinery/light/rogue/torchholder{icon_state = "torchwall1"; dir = 8},/turf/open/floor/rogue/ruinedwood,/area/shuttle/supply/buy)
-"q" = (/obj/machinery/light/rogue/firebowl/blue,/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/shuttle/supply)
 "r" = (/obj/structure/fluff/railing/border{icon_state = "border"; dir = 4},/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/shuttle/supply)
 "s" = (/obj/structure/fluff/railing/border,/obj/structure/fluff/railing/border{icon_state = "border"; dir = 8},/obj/structure/fluff/railing/border{icon_state = "border"; dir = 10},/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/shuttle/supply)
 "t" = (/obj/structure/fluff/railing/border,/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/shuttle/supply)
@@ -27,14 +26,13 @@
 "A" = (/obj/structure/fluff/railing/border,/obj/effect/decal/cobbleedge{icon_state = "jagged"; dir = 1},/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/shuttle/supply)
 "B" = (/obj/structure/fluff/railing/border,/obj/structure/fluff/railing/border{icon_state = "border"; dir = 4},/obj/effect/decal/cobbleedge{icon_state = "jagged"; dir = 1},/obj/structure/fluff/railing/border{icon_state = "border"; dir = 6},/turf/open/floor/rogue/ruinedwood{icon_state = "horzw"},/area/shuttle/supply)
 "C" = (/obj/machinery/light/rogue/torchholder{icon_state = "torchwall1"; dir = 4},/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/shuttle/supply/sell)
-"D" = (/obj/docking_port/mobile/supply{dir = 1; dwidth = 9; height = 4; width = 17},/turf/open/floor/rogue/ruinedwood{icon_state = "vertw"; dir = 1},/area/shuttle/supply)
 "E" = (/obj/structure/fluff/buysign,/turf/open/floor/rogue/ruinedwood,/area/shuttle/supply/buy)
 "F" = (/obj/structure/fluff/sellsign,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/shuttle/supply/sell)
 
 (1,1,1) = {"
 aaaabdddkkkdddcea
 afgghjjEjkmFmmkln
-ooookjjjpiCmmmkqr
+ooookjjjpiCmmmkkr
 asttujjjjvmmmmkwx
-aaaayAAAkDkAAAzBa
+aaaayAAAkkkAAAzBa
 "}

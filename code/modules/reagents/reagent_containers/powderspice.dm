@@ -149,7 +149,6 @@
 	icon_state = "flour"
 	can_brew = TRUE
 	list_reagents = list(/datum/reagent/floure = 1)
-	grind_results = list(/datum/reagent/floure = 10)
 	volume = 1
 	sellprice = 0
 

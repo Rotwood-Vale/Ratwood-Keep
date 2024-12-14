@@ -276,3 +276,14 @@
 		held_items[P]["NAME"] = P.name
 		held_items[P]["PRICE"] = 100
 	update_icon()
+
+/obj/structure/roguemachine/vendor/portshop
+	lockid = "steward"
+
+/obj/structure/roguemachine/vendor/portshop/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/portshop))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 20

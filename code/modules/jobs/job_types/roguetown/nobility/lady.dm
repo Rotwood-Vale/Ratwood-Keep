@@ -66,6 +66,10 @@
 		H.change_stat("perception", 2)
 		H.change_stat("fortune", 5)
 
+/datum/outfit/job/roguetown/lady/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = FALSE
+
 /obj/effect/proc_holder/spell/self/convertrole/servant
 	name = "Recruit Servant"
 	new_role = "Servant"
