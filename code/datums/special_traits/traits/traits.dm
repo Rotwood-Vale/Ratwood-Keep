@@ -1,6 +1,6 @@
 //// Sleep Specials
 //// these should still be in the round-start/late join specials as well! It's just these are contextually fitting for Sleep Specials as well!
-/*
+
 /datum/special_trait/nothing
 	name = "Nothing"
 	greet_text = span_notice("You're not special.")
@@ -443,7 +443,7 @@
 	var/turf/location = get_spawn_turf_for_job("Pilgrim")
 	character.forceMove(location)
 	grant_lit_torch(character)
-*/
+
 /datum/special_trait/captured_noble
 	name = "Captured Noble"
 	req_text = "Be a heir or hand."
@@ -470,7 +470,7 @@
 	character.change_stat("constitution", 1)
 	character.change_stat("endurance", 1)
 	character.change_stat("strength", -1)
-/*
+
 /datum/special_trait/atrophy
 	name = "Atrophy"
 	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile.")
@@ -629,4 +629,3 @@
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_R)
 	character.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
-*/
