@@ -432,7 +432,6 @@
 		size = min(size, 5)
 		D.icon_state = "deliverypackage[size]"
 
-
 	add_fingerprint(user)
 	return ..()
 
