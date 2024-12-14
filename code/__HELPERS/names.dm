@@ -6,3 +6,6 @@
 
 /proc/moth_name()
 	return "[pick(GLOB.moth_first)] [pick(GLOB.moth_last)]"
+
+/proc/set_station_name(newname)
+	world.name = "RATWOOD"
