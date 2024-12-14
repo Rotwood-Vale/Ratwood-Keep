@@ -26,6 +26,9 @@
 		if("Akula accent")
 			return strings("pirate_replacement.json", "full")
 
+/datum/species/proc/post_accent_treatment(mob/living/carbon/human, message)
+	return message
+
 /datum/species/proc/get_accent_start(mob/living/carbon/human/H)
 	switch(H.char_accent)
 		if("Dwarf accent")
