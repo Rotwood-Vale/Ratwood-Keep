@@ -77,7 +77,7 @@
     color = "#ebebeb"
     taste_description = "salty and tangy"
     metabolization_rate = 0.1
-    H.adjust_nutrition(0.2)
+    H.adjust_nutrition(0.1)
 	H.adjust_hydration(0.1)
 
 /datum/crafting_recipe/roguetown/cooking/soap
