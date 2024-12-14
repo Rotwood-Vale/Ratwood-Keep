@@ -42,7 +42,10 @@
 	attack_sound = list('sound/combat/wooshes/blunt/wooshhuge (1).ogg','sound/combat/wooshes/blunt/wooshhuge (2).ogg','sound/combat/wooshes/blunt/wooshhuge (3).ogg')
 	dodgetime = 0
 	aggressive = 1
-//	stat_attack = UNCONSCIOUS
+	
+	ai_controller = /datum/ai_controller/minotaur
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/blood
 	name = "FLESH HOMUNCULUS"
@@ -81,7 +84,10 @@
 	food = 0
 	dodgetime = 20
 	aggressive = TRUE
-//	stat_attack = UNCONSCIOUS
+	
+	ai_controller = /datum/ai_controller/minotaur
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/blood/Initialize()
@@ -116,10 +122,6 @@
 	set_light(5,5, LIGHT_COLOR_RED)
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
-
-	ai_controller = /datum/ai_controller/minotaur
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/female
 	icon_state = "MinotaurFem"
