@@ -71,13 +71,13 @@
 	return ..()
 
 /datum/reagent/erpjuice/cum
-	name = "Erotic Fluid"
-	description = "A thick, sticky, cream like fluid. produced during an orgasm."
-	reagent_state = LIQUID
-	color = "#ebebeb"
-	taste_description = "salty and tangy"
-	metabolization_rate = 0.1
-	H.adjust_nutrition(0.2) //At last, cum whores can finally milk their oppressors and be at least very, very marginally full from it!
+    name = "Erotic Fluid"
+    description = "A thick, sticky, cream like fluid. produced during an orgasm."
+    reagent_state = LIQUID
+    color = "#ebebeb"
+    taste_description = "salty and tangy"
+    metabolization_rate = 0.1
+    H.adjust_nutrition(0.2)
 	H.adjust_hydration(0.1)
 
 /datum/crafting_recipe/roguetown/cooking/soap
