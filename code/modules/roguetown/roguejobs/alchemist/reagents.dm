@@ -70,7 +70,7 @@
 		M.adjustToxLoss(3, 0)
 	return ..()
 
-/datum/reagent/erpjuice/cum
+/datum/reagent/erpjuice/cum/on_mob_life(mob/living/carbon/M)
 	name = "Erotic Fluid"
 	description = "A thick, sticky, cream like fluid. produced during an orgasm."
 	reagent_state = LIQUID
