@@ -33,7 +33,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	armor = item/clothing/suit/roguetown/armor/leather/vest/sailor
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/sword/cutlass
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
