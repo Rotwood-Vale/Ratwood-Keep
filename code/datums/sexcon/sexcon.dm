@@ -225,9 +225,9 @@
 		if(vagina.pregnant)
 			milk_amount = milk_amount + 2 //If anyone is doing this... Shame on you
 	else
-		milk_amount = 5
+		milk_amount = 6
 		if(vagina.pregnant)
-			milk_amount = milk_amount + 10 //I ran the numbers, a breastfeeding woman can produce a stick of butter with one session
+			milk_amount = milk_amount + 12 //I ran the numbers, a breastfeeding woman can produce a stick of butter with one session
 	return milk_amount = round(milk_amount * (((user.nutrition + user.hydration)/2)/500))
 
 /datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
