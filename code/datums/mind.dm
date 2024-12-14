@@ -477,13 +477,6 @@
 				if(A.type == datum_type)
 					return A
 
-/datum/mind/proc/remove_traitor()
-	remove_antag_datum(/datum/antagonist/traitor)
-
-
-/datum/mind/proc/remove_all_antag() //For the Lazy amongst us.
-	remove_traitor()
-
 /datum/mind/proc/equip_traitor(employer = "The Syndicate", silent = FALSE, datum/antagonist/uplink_owner)
 	return
 
@@ -682,12 +675,6 @@
 		O.update_explanation_text()
 		to_chat(current, "<B>[O.flavor] #[obj_count]</B>: [O.explanation_text]")
 		obj_count++
-
-
-/datum/mind/proc/make_Traitor()
-	if(!(has_antag_datum(/datum/antagonist/traitor)))
-		add_antag_datum(/datum/antagonist/traitor)
-
 
 /datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S)
 	if(!S)

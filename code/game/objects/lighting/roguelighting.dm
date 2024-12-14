@@ -12,7 +12,6 @@
 	bulb_colour = "#58dd90"
 	bulb_power = 0.95
 	max_integrity = 0
-	use_power = NO_POWER_USE
 	pass_flags = LETPASSTHROW
 	smeltresult = /obj/item/ingot/bronze
 
@@ -85,18 +84,21 @@
 	bulb_colour = "#f9ad80"
 	bulb_power = 1
 	flags_1 = NODECONSTRUCT_1
-	use_power = NO_POWER_USE
 	var/datum/looping_sound/soundloop = /datum/looping_sound/fireloop
 	pass_flags = LETPASSTHROW
 	var/cookonme = FALSE
 	var/crossfire = TRUE
 	var/can_damage = FALSE
+	var/start_fuel //Override for fueluse. Mostly used for smelters.
+	var/fuel_modifier = 1 //Modifier for firefuel
 
 /obj/machinery/light/rogue/Initialize()
 	if(soundloop)
 		soundloop = new soundloop(list(src), FALSE)
 		soundloop.start()
 	GLOB.fires_list += src
+	if(start_fuel)
+		fueluse = start_fuel
 	if(fueluse)
 		fueluse = fueluse - (rand(fueluse*0.1,fueluse*0.3))
 	update_icon()
@@ -228,19 +230,21 @@
 		if(initial(fueluse))
 			if(fueluse > initial(fueluse) - 5 SECONDS)
 				to_chat(user, span_warning("The fire is fully fueled."))
-				return
+				return FALSE
 		else
 			if(!on)
 				return
 		if (alert(usr, "Feed [W] to the fire?", "ROGUETOWN", "Yes", "No") != "Yes")
 			return
+		if(!W)
+			return
 		qdel(W)
 		user.visible_message(span_warning("[user] feeds [W] to [src]."))
 		if(initial(fueluse))
-			fueluse = fueluse + W.firefuel
+			fueluse = fueluse + W.firefuel*fuel_modifier
 			if(fueluse > initial(fueluse)) //keep it at the max
 				fueluse = initial(fueluse)
-		return
+		return TRUE
 	else
 		if(on)
 			if(istype(W, /obj/item/natural/dirtclod))

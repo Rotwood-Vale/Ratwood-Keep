@@ -129,9 +129,17 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
+
 /obj/item/clothing/neck/roguetown/gorget/oring
 	name = "ringed gorget"
 	desc = "An iron gorget to protect the neck, this one has an odd ring mounted on the front."
+
+/obj/item/clothing/neck/roguetown/gorget/steel
+	name ="steel gorget"
+	smeltresult = /obj/item/ingot/steel
+	max_integrity = 300
+	icon_state = "sgorget"
+
 
 /obj/item/clothing/neck/roguetown/leather
 	name = "hardened leather gorget"

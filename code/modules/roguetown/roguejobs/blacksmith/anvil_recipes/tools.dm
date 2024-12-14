@@ -101,7 +101,7 @@
 	name = "Iron Fork x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/kitchen/ironfork
-	craftdiff = 1
+	skill_level = 1
 
 /datum/anvil_recipe/tools/iron/spoon
 	name = "Iron Spoon x3"
@@ -110,7 +110,7 @@
 						/obj/item/kitchen/ironspoon,
 						/obj/item/kitchen/ironspoon
 					)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/anvil_recipe/tools/iron/bowl
 	name = "Iron Bowl x3"
@@ -120,7 +120,7 @@
 						/obj/item/reagent_containers/glass/bowl/iron
 					)
 
-	craftdiff = 1
+	skill_level = 1
 
 /datum/anvil_recipe/general/iron/ramrod
 	name = "Replacement Ramrods x3"
@@ -130,7 +130,7 @@
 						/obj/item/ramrod
 						)
 
-	craftdiff = 0
+	skill_level = 0
 
 /datum/anvil_recipe/tools/lockpicks
 	name = "Lockpicks x3"
@@ -139,7 +139,7 @@
 						/obj/item/lockpick,
 						/obj/item/lockpick
 						)
-	craftdiff = 1
+	skill_level = 1
 
 /datum/anvil_recipe/tools/lockpickring
 	name = "Lockpickrings x3"
@@ -148,7 +148,7 @@
 						/obj/item/lockpickring,
 						/obj/item/lockpickring
 						)
-	craftdiff = 0
+	skill_level = 0
 
 // --------- Steel -----------
 
