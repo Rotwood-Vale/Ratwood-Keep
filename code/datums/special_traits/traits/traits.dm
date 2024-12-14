@@ -446,9 +446,9 @@
 
 /datum/special_trait/captured_noble
 	name = "Captured Noble"
-	req_text = "Be a heir or hand."
-	greet_text = span_boldwarning("You have been captured by foul bandits!")
-	allowed_jobs = list(/datum/job/roguetown/prince, /datum/job/roguetown/hand)
+	req_text = "Be a heir, Hand or Councillor."
+	greet_text = span_boldwarning("You have been captured by foul bandits, and they now have access to the keep. Try and beg for mercy, and have the keep pay your ransom.")
+	allowed_jobs = list(/datum/job/roguetown/prince, /datum/job/roguetown/hand, /datum/job/roguetown/councillor)
 	weight = 50
 
 /datum/special_trait/captured_noble/on_apply(mob/living/carbon/human/character, silent)
@@ -457,16 +457,9 @@
 	QDEL_NULL(character.wear_shirt)
 	QDEL_NULL(character.wear_armor)
 	QDEL_NULL(character.shoes)
-	QDEL_NULL(character.belt)
-	QDEL_NULL(character.beltl)
-	QDEL_NULL(character.beltr)
 	QDEL_NULL(character.backr)
 	QDEL_NULL(character.backl)
 	QDEL_NULL(character.head)
-	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_BELT_R)
-	character.equip_to_slot_or_del(new /obj/item/reagent_containers/glass/bottle/rogue/water(character), SLOT_BELT_L)
-	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather(character), SLOT_BELT)
-	character.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/tights/random(character), SLOT_PANTS)
 	character.change_stat("constitution", 1)
 	character.change_stat("endurance", 1)
 	character.change_stat("strength", -1)
