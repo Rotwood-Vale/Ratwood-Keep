@@ -14,15 +14,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(!mob)
 		return
 
-	if(CONFIG_GET(flag/usewhitelist))
-		if(whitelisted() != 1)
-			to_chat(src, span_danger("I can't use that."))
-			return
-
-	if(get_playerquality(ckey) <= -5)
-		to_chat(src, span_danger("I can't use that."))
-		return
-
 	if(!holder)
 		if(!GLOB.ooc_allowed)
 			to_chat(src, span_danger("OOC is globally muted."))
@@ -114,15 +105,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		return
 
 	if(!mob)
-		return
-
-	if(CONFIG_GET(flag/usewhitelist))
-		if(whitelisted() != 1)
-			to_chat(src, span_danger("I can't use that."))
-			return
-
-	if(get_playerquality(ckey) <= -5)
-		to_chat(src, span_danger("I can't use that."))
 		return
 
 	if(!holder)

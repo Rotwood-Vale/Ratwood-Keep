@@ -254,7 +254,7 @@
 	SSticker.cums++
 
 /datum/sex_controller/proc/after_milking()
-	set_arousal(40)
+	set_arousal(80)
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time

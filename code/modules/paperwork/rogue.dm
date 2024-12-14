@@ -66,8 +66,6 @@
 		user.hud_used.reads.maptext_height = 200
 		user.hud_used.reads.maptext_y = 150
 		user.hud_used.reads.maptext_x = 120
-
-		onclose(user, "reading", src)
 	else
 		return span_warning("I'm too far away to read it.")
 

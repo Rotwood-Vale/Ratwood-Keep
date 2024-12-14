@@ -64,7 +64,6 @@
 	else
 		return ..()
 
-
 /obj/machinery/light/rogue/smelter/process()
 	..()
 	if(maxore > 1)

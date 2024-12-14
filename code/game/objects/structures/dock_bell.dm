@@ -13,10 +13,9 @@
 /obj/structure/dock_bell/attack_hand(mob/user)
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, ring_bell))
+		to_chat(user, span_notice("I should wait..."))
 		return
 	if(!do_after(user, 5 SECONDS, target = src))
-		return
-	if(!COOLDOWN_FINISHED(src, ring_bell))
 		return
 	visible_message(span_notice("[user] starts ringing the dock bell."))
 	playsound(get_turf(src), 'sound/misc/handbell.ogg', 50, 1)
@@ -24,4 +23,4 @@
 		SSmerchant.send_cargo_ship_back()
 	else if(SSmerchant.cargo_docked)
 		SSmerchant.prepare_cargo_shipment()
-	COOLDOWN_START(src, ring_bell, 3 MINUTES)
+	COOLDOWN_START(src, ring_bell, 2 MINUTES)
