@@ -27,13 +27,14 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/keyring/mage
 	r_hand = /obj/item/rogueweapon/woodstaff
+	neck = /obj/item/clothing/neck/roguetown/collar/leather/bell //:3
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest
 		backr = /obj/item/storage/backpack/rogue/satchel
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
-		armor = /obj/item/clothing/suit/roguetown/armor/workervest
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black //If girlmagi have to have sandals I'm giving them a dress
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)

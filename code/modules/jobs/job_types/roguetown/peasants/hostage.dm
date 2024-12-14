@@ -20,7 +20,7 @@
 
 /datum/outfit/job/roguetown/hostage/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/clothing/neck/roguetown/gorget/prisoner
+	neck = /obj/item/clothing/neck/roguetown/collar/leather/bell/cursed
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	id = /obj/item/clothing/ring/gold
 	if(H.mind)

@@ -59,6 +59,22 @@
 	result = /obj/item/kitchen/rollingpin
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
+/datum/crafting_recipe/roguetown/bellcollar
+	name = "leather collar with catbell"
+	result = /obj/item/clothing/neck/roguetown/collar/leather/bell
+	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell)
+	craftdiff = 0
+	verbage_simple = "affix"
+	verbage = "affixes"
+
+/datum/crafting_recipe/roguetown/bellcollar/cow
+	name = "leather collar with cowbell"
+	result = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
+	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell/cow)
+	craftdiff = 0
+	verbage_simple = "affix"
+	verbage = "affixes"
+
 /datum/crafting_recipe/roguetown/unclothbelt
 	name = "untie cloth belt"
 	result = /obj/item/natural/cloth
@@ -479,3 +495,14 @@
 	reqs = list(/obj/item/gun/ballistic/arquebus = 1)
 	craftdiff = 0
 	tools = list(/obj/item/rogueweapon/surgery/saw = 1)
+
+// Blacksmithing Recipes
+
+/datum/crafting_recipe/roguetown/gorget/oring
+	name = "ringed gorget"
+	skillcraft = /datum/skill/craft/blacksmithing
+	reqs = list(/obj/item/clothing/neck/roguetown/gorget = 1)
+	result = /obj/item/clothing/neck/roguetown/gorget/oring
+	craftdiff = 2
+	tools = list(/obj/item/rogueweapon/hammer = 1)
+	req_table = TRUE

@@ -129,6 +129,10 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
+/obj/item/clothing/neck/roguetown/gorget/oring
+	name = "ringed gorget"
+	desc = "An iron gorget to protect the neck, this one has an odd ring mounted on the front."
+
 /obj/item/clothing/neck/roguetown/leather
 	name = "hardened leather gorget"
 	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering."
@@ -142,22 +146,6 @@
 	sewrepair = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
-
-/obj/item/clothing/neck/roguetown/gorget/prisoner/Initialize()
-	. = ..()
-	name = "cursed collar"
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-	clothing_flags = null
-	icon = 'modular/icons/obj/items/leashes_collars.dmi'
-	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
-	icon_state = "collar_leather"
-	color = "#351101"
-
-/obj/item/clothing/neck/roguetown/gorget/prisoner/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
 
 /obj/item/clothing/neck/roguetown/gorget/alt
 	name = "vreccale"
@@ -318,7 +306,6 @@
 	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
 	icon_state = "collar_rope"
 	color = "#d7bb9f"
-	//dropshrink = 0.75
 	slot_flags = ITEM_SLOT_NECK
 	salvage_amount = 1
 	salvage_result = /obj/item/rope
@@ -327,8 +314,40 @@
 	name = "leather collar"
 	desc = ""
 	icon_state = "collar_leather"
-	color = "#442203"
-	//dropshrink = 0.75
+	color = null
 	slot_flags = ITEM_SLOT_NECK
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/neck/roguetown/collar/leather/bell
+	name = "jingly leather collar"
+	desc = ""
+	icon_state = "collar_leather_cat"
+	slot_flags = ITEM_SLOT_NECK
+	do_sound_bell = TRUE
+	salvage_amount = 1
+	salvage_result = list(/obj/item/natural/hide/cured, /obj/item/catbell)
+
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cow
+	name = "leather collar with cowbell"
+	desc = ""
+	icon_state = "collar_leather_cow"
+	slot_flags = ITEM_SLOT_NECK
+	salvage_amount = 1
+	salvage_result = list(/obj/item/natural/hide/cured, /obj/item/catbell/cow)
+
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cursed/Initialize(mapload)
+	. = ..()
+	name = "cursed collar"
+	resistance_flags = FIRE_PROOF
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	clothing_flags = ITEM_SLOT_NECK
+	icon = 'modular/icons/obj/items/leashes_collars.dmi'
+	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
+	icon_state = "collar_leather"
+
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cursed/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)

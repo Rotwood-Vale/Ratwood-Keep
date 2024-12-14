@@ -20,6 +20,11 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/cooking/pan
 
+/datum/anvil_recipe/tools/iron/catbell
+	name = "Catbell"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/catbell
+
 /datum/anvil_recipe/general/iron/keyring
 	name = "Keyrings 3x"
 	req_bar = /obj/item/ingot/iron
@@ -206,3 +211,12 @@
 	name = "Goblets 3x"
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden)
+
+// --------- COPPER RECIPES ----------
+
+/datum/anvil_recipe/general/cupsgold
+	name = "Cowbell"
+	req_bar = /obj/item/ingot/copper
+	created_item = list(/obj/item/catbell/cow)
+
+

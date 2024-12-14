@@ -32,6 +32,10 @@
 	var/toggle_cooldown = null
 	var/cooldown = 0
 
+	var/do_sound_bell = FALSE
+	var/do_sound_chain = FALSE
+	var/do_sound_plate = FALSE
+
 	var/emote_environment = -1
 	var/list/prevent_crits
 
@@ -237,6 +241,20 @@
 	if(prevent_crits)
 		if(prevent_crits.len)
 			has_inspect_verb = TRUE
+
+	if(do_sound_chain)
+		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/chain (1).ogg',\
+													'sound/foley/footsteps/armor/chain (2).ogg',\
+													'sound/foley/footsteps/armor/chain (3).ogg'), 100)
+	else if(do_sound_plate)
+		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/plate (1).ogg',\
+													'sound/foley/footsteps/armor/plate (2).ogg',\
+													'sound/foley/footsteps/armor/plate (3).ogg'), 100)
+	else if(do_sound_bell)
+		AddComponent(/datum/component/squeak, list('sound/items/collarbell1.ogg',\
+													'sound/items/collarbell2.ogg',\
+													'sound/items/collarbell3.ogg',\
+													'sound/items/collarbell4.ogg'), 50, 100) //Some of these are this kitty's very own collar bell :3 Guess which ones!
 
 /obj/item/clothing/MouseDrop(atom/over_object)
 	. = ..()
@@ -547,3 +565,6 @@ BLIND     // can't see anything
 		else
 			return FALSE
 	return TRUE
+
+/obj/item/clothing/proc/step_action() //this was made to rewrite clown shoes squeaking
+	SEND_SIGNAL(src, COMSIG_CLOTHING_STEP_ACTION)
