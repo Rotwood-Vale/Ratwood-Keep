@@ -124,10 +124,6 @@ SUBSYSTEM_DEF(ticker)
 					continue
 				music += S
 
-//	var/old_login_music = trim(file2text("data/last_round_lobby_music.txt"))
-//	if(music.len > 1)
-//		music -= old_login_music
-
 	for(var/S in music)
 		var/list/L = splittext(S,".")
 		if(L.len >= 2)
@@ -141,24 +137,6 @@ SUBSYSTEM_DEF(ticker)
 		login_music = pick(music)
 	else
 		login_music = "[global.config.directory]/title_music/sounds/[pick(music)]"
-
-
-
-	if(!GLOB.syndicate_code_phrase)
-		GLOB.syndicate_code_phrase	= generate_code_phrase(return_list=TRUE)
-
-		var/codewords = jointext(GLOB.syndicate_code_phrase, "|")
-		var/regex/codeword_match = new("([codewords])", "ig")
-
-		GLOB.syndicate_code_phrase_regex = codeword_match
-
-	if(!GLOB.syndicate_code_response)
-		GLOB.syndicate_code_response = generate_code_phrase(return_list=TRUE)
-
-		var/codewords = jointext(GLOB.syndicate_code_response, "|")
-		var/regex/codeword_match = new("([codewords])", "ig")
-
-		GLOB.syndicate_code_response_regex = codeword_match
 
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 	if(CONFIG_GET(flag/randomize_shift_time))
@@ -274,49 +252,6 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/setup()
 	message_admins(span_boldannounce("Starting game..."))
 	var/init_start = world.timeofday
-		//Create and announce mode
-	var/list/datum/game_mode/runnable_modes
-	if(GLOB.master_mode == "random" || GLOB.master_mode == "secret")
-		runnable_modes = config.get_runnable_modes()
-
-		if(GLOB.master_mode == "secret")
-			hide_mode = 1
-			if(GLOB.secret_force_mode != "secret")
-				var/datum/game_mode/smode = config.pick_mode(GLOB.secret_force_mode)
-				if(!smode.can_start())
-					message_admins(span_notice("Unable to force secret [GLOB.secret_force_mode]. [smode.required_players] players and [smode.required_enemies] eligible antagonists needed."))
-				else
-					mode = smode
-
-		if(!mode)
-			if(!runnable_modes.len)
-				message_admins("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
-				return 0
-			mode = pickweight(runnable_modes)
-			if(!mode)	//too few roundtypes all run too recently
-				mode = pick(runnable_modes)
-
-	else
-		mode = config.pick_mode(GLOB.master_mode)
-		if(!mode.can_start())
-			message_admins("<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players and [mode.required_enemies] eligible antagonists needed. Reverting to pre-game lobby.")
-			qdel(mode)
-			mode = null
-			SSjob.ResetOccupations()
-			return 0
-
-//	if(failedstarts >= 13)
-//		qdel(mode)
-//		mode = new /datum/game_mode/roguewar
-//		if(istype(C, /datum/game_mode/chaosmode))
-//			if(isrogueworld)
-//				C.allmig = TRUE
-//		else
-//
-//			else
-//				C.roguefight = TRUE
-//				isroguefight = TRUE
-
 #ifdef ROGUEWORLD
 	if(mode)
 		if(istype(mode, /datum/game_mode/chaosmode))
@@ -415,24 +350,15 @@ SUBSYSTEM_DEF(ticker)
 
 	SSdbcore.SetRoundStart()
 
-	message_admins(span_notice("<B>Welcome to [station_name()], enjoy your stay!</B>"))
-
 	for(var/client/C in GLOB.clients)
 		if(C.mob)
 			C.mob.playsound_local(C.mob, 'sound/misc/roundstart.ogg', 100, FALSE)
 
-//	SEND_SOUND(world, sound('sound/misc/roundstart.ogg'))
 	current_state = GAME_STATE_PLAYING
 
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
-/*
-	if(SSevents.holidays)
-		to_chat(world, span_notice("and..."))
-		for(var/holidayname in SSevents.holidays)
-			var/datum/holiday/holiday = SSevents.holidays[holidayname]
-			to_chat(world, "<h4>[holiday.greet()]</h4>")
-*/
+
 	PostSetup()
 	log_game("GAME SETUP: postsetup success")
 
@@ -646,54 +572,6 @@ SUBSYSTEM_DEF(ticker)
 			Master.SetRunLevel(RUNLEVEL_GAME)
 		if(GAME_STATE_FINISHED)
 			Master.SetRunLevel(RUNLEVEL_POSTGAME)
-
-/datum/controller/subsystem/ticker/proc/send_news_report()
-	var/news_message
-	var/news_source = "Nanotrasen News Network"
-	switch(news_report)
-		if(NUKE_SYNDICATE_BASE)
-			news_message = "In a daring raid, the heroic crew of [station_name()] detonated a nuclear device in the heart of a terrorist base."
-		if(STATION_DESTROYED_NUKE)
-			news_message = "We would like to reassure all employees that the reports of a Syndicate backed nuclear attack on [station_name()] are, in fact, a hoax. Have a secure day!"
-		if(STATION_EVACUATED)
-			news_message = "The crew of [station_name()] has been evacuated amid unconfirmed reports of enemy activity."
-		if(BLOB_WIN)
-			news_message = "[station_name()] was overcome by an unknown biological outbreak, killing all crew on board. Don't let it happen to you! Remember, a clean work station is a safe work station."
-		if(BLOB_NUKE)
-			news_message = "[station_name()] is currently undergoing decontanimation after a controlled burst of radiation was used to remove a biological ooze. All employees were safely evacuated prior, and are enjoying a relaxing vacation."
-		if(BLOB_DESTROYED)
-			news_message = "[station_name()] is currently undergoing decontamination procedures after the destruction of a biological hazard. As a reminder, any crew members experiencing cramps or bloating should report immediately to security for incineration."
-		if(CULT_ESCAPE)
-			news_message = "Security Alert: A group of religious fanatics have escaped from [station_name()]."
-		if(CULT_FAILURE)
-			news_message = "Following the dismantling of a restricted cult aboard [station_name()], we would like to remind all employees that worship outside of the Chapel is strictly prohibited, and cause for termination."
-		if(CULT_SUMMON)
-			news_message = "Company officials would like to clarify that [station_name()] was scheduled to be decommissioned following meteor damage earlier this year. Earlier reports of an unknowable eldritch horror were made in error."
-		if(NUKE_MISS)
-			news_message = "The Syndicate have bungled a terrorist attack [station_name()], detonating a nuclear weapon in empty space nearby."
-		if(OPERATIVES_KILLED)
-			news_message = "Repairs to [station_name()] are underway after an elite Syndicate death squad was wiped out by the crew."
-		if(OPERATIVE_SKIRMISH)
-			news_message = "A skirmish between security forces and Syndicate agents aboard [station_name()] ended with both sides bloodied but intact."
-		if(REVS_WIN)
-			news_message = "Company officials have reassured investors that despite a union led revolt aboard [station_name()] there will be no wage increases for workers."
-		if(REVS_LOSE)
-			news_message = "[station_name()] quickly put down a misguided attempt at mutiny. Remember, unionizing is illegal!"
-		if(WIZARD_KILLED)
-			news_message = "Tensions have flared with the Space Wizard Federation following the death of one of their members aboard [station_name()]."
-		if(STATION_NUKED)
-			news_message = "[station_name()] activated its self destruct device for unknown reasons. Attempts to clone the Captain so he can be arrested and executed are underway."
-		if(CLOCK_SUMMON)
-			news_message = "The garbled messages about hailing a mouse and strange energy readings from [station_name()] have been discovered to be an ill-advised, if thorough, prank by a clown."
-		if(CLOCK_SILICONS)
-			news_message = "The project started by [station_name()] to upgrade their silicon units with advanced equipment have been largely successful, though they have thus far refused to release schematics in a violation of company policy."
-		if(CLOCK_PROSELYTIZATION)
-			news_message = "The burst of energy released near [station_name()] has been confirmed as merely a test of a new weapon. However, due to an unexpected mechanical error, their communications system has been knocked offline."
-		if(SHUTTLE_HIJACK)
-			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
-
-	if(news_message)
-		send2otherserver(news_source, news_message,"News_Report")
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))

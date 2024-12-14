@@ -603,47 +603,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/toxins_special/on_mob_life(mob/living/M)
 	M.adjust_bodytemperature(15 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, BODYTEMP_NORMAL + 20) //310.15 is the normal bodytemp.
 	return ..()
-
-/datum/reagent/consumable/ethanol/beepsky_smash
-	name = "Beepsky Smash"
-	description = "Drink this and prepare for the LAW."
-	color = "#664300" // rgb: 102, 67, 0
-	boozepwr = 60 //THE FIST OF THE LAW IS STRONG AND HARD
-	quality = DRINK_GOOD
-	metabolization_rate = 0.5
-	taste_description = "JUSTICE"
-	glass_icon_state = "beepskysmashglass"
-	glass_name = "Beepsky Smash"
-	glass_desc = ""
-	overdose_threshold = 40
-	var/datum/brain_trauma/special/beepsky/B
-
-/datum/reagent/consumable/ethanol/beepsky_smash/on_mob_metabolize(mob/living/carbon/M)
-	if(HAS_TRAIT(M, TRAIT_ALCOHOL_TOLERANCE))
-		metabolization_rate = 0.8
-	if(!HAS_TRAIT(M.mind, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-		B = new()
-		M.gain_trauma(B, TRAUMA_RESILIENCE_ABSOLUTE)
-	..()
-
-/datum/reagent/consumable/ethanol/beepsky_smash/on_mob_life(mob/living/carbon/M)
-	M.Jitter(2)
-	if(HAS_TRAIT(M.mind, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-		M.adjustStaminaLoss(-10, 0)
-		if(prob(20))
-			new /datum/hallucination/items_other(M)
-	..()
-	. = 1
-
-/datum/reagent/consumable/ethanol/beepsky_smash/on_mob_end_metabolize(mob/living/carbon/M)
-	if(B)
-		QDEL_NULL(B)
-	return ..()
-
-/datum/reagent/consumable/ethanol/beepsky_smash/overdose_start(mob/living/carbon/M)
-	if(!HAS_TRAIT(M.mind, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-		M.gain_trauma(/datum/brain_trauma/mild/phobia/security, TRAUMA_RESILIENCE_BASIC)
-
+	
 /datum/reagent/consumable/ethanol/irish_cream
 	name = "Irish Cream"
 	description = "Whiskey-imbued cream, what else would you expect from the Irish?"

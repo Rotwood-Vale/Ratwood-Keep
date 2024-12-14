@@ -340,8 +340,6 @@
 	var/content
 	var/filename = C.roundend_report_file()
 	if(!previous)
-		var/list/report_parts = list(personal_report(C), GLOB.common_report)
-		content = report_parts.Join()
 		C.verbs -= /client/proc/show_previous_roundend_report
 		fdel(filename)
 		text2file(content, filename)
@@ -349,36 +347,7 @@
 		content = file2text(filename)
 	roundend_report.set_content(content)
 	roundend_report.stylesheets = list()
-//	roundend_report.add_stylesheet("roundend", 'html/browser/roundend.css')
-//	roundend_report.add_stylesheet("font-awesome", 'html/font-awesome/css/all.min.css')
 	roundend_report.open(FALSE)
-
-/datum/controller/subsystem/ticker/proc/personal_report(client/C, popcount)
-	var/list/parts = list()
-	var/mob/M = C.mob
-	if(M.mind && !isnewplayer(M))
-		if(M.stat != DEAD && !isbrain(M))
-			if(EMERGENCY_ESCAPED_OR_ENDGAMED)
-				if(!M.onCentCom() && !M.onSyndieBase())
-					parts += "<div class='panel stationborder'>"
-					parts += span_marooned("I managed to survive, but were marooned on [station_name()]...")
-				else
-					parts += "<div class='panel greenborder'>"
-					parts += span_greentext("I managed to survive the events on [station_name()] as [M.real_name].")
-			else
-				parts += "<div class='panel greenborder'>"
-				parts += span_greentext("I managed to survive the events on [station_name()] as [M.real_name].")
-
-		else
-			parts += "<div class='panel redborder'>"
-			parts += span_redtext("I did not survive the events on [station_name()]...")
-	else
-		parts += "<div class='panel stationborder'>"
-	parts += "<br>"
-	parts += GLOB.survivor_report
-	parts += "</div>"
-
-	return parts.Join()
 
 /datum/controller/subsystem/ticker/proc/players_report()
 	for(var/client/C in GLOB.clients)

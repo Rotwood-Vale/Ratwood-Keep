@@ -88,13 +88,7 @@
 	return
 
 /obj/structure/displaycase/attackby(obj/item/W, mob/user, params)
-	if(W.GetID() && !broken && openable)
-		if(allowed(user))
-			to_chat(user,  span_notice("I [open ? "close":"open"] [src]."))
-			toggle_lock(user)
-		else
-			to_chat(user,  span_alert("Access denied."))
-	else if(W.tool_behaviour == TOOL_WELDER && user.used_intent.type == INTENT_HELP && !broken)
+	if(W.tool_behaviour == TOOL_WELDER && user.used_intent.type == INTENT_HELP && !broken)
 		if(obj_integrity < max_integrity)
 			if(!W.tool_start_check(user, amount=5))
 				return

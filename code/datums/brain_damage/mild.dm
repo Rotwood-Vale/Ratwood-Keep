@@ -103,26 +103,6 @@
 
 	..()
 
-/datum/brain_trauma/mild/healthy
-	name = "Anosognosia"
-	desc = ""
-	scan_desc = ""
-	gain_text = span_notice("I feel great!")
-	lose_text = span_warning("I no longer feel perfectly healthy.")
-
-/datum/brain_trauma/mild/healthy/on_gain()
-	owner.set_screwyhud(SCREWYHUD_HEALTHY)
-	..()
-
-/datum/brain_trauma/mild/healthy/on_life()
-	owner.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
-	owner.adjustStaminaLoss(-5) //no pain, no fatigue
-	..()
-
-/datum/brain_trauma/mild/healthy/on_lose()
-	owner.set_screwyhud(SCREWYHUD_NONE)
-	..()
-
 /datum/brain_trauma/mild/muscle_weakness
 	name = "Muscle Weakness"
 	desc = ""

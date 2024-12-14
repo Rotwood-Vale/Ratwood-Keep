@@ -348,20 +348,6 @@
 	if(!visualsOnly && announce)
 		announce(H)
 
-/datum/job/proc/get_access()
-	if(!config)	//Needed for robots.
-		return src.minimal_access.Copy()
-
-	. = list()
-
-	if(CONFIG_GET(flag/jobs_have_minimal_access))
-		. = src.minimal_access.Copy()
-	else
-		. = src.access.Copy()
-
-	if(CONFIG_GET(flag/everyone_has_maint_access)) //Config has global maint access set
-		. |= list(ACCESS_MAINT_TUNNELS)
-
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
 	if(available_in_days(C) == 0)
@@ -402,9 +388,3 @@
 	var/datum/job/J = SSjob.GetJobType(jobtype)
 	if(!J)
 		J = SSjob.GetJob(H.job)
-
-//Warden and regular officers add this result to their get_access()
-/datum/job/proc/check_config_for_sec_maint()
-	if(CONFIG_GET(flag/security_has_maint_access))
-		return list(ACCESS_MAINT_TUNNELS)
-	return list()

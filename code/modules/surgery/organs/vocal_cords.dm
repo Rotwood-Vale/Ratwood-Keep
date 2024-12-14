@@ -266,12 +266,6 @@
 				power_multiplier *= 3
 			C.silent += (10 * power_multiplier)
 
-	//HALLUCINATE
-	else if((findtext(message, hallucinate_words)))
-		cooldown = COOLDOWN_MEME
-		for(var/mob/living/carbon/C in listeners)
-			new /datum/hallucination/delusion(C, TRUE, null,150 * power_multiplier,0)
-
 	//WAKE UP
 	else if((findtext(message, wakeup_words)))
 		cooldown = COOLDOWN_DAMAGE

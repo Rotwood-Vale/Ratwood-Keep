@@ -737,8 +737,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 /*
 Checks if that loc and dir has an item on the wall
 */
-GLOBAL_LIST_INIT(WALLITEMS, typecacheof(list(
-	/obj/structure/noticeboard,
+GLOBAL_LIST_INIT(WALLITEMS, typecacheof(list(,
 	/obj/structure/mirror,
 	/obj/structure/fireaxecabinet,
 	)))

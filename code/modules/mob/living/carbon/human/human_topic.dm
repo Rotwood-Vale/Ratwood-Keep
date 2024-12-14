@@ -201,10 +201,6 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			if(!H.wear_ring) //You require access from here on out.
 				to_chat(H, span_warning("ERROR: Invalid access"))
 				return
-			var/list/access = H.wear_ring.GetAccess()
-			if(!(ACCESS_MEDICAL in access))
-				to_chat(H, span_warning("ERROR: Invalid access"))
-				return
 			if(href_list["p_stat"])
 				var/health_status = input(usr, "Specify a new physical status for this person.", "Medical HUD", R.fields["p_stat"]) in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
 				if(!R)

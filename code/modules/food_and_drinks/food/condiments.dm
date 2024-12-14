@@ -64,10 +64,6 @@
 
 	. = ..()
 
-/obj/item/reagent_containers/food/condiment/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is trying to eat the entire [src]! It looks like [user.p_they()] forgot how food works!"))
-	return OXYLOSS
-
 /obj/item/reagent_containers/food/condiment/attack(mob/M, mob/user, def_zone)
 
 	if(!reagents || !reagents.total_volume)
@@ -114,11 +110,6 @@
 /obj/item/reagent_containers/food/condiment/on_reagent_change(changetype)
 	update_icon()
 
-/obj/item/reagent_containers/food/condiment/enzyme
-	name = "universal enzyme"
-	desc = ""
-	icon_state = "enzyme"
-	list_reagents = list(/datum/reagent/consumable/enzyme = 50)
 
 /obj/item/reagent_containers/food/condiment/sugar
 	name = "sugar sack"
@@ -136,20 +127,6 @@
 	amount_per_transfer_from_this = 1
 	volume = 20
 	list_reagents = list(/datum/reagent/consumable/sodiumchloride = 20)
-/*
-
-/obj/item/reagent_containers/food/condiment/saltshaker/afterattack(obj/target, mob/living/user, proximity)
-	. = ..()
-	if(!proximity)
-		return
-	if(isturf(target))
-		if(!reagents.has_reagent(/datum/reagent/consumable/sodiumchloride, 2))
-			to_chat(user, span_warning("I don't have enough salt to make a pile!"))
-			return
-		user.visible_message(span_notice("[user] shakes some salt onto [target]."), span_notice("I shake some salt onto [target]."))
-		reagents.remove_reagent(/datum/reagent/consumable/sodiumchloride, 2)
-		new/obj/effect/decal/cleanable/food/salt(target)
-		return*/
 
 /obj/item/reagent_containers/food/condiment/peppermill
 	name = "pepper mill"
@@ -177,116 +154,9 @@
 	item_state = "flour"
 	list_reagents = list(/datum/reagent/consumable/flour = 30)
 
-/obj/item/reagent_containers/food/condiment/soymilk
-	name = "soy milk"
-	desc = ""
-	icon_state = "soymilk"
-	item_state = "carton"
-	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
-	list_reagents = list(/datum/reagent/consumable/soymilk = 50)
-
 /obj/item/reagent_containers/food/condiment/rice
 	name = "rice sack"
 	desc = ""
 	icon_state = "rice"
 	item_state = "flour"
 	list_reagents = list(/datum/reagent/consumable/rice = 30)
-
-/obj/item/reagent_containers/food/condiment/soysauce
-	name = "soy sauce"
-	desc = ""
-	icon_state = "soysauce"
-	list_reagents = list(/datum/reagent/consumable/soysauce = 50)
-
-/obj/item/reagent_containers/food/condiment/mayonnaise
-	name = "mayonnaise"
-	desc = ""
-	icon_state = "mayonnaise"
-	list_reagents = list(/datum/reagent/consumable/mayonnaise = 50)
-
-
-
-//Food packs. To easily apply deadly toxi... delicious sauces to your food!
-
-/obj/item/reagent_containers/food/condiment/pack
-	name = "condiment pack"
-	desc = ""
-	icon_state = "condi_empty"
-	volume = 10
-	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list()
-	possible_states = list(
-		/datum/reagent/consumable/ketchup = list("condi_ketchup", "Ketchup", "You feel more American already."),
-		/datum/reagent/consumable/capsaicin = list("condi_hotsauce", "Hotsauce", "You can almost TASTE the stomach ulcers now!"),
-		/datum/reagent/consumable/soysauce = list("condi_soysauce", "Soy Sauce", "A salty soy-based flavoring"),
-		/datum/reagent/consumable/frostoil = list("condi_frostoil", "Coldsauce", "Leaves the tongue numb in it's passage"),
-		/datum/reagent/consumable/sodiumchloride = list("condi_salt", "Salt Shaker", "Salt. From space oceans, presumably"),
-		/datum/reagent/consumable/blackpepper = list("condi_pepper", "Pepper Mill", "Often used to flavor food or make people sneeze"),
-		/datum/reagent/consumable/cornoil = list("condi_cornoil", "Corn Oil", "A delicious oil used in cooking. Made from corn"),
-		/datum/reagent/consumable/sugar = list("condi_sugar", "Sugar", "Tasty spacey sugar!"),
-		/datum/reagent/consumable/astrotame = list("condi_astrotame", "Astrotame", "The sweetness of a thousand sugars but none of the calories."),
-		/datum/reagent/consumable/bbqsauce = list("condi_bbq", "BBQ sauce", "Hand wipes not included."),
-		)
-
-/obj/item/reagent_containers/food/condiment/pack/update_icon()
-	return
-
-/obj/item/reagent_containers/food/condiment/pack/attack(mob/M, mob/user, def_zone) //Can't feed these to people directly.
-	return
-
-/obj/item/reagent_containers/food/condiment/pack/afterattack(obj/target, mob/user , proximity)
-	. = ..()
-	if(!proximity)
-		return
-
-	//You can tear the bag open above food to put the condiments on it, obviously.
-	if(istype(target, /obj/item/reagent_containers/food/snacks))
-		if(!reagents.total_volume)
-			to_chat(user, span_warning("I tear open [src], but there's nothing in it."))
-			qdel(src)
-			return
-		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, span_warning("I tear open [src], but [target] is stacked so high that it just drips off!") )
-			qdel(src)
-			return
-		else
-			to_chat(user, span_notice("I tear open [src] above [target] and the condiments drip onto it."))
-			src.reagents.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
-			qdel(src)
-
-/obj/item/reagent_containers/food/condiment/pack/on_reagent_change(changetype)
-	if(reagents.reagent_list.len > 0)
-		var/main_reagent = reagents.get_master_reagent_id()
-		if(main_reagent in possible_states)
-			var/list/temp_list = possible_states[main_reagent]
-			icon_state = temp_list[1]
-			desc = temp_list[3]
-		else
-			icon_state = "condi_mixed"
-			desc = ""
-	else
-		icon_state = "condi_empty"
-		desc = ""
-
-//Ketchup
-/obj/item/reagent_containers/food/condiment/pack/ketchup
-	name = "ketchup pack"
-	originalname = "ketchup"
-	list_reagents = list(/datum/reagent/consumable/ketchup = 10)
-
-//Hot sauce
-/obj/item/reagent_containers/food/condiment/pack/hotsauce
-	name = "hotsauce pack"
-	originalname = "hotsauce"
-	list_reagents = list(/datum/reagent/consumable/capsaicin = 10)
-
-/obj/item/reagent_containers/food/condiment/pack/astrotame
-	name = "astrotame pack"
-	originalname = "astrotame"
-	list_reagents = list(/datum/reagent/consumable/astrotame = 5)
-
-/obj/item/reagent_containers/food/condiment/pack/bbqsauce
-	name = "bbq sauce pack"
-	originalname = "bbq sauce"
-	list_reagents = list(/datum/reagent/consumable/bbqsauce = 10)

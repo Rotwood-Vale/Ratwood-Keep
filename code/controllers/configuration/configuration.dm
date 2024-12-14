@@ -335,18 +335,6 @@ Example config:
 			else
 				log_config("Unknown command in map vote config: '[command]'")
 
-
-/datum/controller/configuration/proc/pick_mode(mode_name)
-	// I wish I didn't have to instance the game modes in order to look up
-	// their information, but it is the only way (at least that I know of).
-	// ^ This guy didn't try hard enough
-	for(var/T in gamemode_cache)
-		var/datum/game_mode/M = T
-		var/ct = initial(M.config_tag)
-		if(ct && ct == mode_name)
-			return new T
-	return new /datum/game_mode/extended()
-
 /datum/controller/configuration/proc/get_runnable_modes()
 	var/list/datum/game_mode/runnable_modes = new
 	var/list/probabilities = Get(/datum/config_entry/keyed_list/probability)

@@ -325,58 +325,6 @@
 	REMOVE_TRAIT(owner, TRAIT_MUTE, "gonbolaMute")
 	REMOVE_TRAIT(owner, TRAIT_JOLLY, "gonbolaJolly")
 
-/datum/status_effect/trance
-	id = "trance"
-	status_type = STATUS_EFFECT_UNIQUE
-	duration = 300
-	tick_interval = 10
-	examine_text = span_warning("SUBJECTPRONOUN seems slow and unfocused.")
-	var/stun = TRUE
-	alert_type = /atom/movable/screen/alert/status_effect/trance
-
-/atom/movable/screen/alert/status_effect/trance
-	name = "Trance"
-	desc = ""
-	icon_state = "high"
-
-/datum/status_effect/trance/tick()
-	if(stun)
-		owner.Stun(60, TRUE, TRUE)
-	owner.dizziness = 20
-
-/datum/status_effect/trance/on_apply()
-	if(!iscarbon(owner))
-		return FALSE
-	RegisterSignal(owner, COMSIG_MOVABLE_HEAR, PROC_REF(hypnotize))
-	ADD_TRAIT(owner, TRAIT_MUTE, "trance")
-	owner.add_client_colour(/datum/client_colour/monochrome/trance)
-	owner.visible_message("[stun ? span_warning("[owner] stands still as [owner.p_their()] eyes seem to focus on a distant point.") : ""]", \
-	span_warning("[pick("You feel my thoughts slow down...", "You suddenly feel extremely dizzy...", "You feel like you're in the middle of a dream...","You feel incredibly relaxed...")]"))
-	return TRUE
-
-/datum/status_effect/trance/on_creation(mob/living/new_owner, _duration, _stun = TRUE)
-	duration = _duration
-	stun = _stun
-	return ..()
-
-/datum/status_effect/trance/on_remove()
-	UnregisterSignal(owner, COMSIG_MOVABLE_HEAR)
-	REMOVE_TRAIT(owner, TRAIT_MUTE, "trance")
-	owner.dizziness = 0
-	owner.remove_client_colour(/datum/client_colour/monochrome/trance)
-	to_chat(owner, span_warning("I snap out of my trance!"))
-
-/datum/status_effect/trance/proc/hypnotize(datum/source, list/hearing_args)
-	if(!owner.can_hear())
-		return
-	if(hearing_args[HEARING_SPEAKER] == owner)
-		return
-	var/mob/living/carbon/C = owner
-	C.cure_trauma_type(/datum/brain_trauma/hypnosis, TRAUMA_RESILIENCE_SURGERY) //clear previous hypnosis
-	addtimer(CALLBACK(C, TYPE_PROC_REF(/mob/living/carbon, gain_trauma), /datum/brain_trauma/hypnosis, TRAUMA_RESILIENCE_SURGERY, hearing_args[HEARING_RAW_MESSAGE]), 10)
-	addtimer(CALLBACK(C, TYPE_PROC_REF(/mob/living, Stun), 60, TRUE, TRUE), 15) //Take some time to think about it
-	qdel(src)
-
 /datum/status_effect/spasms
 	id = "spasms"
 	status_type = STATUS_EFFECT_MULTIPLE

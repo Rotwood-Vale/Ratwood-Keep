@@ -537,12 +537,6 @@
 			return
 		A.admin_remove(usr)
 
-	if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in sortList(get_all_jobs())
-		if (!new_role)
-			return
-		assigned_role = new_role
-
 	else if (href_list["memory_edit"])
 		var/new_memo = copytext(sanitize(input("Write new memory", "Memory", memory) as null|message),1,MAX_MESSAGE_LEN)
 		if (isnull(new_memo))

@@ -58,14 +58,6 @@
 	UnregisterSignal(C, COMSIG_ATOM_EMAG_ACT)
 	UnregisterSignal(C, COMSIG_ATOM_EMP_ACT)
 
-/datum/species/ethereal/random_name(gender,unique,lastname)
-	if(unique)
-		return random_unique_ethereal_name()
-
-	var/randname = ethereal_name()
-
-	return randname
-
 /datum/species/ethereal/spec_updatehealth(mob/living/carbon/human/H)
 	.=..()
 	if(H.stat != DEAD && !EMPeffect)

@@ -32,24 +32,3 @@
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/lizard
 		)
-
-/datum/species/lizard/random_name(gender,unique,lastname)
-	if(unique)
-		return random_unique_lizard_name(gender)
-
-	var/randname = lizard_name(gender)
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
-
-/*
- Lizard subspecies: ASHWALKERS
-*/
-/datum/species/lizard/ashwalker
-	name = "Ash Walker"
-	id = "ashlizard"
-	limbs_id = "lizard"
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE)
-	inherent_traits = list(TRAIT_CHUNKYFINGERS,TRAIT_NOBREATH)
