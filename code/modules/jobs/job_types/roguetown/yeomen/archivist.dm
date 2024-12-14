@@ -15,7 +15,7 @@
 	spells = list(/obj/effect/proc_holder/spell/invoked/teach, /obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation, /obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/invoked/message)
 	display_order = JDO_ARCHIVIST
 	give_bank_account = 25
-	min_pq = 5 //the player should actually have some experience to properly play the role
+	min_pq = 0 //the player should actually have some experience to properly play the role
 	max_pq = null
 
 /datum/outfit/job/roguetown/archivist
@@ -78,6 +78,7 @@
 	releasedrain = 30
 	chargedrain = 0
 	chargetime = 0
+	charge_max = 30 SECONDS
 	antimagic_allowed = TRUE
 
 /obj/effect/proc_holder/spell/invoked/teach/cast(list/targets, mob/user = usr)
@@ -102,7 +103,7 @@
 	for(var/i = 1, i <= skill_choices.len, i++)
 		choices["[skill_choices[i].name]"] = skill_choices[i]
 
-	var/teachingtime = 10 SECONDS
+	var/teachingtime = 30 SECONDS
 
 	if(isliving(targets[1]))
 		var/mob/living/L = targets[1]
@@ -111,35 +112,48 @@
 			return
 		else
 			if(L in range(1, usr))
-				var/chosen_skill = input(L, "Choose a skill (You must have no less than novice and no more than expert in selected skill)") as null|anything in choices
-				var/datum/skill/item = choices[chosen_skill]
 				to_chat(usr, span_notice("My student needs some time to select a lesson."))
+				var/chosen_skill = input(L, "Choose a skill (You must have no more than expert in selected skill)") as null|anything in choices
+				var/datum/skill/item = choices[chosen_skill]
 				if(!item)
-					return     // user canceled
-				if(alert(L, "Are you sure you want to study [item.name]?", "learning", "Learn", "Cancel") == "Cancel")
+					return  // student canceled
+				if(alert(L, "Are you sure you want to study [item.name]?", "Learning", "Learn", "Cancel") == "Cancel")
 					return
 				if(HAS_TRAIT(L, TRAIT_STUDENT))
 					to_chat(L, span_warning("There's no way I could handle all that knowledge!"))
 					to_chat(usr, span_warning("My student cannot handle that much knowledge at once!"))
-					return // cannot teach the same target twice
-				if(L.mind?.get_skill_level(item) < SKILL_LEVEL_NOVICE)
-					to_chat(L, span_warning("I am not skilled enough to understand what I am being taught!"))
-					to_chat(usr, span_warning("I try teaching [L] but my student couldnt grasp the lesson!"))
+					return // cannot teach the same student twice
+				if(item == /datum/skill/magic/arcane && L.mind?.get_skill_level(item) < SKILL_LEVEL_NOVICE)
+					to_chat(L, span_warning("I cannot comprehend [item.name]!"))
+					to_chat(usr, span_warning("I try teaching [L] [item.name] but my student couldnt grasp the lesson!"))
 					return
-				if(L.mind?.get_skill_level(item) > SKILL_LEVEL_MASTER)
+				if(L.mind?.get_skill_level(item) > SKILL_LEVEL_EXPERT)
 					to_chat(L, span_warning("There's nothing I can learn from that person!"))
 					to_chat(usr, span_warning("Am I really supposed to be the teacher there?"))
-					return // target must have the skill between novice and expert for the sake of balance
+					return // a student with master or legendary skill have nothing to learn from the scholar
 				else
-					if(do_after(usr, teachingtime, target = L))
-						user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
-						to_chat(usr, span_notice("My student grows more proficient in [item.name]!"))
-						L.mind?.adjust_skillrank(item, 1, FALSE)
-						ADD_TRAIT(L, TRAIT_STUDENT, "[type]")
-					else
-						to_chat(usr, span_warning("[L] got distracted and wandered off!"))
-						to_chat(L, span_warning("I must be more focused on my studies!"))
-						return	
+					to_chat(L, span_notice("[usr] starts teaching me on the subject!"))
+					to_chat(usr, span_notice("[L] gets to listen carefully to my lesson"))
+					if(L.mind?.get_skill_level(item) < SKILL_LEVEL_APPRENTICE) // +2 skill levels if novice or no skill at all
+						if(do_after(usr, teachingtime, target = L))
+							user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
+							to_chat(usr, span_notice("My student grows a lot more proficient in [item.name]!"))
+							L.mind?.adjust_skillrank(item, 2, FALSE)
+							ADD_TRAIT(L, TRAIT_STUDENT, "[type]")
+						else
+							to_chat(usr, span_warning("[L] got distracted and wandered off!"))
+							to_chat(L, span_warning("I must be more focused on my studies!"))
+							return	
+					else  // +1 skill level if apprentice or better
+						if(do_after(usr, teachingtime, target = L))
+							user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
+							to_chat(usr, span_notice("My student grows more proficient in [item.name]!"))
+							L.mind?.adjust_skillrank(item, 1, FALSE)
+							ADD_TRAIT(L, TRAIT_STUDENT, "[type]")
+						else
+							to_chat(usr, span_warning("[L] got distracted and wandered off!"))
+							to_chat(L, span_warning("I must be more focused on my studies!"))
+							return	
 			else
 				to_chat(usr, span_warning("My student can barely hear me from there."))
 				return
