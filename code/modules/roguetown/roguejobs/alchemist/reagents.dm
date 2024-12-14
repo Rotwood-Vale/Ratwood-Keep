@@ -77,6 +77,14 @@
 	color = "#ebebeb"
 	taste_description = "salty and tangy"
 	metabolization_rate = 0.1
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
+			H.adjust_hydration(30)
+			H.adjust_nutrition(35)
+		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
+			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	..()
 
 /datum/crafting_recipe/roguetown/cooking/soap
 	name = "soap"
