@@ -75,10 +75,6 @@
 #define TESTING
 #endif
 
-// A reasonable number of maximum overlays an object needs
-// If you think you need more, rethink it
-#define MAX_ATOM_OVERLAYS 100
-
 //Disable unimplemented proc/var warnings
 #ifdef OPENDREAM
 #pragma UnimplementedAccess disable
