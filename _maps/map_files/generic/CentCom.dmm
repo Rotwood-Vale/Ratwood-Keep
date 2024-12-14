@@ -2876,6 +2876,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 4
 	},
+/mob/living/simple_animal/hostile/retaliate/rogue/swiper,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/banditcamp)
 "IR" = (

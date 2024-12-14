@@ -32,7 +32,8 @@
 			/obj/item/clothing/suit/roguetown/armor/gambeson,
 			/obj/item/clothing/suit/roguetown/armor/armordress,
 			/obj/item/storage,
-			/obj/item/bedroll
+			/obj/item/bedroll,
+			/obj/item/clothing/under/roguetown/loincloth
 			)
 	var/activecolor = "#FFFFFF"
 	var/static/list/selectable_colors = list(
