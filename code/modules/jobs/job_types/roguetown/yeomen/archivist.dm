@@ -67,7 +67,7 @@
 			H.change_stat("intelligence", 1)
 		H.mind.adjust_spellpoints(-2)
 
-/datum/outfit/job/roguetown/templar/post_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/archivist/post_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE
 
