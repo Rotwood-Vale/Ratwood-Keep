@@ -37,10 +37,11 @@
 /datum/ai_behavior/find_and_set/edible/search_tactic(datum/ai_controller/controller, locate_path, search_range)
 	var/mob/living/living_pawn = controller.pawn
 	var/list/food_candidates = list()
-	for(var/held_candidate as anything in living_pawn.held_items)
+
+	/*for(var/held_candidate as anything in living_pawn.held_items) //In hands check
 		if(!held_candidate || !istype(held_candidate, /obj/item/reagent_containers/food))
 			continue
-		food_candidates += held_candidate
+		food_candidates += held_candidate*/
 	var/list/local_results = locate(locate_path) in oview(search_range, controller.pawn)
 	for(var/local_candidate in local_results)
 		if(!istype(local_candidate, /obj/item/reagent_containers/food))

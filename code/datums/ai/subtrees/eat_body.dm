@@ -4,8 +4,8 @@
 /datum/ai_planning_subtree/eat_dead_body/SelectBehaviors(datum/ai_controller/controller, delta_time)
 	. = ..()
 	var/atom/target = controller.blackboard[BB_BASIC_MOB_FOOD_TARGET]
-	if(QDELETED(target))
-		return
+	if(QDELETED(target) || 	!ismob(target)) //Bodies only
+		return FALSE
 	var/mob/living/pawn = controller.pawn
 	if(pawn.doing)
 		return

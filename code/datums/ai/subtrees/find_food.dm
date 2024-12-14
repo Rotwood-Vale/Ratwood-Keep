@@ -34,7 +34,7 @@
 	vision_range = 7
 
 /datum/ai_planning_subtree/find_food/rat
-	vision_range = 2
+	vision_range = 3
 
 /datum/ai_planning_subtree/find_food/spider
 	vision_range = 5

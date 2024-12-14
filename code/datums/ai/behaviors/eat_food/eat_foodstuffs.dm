@@ -1,3 +1,4 @@
+//For mobs who only eat actual food, not carrion/scavengers who eat all (hide, bones, etc)
 /datum/ai_behavior/eat_food
 	required_distance = 1
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT

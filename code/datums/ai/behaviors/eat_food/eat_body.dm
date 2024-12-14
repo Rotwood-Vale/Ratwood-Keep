@@ -1,3 +1,5 @@
+///Since we aren't eating anything with a ckey, if a mob finds a player corpse it will congregate around it without eating it.
+/// as well as ignoring other bodies around it.
 /datum/ai_behavior/eat_dead_body
 	action_cooldown = 1.5 SECONDS
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
@@ -19,26 +21,28 @@
 
 	var/hiding_target = targetting_datum.find_hidden_mobs(living_pawn, target) //If this is valid, theyre hidden in something!
 
-	if(QDELETED(living_pawn))
+
+
+	if(QDELETED(living_pawn) || QDELETED(target) || !isnull(target.ckey)) //We don't want to eat anything with a ckey
 		return
 
 	controller.set_blackboard_key(hiding_location_key, hiding_target)
 
 	living_pawn.face_atom()
 	living_pawn.visible_message(span_danger("[living_pawn] starts to rip apart [target]!"))
-	if(do_after(living_pawn, 10 SECONDS, target = target))
+	if(do_after(living_pawn, 10 SECONDS, target = target)) // Eating time
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			var/obj/item/bodypart/limb
 			var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			for(var/zone in limb_list)
 				limb = C.get_bodypart(zone)
-				if(limb)
+				if(limb && prob(10)) //10% chance for limbs to appear and be dismembered
 					limb.dismember()
 					finish_action(controller, TRUE)
 					return
 			limb = C.get_bodypart(BODY_ZONE_HEAD)
-			if(limb)
+			if(limb)				  // Head is always 100% 
 				limb.dismember()
 				finish_action(controller, TRUE)
 				return

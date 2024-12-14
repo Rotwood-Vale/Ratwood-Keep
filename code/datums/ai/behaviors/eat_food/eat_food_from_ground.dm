@@ -28,12 +28,15 @@
 		if(mob.food == mob.food_max && !mob.eat_forever) 
 			return
 //Eat food below
-		living_pawn.visible_message(span_danger("[living_pawn] munches on [target]!"))
-		playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
-		qdel(target) //Actually 'eat'
-		mob.food = max(mob.food + 30, 100) 
 
-	finish_action(controller, TRUE)
+		living_pawn.visible_message(span_danger("[living_pawn] munches on [target]!"))
+		if(do_after(mob, 5 SECONDS, target = target))
+			playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
+			qdel(target) //Actually 'eat'
+			mob.food = max(mob.food + 30, 100) 
+			finish_action(controller, TRUE)
+
+	finish_action(controller, FALSE)
 
 
 /datum/ai_behavior/eat_food_from_ground/finish_action(datum/ai_controller/controller, succeeded, target_key, targetting_datum_key, hiding_location_key)
