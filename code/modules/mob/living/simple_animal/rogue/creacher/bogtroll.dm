@@ -11,13 +11,13 @@
 	turns_per_move = 3
 	see_in_dark = 10
 	move_to_delay = 3
-	base_intents = list(/datum/intent/unarmed/punch)
+	base_intents = list(/datum/intent/unarmed/punch/troll_fists)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 15,
 						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3)
 	faction = list("trolls")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 150
-	maxHealth = 200
+	health = 200
+	maxHealth = 250
 	melee_damage_lower = 45
 	melee_damage_upper = 70
 	vision_range = 2

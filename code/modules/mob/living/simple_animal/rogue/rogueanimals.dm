@@ -201,7 +201,7 @@
 	. = ..()
 	if(.)
 		if(enemies.len)
-			if(prob(5))
+			if(prob(4))
 				emote("cidle")
 			if(prob(deaggroprob))
 				if(mob_timers["aggro_time"])

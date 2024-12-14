@@ -35,7 +35,7 @@
 /datum/ai_behavior/find_and_set/edible
 
 /datum/ai_behavior/find_and_set/edible/search_tactic(datum/ai_controller/controller, locate_path, search_range)
-	var/mob/living/living_pawn = controller.pawn
+	//var/mob/living/living_pawn = controller.pawn //used when checking hands
 	var/list/food_candidates = list()
 
 	/*for(var/held_candidate as anything in living_pawn.held_items) //In hands check

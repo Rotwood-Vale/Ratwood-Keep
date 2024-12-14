@@ -8,10 +8,10 @@
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 4
 	see_in_dark = 10
-	move_to_delay = 3
-	base_intents = list(/datum/intent/unarmed/punch)
+	move_to_delay = 2
+	base_intents = list(/datum/intent/unarmed/punch/troll_fists)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 15,
 						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3)
 	faction = list("trolls")
@@ -121,3 +121,6 @@
 			return "foreleg"
 	return ..()
 
+/datum/intent/unarmed/punch/troll_fists
+	clickcd = CLICK_CD_MELEE * 0.80 //It is a troll so it can probably swing fast.
+	penfactor = 30 // A troll punching you with it's troll hands.

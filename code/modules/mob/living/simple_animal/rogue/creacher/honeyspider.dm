@@ -28,8 +28,7 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks, 
 					/obj/item/bodypart, 
 					/obj/item/organ, 
-					/obj/item/natural/bone, 
-					/obj/item/natural/hide)
+					)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
 	STACON = 6
