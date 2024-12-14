@@ -32,8 +32,7 @@
 	var/until_destination = FALSE
 
 /datum/ai_behavior/run_away_from_target/setup(datum/ai_controller/controller, target_key, hiding_location_key)
-	var/datum/weakref/weak_target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
-	var/atom/target = weak_target?.resolve()
+	var/atom/target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
 	if(!target)
 		return FALSE
 
@@ -42,8 +41,7 @@
 
 /datum/ai_behavior/run_away_from_target/perform(delta_time, datum/ai_controller/controller, target_key, hiding_location_key)
 	. = ..()
-	var/datum/weakref/weak_target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
-	var/atom/target = weak_target?.resolve()
+	var/atom/target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
 	var/escaped =  !target || !can_see(controller.pawn, target, run_distance) // If we can't see it we got away
 	if (escaped)
 		finish_action(controller, succeeded = TRUE)

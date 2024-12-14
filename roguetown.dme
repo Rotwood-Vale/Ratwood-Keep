@@ -449,7 +449,6 @@
 #include "code\datums\ai\behaviours\hostile\find_potential_targets.dm"
 #include "code\datums\ai\behaviours\hostile\melee_attack.dm"
 #include "code\datums\ai\controllers\big_rat.dm"
-#include "code\datums\ai\controllers\deadite.dm"
 #include "code\datums\ai\controllers\mimic.dm"
 #include "code\datums\ai\controllers\minoutaur.dm"
 #include "code\datums\ai\controllers\mole.dm"
