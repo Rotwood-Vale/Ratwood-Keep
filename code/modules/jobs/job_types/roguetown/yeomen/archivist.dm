@@ -111,8 +111,9 @@
 			return
 		else
 			if(L in range(1, usr))
-				var/chosen_skill = input(L, "Choose a skill") as null|anything in choices
+				var/chosen_skill = input(L, "Choose a skill (You must have no less than novice and no more than expert in selected skill)") as null|anything in choices
 				var/datum/skill/item = choices[chosen_skill]
+				to_chat(usr, span_notice("My student needs some time to select a lesson."))
 				if(!item)
 					return     // user canceled
 				if(alert(L, "Are you sure you want to study [item.name]?", "learning", "Learn", "Cancel") == "Cancel")
@@ -132,6 +133,7 @@
 				else
 					if(do_after(usr, teachingtime, target = L))
 						user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
+						to_chat(usr, span_notice("My student grows more proficient in [item.name]!"))
 						L.mind?.adjust_skillrank(item, 1, FALSE)
 						ADD_TRAIT(L, TRAIT_STUDENT, "[type]")
 					else
