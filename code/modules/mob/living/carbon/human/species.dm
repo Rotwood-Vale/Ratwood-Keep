@@ -8,6 +8,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/clothes_id //id for clothes
 	var/name	// this is the fluff name. these will be left generic (such as 'Lizardperson' for the lizard race) so servers can change them to whatever
 	var/desc
+	var/expanded_desc //For the species blurb window.
 	var/default_color = "#FFF"	// if alien colors are disabled, this is the color that will be used by that race
 	var/limbs_icon_m
 	var/limbs_icon_f
@@ -2246,3 +2247,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/modifier = -distance
 	if(!prob(STASPD+skill_modifier+modifier))
 		Paralyze(15)
+
+/client/proc/view_species_info(species_info)
+	var/datum/browser/popup = new(src.mob, "species_info", "<center>BESTIARY</center>", 460, 550)
+	popup.set_content(species_info)
+	popup.open()

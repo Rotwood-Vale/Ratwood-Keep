@@ -5,13 +5,25 @@
 	name = "Axian"
 	id = "akula"
 	desc = "<b>Axian</b><br>\
-	Axians are a proud, shark-like people that have a heritage founded in maritime trade, \
-	tax evasion, and piracy. They have a strong distaste for the nobility and taxation, \
-	making them a target of discrimination in Ratwood. They are oftentimes scapegoats for crime. \
-	Due to their penchant for trade and travel, they can be found all over the world, oftentimes \
-	seeing places many could not even dream of. They look down at those they considered the 'settled' \
-	and often uproot themselves quite often in their lifetimes. However, due to the isolation in Ratwood, many Axians \
-	find their sanity being clawed away as they find themselves stuck in one place."
+	Axians are a proud, shark-like people that have a heritage founded in maritime trade, tax evasion, and piracy. \
+	While known for being strong in spirit and promoting robust commercial practices, they have gained infamy for \
+	possessing an intense distaste for both the nobility and taxes, making them a prime target of discrimination and suspicion."
+	expanded_desc =	"Axians are a proud, shark-like people that have a heritage founded in maritime trade, tax evasion, and piracy. While known for \
+	being strong in spirit and promoting robust commercial practices, they have gained infamy for possessing an intense distaste for \
+	both the nobility and taxes, making them a prime target of discrimination and suspicion. They are oftentimes scapegoats for crime \
+	and are often blamed for any signs of dissent, oftentimes becoming the first to be persecuted for any rebellious activities present \
+	in the region. Furthermore, they often are accused of being Matthiosan, oftentimes having their assets forcibly seized by opportunistic schemers. \
+	<br><br> \
+	Due to their penchant for trade, travel, and being kicked out of various kingdoms, they can be found all over the world, oftentimes \
+	seeing places most could not even dream of. They look down at those they considered the \"settled\" and often uproot themselves quite \
+	often in their lifetimes, particularly when it proves to be most profitable. However, many Axians often find their sanity being clawed \
+	away as they sometimes find themselves stuck in one place. \
+	<br><br> \
+	Axians were once unified under the Grand Ainoan Republic but have since scattered in recent times. Ainoa was a dominant maritime power, \
+	controlling key trade goods and routes that rivaled those of Giza and the Zybantinians. However, the disruption of the slave trade following \
+	the Great Sissean Uprisings plunged the republic into economic and moral chaos with many leaders accused of Matthiosan worship. This turmoil \
+	eventually sparked the brutal Ainoan Crusade, splintering the republic into several rump states led by merchant warlords and so-called pirate kings. \
+	However, instead of trying to reclaim the glory of the past, Axians embrace their new lifestyle and thrive in the chaos."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WATERBREATHING)

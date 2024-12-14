@@ -195,13 +195,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	menuoptions = list()
 	return
 
-/datum/preferences/proc/set_new_race(datum/species/new_race, user)
+/datum/preferences/proc/set_new_race(datum/species/new_race, mob/user)
 	pref_species = new_race
 	real_name = pref_species.random_name(gender,1)
 	ResetJobs()
 	if(user)
 		if(pref_species.desc)
 			to_chat(user, "[pref_species.desc]")
+		if(pref_species.expanded_desc)
+			to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Read More</a>")
 		to_chat(user, "<font color='red'>Classes reset.</font>")
 	random_character(gender)
 	accessory = "Nothing"
