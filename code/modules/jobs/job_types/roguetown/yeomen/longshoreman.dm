@@ -33,11 +33,11 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/leather
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/sword/cutlass
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
-	backpack_contents = list(/obj/item/storage/keyring/harbormaster = 1)
+	backpack_contents = list(/obj/item/storage/keyring/harbormaster = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
