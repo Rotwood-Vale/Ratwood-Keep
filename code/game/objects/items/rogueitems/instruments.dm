@@ -174,7 +174,8 @@
 	"Eora Doth Watches" = 'sound/music/instruments/harb (3).ogg',
 	"Her Arms Caress Me" = 'sound/music/instruments/harb (4).ogg',
 	"Dance Between the Sheets" = 'sound/music/instruments/harb (5).ogg',
-	"A Mother's Affection" = 'sound/music/instruments/harb (6).ogg')
+	"A Mother's Affection" = 'sound/music/instruments/harb (6).ogg',
+	"Nightmaiden's Lullaby" = 'sound/music/instruments/harb (7).ogg')
 
 /obj/item/rogue/instrument/flute
 	name = "flute"
