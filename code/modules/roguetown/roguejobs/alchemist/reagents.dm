@@ -70,18 +70,20 @@
 		M.adjustToxLoss(3, 0)
 	return ..()
 
-/datum/reagent/erpjuice/cum/on_mob_life(mob/living/carbon/M)
+/datum/reagent/erpjuice/cum
 	name = "Erotic Fluid"
 	description = "A thick, sticky, cream like fluid. produced during an orgasm."
 	reagent_state = LIQUID
 	color = "#ebebeb"
 	taste_description = "salty and tangy"
 	metabolization_rate = 0.1
+
+/datum/reagent/erpjuice/cum/on_mob_life(mob/living/carbon/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
-			H.adjust_hydration(30)
-			H.adjust_nutrition(35)
+			H.adjust_hydration(50)
+			H.adjust_nutrition(50)
 		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
 	..()
