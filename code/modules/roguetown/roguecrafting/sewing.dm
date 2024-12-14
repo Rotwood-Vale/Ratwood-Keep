@@ -57,13 +57,13 @@
 	name = "rope collar (rope) - (1 rope; NONE)"
 	result = list(/obj/item/clothing/neck/roguetown/collar = 1)
 	reqs = list(/obj/item/rope = 1)
-	craftdiff = 0
+	skill_level = 0
 	
 /datum/crafting_recipe/roguetown/sewing/leash
 	name = "rope leash (rope) - (1 rope; NONE)"
 	result = list(/obj/item/leash = 1)
 	reqs = list(/obj/item/rope = 1)
-	craftdiff = 0
+	skill_level = 0
 
 /* craftdif of 1 = NOVICE */
 
@@ -485,7 +485,7 @@
 	name = "leather belt (leather; APPRENTICE)"
 	result = /obj/item/clothing/neck/roguetown/collar/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/sewing/bandana
 	name = "leather bandana (leather; APPRENTICE)"

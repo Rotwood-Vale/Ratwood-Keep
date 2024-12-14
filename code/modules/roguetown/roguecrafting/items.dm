@@ -63,7 +63,7 @@
 	name = "leather collar with catbell"
 	result = /obj/item/clothing/neck/roguetown/collar/leather/bell
 	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell)
-	craftdiff = 0
+	skill_level = 0
 	verbage_simple = "affix"
 	verbage = "affixes"
 
@@ -71,7 +71,7 @@
 	name = "leather collar with cowbell"
 	result = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
 	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell/cow)
-	craftdiff = 0
+	skill_level = 0
 	verbage_simple = "affix"
 	verbage = "affixes"
 
@@ -504,7 +504,7 @@
 	skillcraft = /datum/skill/craft/blacksmithing
 	reqs = list(/obj/item/clothing/neck/roguetown/gorget = 1)
 	result = /obj/item/clothing/neck/roguetown/gorget/oring
-	craftdiff = 2
+	skill_level = 2
 	tools = list(/obj/item/rogueweapon/hammer = 1)
 	req_table = TRUE
 
