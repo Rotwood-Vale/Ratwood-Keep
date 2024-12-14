@@ -43,6 +43,12 @@
 		if(!findname(.))
 			break
 
+/proc/random_unique_lizard_name(gender, attempts_to_find_unique_name=10)
+	for(var/i in 1 to attempts_to_find_unique_name)
+		. = capitalize(lizard_name(gender))
+
+		if(!findname(.))
+			break
 
 GLOBAL_LIST_INIT(skin_tones, sortList(list(
 	"skin1" = "ffe0d1",
