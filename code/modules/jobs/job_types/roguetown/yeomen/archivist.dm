@@ -74,7 +74,7 @@
 //A spell to teach other characters new skills
 /obj/effect/proc_holder/spell/invoked/teach
 	name = "The Tutor's Calling"
-	overlay_state = "book1"
+	overlay_state = "book3"
 	releasedrain = 30
 	chargedrain = 0
 	chargetime = 0
