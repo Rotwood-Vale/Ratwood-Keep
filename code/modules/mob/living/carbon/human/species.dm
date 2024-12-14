@@ -854,7 +854,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(num_legs < 2)
 				return FALSE
 			return TRUE
-			
 		if(SLOT_IN_BACKPACK)
 			testing("STARTYES")
 			if(H.backr)

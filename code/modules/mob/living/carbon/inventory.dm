@@ -12,7 +12,6 @@
 			return handcuffed
 		if(SLOT_LEGCUFFED)
 			return legcuffed
-			
 	return null
 
 /mob/living/carbon/proc/equip_in_one_of_slots(obj/item/I, list/slots, qdel_on_fail = 1)
@@ -129,7 +128,6 @@
 		legcuffed = null
 		if(!QDELETED(src))
 			update_inv_legcuffed()
-
 
 //handle stuff to update when a mob equips/unequips a mask.
 /mob/living/proc/wear_mask_update(obj/item/I, toggle_off = 1)

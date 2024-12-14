@@ -161,7 +161,6 @@
 	if(legcuffed)
 		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>Remove [legcuffed]</A></td></tr>"
 
-
 	dat += "<tr><td><hr></td></tr>"
 
 	for(var/i in 1 to held_items.len)
