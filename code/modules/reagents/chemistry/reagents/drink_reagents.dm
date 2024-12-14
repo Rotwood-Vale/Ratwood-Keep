@@ -238,6 +238,25 @@
 			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
 	..()
 
+/datum/reagent/erpjuice/cum
+	name = "Erotic Fluid"
+	description = "A thick, sticky, cream like fluid. produced during an orgasm."
+	color = "#e9e6e6" 
+	taste_description = "salty and tangy"
+	glass_icon_state = "glass_white"
+	glass_name = "glass of cum"
+	glass_desc = ""
+
+/datum/reagent/erpjuice/cum/on_mob_life(mob/living/carbon/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
+			H.adjust_hydration(0.2)
+			H.adjust_nutrition(0.1)
+		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
+			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	..()
+
 /datum/reagent/consumable/soymilk
 	name = "Soy Milk"
 	description = "An opaque white liquid made from soybeans."
