@@ -256,7 +256,7 @@
 		AddComponent(/datum/component/squeak, list('sound/items/collarbell1.ogg',\
 													'sound/items/collarbell2.ogg',\
 													'sound/items/collarbell3.ogg',\
-													'sound/items/collarbell4.ogg'), 50, 100) //Some of these are this kitty's very own collar bell :3 Guess which ones!
+													'sound/items/collarbell4.ogg'), 50, 100, 1) //Some of these are this kitty's very own collar bell :3 Guess which ones!
 
 /obj/item/clothing/MouseDrop(atom/over_object)
 	. = ..()

@@ -398,6 +398,7 @@
 													'sound/items/collarbell2.ogg',\
 													'sound/items/collarbell3.ogg',\
 													'sound/items/collarbell4.ogg'), 50, 100)
+													'sound/items/collarbell4.ogg'), 50, 100, 1)
 				if(istype(src, /obj/item/catbell/cow))
 					collar.icon_state = "collar_leather_cow"
 					C.update_inv_neck()
