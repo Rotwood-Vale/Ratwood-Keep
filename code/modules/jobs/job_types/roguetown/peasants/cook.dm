@@ -33,7 +33,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/key/tavern
-	belt2 = /obj/item/rogueweapon/huntingknife
+	beltr = /obj/item/rogueweapon/huntingknife
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/flint,/obj/item/natural/cloth/)
 	if(H.gender == MALE)
