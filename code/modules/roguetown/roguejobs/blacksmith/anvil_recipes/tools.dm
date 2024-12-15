@@ -214,7 +214,7 @@
 
 // --------- COPPER RECIPES ----------
 
-/datum/anvil_recipe/general/cupsgold
+/datum/anvil_recipe/general/cowbell
 	name = "Cowbell"
 	req_bar = /obj/item/ingot/copper
 	created_item = list(/obj/item/catbell/cow)
