@@ -69,7 +69,7 @@
 
 		if(wear_pants)
 			if(mobility_flags & MOBILITY_STAND)
-				var/obj/item/clothing/P = wear_pants
+				var/obj/item/P = wear_pants
 				P.step_action()
 		
 		if(wear_shirt)
