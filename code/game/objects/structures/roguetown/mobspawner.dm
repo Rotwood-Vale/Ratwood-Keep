@@ -13,13 +13,13 @@ var/global/max_total_spawned_mobs = 30 // New global variable for the total limi
 		/mob/living/simple_animal/hostile/retaliate/rogue/spider = 40,
 		/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30
 	)
-	var/list/adventurer_landmarks = list() // Store landmarks here
+	var/list/refugee_landmarks = list() // Store landmarks here
 	var/area/valid_area = /area/rogue/outdoors/bog // Define the valid area
 
 	New()
 		..() // Call the parent constructor
 		spawn_interval = rand(600, 1200) // RNG between 60 seconds and 120 seconds
-		adventurer_landmarks = get_all_adventurer_landmarks()
+		refugee_landmarks = get_all_refugee_landmarks()
 		if (!is_in_valid_area(src))
 			del src  // Delete the spawner if it's not in the valid area
 		else
@@ -71,7 +71,7 @@ var/global/max_total_spawned_mobs = 30 // New global variable for the total limi
 			return FALSE
 		if (T.get_lumcount() > 0.2)
 			return FALSE
-		for (var/L in adventurer_landmarks)
+		for (var/L in refugee_landmarks)
 			if (get_dist(T, L) < 10)
 				return FALSE
 		if (players_nearby(T, 15))
@@ -82,11 +82,11 @@ var/global/max_total_spawned_mobs = 30 // New global variable for the total limi
 		var/area/area_check = get_area(A)
 		return istype(area_check, valid_area)
 
-	proc/get_all_adventurer_landmarks()
+	proc/get_all_refugee_landmarks()
 		var/list/landmarks = list()
-		for (var/obj/effect/landmark/start/adventurer/L in world)
+		for (var/obj/effect/landmark/start/refugee/L in world)
 			landmarks += L
-		for (var/obj/effect/landmark/start/adventurerlate/L in world)
+		for (var/obj/effect/landmark/start/refugeelate/L in world)
 			landmarks += L
 		return landmarks
 

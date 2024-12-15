@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	return compiled
 
 
-// This covers both adventurer classes
+// This covers both refugee classes
 /datum/controller/subsystem/role_class_handler/proc/build_dumbass_category_lists()
 	var/list/all_classes = list()
 	init_subtypes(/datum/subclass, all_classes) // Init all the classes

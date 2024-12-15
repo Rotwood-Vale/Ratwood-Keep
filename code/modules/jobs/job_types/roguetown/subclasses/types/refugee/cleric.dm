@@ -5,15 +5,15 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	vampcompat = FALSE
-	outfit = /datum/outfit/job/roguetown/adventurer/cleric
+	outfit = /datum/outfit/job/roguetown/refugee/cleric
 	category_tags = list(CTAG_REFUGEE)
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
 
-/datum/outfit/job/roguetown/adventurer/cleric
+/datum/outfit/job/roguetown/refugee/cleric
 	allowed_patrons = ALL_CLERIC_PATRONS
 
-/datum/outfit/job/roguetown/adventurer/cleric/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/cleric/pre_equip(mob/living/carbon/human/H)
 	..()
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
@@ -155,6 +155,6 @@
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
-/datum/outfit/job/roguetown/adventurer/cleric/post_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/cleric/post_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE

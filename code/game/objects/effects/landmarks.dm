@@ -84,10 +84,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 #endif
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/start/adventurerlate
-	name = "Adventurerlate"
+/obj/effect/landmark/start/refugeelate
+	name = "refugeelate"
 	icon_state = "arrow"
-	jobspawn_override = list("Skeleton", "Pilgrim", "Adventurer", "Migrant")
+	jobspawn_override = list("Skeleton", "Refugee", "refugee", "Migrant")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/banditlate
@@ -385,8 +385,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Barkeeper"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/adventurer
-	name = "Adventurer"
+/obj/effect/landmark/start/refugee
+	name = "refugee"
 	icon_state = "arrow"
 
 //yrf

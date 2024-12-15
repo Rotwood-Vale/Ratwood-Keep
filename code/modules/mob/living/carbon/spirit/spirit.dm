@@ -52,7 +52,7 @@
 	verbs += /mob/living/proc/lay_down
 	ADD_TRAIT(src, TRAIT_PACIFISM, TRAIT_GENERIC)
 	var/first_part = pick("Sorrowful", "Forlorn", "Regretful", "Piteous", "Rueful", "Dejected", "Desolate", "Mournful", "Melancholic", "Woeful")
-	var/second_part = pick("Wanderer", "Traveler", "Pilgrim", "Vagabond", "Nomad", "Wayfarer", "Spirit", "Specter", "Wraith", "Phantom")
+	var/second_part = pick("Wanderer", "Traveler", "Refugee", "Vagabond", "Nomad", "Wayfarer", "Spirit", "Specter", "Wraith", "Phantom")
 	name = first_part + " " + second_part
 	GLOB.spirit_list += src
 

@@ -6,16 +6,16 @@
 	to magyk users to end their sinful ways."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
-	outfit = /datum/outfit/job/roguetown/adventurer/puritan
+	outfit = /datum/outfit/job/roguetown/refugee/puritan
 	maximum_possible_slots = 2
 	pickprob = 11
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	category_tags = list(CTAG_REFUGEE)
 
-/datum/outfit/job/roguetown/adventurer/puritan
+/datum/outfit/job/roguetown/refugee/puritan
 	allowed_patrons = list(/datum/patron/psydon)
 
-/datum/outfit/job/roguetown/adventurer/puritan/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	belt = /obj/item/storage/belt/rogue/leather

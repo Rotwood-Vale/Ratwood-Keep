@@ -5,11 +5,11 @@
 	of your hard earned (inherited) Mammons, so tread lightly unless you want to meet a grizzly end."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
-	outfit = /datum/outfit/job/roguetown/adventurer/noble
+	outfit = /datum/outfit/job/roguetown/refugee/noble
 	traits_applied = list(TRAIT_NOBLE)
 	category_tags = list(CTAG_REFUGEE)
 
-/datum/outfit/job/roguetown/adventurer/noble/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/noble/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

@@ -5,13 +5,13 @@
 	they are most commonly associated with the god Xylix due to their skills in thievery."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/rogue
+	outfit = /datum/outfit/job/roguetown/refugee/rogue
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	category_tags = list(CTAG_REFUGEE)
 
-/datum/outfit/job/roguetown/adventurer/rogue
+/datum/outfit/job/roguetown/refugee/rogue
 
-/datum/outfit/job/roguetown/adventurer/rogue/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/rogue/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
 	var/classes = list("Thief","Swashbuckler",)

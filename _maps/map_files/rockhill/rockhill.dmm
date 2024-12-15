@@ -4200,7 +4200,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/harbor)
 "cSk" = (
-/obj/effect/landmark/start/adventurerlate{
+/obj/effect/landmark/start/refugeelate{
 	dir = 1
 	},
 /turf/open/floor/rogue/grass,
@@ -4645,7 +4645,7 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town)
 "diA" = (
-/obj/effect/landmark/start/adventurer{
+/obj/effect/landmark/start/refugee{
 	dir = 1
 	},
 /obj/structure/bed/rogue/shit,
@@ -10899,7 +10899,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "htU" = (
-/obj/effect/landmark/start/adventurerlate{
+/obj/effect/landmark/start/refugeelate{
 	dir = 1
 	},
 /turf/open/floor/rogue/dirt/road,
@@ -16993,7 +16993,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "lEY" = (
-/obj/effect/landmark/start/adventurer{
+/obj/effect/landmark/start/refugee{
 	dir = 4
 	},
 /obj/structure/bed/rogue/shit,
@@ -18233,7 +18233,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
 "muz" = (
-/obj/effect/landmark/start/adventurerlate{
+/obj/effect/landmark/start/refugeelate{
 	dir = 1
 	},
 /turf/open/floor/rogue/dirt,
@@ -18285,7 +18285,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 8
 	},
-/obj/effect/landmark/start/adventurer{
+/obj/effect/landmark/start/refugee{
 	dir = 8
 	},
 /turf/open/floor/rogue/blocks,
@@ -18337,7 +18337,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "mxx" = (
-/obj/effect/landmark/start/adventurerlate{
+/obj/effect/landmark/start/refugeelate{
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -18647,7 +18647,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 1
 	},
-/obj/effect/landmark/start/adventurer{
+/obj/effect/landmark/start/refugee{
 	dir = 1
 	},
 /turf/open/floor/rogue/blocks,
@@ -22622,7 +22622,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
 "pvg" = (
-/obj/effect/landmark/start/adventurer,
+/obj/effect/landmark/start/refugee,
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
@@ -30699,7 +30699,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/mountains)
 "uXF" = (
-/obj/effect/landmark/start/adventurer{
+/obj/effect/landmark/start/refugee{
 	dir = 8
 	},
 /obj/structure/bed/rogue/shit,
@@ -31328,7 +31328,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 4
 	},
-/obj/effect/landmark/start/adventurer{
+/obj/effect/landmark/start/refugee{
 	dir = 4
 	},
 /turf/open/floor/rogue/blocks,

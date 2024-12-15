@@ -5,13 +5,13 @@
 	They are an important member to most parties for their combat prowess, but not for much more."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
+	outfit = /datum/outfit/job/roguetown/refugee/sfighter
 	traits_applied = list(TRAIT_HEAVYARMOR)
 
 	category_tags = list(CTAG_REFUGEE)
 
 
-/datum/outfit/job/roguetown/adventurer/sfighter/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/sfighter/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
 	var/classes = list("Warrior","Monster Hunter",) // To Do - knight errant unique archetype(5 percent chance)

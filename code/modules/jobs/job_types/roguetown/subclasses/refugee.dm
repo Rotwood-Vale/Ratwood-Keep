@@ -8,14 +8,15 @@ GLOBAL_LIST_EMPTY(billagerspawns)
 	total_positions = 20
 	spawn_positions = 20
 	allowed_races = RACES_VERY_SHUNNED_UP
-	tutorial = "Hero of nothing, adventurer by trade. Whatever led you to this fate is up to the wind to decide, and you've never fancied yourself for much other than the thrill. Someday your pride is going to catch up to you, and you're going to find out why most men don't end up in the annals of history."
+	tutorial = "Hero of nothing, refugee by trade. Whatever led you to this fate is up to the wind to decide, and you've never fancied yourself for much other than the thrill. Someday your pride is going to catch up to you, and you're going to find out why most men don't end up in the annals of history."
 
 
 	outfit = null
 	outfit_female = null
 
-	display_order = JDO_ADVENTURER
-	show_in_credits = FALSE
+	display_order = JDO_REFUGEE
+	selection_color = JCOLOR_FOREIGNER
+	show_in_credits = TRUE
 	min_pq = 0
 	max_pq = null
 	

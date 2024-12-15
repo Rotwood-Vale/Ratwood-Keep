@@ -3,14 +3,14 @@
 	tutorial = "In some places in Grimmoria, women are banned from the study of magic. Those that do even then are afforded the title Sorceress in honor of their resolve."
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/sorceress
+	outfit = /datum/outfit/job/roguetown/refugee/sorceress
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	category_tags = list(CTAG_DISABLED)
 
-/datum/outfit/job/roguetown/adventurer/sorceress
+/datum/outfit/job/roguetown/refugee/sorceress
 	allowed_patrons = list(/datum/patron/divine/noc)
 
-/datum/outfit/job/roguetown/adventurer/sorceress/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/sorceress/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	pants = /obj/item/clothing/under/roguetown/trou/leather

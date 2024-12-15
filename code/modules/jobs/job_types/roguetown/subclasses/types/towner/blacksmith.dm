@@ -4,11 +4,11 @@
 	only after building a forge for themselves ofourse."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/blacksmith
+	outfit = /datum/outfit/job/roguetown/refugee/blacksmith
 
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/adventurer/blacksmith/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/blacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	belt = /obj/item/storage/belt/rogue/leather
 

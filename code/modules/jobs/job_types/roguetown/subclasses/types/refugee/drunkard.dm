@@ -3,13 +3,13 @@
 	tutorial = "You are a gambler. Everyone in your life has given up on you, and the stress of losing it all over and over has taken its toll on your body. All you have left to your name are some cards, dice and whatever is in this bottle. At least you're still in Baotha's good graces, whether you reciprocate such feelings or not..."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/gambler
+	outfit = /datum/outfit/job/roguetown/refugee/gambler
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/adventurer/gambler
+/datum/outfit/job/roguetown/refugee/gambler
 	allowed_patrons = list(/datum/patron/inhumen/baotha, /datum/patron/divine/xylix)
 
-/datum/outfit/job/roguetown/adventurer/gambler/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/gambler/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		pants = /obj/item/clothing/under/roguetown/tights/vagrant

@@ -283,14 +283,11 @@
 #define JDO_LONGSHOREMAN 29.1
 
 #define JDO_VILLAGER 30
-#define JDO_ADVENTURER 30.1
-#define JDO_MIGRANT 32.3
 
 #define JDO_MERC_CLERK 31
 #define JDO_MERCENARY 31.1
 #define JDO_VET 31.2
 #define JDO_SEELIE 31.3
-#define JDO_BANDIT 31.4
 
 #define JDO_VAGRANT 33
 
@@ -305,6 +302,12 @@
 #define JDO_GOBLINSMITH 39
 #define JDO_GOBLINRABBLE 40
 #define JDO_GOBLINSHAMAN 41
+
+#define JDO_FOREIGNER 42
+#define JDO_REFUGEE 42.1
+#define JDO_MIGRANT 42.2
+#define JDO_BANDIT 42.3
+
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -370,12 +373,10 @@
 	/datum/job/roguetown/scribe
 
 #define WANDERER_ROLES \
-	/datum/job/roguetown/refugee,\
 	/datum/job/roguetown/guild_clerk,\
 	/datum/job/roguetown/mercenary,\
 	/datum/job/roguetown/seelie,\
 	/datum/job/roguetown/grabber,\
-	/datum/job/roguetown/bandit
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\
@@ -393,3 +394,8 @@
 	/datum/job/roguetown/goblinrabble,\
 	/datum/job/roguetown/goblinshaman,\
 	/datum/job/roguetown/goblinsmith
+
+#define FOREIGNER_ROLES \
+	/datum/job/roguetown/refugee,\
+	/datum/job/roguetown/migrant,\
+	/datum/job/roguetown/bandit,

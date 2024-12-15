@@ -5,11 +5,11 @@
 	protect dwarfish settlements from wild beasts and sell their notes to the cartographers."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/dwarf/mountain)
-	outfit = /datum/outfit/job/roguetown/adventurer/dranger
+	outfit = /datum/outfit/job/roguetown/refugee/dranger
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	category_tags = list(CTAG_REFUGEE)
 
-/datum/outfit/job/roguetown/adventurer/dranger/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/dranger/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/roguehood
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor

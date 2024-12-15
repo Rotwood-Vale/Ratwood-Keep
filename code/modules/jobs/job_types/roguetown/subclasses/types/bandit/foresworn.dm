@@ -52,7 +52,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/skullcap
 		if("Sword & Shield") //Mercenary on the wrong side of the law
 			backl= /obj/item/rogueweapon/shield/wood
-			beltr = /obj/item/rogueweapon/sword/iron //iron sword like literally every adventurer gets
+			beltr = /obj/item/rogueweapon/sword/iron //iron sword like literally every refugee gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

@@ -4,13 +4,13 @@
 	maybe one day you will become lord too."
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
-	outfit = /datum/outfit/job/roguetown/adventurer/heartfelthand
+	outfit = /datum/outfit/job/roguetown/refugee/heartfelthand
 	maximum_possible_slots = 1
 	pickprob = 100
 	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_SEEPRICES, TRAIT_NOBLE)
 	category_tags = list(CTAG_DISABLED)
 
-/datum/outfit/job/roguetown/adventurer/heartfelthand/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/heartfelthand/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black

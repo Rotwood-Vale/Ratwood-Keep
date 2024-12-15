@@ -4,11 +4,11 @@
 	There are tales of ambitious dwarf miners building great forts in the lavalands, to harvest all of it's hardly touched ores."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/miner
+	outfit = /datum/outfit/job/roguetown/refugee/miner
 
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/adventurer/miner/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/miner/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/armingcap
 	mouth = /obj/item/rogueweapon/huntingknife

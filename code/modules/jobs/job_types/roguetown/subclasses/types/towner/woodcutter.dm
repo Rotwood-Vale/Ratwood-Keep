@@ -4,10 +4,10 @@
 	in the ways of bending wood to your will. With enough time, your only limit is your imagination."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/woodcutter
+	outfit = /datum/outfit/job/roguetown/refugee/woodcutter
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/adventurer/woodcutter/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/woodcutter/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE) // AXE MEN! GIVE ME SPLINTERS!
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) 

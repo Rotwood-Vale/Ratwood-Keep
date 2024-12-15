@@ -1,16 +1,16 @@
 /datum/subclass/mage
 	name = "Mage"
-	tutorial = "Mages are usually grown-up apprentices of wizards. They are seeking adventure, using their arcyne knowledge to aid or ward off other adventurers."
+	tutorial = "Mages are usually grown-up apprentices of wizards. They are seeking adventure, using their arcyne knowledge to aid or ward off other refugees."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/mage
+	outfit = /datum/outfit/job/roguetown/refugee/mage
 	category_tags = list(CTAG_REFUGEE)
 	maximum_possible_slots = 6
 
-/datum/outfit/job/roguetown/adventurer/mage
+/datum/outfit/job/roguetown/refugee/mage
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/zizo)
 
-/datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/mage/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/roguehood/mage
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

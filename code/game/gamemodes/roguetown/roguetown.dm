@@ -511,7 +511,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_werewolves()
-	// Ideally we want adventurers/pilgrims/towners to roll it
+	// Ideally we want refugees/Refugees/towners to roll it
 	restricted_jobs = list(
 	"Duke",
 	"Duchess",

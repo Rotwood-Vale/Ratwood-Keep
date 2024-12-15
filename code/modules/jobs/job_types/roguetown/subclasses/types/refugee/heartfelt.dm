@@ -5,13 +5,13 @@
 	but why did you come to the isle of enigma?"
 	allowed_sexes = list(MALE)
 	allowed_races = RACES_TOLERATED_UP
-	outfit = /datum/outfit/job/roguetown/adventurer/heartfeltlord
+	outfit = /datum/outfit/job/roguetown/refugee/heartfeltlord
 	maximum_possible_slots = 1
 	pickprob = 100
 	traits_applied = list(TRAIT_NOBLE, TRAIT_NOSEGRAB, TRAIT_HEAVYARMOR)
 	category_tags = list(CTAG_DISABLED)
 
-/datum/outfit/job/roguetown/adventurer/heartfeltlord/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/heartfeltlord/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black

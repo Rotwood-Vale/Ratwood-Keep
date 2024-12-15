@@ -6,16 +6,16 @@
 	As you find yourself on dry land, far from the sea."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/pirate
+	outfit = /datum/outfit/job/roguetown/refugee/pirate
 	category_tags = list(CTAG_REFUGEE)
 	pickprob = 75
 	maximum_possible_slots = 5
 	cmode_music = 'sound/music/combat_pirate.ogg'
 
-/datum/outfit/job/roguetown/adventurer/pirate
+/datum/outfit/job/roguetown/refugee/pirate
 	allowed_patrons =  list(/datum/patron/divine/abyssor, /datum/patron/inhumen/matthios)
 
-/datum/outfit/job/roguetown/adventurer/pirate/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/pirate/pre_equip(mob/living/carbon/human/H)
 	..()
 	switch(rand(1,3))
 		if(1)

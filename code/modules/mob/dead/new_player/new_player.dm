@@ -467,10 +467,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					return JOB_UNAVAILABLE_SLOTFULL
 		else
 			return JOB_UNAVAILABLE_SLOTFULL
-//	if(job.title == "Adventurer" && latejoin)
+//	if(job.title == "refugee" && latejoin)
 //		for(var/datum/job/J in SSjob.occupations)
 //			if(J && J.total_positions && J.current_positions < 1 && J.title != job.title && (IsJobUnavailable(J.title))
-//				return JOB_UNAVAILABLE_GENERIC //we can't play adventurer if there isn't 1 of every other job that we can play
+//				return JOB_UNAVAILABLE_GENERIC //we can't play refugee if there isn't 1 of every other job that we can play
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE
@@ -580,11 +580,12 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	omegalist += list(GLOB.peasant_positions)
 	omegalist += list(GLOB.mercenary_positions)
 	omegalist += list(GLOB.youngfolk_positions)
+	omegalist += list(GLOB.foreigner_positions)
 
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode
 		if(C.allmig)
-			omegalist = list(GLOB.allmig_positions)
+			omegalist = list(GLOB.foreigner_positions)
 	if(istype(SSticker.mode, /datum/game_mode/roguewar))
 		omegalist = list(GLOB.roguewar_positions)
 
@@ -625,6 +626,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					cat_name = "Sidefolk"
 				if (MERCENARIES)
 					cat_name = "Mercenaries"
+				if (FOREIGNERS)
+					cat_name = "Foreigners"
 				if (GOBLIN)
 					cat_name = "Goblins"
 

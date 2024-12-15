@@ -56,7 +56,7 @@
 			H.change_stat("speed", 2)
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			beltr = /obj/item/rogueweapon/sword/iron // sword like literally every adventurer gets
+			beltr = /obj/item/rogueweapon/sword/iron // sword like literally every refugee gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/ammo_holder/quiver/arrows

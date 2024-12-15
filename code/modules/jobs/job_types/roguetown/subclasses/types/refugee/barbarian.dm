@@ -4,15 +4,15 @@
 	tutorial = "A jack-of-all-trades warrior sort. Is skilled in all weapons, but master of none."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/barbarian
+	outfit = /datum/outfit/job/roguetown/refugee/barbarian
 	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 	category_tags = list(CTAG_REFUGEE)
 
-/datum/outfit/job/roguetown/adventurer/barbarian
+/datum/outfit/job/roguetown/refugee/barbarian
 	allowed_patrons = list(/datum/patron/divine/ravox, /datum/patron/inhumen/graggar)
 
-/datum/outfit/job/roguetown/adventurer/barbarian/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/barbarian/pre_equip(mob/living/carbon/human/H)
 	..() // Compared to the Warrior the barbarian is more suited to the wilds. But they are able to make use of almost any weapon by talent and killer instinct.
 	H.adjust_blindness(-3)
 	var/classes = list("Warrior","Hunter Killer",)

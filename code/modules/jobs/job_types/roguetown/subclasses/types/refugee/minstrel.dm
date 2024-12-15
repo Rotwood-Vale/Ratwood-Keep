@@ -3,10 +3,10 @@
 	tutorial = "You are a musician at heart, and not like those so-called bards who traipse around in fancy cloth and swordfight in the woods. Music is truly your calling, you're just... Yet to find a receptive audience."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
-	outfit = /datum/outfit/job/roguetown/adventurer/minstrel
+	outfit = /datum/outfit/job/roguetown/refugee/minstrel
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/adventurer/minstrel/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/minstrel/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)

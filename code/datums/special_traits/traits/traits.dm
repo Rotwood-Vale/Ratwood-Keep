@@ -439,7 +439,7 @@
 	weight = 200
 
 /datum/special_trait/wild_night/on_apply(mob/living/carbon/human/character, silent)
-	var/turf/location = get_spawn_turf_for_job("Pilgrim")
+	var/turf/location = get_spawn_turf_for_job("Refugee")
 	character.forceMove(location)
 	grant_lit_torch(character)
 
@@ -563,7 +563,7 @@
 /datum/special_trait/seed_feed
 	name = "Seed & Feed"
 	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
-	req_text = "Be a Soilson, Towner or Pilgrim."
+	req_text = "Be a Soilson, Towner or Refugee."
 	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/refugee, /datum/job/roguetown/villager)
 	weight = 100
 

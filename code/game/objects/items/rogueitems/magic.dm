@@ -60,7 +60,7 @@
 				success_chance = 65
 			if(SKILL_LEVEL_APPRENTICE) //Apprentices have this
 				success_chance = 80
-			if(SKILL_LEVEL_JOURNEYMAN) // Adventurer mages have this
+			if(SKILL_LEVEL_JOURNEYMAN) // refugee mages have this
 				success_chance = 90
 			if(SKILL_LEVEL_EXPERT)
 				success_chance = 94
@@ -76,7 +76,7 @@
 				success_chance = 65
 			if(SKILL_LEVEL_APPRENTICE) //Apprentices have this
 				success_chance = 80
-			if(SKILL_LEVEL_JOURNEYMAN) // Adventurer mages have this
+			if(SKILL_LEVEL_JOURNEYMAN) // refugee mages have this
 				success_chance = 90
 			if(SKILL_LEVEL_EXPERT)
 				success_chance = 94

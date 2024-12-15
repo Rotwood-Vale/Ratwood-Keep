@@ -49,7 +49,7 @@
 			new horse(TU)
 
 	for(var/trait in traits_applied)
-		ADD_TRAIT(H, trait, ADVENTURER_TRAIT)
+		ADD_TRAIT(H, trait, refugee_TRAIT)
 
 	// After the end of adv class equipping, apply a SPECIAL trait if able
 	apply_character_post_equipment(H)

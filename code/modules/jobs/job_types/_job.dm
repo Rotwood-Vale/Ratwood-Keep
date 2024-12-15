@@ -114,7 +114,7 @@
 	var/wanderer_examine = FALSE
 	var/foreign_examine = FALSE
 
-	/// This job uses adventurer classes on examine
+	/// This job uses refugee classes on examine
 	var/advjob_examine = FALSE
 
 	/// This job always shows on latechoices

@@ -3,7 +3,7 @@
 	tutorial = "Amazons are warrior-women from the mysterious isle of Issa. These rare fighters are so tough they can beat ten average men!"
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/amazon
+	outfit = /datum/outfit/job/roguetown/refugee/amazon
 	pickprob = 25
 	maximum_possible_slots = 3
 	category_tags = list(CTAG_REFUGEE)
@@ -11,7 +11,7 @@
 	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 
-/datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/amazon/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)

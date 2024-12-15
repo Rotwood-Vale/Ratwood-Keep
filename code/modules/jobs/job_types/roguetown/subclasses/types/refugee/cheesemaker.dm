@@ -5,11 +5,11 @@
 	cook up some quisine with food gathered from the local flora and fauna."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/cheesemaker
+	outfit = /datum/outfit/job/roguetown/refugee/cheesemaker
 
 	category_tags = list(CTAG_REFUGEE, CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/adventurer/cheesemaker/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/cheesemaker/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE) 
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, pick(0,1,2), TRUE)

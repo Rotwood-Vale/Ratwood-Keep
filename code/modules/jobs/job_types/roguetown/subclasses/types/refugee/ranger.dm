@@ -3,11 +3,11 @@
 	tutorial = "Rangers are a mix of hunters and rogues, staying in the shadows, but often being more friendly to others than a rogue, much more in touch with nature and more skilled in the arts of survival."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/ranger
+	outfit = /datum/outfit/job/roguetown/refugee/ranger
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_REFUGEE)
 
-/datum/outfit/job/roguetown/adventurer/ranger/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/ranger/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
 	var/classes = list("Ranger","Gloom Stalker",) // Ranger Knight is the unique subclass. Gives you steel breastplate and a sword.

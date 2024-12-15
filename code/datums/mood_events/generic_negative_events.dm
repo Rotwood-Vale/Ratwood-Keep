@@ -38,7 +38,7 @@
 	timeout = 3 MINUTES
 
 /datum/mood_event/eye_stab
-	description = "<span class='boldwarning'>I used to be an adventurer like you, until I took a screwdriver to the eye.</span>\n"
+	description = "<span class='boldwarning'>I used to be an refugee like you, until I took a screwdriver to the eye.</span>\n"
 	mood_change = -4
 	timeout = 3 MINUTES
 

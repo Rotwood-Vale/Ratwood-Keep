@@ -8,14 +8,14 @@
 		/datum/species/elf/dark,
 		/datum/species/elf/wood,
 	)
-	outfit = /datum/outfit/job/roguetown/adventurer/sentinal
+	outfit = /datum/outfit/job/roguetown/refugee/sentinal
 	maximum_possible_slots = 5
 	pickprob = 50
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_REFUGEE)
 
 
-/datum/outfit/job/roguetown/adventurer/sentinal/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/sentinal/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)

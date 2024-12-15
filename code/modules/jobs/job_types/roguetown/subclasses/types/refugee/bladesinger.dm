@@ -8,9 +8,9 @@
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	category_tags = list(CTAG_REFUGEE)
 
-	outfit = /datum/outfit/job/roguetown/adventurer/bladesinger
+	outfit = /datum/outfit/job/roguetown/refugee/bladesinger
 
-/datum/outfit/job/roguetown/adventurer/bladesinger/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/bladesinger/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest

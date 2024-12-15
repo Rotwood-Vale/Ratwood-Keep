@@ -32,7 +32,7 @@
 		H.become_blind("advsetup")
 
 /*
-/datum/job/roguetown/adventurer/villager/New()
+/datum/job/roguetown/refugee/villager/New()
 	. = ..()
 	for(var/X in GLOB.peasant_positions)
 		peopleiknow += X

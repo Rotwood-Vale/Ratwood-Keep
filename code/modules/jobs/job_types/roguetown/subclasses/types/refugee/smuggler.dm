@@ -3,14 +3,14 @@
 	tutorial = "YARRR"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/akula, /datum/species/human/northern, /datum/species/lizardfolk)
-	outfit = /datum/outfit/job/roguetown/adventurer/smuggler
+	outfit = /datum/outfit/job/roguetown/refugee/smuggler
 	category_tags = list(CTAG_REFUGEE)
 	cmode_music = 'sound/music/combat_pirate.ogg'
 
-/datum/outfit/job/roguetown/adventurer/smuggler
+/datum/outfit/job/roguetown/refugee/smuggler
 	allowed_patrons =  list(/datum/patron/divine/abyssor, /datum/patron/inhumen/matthios)
 
-/datum/outfit/job/roguetown/adventurer/smuggler/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/smuggler/pre_equip(mob/living/carbon/human/H)
 	..()
 	head =/obj/item/clothing/head/roguetown/helmet/bandana
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather

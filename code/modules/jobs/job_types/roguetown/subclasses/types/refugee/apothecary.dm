@@ -3,9 +3,9 @@
 	tutorial = "You are an Alchemist, with your tools and knowledge you are the most capable of making remedies for your fellow townsfolk's ailments, or creating drugs to help withstand the gloom this town carries."
 	allowed_sexes = list(MALE, FEMALE)
 	category_tags = list(CTAG_REFUGEE, CTAG_TOWNER)
-	outfit = /datum/outfit/job/roguetown/adventurer/apothecary
+	outfit = /datum/outfit/job/roguetown/refugee/apothecary
 
-/datum/outfit/job/roguetown/adventurer/apothecary/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/roguetown/refugee/apothecary/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	..()
 	pants = /obj/item/clothing/under/roguetown/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic

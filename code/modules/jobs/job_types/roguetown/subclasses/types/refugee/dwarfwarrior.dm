@@ -4,13 +4,13 @@
 	tutorial = "Dwarf Warriors are the bread and butter of their miliary sworn to defend their mountain fortress. Armed with either a battle axe or mace, they are a force to be reckoned with."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/dwarf/mountain)
-	outfit = /datum/outfit/job/roguetown/adventurer/dwarfwarrior
+	outfit = /datum/outfit/job/roguetown/refugee/dwarfwarrior
 
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	maximum_possible_slots = 2
 	category_tags = list(CTAG_REFUGEE)
 
-/datum/outfit/job/roguetown/adventurer/dwarfwarrior/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/dwarfwarrior/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/winged
 	pants = /obj/item/clothing/under/roguetown/trou

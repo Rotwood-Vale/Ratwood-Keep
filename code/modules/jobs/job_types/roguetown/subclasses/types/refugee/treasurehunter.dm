@@ -4,12 +4,12 @@
 	tutorial = "A treasure hunter trained in the art of the Giza, discern what is treasure or not, your fortune could be hidden anywhere."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/gravedigger
+	outfit = /datum/outfit/job/roguetown/refugee/gravedigger
 	pickprob = 11
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_SEEPRICES)
 	category_tags = list(CTAG_REFUGEE)
 
-/datum/outfit/job/roguetown/adventurer/gravedigger/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/gravedigger/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest

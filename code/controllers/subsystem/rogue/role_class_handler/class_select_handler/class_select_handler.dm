@@ -13,7 +13,7 @@
 /* 
 	This list is organized like so
 	class_cat_alloc_attempts = list(CTAG_REFUGEE = 5, CTAG_REFUGEE = 3, etc)
-	Wherein you will have this datum attempt to roll you up 5 pilgrim category classes, and 3 adventurer class categories
+	Wherein you will have this datum attempt to roll you up 5 Refugee category classes, and 3 refugee class categories
 */
 	var/list/class_cat_alloc_attempts
 

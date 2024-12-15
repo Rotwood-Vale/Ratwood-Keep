@@ -5,16 +5,16 @@
 	tutorial = "Paladins are holy warriors who have taken sacred vows to uphold justice and righteousness. Often, they were promised redemption for past sins if they crusaded in the name of the gods."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/paladin
+	outfit = /datum/outfit/job/roguetown/refugee/paladin
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	category_tags = list(CTAG_REFUGEE)
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
 
-/datum/outfit/job/roguetown/adventurer/paladin
+/datum/outfit/job/roguetown/refugee/paladin
 	allowed_patrons = ALL_CLERIC_PATRONS
 
-/datum/outfit/job/roguetown/adventurer/paladin/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/paladin/pre_equip(mob/living/carbon/human/H)
 	..()
 	switch(H.patron.name)
 		if("Astrata")
