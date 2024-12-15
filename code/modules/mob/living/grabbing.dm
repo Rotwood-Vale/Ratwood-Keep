@@ -204,10 +204,18 @@
 				if(user.loc != M.loc)
 					to_chat(user, span_warning("I must be on top of them."))
 					return
-				user.rogfat_add(rand(1,3))
+				if(src == user.r_grab)
+					if(!user.l_grab || user.l_grab.grabbed != M)
+						to_chat(user, span_warning("I must grab them with both hands."))
+						return
+				if(src == user.l_grab)
+					if(!user.r_grab || user.r_grab.grabbed != M)
+						to_chat(user, span_warning("I must grab them with both hands."))
+						return
+				user.rogfat_add(40)
 				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
 								span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
-				M.Stun(max(((65 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)) * combat_modifier), 20))
+				M.Stun(max(((40 + (skill_diff * 10) + (user.STASTR * 10) - (M.STASTR * 12)) * combat_modifier), 20))
 				user.Immobilize(20 - skill_diff)
 			else
 				user.rogfat_add(rand(5,15))
