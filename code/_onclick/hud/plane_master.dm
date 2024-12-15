@@ -204,16 +204,6 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	blend_mode = BLEND_MULTIPLY
 
-//Contains all weather overlays
-/atom/movable/screen/plane_master/weather_overlay
-	name = "weather overlay master"
-	plane = WEATHER_OVERLAY_PLANE
-	layer = WEATHER_OVERLAY_LAYER
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	render_target = WEATHER_RENDER_TARGET
-	blend_mode = BLEND_MULTIPLY
-	//render_relay_plane = null //Used as alpha filter for weather_effect fullscreen
-
 
 //Contains all weather overlays
 /atom/movable/screen/plane_master/weather_overlay

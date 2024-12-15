@@ -51,6 +51,10 @@ SUBSYSTEM_DEF(garbage)
 	var/list/reference_find_on_fail = list()
 	#endif
 
+	/// Toggle for enabling/disabling hard deletes. Objects that don't explicitly request hard deletion with this disabled will leak.
+	var/enable_hard_deletes = FALSE
+	var/list/failed_hard_deletes = list()
+
 
 /datum/controller/subsystem/garbage/PreInit()
 	queues = new(GC_QUEUE_COUNT)
@@ -200,7 +204,8 @@ SUBSYSTEM_DEF(garbage)
 				#endif
 				I.failures++
 			if (GC_QUEUE_HARDDELETE)
-				HardDelete(D)
+				if(!HardDelete(D))
+					D = null
 				if (MC_TICK_CHECK)
 					return
 				continue
@@ -228,7 +233,12 @@ SUBSYSTEM_DEF(garbage)
 	queue[++queue.len] = list(gctime, refid) // not += for byond reasons
 
 //this is mainly to separate things profile wise.
-/datum/controller/subsystem/garbage/proc/HardDelete(datum/D)
+/datum/controller/subsystem/garbage/proc/HardDelete(datum/D, override = FALSE)
+	if(!D)
+		return
+	if(!enable_hard_deletes)
+		failed_hard_deletes |= D
+		return
 	var/time = world.timeofday
 	var/tick = TICK_USAGE
 	var/ticktime = world.time
@@ -258,6 +268,7 @@ SUBSYSTEM_DEF(garbage)
 		log_game("Error: [type]([refID]) took longer than 1 second to delete (took [time/10] seconds to delete)")
 		message_admins("Error: [type]([refID]) took longer than 1 second to delete (took [time/10] seconds to delete).")
 		postpone(time)
+	return TRUE
 
 /datum/controller/subsystem/garbage/Recover()
 	if (istype(SSgarbage.queues))
@@ -333,13 +344,13 @@ SUBSYSTEM_DEF(garbage)
 			if (QDEL_HINT_HARDDEL)		//qdel should assume this object won't gc, and queue a hard delete
 				SSgarbage.Queue(D, GC_QUEUE_HARDDELETE)
 			if (QDEL_HINT_HARDDEL_NOW)	//qdel should assume this object won't gc, and hard del it post haste.
-				SSgarbage.HardDelete(D)
+				SSgarbage.HardDelete(D, override = TRUE)
 			#ifdef LEGACY_REFERENCE_TRACKING
 			if (QDEL_HINT_FINDREFERENCE) //qdel will, if LEGACY_REFERENCE_TRACKING is enabled, display all references to this object, then queue the object for deletion.
-				SSgarbage.Queue(D)
+				SSgarbage.HardDelete(to_delete, override = TRUE)
 				D.find_references_legacy()
 			if (QDEL_HINT_IFFAIL_FINDREFERENCE)
-				SSgarbage.Queue(D)
+				SSgarbage.HardDelete(to_delete, override = TRUE)
 				SSgarbage.reference_find_on_fail[REF(D)] = TRUE
 			#endif
 			else

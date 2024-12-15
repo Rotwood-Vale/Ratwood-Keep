@@ -1,28 +1,8 @@
+GLOBAL_VAR_INIT(year, time2text(world.realtime,"YYYY"))
+GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
+
 /mob/living/carbon/human/Topic(href, href_list)
-	var/observer_privilege = isobserver(usr)
-
-	if(href_list["task"] == "view_headshot")
-		if(!ismob(usr))
-			return
-		var/mob/user = usr
-		var/list/dat = list()
-		if(valid_headshot_link(null, headshot_link, TRUE))
-			dat += "<br>"
-			dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div>")
-		dat += "<br>"
-		dat += "<div align='center'>[src]</div>"
-		if(flavortext)
-			dat += "<div align='left'>[replacetext(flavortext, "\n", "<BR>")]</div>"
-		if(ooc_notes)
-			dat += "<br>"
-			dat += "<div align='center'><b>OOC notes</b></div>"
-			dat += "<div align='left'>[replacetext(ooc_notes, "\n", "<BR>")]"
-		var/datum/browser/popup = new(user, "[src]", 600, 900)
-		popup.set_content(dat.Join())
-		popup.open(FALSE)
-		return
-
-	if(href_list["inspect_limb"] && (observer_privilege || usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY)))
+	if(href_list["inspect_limb"] && (isobserver(usr) || usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY)))
 		var/list/msg = list()
 		var/mob/user = usr
 		var/checked_zone = check_zone(href_list["inspect_limb"])
@@ -36,8 +16,22 @@
 				msg += "[bodypart] is healthy."
 		else
 			msg += "<B>[capitalize(parse_zone(checked_zone))]:</B>"
-			msg += span_dead("Limb is missing!")
-		to_chat(usr, span_info("[msg.Join("\n")]"))
+			msg += "<span class='dead'>Limb is missing!</span>"
+		to_chat(usr, "<span class='info'>[msg.Join("\n")]</span>")
+
+	if(href_list["check_hb"])
+		if(isobserver(usr))
+			if(stat == DEAD)
+				to_chat(usr, "<span class='info'><B>No heartbeat...</B></span>")
+			else
+				to_chat(usr, "<span class='info'><B>The heart is still beating.</B></span>")
+		else if(Adjacent(usr) && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
+			usr.visible_message("<span class='info'>[usr] tries to hear [src]'s heartbeat.</span>")
+			if(do_after(usr, 30, needhand = 1, target = src))
+				if(stat == DEAD)
+					to_chat(usr, "<span class='info'><B>No heartbeat...</B>")
+				else
+					to_chat(usr, "<span class='info'><B>The heart is still beating.</B></span>")
 
 	if(href_list["embedded_object"] && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
 		var/obj/item/bodypart/L = locate(href_list["embedded_limb"]) in bodyparts
@@ -48,9 +42,9 @@
 			return
 		var/time_taken = I.embedding.embedded_unsafe_removal_time*I.w_class
 		if(usr == src)
-			usr.visible_message(span_warning("[usr] attempts to remove [I] from [usr.p_their()] [L.name]."),span_warning("I attempt to remove [I] from my [L.name]..."))
+			usr.visible_message("<span class='warning'>[usr] attempts to remove [I] from [usr.p_their()] [L.name].</span>","<span class='warning'>I attempt to remove [I] from my [L.name]...</span>")
 		else
-			usr.visible_message(span_warning("[usr] attempts to remove [I] from [src]'s [L.name]."),span_warning("I attempt to remove [I] from [src]'s [L.name]..."))
+			usr.visible_message("<span class='warning'>[usr] attempts to remove [I] from [src]'s [L.name].</span>","<span class='warning'>I attempt to remove [I] from [src]'s [L.name]...</span>")
 		if(do_after(usr, time_taken, needhand = TRUE, target = src))
 			if(QDELETED(I) || QDELETED(L) || !L.remove_embedded_object(I))
 				return
@@ -59,9 +53,9 @@
 			emote("pain", TRUE)
 			playsound(loc, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
 			if(usr == src)
-				usr.visible_message(span_notice("[usr] rips [I] out of [usr.p_their()] [L.name]!"), span_notice("I successfully remove [I] from my [L.name]."))
+				usr.visible_message("<span class='notice'>[usr] rips [I] out of [usr.p_their()] [L.name]!</span>", "<span class='notice'>I successfully remove [I] from my [L.name].</span>")
 			else
-				usr.visible_message(span_notice("[usr] rips [I] out of [src]'s [L.name]!"), span_notice("I successfully remove [I] from [src]'s [L.name]."))
+				usr.visible_message("<span class='notice'>[usr] rips [I] out of [src]'s [L.name]!</span>", "<span class='notice'>I successfully remove [I] from [src]'s [L.name].</span>")
 
 	if(href_list["bandage"] && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
 		var/obj/item/bodypart/L = locate(href_list["bandaged_limb"]) in bodyparts
@@ -71,9 +65,9 @@
 		if(!I)
 			return
 		if(usr == src)
-			usr.visible_message(span_warning("[usr] starts unbandaging [usr.p_their()] [L.name]."),span_warning("I start unbandaging [L.name]..."))
+			usr.visible_message("<span class='warning'>[usr] starts unbandaging [usr.p_their()] [L.name].</span>","<span class='warning'>I start unbandaging [L.name]...</span>")
 		else
-			usr.visible_message(span_warning("[usr] starts unbandaging [src]'s [L.name]."),span_warning("I start unbandaging [src]'s [L.name]..."))
+			usr.visible_message("<span class='warning'>[usr] starts unbandaging [src]'s [L.name].</span>","<span class='warning'>I start unbandaging [src]'s [L.name]...</span>")
 		if(do_after(usr, 50, needhand = TRUE, target = src))
 			if(QDELETED(I) || QDELETED(L) || (L.bandage != I))
 				return
@@ -111,10 +105,10 @@
 		var/delay_denominator = 1
 		if(pocket_item && !(pocket_item.item_flags & ABSTRACT))
 			if(HAS_TRAIT(pocket_item, TRAIT_NODROP))
-				to_chat(usr, span_warning("I try to empty [src]'s [pocket_side] pocket, it seems to be stuck!"))
-			to_chat(usr, span_notice("I try to empty [src]'s [pocket_side] pocket."))
+				to_chat(usr, "<span class='warning'>I try to empty [src]'s [pocket_side] pocket, it seems to be stuck!</span>")
+			to_chat(usr, "<span class='notice'>I try to empty [src]'s [pocket_side] pocket.</span>")
 		else if(place_item && place_item.mob_can_equip(src, usr, pocket_id, 1) && !(place_item.item_flags & ABSTRACT))
-			to_chat(usr, span_notice("I try to place [place_item] into [src]'s [pocket_side] pocket."))
+			to_chat(usr, "<span class='notice'>I try to place [place_item] into [src]'s [pocket_side] pocket.</span>")
 			delay_denominator = 4
 		else
 			return
@@ -132,4 +126,5 @@
 				//updating inv screen after handled by living/Topic()
 		else
 			// Display a warning if the user mocks up
-			to_chat(src, span_warning("I feel your [pocket_side] pocket being fumbled with!"))
+			to_chat(src, "<span class='warning'>I feel your [pocket_side] pocket being fumbled with!</span>")
+	return ..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.

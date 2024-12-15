@@ -235,10 +235,9 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/otherZ = list()
 
-	if(config.map_name == "Dun Manor")
-		otherZ += load_map_config("_maps/dun_manor.json")
-		// Add dungeon map files here later, maybe we can pick from a list of them?
-
+	#ifdef ROGUEWORLD
+	otherZ += load_map_config("_maps/map_files/otherz/rogueworld.json")
+	#endif
 	if(otherZ.len)
 		for(var/datum/map_config/OtherZ in otherZ)
 			LoadGroup(FailedZs, OtherZ.map_name, OtherZ.map_path, OtherZ.map_file, OtherZ.traits, ZTRAITS_STATION)

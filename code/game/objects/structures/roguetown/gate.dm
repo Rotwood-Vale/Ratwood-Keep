@@ -50,20 +50,18 @@ GLOBAL_LIST_EMPTY(biggates)
 /obj/structure/gate/Initialize()
 	. = ..()
 	update_icon()
+	var/turf/T = loc
+	turfsy += T
+	T = get_step(T, EAST)
+	turfsy += T
+	T = get_step(T, EAST)
+	turfsy += T
 	if(initial(opacity))
-		var/turf/T = loc
-		var/G = new /obj/gblock(T)
-		turfsy += T
-		blockers += G
-		T = get_step(T, EAST)
-		G = new /obj/gblock(T)
-		turfsy += T
-		blockers += G
-		T = get_step(T, EAST)
-		G = new /obj/gblock(T)
-		turfsy += T
-		blockers += G
+		for(var/turf/blocker_tile in turfsy)
+			var/G = new /obj/gblock(blocker_tile)
+			blockers += G
 	GLOB.biggates += src
+
 /obj/structure/gate/Destroy()
 	for(var/A in blockers)
 		qdel(A)
@@ -162,7 +160,6 @@ GLOBAL_LIST_EMPTY(biggates)
 /obj/structure/winch/LateInitialize()
 	for(var/obj/structure/gate/G in GLOB.biggates)
 		if(G.gid == gid)
-			GLOB.biggates -= G
 			attached_gate = G
 			G.attached_to = src
 

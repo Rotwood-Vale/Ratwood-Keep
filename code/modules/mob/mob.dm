@@ -30,6 +30,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	GLOB.alive_mob_list -= src
 	GLOB.mob_directory -= tag
 	focus = null
+
 	for (var/alert in alerts)
 		clear_alert(alert, TRUE)
 	if(observers && observers.len)
@@ -403,12 +404,12 @@ GLOBAL_VAR_INIT(mobids, 1)
 	return
 
 /**
- * Examine a mob
- *
- * mob verbs are faster than object verbs. See
- * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
- * for why this isn't atom/verb/examine()
- */
+  * Examine a mob
+  *
+  * mob verbs are faster than object verbs. See
+  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+  * for why this isn't atom/verb/examine()
+  */
 /mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
@@ -419,12 +420,29 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 
 	if(is_blind(src))
-		to_chat(src, "<span class='warning'>Something is there but I can't see it!</span>")
+		to_chat(src, span_warning("Something is there but I can't see it!"))
 		return
 
-	if(isturf(A.loc) && isliving(src))
-		face_atom(A)
-		visible_message("<span class='emote'>[src] looks at [A].</span>")
+	if(isliving(src))
+		var/message = "[src] looks at"
+		var/target = "\the [A]"
+		if(!isturf(A))
+			if(A == src)
+				message = "[src] looks over"
+				target = "themselves"
+			else if(A.loc == src)
+				target = "[src.p_their()] [A.name]"
+			else if(A.loc.loc == src)
+				message = "[src] looks into"
+				target = "[src.p_their()] [A.loc.name]"
+			else if(isliving(A) && src.cmode)
+				var/mob/living/T = A
+				if(!iscarbon(T))
+					target = "\the [T.name]'s [T.simple_limb_hit(zone_selected)]"
+				if(iscarbon(T) && T != src)
+					target = "[T]'s [parse_zone(zone_selected)]"
+			visible_message(span_emote("[message] [target]."))
+
 	var/list/result = A.examine(src)
 	if(result)
 		to_chat(src, result.Join("\n"))
@@ -718,6 +736,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/Stat()
 	..()
 	// && check_rights(R_ADMIN,0)
+	var/ticker_time = world.time - SSticker.round_start_time
+	var/time_left = SSticker.mode?.round_ends_at - ticker_time
 	if(client && client.holder)
 		if(statpanel("Status"))
 			if (client)
@@ -728,8 +748,10 @@ GLOBAL_VAR_INIT(mobids, 1)
 				stat(null, "Next Map: [cached.map_name]")
 			stat(null, "Round ID: [GLOB.rogue_round_id ? GLOB.rogue_round_id : "NULL"]")
 //			stat(null, "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]")
-			stat(null, "Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
-			stat(null, "Round TrueTime: [worldtime2text()] [world.time]")
+			stat(null, "Round Time: [time2text(STATION_TIME_PASSED(), "hh:mm:ss", 0)] [world.time - SSticker.round_start_time]")
+			if(SSticker.mode?.roundvoteend)
+				stat("Round End: [DisplayTimeText(time_left)]")
+			stat(null, "Round TrueTime: [worldtime2text(STATION_TIME_PASSED(), "hh:mm:ss", 0)] [world.time]")
 			stat(null, "TimeOfDay: [GLOB.tod]")
 			stat(null, "IC Time: [station_time_timestamp()] [station_time()]")
 			stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
@@ -740,7 +762,9 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(client)
 		if(statpanel("RoundInfo"))
 			stat("Round ID: [GLOB.rogue_round_id]")
-			stat("Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
+			stat("Round Time: [time2text(STATION_TIME_PASSED(), "hh:mm:ss", 0)] [world.time - SSticker.round_start_time]")
+			if(SSticker.mode?.roundvoteend)
+				stat("Round End: [DisplayTimeText(time_left)]")
 			stat("TimeOfDay: [GLOB.tod]")
 
 	if(client && client.holder && check_rights(R_ADMIN,0))

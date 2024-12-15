@@ -1133,7 +1133,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		wielded = FALSE
 		if(force_wielded)
 			force = initial(force)
-		wdefense = wdefense - 1
+		wdefense = initial(wdefense)
 	if(altgripped)
 		altgripped = FALSE
 	update_transform()
@@ -1196,3 +1196,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(..())
 		if(altgripped || wielded)
 			ungrip(M, FALSE)
+
+/obj/item/proc/on_embed(obj/item/bodypart/bp)
+	return

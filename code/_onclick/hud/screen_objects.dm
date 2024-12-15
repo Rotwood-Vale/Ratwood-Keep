@@ -120,18 +120,27 @@
 	var/last_craft
 
 /atom/movable/screen/craft/Click(location, control, params)
+	var/list/modifiers = params2list(params)
 	if(world.time < lastclick + 3 SECONDS)
 		return
 	lastclick = world.time
+
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
-		H.playsound_local(H, 'sound/misc/click.ogg', 100)
-		if(H.craftingthing)
-			last_craft = world.time
-			var/datum/component/personal_crafting/C = H.craftingthing
-			C.roguecraft(location, control, params, H)
+		if(modifiers["right"])
+			if(H.craftingthing && (H.mind?.lastrecipe != null))
+				last_craft = world.time
+				var/datum/component/personal_crafting/C = H.craftingthing
+				to_chat(H, span_warning("I am crafting \a [H.mind?.lastrecipe] again."))
+				C.construct_item(H, H.mind?.lastrecipe)
 		else
-			testing("what")
+			H.playsound_local(H, 'sound/misc/click.ogg', 100)
+			if(H.craftingthing)
+				last_craft = world.time
+				var/datum/component/personal_crafting/C = H.craftingthing
+				C.roguecraft(location, control, params, H)
+			else
+				testing("what")
 
 /atom/movable/screen/area_creator
 	name = "create new area"

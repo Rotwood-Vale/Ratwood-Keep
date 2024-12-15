@@ -88,6 +88,9 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 		return null
 
 /mob/living/proc/do_time_change()
+
+//first - tips/lore
+
 	if(!mind)
 		return
 	if(GLOB.tod == "dawn")
@@ -125,6 +128,8 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 		playsound_local(src, 'sound/misc/newday.ogg', 60, FALSE)
 		animate(T, alpha = 255, time = 10, easing = EASE_IN)
 		addtimer(CALLBACK(src, PROC_REF(clear_area_text), T), 35)
+		var/time_change_tips_random = pick(GLOB.time_change_tips)
+		to_chat(client, span_notice("<b>[time_change_tips_random]</b>"))
 	else if(GLOB.tod == "day")
 		playsound_local(src, 'sound/misc/midday.ogg', 100, FALSE)
 	else if(GLOB.tod == "night")

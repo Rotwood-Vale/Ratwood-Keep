@@ -64,6 +64,7 @@ GLOBAL_VAR(restart_counter)
 	else // We got a db connected, GLOB.round_id ticks up based on where its at on the db.
 		GLOB.rogue_round_id = "[pick(GLOB.roundid)][GLOB.round_id]-[timestamp]"
 	SetupLogs()
+	load_poll_data()
 	if(CONFIG_GET(string/channel_announce_new_game_message))
 		send2chat(new /datum/tgs_message_content(CONFIG_GET(string/channel_announce_new_game_message)), CONFIG_GET(string/chat_announce_new_game))
 
@@ -325,28 +326,40 @@ GLOBAL_VAR(restart_counter)
 	..()
 
 /world/proc/update_status()
-	var/s = ""
-	s += "<center><a href=\"https://discord.gg/zNAGFDcQ\">"
-#ifdef MATURESERVER
-	s += "<big><b>Vanderlin - IN-DEVELOPMENT PLAYTEST (Hosted by Monkestation)</b></big></a><br>"
-	s += "<b>Dark Medieval Fantasy Roleplay<b><br>"
+	var/list/features = list()
 
-#else
-	s += "<big><b>ROGUEWORLD</b></big></a><br>"
-	s += "<b>Fantasy Computer Survival Game</b></center><br>"
-#endif
-//	s += "<img src=\"https://i.imgur.com/shj547T.jpg\"></a></center>"
+	var/new_status = ""
+	var/hostedby
+	if(config)
+		var/server_name = CONFIG_GET(string/servername)
+		if (server_name)
+			new_status += "<b>[server_name]</b> &#8212; "
+		hostedby = CONFIG_GET(string/hostedby)
 
-//	s += "! <b>UPDATE 4.4</b> 4/22/2022<br><br>"
-#ifdef MATURESERVER
-	s += "\["
+	new_status += " ("
+	new_status += "<a href=\"[CONFIG_GET(string/discordurl)]\">"
+	new_status += "Discord"
+	new_status += ")\]"
+	new_status += "<br>[CONFIG_GET(string/servertagline)]"
+
+	var/players = GLOB.clients.len
+
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		s += "<b>GAME STATUS:</b> IN LOBBY"
+		new_status += "<br>GAME STATUS: <b>IN LOBBY</b><br>"
 	else
-		s += "<b>GAME STATUS:</b> PLAYING"
-#endif
-	status = s
-	return s
+		new_status += "<br>GAME STATUS: <b>PLAYING</b><br>"
+
+	if (SSticker.HasRoundStarted())
+		new_status += "Round Time: <b>[time2text(STATION_TIME_PASSED(), "hh:mm", 0)]</b>"
+	else
+		new_status += "Round Time: <b>NEW ROUND STARTING</b>"
+	new_status += "<br>Player[players == 1 ? "": "s"]: <b>[players]</b>"
+	new_status += "</a>"
+
+	if (!host && hostedby)
+		features += "hosted by <b>[hostedby]</b>"
+
+	status = new_status
 /*
 /world/proc/update_status()
 
