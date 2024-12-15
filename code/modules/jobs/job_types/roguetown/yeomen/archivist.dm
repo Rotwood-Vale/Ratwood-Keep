@@ -15,7 +15,7 @@
 	spells = list(/obj/effect/proc_holder/spell/invoked/teach, /obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation, /obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/invoked/message)
 	display_order = JDO_ARCHIVIST
 	give_bank_account = 25
-	min_pq = 0 //the player should actually have some experience to properly play the role
+	min_pq = 5 //the player should actually have some experience to properly play the role
 	max_pq = null
 
 /datum/outfit/job/roguetown/archivist
@@ -75,7 +75,7 @@
 /obj/effect/proc_holder/spell/invoked/teach
 	name = "The Tutor's Calling"
 	overlay_state = "book3"
-	releasedrain = 30
+	releasedrain = 50
 	chargedrain = 0
 	chargetime = 0
 	charge_max = 30 SECONDS
@@ -113,7 +113,7 @@
 		else
 			if(L in range(1, usr))
 				to_chat(usr, span_notice("My student needs some time to select a lesson."))
-				var/chosen_skill = input(L, "Choose a skill (You must have no more than expert in selected skill)") as null|anything in choices
+				var/chosen_skill = input(L, "Most of the lessons require you to be no less than novice in the selected skill", "Choose a skill") as null|anything in choices
 				var/datum/skill/item = choices[chosen_skill]
 				if(!item)
 					return  // student canceled
@@ -123,18 +123,18 @@
 					to_chat(L, span_warning("There's no way I could handle all that knowledge!"))
 					to_chat(usr, span_warning("My student cannot handle that much knowledge at once!"))
 					return // cannot teach the same student twice
-				if(item == /datum/skill/magic/arcane && L.mind?.get_skill_level(item) < SKILL_LEVEL_NOVICE)
-					to_chat(L, span_warning("I cannot comprehend [item.name]!"))
+				if(!(item in list(/datum/skill/misc/reading, /datum/skill/misc/music, /datum/skill/craft/cooking, /datum/skill/misc/music, /datum/skill/misc/sewing)) && L.mind?.get_skill_level(item) < SKILL_LEVEL_NOVICE)
+					to_chat(L, span_warning("I cannot understand the lesson on [item.name], I need to get more skilled first!"))
 					to_chat(usr, span_warning("I try teaching [L] [item.name] but my student couldnt grasp the lesson!"))
-					return
+					return // some basic skill will not require you novice level
 				if(L.mind?.get_skill_level(item) > SKILL_LEVEL_EXPERT)
-					to_chat(L, span_warning("There's nothing I can learn from that person!"))
-					to_chat(usr, span_warning("Am I really supposed to be the teacher there?"))
+					to_chat(L, span_warning("There's nothing I can learn from that person about [item.name]!"))
+					to_chat(usr, span_warning("They know [item.name] better than I do, am I really supposed to be the teacher there?"))
 					return // a student with master or legendary skill have nothing to learn from the scholar
 				else
 					to_chat(L, span_notice("[usr] starts teaching me on the subject!"))
 					to_chat(usr, span_notice("[L] gets to listen carefully to my lesson"))
-					if(L.mind?.get_skill_level(item) < SKILL_LEVEL_APPRENTICE) // +2 skill levels if novice or no skill at all
+					if(L.mind?.get_skill_level(item) < SKILL_LEVEL_APPRENTICE) // +2 skill levels if novice or no skill
 						if(do_after(usr, teachingtime, target = L))
 							user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
 							to_chat(usr, span_notice("My student grows a lot more proficient in [item.name]!"))
