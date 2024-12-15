@@ -10,6 +10,16 @@
 	additional_items = list(/obj/item/rogueore/coal)
 	created_item = list(/obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal)
 
+/datum/anvil_recipe/general/locks
+	name = "Locks 2x"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/customlock, /obj/item/customlock)
+
+/datum/anvil_recipe/general/keys
+	name = "Keys 2x"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/key_custom_blank, /obj/item/key_custom_blank)
+
 /datum/anvil_recipe/tools/iron/scissors
 	name = "Scissors"
 	req_bar = /obj/item/ingot/iron

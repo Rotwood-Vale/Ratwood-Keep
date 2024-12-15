@@ -125,6 +125,9 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	if(href_list["schizohelp"])
 		answer_schizohelp(locate(href_list["schizohelp"]))
 		return
+	
+	if(href_list["view_species_info"])
+		view_species_info(href_list["view_species_info"])
 
 	switch(href_list["_src_"])
 		if("holder")
