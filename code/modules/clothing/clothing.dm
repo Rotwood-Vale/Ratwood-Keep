@@ -35,6 +35,7 @@
 	var/do_sound_bell = FALSE
 	var/do_sound_chain = FALSE
 	var/do_sound_plate = FALSE
+	var/bell = FALSE
 
 	var/emote_environment = -1
 	var/list/prevent_crits

@@ -323,9 +323,10 @@
 
 /obj/item/clothing/neck/roguetown/collar/leather
 	name = "leather collar"
-	desc = ""
+	desc = "A comfortable collar made of leather."
 	icon_state = "collar_leather"
 	color = null
+	do_sound_bell = FALSE
 	slot_flags = ITEM_SLOT_NECK
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
@@ -336,7 +337,6 @@
 	resistance_flags = FIRE_PROOF
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 	clothing_flags = ITEM_SLOT_NECK
-	do_sound_bell = FALSE
 	icon = 'modular/icons/obj/items/leashes_collars.dmi'
 	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
 	icon_state = "collar_leather"
@@ -349,17 +349,16 @@
 
 /obj/item/clothing/neck/roguetown/collar/leather/bell
 	name = "jingly leather collar"
-	desc = ""
+	desc = "A comfortable collar made of leather, this one has a jingly little catbell!"
 	icon_state = "collar_leather_cat"
 	slot_flags = ITEM_SLOT_NECK
 	do_sound_bell = TRUE
-	salvage_amount = 1
-	salvage_result = list(/obj/item/natural/hide/cured, /obj/item/catbell)
+	bell = TRUE
+	salvage_result = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell = 1)
 
 /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
-	name = "leather collar with cowbell"
-	desc = ""
+	name = "jingly leather collar"
+	desc = "A comfortable collar made of leather, this one has a jingly little cowbell!"
 	icon_state = "collar_leather_cow"
 	slot_flags = ITEM_SLOT_NECK
-	salvage_amount = 1
-	salvage_result = list(/obj/item/natural/hide/cured, /obj/item/catbell/cow)
+	salvage_result = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell/cow = 1)

@@ -123,7 +123,7 @@
 			log_combat(user, C, "leashed", addition="playfully")
 			C.apply_status_effect(/datum/status_effect/leash_pet)//Has now been leashed
 			leash_pet = C //Save pet reference for later
-			if(!user == leash_pet) //Pet leashed themself. They are not the dom
+			if(!(user == leash_pet)) //Pet leashed themself. They are not the dom
 				leash_master = user //Save dom reference for later
 				user.apply_status_effect(/datum/status_effect/leash_owner) //Is the leasher
 				RegisterSignal(leash_master, COMSIG_MOVABLE_MOVED, PROC_REF(on_master_move))
@@ -350,6 +350,7 @@
 	var/last_ring
 
 /obj/item/catbell/cow
+	name = "cowbell"
 	desc = "A small jingly cowbell"
 	icon_state = "cowbell"
 
@@ -360,3 +361,53 @@
 	playsound(src, 'sound/items/collarbell1.ogg', 100, extrarange = 8, ignore_walls = TRUE)
 	flick("bell_commonpressed", src)
 	last_ring = world.time
+
+/obj/item/catbell/attack(mob/living/carbon/C, mob/living/user)
+	var/obj/item/clothing/neck/roguetown/collar = C.get_item_by_slot(SLOT_NECK)
+	if(!istype(collar, /obj/item/clothing/neck/roguetown/collar/leather))
+		to_chat(user, "[C] needs a collar to attach the bell!")
+		return
+
+	if(istype(collar, /obj/item/clothing/neck/roguetown/collar/leather))
+		if(collar.bell == TRUE)
+			to_chat(user, "[C]'s collar already has a bell!")
+			return
+
+		if(collar.bell == FALSE)
+			var/bell_attempt_message = "[user] raises \the [src] to [C]'s neck!"
+			for(var/mob/viewing in viewers(C, null))
+				if(viewing == C)
+					to_chat(C, "<span class='warning'>[user] begins raising \the [src] to my neck!</span>")
+				else if(viewing == user)
+					to_chat(user, "<span class='warning'>I begin raising \the [src] to [C]'s neck!</span>")
+				else
+					viewing.show_message("<span class='warning'>[bell_attempt_message]</span>", 1)
+			var/belltime = 50
+			if(C.handcuffed)
+				belltime = 5
+			if(do_mob(user, C, belltime))
+				log_combat(user, C, "put a bell on")
+				for(var/mob/viewing in viewers(user, null))
+					if(viewing == user)
+						to_chat(user, span_warning("You have attached \a [src] onto [C]'s \the [collar]!"))
+					else
+						viewing.show_message(span_warning("[C] has had \a [src] clipped onto their \the [collar] by [user]!"), 1)
+				collar.bell = TRUE
+				collar.do_sound_bell = TRUE
+				collar.AddComponent(/datum/component/squeak, list('sound/items/collarbell1.ogg',\
+													'sound/items/collarbell2.ogg',\
+													'sound/items/collarbell3.ogg',\
+													'sound/items/collarbell4.ogg'), 50, 100)
+				if(istype(src, /obj/item/catbell/cow))
+					collar.icon_state = "collar_leather_cow"
+					C.update_inv_neck()
+					collar.desc = "A comfortable collar made of leather, this one has a lil jingly cowbell!"
+					collar.salvage_result = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell = 1)
+				else if(istype(src, /obj/item/catbell))
+					collar.icon_state = "collar_leather_cat"
+					C.update_inv_neck()
+					collar.desc = "A comfortable collar made of leather, this one has a lil jingly catbell!"
+					collar.salvage_result = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell/cow = 1)
+				collar.name = "jingly [collar.name]"
+				qdel(src)
+				
