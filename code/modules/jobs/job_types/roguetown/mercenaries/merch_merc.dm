@@ -1,5 +1,5 @@
 /datum/job/roguetown/grabber
-	title = "Thug"
+	title = "Henchman"
 	flag = GRABBER
 	department_flag = MERCENARIES
 	faction = "Station"
@@ -9,9 +9,9 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
-	tutorial = "A mercenary of the Merchant's Guild is paid well, but given little to no training. That's what you are in title. A mercenary. \
-	In practice? You're a paid thug. There to act as a guard dog. Nothing more. \
-	Try to retain the favour of your current employer, for you've no other contacts to the guild."
+	tutorial = "You are brute, a hired muscle for the local brothel.\
+				Working under the nightmaster, you ensure nobody causes trouble or harms the prostitutes,\
+				and help keeping the long arm of the law away from the shady business happening inside."
 
 	outfit = /datum/outfit/job/roguetown/grabber
 	display_order = JDO_GRABBER
@@ -40,7 +40,7 @@
 		pants = /obj/item/clothing/under/roguetown/tights/sailor
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		beltr = /obj/item/rogueweapon/mace/woodclub
-		beltl = /obj/item/storage/keyring/shophand
+		beltl = /obj/item/storage/keyring/nightman
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		if(prob(30))
@@ -56,7 +56,7 @@
 		pants = /obj/item/clothing/under/roguetown/tights/sailor
 		beltr = /obj/item/rogueweapon/sword/cutlass
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltl = /obj/item/storage/keyring/shophand
+		beltl = /obj/item/storage/keyring/nightman
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		if(prob(23))

@@ -18,6 +18,7 @@
 
 /datum/outfit/job/roguetown/guildsmith/pre_equip(mob/living/carbon/human/H)
 	..()
+	gloves = /obj/item/clothing/gloves/roguetown/leather
 	head = /obj/item/clothing/head/roguetown/hatfur
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu

@@ -386,5 +386,8 @@
 /turf/open/water/river/proc/process_river()
 	river_processing = null
 	for(var/atom/movable/A in contents)
+		for(var/obj/structure/S in src)
+			if(S.obj_flags & BLOCK_Z_OUT_DOWN)
+				return
 		if((A.loc == src) && A.has_gravity())
 			A.ConveyorMove(dir)
