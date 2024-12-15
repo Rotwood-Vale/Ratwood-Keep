@@ -215,7 +215,7 @@
 				user.rogfat_add(40)
 				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
 								span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
-				M.Stun(max(((40 + (skill_diff * 10) + (user.STASTR * 10) - (M.STASTR * 12)) * combat_modifier), 20))
+				M.Stun(max(((40 + (skill_diff * 10) + (user.STASTR * 10) - (M.STASTR * 10)) * combat_modifier), 20))
 				user.Immobilize(20 - skill_diff)
 			else
 				user.rogfat_add(rand(5,15))
