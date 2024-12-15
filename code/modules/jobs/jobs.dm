@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(foreigner_positions, list(
 ))
 
 GLOBAL_LIST_INIT(roguewar_positions, list(
-	"refugee",
+	"Refugee",
 ))
 
 GLOBAL_LIST_INIT(goblin_positions, list(
