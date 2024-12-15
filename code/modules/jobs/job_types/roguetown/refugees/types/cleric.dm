@@ -4,7 +4,6 @@
 	tutorial = "Clerics are wandering warriors of the Gods, an asset to any party."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	vampcompat = FALSE
 	outfit = /datum/outfit/job/roguetown/refugee/cleric
 	category_tags = list(CTAG_REFUGEE)
 

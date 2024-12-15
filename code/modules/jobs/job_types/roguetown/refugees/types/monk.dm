@@ -6,9 +6,6 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/refugee/monk
 	traits_applied = list(TRAIT_DODGEEXPERT)
-
-	vampcompat = FALSE
-
 	category_tags = list(CTAG_REFUGEE)
 
 /datum/outfit/job/roguetown/refugee/monk/pre_equip(mob/living/carbon/human/H)

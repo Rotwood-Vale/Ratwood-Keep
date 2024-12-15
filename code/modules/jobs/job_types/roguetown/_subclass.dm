@@ -13,7 +13,6 @@
 
 	var/horse = FALSE
 	var/torch = TRUE
-	var/vampcompat = TRUE
 	var/list/traits_applied
 	var/cmode_music
 
