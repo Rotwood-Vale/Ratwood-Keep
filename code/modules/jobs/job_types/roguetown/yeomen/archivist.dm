@@ -132,8 +132,8 @@
 					to_chat(usr, span_warning("They know [item.name] better than I do, am I really supposed to be the teacher there?"))
 					return // a student with master or legendary skill have nothing to learn from the scholar
 				else
-					to_chat(L, span_notice("[usr] starts teaching me on the subject!"))
-					to_chat(usr, span_notice("[L] gets to listen carefully to my lesson"))
+					to_chat(L, span_notice("[usr] starts teaching me about [item.name]!"))
+					to_chat(usr, span_notice("[L] gets to listen carefully to my lesson about [item.name]."))
 					if(L.mind?.get_skill_level(item) < SKILL_LEVEL_APPRENTICE) // +2 skill levels if novice or no skill
 						if(do_after(usr, teachingtime, target = L))
 							user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
