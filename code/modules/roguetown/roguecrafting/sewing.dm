@@ -482,7 +482,7 @@
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/sewing/collarleather
-	name = "leather belt (leather; APPRENTICE)"
+	name = "leather collar (1 leather; NONE)"
 	result = /obj/item/clothing/neck/roguetown/collar/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	skill_level = 0
