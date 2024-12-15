@@ -296,8 +296,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 //Please override this locally if you want to define when what species qualifies for what rank if human authority is enforced.
 /datum/species/proc/qualifies_for_rank(rank, list/features)
-	if(rank in GLOB.command_positions)
-		return 0
 	return 1
 
 /datum/species/proc/get_random_features()

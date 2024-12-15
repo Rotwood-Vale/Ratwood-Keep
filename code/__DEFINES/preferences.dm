@@ -54,34 +54,21 @@
 #define PARALLAX_DELAY_MED     1
 #define PARALLAX_DELAY_LOW     2
 
-#define SEC_DEPT_NONE "None"
-#define SEC_DEPT_RANDOM "Random"
-#define SEC_DEPT_ENGINEERING "Engineering"
-#define SEC_DEPT_MEDICAL "Medical"
-#define SEC_DEPT_SCIENCE "Science"
-#define SEC_DEPT_SUPPLY "Supply"
-
 // Playtime tracking system, see jobs_exp.dm
 #define EXP_TYPE_LIVING			"Living"
-#define EXP_TYPE_CREW			"Crew"
-#define EXP_TYPE_COMMAND		"Command"
-#define EXP_TYPE_ENGINEERING	"Engineering"
-#define EXP_TYPE_MEDICAL		"Medical"
-#define EXP_TYPE_SCIENCE		"Science"
-#define EXP_TYPE_SUPPLY			"Supply"
-#define EXP_TYPE_SECURITY		"Security"
-#define EXP_TYPE_SILICON		"Silicon"
-#define EXP_TYPE_SERVICE		"Service"
-#define EXP_TYPE_ANTAG			"Antag"
-#define EXP_TYPE_SPECIAL		"Special"
 #define EXP_TYPE_GHOST			"Ghost"
 #define EXP_TYPE_ADMIN			"Admin"
 
+#define EXP_TYPE_ANTAG			"Antag"
+
+#define EXP_TYPE_TOWNER			"Towner"
+#define EXP_TYPE_NOBLE			"Noble"
+#define EXP_TYPE_ADVENTURER		"Adventurer"
+#define EXP_TYPE_CHURCH			"Church"
+#define EXP_TYPE_GUARDS			"Guards"
+
 //Flags in the players table in the db
 #define DB_FLAG_EXEMPT 1
-
-#define DEFAULT_CYBORG_NAME "Default Cyborg Name"
-
 
 //Job preferences levels
 #define JP_LOW 1
@@ -102,8 +89,6 @@
 #define RANDOM_UNDERWEAR_COLOR "random_underwear_color"
 #define RANDOM_UNDERSHIRT "random_undershirt"
 #define RANDOM_SOCKS "random_socks"
-#define RANDOM_BACKPACK "random_backpack"
-#define RANDOM_JUMPSUIT_STYLE "random_jumpsuit_style"
 #define RANDOM_SKIN_TONE "random_skin_tone"
 #define RANDOM_EYE_COLOR "random_eye_color"
 

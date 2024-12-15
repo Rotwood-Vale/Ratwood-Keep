@@ -14,49 +14,10 @@
 #define ROLE_DELF				"Dark Elf"
 #define ROLE_PREBEL				"Peasant Rebel"
 #define ROLE_ASPIRANT			"Aspirant"
+
 #define ROLE_ZIZOIDCULTIST		"Cultist"
 #define ROLE_LICH				"Lich"
 
-#define ROLE_SYNDICATE			"Syndicate"
-#define ROLE_TRAITOR			"Traitor"
-#define ROLE_OPERATIVE			"Operative"
-#define ROLE_CHANGELING			"Changeling"
-#define ROLE_WIZARD				"Wizard"
-#define ROLE_MALF				"Malf AI"
-#define ROLE_REV				"Revolutionary"
-#define ROLE_REV_HEAD			"Head Revolutionary"
-
-#define ROLE_PAI				"pAI"
-#define ROLE_CULTIST			"Cultist"
-#define ROLE_BLOB				"Blob"
-#define ROLE_NINJA				"Space Ninja"
-#define ROLE_MONKEY				"Monkey"
-#define ROLE_ABDUCTOR			"Abductor"
-#define ROLE_REVENANT			"Revenant"
-#define ROLE_BROTHER			"Blood Brother"
-#define ROLE_BRAINWASHED		"Brainwashed Victim"
-#define ROLE_OVERTHROW			"Syndicate Mutineer"		//Role removed, left here for safety.
-#define ROLE_HIVE				"Hivemind Host"				//Role removed, left here for safety.
-#define ROLE_OBSESSED				"Obsessed"
-#define ROLE_SENTIENCE			"Sentience Potion Spawn"
-#define ROLE_MIND_TRANSFER		"Mind Transfer Potion"
-#define ROLE_POSIBRAIN			"Posibrain"
-#define ROLE_DRONE				"Drone"
-#define ROLE_DEATHSQUAD			"Deathsquad"
-#define ROLE_LAVALAND			"Lavaland"
-
-//Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
-//The gamemode specific ones are just so the gamemodes can query whether a player is old enough
-//(in game days played) to play that role
-GLOBAL_LIST_INIT(special_roles, list(
-	ROLE_PAI,
-	ROLE_BLOB,
-	ROLE_NINJA,
-	ROLE_OBSESSED,
-	ROLE_REVENANT,
-	ROLE_ABDUCTOR,
-	ROLE_SENTIENCE
-))
 
 GLOBAL_LIST_INIT(special_roles_rogue, list(
 	ROLE_MANIAC = /datum/antagonist/maniac,

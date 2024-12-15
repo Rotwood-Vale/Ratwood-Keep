@@ -75,8 +75,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/accessory = "Nothing"
 	var/detail = "Nothing"
 	var/socks = "Nude"					//socks type
-	var/backpack = DBACKPACK				//backpack type
-	var/jumpsuit_style = PREF_SUIT		//suit/skirt
 	var/hairstyle = "Bald"				//Hair type
 	var/hair_color = "000"				//Hair color
 	var/facial_hairstyle = "Shaved"	//Face hair type
@@ -96,8 +94,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/phobia = "spiders"
 
 	var/list/custom_names = list()
-	var/preferred_ai_core_display = "Blue"
-	var/prefered_security_department = SEC_DEPT_RANDOM
 
 	//Job preferences 2.0 - indexed by job title , no key or value implies never
 	var/list/job_preferences = list()
@@ -126,8 +122,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/anonymize = TRUE
 
 	var/lastclass
-
-	var/uplink_spawn_loc = UPLINK_PDA
 
 	var/list/exp = list()
 	var/list/menuoptions
@@ -363,24 +357,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
 				dat += "<BR>"
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
-
-/*
-			dat += "<br><br><b>Special Names:</b><BR>"
-			var/old_group
-			for(var/custom_name_id in GLOB.preferences_custom_names)
-				var/namedata = GLOB.preferences_custom_names[custom_name_id]
-				if(!old_group)
-					old_group = namedata["group"]
-				else if(old_group != namedata["group"])
-					old_group = namedata["group"]
-					dat += "<br>"
-				dat += "<a href ='?_src_=prefs;preference=[custom_name_id];task=input'><b>[namedata["pref_name"]]:</b> [custom_names[custom_name_id]]</a> "
-			dat += "<br><br>"
-
-			dat += "<b>Custom Job Preferences:</b><BR>"
-			dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
-			dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR></td>"
-*/
 			dat += "</tr></table>"
 // 			-----------END OF IDENT TABLE-----------
 
@@ -549,8 +525,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					dat += "<b>[capitalize(i)]:</b> <a href='?_src_=prefs;bancheck=[i]'>BANNED</a><br>"
 				else
 					var/days_remaining = null
-					if(ispath(GLOB.special_roles[i]) && CONFIG_GET(flag/use_age_restriction_for_jobs)) //If it's a game mode antag, check if the player meets the minimum age
-						var/mode_path = GLOB.special_roles[i]
+					if(ispath(GLOB.special_roles_rogue[i]) && CONFIG_GET(flag/use_age_restriction_for_jobs)) //If it's a game mode antag, check if the player meets the minimum age
+						var/mode_path = GLOB.special_roles_rogue[i]
 						var/datum/game_mode/temp_mode = new mode_path
 						days_remaining = temp_mode.get_remaining_days(user.client)
 
@@ -1093,8 +1069,8 @@ Slots: [job.spawn_positions]</span>
 			dat += "<b>[capitalize(i)]:</b> <a href='?_src_=prefs;bancheck=[i]'>BANNED</a><br>"
 		else
 			var/days_remaining = null
-			if(ispath(GLOB.special_roles[i]) && CONFIG_GET(flag/use_age_restriction_for_jobs)) //If it's a game mode antag, check if the player meets the minimum age
-				var/mode_path = GLOB.special_roles[i]
+			if(ispath(GLOB.special_roles_rogue[i]) && CONFIG_GET(flag/use_age_restriction_for_jobs)) //If it's a game mode antag, check if the player meets the minimum age
+				var/mode_path = GLOB.special_roles_rogue[i]
 				var/datum/game_mode/temp_mode = new mode_path
 				days_remaining = temp_mode.get_remaining_days(user.client)
 
@@ -1336,10 +1312,6 @@ Slots: [job.spawn_positions]</span>
 					skin_tone = skins[pick(skins)]
 				if("species")
 					random_species()
-				if("bag")
-					backpack = pick(GLOB.backpacklist)
-				if("suit")
-					jumpsuit_style = PREF_SUIT
 				if("all")
 					random_character(gender)
 
@@ -1608,32 +1580,6 @@ Slots: [job.spawn_positions]</span>
 					var/new_asaycolor = input(user, "Choose your ASAY color:", "Game Preference",asaycolor) as color|null
 					if(new_asaycolor)
 						asaycolor = new_asaycolor
-
-				if("bag")
-					var/new_backpack = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in GLOB.backpacklist
-					if(new_backpack)
-						backpack = new_backpack
-
-				if("suit")
-					if(jumpsuit_style == PREF_SUIT)
-						jumpsuit_style = PREF_SUIT
-					else
-						jumpsuit_style = PREF_SUIT
-
-				if("uplink_loc")
-					var/new_loc = input(user, "Choose your character's traitor uplink spawn location:", "Character Preference") as null|anything in GLOB.uplink_spawn_loc_list
-					if(new_loc)
-						uplink_spawn_loc = new_loc
-
-				if("ai_core_icon")
-					var/ai_core_icon = input(user, "Choose your preferred AI core display screen:", "AI Core Display Screen Selection") as null|anything in GLOB.ai_core_display_screens
-					if(ai_core_icon)
-						preferred_ai_core_display = ai_core_icon
-
-				if("sec_dept")
-					var/department = input(user, "Choose your preferred security department:", "Security Departments") as null|anything in GLOB.security_depts_prefs
-					if(department)
-						prefered_security_department = department
 
 				if ("preferred_map")
 					var/maplist = list()
@@ -2057,18 +2003,10 @@ Slots: [job.spawn_positions]</span>
 	character.skin_tone = skin_tone
 	character.hairstyle = hairstyle
 	character.facial_hairstyle = facial_hairstyle
-	//character.underwear = underwear
-//	character.underwear_color = underwear_color
 	character.undershirt = undershirt
-//	character.accessory = accessory
 	character.detail = detail
 	character.socks = socks
 	character.set_patron(selected_patron)
-	character.backpack = backpack
-	character.defiant = defiant
-	character.virginity = virginity
-
-	character.jumpsuit_style = jumpsuit_style
 
 	if(charflaw)
 		if(istype(charflaw, /datum/charflaw/badsight))

@@ -18,7 +18,6 @@
 	open_sound_volume = 35
 	close_sound_volume = 50
 	drag_slowdown = 0
-	var/obj/item/paper/fluff/jobs/cargo/manifest/manifest
 	var/base_icon_state
 
 /obj/structure/closet/crate/Initialize()
@@ -43,8 +42,6 @@
 
 /obj/structure/closet/crate/update_icon()
 	icon_state = "[base_icon_state][opened ? "open" : ""]"
-
-	cut_overlays()
 
 /obj/structure/closet/crate/attack_hand(mob/user)
 	. = ..()

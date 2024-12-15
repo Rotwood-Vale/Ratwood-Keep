@@ -495,6 +495,13 @@
 				if(A.type == datum_type)
 					return A
 
+// Boolean. Returns true if the antag is actually "good", false otherwise.
+/datum/mind/proc/isactuallygood()
+	for(var/GG in antag_datums)
+		var/datum/antagonist/antaggy = GG
+		return antaggy.isgoodguy
+
+
 /datum/mind/proc/equip_traitor(employer = "The Syndicate", silent = FALSE, datum/antagonist/uplink_owner)
 	return
 
@@ -554,12 +561,6 @@
 			to_chat(usr,span_warning("Invalid antagonist ref to be removed."))
 			return
 		A.admin_remove(usr)
-
-	if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in sortList(get_all_jobs())
-		if (!new_role)
-			return
-		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
 		var/new_memo = copytext(sanitize(input("Write new memory", "Memory", memory) as null|message),1,MAX_MESSAGE_LEN)

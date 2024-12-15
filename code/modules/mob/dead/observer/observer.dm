@@ -943,18 +943,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.visible_message(span_deadsay("<b>[src]</b> points to [A]."))
 	return TRUE
 
-/mob/dead/observer/verb/view_manifest()
-	set name = "View Crew Manifest"
-	set category = "Ghost"
-	set hidden = 1
-	if(!check_rights(R_WATCH))
-		return
-	var/dat
-	dat += "<h4>Crew Manifest</h4>"
-	dat += GLOB.data_core.get_manifest()
-
-	src << browse(dat, "window=manifest;size=387x420;can_close=1")
-
 //this is called when a ghost is drag clicked to something.
 /mob/dead/observer/MouseDrop(atom/over)
 	if(!usr || !over)

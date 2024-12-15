@@ -245,9 +245,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 				return
 		LateChoices()
 
-	if(href_list["manifest"])
-		ViewManifest()
-
 	if(href_list["SelectedJob"])
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, span_danger("The round is either not ready, or has already finished..."))
@@ -723,12 +720,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		new_character = null
 		qdel(src)
 
-/mob/dead/new_player/proc/ViewManifest()
-	var/dat = "<html><body>"
-	dat += "<h4>Crew Manifest</h4>"
-	dat += GLOB.data_core.get_manifest(OOC = 1)
-
-	src << browse(dat, "window=manifest;size=387x420;can_close=1")
 
 /mob/dead/new_player/Move()
 	return 0
