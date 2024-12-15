@@ -330,6 +330,23 @@
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 
+/obj/item/clothing/neck/roguetown/collar/leather/cursed/Initialize(mapload)
+	. = ..()
+	name = "cursed collar"
+	resistance_flags = FIRE_PROOF
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	clothing_flags = ITEM_SLOT_NECK
+	do_sound_bell = FALSE
+	icon = 'modular/icons/obj/items/leashes_collars.dmi'
+	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
+	icon_state = "collar_leather"
+
+/obj/item/clothing/neck/roguetown/collar/leather/cursed/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
 /obj/item/clothing/neck/roguetown/collar/leather/bell
 	name = "jingly leather collar"
 	desc = ""
@@ -346,19 +363,3 @@
 	slot_flags = ITEM_SLOT_NECK
 	salvage_amount = 1
 	salvage_result = list(/obj/item/natural/hide/cured, /obj/item/catbell/cow)
-
-/obj/item/clothing/neck/roguetown/collar/leather/bell/cursed/Initialize(mapload)
-	. = ..()
-	name = "cursed collar"
-	resistance_flags = FIRE_PROOF
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-	clothing_flags = ITEM_SLOT_NECK
-	icon = 'modular/icons/obj/items/leashes_collars.dmi'
-	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
-	icon_state = "collar_leather"
-
-/obj/item/clothing/neck/roguetown/collar/leather/bell/cursed/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
