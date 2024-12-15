@@ -485,7 +485,7 @@
 	name = "leather belt (leather; APPRENTICE)"
 	result = /obj/item/clothing/neck/roguetown/collar/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
-	skill_level = 2
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/sewing/bandana
 	name = "leather bandana (leather; APPRENTICE)"
