@@ -109,14 +109,14 @@
 	skill_level = 1
 
 /datum/artificer_recipe/bronze/locks
-	name = "Lock"
-	created_item = /obj/item/customlock
+	name = "Locks 5x"
+	created_item = list(/obj/item/customlock, /obj/item/customlock, /obj/item/customlock, /obj/item/customlock, /obj/item/customlock)
 	hammers_per_item = 5
 	skill_level = 1
 
 /datum/artificer_recipe/bronze/keys
-	name = "Keys 2x"
-	created_item = list(/obj/item/key_custom_blank, /obj/item/key_custom_blank)
+	name = "Keys 5x"
+	created_item = list(/obj/item/key_custom_blank, /obj/item/key_custom_blank, /obj/item/key_custom_blank, /obj/item/key_custom_blank, /obj/item/key_custom_blank)
 	hammers_per_item = 5
 	skill_level = 1
 

@@ -2788,6 +2788,10 @@
 /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin,
 /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin,
 /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/goblin)
 "Hc" = (
@@ -2872,6 +2876,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 4
 	},
+/mob/living/simple_animal/hostile/retaliate/rogue/swiper,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/banditcamp)
 "IR" = (
@@ -3449,6 +3454,10 @@
 /area/rogue/indoors/banditcamp)
 "TJ" = (
 /obj/structure/closet/crate/chest,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
+/obj/item/rope/chain,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/goblin)
 "TQ" = (

@@ -88,6 +88,8 @@
 	for(var/choice_type in pref_species.descriptor_choices)
 		var/datum/descriptor_choice/choice = DESCRIPTOR_CHOICE(choice_type)
 		var/datum/descriptor_entry/entry = get_descriptor_entry_for_choice(choice_type)
+		if(!entry)
+			continue
 		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(entry.descriptor_type)
 		dat += "<b>[choice.name]:</b> <a href='?_src_=prefs;descriptor_choice=[choice_type];preference=choose_descriptor;task=change_descriptor'>[descriptor.name]</a><br>"
 
@@ -140,7 +142,8 @@
 	character.clear_mob_descriptors()
 	for(var/choice_type in pref_species.descriptor_choices)
 		var/datum/descriptor_entry/entry = get_descriptor_entry_for_choice(choice_type)
-		character.add_mob_descriptor(entry.descriptor_type)
+		if(entry)
+			character.add_mob_descriptor(entry.descriptor_type)
 	character.custom_descriptors = list()
 	for(var/datum/custom_descriptor_entry/entry as anything in custom_descriptors)
 		var/datum/custom_descriptor_entry/new_entry = new /datum/custom_descriptor_entry()
