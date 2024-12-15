@@ -161,14 +161,10 @@
 #define NIGHTMASTER	(1<<8)
 #define BEGGAR		(1<<9)
 #define WENCH		(1<<10)
-#define ADVENTURER	(1<<11)
-#define PILGRIM		(1<<12)
-#define VILLAGER	(1<<13)
-#define PRISONERR	(1<<14)
-#define PRISONERB	(1<<15)
-#define LUNATIC		(1<<16)
-#define MIGRANT		(1<<17)
-#define BANDIT		(1<<19)
+#define VILLAGER	(1<<11)
+#define PRISONERR	(1<<12)
+#define PRISONERB	(1<<13)
+#define LUNATIC		(1<<14)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -176,13 +172,12 @@
 #define CHURCHLING	(1<<1)
 #define SQUIRE		(1<<2)
 #define SERVANT		(1<<3)
-#define ORPHAN		(1<<4)
-#define PRINCE		(1<<5)
-#define SHOPHAND	(1<<6)
-#define CLERK 		(1<<7)
-#define MAGEAPPRENTICE	(1<<8)
+#define PRINCE		(1<<4)
+#define SHOPHAND	(1<<5)
+#define CLERK 		(1<<6)
+#define MAGEAPPRENTICE	(1<<7)
 
-#define MERCENARIES		(1<<7)
+#define MERCENARIES		(1<<8)
 
 #define MERCENARY	(1<<0)
 #define VETERAN		(1<<1)
@@ -204,6 +199,11 @@
 #define DEATHKNIGHT (1<<1)
 #define SKELETON	(1<<2)
 
+#define FOREIGNERS	(1<<10)
+#define REFUGEE	(1<<0)
+#define MIGRANT		(1<<1)
+#define BANDIT		(1<<2)
+
 #define JCOLOR_NOBLE "#aa83b9"
 #define JCOLOR_COURTIER "#81adc8"
 #define JCOLOR_CHURCH "#c0ba8d"
@@ -211,6 +211,7 @@
 #define JCOLOR_YEOMAN "#819e82"
 #define JCOLOR_PEASANT "#b09262"
 #define JCOLOR_MERCENARY "#c86e3a"
+#define JCOLOR_FOREIGNER "#776759"
 
 
 // job display orders //
@@ -283,7 +284,6 @@
 
 #define JDO_VILLAGER 30
 #define JDO_ADVENTURER 30.1
-#define JDO_PILGRIM 30.2
 #define JDO_MIGRANT 32.3
 
 #define JDO_MERC_CLERK 31
@@ -293,7 +293,6 @@
 #define JDO_BANDIT 31.4
 
 #define JDO_VAGRANT 33
-#define JDO_ORPHAN 34
 
 #define JDO_PRISONERR 35
 #define JDO_PRISONERB 35.1
@@ -371,8 +370,7 @@
 	/datum/job/roguetown/scribe
 
 #define WANDERER_ROLES \
-	/datum/job/roguetown/pilgrim,\
-	/datum/job/roguetown/adventurer,\
+	/datum/job/roguetown/refugee,\
 	/datum/job/roguetown/guild_clerk,\
 	/datum/job/roguetown/mercenary,\
 	/datum/job/roguetown/seelie,\

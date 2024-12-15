@@ -518,28 +518,11 @@
 	character.mind.adjust_skillrank(/datum/skill/misc/sneaking, -2, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/misc/stealing, -2, TRUE)
 
-/datum/special_trait/vengantbum
-	name = "Vengant Bum"
-	greet_text = span_notice("I was once a nobleman, high on life until my father was murdered right in front of me. Thankfully, my mentor took me to safety and taught me all I needed to survive in these disgusting lands. They think I am a lowlife, but that's just an advantage.")
-	req_text = "Be a beggar or vagabond"
-	allowed_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan)
-	weight = 7
-
-/datum/special_trait/vengantbum/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
-	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")
-	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 6, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 6, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
-	character.STASTR = 20
-	character.STACON = 20
-	character.STAEND = 20
-
 /datum/special_trait/my_precious
 	name = "My Precious"
 	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")
 	req_text = "Be a beggar or vagabond"
-	allowed_jobs = list(/datum/job/roguetown/beggar, /datum/job/roguetown/orphan)
+	allowed_jobs = list(/datum/job/roguetown/beggar)
 	weight = 50
 
 /datum/special_trait/my_precious/on_apply(mob/living/carbon/human/character, silent)
@@ -581,7 +564,7 @@
 	name = "Seed & Feed"
 	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
 	req_text = "Be a Soilson, Towner or Pilgrim."
-	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/pilgrim, /datum/job/roguetown/villager)
+	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/refugee, /datum/job/roguetown/villager)
 	weight = 100
 
 /datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)

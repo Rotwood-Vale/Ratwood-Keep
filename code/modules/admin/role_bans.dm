@@ -92,10 +92,10 @@
 			return TRUE
 	return FALSE
 
-/proc/is_advclass_banned(ckey, advclass_name)
+/proc/is_subclass_banned(ckey, subclass_name)
 	var/list/valid_bans = get_valid_role_bans(ckey)
 	for(var/datum/role_ban_instance/instance as anything in valid_bans)
-		if(advclass_name in instance.advclasses)
+		if(subclass_name in instance.subclasses)
 			return TRUE
 	return FALSE
 

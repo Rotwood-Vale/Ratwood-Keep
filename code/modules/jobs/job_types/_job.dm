@@ -131,10 +131,10 @@
 
 /*
 	How this works, its CTAG_DEFINE = amount_to_attempt_to_role
-	EX: advclass_cat_rolls = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 5)
+	EX: subclass_cat_rolls = list(CTAG_REFUGEE = 5, CTAG_REFUGEE = 5)
 	You will still need to contact the subsystem though
 */
-	var/list/advclass_cat_rolls
+	var/list/subclass_cat_rolls
 
 /*
 	How this works, they get one extra roll on every category per PQ amount
@@ -219,34 +219,6 @@
 
 	if(cmode_music)
 		H.cmode_music = cmode_music
-
-	if(GLOB.hugbox_duration)
-		///FOR SOME STUPID FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
-		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_start)), 1)
-
-/mob/living/carbon/human/proc/hugboxing_start()
-	to_chat(src, span_warning("I will be in danger once I start moving."))
-	status_flags |= GODMODE
-	ADD_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(hugboxing_moved))
-	//Lies, it goes away even if you don't move after enough time
-	if(GLOB.hugbox_duration_still)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration_still)
-
-/mob/living/carbon/human/proc/hugboxing_moved()
-	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
-	to_chat(src, span_danger("I have [DisplayTimeText(GLOB.hugbox_duration)] before my protection runs out!"))
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration)
-
-/mob/living/carbon/human/proc/hugboxing_end()
-	if(QDELETED(src))
-		return
-	//hugbox already ended
-	if(!(status_flags & GODMODE))
-		return
-	status_flags &= ~GODMODE
-	REMOVE_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
-	to_chat(src, span_danger("I feel no longer safe."))
 
 /datum/job/proc/add_spells(mob/living/H)
 	if(spells && H.mind)

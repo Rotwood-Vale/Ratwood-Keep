@@ -13,7 +13,7 @@
 	/// Typepath of the antag datum for the migrant role
 	var/antag_datum
 	/// If defined they'll get adv class rolls
-	var/list/advclass_cat_rolls
+	var/list/subclass_cat_rolls
 	/// Text to greet player of this role in the wave
 	var/greet_text
 	/// Whether to grant a lit torch upon spawn
@@ -30,12 +30,12 @@
 
 /datum/migrant_role/adventurer
 	name = "Adventurer"
-	advclass_cat_rolls = list(CTAG_ADVENTURER = 5)
+	subclass_cat_rolls = list(CTAG_REFUGEE = 5)
 
 
 /datum/migrant_role/bandit
 	name = "Bandit"
 	antag_datum = /datum/antagonist/bandit
-	advclass_cat_rolls = list(CTAG_BANDIT = 20)
+	subclass_cat_rolls = list(CTAG_BANDIT = 20)
 	grant_lit_torch = TRUE
 

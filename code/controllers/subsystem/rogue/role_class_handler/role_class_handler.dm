@@ -22,16 +22,16 @@ SUBSYSTEM_DEF(role_class_handler)
 
 /*
 	This ones basically a list for if you want to give a specific ckey a specific isolated datum
-	ex: special_session_queue[ckey] += /datum/advclass/BIGMAN
-	contents: special_session_queue = list("ckey" = list("funID" = /datum/advclass/class), "ckey2" = list("funID" = /datum/advclass/class)... etc)
+	ex: special_session_queue[ckey] += /datum/subclass/BIGMAN
+	contents: special_session_queue = list("ckey" = list("funID" = /datum/subclass/class), "ckey2" = list("funID" = /datum/subclass/class)... etc)
 */
 	var/list/special_session_queue = list()
 
 
 /*
-	This is basically a big assc list of lists attached to tags which contain /datum/advclass datums
-	ex: sorted_class_categories[CTAG_GAPEMASTERS] += /datum/advclass/GAPER
-	contents: sorted_class_categories = list("CTAG_GAPEMASTERS" = list(/datum/advclass/GAPER, /datum/advclass/GAPER2)... etc)
+	This is basically a big assc list of lists attached to tags which contain /datum/subclass datums
+	ex: sorted_class_categories[CTAG_GAPEMASTERS] += /datum/subclass/GAPER
+	contents: sorted_class_categories = list("CTAG_GAPEMASTERS" = list(/datum/subclass/GAPER, /datum/subclass/GAPER2)... etc)
 	Snowflake lists:
 		CTAG_ALLCLASS = list(every single class datum that exists outside of the parent)
 */
@@ -53,10 +53,10 @@ SUBSYSTEM_DEF(role_class_handler)
 
 	return ..()
 
-/datum/controller/subsystem/role_class_handler/proc/get_all_advclass_names()
+/datum/controller/subsystem/role_class_handler/proc/get_all_subclass_names()
 	var/list/compiled = list()
 	for(var/cat_name in sorted_class_categories)
-		for(var/datum/advclass/class in sorted_class_categories[cat_name])
+		for(var/datum/subclass/class in sorted_class_categories[cat_name])
 			compiled += class.name
 	return compiled
 
@@ -64,11 +64,11 @@ SUBSYSTEM_DEF(role_class_handler)
 // This covers both adventurer classes
 /datum/controller/subsystem/role_class_handler/proc/build_dumbass_category_lists()
 	var/list/all_classes = list()
-	init_subtypes(/datum/advclass, all_classes) // Init all the classes
+	init_subtypes(/datum/subclass, all_classes) // Init all the classes
 	sorted_class_categories[CTAG_ALLCLASS] = all_classes
 
 	//Time to sort these folk, and sort them we shall.
-	for(var/datum/advclass/classism_datum in all_classes)
+	for(var/datum/subclass/classism_datum in all_classes)
 		for(var/ctag in classism_datum.category_tags)
 			if(!sorted_class_categories[ctag]) // New cat
 				sorted_class_categories[ctag] = list()
@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	We setup the class handler here, aka the menu
 	We will cache it per server session via an assc list with a ckey leading to the datum.
 */
-/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H, advclass_rolls_override = null, register_id = null)
+/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H, subclass_rolls_override = null, register_id = null)
 	// Bandaid to this extremely badly coded system
 	if(!register_id)
 		if(H.job == "Towner")
@@ -97,13 +97,13 @@ SUBSYSTEM_DEF(role_class_handler)
 	XTRA_MEATY.linked_client = H.client
 
 	// Hack for Migrants
-	if(advclass_rolls_override)
-		XTRA_MEATY.class_cat_alloc_attempts = advclass_rolls_override
+	if(subclass_rolls_override)
+		XTRA_MEATY.class_cat_alloc_attempts = subclass_rolls_override
 		XTRA_MEATY.PQ_boost_divider = 10
 	else
 		var/datum/job/roguetown/RT_JOB = SSjob.GetJob(H.job)
-		if(RT_JOB.advclass_cat_rolls.len)
-			XTRA_MEATY.class_cat_alloc_attempts = RT_JOB.advclass_cat_rolls
+		if(RT_JOB.subclass_cat_rolls.len)
+			XTRA_MEATY.class_cat_alloc_attempts = RT_JOB.subclass_cat_rolls
 
 		if(RT_JOB.PQ_boost_divider)
 			XTRA_MEATY.PQ_boost_divider = RT_JOB.PQ_boost_divider
@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	if(H.client.ckey in special_session_queue)
 		XTRA_MEATY.special_session_queue = list()
 		for(var/funny_key in special_session_queue[H.client.ckey])
-			var/datum/advclass/XTRA_SPECIAL = special_session_queue[H.client.ckey][funny_key]
+			var/datum/subclass/XTRA_SPECIAL = special_session_queue[H.client.ckey][funny_key]
 			if(XTRA_SPECIAL.maximum_possible_slots > XTRA_SPECIAL.total_slots_occupied)
 				XTRA_MEATY.special_session_queue += XTRA_SPECIAL
 
@@ -124,7 +124,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	Attempt to finish the class handling ordeal, aka they picked something
 	Since this is class handler related, might as well also have the class handler send itself into the params
 */
-/datum/controller/subsystem/role_class_handler/proc/finish_class_handler(mob/living/carbon/human/H, datum/advclass/picked_class, datum/class_select_handler/related_handler, plus_factor, special_session_queue)
+/datum/controller/subsystem/role_class_handler/proc/finish_class_handler(mob/living/carbon/human/H, datum/subclass/picked_class, datum/class_select_handler/related_handler, plus_factor, special_session_queue)
 	if(!picked_class || !related_handler || !H) // ????????? This is realistically only going to happen when someones doubling up or trying to href exploit
 		return FALSE
 	if(!(picked_class.maximum_possible_slots == -1)) // Is the class not set to infinite?
@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	adjust_class_amount(picked_class, 1) // adjust the amount here, we are handling one guy right now.
 
 // A dum helper to adjust the class amount, we could do it elsewhere but this will also inform any relevant class handlers open.
-/datum/controller/subsystem/role_class_handler/proc/adjust_class_amount(datum/advclass/target_datum, amount)
+/datum/controller/subsystem/role_class_handler/proc/adjust_class_amount(datum/subclass/target_datum, amount)
 	target_datum.total_slots_occupied += amount
 
 	if(!(target_datum.maximum_possible_slots == -1)) // Is the class not set to infinite?
@@ -172,10 +172,10 @@ SUBSYSTEM_DEF(role_class_handler)
 					found_menu.rolled_class_is_full(target_datum) //  inform the datum of its error.
 
 
-/datum/controller/subsystem/role_class_handler/proc/get_advclass_by_name(advclass_name)
+/datum/controller/subsystem/role_class_handler/proc/get_subclass_by_name(subclass_name)
 	for(var/category in sorted_class_categories)
-		for(var/datum/advclass/class as anything in sorted_class_categories[category])
-			if(class.name != advclass_name)
+		for(var/datum/subclass/class as anything in sorted_class_categories[category])
+			if(class.name != subclass_name)
 				continue
 			return class
 	return null

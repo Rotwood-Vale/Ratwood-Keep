@@ -7,7 +7,7 @@
 	visible_on_active_menu = TRUE
 
 	var/list/changed_jobs = list()
-	var/list/changed_advclasses = list()
+	var/list/changed_subclasses = list()
 
 /datum/triumph_buy/female_power/on_buy()
 	// go thru the jobs
@@ -17,11 +17,11 @@
 				cur_job.allowed_sexes += FEMALE
 				changed_jobs += cur_job
 	// go thru the classes
-	for(var/datum/advclass/cur_class in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
+	for(var/datum/subclass/cur_class in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
 		if(length(cur_class.allowed_sexes))
 			if(!(FEMALE in cur_class.allowed_sexes))
 				cur_class.allowed_sexes += FEMALE
-				changed_advclasses += cur_class
+				changed_subclasses += cur_class
 
 /datum/triumph_buy/female_power/on_removal()
 	var/found_duplicate = FALSE
@@ -38,7 +38,7 @@
 		for(var/datum/job/cur_job in changed_jobs)
 			cur_job.allowed_sexes -= FEMALE
 
-		for(var/datum/advclass/cur_class in changed_advclasses)
+		for(var/datum/subclass/cur_class in changed_subclasses)
 			cur_class.allowed_sexes -= FEMALE
 
 /datum/triumph_buy/female_power/on_activate(mob/living/carbon/human/H)

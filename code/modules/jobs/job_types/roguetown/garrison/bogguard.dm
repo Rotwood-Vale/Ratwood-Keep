@@ -18,7 +18,7 @@
 	give_bank_account = 16
 	min_pq = 1
 	max_pq = null
-	advclass_cat_rolls = list(CTAG_BOG = 20)
+	subclass_cat_rolls = list(CTAG_BOG = 20)
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 
@@ -50,7 +50,7 @@
 /datum/outfit/job/roguetown/ranger
 	name = "Vanguard archer"
 
-/datum/advclass/bogguard
+/datum/subclass/bogguard
 	name = "Vanguard footman"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
@@ -59,7 +59,7 @@
 	You will stand in the front, and protect."
 	category_tags = list(CTAG_BOG)
 
-/datum/advclass/bogranger
+/datum/subclass/bogranger
 	name = "Vanguard archer"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP

@@ -52,8 +52,8 @@
 	var/resident_key_type
 	/// The required role of the resident
 	var/resident_role
-	/// The requied advclass of the resident
-	var/resident_advclass
+	/// The requied subclass of the resident
+	var/resident_subclass
 
 	damage_deflection = 10
 	leanable = TRUE
@@ -79,13 +79,13 @@
 		var/datum/job/job = SSjob.name_occupations[human.job]
 		if(job.type != resident_role)
 			return FALSE
-	if(resident_advclass)
+	if(resident_subclass)
 		if(!human.advjob)
 			return FALSE
-		var/datum/advclass/advclass = SSrole_class_handler.get_advclass_by_name(human.advjob)
-		if(!advclass)
+		var/datum/subclass/subclass = SSrole_class_handler.get_subclass_by_name(human.advjob)
+		if(!subclass)
 			return FALSE
-		if(advclass.type != resident_advclass)
+		if(subclass.type != resident_subclass)
 			return FALSE
 	var/alert = alert(user, "Is this my home?", "Home", "Yes", "No")
 	if(alert != "Yes")
@@ -886,39 +886,39 @@
 	resident_key_amount = 2
 
 /obj/structure/mineral_door/wood/towner/blacksmith
-	resident_advclass = /datum/advclass/blacksmith
+	resident_subclass = /datum/subclass/blacksmith
 	lockid = "towner_blacksmith"
 
 /obj/structure/mineral_door/wood/towner/carpenter
-	resident_advclass = /datum/advclass/carpenter
+	resident_subclass = /datum/subclass/carpenter
 	lockid = "towner_carpenter"
 
 /obj/structure/mineral_door/wood/towner/cheesemaker
-	resident_advclass = /datum/advclass/cheesemaker
+	resident_subclass = /datum/subclass/cheesemaker
 	lockid = "towner_cheesemaker"
 
 /obj/structure/mineral_door/wood/towner/hunter
-	resident_advclass = /datum/advclass/hunter
+	resident_subclass = /datum/subclass/hunter
 	lockid = "towner_hunter"
 
 /obj/structure/mineral_door/wood/towner/miner
-	resident_advclass = /datum/advclass/miner
+	resident_subclass = /datum/subclass/miner
 	lockid = "towner_miner"
 
 /obj/structure/mineral_door/wood/towner/farmer
-	resident_advclass = /datum/advclass/farmer
+	resident_subclass = /datum/subclass/farmer
 	lockid = "towner_farmer"
 
 /obj/structure/mineral_door/wood/towner/towndoctor
-	resident_advclass = /datum/advclass/towndoctor
+	resident_subclass = /datum/subclass/towndoctor
 	lockid = "towner_towndoctor"
 
 /obj/structure/mineral_door/wood/towner/woodcutter
-	resident_advclass = /datum/advclass/woodcutter
+	resident_subclass = /datum/subclass/woodcutter
 	lockid = "towner_woodcutter"
 
 /obj/structure/mineral_door/wood/towner/fisher
-	resident_advclass = /datum/advclass/fisher
+	resident_subclass = /datum/subclass/fisher
 	lockid = "towner_fisher"
 
 /obj/structure/mineral_door/wood/deadbolt/shutter

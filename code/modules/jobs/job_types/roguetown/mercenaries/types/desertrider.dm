@@ -1,4 +1,4 @@
-/datum/advclass/desert_rider
+/datum/subclass/desert_rider
 	name = "Desert Rider"
 	tutorial = "Hooded figures clad in red and easily identifiable by their distinctive emblem, the Desert Riders of Shalvistine are a loosely-governed society of mercenaries and adventurers hailing from the fringes of the Zybantian Empire. You were riding saigaback before you could even walk, and you likely feel more at ease on four legs than two. Due to political unrest with neighboring Lalvestine, increasingly deadly sandstorms, or merely a sense of adventure, you find yourself with the Mercenaries’ Guild in Rockhill, selling your skills with the blade to those willing to pay."
 	allowed_sexes = list(MALE, FEMALE)
