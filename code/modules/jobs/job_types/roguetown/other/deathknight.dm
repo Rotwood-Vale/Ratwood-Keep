@@ -89,7 +89,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 
-
+	neck = /obj/item/clothing/neck/roguetown/bervor
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/platelegs/blk/death
 	shoes = /obj/item/clothing/shoes/roguetown/armor/steel/blkknight
