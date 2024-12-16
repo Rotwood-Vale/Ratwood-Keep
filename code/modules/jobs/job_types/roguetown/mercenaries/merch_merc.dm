@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/roguetown/grabber
 	display_order = JDO_GRABBER
 	give_bank_account = TRUE
-	min_pq = 0//2
+	min_pq = 0
 	max_pq = null
 
 	advclass_cat_rolls = list(CTAG_HENCH = 20)
