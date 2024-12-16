@@ -61,7 +61,7 @@
 		"THE OCEAN'S FURY IS ABYSSOR'S WILL!",
 		"I AM DRAWN BY THE PULL OF THE TIDE!",
 	)
-
+	
 /datum/patron/divine/ravox
 	name = "Ravox"
 	domain = "God of Justice, Glory, Battle"

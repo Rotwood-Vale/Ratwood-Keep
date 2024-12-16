@@ -205,6 +205,14 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/sewing/abyssortemplartabard
+	name = "abyssorite templar tabard"
+	result = list(/obj/item/clothing/cloak/abyssortabard)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+
 /datum/crafting_recipe/roguetown/sewing/psydon
 	name = "psydon tabard"
 	result = list(/obj/item/clothing/cloak/templar/psydon)

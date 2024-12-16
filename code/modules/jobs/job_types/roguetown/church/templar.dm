@@ -53,7 +53,7 @@
 			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 		if(/datum/patron/divine/abyssor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
-			cloak = /obj/item/clothing/cloak/tabard/crusader/abyssor	
+			cloak = /obj/item/clothing/cloak/abyssortabard	
 		if(/datum/patron/divine/dendor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
@@ -121,8 +121,8 @@
 			cloak = /obj/item/clothing/cloak/templar/astratan
 		if(/datum/patron/divine/abyssor)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor
-			head = /obj/item/clothing/head/roguetown/helmet/sallet
-			cloak = /obj/item/clothing/cloak/templar/abyssor
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorgreathelm
+			cloak = /obj/item/clothing/cloak/abyssortabard
 		if(/datum/patron/divine/dendor)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
