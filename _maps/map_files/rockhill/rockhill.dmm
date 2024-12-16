@@ -9376,6 +9376,7 @@
 	locked = 1;
 	lockid = "blacksmith"
 	},
+/obj/item/storage/backpack/rogue/satchel,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -19932,7 +19933,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "nks" = (
-/obj/structure/roguewindow/openclose/reinforced,
+/obj/structure/roguewindow/curtain,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
 "nkE" = (
@@ -22622,6 +22623,12 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/bath)
+"oQb" = (
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 8
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/dwarfin)
 "oQi" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town/harbor)
@@ -23150,7 +23157,7 @@
 "plx" = (
 /obj/structure/closet/crate/roguecloset/inn{
 	keylock = 1;
-	lockid = "artificer"
+	lockid = "blacksmith"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
@@ -24185,6 +24192,10 @@
 /obj/item/reagent_containers/food/snacks/grown/apple,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
+"qaR" = (
+/obj/structure/roguewindow/openclose/reinforced,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/dwarfin)
 "qaS" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -24398,6 +24409,18 @@
 	dir = 10
 	},
 /area/rogue/outdoors/rtfield)
+"qiX" = (
+/obj/structure/closet/crate/roguecloset{
+	lockid = "blacksmith";
+	keylock = 1
+	},
+/obj/item/clothing/cloak/apron/blacksmith,
+/obj/item/clothing/cloak/apron/blacksmith,
+/obj/item/clothing/cloak/apron/blacksmith,
+/obj/item/clothing/cloak/apron/blacksmith,
+/obj/item/clothing/cloak/apron/blacksmith,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/dwarfin)
 "qjz" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -25194,8 +25217,18 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "qLr" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/flint,
+/obj/structure/closet/crate/roguecloset{
+	lockid = "blacksmith";
+	keylock = 1
+	},
+/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
+/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
+/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
+/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
+/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/under/roguetown/tights,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "qLP" = (
@@ -27600,6 +27633,8 @@
 /obj/structure/closet/crate/chest{
 	lockid = "blacksmith"
 	},
+/obj/item/flint,
+/obj/item/flint,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "sri" = (
@@ -31721,6 +31756,14 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/bull,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"vap" = (
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/dwarfin)
 "vat" = (
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -320116,8 +320159,8 @@ mvp
 amd
 wbg
 wbg
-wbg
 vHK
+aOv
 fnA
 wbg
 wbg
@@ -425516,7 +425559,7 @@ rZi
 rZi
 rZi
 sco
-qLr
+qiX
 qLr
 sco
 tOX
@@ -426392,7 +426435,7 @@ mvp
 sco
 dMk
 dMk
-iFe
+vap
 fZJ
 fZJ
 erZ
@@ -428105,7 +428148,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-sco
+qaR
 rFL
 vwl
 dMk
@@ -428552,7 +428595,7 @@ mvp
 kha
 dMk
 dMk
-iFe
+vap
 fZJ
 fZJ
 erZ
@@ -429833,7 +429876,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-sco
+qaR
 rFL
 guq
 dMk
@@ -429845,7 +429888,7 @@ sco
 dMk
 dMk
 dMk
-sco
+iFe
 fZJ
 fZJ
 fZJ
@@ -430277,7 +430320,7 @@ sco
 tto
 rCt
 guq
-iFe
+vap
 fZJ
 fZJ
 fZJ
@@ -432431,7 +432474,7 @@ sco
 sco
 sco
 sco
-bQo
+oQb
 sco
 sco
 fZJ
