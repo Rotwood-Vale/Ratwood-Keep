@@ -86,11 +86,6 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/flashlight/flare/torch/lantern
 
-/datum/anvil_recipe/general/iron/cups
-	name = "Cups 3x"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/reagent_containers/glass/cup,/obj/item/reagent_containers/glass/cup,/obj/item/reagent_containers/glass/cup)
-
 /datum/anvil_recipe/tools/iron/thresher
 	name = "Thresher (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
@@ -101,31 +96,6 @@
 	name = "Chain"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rope/chain
-
-/datum/anvil_recipe/tools/iron/fork
-	name = "Iron Fork x3"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/kitchen/ironfork
-	skill_level = 1
-
-/datum/anvil_recipe/tools/iron/spoon
-	name = "Iron Spoon x3"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/kitchen/ironspoon,
-						/obj/item/kitchen/ironspoon,
-						/obj/item/kitchen/ironspoon
-					)
-	skill_level = 1
-
-/datum/anvil_recipe/tools/iron/bowl
-	name = "Iron Bowl x3"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/reagent_containers/glass/bowl/iron,
-						/obj/item/reagent_containers/glass/bowl/iron,
-						/obj/item/reagent_containers/glass/bowl/iron
-					)
-
-	skill_level = 1
 
 /datum/anvil_recipe/general/iron/ramrod
 	name = "Replacement Ramrods x3"
@@ -197,22 +167,3 @@
 	name = "Cautery Iron"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
-
-/datum/anvil_recipe/general/steel/cups
-	name = "Goblets 3x"
-	req_bar = /obj/item/ingot/steel
-	created_item = list(/obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel)
-
-// --------- SILVER RECIPSE -----------
-
-/datum/anvil_recipe/general/steel/cups
-	name = "Goblets 3x"
-	req_bar = /obj/item/ingot/silver
-	created_item = list(/obj/item/reagent_containers/glass/cup/silver, /obj/item/reagent_containers/glass/cup/silver, /obj/item/reagent_containers/glass/cup/silver)
-
-// --------- GOLD RECIPES -----------
-
-/datum/anvil_recipe/general/cupsgold
-	name = "Goblets 3x"
-	req_bar = /obj/item/ingot/gold
-	created_item = list(/obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden)
