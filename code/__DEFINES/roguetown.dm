@@ -289,7 +289,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_MERCENARY 		"CAT_MERCENARY" 	// Mercs
 #define CTAG_BOG 			"CAT_BOG"			//Vanguard
 #define CTAG_GOBS 			"CAT_GOBS"			// Goblin Guards
-#define CTAG_HENCH	 		"CAT_HENCH"			// Goblin Guards
+#define CTAG_HENCH	 		"CAT_HENCH"			// Whitevein Guards
 
 /*
 	Defines for the triumph buy datum categories
