@@ -1748,6 +1748,7 @@
 #include "code\modules\roguetown\roguejobs\blacksmith\treatingfurnace.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\_anvil_recipe.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\armor.dm"
+#include "code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\cutlery.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\tools.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\valuables.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\weapons.dm"
