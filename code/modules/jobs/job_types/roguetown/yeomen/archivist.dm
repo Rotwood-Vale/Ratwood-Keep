@@ -1,8 +1,8 @@
 /datum/job/roguetown/archivist
 	title = "Scholar"
-	tutorial = "You've spent lots of time reading scrolls and tomes, gradually becoming a walking encyclopedia. \
-	Scholars meticulously preserve and organize ancient texts, safeguarding the collective knowledge of the realm for generations to come. \
-	Nobles and Peasants alike often seek the Scholars expertise on matters of history and fact."
+	tutorial = "Scholars meticulously preserve and organize ancient texts, safeguarding the collective knowledge of the realm for generations to come. \
+	Nobles and Peasants alike often seek the Scholars expertise on matters of history and fact. \
+	Make a good use of this and manage a little academy in this town, making profits by selling your knowledge, as well as potions."
 	flag = ARCHIVIST
 	department_flag = YEOMEN
 	faction = "Station"
@@ -37,7 +37,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1, /obj/item/rogueweapon/huntingknife/idagger)
+	backpack_contents = list(/obj/item/storage/fancy/ifak = 1, /obj/item/rogueweapon/huntingknife/idagger)
 	beltl = /obj/item/storage/keyring/archivist
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	mask = /obj/item/clothing/mask/rogue/spectacles
