@@ -45,7 +45,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 		if(!isseelie(H))	
 			H.STASTR = clamp(roll("4d6-4"), 1, 20)
-			H.STAINT = clamp(roll("4d6-4"), 1, 20)
+			H.change_stat("intelligence", 2)
 			H.STALUC = clamp(roll("4d6-4"), 1, 20)
 		else if(isseelie(H))
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
