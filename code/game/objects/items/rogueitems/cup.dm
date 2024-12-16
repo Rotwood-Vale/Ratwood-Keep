@@ -29,6 +29,12 @@
 		filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 		add_overlay(filling)
 
+/obj/item/reagent_containers/glass/cup/pewter
+	name = "pewter tankard"
+	desc = "A fancy tankard for drinking like wannabe noblemen."
+	icon_state = "pewter"
+	sellprice = 10
+
 /obj/item/reagent_containers/glass/cup/wooden
 	name = "wooden cup"
 	desc = "This cup whispers tales of drunken battles and feasts."

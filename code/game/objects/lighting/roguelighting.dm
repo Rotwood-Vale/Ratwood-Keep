@@ -345,6 +345,11 @@
 	icon_state = "standingb1"
 	base_state = "standingb"
 
+/obj/machinery/light/rogue/firebowl/standing/green
+	bulb_colour = "#b9ffce"
+	icon_state = "standingg1"
+	base_state = "standingg"
+
 /obj/machinery/light/rogue/firebowl/standing/proc/knock_over() //use this later for jump impacts and shit
 	icon_state = "[base_state]over"
 

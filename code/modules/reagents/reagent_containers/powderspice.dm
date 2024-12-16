@@ -184,7 +184,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	brew_amt = 22
-	brew_reagent = /datum/reagent/alch/syrums
+	brew_reagent = /datum/reagent/alch/syrum_salt
 	list_reagents = list(/datum/reagent/salt = 5,)
 	grind_results = null
 	volume = 5

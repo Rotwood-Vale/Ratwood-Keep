@@ -391,7 +391,7 @@
 
 
 /obj/item/clothing/mask/cigarette/pipe/crafted
-	sellprice = 6
+	sellprice = 4
 
 /datum/crafting_recipe/roguetown/rod
 	name = "fishing rod"
