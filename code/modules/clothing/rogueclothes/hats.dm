@@ -116,6 +116,16 @@
 	dynamic_hair_suffix = ""
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/necramask
+	name = "death mask"
+	desc = "A hood with a decorated jaw bone at the chin,normally worn by some followers of Necra as a form of devotion"
+	color = null
+	icon_state = "deathface"
+	item_state = "deathface"
+	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
+	dynamic_hair_suffix = ""
+	sewrepair = TRUE
+
 /obj/item/clothing/head/roguetown/dendormask
 	name = "briarmask"
 	desc = "A mask of wood worn by druids in service to Dendor."
@@ -512,7 +522,7 @@
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
 	armor = list("blunt" = 80, "slash" = 90, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	
+
 /obj/item/clothing/head/roguetown/helmet/psydonbarbute
 	name = "psydonian barbute"
 	desc = "A barbute styled with Psydonian Imagery."
