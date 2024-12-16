@@ -184,6 +184,14 @@
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 2
 
+/datum/crafting_recipe/roguetown/sewing/necramask
+	name = "death mask"
+	result = list(/obj/item/clothing/head/roguetown/necramask)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/bone = 1)
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/sewing/coif
 	name = "coif"
 	result = list(/obj/item/clothing/neck/roguetown/coif)
@@ -197,7 +205,7 @@
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
-	
+
 /datum/crafting_recipe/roguetown/sewing/stabard
 	name = "surcoat"
 	result = list(/obj/item/clothing/cloak/stabard)

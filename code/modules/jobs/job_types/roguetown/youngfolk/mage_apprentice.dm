@@ -44,3 +44,6 @@
 		H.mind.adjust_spellpoints(1)
 	H.change_stat("intelligence", 2)
 	H.change_stat("speed", 1)
+	switch(H.patron?.type)
+		if(/datum/patron/inhumen/zizo)
+			H.cmode_music = 'sound/music/combat_cult.ogg'

@@ -113,3 +113,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_wound_severity_dsc(datum/wound/A, datum/wound/B)
 	return B.severity - A.severity
+
+/proc/cmp_filter_priority_desc(list/A, list/B) // Compares two lists by their 'priority' key. Used for filters.
+    return (A["priority"] || 0) - (B["priority"] || 0)
+	

@@ -812,7 +812,9 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/structure/pillory/reinforced,
+/obj/structure/pillory/reinforced{
+	lockid = list("garrison")
+	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town)
 "aDd" = (
@@ -12695,7 +12697,9 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "luM" = (
-/obj/structure/pillory,
+/obj/structure/pillory{
+	lockid = list("church")
+	},
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/town)
 "lvh" = (
@@ -12740,7 +12744,9 @@
 	},
 /area/rogue/indoors/town/dwarfin)
 "lwz" = (
-/obj/structure/pillory/reinforced,
+/obj/structure/pillory/reinforced{
+	lockid = list("garrison")
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "lwV" = (
@@ -20371,7 +20377,9 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/structure/pillory/reinforced,
+/obj/structure/pillory/reinforced{
+	lockid = list("garrison")
+	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
 "soK" = (
