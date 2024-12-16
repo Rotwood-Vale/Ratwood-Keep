@@ -17,7 +17,7 @@
 	spitoutmouth = FALSE
 	w_class = WEIGHT_CLASS_TINY
 
-//reproduces some code from pens so that we can utilize them for renaming items using existent roguecode items
+//reproduces some code from pens so that we can utilize feathers for renaming objects
 
 /obj/item/natural/feather/afterattack(obj/O, mob/living/user, proximity)
 	. = ..()
@@ -33,7 +33,7 @@
 			if(oldname == input)
 				to_chat(user, span_notice("I changed \the [O.name] to... well... \the [O.name]."))
 			else
-				O.name = input
+				O.name = "[input] ([oldname])"
 				to_chat(user, span_notice("\The [oldname] has been successfully been renamed to \the [input]."))
 				O.renamedByPlayer = TRUE
 
