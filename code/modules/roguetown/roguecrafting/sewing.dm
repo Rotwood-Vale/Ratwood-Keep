@@ -153,7 +153,7 @@
 /* craftdif of 2 = APPRENTICE */
 
 /datum/crafting_recipe/roguetown/sewing/nocwrappings
-	name = "wrappings (moon/Noc) - (2 cloths; APPRENTICE)"
+	name = "wrappings (Lunar/Noc) - (2 cloths; APPRENTICE)"
 	result = list(/obj/item/clothing/wrists/roguetown/nocwrappings)
 	reqs = list(/obj/item/natural/cloth = 2)
 	skill_level = 2
