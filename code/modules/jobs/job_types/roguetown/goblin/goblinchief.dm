@@ -4,7 +4,7 @@
 	flag = GOBLINCHIEF
 	department_flag = GOBLIN
 	faction = "Station"
-	total_positions = 1
+	total_positions = 0
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp, /datum/species/halforc)
