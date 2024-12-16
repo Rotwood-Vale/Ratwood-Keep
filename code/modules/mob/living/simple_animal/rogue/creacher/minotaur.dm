@@ -99,7 +99,6 @@
 	base_intents = list(/datum/intent/unarmed/ascendedclaw)
 	melee_damage_lower = 250
 	melee_damage_upper = 550
-	status_flags = GODMODE//It's not meant to be killable, at all. But for some reason stuff doesn't set correctly.
 	health = 666666
 	maxHealth = 666666
 	STACON = 66
@@ -114,6 +113,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended/Initialize()
 	. = ..()
 	set_light(5,5, LIGHT_COLOR_RED)
+	ADD_TRAIT(src, TRAIT_DODGEEXPERT, TRAIT_GENERIC)//Would this even do anything to assist with it being pinned? Probably not.
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
 
