@@ -142,6 +142,20 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 
+/area/rogue/outdoors/druidgrove
+	name = "Druid Grove"
+	icon_state = "druidgrove"
+	soundenv = 19
+	first_time_text = "ROCKHILL BASIN"
+	droning_sound = 'sound/music/area/druid.ogg'
+	droning_sound_dusk = 'sound/music/area/druid.ogg'
+	droning_sound_night = 'sound/music/area/druid.ogg'
+	converted_type = /area/rogue/indoors/shelter/druidgrove
+/area/rogue/indoors/shelter/druidgrove
+	icon_state = "druidgrove"
+	droning_sound = 'sound/music/area/druid.ogg'
+	droning_sound_dusk = 'sound/music/area/druid.ogg'
+	droning_sound_night = 'sound/music/area/druid.ogg'
 
 /area/rogue/outdoors/woods
 	name = "wilderness"

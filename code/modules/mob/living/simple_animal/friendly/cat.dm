@@ -89,6 +89,30 @@
 	icon_living = "cat"
 	icon_dead = "cat_dead"
 
+/mob/living/simple_animal/pet/cat/Archibald
+	name = "Archibald"
+	desc = "Rare toothless spider fron the north - won't bite but will stare you down!"
+	icon = 'icons/roguetown/mob/monster/spider.dmi'
+	icon_state = "honeys"
+	icon_living = "honeys"
+	icon_dead = "honeys-dead"
+	mob_biotypes = MOB_ORGANIC|MOB_BUG
+	speak_emote = list("chitters")
+	emote_hear = list("chitters")
+	speak_chance = 5
+	turns_per_move = 5
+	see_in_dark = 4
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1)
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "gently pushes aside"
+	response_disarm_simple = "gently push aside"
+	maxHealth = 200
+	health = 200
+	obj_damage = 60
+	pass_flags = PASSTABLE
+	ventcrawler = VENTCRAWLER_ALWAYS
+
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
 /mob/living/simple_animal/pet/cat/Runtime
 	name = "Runtime"
