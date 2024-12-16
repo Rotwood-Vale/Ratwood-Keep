@@ -39,7 +39,7 @@
 	update_icon()
 	start_recharge()
 
-/obj/effect/proc_holder/spell/invoked/deactivate(mob/living/user)
+/obj/effect/proc_holder/spell/invoked/deactivate(mob/living/user) //Deactivates the currently active spell (icon click)
 	..()
 	active = FALSE
 	remove_ranged_ability(null)
@@ -51,7 +51,7 @@
 /obj/effect/proc_holder/spell/invoked/proc/on_deactivation(mob/user)
 	return
 
-/obj/effect/proc_holder/spell/invoked/InterceptClickOn(mob/living/caller, params, atom/target)
+/obj/effect/proc_holder/spell/invoked/InterceptClickOn(mob/living/caller, params, atom/target) 
 	. = ..()
 	if(.)
 		return FALSE
@@ -61,7 +61,8 @@
 	var/charge_progress = client?.chargedprog
 	var/goal = src.get_chargetime() //if we have no chargetime then we can freely cast (and no early release flag was not set)
 	if(src.no_early_release) //This is to stop half-channeled spells from casting as the repeated-casts somehow bypass into this function.
-		if(charge_progress < 100 && goal)
+		if(charge_progress < 100 && goal) //If it is not at 100% charge progress.
+			src.start_recharge()		  //We ensure the spell recharges as without, the recharging var can be set to false by switching away from the spell
 			return FALSE
 	if(perform(list(target), TRUE, user = ranged_ability_user))
 		return TRUE
