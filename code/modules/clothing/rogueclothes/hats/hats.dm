@@ -1275,3 +1275,12 @@
 	block2add = FOV_RIGHT|FOV_LEFT
 	max_integrity = 425
 	smeltresult = /obj/item/ingot/blacksteel
+
+/obj/item/clothing/head/roguetown/helmet/heavy/crusader
+	name = "bucket helm"
+	icon_state = "crusader_helm"
+	icon = 'icons/roguetown/clothing/special/crusader.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/crusader.dmi'
+
+/obj/item/clothing/head/roguetown/helmet/heavy/crusader/t
+	icon_state = "crusader_helmt2"

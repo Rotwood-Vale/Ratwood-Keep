@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(billagerspawns)
 	total_positions = 20
 	spawn_positions = 20
 	allowed_races = RACES_VERY_SHUNNED_UP
-	tutorial = "Hero of nothing, refugee by trade. Whatever led you to this fate is up to the wind to decide, and you've never fancied yourself for much other than the thrill. Someday your pride is going to catch up to you, and you're going to find out why most men don't end up in the annals of history."
+	tutorial = ""
 
 
 	outfit = null
