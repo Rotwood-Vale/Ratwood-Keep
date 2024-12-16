@@ -528,13 +528,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
-"aur" = (
-/obj/structure/fluff/railing/border,
-/obj/structure/fermenting_barrel,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town/academy)
 "aut" = (
 /obj/structure/fluff/railing/border{
 	dir = 6;
@@ -30665,7 +30658,6 @@
 /obj/structure/fluff/railing/border{
 	dir = 6
 	},
-/obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -558182,7 +558174,7 @@ xAt
 xAt
 rOt
 dLj
-aur
+dPE
 aes
 xWj
 eud
