@@ -130,6 +130,7 @@
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	max_integrity = 100
+	
 /obj/item/clothing/head/roguetown/necramask
 	name = "death mask"
 	desc = "A hood with a decorated jaw bone at the chin,normally worn by some followers of Necra as a form of devotion"
