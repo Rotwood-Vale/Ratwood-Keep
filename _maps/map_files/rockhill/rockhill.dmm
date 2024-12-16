@@ -247,6 +247,13 @@
 /obj/structure/bearpelt,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/manor)
+"ahx" = (
+/obj/structure/roguemachine/lottery_roguetown{
+	pixel_y = 0;
+	pixel_x = -31
+	},
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/indoors/town/bath)
 "ahL" = (
 /obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/cobble,
@@ -805,7 +812,6 @@
 	icon_state = "longtable";
 	pixel_y = -3
 	},
-/obj/structure/roguemachine/drugmachine,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "aCu" = (
@@ -4747,7 +4753,10 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town/harbor)
 "cXr" = (
-/obj/structure/roguemachine/scomm/r,
+/obj/structure/stairs/stone{
+	dir = 4;
+	icon_state = "stonestairs"
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "cXz" = (
@@ -5627,6 +5636,9 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"dzM" = (
+/turf/closed/wall/mineral/rogue/stone/window,
+/area/rogue/indoors/town/bath)
 "dzT" = (
 /obj/structure/roguewindow/openclose{
 	dir = 8
@@ -11546,11 +11558,8 @@
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave)
 "hnt" = (
-/obj/structure/stairs/stone{
-	dir = 4;
-	icon_state = "stonestairs"
-	},
-/obj/structure/roguemachine/atm,
+/obj/structure/chair/bench/couch/r,
+/obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "hnw" = (
@@ -15443,12 +15452,14 @@
 	},
 /area/rogue/indoors/town/church)
 "jFI" = (
-/obj/structure/lever/wall{
-	dir = 8;
-	name = "Whitevein Lounge";
-	redstone_id = "brothel_shutter02"
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
 	},
-/turf/open/floor/rogue/herringbone,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/bath)
 "jFN" = (
 /obj/item/grown/log/tree/small,
@@ -15895,6 +15906,14 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
+"jRW" = (
+/obj/structure/mineral_door/wood/red{
+	locked = 1;
+	lockid = "nightman";
+	name = "PURITY Access"
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/bath)
 "jSi" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -19136,7 +19155,7 @@
 	icon_state = "tablewood3"
 	},
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/storage/pill_bottle/dice,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "meu" = (
@@ -25032,6 +25051,12 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
+"pNY" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/bath)
 "pOe" = (
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -25456,7 +25481,7 @@
 	},
 /area/rogue/indoors/town/academy)
 "qgL" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "qhg" = (
@@ -28312,7 +28337,10 @@
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church/chapel)
 "rXY" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/table/wood{
+	icon_state = "tablewood3"
+	},
+/obj/item/clothing/mask/cigarette/pipe/westman,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "rXZ" = (
@@ -30057,6 +30085,14 @@
 /obj/structure/bed/rogue,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
+"tew" = (
+/obj/structure/lever/wall{
+	dir = 4;
+	name = "Whitevein Lounge";
+	redstone_id = "brothel_shutter02"
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/bath)
 "teD" = (
 /turf/closed/wall/mineral/rogue/roofwall/innercorner,
 /area/rogue/outdoors/town)
@@ -35174,10 +35210,10 @@
 	},
 /area/rogue/indoors/town)
 "wkI" = (
+/obj/structure/roguemachine/drugmachine,
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
 	},
-/obj/item/storage/pill_bottle/dice,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "wkT" = (
@@ -35986,6 +36022,10 @@
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
+"wPt" = (
+/obj/structure/roguemachine/scomm/l,
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/bath)
 "wPV" = (
 /obj/structure/closet/crate/roguecloset{
 	lockid = "manor";
@@ -37010,10 +37050,8 @@
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/bath)
 "xvc" = (
-/obj/structure/chair/bench/couch/r{
-	pixel_y = 7
-	},
 /obj/structure/fluff/walldeco/maidensigil,
+/obj/structure/chair/bench/couch,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "xvu" = (
@@ -37606,10 +37644,15 @@
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church)
 "xLM" = (
-/obj/structure/chair/bench/couch{
-	pixel_y = 7
+/obj/effect/decal/cobbleedge{
+	dir = 4;
+	pixel_x = -20
 	},
-/turf/open/floor/rogue/herringbone,
+/obj/structure/roguemachine/atm{
+	pixel_y = 0;
+	pixel_x = -30
+	},
+/turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "xLU" = (
 /obj/structure/stairs,
@@ -38325,7 +38368,6 @@
 	icon_state = "tablewood3"
 	},
 /obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/reagent_containers/powder/ozium,
 /obj/structure/fluff/walldeco/maidendrape,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/bath)
@@ -350779,14 +350821,14 @@ iFw
 dVx
 lUg
 yje
-wIC
+wPt
 tVd
 fgs
 gzq
 vIG
-vIG
 gtA
-kEL
+ahx
+xLM
 jOP
 kEL
 hNe
@@ -353376,11 +353418,11 @@ mLB
 njY
 jCJ
 vIG
-ekJ
+vIG
 ekJ
 wXu
-lJX
-lJX
+pNY
+wXu
 lUg
 jcc
 ehN
@@ -353802,17 +353844,17 @@ maO
 udy
 unx
 hNe
+gYU
 hNe
-lUg
-lUg
+gYU
 fsl
 eHr
 qrz
+cXr
 rbI
-xLM
-oXU
-lUg
-hnt
+dzM
+jRW
+jFI
 lUg
 lUg
 vrC
@@ -354240,11 +354282,11 @@ lUg
 rKd
 aPI
 lJB
+oXU
 lUg
 xvc
 oXU
-oXU
-oXU
+qgL
 rXY
 hNe
 dVx
@@ -354672,11 +354714,11 @@ lUg
 fzT
 cIZ
 cIZ
-jFI
-qgL
 oXU
-cXr
-qgL
+hNe
+hnt
+oXU
+tew
 wkI
 hNe
 dVx
@@ -355103,12 +355145,12 @@ ehN
 lUg
 lUg
 lUg
+hNe
+hNe
+hNe
 gYU
 ept
 gYU
-lUg
-lUg
-hNe
 hNe
 gYU
 dVx
@@ -355535,12 +355577,12 @@ xjC
 goe
 iFw
 iFw
+iFw
 mpT
 mpT
-iFw
-iFw
-fPw
-fPw
+dVx
+mpT
+mpT
 fPw
 dVx
 dVx
@@ -355970,8 +356012,8 @@ wkj
 iFw
 iFw
 dVx
-iFw
-iFw
+dVx
+mpT
 fPw
 dVx
 dVx
