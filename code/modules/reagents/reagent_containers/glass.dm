@@ -343,6 +343,7 @@
 					to_chat(user, span_notice("I juice [grinded] into a fine liquid."))
 					if(grinded.reagents) //food and pills
 						grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
+						onfill(grinded, user, silent = FALSE)
 					QDEL_NULL(grinded)
 					return
 				grinded.on_grind()
@@ -380,6 +381,7 @@
 						break
 					if(!I.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user))
 						reagents.reaction(src, TOUCH, amount_per_transfer_from_this)
+					onfill(I, user, silent = TRUE)
 				else
 					break
 			return

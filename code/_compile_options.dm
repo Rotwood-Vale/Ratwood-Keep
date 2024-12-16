@@ -21,7 +21,6 @@
 #define MODE_RESTART
 //comment out if you want to restart the server instead of shutting down
 
-#define DEBUG 1
 // Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error
 #ifdef DEBUG
 #define USE_CUSTOM_ERROR_HANDLER
