@@ -143,6 +143,12 @@
 	icon_state = "cheesekey"
 	lockid = "councillor"
 
+/obj/item/key/noble_guest_rooms
+	name = "noble guest rooms key"
+	desc = "This key opens the noble guest rooms."
+	icon_state = "cheesekey"
+	lockid = "guestroom"
+
 /obj/item/key/merchant
 	name = "merchant's key"
 	desc = "A merchant's key."

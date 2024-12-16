@@ -136,7 +136,7 @@
 	icon_state = "ingotcop"
 	smeltresult = /obj/item/ingot/copper
 	grind_results = list(/datum/reagent/copper = 15)
-	sellprice = 10
+	sellprice = 40
 
 /obj/item/ingot/tin
 	name = "tin bar"

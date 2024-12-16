@@ -78,7 +78,7 @@
 	result = /obj/item/powderflask
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 2,
-				/datum/reagent/alch/syruma = 15)
+				/datum/reagent/alch/syrum_ash = 15)
 	sellprice = 15
 
 /datum/crafting_recipe/roguetown/hunting/quiver

@@ -23,6 +23,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/steward
+	backr = /obj/item/storage/backpack/rogue/satchel
 
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 	
