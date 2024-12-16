@@ -147,7 +147,7 @@
 	blade_class = BCLASS_SMASH
 	attack_verb = list("smashes")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	penfactor = 80
+	penfactor = 60
 	damfactor = 1.1
 	swingdelay = 10
 	icon_state = "insmash"
@@ -186,9 +186,8 @@
 	blade_class = BCLASS_PICK
 	attack_verb = list("picks", "impales")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	chargetime = 14
+	swingdelay = 14
 	misscost = 1
-	no_early_release = TRUE
 	penfactor = 80
 	damfactor = 0.9
 	item_d_type = "stab"

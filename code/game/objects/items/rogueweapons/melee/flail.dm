@@ -46,7 +46,7 @@
 	chargetime = 5
 	chargedrain = 1
 	no_early_release = TRUE
-	penfactor = 80
+	penfactor = 60
 	recovery = 10
 	damfactor = 1.5
 	chargedloop = /datum/looping_sound/flailswing
