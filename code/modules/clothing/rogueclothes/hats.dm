@@ -130,6 +130,15 @@
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	max_integrity = 100
+/obj/item/clothing/head/roguetown/necramask
+	name = "death mask"
+	desc = "A hood with a decorated jaw bone at the chin,normally worn by some followers of Necra as a form of devotion"
+	color = null
+	icon_state = "deathface"
+	item_state = "deathface"
+	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
+	dynamic_hair_suffix = ""
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/dendormask
 	name = "briarmask"
@@ -527,7 +536,7 @@
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
 	armor = list("blunt" = 80, "slash" = 90, "stab" = 70, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	
+
 /obj/item/clothing/head/roguetown/helmet/psydonbarbute
 	name = "psydonian barbute"
 	desc = "A barbute styled with Psydonian Imagery."
@@ -1155,19 +1164,23 @@
 	name = "leather miners helmet"
 	desc = "A leather kettle-like helmet with a headlamp, fueled by magiks."
 	icon_state = "minerslamp"
-	var/brightness_on = 4 //less than a torch; basically good for one person.
 	var/on = FALSE
-	actions_types = list(/datum/action/item_action/toggle_helmet_light)
+	light_range = 4 //less than a torch; basically good for one person.
+	light_power = 1
+	light_color = LIGHT_COLOR_ORANGE
+	light_system = MOVABLE_LIGHT
 
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm/attack_self(mob/living/user)
+/obj/item/clothing/head/roguetown/helmet/leather/minershelm/MiddleClick(mob/user)
+	if(.)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	playsound(loc, 'sound/misc/toggle_lamp.ogg', 100)
 	toggle_helmet_light(user)
+	to_chat(user, span_info("I toggle [src] [on ? "on" : "off"]."))
 
 /obj/item/clothing/head/roguetown/helmet/leather/minershelm/proc/toggle_helmet_light(mob/living/user)
 	on = !on
-	if(on)
-		turn_on(user)
-	else
-		turn_off(user)
+	set_light_on(on)
 	update_icon()
 
 /obj/item/clothing/head/roguetown/helmet/leather/minershelm/update_icon()
@@ -1180,12 +1193,6 @@
 		var/datum/action/A = X
 		A.UpdateButtonIcon(force = TRUE)
 	..()
-
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm/proc/turn_on(mob/user)
-	set_light(brightness_on)
-
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm/proc/turn_off(mob/user)
-	set_light(0)
 
 /obj/item/clothing/head/roguetown/wizhat
 	name = "wizard hat"
@@ -1394,6 +1401,7 @@
 	desc = "A hood worn by those who favor Psydon. Forever enduring!"
 	icon_state = "psydonhood"
 	item_state = "psydonhood"
+	color = null
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_HEAD
 	dynamic_hair_suffix = ""
