@@ -146,7 +146,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	name = "Druid Grove"
 	icon_state = "druidgrove"
 	soundenv = 19
-	first_time_text = "ROCKHILL BASIN"
+	first_time_text = "DRUID GROVE"
 	droning_sound = 'sound/music/area/druid.ogg'
 	droning_sound_dusk = 'sound/music/area/druid.ogg'
 	droning_sound_night = 'sound/music/area/druid.ogg'
