@@ -4,7 +4,7 @@
 	flag = NIGHTMASTER
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 1 
+	total_positions = 1
 	spawn_positions = 1
 
 	allowed_sexes = list(MALE, FEMALE)
@@ -25,14 +25,16 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
+	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	beltr = /obj/item/storage/keyring/nightman
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltl = /obj/item/ammo_holder/quiver/bolts
+	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
@@ -41,9 +43,9 @@
 		H.change_stat("strength", 1)
 		H.change_stat("intelligence", -1)
 	if(H.dna?.species)
+		if(H.gender == MALE)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
 		if(iself(H) || ishalfelf(H))
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
-		else if(ishumannorthern(H))
-			H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
 		else if(isdwarf(H))
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
