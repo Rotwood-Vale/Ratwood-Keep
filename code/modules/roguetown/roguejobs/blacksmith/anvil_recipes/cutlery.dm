@@ -1,5 +1,7 @@
 /datum/anvil_recipe/cutlery
-	i_type = "Cutlery"
+  appro_skill = /datum/skill/craft/blacksmithing
+  skill_level = 1
+  i_type = "Cutlery"
 
 // Tin / Pewterware
 // Possibly make those take quicksilver? Would probably make a niche recipe already too complicated - SunOYH
