@@ -30,10 +30,12 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/cooking/pan
 
-/datum/anvil_recipe/tools/iron/catbell
-	name = "Catbell"
+/datum/anvil_recipe/general/catbell
+	name = "Catbell x3"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/catbell
+	created_item = list(/obj/item/catbell,
+						/obj/item/catbell,
+						/obj/item/catbell)
 
 /datum/anvil_recipe/general/iron/keyring
 	name = "Keyrings 3x"
@@ -178,3 +180,9 @@
 	req_bar = /obj/item/ingot/copper
 	created_item = list(/obj/item/catbell/cow)
 
+/datum/anvil_recipe/general/cowbell
+	name = "Cowbell x3"
+	req_bar = /obj/item/ingot/copper
+	created_item = list(/obj/item/catbell/cow,
+						/obj/item/catbell/cow,
+						/obj/item/catbell/cow)

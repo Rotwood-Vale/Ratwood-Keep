@@ -62,7 +62,7 @@
 /datum/crafting_recipe/roguetown/bellcollar
 	name = "leather collar with catbell"
 	result = /obj/item/clothing/neck/roguetown/collar/leather/bell
-	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell)
+	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell = 1)
 	skill_level = 0
 	verbage_simple = "affix"
 	verbage = "affixes"
@@ -70,7 +70,7 @@
 /datum/crafting_recipe/roguetown/bellcollar/cow
 	name = "leather collar with cowbell"
 	result = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
-	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell/cow)
+	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell/cow = 1)
 	skill_level = 0
 	verbage_simple = "affix"
 	verbage = "affixes"

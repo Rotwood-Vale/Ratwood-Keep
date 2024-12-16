@@ -43,7 +43,7 @@
 /obj/item/clothing/shoes/roguetown/jester
 	name = "funny shoes"
 	desc = "Perfect for performing a jig or running for your life after a bad joke."
-	do_sound_bell = TRUE
+	do_sound_bell = FALSE
 	icon_state = "jestershoes"
 	resistance_flags = null
 

@@ -62,7 +62,7 @@
 /obj/item/clothing/under/roguetown/tights/jester
 	desc = "Funny tights!"
 	color = "#1E3B20"
-	do_sound_bell = TRUE
+	do_sound_bell = FALSE
 
 /obj/item/clothing/under/roguetown/tights/lord
 	color = "#865c9c"

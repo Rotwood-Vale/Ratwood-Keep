@@ -217,7 +217,7 @@
 /datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
-	neck = /obj/item/clothing/neck/roguetown/collar/leather/bell/cursed
+	neck = /obj/item/clothing/neck/roguetown/collar/leather/cursed
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/storage/belt/rogue/pouch
 	beltr = /obj/item/flint
