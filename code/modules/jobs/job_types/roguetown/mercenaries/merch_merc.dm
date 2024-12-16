@@ -86,12 +86,12 @@
 		H.change_stat("constitution", 2)
 		H.change_stat("intelligence", -2)
 
-//Female grunt. Based around the sword entirely. Nutcracker too, I guess, since that's funny.
+//Female leaning grunt. Based around the sword entirely. Nutcracker too, I guess, since that's funny.
 /datum/advclass/grabber_adherent
 	name = "Adherent"
-	allowed_sexes = list(FEMALE)
+	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/grabber/adherent
-	tutorial = "At one point, you were a woman of the Whitevein Lounge. Now? You defend them. \
+	tutorial = "At one point, you were a prostitute of the Whitevein Lounge. Now? You defend them. \
 	Seeing potential in you, the Wightvein's owner saw to your training. \
 	No expense was spared, assuring you're easily the best sword hand this side of the harbour. Or so they say."
 	category_tags = list(CTAG_HENCH)
@@ -113,12 +113,12 @@
 		H.change_stat("intelligence", -2)
 		ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 
-//Male grunt. Entire thing is based around unarmed combat, akin to a monk. Doesn't get dodge expert, for obvious reasons.
+//Male leaning grunt. Entire thing is based around unarmed combat, akin to a monk. Doesn't get dodge expert, for obvious reasons.
 /datum/advclass/grabber_bouncer
 	name = "Bouncer"
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/grabber/bouncer
-	tutorial = "The hired muscle? The women brought up with sword training? Neither are relevant to you. \
+	tutorial = "The hired muscle? Those brought up with sword training? Neither are relevant to you. \
 	What is? Those guns you possess. The last man, or woman for that matter, to say otherwise? They went into the harbour. \
 	Only a fool needs weapons."
 	category_tags = list(CTAG_HENCH)
