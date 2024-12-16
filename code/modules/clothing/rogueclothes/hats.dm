@@ -521,7 +521,7 @@
 	desc = "A steel helmet which protects the top and sides of the head."
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
-	armor = list("blunt" = 80, "slash" = 90, "stab" = 70, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 90, "piercing" = 100, "stab" = 70, "fire" = 0, "acid" = 0)
 	
 /obj/item/clothing/head/roguetown/helmet/psydonbarbute
 	name = "psydonian barbute"
