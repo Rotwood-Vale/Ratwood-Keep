@@ -143,6 +143,12 @@
 	icon_state = "cheesekey"
 	lockid = "councillor"
 
+/obj/item/key/noble_guest_rooms
+	name = "noble guest rooms key"
+	desc = "This key opens the noble guest rooms."
+	icon_state = "cheesekey"
+	lockid = "guestroom"
+
 /obj/item/key/merchant
 	name = "merchant's key"
 	desc = "A merchant's key."
@@ -334,15 +340,9 @@
 
 /obj/item/key/nightman
 	name = "nightmaster's key"
-	desc = "This regal key opens a few doors within the castle."
+	desc = "This rusted key opens the brothel."
 	icon_state = "greenkey"
 	lockid = "nightman"
-
-/obj/item/key/nightmaiden
-	name = "nightmaiden's key"
-	desc = "This regal key opens a few doors within the castle."
-	icon_state = "brownkey"
-	lockid = "nightmaiden"
 
 /obj/item/key/mercenary
 	name = "mercenary key"
@@ -497,4 +497,23 @@
 	icon_state = "eyekey"
 	lockid = "porta"
 
-// Towner homes keys
+// Ship key
+/obj/item/key/ship
+	name = "ship key"
+	desc = "This rusty key should open the lower dock of the harbor ship."
+	icon_state = "rustkey"
+	lockid = "ship"
+
+// Harbor key
+/obj/item/key/harbor
+	name = "harbor key"
+	desc = "This iron key should open harbor office, barracks and the watchtower."
+	icon_state = "spikekey"
+	lockid = "harbor"
+
+//Port Shop Key
+/obj/item/key/portshop
+	name = "port shop key"
+	desc = "This old key opens shop in port area."
+	icon_state = "rustkey"
+	lockid = "portshop"

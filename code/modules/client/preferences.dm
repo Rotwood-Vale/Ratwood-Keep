@@ -154,6 +154,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/custom_descriptors = list()
 	var/defiant = TRUE
 	var/virginity = FALSE
+	var/char_accent = "No accent"
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
 	var/has_spawned = FALSE
 
@@ -194,13 +195,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	menuoptions = list()
 	return
 
-/datum/preferences/proc/set_new_race(datum/species/new_race, user)
+/datum/preferences/proc/set_new_race(datum/species/new_race, mob/user)
 	pref_species = new_race
 	real_name = pref_species.random_name(gender,1)
 	ResetJobs()
 	if(user)
 		if(pref_species.desc)
 			to_chat(user, "[pref_species.desc]")
+		if(pref_species.expanded_desc)
+			to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Read More</a>")
 		to_chat(user, "<font color='red'>Classes reset.</font>")
 	random_character(gender)
 	accessory = "Nothing"
@@ -387,6 +390,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
 			dat += "<br><b>Voice Pitch: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
+			dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
 			dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
@@ -1510,6 +1514,11 @@ Slots: [job.spawn_positions]</span>
 					if(new_mutantcolor)
 						features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
 						try_update_mutant_colors()
+				
+				if("char_accent")
+					var/selectedaccent = input(user, "Choose your character's accent:", "Character Preference") as null|anything in GLOB.character_accents
+					if(selectedaccent)
+						char_accent = selectedaccent
 
 /*
 				if("color_ethereal")
@@ -2037,6 +2046,8 @@ Slots: [job.spawn_positions]</span>
 		character.update_body()
 		character.update_hair()
 		character.update_body_parts(redraw = TRUE)
+	
+	character.char_accent = char_accent
 
 /datum/preferences/proc/get_default_name(name_id)
 	switch(name_id)

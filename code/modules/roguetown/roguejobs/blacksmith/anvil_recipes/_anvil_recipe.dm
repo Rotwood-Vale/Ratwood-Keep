@@ -4,7 +4,7 @@
 	var/appro_skill = /datum/skill/craft/blacksmithing
 	var/req_bar
 	var/created_item
-	var/skill_level = 0
+	var/skill_level = 2
 	var/obj/item/needed_item
 	var/quality_mod = 0
 	var/progress
