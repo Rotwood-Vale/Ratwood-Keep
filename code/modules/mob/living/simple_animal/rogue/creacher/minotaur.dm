@@ -113,7 +113,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended/Initialize()
 	. = ..()
 	set_light(5,5, LIGHT_COLOR_RED)
-	ADD_TRAIT(src, TRAIT_DODGEEXPERT, TRAIT_GENERIC)//Would this even do anything to assist with it being pinned? Probably not.
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
 
