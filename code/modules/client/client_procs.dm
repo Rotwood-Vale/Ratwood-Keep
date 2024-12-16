@@ -125,6 +125,9 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	if(href_list["schizohelp"])
 		answer_schizohelp(locate(href_list["schizohelp"]))
 		return
+	
+	if(href_list["view_species_info"])
+		view_species_info(href_list["view_species_info"])
 
 	switch(href_list["_src_"])
 		if("holder")
@@ -455,8 +458,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		toggle_fullscreeny(FALSE)
 
 	if(prefs.anonymize)
-		if(get_playerquality(ckey) > -5)
-			GLOB.anonymize |= ckey
+		GLOB.anonymize |= ckey
 
 	if(ckey in GLOB.clientmessages)
 		for(var/message in GLOB.clientmessages[ckey])

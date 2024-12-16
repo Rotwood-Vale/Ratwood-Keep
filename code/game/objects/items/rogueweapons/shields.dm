@@ -48,7 +48,7 @@
 /obj/item/rogueweapon/shield/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the projectile", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, args)
 	if(attack_type == THROWN_PROJECTILE_ATTACK || attack_type == PROJECTILE_ATTACK)
-		if(owner.client?.chargedprog == 100 && owner.used_intent?.tranged)
+		if(owner.used_intent?.tranged)
 			owner.visible_message(span_danger("[owner] blocks [hitby] with [src]!"))
 			return 1
 		else
@@ -81,9 +81,13 @@
 
 /obj/item/rogueweapon/shield/wood/attack_right(mob/user)
 	if(!overlays.len)
-		var/icon/J = new('icons/roguetown/weapons/wood_heraldry.dmi')
-		var/list/istates = J.IconStates()
-		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(istates)
+		if(!('icons/roguetown/weapons/wood_heraldry.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/wood_heraldry.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/wood_heraldry.dmi'] = istates
+
+		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/wood_heraldry.dmi'])
 		if(!picked_name)
 			picked_name = "none"
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/wood_heraldry.dmi', picked_name)
@@ -161,9 +165,12 @@
 
 /obj/item/rogueweapon/shield/tower/metal/attack_right(mob/user)
 	if(!overlays.len)
-		var/icon/J = new('icons/roguetown/weapons/shield_heraldry.dmi')
-		var/list/istates = J.IconStates()
-		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(istates)
+		if(!('icons/roguetown/weapons/shield_heraldry.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/shield_heraldry.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/shield_heraldry.dmi'] = istates
+		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/shield_heraldry.dmi'])
 		if(!picked_name)
 			picked_name = "none"
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/shield_heraldry.dmi', picked_name)

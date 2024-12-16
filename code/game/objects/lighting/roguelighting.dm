@@ -12,7 +12,6 @@
 	bulb_colour = "#58dd90"
 	bulb_power = 0.95
 	max_integrity = 0
-	use_power = NO_POWER_USE
 	pass_flags = LETPASSTHROW
 	smeltresult = /obj/item/ingot/bronze
 
@@ -85,7 +84,6 @@
 	bulb_colour = "#f9ad80"
 	bulb_power = 1
 	flags_1 = NODECONSTRUCT_1
-	use_power = NO_POWER_USE
 	var/datum/looping_sound/soundloop = /datum/looping_sound/fireloop
 	pass_flags = LETPASSTHROW
 	var/cookonme = FALSE

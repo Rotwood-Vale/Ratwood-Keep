@@ -1,6 +1,6 @@
 /obj/structure/fluff/millstone
 	name = "millstone"
-	desc = "A millstone used to grind grain into flour."
+	desc = "A millstone used to grind grain into flour." //People have been mistaking the "It's Empty" on examine for it eating grain. This is not the case.
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "millstone"
 	density = TRUE
@@ -19,7 +19,7 @@
 	qdel(to_grind)
 	..()
 
-/obj/structure/fluff/millstone/examine(mob/user)
+/obj/structure/fluff/millstone/examine(mob/user, obj/structure/fluff/millstone/src_object)
 	. = ..()
 
 /obj/structure/fluff/millstone/proc/grindUp(list/obj/item/to_grind, mob/user)

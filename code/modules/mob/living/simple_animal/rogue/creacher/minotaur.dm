@@ -99,7 +99,6 @@
 	base_intents = list(/datum/intent/unarmed/ascendedclaw)
 	melee_damage_lower = 250
 	melee_damage_upper = 550
-	status_flags = GODMODE//It's not meant to be killable, at all. But for some reason stuff doesn't set correctly.
 	health = 666666
 	maxHealth = 666666
 	STACON = 66

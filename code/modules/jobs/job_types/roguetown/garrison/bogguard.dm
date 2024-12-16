@@ -76,7 +76,7 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	beltl = /obj/item/storage/keyring/bog_guard

@@ -149,7 +149,6 @@
 	icon_state = "flour"
 	can_brew = TRUE
 	list_reagents = list(/datum/reagent/floure = 1)
-	grind_results = list(/datum/reagent/floure = 10)
 	volume = 1
 	sellprice = 0
 
@@ -185,7 +184,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	brew_amt = 22
-	brew_reagent = /datum/reagent/alch/syrums
+	brew_reagent = /datum/reagent/alch/syrum_salt
 	list_reagents = list(/datum/reagent/salt = 5,)
 	grind_results = null
 	volume = 5
