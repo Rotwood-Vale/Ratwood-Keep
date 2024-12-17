@@ -153,6 +153,11 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
+/obj/item/clothing/neck/roguetown/gorget/forlorncollar
+	name = "forlorn collar"
+	desc = "A old reminder."
+	icon_state = "iwolfcollaralt"
+
 /obj/item/clothing/neck/roguetown/gorget/steel
 	name ="steel gorget"
 	smeltresult = /obj/item/ingot/steel
@@ -223,12 +228,14 @@
 
 /obj/item/clothing/neck/roguetown/psicross/wood
 	name = "wooden psycross"
-	icon_state = "psicrossw"
+	icon_state = "psycross_w"
+	item_state = "psycross_w"
 	sellprice = 0
 
 /obj/item/clothing/neck/roguetown/psicross/silver
 	name = "silver psycross"
-	icon_state = "psicrosssteel"
+	icon_state = "psycross_s"
+	item_state = "psycross_s"
 	sellprice = 50
 
 /obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
@@ -282,7 +289,8 @@
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden psycross"
 	desc = ""
-	icon_state = "psicrossg"
+	icon_state = "psycross_g"
+	item_state = "psycross_g"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 100

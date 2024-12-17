@@ -52,6 +52,7 @@
 	faction = list("undead")
 	name = "Skeleton"
 	real_name = "Skeleton"
+	voice_type = VOICE_TYPE_MASC //So that "Unknown Man" properly substitutes in with face cover
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)

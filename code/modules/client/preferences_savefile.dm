@@ -167,6 +167,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["triumphs"]			>> triumphs
 	S["musicvol"]			>> musicvol
 	S["anonymize"]			>> anonymize
+	S["masked_examine"]		>> masked_examine
 	S["crt"]				>> crt
 	S["grain"]				>> grain
 	S["sexable"]			>> sexable
@@ -258,6 +259,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["triumphs"], triumphs)
 	WRITE_FILE(S["musicvol"], musicvol)
 	WRITE_FILE(S["anonymize"], anonymize)
+	WRITE_FILE(S["masked_examine"], masked_examine)
 	WRITE_FILE(S["crt"], crt)
 	WRITE_FILE(S["sexable"], sexable)
 	WRITE_FILE(S["shake"], shake)

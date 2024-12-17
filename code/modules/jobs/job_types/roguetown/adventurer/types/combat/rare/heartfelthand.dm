@@ -22,6 +22,9 @@
 	beltl = /obj/item/rogueweapon/sword/sabre/dec
 	beltr = /obj/item/rogueweapon/huntingknife
 	backr = /obj/item/storage/backpack/rogue/satchel/heartfelt
+	backpack_contents = list(
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden
 	id = /obj/item/scomstone
 	if(H.mind)

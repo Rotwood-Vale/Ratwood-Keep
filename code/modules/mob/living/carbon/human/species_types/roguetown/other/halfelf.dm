@@ -6,15 +6,16 @@
 	id = "helf"
 	desc = "<b>Half Elf</b><br>\
 	The child of an Elf and Humen, Half-Elves are generally frowned \
-	upon by more conservative peoples, although as racial tensions lower, \
-	more and more half-elves are being born. To the point that some scholars \
-	worry that someday, it may be impossible to distinguish the two species. \
-	Half-Elves are extremely diverse, as they bring in human and elvish culture\
-	and it is widely considered that Half-Elf culture is simply a melting pot of \
-	various other cultures condensing into one vibrant entity. \
-	Due to their heritage, Half-Elves tend to gain racial traits depending on how strong their fathers, or mothers, genes were. \
-	Half-Elves also typically try to find identity in one of two regions they have similarities towards. \
-	+1 Perception." 
+	upon by the more conservatively minded. However, as racial tensions lower, \
+	the rate of Half-Elf births has continues to increase. So common has it become that some scholars \
+	worry that someday it may be impossible to distinguish the Humens and Elves from one another. \
+	From physical to cultural characteristics, Half-Elves are an incredibly diverse people, \
+	thanks in no small part to the incredibly varied nature of their Humen halves. Indeed, no other race \
+	embodies the term \"melting pot\" quite like the Half-Elves. Due to their half-breed nature, their physical \
+	characteristics can be either more Elvish or more Humen, depending on which of their parents' genes \
+	are more predominant. In terms of cultural identity, a Half-Elf will typically choose to lean more \
+	towards either their Humen or Elvish heritages.<br>\
+	(+1 Perception)" 
 
 	skin_tone_wording = "Identity"
 	default_color = "FFFFFF"
@@ -70,15 +71,27 @@
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		)
+	body_marking_sets = list(
+		/datum/body_marking_set/none,
+		/datum/body_marking_set/belly,
+		/datum/body_marking_set/bellysocks,
+		/datum/body_marking_set/tiger,
+		/datum/body_marking_set/tiger_dark,
+	)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
 		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
+		
 	)
 	languages = list(
 		/datum/language/common,
 		/datum/language/elvish
 	)
+
+/datum/species/human/halfelf/on_species_gain(mob/living/carbon/literally_him, datum/species/old_species)
+	..()
+	languages(literally_him)
 
 /datum/species/human/halfelf/get_skin_list()
 	return list(
@@ -89,6 +102,10 @@
 		"Naledi-Born" = SKIN_COLOR_NALEDI_BORN,
 		"Kaze-Lotus" = SKIN_COLOR_KAZE_LOTUS
 	)
+
+/datum/species/human/halfelf/proc/languages(mob/living/carbon/human/literally_him)
+	if(literally_him.skin_tone == SKIN_COLOR_NALEDI_BORN)
+		literally_him.grant_language(/datum/language/celestial)
 
 /datum/species/human/halfelf/get_hairc_list()
 	return sortList(list(
@@ -137,3 +154,4 @@
 
 /datum/species/human/halfelf/random_surname()
 	return ""
+

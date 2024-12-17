@@ -21,7 +21,7 @@
 	resistance_flags = FLAMMABLE
 	can_parry = TRUE
 	associated_skill = /datum/skill/combat/shields		//Trained via blocking or attacking dummys with; makes better at parrying w/ shields.
-	wdefense = 5										//Was 15, lowered to 5 - Reason: Shield skill now handles your better parrying w/ shields.
+	wdefense = 10										//should be pretty baller
 	var/coverage = 90
 	parrysound = "parrywood"
 	attacked_sound = "parrywood"
@@ -113,7 +113,7 @@
 	throw_range = 3
 	wlength = WLENGTH_NORMAL
 	resistance_flags = FLAMMABLE
-	wdefense = 6
+	wdefense = 10
 	coverage = 70
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 200
@@ -138,7 +138,7 @@
 	wlength = WLENGTH_NORMAL
 	resistance_flags = null
 	flags_1 = CONDUCT_1
-	wdefense = 8
+	wdefense = 11
 	coverage = 70
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
@@ -181,7 +181,7 @@
 	throwforce = 10
 	dropshrink = 0.8
 	resistance_flags = null
-	wdefense = 7
+	wdefense = 9
 	coverage = 10
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
@@ -213,5 +213,43 @@
 				return list("shrink" = 0.6,"sx" = -5,"sy" = -1,"nx" = 6,"ny" = -1,"wx" = 0,"wy" = -2,"ex" = 0,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 1,"eflip" = 0)
 			if("onback")
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+
+/obj/item/rogueweapon/shield/heater
+	name = "heater shield"
+	desc = "A sturdy wood and leather shield. Made to not be too encumbering while still providing good protection."
+	icon_state = "heatershield"
+	force = 15
+	throwforce = 10
+	dropshrink = 0.8
+	coverage = 60
+	attacked_sound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
+	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
+	max_integrity = 200
+
+/obj/item/rogueweapon/shield/heater/attack_hand(mob/user)
+	if(!overlays.len)
+		var/icon/J = new('icons/roguetown/weapons/heater_heraldry.dmi')
+		var/list/istates = J.IconStates()
+		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(istates)
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/heater_heraldry.dmi', picked_name)
+		M.alpha = 178
+		add_overlay(M)
+		var/mutable_appearance/MU = mutable_appearance(icon, "heatershield_detail")
+		MU.alpha = 114
+		add_overlay(MU)
+	else
+		..()
+
+/obj/item/rogueweapon/shield/heater/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -5,"sy" = -1,"nx" = 6,"ny" = -1,"wx" = 0,"wy" = -2,"ex" = 0,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0)
+			if("onback")
+				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+
 
 #undef SHIELD_BANG_COOLDOWN

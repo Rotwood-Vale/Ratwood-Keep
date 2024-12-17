@@ -72,6 +72,13 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 30
 
+/datum/crafting_recipe/roguetown/leather/belt/knifebelt
+	name = "leather knifebelt"
+	result = /obj/item/storage/belt/rogue/leather/knifebelt
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/natural/fibers = 2)
+	sellprice = 30
+
 /datum/crafting_recipe/roguetown/leather/gloves
 	name = "leather gloves"
 	result = list(/obj/item/clothing/gloves/roguetown/leather,
@@ -148,6 +155,28 @@
 	result = /obj/item/clothing/shoes/roguetown/boots/leather
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 27
+
+/datum/crafting_recipe/roguetown/leather/boots/furlinedboots
+	name = "fur-lined boots"
+	result = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/fur = 1)
+
+/datum/crafting_recipe/roguetown/leather/boots/short
+	name = "shortboots"
+	result = /obj/item/clothing/shoes/roguetown/shortboots
+	reqs = list(/obj/item/natural/hide = 1)
+
+/datum/crafting_recipe/roguetown/leather/boots/dark
+	name = "dark boots"
+	result = /obj/item/clothing/shoes/roguetown/boots
+	reqs = list(/obj/item/natural/hide = 1)
+
+/datum/crafting_recipe/roguetown/leather/boots/noble
+	name = "noble boots"
+	result = /obj/item/clothing/shoes/roguetown/nobleboot
+	reqs = list(/obj/item/natural/hide = 3,
+				/obj/item/natural/fur = 1)
 
 /datum/crafting_recipe/roguetown/leather/helmet
 	name = "leather helmet"
@@ -306,3 +335,4 @@
 				/obj/item/natural/hide = 4)
 	craftdiff = 3
 	sellprice = 80
+

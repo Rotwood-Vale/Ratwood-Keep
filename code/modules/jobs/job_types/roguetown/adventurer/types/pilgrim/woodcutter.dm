@@ -36,7 +36,10 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 	beltl = /obj/item/rogueweapon/huntingknife
-	backpack_contents = list(/obj/item/flint = 1)
+	backpack_contents = list(
+						/obj/item/flint = 1,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen
 	else

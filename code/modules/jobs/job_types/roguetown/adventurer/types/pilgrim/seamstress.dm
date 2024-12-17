@@ -27,7 +27,11 @@
 	beltl = /obj/item/needle
 	beltr = /obj/item/rogueweapon/huntingknife/idagger
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/natural/cloth = 2, /obj/item/natural/bundle/fibers/full = 1)
+	backpack_contents = list(
+						/obj/item/natural/cloth = 2,
+						/obj/item/natural/bundle/fibers/full = 1,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	H.change_stat("intelligence", 2)
 	H.change_stat("speed", 2)
 	H.change_stat("perception", 1)

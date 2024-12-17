@@ -47,6 +47,11 @@
 
 	var/spell_points
 	var/used_spell_points
+	var/movemovemovetext = "Move!!"
+	var/takeaimtext = "Take aim!!"
+	var/holdtext = "Hold!!"
+	var/onfeettext = "On your feet!!"
+	var/focustargettext = "Focus target!!"
 
 	var/linglink
 	var/datum/martial_art/martial_art
@@ -144,6 +149,11 @@
 				referred_gender = "Androgynous"
 		known_people[H.real_name]["FGENDER"] = referred_gender
 		known_people[H.real_name]["FAGE"] = H.age
+		if (ishuman(current))
+			var/mob/living/carbon/human/C = current
+			var/heretic_text = H.get_heretic_symbol(C)
+			if (heretic_text)
+				known_people[H.real_name]["FHERESY"] = heretic_text
 
 /datum/mind/proc/person_knows_me(person) //we are added to their lists
 	if(!person)
@@ -175,6 +185,12 @@
 						referred_gender = "Androgynous"
 				M.known_people[H.real_name]["FGENDER"] = referred_gender
 				M.known_people[H.real_name]["FAGE"] = H.age
+				if(ishuman(M.current))
+					var/mob/living/carbon/human/C = M.current
+					var/heretic_text = C.get_heretic_symbol(H)
+					if (heretic_text)
+						M.known_people[H.real_name]["FHERESY"] = heretic_text
+				
 
 /datum/mind/proc/do_i_know(datum/mind/person, name)
 	if(!person && !name)
@@ -219,7 +235,10 @@
 		var/fjob = known_people[P]["FJOB"]
 		var/fgender = known_people[P]["FGENDER"]
 		var/fage = known_people[P]["FAGE"]
+		var/fheresy = known_people[P]["FHERESY"]
 		if(fcolor && fjob)
+			if (fheresy)
+				contents +="<B><font color=#f1d669>[fheresy]</font></B> "
 			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B><BR>[fjob], [capitalize(fgender)], [fage]"
 			contents += "<BR>"
 
@@ -374,9 +393,9 @@
 	if(silent)
 		return
 	if(known_skills[S] >= old_level)
-		to_chat(current, span_nicegreen("I feel like I've become more proficient at [S.name]!"))
+		to_chat(current, span_nicegreen("I feel like I've become more proficient at [lowertext(S.name)]!"))
 	else
-		to_chat(current, span_warning("I feel like I've become worse at [S.name]!"))
+		to_chat(current, span_warning("I feel like I've become worse at [lowertext(S.name)]!"))
 
 // adjusts the amount of available spellpoints
 /datum/mind/proc/adjust_spellpoints(points)
@@ -410,8 +429,11 @@
 		return
 	var/msg = ""
 	msg += span_info("*---------*\n")
-	for(var/i in shown_skills)
-		msg += "[i] - [SSskills.level_names[known_skills[i]]]\n"
+	for(var/datum/i in shown_skills)
+		var/can_advance_post = sleep_adv.enough_sleep_xp_to_advance(i.type, 1)
+		var/capped_post = sleep_adv.enough_sleep_xp_to_advance(i.type, 2)
+		var/rankup_postfix = capped_post ? span_nicegreen(" <b>(!!)</b>") : can_advance_post ? span_nicegreen(" <b>(!)</b>") : ""
+		msg += "[i] - [SSskills.level_names[known_skills[i]]][rankup_postfix]\n"
 	msg += "</span>"
 	to_chat(user, msg)
 

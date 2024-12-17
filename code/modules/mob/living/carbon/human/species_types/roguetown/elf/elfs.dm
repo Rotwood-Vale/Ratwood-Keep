@@ -5,18 +5,19 @@
 	name = "Elf"
 	id = "elfw"
 	desc = "<b>Elf</b><br>\
-	Elves, or Wood-Elf by the Elder races, are a generic term for tall, pointy-eared \
-	humanoids that trace their original heritage to the ancient mysterious Snow Elves. \
-	Considering their diverse history, it is extremely difficult for other mortals \
-	to even concept the various intricacies found in elven society, and the hundreds \
-	if not thousands of tribes that exist within their culture! \
-	Elves tend to be looked poorly upon by humans, as historically the two races have \
-	been rivals in various conflicts and territorial disputes. This however does not stop \
-	many humans and elves from forming relationships, which are capable of producing child.\
-	Elves are known for their intelligence and sharp eyes, but their graceful nature does \
-	not lend itself to the concepts of strength or durability... \
-	There are elves from a small smattering of tribes in these parts.\
-	+1 Speed, -1 Constitution."
+	\"Elf\" is a catch-all term used for tall, pointy-eared humanoids who can trace \
+	their heritage to the ancient and mysterious Snow Elves. This particular species \
+	of elf are what most imagine when they hear the word, and are also known among \
+	the elder races as \"Wood-Elves\". Considering their diverse history, it is extremely \
+	difficult for other mortals to even conceive the various intricacies found in elven \
+	society, thanks in no small part to the hundreds if not thousands of tribes that exist \
+	within their culture. Although ancient and complex, Elves tend to be looked poorly upon by \
+	Humens, as historically the two races have been rivals in various conflicts and \
+	territorial disputes. This, however, does not stop many Humens and Elves from forming \
+	relationships, which are capable of producing half-elven children. Elves are known for \
+	their intelligence and sharp eyes, but their graceful nature typically leaves their bodies \
+	more frail and fagile than most. In these lands, only a handful of the many Elvish tribes are seen.<br>\
+	(+1 Speed, -1 Constitution)"
 
 	skin_tone_wording = "Tribal Identity"
 
@@ -77,9 +78,20 @@
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		)
-	body_markings = list(
+
+	body_marking_sets = list(
+		/datum/body_marking_set/none,
+		/datum/body_marking_set/belly,
+		/datum/body_marking_set/bellysocks,
+		/datum/body_marking_set/tiger,
+		/datum/body_marking_set/tiger_dark,
 	)
 
+	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
+		/datum/body_marking/tonage
+	)
 /datum/species/elf/wood/get_span_language(datum/language/message_language)
 	if(!message_language)
 		return

@@ -17,6 +17,9 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(
+					/obj/item/flashlight/flare/torch = 1,
+					)
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	beltl = /obj/item/rogueweapon/huntingknife
 	r_hand = /obj/item/rogueweapon/woodstaff

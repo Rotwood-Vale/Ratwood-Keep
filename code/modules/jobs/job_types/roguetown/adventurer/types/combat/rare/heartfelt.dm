@@ -24,6 +24,9 @@
 	beltr = /obj/item/rogueweapon/huntingknife
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	id = /obj/item/scomstone
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
