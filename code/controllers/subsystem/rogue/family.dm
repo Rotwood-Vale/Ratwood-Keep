@@ -349,11 +349,15 @@ proc/getMatchingRel(var/rel_type)
 /datum/relation/proc/getName()
 	return name
 
+
+/datum/relation/proc/onConnect(var/mob/living/carbon/human/holder,var/mob/living/carbon/human/target)
+	return
+
 /datum/relation/New(var/mob/living/carbon/human/H,var/mob/living/carbon/human/T)
 	holder = WEAKREF(H)
 	target = WEAKREF(T)
 	name = getName() //Done once to prevent any organ changes from changing the name.
-
+	onConnect(H,T)
 
 /datum/relation/spouse
 	name = "Spouse"
@@ -368,6 +372,37 @@ proc/getMatchingRel(var/rel_type)
 		if(T.getorganslot(ORGAN_SLOT_VAGINA))
 			return "Wife"
 	return "Spouse"
+
+/datum/relation/spouse/onConnect(var/mob/living/carbon/human/holder,var/mob/living/carbon/human/target)
+	var/datum/job/holder_job = SSjob.GetJob(holder.job)
+
+	// Only give rings to non-baron/consort spouses.
+	if(istype(holder_job, /datum/job/roguetown/lord) || istype(holder_job, /datum/job/roguetown/lady))
+		return
+
+	// Handle existing rings before equipping new one
+	if(holder.wear_ring)
+		// Try to store in belt first
+		var/obj/item/storage/belt = holder.get_item_by_slot(SLOT_BELT)
+		if(istype(belt) && SEND_SIGNAL(belt, COMSIG_TRY_STORAGE_INSERT, holder.wear_ring, holder))
+			to_chat(holder, span_notice("I store my old ring in my belt."))
+		else
+			// Try backpack slots if belt storage fails
+			var/obj/item/storage/backpack/backr = holder.get_item_by_slot(SLOT_BACK_R)
+			if(istype(backr) && SEND_SIGNAL(backr, COMSIG_TRY_STORAGE_INSERT, holder.wear_ring, holder))
+				to_chat(holder, span_notice("I store my old ring in my right backpack."))
+			else
+				var/obj/item/storage/backpack/backl = holder.get_item_by_slot(SLOT_BACK_L)
+				if(istype(backl) && SEND_SIGNAL(backl, COMSIG_TRY_STORAGE_INSERT, holder.wear_ring, holder))
+					to_chat(holder, span_notice("I store my old ring in my left backpack."))
+				else
+					holder.dropItemToGround(holder.wear_ring)
+					to_chat(holder, span_warning("I had to drop my old ring."))
+
+	// Create and equip new soulring for both spouses
+	var/obj/item/clothing/ring/soul/ring = new(holder, target.real_name)
+	holder.equip_to_slot_if_possible(ring, SLOT_RING)
+
 
 /datum/relation/sibling
 	name = "Sibling"
