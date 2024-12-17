@@ -345,5 +345,6 @@
 /datum/sprite_accessory/tail/rattlesnake
 	name = "Rattlesnake"
 	icon_state = "rattlesnake"
+	color_keys = 2
 	color_key_names = list("Tail", "Tip")
 	can_wag = TRUE
