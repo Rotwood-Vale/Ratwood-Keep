@@ -25,7 +25,7 @@
 
 /datum/supply_pack/rogue/bandit/Stuff/hardleathershoes
 	name = "Hardened Leather shoes"
-	cost = 60
+	cost = 50
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather/advanced)
 
 /datum/supply_pack/rogue/bandit/Stuff/hood
@@ -35,7 +35,7 @@
 
 /datum/supply_pack/rogue/bandit/Stuff/leather/Lhelmet
 	name = "Reinforced hood"
-	cost = 100
+	cost = 50
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/reinforced)
 
 /datum/supply_pack/rogue/bandit/Stuff/undershirt
@@ -100,22 +100,22 @@
 
 /datum/supply_pack/rogue/bandit/Stuff/masks
 	name = "Steel Mask"
-	cost = 80
+	cost = 150
 	contains = list(/obj/item/clothing/mask/rogue/facemask/steel)
 
 /datum/supply_pack/rogue/bandit/Stuff/maskhound
 	name = "Hound Mask"
-	cost = 80
+	cost = 150
 	contains = list(/obj/item/clothing/mask/rogue/facemask/steel/hound)
 
 /datum/supply_pack/rogue/bandit/Stuff/maskgold
 	name = "Gold Mask"
-	cost = 350
+	cost = 400
 	contains = list(/obj/item/clothing/mask/rogue/facemask/goldmask)
 
 /datum/supply_pack/rogue/bandit/Stuff/coif
 	name = "Coif"
-	cost = 40
+	cost = 50
 	contains = list(/obj/item/clothing/neck/roguetown/coif)
 
 /datum/supply_pack/rogue/bandit/Stuff/foodgood

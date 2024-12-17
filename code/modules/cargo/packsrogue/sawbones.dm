@@ -16,17 +16,17 @@
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/studded
 	name = "Studded Leather Armor"
-	cost = 160
+	cost = 150
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/Lhelmet
 	name = "Leather Helmet"
-	cost = 25
+	cost = 50
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 /datum/supply_pack/rogue/bandit/Sawbones/helmet/hhelmet
 	name = "Horned cap"
-	cost = 100
+	cost = 150
 	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
 
 /datum/supply_pack/rogue/bandit/Sawbones/gorget
@@ -36,17 +36,17 @@
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/Lbracers
 	name = "Leather bracers"
-	cost = 25
+	cost = 50
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/Lgloves
 	name = "hardened leather gloves"
-	cost = 150
+	cost = 50
 	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 
 /datum/supply_pack/rogue/bandit/Sawbones/leatherpantsadvanced
 	name = "hardened leather chausses"
-	cost = 200
+	cost = 50
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/surgery_bag
@@ -66,22 +66,22 @@
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/estoc
 	name = "Estoc"
-	cost = 200
+	cost = 450
 	contains = list(/obj/item/rogueweapon/estoc)
 
 /datum/supply_pack/rogue/bandit/Sawbones/dagger
 	name = "Iron Daggers"
-	cost = 50
+	cost = 100
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger)
 
 /datum/supply_pack/rogue/bandit/Sawbones/daggerss
 	name = "Steel Dagger"
-	cost = 100
+	cost = 150
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/elfdagger
 	name = "Elven Dagger"
-	cost = 250
+	cost = 300
 	contains = list(/obj/item/rogueweapon/huntingknife/elvish)
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/gbottle

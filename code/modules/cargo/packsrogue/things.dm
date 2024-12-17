@@ -34,14 +34,10 @@
 	cost = 20
 	contains = list(/obj/item/storage/belt/rogue/pouch)
 
-/datum/supply_pack/rogue/bandit/Things/pinkpill
-	name = "Pink Pills"
-	cost = 24
-	contains = list(/obj/item/storage/fancy/pilltin/pink)
 
 /datum/supply_pack/rogue/bandit/Things/chain
 	name = "Chain"
-	cost = 50
+	cost = 100
 	contains = list(/obj/item/rope/chain)
 
 /datum/supply_pack/rogue/bandit/Things/rope
@@ -51,17 +47,17 @@
 
 /datum/supply_pack/rogue/bandit/Things/needle
 	name = "Needle"
-	cost = 24
+	cost = 20
 	contains = list(/obj/item/needle)
 
 /datum/supply_pack/rogue/bandit/Things/hknife
 	name = "Hunting Knife"
-	cost = 50
+	cost = 100
 	contains = list(/obj/item/rogueweapon/huntingknife)
 
 /datum/supply_pack/rogue/bandit/Things/pickaxe
 	name = "Iron Pickaxe"
-	cost = 80
+	cost = 100
 	contains = list(/obj/item/rogueweapon/pick)
 
 /datum/supply_pack/rogue/bandit/Things/cloth
@@ -76,7 +72,7 @@
 
 /datum/supply_pack/rogue/bandit/Things/Lamp
 	name = "Lamptern"
-	cost = 50
+	cost = 100
 	contains = list(/obj/item/flashlight/flare/torch/lantern)
 
 /datum/supply_pack/rogue/bandit/Things/westleach
