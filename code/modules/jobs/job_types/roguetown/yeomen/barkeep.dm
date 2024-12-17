@@ -28,6 +28,8 @@
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	cloak = /obj/item/clothing/cloak/apron/waist
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/natural/cloth/)
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		belt = /obj/item/storage/belt/rogue/leather
