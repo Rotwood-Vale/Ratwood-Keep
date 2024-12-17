@@ -20,7 +20,6 @@
 	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/wapprentice
-	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	belt = /obj/item/storage/belt/rogue/leather
