@@ -168,4 +168,4 @@
 	return TRUE
 
 /proc/can_death_zombify(mob/living/carbon/human)
-	return hasomen(OMEN_NOPRIEST)
+	return TRUE
