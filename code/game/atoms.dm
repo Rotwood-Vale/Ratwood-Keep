@@ -97,6 +97,8 @@
 	///Bitflags to determine lighting-related atom properties.
 	var/light_flags = NONE
 
+	///AI controller that controls this atom. type on init, then turned into an instance during runtime
+	var/datum/ai_controller/ai_controller
 
 /**
   * Called when an atom is created in byond (built in engine proc)
@@ -184,6 +186,7 @@
 	set_custom_materials(temp_list)
 
 	ComponentInitialize()
+	InitializeAIController()
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -231,6 +234,7 @@
 	LAZYCLEARLIST(priority_overlays)
 
 	QDEL_NULL(light)
+	QDEL_NULL(ai_controller)
 
 	return ..()
 
@@ -572,16 +576,17 @@
 	return
 
 /**
-  * React to being hit by a thrown object
-  *
-  * Default behaviour is to call hitby_react() on ourselves after 2 seconds if we are dense
-  * and under normal gravity.
-  *
-  * Im not sure why this the case, maybe to prevent lots of hitby's if the thrown object is
-  * deleted shortly after hitting something (during explosions or other massive events that
-  * throw lots of items around - singularity being a notable example)
-  */
-/atom/proc/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
+ * React to being hit by a thrown object
+ *
+ * Default behaviour is to call hitby_react() on ourselves after 2 seconds if we are dense
+ * and under normal gravity.
+ *
+ * Im not sure why this the case, maybe to prevent lots of hitby's if the thrown object is
+ * deleted shortly after hitting something (during explosions or other massive events that
+ * throw lots of items around - singularity being a notable example)
+ */
+/atom/proc/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type= "blunt")
+	SEND_SIGNAL(src, COMSIG_ATOM_HITBY, AM, skipcatch, hitpush, blocked, throwingdatum, d_type)
 	if(density && !has_gravity(AM)) //thrown stuff bounces off dense stuff in no grav, unless the thrown stuff ends up inside what it hit(embedding, bola, etc...).
 		addtimer(CALLBACK(src, PROC_REF(hitby_react), AM), 2)
 
@@ -867,6 +872,7 @@
 	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP Pulse")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_AI, "Add AI controller")
 
 /atom/vv_do_topic(list/href_list)
 	. = ..()
@@ -905,6 +911,15 @@
 					message_admins(span_notice("[key_name(usr)] has added [amount] units of [chosen_id] to [src]"))
 	if(href_list[VV_HK_TRIGGER_EXPLOSION] && check_rights(R_FUN))
 		usr.client.cmd_admin_explosion(src)
+
+	if(href_list[VV_HK_ADD_AI])
+		if(!check_rights(R_VAREDIT))
+			return
+		var/result = input(usr, "Choose the AI controller to apply to this atom WARNING: Not all AI works on all atoms.", "AI controller") as null|anything in subtypesof(/datum/ai_controller)
+		if(!result)
+			return
+		ai_controller = new result(src)
+
 	if(href_list[VV_HK_TRIGGER_EMP] && check_rights(R_FUN))
 		usr.client.cmd_admin_emp(src)
 	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
@@ -1234,21 +1249,19 @@
 		custom_materials[custom_material] += materials[x] * multiplier
 
 /**
-  * Returns true if this atom has gravity for the passed in turf
-  *
-  * Sends signals COMSIG_ATOM_HAS_GRAVITY and COMSIG_TURF_HAS_GRAVITY, both can force gravity with
-  * the forced gravity var
-  *
-  * micro-optimized to hell because this proc is very hot, being called several times per movement every movement.
-  *
-  * Gravity situations:
-  * * No gravity if you're not in a turf
-  * * No gravity if this atom is in is a space turf
-  * * Gravity if the area it's in always has gravity
-  * * Gravity if there's a gravity generator on the z level
-  * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
-  * * otherwise no gravity
-  */
+ * Returns true if this atom has gravity for the passed in turf
+ *
+ * Sends signals COMSIG_ATOM_HAS_GRAVITY and COMSIG_TURF_HAS_GRAVITY, both can force gravity with
+ * the forced gravity var
+ *
+ * Gravity situations:
+ * * No gravity if you're not in a turf
+ * * No gravity if this atom is in is a space turf
+ * * Gravity if the area it's in always has gravity
+ * * Gravity if there's a gravity generator on the z level
+ * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
+ * * otherwise no gravity
+ */
 /atom/proc/has_gravity(turf/gravity_turf)
 	if(!isturf(gravity_turf))
 		gravity_turf = get_turf(src)
@@ -1273,3 +1286,12 @@
 	// force_no_gravity has been removed because this is Roguetown code
 	// it'd be trivial to readd if you needed it, though
 	return SSmapping.gravity_by_z_level["[gravity_turf.z]"] || turf_area.has_gravity
+
+/**
+* Instantiates the AI controller of this atom. Override this if you want to assign variables first.
+*
+* This will work fine without manually passing arguments.
++*/
+/atom/proc/InitializeAIController()
+	if(ai_controller)
+		ai_controller = new ai_controller(src)

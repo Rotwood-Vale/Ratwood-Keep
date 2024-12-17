@@ -37,8 +37,12 @@
 	attack_same = 0
 	retreat_health = 0.3
 	attack_sound = list('sound/vo/mobs/spider/attack (1).ogg','sound/vo/mobs/spider/attack (2).ogg','sound/vo/mobs/spider/attack (3).ogg','sound/vo/mobs/spider/attack (4).ogg')
-	aggressive = 1
+	aggressive = TRUE
 	stat_attack = UNCONSCIOUS
+
+	ai_controller = /datum/ai_controller/spider
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
@@ -59,10 +63,8 @@
 		gender = FEMALE
 	update_icon()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/find_food()
-	. = ..()
-	if(!.)
-		return eat_bodies()
+	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/AttackingTarget()
 	. = ..()

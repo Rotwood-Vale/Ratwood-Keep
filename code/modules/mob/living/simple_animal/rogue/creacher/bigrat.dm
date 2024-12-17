@@ -46,6 +46,10 @@
 	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/bigrat
 
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
+	ai_controller = /datum/ai_controller/big_rat
+
 /obj/effect/decal/remains/bigrat
 	name = "remains"
 	gender = PLURAL
@@ -62,6 +66,13 @@
 		icon_dead = "Frat1"
 		milkies = TRUE // must be done before ..()
 	. = ..()
+	update_icon()
+
+	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/death(gibbed)
+	..()
 	update_icon()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/tamed()

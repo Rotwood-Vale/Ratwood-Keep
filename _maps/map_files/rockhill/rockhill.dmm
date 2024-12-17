@@ -5260,6 +5260,10 @@
 "dmK" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue/long,
 /area/rogue/indoors/town/manor)
+"dmP" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe/female,
+/turf/open/floor/rogue/dirt,
+/area/rogue/indoors/shelter/mountains)
 "dmS" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/woodturned,
@@ -17336,6 +17340,10 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
+"kNH" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe/female,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/shelter/mountains)
 "kNI" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -287164,7 +287172,7 @@ vIa
 vIa
 vIa
 aev
-aev
+dmP
 aev
 kKL
 vET
@@ -292348,7 +292356,7 @@ vIa
 vIa
 twI
 twI
-twI
+kNH
 clE
 vET
 twI
