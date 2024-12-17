@@ -155,6 +155,22 @@
 	leash_pet.visible_message(span_warning("[leash_master] yanks [leash_pet] closer with \the [src.name]."))
 	last_yank = world.time
 
+//WIP
+/*
+/obj/item/leash/attack_right(mob/living/carbon/C, mob/living/user)
+	if(!leash_pet)
+		to_chat(user, "I don't have a pet to unhook.")
+		return
+	if(!(C == leash_pet))
+		to_chat(user, "My \the [src] is not attached to them.")
+		return
+	else for(var/mob/viewing in viewers(user, null))
+		viewing.show_message("[user] begins unhooking \the [src] from [leash_pet]")
+		if(do_mob(user, 50))
+			viewing.show_message("[user] has unhooked \the [src] from [leash_pet]")
+			leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
+*/
+
 /obj/item/leash/proc/on_master_move()
 	SIGNAL_HANDLER
 	//Make sure the dom still has a pet
