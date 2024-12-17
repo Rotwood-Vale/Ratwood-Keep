@@ -8868,6 +8868,15 @@
 /obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"fxl" = (
+/obj/structure/fluff/railing/border{
+	dir = 10
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "fxr" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
@@ -447011,7 +447020,7 @@ fZJ
 thT
 fQx
 nVH
-xrP
+xCf
 oTD
 aLg
 dvu
@@ -447443,8 +447452,8 @@ fZJ
 aAr
 abK
 xrP
-xrP
-xrP
+fxl
+oCI
 xrP
 thT
 evo
