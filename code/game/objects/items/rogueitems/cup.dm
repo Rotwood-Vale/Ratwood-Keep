@@ -66,8 +66,6 @@
 		var/mob/living/carbon/human/H = target
 		if(H.dna && H.dna.species)
 			if(istype(H.dna.species, /datum/species/werewolf))
-				H.Paralyze(10)
-				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
@@ -76,8 +74,6 @@
 		if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
 			var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
 			if(!VD.disguised)
-				H.Paralyze(10)
-				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
