@@ -1109,6 +1109,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"aLg" = (
+/obj/structure/stairs,
+/turf/open/transparent/openspace,
+/area/rogue/indoors/town)
 "aLK" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -18959,8 +18963,8 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "lRU" = (
-/obj/structure/roguemachine/vendor/street_smithshop01,
-/turf/closed/wall/mineral/rogue/stone,
+/obj/structure/mineral_door/wood/towner/blacksmith,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "lRY" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -32969,12 +32973,8 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/under/cavewet/bogcaves)
 "uMc" = (
-/obj/structure/mineral_door/wood/red{
-	locked = 1;
-	lockid = "street_smithshop01";
-	name = "Street Shop Smithery #1"
-	},
-/turf/open/floor/rogue/blocks/stonered,
+/obj/structure/stairs,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "uMp" = (
 /obj/structure/industrial_lift/tram{
@@ -336417,7 +336417,7 @@ wbg
 wVI
 uln
 uln
-uMc
+uln
 lRU
 uln
 uln
@@ -336851,8 +336851,8 @@ fGe
 coI
 tVN
 tVN
-vXn
-vXn
+uMc
+uln
 uln
 qGr
 lia
@@ -337284,7 +337284,7 @@ tVN
 tVN
 tVN
 vXn
-vXn
+stp
 uln
 uln
 wVI
@@ -337715,8 +337715,8 @@ kYl
 oGo
 tVN
 vXn
-stp
-uln
+vXn
+vXn
 uln
 uln
 wVI
@@ -447012,8 +447012,8 @@ thT
 fQx
 nVH
 xrP
-xrP
-tHa
+oTD
+aLg
 dvu
 evo
 fZJ
