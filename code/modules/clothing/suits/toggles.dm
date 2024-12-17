@@ -45,7 +45,6 @@
 	flags_cover = initial(flags_cover)
 	block2add = initial(block2add)
 	body_parts_covered = initial(body_parts_covered)
-	prevent_crits = initial(prevent_crits)
 
 /obj/item/clothing/equipped(mob/user, slot)
 	if(hoodtype && slot != SLOT_ARMOR|SLOT_CLOAK)

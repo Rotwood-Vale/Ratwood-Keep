@@ -76,7 +76,7 @@
 		dat += "<br><center>They will arrive in [(SSmigrants.wave_timer / (1 SECONDS))] seconds...</center>"
 
 	var/datum/browser/popup = new(client.mob, "migration", "<center>Find a purpose</center>", 330, 410)
-	popup.set_window_options("can_close=0")
+	//popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 

@@ -62,10 +62,10 @@
 	desc = "Chunks of copper used for smithing and alloying."
 	item_type = /obj/item/rogueore/copper
 	held_items = list(6, 0)
-	payout_price = 3
-	withdraw_price = 5
-	transport_fee = 3
-	export_price = 5
+	payout_price = 7
+	withdraw_price = 10
+	transport_fee = 6
+	export_price = 10
 	importexport_amt = 10
 	passive_generation = 2
 
@@ -74,10 +74,10 @@
 	desc = "Chunks of tin used for smithing and alloying."
 	item_type = /obj/item/rogueore/tin
 	held_items = list(6, 0)
-	payout_price = 4
-	withdraw_price = 5
-	transport_fee = 4
-	export_price = 5
+	payout_price = 7
+	withdraw_price = 10
+	transport_fee = 6
+	export_price = 10
 	importexport_amt = 10
 	passive_generation = 2
 

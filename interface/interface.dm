@@ -205,6 +205,13 @@ Hotkey-Mode: (hotkey-mode must be on)
 		for(var/atom/movable/screen/scannies/S in screen)
 			S.alpha = 70
 
+/client/verb/keybind_menu()
+	set category = "Options"
+	set name = "Adjust Keybinds"
+	if(!prefs)
+		return
+	prefs.SetKeybinds(usr)
+
 /client/verb/triggercommend()
 	set category = "OOC"
 	set name = "Commend Someone"

@@ -411,7 +411,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	color = "#4682b4"
-	brew_reagent = /datum/reagent/alch/syrumb
+	brew_reagent = /datum/reagent/alch/syrum_berry
 	brew_amt = 24
 	can_brew = TRUE
 	list_reagents = null
@@ -423,7 +423,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	color = "#61DE2A"
-	brew_reagent = /datum/reagent/alch/syrump
+	brew_reagent = /datum/reagent/alch/syrum_poison_berry
 	brew_amt = 24
 	can_brew = TRUE
 	list_reagents = null
@@ -436,7 +436,7 @@
 	icon_state = "salt"
 	color = "#ff7f7f"
 	can_brew = TRUE
-	brew_reagent = /datum/reagent/alch/syrumm
+	brew_reagent = /datum/reagent/alch/syrum_meat
 	brew_amt = 24
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	grind_results = null
@@ -447,7 +447,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	color = "#ff7f7f"
-	brew_reagent = /datum/reagent/alch/syrumf
+	brew_reagent = /datum/reagent/alch/syrum_fish
 	brew_amt = 24
 	can_brew = TRUE
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
@@ -458,7 +458,7 @@
 	name = "essence of earth"
 	gender = PLURAL
 	icon_state = "salt"
-	brew_reagent = /datum/reagent/alch/syrumr
+	brew_reagent = /datum/reagent/alch/syrum_stone
 	brew_amt = 24
 	can_brew = TRUE
 	color = "#808080"
@@ -470,7 +470,7 @@
 	name = "essence of addiction"
 	gender = PLURAL
 	icon_state = "salt"
-	brew_reagent = /datum/reagent/alch/syrumpw
+	brew_reagent = /datum/reagent/alch/syrum_westleach_leaf
 	brew_amt = 24
 	can_brew = TRUE
 	color = "#808080"
@@ -482,7 +482,7 @@
 	name = "essence of clarity"
 	gender = PLURAL
 	icon_state = "salt"
-	brew_reagent = /datum/reagent/alch/syrumsw
+	brew_reagent = /datum/reagent/alch/syrum_swamp_weed
 	brew_amt = 24
 	can_brew = TRUE
 	color = "#61DE2A"
@@ -498,7 +498,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syruma
+/datum/reagent/alch/syrum_ash
 	name = "syrum of fire"
 	description = "refined viscous ash"
 	reagent_state = LIQUID
@@ -506,7 +506,7 @@
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumpw
+/datum/reagent/alch/syrum_westleach_leaf
 	name = "west syrum"
 	description = "refined west essence"
 	reagent_state = LIQUID
@@ -514,7 +514,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumsw
+/datum/reagent/alch/syrum_swamp_weed
 	name = "swamp syrum"
 	description = "refined berry poison"
 	reagent_state = LIQUID
@@ -522,7 +522,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumm
+/datum/reagent/alch/syrum_meat
 	name = "meaty syrum"
 	description = "refined viscous slop"
 	reagent_state = LIQUID
@@ -530,7 +530,7 @@
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumf
+/datum/reagent/alch/syrum_fish
 	name = "fishy syrum"
 	description = "refined viscous fishy smelling gunk"
 	reagent_state = LIQUID
@@ -538,7 +538,7 @@
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumr
+/datum/reagent/alch/syrum_stone
 	name = "earthy syrum"
 	description = "refined liquid state stone"
 	reagent_state = LIQUID
@@ -546,7 +546,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrums
+/datum/reagent/alch/syrum_salt
 	name = "salty syrum"
 	description = "refined liquid state salt"
 	reagent_state = LIQUID
@@ -554,7 +554,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrump
+/datum/reagent/alch/syrum_poison_berry
 	name = "poison syrum"
 	description = "refined berry poison"
 	reagent_state = LIQUID
@@ -562,7 +562,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumb
+/datum/reagent/alch/syrum_berry
 	name = "berry syrum"
 	description = "refined berry essence"
 	reagent_state = LIQUID
@@ -586,26 +586,18 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syruma
-	name = "syrum of fire"
-	description = "refined viscous ash"
-	reagent_state = LIQUID
-	color = "#808080"
-	metabolization_rate = 1 * REAGENTS_METABOLISM
-	overdose_threshold = null
-
 /datum/reagent/alch/on_mob_metabolize(mob/living/carbon/M)
 	if(prob(50))
 		M.confused = max(M.confused+3,0)
 	M.emote(pick("cough"))
 
-/datum/reagent/alch/syruma/on_mob_metabolize(mob/living/carbon/M)
+/datum/reagent/alch/syrum_ash/on_mob_metabolize(mob/living/carbon/M)
 	M.adjustToxLoss(-1*REM, 0)
 	M.adjustFireLoss(0.25*REM, 0)
 	M.reagents.remove_all_type(/datum/reagent, 1)
 	M.emote(pick("gag"))
 
-/datum/reagent/alch/syrump/on_mob_metabolize(mob/living/carbon/M)
+/datum/reagent/alch/syrum_poison_berry/on_mob_metabolize(mob/living/carbon/M)
 	M.add_nausea(9)
 	M.adjustToxLoss(2, 0)
 
@@ -699,18 +691,18 @@
 	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/healthpot
 	results = list(/datum/reagent/medicine/healthpot = 45)
-	required_reagents = list(/datum/reagent/alch/syrumm = 24, /datum/reagent/alch/syruma = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_meat = 24, /datum/reagent/alch/syrum_ash = 24)
 
 /datum/chemical_reaction/alch/mana
 	name = "mana pot"
 	id = /datum/reagent/medicine/manapot
 	results = list(/datum/reagent/medicine/manapot = 45)
-	required_reagents = list(/datum/reagent/alch/syrumf = 24, /datum/reagent/alch/syruma = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_fish = 24, /datum/reagent/alch/syrum_ash = 24)
 
 /datum/chemical_reaction/alch/salt
 	name = "saltify"
 	id = "saltify"
-	required_reagents = list(/datum/reagent/alch/syrumr = 24, /datum/reagent/alch/syruma = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_stone = 24, /datum/reagent/alch/syrum_ash = 24)
 
 /datum/chemical_reaction/alch/salt/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -720,7 +712,7 @@
 /datum/chemical_reaction/alch/ozium
 	name = "oziumify"
 	id = "oziumify"
-	required_reagents = list(/datum/reagent/alch/syrump = 24, /datum/reagent/alch/syrumsw = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_poison_berry = 24, /datum/reagent/alch/syrum_swamp_weed = 24)
 
 /datum/chemical_reaction/alch/ozium/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -730,7 +722,7 @@
 /datum/chemical_reaction/alch/moon
 	name = "moondustify"
 	id = "moondustify"
-	required_reagents = list(/datum/reagent/alch/syrump = 24, /datum/reagent/alch/syrumpw = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_poison_berry = 24, /datum/reagent/alch/syrum_westleach_leaf = 24)
 
 /datum/chemical_reaction/alch/moon/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -740,7 +732,7 @@
 /datum/chemical_reaction/alch/spice
 	name = "spiceify"
 	id = "spiceify"
-	required_reagents = list(/datum/reagent/alch/syrumsw = 24, /datum/reagent/alch/syrumpw = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_swamp_weed = 24, /datum/reagent/alch/syrum_westleach_leaf = 24)
 
 /datum/chemical_reaction/alch/spice/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)

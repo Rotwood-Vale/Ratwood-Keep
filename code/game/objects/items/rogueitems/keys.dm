@@ -143,6 +143,12 @@
 	icon_state = "cheesekey"
 	lockid = "councillor"
 
+/obj/item/key/noble_guest_rooms
+	name = "noble guest rooms key"
+	desc = "This key opens the noble guest rooms."
+	icon_state = "cheesekey"
+	lockid = "guestroom"
+
 /obj/item/key/merchant
 	name = "merchant's key"
 	desc = "A merchant's key."
@@ -505,9 +511,21 @@
 	icon_state = "spikekey"
 	lockid = "harbor"
 
-//Port Shop Key
+//Shop Keys
 /obj/item/key/portshop
 	name = "port shop key"
 	desc = "This old key opens shop in port area."
 	icon_state = "rustkey"
 	lockid = "portshop"
+
+/obj/item/key/street_smithshop01
+	name = "Street smithery key"
+	desc = "This old key opens shop in merchant street area."
+	icon_state = "rustkey"
+	lockid = "street_smithshop01"
+
+/obj/item/key/street_shop01
+	name = "Street shop key #1"
+	desc = "This old key opens shop #1 in merchant street area."
+	icon_state = "rustkey"
+	lockid = "street_shop01"

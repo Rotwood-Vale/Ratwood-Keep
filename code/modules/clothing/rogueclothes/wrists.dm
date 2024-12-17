@@ -62,7 +62,7 @@
 	item_state = "wrappings"
 
 /obj/item/clothing/wrists/roguetown/nocwrappings
-	name = "moon wrappings"
+	name = "lunar wrappings"
 	icon_state = "nocwrappings"
 	item_state = "nocwrappings"
 
