@@ -16,7 +16,7 @@
 /datum/outfit/job/roguetown/refugee/performer/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Whore", "Minstrel", "Fool")
+	var/classes = list("Whore", "Minstrel", "Harlequin")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -92,6 +92,28 @@
 			H.change_stat("speed", 2)
 			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 
-		if("Fool")
+		if("Harlequin")
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+			H.cmode_music = 'sound/music/combat_jester.ogg'
+			H.verbs |= /mob/living/carbon/human/proc/ventriloquate
+			H.verbs |= /mob/living/carbon/human/proc/ear_trick
+			// TODO: Make alternative colored versions of the jester outfit
+			shoes = /obj/item/clothing/shoes/roguetown/jester
+			pants = /obj/item/clothing/under/roguetown/tights
+			armor = /obj/item/clothing/suit/roguetown/shirt/jester
+			belt = /obj/item/storage/belt/rogue/leather
+			beltl = /obj/item/storage/belt/rogue/pouch
+			head = /obj/item/clothing/head/roguetown/jester
+			neck = /obj/item/clothing/neck/roguetown/coif
+			H.change_stat("intelligence", 2)
+			H.change_stat("perception", -1)
+			H.change_stat("speed", 1)
+			ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 
 	H.set_blindness(0)

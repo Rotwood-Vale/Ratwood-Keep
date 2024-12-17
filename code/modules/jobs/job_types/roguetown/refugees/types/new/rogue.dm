@@ -47,6 +47,7 @@
 			H.change_stat("speed", 3)
 			H.change_stat("intelligence", 1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
 		if("Smuggler")
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -75,6 +76,7 @@
 			H.change_stat("speed", 1)
 			H.change_stat("fortune", 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
 		if("Cutthroat") //thief but less sneak and more stab
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
