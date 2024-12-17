@@ -183,6 +183,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			return
 	//Set the race to properly run race setter logic
 	set_new_race(pref_species, null)
+
+	// Enable all races and genders for family preferences by default
+	family_species = list()
+	var/list/available_species = get_selectable_species()
+	for(var/species_name in available_species)
+		var/datum/species/S = GLOB.species_list[species_name]
+		family_species += S.id
+
+	family_gender = list(MALE,FEMALE)
+
 	if(!charflaw)
 		charflaw = pick(GLOB.character_flaws)
 		charflaw = GLOB.character_flaws[charflaw]

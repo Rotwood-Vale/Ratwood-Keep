@@ -493,6 +493,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	virginity = sanitize_integer(virginity, FALSE, TRUE, FALSE)
 	if(!family_species)
 		family_species = list()
+	if(isnull(family))
+		family = FAMILY_NONE
 
 	S["descriptor_entries"] >> descriptor_entries
 	descriptor_entries = SANITIZE_LIST(descriptor_entries)
