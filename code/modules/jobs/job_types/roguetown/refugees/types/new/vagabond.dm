@@ -1,13 +1,15 @@
 /datum/subclass/vagabond
 	name = "Vagabond"
 	tutorial = "Your life never really amounted to much. Wandering has always been your lifestyle regardless of the \
-				plagues and strife gripping the world. You've strayed to yet another city, bringing your dubious career with you. \
-				Your life might yet turn around, but it probably wont."
+				plagues and strife gripping the world. You've strayed to yet another city, bringing your dubious career with you, \
+				your life might yet turn around, but it probably wont."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	category_tags = list(CTAG_REFUGEE)
 	allowed_patrons = ALL_PATRONS
+
+	maximum_possible_slots = 5
 
 	outfit = /datum/outfit/job/roguetown/refugee/vagabond
 

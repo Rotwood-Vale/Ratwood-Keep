@@ -9,6 +9,8 @@
 	category_tags = list(CTAG_REFUGEE)
 	allowed_patrons = ALL_PATRONS
 
+	maximum_possible_slots = 5
+
 	outfit = /datum/outfit/job/roguetown/refugee/noble
 
 /datum/outfit/job/roguetown/refugee/noble/pre_equip(mob/living/carbon/human/H)

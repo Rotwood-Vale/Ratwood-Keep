@@ -5,8 +5,8 @@ GLOBAL_LIST_EMPTY(billagerspawns)
 	flag = REFUGEE
 	department_flag = FOREIGNERS
 	faction = "Station"
-	total_positions = 20
-	spawn_positions = 20
+	total_positions = 25
+	spawn_positions = 25
 	allowed_races = RACES_VERY_SHUNNED_UP
 	tutorial = ""
 
