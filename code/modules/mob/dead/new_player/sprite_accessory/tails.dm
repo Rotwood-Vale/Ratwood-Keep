@@ -341,3 +341,10 @@
 	icon_state = "hearttail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
+
+/datum/sprite_acessory/tail/rattlesnake
+	name = "Rattlesnake"
+	icon = "rattlesnake"
+	icon_state = 'icons/mob/sprite_acessory/tails/nightstalker.dmi'
+	color_key_names = list("Tail", "Tip")
+	can_wag = TRUE
