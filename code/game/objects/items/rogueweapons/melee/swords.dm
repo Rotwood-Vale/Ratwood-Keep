@@ -90,6 +90,17 @@
 	if(icon_state == "sword1")
 		icon_state = "sword[rand(1,3)]"
 
+/obj/item/rogueweapon/sword/falchion
+	name = "falchion"
+	desc = "A blade with a quilloned crossguard."
+	parrysound = "bladedmedium"
+	force = 20
+	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	icon_state = "falchion"
+	gripped_intents = null
+	minstr = 4
+	wdefense = 6
+
 /obj/item/rogueweapon/sword/decorated
 	name = "engraved sword"
 	desc = "A valuable sword for celebrations and rites."
