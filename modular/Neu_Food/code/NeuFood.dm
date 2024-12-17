@@ -699,26 +699,23 @@
    ########################################### */
 
 // This is definitely better done as a datum.
+// Because this is the same for all silver items, I will only comment for the platter.
 /obj/item/cooking/platter/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
-	if(world.time < src.last_used + 12 SECONDS)
+	if(world.time < src.last_used + 12 SECONDS) // Can only be applied every 12 seconds.
 		to_chat(user, span_notice("The silver effect is on cooldown."))
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(H.dna && H.dna.species)
 			if(istype(H.dna.species, /datum/species/werewolf))
-				H.Paralyze(10)
-				H.Stun(10)
-				H.adjustFireLoss(10)
-				H.fire_act(1,10)
+				H.adjustFireLoss(10) // 10 points of burn damage
+				H.fire_act(1,10)     // 1 stack of fire added, up to a maximum of 10?
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
 				src.last_used = world.time
 				return
 		if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
 			var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
 			if(!VD.disguised)
-				H.Paralyze(10)
-				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
@@ -775,8 +772,6 @@
 		var/mob/living/carbon/human/H = target
 		if(H.dna && H.dna.species)
 			if(istype(H.dna.species, /datum/species/werewolf))
-				H.Paralyze(10)
-				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
@@ -785,8 +780,6 @@
 		if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
 			var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
 			if(!VD.disguised)
-				H.Paralyze(10)
-				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
@@ -842,8 +835,6 @@
 		var/mob/living/carbon/human/H = target
 		if(H.dna && H.dna.species)
 			if(istype(H.dna.species, /datum/species/werewolf))
-				H.Paralyze(10)
-				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
@@ -852,8 +843,6 @@
 		if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
 			var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
 			if(!VD.disguised)
-				H.Paralyze(10)
-				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
@@ -910,8 +899,6 @@
 		var/mob/living/carbon/human/H = target
 		if(H.dna && H.dna.species)
 			if(istype(H.dna.species, /datum/species/werewolf))
-				H.Paralyze(10)
-				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
@@ -920,8 +907,6 @@
 		if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
 			var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
 			if(!VD.disguised)
-				H.Paralyze(10)
-				H.Stun(10)
 				H.adjustFireLoss(10)
 				H.fire_act(1,10)
 				to_chat(H, span_userdanger("I'm hit with my BANE!"))
