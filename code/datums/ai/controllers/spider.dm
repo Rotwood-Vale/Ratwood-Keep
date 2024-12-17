@@ -1,5 +1,5 @@
 /datum/ai_controller/spider
-	movement_delay = 0.7 SECONDS
+	movement_delay = 0.8 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 
@@ -11,7 +11,6 @@
 	planning_subtrees = list(
 
 		/datum/ai_planning_subtree/simple_find_target/spider,
-		/datum/ai_planning_subtree/find_food/spider,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 
 		/datum/ai_planning_subtree/find_dead_bodies,

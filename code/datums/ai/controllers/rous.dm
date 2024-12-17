@@ -1,5 +1,5 @@
 /datum/ai_controller/big_rat
-	movement_delay = 0.7 SECONDS
+	movement_delay = 0.6 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

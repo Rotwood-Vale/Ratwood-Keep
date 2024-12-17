@@ -27,8 +27,8 @@
 		//Check if animal is full and not an overeater
 		if(mob.food == mob.food_max && !mob.eat_forever) 
 			return
-//Eat food below
 
+//Eat food below, dangerous, qdeletes
 		living_pawn.visible_message(span_danger("[living_pawn] munches on [target]!"))
 		if(do_after(mob, 5 SECONDS, target = target))
 			playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)

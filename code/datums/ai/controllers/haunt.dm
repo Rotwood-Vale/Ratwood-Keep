@@ -1,6 +1,6 @@
-//not sure if there's anything special that haunts do. just reg mobprog for now. maybe eat limbs later
+//Their sprite is spirits so they can probably move fast.
 /datum/ai_controller/haunt
-	movement_delay = 0.8 SECONDS
+	movement_delay = 0.3 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

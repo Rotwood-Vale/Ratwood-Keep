@@ -12,7 +12,6 @@
 		/datum/ai_planning_subtree/flee_target,
 
 		/datum/ai_planning_subtree/simple_find_target/mole,
-		/datum/ai_planning_subtree/find_food/mole,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 
 		/datum/ai_planning_subtree/find_dead_bodies/mole,

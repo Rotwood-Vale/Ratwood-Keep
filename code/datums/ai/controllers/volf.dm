@@ -1,5 +1,5 @@
 /datum/ai_controller/volf
-	movement_delay = 0.75 SECONDS
+	movement_delay = 0.5 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

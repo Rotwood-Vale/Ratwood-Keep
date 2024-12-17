@@ -1,3 +1,5 @@
+#define NEXT_FLEE_TIME 60 SECONDS
+#define FLEE_TIME 6 SECONDS
 /**
  * Attached to a mob with an AI controller, simply sets a flag on whether or not to run away based on current health values.
  */
@@ -47,10 +49,13 @@
 	source.ai_controller.set_blackboard_key(BB_BASIC_MOB_FLEEING, TRUE)
 	source.ai_controller.set_blackboard_key(BB_BASIC_MOB_NEXT_FLEEING, world.time + 60 SECONDS)
 
-	///we don't want ai's to run forever this makes us run for 10 seconds then fight until
-	addtimer(CALLBACK(src, PROC_REF(cancel_flee), source), 10 SECONDS, flags = TIMER_UNIQUE)
+	///we don't want ai's to run forever this makes us run for FLEE_TIME seconds then fight until
+	addtimer(CALLBACK(src, PROC_REF(cancel_flee), source), FLEE_TIME, flags = TIMER_UNIQUE)
 
 /datum/element/ai_flee_while_injured/proc/cancel_flee(mob/living/source)
 	if(!QDELETED(source))
 		source.ai_controller.CancelActions()
 		source.ai_controller.set_blackboard_key(BB_BASIC_MOB_FLEEING, FALSE)
+
+#undef FLEE_TIME
+#undef NEXT_FLEE_TIME
