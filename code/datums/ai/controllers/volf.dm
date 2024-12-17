@@ -1,5 +1,5 @@
 /datum/ai_controller/volf
-	movement_delay = 0.4 SECONDS
+	movement_delay = 0.75 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 
@@ -17,8 +17,6 @@
 		/datum/ai_planning_subtree/eat_dead_body,
 		/datum/ai_planning_subtree/find_food,
 		/datum/ai_planning_subtree/eat_food,
-
-
 
 	)
 

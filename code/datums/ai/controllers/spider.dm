@@ -1,5 +1,5 @@
 /datum/ai_controller/spider
-	movement_delay = 0.4 SECONDS
+	movement_delay = 0.7 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

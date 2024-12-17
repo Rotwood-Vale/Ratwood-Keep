@@ -4,7 +4,7 @@
  * cool tip: search_tactic() can set lists
  */
 /datum/ai_behavior/find_and_set
-	action_cooldown = 2 SECONDS
+	action_cooldown = 3 SECONDS
 
 /datum/ai_behavior/find_and_set/perform(delta_time, datum/ai_controller/controller, set_key, locate_path, search_range)
 	. = ..()
@@ -79,7 +79,7 @@
 /datum/ai_behavior/find_and_set/dead_bodies/search_tactic(datum/ai_controller/controller, locate_paths, search_range)
 	var/list/found = list()
 	for(var/mob/living/mob in oview(search_range, controller.pawn))
-		if(mob.stat == CONSCIOUS)
+		if((mob.stat == CONSCIOUS) || (mob.ckey)) //Ignore mobs with ckeys
 			continue
 		found |= mob
 	if(!length(found))

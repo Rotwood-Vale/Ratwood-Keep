@@ -1,6 +1,6 @@
 //Appears to be a simple mob
 /datum/ai_controller/mossback
-	movement_delay = 1 SECONDS
+	movement_delay = 0.6 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

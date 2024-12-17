@@ -160,7 +160,7 @@
 	set_command_mode(speaker, command)
 
 /// Whether we got here via radial menu or a verbal command, this is where we actually process what our new command will be
-//crix todo: this stuff doesn't work yet / may not be relevant in roguetown
+//crix todo: this stuff doesn't work yet / need an animal/npc trainer class to develop this
 /datum/ai_controller/hostile_friend/proc/set_command_mode(mob/commander, command)
 	COOLDOWN_START(src, command_cooldown, AI_HOSTILE_COMMAND_COOLDOWN)
 
@@ -176,7 +176,7 @@
 			CancelActions()
 			blackboard[BB_HOSTILE_ORDER_MODE] = HOSTILE_COMMAND_FOLLOW
 			blackboard[BB_FOLLOW_TARGET] = WEAKREF(commander)
-			set_movement_target(commander) //crix
+			set_movement_target(commander)
 			var/mob/living/living_pawn = pawn
 			if(living_pawn.buckled)
 				queue_behavior(/datum/ai_behavior/resist)//in case they are in bed or something

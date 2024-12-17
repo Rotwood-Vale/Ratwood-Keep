@@ -22,7 +22,7 @@
 	enable_cooldown_actions()
 	var/turf/cur_turf = get_turf(target)
 	
-//crix, need to double check damage
+//Check damage here
 	if(cur_turf.can_traverse_safely(owner))
 		owner.throw_at(target = target, range = range, speed = 0.3, thrower = owner, spin = 0, diagonals_first = FALSE, callback = CALLBACK(src, PROC_REF(leapt_on_target), target), force = 1)
 

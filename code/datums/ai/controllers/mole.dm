@@ -1,5 +1,5 @@
 /datum/ai_controller/mole
-	movement_delay = 0.6 SECONDS
+	movement_delay = 0.8 SECONDS
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 
