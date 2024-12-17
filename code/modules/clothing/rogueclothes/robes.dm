@@ -35,7 +35,7 @@
 	icon_state = "abyssorrobe"
 	icon = 'icons/roguetown/clothing/armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
-	sleeved = null
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
 	color = null
 	r_sleeve_status = SLEEVE_NORMAL
