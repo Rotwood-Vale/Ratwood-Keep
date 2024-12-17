@@ -53,12 +53,15 @@
 	desc = "The strongest of the Ten; when awakened, the world flooded for a thousand daes and a thousand nights before he was put to slumber. Resting fitfully did Dendor split from his skull like a gaping wound. Communes rarely with his followers, only offering glimpses in dreams. Gifted primordial Man water. "
 	worshippers = "Men of the Sea, Primitive Aquatics"
 	mob_traits = list(TRAIT_ABYSSOR_SWIM)
+	t1 = /obj/effect/proc_holder/spell/invoked/abyssor_bends
+	t2 = /obj/effect/proc_holder/spell/invoked/abyssheal
+	t3 = /obj/effect/proc_holder/spell/invoked/call_mossback
 	confess_lines = list(
 		"ABYSSOR COMMANDS THE WAVES!",
 		"THE OCEAN'S FURY IS ABYSSOR'S WILL!",
 		"I AM DRAWN BY THE PULL OF THE TIDE!",
 	)
-
+	
 /datum/patron/divine/ravox
 	name = "Ravox"
 	domain = "God of Justice, Glory, Battle"
