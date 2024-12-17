@@ -35,7 +35,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/smithing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			r_hand = /obj/item/rogueweapon/pick
 			head = /obj/item/clothing/head/roguetown/hatfur
