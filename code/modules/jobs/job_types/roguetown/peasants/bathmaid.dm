@@ -1,6 +1,6 @@
 /datum/job/roguetown/nightmaiden
-	title = "Bath Swain"
-	f_title = "Bath Wench"
+	title = "Prostitute"
+	f_title = "Prostitute"
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
@@ -11,13 +11,13 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "Nobody would envy your lot in life, for the role of bath-servant is not something so idly taken. Such folk often come from a place of desperation, 'least usually: for any with true compassion or skill would seek position with a nunnery or the medical trade. Launder clothes and soothe wounds, that is your loathsome creed."
+	tutorial = "Selling your body like a piece of meat in a butcher's shop, stripped of dignity and treated as a commodity, you remain obedient to the nightmaster. Every day you fight to survive in a world that offers you nothing but contempt."
 
 	outfit = /datum/outfit/job/roguetown/nightmaiden
 	display_order = JDO_WENCH
 	give_bank_account = TRUE
 	can_random = FALSE
-	min_pq = -10
+	min_pq = 2
 	max_pq = null
 
 /datum/outfit/job/roguetown/nightmaiden/pre_equip(mob/living/carbon/human/H)
@@ -26,7 +26,6 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	r_hand = /obj/item/soap/bath
 	l_hand = /obj/item/rogue/instrument/harp
-	mouth = /obj/item/key/nightmaiden
 	if(H.gender == MALE)
 		pants =	/obj/item/clothing/under/roguetown/loincloth
 		belt =	/obj/item/storage/belt/rogue/leather/cloth
@@ -34,6 +33,9 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 		pants =	/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random
+		belt =	/obj/item/storage/belt/rogue/leather/cloth
+
+	beltr = /obj/item/storage/keyring/nightman
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
@@ -43,6 +45,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE) // Don't go picking any COCKS around here or we're going to have a real problem.
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)

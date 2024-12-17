@@ -10,7 +10,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = NO_CLIENT_COLOR
 
-/obj/effect/decal/cleanable/coom/Initialize(mapload, list/datum/disease/diseases)
+/obj/effect/decal/cleanable/coom/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-8, 8)
@@ -28,6 +28,8 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = NO_CLIENT_COLOR
 	var/blood_timer
+	var/wash_precent = 0
+	COOLDOWN_DECLARE(wash_cooldown)
 
 /obj/effect/decal/cleanable/blood/attack_hand(mob/living/user)
 	. = ..()
@@ -37,14 +39,23 @@
 		H.bloody_hands++
 		H.update_inv_gloves()
 
-/obj/effect/decal/cleanable/blood/Initialize(mapload, list/datum/disease/diseases)
+/obj/effect/decal/cleanable/blood/weather_act_on(weather_trait, severity)
+	if(weather_trait != PARTICLEWEATHER_RAIN || !COOLDOWN_FINISHED(src, wash_cooldown))
+		return
+	wash_precent += min(10, severity / 4)
+	alpha = 255 *((100 - wash_precent) * 0.01)
+	if(wash_precent >= 100)
+		qdel(src)
+	COOLDOWN_START(src, wash_cooldown, 15 SECONDS)
+
+/obj/effect/decal/cleanable/blood/Initialize(mapload)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return .
 	pixel_x = rand(-5,5)
 	pixel_y = rand(5,5)
 	blood_timer = addtimer(CALLBACK(src, PROC_REF(become_dry)), rand(5 MINUTES,8 MINUTES), TIMER_STOPPABLE)
-
+	GLOB.weather_act_upon_list += src
 
 /obj/effect/decal/cleanable/blood/proc/become_dry()
 	if(QDELETED(src))
@@ -64,6 +75,7 @@
 /obj/effect/decal/cleanable/blood/Destroy()
 	deltimer(blood_timer)
 	blood_timer = null
+	GLOB.weather_act_upon_list -= src
 	return ..()
 
 /obj/effect/decal/cleanable/blood/old
@@ -72,7 +84,7 @@
 	bloodiness = 0
 	icon_state = "floor1-old"
 
-/obj/effect/decal/cleanable/blood/old/Initialize(mapload, list/datum/disease/diseases)
+/obj/effect/decal/cleanable/blood/old/Initialize(mapload)
 	add_blood_DNA(list("Non-human DNA" = random_blood_type())) // Needs to happen before ..()
 	. = ..()
 	icon_state = "[icon_state]-old" //change from the normal blood icon selected from random_icon_states in the parent's Initialize to the old dried up blood.
@@ -111,7 +123,7 @@
 	appearance_flags = NO_CLIENT_COLOR
 	var/blood_timer
 
-/obj/effect/decal/cleanable/trail_holder/Initialize(mapload, list/datum/disease/diseases)
+/obj/effect/decal/cleanable/trail_holder/Initialize(mapload)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return .
@@ -192,7 +204,7 @@
 	bloodiness = 0
 	already_rotting = TRUE
 
-/obj/effect/decal/cleanable/blood/gibs/old/Initialize(mapload, list/datum/disease/diseases)
+/obj/effect/decal/cleanable/blood/gibs/old/Initialize(mapload)
 	. = ..()
 	setDir(pick(1,2,4,8))
 	icon_state += "-old"
@@ -208,7 +220,7 @@
 	var/blood_vol = 1
 	random_icon_states = null
 
-/obj/effect/decal/cleanable/blood/drip/Initialize(mapload, list/datum/disease/diseases)
+/obj/effect/decal/cleanable/blood/drip/Initialize(mapload)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return .

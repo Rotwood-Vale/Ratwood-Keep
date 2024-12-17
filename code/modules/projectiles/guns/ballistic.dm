@@ -1,3 +1,8 @@
+/obj/item/proc/can_trigger_gun(mob/living/user)
+	if(!user.can_use_guns(src))
+		return FALSE
+	return TRUE
+
 ///Subtype for any kind of ballistic gun
 ///This has a shitload of vars on it, and I'm sorry for that, but it does make making new subtypes really easy
 /obj/item/gun/ballistic
@@ -48,7 +53,7 @@
 	///Whether the gun will spawn loaded with a magazine
 	var/spawnwithmagazine = TRUE
 	///Compatible magazines with the gun
-	var/mag_type = /obj/item/ammo_box/magazine/m10mm //Removes the need for max_ammo and caliber info
+	var/mag_type =/obj/item/ammo_box/magazine/internal/shot/xbow //Removes the need for max_ammo and caliber info
 	///Whether the sprite has a visible magazine or not
 	var/mag_display = FALSE
 	///Whether the sprite has a visible ammo display or not
@@ -83,8 +88,6 @@
 	var/recent_rack = 0
 	///Whether the gun can be tacloaded by slapping a fresh magazine directly on it
 	var/tac_reloads = TRUE //Snowflake mechanic no more.
-	///Whether the gun can be sawn off by sawing tools
-	var/can_be_sawn_off  = FALSE
 	var/verbage = "load"
 
 	/// Damage multiplyer for guns, this will multiply bullet damage by THIS much.
@@ -108,17 +111,12 @@
 	if (QDELETED(src))
 		return
 	..()
-	if(current_skin)
-		icon_state = "[unique_reskin[current_skin]][sawn_off ? "_sawn" : ""]"
-	else
-		icon_state = "[initial(icon_state)][sawn_off ? "_sawn" : ""]"
+	icon_state = initial(icon_state)
 	cut_overlays()
 	if (bolt_type == BOLT_TYPE_LOCKING)
 		add_overlay("[icon_state]_bolt[bolt_locked ? "_locked" : ""]")
 	if (bolt_type == BOLT_TYPE_OPEN && bolt_locked)
 		add_overlay("[icon_state]_bolt")
-	if (suppressed)
-		add_overlay("[icon_state]_suppressor")
 	if(!chambered && empty_indicator)
 		add_overlay("[icon_state]_empty")
 	if (magazine)
@@ -269,57 +267,14 @@
 				A.update_icon()
 				update_icon()
 			return
-	if(istype(A, /obj/item/suppressor))
-		var/obj/item/suppressor/S = A
-		if(!can_suppress)
-			to_chat(user, span_warning("I can't seem to figure out how to fit [S] on [src]!"))
-			return
-		if(!user.is_holding(src))
-			to_chat(user, span_warning("I need be holding [src] to fit [S] to it!"))
-			return
-		if(suppressed)
-			to_chat(user, span_warning("[src] already has a suppressor!"))
-			return
-		if(user.transferItemToLoc(A, src))
-			to_chat(user, span_notice("I screw \the [S] onto \the [src]."))
-			install_suppressor(A)
-			return
-	if (can_be_sawn_off)
-		if (sawoff(user, A))
-			return
+	user.update_inv_hands()
 	return FALSE
 
-/obj/item/gun/ballistic/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
-		var/obj/projectile/BB = CB.BB
-		BB.damage = BB.damage * damfactor
-		if(weapon_embed_chance)
-			BB.embedchance = weapon_embed_chance
-	if (sawn_off)
-		bonus_spread += SAWN_OFF_ACC_PENALTY
-	. = ..()
-
-///Installs a new suppressor, assumes that the suppressor is already in the contents of src
-/obj/item/gun/ballistic/proc/install_suppressor(obj/item/suppressor/S)
-	suppressed = S
-	w_class += S.w_class //so pistols do not fit in pockets when suppressed
-	update_icon()
 
 /obj/item/gun/ballistic/AltClick(mob/user)
 	if (unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
 		reskin_obj(user)
 		return
-	if(loc == user)
-		if(suppressed && can_unsuppress)
-			var/obj/item/suppressor/S = suppressed
-			if(!user.is_holding(src))
-				return ..()
-			to_chat(user, span_notice("I unscrew \the [suppressed] from \the [src]."))
-			user.put_in_hands(suppressed)
-			w_class -= S.w_class
-			suppressed = null
-			update_icon()
-			return
 
 ///Prefire empty checks for the bolt drop
 /obj/item/gun/ballistic/proc/prefire_empty_checks()
@@ -382,18 +337,6 @@
 	rack(user)
 	return
 
-
-/obj/item/gun/ballistic/examine(mob/user)
-	. = ..()
-//	var/count_chambered = !(bolt_type == BOLT_TYPE_NO_BOLT || bolt_type == BOLT_TYPE_OPEN)
-//	. += "It has [get_ammo(count_chambered)] round\s remaining."
-//	if (!chambered)
-//		. += "It does not seem to have a round chambered."
-//	if (bolt_locked)
-//		. += "The [bolt_wording] is locked back and needs to be released before firing."
-//	if (suppressed)
-//		. += "It has a suppressor attached that can be removed with <b>alt+click</b>."
-
 ///Gets the number of bullets in the gun
 /obj/item/gun/ballistic/proc/get_ammo(countchambered = TRUE)
 	var/boolets = 0 //mature var names for mature people
@@ -439,62 +382,3 @@
 		return (OXYLOSS)
 #undef BRAINS_BLOWN_THROW_SPEED
 #undef BRAINS_BLOWN_THROW_RANGE
-
-GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
-	/obj/item/gun/energy/plasmacutter,
-	/obj/item/melee/transforming/energy,
-	)))
-
-///Handles all the logic of sawing off guns,
-/obj/item/gun/ballistic/proc/sawoff(mob/user, obj/item/saw)
-	if(!saw.get_sharpness() || !is_type_in_typecache(saw, GLOB.gun_saw_types) && !saw.tool_behaviour == TOOL_SAW) //needs to be sharp. Otherwise turned off eswords can cut this.
-		return
-	if(sawn_off)
-		to_chat(user, span_warning("\The [src] is already shortened!"))
-		return
-	if(bayonet)
-		to_chat(user, span_warning("I cannot saw-off \the [src] with \the [bayonet] attached!"))
-		return
-	user.changeNext_move(CLICK_CD_MELEE)
-	user.visible_message(span_notice("[user] begins to shorten \the [src]."), span_notice("I begin to shorten \the [src]..."))
-
-	//if there's any live ammo inside the gun, makes it go off
-	if(blow_up(user))
-		user.visible_message(span_danger("\The [src] goes off!"), span_danger("\The [src] goes off in your face!"))
-		return
-
-	if(do_after(user, 30, target = src))
-		if(sawn_off)
-			return
-		user.visible_message(span_notice("[user] shortens \the [src]!"), span_notice("I shorten \the [src]."))
-		name = "sawn-off [src.name]"
-		desc = sawn_desc
-		w_class = WEIGHT_CLASS_NORMAL
-		item_state = "gun"
-		slot_flags &= ~ITEM_SLOT_BACK	//you can't sling it on your back
-		slot_flags |= ITEM_SLOT_BELT		//but you can wear it on your belt (poorly concealed under a trenchcoat, ideally)
-		recoil = SAWN_OFF_RECOIL
-		sawn_off = TRUE
-		update_icon()
-		return TRUE
-
-///used for sawing guns, causes the gun to fire without the input of the user
-/obj/item/gun/ballistic/proc/blow_up(mob/user)
-	. = FALSE
-	for(var/obj/item/ammo_casing/AC in magazine.stored_ammo)
-		if(AC.BB)
-			process_fire(user, user, FALSE)
-			. = TRUE
-
-
-/obj/item/suppressor
-	name = "suppressor"
-	desc = ""
-	icon = 'icons/obj/guns/projectile.dmi'
-	icon_state = "suppressor"
-	w_class = WEIGHT_CLASS_TINY
-
-
-/obj/item/suppressor/specialoffer
-	name = "cheap suppressor"
-	desc = ""

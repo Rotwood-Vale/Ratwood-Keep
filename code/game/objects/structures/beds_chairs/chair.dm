@@ -9,7 +9,6 @@
 	resistance_flags = NONE
 	max_integrity = 250
 	integrity_failure = 0.1
-	custom_materials = list(/datum/material/iron = 2000)
 	var/buildstacktype
 	var/buildstackamount = 1
 	var/item_chair = /obj/item/chair // if null it can't be picked up
@@ -75,17 +74,6 @@
 	if(W.tool_behaviour == TOOL_WRENCH && !(flags_1&NODECONSTRUCT_1))
 		W.play_tool_sound(src)
 		deconstruct()
-	else if(istype(W, /obj/item/assembly/shock_kit))
-		if(!user.temporarilyRemoveItemFromInventory(W))
-			return
-		var/obj/item/assembly/shock_kit/SK = W
-		var/obj/structure/chair/e_chair/E = new /obj/structure/chair/e_chair(src.loc)
-		playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
-		E.setDir(dir)
-		E.part = SK
-		SK.forceMove(E)
-		SK.master = E
-		qdel(src)
 	else
 		return ..()
 
@@ -382,52 +370,6 @@
 /obj/item/chair/wood/wings
 	icon_state = "wooden_chair_wings_toppled"
 	origin_type = /obj/structure/chair/wood/wings
-
-/obj/structure/chair/old
-	name = "strange chair"
-	desc = ""
-	icon_state = "chairold"
-	item_chair = null
-
-/obj/structure/chair/bronze
-	name = "brass chair"
-	desc = ""
-	anchored = FALSE
-	icon_state = "brass_chair"
-	buildstacktype = /obj/item/stack/tile/bronze
-	buildstackamount = 1
-	item_chair = null
-	var/turns = 0
-
-/obj/structure/chair/bronze/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
-	. = ..()
-
-/obj/structure/chair/bronze/process()
-	setDir(turn(dir,-90))
-	playsound(src, 'sound/blank.ogg', 50, FALSE)
-	turns++
-	if(turns >= 8)
-		STOP_PROCESSING(SSfastprocess, src)
-
-/obj/structure/chair/bronze/Moved()
-	. = ..()
-	if(has_gravity())
-		playsound(src, 'sound/blank.ogg', 50, TRUE)
-
-/obj/structure/chair/bronze/AltClick(mob/living/user)
-	turns = 0
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
-		return
-	if(!(datum_flags & PROCESSING_FAST))
-		user.visible_message(span_notice("[user] spins [src] around, and the last vestiges of Ratvarian technology keeps it spinning FOREVER."), \
-		span_notice("Automated spinny chairs. The pinnacle of ancient Ratvarian technology."))
-		START_PROCESSING(SSfastprocess, src)
-	else
-		user.visible_message(span_notice("[user] stops [src]'s uncontrollable spinning."), \
-		span_notice("I grab [src] and stop its wild spinning."))
-		STOP_PROCESSING(SSfastprocess, src)
-
 /obj/structure/chair/mime
 	name = "invisible chair"
 	desc = ""
@@ -443,46 +385,3 @@
 
 /obj/structure/chair/mime/post_unbuckle_mob(mob/living/M)
 	M.pixel_y -= 5
-
-
-/obj/structure/chair/plastic
-	icon_state = "plastic_chair"
-	name = "folding plastic chair"
-	desc = ""
-	resistance_flags = FLAMMABLE
-	max_integrity = 50
-	custom_materials = list(/datum/material/plastic = 2000)
-	buildstacktype = /obj/item/stack/sheet/plastic
-	buildstackamount = 2
-	item_chair = /obj/item/chair/plastic
-
-/obj/structure/chair/plastic/post_buckle_mob(mob/living/Mob)
-	Mob.pixel_y -= 2
-	.=..()
-	if(iscarbon(Mob))
-		INVOKE_ASYNC(src, PROC_REF(snap_check), Mob)
-
-/obj/structure/chair/plastic/post_unbuckle_mob(mob/living/Mob)
-	Mob.pixel_y += 2
-
-/obj/structure/chair/plastic/proc/snap_check(mob/living/carbon/Mob)
-	if (Mob.nutrition >= NUTRITION_LEVEL_FAT)
-		to_chat(Mob, span_warning("The chair begins to pop and crack, you're too heavy!"))
-		if(do_after(Mob, 60, 1, Mob, 0))
-			Mob.visible_message(span_notice("The plastic chair snaps under [Mob]'s weight!"))
-			qdel(src)
-
-/obj/item/chair/plastic
-	name = "folding plastic chair"
-	desc = ""
-	icon = 'icons/obj/chairs.dmi'
-	icon_state = "folded_chair"
-	item_state = "folded_chair"
-	lefthand_file = 'icons/mob/inhands/misc/chairs_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/chairs_righthand.dmi'
-	w_class = WEIGHT_CLASS_NORMAL
-	force = 7
-	throw_range = 5 //Lighter Weight --> Flies Farther.
-	custom_materials = list(/datum/material/plastic = 2000)
-	break_chance = 25
-	origin_type = /obj/structure/chair/plastic

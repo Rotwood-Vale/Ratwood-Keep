@@ -337,6 +337,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	V.update_hair()
 	V.update_body_parts(redraw = TRUE)
 	V.mob_biotypes = MOB_UNDEAD
+	V.faction = list("undead")
 	if(isspawn)
 		V.vampire_disguise()
 
@@ -522,11 +523,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!msg)
 		return
 	for(var/datum/mind/V in C.vampires)
-		to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(V, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 	for(var/datum/mind/D in C.deathknights)
-		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(D, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
-		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(A, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 
 /mob/living/carbon/human/proc/punish_spawn()
 	set name = "Punish Minion"
@@ -1225,11 +1226,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!msg)
 		return
 	for(var/datum/mind/V in C.vampires)
-		to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(V, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 	for(var/datum/mind/D in C.deathknights)
-		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(D, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
-		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(A, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_up()
 	set category = "Arcane Eye"
@@ -1416,3 +1417,22 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					sleep(50)
 					L.Sleeping(300)
 
+/obj/effect/proc_holder/spell/targeted/shapeshift/bat
+	name = "Bat Form"
+	desc = ""
+	invocation = ""
+	vitaedrain = 2500
+	charge_max = 60
+	cooldown_min = 50
+	die_with_shapeshifted_form =  FALSE
+	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat
+
+/obj/effect/proc_holder/spell/targeted/shapeshift/gaseousform
+	name = "Mist Form"
+	desc = ""
+	invocation = ""
+	vitaedrain = 2500
+	charge_max = 60
+	cooldown_min = 50
+	die_with_shapeshifted_form =  FALSE
+	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/gaseousform

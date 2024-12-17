@@ -107,11 +107,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 						new_value = JP_LOW
 			if(new_value)
 				job_preferences[initial(J.title)] = new_value
-	if(current_version < 23)
-		if(all_quirks)
-			all_quirks -= "Physically Obstructive"
-			all_quirks -= "Neat"
-			all_quirks -= "NEET"
 	if(current_version < 25)
 		randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = FALSE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 		if(S["name_is_always_random"] == 1)
@@ -360,6 +355,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_mcolor2"]					>> features["mcolor2"]
 	S["feature_mcolor3"]					>> features["mcolor3"]
 	S["feature_ethcolor"]					>> features["ethcolor"]
+	S["virginity"]							>> virginity
 
 /datum/preferences/proc/load_character(slot)
 	if(!path)
@@ -420,8 +416,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Load prefs
 	S["job_preferences"] >> job_preferences
 	job_preferences = validate_job_prefs(job_preferences) //Make sure there are no redundant jobs
-	//Quirks
-	S["all_quirks"] >> all_quirks
 
 	S["update_mutant_colors"]			>> update_mutant_colors
 	update_mutant_colors = sanitize_integer(update_mutant_colors, FALSE, TRUE, initial(update_mutant_colors))
@@ -433,6 +427,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["nudeshot_link"]			>> nudeshot_link
 	if(!valid_headshot_link(null, nudeshot_link, TRUE))
 		nudeshot_link = null
+	
+	S["char_accent"]		>> char_accent
+	if (!char_accent)
+		char_accent = "No accent"
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
@@ -482,6 +480,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	body_markings = SANITIZE_LIST(body_markings)
 	validate_body_markings()
 
+	virginity = sanitize_integer(virginity, FALSE, TRUE, FALSE)
+
 	S["descriptor_entries"] >> descriptor_entries
 	descriptor_entries = SANITIZE_LIST(descriptor_entries)
 	S["custom_descriptors"] >> custom_descriptors
@@ -500,7 +500,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
 			job_preferences -= j
 
-	all_quirks = SANITIZE_LIST(all_quirks)
 
 	S["customizer_entries"] >> customizer_entries
 	validate_customizer_entries()
@@ -547,7 +546,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_mcolor2"]					, features["mcolor2"])
 	WRITE_FILE(S["feature_mcolor3"]					, features["mcolor3"])
 	WRITE_FILE(S["feature_ethcolor"]					, features["ethcolor"])
+	WRITE_FILE(S["char_accent"] 						, char_accent)
 
+	//virginity
+	WRITE_FILE(S["virginity"], virginity)
+	
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		var/savefile_slot_name = custom_name_id + "_name" //TODO remove this
@@ -560,9 +563,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["joblessrole"]		, joblessrole)
 	//Write prefs
 	WRITE_FILE(S["job_preferences"] , job_preferences)
-
-	//Quirks
-	WRITE_FILE(S["all_quirks"]			, all_quirks)
 
 	//Patron
 	if(!selected_patron)

@@ -38,7 +38,6 @@
 	disliked_food = NONE
 	liked_food = NONE
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mem.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -162,20 +161,3 @@
 
 /datum/species/elf/dark/random_surname()
 	return " [pick(world.file2list("strings/rt/names/elf/elfsnf.txt"))]"
-
-//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
-// "full" group in JSON lists
-/datum/species/elf/dark/get_accent(mob/living/carbon/human/H)
-		return strings("french_replacement.json", "full")
-
-// "start" group in JSON lists
-/datum/species/elf/dark/get_accent_start(mob/living/carbon/human/H)
-		return strings("french_replacement.json", "start")
-
-// "end" group in JSON lists
-/datum/species/elf/dark/get_accent_end(mob/living/carbon/human/H)
-		return strings("french_replacement.json", "end")
-
-// "syllable" group in JSON lists
-/datum/species/elf/dark/get_accent_any(mob/living/carbon/human/H)
-		return strings("french_replacement.json", "syllable")

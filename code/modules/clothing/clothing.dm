@@ -71,6 +71,7 @@
 	var/detail_tag
 	var/detail_color
 	var/boobed_detail = TRUE //Whether details have their own boobed sprite
+	var/sleeved_detail = TRUE
 
 /obj/item/clothing/New()
 	..()
@@ -242,9 +243,6 @@
 	. = ..()
 	var/mob/M = usr
 
-	if(ismecha(M.loc)) // stops inventory actions in a mech
-		return
-
 	if(!M.incapacitated() && loc == M && istype(over_object, /atom/movable/screen/inventory/hand))
 		var/atom/movable/screen/inventory/hand/H = over_object
 		if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
@@ -257,13 +255,20 @@
 	tastes = list("dust" = 1, "lint" = 1)
 	foodtype = CLOTH
 
-/obj/item/clothing/attack(mob/M, mob/user, def_zone)
+/obj/item/clothing/attack(mob/living/M, mob/living/user, def_zone)
 	if(user.used_intent.type != INTENT_HARM && ismoth(M))
 		var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
 		clothing_as_food.name = name
 		if(clothing_as_food.attack(M, user, def_zone))
 			take_damage(15, sound_effect=FALSE)
 		qdel(clothing_as_food)
+	else if(M.on_fire)
+		if(user == M)
+			return
+		user.changeNext_move(CLICK_CD_MELEE)
+		M.visible_message(span_warning("[user] pats out the flames on [M] with [src]!"))
+		M.adjust_fire_stacks(-2)
+		take_damage(10, BURN, "fire")
 	else
 		return ..()
 
@@ -519,16 +524,6 @@ BLIND     // can't see anything
 	flags_inv ^= visor_flags_inv
 	flags_cover ^= initial(flags_cover)
 	icon_state = "[initial(icon_state)][up ? "up" : ""]"
-	if(visor_vars_to_toggle & VISOR_FLASHPROTECT)
-		flash_protect ^= initial(flash_protect)
-	if(visor_vars_to_toggle & VISOR_TINT)
-		tint ^= initial(tint)
-
-/obj/item/clothing/head/helmet/space/plasmaman/visor_toggling() //handles all the actual toggling of flags
-	up = !up
-	clothing_flags ^= visor_flags
-	flags_inv ^= visor_flags_inv
-	icon_state = "[initial(icon_state)]"
 	if(visor_vars_to_toggle & VISOR_FLASHPROTECT)
 		flash_protect ^= initial(flash_protect)
 	if(visor_vars_to_toggle & VISOR_TINT)

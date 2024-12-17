@@ -13,7 +13,9 @@
 	var/list/ore = list()
 	var/maxore = 1
 	var/cooking = 0
-	fueluse = 5 MINUTES
+	fueluse = 30 MINUTES
+	start_fuel = 5 MINUTES
+	fuel_modifier = 0.33
 	crossfire = FALSE
 
 /obj/machinery/light/rogue/smelter/attackby(obj/item/W, mob/living/user, params)
@@ -33,8 +35,11 @@
 			return
 		if(on)
 			return
-	if(istype(W, /obj/item/rogueore/coal) && fueluse <= 0)
-		return ..()
+
+	if(W.firefuel)
+		if (..())
+			return
+
 	if((ore.len < maxore) && W.smeltresult)
 		W.forceMove(src)
 		ore += W
@@ -58,7 +63,6 @@
 		user.visible_message(span_info("[user] retrieves [I] from [src]."))
 	else
 		return ..()
-
 
 /obj/machinery/light/rogue/smelter/process()
 	..()
@@ -92,7 +96,6 @@
 	anchored = TRUE
 	density = TRUE
 	maxore = 4
-	fueluse = 10 MINUTES
 	climbable = FALSE
 
 /obj/machinery/light/rogue/smelter/great/process()

@@ -1,10 +1,27 @@
+/*
+Initial implementation by:
+	- Moribund.
+Sprites for this by:
+	- Sinnerpen
+	- Infrared Baron
+Comm'd by:
+	- Dragon Lee
+
+I'ma be real, this entire thing is a mess and needs to be separated into various files. Modularised as it might be, it's useless in one big pile.
+Someone else can take the five minutes it costs to do so, as well. I'm lazy.
+
+On another note, have some funny coder-bickering commentary below.
+- - -
 /////// SHITCODE MADE BY MORIBUND and modularized so you dickless pricks can cannibalize and swipe it easier. Sprites for this by SINNERPEN and INFRARED BARON. payed for by dragon lee. you gonna swip this shit credit thos due.
-
-
 //// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
 
-///////////////////////////////////////////////////////-----------------------------------------doc surgeries and functions---------------------------------------//////////////////////////////////////////////////
+// Fuck you Mori, you're a dickhead that self inserts your OCs and cries when people complain about balance, and rightfully so.
+// You could have had your fuckin' self inserts and your shitcode, all you had to do was not act like a cunt, not throw a bitchfit. 
+// You wonder why everyone ended up hating you, read your above comments and get it through your fucking head. -- AnalWerewolf
+- - -
 
+Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAAAAAA!!!!!!!!!!!
+*/
 
 /obj/effect/proc_holder/spell/invoked/diagnose/secular
 	name = "Secular Diagnosis"
@@ -29,7 +46,7 @@
 
 /obj/effect/proc_holder/spell/targeted/stable // sets ox lose to 0 knocks out some toxin, brings blood levels to safe. epi stabalizes ox lose, antihol purges booze, water and iron slowly restores blood.
 	action_icon = 'icons/mob/actions/roguespells.dmi'
-	name = "Stabalizing Syringe"
+	name = "Stabilising Syringe"
 	overlay_state = "stable"
 	range = 1
 	sound = 'modular/Smoker/sound/inject.ogg'
@@ -92,10 +109,10 @@
 			to_chat(user, span_warning("Nothing happens."))
 			return FALSE
 		if(target.mob_biotypes & MOB_UNDEAD)
-			to_chat(user, span_warning("it's undead, I can't."))
+			to_chat(user, span_warning("It's undead, I can't."))
 			return FALSE
 		if(!target.revive(full_heal = FALSE))
-			to_chat(user, span_warning("they need to be mended more."))
+			to_chat(user, span_warning("They need to be mended more."))
 			return FALSE
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
@@ -123,7 +140,7 @@
 				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		return TRUE
-	to_chat(user, span_warning("I need too prime their heart first"))
+	to_chat(user, span_warning("I need to prime their heart first."))
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast_check(skipcharge = 0,mob/user = usr)
@@ -133,7 +150,7 @@
 	for(var/obj/structure/bed/rogue/S in oview(5, user))
 		found = S
 	if(!found)
-		to_chat(user, span_warning("I need them on a bed"))
+		to_chat(user, span_warning("I need them on a bed."))
 		return FALSE
 	return TRUE
 
@@ -144,20 +161,15 @@
 		return FALSE
 
 	if(!targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
-		to_chat(user, span_warning("I need too prime their liver first"))
+		to_chat(user, span_warning("I need to prime their liver first"))
 		return FALSE
 
 	var/mob/living/target = targets[1]
-	
+
 	if(target == user)
 		return FALSE
 
 	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-	var/has_rot = was_zombie
-
-	if(!has_rot)
-		to_chat(user, span_warning("Nothing happens."))
-		return FALSE
 
 	testing("curerot2")
 
@@ -169,7 +181,7 @@
 		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
 			adjust_playerquality(unzombification_pq, user.ckey)
 			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
-	
+
 	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 
 	if(rot)
@@ -204,7 +216,7 @@
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		target.visible_message(span_green("[user] tends to [target]'s wounds with the focus and purpose."), span_notice("I feel better already."))
+		target.visible_message(span_green("[user] tends to [target]'s wounds."), span_notice("I feel better already."))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
@@ -229,7 +241,7 @@
 		var/ramount = 10
 		var/rid = /datum/reagent/medicine/stimu
 		target.reagents.add_reagent(rid, ramount)
-		target.visible_message(span_green("[user] stabs [target]'s chest with a syringe, causing there breathing to return to normal."), span_notice("I feel my breathing steady and grip on life tighten."))
+		target.visible_message(span_green("[user] stabs [target]'s chest with a syringe."), span_notice("My grip on life tightens!"))
 		target.setOxyLoss(-100)
 		target.adjustToxLoss(-50)
 		target.emote("rage")
@@ -243,7 +255,7 @@
 		var/mob/living/carbon/target = targets[1]
 		var/obj/item/bodypart/BPA = target.get_bodypart(BODY_ZONE_R_ARM)
 		BPA.add_wound(/datum/wound/artery/)
-		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]"))
+		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]."))
 		target.adjustToxLoss(-999)
 		target.reagents.remove_all_type(/datum/reagent, 9999)
 		target.emote("scream")
@@ -257,13 +269,13 @@
 	for(var/obj/structure/bed/rogue/S in oview(2, user))
 		found = S
 	if(!found)
-		to_chat(user, span_warning("I need to lay them on a bed"))
+		to_chat(user, span_warning("I need to lay them on a bed."))
 		return FALSE
 	return TRUE
 
 /obj/item/organ/heart/weak
 	name = "weakened heart"
-	desc = "this thing seems barely functional"
+	desc = "This seems hardly functional."
 
 /datum/status_effect/debuff/wheart
 	id = "wheart"
@@ -272,7 +284,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/wheart
 	name = "Weak Heart"
-	desc = "I feel drained and sluggish, I should get a new heart."
+	desc = "I feel drained and sluggish. My heart beats painfully."
 
 /obj/item/organ/heart/weak/Insert(mob/living/carbon/M)
 	..()
@@ -285,7 +297,7 @@
 
 /obj/item/organ/liver/weak
 	name = "weakened liver"
-	desc = "this thing seems barely functional"
+	desc = "This seems hardly functional."
 
 /datum/status_effect/debuff/wliver
 	id = "wliver"
@@ -294,7 +306,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/wliver
 	name = "Weak Liver"
-	desc = "I feel drained and sluggish, I should get a new liver."
+	desc = "I feel drained and sluggish. I'm feeling abdominal pain from my liver."
 
 /obj/item/organ/liver/weak/Insert(mob/living/carbon/M)
 	..()
@@ -357,7 +369,7 @@
 
 
 /datum/surgery/bypass
-	name = "Coronary artery bypass surgery"
+	name = "Coronary Artery Bypass Surgery"
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	possible_locs = list(BODY_ZONE_CHEST)
 	steps = list(
@@ -405,7 +417,7 @@
 		heart.Insert(target)
 		return TRUE
 
-///////////////////////////////////////////////------------------------------------------------reagents--------------------------------------------/////////////////////////////////////////////////
+//------------------------------------------------reagents--------------------------------------------//
 
 
 
@@ -424,7 +436,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	color = "#4682b4"
-	brew_reagent = /datum/reagent/alch/syrumb
+	brew_reagent = /datum/reagent/alch/syrum_berry
 	brew_amt = 24
 	can_brew = TRUE
 	list_reagents = null
@@ -436,7 +448,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	color = "#61DE2A"
-	brew_reagent = /datum/reagent/alch/syrump
+	brew_reagent = /datum/reagent/alch/syrum_poison_berry
 	brew_amt = 24
 	can_brew = TRUE
 	list_reagents = null
@@ -449,7 +461,7 @@
 	icon_state = "salt"
 	color = "#ff7f7f"
 	can_brew = TRUE
-	brew_reagent = /datum/reagent/alch/syrumm
+	brew_reagent = /datum/reagent/alch/syrum_meat
 	brew_amt = 24
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	grind_results = null
@@ -460,7 +472,7 @@
 	gender = PLURAL
 	icon_state = "salt"
 	color = "#ff7f7f"
-	brew_reagent = /datum/reagent/alch/syrumf
+	brew_reagent = /datum/reagent/alch/syrum_fish
 	brew_amt = 24
 	can_brew = TRUE
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
@@ -471,7 +483,7 @@
 	name = "essence of earth"
 	gender = PLURAL
 	icon_state = "salt"
-	brew_reagent = /datum/reagent/alch/syrumr
+	brew_reagent = /datum/reagent/alch/syrum_stone
 	brew_amt = 24
 	can_brew = TRUE
 	color = "#808080"
@@ -483,7 +495,7 @@
 	name = "essence of addiction"
 	gender = PLURAL
 	icon_state = "salt"
-	brew_reagent = /datum/reagent/alch/syrumpw
+	brew_reagent = /datum/reagent/alch/syrum_westleach_leaf
 	brew_amt = 24
 	can_brew = TRUE
 	color = "#808080"
@@ -495,7 +507,7 @@
 	name = "essence of clarity"
 	gender = PLURAL
 	icon_state = "salt"
-	brew_reagent = /datum/reagent/alch/syrumsw
+	brew_reagent = /datum/reagent/alch/syrum_swamp_weed
 	brew_amt = 24
 	can_brew = TRUE
 	color = "#61DE2A"
@@ -511,7 +523,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syruma
+/datum/reagent/alch/syrum_ash
 	name = "syrum of fire"
 	description = "refined viscous ash"
 	reagent_state = LIQUID
@@ -519,7 +531,7 @@
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumpw
+/datum/reagent/alch/syrum_westleach_leaf
 	name = "west syrum"
 	description = "refined west essence"
 	reagent_state = LIQUID
@@ -527,7 +539,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumsw
+/datum/reagent/alch/syrum_swamp_weed
 	name = "swamp syrum"
 	description = "refined berry poison"
 	reagent_state = LIQUID
@@ -535,7 +547,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumm
+/datum/reagent/alch/syrum_meat
 	name = "meaty syrum"
 	description = "refined viscous slop"
 	reagent_state = LIQUID
@@ -543,15 +555,15 @@
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumf
-	name = "fishyy syrum"
+/datum/reagent/alch/syrum_fish
+	name = "fishy syrum"
 	description = "refined viscous fishy smelling gunk"
 	reagent_state = LIQUID
 	color = "#ff7f7f"
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumr
+/datum/reagent/alch/syrum_stone
 	name = "earthy syrum"
 	description = "refined liquid state stone"
 	reagent_state = LIQUID
@@ -559,7 +571,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrums
+/datum/reagent/alch/syrum_salt
 	name = "salty syrum"
 	description = "refined liquid state salt"
 	reagent_state = LIQUID
@@ -567,7 +579,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrump
+/datum/reagent/alch/syrum_poison_berry
 	name = "poison syrum"
 	description = "refined berry poison"
 	reagent_state = LIQUID
@@ -575,7 +587,7 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syrumb
+/datum/reagent/alch/syrum_berry
 	name = "berry syrum"
 	description = "refined berry essence"
 	reagent_state = LIQUID
@@ -599,26 +611,18 @@
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
 
-/datum/reagent/alch/syruma
-	name = "syrum of fire"
-	description = "refined viscous ash"
-	reagent_state = LIQUID
-	color = "#808080"
-	metabolization_rate = 1 * REAGENTS_METABOLISM
-	overdose_threshold = null
-
 /datum/reagent/alch/on_mob_metabolize(mob/living/carbon/M)
 	if(prob(50))
 		M.confused = max(M.confused+3,0)
 	M.emote(pick("cough"))
 
-/datum/reagent/alch/syruma/on_mob_metabolize(mob/living/carbon/M)
+/datum/reagent/alch/syrum_ash/on_mob_metabolize(mob/living/carbon/M)
 	M.adjustToxLoss(-1*REM, 0)
 	M.adjustFireLoss(0.25*REM, 0)
 	M.reagents.remove_all_type(/datum/reagent, 1)
 	M.emote(pick("gag"))
 
-/datum/reagent/alch/syrump/on_mob_metabolize(mob/living/carbon/M)
+/datum/reagent/alch/syrum_poison_berry/on_mob_metabolize(mob/living/carbon/M)
 	M.add_nausea(9)
 	M.adjustToxLoss(2, 0)
 
@@ -705,25 +709,25 @@
 	M.update_damage_overlays()
 
 
-////////////////////////////////////////////////////---------------------------------------alch reactions----------------------------------------------//////////////////////////////////////////////////////////
+//---------------------------------------alch reactions----------------------------------------------//
 
 /datum/chemical_reaction/alch/health
 	name = "health pot"
 	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/healthpot
 	results = list(/datum/reagent/medicine/healthpot = 45)
-	required_reagents = list(/datum/reagent/alch/syrumm = 24, /datum/reagent/alch/syruma = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_meat = 24, /datum/reagent/alch/syrum_ash = 24)
 
 /datum/chemical_reaction/alch/mana
 	name = "mana pot"
 	id = /datum/reagent/medicine/manapot
 	results = list(/datum/reagent/medicine/manapot = 45)
-	required_reagents = list(/datum/reagent/alch/syrumf = 24, /datum/reagent/alch/syruma = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_fish = 24, /datum/reagent/alch/syrum_ash = 24)
 
 /datum/chemical_reaction/alch/salt
 	name = "saltify"
 	id = "saltify"
-	required_reagents = list(/datum/reagent/alch/syrumr = 24, /datum/reagent/alch/syruma = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_stone = 24, /datum/reagent/alch/syrum_ash = 24)
 
 /datum/chemical_reaction/alch/salt/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -733,7 +737,7 @@
 /datum/chemical_reaction/alch/ozium
 	name = "oziumify"
 	id = "oziumify"
-	required_reagents = list(/datum/reagent/alch/syrump = 24, /datum/reagent/alch/syrumsw = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_poison_berry = 24, /datum/reagent/alch/syrum_swamp_weed = 24)
 
 /datum/chemical_reaction/alch/ozium/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -743,7 +747,7 @@
 /datum/chemical_reaction/alch/moon
 	name = "moondustify"
 	id = "moondustify"
-	required_reagents = list(/datum/reagent/alch/syrump = 24, /datum/reagent/alch/syrumpw = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_poison_berry = 24, /datum/reagent/alch/syrum_westleach_leaf = 24)
 
 /datum/chemical_reaction/alch/moon/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -753,7 +757,7 @@
 /datum/chemical_reaction/alch/spice
 	name = "spiceify"
 	id = "spiceify"
-	required_reagents = list(/datum/reagent/alch/syrumsw = 24, /datum/reagent/alch/syrumpw = 24)
+	required_reagents = list(/datum/reagent/alch/syrum_swamp_weed = 24, /datum/reagent/alch/syrum_westleach_leaf = 24)
 
 /datum/chemical_reaction/alch/spice/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -770,7 +774,7 @@
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/powder/moondust_purest(location)
 
-/////////////////////////////////////////////////////------------------------------------tools and pre made bottles-----------------------------------------/////////////////////////////////////////////////////
+//------------------------------------tools and pre made bottles-----------------------------------------//
 
 /obj/item/storage/backpack/rogue/backpack/rucksack
 	name = "rucksack"
@@ -797,7 +801,7 @@
 
 /obj/item/rogueweapon/surgery/saw/improv
 	name = "improvised saw"
-	desc = "A tool used to carve through bone......poorly, but better than nothing."
+	desc = "A tool used to carve through bone... poorly, but better than nothing."
 	icon_state = "bonesaw_wood"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	slot_flags = ITEM_SLOT_HIP
@@ -840,7 +844,7 @@
 
 /obj/item/storage/fancy/pilltin
 	name = "pill tin"
-	desc = "A tin for all your pill needs, snake branded"
+	desc = "A tin for all your pill needs."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "pilltin"
 	w_class = WEIGHT_CLASS_TINY
@@ -972,7 +976,7 @@
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
-	desc = "Personal treatment pouch; has all you need to stop you or someone else from meeting necra. even comes with a lil guide scroll for the slow minded."
+	desc = "Personal treatment pouch; has all you need to stop you or someone else from meeting Necra. It even comes with a little guide scroll for the slow minded."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "ifak"
 	w_class = WEIGHT_CLASS_SMALL
@@ -1051,6 +1055,7 @@
 	new /obj/item/candle/yellow(src)
 	new /obj/item/needle(src)
 	new /obj/item/book/rogue/medical_notebook(src)
+
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"
 	desc = "If you see this, call an admin."
@@ -1148,7 +1153,7 @@
 
 /obj/item/reagent_containers/pill/caffpill
 	name = "WAKE-UP"
-	desc = "A handful of pep-pills. a promise to make you both alert and have an uncomfortable amount of vigor for everyone involved. Who needs sleep anyway? thats how you get diddled by an orc!"
+	desc = "Pep-pills. A promise to make you alert."
 	icon_state = "pillg"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	list_reagents = list(/datum/reagent/medicine/caffeine = 1, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 81) //coffee OD is safe. causes jitters for awhile.
@@ -1157,23 +1162,23 @@
 
 /obj/item/reagent_containers/pill/pnkpill
 	name = "PNKBAWLS"
-	desc = "A handful of pink little balls. says they restore vitality, you are pretty certain this is watered down red mixed with ash"
+	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
-	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 24) //mug of red, bottle is 45u
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15) 
 	dissolvable = FALSE
 	grind_results = null
 
 /obj/item/reagent_containers/hypospray/medipen/sty/detox
 	name = "DETOX"
-	desc = "Well aint this funny? a snake curing toxin's and venoms. heresy... purges the body of all that is not natural."
+	desc = "Purges the body of all that is not natural."
 	volume = 34
 	amount_per_transfer_from_this = 34
 	list_reagents = list(/datum/reagent/medicine/antihol = 10, /datum/reagent/medicine/pen_acid = 24)
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju
 	name = "rejuv elixer"
-	desc = "Special formulated body revitalizer; restores blood, helps seal wounds, helps to stabalize breathing and numbs pain with a non-addictive snake venom derived analgesic. Single dose. Caffeinated, just like the snake that made it."
+	desc = "Restores blood, seals wounds, helps to stabalize breathing and lightly numbs pain."
 	icon_state = "THEbottle"
 	volume = 16
 	amount_per_transfer_from_this = 16
@@ -1181,12 +1186,11 @@
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify
 	name = "purifying elixer"
-	desc = "Special formulated body purifier; A powerful drug that purifies the blood and seals wounds painfully on the body. flooding your blood with anything like this isnt exactly healthy but, if it stops you needing to use the word 'festering' to describe part of your body, it's worth it."
+	desc = "A powerful drug that purifies the blood and seals wounds on the body. Painfully."
 	icon_state = "THEbottle"
 	volume = 30
 	amount_per_transfer_from_this = 30
 	list_reagents = list(/datum/reagent/medicine/purify = 20, /datum/reagent/ozium = 5, /datum/reagent/consumable/ethanol/hooch = 5) // lil laudanum for your troubles
-
 
 /obj/item/natural/cloth/bandage
 	name = "bandage"
@@ -1272,7 +1276,7 @@
 	amount = 3
 	firefuel = 60 MINUTES
 
-///////////////////////////////////////////////////------------------------------------alembic/brewing--------------------------------/////////////////////////////////////////
+//------------------------------------alembic/brewing--------------------------------//
 
 // I'm going to hate every moment of working on this.
 
@@ -1303,10 +1307,11 @@
 /obj/item/reagent_containers/glass/alembic/Initialize()
 	create_reagents(100, REFILLABLE | DRAINABLE | AMOUNT_VISIBLE) // 2 Bottles capacity
 	icon_state = "alembic_empty"
-	..()
+	boilloop = new(list(src), FALSE)
+	. = ..()
 
 /obj/item/reagent_containers/glass/alembic/examine(mob/user)
-	..()
+	. = ..()
 	if (active_brews.len == 0)
 		. += span_notice("The alembic is not brewing.")
 	else
@@ -1328,7 +1333,7 @@
 	else
 		icon_state = "alembic_empty"
 	playsound(src, "bubbles", 60, TRUE)
-	if(boilloop) boilloop.stop() // Stop the looping sound once brewing is done
+	boilloop.stop() // Stop the looping sound once brewing is done
 	brewing_started = FALSE // Reset brewing status after brewing completes
 
 /obj/item/reagent_containers/glass/alembic/attackby(obj/item/I, mob/user, params)
@@ -1350,7 +1355,7 @@
 		I.brewing_time = 600
 		active_brews += I
 		icon_state = "alembic_brew"
-		boilloop = playsound(src, "sound/misc/boiling.ogg", 50, TRUE)
+		boilloop.start()
 		addtimer(CALLBACK(src, /obj/item/reagent_containers/glass/alembic/proc/makebrew, I), I.brewing_time)
 		return TRUE
 	return ..()
@@ -1472,92 +1477,59 @@
 
 
 
-/////////////////////////////////////////////////////////-----------------------------------crafts----------------------------------------/////////////////////////////////////////////////////////////////////
+//-----------------------------------crafts----------------------------------------//
 
-/datum/anvil_recipe/tools/alembic        ////////// yes I know the sprites copper. chill.
+/datum/anvil_recipe/tools/alembic
 	name = "Alembic"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/reagent_containers/glass/alembic
 	i_type = "Tools"
 
-
 /datum/crafting_recipe/roguetown/mortar
 	name = "mortar and pestle"
 	result = /obj/item/reagent_containers/glass/mortar
 	reqs = list(/obj/item/grown/log/tree/stick = 1, /obj/item/grown/log/tree/small = 1,)
-	craftdiff = 1
+	skill_level = 1
 	skillcraft = /datum/skill/craft/crafting
 
 /datum/crafting_recipe/roguetown/bandage
 	name = "roll of bandages"
 	result = /obj/item/natural/bundle/cloth/bandage/full
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/ash = 1,)
-	craftdiff = 2
+	skill_level = 2
 	skillcraft = /datum/skill/misc/treatment
 
 /datum/crafting_recipe/roguetown/impsaw
 	name = "improvised saw"
 	result = /obj/item/rogueweapon/surgery/saw/improv
 	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 1, /obj/item/grown/log/tree/stick = 1,)
-	craftdiff = 1
+	skill_level = 1
 	skillcraft = /datum/skill/craft/crafting
 
 /datum/crafting_recipe/roguetown/impretra
 	name = "improvised clamp"
 	result = /obj/item/rogueweapon/surgery/hemostat/improv
 	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2,)
-	craftdiff = 1
+	skill_level = 1
 	skillcraft = /datum/skill/craft/crafting
 
 /datum/crafting_recipe/roguetown/imphemo
 	name = "improvised retractor"
 	result = /obj/item/rogueweapon/surgery/retractor/improv
 	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2,)
-	craftdiff = 1
+	skill_level = 1
 	skillcraft = /datum/skill/craft/crafting
 
 /datum/crafting_recipe/roguetown/rucksack
 	name = "Rucksack"
 	result = /obj/item/storage/backpack/rogue/backpack/rucksack
 	reqs = list(/obj/item/rope = 1, /obj/item/storage/roguebag/crafted = 1,)
-	craftdiff = 0
+	skill_level = 0
 	skillcraft = /datum/skill/craft/crafting
 
 /*/datum/crafting_recipe/roguetown/splint
 	name = "splint"
 	result = /obj/item/splint
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/grown/log/tree/stick = 1,)
-	craftdiff = 2
+	skill_level = 2
 	skillcraft = /datum/skill/misc/treatment*/
-
-
-
-//////////////////////////////////////------------------reskins of existing items-------------------//////////////////////           none of these implimented, has to be spawned.
-
-
-/obj/item/rogueweapon/mace/pipe        ////////////// reskin of iron mace but bigger
-	possible_item_intents = list(/datum/intent/mace/strike)
-	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	name = "pipe"
-	desc = "Beloved problem solver."
-	icon_state = "leadpipe"
-	icon = 'icons/roguetown/weapons/64.dmi'
-	smeltresult = /obj/item/ash
-	parrysound = "parrywood"
-	swingsound = BLUNTWOOSH_MED
-	wlength = WLENGTH_LONG
-	w_class = WEIGHT_CLASS_BULKY
-	minstr = 7
-	wdefense = 3
-	pixel_y = -16
-	pixel_x = -16
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	bigboy = TRUE
-	gripsprite = TRUE
-
-/obj/item/rogueweapon/huntingknife/skin                                    ///////////// reSKINNED hunting knife
-	name = "skinning knife"
-	desc = "More than one way to skin a seelie."
-	icon_state = "skinningknife"
-

@@ -26,10 +26,54 @@
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.4,"sx" = 0,"sy" = 2,"nx" = 15,"ny" = -4,"wx" = -1,"wy" = 2,"ex" = 7,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+				return list(
+					"shrink" = 0.4,
+					"sx" = 0,
+					"sy" = 0,
+					"nx" = 0,
+					"ny" = 0,
+					"wx" = -4,
+					"wy" = 0,
+					"ex" = 2,
+					"ey" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 1,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 8,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 0
+				)
 			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
+				return list(
+					"shrink" = 0.3,
+					"sx" = -2,
+					"sy" = -5,
+					"nx" = 4,
+					"ny" = -5,
+					"wx" = 0,
+					"wy" = -5,
+					"ex" = 2,
+					"ey" = -5,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0
+				)
+				
 /obj/item/rogue/instrument/Initialize()
 	soundloop = new(list(src), FALSE)
 //	soundloop.start()
@@ -112,7 +156,7 @@
 
 /obj/item/rogue/instrument/guitar
 	name = "guitar"
-	desc = "This is a guitar." // i do not like this instrument, i refuse to describe it any better.
+	desc = "A finely crafted instrument of string and wood."
 	icon_state = "guitar"
 	song_list = list("Fire-Cast Shadows" = 'sound/music/instruments/guitar (1).ogg',
 	"The Forced Hand" = 'sound/music/instruments/guitar (2).ogg',
@@ -123,11 +167,15 @@
 
 /obj/item/rogue/instrument/harp
 	name = "harp"
-	desc = "A harp of elven craftsmanship."
+	desc = "A harp of elven craftsmanship, its strings soothe the heart."
 	icon_state = "harp"
 	song_list = list("Through Thine Window, He Glanced" = 'sound/music/instruments/harb (1).ogg',
 	"The Lady of Red Silks" = 'sound/music/instruments/harb (2).ogg',
-	"Eora Doth Watches" = 'sound/music/instruments/harb (3).ogg')
+	"Eora Doth Watches" = 'sound/music/instruments/harb (3).ogg',
+	"Her Arms Caress Me" = 'sound/music/instruments/harb (4).ogg',
+	"Dance Between the Sheets" = 'sound/music/instruments/harb (5).ogg',
+	"A Mother's Affection" = 'sound/music/instruments/harb (6).ogg',
+	"Nightmaiden's Lullaby" = 'sound/music/instruments/harb (7).ogg')
 
 /obj/item/rogue/instrument/flute
 	name = "flute"

@@ -65,8 +65,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	head = /obj/item/clothing/head/roguetown/crown/serpcrown
 	l_hand = /obj/item/rogueweapon/lordscepter
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
+	beltr = /obj/item/gun/ballistic/arquebus_pistol
+	beltl = /obj/item/ammo_holder/bullet/lead
+	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/powderflask = 1)
 	id = /obj/item/clothing/ring/active/nomag	
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
@@ -86,6 +88,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		H.change_stat("strength", 1)
@@ -115,6 +118,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/outfit/job/roguetown/lord/visuals/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/crown/fakecrown //Prevents the crown of woe from happening again.
+
+/datum/outfit/job/roguetown/lord/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = FALSE
 
 /proc/give_lord_surname(mob/living/carbon/human/family_guy, preserve_original = FALSE)
 	if(!GLOB.lordsurname)

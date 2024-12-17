@@ -1,8 +1,8 @@
 /datum/roguestock/bounty/treasure
 	name = "Collectable Treasures"
-	desc = "Treasures are sent to the vault, where they accrue value over time. Payout is a percentage is based on the price of the treasure, with taxes removed from the payout after."
+	desc = "Treasures are sent to the vault, where they accrue value over time. Payout is a percentage is based on the price of the treasure."
 	item_type = /obj/item
-	payout_price = 10
+	payout_price = 75
 	transport_item = /area/rogue/indoors/town/vault
 	percent_bounty = TRUE
 
@@ -32,4 +32,6 @@
 		if(istype(I, /obj/item/reagent_containers/glass/cup))
 			return TRUE
 		if(istype(I, /obj/item/roguegem))
+			return TRUE
+		if(istype(I, /obj/item/clothing/ring))
 			return TRUE

@@ -81,12 +81,11 @@
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/corgi = 3, /obj/item/stack/sheet/animalhide/corgi = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/corgi = 3)
 	childtype = list(/mob/living/simple_animal/pet/dog/corgi/puppy = 95, /mob/living/simple_animal/pet/dog/corgi/puppy/void = 5)
 	animal_species = /mob/living/simple_animal/pet/dog
 	gold_core_spawnable = FRIENDLY_SPAWN
 	can_be_held = TRUE
-	collar_type = "corgi"
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 	var/shaved = FALSE
@@ -119,7 +118,6 @@
 	icon_dead = "pug_dead"
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/pug = 3)
 	gold_core_spawnable = FRIENDLY_SPAWN
-	collar_type = "pug"
 
 /mob/living/simple_animal/pet/dog/corgi/exoticcorgi
 	name = "Exotic Corgi"
@@ -130,14 +128,6 @@
 	icon_dead = "corgigrey_dead"
 	animal_species = /mob/living/simple_animal/pet/dog/corgi/exoticcorgi
 	nofur = TRUE
-
-/mob/living/simple_animal/pet/dog/Initialize()
-	. = ..()
-	var/dog_area = get_area(src)
-	for(var/obj/structure/bed/dogbed/D in dog_area)
-		if(!D.owner)
-			D.update_owner(src)
-			break
 
 /mob/living/simple_animal/pet/dog/corgi/Initialize()
 	. = ..()
@@ -161,7 +151,6 @@
 	var/dat = 	"<div align='center'><b>Inventory of [name]</b></div><p>"
 	dat += "<br><B>Head:</B> <A href='?src=[REF(src)];[inventory_head ? "remove_inv=head'>[inventory_head]" : "add_inv=head'>Nothing"]</A>"
 	dat += "<br><B>Back:</B> <A href='?src=[REF(src)];[inventory_back ? "remove_inv=back'>[inventory_back]" : "add_inv=back'>Nothing"]</A>"
-	dat += "<br><B>Collar:</B> <A href='?src=[REF(src)];[pcollar ? "remove_inv=collar'>[pcollar]" : "add_inv=collar'>Nothing"]</A>"
 
 	user << browse(dat, "window=mob[REF(src)];size=325x500")
 	onclose(user, "mob[REF(src)]")
@@ -215,7 +204,7 @@
 		L.visible_message(span_warning("[L] scoops up [src]!"))
 
 /mob/living/simple_animal/pet/dog/corgi/Topic(href, href_list)
-	if(!(iscarbon(usr) || iscyborg(usr)) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(!(iscarbon(usr) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK)))
 		usr << browse(null, "window=mob[REF(src)]")
 		usr.unset_machine()
 		return
@@ -242,12 +231,6 @@
 				else
 					to_chat(usr, span_warning("There is nothing to remove from its [remove_from]!"))
 					return
-			if("collar")
-				if(pcollar)
-					usr.put_in_hands(pcollar)
-					pcollar = null
-					update_corgi_fluff()
-					regenerate_icons()
 
 		show_inv(usr)
 
@@ -256,10 +239,6 @@
 		var/add_to = href_list["add_inv"]
 
 		switch(add_to)
-			if("collar")
-				add_collar(usr.get_active_held_item(), usr)
-				update_corgi_fluff()
-
 			if(BODY_ZONE_HEAD)
 				place_on_head(usr.get_active_held_item(),usr)
 
@@ -275,11 +254,7 @@
 						return
 
 					if(!usr.temporarilyRemoveItemFromInventory(item_to_add))
-						to_chat(usr, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s back!"))
-						return
-
-					if(istype(item_to_add, /obj/item/grenade/c4)) // last thing he ever wears, I guess
-						item_to_add.afterattack(src,usr,1)
+						to_chat(usr, "<span class='warning'>\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s back!</span>")
 						return
 
 					//The objects that corgis can wear on their backs.
@@ -310,11 +285,6 @@
 // > some will probably be removed
 
 /mob/living/simple_animal/pet/dog/corgi/proc/place_on_head(obj/item/item_to_add, mob/user)
-
-	if(istype(item_to_add, /obj/item/grenade/c4)) // last thing he ever wears, I guess
-		item_to_add.afterattack(src,user,1)
-		return
-
 	if(inventory_head)
 		if(user)
 			to_chat(user, span_warning("I can't put more than one hat on [src]!"))
@@ -568,7 +538,6 @@
 	density = FALSE
 	pass_flags = PASSMOB
 	mob_size = MOB_SIZE_SMALL
-	collar_type = "puppy"
 
 //puppies cannot wear anything.
 /mob/living/simple_animal/pet/dog/corgi/puppy/Topic(href, href_list)
@@ -624,6 +593,32 @@
 	..()
 
 	make_babies()
+
+/mob/living/simple_animal/pet/dog/corgi/Cahir
+	name = "Cahir"
+	desc = "What a sleek fur and radiant eyes!"
+	icon = 'icons/roguetown/mob/monster/vol.dmi'
+	icon_state = "vv"
+	icon_living = "vv"
+	icon_dead = "vvd"
+	gender = MALE
+	emote_hear = null
+	emote_see = null
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "bops"
+	response_disarm_simple = "bop"
+	response_harm_continuous = "kicks"
+	response_harm_simple = "kick"
+	var/puppies = 0
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
+						/obj/item/natural/hide = 2,
+						/obj/item/natural/fur = 1)
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	health = 120
+	maxHealth = 120
+//	stat_attack = UNCONSCIOUS
+	remains_type = /obj/effect/decal/remains/wolf
 
 /mob/living/simple_animal/pet/dog/attack_hand(mob/living/carbon/human/M)
 	. = ..()

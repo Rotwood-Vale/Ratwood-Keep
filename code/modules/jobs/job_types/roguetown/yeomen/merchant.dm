@@ -9,8 +9,7 @@
 	allowed_races = RACES_SHUNNED_UP
 	tutorial = "You were born into wealth, learning from before you could talk about the basics of mathematics. \
 	Counting coins is a simple pleasure for any person, but you've made it an artform. \
-	These people are addicted to your wares and you are the literal beating heart of this economy: Dont let these filthy-covered troglodytes ever forget that. \
-	Remember that you've two shophands and an additional two 'thugs' to assure such."
+	These people are addicted to your wares and you are the literal beating heart of this economy: Dont let these filthy-covered troglodytes ever forget that."
 
 	display_order = JDO_MERCHANT
 
@@ -38,6 +37,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 
 	head = /obj/item/clothing/head/roguetown/chaperon
@@ -46,7 +46,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	pants = /obj/item/clothing/under/roguetown/tights/sailor
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltl = /obj/item/keyring/merchant
+	beltl = /obj/item/storage/keyring/merchant
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	id = /obj/item/clothing/ring/gold
 	if(H.gender == MALE)

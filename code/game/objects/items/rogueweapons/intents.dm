@@ -45,6 +45,8 @@
 	var/reach = 1 //In tiles, how far this weapon can reach; 1 for adjacent, which is default
 	var/miss_text //THESE ARE FOR UNARMED MISSING ATTACKS
 	var/miss_sound //THESE ARE FOR UNARMED MISSING ATTACKS
+	var/ican_assin = FALSE			//Intent: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
+	var/ican_cdg = FALSE			//Intent: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
 /datum/intent/Destroy()
 	if(chargedloop)
@@ -58,6 +60,8 @@
 	inspec += "<br><span class='notice'><b>[name]</b> intent</span>"
 	if(desc)
 		inspec += "\n[desc]"
+	if(reach != 1)
+		inspec += "\n<b>Reach:</b> [reach]"
 	if(damfactor != 1)
 		inspec += "\n<b>Damage:</b> [damfactor]"
 	if(penfactor)
@@ -257,6 +261,10 @@
 	mid_length = 7
 	volume = 100
 
+/datum/looping_sound/drill
+	mid_sounds = list('sound/combat/drill_loop.ogg')
+	mid_length = 85
+	volume = 100
 
 /datum/intent/hit
 	name = "hit"
@@ -286,6 +294,17 @@
 	item_d_type = "stab"
 	blade_class = BCLASS_PICK
 	chargetime = 0
+	swingdelay = 3
+
+/datum/intent/drill
+	name = "drill"
+	icon_state = "inpick"
+	attack_verb = list("drills","augers")
+	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
+	animname = "strike"
+	item_d_type = "stab"
+	blade_class = BCLASS_DRILL
+	chargetime = 0.3
 	swingdelay = 3
 
 /datum/intent/shoot //shooting crossbows or other guns, no parrydrain

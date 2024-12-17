@@ -39,7 +39,7 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
-	beltl = /obj/item/keyring/royal
+	beltl = /obj/item/storage/keyring/royal
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	head = /obj/item/clothing/head/roguetown/duchess_hood
@@ -57,6 +57,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.change_stat("intelligence", 3)
@@ -64,6 +65,10 @@
 		H.change_stat("speed", 2)
 		H.change_stat("perception", 2)
 		H.change_stat("fortune", 5)
+
+/datum/outfit/job/roguetown/lady/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = FALSE
 
 /obj/effect/proc_holder/spell/self/convertrole/servant
 	name = "Recruit Servant"

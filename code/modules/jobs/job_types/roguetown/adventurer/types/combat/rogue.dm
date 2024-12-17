@@ -25,7 +25,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, pick(1,2), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
@@ -37,7 +37,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -51,6 +51,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
+			backpack_contents = list(/obj/item/lockpickring/mundane = 1)
 			H.change_stat("strength", -1)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 3)
@@ -85,10 +86,10 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/cape/black
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/rogueweapon/sword/iron
+			beltr = /obj/item/rogueweapon/sword/rapier
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor	
-			H.change_stat("intelligence", pick(0,1,1))
-			H.change_stat("speed", pick(2,3))
+			H.change_stat("intelligence", 1)
+			H.change_stat("speed", 3)
 			H.change_stat("endurance", 1)
 			H.cmode_music = 'sound/music/combat_duelist.ogg'
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

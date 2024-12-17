@@ -8,7 +8,6 @@
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/mob/species/moth_m.dmi'
 	limbs_icon_f = 'icons/mob/species/moth_f.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -86,8 +85,6 @@
 		/datum/body_marking_set/moth/lovers,
 	)
 	body_markings = list(
-		/datum/body_marking/flushed_cheeks,
-		/datum/body_marking/eyeliner,
 		/datum/body_marking/moth/grayscale/reddish,
 		/datum/body_marking/moth/grayscale/royal,
 		/datum/body_marking/moth/grayscale/gothic,

@@ -20,11 +20,10 @@
 /datum/outfit/job/roguetown/monk
 	name = "Acolyte"
 	jobtype = /datum/job/roguetown/monk
-	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/divine/astrata, /datum/patron/divine/malum)
-
+	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/divine/astrata, /datum/patron/divine/malum, /datum/patron/divine/eora)
+	
 /datum/outfit/job/roguetown/monk/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/key/church
@@ -53,7 +52,8 @@
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 		if(/datum/patron/divine/pestra) //PLEASE add leper gear later, this SUCKS dude
-			head = /obj/item/clothing/head/roguetown/necrahood
+			head = /obj/item/clothing/head/roguetown/roguehood/black
+			mask = /obj/item/clothing/mask/rogue/pestra
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
@@ -64,6 +64,11 @@
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 			cloak = /obj/item/clothing/cloak/apron/blacksmith
+		if(/datum/patron/divine/eora)
+			head = /obj/item/clothing/head/roguetown/eoramask
+			neck = /obj/item/clothing/neck/roguetown/psicross/eora
+			shoes = /obj/item/clothing/shoes/roguetown/sandals
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 		else
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -88,3 +93,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+
+/datum/outfit/job/roguetown/monk/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = TRUE

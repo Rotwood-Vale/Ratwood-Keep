@@ -5,17 +5,17 @@
 	name = "Tiefling"
 	id = "tiefling"
 	desc = "<b>Tiefling</b><br>\
-	Tieflings, also known as Infernal-Spawn by the Dwarves, are a relatively new species in Grimmoria\
-	Having shown up sometime within the past two centuries, very little is known about their culture \
-	as many seem to simply intergrate within whatever society they find themselves in. \
-	Tieflings usually cause strong disturbances with their presence, as their fiendish looks \
-	Many have claimed that they are the spawn of a succubus (Or incubus) laying with a mortal. \
-	In this, their species has suffered vast tragedy throughout their short history, \
-	Facing scrutiny, judgement and even genocide in the past. Wounding many tiefling psyche \
-	and leading to most seeking a solitary life outside the watchful eyes of others. \
-	Tiefling cannot reproduce with mortals, and so no half-breed exists. \
-	Tiefling tend to be extremely perceptive and paranoid, as luck is rarely on their side \
-	and their unique biology makes them extremely susceptible to injury."
+	Tieflings, also known as Infernal-Spawn by the Dwarves, are a relatively new species in Grimmoria. \
+  	Having shown up sometime within the past two centuries in relatively great numbers, it is understood that they lack any cultural identity \
+    as many seem to simply integrate within whatever society they find themselves born into. \
+    The unholy origins of Tieflings are well-established; it is known that many favor the Inhumen under Baotha. \
+    Many have claimed that they are the spawn of a succubus or incubus of Baotha laying with a mortal, \
+    in this, the claims are entirely true; they have faced near-insurmountable struggles as a result. \
+    Facing scrutiny, judgement and even genocide in the past. Wounding many Tiefling psyches' \
+    and leading to most seeking a solitary life outside the watchful eyes of others. \
+    Tieflings, while nominally mortal, are incapable of reproduction outside of their race. \
+    Tiefling tend to be extremely perceptive and paranoid, as luck is rarely on their side \
+    and their unique biology makes them extremely susceptible to injury."
 
 	skin_tone_wording = "Progenitor"
 
@@ -27,7 +27,6 @@
 	disliked_food = NONE
 	liked_food = NONE
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -47,14 +46,14 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0,
-		"perception" = 1,
-		"intelligence" = 2,
-		"constitution" = -2,
-		"endurance" = 0,
-		"speed" = 0,
-		"fortune" = 0
-		)
+        "strength" = 0,
+        "perception" = 1,
+        "intelligence" = 1,
+        "constitution" = -1,
+        "endurance" = 1,
+        "speed" = 0,
+        "fortune" = -1
+        )
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -116,13 +115,16 @@
 
 /datum/species/tieberian/get_skin_list()
 	return list(
-		"Castillian" = SKIN_COLOR_CASTILLIAN,
-		"Mysterious" = SKIN_COLOR_MYSTERIOUS,
-		"Succubus" = SKIN_COLOR_SUCCUBUS,
-		"Incubus" = SKIN_COLOR_INCUBUS,
-		"Mephistopheles" = SKIN_COLOR_MEPHISTOPHELES,
 		"Zariel" = SKIN_COLOR_ZARIEL,
+		"Levistus" = SKIN_COLOR_LEVISTUS,
+		"Glasya" = SKIN_COLOR_GLASYA,
+		"Asmodeus" = SKIN_COLOR_ASMODEUS,
+		"Baalzebul" = SKIN_COLOR_BAALZEBUL,
+		"Mephistopheles" = SKIN_COLOR_MEPHISTOPHELES,
+		"Fierna" = SKIN_COLOR_FIERNA,
 		"Dispater" = SKIN_COLOR_DISPATER,
+		"Nymsea" = SKIN_COLOR_NYMSEA,
+		"Mammon" = SKIN_COLOR_MAMMON
 	)
 
 /datum/species/tieberian/get_hairc_list()
@@ -156,33 +158,3 @@
 
 /datum/species/tieberian/random_surname()
 	return " [pick(world.file2list("strings/rt/names/other/tieflast.txt"))]"
-/* Commenting out Spanish Tieflings for now.
-//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
-// "full" group in JSON lists
-/datum/species/tieberian/get_accent(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_CASTILLIAN)
-						return strings("spanish_replacement.json", "full")
-		return null
-
-// "start" group in JSON lists
-/datum/species/tieberian/get_accent_start(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_CASTILLIAN)
-						return strings("spanish_replacement.json", "start")
-		return null
-
-// "end" group in JSON lists
-/datum/species/tieberian/get_accent_end(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_CASTILLIAN)
-						return strings("spanish_replacement.json", "end")
-		return null
-
-// "syllable" group in JSON lists
-/datum/species/tieberian/get_accent_any(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_CASTILLIAN)
-						return strings("spanish_replacement.json", "syllable")
-		return null
-*/

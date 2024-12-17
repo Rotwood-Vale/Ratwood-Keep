@@ -18,7 +18,7 @@
 		BODY_ZONE_PRECISE_MOUTH,
 		BODY_ZONE_PRECISE_STOMACH,
 		BODY_ZONE_PRECISE_GROIN,
-		BODY_ZONE_L_ARM, 
+		BODY_ZONE_L_ARM,
 		BODY_ZONE_R_ARM,
 	)
 	steps = list(
@@ -35,8 +35,7 @@
 	time = 6.4 SECONDS
 	accept_hand = TRUE
 	implements = list(
-		/obj/item/organ = 80, 
-		/obj/item/organ_storage = 80,
+		/obj/item/organ = 80,
 		/obj/item/reagent_containers/food/snacks/organ = 0,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
@@ -74,17 +73,8 @@
 
 /datum/surgery_step/manipulate_organs/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	if(istype(tool, /obj/item/reagent_containers/food/snacks/organ))
-		to_chat(user, span_warning("[tool] was bitten by someone! It's too damaged to use!"))
+		to_chat(user, "<span class='warning'>[tool] was bitten by someone! It's too damaged to use!</span>")
 		return FALSE
-	
-	if(istype(tool, /obj/item/organ_storage))
-		if(!length(tool.contents))
-			to_chat(user, span_warning("There is nothing inside [tool]!"))
-			return FALSE
-		tool = tool.contents[1]
-		if(!isorgan(tool))
-			to_chat(user, span_warning("I cannot put [tool] inside [target]'s [parse_zone(target_zone)]!"))
-			return FALSE
 
 	var/obj/item/organ/organ_tool = tool
 	if(istype(organ_tool))
@@ -115,7 +105,7 @@
 		var/obj/item/organ/final_organ = organs[selected]
 		if(QDELETED(final_organ))
 			return FALSE
-		
+
 		user.select_organ_slot(final_organ.slot)
 		display_results(user, target, span_notice("I begin to extract [final_organ] from [target]'s [parse_zone(target_zone)]..."),
 			span_notice("[user] begins to extract [final_organ] from [target]'s [parse_zone(target_zone)]."),
@@ -124,14 +114,6 @@
 	return TRUE
 
 /datum/surgery_step/manipulate_organs/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	if(istype(tool, /obj/item/organ_storage))
-		tool.icon_state = initial(tool.icon_state)
-		tool.desc = initial(tool.desc)
-		tool.cut_overlays()
-		tool = tool.contents[1]
-		if(!isorgan(tool))
-			return FALSE
-
 	var/obj/item/organ/organ_tool = tool
 	if(istype(organ_tool) && user.temporarilyRemoveItemFromInventory(organ_tool))
 		organ_tool.Insert(target)

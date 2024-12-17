@@ -152,21 +152,21 @@
 		return
 	if(in_range(user, src) || isobserver(user))
 //		var/atom/movable/screen/read/R = user.hud_used.reads
+		//		var/obj/screen/read/R = user.hud_used.reads
 		format_browse(info, user)
 	else
 		return span_warning("I'm too far away to read it.")
 
-/*
-	if(in_range(user, src) || isobserver(user))
-		if(user.is_literate())
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE>[extra_headers]</HEAD><BODY>[info]<HR></BODY></HTML>", "window=paper[md5(name)]")
-			onclose(user, "paper[md5(name)]")
-		else
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE>[extra_headers]</HEAD><BODY>[stars(info)]<HR></BODY></HTML>", "window=paper[md5(name)]")
-			onclose(user, "paper[md5(name)]")
-	else
-		return span_warning("You're too far away to read it.")
-*/
+/obj/item/paper/proc/format_browse(t, mob/user)
+	user << browse_rsc('html/book.png')
+	var/dat = {"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
+			<html><head><style type=\"text/css\">
+			body { background-image:url('book.png');background-repeat: repeat; }</style></head><body scroll=yes>"}
+	dat += "[t]<br>"
+	dat += "<a href='?src=[REF(src)];close=1' style='position:absolute;right:50px'>Close</a>"
+	dat += "</body></html>"
+	user << browse(dat, "window=reading;size=500x400;can_close=1;can_minimize=0;can_maximize=0;can_resize=1;titlebar=0;border=0")
+
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
 	set hidden = 1
@@ -209,21 +209,6 @@
 			spam_flag = TRUE
 			playsound(loc, 'sound/blank.ogg', 50, TRUE)
 			addtimer(CALLBACK(src, PROC_REF(reset_spamflag)), 20)
-
-
-/obj/item/paper/attack_ai(mob/living/silicon/ai/user)
-	var/dist
-	if(istype(user) && user.current) //is AI
-		dist = get_dist(src, user.current)
-	else //cyborg or AI not seeing through a camera
-		dist = get_dist(src, user)
-	if(dist < 2)
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
-		onclose(usr, "[name]")
-	else
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
-		onclose(usr, "[name]")
-
 
 /obj/item/paper/proc/addtofield(id, text, links = 0)
 	var/locid = 0
@@ -285,18 +270,10 @@
 
 	t = parsemarkdown(t, user, iscrayon)
 
-	if(!iscrayon)
-		if(istype(P, /obj/item/pen))
-			var/obj/item/pen/J = P
-			t = "<font face=\"[J.font]\" color=[J.colour]>[t]</font>"
-		else if(istype(P, /obj/item/natural/thorn))
-			t = "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#862f20>[t]</font>"
-		else if(istype(P, /obj/item/natural/feather))
-			t = "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#14103f>[t]</font>"
-
-	else
-		var/obj/item/toy/crayon/C = P
-		t = "<font face=\"[CRAYON_FONT]\" color=[C.paint_color]><b>[t]</b></font>"
+	if(istype(P, /obj/item/natural/thorn))
+		t = "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#862f20>[t]</font>"
+	else if(istype(P, /obj/item/natural/feather))
+		t = "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#14103f>[t]</font>"
 
 	// Count the fields
 	var/laststart = 1
@@ -370,20 +347,15 @@
 		if(!t || !usr.canUseTopic(src, BE_CLOSE, literate))
 			return
 		var/obj/item/i = usr.get_active_held_item()	//Check to see if he still got that darn pen, also check if he's using a crayon or pen.
-		var/iscrayon = 0
-		if(!istype(i, /obj/item/pen))
-			if(istype(i, /obj/item/toy/crayon))
-				iscrayon = 1
-			else
-				if(!istype(i, /obj/item/natural/thorn))
-					if(!istype(i, /obj/item/natural/feather))
-						return
+		if(!istype(i, /obj/item/natural/thorn))
+			if(!istype(i, /obj/item/natural/feather))
+				return
 
-		if(!in_range(src, usr) && loc != usr && !istype(loc, /obj/item/clipboard) && loc.loc != usr && usr.get_active_held_item() != i)	//Some check to see if he's allowed to write
+		if(!in_range(src, usr) && loc != usr && loc.loc != usr && usr.get_active_held_item() != i)	//Some check to see if he's allowed to write
 			return
 
 		log_paper("[key_name(usr)] writing to paper [t]")
-		t = parsepencode(t, i, usr, iscrayon) // Encode everything from pencode to html
+		t = parsepencode(t, i, usr, FALSE) // Encode everything from pencode to html
 
 		if(t != null)	//No input from the user means nothing needs to be added
 			if((length(info) + length(t)) > maxlen)
@@ -400,16 +372,6 @@
 			format_browse(info_links, usr)
 			update_icon_state()
 
-/obj/item/paper/proc/format_browse(t, mob/user)
-	user << browse_rsc('html/book.png')
-	var/dat = {"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
-			<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type=\"text/css\">
-			body { background-image:url('book.png');background-repeat: repeat; }</style></head><body scroll=yes>"}
-	dat += "[t]<br>"
-	dat += "<a href='?src=[REF(src)];close=1' style='position:absolute;right:50px'>Close</a>"
-	dat += "</body></html>"
-	user << browse(dat, "window=reading;size=500x400;can_close=1;can_minimize=0;can_maximize=0;can_resize=1;titlebar=0;border=0")
-
 /obj/item/paper/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	if(resistance_flags & ON_FIRE)
 		return ..()
@@ -420,7 +382,7 @@
 	if(is_blind(user))
 		return ..()
 
-	if(istype(P, /obj/item/pen) || istype(P, /obj/item/natural/thorn)|| istype(P, /obj/item/natural/feather))
+	if(istype(P, /obj/item/natural/thorn)|| istype(P, /obj/item/natural/feather))
 		if(length(info) > maxlen)
 			to_chat(user, span_warning("[src] is full of verba."))
 			return
@@ -469,40 +431,6 @@
 		D.w_class = size
 		size = min(size, 5)
 		D.icon_state = "deliverypackage[size]"
-
-/*	else if(istype(P, /obj/item/stamp))
-
-		if(!in_range(src, user))
-			return
-
-		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/simple/paper)
-		if (isnull(stamps))
-			stamps = sheet.css_tag()
-		stamps += sheet.icon_tag(P.icon_state)
-		var/mutable_appearance/stampoverlay = mutable_appearance('icons/obj/bureaucracy.dmi', "paper_[P.icon_state]")
-		stampoverlay.pixel_x = rand(-2, 2)
-		stampoverlay.pixel_y = rand(-3, 2)
-
-		LAZYADD(stamped, P.icon_state)
-		add_overlay(stampoverlay)
-
-		to_chat(user, span_notice("I stamp the paper with your rubber stamp."))
-
-	if(P.get_temperature())
-		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(10))
-			user.visible_message(span_warning("[user] accidentally ignites [user.p_them()]self!"), \
-								span_danger("I miss the paper and accidentally light myself on fire!"))
-			user.dropItemToGround(P)
-			user.adjust_fire_stacks(1)
-			user.IgniteMob()
-			return
-
-		if(!(in_range(user, src))) //to prevent issues as a result of telepathically lighting a paper
-			return
-
-		user.dropItemToGround(src)
-		user.visible_message(span_danger("[user] lights [src] ablaze with [P]!"), span_danger("I light [src] on fire!"))
-		fire_act()*/
 
 	add_fingerprint(user)
 	return ..()

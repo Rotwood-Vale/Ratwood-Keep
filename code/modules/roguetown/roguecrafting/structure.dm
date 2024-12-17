@@ -18,7 +18,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/handcart
 	name = "handcart"
@@ -93,7 +93,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/fancydoor
 	name = "fancy door"
@@ -102,7 +102,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/structure/barrel
 	name = "wooden barrel"
@@ -122,7 +122,7 @@
 	verbage_simple = "make"
 	verbage = "makes"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/chair
 	name = "wooden chair"
@@ -184,7 +184,7 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/forge
 	name = "forge"
@@ -205,7 +205,7 @@
 	verbage = "builds"
 	craftsound = null
 	skillcraft = /datum/skill/craft/blacksmithing
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/sharpwheel
 	name = "sharpening wheel"
@@ -233,7 +233,7 @@
 				/obj/item/natural/fibers = 2)
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/dye_bin
 	name = "dye bin"
@@ -243,7 +243,7 @@
 	)
 	verbage_simple = "make"
 	verbage = "makes"
-	craftdiff = 0
+	skill_level = 0
 /*
 /datum/crafting_recipe/roguetown/structure/stairs
 	name = "stairs (up)"
@@ -279,7 +279,7 @@
 	result = /obj/structure/stairs/d
 	reqs = list(/obj/item/grown/log/tree/small = 2)
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
+	skill_level = 2
 	verbage_simple = "construct"
 	verbage = "constructs"
 	ontile = TRUE
@@ -309,7 +309,7 @@
 	result = /obj/structure/stairs/stone/d
 	reqs = list(/obj/item/natural/stone = 2)
 	skillcraft = /datum/skill/craft/masonry
-	craftdiff = 2
+	skill_level = 2
 	verbage_simple = "builds"
 	verbage = "builds"
 	ontile = TRUE
@@ -362,7 +362,7 @@
 			/obj/item/grown/log/tree/stake = 1)
 	verbage_simple = "set up"
 	verbage = "sets up"
-	craftdiff = 0
+	skill_level = 0
 	
 
 /datum/crafting_recipe/roguetown/structure/fencealt
@@ -381,7 +381,7 @@
 	reqs = list(/obj/item/grown/log/tree/stick = 3)
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/chest
 	name = "chest"
@@ -391,7 +391,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 0
+	skill_level = 0
 
 /obj/structure/closet/crate/chest/crafted
 	keylock = FALSE
@@ -412,7 +412,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 1
+	skill_level = 1
 
 /obj/structure/closet/crate/roguecloset/crafted
 	sellprice = 6
@@ -423,7 +423,7 @@
 	reqs = list(/obj/item/grown/log/tree/stick = 2)
 	verbage_simple = "build"
 	verbage = "builds"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/densefire
 	name = "greater campfire"
@@ -491,7 +491,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
+	skill_level = 2
 	
 /datum/crafting_recipe/roguetown/structure/doublebed
 	name = "double bed"
@@ -503,7 +503,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 3
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/structure/nicedoublebed
 	name = "nice double bed"
@@ -515,7 +515,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/structure/table
 	name = "wooden table"
@@ -541,6 +541,16 @@
 	craftsound = null
 	wallcraft = TRUE
 	skillcraft = /datum/skill/craft/masonry
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/structure/grindstone
+	name = "grindstone"
+	result = /obj/structure/fluff/grindstone
+	reqs = list(/obj/item/natural/stone = 3)
+	verbage = "assembles"
+	craftsound = null
+	wallcraft = TRUE
+	skillcraft = /datum/skill/craft/masonry
 
 /datum/crafting_recipe/roguetown/structure/lever
 	name = "lever"
@@ -558,7 +568,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/trapdoor/TurfCheck(mob/user, turf/T)
 	if(istype(T,/turf/open/transparent/openspace))
@@ -574,7 +584,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/structure/dummy
 	name = "training dummy"
@@ -585,7 +595,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 1
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/structure/display_stand
 	name = "display stand"
@@ -595,7 +605,7 @@
 	verbage = "construct"
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/mannequin
 	name = "mannequin"
@@ -606,7 +616,7 @@
 	verbage = "construct"
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/mannequin_f
 	name = "feminine mannequin"
@@ -617,7 +627,7 @@
 	verbage = "construct"
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/passage
 	name = "passage"
@@ -627,7 +637,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/passage/TurfCheck(mob/user, turf/T)
 	if(istype(T,/turf/open/transparent/openspace))
@@ -646,7 +656,7 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 	wallcraft = TRUE
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/torchholder
 	name = "sconce"
@@ -656,7 +666,7 @@
 	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/wallcandle
 	name = "wall candles"
@@ -666,7 +676,7 @@
 	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/structure/stonewalldeco
 	name = "stone wall decoration"
@@ -676,7 +686,7 @@
 	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/statue
 	name = "statue"
@@ -685,4 +695,4 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry
-	craftdiff = 3
+	skill_level = 3

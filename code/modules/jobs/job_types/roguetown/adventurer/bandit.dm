@@ -3,8 +3,8 @@
 	flag = BANDIT
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 4
+	spawn_positions = 4
 	antag_job = TRUE
 	allowed_races = RACES_VERY_SHUNNED_UP	//Begone foul seelies. Your age of banditry is gone
 	tutorial = "Long ago you did a crime worthy of your bounty being hung on the wall outside of the local inn. You now live with your fellow freemen in the bog, and generally get up to no good."
@@ -24,6 +24,7 @@
 	PQ_boost_divider = 10
 
 	wanderer_examine = TRUE
+	foreign_examine = TRUE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = FALSE //no endless stream of bandits, unless the migration waves deem it so

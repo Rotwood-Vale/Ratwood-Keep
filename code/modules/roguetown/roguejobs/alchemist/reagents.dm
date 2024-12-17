@@ -63,7 +63,9 @@
 	metabolization_rate = 0.1
 
 /datum/reagent/organpoison/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER) && !HAS_TRAIT(M, TRAIT_ORGAN_EATER))
+	if(HAS_TRAIT(M, TRAIT_NASTY_EATER) || HAS_TRAIT(M, TRAIT_ORGAN_EATER) || HAS_TRAIT(M, TRAIT_WILD_EATER))
+		return ..()
+	else
 		M.add_nausea(9)
 		M.adjustToxLoss(3, 0)
 	return ..()
@@ -75,3 +77,22 @@
 	color = "#ebebeb"
 	taste_description = "salty and tangy"
 	metabolization_rate = 0.1
+
+/datum/reagent/erpjuice/cum/on_mob_life(mob/living/carbon/M) //Rejoice, cum whores can now very inefficiently drink cum to substain themselves.
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
+			H.adjust_hydration(1)
+			H.adjust_nutrition(0.5) //Semen is not very nutritious. The player can go about 3 rounds of cumming before needing to wait a long time code-wise to cum more.
+		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
+			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	..()
+
+/datum/crafting_recipe/roguetown/cooking/soap
+	name = "soap"
+	reqs = list(
+		/obj/item/ash = 1,
+		/datum/reagent/water = 10,
+		/obj/item/reagent_containers/food/snacks/fat = 1)
+	result = /obj/item/soap
+	skill_level = 5

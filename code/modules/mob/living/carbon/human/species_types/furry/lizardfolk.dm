@@ -5,16 +5,23 @@
 	name = "Sissean"
 	id = "lizardfolk"
 	desc = "<b>Sissean</b><br>\
-	Sisseans are semi-aquatic reptilian humanoids.\
-	Their skin is covered in scales and varied in color from dark green through to shades of brown and gray.\
-	Taller than humans and powerfully built, sisseans are often between 6 and 7 feet tall.\
-	Sisseans have non-prehensile muscular tails that grow to three or four feet in length, and these are used for balance.\
-	They also have sharp claws and teeth."
+	Sisseans are hardy, reptilian people that share a unique bond among their kind due to being the target \
+	of oppression and enslavement by other races, particularly by Humans and Drakians. They take pride in \
+	their resilience and adaptability, and they can be found all over the world for one reason or another."
+	expanded_desc = "Sisseans are hardy, reptilian people that share a unique bond among their kind due to being the target of oppression \
+	and enslavement by other races, particularly by Humans and Drakians. They take pride in their resilience and adaptability,\
+	and they can be found all over the world for one reason or another. Once a nomadic, tribal people, Sisseans are often forced \
+	to hide and settle in deserts, swamps, bogs, and other typically inhospitable lands. Their appearance changes based on the lands \
+	they adapt to, allowing for crocodilian appearance if from the swamp to lizard-like appearances if from the desert. \
+	<br><br> \
+	They can also be found in large, bustling cities, particularly slave cities where their strength, toughness, and endurance \
+	makes them particularly valuable. Sisseans often despise weakness and instead find solace in suffering. They tend to be \
+	highly religious, although of course, no race is monolithic. In fact, some Sisseans have become successful with some rising to \
+	the rank of nobility in many different kingdoms despite all adversity, but this often makes them targets of their jealous peers."
 	skin_tone_wording = "Skin Colors"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'

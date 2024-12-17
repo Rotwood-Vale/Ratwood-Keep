@@ -40,6 +40,7 @@
 #define TRAIT_SEEDKNOW "Seed Knower"
 #define TRAIT_GOODRUNNER "Good Runner"
 #define TRAIT_TINY "Tiny"
+#define TRAIT_STUDENT "Student"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -50,9 +51,12 @@
 #define TRAIT_ORGAN_EATER "Blessing of Graggar" //can eat organs
 #define TRAIT_VINE_WALKER "Blessing of Dendor"
 #define TRAIT_SOUL_EXAMINE "Blessing of Necra" //can check bodies to see if they have departed
+#define TRAIT_ZIZO_MARKED "Blessing of Zizo" //basically just here so that they can avoid a negative moodlet
 #define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
 #define TRAIT_CHOSEN "Astrata's Chosen"
+#define TRAIT_NOCTURNAL "Noc's Moonlight" //Grants weak darkvision- lighting alpha 145, amplified for mages using the DV spell- alpha 200
+#define TRAIT_FORGEBLESSED "Malum's Devout" //Reduces the fatigue cost of smithing a bit.
 
 #define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
 #define TRAIT_BASHDOORS "bashdoors"
@@ -142,6 +146,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_VINE_WALKER = "I can gracefully cross through weepvines.",
 	TRAIT_SOUL_EXAMINE = span_deadsay("I know when someone's soul has departed."),
 	TRAIT_CRACKHEAD = span_love("I can use drugs as much as I want!"),
+	TRAIT_ZIZO_MARKED = span_info("Zizo is steering me to evil and chaos, it feels amazing"),
 	TRAIT_COMMIE = span_bloody("I can recognize other free men, and they can recognize me too."),
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
@@ -152,6 +157,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
+	TRAIT_STUDENT = span_info("The scholar has taught me new skills!")
 ))
 
 // trait accessor defines
@@ -236,7 +242,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
 #define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness
 #define TRAIT_FAKEDEATH			"fakedeath" //Makes the owner appear as dead to most forms of medical examination
-#define TRAIT_XENO_HOST			"xeno_host"	//Tracks whether we're gonna be a baby alien's mummy.
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"
@@ -381,6 +386,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 // unique trait sources, still defines
 #define TRAIT_DARKVISION "darkvision"
+#define TRAIT_DARKVISION_BETTER "darkvisionbetter"
 #define CLONING_POD_TRAIT "cloning-pod"
 #define STATUE_MUTE "statue"
 #define CHANGELING_DRAIN "drain"
@@ -397,7 +403,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define ABDUCTOR_ANTAGONIST "abductor-antagonist"
 #define NUKEOP_TRAIT "nuke-op"
 #define DEATHSQUAD_TRAIT "deathsquad"
-#define MEGAFAUNA_TRAIT "megafauna"
 #define CLOWN_NUKE_TRAIT "clown-nuke"
 #define STICKY_MOUSTACHE_TRAIT "sticky-moustache"
 #define CHAINSAW_FRENZY_TRAIT "chainsaw-frenzy"
@@ -421,3 +426,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TIMESTOP_TRAIT "timestop"
 #define HUGBOX_TRAIT "hugbox"
 #define ADVENTURER_TRAIT "adventurer"
+
+#define TRAIT_I_AM_INVISIBLE_ON_A_BOAT "invisible_on_tram"

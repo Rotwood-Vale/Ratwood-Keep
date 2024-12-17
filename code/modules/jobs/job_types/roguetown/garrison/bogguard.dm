@@ -36,7 +36,7 @@
 	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		if(istype(H.cloak, /obj/item/clothing/cloak/raincloak/vanguard))
+		if(istype(H.cloak, /obj/item/clothing/cloak/shadow))
 			var/obj/item/clothing/S = H.cloak
 			var/index = findtext(H.real_name, " ")
 			if(index)
@@ -71,15 +71,15 @@
 
 /datum/outfit/job/roguetown/bog/pre_equip(mob/living/carbon/human/H)
 	head = /obj/item/clothing/head/roguetown/helmet/skullcap
-	armor = /obj/item/clothing/suit/roguetown/armor/gambeson
-	cloak = /obj/item/clothing/cloak/raincloak/vanguard
+	armor = /obj/item/clothing/suit/roguetown/shirt/shadow
+	cloak = /obj/item/clothing/cloak/shadow
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/bog
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-	beltl = /obj/item/keyring/bog_guard
+	shoes = /obj/item/clothing/shoes/roguetown/armor
+	beltl = /obj/item/storage/keyring/bog_guard
 	belt = /obj/item/storage/belt/rogue/leather
 
 /datum/outfit/job/roguetown/ranger/pre_equip(mob/living/carbon/human/H)

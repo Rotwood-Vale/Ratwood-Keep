@@ -26,6 +26,7 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	PQ_boost_divider = 10
 
 	wanderer_examine = TRUE
+	foreign_examine = TRUE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = TRUE

@@ -18,6 +18,11 @@
 	icon_state = "ring_s"
 	sellprice = 33
 
+/obj/item/clothing/ring/copper
+	name = "copper ring"
+	icon_state = "ring_c"
+	sellprice = 15
+
 /obj/item/clothing/ringP  /////////////////////// cast focus ring for acolytes and shit.
 	parent_type = /obj/item/clothing/neck/roguetown/psicross
 	name = "psi ring"
@@ -31,6 +36,10 @@
 	slot_flags = ITEM_SLOT_RING
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
+
+/obj/item/clothing/ringP/graggar
+	name = "corrupted psi ring"
+	desc = "A tainted psi ring, used by the ruinous powers."
 
 /obj/item/clothing/ring/gold
 	name = "gold ring"
@@ -58,7 +67,7 @@
 	slot_flags = ITEM_SLOT_RING
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/blacksmithing
-	fuel = 9999 
+	fuel = 9999
 	sellprice = 30
 
 /obj/item/clothing/ring/lantern/MiddleClick(mob/living/user, params)
@@ -189,6 +198,39 @@
 	name = "dorpel ring"
 	icon_state = "s_ring_diamond"
 	sellprice = 230
+
+// Copper Rings
+
+/obj/item/clothing/ring/emeraldc
+	name = "gemerald ring"
+	icon_state = "c_ring_emerald"
+	sellprice = 110
+
+/obj/item/clothing/ring/rubyc
+	name = "rontz ring"
+	icon_state = "c_ring_ruby"
+	sellprice = 155
+
+/obj/item/clothing/ring/topazc
+	name = "toper ring"
+	icon_state = "c_ring_topaz"
+	sellprice = 105
+
+/obj/item/clothing/ring/quartzc
+	name = "blortz ring"
+	icon_state = "c_ring_quartz"
+	sellprice = 150
+
+/obj/item/clothing/ring/sapphirec
+	name = "saffira ring"
+	icon_state = "c_ring_sapphire"
+	sellprice = 115
+
+/obj/item/clothing/ring/diamondc
+	name = "dorpel ring"
+	icon_state = "c_ring_diamond"
+	sellprice = 170
+
 
 /obj/item/clothing/ring/dragon_ring
 	name = "dragon ring"

@@ -14,7 +14,7 @@
 /datum/sex_action/force_armpit_nuzzle/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
-	if(!get_location_accessible(user, BODY_ZONE_CHEST))
+	if(!get_location_accessible(user, BODY_ZONE_L_ARM) && !get_location_accessible(user, BODY_ZONE_R_ARM))
 		return FALSE
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_MOUTH))
 		return FALSE

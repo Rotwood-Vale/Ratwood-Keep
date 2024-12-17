@@ -18,9 +18,3 @@ GLOBAL_DATUM_INIT(notcontained_state, /datum/ui_state/notcontained_state, new)
 	if(src_object.contains(src))
 		return UI_CLOSE // Close if we're inside it.
 	return default_can_use_topic(src_object)
-
-/mob/living/silicon/notcontained_can_use_topic(src_object)
-	return default_can_use_topic(src_object) // Silicons use default bevhavior.
-
-/mob/living/simple_animal/drone/notcontained_can_use_topic(src_object)
-	return default_can_use_topic(src_object) // Drones use default bevhavior.

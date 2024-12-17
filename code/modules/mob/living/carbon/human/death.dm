@@ -6,9 +6,9 @@
 
 /mob/living/carbon/human/spawn_gibs(with_bodyparts)
 	if(with_bodyparts)
-		new /obj/effect/gibspawner/human(drop_location(), src, get_static_viruses())
+		new /obj/effect/gibspawner/human(drop_location(), src)
 	else
-		new /obj/effect/gibspawner/human/bodypartless(drop_location(), src, get_static_viruses())
+		new /obj/effect/gibspawner/human/bodypartless(drop_location(), src)
 
 /mob/living/carbon/human/spawn_dust(just_ash = FALSE)
 	if(just_ash)
@@ -125,19 +125,11 @@
 
 	dizziness = 0
 	jitteriness = 0
-
-	if(ismecha(loc))
-		var/obj/mecha/M = loc
-		if(M.occupant == src)
-			M.go_out()
-
 	dna.species.spec_death(gibbed, src)
 
 	if(SSticker.HasRoundStarted())
 		SSblackbox.ReportDeath(src)
 		log_message("has died (BRUTE: [src.getBruteLoss()], BURN: [src.getFireLoss()], TOX: [src.getToxLoss()], OXY: [src.getOxyLoss()], CLONE: [src.getCloneLoss()])", LOG_ATTACK)
-	if(is_devil(src))
-		INVOKE_ASYNC(is_devil(src), TYPE_PROC_REF(/datum/antagonist/devil, beginResurrectionCheck), src)
 
 /mob/living/carbon/human/revive(full_heal, admin_revive)
 	. = ..()

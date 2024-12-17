@@ -148,7 +148,7 @@
 			else
 				used_limb = affecting.body_zone
 		return used_limb
-	
+
 	affecting = get_bodypart(check_zone(override_zone))
 	if(override_zone && affecting)
 		if(override_zone in affecting.grabtargets)
@@ -200,7 +200,6 @@
 	if(!lying_attack_check(user, I))
 		return
 	affecting = get_bodypart(check_zone(useder)) //precise attacks, on yourself or someone you are grabbing
-	user.mob_timers[MT_SNEAKATTACK] = world.time //Stops you from sneaking after hitting someone else.
 	if(!affecting) //missing limb
 		to_chat(user, span_warning("Unfortunately, there's nothing there."))
 		return FALSE
@@ -244,9 +243,6 @@
 			playsound(get_turf(src), I.get_dismember_sound(), 80, TRUE)
 		return TRUE //successful attack
 
-/mob/living/carbon/attack_drone(mob/living/simple_animal/drone/user)
-	return //so we don't call the carbon's attack_hand().
-
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /mob/living/carbon/attack_hand(mob/living/carbon/human/user)
 	if(!lying_attack_check(user))
@@ -256,16 +252,6 @@
 		to_chat(user, span_warning("[src] is missing that."))
 		return FALSE
 
-	for(var/thing in diseases)
-		var/datum/disease/D = thing
-		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
-			user.ContactContractDisease(D)
-
-	for(var/thing in user.diseases)
-		var/datum/disease/D = thing
-		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
-			ContactContractDisease(D)
-	
 	if(!user.cmode)
 		var/try_to_fail = !istype(user.rmb_intent, /datum/rmb_intent/weak)
 		var/list/possible_steps = list()
@@ -296,48 +282,11 @@
 
 
 /mob/living/carbon/attack_paw(mob/living/carbon/monkey/M)
-	if(can_inject(M, TRUE))
-		for(var/thing in diseases)
-			var/datum/disease/D = thing
-			if((D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN) && prob(85))
-				M.ContactContractDisease(D)
-
-	for(var/thing in M.diseases)
-		var/datum/disease/D = thing
-		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
-			ContactContractDisease(D)
-
 	if(M.used_intent.type == INTENT_HELP)
 		help_shake_act(M)
 		return 0
 
 	if(..()) //successful monkey bite.
-		for(var/thing in M.diseases)
-			var/datum/disease/D = thing
-			ForceContractDisease(D)
-		return 1
-
-
-/mob/living/carbon/attack_slime(mob/living/simple_animal/slime/M)
-	if(..()) //successful slime attack
-		if(M.powerlevel > 0)
-			var/stunprob = M.powerlevel * 7 + 10  // 17 at level 1, 80 at level 10
-			if(prob(stunprob))
-				M.powerlevel -= 3
-				if(M.powerlevel < 0)
-					M.powerlevel = 0
-
-				visible_message(span_danger("The [M.name] has shocked [src]!"), \
-				span_danger("The [M.name] has shocked you!"))
-
-				do_sparks(5, TRUE, src)
-				var/power = M.powerlevel + rand(0,3)
-				Paralyze(power*20)
-				if(stuttering < power)
-					stuttering = power
-				if (prob(stunprob) && M.powerlevel >= 8)
-					adjustFireLoss(M.powerlevel * rand(6,10))
-					updatehealth()
 		return 1
 
 /mob/living/carbon/proc/dismembering_strike(mob/living/attacker, dam_zone)
@@ -361,14 +310,6 @@
 			return null
 		return affecting.body_zone
 	return dam_zone
-
-
-/mob/living/carbon/blob_act(obj/structure/blob/B)
-	if (stat == DEAD)
-		return
-	else
-		show_message(span_danger("The blob attacks!"))
-		adjustBruteLoss(10)
 
 /mob/living/carbon/emp_act(severity)
 	. = ..()
@@ -420,14 +361,20 @@
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(on_fire)
-		to_chat(M, span_warning("I can't put [p_them()] out with just my bare hands!"))
+		if(M.gloves)
+			M.changeNext_move(CLICK_CD_MELEE)
+			M.visible_message(span_warning("[M] pats out the flames on [src]!"))
+			adjust_fire_stacks(-2)
+			M.gloves.take_damage(10, BURN, "fire")
+		else
+			to_chat(M, span_warning("I can't put [p_them()] out with just my bare hands!"))
 		return
 
 //	if(!(mobility_flags & MOBILITY_STAND))
 //		if(buckled)
 //			to_chat(M, span_warning("I need to unbuckle [src] first to do that!"))
 //			return
-//		M.visible_message(span_notice("[M] shakes [src] trying to get [p_them()] up!"), span_notice("I shake [src] trying to get [p_them()] up!"))					
+//		M.visible_message(span_notice("[M] shakes [src] trying to get [p_them()] up!"), span_notice("I shake [src] trying to get [p_them()] up!"))
 //	else
 	M.visible_message(span_notice("[M] shakes [src]."), \
 				span_notice("I shake [src] to get [p_their()] attention."))
@@ -452,7 +399,7 @@
 		if(Wing == null)
 			to_chat(M, span_warning("They cant stand without their wings!"))
 			return
-	
+
 	set_resting(FALSE)
 
 	playsound(loc, 'sound/blank.ogg', 50, TRUE, -1)
@@ -500,14 +447,10 @@
 
 			else
 				to_chat(src, span_warning("My eyes are really starting to hurt. This can't be good for you!"))
-		if(has_bane(BANE_LIGHT))
-			mind.disrupt_spells(-500)
 		return 1
 	else if(damage == 0) // just enough protection
 		if(prob(20))
 			to_chat(src, span_notice("Something bright flashes in the corner of my vision!"))
-		if(has_bane(BANE_LIGHT))
-			mind.disrupt_spells(0)
 
 
 /mob/living/carbon/soundbang_act(intensity = 1, stun_pwr = 20, damage_pwr = 5, deafen_pwr = 15)

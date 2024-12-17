@@ -10,16 +10,13 @@
 /datum/outfit/job/roguetown/adventurer/fisher/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, pick(0,0,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, pick(0,1,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, pick(0,1,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, pick(0,1,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, pick(2,2,3), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, pick(1,1,2), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, pick(1,1,2), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, pick(1,2,2,3), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, pick(3,3,4), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE) //idk why the fisher gets bows
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE) //Fishers should be good at gutting particularly ornery fish.
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) //Fishers should be good at spearfishing and harpooning their prey.
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)

@@ -6,6 +6,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/lord/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -58,6 +59,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/lady/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -99,6 +101,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/hand/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -141,6 +144,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/knight/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -213,6 +217,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 /datum/outfit/job/roguetown/heartfelt/magos
 	allowed_patrons = list(/datum/patron/divine/noc)
@@ -229,7 +234,7 @@
 	id = /obj/item/clothing/ring/gold
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/slimepotion/lovepotion,/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
+	backpack_contents = list(/obj/item/lovepotion,/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
@@ -272,6 +277,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
+	show_foreign_examine = FALSE
 
 
 /datum/outfit/job/roguetown/heartfelt/prior
@@ -279,7 +285,6 @@
 
 /datum/outfit/job/roguetown/heartfelt/prior/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 	head = /obj/item/clothing/head/roguetown/priestmask
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
@@ -312,3 +317,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_priest(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+
+/datum/outfit/job/roguetown/heartfelt/prior/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = TRUE

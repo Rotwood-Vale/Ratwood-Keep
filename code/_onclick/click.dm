@@ -186,10 +186,6 @@
 	if(dir == get_dir(A,src)) //they are behind us and we are not facing them
 		return
 
-	if(ismecha(loc))
-		var/obj/mecha/M = loc
-		return M.click_action(A,src,params)
-
 	if(restrained())
 		changeNext_move(CLICK_CD_HANDCUFFED)   //Doing shit in cuffs shall be vey slow
 		RestrainedClickOn(A)
@@ -264,7 +260,7 @@
 
 	// Allows you to click on a box's contents, if that box is on the ground, but no deeper than that
 	if(isturf(A) || isturf(A.loc) || (A.loc && isturf(A.loc.loc)))
-		if(A.Adjacent(src))
+		if(CanReach(A) || CanReach(A, W))
 			if(isopenturf(A))
 				var/turf/T = A
 				if(used_intent.noaa)

@@ -67,15 +67,6 @@
 	var/chopping_sound = FALSE // does it play a choppy sound when batch sliced?
 	var/slice_sound = FALSE // does it play the slice sound when sliced?
 
-/obj/item/reagent_containers/food/snacks/proc/changefood(path, mob/living/eater)
-	if(!path || !eater)
-		return
-	var/turf/T = get_turf(eater)
-	if(eater.dropItemToGround(src))
-		qdel(src)
-	var/obj/item/I = new path(T)
-	eater.put_in_active_hand(I)
-
 /obj/effect/decal/cleanable/food/mess // decal applied when throwing minced meat for example
 	name = "mess"
 	desc = ""
@@ -110,11 +101,23 @@
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 
+/obj/item/kitchen/ironspoon/pewter
+	name = "pewter spoon"
+	desc = "Traditional utensil for shoveling soup into your mouth, made from Pewter alloy for fancyness."
+	icon_state = "spoon_pewter"
+	sellprice = 10
+
+/obj/item/kitchen/ironspoon/silver
+	name = "silver spoon"
+	desc = "Traditional utensil for shoveling soup into your mouth. There are tales of noblemen growing up with these in their mouths."
+	icon_state = "spoon_silver"
+	sellprice = 30
+
 /obj/item/kitchen/fork
 	name = "wooden fork"
 	desc = "Traditional utensil for stabbing your food in order to shove it into your mouth."
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
-	icon_state = "fork_iron" //should be "fork" but there's currently no icon, this is temporary, FIX ASAP!!
+	icon_state = "fork"
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 
@@ -125,6 +128,18 @@
 	icon_state = "fork_iron"
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/kitchen/ironfork/pewter
+	name = "pewter fork"
+	desc = "Traditional utensil for stabbing your food, this one looks fancy!"
+	icon_state = "fork_pewter"
+	sellprice = 10
+
+/obj/item/kitchen/ironfork/silver
+	name = "silver fork"
+	desc = "Traditional utensil for stabbing your food. The opposite of a silver spoon?"
+	icon_state = "fork_silver"
+	sellprice = 30
 
 /obj/item/kitchen/rollingpin
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
@@ -163,6 +178,18 @@
 
 /obj/item/reagent_containers/glass/bowl/iron
 	icon_state = "bowl_iron"
+
+/obj/item/reagent_containers/glass/bowl/silver
+	name = "silver bowl"
+	desc = "It is the empty space that makes the bowl useful. Made with fancy silver!"
+	icon_state = "bowl_silver"
+	sellprice = 30
+
+/obj/item/reagent_containers/glass/bowl/pewter
+	name = "pewter bowl"
+	desc = "It is the empty space that makes the bowl useful. Decorated and made with pewter!"
+	icon_state = "bowl_pewter"
+	sellprice = 10
 
 /obj/item/reagent_containers/glass/bowl/update_icon()
 	cut_overlays()
@@ -223,7 +250,13 @@
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
-	
+
+/obj/item/reagent_containers/glass/cup/pewter
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	experimental_inhand = FALSE
+
 /obj/item/cooking/pan
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
@@ -249,6 +282,18 @@
 	resistance_flags = NONE
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	experimental_inhand = FALSE
+
+/obj/item/cooking/platter/pewter
+	name = "pewter platter"
+	desc = "Made from an alloy of tin and mercury. Rolls off the tongue quite nicely."
+	icon_state = "p_platter"
+	sellprice = 10
+
+/obj/item/cooking/platter/silver
+	name = "silver platter"
+	desc = "Made from polished silver. Fancy!"
+	icon_state = "s_platter"
+	sellprice = 30
 
 /obj/item/book/rogue/yeoldecookingmanual // new book with some tips to learn
 	name = "Ye olde ways of cookinge"

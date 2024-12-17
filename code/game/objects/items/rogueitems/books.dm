@@ -105,72 +105,61 @@
 /obj/item/book/rogue/update_icon()
 	icon_state = "[base_icon_state]_[open]"
 
+
 /obj/item/book/rogue/secret/ledger
 	name = "catatoma"
 	icon_state = "ledger_0"
 	base_icon_state = "ledger"
 	title = "Catatoma"
-	dat = "To create a shipping order, use a papyrus on me."
+	desc = "A ledger for shipping orders. It can be combined with a papyrus to create a shipping order."
 
 /obj/item/book/rogue/secret/ledger/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/paper/scroll/cargo))
 		if(!open)
-			to_chat(user, span_info("Open me first."))
+			to_chat(user, "<span class='info'>Open me first.</span>")
 			return FALSE
 		var/obj/item/paper/scroll/cargo/C = I
-		if(C.orders.len > 4)
-			to_chat(user, span_warning("Too much order."))
+		if(C.orders.len > 6)
+			to_chat(user, "<span class='warning'>Too much order.</span>")
 			return
-		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSshuttle.supply_cats)
+		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSmerchant.supply_cats)
 		if(!picked_cat)
 			testing("yeye")
 			return
 		var/list/pax = list()
-		for(var/pack in SSshuttle.supply_packs)
-			var/datum/supply_pack/PA = SSshuttle.supply_packs[pack]
+		for(var/pack in SSmerchant.supply_packs)
+			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == picked_cat)
 				pax += PA
-		var/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
+		var/datum/supply_pack/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
 		if(!picked_pack)
 			return
-		var/namer = user.name
-		var/rankr = "None"
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			namer = H.get_authentification_name()
-			rankr = H.get_assignment(hand_first = TRUE)
-		var/datum/supply_order/SO = new (picked_pack, namer, rankr, user.ckey, "None", SSeconomy.get_dep_account(ACCOUNT_CAR))
-		C.orders += SO
+
+		C.orders += picked_pack
 		C.rebuild_info()
 		return
 	if(istype(I, /obj/item/paper/scroll))
 		if(!open)
-			to_chat(user, span_info("Open me first."))
+			to_chat(user, "<span class='info'>Open me first.</span>")
 			return FALSE
 		var/obj/item/paper/scroll/P = I
 		if(P.info)
-			to_chat(user, span_warning("Something is written here already."))
+			to_chat(user, "<span class='warning'>Something is written here already.</span>")
 			return
-		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSshuttle.supply_cats)
+		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSmerchant.supply_cats)
 		if(!picked_cat)
 			return
 		var/list/pax = list()
-		for(var/pack in SSshuttle.supply_packs)
-			var/datum/supply_pack/PA = SSshuttle.supply_packs[pack]
+		for(var/pack in SSmerchant.supply_packs)
+			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == picked_cat)
 				pax += PA
-		var/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
+		var/datum/supply_pack/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
 		if(!picked_pack)
 			return
 		var/obj/item/paper/scroll/cargo/C = new(user.loc)
-		var/namer = user.name
-		var/rankr = "None"
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			namer = H.get_authentification_name()
-			rankr = H.get_assignment(hand_first = TRUE)
-		var/datum/supply_order/SO = new (picked_pack, namer, rankr, user.ckey, "None", SSeconomy.get_dep_account(ACCOUNT_CAR))
-		C.orders += SO
+
+		C.orders += picked_pack
 		C.rebuild_info()
 		user.dropItemToGround(P)
 		qdel(P)
@@ -237,7 +226,7 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = ""
+	desc = "Issued by the Chancery of the Kingdom to serve as the legal framework for the realm."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
 	bookfile = "law.json"

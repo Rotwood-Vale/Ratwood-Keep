@@ -7,6 +7,8 @@
 	sheet_type = null
 	baseturfs = list(/turf/open/floor/rogue/dirt/road)
 	wallclimb = TRUE
+	explosion_block = 10
+	damage_deflection = 0
 	icon = 'icons/turf/roguewall.dmi'
 
 /turf/closed/wall/mineral/rogue/Initialize()
@@ -32,11 +34,13 @@
 	neighborlay = "dirtedge"
 	climbdiff = 3
 	damage_deflection = 10
+	hardness = 3
 
 /turf/closed/wall/mineral/rogue/stone/window
 	name = "stone window"
 	desc = "A window with solid and sturdy stone frame."
 	opacity = FALSE
+	explosion_block = 2
 	max_integrity = 1300
 
 /turf/closed/wall/mineral/rogue/stone/window/CanPass(atom/movable/mover, turf/target)
@@ -75,6 +79,7 @@
 	neighborlay = "dirtedge"
 	climbdiff = 3
 	damage_deflection = 10
+	hardness = 1
 
 
 /turf/closed/wall/mineral/rogue/stonebrick
@@ -95,6 +100,7 @@
 	neighborlay = "dirtedge"
 	climbdiff = 4
 	damage_deflection = 20
+	hardness = 2
 
 /turf/closed/wall/mineral/rogue/wood
 	name = "wooden wall"
@@ -111,11 +117,14 @@
 	baseturfs = list(/turf/open/floor/rogue/ruinedwood)
 	neighborlay = "dirtedge"
 	climbdiff = 3
+	explosion_block = 4
+	hardness = 7
 
 /turf/closed/wall/mineral/rogue/wood/window
 	name = "wooden window"
 	desc = "A window with rough hewn wood frame."
 	opacity = FALSE
+	explosion_block = 1
 	max_integrity = 550
 
 /turf/closed/wall/mineral/rogue/wood/window/CanPass(atom/movable/mover, turf/target)
@@ -143,6 +152,8 @@
 	baseturfs = list(/turf/open/floor/rogue/twig)
 	neighborlay = "dirtedge"
 	climbdiff = 99 //how are you even supposed to climb a tent??
+	explosion_block = 0
+	hardness = 70
 
 /turf/closed/wall/mineral/rogue/wooddark
 	name = "dark wood wall"
@@ -158,6 +169,8 @@
 	baseturfs = list(/turf/open/floor/rogue/ruinedwood)
 	neighborlay = "dirtedge"
 	climbdiff = 3
+	explosion_block = 4
+	hardness = 7
 
 /turf/closed/wall/mineral/rogue/wooddark/horizontal
 	icon_state = "horizwooddark"
@@ -175,6 +188,7 @@
 	name = "dark wood window"
 	icon_state = "subwindow"
 	opacity = FALSE
+	explosion_block = 1
 	max_integrity = 850
 
 /turf/closed/wall/mineral/rogue/wooddark/window/CanPass(atom/movable/mover, turf/target)
@@ -195,6 +209,7 @@
 	baseturfs = list(/turf/open/floor/rogue/ruinedwood)
 	neighborlay = "dirtedge"
 	climbdiff = 3
+	hardness = 7
 
 /turf/closed/wall/mineral/rogue/roofwall/center
 	icon_state = "roofTurf_I"
@@ -222,6 +237,8 @@
 	baseturfs = list(/turf/open/floor/rogue/ruinedwood)
 	neighborlay = "dirtedge"
 	climbdiff = 3
+	explosion_block = 4
+	hardness = 7
 
 /turf/closed/wall/mineral/rogue/decowood/Initialize()
 	. = ..()
@@ -247,6 +264,7 @@
 	baseturfs = list(/turf/open/floor/rogue/blocks)
 	neighborlay = "dirtedge"
 	climbdiff = 3
+	hardness = 2
 
 /turf/closed/wall/mineral/rogue/decostone/long
 	icon_state = "decostone-l"
@@ -286,6 +304,8 @@
 	opacity = 1
 	density = TRUE
 	max_integrity = 200
+	explosion_block = 0
+	hardness = 90
 //	layer = EDGED_TURF_LAYER /ROGTODO make these have borders and smooth
 	temperature = TCMB
 	sheet_type = null
@@ -342,6 +362,7 @@
 	baseturfs = list(/turf/open/floor/rogue/concrete)
 	climbdiff = 4
 	damage_deflection = 20
+	hardness = 10
 
 /turf/closed/wall/mineral/rogue/stone/blue_moss
 	icon = 'icons/turf/walls/blue_mossy.dmi'

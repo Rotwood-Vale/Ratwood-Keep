@@ -57,64 +57,6 @@
 	desc = ""
 	icon_state = "power_regen"
 
-/datum/status_effect/cyborg_power_regen/tick()
-	var/mob/living/silicon/robot/cyborg = owner
-	if(!istype(cyborg) || !cyborg.cell)
-		qdel(src)
-		return
-	playsound(cyborg, 'sound/blank.ogg', 50, TRUE)
-	cyborg.cell.give(power_to_give)
-
-/datum/status_effect/his_grace
-	id = "his_grace"
-	duration = -1
-	tick_interval = 4
-	alert_type = /atom/movable/screen/alert/status_effect/his_grace
-	var/bloodlust = 0
-
-/atom/movable/screen/alert/status_effect/his_grace
-	name = "His Grace"
-	desc = ""
-	icon_state = "his_grace"
-	alerttooltipstyle = "hisgrace"
-
-/atom/movable/screen/alert/status_effect/his_grace/MouseEntered(location,control,params)
-	desc = initial(desc)
-	var/datum/status_effect/his_grace/HG = attached_effect
-	desc += "<br><font size=3><b>Current Bloodthirst: [HG.bloodlust]</b></font>\
-	<br>Becomes undroppable at <b>[HIS_GRACE_FAMISHED]</b>\
-	<br>Will consume you at <b>[HIS_GRACE_CONSUME_OWNER]</b>"
-	..()
-
-/datum/status_effect/his_grace/on_apply()
-	owner.log_message("gained His Grace's stun immunity", LOG_ATTACK)
-	owner.add_stun_absorption("hisgrace", INFINITY, 3, null, "His Grace protects you from the stun!")
-	return ..()
-
-/datum/status_effect/his_grace/tick()
-	bloodlust = 0
-	var/graces = 0
-	for(var/obj/item/his_grace/HG in owner.held_items)
-		if(HG.bloodthirst > bloodlust)
-			bloodlust = HG.bloodthirst
-		if(HG.awakened)
-			graces++
-	if(!graces)
-		owner.apply_status_effect(STATUS_EFFECT_HISWRATH)
-		qdel(src)
-		return
-	var/grace_heal = bloodlust * 0.05
-	owner.adjustBruteLoss(-grace_heal)
-	owner.adjustFireLoss(-grace_heal)
-	owner.adjustToxLoss(-grace_heal, TRUE, TRUE)
-	owner.adjustOxyLoss(-(grace_heal * 2))
-	owner.adjustCloneLoss(-grace_heal)
-
-/datum/status_effect/his_grace/on_remove()
-	owner.log_message("lost His Grace's stun immunity", LOG_ATTACK)
-	if(islist(owner.stun_absorption) && owner.stun_absorption["hisgrace"])
-		owner.stun_absorption -= "hisgrace"
-
 
 /datum/status_effect/wish_granters_gift //Fully revives after ten seconds.
 	id = "wish_granters_gift"
@@ -134,35 +76,6 @@
 	name = "Wish Granter's Immortality"
 	desc = ""
 	icon_state = "wish_granter"
-
-/datum/status_effect/cult_master
-	id = "The Cult Master"
-	duration = -1
-	alert_type = null
-	on_remove_on_mob_delete = TRUE
-	var/alive = TRUE
-
-/datum/status_effect/cult_master/proc/deathrattle()
-	if(!QDELETED(GLOB.cult_narsie))
-		return //if Nar'Sie is alive, don't even worry about it
-	var/area/A = get_area(owner)
-	for(var/datum/mind/B in SSticker.mode.cult)
-		if(isliving(B.current))
-			var/mob/living/M = B.current
-			SEND_SOUND(M, sound('sound/blank.ogg'))
-			to_chat(M, span_cultlarge("The Cult's Master, [owner], has fallen in \the [A]!"))
-
-/datum/status_effect/cult_master/tick()
-	if(owner.stat != DEAD && !alive)
-		alive = TRUE
-		return
-	if(owner.stat == DEAD && alive)
-		alive = FALSE
-		deathrattle()
-
-/datum/status_effect/cult_master/on_remove()
-	deathrattle()
-	. = ..()
 
 /datum/status_effect/blooddrunk
 	id = "blooddrunk"
@@ -356,95 +269,6 @@
 /datum/status_effect/exercised/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSprocessing, src)
-
-//Hippocratic Oath: Applied when the Rod of Asclepius is activated.
-/datum/status_effect/hippocraticOath
-	id = "Hippocratic Oath"
-	status_type = STATUS_EFFECT_UNIQUE
-	duration = -1
-	tick_interval = 25
-	examine_text = span_notice("They seem to have an aura of healing and helpfulness about them.")
-	alert_type = null
-	var/hand
-	var/deathTick = 0
-
-/datum/status_effect/hippocraticOath/on_apply()
-	//Makes the user passive, it's in their oath not to harm!
-	ADD_TRAIT(owner, TRAIT_PACIFISM, "hippocraticOath")
-	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
-	H.add_hud_to(owner)
-	return ..()
-
-/datum/status_effect/hippocraticOath/on_remove()
-	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "hippocraticOath")
-	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
-	H.remove_hud_from(owner)
-
-/datum/status_effect/hippocraticOath/tick()
-	if(owner.stat == DEAD)
-		if(deathTick < 4)
-			deathTick += 1
-		else
-			owner.visible_message(span_notice("[owner]'s soul is absorbed into the rod, relieving the previous snake of its duty."))
-			var/mob/living/simple_animal/hostile/retaliate/poison/snake/healSnake = new(owner.loc)
-			var/list/chems = list(/datum/reagent/medicine/sal_acid, /datum/reagent/medicine/C2/convermol, /datum/reagent/medicine/oxandrolone)
-			healSnake.poison_type = pick(chems)
-			healSnake.name = "Asclepius's Snake"
-			healSnake.real_name = "Asclepius's Snake"
-			healSnake.desc = ""
-			new /obj/item/ash(owner.loc)
-			new /obj/item/rod_of_asclepius(owner.loc)
-			qdel(owner)
-	else
-		if(iscarbon(owner))
-			var/mob/living/carbon/itemUser = owner
-			var/obj/item/heldItem = itemUser.get_item_for_held_index(hand)
-			if(heldItem == null || heldItem.type != /obj/item/rod_of_asclepius) //Checks to make sure the rod is still in their hand
-				var/obj/item/rod_of_asclepius/newRod = new(itemUser.loc)
-				newRod.activated()
-				if(!itemUser.has_hand_for_held_index(hand))
-					//If user does not have the corresponding hand anymore, give them one and return the rod to their hand
-					if(((hand % 2) == 0))
-						var/obj/item/bodypart/L = itemUser.newBodyPart(BODY_ZONE_R_ARM, FALSE, FALSE)
-						L.attach_limb(itemUser)
-						itemUser.put_in_hand(newRod, hand, forced = TRUE)
-					else
-						var/obj/item/bodypart/L = itemUser.newBodyPart(BODY_ZONE_L_ARM, FALSE, FALSE)
-						L.attach_limb(itemUser)
-						itemUser.put_in_hand(newRod, hand, forced = TRUE)
-					to_chat(itemUser, span_notice("My arm suddenly grows back with the Rod of Asclepius still attached!"))
-				else
-					//Otherwise get rid of whatever else is in their hand and return the rod to said hand
-					itemUser.put_in_hand(newRod, hand, forced = TRUE)
-					to_chat(itemUser, span_notice("The Rod of Asclepius suddenly grows back out of my arm!"))
-			//Because a servant of medicines stops at nothing to help others, lets keep them on their toes and give them an additional boost.
-			if(itemUser.health < itemUser.maxHealth)
-				new /obj/effect/temp_visual/heal(get_turf(itemUser), "#375637")
-			itemUser.adjustBruteLoss(-1.5)
-			itemUser.adjustFireLoss(-1.5)
-			itemUser.adjustToxLoss(-1.5, forced = TRUE) //Because Slime People are people too
-			itemUser.adjustOxyLoss(-1.5)
-			itemUser.adjustStaminaLoss(-1.5)
-			itemUser.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1.5)
-			itemUser.adjustCloneLoss(-0.5) //Becasue apparently clone damage is the bastion of all health
-		//Heal all those around you, unbiased
-		for(var/mob/living/L in view(7, owner))
-			if(L.health < L.maxHealth)
-				new /obj/effect/temp_visual/heal(get_turf(L), "#375637")
-			if(iscarbon(L))
-				L.adjustBruteLoss(-3.5)
-				L.adjustFireLoss(-3.5)
-				L.adjustToxLoss(-3.5, forced = TRUE) //Because Slime People are people too
-				L.adjustOxyLoss(-3.5)
-				L.adjustStaminaLoss(-3.5)
-				L.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3.5)
-				L.adjustCloneLoss(-1) //Becasue apparently clone damage is the bastion of all health
-			else if(issilicon(L))
-				L.adjustBruteLoss(-3.5)
-				L.adjustFireLoss(-3.5)
-			else if(isanimal(L))
-				var/mob/living/simple_animal/SM = L
-				SM.adjustHealth(-3.5, forced = TRUE)
 
 /datum/status_effect/good_music
 	id = "Good Music"

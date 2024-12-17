@@ -30,7 +30,27 @@
 	item_state = "pouch"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	max_storage = 10
-	ammo_type = list(/obj/item/ammo_casing/caseless/rogue/bullet)
+	ammo_type = list(/obj/item/ammo_casing) //common denominator type for runelock and arquebus bullets
+
+/obj/item/ammo_holder/quiver/attack_turf(turf/T, mob/living/user)
+	if(ammo.len >= max_storage)
+		to_chat(user, span_warning("Your [src.name] is full!"))
+		return
+	to_chat(user, span_notice("You begin to gather the ammunition..."))
+	for(var/obj/item/ammo_casing/caseless/rogue/arrow in T.contents)
+		if(do_after(user, 5))
+			if(!eatarrow(arrow))
+				break
+
+/obj/item/ammo_holder/quiver/proc/eatarrow(obj/A)
+	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
+		if(ammo.len < max_storage)
+			A.forceMove(src)
+			ammo += A
+			update_icon()
+			return TRUE
+		else
+			return FALSE
 
 /obj/item/ammo_holder/attackby(obj/A, loc, params)
 	for(var/i in ammo_type)
@@ -90,9 +110,24 @@
 /obj/item/ammo_holder/bullet/runed/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/ammo_casing/caseless/rogue/bullet/A = new()
-		ammo += A
+		var/obj/item/ammo_casing/caseless/runelock/R = new()
+		ammo += R
 	update_icon()
+
+/obj/item/ammo_holder/bullet/lead/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/ammo_casing/caseless/lead/B = new()
+		ammo += B
+	update_icon()
+
+/obj/item/ammo_holder/bullet/grapeshot/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/ammo_casing/caseless/grapeshot/B = new()
+		ammo += B
+	update_icon()
+
 /*
 /obj/item/ammo_holder/Parrows/Initialize()
 	..()

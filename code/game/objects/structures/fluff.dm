@@ -12,103 +12,6 @@
 	max_integrity = 150
 	var/deconstructible = TRUE
 
-/obj/structure/fluff/attackby(obj/item/I, mob/living/user, params)
-	if(I.tool_behaviour == TOOL_WRENCH && deconstructible)
-		user.visible_message(span_notice("[user] starts disassembling [src]..."), span_notice("I start disassembling [src]..."))
-		I.play_tool_sound(src)
-		if(I.use_tool(src, user, 50))
-			user.visible_message(span_notice("[user] disassembles [src]!"), span_notice("I break down [src] into scrap metal."))
-			playsound(user, 'sound/blank.ogg', 50, TRUE)
-			new/obj/item/stack/sheet/metal(drop_location())
-			qdel(src)
-		return
-	. = ..()
-
-/obj/structure/fluff/empty_terrarium //Empty terrariums are created when a preserved terrarium in a lavaland seed vault is activated.
-	name = "empty terrarium"
-	desc = ""
-	icon = 'icons/obj/lavaland/spawners.dmi'
-	icon_state = "terrarium_open"
-	density = TRUE
-
-/obj/structure/fluff/empty_sleeper //Empty sleepers are created by a good few ghost roles in lavaland.
-	name = "empty sleeper"
-	desc = ""
-	icon = 'icons/obj/machines/sleeper.dmi'
-	icon_state = "sleeper-open"
-
-/obj/structure/fluff/empty_sleeper/nanotrasen
-	name = "broken hypersleep chamber"
-	desc = "A Nanotrasen hypersleep chamber - this one appears broken. \
-		There are exposed bolts for easy disassembly using a wrench."
-	icon_state = "sleeper-o"
-
-/obj/structure/fluff/empty_sleeper/syndicate
-	icon_state = "sleeper_s-open"
-
-/obj/structure/fluff/empty_cryostasis_sleeper //Empty cryostasis sleepers are created when a malfunctioning cryostasis sleeper in a lavaland shelter is activated
-	name = "empty cryostasis sleeper"
-	desc = ""
-	icon = 'icons/obj/lavaland/spawners.dmi'
-	icon_state = "cryostasis_sleeper_open"
-
-/obj/structure/fluff/broken_flooring
-	name = "broken tiling"
-	desc = ""
-	icon = 'icons/obj/brokentiling.dmi'
-	icon_state = "corner"
-
-/obj/structure/fluff/drake_statue //Ash drake status spawn on either side of the necropolis gate in lavaland.
-	name = "drake statue"
-	desc = ""
-	icon = 'icons/effects/64x64.dmi'
-	icon_state = "drake_statue"
-	pixel_x = -16
-	density = TRUE
-	deconstructible = FALSE
-	layer = EDGED_TURF_LAYER
-
-/obj/structure/fluff/drake_statue/falling //A variety of statue in disrepair; parts are broken off and a gemstone is missing
-	desc = ""
-	icon_state = "drake_statue_falling"
-
-
-/obj/structure/fluff/bus
-	name = "bus"
-	desc = ""
-	icon = 'icons/obj/bus.dmi'
-	density = TRUE
-	anchored = TRUE
-	deconstructible = FALSE
-
-/obj/structure/fluff/bus/dense
-	name = "bus"
-	icon_state = "backwall"
-
-/obj/structure/fluff/bus/passable
-	name = "bus"
-	icon_state = "frontwalltop"
-	density = FALSE
-	layer = ABOVE_ALL_MOB_LAYER //except for the stairs tile, which should be set to OBJ_LAYER aka 3.
-
-
-/obj/structure/fluff/bus/passable/seat
-	name = "seat"
-	desc = ""
-	icon_state = "backseat"
-	pixel_y = 17
-	layer = OBJ_LAYER
-
-
-/obj/structure/fluff/bus/passable/seat/driver
-	name = "driver's seat"
-	desc = ""
-	icon_state = "driverseat"
-
-/obj/structure/fluff/bus/passable/seat/driver/attack_hand(mob/user)
-	playsound(src, 'sound/blank.ogg', 50, TRUE)
-	. = ..()
-
 /obj/structure/fluff/paper
 	name = "dense lining of papers"
 	desc = ""
@@ -123,52 +26,6 @@
 	name = "dense stack of papers"
 	desc = ""
 	icon_state = "paperstack"
-
-
-/obj/structure/fluff/divine
-	name = "Miracle"
-	icon = 'icons/obj/hand_of_god_structures.dmi'
-	anchored = TRUE
-	density = TRUE
-
-/obj/structure/fluff/divine/nexus
-	name = "nexus"
-	desc = ""
-	icon_state = "nexus"
-
-/obj/structure/fluff/divine/conduit
-	name = "conduit"
-	desc = ""
-	icon_state = "conduit"
-
-/obj/structure/fluff/divine/convertaltar
-	name = "conversion altar"
-	desc = ""
-	icon_state = "convertaltar"
-	density = FALSE
-	can_buckle = 1
-
-/obj/structure/fluff/divine/powerpylon
-	name = "power pylon"
-	desc = ""
-	icon_state = "powerpylon"
-	can_buckle = 1
-
-/obj/structure/fluff/divine/defensepylon
-	name = "defense pylon"
-	desc = ""
-	icon_state = "defensepylon"
-
-/obj/structure/fluff/divine/shrine
-	name = "shrine"
-	desc = ""
-	icon_state = "shrine"
-
-/obj/structure/fluff/fokoff_sign
-	name = "crude sign"
-	desc = ""
-	icon = 'icons/obj/fluff.dmi'
-	icon_state = "fokof"
 
 /obj/structure/fluff/big_chain
 	name = "giant chain"
@@ -395,7 +252,7 @@
 /obj/structure/bars/chainlink
 	icon_state = "chainlink"
 
-/obj/structure/bars/steel
+obj/structure/bars/steel
 	name = "steel bars"
 	max_integrity = 2000
 
@@ -403,15 +260,6 @@
 	max_integrity = 9000
 	damage_deflection = 40
 
-/*
-/obj/structure/bars/CheckExit(atom/movable/O, turf/target)
-	if(istype(O) && (O.pass_flags & PASSGRILLE))
-		return 1
-	if(O.throwing && !ismob(O))
-		return 1
-	return !density
-	..()
-*/
 /obj/structure/bars/obj_break(damage_flag)
 	icon_state = "[initial(icon_state)]b"
 	density = FALSE
@@ -582,11 +430,23 @@
 /obj/structure/fluff/clock/examine(mob/user)
 	. = ..()
 	if(!broke)
-		. += "Oh no, it's [station_time_timestamp("hh:mm")]."
-		. += span_info("(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)")
-//		if(SSshuttle.emergency.mode == SHUTTLE_DOCKED)
-//			if(SSshuttle.emergency.timeLeft() < 30 MINUTES)
-//				. += span_warning("The last boat will leave in [round(SSshuttle.emergency.timeLeft()/600)] minutes.")
+		var/day = "... actually, WHAT dae is it?"
+		switch(GLOB.dayspassed)
+			if(1)
+				day = "Moon's dae."
+			if(2)
+				day = "Tiw's dae."
+			if(3)
+				day = "Wedding's dae."
+			if(4)
+				day = "Thule's dae."
+			if(5)
+				day = "Freyja's dae."
+			if(6)
+				day = "Saturn's dae."
+			if(7)
+				day = "Sun's dae."
+		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]"
 
 /obj/structure/fluff/clock/CanPass(atom/movable/mover, turf/target)
 	if(get_dir(loc, mover) == dir)
@@ -625,12 +485,23 @@
 /obj/structure/fluff/wallclock/examine(mob/user)
 	. = ..()
 	if(!broke)
-		. += "Oh no, it's [station_time_timestamp("hh:mm")]."
-		. += "(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)"
-//		testing("mode is [SSshuttle.emergency.mode] should be [SHUTTLE_DOCKED]")
-//		if(SSshuttle.emergency.mode == SHUTTLE_DOCKED)
-//			if(SSshuttle.emergency.timeLeft() < 30 MINUTES)
-//				. += span_warning("The last boat will leave in [round(SSshuttle.emergency.timeLeft()/600)] minutes.")
+		var/day = "... actually, WHAT dae is it?"
+		switch(GLOB.dayspassed)
+			if(1)
+				day = "Moon's dae."
+			if(2)
+				day = "Tiw's dae."
+			if(3)
+				day = "Wedding's dae."
+			if(4)
+				day = "Thule's dae."
+			if(5)
+				day = "Freyja's dae."
+			if(6)
+				day = "Saturn's dae."
+			if(7)
+				day = "Sun's dae."
+		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]"
 
 /obj/structure/fluff/wallclock/Initialize()
 	soundloop = new(list(src), FALSE)
@@ -1036,13 +907,10 @@
 	max_integrity = 80
 	chance2hear = 10
 
-/obj/structure/fluff/psycross/attackby(obj/item/W, mob/user, params)
+/obj/structure/fluff/psycross/attackby(obj/item/W, mob/living/carbon/human/user, params)
 	if(user.mind)
-		if(user.mind.assigned_role == "Priest")
+		if((user.mind.assigned_role == "Priest") || ((user.mind.assigned_role == "Acolyte") && (user.patron.type == /datum/patron/divine/eora)))
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
-				if(!istype(get_area(user), /area/rogue/indoors/town/church/chapel))
-					to_chat(user, span_warning("I need to do this in the chapel."))
-					return FALSE
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
 				if(A.bitten_names.len)
@@ -1098,7 +966,7 @@
 							SecondPerson.marriedto = FirstPerson.real_name
 							FirstPerson.adjust_triumphs(1)
 							SecondPerson.adjust_triumphs(1)
-							priority_announce("[FirstPerson.real_name] has married [SecondPersonFirstName]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+							priority_announce("Rejoice, for [user.real_name] has united [FirstPerson.real_name] and [SecondPersonFirstName] in marriage!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 							marriage = TRUE
 							qdel(A)
 //							if(FirstPerson.has_stress(/datum/stressevent/nobel))
@@ -1295,3 +1163,192 @@
 	stake.forceMove(drop_location())
 	stake = null
 	qdel(src)
+
+/obj/structure/fluff/littlebanners
+	name = "hanging little banners"
+	desc = ""
+	icon = 'icons/obj/structures/decor.dmi'
+	icon_state = "hangingbanners_wr"
+	density = FALSE
+	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	blade_dulling = DULLING_BASH
+	resistance_flags = FLAMMABLE
+	max_integrity = 20
+	integrity_failure = 0.33
+	dir = SOUTH
+	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+
+
+/obj/structure/fluff/littlebanners/greenblue
+	icon_state = "hangingbanners_gb"
+
+/obj/structure/fluff/littlebanners/greenred
+	icon_state = "hangingbanners_gr"
+
+/obj/structure/fluff/littlebanners/bluewhite
+	icon_state = "hangingbanners_bw"
+
+/obj/structure/fluff/littlebanners/greenwhite
+	icon_state = "hangingbanners_gw"
+
+/obj/structure/fluff/littlebanners/bluered
+	icon_state = "hangingbanners_br"
+
+/obj/structure/fluff/littlebanners/MouseDrop(over_object, src_location, over_location)
+	. = ..()
+	if(over_object == usr && Adjacent(usr) && (in_range(src, usr) || usr.contents.Find(src)))
+		if(!ishuman(usr))
+			return
+		visible_message(span_notice("[usr] tears down [src]."))
+		if(do_after(usr, 30, target = src))
+			playsound(src,'sound/foley/dropsound/cloth_drop.ogg', 100, FALSE)
+			new /obj/item/natural/cloth (get_turf(src))
+			new /obj/item/natural/cloth (get_turf(src))
+			new /obj/item/natural/cloth (get_turf(src))
+			new /obj/item/natural/cloth (get_turf(src))
+			qdel(src)
+
+///Crafting
+
+/datum/crafting_recipe/roguetown/structure/littlebanners
+	name = "fair banners red-white"
+	result = list(/obj/structure/fluff/littlebanners)
+	reqs = list(/obj/item/natural/cloth = 4, /obj/item/natural/fibers)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/greenblue
+	name = "fair banners green-blue"
+	result = list(/obj/structure/fluff/littlebanners/greenblue)
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/greenred
+	name = "fair banners green-red"
+	result = list(/obj/structure/fluff/littlebanners/greenred)
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/bluewhite
+	name = "fair banners blue-white"
+	result = list(/obj/structure/fluff/littlebanners/bluewhite)
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/greenwhite
+	name = "fair banners green-white"
+	result = list(/obj/structure/fluff/littlebanners/greenwhite)
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/bluered
+	name = "fair banners blue-red"
+	result = list(/obj/structure/fluff/littlebanners/bluered)
+
+/obj/structure/fluff/canopy
+	name = "Canopy"
+	desc = ""
+	icon = 'icons/obj/structures/decor.dmi'
+	icon_state = "canopy"
+	density = FALSE
+	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	blade_dulling = DULLING_BASH
+	resistance_flags = FLAMMABLE
+	max_integrity = 20
+	integrity_failure = 0.33
+	dir = SOUTH
+	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+
+/obj/structure/fluff/canopy/green
+	icon_state = "canopyg"
+
+/obj/structure/fluff/canopy/booth
+	icon_state = "canopyr-booth"
+
+/obj/structure/fluff/canopy/booth/booth02
+	icon_state = "canopyr-booth-2"
+
+/obj/structure/fluff/canopy/booth/booth_green
+	icon_state = "canopyg-booth"
+
+/obj/structure/fluff/canopy/booth/booth_green02
+	icon_state = "canopyg-booth-2"
+
+/obj/structure/fluff/canopy/booth/CanPass(atom/movable/mover, turf/target)
+	if(get_dir(loc, mover) == dir)
+		return 0
+	return !density
+
+/obj/structure/fluff/canopy/booth/CheckExit(atom/movable/O, turf/target)
+	if(get_dir(O.loc, target) == dir)
+		return 0
+	return !density
+
+/obj/structure/fluff/canopy/MouseDrop(mob/over)
+	. = ..()
+
+///Crafting
+
+/datum/crafting_recipe/roguetown/structure/display_booth01
+	name = "display booth"
+	result = list(/obj/structure/fluff/canopy, /obj/structure/table/wood/crafted)
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+
+/datum/crafting_recipe/roguetown/structure/display_booth02
+	name = "display booth green"
+	result = list(/obj/structure/fluff/canopy/green, /obj/structure/table/wood/crafted)
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+
+
+/datum/crafting_recipe/roguetown/structure/booth
+	name = "market booth"
+	result = list(/obj/structure/fluff/canopy/booth)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/structure/booth02
+	name = "market booth"
+	result = list(/obj/structure/fluff/canopy/booth/booth02)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/structure/booth_green
+	name = "green market booth"
+	result = list(/obj/structure/fluff/canopy/booth/booth_green)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/structure/booth_green_02
+	name = "green market booth02"
+	result = list(/obj/structure/fluff/canopy/booth/booth_green02)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/obj/structure/fluff/canopy/MouseDrop(over_object, src_location, over_location)
+	. = ..()
+	if(over_object == usr && Adjacent(usr) && (in_range(src, usr) || usr.contents.Find(src)))
+		if(!ishuman(usr))
+			return
+		visible_message(span_notice("[usr] tears down [src]."))
+		if(do_after(usr, 30, target = src))
+			playsound(src,'sound/foley/dropsound/cloth_drop.ogg', 100, FALSE)
+			new /obj/item/grown/log/tree/small  (get_turf(src))
+			new /obj/item/natural/cloth (get_turf(src))
+			qdel(src)

@@ -62,9 +62,12 @@
 #define COMSIG_TOPIC "handle_topic"
 
 // /atom signals
+//from SSatoms InitAtom - Only if the  atom was not deleted or failed initialization
+#define COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE "atom_init_success"
+//from SSatoms InitAtom - Only if the  atom was not deleted or failed initialization and has a loc
+#define COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON "atom_init_success_on"
 #define COMSIG_PARENT_ATTACKBY "atom_attackby"			        //from base of atom/attackby(): (/obj/item, /mob/living, params)
 	#define COMPONENT_NO_AFTERATTACK 1								//Return this in response if you don't want afterattack to be called
-#define COMSIG_ATOM_HULK_ATTACK "hulk_attack"					//from base of atom/attack_hulk(): (/mob/living/carbon/human)
 #define COMSIG_PARENT_EXAMINE "atom_examine"                    //from base of atom/examine(): (/mob)
 #define COMSIG_ATOM_GET_EXAMINE_NAME "atom_examine_name"		//from base of atom/get_examine_name(): (/mob, list/overrides)
 	//Positions for overrides list
@@ -90,7 +93,6 @@
 #define COMSIG_ATOM_EMAG_ACT "atom_emag_act"					//from base of atom/emag_act(): (/mob/user)
 #define COMSIG_ATOM_RAD_ACT "atom_rad_act"						//from base of atom/rad_act(intensity)
 #define COMSIG_ATOM_NARSIE_ACT "atom_narsie_act"				//from base of atom/narsie_act(): ()
-#define COMSIG_ATOM_RCD_ACT "atom_rcd_act"						//from base of atom/rcd_act(): (/mob, /obj/item/construction/rcd, passed_mode)
 #define COMSIG_ATOM_SING_PULL "atom_sing_pull"					//from base of atom/singularity_pull(): (S, current_size)
 #define COMSIG_ATOM_BSA_BEAM "atom_bsa_beam_pass"				//from obj/machinery/bsa/full/proc/fire(): ()
 	#define COMSIG_ATOM_BLOCKS_BSA_BEAM 1
@@ -240,7 +242,8 @@
 	#define COMPONENT_NO_STUN 1			//For all of them
 #define COMSIG_LIVING_CAN_TRACK "mob_cantrack"					//from base of /mob/living/can_track(): (mob/user)
 	#define COMPONENT_CANT_TRACK 1
-
+///from base of mob/living/death(): (gibbed)
+#define COMSIG_LIVING_DEATH "living_death"
 // /mob/living/carbon signals
 #define COMSIG_CARBON_SOUNDBANG "carbon_soundbang"					//from base of mob/living/carbon/soundbang_act(): (list(intensity))
 

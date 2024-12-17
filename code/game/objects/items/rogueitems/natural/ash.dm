@@ -5,7 +5,7 @@
 	icon_state = "ash"
 	grind_results = list(/datum/reagent/ash = 15)
 	w_class = WEIGHT_CLASS_TINY
-	brew_reagent = /datum/reagent/alch/syruma
+	brew_reagent = /datum/reagent/alch/syrum_ash
 	brew_amt = 24
 	can_brew = TRUE
 

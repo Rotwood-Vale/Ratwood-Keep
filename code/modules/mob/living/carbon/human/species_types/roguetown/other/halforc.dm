@@ -24,7 +24,6 @@
 	disliked_food = NONE
 	liked_food = NONE
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt_muscular.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/ft_muscular.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -71,8 +70,6 @@
 		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	body_markings = list(
-		/datum/body_marking/flushed_cheeks,
-		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 	customizers = list(
@@ -146,20 +143,3 @@
 
 /datum/species/halforc/random_surname()
 	return
-
-//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
-// "full" group in JSON lists
-/datum/species/halforc/get_accent(mob/living/carbon/human/H)
-		return strings("middlespeak.json", "full")
-
-// "start" group in JSON lists
-/datum/species/halforc/get_accent_start(mob/living/carbon/human/H)
-		return strings("middlespeak.json", "start")
-
-// "end" group in JSON lists
-/datum/species/halforc/get_accent_end(mob/living/carbon/human/H)
-		return strings("middlespeak.json", "end")
-
-// "syllable" group in JSON lists
-/datum/species/halforc/get_accent_any(mob/living/carbon/human/H)
-		return strings("middlespeak.json", "syllable")

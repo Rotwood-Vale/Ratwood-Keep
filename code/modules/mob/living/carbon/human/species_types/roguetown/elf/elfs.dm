@@ -28,7 +28,6 @@
 	disliked_food = NONE
 	liked_food = NONE
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/met.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -85,6 +84,8 @@
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 	)
 
 /datum/species/elf/wood/get_span_language(datum/language/message_language)
@@ -163,19 +164,3 @@
 /datum/species/elf/wood/random_surname()
 	return " [pick(world.file2list("strings/rt/names/elf/elfwlast.txt"))]"
 
-//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
-// "full" group in JSON lists
-/datum/species/elf/wood/get_accent(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "full")
-
-// "start" group in JSON lists
-/datum/species/elf/wood/get_accent_start(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "start")
-
-// "end" group in JSON lists
-/datum/species/elf/wood/get_accent_end(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "end")
-
-// "syllable" group in JSON lists
-/datum/species/elf/wood/get_accent_any(mob/living/carbon/human/H)
-		return strings("russian_replacement.json", "syllable")

@@ -13,15 +13,9 @@
 	created_item = /obj/item/clothing/ringP
 	additional_items = list(/obj/item/clothing/neck/roguetown/psicross)
 
-/datum/anvil_recipe/valuables/silver/rings
-	name = "Rings 3x"
-	req_bar = /obj/item/ingot/silver
-	created_item = list(/obj/item/clothing/ring/silver, /obj/item/clothing/ring/silver, /obj/item/clothing/ring/silver)
-
-
 /datum/anvil_recipe/valuables
 	appro_skill = /datum/skill/craft/blacksmithing
-	craftdiff = 2
+	skill_level = 2
 
 /datum/anvil_recipe/valuables/gold
 	name = "Statue"
@@ -70,6 +64,11 @@
 	req_bar = /obj/item/ingot/silver
 	created_item = list(/obj/item/clothing/ring/silver, /obj/item/clothing/ring/silver, /obj/item/clothing/ring/silver)
 
+/datum/anvil_recipe/valuables/copper/rings
+	name = "Rings 3x"
+	req_bar = /obj/item/ingot/copper
+	created_item = list(/obj/item/clothing/ring/copper, /obj/item/clothing/ring/copper, /obj/item/clothing/ring/copper)
+
 //Gold Rings
 /datum/anvil_recipe/valuables/gold/emering
 	name = "Gemerald Ring (+1 Gemerald)"
@@ -107,11 +106,11 @@
 	additional_items = list(/obj/item/roguegem/diamond)	
 	created_item = /obj/item/clothing/ring/diamond
 
-//Steel rings
+//Silver rings
 
 /datum/anvil_recipe/valuables/silver/emering
 	name = "Gemerald Ring (+1 Gemerald)"
-	req_bar = /obj/item/ingot/steel
+	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/green)	
 	created_item = /obj/item/clothing/ring/emeralds
 
@@ -144,6 +143,44 @@
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/diamond)	
 	created_item = /obj/item/clothing/ring/diamonds
+
+// Copper rings
+
+/datum/anvil_recipe/valuables/copper/emering
+	name = "Gemerald Ring (+1 Gemerald)"
+	req_bar = /obj/item/ingot/copper
+	additional_items = list(/obj/item/roguegem/green)	
+	created_item = /obj/item/clothing/ring/emeraldc
+
+/datum/anvil_recipe/valuables/copper/ruby
+	name = "Rontz Ring (+1 Rontz)"
+	req_bar = /obj/item/ingot/copper
+	additional_items = list(/obj/item/roguegem)	
+	created_item = /obj/item/clothing/ring/rubyc
+
+/datum/anvil_recipe/valuables/copper/topaz
+	name = "Toper Ring (+1 Toper)"
+	req_bar = /obj/item/ingot/copper
+	additional_items = list(/obj/item/roguegem/yellow)	
+	created_item = /obj/item/clothing/ring/topazc
+
+/datum/anvil_recipe/valuables/copper/quartz
+	name = "Blortz Ring (+1 Blortz)"
+	req_bar = /obj/item/ingot/copper
+	additional_items = list(/obj/item/roguegem/blue)	
+	created_item = /obj/item/clothing/ring/quartzc
+
+/datum/anvil_recipe/valuables/copper/sapphire
+	name = "Saffira Ring (+1 Saffira)"
+	req_bar = /obj/item/ingot/copper
+	additional_items = list(/obj/item/roguegem/violet)	
+	created_item = /obj/item/clothing/ring/sapphirec
+
+/datum/anvil_recipe/valuables/copper/diamond
+	name = "Dorpel Ring (+1 Dorpel)"
+	req_bar = /obj/item/ingot/copper
+	additional_items = list(/obj/item/roguegem/diamond)	
+	created_item = /obj/item/clothing/ring/diamondc
 
 /datum/anvil_recipe/valuables/dragon
 	name = "Dragon Ring (+ Secrets)"

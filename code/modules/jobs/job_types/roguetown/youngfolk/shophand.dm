@@ -3,8 +3,8 @@
 	flag = SHOPHAND
 	department_flag = YOUNGFOLK
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1
+	spawn_positions = 1
 
 	allowed_races = RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
@@ -23,14 +23,14 @@
 
 /datum/outfit/job/roguetown/shophand/pre_equip(mob/living/carbon/human/H)
 	..()
-	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, "[type]")
+	ADD_TRAIT(H, TRAIT_SEEPRICES, "[type]")
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltl = /obj/item/keyring/shophand
+		beltl = /obj/item/storage/keyring/shophand
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/random
@@ -38,14 +38,15 @@
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltl = /obj/item/keyring/shophand
+		beltl = /obj/item/storage/keyring/shophand
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)
 		//basically orphan+ skills
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.change_stat("strength", -2)

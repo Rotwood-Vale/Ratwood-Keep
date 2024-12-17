@@ -54,6 +54,7 @@
 		reagents.flags = reagent_flags
 		desc = "A bottle with a cork."
 		spillable = FALSE
+		to_chat(usr, span_notice("You put the cork back in."))
 	else
 		reagent_flags = OPENCONTAINER
 		reagents.flags = reagent_flags
@@ -71,11 +72,6 @@
 		icon_state = "clear_bottle[rand(1,4)]"
 	update_icon()
 
-/obj/item/reagent_containers/glass/bottle/epinephrine
-	name = "epinephrine bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/epinephrine = 30)
-
 /obj/item/reagent_containers/glass/bottle/toxin
 	name = "toxin bottle"
 	desc = ""
@@ -91,32 +87,6 @@
 	desc = ""
 	list_reagents = list(/datum/reagent/toxin/spewium = 30)
 
-/obj/item/reagent_containers/glass/bottle/morphine
-	name = "morphine bottle"
-	desc = ""
-	icon = 'icons/obj/chemical.dmi'
-	list_reagents = list(/datum/reagent/medicine/morphine = 30)
-
-/obj/item/reagent_containers/glass/bottle/chloralhydrate
-	name = "chloral hydrate bottle"
-	desc = ""
-	icon_state = "bottle20"
-	list_reagents = list(/datum/reagent/toxin/chloralhydrate = 15)
-
-/obj/item/reagent_containers/glass/bottle/mannitol
-	name = "mannitol bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/mannitol = 30)
-
-/obj/item/reagent_containers/glass/bottle/multiver
-	name = "multiver bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/C2/multiver = 30)
-
-/obj/item/reagent_containers/glass/bottle/syriniver
-	name = "syriniver bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/C2/syriniver = 30)
 
 /obj/item/reagent_containers/glass/bottle/mutagen
 	name = "unstable mutagen bottle"
@@ -127,11 +97,6 @@
 	name = "liquid plasma bottle"
 	desc = ""
 	list_reagents = list(/datum/reagent/toxin/plasma = 30)
-
-/obj/item/reagent_containers/glass/bottle/synaptizine
-	name = "synaptizine bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/synaptizine = 30)
 
 /obj/item/reagent_containers/glass/bottle/ammonia
 	name = "ammonia bottle"
@@ -148,12 +113,6 @@
 	desc = ""
 	list_reagents = list(/datum/reagent/toxin/acid/fluacid = 30)
 
-/obj/item/reagent_containers/glass/bottle/adminordrazine
-	name = "Adminordrazine Bottle"
-	desc = ""
-	icon = 'icons/obj/drinks.dmi'
-	icon_state = "holyflask"
-	list_reagents = list(/datum/reagent/medicine/adminordrazine = 30)
 
 /obj/item/reagent_containers/glass/bottle/capsaicin
 	name = "Capsaicin Bottle"
@@ -180,11 +139,6 @@
 	name = "polonium bottle"
 	desc = ""
 	list_reagents = list(/datum/reagent/toxin/polonium = 30)
-
-/obj/item/reagent_containers/glass/bottle/magillitis
-	name = "magillitis bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/magillitis = 5)
 
 /obj/item/reagent_containers/glass/bottle/venom
 	name = "venom bottle"
@@ -236,108 +190,11 @@
 	desc = ""
 	list_reagents = list(/datum/reagent/toxin/histamine = 30)
 
-/obj/item/reagent_containers/glass/bottle/diphenhydramine
-	name = "antihistamine bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/diphenhydramine = 30)
-
-/obj/item/reagent_containers/glass/bottle/potass_iodide
-	name = "anti-radiation bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/potass_iodide = 30)
-
 /obj/item/reagent_containers/glass/bottle/salglu_solution
 	name = "saline-glucose solution bottle"
 	desc = ""
 	icon_state = "bottle1"
 	list_reagents = list(/datum/reagent/medicine/salglu_solution = 30)
-
-/obj/item/reagent_containers/glass/bottle/atropine
-	name = "atropine bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/atropine = 30)
-
-/obj/item/reagent_containers/glass/bottle/romerol
-	name = "romerol bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/romerol = 30)
-
-/obj/item/reagent_containers/glass/bottle/random_virus
-	name = "Experimental disease culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/advance/random
-
-/obj/item/reagent_containers/glass/bottle/pierrot_throat
-	name = "Pierrot's Throat culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/pierrot_throat
-
-/obj/item/reagent_containers/glass/bottle/cold
-	name = "Rhinovirus culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/advance/cold
-
-/obj/item/reagent_containers/glass/bottle/flu_virion
-	name = "Flu virion culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/advance/flu
-
-/obj/item/reagent_containers/glass/bottle/retrovirus
-	name = "Retrovirus culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/dna_retrovirus
-
-/obj/item/reagent_containers/glass/bottle/gbs
-	name = "GBS culture bottle"
-	desc = ""//Or simply - General BullShit
-	amount_per_transfer_from_this = 5
-	spawned_disease = /datum/disease/gbs
-
-/obj/item/reagent_containers/glass/bottle/fake_gbs
-	name = "GBS culture bottle"
-	desc = ""//Or simply - General BullShit
-	spawned_disease = /datum/disease/fake_gbs
-
-/obj/item/reagent_containers/glass/bottle/brainrot
-	name = "Brainrot culture bottle"
-	desc = ""
-	icon_state = "bottle3"
-	spawned_disease = /datum/disease/brainrot
-
-/obj/item/reagent_containers/glass/bottle/magnitis
-	name = "Magnitis culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/magnitis
-
-/obj/item/reagent_containers/glass/bottle/wizarditis
-	name = "Wizarditis culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/wizarditis
-
-/obj/item/reagent_containers/glass/bottle/anxiety
-	name = "Severe Anxiety culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/anxiety
-
-/obj/item/reagent_containers/glass/bottle/beesease
-	name = "Beesease culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/beesease
-
-/obj/item/reagent_containers/glass/bottle/fluspanish
-	name = "Spanish flu culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/fluspanish
-
-/obj/item/reagent_containers/glass/bottle/tuberculosis
-	name = "Fungal Tuberculosis culture bottle"
-	desc = ""
-	spawned_disease = /datum/disease/tuberculosis
-
-/obj/item/reagent_containers/glass/bottle/tuberculosiscure
-	name = "BVAK bottle"
-	desc = ""
-	list_reagents = list(/datum/reagent/vaccine/fungal_tb = 30)
 
 //Oldstation.dmm chemical storage bottles
 
