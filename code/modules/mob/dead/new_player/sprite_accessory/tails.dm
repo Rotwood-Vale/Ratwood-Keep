@@ -344,7 +344,6 @@
 
 /datum/sprite_accessory/tail/rattlesnake
 	name = "Rattlesnake"
-	icon = "rattlesnake"
-	icon_state = 'icons/mob/sprite_accessory/tails/nightstalker.dmi'
+	icon_state = "rattlesnake"
 	color_key_names = list("Tail", "Tip")
 	can_wag = TRUE
