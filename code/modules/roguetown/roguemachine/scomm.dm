@@ -374,6 +374,7 @@
 	desc = "A iron and gold choker with an gemerald gem."
 	gripped_intents = null
 	//dropshrink = 0.75
+	/obj/item/listenstone
 	possible_item_intents = list(INTENT_GENERIC)
 	//force = 10
 	//throwforce = 10

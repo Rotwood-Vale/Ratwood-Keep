@@ -172,6 +172,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	var/firefuel = 0 //add this idiot
 
+	var/leashable = FALSE //More elegant solution to leashchecks
+
 	var/thrown_bclass = BCLASS_BLUNT
 
 	var/icon/experimental_inhand = TRUE

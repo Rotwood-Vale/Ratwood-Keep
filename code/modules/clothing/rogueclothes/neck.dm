@@ -133,6 +133,7 @@
 /obj/item/clothing/neck/roguetown/gorget/oring
 	name = "ringed gorget"
 	desc = "An iron gorget to protect the neck, this one has an odd ring mounted on the front."
+	leashable = TRUE
 
 /obj/item/clothing/neck/roguetown/gorget/steel
 	name ="steel gorget"
@@ -143,6 +144,7 @@
 /obj/item/clothing/neck/roguetown/gorget/steel/oring
 	desc = "A steel gorget to protect the neck, this one has an odd ring mounted on the front."
 	name ="ringed steel gorget"
+	leashable = TRUE
 
 /obj/item/clothing/neck/roguetown/leather
 	name = "hardened leather gorget"
@@ -162,6 +164,7 @@
 	name = "vreccale"
 	desc = "Nature knows not of mercy."
 	icon_state = "iwolfcollar"
+	leashable = TRUE
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"
@@ -288,6 +291,7 @@
 	item_state = "talkstone"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
+	leashable = TRUE
 	allowed_race = CLOTHED_RACES_TYPES
 	sellprice = 98
 	anvilrepair = /datum/skill/craft/blacksmithing
@@ -317,6 +321,7 @@
 	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
 	icon_state = "collar_rope"
 	color = "#d7bb9f"
+	leashable = TRUE
 	slot_flags = ITEM_SLOT_NECK
 	salvage_amount = 1
 	salvage_result = /obj/item/rope
