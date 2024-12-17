@@ -5,7 +5,7 @@
 				where you can re-establish your lineage."
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_ALL_KINDS
 	category_tags = list(CTAG_REFUGEE)
 
 	maximum_possible_slots = 5

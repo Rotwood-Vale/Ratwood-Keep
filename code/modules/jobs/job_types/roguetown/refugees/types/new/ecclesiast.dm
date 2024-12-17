@@ -67,7 +67,6 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-			neck = /obj/item/clothing/neck/roguetown/psicross
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/wood
@@ -126,7 +125,6 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/roguehood
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
-			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor

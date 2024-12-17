@@ -3,7 +3,7 @@
 	tutorial = "Trained in the arcane or occult arts, you have fled from the rot looking for a place to continue your studies."
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_ALL_KINDS
 	category_tags = list(CTAG_REFUGEE)
 
 	maximum_possible_slots = 5
@@ -81,7 +81,7 @@
 			H.change_stat("endurance", -1)
 			H.change_stat("speed", -1)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
-			H.patron = /datum/patron/divine/noc
+			H.set_patron(/datum/patron/divine/noc)
 
 		if("Occultist")
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -113,6 +113,7 @@
 			H.change_stat("constitution", -2)
 			H.change_stat("endurance", -1)
 			H.change_stat("speed", -1)
-			H.patron = /datum/patron/zizo
+			H.set_patron(/datum/patron/zizo)
+			H.faction |= "undead"
 
 	H.set_blindness(0)
