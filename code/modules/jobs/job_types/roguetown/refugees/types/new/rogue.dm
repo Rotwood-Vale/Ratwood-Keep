@@ -8,6 +8,8 @@
 	allowed_races = RACES_ALL_KINDS
 	category_tags = list(CTAG_REFUGEE)
 
+	cmode_music = 'sound/music/combat_duelist.ogg'
+
 	maximum_possible_slots = 5
 
 	outfit = /datum/outfit/job/roguetown/refugee/rogue
@@ -77,6 +79,7 @@
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 1)
 			H.change_stat("fortune", 1)
+			H.cmode_music = 'sound/music/combat_pirate.ogg'
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 

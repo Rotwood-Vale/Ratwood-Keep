@@ -8,6 +8,8 @@
 	allowed_races = RACES_TOLERATED_UP
 	category_tags = list(CTAG_REFUGEE)
 
+	cmode_music = 'sound/music/combat_clergy.ogg'
+
 	maximum_possible_slots = 5
 
 	outfit = /datum/outfit/job/roguetown/refugee/ecclesiast
