@@ -33,7 +33,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/mining, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			r_hand = /obj/item/rogueweapon/pick
