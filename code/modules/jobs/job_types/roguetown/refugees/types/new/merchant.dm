@@ -2,7 +2,7 @@
 	name = "Merchant"
 	tutorial = "Whether you once had a shop or have always been a traveling salesman, exchange of goods is your expertise. \
 				Before it was overtaken by the rot, you managed to flee your old settlement with a few goods to be sold along the way. \
-				Seeking refuge in a rumored safe haven, you hope to find a place where to continue plying your trade, dubious it may be. \"
+				Seeking refuge in a rumored safe haven, you hope to find a place where to continue plying your trade, dubious it may be."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -40,8 +40,7 @@
 			id = /obj/item/clothing/ring/gold
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			// TODO: randomized content table
-			backpack_contents = list(/obj/item/clothing/ring/silver = 2, obj/item/reagent_containers/glass/bottle/rogue/healthpot = 2, obj/item/reagent_containers/glass/bottle/rogue/manapot = 2)
-			backpack_contents = list( = 1)
+			backpack_contents = list(/obj/item/clothing/ring/silver = 2, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 2, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 2)
 			H.change_stat("intelligence", 2)
 			H.change_stat("perception", 3)
 			H.change_stat("strength", -1)
@@ -57,7 +56,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
@@ -66,7 +64,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			head = /obj/item/clothing/head/roguetown/puritan
-			backpack_contents = list()
+			backpack_contents = list(/obj/item/reagent_containers/powder/spice = 2, /obj/item/reagent_containers/powder/ozium = 1, /obj/item/reagent_containers/powder/moondust = 2)
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
 		// TODO: add useless trinkets before this class makes sense
