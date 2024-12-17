@@ -18,7 +18,7 @@
 /datum/outfit/job/roguetown/refugee/deserter/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Footman", "Crossbowman", "Pikeman", "Arquebusier")
+	var/classes = list("Footman", "Crossbowman", "Pikeman", "Handgonner")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -106,7 +106,7 @@
 			H.change_stat("speed", 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		
-		if("Arquebusier")
+		if("Handgonner")
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -119,7 +119,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backr = /obj/item/gun/ballistic/arquebus
+			backr = /obj/item/gun/ballistic/handgonne
 			beltl = /obj/item/ammo_holder/bullet/lead
 			beltr = /obj/item/powderflask
 			shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
