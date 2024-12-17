@@ -77,6 +77,8 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	dat += "</center>"
 
 	for(var/datum/job/job in SSjob.occupations)
+		if(istype(job, /datum/job/roguetown/adventurer/courtagent))
+			continue
 		if(!job)
 			continue
 		var/readiedas = 0
@@ -109,8 +111,6 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 				PL2 += "[PL[i]], "
 
 		var/str_job = job.title
-		if(job.title == "Court Agent")
-			str_job = "Adventurer"
 
 		if(readiedas)
 			if(PL2.len)
