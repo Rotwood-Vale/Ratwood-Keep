@@ -2007,8 +2007,10 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "blx" = (
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/blocks/stonered,
+/obj/structure/roguemachine/vendor{
+	lockid = "street_shop01"
+	},
+/turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town)
 "bly" = (
 /mob/living/carbon/human/species/human/northern/bum/ambush,
@@ -2876,9 +2878,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs)
 "bOT" = (
-/obj/structure/stairs{
-	dir = 4
-	},
+/obj/structure/mannequin/male,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -3286,10 +3286,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town/bath)
-"cdN" = (
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/town)
 "cdX" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave)
@@ -3916,6 +3912,11 @@
 	pixel_y = 26
 	},
 /obj/structure/fermenting_barrel/random/water,
+/obj/structure/mineral_door/wood/red{
+	locked = 1;
+	lockid = "street_shop01";
+	name = "Street Shop #1"
+	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "czb" = (
@@ -7488,8 +7489,9 @@
 	},
 /area/rogue/outdoors/bog)
 "eFG" = (
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/indoors/town)
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/outdoors/town)
 "eFH" = (
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church/chapel)
@@ -10484,8 +10486,20 @@
 /turf/closed/mineral/rogue,
 /area/rogue/indoors/town/bath)
 "gym" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
-/turf/open/floor/rogue/wood,
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/mineral_door/wood/deadbolt/shutter{
+	dir = 2
+	},
+/obj/structure/fluff/canopy,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
 /area/rogue/indoors/town)
 "gyn" = (
 /obj/effect/landmark/events/haunts,
@@ -18905,6 +18919,12 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"lRz" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town)
 "lRB" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -19463,20 +19483,8 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
 "mkX" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81
-	},
-/obj/structure/mineral_door/wood/deadbolt/shutter{
-	dir = 2
-	},
-/obj/structure/fluff/canopy,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
+/obj/structure/roguemachine/vendor/street_shop01,
+/turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town)
 "mla" = (
 /obj/structure/stairs,
@@ -19815,7 +19823,11 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/church/chapel)
 "mun" = (
-/obj/structure/mannequin/male,
+/obj/structure/mineral_door/wood/red{
+	locked = 1;
+	lockid = "street_shop01";
+	name = "Street Shop #1"
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -19984,10 +19996,8 @@
 	},
 /area/rogue/indoors/town/church/chapel)
 "mzo" = (
-/obj/structure/roguemachine/vendor{
-	lockid = "street_shop01"
-	},
-/turf/closed/wall/mineral/rogue/stone,
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "mzs" = (
 /obj/structure/stairs{
@@ -22355,17 +22365,9 @@
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/druidgrove)
 "oaH" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
+/obj/structure/closet/crate/chest{
+	lockid = "towner_cheesemaker"
 	},
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81
-	},
-/obj/structure/mineral_door/wood/deadbolt/shutter{
-	dir = 2
-	},
-/obj/structure/fluff/canopy/green,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -23504,10 +23506,8 @@
 	},
 /area/rogue/outdoors/town/harbor)
 "oGo" = (
-/obj/structure/mannequin/male/female,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town)
 "oGy" = (
 /obj/structure/chair/bench/coucha,
@@ -23927,10 +23927,6 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/twig,
-/area/rogue/indoors/town)
-"oSY" = (
-/obj/structure/roguemachine/vendor/street_shop01,
-/turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town)
 "oTD" = (
 /turf/open/transparent/openspace,
@@ -32207,14 +32203,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "uln" = (
-/obj/structure/mineral_door/wood/red{
-	locked = 1;
-	lockid = "street_shop01";
-	name = "Street Shop #1"
-	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
+/turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town)
 "ulR" = (
 /obj/structure/table/wood{
@@ -32483,6 +32472,12 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
+"utP" = (
+/obj/structure/mannequin/male/female,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town)
 "uul" = (
 /obj/structure/fluff/walldeco/psybanner,
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue,
@@ -34966,7 +34961,9 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "vVE" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/obj/structure/stairs{
+	dir = 4
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -34995,8 +34992,20 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
 "vWC" = (
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/wood,
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/mineral_door/wood/deadbolt/shutter{
+	dir = 2
+	},
+/obj/structure/fluff/canopy/green,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
 /area/rogue/indoors/town)
 "vXd" = (
 /obj/structure/table/wood{
@@ -35762,12 +35771,8 @@
 	},
 /area/rogue/under/town/basement)
 "wxm" = (
-/obj/structure/closet/crate/chest{
-	lockid = "towner_cheesemaker"
-	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "wxn" = (
 /obj/structure/fluff/railing/wood{
@@ -335976,7 +335981,7 @@ wVI
 wVI
 lFC
 xjW
-eFG
+uln
 seT
 wVI
 wbg
@@ -336402,14 +336407,14 @@ wVI
 wbg
 wbg
 wVI
-eFG
-eFG
+uln
+uln
 uMc
 lRU
-eFG
-eFG
-eFG
-eFG
+uln
+uln
+uln
+uln
 wVI
 wbg
 wbg
@@ -336840,7 +336845,7 @@ tVN
 tVN
 vXn
 vXn
-eFG
+uln
 qGr
 lia
 wbg
@@ -337272,8 +337277,8 @@ tVN
 tVN
 vXn
 vXn
-eFG
-eFG
+uln
+uln
 wVI
 wbg
 wbg
@@ -337699,13 +337704,13 @@ wbg
 wbg
 wVI
 kYl
-blx
+oGo
 tVN
 vXn
 stp
-eFG
-eFG
-eFG
+uln
+uln
+uln
 wVI
 wbg
 wbg
@@ -338136,7 +338141,7 @@ tVN
 vXn
 vXn
 vXn
-eFG
+uln
 xaB
 wbg
 wbg
@@ -338562,13 +338567,13 @@ edc
 dpw
 wbg
 wVI
-eFG
+uln
 mPo
 vSC
 pdG
 uRi
 kxk
-eFG
+uln
 gYn
 wbg
 wbg
@@ -338994,13 +338999,13 @@ xAt
 dpw
 wbg
 wVI
-eFG
-eFG
-eFG
-eFG
-eFG
-eFG
-eFG
+uln
+uln
+uln
+uln
+uln
+uln
+uln
 wVI
 wbg
 wbg
@@ -341156,10 +341161,10 @@ wbg
 wbg
 wbg
 wbg
-eFG
-eFG
-eFG
-eFG
+uln
+uln
+uln
+uln
 evo
 bmi
 bNX
@@ -341588,10 +341593,10 @@ wbg
 wbg
 wbg
 vJP
-oaH
-vVE
+vWC
+lRz
 bmi
-wxm
+oaH
 evo
 saf
 fui
@@ -342019,11 +342024,11 @@ aRV
 wbg
 wbg
 wbg
-mkX
+gym
 rNm
 rNm
 rNm
-oGo
+utP
 evo
 yaG
 lZb
@@ -342451,11 +342456,11 @@ tNj
 wbg
 eEo
 wbg
-mkX
-vWC
+gym
+mzo
 rNm
 rNm
-mun
+bOT
 evo
 rzA
 cRl
@@ -342884,7 +342889,7 @@ wbg
 wbg
 wbg
 vJP
-oaH
+vWC
 rNm
 rNm
 jZJ
@@ -343316,9 +343321,9 @@ wbg
 wbg
 wbg
 wbg
-mzo
-gym
-bOT
+blx
+wxm
+vVE
 bmi
 evo
 drd
@@ -343748,10 +343753,10 @@ wbg
 wbg
 wbg
 fyD
-eFG
-eFG
 uln
-oSY
+uln
+mun
+mkX
 evo
 evo
 evo
@@ -353236,7 +353241,7 @@ fUg
 aOv
 mwE
 rfx
-cdN
+eFG
 fCu
 mwE
 aOv
