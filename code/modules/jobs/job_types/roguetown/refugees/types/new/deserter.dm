@@ -1,6 +1,6 @@
 /datum/subclass/deserter
 	name = "Deserter"
-	tutorial = "You deserted your post and fled from the battlefield\
+	tutorial = "You deserted your post and fled from the battlefield \
 				after having witnessed first hand the horrors of war and the disastrous campaigns against the deadite hordes of the south.\
 				You now seek refuge in a place where your past allegiance wont be recognized, hoping that the rot hasn't followed you.\ "
 
@@ -107,7 +107,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
