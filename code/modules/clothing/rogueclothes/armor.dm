@@ -628,7 +628,7 @@
 	nodismemsleeves = TRUE
 	do_sound_plate = TRUE
 	blocking_behavior = null
-	max_integrity = 400
+	max_integrity = 600
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/blacksteel
 	armor_class = ARMOR_CLASS_HEAVY
