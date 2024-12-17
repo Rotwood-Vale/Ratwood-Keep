@@ -346,7 +346,7 @@
 	base_state = "standingb"
 
 /obj/machinery/light/rogue/firebowl/standing/green
-	bulb_colour = "#b9ffce"
+	bulb_colour = "#8ee2a7"
 	icon_state = "standingg1"
 	base_state = "standingg"
 
