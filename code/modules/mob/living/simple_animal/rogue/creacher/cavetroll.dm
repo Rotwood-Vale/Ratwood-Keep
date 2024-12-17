@@ -52,6 +52,9 @@
 	ai_controller = /datum/ai_controller/troll
 	
 //	stat_attack = UNCONSCIOUS
+/mob/living/simple_animal/hostile/retaliate/rogue/cavetroll/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cavetroll/death(gibbed)
 	..()
