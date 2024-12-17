@@ -39,9 +39,9 @@
 	if(H.gender == FEMALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/nobledress/green
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/white
-	
+
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/keyring/clerk
+	beltl = /obj/item/keyring/steward
 	backr = /obj/item/storage/backpack/rogue/satchel

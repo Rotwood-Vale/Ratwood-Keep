@@ -202,9 +202,6 @@
 /obj/item/keyring/steward
 	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor)
 
-/obj/item/keyring/clerk
-	keys = list(/obj/item/key/walls, /obj/item/key/manor)
-
 /obj/item/keyring/servant
 	keys = list(/obj/item/key/manor, /obj/item/key/keep_barracks)
 
