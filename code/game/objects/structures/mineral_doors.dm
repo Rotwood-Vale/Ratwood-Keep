@@ -889,10 +889,6 @@
 	resident_subclass = /datum/subclass/blacksmith
 	lockid = "towner_blacksmith"
 
-/obj/structure/mineral_door/wood/towner/carpenter
-	resident_subclass = /datum/subclass/carpenter
-	lockid = "towner_carpenter"
-
 /obj/structure/mineral_door/wood/towner/hunter
 	resident_subclass = /datum/subclass/hunter
 	lockid = "towner_hunter"

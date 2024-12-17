@@ -7,11 +7,13 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	category_tags = list(CTAG_REFUGEE)
-	allowed_patrons = ALL_CLERIC_PATRONS
 
 	maximum_possible_slots = 5
 
 	outfit = /datum/outfit/job/roguetown/refugee/ecclesiast
+
+/datum/outfit/job/roguetown/refugee/ecclesiast
+	allowed_patrons = ALL_CLERIC_PATRONS
 
 /datum/outfit/job/roguetown/refugee/ecclesiast/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -49,30 +51,35 @@
 	switch(classchoice)
 
 		if("Preacher")
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-			head = /obj/item/clothing/head/roguetown/helmet/skullcap
+			neck = /obj/item/clothing/neck/roguetown/psicross
+			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/wood
-			beltl = /obj/item/rogueweapon/huntingknife
-			beltr = /obj/item/rogueweapon/sword/iron/messer
+			beltr = /obj/item/rogueweapon/mace
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			var/datum/devotion/C = new /datum/devotion(H, H.patron)
+			C.grant_spells(H)
+			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
 		if("Returning Crusader")
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
@@ -116,6 +123,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/roguehood
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown

@@ -7,11 +7,13 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	category_tags = list(CTAG_REFUGEE)
-	allowed_patrons = ALL_PATRONS
 
 	maximum_possible_slots = 5
 
 	outfit = /datum/outfit/job/roguetown/refugee/healer
+
+/datum/outfit/job/roguetown/refugee/healer
+	allowed_patrons = ALL_PATRONS
 
 /datum/outfit/job/roguetown/refugee/healer/pre_equip(mob/living/carbon/human/H)
 	..()

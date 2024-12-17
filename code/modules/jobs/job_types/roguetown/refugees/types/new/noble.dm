@@ -5,13 +5,16 @@
 				where you can re-establish your lineage."
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_RESPECTED
+	allowed_races = RACES_TOLERATED_UP
 	category_tags = list(CTAG_REFUGEE)
-	allowed_patrons = ALL_PATRONS
 
 	maximum_possible_slots = 5
 
 	outfit = /datum/outfit/job/roguetown/refugee/noble
+
+
+/datum/outfit/job/roguetown/refugee/noble
+	allowed_patrons = ALL_PATRONS
 
 /datum/outfit/job/roguetown/refugee/noble/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -95,7 +98,7 @@
 			beltr = /obj/item/rogueweapon/huntingknife
 			gloves = /obj/item/clothing/gloves/roguetown/leather/black
 			backl = /obj/item/storage/backpack/rogue/satchel
-			id = /obj/item/scomstone
+			id = /obj/item/clothing/ring/silver
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)

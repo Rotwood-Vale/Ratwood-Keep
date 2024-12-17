@@ -1,17 +1,18 @@
 /datum/subclass/scavenger
 	name = "Scavenger"
-	tutorial = "You deserted your post and fled from the battlefield\
-				after having witnessed first hand the horrors of war and the disastrous campaigns against the deadite hordes of the south.\
-				You now seek refuge in a place where your past allegiance wont be recognized, hoping that the rot hasn't followed you.\ "
+	tutorial = "Your life has been one of simple hardship and labor, whether out of necessity or choice. As you fled from the rot, \
+				you learned how to best use and gather the natural resources around you.\ "
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	category_tags = list(CTAG_REFUGEE)
-	allowed_patrons = ALL_PATRONS
 
 	maximum_possible_slots = 5
 
 	outfit = /datum/outfit/job/roguetown/refugee/scavenger
+
+/datum/outfit/job/roguetown/refugee/scavenger
+	allowed_patrons = ALL_PATRONS
 
 /datum/outfit/job/roguetown/refugee/scavenger/pre_equip(mob/living/carbon/human/H)
 	..()

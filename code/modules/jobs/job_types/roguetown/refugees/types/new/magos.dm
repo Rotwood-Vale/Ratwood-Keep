@@ -10,6 +10,9 @@
 
 	outfit = /datum/outfit/job/roguetown/refugee/magos
 
+/datum/outfit/job/roguetown/refugee/magos
+	allowed_patrons = ALL_PATRONS
+
 /datum/outfit/job/roguetown/refugee/magos/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
