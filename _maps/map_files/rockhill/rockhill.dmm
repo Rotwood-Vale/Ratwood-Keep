@@ -1711,9 +1711,6 @@
 /obj/item/clothing/shoes/roguetown/sandals,
 /obj/item/clothing/under/roguetown/tights/stockings/silk/random,
 /obj/item/clothing/under/roguetown/tights/stockings/silk,
-/obj/item/key/archive,
-/obj/item/key/archive,
-/obj/item/key/archive,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/academy)
 "bbO" = (
@@ -3081,7 +3078,10 @@
 /area/rogue/outdoors/town)
 "bWV" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden{
+	pixel_x = -11
+	},
+/obj/item/rogueweapon/huntingknife,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/academy)
 "bXB" = (
@@ -3940,6 +3940,9 @@
 /obj/structure/fluff/railing/border,
 /obj/structure/closet/crate/chest{
 	lockid = "archive"
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 9
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/academy)
@@ -12151,10 +12154,14 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/church/chapel)
 "hHs" = (
-/obj/structure/roguemachine/atm{
-	pixel_y = -32
+/obj/structure/closet/crate/chest{
+	lockid = "archive";
+	locked = 1
 	},
-/turf/open/floor/rogue/herringbone,
+/obj/item/key/archive,
+/obj/item/key/archive,
+/obj/item/key/archive,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/academy)
 "hHC" = (
 /turf/open/floor/rogue/herringbone,
@@ -18089,7 +18096,8 @@
 /area/rogue/indoors/town/church)
 "luI" = (
 /obj/structure/closet/crate/chest{
-	lockid = "archive"
+	lockid = "archive";
+	locked = 1
 	},
 /obj/item/paper,
 /obj/item/paper,
@@ -18113,6 +18121,10 @@
 /obj/item/paper,
 /obj/item/paper,
 /obj/item/paper,
+/obj/structure/roguemachine/atm{
+	pixel_x = 32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/academy)
 "luM" = (
@@ -339626,8 +339638,8 @@ blm
 cDj
 cDj
 cDj
-hHs
-dLj
+cDj
+dHA
 wbg
 wbg
 wbg
@@ -340491,7 +340503,7 @@ sbK
 lfK
 rNg
 luI
-dHA
+dLj
 wbg
 qlv
 wbg
@@ -555627,7 +555639,7 @@ rKE
 rWZ
 rWZ
 rWZ
-rWZ
+hHs
 mno
 rOt
 rOt
