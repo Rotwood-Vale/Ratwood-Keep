@@ -109,6 +109,7 @@
 	category_tags = list(CTAG_WAPPRENTICE)
 	
 /datum/outfit/job/roguetown/wapprentice/apprentice/pre_equip(mob/living/carbon/human/H)
+	backpack_contents = list(/obj/item/roguegem/amethyst = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
