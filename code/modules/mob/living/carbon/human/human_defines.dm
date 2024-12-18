@@ -99,7 +99,6 @@
 
 	var/canseebandits = FALSE
 
-	var/marriedto
 
 	var/has_stubble = TRUE
 

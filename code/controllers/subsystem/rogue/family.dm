@@ -41,6 +41,21 @@ SUBSYSTEM_DEF(family)
 				rel_images += I
 
 
+/datum/controller/subsystem/family/proc/makeFamily(var/mob/living/carbon/human/head,var/name)
+	var/i = 0
+	while(!name || used_names.Find(name))
+		i++
+		name = pick(strings("family.json","prefix")) + "-" + pick(strings("family.json","title"))
+		if(i == 100)
+			name += " the [pick("ill","unfortunate")] lucked" //fallback on the impossible chance it CANNOT make a unique name.
+
+	var/datum/family/F = new()
+	F.name = name
+	used_names += name
+	F.addMember(head)
+
+	return F
+
 /datum/controller/subsystem/family/proc/SetupFamilies()
 	if(!length(family_candidates))
 		return
@@ -55,16 +70,7 @@ SUBSYSTEM_DEF(family)
 		var/mob/living/carbon/head = pick(family_candidates) //Could be weighted on age. But it doesn't really matter due to a lack of last names.
 
 		if(head)
-			var/datum/family/F = new()
-			var/family_name
-			var/i = 0
-			while(!family_name || used_names.Find(family_name))
-				family_name = pick(strings("family.json","prefix")) + "-" + pick(strings("family.json","title"))
-				if(i == 100)
-					family_name += " the [pick("ill","unfortunate")] lucked" //fallback on the impossible chance it CANNOT make a unique name.
-			F.name = family_name
-			used_names += family_name
-			F.addMember(head)
+			var/datum/family/F = makeFamily(head)
 			current_families += F
 
 		total_families--
@@ -108,9 +114,7 @@ SUBSYSTEM_DEF(family)
 		if(istype(J,/datum/job/roguetown/lord))
 			if(!lord)
 				lord = H
-				lord_family = new()
-				lord_family.name = GLOB.lordsurname
-				lord_family.addMember(H)
+				lord_family = makeFamily(lord, GLOB.lordsurname)
 		else if(istype(J,/datum/job/roguetown/lady))
 			lady = H
 		else
@@ -225,6 +229,8 @@ SUBSYSTEM_DEF(family)
 	if(announce)
 		spawn(1)
 			to_chat(holder,"<span class='notice'>My [R.name]. [target.real_name] ([target.age]) is here alongside me.</span>")
+
+		R.onConnect(holder,target) //Bit of hack to have this here. But it stops church marriages from being given rings.
 
 /datum/family/proc/tryConnect(var/mob/living/carbon/human/target, var/mob/living/carbon/human/member) //Gets the rel_type for the targets. For now, it only returns spouse.
 	return REL_TYPE_SPOUSE
@@ -357,7 +363,6 @@ proc/getMatchingRel(var/rel_type)
 	holder = WEAKREF(H)
 	target = WEAKREF(T)
 	name = getName() //Done once to prevent any organ changes from changing the name.
-	onConnect(H,T)
 
 /datum/relation/spouse
 	name = "Spouse"
