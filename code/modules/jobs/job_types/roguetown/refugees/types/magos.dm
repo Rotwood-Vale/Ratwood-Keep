@@ -93,11 +93,11 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strengthen_undead)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead_lesser)
 			head = /obj/item/clothing/head/roguetown/necromhood
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
@@ -113,7 +113,9 @@
 			H.change_stat("constitution", -2)
 			H.change_stat("endurance", -1)
 			H.change_stat("speed", -1)
+			H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can level arcane to get them
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 			H.set_patron(/datum/patron/zizo)
-			H.faction |= "undead"
+			H.faction += "undead"
 
 	H.set_blindness(0)
