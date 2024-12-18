@@ -96,7 +96,6 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strengthen_undead)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
 			head = /obj/item/clothing/head/roguetown/necromhood
