@@ -9,7 +9,7 @@
 	//dropshrink = 0.8
 	wlength = 10
 	max_integrity = 400
-	slot_flags = ITEM_SLOT_HIP
+	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	toolspeed = 1
 	associated_skill = /datum/skill/combat/maces
 	smeltresult = /obj/item/ingot/iron
