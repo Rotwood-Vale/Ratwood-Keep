@@ -76,7 +76,7 @@ Sunlight System
 
 /turf/proc/reassess_stack()
 	GLOB.SUNLIGHT_QUEUE_WORK += src
-	var/turf/T = SSmapping.get_turf_below(src)
+	var/turf/T = GET_TURF_BELOW(src)
 	if(T)
 		T.reassess_stack()
 

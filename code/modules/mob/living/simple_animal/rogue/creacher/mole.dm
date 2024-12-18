@@ -45,6 +45,10 @@
 //	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/mole
 
+	ai_controller = /datum/ai_controller/mole
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
+
 /obj/effect/decal/remains/mole
 	name = "remains"
 	gender = PLURAL
@@ -57,6 +61,7 @@
 	if(prob(33))
 		gender = FEMALE
 	update_icon()
+	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mole/death(gibbed)
 	..()

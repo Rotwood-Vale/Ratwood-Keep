@@ -258,7 +258,6 @@
 
 /proc/scom_announce(message)
 	for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
-		S.say(message, spans = list("info"))
 		if(S.speaking)
 			S.say(message, spans = list("info"))
 
@@ -385,7 +384,7 @@
 	muteinmouth = TRUE
 	var/listening = TRUE
 	var/speaking = TRUE
-	sellprice = 200
+	sellprice = 100
 
 
 /obj/item/listenstone/MiddleClick(mob/user)

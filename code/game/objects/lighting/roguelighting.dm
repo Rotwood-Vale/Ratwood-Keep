@@ -345,6 +345,11 @@
 	icon_state = "standingb1"
 	base_state = "standingb"
 
+/obj/machinery/light/rogue/firebowl/standing/green
+	bulb_colour = "#8ee2a7"
+	icon_state = "standingg1"
+	base_state = "standingg"
+
 /obj/machinery/light/rogue/firebowl/standing/proc/knock_over() //use this later for jump impacts and shit
 	icon_state = "[base_state]over"
 
@@ -612,10 +617,10 @@
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
 				var/obj/item/reagent_containers/food/snacks/S = W
 				if(istype(W, /obj/item/reagent_containers/food/snacks/egg)) // added
-					playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
-					sleep(25) // to get egg crack before frying hiss
-					W.icon_state = "rawegg" // added
-					mouse_opacity = 0 // so you cannot scoop up raw egg in the pan. Returned to 1 in process proc below
+					if(W.icon_state != "rawegg")
+						playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
+						sleep(25) // to get egg crack before frying hiss
+						W.icon_state = "rawegg" // added
 				if(!food)
 					S.forceMove(src)
 					food = S
@@ -813,7 +818,6 @@
 				if(food)
 					var/obj/item/C = food.cooking(20, src)
 					if(C)
-						mouse_opacity = 1
 						qdel(food)
 						food = C
 			if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))

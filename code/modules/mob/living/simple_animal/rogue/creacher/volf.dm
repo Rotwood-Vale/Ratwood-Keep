@@ -47,6 +47,11 @@
 //	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/wolf
 
+	///this mob was updated to new ai
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
+	ai_controller = /datum/ai_controller/volf
+
 /obj/effect/decal/remains/wolf
 	name = "remains"
 	gender = PLURAL
@@ -55,6 +60,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/Initialize()
 	. = ..()
+	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
+
 	gender = MALE
 	if(prob(33))
 		gender = FEMALE

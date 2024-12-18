@@ -21,6 +21,16 @@
 	result = list(/obj/item/clothing/gloves/roguetown/leather)
 	reqs = list(/obj/item/natural/hide/cured = 1)
 
+/datum/crafting_recipe/roguetown/hunting/lcollar
+	name = "leather collar"
+	result = list(/obj/item/clothing/neck/roguetown/collar/leather)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
+/datum/crafting_recipe/roguetown/hunting/lleash
+	name = "leather leash"
+	result = list(/obj/item/leash/leather)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
 /datum/crafting_recipe/roguetown/hunting/bracers
 	name = "leather bracers"
 	result = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
@@ -78,7 +88,7 @@
 	result = /obj/item/powderflask
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 2,
-				/datum/reagent/alch/syruma = 15)
+				/datum/reagent/alch/syrum_ash = 15)
 	sellprice = 15
 
 /datum/crafting_recipe/roguetown/hunting/quiver
