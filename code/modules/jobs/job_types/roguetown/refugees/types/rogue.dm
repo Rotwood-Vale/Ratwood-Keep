@@ -74,7 +74,7 @@
 			backl = /obj/item/storage/backpack/rogue/backpack
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltl = /obj/item/ammo_holder/quiver/bolts
-			backpack_contents = list(/obj/item/reagent_containers/powder = 2, /obj/item/reagent_containers/glass/bottle/mercury = 2, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1)
+			backpack_contents = list(/obj/item/reagent_containers/powder/ozium = 2, /obj/item/reagent_containers/glass/bottle/mercury = 2, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1)
 			H.change_stat("perception", 1) 
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 1)
