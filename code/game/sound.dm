@@ -32,14 +32,15 @@
 	if(soundping)
 		ping_sound(source)
 
+	var/list/muffled_listeners = list() //this is very rudimentary list of muffled listeners above and below to mimic sound muffling (this is done through modifying the playsounds for them)
 	if(!ignore_walls) //these sounds don't carry through walls
 		listeners = listeners & hearers(maxdistance,turf_source)
 
 		if(above_turf && istransparentturf(above_turf))
-			listeners += hearers(maxdistance,above_turf)
+			muffled_listeners += hearers(maxdistance,above_turf)
 
 		if(below_turf && istransparentturf(turf_source))
-			listeners += hearers(maxdistance,below_turf)
+			muffled_listeners += hearers(maxdistance,below_turf)
 
 	else
 		if(above_turf)
@@ -49,14 +50,18 @@
 		if(below_turf)
 			listeners += SSmobs.clients_by_zlevel[below_turf.z]
 			listeners += SSmobs.dead_players_by_zlevel[below_turf.z]
-	
-	listeners += SSmobs.dead_players_by_zlevel[source_z]
 
+	listeners += SSmobs.dead_players_by_zlevel[source_z]
 	. = list()
 
 	for(var/mob/M as anything in listeners)
 		if(get_dist(M, turf_source) <= maxdistance)
 			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat))
+				. += M
+
+	for(var/mob/M as anything in muffled_listeners)
+		if(get_dist(M, turf_source) <= maxdistance)
+			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat, muffled = TRUE))
 				. += M
 
 
@@ -90,7 +95,7 @@
 	. = ..()
 	animate(src, alpha = 0, time = duration, easing = EASE_IN)
 */
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel, pressure_affected = TRUE, sound/S, repeat)
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel, pressure_affected = TRUE, sound/S, repeat, muffled)
 	if(!client || !can_hear())
 		return FALSE
 
@@ -99,6 +104,14 @@
 
 	S.wait = 0 //No queue
 	S.channel = channel || open_sound_channel()
+
+	if(muffled)
+		S.environment = 11
+		if(falloff)
+			falloff *= 1.5
+		else
+			falloff = FALLOFF_SOUNDS * 1.5
+		vol *= 0.75
 
 	var/vol2use = vol
 	if(client.prefs)

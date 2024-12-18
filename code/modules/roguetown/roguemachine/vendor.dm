@@ -277,8 +277,12 @@
 		held_items[P]["PRICE"] = 100
 	update_icon()
 
+//Buyable shops vendors
+
 /obj/structure/roguemachine/vendor/portshop
 	lockid = "steward"
+	name = "Portshop key seller."
+	desc = "Get key from shop here!"
 
 /obj/structure/roguemachine/vendor/portshop/Initialize()
 	. = ..()
@@ -286,4 +290,30 @@
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
-		held_items[P]["PRICE"] = 20
+		held_items[P]["PRICE"] = 5
+
+/obj/structure/roguemachine/vendor/street_smithshop01
+	lockid = "steward"
+	name = "Smith shop key seller."
+	desc = "Get key from shop here!"
+
+/obj/structure/roguemachine/vendor/street_smithshop01/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/street_smithshop01))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 5
+
+/obj/structure/roguemachine/vendor/street_shop01
+	lockid = "steward"
+	name = "Street shop key seller."
+	desc = "Get key from shop here!"
+
+/obj/structure/roguemachine/vendor/street_shop01/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/street_shop01))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 5

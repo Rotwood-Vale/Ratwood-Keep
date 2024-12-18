@@ -43,12 +43,15 @@
 	STASTR = 15
 	STASPD = 5
 
+	ai_controller = /datum/ai_controller/mimic
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
+
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/Initialize(mapload)
 	. = ..()
 	if(mapload)//load objects into chest.
 		for(var/obj/item/I in loc)
 			I.forceMove(src)
-	proximity_monitor = new(src, 1)
 	icon_state = "mimic"
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, TRUE, null, null, FALSE)
 
@@ -81,13 +84,6 @@
 		O.forceMove(loc)
 	QDEL_NULL(proximity_monitor)
 	..()
-
-/mob/living/simple_animal/hostile/retaliate/rogue/mimic/HasProximity(atom/movable/AM)
-	var/list/around = view(src, 1) // scan for enemies
-	if(!(AM in around))
-		return
-	if(istype(AM, /mob/living))
-		GiveTarget(AM)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/get_sound(input)
 	switch(input)

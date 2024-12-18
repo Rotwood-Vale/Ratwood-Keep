@@ -30,6 +30,13 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/cooking/pan
 
+/datum/anvil_recipe/general/catbell
+	name = "Catbell x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/catbell,
+						/obj/item/catbell,
+						/obj/item/catbell)
+
 /datum/anvil_recipe/general/iron/keyring
 	name = "Keyrings 3x"
 	req_bar = /obj/item/ingot/iron
@@ -96,6 +103,11 @@
 	name = "Chain"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rope/chain
+
+/datum/anvil_recipe/general/chainleash
+	name = "Chain Leash"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/leash/chain
 
 /datum/anvil_recipe/general/iron/ramrod
 	name = "Replacement Ramrods x3"
@@ -167,3 +179,15 @@
 	name = "Cautery Iron"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
+	
+/datum/anvil_recipe/general/cupsgold
+	name = "Cowbell"
+	req_bar = /obj/item/ingot/copper
+	created_item = list(/obj/item/catbell/cow)
+
+/datum/anvil_recipe/general/cowbell
+	name = "Cowbell x3"
+	req_bar = /obj/item/ingot/copper
+	created_item = list(/obj/item/catbell/cow,
+						/obj/item/catbell/cow,
+						/obj/item/catbell/cow)
