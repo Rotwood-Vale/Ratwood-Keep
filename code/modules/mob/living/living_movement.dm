@@ -53,11 +53,15 @@
 		if(MOVE_INTENT_SNEAK)
 			mod = 6
 
-	var/spdchange = (10-STASPD)*0.1
-	spdchange = clamp(spdchange, -0.5, 1)  //if this is not clamped, maniacs will run at unfathomable speed
-	mod = mod+spdchange
-	//maximum speed is achieved at 15spd, everything else results in insanity
-	add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
+    if(STASPD < 7)
+        mod += 0.3
+    var/spdchange = 0
+    if(STASPD > 11)
+        spdchange = (10 - STASPD) * 0.08
+    spdchange = clamp(spdchange, -0.5, 1) //if this is not clamped, maniacs will run at unfathomable speed
+    mod += spdchange
+//maximum speed is achieved at 17spd, everything else results in insanity
+    add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
 
 /mob/living/proc/update_turf_movespeed(turf/open/T)
 	if(isopenturf(T))
