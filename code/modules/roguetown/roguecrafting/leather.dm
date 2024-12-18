@@ -26,6 +26,11 @@
 	result = list(/obj/item/clothing/neck/roguetown/collar/leather)
 	reqs = list(/obj/item/natural/hide/cured = 1)
 
+/datum/crafting_recipe/roguetown/hunting/lleash
+	name = "leather leash"
+	result = list(/obj/item/leash/leather)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+
 /datum/crafting_recipe/roguetown/hunting/bracers
 	name = "leather bracers"
 	result = list(/obj/item/clothing/wrists/roguetown/bracers/leather)

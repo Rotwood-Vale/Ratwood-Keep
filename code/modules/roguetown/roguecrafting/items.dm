@@ -508,11 +508,20 @@
 	tools = list(/obj/item/rogueweapon/hammer = 1)
 	req_table = TRUE
 
-/datum/crafting_recipe/roguetown/gorget/oring
-	name = "ringed gorget"
+/datum/crafting_recipe/roguetown/gorget/soring
+	name = "ringed steel gorget"
 	skillcraft = /datum/skill/craft/blacksmithing
 	reqs = list(/obj/item/clothing/neck/roguetown/gorget/steel = 1)
 	result = /obj/item/clothing/neck/roguetown/gorget/steel/oring
+	skill_level = 2
+	tools = list(/obj/item/rogueweapon/hammer = 1)
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/chainleash
+	name = "chain leash"
+	skillcraft = /datum/skill/craft/blacksmithing
+	reqs = list(/obj/item/rope/chain = 1)
+	result = /obj/item/leash/chain
 	skill_level = 2
 	tools = list(/obj/item/rogueweapon/hammer = 1)
 	req_table = TRUE

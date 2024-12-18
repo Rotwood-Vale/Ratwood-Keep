@@ -104,6 +104,11 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rope/chain
 
+/datum/anvil_recipe/general/chainleash
+	name = "Chain Leash"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/leash/chain
+
 /datum/anvil_recipe/general/iron/ramrod
 	name = "Replacement Ramrods x3"
 	req_bar = /obj/item/ingot/iron

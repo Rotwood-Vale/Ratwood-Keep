@@ -27,7 +27,6 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/keyring/mage
 	r_hand = /obj/item/rogueweapon/woodstaff
-	neck = /obj/item/clothing/neck/roguetown/collar/leather/bell //:3
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest

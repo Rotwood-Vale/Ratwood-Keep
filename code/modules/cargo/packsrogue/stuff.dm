@@ -136,12 +136,22 @@
 /datum/supply_pack/rogue/bandit/Stuff/ropeleash
 	name = "Rope Leash"
 	cost = 5
-	contains = list(/obj/item/leash,)
+	contains = list(/obj/item/leash)
+
+/datum/supply_pack/rogue/bandit/Stuff/leatherleash
+	name = "Leather Leash"
+	cost = 20
+	contains = list(/obj/item/leash/leather)
+
+/datum/supply_pack/rogue/bandit/Stuff/chainleash
+	name = "Chain Leash"
+	cost = 50
+	contains = list(/obj/item/leash/chain)
 
 /datum/supply_pack/rogue/bandit/Stuff/leathercollar
 	name = "Leather Collar"
 	cost = 20
-	contains = list(/obj/item/clothing/neck/roguetown/collar/leather, /obj/item/leash,)
+	contains = list(/obj/item/clothing/neck/roguetown/collar/leather)
 
 /datum/supply_pack/rogue/bandit/Stuff/collarcat
 	name = "Leather Cat Collar"

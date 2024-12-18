@@ -157,7 +157,8 @@
 /obj/structure/mineral_door/wood/donjon{
 	locked = 1;
 	lockid = "nightman";
-	name = "Secret Harbour"
+	name = "Secret Harbour";
+	pixel_y = 1
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "wooden_floort"
@@ -1995,6 +1996,11 @@
 	keylock = 1;
 	lockid = "nightman"
 	},
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cow,
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/neck/roguetown/collar/leather,
+/obj/item/leash/leather,
+/obj/item/leash/leather,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/bath)
 "blt" = (
@@ -6917,6 +6923,11 @@
 	lockid = "nightman";
 	pixel_y = 12
 	},
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/neck/roguetown/collar/leather,
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cow,
+/obj/item/leash/leather,
+/obj/item/leash/leather,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "epm" = (
@@ -7422,7 +7433,7 @@
 /area/rogue/under/town/basement)
 "eFa" = (
 /obj/effect/landmark/start/wapprentice,
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/rogue/inn/wool,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "eFp" = (
@@ -9695,6 +9706,9 @@
 /area/rogue/indoors/town/magician)
 "gbn" = (
 /obj/structure/table/wood,
+/obj/item/reagent_containers/food/snacks/grown/apple,
+/obj/item/reagent_containers/food/snacks/grown/apple,
+/obj/item/reagent_containers/food/snacks/grown/apple,
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician)
 "gbt" = (
@@ -11264,6 +11278,12 @@
 /area/rogue/outdoors/mountains)
 "hcu" = (
 /obj/structure/closet/crate/roguecloset,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/magician)
 "hcx" = (
@@ -12065,8 +12085,13 @@
 /area/rogue/indoors/town/manor)
 "hEX" = (
 /obj/structure/closet/crate/chest{
-	lockid = "keep_armory"
+	lockid = "keep_armory";
+	name = "leech chest"
 	},
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
+/obj/item/natural/worms/leech,
 /turf/open/floor/rogue/tile{
 	icon_state = "greenstone"
 	},
@@ -17901,6 +17926,21 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
+"lof" = (
+/obj/structure/closet/crate/roguecloset{
+	keylock = 1;
+	lockid = "nightman"
+	},
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cow,
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cow,
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/neck/roguetown/collar/leather,
+/obj/item/clothing/neck/roguetown/collar/leather,
+/obj/item/leash/leather,
+/obj/item/leash/leather,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors/town/bath)
 "loh" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/church,
@@ -18386,6 +18426,14 @@
 	},
 /obj/item/rope/chain,
 /obj/item/rope/chain,
+/obj/item/leash/chain,
+/obj/item/leash/chain,
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cow,
+/obj/item/clothing/neck/roguetown/collar/leather,
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cow,
+/obj/item/clothing/neck/roguetown/collar/leather,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/bath)
 "lEB" = (
@@ -21703,6 +21751,8 @@
 /obj/structure/closet/crate/drawer{
 	pixel_y = 16
 	},
+/obj/item/clothing/suit/roguetown/armor/leather/magos,
+/obj/item/clothing/under/roguetown/tights/black,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "nLM" = (
@@ -23379,8 +23429,12 @@
 /area/rogue/indoors/town/bath)
 "oGI" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/apple,
+/obj/item/reagent_containers/glass/alembic,
+/obj/item/reagent_containers/glass/alembic,
+/obj/item/reagent_containers/glass/alembic,
+/obj/item/reagent_containers/glass/mortar,
+/obj/item/reagent_containers/glass/mortar,
+/obj/item/reagent_containers/glass/mortar,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/magician)
 "oGO" = (
@@ -25347,10 +25401,6 @@
 /obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
-"qas" = (
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/town/magician)
 "qaR" = (
 /obj/structure/roguewindow/openclose/reinforced,
 /turf/open/floor/rogue/wood,
@@ -32135,6 +32185,14 @@
 	keylock = 1;
 	lockid = "nightman"
 	},
+/obj/item/clothing/neck/roguetown/collar/leather,
+/obj/item/clothing/neck/roguetown/collar/leather,
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cow,
+/obj/item/clothing/neck/roguetown/collar/leather/bell/cow,
+/obj/item/leash/leather,
+/obj/item/leash/leather,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
 "uoS" = (
@@ -35370,6 +35428,16 @@
 "wpr" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/natural/feather,
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/neck/roguetown/collar/leather/bell,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
+/obj/item/clothing/suit/roguetown/armor/workervest,
+/obj/item/clothing/suit/roguetown/armor/workervest,
+/obj/item/clothing/under/roguetown/tights/black,
+/obj/item/clothing/under/roguetown/tights/black,
+/obj/item/clothing/under/roguetown/tights/black,
+/obj/item/clothing/under/roguetown/tights/black,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "wpu" = (
@@ -35596,6 +35664,9 @@
 	lockid = "keep_armory"
 	},
 /obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -128359,7 +128430,7 @@ ovd
 kDS
 tei
 gwx
-uoQ
+lof
 lUg
 bpD
 bpD
@@ -335731,7 +335802,7 @@ mfK
 jkz
 qJQ
 qJQ
-oGI
+hcu
 fkC
 fkC
 esR
@@ -336164,7 +336235,7 @@ jkz
 qJQ
 qJQ
 rAz
-hcu
+oGI
 fkC
 esR
 xAt
@@ -559505,7 +559576,7 @@ tPh
 fkC
 fkC
 eFa
-qas
+eFa
 cIx
 mbK
 wpr

@@ -265,6 +265,7 @@
 	icon_state = "jester"
 	item_state = "jester"
 	do_sound_bell = TRUE
+	bell = TRUE
 	dynamic_hair_suffix = "+generic"
 	flags_inv = HIDEEARS
 

@@ -52,12 +52,6 @@
 	reqs = list(/obj/item/natural/fibers = 1,
 				/obj/item/natural/cloth = 1)
 	skill_level = 0
-
-/datum/crafting_recipe/roguetown/sewing/ropecollar
-	name = "rope collar (rope) - (1 rope; NONE)"
-	result = list(/obj/item/clothing/neck/roguetown/collar = 1)
-	reqs = list(/obj/item/rope = 1)
-	skill_level = 0
 	
 /datum/crafting_recipe/roguetown/sewing/leash
 	name = "rope leash (rope) - (1 rope; NONE)"
@@ -484,6 +478,12 @@
 /datum/crafting_recipe/roguetown/sewing/collarleather
 	name = "leather collar (1 leather; NONE)"
 	result = /obj/item/clothing/neck/roguetown/collar/leather
+	reqs = list(/obj/item/natural/hide/cured = 1)
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/sewing/leashleather
+	name = "leather leash (1 leather; NONE)"
+	result = /obj/item/leash/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	skill_level = 0
 

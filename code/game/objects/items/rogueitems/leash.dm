@@ -50,7 +50,7 @@
 
 /obj/item/leash
 	name = "rope leash"
-	desc = "A simple rope, with a knot at the end for easy attachment onto bindings."
+	desc = "A simple rope with a knot at the end for easy attachment onto bindings."
 	icon = 'modular/icons/obj/items/leashes_collars.dmi'
 	icon_state = "leash"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -66,6 +66,21 @@
 	var/mob/living/leash_master = null //And our master too
 	var/mob/living/leash_freepet = null
 	var/var/last_yank = null
+
+/obj/item/leash/leather
+	name = "leather leash"
+	desc = "A strip of treated leather with a metal clasp on the end for easy clipping onto bindings."
+	icon = 'modular/icons/obj/items/leashes_collars.dmi'
+	icon_state = "leatherleash"
+
+/obj/item/leash/chain
+	name = "chain leash"
+	desc = "A durable metal chain with a metal clasp on the end for easy clipping onto bindings."
+	icon = 'modular/icons/obj/items/leashes_collars.dmi'
+	icon_state = "chainleash"
+	resistance_flags = FIRE_PROOF
+	equip_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 
 /obj/item/leash/process(delta_time)
 	if(!leash_pet) //No pet, break loop
@@ -106,9 +121,9 @@
 		to_chat(user, span_warning("This leash is already attached to [leash_pet]!"))
 		return
 
-	var/obj/item/clothing/neck/roguetown/collar = C.get_item_by_slot(SLOT_NECK)
+	var/obj/item/collar = C.get_item_by_slot(SLOT_NECK)
 
-	if(collar.leashable == TRUE)
+	if(collar.leashable == TRUE || istype(C.get_item_by_slot(SLOT_HANDCUFFED), /obj/item/rope/chain))
 		var/leash_attempt_message = "[user] raises \the [src] to [C]'s neck!"
 		for(var/mob/viewing in viewers(C, null))
 			if(viewing == C)
@@ -155,23 +170,14 @@
 	apply_tug_mob_to_mob(leash_pet, leash_master, 1)
 	log_combat(leash_master, leash_pet, "leash-yanked")
 	leash_pet.visible_message(span_warning("[leash_master] yanks [leash_pet] closer with \the [src.name]."))
-	last_yank = world.time
 
-//WIP
+//Figure this out in leashs part 2
 /*
-/obj/item/leash/attack_right(mob/living/carbon/C, mob/living/user)
-	if(!leash_pet)
-		to_chat(user, "I don't have a pet to unhook.")
-		return
-	if(!(C == leash_pet))
-		to_chat(user, "My \the [src] is not attached to them.")
-		return
-	else for(var/mob/viewing in viewers(user, null))
-		viewing.show_message("[user] begins unhooking \the [src] from [leash_pet]")
-		if(do_mob(user, 50))
-			viewing.show_message("[user] has unhooked \the [src] from [leash_pet]")
-			leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
+	if(istype(src, obj/item/leash/chain))
+		playsound(src, pick(list('sound/foley/equip/equip_armor_chain.ogg',\
+													'sound/foley/dropsound/chain_drop.ogg'), 50, 100))
 */
+	last_yank = world.time
 
 /obj/item/leash/proc/on_master_move()
 	SIGNAL_HANDLER
@@ -364,6 +370,7 @@
 	throw_range = 4
 	force = 1
 	throwforce = 1
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_TINY
 	var/last_ring
 

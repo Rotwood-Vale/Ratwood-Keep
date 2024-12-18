@@ -32,11 +32,6 @@
 	var/toggle_cooldown = null
 	var/cooldown = 0
 
-	var/do_sound_bell = FALSE
-	var/do_sound_chain = FALSE
-	var/do_sound_plate = FALSE
-	var/bell = FALSE
-
 	var/emote_environment = -1
 	var/list/prevent_crits
 
