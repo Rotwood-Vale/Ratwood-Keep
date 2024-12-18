@@ -127,8 +127,24 @@
 		return FALSE
 
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
+	var/obj/item/bodypart/target_larm = target.get_bodypart(BODY_ZONE_L_ARM)
+	var/obj/item/bodypart/target_rarm = target.get_bodypart(BODY_ZONE_R_ARM)
+	var/obj/item/bodypart/target_lleg = target.get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/target_rleg = target.get_bodypart(BODY_ZONE_R_LEG)
 	if(!target_head)
 		to_chat(user, span_warning("This corpse is headless."))
+		return FALSE
+	if(!target_larm)
+		to_chat(user, span_warning("This corpse is missing a left arm."))
+		return FALSE
+	if(!target_rarm)
+		to_chat(user, span_warning("This corpse is missing a right arm."))
+		return FALSE
+	if(!target_lleg)
+		to_chat(user, span_warning("This corpse is missing a left leg."))
+		return FALSE
+	if(!target_rleg)
+		to_chat(user, span_warning("This corpse is missing a right leg."))
 		return FALSE
 
 	var/offer_refused = FALSE
@@ -196,8 +212,24 @@
 		return FALSE
 
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
+	var/obj/item/bodypart/target_larm = target.get_bodypart(BODY_ZONE_L_ARM)
+	var/obj/item/bodypart/target_rarm = target.get_bodypart(BODY_ZONE_R_ARM)
+	var/obj/item/bodypart/target_lleg = target.get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/target_rleg = target.get_bodypart(BODY_ZONE_R_LEG)
 	if(!target_head)
 		to_chat(user, span_warning("This corpse is headless."))
+		return FALSE
+	if(!target_larm)
+		to_chat(user, span_warning("This corpse is missing a left arm."))
+		return FALSE
+	if(!target_rarm)
+		to_chat(user, span_warning("This corpse is missing a right arm."))
+		return FALSE
+	if(!target_lleg)
+		to_chat(user, span_warning("This corpse is missing a left leg."))
+		return FALSE
+	if(!target_rleg)
+		to_chat(user, span_warning("This corpse is missing a right leg."))
 		return FALSE
 
 	//Sanitychecker for lesser raise undead skeleton cap
@@ -387,6 +419,17 @@
 	charge_max = 15 SECONDS
 	cost = 2
 
+/obj/effect/proc_holder/spell/self/command_undead
+	name = "Command Undead"
+	desc = "!"
+	overlay_state = "raiseskele"
+	sound = list('sound/magic/magnet.ogg')
+	invocation = "Zuth'gorash vel'thar dral'oth!"
+	invocation_type = "shout"
+	antimagic_allowed = TRUE
+	charge_max = 15 SECONDS
+	cost = 2
+
 /obj/effect/proc_holder/spell/self/command_undead/cast(mob/user = usr)
 	..()
 	
@@ -402,4 +445,51 @@
 	for(var/mob/player in lich_player.minions)
 		if(player.mind)
 			to_chat(player, span_boldannounce("Lich [lich_player.real_name] commands: [message]"))
+
+/obj/effect/proc_holder/spell/invoked/revoke_unlife
+	name = "Revoke Unlife"
+	cost = 1
+	desc = ""
+	clothes_req = FALSE
+	range = 7
+	overlay_state = "raiseskele"
+	sound = list('sound/magic/magnet.ogg')
+	releasedrain = 40
+	chargetime = 2 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	charging_slowdown = 1
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	charge_max = 2 SECONDS
+
+/obj/effect/proc_holder/spell/invoked/revoke_unlife/cast(list/targets, mob/living/carbon/human/user)
+	. = ..()
+	user.say("Hgf'ant'Zeshlesh!")
+	var/obj = targets[1]
+
+	if(!obj || !istype(obj, /mob/living/carbon/human))
+		to_chat(user, span_warning("I should cast this spell on a misbehaving minion."))
+		return
+	var/mob/living/carbon/human/target = obj
+	
+	if(target.stat == DEAD)
+		to_chat(user, span_warning("This one is already dead, best reanimate it."))
+		return
+
+	if(!(target in user.minions))
+		to_chat(user, span_warning("This is not one of mine."))
+		return
+	
+	if(!target.client)
+		target.death()
+		to_chat(user, span_warning("The strings are cut, the mindless one comes undone."))
+		return
+	
+	to_chat(target, span_warning("I have disappointed my Master! I feel Necra's scythe catch upon my very soul!"))
+	target.death()
+	sleep(1 SECONDS)
+	target.client.try_descend()
+	to_chat(user, span_warning("The disappointment is no more, its husk free for a more.. Malleable soul."))
+
 
