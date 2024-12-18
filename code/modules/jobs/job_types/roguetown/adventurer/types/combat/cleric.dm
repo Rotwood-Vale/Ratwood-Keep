@@ -166,6 +166,7 @@
 			if(/datum/patron/divine/abyssor)
 				head = /obj/item/clothing/head/roguetown/roguehood/abyssor
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
+				shoes = /obj/item/clothing/shoes/roguetown/sandals
 			if(/datum/patron/divine/dendor)
 				head = /obj/item/clothing/head/roguetown/dendormask
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
