@@ -593,7 +593,7 @@
 /mob/living/update_sneak_invis(reset = FALSE) //Why isn't this in mob/living/living_movements.dm? Why, I'm glad you asked!
 	if(ishuman(src))
 		if(mind)
-			rogue_sneaking_light_threshhold = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.092)+0.1 //THIS IS WHERE WE DO A LITTLE TROLLING. At 6 sneak skill, this raises the lumcount max from 0.15 to 1.0 (massive); but at 0 sneak skill... you are now brutually punished by needing pitch black to sneak!
+			rogue_sneaking_light_threshhold = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.101)+0.18 //This fixes all known rogue complaints involving new sneak.
 	if(!reset && world.time < mob_timers[MT_INVISIBILITY]) // Check if the mob is affected by the invisibility spell
 		rogue_sneaking = TRUE
 		return
