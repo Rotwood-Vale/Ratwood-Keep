@@ -24,6 +24,11 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/neck/roguetown/gorget
 
+/datum/anvil_recipe/armor/iron/gorget
+	name = "Ringed Gorget"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/neck/roguetown/gorget/oring
+
 /datum/anvil_recipe/armor/iron/breastplate
 	name = "Breastplate (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
@@ -205,6 +210,11 @@
 	name = "Steel Gorget"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/neck/roguetown/gorget/steel
+
+/datum/anvil_recipe/armor/steel/sgorget/oring
+	name = "Ringed Steel Gorget"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/neck/roguetown/gorget/steel/oring
 
 /datum/anvil_recipe/armor/steel/kettle
 	name = "Kettle"
