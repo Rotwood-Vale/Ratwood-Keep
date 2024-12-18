@@ -18,6 +18,8 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 		if(/datum/patron/divine/noc)
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
+		if(/datum/patron/divine/abyssor)
+			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
 		if(/datum/patron/divine/dendor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 		if(/datum/patron/divine/necra)
@@ -161,6 +163,9 @@
 				head = /obj/item/clothing/head/roguetown/necrahood
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 				pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
+			if(/datum/patron/divine/abyssor)
+				head = /obj/item/clothing/head/roguetown/roguehood/abyssor
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
 			if(/datum/patron/divine/dendor)
 				head = /obj/item/clothing/head/roguetown/dendormask
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
