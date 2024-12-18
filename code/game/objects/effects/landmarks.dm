@@ -87,7 +87,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/refugeelate
 	name = "refugeelate"
 	icon_state = "arrow"
-	jobspawn_override = list("Skeleton", "Refugee", "refugee", "Migrant")
+	jobspawn_override = list("Skeleton", "Refugee", "Migrant")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/banditlate

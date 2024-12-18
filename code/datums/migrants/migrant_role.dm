@@ -29,7 +29,7 @@
 	return
 
 /datum/migrant_role/refugee
-	name = "refugee"
+	name = "Refugee"
 	subclass_cat_rolls = list(CTAG_REFUGEE = 5)
 
 
