@@ -172,11 +172,18 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	var/firefuel = 0 //add this idiot
 
+	var/leashable = FALSE //More elegant solution to leashchecks
+
 	var/thrown_bclass = BCLASS_BLUNT
 
 	var/icon/experimental_inhand = TRUE
 	var/icon/experimental_onhip = FALSE
 	var/icon/experimental_onback = FALSE
+
+	var/do_sound_bell = FALSE
+	var/do_sound_chain = FALSE
+	var/do_sound_plate = FALSE
+	var/bell = FALSE
 
 	///trying to emote or talk with this in our mouth makes us muffled
 	var/muteinmouth = TRUE
@@ -229,6 +236,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		has_inspect_verb = TRUE
 	update_transform()
 
+/obj/item/proc/step_action() //this was made to rewrite clown shoes squeaking
+	SEND_SIGNAL(src, COMSIG_CLOTHING_STEP_ACTION)
 
 /obj/item/proc/update_transform()
 	transform = null

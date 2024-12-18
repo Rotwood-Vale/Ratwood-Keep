@@ -1,22 +1,3 @@
-
-/obj/item/clothing/proc/step_action() //this was made to rewrite clown shoes squeaking
-	SEND_SIGNAL(src, COMSIG_CLOTHING_STEP_ACTION)
-
-/obj/item/clothing
-	var/do_sound_chain = FALSE
-	var/do_sound_plate = FALSE
-
-/obj/item/clothing/Initialize()
-	. = ..()
-	if(do_sound_chain)
-		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/chain (1).ogg',\
-													'sound/foley/footsteps/armor/chain (2).ogg',\
-													'sound/foley/footsteps/armor/chain (3).ogg'), 100)
-	else if(do_sound_plate)
-		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/plate (1).ogg',\
-													'sound/foley/footsteps/armor/plate (2).ogg',\
-													'sound/foley/footsteps/armor/plate (3).ogg'), 100)
-
 /obj/item/clothing/suit/roguetown/armor
 	slot_flags = ITEM_SLOT_ARMOR
 	body_parts_covered = CHEST
@@ -352,7 +333,7 @@
 	name = "padded gambeson"
 	desc = "A gambeson with additional padding layers, hardened to make it more durable. It still cannot compare to proper armor."
 	icon_state = "gambesonp"
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	sellprice = 30
 
@@ -360,6 +341,7 @@
 	name = "arming jacket"
 	desc = "Similar to a gambeson, it is meant to be used under heavier armor."
 	icon_state = "dgamb"
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_SMASH)
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
