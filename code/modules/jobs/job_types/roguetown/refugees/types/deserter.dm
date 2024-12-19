@@ -99,7 +99,6 @@
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
-			beltr = /obj/item/rogueweapon/sword/iron/messer
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 1)
