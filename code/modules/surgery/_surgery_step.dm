@@ -58,12 +58,12 @@
 	var/skill_median = SKILL_LEVEL_JOURNEYMAN
 	/// Modifiers to success chance when you're above the median
 	var/list/skill_bonuses = list(
-		1 = 0.2,
-		2 = 0.4,
-		3 = 0.6,
-		4 = 0.8,
-		5 = 1,
-		6 = 2,
+		1 = 0.6,
+		2 = 0.8,
+		3 = 1,
+		4 = 2,
+		5 = 3,
+		6 = 4,
 	)
 	/// Modifiers to success chance when you're below the median
 	var/list/skill_maluses = list(
