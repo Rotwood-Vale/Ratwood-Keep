@@ -17,8 +17,6 @@
 	response_help_simple = "pass through"
 	maxHealth = 75
 	health = 75
-	layer = 16
-	plane = 16
 	spacewalk = TRUE
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1

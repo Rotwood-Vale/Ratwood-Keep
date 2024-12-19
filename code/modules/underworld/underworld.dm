@@ -141,12 +141,12 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 
 // why not also some mob stuff too
 /mob/living/simple_animal/hostile/rogue/dragger
-	name = "dragger"
-	desc = ""
 	icon = 'icons/roguetown/underworld/enigma_dragger.dmi'
 	icon_state = "dragger"
 	icon_living = "dragger"
 	icon_dead = "dragger_dead"
+	name = "dragger"
+	desc = ""
 	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	movement_type = GROUND
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -159,8 +159,6 @@ GLOBAL_VAR_INIT(underworld_coins, 0)
 	response_help_simple = "pass through"
 	maxHealth = 215
 	health = 215
-	layer = 16
-	plane = 16
 	spacewalk = FALSE
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
