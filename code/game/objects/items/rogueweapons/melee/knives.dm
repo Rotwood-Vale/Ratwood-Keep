@@ -197,7 +197,6 @@
 				qdel(item)
 				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT)) //Getting exp for failing
 				return //We are returning early if the skill check fails!
-			item.salvage_amount -= item.torn_sleeve_number
 			for(var/i = 1; i <= item.salvage_amount; i++) // We are spawning salvage result for the salvage amount minus the torn sleves!
 				var/obj/item/Sr = new item.salvage_result(get_turf(item))
 				Sr.color = item.color
