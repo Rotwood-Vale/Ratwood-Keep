@@ -1,4 +1,5 @@
-GLOBAL_LIST_EMPTY(billagerspawns)
+GLOBAL_VAR_INIT(hugbox_duration, 40 SECONDS)
+GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 
 /datum/job/roguetown/refugee
 	title = "Refugee"
