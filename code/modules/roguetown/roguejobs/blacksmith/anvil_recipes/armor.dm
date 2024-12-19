@@ -24,7 +24,7 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/neck/roguetown/gorget
 
-/datum/anvil_recipe/armor/iron/gorget
+/datum/anvil_recipe/armor/iron/ogorg
 	name = "Ringed Gorget"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/neck/roguetown/gorget/oring
@@ -211,7 +211,7 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/neck/roguetown/gorget/steel
 
-/datum/anvil_recipe/armor/steel/sgorget/oring
+/datum/anvil_recipe/armor/steel/sogorg
 	name = "Ringed Steel Gorget"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/neck/roguetown/gorget/steel/oring

@@ -434,6 +434,10 @@
 	name = "Mohawk (Big)"
 	icon_state = "mohawk-unshaven"
 
+/datum/sprite_accessory/hair/head/newyou
+	name = "New You"
+	icon_state = "newyou"
+
 /datum/sprite_accessory/hair/head/mulder
 	name = "Mulder"
 	icon_state = "mulder"
