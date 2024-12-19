@@ -1,28 +1,3 @@
-/*
-Initial implementation by:
-	- Moribund.
-Sprites for this by:
-	- Sinnerpen
-	- Infrared Baron
-Comm'd by:
-	- Dragon Lee
-
-I'ma be real, this entire thing is a mess and needs to be separated into various files. Modularised as it might be, it's useless in one big pile.
-Someone else can take the five minutes it costs to do so, as well. I'm lazy.
-
-On another note, have some funny coder-bickering commentary below.
-- - -
-/////// SHITCODE MADE BY MORIBUND and modularized so you dickless pricks can cannibalize and swipe it easier. Sprites for this by SINNERPEN and INFRARED BARON. payed for by dragon lee. you gonna swip this shit credit thos due.
-//// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
-
-// Fuck you Mori, you're a dickhead that self inserts your OCs and cries when people complain about balance, and rightfully so.
-// You could have had your fuckin' self inserts and your shitcode, all you had to do was not act like a cunt, not throw a bitchfit. 
-// You wonder why everyone ended up hating you, read your above comments and get it through your fucking head. -- AnalWerewolf
-- - -
-
-Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAAAAAA!!!!!!!!!!!
-*/
-
 /obj/effect/proc_holder/spell/invoked/diagnose/secular
 	name = "Secular Diagnosis"
 	overlay_state = "diagnose"

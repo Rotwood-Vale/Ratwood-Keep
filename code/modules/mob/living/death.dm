@@ -80,7 +80,9 @@
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
 	src.playsound_local(src, 'sound/misc/deth.ogg', 100)
-
+	if(src.mind)
+		if(src.mind.boneboy == TRUE)
+			handle_necromancy()
 	set_drugginess(0)
 	set_disgust(0)
 	cure_holdbreath()
