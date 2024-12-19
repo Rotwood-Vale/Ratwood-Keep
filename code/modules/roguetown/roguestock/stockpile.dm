@@ -91,7 +91,6 @@
 	transport_fee = 10
 	export_price = 75
 	importexport_amt = 10
-	passive_generation = 2
 
 /datum/roguestock/stockpile/silver
 	name = "Raw Silver"
@@ -103,7 +102,6 @@
 	transport_fee = 10
 	export_price = 100
 	importexport_amt = 10
-	passive_generation = 2
 
 /datum/roguestock/stockpile/cloth
 	name = "Cloth"
