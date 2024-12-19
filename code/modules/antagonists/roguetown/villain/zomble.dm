@@ -75,7 +75,8 @@
 
 //Housekeeping/saving variables from pre-zombie 
 
-//Transformation process goes death -> can_death_zombify -> zombie_check -> zombie.gain() -> rotting -> time -> zombie.wake() -> transform
+//Death transformation process goes death -> can_death_zombify -> zombie_check -> zombie.gain() -> rotting -> time -> zombie.wake() -> transform
+//Infection transformation process goes -> infection -> timered transform in zombie_infect_attempt() -> /datum/antagonist/zombie/proc/wake_zombie -> zombietransform
 /datum/antagonist/zombie/on_gain()
 	var/mob/living/carbon/human/zombie = owner?.current
 	if(zombie)
@@ -232,6 +233,7 @@
 //Add claws here if wanted.
 
 	zombie.update_body()
+	to_chat(zombie, span_userdanger("I CRAVE FLESH!"))
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
 
 
@@ -246,7 +248,7 @@
 		SLOT_HEAD,
 		SLOT_WEAR_MASK,
 		SLOT_MOUTH,
-		SLOT_NECK,
+		//SLOT_NECK,
 	)
 	for(var/slot in removed_slots)
 		zombie.dropItemToGround(zombie.get_item_by_slot(slot), TRUE)
@@ -354,6 +356,10 @@
  * This occurs when one zombie infects a living human, going into instadeath from here is kind of shit and confusing
  * We instead just transform at the end
  */
+ /*
+  No longer used, now infection by wounds. See the_only_cure.dm
+ */
+/*
 /mob/living/carbon/human/proc/zombie_infect_attempt()
 	var/datum/antagonist/zombie/zombie_antag = zombie_check()
 	if(!zombie_antag)
@@ -365,6 +371,7 @@
 	vomit(1, blood = TRUE, stun = FALSE)
 	addtimer(CALLBACK(src, PROC_REF(wake_zombie)), 1 MINUTES)
 	return zombie_antag
+*/
 
 /mob/living/carbon/human/proc/wake_zombie()
 	var/datum/antagonist/zombie/zombie_antag = mind?.has_antag_datum(/datum/antagonist/zombie)

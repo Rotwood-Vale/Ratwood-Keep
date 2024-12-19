@@ -316,7 +316,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	var/mob/living/L = src
 	if(!istype(W))	
 		return FALSE
-	if(HAS_TRAIT(L, TRAIT_CHUNKYFINGERS)) // Zombies can't equip things.
+	if(HAS_TRAIT(L, TRAIT_CHUNKYFINGERS) && (W.type != /obj/item/grabbing/bite)) // Zombies can't equip things but can still bite.
 		to_chat(src, span_warning("...What?"))
 		return FALSE
 	if(!W.mob_can_equip(src, null, slot, disable_warning, bypass_equip_delay_self))

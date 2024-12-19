@@ -709,7 +709,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return 0
 	if(!M)
 		return FALSE
-	if(HAS_TRAIT(M, TRAIT_CHUNKYFINGERS) && (!equipper || equipper == M)) //If a zombie's trying to put something on without assistance
+	if(HAS_TRAIT(M, TRAIT_CHUNKYFINGERS) && (!equipper || equipper == M) && src.type != /obj/item/grabbing/bite) //If a zombie's trying to put something on without assistance that's not a bite
 		to_chat(M, span_warning("...What?"))
 		return FALSE
 

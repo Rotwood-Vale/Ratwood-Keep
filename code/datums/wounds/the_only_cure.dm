@@ -3,7 +3,7 @@
 	/// Zombie infection probability for bites on this wound
 	var/zombie_infection_probability = 15
 	/// Time taken until zombie infection comes in
-	var/zombie_infection_time = 3 MINUTES
+	var/zombie_infection_time = 2 MINUTES
 	/// Actual infection timer
 	var/zombie_infection_timer
 
@@ -25,6 +25,8 @@
 		return
 	if(human_owner.stat >= DEAD) //do shit the natural way i guess
 		return
+
+	
 	to_chat(human_owner, span_danger("I feel horrible... REALLY horrible..."))
 	human_owner.mob_timers["puke"] = world.time
 	human_owner.vomit(1, blood = TRUE, stun = FALSE)
@@ -47,9 +49,14 @@
 	to_chat(owner, span_danger("It hurts... Is this really the end for me?"))
 	owner.emote("scream") // heres your warning to others bro
 	owner.Knockdown(1)
-	zombie_antag.wake_zombie(TRUE)
+	zombie_antag.wake_zombie(infected_wake = TRUE)
 	return TRUE
 
+/*
+
+WEREWOLF
+
+*/
 /datum/wound/proc/werewolf_infect_attempt()
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(bodypart_owner))
 		return FALSE
