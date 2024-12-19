@@ -144,6 +144,19 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	body_parts_covered = GROIN
 
+/obj/item/clothing/under/roguetown/trou/otavan
+	name = "otavan leather trousers"
+	desc = "padded leather armor made by Otavan tailors, its quality is remarkable."
+	icon_state = "fencerpants"
+	resistance_flags = FIRE_PROOF
+	armor = list("blunt" = 85, "slash" = 75, "stab" = 70, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	max_integrity = 300
+	blade_dulling = DULLING_BASHCHOP
+	sewrepair = TRUE
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
 	icon_state = "leathertrou"
