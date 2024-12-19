@@ -384,7 +384,9 @@ SUBSYSTEM_DEF(ticker)
 
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			if(H.client)
-				if(H.client.prefs.family)
+				if(SSjob.GetJob(H.job).family_blacklisted)
+					continue
+				if(H.client.prefs.family == FAMILY_FULL)
 					SSfamily.family_candidates += H
 
 

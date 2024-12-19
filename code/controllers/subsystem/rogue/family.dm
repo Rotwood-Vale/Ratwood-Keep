@@ -186,11 +186,15 @@ SUBSYSTEM_DEF(family)
 /datum/family/Destroy()
 	.=..()
 	for(var/N in members)
+		if(isnull(N))
+			continue
 		var/mob/living/carbon/human/H = members[N]:resolve()
 		if(H)
 			H.family = null
 
 	for(var/rel in relations)
+		if(isnull(rel))
+			continue
 		var/datum/relation/R = rel
 		R.holder = null
 		R.target = null
@@ -459,6 +463,8 @@ proc/getMatchingRel(var/rel_type)
 	if(true_family)
 		return family
 	for(var/f in SSfamily.families)
+		if(isnull(f))
+			continue
 		var/datum/family/F = f
 		if(F.members.Find(name) && dna.uni_identity == family.member_identity[target.name])
 			return F
