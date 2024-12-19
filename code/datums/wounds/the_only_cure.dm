@@ -36,7 +36,7 @@
 		sortTim(bodypart_owner.wounds, GLOBAL_PROC_REF(cmp_wound_severity_dsc))
 	return zombie_antag
 
-/datum/wound/proc/wake_zombie()
+/datum/wound/proc/wake_zombie() // this is only called when zombies are turned via wounds
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(bodypart_owner))
 		return FALSE
 	if(!ishuman(owner))
@@ -49,7 +49,7 @@
 	to_chat(owner, span_danger("It hurts... Is this really the end for me?"))
 	owner.emote("scream") // heres your warning to others bro
 	owner.Knockdown(1)
-	zombie_antag.wake_zombie(infected_wake = TRUE)
+	zombie_antag.wake_zombie(infected_wake = TRUE, converted = TRUE)
 	return TRUE
 
 /*

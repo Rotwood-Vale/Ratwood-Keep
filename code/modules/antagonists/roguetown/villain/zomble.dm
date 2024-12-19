@@ -268,7 +268,7 @@
 
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag
-/datum/antagonist/zombie/proc/wake_zombie(infected_wake = FALSE)
+/datum/antagonist/zombie/proc/wake_zombie(infected_wake = FALSE, converted = FALSE)
 	testing("WAKEZOMBIE")
 	if(!owner.current)
 		return
@@ -290,7 +290,7 @@
 	zombie.blood_volume = BLOOD_VOLUME_NORMAL
 	zombie.setOxyLoss(0, updating_health = FALSE, forced = TRUE) //zombles dont breathe
 	zombie.setToxLoss(0, updating_health = FALSE, forced = TRUE) //zombles are immune to poison
-	if(!infected_wake) //if we died, heal all of this too
+	if(!infected_wake || converted) //if we died or were converted, heal all of this too. The power of undeath
 		zombie.adjustBruteLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
 		zombie.adjustFireLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
 		zombie.heal_wounds(INFINITY) //Heal every wound that is not permanent
@@ -381,5 +381,5 @@
 	to_chat(src, span_danger("It hurts... Is this really the end for me?"))
 	emote("scream") // heres your warning to others bro
 	Knockdown(1)
-	zombie_antag.wake_zombie(TRUE)
+	zombie_antag.wake_zombie(infected_wake = TRUE, converted = FALSE)
 	return TRUE
