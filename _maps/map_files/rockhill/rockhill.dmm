@@ -115,9 +115,6 @@
 /obj/item/clothing/head/roguetown/roguehood,
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter/town/harbor)
 "acE" = (
@@ -3340,14 +3337,9 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/beach)
 "cfB" = (
-/obj/structure/table/wood,
-/obj/structure/table/wood,
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors)
+/obj/structure/noose/gallows,
+/turf/open/floor/rogue/wood,
+/area/rogue/outdoors/town)
 "cfH" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newleaf,
@@ -3540,9 +3532,7 @@
 /area/rogue/under/town/sewer)
 "cmL" = (
 /obj/structure/mineral_door/wood/towner/cheesemaker,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
+/turf/open/floor/rogue/tile,
 /area/rogue/indoors/town)
 "cmR" = (
 /obj/structure/mineral_door/wood/donjon/stone{
@@ -5608,11 +5598,9 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "dvu" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 1
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
+/obj/effect/landmark/start/shophand,
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/shop)
 "dvv" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -9593,8 +9581,9 @@
 	},
 /area/rogue/outdoors/town/roofs)
 "fSS" = (
-/turf/open/floor/rogue/church,
-/area/rogue/outdoors/town/roofs)
+/obj/structure/bed/rogue/inn/hay,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors/shelter/town/harbor)
 "fSX" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -15442,10 +15431,12 @@
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church)
 "jwV" = (
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floort"
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w"
 	},
-/area/rogue/under/town/basement)
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/town)
 "jxr" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/shelter/town)
@@ -18248,6 +18239,7 @@
 	pixel_y = 6
 	},
 /obj/item/clothing/head/roguetown/necrahood,
+/obj/item/flashlight/flare/torch,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "lqQ" = (
@@ -25617,8 +25609,11 @@
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
 "pUq" = (
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/outdoors/town/roofs)
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors/town)
 "pUz" = (
 /obj/structure/rack/rogue,
 /obj/item/ammo_holder/quiver/arrows,
@@ -35235,6 +35230,7 @@
 	pixel_y = 8
 	},
 /obj/item/clothing/head/roguetown/necrahood,
+/obj/item/flashlight/flare/torch,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "vUI" = (
@@ -38463,15 +38459,12 @@
 /area/rogue/indoors/town/tavern)
 "xSC" = (
 /obj/structure/rack/rogue,
-/obj/item/flashlight/flare/torch/lantern,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/lantern,
-/obj/item/flashlight/flare/torch/lantern,
-/obj/item/flashlight/flare/torch/lantern,
-/obj/item/flashlight/flare/torch/lantern,
-/obj/item/flashlight/flare/torch/lantern,
+/obj/item/flashlight/flare/torch,
+/obj/item/flashlight/flare/torch,
+/obj/item/flashlight/flare/torch,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter/town/harbor)
 "xSV" = (
@@ -124598,9 +124591,9 @@ clJ
 uHa
 clJ
 clJ
-bpD
-bpD
-bpD
+clJ
+clJ
+clJ
 bpD
 bpD
 bpD
@@ -125029,10 +125022,10 @@ clJ
 jmb
 nPr
 ugo
+hPP
+ugo
+cIv
 clJ
-bpD
-bpD
-bpD
 bpD
 bpD
 bpD
@@ -125461,10 +125454,10 @@ clJ
 nPr
 nPr
 nPr
+kbw
+cIv
+fSS
 clJ
-bpD
-bpD
-bpD
 bpD
 bpD
 bpD
@@ -125894,9 +125887,9 @@ hPP
 kbw
 hPP
 clJ
-bpD
-bpD
-bpD
+clJ
+clJ
+clJ
 bpD
 bpD
 bpD
@@ -222238,7 +222231,7 @@ tqA
 txa
 kpZ
 iTw
-jwV
+txa
 kGY
 rLU
 eSc
@@ -314795,7 +314788,7 @@ dGp
 pAV
 rDt
 xxx
-cfB
+xxx
 rDt
 pAV
 pAV
@@ -322954,8 +322947,8 @@ wVI
 ngN
 wbg
 fnA
-wbg
-aOv
+fnA
+fnA
 wbg
 kDH
 xAt
@@ -323386,8 +323379,8 @@ cNk
 wbg
 wbg
 wbg
-aOv
-wbg
+fnA
+fnA
 wbg
 kDH
 xAt
@@ -323817,8 +323810,8 @@ sco
 xna
 wbg
 wbg
-wVI
-wVI
+wbg
+fnA
 kim
 wbg
 kDH
@@ -324249,7 +324242,7 @@ wBH
 xna
 wbg
 wbg
-wVI
+wbg
 fnA
 gNw
 wbg
@@ -324680,7 +324673,7 @@ sco
 tBp
 wVI
 wbg
-aOv
+wbg
 wbg
 wbg
 wbg
@@ -328098,7 +328091,7 @@ xAt
 bQV
 xez
 wbg
-wVI
+wbg
 wbg
 fnA
 vXX
@@ -328530,7 +328523,7 @@ xAt
 xAt
 jqJ
 wbg
-wVI
+wbg
 fnA
 fnA
 vXX
@@ -328962,9 +328955,9 @@ oAl
 wdL
 oZC
 wbg
-wbg
-wbg
-wbg
+iQz
+jwV
+jPH
 duA
 hLP
 aVy
@@ -329018,7 +329011,7 @@ fxx
 fxx
 fxx
 fxx
-uaL
+fxx
 fxx
 fxx
 uaL
@@ -329395,8 +329388,8 @@ cVT
 wVI
 gTw
 wbg
-wbg
-wbg
+oIh
+oIh
 wbg
 wbg
 wbg
@@ -330314,12 +330307,12 @@ uaL
 uaL
 fTe
 fxx
-fxx
-fxx
-fxx
-fxx
-fxx
-fxx
+qvR
+qvR
+qvR
+qvR
+qvR
+uaL
 fxx
 fxx
 fxx
@@ -331150,8 +331143,8 @@ toW
 eSt
 eSt
 eSt
-njq
-wbg
+pUq
+pUq
 toW
 toW
 toW
@@ -331582,8 +331575,8 @@ toW
 toW
 toW
 toW
-wbg
-wbg
+fnA
+fnA
 toW
 toW
 toW
@@ -331986,8 +331979,8 @@ xAt
 eoy
 wbg
 hNJ
-lwD
 cXf
+cfB
 eGO
 cgq
 wVI
@@ -332014,8 +332007,8 @@ toW
 toW
 toW
 toW
-wbg
-wbg
+fnA
+fnA
 toW
 toW
 toW
@@ -332446,8 +332439,8 @@ toW
 toW
 toW
 toW
-wbg
-wbg
+fnA
+fnA
 toW
 toW
 toW
@@ -332878,8 +332871,8 @@ toW
 toW
 toW
 toW
-wbg
-wbg
+fnA
+fnA
 toW
 toW
 toW
@@ -333282,7 +333275,7 @@ wbg
 wbg
 wbg
 hNJ
-cXf
+lwD
 cXf
 eGO
 cgq
@@ -333310,8 +333303,8 @@ toW
 toW
 toW
 toW
-wbg
-wbg
+fnA
+fnA
 toW
 toW
 toW
@@ -333742,8 +333735,8 @@ toW
 toW
 toW
 toW
-wbg
-dvu
+fnA
+fnA
 toW
 toW
 toW
@@ -334174,8 +334167,8 @@ toW
 toW
 toW
 toW
-wbg
-wbg
+fnA
+fnA
 toW
 toW
 toW
@@ -334607,7 +334600,7 @@ toW
 eSt
 eSt
 wbg
-wbg
+fnA
 toW
 toW
 toW
@@ -344907,7 +344900,7 @@ toW
 dCf
 dCf
 vSv
-cad
+dvu
 cad
 hLy
 jkm
@@ -345771,7 +345764,7 @@ qsr
 vSv
 jWC
 nbi
-cad
+dvu
 cad
 oJM
 jkm
@@ -446494,7 +446487,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-fSS
+fZJ
 fZJ
 fZJ
 fZJ
@@ -450380,7 +450373,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-pUq
+fZJ
 fZJ
 fZJ
 fZJ
