@@ -102,8 +102,8 @@
 	. = ..()
 	if (!.)
 		return
-	to_chat(owner, span_notice("Light blossoms into being around me!"))
 	playsound(owner, 'sound/magic/whiteflame.ogg', 75, FALSE)
+	to_chat(owner, span_notice("Light blossoms into being around me!"))
 	var/filter = owner.get_filter(BLESSINGOFLIGHT_FILTER)
 	if (!filter)
 		owner.add_filter(BLESSINGOFLIGHT_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 1))
@@ -111,6 +111,7 @@
 	return TRUE
 
 /datum/status_effect/light_buff/on_remove()
+	playsound(owner, 'sound/items/firesnuff.ogg', 75, FALSE)
 	to_chat(owner, span_notice("The miraculous light surrounding me has fled..."))
 	owner.remove_filter(BLESSINGOFLIGHT_FILTER)
 	QDEL_NULL(mob_light_obj)
@@ -132,6 +133,7 @@
 		if (do_after(user, cast_time, target = thing))
 			var/mob/living/living_thing = thing
 			var/light_power = clamp(4 + (holy_skill - 3), 4, 7)
+			set_light_on()
 
 			if (living_thing.has_status_effect(/datum/status_effect/light_buff))
 				user.visible_message(span_notice("The holy light emanating from [living_thing] becomes brighter!"), span_notice("I feed further devotion into [living_thing]'s blessing of light."))

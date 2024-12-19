@@ -88,3 +88,4 @@ SUBSYSTEM_DEF(ParticleWeather)
 		act_on.weather = FALSE
 	QDEL_NULL(runningWeather)
 	QDEL_NULL(particleEffect)
+	QDEL_NULL(weatherEffect)

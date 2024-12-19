@@ -12,7 +12,7 @@
 /datum/looping_sound/torchloop
 	mid_sounds = list('sound/items/torchloop.ogg')
 	mid_length = 75
-	volume = 50
+	volume = 30
 	extra_range = -1
 	vary = TRUE
 	//sound_group = /datum/sound_group/torches

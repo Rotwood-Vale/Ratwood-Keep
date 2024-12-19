@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	icon_state = "clear_bottle1"
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)
-	volume = 45
+	volume = 48
 	fill_icon_thresholds = list(0, 25, 50, 75, 100)
 	dropshrink = 0.8
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
@@ -23,9 +23,6 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	experimental_onhip = TRUE
 	var/desc_uncorked = "An open bottle, hopefully a cork is close by."
 	var/fancy		// for bottles with custom descriptors that you don't want to change when bottle manipulated
-
-/obj/item/reagent_containers/glass/bottle/rogue
-	volume = 70
 
 /obj/item/reagent_containers/glass/bottle/update_icon(dont_fill=FALSE)
 	if(!fill_icon_thresholds || dont_fill)

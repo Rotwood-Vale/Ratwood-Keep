@@ -66,9 +66,9 @@
 
 
 /obj/machinery/light/rogue/firebowl/standing/blue
-	bulb_colour = "#b9bcff"
 	icon_state = "standingb1"
 	base_state = "standingb"
+	bulb_colour = "#7b60f3"
 
 /obj/machinery/light/rogue/firebowl/standing/proc/knock_over() //use this later for jump impacts and shit
 	icon_state = "[base_state]over"
@@ -100,6 +100,7 @@
 	name = "fireplace"
 	icon_state = "wallfire1"
 	base_state = "wallfire"
+	bulb_colour = "#ff9648"
 	density = FALSE
 	fueluse = 0
 	crossfire = FALSE
@@ -143,7 +144,7 @@
 	pixel_x = -32
 
 /obj/machinery/light/rogue/wallfire/candle/blue
-	bulb_colour = "#b9bcff"
+	bulb_colour = "#7b60f3"
 	icon_state = "wallcandleb1"
 	base_state = "wallcandleb"
 

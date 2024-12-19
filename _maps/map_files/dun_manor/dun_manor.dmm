@@ -787,7 +787,10 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/rtfield)
 "aCE" = (
-/obj/structure/bookcase/manuals/medical,
+/obj/structure/bookcase,
+/obj/item/book/rogue/knowledge1,
+/obj/item/book/rogue/necra,
+/obj/item/book/rogue/law,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -5568,10 +5571,13 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "eVd" = (
-/obj/structure/bookcase/manuals/medical,
 /obj/structure/fluff/walldeco/rpainting{
 	pixel_y = 32
 	},
+/obj/structure/bookcase,
+/obj/item/book/rogue/necra,
+/obj/item/book/rogue/knowledge1,
+/obj/item/book/rogue/law,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -25278,6 +25284,15 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/garrison)
+"wRy" = (
+/obj/structure/bookcase,
+/obj/item/book/rogue/nitebeast,
+/obj/item/book/rogue/yeoldecookingmanual,
+/obj/item/book/rogue/tales1,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/physician)
 "wSa" = (
 /obj/effect/decal/cobbleedge{
 	dir = 6
@@ -113218,7 +113233,7 @@ qhb
 qhb
 qhb
 tqp
-aCE
+wRy
 cAG
 bTW
 cYY

@@ -13,8 +13,8 @@
 	var/need_underlay_update = TRUE
 
 /obj/machinery/light/rogue/oven/OnCrafted(dirin)
-	dir = turn(dirin, 180)
-	. = ..()
+	dirin = turn(dirin, 180)
+	. = ..(dirin)
 	update_icon()
 
 /obj/machinery/light/rogue/oven/attackby(obj/item/W, mob/living/user, params)
