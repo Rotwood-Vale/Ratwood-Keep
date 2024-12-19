@@ -404,7 +404,7 @@
 				/obj/item/natural/fibers = 1)
 	skill_level = 4
 
-/datum/crafting_recipe/roguetown/sewing/chaperon
+/datum/crafting_recipe/roguetown/sewing/rhood
 	name = "hat (reinforced hood) - (2 fur, hood; EXPERT)"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/reinforced)
 	reqs = list(/obj/item/clothing/head/roguetown/roguehood = 2,
