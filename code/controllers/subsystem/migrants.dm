@@ -258,8 +258,8 @@ SUBSYSTEM_DEF(migrants)
 
 	role.after_spawn(character)
 
-	if(role.advclass_cat_rolls)
-		SSrole_class_handler.setup_class_handler(character, role.advclass_cat_rolls, migrant_wave_id)
+	if(role.subclass_cat_rolls)
+		SSrole_class_handler.setup_class_handler(character, role.subclass_cat_rolls, migrant_wave_id)
 		hugboxify_for_class_selection(character)
 	else
 		// Apply post equipment stuff

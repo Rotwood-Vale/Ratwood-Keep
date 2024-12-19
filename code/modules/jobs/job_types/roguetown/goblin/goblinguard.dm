@@ -14,7 +14,7 @@
 	outfit = /datum/outfit/job/roguetown/goblinguard
 	min_pq = 4
 	max_pq = null
-	advclass_cat_rolls = list(CTAG_GOBS = 20)
+	subclass_cat_rolls = list(CTAG_GOBS = 20)
 	advjob_examine = TRUE
 
 /datum/outfit/job/roguetown/goblinguard
@@ -44,7 +44,7 @@
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
 
-/datum/advclass/gob_brute
+/datum/subclass/gob_brute
 	name = "Brute"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
@@ -75,7 +75,7 @@
 		H.change_stat("endurance", 1)
 		H.change_stat("intelligence", -2)
 
-/datum/advclass/gob_outrider
+/datum/subclass/gob_outrider
 	name = "Outrider"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
@@ -109,7 +109,7 @@
 		H.change_stat("endurance", 1)
 		H.change_stat("intelligence", -2)
 
-/datum/advclass/gob_raider
+/datum/subclass/gob_raider
 	name = "Raider"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
@@ -137,7 +137,7 @@
 		H.change_stat("perception", -2)
 		H.change_stat("intelligence", -4)
 
-/datum/advclass/gob_archer
+/datum/subclass/gob_archer
 	name = "Boltslinger"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)

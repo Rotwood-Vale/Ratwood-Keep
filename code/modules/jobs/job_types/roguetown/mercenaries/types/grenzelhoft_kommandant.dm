@@ -1,4 +1,4 @@
-/datum/advclass/grenzelhoft_kommandant
+/datum/subclass/grenzelhoft_kommandant
 	name = "Grenzelhoft Kommandant"
 	tutorial = "Unbreakable. Resolute. Master of the field. Fearless. \
 	These are the first words that come to mind when one mentions the Kommandant, the unparalleled leader of the well reputed, \

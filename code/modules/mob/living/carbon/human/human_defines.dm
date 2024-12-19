@@ -79,6 +79,8 @@
 	var/datum/physiology/physiology
 
 	var/list/datum/bioware = list()
+	
+	var/necrotarget = FALSE
 
 	var/static/list/can_ride_typecache = typecacheof(list(/mob/living/carbon/human, /mob/living/simple_animal/parrot))
 	var/lastpuke = 0
