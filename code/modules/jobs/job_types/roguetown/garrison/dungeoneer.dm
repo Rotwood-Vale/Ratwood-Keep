@@ -8,7 +8,6 @@
 
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 
 	display_order = JDO_DUNGEONEER
 
