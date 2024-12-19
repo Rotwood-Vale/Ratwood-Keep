@@ -26,7 +26,7 @@
 	beltr = /obj/item/storage/keyring/mage
 	backr = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/woodstaff
-	shoes = /obj/item/clothing/shoes/roguetown/sandals
+	shoes = /obj/item/clothing/shoes/roguetown/gladiator // FANCY SANDALS
 
 /datum/job/roguetown/wapprentice/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -61,6 +61,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			H.change_stat("speed", -1)
+			H.change_stat("intelligence", 1)
 		H.mind.adjust_spellpoints(3)
 		H.change_stat("intelligence", 2)
 		H.change_stat("speed", 1)
@@ -93,6 +97,10 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
+			H.change_stat("perception", -1)
+			H.change_stat("intelligence", 1)
 		H.mind.adjust_spellpoints(3)
 		H.change_stat("intelligence", 2)
 		H.change_stat("perception", 2)
@@ -120,6 +128,11 @@
 		H.change_stat("intelligence", 3)
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", 1)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			H.change_stat("speed", -1)
+			H.change_stat("intelligence", 1)
 		switch(H.patron?.type)
 			if(/datum/patron/inhumen/zizo)
 				H.cmode_music = 'sound/music/combat_cult.ogg'
