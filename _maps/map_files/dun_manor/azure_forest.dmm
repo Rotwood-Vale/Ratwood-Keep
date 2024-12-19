@@ -3473,7 +3473,7 @@
 	},
 /area/rogue/outdoors/beach/forest)
 "CF" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/cavetroll,
+/mob/living/simple_animal/hostile/retaliate/rogue/troll,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "CH" = (

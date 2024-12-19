@@ -2865,7 +2865,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "cvy" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/cavetroll,
+/mob/living/simple_animal/hostile/retaliate/rogue/trollbog,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
 "cvA" = (

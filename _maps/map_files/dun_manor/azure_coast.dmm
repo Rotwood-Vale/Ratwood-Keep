@@ -5791,7 +5791,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter)
 "UL" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/cavetroll,
+/mob/living/simple_animal/hostile/retaliate/rogue/troll,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
 "UM" = (
