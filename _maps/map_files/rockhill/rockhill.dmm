@@ -37748,9 +37748,7 @@
 	dir = 1;
 	pixel_x = 4
 	},
-/obj/structure/chair/bench{
-	dir = 1
-	},
+/obj/structure/chair/bench,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
 "xyn" = (
