@@ -108,13 +108,12 @@
 #define RANDOM_EYE_COLOR "random_eye_color"
 
 //Age ranges
-#define AGE_YOUNG			"Young"
 #define AGE_ADULT			"Adult"
 #define AGE_MIDDLEAGED		"Middle-Aged"
 #define AGE_OLD				"Old"
 
-#define ALL_AGES_LIST list(AGE_YOUNG, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-#define AGE_VALUES list(AGE_YOUNG = 1, AGE_ADULT = 2, AGE_MIDDLEAGED = 3, AGE_OLD = 4)
+#define ALL_AGES_LIST list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+#define AGE_VALUES list(AGE_ADULT = 1, AGE_MIDDLEAGED = 2, AGE_OLD = 3)
 
 //Voice ranges
 #define MIN_VOICE_PITCH		0.8
