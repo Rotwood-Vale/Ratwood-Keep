@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(family)
 				H << I
 				rel_images += I
 
-/datum/controller/subsystem/family/proc/makeFamily(var/mob/living/carbon/human/head,var/name)
+/datum/controller/subsystem/family/proc/makeFamily(mob/living/carbon/human/head, name)
 	var/i = 0
 	while(!name || used_names.Find(name))
 		i++
@@ -199,7 +199,7 @@ SUBSYSTEM_DEF(family)
 		R.target = null
 		qdel(R)
 
-/datum/family/proc/getRelations(var/mob/living/carbon/human/member,var/rel_type) //Returns all relations of the specified type.
+/datum/family/proc/getRelations(mob/living/carbon/human/member, rel_type) //Returns all relations of the specified type.
 	var/list/rels = list()
 	for(var/datum/relation/R in relations)
 		if(R.holder == WEAKREF(member) && (!rel_type || R.rel_type == rel_type))
@@ -208,17 +208,17 @@ SUBSYSTEM_DEF(family)
 	return rels
 
 
-/datum/family/proc/getRel(var/mob/living/carbon/human/holder,var/mob/living/carbon/human/target) //Returns relationship shared by holder & target.
+/datum/family/proc/getRel(mob/living/carbon/human/holder, mob/living/carbon/human/target) //Returns relationship shared by holder & target.
 	for(var/datum/relation/R in relations)
 		if(WEAKREF(holder) == R.holder && members[target.name] == R.target)
 			return R
 
-/datum/family/proc/getTrueRel(var/mob/living/carbon/human/holder,var/mob/living/carbon/human/target) //Returns true relationship shared by holder & target.
+/datum/family/proc/getTrueRel(mob/living/carbon/human/holder, mob/living/carbon/human/target) //Returns true relationship shared by holder & target.
 	for(var/datum/relation/R in relations)
 		if(WEAKREF(holder) == R.holder && WEAKREF(target) == R.target)
 			return R
 
-/datum/family/proc/addRel(var/mob/living/carbon/human/target, var/mob/living/carbon/human/holder,var/rel_type, var/announce = FALSE) //creates a relation for two members.
+/datum/family/proc/addRel(mob/living/carbon/human/target, mob/living/carbon/human/holder,rel_type, announce = FALSE) //creates a relation for two members.
 	var/datum/relation/R
 	var/list/rel_types = typesof(/datum/relation)
 	for(var/type in rel_types)
@@ -235,11 +235,11 @@ SUBSYSTEM_DEF(family)
 
 		R.onConnect(holder,target) //Bit of hack to have this here. But it stops church marriages from being given rings.
 
-/datum/family/proc/tryConnect(var/mob/living/carbon/human/target, var/mob/living/carbon/human/member) //Gets the rel_type for the targets. For now, it only returns spouse.
+/datum/family/proc/tryConnect(mob/living/carbon/human/target, mob/living/carbon/human/member) //Gets the rel_type for the targets. For now, it only returns spouse.
 	return REL_TYPE_SPOUSE
 
 
-/datum/family/proc/checkFamilyCompat(var/mob/living/carbon/human/target, var/mob/living/carbon/human/member, var/rel_type) //Checks target's suitability for being in a family with the family member.
+/datum/family/proc/checkFamilyCompat(mob/living/carbon/human/target, mob/living/carbon/human/member, rel_type) //Checks target's suitability for being in a family with the family member.
 	switch(rel_type)
 		if(REL_TYPE_SPOUSE)
 			if(!member.client)
@@ -328,7 +328,7 @@ proc/getMatchingRel(var/rel_type)
 		else
 			return rel_type
 
-/datum/family/proc/addMember(var/mob/living/carbon/human/H)
+/datum/family/proc/addMember(mob/living/carbon/human/H)
 	members[H.real_name] = WEAKREF(H)
 	member_identity[H.real_name] = H.dna.uni_identity
 	H.family = src
@@ -359,10 +359,10 @@ proc/getMatchingRel(var/rel_type)
 	return name
 
 
-/datum/relation/proc/onConnect(var/mob/living/carbon/human/holder,var/mob/living/carbon/human/target)
+/datum/relation/proc/onConnect(mob/living/carbon/human/holder, mob/living/carbon/human/target)
 	return
 
-/datum/relation/New(var/mob/living/carbon/human/H,var/mob/living/carbon/human/T)
+/datum/relation/New(mob/living/carbon/human/H, mob/living/carbon/human/T)
 	holder = WEAKREF(H)
 	target = WEAKREF(T)
 	name = getName() //Done once to prevent any organ changes from changing the name.
@@ -381,7 +381,7 @@ proc/getMatchingRel(var/rel_type)
 			return "Wife"
 	return "Spouse"
 
-/datum/relation/spouse/onConnect(var/mob/living/carbon/human/holder,var/mob/living/carbon/human/target)
+/datum/relation/spouse/onConnect(mob/living/carbon/human/holder, mob/living/carbon/human/target)
 	var/datum/job/holder_job = SSjob.GetJob(holder.job)
 
 	// Only give rings to non-baron/consort spouses.
@@ -454,7 +454,7 @@ proc/getMatchingRel(var/rel_type)
 	rel_type = REL_TYPE_RELATIVE
 	rel_state = "rel2"
 
-/mob/living/carbon/human/proc/getFamily(var/true_family = FALSE)//Returns the family src belongs to. By default. We use our names + DNA to support people pretending to be family members. Use true_family if you wish to get their ACTUAL family.
+/mob/living/carbon/human/proc/getFamily(true_family = FALSE)//Returns the family src belongs to. By default. We use our names + DNA to support people pretending to be family members. Use true_family if you wish to get their ACTUAL family.
 	if(true_family)
 		return family
 	for(var/f in SSfamily.families)
@@ -465,7 +465,7 @@ proc/getMatchingRel(var/rel_type)
 			return F
 
 
-/mob/living/carbon/human/proc/isFamily(var/mob/living/carbon/human/target,var/true = FALSE) //Checks if target is in our family. By default. We use our names + DNA to support people pretending to be family members. Use true if you wish to check if they ACTUALLY belong to the family.
+/mob/living/carbon/human/proc/isFamily(mob/living/carbon/human/target, true = FALSE) //Checks if target is in our family. By default. We use our names + DNA to support people pretending to be family members. Use true if you wish to check if they ACTUALLY belong to the family.
 	if(!family)
 		return FALSE
 
@@ -477,7 +477,7 @@ proc/getMatchingRel(var/rel_type)
 			return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/getRelationship(var/mob/living/carbon/human/target)
+/mob/living/carbon/human/proc/getRelationship(mob/living/carbon/human/target)
 	if(!family)
 		return
 
