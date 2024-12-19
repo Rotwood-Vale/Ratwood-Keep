@@ -353,8 +353,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
 			if(family != FAMILY_NONE)
+				if(gender == MALE)
+					family_gender = FEMALE
+				else if(gender == FEMALE)
+					family_gender = MALE
 				dat += "<B>Family Preferences:</B>"
-				dat += " <small><a href='?_src_=prefs;preference=familypref;res=gender'>Gender</a></small>"
 				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
 				dat += "<BR>"
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
@@ -1201,18 +1204,6 @@ Slots: [job.spawn_positions]</span>
 
 	else if(href_list["preference"] == "familypref")
 		switch(href_list["res"])
-			if("gender")
-				var/choice
-				while(choice != "(DONE)")
-					var/list/choices = list("[(MALE in family_gender) ? "(+)" : ""]Masculine" = MALE,"[(FEMALE in family_gender) ? "(+)" : ""]Feminine" = FEMALE)
-					choices += "(DONE)"
-					choice = input(usr,"I've always found my eyes wander towards those that appear...","GENDER") as anything in choices
-					if(choice != "(DONE)")
-						if(choices[choice] in family_gender)
-							family_gender -= choices[choice]
-						else
-							family_gender += choices[choice]
-
 			if("race")
 				var/choice
 				while(choice != "(DONE)")

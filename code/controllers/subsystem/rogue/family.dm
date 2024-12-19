@@ -36,10 +36,9 @@ SUBSYSTEM_DEF(family)
 				if(!R)
 					continue
 				var/image/I = image('icons/mob/rel.dmi',HH,icon_state=R.rel_state)
-				I.flags = RESET_TRANSFORM
+				I.appearance_flags = RESET_TRANSFORM
 				H << I
 				rel_images += I
-
 
 /datum/controller/subsystem/family/proc/makeFamily(var/mob/living/carbon/human/head,var/name)
 	var/i = 0

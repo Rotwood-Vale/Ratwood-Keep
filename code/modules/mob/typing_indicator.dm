@@ -45,8 +45,6 @@
 	return ..()
 
 /mob/proc/handle_typing_indicator()
-	if(isnull(client.mob))
-		return
 	if(!client || stat)
 		set_typing_indicator(FALSE)
 		return
