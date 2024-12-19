@@ -376,9 +376,9 @@ proc/getMatchingRel(var/rel_type)
 /datum/relation/spouse/getName()
 	var/mob/living/carbon/human/T = target:resolve()
 	if(T)
-		if(T.getorganslot(ORGAN_SLOT_PENIS))
+		if(T.gender == MALE)
 			return "Husband"
-		if(T.getorganslot(ORGAN_SLOT_VAGINA))
+		if(T.gender == FEMALE)
 			return "Wife"
 	return "Spouse"
 
@@ -408,10 +408,6 @@ proc/getMatchingRel(var/rel_type)
 					holder.dropItemToGround(holder.wear_ring)
 					to_chat(holder, span_warning("I had to drop my old ring."))
 
-	// Create and equip new soulring for both spouses
-	var/obj/item/clothing/ring/soul/ring = new(holder, target.real_name)
-	holder.equip_to_slot_if_possible(ring, SLOT_RING)
-
 
 /datum/relation/sibling
 	name = "Sibling"
@@ -420,9 +416,9 @@ proc/getMatchingRel(var/rel_type)
 /datum/relation/sibling/getName()
 	var/mob/living/carbon/human/T = target:resolve()
 	if(T)
-		if(T.getorganslot(ORGAN_SLOT_PENIS))
+		if(T.gender == MALE)
 			return "Brother"
-		if(T.getorganslot(ORGAN_SLOT_VAGINA))
+		if(T.gender == FEMALE)
 			return "Sister"
 	return "Sibling"
 
@@ -434,9 +430,9 @@ proc/getMatchingRel(var/rel_type)
 /datum/relation/parent/getName()
 	var/mob/living/carbon/human/T = target:resolve()
 	if(T)
-		if(T.getorganslot(ORGAN_SLOT_PENIS))
+		if(T.gender == MALE)
 			return "Father"
-		if(T.getorganslot(ORGAN_SLOT_VAGINA))
+		if(T.gender == FEMALE)
 			return "Mother"
 	return "Parent"
 

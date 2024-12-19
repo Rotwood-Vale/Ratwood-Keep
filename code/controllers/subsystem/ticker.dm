@@ -764,9 +764,6 @@ SUBSYSTEM_DEF(ticker)
 
 	SStriumphs.end_triumph_saving_time()
 
-	// Write key logs for all players before rebooting
-	world.write_all_key_logs()
-
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time
