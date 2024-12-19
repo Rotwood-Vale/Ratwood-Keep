@@ -32,21 +32,3 @@
 		playsound(get_turf(holder.my_atom), 'sound/blank.ogg', 80, FALSE, round(created_volume/48))
 		strengthdiv = 8
 	..()
-
-/datum/chemical_reaction/gunpowder
-	name = "Gunpowder"
-	id = /datum/reagent/gunpowder
-	results = list(/datum/reagent/gunpowder = 3)
-	required_reagents = list(/datum/reagent/saltpetre = 1, /datum/reagent/charcoal = 1, /datum/reagent/sulfur = 1)
-
-/datum/chemical_reaction/reagent_explosion/gunpowder_explosion
-	name = "Gunpowder Kaboom"
-	id = "gunpowder_explosion"
-	required_reagents = list(/datum/reagent/gunpowder = 1)
-	required_temp = 474
-	strengthdiv = 6
-	modifier = 1
-	mix_message = "<span class='boldannounce'>Sparks start flying around the gunpowder!</span>"
-
-/datum/chemical_reaction/reagent_explosion/gunpowder_explosion/on_reaction(datum/reagents/holder, created_volume)
-	addtimer(CALLBACK(src, PROC_REF(do_explosion), holder, created_volume), rand(5 SECONDS, 10 SECONDS))

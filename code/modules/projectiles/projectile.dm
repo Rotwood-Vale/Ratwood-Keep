@@ -82,7 +82,7 @@
 	var/damage = 10
 	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
 	var/nodamage = FALSE //Determines if the projectile will skip any damage inflictions
-	var/flag = "piercing" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb
+	var/flag = "bullet" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb
 	///How much armor this projectile pierces.
 	var/armor_penetration = 0
 	var/projectile_type = /obj/projectile
@@ -96,7 +96,6 @@
 	var/paralyze = 0
 	var/immobilize = 0
 	var/unconscious = 0
-	var/irradiate = 0
 	var/stutter = 0
 	var/slur = 0
 	var/eyeblur = 0
@@ -111,13 +110,16 @@
 
 	var/woundclass = null
 	var/embedchance = 0
-	var/obj/item/dropped = FALSE
+	var/obj/item/dropped = null
 	var/ammo_type
 
 	var/arcshot = FALSE
 	var/poisontype
 	var/poisonamount
 	var/poisonfeel
+
+	var/accuracy = 65 //How likely the project will hit it's intended target area. Decreases over distance moved, increased from perception.
+	var/bonus_accuracy = 0 //bonus accuracy that cannot be affected by range drop off.
 
 /obj/projectile/proc/handle_drop()
 	return
@@ -129,6 +131,8 @@
 
 /obj/projectile/proc/Range()
 	range--
+	if(accuracy > 20) //so there is always a somewhat prevalent chance to hit the target, despite distance.
+		accuracy -= 10
 	if(range <= 0 && loc)
 		on_range()
 
@@ -247,7 +251,7 @@
 		playsound(loc, hitsound_wall, volume, TRUE, -1)
 
 	if(arcshot)
-		if(A.loc != original)
+		if(A.loc != original.loc)
 			if(ismob(A))
 				var/mob/M = A
 				if(!CHECK_BITFIELD(movement_type, UNSTOPPABLE))
@@ -568,9 +572,11 @@
 	else
 		var/mob/living/L = target
 		if(!direct_target)
-			//If they're able to 1. stand or 2. use items or 3. move, AND they are not softcrit,  they are not stunned enough to dodge projectiles passing over.
-			//If they're dead they shouldn't be getting hit by indirect fire
-			if((CHECK_BITFIELD(L.mobility_flags, MOBILITY_USE | MOBILITY_STAND | MOBILITY_MOVE) && L.stat == CONSCIOUS) || L.stat == DEAD)	
+			//If they're able to 1. stand or 2. use items or 3. move, AND they are not softcrit,  they are able to avoid indirect projectiles passing over.
+			//If they're unconscious or dead they shouldn't be getting hit by indirect fire
+			if((CHECK_BITFIELD(L.mobility_flags, MOBILITY_USE | MOBILITY_STAND | MOBILITY_MOVE) && L.stat == CONSCIOUS) || L.stat >= UNCONSCIOUS)
+				return FALSE
+			if(L.lying)
 				return FALSE
 	return TRUE
 

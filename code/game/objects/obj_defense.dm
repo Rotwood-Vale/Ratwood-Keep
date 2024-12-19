@@ -64,20 +64,32 @@
 	if(AM.throwforce > 5)
 		take_damage(AM.throwforce*0.1, BRUTE, damage_type, 1, get_dir(src, AM))
 
-/obj/ex_act(severity, target)
+/obj/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 	..() //contents explosion
-	if(target == src)
-		take_damage(INFINITY, BRUTE, "bomb", 0)
-		return
-	switch(severity)
-		if(1)
-			take_damage(INFINITY, BRUTE, "bomb", 0)
-		if(2)
-			take_damage(rand(100, 250), BRUTE, "bomb", 0)
-		if(3)
-			take_damage(rand(10, 90), BRUTE, "bomb", 0)
+	var/ddist = devastation_range
+	var/hdist = heavy_impact_range
+	var/ldist = light_impact_range
+	var/fdist = flame_range
+	var/fodist = get_dist(src, epicenter)
+	var/brute_loss = 0
+
+	switch (severity)
+		if (EXPLODE_DEVASTATE)
+			brute_loss = (250 * ddist) - (250 * max((fodist - 1), 0))
+
+		if (EXPLODE_HEAVY)
+			brute_loss = (100 * hdist) - (100 * max((fodist - 1), 0))
+
+		if(EXPLODE_LIGHT)
+			brute_loss = ((25 * ldist) - (25 * fodist))
+
+	take_damage(brute_loss, BRUTE, "blunt", 0)
+
+	if(fdist && !QDELETED(src))
+		var/stacks = ((fdist - fodist) * 2)
+		fire_act(stacks)
 
 /obj/bullet_act(obj/projectile/P)
 	. = ..()
@@ -165,7 +177,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 		SSfire_burning.processing[src] = src
 		add_overlay(GLOB.fire_overlay, TRUE)
 		playsound(src, 'sound/misc/enflame.ogg', 100, TRUE)
-		return TRUE
+		return 1
 
 ///called when the obj is destroyed by fire
 /obj/proc/burn()

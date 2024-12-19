@@ -7,6 +7,7 @@
 	resistance_flags = FLAMMABLE
 	alpha = 109
 	opacity = TRUE
+	debris = list(/obj/item/natural/silk = 1)
 
 /obj/structure/spider/stickyweb/CanPass(atom/movable/mover, turf/target)
 	if(isliving(mover))
@@ -18,7 +19,7 @@
 	return TRUE
 
 /obj/structure/spider/stickyweb/fire_act(added, maxstacks)
-	visible_message("<span class='warning'>[src] catches fire!</span>")
+	visible_message(span_warning("[src] catches fire!"))
 	var/turf/T = get_turf(src)
 	qdel(src)
 	new /obj/effect/hotspot(T)

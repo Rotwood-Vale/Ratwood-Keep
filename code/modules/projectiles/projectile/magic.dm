@@ -8,6 +8,7 @@
 	pass_flags = PASSTABLE | PASSGRILLE
 	flag = "magic"
 	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
+	var/mob/living/carbon/human/sender
 
 /obj/projectile/magic/death
 	name = "bolt of death"
@@ -418,7 +419,7 @@
 	damage_type = BRUTE
 	nodamage = FALSE
 	light_color = "#f8af07"
-	light_outer_range = 2
+	light_outer_range =  2
 
 	//explosion values
 	var/exp_heavy = 0

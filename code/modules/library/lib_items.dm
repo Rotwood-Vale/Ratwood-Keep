@@ -1,15 +1,3 @@
-/* Library Items
- *
- * Contains:
- *		Bookcase
- *		Book
- *		Barcode Scanner
- */
-
-/*
- * Bookcase
- */
-
 /obj/structure/bookcase
 	name = "bookcase"
 	icon = 'icons/roguetown/misc/bookshelf.dmi'
@@ -27,17 +15,6 @@
 
 /obj/structure/bookcase/examine(mob/user)
 	. = ..()
-//	if(!anchored)
-//		. += span_notice("The <i>bolts</i> on the bottom are unsecured.")
-//	else
-//		. += span_notice("It's secured in place with <b>bolts</b>.")
-//	switch(state)
-///		if(0)
-//	//		. += span_notice("There's a <b>small crack</b> visible on the back panel.")
-//	//	if(1)
-//	//		. += span_notice("There's space inside for a <i>wooden</i> shelf.")
-//	//	if(2)
-//	//		. += span_notice("There's a <b>small crack</b> visible on the shelf.")
 
 /obj/structure/bookcase/Initialize(mapload)
 	. = ..()
@@ -50,6 +27,23 @@
 		if(istype(I, /obj/item/book))
 			I.forceMove(src)
 	update_icon()
+
+/obj/structure/bookcase/attackby(obj/item/I, mob/user, params)
+	var/datum/component/storage/STR = I.GetComponent(/datum/component/storage)
+	if(is_type_in_list(I, allowed_books))
+		if(!(contents.len <= 15))
+			to_chat(user, span_notice("There are too many books on this shelf!"))
+			return
+		if(!user.transferItemToLoc(I, src))
+			return
+		update_icon()
+	else if(STR)
+		for(var/obj/item/T in I.contents)
+			if(istype(T, /obj/item/book))
+				STR.remove_from_storage(T, src)
+		to_chat(user, span_notice("I empty \the [I] into \the [src]."))
+		update_icon()
+		return ..()
 
 /obj/structure/bookcase/attack_hand(mob/living/user)
 	. = ..()
@@ -69,24 +63,13 @@
 				choice.forceMove(drop_location())
 			update_icon()
 
-
 /obj/structure/bookcase/deconstruct(disassembled = TRUE)
-//	new /obj/item/stack/sheet/mineral/wood(loc, 4)
 	for(var/obj/item/book/B in contents)
 		B.forceMove(get_turf(src))
 	qdel(src)
-
 
 /obj/structure/bookcase/update_icon()
 	if((contents.len >= 1) && (contents.len <= 15))
 		icon_state = "[based][contents.len]"
 	else
 		icon_state = "bookcase"
-
-/obj/structure/bookcase/manuals/medical
-	name = "medical manuals bookcase"
-
-/obj/structure/bookcase/manuals/medical/Initialize()
-	. = ..()
-	new /obj/item/book/manual/wiki/medical_cloning(src)
-	update_icon()

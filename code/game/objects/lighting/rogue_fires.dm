@@ -206,11 +206,14 @@
 	. = ..()
 
 /obj/machinery/light/rogue/torchholder/OnCrafted(dirin, user)
-	dir = turn(dirin, 180)
-	if(dir == SOUTH)
+	if(dirin == NORTH)
 		pixel_y = 32
+	dirin = turn(dirin, 180)
 	QDEL_NULL(torchy)
-	. = ..()
+	on = FALSE
+	set_light(0)
+	update_icon()
+	. = ..(dirin)
 
 /obj/machinery/light/rogue/torchholder/process()
 	if(on)

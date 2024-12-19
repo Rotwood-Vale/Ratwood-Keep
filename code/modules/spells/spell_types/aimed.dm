@@ -96,7 +96,7 @@
 /obj/effect/proc_holder/spell/aimed/proc/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration)
 	return
 
-/obj/effect/proc_holder/spell/aimed/fireball
+/obj/effect/proc_holder/spell/aimed/fireball // not the one used by RT
 	name = "Fireball"
 	desc = ""
 	school = "evocation"
