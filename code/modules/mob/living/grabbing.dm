@@ -464,11 +464,9 @@
 								"<span class='userdanger'>[user] consumes my brain!</span>", "<span class='hear'>I hear a sickening sound of chewing!</span>", COMBAT_MESSAGE_RANGE, user)
 							to_chat(user, "<span class='boldnotice'>Braaaaaains!</span>")
 							if(!user.mob_timers["zombie_tri"])
-								user.adjust_triumphs(1)
 								user.mob_timers["zombie_tri"] = world.time
 							playsound(C.loc, 'sound/combat/fracture/headcrush (2).ogg', 100, FALSE, -1)
 							return
-					user.mind.adjust_triumphs(1)
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 	C.visible_message(span_danger("[user] bites [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \

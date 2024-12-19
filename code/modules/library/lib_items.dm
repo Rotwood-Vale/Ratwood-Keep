@@ -9,6 +9,8 @@
 	opacity = 1
 	resistance_flags = FLAMMABLE
 	max_integrity = 200
+	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 50, "acid" = 0)
 	var/state = 0
 	var/list/allowed_books = list(/obj/item/book, /obj/item/storage/book) //Things allowed in the bookcase
