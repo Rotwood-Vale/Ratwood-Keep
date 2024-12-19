@@ -3756,6 +3756,14 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/tavern)
+"ctJ" = (
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "tablewood2"
+	},
+/obj/item/rogueweapon/surgery/hemostat,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "cuk" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors)
@@ -4979,8 +4987,8 @@
 "ddu" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
-	lockid = "keep_dungeon";
-	name = "Cell Door"
+	lockid = "keep_barracks";
+	name = "Holding Cell"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -213621,7 +213629,7 @@ cBf
 txa
 pRt
 cBf
-cDr
+ctJ
 cDr
 txa
 vRu
