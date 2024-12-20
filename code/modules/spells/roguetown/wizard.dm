@@ -1221,6 +1221,8 @@
 
 //Graggar Spells
 
+/* 
+/////WIP/////
 /obj/effect/proc_holder/spell/invoked/prepare_feast
 	name = "Prepare Feast"
 	cost = 1
@@ -1240,3 +1242,4 @@
 	chargedrain = 1
 	xp_gain = TRUE
 
+*/
