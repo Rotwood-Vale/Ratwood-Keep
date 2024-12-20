@@ -1715,6 +1715,7 @@
 "bcr" = (
 /obj/structure/bed/rogue,
 /obj/effect/landmark/start/physician,
+/obj/item/bedsheet/rogue/fabric,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "bcu" = (
@@ -10613,6 +10614,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
+/obj/item/bedroll,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "gzP" = (
