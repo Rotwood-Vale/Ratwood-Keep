@@ -27,6 +27,19 @@
 			to_chat(user, span_warning("Reddened and inflamed flesh accompanied by a brow flecked with sweat. Excess choleric, perhaps?"))
 		else if (human_target.reagents.has_reagent(/datum/reagent/infection/minor))
 			to_chat(user, span_warning("A slight yellowing indicates the barest presence of disrupted choleric humor."))
+
+		//To tell thresholds of toxins in the system, here so people don't have info of their own toxins outside of diagnosis method
+		switch(human_target.toxloss)
+			if(0 to 1)
+				to_chat(user, span_notice("No sign of toxicity in the body."))
+			if(1 to 50)
+				to_chat(user, span_notice("Some traces of toxicity are found under scrutiny."))
+			if(50 to 100)
+				to_chat(user, span_notice("Significant signs of toxicity are apparent."))
+			if(100 to 150)
+				to_chat(user, span_warning("The body is wracked by toxicity."))
+			if(150 to INFINITY)
+				to_chat(user, span_necrosis("The body is devastated by toxicity."))
 		
 		return TRUE
 	revert_cast()
