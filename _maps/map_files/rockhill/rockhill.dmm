@@ -7689,12 +7689,11 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/magician)
 "eJL" = (
-/obj/structure/fluff/railing/fence{
-	dir = 4
+/obj/structure/roguemachine/scomm{
+	pixel_y = -32
 	},
-/obj/structure/fluff/railing/fence,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/church)
 "eJN" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner{
 	dir = 1
@@ -13837,14 +13836,11 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/tavern)
 "iyC" = (
-/obj/structure/fluff/railing/fence{
-	dir = 4
+/obj/structure/roguemachine/scomm{
+	pixel_y = -32
 	},
-/obj/structure/fluff/railing/fence{
-	dir = 1
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/indoors/town/church)
 "iyG" = (
 /obj/item/roguemachine/mastermail,
 /turf/open/floor/rogue/wood,
@@ -16089,14 +16085,14 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church/chapel)
 "jPv" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	layer = 2.8;
-	pixel_x = 8
+/obj/structure/bars/grille{
+	dir = 4
 	},
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
+/obj/structure/fluff/walldeco/psybanner/red{
+	pixel_y = 32
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/church)
 "jPH" = (
 /obj/effect/landmark/start/villager,
 /obj/effect/decal/cobbleedge{
@@ -18219,7 +18215,10 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
 "loh" = (
-/obj/structure/fluff/railing/fence,
+/obj/structure/fluff/railing/fence{
+	dir = 4
+	},
+/obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
 "los" = (
@@ -18267,13 +18266,9 @@
 	},
 /area/rogue/outdoors/rtfield)
 "lpJ" = (
-/obj/structure/fluff/walldeco/psybanner{
-	pixel_y = 28
-	},
-/turf/closed/wall/mineral/rogue/decostone/mossy/blue/long{
-	dir = 1
-	},
-/area/rogue/indoors/town/church)
+/obj/structure/roguemachine/scomm/l,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/shelter/town/harbor)
 "lqa" = (
 /obj/structure/chair/wood/rogue{
 	dir = 8
@@ -21661,12 +21656,6 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/church)
-"nzo" = (
-/obj/structure/fluff/railing/fence{
-	dir = 4
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
 "nzJ" = (
 /obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/twig,
@@ -24956,9 +24945,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "pxR" = (
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/rtfield)
+/obj/structure/roguemachine/scomm{
+	pixel_y = -32
+	},
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/church)
 "pxS" = (
 /obj/structure/fluff/grindwheel,
 /turf/open/floor/rogue/blocks/stonered,
@@ -37167,8 +37158,13 @@
 /area/rogue/outdoors/town/harbor)
 "xhC" = (
 /obj/structure/fluff/railing/fence{
+	dir = 4
+	},
+/obj/structure/fluff/railing/wood{
+	pixel_y = 10;
 	dir = 1
 	},
+/obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
 "xhG" = (
@@ -343603,7 +343599,7 @@ lZX
 clJ
 bos
 bos
-bos
+lpJ
 nhJ
 sPC
 roq
@@ -346253,7 +346249,7 @@ tPT
 lug
 hKU
 oGg
-vXn
+wVI
 qkH
 qkH
 bmi
@@ -351422,8 +351418,8 @@ jLH
 dPw
 eBN
 qPA
-ras
-aED
+qPA
+jPv
 oCg
 xMt
 tEx
@@ -416691,8 +416687,8 @@ xou
 xou
 lsS
 jKx
-nzo
-jPv
+jKx
+jKx
 gAc
 gAc
 aXm
@@ -417126,7 +417122,7 @@ erZ
 erZ
 erZ
 xhC
-gAc
+loh
 lrX
 nqU
 nqU
@@ -417557,10 +417553,10 @@ pnf
 erZ
 erZ
 erZ
-xhC
-gAc
-pxR
-loh
+pLJ
+pLJ
+pLJ
+pLJ
 erZ
 erZ
 erZ
@@ -417989,10 +417985,10 @@ erZ
 erZ
 erZ
 erZ
-xhC
-gAc
-gAc
-loh
+pLJ
+pLJ
+pLJ
+pLJ
 erZ
 erZ
 erZ
@@ -418421,10 +418417,10 @@ erZ
 erZ
 erZ
 erZ
-iyC
-nzo
-nzo
-eJL
+pLJ
+pLJ
+pLJ
+pLJ
 erZ
 erZ
 erZ
@@ -466338,7 +466334,7 @@ tML
 wAm
 wAm
 xoE
-lpJ
+wJF
 tML
 tML
 cmR
@@ -573471,7 +573467,7 @@ rdW
 tjS
 dpW
 wgg
-wgg
+iyC
 qPA
 oFl
 muj
@@ -576495,7 +576491,7 @@ haq
 svq
 xCP
 xCP
-xCP
+pxR
 vST
 frQ
 tML
@@ -576511,7 +576507,7 @@ wfQ
 jEH
 eMX
 eBN
-eBN
+eJL
 uOo
 vIa
 vIa
