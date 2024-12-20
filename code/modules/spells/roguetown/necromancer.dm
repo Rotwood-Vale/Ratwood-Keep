@@ -9,7 +9,7 @@
 	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	chargedloop = null
+	chargedloop = /datum/looping_sound/invokegen
 	sound = 'sound/magic/whiteflame.ogg'
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
@@ -51,7 +51,7 @@
 	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	chargedloop = null
+	chargedloop = /datum/looping_sound/invokegen
 	sound = 'sound/items/beartrap.ogg'
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
@@ -408,6 +408,8 @@
 	name = "Ray of Sickness"
 	desc = "Fire a bolt of magical burning poison at a target. Onset may be slow."
 	clothes_req = FALSE
+	invocation = "Royk'talashi!"
+	invocation_type = "shout"
 	range = 15
 	projectile_type = /obj/projectile/magic/sickness
 	overlay_state = "raiseskele"
@@ -433,6 +435,7 @@
 	invocation = "Zuth'gorash vel'thar dral'oth!"
 	invocation_type = "whisper"
 	antimagic_allowed = TRUE
+	chargedloop = /datum/looping_sound/invokegen
 	charge_max = 15 SECONDS
 	chargedrain = 1
 	cost = 2
