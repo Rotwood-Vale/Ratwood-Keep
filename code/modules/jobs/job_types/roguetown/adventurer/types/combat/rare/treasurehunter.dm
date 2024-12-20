@@ -68,7 +68,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("speed", 2)
 		H.change_stat("endurance", 2)
-		H.change_stat("fortune", 3)
+		H.change_stat("fortune", 2)
 
 /datum/outfit/job/roguetown/adventurer/gravedigger/proc/archeologistarch(mob/living/carbon/human/H)
 	head = /obj/item/clothing/head/roguetown/fedora
@@ -82,7 +82,6 @@
 				)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
@@ -94,7 +93,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 
