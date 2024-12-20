@@ -1786,7 +1786,6 @@
 #include "code\modules\spells\spell_types\the_traps.dm"
 #include "code\modules\spells\spell_types\touch_attacks.dm"
 #include "code\modules\spells\spell_types\trigger.dm"
-#include "code\modules\spells\spell_types\voice_of_god.dm"
 #include "code\modules\surgery\_surgery.dm"
 #include "code\modules\surgery\_surgery_step.dm"
 #include "code\modules\surgery\surgery_helpers.dm"
