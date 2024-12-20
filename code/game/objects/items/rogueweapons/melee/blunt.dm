@@ -101,7 +101,7 @@
 
 /obj/item/rogueweapon/mace/warhammer
 	force = 20
-	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/pick)
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale)
 	gripped_intents = null
 	name = "warhammer"
 	desc = "Made to punch through armor and skull alike."
@@ -113,7 +113,7 @@
 
 /obj/item/rogueweapon/mace/warhammer/steel
 	force = 25
-	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/pick, /datum/intent/mace/warhammer/stab)
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale, /datum/intent/mace/warhammer/stab)
 	name = "steel warhammer"
 	desc = "A fine steel warhammer, makes a satisfying sound when paired with a knight's helm."
 	icon_state = "swarhammer"
@@ -179,9 +179,9 @@
 	damfactor = 0.8
 	item_d_type = "stab"
 
-/datum/intent/mace/warhammer/pick
-	name = "pick"
-	icon_state = "inpick"
+/datum/intent/mace/warhammer/impale
+	name = "impale"
+	icon_state = "inimpale"
 	blade_class = BCLASS_PICK
 	attack_verb = list("picks", "impales")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
