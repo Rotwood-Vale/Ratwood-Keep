@@ -404,7 +404,7 @@
 				/obj/item/natural/fibers = 1)
 	skill_level = 4
 
-/datum/crafting_recipe/roguetown/sewing/chaperon
+/datum/crafting_recipe/roguetown/sewing/rhood
 	name = "hat (reinforced hood) - (2 fur, hood; EXPERT)"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/reinforced)
 	reqs = list(/obj/item/clothing/head/roguetown/roguehood = 2,
@@ -700,7 +700,6 @@
 	reqs = list(/obj/item/clothing/shoes/roguetown/armor/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
-	blacklist = (/obj/item/clothing/shoes/roguetown/armor/leather/advanced)
 	skill_level = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/gloves/masterwork
@@ -709,7 +708,6 @@
 	reqs = list(/obj/item/clothing/gloves/roguetown/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
-	blacklist = (/obj/item/clothing/gloves/roguetown/leather/advanced)
 	skill_level = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/bracers/masterwork
@@ -718,7 +716,6 @@
 	reqs = list(/obj/item/clothing/wrists/roguetown/bracers/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
-	blacklist = (/obj/item/clothing/wrists/roguetown/bracers/leather/advanced)
 	skill_level = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/coat/masterwork
@@ -727,7 +724,6 @@
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
-	blacklist = (/obj/item/clothing/suit/roguetown/armor/leather/advanced)
 	skill_level = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/helmet/masterwork
@@ -736,7 +732,6 @@
 	reqs = list(/obj/item/clothing/head/roguetown/helmet/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
-	blacklist = (/obj/item/clothing/head/roguetown/helmet/leather/advanced)
 	skill_level = 5
 
 /datum/crafting_recipe/roguetown/sewing/leather/chausses/masterwork
@@ -745,7 +740,6 @@
 	reqs = list(/obj/item/clothing/under/roguetown/trou/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
-	blacklist = (/obj/item/clothing/under/roguetown/trou/leather/advanced)
 	skill_level = 5
 
 /// SILKS
