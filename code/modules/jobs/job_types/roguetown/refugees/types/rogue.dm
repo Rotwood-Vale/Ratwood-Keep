@@ -5,7 +5,7 @@
 				where illicit profit is sure to be made."
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_SHUNNED_UP
 	category_tags = list(CTAG_REFUGEE)
 
 	cmode_music = 'sound/music/combat_duelist.ogg'

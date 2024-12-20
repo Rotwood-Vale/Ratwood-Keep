@@ -7,7 +7,7 @@
 	spawn_positions = 10
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "Either a fresh lowborn recruit or a veteran of the now defunct bog guard, you have been assigned to the newly established Vanguard. \
 	You have a roof over your head, coin in your pocket, and a thankless job protecting the outskirts of town against what lurks beyond.\
@@ -53,7 +53,7 @@
 /datum/subclass/bogguard
 	name = "Vanguard footman"
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/bogguardsman
 	tutorial = "You are well versed in the ways of handling a sword. \
 	You will stand in the front, and protect."
@@ -62,7 +62,7 @@
 /datum/subclass/bogranger
 	name = "Vanguard archer"
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/ranger
 	tutorial = "You are well versed in the ways of handling a bow. \
 	You will stand in the back, and protect the front with arrows."

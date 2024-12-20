@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
 	display_order = JDO_DUNGEONEER

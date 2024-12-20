@@ -429,8 +429,12 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		if(!isnull(job.max_pq) && (get_playerquality(ckey) > job.max_pq) && !is_misc_banned(ckey, BAN_MISC_LUNATIC))
 			return JOB_UNAVAILABLE_GENERIC
 	var/datum/species/pref_species = client.prefs.pref_species
-	if(length(job.allowed_races) && !(pref_species.type in job.allowed_races))
-		return JOB_UNAVAILABLE_RACE
+	if(job.in_pyramid)
+		if(!job.social_pyramid_check(pref_species))
+			return JOB_UNAVAILABLE_RACE
+	else
+		if(length(job.allowed_races + job.special_exceptions) && !(pref_species.type in (job.allowed_races + job.special_exceptions)))
+			return JOB_UNAVAILABLE_RACE
 	var/list/allowed_sexes = list()
 	if(length(job.allowed_sexes))
 		allowed_sexes |= job.allowed_sexes

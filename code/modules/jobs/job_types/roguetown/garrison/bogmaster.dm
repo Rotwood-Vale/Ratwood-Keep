@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "An experienced soldier of the Duke's retinue, you have been tasked with overseeing the newly constructed Bastion. \
 				You report to the Royal Marshal and their Councillors, \

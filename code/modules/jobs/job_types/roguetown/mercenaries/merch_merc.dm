@@ -6,7 +6,7 @@
 	total_positions = 2
 	spawn_positions = 2
 
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
 	tutorial = "You're hired muscle for the local brothel. \

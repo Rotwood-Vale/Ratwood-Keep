@@ -12,7 +12,8 @@
 #endif
 	min_pq = null //no pq
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_SHUNNED_UP
+	in_pyramid = FALSE
 	tutorial = ""
 	outfit = /datum/outfit/job/roguetown/tester
 	plevel_req = 0

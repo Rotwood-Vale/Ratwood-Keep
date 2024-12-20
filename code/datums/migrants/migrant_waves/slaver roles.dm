@@ -209,7 +209,7 @@
 	greet_text = "An unlucky slave, captured and trained for labor, now being transported from the western deserts of the Zybantines to the marsh filled Isle of Enigma."
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_SHUNNED_UP
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE

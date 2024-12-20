@@ -8,7 +8,8 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	faction = "Station"
 	total_positions = 25
 	spawn_positions = 25
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP
+	in_pyramid = FALSE
 	tutorial = "People of all walks of life have fled the rot, seeking refuge in the many rumored safe havens of the world. \
 				One of these refugees, you have left everything behind to seek a new life in a foreign land."
 

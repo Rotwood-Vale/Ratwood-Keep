@@ -68,7 +68,11 @@
 
 	//allowed sex/race for picking
 	var/list/allowed_sexes = list(MALE, FEMALE)
-	var/list/allowed_races = RACES_ALL_KINDS
+	var/list/allowed_races = RACES_SHUNNED_UP
+
+	/// Special allowed races list, not considered in the dynamic social pyramid system. Only used for seelies at the moment.
+	var/list/special_exceptions = null
+	
 	var/list/allowed_patrons
 	var/list/allowed_ages = ALL_AGES_LIST
 

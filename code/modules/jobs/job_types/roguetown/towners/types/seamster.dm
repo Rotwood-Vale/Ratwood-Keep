@@ -1,7 +1,7 @@
 /datum/subclass/seamstress
 	name = "Seamster"
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/refugee/seamstress
 	category_tags = list(CTAG_TOWNER)
 

@@ -9,7 +9,8 @@
 	max_pq = null
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_SHUNNED_UP
+	in_pyramid = FALSE
 	tutorial = ""
 
 	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt, /obj/effect/proc_holder/spell/invoked/projectile/fetch)

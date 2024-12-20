@@ -6,7 +6,8 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE
+	allowed_races = RACES_SHUNNED_UP
+	special_exceptions = RACES_SEELIE
 
 	tutorial = "The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. \
 		You command a position of a fool, envious of the position your superiors have upon you. \

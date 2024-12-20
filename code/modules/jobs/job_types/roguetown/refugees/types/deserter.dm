@@ -5,7 +5,7 @@
 				You now seek refuge in a place where your past allegiance wont be recognized, hoping that the rot hasn't followed you.\ "
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_SHUNNED_UP
 	category_tags = list(CTAG_REFUGEE)
 
 	maximum_possible_slots = 5
