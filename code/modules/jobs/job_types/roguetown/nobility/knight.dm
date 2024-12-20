@@ -52,7 +52,6 @@
 					H.mind.person_knows_me(MF)
 
 /datum/outfit/job/roguetown/knight
-	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	gloves = /obj/item/clothing/gloves/roguetown/chain
@@ -123,6 +122,7 @@
 
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate		//this is actually steel half-plate, full plate is plate/full. given because they are SLOW.
+	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 
@@ -179,6 +179,7 @@
 
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates		//given because it's less durability than the steel cuirass but is actually heavy, making use of their heavy skill, unlike cuirass
+	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 
@@ -244,5 +245,72 @@
 
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates	//given because it's less durability than the steel cuirass but is actually heavy, making use of their heavy skill, unlike cuirass
+	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
+
+
+/datum/advclass/knight/irregularknight
+	name = "Royal Champion"
+	tutorial = "Your skillset is abnormal for a knight. Your swift maneuvers and masterful technique impress both lords and ladies alike, and you have a preference for quicker, more elegant blades. While you are an effective fighting force in medium armor, your evasive skills will only truly shine if you don even lighter protection."
+	outfit = /datum/outfit/job/roguetown/knight/irregularknight
+
+	category_tags = list(CTAG_ROYALGUARD)
+
+/datum/outfit/job/roguetown/knight/irregularknight/pre_equip(mob/living/carbon/human/H)
+	..()
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)		
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)	//Swords and knives class, not very good at anything else.
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)		
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)		
+	H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)		
+	H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)		
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)		
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)	    //less wrestling, further in line with them being speedy and not bulky
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)		//marginally more athletic than the other knights
+	//Normal shared skill section.
+
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)		//keeping unarmed at 4 because speedy boxers exist
+	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+
+
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)		//Knights are /technically/ nobles? But they are of the lower-tiers; mainly that a non-blue-blood could become a knight.
+	ADD_TRAIT(H, TRAIT_KNIGHTSMAN, TRAIT_GENERIC) //if they can't figure out how to win vs someone in leather armor with this i literally can not help them anymore
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()		//For knightly voices; even though I despise them.
+	H.verbs |= /mob/proc/haltyell
+
+	H.change_stat("strength", 1)
+	H.change_stat("endurance", 2)
+	H.change_stat("speed", 2)
+	H.change_stat("intelligence", 1) 
+
+	H.adjust_blindness(-3)
+	var/weapons = list("Bastard Sword","Estoc","Sabre + Buckler")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Bastard Sword") //The rapier got balancejak'd away
+			r_hand = /obj/item/rogueweapon/sword/long
+
+		if("Estoc")
+			r_hand = /obj/item/rogueweapon/estoc
+			backl = /obj/item/gwstrap
+		
+		if("Sabre + Buckler")
+			r_hand = /obj/item/rogueweapon/sword/sabre
+			backl = /obj/item/rogueweapon/shield/buckler
+
+	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light	//No plate training on this subclass
+	head = /obj/item/clothing/head/roguetown/helmet/sallet
+	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/special
+	//starts with some leather armor in the backpack as an alternative option to medium armor
+	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat = 1, /obj/item/clothing/under/roguetown/heavy_leather_pants = 1, /obj/item/clothing/suit/roguetown/armor/gambeson/heavy = 1)
