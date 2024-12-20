@@ -50,7 +50,7 @@
 
 	//Lesser Necromancy Trackers
 	var/boneboys = 0
-	var/bonemax = 0
+	var/bonemax = 2
 	var/boneboy = FALSE
 	var/bonenecro = null
 
@@ -313,7 +313,6 @@
 			to_chat(current, span_nicegreen("My [S.name] grows to [SSskills.level_names[known_skills[S]]]!"))
 		if(skill == /datum/skill/magic/arcane)
 			adjust_spellpoints(1)
-			adjust_bonemax(1)
 	else
 		to_chat(current, span_warning("My [S.name] has weakened to [SSskills.level_names[known_skills[S]]]!"))
 
@@ -334,7 +333,6 @@
 	var/amt2gain = 0
 	if(skill == /datum/skill/magic/arcane)
 		adjust_spellpoints(amt)
-		adjust_bonemax(amt)
 	for(var/i in 1 to amt)
 		switch(skill_experience[S])
 			if(SKILL_EXP_MASTER to SKILL_EXP_LEGENDARY)
