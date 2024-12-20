@@ -175,7 +175,6 @@
 	attack_verb = list("thrusts", "stabs")
 	animname = "stab"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	no_early_release = TRUE
 	penfactor = 20
 	damfactor = 0.8
 	item_d_type = "stab"
@@ -187,6 +186,7 @@
 	attack_verb = list("picks", "impales")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 14
+	chargedrain = 1
 	misscost = 1
 	no_early_release = TRUE
 	penfactor = 80
