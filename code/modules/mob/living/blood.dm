@@ -12,13 +12,13 @@
 /mob/living/proc/resume_bleeding()
 	bleedsuppress = 0
 	if(stat != DEAD && bleed_rate)
-		to_chat(src, "<span class='warning'>The blood soaks through my bandage.</span>")
+		to_chat(src, span_warning("The blood soaks through my bandage."))
 
 /mob/living/carbon/monkey/handle_blood()
 	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
 	//Blood regeneration if there is some space
-	if(blood_volume < BLOOD_VOLUME_NORMAL && !bleed_rate)
+	if(blood_volume < BLOOD_VOLUME_NORMAL)
 		blood_volume += 0.1 // regenerate blood VERY slowly
 		if((blood_volume < BLOOD_VOLUME_OKAY) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
 			adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
@@ -26,60 +26,55 @@
 /mob/living/proc/handle_blood()
 	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
+	
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)
-
-	bleed_rate = min(get_bleed_rate(), 10)
-
-	if(blood_volume < BLOOD_VOLUME_NORMAL && blood_volume && !bleed_rate)
-		blood_volume = min(blood_volume+0.5, BLOOD_VOLUME_MAXIMUM)
-
 	//Effects of bloodloss
-	if(!HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE) && !DEAD)
+	if(!HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
 		switch(blood_volume)
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(3))
-					to_chat(src, "<span class='warning'>I feel dizzy.</span>")
+					to_chat(src, span_warning("I feel dizzy."))
 				remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 				remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 				apply_status_effect(/datum/status_effect/debuff/bleeding)
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(prob(3))
 					blur_eyes(6)
-					to_chat(src, "<span class='warning'>I feel faint.</span>")
+					to_chat(src, span_warning("I feel faint."))
 				remove_status_effect(/datum/status_effect/debuff/bleeding)
 				remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 				apply_status_effect(/datum/status_effect/debuff/bleedingworse)
 			if(0 to BLOOD_VOLUME_BAD)
 				if(prob(3))
 					blur_eyes(6)
-					to_chat(src, "<span class='warning'>I feel faint.</span>")
+					to_chat(src, span_warning("I feel faint."))
 				if(prob(3) && !IsUnconscious())
 					Unconscious(rand(5 SECONDS,10 SECONDS))
-					to_chat(src, "<span class='warning'>I feel drained.</span>")
+					to_chat(src, span_warning("I feel drained."))
 				remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 				remove_status_effect(/datum/status_effect/debuff/bleeding)
 				apply_status_effect(/datum/status_effect/debuff/bleedingworst)
 		if(blood_volume <= BLOOD_VOLUME_BAD)
 			adjustOxyLoss(1)
-			//if(blood_volume <= BLOOD_VOLUME_SURVIVE)
-				//adjustOxyLoss(2)
+			if(blood_volume <= BLOOD_VOLUME_SURVIVE)
+				adjustOxyLoss(2)
 	else
 		remove_status_effect(/datum/status_effect/debuff/bleeding)
 		remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 		remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 
+	bleed_rate = get_bleed_rate()
 	if(bleed_rate)
 		bleed(bleed_rate)
-
-	//if(blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE)
-		//adjustOxyLoss(1.6)
+	else if(blood_volume < BLOOD_VOLUME_NORMAL)
+		blood_volume = min(blood_volume + 1, BLOOD_VOLUME_NORMAL)
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/handle_blood()
 	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
+	
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)
-	var/bleed_rate = get_bleed_rate()
 	if(dna?.species)
 		if(NOBLOOD in dna.species.species_traits)
 			blood_volume = BLOOD_VOLUME_NORMAL
@@ -90,7 +85,7 @@
 			return
 
 	//Blood regeneration if there is some space
-	if(blood_volume < BLOOD_VOLUME_NORMAL && blood_volume && !bleed_rate)
+	if(blood_volume < BLOOD_VOLUME_NORMAL && blood_volume)
 		var/nutrition_ratio = 1
 //			switch(nutrition)
 //				if(0 to NUTRITION_LEVEL_STARVING)
@@ -113,37 +108,38 @@
 		switch(blood_volume)
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(3))
-					to_chat(src, "<span class='warning'>I feel dizzy.</span>")
+					to_chat(src, span_warning("I feel dizzy."))
 				remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 				remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 				apply_status_effect(/datum/status_effect/debuff/bleeding)
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(prob(3))
 					blur_eyes(6)
-					to_chat(src, "<span class='warning'>I feel faint.</span>")
+					to_chat(src, span_warning("I feel faint."))
 				remove_status_effect(/datum/status_effect/debuff/bleeding)
 				remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 				apply_status_effect(/datum/status_effect/debuff/bleedingworse)
 			if(0 to BLOOD_VOLUME_BAD)
 				if(prob(3))
 					blur_eyes(6)
-					to_chat(src, "<span class='warning'>I feel faint.</span>")
+					to_chat(src, span_warning("I feel faint."))
 				if(prob(3) && !IsUnconscious())
 					Unconscious(rand(5 SECONDS,10 SECONDS))
-					to_chat(src, "<span class='warning'>I feel drained.</span>")
+					to_chat(src, span_warning("I feel drained."))
 				remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 				remove_status_effect(/datum/status_effect/debuff/bleeding)
 				apply_status_effect(/datum/status_effect/debuff/bleedingworst)
 		if(blood_volume <= BLOOD_VOLUME_BAD)
 			adjustOxyLoss(1)
-			//if(blood_volume <= BLOOD_VOLUME_SURVIVE)
-				//adjustOxyLoss(2)
+			if(blood_volume <= BLOOD_VOLUME_SURVIVE)
+				adjustOxyLoss(2)
 	else
 		remove_status_effect(/datum/status_effect/debuff/bleeding)
 		remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 		remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 
 	//Bleeding out
+	bleed_rate = get_bleed_rate()
 	if(bleed_rate)
 		for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 			bodypart.try_bandage_expire()
@@ -168,37 +164,39 @@
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/proc/bleed(amt)
-	if(!iscarbon(src))
-		if(!HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
-			return
-	if(blood_volume)
-		blood_volume = max(blood_volume - amt, 0)
-		SSticker.blood_lost += amt
-		if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
-			add_drip_floor(src.loc, amt)
-		var/vol2use
-		if(amt > 1)
-			vol2use = 'sound/misc/bleed (1).ogg'
-		if(amt > 2)
-			vol2use = 'sound/misc/bleed (2).ogg'
-		if(amt > 3)
-			vol2use = 'sound/misc/bleed (3).ogg'
-		if(lying || stat)
-			vol2use = null
-		if(vol2use)
-			playsound(get_turf(src), vol2use, 100, FALSE)
+	if(!iscarbon(src) && !HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
+		return FALSE
+	if(blood_volume <= 0)
+		return FALSE
+	
+	blood_volume = max(blood_volume - amt, 0)
+	SSticker.blood_lost += amt
+	if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
+		add_drip_floor(src.loc, amt)
+	var/vol2use
+	if(amt > 1)
+		vol2use = 'sound/misc/bleed (1).ogg'
+	if(amt > 2)
+		vol2use = 'sound/misc/bleed (2).ogg'
+	if(amt > 3)
+		vol2use = 'sound/misc/bleed (3).ogg'
+	if(!(mobility_flags & MOBILITY_STAND))
+		vol2use = null
+	if(vol2use)
+		playsound(get_turf(src), vol2use, 100, FALSE)
 
 	updatehealth()
+	return TRUE
 
 /mob/living/carbon/human/bleed(amt)
 	amt *= physiology.bleed_mod
 	if(!(NOBLOOD in dna.species.species_traits))
 		return ..()
-
-
+	return FALSE
 
 /mob/living/proc/restore_blood()
 	blood_volume = initial(blood_volume)
+	bleed_rate = 0
 
 /mob/living/carbon/human/restore_blood()
 	blood_volume = BLOOD_VOLUME_NORMAL

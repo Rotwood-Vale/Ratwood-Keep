@@ -29,13 +29,6 @@
 	var/turf/above_turf = GET_TURF_ABOVE(turf_source)
 	var/turf/below_turf = GET_TURF_BELOW(turf_source)
 
-	if(above_turf)
-		if(!is_in_zweb(source_z,above_turf.z))
-			above_turf=null
-	if(below_turf)
-		if(!is_in_zweb(source_z,below_turf.z))
-			below_turf=null
-
 	if(soundping)
 		ping_sound(source)
 
@@ -43,10 +36,10 @@
 	if(!ignore_walls) //these sounds don't carry through walls
 		listeners = listeners & hearers(maxdistance,turf_source)
 
-		if(above_turf && istransparentturf(above_turf))
+		if(above_turf)
 			muffled_listeners += hearers(maxdistance,above_turf)
 
-		if(below_turf && istransparentturf(turf_source))
+		if(below_turf)
 			muffled_listeners += hearers(maxdistance,below_turf)
 
 	else
@@ -58,17 +51,17 @@
 			listeners += SSmobs.clients_by_zlevel[below_turf.z]
 			listeners += SSmobs.dead_players_by_zlevel[below_turf.z]
 
+	listeners += SSmobs.dead_players_by_zlevel[source_z]
 	. = list()
 
-	for(var/P in listeners)
-		var/mob/M = P
+	for(var/mob/M as anything in listeners)
 		if(get_dist(M, turf_source) <= maxdistance)
 			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat))
 				. += M
-	for(var/P in SSmobs.dead_players_by_zlevel[source_z])
-		var/mob/M = P
+
+	for(var/mob/M as anything in muffled_listeners)
 		if(get_dist(M, turf_source) <= maxdistance)
-			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat))
+			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat, muffled = TRUE))
 				. += M
 
 
@@ -98,7 +91,7 @@
 	. = ..()
 	animate(src, alpha = 0, time = duration, easing = EASE_IN)
 */
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel, pressure_affected = TRUE, sound/S, repeat)
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel, pressure_affected = TRUE, sound/S, repeat, muffled)
 	if(!client || !can_hear())
 		return FALSE
 
@@ -107,6 +100,14 @@
 
 	S.wait = 0 //No queue
 	S.channel = channel || SSsounds.random_available_channel()
+
+	if(muffled)
+		S.environment = 11
+		if(falloff)
+			falloff *= 1.5
+		else
+			falloff = FALLOFF_SOUNDS * 1.5
+		vol *= 0.75
 
 	var/vol2use = vol
 	if(client.prefs)
