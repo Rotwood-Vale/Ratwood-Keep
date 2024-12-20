@@ -138,6 +138,7 @@
 
 /obj/item/clothing/neck/roguetown/gorget/steel
 	name ="steel gorget"
+	desc = "A steel gorget to protect the neck."
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 300
 	icon_state = "sgorget"

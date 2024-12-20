@@ -862,14 +862,6 @@
 	new /obj/item/reagent_containers/pill/caffpill(src)
 	new /obj/item/reagent_containers/pill/caffpill(src)
 
-/obj/item/storage/fancy/pilltin/pink
-	name = "pill tin (pnk)"
-
-/obj/item/storage/fancy/pilltin/pink/PopulateContents()
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
 	desc = "portable and compact"
