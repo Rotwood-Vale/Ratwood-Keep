@@ -27,5 +27,5 @@
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
 	desc = "Dark trousers worn by morticians while performing burial rites."
-	icon_state = "leathertrou"
+	icon_state = "trou"
 	color = "#151615"
