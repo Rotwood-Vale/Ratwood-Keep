@@ -1714,6 +1714,7 @@
 /area/rogue/indoors/town/garrison)
 "bcr" = (
 /obj/structure/bed/rogue,
+/obj/effect/landmark/start/physician,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "bcu" = (
@@ -27705,7 +27706,6 @@
 /area/rogue/indoors)
 "rpP" = (
 /obj/structure/chair/stool/rogue,
-/obj/effect/landmark/start/physician,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
 "rpQ" = (
