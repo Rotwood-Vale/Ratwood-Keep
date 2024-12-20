@@ -1,5 +1,8 @@
 /obj/effect/proc_holder/spell/invoked/strengthen_undead
 	name = "Strengthen Undead"
+	desc = "Suffuse a target with necrotic energies, mending the undead and paralyzing the living."
+	invocation = "Kral'chal!"
+	invocation_type = "shout"
 	overlay_state = "raiseskele"
 	releasedrain = 30
 	chargetime = 5
@@ -13,6 +16,8 @@
 	charge_max = 15 SECONDS
 	miracle = FALSE
 	cost = 2
+	chargedrain = 1
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/strengthen_undead/cast(list/targets, mob/living/user)
 	. = ..()
@@ -37,6 +42,9 @@
 
 /obj/effect/proc_holder/spell/invoked/eyebite
 	name = "Eyebite"
+	desc = "Impale a target's eyes with arcane fangs, moderately wounding and temporarily blinding them."
+	invocation = "Trk'chi'Esri!"
+	invocation_type = "shout"
 	overlay_state = "raiseskele"
 	releasedrain = 30
 	chargetime = 15
@@ -50,6 +58,8 @@
 	charge_max = 15 SECONDS
 	miracle = FALSE
 	cost = 3
+	xp_gain = TRUE
+	chargedrain = 2
 
 /obj/effect/proc_holder/spell/invoked/eyebite/cast(list/targets, mob/living/user)
 	. = ..()
@@ -64,13 +74,14 @@
 
 /obj/effect/proc_holder/spell/invoked/raise_undead
 	name = "Raise Undead"
-	desc = ""
+	desc = "Reanimate a corpse as a skeleton. Reanimate many skeletons. Reanimate all the skeletons! There's a skeleton inside everyone and they wish to be free! The body must have all limbs and its head."
 	clothes_req = FALSE
 	range = 7
 	overlay_state = "raiseskele"
 	sound = list('sound/magic/magnet.ogg')
 	releasedrain = 40
 	chargetime = 60
+	chargedrain = 3
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	charging_slowdown = 1
@@ -78,11 +89,12 @@
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 30 SECONDS
 	cost = 10
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/raise_undead_lesser
 	name = "Lesser Raise Undead"
 	cost = 4
-	desc = ""
+	desc = "Reanimate a corpse as a skeleton. You can maintain a limited number of sapient skeletons, capped to your arcane skill, the rest will be mindless. The body must have all limbs and its head."
 	clothes_req = FALSE
 	range = 7
 	overlay_state = "raiseskele"
@@ -95,6 +107,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 30 SECONDS
+	chargedrain = 2
+	xp_gain = TRUE
 
 /**
   * Raises a minion from a corpse. Prioritizing ownership to original player > ghosts > npc.
@@ -380,6 +394,7 @@
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC) //Skeletons can't regen stamina and have shit skills so after dicussion with Gyran, this'll be a bandaid. If it proves unbalanced I'll figure out a way to let them regen stam reliably.
 
 	update_body()
 
@@ -391,7 +406,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/sickness
 	name = "Ray of Sickness"
-	desc = ""
+	desc = "Fire a bolt of magical burning poison at a target. Onset may be slow."
 	clothes_req = FALSE
 	range = 15
 	projectile_type = /obj/projectile/magic/sickness
@@ -400,6 +415,7 @@
 	active = FALSE
 	releasedrain = 30
 	chargetime = 10
+	chargedrain = 1
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	charging_slowdown = 1
@@ -407,28 +423,20 @@
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 15 SECONDS
 	cost = 3
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/self/command_undead
 	name = "Command Undead"
-	desc = "!"
+	desc = "Broadcast a message to all your undead minions!"
 	overlay_state = "raiseskele"
 	sound = list('sound/magic/magnet.ogg')
 	invocation = "Zuth'gorash vel'thar dral'oth!"
-	invocation_type = "shout"
+	invocation_type = "whisper"
 	antimagic_allowed = TRUE
 	charge_max = 15 SECONDS
+	chargedrain = 1
 	cost = 2
-
-/obj/effect/proc_holder/spell/self/command_undead
-	name = "Command Undead"
-	desc = "!"
-	overlay_state = "raiseskele"
-	sound = list('sound/magic/magnet.ogg')
-	invocation = "Zuth'gorash vel'thar dral'oth!"
-	invocation_type = "shout"
-	antimagic_allowed = TRUE
-	charge_max = 15 SECONDS
-	cost = 2
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/self/command_undead/cast(mob/user = usr)
 	..()
@@ -449,12 +457,13 @@
 /obj/effect/proc_holder/spell/invoked/revoke_unlife
 	name = "Revoke Unlife"
 	cost = 1
-	desc = ""
+	desc = "Revoke the unlife of a misbehaving minions, banishing the soul straight to the underworld. Allowing you to raise the corpse once more with a different, more malleable soul."
 	clothes_req = FALSE
 	range = 7
 	overlay_state = "raiseskele"
 	sound = list('sound/magic/magnet.ogg')
 	releasedrain = 40
+	chargedrain = 1
 	chargetime = 2 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -462,6 +471,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 2 SECONDS
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/revoke_unlife/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()

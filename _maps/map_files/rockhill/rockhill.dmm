@@ -1712,6 +1712,10 @@
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
+"bcr" = (
+/obj/structure/bed/rogue,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "bcu" = (
 /obj/structure/feedinghole,
 /turf/open/floor/rogue/blocks/newstone/alt,
@@ -3256,7 +3260,11 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "cco" = (
-/turf/closed/wall/mineral/rogue/roofwall/center,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "ccw" = (
 /obj/structure/table/wood{
@@ -4870,6 +4878,11 @@
 /obj/structure/closet/crate/roguecloset/inn/south{
 	pixel_y = 6
 	},
+/obj/item/key/nightman,
+/obj/item/key/nightman,
+/obj/item/key/nightman,
+/obj/item/key/nightman,
+/obj/item/key/nightman,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
 "cZw" = (
@@ -10595,7 +10608,6 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/storage/fancy/pilltin/pink,
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = -32;
 	pixel_y = 0
@@ -13203,6 +13215,22 @@
 "ieu" = (
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
+"ieM" = (
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/structure/closet/crate/roguecloset,
+/obj/item/clothing/mask/rogue/physician,
+/obj/item/clothing/neck/roguetown/psicross/pestra,
+/obj/item/clothing/head/roguetown/physician,
+/obj/item/clothing/suit/roguetown/shirt/robe/physician,
+/obj/item/clothing/suit/roguetown/shirt/tunic/red,
+/obj/item/clothing/gloves/roguetown/leather/angle,
+/obj/item/clothing/under/roguetown/trou/leather/mourning,
+/obj/item/clothing/shoes/roguetown/armor,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "ieU" = (
 /obj/structure/table/wood{
 	icon_state = "map4"
@@ -26664,7 +26692,6 @@
 	},
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
-/obj/item/storage/fancy/pilltin/pink,
 /obj/item/storage/fancy/pilltin/wake,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
@@ -31190,6 +31217,14 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
+"tvm" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "physician";
+	name = "Physician's Bedroom"
+	},
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "tvr" = (
 /obj/structure/lever/wall{
 	pixel_x = 32;
@@ -34372,6 +34407,14 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
+"vry" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "physician";
+	name = "Physician's Office"
+	},
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/manor)
 "vrC" = (
 /obj/structure/fluff/walldeco/maidendrape,
 /obj/structure/stairs{
@@ -553580,7 +553623,7 @@ vIa
 wtF
 wtF
 wtF
-fiL
+vry
 wtF
 wtF
 wtF
@@ -554013,9 +554056,9 @@ vIa
 wtF
 gzN
 kUR
+tvm
 aFk
-wtF
-cco
+aFk
 cco
 wtF
 qFt
@@ -554445,10 +554488,10 @@ vIa
 wtF
 aFV
 kUR
+wtF
+ieM
 aFk
-wtF
-wtF
-cco
+bcr
 wtF
 dxv
 dxv
@@ -554877,8 +554920,8 @@ vIa
 wtF
 cZs
 kUR
-aFk
-xHp
+wtF
+wtF
 wtF
 wtF
 wtF
@@ -555310,7 +555353,7 @@ wtF
 uBG
 tri
 kUR
-aFk
+xHp
 sBQ
 brw
 wtF

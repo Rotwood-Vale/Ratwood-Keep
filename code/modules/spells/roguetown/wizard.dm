@@ -1,3 +1,10 @@
+/*
+Notice Regarding Spellcode: Spell proc_holder inheritance can fuck things up real bad if you have a spell inherit from a spell. 
+Not only for spelllist purchasing but also for proc activation.
+Example before I made greater fireball its own noninherited spell trying to grab fireball as magos would spend points and provide no spell). 
+Or during making lesser raise undead, it would try inheriting from normal raise undead and fire both procholders.
+Please whenever possible, make each spell its own procholder, and do *not* have them inherit from another completed spell. Lest you bugger shit up.
+~Neri. */
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "Bolt of Lightning"
@@ -208,7 +215,7 @@
 
 
 
-/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
+/obj/effect/proc_holder/spell/invoked/projectile/fireballgreater
 	name = "Greater Fireball"
 	desc = "Shoot out an immense ball of fire that explodes on impact."
 	clothes_req = FALSE
@@ -226,7 +233,9 @@
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
+	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
 	cost = 10	//Court mage starts with this, If they want a /second/ they can pay the massive price for it.
 	xp_gain = TRUE
 
@@ -572,11 +581,10 @@
 	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
 	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 3 cost
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,//3
+		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
 		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,
-		/obj/effect/proc_holder/spell/invoked/forcewall_weak,//3
-		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
-		/obj/effect/proc_holder/spell/invoked/findfamiliar,
+		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe, 
+		/obj/effect/proc_holder/spell/invoked/findfamiliar, 
 		/obj/effect/proc_holder/spell/invoked/push_spell,
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,// 2 cost
 		/obj/effect/proc_holder/spell/invoked/haste,
@@ -586,6 +594,7 @@
 		/obj/effect/proc_holder/spell/targeted/touch/nondetection, // 1 cost
 		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
+		/obj/effect/proc_holder/spell/invoked/forcewall_weak, 
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
@@ -631,7 +640,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	xp_gain = TRUE
-	cost = 3
+	cost = 1 //Forcewall sucks actual ass and is not worth a combat spellslot. I'll make a proper bastion spell later that's worth the 3. This will be a minor cantrip in the interim.
 
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/forcefield_weak
