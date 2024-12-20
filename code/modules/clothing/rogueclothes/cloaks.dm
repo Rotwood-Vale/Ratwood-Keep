@@ -28,6 +28,18 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 	var/picked
 
+/obj/item/clothing/cloak/abyssortabard
+	name = "abyssorite tabard"
+	desc = "A tabard worn by Abyssorite devouts."
+	color = null
+	icon_state = "abyssortabard"
+	item_state = "abyssortabard"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	body_parts_covered = CHEST|GROIN
+	boobed = TRUE
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/psydontabard
 	name = "inquisitorial tabard"
@@ -220,6 +232,10 @@
 /obj/item/clothing/cloak/tabard/crusader/malum
 	color = CLOTHING_RED
 	detail_color = CLOTHING_YELLOW
+
+/obj/item/clothing/cloak/tabard/crusader/abyssor
+	color = "#373f69"
+	detail_color = "#974305"
 
 /obj/item/clothing/cloak/tabard/crusader/dendor
 	color = "#4B5637"
@@ -1312,23 +1328,24 @@
 	static_price = TRUE
 	var/active_item = FALSE
 
-/obj/item/clothing/neck/roguetown/blkknight/equipped(mob/living/user)
+/obj/item/clothing/neck/roguetown/blkknight/equipped(mob/living/user, slot)
 	. = ..()
 	if(active_item)
 		return
-	active_item = TRUE
-	if(user.mind.special_role == "Bandit")
-		to_chat(user, span_notice("I feel bolstered by Matthios Power!..."))
-		user.change_stat("strength", 2)
-		user.change_stat("perception", 2)
-		user.change_stat("intelligence", 2)
-		user.change_stat("constitution", 2)
-		user.change_stat("endurance", 2)
-		user.change_stat("speed", 2)
-		armor = getArmor("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
-	else
-		to_chat(user, span_notice("I feel an evil power about that necklace.."))
-		armor = getArmor("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	if(slot == SLOT_NECK)
+		active_item = TRUE
+		if(user.mind.special_role == "Bandit")
+			to_chat(user, span_notice("I feel bolstered by Matthios' Power!"))
+			user.change_stat("strength", 2)
+			user.change_stat("perception", 2)
+			user.change_stat("intelligence", 2)
+			user.change_stat("constitution", 2)
+			user.change_stat("endurance", 2)
+			user.change_stat("speed", 2)
+			armor = getArmor("blunt" = 100, "slash" = 100, "stab" = 100, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
+		else
+			to_chat(user, span_notice("I feel an evil power about that necklace..."))
+			armor = getArmor("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/neck/roguetown/blkknight/dropped(mob/living/user)
 	..()

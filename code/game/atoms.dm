@@ -1262,9 +1262,9 @@
 		update_filters()
 	return .
 
-/atom/movable/proc/update_filters()
-	filters = null
-	sortTim(filter_data,associative = TRUE)
+/atom/movable/proc/update_filters() //Determine which filter comes first
+	filters = null                  //note, the cmp_filter is a little flimsy.
+	sortTim(filter_data, /proc/cmp_filter_priority_desc, associative = TRUE) 
 	for(var/f in filter_data)
 		var/list/data = filter_data[f]
 		var/list/arguments = data.Copy()

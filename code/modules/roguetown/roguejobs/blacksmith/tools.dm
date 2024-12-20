@@ -74,7 +74,7 @@
 		else
 			repair_percent *= blacksmith_mind.get_skill_level(attacked_item.anvilrepair)
 
-		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
+		playsound(src,'sound/items/bsmithfail.ogg', 40, FALSE)
 		if(repair_percent)
 			repair_percent *= attacked_item.max_integrity
 			exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
