@@ -121,7 +121,7 @@
 		to_chat(character, span_notice("They claim I've done disgusting things. \
 		I have been accused of [reason], and [employer] has put a bounty on my head!"))
 
-	if(character.mind.assigned_role in GLOB.allmig_positions)//Adventurers and Pilgrims.
+	if(character.mind.assigned_role in GLOB.foreigner_positions)
 		amount = rand(100, 325)
 		switch(rand(1,6))
 			if(1)

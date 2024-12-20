@@ -48,6 +48,12 @@
 	var/spell_points
 	var/used_spell_points
 
+	//Lesser Necromancy Trackers
+	var/boneboys = 0
+	var/bonemax = 0
+	var/boneboy = FALSE
+	var/bonenecro = null
+
 	var/linglink
 	var/datum/martial_art/martial_art
 	var/static/default_martial_art = new/datum/martial_art
@@ -307,6 +313,7 @@
 			to_chat(current, span_nicegreen("My [S.name] grows to [SSskills.level_names[known_skills[S]]]!"))
 		if(skill == /datum/skill/magic/arcane)
 			adjust_spellpoints(1)
+			adjust_bonemax(1)
 	else
 		to_chat(current, span_warning("My [S.name] has weakened to [SSskills.level_names[known_skills[S]]]!"))
 
@@ -327,6 +334,7 @@
 	var/amt2gain = 0
 	if(skill == /datum/skill/magic/arcane)
 		adjust_spellpoints(amt)
+		adjust_bonemax(amt)
 	for(var/i in 1 to amt)
 		switch(skill_experience[S])
 			if(SKILL_EXP_MASTER to SKILL_EXP_LEGENDARY)
@@ -372,6 +380,18 @@
 // adjusts the amount of available spellpoints
 /datum/mind/proc/adjust_spellpoints(points)
 	spell_points += points
+
+/datum/mind/proc/adjust_bonemax(points)
+	bonemax += points
+
+/datum/mind/proc/adjust_boneboys(points)
+	boneboys += points
+
+/datum/mind/proc/set_bonenecro(name)
+	bonenecro = name
+
+/datum/mind/proc/set_boneboy(value)
+	boneboy = value
 
 ///Gets the skill's singleton and returns the result of its get_skill_speed_modifier
 /datum/mind/proc/get_skill_speed_modifier(skill)

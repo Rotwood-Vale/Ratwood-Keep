@@ -1,4 +1,4 @@
-/datum/advclass/forlorn
+/datum/subclass/forlorn
 	name = "Forlorn Hope Mercenary"
 	tutorial = "The Order of the Forlorn Hope, a holy order founded in the name of Noc and the banishment of the rot. Now it is riddled with the wounded, the veterans and the landless of the Vakran civil war. Take up the banner and fight again in the name of the Ten, or use the pretense of faith and zealotry to make ends meet by any means necessary."
 	allowed_sexes = list(MALE, FEMALE)

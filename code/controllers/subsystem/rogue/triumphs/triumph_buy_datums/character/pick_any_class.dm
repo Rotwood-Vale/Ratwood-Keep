@@ -11,7 +11,7 @@
 	if(!SSrole_class_handler.special_session_queue[ckey_of_buyer])
 		SSrole_class_handler.special_session_queue[ckey_of_buyer] = list()
 
-	var/datum/advclass/pick_everything/turbo_slop
+	var/datum/subclass/pick_everything/turbo_slop
 	if(!SSrole_class_handler.special_session_queue[ckey_of_buyer][triumph_buy_id])
 		turbo_slop = new()
 		turbo_slop.maximum_possible_slots = 1
@@ -27,7 +27,7 @@
 
 
 //For triumph buy pick-all
-/datum/advclass/pick_everything
+/datum/subclass/pick_everything
 	name = "Pick-Classes"
 	tutorial = "This will open up another menu when you spawn allowing you to pick from any class as long as its not disabled."
 	allowed_sexes = list(MALE, FEMALE)
@@ -36,14 +36,14 @@
 
 	outfit = null
 
-/datum/advclass/pick_everything/post_equip(mob/living/carbon/human/H)
+/datum/subclass/pick_everything/post_equip(mob/living/carbon/human/H)
 	..()
 	var/list/possible_classes = list()
-	for(var/datum/advclass/CHECKS in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
+	for(var/datum/subclass/CHECKS in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
 		if(CTAG_DISABLED in CHECKS.category_tags)
 			continue
 		possible_classes += CHECKS
 
-	var/datum/advclass/C = input(H.client, "What is my class?", "Adventure") as null|anything in possible_classes
+	var/datum/subclass/C = input(H.client, "What is my class?", "Adventure") as null|anything in possible_classes
 	C.equipme(H)
 

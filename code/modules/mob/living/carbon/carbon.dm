@@ -357,9 +357,9 @@
 /mob/living/carbon/resist_leash()
 	to_chat(src, span_notice("I reach for the hook on my collar..."))
 	//Determine how long it takes to remove the leash
-	var/deleash = 15
+	var/deleash = 5 SECONDS
 	if(src.handcuffed)
-		deleash = 60
+		deleash = 20 SECONDS
 	if(move_after(src, deleash, 0, target = src))
 		if(!QDELETED(src))
 			to_chat(src, "<span class='warning'>[src] has removed their leash!</span>")
