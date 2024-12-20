@@ -122,7 +122,7 @@
 	item_type = /obj/item/natural/hide
 	held_items = list(0, 0)
 	payout_price = 5
-	withdraw_price = 8
+	withdraw_price = 15
 	transport_fee = 2
 	export_price = 8
 	importexport_amt = 5
@@ -134,7 +134,7 @@
 	item_type = /obj/item/natural/fur
 	held_items = list(0, 0)
 	payout_price = 10
-	withdraw_price = 15
+	withdraw_price = 20
 	transport_fee = 4
 	export_price = 15
 	importexport_amt = 5
