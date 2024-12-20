@@ -18,6 +18,7 @@
 	advclass_cat_rolls = list(CTAG_INQUISITION = 20)
 	wanderer_examine = FALSE
 	advjob_examine = TRUE
+	give_bank_account = 15
 
 /datum/job/roguetown/orthodoxist/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
