@@ -27544,7 +27544,8 @@
 "rkp" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
-	lockid = "physician"
+	lockid = "physician";
+	name = "Physician's Office"
 	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
