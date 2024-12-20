@@ -81,6 +81,8 @@
 
 /obj/effect/proc_holder/spell/invoked/raise_undead_lesser
 	name = "Lesser Raise Undead"
+	cost = 6	
+	desc = "Reanimate a corpse as a skeleton. You can maintain two sapient skeletons, the rest will be mindless. The body must have all limbs and its head."
 	cost = 4
 	desc = ""
 	clothes_req = FALSE
