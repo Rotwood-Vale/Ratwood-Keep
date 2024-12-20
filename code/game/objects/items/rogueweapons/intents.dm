@@ -365,7 +365,7 @@
 	candodge = TRUE
 	canparry = TRUE
 	blade_class = BCLASS_PUNCH
-	miss_text = "swings a fist at the air!"
+	miss_text = "swing a fist at the air"
 	miss_sound = "punchwoosh"
 	item_d_type = "blunt"
 
@@ -479,7 +479,7 @@
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-	miss_text = "slashes the air!"
+	miss_text = "slash the air"
 	item_d_type = "slash"
 
 /datum/intent/simple/bite

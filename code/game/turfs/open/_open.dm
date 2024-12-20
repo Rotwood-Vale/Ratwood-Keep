@@ -12,6 +12,8 @@
 	var/footstepstealth = FALSE
 	baseturfs = /turf/open/transparent/openspace
 
+	damage_deflection = INFINITY //TODO: Find a better method for breakable turf system
+
 /turf/proc/get_slowdown(mob/user)
 	return 0
 

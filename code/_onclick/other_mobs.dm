@@ -15,8 +15,7 @@
 		return
 
 	if(check_arm_grabbed(used_hand))
-		to_chat(src, "<span class='warning'>Someone is grabbing my arm!</span>")
-		resist_grab()
+		to_chat(src, span_warning("Someone is grabbing my arm!"))
 		return
 
 	// Special glove functions:
@@ -191,16 +190,13 @@
 			nodmg = TRUE
 			next_attack_msg += span_warning("Armor stops the damage.")
 
+	var/datum/wound/caused_wound
 	if(!nodmg)
-		affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
+		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
 	visible_message(span_danger("[user] bites [src]'s [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"), \
 					span_userdanger("[user] bites my [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"))
 
 	next_attack_msg.Cut()
-
-	var/datum/wound/caused_wound
-	if(!nodmg)
-		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
 
 	if(!nodmg)
 		playsound(src, "smallslash", 100, TRUE, -1)
@@ -254,9 +250,8 @@
 					return
 				if(A == src)
 					return
-				if(ismob(A))
-					var/mob/M = A
-					if(lying && M.pulling != src)
+				if(isliving(A))
+					if(!(mobility_flags & MOBILITY_STAND) && pulledby)
 						return
 				if(IsOffBalanced())
 					to_chat(src, span_warning("I haven't regained my balance yet."))
@@ -290,14 +285,15 @@
 							H.dna.species.kicked(src, H)
 						else
 							M.onkick(src)
-							OffBalance(15) // Off balance for human enemies moved to dna.species.onkick
 				else
 					A.onkick(src)
-					OffBalance(10)
+				OffBalance(30)
 				return
 			if(INTENT_JUMP)
 				if(istype(src.loc, /turf/open/water))
-					to_chat(src, span_warning("I can't jump while floating."))
+					to_chat(src, span_warning("I'm floating in [get_turf(src)]."))
+					return
+				if(!A || QDELETED(A) || !A.loc)
 					return
 				if(A == src || A == src.loc)
 					return
@@ -305,16 +301,14 @@
 					return
 				if(pulledby && pulledby != src)
 					to_chat(src, span_warning("I'm being grabbed."))
-					resist_grab()
 					return
 				if(IsOffBalanced())
 					to_chat(src, span_warning("I haven't regained my balance yet."))
 					return
-				if(lying)
-					to_chat(src, span_warning("I should stand up first."))
-					return
-				if(!isatom(A))
-					return
+				if(!(mobility_flags & MOBILITY_STAND))
+					if(!HAS_TRAIT(src, TRAIT_LEAPER))// The Jester cares not for such social convention.
+						to_chat(src, span_warning("I should stand up first."))
+						return
 				if(A.z != src.z)
 					if(!HAS_TRAIT(src, TRAIT_ZJUMP))
 						return
@@ -331,7 +325,8 @@
 					OffBalance(30)
 					jadded = 15
 					jrange = 3
-					jextra = TRUE
+					if(!HAS_TRAIT(src, TRAIT_LEAPER))// The Jester lands where the Jester wants.
+						jextra = TRUE
 				else
 					OffBalance(20)
 					jadded = 10
@@ -339,7 +334,7 @@
 				if(ishuman(src))
 					var/mob/living/carbon/human/H = src
 					jadded += H.get_complex_pain()/50
-					if(!H.check_armor_skill())
+					if(!H.check_armor_skill() || H.legcuffed)
 						jadded += 50
 						jrange = 1
 				if(rogfat_add(min(jadded,100)))
@@ -439,6 +434,21 @@
 							else
 								exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
 								to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
+						else
+							to_chat(src, "<span class='warning'>They can see me!")
+					if(stealroll <= 4)
+						V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
+						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+						to_chat(V, span_danger("Someone tried pickpocketing me!"))
+					if(stealroll < targetperception)
+						V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
+						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+						to_chat(src, span_danger("I failed to pick the pocket!"))
+						exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
+					// If we're pickpocketing someone else, and that person is conscious, grant XP
+					if(src != V && V.stat == CONSCIOUS)
+						mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+					changeNext_move(mmb_intent.clickcd)
 				return
 			if(INTENT_SPELL)
 				if(ranged_ability?.InterceptClickOn(src, params, A))
