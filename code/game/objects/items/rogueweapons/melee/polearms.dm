@@ -36,6 +36,10 @@
 	damfactor = 0.9
 	swingdelay = 10
 
+/datum/intent/spear/cut/bardiche
+    damfactor = 1.0
+    chargetime = 1
+
 /datum/intent/sword/cut/zwei
 	reach = 2
 
@@ -275,7 +279,7 @@
 
 /obj/item/rogueweapon/halberd/bardiche
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/halberd, /datum/intent/axe/chop, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/bardiche, /datum/intent/axe/chop, SPEAR_BASH)
 	name = "bardiche"
 	desc = "A beautiful variant of the halberd."
 	icon_state = "bardiche"
