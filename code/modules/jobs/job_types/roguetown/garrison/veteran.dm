@@ -91,9 +91,13 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.change_stat("endurance", 1)
+
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	cmode_music = 'sound/music/combat_duelist.ogg'
 
 /datum/advclass/veteran/footman
 	name = "Retired Footman"
@@ -108,7 +112,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half // Meant to be better than man-at-arms, but worse than knight. No heavy armor!! This is a cuirass, not half-plate.
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-	head = /obj/item/clothing/head/roguetown/helmet/sallet
+	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -150,6 +154,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
 /datum/advclass/veteran/calvaryman
 	name = "Tarnished Knight"
@@ -162,9 +167,9 @@
 
 /datum/outfit/job/roguetown/vet/calvaryman/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/	////Former knights should have knightly armour. 
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	head = /obj/item/clothing/head/roguetown/helmet/sallet
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -208,6 +213,8 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) // retired knight!
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/combat_fancy.ogg'
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Sword + Recurve Bow","Axe + Crossbow","Spear + Shield")
@@ -215,7 +222,7 @@
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Sword + Recurve Bow")
-			r_hand = /obj/item/rogueweapon/sword
+			r_hand = /obj/item/rogueweapon/sword/long
 			beltl = /obj/item/quiver/arrows
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 
@@ -242,6 +249,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft // You do NOT get the BLACKSTEEL CUIRASS because yours BROKE & I hate you. Go on a personal quest to replace it or something.
 	head = /obj/item/clothing/head/roguetown/grenzelhofthat
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	pants = /obj/item/clothing/under/roguetown/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
@@ -279,6 +287,7 @@
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 
 	H.adjust_blindness(-3)
@@ -297,12 +306,13 @@
 
 /datum/advclass/veteran/scout
 	name = "Former Scout"
-	tutorial = "You and your unit maneuvered ahead of the main force, ever-watchful for traps and ambushes. You never thought of what would happen should you actually walk into one. You specialize in archery and knives."
+	tutorial = "You and your unit maneuvered ahead of the main force, ever-watchful for traps and ambushes. You never thought of what would happen should you actually walk into one. You specialize in archery and axes."
 	outfit = /datum/outfit/job/roguetown/vet/scout
 
 	category_tags = list(CTAG_VETERAN)
 
 // Originally was meant to be a horse archer. I decided that was a bad idea.
+// Former Bogmaster maybe? I feel like that'd be cooler than just an archer guy. 
 
 /datum/outfit/job/roguetown/vet/scout/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/roguetown/gorget
@@ -320,9 +330,9 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE) // I very rarely see ranged weapons outside of PVE. Maybe this'll fix that?
@@ -331,8 +341,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 4, TRUE)
@@ -346,19 +356,19 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
 			H.change_stat("perception", 2)
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) // You should really be parrying anyways, you have legendary/master skills....
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_WOODSMAN, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_rogue.ogg'
 
 /datum/advclass/veteran/spy
 	name = "Ex-Spy"
-	tutorial = "You didn't serve on the frontlines, you were an informant, a spy, an assassin. You wove your way through enemy courts, finding information, neutralizing loose ends. You lived old in a career that many die young. It's a miracle you stand here today. You specialize in knives and stealth."
+	tutorial = "You didn't serve on the frontlines, you were an informant, a spy, an assassin. You wove your way through enemy courts, finding information, neutralizing loose ends. You lived old in a career that many die young. It's a miracle you stand here today. You specialize in knives, whips, and stealth."
 	outfit = /datum/outfit/job/roguetown/vet/spy
 
 	category_tags = list(CTAG_VETERAN)
@@ -373,11 +383,12 @@
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
-	beltl = /obj/item/quiver/bolts
-	beltr = /obj/item/rogueweapon/sword/short
+	beltl = /obj/item/rogueweapon/whip
+	beltr = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/storage/keyring/guardcastle = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1)
+	belt = /obj/item/storage/belt/rogue/leather/knifebelt/iron
+	cloak = /obj/item/clothing/cloak/raincloak/mortus
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver/elvish = 1, /obj/item/storage/keyring/guardcastle = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -388,7 +399,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
@@ -405,16 +416,17 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
 		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE) ///Having Master Knives is extremely negligible for a singular role that isn't even meant to be combative.
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 			H.change_stat("speed", 1) // You get -2 speed from being old. You are still in the negative stat wise from picking old.
 			H.change_stat("perception", 2) // You get -2 perception from being old. I want you to at least have a positive perception, to represent that you're observant. The highest perception you can get with this is a 13, so I think we'll be okayed.
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_fancy.ogg'
