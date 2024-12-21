@@ -112,3 +112,28 @@
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_hands()
+
+/obj/item/fishingrod/attack_turf(turf/T, mob/living/user)
+	var/list/obj/item/baitables = list()
+	for(var/obj/item/I in T.contents)
+		if(I.baitchance)
+			baitables += I
+		if(baited)
+			to_chat(user, "My rod already has bait.")
+			return
+		for(I in baitables)
+			if(I.baitchance && !baited)
+				to_chat(user, span_info("I begin baiting \the [src]..."))
+				if(!do_after(user, 5, TRUE, src))
+					return
+				user.visible_message(span_notice("[user] hooks something to the line."), \
+								span_notice("I hook [I] to my line."))
+				playsound(src.loc, 'sound/foley/pierce.ogg', 50, FALSE)
+				I.forceMove(src)
+				baited = I
+				update_icon()
+				return
+			. = ..()
+
+
+

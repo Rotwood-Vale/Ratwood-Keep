@@ -4,7 +4,16 @@
 /datum/species/anthromorph
 	name = "Wild-Kin"
 	id = "anthromorph"
-	desc = "In time you will learn the history of this race"
+	desc = "<b>Wild-Kin</b><br>\
+	Wild-kins are a highly diverse and varied group of people who were born into unfortunate circumstances. \
+	Many wild-kins were either born to human parents or were once human themselves, having been turned by \
+	cursed items, powerful wizardry, or as punishment by the gods for their sins."
+	expanded_desc = "Wild-kins are a highly diverse and varied group of people who were born into unfortunate circumstances. \
+	Many wild-kins were either born to human parents or were once human themselves, having been turned by cursed items, \
+	powerful wizardry, or as punishment by the gods for their sins. However, some are born to wild-kins themselves, \
+	while others are half-breeds between other races. Regardless of their origin, many wild-kins face discrimination \
+	by those ignorant of their origins. Yet, due to their prominence in numbers and the growing number of wild-kins \
+	among noble families, they have been begrudgingly accepted into society, although not without consequences."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,

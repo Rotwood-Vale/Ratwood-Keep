@@ -173,16 +173,13 @@
 	keys = list(/obj/item/key/confession, /obj/item/key/church)
 
 /obj/item/storage/keyring/nightman
-	keys = list(/obj/item/key/nightman, /obj/item/key/nightmaiden)
+	keys = list(/obj/item/key/nightman)
 
 /obj/item/storage/keyring/hand
 	keys = list(/obj/item/key/keep_armory, /obj/item/key/steward, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_gatehouse, /obj/item/key/councillor_rooms, /obj/item/key/hand, /obj/item/key/walls, /obj/item/key/keep_dungeon, /obj/item/key/keep_barracks, /obj/item/key/manor)
 
 /obj/item/storage/keyring/steward
 	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor)
-
-/obj/item/storage/keyring/clerk
-	keys = list(/obj/item/key/walls, /obj/item/key/manor)
 
 /obj/item/storage/keyring/servant
 	keys = list(/obj/item/key/manor, /obj/item/key/keep_barracks)
@@ -216,6 +213,10 @@
 
 /obj/item/storage/keyring/goblinchief
 	keys = list(/obj/item/key/goblin, /obj/item/key/goblinguard, /obj/item/key/goblinchief)
+
+/obj/item/storage/keyring/harbormaster
+	keys = list(/obj/item/key/harbor, /obj/item/key/ship)
+
 
 /obj/item/lockpickring
 	name = "lockpickring"

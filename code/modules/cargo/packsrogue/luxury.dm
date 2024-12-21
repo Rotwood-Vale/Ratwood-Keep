@@ -17,7 +17,7 @@
 
 /datum/supply_pack/rogue/luxury/perfume
 	name = "Perfume"
-	cost = 15
+	cost = 10 //steward can get these in bulk for 12 per
 	contains = list(/obj/item/perfume/random)
 
 /datum/supply_pack/rogue/luxury/ozium
@@ -92,15 +92,15 @@
 
 /datum/supply_pack/rogue/luxury/listenst
 	name = "Gemerald Choker"
-	cost = 250
+	cost = 200 //nerfs steward gaming
 	contains = list(/obj/item/listenstone)
 
 /datum/supply_pack/rogue/luxury/riddleofsteel
 	name = "Riddle of Steel"
-	cost = 400
+	cost = 200 //earlier freelance smith powerspikes and nerfs steward gaming
 	contains = list(/obj/item/riddleofsteel)
 
 /datum/supply_pack/rogue/luxury/lovepotion
 	name = "Love Potion"
-	cost = 600
+	cost = 300
 	contains = list(/obj/item/lovepotion)

@@ -114,7 +114,7 @@
 	var/wanderer_examine = FALSE
 	var/foreign_examine = FALSE
 
-	/// This job uses adventurer classes on examine
+	/// This job uses refugee classes on examine
 	var/advjob_examine = FALSE
 
 	/// This job always shows on latechoices
@@ -131,10 +131,10 @@
 
 /*
 	How this works, its CTAG_DEFINE = amount_to_attempt_to_role
-	EX: advclass_cat_rolls = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 5)
+	EX: subclass_cat_rolls = list(CTAG_REFUGEE = 5, CTAG_REFUGEE = 5)
 	You will still need to contact the subsystem though
 */
-	var/list/advclass_cat_rolls
+	var/list/subclass_cat_rolls
 
 /*
 	How this works, they get one extra roll on every category per PQ amount
@@ -219,9 +219,8 @@
 
 	if(cmode_music)
 		H.cmode_music = cmode_music
-
+	
 	if(GLOB.hugbox_duration)
-		///FOR SOME STUPID FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
 		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_start)), 1)
 
 /mob/living/carbon/human/proc/hugboxing_start()

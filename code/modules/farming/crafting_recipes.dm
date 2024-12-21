@@ -4,7 +4,7 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	verbage_simple = "build"
 	verbage = "builds"
-	craftdiff = 0
+	skill_level = 0
 	time = 2 SECONDS
 
 /datum/crafting_recipe/roguetown/wheatflour
@@ -14,7 +14,7 @@
 	structurecraft = /obj/structure/fluff/millstone
 	verbage_simple = "mill"
 	verbage = "mills"
-	craftdiff = -2
+	skill_level = -2
 	time = 3
 
 /datum/crafting_recipe/roguetown/oatflour
@@ -24,7 +24,7 @@
 	structurecraft = /obj/structure/fluff/millstone
 	verbage_simple = "mill"
 	verbage = "mills"
-	craftdiff = -2
+	skill_level = -2
 	time = 3
 
 /datum/crafting_recipe/roguetown/structure/plough
@@ -56,7 +56,7 @@
 	time = 10 SECONDS
 	verbage_simple = "roll"
 	verbage = "rolls"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/dryweed
 	name = "dry westleach leaf"
@@ -78,4 +78,4 @@
 	time = 10 SECONDS
 	verbage_simple = "roll"
 	verbage = "rolls"
-	craftdiff = 0
+	skill_level = 0

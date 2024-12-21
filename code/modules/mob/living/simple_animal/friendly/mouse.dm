@@ -103,11 +103,6 @@
 	foodtype = GROSS | MEAT | RAW
 	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
 
-/obj/item/reagent_containers/food/snacks/deadmouse/examine(mob/user)
-	. = ..()
-	if (reagents?.has_reagent(/datum/reagent/yuck) || reagents?.has_reagent(/datum/reagent/fuel))
-		. += span_warning("It's dripping with fuel and smells terrible.")
-
 /obj/item/reagent_containers/food/snacks/deadmouse/attackby(obj/item/I, mob/user, params)
 	if(I.get_sharpness() && user.used_intent.type == INTENT_HARM)
 		if(isturf(loc))
@@ -118,19 +113,3 @@
 			to_chat(user, span_warning("I need to put [src] on a surface to butcher it!"))
 	else
 		return ..()
-
-/obj/item/reagent_containers/food/snacks/deadmouse/afterattack(obj/target, mob/living/user, proximity_flag)
-	if(proximity_flag && reagents && target.is_open_container())
-		// is_open_container will not return truthy if target.reagents doesn't exist
-		var/datum/reagents/target_reagents = target.reagents
-		var/trans_amount = reagents.maximum_volume - reagents.total_volume * (4 / 3)
-		if(target_reagents.has_reagent(/datum/reagent/fuel) && target_reagents.trans_to(src, trans_amount))
-			to_chat(user, span_notice("I dip [src] into [target]."))
-			reagents.trans_to(target, reagents.total_volume)
-		else
-			to_chat(user, span_warning("That's a terrible idea."))
-	else
-		return ..()
-
-/obj/item/reagent_containers/food/snacks/deadmouse/on_grind()
-	reagents.clear_reagents()

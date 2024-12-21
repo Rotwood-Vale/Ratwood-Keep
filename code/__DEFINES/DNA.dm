@@ -49,7 +49,7 @@
 #define TR_KEEPORGANS	(1<<8)
 #define TR_KEEPSTUNS	(1<<9)
 #define TR_KEEPREAGENTS	(1<<10)
-
+#define TR_KEEPAI 		(1<<11)
 
 #define CLONER_FRESH_CLONE "fresh"
 #define CLONER_MATURE_CLONE "mature"

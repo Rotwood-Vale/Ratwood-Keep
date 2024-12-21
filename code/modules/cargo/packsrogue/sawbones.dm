@@ -24,6 +24,16 @@
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
+/datum/supply_pack/rogue/bandit/Sawbones/helmet/hhelmet
+	name = "Horned cap"
+	cost = 100
+	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
+
+/datum/supply_pack/rogue/bandit/Sawbones/gorget
+	name = "Gorget"
+	cost = 100
+	contains = list(/obj/item/clothing/neck/roguetown/gorget)
+
 /datum/supply_pack/rogue/bandit/Sawbones/leather/Lbracers
 	name = "Leather bracers"
 	cost = 25

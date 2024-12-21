@@ -130,15 +130,13 @@
 		if(modifiers["right"])
 			if(H.craftingthing && (H.mind?.lastrecipe != null))
 				last_craft = world.time
-				var/datum/component/personal_crafting/C = H.craftingthing
 				to_chat(H, span_warning("I am crafting \a [H.mind?.lastrecipe] again."))
-				C.construct_item(H, H.mind?.lastrecipe)
+				construct_item(H, H.mind?.lastrecipe)
 		else
 			H.playsound_local(H, 'sound/misc/click.ogg', 100)
 			if(H.craftingthing)
 				last_craft = world.time
-				var/datum/component/personal_crafting/C = H.craftingthing
-				C.roguecraft(location, control, params, H)
+				roguecraft(location, control, params, H)
 			else
 				testing("what")
 

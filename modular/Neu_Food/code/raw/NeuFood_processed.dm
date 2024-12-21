@@ -221,7 +221,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/salami
 	req_table = FALSE
 	structurecraft = /obj/machinery/tanningrack
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/cooking/coppiette
 	name = "coppiette"
@@ -230,7 +230,7 @@
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette
 	req_table = FALSE
-	craftdiff = 0
+	skill_level = 0
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/salo
@@ -239,7 +239,7 @@
 		/obj/item/reagent_containers/food/snacks/fat = 1,
 		/obj/item/reagent_containers/powder/salt = 1)
 	result = /obj/item/reagent_containers/food/snacks/fat/salo
-	craftdiff = 0
+	skill_level = 0
 	structurecraft = /obj/machinery/tanningrack
 	req_table = FALSE
 
@@ -252,7 +252,7 @@
 		/obj/item/reagent_containers/food/snacks/fish = 1)
 	result = /obj/item/reagent_containers/food/snacks/rogue/saltfish
 	req_table = FALSE
-	craftdiff = 0
+	skill_level = 0
 	subtype_reqs = TRUE
 	structurecraft = /obj/machinery/tanningrack
 
@@ -264,7 +264,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/raisins
 	structurecraft = /obj/machinery/tanningrack
 	req_table = FALSE
-	craftdiff = 0
+	skill_level = 0
 	subtype_reqs = TRUE
 
 
@@ -411,15 +411,15 @@
 		short_cooktime = (70 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
 		long_cooktime = (120 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/reagent_containers/powder/salt))
-		if(!reagents.has_reagent(/datum/reagent/consumable/milk, 15))
+		if(!reagents.has_reagent(/datum/reagent/consumable/milk, 12))
 			to_chat(user, "<span class='warning'>Not enough milk.</span>")
 			return
 		to_chat(user, "<span class='warning'>Adding salt to the milk.</span>")
 		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 		if(do_after(user,2 SECONDS, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			reagents.remove_reagent(/datum/reagent/consumable/milk, 15)
-			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 15)		
+			reagents.remove_reagent(/datum/reagent/consumable/milk, 12)
+			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 12)		
 			qdel(I)
 
 /*	............   Churning butter   ................ */
@@ -427,14 +427,14 @@
 	if(user.mind)
 		long_cooktime = (200 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*20))	
 	if(istype(I, /obj/item/kitchen/spoon))
-		if(!reagents.has_reagent(/datum/reagent/consumable/milk/salted, 15))
+		if(!reagents.has_reagent(/datum/reagent/consumable/milk/salted, 12))
 			to_chat(user, "<span class='warning'>Not enough salted milk.</span>")
 			return
 		user.visible_message("<span class='info'>[user] churns butter...</span>")
 		playsound(get_turf(user), 'modular/Neu_Food/sound/churn.ogg', 100, TRUE, -1)
 		if(do_after(user,long_cooktime, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 15)
+			reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 12)
 			new /obj/item/reagent_containers/food/snacks/butter(drop_location())
 		return
 	..()
@@ -487,12 +487,12 @@
 	if(user.mind)
 		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
 	if(istype(I, /obj/item/natural/cloth))
-		if(reagents.has_reagent(/datum/reagent/consumable/milk/salted, 5))
+		if(reagents.has_reagent(/datum/reagent/consumable/milk/salted, 3))
 			user.visible_message("<span class='info'>[user] strains fresh cheese...</span>")
 			playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 			if(do_after(user,long_cooktime, target = src))
 				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 5)
+				reagents.remove_reagent(/datum/reagent/consumable/milk/salted, 3)
 				new /obj/item/reagent_containers/food/snacks/rogue/cheese(drop_location())
 
 		var/obj/item/natural/cloth/T = I

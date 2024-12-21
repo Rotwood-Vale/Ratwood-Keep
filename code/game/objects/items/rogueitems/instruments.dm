@@ -156,7 +156,7 @@
 
 /obj/item/rogue/instrument/guitar
 	name = "guitar"
-	desc = "This is a guitar." // i do not like this instrument, i refuse to describe it any better.
+	desc = "A finely crafted instrument of string and wood."
 	icon_state = "guitar"
 	song_list = list("Fire-Cast Shadows" = 'sound/music/instruments/guitar (1).ogg',
 	"The Forced Hand" = 'sound/music/instruments/guitar (2).ogg',
@@ -167,11 +167,15 @@
 
 /obj/item/rogue/instrument/harp
 	name = "harp"
-	desc = "A harp of elven craftsmanship."
+	desc = "A harp of elven craftsmanship, its strings soothe the heart."
 	icon_state = "harp"
 	song_list = list("Through Thine Window, He Glanced" = 'sound/music/instruments/harb (1).ogg',
 	"The Lady of Red Silks" = 'sound/music/instruments/harb (2).ogg',
-	"Eora Doth Watches" = 'sound/music/instruments/harb (3).ogg')
+	"Eora Doth Watches" = 'sound/music/instruments/harb (3).ogg',
+	"Her Arms Caress Me" = 'sound/music/instruments/harb (4).ogg',
+	"Dance Between the Sheets" = 'sound/music/instruments/harb (5).ogg',
+	"A Mother's Affection" = 'sound/music/instruments/harb (6).ogg',
+	"Nightmaiden's Lullaby" = 'sound/music/instruments/harb (7).ogg')
 
 /obj/item/rogue/instrument/flute
 	name = "flute"

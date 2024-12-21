@@ -20,11 +20,6 @@ SUBSYSTEM_DEF(ParticleWeather)
 				runningWeather.try_weather_act(act_on)
 			for(var/obj/act_on as anything in GLOB.weather_act_upon_list)
 				runningWeather.weather_obj_act(act_on)
-	else
-		// start random weather
-		var/datum/particle_weather/our_event = pickweight(elligble_weather) //possible_weather
-		if(our_event)
-			run_weather(our_event)
 
 
 //This has been mangled - currently only supports 1 weather effect serverwide so I can finish this

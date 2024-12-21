@@ -4,7 +4,29 @@
 /datum/species/dracon
 	name = "Drakian"
 	id = "dracon"
-	desc = "In time you will learn the history of this race"
+	desc = "<b>Drakian</b><br>\
+	Drakians are a proud and ancient race that trace their heritage to dragons of old. \
+	They are highly protective of their bloodline and do everything in their power to make sure it does not spread beyond their own, \
+	as they believe themselves to be guardians of tradition and that it is their ultimate duty to maintain their prestige as a race. \
+	After all, a single drop of draconic blood in one's bloodline means that they will experience all of the benefits of having draconic ancestors such as agelessness."
+	expanded_desc = "Drakians are a proud and ancient race that trace their heritage to dragons of old. \
+	They are highly protective of their bloodline and do everything in their power to make sure it does not spread beyond their own, \
+	as they believe themselves to be guardians of tradition and that it is their ultimate duty to maintain their prestige as a race. \
+	After all, a single drop of draconic blood in ones bloodline means that they will experience all of the benefits of having draconic ancestors such as agelessness.\
+	<br><br> \
+	Yet, it comes at a cost. \
+	While initially viewed as one of the noblest races, \
+	they are now hated for their insufferable arrogance and often appear completely out of touch with the rest of society. \
+	Their inability to have a concept of time, refusal to compromise or intermarry, \
+	along with their rejection of any technology that threatens their supremacy have earned them countless enemies from Axians to Dwarves. \
+	For instance, they view any Wild-kin with draconic features or blood as inherently inferior. \
+	Yet, not all Drakians are like this with some believing it is their duty to help lesser races, although many still view these Drakians to be just as insufferable.\
+	<br><br> \
+	In the past, Drakians held positions of power and prestige across all the realms. \
+	Many try to style themselves after knight-philosophers in an attempt to hide their brutish ways. \
+	When in reality, most Drakians are known for being bloody conquerors. \
+	However, the rise of humans have caused their ambitions to crumble, forcing them to work with other races, especially at the climax of the Great Sissean Uprising. \
+	Furthermore, dwindling numbers have caused Drakians to increasingly abandon the ways of old, forcing them to adapt to a more modern way of life."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST

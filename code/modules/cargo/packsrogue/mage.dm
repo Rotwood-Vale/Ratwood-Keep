@@ -31,13 +31,23 @@
 
 /datum/supply_pack/rogue/bandit/Mage/leather/studded
 	name = "Studded Leather Armor"
-	cost = 200
+	cost = 160
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/bandit/Mage/leather/Lhelmet
 	name = "Leather Helmet"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
+
+/datum/supply_pack/rogue/bandit/Mage/helmet/hhelmet
+	name = "Horned cap"
+	cost = 100
+	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
+
+/datum/supply_pack/rogue/bandit/Mage/gorget
+	name = "Gorget"
+	cost = 100
+	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
 /datum/supply_pack/rogue/bandit/Mage/leather/Lgloves
 	name = "hardened leather gloves"

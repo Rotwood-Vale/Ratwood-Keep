@@ -32,6 +32,26 @@
 	max_storage = 10
 	ammo_type = list(/obj/item/ammo_casing) //common denominator type for runelock and arquebus bullets
 
+/obj/item/ammo_holder/quiver/attack_turf(turf/T, mob/living/user)
+	if(ammo.len >= max_storage)
+		to_chat(user, span_warning("Your [src.name] is full!"))
+		return
+	to_chat(user, span_notice("You begin to gather the ammunition..."))
+	for(var/obj/item/ammo_casing/caseless/rogue/arrow in T.contents)
+		if(do_after(user, 5))
+			if(!eatarrow(arrow))
+				break
+
+/obj/item/ammo_holder/quiver/proc/eatarrow(obj/A)
+	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
+		if(ammo.len < max_storage)
+			A.forceMove(src)
+			ammo += A
+			update_icon()
+			return TRUE
+		else
+			return FALSE
+
 /obj/item/ammo_holder/attackby(obj/A, loc, params)
 	for(var/i in ammo_type)
 		if(istype(A, i))

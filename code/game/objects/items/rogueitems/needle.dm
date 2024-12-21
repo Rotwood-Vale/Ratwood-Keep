@@ -53,17 +53,18 @@
 
 /obj/item/needle/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/natural/fibers))
-		if(maxstring - stringamt < 5)
-			to_chat(user, span_warning("Not enough room for more thread!"))
+		if(infinite || maxstring - stringamt <= 0) //is the needle infinite OR does it have all of its uses left
+			to_chat(user, span_warning("The needle has no need to be refilled."))
 			return
-		else
-			to_chat(user, "I begin threading the needle with additional fibers...")
-			if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), target = I))
-				stringamt += 5
-				to_chat(user, "I replenish the needle's thread!")
-				qdel(I)
-			return
-	return ..()
+
+		to_chat(user, "I begin threading the needle with additional fibers...")
+		if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), target = I))
+			var/refill_amount
+			refill_amount = min(5, (maxstring - stringamt))
+			stringamt += refill_amount
+			to_chat(user, "I replenish the needle's thread by [refill_amount] uses!")
+			qdel(I)
+		return
 
 
 

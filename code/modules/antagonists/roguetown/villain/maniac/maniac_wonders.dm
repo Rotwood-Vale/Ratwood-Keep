@@ -11,7 +11,7 @@
 	verbage = "constructs"
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = null
-	always_availible = FALSE
+	always_available = FALSE
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/structure/wonder/first

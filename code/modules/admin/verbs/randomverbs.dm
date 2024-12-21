@@ -350,7 +350,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	else
 		new_character.mind_initialize()
 	if(!new_character.mind.assigned_role)
-		new_character.mind.assigned_role = "Adventurer"//If they somehow got a null assigned role.
+		new_character.mind.assigned_role = "refugee"//If they somehow got a null assigned role.
 
 	new_character.key = G_found.key
 
@@ -363,13 +363,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//Two variables to properly announce later on.
 	var/admin = key_name_admin(src)
 	var/player_key = G_found.key
-
-	//Now for special roles and equipment.
-	var/datum/antagonist/traitor/traitordatum = new_character.mind.has_antag_datum(/datum/antagonist/traitor)
-	if(traitordatum)
-		SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)
-		traitordatum.equip()
-
 
 	SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)//Or we simply equip them.
 

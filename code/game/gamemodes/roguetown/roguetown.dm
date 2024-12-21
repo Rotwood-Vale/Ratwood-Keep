@@ -155,7 +155,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					log_game("Minor Antagonist: Maniac")
 				if("Lich")
 					pick_lich()
-					log_game("Minor Antagonist: Lich")
+					log_game("Major Antagonist: Lich")
 				if("Cultists")
 					pick_cultist()
 					log_game("Major Antagonist: Cultists")
@@ -163,21 +163,44 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					log_game("Major Antagonist: None")
 		return TRUE
 
-	var/major_roll = pick(1,2,3)
-	switch(major_roll)
-		if(1)
-			pick_rebels()
-			log_game("Major Antagonist: Peasant Rebellion")
-		if(2)
-			pick_cultist()
-			log_game("Major Antagonist: Cultists")
-		if(3)
-			//WWs and Vamps now normally roll together
-			pick_vampires()
-			pick_werewolves()
-			log_game("Major Antagonist: Vampires and Werewolves")
-		//if(4)
-		//	log_game("Major Antagonist: None")
+	if(num_players() >= 64)
+		var/major_roll_highpop = pick(1,2,3,4)
+		switch(major_roll_highpop)
+			if(1)
+				pick_rebels()
+				log_game("Major Antagonist: Peasant Rebellion")
+			if(2)
+				pick_vampires()
+				pick_werewolves()
+				log_game("Major Antagonist: Vampires and Werewolves")
+			if(3)
+				pick_cultist()
+				log_game("Major Antagonist: Cultists")
+			if(4)
+				pick_lich()
+				log_game("Major Antagonist: Lich")
+	else if(num_players() >= 52)
+		var/major_roll_midpop = pick(1,2,3)
+		switch(major_roll_midpop)
+			if(1)
+				pick_rebels()
+				log_game("Major Antagonist: Peasant Rebellion")
+			if(2)
+				pick_vampires()
+				pick_werewolves()
+				log_game("Major Antagonist: Vampires and Werewolves")
+			if(3)
+				pick_cultist()
+				log_game("Major Antagonist: Cultists")
+	else
+		var/major_roll_lowpop = pick(1,2)
+		switch(major_roll_lowpop)
+			if(1)
+				pick_rebels()
+				log_game("Major Antagonist: Peasant Rebellion")
+			if(2)//Vampires alone for lowpop. More RP orientend.
+				pick_vampires()
+				log_game("Major Antagonist: Vampires")
 
 	if(prob(100))
 		pick_bandits()
@@ -186,10 +209,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
-
-	if(prob(30))
-		pick_lich()
-		log_game("Minor Antagonist: Lich")
 
 	if(prob(10))
 		pick_maniac()
@@ -514,7 +533,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_werewolves()
-	// Ideally we want adventurers/pilgrims/towners to roll it
+	// Ideally we want Refugees/Towners to roll it
 	restricted_jobs = list(
 	"Duke",
 	"Duchess",

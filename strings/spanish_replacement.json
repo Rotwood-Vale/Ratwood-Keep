@@ -1,22 +1,40 @@
 {
     "full": {
         "hello": "hola",
-        "goodbye": "adiós",
-        "bye": "adiós",
+        "hey" : "hola",
+        "goodbye": "adios",
+        "bye": "adios",
         "my": "mi",
         "it": "et",
+        "please": "por favor",
+        "yes": "sí",
+        "good": "bueno",
+        "bad": "malo",
         "is": "es",
         "in": "en",
+        "of": "de",
         "the": "el",
-        "form of": "forma de",
-        "shape of": "forma de"
+        "shit": "mierda",
+        "wine": "vino",
+        "what happened": "que paso",
+        "captain": "capitán",
+        "thats lovely": "que adorable",
+        "sir": "señor",
+        "lady": "señora",
+        "thanks": "gracias",
+        "bean": "frijol",
+        "beans": "frijoles",
+        "cat": "gato",
+        "motherfucker": "Cabron"
+
     },
     "start": {
-		"jerk": "weón",
-        "fool": "weón",
-        "idiot": "weón",
-		"nimrod": "weón",
-        "gnerd": "weón"
+        "friend": "amigo",
+        "tomato": "tomate",
+        "whore": "puta",
+        "bitch": "puta",
+        "bitches": "putas",
+        "cheese": "queso"
     },
     "end": {
 
@@ -24,8 +42,6 @@
     "syllable": {
         "shi": "chee",
         "thi": "thee",
-        "sh": "ch",
-        "s": "ss",
-        "r": "rr"
+        "sh": "ch"
     }
 }

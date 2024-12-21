@@ -52,7 +52,7 @@
 			return
 		else
 			user.visible_message(span_warning("[user] damages [attacked_item]!"))
-			attacked_item.take_damage(5, BRUTE, "blunt")
+			attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "blunt")
 			return
 
 	if(isstructure(attacked_object) && !user.cmode)

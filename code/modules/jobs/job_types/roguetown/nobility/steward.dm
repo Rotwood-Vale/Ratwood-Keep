@@ -17,13 +17,13 @@
 
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/steward
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/steward
+	backr = /obj/item/storage/backpack/rogue/satchel
 
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 	
@@ -62,3 +62,7 @@
 			if(!istype(H.wear_mask, /obj/item/clothing/mask/rogue/spectacles))
 				qdel(H.wear_mask)
 				mask = /obj/item/clothing/mask/rogue/spectacles
+
+/datum/outfit/job/roguetown/steward/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = TRUE

@@ -41,19 +41,6 @@
 		else
 			return PROCESS_KILL
 
-/obj/machinery/light/rogue/lanternpost/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(torchy)
-		if(!istype(user) || !Adjacent(user) || !user.put_in_active_hand(torchy))
-			torchy.forceMove(loc)
-		torchy = null
-		on = FALSE
-		set_light(0)
-		update_icon()
-		playsound(src.loc, 'sound/foley/torchfixturetake.ogg', 100)
-
 /obj/machinery/light/rogue/lanternpost/update_icon()
 	if(torchy)
 		if(on)
@@ -67,41 +54,3 @@
 	if(torchy.on)
 		torchy.turn_off()
 	..()
-
-/obj/machinery/light/rogue/lanternpost/attackby(obj/item/W, mob/living/user, params)
-	if(istype(W, /obj/item/flashlight/flare/torch))
-		var/obj/item/flashlight/flare/torch/LR = W
-		if(torchy)
-			if(LR.on && !on)
-				if(torchy.fuel <= 0)
-					to_chat(user, span_warning("The mounted lantern is burned out."))
-					return
-				else
-					torchy.spark_act()
-					user.visible_message(span_info("[user] lights [src]."))
-					playsound(src.loc, 'sound/items/firelight.ogg', 100)
-					on = TRUE
-					update()
-					update_icon()
-					addtimer(CALLBACK(src, PROC_REF(trigger_weather)), rand(5,20))
-					return
-			if(!LR.on && on)
-				if(LR.fuel > 0)
-					LR.spark_act()
-					user.visible_message(span_info("[user] lights [LR] in [src]."))
-					user.update_inv_hands()
-		else
-			if(LR.on)
-				LR.forceMove(src)
-				torchy = LR
-				on = TRUE
-				update()
-				update_icon()
-				addtimer(CALLBACK(src, PROC_REF(trigger_weather)), rand(5,20))
-			else
-				LR.forceMove(src)
-				torchy = LR
-				update_icon()
-			playsound(src.loc, 'sound/foley/torchfixtureput.ogg', 100)
-		return
-	. = ..()

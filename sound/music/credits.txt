@@ -15,3 +15,4 @@ combat_bum.ogg: Pathologic (Classic) - Most Combat Theme
 combat_pirate.ogg: Alestorm - Alestorm (instrumental edit)
 combat_clergy.ogg: Pathologic (Classic) - Main Theme
 roundend-vote-sound.ogg: A snippet of Thief Gold Soundtrack: Track 3 - Lord Bafford's Manor
+tav4.ogg: Pathologic 2 - Broken Heart Pub

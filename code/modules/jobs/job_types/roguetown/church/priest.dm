@@ -29,7 +29,6 @@
 
 /datum/outfit/job/roguetown/priest/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 	head = /obj/item/clothing/head/roguetown/priestmask
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
@@ -72,6 +71,10 @@
 //		H.underwear = "Femleotard"
 //		H.underwear_color = CLOTHING_BLACK
 //		H.update_body()
+
+/datum/outfit/job/roguetown/priest/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = TRUE
 
 /mob/living/carbon/human/proc/coronate_lord()
 	set name = "Coronate"

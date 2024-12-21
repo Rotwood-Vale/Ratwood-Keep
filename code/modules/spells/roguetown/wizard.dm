@@ -1,3 +1,10 @@
+/*
+Notice Regarding Spellcode: Spell proc_holder inheritance can fuck things up real bad if you have a spell inherit from a spell. 
+Not only for spelllist purchasing but also for proc activation.
+Example before I made greater fireball its own noninherited spell trying to grab fireball as magos would spend points and provide no spell). 
+Or during making lesser raise undead, it would try inheriting from normal raise undead and fire both procholders.
+Please whenever possible, make each spell its own procholder, and do *not* have them inherit from another completed spell. Lest you bugger shit up.
+~Neri. */
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "Bolt of Lightning"
@@ -208,7 +215,7 @@
 
 
 
-/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
+/obj/effect/proc_holder/spell/invoked/projectile/fireballgreater
 	name = "Greater Fireball"
 	desc = "Shoot out an immense ball of fire that explodes on impact."
 	clothes_req = FALSE
@@ -226,7 +233,9 @@
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
+	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
 	cost = 10	//Court mage starts with this, If they want a /second/ they can pay the massive price for it.
 	xp_gain = TRUE
 
@@ -553,6 +562,9 @@
 	light_flags = NONE
 	light_color = "#3FBAFD"
 
+	icon = 'icons/roguetown/items/lighting.dmi'
+	icon_state = "wisp"
+
 //A spell to choose new spells, upon spawning or gaining levels
 /obj/effect/proc_holder/spell/invoked/learnspell
 	name = "Attempt to learn a new spell"
@@ -562,18 +574,19 @@
 	chargedrain = 0
 	chargetime = 0
 
-/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/user = usr)
+/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
 	. = ..()
 	//list of spells you can learn, it may be good to move this somewhere else eventually
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
 	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
-	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 3 cost
+
+	var/list/spell_choices = list(
+		/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 3 cost
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,//3
+		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
 		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,
-		/obj/effect/proc_holder/spell/invoked/forcewall_weak,//3
-		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
-		/obj/effect/proc_holder/spell/invoked/findfamiliar,
+		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe, 
+		/obj/effect/proc_holder/spell/invoked/findfamiliar, 
 		/obj/effect/proc_holder/spell/invoked/push_spell,
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,// 2 cost
 		/obj/effect/proc_holder/spell/invoked/haste,
@@ -583,9 +596,52 @@
 		/obj/effect/proc_holder/spell/targeted/touch/nondetection, // 1 cost
 		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
+		/obj/effect/proc_holder/spell/invoked/forcewall_weak, 
+	)	
+
+	//Patron Spelllists
+	var/list/spell_choices_noc = list(
+		/obj/effect/proc_holder/spell/invoked/mageblindness,  //2cost
+		/obj/effect/proc_holder/spell/invoked/mageinvisibility, 
 	)
-	for(var/i = 1, i <= spell_choices.len, i++)
-		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+	
+	var/list/spell_choices_graggar = list(
+		
+	)
+	
+	var/list/spell_choices_matthios = list()
+
+	var/list/spell_choices_zizo = list(
+		/obj/effect/proc_holder/spell/invoked/raise_undead_lesser, //5cost
+		/obj/effect/proc_holder/spell/invoked/projectile/sickness, //3cost
+		/obj/effect/proc_holder/spell/invoked/strengthen_undead, //2cost
+		/obj/effect/proc_holder/spell/self/command_undead, 
+		/obj/effect/proc_holder/spell/invoked/revoke_unlife, //1cost
+	)
+
+	if(user.patron.type == /datum/patron/divine/noc)
+		spell_choices.Add(spell_choices_noc)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/graggar)
+		spell_choices.Add(spell_choices_graggar)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/matthios)
+		spell_choices.Add(spell_choices_matthios)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/zizo)
+		spell_choices.Add(spell_choices_zizo)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else 
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
 
 	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
 	var/obj/effect/proc_holder/spell/item = choices[choice]
@@ -628,7 +684,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	xp_gain = TRUE
-	cost = 3
+	cost = 1 //Forcewall sucks actual ass and is not worth a combat spellslot. I'll make a proper bastion spell later that's worth the 3. This will be a minor cantrip in the interim.
 
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/forcefield_weak
@@ -1100,9 +1156,98 @@
 	new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
 	return TRUE
 
+// Noc Spells
 
+/obj/effect/proc_holder/spell/invoked/mageblindness
+	name = "Blindness"
+	overlay_state = "blindness"
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 15
+	chargedloop = /datum/looping_sound/invokegen
+	range = 7
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	sound = 'sound/magic/churn.ogg'
+	invocation = "Aras'Noc'Esri!"
+	invocation_type = "shout" 
+	associated_skill = /datum/skill/magic/arcane
+	charge_max = 15 SECONDS
+	xp_gain = TRUE
+	cost = 2 //Weaker than Eyebite and thus 2 not 3
+
+
+/obj/effect/proc_holder/spell/invoked/mageblindness/cast(list/targets, mob/user = usr)
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		if(target.anti_magic_check(TRUE, TRUE))
+			return FALSE
+		target.visible_message(span_warning("[user] points at [target]'s eyes!"),span_warning("My eyes are covered in darkness!"))		
+		target.blind_eyes(2)
+		return TRUE
+	revert_cast()
+	return FALSE
+
+/obj/effect/proc_holder/spell/invoked/mageinvisibility
+	name = "Invisibility"
+	overlay_state = "invisibility"
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 3 SECONDS
+	charge_max = 30 SECONDS
+	range = 3
+	xp_gain = TRUE
+	invocation = "Syral'Noc!"
+	invocation_type = "whisper"
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	invocation_type = "whisper"
+	sound = 'sound/misc/area.ogg' //This sound doesnt play for some reason. Fix me.
+	associated_skill = /datum/skill/magic/arcane
+	cost = 2
+	chargedloop = /datum/looping_sound/invokegen
+
+
+/obj/effect/proc_holder/spell/invoked/mageinvisibility/cast(list/targets, mob/living/user)
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		if(target.anti_magic_check(TRUE, TRUE))
+			return FALSE
+		target.visible_message(span_warning("[target] starts to fade into thin air!"), span_notice("You start to become invisible!"))
+		animate(target, alpha = 0, time = 1 SECONDS, easing = EASE_IN)
+		target.mob_timers[MT_INVISIBILITY] = world.time + 15 SECONDS
+		addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, update_sneak_invis), TRUE), 15 SECONDS)
+		addtimer(CALLBACK(target, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[target] fades back into view."), span_notice("You become visible again.")), 15 SECONDS)
+		return TRUE
+	revert_cast()
+	return FALSE
 
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK
 #undef PRESTI_MOTE
 
+
+//Graggar Spells
+
+/* 
+/////WIP/////
+/obj/effect/proc_holder/spell/invoked/prepare_feast
+	name = "Prepare Feast"
+	cost = 1
+	desc = "Shred a corpse for easy, tasty meat and organs."
+	clothes_req = FALSE
+	range = 7
+	overlay_state = "raiseskele"
+	sound = list('sound/magic/magnet.ogg')
+	releasedrain = 25
+	chargetime = 60
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	charging_slowdown = 0
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	charge_max = 30 SECONDS
+	chargedrain = 1
+	xp_gain = TRUE
+
+*/

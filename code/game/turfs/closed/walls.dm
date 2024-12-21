@@ -91,15 +91,6 @@
 		dismantle_wall(1)
 		return
 
-/turf/closed/wall/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
-	user.changeNext_move(CLICK_CD_MELEE)
-	to_chat(user, "<span class='notice'>I push the wall but nothing happens!</span>")
-	playsound(src, 'sound/blank.ogg', 25, TRUE)
-	add_fingerprint(user)
-
 /turf/closed/wall/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	if (!user.IsAdvancedToolUser())

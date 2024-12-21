@@ -101,6 +101,19 @@
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 
+/obj/item/kitchen/ironspoon/pewter
+	name = "pewter spoon"
+	desc = "Traditional utensil for shoveling soup into your mouth, made from Pewter alloy for fancyness."
+	icon_state = "spoon_pewter"
+	sellprice = 10
+
+/obj/item/kitchen/ironspoon/silver
+	name = "silver spoon"
+	desc = "Traditional utensil for shoveling soup into your mouth. There are tales of noblemen growing up with these in their mouths."
+	icon_state = "spoon_silver"
+	sellprice = 30
+	var/last_used = 0
+
 /obj/item/kitchen/fork
 	name = "wooden fork"
 	desc = "Traditional utensil for stabbing your food in order to shove it into your mouth."
@@ -116,6 +129,19 @@
 	icon_state = "fork_iron"
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/kitchen/ironfork/pewter
+	name = "pewter fork"
+	desc = "Traditional utensil for stabbing your food, this one looks fancy!"
+	icon_state = "fork_pewter"
+	sellprice = 10
+
+/obj/item/kitchen/ironfork/silver
+	name = "silver fork"
+	desc = "Traditional utensil for stabbing your food. The opposite of a silver spoon?"
+	icon_state = "fork_silver"
+	sellprice = 30
+	var/last_used = 0
 
 /obj/item/kitchen/rollingpin
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
@@ -154,6 +180,19 @@
 
 /obj/item/reagent_containers/glass/bowl/iron
 	icon_state = "bowl_iron"
+
+/obj/item/reagent_containers/glass/bowl/silver
+	name = "silver bowl"
+	desc = "It is the empty space that makes the bowl useful. Made with fancy silver!"
+	icon_state = "bowl_silver"
+	sellprice = 30
+	var/last_used = 0
+
+/obj/item/reagent_containers/glass/bowl/pewter
+	name = "pewter bowl"
+	desc = "It is the empty space that makes the bowl useful. Decorated and made with pewter!"
+	icon_state = "bowl_pewter"
+	sellprice = 10
 
 /obj/item/reagent_containers/glass/bowl/update_icon()
 	cut_overlays()
@@ -214,7 +253,13 @@
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
-	
+
+/obj/item/reagent_containers/glass/cup/pewter
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	experimental_inhand = FALSE
+
 /obj/item/cooking/pan
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
@@ -240,6 +285,19 @@
 	resistance_flags = NONE
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	experimental_inhand = FALSE
+
+/obj/item/cooking/platter/pewter
+	name = "pewter platter"
+	desc = "Made from an alloy of tin and mercury. Rolls off the tongue quite nicely."
+	icon_state = "p_platter"
+	sellprice = 10
+
+/obj/item/cooking/platter/silver
+	name = "silver platter"
+	desc = "Made from polished silver. Fancy!"
+	icon_state = "s_platter"
+	sellprice = 30
+	var/last_used = 0
 
 /obj/item/book/rogue/yeoldecookingmanual // new book with some tips to learn
 	name = "Ye olde ways of cookinge"
@@ -635,6 +693,267 @@
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work on it.</span>")
 	else
 		return ..()	
+
+/* ###########################################
+		Silver Cutlery interactions with deadites
+   ########################################### */
+
+// This is definitely better done as a datum.
+// Because this is the same for all silver items, I will only comment for the platter.
+/obj/item/cooking/platter/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
+	if(world.time < src.last_used + 12 SECONDS) // Can only be applied every 12 seconds.
+		to_chat(user, span_notice("The silver effect is on cooldown."))
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.dna && H.dna.species)
+			if(istype(H.dna.species, /datum/species/werewolf))
+				H.adjustFireLoss(10) // 10 points of burn damage
+				H.fire_act(1,10)     // 1 stack of fire added, up to a maximum of 10?
+				to_chat(H, span_userdanger("I'm hit with my BANE!"))
+				src.last_used = world.time
+				return
+		if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
+			var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
+			if(!VD.disguised)
+				H.adjustFireLoss(10)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I'm hit with my BANE!"))
+				src.last_used = world.time
+				return
+
+/obj/item/cooking/platter/silver/pickup(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+	if(ishuman(H))
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				H.Knockdown(10)
+				H.adjustFireLoss(25)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+
+/obj/item/cooking/platter/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.dna && H.dna.species)
+			if(istype(H.dna.species, /datum/species/werewolf))
+				M.Knockdown(10)
+				M.Paralyze(10)
+				M.adjustFireLoss(25)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				return FALSE
+	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord))
+		M.adjustFireLoss(25)
+		M.fire_act(1,10)
+		to_chat(M, span_userdanger("I can't pick up the silver, it is my BANE!"))
+		return FALSE
+
+/obj/item/reagent_containers/glass/bowl/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
+	if(world.time < src.last_used + 12 SECONDS)
+		to_chat(user, span_notice("The silver effect is on cooldown."))
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.dna && H.dna.species)
+			if(istype(H.dna.species, /datum/species/werewolf))
+				H.adjustFireLoss(10)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I'm hit with my BANE!"))
+				src.last_used = world.time
+				return
+		if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
+			var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
+			if(!VD.disguised)
+				H.adjustFireLoss(10)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I'm hit with my BANE!"))
+				src.last_used = world.time
+				return
+
+/obj/item/reagent_containers/glass/bowl/silver/pickup(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+	if(ishuman(H))
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				H.Knockdown(10)
+				H.adjustFireLoss(25)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+
+/obj/item/reagent_containers/glass/bowl/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.dna && H.dna.species)
+			if(istype(H.dna.species, /datum/species/werewolf))
+				M.Knockdown(10)
+				M.Paralyze(10)
+				M.adjustFireLoss(25)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				return FALSE
+	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord))
+		M.adjustFireLoss(25)
+		M.fire_act(1,10)
+		to_chat(M, span_userdanger("I can't pick up the silver, it is my BANE!"))
+		return FALSE
+/obj/item/kitchen/ironfork/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
+	if(world.time < src.last_used + 12 SECONDS)
+		to_chat(user, span_notice("The silver effect is on cooldown."))
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.dna && H.dna.species)
+			if(istype(H.dna.species, /datum/species/werewolf))
+				H.adjustFireLoss(10)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I'm hit with my BANE!"))
+				src.last_used = world.time
+				return
+		if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
+			var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
+			if(!VD.disguised)
+				H.adjustFireLoss(10)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I'm hit with my BANE!"))
+				src.last_used = world.time
+				return
+
+/obj/item/kitchen/ironfork/silver/pickup(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+	if(ishuman(H))
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				H.Knockdown(10)
+				H.adjustFireLoss(25)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+
+/obj/item/kitchen/ironfork/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.dna && H.dna.species)
+			if(istype(H.dna.species, /datum/species/werewolf))
+				M.Knockdown(10)
+				M.Paralyze(10)
+				M.adjustFireLoss(25)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				return FALSE
+	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord))
+		M.adjustFireLoss(25)
+		M.fire_act(1,10)
+		to_chat(M, span_userdanger("I can't pick up the silver, it is my BANE!"))
+		return FALSE
+
+/obj/item/kitchen/ironspoon/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
+	if(world.time < src.last_used + 12 SECONDS)
+		to_chat(user, span_notice("The silver effect is on cooldown."))
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.dna && H.dna.species)
+			if(istype(H.dna.species, /datum/species/werewolf))
+				H.adjustFireLoss(10)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I'm hit with my BANE!"))
+				src.last_used = world.time
+				return
+		if(target.mind && target.mind.has_antag_datum(/datum/antagonist/vampirelord))
+			var/datum/antagonist/vampirelord/VD = target.mind.has_antag_datum(/datum/antagonist/vampirelord)
+			if(!VD.disguised)
+				H.adjustFireLoss(10)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I'm hit with my BANE!"))
+				src.last_used = world.time
+				return
+
+/obj/item/kitchen/ironspoon/silver/pickup(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+	if(ishuman(H))
+		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				H.Knockdown(10)
+				H.adjustFireLoss(25)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+
+/obj/item/kitchen/ironspoon/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.dna && H.dna.species)
+			if(istype(H.dna.species, /datum/species/werewolf))
+				M.Knockdown(10)
+				M.Paralyze(10)
+				M.adjustFireLoss(25)
+				H.fire_act(1,10)
+				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
+				return FALSE
+	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord))
+		M.adjustFireLoss(25)
+		M.fire_act(1,10)
+		to_chat(M, span_userdanger("I can't pick up the silver, it is my BANE!"))
+		return FALSE
 
 /* * * * * * * * * * * **
  *						*

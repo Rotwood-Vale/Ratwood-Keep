@@ -1,3 +1,4 @@
+//VANDERLIN TODO: Make taming AI better to allow for tame commands.
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar
 	icon = 'icons/roguetown/mob/monster/vol.dmi'
 	name = "familiar"
@@ -25,6 +26,12 @@
 	var/summoner = null
 	var/timeleft = 30 SECONDS
 
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Initialize(mapload, mob/user)
+	. = ..()
+	if(timeleft)
+		QDEL_IN(src, timeleft) //delete after it runs out, see code/modules/mob/living/simple_animal/rogue/creacher/familiar.dm for timeleft var
+	summoner = user
+	faction += "[REF(summoner)]" //this makes them care about the summoner
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/PickTarget(list/Targets)//Step 3, pick amongst the possible, attackable targets
 	if(target != null)//If we already have a target, but are told to pick again, calculate the lowest distance between all possible, and pick from the lowest distance targets

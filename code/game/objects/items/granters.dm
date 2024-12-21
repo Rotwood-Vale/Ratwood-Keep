@@ -281,7 +281,7 @@
 
 /obj/item/book/granter/spell/blackstone/greaterfireball
 	name = "Scroll of Greater Fireball"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
+	spell = /obj/effect/proc_holder/spell/invoked/projectile/fireballgreater
 	spellname = "greater fireball"
 	icon_state ="scrollred"
 	remarks = list("Ignis et oleum..", "Flammam continere ad momentum..", "Flammam iactare..", "Sit flamma constructum..")

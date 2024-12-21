@@ -12,7 +12,6 @@
 	bulb_colour = "#58dd90"
 	bulb_power = 0.95
 	max_integrity = 0
-	use_power = NO_POWER_USE
 	pass_flags = LETPASSTHROW
 	smeltresult = /obj/item/ingot/bronze
 
@@ -85,18 +84,21 @@
 	bulb_colour = "#f9ad80"
 	bulb_power = 1
 	flags_1 = NODECONSTRUCT_1
-	use_power = NO_POWER_USE
 	var/datum/looping_sound/soundloop = /datum/looping_sound/fireloop
 	pass_flags = LETPASSTHROW
 	var/cookonme = FALSE
 	var/crossfire = TRUE
 	var/can_damage = FALSE
+	var/start_fuel //Override for fueluse. Mostly used for smelters.
+	var/fuel_modifier = 1 //Modifier for firefuel
 
 /obj/machinery/light/rogue/Initialize()
 	if(soundloop)
 		soundloop = new soundloop(list(src), FALSE)
 		soundloop.start()
 	GLOB.fires_list += src
+	if(start_fuel)
+		fueluse = start_fuel
 	if(fueluse)
 		fueluse = fueluse - (rand(fueluse*0.1,fueluse*0.3))
 	update_icon()
@@ -228,19 +230,21 @@
 		if(initial(fueluse))
 			if(fueluse > initial(fueluse) - 5 SECONDS)
 				to_chat(user, span_warning("The fire is fully fueled."))
-				return
+				return FALSE
 		else
 			if(!on)
 				return
 		if (alert(usr, "Feed [W] to the fire?", "ROGUETOWN", "Yes", "No") != "Yes")
 			return
+		if(!W)
+			return
 		qdel(W)
 		user.visible_message(span_warning("[user] feeds [W] to [src]."))
 		if(initial(fueluse))
-			fueluse = fueluse + W.firefuel
+			fueluse = fueluse + W.firefuel*fuel_modifier
 			if(fueluse > initial(fueluse)) //keep it at the max
 				fueluse = initial(fueluse)
-		return
+		return TRUE
 	else
 		if(on)
 			if(istype(W, /obj/item/natural/dirtclod))
@@ -340,6 +344,11 @@
 	bulb_colour = "#b9bcff"
 	icon_state = "standingb1"
 	base_state = "standingb"
+
+/obj/machinery/light/rogue/firebowl/standing/green
+	bulb_colour = "#8ee2a7"
+	icon_state = "standingg1"
+	base_state = "standingg"
 
 /obj/machinery/light/rogue/firebowl/standing/proc/knock_over() //use this later for jump impacts and shit
 	icon_state = "[base_state]over"
@@ -608,10 +617,10 @@
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
 				var/obj/item/reagent_containers/food/snacks/S = W
 				if(istype(W, /obj/item/reagent_containers/food/snacks/egg)) // added
-					playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
-					sleep(25) // to get egg crack before frying hiss
-					W.icon_state = "rawegg" // added
-					mouse_opacity = 0 // so you cannot scoop up raw egg in the pan. Returned to 1 in process proc below
+					if(W.icon_state != "rawegg")
+						playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
+						sleep(25) // to get egg crack before frying hiss
+						W.icon_state = "rawegg" // added
 				if(!food)
 					S.forceMove(src)
 					food = S
@@ -809,7 +818,6 @@
 				if(food)
 					var/obj/item/C = food.cooking(20, src)
 					if(C)
-						mouse_opacity = 1
 						qdel(food)
 						food = C
 			if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))

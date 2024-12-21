@@ -308,6 +308,9 @@
 	if(legcuffed)
 		. += "<A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'><span class='warning'>[m3] \a [legcuffed] around [m2] legs!</span></A>"
 
+	if(has_status_effect(/datum/status_effect/leash_pet))
+		. += "<A href='?src=[REF(src)];'><span class='warning'>[m3] \a leash hooked to [m2] collar!</span></A>"
+
 	//Gets encapsulated with a warning span
 	var/list/msg = list()
 
