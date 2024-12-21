@@ -236,7 +236,7 @@
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Sabre + Crossbow")
-			r_hand = /obj/item/rogueweapon/sword/sabre
+			beltl = /obj/item/rogueweapon/sword/sabre
 			beltr = /obj/item/quiver/bolts
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 
