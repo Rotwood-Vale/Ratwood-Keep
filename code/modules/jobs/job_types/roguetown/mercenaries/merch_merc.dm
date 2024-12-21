@@ -20,7 +20,7 @@
 	min_pq = 0
 	max_pq = null
 
-	advclass_cat_rolls = list(CTAG_HENCH = 20)
+	subclass_cat_rolls = list(CTAG_HENCH = 20)
 
 	cmode_music = 'sound/music/combat_giza.ogg'
 
@@ -62,7 +62,7 @@
 		H.become_blind("advsetup")
 
 //General purpose muscle. Decent stat spread and a mace.
-/datum/advclass/grabber_muscle
+/datum/subclass/grabber_muscle
 	name = "Muscle"
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/grabber/muscle
@@ -87,7 +87,7 @@
 		H.change_stat("intelligence", -2)
 
 //Female leaning grunt. Based around the sword entirely. Nutcracker too, I guess, since that's funny.
-/datum/advclass/grabber_adherent
+/datum/subclass/grabber_adherent
 	name = "Adherent"
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/grabber/adherent
@@ -114,7 +114,7 @@
 		ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 
 //Male leaning grunt. Entire thing is based around unarmed combat, akin to a monk. Doesn't get dodge expert, for obvious reasons.
-/datum/advclass/grabber_bouncer
+/datum/subclass/grabber_bouncer
 	name = "Bouncer"
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/grabber/bouncer

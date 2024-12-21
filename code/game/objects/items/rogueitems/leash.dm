@@ -313,7 +313,7 @@
 /obj/item/leash/proc/drop_effects(mob/user, silent)
 	SIGNAL_HANDLER
 	if(leash_master == user)
-		if(leash_master.is_holding(src) || leash_master.get_item_by_slot(ITEM_SLOT_BELT) == src)
+		if(leash_master.is_holding(src) || leash_master.get_item_by_slot(ITEM_SLOT_BELT) == src || leash_master.get_item_by_slot(ITEM_SLOT_BELT) == src)
 			return  //Dom still has the leash as it turns out. Cancel the proc.
 	if(!leash_pet)
 		return

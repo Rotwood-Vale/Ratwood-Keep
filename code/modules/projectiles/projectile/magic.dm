@@ -359,6 +359,7 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
+		M.add_nausea(5) //Slight buff for stopping power, it's a real underwhelming combat spell otherwise.
 		M.reagents.add_reagent(/datum/reagent/toxin, 3)
 
 /obj/projectile/magic/sapping

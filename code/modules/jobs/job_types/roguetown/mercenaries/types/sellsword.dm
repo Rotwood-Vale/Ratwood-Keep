@@ -1,4 +1,4 @@
-/datum/advclass/sellsword
+/datum/subclass/sellsword
 	name = "Sellsword"
 	tutorial = "You are a common sellsword, regarded as scum by many. You travelled the isle working as a bodyguard, mercenary or a cutthroat. You're loyal to your own well being and the sounds mammons make in your pouch."
 	allowed_sexes = list(MALE, FEMALE)

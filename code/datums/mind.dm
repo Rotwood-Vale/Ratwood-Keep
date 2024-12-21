@@ -48,6 +48,12 @@
 	var/spell_points
 	var/used_spell_points
 
+	//Lesser Necromancy Trackers
+	var/boneboys = 0
+	var/bonemax = 2
+	var/boneboy = FALSE
+	var/bonenecro = null
+
 	var/linglink
 	var/datum/martial_art/martial_art
 	var/static/default_martial_art = new/datum/martial_art
@@ -372,6 +378,18 @@
 // adjusts the amount of available spellpoints
 /datum/mind/proc/adjust_spellpoints(points)
 	spell_points += points
+
+/datum/mind/proc/adjust_bonemax(points)
+	bonemax += points
+
+/datum/mind/proc/adjust_boneboys(points)
+	boneboys += points
+
+/datum/mind/proc/set_bonenecro(name)
+	bonenecro = name
+
+/datum/mind/proc/set_boneboy(value)
+	boneboy = value
 
 ///Gets the skill's singleton and returns the result of its get_skill_speed_modifier
 /datum/mind/proc/get_skill_speed_modifier(skill)

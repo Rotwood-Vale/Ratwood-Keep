@@ -37,7 +37,7 @@
 	possible_item_intents = list(SPEAR_BASH)
 	gripped_intents = list(SPEAR_BASH,/datum/intent/mace/smash/wood)
 	name = "wooden staff"
-	desc = "Not so heavy, perfect for beggars, pilgrims and mages."
+	desc = "Not so heavy, perfect for beggars, Refugees and mages."
 	icon_state = "woodstaff"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	wlength = WLENGTH_LONG
