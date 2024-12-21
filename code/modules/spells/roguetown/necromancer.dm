@@ -384,6 +384,8 @@
 	if(charflaw)
 		QDEL_NULL(charflaw)
 
+	can_do_sex = FALSE //where my bonger go
+
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)

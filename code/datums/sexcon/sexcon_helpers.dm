@@ -52,7 +52,7 @@
 	user.sexcon.start(src)
 
 /mob/living/proc/can_do_sex()
-	return TRUE
+	return can_do_sex
 
 /mob/living/carbon/human/proc/make_sucking_noise()
 	if(gender == FEMALE)
