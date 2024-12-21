@@ -52,10 +52,8 @@
 					H.mind.person_knows_me(MF)
 
 /datum/outfit/job/roguetown/knight
-	pants = /obj/item/clothing/under/roguetown/chainlegs
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/black
@@ -119,10 +117,13 @@
 		if("Estoc")
 			r_hand = /obj/item/rogueweapon/estoc
 			backl = /obj/item/gwstrap
+	
 
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate		//this is actually steel half-plate, full plate is plate/full. given because they are SLOW.
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	pants = /obj/item/clothing/under/roguetown/chainlegs
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 
@@ -180,6 +181,8 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates		//given because it's less durability than the steel cuirass but is actually heavy, making use of their heavy skill, unlike cuirass
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	pants = /obj/item/clothing/under/roguetown/chainlegs
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 
@@ -246,6 +249,8 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates	//given because it's less durability than the steel cuirass but is actually heavy, making use of their heavy skill, unlike cuirass
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	pants = /obj/item/clothing/under/roguetown/chainlegs
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 
@@ -294,7 +299,9 @@
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Bastard Sword","Estoc","Sabre + Buckler")
+	var/armor_options = list("Light Armor", "Medium Armor")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	var/armor_choice = input("Choose your armor.", "TAKE UP ARMS") as anything in armor_options
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Bastard Sword") //The rapier got balancejak'd away
@@ -307,10 +314,18 @@
 		if("Sabre + Buckler")
 			r_hand = /obj/item/rogueweapon/sword/sabre
 			backl = /obj/item/rogueweapon/shield/buckler
-
+	switch(armor_choice)
+		if("Light Armor")
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
+			head = /obj/item/clothing/head/roguetown/helmet/sallet
+		if("Medium Armor")
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+			pants = /obj/item/clothing/under/roguetown/chainlegs
+			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
+			head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
+	
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light	//No plate training on this subclass
-	head = /obj/item/clothing/head/roguetown/helmet/sallet
-	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/special
-	//starts with some leather armor in the backpack as an alternative option to medium armor
-	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat = 1, /obj/item/clothing/under/roguetown/heavy_leather_pants = 1, /obj/item/clothing/suit/roguetown/armor/gambeson/heavy = 1)
+
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
