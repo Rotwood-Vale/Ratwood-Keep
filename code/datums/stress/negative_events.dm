@@ -298,11 +298,6 @@
 	desc = span_boldred("I'm broken.")
 	timer = 60 SECONDS
 
-/datum/stressevent/tortured/can_apply(mob/living/user)
-	if(user.has_flaw(/datum/charflaw/masochist))
-		return FALSE
-	return TRUE
-
 /datum/stressevent/confessed
 	stressadd = 3
 	desc = span_red("I've confessed to sin.")
