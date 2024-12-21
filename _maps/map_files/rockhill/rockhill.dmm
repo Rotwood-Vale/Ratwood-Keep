@@ -13007,6 +13007,12 @@
 "hZg" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church/chapel)
+"hZk" = (
+/obj/machinery/light/roguestreet/orange/walllamp{
+	dir = 4
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town/harbor)
 "hZn" = (
 /obj/structure/fluff/statue/small,
 /obj/machinery/light/rogue/wallfire/candle/blue,
@@ -27505,10 +27511,6 @@
 	pixel_x = 4;
 	pixel_y = 1
 	},
-/obj/machinery/light/rogue/lanternpost{
-	dir = 1;
-	pixel_x = -8
-	},
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/outdoors/town/harbor)
 "rki" = (
@@ -37228,6 +37230,9 @@
 /area/rogue/indoors/town)
 "xhx" = (
 /obj/structure/fluff/railing/border,
+/obj/machinery/light/rogue/lanternpost{
+	dir = 1
+	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town/harbor)
 "xhC" = (
@@ -345848,7 +345853,7 @@ ehN
 xjC
 kto
 xAt
-jFt
+xAt
 tNj
 hpj
 hpj
@@ -348869,7 +348874,7 @@ oME
 oME
 sWf
 xjC
-nna
+xjC
 xhx
 xAt
 xAt
@@ -358798,7 +358803,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+hZk
 ozC
 fPw
 fPw
