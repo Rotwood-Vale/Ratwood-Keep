@@ -31,6 +31,9 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	give_bank_account = 1000
 	required = TRUE
 
+	family_blacklisted = TRUE
+	lord_family = TRUE
+
 /datum/job/roguetown/exlord //just used to change the lords title
 	title = "Duke Emeritus"
 	f_title = "Duchess Emeritus"
