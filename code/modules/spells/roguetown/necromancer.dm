@@ -320,6 +320,7 @@
 		return
 	var/mob/living/carbon/human/user = src.mind.bonenecro
 	user.mind.adjust_boneboys(-1)
+	to_chat(user, span_warning("One of my sapient skeleton's bindings has come undone, I may now raise another."))
 	src.mind.set_boneboy(FALSE)
 	src.mind.set_bonenecro(null)
 
