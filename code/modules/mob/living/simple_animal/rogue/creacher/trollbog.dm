@@ -24,7 +24,7 @@
 	aggro_vision_range = 6
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 15,
 						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3)
-	health = 350
+	health = 400
 	maxHealth = 400
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,
 					/obj/item/bodypart,
