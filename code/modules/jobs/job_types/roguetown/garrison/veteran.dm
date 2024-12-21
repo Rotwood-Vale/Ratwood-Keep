@@ -13,7 +13,6 @@
 	advclass_cat_rolls = list(CTAG_VETERAN = 20)
 	display_order = JDO_VET
 	whitelist_req = TRUE
-	outfit = /datum/outfit/job/roguetown/veteran
 	give_bank_account = 35
 	min_pq = 5 //Should...probably actually be a veteran of at least a few weeks before trying to teach others
 	max_pq = null
@@ -37,13 +36,6 @@
 				index = H.real_name
 			S.name = "veteran cloak ([index])"
 
-/datum/outfit/job/roguetown/veteran
-	cloak = /obj/item/clothing/cloak/half/vet
-	belt = /obj/item/storage/belt/rogue/leather/black
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	pants = /obj/item/clothing/under/roguetown/chainlegs
-	backr = /obj/item/storage/backpack/rogue/satchel/black
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 
 /datum/advclass/veteran/battlemaster
 	name = "Veteran Battlemaster"
@@ -63,6 +55,8 @@
 	beltl = /obj/item/rogueweapon/sword/sabre
 	beltr = /obj/item/storage/keyring/guardcastle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
+	cloak = /obj/item/clothing/cloak/half/vet
+	belt = /obj/item/storage/belt/rogue/leather/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
@@ -97,7 +91,7 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	cmode_music = 'sound/music/combat_duelist.ogg'
+	H.cmode_music = 'sound/music/combat_duelist.ogg'
 
 /datum/advclass/veteran/footman
 	name = "Retired Footman"
@@ -122,6 +116,8 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/rogueweapon/shield/tower/metal
 	r_hand = /obj/item/rogueweapon/spear/billhook
+	belt = /obj/item/storage/belt/rogue/leather/black
+	cloak = /obj/item/clothing/cloak/half/vet
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
@@ -176,6 +172,8 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	beltr = /obj/item/storage/keyring/guardcastle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
+	belt = /obj/item/storage/belt/rogue/leather/black
+	cloak = /obj/item/clothing/cloak/half/vet
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
@@ -256,6 +254,8 @@
 	beltl = /obj/item/rogueweapon/sword/short
 	beltr = /obj/item/storage/keyring/guardcastle
 	backr = /obj/item/storage/backpack/rogue/satchel/black
+	belt = /obj/item/storage/belt/rogue/leather/black
+	cloak = /obj/item/clothing/cloak/half/vet
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
@@ -317,7 +317,7 @@
 /datum/outfit/job/roguetown/vet/scout/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
@@ -326,6 +326,8 @@
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
+	belt = /obj/item/storage/belt/rogue/leather/black
+	cloak = /obj/item/clothing/cloak/half/vet
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/storage/keyring/guardcastle = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
