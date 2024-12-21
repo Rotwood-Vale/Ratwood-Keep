@@ -346,7 +346,7 @@
 	/datum/job/roguetown/templar
 
 #define PEASANT_ROLES \
-	/datum/job/roguetown/villager,\
+	/datum/job/roguetown/towner,\
 	/datum/job/roguetown/nightmaiden,\
 	/datum/job/roguetown/beggar,\
 	/datum/job/roguetown/butcher,\
