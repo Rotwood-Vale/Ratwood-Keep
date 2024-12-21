@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 					return
 				say("Reward the worthy...")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-				elevate_race(H)
+				mode = 5
 				return
 			if(findtext(message2recognize, "degrade race"))
 				if(notlord || nocrown)
@@ -214,7 +214,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 					return
 				say("Punish the vermin...")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-				degrade_race(H)
+				mode = 6
 				return
 		if(1)
 			make_announcement(H, raw_message)
@@ -231,32 +231,52 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				return
 			make_law(raw_message)
 			mode = 0
+		if(5)
+			raw_message = sanitize_hear_message(raw_message)
+			elevate_race(H, raw_message)
+			mode = 0
+		if(6)
+			raw_message = sanitize_hear_message(raw_message)
+			degrade_race(H, raw_message)
+			mode = 0
 
-/obj/structure/roguemachine/titan/proc/elevate_race(mob/living/carbon/human/user)
+/obj/structure/roguemachine/titan/proc/elevate_race(mob/living/carbon/human/user, message)
 	if(!Adjacent(user))
 		return
-	var/newtax = input(user, "Set a new tax percentage (1-99)", src, SStreasury.tax_value*100) as null|num
-	if(newtax)
-		if(!Adjacent(user))
-			return
-		if(findtext(num2text(newtax), "."))
-			return
-		newtax = CLAMP(newtax, 1, 99)
-		SStreasury.tax_value = newtax / 100
-		priority_announce("The new tax in Rockhill shall be [newtax] percent.", "The Generous [TITLE_LORD] Decrees", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+	
+	for(var/datum/species/S as anything in GLOB.dyn_races_shunned_up)
+		if(message == S.name)
+			var/elevation_result = SSsocial_pyramid.elevate_race(S)
+			if(elevation_result)
+				priority_announce("The [TITLE_LORD] has elevated the [S.name] to a [elevation_result] status.", "The Pyramid Changes", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+				return
+			else
+				playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+				say("[S.name] could not be elevated further.")
+				return
 
-/obj/structure/roguemachine/titan/proc/degrade_race(mob/living/carbon/human/user)
+	playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+	say("Unable to determine race.")
+	return
+
+/obj/structure/roguemachine/titan/proc/degrade_race(mob/living/carbon/human/user, message)
 	if(!Adjacent(user))
 		return
-	var/newtax = input(user, "Set a new tax percentage (1-99)", src, SStreasury.tax_value*100) as null|num
-	if(newtax)
-		if(!Adjacent(user))
+	
+	for(var/datum/species/S as anything in GLOB.dyn_all_races)
+		if(message == S.name)
+			var/degradation_result = SSsocial_pyramid.degrade_race(S)
+			if(degradation_result)
+				priority_announce("The [TITLE_LORD] has degraded the [S.name] to a [degradation_result] status.", "The Pyramid Changes", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+				return
+			else
+				playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+				say("[S.name] could not be degraded further.")
+				return
+		else
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			say("Unable to determine race.")
 			return
-		if(findtext(num2text(newtax), "."))
-			return
-		newtax = CLAMP(newtax, 1, 99)
-		SStreasury.tax_value = newtax / 100
-		priority_announce("The new tax in Rockhill shall be [newtax] percent.", "The Generous [TITLE_LORD] Decrees", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 
 /obj/structure/roguemachine/titan/proc/give_tax_popup(mob/living/carbon/human/user)
 	if(!Adjacent(user))

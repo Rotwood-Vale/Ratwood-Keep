@@ -8,6 +8,7 @@
 	It's a thankless task, but someone has to do it. May as well be you."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
+	in_pyramid = FALSE
 	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/mercenary/guild_clerk
 	display_order = JDO_MERC_CLERK

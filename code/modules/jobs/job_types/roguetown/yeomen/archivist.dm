@@ -8,7 +8,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = ALL_AGES_LIST
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/archivist

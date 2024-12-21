@@ -9,6 +9,9 @@ GLOBAL_LIST_INIT(dyn_races_respected_up, RACES_RESPECTED_UP)
 GLOBAL_LIST_INIT(dyn_races_tolerated_up, RACES_TOLERATED_UP)
 GLOBAL_LIST_INIT(dyn_races_shunned_up, RACES_SHUNNED_UP)
 
+// Basically untouched, used to keep a list of all races we are manipulating
+GLOBAL_LIST_INIT(dyn_all_races, RACES_SHUNNED_UP)
+
 SUBSYSTEM_DEF(social_pyramid)
 	name = "Social Pyramid"
 	flags = SS_NO_FIRE | SS_NO_INIT
@@ -20,13 +23,13 @@ SUBSYSTEM_DEF(social_pyramid)
 		GLOB.dyn_races_shunned -= S
 		GLOB.dyn_races_tolerated += S
 		update_pyramid()
-		return TRUE
+		return "tolerated"
 
 	if(S in GLOB.dyn_races_tolerated)
 		GLOB.dyn_races_tolerated -= S
 		GLOB.dyn_races_respected += S
 		update_pyramid()
-		return TRUE
+		return "respected"
 
 	return FALSE
 
@@ -37,13 +40,13 @@ SUBSYSTEM_DEF(social_pyramid)
 		GLOB.dyn_races_respected -= S
 		GLOB.dyn_races_tolerated += S
 		update_pyramid()
-		return TRUE
+		return "tolerated"
 
 	if(S in GLOB.dyn_races_tolerated)
 		GLOB.dyn_races_tolerated -= S
-		GLOB.dyn_races_respected += S
+		GLOB.dyn_races_shunned += S
 		update_pyramid()
-		return TRUE
+		return "shunned"
 
 	return FALSE
 
@@ -51,8 +54,8 @@ SUBSYSTEM_DEF(social_pyramid)
 /datum/controller/subsystem/social_pyramid/proc/update_pyramid()
 
 	GLOB.dyn_races_respected_up = GLOB.dyn_races_respected
-	GLOB.dyn_races_tolerated_up = GLOB.dyn_races_respected_up + GLOB.dyn_races_tolerated
-	GLOB.dyn_races_shunned_up = GLOB.dyn_races_tolerated_up + GLOB.dyn_races_shunned
+	GLOB.dyn_races_tolerated_up = GLOB.dyn_races_respected + GLOB.dyn_races_tolerated
+	GLOB.dyn_races_shunned_up = GLOB.dyn_races_respected + GLOB.dyn_races_tolerated + GLOB.dyn_races_shunned
 
 
 /datum/job
@@ -72,7 +75,7 @@ SUBSYSTEM_DEF(social_pyramid)
 		if(RACES_RESPECTED_UP)
 			if(length(GLOB.dyn_races_respected_up + special_exceptions) && !(pref_species.type in (GLOB.dyn_races_respected_up + special_exceptions)))
 				return FALSE
-				
+
 	return TRUE
 		
 

@@ -5,6 +5,7 @@
 	tutorial = "You've travelled the lands and plied your sword and skill for mammon and blood. You are loyal only to the highest bidder and yourself, not to a lord like a common soldier. Perhaps you've enlisted with a guild, perhaps you're a member of a holy order, perhaps you're just a cut above the typical bandit."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
+	in_pyramid = FALSE
 	outfit = null
 	outfit_female = null
 	display_order = JDO_MERCENARY
