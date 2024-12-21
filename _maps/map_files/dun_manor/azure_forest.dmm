@@ -34,16 +34,6 @@
 "at" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"au" = (
-/obj/item/wallframe/intercom{
-	pixel_y = 30;
-	color = "#755f48"
-	},
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "aw" = (
 /obj/machinery/light/rogue/torchholder/r,
 /obj/machinery/light/rogue/torchholder/r,
@@ -53,13 +43,6 @@
 	},
 /area/rogue/indoors)
 "ay" = (
-<<<<<<< HEAD
-=======
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /obj/structure/spacevine,
 /obj/structure/spacevine,
 /turf/open/water/sewer,
@@ -371,29 +354,6 @@
 "cA" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors/beach/forest)
-<<<<<<< HEAD
-=======
-"cC" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/obj/structure/bars/steel{
-	name = "blacksteel bars";
-	color = "#675340";
-	max_integrity = 20000
-	},
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
-"cD" = (
-/obj/item/wallframe/firealarm{
-	color = "#755f48";
-	pixel_x = -30;
-	anchored = 1
-	},
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "cJ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -641,13 +601,6 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/town/basement)
 "fn" = (
-<<<<<<< HEAD
-=======
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /obj/machinery/light/small{
 	mouse_opacity = 0;
 	dir = 1;
@@ -706,16 +659,6 @@
 	dir = 4
 	},
 /area/rogue/outdoors/woods)
-<<<<<<< HEAD
-=======
-"fC" = (
-/obj/machinery/conveyor/auto{
-	dir = 10;
-	color = "#755f48"
-	},
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "fD" = (
 /obj/structure/fluff/railing/border{
 	dir = 1;
@@ -761,16 +704,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/woods)
-<<<<<<< HEAD
-=======
-"fV" = (
-/obj/machinery/conveyor/auto{
-	dir = 5;
-	color = "#755f48"
-	},
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "fW" = (
 /obj/item/natural/stone{
 	pixel_y = -14
@@ -799,17 +732,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"ga" = (
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/gethsmane,
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "gb" = (
 /obj/item/natural/stone,
 /turf/open/floor/rogue/greenstone,
@@ -884,17 +806,6 @@
 	dir = 4
 	},
 /area/rogue/outdoors/woods)
-<<<<<<< HEAD
-=======
-"gD" = (
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
-/obj/structure/spacevine,
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "gG" = (
 /obj/effect/decal/cobbleedge{
 	dir = 5
@@ -1257,13 +1168,6 @@
 /area/rogue/outdoors/woods)
 "jZ" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-<<<<<<< HEAD
-=======
-/obj/machinery/conveyor/auto{
-	dir = 8;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /turf/open/water/sewer,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
 "ke" = (
@@ -1441,16 +1345,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"lc" = (
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "le" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -1535,16 +1429,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"lI" = (
-/obj/machinery/conveyor/auto{
-	dir = 8;
-	color = "#755f48"
-	},
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "lM" = (
 /mob/living/simple_animal/hostile/rogue/skeleton/spear,
 /turf/open/floor/rogue/dirt/road,
@@ -1594,13 +1478,6 @@
 	},
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
 "lY" = (
-<<<<<<< HEAD
-=======
-/obj/machinery/conveyor/auto{
-	dir = 8;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /obj/item/natural/stone,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -1686,20 +1563,6 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"mz" = (
-/obj/item/wallframe/firealarm{
-	color = "#755f48";
-	pixel_x = -30;
-	anchored = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 8
-	},
-/turf/open/floor/rogue/concrete,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "mC" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -1941,16 +1804,6 @@
 /obj/structure/closet/crate/coffin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"oL" = (
-/obj/machinery/conveyor/auto{
-	dir = 6;
-	color = "#755f48"
-	},
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "oO" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/water/sewer,
@@ -1978,13 +1831,6 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/beach/forest)
 "ph" = (
-<<<<<<< HEAD
-=======
-/obj/machinery/conveyor/auto{
-	dir = 6;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /turf/open/floor/rogue/metal,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
 "pj" = (
@@ -2154,13 +2000,6 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cavewet/bogcaves)
 "qv" = (
-<<<<<<< HEAD
-=======
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /obj/machinery/light/small{
 	mouse_opacity = 0;
 	dir = 8;
@@ -2227,11 +2066,7 @@
 "qV" = (
 /obj/item/quiver/arrows,
 /obj/item/quiver/arrows,
-<<<<<<< HEAD
 /obj/structure/table/wood{
-=======
-/obj/structure/table/wood/bar{
->>>>>>> upstream/main
 	icon_state = "longtable";
 	dir = 1
 	},
@@ -2244,16 +2079,6 @@
 /obj/structure/glowshroom,
 /turf/open/water/sewer,
 /area/rogue/under/cave/dungeon1/gethsmane)
-<<<<<<< HEAD
-=======
-"qZ" = (
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "ra" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/town/basement)
@@ -2318,8 +2143,6 @@
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/outdoors/beach/forest)
 "ry" = (
-<<<<<<< HEAD
-=======
 /obj/structure/table/wood{
 	icon_state = "longtable";
 	dir = 1
@@ -2328,7 +2151,6 @@
 	dir = 10;
 	icon_state = "cobbleedge-n"
 	},
->>>>>>> upstream/main
 /obj/item/reagent_containers/glass/cup,
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/ruinedwood,
@@ -2390,22 +2212,6 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"rY" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1";
-	dir = 1
-	},
-/obj/structure/statue/bronze/marx{
-	pixel_y = 19;
-	pixel_x = 9;
-	name = "ancient bust";
-	color = "#675340"
-	},
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/cave/dungeon1/gethsmane)
->>>>>>> upstream/main
 "sa" = (
 /mob/living/carbon/human/species/goblin/npc/ambush/sea,
 /turf/open/floor/rogue/ruinedwood{
@@ -2441,17 +2247,6 @@
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"so" = (
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
-/obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "sq" = (
 /obj/machinery/light/small{
 	mouse_opacity = 0;
@@ -2823,17 +2618,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"vj" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/gethsmane,
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "vk" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/beach/forest)
@@ -2944,22 +2728,7 @@
 "vY" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors)
-<<<<<<< HEAD
 "wa" = (
-=======
-"vZ" = (
-/obj/machinery/conveyor/auto{
-	dir = 8;
-	color = "#755f48"
-	},
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
-"wa" = (
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /obj/structure/bars,
 /turf/open/water/sewer,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -3000,17 +2769,6 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/mountains)
-<<<<<<< HEAD
-=======
-"wB" = (
-/obj/machinery/conveyor/auto{
-	dir = 10;
-	color = "#755f48"
-	},
-/obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "wD" = (
 /obj/item/restraints/legcuffs/beartrap/armed,
 /turf/open/floor/rogue/dirt/road,
@@ -3135,17 +2893,6 @@
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/woods)
-<<<<<<< HEAD
-=======
-"xX" = (
-/obj/item/wallframe/airalarm{
-	pixel_x = 32;
-	color = "#755f48";
-	anchored = 1
-	},
-/turf/open/water/swamp,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "xZ" = (
 /obj/item/natural/stone{
 	pixel_x = 6;
@@ -3205,16 +2952,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/mountains)
-<<<<<<< HEAD
-=======
-"yI" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "yK" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -3375,17 +3112,6 @@
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave/dungeon1/gethsmane)
-<<<<<<< HEAD
-=======
-"zZ" = (
-/obj/item/wallframe/airalarm{
-	pixel_x = 32;
-	color = "#755f48";
-	anchored = 1
-	},
-/turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Aa" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -3641,19 +3367,6 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"BK" = (
-/obj/effect/decal/cobbleedge{
-	dir = 10
-	},
-/obj/structure/table/wood/bar{
-	icon_state = "longtable";
-	dir = 1
-	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
->>>>>>> upstream/main
 "BO" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -3804,16 +3517,6 @@
 /obj/structure/stairs,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/shelter/woods)
-<<<<<<< HEAD
-=======
-"CP" = (
-/obj/machinery/conveyor/auto{
-	dir = 6;
-	color = "#755f48"
-	},
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "CQ" = (
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
@@ -3977,17 +3680,6 @@
 /obj/item/flashlight/flare/torch,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter/woods)
-<<<<<<< HEAD
-=======
-"En" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Eo" = (
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/woods)
@@ -4083,17 +3775,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"Fh" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/obj/structure/spacevine,
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Fi" = (
 /obj/structure/spacevine,
 /turf/open/water/swamp/deep,
@@ -4393,20 +4074,6 @@
 /obj/structure/bars,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cavewet/bogcaves)
-<<<<<<< HEAD
-=======
-"Hy" = (
-/obj/item/wallframe/airalarm{
-	pixel_x = 32;
-	color = "#755f48";
-	anchored = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 4
-	},
-/turf/open/floor/rogue/concrete,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Hz" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1
@@ -4533,13 +4200,6 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
 "It" = (
-<<<<<<< HEAD
-=======
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /obj/item/natural/bone,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -4559,17 +4219,6 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/money,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"IA" = (
-/obj/machinery/conveyor/auto{
-	dir = 9;
-	color = "#755f48"
-	},
-/obj/structure/spacevine,
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "IH" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -4639,16 +4288,6 @@
 /obj/structure/closet/dirthole,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
-<<<<<<< HEAD
-=======
-"Je" = (
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Jg" = (
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -4808,13 +4447,6 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
 "Ku" = (
-<<<<<<< HEAD
-=======
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -4827,16 +4459,6 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/beach/forest)
-<<<<<<< HEAD
-=======
-"Kz" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane)
->>>>>>> upstream/main
 "KB" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/sewer,
@@ -4880,13 +4502,6 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/woods)
 "KW" = (
-<<<<<<< HEAD
-=======
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
->>>>>>> upstream/main
 /obj/structure/bars,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -4968,16 +4583,6 @@
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
-<<<<<<< HEAD
-=======
-"LH" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "LI" = (
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
@@ -5012,17 +4617,6 @@
 /obj/effect/decal/remains/wolf,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"LV" = (
-/obj/machinery/conveyor/auto{
-	dir = 5;
-	color = "#755f48"
-	},
-/obj/structure/spacevine,
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "LW" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/ruinedwood,
@@ -5038,17 +4632,6 @@
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/swamp/deep,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
-<<<<<<< HEAD
-=======
-"LZ" = (
-/obj/item/wallframe/firealarm{
-	color = "#755f48";
-	pixel_x = -30;
-	anchored = 1
-	},
-/turf/open/water/swamp,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Ma" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -5160,16 +4743,6 @@
 "MK" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
-<<<<<<< HEAD
-=======
-"MS" = (
-/obj/machinery/conveyor/auto{
-	dir = 6;
-	color = "#755f48"
-	},
-/turf/open/floor/rogue/metal/barograte,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "MT" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -5233,16 +4806,6 @@
 /mob/living/carbon/human/species/goblin/npc/ambush/sea,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"Nt" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/turf/open/floor/rogue/metal/barograte,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Nu" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf,
 /turf/open/floor/rogue/naturalstone,
@@ -5388,17 +4951,6 @@
 	dir = 8
 	},
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"Pb" = (
-/obj/machinery/conveyor/auto{
-	dir = 1;
-	color = "#755f48"
-	},
-/obj/structure/spacevine,
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Pf" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -5430,20 +4982,6 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/mountains)
-<<<<<<< HEAD
-=======
-"Ps" = (
-/obj/machinery/conveyor/auto{
-	color = "#755f48"
-	},
-/obj/structure/bars/steel{
-	name = "blacksteel bars";
-	color = "#675340";
-	max_integrity = 20000
-	},
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Pz" = (
 /turf/closed/wall/mineral/rogue/pipe,
 /area/rogue/under/cave/dungeon1/gethsmane)
@@ -5715,19 +5253,6 @@
 /obj/machinery/light/rogue/campfire/densefire,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/beach/forest)
-<<<<<<< HEAD
-=======
-"RP" = (
-/obj/structure/bars/passage/shutter{
-	redstone_id = "golgothaone"
-	},
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/turf/open/water/sewer,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "RQ" = (
 /obj/structure/bars/pipe/left,
 /turf/open/water/sewer,
@@ -5754,16 +5279,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
-<<<<<<< HEAD
-=======
-"RW" = (
-/obj/machinery/conveyor/auto{
-	dir = 9;
-	color = "#755f48"
-	},
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "RX" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -5793,18 +5308,6 @@
 	dir = 4;
 	icon_state = "border"
 	},
-<<<<<<< HEAD
-=======
-/turf/open/floor/rogue/metal{
-	icon_state = "plating2"
-	},
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
-"Sh" = (
-/obj/structure/fluff/railing/border{
-	dir = 4;
-	icon_state = "border"
-	},
->>>>>>> upstream/main
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
 "Si" = (
@@ -5883,17 +5386,6 @@
 /obj/effect/decal/remains/human,
 /turf/open/water/swamp/deep,
 /area/rogue/under/town/basement)
-<<<<<<< HEAD
-=======
-"Td" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/gethsmane,
-/turf/open/floor/rogue/metal,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Tf" = (
 /mob/living/carbon/human/species/goblin/npc/ambush/cave,
 /turf/open/floor/rogue/naturalstone,
@@ -5949,16 +5441,6 @@
 	},
 /turf/open/water/sewer,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
-<<<<<<< HEAD
-=======
-"Tu" = (
-/obj/machinery/conveyor/auto{
-	dir = 4;
-	color = "#755f48"
-	},
-/turf/open/floor/rogue/metal,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Tv" = (
 /obj/structure/fluff/railing/border{
 	dir = 6;
@@ -6209,16 +5691,6 @@
 /obj/structure/flora/roguetree/stump/log,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)
-<<<<<<< HEAD
-=======
-"Vz" = (
-/obj/machinery/conveyor/auto{
-	dir = 8;
-	color = "#755f48"
-	},
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "VA" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/item/natural/feather,
@@ -6261,17 +5733,6 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"VX" = (
-/obj/machinery/conveyor/auto{
-	dir = 8;
-	color = "#755f48"
-	},
-/obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "VZ" = (
 /obj/effect/decal/remains/human,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/misc,
@@ -6422,25 +5883,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
-<<<<<<< HEAD
-=======
-"Xk" = (
-/obj/machinery/conveyor/auto{
-	color = "#755f48"
-	},
-/turf/open/water/swamp/deep,
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
-"Xn" = (
-/obj/item/wallframe/firealarm{
-	color = "#755f48";
-	pixel_x = -30;
-	anchored = 1
-	},
-/turf/open/floor/rogue/metal{
-	icon_state = "plating2"
-	},
-/area/rogue/under/cave/dungeon1/gethsmane/inner)
->>>>>>> upstream/main
 "Xq" = (
 /turf/closed/wall/mineral/rogue/wooddark/end,
 /area/rogue/indoors/shelter/woods)
@@ -6633,11 +6075,7 @@
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
 "YT" = (
 /obj/item/rogueweapon/huntingknife/chefknife,
-<<<<<<< HEAD
 /obj/structure/table/wood{
-=======
-/obj/structure/table/wood/bar{
->>>>>>> upstream/main
 	icon_state = "longtable";
 	dir = 2
 	},
