@@ -95,8 +95,6 @@
 	name = "Lesser Raise Undead"
 	cost = 6	
 	desc = "Reanimate a corpse as a skeleton. You can maintain two sapient skeletons, the rest will be mindless. The body must have all limbs and its head."
-	cost = 4
-	desc = "Reanimate a corpse as a skeleton. You can maintain a limited number of sapient skeletons, capped to your arcane skill, the rest will be mindless. The body must have all limbs and its head."
 	clothes_req = FALSE
 	range = 7
 	overlay_state = "raiseskele"
