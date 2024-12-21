@@ -249,13 +249,13 @@
 	update_abovemob()
 
 /obj/structure/closet/dirthole/Initialize()
-	abovemob = mutable_appearance('icons/turf/roguefloor.dmi', "grave_above")
-	abovemob.layer = ABOVE_MOB_LAYER
-	update_icon()
-	var/turf/open/floor/rogue/dirt/T = loc
-	if(istype(T))
-		mastert = T
-		T.holie = src
+    abovemob = mutable_appearance('icons/turf/roguefloor.dmi', "grave_above")
+    abovemob.layer = ABOVE_MOB_LAYER
+    update_icon()
+    var/turf/open/floor/rogue/dirt/T = loc
+    if(istype(T))
+        mastert = T
+        T.holie = src
         if(T.muddy)
             if(prob(55))
                 if(prob(20))
