@@ -22,6 +22,7 @@
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
 	resistance_flags = FIRE_PROOF
+	obj_flags = UNIQUE_RENAME
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()

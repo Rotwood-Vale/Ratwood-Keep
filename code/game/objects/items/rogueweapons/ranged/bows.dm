@@ -24,6 +24,7 @@
 	verbage = "nock"
 	cartridge_wording = "arrow"
 	load_sound = 'sound/foley/nockarrow.ogg'
+	obj_flags = UNIQUE_RENAME
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/getonmobprop(tag)
 	. = ..()

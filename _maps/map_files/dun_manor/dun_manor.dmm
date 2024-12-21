@@ -2208,6 +2208,7 @@
 /obj/effect/landmark/start/villager{
 	dir = 4
 	},
+/obj/effect/landmark/start/courtagent,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
 "bOK" = (
@@ -13266,6 +13267,16 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/town)
+"lWY" = (
+/obj/structure/chair/wood/rogue{
+	dir = 4
+	},
+/obj/effect/landmark/start/villager{
+	dir = 4
+	},
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/tavern)
 "lXN" = (
 /turf/closed/mineral/random/rogue/med,
 /area/rogue/under/town/sewer)
@@ -15151,6 +15162,10 @@
 /obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/town/basement/keep)
+"nJf" = (
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/rogue/dirt/ambush,
+/area/rogue/outdoors/town)
 "nJG" = (
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors/town/manor)
@@ -22732,6 +22747,7 @@
 "uvf" = (
 /obj/effect/landmark/latejoin,
 /obj/effect/landmark/start/mercenarylate,
+/obj/effect/landmark/start/courtagent,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/beach)
 "uvk" = (
@@ -25618,6 +25634,16 @@
 	icon_state = "greenstone"
 	},
 /area/rogue/under/town/basement/keep)
+"xeB" = (
+/obj/structure/chair/wood/rogue{
+	dir = 8
+	},
+/obj/effect/landmark/start/villager{
+	dir = 8
+	},
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/tavern)
 "xeM" = (
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/blocks,
@@ -58265,7 +58291,7 @@ wBZ
 wBb
 cIU
 xCI
-xCI
+lWY
 xIK
 xIK
 xIK
@@ -58735,7 +58761,7 @@ jHz
 gRQ
 mEJ
 tGm
-sXQ
+xeB
 sXQ
 xIK
 eVv
@@ -59519,7 +59545,7 @@ xIK
 jHz
 wBZ
 rAJ
-sXQ
+xeB
 xIK
 xIK
 xIK
@@ -66394,7 +66420,7 @@ waT
 oyZ
 waT
 cEg
-cjQ
+nJf
 cjQ
 cjQ
 cjQ
