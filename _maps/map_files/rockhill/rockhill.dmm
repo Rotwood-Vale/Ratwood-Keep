@@ -16281,7 +16281,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "jWC" = (
-/obj/structure/roguemachine/mail/r,
+/obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "jWM" = (
@@ -18969,8 +18969,10 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/tavern)
 "lMY" = (
-/obj/machinery/light/rogue/firebowl,
-/obj/structure/roguemachine/scomm/l,
+/obj/structure/fluff/railing/wood{
+	pixel_y = -1
+	},
+/obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "wooden_floort"
 	},
@@ -26188,7 +26190,7 @@
 /obj/structure/table/wood{
 	icon_state = "largetable"
 	},
-/obj/structure/roguemachine/scomm/r,
+/obj/structure/roguemachine/mail/r,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "qsx" = (
@@ -349092,7 +349094,7 @@ iXq
 iXq
 itw
 qcG
-gpI
+lMY
 iXq
 iXq
 iXq
@@ -349523,7 +349525,7 @@ iXq
 iXq
 iXq
 oGl
-lMY
+tkB
 gpI
 iXq
 iXq
