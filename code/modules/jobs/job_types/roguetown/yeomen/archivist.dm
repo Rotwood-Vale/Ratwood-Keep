@@ -54,6 +54,7 @@
 		H.grant_language(/datum/language/celestial)
 		H.grant_language(/datum/language/hellspeak)
 		H.grant_language(/datum/language/orcish)
+		H.grant_language(/datum/language/grenzelhoftian)
 		H.grant_language(/datum/language/draconic) // All but beast, which is associated with werewolves.
 		ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, "[type]")
 		H.change_stat("strength", -1)

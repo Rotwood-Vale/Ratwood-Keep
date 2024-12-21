@@ -72,6 +72,14 @@
 
 /datum/species/human/northern/check_roundstart_eligible()
 	return TRUE
+	
+/datum/species/human/northern/on_species_gain(mob/living/carbon/foreign, datum/species/old_species)
+	..()
+	languages(foreign)
+	
+/datum/species/human/northern/proc/languages(mob/living/carbon/human/foreign)
+	if(foreign.skin_tone == SKIN_COLOR_GRENZELHOFT)
+		foreign.grant_language(/datum/language/grenzelhoftian)
 
 /datum/species/human/northern/get_skin_list()
 	return list(
