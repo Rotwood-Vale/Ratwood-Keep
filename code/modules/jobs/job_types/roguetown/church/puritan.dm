@@ -7,6 +7,7 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
+	in_pyramid = FALSE
 	allowed_patrons = list(
 		/datum/patron/psydon
 	)

@@ -5,7 +5,8 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
+	allowed_races = RACES_SHUNNED_UP
+	special_exceptions = RACES_SEELIE
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/hand
 	display_order = JDO_HAND

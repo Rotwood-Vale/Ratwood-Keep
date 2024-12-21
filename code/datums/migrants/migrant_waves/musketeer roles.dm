@@ -3,7 +3,7 @@
 	greet_text = "A merry musketman seeking to save the girl and the day! Don't lose sight of your two companions, you're inseperable!"
 	outfit = /datum/outfit/job/roguetown/musketeer/musketeer
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_SHUNNED_UP
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
 

@@ -136,7 +136,7 @@ SUBSYSTEM_DEF(job)
 		if(player.mind && (job.title in player.mind.restricted_roles))
 			JobDebug("FOC incompatible with antagonist role, Player: [player]")
 			continue
-		if(length(job.allowed_races) && !(player.client.prefs.pref_species.type in job.allowed_races))
+		if(length(job.allowed_races + job.special_exceptions) && !(player.client.prefs.pref_species.type in (job.allowed_races + job.special_exceptions)))
 			JobDebug("FOC incompatible with species, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 			continue
 		if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron.type in job.allowed_patrons))
@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ incompatible with antagonist role, Player: [player], Job: [job.title]")
 			continue
 
-		if(length(job.allowed_races) && !(player.client.prefs.pref_species.type in job.allowed_races))
+		if(length(job.allowed_races + job.special_exceptions) && !(player.client.prefs.pref_species.type in (job.allowed_races + job.special_exceptions)))
 			JobDebug("GRJ incompatible with species, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 			continue
 
@@ -422,7 +422,7 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO incompatible with antagonist role, Player: [player], Job:[job.title]")
 					continue
 
-				if(length(job.allowed_races) && !(player.client.prefs.pref_species.type in job.allowed_races))
+				if(length(job.allowed_races + job.special_exceptions) && !(player.client.prefs.pref_species.type in (job.allowed_races + job.special_exceptions)))
 					JobDebug("DO incompatible with species, Player: [player], Job: [job.title], Race: [player.client.prefs.pref_species.name]")
 					continue
 
@@ -518,7 +518,7 @@ SUBSYSTEM_DEF(job)
 				if(player.mind && job.title in player.mind.restricted_roles)
 					continue
 
-				if(length(job.allowed_races) && !(player.client.prefs.pref_species.type in job.allowed_races))
+				if(length(job.allowed_races + job.special_exceptions) && !(player.client.prefs.pref_species.type in (job.allowed_races + job.special_exceptions)))
 					continue
 
 				if(length(job.allowed_patrons) && !(player.client.prefs.selected_patron.type in job.allowed_patrons))
