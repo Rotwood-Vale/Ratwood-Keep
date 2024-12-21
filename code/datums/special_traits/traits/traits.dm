@@ -225,6 +225,7 @@
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 4, TRUE)
 
 /datum/special_trait/languagesavant
 	name = "Polyglot"
