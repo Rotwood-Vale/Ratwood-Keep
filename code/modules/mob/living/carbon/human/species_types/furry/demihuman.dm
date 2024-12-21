@@ -79,20 +79,20 @@
 		/datum/descriptor_choice/prominent_three_wild,
 		/datum/descriptor_choice/prominent_four_wild,
 	)
-
+	
 /datum/species/demihuman/check_roundstart_eligible()
 	return TRUE
 
 /datum/species/demihuman/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/demihuman/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	. = ..()
-	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-
-/datum/species/demihuman/on_species_loss(mob/living/carbon/C)
-	. = ..()
-	UnregisterSignal(C, COMSIG_MOB_SAY)
+/datum/species/demihuman/on_species_gain(mob/living/carbon/foreign, datum/species/old_species)
+	..()
+	languages(foreign)
+	
+/datum/species/demihuman/proc/languages(mob/living/carbon/human/foreign)
+	if(foreign.skin_tone == SKIN_COLOR_GRENZELHOFT)
+		foreign.grant_language(/datum/language/grenzelhoftian)
 
 /datum/species/demihuman/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
