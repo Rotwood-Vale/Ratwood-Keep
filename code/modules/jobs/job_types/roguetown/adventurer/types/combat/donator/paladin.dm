@@ -96,7 +96,6 @@
 			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
 			backr = /obj/item/rogueweapon/sword
-			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(
 								/obj/item/flashlight/flare/torch = 1,
@@ -135,7 +134,6 @@
 			beltr = /obj/item/rogueweapon/huntingknife
 			id = /obj/item/clothing/ring/silver
 			backr = /obj/item/rogueweapon/flail
-			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			l_hand = /obj/item/rogueweapon/shield/tower/metal
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(
