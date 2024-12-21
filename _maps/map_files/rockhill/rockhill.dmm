@@ -5376,6 +5376,9 @@
 /obj/item/key/noble_guest_rooms,
 /obj/item/key/noble_guest_rooms,
 /obj/item/key/noble_guest_rooms,
+/obj/item/key/street_shop01,
+/obj/item/key/street_smithshop01,
+/obj/item/key/portshop,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/manor)
 "dpJ" = (
