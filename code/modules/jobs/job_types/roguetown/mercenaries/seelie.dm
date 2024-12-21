@@ -5,7 +5,8 @@
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
-	allowed_races = list(/datum/species/seelie,)
+	allowed_races = RACES_SEELIE
+	in_pyramid = FALSE
 	allowed_ages = ALL_AGES_LIST
 	tutorial = "You are a fae sprite that came into existance around this town, either recently or long ago. Perhaps you support people in their trade and craft, or you may be a disruptive nuisance that plagues the town. Either way, your miriad of mysterious spells and abilites will support you in your endeavours."
 	outfit = /datum/outfit/job/roguetown/seelie
