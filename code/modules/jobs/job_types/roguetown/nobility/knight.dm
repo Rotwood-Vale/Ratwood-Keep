@@ -226,9 +226,10 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()	//For knightly voices; even though I despise them.
 	H.verbs |= /mob/proc/haltyell
 
-	H.change_stat("strength", 2)
-	H.change_stat("perception", 3)
+	H.change_stat("strength", 2) //intended playstyle revolves around hit and run tactics on horseback. good str/per, but poor end/con makes them less durable than other subclasses in an extended fight off of their horse
+	H.change_stat("perception", 2)
 	H.change_stat("speed", 1)
+	H.change_stat("intelligence", 1)
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Sabre + Crossbow","Billhook + Recurve Bow")
