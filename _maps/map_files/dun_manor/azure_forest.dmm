@@ -611,6 +611,10 @@
 "eK" = (
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/woods)
+"eP" = (
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/outdoors/mountains)
 "eQ" = (
 /turf/closed/wall/mineral/rogue/tent{
 	dir = 4
@@ -3535,6 +3539,7 @@
 	icon_state = "arrow";
 	dir = 1
 	},
+/obj/effect/landmark/start/courtagent,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/mountains)
 "AY" = (
@@ -4087,6 +4092,7 @@
 	icon_state = "arrow";
 	dir = 1
 	},
+/obj/effect/landmark/start/courtagent,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains)
 "Fl" = (
@@ -4476,6 +4482,11 @@
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
+"HX" = (
+/obj/structure/chair/stool/rogue,
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors)
 "HY" = (
 /obj/structure/bars/passage{
 	density = 0;
@@ -5303,6 +5314,10 @@
 "OA" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/beach/forest)
+"OH" = (
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/woods)
 "OJ" = (
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/outdoors/beach/forest)
@@ -5643,6 +5658,10 @@
 "RI" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/beach/forest)
+"RJ" = (
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/woods)
 "RK" = (
 /obj/item/natural/stone{
 	pixel_x = 6;
@@ -39875,7 +39894,7 @@ bS
 Ca
 qJ
 sR
-sR
+HX
 sR
 sR
 sR
@@ -40692,7 +40711,7 @@ Yi
 Yi
 Yi
 MK
-MK
+OH
 MK
 MK
 Yi
@@ -40963,7 +40982,7 @@ gU
 gU
 wK
 Vh
-Yi
+RJ
 Yi
 Yi
 Yi
@@ -82235,7 +82254,7 @@ GH
 GH
 GH
 ki
-HO
+eP
 gU
 gU
 gU
@@ -83177,7 +83196,7 @@ dP
 Jx
 zu
 Jx
-HO
+eP
 gU
 gU
 gU
