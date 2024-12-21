@@ -39,13 +39,14 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			r_hand = /obj/item/rogueweapon/pick
 			head = /obj/item/clothing/head/roguetown/hatfur
+			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 			armor = /obj/item/clothing/suit/roguetown/armor/workervest
 			pants = /obj/item/clothing/under/roguetown/trou
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
-			beltl = /obj/item/rogueweapon/hammer/claw
+			beltr = /obj/item/rogueweapon/tongs
+			beltl = /obj/item/rogueweapon/hammer
 			backl = /obj/item/storage/backpack/rogue/backpack
 			backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/huntingknife = 1)
 			H.change_stat("strength", 1)
