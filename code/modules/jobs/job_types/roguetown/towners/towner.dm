@@ -1,4 +1,4 @@
-/datum/job/roguetown/villager
+/datum/job/roguetown/towner
 	title = "Towner"
 	flag = VILLAGER
 	department_flag = PEASANTS
