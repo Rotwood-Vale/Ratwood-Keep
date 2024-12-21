@@ -277,18 +277,19 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)		
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)	    //less wrestling, further in line with them being speedy and not bulky
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)		//marginally more athletic than the other knights
-	//Normal shared skill section.
 
+	//Normal shared skill section.
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)		//keeping unarmed at 4 because speedy boxers exist
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-
+	H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
 
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	//Knights should be used to the horrors of war if they're tride-and-true.
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)		//Knights are /technically/ nobles? But they are of the lower-tiers; mainly that a non-blue-blood could become a knight.
 	ADD_TRAIT(H, TRAIT_KNIGHTSMAN, TRAIT_GENERIC) //if they can't figure out how to win vs someone in leather armor with this i literally can not help them anymore
+	ADD_TRAIT(H, TRAIT_GOODTRAINER, TRAIT_GENERIC) //Knights can train their squires.
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()		//For knightly voices; even though I despise them.
 	H.verbs |= /mob/proc/haltyell
 
