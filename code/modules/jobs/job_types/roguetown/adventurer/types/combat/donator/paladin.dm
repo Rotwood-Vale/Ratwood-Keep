@@ -88,7 +88,7 @@
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2) // Classic paladin is faster then the battle master.
 			H.change_stat("endurance", 1)
-			armor = /obj/item/clothing/suit/roguetown/armor/plate
+			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/steel
@@ -126,7 +126,7 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", -1)
-			armor = /obj/item/clothing/suit/roguetown/armor/plate
+			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/steel
