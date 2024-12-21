@@ -7,6 +7,7 @@
 	spawn_positions = 6
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
+	in_pyramid = FALSE
 	tutorial = "You're the lowest of the low. A goblin among many other goblins. \
 	There's little to say about you, aside from your Chief deeming you less than fit for service."
 	outfit = /datum/outfit/job/roguetown/goblinrabble

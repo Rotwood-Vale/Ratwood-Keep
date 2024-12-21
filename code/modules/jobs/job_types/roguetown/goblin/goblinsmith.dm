@@ -7,6 +7,7 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
+	in_pyramid = FALSE
 	tutorial = "You're an accomplished smith in your own right, chosen by your lord, the Chief, to supply the camp with fresh material. \
 	Try not to fail him, or the many subjects that you're to service by extension with your trade."
 	display_order = JDO_GOBLINSMITH

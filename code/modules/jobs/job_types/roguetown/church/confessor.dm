@@ -7,13 +7,14 @@
 	spawn_positions = 2
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
+	in_pyramid = FALSE
 	allowed_patrons = list(
 		/datum/patron/psydon
 	)
 
-	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. \
-	As the most fanatical members of the clergy, their main concern is assisting the local Inquisitor with their work. \
-	Whether that be in extracting confessions of sin or hunting night beasts and cultists that hide in plain sight."
+	tutorial = "Confessors are fanatical, shady agents of the Inquisition hired to spy on the populace and keep them moral. \
+	Their main concern is assisting the local Inquisitor with their work, \
+	whether that be in extracting confessions of sin or hunting night beasts and cultists that hide in plain sight."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
 //	spells = list(/obj/effect/proc_holder/spell/invoked/heal, /obj/effect/proc_holder/spell/invoked/shepherd)

@@ -8,7 +8,7 @@
 	spawn_positions = 1
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = ALL_AGES_LIST
 
 	tutorial = "Fallen noble and owner of the Whitevein Lounge, you run a decaying bathhouse converted into a den of low-lifes, home to a troublemaking racket that the others hate to tolerate."
