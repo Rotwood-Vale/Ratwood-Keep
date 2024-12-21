@@ -65,16 +65,15 @@ SUBSYSTEM_DEF(social_pyramid)
 /// Checks if the selected race is allowed to play the selected job according to the current social pyramid.
 /datum/job/proc/social_pyramid_check(datum/species/pref_species)
 
-	switch(allowed_races)
-		if(RACES_SHUNNED_UP)
-			if(length(GLOB.dyn_races_shunned_up + special_exceptions) && !(pref_species.type in (GLOB.dyn_races_shunned_up + special_exceptions)))
-				return FALSE
-		if(RACES_TOLERATED_UP)
-			if(length(GLOB.dyn_races_tolerated_up + special_exceptions) && !(pref_species.type in (GLOB.dyn_races_tolerated_up + special_exceptions)))
-				return FALSE
-		if(RACES_RESPECTED_UP)
-			if(length(GLOB.dyn_races_respected_up + special_exceptions) && !(pref_species.type in (GLOB.dyn_races_respected_up + special_exceptions)))
-				return FALSE
+	if(allowed_races ~= RACES_SHUNNED_UP)
+		if(length(GLOB.dyn_races_shunned_up + special_exceptions) && !(pref_species.type in (GLOB.dyn_races_shunned_up + special_exceptions)))
+			return FALSE
+	if(allowed_races ~= RACES_TOLERATED_UP)
+		if(length(GLOB.dyn_races_tolerated_up + special_exceptions) && !(pref_species.type in (GLOB.dyn_races_tolerated_up + special_exceptions)))
+			return FALSE
+	if(allowed_races ~= RACES_RESPECTED_UP)
+		if(length(GLOB.dyn_races_respected_up + special_exceptions) && !(pref_species.type in (GLOB.dyn_races_respected_up + special_exceptions)))
+			return FALSE
 
 	return TRUE
 		

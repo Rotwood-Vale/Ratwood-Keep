@@ -68,6 +68,10 @@
 
 	//allowed sex/race for picking
 	var/list/allowed_sexes = list(MALE, FEMALE)
+
+	/// List of allowed race datums for this job.
+	/// If is_pyramid is true, the pyramid subsystem will check this attribute to determine job latejoinability,
+	/// It is hardcoded to compare it with the defined lists in races.dm, so be aware if you set custom lists the pyramid is not guaranteed to work with it.
 	var/list/allowed_races = RACES_SHUNNED_UP
 
 	/// Special allowed races list, not considered in the dynamic social pyramid system. Only used for seelies at the moment.
