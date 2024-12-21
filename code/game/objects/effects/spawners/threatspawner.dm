@@ -310,11 +310,26 @@ GLOBAL_LIST_INIT(threatspawner_quantities, list(
 /obj/effect/landmark/threatspawner/spider/instant
 	inital_cooldown = 1 SECONDS
 
-// BOG TROLL
-/obj/effect/landmark/threatspawner/bogtroll
-	icon_state = "threatspawner-troll-bog"
+// TROLL
+/obj/effect/landmark/threatspawner/troll
+	icon_state = "threatspawner-troll"
 /obj/effect/landmark/threatspawner/bogtroll/get_mob_spawn_type(area/AR)
-	return /mob/living/simple_animal/hostile/retaliate/rogue/bogtroll
+	return /mob/living/simple_animal/hostile/retaliate/rogue/troll
+
+/obj/effect/landmark/threatspawner/troll/shortinit
+	inital_cooldown = 15 MINUTES
+
+/obj/effect/landmark/threatspawner/troll/longinit
+	inital_cooldown = 45 MINUTES
+
+/obj/effect/landmark/threatspawner/troll/instant
+	inital_cooldown = 1 SECONDS
+
+// BOG TROLL
+/obj/effect/landmark/threatspawner/trollbog
+	icon_state = "threatspawner-troll-bog"
+/obj/effect/landmark/threatspawner/trollbog/get_mob_spawn_type(area/AR)
+	return /mob/living/simple_animal/hostile/retaliate/rogue/trollbog
 
 /obj/effect/landmark/threatspawner/bogtroll/shortinit
 	inital_cooldown = 15 MINUTES
@@ -323,19 +338,4 @@ GLOBAL_LIST_INIT(threatspawner_quantities, list(
 	inital_cooldown = 45 MINUTES
 
 /obj/effect/landmark/threatspawner/bogtroll/instant
-	inital_cooldown = 1 SECONDS
-
-// CAVE TROLL
-/obj/effect/landmark/threatspawner/cavetroll
-	icon_state = "threatspawner-troll-cave"
-/obj/effect/landmark/threatspawner/cavetroll/get_mob_spawn_type(area/AR)
-	return /mob/living/simple_animal/hostile/retaliate/rogue/cavetroll
-
-/obj/effect/landmark/threatspawner/cavetroll/shortinit
-	inital_cooldown = 15 MINUTES
-
-/obj/effect/landmark/threatspawner/cavetroll/longinit
-	inital_cooldown = 45 MINUTES
-
-/obj/effect/landmark/threatspawner/cavetroll/instant
 	inital_cooldown = 1 SECONDS
