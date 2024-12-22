@@ -134,6 +134,3 @@
 				update_icon()
 				return
 			. = ..()
-
-
-
