@@ -45,6 +45,7 @@
 				STR.remove_from_storage(T, src)
 		to_chat(user, span_notice("I empty \the [I] into \the [src]."))
 		update_icon()
+	else
 		return ..()
 
 /obj/structure/bookcase/attack_hand(mob/living/user)

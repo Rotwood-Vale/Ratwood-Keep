@@ -353,39 +353,56 @@ Transfer_mind is there to check if mob is being deleted/not going to have a body
 Works together with spawning an observer, noted above.
 */
 
-/mob/proc/ghostize(can_reenter_corpse = TRUE, force_respawn = FALSE, drawskip = FALSE, admin = FALSE)
-	if(!key)
-		return
-	stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
-//	stop_all_loops()
-	if(client)
-		SSdroning.kill_rain(client)
-		SSdroning.kill_loop(client)
-		SSdroning.kill_droning(client)
-//		var/S = sound('sound/ambience/creepywind.ogg', repeat = 1, wait = 0, volume = client.prefs.musicvol, channel = CHANNEL_MUSIC)
-//		play_priomusic(S)
-	var/mob/dead/observer/ghost	// Transfer safety to observer spawning proc.
-	if(admin)
-		ghost = new /mob/dead/observer/admin(src)
-	else if(drawskip)
-		ghost = new /mob/dead/observer/rogue/nodraw(src)
-	else
-		ghost = new /mob/dead/observer/rogue(src)
-	if(!admin)
+/mob/proc/ghostize(can_reenter_corpse = 1, force_respawn = FALSE, admin = FALSE, drawskip)
+	if(key)
+		stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
+//		stop_all_loops()
+		if(client)
+			SSdroning.kill_rain(client)
+			SSdroning.kill_loop(client)
+			SSdroning.kill_droning(client)
+			if(client.holder)
+				if(check_rights(R_WATCH,0))
+					stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
+					var/mob/dead/observer/ghost = new(src)	// Transfer safety to observer spawning proc.
+					SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
+					ghost.can_reenter_corpse = can_reenter_corpse
+					ghost.ghostize_time = world.time
+					ghost.key = key
+					return ghost
+//		if(client)
+//			var/S = sound('sound/ambience/creepywind.ogg', repeat = 1, wait = 0, volume = client.prefs.musicvol, channel = CHANNEL_MUSIC)
+//			play_priomusic(S)
+		var/mob/dead/observer/rogue/ghost	// Transfer safety to observer spawning proc.
+		if(drawskip)
+			ghost = new /mob/dead/observer/rogue/nodraw(src)
+		else
+			ghost = new(src)
+		ghost.ghostize_time = world.time
+		var/bnw = TRUE
+		if(client)
+			if(client.holder)
+				if(check_rights_for(client,R_WATCH))
+					bnw = FALSE
+		SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
+		ghost.can_reenter_corpse = can_reenter_corpse
+		ghost.key = key
+		if(!bnw)
+			return ghost
 		ghost.add_client_colour(/datum/client_colour/monochrome)
-	ghost.ghostize_time = world.time
-	SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
-	ghost.can_reenter_corpse = can_reenter_corpse
-	ghost.key = key
-	return ghost
+		return ghost
 
-/mob/living/carbon/human/ghostize(can_reenter_corpse = 1, force_respawn = FALSE, drawskip = FALSE, admin = FALSE)
+/mob/living/carbon/human/ghostize(can_reenter_corpse = 1, force_respawn = FALSE, admin = FALSE,drawskip = FALSE)
 	if(mind)
-		var/datum/antagonist/zombie/zomble = mind.has_antag_datum(/datum/antagonist/zombie)
-		if(zomble)
+		if(mind.has_antag_datum(/datum/antagonist/zombie))
 			if(force_respawn)
 				mind.remove_antag_datum(/datum/antagonist/zombie)
 				return ..()
+			var/datum/antagonist/zombie/Z = mind.has_antag_datum(/datum/antagonist/zombie)
+			if(!Z.revived)
+				if(!(world.time % 5))
+					to_chat(src, span_warning("I'm preparing to walk again."))
+				return
 	return ..()
 
 /mob/proc/scry_ghost()

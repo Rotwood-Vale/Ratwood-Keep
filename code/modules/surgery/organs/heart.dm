@@ -93,8 +93,8 @@
 	..()
 	if(owner.client && beating)
 		failed = FALSE
-		var/sound/slowbeat = sound('sound/blank.ogg', repeat = TRUE)
-		var/sound/fastbeat = sound('sound/blank.ogg', repeat = TRUE)
+		var/sound/slowbeat = sound('sound/health/slowbeat.ogg', repeat = TRUE)
+		var/sound/fastbeat = sound('sound/health/fastbeat.ogg', repeat = TRUE)
 		var/mob/living/carbon/H = owner
 
 

@@ -13,4 +13,5 @@
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
 	max_integrity = 40
+	sharpness = IS_SHARP
 	smeltresult = /obj/item/natural/glass

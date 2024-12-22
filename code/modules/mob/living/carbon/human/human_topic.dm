@@ -42,20 +42,6 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			msg += "<span class='dead'>Limb is missing!</span>"
 		to_chat(usr, "<span class='info'>[msg.Join("\n")]</span>")
 
-	if(href_list["check_hb"])
-		if(isobserver(usr))
-			if(stat == DEAD)
-				to_chat(usr, "<span class='info'><B>No heartbeat...</B></span>")
-			else
-				to_chat(usr, "<span class='info'><B>The heart is still beating.</B></span>")
-		else if(Adjacent(usr) && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
-			usr.visible_message("<span class='info'>[usr] tries to hear [src]'s heartbeat.</span>")
-			if(do_after(usr, 30, needhand = 1, target = src))
-				if(stat == DEAD)
-					to_chat(usr, "<span class='info'><B>No heartbeat...</B>")
-				else
-					to_chat(usr, "<span class='info'><B>The heart is still beating.</B></span>")
-
 	if(href_list["embedded_object"] && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
 		var/obj/item/bodypart/L = locate(href_list["embedded_limb"]) in bodyparts
 		if(!L)
