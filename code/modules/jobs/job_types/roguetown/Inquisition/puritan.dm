@@ -25,12 +25,28 @@
 	jobtype = /datum/job/roguetown/puritan
 	allowed_patrons = list(/datum/patron/old_god)
 
-/datum/outfit/job/roguetown/puritan/pre_equip(mob/living/carbon/human/H)
+/datum/job/roguetown/puritan/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	. = ..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		H.advsetup = 1
+		H.invisibility = INVISIBILITY_MAXIMUM
+		H.become_blind("advsetup")
+
+////Classic Inquisitor with a much more underground twist. Use listening devices, sneak into places to gather evidence, track down suspicious individuals.
+
+/datum/advclass/puritan/inspector
+	name = "The Eye of Psydon"
+	tutorial = "Your eternal service to fighting the FORCES OF HERESY has manifested within you into a profession of underground and underhanded investigation, away from the prying eyes of others. Stop HERESY in their tracks, predict their movements, collect evidence through listening devices and, when the time comes - strike with impunity with your blade and swift dodging prowess."
+
+/datum/outfit/job/roguetown/puritan/inspector/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/psydon
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	shoes = /obj/item/clothing/shoes/roguetown/boots
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	backr = /obj/item/storage/backpack/rogue/satchel/black
@@ -42,30 +58,92 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE)
-		H.change_stat("strength", 2)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE) ///They don't get lockpicks though, gotta earn that.
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE) //To track down heretics to their evil lairs... 
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE) //Always thought it was crazy they got listening devices but NO means to effectively sneak them into places.
+		H.change_stat("strength", 1)
 		H.change_stat("endurance", 2)
-		H.change_stat("constitution", 3)
+		H.change_stat("constitution", 1)
 		H.change_stat("perception", 3)
-		H.change_stat("speed", 1)
+		H.change_stat("speed", 3) //Rogues get 3 fucking speed and spymaster hands get 4, they deserve this.
 		H.change_stat("intelligence", 3)
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
+
+///The dirty, violent side of the Inquisition. Meant for confrontational, conflict-driven situations as opposed to simply sneaking around and asking questions. Vampire-slayer. Werewolf-slayer. Lich-slayer. 
+
+/datum/advclass/puritan/muscle
+	name = "The Fist of Psydon"
+	tutorial = "Your specialty in the Inquisition was never fruitful in terms of espionage and stealth. You had a unique talent in busting down doors to secret churches and worship spots, extracting confessions on the spot out of those who did not yield to PSYDON, and driving out the children of ASCENDANT FILTH with a silver blade. Face down the FORCES OF EVIL with whips and chains. You are the Fist of Psydon."
+
+/datum/outfit/job/roguetown/puritan/muscle/pre_equip(mob/living/carbon/human/H)
+	..()
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/fluted
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/blk
+	belt = /obj/item/storage/belt/rogue/leather
+	neck = /obj/item/clothing/neck/roguetown/psicross/silver
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blk
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	pants = /obj/item/clothing/under/roguetown/chainlegs/blk
+	cloak = /obj/item/clothing/cloak/psydontabard
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	head = /obj/item/clothing/head/roguetown/puritan
+	gloves = /obj/item/clothing/gloves/roguetown/chain/psydon
+	beltl = /obj/item/rogueweapon/mace/silver
+	backpack_contents = list(/obj/item/storage/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver)
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+		H.change_stat("strength", 2)	///Templar stats but with perception and intelligence.
+		H.change_stat("endurance", 3) 
+		H.change_stat("constitution", 2)
+		H.change_stat("perception", 2)
+		H.change_stat("intelligence", 2)
+		H.change_stat("speed", -1)
+
+	H.verbs |= /mob/living/carbon/human/proc/faith_test
+	H.verbs |= /mob/living/carbon/human/proc/torture_victim
+	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
+
+/obj/item/clothing/gloves/roguetown/chain/blk
+		color = CLOTHING_GREY
+
+/obj/item/clothing/under/roguetown/chainlegs/blk
+		color = CLOTHING_GREY
+
+/obj/item/clothing/suit/roguetown/armor/plate/blk
+		color = CLOTHING_GREY
+
+/obj/item/clothing/shoes/roguetown/boots/armor/blk
+		color = CLOTHING_GREY
 
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Extract Confession"
