@@ -24,7 +24,7 @@
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 15,
 						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3)
 	health = 400
-	maxHealth = 400
+	maxHealth = 350
 	food_type = list(
 					/obj/item/bodypart,
 					/obj/item/organ)

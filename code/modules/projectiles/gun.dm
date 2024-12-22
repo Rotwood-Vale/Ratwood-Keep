@@ -1,3 +1,4 @@
+
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 
 /obj/item/gun
@@ -112,8 +113,8 @@
 		shoot_with_empty_chamber(user)
 		return
 
-	if(user?.used_intent.arc_check())
-		target = get_turf(target)
+	if(user?.used_intent.arc_check() && target.z != user.z) //temporary fix for openspace arrow dupe
+		target = get_turf(locate(target.x, target.y, user.z))
 
 	return process_fire(target, user, TRUE, params, null, 0)
 

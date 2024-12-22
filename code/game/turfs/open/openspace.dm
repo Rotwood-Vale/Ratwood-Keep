@@ -114,14 +114,14 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			return
 		var/turf/target = get_step_multiz(src, DOWN)
 		if(!target)
-			to_chat(user, "<span class='warning'>I can't climb there.</span>")
+			to_chat(user, span_warning("I can't climb there."))
 			return
 		if(!user.can_zTravel(target, DOWN, src))
-			to_chat(user, "<span class='warning'>I can't climb here.</span>")
+			to_chat(user, span_warning("I can't climb here."))
 			return
 		if(user.m_intent != MOVE_INTENT_SNEAK)
 			playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
-		user.visible_message("<span class='warning'>[user] starts to climb down.</span>", "<span class='warning'>I start to climb down.</span>")
+		user.visible_message(span_warning("[user] starts to climb down."), span_warning("I start to climb down."))
 		if(do_after(L, 30, target = src))
 			if(user.m_intent != MOVE_INTENT_SNEAK)
 				playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
@@ -136,10 +136,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(!user.Adjacent(src))
 		return
 	if(!target)
-		to_chat(user, "<span class='warning'>I can't go there.</span>")
+		to_chat(user, span_warning("I can't go there."))
 		return
 	user.forceMove(target)
-	to_chat(user, "<span class='warning'>I glide down.</span>")
+	to_chat(user, span_warning("I glide down."))
 	. = ..()
 
 /turf/open/transparent/openspace/attackby(obj/item/C, mob/user, params)

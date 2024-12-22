@@ -1184,26 +1184,40 @@
 // Override if a certain type of mob should be behave differently when stripping items (can't, for example)
 /mob/living/stripPanelUnequip(obj/item/what, mob/who, where)
 	if(!what.canStrip(who))
-		to_chat(src, "<span class='warning'>I can't remove \the [what.name], it appears to be stuck!</span>")
+		to_chat(src, span_warning("I can't remove \the [what.name], it appears to be stuck!"))
 		return
 
 	if(!has_active_hand()) //can't attack without a hand.
-		to_chat(src, "<span class='warning'>I lack working hands.</span>")
+		to_chat(src, span_warning("I lack working hands."))
 		return
 
 	if(!has_hand_for_held_index(active_hand_index)) //can't attack without a hand.
-		to_chat(src, "<span class='warning'>I can't move this hand.</span>")
+		to_chat(src, span_warning("I can't move this hand."))
 		return
 
 	if(check_arm_grabbed(active_hand_index))
-		to_chat(src, "<span class='warning'>Someone is grabbing my arm!</span>")
+		to_chat(src, span_warning("Someone is grabbing my arm!"))
 		return
 
-	who.visible_message("<span class='warning'>[src] tries to remove [who]'s [what.name].</span>", \
-					"<span class='danger'>[src] tries to remove my [what.name].</span>", null, null, src)
-	to_chat(src, "<span class='danger'>I try to remove [who]'s [what.name]...</span>")
+	if(istype(src, /mob/living/carbon/spirit))
+		to_chat(src, span_warning("Your hands pass right through \the [what]!"))
+		return
+
+	var/surrender_mod = 1
+
+	if(isliving(who))
+		var/mob/living/L = who
+		if(L.cmode && L.mobility_flags & MOBILITY_STAND && !L.restrained())
+			to_chat(src, span_warning("I can't take \the [what] off, they are too tense!"))
+			return
+		if(L.surrendering)
+			surrender_mod = 0.5
+
+	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
+					span_danger("[src] tries to remove my [what.name]."), null, null, src)
+	to_chat(src, span_danger("I try to remove [who]'s [what.name]..."))
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay))
+	if(do_mob(src, who, what.strip_delay * surrender_mod))
 		if(what && Adjacent(who))
 			if(islist(where))
 				var/list/L = where
@@ -1213,6 +1227,7 @@
 			if(what == who.get_item_by_slot(where))
 				if(what.doStrip(src, who))
 					log_combat(src, who, "stripped [what] off")
+					who.update_fov_angles()
 
 	if(Adjacent(who)) //update inventory window
 		who.show_inv(src)
@@ -1224,7 +1239,7 @@
 /mob/living/stripPanelEquip(obj/item/what, mob/who, where)
 	what = src.get_active_held_item()
 	if(what && (HAS_TRAIT(what, TRAIT_NODROP)))
-		to_chat(src, "<span class='warning'>I can't put \the [what.name] on [who], it's stuck to my hand!</span>")
+		to_chat(src, span_warning("I can't put \the [what.name] on [who], it's stuck to my hand!"))
 		return
 	if(what)
 		var/list/where_list
@@ -1237,13 +1252,23 @@
 			final_where = where
 
 		if(!what.mob_can_equip(who, src, final_where, TRUE, TRUE))
-			to_chat(src, "<span class='warning'>\The [what.name] doesn't fit in that place!</span>")
+			to_chat(src, span_warning("\The [what.name] doesn't fit in that place!"))
 			return
 
-		who.visible_message("<span class='notice'>[src] tries to put [what] on [who].</span>", \
-						"<span class='notice'>[src] tries to put [what] on you.</span>", null, null, src)
-		to_chat(src, "<span class='notice'>I try to put [what] on [who]...</span>")
-		if(do_mob(src, who, what.equip_delay_other))
+		var/surrender_mod = 1
+
+		if(isliving(who))
+			var/mob/living/L = who
+			if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+				to_chat(src, span_warning("I can't put \the [what] on them, they are too tense!"))
+				return
+			if(L.surrendering)
+				surrender_mod = 0.5
+
+		who.visible_message(span_notice("[src] tries to put [what] on [who]."), \
+						span_notice("[src] tries to put [what] on you."), null, null, src)
+		to_chat(src, span_notice("I try to put [what] on [who]..."))
+		if(do_mob(src, who, what.equip_delay_other * surrender_mod))
 			if(what && Adjacent(who) && what.mob_can_equip(who, src, final_where, TRUE, TRUE))
 				if(temporarilyRemoveItemFromInventory(what))
 					if(where_list)

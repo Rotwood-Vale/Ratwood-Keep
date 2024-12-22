@@ -9,9 +9,9 @@
 	opacity = 1
 	resistance_flags = FLAMMABLE
 	max_integrity = 200
-	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
-	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
-	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 50, "acid" = 0)
+	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+	attacked_sound = "woodimpact"
+	debris = list(/obj/item/grown/log/tree/small = 1)
 	var/state = 0
 	var/list/allowed_books = list(/obj/item/book, /obj/item/storage/book) //Things allowed in the bookcase
 
@@ -51,6 +51,8 @@
 	. = ..()
 	if(.)
 		return
+	if(user.cmode)
+		return
 	if(!istype(user))
 		return
 	if(contents.len)
@@ -65,10 +67,11 @@
 				choice.forceMove(drop_location())
 			update_icon()
 
-/obj/structure/bookcase/deconstruct(disassembled = TRUE)
+/obj/structure/bookcase/Destroy()
 	for(var/obj/item/book/B in contents)
 		B.forceMove(get_turf(src))
 	qdel(src)
+	return ..()
 
 /obj/structure/bookcase/update_icon()
 	if((contents.len >= 1) && (contents.len <= 15))
