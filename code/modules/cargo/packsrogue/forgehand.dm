@@ -75,7 +75,7 @@
 //Job Gear
 /datum/supply_pack/rogue/bandit/Smith/tongs
 	name = "Tongs"
-	cost = 25
+	cost = 85
 	contains = list(/obj/item/rogueweapon/tongs)
 
 /datum/supply_pack/rogue/bandit/Smith/hammer
