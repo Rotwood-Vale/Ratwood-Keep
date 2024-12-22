@@ -69,6 +69,12 @@
 				choice.forceMove(drop_location())
 			update_icon()
 
+/obj/structure/bookcase/attackby(obj/item/I, mob/user, params)
+	if(!istype(I, /obj/item/book))
+		return ..()
+	if(!user.transferItemToLoc(I, src))
+		return
+	update_icon()
 
 /obj/structure/bookcase/deconstruct(disassembled = TRUE)
 //	new /obj/item/stack/sheet/mineral/wood(loc, 4)
