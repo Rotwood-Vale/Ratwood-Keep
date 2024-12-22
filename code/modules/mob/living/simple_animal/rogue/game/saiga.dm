@@ -315,6 +315,13 @@
 			return "foreleg"
 	return ..()
 
+/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/apply_damage(def_zone, blocked, forced)
+	if(buckled_mobs.len)	//If we're a mount and are hit while sprinting, throw our rider off
+		for(var/mob/living/carbon/human/H in buckled_mobs)
+			if(H.m_intent == MOVE_INTENT_RUN)
+				var/mob/living/simple_animal/M = src
+				M.violent_dismount(H)
+	..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigaboy
 	icon = 'icons/roguetown/mob/monster/saiga.dmi'
