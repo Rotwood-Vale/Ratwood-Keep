@@ -1467,6 +1467,10 @@
 /mob/living/simple_animal/pet/cat/black,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
+"eU" = (
+/obj/machinery/light/rogue/forge,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/banditcamp)
 "eY" = (
 /obj/effect/landmark/shuttle_import,
 /turf/closed,
@@ -1738,6 +1742,14 @@
 /obj/machinery/light/rogue/oven/south,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/banditcamp)
+"ky" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
+/obj/item/rogueweapon/stoneaxe,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/banditcamp)
 "kB" = (
 /obj/effect/landmark/mapGenerator/sunlights{
 	endTurfX = 128;
@@ -1779,6 +1791,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
+"li" = (
+/obj/item/roguebin/water/gross,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/banditcamp)
 "ln" = (
 /turf/closed/mineral/random/rogue,
 /area/rogue/outdoors)
@@ -2088,6 +2104,20 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
+"rn" = (
+/obj/structure/closet/crate/chest{
+	lockid = "bandit"
+	},
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/stick,
+/obj/item/grown/log/tree/small,
+/obj/item/grown/log/tree/small,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/banditcamp)
 "ro" = (
 /obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/herringbone,
@@ -2397,6 +2427,11 @@
 "xU" = (
 /turf/open/water/sewer,
 /area/rogue/under/town/goblin)
+"yh" = (
+/obj/structure/rack/rogue,
+/obj/item/rogueweapon/pick,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/banditcamp)
 "yw" = (
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/banditcamp)
@@ -2707,6 +2742,10 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/banditcamp)
+"FL" = (
+/obj/structure/handcart,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/banditcamp)
 "FO" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/mask/cigarette/rollie/nicotine,
@@ -2885,6 +2924,10 @@
 	icon_state = "paving"
 	},
 /area/rogue/under/town/goblin)
+"IS" = (
+/obj/machinery/light/rogue/firebowl/standing,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/banditcamp)
 "IY" = (
 /obj/effect/landmark/events/testportal{
 	aportalloc = "spidercave"
@@ -3708,6 +3751,10 @@
 /obj/effect/landmark/start/goblinchief,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/under/town/goblin)
+"ZJ" = (
+/obj/machinery/anvil,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/banditcamp)
 
 (1,1,1) = {"
 rQ
@@ -9868,7 +9915,7 @@ rl
 js
 gZ
 pg
-Es
+ky
 Es
 Es
 Cm
@@ -10098,7 +10145,7 @@ rl
 js
 js
 pg
-Es
+FL
 Es
 Es
 Cm
@@ -10786,9 +10833,9 @@ Rw
 Es
 Es
 Es
-Es
-Es
-Es
+IS
+js
+rn
 pg
 vT
 pg
@@ -11015,10 +11062,10 @@ DB
 DB
 DB
 DB
-Es
-Es
-Es
-Es
+yh
+js
+js
+li
 pg
 pb
 pb
@@ -11244,11 +11291,11 @@ Cm
 Cm
 Cm
 Cm
-Cm
-Cm
-Cm
-Cm
-Cm
+pg
+yh
+js
+js
+js
 pg
 pb
 pb
@@ -11474,11 +11521,11 @@ UI
 UI
 Cm
 Cm
-Cm
-wk
-Cm
-Cm
-Cm
+pg
+pg
+pg
+eU
+ZJ
 pg
 ie
 mQ
@@ -11706,9 +11753,9 @@ UI
 UI
 UI
 UI
-UI
-UI
-UI
+pg
+pg
+pg
 pg
 pg
 pg

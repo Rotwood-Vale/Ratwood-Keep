@@ -1,8 +1,8 @@
-
 /datum/supply_pack/rogue/bandit/Things
 	group = "Things"
 	crate_name = "Gifts of Things"
 	crate_type = /obj/structure/closet/crate/chest/merchant
+
 
 /datum/supply_pack/rogue/bandit/Things/healthpot
 	name = "Health Potion"
@@ -98,11 +98,6 @@
 	name = "Spice"
 	cost = 100
 	contains = list(/obj/item/reagent_containers/powder/spice)
-
-/datum/supply_pack/rogue/bandit/Things/hammer
-	name = "Hammer"
-	cost = 250
-	contains = list(/obj/item/rogueweapon/hammer)
 
 /datum/supply_pack/rogue/bandit/Things/horse
 	name = "Horse"

@@ -3,6 +3,7 @@
 	crate_name = "Gifts of stuff."
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
+
 /datum/supply_pack/rogue/bandit/Stuff/belt
 	name = "Leather Belt"
 	cost = 20
@@ -22,11 +23,6 @@
 	name = "Leather shoes"
 	cost = 20
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather)
-
-/datum/supply_pack/rogue/bandit/Stuff/hardleathershoes
-	name = "Hardened Leather shoes"
-	cost = 60
-	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather/advanced)
 
 /datum/supply_pack/rogue/bandit/Stuff/hood
 	name = "Shoulder Hood"
@@ -52,6 +48,11 @@
 	name = "Shortshirt"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/shortshirt/random)
+
+/datum/supply_pack/rogue/bandit/Stuff/belt
+	name = "Light Gambeson"
+	cost = 30
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
 
 /datum/supply_pack/rogue/bandit/Stuff/halfcloak
 	name = "Half-Cloaks"
