@@ -99,11 +99,6 @@
 	cost = 100
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
-/datum/supply_pack/rogue/bandit/Things/hammer
-	name = "Hammer"
-	cost = 250
-	contains = list(/obj/item/rogueweapon/hammer)
-
 /datum/supply_pack/rogue/bandit/Things/horse
 	name = "Horse"
 	cost = 300

@@ -103,7 +103,7 @@
 
 /datum/supply_pack/rogue/bandit/Brigand/cudgel
 	name = "Cudgel"
-	cost = 50
+	cost = 35
 	contains = list(/obj/item/rogueweapon/mace/cudgel)
 
 /datum/supply_pack/rogue/bandit/Brigand/gmace
