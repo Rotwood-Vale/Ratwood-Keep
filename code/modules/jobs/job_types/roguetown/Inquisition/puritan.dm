@@ -15,6 +15,7 @@
 
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
+	advclass_cat_rolls = list(CTAG_PURITAN = 20)
 	give_bank_account = 30
 	min_pq = 10
 	max_pq = null
@@ -33,11 +34,15 @@
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
 
+
 ////Classic Inquisitor with a much more underground twist. Use listening devices, sneak into places to gather evidence, track down suspicious individuals.
 
 /datum/advclass/puritan/inspector
 	name = "The Eye of Psydon"
 	tutorial = "Your eternal service to fighting the FORCES OF HERESY has manifested within you into a profession of underground and underhanded investigation, away from the prying eyes of others. Stop HERESY in their tracks, predict their movements, collect evidence through listening devices and, when the time comes - strike with impunity with your blade and swift dodging prowess."
+	outfit = /datum/outfit/job/roguetown/puritan/inspector
+
+	category_tags = list(CTAG_PURITAN)
 
 /datum/outfit/job/roguetown/puritan/inspector/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -89,6 +94,7 @@
 /datum/advclass/puritan/muscle
 	name = "The Fist of Psydon"
 	tutorial = "Your specialty in the Inquisition was never fruitful in terms of espionage and stealth. You had a unique talent in busting down doors to secret churches and worship spots, extracting confessions on the spot out of those who did not yield to PSYDON, and driving out the children of ASCENDANT FILTH with a silver blade. Face down the FORCES OF EVIL with whips and chains. You are the Fist of Psydon."
+	category_tags = list(CTAG_PURITAN)
 
 /datum/outfit/job/roguetown/puritan/muscle/pre_equip(mob/living/carbon/human/H)
 	..()
