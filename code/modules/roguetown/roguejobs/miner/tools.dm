@@ -74,7 +74,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-	drill_loop = new(list(src), FALSE)
+	drill_loop = new(src, FALSE)
 
 /obj/item/rogueweapon/pick/drill/Destroy()
 	STOP_PROCESSING(SSobj, src)
