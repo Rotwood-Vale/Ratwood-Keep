@@ -726,7 +726,7 @@
 		GLOB.dead_mob_list -= src
 		GLOB.alive_mob_list += src
 		set_suicide(FALSE)
-		stat = UNCONSCIOUS //the mob starts unconscious,
+		stat = CONSCIOUS
 		updatehealth() //then we check if the mob should wake up.
 		update_mobility()
 		update_sight()
@@ -735,10 +735,12 @@
 		remove_client_colour(/datum/client_colour/monochrome)
 		. = TRUE
 		if(mind)
+			if(admin_revive)
+				mind.remove_antag_datum(/datum/antagonist/zombie)
 			for(var/S in mind.spell_list)
 				var/obj/effect/proc_holder/spell/spell = S
 				spell.updateButtonIcon()
-			mind.remove_antag_datum(/datum/antagonist/zombie)
+		qdel(GetComponent(/datum/component/rot))
 
 /mob/living/proc/remove_CC(should_update_mobility = TRUE)
 	SetStun(0, FALSE)
