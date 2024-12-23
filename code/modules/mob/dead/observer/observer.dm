@@ -61,7 +61,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	// Used for displaying in ghost chat, without changing the actual name
 	// of the mob
 	var/deadchat_name
-	var/datum/spawners_menu/spawners_menu
 	var/ghostize_time = 0
 
 /mob/dead/observer/rogue
@@ -124,8 +123,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	set_invisibility(GLOB.observer_default_invisibility)
 
 	verbs += list(
-		/mob/dead/observer/proc/dead_tele,
-		/mob/dead/observer/proc/open_spawners_menu,
 		/mob/dead/observer/proc/tray_view)
 
 	if(!(istype(src, /mob/dead/observer/rogue/arcaneeye)))
@@ -206,11 +203,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	if(!T)
 		testing("NO T")
-		var/list/turfs = get_area_turfs(/area/shuttle/arrival)
-		if(turfs.len)
-			T = pick(turfs)
-		else
-			T = SSmapping.get_station_center()
+		T = SSmapping.get_station_center()
 
 	forceMove(T)
 
@@ -253,7 +246,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	STOP_PROCESSING(SShaunting, src)
 
-	QDEL_NULL(spawners_menu)
 	return ..()
 
 /mob/dead/CanPass(atom/movable/mover, turf/target)
@@ -599,37 +591,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	to_chat(src, span_ghostalert("<a href=?src=[REF(src)];reenter=1>(Click to re-enter)</a>"))
 	if(sound)
 		SEND_SOUND(src, sound(sound))
-
-/mob/dead/observer/proc/dead_tele()
-	set category = "Ghost"
-	set name = "Teleport"
-	set desc= "Teleport to a location"
-	set hidden = 1
-	if(!check_rights(R_WATCH))
-		return
-	if(!isobserver(usr))
-		to_chat(usr, span_warning("Not when you're not dead!"))
-		return
-	var/list/filtered = list()
-	for(var/V in GLOB.sortedAreas)
-		var/area/A = V
-		if(!A.hidden)
-			filtered += A
-	var/area/thearea  = input("Area to jump to", "BOOYEA") as null|anything in filtered
-
-	if(!thearea)
-		return
-
-	var/list/L = list()
-	for(var/turf/T in get_area_turfs(thearea.type))
-		L+=T
-
-	if(!L || !L.len)
-		to_chat(usr, span_warning("No area available."))
-		return
-
-	usr.forceMove(pick(L))
-	update_parallax_contents()
 
 /mob/dead/observer/verb/follow()
 	set category = "Ghost"
@@ -1174,18 +1135,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(message)
 			to_chat(G, message)
 	GLOB.observer_default_invisibility = amount
-
-/mob/dead/observer/proc/open_spawners_menu()
-	set name = "Spawners Menu"
-	set desc = ""
-	set category = "Ghost"
-	set hidden = 1
-	if(!check_rights(R_DEBUG))
-		return
-	if(!spawners_menu)
-		spawners_menu = new(src)
-
-	spawners_menu.ui_interact(src)
 
 /mob/dead/observer/proc/tray_view()
 	set category = "Ghost"

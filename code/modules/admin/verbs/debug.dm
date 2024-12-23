@@ -15,37 +15,6 @@
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Debug Two") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-
-
-/* 21st Sept 2010
-Updated by Skie -- Still not perfect but better!
-Stuff you can't do:
-Call proc /mob/proc/Dizzy() for some player
-Because if you select a player mob as owner it tries to do the proc for
-/mob/living/carbon/human/ instead. And that gives a run-time error.
-But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
-*/
-
-/client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
-	set category = "Fun"
-	set name = "Make Simple Animal"
-
-	if(!SSticker.HasRoundStarted())
-		alert("Wait until the game starts")
-		return
-
-	if(!M)
-		alert("That mob doesn't seem to exist, close the panel and try again.")
-		return
-
-	if(isnewplayer(M))
-		alert("The mob must not be a new_player.")
-		return
-
-	log_admin("[key_name(src)] has animalized [M.key].")
-	INVOKE_ASYNC(M, TYPE_PROC_REF(/mob, Animalize))
-
-
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all(object as text)
 	set category = "Debug"
@@ -103,7 +72,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	var/list/areas_with_LS = list()
 	var/list/areas_with_intercom = list()
 	var/list/areas_with_camera = list()
-	var/list/station_areas_blacklist = typecacheof(list(/area/shuttle))
+	var/list/station_areas_blacklist = typecacheof(list())
 
 	if(SSticker.current_state == GAME_STATE_STARTUP)
 		to_chat(usr, "Game still loading, please hold!")
@@ -393,20 +362,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		usr.forceMove(get_turf(landmark))
 		to_chat(usr, span_name("[template.name]"))
 		to_chat(usr, span_italics("[template.description]"))
-
-/client/proc/clear_dynamic_transit()
-	set category = "Debug"
-	set name = "Clear Dynamic Turf Reservations"
-	set desc = ""
-	if(!holder)
-		return
-	var/answer = alert("WARNING: THIS WILL WIPE ALL RESERVED SPACE TO A CLEAN SLATE! ANY MOVING SHUTTLES, ELEVATORS, OR IN-PROGRESS PHOTOGRAPHY WILL BE DELETED!", "Really wipe dynamic turfs?", "YES", "NO")
-	if(answer != "YES")
-		return
-	message_admins(span_adminnotice("[key_name_admin(src)] cleared dynamic transit space."))
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Clear Dynamic Transit") // If...
-	log_admin("[key_name(src)] cleared dynamic transit space.")
-	SSmapping.wipe_reservations()				//this goes after it's logged, incase something horrible happens.
 
 /client/proc/toggle_medal_disable()
 	set category = "Debug"

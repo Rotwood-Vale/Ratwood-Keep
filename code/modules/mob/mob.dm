@@ -113,27 +113,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 				hud_list[hud] = I
 
 /**
-  * Some kind of debug verb that gives atmosphere environment details
-  */
-/mob/proc/Cell()
-	set category = "Admin"
-	set hidden = 1
-
-	if(!loc)
-		return 0
-
-	var/datum/gas_mixture/environment = loc.return_air()
-
-	var/t =	span_notice("Coordinates: [x],[y] \n")
-	t +=	span_danger("Temperature: [environment.temperature] \n")
-	for(var/id in environment.gases)
-		var/gas = environment.gases[id]
-		if(gas[MOLES])
-			t+=span_notice("[gas[GAS_META][META_GAS_NAME]]: [gas[MOLES]] \n")
-
-	to_chat(usr, t)
-
-/**
   * Show a message to this mob (visual or audible)
   */
 /mob/proc/show_message(msg, type, alt_msg, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
@@ -811,7 +790,6 @@ GLOBAL_VAR_INIT(mobids, 1)
 			if(cached)
 				stat(null, "Next Map: [cached.map_name]")
 			stat(null, "Round ID: [GLOB.rogue_round_id ? GLOB.rogue_round_id : "NULL"]")
-//			stat(null, "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]")
 			stat(null, "Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
 			if(SSticker.mode?.roundvoteend)
 				stat("Round End: [DisplayTimeText(time_left)]")
@@ -820,12 +798,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 			stat(null, "Dae of Week: [days]")
 			stat(null, "IC Time: [station_time_timestamp()] [station_time()]")
 			stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
-			if(check_rights(R_ADMIN,0))
-				stat(null, SSmigrants.get_status_line())
-			if(SSshuttle.emergency)
-				var/ETA = SSshuttle.emergency.getModeStr()
-				if(ETA)
-					stat(null, "[ETA] [SSshuttle.emergency.getTimerStr()]")
+
 	if(client)
 		if(statpanel("RoundInfo"))
 			stat("Round ID: [GLOB.rogue_round_id]")

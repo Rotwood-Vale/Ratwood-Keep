@@ -556,7 +556,7 @@
 	icon_dead = "void_puppy_dead"
 	nofur = TRUE
 	unsuitable_atmos_damage = 0
-	minbodytemp = TCMB
+	minbodytemp = 2.7
 	maxbodytemp = T0C + 40
 
 /mob/living/simple_animal/pet/dog/corgi/puppy/void/Process_Spacemove(movement_dir = 0)

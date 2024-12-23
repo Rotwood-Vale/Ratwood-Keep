@@ -223,10 +223,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_desc = ""
 	shot_glass_icon_state = "shotglassclear"
 
-/datum/reagent/consumable/ethanol/vodka/on_mob_life(mob/living/carbon/M)
-	M.radiation = max(M.radiation-2,0)
-	return ..()
-
 /datum/reagent/consumable/ethanol/bilk
 	name = "Bilk"
 	description = "This appears to be beer mixed with milk. Disgusting."
@@ -497,11 +493,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "screwdriverglass"
 	glass_name = "Screwdriver"
 	glass_desc = ""
-
-/datum/reagent/consumable/ethanol/screwdrivercocktail/on_mob_life(mob/living/carbon/M)
-	if(M.mind && M.mind.assigned_role in list("Station Engineer", "Atmospheric Technician", "Chief Engineer")) //Engineers lose radiation poisoning at a massive rate.
-		M.radiation = max(M.radiation - 25, 0)
-	return ..()
 
 /datum/reagent/consumable/ethanol/booger
 	name = "Booger"

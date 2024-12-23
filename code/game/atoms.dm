@@ -251,67 +251,12 @@
 	if(!T)
 		return FALSE
 
-	if(is_reserved_level(T.z))
-		for(var/A in SSshuttle.mobile)
-			var/obj/docking_port/mobile/M = A
-			if(M.launch_status == ENDGAME_TRANSIT)
-				for(var/place in M.shuttle_areas)
-					var/area/shuttle/shuttle_area = place
-					if(T in shuttle_area)
-						return TRUE
-
 	if(!is_centcom_level(T.z))//if not, don't bother
 		return FALSE
 
 	//Check for centcom itself
 	if(istype(T.loc, /area/centcom))
 		return TRUE
-
-	//Check for centcom shuttles
-	for(var/A in SSshuttle.mobile)
-		var/obj/docking_port/mobile/M = A
-		if(M.launch_status == ENDGAME_LAUNCHED)
-			for(var/place in M.shuttle_areas)
-				var/area/shuttle/shuttle_area = place
-				if(T in shuttle_area)
-					return TRUE
-
-/**
-  * Is the atom in any of the centcom syndicate areas
-  *
-  * Either in the syndie base on centcom, or any of their shuttles
-  *
-  * Also used in gamemode code for win conditions
-  */
-/atom/proc/onSyndieBase()
-	var/turf/T = get_turf(src)
-	if(!T)
-		return FALSE
-
-	if(!is_centcom_level(T.z))//if not, don't bother
-		return FALSE
-
-	if(istype(T.loc, /area/shuttle/syndicate) || istype(T.loc, /area/syndicate_mothership) || istype(T.loc, /area/shuttle/assault_pod))
-		return TRUE
-
-	return FALSE
-
-/**
-  * Is the atom in an away mission
-  *
-  * Must be in the away mission z-level to return TRUE
-  *
-  * Also used in gamemode code for win conditions
-  */
-/atom/proc/onAwayMission()
-	var/turf/T = get_turf(src)
-	if(!T)
-		return FALSE
-
-	if(is_away_level(T.z))
-		return TRUE
-
-	return FALSE
 
 /**
   * Ensure a list of atoms/reagents exists inside this atom
@@ -350,26 +295,6 @@
 ///Hook for multiz???
 /atom/proc/update_multiz(prune_on_fail = FALSE)
 	return FALSE
-
-///Take air from the passed in gas mixture datum
-/atom/proc/assume_air(datum/gas_mixture/giver)
-	qdel(giver)
-	return null
-
-///Remove air from this atom
-/atom/proc/remove_air(amount)
-	return null
-
-///Return the current air environment in this atom
-/atom/proc/return_air()
-	if(loc)
-		return loc.return_air()
-	else
-		return null
-
-///Return the air if we can analyze it
-/atom/proc/return_analyzable_air()
-	return null
 
 ///Check if this atoms eye is still alive (probably)
 /atom/proc/check_eye(mob/user)
@@ -657,14 +582,6 @@
   */
 /atom/proc/emag_act(mob/user)
 	SEND_SIGNAL(src, COMSIG_ATOM_EMAG_ACT, user)
-
-/**
-  * Respond to a radioactive wave hitting this atom
-  *
-  * Default behaviour is to send COMSIG_ATOM_RAD_ACT and return
-  */
-/atom/proc/rad_act(strength)
-	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
 
 /**
   * Respond to narsie eating our atom
@@ -1045,10 +962,6 @@
 
 ///Generate a tag for this atom
 /atom/proc/GenerateTag()
-	return
-
-///Connect this atom to a shuttle
-/atom/proc/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
 	return
 
 /// Generic logging helper
