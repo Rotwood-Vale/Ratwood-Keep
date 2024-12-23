@@ -346,7 +346,7 @@
 
 /// SHIELDS
 /datum/anvil_recipe/weapons/steel/kiteshield
-	name = "Heraldic Shield (+1 Steel) (+1 Hide)"
+	name = "Heraldic Shield (+1 Steel) (+1 Cured Leather)"
 	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
