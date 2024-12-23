@@ -81,7 +81,7 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-			H.change_stat("perception", 2)
+			H.change_stat("perception", 1)
 			H.change_stat("strength", 2) //to offset the age
 		H.change_stat("strength", 1) ///They deserve the whips too actually
 		H.change_stat("endurance", 3) ///Who the fuck gave Confessor 3 Endurance lmao
@@ -141,7 +141,6 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-			H.change_stat("endurance", 2) //Offset age 
 			H.change_stat("strength", 2) //to offset the age
 		H.change_stat("strength", 2)	///Templar stats but with perception and intelligence.
 		H.change_stat("endurance", 3) 
