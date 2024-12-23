@@ -24,3 +24,4 @@
 	)
 
 	idle_behavior = /datum/idle_behavior/nothing
+
