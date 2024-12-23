@@ -565,7 +565,7 @@
 	name = "Seed & Feed"
 	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
 	req_text = "Be a Druid, Soilson, Towner or Refugee."
-	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/refugee, /datum/job/roguetown/villager, /datum/job/roguetown/druid)
+	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/refugee, /datum/job/roguetown/towner, /datum/job/roguetown/druid)
 	weight = 100
 
 /datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)
