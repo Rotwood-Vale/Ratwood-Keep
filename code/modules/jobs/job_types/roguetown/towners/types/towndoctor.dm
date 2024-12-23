@@ -2,7 +2,7 @@
 	name = "Town Physician"
 	tutorial = "You are a freelance physician, taking jobs patching thos up when you can for whatever they can or are willing to pay. its thankless and most of the time it ends up being for free with you swearing to yourself 'next one will appreciate it'"
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/refugee/doctor
 	category_tags = list(CTAG_TOWNER)
 	traits_applied = list(TRAIT_EMPATH, TRAIT_NOSTINK)

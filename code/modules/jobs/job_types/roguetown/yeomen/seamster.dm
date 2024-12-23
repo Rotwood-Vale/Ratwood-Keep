@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP
 	special_exceptions = RACES_SEELIE
 	tutorial = "You are the Seamster. Be it repairing a brigand's leather armour, a Lord's cape, the garnments of common folk and clergy alike, you have done it all. \
 				Through many sleepless nights and by the sweat of your brow you have now managed to purchase your own workshop. \
