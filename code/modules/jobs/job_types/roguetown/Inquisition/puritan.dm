@@ -75,7 +75,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 5, TRUE) ///Ortho Confessor gets master in every stealth skill. Insane. 
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE) //To track down heretics to their evil lairs... 
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE) //Always thought it was crazy they got listening devices but NO means to effectively sneak them into places.
-		H.change_stat("strength", 1) ///Not so weasel-like as Confessors, also need 11 str for the funny whip
+		H.change_stat("strength", -1) ///No whip for you since you have crazy high skills (unless you run muscular/thuggish)
 		H.change_stat("endurance", 3) ///Who the fuck gave Confessor 3 Endurance lmao
 		H.change_stat("perception", 3)
 		H.change_stat("speed", 3) //Rogues get 3 fucking speed and spymaster hands get 4, they deserve this. Confessor does too wtf
