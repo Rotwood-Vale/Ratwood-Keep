@@ -118,5 +118,6 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 			H.set_patron(/datum/patron/zizo)
 			H.faction += "undead"
+			ADD_TRAIT(H, TRAIT_NECROMANCER, TRAIT_GENERIC)
 
 	H.set_blindness(0)

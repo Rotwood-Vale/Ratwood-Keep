@@ -66,4 +66,6 @@
 		if(H.gender == MALE)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 
-
+		switch(H.patron?.type)
+			if(/datum/patron/zizo)
+				ADD_TRAIT(H, TRAIT_NECROMANCER, TRAIT_GENERIC)

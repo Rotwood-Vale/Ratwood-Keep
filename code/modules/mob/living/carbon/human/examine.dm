@@ -172,7 +172,8 @@
 				. += span_userdanger("LUNATIC!")
 			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 				. += span_userdanger("CURSED!")
-
+			if(HAS_TRAIT(src, TRAIT_NECROMANCER))
+				. += span_userdanger("NECROMANCER!")
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
 			. += span_userdanger("MANIAC!")
 
