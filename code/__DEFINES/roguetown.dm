@@ -42,9 +42,9 @@
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
 
-#define RACES_TOLERATED_UP
+#define RACES_TOLERATED
 
-#define RACES_SHUNNED_UP
+#define RACES_SHUNNED
 
 #define RACES_VERY_SHUNNED \
 	/datum/species/human/northern
