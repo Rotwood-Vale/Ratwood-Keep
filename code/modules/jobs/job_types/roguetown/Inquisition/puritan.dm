@@ -35,11 +35,11 @@
 		H.become_blind("advsetup")
 
 
-////Classic Inquisitor with a much more underground twist. Use listening devices, sneak into places to gather evidence, track down suspicious individuals.
+////Classic Inquisitor with a much more underground twist. Use listening devices, sneak into places to gather evidence, track down suspicious individuals. Has relatively the same utility stats as Confessor, but fulfills a different niche in terms of their combative job as the head honcho. 
 
 /datum/advclass/puritan/inspector
 	name = "The Eye of Psydon"
-	tutorial = "Your eternal service to fighting the FORCES OF HERESY has manifested within you into a profession of underground and underhanded investigation, away from the prying eyes of others. Stop HERESY in their tracks, predict their movements, collect evidence through listening devices and, when the time comes - strike with impunity with your blade and swift dodging prowess."
+	tutorial = "Your eternal service to fighting the FORCES OF HERESY has manifested within you into a profession of underground connections of Confessors, away from the prying eyes of others. Stop HERESY in their tracks, predict their movements, collect evidence through listening devices and, when the time comes - strike with impunity with your blade and swift dodging prowess."
 	outfit = /datum/outfit/job/roguetown/puritan/inspector
 
 	category_tags = list(CTAG_PURITAN)
@@ -59,27 +59,26 @@
 	head = /obj/item/clothing/head/roguetown/puritan
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	beltl = /obj/item/rogueweapon/sword/rapier
-	backpack_contents = list(/obj/item/storage/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver)
+	backpack_contents = list(/obj/item/storage/keyring/puritan = 1, /obj/item/lockpickring/mundane = 1, /obj/item/rogueweapon/huntingknife/idagger/silver)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE) //Keeping it up with Confessor
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE) //Keeping it up with Confessor
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) //Keeping it up with Confessor
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE) ///They don't get lockpicks though, gotta earn that.
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE) //Keeping it up with Confessor
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 5, TRUE) ///Ortho Confessor gets master in every stealth skill. Insane. 
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE) //To track down heretics to their evil lairs... 
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE) //Always thought it was crazy they got listening devices but NO means to effectively sneak them into places.
-		H.change_stat("strength", 1)
-		H.change_stat("endurance", 2)
-		H.change_stat("constitution", 1)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE) //Always thought it was crazy they got listening devices but NO means to effectively sneak them into places.
+		H.change_stat("strength", 1) ///Not so weasel-like as Confessors, also need 11 str for the funny whip
+		H.change_stat("endurance", 3) ///Who the fuck gave Confessor 3 Endurance lmao
 		H.change_stat("perception", 3)
-		H.change_stat("speed", 3) //Rogues get 3 fucking speed and spymaster hands get 4, they deserve this.
+		H.change_stat("speed", 3) //Rogues get 3 fucking speed and spymaster hands get 4, they deserve this. Confessor does too wtf
 		H.change_stat("intelligence", 3)
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
@@ -89,11 +88,14 @@
 	ADD_TRAIT(H, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
 
-///The dirty, violent side of the Inquisition. Meant for confrontational, conflict-driven situations as opposed to simply sneaking around and asking questions. Vampire-slayer. Werewolf-slayer. Lich-slayer. 
+///The dirty, violent side of the Inquisition. Meant for confrontational, conflict-driven situations as opposed to simply sneaking around and asking questions. Templar with none of the miracles, but with all the muscles and more. 
 
 /datum/advclass/puritan/muscle
 	name = "The Fist of Psydon"
-	tutorial = "Your specialty in the Inquisition was never fruitful in terms of espionage and stealth. You had a unique talent in busting down doors to secret churches and worship spots, extracting confessions on the spot out of those who did not yield to PSYDON, and driving out the children of ASCENDANT FILTH with a silver blade. Face down the FORCES OF EVIL with whips and chains. You are the Fist of Psydon."
+	tutorial = "Your specialty in the Inquisition was never fruitful in terms of espionage and stealth or the mystic miracles of PSYDON. You had a unique talent in busting down doors to secret churches and worship spots, extracting confessions on the spot out of those who did not yield to PSYDON, and driving out the children of ASCENDANT FILTH with a silver blade. Face down the FORCES OF EVIL with whips and chains. You are the Fist of Psydon."
+	outfit = /datum/outfit/job/roguetown/puritan/muscle
+	cmode_music = 'sound/music/templarofpsydonia.ogg'
+
 	category_tags = list(CTAG_PURITAN)
 
 /datum/outfit/job/roguetown/puritan/muscle/pre_equip(mob/living/carbon/human/H)
@@ -108,7 +110,7 @@
 	cloak = /obj/item/clothing/cloak/psydontabard
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	head = /obj/item/clothing/head/roguetown/puritan
+	head = /obj/item/clothing/head/roguetown/roguehood/psydon
 	gloves = /obj/item/clothing/gloves/roguetown/chain/psydon
 	beltl = /obj/item/rogueweapon/mace/silver
 	backpack_contents = list(/obj/item/storage/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver)
@@ -118,7 +120,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE) /// Swords? When you should be bashing skulls?
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
@@ -126,7 +129,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.change_stat("strength", 2)	///Templar stats but with perception and intelligence.
 		H.change_stat("endurance", 3) 
-		H.change_stat("constitution", 2)
+		H.change_stat("constitution", 3) ///Psydonian Templar should NOT be superior to the big bossman
 		H.change_stat("perception", 2)
 		H.change_stat("intelligence", 2)
 		H.change_stat("speed", -1)
