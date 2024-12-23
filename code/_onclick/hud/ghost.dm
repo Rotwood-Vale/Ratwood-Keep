@@ -55,7 +55,7 @@
 
 /atom/movable/screen/ghost/reenter_corpse/Click()
 	var/mob/dead/observer/G = usr
-	G.client?.admin_ghost()
+	G.reenter_corpse()
 
 /atom/movable/screen/ghost/teleport
 	name = "Teleport"

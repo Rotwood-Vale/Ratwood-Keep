@@ -353,7 +353,7 @@ Transfer_mind is there to check if mob is being deleted/not going to have a body
 Works together with spawning an observer, noted above.
 */
 
-/mob/proc/ghostize(can_reenter_corpse = 1, force_respawn = FALSE, admin = FALSE, drawskip)
+/mob/proc/ghostize(can_reenter_corpse = TRUE, force_respawn = FALSE, admin = FALSE, drawskip)
 	if(key)
 		stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
 //		stop_all_loops()
