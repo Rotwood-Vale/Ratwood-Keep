@@ -284,6 +284,8 @@
 					return FALSE
 			if(has_status_effect(/datum/status_effect/debuff/riposted))
 				return FALSE
+			if(has_status_effect(/datum/status_effect/debuff/feinted))
+				return FALSE
 			last_dodge = world.time
 			if(src.loc == user.loc)
 				return FALSE
