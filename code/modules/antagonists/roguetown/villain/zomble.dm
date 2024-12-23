@@ -75,7 +75,7 @@
 
 //Housekeeping/saving variables from pre-zombie 
 
-//Death transformation process goes death -> can_death_zombify -> zombie_check -> zombie.gain() -> rotting -> time -> zombie.wake() -> transform
+//Death transformation process goes death -> can_death_zombify -> zombie_check -> zombie.on_gain() -> rotting -> time -> zombie.wake_zombie() -> transform
 //Infection transformation process goes -> infection -> timered transform in zombie_infect_attempt() -> /datum/antagonist/zombie/proc/wake_zombie -> zombietransform
 /datum/antagonist/zombie/on_gain()
 	var/mob/living/carbon/human/zombie = owner?.current
