@@ -887,7 +887,7 @@
 	skill_level = 5
 
 /datum/crafting_recipe/roguetown/sewing/nmjacket
-	name = "newmoon coat - (2 leather, 2 cloth, 2 silk, amulet of noc, LOOM, EXPERT)"
+	name = "newmoon coat - (2 leather, 2 cloth, 2 silk, amulet of noc, EXPERT)"
 	result = list (/obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 2,
