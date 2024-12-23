@@ -225,6 +225,7 @@
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 4, TRUE)
 
 /datum/special_trait/languagesavant
 	name = "Polyglot"
@@ -521,7 +522,7 @@
 /datum/special_trait/my_precious
 	name = "My Precious"
 	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")
-	req_text = "Be a beggar or vagabond"
+	req_text = "Be a beggar"
 	allowed_jobs = list(/datum/job/roguetown/beggar)
 	weight = 50
 

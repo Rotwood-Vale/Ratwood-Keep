@@ -95,8 +95,6 @@
 	name = "Lesser Raise Undead"
 	cost = 6	
 	desc = "Reanimate a corpse as a skeleton. You can maintain two sapient skeletons, the rest will be mindless. The body must have all limbs and its head."
-	cost = 4
-	desc = "Reanimate a corpse as a skeleton. You can maintain a limited number of sapient skeletons, capped to your arcane skill, the rest will be mindless. The body must have all limbs and its head."
 	clothes_req = FALSE
 	range = 7
 	overlay_state = "raiseskele"
@@ -322,6 +320,7 @@
 		return
 	var/mob/living/carbon/human/user = src.mind.bonenecro
 	user.mind.adjust_boneboys(-1)
+	to_chat(user, span_warning("One of my sapient skeleton's bindings has come undone, I may now raise another."))
 	src.mind.set_boneboy(FALSE)
 	src.mind.set_bonenecro(null)
 
@@ -385,6 +384,8 @@
 
 	if(charflaw)
 		QDEL_NULL(charflaw)
+
+	can_do_sex = FALSE //where my bonger go
 
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)

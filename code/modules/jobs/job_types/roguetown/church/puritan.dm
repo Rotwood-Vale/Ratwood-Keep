@@ -19,7 +19,7 @@
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
 	give_bank_account = 200
-	min_pq = 5
+	min_pq = 8
 	max_pq = null
 
 /datum/outfit/job/roguetown/puritan
@@ -52,6 +52,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
@@ -61,6 +63,12 @@
 		H.change_stat("constitution", 3)
 		H.change_stat("perception", 3)
 		H.change_stat("intelligence", 3)
+
+		if(H.mind.has_antag_datum(/datum/antagonist))
+			return
+		var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
+		H.mind.add_antag_datum(new_antag)
+
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)

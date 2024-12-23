@@ -41,7 +41,7 @@
 			beltr = /obj/item/rogueweapon/huntingknife
 			backr = /obj/item/rogueweapon/woodstaff
 			backl = /obj/item/storage/backpack/rogue/backpack
-			backpack_contents = list( /obj/item/reagent_containers/glass/bottle = 2, /obj/item/reagent_containers/glass/mortar = 1, /obj/item/pestle = 1,  /obj/item/reagent_containers/glass/alembic = 1)
+			backpack_contents = list( /obj/item/reagent_containers/glass/bottle = 2, /obj/item/reagent_containers/glass/mortar = 1,  /obj/item/reagent_containers/glass/alembic = 1, /obj/item/thermometer)
 			H.change_stat("intelligence", 2)
 			H.change_stat("fortune", 1)
 			H.change_stat("strength", -1)
