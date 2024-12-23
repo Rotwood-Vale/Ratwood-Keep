@@ -3,11 +3,11 @@
 	tutorial = "You are a fisherman, with your bag of bait and your fishing rod, you are one of few who can reliably get a stable source of meat around here."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
-	outfit = /datum/outfit/job/roguetown/refugee/fisher
+	outfit = /datum/outfit/job/roguetown/towner/fisher
 
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/refugee/fisher/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/towner/fisher/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 

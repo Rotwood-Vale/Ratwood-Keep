@@ -4,10 +4,10 @@
 	Join the local Soilsmen at their farm, or make your own little orchard."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
-	outfit = /datum/outfit/job/roguetown/refugee/farmer
+	outfit = /datum/outfit/job/roguetown/towner/farmer
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/refugee/farmer/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/towner/farmer/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
