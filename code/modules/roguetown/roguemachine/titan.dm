@@ -25,6 +25,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	anchored = TRUE
 	var/mode = 0
 	COOLDOWN_DECLARE(king_announcement)
+	COOLDOWN_DECLARE(race_manipulation)
 
 /obj/structure/roguemachine/titan/obj_break(damage_flag)
 	..()
@@ -203,6 +204,9 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 					say("You are not my master!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 					return
+				if(!COOLDOWN_FINISHED(src, race_manipulation))
+					say("These changes... They take time.")
+					return
 				say("Reward the worthy...")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				mode = 5
@@ -211,6 +215,9 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				if(notlord || nocrown)
 					say("You are not my master!")
 					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(!COOLDOWN_FINISHED(src, race_manipulation))
+					say("These changes... They take time.")
 					return
 				say("Punish the vermin...")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
@@ -244,11 +251,12 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(!Adjacent(user))
 		return
 	
-	for(var/datum/species/S as anything in GLOB.dyn_races_shunned_up)
+	for(var/datum/species/S as anything in GLOB.dyn_all_races)
 		if(message == S.name)
 			var/elevation_result = SSsocial_pyramid.elevate_race(S)
 			if(elevation_result)
 				priority_announce("The [TITLE_LORD] has elevated the [S.name] to a [elevation_result] status.", "The Pyramid Changes", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+				COOLDOWN_START(src, race_manipulation, 5 MINUTES)
 				return
 			else
 				playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
@@ -268,15 +276,16 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			var/degradation_result = SSsocial_pyramid.degrade_race(S)
 			if(degradation_result)
 				priority_announce("The [TITLE_LORD] has degraded the [S.name] to a [degradation_result] status.", "The Pyramid Changes", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+				COOLDOWN_START(src, race_manipulation, 5 MINUTES)
 				return
 			else
 				playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 				say("[S.name] could not be degraded further.")
 				return
-		else
-			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-			say("Unable to determine race.")
-			return
+
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+		say("Unable to determine race.")
+		return
 
 /obj/structure/roguemachine/titan/proc/give_tax_popup(mob/living/carbon/human/user)
 	if(!Adjacent(user))
