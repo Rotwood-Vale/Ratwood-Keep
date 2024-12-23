@@ -24,7 +24,6 @@
 )
 
 #define RACES_RESPECTED \
-	/datum/species/human/northern,\
 	/datum/species/elf/wood,\
 	/datum/species/human/halfelf,\
 	/datum/species/dwarf/mountain,\
@@ -32,23 +31,19 @@
 	/datum/species/lupian,\
 	/datum/species/vulpkanin,\
 	/datum/species/moth,\
-	/datum/species/dracon,
-
-#define RACES_TOLERATED \
+	/datum/species/dracon,\
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
 	/datum/species/akula,\
 	/datum/species/anthromorph,\
-	/datum/species/demihuman
-
-#define RACES_SHUNNED \
+	/datum/species/demihuman, \
 	/datum/species/elf/dark,\
 	/datum/species/tieberian,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold
 
 #define RACES_VERY_SHUNNED \
-	/datum/species/halforc
+	/datum/species/human/northern
 
 #define RACES_GOBLIN \
 	/datum/species/goblinp
