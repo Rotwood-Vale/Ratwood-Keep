@@ -2611,6 +2611,18 @@
 /obj/structure/globe,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/shelter/town/harbor)
+"bDQ" = (
+/obj/structure/table/wood,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/bars/passage/shutter{
+	redstone_id = "smith_shutter01"
+	},
+/obj/structure/fluff/canopy/green,
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/dwarfin)
 "bDY" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/tavern)
@@ -3944,6 +3956,15 @@
 "czr" = (
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave)
+"czv" = (
+/obj/structure/table/wood,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/fluff/canopy/green,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/shop)
 "czF" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -4418,6 +4439,12 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
+"cMO" = (
+/obj/machinery/light/rogue/lanternpost{
+	dir = 2
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/town/harbor)
 "cNd" = (
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/fabric_double,
@@ -10755,6 +10782,7 @@
 /obj/structure/bars/passage/shutter{
 	redstone_id = "smith_shutter02"
 	},
+/obj/structure/fluff/canopy/green,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "gGu" = (
@@ -12321,6 +12349,7 @@
 /obj/structure/bars/passage/shutter{
 	redstone_id = "smith_shutter02"
 	},
+/obj/structure/fluff/canopy,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "hHp" = (
@@ -14746,7 +14775,9 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/church)
 "jaj" = (
-/obj/structure/fluff/walldeco/goblet,
+/obj/structure/fluff/canopy/side/end{
+	pixel_y = -16
+	},
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/outdoors/town/harbor)
 "jap" = (
@@ -23913,6 +23944,7 @@
 /obj/structure/bell_common{
 	pixel_y = 5
 	},
+/obj/structure/fluff/canopy,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "oJO" = (
@@ -24663,6 +24695,13 @@
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
+"pkW" = (
+/obj/structure/fluff/canopy/side{
+	pixel_y = -17
+	},
+/obj/structure/fluff/canopy/side,
+/turf/open/floor/rogue/ruinedwood/platform,
+/area/rogue/outdoors/town/harbor)
 "plb" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	lockid = "confession";
@@ -25617,6 +25656,13 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/church)
+"pTA" = (
+/obj/structure/fluff/walldeco/goblet{
+	dir = 1;
+	plane = -1
+	},
+/turf/open/floor/rogue/ruinedwood/platform,
+/area/rogue/outdoors/town/harbor)
 "pTG" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -30333,6 +30379,9 @@
 	dir = 10;
 	icon_state = "cobbleedge-w"
 	},
+/obj/structure/fluff/canopy/side{
+	dir = 1
+	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/harbor)
 "sWk" = (
@@ -33204,6 +33253,7 @@
 /obj/structure/bars/passage/shutter{
 	redstone_id = "smith_shutter01"
 	},
+/obj/structure/fluff/canopy,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "uGP" = (
@@ -33609,6 +33659,14 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/church)
+"uRA" = (
+/obj/structure/fluff/railing/wood{
+	pixel_y = 3;
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town/harbor)
 "uRH" = (
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/grass,
@@ -37124,6 +37182,15 @@
 /obj/structure/fluff/wallclock,
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/indoors/town/manor)
+"xcq" = (
+/obj/structure/table/wood,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/fluff/canopy,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/shop)
 "xcJ" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -37243,7 +37310,7 @@
 /area/rogue/indoors/town)
 "xhx" = (
 /obj/structure/fluff/railing/border,
-/obj/machinery/light/rogue/lanternpost{
+/obj/structure/fluff/canopy/side/end{
 	dir = 1
 	},
 /turf/open/floor/rogue/concrete,
@@ -37831,6 +37898,12 @@
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
+"xyB" = (
+/obj/structure/fluff/canopy/side{
+	dir = 1
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/town/harbor)
 "xyI" = (
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/town)
@@ -323009,7 +323082,7 @@ wbg
 ylJ
 wVI
 wVI
-uGK
+bDQ
 wKp
 eah
 gsM
@@ -344978,7 +345051,7 @@ dCf
 vSv
 hiU
 cad
-hLy
+xcq
 jkm
 fPw
 dVx
@@ -345410,7 +345483,7 @@ vSv
 vSv
 cad
 bUi
-hLy
+czv
 jkm
 fPw
 fPw
@@ -346705,10 +346778,10 @@ iXq
 iXq
 uOf
 fPw
-fPw
+pkW
 jaj
 fPw
-xRK
+pTA
 fPw
 fPw
 iFw
@@ -347140,7 +347213,7 @@ fPw
 fPw
 xRK
 nKo
-iXq
+uRA
 ief
 sjj
 iFw
@@ -347162,7 +347235,7 @@ sSq
 cCW
 iyQ
 aTp
-xjC
+cMO
 xjC
 kto
 xAt
@@ -348890,8 +348963,8 @@ kND
 oME
 oME
 sWf
-xjC
-xjC
+xyB
+xyB
 xhx
 xAt
 xAt

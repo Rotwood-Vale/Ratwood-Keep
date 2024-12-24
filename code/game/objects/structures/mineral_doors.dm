@@ -882,7 +882,7 @@
 	keylock = TRUE
 	grant_resident_key = TRUE
 	resident_key_type = /obj/item/key/townie
-	resident_role = /datum/job/roguetown/villager
+	resident_role = /datum/job/roguetown/towner
 	lockid = null //Will be randomized
 
 /obj/structure/mineral_door/wood/towner/generic

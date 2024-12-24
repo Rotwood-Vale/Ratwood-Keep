@@ -522,7 +522,7 @@
 /datum/special_trait/my_precious
 	name = "My Precious"
 	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")
-	req_text = "Be a beggar or vagabond"
+	req_text = "Be a beggar"
 	allowed_jobs = list(/datum/job/roguetown/beggar)
 	weight = 50
 
@@ -565,7 +565,7 @@
 	name = "Seed & Feed"
 	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
 	req_text = "Be a Druid, Soilson, Towner or Refugee."
-	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/refugee, /datum/job/roguetown/villager, /datum/job/roguetown/druid)
+	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/refugee, /datum/job/roguetown/towner, /datum/job/roguetown/druid)
 	weight = 100
 
 /datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)
