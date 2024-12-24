@@ -3,7 +3,7 @@
 	var/mob/living/weapon_owner //who owns this pact weapon
 	var/patronchoice
 	var/weapons = list(
-		/obj/item/rogueweapon/huntingknife/idagger/steel //dagger
+		/obj/item/rogueweapon/huntingknife/idagger/steel, //dagger
 		/obj/item/rogueweapon/estoc, /obj/item/rogueweapon/sword/long, /obj/item/rogueweapon/sword/sabre, /obj/item/rogueweapon/greatsword, //sword
 		/obj/item/rogueweapon/mace/steel, /obj/item/rogueweapon/mace/goden/steel, //blunt
 		/obj/item/rogueweapon/stoneaxe/woodcut/steel, /obj/item/rogueweapon/stoneaxe/battle, //axes
