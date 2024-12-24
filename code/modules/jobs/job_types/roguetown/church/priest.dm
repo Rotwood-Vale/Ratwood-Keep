@@ -97,19 +97,19 @@
 		//Abdicate previous Duke
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.mind)
-				if(HL.mind.assigned_role == "Duke" || HL.mind.assigned_role == "Duchess")
+				if(HL.mind.assigned_role == "Duke" || HL.mind.assigned_role == "Duke Consort")
 					HL.mind.assigned_role = "Towner" //So they don't get the innate traits of the lord
 			//would be better to change their title directly, but that's not possible since the title comes from the job datum
 			if(HL.job == "Duke")
 				HL.job = "Duke Emeritus"
-			if(HL.job == "Duchess")
-				HL.job = "Duchess Dowager"
-			SSjob.type_occupations[/datum/job/roguetown/lord].remove_spells(HL)
+			if(HL.job == "Duke Consort")
+				HL.job = "Consort Dowager"
+			SSjob.type_occupations[/datum/job/roguetown/ruler].remove_spells(HL)
 
 		//Coronate new Lord (or Lady)
 		HU.mind.assigned_role = "Duke"
 		HU.job = "Duke"
-		SSjob.type_occupations[/datum/job/roguetown/lord].add_spells(HU)
+		SSjob.type_occupations[/datum/job/roguetown/ruler].add_spells(HU)
 
 		switch(HU.gender)
 			if("male")

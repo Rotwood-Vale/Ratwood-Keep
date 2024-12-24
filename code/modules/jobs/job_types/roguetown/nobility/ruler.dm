@@ -1,7 +1,7 @@
 GLOBAL_VAR(lordsurname)
 GLOBAL_LIST_EMPTY(lord_titles)
 
-/datum/job/roguetown/lord
+/datum/job/roguetown/ruler
 	title = "Duke"
 	f_title = "Duchess"
 	flag = LORD
@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	spawn_positions = 1
 	selection_color = JCOLOR_NOBLE
 	allowed_races = RACES_TOLERATED_UP
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 
 	spells = list(
 		/obj/effect/proc_holder/spell/self/grant_title,
@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	give_bank_account = TRUE
 
 
-/datum/job/roguetown/lord/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+/datum/job/roguetown/ruler/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(L)
 		var/list/chopped_name = splittext(L.real_name, " ")
@@ -62,57 +62,93 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/crown/serpcrown
-	l_hand = /obj/item/rogueweapon/lordscepter
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/gun/ballistic/arquebus_pistol
-	beltl = /obj/item/ammo_holder/bullet/lead
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/powderflask = 1)
-	id = /obj/item/clothing/ring/active/nomag	
-	pants = /obj/item/clothing/under/roguetown/tights/black
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/duke
-	shoes = /obj/item/clothing/shoes/roguetown/armor
-	
-	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
-		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		H.change_stat("strength", 1)
-		H.change_stat("intelligence", 3)
-		H.change_stat("endurance", 3)
-		H.change_stat("speed", 1)
-		H.change_stat("perception", 2)
-		H.change_stat("fortune", 5)
 
 	if(H.gender == MALE)
-		H.dna.species.soundpack_m = new /datum/voicepack/male/evil()
+		head = /obj/item/clothing/head/roguetown/crown/serpcrown
+		l_hand = /obj/item/rogueweapon/lordscepter
+		belt = /obj/item/storage/belt/rogue/leather
+		beltr = /obj/item/gun/ballistic/arquebus_pistol
+		beltl = /obj/item/ammo_holder/bullet/lead
+		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/powderflask = 1)
+		id = /obj/item/clothing/ring/active/nomag	
+		pants = /obj/item/clothing/under/roguetown/tights/black
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/duke
+		shoes = /obj/item/clothing/shoes/roguetown/armor
+		
+		if(H.mind)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
+			if(H.age == AGE_OLD)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.change_stat("strength", 1)
+			H.change_stat("intelligence", 3)
+			H.change_stat("endurance", 3)
+			H.change_stat("speed", 1)
+			H.change_stat("perception", 2)
+			H.change_stat("fortune", 5)
 
-	if(H.wear_mask)
-		if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch))
-			qdel(H.wear_mask)
-			mask = /obj/item/clothing/mask/rogue/lordmask
-		if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch/left))
-			qdel(H.wear_mask)
-			mask = /obj/item/clothing/mask/rogue/lordmask/l
+			H.dna.species.soundpack_m = new /datum/voicepack/male/evil()
+
+		if(H.wear_mask)
+			if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch))
+				qdel(H.wear_mask)
+				mask = /obj/item/clothing/mask/rogue/lordmask
+			if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch/left))
+				qdel(H.wear_mask)
+				mask = /obj/item/clothing/mask/rogue/lordmask/l
 
 
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+
+	else
+		head = /obj/item/clothing/head/roguetown/crown/serpcrown
+		l_hand = /obj/item/rogueweapon/lordscepter
+		r_hand = /obj/item/clothing/head/roguetown/duchess_hood
+		beltl = /obj/item/storage/keyring/royal
+		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+		belt = /obj/item/storage/belt/rogue/leather/cloth/consort
+		backl = /obj/item/clothing/suit/roguetown/armor/leather/duchess
+		gloves = /obj/item/clothing/gloves/roguetown/leather/black
+
+		id = /obj/item/clothing/ring/active/nomag
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
+		if(H.mind)
+			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+			H.change_stat("intelligence", 3)
+			H.change_stat("endurance", 3)
+			H.change_stat("speed", 2)
+			H.change_stat("perception", 2)
+			H.change_stat("fortune", 5)
+
+		ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+
 //	SSticker.rulermob = H
 
 /datum/outfit/job/roguetown/lord/visuals/pre_equip(mob/living/carbon/human/H)
