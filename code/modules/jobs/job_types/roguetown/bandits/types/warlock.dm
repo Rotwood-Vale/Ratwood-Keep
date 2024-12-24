@@ -7,9 +7,9 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/warlock
 	category_tags = list(CTAG_BANDIT)
-	maximum_possible_slots = 100
+	maximum_possible_slots = 1
 	min_pq = 15
-	pickprob = 100
+	pickprob = 30
 
 /datum/outfit/job/roguetown/bandit/warlock
 
