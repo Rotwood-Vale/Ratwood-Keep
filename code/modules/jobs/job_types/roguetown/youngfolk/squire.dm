@@ -25,6 +25,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/guardcastle
+	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 
 /datum/job/roguetown/squire/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -33,6 +34,14 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
+		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
+			var/obj/item/clothing/S = H.cloak
+			var/index = findtext(H.real_name, " ")
+			if(index)
+				index = copytext(H.real_name, 1,index)
+			if(!index)
+				index = H.real_name
+			S.name = "squire's tabard ([index])"
 
 /datum/advclass/squire/lancer
 	name = "Lancer Squire"

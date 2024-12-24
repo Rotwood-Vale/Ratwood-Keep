@@ -116,13 +116,32 @@
 	dynamic_hair_suffix = ""
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/roguehood/abyssor
+	name = "depths hood"
+	desc = "A hood worn by the followers of Abyssor, with a unique, coral-shaped mask. How do they even see out of this?"
+	color = null
+	icon_state = "abyssorhood"
+	item_state = "abyssorhood"
+	icon = 'icons/roguetown/clothing/head.dmi'
+	body_parts_covered = NECK
+	slot_flags = ITEM_SLOT_HEAD
+	dynamic_hair_suffix = ""
+	edelay_type = 1
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	max_integrity = 100
+
 /obj/item/clothing/head/roguetown/necramask
 	name = "death mask"
 	desc = "A hood with a decorated jaw bone at the chin,normally worn by some followers of Necra as a form of devotion"
 	color = null
 	icon_state = "deathface"
 	item_state = "deathface"
-	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
+	icon = 'icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
+	body_parts_covered = NECK|MOUTH //Jaw bone
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
 	sewrepair = TRUE
 
@@ -257,6 +276,13 @@
 	desc = "A fancy looking hat with colorful feathers sticking out of it."
 	icon_state = "fancy_hat"
 	item_state = "fancyhat"
+	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/fedora
+	name = "archeologist's hat"
+	desc = "A strangely shaped hat with dust caked onto its aged leather."
+	icon_state = "curator"
+	item_state = "curator"
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/hatfur
@@ -696,6 +722,45 @@
 	item_state = "bascinet_novisor"
 	color = COLOR_ASSEMBLY_GOLD
 
+/obj/item/clothing/head/roguetown/helmet/otavan
+	name = "otavan helmet"
+	desc = ""
+	icon_state = "otavahelm"
+	item_state = "otavahelm"
+	adjustable = CAN_CADJUST
+	emote_environment = 3
+	body_parts_covered = FULL_HEAD
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
+
+/obj/item/clothing/head/roguetown/helmet/otavan/AdjustClothes(mob/user)
+	if(loc == user)
+		playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "otavahelm_raised"
+			body_parts_covered = HEAD|EARS|HAIR
+			flags_inv = HIDEEARS
+			flags_cover = null
+			emote_environment = 0
+			update_icon()
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_head()
+			block2add = null
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			emote_environment = 3
+			update_icon()
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_head()
+		user.update_fov_angles()
+
 /obj/item/clothing/head/roguetown/helmet/heavy
 	name = "barbute"
 	desc = "A simple helmet with a visor in the shape of a Y."
@@ -939,6 +1004,17 @@
 	item_state = "dendorhelm"
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 2
+
+/obj/item/clothing/head/roguetown/helmet/heavy/abyssorgreathelm
+	name = "abyssorite helmet"
+	desc = "A helmet commonly worn by Templars in service to Abyssor. It evokes imagery of the sea with a menacing crustacean visage."
+	icon_state = "abyssorgreathelm"
+	item_state = "abyssorgreathelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2

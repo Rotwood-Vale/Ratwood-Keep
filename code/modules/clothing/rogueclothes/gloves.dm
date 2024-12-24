@@ -101,6 +101,23 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 200
 
+/obj/item/clothing/gloves/roguetown/otavan
+	name = "otavan leather gloves"
+	desc = "A pair of heavy Otavan leather gloves, commonly used by fencers, renowned for their quality."
+	icon_state = "fencergloves"
+	item_state = "fencergloves"
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CHOP, BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	resistance_flags = FIRE_PROOF
+	blocksound = SOFTHIT
+	max_integrity = 250
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	anvilrepair = null
+	sewrepair = TRUE
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
 //rogtodo sprites for this
 /obj/item/clothing/gloves/roguetown/plate
 	name = "plate gauntlets"
