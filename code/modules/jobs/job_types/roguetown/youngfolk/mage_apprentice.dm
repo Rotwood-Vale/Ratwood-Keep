@@ -5,6 +5,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 4
+
 	allowed_races = RACES_ALL_KINDS
 	advclass_cat_rolls = list(CTAG_WAPPRENTICE = 20)
 
