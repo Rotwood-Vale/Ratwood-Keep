@@ -75,7 +75,7 @@
 		"love", //ring of soulbinding
 		"friendship", //Pact of the Chain
 		"power", //empowered eldritch blast
-		"purpose" //Pact of the Star Chain
+		"purpose", //Pact of the Star Chain
 		"revenge" //Curses
 	)
 
