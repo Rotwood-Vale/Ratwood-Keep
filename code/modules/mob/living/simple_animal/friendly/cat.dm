@@ -377,7 +377,7 @@
 		step(src, dir)
 		personal_space()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/get_sound(input)
+/mob/living/simple_animal/pet/cat/get_sound(input)
 	switch(input)
 		if("idle")
 			return pick(
