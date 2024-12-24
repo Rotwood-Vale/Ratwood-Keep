@@ -47,7 +47,7 @@
 		)
 	specstats_f = list(
 		"strength" = -1,
-		"perception" = 1,
+		"perception" = 1
 	)
 	enflamed_icon = "widefire"
 	organs = list(
