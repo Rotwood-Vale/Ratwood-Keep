@@ -21,6 +21,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	fillsounds = list('sound/items/fillcup.ogg')
 	poursounds = list('sound/items/fillbottle.ogg')
 	experimental_onhip = TRUE
+	debris = list(/obj/item/natural/glass/shard = 1)
 	var/desc_uncorked = "An open bottle, hopefully a cork is close by."
 	var/fancy		// for bottles with custom descriptors that you don't want to change when bottle manipulated
 
@@ -47,6 +48,11 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 
 	if(closed)
 		add_overlay("[icon_state]cork")
+
+/obj/item/reagent_containers/glass/bottle/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = TRUE)
+	new /obj/item/natural/glass/shard(get_turf(src))
+	..()
+	qdel(src)
 
 /obj/item/reagent_containers/glass/bottle/rmb_self(mob/user)
 	. = ..()
