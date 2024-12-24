@@ -160,6 +160,15 @@
 	resistance_flags = null
 	sewrepair = TRUE
 
+/obj/item/clothing/shoes/roguetown/jester/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list(
+											'sound/items/jinglebell1.ogg' = 1,
+											'sound/items/jinglebell2.ogg' = 1,
+											'sound/items/jinglebell3.ogg' = 1,
+											'sound/items/jinglebell4.ogg' = 1,
+											), 50)
+
 /obj/item/clothing/shoes/roguetown/grenzelhoft
 	name = "grenzelhoft boots"
 	icon_state = "grenzelboots"

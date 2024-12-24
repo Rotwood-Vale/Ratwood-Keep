@@ -93,3 +93,47 @@
 	else
 
 		return ..()
+
+/obj/item/jinglebells
+	mame = "jingling bells"
+	desc = ''
+	icon = ''
+	icon_state = ""
+	throwforce = 5
+
+
+/obj/item/bell_strap
+	name = "strap of bells"
+	desc = ""
+	icon = ''
+	icon_state = ""
+	force = 7
+	hitsound = ''
+	resistance_flags = FIRE_PROOF
+	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
+	dog_fashion = /datum/dog_fashion/saiga
+
+/obj/item/strap/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list(
+											'sound/items/jinglebell1.ogg' = 1,
+											'sound/items/jinglebell2.ogg' = 1,
+											'sound/items/jinglebell3.ogg' = 1,
+											'sound/items/jinglebell4.ogg' = 1,
+											), 50)
+
+/obj/item/clothing/neck/bell_collar
+	name = ""
+	desc = ""
+	icon = ''
+	icon_state = ""
+	slot_flags = ITEM_SLOT_NECK
+
+/obj/item/clothing/neck/bell_collar/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list(
+											'sound/items/jinglebell1.ogg' = 1,
+											'sound/items/jinglebell2.ogg' = 1,
+											'sound/items/jinglebell3.ogg' = 1,
+											'sound/items/jinglebell4.ogg' = 1,
+											), 50)
