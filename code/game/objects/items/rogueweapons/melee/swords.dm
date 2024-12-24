@@ -147,6 +147,7 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 4
+	wlength = WLENGTH_SHORT
 
 /obj/item/rogueweapon/sword/long
 	force = 25
@@ -466,12 +467,14 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 3
+	wlength = WLENGTH_SHORT
 
 /obj/item/rogueweapon/sword/iron/short/chipped
 	force = 17
 	desc = "An ancient-looking iron sword."
 	icon_state = "iswordshort_d"
 	max_integrity = 75
+	wlength = WLENGTH_SHORT
 
 /datum/intent/sword/cut/short
 	clickcd = 9
