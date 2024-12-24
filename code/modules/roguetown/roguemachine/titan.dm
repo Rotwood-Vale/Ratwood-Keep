@@ -255,7 +255,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 		if(message == S.name)
 			var/elevation_result = SSsocial_pyramid.elevate_race(S)
 			if(elevation_result)
-				priority_announce("The [TITLE_LORD] has elevated the [S.name] to a [elevation_result] status.", "The Pyramid Changes", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+				priority_announce("The [TITLE_LORD] has elevated the [S.name] race to a [elevation_result] status.", "The Pyramid Changes", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 				COOLDOWN_START(src, race_manipulation, 5 MINUTES)
 				return
 			else
@@ -275,7 +275,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 		if(message == S.name)
 			var/degradation_result = SSsocial_pyramid.degrade_race(S)
 			if(degradation_result)
-				priority_announce("The [TITLE_LORD] has degraded the [S.name] to a [degradation_result] status.", "The Pyramid Changes", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+				priority_announce("The [TITLE_LORD] has degraded the [S.name] race to a [degradation_result] status.", "The Pyramid Changes", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 				COOLDOWN_START(src, race_manipulation, 5 MINUTES)
 				return
 			else
@@ -283,9 +283,9 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				say("[S.name] could not be degraded further.")
 				return
 
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		say("Unable to determine race.")
-		return
+	playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+	say("Unable to determine race.")
+	return
 
 /obj/structure/roguemachine/titan/proc/give_tax_popup(mob/living/carbon/human/user)
 	if(!Adjacent(user))
