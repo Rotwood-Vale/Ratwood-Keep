@@ -7,7 +7,7 @@
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/combat_bandit2.ogg'
 	maximum_possible_slots = 1
-	min_pq = 30
+	min_pq = 15
 	pickprob = 30
 
 /datum/outfit/job/roguetown/bandit/hedgeknight/pre_equip(mob/living/carbon/human/H)
@@ -41,8 +41,6 @@
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-	if(prob(30))
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 	H.change_stat("strength", 4)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
@@ -51,5 +49,19 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
+	H.verbs |= /mob/proc/haltyell
+	H.ambushable = FALSE
+	H.adjust_blindness(-3)
+	var/weapons = list("Shield","Sword", "spear")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Shield") //More buff, made to stay on the front
+			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 1)
+		if("Sword") // Get the random sword skill
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		if("Spear") // It's a spear
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

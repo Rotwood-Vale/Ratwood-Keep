@@ -50,9 +50,11 @@
 		if("Spear") //Deserter watchman. Maybe should be shield and spear? plenty of shields at the bandit hideout though.
 			r_hand = /obj/item/rogueweapon/spear
 			head = /obj/item/clothing/head/roguetown/helmet/skullcap
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		if("Sword & Shield") //Mercenary on the wrong side of the law
 			backl= /obj/item/rogueweapon/shield/wood
 			beltr = /obj/item/rogueweapon/sword/iron //iron sword like literally every refugee gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

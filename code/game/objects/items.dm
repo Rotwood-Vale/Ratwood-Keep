@@ -207,7 +207,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/list/examine_effects = list()
 
 	///played when an item that is equipped blocks a hit
-	var/list/blocksound 
+	var/list/blocksound
+
+	//make my life easier... -ham
+	var/mob/living/item_owner
 
 	// played when item is placed on hip_r or hip_l, the belt side slots
 	var/sheathe_sound
@@ -348,7 +351,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(sharpness) //give sharp objects butchering functionality, for consistency
 		AddComponent(/datum/component/butchering, 80 * toolspeed)
 
-	if(max_blade_int) 
+	if(max_blade_int)
 		//set blade integrity to randomized 60% to 100% if not already set
 		if(!blade_int)
 			blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
@@ -644,6 +647,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			var/oldy = pixel_y
 			pixel_y = pixel_y+5
 			animate(src, pixel_y = oldy, time = 0.5)
+		SEND_SIGNAL(src, COMSIG_ITEM_DROPPED_TURF,user)
 	if(altgripped || wielded)
 		ungrip(user, FALSE)
 	item_flags &= ~IN_INVENTORY
@@ -1238,4 +1242,5 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(altgripped || wielded)
 			ungrip(M, FALSE)
 
-
+/obj/item/proc/on_embed(obj/item/bodypart/bp)
+	return

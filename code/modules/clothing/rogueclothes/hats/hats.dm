@@ -51,7 +51,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon
 	color = "#78a3c9"
-	
+
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
@@ -690,7 +690,7 @@
 	icon_state = "volfplate"
 	item_state = "volfplate"
 	adjustable = CAN_CADJUST
-	max_integrity = 300 
+	max_integrity = 300
 	emote_environment = 3
 	armor_class = ARMOR_CLASS_MEDIUM
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
@@ -1259,6 +1259,19 @@
 	clothing_flags = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/head/roguetown/helmet/foresterhelmet
+	name = "forester helmet"
+	desc = "A helmet worn by those who dwell in the forests of the world."
+	icon_state = "foresterhelmet"
+	item_state = "foresterhelmet"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	emote_environment = 3
+	block2add = FOV_BEHIND
+	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR|HIDEFACE
+	smeltresult = /obj/item/ash
 
 //----------------- BLACKSTEEL ---------------------
 

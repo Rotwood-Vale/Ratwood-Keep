@@ -41,6 +41,10 @@
 #define TRAIT_GOODRUNNER "Good Runner"
 #define TRAIT_TINY "Tiny"
 #define TRAIT_STUDENT "Student"
+#define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
+#define TRAIT_FIENDKISS "Kiss of the Fiend" //after casting some spells, hurl a firebolt at the same location
+#define TRAIT_WILDMAGIC "Wild Magic" //low chance for insane stuff to happen when casting
+
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -57,6 +61,7 @@
 #define TRAIT_CHOSEN "Astrata's Chosen"
 #define TRAIT_NOCTURNAL "Noc's Moonlight" //Grants weak darkvision- lighting alpha 145, amplified for mages using the DV spell- alpha 200
 #define TRAIT_FORGEBLESSED "Malum's Devout" //Reduces the fatigue cost of smithing a bit.
+#define TRAIT_FAITHLESS "Ignorant" //being faithless means gods won't really help you, will they
 
 #define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
 #define TRAIT_BASHDOORS "bashdoors"
@@ -154,10 +159,13 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CIVILIZEDBARBARIAN = span_info("Your fists are heavier."),
 	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice."),
 	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
+	TRAIT_FAITHLESS = span_warning("I don't hold them in my thoughts or prayers - the Gods won't care for me, if they ever did in the first place."),
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
-	TRAIT_STUDENT = span_info("The scholar has taught me new skills!")
+	TRAIT_STUDENT = span_info("The scholar has taught me new skills!"),
+	TRAIT_POISONBITE = "My bites inject venom into my target.",
+	TRAIT_WILDMAGIC = "My magic sometimes has unexpected consequences.",
 ))
 
 // trait accessor defines

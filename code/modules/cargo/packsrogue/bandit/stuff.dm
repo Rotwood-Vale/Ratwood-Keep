@@ -58,22 +58,22 @@
 	cost = 20
 	contains = list(/obj/item/clothing/cloak/half)
 
-/datum/supply_pack/rogue/bandit/Stuff/graincloak
+/datum/supply_pack/rogue/bandit/Stuff/greenraincloak
 	name = "Green Rain-Cloak"
 	cost = 25
 	contains = list(/obj/item/clothing/cloak/raincloak/green)
 
-/datum/supply_pack/rogue/bandit/Stuff/braincloak
+/datum/supply_pack/rogue/bandit/Stuff/blueraincloak
 	name = "Blue Rain-Cloak"
 	cost = 25
 	contains = list(/obj/item/clothing/cloak/raincloak/blue)
 
-/datum/supply_pack/rogue/bandit/Stuff/rraincloak
+/datum/supply_pack/rogue/bandit/Stuff/redraincloak
 	name = "Red Rain-Cloak"
 	cost = 25
 	contains = list(/obj/item/clothing/cloak/raincloak/red)
 
-/datum/supply_pack/rogue/bandit/Stuff/rraincloak
+/datum/supply_pack/rogue/bandit/Stuff/furcloak
 	name = "Fur Cloak"
 	cost = 60
 	contains = list(/obj/item/clothing/cloak/raincloak/furcloak)

@@ -45,16 +45,20 @@
 	H.change_stat("intelligence", -2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
-	var/weapons = list("Axe & Cudgel","Flail & Shield")
+	var/weapons = list("Axe & Cudgel","Mace","Flail & Shield")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("Axe & Cudgel") //one weapon to hurt people one weapon to kill people
+		if("Axe") //one weapon to hurt people, really, hurt people.
 			backl= /obj/item/rogueweapon/stoneaxe/woodcut
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+		if("Mace") //heads get bonked!
 			beltr = /obj/item/rogueweapon/mace/cudgel
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 		if("Flail & Shield") //plate users beware, you're in for a scare!
 			backl= /obj/item/rogueweapon/shield/wood
 			beltr = /obj/item/rogueweapon/flail
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

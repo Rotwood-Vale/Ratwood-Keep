@@ -496,6 +496,7 @@
 //	swap_hand()
 
 /atom/proc/MiddleClick(mob/user, params)
+	SEND_SIGNAL(src, COMSIG_ATOM_MIDDLE_CLICK, user)
 	return
 
 /turf/open/MiddleClick(mob/user, params)

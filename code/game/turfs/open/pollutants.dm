@@ -110,3 +110,33 @@
 /datum/pollutant/steam
 	color = "#ffffff"
 
+/datum/pollutant/flies
+	color = "#1d1c1c"
+	reagents_on_breathe = list(/datum/reagent/flies = 3)
+
+//warlock stuff, you can move it to a better place later
+
+/datum/reagent/flies
+	name = "Flies"
+	description = ""
+	reagent_state = SOLID
+	color = "#1d1c1c"
+	taste_mult = 1.3
+	taste_description = "tiny wings fluttering down your throat"
+	metabolization_rate = 5 * REAGENTS_METABOLISM //1u per second
+	/// Number of ticks the ants have been in the person's body
+	var/fly_ticks = 0
+	/// Amount of damage done per tick the ants have been in the person's system
+	var/fly_damage = 0.15
+
+/datum/reagent/flies/on_mob_life(mob/living/carbon/victim, seconds_per_tick)
+	. = ..()
+	if(!HAS_TRAIT(victim, TRAIT_NOSTINK))
+		victim.adjustBruteLoss(max(0.1, round((fly_ticks * fly_damage),0.1)))
+		fly_ticks++
+		if(fly_ticks < 5)
+			return
+		if(prob(15))
+			to_chat(victim, span_danger("Black flies bite at your skin!"))
+		if(prob(15))
+			victim.emote("scream")

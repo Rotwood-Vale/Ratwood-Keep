@@ -1,7 +1,7 @@
 /*
-Notice Regarding Spellcode: Spell proc_holder inheritance can fuck things up real bad if you have a spell inherit from a spell. 
+Notice Regarding Spellcode: Spell proc_holder inheritance can fuck things up real bad if you have a spell inherit from a spell.
 Not only for spelllist purchasing but also for proc activation.
-Example before I made greater fireball its own noninherited spell trying to grab fireball as magos would spend points and provide no spell). 
+Example before I made greater fireball its own noninherited spell trying to grab fireball as magos would spend points and provide no spell).
 Or during making lesser raise undead, it would try inheriting from normal raise undead and fire both procholders.
 Please whenever possible, make each spell its own procholder, and do *not* have them inherit from another completed spell. Lest you bugger shit up.
 ~Neri. */
@@ -585,8 +585,8 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,// 3 cost
 		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
 		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,
-		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe, 
-		/obj/effect/proc_holder/spell/invoked/findfamiliar, 
+		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
+		/obj/effect/proc_holder/spell/invoked/findfamiliar,
 		/obj/effect/proc_holder/spell/invoked/push_spell,
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,// 2 cost
 		/obj/effect/proc_holder/spell/invoked/haste,
@@ -596,26 +596,26 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		/obj/effect/proc_holder/spell/targeted/touch/nondetection, // 1 cost
 		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
-		/obj/effect/proc_holder/spell/invoked/forcewall_weak, 
-	)	
+		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
+	)
 
 	//Patron Spelllists
 	var/list/spell_choices_noc = list(
 		/obj/effect/proc_holder/spell/invoked/mageblindness,  //2cost
-		/obj/effect/proc_holder/spell/invoked/mageinvisibility, 
+		/obj/effect/proc_holder/spell/invoked/mageinvisibility,
 	)
-	
+
 	var/list/spell_choices_graggar = list(
-		
+
 	)
-	
+
 	var/list/spell_choices_matthios = list()
 
 	var/list/spell_choices_zizo = list(
 		/obj/effect/proc_holder/spell/invoked/raise_undead_lesser, //5cost
 		/obj/effect/proc_holder/spell/invoked/projectile/sickness, //3cost
 		/obj/effect/proc_holder/spell/invoked/strengthen_undead, //2cost
-		/obj/effect/proc_holder/spell/self/command_undead, 
+		/obj/effect/proc_holder/spell/self/command_undead,
 		/obj/effect/proc_holder/spell/invoked/revoke_unlife, //1cost
 	)
 
@@ -639,7 +639,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		for(var/i = 1, i <= spell_choices.len, i++)
 			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
 
-	else 
+	else
 		for(var/i = 1, i <= spell_choices.len, i++)
 			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
 
@@ -1170,7 +1170,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	movement_interrupt = FALSE
 	sound = 'sound/magic/churn.ogg'
 	invocation = "Aras'Noc'Esri!"
-	invocation_type = "shout" 
+	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 15 SECONDS
 	xp_gain = TRUE
@@ -1182,7 +1182,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		var/mob/living/target = targets[1]
 		if(target.anti_magic_check(TRUE, TRUE))
 			return FALSE
-		target.visible_message(span_warning("[user] points at [target]'s eyes!"),span_warning("My eyes are covered in darkness!"))		
+		target.visible_message(span_warning("[user] points at [target]'s eyes!"),span_warning("My eyes are covered in darkness!"))
 		target.blind_eyes(2)
 		return TRUE
 	revert_cast()
@@ -1222,6 +1222,42 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	revert_cast()
 	return FALSE
 
+/obj/effect/proc_holder/spell/invoked/longjump
+	name = "Long Jump"
+	desc = "Magically empower your legs, allowing you to jump further and higher than before"
+	cost = 1
+	xp_gain = TRUE
+	releasedrain = 35
+	chargedrain = 1
+	chargetime = 30
+	charge_max = 80 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	overlay_state = "jump"
+	var/speed_increase = 3
+
+/obj/effect/proc_holder/spell/invoked/longjump/cast(list/targets, mob/user = usr)
+	var/mob/living/H = user
+	ADD_TRAIT(H, TRAIT_ZJUMP, MAGIC_TRAIT)
+	ADD_TRAIT(H, TRAIT_LEAPER, MAGIC_TRAIT)
+	H.change_stat("speed", speed_increase)
+	to_chat(H, span_warning("I feel arcyne energy empowering my legs, I can jump further and higher."))
+	H.visible_message("[H]'s legs glow with arcyne energy.")
+	addtimer(CALLBACK(src, PROC_REF(remove_buff), H), wait = 30 SECONDS)
+	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/longjump/proc/remove_buff(mob/living/user)
+	user.change_stat("speed", -speed_increase)
+	REMOVE_TRAIT(user, TRAIT_ZJUMP, MAGIC_TRAIT)
+	REMOVE_TRAIT(user, TRAIT_LEAPER, MAGIC_TRAIT)
+	to_chat(user, span_warning("The energy in my legs dissapates."))
+
+
+
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK
 #undef PRESTI_MOTE
@@ -1229,7 +1265,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 
 //Graggar Spells
 
-/* 
+/*
 /////WIP/////
 /obj/effect/proc_holder/spell/invoked/prepare_feast
 	name = "Prepare Feast"

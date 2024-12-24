@@ -6,7 +6,7 @@
 
 /datum/supply_pack/rogue/bandit/Things/healthpot
 	name = "Health Potion"
-	cost = 50
+	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 
 /datum/supply_pack/rogue/bandit/Things/manapot
