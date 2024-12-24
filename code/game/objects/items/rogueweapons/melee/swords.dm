@@ -474,12 +474,13 @@
 	max_integrity = 75
 
 /datum/intent/sword/cut/short
-	clickcd = 10
-	damfactor = 0.9
+	clickcd = 9
+	damfactor = 1
 
 /datum/intent/sword/thrust/short
-	clickcd = 10
+	clickcd = 8
 	damfactor = 1.1
+	penfactor = 30
 
 /obj/item/rogueweapon/sword/iron/messer
 	name = "iron messer"
