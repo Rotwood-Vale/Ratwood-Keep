@@ -46,7 +46,7 @@
 		"fortune" = 0
 		)
 	specstats_f = list(
-		"speed" = 0,
+		"strength" = -1,
 		"perception" = 1,
 	)
 	enflamed_icon = "widefire"
