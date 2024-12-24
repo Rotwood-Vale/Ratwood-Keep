@@ -162,7 +162,7 @@
 /datum/emote/living/cross
 	key = "crossarms"
 	key_third_person = "crossesarms"
-	message = "crosses arms."
+	message = "crosses their arms."
 	restraint_check = TRUE
 	emote_type = EMOTE_VISIBLE
 
