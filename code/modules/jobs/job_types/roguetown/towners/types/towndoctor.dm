@@ -29,7 +29,7 @@
 		head = /obj/item/clothing/head/roguetown/armingcap
 
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
