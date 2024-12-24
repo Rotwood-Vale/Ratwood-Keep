@@ -223,6 +223,16 @@
 				set_resting(FALSE)
 			else
 				emote("me", 1, pick("grooms its fur.", "twitches its whiskers.", "shakes out its coat."))
+		else if (prob(1))
+			playsound(src, pick(
+							'sound/vo/mobs/cat/cat_meow1.ogg',
+							'sound/vo/mobs/cat/cat_meow2.ogg',
+							'sound/vo/mobs/cat/cat_meow3.ogg',
+							'sound/vo/mobs/cat/cat_purr1.ogg',
+							'sound/vo/mobs/cat/cat_purr2.ogg',
+							'sound/vo/mobs/cat/cat_purr3.ogg',
+							'sound/vo/mobs/cat/cat_purr4.ogg',
+							), 100, TRUE)
 
 	//MICE!
 	if((src.loc) && isturf(src.loc))
@@ -321,7 +331,6 @@
 	response_harm_simple = "take a bite out of"
 	attacked_sound = 'sound/blank.ogg'
 	deathmessage = "loses its false life and collapses!"
-	deathsound = "bodyfall"
 
 /mob/living/simple_animal/pet/cat/cak/CheckParts(list/parts)
 	..()
@@ -376,12 +385,3 @@
 		dir = pick(GLOB.alldirs)
 		step(src, dir)
 		personal_space()
-
-/mob/living/simple_animal/pet/cat/get_sound(input)
-	switch(input)
-		if("idle")
-			return pick(
-				'sound/vo/mobs/cat/cat_meow1.ogg',
-				'sound/vo/mobs/cat/cat_meow2.ogg',
-				'sound/vo/mobs/cat/cat_meow3.ogg',
-			)
