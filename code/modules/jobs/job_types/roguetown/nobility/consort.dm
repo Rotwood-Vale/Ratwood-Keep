@@ -1,7 +1,7 @@
 /datum/job/roguetown/consort
 	title = "Duke Consort"
 	f_title = "Duchess Consort"
-	flag = LADY
+	flag = CONSORT
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 0
@@ -16,13 +16,24 @@
 
 	display_order = JDO_LADY
 	give_bank_account = TRUE
-	min_pq = 2
+	min_pq = 0
 	max_pq = null
+
+// Prevent same sex ruler-consorts
+/datum/job/roguetown/consort/special_job_check(mob/dead/new_player/player)
+	if(!player)
+		return
+	if(!player.ckey)
+		return
+	for(var/mob/dead/new_player/duke in GLOB.player_list)
+		if(duke.mind.assigned_role == "Duke")
+			if(duke.client.prefs.gender != player.client.prefs.gender)
+				return TRUE
 
 /datum/job/roguetown/consort_dowager//just used to change the consort title
 	title = "Duke Dowager"
 	f_title = "Duchess Dowager"
-	flag = LADY
+	flag = CONSORT
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 0
@@ -41,7 +52,7 @@
 	if(H.gender == FEMALE)
 		beltl = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-		belt = /obj/item/storage/belt/rogue/leather/cloth/consort
+		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		head = /obj/item/clothing/head/roguetown/duchess_hood
 		backl = /obj/item/clothing/suit/roguetown/armor/leather/duchess
 		gloves = /obj/item/clothing/gloves/roguetown/leather/black

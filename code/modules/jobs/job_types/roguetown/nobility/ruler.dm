@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/job/roguetown/ruler
 	title = "Duke"
 	f_title = "Duchess"
-	flag = LORD
+	flag = RULER
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 0
@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/job/roguetown/exlord //just used to change the lords title
 	title = "Duke Emeritus"
 	f_title = "Duchess Emeritus"
-	flag = LORD
+	flag = RULER
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 0
@@ -121,7 +121,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		r_hand = /obj/item/clothing/head/roguetown/duchess_hood
 		beltl = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-		belt = /obj/item/storage/belt/rogue/leather/cloth/consort
+		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		backl = /obj/item/clothing/suit/roguetown/armor/leather/duchess
 		gloves = /obj/item/clothing/gloves/roguetown/leather/black
 

@@ -96,8 +96,8 @@
 
 #define NOBLEMEN		(1<<0)
 
-#define LORD		(1<<0)
-#define LADY		(1<<1)
+#define RULER		(1<<0)
+#define CONSORT		(1<<1)
 #define HAND		(1<<2)
 #define STEWARD		(1<<3)
 #define KNIGHT		(1<<4)
