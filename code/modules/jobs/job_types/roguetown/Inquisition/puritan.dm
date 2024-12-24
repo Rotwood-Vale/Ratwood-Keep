@@ -77,16 +77,14 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE) //Always thought it was crazy they got listening devices but NO means to effectively sneak them into places.
 		if(H.age == AGE_MIDDLEAGED)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.change_stat("perception", 1)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-			H.change_stat("perception", 1)
 			H.change_stat("strength", 2) //to offset the age
 		H.change_stat("strength", 1) ///They deserve the whips too actually
-		H.change_stat("endurance", 3) ///Who the fuck gave Confessor 3 Endurance lmao
+		H.change_stat("endurance", 2) ///Who the fuck gave Confessor 3 Endurance lmao
 		H.change_stat("perception", 3)
-		H.change_stat("speed", 3) //Rogues get 3 fucking speed and spymaster hands get 4, they deserve this. Confessor does too wtf
+		H.change_stat("speed", 2) //NVM I don't want to get lynched by devs for this 
 		H.change_stat("intelligence", 3)
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
@@ -143,10 +141,8 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 			H.change_stat("strength", 2) //to offset the age
 		H.change_stat("strength", 2)	///Templar stats but with perception and intelligence.
-		H.change_stat("endurance", 3) 
-		H.change_stat("constitution", 3) ///Psydonian Templar should NOT be superior to the big bossman
-		H.change_stat("perception", 2)
-		H.change_stat("intelligence", 2)
+		H.change_stat("endurance", 2) 
+		H.change_stat("constitution", 2) ///Theo said stats too good
 		H.change_stat("speed", -1)
 
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
