@@ -167,7 +167,7 @@
 /obj/structure/mineral_door/wood{
 	locked = 1;
 	lockid = "apartment1";
-	name = "stall i"
+	name = "Soilson Stall"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town)
@@ -7827,7 +7827,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/roguekey/apartments/apartment1{
-	name = "stall i key";
+	name = "Soilson Stall Key";
 	pixel_x = -6
 	},
 /turf/open/floor/rogue/ruinedwood{
