@@ -25,7 +25,11 @@
 	unsuitable_atmos_damage = 1
 	animal_species = /mob/living/simple_animal/pet/cat
 	childtype = list(/mob/living/simple_animal/pet/cat/kitten)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 1, /obj/item/organ/ears/cat = 1, /obj/item/organ/tail/cat = 1)
+	butcher_results = list(
+					/obj/item/reagent_containers/food/snacks/meat/slab = 1,
+					/obj/item/organ/ears/cat = 1,
+					/obj/item/organ/tail/cat = 1,
+					)
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -372,3 +376,12 @@
 		dir = pick(GLOB.alldirs)
 		step(src, dir)
 		personal_space()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/get_sound(input)
+	switch(input)
+		if("idle")
+			return pick(
+				'sound/vo/mobs/cat/cat_meow1.ogg',
+				'sound/vo/mobs/cat/cat_meow2.ogg',
+				'sound/vo/mobs/cat/cat_meow3.ogg',
+			)

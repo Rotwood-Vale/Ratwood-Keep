@@ -238,3 +238,6 @@
 		else
 			new_message += message[i]
 	speech_args[SPEECH_MESSAGE] = new_message
+
+/obj/item/organ/tongue/wild_tongue
+	name = "wild tongue"
