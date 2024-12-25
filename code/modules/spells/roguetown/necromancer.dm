@@ -87,6 +87,8 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Hgf'ant'kthar!"
+	invocation_type = "shout"
 	charge_max = 30 SECONDS
 	cost = 10
 	xp_gain = TRUE
@@ -106,6 +108,8 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Hygf'akni'kthakchratah!"
+	invocation_type = "shout"
 	charge_max = 30 SECONDS
 	chargedrain = 2
 	xp_gain = TRUE
@@ -120,7 +124,6 @@
 /obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
 
-	user.say("Hgf'ant'kthar!")
 	if(!("undead" in user.faction))
 		user.faction |= "undead"
 	var/obj = targets[1]
@@ -205,7 +208,6 @@
 /obj/effect/proc_holder/spell/invoked/raise_undead_lesser/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
 
-	user.say("Hygf'akni'kthakchratah!")
 	if(!("undead" in user.faction))
 		user.faction |= "undead"
 	var/obj = targets[1]
@@ -476,12 +478,14 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Hgf'ant'Zeshlesh!"
+	invocation_type = "shout"
 	charge_max = 2 SECONDS
 	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/revoke_unlife/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
-	user.say("Hgf'ant'Zeshlesh!")
+	
 	var/obj = targets[1]
 
 	if(!obj || !istype(obj, /mob/living/carbon/human))
