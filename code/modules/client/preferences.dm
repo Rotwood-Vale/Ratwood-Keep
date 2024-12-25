@@ -377,8 +377,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(use_skintones)
 
 				var/skin_tone_wording = pref_species.skin_tone_wording // Both the skintone names and the word swap here is useless fluff
+				var/list/skin_tones = pref_species.get_skin_list()
+				var/heldtone
+				if(skin_tone)
+					for(var/tone in skin_tones)
+						if(skin_tone == skin_tones[tone])
+							heldtone = tone //your fault if this isn't uppercase.
+							break
+				//Second comment on how stupid this is. TODO: REFACTOR THIS SHITTY FUCKING SYSTEM. We shouldn't be using associative lists like this.
 
-				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
+				dat += "<b>[skin_tone_wording]:	 </b><span style='font-size:104%'>[heldtone]</span><a href='?_src_=prefs;preference=s_tone;task=input'>	Change </a>"
 				dat += "<br>"
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
