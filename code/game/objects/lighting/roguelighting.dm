@@ -265,16 +265,6 @@
 		return
 	. = ..()
 
-/obj/machinery/light/rogue/break_light_tube(skip_sound_and_sparks = 0)
-	if(status == LIGHT_EMPTY || status == LIGHT_BROKEN)
-		return	
-	if(!skip_sound_and_sparks)
-		if(status == LIGHT_OK || status == LIGHT_BURNED)
-			playsound(src.loc, 'sound/blank.ogg', 75, TRUE)
-		if(on)
-			do_sparks(3, TRUE, src)
-	update()
-
 /obj/machinery/light/rogue/firebowl
 	name = "brazier"
 	icon = 'icons/roguetown/misc/lighting.dmi'
