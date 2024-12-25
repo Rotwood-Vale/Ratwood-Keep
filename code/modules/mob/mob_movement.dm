@@ -621,27 +621,45 @@
 	return
 
 /mob/proc/toggle_rogmove_intent(intent, silent = FALSE)
+	var/is_mounted = FALSE
+	if(buckled && intent != MOVE_INTENT_SNEAK)
+		if(istype(buckled, /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck))
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/S = buckled
+				is_mounted = TRUE
+				if(H.m_intent == MOVE_INTENT_WALK)
+					H.visible_message(span_notice("[H] digs its heels into \the [S], preparing to gallop!"))
+					S.emote("aggro")
+					if(do_after(H, 20))
+						H.m_intent = MOVE_INTENT_RUN
+				else
+					H.visible_message(span_notice("\The [S] calms, slowing its gait."))
+					S.emote("idle")
+					if(do_after(H, 15))
+						H.m_intent = MOVE_INTENT_WALK
 	// If we're becoming sprinting from non-sprinting, reset the counter
-	if(!(m_intent == MOVE_INTENT_RUN && intent == MOVE_INTENT_RUN))
+	else if(!(m_intent == MOVE_INTENT_RUN && intent == MOVE_INTENT_RUN))
 		sprinted_tiles = 0
-	switch(intent)
-		if(MOVE_INTENT_SNEAK)
-			m_intent = MOVE_INTENT_SNEAK
-			update_sneak_invis()
-		if(MOVE_INTENT_WALK)
-			m_intent = MOVE_INTENT_WALK
-		if(MOVE_INTENT_RUN)
-			if(isliving(src))
-				var/mob/living/L = src
-				if(L.rogfat >= L.maxrogfat)
-					return
-				if(L.rogstam <= 0)
-					return
-				if(ishuman(L))
-					var/mob/living/carbon/human/H = L
-					if(!H.check_armor_skill() || H.legcuffed)
+	if(!is_mounted)
+		switch(intent)
+			if(MOVE_INTENT_SNEAK)
+				m_intent = MOVE_INTENT_SNEAK
+				update_sneak_invis()
+			if(MOVE_INTENT_WALK)
+				m_intent = MOVE_INTENT_WALK
+			if(MOVE_INTENT_RUN)
+				if(isliving(src))
+					var/mob/living/L = src
+					if(L.rogfat >= L.maxrogfat)
 						return
-			m_intent = MOVE_INTENT_RUN
+					if(L.rogstam <= 0)
+						return
+					if(ishuman(L))
+						var/mob/living/carbon/human/H = L
+						if(!H.check_armor_skill() || H.legcuffed)
+							return
+				m_intent = MOVE_INTENT_RUN
 	if(hud_used && hud_used.static_inventory)
 		for(var/atom/movable/screen/rogmove/selector in hud_used.static_inventory)
 			selector.update_icon()
