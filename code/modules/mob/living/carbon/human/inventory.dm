@@ -257,10 +257,6 @@
 				dropItemToGround(r_store, TRUE, silent = silent) //Again, makes sense for pockets to drop.
 			if(l_store)
 				dropItemToGround(l_store, TRUE, silent = silent)
-//			if(wear_ring)
-//				dropItemToGround(wear_ring)
-//			if(belt)
-//				dropItemToGround(belt)
 		wear_pants = null
 		if(!QDELETED(src))
 			update_inv_pants()

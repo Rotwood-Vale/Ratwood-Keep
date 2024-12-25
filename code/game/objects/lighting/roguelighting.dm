@@ -94,7 +94,7 @@
 
 /obj/machinery/light/rogue/Initialize()
 	if(soundloop)
-		soundloop = new soundloop(list(src), FALSE)
+		soundloop = new soundloop(src, FALSE)
 		soundloop.start()
 	GLOB.fires_list += src
 	if(start_fuel)
@@ -588,7 +588,7 @@
 	var/datum/looping_sound/boilloop/boilloop
 
 /obj/machinery/light/rogue/hearth/Initialize()
-	boilloop = new(list(src), FALSE)
+	boilloop = new(src, FALSE)
 	. = ..()
 
 /obj/machinery/light/rogue/hearth/attackby(obj/item/W, mob/living/user, params)
