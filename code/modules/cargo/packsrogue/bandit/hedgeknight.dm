@@ -107,37 +107,6 @@
 	name = "Greatsword"
 	cost = 400
 	contains = list(/obj/item/rogueweapon/greatsword)
-//spear
-
-/datum/supply_pack/rogue/bandit/Knight/spear
-	name = "Iron Spear"
-	cost = 50
-	contains = list(/obj/item/rogueweapon/spear)
-
-/datum/supply_pack/rogue/bandit/Knight/spear/billhook
-	name = "Billhook"
-	cost = 160
-	contains = list(/obj/item/rogueweapon/spear/billhook)
-
-/datum/supply_pack/rogue/bandit/Knight/halberd
-	name = "Halberd"
-	cost = 160
-	contains = list(/obj/item/rogueweapon/halberd)
-
-/datum/supply_pack/rogue/bandit/Knight/bardiche
-	name = "Bardiche"
-	cost = 160
-	contains = list(/obj/item/rogueweapon/halberd/bardiche)
-
-/datum/supply_pack/rogue/bandit/Knight/ebeak
-	name = "Eagle's Beak"
-	cost = 200
-	contains = list(/obj/item/rogueweapon/eaglebeak)
-
-/datum/supply_pack/rogue/bandit/Knight/Lucerne
-	name = "Lucerne"
-	cost = 200
-	contains = list(/obj/item/rogueweapon/eaglebeak/lucerne)
 //shield
 
 /datum/supply_pack/rogue/bandit/Knight/kiteshield

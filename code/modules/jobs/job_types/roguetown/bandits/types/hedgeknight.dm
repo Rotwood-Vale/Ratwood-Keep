@@ -52,7 +52,7 @@
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
 	H.adjust_blindness(-3)
-	var/weapons = list("Shield","Sword", "spear")
+	var/weapons = list("Shield","Sword")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
@@ -61,7 +61,5 @@
 			H.change_stat("constitution", 1)
 		if("Sword") // Get the random sword skill
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		if("Spear") // It's a spear
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
