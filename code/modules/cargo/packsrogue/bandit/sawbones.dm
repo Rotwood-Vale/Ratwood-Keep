@@ -80,7 +80,7 @@
 
 /datum/supply_pack/rogue/bandit/Sawbones/dagger
 	name = "Iron Daggers"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger)
 
 /datum/supply_pack/rogue/bandit/Sawbones/daggerss

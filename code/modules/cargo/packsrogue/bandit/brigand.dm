@@ -106,7 +106,7 @@
 
 /datum/supply_pack/rogue/bandit/Brigand/mace
 	name = "Iron Mace"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/mace)
 
 /datum/supply_pack/rogue/bandit/Brigand/steelmace
@@ -127,7 +127,7 @@
 
 /datum/supply_pack/rogue/bandit/Brigand/axe
 	name = "Iron Axe"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut)
 
 /datum/supply_pack/rogue/bandit/Brigand/steelaxe

@@ -65,7 +65,7 @@
 
 /datum/supply_pack/rogue/bandit/Knave/dagger
 	name = "Iron Daggers"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger)
 
 /datum/supply_pack/rogue/bandit/Knave/daggerss
@@ -81,12 +81,12 @@
 
 /datum/supply_pack/rogue/bandit/Knave/sword
 	name = "Iron Sword"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/sword/iron)
 
 /datum/supply_pack/rogue/bandit/Knave/onehanded/sword
 	name = "Short Sword"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/sword/iron/short)
 
 /datum/supply_pack/rogue/bandit/Knave/onehanded/armingsword
@@ -128,7 +128,7 @@
 
 /datum/supply_pack/rogue/bandit/Knave/Parrows
 	name = "Poisoned Arrow"
-	cost = 35
+	cost = 50
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/poison)
 
 /datum/supply_pack/rogue/bandit/Knave/quiver

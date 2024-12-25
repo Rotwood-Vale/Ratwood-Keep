@@ -58,7 +58,7 @@
 
 /datum/supply_pack/rogue/bandit/Mage/spear
 	name = "Iron Spear"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/spear)
 
 /datum/supply_pack/rogue/bandit/Mage/spear/billhook

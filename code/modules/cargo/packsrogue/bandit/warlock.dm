@@ -91,7 +91,7 @@
 
 /datum/supply_pack/rogue/bandit/Warlock/flail
 	name = "Iron flail"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/flail)
 
 /datum/supply_pack/rogue/bandit/Warlock/steelflail
@@ -107,7 +107,7 @@
 
 /datum/supply_pack/rogue/bandit/Warlock/mace
 	name = "Iron Mace"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/mace)
 
 /datum/supply_pack/rogue/bandit/Warlock/steelmace
@@ -128,7 +128,7 @@
 
 /datum/supply_pack/rogue/bandit/Warlock/axe
 	name = "Iron Axe"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut)
 
 /datum/supply_pack/rogue/bandit/Warlock/steelaxe
@@ -160,7 +160,7 @@
 
 /datum/supply_pack/rogue/bandit/Warlock/spear
 	name = "Iron Spear"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/spear)
 
 /datum/supply_pack/rogue/bandit/Warlock/billhook

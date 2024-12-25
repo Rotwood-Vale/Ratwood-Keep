@@ -145,7 +145,7 @@
 
 /datum/supply_pack/rogue/bandit/Stuff/chainleash
 	name = "Chain Leash"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/leash/chain)
 
 /datum/supply_pack/rogue/bandit/Stuff/leathercollar
