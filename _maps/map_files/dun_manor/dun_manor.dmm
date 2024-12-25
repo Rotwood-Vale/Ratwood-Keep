@@ -18404,7 +18404,8 @@
 	dir = 1;
 	locked = 1;
 	lockid = "manor";
-	name = "keep entrance"
+	name = "keep entrance";
+	ridethrough = 1
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town/garrison)
