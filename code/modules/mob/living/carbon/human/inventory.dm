@@ -161,7 +161,6 @@
 		if(SLOT_PANTS)
 
 			wear_pants = I
-			update_suit_sensors()
 			update_inv_pants()
 		if(SLOT_SHIRT)
 
@@ -258,12 +257,7 @@
 				dropItemToGround(r_store, TRUE, silent = silent) //Again, makes sense for pockets to drop.
 			if(l_store)
 				dropItemToGround(l_store, TRUE, silent = silent)
-//			if(wear_ring)
-//				dropItemToGround(wear_ring)
-//			if(belt)
-//				dropItemToGround(belt)
 		wear_pants = null
-		update_suit_sensors()
 		if(!QDELETED(src))
 			update_inv_pants()
 	else if(I == gloves)

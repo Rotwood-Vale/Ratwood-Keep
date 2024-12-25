@@ -11,6 +11,7 @@
 	ambushable = FALSE
 	rot_type = null
 	possible_rmb_intents = list()
+	cmode_music = 'sound/music/antag/combatskeleton.ogg'
 
 /mob/living/carbon/human/species/skeleton/npc
 	aggressive = 1

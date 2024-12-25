@@ -3,11 +3,11 @@
 	tutorial = "You are a fisherman, with your bag of bait and your fishing rod, you are one of few who can reliably get a stable source of meat around here."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/refugee/fisher
+	outfit = /datum/outfit/job/roguetown/towner/fisher
 
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/refugee/fisher/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/towner/fisher/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 
@@ -15,8 +15,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE) //idk why the fisher gets bows
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE) //Fishers should be good at gutting particularly ornery fish.
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) //Fishers should be good at spearfishing and harpooning their prey.
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE) //Fishers should be good at gutting particularly ornery fish.
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE) //Fishers should be good at spearfishing and harpooning their prey.
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
