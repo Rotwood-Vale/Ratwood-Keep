@@ -161,7 +161,6 @@
 		if(SLOT_PANTS)
 
 			wear_pants = I
-			update_suit_sensors()
 			update_inv_pants()
 		if(SLOT_SHIRT)
 
@@ -263,7 +262,6 @@
 //			if(belt)
 //				dropItemToGround(belt)
 		wear_pants = null
-		update_suit_sensors()
 		if(!QDELETED(src))
 			update_inv_pants()
 	else if(I == gloves)
