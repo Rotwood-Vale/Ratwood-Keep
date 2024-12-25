@@ -75,8 +75,7 @@
 		"love", //ring of soulbinding
 		"friendship", //Pact of the Chain
 		"power", //empowered eldritch blast
-		"purpose", //Pact of the Star Chain
-		"revenge" //Curses
+		"purpose" //Pact of the Star Chain
 	)
 
 	var/boonchoice = input("What did you sell your faith for?", "Available boons") as anything in boons
