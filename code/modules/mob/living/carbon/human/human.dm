@@ -129,13 +129,6 @@
 	GLOB.human_list -= src
 	return ..()
 
-
-/mob/living/carbon/human/prepare_data_huds()
-	//Update med hud images...
-	..()
-	//...and display them.
-	add_to_all_human_data_huds()
-
 /mob/living/carbon/human/Stat()
 	..()
 	if(mind)

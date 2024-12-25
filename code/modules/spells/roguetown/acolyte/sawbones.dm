@@ -1274,7 +1274,7 @@
 /obj/item/reagent_containers/glass/alembic/Initialize()
 	create_reagents(100, REFILLABLE | DRAINABLE | AMOUNT_VISIBLE) // 2 Bottles capacity
 	icon_state = "alembic_empty"
-	boilloop = new(list(src), FALSE)
+	boilloop = new(src, FALSE)
 	. = ..()
 
 /obj/item/reagent_containers/glass/alembic/examine(mob/user)
