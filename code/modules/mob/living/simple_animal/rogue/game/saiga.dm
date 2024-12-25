@@ -57,7 +57,6 @@
 	can_saddle = TRUE
 	aggressive = 1
 	remains_type = /obj/effect/decal/remains/saiga
-	var/obj/item/inventory_neck
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigakid
 	name = "saiga calf"
@@ -199,78 +198,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/death()
 	unbuckle_all_mobs()
 	.=..()
-
-
-//reproduces some iancode to allow equipping objects to saiga without having to do a bunch of bespoke stuff for every single item.
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/Destroy()
-	QDEL_NULL(inventory_neck)
-	return ..()
-
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/handle_atom_del(atom/A)
-	if(A == inventory_neck)
-		inventory_neck = null
-		regenerate_icons()
-
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/Topic(href, href_list)
-	if(!(iscarbon(usr)) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		usr << browse(null, "window=mob[REF(src)]")
-		usr.unset_machine()
-		return
-
-	//Removing from inventory
-	if(href_list["remove_inv"])
-		var/remove_from = href_list["remove_inv"]
-		switch(remove_from)
-			if("neck")
-				if(inventory_neck)
-					usr.put_in_hands(inventory_neck)
-					inventory_neck = null
-					regenerate_icons()
-				else
-					to_chat(usr, span_warning("There is nothing to remove from its [remove_from]!"))
-					return
-
-		show_inv(usr)
-
-	//Adding things to inventory
-	else if(href_list["add_inv"])
-		var/add_to = href_list["add_inv"]
-
-		switch(add_to)
-			if("neck")
-				if(inventory_neck)
-					to_chat(usr, span_warning("It's already wearing something!"))
-					return
-				else
-					var/obj/item/item_to_add = usr.get_active_held_item()
-
-					if(!item_to_add)
-						usr.visible_message(span_notice("[usr] pets [src]."), span_notice("I rest your hand on [src]'s neck for a moment."))
-						return
-
-					if(!usr.temporarilyRemoveItemFromInventory(item_to_add))
-						to_chat(usr, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s neck!"))
-						return
-
-					//The objects that corgis can wear on their backs.
-					var/allowed = FALSE
-					if(ispath(item_to_add.dog_fashion, /datum/dog_fashion/saiga))
-						allowed = TRUE
-
-					if(!allowed)
-						to_chat(usr, span_warning("I set [item_to_add] on [src]'s neck, but it falls off!"))
-						item_to_add.forceMove(drop_location())
-						if(prob(25))
-							step_rand(item_to_add)
-						return
-
-					item_to_add.forceMove(src)
-					src.inventory_neck = item_to_add
-					regenerate_icons()
-
-		show_inv(usr)
-	else
-		return ..()
 
 /obj/effect/decal/remains/saiga
 	name = "remains"

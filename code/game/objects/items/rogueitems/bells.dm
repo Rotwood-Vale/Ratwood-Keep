@@ -94,46 +94,15 @@
 
 		return ..()
 
-/obj/item/jinglebells
-	mame = "jingling bells"
-	desc = ''
-	icon = ''
-	icon_state = ""
+/obj/item/jingle_bells
+	name = "jingling bells"
+	desc = "A set of little bells that make a satifying ring when jostled."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "bells"
 	throwforce = 5
+	dropshrink = 0.5
+	drop_sound = SFX_JINGLE_BELLS
 
-
-/obj/item/bell_strap
-	name = "strap of bells"
-	desc = ""
-	icon = ''
-	icon_state = ""
-	force = 7
-	hitsound = ''
-	resistance_flags = FIRE_PROOF
-	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
-	dog_fashion = /datum/dog_fashion/saiga
-
-/obj/item/strap/Initialize()
+/obj/item/jingle_bells/Initialize()
 	. = ..()
-	AddComponent(/datum/component/squeak, list(
-											'sound/items/jinglebell1.ogg' = 1,
-											'sound/items/jinglebell2.ogg' = 1,
-											'sound/items/jinglebell3.ogg' = 1,
-											'sound/items/jinglebell4.ogg' = 1,
-											), 50)
-
-/obj/item/clothing/neck/bell_collar
-	name = ""
-	desc = ""
-	icon = ''
-	icon_state = ""
-	slot_flags = ITEM_SLOT_NECK
-
-/obj/item/clothing/neck/bell_collar/Initialize()
-	. = ..()
-	AddComponent(/datum/component/squeak, list(
-											'sound/items/jinglebell1.ogg' = 1,
-											'sound/items/jinglebell2.ogg' = 1,
-											'sound/items/jinglebell3.ogg' = 1,
-											'sound/items/jinglebell4.ogg' = 1,
-											), 50)
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_JINGLE_BELLS)

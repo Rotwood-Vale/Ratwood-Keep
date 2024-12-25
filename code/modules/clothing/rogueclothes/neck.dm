@@ -347,3 +347,22 @@
 	desc = "A peculiar icon of worship from a foreign land. Forming the three-progned Psydonite cross in a circular ring, this bracelet embodies the Naledian belief of Psydon's eternity."
 	icon_state = "psybracelet"
 	item_state = null
+
+/obj/item/clothing/neck/roguetown/collar
+	name = "collar"
+	desc = "A band of leather which signifies bondage to another."
+	icon_state = "collar"
+	item_state = "collar"
+	resistance_flags = FIRE_PROOF
+	dropshrink = 0.5
+
+/obj/item/clothing/neck/roguetown/collar/bell_collar
+	name = "bell collar"
+	desc = "A band of leather with a bell protects the local zads from the local catfolk."
+	icon_state = "bell_collar"
+	icon_state = "bell_collar"
+
+/obj/item/clothing/neck/roguetown/collar/bell_collar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_JINGLE_BELLS)
+	

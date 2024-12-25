@@ -224,6 +224,19 @@
 	dynamic_hair_suffix = "+generic"
 	sewrepair = TRUE
 	flags_inv = HIDEEARS
+	jingle_bells = TRUE
+
+/obj/item/clothing/head/roguetown/jester/Initialize()
+	. = ..()
+	if(jingle_bells)
+		AddComponent(/datum/component/squeak, list(
+											'sound/items/jinglebell1.ogg',
+											'sound/items/jinglebell2.ogg',
+											'sound/items/jinglebell3.ogg',
+											'sound/items/jinglebell4.ogg',
+											), 100)
+	else
+		return
 
 /obj/item/clothing/head/roguetown/strawhat
 	name = "straw hat"

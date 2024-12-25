@@ -182,6 +182,9 @@
 						'sound/ambience/noises/birds (6).ogg',\
 						'sound/ambience/noises/birds (7).ogg')
 
+#define SFX_CHAIN_STEP "chain_step"
+#define SFX_PLATE_STEP	"plate_step"
+#define SFX_JINGLE_BELLS "jingle_bells"
 
 #define INTERACTION_SOUND_RANGE_MODIFIER 0
 #define EQUIP_SOUND_VOLUME 100
