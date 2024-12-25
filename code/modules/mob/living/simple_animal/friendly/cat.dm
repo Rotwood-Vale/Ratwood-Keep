@@ -82,7 +82,9 @@
 /mob/living/simple_animal/pet/cat/inn
 	name = "inn cat"
 	desc = "This old, fat cat keeps the inn free of rats... allegedly. It seems like he mostly lazes about in the sun and asks for treats."
-
+	health = 5000
+	maxHealth = 5000
+	
 /mob/living/simple_animal/pet/cat/black
 	name = "black cat"
 	desc = "Possessed of lamplike eyes and a meow that sounds like the rattle of bones. Black cats are sacred to Necra, said to bring wandering spirits to the Carriageman."
