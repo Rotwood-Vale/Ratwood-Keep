@@ -24,7 +24,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 		H.mind.adjust_spellpoints(1) // all warlocks get at least 3 points to spend
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 1, TRUE)
-		H.mind.adjust_skillrank_up_to(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank_up_to(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 2, TRUE)
 		H.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
