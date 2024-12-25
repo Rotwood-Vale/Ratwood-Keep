@@ -22,7 +22,7 @@
 
 	var/classes
 
-	if(H.gender == MALE && !isdarkelf(H )|| H.gender == FEMALE && isdarkelf(H))
+	if(H.gender == MALE)
 		classes = list("Disgraced Lord", "Failed Condottiero")
 	else
 		classes = list("Widowed Lady")
