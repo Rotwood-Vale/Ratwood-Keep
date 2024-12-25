@@ -1302,6 +1302,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	message_muffled = "makes a muffled sound!"
 	vary = TRUE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_meow()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
@@ -1309,6 +1310,7 @@
 		set category = "Noises"
 		emote("meow", intentional = TRUE)
 	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return
 
 /datum/emote/living/purr
@@ -1318,6 +1320,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	message_muffled = "makes a muffled sound!"
 	vary = TRUE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_purr()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
@@ -1325,6 +1328,7 @@
 		set category = "Noises"
 		emote("purr", intentional = TRUE)
 	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return
 
 /datum/emote/living/moo
@@ -1334,6 +1338,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	message_muffled = "makes a muffled sound!"
 	vary = TRUE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_moo()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
@@ -1341,6 +1346,7 @@
 		set category = "Noises"
 		emote("moo", intentional = TRUE)
 	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return
 
 /datum/emote/living/bark
@@ -1350,6 +1356,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	message_muffled = "makes a muffled sound!"
 	vary = TRUE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_bark()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
@@ -1357,6 +1364,7 @@
 		set category = "Noises"
 		emote("bark", intentional = TRUE)
 	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return
 
 /datum/emote/living/growl
@@ -1366,6 +1374,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	message_muffled = "makes a muffled sound!"
 	vary = TRUE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_growl()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
@@ -1373,6 +1382,7 @@
 		set category = "Noises"
 		emote("growl", intentional = TRUE)
 	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return
 
 /datum/emote/living/bleat
@@ -1382,6 +1392,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	message_muffled = "makes a muffled sound!"
 	vary = TRUE
+	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_bleat()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
@@ -1389,4 +1400,5 @@
 		set category = "Noises"
 		emote("bleat", intentional = TRUE)
 	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return
