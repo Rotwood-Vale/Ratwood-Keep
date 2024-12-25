@@ -334,6 +334,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		listening |= M
 		the_dead[M] = TRUE
 
+	log_seen(src, null, listening, original_message, SEEN_LOG_SAY)
+
 	var/eavesdropping
 	var/eavesrendered
 	if(eavesdrop_range)
