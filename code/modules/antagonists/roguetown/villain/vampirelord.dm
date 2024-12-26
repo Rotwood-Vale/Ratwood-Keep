@@ -393,7 +393,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	handle_vitae(-1)
 
 /datum/antagonist/vampirelord/proc/handle_vitae(change, tribute)
-	var/tempcurrent = clamp(vitae, 0, VAMP_MAX_VITAE) //Stops Vitae from going below 0.
+	var/sanitized = clamp(vitae, 0, VAMP_MAX_VITAE) 
+	var/tempcurrent = sanitized  //Stops Vitae from going below 0.
 	if(!isspawn)
 		mypool.update_pool(change)
 	if(isspawn)
@@ -419,6 +420,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			starved = FALSE
 			for(var/S in MOBSTATS)
 				owner.current.change_stat(S, 5)
+	vitae = sanitized //Should hopefully prevent any future vitae issues.
 
 /datum/antagonist/vampirelord/proc/move_to_spawnpoint()
 	owner.current.forceMove(pick(GLOB.vlord_starts))
