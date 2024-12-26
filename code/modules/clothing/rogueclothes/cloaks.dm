@@ -51,7 +51,7 @@
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
-	slot_flags = ITEM_SLOT_CHEST|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
 	var/open_wear = FALSE
 
