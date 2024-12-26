@@ -96,8 +96,8 @@
 
 #define NOBLEMEN		(1<<0)
 
-#define LORD		(1<<0)
-#define LADY		(1<<1)
+#define RULER		(1<<0)
+#define CONSORT		(1<<1)
 #define HAND		(1<<2)
 #define STEWARD		(1<<3)
 #define KNIGHT		(1<<4)
@@ -327,13 +327,13 @@
 	/datum/job/roguetown/captain,\
 	/datum/job/roguetown/hand,\
 	/datum/job/roguetown/knight,\
-	/datum/job/roguetown/lady,\
-	/datum/job/roguetown/lord,\
+	/datum/job/roguetown/consort,\
+	/datum/job/roguetown/ruler,\
 	/datum/job/roguetown/steward
 
 #define KING_QUEEN_ROLES \
-	/datum/job/roguetown/lady,\
-	/datum/job/roguetown/lord
+	/datum/job/roguetown/consort,\
+	/datum/job/roguetown/ruler
 
 #define CHURCH_ROLES \
 	/datum/job/roguetown/churchling,\
@@ -346,7 +346,7 @@
 	/datum/job/roguetown/templar
 
 #define PEASANT_ROLES \
-	/datum/job/roguetown/villager,\
+	/datum/job/roguetown/towner,\
 	/datum/job/roguetown/nightmaiden,\
 	/datum/job/roguetown/beggar,\
 	/datum/job/roguetown/butcher,\

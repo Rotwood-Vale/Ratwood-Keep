@@ -10,7 +10,7 @@
 	var/datum/looping_sound/boatloop/soundloop
 
 /obj/structure/boatbell/Initialize()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 	soundloop.start()
 	. = ..()
 

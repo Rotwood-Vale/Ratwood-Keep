@@ -106,6 +106,7 @@
 #define INIT_ORDER_INPUT			85
 #define INIT_ORDER_MATURITY_GUARD	84  // RATWOOD EDIT
 #define INIT_ORDER_VIS				80
+#define INIT_ORDER_SOUNDS 			79
 #define INIT_ORDER_ACHIEVEMENTS		77
 #define INIT_ORDER_MATERIALS		76
 #define INIT_ORDER_RESEARCH			75
@@ -194,19 +195,9 @@
 
 
 //! ## Overlays subsystem
-// A reasonable number of maximum overlays an object needs
-// If you think you need more, rethink it
-#define MAX_ATOM_OVERLAYS 300
 
 ///Compile all the overlays for an atom from the cache lists
 #define POST_OVERLAY_CHANGE(changed_on) \
-	if(length(changed_on.overlays) >= MAX_ATOM_OVERLAYS) { \
-		var/text_lays = overlays2text(changed_on.overlays); \
-		stack_trace("Too many overlays on [changed_on.type] - [length(changed_on.overlays)], refusing to update and cutting.\
-			\n What follows is a printout of all existing overlays at the time of the overflow \n[text_lays]"); \
-		changed_on.overlays.Cut(); \
-		changed_on.add_overlay(mutable_appearance('icons/testing/greyscale_error.dmi')); \
-	} \
 	if(alternate_appearances) { \
 		for(var/I in changed_on.alternate_appearances){\
 			var/datum/atom_hud/alternate_appearance/AA = changed_on.alternate_appearances[I];\
