@@ -1781,7 +1781,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	return
 
 /datum/species/proc/handle_environment(mob/living/carbon/human/H)
-	var/loc_temp = BODYTEMP_NORMAL //TODO VANDERLIN: make proximity based temperature
+	var/loc_temp = BODYTEMP_NORMAL //TODO: make proximity based temperature
 	//Body temperature is adjusted in two parts: first there my body tries to naturally preserve homeostasis (shivering/sweating), then it reacts to the surrounding environment
 	//Thermal protection (insulation) has mixed benefits in two situations (hot in hot places, cold in hot places)
 	if(!H.on_fire) //If you're on fire, you do not heat up or cool down based on surrounding gases

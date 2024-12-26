@@ -64,6 +64,14 @@
 	var/mob/dead/observer/G = usr
 	G.client?.admin_ghost()
 
+/atom/movable/screen/ghost/teleport
+	name = "Teleport"
+	icon_state = "teleport"
+
+/atom/movable/screen/ghost/teleport/Click()
+	var/mob/dead/observer/G = usr
+	G.dead_tele()
+
 /atom/movable/screen/ghost/moveup
 	name = "move up"
 	icon_state = "pai"
@@ -121,6 +129,11 @@
 	using = new /atom/movable/screen/ghost/reenter_corpse(null, src)
 	using.screen_loc = ui_ghost_reenter_corpse
 	static_inventory += using
+
+	using = new /atom/movable/screen/ghost/teleport(null, src)
+	using.screen_loc = ui_ghost_teleport
+	static_inventory += using
+
 
 	using = new /atom/movable/screen/ghost/moveup(null, src)
 	using.screen_loc = ui_ghost_moveup
