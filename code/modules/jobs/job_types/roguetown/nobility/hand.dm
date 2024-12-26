@@ -18,7 +18,7 @@
 	min_pq = 9 //The second most powerful person in the realm...
 	max_pq = null
 	round_contrib_points = 3
-	cmode_music = 'sound/music/combat_fancy.ogg'
+	cmode_music = 'sound/music/combat_noble.ogg'
 
 /*
 /datum/job/roguetown/hand/special_job_check(mob/dead/new_player/player)
@@ -43,6 +43,18 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
+	
+		addtimer(CALLBACK(src, PROC_REF(know_agents), H), 50)
+
+/datum/job/roguetown/hand/proc/know_agents(var/mob/living/carbon/human/H)
+	if(!GLOB.court_agents.len)
+		to_chat(H, span_notice("You begun the week with no agents."))
+	else
+		to_chat(H, span_notice("We begun the week with these agents:"))
+		for(var/name in GLOB.court_agents)
+			to_chat(H, span_notice(name))
+
+
 
 /datum/advclass/hand/hand
 	name = "Hand"

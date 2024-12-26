@@ -136,6 +136,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Adventurer",
 	"Pilgrim",
 	"Bandit",
+	"Court Agent",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
@@ -150,7 +151,7 @@ GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Clerk",
 	"Apothecary",
 	"Smithy Apprentice",
-	"Magicians Apprentice",
+	"Magicians Associate",
 	"Churchling",
 	"Servant",
 	"Shophand",
