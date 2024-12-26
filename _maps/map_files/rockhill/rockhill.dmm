@@ -4302,6 +4302,12 @@
 	icon_state = "carpet_r"
 	},
 /area/rogue/indoors/town/manor)
+"cIn" = (
+/obj/structure/fluff/railing/border{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors/shelter/town/harbor)
 "cIv" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/shelter/town/harbor)
@@ -6794,6 +6800,13 @@
 "ehN" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town/harbor)
+"ehS" = (
+/obj/structure/fluff/railing/border{
+	dir = 5;
+	pixel_x = 3
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/shelter/town/harbor)
 "ehT" = (
 /turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue/indoors/town)
@@ -7909,6 +7922,12 @@
 /obj/structure/glowshroom,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/druidgrove)
+"eRy" = (
+/obj/structure/fluff/railing/border{
+	dir = 1
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/shelter/town/harbor)
 "eSc" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/tile{
@@ -9476,6 +9495,12 @@
 	},
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue/long,
 /area/rogue/indoors/town/church/chapel)
+"fOp" = (
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/shelter/town/harbor)
 "fON" = (
 /turf/closed/mineral/random/rogue/med,
 /area/rogue/indoors/shelter/mountains)
@@ -16125,6 +16150,12 @@
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"jPm" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/shelter/town/harbor)
 "jPr" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/dirt/road,
@@ -18957,6 +18988,12 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
+"lJD" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors/shelter/town/harbor)
 "lJO" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -28791,6 +28828,12 @@
 /obj/item/clothing/suit/roguetown/shirt/steward,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
+"rUk" = (
+/obj/structure/fluff/railing/border{
+	dir = 10
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/shelter/town/harbor)
 "rUt" = (
 /turf/open/floor/rogue/rooftop/green{
 	dir = 4
@@ -29518,6 +29561,12 @@
 /obj/item/flint,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
+"srd" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue/indoors/shelter/town/harbor)
 "sri" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/dirt,
@@ -30565,6 +30614,13 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/rtfield)
+"taH" = (
+/obj/structure/fluff/railing/border{
+	dir = 5;
+	icon_state = "border"
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors/shelter/town/harbor)
 "taV" = (
 /obj/structure/fluff/walldeco/wantedposter,
 /obj/structure/fluff/railing/border{
@@ -32226,6 +32282,12 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"tWW" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/shelter/town/harbor)
 "tXd" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -32790,6 +32852,12 @@
 "upE" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/red/end,
 /area/rogue/indoors/town/church/chapel)
+"upJ" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors/shelter/town/harbor)
 "uqa" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/herringbone,
@@ -39142,6 +39210,12 @@
 "ylC" = (
 /turf/closed/mineral/rogue,
 /area/rogue/under/town/basement)
+"ylD" = (
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors/shelter/town/harbor)
 "ylJ" = (
 /obj/machinery/light/roguestreet/orange{
 	dir = 1
@@ -248288,7 +248362,7 @@ aVC
 xTt
 fkD
 aVC
-aVC
+srd
 aVC
 aVC
 pHT
@@ -467742,10 +467816,10 @@ iXq
 iXq
 sIQ
 sPC
+fOp
+jPm
 sPC
-sPC
-sPC
-sPC
+ehS
 sIQ
 iXq
 iXq
@@ -468177,7 +468251,7 @@ sPC
 clJ
 prk
 mcp
-sPC
+eRy
 sIQ
 iXq
 iXq
@@ -468606,9 +468680,9 @@ iXq
 iXq
 sIQ
 sIQ
-sPC
-sPC
-sPC
+rUk
+tWW
+tWW
 sIQ
 sIQ
 iXq
@@ -577904,8 +577978,8 @@ iXq
 sIQ
 cIv
 cIv
-cIv
-cIv
+lJD
+taH
 cIv
 sIQ
 iXq
@@ -578337,7 +578411,7 @@ iIs
 cIv
 mdr
 sPC
-cIv
+cIn
 cIv
 sGh
 iXq
@@ -578768,8 +578842,8 @@ iXq
 sIQ
 sIQ
 cIv
-cIv
-cIv
+upJ
+ylD
 sIQ
 sIQ
 iXq
