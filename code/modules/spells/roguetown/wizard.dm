@@ -612,9 +612,9 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	var/list/spell_choices_matthios = list()
 
 	var/list/spell_choices_zizo = list(
-	/obj/effect/proc_holder/spell/invoked/strengthen_undead,// 2 cost
-	/obj/effect/proc_holder/spell/invoked/projectile/sickness,// 3 cost
-	/obj/effect/proc_holder/spell/invoked/eyebite,// 3 cost
+		/obj/effect/proc_holder/spell/invoked/strengthen_undead,// 4 cost
+		/obj/effect/proc_holder/spell/invoked/projectile/sickness,// 3 cost
+		/obj/effect/proc_holder/spell/invoked/eyebite,// 3 cost
 	)
 
 	if(user.patron.type == /datum/patron/divine/noc)
