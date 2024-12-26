@@ -18404,7 +18404,7 @@
 	dir = 1;
 	locked = 1;
 	lockid = "manor";
-	name = "keep entrance";
+	name = "keep entrance (mount friendly)";
 	ridethrough = 1
 	},
 /turf/open/floor/rogue/cobblerock,
