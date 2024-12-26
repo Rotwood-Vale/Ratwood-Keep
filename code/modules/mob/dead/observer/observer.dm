@@ -493,7 +493,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
 		to_chat(usr, span_warning("Another consciousness is in my body... It is resisting me."))
 		return
-	if("undead" in mind.current.faction)
+	if("rott" in mind.current.faction)
 		to_chat(usr, span_warning("ZIZO has puppeted my body."))
 		return
 //	stop_all_loops()

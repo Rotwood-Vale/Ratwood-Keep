@@ -110,6 +110,7 @@
 	if(!was_i_undead)
 		zombie.mob_biotypes &= ~MOB_UNDEAD
 	zombie.faction -= "undead"
+	zombie.faction -= "rott"
 	zombie.faction += "station"
 	zombie.faction += "neutral"
 	zombie.regenerate_organs()

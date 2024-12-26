@@ -72,6 +72,7 @@
 	ambushable = FALSE
 	mob_biotypes |= MOB_UNDEAD
 	faction += "undead"
+	faction += "rott"
 	faction -= "station"
 	faction -= "neutral"
 
