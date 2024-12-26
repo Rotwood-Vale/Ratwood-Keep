@@ -1,4 +1,7 @@
-//ported from tgstation: https://github.com/tgstation/tgstation/pull/87008
+
+/* ported from tgstation: https://github.com/tgstation/tgstation/blob/master/code/datums/components/item_equipped_movement_rustle.dm
+with light edits to work with roguecode */
+
 
 /datum/component/item_equipped_movement_rustle
 
@@ -43,10 +46,8 @@
 
 /datum/component/item_equipped_movement_rustle/proc/on_equip(datum/source, mob/equipper, slot)
 	SIGNAL_HANDLER
-	var/obj/item/our_item = parent
-	if(!(slot & our_item.slot_flags))
-		return
-	RegisterSignal(equipper, COMSIG_MOVABLE_MOVED, PROC_REF(try_step))
+	RegisterSignal(equipper, COMSIG_MOVABLE_MOVED, PROC_REF(try_step), override = TRUE)
+
 
 /datum/component/item_equipped_movement_rustle/proc/on_unequip(datum/source, mob/dropped)
 	SIGNAL_HANDLER
@@ -62,5 +63,5 @@
 		play_rustle_sound(source)
 		move_counter = 0
 
-/datum/component/item_equipped_movement_rustle/proc/play_rustle_sound(mob/source)
+/datum/component/item_equipped_movement_rustle/proc/play_rustle_sound(obj/item/clothing/source)//(mob/source)
 	playsound(source, rustle_sounds, volume, sound_vary, sound_extra_range, sound_falloff_exponent, falloff = sound_falloff_distance)

@@ -44,7 +44,7 @@
 /datum/supply_pack/rogue/Knight/blacksteelfullplate
 	name = "Blacksteel Full plate"
 	cost = 150
-	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/platechest)
+	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/blacksteel_full_plate)
 
 /datum/supply_pack/rogue/Knight/hauberk
 	name = "Hauberk"
@@ -95,7 +95,7 @@
 /datum/supply_pack/rogue/Knight/blkplatechausses
 	name = "Blacksteel Plate Chausses"
 	cost = 100
-	contains = list(/obj/item/clothing/under/roguetown/blacksteel/platelegs)
+	contains = list(/obj/item/clothing/under/roguetown/platelegs/blacksteel)
 
 /datum/supply_pack/rogue/Knight/plateboots
 	name = "Plated boots"

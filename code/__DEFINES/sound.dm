@@ -184,6 +184,7 @@
 
 #define SFX_CHAIN_STEP "chain_step"
 #define SFX_PLATE_STEP	"plate_step"
+#define SFX_PLATE_COAT_STEP "plate_coat_step"
 #define SFX_JINGLE_BELLS "jingle_bells"
 
 #define INTERACTION_SOUND_RANGE_MODIFIER 0

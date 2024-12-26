@@ -164,15 +164,6 @@
 	. = ..()
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_JINGLE_BELLS)
 
-/*/obj/item/clothing/shoes/roguetown/jester/Initialize()
-	. = ..()
-	AddComponent(/datum/component/squeak, list(
-											'sound/items/jinglebell1.ogg' = 1,
-											'sound/items/jinglebell2.ogg' = 1,
-											'sound/items/jinglebell3.ogg' = 1,
-											'sound/items/jinglebell4.ogg' = 1,
-											), 100)*/
-
 /obj/item/clothing/shoes/roguetown/grenzelhoft
 	name = "grenzelhoft boots"
 	icon_state = "grenzelboots"
