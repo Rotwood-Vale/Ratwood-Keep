@@ -365,7 +365,7 @@
 
 /obj/structure/gob_portal/Initialize()
 	. = ..()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 	soundloop.start()
 	spawn_gob()
 

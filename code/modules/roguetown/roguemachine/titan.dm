@@ -272,7 +272,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(!SScommunications.can_announce(user))
 		return
 	if(user.job)
-		if(!istype(SSjob.GetJob(user.job), /datum/job/roguetown/lord))
+		if(!istype(SSjob.GetJob(user.job), /datum/job/roguetown/ruler))
 			return
 	else
 		return
