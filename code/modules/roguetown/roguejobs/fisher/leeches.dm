@@ -40,34 +40,29 @@
 		/obj/item/natural/cloth = 45,
 		/obj/item/kitchen/spoon = 45,
 		/obj/item/restraints/legcuffs/beartrap = 45,
-		/obj/item/roguecoin/silver = 55,
-		/obj/item/roguecoin/gold = 55,
-		/obj/item/clothing/ring/copper = 55,
-		/obj/item/clothing/ring/topazc = 55,
-		/obj/item/clothing/ring/emeraldc = 55,
-		/obj/item/clothing/ring/sapphirec = 55,
-		/obj/item/clothing/ring/silver = 55,
-		/obj/item/clothing/ring/topazs = 55,
-		/obj/item/clothing/ring/emeralds = 55,
+		/obj/item/roguecoin/silver = 15,
+		/obj/item/roguecoin/gold = 5,
+		/obj/item/clothing/ring/copper = 25,
+		/obj/item/clothing/ring/topazc = 2,
+		/obj/item/clothing/ring/emeraldc = 2,
+		/obj/item/clothing/ring/sapphirec = 2,
+		/obj/item/clothing/ring/silver = 15,
+		/obj/item/clothing/ring/topazs = 2,
+		/obj/item/clothing/ring/emeralds = 2,
 		/obj/item/storage/belt/rogue/pouch/coins/mid = 7,
-		/obj/item/clothing/ring/rubyc = 7,
-		/obj/item/clothing/ring/quartzc = 7,
-		/obj/item/clothing/ring/rubys = 7,
-		/obj/item/clothing/ring/quartzs = 7,
-		/obj/item/clothing/ring/gold = 7,
-		/obj/item/clothing/ring/emerald = 7,
-		/obj/item/clothing/ring/topaz = 7,
-		/obj/item/clothing/ring/sapphire = 7,
-		/obj/item/clothing/ring/diamondc = 7,
-		/obj/item/clothing/ring/diamonds = 7,
-		/obj/item/clothing/ring/quartz = 7,
-		/obj/item/clothing/ring/ruby = 7,
-		/obj/item/clothing/ring/diamond = 7,
+		/obj/item/clothing/ring/rubyc = 2,
+		/obj/item/clothing/ring/quartzc = 3,
+		/obj/item/clothing/ring/rubys = 2,
+		/obj/item/clothing/ring/quartzs = 2,
+		/obj/item/clothing/ring/gold = 5,
+		/obj/item/clothing/ring/topaz = 1,
+		/obj/item/clothing/ring/sapphire = 2,
+		/obj/item/clothing/ring/quartz = 1,
+		/obj/item/clothing/ring/ruby = 1,
+		/obj/item/clothing/ring/diamond = 1,
 		/obj/item/roguestatue/gold/loot = 10,
-		/obj/item/clothing/ring/diamondc = 10,
-		/obj/item/clothing/ring/diamonds = 10,
-		/obj/item/clothing/ring/ruby = 10,
-		/obj/item/clothing/ring/diamond = 10)
+		/obj/item/clothing/ring/diamondc = 3,
+		/obj/item/clothing/ring/diamonds = 2,)
 		//Approximate Catch Rates:
 		//Very Common: 25.0%
 		//Common: Actual = 14.98%
@@ -75,6 +70,8 @@
 		//Super Rare: 4.95%
 		//Ultra Rare: 0.91% - Exclusive to leeches.
 		//Absolute Rarest: 0.5% - Exclusive to leeches. The real treasures are the friends we made along the way.
+		//NOTE: These values are not used for RINGS, which are being adjusted manually because of potential abuse involving the treasury & bandit mechanics.
+
 	embedding = list(
 		"embed_chance" = 100,
 		"embedded_unsafe_removal_time" = 0,

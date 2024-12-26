@@ -43,15 +43,15 @@
 					/obj/item/natural/cloth = 45,
 					/obj/item/kitchen/spoon = 45,
 					/obj/item/restraints/legcuffs/beartrap = 45,
-					/obj/item/roguecoin/silver = 55,
-					/obj/item/roguecoin/gold = 55,
+					/obj/item/roguecoin/silver = 24,
+					/obj/item/roguecoin/gold = 24,
 					/obj/item/clothing/ring/copper = 55,
-					/obj/item/clothing/ring/topazc = 55,
-					/obj/item/clothing/ring/emeraldc = 55,
-					/obj/item/clothing/ring/sapphirec = 55,
-					/obj/item/clothing/ring/silver = 55,
-					/obj/item/clothing/ring/topazs = 55,
-					/obj/item/clothing/ring/emeralds = 55)
+					/obj/item/clothing/ring/topazc = 15,
+					/obj/item/clothing/ring/emeraldc = 15,
+					/obj/item/clothing/ring/sapphirec = 15,
+					/obj/item/clothing/ring/silver = 20,
+					/obj/item/clothing/ring/topazs = 5,
+					/obj/item/clothing/ring/emeralds = 5)
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
 		//Approximate Catch Rates:
 		//Very Common: 25.0%
@@ -97,15 +97,16 @@
 		/obj/item/natural/cloth = 45,
 		/obj/item/kitchen/spoon = 45,
 		/obj/item/restraints/legcuffs/beartrap = 45,
-		/obj/item/roguecoin/silver = 55,
-		/obj/item/roguecoin/gold = 55,
-		/obj/item/clothing/ring/copper = 55,
-		/obj/item/clothing/ring/topazc = 55,
-		/obj/item/clothing/ring/emeraldc = 55,
-		/obj/item/clothing/ring/sapphirec = 55,
-		/obj/item/clothing/ring/silver = 55,
-		/obj/item/clothing/ring/topazs = 55,
-		/obj/item/clothing/ring/emeralds = 55)
+		/obj/item/roguecoin/silver = 24,
+		/obj/item/roguecoin/gold = 24,
+		/obj/item/clothing/ring/copper = 25,
+		/obj/item/clothing/ring/topazc = 3,
+		/obj/item/clothing/ring/emeraldc = 2,
+		/obj/item/clothing/ring/sapphirec = 2,
+		/obj/item/clothing/ring/silver = 15,
+		/obj/item/clothing/ring/topazs = 2,
+		/obj/item/clothing/ring/emeralds = 2)
+
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
 		//Approximate Catch Rates:
 		//Very Common: 25.0%
