@@ -78,7 +78,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/fluted
 	name = "fluted hauberk"
-	desc = "A steel maille, of a pattern popularized by Otavan templars."
+	desc = "An ornate cuirass, flanked with sleeves of steel maille."
 	icon_state = "flutedhauberk"
 	item_state = "flutedhauberk"
 
