@@ -10,17 +10,17 @@
 	baitchance = 75
 	color = "#b65f49"
 	w_class = WEIGHT_CLASS_TINY
-	fishloot = list(/obj/item/trash/applecore = 625,
-					/obj/item/trash/pearcore = 625,
-					/obj/item/natural/fibers = 625,
-					/obj/item/grown/log/tree/stick = 625,
+	fishloot = list(/obj/item/trash/applecore = 50,
+					/obj/item/trash/pearcore = 25, //Pears, in Rockhill? Perish the thought.
+					/obj/item/natural/fibers = 30, //It's pretty hard to hook a fiber.
+					/obj/item/grown/log/tree/stick = 2, //Single stick
 					/obj/item/reagent_containers/food/snacks/fish/carp = 214,
 					/obj/item/reagent_containers/food/snacks/fish/eel = 214,
 					/obj/item/reagent_containers/food/snacks/fish/angler = 214,
-					/obj/item/reagent_containers/food/snacks/fish/shrimp = 214,
+					/obj/item/reagent_containers/food/snacks/fish/shrimp = 180, //Shrimp man gone. Life bad.
 					/obj/item/reagent_containers/food/snacks/fish/clownfish = 214,
-					/obj/item/natural/bundle/stick = 214,
-					/obj/item/natural/stone = 214,
+					/obj/item/natural/bundle/stick = 30, //Bundle of sticks
+					/obj/item/natural/stone = 25, //Hard to catch stones!
 					/obj/item/clothing/head/roguetown/helmet/tricorn = 45,
 					/obj/item/clothing/head/roguetown/helmet/bandana = 45,
 					/obj/item/clothing/head/roguetown/roguehood = 45,
