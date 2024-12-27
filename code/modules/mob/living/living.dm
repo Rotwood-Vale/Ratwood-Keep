@@ -744,7 +744,6 @@
 		if(mind)
 			if(admin_revive)
 				mind.remove_antag_datum(/datum/antagonist/zombie)
-				can_do_sex = TRUE
 			else if(mind.funeral && !CONFIG_GET(flag/force_respawn_on_funeral))
 				to_chat(src, span_warning("My funeral rites are undone!"))
 				mind.funeral = FALSE

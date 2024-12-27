@@ -109,7 +109,6 @@
 				adjust_playerquality(revive_pq, user.ckey)
 				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
-			target.can_do_sex = TRUE
 		return TRUE
 	revert_cast()
 	return FALSE
