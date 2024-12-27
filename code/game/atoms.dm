@@ -86,8 +86,6 @@
 
 	var/list/alternate_appearances
 
-	var/datum/ai_controller/ai_controller
-
 	///AI controller that controls this atom. type on init, then turned into an instance during runtime
 	var/datum/ai_controller/ai_controller
 
