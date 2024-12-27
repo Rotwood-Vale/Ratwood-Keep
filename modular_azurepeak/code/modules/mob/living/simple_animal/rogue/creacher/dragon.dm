@@ -179,6 +179,23 @@ Greatwyrm (?)
 	swingdelay = 2
 	clickcd = CLICK_CD_MELEE * 0.90 //It is a dragon so it bites slightly faster
 	penfactor = 60 // It is a dragon so it bites hard
+/obj/projectile/magic/aoe/dragon_breath
+    name = "fire hairball"
+    icon_state = "fireball"
+    damage = 10
+    damage_type = BRUTE
+    nodamage = FALSE
+    light_color = "#f8af07"
+    light_outer_range = 2
+    damage = 40
+    flag = "magic"
+    hitsound = 'sound/blank.ogg'
+
+    //explosion values
+    var/exp_heavy = 0
+    var/exp_light = 2
+    var/exp_flash = 3
+    var/exp_fire = 3
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother

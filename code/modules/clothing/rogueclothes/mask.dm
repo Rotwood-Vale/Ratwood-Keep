@@ -85,7 +85,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	max_integrity = 100
 	resistance_flags = FIRE_PROOF
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	flags_inv = HIDEFACE
 	body_parts_covered = FACE
@@ -102,7 +102,7 @@
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	resistance_flags = FIRE_PROOF
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	flags_inv = HIDEFACE
 	body_parts_covered = FACE
@@ -111,6 +111,12 @@
 	experimental_onhip = TRUE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/mask/rogue/facemask/psydonmask
+	name = "Psydonian Mask"
+	desc = "A symbolic mask typically worn by members of the Otavan Inquisition."
+	icon_state = "psydonmask"
+	item_state = "psydonmask"
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
 	. = ..()
@@ -191,7 +197,7 @@
 	break_sound = 'sound/foley/breaksound.ogg'
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	resistance_flags = FIRE_PROOF
-	armor = list("blunt" = 10, "slash" = 40, "stab" = 40, "bullet" = 8, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 10, "slash" = 40, "stab" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = null
 	flags_inv = HIDEFACE
 	body_parts_covered = FACE

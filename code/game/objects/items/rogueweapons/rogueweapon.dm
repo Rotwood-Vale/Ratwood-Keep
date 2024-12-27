@@ -13,7 +13,6 @@
 	block_chance = 0
 	armor_penetration = 0
 	sharpness = IS_SHARP
-	custom_materials = null
 	possible_item_intents = list(SWORD_CUT, SWORD_THRUST)
 	can_parry = TRUE
 	wlength = 45
@@ -21,7 +20,7 @@
 	has_inspect_verb = TRUE
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	anvilrepair = /datum/skill/craft/weaponsmithing
-	obj_flags = CAN_BE_HIT
+	obj_flags = CAN_BE_HIT | UNIQUE_RENAME
 	blade_dulling = DULLING_BASH
 	max_integrity = 200
 	wdefense = 3
@@ -34,7 +33,6 @@
 	)
 	var/initial_sl
 	var/list/possible_enhancements
-	var/renamed_name
 	resistance_flags = FIRE_PROOF
 
 /obj/item/rogueweapon/Initialize()

@@ -149,7 +149,7 @@
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	cleanspeed = initial(cleanspeed) - (skill_level * 3) // 3 cleanspeed per skill level, from 35 down to a maximum of 17 (pretty quick)
 
-	if (istype(target, /obj/structure/window))
+	if (istype(target, /obj/structure/roguewindow))
 		user.visible_message(span_notice("[user] gestures at \the [target.name], tiny motes of arcyne power running across its surface..."), span_notice("I begin to clean \the [target.name] with my arcyne power..."))
 		if (do_after(user, src.cleanspeed, target = target))
 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
@@ -181,9 +181,11 @@
 	name = "minor magelight mote"
 	desc = "A tiny display of arcyne power used to illuminate."
 	pixel_x = 20
-	light_range = 4
-	light_flags = NONE
+	light_outer_range =  4
 	light_color = "#3FBAFD"
+
+	icon = 'icons/roguetown/items/lighting.dmi'
+	icon_state = "wisp"
 
 //A spell to choose new spells, upon spawning or gaining levels
 /obj/effect/proc_holder/spell/self/learnspell
@@ -223,7 +225,8 @@
 		/obj/effect/proc_holder/spell/invoked/snap_freeze,
 		/obj/effect/proc_holder/spell/invoked/projectile/frostbolt,
 		/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt,
-		/obj/effect/proc_holder/spell/invoked/gravity
+		/obj/effect/proc_holder/spell/invoked/gravity,
+		/obj/effect/proc_holder/spell/invoked/projectile/repel
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
@@ -360,6 +363,7 @@
 			playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
 			return
 		L.Immobilize(duration)
+		L.OffBalance(duration)
 		L.visible_message("<span class='warning'>[L] is held by tendrils of arcyne force!</span>")
 		new /obj/effect/temp_visual/slowdown_spell_aoe/long(get_turf(L))
 
@@ -507,7 +511,7 @@
 /obj/effect/temp_visual/trap
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "trap"
-	light_range = 2
+	light_outer_range = 2
 	duration = 14
 	layer = MASSIVE_OBJ_LAYER
 
@@ -976,7 +980,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 
-/obj/effect/proc_holder/spell/invoked/fortitude/cast(list/targets, mob/user)
+/obj/effect/proc_holder/spell/invoked/guidance/cast(list/targets, mob/user)
 	var/atom/A = targets[1]
 	if(!isliving(A))
 		revert_cast()
@@ -1017,7 +1021,7 @@
 /obj/effect/temp_visual/trapice
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "blueshatter"
-	light_range = 2
+	light_outer_range = 2
 	light_color = "#4cadee"
 	duration = 6
 	layer = MASSIVE_OBJ_LAYER
@@ -1169,8 +1173,9 @@
 
 /obj/effect/proc_holder/spell/invoked/gravity // to do: get scroll icon
 	name = "Gravity"
-	desc = "Weighten space around someone, crushing them and knocking them to the floor. Stronger opponets will resist and be off-balanced."
+	desc = "Weighten space around someone, crushing them and knocking them to the floor. Stronger opponents will resist and be off-balanced."
 	cost = 1
+	overlay_state = "hierophant"
 	xp_gain = TRUE
 	releasedrain = 20
 	chargedrain = 1
@@ -1224,10 +1229,56 @@
 	randomdir = FALSE
 	duration = 3 SECONDS
 	layer = MASSIVE_OBJ_LAYER
-	light_range = 2
+	light_outer_range = 2
 	light_color = COLOR_PALE_PURPLE_GRAY
 
 
+/obj/effect/proc_holder/spell/invoked/projectile/repel
+	name = "Repel"
+	desc = "Shoot out a magical bolt that pushes out the target struck away from the caster."
+	clothes_req = FALSE
+	range = 10
+	projectile_type = /obj/projectile/magic/repel
+	overlay_state = ""
+	sound = list('sound/magic/unmagnet.ogg')
+	active = FALSE
+	releasedrain = 7
+	chargedrain = 0
+	chargetime = 0
+	warnie = "spellwarning"
+	overlay_state = "fetch"
+	no_early_release = TRUE
+	charging_slowdown = 1
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	cost = 1
+	xp_gain = TRUE
+
+/obj/projectile/magic/repel
+	name = "bolt of repeling"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "curseblob"
+	range = 15
+
+/obj/projectile/magic/repel/on_hit(target)
+
+	var/atom/throw_target = get_edge_target_turf(firer, get_dir(firer, target)) //ill be real I got no idea why this worked.
+	if(isliving(target))
+		var/mob/living/L = target
+		if(L.anti_magic_check() || !firer)
+			L.visible_message(span_warning("[src] vanishes on contact with [target]!"))
+			return BULLET_ACT_BLOCK
+		L.throw_at(throw_target, 7, 4)
+	else
+		if(isitem(target))
+			var/obj/item/I = target
+			var/mob/living/carbon/human/carbon_firer
+			if (ishuman(firer))
+				carbon_firer = firer
+				if (carbon_firer?.can_catch_item())
+					throw_target = get_edge_target_turf(firer, get_dir(firer, target))
+			I.throw_at(throw_target, 7, 4)
+			
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK
 #undef PRESTI_MOTE

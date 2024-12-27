@@ -43,6 +43,13 @@
 	AIStatus = AI_OFF
 	ai_controller = /datum/ai_controller/mossback
 
+/mob/living/simple_animal/hostile/retaliate/rogue/mossback/Initialize(mapload, mob/user, townercrab = FALSE)
+	. = ..()
+	if(user)
+		friends += user.name
+		if (townercrab)
+			faction = list("neutral")
+			tamed(1)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mossback/get_sound(input)
 	switch(input)

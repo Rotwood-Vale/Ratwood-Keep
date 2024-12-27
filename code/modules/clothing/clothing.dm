@@ -6,7 +6,7 @@
 /obj/item/clothing
 	name = "clothing"
 	resistance_flags = FLAMMABLE
-	obj_flags = CAN_BE_HIT
+	obj_flags = CAN_BE_HIT | UNIQUE_RENAME
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	blade_dulling = DULLING_CUT
 	max_integrity = 200
@@ -219,9 +219,6 @@
 	. = ..()
 	var/mob/M = usr
 
-	if(ismecha(M.loc)) // stops inventory actions in a mech
-		return
-
 	if(!M.incapacitated() && loc == M && istype(over_object, /atom/movable/screen/inventory/hand))
 		var/atom/movable/screen/inventory/hand/H = over_object
 		if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
@@ -428,11 +425,6 @@ BLIND     // can't see anything
 				to_chat(usr, span_notice("My suit will now only report my exact vital lifesigns."))
 			if(3)
 				to_chat(usr, span_notice("My suit will now report my exact vital lifesigns as well as my coordinate position."))
-
-	if(ishuman(loc))
-		var/mob/living/carbon/human/H = loc
-		if(H.wear_pants == src)
-			H.update_suit_sensors()
 
 /obj/item/clothing/under/AltClick(mob/user)
 	if(..())

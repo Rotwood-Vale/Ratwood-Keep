@@ -29,7 +29,7 @@
 	disliked_food = NONE
 	liked_food = NONE
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/met.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -78,9 +78,20 @@
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		)
-	body_markings = list(
+
+	body_marking_sets = list(
+		/datum/body_marking_set/none,
+		/datum/body_marking_set/belly,
+		/datum/body_marking_set/bellysocks,
+		/datum/body_marking_set/tiger,
+		/datum/body_marking_set/tiger_dark,
 	)
 
+	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
+		/datum/body_marking/tonage
+	)
 /datum/species/elf/wood/get_span_language(datum/language/message_language)
 	if(!message_language)
 		return

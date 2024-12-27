@@ -156,6 +156,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	///Added success chance after every failed tame attempt.
 	var/bonus_tame_chance
 
+	var/mob/owner = null
+
 	///I don't want to confuse this with client registered_z.
 	var/my_z
 	///What kind of footstep this mob should have. Null if it shouldn't have any.
@@ -215,20 +217,23 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
 			qdel(O)
 			food = min(food + 30, 100)
-			if(tame)
+			if(tame && owner == user)
 				return
 			var/realchance = tame_chance
 			if(realchance)
 				if(prob(realchance))
-					tamed()
+					tamed(user)
 				else
 					tame_chance += bonus_tame_chance
 
+
 ///Extra effects to add when the mob is tamed, such as adding a riding component
-/mob/living/simple_animal/proc/tamed()
-	emote("smile", forced = TRUE)
+/mob/living/simple_animal/proc/tamed(mob/user)
+	INVOKE_ASYNC(src, PROC_REF(emote), "lower_head", null, null, null, TRUE)
 	tame = TRUE
 	stop_automated_movement_when_pulled = TRUE
+	if(user)
+		owner = user
 	return
 
 //mob/living/simple_animal/examine(mob/user)
@@ -283,8 +288,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			death()
 			SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, DEAD)
 			return
-	med_hud_set_status()
-	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, DEAD)
 	if(footstep_type)
 		AddComponent(/datum/component/footstep, footstep_type)
 
@@ -528,10 +531,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/mob/living/L = the_target
 		if(L.stat == DEAD)
 			return FALSE
-	if (ismecha(the_target))
-		var/obj/mecha/M = the_target
-		if (M.occupant)
-			return FALSE
 	return TRUE
 
 /mob/living/simple_animal/handle_fire()
@@ -674,9 +673,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(A.update_remote_sight(src)) //returns 1 if we override all other sight updates.
 			return
 	sync_lighting_plane_alpha()
-
-/mob/living/simple_animal/get_idcard(hand_first)
-	return access_card
 
 /mob/living/simple_animal/can_hold_items()
 	return dextrous

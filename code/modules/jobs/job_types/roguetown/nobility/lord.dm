@@ -17,7 +17,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		/obj/effect/proc_holder/spell/self/grant_title,
 		/obj/effect/proc_holder/spell/self/convertrole/servant,
 		/obj/effect/proc_holder/spell/self/convertrole/guard,
-		/obj/effect/proc_holder/spell/self/convertrole/bog,
 	)
 	outfit = /datum/outfit/job/roguetown/lord
 	visuals_only_outfit = /datum/outfit/job/roguetown/lord/visuals
@@ -30,7 +29,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	round_contrib_points = 4
 	give_bank_account = 1000
 	required = TRUE
-	cmode_music = 'sound/music/combat_fancy.ogg'
+	cmode_music = 'sound/music/combat_noble.ogg'
 
 /datum/job/roguetown/exlord //just used to change the lords title
 	title = "Duke Emeritus"
