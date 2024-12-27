@@ -211,7 +211,6 @@ SUBSYSTEM_DEF(migrants)
 	/// Fade effect
 	var/atom/movable/screen/splash/Spl = new(character.client, TRUE)
 	Spl.Fade(TRUE)
-	character.update_parallax_teleport()
 
 	var/mob/living/carbon/human/humanc
 	if(ishuman(character))

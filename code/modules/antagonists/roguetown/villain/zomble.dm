@@ -27,6 +27,7 @@
 	var/has_turned = FALSE
 
 	rogue_enabled = TRUE
+	var/mutable_appearance/rotflies
 
 /datum/antagonist/zombie/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/vampirelord))
@@ -53,6 +54,7 @@
 	if(zombie.dna?.species)
 		soundpack_m = zombie.dna.species.soundpack_m
 		soundpack_f = zombie.dna.species.soundpack_f
+		rotflies = mutable_appearance('icons/roguetown/mob/rotten.dmi', "deadite")
 	base_intents = zombie.base_intents
 	cmode_music = zombie.cmode_music
 	patron = zombie.patron
@@ -83,6 +85,7 @@
 	if(zombie.dna?.species)
 		zombie.dna.species.soundpack_m = soundpack_m
 		zombie.dna.species.soundpack_f = soundpack_f
+		zombie.cut_overlay(rotflies)
 	zombie.base_intents = base_intents
 
 	owner.known_skills = stored_skills
