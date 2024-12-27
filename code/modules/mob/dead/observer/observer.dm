@@ -18,10 +18,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	hud_type = /datum/hud/ghost
 	movement_type = GROUND | FLYING
 	var/draw_icon = FALSE
-	light_system = MOVABLE_LIGHT
-	light_range = 1
-	light_power = 2
-	light_on = FALSE
 	var/can_reenter_corpse
 	var/datum/hud/living/carbon/hud = null // hud
 	var/bootime = 0
@@ -38,7 +34,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	var/data_huds_on = 0 //Are data HUDs currently enabled?
 	var/health_scan = FALSE //Are health scans currently enabled?
 	var/gas_scan = FALSE //Are gas scans currently enabled?
-	var/list/datahuds = list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL_ADVANCED, DATA_HUD_DIAGNOSTIC_ADVANCED) //list of data HUDs shown to ghosts.
+	var/list/datahuds = list() //list of data HUDs shown to ghosts.
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 
 	//These variables store hair data if the ghost originates from a species with head and/or facial hair.
@@ -224,10 +220,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		client?.verbs += GLOB.ghost_verbs
 		to_chat(src, span_danger("Click the <b>SKULL</b> on the left of your HUD to respawn."))
 
-/mob/dead/observer/get_photo_description(obj/item/camera/camera)
-	if(!invisibility || camera.see_ghosts)
-		return "You can also see a g-g-g-g-ghooooost!"
-
 /mob/dead/observer/narsie_act()
 	var/old_color = color
 	color = "#960000"
@@ -361,7 +353,7 @@ Transfer_mind is there to check if mob is being deleted/not going to have a body
 Works together with spawning an observer, noted above.
 */
 
-/mob/proc/ghostize(can_reenter_corpse = TRUE, force_respawn = FALSE, drawskip = FALSE, admin = FALSE)
+/mob/proc/ghostize(can_reenter_corpse = 1, force_respawn = FALSE, admin = FALSE, drawskip)
 	if(!key)
 		return
 	stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
@@ -387,13 +379,17 @@ Works together with spawning an observer, noted above.
 	ghost.key = key
 	return ghost
 
-/mob/living/carbon/human/ghostize(can_reenter_corpse = 1, force_respawn = FALSE, drawskip = FALSE, admin = FALSE)
+/mob/living/carbon/human/ghostize(can_reenter_corpse = 1, force_respawn = FALSE, admin = FALSE, drawskip = FALSE)
 	if(mind)
-		var/datum/antagonist/zombie/zomble = mind.has_antag_datum(/datum/antagonist/zombie)
-		if(zomble)
+		if(mind.has_antag_datum(/datum/antagonist/zombie))
 			if(force_respawn)
 				mind.remove_antag_datum(/datum/antagonist/zombie)
 				return ..()
+			var/datum/antagonist/zombie/Z = mind.has_antag_datum(/datum/antagonist/zombie)
+			if(!Z.revived)
+				if(!(world.time % 5))
+					to_chat(src, span_warning("I'm preparing to walk again."))
+				return
 	return ..()
 
 /mob/proc/scry_ghost()
@@ -1056,21 +1052,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			mob_eye.hud_used.show_hud(mob_eye.hud_used.hud_version, src)
 			observetarget = mob_eye
 
-/mob/dead/observer/verb/register_pai_candidate()
-	set category = "Ghost"
-	set name = "pAI Setup"
-	set desc = ""
-	set hidden = 1
-	if(!check_rights(R_WATCH))
-		return
-	register_pai()
-
-/mob/dead/observer/proc/register_pai()
-	if(isobserver(src))
-		SSpai.recruitWindow(src)
-	else
-		to_chat(usr, span_warning("Can't become a pAI candidate while not dead!"))
-
 /mob/dead/observer/CtrlShiftClick(mob/user)
 	if(isobserver(user) && check_rights(R_SPAWN))
 		change_mob_type( /mob/living/carbon/human , null, null, TRUE) //always delmob, ghosts shouldn't be left lingering
@@ -1082,7 +1063,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/proc/set_invisibility(value)
 	invisibility = value
-	set_light_on(!value ? TRUE : FALSE)
+	if(!value)
+		set_light(1, 1, 2)
+	else
+		set_light(0, 0, 0)
 
 // Ghosts have no momentum, being massless ectoplasm
 /mob/dead/observer/Process_Spacemove(movement_dir)

@@ -24,7 +24,7 @@
 /obj/structure/roguemachine/steward/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/roguekey))
 		var/obj/item/roguekey/K = P
-		if(K.lockid == keycontrol)
+		if(K.lockid == keycontrol || istype(K, /obj/item/roguekey/lord)) //Master key
 			locked = !locked
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			update_icon()
@@ -34,7 +34,10 @@
 			return
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/K = P
-		for(var/obj/item/roguekey/KE in K.keys)
+		if(!K.contents.len)
+			return
+		var/list/keysy = K.contents.Copy()
+		for(var/obj/item/roguekey/KE in keysy)
 			if(KE.lockid == keycontrol)
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
