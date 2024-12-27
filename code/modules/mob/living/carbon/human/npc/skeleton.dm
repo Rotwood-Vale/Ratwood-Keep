@@ -52,8 +52,6 @@
 	faction = list("undead")
 	name = "Skeleton"
 	real_name = "Skeleton"
-	gender = pick(MALE, FEMALE)
-	set_species(/datum/species/human/northern)
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
