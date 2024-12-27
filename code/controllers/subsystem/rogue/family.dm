@@ -64,15 +64,22 @@ SUBSYSTEM_DEF(family)
 
 	var/list/current_families = list()
 
+	var/list/head_candidates = list()
+	for(var/c in family_candidates)
+		var/mob/living/carbon/human/H = c
+		if(H.gender == MALE)
+			head_candidates += H
 
 	family_candidates = shuffle(family_candidates)
 	total_families = max(1,round(length(family_candidates)/2)) //Since we're currently only matching spouses. Just assume we want enough families for groups of two.
-	while(total_families && length(family_candidates)) //Construct families.
-		var/mob/living/carbon/head = pick(family_candidates) //Could be weighted on age. But it doesn't really matter due to a lack of last names.
+	while(total_families && length(head_candidates)) //Construct families.
+		var/mob/living/carbon/head = pick(head_candidates)
 
 		if(head)
 			var/datum/family/F = makeFamily(head)
 			current_families += F
+			family_candidates -= head
+			head_candidates -= head
 
 		total_families--
 
