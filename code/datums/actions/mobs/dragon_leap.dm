@@ -19,8 +19,13 @@
 
 
 /datum/action/cooldown/mob_cooldown/dragon_leap/proc/leap_target(atom/target)
+
+	if(!QDELETED(target))
+		return
 	enable_cooldown_actions()
 	var/turf/cur_turf = get_turf(target)
+	if(!cur_turf)
+		return
 	
 //Check damage here
 	if(cur_turf.can_traverse_safely(owner))

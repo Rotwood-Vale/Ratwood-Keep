@@ -1,5 +1,6 @@
 #define DEFAULT_BLEED_CLOT 0.02
 #define DEFAULT_BRUTE_HEAL 0.10
+#define DEFAULT_FIRE_HEAL 0.50
 
 /**
  * Behavior for mob sitting and healing bleed/brute. This does not recover blood, the mobs will still be vulnerable to being bled out.
@@ -27,6 +28,8 @@
 		pawn.bleed_rate = clamp(pawn.bleed_rate, 0, max_hp)
 		pawn.adjustBruteLoss( (max_hp * -brute_heal) )
 		pawn.health = clamp(pawn.health, 0, max_hp)
+		pawn.fire_stacks = pawn.fire_stacks - DEFAULT_FIRE_HEAL
+		pawn.fire_stacks = clamp(pawn.fire_stacks, 0, 999)
 
 	finish_action(controller, TRUE)
 
