@@ -58,12 +58,12 @@
 	var/skill_median = SKILL_LEVEL_JOURNEYMAN
 	/// Modifiers to success chance when you're above the median
 	var/list/skill_bonuses = list(
-		1 = 0.2,
-		2 = 0.4,
-		3 = 0.6,
-		4 = 0.8,
-		5 = 1,
-		6 = 2,
+		1 = 0.6,
+		2 = 0.8,
+		3 = 1,
+		4 = 2,
+		5 = 3,
+		6 = 4,
 	)
 	/// Modifiers to success chance when you're below the median
 	var/list/skill_maluses = list(
@@ -220,7 +220,7 @@
 			if((key == TOOL_SHARP) && tool.get_sharpness())
 				implement_type = key
 				break
-			if((key == TOOL_HOT) && (tool.get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST))
+			if((key == TOOL_HOT) && (tool.get_temperature() >= 100+T0C))
 				implement_type = key
 				break
 		

@@ -10,10 +10,6 @@
 	var/wled = 0
 	if(holder)
 		to_chat(src, span_info("Loading Whom, please wait..."))
-//		if (check_rights(R_ADMIN,0) )//If they have +ADMIN and are a ghost they can see players IC names and statuses.
-//			var/mob/dead/observer/G = src.mob
-//			if(!G.started_as_observer)//If you aghost to do this, KorPhaeron will deadmin you in your sleep.
-//				log_admin("[key_name(usr)] checked advanced who in-round")
 		for(var/client/C in GLOB.clients)
 			var/entry = "<span class='info'>\t[C.key]"
 			if(C.holder && C.holder.fakekey)
@@ -43,53 +39,22 @@
 				if(C.mob.mind)
 					if(C.mob.mind.special_role)
 						entry += " - <b><font color='red'>[C.mob.mind.special_role]</font></b>"
-//			entry += " [ADMIN_QUE(C.mob)]"
 			entry += " ([CheckIPCountry(C.address)])"
 			if(C.whitelisted())
 				wled++
 				entry += "(WL)"
 			entry += "</span>"
 			Lines += entry
-/*		else//If they don't have +ADMIN
-			for(var/client/C in GLOB.clients)
-//				var/WL = FALSE
-				if(C.whitelisted())
-					wled++
-//					WL = TRUE
-//				if(C.holder)
-//					continue
-//				var/usedkey = C.ckey
-//				if(C.ckey in GLOB.anonymize)
-//					usedkey = get_fake_key(C.ckey)
-/*				if(WL)
-					Lines += span_biginfo("[C.key][hidden ? " (as [get_fake_key(C.ckey)])" : ""]")
-				else
-					Lines += span_info("[C.key][hidden ? " (as [get_fake_key(C.ckey)])" : ""]")*/
-				var/entry = span_info("[usedkey]")
-				entry += " ([CheckIPCountry(C.address)])"
-				Lines += entry*/
 	else
 		for(var/client/C in GLOB.clients)
-//			var/WL = FALSE
 			if(C.whitelisted())
 				wled++
-//				WL = TRUE
-//			if(C.holder)
-//				continue
 			var/usedkey = C.ckey
 			if(C.ckey in GLOB.anonymize)
 				usedkey = get_fake_key(C.ckey)
-/*			if(WL)
-				Lines += span_biginfo("[usedkey]")
-			else
-				Lines += span_info("[usedkey]")*/
 			Lines += span_info("[usedkey]")
-//	if(holder && check_rights(R_ADMIN,0)) //thius is the part where admins see the lines but nobody else
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
-//#else
-//	for(var/line in sortList(Lines))
-//		msg += "[line]\n"
 	msg += "<b>Players at the table:</b> [length(Lines)]"
 	if(holder)
 		msg += "<br><b>Whitelisted players:</b> [wled]"

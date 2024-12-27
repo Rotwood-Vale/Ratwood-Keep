@@ -862,14 +862,6 @@
 	new /obj/item/reagent_containers/pill/caffpill(src)
 	new /obj/item/reagent_containers/pill/caffpill(src)
 
-/obj/item/storage/fancy/pilltin/pink
-	name = "pill tin (pnk)"
-
-/obj/item/storage/fancy/pilltin/pink/PopulateContents()
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
 	desc = "portable and compact"
@@ -1282,7 +1274,7 @@
 /obj/item/reagent_containers/glass/alembic/Initialize()
 	create_reagents(100, REFILLABLE | DRAINABLE | AMOUNT_VISIBLE) // 2 Bottles capacity
 	icon_state = "alembic_empty"
-	boilloop = new(list(src), FALSE)
+	boilloop = new(src, FALSE)
 	. = ..()
 
 /obj/item/reagent_containers/glass/alembic/examine(mob/user)

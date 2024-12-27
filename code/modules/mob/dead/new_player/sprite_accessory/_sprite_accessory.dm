@@ -95,7 +95,7 @@
 	var/key = "[type]-[overlay_icon_state]-[color_string]"
 	if(!accessory_icon_cache[key])
 		var/list/icon_states = generate_icon_states(overlay_icon_state, color_string)
-		var/icon/icon_bundle = icon('icons/Testing/greyscale_error.dmi')
+		var/icon/icon_bundle = icon()
 		for(var/icon_state in icon_states)
 			icon_bundle.Insert(icon_states[icon_state], icon_state)
 

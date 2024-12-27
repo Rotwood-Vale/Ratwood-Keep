@@ -530,7 +530,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		Spl.Fade(TRUE)
 //			character.playsound_local(get_turf(character), 'sound/blank.ogg', 25)
 
-		character.update_parallax_teleport()
 
 	SSticker.minds += character.mind
 
@@ -559,10 +558,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 /mob/dead/new_player/proc/LateChoices()
 	var/list/dat = list("<div class='notice' style='font-style: normal; font-size: 14px; margin-bottom: 2px; padding-bottom: 0px'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time, 1)]</div>")
-	if(SSshuttle.emergency)
-		switch(SSshuttle.emergency.mode)
-			if(SHUTTLE_ESCAPE)
-				dat += "<div class='notice red'>The last boat has left Roguetown.</div><br>"
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
 			SSjob.prioritized_jobs -= prioritized_job

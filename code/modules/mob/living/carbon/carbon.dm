@@ -12,7 +12,6 @@
 	QDEL_LIST(internal_organs)
 	QDEL_LIST(bodyparts)
 	QDEL_LIST(implants)
-	remove_from_all_data_huds()
 	QDEL_NULL(dna)
 	GLOB.carbon_list -= src
 
@@ -357,9 +356,9 @@
 /mob/living/carbon/resist_leash()
 	to_chat(src, span_notice("I reach for the hook on my collar..."))
 	//Determine how long it takes to remove the leash
-	var/deleash = 15
+	var/deleash = 5 SECONDS
 	if(src.handcuffed)
-		deleash = 60
+		deleash = 20 SECONDS
 	if(move_after(src, deleash, 0, target = src))
 		if(!QDELETED(src))
 			to_chat(src, "<span class='warning'>[src] has removed their leash!</span>")
@@ -492,8 +491,6 @@
 	dropItemToGround(I)
 
 	var/modifier = 0
-	if(HAS_TRAIT(src, TRAIT_CLUMSY))
-		modifier -= 40 //Clumsy people are more likely to hit themselves -Honk!
 
 	switch(rand(1,100)+modifier) //91-100=Nothing special happens
 		if(-INFINITY to 0) //attack yourself
@@ -692,10 +689,6 @@
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
 	update_stat()
 	update_mobility()
-//	if(((maxHealth - total_burn) < HEALTH_THRESHOLD_DEAD) && stat == DEAD )
-//		become_husk("burn")
-
-	med_hud_set_health()
 	if(stat == SOFT_CRIT)
 		add_movespeed_modifier(MOVESPEED_ID_CARBON_SOFTCRIT, TRUE, multiplicative_slowdown = SOFTCRIT_ADD_SLOWDOWN)
 	else
@@ -1015,7 +1008,6 @@
 	update_health_hud()
 //	update_tod_hud()
 	update_spd()
-	med_hud_set_status()
 
 //called when we get cuffed/uncuffed
 /mob/living/carbon/proc/update_handcuffed()
@@ -1149,7 +1141,6 @@
 /mob/living/carbon/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
-	VV_DROPDOWN_OPTION(VV_HK_MAKE_AI, "Make AI")
 	VV_DROPDOWN_OPTION(VV_HK_MODIFY_BODYPART, "Modify bodypart")
 	VV_DROPDOWN_OPTION(VV_HK_MODIFY_ORGANS, "Modify organs")
 	VV_DROPDOWN_OPTION(VV_HK_HALLUCINATION, "Hallucinate")
@@ -1199,12 +1190,6 @@
 					else
 						to_chat(usr, span_boldwarning("Only humans can be augmented."))
 		admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src]")
-	if(href_list[VV_HK_MAKE_AI])
-		if(!check_rights(R_SPAWN))
-			return
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
-			return
-		usr.client.holder.Topic("vv_override", list("makeai"=href_list[VV_HK_TARGET]))
 	if(href_list[VV_HK_MODIFY_ORGANS])
 		if(!check_rights(NONE))
 			return

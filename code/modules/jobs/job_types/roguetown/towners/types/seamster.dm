@@ -2,10 +2,10 @@
 	name = "Seamster"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/refugee/seamstress
+	outfit = /datum/outfit/job/roguetown/towner/seamstress
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/refugee/seamstress/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/towner/seamstress/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	cloak = /obj/item/clothing/cloak/raincloak
@@ -24,7 +24,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)

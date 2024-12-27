@@ -9,7 +9,7 @@
 	chargetime = 1.5
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 30
+	penfactor = 50
 	item_d_type = "stab"
 
 /datum/intent/spear/bash
@@ -97,7 +97,7 @@
 
 /obj/item/rogueweapon/spear
 	force = 18
-	force_wielded = 23
+	force_wielded = 25
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for non-lethal takedowns, only targets limbs
 	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
 	name = "spear"

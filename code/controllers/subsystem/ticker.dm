@@ -250,8 +250,6 @@ SUBSYSTEM_DEF(ticker)
 	var/list/readied_jobs = list()
 	var/list/required_jobs = list()
 
-	//var/list/required_jobs = list("Duke", "Duchess","Merchant") //JTGSZ - 4/11/2024 - This was the prev set of required jobs to go with the hardcoded checks commented out below
-
 	for(var/V in required_jobs)
 		for(var/mob/dead/new_player/player in GLOB.player_list)
 			if(!player)
@@ -421,8 +419,6 @@ SUBSYSTEM_DEF(ticker)
 	log_game("GAME SETUP: Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time - (world.timeofday - init_start)
 	round_start_irl = REALTIMEOFDAY
-//	SSshuttle.emergency.startTime = world.time
-//	SSshuttle.emergency.setTimer(ROUNDTIMERBOAT)
 
 	SSdbcore.SetRoundStart()
 
@@ -600,8 +596,6 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/check_maprotate()
 	if (!CONFIG_GET(flag/maprotation))
 		return
-	if (SSshuttle.emergency && SSshuttle.emergency.mode != SHUTTLE_ESCAPE || SSshuttle.canRecall())
-		return
 	if (maprotatechecked)
 		return
 
@@ -700,8 +694,6 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "The project started by [station_name()] to upgrade their silicon units with advanced equipment have been largely successful, though they have thus far refused to release schematics in a violation of company policy."
 		if(CLOCK_PROSELYTIZATION)
 			news_message = "The burst of energy released near [station_name()] has been confirmed as merely a test of a new weapon. However, due to an unexpected mechanical error, their communications system has been knocked offline."
-		if(SHUTTLE_HIJACK)
-			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
 
 	if(news_message)
 		send2otherserver(news_source, news_message,"News_Report")

@@ -1,18 +1,23 @@
 /obj/effect/proc_holder/spell/invoked/strengthen_undead
 	name = "Strengthen Undead"
+	desc = "Suffuse a target with necrotic energies, mending the undead and paralyzing the living."
+	invocation = "Kral'chal!"
+	invocation_type = "shout"
 	overlay_state = "raiseskele"
 	releasedrain = 30
 	chargetime = 5
 	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	chargedloop = null
+	chargedloop = /datum/looping_sound/invokegen
 	sound = 'sound/magic/whiteflame.ogg'
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
 	charge_max = 15 SECONDS
 	miracle = FALSE
-	cost = 2
+	cost = 4
+	chargedrain = 1
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/strengthen_undead/cast(list/targets, mob/living/user)
 	. = ..()
@@ -37,19 +42,24 @@
 
 /obj/effect/proc_holder/spell/invoked/eyebite
 	name = "Eyebite"
+	desc = "Impale a target's eyes with arcane fangs, moderately wounding and temporarily blinding them."
+	invocation = "Trk'chi'Esri!"
+	invocation_type = "shout"
 	overlay_state = "raiseskele"
 	releasedrain = 30
 	chargetime = 15
 	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	chargedloop = null
+	chargedloop = /datum/looping_sound/invokegen
 	sound = 'sound/items/beartrap.ogg'
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
 	charge_max = 15 SECONDS
 	miracle = FALSE
 	cost = 3
+	xp_gain = TRUE
+	chargedrain = 2
 
 /obj/effect/proc_holder/spell/invoked/eyebite/cast(list/targets, mob/living/user)
 	. = ..()
@@ -64,25 +74,29 @@
 
 /obj/effect/proc_holder/spell/invoked/raise_undead
 	name = "Raise Undead"
-	desc = ""
+	desc = "Reanimate a corpse as a skeleton. Reanimate many skeletons. Reanimate all the skeletons! There's a skeleton inside everyone and they wish to be free! The body must have all limbs and its head."
 	clothes_req = FALSE
 	range = 7
 	overlay_state = "raiseskele"
 	sound = list('sound/magic/magnet.ogg')
 	releasedrain = 40
 	chargetime = 60
+	chargedrain = 3
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Hgf'ant'kthar!"
+	invocation_type = "shout"
 	charge_max = 30 SECONDS
 	cost = 10
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/raise_undead_lesser
 	name = "Lesser Raise Undead"
-	cost = 4
-	desc = ""
+	cost = 6
+	desc = "Reanimate a corpse as a skeleton. You can maintain two sapient skeletons, the rest will be mindless. The body must have all limbs and its head."
 	clothes_req = FALSE
 	range = 7
 	overlay_state = "raiseskele"
@@ -94,7 +108,11 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Hygf'akni'kthakchratah!"
+	invocation_type = "shout"
 	charge_max = 30 SECONDS
+	chargedrain = 2
+	xp_gain = TRUE
 
 /**
   * Raises a minion from a corpse. Prioritizing ownership to original player > ghosts > npc.
@@ -106,7 +124,6 @@
 /obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
 
-	user.say("Hgf'ant'kthar!")
 	if(!("undead" in user.faction))
 		user.faction |= "undead"
 	var/obj = targets[1]
@@ -191,7 +208,6 @@
 /obj/effect/proc_holder/spell/invoked/raise_undead_lesser/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
 
-	user.say("Hygf'akni'kthakchratah!")
 	if(!("undead" in user.faction))
 		user.faction |= "undead"
 	var/obj = targets[1]
@@ -236,9 +252,9 @@
 	if(target.necrotarget == TRUE)
 		to_chat(user, span_warning("I am already trying to raise this corpse."))
 		return FALSE
-	
+
 	target.set_necrotarget(TRUE)
-	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)	
+	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
 	if(user.mind.boneboys < user.mind.bonemax)
 		to_chat(user, span_warning("I have the capacity to sustain another self aware skeleton!"))
@@ -297,7 +313,7 @@
 		return TRUE
 
 	target.set_necrotarget(TRUE)
-	return FALSE	
+	return FALSE
 
 /mob/living/proc/handle_necromancy()
 	if(src.mind.boneboy == FALSE)
@@ -306,6 +322,7 @@
 		return
 	var/mob/living/carbon/human/user = src.mind.bonenecro
 	user.mind.adjust_boneboys(-1)
+	to_chat(user, span_warning("One of my sapient skeleton's bindings has come undone, I may now raise another."))
 	src.mind.set_boneboy(FALSE)
 	src.mind.set_bonenecro(null)
 
@@ -349,7 +366,7 @@
 
 
 	cmode_music = 'sound/music/combat_cult.ogg'
-	
+
 	patron = master.patron
 	mob_biotypes = MOB_UNDEAD
 	faction = list("undead")
@@ -370,6 +387,8 @@
 	if(charflaw)
 		QDEL_NULL(charflaw)
 
+	can_do_sex = FALSE //where my bonger go
+
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
@@ -380,6 +399,7 @@
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC) //Skeletons can't regen stamina and have shit skills so after dicussion with Gyran, this'll be a bandaid. If it proves unbalanced I'll figure out a way to let them regen stam reliably.
 
 	update_body()
 
@@ -391,8 +411,10 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/sickness
 	name = "Ray of Sickness"
-	desc = ""
+	desc = "Fire a bolt of magical burning poison at a target. Onset may be slow."
 	clothes_req = FALSE
+	invocation = "Royk'talashi!"
+	invocation_type = "shout"
 	range = 15
 	projectile_type = /obj/projectile/magic/sickness
 	overlay_state = "raiseskele"
@@ -400,6 +422,7 @@
 	active = FALSE
 	releasedrain = 30
 	chargetime = 10
+	chargedrain = 1
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	charging_slowdown = 1
@@ -407,32 +430,25 @@
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 15 SECONDS
 	cost = 3
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/self/command_undead
 	name = "Command Undead"
-	desc = "!"
+	desc = "Broadcast a message to all your undead minions!"
 	overlay_state = "raiseskele"
 	sound = list('sound/magic/magnet.ogg')
 	invocation = "Zuth'gorash vel'thar dral'oth!"
-	invocation_type = "shout"
+	invocation_type = "whisper"
 	antimagic_allowed = TRUE
+	chargedloop = /datum/looping_sound/invokegen
 	charge_max = 15 SECONDS
+	chargedrain = 1
 	cost = 2
-
-/obj/effect/proc_holder/spell/self/command_undead
-	name = "Command Undead"
-	desc = "!"
-	overlay_state = "raiseskele"
-	sound = list('sound/magic/magnet.ogg')
-	invocation = "Zuth'gorash vel'thar dral'oth!"
-	invocation_type = "shout"
-	antimagic_allowed = TRUE
-	charge_max = 15 SECONDS
-	cost = 2
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/self/command_undead/cast(mob/user = usr)
 	..()
-	
+
 	var/message = input("Speak to your minions!", "LICH") as text|null
 
 	if(!message)
@@ -449,30 +465,34 @@
 /obj/effect/proc_holder/spell/invoked/revoke_unlife
 	name = "Revoke Unlife"
 	cost = 1
-	desc = ""
+	desc = "Revoke the unlife of a misbehaving minions, banishing the soul straight to the underworld. Allowing you to raise the corpse once more with a different, more malleable soul."
 	clothes_req = FALSE
 	range = 7
 	overlay_state = "raiseskele"
 	sound = list('sound/magic/magnet.ogg')
 	releasedrain = 40
+	chargedrain = 1
 	chargetime = 2 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Hgf'ant'Zeshlesh!"
+	invocation_type = "shout"
 	charge_max = 2 SECONDS
+	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/revoke_unlife/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
-	user.say("Hgf'ant'Zeshlesh!")
+
 	var/obj = targets[1]
 
 	if(!obj || !istype(obj, /mob/living/carbon/human))
 		to_chat(user, span_warning("I should cast this spell on a misbehaving minion."))
 		return
 	var/mob/living/carbon/human/target = obj
-	
+
 	if(target.stat == DEAD)
 		to_chat(user, span_warning("This one is already dead, best reanimate it."))
 		return
@@ -480,12 +500,12 @@
 	if(!(target in user.minions))
 		to_chat(user, span_warning("This is not one of mine."))
 		return
-	
+
 	if(!target.client)
 		target.death()
 		to_chat(user, span_warning("The strings are cut, the mindless one comes undone."))
 		return
-	
+
 	to_chat(target, span_warning("I have disappointed my Master! I feel Necra's scythe catch upon my very soul!"))
 	target.death()
 	sleep(1 SECONDS)

@@ -40,11 +40,6 @@
 		m2 = "my"
 		m3 = "I have"
 
-	if(isliving(user))
-		var/mob/living/L = user
-		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA))
-			obscure_name = TRUE
-
 	var/static/list/unknown_names = list(
 		"Unknown",
 		"Unknown Man",

@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/roguetown/physician
 	whitelist_req = TRUE
 
-	give_bank_account = 25
+	give_bank_account = 47
 	min_pq = 2
 	max_pq = null
 
@@ -35,16 +35,17 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/physician
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/red
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
 	pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
-	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+	shoes = /obj/item/clothing/shoes/roguetown/armor
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/reagent_containers/glass/bottle/waterskin
-	beltr = /obj/item/storage/keyring/physician
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	wrists = /obj/item/storage/keyring/physician
 	id = /obj/item/clothing/ring/quartzs
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1, /obj/item/clothing/mask/rogue/pestra/court = 1,)
+	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1, /obj/item/clothing/mask/rogue/pestra/court = 1, /obj/item/thermometer = 1)
 	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
 	ADD_TRAIT(H, TRAIT_ROT_EATER, "[type]")
