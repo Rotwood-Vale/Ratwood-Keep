@@ -17,7 +17,7 @@
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
-	lord_family = TRUE
+	ruler_family = TRUE
 	lord_rel_type = REL_TYPE_OFFSPRING
 
 /datum/job/roguetown/prince/after_spawn(mob/living/H, mob/M, latejoin)

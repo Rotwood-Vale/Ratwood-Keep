@@ -98,9 +98,9 @@ SUBSYSTEM_DEF(family)
 
 
 /datum/controller/subsystem/family/proc/SetupLordFamily()
-	var/datum/family/lord_family
-	var/mob/living/carbon/human/lord
-	var/mob/living/carbon/human/lady //stored separate as they have to be added before the children.
+	var/datum/family/ruler_family
+	var/mob/living/carbon/human/ruler
+	var/mob/living/carbon/human/consort //stored separate as they have to be added before the children.
 	var/list/children = list()
 
 
@@ -108,21 +108,21 @@ SUBSYSTEM_DEF(family)
 		if(!H.client) //Needed because the preference menu makes dummy humans.
 			continue
 		var/datum/job/J = SSjob.GetJob(H.job)
-		if(!J || !J.lord_family)
+		if(!J || !J.ruler_family)
 			continue
-		if(istype(J,/datum/job/roguetown/lord))
-			if(!lord)
-				lord = H
-				lord_family = makeFamily(lord, GLOB.lordsurname)
-		else if(istype(J,/datum/job/roguetown/lady))
-			lady = H
+		if(istype(J,/datum/job/roguetown/ruler))
+			if(!ruler)
+				ruler = H
+				ruler_family = makeFamily(ruler, GLOB.lordsurname)
+		else if(istype(J,/datum/job/roguetown/consort))
+			consort = H
 		else
 			children |= H
 
-	if(!lord_family)
+	if(!ruler_family)
 		return
 
-	var/list/family_list = list(lady)
+	var/list/family_list = list(consort)
 
 	family_list += children
 
@@ -131,32 +131,32 @@ SUBSYSTEM_DEF(family)
 			continue
 		var/mob/living/carbon/human/H = m
 
-		lord_family.addMember(H)
+		ruler_family.addMember(H)
 
 		var/datum/job/J = SSjob.GetJob(H.job)
 		var/rel_type = J.lord_rel_type
 		if(rel_type != REL_TYPE_SPOUSE) //Genitals are already checked when the job is assigned. Ane we ignore both the Lord's & Consort's attraction prefs.
-			if(!lord_family.checkFamilyCompat(H,lord,J.lord_rel_type)) //They're not suitible for their assigned relation type.
-				if(rel_type == REL_TYPE_OFFSPRING && lord_family.checkFamilyCompat(H,lord,REL_TYPE_SIBLING)) //Fallback, if they can't be children. Check if they can be siblings.
+			if(!ruler_family.checkFamilyCompat(H,ruler,J.lord_rel_type)) //They're not suitible for their assigned relation type.
+				if(rel_type == REL_TYPE_OFFSPRING && ruler_family.checkFamilyCompat(H,ruler,REL_TYPE_SIBLING)) //Fallback, if they can't be children. Check if they can be siblings.
 					rel_type = REL_TYPE_SIBLING
 				else
 					rel_type = REL_TYPE_RELATIVE
 
-		lord_family.addRel(H,lord,rel_type,TRUE)
-		lord_family.addRel(lord,H,getMatchingRel(rel_type),TRUE)
+		ruler_family.addRel(H,ruler,rel_type,TRUE)
+		ruler_family.addRel(ruler,H,getMatchingRel(rel_type),TRUE)
 
 
-	for(var/ref in lord_family.members) //loop through all other members and connect them.
-		if(ref == lord_family.members[1]) //skip the lord.
+	for(var/ref in ruler_family.members) //loop through all other members and connect them.
+		if(ref == ruler_family.members[1]) //skip the lord.
 			continue
-		var/mob/living/carbon/human/H = lord_family.members[ref]:resolve()
-		var/datum/relation/H_rel = lord_family.getTrueRel(lord,H)
+		var/mob/living/carbon/human/H = ruler_family.members[ref]:resolve()
+		var/datum/relation/H_rel = ruler_family.getTrueRel(ruler,H)
 
-		for(var/ref2 in lord_family.members)
-			if(ref2 == lord_family.members[1] || ref2 == ref) //skip the lord and first member.
+		for(var/ref2 in ruler_family.members)
+			if(ref2 == ruler_family.members[1] || ref2 == ref) //skip the lord and first member.
 				continue
-			var/mob/living/carbon/human/HH = lord_family.members[ref2]:resolve()
-			var/datum/relation/HH_rel = lord_family.getTrueRel(lord,HH)
+			var/mob/living/carbon/human/HH = ruler_family.members[ref2]:resolve()
+			var/datum/relation/HH_rel = ruler_family.getTrueRel(ruler,HH)
 
 			var/new_rel = REL_TYPE_RELATIVE
 			switch(H_rel.rel_type)
@@ -171,7 +171,7 @@ SUBSYSTEM_DEF(family)
 						if(REL_TYPE_SPOUSE)
 							new_rel = REL_TYPE_OFFSPRING
 
-			lord_family.addRel(H,HH,new_rel,TRUE)
+			ruler_family.addRel(H,HH,new_rel,TRUE)
 
 /datum/family
 	var/name = "ERROR"
@@ -385,7 +385,7 @@ proc/getMatchingRel(var/rel_type)
 	var/datum/job/holder_job = SSjob.GetJob(holder.job)
 
 	// Only give rings to non-baron/consort spouses.
-	if(istype(holder_job, /datum/job/roguetown/lord) || istype(holder_job, /datum/job/roguetown/lady))
+	if(istype(holder_job, /datum/job/roguetown/ruler) || istype(holder_job, /datum/job/roguetown/consort))
 		return
 
 	// Handle existing rings before equipping new one

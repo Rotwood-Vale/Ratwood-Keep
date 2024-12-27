@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	required = TRUE
 
 	family_blacklisted = TRUE
-	lord_family = TRUE
+	ruler_family = TRUE
 
 /datum/job/roguetown/exlord //just used to change the lords title
 	title = "Duke Emeritus"

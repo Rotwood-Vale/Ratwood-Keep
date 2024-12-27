@@ -145,7 +145,7 @@
 	var/family_blacklisted = FALSE
 
 	//If characters with this job should be added to the Lord's family.
-	var/lord_family = FALSE
+	var/ruler_family = FALSE
 	var/lord_rel_type = REL_TYPE_RELATIVE
 
 

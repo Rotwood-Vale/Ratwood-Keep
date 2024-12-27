@@ -20,7 +20,7 @@
 	max_pq = null
 
 	family_blacklisted = TRUE
-	lord_family = TRUE
+	ruler_family = TRUE
 	lord_rel_type = REL_TYPE_SPOUSE
 
 // Prevent same sex ruler-consorts
