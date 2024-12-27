@@ -5,7 +5,7 @@
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(3,6,9)
 	volume = 64
-	dropshrink = 0.5
+	dropshrink = 1
 	sellprice = 5
 	closed = FALSE
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
@@ -54,3 +54,5 @@
 			return TRUE
 	return FALSE
 
+/obj/item/reagent_containers/glass/bottle/waterskin/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = TRUE)
+	return
