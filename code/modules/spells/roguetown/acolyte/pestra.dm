@@ -169,6 +169,7 @@
 			target.Unconscious(20 SECONDS)
 			target.emote("breathgasp")
 			target.Jitter(100)
+			target.can_do_sex = TRUE
 
 			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
 				adjust_playerquality(unzombification_pq, user.ckey)

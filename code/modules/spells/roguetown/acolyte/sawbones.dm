@@ -114,6 +114,7 @@
 				adjust_playerquality(revive_pq, user.ckey)
 				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
+			target.can_do_sex = TRUE
 		return TRUE
 	to_chat(user, span_warning("I need to prime their heart first."))
 	return FALSE
@@ -153,6 +154,7 @@
 		target.Unconscious(20 SECONDS)
 		target.emote("breathgasp")
 		target.Jitter(100)
+		target.can_do_sex = TRUE
 		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
 			adjust_playerquality(unzombification_pq, user.ckey)
 			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
@@ -1132,7 +1134,7 @@
 	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
-	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15) 
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15)
 	dissolvable = FALSE
 	grind_results = null
 
