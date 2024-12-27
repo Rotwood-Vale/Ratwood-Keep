@@ -46,6 +46,5 @@
 
 /obj/item/undies/athletic_leotard
 	name = "athletic leotard"
-	icon = 'icons/mob/sprite_accessory/underwear.dmi'
 	icon_state = "athletic_leotard"
 	covers_breasts = TRUE
