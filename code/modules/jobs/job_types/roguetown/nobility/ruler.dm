@@ -12,6 +12,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	selection_color = JCOLOR_NOBLE
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
+	in_pyramid = FALSE
 
 	spells = list(
 		/obj/effect/proc_holder/spell/self/grant_title,
