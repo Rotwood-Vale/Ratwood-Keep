@@ -22,67 +22,6 @@
 	/turf/open/lava))
 	var/slippery_foam = TRUE
 
-/obj/effect/particle_effect/foam/firefighting
-	name = "firefighting foam"
-	lifetime = 20 //doesn't last as long as normal foam
-	amount = 0 //no spread
-	slippery_foam = FALSE
-	var/absorbed_plasma = 0
-
-/obj/effect/particle_effect/foam/firefighting/process()
-	..()
-
-	var/turf/open/T = get_turf(src)
-	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in T)
-	if(hotspot && istype(T) && T.air)
-		qdel(hotspot)
-		var/datum/gas_mixture/G = T.air
-		var/plas_amt = min(30,G.gases[/datum/gas/plasma][MOLES]) //Absorb some plasma
-		G.gases[/datum/gas/plasma][MOLES] -= plas_amt
-		absorbed_plasma += plas_amt
-		if(G.temperature > T20C)
-			G.temperature = max(G.temperature/2,T20C)
-		G.garbage_collect()
-		T.air_update_turf()
-
-/obj/effect/particle_effect/foam/firefighting/kill_foam()
-	STOP_PROCESSING(SSfastprocess, src)
-
-	if(absorbed_plasma)
-		var/obj/effect/decal/cleanable/plasma/P = (locate(/obj/effect/decal/cleanable/plasma) in get_turf(src))
-		if(!P)
-			P = new(loc)
-		P.reagents.add_reagent(/datum/reagent/stable_plasma, absorbed_plasma)
-
-	flick("[icon_state]-disolve", src)
-	QDEL_IN(src, 5)
-
-/obj/effect/particle_effect/foam/firefighting/foam_mob(mob/living/L)
-	if(!istype(L))
-		return
-	L.adjust_fire_stacks(-2)
-	L.ExtinguishMob()
-
-/obj/effect/particle_effect/foam/firefighting/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	return
-
-/obj/effect/particle_effect/foam/metal
-	name = "aluminium foam"
-	metal = ALUMINUM_FOAM
-	icon_state = "mfoam"
-	slippery_foam = FALSE
-
-/obj/effect/particle_effect/foam/metal/smart
-	name = "smart foam"
-
-/obj/effect/particle_effect/foam/metal/iron
-	name = "iron foam"
-	metal = IRON_FOAM
-
-/obj/effect/particle_effect/foam/metal/resin
-	name = "resin foam"
-	metal = RESIN_FOAM
-
 /obj/effect/particle_effect/foam/long_life
 	lifetime = 150
 
@@ -104,25 +43,6 @@
 
 /obj/effect/particle_effect/foam/proc/kill_foam()
 	STOP_PROCESSING(SSfastprocess, src)
-	switch(metal)
-		if(ALUMINUM_FOAM)
-			new /obj/structure/foamedmetal(get_turf(src))
-		if(IRON_FOAM)
-			new /obj/structure/foamedmetal/iron(get_turf(src))
-		if(RESIN_FOAM)
-			new /obj/structure/foamedmetal/resin(get_turf(src))
-	flick("[icon_state]-disolve", src)
-	QDEL_IN(src, 5)
-
-/obj/effect/particle_effect/foam/smart/kill_foam() //Smart foam adheres to area borders for walls
-	STOP_PROCESSING(SSfastprocess, src)
-	if(metal)
-		var/turf/T = get_turf(src)
-		for(var/direction in GLOB.cardinals)
-			var/turf/cardinal_turf = get_step(T, direction)
-			if(get_area(cardinal_turf) != get_area(T)) //We're at an area boundary, so let's block off this turf!
-				new/obj/structure/foamedmetal(T)
-				break
 	flick("[icon_state]-disolve", src)
 	QDEL_IN(src, 5)
 
@@ -185,15 +105,6 @@
 		F.metal = metal
 
 
-/obj/effect/particle_effect/foam/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	if(prob(max(0, exposed_temperature - 475))) //foam dissolves when heated
-		kill_foam()
-
-
-/obj/effect/particle_effect/foam/metal/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	return
-
-
 ///////////////////////////////////////////////
 //FOAM EFFECT DATUM
 /datum/effect_system/foam_spread
@@ -201,14 +112,6 @@
 	var/obj/chemholder
 	effect_type = /obj/effect/particle_effect/foam
 	var/metal = 0
-
-
-/datum/effect_system/foam_spread/metal
-	effect_type = /obj/effect/particle_effect/foam/metal
-
-
-/datum/effect_system/foam_spread/metal/smart
-	effect_type = /obj/effect/particle_effect/foam/smart
 
 
 /datum/effect_system/foam_spread/long
@@ -245,90 +148,3 @@
 	F.amount = amount
 	F.metal = metal
 
-
-//////////////////////////////////////////////////////////
-// FOAM STRUCTURE. Formed by metal foams. Dense and opaque, but easy to break
-/obj/structure/foamedmetal
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "metalfoam"
-	density = TRUE
-	opacity = 1 	// changed in New()
-	anchored = TRUE
-	layer = EDGED_TURF_LAYER
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	name = "foamed metal"
-	desc = ""
-	gender = PLURAL
-	max_integrity = 20
-	CanAtmosPass = ATMOS_PASS_DENSITY
-
-/obj/structure/foamedmetal/Initialize()
-	. = ..()
-	air_update_turf(1)
-
-/obj/structure/foamedmetal/Move()
-	var/turf/T = loc
-	. = ..()
-	move_update_air(T)
-
-/obj/structure/foamedmetal/attack_paw(mob/user)
-	return attack_hand(user)
-
-/obj/structure/foamedmetal/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
-	playsound(src.loc, 'sound/blank.ogg', 100, TRUE)
-
-/obj/structure/foamedmetal/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
-	user.changeNext_move(CLICK_CD_MELEE)
-	user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
-	to_chat(user, span_warning("I hit [src] but bounce off it!"))
-	playsound(src.loc, 'sound/blank.ogg', 100, TRUE)
-
-/obj/structure/foamedmetal/CanPass(atom/movable/mover, turf/target)
-	return !density
-
-/obj/structure/foamedmetal/iron
-	max_integrity = 50
-	icon_state = "ironfoam"
-
-//Atmos Backpack Resin, transparent, prevents atmos and filters the air
-/obj/structure/foamedmetal/resin
-	name = "\improper ATMOS Resin"
-	desc = ""
-	opacity = FALSE
-	icon_state = "atmos_resin"
-	alpha = 120
-	max_integrity = 10
-
-/obj/structure/foamedmetal/resin/Initialize()
-	. = ..()
-	if(isopenturf(loc))
-		var/turf/open/O = loc
-		O.ClearWet()
-		if(O.air)
-			var/datum/gas_mixture/G = O.air
-			G.temperature = 293.15
-			for(var/obj/effect/hotspot/H in O)
-				qdel(H)
-			var/list/G_gases = G.gases
-			for(var/I in G_gases)
-				if(I == /datum/gas/oxygen || I == /datum/gas/nitrogen)
-					continue
-				G_gases[I][MOLES] = 0
-			G.garbage_collect()
-			O.air_update_turf()
-		for(var/mob/living/L in O)
-			L.ExtinguishMob()
-		for(var/obj/item/Item in O)
-			Item.extinguish()
-
-/obj/structure/foamedmetal/resin/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && (mover.pass_flags & PASSGLASS))
-		return TRUE
-	. = ..()
-
-#undef ALUMINUM_FOAM
-#undef IRON_FOAM
-#undef RESIN_FOAM

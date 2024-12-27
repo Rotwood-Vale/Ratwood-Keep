@@ -15,7 +15,7 @@
 		to_chat(src, span_warning("The blood soaks through my bandage."))
 
 /mob/living/carbon/monkey/handle_blood()
-	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
 	//Blood regeneration if there is some space
 	if(blood_volume < BLOOD_VOLUME_NORMAL)
@@ -24,7 +24,7 @@
 			adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
 
 /mob/living/proc/handle_blood()
-	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
 	
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)
@@ -70,7 +70,7 @@
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/handle_blood()
-	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
 	
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)

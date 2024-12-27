@@ -5,8 +5,8 @@
 //a value in hud_list with one of these will change that behavior
 #define HUD_LIST_LIST 1
 //rogue
-#define ROGUE_HUD_MARRIED	1
-#define ANTAG_HUD_TRAITOR 	2
+#define ROGUE_HUD_MARRIED	1 //peasant reb
+#define ANTAG_HUD_TRAITOR 	2 //zizocult
 #define ANTAG_HUD_REV		3
 #define ANTAG_HUD_VAMPIRE	4
 // Notification action types

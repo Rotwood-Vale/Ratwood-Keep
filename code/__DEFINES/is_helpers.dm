@@ -67,21 +67,7 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define ishuman(A) (istype(A, /mob/living/carbon/human))
 
 //Human sub-species
-#define isabductor(A) (is_species(A, /datum/species/abductor))
-#define isgolem(A) (is_species(A, /datum/species/golem))
-#define islizard(A) (is_species(A, /datum/species/lizard))
-#define isplasmaman(A) (is_species(A, /datum/species/plasmaman))
-#define ispodperson(A) (is_species(A, /datum/species/pod))
-#define isflyperson(A) (is_species(A, /datum/species/fly))
-#define isjellyperson(A) (is_species(A, /datum/species/jelly))
-#define isslimeperson(A) (is_species(A, /datum/species/jelly/slime))
-#define isluminescent(A) (is_species(A, /datum/species/jelly/luminescent))
-#define iszombie(A) (is_species(A, /datum/species/zombie))
-#define isskeleton(A) (is_species(A, /datum/species/skeleton))
-#define ismoth(A) (is_species(A, /datum/species/moth))
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
-#define isfelinid(A) (is_species(A, /datum/species/human/felinid))
-#define isethereal(A) (is_species(A, /datum/species/ethereal))
 #define isvampire(A) (is_species(A,/datum/species/vampire))
 
 //RT species
@@ -108,6 +94,7 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define islupian(A) (is_species(A, /datum/species/lupian))
 #define istabaxi(A) (is_species(A, /datum/species/tabaxi))
 #define isvulpkanin(A) (is_species(A, /datum/species/vulpkanin))
+#define ismoth(A) (is_species(A, /datum/species/moth))
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))
@@ -188,4 +175,3 @@ GLOBAL_LIST_INIT(pointed_types, typecacheof(list(
 
 #define isblobmonster(O) (istype(O, /mob/living/simple_animal/hostile/blob))
 
-#define isshuttleturf(T) (length(T.baseturfs) && (/turf/baseturf_skipover/shuttle in T.baseturfs))
