@@ -31762,12 +31762,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
-"tFo" = (
-/obj/structure/boatbell/fluff{
-	pixel_y = 16
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/town/harbor)
 "tFB" = (
 /obj/structure/stairs{
 	dir = 4
@@ -252717,7 +252711,7 @@ uQs
 urr
 urr
 qcG
-tFo
+urr
 urr
 yie
 jLC

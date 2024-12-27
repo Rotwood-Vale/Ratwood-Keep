@@ -43,9 +43,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		M.plane = OPENSPACE_BACKDROP_PLANE + 0.01
 		add_overlay(M)
 
-/turf/open/transparent/openspace/airless
-	initial_gas_mix = AIRLESS_ATMOS
-
 /turf/open/transparent/openspace/debug/update_multiz()
 	..()
 	return TRUE

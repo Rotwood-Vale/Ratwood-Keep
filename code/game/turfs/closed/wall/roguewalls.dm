@@ -307,7 +307,6 @@
 	explosion_block = 0
 	hardness = 90
 //	layer = EDGED_TURF_LAYER /ROGTODO make these have borders and smooth
-	temperature = TCMB
 	sheet_type = null
 	attacked_sound = list('sound/combat/hits/onvine/vinehit.ogg')
 	debris = list(/obj/item/grown/log/tree/stick = 1, /obj/item/natural/thorn = 2, /obj/item/natural/fibers = 1)

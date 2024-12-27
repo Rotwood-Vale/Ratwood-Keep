@@ -297,7 +297,6 @@
 	foodtype = FRUIT
 	rotprocess = 20 MINUTES
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	grind_results = list(/datum/reagent/consumable/cooking_oil = 3)
 
 /obj/item/reagent_containers/food/snacks/grown/nut
 	name = "rocknut"

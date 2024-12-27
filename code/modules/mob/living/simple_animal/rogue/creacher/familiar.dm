@@ -1,4 +1,4 @@
-//VANDERLIN TODO: Make taming AI better to allow for tame commands.
+//TODO: Make taming AI better to allow for tame commands.
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar
 	icon = 'icons/roguetown/mob/monster/vol.dmi'
 	name = "familiar"

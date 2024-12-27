@@ -1,6 +1,5 @@
 #define POPCOUNT_SURVIVORS "survivors"					//Not dead at roundend
 #define POPCOUNT_ESCAPEES "escapees"					//Not dead and on centcom/shuttles marked as escaped
-#define POPCOUNT_SHUTTLE_ESCAPEES "shuttle_escapees" 	//Emergency shuttle only.
 
 /datum/controller/subsystem/ticker/proc/gather_antag_data()
 	var/team_gid = 1
@@ -298,38 +297,6 @@
 
 	return parts.Join()
 
-/datum/controller/subsystem/ticker/proc/survivor_report(popcount)
-	var/list/parts = list()
-	var/station_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED
-
-	if(GLOB.round_id)
-		var/statspage = CONFIG_GET(string/roundstatsurl)
-		var/info = statspage ? "<a href='?action=openLink&link=[url_encode(statspage)][GLOB.round_id]'>[GLOB.round_id]</a>" : GLOB.round_id
-		parts += "[FOURSPACES]Round ID: <b>[info]</b>"
-	parts += "[FOURSPACES]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
-	var/total_players = GLOB.joined_player_list.len
-	if(total_players)
-		parts+= "[FOURSPACES]Total Population: <B>[total_players]</B>"
-		if(station_evacuated)
-			parts += "<BR>[FOURSPACES]Evacuation Rate: <B>[popcount[POPCOUNT_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_ESCAPEES]/total_players)]%)</B>"
-			parts += "[FOURSPACES](on emergency shuttle): <B>[popcount[POPCOUNT_SHUTTLE_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_SHUTTLE_ESCAPEES]/total_players)]%)</B>"
-		parts += "[FOURSPACES]Survival Rate: <B>[popcount[POPCOUNT_SURVIVORS]] ([PERCENT(popcount[POPCOUNT_SURVIVORS]/total_players)]%)</B>"
-		if(SSblackbox.first_death)
-			var/list/ded = SSblackbox.first_death
-			if(ded.len)
-				parts += "[FOURSPACES]First Death: <b>[ded["name"]], [ded["role"]], at [ded["area"]]. Damage taken: [ded["damage"]].[ded["last_words"] ? " Their last words were: \"[ded["last_words"]]\"" : ""]</b>"
-			//ignore this comment, it fixes the broken sytax parsing caused by the " above
-			else
-				parts += "[FOURSPACES]<i>Nobody died this shift!</i>"
-	if(istype(SSticker.mode, /datum/game_mode/dynamic))
-		var/datum/game_mode/dynamic/mode = SSticker.mode
-		parts += "[FOURSPACES]Threat level: [mode.threat_level]"
-		parts += "[FOURSPACES]Threat left: [mode.threat]"
-		parts += "[FOURSPACES]Executed rules:"
-		for(var/datum/dynamic_ruleset/rule in mode.executed_rules)
-			parts += "[FOURSPACES][FOURSPACES][rule.ruletype] - <b>[rule.name]</b>: -[rule.cost + rule.scaled_times * rule.scaling_cost] threat"
-	return parts.Join("<br>")
-
 /client/proc/roundend_report_file()
 	return "data/roundend_reports/[ckey].html"
 
@@ -340,7 +307,7 @@
 	var/content
 	var/filename = C.roundend_report_file()
 	if(!previous)
-		var/list/report_parts = list(personal_report(C), GLOB.common_report)
+		var/list/report_parts = GLOB.common_report
 		content = report_parts.Join()
 		C.verbs -= /client/proc/show_previous_roundend_report
 		fdel(filename)
@@ -353,40 +320,12 @@
 //	roundend_report.add_stylesheet("font-awesome", 'html/font-awesome/css/all.min.css')
 	roundend_report.open(FALSE)
 
-/datum/controller/subsystem/ticker/proc/personal_report(client/C, popcount)
-	var/list/parts = list()
-	var/mob/M = C.mob
-	if(M.mind && !isnewplayer(M))
-		if(M.stat != DEAD && !isbrain(M))
-			if(EMERGENCY_ESCAPED_OR_ENDGAMED)
-				if(!M.onCentCom() && !M.onSyndieBase())
-					parts += "<div class='panel stationborder'>"
-					parts += span_marooned("I managed to survive, but were marooned on [station_name()]...")
-				else
-					parts += "<div class='panel greenborder'>"
-					parts += span_greentext("I managed to survive the events on [station_name()] as [M.real_name].")
-			else
-				parts += "<div class='panel greenborder'>"
-				parts += span_greentext("I managed to survive the events on [station_name()] as [M.real_name].")
-
-		else
-			parts += "<div class='panel redborder'>"
-			parts += span_redtext("I did not survive the events on [station_name()]...")
-	else
-		parts += "<div class='panel stationborder'>"
-	parts += "<br>"
-	parts += GLOB.survivor_report
-	parts += "</div>"
-
-	return parts.Join()
-
 /datum/controller/subsystem/ticker/proc/players_report()
 	for(var/client/C in GLOB.clients)
 		give_show_playerlist_button(C)
 
 /datum/controller/subsystem/ticker/proc/display_report(popcount)
 	GLOB.common_report = build_roundend_report()
-	GLOB.survivor_report = survivor_report(popcount)
 	for(var/client/C in GLOB.clients)
 		show_roundend_report(C, FALSE)
 		give_show_report_button(C)

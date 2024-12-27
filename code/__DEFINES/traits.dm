@@ -232,8 +232,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NEARSIGHT			"nearsighted"
 #define TRAIT_FAT				"fat"
 #define TRAIT_HUSK				"husk"
-#define TRAIT_BADDNA			"baddna"
-#define TRAIT_CLUMSY			"clumsy"
 #define TRAIT_CHUNKYFINGERS		"chunkyfingers" //means that you can't use weapons with normal trigger guards.
 #define TRAIT_DUMB				"dumb"
 #define TRAIT_MONKEYLIKE		"monkeylike" //sets IsAdvancedToolUser to FALSE
@@ -247,7 +245,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"
 #define TRAIT_PUSHIMMUNE		"push_immunity"
 #define TRAIT_STABLEHEART		"stable_heart"
-#define TRAIT_STABLELIVER		"stable_liver"
 #define TRAIT_NOPAINSTUN		"no_pain-stun"
 #define TRAIT_RESISTHEAT		"resist_heat"
 #define TRAIT_RESISTHEATHANDS	"resist_heat_handsonly" //For when you want to be able to touch hot things, but still want fire to be an issue.
@@ -255,7 +252,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RESISTHIGHPRESSURE	"resist_high_pressure"
 #define TRAIT_RESISTLOWPRESSURE	"resist_low_pressure"
 #define TRAIT_RADIMMUNE			"rad_immunity"
-#define TRAIT_VIRUSIMMUNE		"virus_immunity"
 #define TRAIT_PIERCEIMMUNE		"pierce_immunity"
 #define TRAIT_NODISMEMBER		"dismember_immunity"
 #define TRAIT_NOFIRE			"nonflammable"
@@ -272,8 +268,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOBREATH			"no_breath"
 #define TRAIT_HOLDBREATH		"hold_breath"
 #define TRAIT_HOLY				"holy"
-#define TRAIT_DEPRESSION		"depression"
-#define TRAIT_JOLLY				"jolly"
 #define TRAIT_NOCRITDAMAGE		"no_crit"
 #define TRAIT_NOSLIPWATER		"noslip_water"
 #define TRAIT_NOSLIPALL			"noslip_all"
@@ -288,9 +282,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PARALYSIS_R_ARM	"para-r-arm"
 #define TRAIT_PARALYSIS_L_LEG	"para-l-leg"
 #define TRAIT_PARALYSIS_R_LEG	"para-r-leg"
-#define TRAIT_CANNOT_OPEN_PRESENTS "cannot-open-presents"
-#define TRAIT_PRESENT_VISION    "present-vision"
-#define TRAIT_DISK_VERIFIER     "disk-verifier"
 #define TRAIT_NOMOBSWAP         "no-mob-swap"
 #define TRAIT_XRAY_VISION       "xray_vision"
 #define TRAIT_THERMAL_VISION    "thermal_vision"
@@ -307,14 +298,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_QUICKER_CARRY		"quicker-carry"
 #define TRAIT_UNINTELLIGIBLE_SPEECH "unintelligible-speech"
 #define TRAIT_LANGUAGE_BARRIER	"language-barrier"
-#define TRAIT_UNSTABLE			"unstable"
-#define TRAIT_OIL_FRIED			"oil_fried"
-#define TRAIT_MEDICAL_HUD		"med_hud"
-#define TRAIT_SECURITY_HUD		"sec_hud"
-#define TRAIT_MEDIBOTCOMINGTHROUGH "medbot" //Is a medbot healing you
 #define TRAIT_PASSTABLE			"passtable"
 #define TRAIT_NOFLASH			"noflash" //Makes you immune to flashes
-#define TRAIT_XENO_IMMUNE		"xeno_immune"//prevents xeno huggies implanting skeletons
 #define TRAIT_NOPAIN			"no_pain"
 #define TRAIT_DRUQK				"druqk"
 #define TRAIT_BURIED_COIN_GIVEN "buried_coin_given" // prevents a human corpse from being used for a corpse multiple times
@@ -330,32 +315,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 //item traits
 #define TRAIT_NODROP            "nodrop"
 #define TRAIT_NOEMBED			"noembed"
-#define TRAIT_T_RAY_VISIBLE     "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
-
-//quirk traits
-#define TRAIT_ALCOHOL_TOLERANCE	"alcohol_tolerance"
-#define TRAIT_AGEUSIA			"ageusia"
-#define TRAIT_HEAVY_SLEEPER		"heavy_sleeper"
-#define TRAIT_NIGHT_VISION		"night_vision"
-#define TRAIT_LIGHT_STEP		"light_step"
-#define TRAIT_SPIRITUAL			"spiritual"
-#define TRAIT_FAN_CLOWN			"fan_clown"
-#define TRAIT_FAN_MIME			"fan_mime"
-#define TRAIT_VORACIOUS			"voracious"
-#define TRAIT_SELF_AWARE		"self_aware"
-#define TRAIT_FREERUNNING		"freerunning"
-#define TRAIT_SKITTISH			"skittish"
-#define TRAIT_POOR_AIM			"poor_aim"
-#define TRAIT_PROSOPAGNOSIA		"prosopagnosia"
-#define TRAIT_DRUNK_HEALING		"drunk_healing"
-#define TRAIT_TAGGER			"tagger"
-#define TRAIT_PHOTOGRAPHER		"photographer"
-#define TRAIT_MUSICIAN			"musician"
-#define TRAIT_LIGHT_DRINKER		"light_drinker"
-#define TRAIT_FRIENDLY			"friendly"
-#define TRAIT_GRABWEAKNESS		"grab_weakness"
-#define TRAIT_SNOB				"snob"
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
@@ -427,3 +387,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define HUGBOX_TRAIT "hugbox"
 
 #define TRAIT_I_AM_INVISIBLE_ON_A_BOAT "invisible_on_tram"
+
+#define TRAIT_LIGHT_STEP		"light_step"
+#define TRAIT_DRUNK_HEALING		"drunk_healing"

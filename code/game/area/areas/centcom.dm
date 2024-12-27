@@ -15,12 +15,6 @@
 /area/centcom/evac
 	name = "CentCom Recovery Ship"
 
-/area/centcom/supply
-	name = "CentCom Supply Shuttle Dock"
-
-/area/centcom/ferry
-	name = "CentCom Transport Shuttle Dock"
-
 /area/centcom/prison
 	name = "Admin Prison"
 

@@ -220,7 +220,7 @@
 			if((key == TOOL_SHARP) && tool.get_sharpness())
 				implement_type = key
 				break
-			if((key == TOOL_HOT) && (tool.get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST))
+			if((key == TOOL_HOT) && (tool.get_temperature() >= 100+T0C))
 				implement_type = key
 				break
 		
