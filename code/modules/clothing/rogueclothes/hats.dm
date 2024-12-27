@@ -13,6 +13,10 @@
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()
 	user.update_fov_angles()
+	if(slot != SLOT_HEAD)
+		flags_inv = null
+	else
+		flags_inv = initial(flags_inv)
 
 /obj/item/clothing/head/roguetown/dropped(mob/user)
 	. = ..()
