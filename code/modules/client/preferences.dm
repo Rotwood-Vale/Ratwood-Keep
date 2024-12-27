@@ -353,11 +353,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
 			if(family != FAMILY_NONE)
-				if(gender == MALE)
-					family_gender = FEMALE
-				else if(gender == FEMALE)
-					family_gender = MALE
 				dat += "<B>Family Preferences:</B>"
+				if(gender == MALE)
+					family_gender = list(FEMALE)
+				else
+					family_gender = list(MALE)
 				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
 				dat += "<BR>"
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
@@ -1221,7 +1221,7 @@ Slots: [job.spawn_positions]</span>
 						var/index = "[(S.id in family_species) ? "(+)" : ""][S.name]"
 						choices[index] = S.id
 					choices += "(DONE)"
-					choice = input(usr,"Out of all the many races, none catch my fancy quite like...","RACE") as anything in choices
+					choice = input(usr,"Out of all the many races, none catch my fancy quite like... (+) = ON","RACE") as anything in choices
 					if(choice != "(CANCEL)")
 						if(choices[choice] in family_species)
 							family_species -= choices[choice]
