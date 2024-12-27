@@ -18,6 +18,8 @@ SUBSYSTEM_DEF(family)
 
 	var/family_candidates = list()
 
+	var/list/special_role_blacklist = list(ROLE_LICH, ROLE_NBEAST) //Special roles that're prevented from having families.
+
 
 /datum/controller/subsystem/family/fire() //update family icons.
 	var/list/old_images = rel_images.Copy()
@@ -74,22 +76,22 @@ SUBSYSTEM_DEF(family)
 
 		total_families--
 
-	for(var/mob/living/carbon/human/H in family_candidates) //Try and find a suitable family for all candidates. Note. this system is currently only built to match spouses. A more complex system would be needed for full families.
-		families = shuffle(current_families)
-		fam_loop:
+	can_loop:
+		for(var/mob/living/carbon/human/H in family_candidates) //Try and find a suitable family for all candidates. Note. this system is currently only built to match spouses. A more complex system would be needed for full families.
+			families = shuffle(current_families)
 			for(var/fam in current_families)
 				var/datum/family/F = fam
 				var/mob/living/carbon/human/connecting_member
 				for(var/name in F.members) //Loop through all family members and try and connect H to them.
 					connecting_member = F.members[name]:resolve()
 					var/rel_type = F.tryConnect(H,connecting_member)
-					if(F.checkFamilyCompat(H,connecting_member,rel_type)) //suitable. Add them to the family and connect them.
+					if(F.checkFamilyCompat(H,connecting_member,rel_type) && F.checkFamilyCompat(connecting_member,H,rel_type)) //suitable. Add them to the family and connect them. (Note using checkFamilyCompat for both falls apart for anything other than spouses. The checks should be moved to a different proc at some point.)
 						F.addMember(H)
 						F.addRel(H,connecting_member,getMatchingRel(rel_type),TRUE)
 						F.addRel(connecting_member,H,rel_type,TRUE)
 
 						current_families -= F
-						break fam_loop
+						break can_loop
 
 	for(var/fam in families) //Remove families with only one member.
 		var/datum/family/F = fam
@@ -231,7 +233,7 @@ SUBSYSTEM_DEF(family)
 	relations += R
 	if(announce)
 		spawn(1)
-			to_chat(holder,"<span class='notice'>My [R.name]. [target.real_name] ([target.age]) is here alongside me.</span>")
+			to_chat(holder,"<span class='notice'>My [R.name]. [target.real_name] ([target.dna.species.name], [target.job], [target.age]) is here alongside me.</span>")
 
 		R.onConnect(holder,target) //Bit of hack to have this here. But it stops church marriages from being given rings.
 
@@ -253,9 +255,8 @@ SUBSYSTEM_DEF(family)
 				return FALSE
 
 			//Check sex.
-			for(var/G in list(ORGAN_SLOT_VAGINA,ORGAN_SLOT_PENIS)) //Ensure that member & target don't share the same sex.
-				if(member.getorganslot(G) && target.getorganslot(G))
-					return FALSE
+			if(member.gender == target.gender) //Ensure that member & target don't share the same sex.
+				return FALSE
 
 			var/list/age_values = AGE_VALUES
 			var/target_value = age_values[target.age]
