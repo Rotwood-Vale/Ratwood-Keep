@@ -84,6 +84,8 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	if(world.time < next_gmove)
 		return
 	next_gmove = world.time + 3
+
+
 	var/turf/T = n
 
 	setDir(direct)
@@ -91,21 +93,18 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	if(!loc.Exit(src, T))
 		return
 
-	if(istype(T))
-		if(T.density)
+	for(var/obj/structure/O in T)
+		// let ghosts pass through structures, including doors and palisades
+		if(istype(O, /obj/structure))
+			return ..()
+
+		// but not walls
+		if(O.density)
 			return
-		for(var/obj/structure/O in T)
-/*			if(istype(O, /obj/structure/fluff/psycross))
-				go2hell()
-				next_gmove = world.time + 30
-				return*/
-			if(O.density && !O.climbable)
-				if(!misting)
-					return
-		for(var/obj/item/reagent_containers/powder/salt/S in T)
-//			go2hell()
-//			next_gmove = world.time + 30
-			return
+
+	// no wall passing
+	if(T.density)
+		return
 	. = ..()
 
 /mob/dead/observer/screye
@@ -253,13 +252,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 /mob/dead/CanPass(atom/movable/mover, turf/target)
 	return 1
 
-/mob/dead/observer/rogue/Login()
-	. = ..()
-	if(mind?.funeral)
-		if(CONFIG_GET(flag/force_respawn_on_funeral))
-			to_chat(src, span_rose("With my body buried in creation, my soul passes on in peace..."))
-			burial_rite_return_ghost_to_lobby(src)
-			return
 /mob/dead/observer/rogue/CanPass(atom/movable/mover, turf/target)
 	if(!isinhell)
 		if(istype(mover, /mob/dead/observer/rogue))
@@ -384,11 +376,13 @@ Works together with spawning an observer, noted above.
 	if(admin)
 		ghost = new /mob/dead/observer/admin(src)
 	else if(drawskip)
-		ghost = new /mob/dead/observer/rogue/nodraw(src)
+		ghost = new /mob/dead/observer/rogue/veil(src) //could runtime lets hope not
 	else
-		ghost = new /mob/dead/observer/rogue(src)
+		ghost = new /mob/dead/observer/rogue/veil(src)
+
 	if(!admin)
-		ghost.add_client_colour(/datum/client_colour/monochrome)
+		ghost.add_client_colour(/datum/client_colour/glass_colour/lightblue)
+
 	ghost.ghostize_time = world.time
 	SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
 	ghost.can_reenter_corpse = can_reenter_corpse
@@ -484,6 +478,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!can_reenter_corpse)
 		to_chat(src, span_warning("I cannot re-enter my body."))
 		return
+	// Allow ghosts to re-enter their body if it hasnt risen from the dead yet. Works post-derotting too.
+	if(mind.has_antag_datum(/datum/antagonist/zombie))
+		var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
+		if(existing_zomble.has_turned)
+			to_chat(src, span_warning("My body has rotted beyond Necra's grasp."))
+			return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
 		to_chat(usr, span_warning("Another consciousness is in my body... It is resisting me."))
 		return
@@ -494,7 +494,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SSdroning.kill_rain(src.client)
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
-	remove_client_colour(/datum/client_colour/monochrome)
+	remove_client_colour(/datum/client_colour/glass_colour/lightblue)
 	client.change_view(CONFIG_GET(string/default_view))
 	if(mind.current.stat != DEAD)
 		client?.verbs -= GLOB.ghost_verbs
@@ -502,7 +502,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	mind.current.key = key
 	return TRUE
 
-/mob/dead/observer/returntolobby(modifier as num)
+/mob/dead/observer/rogue/veil/returntolobby(modifier as num)
 	set name = "{RETURN TO LOBBY}"
 	set category = "Options"
 	set hidden = 1
@@ -511,10 +511,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if ((stat != DEAD || !( SSticker )))
 		to_chat(src, span_boldnotice("I must be dead to use this!"))
 		return
-
-//	if(mind?.current && (world.time < mind.current.timeofdeath + RESPAWNTIME))
-//		to_chat(usr, span_warning("I can return in [mind.current.timeofdeath + RESPAWNTIME - world.time]."))
-//		return
 
 	if(key)
 		if(modifier)
@@ -535,7 +531,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SSdroning.kill_rain(src.client)
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
-	remove_client_colour(/datum/client_colour/monochrome)
+	remove_client_colour(/datum/client_colour/glass_colour/lightblue)
 	if(!client)
 		log_game("[key_name(src)] AM failed due to disconnect.")
 		return
@@ -550,7 +546,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	client.verbs -= GLOB.ghost_verbs
 //	M.Login()	//wat
 	return
-
 
 /mob/dead/observer/verb/stay_dead()
 	set category = "Ghost"
