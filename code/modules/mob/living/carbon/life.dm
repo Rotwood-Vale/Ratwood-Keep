@@ -73,7 +73,7 @@
 				if(bed)
 					sleepy_mod = bed.sleepy
 				else
-					if(HAS_TRAIT(src, TRAIT_WOODSMAN) || HAS_TRAIT(src, TRAIT_OUTDOORSMAN))
+					if(HAS_TRAIT(src, TRAIT_OUTDOORSMAN))
 						var/obj/structure/flora/newbranch/branch = locate() in loc
 						if(branch)
 							sleepy_mod = 1.5 //Worse than a bedroll, better than nothing.
