@@ -1,7 +1,7 @@
 	///////////////////////
 	//UPDATE_ICONS SYSTEM//
 	///////////////////////
-/* Keep these comments up-to-da/sprite_accessory/earste if you -insist- on hurting my code-baby ;_;
+/* Keep these comments up-to-date if you -insist- on hurting my code-baby ;_;
 This system allows you to update individual mob-overlays, without regenerating them all each time.
 When we generate overlays we generate the standing version and then rotate the mob as necessary..
 
