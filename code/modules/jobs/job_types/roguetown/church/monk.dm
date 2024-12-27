@@ -106,7 +106,7 @@
 			ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
 		if(H.patron?.type == /datum/patron/divine/eora)
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
-		if(/datum/patron/divine/abyssor)
+		if(H.patron?.type == /datum/patron/divine/abyssor)
 			ADD_TRAIT(H, TRAIT_WATERBREATHING, TRAIT_GENERIC)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
