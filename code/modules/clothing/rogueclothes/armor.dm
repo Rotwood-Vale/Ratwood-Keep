@@ -451,7 +451,7 @@
 	smeltresult = /obj/item/ingot/blacksteel
 	armor_class = ARMOR_CLASS_MEDIUM
 
-/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
+/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass/hardened
 	name = "hardened blacksteel cuirass"
 	desc = "A hardened cuirass forged from blacksteel, personally issued to high-ranking officers of the Emperiate. It's somewhat more durable than regular steel."
 	max_integrity = 450

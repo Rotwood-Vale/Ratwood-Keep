@@ -33,7 +33,7 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	head = /obj/item/clothing/head/roguetown/grenzelhofthat
-	armor = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
+	armor = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass/hardened
 	pants = /obj/item/clothing/under/roguetown/blacksteel/platelegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
