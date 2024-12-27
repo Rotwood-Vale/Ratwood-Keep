@@ -291,11 +291,12 @@
 	force = 20
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/axe/chop, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
 	icon_state = "Kmesser"
 	item_state = "Kmesser"
 	name = "langesmesser"
 	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency."
+	max_blade_int = 200 // Same as Zwei
 
 /obj/item/rogueweapon/sword/long/marlin
 	force = 26

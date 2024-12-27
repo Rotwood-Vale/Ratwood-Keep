@@ -424,7 +424,7 @@
 	nodismemsleeves = TRUE
 	do_sound_plate = TRUE
 	blocking_behavior = null
-	max_integrity = 400
+	max_integrity = 550 // 50 better than normal steel plate
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/blacksteel
 	armor_class = ARMOR_CLASS_HEAVY
@@ -450,6 +450,12 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/blacksteel
 	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
+	name = "hardened blacksteel cuirass"
+	desc = "A hardened cuirass forged from blacksteel, personally issued to high-ranking officers of the Emperiate. It's somewhat more durable than regular steel."
+	max_integrity = 450
+	body_parts_covered = CHEST|GROIN|VITALS
 
 /obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
 	name = "New Moon coat"
