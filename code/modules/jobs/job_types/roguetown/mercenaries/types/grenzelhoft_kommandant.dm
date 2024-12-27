@@ -46,7 +46,7 @@
 	else if (equipment == 2)
 		r_hand = /obj/item/rogueweapon/halberd
 	else if (equipment == 3)
-		r_hand = /obj/item/rogueweapon/greatsword/zwei
+		r_hand = /obj/item/rogueweapon/estoc
 
 	//Humie grenzelhofts are always set to be, well, grenzelhoft
 	if(ishumannorthern(H))
