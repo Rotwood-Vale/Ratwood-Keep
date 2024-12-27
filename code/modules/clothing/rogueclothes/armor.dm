@@ -557,6 +557,50 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	smelt_bar_num = 4
 
+/obj/item/clothing/suit/roguetown/armor/otavan
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "otavan half-plate"
+	desc = "half-plate armor with pauldrons."
+	body_parts_covered = CHEST|GROIN|VITALS
+	icon_state = "corsethalfplate"
+	item_state = "corsethalfplate"
+	adjustable = CAN_CADJUST
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	nodismemsleeves = TRUE
+	max_integrity = 500
+	allowed_sex = list(MALE, FEMALE)
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+	equip_delay_self = 4 SECONDS
+	unequip_delay_self = 4 SECONDS
+	armor_class = ARMOR_CLASS_HEAVY
+	smelt_bar_num = 3
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
+/obj/item/clothing/suit/roguetown/armor/otavan/AdjustClothes(mob/user)
+	if(loc == user)
+		playsound(user, "sound/foley/dropsound/cloth_drop.ogg", 100, TRUE, -1)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "fancyhalfplate"
+			body_parts_covered = CHEST|GROIN|VITALS
+			flags_cover = null
+			emote_environment = 0
+			update_icon()
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_armor()
+			block2add = null
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			emote_environment = 3
+			update_icon()
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_armor()
+
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "brigandine"
