@@ -98,7 +98,8 @@ SUBSYSTEM_DEF(family)
 						F.addRel(connecting_member,H,rel_type,TRUE)
 
 						current_families -= F
-						break can_loop
+						family_candidates -= H // Remove the matched candidate
+						continue can_loop // Continue to next candidate instead of breaking completely
 
 	for(var/fam in families) //Remove families with only one member.
 		var/datum/family/F = fam
@@ -473,11 +474,11 @@ proc/getMatchingRel(var/rel_type)
 			return F
 
 
-/mob/living/carbon/human/proc/isFamily(mob/living/carbon/human/target, true = FALSE) //Checks if target is in our family. By default. We use our names + DNA to support people pretending to be family members. Use true if you wish to check if they ACTUALLY belong to the family.
+/mob/living/carbon/human/proc/isFamily(var/mob/living/carbon/human/target, true_family = FALSE) //Checks if target is in our family. By default. We use our names + DNA to support people pretending to be family members. Use true_family if you wish to check if they ACTUALLY belong to the family.
 	if(!family)
 		return FALSE
 
-	if(true)
+	if(true_family)
 		return target.family == family
 
 	if(family.members[target.name] != null) //Name has the advantage of supporting masked humans + future cases like stealing identities.
