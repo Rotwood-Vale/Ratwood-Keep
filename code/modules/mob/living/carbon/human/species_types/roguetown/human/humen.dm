@@ -24,7 +24,7 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = NONE
 	liked_food = NONE
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -72,6 +72,14 @@
 
 /datum/species/human/northern/check_roundstart_eligible()
 	return TRUE
+	
+/datum/species/human/northern/on_species_gain(mob/living/carbon/foreign, datum/species/old_species)
+	..()
+	languages(foreign)
+	
+/datum/species/human/northern/proc/languages(mob/living/carbon/human/foreign)
+	if(foreign.skin_tone == SKIN_COLOR_GRENZELHOFT)
+		foreign.grant_language(/datum/language/grenzelhoftian)
 
 /datum/species/human/northern/get_skin_list()
 	return list(
