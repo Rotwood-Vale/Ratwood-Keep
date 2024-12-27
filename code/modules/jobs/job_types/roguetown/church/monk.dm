@@ -30,6 +30,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/storage/keyring/churchie
+	backl = /obj/item/storage/backpack/rogue/satchel
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
@@ -92,6 +93,8 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
+		if(/datum/patron/divine/abyssor)
+			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
@@ -103,6 +106,8 @@
 			ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
 		if(H.patron?.type == /datum/patron/divine/eora)
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+		if(/datum/patron/divine/abyssor)
+			ADD_TRAIT(H, TRAIT_WATERBREATHING, TRAIT_GENERIC)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_monk(H)
