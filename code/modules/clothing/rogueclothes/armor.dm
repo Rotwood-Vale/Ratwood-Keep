@@ -675,6 +675,8 @@
 	. = ..()
 	color = pick(CLOTHING_PURPLE, null,CLOTHING_GREEN, CLOTHING_RED)
 
+	
+
  //--------------- BLACKSTEEL ---------------------
 
 /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
@@ -741,6 +743,8 @@
 	sleeved_detail = TRUE
 	boobed_detail = TRUE
 
+
+
 /obj/item/clothing/suit/roguetown/armor/brigandine/sheriff/coat/attack_right(mob/user)
 	if(picked)
 		return
@@ -775,3 +779,23 @@
 	equip_delay_self = 40
 	armor_class = ARMOR_CLASS_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
+
+
+/obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "inquisitorial duster"
+	desc = "Metal plates reinforce this heavy coat, only the finest for the inquisition."
+	body_parts_covered = CHEST|VITALS|GROIN|LEGS|ARMS
+	allowed_sex = list(MALE, FEMALE)
+	icon_state = "inqcoat"
+	item_state = "inqcoat"
+	sleevetype = "shirt"
+	max_integrity = 200
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/steel
+	equip_delay_self = 4 SECONDS
+	armor_class = ARMOR_CLASS_MEDIUM
+	smelt_bar_num = 2
+	blocksound = SOFTHIT
+	do_sound_chain = FALSE // you too loud rn lil bro shhh
+	do_sound_plate = FALSE

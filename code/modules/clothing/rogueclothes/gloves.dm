@@ -118,6 +118,12 @@
 	sewrepair = TRUE
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
+	/obj/item/clothing/gloves/roguetown/otavan/inqgloves
+	name = "inquisitorial leather gloves"
+	desc = "Masterfully crafted leather gloves, psycross included."
+	icon_state = "inqgloves"
+	item_state = "inqgloves"
+
 //rogtodo sprites for this
 /obj/item/clothing/gloves/roguetown/plate
 	name = "plate gauntlets"

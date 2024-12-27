@@ -208,6 +208,12 @@
 	sewrepair = TRUE
 	armor = list("blunt" = 5, "slash" = 5, "stab" = 5, "fire" = 0, "acid" = 0) //Thinks its fair for a piece of cloth and fiber.
 
+/obj/item/clothing/shoes/roguetown/otavan/inqboots
+	name = "inquisitorial boots"
+	desc = "Finely crafted boots, made to stomp out darkness."
+	icon_state = "inqboots"
+	item_state = "inqboots"
+
 
 // ----------------- BLACKSTEEL -----------------------
 
