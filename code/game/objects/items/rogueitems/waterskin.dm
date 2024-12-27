@@ -5,7 +5,7 @@
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(3,6,9)
 	volume = 64
-	dropshrink = 0.5
+	dropshrink = 1
 	sellprice = 5
 	closed = FALSE
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
@@ -15,6 +15,7 @@
 	drinksounds = list('sound/items/drink_bottle (1).ogg','sound/items/drink_bottle (2).ogg')
 	fillsounds = list('sound/items/fillcup.ogg')
 	poursounds = list('sound/items/fillbottle.ogg')
+	drop_sound = list('sound/foley/dropsound/cloth_drop.ogg')
 	sewrepair = TRUE
 	desc_uncorked = "A leather waterskin. The cap on the mouth is off."
 
@@ -54,3 +55,5 @@
 			return TRUE
 	return FALSE
 
+/obj/item/reagent_containers/glass/bottle/waterskin/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = TRUE)
+	return
