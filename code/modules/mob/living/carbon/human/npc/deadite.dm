@@ -26,6 +26,8 @@
 /mob/living/carbon/human/species/deadite/after_creation()
 	..()
 	make_deadite()
+	gender = pick(MALE, FEMALE)
+	set_species(/datum/species/human/northern)
 	if(outfit)
 		var/datum/outfit/Outfit = new outfit
 		if(Outfit)
@@ -53,7 +55,7 @@
 	if(prob(5))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 	if(H.gender == FEMALE)
-		H.STASTR = rand(7,11)
+		H.STASTR = rand(8,13)
 	else
 		H.STASTR = rand(9,14)
 	H.STASPD = 5

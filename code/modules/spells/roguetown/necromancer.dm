@@ -15,7 +15,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 15 SECONDS
 	miracle = FALSE
-	cost = 2
+	cost = 4
 	chargedrain = 1
 	xp_gain = TRUE
 
@@ -87,13 +87,15 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Hgf'ant'kthar!"
+	invocation_type = "shout"
 	charge_max = 30 SECONDS
 	cost = 10
 	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/raise_undead_lesser
 	name = "Lesser Raise Undead"
-	cost = 6	
+	cost = 6
 	desc = "Reanimate a corpse as a skeleton. You can maintain two sapient skeletons, the rest will be mindless. The body must have all limbs and its head."
 	clothes_req = FALSE
 	range = 7
@@ -106,6 +108,8 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Hygf'akni'kthakchratah!"
+	invocation_type = "shout"
 	charge_max = 30 SECONDS
 	chargedrain = 2
 	xp_gain = TRUE
@@ -120,7 +124,6 @@
 /obj/effect/proc_holder/spell/invoked/raise_undead/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
 
-	user.say("Hgf'ant'kthar!")
 	if(!("undead" in user.faction))
 		user.faction |= "undead"
 	var/obj = targets[1]
@@ -205,7 +208,6 @@
 /obj/effect/proc_holder/spell/invoked/raise_undead_lesser/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
 
-	user.say("Hygf'akni'kthakchratah!")
 	if(!("undead" in user.faction))
 		user.faction |= "undead"
 	var/obj = targets[1]
@@ -250,9 +252,9 @@
 	if(target.necrotarget == TRUE)
 		to_chat(user, span_warning("I am already trying to raise this corpse."))
 		return FALSE
-	
+
 	target.set_necrotarget(TRUE)
-	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)	
+	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
 	if(user.mind.boneboys < user.mind.bonemax)
 		to_chat(user, span_warning("I have the capacity to sustain another self aware skeleton!"))
@@ -311,7 +313,7 @@
 		return TRUE
 
 	target.set_necrotarget(TRUE)
-	return FALSE	
+	return FALSE
 
 /mob/living/proc/handle_necromancy()
 	if(src.mind.boneboy == FALSE)
@@ -364,7 +366,7 @@
 
 
 	cmode_music = 'sound/music/combat_cult.ogg'
-	
+
 	patron = master.patron
 	mob_biotypes = MOB_UNDEAD
 	faction = list("undead")
@@ -446,7 +448,7 @@
 
 /obj/effect/proc_holder/spell/self/command_undead/cast(mob/user = usr)
 	..()
-	
+
 	var/message = input("Speak to your minions!", "LICH") as text|null
 
 	if(!message)
@@ -476,19 +478,21 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	invocation = "Hgf'ant'Zeshlesh!"
+	invocation_type = "shout"
 	charge_max = 2 SECONDS
 	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/revoke_unlife/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
-	user.say("Hgf'ant'Zeshlesh!")
+
 	var/obj = targets[1]
 
 	if(!obj || !istype(obj, /mob/living/carbon/human))
 		to_chat(user, span_warning("I should cast this spell on a misbehaving minion."))
 		return
 	var/mob/living/carbon/human/target = obj
-	
+
 	if(target.stat == DEAD)
 		to_chat(user, span_warning("This one is already dead, best reanimate it."))
 		return
@@ -496,12 +500,12 @@
 	if(!(target in user.minions))
 		to_chat(user, span_warning("This is not one of mine."))
 		return
-	
+
 	if(!target.client)
 		target.death()
 		to_chat(user, span_warning("The strings are cut, the mindless one comes undone."))
 		return
-	
+
 	to_chat(target, span_warning("I have disappointed my Master! I feel Necra's scythe catch upon my very soul!"))
 	target.death()
 	sleep(1 SECONDS)

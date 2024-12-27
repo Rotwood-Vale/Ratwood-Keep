@@ -75,7 +75,7 @@
 				)
 				
 /obj/item/rogue/instrument/Initialize()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 //	soundloop.start()
 	. = ..()
 

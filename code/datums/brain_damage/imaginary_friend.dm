@@ -58,7 +58,6 @@
 /mob/camera/imaginary_friend
 	name = "imaginary friend"
 	real_name = "imaginary friend"
-	move_on_shuttle = TRUE
 	desc = ""
 	see_in_dark = 0
 	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE

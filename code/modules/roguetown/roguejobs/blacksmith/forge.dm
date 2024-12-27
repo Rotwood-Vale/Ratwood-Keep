@@ -17,7 +17,7 @@
 	var/datum/looping_sound/boilloop/boilloop
 
 /obj/machinery/light/rogue/forge/Initialize()
-	boilloop = new(list(src), FALSE)
+	boilloop = new(src, FALSE)
 	. = ..()
 
 /obj/machinery/light/rogue/forge/attackby(obj/item/W, mob/living/user, params)
