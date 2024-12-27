@@ -1082,6 +1082,10 @@
 	name = "Baum"
 	icon_state = "baum"
 
+/datum/sprite_accessory/hair/head/mcsqueeb
+	name = "Ye Old McSqueeb"
+	icon_state = "mcsqueeb"	
+
 /datum/sprite_accessory/hair/head/vulpkian
 	abstract_type = /datum/sprite_accessory/hair/head/vulpkian
 	icon = 'icons/mob/sprite_accessory/hair/vulpkian_hair.dmi'
