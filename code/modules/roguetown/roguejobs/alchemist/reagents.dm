@@ -41,8 +41,8 @@
 	var/list/wCount = M.get_wounds()
 		M.heal_wounds(1) 
 		M.update_damage_overlays()
-	M.adjustBruteLoss(-0.5*REM, 0) // 45u = 15 oz = 60 points of healing
-	M.adjustFireLoss(-0.5*REM, 0)
+	M.adjustBruteLoss(-0.4*REM, 0) // 45u = 15 oz = 50 points of healing
+	M.adjustFireLoss(-0.4*REM, 0)
 	M.adjustOxyLoss(-0.5, 0)
 	M.adjustCloneLoss(-0.5*REM, 0) //heals as half as health
 	..()
