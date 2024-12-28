@@ -22085,6 +22085,7 @@
 /area/rogue/outdoors/town)
 "nKG" = (
 /obj/structure/chair/wood/rogue/fancy,
+/obj/effect/landmark/start/mayor,
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/outdoors/town)
 "nKP" = (
@@ -22365,7 +22366,6 @@
 "nTE" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/item/key/farm,
-/obj/item/key/velder,
 /obj/item/key/butcher,
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -26405,9 +26405,6 @@
 "qsi" = (
 /obj/structure/bed/rogue{
 	pixel_y = 0
-	},
-/obj/effect/landmark/start/woodsman{
-	dir = 8
 	},
 /obj/machinery/light/rogue/wallfire{
 	pixel_x = -32
