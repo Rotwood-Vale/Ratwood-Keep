@@ -687,7 +687,7 @@
 //---------------------------------------alch reactions----------------------------------------------//
 
 /datum/chemical_reaction/alch/minorhealth
-	name = "minor health pot"
+	name = "lesser health pot"
 	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/lesserhealthpot
 	results = list(/datum/reagent/medicine/lesserhealthpot = 45) //15 oz
@@ -708,10 +708,11 @@
 	results = list(/datum/reagent/medicine/greaterhealthpot = 22.5) //about 7.5 oz
 	required_reagents = list(/datum/reagent/medicine/healthpot = 45, /datum/reagent/alch/syrum_poison_berry = 24)
 
-/*documentation: 2 minor health makes 1 health, 2 health makes 1 super health
-you need 4 minor bottles to make 2 health to make 1 half bottle of super
-8 minor bottles for 1 bottle of super
-end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bottle of super*/
+/*documentation: 15 oz = 45 units
+2 lesser health makes 1 health bottle, 2 health makes 1 greater health
+you need 4 lesser bottles to make 2 health to make 1 half bottle of greater
+8 lesser bottles for 1 bottle of greater 
+end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bottle of greater*/
 
 /datum/chemical_reaction/alch/mana
 	name = "mana pot"
