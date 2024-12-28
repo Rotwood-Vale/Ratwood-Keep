@@ -6,7 +6,7 @@
 	taste_description = "health"
 	overdose_threshold = 0
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	alpha = 173
+	alpha = 210
 
 /datum/reagent/medicine/healthpot/on_mob_life(mob/living/carbon/M)
 	var/list/wCount = M.get_wounds()
@@ -35,7 +35,7 @@
 	taste_description = "cold oil and flesh"
 	overdose_threshold = 0
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	alpha = 173
+	alpha = 210
 
 /datum/reagent/medicine/lesserhealthpot/on_mob_life(mob/living/carbon/M)
 	M.heal_wounds(1) 
@@ -56,7 +56,7 @@
 	taste_description = "orange"
 	overdose_threshold = 47 //45 units in a bottle, 2 units to safeguard
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	alpha = 173
+	alpha = 210
 
 /datum/reagent/medicine/greaterhealthpot/on_mob_life(mob/living/carbon/M)
 	var/list/wCount = M.get_wounds()
