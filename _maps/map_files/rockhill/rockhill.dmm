@@ -6612,6 +6612,7 @@
 /obj/machinery/light/rogue/wallfire{
 	pixel_x = 32
 	},
+/obj/effect/landmark/start/mayor,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/town/roofs)
 "eds" = (
