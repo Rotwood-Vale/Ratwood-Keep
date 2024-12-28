@@ -27,8 +27,8 @@
 	..()
 	. = 1
 //super and minor health potions
-/datum/reagent/medicine/minorhealthpot
-	name = "Minor Health Potion"
+/datum/reagent/medicine/lesserhealthpot
+	name = "Lesser Health Potion"
 	description = "Gradually minorly all types of damage."
 	reagent_state = LIQUID
 	color = "#ff6b6b"
@@ -37,7 +37,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 173
 
-/datum/reagent/medicine/minorhealthpot/on_mob_life(mob/living/carbon/M)
+/datum/reagent/medicine/lesserhealthpot/on_mob_life(mob/living/carbon/M)
 	var/list/wCount = M.get_wounds()
 		M.heal_wounds(1) 
 		M.update_damage_overlays()

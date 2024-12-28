@@ -689,8 +689,8 @@
 /datum/chemical_reaction/alch/minorhealth
 	name = "minor health pot"
 	mix_sound = 'sound/items/fillbottle.ogg'
-	id = /datum/reagent/medicine/minorhealthpot
-	results = list(/datum/reagent/medicine/minorhealthpot = 45) //15 oz
+	id = /datum/reagent/medicine/lesserhealthpot
+	results = list(/datum/reagent/medicine/lesserhealthpot = 45) //15 oz
 	required_reagents = list(/datum/reagent/alch/syrum_meat = 24, /datum/reagent/alch/syrum_ash = 24)
 
 /datum/chemical_reaction/alch/minorhealth //purify minor health pot into half a bottle by using essence of clarity (swampweed)
@@ -698,7 +698,7 @@
 	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/healthpot
 	results = list(/datum/reagent/medicine/healthpot = 22.5) //about 7.5 oz
-	required_reagents = list(/datum/reagent/medicine/minorhealthpot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
+	required_reagents = list(/datum/reagent/medicine/lesserhealthpot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
 
 
 /datum/chemical_reaction/alch/minorhealth //purify health pot into half a bottle of super by using essence of poison (poison berry) which used to be in the old red recipe
