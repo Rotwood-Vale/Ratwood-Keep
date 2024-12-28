@@ -18904,6 +18904,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/harbor)
+"lIT" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "lIV" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -24870,10 +24874,6 @@
 	},
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician)
-"pqR" = (
-/obj/effect/landmark/latejoin,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/mountains)
 "prk" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -217269,7 +217269,7 @@ sjP
 qvR
 uaL
 uaL
-uaL
+lIT
 wSn
 wSn
 fxx
@@ -217699,7 +217699,7 @@ fxw
 bkS
 sjP
 jbe
-uaL
+lIT
 dWG
 uaL
 rHq
@@ -218133,7 +218133,7 @@ sjP
 qvR
 uaL
 uaL
-uaL
+lIT
 rBC
 fxx
 fxx
@@ -327430,7 +327430,7 @@ erZ
 erZ
 erZ
 erZ
-pqR
+erZ
 erZ
 erZ
 erZ
@@ -328292,9 +328292,9 @@ erZ
 erZ
 erZ
 erZ
-pqR
 erZ
-pqR
+erZ
+erZ
 erZ
 erZ
 erZ
