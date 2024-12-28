@@ -12,7 +12,7 @@
 	var/soundpack_m
 	var/soundpack_f
 	var/stored_skills
-	var/stored_experience 
+	var/stored_experience
 
 	var/STASTR
 	var/STASPD
@@ -91,6 +91,8 @@
 	owner.known_skills = stored_skills
 	owner.skill_experience = stored_experience
 
+	zombie.can_do_sex = TRUE
+
 	zombie.update_a_intents()
 	zombie.aggressive = FALSE
 	zombie.mode = AI_OFF
@@ -118,7 +120,7 @@
 	zombie.regenerate_organs()
 	if(has_turned)
 		to_chat(zombie, span_green("I no longer crave for flesh..."))
-		
+
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
 		zombie_part.rotted = FALSE
 		zombie_part.update_disabled()
@@ -152,11 +154,11 @@
 
 	revived = TRUE //so we can die for real later
 	zombie.add_client_colour(/datum/client_colour/monochrome)
-	
+
 	if(zombie.mind)
 		special_role = zombie.mind.special_role
 		zombie.mind.special_role = name
-		
+
 	if(zombie.dna?.species)
 		soundpack_m = zombie.dna.species.soundpack_m
 		soundpack_f = zombie.dna.species.soundpack_f
@@ -183,7 +185,7 @@
 	var/mob/living/carbon/human/deadite = owner?.current
 	deadite.try_do_deadite_bite()
 	deadite.try_do_deadite_idle()
-	
+
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag
 /datum/antagonist/zombie/proc/wake_zombie(infected_wake = FALSE)

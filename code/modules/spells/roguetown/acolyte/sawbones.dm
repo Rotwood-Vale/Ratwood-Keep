@@ -1132,7 +1132,7 @@
 	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
-	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15) 
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15)
 	dissolvable = FALSE
 	grind_results = null
 
