@@ -10,6 +10,7 @@
 	invocation = "RAC'WA NO!"
 	invocation_type = "shout"
 	action_icon_state = "shapeshift"
+	VD.
 
 	var/revert_on_death = TRUE
 	var/die_with_shapeshifted_form = TRUE
@@ -21,6 +22,11 @@
 		/mob/living/simple_animal/pet/dog/corgi
 	)
 /obj/effect/proc_holder/spell/targeted/shapeshift/cast(list/targets,mob/user = usr)
+	var/datum/antagonist/vampirelord/VD = usr?.mind?.has_antag_datum(/datum/antagonist/vampirelord)
+	if(VD)
+		if(VD.disguised)
+			to_chat(usr, span_warning("My curse is hidden."))
+			return
 	if(src in user.mob_spell_list)
 		user.mob_spell_list.Remove(src)
 		user.mind.AddSpell(src)
