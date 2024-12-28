@@ -58,10 +58,10 @@
 	new /obj/item/rope/chain(src)
 
 /datum/roguestock/import/redpotion
-	name = "Crate of Health Potions"
+	name = "Crate of Lesser Health Potions"
 	desc = "Red that keeps men alive."
 	item_type = /obj/structure/closet/crate/chest/steward/redpotion
-	export_price = 100
+	export_price = 50
 	importexport_amt = 1
 
 /obj/structure/closet/crate/chest/steward/redpotion/Initialize()

@@ -7398,6 +7398,7 @@
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"
@@ -9261,6 +9262,7 @@
 /area/rogue/indoors/town/manor)
 "fHk" = (
 /obj/machinery/light/rogue/hearth,
+/obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -18580,6 +18582,8 @@
 "lwY" = (
 /obj/structure/rack/rogue,
 /obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/academy)
 "lxd" = (
@@ -23893,6 +23897,8 @@
 /obj/item/reagent_containers/glass/mortar,
 /obj/item/reagent_containers/glass/mortar,
 /obj/item/reagent_containers/glass/mortar,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/magician)
 "oGO" = (
@@ -24058,6 +24064,11 @@
 	dir = 1
 	},
 /turf/open/transparent/openspace,
+/area/rogue/indoors)
+"oLi" = (
+/obj/machinery/light/rogue/hearth,
+/obj/item/reagent_containers/glass/bucket/pot,
+/turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "oLA" = (
 /obj/structure/stairs/stone{
@@ -24360,6 +24371,13 @@
 	},
 /turf/open/floor/rogue/rooftop,
 /area/rogue/outdoors/rtfield)
+"oVn" = (
+/obj/structure/rack/rogue,
+/obj/item/clothing/head/roguetown/hatfur,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors)
 "oVN" = (
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
@@ -38331,6 +38349,8 @@
 /obj/item/rogueweapon/thresher,
 /obj/item/rogueweapon/sickle,
 /obj/item/rogueweapon/hoe,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "xHT" = (
@@ -38453,6 +38473,7 @@
 /obj/machinery/light/rogue/hearth{
 	pixel_y = 10
 	},
+/obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
 "xLx" = (
@@ -352356,7 +352377,7 @@ wGD
 pAa
 ltT
 qII
-mJb
+oLi
 qII
 sYx
 sYx
@@ -353219,7 +353240,7 @@ wGD
 wGD
 wGD
 ufd
-wxa
+oVn
 ltT
 sYx
 sYx
