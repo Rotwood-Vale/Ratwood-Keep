@@ -184,14 +184,14 @@
 #define SEELIE		(1<<2)
 #define MERC_CLERK	(1<<3)
 
-#define GOBLIN		(1<<8)
+#define GOBLIN		(0<<0)
 
-#define GOBLINCHIEF	(1<<0)
-#define GOBLINCOOK	(1<<1)
-#define GOBLINGUARD	(1<<2)
-#define GOBLINSMITH	(1<<3)
-#define GOBLINRABBLE	(1<<4)
-#define GOBLINSHAMAN	(1<<5)
+#define GOBLINCHIEF	(0<<0)
+#define GOBLINCOOK	(0<<0)
+#define GOBLINGUARD	(0<<0)
+#define GOBLINSMITH	(0<<0)
+#define GOBLINRABBLE	(0<<0)
+#define GOBLINSHAMAN	(0<<0)
 
 #define SLOP		(1<<9)
 
