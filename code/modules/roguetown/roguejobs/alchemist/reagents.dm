@@ -38,9 +38,8 @@
 	alpha = 173
 
 /datum/reagent/medicine/lesserhealthpot/on_mob_life(mob/living/carbon/M)
-	var/list/wCount = M.get_wounds()
-		M.heal_wounds(1) 
-		M.update_damage_overlays()
+	M.heal_wounds(1) 
+	M.update_damage_overlays()
 	M.adjustBruteLoss(-0.4*REM, 0) // 45u = 15 oz = 50 points of healing
 	M.adjustFireLoss(-0.4*REM, 0)
 	M.adjustOxyLoss(-0.5, 0)
@@ -61,7 +60,12 @@
 
 /datum/reagent/medicine/greaterhealthpot/on_mob_life(mob/living/carbon/M)
 	var/list/wCount = M.get_wounds()
-		M.heal_wounds(3) 
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
+	else
+		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
+	if(wCount.len > 0)	
+		M.heal_wounds(4)
 		M.update_damage_overlays()
 	M.adjustBruteLoss(-2*REM, 0) // 45u = 15 oz = 240 points of healing
 	M.adjustFireLoss(-2*REM, 0)
