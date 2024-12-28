@@ -907,10 +907,11 @@ obj/structure/bars/steel
 	max_integrity = 80
 	chance2hear = 10
 
-/obj/structure/fluff/psycross/attackby(obj/item/W, mob/living/carbon/human/user, params)
+/obj/structure/fluff/psycross/attackby(obj/item/W, mob/user, params)
 	if(user.mind)
 		if((user.mind.assigned_role == "Priest") || ((user.mind.assigned_role == "Acolyte") && (user.patron.type == /datum/patron/divine/eora)))
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
+			
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
 				
@@ -940,10 +941,6 @@ obj/structure/bars/steel
 
 						if(!thegroom || !thebride)
 							return
-
-						for(var/G in list(ORGAN_SLOT_VAGINA,ORGAN_SLOT_PENIS)) //Ensure that groom & bride don't share the same sex.
-							if(thegroom.getorganslot(G) && thebride.getorganslot(G))
-								return FALSE
 						
 						var/datum/family/F = SSfamily.makeFamily(thegroom)
 						if(!F)
@@ -962,7 +959,7 @@ obj/structure/bars/steel
 				if(!marriage)
 					A.burn()
 					return
-	. = ..()
+	return ..()
 
 /obj/structure/fluff/psycross/proc/check_prayer(mob/living/L,message)
 	if(!L || !message)
