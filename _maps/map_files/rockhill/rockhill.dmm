@@ -22085,7 +22085,6 @@
 /area/rogue/outdoors/town)
 "nKG" = (
 /obj/structure/chair/wood/rogue/fancy,
-/obj/effect/landmark/start/mayor,
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/outdoors/town)
 "nKP" = (
@@ -24871,6 +24870,10 @@
 	},
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician)
+"pqR" = (
+/obj/effect/landmark/latejoin,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/mountains)
 "prk" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -327427,7 +327430,7 @@ erZ
 erZ
 erZ
 erZ
-erZ
+pqR
 erZ
 erZ
 erZ
@@ -328289,9 +328292,9 @@ erZ
 erZ
 erZ
 erZ
+pqR
 erZ
-erZ
-erZ
+pqR
 erZ
 erZ
 erZ
