@@ -1686,6 +1686,10 @@
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
+"baR" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "baS" = (
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/wood,
@@ -5238,6 +5242,12 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/bath)
+"dkI" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "dkL" = (
 /obj/structure/rack/rogue,
 /obj/item/kitchen/fork,
@@ -10908,6 +10918,11 @@
 /obj/structure/roguemachine/scomm/l,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
+"gIm" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "gIO" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/fermenting_barrel/random/water{
@@ -18183,6 +18198,11 @@
 /obj/structure/flora/roguegrass/bush/wall,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/druidgrove)
+"lhi" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "lia" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/blocks,
@@ -24778,6 +24798,10 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/druidgrove)
+"phJ" = (
+/obj/structure/fluff/statue/scare,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/town/sewer)
 "phP" = (
 /obj/structure/closet/crate/chest{
 	lockid = "clinic"
@@ -31180,6 +31204,10 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/town/harbor)
+"tkK" = (
+/obj/structure/fluff/statue/scare,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "tkO" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood/chevron,
@@ -205486,7 +205514,7 @@ lrs
 lrs
 lrs
 lrs
-lrs
+rHO
 lrs
 lrs
 lrs
@@ -205916,10 +205944,10 @@ lrs
 gLf
 gLf
 lrs
-lrs
-lrs
-lrs
-lrs
+vVg
+phJ
+rHO
+rHO
 lrs
 lrs
 gLf
@@ -206348,10 +206376,10 @@ lrs
 mof
 gLf
 gLf
-lrs
-lrs
-lrs
-lrs
+rHO
+rHO
+rHO
+rHO
 lrs
 lrs
 gLf
@@ -206782,8 +206810,8 @@ gLf
 gLf
 lrs
 lrs
-lrs
-lrs
+rHO
+rHO
 lrs
 lrs
 gLf
@@ -207206,10 +207234,10 @@ lrs
 lrs
 lrs
 lrs
-lrs
-lrs
-lrs
-lrs
+gIm
+baR
+baR
+cQp
 gLf
 gLf
 lrs
@@ -207638,10 +207666,10 @@ lrs
 lrs
 lrs
 lrs
-lrs
-lrs
-lrs
-lrs
+baR
+tkK
+dkI
+cQp
 gLf
 gLf
 lrs
@@ -208070,9 +208098,9 @@ lrs
 lrs
 lrs
 lrs
-lrs
-lrs
-lrs
+baR
+baR
+lhi
 lrs
 gLf
 gLf
