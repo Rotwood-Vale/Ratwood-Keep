@@ -100,13 +100,8 @@
 
 /datum/supply_pack/rogue/bandit/Gunslinger/guns/arquebus
 	name = "Arquebus"
-	cost = 300
+	cost = 400
 	contains = list(/obj/item/gun/ballistic/arquebus)
-
-/datum/supply_pack/rogue/bandit/Gunslinger/guns/arquebuspistol
-	name = "Arquebus Pistol"
-	cost = 500
-	contains = list(/obj/item/gun/ballistic/arquebus_pistol)
 
 /datum/supply_pack/rogue/bandit/Gunslinger/guns/lead
 	name = "Lead bullet"

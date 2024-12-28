@@ -1142,6 +1142,7 @@
 #include "code\modules\cargo\packsrogue\tools.dm"
 #include "code\modules\cargo\packsrogue\wardrobe.dm"
 #include "code\modules\cargo\packsrogue\weapons.dm"
+#include "code\modules\cargo\packsrogue\bandit\brigand.dm"
 #include "code\modules\cargo\packsrogue\bandit\foresworn.dm"
 #include "code\modules\cargo\packsrogue\bandit\gunslinger.dm"
 #include "code\modules\cargo\packsrogue\bandit\hedgeknight.dm"

@@ -104,6 +104,8 @@
 			unlocked_cats+="Mage"
 		if("Sawbones")
 			unlocked_cats+="Sawbones"
+		if("Gunslinger")
+			unlocked_cats+="Gunslinger"
 
 	if(current_cat == "1")
 		contents += "<center>"
