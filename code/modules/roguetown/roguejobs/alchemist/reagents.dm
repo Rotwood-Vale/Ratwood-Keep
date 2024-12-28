@@ -49,8 +49,8 @@
 	. = 1
 
 	
-/datum/reagent/medicine/superhealthpot
-	name = "Super Health Potion"
+/datum/reagent/medicine/greaterhealthpot
+	name = "Greater Health Potion"
 	description = "Greatly heals all types of damage."
 	reagent_state = LIQUID
 	color = "#ff7700"
@@ -59,7 +59,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 173
 
-/datum/reagent/medicine/superhealthpot/on_mob_life(mob/living/carbon/M)
+/datum/reagent/medicine/greaterhealthpot/on_mob_life(mob/living/carbon/M)
 	var/list/wCount = M.get_wounds()
 		M.heal_wounds(3) 
 		M.update_damage_overlays()
@@ -79,7 +79,7 @@
 	..()
 	. = 1
 
-/datum/reagent/medicine/superhealthpot/overdose_process(mob/living/carbon/M)
+/datum/reagent/medicine/greaterhealthpot/overdose_process(mob/living/carbon/M)
 	M.adjustBruteLoss(1, 0)
 	M.adjustToxLoss(3, 0)
 	M.add_nausea(15)

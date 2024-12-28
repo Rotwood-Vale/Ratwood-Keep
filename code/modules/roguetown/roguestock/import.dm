@@ -66,11 +66,11 @@
 
 /obj/structure/closet/crate/chest/steward/redpotion/Initialize()
 	. = ..()
-	new /obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
 
 /datum/roguestock/import/perfume
 	name = "Crate of perfumes"

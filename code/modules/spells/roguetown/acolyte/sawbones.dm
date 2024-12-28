@@ -702,10 +702,10 @@
 
 
 /datum/chemical_reaction/alch/minorhealth //purify health pot into half a bottle of super by using essence of poison (poison berry) which used to be in the old red recipe
-	name = "super health pot purification"
+	name = "greater health pot purification"
 	mix_sound = 'sound/items/fillbottle.ogg'
-	id = /datum/reagent/medicine/superhealthpot
-	results = list(/datum/reagent/medicine/superhealthpot = 22.5) //about 7.5 oz
+	id = /datum/reagent/medicine/greaterhealthpot
+	results = list(/datum/reagent/medicine/greaterhealthpot = 22.5) //about 7.5 oz
 	required_reagents = list(/datum/reagent/medicine/healthpot = 45, /datum/reagent/alch/syrum_poison_berry = 24)
 
 /*documentation: 2 minor health makes 1 health, 2 health makes 1 super health
