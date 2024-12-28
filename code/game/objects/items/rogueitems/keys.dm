@@ -173,9 +173,9 @@
 	icon_state = "hornkey"
 	lockid = "tavern"
 
-/obj/item/key/velder
-	name = "elder's key"
-	desc = "This key should open and close the elder's home."
+/obj/item/storage/key/mayor
+	name = "mayor's key"
+	desc = "This key should open and close the townhall and the mayor's home."
 	icon_state = "brownkey"
 	lockid = "velder"
 
