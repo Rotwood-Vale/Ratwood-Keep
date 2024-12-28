@@ -3,13 +3,13 @@
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
-/datum/supply_pack/rogue/food/healthpot
-	name = "Healing Potion"
-	cost = 18
+/datum/supply_pack/rogue/food/minorhealthpot
+	name = "Minor Healing Potion"
+	cost = 9
 	contains = list(
-					/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-					/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-					/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+					/obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot,
+					/obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot,
+					/obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot,
 				)
 
 /datum/supply_pack/rogue/food/manapot

@@ -686,12 +686,32 @@
 
 //---------------------------------------alch reactions----------------------------------------------//
 
-/datum/chemical_reaction/alch/health
-	name = "health pot"
+/datum/chemical_reaction/alch/minorhealth
+	name = "minor health pot"
+	mix_sound = 'sound/items/fillbottle.ogg'
+	id = /datum/reagent/medicine/minorhealthpot
+	results = list(/datum/reagent/medicine/minorhealthpot = 45) //15 oz
+	required_reagents = list(/datum/reagent/alch/syrum_meat = 24, /datum/reagent/alch/syrum_ash = 24)
+
+/datum/chemical_reaction/alch/minorhealth //purify minor health pot into half a bottle by using essence of clarity (swampweed)
+	name = "health pot purification"
 	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/healthpot
-	results = list(/datum/reagent/medicine/healthpot = 45)
-	required_reagents = list(/datum/reagent/alch/syrum_meat = 24, /datum/reagent/alch/syrum_ash = 24)
+	results = list(/datum/reagent/medicine/healthpot = 22.5) //about 7.5 oz
+	required_reagents = list(/datum/reagent/medicine/minorhealthpot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
+
+
+/datum/chemical_reaction/alch/minorhealth //purify health pot into half a bottle of super by using essence of poison (poison berry) which used to be in the old red recipe
+	name = "super health pot purification"
+	mix_sound = 'sound/items/fillbottle.ogg'
+	id = /datum/reagent/medicine/superhealthpot
+	results = list(/datum/reagent/medicine/superhealthpot = 22.5) //about 7.5 oz
+	required_reagents = list(/datum/reagent/medicine/healthpot = 45, /datum/reagent/alch/syrum_poison_berry = 24)
+
+/*documentation: 2 minor health makes 1 health, 2 health makes 1 super health
+you need 4 minor bottles to make 2 health to make 1 half bottle of super
+8 minor bottles for 1 bottle of super
+end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bottle of super*/
 
 /datum/chemical_reaction/alch/mana
 	name = "mana pot"

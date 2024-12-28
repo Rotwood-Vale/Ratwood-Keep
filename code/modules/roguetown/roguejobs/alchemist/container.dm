@@ -4,6 +4,12 @@
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot
 	list_reagents = list(/datum/reagent/medicine/healthpot = 45)
 
+/obj/item/reagent_containers/glass/bottle/rogue/superhealthpot
+	list_reagents = list(/datum/reagent/medicine/superhealthpot = 45)
+
+/obj/item/reagent_containers/glass/bottle/rogue/minorhealthpot
+	list_reagents = list(/datum/reagent/medicine/minorhealthpot = 45)
+
 /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	list_reagents = list(/datum/reagent/medicine/manapot = 45)
 
