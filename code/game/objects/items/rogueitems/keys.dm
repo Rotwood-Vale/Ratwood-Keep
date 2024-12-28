@@ -529,3 +529,9 @@
 	desc = "This old key opens shop #1 in merchant street area."
 	icon_state = "rustkey"
 	lockid = "street_shop01"
+
+/obj/item/key/street_shop02
+	name = "Street shop key #2"
+	desc = "This old key opens shop #2 behind the mayor's house."
+	icon_state = "rustkey"
+	lockid = "street_shop02"
