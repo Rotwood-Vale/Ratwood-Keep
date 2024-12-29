@@ -97,6 +97,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strengthen_undead)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead_lesser)
 			head = /obj/item/clothing/head/roguetown/necromhood
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

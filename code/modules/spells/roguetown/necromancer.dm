@@ -221,6 +221,11 @@
 		to_chat(user, span_warning("I cannot raise goblins."))
 		return FALSE
 
+	// bandaid like the goblins, should also prevent farming the sewers for a free skeleton army
+	if(istype(obj, /mob/living/carbon/human/species/human/northern/bum))
+		to_chat(user, span_warning("I cannot raise this wretch."))
+		return FALSE
+
 	var/mob/living/carbon/human/target = obj
 
 	if(target.stat != DEAD)
@@ -358,6 +363,11 @@
 	mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 	mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
 	mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/crafting, 1, TRUE) //Some basic skills, for actual undead servants. Don't have to be all combat
+	mind.adjust_skillrank_up_to(/datum/skill/combat/carpentry, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/masonry, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/lumberjacking, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/combat/cooking, 1, TRUE)
 	mind.current.job = null
 
 	dna.species.species_traits |= NOBLOOD
@@ -389,6 +399,7 @@
 
 	can_do_sex = FALSE //where my bonger go
 
+	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC) //Why wasn't this a thing from the start
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
