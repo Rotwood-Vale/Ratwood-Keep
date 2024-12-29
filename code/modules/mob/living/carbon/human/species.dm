@@ -955,10 +955,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			hunger_rate = 10 * HUNGER_FACTOR*/
 //		hunger_rate *= H.physiology.hunger_mod
 		H.adjust_nutrition(-hunger_rate)
-	
-		var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
-			if(vagina.pregnant)
-				if(H.getorganslot(ORGAN_SLOT_BREASTS))
+
+		var/obj/item/organ/vagina/vagina = H.getorganslot(ORGAN_SLOT_VAGINA)
+		if(vagina && vagina.pregnant)
+			if(H.getorganslot(ORGAN_SLOT_BREASTS))
 				if(H.nutrition > NUTRITION_LEVEL_HUNGRY && H.getorganslot(ORGAN_SLOT_BREASTS).lactating && H.getorganslot(ORGAN_SLOT_BREASTS).milk_max > H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored) //Vrell - numbers may need to be tweaked for balance but hey this works for now.
 					var/milk_to_make = min(hunger_rate, H.getorganslot(ORGAN_SLOT_BREASTS).milk_max - H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
 					H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored += milk_to_make
