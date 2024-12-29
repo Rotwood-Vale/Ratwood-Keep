@@ -27980,6 +27980,7 @@
 /area/rogue/outdoors/town/harbor)
 "rpP" = (
 /obj/structure/chair/stool/rogue,
+/obj/effect/landmark/start/physician,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
 "rpQ" = (
