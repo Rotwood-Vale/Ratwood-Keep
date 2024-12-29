@@ -18372,7 +18372,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "lpJ" = (
 /obj/structure/mineral_door/bars{
@@ -37518,12 +37518,6 @@
 "xjC" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town/harbor)
-"xjO" = (
-/obj/structure/stairs{
-	dir = 8
-	},
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/rtfield)
 "xjS" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
@@ -222154,7 +222148,7 @@ qbG
 qbG
 qbG
 qbG
-xjO
+qbG
 wSn
 qkH
 nLu
