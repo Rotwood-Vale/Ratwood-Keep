@@ -15,6 +15,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+	slot_flags = ITEM_SLOT_MOUTH
 
 /obj/item/reagent_containers/food/snacks/fish/dead
 	dead = TRUE
@@ -70,7 +71,19 @@
 		STOP_PROCESSING(SSobj, src)
 		return 1
 
+/obj/item/reagent_containers/food/snacks/fish/equipped(mob/user, slot)
+	. = ..()
+	if(slot == SLOT_MOUTH && user.getorganslot(ORGAN_SLOT_TONGUE) == /obj/item/organ/tongue/wild_tongue)
+		src.spitoutmouth = FALSE
+	else if(slot == SLOT_MOUTH)
+		to_chat(user, span_warning("What am I doing..."))
+		user.dropItemToGround(src, TRUE)
+	else
+		return
 
+/obj/item/reagent_containers/food/snacks/fish/dropped(mob/user, silent)
+	. = ..()
+	src.spitoutmouth = initial(spitoutmouth)
 
 /obj/item/reagent_containers/food/snacks/fish/carp
 	name = "carp"
