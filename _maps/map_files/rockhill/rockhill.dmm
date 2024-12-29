@@ -136,10 +136,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
-"adG" = (
-/obj/structure/fermenting_barrel/random/water,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "adL" = (
 /obj/effect/decal/cobbleedge{
 	dir = 4;
@@ -15499,6 +15495,10 @@
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
+"jrw" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "jse" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -29778,9 +29778,9 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "ssa" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
+/area/rogue/indoors)
 "sso" = (
 /obj/structure/stairs{
 	dir = 8;
@@ -326350,7 +326350,7 @@ wlD
 tRG
 pAV
 pAV
-adG
+ssa
 ddv
 rDt
 erZ
@@ -335372,9 +335372,9 @@ vsC
 vsC
 chb
 wVI
+wVI
+wVI
 ylJ
-wVI
-wVI
 wVI
 iol
 wVI
@@ -339255,7 +339255,7 @@ rfx
 xAt
 xAt
 eoy
-ssa
+jrw
 wbg
 wbg
 qMT
