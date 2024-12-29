@@ -51,8 +51,14 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 
 /obj/item/reagent_containers/glass/bottle/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = TRUE)
 	playsound(loc, 'sound/combat/hits/onglass/glassbreak (4).ogg', 100)
-	new /obj/item/natural/glass/shard(get_turf(src))
+	shatter(get_turf(src))
 	..()
+
+/obj/item/reagent_containers/glass/bottle/proc/shatter(turf/T)
+	if(istransparentturf(T))
+		shatter(GET_TURF_BELOW(T))
+		return 
+	new /obj/item/natural/glass/shard(get_turf(T))
 	qdel(src)
 
 /obj/item/reagent_containers/glass/bottle/rmb_self(mob/user)
