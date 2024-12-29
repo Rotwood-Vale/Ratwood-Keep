@@ -201,6 +201,9 @@
 	if(!nodmg)
 		playsound(src, "smallslash", 100, TRUE, -1)
 		if(ishuman(src) && user.mind)
+			/*
+				WEREWOLF INFECTION VIA BITE
+			*/
 			if(istype(user.dna.species, /datum/species/werewolf))
 				if(HAS_TRAIT(src, TRAIT_SILVER_BLESSED))
 					to_chat(user, span_warning("BLEH! [src] tastes of SILVER! My gift cannot take hold."))
@@ -208,8 +211,12 @@
 					caused_wound?.werewolf_infect_attempt()
 					if(prob(30))
 						user.werewolf_feed(src, 10)
-				if(user.mind.has_antag_datum(/datum/antagonist/zombie) && !src.mind.has_antag_datum(/datum/antagonist/zombie))
-					INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, zombie_infect_attempt))
+			
+			/*
+				ZOMBIE INFECTION VIA BITE
+			*/
+			if(user.mind.has_antag_datum(/datum/antagonist/zombie) && !src.mind.has_antag_datum(/datum/antagonist/zombie))
+				INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, zombie_infect_attempt))
 
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)

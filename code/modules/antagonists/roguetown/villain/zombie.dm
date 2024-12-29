@@ -342,7 +342,7 @@
  /*
   No longer used, now infection by wounds. See the_only_cure.dm
  */
-/*
+
 /mob/living/carbon/human/proc/zombie_infect_attempt()
 	if(!prob(7))
 		return
@@ -356,7 +356,7 @@
 	vomit(1, blood = TRUE, stun = FALSE)
 	addtimer(CALLBACK(src, PROC_REF(wake_zombie)), 1 MINUTES)
 	return zombie_antag
-*/
+
 
 /mob/living/carbon/human/proc/wake_zombie()
 	var/datum/antagonist/zombie/zombie_antag = mind?.has_antag_datum(/datum/antagonist/zombie)
