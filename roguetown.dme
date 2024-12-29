@@ -642,7 +642,6 @@
 #include "code\datums\sexcon\sex_actions\masturbate\masturbate_anus.dm"
 #include "code\datums\sexcon\sex_actions\masturbate\masturbate_breasts.dm"
 #include "code\datums\sexcon\sex_actions\masturbate\masturbate_container.dm"
-#include "code\datums\sexcon\sex_actions\masturbate\masturbate_milk.dm"
 #include "code\datums\sexcon\sex_actions\masturbate\masturbate_other_anus.dm"
 #include "code\datums\sexcon\sex_actions\masturbate\masturbate_other_breasts.dm"
 #include "code\datums\sexcon\sex_actions\masturbate\masturbate_other_penis.dm"

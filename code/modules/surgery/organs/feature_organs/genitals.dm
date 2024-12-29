@@ -119,8 +119,8 @@
 	accessory_type = /datum/sprite_accessory/breasts/pair
 	var/breast_size = DEFAULT_BREASTS_SIZE
 	var/lactating = FALSE
-	var/milk_stored = 0
-	var/milk_max = 75
+	var/milk_stored = 30
+	var/milk_max = 30
 
 /obj/item/organ/testicles
 	name = "testicles"

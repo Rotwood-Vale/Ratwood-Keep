@@ -64,6 +64,7 @@
 		if(!spillable)
 			return
 
+
 		if(!reagents || !reagents.total_volume)
 			to_chat(user, span_warning("[src] is empty!"))
 			return
