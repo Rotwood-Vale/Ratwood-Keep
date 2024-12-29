@@ -177,7 +177,7 @@
 	name = "mayor's key"
 	desc = "This key should open and close the townhall and the mayor's home."
 	icon_state = "brownkey"
-	lockid = "velder"
+	lockid = "mayor"
 
 /obj/item/key/tavern/village
 	lockid = "vtavern"
