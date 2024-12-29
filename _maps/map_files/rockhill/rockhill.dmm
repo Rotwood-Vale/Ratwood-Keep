@@ -32475,9 +32475,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/rtfield)
 "udm" = (
-/obj/machinery/light/roguestreet/orange/walllamp{
-	dir = 4
-	},
+/obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
 "udo" = (
