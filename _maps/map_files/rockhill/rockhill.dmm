@@ -6641,7 +6641,7 @@
 	pixel_x = 32
 	},
 /obj/effect/landmark/start/mayor,
-/turf/open/floor/rogue/ruinedwood/chevron,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/outdoors/town/roofs)
 "eds" = (
 /obj/structure/stairs/fancy/l{
@@ -31601,6 +31601,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/tavern)
+"tBb" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/grass,
+/area/rogue/under/cave)
 "tBj" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/cloak/tabard/knight/guard,
@@ -38762,7 +38766,7 @@
 /area/rogue/indoors/town/manor)
 "xVw" = (
 /obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/ruinedwood/chevron,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/outdoors/town/roofs)
 "xVB" = (
 /obj/structure/stairs/stone,
@@ -109353,7 +109357,7 @@ bMj
 dFE
 fjw
 ujF
-ujF
+tBb
 bpD
 bpD
 bpD
@@ -142616,7 +142620,7 @@ dFE
 dFE
 dFE
 fjw
-ujF
+tBb
 ujF
 bpD
 bpD
@@ -444127,7 +444131,7 @@ fZJ
 gKK
 gKK
 xVw
-dFL
+dLD
 dFL
 xjq
 gKK
@@ -444559,7 +444563,7 @@ fZJ
 fZJ
 gKK
 edp
-dFL
+dLD
 kvh
 gKK
 gKK
