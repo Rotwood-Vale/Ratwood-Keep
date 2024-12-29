@@ -200,10 +200,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
-"aeV" = (
-/obj/machinery/light/rogue/lanternpost,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town/harbor)
 "afb" = (
 /obj/structure/mannequin/male,
 /turf/open/floor/rogue/wood,
@@ -3414,17 +3410,6 @@
 /obj/structure/flora/rogueshroom,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
-"cgM" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_y = -1
-	},
-/obj/machinery/light/roguestreet/orange{
-	pixel_x = 11;
-	pixel_y = 10
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
 "chb" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -19541,6 +19526,7 @@
 	dir = 4;
 	icon_state = "woodrailing"
 	},
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/harbor)
 "mby" = (
@@ -21622,7 +21608,9 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/roguestreet/orange{
+	dir = 1
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "ntP" = (
@@ -28322,7 +28310,6 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/machinery/light/roguestreet/orange,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "rBC" = (
@@ -34663,9 +34650,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
 "vvb" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/town/harbor)
+/obj/machinery/light/roguestreet/orange/walllamp{
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "vvl" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/rogue/cobble,
@@ -36787,17 +36776,6 @@
 /obj/structure/bed/rogue/inn/wool,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/tavern)
-"wPi" = (
-/obj/machinery/light/roguestreet/orange{
-	dir = 1
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -8;
-	pixel_y = -1
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/outdoors/town)
 "wPm" = (
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/concrete,
@@ -317110,7 +317088,7 @@ pdi
 pdi
 pdi
 pdi
-wPi
+pdi
 wbg
 wbg
 wbg
@@ -317526,11 +317504,11 @@ fYY
 chb
 chb
 chb
-cgM
+chb
 udS
 txO
 udS
-cgM
+chb
 chb
 chb
 chb
@@ -317958,7 +317936,7 @@ wbg
 wbg
 wbg
 wbg
-wbg
+vvb
 wbg
 wbg
 wbg
@@ -318838,7 +318816,7 @@ uNX
 qkH
 nYz
 qkH
-wVI
+ylJ
 wbg
 wbg
 kdH
@@ -323158,7 +323136,7 @@ qBX
 dSo
 bne
 thT
-ylJ
+wVI
 wbg
 wbg
 wbg
@@ -330073,7 +330051,7 @@ wVI
 wVI
 wVI
 wVI
-wVI
+ylJ
 xVB
 yht
 yht
@@ -342117,7 +342095,7 @@ hFo
 iXq
 eLv
 uKp
-uKp
+iXq
 hFo
 hFo
 hFo
@@ -342545,14 +342523,14 @@ evw
 toW
 toW
 oME
-aeV
+oME
 awo
 oME
 oME
 oME
 oME
 oME
-vvb
+jjk
 jjk
 ehN
 ehN
@@ -342562,7 +342540,7 @@ gNr
 gNr
 gNr
 gNr
-vvb
+jjk
 coW
 jjk
 jjk
@@ -344347,7 +344325,7 @@ wVI
 wVI
 wVI
 wVI
-tTh
+wVI
 wVI
 wbg
 kdH
