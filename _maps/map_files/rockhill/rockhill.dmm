@@ -1746,10 +1746,12 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "bcr" = (
-/obj/structure/bed/rogue,
-/obj/effect/landmark/start/physician,
-/obj/item/bedsheet/rogue/fabric,
-/turf/open/floor/rogue/churchbrick,
+/obj/structure/composter,
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town/manor)
 "bcu" = (
 /obj/structure/feedinghole,
@@ -2210,11 +2212,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town)
-"brw" = (
-/obj/machinery/tanningrack,
-/obj/item/storage/roguebag,
-/turf/open/floor/rogue/churchbrick,
-/area/rogue/indoors/town/manor)
 "brB" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
 	dir = 1
@@ -3294,11 +3291,11 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "cco" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_x = -32;
-	pixel_y = 0
+/obj/structure/mineral_door/wood/donjon/stone{
+	locked = 1;
+	lockid = "physician"
 	},
-/turf/open/floor/rogue/churchbrick,
+/turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
 "ccw" = (
 /obj/structure/table/wood{
@@ -7055,13 +7052,11 @@
 /area/rogue/outdoors/rtfield)
 "eqs" = (
 /obj/machinery/light/rogue/wallfire/candle{
-	pixel_x = 32;
+	pixel_x = -32;
 	pixel_y = 0
 	},
-/obj/structure/table/vtable/v2,
-/obj/item/reagent_containers/glass/alembic,
-/turf/open/floor/rogue/churchbrick,
-/area/rogue/indoors/town/manor)
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/town)
 "eqy" = (
 /obj/structure/mineral_door/swing_door,
 /turf/open/floor/rogue/dirt/road,
@@ -28529,11 +28524,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/church)
-"rFo" = (
-/obj/structure/table/vtable,
-/obj/item/reagent_containers/glass/mortar,
-/turf/open/floor/rogue/churchbrick,
-/area/rogue/indoors/town/manor)
 "rFF" = (
 /obj/structure/fluff/railing/wood{
 	pixel_y = -1
@@ -553899,11 +553889,11 @@ wtF
 wtF
 wtF
 wtF
+uoM
 wtF
 wtF
 wtF
-wtF
-wtF
+uoM
 wtF
 wtF
 wtF
@@ -554329,14 +554319,14 @@ kUR
 tvm
 aFk
 aFk
-cco
 wtF
-wtF
-wtF
-wtF
-wtF
-wtF
-wtF
+eqs
+aOn
+aOn
+aOn
+aOn
+aOn
+eqs
 wtF
 wtF
 dxv
@@ -554761,14 +554751,14 @@ kUR
 wtF
 ieM
 aFk
-bcr
 wtF
-wtF
-wtF
-wtF
-wtF
-wtF
-wtF
+dxv
+dxv
+dxv
+dxv
+dxv
+dxv
+dxv
 wtF
 wtF
 dxv
@@ -555194,13 +555184,13 @@ wtF
 wtF
 wtF
 wtF
-wtF
-wtF
-wtF
-wtF
-wtF
-wtF
-wtF
+dxv
+aOn
+aOn
+aOn
+aOn
+aOn
+dxv
 wtF
 wtF
 dxv
@@ -555625,14 +555615,14 @@ tri
 kUR
 xHp
 sBQ
-brw
 wtF
-wtF
-wtF
-wtF
-wtF
-wtF
-wtF
+dxv
+dxv
+dxv
+dxv
+dxv
+dxv
+dxv
 wtF
 wtF
 dxv
@@ -556057,14 +556047,14 @@ kUR
 kUR
 kUR
 kUR
-kUR
-wtF
-wtF
-wtF
-wtF
-wtF
-wtF
-wtF
+cco
+dxv
+aOn
+aOn
+aOn
+aOn
+aOn
+dxv
 wtF
 wtF
 apn
@@ -556489,14 +556479,14 @@ jpS
 kUR
 aFk
 aFk
-rFo
 wtF
-wtF
-wtF
-wtF
-wtF
-wtF
-wtF
+dxv
+dxv
+dxv
+dxv
+dxv
+dxv
+dxv
 wtF
 wtF
 wtF
@@ -556921,14 +556911,14 @@ aFk
 ead
 wjP
 aFk
-eqs
 wtF
-wtF
-wtF
-wtF
-wtF
-wtF
-wtF
+bcr
+dxv
+aOn
+aOn
+aOn
+dxv
+apn
 wtF
 wtF
 tWQ
@@ -557355,11 +557345,11 @@ wtF
 uoM
 wtF
 wtF
+uoM
 wtF
 wtF
 wtF
-wtF
-wtF
+uoM
 wtF
 wtF
 wtF
