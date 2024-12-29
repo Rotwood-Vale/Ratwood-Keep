@@ -4910,12 +4910,6 @@
 /obj/item/clothing/suit/roguetown/armor/plate/half,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"daZ" = (
-/obj/machinery/light/roguestreet/orange/walllamp{
-	dir = 4
-	},
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/mountains)
 "dbg" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = -32;
@@ -19353,6 +19347,12 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town/harbor)
+"lVn" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 1
+	},
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town/dwarfin)
 "lVE" = (
 /obj/effect/landmark/start/clerk,
 /turf/open/floor/rogue/hexstone,
@@ -20620,6 +20620,10 @@
 /obj/effect/landmark/start/marshal,
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
+"mJt" = (
+/obj/structure/glowshroom,
+/turf/open/floor/rogue/concrete,
+/area/rogue/under/cave)
 "mJv" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -20836,6 +20840,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
+"mSY" = (
+/obj/machinery/light/roguestreet/orange/walllamp,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/rtfield)
 "mTd" = (
 /obj/effect/decal/cobbleedge{
 	dir = 4;
@@ -27549,6 +27557,10 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
+"rcc" = (
+/obj/structure/glowshroom,
+/turf/open/floor/rogue/grass,
+/area/rogue/under/cave)
 "rco" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 4
@@ -28239,6 +28251,12 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/church)
+"rxq" = (
+/obj/machinery/light/roguestreet/orange/walllamp{
+	dir = 4
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/mountains)
 "rxG" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue/long{
 	dir = 1
@@ -31141,6 +31159,13 @@
 /obj/structure/roguewindow/openclose,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"tnC" = (
+/obj/structure/glowshroom,
+/turf/open/water/river{
+	dir = 4;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cave)
 "tnK" = (
 /obj/structure/rack/rogue,
 /obj/item/key/keep_barracks,
@@ -34380,10 +34405,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
-"vmo" = (
-/obj/machinery/light/roguestreet/orange/walllamp,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/rtfield)
 "vms" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/shortshirt,
@@ -37988,12 +38009,6 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
-"xzj" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 1
-	},
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/indoors/town/dwarfin)
 "xzI" = (
 /obj/structure/bookcase/random/archive,
 /obj/item/book/rogue/tales1,
@@ -95096,7 +95111,7 @@ dFE
 dFE
 dFE
 dFE
-dFE
+tnC
 dFE
 dFE
 dFE
@@ -101581,7 +101596,7 @@ dFE
 dFE
 dFE
 dFE
-dFE
+tnC
 dFE
 bpD
 bpD
@@ -111083,7 +111098,7 @@ cTA
 cTA
 vTW
 dFE
-dFE
+tnC
 dFE
 dFE
 dFE
@@ -114110,7 +114125,7 @@ cTA
 dFE
 dFE
 dFE
-dFE
+tnC
 bpD
 bpD
 bpD
@@ -117995,7 +118010,7 @@ dFE
 dFE
 dFE
 dFE
-dFE
+tnC
 dFE
 dFE
 dFE
@@ -122744,7 +122759,7 @@ bpD
 dFE
 dFE
 dFE
-dFE
+tnC
 dFE
 dFE
 dFE
@@ -128797,7 +128812,7 @@ dFE
 dFE
 dFE
 dFE
-dFE
+tnC
 dFE
 bpD
 bpD
@@ -133542,7 +133557,7 @@ bpD
 bpD
 bpD
 dFE
-dFE
+tnC
 dFE
 dFE
 dFE
@@ -134844,7 +134859,7 @@ dFE
 dFE
 dFE
 dFE
-dFE
+tnC
 dFE
 dFE
 dFE
@@ -138729,7 +138744,7 @@ dFE
 dFE
 dFE
 dFE
-dFE
+tnC
 dFE
 dFE
 dFE
@@ -141329,7 +141344,7 @@ dFE
 dFE
 cdX
 cdX
-ujF
+rcc
 bpD
 bpD
 bpD
@@ -141757,7 +141772,7 @@ wPC
 dFE
 dFE
 dFE
-dFE
+tnC
 dFE
 cdX
 ujF
@@ -146079,7 +146094,7 @@ dFE
 dFE
 dFE
 dFE
-tnM
+mJt
 bpD
 bpD
 bpD
@@ -146511,7 +146526,7 @@ dFE
 dFE
 dFE
 dFE
-tnM
+mJt
 bpD
 bpD
 bpD
@@ -314536,7 +314551,7 @@ dMk
 dMk
 tZm
 oYj
-xzj
+lVn
 sco
 xjW
 xjW
@@ -327516,7 +327531,7 @@ fiv
 fyA
 pAV
 pAV
-vmo
+mSY
 qbG
 qbG
 qbG
@@ -328387,11 +328402,11 @@ qbG
 qbG
 qbG
 erZ
-daZ
+rxq
 erZ
 erZ
 erZ
-daZ
+rxq
 erZ
 erZ
 erZ
@@ -331836,7 +331851,7 @@ ozx
 cyr
 pAV
 pAV
-vmo
+mSY
 qbG
 qbG
 qbG
