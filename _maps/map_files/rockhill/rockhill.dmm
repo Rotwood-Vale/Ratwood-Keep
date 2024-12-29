@@ -10619,6 +10619,10 @@
 /obj/structure/globe,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
+"gAZ" = (
+/obj/structure/mineral_door/wood/towner/generic,
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors/town)
 "gBu" = (
 /obj/machinery/light/rogue/hearth,
 /obj/structure/fluff/railing/border,
@@ -13469,6 +13473,9 @@
 "ilV" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/town/bath)
+"ilX" = (
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/mountains)
 "ilZ" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town)
@@ -23136,10 +23143,10 @@
 /area/rogue/indoors/town/church)
 "omU" = (
 /obj/structure/mineral_door/wood/deadbolt{
-	dir = 1
+	dir = 8
 	},
-/turf/open/floor/rogue/twig,
-/area/rogue/indoors/town)
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/shelter/town)
 "onc" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -28469,8 +28476,10 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "rGi" = (
-/obj/structure/mineral_door/wood/towner/farmer,
-/turf/open/floor/rogue/ruinedwood,
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 1
+	},
+/turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "rGF" = (
 /obj/structure/mineral_door/wood{
@@ -34537,12 +34546,6 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town/harbor)
-"vrQ" = (
-/obj/structure/mineral_door/wood/deadbolt{
-	dir = 8
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/shelter/town)
 "vrT" = (
 /obj/structure/flora/roguegrass/bush/wall,
 /obj/structure/flora/newleaf,
@@ -164657,7 +164660,7 @@ vIa
 vIa
 vIa
 vIa
-vIa
+ilX
 vIa
 vIa
 vIa
@@ -216926,12 +216929,12 @@ wSn
 fxx
 fxx
 gkv
+gAZ
+grW
+grW
+grW
+grW
 rGi
-grW
-grW
-grW
-grW
-omU
 uaL
 wSn
 qvR
@@ -223843,7 +223846,7 @@ uaL
 bkS
 fxw
 fxw
-vrQ
+omU
 bkS
 qvR
 sjP
