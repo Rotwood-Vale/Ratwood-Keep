@@ -960,12 +960,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.nutrition > NUTRITION_LEVEL_HUNGRY && H.getorganslot(ORGAN_SLOT_BREASTS).lactating && H.getorganslot(ORGAN_SLOT_BREASTS).milk_max > H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored) //Vrell - numbers may need to be tweaked for balance but hey this works for now.
 				var/milk_to_make = min(hunger_rate, H.getorganslot(ORGAN_SLOT_BREASTS).milk_max - H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
 				H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored += milk_to_make
-				H.adjust_nutrition(-milk_to_make * 50)
+				H.adjust_nutrition(-milk_to_make * 20)
 
 			else if(H.nutrition < NUTRITION_LEVEL_STARVING && H.getorganslot(ORGAN_SLOT_BREASTS).lactating) //Vrell - If starving, your milk drains automatically to slow your starvation.
 				var/milk_to_take = min(hunger_rate, H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
 				H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored -= milk_to_take
-				H.adjust_nutrition(milk_to_take * 50)
+				H.adjust_nutrition(milk_to_take * 20)
 
 	if (H.hydration > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOHUNGER))
 		// THEY HUNGER
