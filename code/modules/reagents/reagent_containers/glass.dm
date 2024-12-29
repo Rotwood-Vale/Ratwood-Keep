@@ -244,7 +244,8 @@
 	icon_state = "woodbucket"
 	item_state = "woodbucket"
 	icon = 'icons/roguetown/items/misc.dmi'
-	custom_materials = null
+
+	possible_item_intents = list(/datum/intent/fill, INTENT_POUR, INTENT_SPLASH, INTENT_GENERIC)
 	force = 5
 	throwforce = 10
 	amount_per_transfer_from_this = 9

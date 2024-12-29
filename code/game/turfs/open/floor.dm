@@ -13,8 +13,6 @@
 
 	var/icon_regular_floor = "floor" //used to remember what icon the tile should have by default
 	var/icon_plating = "plating"
-	thermal_conductivity = 0.040
-	heat_capacity = 10000
 	intact = 1
 	var/broken = 0
 	var/burnt = 0
@@ -92,10 +90,6 @@
 	for(var/obj/structure/A in contents)
 		if(A.level == 3)
 			return 1
-			
-/turf/open/floor/update_icon()
-	. = ..()
-	update_visuals()
 
 /turf/open/floor/attack_paw(mob/user)
 	return attack_hand(user)

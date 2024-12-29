@@ -5,7 +5,6 @@
 	sight = 0
 	see_in_dark = 8
 	hud_possible = list(ANTAG_HUD)
-	pressure_resistance = 10
 
 	var/resize = 1 //Badminnery resize
 	var/lastattacker = null
@@ -114,8 +113,7 @@
 
 	var/can_be_held = FALSE	//whether this can be picked up and held.
 
-	var/radiation = 0 //If the mob is irradiated.
-	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
+	var/ventcrawl_layer = 2
 	var/losebreath = 0
 
 	//List of active diseases

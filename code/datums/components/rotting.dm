@@ -124,7 +124,7 @@
 		return L.dust(drop_items=TRUE)
 
 /datum/component/rot/gibs
-	amount = MIASMA_GIBS_MOLES
+	amount = 0.005
 
 /datum/looping_sound/fliesloop
 	mid_sounds = list('sound/misc/fliesloop.ogg')
