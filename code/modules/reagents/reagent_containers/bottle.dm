@@ -59,6 +59,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		shatter(GET_TURF_BELOW(T))
 		return 
 	new /obj/item/natural/glass/shard(get_turf(T))
+	new /obj/effect/decal/cleanable/glass(get_turf(T))
 	qdel(src)
 
 /obj/item/reagent_containers/glass/bottle/rmb_self(mob/user)

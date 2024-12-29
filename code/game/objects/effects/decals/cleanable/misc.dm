@@ -104,6 +104,21 @@
 		desc = ""
 	. = ..()
 
+/obj/effect/decal/cleanable/glass
+	name = "tiny shards"
+	desc = ""
+	icon = 'icons/effects/debris.dmi'
+	icon_state = "tiny"
+	beauty = -100
+
+/obj/effect/decal/cleanable/glass/Initialize(mapload)
+	. = ..()
+	setDir(pick(GLOB.cardinals))
+
+/obj/effect/decal/cleanable/glass/ex_act()
+	qdel(src)
+	return TRUE
+
 /obj/effect/decal/cleanable/glitter
 	name = "generic glitter pile"
 	desc = ""
