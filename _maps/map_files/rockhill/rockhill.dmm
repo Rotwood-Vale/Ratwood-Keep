@@ -136,6 +136,10 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
+"adG" = (
+/obj/structure/fermenting_barrel/random/water,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "adL" = (
 /obj/effect/decal/cobbleedge{
 	dir = 4;
@@ -8999,7 +9003,6 @@
 /obj/effect/decal/cobbleedge{
 	dir = 10
 	},
-/obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
 "fyD" = (
@@ -326347,7 +326350,7 @@ wlD
 tRG
 pAV
 pAV
-wlD
+adG
 ddv
 rDt
 erZ
@@ -328072,9 +328075,9 @@ pAV
 rDt
 xxx
 xxx
+rDt
 pAV
-pAV
-pAV
+rDt
 pAV
 dAy
 qbG
