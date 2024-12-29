@@ -9696,8 +9696,10 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town/harbor)
 "fWX" = (
-/obj/structure/mineral_door/wood,
-/turf/closed/wall/mineral/rogue/wooddark/end,
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town)
 "fXh" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
@@ -23134,11 +23136,10 @@
 /area/rogue/indoors/town/church)
 "omU" = (
 /obj/structure/mineral_door/wood/deadbolt{
-	lockid = "farm";
-	name = "Laborer's Workshop"
+	dir = 1
 	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/shelter/town)
+/turf/open/floor/rogue/twig,
+/area/rogue/indoors/town)
 "onc" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -34536,6 +34537,12 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town/harbor)
+"vrQ" = (
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 8
+	},
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/shelter/town)
 "vrT" = (
 /obj/structure/flora/roguegrass/bush/wall,
 /obj/structure/flora/newleaf,
@@ -216924,7 +216931,7 @@ grW
 grW
 grW
 grW
-rGi
+omU
 uaL
 wSn
 qvR
@@ -218201,7 +218208,7 @@ vtB
 opY
 fxx
 sjP
-qvR
+sjP
 qvR
 qvR
 qvR
@@ -223836,7 +223843,7 @@ uaL
 bkS
 fxw
 fxw
-jlz
+vrQ
 bkS
 qvR
 sjP
@@ -230726,8 +230733,8 @@ qbG
 qbG
 wSn
 wSn
-xqL
-omU
+wSn
+fbH
 jRA
 jRA
 jRA
