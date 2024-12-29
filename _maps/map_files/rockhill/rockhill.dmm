@@ -10769,6 +10769,12 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town)
+"gFU" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 1
+	},
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town/dwarfin)
 "gFZ" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -24609,7 +24615,7 @@
 /area/rogue/indoors)
 "pdo" = (
 /obj/structure/stairs,
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "pdG" = (
 /obj/machinery/light/rogue/forge,
@@ -313225,10 +313231,10 @@ etA
 fnw
 spQ
 oqO
-gsM
+sco
 aKT
 xQX
-gsM
+sco
 rPJ
 gsM
 gsM
@@ -313660,7 +313666,7 @@ rok
 wUE
 gsM
 kdy
-gsM
+sco
 jde
 gsM
 gsM
@@ -314080,7 +314086,7 @@ yht
 cty
 xAt
 xAt
-xAt
+sco
 sco
 mmB
 dMk
@@ -314092,7 +314098,7 @@ rok
 kHr
 gsM
 gsM
-gsM
+sco
 jde
 gsM
 gsM
@@ -314520,11 +314526,11 @@ dMk
 dMk
 tZm
 oYj
-bdS
-gsM
+gFU
+sco
 xjW
 xjW
-gsM
+sco
 jde
 gsM
 gsM
@@ -314956,7 +314962,7 @@ aKi
 cAm
 gsM
 gsM
-gsM
+sco
 cps
 gsM
 gsM
@@ -315388,7 +315394,7 @@ aKi
 xjW
 gsM
 bdS
-gsM
+sco
 cFr
 gsM
 gsM
@@ -315820,7 +315826,7 @@ aKi
 gsM
 gsM
 gsM
-gsM
+sco
 ioq
 gsM
 gsM
@@ -316684,7 +316690,7 @@ aKi
 gsM
 gsM
 npm
-gsM
+sco
 xEY
 bhg
 lIn
