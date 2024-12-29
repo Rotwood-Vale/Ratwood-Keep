@@ -584,6 +584,17 @@
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/tavern)
+"avz" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	pixel_x = 6
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/town)
 "avC" = (
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -891,6 +902,13 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"aEd" = (
+/obj/structure/fermenting_barrel/water,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "aED" = (
 /obj/structure/bars/grille{
 	dir = 4
@@ -3580,6 +3598,17 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
+"cnp" = (
+/obj/structure/fluff/railing/border{
+	dir = 6;
+	pixel_x = 2;
+	pixel_y = -10
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "cnF" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -9832,6 +9861,17 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"gbz" = (
+/obj/structure/rack/rogue,
+/obj/item/cooking/pan,
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "gbA" = (
 /obj/structure/stairs/stone{
 	dir = 4
@@ -10471,6 +10511,13 @@
 /obj/item/soap,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
+"gvD" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	pixel_x = 6
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/town)
 "gvG" = (
 /obj/structure/industrial_lift/tram{
 	icon_state = "vertw"
@@ -20399,6 +20446,15 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
+"mAN" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "mBx" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -20865,6 +20921,21 @@
 	dir = 6
 	},
 /area/rogue/outdoors/bog)
+"mTS" = (
+/obj/structure/closet/crate/chest{
+	lockid = "towner_blacksmith";
+	locked = 1
+	},
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = -10
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "mTT" = (
 /obj/item/natural/bundle/stick,
 /turf/open/floor/rogue/dirt,
@@ -25897,11 +25968,11 @@
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
 "pXE" = (
-/obj/structure/fluff/railing/border{
-	dir = 5
+/obj/structure/stairs{
+	dir = 8
 	},
-/turf/closed/mineral/rogue,
-/area/rogue/indoors/shelter/mountains)
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town)
 "pXN" = (
 /obj/structure/closet/crate/roguecloset/inn/chest{
 	keylock = 1;
@@ -29555,6 +29626,16 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
+"snp" = (
+/obj/structure/fluff/railing/border{
+	dir = 10;
+	icon_state = "border"
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "snH" = (
 /obj/structure/table/wood{
 	icon_state = "largetable"
@@ -38508,6 +38589,13 @@
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
+"xMD" = (
+/obj/machinery/light/rogue/torchholder/r,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "xMI" = (
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -38525,6 +38613,15 @@
 "xNa" = (
 /turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue/outdoors/town/roofs)
+"xNd" = (
+/obj/structure/fluff/railing/border{
+	pixel_y = -10
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors/town)
 "xNy" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/cand,
 /area/rogue/indoors/town/church)
@@ -310663,13 +310760,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-pXE
-vIa
-vIa
-vIa
-vIa
+uln
+uln
+uln
+uln
+uln
+uln
+uln
 vIa
 vIa
 vIa
@@ -311095,13 +311192,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+uRi
+wxm
+kxk
+stp
+uln
+uln
 vIa
 vIa
 vIa
@@ -311527,13 +311624,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+tVN
+tVN
+tVN
+tVN
+pXE
+uln
 vIa
 vIa
 xAt
@@ -311959,13 +312056,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+iJo
+tVN
+tVN
+vXn
+izP
+uln
 vIa
 xAt
 xAt
@@ -312391,13 +312488,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+bsV
+tVN
+vXn
+vXn
+vXn
+uln
 vIa
 xAt
 xAt
@@ -312823,13 +312920,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+gjv
+tVN
+vXn
+vXn
+vXn
+uln
 vIa
 xAt
 xAt
@@ -313255,13 +313352,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+tMZ
+vXn
+vXn
+vXn
+vXn
+uln
 xAt
 xAt
 xAt
@@ -313687,13 +313784,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+uln
+uAl
+uAl
+dQv
+uPZ
+uln
 xAt
 xAt
 xAt
@@ -314121,9 +314218,9 @@ vIa
 xAt
 xAt
 xAt
-pQd
-pQd
-pQd
+hBp
+yht
+yht
 yht
 cty
 xAt
@@ -314553,9 +314650,9 @@ xAt
 xAt
 xAt
 xAt
-xAt
-xAt
-gOt
+avz
+gvD
+yht
 wbg
 iHi
 xAt
@@ -420393,12 +420490,12 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+uln
+uln
+uln
+uln
+uln
 vIa
 vIa
 vIa
@@ -420824,13 +420921,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+uln
+xrP
+xrP
+xrP
+xrP
+uln
 vIa
 vIa
 vIa
@@ -421256,13 +421353,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+fQx
+rde
+xrP
+fov
+mAN
+uln
 vIa
 vIa
 vIa
@@ -421688,13 +421785,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+qlw
+xrP
+xrP
+xCf
+oTD
+uln
 vIa
 vIa
 vIa
@@ -422120,13 +422217,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+uqR
+uqR
+xrP
+snp
+gbz
+uln
 vIa
 erZ
 erZ
@@ -422552,13 +422649,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+etg
+uqR
+xrP
+xrP
+aEd
+uln
 vIa
 erZ
 erZ
@@ -422984,13 +423081,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+xUC
+uqR
+xrP
+cnp
+mTS
+uln
 vIa
 erZ
 fZJ
@@ -423416,13 +423513,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+mIi
+xMD
+xrP
+xNd
+pit
+uln
 erZ
 erZ
 fZJ
@@ -423848,13 +423945,13 @@ vIa
 vIa
 vIa
 vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
-vIa
+uln
+uln
+uln
+ebb
+ebb
+uln
+uln
 erZ
 erZ
 fZJ
