@@ -22644,7 +22644,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 8
 	},
-/turf/closed/wall/mineral/rogue/craftstone,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "nXS" = (
 /obj/structure/table/wood{
@@ -34564,7 +34564,7 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 1
 	},
-/turf/closed/wall/mineral/rogue/craftstone,
+/turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/dwarfin)
 "vpz" = (
 /obj/structure/stairs{
@@ -317222,10 +317222,10 @@ gnI
 pxS
 hoB
 gsM
-mvp
+aKi
 gsM
 ven
-gsM
+sco
 sco
 sco
 sco
@@ -317655,7 +317655,7 @@ eah
 gsM
 gsM
 mvp
-sco
+mvp
 nXR
 sco
 sco
