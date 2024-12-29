@@ -430,6 +430,7 @@
 			drinklimb(C)
 	return 1
 
+///Chewing after bite
 /obj/item/grabbing/bite/proc/bitelimb(mob/living/carbon/human/user) //implies limb_grabbed and sublimb are things
 	if(!user.Adjacent(grabbed))
 		qdel(src)
@@ -447,18 +448,27 @@
 		playsound(C.loc, "smallslash", 100, FALSE, -1)
 		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
 		if(user.mind)
+			/*
+				WEREWOLF CHEW
+			*/
 			if(istype(user.dna.species, /datum/species/werewolf))
 				caused_wound?.werewolf_infect_attempt()
 				if(prob(30))
 					user.werewolf_feed(C)
-/*			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie) Crix look at this
+
+			/*
+				ZOMBIE CHEW
+			*/
+			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(zombie_antag)
 				zombie_antag.last_bite = world.time
-				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
-				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
-					to_chat(user, span_danger("Your gift trickles into their wound...")) //maybe too much?
-					user.mind.adjust_triumphs(1)*/
-			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
+				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie) //If the bite target is a zombie
+				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)   // infect_attempt on wound
+					to_chat(user, span_danger("Your gift trickles into their wound...")) //message to the zombie they infected the target
+/*
+	Code below is for a zombie smashing the brains of unit. The code expects the brain to be part of the head which is not the case with AP. Kept for posterity in case it's used in an overhaul.
+*/
+/*			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
 				var/mob/living/carbon/human/H = C
 				if(istype(H))
 					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob/living/carbon/human, zombie_infect_attempt))
@@ -473,7 +483,7 @@
 							if(!user.mob_timers["zombie_tri"])
 								user.mob_timers["zombie_tri"] = world.time
 							playsound(C.loc, 'sound/combat/fracture/headcrush (2).ogg', 100, FALSE, -1)
-							return
+							return*/
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 	C.visible_message(span_danger("[user] bites [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \

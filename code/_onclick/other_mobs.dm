@@ -153,6 +153,7 @@
 /mob/living/onbite(mob/living/carbon/human/user)
 	return
 
+///Initial bite on target
 /mob/living/carbon/onbite(mob/living/carbon/human/user)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("I don't want to harm [src]!"))

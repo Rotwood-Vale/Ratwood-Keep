@@ -62,13 +62,13 @@
 	for(var/obj/item/bodypart/B in C.bodyparts)
 		if(!B.skeletonized && B.is_organic_limb())
 			if(!B.rotted)
-				if(amount > 10 MINUTES)
+				if(amount > 20 MINUTES)
 					B.rotted = TRUE
 					findonerotten = TRUE
 					shouldupdate = TRUE
 					C.change_stat("constitution", -8, "rottenlimbs")
 			else
-				if(amount > 25 MINUTES)
+				if(amount > 40 MINUTES)
 					if(!is_zombie)
 						B.skeletonize()
 						if(C.dna && C.dna.species)
@@ -77,14 +77,14 @@
 						shouldupdate = TRUE
 				else
 					findonerotten = TRUE
-		if(amount > 35 MINUTES)
+	/*	if(amount > 35 MINUTES)  // Code to delete a corpse after 35 minutes if it's not a zombie and not skeletonized. Possible failsafe.
 			if(!is_zombie)
 				if(B.skeletonized)
 					dustme = TRUE
 
 	if(dustme)
 		qdel(src)
-		return C.dust(drop_items=TRUE)
+		return C.dust(drop_items=TRUE)*/
 
 	if(findonerotten)
 		var/turf/open/T = C.loc
