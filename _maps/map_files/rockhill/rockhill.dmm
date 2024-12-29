@@ -858,11 +858,8 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/manor)
 "aDi" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
 /obj/machinery/light/roguestreet/orange/walllamp,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town)
 "aDq" = (
 /obj/structure/fluff/railing/wood{
@@ -335285,7 +335282,7 @@ iol
 wVI
 iol
 wVI
-ylJ
+wVI
 wbg
 wbg
 wbg
@@ -340038,7 +340035,7 @@ oZA
 cDj
 cDj
 biB
-aDi
+hLP
 oZC
 wbg
 cxv
@@ -340470,7 +340467,7 @@ lfK
 rNg
 xRQ
 oSn
-fnA
+aDi
 wbg
 wbg
 bcC
