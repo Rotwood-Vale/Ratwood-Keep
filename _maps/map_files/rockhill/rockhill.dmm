@@ -14393,10 +14393,6 @@
 "iPg" = (
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/town/roofs)
-"iPr" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/outdoors/town/harbor)
 "iPD" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -250445,7 +250441,7 @@ nBV
 cPx
 hkm
 uQs
-iPr
+urr
 yie
 hkm
 hkm
@@ -250877,7 +250873,7 @@ nBV
 cPx
 hkm
 unT
-iPr
+urr
 eqP
 hkm
 hkm
@@ -251741,7 +251737,7 @@ nBV
 cPx
 hkm
 unT
-iPr
+urr
 kAp
 hkm
 jLC
