@@ -582,14 +582,16 @@
 	reqs = list(/obj/item/natural/hide/cured = 4,
 				/obj/item/natural/fur = 1,
 				/obj/item/natural/fibers = 1)
-	skill_level = 4
+	skill_level = 3
 
-/datum/crafting_recipe/roguetown/sewing/leathercoat
+/datum/crafting_recipe/roguetown/sewing/leathercoat/heavy
 	name = "heavy leather coat"
 	result = /obj/item/clothing/suit/roguetown/armor/leathercoat/heavy
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fur = 4,
 				/obj/item/natural/fibers = 1)
+	skill_level = 4
+
 /datum/crafting_recipe/roguetown/sewing/shoes
 	name = "simple shoes (leather; NOVICE)"
 	result = list(/obj/item/clothing/shoes/roguetown/simpleshoes)
