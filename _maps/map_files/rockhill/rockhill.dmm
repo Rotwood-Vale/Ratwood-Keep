@@ -20087,8 +20087,9 @@
 /area/rogue/indoors/town/manor)
 "mrl" = (
 /obj/structure/rack/rogue,
-/obj/item/flashlight/flare/torch/lantern,
 /obj/item/rope/chain,
+/obj/item/flashlight/flare/torch/lantern,
+/obj/item/flashlight/flare/torch/lantern,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "mrD" = (
