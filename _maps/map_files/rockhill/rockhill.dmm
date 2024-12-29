@@ -2076,7 +2076,9 @@
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
 /obj/structure/table/vtable,
-/obj/structure/roguemachine/mail,
+/obj/structure/roguemachine/mail{
+	mailtag = "Priest"
+	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church)
 "bmW" = (
@@ -2493,8 +2495,8 @@
 /area/rogue/under/cave)
 "bzy" = (
 /obj/structure/roguemachine/mail{
-	mailtag = "Throne Room";
-	ournum = 12
+	mailtag = "Mayor";
+	ournum = 16
 	},
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/outdoors/town)
@@ -5760,12 +5762,11 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "dCx" = (
-/obj/structure/composter,
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
 	pixel_y = 0
 	},
-/turf/open/floor/rogue/ruinedwood/turned,
+/turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/indoors/town/manor)
 "dCM" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
@@ -8520,13 +8521,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
-"fiL" = (
-/obj/structure/mineral_door/wood/donjon/stone{
-	locked = 1;
-	lockid = "physician"
-	},
-/turf/open/floor/rogue/church,
-/area/rogue/indoors/town/manor)
 "fiT" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -10060,6 +10054,12 @@
 "giP" = (
 /obj/machinery/light/roguestreet/orange{
 	dir = 1
+	},
+/obj/structure/roguemachine/mail{
+	mailtag = "Bastion's Entrance";
+	ournum = 15;
+	pixel_y = 0;
+	pixel_x = 30
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/rtfield)
@@ -19736,6 +19736,7 @@
 	},
 /obj/item/storage/roguebag,
 /obj/item/storage/roguebag,
+/obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
 "mhH" = (
@@ -26914,8 +26915,8 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/town)
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue/indoors/town/manor)
 "qFu" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -434245,7 +434246,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-abE
+fZJ
 pAV
 pAV
 pAV
@@ -554264,11 +554265,11 @@ aFk
 cco
 wtF
 qFt
-aOn
-aOn
-aOn
-aOn
-aOn
+wtF
+wtF
+wtF
+wtF
+wtF
 qFt
 wtF
 dxv
@@ -554695,13 +554696,13 @@ ieM
 aFk
 bcr
 wtF
-dxv
-dxv
-dxv
-dxv
-dxv
-dxv
-dxv
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
 wtF
 dxv
 xzQ
@@ -555127,13 +555128,13 @@ wtF
 wtF
 wtF
 wtF
-dxv
-aOn
-aOn
-aOn
-aOn
-aOn
-dxv
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
 wtF
 dxv
 wtF
@@ -555559,13 +555560,13 @@ xHp
 sBQ
 brw
 wtF
-dxv
-dxv
-dxv
-dxv
-dxv
-dxv
-dxv
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
 wtF
 dxv
 xzQ
@@ -555990,14 +555991,14 @@ kUR
 kUR
 kUR
 kUR
-fiL
-dxv
-aOn
-aOn
-aOn
-aOn
-aOn
-dxv
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
 wtF
 apn
 tfJ
@@ -556423,13 +556424,13 @@ aFk
 aFk
 rFo
 wtF
-dxv
-dxv
-dxv
-dxv
-dxv
-dxv
-dxv
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
+wtF
 wtF
 wtF
 wtF
@@ -556856,12 +556857,12 @@ aFk
 eqs
 wtF
 dCx
-dxv
-aOn
-aOn
-aOn
-dxv
-apn
+wtF
+wtF
+wtF
+wtF
+wtF
+dCx
 wtF
 tWQ
 tWQ
