@@ -312,7 +312,7 @@
 
 /obj/structure/roguemachine/vendor/street_shop01/Initialize()
 	. = ..()
-	for(var/X in list(/obj/item/key/street_shop02))
+	for(var/X in list(/obj/item/key/street_shop01))
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
