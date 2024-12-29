@@ -6464,6 +6464,10 @@
 /obj/structure/underworld/carriage_normal,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/mountains)
+"dZd" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town)
 "dZj" = (
 /obj/structure/roguetent,
 /turf/open/floor/rogue/dirt/road,
@@ -314183,7 +314187,7 @@ vIa
 vIa
 xAt
 xAt
-xAt
+dZd
 hBp
 yht
 yht
