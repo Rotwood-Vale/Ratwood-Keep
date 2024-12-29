@@ -124,9 +124,3 @@
 	name = "bookcase (Reference)"
 	category = "Reference"
 	var/ref_book_prob = 20
-
-/obj/structure/bookcase/random/reference/Initialize(mapload)
-	. = ..()
-	while(book_count > 0 && prob(ref_book_prob))
-		book_count--
-		new /obj/item/book/manual/random(src)

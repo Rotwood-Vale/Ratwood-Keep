@@ -380,6 +380,7 @@
 		/datum/sprite_accessory/hair/head/thickcurly,
 		/datum/sprite_accessory/hair/head/thicklong_alt,
 		/datum/sprite_accessory/hair/head/baum,
+		/datum/sprite_accessory/hair/head/mcsqueeb,
 		)
 
 /datum/customizer_choice/bodypart_feature/hair/head/humanoid/get_random_accessory(datum/customizer_entry/entry, datum/preferences/prefs)

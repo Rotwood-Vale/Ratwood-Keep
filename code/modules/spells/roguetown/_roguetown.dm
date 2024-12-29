@@ -39,7 +39,7 @@
 	update_icon()
 	start_recharge()
 
-/obj/effect/proc_holder/spell/invoked/deactivate(mob/living/user)
+/obj/effect/proc_holder/spell/invoked/deactivate(mob/living/user) //Deactivates the currently active spell (icon click)
 	..()
 	active = FALSE
 	remove_ranged_ability(null)
@@ -51,7 +51,7 @@
 /obj/effect/proc_holder/spell/invoked/proc/on_deactivation(mob/user)
 	return
 
-/obj/effect/proc_holder/spell/invoked/InterceptClickOn(mob/living/caller, params, atom/target)
+/obj/effect/proc_holder/spell/invoked/InterceptClickOn(mob/living/caller, params, atom/target) 
 	. = ..()
 	if(.)
 		return FALSE

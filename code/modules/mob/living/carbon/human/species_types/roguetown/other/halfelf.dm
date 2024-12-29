@@ -27,7 +27,7 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = NONE
 	liked_food = NONE
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -89,6 +89,10 @@
 		/datum/language/elvish
 	)
 
+/datum/species/human/halfelf/on_species_gain(mob/living/carbon/literally_him, datum/species/old_species)
+	..()
+	languages(literally_him)
+
 /datum/species/human/halfelf/get_skin_list()
 	return list(
 		"Timber-Gronn" = SKIN_COLOR_TIMBER_GRONN,
@@ -98,6 +102,10 @@
 		"Naledi-Born" = SKIN_COLOR_NALEDI_BORN,
 		"Kaze-Lotus" = SKIN_COLOR_KAZE_LOTUS
 	)
+
+/datum/species/human/halfelf/proc/languages(mob/living/carbon/human/literally_him)
+	if(literally_him.skin_tone == SKIN_COLOR_NALEDI_BORN)
+		literally_him.grant_language(/datum/language/celestial)
 
 /datum/species/human/halfelf/get_hairc_list()
 	return sortList(list(
@@ -146,3 +154,4 @@
 
 /datum/species/human/halfelf/random_surname()
 	return ""
+

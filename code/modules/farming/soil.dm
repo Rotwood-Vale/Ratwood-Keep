@@ -314,10 +314,12 @@
 
 /obj/structure/soil/Initialize()
 	START_PROCESSING(SSprocessing, src)
+	GLOB.weather_act_upon_list += src
 	. = ..()
 
 /obj/structure/soil/Destroy()
 	STOP_PROCESSING(SSprocessing, src)
+	GLOB.weather_act_upon_list -= src
 	. = ..()
 
 /obj/structure/soil/process()
@@ -328,6 +330,11 @@
 	update_icon()
 	if(soil_decay_time <= 0)
 		decay_soil()
+
+/obj/structure/soil/weather_act_on(weather_trait, severity)
+	if(weather_trait != PARTICLEWEATHER_RAIN)
+		return
+	water = min(MAX_PLANT_WATER, water + min(5, severity / 4))
 
 /obj/structure/soil/update_icon()
 	. = ..()
@@ -431,7 +438,7 @@
 	if(blessed_time > 0)
 		. += span_good("The soil seems blessed.")
 	if(fertilized_time > 0)
-		. += span_good("The soil has special fertilzier mixed in.")
+		. += span_good("The soil has special fertilizer mixed in.")
 
 #define BLESSING_WEED_DECAY_RATE 10 / (1 MINUTES)
 #define WEED_GROWTH_RATE 3 / (1 MINUTES)

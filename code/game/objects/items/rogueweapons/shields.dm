@@ -21,7 +21,7 @@
 	resistance_flags = FLAMMABLE
 	can_parry = TRUE
 	associated_skill = /datum/skill/combat/shields		//Trained via blocking or attacking dummys with; makes better at parrying w/ shields.
-	wdefense = 5										//Was 15, lowered to 5 - Reason: Shield skill now handles your better parrying w/ shields.
+	wdefense = 10										//should be pretty baller
 	var/coverage = 90
 	parrysound = "parrywood"
 	attacked_sound = "parrywood"
@@ -60,7 +60,12 @@
 /datum/intent/shield/bash
 	name = "bash"
 	icon_state = "inbash"
+	hitsound = list('sound/combat/shieldbash_wood.ogg')
 	chargetime = 0
+	item_d_type = "blunt"
+
+/datum/intent/shield/bash/metal
+	hitsound = list('sound/combat/parry/shield/metalshield (1).ogg')
 
 /datum/intent/shield/block
 	name = "block"
@@ -68,7 +73,12 @@
 	tranged = 1 //we can't attack directly with this intent, but we can charge it
 	tshield = 1
 	chargetime = 1
+	hitsound = list('sound/combat/shieldbash_wood.ogg')
 	warnie = "shieldwarn"
+	item_d_type = "blunt"
+
+/datum/intent/shield/block/metal
+	hitsound = list('sound/combat/parry/shield/metalshield (1).ogg')
 
 /obj/item/rogueweapon/shield/wood
 	name = "wooden shield"
@@ -113,7 +123,7 @@
 	throw_range = 3
 	wlength = WLENGTH_NORMAL
 	resistance_flags = FLAMMABLE
-	wdefense = 6
+	wdefense = 10
 	coverage = 70
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 200
@@ -138,7 +148,7 @@
 	wlength = WLENGTH_NORMAL
 	resistance_flags = null
 	flags_1 = CONDUCT_1
-	wdefense = 8
+	wdefense = 11
 	coverage = 70
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
@@ -181,7 +191,7 @@
 	throwforce = 10
 	dropshrink = 0.8
 	resistance_flags = null
-	wdefense = 7
+	wdefense = 9
 	coverage = 10
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')

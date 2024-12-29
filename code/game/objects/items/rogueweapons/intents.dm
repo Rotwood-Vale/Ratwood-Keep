@@ -51,6 +51,8 @@
 		chargedloop.stop()
 	if(mastermob.curplaying == src)
 		mastermob.curplaying = null
+	mastermob = null
+	masteritem = null
 	return ..()
 
 /datum/intent/proc/examine(mob/user)
@@ -150,7 +152,7 @@
 	if(mastermob)
 		if(chargedloop)
 			if(!istype(chargedloop))
-				chargedloop = new chargedloop(list(mastermob))
+				chargedloop = new chargedloop(mastermob)
 
 /datum/intent/proc/on_charge_start() //what the fuck is going on here lol
 	if(mastermob.curplaying)
@@ -158,10 +160,10 @@
 		mastermob.curplaying = null
 	if(chargedloop)
 		if(!istype(chargedloop, /datum/looping_sound))
-			chargedloop = new chargedloop(list(mastermob))
+			chargedloop = new chargedloop(mastermob)
 		else
 			chargedloop.stop()
-		chargedloop.start(chargedloop.output_atoms)
+		chargedloop.start(chargedloop.parent)
 		mastermob.curplaying = src
 
 /datum/intent/proc/on_mouse_up()
@@ -296,16 +298,17 @@
 	chargetime = 0
 	swingdelay = 0
 
-/datum/intent/pick
+/datum/intent/pick //now like icepick intent, we really went in a circle huh
 	name = "pick"
 	icon_state = "inpick"
 	attack_verb = list("picks","impales")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
+	penfactor = 80
 	animname = "strike"
 	item_d_type = "stab"
 	blade_class = BCLASS_PICK
 	chargetime = 0
-	swingdelay = 3
+	swingdelay = 12
 
 /datum/intent/shoot //shooting crossbows or other guns, no parrydrain
 	name = "shoot"
@@ -363,7 +366,7 @@
 	candodge = TRUE
 	canparry = TRUE
 	blade_class = BCLASS_PUNCH
-	miss_text = "swings a fist at the air!"
+	miss_text = "swing a fist at the air"
 	miss_sound = "punchwoosh"
 	item_d_type = "blunt"
 
@@ -492,7 +495,7 @@
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-	miss_text = "slashes the air!"
+	miss_text = "slash the air"
 	item_d_type = "slash"
 
 /datum/intent/simple/bite
