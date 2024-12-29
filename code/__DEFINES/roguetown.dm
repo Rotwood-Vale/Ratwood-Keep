@@ -31,9 +31,7 @@
 	/datum/species/lupian,\
 	/datum/species/vulpkanin,\
 	/datum/species/moth,\
-	/datum/species/dracon,
-
-#define RACES_TOLERATED \
+	/datum/species/dracon,\
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
 	/datum/species/akula,\
@@ -44,6 +42,8 @@
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold, \
 	/datum/species/halforc
+
+#define RACES_TOLERATED \
 
 #define RACES_SHUNNED \
 
