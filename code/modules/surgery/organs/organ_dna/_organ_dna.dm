@@ -60,4 +60,4 @@
 	var/obj/item/organ/breasts/breasts_organ = organ
 	breasts_organ.breast_size = breast_size
 	breasts_organ.lactating = lactating
-	breasts_organ.milk_max = 75
+	breasts_organ.milk_max = 30
