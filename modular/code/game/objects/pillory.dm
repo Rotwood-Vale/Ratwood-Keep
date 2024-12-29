@@ -145,7 +145,7 @@
 				if(L.mind)
 					var/amt2raise = L.STAINT
 					var/boon = L.STALUC/4
-					L.mind.adjust_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
+					L.mind.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
 				if(lockprogress >= locktreshold)
 					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
 					togglelock(user)

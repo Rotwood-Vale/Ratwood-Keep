@@ -4,6 +4,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 /mob/living/carbon/human/species/human/northern/bum
 	aggressive=0
 	mode = AI_IDLE
+	gender = MALE
 	faction = list("bums", "station")
 	ambushable = FALSE
 	dodgetime = 30
@@ -25,6 +26,8 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 //Creation stuff.
 /mob/living/carbon/human/species/human/northern/bum/after_creation()
 	..()
+	gender = pick(MALE, FEMALE)
+	set_species(/datum/species/human/northern)
 	job = "Beggar"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)

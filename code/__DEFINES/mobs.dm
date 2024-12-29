@@ -507,3 +507,6 @@
 #define SKIN_COLOR_FIRE "ff6e6e"
 #define SKIN_COLOR_FLORA "6afc74"
 #define SKIN_COLOR_ELECTRIC "faec8e"
+
+/// Humans are slowed by the difference between bodytemp and BODYTEMP_COLD_DAMAGE_LIMIT divided by this
+#define COLD_SLOWDOWN_FACTOR				20
