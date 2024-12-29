@@ -29775,7 +29775,7 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "ssa" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "sso" = (
@@ -339252,7 +339252,7 @@ rfx
 xAt
 xAt
 eoy
-wbg
+ssa
 wbg
 wbg
 qMT
@@ -340980,7 +340980,7 @@ xAt
 xAt
 xAt
 esR
-ssa
+wbg
 wbg
 fnA
 esR
