@@ -63,7 +63,7 @@
 		if(!is_in_roguetown(src))
 			zombie_check()
 			to_chat(src, span_userdanger("..is this to be my end..?"))
-			to_chat(src, span_danger("The cold consumes the flicker of hope in your chest, slowly seeping into your limbs...")) 
+			to_chat(src, span_danger("The cold consumes the final flickers of warmth in your chest and begins to seep into your limbs...")) 
 
 	if(client || mind)
 		SSticker.deaths++

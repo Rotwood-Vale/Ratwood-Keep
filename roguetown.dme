@@ -1006,6 +1006,7 @@
 #include "code\modules\antagonists\roguetown\villain\werewolf\werewolf_transformation.dm"
 #include "code\modules\antagonists\roguetown\villain\werewolf\werewolf_wound_infection.dm"
 #include "code\modules\antagonists\roguetown\villain\zombie\zombie.dm"
+#include "code\modules\antagonists\roguetown\villain\zombie\zombie_verbs.dm"
 #include "code\modules\antagonists\roguetown\villain\zombie\zombie_wound_infection.dm"
 #include "code\modules\antagonists\separatist\separatist.dm"
 #include "code\modules\antagonists\space_dragon\space_dragon.dm"

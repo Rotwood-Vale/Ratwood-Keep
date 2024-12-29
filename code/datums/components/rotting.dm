@@ -1,3 +1,4 @@
+
 /datum/component/rot
 	var/amount = 0
 	var/last_process = 0
@@ -21,11 +22,17 @@
 	. = ..()
 
 /datum/component/rot/process()
-	var/amt2add = 10 //1 second
-	if(last_process)
-		amt2add = ((world.time - last_process)/10) * amt2add
-	last_process = world.time
-	amount += amt2add
+
+	var/amt2add = 10 // 1 Second. Base increment. 
+	var/current_time = world.time
+    
+	// time elapsed since the last rot/process
+	var/elapsed_time = last_process ? (current_time - last_process) : 0
+	last_process = current_time
+
+	// Add amount based on the time elapsed. This is used to calculate when to wake/decompose
+	amount += (elapsed_time / 10) * amt2add 
+
 	return
 
 /datum/component/rot/corpse/Initialize()
@@ -50,11 +57,11 @@
 		qdel(src)
 		return
 	
-	if(amount > 4 MINUTES)
+	if(amount > 1 MINUTES)
 		if(is_zombie)
 			var/datum/antagonist/zombie/Z = C.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(Z && !Z.has_turned && !Z.revived && C.stat == DEAD)
-				Z.wake_zombie()
+				wake_zombie(C, infected_wake = TRUE, converted = FALSE)
 
 	var/findonerotten = FALSE
 	var/shouldupdate = FALSE

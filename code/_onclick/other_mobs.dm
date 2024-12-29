@@ -199,6 +199,10 @@
 
 	next_attack_msg.Cut()
 
+//nodmg if they don't have an open wound
+//nodmg if we don't have strongbite
+//nodmg if our teeth can't break through their armour
+
 	if(!nodmg)
 		playsound(src, "smallslash", 100, TRUE, -1)
 		if(ishuman(src) && user.mind)
@@ -217,7 +221,7 @@
 				ZOMBIE INFECTION VIA BITE
 			*/
 			if(user.mind.has_antag_datum(/datum/antagonist/zombie) && !src.mind.has_antag_datum(/datum/antagonist/zombie))
-				INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, zombie_infect_attempt))
+				INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, attempt_zombie_infection), src, "wound")
 
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)

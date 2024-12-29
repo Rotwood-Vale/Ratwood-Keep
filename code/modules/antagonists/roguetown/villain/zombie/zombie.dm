@@ -1,3 +1,6 @@
+#define ZOMBIE_FIRST_BITE_CHANCE 7
+#define ZOMBIE_BITE_CONVERSION_TIME 1 MINUTES
+
 /datum/antagonist/zombie
 	name = "Deadite"
 	antag_hud_type = ANTAG_HUD_TRAITOR
@@ -75,8 +78,32 @@
 
 //Housekeeping/saving variables from pre-zombie 
 
-//Death transformation process goes death -> can_death_zombify -> zombie_check -> zombie.on_gain() -> rotting -> time -> zombie.wake_zombie() -> transform
-//Infection transformation process goes -> infection -> timered transform in zombie_infect_attempt() -> /datum/antagonist/zombie/proc/wake_zombie -> zombietransform
+/*Death transformation process goes:
+	death -> 
+	/mob/living/carbon/human/death(gibbed) -> 
+	zombie_check -> 
+	zombie.on_gain() -> 
+	rotting.dm process -> 
+	time passes -> 
+	zombie.wake_zombie() -> 
+	transform
+*/
+/*
+	Deadite transformation is 2 ways. First is on the initial bite (low chance) and second is on being chewed on.
+
+	Initial bite is: other_mobs.dm, /mob/living/carbon/onbite(mob/living/carbon/human/user) ->
+	INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, attempt_zombie_infection), src, "wound") ->
+	attempt_zombie_infection ->
+	time passes ->
+	wake_zombie.
+
+	Wound transformation goes: grabbing.dm, /obj/item/grabbing/bite/proc/bitelimb(mob/living/carbon/human/user) ->
+	/datum/wound/proc/zombie_infect_attempt() -> 
+	human_owner.attempt_zombie_infection(src, "wound", zombie_infection_time)
+
+	
+	Infection transformation process goes -> infection -> timered transform in zombie_infect_attempt() -> /datum/antagonist/zombie/proc/wake_zombie -> zombietransform
+*/
 /datum/antagonist/zombie/on_gain()
 	var/mob/living/carbon/human/zombie = owner?.current
 	if(zombie)
@@ -218,7 +245,7 @@
 		zombie_part.update_disabled()
 
 	zombie.add_client_colour(/datum/client_colour/monochrome)
-	var/obj/item/organ/eyes/eyes = zombie.getorganslot(ORGAN_SLOT_EYES) //Add zombie eyes(nightivision)
+	var/obj/item/organ/eyes/eyes = zombie.getorganslot(ORGAN_SLOT_EYES) //Add zombie eyes(nightvision)
 	if(eyes)
 		eyes.Remove(zombie,1)
 		QDEL_NULL(eyes)
@@ -266,105 +293,89 @@
 		zombie.emote("idle")
 		next_idle_sound = world.time + rand(5 SECONDS, 10 SECONDS)
 
-//Infected wake param is just a transition from living to zombie, via zombie_infect()
-//Previously you just died without warning in 3 minutes, now you just become an antag
-/datum/antagonist/zombie/proc/wake_zombie(infected_wake = FALSE, converted = FALSE)
-	testing("WAKEZOMBIE")
-	if(!owner.current)
+/*
+	Check for infection
+		Bite chance is checked here
+		Wound chance is checked in zombie_wound_infection.dm
+*/
+/mob/living/carbon/human/proc/attempt_zombie_infection(mob/living/carbon/human/source, infection_type, wake_delay = 0)
+	var/mob/living/carbon/human/victim = usr
+	if (QDELETED(src) || stat >= DEAD)
+		return FALSE
+
+	var/datum/antagonist/zombie/zombie_antag = source.mind?.has_antag_datum(/datum/antagonist/zombie)
+	if (!zombie_antag || !zombie_antag.has_turned) //Check that the zombie who bit us is real
+		return FALSE
+
+	//How did the victim get infected
+	switch (infection_type)
+		if ("bite")
+			if (!prob(ZOMBIE_FIRST_BITE_CHANCE)) // Chance to infect via first bite (rare)
+				return FALSE
+			to_chat(victim, span_danger("A growing cold seeps into my body. I feel horrible... REALLY horrible..."))
+			mob_timers["puke"] = world.time
+			vomit(1, blood = TRUE, stun = FALSE)
+
+		if ("wound")	//Chance to infect via chewing to open wound
+			flash_fullscreen("redflash3")
+			to_chat(victim, span_danger("Ow! It hurts. I feel horrible... REALLY horrible..."))
+
+//Delay on waking up as a zombie. /proc/wake_zombie(mob/living/carbon/zombie, infected_wake = FALSE, converted = FALSE)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(wake_zombie), victim, FALSE, TRUE), wake_delay)
+	return zombie_antag
+
+/mob/living/carbon/human/proc/zombie_infect_attempt()
+	attempt_zombie_infection(src, "bite", ZOMBIE_BITE_CONVERSION_TIME)
+
+/*
+	Proc for our newly infected to wake up as a zombie
+*/
+/proc/wake_zombie(mob/living/carbon/zombie, infected_wake = FALSE, converted = FALSE)
+	if (!zombie || QDELETED(zombie)) 
 		return
-	var/mob/living/carbon/human/zombie = owner.current
-	if(!zombie || !istype(zombie))
+
+	if (!istype(zombie, /mob/living/carbon/human)) // Ensure the zombie is human
 		return
+
 	var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
-	if(!head)
-		qdel(src)
-		return
-	if(zombie.stat != DEAD && !infected_wake)
-		qdel(src)
-		return
-	if(istype(zombie.loc, /obj/structure/closet/dirthole) || istype(zombie.loc, /obj/structure/closet/crate/coffin))
-		qdel(src)
+	if (!head) // Missing head
+		qdel(zombie)
 		return
 
+	if (zombie.stat != DEAD && !infected_wake) // Died too hard
+		qdel(zombie)
+		return
 
+	if (istype(zombie.loc, /obj/structure/closet/dirthole) || istype(zombie.loc, /obj/structure/closet/crate/coffin)) // Buried
+		qdel(zombie)
+		return
+
+	// Heal the zombie
 	zombie.blood_volume = BLOOD_VOLUME_NORMAL
-	zombie.setOxyLoss(0, updating_health = FALSE, forced = TRUE) //zombles dont breathe
-	zombie.setToxLoss(0, updating_health = FALSE, forced = TRUE) //zombles are immune to poison
-	if(!infected_wake || converted) //if we died or were converted, heal all of this too. The power of undeath
+	zombie.setOxyLoss(0, updating_health = FALSE, forced = TRUE) // Zombies don't breathe
+	zombie.setToxLoss(0, updating_health = FALSE, forced = TRUE) // Zombies are immune to poison
+
+	if (infected_wake || converted)
 		zombie.adjustBruteLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
 		zombie.adjustFireLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
-		zombie.heal_wounds(INFINITY) //Heal every wound that is not permanent
-	zombie.stat = UNCONSCIOUS //Start unconscious
-	zombie.updatehealth() //then we check if the mob should wake up
+		zombie.heal_wounds(INFINITY) // Heal all non-permanent wounds
+
+	zombie.stat = UNCONSCIOUS // Start unconscious
+	zombie.updatehealth() // Then check if the mob should wake up
 	zombie.update_mobility()
 	zombie.update_sight()
 	zombie.reload_fullscreen()
-	transform_zombie()
-	if(zombie.stat >= DEAD)
-		//could not revive
-		qdel(src)
 
-/mob/living/carbon/human/proc/zombie_seek()
-	set name = "Seek Brains"
-	set category = "ZOMBIE"
+	var/datum/antagonist/zombie/zombie_antag = zombie.mind?.has_antag_datum(/datum/antagonist/zombie)
+	zombie_antag.transform_zombie()
 
-	if(!mind.has_antag_datum(/datum/antagonist/zombie))
-		return FALSE
-	if(stat >= UNCONSCIOUS)
-		return FALSE
-	var/closest_dist
-	var/the_dir
-	for(var/mob/living/carbon/human/humie as anything in GLOB.human_list)
-		if(humie == src)
-			continue
-		if(humie.mob_biotypes & MOB_UNDEAD)
-			continue
-		if(humie.stat >= DEAD)
-			continue
-		var/total_distance = get_dist(src, humie)
-		if(!closest_dist)
-			closest_dist = total_distance
-			the_dir = get_dir(src, humie)
-		else
-			if(total_distance < closest_dist)
-				closest_dist = total_distance
-				the_dir = get_dir(src, humie)
-	if(!closest_dist)
-		to_chat(src, span_warning("I failed to smell anything..."))
-		return FALSE
-	to_chat(src, span_warning("[closest_dist] meters away, [dir2text(the_dir)]..."))
-	return TRUE
-
-/**
- * This occurs when one zombie infects a living human, going into instadeath from here is kind of shit and confusing
- * We instead just transform at the end
- */
- /*
-  No longer used, now infection by wounds. See the_only_cure.dm
- */
-
-/mob/living/carbon/human/proc/zombie_infect_attempt()
-	if(!prob(7))
+	if (zombie.stat >= DEAD) // Could not revive
+		qdel(zombie)
 		return
-	var/datum/antagonist/zombie/zombie_antag = zombie_check()
-	if(!zombie_antag)
-		return
-	if(stat >= DEAD) //do shit the natural way i guess
-		return
-	to_chat(src, span_danger("I feel horrible... REALLY horrible..."))
-	mob_timers["puke"] = world.time
-	vomit(1, blood = TRUE, stun = FALSE)
-	addtimer(CALLBACK(src, PROC_REF(wake_zombie)), 1 MINUTES)
-	return zombie_antag
 
 
-/mob/living/carbon/human/proc/wake_zombie()
-	var/datum/antagonist/zombie/zombie_antag = mind?.has_antag_datum(/datum/antagonist/zombie)
-	if(!zombie_antag || zombie_antag.has_turned)
-		return FALSE
-	flash_fullscreen("redflash3")
-	to_chat(src, span_danger("It hurts... Is this really the end for me?"))
-	emote("scream") // heres your warning to others bro
-	Knockdown(1)
-	zombie_antag.wake_zombie(infected_wake = TRUE, converted = FALSE)
-	return TRUE
+	if (converted || infected_wake)
+		zombie.flash_fullscreen("redflash3")
+		to_chat(zombie, span_danger("Hungry... so hungry... I crave FLESH!"))
+		zombie.emote("scream") // Warning for nearby players
+		zombie.Knockdown(1)
