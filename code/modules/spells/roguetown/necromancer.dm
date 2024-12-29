@@ -363,11 +363,12 @@
 	mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 	mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
 	mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/combat/crafting, 1, TRUE) //Some basic skills, for actual undead servants. Don't have to be all combat
-	mind.adjust_skillrank_up_to(/datum/skill/combat/carpentry, 1, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/combat/masonry, 1, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/combat/lumberjacking, 1, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/combat/cooking, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE) //Some basic skills, for actual undead servants. Don't have to be all combat
+	mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/labor/mining, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
 	mind.current.job = null
 
 	dna.species.species_traits |= NOBLOOD
