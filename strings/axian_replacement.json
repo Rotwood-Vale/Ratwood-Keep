@@ -25,6 +25,7 @@
 		"stop":  "avast",
 		"is": "be",
 		"its": "it be",
+		"kobold": "remora",
 		"my": "me",
 		"person": ["landlubber", "lubber"],
 		"people": ["landlubbers", "lubbers"],
@@ -68,5 +69,17 @@
 		"butt": "booty",
 		"mercenary": "privateer",
 		"mercenaries": "privateers"
-		}		
+	},
+
+	"start": {
+
+	},
+
+	"end": {
+
+	},
+	
+	"syllable": {
+
+	}
 }
