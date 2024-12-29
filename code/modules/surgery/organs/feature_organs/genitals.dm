@@ -118,7 +118,9 @@
 	organ_dna_type = /datum/organ_dna/breasts
 	accessory_type = /datum/sprite_accessory/breasts/pair
 	var/breast_size = DEFAULT_BREASTS_SIZE
-	var/last_milked
+	var/lactating = FALSE
+	var/milk_stored = 0
+	var/milk_max = 75
 
 /obj/item/organ/testicles
 	name = "testicles"
