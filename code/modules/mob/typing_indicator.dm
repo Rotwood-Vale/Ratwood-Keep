@@ -8,7 +8,7 @@
 
 /mob/proc/set_typing_indicator(state, hudt)
 	if(!typing_indicator)
-		typing_indicator = mutable_appearance('icons/mob/talk.dmi', "default0", HUD_LAYER, HUD_PLANE-1)
+		typing_indicator = mutable_appearance('icons/mob/typing_indicator.dmi', "default0", HUD_LAYER, HUD_PLANE-1)
 		typing_indicator.alpha = 175
 
 	if(state)

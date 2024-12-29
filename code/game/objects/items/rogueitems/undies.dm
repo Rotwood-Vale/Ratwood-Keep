@@ -43,3 +43,8 @@
 	name = "leotard"
 	icon_state = "leotard"
 	covers_breasts = TRUE
+
+/obj/item/undies/athletic_leotard
+	name = "athletic leotard"
+	icon_state = "athletic_leotard"
+	covers_breasts = TRUE
