@@ -844,6 +844,7 @@
 #include "code\game\objects\items\rogueitems\cup.dm"
 #include "code\game\objects\items\rogueitems\devices.dm"
 #include "code\game\objects\items\rogueitems\dmusicbox.dm"
+#include "code\game\objects\items\rogueitems\fishing_cage.dm"
 #include "code\game\objects\items\rogueitems\flintsparker.dm"
 #include "code\game\objects\items\rogueitems\gems.dm"
 #include "code\game\objects\items\rogueitems\gunparts.dm"
