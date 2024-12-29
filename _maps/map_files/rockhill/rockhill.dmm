@@ -9141,6 +9141,10 @@
 /obj/structure/mineral_door/bars,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"fDh" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "fDs" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -15495,10 +15499,6 @@
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
-"jrw" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
 "jse" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -29778,9 +29778,11 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "ssa" = (
-/obj/structure/fermenting_barrel/random/water,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
+/obj/machinery/light/roguestreet/orange/walllamp{
+	dir = 8
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/outdoors/town)
 "sso" = (
 /obj/structure/stairs{
 	dir = 8;
@@ -34790,11 +34792,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
 "vvb" = (
-/obj/machinery/light/roguestreet/orange/walllamp{
-	dir = 8
-	},
+/obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
+/area/rogue/indoors)
 "vvl" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/rogue/cobble,
@@ -318094,7 +318094,7 @@ wbg
 wbg
 wbg
 wbg
-vvb
+wbg
 wbg
 wbg
 wbg
@@ -319393,7 +319393,7 @@ nXC
 lyG
 aKS
 oHv
-wVI
+ssa
 wNn
 fiW
 sEV
@@ -326350,7 +326350,7 @@ wlD
 tRG
 pAV
 pAV
-ssa
+vvb
 ddv
 rDt
 erZ
@@ -339255,7 +339255,7 @@ rfx
 xAt
 xAt
 eoy
-jrw
+fDh
 wbg
 wbg
 qMT
