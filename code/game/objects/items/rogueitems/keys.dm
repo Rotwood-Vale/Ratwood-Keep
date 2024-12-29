@@ -173,7 +173,7 @@
 	icon_state = "hornkey"
 	lockid = "tavern"
 
-/obj/item/storage/key/mayor
+/obj/item/key/mayor
 	name = "mayor's key"
 	desc = "This key should open and close the townhall and the mayor's home."
 	icon_state = "brownkey"
