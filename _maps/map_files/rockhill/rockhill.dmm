@@ -4910,6 +4910,12 @@
 /obj/item/clothing/suit/roguetown/armor/plate/half,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"daZ" = (
+/obj/machinery/light/roguestreet/orange/walllamp{
+	dir = 4
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/mountains)
 "dbg" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = -32;
@@ -10769,12 +10775,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town)
-"gFU" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 1
-	},
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/indoors/town/dwarfin)
 "gFZ" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -34380,6 +34380,10 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
+"vmo" = (
+/obj/machinery/light/roguestreet/orange/walllamp,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/rtfield)
 "vms" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/shortshirt,
@@ -37984,6 +37988,12 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
+"xzj" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 1
+	},
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town/dwarfin)
 "xzI" = (
 /obj/structure/bookcase/random/archive,
 /obj/item/book/rogue/tales1,
@@ -314526,7 +314536,7 @@ dMk
 dMk
 tZm
 oYj
-gFU
+xzj
 sco
 xjW
 xjW
@@ -327506,7 +327516,7 @@ fiv
 fyA
 pAV
 pAV
-qbG
+vmo
 qbG
 qbG
 qbG
@@ -328377,11 +328387,11 @@ qbG
 qbG
 qbG
 erZ
+daZ
 erZ
 erZ
 erZ
-erZ
-erZ
+daZ
 erZ
 erZ
 erZ
@@ -331826,7 +331836,7 @@ ozx
 cyr
 pAV
 pAV
-qbG
+vmo
 qbG
 qbG
 qbG
