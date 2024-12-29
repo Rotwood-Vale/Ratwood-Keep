@@ -118,7 +118,7 @@
 	organ_dna_type = /datum/organ_dna/breasts
 	accessory_type = /datum/sprite_accessory/breasts/pair
 	var/breast_size = DEFAULT_BREASTS_SIZE
-	var/lactating = FALSE
+	var/lactating = TRUE
 	var/milk_stored = 0
 	var/milk_max = 30
 

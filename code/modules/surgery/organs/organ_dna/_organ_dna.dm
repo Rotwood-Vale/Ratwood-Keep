@@ -54,7 +54,7 @@
 
 /datum/organ_dna/breasts
 	var/breast_size = DEFAULT_BREASTS_SIZE
-	var/lactating = FALSE
+	var/lactating = TRUE
 /datum/organ_dna/breasts/imprint_organ(obj/item/organ/organ)
 	..()
 	var/obj/item/organ/breasts/breasts_organ = organ
