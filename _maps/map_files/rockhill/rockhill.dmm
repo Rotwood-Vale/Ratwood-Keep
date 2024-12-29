@@ -15903,12 +15903,12 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "jGE" = (
-/obj/structure/chair/wood/rogue{
-	dir = 4
-	},
 /obj/structure/fluff/railing/wood{
 	dir = 1;
 	pixel_y = 8
+	},
+/obj/structure/chair/bench/church{
+	dir = 4
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/academy)
@@ -28194,6 +28194,12 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
+"ruQ" = (
+/obj/structure/chair/bench/church{
+	dir = 4
+	},
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/academy)
 "rvc" = (
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
@@ -29975,7 +29981,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/shelter/town/harbor)
 "swK" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/bench/church/r{
 	dir = 4
 	},
 /turf/open/floor/carpet/red,
@@ -244667,7 +244673,7 @@ gMO
 lrs
 lrs
 lrs
-vRu
+lrs
 txa
 txa
 txa
@@ -245099,7 +245105,7 @@ lrs
 lrs
 lrs
 lrs
-vRu
+lrs
 txa
 qpb
 myB
@@ -245531,7 +245537,7 @@ lrs
 lrs
 lrs
 lrs
-vRu
+lrs
 txa
 sdo
 lzb
@@ -245963,7 +245969,7 @@ lrs
 lrs
 lrs
 lrs
-vRu
+lrs
 txa
 rMY
 oqC
@@ -246395,7 +246401,7 @@ lrs
 lrs
 lrs
 lrs
-vRu
+lrs
 txa
 txa
 mbf
@@ -246827,7 +246833,7 @@ lrs
 lrs
 lrs
 lrs
-vRu
+lrs
 txa
 nKz
 lzb
@@ -247259,7 +247265,7 @@ lrs
 lrs
 lrs
 lrs
-vRu
+lrs
 txa
 sTt
 lzb
@@ -247691,7 +247697,7 @@ lrs
 lrs
 lrs
 lrs
-vRu
+lrs
 txa
 ecj
 cgg
@@ -337102,10 +337108,10 @@ wbg
 wbg
 oSn
 oSn
-swK
+ruQ
 swK
 erE
-swK
+ruQ
 swK
 fRs
 iWF
@@ -337537,7 +337543,7 @@ aes
 jGE
 swK
 erE
-swK
+ruQ
 swK
 fRs
 iWF
