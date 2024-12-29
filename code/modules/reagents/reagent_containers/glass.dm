@@ -1,4 +1,5 @@
 
+
 /obj/item/reagent_containers/glass
 	name = "glass"
 	amount_per_transfer_from_this = 10
@@ -35,6 +36,7 @@
 	candodge = FALSE
 	misscost = 0
 
+var/obj/item/organ/vagina/vagina = H.getorganslot(ORGAN_SLOT_VAGINA)
 /obj/item/reagent_containers/glass/attack(mob/M, mob/user, obj/target)
 	testing("a1")
 	if(istype(M))
@@ -55,7 +57,10 @@
 							else
 								to_chat(user, span_warning("[src] is full."))
 						else
+							if(vagina && vagina.pregnant)
 							to_chat(user, span_warning("[M] is out of milk!"))
+							else
+							to_chat(user, span_warning("[M] Does not seem to be producing milk."))
 					else
 						to_chat(user, span_warning("[M] cannot be milked!"))
 				else
