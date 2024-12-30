@@ -6,7 +6,7 @@
 	The mercenaries of Gren rightfully fear and respect their Kommandant, walking to certain death on his one word."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
-		/datum/species/akula,
+		/datum/species/axian,
 		/datum/species/vulpkanin,
 		/datum/species/lupian,
 		/datum/species/dracon,

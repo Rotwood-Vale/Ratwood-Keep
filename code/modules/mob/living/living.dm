@@ -39,8 +39,8 @@
 
 /mob/living/onZImpact(turf/T, levels)
 	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
-		if(levels <= 2 || isseelie(src))	
-			return 
+		if(levels <= 2 || isseelie(src))
+			return
 	var/points
 	for(var/i in 2 to levels)
 		i++
@@ -1166,7 +1166,7 @@
 	if(check_arm_grabbed(active_hand_index))
 		to_chat(src, span_warning("Someone is grabbing my arm!"))
 		return
-	
+
 	if(istype(src, /mob/living/carbon/spirit))
 		to_chat(src, span_warning("Your hands pass right through \the [what]!"))
 		return
@@ -1849,7 +1849,7 @@
 	if(!istype(T))
 		return
 	changeNext_move(CLICK_CD_MELEE)
-	
+
 	var/_x = T.x-loc.x
 	var/_y = T.y-loc.y
 	var/dist = get_dist(src, T)
@@ -1909,7 +1909,7 @@
 		return
 
 	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
-	
+
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0
