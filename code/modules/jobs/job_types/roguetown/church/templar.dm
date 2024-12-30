@@ -75,9 +75,11 @@
 		if(/datum/patron/divine/malum)
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 			cloak = /obj/item/clothing/cloak/tabard/crusader/malum
+	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	pants = /obj/item/clothing/under/roguetown/tights/black
-	wrists = /obj/item/clothing/wrists/roguetown/wrappings
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/sandals
+	r_hand = /obj/item/rogueweapon/katar
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
