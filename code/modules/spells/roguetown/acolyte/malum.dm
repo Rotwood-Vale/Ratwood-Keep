@@ -97,7 +97,9 @@
 	var/target
 	for(var/i in targets)
 		target = i
-	if (!target || target in nosmeltore)
+	if (!target)
+		return
+	if(target in nosmeltore)
 		return
 	if (istype(target, /obj/item))
 		handle_item_smelting(target, user, sparks, nosmeltore)
