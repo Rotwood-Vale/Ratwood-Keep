@@ -11,7 +11,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
@@ -86,7 +86,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
@@ -109,7 +109,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
@@ -132,7 +132,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
@@ -149,7 +149,7 @@
 	/datum/species/lupian,\
 	/datum/species/tabaxi,\
 	/datum/species/vulpkanin,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
