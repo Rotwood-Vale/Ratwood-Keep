@@ -6648,7 +6648,6 @@
 /obj/machinery/light/rogue/wallfire{
 	pixel_x = 32
 	},
-/obj/effect/landmark/start/mayor,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
 "eds" = (
@@ -10558,6 +10557,7 @@
 /area/rogue/under/cavewet/bogcaves)
 "gxy" = (
 /obj/structure/chair/bench/couchablack,
+/obj/structure/rogue/trophy/deer,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
 "gxC" = (
@@ -13126,6 +13126,9 @@
 /obj/item/rogue/instrument/lute,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
+"hZu" = (
+/turf/open/floor/rogue/tile/checkeralt,
+/area/rogue/outdoors/town/roofs)
 "hZv" = (
 /obj/structure/bed/rogue,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -14227,6 +14230,7 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
+/obj/item/rogueweapon/huntingknife/idagger/steel,
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town)
 "iHi" = (
@@ -22252,6 +22256,7 @@
 /area/rogue/outdoors/town)
 "nKG" = (
 /obj/structure/chair/wood/rogue/fancy,
+/obj/effect/landmark/start/mayor,
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town)
 "nKP" = (
@@ -36301,6 +36306,9 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
 	},
+/obj/structure/fluff/walldeco/stone{
+	pixel_y = 32
+	},
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town)
 "wqF" = (
@@ -38198,6 +38206,10 @@
 	icon_state = "longtable_mid"
 	},
 /obj/item/reagent_containers/glass/cup/silver,
+/obj/item/reagent_containers/glass/cup/silver{
+	pixel_x = 11;
+	pixel_y = 3
+	},
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town)
 "xBu" = (
@@ -432225,7 +432237,7 @@ fZJ
 fZJ
 fZJ
 uJh
-iJk
+hZu
 iJk
 iJk
 uJh
