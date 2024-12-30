@@ -5619,6 +5619,14 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
+"dvn" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -4
+	},
+/obj/item/natural/poo/cow,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town)
 "dvv" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -33147,6 +33155,9 @@
 /obj/item/book/rogue/arcyne,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/academy)
+"uvh" = (
+/turf/open/floor/rogue/metal,
+/area/rogue/indoors/town)
 "uvk" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -36128,6 +36139,10 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
+"wlB" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town)
 "wlD" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -322478,10 +322493,10 @@ uln
 uln
 qxh
 rNm
-rNm
+bhc
 uln
-uln
-xAt
+dvn
+cxv
 xAt
 xAt
 pAV
@@ -322910,10 +322925,10 @@ uln
 qPK
 jlO
 rNm
-bhc
 wQS
 uln
-xAt
+wlB
+cxv
 xAt
 pAV
 pAV
@@ -323342,10 +323357,10 @@ uln
 jlO
 jlO
 rNm
-jlO
 bhc
 uln
-xAt
+uvh
+cxv
 xAt
 pAV
 wlD
@@ -323776,8 +323791,8 @@ uln
 fzS
 uln
 uln
-uln
-xAt
+qFt
+cxv
 xAt
 pAV
 wlD
