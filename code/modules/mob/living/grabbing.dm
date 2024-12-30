@@ -437,6 +437,7 @@
 		return
 	if(world.time <= user.next_move)
 		return
+
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/mob/living/carbon/C = grabbed
 	var/armor_block = C.run_armor_check(sublimb_grabbed, d_type)

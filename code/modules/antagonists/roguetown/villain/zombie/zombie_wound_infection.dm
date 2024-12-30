@@ -1,8 +1,8 @@
+#define ZOMBIE_INFECTION_PROBABILITY 90 	/// Zombie infection probability for bites on a wound
+#define ZOMBIE_INFECTION_TIME 1 MINUTES	/// Time taken until zombie infection comes in
+
 /datum/wound
-	/// Zombie infection probability for bites on this wound
-	var/zombie_infection_probability = 90
-	/// Time taken until zombie infection comes in
-	var/zombie_infection_time = 1 MINUTES
+
 	/// Actual infection timer
 	var/zombie_infection_timer
 
@@ -12,12 +12,14 @@
 /datum/wound/proc/zombie_infect_attempt()
 	if (QDELETED(src) || QDELETED(owner) || QDELETED(bodypart_owner))
 		return
-	if (zombie_infection_timer || werewolf_infection_timer || !ishuman(owner) || !prob(zombie_infection_probability))
+	if (zombie_infection_timer || werewolf_infection_timer || !ishuman(owner)) //Other timers present
+		return
+	if(!prob(ZOMBIE_INFECTION_PROBABILITY))	//Failed the probability of infection
 		return
 
 	var/mob/living/carbon/human/wound_owner = owner
 
-	wound_owner.attempt_zombie_infection(source = usr, infection_type = "wound", wake_delay = zombie_infection_time) //Infect the unit
+	wound_owner.attempt_zombie_infection(source = usr, infection_type = "wound", wake_delay = ZOMBIE_INFECTION_TIME) //Infect the unit
 
 	severity = WOUND_SEVERITY_BIOHAZARD //Show the wound
 	if (bodypart_owner)
@@ -37,3 +39,7 @@
 	if (istype(owner, /mob/living/carbon/human))
 		var/mob/living/carbon/human/wound_owner = owner
 		wound_owner.attempt_zombie_infection(src, "wound")
+
+
+#undef ZOMBIE_INFECTION_PROBABILITY
+#undef ZOMBIE_INFECTION_TIME

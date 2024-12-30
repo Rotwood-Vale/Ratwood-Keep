@@ -1,3 +1,4 @@
+#define DEAD_TO_ZOMBIE_TIME 1 MINUTES
 
 /datum/component/rot
 	var/amount = 0
@@ -59,7 +60,7 @@
 		qdel(src)
 		return
 	
-	if(amount > 1 MINUTES)
+	if(amount > DEAD_TO_ZOMBIE_TIME)
 		if(is_zombie)
 			var/datum/antagonist/zombie/Z = C.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(Z && !Z.has_turned && !Z.revived && C.stat == DEAD)
@@ -140,3 +141,5 @@
 	mid_length = 60
 	volume = 50
 	extra_range = 0
+
+#undef DEAD_TO_ZOMBIE_TIME

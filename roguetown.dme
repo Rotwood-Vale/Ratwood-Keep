@@ -1005,6 +1005,7 @@
 #include "code\modules\antagonists\roguetown\villain\werewolf\werewolf_spells.dm"
 #include "code\modules\antagonists\roguetown\villain\werewolf\werewolf_transformation.dm"
 #include "code\modules\antagonists\roguetown\villain\werewolf\werewolf_wound_infection.dm"
+#include "code\modules\antagonists\roguetown\villain\zombie\remove_rot.dm"
 #include "code\modules\antagonists\roguetown\villain\zombie\zombie.dm"
 #include "code\modules\antagonists\roguetown\villain\zombie\zombie_verbs.dm"
 #include "code\modules\antagonists\roguetown\villain\zombie\zombie_wound_infection.dm"
