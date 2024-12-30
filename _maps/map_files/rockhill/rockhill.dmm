@@ -19136,6 +19136,12 @@
 	dir = 8
 	},
 /area/rogue/outdoors/town)
+"lLf" = (
+/obj/structure/fluff/railing/wood{
+	pixel_y = -2
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "lLk" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -34487,6 +34493,10 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
+"vka" = (
+/obj/structure/fluff/canopy/side,
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/town)
 "vkt" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/fluff/railing/wood{
@@ -313849,10 +313859,10 @@ vIa
 vIa
 uln
 uln
-uAl
-uAl
-dQv
 uPZ
+dQv
+uAl
+uAl
 uln
 xAt
 xAt
@@ -314283,8 +314293,8 @@ xAt
 dZd
 hBp
 yht
-yht
-yht
+vka
+vka
 cty
 xAt
 xAt
@@ -314717,7 +314727,7 @@ avz
 gvD
 yht
 wbg
-iHi
+lLf
 xAt
 xAt
 sco
@@ -337605,7 +337615,7 @@ wVI
 wbg
 wMH
 wOg
-rfx
+uln
 uln
 tVN
 tVN
@@ -339766,7 +339776,7 @@ dpw
 vAB
 rsn
 uln
-uln
+ehT
 uln
 uln
 uln
