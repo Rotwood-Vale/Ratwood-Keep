@@ -5273,6 +5273,18 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/tavern)
+"dlL" = (
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
+/obj/structure/table/vtable/v2,
+/obj/item/reagent_containers/glass/alembic,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "dlR" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors)
@@ -8489,6 +8501,13 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town/harbor)
+"fhY" = (
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "fii" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
 /obj/structure/fluff/walldeco/church/line{
@@ -14445,6 +14464,12 @@
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"iNJ" = (
+/obj/structure/bed/rogue,
+/obj/effect/landmark/start/physician,
+/obj/item/bedsheet/rogue/fabric,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "iNO" = (
 /obj/effect/landmark/start/cook,
 /obj/structure/roguemachine/stockpile,
@@ -19462,6 +19487,11 @@
 	icon_state = "weird1"
 	},
 /area/rogue/outdoors/town)
+"lWI" = (
+/obj/machinery/tanningrack,
+/obj/item/storage/roguebag,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "lWN" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/rogue/concrete,
@@ -36129,6 +36159,11 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
+"wkw" = (
+/obj/structure/table/vtable,
+/obj/item/reagent_containers/glass/mortar,
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/manor)
 "wkI" = (
 /obj/structure/roguemachine/drugmachine,
 /obj/structure/table/wood{
@@ -554008,12 +554043,12 @@ wtF
 wtF
 wtF
 wtF
-uoM
-wtF
-wtF
 wtF
 uoM
 wtF
+wtF
+wtF
+uoM
 wtF
 wtF
 sBu
@@ -554438,6 +554473,7 @@ kUR
 tvm
 aFk
 aFk
+fhY
 wtF
 eqs
 aOn
@@ -554446,7 +554482,6 @@ aOn
 aOn
 aOn
 eqs
-wtF
 wtF
 dxv
 tfJ
@@ -554870,6 +554905,7 @@ kUR
 wtF
 ieM
 aFk
+iNJ
 wtF
 dxv
 dxv
@@ -554878,7 +554914,6 @@ dxv
 dxv
 dxv
 dxv
-wtF
 wtF
 dxv
 xzQ
@@ -555303,14 +555338,14 @@ wtF
 wtF
 wtF
 wtF
-dxv
-aOn
-aOn
-aOn
-aOn
-aOn
-dxv
 wtF
+dxv
+aOn
+aOn
+aOn
+aOn
+aOn
+dxv
 wtF
 dxv
 wtF
@@ -555734,6 +555769,7 @@ tri
 kUR
 xHp
 sBQ
+lWI
 wtF
 dxv
 dxv
@@ -555742,7 +555778,6 @@ dxv
 dxv
 dxv
 dxv
-wtF
 wtF
 dxv
 xzQ
@@ -556166,6 +556201,7 @@ kUR
 kUR
 kUR
 kUR
+kUR
 cco
 dxv
 aOn
@@ -556174,7 +556210,6 @@ aOn
 aOn
 aOn
 dxv
-wtF
 wtF
 apn
 tfJ
@@ -556598,6 +556633,7 @@ jpS
 kUR
 aFk
 aFk
+wkw
 wtF
 dxv
 dxv
@@ -556606,7 +556642,6 @@ dxv
 dxv
 dxv
 dxv
-wtF
 wtF
 wtF
 wtF
@@ -557030,6 +557065,7 @@ aFk
 ead
 wjP
 aFk
+dlL
 wtF
 bcr
 dxv
@@ -557038,7 +557074,6 @@ aOn
 aOn
 dxv
 apn
-wtF
 wtF
 tWQ
 tWQ
@@ -557464,12 +557499,12 @@ wtF
 uoM
 wtF
 wtF
-uoM
-wtF
-wtF
 wtF
 uoM
 wtF
+wtF
+wtF
+uoM
 wtF
 wtF
 hGU
