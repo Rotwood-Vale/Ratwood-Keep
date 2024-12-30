@@ -14978,10 +14978,6 @@
 /obj/structure/table/vtable/v2,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
-"jdJ" = (
-/obj/machinery/light/rogue/campfire,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
 "jdK" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -15985,6 +15981,10 @@
 	icon_state = "wooden_floor2"
 	},
 /area/rogue/indoors/shelter/town/harbor)
+"jIq" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "jIy" = (
 /obj/structure/fluff/statue/tdummy,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -29264,10 +29264,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town)
-"sbE" = (
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
 "sbK" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -33111,6 +33107,10 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
+"uuj" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors/town)
 "uul" = (
 /obj/structure/fluff/walldeco/psybanner,
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue,
@@ -35599,6 +35599,10 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
+"vVy" = (
+/obj/machinery/light/rogue/campfire,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors/town)
 "vVE" = (
 /obj/structure/stairs{
 	dir = 4
@@ -342319,9 +342323,9 @@ iXq
 iXq
 xAt
 xAt
-wbg
-sbE
-wbg
+fnA
+uuj
+fnA
 esR
 fUg
 vdN
@@ -342752,7 +342756,7 @@ iXq
 xAt
 xAt
 xAt
-jdJ
+vVy
 wbg
 qUA
 fUg
@@ -343184,7 +343188,7 @@ hFo
 xAt
 xAt
 rfx
-sbE
+jIq
 wbg
 esR
 fnA
