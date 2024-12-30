@@ -86,8 +86,16 @@
 	minimum_distance = 5
 	ranged_cooldown_time = 60
 	check_friendly_fire = 1
-	loot = list(/obj/item/natural/bone,	/obj/item/natural/bone, /obj/item/natural/bone, /obj/item/skull, /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-			 /obj/item/ammo_casing/caseless/rogue/arrow,  /obj/item/ammo_casing/caseless/rogue/arrow,  /obj/item/ammo_casing/caseless/rogue/arrow)
+	loot = list(
+			/obj/item/natural/bone,
+			/obj/item/natural/bone,
+			/obj/item/natural/bone,
+			/obj/item/skull,
+			/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
+			/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+			/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+			/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+			)
 
 /mob/living/simple_animal/hostile/rogue/skeleton/get_sound(input)
 	switch(input)
@@ -162,16 +170,3 @@
 	icon_state = "skull"
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/projectile/bullet/reusable/arrow/ancient
-	damage = 10
-	damage_type = BRUTE
-	armor_penetration = 25
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "arrow_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
-	range = 15
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
-	embedchance = 100
-	woundclass = BCLASS_STAB
-	flag = "bullet"
-	speed = 2
