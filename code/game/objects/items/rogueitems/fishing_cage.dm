@@ -1,7 +1,7 @@
 /obj/item/fishingcage
 	name = "fishing cage"
 	desc = "A cage used with bait to catch shellfish without much work outside of deploying it."
-	icon_state = "beartrap" //still need a hand sprite, got the deployed versions though
+	icon_state = "fishingcage"
 	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	throwforce = 0
