@@ -101,7 +101,6 @@
 	/datum/wound/proc/zombie_infect_attempt() -> 
 	human_owner.attempt_zombie_infection(src, "wound", zombie_infection_time)
 
-	
 	Infection transformation process goes -> infection -> timered transform in zombie_infect_attempt() -> /datum/antagonist/zombie/proc/wake_zombie -> zombietransform
 */
 /datum/antagonist/zombie/on_gain()
@@ -260,7 +259,7 @@
 //Add claws here if wanted.
 
 	zombie.update_body()
-	to_chat(zombie, span_userdanger("I CRAVE FLESH!"))
+	to_chat(zombie, span_userdanger("Hungry... so hungry... I CRAVE FLESH!"))
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
 
 
@@ -294,13 +293,17 @@
 		next_idle_sound = world.time + rand(5 SECONDS, 10 SECONDS)
 
 /*
-	Check for infection
+	Check for zombie infection post bite
 		Bite chance is checked here
 		Wound chance is checked in zombie_wound_infection.dm
 */
 /mob/living/carbon/human/proc/attempt_zombie_infection(mob/living/carbon/human/source, infection_type, wake_delay = 0)
-	var/mob/living/carbon/human/victim = usr
+	var/mob/living/carbon/human/victim = src
 	if (QDELETED(src) || stat >= DEAD)
+		return FALSE
+
+	var/datum/antagonist/zombie/victim_zombie = victim.mind?.has_antag_datum(/datum/antagonist/zombie)
+	if (victim_zombie) //Check that the victim isn't already a zombie or on the way to becoming one
 		return FALSE
 
 	var/datum/antagonist/zombie/zombie_antag = source.mind?.has_antag_datum(/datum/antagonist/zombie)
@@ -320,10 +323,15 @@
 			flash_fullscreen("redflash3")
 			to_chat(victim, span_danger("Ow! It hurts. I feel horrible... REALLY horrible..."))
 
+	victim.zombie_check() //They are given zombie antag mind here
+
 //Delay on waking up as a zombie. /proc/wake_zombie(mob/living/carbon/zombie, infected_wake = FALSE, converted = FALSE)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(wake_zombie), victim, FALSE, TRUE), wake_delay)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(wake_zombie), victim, FALSE, TRUE), wake_delay, TIMER_STOPPABLE)
 	return zombie_antag
 
+/*
+
+*/
 /mob/living/carbon/human/proc/zombie_infect_attempt()
 	attempt_zombie_infection(src, "bite", ZOMBIE_BITE_CONVERSION_TIME)
 
@@ -342,7 +350,7 @@
 		qdel(zombie)
 		return
 
-	if (zombie.stat != DEAD && !infected_wake) // Died too hard
+	if (zombie.stat != DEAD && infected_wake) // Died too hard
 		qdel(zombie)
 		return
 
@@ -359,6 +367,7 @@
 		zombie.adjustBruteLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
 		zombie.adjustFireLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
 		zombie.heal_wounds(INFINITY) // Heal all non-permanent wounds
+		to_chat(zombie, span_narsiesmall("Your flesh twists and knits itself back together as undeath takes you."))
 
 	zombie.stat = UNCONSCIOUS // Start unconscious
 	zombie.updatehealth() // Then check if the mob should wake up
@@ -369,13 +378,28 @@
 	var/datum/antagonist/zombie/zombie_antag = zombie.mind?.has_antag_datum(/datum/antagonist/zombie)
 	zombie_antag.transform_zombie()
 
-	if (zombie.stat >= DEAD) // Could not revive
+	if (zombie.stat >= DEAD) // We couldn't bring them back to life. Even as a zombie.
 		qdel(zombie)
 		return
 
 
 	if (converted || infected_wake)
 		zombie.flash_fullscreen("redflash3")
-		to_chat(zombie, span_danger("Hungry... so hungry... I crave FLESH!"))
 		zombie.emote("scream") // Warning for nearby players
 		zombie.Knockdown(1)
+
+///Making sure they're not any other antag as well as adding the zombie datum to their mind
+/mob/living/carbon/human/proc/zombie_check()
+	if(!mind)
+		return
+	if(mind.has_antag_datum(/datum/antagonist/vampirelord))
+		return
+	if(mind.has_antag_datum(/datum/antagonist/werewolf))
+		return
+	if(mind.has_antag_datum(/datum/antagonist/zombie))
+		return
+	if(mind.has_antag_datum(/datum/antagonist/skeleton))
+		return
+	if(HAS_TRAIT(src, TRAIT_ZOMBIE_IMMUNE))
+		return
+	return mind.add_antag_datum(/datum/antagonist/zombie)

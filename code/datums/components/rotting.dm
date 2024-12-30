@@ -39,7 +39,9 @@
 	if(!iscarbon(parent))
 		return COMPONENT_INCOMPATIBLE
 	. = ..()
-
+/*
+	ZOMBIFICATION
+*/
 /datum/component/rot/corpse/process()
 	..()
 	var/mob/living/carbon/C = parent
@@ -84,14 +86,14 @@
 						shouldupdate = TRUE
 				else
 					findonerotten = TRUE
-	/*	if(amount > 35 MINUTES)  // Code to delete a corpse after 35 minutes if it's not a zombie and not skeletonized. Possible failsafe.
+		if(amount > 35 MINUTES)  // Code to delete a corpse after 35 minutes if it's not a zombie and not skeletonized. Possible failsafe.
 			if(!is_zombie)
 				if(B.skeletonized)
 					dustme = TRUE
 
 	if(dustme)
 		qdel(src)
-		return C.dust(drop_items=TRUE)*/
+		return C.dust(drop_items=TRUE)
 
 	if(findonerotten)
 		var/turf/open/T = C.loc

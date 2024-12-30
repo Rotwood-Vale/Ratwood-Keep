@@ -6,6 +6,9 @@
 	/// Actual infection timer
 	var/zombie_infection_timer
 
+/*
+	ZOMBIFICATION
+*/
 /datum/wound/proc/zombie_infect_attempt()
 	if (QDELETED(src) || QDELETED(owner) || QDELETED(bodypart_owner))
 		return
@@ -13,7 +16,8 @@
 		return
 
 	var/mob/living/carbon/human/wound_owner = owner
-	wound_owner.attempt_zombie_infection(usr, "wound", zombie_infection_time) //Infect the unit
+
+	wound_owner.attempt_zombie_infection(source = usr, infection_type = "wound", wake_delay = zombie_infection_time) //Infect the unit
 
 	severity = WOUND_SEVERITY_BIOHAZARD //Show the wound
 	if (bodypart_owner)

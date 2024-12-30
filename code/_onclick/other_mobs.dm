@@ -206,22 +206,28 @@
 	if(!nodmg)
 		playsound(src, "smallslash", 100, TRUE, -1)
 		if(ishuman(src) && user.mind)
+			var/mob/living/carbon/human/bite_victim = src
 			/*
 				WEREWOLF INFECTION VIA BITE
 			*/
 			if(istype(user.dna.species, /datum/species/werewolf))
 				if(HAS_TRAIT(src, TRAIT_SILVER_BLESSED))
-					to_chat(user, span_warning("BLEH! [src] tastes of SILVER! My gift cannot take hold."))
+					to_chat(user, span_warning("BLEH! [bite_victim] tastes of SILVER! My gift cannot take hold."))
 				else
 					caused_wound?.werewolf_infect_attempt()
 					if(prob(30))
-						user.werewolf_feed(src, 10)
+						user.werewolf_feed(bite_victim, 10)
 			
 			/*
 				ZOMBIE INFECTION VIA BITE
 			*/
-			if(user.mind.has_antag_datum(/datum/antagonist/zombie) && !src.mind.has_antag_datum(/datum/antagonist/zombie))
-				INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, attempt_zombie_infection), src, "wound")
+			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
+			if(zombie_antag && zombie_antag.has_turned)
+				zombie_antag.last_bite = world.time
+				var/datum/antagonist/zombie/existing_zombie = user.mind?.has_antag_datum(/datum/antagonist/zombie) //If the bite target is a zombie
+				if(!existing_zombie && bite_victim.zombie_infect_attempt())   // infect_attempt on bite
+					to_chat(user, span_danger("You feel your gift trickling from your mouth into [bite_victim]'s wound..."))
+				//INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, attempt_zombie_infection), src, "wound")
 
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)

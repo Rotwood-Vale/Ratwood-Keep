@@ -449,7 +449,7 @@
 		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
 		if(user.mind)
 			/*
-				WEREWOLF CHEW
+				WEREWOLF CHEW.
 			*/
 			if(istype(user.dna.species, /datum/species/werewolf))
 				caused_wound?.werewolf_infect_attempt()
@@ -457,14 +457,14 @@
 					user.werewolf_feed(C)
 
 			/*
-				ZOMBIE CHEW
+				ZOMBIE CHEW. ZOMBIFICATION
 			*/
 			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
-			if(zombie_antag)
+			if(zombie_antag && zombie_antag.has_turned)
 				zombie_antag.last_bite = world.time
-				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie) //If the bite target is a zombie
-				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)   // infect_attempt on wound
-					to_chat(user, span_danger("You feel your gift trickling into their wound...")) //message to the zombie they infected the target
+				var/datum/antagonist/zombie/existing_zombie = C.mind?.has_antag_datum(/datum/antagonist/zombie) //If the bite target is a zombie
+				if(!existing_zombie && caused_wound?.zombie_infect_attempt())   // infect_attempt on wound
+					to_chat(user, span_danger("You feel your gift trickling into [C]'s wound...")) //message to the zombie they infected the target
 /*
 	Code below is for a zombie smashing the brains of unit. The code expects the brain to be part of the head which is not the case with AP. Kept for posterity in case it's used in an overhaul.
 */
