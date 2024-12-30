@@ -9,8 +9,6 @@
   */
 /client/verb/drop_item()
 	set hidden = 1
-	if(!iscyborg(mob) && mob.stat == CONSCIOUS)
-		mob.dropItemToGround(mob.get_active_held_item(), silent = FALSE)
 	return
 
 /**
@@ -115,9 +113,6 @@
 
 	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
 		return mob.remote_control.relaymove(mob, direct)
-
-	if(isAI(mob))
-		return AIMove(n,direct,mob)
 
 	if(Process_Grab()) //are we restrained by someone's grip?
 		return
@@ -301,17 +296,13 @@
 			var/turf/open/floor/stepTurf = get_step(L, direct)
 			if(stepTurf)
 				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
-					to_chat(L, span_warning("[S] bars your passage!"))
-					if(isrevenant(L))
-						var/mob/living/simple_animal/revenant/R = L
-						R.reveal(20)
-						R.stun(20)
+					to_chat(L, "<span class='warning'>[S] bars your passage!</span>")
 					return
 				if(stepTurf.flags_1 & NOJAUNT_1)
-					to_chat(L, span_warning("Some strange aura is blocking the way."))
+					to_chat(L, "<span class='warning'>Some strange aura is blocking the way.</span>")
 					return
 				if (locate(/obj/effect/blessing, stepTurf))
-					to_chat(L, span_warning("Holy energies block your path!"))
+					to_chat(L, "<span class='warning'>Holy energies block your path!</span>")
 					return
 
 				L.forceMove(stepTurf)
@@ -348,8 +339,6 @@
 			continue
 		else if(isturf(A))
 			var/turf/turf = A
-			if(isspaceturf(turf))
-				continue
 			if(!turf.density && !mob_negates_gravity())
 				continue
 			return A
@@ -598,9 +587,11 @@
 		rogue_sneaking = TRUE
 		return
 	var/turf/T = get_turf(src)
-	var/light_amount = 0
-	if(T)
-		light_amount = T.get_lumcount()
+
+	if(!T) //if the turf they're headed to is invalid
+		return
+
+	var/light_amount = T.get_lumcount()
 	var/used_time = 50
 	if(mind)
 		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
@@ -620,31 +611,40 @@
 			rogue_sneaking = TRUE
 	return
 
+///Checked whenever a mob tries to change their movement intent
 /mob/proc/toggle_rogmove_intent(intent, silent = FALSE)
 	// If we're becoming sprinting from non-sprinting, reset the counter
 	if(!(m_intent == MOVE_INTENT_RUN && intent == MOVE_INTENT_RUN))
 		sprinted_tiles = 0
+
 	switch(intent)
 		if(MOVE_INTENT_SNEAK)
 			m_intent = MOVE_INTENT_SNEAK
 			update_sneak_invis()
+
 		if(MOVE_INTENT_WALK)
 			m_intent = MOVE_INTENT_WALK
+
 		if(MOVE_INTENT_RUN)
 			if(isliving(src))
 				var/mob/living/L = src
-				if(L.rogfat >= L.maxrogfat)
+
+				//If mob is trying to switch to run, fail if any of these are true
+				if (L.rogfat >= L.maxrogfat || L.rogstam <= 0 || HAS_TRAIT(L, TRAIT_NORUN))
+					if (HAS_TRAIT(L, TRAIT_NORUN)) // If has trait blocker then inform them
+						to_chat(L, span_warning("My joints have decayed too much for running!"))
 					return
-				if(L.rogstam <= 0)
-					return
+
 				if(ishuman(L))
 					var/mob/living/carbon/human/H = L
 					if(!H.check_armor_skill() || H.legcuffed)
 						return
+
 			m_intent = MOVE_INTENT_RUN
-	if(hud_used && hud_used.static_inventory)
+	if(hud_used?.static_inventory) //Update UI
 		for(var/atom/movable/screen/rogmove/selector in hud_used.static_inventory)
 			selector.update_icon()
+			
 	if(!silent)
 		playsound_local(src, 'sound/misc/click.ogg', 100)
 
