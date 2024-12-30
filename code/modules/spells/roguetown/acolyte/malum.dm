@@ -95,8 +95,7 @@
 	var/list/nosmeltore = list(/obj/item/rogueore/coal)
 	var/datum/effect_system/spark_spread/sparks = new()
 	var/target
-	for(var/i in targets)
-		target = i
+	target = get_turf(targets[1])
 	if (!target)
 		return
 	if(target in nosmeltore)
@@ -106,12 +105,12 @@
 	else if (iscarbon(target))
 		handle_living_entity(target, user, nosmeltore)
 
-proc/show_visible_message(mob/user, text, selftext)
+/proc/show_visible_message(mob/user, text, selftext)
 	var/text_to_send = addtext("<font color='yellow'>", text, "</font>")
 	var/selftext_to_send = addtext("<font color='yellow'>", selftext, "</font>")
 	user.visible_message(text_to_send, selftext_to_send)
 
-proc/handle_item_smelting(obj/item/target, mob/user, datum/effect_system/spark_spread/sparks, list/nosmeltore)
+/proc/handle_item_smelting(obj/item/target, mob/user, datum/effect_system/spark_spread/sparks, list/nosmeltore)
 	if (!target.smeltresult) return
 	var/obj/item/itemtospawn = target.smeltresult
 	show_visible_message(user, "After [user]'s incantation, [target] glows brightly and melts into an ingot.", null)
@@ -120,7 +119,7 @@ proc/handle_item_smelting(obj/item/target, mob/user, datum/effect_system/spark_s
 	sparks.start()
 	qdel(target)
 
-proc/handle_living_entity(mob/target, mob/user, list/nosmeltore)
+/proc/handle_living_entity(mob/target, mob/user, list/nosmeltore)
 	var/obj/item/targeteditem = get_targeted_item(user, target)
 	if (!targeteditem || targeteditem.smeltresult == /obj/item/ash || target.anti_magic_check(TRUE,TRUE)) 
 		show_visible_message(user, "After their incantation, [user] points at [target] but it seems to have no effect.", "After your incantation, you point at [target] but it seems to have no effect.")
@@ -133,34 +132,48 @@ proc/handle_living_entity(mob/target, mob/user, list/nosmeltore)
 		handle_heating_equipped(target, targeteditem, user)
 
 /proc/get_targeted_item(mob/user, mob/target)
-	var/target_item
-	switch(user.zone_selected)
-		if (BODY_ZONE_PRECISE_R_HAND)
-			target_item = target.held_items[2]
-		if (BODY_ZONE_PRECISE_L_HAND)
-			target_item = target.held_items[1]
-		if (BODY_ZONE_HEAD || BODY_ZONE_PRECISE_EARS)
-			target_item = target.get_item_by_slot(SLOT_HEAD)
-		if (BODY_ZONE_CHEST)
-			if(target.get_item_by_slot(SLOT_ARMOR))
-				target_item = target.get_item_by_slot(SLOT_ARMOR)
-			else if (target.get_item_by_slot(SLOT_SHIRT))
-				target_item = target.get_item_by_slot(SLOT_SHIRT)	
-		if (BODY_ZONE_PRECISE_NECK)
-			target_item = target.get_item_by_slot(SLOT_NECK)
-		if (BODY_ZONE_PRECISE_R_EYE || BODY_ZONE_PRECISE_L_EYE || BODY_ZONE_PRECISE_NOSE)
-			target_item = target.get_item_by_slot(ITEM_SLOT_MASK)
-		if (BODY_ZONE_PRECISE_MOUTH)
-			target_item = target.get_item_by_slot(ITEM_SLOT_MOUTH)
-		if (BODY_ZONE_L_ARM || BODY_ZONE_R_ARM)
-			target_item = target.get_item_by_slot(ITEM_SLOT_WRISTS)
-		if (BODY_ZONE_L_LEG || BODY_ZONE_R_LEG || BODY_ZONE_PRECISE_GROIN)
-			target_item = target.get_item_by_slot(ITEM_SLOT_PANTS)
-		if (BODY_ZONE_PRECISE_R_FOOT || BODY_ZONE_PRECISE_L_FOOT)
-			target_item = target.get_item_by_slot(ITEM_SLOT_SHOES)
-	return target_item
+    var/target_item
+    switch(user.zone_selected)
+        if (BODY_ZONE_PRECISE_R_HAND)
+            target_item = target.held_items[2]
+        if (BODY_ZONE_PRECISE_L_HAND)
+            target_item = target.held_items[1]
+        if (BODY_ZONE_HEAD)
+            target_item = target.get_item_by_slot(SLOT_HEAD)
+        if (BODY_ZONE_PRECISE_EARS)
+            target_item = target.get_item_by_slot(SLOT_HEAD)
+        if (BODY_ZONE_CHEST)
+            if(target.get_item_by_slot(SLOT_ARMOR))
+                target_item = target.get_item_by_slot(SLOT_ARMOR)
+            else if (target.get_item_by_slot(SLOT_SHIRT))
+                target_item = target.get_item_by_slot(SLOT_SHIRT)    
+        if (BODY_ZONE_PRECISE_NECK)
+            target_item = target.get_item_by_slot(SLOT_NECK)
+        if (BODY_ZONE_PRECISE_R_EYE)
+            target_item = target.get_item_by_slot(ITEM_SLOT_MASK)
+        if ( BODY_ZONE_PRECISE_L_EYE)
+            target_item = target.get_item_by_slot(ITEM_SLOT_MASK)
+        if (BODY_ZONE_PRECISE_NOSE)
+            target_item = target.get_item_by_slot(ITEM_SLOT_MASK)
+        if (BODY_ZONE_PRECISE_MOUTH)
+            target_item = target.get_item_by_slot(ITEM_SLOT_MOUTH)
+        if (BODY_ZONE_L_ARM)
+            target_item = target.get_item_by_slot(ITEM_SLOT_WRISTS)
+        if (BODY_ZONE_R_ARM)
+            target_item = target.get_item_by_slot(ITEM_SLOT_WRISTS)
+        if (BODY_ZONE_L_LEG)
+            target_item = target.get_item_by_slot(ITEM_SLOT_PANTS)
+        if (BODY_ZONE_R_LEG)
+            target_item = target.get_item_by_slot(ITEM_SLOT_PANTS)
+        if (BODY_ZONE_PRECISE_GROIN)
+            target_item = target.get_item_by_slot(ITEM_SLOT_PANTS)
+        if (BODY_ZONE_PRECISE_R_FOOT)
+            target_item = target.get_item_by_slot(ITEM_SLOT_SHOES)
+        if (BODY_ZONE_PRECISE_L_FOOT)
+            target_item = target.get_item_by_slot(ITEM_SLOT_SHOES)
+    return target_item
 
-proc/handle_tongs(obj/item/rogueweapon/tongs/T, mob/user) //Stole the code from smithing.
+/proc/handle_tongs(obj/item/rogueweapon/tongs/T, mob/user) //Stole the code from smithing.
 	if (!T.hingot) return
 	var/tyme = world.time
 	T.hott = tyme
@@ -168,7 +181,7 @@ proc/handle_tongs(obj/item/rogueweapon/tongs/T, mob/user) //Stole the code from 
 	T.update_icon()
 	show_visible_message(user, "After [user]'s incantation, the ingot inside [T] starts glowing.", "After your incantation, the ingot inside [T] starts glowing.")
 
-proc/handle_heating_in_hand(mob/living/carbon/target, obj/item/targeteditem, mob/user)
+/proc/handle_heating_in_hand(mob/living/carbon/target, obj/item/targeteditem, mob/user)
 	var/datum/effect_system/spark_spread/sparks = new()
 	apply_damage_to_hands(target, user)
 	target.dropItemToGround(targeteditem)
@@ -178,10 +191,10 @@ proc/handle_heating_in_hand(mob/living/carbon/target, obj/item/targeteditem, mob
 	sparks.set_up(1, 1, target.loc)
 	sparks.start()
 
-proc/should_heat_in_hand(mob/user, mob/target, obj/item/targeteditem, list/nosmeltore)
+/proc/should_heat_in_hand(mob/user, mob/target, obj/item/targeteditem, list/nosmeltore)
 	return ((user.zone_selected == BODY_ZONE_PRECISE_L_HAND && target.held_items[1]) || (user.zone_selected == BODY_ZONE_PRECISE_R_HAND && target.held_items[2])) && !(targeteditem in nosmeltore) && targeteditem.smeltresult
 
-proc/apply_damage_to_hands(mob/living/carbon/target, mob/user)
+/proc/apply_damage_to_hands(mob/living/carbon/target, mob/user)
 	var/obj/item/bodypart/affecting
 	var/const/adth_damage_to_apply = 10 //How much damage should burning your hand before dropping the item do.
 	if (user.zone_selected == BODY_ZONE_PRECISE_R_HAND)
@@ -190,7 +203,7 @@ proc/apply_damage_to_hands(mob/living/carbon/target, mob/user)
 		affecting = target.get_bodypart(BODY_ZONE_L_ARM)
 	affecting.receive_damage(0, adth_damage_to_apply)
 
-proc/handle_heating_equipped(mob/living/carbon/target, obj/item/clothing/targeteditem, mob/user)
+/proc/handle_heating_equipped(mob/living/carbon/target, obj/item/clothing/targeteditem, mob/user)
 	var/obj/item/armor = target.get_item_by_slot(SLOT_ARMOR)
 	var/obj/item/shirt = target.get_item_by_slot(SLOT_SHIRT)
 	var/armor_can_heat = armor && armor.smeltresult && armor.smeltresult != /obj/item/ash
@@ -210,7 +223,7 @@ proc/handle_heating_equipped(mob/living/carbon/target, obj/item/clothing/targete
 	show_visible_message(target, "[target]'s [targeteditem.name] glows brightly, searing their flesh.", "My [targeteditem.name] glows brightly, It burns!")
 	playsound(target.loc, 'sound/misc/frying.ogg', 100, FALSE, -1)
 
-proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item/clothing/targeteditem, mask, damage)
+/proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item/clothing/targeteditem, mask, damage)
 	var/datum/effect_system/spark_spread/sparks = new()
 	var/obj/item/bodypart/affecting = null
 	for (var/zone in body_zones)
@@ -245,9 +258,7 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 	var/buyprice = 0
 	var/turf/altar
 	var/datum/effect_system/spark_spread/sparks = new()
-	for(var/i in targets)
-		if(istype(i, /turf/open))
-			altar = i
+	altar = get_turf(targets[1])
 	if(!altar)
 		return
 	for (var/obj/item/sacrifice in altar.contents)
@@ -288,7 +299,7 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 			show_visible_message(usr, "A wave of heat washes over the pile as [user] speaks Malum's name. The pile of valuables crumble into dust, only for the dust to reform into an item as if reborn from the flames. Malum has accepted the offering.", "A wave of heat washes over the pile as you speak Malum's name. The pile of valuables crumble into dust, only for the dust to reform into an item as if reborn from the flames. Malum has accepted the offering.")
 
 var/global/list/anvil_recipe_prices[][]
-proc/add_recipe_to_global(var/datum/anvil_recipe/recipe)
+/proc/add_recipe_to_global(var/datum/anvil_recipe/recipe)
 	var/total_sellprice = 0
 	var/obj/item/ingot/bar = recipe.req_bar
 	var/obj/item/itemtosend = null
@@ -307,7 +318,7 @@ proc/add_recipe_to_global(var/datum/anvil_recipe/recipe)
 	if (total_sellprice > 0)
 		global.anvil_recipe_prices += list(list(itemtosend, total_sellprice))
 
-proc/initialize_anvil_recipe_prices()
+/proc/initialize_anvil_recipe_prices()
 	for (var/datum/anvil_recipe/armor/recipe)
 	{
 		add_recipe_to_global(recipe)
@@ -342,9 +353,7 @@ world/New()
 	var/diceroll = 0
 	var/const/dc = 42 //Code will roll 2d20 and add target's perception and Speed then compare to this to see if they fall down or not. 42 Means they need to roll 2x 20 with Speed and Perception at I
 	var/const/delay = 2 SECONDS // Delay between the ground marking appearing and the effect playing.
-	for(var/i in targets)
-		if(istype(i, /turf/open))
-			fallzone = i
+	fallzone = get_turf(targets[1])
 	if(!fallzone)
 		return
 	else
@@ -392,7 +401,7 @@ world/New()
 	miracle = TRUE
 	devotion_cost = 15
 
-obj/effect/proc_holder/spell/invoked/malum_flame_rogue/cast(list/targets, mob/user = usr)
+/obj/effect/proc_holder/spell/invoked/malum_flame_rogue/cast(list/targets, mob/user = usr)
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/L = targets[1]
