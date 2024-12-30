@@ -39,6 +39,10 @@ GLOBAL_VAR(restart_counter)
 
 	log_world("World loaded at [time_stamp()]!")
 
+	//	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
+
+	GLOB.timezoneOffset = world.timezone * 36000
+
 	SetupExternalRSC()
 
 	GLOB.config_error_log = GLOB.world_manifest_log = GLOB.world_pda_log = GLOB.world_job_debug_log = GLOB.sql_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_attack_log = GLOB.world_game_log = "data/logs/config_error.[GUID()].log" //temporary file used to record errors with loading config, moved to log directory once logging is set bl
@@ -84,9 +88,6 @@ GLOBAL_VAR(restart_counter)
 
 	load_patreons()
 
-//	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
-
-	GLOB.timezoneOffset = world.timezone * 36000
 
 	if(fexists(RESTART_COUNTER_PATH))
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
