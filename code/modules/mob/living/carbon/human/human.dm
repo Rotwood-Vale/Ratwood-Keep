@@ -285,6 +285,19 @@
 /mob/living/carbon/human/proc/canUseHUD()
 	return (mobility_flags & MOBILITY_USE)
 
+///Checking if the unit can bite
+/mob/living/carbon/human/proc/can_bite()
+	if(!.)
+		return
+	if(mouth?.muteinmouth)	//Gagged
+		return FALSE
+	for(var/obj/item/grabbing/grab in grabbedby) //Grabbed by the mouth
+		if(grab.sublimb_grabbed == BODY_ZONE_PRECISE_MOUTH)
+			return FALSE
+			
+	return TRUE
+
+
 /mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone, penetrate_thick = 0)
 	. = 1 // Default to returning true.
 	if(user && !target_zone)

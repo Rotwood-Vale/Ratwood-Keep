@@ -158,7 +158,7 @@
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("I don't want to harm [src]!"))
 		return FALSE
-	if(user.mouth)
+	if(!user.can_bite())
 		to_chat(user, span_warning("My mouth has something in it."))
 		return FALSE
 
