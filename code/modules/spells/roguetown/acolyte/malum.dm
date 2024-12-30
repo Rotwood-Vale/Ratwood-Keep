@@ -94,7 +94,9 @@
 	. = ..()
 	var/list/nosmeltore = list(/obj/item/rogueore/coal)
 	var/datum/effect_system/spark_spread/sparks = new()
-	var/target = targets[1]
+	var/target
+	for(var/i in targets)
+		target = i
 	if (!target || target in nosmeltore)
 		return
 	if (istype(target, /obj/item))
@@ -241,12 +243,11 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 	var/buyprice = 0
 	var/turf/altar
 	var/datum/effect_system/spark_spread/sparks = new()
-	if (istype(targets[1], /turf/closed))
+	for(var/i in targets)
+		if(istype(i, /turf/open))
+			altar = i
+	if(!altar)
 		return
-	if (!istype(targets[1], /turf/open))
-		altar = targets[1].loc
-	else
-		altar = targets[1]
 	for (var/obj/item/sacrifice in altar.contents)
 	{
 		if (istype(sacrifice, /obj/item/roguecoin/))
@@ -339,13 +340,13 @@ world/New()
 	var/diceroll = 0
 	var/const/dc = 42 //Code will roll 2d20 and add target's perception and Speed then compare to this to see if they fall down or not. 42 Means they need to roll 2x 20 with Speed and Perception at I
 	var/const/delay = 2 SECONDS // Delay between the ground marking appearing and the effect playing.
-	if (istype(targets[1], /turf/closed))
+	for(var/i in targets)
+		if(istype(i, /turf/open))
+			fallzone = i
+	if(!fallzone)
 		return
-	if (istype(targets[1], /turf))
-		show_visible_message(usr, "[usr] raises their arm, conjuring a hammer wreathed in molten fire. As they hurl it toward the ground, the earth trembles under its impact, shaking its very foundations!", "You raise your arm, conjuring a hammer wreathed in molten fire. As you hurl it toward the ground, the earth trembles under its impact, shaking its very foundations!")
-		fallzone = targets[1]
 	else
-		fallzone = targets[1].loc
+		show_visible_message(usr, "[usr] raises their arm, conjuring a hammer wreathed in molten fire. As they hurl it toward the ground, the earth trembles under its impact, shaking its very foundations!", "You raise your arm, conjuring a hammer wreathed in molten fire. As you hurl it toward the ground, the earth trembles under its impact, shaking its very foundations!")
 	for (var/turf/open/visual in view(radius, fallzone))
 		var/obj/effect/temp_visual/lavastaff/Lava = new /obj/effect/temp_visual/lavastaff(visual)
 		animate(Lava, alpha = 255, time = 5)
