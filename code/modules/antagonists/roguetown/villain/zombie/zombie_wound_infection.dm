@@ -1,5 +1,5 @@
-#define ZOMBIE_INFECTION_PROBABILITY 90 	/// Zombie infection probability for bites on a wound
-#define ZOMBIE_INFECTION_TIME 1 MINUTES	/// Time taken until zombie infection comes in
+#define ZOMBIE_INFECTION_PROBABILITY 20 	/// Zombie infection probability for bites on a wound
+#define ZOMBIE_INFECTION_TIME 2 MINUTES	/// Time taken until zombie infection kicks in (unit wakes up as a zombie)
 
 /datum/wound
 

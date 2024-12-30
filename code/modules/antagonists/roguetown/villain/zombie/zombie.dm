@@ -1,5 +1,5 @@
-#define ZOMBIE_FIRST_BITE_CHANCE 7
-#define ZOMBIE_BITE_CONVERSION_TIME 1 MINUTES
+#define ZOMBIE_FIRST_BITE_CHANCE 15
+#define ZOMBIE_BITE_CONVERSION_TIME 1.5 MINUTES
 
 /datum/antagonist/zombie
 	name = "Deadite"
@@ -131,7 +131,10 @@
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(wake_zombie), usr, FALSE, TRUE), 5 SECONDS, TIMER_STOPPABLE)
 	return ..()
 
-//Removal of zombification
+/*
+	CHECK HERE IF ANY UN-ZOMBIFICATION ISSUES.
+*/
+///Remove zombification - cure rot, surgical rot remove
 /datum/antagonist/zombie/on_removal()
 	var/mob/living/carbon/human/zombie = owner?.current
 	if(zombie)
@@ -151,18 +154,13 @@
 			zombie.charflaw.ephemeral = FALSE
 		zombie.update_body()
 
-		//pre zombification stats
 		zombie.STASTR = src.STASTR
 		zombie.STASPD = src.STASPD
 		zombie.STAINT = src.STAINT
 		zombie.STACON = src.STACON
 		zombie.STAEND = src.STAEND
 
-/*
 
-	CHECK HERE IF ANY UN-ZOMBIFICATION ISSUES.
-
-*/
 
 		GLOB.dead_mob_list -= zombie // Remove it from global dead/alive mob list here here, if they're a zombie they probably died.
 									 // There is a better way to maintain it but needs overhaul. Will cover the two methods of zombie
