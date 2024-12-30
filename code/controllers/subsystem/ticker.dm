@@ -438,10 +438,9 @@ SUBSYSTEM_DEF(ticker)
 	mode.post_setup()
 
 	var/list/adm = get_admin_counts()
-	var/list/allmins = adm["present"]
-	send2adminchat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/new_round_ping)]> | Новый раунд стартует!"), CONFIG_GET(string/chat_announce_new_game))
+	send2adminchat(new /datum/tgs_message_content(" @ping | Новый раунд стартует!"))
 	if(CONFIG_GET(string/new_round_ping))
-		send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/new_round_ping)]> | Новый раунд стартует!"), CONFIG_GET(string/chat_announce_new_game))
+		send2chat(new /datum/tgs_message_content(" @ping | Новый стартует!"))
 	setup_done = TRUE
 
 	job_change_locked = FALSE
