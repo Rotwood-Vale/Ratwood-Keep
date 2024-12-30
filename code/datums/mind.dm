@@ -475,7 +475,7 @@
 	var/datum/team/antag_team = A.get_team()
 	if(antag_team)
 		antag_team.add_member(src)
-	A.on_gain()
+	A.on_gain(TRUE) // This may be a bad idea.
 	log_game("[key_name(src)] has gained antag datum [A.name]([A.type])")
 	return A
 

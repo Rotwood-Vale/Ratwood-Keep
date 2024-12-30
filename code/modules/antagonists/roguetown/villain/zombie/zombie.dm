@@ -103,7 +103,7 @@
 
 	Infection transformation process goes -> infection -> timered transform in zombie_infect_attempt() -> /datum/antagonist/zombie/proc/wake_zombie -> zombietransform
 */
-/datum/antagonist/zombie/on_gain()
+/datum/antagonist/zombie/on_gain(admin_granted = FALSE)
 	var/mob/living/carbon/human/zombie = owner?.current
 	if(zombie)
 		var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
@@ -125,6 +125,10 @@
 	src.STACON = zombie.STACON
 	src.STAEND = zombie.STAEND
 	cmode_music = zombie.cmode_music
+
+	//Special because deadite status is latent as opposed to the others. 
+	if(admin_granted)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(wake_zombie), usr, FALSE, TRUE), 5 SECONDS, TIMER_STOPPABLE)
 	return ..()
 
 //Removal of zombification
@@ -259,7 +263,7 @@
 //Add claws here if wanted.
 
 	zombie.update_body()
-	to_chat(zombie, span_userdanger("Hungry... so hungry... I CRAVE FLESH!"))
+	to_chat(zombie, span_narsiesmall("Hungry... so hungry... I CRAVE FLESH!"))
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
 
 
@@ -367,7 +371,7 @@
 		zombie.adjustBruteLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
 		zombie.adjustFireLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
 		zombie.heal_wounds(INFINITY) // Heal all non-permanent wounds
-		to_chat(zombie, span_narsiesmall("Your flesh twists and knits itself back together as undeath takes you."))
+		to_chat(zombie, span_userdanger("Your bones snap into place, your flesh knits itself back together as undeath takes you."))
 
 	zombie.stat = UNCONSCIOUS // Start unconscious
 	zombie.updatehealth() // Then check if the mob should wake up
@@ -378,7 +382,7 @@
 	var/datum/antagonist/zombie/zombie_antag = zombie.mind?.has_antag_datum(/datum/antagonist/zombie)
 	zombie_antag.transform_zombie()
 
-	if (zombie.stat >= DEAD) // We couldn't bring them back to life. Even as a zombie.
+	if (zombie.stat >= DEAD) // We couldn't bring them back to life as a zombie. Nothing we can do.
 		qdel(zombie)
 		return
 
