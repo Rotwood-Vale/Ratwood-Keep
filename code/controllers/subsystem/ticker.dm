@@ -437,9 +437,9 @@ SUBSYSTEM_DEF(ticker)
 	set waitfor = FALSE
 	mode.post_setup()
 
-	send2adminchat(new /datum/tgs_message_content(" @ping | New round!"))
-	if(CONFIG_GET(string/new_round_ping))
-		send2chat(new /datum/tgs_message_content(" @ping | New round стартует!"))
+//	send2adminchat(new /datum/tgs_message_content(" @ping | New round!"))
+//	if(CONFIG_GET(string/new_round_ping))
+//		send2chat(new /datum/tgs_message_content(" @ping | New round стартует!"))
 	setup_done = TRUE
 
 	job_change_locked = FALSE
