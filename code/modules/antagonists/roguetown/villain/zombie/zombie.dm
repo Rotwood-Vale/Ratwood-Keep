@@ -378,7 +378,10 @@
 	zombie.reload_fullscreen()
 
 	var/datum/antagonist/zombie/zombie_antag = zombie.mind?.has_antag_datum(/datum/antagonist/zombie)
-	zombie_antag.transform_zombie()
+	if(zombie_antag)
+		zombie_antag.transform_zombie()
+	else
+		CRASH("[zombie] tried to wake up as a zombie but did not have the antag set.")
 
 	if (zombie.stat >= DEAD) // We couldn't bring them back to life as a zombie. Nothing we can do.
 		qdel(zombie)
