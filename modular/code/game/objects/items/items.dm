@@ -5,11 +5,6 @@
 /obj/item/allow_attack_hand_drop(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/C = user
-//Zombie fingers don't take things off.
-		if(!(src in C.held_items) && (!allow_self_unequip || HAS_TRAIT(C, TRAIT_CHUNKYFINGERS)))
-
-			to_chat(C, span_warning("I need help taking this off!"))
-			return FALSE
 
 		if(!(src in C.held_items) && unequip_delay_self)
 			if(unequip_delay_self >= 10)

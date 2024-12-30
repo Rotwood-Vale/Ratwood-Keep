@@ -287,8 +287,6 @@
 
 ///Checking if the unit can bite
 /mob/living/carbon/human/proc/can_bite()
-	if(!.)
-		return
 	if(mouth?.muteinmouth)	//Gagged
 		return FALSE
 	for(var/obj/item/grabbing/grab in grabbedby) //Grabbed by the mouth

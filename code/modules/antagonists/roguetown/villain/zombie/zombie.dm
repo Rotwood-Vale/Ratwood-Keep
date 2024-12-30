@@ -128,7 +128,7 @@
 
 	//Special because deadite status is latent as opposed to the others. 
 	if(admin_granted)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(wake_zombie), usr, FALSE, TRUE), 5 SECONDS, TIMER_STOPPABLE)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(wake_zombie), zombie, FALSE, TRUE), 5 SECONDS, TIMER_STOPPABLE)
 	return ..()
 
 /*
