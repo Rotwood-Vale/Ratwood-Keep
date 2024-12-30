@@ -132,6 +132,7 @@
 	desc = "Opinionless god of the crafts. He teaches that great works for killing or saving are great works, either way. The well-oiled guillotine and the well-sharpened axe are tools, and there is no good and evil to their craft."
 	worshippers = "Smiths, Miners, Engineers"
 	mob_traits = list(TRAIT_FORGEBLESSED)
+	t0 = /obj/effect/proc_holder/spell/invoked/malum_flame_rogue
 	t1 = /obj/effect/proc_holder/spell/invoked/vigorousexchange
 	t2 = /obj/effect/proc_holder/spell/invoked/heatmetal
 	t3 = /obj/effect/proc_holder/spell/invoked/hammerfall
