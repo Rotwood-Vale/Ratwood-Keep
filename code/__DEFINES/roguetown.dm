@@ -34,7 +34,7 @@
 	/datum/species/dracon,\
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
-	/datum/species/akula,\
+	/datum/species/axian,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman, \
 	/datum/species/elf/dark,\
