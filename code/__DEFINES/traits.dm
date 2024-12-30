@@ -47,6 +47,7 @@
 #define TRAIT_WOODSMAN "Talented Woodsman"
 #define TRAIT_INQUISITION "Member of the Otavan Inquisition"
 #define TRAIT_GOODTRAINER "Good Trainer"
+#define TRAIT_OUTDOORSMAN "Outdoorsman"
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
@@ -177,7 +178,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GUIDANCE = span_info("Arcyne assistance guides my weapons."),
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
 	TRAIT_SILVER_BLESSED = span_info("I am anointed with holy silver, which preserves me from curses that bite."),
-	TRAIT_GOODTRAINER = span_info("I am a good teacher, and when it comes to weaponry I can train others to be just as skilled as I am.")
+	TRAIT_GOODTRAINER = span_info("I am a good teacher, and when it comes to weaponry I can train others to be just as skilled as I am."),
+	TRAIT_OUTDOORSMAN = span_info("My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds.")
 ))
 
 // trait accessor defines
