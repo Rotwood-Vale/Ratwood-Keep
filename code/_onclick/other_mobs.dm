@@ -224,11 +224,9 @@
 			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(zombie_antag && zombie_antag.has_turned)
 				zombie_antag.last_bite = world.time
-				var/datum/antagonist/zombie/existing_zombie = user.mind?.has_antag_datum(/datum/antagonist/zombie) //If the bite target is a zombie
-				if(!existing_zombie && bite_victim.zombie_infect_attempt())   // infect_attempt on bite
+				if(bite_victim.zombie_infect_attempt())   // infect_attempt on bite
 					to_chat(user, span_danger("You feel your gift trickling from your mouth into [bite_victim]'s wound..."))
-				//INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, attempt_zombie_infection), src, "wound")
-
+				
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)
 	if(user.mouth == B)

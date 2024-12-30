@@ -92,14 +92,16 @@
 	Deadite transformation is 2 ways. First is on the initial bite (low chance) and second is on being chewed on.
 
 	Initial bite is: other_mobs.dm, /mob/living/carbon/onbite(mob/living/carbon/human/user) ->
-	INVOKE_ASYNC(TYPE_PROC_REF(/mob/living/carbon/human, attempt_zombie_infection), src, "wound") ->
-	attempt_zombie_infection ->
+	bite_victim.zombie_infect_attempt() -> 
+	attempt_zombie_infection(src, "bite", ZOMBIE_BITE_CONVERSION_TIME) -> rng check here
 	time passes ->
 	wake_zombie.
 
 	Wound transformation goes: grabbing.dm, /obj/item/grabbing/bite/proc/bitelimb(mob/living/carbon/human/user) ->
 	/datum/wound/proc/zombie_infect_attempt() -> 
-	human_owner.attempt_zombie_infection(src, "wound", zombie_infection_time)
+	human_owner.attempt_zombie_infection(src, "wound", zombie_infection_time) ->
+	time passes -> 
+	wake_zombie
 
 	Infection transformation process goes -> infection -> timered transform in zombie_infect_attempt() -> /datum/antagonist/zombie/proc/wake_zombie -> zombietransform
 */
@@ -335,7 +337,7 @@
 
 */
 /mob/living/carbon/human/proc/zombie_infect_attempt()
-	attempt_zombie_infection(src, "bite", ZOMBIE_BITE_CONVERSION_TIME)
+	return attempt_zombie_infection(usr, "bite", ZOMBIE_BITE_CONVERSION_TIME)
 
 /*
 	Proc for our newly infected to wake up as a zombie
@@ -369,7 +371,7 @@
 		zombie.adjustBruteLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
 		zombie.adjustFireLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
 		zombie.heal_wounds(INFINITY) // Heal all non-permanent wounds
-		to_chat(zombie, span_userdanger("Your bones snap into place, your flesh knits itself back together as undeath takes you."))
+		to_chat(zombie, span_userdanger("Your bones snap back into place and your flesh knits itself back together as you rise again in undeath."))
 
 	zombie.stat = UNCONSCIOUS // Start unconscious
 	zombie.updatehealth() // Then check if the mob should wake up
