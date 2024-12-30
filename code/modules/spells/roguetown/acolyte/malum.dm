@@ -341,7 +341,7 @@ var/global/list/anvil_recipe_prices[][]
 	global.anvil_recipe_prices += list(list(new /obj/item/dmusicbox, 500))
 	// Add any other recipe types if needed
 
-world/New()
+/world/New()
 	..()
 	initialize_anvil_recipe_prices() // Precompute recipe prices on startup
 
