@@ -95,7 +95,8 @@
 	var/list/nosmeltore = list(/obj/item/rogueore/coal)
 	var/datum/effect_system/spark_spread/sparks = new()
 	var/target
-	target = get_turf(targets[1])
+	for(var/i in targets)
+		target = i
 	if (!target)
 		return
 	if(target in nosmeltore)
