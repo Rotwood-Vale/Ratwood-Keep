@@ -69,6 +69,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	if(closed)
 		reagent_flags = TRANSPARENT
 		reagents.flags = reagent_flags
+		to_chat(user, span_notice("You carefully place the cap back on [src]."))
 		spillable = FALSE
 		if(!fancy)
 			desc = "A bottle with a cork."
@@ -76,6 +77,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		reagent_flags = OPENCONTAINER
 		reagents.flags = reagent_flags
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
+		to_chat(user, span_notice("You thumb off the cap from [src]."))
 		desc = desc_uncorked
 		spillable = TRUE
 		if(!fancy)
