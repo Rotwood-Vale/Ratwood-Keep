@@ -14978,6 +14978,10 @@
 /obj/structure/table/vtable/v2,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
+"jdJ" = (
+/obj/machinery/light/rogue/campfire,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "jdK" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -29260,6 +29264,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town)
+"sbE" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "sbK" = (
 /obj/structure/table/wood{
 	dir = 9;
@@ -342312,7 +342320,7 @@ iXq
 xAt
 xAt
 wbg
-wbg
+sbE
 wbg
 esR
 fUg
@@ -342744,7 +342752,7 @@ iXq
 xAt
 xAt
 xAt
-wbg
+jdJ
 wbg
 qUA
 fUg
@@ -343176,7 +343184,7 @@ hFo
 xAt
 xAt
 rfx
-wbg
+sbE
 wbg
 esR
 fnA
