@@ -1153,7 +1153,7 @@
 	armor_penetration = 10
 	woundclass = BCLASS_SMASH
 	nodamage = FALSE
-	flag = "bullet"
+	flag = "magic"
 	hitsound = 'sound/combat/hits/blunt/shovel_hit2.ogg'
 	speed = 1
 

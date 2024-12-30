@@ -244,3 +244,6 @@
 							span_notice("I squeeze [src]. It will now extract blood."))
 
 #undef MAX_LEECH_EVILNESS
+
+/obj/item/natural/worms/leech/attack_right(mob/user)
+	return
