@@ -9983,8 +9983,9 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "ggG" = (
-/turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/under/cave)
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/town/sewer)
 "ggO" = (
 /obj/structure/fluff/statue/gargoyle/moss,
 /turf/open/floor/rogue/cobble,
@@ -10920,6 +10921,7 @@
 "gIm" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/blood/gibs/up,
+/obj/structure/plasticflaps,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "gIO" = (
@@ -13967,9 +13969,8 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/outdoors/town)
 "iyZ" = (
-/obj/structure/spider/stickyweb,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cave)
+/turf/closed/wall/mineral/rogue/stone/moss,
+/area/rogue/under/town/sewer)
 "ize" = (
 /obj/structure/fluff/walldeco/stone,
 /turf/closed/wall/mineral/rogue/craftstone,
@@ -21722,10 +21723,6 @@
 /obj/structure/chair/bench/couchablack,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/academy)
-"nue" = (
-/obj/structure/plasticflaps,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cave)
 "nup" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/open/floor/rogue/grasscold,
@@ -27404,10 +27401,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/town/basement)
-"qUc" = (
-/obj/machinery/light/rogue/firebowl,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/under/cave)
 "qUm" = (
 /obj/structure/mineral_door/wood{
 	lockid = "church";
@@ -34094,9 +34087,12 @@
 	},
 /area/rogue/indoors/town/shop)
 "uZj" = (
-/obj/structure/spider/stickyweb,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/under/cave)
+/obj/structure/fluff/traveltile/goblin{
+	aportalgoesto = "goblin1in";
+	aportalid = "goblin1exit"
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/town/sewer)
 "uZn" = (
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/outdoors/town/harbor)
@@ -35111,12 +35107,9 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/academy)
 "vET" = (
-/obj/structure/fluff/traveltile/goblin{
-	aportalgoesto = "goblin1in";
-	aportalid = "goblin1exit"
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/under/cave)
+/obj/structure/spider/stickyweb,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/sewer)
 "vFe" = (
 /obj/structure/mannequin/male,
 /obj/structure/fluff/railing/border{
@@ -198498,13 +198491,13 @@ vRu
 vRu
 vRu
 vRu
-sYw
-sYw
-sYw
-sYw
-sYw
-sYw
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
 vRu
 vRu
 vRu
@@ -198930,13 +198923,13 @@ vRu
 vRu
 vRu
 vRu
-sYw
-tQZ
-ggG
-ggG
-bMj
-tQZ
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
 vRu
 vRu
 vRu
@@ -199362,13 +199355,13 @@ vRu
 vRu
 vRu
 vRu
-sYw
-bMj
-vET
-vET
-vET
-ggG
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
 vRu
 vRu
 vRu
@@ -199794,13 +199787,13 @@ vRu
 vRu
 vRu
 vRu
-sYw
-ggG
-cdX
-czk
-cdX
-bMj
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
 vRu
 vRu
 vRu
@@ -200226,13 +200219,13 @@ vRu
 vRu
 vRu
 vRu
-sYw
-ggG
-uZj
-czk
-vuH
-bMj
-sYw
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
 vRu
 vRu
 vRu
@@ -200658,13 +200651,6 @@ vRu
 vRu
 vRu
 vRu
-sYw
-ggG
-iyZ
-uZj
-qUc
-bMj
-sYw
 vRu
 vRu
 vRu
@@ -200673,7 +200659,14 @@ vRu
 vRu
 vRu
 vRu
-pOf
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+kdN
 jQS
 jQS
 jQS
@@ -201090,13 +201083,6 @@ vRu
 vRu
 vRu
 vRu
-sYw
-tQZ
-nue
-vRu
-vRu
-tQZ
-sYw
 vRu
 vRu
 vRu
@@ -201104,8 +201090,15 @@ vRu
 vRu
 vRu
 vRu
-pOf
-pOf
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+kdN
+kdN
 jQS
 jQS
 jQS
@@ -201521,23 +201514,23 @@ vRu
 pOf
 pOf
 pOf
-bpD
-sYw
-sYw
-czk
-czk
-czk
-sYw
-sYw
 vRu
 vRu
 vRu
 vRu
 vRu
 vRu
-pOf
-pOf
-pOf
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+vRu
+kdN
+kdN
+kdN
 jQS
 jQS
 jQS
@@ -201957,7 +201950,7 @@ pOf
 pOf
 pOf
 pOf
-gLf
+pOf
 pOf
 pOf
 pOf
@@ -201967,9 +201960,9 @@ fIL
 pOf
 pOf
 pOf
-pOf
-pOf
-pOf
+kdN
+kdN
+kdN
 jQS
 jQS
 jQS
@@ -202389,7 +202382,6 @@ pOf
 pOf
 pOf
 pOf
-gLf
 pOf
 pOf
 pOf
@@ -202401,7 +202393,8 @@ pOf
 pOf
 pOf
 pOf
-pOf
+kdN
+kdN
 jQS
 jQS
 jQS
@@ -202821,7 +202814,6 @@ pOf
 pOf
 pOf
 pOf
-gLf
 pOf
 pOf
 pOf
@@ -202833,7 +202825,8 @@ pOf
 pOf
 pOf
 pOf
-pOf
+kdN
+kdN
 jQS
 jQS
 jQS
@@ -203249,10 +203242,10 @@ pOf
 pOf
 pOf
 pOf
-pOf
-pOf
-pOf
-pOf
+cmH
+cmH
+cmH
+cmH
 gLf
 pOf
 pOf
@@ -203263,9 +203256,9 @@ pOf
 pOf
 pOf
 fIL
-pOf
-pOf
-pOf
+kdN
+kdN
+kdN
 jQS
 jQS
 jQS
@@ -203677,10 +203670,10 @@ vRu
 vRu
 pOf
 pOf
-pOf
-pOf
-pOf
-pOf
+cmH
+cmH
+cmH
+cmH
 gLf
 gLf
 gLf
@@ -204109,7 +204102,7 @@ vRu
 vRu
 pOf
 pOf
-pOf
+cmH
 gLf
 gLf
 gLf
@@ -204541,7 +204534,7 @@ pOf
 pOf
 pOf
 pOf
-pOf
+cmH
 gLf
 gLf
 lrs
@@ -204972,15 +204965,15 @@ pOf
 pOf
 pOf
 pOf
-pOf
-pOf
+cmH
+cmH
 gLf
 lrs
-lrs
-lrs
-lrs
-lrs
-lrs
+rRb
+iyZ
+iyZ
+jQS
+rRb
 gLf
 lrs
 lrs
@@ -205404,15 +205397,15 @@ pOf
 pOf
 pOf
 pOf
-pOf
+cmH
 gLf
 gLf
 lrs
-lrs
-lrs
-lrs
-lrs
-lrs
+jQS
+uZj
+uZj
+uZj
+iyZ
 gLf
 lrs
 lrs
@@ -205836,15 +205829,15 @@ pOf
 pOf
 pOf
 pOf
-pOf
+cmH
 gLf
 lrs
 lrs
-lrs
-lrs
-lrs
-lrs
-lrs
+iyZ
+cqB
+tcf
+cqB
+jQS
 gLf
 gLf
 lrs
@@ -206268,15 +206261,15 @@ pOf
 fIL
 pOf
 pOf
-pOf
+cmH
 gLf
 lrs
 lrs
-lrs
-lrs
-lrs
-lrs
-lrs
+iyZ
+ggG
+tcf
+cQp
+jQS
 mof
 gLf
 gLf
@@ -206679,7 +206672,7 @@ pOf
 pOf
 pOf
 pOf
-pOf
+cmH
 gLf
 gLf
 gUg
@@ -206700,15 +206693,15 @@ pOf
 pOf
 pOf
 pOf
-pOf
+cmH
 udz
 lrs
 lrs
-lrs
-lrs
-lrs
-lrs
-lrs
+iyZ
+vET
+ggG
+iyZ
+jQS
 lrs
 gLf
 gLf
@@ -207111,7 +207104,7 @@ rRb
 azi
 psH
 pOf
-pOf
+cmH
 gLf
 nVv
 aXJ
@@ -207124,20 +207117,20 @@ nSm
 rRb
 pOf
 pOf
-pOf
+cmH
 gLf
 gLf
 gLf
 pOf
-pOf
+cmH
 gLf
 gLf
 udz
 udz
 lrs
 lrs
-lrs
-lrs
+rRb
+cQp
 gIm
 baR
 baR
@@ -207568,9 +207561,9 @@ udz
 gLf
 lrs
 lrs
-lrs
-lrs
-baR
+iyZ
+iyZ
+iyZ
 tkK
 dkI
 cQp
