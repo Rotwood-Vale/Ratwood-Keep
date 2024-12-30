@@ -80,6 +80,18 @@
 			C.mob.playsound_local(C.mob, 'sound/music/credits.ogg', 100, FALSE)
 		if(isliving(C.mob) && C.ckey)
 			key_list += C.ckey
+	
+	if(CONFIG_GET(string/new_round_ping))
+		var/broadcastmessage = ""
+
+		if(LAZYLEN(GLOB.round_end_notifiees))
+			broadcastmessage += "[GLOB.round_end_notifiees.Join(", ")], "
+
+		if(CONFIG_GET(string/new_round_ping))
+			broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
+
+		send2chat(new /datum/tgs_message_content(broadcastmessage), CONFIG_GET(string/chat_roundend_notice_tag))
+			
 //	if(key_list.len)
 //		add_roundplayed(key_list)
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
