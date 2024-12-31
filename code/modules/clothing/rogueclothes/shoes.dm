@@ -27,7 +27,6 @@
 	icon_state = "ridingboots"
 	item_state = "ridingboots"
 
-
 /obj/item/clothing/shoes/roguetown/gladiator
 	name = "leather sandals"
 	desc = ""
@@ -87,6 +86,15 @@
 	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST) //These match leather helmets
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
+/obj/item/clothing/shoes/roguetown/armor/inqboots
+	name = "inquisitorial boots"
+	desc = "Boots stained and chaffed with dirt. They're too clean, use some blood."
+	icon_state = "inqboots"
+	item_state = "inqboots"
+	blocksound = SOFTHIT //This hit sound is for leather
+	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
 /obj/item/clothing/shoes/roguetown/armor/steel
 	name = "steel plated boots"
 	desc = "Boots forged of a set of steel plates to protect your fragile toes."
@@ -104,7 +112,7 @@
 	// ----------------- BLACKSTEEL -----------------------
 
 /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
-	name = "Blacksteel Plate Boots"	
+	name = "Blacksteel Plate Boots"
 	desc = "Boots forged of durable blacksteel."
 	body_parts_covered = FEET
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
