@@ -124,6 +124,9 @@
 
 /mob/living/simple_animal/hostile/handle_automated_movement()
 	. = ..()
+	if(QDELETED(src))
+		return
+
 	if(dodging && target && in_melee && isturf(loc) && isturf(target.loc))
 		var/datum/cb = CALLBACK(src,PROC_REF(sidestep))
 		if(sidestep_per_cycle > 1) //For more than one just spread them equally - this could changed to some sensible distribution later

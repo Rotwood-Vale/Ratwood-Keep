@@ -165,17 +165,17 @@
 	sellprice = 666
 	var/active_item
 
-/obj/item/clothing/ring/dragon_ring/equipped(mob/living/user)
+/obj/item/clothing/ring/dragon_ring/equipped(mob/living/user, slot)
 	. = ..()
 	if(active_item)
 		return
-	else
+	else if(slot == SLOT_RING)
 		active_item = TRUE
 		to_chat(user, span_notice("Here be dragons."))
 		user.change_stat("strength", 2)
 		user.change_stat("constitution", 2)
 		user.change_stat("endurance", 2)
-		return
+	return
 
 /obj/item/clothing/ring/dragon_ring/dropped(mob/living/user)
 	..()
@@ -185,5 +185,5 @@
 		user.change_stat("constitution", -2)
 		user.change_stat("endurance", -2)
 		active_item = FALSE
-		return
+	return
 
