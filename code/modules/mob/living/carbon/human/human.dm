@@ -287,7 +287,8 @@
 
 ///Checking if the unit can bite
 /mob/living/carbon/human/proc/can_bite()
-	if(mouth?.muteinmouth)	//Gagged
+	//if(mouth?.muteinmouth && mouth?.type != /obj/item/grabbing/bite) //This one allows continued first biting rather than having to chew
+	if(mouth?.muteinmouth)
 		return FALSE
 	for(var/obj/item/grabbing/grab in grabbedby) //Grabbed by the mouth
 		if(grab.sublimb_grabbed == BODY_ZONE_PRECISE_MOUTH)
