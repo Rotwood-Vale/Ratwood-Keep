@@ -68,12 +68,6 @@
 	if(creator)
 		src.creator = creator
 
-/mob/living/simple_animal/hostile/statue/med_hud_set_health()
-	return //we're a statue we're invincible
-
-/mob/living/simple_animal/hostile/statue/med_hud_set_status()
-	return //we're a statue we're invincible
-
 /mob/living/simple_animal/hostile/statue/Move(turf/NewLoc)
 	if(can_be_seen(NewLoc))
 		if(client)

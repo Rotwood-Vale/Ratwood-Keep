@@ -22,15 +22,6 @@
 	var/space_ruin_levels = 0
 	var/space_empty_levels = 0
 
-	var/minetype = null
-
-	var/allow_custom_shuttles = TRUE
-	var/shuttles = list(
-		"cargo" = "cargo_rogue",
-		"ferry" = "ferry_fancy",
-		"whiteship" = "whiteship_box",
-		"emergency" = "emergency_box")
-
 /proc/load_map_config(filename = "data/next_map.json", default_to_box, delete_after, error_if_missing = TRUE)
 	testing("loading map config [filename]")
 	var/datum/map_config/config = new
@@ -90,15 +81,6 @@
 		log_world("map_file missing from json!")
 		return
 
-	if (islist(json["shuttles"]))
-		var/list/L = json["shuttles"]
-		for(var/key in L)
-			var/value = L[key]
-			shuttles[key] = value
-	else if ("shuttles" in json)
-		log_world("map_config shuttles is not a list!")
-		return
-
 	traits = json["traits"]
 	// "traits": [{"Linkage": "Cross"}, {"Space Ruins": true}]
 	if (islist(traits))
@@ -125,11 +107,6 @@
 	else if (!isnull(temp))
 		log_world("map_config space_empty_levels is not a number!")
 		return
-
-	if ("minetype" in json)
-		minetype = json["minetype"]
-
-	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
 
 	defaulted = FALSE
 	return TRUE

@@ -94,7 +94,7 @@
 
 /obj/machinery/light/rogue/Initialize()
 	if(soundloop)
-		soundloop = new soundloop(list(src), FALSE)
+		soundloop = new soundloop(src, FALSE)
 		soundloop.start()
 	GLOB.fires_list += src
 	if(start_fuel)
@@ -264,16 +264,6 @@
 	if(!can_damage)
 		return
 	. = ..()
-
-/obj/machinery/light/rogue/break_light_tube(skip_sound_and_sparks = 0)
-	if(status == LIGHT_EMPTY || status == LIGHT_BROKEN)
-		return	
-	if(!skip_sound_and_sparks)
-		if(status == LIGHT_OK || status == LIGHT_BURNED)
-			playsound(src.loc, 'sound/blank.ogg', 75, TRUE)
-		if(on)
-			do_sparks(3, TRUE, src)
-	update()
 
 /obj/machinery/light/rogue/firebowl
 	name = "brazier"
@@ -598,7 +588,7 @@
 	var/datum/looping_sound/boilloop/boilloop
 
 /obj/machinery/light/rogue/hearth/Initialize()
-	boilloop = new(list(src), FALSE)
+	boilloop = new(src, FALSE)
 	. = ..()
 
 /obj/machinery/light/rogue/hearth/attackby(obj/item/W, mob/living/user, params)

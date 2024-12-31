@@ -1132,7 +1132,7 @@
 	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
-	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15) 
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15)
 	dissolvable = FALSE
 	grind_results = null
 
@@ -1274,7 +1274,7 @@
 /obj/item/reagent_containers/glass/alembic/Initialize()
 	create_reagents(100, REFILLABLE | DRAINABLE | AMOUNT_VISIBLE) // 2 Bottles capacity
 	icon_state = "alembic_empty"
-	boilloop = new(list(src), FALSE)
+	boilloop = new(src, FALSE)
 	. = ..()
 
 /obj/item/reagent_containers/glass/alembic/examine(mob/user)

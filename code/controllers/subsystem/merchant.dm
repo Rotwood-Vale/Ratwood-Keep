@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(merchant)
 	name = "Merchant Packs"
 	wait = 10
-	init_order = INIT_ORDER_SHUTTLE
+	init_order = INIT_ORDER_DEFAULT
 	runlevels = RUNLEVEL_SETUP | RUNLEVEL_GAME
 	flags = SS_NO_FIRE
 

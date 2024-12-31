@@ -139,11 +139,6 @@
 	min_val = 0
 	max_val = 1
 
-/datum/config_entry/number/shuttle_refuel_delay
-	config_entry_value = 12000
-	integer = FALSE
-	min_val = 0
-
 /datum/config_entry/flag/show_game_type_odds	//if set this allows players to see the odds of each roundtype on the get revision screen
 
 /datum/config_entry/keyed_list/roundstart_races	//races you can play as from the get go.
@@ -157,15 +152,6 @@
 /datum/config_entry/flag/join_with_mutant_humans	//players can pick mutant bodyparts for humans before joining the game
 
 /datum/config_entry/flag/no_intercept_report	//Whether or not to send a communications intercept report roundstart. This may be overridden by gamemodes.
-
-/datum/config_entry/number/arrivals_shuttle_dock_window	//Time from when a player late joins on the arrivals shuttle to when the shuttle docks on the station
-	config_entry_value = 55
-	integer = FALSE
-	min_val = 30
-
-/datum/config_entry/flag/arrivals_shuttle_require_undocked	//Require the arrivals shuttle to be undocked before latejoiners can join
-
-/datum/config_entry/flag/arrivals_shuttle_require_safe_latejoin	//Require the arrivals shuttle to be operational in order for latejoiners to join
 
 /datum/config_entry/string/alert_green
 	config_entry_value = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
@@ -339,11 +325,6 @@
 		GLOB.MAX_EX_LIGHT_RANGE = config_entry_value
 		GLOB.MAX_EX_FLASH_RANGE = config_entry_value
 		GLOB.MAX_EX_FLAME_RANGE = config_entry_value
-
-/datum/config_entry/number/emergency_shuttle_autocall_threshold
-	min_val = 0
-	max_val = 1
-	integer = FALSE
 
 /datum/config_entry/flag/ic_printing
 

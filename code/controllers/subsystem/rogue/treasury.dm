@@ -112,6 +112,16 @@ SUBSYSTEM_DEF(treasury)
 	else
 		log_to_steward("+[amt] to treasury")
 
+//deduct from the treasury directly
+/datum/controller/subsystem/treasury/proc/remove_money_treasury(amt, source)
+	if(!amt)
+		return
+	treasury_value -= amt
+	if(source)
+		log_to_steward("-[amt] from treasury ([source])")
+	else
+		log_to_steward("-[amt] from treasury")
+
 //pays to account from treasury (payroll)
 /datum/controller/subsystem/treasury/proc/give_money_account(amt, name, source)
 	if(!amt)

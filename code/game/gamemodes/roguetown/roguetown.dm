@@ -192,15 +192,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 			if(3)
 				pick_cultist()
 				log_game("Major Antagonist: Cultists")
-	else
-		var/major_roll_lowpop = pick(1,2)
-		switch(major_roll_lowpop)
-			if(1)
-				pick_rebels()
-				log_game("Major Antagonist: Peasant Rebellion")
-			if(2)//Vampires alone for lowpop. More RP orientend.
-				pick_vampires()
-				log_game("Major Antagonist: Vampires")
+	else//Lowpop? Least destructive major antag.
+		pick_rebels()
+		log_game("Major Antagonist: Peasant Rebellion")
 
 	if(prob(100))
 		pick_bandits()
@@ -220,7 +214,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	//BANDITS
 	banditgoal = rand(200,400)
 	restricted_jobs = list("Duke",
-	"Duchess",
+	"Duke Consort",
 	"Merchant",
 	"Priest",
 	"Knight",
@@ -368,7 +362,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_maniac()
-	restricted_jobs = list("Duke", "Duchess")
+	restricted_jobs = list("Duke", "Duke Consort")
 	antag_candidates = get_players_for_role(ROLE_MANIAC)
 	var/datum/mind/villain = pick_n_take(antag_candidates)
 	if(villain)
@@ -390,7 +384,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 /datum/game_mode/chaosmode/proc/pick_cultist()
 	var/remaining = 3 // 1 heresiarch, 2 cultists
 	restricted_jobs = list("Duke",
-	"Duchess",
+	"Duke Consort",
 	"Priest",
 	"Bandit",
 	"Knight",
@@ -435,7 +429,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 
 	restricted_jobs = list(
 	"Duke",
-	"Duchess",
+	"Duke Consort",
 	"Dungeoneer",
 	"Inquisitor",
 	"Confessor",
@@ -481,7 +475,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	var/vampsremaining = 3
 	restricted_jobs = list(
 	"Duke",
-	"Duchess",
+	"Duke Consort",
 	"Dungeoneer",
 	"Inquisitor",
 	"Confessor",
@@ -536,7 +530,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	// Ideally we want Refugees/Towners to roll it
 	restricted_jobs = list(
 	"Duke",
-	"Duchess",
+	"Duke Consort",
 	"Dungeoneer",
 	"Inquisitor",
 	"Confessor",
