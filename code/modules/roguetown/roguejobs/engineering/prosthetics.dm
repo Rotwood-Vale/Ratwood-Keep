@@ -29,6 +29,7 @@
 	max_integrity = 0
 	sellprice = 0
 	fingers = FALSE 
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic
 	name = "debug right arm"
@@ -44,6 +45,7 @@
 	max_integrity = 0
 	sellprice = 0
 	fingers = FALSE
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic
 	name = "debug left leg"
@@ -59,6 +61,7 @@
 	max_integrity = 0
 	sellprice = 0
 	organ_slowdown = 0
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_leg/prosthetic
 	name = "debug right leg"
@@ -74,6 +77,7 @@
 	max_integrity = 0
 	sellprice = 0
 	organ_slowdown = 0
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_arm/prosthetic/attack(mob/living/M, mob/user)
 	prosthetic_attachment(M, user)
@@ -99,6 +103,7 @@
 	max_integrity = 300
 	sellprice = 20
 	metalizer_result = /obj/item/bodypart/l_arm/prosthetic/iron
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic/wood
 	name = "right wooden arm"
@@ -110,6 +115,7 @@
 	max_integrity = 300
 	sellprice = 20
 	metalizer_result = /obj/item/bodypart/r_arm/prosthetic/iron
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic/wood
 	name = "left wooden leg"
@@ -122,6 +128,7 @@
 	sellprice = 20
 	organ_slowdown = 1.3
 	metalizer_result = /obj/item/bodypart/l_leg/prosthetic/iron
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_leg/prosthetic/wood
 	name = "right wooden leg"
@@ -134,6 +141,7 @@
 	sellprice = 20
 	organ_slowdown = 1.3
 	metalizer_result = /obj/item/bodypart/r_leg/prosthetic/iron
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 
 // --------- IRON PROSTHETICS -----------
@@ -148,6 +156,7 @@
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic/iron
 	name = "iron right arm"
@@ -158,6 +167,7 @@
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic/iron
 	name = "iron left leg"
@@ -169,6 +179,7 @@
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_leg/prosthetic/iron
 	name = "iron right leg"
@@ -180,6 +191,7 @@
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 
 // --------- STEEL PROSTHETICS -----------
@@ -193,6 +205,7 @@
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic/steel
 	name = "steel right arm"
@@ -203,6 +216,7 @@
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic/steel
 	name = "steel left leg"
@@ -214,6 +228,7 @@
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_leg/prosthetic/steel
 	name = "steel right leg"
@@ -225,6 +240,7 @@
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
+	anvilrepair = /datum/skill/craft/blacksmithing
 	
 // --------- GOLD PROSTHETICS -----------
 
@@ -236,6 +252,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	fingers = TRUE
 	sellprice = 70
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 
 /obj/item/bodypart/r_arm/prosthetic/gold
@@ -246,6 +263,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	fingers = TRUE
 	sellprice = 70
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic/gold
 	name = "golden left leg"
@@ -264,6 +282,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	organ_slowdown = 0
 	sellprice = 70
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 // --------- BRONZE PROSTHETICS -----------
 
@@ -276,6 +295,7 @@
 	max_integrity = 350
 	sellprice = 40
 	fingers = TRUE
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic/bronze
 	name = "bronze right arm"
@@ -286,3 +306,4 @@
 	max_integrity = 350
 	sellprice = 40
 	fingers = TRUE 
+	anvilrepair = /datum/skill/craft/blacksmithing
