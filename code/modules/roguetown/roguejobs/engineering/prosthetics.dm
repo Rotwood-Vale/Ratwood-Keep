@@ -94,7 +94,7 @@
 	desc = "A left arm of wood."
 	icon_state = "prarm" 
 	resistance_flags = FLAMMABLE
-	max_damage = 20
+	max_damage = 100
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
@@ -105,7 +105,7 @@
 	desc = "A right arm of wood."
 	icon_state = "prarm" 
 	resistance_flags = FLAMMABLE
-	max_damage = 20
+	max_damage = 100
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
@@ -116,7 +116,7 @@
 	desc = "A left leg of wood."
 	icon_state = "pleg" 
 	resistance_flags = FLAMMABLE
-	max_damage = 20
+	max_damage = 100
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
@@ -128,7 +128,7 @@
 	desc = "A right leg of wood."
 	icon_state = "pleg" 
 	resistance_flags = FLAMMABLE
-	max_damage = 20
+	max_damage = 100
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
@@ -144,6 +144,7 @@
 	desc = "A left arm of iron."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 5
 	burn_reduction = 5
@@ -154,6 +155,7 @@
 	desc = "A right arm of iron."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 5
 	burn_reduction = 5
@@ -164,6 +166,7 @@
 	desc = "A left leg of iron."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.2
 	brute_reduction = 5
@@ -175,6 +178,7 @@
 	desc = "A right leg of iron."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.2
 	brute_reduction = 5
@@ -189,6 +193,7 @@
 	desc = "A left arm of steel."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 400
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 10
 	burn_reduction = 10
@@ -199,6 +204,7 @@
 	desc = "A right arm of steel."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 400
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 10
 	burn_reduction = 10
@@ -209,6 +215,7 @@
 	desc = "A left leg of steel."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 400
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.1
 	brute_reduction = 10
@@ -220,6 +227,7 @@
 	desc = "A right leg of steel."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 400
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.1
 	brute_reduction = 10
@@ -233,6 +241,7 @@
 	desc = "A left arm of cogs and gold."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	w_class = WEIGHT_CLASS_BULKY
 	fingers = TRUE
 	sellprice = 70
@@ -243,6 +252,7 @@
 	desc = "A right arm of cogs and gold."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	w_class = WEIGHT_CLASS_BULKY
 	fingers = TRUE
 	sellprice = 70
@@ -252,6 +262,7 @@
 	desc = "A left leg of cogs and gold."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	w_class = WEIGHT_CLASS_BULKY
 	organ_slowdown = 0
 	sellprice = 70
@@ -261,6 +272,7 @@
 	desc = "A right leg of cogs and gold."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	w_class = WEIGHT_CLASS_BULKY
 	organ_slowdown = 0
 	sellprice = 70
@@ -272,6 +284,7 @@
 	desc = "A replacement left arm, engineered out of bronze."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	max_damage = 20
 	max_integrity = 350
 	sellprice = 40
@@ -282,6 +295,7 @@
 	desc = "A replacement right arm, engineered out of bronze."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	max_damage = 20
 	max_integrity = 350
 	sellprice = 40
