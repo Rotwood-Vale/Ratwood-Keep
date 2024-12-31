@@ -134,7 +134,6 @@
 /// Use this to attempt to add the zombie antag datum to a human
 /mob/living/carbon/human/proc/zombie_check()
 	if(!mind)
-		make_deadite() // No mind? Make an NPC deadite.
 		return
 	var/already_zombie = mind.has_antag_datum(/datum/antagonist/zombie)
 	if(already_zombie)

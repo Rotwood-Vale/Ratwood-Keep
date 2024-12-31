@@ -65,12 +65,16 @@
 				if(!found_rotten && limb.rotted)
 					found_rotten = TRUE
 			
-			if(found_rotten)
+			if(found_rotten) // Body is already rotted.
 				var/datum/antagonist/zombie/zomble = human_target.mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(zomble)
 					addtimer(CALLBACK(zomble, TYPE_PROC_REF(/datum/antagonist/zombie, wake_zombie)), 5 SECONDS)
 				else if(can_death_zombify(src))
-					human_target.zombie_check()
+					var/datum/component/rot/rot = human_target.GetComponent(/datum/component/rot)
+					if(!rot) // In the case the rot component deleted itself because there was no head. Then add a new one that will automatically raise them as a deadite.
+						LoadComponent(human_target.rot_type)
+						rot = human_target.GetComponent(/datum/component/rot)
+						rot.amount = 10 MINUTES
 			else
 				LoadComponent(target.rot_type)
 	display_results(user, target, span_notice("I succeed transplanting [target]'s [parse_zone(target_zone)]."),

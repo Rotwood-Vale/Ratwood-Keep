@@ -185,8 +185,9 @@
 			limb.update_disabled()
 
 	// Specific edge-case where a body rots without a head or rots after a head is placed back on. We always want this gone so we can at least revive the person even if there is no mind, this is caused by the failure to remove the zombie antag datum.
+	// un-deadite'ing process
 	target.mob_biotypes &= ~MOB_UNDEAD // the zombie antag on_loss() does this as well, but this is for the times it doesn't work properly. We check if they're any special undead role first.
-	
+
 	for(var/trait in GLOB.traits_deadite)
 		REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
 
@@ -196,7 +197,7 @@
 			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
 			ghost.mind.transfer_to(target, TRUE)
 			qdel(underworld_spirit)
-		target.grab_ghost(force = TRUE) // even suicides
+	target.grab_ghost(force = TRUE) // even suicides
 	
 	target.update_body()
 	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
