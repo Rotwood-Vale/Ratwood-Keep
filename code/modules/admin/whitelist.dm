@@ -5,7 +5,7 @@
 		CONFIG_SET(flag/usewhitelist, FALSE)
 		return TRUE
 
-	var/datum/db_query/query_get_whitelist = SSdbcore.NewQuery({"
+	var/datum/DBQuery/query_get_whitelist = SSdbcore.NewQuery({"
 		SELECT id FROM [format_table_name("whitelist")]
 		WHERE ckey = :ckey
 	"}, list("ckey" = key)
@@ -45,7 +45,7 @@
 		if("add")
 			var/key = ckey(all_params[2])
 
-			var/datum/db_query/query_get_whitelist = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_get_whitelist = SSdbcore.NewQuery({"
 				SELECT id FROM [format_table_name("whitelist")]
 				WHERE ckey = :ckey
 			"}, list("ckey" = key)
@@ -67,7 +67,7 @@
 				. += "Invalid argument"
 				return
 
-			var/datum/db_query/query_add_whitelist = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_add_whitelist = SSdbcore.NewQuery({"
 				INSERT INTO [format_table_name("whitelist")] (ckey)
 				VALUES (:ckey)
 			"}, list("ckey" = key))
@@ -89,7 +89,7 @@
 
 			var/key = ckey(all_params[2])
 
-			var/datum/db_query/query_remove_whitelist = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_remove_whitelist = SSdbcore.NewQuery({"
 				DELETE FROM [format_table_name("whitelist")]
 				WHERE ckey = :ckey
 			"}, list("ckey" = key))
@@ -106,7 +106,7 @@
 			return
 
 		if("list")
-			var/datum/db_query/query_get_all_whitelist = SSdbcore.NewQuery("SELECT ckey FROM [format_table_name("whitelist")]")
+			var/datum/DBQuery/query_get_all_whitelist = SSdbcore.NewQuery("SELECT ckey FROM [format_table_name("whitelist")]")
 
 			if(!query_get_all_whitelist.Execute())
 				. += "Failed to get all whitelisted keys\n"
