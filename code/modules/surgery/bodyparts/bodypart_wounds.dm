@@ -32,11 +32,12 @@
 			wounds -= wound
 			if(name == BODY_ZONE_HEAD || name == BODY_ZONE_PRECISE_NECK) // Due to not knowing how wounds are nulled, we add the most severe head injury (since this is the only organ this bug happens on), then remove it.
 				// Second pass over.
-				REMOVE_TRAIT(affected, TRAIT_NO_BITE, TRAIT_GENERIC)
-				REMOVE_TRAIT(affected, TRAIT_PARALYSIS, TRAIT_GENERIC)
-				REMOVE_TRAIT(affected, TRAIT_NOPAIN, TRAIT_GENERIC)
-				REMOVE_TRAIT(affected, TRAIT_DISFIGURED, TRAIT_GENERIC)
-				REMOVE_TRAIT(affected, TRAIT_GARGLE_SPEECH, TRAIT_GENERIC)
+				var/mob/living/carbon/carbon_affected = owner
+				REMOVE_TRAIT(carbon_affected, TRAIT_NO_BITE, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_PARALYSIS, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_NOPAIN, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_DISFIGURED, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_GARGLE_SPEECH, TRAIT_GENERIC)
 	return wounds
 
 /// Returns all wounds on this limb that can be sewn
