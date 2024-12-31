@@ -12,6 +12,26 @@
 	var/list/phylacteries = list()
 	var/out_of_lives = FALSE
 
+	var/traits_lich = list(	
+		TRAIT_NOROGSTAM,
+		TRAIT_NOHUNGER,
+		TRAIT_NOBREATH,
+		TRAIT_NOPAIN,
+		TRAIT_TOXIMMUNE,
+		TRAIT_STEELHEARTED,
+		TRAIT_NOSLEEP,
+		TRAIT_VAMPMANSION,
+		TRAIT_NOMOOD,
+		TRAIT_NOLIMBDISABLE,
+		TRAIT_SHOCKIMMUNE,
+		TRAIT_LIMBATTACHMENT,
+		TRAIT_SEEPRICES,
+		TRAIT_CRITICAL_RESISTANCE,
+		TRAIT_HEAVYARMOR,
+		TRAIT_CABAL,
+		TRAIT_DEATHSIGHT
+		)
+
 	var/STASTR = 10
 	var/STASPD = 10
 	var/STAINT = 10
@@ -59,57 +79,31 @@
 
 /datum/antagonist/lich/proc/equip_lich()
 	owner.unknow_all_people()
-	for(var/datum/mind/MF in get_minds())
+	for (var/datum/mind/MF in get_minds())
 		owner.become_unknown_to(MF)
+
 	var/mob/living/carbon/human/L = owner.current
-	ADD_TRAIT(L, TRAIT_NOROGSTAM, "[type]")
-	ADD_TRAIT(L, TRAIT_NOHUNGER, "[type]")
-	ADD_TRAIT(L, TRAIT_NOBREATH, "[type]")
-	ADD_TRAIT(L, TRAIT_NOPAIN, "[type]")
-	ADD_TRAIT(L, TRAIT_TOXIMMUNE, "[type]")
-	ADD_TRAIT(L, TRAIT_STEELHEARTED, "[type]")
-	ADD_TRAIT(L, TRAIT_NOSLEEP, "[type]")
-	ADD_TRAIT(L, TRAIT_VAMPMANSION, "[type]")
-	ADD_TRAIT(L, TRAIT_NOMOOD, "[type]")
-	ADD_TRAIT(L, TRAIT_NOLIMBDISABLE, "[type]")
-	ADD_TRAIT(L, TRAIT_SHOCKIMMUNE, "[type]")
-	ADD_TRAIT(L, TRAIT_LIMBATTACHMENT, "[type]")
-	ADD_TRAIT(L, TRAIT_SEEPRICES, "[type]")
-	ADD_TRAIT(L, TRAIT_CRITICAL_RESISTANCE, "[type]")
-	ADD_TRAIT(L, TRAIT_HEAVYARMOR, "[type]")
-	ADD_TRAIT(L, TRAIT_CABAL, "[type]")
-	ADD_TRAIT(L, TRAIT_DEATHSIGHT, "[type]")
+
 	L.cmode_music = 'sound/music/combat_cult.ogg'
 	L.faction = list("undead")
-	if(L.charflaw)
+
+	if (L.charflaw)
 		QDEL_NULL(L.charflaw)
+
 	L.mob_biotypes |= MOB_UNDEAD
-	var/obj/item/organ/eyes/eyes = L.getorganslot(ORGAN_SLOT_EYES)
-	if(eyes)
-		eyes.Remove(L,1)
-		QDEL_NULL(eyes)
-	eyes = new /obj/item/organ/eyes/night_vision/zombie
-	eyes.Insert(L)
-	for(var/obj/item/bodypart/B in L.bodyparts)
+	replace_eyes(L)
+
+	for (var/obj/item/bodypart/B in L.bodyparts)
 		B.skeletonize(FALSE)
+
+	equip_and_traits()
 	L.equipOutfit(/datum/outfit/job/roguetown/lich)
+
 	L.set_patron(/datum/patron/inhumen/zizo)
 
-/datum/outfit/job/roguetown/lich/pre_equip(mob/living/carbon/human/H)
+
+/datum/outfit/job/roguetown/lich/pre_equip(mob/living/carbon/human/H) //Equipment is located below
 	..()
-	pants = /obj/item/clothing/under/roguetown/chainlegs
-	shoes = /obj/item/clothing/shoes/roguetown/boots
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	cloak = /obj/item/clothing/cloak/raincloak/mortus
-	armor = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	gloves = /obj/item/clothing/gloves/roguetown/chain
-	belt = /obj/item/storage/belt/rogue/leather/black
-	backl = /obj/item/storage/backpack/rogue/satchel
-	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
-	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
-	r_hand = /obj/item/rogueweapon/woodstaff/wise
 
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 5, TRUE)
@@ -144,6 +138,14 @@
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "LICH"), 5 SECONDS)
 
+/datum/antagonist/lich/proc/replace_eyes(mob/living/carbon/human/L)
+	var/obj/item/organ/eyes/eyes = L.getorganslot(ORGAN_SLOT_EYES)
+	if (eyes)
+		eyes.Remove(L, TRUE)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(L)
+
 /datum/outfit/job/roguetown/lich/post_equip(mob/living/carbon/human/H)
 	..()
 	var/datum/antagonist/lich/lichman = H.mind.has_antag_datum(/datum/antagonist/lich)
@@ -161,86 +163,83 @@
 			phyl.be_consumed(timer)
 			phylacteries -= phyl
 			return TRUE
-	
 
-///only called post death to equip new body with armour and stats
-/datum/antagonist/lich/proc/post_death_equip()
+
+///Called post death to equip new body with armour and stats. Order of equipment matters
+/datum/antagonist/lich/proc/equip_and_traits()
 	var/mob/living/carbon/human/body = owner.current 
+	var/list/equipment_slots = list(
+		SLOT_PANTS,
+		SLOT_SHOES,
+		SLOT_NECK,
+		SLOT_CLOAK,
+		SLOT_ARMOR,
+		SLOT_SHIRT,
+		SLOT_WRISTS,
+		SLOT_GLOVES,
+		SLOT_BELT,
+		SLOT_BELT_R,
+		SLOT_BELT_L,
+		SLOT_HANDS,
+		SLOT_BACK_L,
+		)
 
-	body.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/chainlegs, SLOT_PANTS, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots, SLOT_SHOES, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/chaincoif, SLOT_NECK, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/clothing/cloak/raincloak/mortus, SLOT_CLOAK, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass, SLOT_ARMOR, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored, SLOT_SHIRT, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/clothing/wrists/roguetown/bracers, SLOT_WRISTS, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/chain, SLOT_GLOVES, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather/black, SLOT_BELT, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/reagent_containers/glass/bottle/rogue/manapot, SLOT_BELT_R, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/rogueweapon/huntingknife/idagger/steel, SLOT_BELT_L, TRUE)
-	body.equip_to_slot_or_del(new /obj/item/rogueweapon/woodstaff/wise, SLOT_HANDS, TRUE)
+	var/list/equipment_items = list(
+		/obj/item/clothing/under/roguetown/chainlegs,
+		/obj/item/clothing/shoes/roguetown/boots,
+		/obj/item/clothing/neck/roguetown/chaincoif,
+		/obj/item/clothing/cloak/raincloak/mortus,
+		/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass,
+		/obj/item/clothing/suit/roguetown/shirt/tunic/ucolored,
+		/obj/item/clothing/wrists/roguetown/bracers,
+		/obj/item/clothing/gloves/roguetown/chain,
+		/obj/item/storage/belt/rogue/leather/black,
+		/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+		/obj/item/rogueweapon/huntingknife/idagger/steel,
+		/obj/item/rogueweapon/woodstaff/wise,
+		/obj/item/storage/backpack/rogue/satchel,
+	)
+	for (var/i = 1, i <= equipment_slots.len, i++)
+		var/slot = equipment_slots[i]
+		var/item_type = equipment_items[i]
+		body.equip_to_slot_or_del(new item_type, slot, TRUE)
 
-	ADD_TRAIT(body, TRAIT_NOROGSTAM, "[type]")
-	ADD_TRAIT(body, TRAIT_NOHUNGER, "[type]")
-	ADD_TRAIT(body, TRAIT_NOBREATH, "[type]")
-	ADD_TRAIT(body, TRAIT_NOPAIN, "[type]")
-	ADD_TRAIT(body, TRAIT_TOXIMMUNE, "[type]")
-	ADD_TRAIT(body, TRAIT_STEELHEARTED, "[type]")
-	ADD_TRAIT(body, TRAIT_NOSLEEP, "[type]")
-	ADD_TRAIT(body, TRAIT_VAMPMANSION, "[type]")
-	ADD_TRAIT(body, TRAIT_NOMOOD, "[type]")
-	ADD_TRAIT(body, TRAIT_NOLIMBDISABLE, "[type]")
-	ADD_TRAIT(body, TRAIT_SHOCKIMMUNE, "[type]")
-	ADD_TRAIT(body, TRAIT_LIMBATTACHMENT, "[type]")
-	ADD_TRAIT(body, TRAIT_SEEPRICES, "[type]")
-	ADD_TRAIT(body, TRAIT_CRITICAL_RESISTANCE, "[type]")
-	ADD_TRAIT(body, TRAIT_HEAVYARMOR, "[type]")
-	ADD_TRAIT(body, TRAIT_CABAL, "[type]")
-	ADD_TRAIT(body, TRAIT_DEATHSIGHT, "[type]")
-		
+	for (var/trait in traits_lich)
+		ADD_TRAIT(body, trait, "[type]")
+
 /datum/antagonist/lich/proc/rise_anew()
-
-	// Ensure the mind exists before proceeding
 	if (!owner.current.mind)
 		CRASH("Lich: rise_anew called with no mind")
-		// Save the old body and find a suitable spawn location
+	
 	var/mob/living/carbon/human/old_body = owner.current
 	var/turf/phylactery_turf = get_turf(old_body)
-		// Create a new body
 	var/mob/living/carbon/human/new_body = new /mob/living/carbon/human/species/human/northern(phylactery_turf)
-	//new(phylactery_turf)
 
-		// Transfer the mind to the new body
 	old_body.mind.transfer_to(new_body)
-	// Apply lich-specific stats 
-
 
 	if (new_body.charflaw)
 		QDEL_NULL(new_body.charflaw)
-
+	
 	new_body.real_name = old_body.name
 	new_body.dna.real_name = old_body.real_name
-
 	new_body.mob_biotypes |= MOB_UNDEAD
 	new_body.set_patron(/datum/patron/inhumen/zizo)
+	new_body.mind.grab_ghost(force = TRUE)
 
 	for (var/obj/item/bodypart/body_part in new_body.bodyparts)
 		body_part.skeletonize(FALSE)
-
-	var/obj/item/organ/eyes/eyes = new_body.getorganslot(ORGAN_SLOT_EYES)
-	if (eyes)
-		eyes.Remove(new_body, TRUE)
-		QDEL_NULL(eyes)
-	eyes = new /obj/item/organ/eyes/night_vision/zombie
-	eyes.Insert(new_body)
+		
+	replace_eyes(new_body)
 	set_stats()
 	skele_look()
-	//equip armour and traits
-	post_death_equip()
+	equip_and_traits()
 
 	// Delete the old body if it still exists
 	if (!QDELETED(old_body))
 		qdel(old_body)
+
+
+
 
 /obj/item/phylactery
 	name = "phylactery"
