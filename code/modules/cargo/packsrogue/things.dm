@@ -61,7 +61,7 @@
 
 /datum/supply_pack/rogue/bandit/Things/breachcharge
 	name = "Breaching Charge"
-	cost = 50
+	cost = 175
 	contains = list(/obj/item/breach_charge)
 
 /datum/supply_pack/rogue/bandit/Things/flint
