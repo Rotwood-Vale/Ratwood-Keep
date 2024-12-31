@@ -6,6 +6,7 @@
 	icon_state = "stickyweb1"
 	resistance_flags = FLAMMABLE
 	alpha = 109
+	max_integrity = 30
 	opacity = TRUE
 	debris = list(/obj/item/natural/silk = 1)
 

@@ -209,7 +209,7 @@
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
 	woundclass = BCLASS_STAB
-	flag = "bullet"
+	flag = "piercing"
 	speed = 2
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/ranged
