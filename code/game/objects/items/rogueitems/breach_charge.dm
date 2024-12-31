@@ -9,7 +9,7 @@
 	var/deployed = FALSE // Is the charge placed?
 	var/ignited = FALSE // Is the fuse lit?
 	var/deploy_time = 5 SECONDS // Time to place the charge.
-	var/defuse_time = 5 SECONDS // Time to defuse the charge.
+	var/defuse_time = 2 SECONDS // Time to defuse the charge.
 	var/fuse_duration = 10 SECONDS // How soon after igniting does the bomb explode.
 	var/aim_dir // The direction our explosion will take place.
 
