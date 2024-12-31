@@ -1007,6 +1007,12 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/manor)
+"aHp" = (
+/obj/effect/landmark/start/bogguardlate{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors)
 "aHC" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/town/bath)
@@ -1345,6 +1351,12 @@
 	lockid = "velder"
 	},
 /turf/open/floor/rogue/tile,
+/area/rogue/indoors)
+"aRR" = (
+/obj/effect/landmark/start/bogguardlate{
+	dir = 1
+	},
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "aRV" = (
 /obj/structure/mineral_door/wood{
@@ -2561,15 +2573,12 @@
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "bCb" = (
-/obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/bogguardsman{
-	dir = 1
-	},
+/obj/machinery/light/rogue/torchholder/r,
 /obj/effect/landmark/start/bogguardlate{
 	dir = 1
 	},
-/turf/open/floor/rogue/herringbone,
-/area/rogue/under/town/basement)
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "bCe" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 4;
@@ -4126,8 +4135,6 @@
 /area/rogue/indoors/town/tavern)
 "cCl" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/bogguardsman,
-/obj/effect/landmark/start/bogguardlate,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "cCr" = (
@@ -9727,8 +9734,8 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "fXy" = (
-/obj/structure/closet/crate/chest{
-	lockid = "bog_gatehouse"
+/obj/effect/landmark/start/bogguardlate{
+	dir = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -10685,6 +10692,9 @@
 "gBU" = (
 /obj/effect/decal/cobbleedge{
 	dir = 5
+	},
+/obj/effect/landmark/start/bogguardlate{
+	dir = 1
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
@@ -15556,15 +15566,11 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "juC" = (
-/obj/structure/bed/rogue/inn/hay,
 /obj/effect/landmark/start/bogguardsman{
 	dir = 1
 	},
-/obj/effect/landmark/start/bogguardlate{
-	dir = 1
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "juU" = (
 /obj/effect/landmark/tram/queued_path{
 	next_path_id = "cargo_map_exit";
@@ -16826,22 +16832,10 @@
 	},
 /area/rogue/indoors/town/bath)
 "khV" = (
-/obj/structure/closet/crate/chest{
-	locked = 1;
-	lockid = "bog_gatehouse"
+/obj/effect/landmark/start/bogguardsman{
+	dir = 8
 	},
-/obj/item/flashlight/flare/torch/lantern,
-/obj/item/flashlight/flare/torch/lantern,
-/obj/structure/fluff/walldeco/wantedposter,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/metal,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "khW" = (
 /obj/item/natural/poo/horse,
@@ -17200,6 +17194,9 @@
 "kuV" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
+	},
+/obj/effect/landmark/start/bogguardsman{
+	dir = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -17708,8 +17705,6 @@
 /area/rogue/indoors/town/church)
 "kOo" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/bogguardsman,
-/obj/effect/landmark/start/bogguardlate,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/town/basement)
 "kOy" = (
@@ -18573,10 +18568,19 @@
 /area/rogue/outdoors/bog)
 "lvw" = (
 /obj/structure/closet/crate/chest{
+	locked = 1;
 	lockid = "bog_gatehouse"
 	},
-/obj/item/flint,
-/obj/item/flint,
+/obj/item/flashlight/flare/torch/lantern,
+/obj/item/flashlight/flare/torch/lantern,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/metal,
 /obj/item/flint,
 /obj/item/flint,
 /obj/item/flint,
@@ -19258,9 +19262,17 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/bog)
 "lPc" = (
-/obj/structure/chair/wood/rogue,
-/obj/effect/landmark/start/bogmaster,
-/turf/open/floor/carpet/royalblack,
+/obj/structure/closet/crate/chest{
+	locked = 1;
+	lockid = "bog_gatehouse"
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 6
+	},
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/lantern,
+/obj/item/flashlight/flare/torch/lantern,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "lPh" = (
 /obj/structure/flora/roguetree/wise{
@@ -22807,6 +22819,9 @@
 	},
 /obj/effect/decal/cobbleedge{
 	dir = 5
+	},
+/obj/effect/landmark/start/bogguardsman{
+	dir = 1
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
@@ -32235,16 +32250,12 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/academy)
 "tRG" = (
-/obj/structure/closet/crate/chest{
-	locked = 1;
-	lockid = "bog_gatehouse"
-	},
 /obj/effect/decal/cobbleedge{
 	dir = 6
 	},
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/lantern,
-/obj/item/flashlight/flare/torch/lantern,
+/obj/effect/landmark/start/bogguardlate{
+	dir = 1
+	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
 "tRS" = (
@@ -34463,6 +34474,9 @@
 /obj/effect/decal/cobbleedge{
 	dir = 10
 	},
+/obj/effect/landmark/start/bogguardlate{
+	dir = 1
+	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
 "vka" = (
@@ -35970,6 +35984,7 @@
 /obj/structure/roguemachine/mail{
 	mailtag = "Vanguard Bastion"
 	},
+/obj/effect/landmark/start/bogmaster,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "whO" = (
@@ -215374,7 +215389,7 @@ qMi
 cTA
 oVi
 cBf
-juC
+cCl
 cTA
 qbG
 qbG
@@ -216238,7 +216253,7 @@ iTw
 qRc
 wHU
 wHU
-bCb
+kOo
 cTA
 qbG
 qbG
@@ -217101,7 +217116,7 @@ qng
 wNF
 cTA
 cBf
-bCb
+kOo
 cTA
 cTA
 qbG
@@ -325531,9 +325546,9 @@ wlD
 wlD
 ujK
 kuV
-wlD
-ddv
-kxi
+fXy
+aRR
+bCb
 ddv
 ddv
 rDt
@@ -325962,11 +325977,11 @@ pAV
 pAV
 whJ
 wlD
-wlD
+juC
 fXy
 pAV
 pAV
-wlD
+lPc
 ddv
 rDt
 erZ
@@ -326392,9 +326407,9 @@ wlD
 wlD
 pAV
 pAV
-khV
+pLa
 wlD
-wlD
+juC
 tRG
 pAV
 pAV
@@ -326828,7 +326843,7 @@ hGf
 cJf
 nZT
 vjM
-faB
+aHp
 gBU
 wlD
 ddv
@@ -327256,10 +327271,10 @@ pAV
 aQJ
 ddv
 eDl
-ooJ
+khV
 aBb
 snS
-ooJ
+khV
 goW
 faB
 aQJ
@@ -327688,10 +327703,10 @@ pAV
 pAV
 pND
 dCn
-ooJ
+khV
 ssB
 ssB
-ooJ
+khV
 fiv
 fyA
 pAV
@@ -436549,7 +436564,7 @@ fZJ
 fZJ
 fZJ
 guN
-lPc
+jJW
 hAb
 htF
 uVv
