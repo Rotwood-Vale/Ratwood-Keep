@@ -266,9 +266,10 @@
 	var/damage = user.get_punch_dmg()
 
 	if(limb_grabbed.status == BODYPART_ROBOTIC)
-		C.visible_message(span_notice("[user] twists [limb_grabbed] of [C], popping it out of the socket!"), span_notice("I pop [limb_grabbed] from [src]."))
-		limb_grabbed.drop_limb()
-		return
+		if(do_after(user, 60, target = src))
+			C.visible_message(span_notice("[user] twists [limb_grabbed] of [C], popping it out of the socket!"), span_notice("I pop [limb_grabbed] from [src]."))
+			limb_grabbed.drop_limb()
+			return
 
 	playsound(C.loc, "genblunt", 100, FALSE, -1)
 	C.next_attack_msg.Cut()
