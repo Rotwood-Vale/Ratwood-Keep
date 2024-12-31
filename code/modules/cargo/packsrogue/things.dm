@@ -59,6 +59,16 @@
 	cost = 80
 	contains = list(/obj/item/rogueweapon/pick)
 
+/datum/supply_pack/rogue/bandit/Things/breachcharge
+	name = "Breaching Charge"
+	cost = 50
+	contains = list(/obj/item/breach_charge)
+
+/datum/supply_pack/rogue/bandit/Things/flint
+	name = "Flint"
+	cost = 10
+	contains = list(/obj/item/flint)
+
 /datum/supply_pack/rogue/bandit/Things/cloth
 	name = "Cloth"
 	cost = 10
