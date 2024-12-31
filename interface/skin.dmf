@@ -153,7 +153,7 @@ window "statwindow"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		font-family = "Mookmania"
+		font-family = "Alegreya"
 		font-size = 12
 		font-style = "6"
 		text-color = #d6dbd5

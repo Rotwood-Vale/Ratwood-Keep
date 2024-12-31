@@ -577,7 +577,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/simple/roguefonts
 	verify = TRUE
 	assets = list(
-		"Mookmania.otf" = 'interface/fonts/Mookmania.otf', // основной шрифт
+		"Alegreya.ttf" = 'interface/fonts/Alegreya.ttf', // основной шрифт
 		"ebbe.ttf" = 'interface/fonts/ebbe.ttf',
 		"chiseld.ttf" = 'interface/fonts/chiseld.ttf',
 		"blackmoor.ttf" = 'interface/fonts/blackmoor.ttf',
