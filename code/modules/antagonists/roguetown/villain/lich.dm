@@ -12,6 +12,12 @@
 	var/list/phylacteries = list()
 	var/out_of_lives = FALSE
 
+	var/STASTR = 10
+	var/STASPD = 10
+	var/STAINT = 10
+	var/STAEND = 10
+	var/STAPER = 10
+
 /datum/antagonist/lich/on_gain()
 	var/datum/game_mode/C = SSticker.mode
 	C.liches |= owner
@@ -20,12 +26,28 @@
 	skele_look()
 	equip_lich()
 	greet()
+	save_stats()
+
 	return ..()
 
 /datum/antagonist/lich/greet()
 	to_chat(owner.current, span_userdanger("The secret of immortality is mine, but this is not enough. The Azurean lands need a new ruler. One that will reign eternal."))
 	owner.announce_objectives()
 	..()
+
+/datum/antagonist/lich/proc/save_stats()
+	STASTR = owner.current.STASTR
+	STAPER = owner.current.STAPER
+	STAINT = owner.current.STAINT
+	STASPD = owner.current.STASPD
+	STAEND = owner.current.STAEND
+
+/datum/antagonist/lich/proc/set_stats()
+	owner.current.STASTR = src.STASTR
+	owner.current.STAPER = src.STAPER
+	owner.current.STAINT = src.STAINT
+	owner.current.STASPD = src.STASPD
+	owner.current.STAEND = src.STAEND
 
 /datum/antagonist/lich/proc/skele_look()
 	var/mob/living/carbon/human/L = owner.current
@@ -132,29 +154,93 @@
 		H.equip_to_slot_or_del(new_phylactery,SLOT_IN_BACKPACK, TRUE)
 
 /datum/antagonist/lich/proc/consume_phylactery(timer = 10 SECONDS)
-	for(var/obj/item/phylactery/phyl in phylacteries)
-		phyl.be_consumed(timer)
-		phylacteries -= phyl
-		return TRUE
+	if(phylacteries.len == 0)
+		return FALSE
+	else
+		for(var/obj/item/phylactery/phyl in phylacteries)
+			phyl.be_consumed(timer)
+			phylacteries -= phyl
+			return TRUE
+	
 
+///only called post death to equip new body with armour and stats
+/datum/antagonist/lich/proc/post_death_equip()
+	var/mob/living/carbon/human/body = owner.current 
+
+	body.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/chainlegs, SLOT_PANTS, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots, SLOT_SHOES, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/clothing/neck/roguetown/chaincoif, SLOT_NECK, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/clothing/cloak/raincloak/mortus, SLOT_CLOAK, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass, SLOT_ARMOR, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored, SLOT_SHIRT, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/clothing/wrists/roguetown/bracers, SLOT_WRISTS, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/chain, SLOT_GLOVES, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather/black, SLOT_BELT, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/reagent_containers/glass/bottle/rogue/manapot, SLOT_BELT_R, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/rogueweapon/huntingknife/idagger/steel, SLOT_BELT_L, TRUE)
+	body.equip_to_slot_or_del(new /obj/item/rogueweapon/woodstaff/wise, SLOT_HANDS, TRUE)
+
+	ADD_TRAIT(body, TRAIT_NOROGSTAM, "[type]")
+	ADD_TRAIT(body, TRAIT_NOHUNGER, "[type]")
+	ADD_TRAIT(body, TRAIT_NOBREATH, "[type]")
+	ADD_TRAIT(body, TRAIT_NOPAIN, "[type]")
+	ADD_TRAIT(body, TRAIT_TOXIMMUNE, "[type]")
+	ADD_TRAIT(body, TRAIT_STEELHEARTED, "[type]")
+	ADD_TRAIT(body, TRAIT_NOSLEEP, "[type]")
+	ADD_TRAIT(body, TRAIT_VAMPMANSION, "[type]")
+	ADD_TRAIT(body, TRAIT_NOMOOD, "[type]")
+	ADD_TRAIT(body, TRAIT_NOLIMBDISABLE, "[type]")
+	ADD_TRAIT(body, TRAIT_SHOCKIMMUNE, "[type]")
+	ADD_TRAIT(body, TRAIT_LIMBATTACHMENT, "[type]")
+	ADD_TRAIT(body, TRAIT_SEEPRICES, "[type]")
+	ADD_TRAIT(body, TRAIT_CRITICAL_RESISTANCE, "[type]")
+	ADD_TRAIT(body, TRAIT_HEAVYARMOR, "[type]")
+	ADD_TRAIT(body, TRAIT_CABAL, "[type]")
+	ADD_TRAIT(body, TRAIT_DEATHSIGHT, "[type]")
+		
 /datum/antagonist/lich/proc/rise_anew()
-	var/mob/living/carbon/human/bigbad = owner.current
-	bigbad.revive(TRUE, TRUE)
 
-	for(var/obj/item/bodypart/B in bigbad.bodyparts)
-		B.skeletonize(FALSE)
+	// Ensure the mind exists before proceeding
+	if (!owner.current.mind)
+		CRASH("Lich: rise_anew called with no mind")
+		// Save the old body and find a suitable spawn location
+	var/mob/living/carbon/human/old_body = owner.current
+	var/turf/phylactery_turf = get_turf(old_body)
+		// Create a new body
+	var/mob/living/carbon/human/new_body = new /mob/living/carbon/human/species/human/northern(phylactery_turf)
+	//new(phylactery_turf)
 
-	bigbad.faction = list("undead")
-	if(bigbad.charflaw)
-		QDEL_NULL(bigbad.charflaw)
-	bigbad.mob_biotypes |= MOB_UNDEAD
-	var/obj/item/organ/eyes/eyes = bigbad.getorganslot(ORGAN_SLOT_EYES)
-	if(eyes)
-		eyes.Remove(bigbad,1)
+		// Transfer the mind to the new body
+	old_body.mind.transfer_to(new_body)
+	// Apply lich-specific stats 
+
+
+	if (new_body.charflaw)
+		QDEL_NULL(new_body.charflaw)
+
+	new_body.real_name = old_body.name
+	new_body.dna.real_name = old_body.real_name
+
+	new_body.mob_biotypes |= MOB_UNDEAD
+	new_body.set_patron(/datum/patron/inhumen/zizo)
+
+	for (var/obj/item/bodypart/body_part in new_body.bodyparts)
+		body_part.skeletonize(FALSE)
+
+	var/obj/item/organ/eyes/eyes = new_body.getorganslot(ORGAN_SLOT_EYES)
+	if (eyes)
+		eyes.Remove(new_body, TRUE)
 		QDEL_NULL(eyes)
 	eyes = new /obj/item/organ/eyes/night_vision/zombie
-	eyes.Insert(bigbad)
+	eyes.Insert(new_body)
+	set_stats()
+	skele_look()
+	//equip armour and traits
+	post_death_equip()
 
+	// Delete the old body if it still exists
+	if (!QDELETED(old_body))
+		qdel(old_body)
 
 /obj/item/phylactery
 	name = "phylactery"
@@ -182,6 +268,7 @@
 	var/offset = prob(50) ? -2 : 2
 	animate(src, pixel_x = pixel_x + offset, time = 0.2, loop = -1) //start shaking
 	visible_message(span_warning("[src] begins to glow and shake violently!"))
+	
 	spawn(timer)
 		possessor.owner.current.forceMove(get_turf(src))
 		possessor.rise_anew()
