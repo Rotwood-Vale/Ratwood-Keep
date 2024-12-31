@@ -8689,6 +8689,10 @@
 	icon_state = "wooden_floor2"
 	},
 /area/rogue/indoors/shelter/town/harbor)
+"fnY" = (
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors/rtfield)
 "fof" = (
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -18994,6 +18998,12 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
+"lHn" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/rogue/wallfire/candle/r,
+/turf/open/floor/rogue/ruinedwood/turned,
+/area/rogue/under/cave)
 "lHo" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newbranch/connector{
@@ -29235,6 +29245,10 @@
 /obj/structure/fluff/statue/gargoyle,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
+"saf" = (
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "saj" = (
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/structure/table/wood{
@@ -30631,6 +30645,10 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/manor)
+"sVY" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "sWf" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10;
@@ -210259,7 +210277,7 @@ uaL
 uaL
 sjP
 sjP
-rBC
+qvR
 qvR
 qvR
 qvR
@@ -212413,7 +212431,7 @@ qvR
 qvR
 qvR
 qvR
-qvR
+sVY
 qvR
 sjP
 sjP
@@ -223212,7 +223230,7 @@ duq
 duq
 toE
 fxw
-sjP
+fnY
 sjP
 sjP
 qvR
@@ -224083,7 +224101,7 @@ sjP
 sjP
 sjP
 ksX
-nAn
+lHn
 uql
 hiz
 hiz
@@ -229675,7 +229693,7 @@ jRA
 jRA
 aeK
 gvc
-qvR
+saf
 gkv
 gkv
 gkv
@@ -237887,10 +237905,10 @@ rld
 qvR
 sjP
 gkv
+bzS
+wSn
+wSn
 uaL
-wSn
-wSn
-fTe
 xvN
 qvR
 xvN
@@ -238319,9 +238337,9 @@ dHZ
 qvR
 sjP
 gkv
-gkv
-gkv
-gkv
+bzS
+bzS
+bzS
 qvR
 xvN
 qvR
@@ -238751,9 +238769,9 @@ gkv
 gkv
 gkv
 gkv
-uaL
 bzS
-uaL
+bzS
+bzS
 xvN
 qvR
 uaL
@@ -239185,7 +239203,7 @@ gkv
 gkv
 bzS
 bzS
-qvR
+bzS
 qvR
 uaL
 wSn
