@@ -266,6 +266,7 @@
 	var/damage = user.get_punch_dmg()
 
 	if(limb_grabbed.status == BODYPART_ROBOTIC)
+		C.visible_message(span_notice("[user] starts twisting [limb_grabbed] of [C], twisting it out of its socket!"), span_notice("I start twisting [limb_grabbed] from [src]."))
 		if(do_after(user, 60, target = src))
 			C.visible_message(span_notice("[user] twists [limb_grabbed] of [C], popping it out of the socket!"), span_notice("I pop [limb_grabbed] from [src]."))
 			limb_grabbed.drop_limb()
