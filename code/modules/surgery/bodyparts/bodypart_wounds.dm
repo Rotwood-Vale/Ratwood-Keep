@@ -30,10 +30,13 @@
 	for(var/datum/wound/wound as anything in wounds)
 		if(isnull(wound))
 			wounds -= wound
-			if(name == BODY_ZONE_HEAD) // Due to not knowing how wounds are nulled, we add the most severe head injury (since this is the only organ this bug happens on), then remove it.
-				var/datum/wound/fracture = /datum/wound/fracture/head
-				add_wound(fracture, TRUE)
-				remove_wound(fracture)
+			if(name == BODY_ZONE_HEAD || name == BODY_ZONE_PRECISE_NECK) // Due to not knowing how wounds are nulled, we add the most severe head injury (since this is the only organ this bug happens on), then remove it.
+				// Second pass over.
+				REMOVE_TRAIT(affected, TRAIT_NO_BITE, TRAIT_GENERIC)
+				REMOVE_TRAIT(affected, TRAIT_PARALYSIS, TRAIT_GENERIC)
+				REMOVE_TRAIT(affected, TRAIT_NOPAIN, TRAIT_GENERIC)
+				REMOVE_TRAIT(affected, TRAIT_DISFIGURED, TRAIT_GENERIC)
+				REMOVE_TRAIT(affected, TRAIT_GARGLE_SPEECH, TRAIT_GENERIC)
 	return wounds
 
 /// Returns all wounds on this limb that can be sewn
