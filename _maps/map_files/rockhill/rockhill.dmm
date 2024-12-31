@@ -3465,7 +3465,9 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = -32
 	},
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/wood{
+	dir = 4
+	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
 "cio" = (
@@ -8536,6 +8538,7 @@
 /area/rogue/outdoors/town/harbor)
 "fiW" = (
 /obj/structure/mirror,
+/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/tavern)
 "fiZ" = (
@@ -15696,7 +15699,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
 "jBZ" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/wood{
+	dir = 8
+	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
 "jCh" = (
@@ -28494,8 +28499,10 @@
 /turf/open/floor/rogue/grassred,
 /area/rogue/indoors/shelter/druidgrove)
 "rEc" = (
-/obj/structure/chair/stool/rogue,
 /obj/machinery/light/roguestreet/orange/walllamp{
+	dir = 4
+	},
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /turf/open/floor/carpet/red,
@@ -319869,8 +319876,8 @@ nMm
 wNn
 wNn
 wNn
-exg
 wNn
+exg
 wNn
 sLK
 wbg
@@ -320298,11 +320305,11 @@ bVs
 lyG
 wXf
 oZw
-kjw
+wRK
 cih
 rEc
-wRK
 gIk
+wRK
 wNn
 esR
 wbg
