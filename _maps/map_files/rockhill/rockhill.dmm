@@ -7989,6 +7989,13 @@
 	dir = 10;
 	pixel_x = 19
 	},
+/obj/structure/bars/pipe{
+	dir = 4;
+	pixel_x = -10;
+	pixel_y = 13;
+	icon_state = "openspace";
+	icon = 'icons/turf/floors.dmi'
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "eUq" = (
@@ -15389,6 +15396,16 @@
 /obj/item/powderflask,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
+"jmQ" = (
+/obj/structure/bars/pipe{
+	dir = 4;
+	pixel_x = -10;
+	pixel_y = 13;
+	icon_state = "openspace";
+	icon = 'icons/turf/floors.dmi'
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town)
 "jnO" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -347960,7 +347977,7 @@ wbg
 jDN
 xAt
 xAt
-xAt
+jmQ
 xAt
 xAt
 xAt
@@ -349257,7 +349274,7 @@ wbg
 wbg
 wbg
 sXv
-xAt
+jmQ
 ngH
 knG
 knG
