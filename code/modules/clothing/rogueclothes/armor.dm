@@ -107,11 +107,10 @@
 	item_state = "inqcoat"
 	sleevetype = "shirt"
 	blocksound = PLATEHIT
-	body_parts_covered = CHEST|GROIN|VITALS|ARMS
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
-	max_integrity = 300 //cuz it covers everything
-	armor_class = ARMOR_CLASS_HEAVY
+	max_integrity = 180 // slightly lower than scale
+	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/plate/half
 	slot_flags = ITEM_SLOT_ARMOR
