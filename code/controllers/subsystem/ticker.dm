@@ -379,6 +379,22 @@ SUBSYSTEM_DEF(ticker)
 		transfer_characters()	//transfer keys to the new mobs
 		log_game("GAME SETUP: transfer characters success")
 
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
+			if(H.client)
+				var/datum/job/J = SSjob.GetJob(H.job)
+				if(!J)
+					continue
+				if(SSjob.GetJob(H.job).family_blacklisted)
+					continue
+				if(SSfamily.special_role_blacklist.Find(H.mind.special_role))
+					continue
+				if(H.client.prefs.family == FAMILY_FULL)
+					SSfamily.family_candidates += H
+
+
+		SSfamily.SetupLordFamily()
+		SSfamily.SetupFamilies()
+
 	for(var/I in round_start_events)
 		var/datum/callback/cb = I
 		cb.InvokeAsync()
@@ -743,6 +759,7 @@ SUBSYSTEM_DEF(ticker)
 		return
 
 	SStriumphs.end_triumph_saving_time()
+
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time

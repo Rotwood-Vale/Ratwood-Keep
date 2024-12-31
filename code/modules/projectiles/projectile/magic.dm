@@ -360,7 +360,7 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		M.add_nausea(5) //Slight buff for stopping power, it's a real underwhelming combat spell otherwise.
-		M.reagents.add_reagent(/datum/reagent/toxin, 3)
+		M.reagents.add_reagent(/datum/reagent/toxin, 5) //Slight buff, was told this is ass as a combat spell, especially for 3 point cost.
 
 /obj/projectile/magic/sapping
 	name = "bolt of sapping"
