@@ -77,7 +77,7 @@
 				display_as_wanderer = TRUE
 			if(J.foreign_examine)
 				display_as_foreign = TRUE
-			if(J.flag == MERCENARY)
+			if(J.mercenary_examine)
 				are_mercenary = TRUE
 			if(islatejoin && !are_mercenary)
 				is_returning = TRUE
@@ -89,7 +89,7 @@
 			var/datum/job/OJ = SSjob.GetJob(user.job)
 			if(OJ.foreign_examine)
 				am_foreign = TRUE
-			if(OJ.flag == MERCENARY)
+			if(OJ.mercenary_examine)
 				am_mercenary = TRUE
 
 		if(display_as_wanderer)

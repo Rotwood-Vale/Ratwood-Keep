@@ -113,6 +113,7 @@
 	/// This job is a "wanderer" on examine
 	var/wanderer_examine = FALSE
 	var/foreign_examine = FALSE
+	var/mercenary_examine = FALSE
 
 	/// This job uses refugee classes on examine
 	var/advjob_examine = FALSE
