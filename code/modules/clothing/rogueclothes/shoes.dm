@@ -88,7 +88,7 @@
 
 /obj/item/clothing/shoes/roguetown/armor/inqboots
 	name = "inquisitorial boots"
-	desc = "Boots stained and chaffed with dirt. They're too clean, use some blood."
+	desc = "Boots stained and chaffed with dirt. They'll learn to love you, in time."
 	icon_state = "inqboots"
 	item_state = "inqboots"
 	blocksound = SOFTHIT //This hit sound is for leather
