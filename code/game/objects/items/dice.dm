@@ -28,6 +28,9 @@
 		/obj/item/dice/d20,
 	)
 
+	grid_height = 32
+	grid_width = 32
+
 /obj/item/storage/pill_bottle/dice/suicide_act(mob/user)
 	user.visible_message(span_suicide("[user] is gambling with death! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return (OXYLOSS)
