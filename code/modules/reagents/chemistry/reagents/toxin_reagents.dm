@@ -626,7 +626,7 @@
 
 /datum/reagent/toxin/spewium
 	name = "Spewium"
-	description = "A powerful emetic, causes uncontrollable vomiting."
+	description = "A powerful emetic, causes uncontrollable vomiting.  May result in vomiting organs at high doses."
 	reagent_state = LIQUID
 	color = "#2f6617" //A sickly green color
 	metabolization_rate = REAGENTS_METABOLISM
@@ -645,9 +645,8 @@
 /datum/reagent/toxin/spewium/overdose_process(mob/living/carbon/C)
 	. = ..()
 	if(current_cycle >=33 && prob(15))
-		//C.spew_organ()
+		C.spew_organ()
 		C.vomit(0, TRUE, TRUE, 4)
-		C.adjustToxLoss(3)
 		to_chat(C, span_danger("I feel something lumpy come up..."))
 
 /datum/reagent/toxin/curare
