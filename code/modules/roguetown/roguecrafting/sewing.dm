@@ -822,7 +822,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/shirt
 	name = "shirt (formal silks) - (5 silks; LOOM, JOURNEYMAN)"
-	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan)
+	result = list(/obj/item/clothing/suit/roguetown/shirt/grenzelhoft)
 	reqs = list(/obj/item/natural/silk = 5)
 	skill_level = 3
 
