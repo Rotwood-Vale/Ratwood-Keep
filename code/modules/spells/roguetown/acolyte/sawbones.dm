@@ -122,16 +122,19 @@
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		return TRUE
 	to_chat(user, span_warning("I need to prime their heart first."))
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
+		revert_cast()
 		return FALSE
 	var/found = null
 	for(var/obj/structure/bed/rogue/S in oview(5, user))
 		found = S
 	if(!found)
 		to_chat(user, span_warning("I need them on a bed."))
+		revert_cast()
 		return FALSE
 	return TRUE
 
@@ -206,12 +209,14 @@
 
 /obj/effect/proc_holder/spell/targeted/debride/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
+		revert_cast()
 		return FALSE
 	var/found = null
 	for(var/obj/structure/bed/rogue/S in oview(5, user))
 		found = S
 	if(!found)
 		to_chat(user, span_warning("I need to lay them on a bed"))
+		revert_cast()
 		return FALSE
 	return TRUE
 
@@ -236,6 +241,7 @@
 		target.adjustOxyLoss(-50)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
@@ -251,29 +257,37 @@
 		target.emote("rage")
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		var/obj/item/bodypart/BPA = target.get_bodypart(BODY_ZONE_R_ARM)
+		var/obj/item/bodypart/BPA = target.get_bodypart(user.zone_selected)
+		if(!BPA)
+			to_chat(user, span_warning("They're missing that part!"))
+			revert_cast()
+			return FALSE
 		BPA.add_wound(/datum/wound/artery/)
 		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]."))
 		target.adjustToxLoss(-999)
 		target.reagents.remove_all_type(/datum/reagent, 9999)
 		target.emote("scream")
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/purge/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
+		revert_cast()
 		return FALSE
 	var/found = null
 	for(var/obj/structure/bed/rogue/S in oview(2, user))
 		found = S
 	if(!found)
 		to_chat(user, span_warning("I need to lay them on a bed."))
+		revert_cast()
 		return FALSE
 	return TRUE
 
@@ -897,6 +911,7 @@
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "skit"
 	w_class = WEIGHT_CLASS_SMALL
+	slot_flags = ITEM_SLOT_HIP
 	throwforce = 1
 	slot_flags = null
 
