@@ -38,12 +38,12 @@
 
 /datum/outfit/job/roguetown/heir/daring/pre_equip(mob/living/carbon/human/H)
 	..()
+	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	pants = /obj/item/clothing/under/roguetown/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
-	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/sword
+	beltl = /obj/item/rogueweapon/sword/sabre
 	beltr = /obj/item/storage/keyring/heir
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -56,8 +56,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.change_stat("strength", 1)
@@ -76,16 +76,22 @@
 /datum/outfit/job/roguetown/heir/bookworm/pre_equip(mob/living/carbon/human/H)
 	..()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	pants = /obj/item/clothing/under/roguetown/tights/random
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
+		pants = /obj/item/clothing/under/roguetown/tights/random
+		armor = /obj/item/clothing/suit/roguetown/armor/longcoat
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	beltr = /obj/item/storage/keyring/heir
-	beltl = /obj/item/rogueweapon/huntingknife/idagger
+	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	backr = /obj/item/storage/backpack/rogue/satchel
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	mask = /obj/item/clothing/mask/rogue/spectacles
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
@@ -98,6 +104,7 @@
 	H.change_stat("intelligence", 2)
 	H.change_stat("speed", 1)
 	H.change_stat("constitution", -1)
+	H.change_stat("fortune", 1)
 
 /datum/advclass/heir/aristocrat
 	name = "Sheltered Aristocrat"
@@ -113,12 +120,13 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/heir
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	if(H.gender == MALE)
+	backr = /obj/item/storage/backpack/rogue/satchel
+	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		belt = /obj/item/storage/belt/rogue/leather
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
-	if(H.gender == FEMALE)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		head = /obj/item/clothing/head/roguetown/hennin
 		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
@@ -137,7 +145,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 		H.change_stat("perception", 2)
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 2)
@@ -161,7 +169,7 @@
 	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
-		belt = /obj/item/storage/belt/rogue/leather
+		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady

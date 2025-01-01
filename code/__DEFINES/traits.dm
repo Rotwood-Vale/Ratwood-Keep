@@ -47,6 +47,7 @@
 #define TRAIT_WOODSMAN "Talented Woodsman"
 #define TRAIT_INQUISITION "Member of the Otavan Inquisition"
 #define TRAIT_GOODTRAINER "Good Trainer"
+#define TRAIT_OUTDOORSMAN "Outdoorsman"
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
@@ -69,6 +70,7 @@
 #define TRAIT_CHOSEN "Astrata's Chosen"
 #define TRAIT_ABYSSOR_SWIM "Blessing of Abyssor" //less base fatigue drain when swimming
 #define TRAIT_XYLIX "Blessing of Xylix" //secret thieves cant language
+#define TRAIT_FORGEBLESSED "Blessing of Malum" //Reduces the fatigue cost of smithing a bit.
 
 // ASCENDANT CULTIST TRAITS (all of them recognize each other)
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
@@ -168,6 +170,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LONGSTRIDER = "Each of my steps finds it's footing no matter how treacherous the terrain is.",
 	TRAIT_TRAINED_SMITH = span_info("I've spent long training, and with some more, I will be able to smith legendary items."),
 	TRAIT_DEATHSIGHT = span_info("I can feel when someone nearby draws the Undermaiden's attention."),
+	TRAIT_FORGEBLESSED = span_info("Countless long nights spent forging metal have honed my endurance, allowing me to work an anvil far longer than most without tiring."),
 	TRAIT_XYLIX = span_info("I know how to speak in code that only fellow tricksters can understand."),
 	TRAIT_CABAL = span_info("In secret, I have studied the ways of Her ascension, and know of others of the Cabal."),
 	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED! I FEEL THE STRENGTH IN OTHERS WHO ARE THE SAME."),
@@ -175,7 +178,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GUIDANCE = span_info("Arcyne assistance guides my weapons."),
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
 	TRAIT_SILVER_BLESSED = span_info("I am anointed with holy silver, which preserves me from curses that bite."),
-	TRAIT_GOODTRAINER = span_info("I am a good teacher, and when it comes to weaponry I can train others to be just as skilled as I am.")
+	TRAIT_GOODTRAINER = span_info("I am a good teacher, and when it comes to weaponry I can train others to be just as skilled as I am."),
+	TRAIT_OUTDOORSMAN = span_info("My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds.")
 ))
 
 // trait accessor defines

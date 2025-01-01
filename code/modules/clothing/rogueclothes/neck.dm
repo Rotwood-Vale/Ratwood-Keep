@@ -191,7 +191,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"
-	desc = ""
+	desc = "'With every broken bone, I swore I lived!'"
 	icon_state = "psicross"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
@@ -247,12 +247,14 @@
 
 /obj/item/clothing/neck/roguetown/psicross/wood
 	name = "wooden psycross"
+	desc = "'A man with nothing can still have faith!'"
 	icon_state = "psycross_w"
 	item_state = "psycross_w"
 	sellprice = 0
 
 /obj/item/clothing/neck/roguetown/psicross/silver
 	name = "silver psycross"
+	desc = "'The horrors persist, but so do I!'"
 	icon_state = "psycross_s"
 	item_state = "psycross_s"
 	sellprice = 50
@@ -307,7 +309,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden psycross"
-	desc = ""
+	desc = "'Purity afloat, for paradise awaits!'"
 	icon_state = "psycross_g"
 	item_state = "psycross_g"
 	//dropshrink = 0.75
