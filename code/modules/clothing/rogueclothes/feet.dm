@@ -23,7 +23,7 @@
 	sewrepair = TRUE
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
 
-/obj/item/clothing/shoes/roguetown/boots/psydonboots
+/obj/item/clothing/shoes/roguetown/psydonboots
 	name = "psydonian boots"
 	desc = "Blacksteel-heeled boots. The leather refuses to be worn down, no matter how far you march through these lands."
 	color = "#d5c2aa"
