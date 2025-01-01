@@ -5303,11 +5303,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/church)
 "dlX" = (
-/obj/structure/closet/crate/chest{
-	lockid = "keep_armory";
-	pixel_x = 2;
-	pixel_y = 5
-	},
+/obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/woodturned,
@@ -8946,6 +8942,12 @@
 /obj/structure/flora/newleaf,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/shelter/druidgrove)
+"fvM" = (
+/obj/structure/closet/crate/chest,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town)
 "fwx" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/tile,
@@ -19601,10 +19603,7 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter/town/harbor)
 "lZQ" = (
-/obj/structure/closet/crate/chest{
-	lockid = "towner_farmer";
-	locked = 1
-	},
+/obj/structure/closet/crate/chest,
 /obj/item/seeds/apple,
 /obj/item/seeds/apple,
 /obj/item/seeds/wheat,
@@ -19720,10 +19719,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "mcc" = (
-/obj/structure/closet/crate/chest{
-	lockid = "towner_farmer";
-	locked = 1
-	},
+/obj/structure/closet/crate/chest,
 /obj/item/seeds/pipeweed,
 /obj/item/seeds/pipeweed,
 /obj/item/seeds/sweetleaf,
@@ -25760,9 +25756,8 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
 "pKw" = (
-/obj/structure/mineral_door/wood{
-	lockid = "towner_farmer";
-	locked = 1
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 8
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
@@ -37496,6 +37491,12 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/grassyel,
 /area/rogue/indoors/shelter/druidgrove)
+"wZa" = (
+/obj/structure/fluff/customsign{
+	name = "Fisher"
+	},
+/turf/closed/wall/mineral/rogue/wooddark/horizontal,
+/area/rogue/indoors/town)
 "wZp" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobble,
@@ -221620,7 +221621,7 @@ wSn
 wSn
 mrD
 bmi
-qAQ
+fvM
 qkH
 gkv
 gkv
@@ -238469,7 +238470,7 @@ dHZ
 rdY
 rdY
 oMJ
-rdY
+wZa
 dHZ
 qvR
 sjP
