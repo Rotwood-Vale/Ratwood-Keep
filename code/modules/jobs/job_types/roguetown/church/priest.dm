@@ -59,7 +59,7 @@
 		H.change_stat("strength", -1)
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", -1)
-		H.change_stat("endurance", 1)
+		H.change_stat("endurance", 2)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron) // This creates the cleric holder used for devotion spells
 	C.grant_spells_priest(H)
