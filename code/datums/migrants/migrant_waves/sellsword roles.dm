@@ -1,16 +1,13 @@
-/datum/subclass/sellsword
+/datum/migrant_role/sellsword/sellsword_merc
 	name = "Sellsword"
-	tutorial = "You are a common sellsword, regarded as scum by many. You travelled the isle working as a bodyguard, mercenary or a cutthroat. You're loyal to your own well being and the sounds mammons make in your pouch."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
-	outfit = /datum/outfit/job/roguetown/mercenary/sellsword
-	maximum_possible_slots = 10
-	min_pq = 0
+	min_pq = 2
+	outfit = /datum/outfit/job/roguetown/migrant_role/sellsword/sellsword_merc
 	torch = FALSE
-	category_tags = list(CTAG_MERCENARY)
 
 
-/datum/outfit/job/roguetown/mercenary/sellsword/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/migrant_role/sellsword/sellsword_merc/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
 	var/classes = list("Swordsman","Fencer", "Cutthroat")

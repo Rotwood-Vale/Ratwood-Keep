@@ -1,6 +1,5 @@
-/datum/subclass/desert_rider
+/datum/migrant_role/drider/desert_rider
 	name = "Desert Rider"
-	tutorial = "Hooded figures clad in red and easily identifiable by their distinctive emblem, the Desert Riders of Shalvistine are a loosely-governed society of mercenaries and refugees hailing from the fringes of the Zybantian Empire. You were riding saigaback before you could even walk, and you likely feel more at ease on four legs than two. Due to political unrest with neighboring Lalvestine, increasingly deadly sandstorms, or merely a sense of adventure, you find yourself with the Mercenaries’ Guild in Rockhill, selling your skills with the blade to those willing to pay."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/tieberian,
@@ -11,14 +10,12 @@
 		/datum/species/anthromorph,
 		/datum/species/elf/dark,
 	)
-	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider
-	maximum_possible_slots = 10
-	min_pq = 2
+	outfit = /datum/outfit/job/roguetown/drider/desert_rider
+	min_pq = 6
 	torch = FALSE
 	cmode_music = 'sound/music/combat_desertrider.ogg'
-	category_tags = list(CTAG_MERCENARY)
 
-/datum/outfit/job/roguetown/mercenary/desert_rider/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/drider/desert_rider/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal

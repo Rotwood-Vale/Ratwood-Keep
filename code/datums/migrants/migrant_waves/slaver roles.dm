@@ -4,6 +4,7 @@
 	outfit = /datum/outfit/job/roguetown/slaver/master
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
+	min_pq = 16
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
 
@@ -54,6 +55,7 @@
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercsword
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
+	min_pq = 14
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
@@ -158,6 +160,7 @@
 	outfit = /datum/outfit/job/roguetown/slaver/slavemercbow
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
+	min_pq = 14
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
@@ -210,6 +213,7 @@
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
+	min_pq = 20
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE

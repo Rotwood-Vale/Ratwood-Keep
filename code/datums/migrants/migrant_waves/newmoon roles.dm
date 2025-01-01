@@ -1,6 +1,5 @@
-/datum/subclass/newmoon
+/datum/migrant_role/newmoon/newmoon_merc
 	name = "New Moon Spellblade"
-	tutorial = "The New Moon Spellblades of Zybantia are the remnants of a fallen Nocite monastery in an unknown region of Lalvestine, the last major stronghold of the Ten in the Zybantian Empire. Their monastic lyfestyle and devotion collapsed quickly under the weight of the Rot, and they were forced from a lyfe of devout solitude into that of a common sellsword; Noc’s blessings proving rather useful when slaying monsters and Men alike. For whatever reason, you find yourself in Rockhill, offering your skills to the highest bidder. Knowledge is power, or so She says."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/tabaxi,
@@ -8,14 +7,12 @@
 		/datum/species/demihuman,
 		/datum/species/tieberian
 	)
-	outfit = /datum/outfit/job/roguetown/mercenary/newmoon
-	maximum_possible_slots = 10
-	min_pq = 4
+	outfit = /datum/outfit/job/roguetown/migrant_role/newmoon/newmoon_merc
+	min_pq = 16
 	torch = FALSE
 	cmode_music = 'sound/music/combat_desertrider.ogg'
-	category_tags = list(CTAG_MERCENARY)
 
-/datum/outfit/job/roguetown/mercenary/newmoon/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/migrant_role/newmoon/newmoon_merc/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
