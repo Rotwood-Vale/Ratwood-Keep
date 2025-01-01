@@ -24,11 +24,12 @@
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/shoes/roguetown/psydonboots
-	name = "enduring boots"
-	desc = "A reliable pair of dark leather boots. Seems like they could endure the world!"
-	color = "#d5c2aa"
+	name = "psydonian boots"
+	desc = "Blacksteel-heeled boots. The leather refuses to be worn down, no matter how far you march through these lands."
 	icon_state = "psydonboots"
 	item_state = "psydonboots"
+	sewrepair = TRUE
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/shoes/roguetown/nobleboot
 	name = "noble boots"
