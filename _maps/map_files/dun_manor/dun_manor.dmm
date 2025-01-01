@@ -1257,6 +1257,11 @@
 /obj/effect/decal/cobbleedge{
 	dir = 5
 	},
+/obj/structure/table/wood{
+	dir = 6;
+	icon_state = "largetable"
+	},
+/obj/item/book/rogue/law,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "aXA" = (
@@ -1976,19 +1981,6 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/tavern)
-"bDW" = (
-/obj/structure/fluff/walldeco/customflag{
-	pixel_y = -32
-	},
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/obj/item/reagent_containers/glass/cup/wooden{
-	pixel_y = 5
-	},
-/obj/machinery/light/rogue/wallfire/candle/l,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/garrison)
 "bEq" = (
 /obj/item/roguekey/farm,
 /obj/item/roguekey/farm,
@@ -2864,7 +2856,10 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/shelter/woods)
 "cvw" = (
-/obj/structure/fermenting_barrel/water,
+/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/structure/roguemachine/scomm{
+	pixel_y = -32
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "cvy" = (
@@ -6918,14 +6913,18 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/church/chapel)
 "gjG" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "largetable"
+	},
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
 /obj/structure/mineral_door/wood/deadbolt/shutter{
 	dir = 2;
 	lockdir = 1;
 	name = "counter hatch"
-	},
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "largetable"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town/garrison)
@@ -14657,6 +14656,7 @@
 /obj/structure/bars/grille{
 	density = 1
 	},
+/obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town/garrison)
 "njH" = (
@@ -17156,7 +17156,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/woods)
 "prO" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "prR" = (
@@ -24300,10 +24300,10 @@
 	icon_state = "cobbleedge-w"
 	},
 /obj/structure/table/wood{
-	dir = 6;
+	dir = 4;
 	icon_state = "largetable"
 	},
-/obj/item/book/rogue/law,
+/obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "vZe" = (
@@ -25197,11 +25197,7 @@
 /obj/effect/decal/cobbleedge{
 	dir = 8
 	},
-/obj/structure/bars/grille{
-	density = 1
-	},
-/obj/machinery/light/rogue/wallfire/candle/l,
-/turf/open/floor/rogue/cobblerock,
+/turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/town/garrison)
 "wLy" = (
 /obj/structure/closet/crate/roguecloset,
@@ -25514,6 +25510,12 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/woods)
+"wWa" = (
+/obj/structure/fluff/walldeco/customflag{
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/garrison)
 "wWu" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /obj/item/roguecoin/gold/pile,
@@ -26417,12 +26419,6 @@
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
-"xIE" = (
-/obj/structure/bars/grille{
-	density = 1
-	},
-/turf/closed,
-/area/rogue/indoors/town/garrison)
 "xIK" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -26718,9 +26714,9 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
 "xRO" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/exposed/town/keep)
+/obj/structure/bars/grille,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/town/garrison)
 "xSg" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -67004,7 +67000,7 @@ pkG
 sjW
 hRm
 vqp
-xIE
+vqp
 vqp
 oUz
 oUz
@@ -67163,7 +67159,7 @@ wLs
 wzd
 vYw
 aXp
-bDW
+oUz
 oUz
 ctF
 ctF
@@ -67473,7 +67469,7 @@ hRm
 hhg
 mVa
 uEp
-njf
+xRO
 spZ
 spZ
 spZ
@@ -67636,7 +67632,7 @@ oTI
 spZ
 nXi
 oBq
-dZn
+prO
 rzj
 haW
 goh
@@ -67791,7 +67787,7 @@ auX
 vQw
 jRc
 rBd
-jTe
+dZn
 dZn
 dZn
 rzj
@@ -67948,7 +67944,7 @@ oUz
 hRm
 hRm
 hRm
-oUz
+mjI
 dZn
 dZn
 hRm
@@ -68101,13 +68097,13 @@ gFH
 vvp
 xJI
 xJI
+xJI
 pPS
 xJI
-xJI
-xRO
 hRm
-prO
+hRm
 dZn
+wWa
 hRm
 pJQ
 dZn
@@ -68420,7 +68416,7 @@ qxD
 qxD
 wfx
 jsn
-oUz
+jsn
 iXt
 oUz
 oUz
