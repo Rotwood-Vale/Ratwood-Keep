@@ -63,8 +63,7 @@
 	if(src.no_early_release) //This is to stop half-channeled spells from casting as the repeated-casts somehow bypass into this function.
 		if(charge_progress < 100 && goal) //If it is not at 100% charge progress.
 			to_chat(usr, span_warning("Your [src.name] spell was not finished charging!"))
-			src.charge_counter = src.charge_max/2 //Lenient, a misfired spell gets half its cooldown refunded.
-			src.start_recharge()		  //We ensure the spell recharges as without, the recharging var can be set to false by switching away from the spell
+			src.revert_cast()
 			return FALSE
 	if(perform(list(target), TRUE, user = ranged_ability_user))
 		return TRUE
