@@ -20,6 +20,9 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sewrepair = TRUE
 
+	grid_height = 32
+	grid_width = 16
+
 /datum/intent/tie
 	name = "tie"
 	chargetime = 0
