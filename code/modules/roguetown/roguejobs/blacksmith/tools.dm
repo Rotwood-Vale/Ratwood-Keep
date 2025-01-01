@@ -48,7 +48,7 @@
 			attacked_prosthetic.burn_dam = max(attacked_prosthetic.burn_dam - repair_percent, 0)
 			total_damage = attacked_prosthetic.brute_dam + attacked_prosthetic.burn_dam
 			attacked_prosthetic.obj_integrity = min(attacked_prosthetic.obj_integrity + repair_percent, attacked_prosthetic.max_integrity)
-			attacked_prosthetic.heal_wounds(100) //yeah fuck it - wow50000
+			attacked_prosthetic.heal_wounds(100) //yeah fuck it, it's 2am and I've been coding since 6pm - wow50000
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_prosthetic]."))
 			else	
@@ -57,7 +57,8 @@
 			return
 		else
 			user.visible_message(span_warning("[user] damages [attacked_prosthetic]!"))
-			attacked_prosthetic.take_damage(attacked_prosthetic.max_damage * 0.1, BRUTE, "blunt")
+			attacked_prosthetic.take_damage(attacked_prosthetic.max_integrity * 0.1, BRUTE, "blunt")
+			attacked_prosthetic.brute_dam = (attacked_prosthetic.brute_dam + 0.1 * attacked_prosthetic.max_damage)
 			return
 
 	if(isitem(attacked_object) && !user.cmode)
