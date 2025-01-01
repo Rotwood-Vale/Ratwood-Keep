@@ -11,7 +11,7 @@ html, body {
 }
 body {
 	background: #000000;
-	font-family: Alegreya, TrueType;
+	font-family: Mookmania, TrueType;
 	font-size: 13px;
 	color: #c9c1ba;
 	line-height: 1.2;
@@ -246,7 +246,7 @@ a.popt {text-decoration: none;}
 ******************************************/
 
 /* MOTD */
-.motd {color: #c9c1ba;	font-family: Alegreya, TrueType;}
+.motd {color: #c9c1ba;	font-family: Mookmania, TrueType;}
 .motd h1, .motd h2, .motd h3, .motd h4, .motd h5, .motd h6 {color: #c9c1ba;	text-decoration: underline;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover {color: #c9c1ba;}
 
@@ -259,8 +259,8 @@ a.popt {text-decoration: none;}
 /* OUTPUT COLORS */
 .highlight {background: yellow;}
 
-h1, h2, h3, h4, h5, h6	{color: #c9c1ba;font-family: Alegreya, TrueType;}
-h1.alert, h2.alert	{color: #c9c1ba;font-family: Alegreya, TrueType;}
+h1, h2, h3, h4, h5, h6	{color: #c9c1ba;font-family: Mookmania, TrueType;}
+h1.alert, h2.alert	{color: #c9c1ba;font-family: Mookmania, TrueType;}
 
 em						{font-style: normal;	font-weight: bold;}
 
