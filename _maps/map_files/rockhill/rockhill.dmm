@@ -31106,6 +31106,15 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/harbor)
+"tfp" = (
+/obj/item/clothing/cloak/templar/astratan,
+/obj/item/clothing/cloak/templar/astratan,
+/obj/structure/rack/rogue,
+/obj/item/clothing/cloak/tabard,
+/obj/item/clothing/cloak/tabard,
+/obj/item/clothing/cloak/tabard,
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/church)
 "tfJ" = (
 /obj/structure/fluff/statue/tdummy,
 /turf/open/floor/rogue/ruinedwood,
@@ -570642,7 +570651,7 @@ kXx
 tBL
 eCn
 pap
-tBL
+tfp
 nrX
 oFl
 moU
