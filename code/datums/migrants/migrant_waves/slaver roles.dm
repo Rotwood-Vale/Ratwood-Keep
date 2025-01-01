@@ -46,6 +46,7 @@
 		H.change_stat("constitution", 2)
 		H.change_stat("endurance", 2)
 		H.cmode_music = 'sound/music/combat_zybantine.ogg'
+		
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 
@@ -99,6 +100,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.cmode_music = 'sound/music/combat_zybantine.ogg'
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 
@@ -151,6 +153,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.cmode_music = 'sound/music/combat_zybantine.ogg'
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 
@@ -204,6 +207,7 @@
 		H.change_stat("intelligence", 3)
 		H.change_stat("endurance", 2)
 		H.cmode_music = 'sound/music/combat_zybantine.ogg'
+
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 
@@ -246,4 +250,5 @@
 		H.change_stat("intelligence", 3)
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", -1)
+
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)

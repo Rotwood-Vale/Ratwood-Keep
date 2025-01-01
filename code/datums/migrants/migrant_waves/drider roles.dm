@@ -59,4 +59,5 @@
 		H.change_stat("perception", 1)
 		H.change_stat("speed", 2)
 		H.cmode_music = 'sound/music/combat_desertrider.ogg'
+		
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

@@ -42,4 +42,5 @@
 		H.change_stat("perception", 1)
 		H.change_stat("speed", 1)
 		H.cmode_music = 'sound/music/combat_forlorn.ogg'
+		
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
