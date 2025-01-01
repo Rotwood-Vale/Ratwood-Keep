@@ -25,13 +25,12 @@
 
 /obj/item/clothing/shoes/roguetown/psydonboots
 	name = "psydonian boots"
-	desc = "Blacksteel-heeled boots. The leather refuses to be worn down, no matter how far you march through these lands.
+	desc = "Blacksteel-heeled boots. The leather refuses to be worn down, no matter how far you march through these lands."
 	color = "#d5c2aa"
-    gender = PLURAL
 	icon_state = "psydonboots"
 	item_state = "psydonboots"
     sewrepair = TRUE
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/shoes/roguetown/nobleboot
 	name = "noble boots"
