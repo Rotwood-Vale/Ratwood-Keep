@@ -913,7 +913,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_HIP
 	throwforce = 1
-	slot_flags = null
 
 /obj/item/storage/fancy/skit/update_icon()
 	if(fancy_open)
