@@ -65,7 +65,7 @@
 			H.change_stat("fortune", -1)
 
 		if("Drunkard")
-			r_hand = /obj/item/reagent_containers/glass/bottle/rogue/wine = 1
+			r_hand = /obj/item/reagent_containers/glass/bottle/rogue/wine
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random

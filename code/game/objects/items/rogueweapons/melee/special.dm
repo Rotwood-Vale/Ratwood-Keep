@@ -107,6 +107,9 @@
 	var/charge = 100
 	var/on = FALSE
 
+	grid_height = 96
+	grid_width = 64
+
 /obj/item/rogueweapon/mace/stunmace/getonmobprop(tag)
 	. = ..()
 	if(tag)

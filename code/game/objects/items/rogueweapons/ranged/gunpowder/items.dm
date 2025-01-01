@@ -7,7 +7,7 @@
 	slot_flags = SLOT_BELT_L | SLOT_BELT_R | ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_SMALL
 	grid_height = 64
-	grid_width = 16
+	grid_width = 32
 
 
 /obj/item/powderflask
@@ -18,5 +18,5 @@
 	item_state = "powderflask"
 	slot_flags = SLOT_BELT_L | SLOT_BELT_R | ITEM_SLOT_NECK | ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_SMALL
-	grid_height = 32
-	grid_width = 16
+	grid_height = 64
+	grid_width = 32
