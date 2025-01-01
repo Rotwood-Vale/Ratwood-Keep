@@ -1,6 +1,6 @@
 /datum/migrant_wave/drider
 	name = "Desert Rider Mercenaries"
-	max_spawns = 2
+	max_spawns = 1
 	weight = 80
 	downgrade_wave = /datum/migrant_wave/drider_down_one
 	roles = list(

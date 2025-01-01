@@ -1,6 +1,6 @@
 /datum/migrant_wave/sellsword_merc
 	name = "Sellswords"
-	max_spawns = 3
+	max_spawns = 1
 	weight = 110
 	downgrade_wave = /datum/migrant_wave/sellsword_down_one
 	roles = list(
