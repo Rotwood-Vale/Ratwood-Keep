@@ -1,6 +1,5 @@
 /datum/migrant_wave/forlorn/forlorn_merc
 	name = "Forlorn Hope Mercenary"
-	tutorial = 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin)
 	outfit = /datum/outfit/job/roguetown/forlorn
