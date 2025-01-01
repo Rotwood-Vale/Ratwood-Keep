@@ -128,13 +128,14 @@
 			ResetAdjust(user)
 
 /obj/item/clothing/head/roguetown/eoramask
-	name = "opera visage"
+	name = "eoran mask"
 	desc = "A silver opera mask worn by the faithful of Eora, usually during their rituals."
 	icon_state = "eoramask"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	dynamic_hair_suffix = ""
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
 	resistance_flags = FIRE_PROOF // Made of metal
 
 /obj/item/clothing/head/roguetown/roguehood/astrata
