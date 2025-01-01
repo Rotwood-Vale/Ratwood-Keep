@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Architect",
 	"Artificer",
 	"Scribe",
-	"Village Elder",
+	"Mayor",
 	"Harbormaster",
 	"Longshoreman",
 ))
