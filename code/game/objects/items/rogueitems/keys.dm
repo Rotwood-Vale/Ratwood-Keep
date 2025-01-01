@@ -15,7 +15,7 @@
 	drop_sound = 'sound/items/gems (1).ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 
-	grid_height = 64
+	grid_height = 32
 	grid_width = 32
 
 /obj/item/key/Initialize()
