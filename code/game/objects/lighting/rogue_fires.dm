@@ -2,8 +2,8 @@
 	name = "brazier"
 	icon = 'icons/roguetown/misc/lighting.dmi'
 	icon_state = "stonefire1"
-	bulb_colour = "#e08853"
-	brightness = 14
+	bulb_colour = "#ffa35c"
+	brightness = 12
 	density = TRUE
 //	pixel_y = 10
 	base_state = "stonefire"
@@ -102,7 +102,7 @@
 	name = "fireplace"
 	icon_state = "wallfire1"
 	base_state = "wallfire"
-	brightness = 12
+	brightness = 10
 	bulb_colour = "#ffa35c"
 	density = FALSE
 	fueluse = 0
@@ -172,7 +172,6 @@
 	name = "sconce"
 	icon_state = "torchwall1"
 	base_state = "torchwall"
-	brightness = 12
 	density = FALSE
 	var/obj/item/flashlight/flare/torch/torchy
 	fueluse = FALSE //we use the torch's fuel
