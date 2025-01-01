@@ -112,18 +112,27 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
 		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-				to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+		if(V)
+			if(V.disguised)
+				to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
 				H.Knockdown(10)
 				H.Paralyze(10)
+				H.adjustFireLoss(40)
+				H.fire_act(1,10)
+			else
+				to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.adjustFireLoss(40)
+				H.fire_act(1,10)
+		if(V_lord)
+			to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(40)
+			H.fire_act(1,10)
 		if(W && W.transformed == TRUE)
 			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
 			H.Knockdown(10)
@@ -133,7 +142,7 @@
 
 
 /obj/item/rogueweapon/woodstaff/aries/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
-	if(world.time < src.last_used + 120) // 20 ticks more than normal silver.
+	if(world.time < src.last_used + 100)
 		to_chat(user, span_notice("The silver effect is on cooldown."))
 		return
 
