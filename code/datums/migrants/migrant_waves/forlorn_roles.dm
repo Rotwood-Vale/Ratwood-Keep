@@ -5,7 +5,7 @@
 		/datum/species/lupian, 
 		/datum/species/vulpkanin
 	)
-	outfit = /datum/outfit/job/roguetown/forlorn
+	outfit = /datum/outfit/job/roguetown/forlorn/forlorn_merc
 	min_pq = 12
 	category_tags = list(CTAG_MERCENARY)
 

@@ -5,7 +5,7 @@
 	outfit = /datum/outfit/job/roguetown/migrant_role/sellsword/sellsword_merc
 	min_pq = 2
 	category_tags = list(CTAG_MERCENARY)
-	
+
 /datum/outfit/job/roguetown/migrant_role/sellsword/sellsword_merc/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)

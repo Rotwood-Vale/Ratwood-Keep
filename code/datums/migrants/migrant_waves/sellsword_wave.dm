@@ -2,7 +2,7 @@
 	name = "Sellswords"
 	max_spawns = 1
 	weight = 110
-	downgrade_wave = /datum/migrant_wave/sellsword_down_one
+	downgrade_wave = /datum/migrant_wave/sellsword_merc_down_one
 	roles = list(
 		/datum/migrant_role/sellsword/sellsword_merc = 3
 	)
@@ -11,7 +11,7 @@
 /datum/migrant_wave/sellsword_merc_down_one
 	name = "Sellswords"
 	shared_wave_type = /datum/migrant_wave/sellsword_merc
-	downgrade_wave = /datum/migrant_wave/sellsword_last
+	downgrade_wave = /datum/migrant_wave/sellsword_merc_last
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/sellsword/sellsword_merc = 2

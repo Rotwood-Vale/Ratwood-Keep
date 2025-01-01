@@ -17,7 +17,7 @@
 		/datum/species/anthromorph,
 		/datum/species/tabaxi
 	)
-	outfit = /datum/outfit/job/roguetown/migrant_wave/grenzelhoft_kommandant
+	outfit = /datum/outfit/job/roguetown/migrant_wave/grenzelhoft/grenzelhoft_kommandant
 	min_pq = 20
 	category_tags = list(CTAG_MERCENARY)
 
