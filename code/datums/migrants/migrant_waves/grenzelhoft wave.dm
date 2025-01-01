@@ -11,7 +11,6 @@
 
 /datum/migrant_wave/grenzelhoft_down_two
 	name = "Grenzelhoft Mercs"
-
 	shared_wave_type = /datum/migrant_wave/grenzelhoft
 	downgrade_wave = /datum/migrant_wave/grenzelhoft_down_three
 	can_roll = FALSE
@@ -24,7 +23,6 @@
 
 /datum/migrant_wave/grenzelhoft_down_three
 	name = "Grenzelhoft Mercs"
-
 	shared_wave_type = /datum/migrant_wave/grenzelhoft
 	downgrade_wave = /datum/migrant_wave/grenzelhoft_last
 	can_roll = FALSE
@@ -36,7 +34,6 @@
 
 /datum/migrant_wave/grenzelhoft_last
 	name = "Grenzelhoft Mercs"
-
 	shared_wave_type = /datum/migrant_wave/grenzelhoft
 	can_roll = FALSE
 	roles = list(
