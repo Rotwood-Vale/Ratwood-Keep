@@ -20,14 +20,13 @@
 /obj/item/storage/keyring/Initialize()
 	. = ..()
 	for(var/X in keys)
-		new X(src)
 		var/obj/item/key/new_key = new X(loc)
 		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_key, null, TRUE, TRUE))
 			qdel(new_key)
 
 	update_icon()
 	update_desc()
-
+	
 /obj/item/storage/keyring/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
 	if(CP)
