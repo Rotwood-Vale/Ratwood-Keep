@@ -7,6 +7,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/forlorn
 	min_pq = 12
+	category_tags = list(CTAG_MERCENARY)
 
 /datum/outfit/job/roguetown/forlorn/forlorn_merc/pre_equip(mob/living/carbon/human/H)
 	..()
