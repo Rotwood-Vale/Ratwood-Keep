@@ -149,6 +149,7 @@
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
 			cloak = /obj/item/clothing/cloak/templar/malumite
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/malum
+			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue)
 		if(/datum/patron/old_god)
 			wrists = /obj/item/clothing/neck/roguetown/psicross
 			cloak = /obj/item/clothing/cloak/tabard/crusader/psydon
