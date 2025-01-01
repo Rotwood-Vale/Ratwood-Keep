@@ -10124,9 +10124,9 @@
 /area/rogue/under/town/sewer)
 "jiL" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/shoes/roguetown/psydonboots,
-/obj/item/clothing/shoes/roguetown/psydonboots,
-/obj/item/clothing/shoes/roguetown/psydonboots,
+/obj/item/clothing/shoes/roguetown/boots/psydonboots,
+/obj/item/clothing/shoes/roguetown/boots/psydonboots,
+/obj/item/clothing/shoes/roguetown/boots/psydonboots,
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm,
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm,
 /obj/item/clothing/head/roguetown/roguehood/psydon,
