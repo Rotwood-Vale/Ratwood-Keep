@@ -1,7 +1,10 @@
 /datum/migrant_wave/forlorn/forlorn_merc
 	name = "Forlorn Hope Mercenary"
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin)
+	allowed_races = list(
+		/datum/species/lupian, 
+		/datum/species/vulpkanin
+	)
 	outfit = /datum/outfit/job/roguetown/forlorn
 	min_pq = 12
 
@@ -42,5 +45,5 @@
 		H.change_stat("perception", 1)
 		H.change_stat("speed", 1)
 		H.cmode_music = 'sound/music/combat_forlorn.ogg'
-		
+
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
