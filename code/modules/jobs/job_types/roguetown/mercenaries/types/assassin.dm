@@ -1,7 +1,7 @@
 /datum/subclass/assassin
     name = "Dark Elf Assassin"
     tutorial = "Cloaked figures shrouded in darkness. Skilled in the arts of subterfuge and assassination."
-    allowed_sexes = list(FEMALE)
+    allowed_sexes = list(FEMALE, MALE)
     allowed_races = list(/datum/species/elf/dark)
     outfit = /datum/outfit/job/roguetown/mercenary/assassin
     maximum_possible_slots = 10
@@ -36,10 +36,10 @@
         H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
         H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
         H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+        H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
         H.change_stat("strength", -1)
-		H.change_stat("constitution", -1)
-		H.change_stat("endurance", 1)
+        H.change_stat("constitution", -1)
+        H.change_stat("endurance", 1)
         H.change_stat("speed", 2)
         H.change_stat("perception", 1)
     ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
