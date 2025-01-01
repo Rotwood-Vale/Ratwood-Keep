@@ -41,7 +41,10 @@
 	. = ..()
 	if(!.)
 		return
-	return bodypart.has_wound(/datum/wound/fracture)
+	var/datum/wound/fracture/bone = bodypart.has_wound(/datum/wound/fracture)
+	if(!bone || !bone.can_set) // No wound? Return. Wound exists but the bone has already been set or can't be set? Return.
+		return
+	return bone
 
 /datum/surgery_step/set_bone/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target, span_notice("I begin to set the bone in [target]'s [parse_zone(target_zone)]..."),

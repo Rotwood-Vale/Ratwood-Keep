@@ -113,6 +113,7 @@
 	/// This job is a "wanderer" on examine
 	var/wanderer_examine = FALSE
 	var/foreign_examine = FALSE
+	var/mercenary_examine = FALSE
 
 	/// This job uses refugee classes on examine
 	var/advjob_examine = FALSE
@@ -140,6 +141,13 @@
 	How this works, they get one extra roll on every category per PQ amount
 */
 	var/PQ_boost_divider = 0
+
+	//Prevents Job from being in families.
+	var/family_blacklisted = FALSE
+
+	//If characters with this job should be added to the Lord's family.
+	var/ruler_family = FALSE
+	var/lord_rel_type = REL_TYPE_RELATIVE
 
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
