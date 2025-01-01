@@ -157,14 +157,14 @@
 				H.Knockdown(10)
 				H.Paralyze(10)
 				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
-				to_chat(H, span_userdanger("I'm hit by my BLESSED SILVER!"))
+				to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
 				H.adjustFireLoss(25)
 				H.fire_act(1,10)
 				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 				src.last_used = world.time
 			else
 				H.Stun(20)
-				to_chat(H, span_userdanger("I'm hit by my BLESSED SILVER!"))
+				to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
 				H.Knockdown(10)
 				H.Paralyze(10)
 				H.adjustFireLoss(25)
