@@ -4,8 +4,6 @@
 	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin)
 	outfit = /datum/outfit/job/roguetown/forlorn
 	min_pq = 12
-	torch = FALSE
-	cmode_music = 'sound/music/combat_forlorn.ogg'
 
 /datum/outfit/job/roguetown/forlorn/forlorn_merc/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -43,4 +41,5 @@
 		H.change_stat("constitution", 2)
 		H.change_stat("perception", 1)
 		H.change_stat("speed", 1)
+		H.cmode_music = 'sound/music/combat_forlorn.ogg'
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

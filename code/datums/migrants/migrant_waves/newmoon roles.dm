@@ -9,8 +9,6 @@
 	)
 	outfit = /datum/outfit/job/roguetown/migrant_role/newmoon/newmoon_merc
 	min_pq = 16
-	torch = FALSE
-	cmode_music = 'sound/music/combat_desertrider.ogg'
 
 /datum/outfit/job/roguetown/migrant_role/newmoon/newmoon_merc/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -59,5 +57,6 @@
 		H.change_stat("constitution", -2)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 2)
+		H.cmode_music = 'sound/music/combat_desertrider.ogg'
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

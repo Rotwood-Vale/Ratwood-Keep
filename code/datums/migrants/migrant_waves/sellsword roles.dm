@@ -4,8 +4,6 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	min_pq = 2
 	outfit = /datum/outfit/job/roguetown/migrant_role/sellsword/sellsword_merc
-	torch = FALSE
-
 
 /datum/outfit/job/roguetown/migrant_role/sellsword/sellsword_merc/pre_equip(mob/living/carbon/human/H)
 	..()

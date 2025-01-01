@@ -1320,6 +1320,7 @@
 #include "code\modules\jobs\job_types\roguetown\goblin\goblinshaman.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\goblinsmith.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\guild_clerk.dm"
+#include "code\modules\jobs\job_types\roguetown\mercenaries\mercenary.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\merch_merc.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\seelie.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\captain.dm"

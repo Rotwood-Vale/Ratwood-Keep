@@ -19,8 +19,6 @@
 	)
 	outfit = /datum/outfit/job/roguetown/migrant_wave/grenzelhoft_kommandant
 	min_pq = 20
-	torch = FALSE
-	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 
 /datum/outfit/job/roguetown/migrant_wave/grenzelhoft/grenzelhoft_kommandant/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -63,6 +61,7 @@
 		H.change_stat("constitution", 2)
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 2)
+		H.cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
@@ -83,8 +82,6 @@
 	)
 	outfit = /datum/outfit/job/roguetown/migrant_wave/grenzelhoft/grenzelhoft_mercenary
 	min_pq = 15
-	torch = FALSE
-	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 
 /datum/outfit/job/roguetown/migrant_wave/grenzelhoft/grenzelhoft_mercenary/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -143,5 +140,6 @@
 		H.change_stat("constitution", 2)
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 1)
+		H.cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
