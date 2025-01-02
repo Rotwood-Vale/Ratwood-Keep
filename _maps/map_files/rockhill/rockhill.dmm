@@ -140,6 +140,12 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
+"adE" = (
+/obj/structure/chair/wood/rogue/fancy{
+	dir = 1
+	},
+/turf/open/floor/rogue/tile/masonic/single,
+/area/rogue/indoors/town/manor)
 "adL" = (
 /obj/effect/decal/cobbleedge{
 	dir = 4;
@@ -2479,6 +2485,7 @@
 	locked = 1;
 	lockid = "councillor"
 	},
+/obj/item/storage/keyring/marshal,
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
 "bxH" = (
@@ -19655,6 +19662,10 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/church/chapel)
+"mao" = (
+/obj/structure/mannequin/male,
+/turf/open/floor/rogue/tile/masonic/single,
+/area/rogue/indoors/town/manor)
 "maA" = (
 /obj/structure/bearpelt,
 /obj/structure/fluff/wallclock{
@@ -35558,6 +35569,9 @@
 /area/rogue/outdoors/town)
 "vKN" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/structure/table/wood{
+	icon_state = "tablewood3"
+	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
 "vKQ" = (
@@ -543411,7 +543425,7 @@ nPt
 rdP
 rdP
 naI
-tgZ
+mao
 tgZ
 tgZ
 tgZ
@@ -543846,7 +543860,7 @@ naI
 tkS
 tgZ
 vKN
-tgZ
+adE
 wtF
 jOv
 xdI
