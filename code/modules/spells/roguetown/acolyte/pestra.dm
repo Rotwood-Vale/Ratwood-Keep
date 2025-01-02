@@ -158,6 +158,12 @@
 		testing("curerot1")
 		var/mob/living/target = targets[1]
 		if(target == user)
+			revert_cast()
+			return FALSE
+		// If, for whatever reason, someone manages to capture a vampire with (somehow) rot??? This prevents them from losing their undead biotype.
+		if(target.mind?.has_antag_datum(/datum/antagonist/vampire) || target.mind?.has_antag_datum(/datum/antagonist/vampire/lesser) || target.mind?.has_antag_datum(/datum/antagonist/vampirelord))
+			to_chat(user, span_warning("It's of an incurable evil, I can't."))
+			revert_cast()
 			return FALSE
 		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
 
@@ -180,11 +186,26 @@
 
 		if(iscarbon(target))
 			var/mob/living/carbon/stinky = target
-			for(var/obj/item/bodypart/rotty in stinky.bodyparts)
-				rotty.rotted = FALSE
-				rotty.skeletonized = FALSE
-				rotty.update_limb()
-				rotty.update_disabled()
+			for(var/obj/item/bodypart/limb in stinky.bodyparts)
+				limb.rotted = FALSE
+				limb.skeletonized = FALSE
+				limb.update_limb()
+				limb.update_disabled()
+		
+		// un-deadite'ing process
+		target.mob_biotypes &= ~MOB_UNDEAD // the zombie antag on_loss() does this as well, but this is for the times it doesn't work properly. We check if they're any special undead role first.
+		
+		for(var/trait in GLOB.traits_deadite)
+			REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
+	
+		if(target.stat < DEAD) // Drag and shove ghost back in.
+			var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
+			if(underworld_spirit)
+				var/mob/dead/observer/ghost = underworld_spirit.ghostize()
+				ghost.mind.transfer_to(target, TRUE)
+				qdel(underworld_spirit)
+		target.grab_ghost(force = TRUE) // even suicides
+
 		target.update_body()
 		target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
 		if(target.mind?.funeral && (target.stat != DEAD) && !CONFIG_GET(flag/force_respawn_on_funeral))
