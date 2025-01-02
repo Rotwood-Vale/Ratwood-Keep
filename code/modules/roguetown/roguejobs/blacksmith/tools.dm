@@ -149,6 +149,9 @@
 	var/hott = FALSE
 	smeltresult = /obj/item/ingot/iron
 
+	grid_height = 64
+	grid_width = 32
+
 /obj/item/rogueweapon/tongs/examine(mob/user)
 	. = ..()
 	if(hott)
