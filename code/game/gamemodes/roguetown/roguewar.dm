@@ -122,7 +122,7 @@
 	"Gatemaster",
 	"Retinue Captain",
 	"Inquisitor",
-	"Village Elder",
+	"Mayor",
 	"Watchman")
 	var/num_bandits = 0
 	if(num_players() >= 10)

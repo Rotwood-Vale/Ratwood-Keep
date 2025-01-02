@@ -26,7 +26,6 @@
 /datum/outfit/job/roguetown/physician
 	name = "Physician"
 	jobtype = /datum/job/roguetown/physician
-	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/inhumen/graggar)
 
 /datum/outfit/job/roguetown/physician/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -48,7 +47,6 @@
 	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1, /obj/item/clothing/mask/rogue/pestra/court = 1, /obj/item/thermometer = 1)
 	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
-	ADD_TRAIT(H, TRAIT_ROT_EATER, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)

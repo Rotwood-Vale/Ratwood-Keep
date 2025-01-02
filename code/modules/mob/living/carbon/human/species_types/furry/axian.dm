@@ -1,9 +1,9 @@
-/mob/living/carbon/human/species/akula
-	race = /datum/species/akula
+/mob/living/carbon/human/species/axian
+	race = /datum/species/axian
 
-/datum/species/akula
+/datum/species/axian
 	name = "Axian"
-	id = "akula"
+	id = "axian"
 	desc = "<b>Axian</b><br>\
 	Axians are a proud, shark-like people that have a heritage founded in maritime trade, tax evasion, and piracy. \
 	While known for being strong in spirit and promoting robust commercial practices, they have gained infamy for \
@@ -121,7 +121,7 @@
 		/datum/descriptor_choice/prominent_four,
 	)
 
-/datum/species/akula/random_name(gender,unique,lastname)
+/datum/species/axian/random_name(gender,unique,lastname)
 	var/randname
 	if(gender == MALE)
 		randname = pick(world.file2list("strings/names/roguetown/axianmale.txt"))
@@ -137,27 +137,24 @@
 		randname = "[randname] [suffix]"
 	return randname
 
-/datum/species/akula/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/axian/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-/datum/species/akula/on_species_loss(mob/living/carbon/C)
+/datum/species/axian/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/akula/get_accent(mob/living/carbon/human/H)
-	return strings("pirate_replacement.json", "pirate")
-
-/datum/species/akula/check_roundstart_eligible()
+/datum/species/axian/check_roundstart_eligible()
 	return TRUE
 
-/datum/species/akula/qualifies_for_rank(rank, list/features)
+/datum/species/axian/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/akula/get_random_body_markings(list/passed_features)
+/datum/species/axian/get_random_body_markings(list/passed_features)
 	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[/datum/body_marking_set/belly], passed_features, src)
 
-/datum/species/akula/get_random_features()
+/datum/species/axian/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
@@ -184,7 +181,7 @@
 	returned["mcolor3"] = second_color
 	return returned
 
-/datum/species/akula/random_name(gender,unique,lastname)
+/datum/species/axian/random_name(gender,unique,lastname)
 	var/randname
 	if(gender == MALE)
 		randname = pick(world.file2list("strings/names/roguetown/axianmale.txt"))
@@ -199,11 +196,3 @@
 		var/suffix = pick(world.file2list("strings/names/roguetown/axiansuffix.txt"))
 		randname = "[randname] [suffix]"
 	return randname
-
-/datum/species/akula/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	..()
-	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-
-/datum/species/akula/on_species_loss(mob/living/carbon/C)
-	. = ..()
-	UnregisterSignal(C, COMSIG_MOB_SAY)
