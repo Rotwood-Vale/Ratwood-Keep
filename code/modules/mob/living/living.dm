@@ -1522,6 +1522,12 @@
 			stickstand = TRUE
 
 	var/canstand_involuntary = conscious && !stat_softcrit && !knockdown && !chokehold && !paralyzed && ( ignore_legs || ((has_legs >= 2) || (has_legs == 1 && stickstand)) ) && !(buckled && buckled.buckle_lying)
+
+	if(canstand_involuntary)
+		mobility_flags |= MOBILITY_CANSTAND
+	else
+		mobility_flags &= ~MOBILITY_CANSTAND
+
 	var/canstand = canstand_involuntary && !resting
 
 	var/should_be_lying = !canstand

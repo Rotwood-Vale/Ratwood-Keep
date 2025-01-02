@@ -91,7 +91,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/gloves/roguetown/chain/psydon
-	name = "otavan chain gauntlets"
+	name = "psydonian gloves"
+	desc = "Blacksteel-bound gauntlets. These ritualistic restraints, when left to dangle-and-sway, assist in the deflection of unpredictable blows."
 	icon_state = "psydongloveschain"
 	item_state = "psydongloveschains"
 
@@ -117,6 +118,12 @@
 	anvilrepair = null
 	sewrepair = TRUE
 	allowed_race = NON_DWARVEN_RACE_TYPES
+
+/obj/item/clothing/gloves/roguetown/otavan/inqgloves
+	name = "inquisitorial leather gloves"
+	desc = "Masterfully crafted leather gloves, psycross included."
+	icon_state = "inqgloves"
+	item_state = "inqgloves"
 
 //rogtodo sprites for this
 /obj/item/clothing/gloves/roguetown/plate

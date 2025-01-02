@@ -631,6 +631,8 @@
 		if(!internal_organs.len)
 			break //Guess we're out of organs!
 		var/obj/item/organ/guts = pick(internal_organs)
+		if(istype(guts, /obj/item/organ/brain)) //Don't hurl brains for mind sanity reasons
+			continue
 		var/turf/T = get_turf(src)
 		guts.Remove(src)
 		guts.forceMove(T)

@@ -44,10 +44,10 @@
 /datum/intent/flail/strike/smash
 	name = "smash"
 	chargetime = 5
+	chargedrain = 2
 	no_early_release = TRUE
 	penfactor = 80
 	recovery = 10
-	swingdelay = 7
 	damfactor = 1.2
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
@@ -60,12 +60,12 @@
 /datum/intent/flail/strike/smashrange
 	name = "ranged smash"
 	chargetime = 25
+	chargedrain = 2
 	no_early_release = TRUE
 	penfactor = 50
 	recovery = 30
-	damfactor = 1.5
+	damfactor = 1.2
 	reach = 2
-	swingdelay = 8
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
 	icon_state = "insmash"

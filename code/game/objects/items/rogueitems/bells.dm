@@ -93,3 +93,16 @@
 	else
 
 		return ..()
+
+/obj/item/jingle_bells
+	name = "jingling bells"
+	desc = "A set of little bells that make a satifying ring when jostled."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "bells"
+	throwforce = 5
+	dropshrink = 0.5
+	drop_sound = SFX_JINGLE_BELLS
+
+/obj/item/jingle_bells/Initialize()
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_JINGLE_BELLS)
