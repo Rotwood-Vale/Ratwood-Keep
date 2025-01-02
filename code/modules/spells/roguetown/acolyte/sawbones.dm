@@ -857,13 +857,11 @@
 /obj/item/storage/fancy/pilltin/wake
 	name = "pill tin (wake)"
 
-/obj/item/storage/fancy/pilltin/wake
 	populate_contents = list(
 		/obj/item/reagent_containers/pill/caffpill,
 		/obj/item/reagent_containers/pill/caffpill,
 		/obj/item/reagent_containers/pill/caffpill
 	)
-
 
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
@@ -956,10 +954,15 @@
 	throwforce = 1
 	slot_flags = null
 
-/obj/item/storage/fancy/ifak/PopulateContents()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	for(var/i = 1 to STR.max_items)
-		new spawn_type(src)
+	populate_contents = list(
+		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
+		/obj/item/natural/bundle/cloth/bandage/full,
+		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
+		/obj/item/reagent_containers/pill/pnkpill,
+		/obj/item/candle/yellow,
+		/obj/item/needle,
+		/obj/item/book/rogue/medical_notebook
+	)
 
 /obj/item/storage/fancy/ifak/update_icon()
 	if(fancy_open)
@@ -1018,18 +1021,8 @@
 		/obj/item/needle,
 		/obj/item/needle/thorn,
 		/obj/item/needle/pestra,
-	))
-
-/obj/item/storage/fancy/ifak
-	populate_contents = list(
-		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
-		/obj/item/natural/bundle/cloth/bandage/full,
-		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
-		/obj/item/reagent_containers/pill/pnkpill,
-		/obj/item/candle/yellow,
-		/obj/item/needle,
 		/obj/item/book/rogue/medical_notebook
-	)
+	))
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"
