@@ -42,8 +42,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/cloak/psydontabard
-	name = "inquisitorial tabard"
-	desc = "A long vest bearing Psydonian symbology"
+	name = "psydonian tabard"
+	desc = "A tabard worn by Psydon's disciples. Delicate stitchwork professes the psycross with pride."
 	color = null
 	icon_state = "psydontabard"
 	item_state = "psydontabard"
@@ -51,13 +51,13 @@
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
-	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
 	var/open_wear = FALSE
 
 /obj/item/clothing/cloak/psydontabard/alt
-	name = "open otavan tabard"
-	desc = "A long vest bearing Psydonian symbology"
+	name = "opened psydonian tabard"
+	desc = "A tabard worn by Psydon's disciples, peeled back to reveal its enduring innards."
 	body_parts_covered = GROIN
 	icon_state = "psydontabardalt"
 	item_state = "psydontabardalt"
@@ -67,23 +67,23 @@
 /obj/item/clothing/cloak/psydontabard/attack_right(mob/user)
 	switch(open_wear)
 		if(FALSE)
-			name = "inquisitorial tabard"
-			desc = "A long vest bearing Psydonian symbology"
+			name = "opened psydonian tabard"
+			desc = "A tabard worn by Psydon's disciples, peeled back to reveal its enduring innards."
 			body_parts_covered = GROIN
 			icon_state = "psydontabardalt"
 			item_state = "psydontabardalt"
 			open_wear = TRUE
 			flags_inv = HIDECROTCH // BARE YOUR CHEST, NOT YOUR WEEN!
-			to_chat(usr, span_warning("Now wearing ENDURINGLY!"))
+			to_chat(usr, span_warning("ENDURING, like the MARTYRS who'll guide the faithful-and-pious to PARADISE."))
 		if(TRUE)
-			name = "inquisitorial tabard"
-			desc = "A long vest bearing Psydonian symbology"
+			name = "psydonian tabard"
+			desc = "A tabard worn by Psydon's disciples. Delicate stitchwork professes the psycross with pride."
 			body_parts_covered = CHEST|GROIN
 			icon_state = "psydontabard"
 			item_state = "psydontabard"
 			flags_inv = HIDECROTCH|HIDEBOOB
 			open_wear = FALSE
-			to_chat(usr, span_warning("Now wearing normally!"))
+			to_chat(usr, span_warning("VEILED, like the CORPSES who've been shepherded by your steel to the AFTERLYFE."))
 	update_icon()
 	if(user)
 		if(ishuman(user))

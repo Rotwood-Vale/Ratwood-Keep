@@ -537,3 +537,6 @@ BLIND     // can't see anything
 		else
 			return FALSE
 	return TRUE
+
+/obj/item/clothing/proc/step_action() //this was made to rewrite clown shoes squeaking
+	SEND_SIGNAL(src, COMSIG_CLOTHING_STEP_ACTION)

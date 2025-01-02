@@ -191,7 +191,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"
-	desc = ""
+	desc = "'With every broken bone, I swore I lived!'"
 	icon_state = "psicross"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
@@ -247,12 +247,14 @@
 
 /obj/item/clothing/neck/roguetown/psicross/wood
 	name = "wooden psycross"
+	desc = "'A man with nothing can still have faith!'"
 	icon_state = "psycross_w"
 	item_state = "psycross_w"
 	sellprice = 0
 
 /obj/item/clothing/neck/roguetown/psicross/silver
 	name = "silver psycross"
+	desc = "'The horrors persist, but so do I!'"
 	icon_state = "psycross_s"
 	item_state = "psycross_s"
 	sellprice = 50
@@ -307,7 +309,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden psycross"
-	desc = ""
+	desc = "'Purity afloat, for paradise awaits!'"
 	icon_state = "psycross_g"
 	item_state = "psycross_g"
 	//dropshrink = 0.75
@@ -366,3 +368,21 @@
 	desc = "A peculiar icon of worship from a foreign land. Forming the three-progned Psydonite cross in a circular ring, this bracelet embodies the Naledian belief of Psydon's eternity."
 	icon_state = "psybracelet"
 	item_state = null
+
+/obj/item/clothing/neck/roguetown/collar
+	name = "collar"
+	desc = "A band of leather which signifies bondage to another."
+	icon_state = "collar"
+	item_state = "collar"
+	resistance_flags = FIRE_PROOF
+	dropshrink = 0.5
+
+/obj/item/clothing/neck/roguetown/collar/bell_collar
+	name = "bell collar"
+	desc = "A band of leather with a bell protects the local zads from the local catfolk."
+	icon_state = "bell_collar"
+	icon_state = "bell_collar"
+
+/obj/item/clothing/neck/roguetown/collar/bell_collar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_JINGLE_BELLS)

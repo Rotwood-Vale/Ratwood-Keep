@@ -1,5 +1,169 @@
 
 
+//the saiga
+
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga
+	name = "saiga doe"
+	desc = ""
+	icon = 'icons/roguetown/mob/monster/saiga.dmi'
+	icon_state = "saiga"
+	icon_living = "saiga"
+	icon_dead = "saiga_dead"
+	icon_gib = "saiga_gib"
+	gender = FEMALE
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	emote_see = list("looks around.", "chews some leaves.")
+	speak_chance = 1
+	turns_per_move = 5
+	see_in_dark = 6
+	move_to_delay = 8
+	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck
+	butcher_results = list(
+						/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+						/obj/item/reagent_containers/food/snacks/fat = 2,
+						/obj/item/natural/hide = 4,
+						/obj/item/natural/bundle/bone/full = 1,
+						)
+	base_intents = list(/datum/intent/simple/headbutt)
+	health = 156
+	maxHealth = 156
+	food_type = list(
+				/obj/item/reagent_containers/food/snacks/grown/wheat,
+				/obj/item/reagent_containers/food/snacks/grown/oat,
+				/obj/item/reagent_containers/food/snacks/grown/apple,
+				)
+	tame_chance = 25
+	bonus_tame_chance = 15
+	footstep_type = FOOTSTEP_MOB_SHOE
+	pooptype = /obj/item/natural/poo/horse
+	faction = list("saiga")
+	attack_verb_continuous = "headbutts"
+	attack_verb_simple = "headbutt"
+	melee_damage_lower = 10
+	melee_damage_upper = 25
+	retreat_distance = 10
+	minimum_distance = 10
+	STASPD = 15
+	STACON = 8
+	STASTR = 12
+	childtype = list(
+				/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigakid = 70,
+				/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigaboy = 30,
+				)
+	pixel_x = -8
+	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
+	can_buckle = TRUE
+	buckle_lying = 0
+	can_saddle = TRUE
+	aggressive = 1
+	remains_type = /obj/effect/decal/remains/saiga
+
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigakid
+	name = "saiga calf"
+	desc = ""
+	icon_state = "saigakid"
+	icon_living = "saigakid"
+	icon_dead = "saigakid_dead"
+	icon_gib = "saigakid_gib"
+	animal_species = null
+	butcher_results = list(
+					/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+					/obj/item/natural/bone = 3,
+					)
+	health = 20
+	pass_flags = PASSTABLE | PASSMOB
+	mob_size = MOB_SIZE_SMALL
+	maxHealth = 20
+	melee_damage_lower = 1
+	melee_damage_upper = 6
+	STACON = 5
+	STASTR = 5
+	STASPD = 5
+	defprob = 50
+	pixel_x = -16
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/saiga
+	tame = TRUE
+	can_buckle = FALSE
+	aggressive = 1
+
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck
+	name = "saiga buck"
+	desc = ""
+	icon_state = "buck"
+	icon_living = "buck"
+	icon_dead = "buck_dead"
+	icon_gib = "buck_gib"
+	gender = MALE
+	emote_see = list("stares.")
+	speak_chance = 1
+	turns_per_move = 3
+	see_in_dark = 6
+	move_to_delay = 8
+	butcher_results = list(
+					/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+					/obj/item/reagent_containers/food/snacks/fat = 1,
+					/obj/item/natural/hide = 4,
+					/obj/item/natural/bundle/bone/full = 1,
+					/obj/item/clothing/head/roguetown/helmet/leather/saiga = 1,
+					)
+	faction = list("saiga")
+	attack_verb_continuous = "headbutts"
+	attack_verb_simple = "headbutt"
+	health = 400
+	maxHealth = 400
+	melee_damage_lower = 60
+	melee_damage_upper = 90
+	environment_smash = ENVIRONMENT_SMASH_NONE
+	retreat_distance = 0
+	minimum_distance = 0
+	retreat_health = 0.3
+	milkies = FALSE //what the fuck
+	STACON = 15
+	STASTR = 12
+	STASPD = 12
+	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
+	buckle_lying = 0
+	tame_chance = 25
+	bonus_tame_chance = 15
+	aggressive = 1
+	remains_type = /obj/effect/decal/remains/saiga
+
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigaboy
+	name = "saiga calf"
+	desc = ""
+	gender = MALE
+	icon_state = "saigaboy"
+	icon_living = "saigaboy"
+	icon_dead = "saigaboy_dead"
+	icon_gib = "saigaboy_gib"
+	animal_species = null
+	butcher_results = list(
+					/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+					/obj/item/natural/bone = 3,
+					)
+	health = 20
+	maxHealth = 20
+	pass_flags = PASSTABLE | PASSMOB
+	mob_size = MOB_SIZE_SMALL
+	milkies = FALSE
+	melee_damage_lower = 1
+	melee_damage_upper = 6
+	STACON = 5
+	STASTR = 5
+	STASPD = 5
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck
+	tame = TRUE
+	can_buckle = FALSE
+	aggressive = 1
+
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame
+	tame = TRUE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame
+	tame = TRUE
+
+//the saiga's procs
+
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/find_food()
 	..()
 	var/obj/structure/spacevine/SV = locate(/obj/structure/spacevine) in loc
@@ -35,52 +199,6 @@
 	unbuckle_all_mobs()
 	.=..()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga
-	icon = 'icons/roguetown/mob/monster/saiga.dmi'
-	name = "saiga"
-	desc = ""
-	icon_state = "saiga"
-	icon_living = "saiga"
-	icon_dead = "saiga_dead"
-	icon_gib = "saiga_gib"
-	gender = FEMALE
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	emote_see = list("looks around.", "chews some leaves.")
-	speak_chance = 1
-	turns_per_move = 5
-	see_in_dark = 6
-	move_to_delay = 8
-	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
-						/obj/item/reagent_containers/food/snacks/fat = 2,
-						/obj/item/natural/hide = 4, /obj/item/natural/bundle/bone/full =1)
-	base_intents = list(/datum/intent/simple/headbutt)
-	health = 156
-	maxHealth = 156
-	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
-	tame_chance = 25
-	bonus_tame_chance = 15
-	footstep_type = FOOTSTEP_MOB_SHOE
-	pooptype = /obj/item/natural/poo/horse
-	faction = list("saiga")
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
-	melee_damage_lower = 10
-	melee_damage_upper = 25
-	retreat_distance = 10
-	minimum_distance = 10
-	STASPD = 15
-	STACON = 8
-	STASTR = 12
-	childtype = list(/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigakid = 70, /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigaboy = 30)
-	pixel_x = -8
-	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
-	can_buckle = TRUE
-	buckle_lying = 0
-	can_saddle = TRUE
-	aggressive = 1
-	remains_type = /obj/effect/decal/remains/saiga
-
 /obj/effect/decal/remains/saiga
 	name = "remains"
 	gender = PLURAL
@@ -97,35 +215,6 @@
 			return pick('sound/vo/mobs/saiga/death (1).ogg','sound/vo/mobs/saiga/death (2).ogg')
 		if("idle")
 			return pick('sound/vo/mobs/saiga/idle (1).ogg','sound/vo/mobs/saiga/idle (2).ogg','sound/vo/mobs/saiga/idle (3).ogg','sound/vo/mobs/saiga/idle (4).ogg','sound/vo/mobs/saiga/idle (5).ogg','sound/vo/mobs/saiga/idle (6).ogg','sound/vo/mobs/saiga/idle (7).ogg')
-
-
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigakid
-	icon = 'icons/roguetown/mob/monster/saiga.dmi'
-	name = "saiga"
-	desc = ""
-	icon_state = "saigakid"
-	icon_living = "saigakid"
-	icon_dead = "saigakid_dead"
-	icon_gib = "saigakid_gib"
-	animal_species = null
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1, /obj/item/natural/bone = 3)
-	base_intents = list(/datum/intent/simple/headbutt)
-	health = 20
-	pass_flags = PASSTABLE | PASSMOB
-	mob_size = MOB_SIZE_SMALL
-	maxHealth = 20
-	melee_damage_lower = 1
-	melee_damage_upper = 6
-	gender = FEMALE
-	STACON = 5
-	STASTR = 5
-	STASPD = 5
-	defprob = 50
-	pixel_x = -16
-	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/saiga
-	tame = TRUE
-	can_buckle = FALSE
-	aggressive = 1
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/simple_limb_hit(zone)
 	if(!zone)
@@ -167,53 +256,6 @@
 			return "foreleg"
 
 	return ..()
-
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
-	icon = 'icons/roguetown/mob/monster/saiga.dmi'
-	name = "saiga"
-	icon_state = "buck"
-	icon_living = "buck"
-	icon_dead = "buck_dead"
-	icon_gib = "buck_gib"
-	gender = MALE
-	emote_see = list("stares.")
-	speak_chance = 1
-	turns_per_move = 3
-	see_in_dark = 6
-	move_to_delay = 8
-	base_intents = list(/datum/intent/simple/headbutt)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
-						/obj/item/reagent_containers/food/snacks/fat = 1,
-					/obj/item/natural/hide = 4, /obj/item/natural/bundle/bone/full = 1,
-					/obj/item/clothing/head/roguetown/helmet/leather/saiga = 1)
-	faction = list("saiga")
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
-	health = 400
-	maxHealth = 400
-	melee_damage_lower = 60
-	melee_damage_upper = 90
-	environment_smash = ENVIRONMENT_SMASH_NONE
-	retreat_distance = 0
-	minimum_distance = 0
-	retreat_health = 0.3
-	milkies = FALSE
-	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
-	footstep_type = FOOTSTEP_MOB_SHOE
-	pooptype = /obj/item/natural/poo/horse
-	STACON = 15
-	STASTR = 12
-	STASPD = 12
-	pixel_x = -8
-	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
-	can_buckle = TRUE
-	buckle_lying = 0
-	can_saddle = TRUE
-	tame_chance = 25
-	bonus_tame_chance = 15
-	aggressive = 1
-	remains_type = /obj/effect/decal/remains/saiga
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/update_icon()
 	cut_overlays()
@@ -315,6 +357,7 @@
 			return "foreleg"
 	return ..()
 
+
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/apply_damage(def_zone, blocked, forced)
 	if(buckled_mobs.len)	//If we're a mount and are hit while sprinting, throw our rider off
 		for(var/mob/living/carbon/human/H in buckled_mobs)
@@ -354,6 +397,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame
 	tame = TRUE
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled/Initialize()
 	. = ..()
