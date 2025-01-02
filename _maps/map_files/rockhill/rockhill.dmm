@@ -2493,6 +2493,8 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
+/obj/item/rope/chain,
+/obj/item/rope/chain,
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
 "bxH" = (
