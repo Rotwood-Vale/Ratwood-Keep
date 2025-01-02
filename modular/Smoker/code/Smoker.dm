@@ -15,7 +15,6 @@
 		/obj/item/clothing/mask/cigarette/rollie/snek,
 		/obj/item/clothing/mask/cigarette/rollie/snek,
 		/obj/item/clothing/mask/cigarette/rollie/snek,
-		/obj/item/clothing/mask/cigarette/rollie/snek,
 		/obj/item/clothing/mask/cigarette/rollie/snek
 	)
 
