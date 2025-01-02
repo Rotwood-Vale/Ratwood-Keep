@@ -398,3 +398,59 @@
 					)
 
 	skill_level = 1
+
+/datum/anvil_recipe/ammo/arrows
+	name = "Arrows 20x"
+	appro_skill = /datum/skill/craft/blacksmithing
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron
+					)
+	skill_level_1
+	
+/datum/anvil_recipe/ammo/bolts
+	name = "Bolts 20x"
+	appro_skill = /datum/skill/craft/blacksmithing
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt
+					)
+	skill_level_1

@@ -27,6 +27,20 @@
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 
+/obj/item/clothing/gloves/roguetown/inqgloves
+	name = "inquisitorial leather gloves"
+	desc = "Leather gloves with a psycross stitched inside. The confessors call you Master."
+	icon_state = "inqgloves"
+	item_state = "inqgloves"
+	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	resistance_flags = null
+	blocksound = SOFTHIT
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+
+
 /obj/item/clothing/gloves/roguetown/chain
 	name = "chain gauntlets"
 	desc = "Gauntlets made with interlinking rings, provides adequate protection against slashing attacks."
@@ -79,7 +93,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	
+
 	//---------------- BLACKSTEEL ---------------------
 
 /obj/item/clothing/gloves/roguetown/blacksteel/plategloves

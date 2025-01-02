@@ -11,7 +11,7 @@
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "An experienced soldier of the Duke's retinue, you have been tasked with overseeing the newly constructed Bastion. \
 				You report to the Royal Marshal and their Councillors, \
-				and your job is to keep the vanguard in line and to ensure the routes to the town are safe.\
+				and your job is to keep the vanguard in line and to ensure the routes to the town remain safe.\
 				The Bastion must not fall."
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE

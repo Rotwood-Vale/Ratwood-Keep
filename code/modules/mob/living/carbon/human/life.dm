@@ -75,10 +75,11 @@
 		handle_liver()
 		update_rogfat()
 		update_rogstam()
+		handle_environment() // Environment: Temperature. Heat and Cold; Fire Loss.
 		if(charflaw && !charflaw.ephemeral)
 			charflaw.flaw_on_life(src)
 		if(health <= 0)
-			adjustOxyLoss(0.3)
+			apply_damage(2, OXY)
 		if(mode == AI_OFF && !client && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			if(mob_timers["slo"])
 				if(world.time > mob_timers["slo"] + 90 SECONDS)

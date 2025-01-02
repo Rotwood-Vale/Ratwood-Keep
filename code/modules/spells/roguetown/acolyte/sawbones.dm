@@ -57,6 +57,7 @@
 	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
+	/// Amount of PQ gained for curing zombos
 	var/unzombification_pq = PQ_GAIN_UNZOMBIFY
 
 /obj/effect/proc_holder/spell/targeted/cpr
@@ -71,6 +72,7 @@
 	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
+	/// Amount of PQ gained for reviving
 	var/revive_pq = PQ_GAIN_REVIVE
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast(list/targets, mob/living/user)
@@ -79,15 +81,19 @@
 		testing("revived1")
 		var/mob/living/target = targets[1]
 		if(target == user)
+			revert_cast()
 			return FALSE
 		if(target.stat < DEAD)
 			to_chat(user, span_warning("Nothing happens."))
+			revert_cast()
 			return FALSE
 		if(target.mob_biotypes & MOB_UNDEAD)
 			to_chat(user, span_warning("It's undead, I can't."))
+			revert_cast()
 			return FALSE
 		if(!target.revive(full_heal = FALSE))
 			to_chat(user, span_warning("They need to be mended more."))
+			revert_cast()
 			return FALSE
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
@@ -116,16 +122,19 @@
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		return TRUE
 	to_chat(user, span_warning("I need to prime their heart first."))
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
+		revert_cast()
 		return FALSE
 	var/found = null
 	for(var/obj/structure/bed/rogue/S in oview(5, user))
 		found = S
 	if(!found)
 		to_chat(user, span_warning("I need them on a bed."))
+		revert_cast()
 		return FALSE
 	return TRUE
 
@@ -137,11 +146,19 @@
 
 	if(!targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
 		to_chat(user, span_warning("I need to prime their liver first"))
+		revert_cast() // No need to consume the spell if it isn't properly cast.
 		return FALSE
 
 	var/mob/living/target = targets[1]
 
 	if(target == user)
+		revert_cast()
+		return FALSE
+
+	// If, for whatever reason, someone manages to capture a vampire with (somehow) rot??? This prevents them from losing their undead biotype.
+	if(target.mind?.has_antag_datum(/datum/antagonist/vampire) || target.mind?.has_antag_datum(/datum/antagonist/vampire/lesser) || target.mind?.has_antag_datum(/datum/antagonist/vampirelord))
+		to_chat(user, span_warning("It's of an incurable evil, I can't."))
+		revert_cast()
 		return FALSE
 
 	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
@@ -164,12 +181,27 @@
 
 	if(iscarbon(target))
 		var/mob/living/carbon/stinky = target
-		for(var/obj/item/bodypart/rotty in stinky.bodyparts)
-			rotty.rotted = FALSE
-			rotty.skeletonized = FALSE
-			rotty.update_limb()
-			rotty.update_disabled()
+		for(var/obj/item/bodypart/limb in stinky.bodyparts)
+			limb.rotted = FALSE
+			limb.skeletonized = FALSE
+			limb.update_limb()
+			limb.update_disabled()
 
+	// Specific edge-case where a body rots without a head or rots after a head is placed back on. We always want this gone so we can at least revive the person even if there is no mind, this is caused by the failure to remove the zombie antag datum.
+	// un-deadite'ing process
+	target.mob_biotypes &= ~MOB_UNDEAD // the zombie antag on_loss() does this as well, but this is for the times it doesn't work properly. We check if they're any special undead role first.
+
+	for(var/trait in GLOB.traits_deadite)
+		REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
+
+	if(target.stat < DEAD) // Drag and shove ghost back in.
+		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
+		if(underworld_spirit)
+			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
+			ghost.mind.transfer_to(target, TRUE)
+			qdel(underworld_spirit)
+	target.grab_ghost(force = TRUE) // even suicides
+	
 	target.update_body()
 	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
 
@@ -177,12 +209,14 @@
 
 /obj/effect/proc_holder/spell/targeted/debride/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
+		revert_cast()
 		return FALSE
 	var/found = null
 	for(var/obj/structure/bed/rogue/S in oview(5, user))
 		found = S
 	if(!found)
 		to_chat(user, span_warning("I need to lay them on a bed"))
+		revert_cast()
 		return FALSE
 	return TRUE
 
@@ -207,6 +241,7 @@
 		target.adjustOxyLoss(-50)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
@@ -222,29 +257,37 @@
 		target.emote("rage")
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		var/obj/item/bodypart/BPA = target.get_bodypart(BODY_ZONE_R_ARM)
+		var/obj/item/bodypart/BPA = target.get_bodypart(user.zone_selected)
+		if(!BPA)
+			to_chat(user, span_warning("They're missing that part!"))
+			revert_cast()
+			return FALSE
 		BPA.add_wound(/datum/wound/artery/)
 		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]."))
 		target.adjustToxLoss(-999)
 		target.reagents.remove_all_type(/datum/reagent, 9999)
 		target.emote("scream")
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/purge/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
+		revert_cast()
 		return FALSE
 	var/found = null
 	for(var/obj/structure/bed/rogue/S in oview(2, user))
 		found = S
 	if(!found)
 		to_chat(user, span_warning("I need to lay them on a bed."))
+		revert_cast()
 		return FALSE
 	return TRUE
 
@@ -686,12 +729,33 @@
 
 //---------------------------------------alch reactions----------------------------------------------//
 
-/datum/chemical_reaction/alch/health
-	name = "health pot"
+/datum/chemical_reaction/alch/lesserhealth
+	name = "lesser health pot"
+	mix_sound = 'sound/items/fillbottle.ogg'
+	id = /datum/reagent/medicine/lesserhealthpot
+	results = list(/datum/reagent/medicine/lesserhealthpot = 45) //15 oz
+	required_reagents = list(/datum/reagent/alch/syrum_meat = 24, /datum/reagent/alch/syrum_ash = 24)
+
+/datum/chemical_reaction/alch/health //purify minor health pot into half a bottle by using essence of clarity (swampweed)
+	name = "health pot purification"
 	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/healthpot
-	results = list(/datum/reagent/medicine/healthpot = 45)
-	required_reagents = list(/datum/reagent/alch/syrum_meat = 24, /datum/reagent/alch/syrum_ash = 24)
+	results = list(/datum/reagent/medicine/healthpot = 22.5) //about 7.5 oz
+	required_reagents = list(/datum/reagent/medicine/lesserhealthpot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
+
+
+/datum/chemical_reaction/alch/greaterhealth //purify health pot into half a bottle of super by using essence of poison (poison berry) which used to be in the old red recipe
+	name = "greater health pot purification"
+	mix_sound = 'sound/items/fillbottle.ogg'
+	id = /datum/reagent/medicine/greaterhealthpot
+	results = list(/datum/reagent/medicine/greaterhealthpot = 22.5) //about 7.5 oz
+	required_reagents = list(/datum/reagent/medicine/healthpot = 45, /datum/reagent/alch/syrum_poison_berry = 24)
+
+/*documentation: 15 oz = 45 units
+2 lesser health makes 1 health bottle, 2 health makes 1 greater health
+you need 4 lesser bottles to make 2 health to make 1 half bottle of greater
+8 lesser bottles for 1 bottle of greater 
+end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bottle of greater*/
 
 /datum/chemical_reaction/alch/mana
 	name = "mana pot"
@@ -869,8 +933,8 @@
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "skit"
 	w_class = WEIGHT_CLASS_SMALL
+	slot_flags = ITEM_SLOT_HIP
 	throwforce = 1
-	slot_flags = null
 
 /obj/item/storage/fancy/skit/update_icon()
 	if(fancy_open)

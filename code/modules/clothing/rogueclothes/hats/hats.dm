@@ -54,7 +54,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon
 	color = "#78a3c9"
-	
+
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
@@ -704,7 +704,7 @@
 	icon_state = "volfplate"
 	item_state = "volfplate"
 	adjustable = CAN_CADJUST
-	max_integrity = 300 
+	max_integrity = 300
 	emote_environment = 3
 	armor_class = ARMOR_CLASS_MEDIUM
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
@@ -1260,6 +1260,15 @@
 	clothing_flags = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/head/roguetown/inqhat
+	name = "inquisitorial hat"
+	desc = "Redemption is your currency."
+	icon_state = "inqhat"
+	item_state = "inqhat"
+	sewrepair = TRUE
+
+
 
 //----------------- BLACKSTEEL ---------------------
 
