@@ -18648,6 +18648,11 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/academy)
+"lvj" = (
+/obj/structure/mannequin/male/female,
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "lvm" = (
 /obj/effect/decal/cleanable/vomit/old,
 /obj/effect/decal/cobbleedge{
@@ -28061,6 +28066,9 @@
 	icon_state = "linoleum"
 	},
 /area/rogue/indoors/town/shop)
+"rmQ" = (
+/turf/closed/wall/mineral/rogue/decowood,
+/area/rogue/outdoors/town/harbor)
 "rnw" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble/mossy,
@@ -31699,6 +31707,7 @@
 /area/rogue/outdoors/town/harbor)
 "tuf" = (
 /obj/structure/rack/rogue,
+/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/shop)
 "tuu" = (
@@ -36129,6 +36138,10 @@
 /obj/effect/landmark/start/prisonerb,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
+"wfI" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "wfN" = (
 /obj/structure/bookcase/random,
 /obj/effect/decal/cleanable/cobweb{
@@ -453138,7 +453151,7 @@ iXq
 toW
 cDi
 kHv
-kHv
+wfI
 kHv
 nDX
 xit
@@ -453568,7 +453581,7 @@ iXq
 iXq
 iXq
 toW
-ceJ
+lvj
 wvo
 kHv
 mPY
@@ -563297,9 +563310,9 @@ iXq
 iXq
 iXq
 dwC
-uZn
-uZn
-uZn
+rmQ
+rmQ
+rmQ
 pHT
 pHT
 pHT
@@ -563729,9 +563742,9 @@ iXq
 iXq
 iXq
 dwC
-uZn
+rmQ
 sPt
-uZn
+rmQ
 pHT
 pHT
 pHT
@@ -564161,9 +564174,9 @@ iXq
 iXq
 iXq
 dwC
-uZn
-uZn
-uZn
+rmQ
+rmQ
+rmQ
 pHT
 pHT
 pHT
