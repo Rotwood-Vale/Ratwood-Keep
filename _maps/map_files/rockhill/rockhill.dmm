@@ -4936,6 +4936,10 @@
 /obj/item/clothing/suit/roguetown/armor/plate/half,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"daM" = (
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town)
 "dbg" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = -32;
@@ -25667,7 +25671,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
 	},
-/turf/closed/wall/mineral/rogue/stone/window,
+/turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town)
 "pHA" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue,
@@ -26842,6 +26846,10 @@
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
+"qwU" = (
+/obj/structure/roguemachine/scomm/l,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town)
 "qxe" = (
 /turf/closed/wall/mineral/rogue/stone/blue_moss,
 /area/rogue/indoors)
@@ -27559,6 +27567,12 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt,
 /obj/item/clothing/suit/roguetown/shirt/undershirt,
 /obj/item/flashlight/flare/torch/metal,
+/obj/item/clothing/cloak/apron/blacksmith,
+/obj/item/clothing/cloak/apron/blacksmith,
+/obj/item/clothing/cloak/apron/blacksmith,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "qUX" = (
@@ -27816,10 +27830,8 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "rfu" = (
-/obj/structure/roguemachine/scomm{
-	pixel_y = -32
-	},
-/turf/open/floor/rogue/blocks,
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "rfx" = (
 /turf/closed/wall/mineral/rogue/stone,
@@ -311873,7 +311885,7 @@ vIa
 vIa
 vIa
 uln
-tVN
+daM
 tVN
 tVN
 tVN
@@ -333911,7 +333923,7 @@ nqr
 pYa
 oQy
 evo
-rNm
+rfu
 rNm
 cmV
 fnA
@@ -337794,7 +337806,7 @@ uln
 uln
 tVN
 tVN
-vXn
+qwU
 coI
 uln
 qGr
@@ -339091,7 +339103,7 @@ tVN
 tVN
 vXn
 vXn
-rfu
+vXn
 uln
 xaB
 wbg
@@ -342545,7 +342557,7 @@ wbg
 obA
 blx
 rNm
-rNm
+fYL
 lRz
 oim
 evo
