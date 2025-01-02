@@ -58,10 +58,11 @@
 	if(!can_cast(caller) || !cast_check(FALSE, ranged_ability_user))
 		return FALSE
 	var/client/client = caller.client
-	var/charge_progress = client?.chargedprog
+	var/percentage_progress = client?.chargedprog
+	var/charge_progress = client?.progress // This is in seconds, same unit as chargetime
 	var/goal = src.get_chargetime() //if we have no chargetime then we can freely cast (and no early release flag was not set)
 	if(src.no_early_release) //This is to stop half-channeled spells from casting as the repeated-casts somehow bypass into this function.
-		if(charge_progress < 100 && goal) //If it is not at 100% charge progress.
+		if(percentage_progress < 100 && charge_progress < goal)//Conditions for failure: a) not 100% progress, b) charge progress less than goal
 			to_chat(usr, span_warning("[src.name] was not finished charging! It fizzles."))
 			src.revert_cast()
 			return FALSE
