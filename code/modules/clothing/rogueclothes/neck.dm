@@ -186,6 +186,11 @@
 	desc = ""
 	icon_state = "astrata"
 
+/obj/item/clothing/neck/roguetown/psicross/silver/astrata
+	name = "imbued amulet of Astrata"
+	desc = "Similar to a normal amulet of Astrata. This one is blessed and made of silver."
+	icon_state = "astrata"
+
 /obj/item/clothing/neck/roguetown/psicross/noc
 	name = "amulet of Noc"
 	desc = ""

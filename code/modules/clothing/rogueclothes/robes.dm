@@ -93,7 +93,11 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/priest
 	name = "solar vestments"
 	desc = "Holy vestments sanctified by divine hands. Caution is advised if not a faithful."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "priestrobe"
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	armor = list("blunt" = 25, "slash" = 25, "stab" = 25, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	color = null
 
 /obj/item/clothing/suit/roguetown/shirt/robe/priest/pickup(mob/living/user)
