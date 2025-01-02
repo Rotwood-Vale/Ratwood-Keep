@@ -72,7 +72,7 @@
 
 /obj/item/rogueweapon/woodstaff/aries
 	name = "staff of the shepherd"
-	desc = "A blessed long silver staff adorned with an reinforced gold ornament atop. It is adorned with symbolism and icons of the Ten atop."
+	desc = "A blessed long silver staff adorned with an reinforced gold ornament atop. It is adorned with symbolism and icons of the Successors atop."
 	force = 25
 	force_wielded = 28
 	max_integrity = 300 // From my code diving it was 200. It being unique to the Priest it should probably get this
