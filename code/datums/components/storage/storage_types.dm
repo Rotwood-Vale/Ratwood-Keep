@@ -17,8 +17,8 @@
 	max_w_class = WEIGHT_CLASS_NORMAL
 
 /datum/component/storage/concrete/roguetown/tray
-	screen_max_rows = 5
-	screen_max_columns = 4
+	screen_max_rows = 3
+	screen_max_columns = 5
 	max_w_class = WEIGHT_CLASS_NORMAL
 	insert_verb = "put"
 	insert_preposition = "on"
