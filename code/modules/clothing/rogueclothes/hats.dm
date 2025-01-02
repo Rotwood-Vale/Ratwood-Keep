@@ -401,6 +401,13 @@
 	//dropshrink = 0.75
 	dynamic_hair_suffix = null
 
+/obj/item/clothing/head/roguetown/inqhat
+	name = "inquisitorial hat"
+	desc = "To keep ones vision away from the heavens, and focused on the sin beneath the soil."
+	icon_state = "inqhat"
+	item_state = "inqhat"
+	sewrepair = TRUE
+
 /obj/item/clothing/head/roguetown/headband/red
 	color = CLOTHING_RED
 
