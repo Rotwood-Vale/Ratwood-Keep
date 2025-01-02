@@ -85,7 +85,7 @@
 			H.change_stat("speed", 1)
 
 		if("Tracker")
-			H.mind.adjust_skillrank(/datum/skill/combat/polerams, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
