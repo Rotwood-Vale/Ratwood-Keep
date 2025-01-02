@@ -27591,14 +27591,13 @@
 /obj/item/clothing/under/roguetown/tights,
 /obj/item/clothing/suit/roguetown/shirt/undershirt,
 /obj/item/clothing/suit/roguetown/shirt/undershirt,
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
 /obj/item/flashlight/flare/torch/metal,
-/obj/item/clothing/cloak/apron/blacksmith,
-/obj/item/clothing/cloak/apron/blacksmith,
-/obj/item/clothing/cloak/apron/blacksmith,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
+/obj/item/clothing/under/roguetown/tights/stockings/black,
+/obj/item/clothing/under/roguetown/tights/stockings/black,
+/obj/item/clothing/cloak/apron/waist,
+/obj/item/clothing/cloak/apron/waist,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "qUX" = (
