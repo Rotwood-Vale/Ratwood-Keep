@@ -1,6 +1,6 @@
 /obj/item/bodypart
 	/// List of /datum/wound instances affecting this bodypart
-	var/list/datum/wound/wounds
+	var/list/datum/wound/wounds = list()
 	/// List of items embedded in this bodypart
 	var/list/obj/item/embedded_objects = list()
 	/// Bandage, if this ever hard dels thats fucking stupid lol
@@ -25,10 +25,25 @@
 		return FALSE
 	return (embedder in embedded_objects)
 
+/// Returns all wounds while sanitizing the list, checks for any nulled wounds, removes them.
+/obj/item/bodypart/proc/get_wounds()
+	for(var/datum/wound/wound as anything in wounds)
+		if(isnull(wound))
+			wounds -= wound
+			if(name == BODY_ZONE_HEAD || name == BODY_ZONE_PRECISE_NECK) // Due to not knowing how wounds are nulled, we add the most severe head injury (since this is the only organ this bug happens on), then remove it.
+				// Second pass over.
+				var/mob/living/carbon/carbon_affected = owner
+				REMOVE_TRAIT(carbon_affected, TRAIT_NO_BITE, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_PARALYSIS, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_NOPAIN, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_DISFIGURED, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_GARGLE_SPEECH, TRAIT_GENERIC)
+	return wounds
+
 /// Returns all wounds on this limb that can be sewn
 /obj/item/bodypart/proc/get_sewable_wounds()
 	var/list/woundies = list()
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		if(!wound.can_sew)
 			continue
 		woundies += wound
@@ -38,17 +53,17 @@
 /obj/item/bodypart/proc/has_wound(path, specific = FALSE)
 	if(!path)
 		return
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		if((specific && wound.type != path) || !istype(wound, path))
 			continue
 		return wound
 
 /// Heals wounds on this bodypart by the specified amount
 /obj/item/bodypart/proc/heal_wounds(heal_amount)
-	if(!length(wounds))
+	if(!length(get_wounds()))
 		return FALSE
 	var/healed_any = FALSE
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		if(heal_amount <= 0)
 			continue
 		var/amount_healed = wound.heal_wound(heal_amount)
@@ -100,7 +115,7 @@
 	var/bleed_rate = 0
 	if(bandage && !HAS_BLOOD_DNA(bandage))
 		return 0
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		bleed_rate += wound.bleed_rate
 	for(var/obj/item/embedded as anything in embedded_objects)
 		if(!embedded.embedding.embedded_bloodloss)
@@ -432,7 +447,7 @@
 		var/obj/item/natural/cloth/cloth = bandage
 		bandage_effectiveness = cloth.bandage_effectiveness
 	var/highest_bleed_rate = 0
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		if(wound.bleed_rate < highest_bleed_rate)
 			continue
 		highest_bleed_rate = wound.bleed_rate
@@ -494,7 +509,7 @@
 	var/returned_flags = NONE
 	if(can_bloody_wound())
 		returned_flags |= SURGERY_BLOODY
-	for(var/datum/wound/slash/incision/incision in wounds)
+	for(var/datum/wound/slash/incision/incision in get_wounds())
 		if(incision.is_sewn())
 			continue
 		returned_flags |= SURGERY_INCISED
@@ -516,7 +531,7 @@
 		returned_flags |= SURGERY_DISLOCATED
 	if(has_wound(/datum/wound/fracture))
 		returned_flags |= SURGERY_BROKEN
-	for(var/datum/wound/puncture/drilling/drilling in wounds)
+	for(var/datum/wound/puncture/drilling/drilling in get_wounds())
 		if(drilling.is_sewn())
 			continue
 		returned_flags |= SURGERY_DRILLED
