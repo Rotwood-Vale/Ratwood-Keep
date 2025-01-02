@@ -9,7 +9,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
-	tutorial = "A Knight with expert training; Born into petty nobility and raised as a squire from a young age, now you Guard the Duke as His knight, answer to His commands, and protect His honor. You're wholy dedicated to Him, and His safety. Do not fail Him."
+	tutorial = "A Knight with expert training; \
+	Born into petty nobility and raised as a squire from a young age, now you Guard the Duke or Duchess, answer to their commands, and protect the court's honor. \
+	You're wholly dedicated to the standing Regent and their safety. Do not fail."
 	display_order = JDO_KNIGHT
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/knight
@@ -33,7 +35,7 @@
 			S.name = "knight tabard ([index])"
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
-		var/honorary = "Sir"
+		var/honorary = "Ser"
 		if(H.gender == FEMALE)
 			honorary = "Dame"
 		H.real_name = "[honorary] [prev_real_name]"
@@ -41,6 +43,9 @@
 
 /datum/outfit/job/roguetown/knight/pre_equip(mob/living/carbon/human/H)
 	..()
+	var/equipment = list("Zweihander","Grand Mace", "Lucerne")
+	var/equipchoice = input("Choose your archetypes", "Available archetypes") as anything in equipment
+
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	pants = /obj/item/clothing/under/roguetown/platelegs
@@ -53,10 +58,16 @@
 	beltl = /obj/item/storage/keyring/knight
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	if(prob(50))
-		r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
-	else
-		r_hand = /obj/item/rogueweapon/mace/goden/steel
+	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/natural/feather = 1)
+
+	switch(equipchoice)
+		if("Zweihander")
+			r_hand = /obj/item/rogueweapon/greatsword/zwei
+		if("Grand Mace")
+			r_hand = /obj/item/rogueweapon/mace/goden/steel
+		if("Lucerne")
+			r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
@@ -78,9 +89,10 @@
 		H.change_stat("constitution", 3)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", -1)
+
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.verbs |= /mob/proc/haltyell

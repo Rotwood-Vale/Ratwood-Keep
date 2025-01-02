@@ -21,7 +21,7 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	show_in_credits = TRUE
 	min_pq = 0
 	max_pq = null
-	
+
 	subclass_cat_rolls = list(CTAG_REFUGEE = 5)
 	PQ_boost_divider = 10
 
