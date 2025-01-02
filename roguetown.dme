@@ -1308,7 +1308,6 @@
 #include "code\modules\jobs\job_types\roguetown\garrison\mayor.dm"
 #include "code\modules\jobs\job_types\roguetown\garrison\sheriff.dm"
 #include "code\modules\jobs\job_types\roguetown\garrison\veteran.dm"
-#include "code\modules\jobs\job_types\roguetown\garrison\villagechief.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\guild_clerk.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\mercenary.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\merch_merc.dm"
