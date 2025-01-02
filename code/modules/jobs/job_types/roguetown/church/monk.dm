@@ -17,6 +17,18 @@
 	min_pq = 0
 	max_pq = null
 
+/datum/job/roguetown/monk/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/title = "Brother"
+		if(H.gender == FEMALE)
+			title = "Sister"
+		H.real_name = "[title] [prev_real_name]"
+		H.name = "[title] [prev_name]"
+
 /datum/outfit/job/roguetown/monk
 	name = "Acolyte"
 	jobtype = /datum/job/roguetown/monk

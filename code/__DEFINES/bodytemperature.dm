@@ -16,6 +16,10 @@
 #define BODYTEMP_COOLING_MAX				-100
 /// The maximum number of degrees that your body can heat up in 1 tick, due to the environment, when in a hot area.
 #define BODYTEMP_HEATING_MAX				30
+/// The maximum number of degrees that your body can heat up to. (~800 kelvin is the temperature of lava)
+#define BODYTEMP_MAX_TEMPERATURE			800 
+/// The minimum number of degrees that your body can cool down to. (0 Kelvin is ABSOLUTE 0)
+#define BODYTEMP_MIN_TEMPERATURE			0
 
 /// The limit the human body can take before it starts taking damage from heat.
 #define BODYTEMP_HEAT_DAMAGE_LIMIT			(BODYTEMP_NORMAL + 50)
