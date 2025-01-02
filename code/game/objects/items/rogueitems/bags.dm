@@ -91,19 +91,24 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/storage/roguebag/lunch/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/rogue/pieslice(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/pieslice(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/water(src)
+/obj/item/storage/roguebag/lunch
+	populate_contents = list(
+		/obj/item/reagent_containers/food/snacks/rogue/pieslice,
+		/obj/item/reagent_containers/food/snacks/rogue/pieslice,
+		/obj/item/reagent_containers/glass/bottle/rogue/water
+	)
 
-/obj/item/storage/roguebag/seedfeed/PopulateContents()
-	new /obj/item/seeds/apple(src)
-	new /obj/item/seeds/apple(src)
-	new /obj/item/seeds/wheat(src)
-	new /obj/item/seeds/wheat(src)
-	new /obj/item/seeds/cabbage(src)
-	new /obj/item/seeds/cabbage(src)
-	new /obj/item/seeds/onion(src)
-	new /obj/item/seeds/onion(src)
-	new /obj/item/seeds/potato(src)
-	new /obj/item/seeds/potato(src)
+/obj/item/storage/roguebag/seedfeed
+
+	populate_contents = list(
+		/obj/item/seeds/apple,
+		/obj/item/seeds/apple,
+		/obj/item/seeds/wheat,
+		/obj/item/seeds/wheat,
+		/obj/item/seeds/cabbage,
+		/obj/item/seeds/cabbage,
+		/obj/item/seeds/onion,
+		/obj/item/seeds/onion,
+		/obj/item/seeds/potato,
+		/obj/item/seeds/potato
+	)

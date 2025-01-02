@@ -857,10 +857,13 @@
 /obj/item/storage/fancy/pilltin/wake
 	name = "pill tin (wake)"
 
-/obj/item/storage/fancy/pilltin/wake/PopulateContents()
-	new /obj/item/reagent_containers/pill/caffpill(src)
-	new /obj/item/reagent_containers/pill/caffpill(src)
-	new /obj/item/reagent_containers/pill/caffpill(src)
+/obj/item/storage/fancy/pilltin/wake
+	populate_contents = list(
+		/obj/item/reagent_containers/pill/caffpill,
+		/obj/item/reagent_containers/pill/caffpill,
+		/obj/item/reagent_containers/pill/caffpill
+	)
+
 
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
@@ -930,16 +933,19 @@
 		/obj/item/needle/pestra
 	))
 
-/obj/item/storage/fancy/skit/PopulateContents()
-	new /obj/item/rogueweapon/surgery/scalpel(src)
-	new /obj/item/rogueweapon/surgery/saw(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src)
-	new /obj/item/rogueweapon/surgery/retractor(src)
-	new /obj/item/rogueweapon/surgery/bonesetter(src)
-	new /obj/item/rogueweapon/surgery/cautery(src)
-	new /obj/item/natural/worms/leech/cheele(src)
-	new /obj/item/needle/pestra(src)
+/obj/item/storage/fancy/skit
+	populate_contents = list(
+		/obj/item/rogueweapon/surgery/scalpel,
+		/obj/item/rogueweapon/surgery/saw,
+		/obj/item/rogueweapon/surgery/hemostat,
+		/obj/item/rogueweapon/surgery/hemostat,
+		/obj/item/rogueweapon/surgery/retractor,
+		/obj/item/rogueweapon/surgery/bonesetter,
+		/obj/item/rogueweapon/surgery/cautery,
+		/obj/item/natural/worms/leech/cheele,
+		/obj/item/needle/pestra
+	)
+
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
@@ -1014,14 +1020,16 @@
 		/obj/item/needle/pestra,
 	))
 
-/obj/item/storage/fancy/ifak/PopulateContents()
-	new /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju(src)
-	new /obj/item/natural/bundle/cloth/bandage/full(src)
-	new /obj/item/reagent_containers/hypospray/medipen/sty/detox(src)
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-	new /obj/item/candle/yellow(src)
-	new /obj/item/needle(src)
-	new /obj/item/book/rogue/medical_notebook(src)
+/obj/item/storage/fancy/ifak
+	populate_contents = list(
+		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
+		/obj/item/natural/bundle/cloth/bandage/full,
+		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
+		/obj/item/reagent_containers/pill/pnkpill,
+		/obj/item/candle/yellow,
+		/obj/item/needle,
+		/obj/item/book/rogue/medical_notebook
+	)
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"

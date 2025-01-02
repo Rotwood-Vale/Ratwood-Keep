@@ -174,8 +174,10 @@
 			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 				qdel(H)
 
-/obj/item/storage/belt/rogue/pouch/food/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+/obj/item/storage/belt/rogue/pouch/food
+	populate_contents = list(
+		/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
+	)
 
 /obj/item/storage/belt/rogue/pouch/ammo
 	name = "sphere pouch"
@@ -217,21 +219,19 @@
 		/obj/item/paper
 	)
 
-/obj/item/storage/backpack/rogue/satchel/mule/PopulateContents()
-	for(var/i in 1 to 3)
-		switch(rand(1,4))
-			if(1)
-				new /obj/item/reagent_containers/powder/moondust_purest(src)
-			if(2)
-				new /obj/item/reagent_containers/powder/moondust_purest(src)
-			if(3)
-				new /obj/item/reagent_containers/powder/ozium(src)
-			if(4)
-				new /obj/item/reagent_containers/powder/spice(src)
+/obj/item/storage/backpack/rogue/satchel/mule
+	populate_contents = list(
+		/obj/item/reagent_containers/powder/moondust_purest,
+		/obj/item/reagent_containers/powder/ozium,
+		/obj/item/reagent_containers/powder/spice
+	)
 
-/obj/item/storage/backpack/rogue/satchel/musketeer/PopulateContents()
-	new /obj/item/powderflask(src)
-	new /obj/item/storage/belt/rogue/pouch/coins/mid(src)
+/obj/item/storage/backpack/rogue/satchel/musketeer
+	populate_contents = list(
+		/obj/item/powderflask,
+		/obj/item/storage/belt/rogue/pouch/coins/mid
+	)
+
 
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK

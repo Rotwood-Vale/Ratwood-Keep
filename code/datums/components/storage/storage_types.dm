@@ -16,6 +16,17 @@
 	screen_max_columns = 4
 	max_w_class = WEIGHT_CLASS_NORMAL
 
+/datum/component/storage/concrete/roguetown/tray
+	screen_max_rows = 5
+	screen_max_columns = 4
+	max_w_class = WEIGHT_CLASS_NORMAL
+	insert_verb = "put"
+	insert_preposition = "on"
+	allow_quick_gather = TRUE
+	allow_quick_empty = TRUE
+	display_numerical_stacking = TRUE
+	click_gather = TRUE
+
 /datum/component/storage/concrete/roguetown/belt
 	screen_max_rows = 3
 	screen_max_columns = 2
