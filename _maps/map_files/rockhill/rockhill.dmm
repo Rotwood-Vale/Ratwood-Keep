@@ -23174,11 +23174,13 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "ogw" = (
-/obj/structure/mineral_door/wood/fancywood{
+/obj/structure/mineral_door/wood/donjon{
+	dir = 8;
 	locked = 1;
-	lockid = "councillor"
+	lockid = "councillor";
+	lockdiff = 2
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
 "ogG" = (
 /turf/open/floor/rogue/grass,
@@ -542558,11 +542560,11 @@ sXz
 sXz
 wtF
 yei
-uwS
 yei
 yei
 yei
-uwS
+yei
+yei
 yei
 yei
 yei
