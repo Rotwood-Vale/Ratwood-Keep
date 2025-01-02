@@ -144,7 +144,10 @@
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 1
 	},
-/turf/open/floor/rogue/tile/masonic/single,
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "adL" = (
 /obj/effect/decal/cobbleedge{
@@ -2486,6 +2489,10 @@
 	lockid = "councillor"
 	},
 /obj/item/storage/keyring/marshal,
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
 "bxH" = (
@@ -8698,6 +8705,13 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
+"fmp" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/turf/closed/wall/mineral/rogue/decowood,
+/area/rogue/indoors/town/manor)
 "fmV" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/wood,
@@ -8761,6 +8775,12 @@
 "foA" = (
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/church)
+"foJ" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor)
 "fpa" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -9214,6 +9234,12 @@
 "fDB" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors/rtfield)
+"fDD" = (
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/turf/open/floor/rogue/tile/masonic/single,
+/area/rogue/indoors/town/manor)
 "fEF" = (
 /obj/structure/closet/crate/chest/gold{
 	lockid = "royal"
@@ -9285,7 +9311,11 @@
 /obj/structure/bed/rogue/inn/wool,
 /obj/item/bedsheet/rogue/pelt,
 /obj/effect/landmark/start/councillor,
-/turf/open/floor/rogue/tile/masonic/inverted,
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/manor)
 "fHo" = (
 /obj/structure/closet/crate/roguecloset/crafted{
@@ -10881,6 +10911,9 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town)
+"gFY" = (
+/turf/open/floor/carpet/stellar,
+/area/rogue/indoors/town/manor)
 "gFZ" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -19664,6 +19697,10 @@
 /area/rogue/indoors/town/church/chapel)
 "mao" = (
 /obj/structure/mannequin/male,
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
 "maA" = (
@@ -20815,10 +20852,20 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "mJn" = (
-/obj/structure/bed/rogue/inn,
-/obj/item/bedsheet/rogue/fabric,
+/obj/structure/bed/rogue/inn{
+	pixel_y = 11
+	},
+/obj/item/bedsheet/rogue/fabric{
+	pixel_y = 12
+	},
 /obj/effect/landmark/start/marshal,
-/turf/open/floor/rogue/tile/masonic/single,
+/obj/machinery/light/rogue/wallfire{
+	pixel_x = -32
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "mJv" = (
 /obj/structure/table/wood{
@@ -22545,7 +22592,11 @@
 	},
 /obj/item/candle/yellow,
 /obj/item/natural/feather,
-/turf/open/floor/rogue/tile/masonic/inverted,
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/manor)
 "nPT" = (
 /obj/structure/chair/wood{
@@ -29767,6 +29818,15 @@
 	},
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/town/manor)
+"smJ" = (
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/turf/open/floor/rogue/tile/masonic/inverted,
+/area/rogue/indoors/town/manor)
 "smP" = (
 /obj/machinery/light/rogue/smelter/great,
 /turf/open/floor/rogue/metal,
@@ -31362,6 +31422,10 @@
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/manor)
 "tkX" = (
@@ -32579,7 +32643,11 @@
 /obj/structure/bed/rogue/inn/wool,
 /obj/item/bedsheet/rogue/wool,
 /obj/effect/landmark/start/councillor,
-/turf/open/floor/rogue/tile/masonic/inverted,
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/manor)
 "tWi" = (
 /obj/effect/decal/cobbleedge{
@@ -35574,7 +35642,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
 	},
-/turf/open/floor/rogue/tile/masonic/single,
+/turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "vKQ" = (
 /obj/machinery/light/rogue/wallfire/candle,
@@ -542992,12 +543060,12 @@ sXz
 uJF
 wtF
 tVZ
-rdP
+gFY
 rdP
 naI
 bxD
 tgZ
-tgZ
+xlm
 mJn
 wtF
 wtF
@@ -543426,11 +543494,11 @@ wtF
 nPt
 rdP
 rdP
-naI
+fmp
 mao
 tgZ
-tgZ
-tgZ
+xlm
+foJ
 wtF
 svG
 xdI
@@ -543856,11 +543924,11 @@ tWQ
 tWQ
 wtF
 fHm
-rdP
-rdP
+gFY
+smJ
 naI
 tkS
-tgZ
+fDD
 vKN
 adE
 wtF
