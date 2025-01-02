@@ -419,21 +419,21 @@
 	name = "Blacksteel Cuirass (+1 B.Steel)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
-	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate
 	craftdiff = 5
 
 /datum/anvil_recipe/armor/blacksteel/platechest
 	name = "Blacksteel Plate Armor (+3 B.Steel)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel)
-	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_full_plate
 	craftdiff = 5
 
 /datum/anvil_recipe/armor/blacksteel/platelegs
 	name = "Blacksteel Plate Chausses (+1 B.Steel)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
-	created_item = /obj/item/clothing/under/roguetown/blacksteel/platelegs
+	created_item = /obj/item/clothing/under/roguetown/platelegs/blacksteel
 	craftdiff = 5
 
 /datum/anvil_recipe/armor/blacksteel/bucket

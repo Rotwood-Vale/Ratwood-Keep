@@ -173,6 +173,10 @@
 	resistance_flags = null
 	sewrepair = TRUE
 
+/obj/item/clothing/shoes/roguetown/jester/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_JINGLE_BELLS)
+
 /obj/item/clothing/shoes/roguetown/grenzelhoft
 	name = "grenzelhoft boots"
 	icon_state = "grenzelboots"

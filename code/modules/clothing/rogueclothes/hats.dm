@@ -248,6 +248,10 @@
 	sewrepair = TRUE
 	flags_inv = HIDEEARS
 
+/obj/item/clothing/head/roguetown/jester/Initialize()
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_JINGLE_BELLS, 2)
+
 /obj/item/clothing/head/roguetown/strawhat
 	name = "straw hat"
 	desc = "Keeps the sun off your head while toiling the fields."

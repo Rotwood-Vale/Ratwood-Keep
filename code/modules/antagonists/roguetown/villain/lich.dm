@@ -189,7 +189,7 @@
 		/obj/item/clothing/shoes/roguetown/boots,
 		/obj/item/clothing/neck/roguetown/chaincoif,
 		/obj/item/clothing/cloak/raincloak/mortus,
-		/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass,
+		/obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate,
 		/obj/item/clothing/suit/roguetown/shirt/tunic/ucolored,
 		/obj/item/clothing/wrists/roguetown/bracers,
 		/obj/item/clothing/gloves/roguetown/chain,
