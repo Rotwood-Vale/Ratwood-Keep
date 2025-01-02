@@ -2,9 +2,9 @@
 	race = /datum/species/goblinp
 
 /datum/species/goblinp
-	name = "Goblin"
+	name = "Sentient Goblin"
 	id = "goblinp"
-	desc = "<b>Goblin</b><br>\
+	desc = "<b>Sentient Goblin</b><br>\
 	A vile, cursed race of green skinned fiends with brains as small as their hearts. Be not fooled by their appearance - What they lack in stature, they possess in sheer malice."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
@@ -48,11 +48,11 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = -3, 
+		"strength" = -2, 
 		"perception" = 0, 
-		"intelligence" = -2, 
-		"constitution" = 2,
-		"endurance" = 2, 
+		"intelligence" = 0, 
+		"constitution" = 0,
+		"endurance" = 1, 
 		"speed" = 2, 
 		"fortune" = -1
 		)

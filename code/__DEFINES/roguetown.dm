@@ -41,7 +41,8 @@
 	/datum/species/tieberian,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold, \
-	/datum/species/halforc
+	/datum/species/halforc, \
+	/datum/species/goblinp
 
 #define RACES_TOLERATED \
 
@@ -51,7 +52,6 @@
 
 
 #define RACES_GOBLIN \
-	/datum/species/goblinp
 
 #define RACES_SEELIE \
 	/datum/species/seelie	//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS
