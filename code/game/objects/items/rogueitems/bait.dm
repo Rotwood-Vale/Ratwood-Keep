@@ -96,7 +96,7 @@
 	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/goat = 33,
 							/mob/living/simple_animal/hostile/retaliate/rogue/goatmale = 33,
 							/mob/living/simple_animal/hostile/retaliate/rogue/saiga = 20,
-							/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck = 20,
+							/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck = 20,
 							/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 20)
 
 
