@@ -103,18 +103,16 @@
 		)
 	body_markings = list(
 	)
+	
+	languages = list(
+		/datum/language/common,
+		/datum/language/elvish
+	)
 
 
 	gender_swapping = TRUE
 	stress_examine = TRUE
 	stress_desc = span_red("A loathesome dark elf.")
-
-/datum/species/elf/dark/get_span_language(datum/language/message_language)
-	if(!message_language)
-		return
-	if(message_language.type == /datum/language/elvish)
-		return list(SPAN_DELF)
-	return message_language.spans
 
 /datum/species/elf/dark/get_skin_list()
 	return list(
