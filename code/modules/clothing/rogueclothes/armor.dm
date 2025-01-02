@@ -797,5 +797,3 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	smelt_bar_num = 2
 	blocksound = SOFTHIT
-	do_sound_chain = FALSE // you too loud rn lil bro shhh
-	do_sound_plate = FALSE
