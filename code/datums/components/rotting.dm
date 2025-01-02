@@ -118,18 +118,17 @@
 /datum/component/rot/simple/process()
 	..()
 	var/mob/living/L = parent
-	var/datum/component/rot/R = src
 	if(L.stat != DEAD)
-		qdel(R)
+		qdel(src)
 		return
-	if(amount > 10 MINUTES)
+	if(amount > 15 MINUTES)
 		if(soundloop && soundloop.stopped)
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
 			T.pollute_turf(/datum/pollutant/rot, 50)
-	if(amount > 20 MINUTES)
-		qdel(R)
+	if(amount > 25 MINUTES)
+		qdel(src)
 		return L.dust(drop_items=TRUE)
 
 /datum/component/rot/gibs
