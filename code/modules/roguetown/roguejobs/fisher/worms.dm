@@ -30,6 +30,9 @@
 		/obj/item/reagent_containers/food/snacks/fish/clownfish = 1,
 	)
 
+/obj/item/natural/worms/grubs/attack_right(mob/user)
+	return
+
 /obj/item/natural/worms/update_icon()
 	icon_state = "worm[amt]"
 	if(amt > 1)

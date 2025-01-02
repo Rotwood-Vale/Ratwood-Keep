@@ -50,8 +50,16 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		add_overlay("[icon_state]cork")
 
 /obj/item/reagent_containers/glass/bottle/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = TRUE)
-	new /obj/item/natural/glass/shard(get_turf(src))
+	playsound(loc, 'sound/combat/hits/onglass/glassbreak (4).ogg', 100)
+	shatter(get_turf(src))
 	..()
+
+/obj/item/reagent_containers/glass/bottle/proc/shatter(turf/T)
+	if(istransparentturf(T))
+		shatter(GET_TURF_BELOW(T))
+		return 
+	new /obj/item/natural/glass/shard(get_turf(T))
+	new /obj/effect/decal/cleanable/glass(get_turf(T))
 	qdel(src)
 
 /obj/item/reagent_containers/glass/bottle/rmb_self(mob/user)
@@ -61,6 +69,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	if(closed)
 		reagent_flags = TRANSPARENT
 		reagents.flags = reagent_flags
+		to_chat(user, span_notice("You carefully press the cork back into the mouth of the [src]."))
 		spillable = FALSE
 		if(!fancy)
 			desc = "A bottle with a cork."
@@ -68,6 +77,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		reagent_flags = OPENCONTAINER
 		reagents.flags = reagent_flags
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
+		to_chat(user, span_notice("You thumb off the cork from [src]."))
 		desc = desc_uncorked
 		spillable = TRUE
 		if(!fancy)

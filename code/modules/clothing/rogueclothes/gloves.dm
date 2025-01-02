@@ -91,7 +91,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/gloves/roguetown/chain/psydon
-	name = "otavan chain gauntlets"
+	name = "psydonian gloves"
+	desc = "Blacksteel-bound gauntlets. These ritualistic restraints, when left to dangle-and-sway, assist in the deflection of unpredictable blows."
 	icon_state = "psydongloveschain"
 	item_state = "psydongloveschains"
 

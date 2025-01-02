@@ -407,6 +407,21 @@
 		else
 			to_chat(user, "<span class='warning'>I can't write.</span>")
 			return
+	
+	if(istype(P, /obj/item/paper))
+		var/obj/item/paper/p = P
+		if(info && p.info)
+			var/obj/item/manuscript/M = new /obj/item/manuscript(get_turf(P.loc))
+			M.page_texts = list(src.info, p.info)
+			M.compiled_pages = "<p>[src.info]</p><p>[p.info]</p>"
+			qdel(p)
+			if(user.Adjacent(M))
+				M.add_fingerprint(user)
+				user.update_inv_hands()
+				user.put_in_active_hand(src)
+				user.put_in_inactive_hand(M)
+			. = ..()
+			return qdel(src)
 
 	add_fingerprint(user)
 	return ..()

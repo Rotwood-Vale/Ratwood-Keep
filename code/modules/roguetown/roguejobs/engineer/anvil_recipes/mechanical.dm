@@ -3,6 +3,13 @@
 	appro_skill = /datum/skill/craft/engineering
 	craftdiff = 1
 
+/datum/anvil_recipe/engineering/jingle_bells
+	name = "Jingling Bells"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/jingle_bells
+	createditem_num = 5 
+	craftdiff = 1
+
 // --------- BRONZE RECIPES -----------
 
 /datum/anvil_recipe/engineering/bronze/locks
