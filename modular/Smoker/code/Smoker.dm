@@ -9,7 +9,14 @@
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
 	slot_flags = null
-	spawn_type = /obj/item/clothing/mask/cigarette/rollie/snek
+
+	populate_contents = list(
+		/obj/item/clothing/mask/cigarette/rollie/snek,
+		/obj/item/clothing/mask/cigarette/rollie/snek,
+		/obj/item/clothing/mask/cigarette/rollie/snek,
+		/obj/item/clothing/mask/cigarette/rollie/snek,
+		/obj/item/clothing/mask/cigarette/rollie/snek
+	)
 
 /obj/item/storage/fancy/shhig/ComponentInitialize()
 	. = ..()
