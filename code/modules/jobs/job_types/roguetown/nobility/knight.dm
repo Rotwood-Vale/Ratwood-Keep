@@ -43,7 +43,7 @@
 
 /datum/outfit/job/roguetown/knight/pre_equip(mob/living/carbon/human/H)
 	..()
-	var/equipment = list("Zweihander","Grand Mace", "Lucerne")
+	var/equipment = list("Zweihander","Grand Mace","Lucerne")
 	var/equipchoice = input("Choose your archetypes", "Available archetypes") as anything in equipment
 
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
