@@ -174,13 +174,11 @@
 	gender = PLURAL
 	icon_state = "chain_legs"
 	item_state = "chain_legs"
-//	adjustable = CAN_CADJUST
 	sewrepair = FALSE
 	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = CHAINHIT
 	max_integrity = 300
-	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
@@ -189,6 +187,9 @@
 	resistance_flags = FIRE_PROOF
 	armor_class = ARMOR_CLASS_MEDIUM
 
+/obj/item/clothing/under/roguetown/chainlegs/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle)
 
 /obj/item/clothing/under/roguetown/splintlegs
 	name = "brigandine chausses"
@@ -208,6 +209,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
+
+/obj/item/clothing/under/roguetown/splintlegs/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_COAT_STEP)
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -248,7 +253,6 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = PLATEHIT
 	max_integrity = 400
-	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
@@ -258,6 +262,9 @@
 	resistance_flags = FIRE_PROOF
 	armor_class = ARMOR_CLASS_HEAVY
 
+/obj/item/clothing/under/roguetown/platelegs/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 
 /obj/item/clothing/under/roguetown/chainlegs/skirt
 	name = "steel chain skirt"
@@ -343,7 +350,7 @@
 
 //----------------- BLACKSTEEL---------------------
 
-/obj/item/clothing/under/roguetown/blacksteel/platelegs
+/obj/item/clothing/under/roguetown/platelegs/blacksteel
 	name = "Blacksteel Plate Chausses"
 	desc = "Reinforced leg plates forged of durable blacksteel."
 	gender = PLURAL
@@ -351,21 +358,15 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bklegs"
 	item_state = "bklegs"
-//	adjustable = CAN_CADJUST
 	sewrepair = FALSE
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = PLATEHIT
 	max_integrity = 500
-	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/blacksteel
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
-	resistance_flags = FIRE_PROOF
-	armor_class = ARMOR_CLASS_HEAVY
 
 /obj/item/clothing/under/roguetown/trou/leather/pontifex
 	name = "pontifex's chaqchur"

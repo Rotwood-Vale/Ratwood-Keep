@@ -23,6 +23,7 @@
 	var/next_passive_detect = 0
 	var/flee_in_pain = FALSE
 	var/stand_attempts = 0
+	var/resist_attempts = 0
 	var/attack_speed = 0
 
 	var/returning_home = FALSE
@@ -50,16 +51,19 @@
 	update_cone_show()
 	if(stat == CONSCIOUS)
 		if(on_fire || buckled || restrained() || pulledby)
-			resisting = TRUE
-			walk_to(src,0)
-			resist()
-			resisting = FALSE
-		if(!(mobility_flags & MOBILITY_STAND) && (stand_attempts < 3))
+			if(resist_attempts < 1) 
+				resisting = TRUE
+				walk_to(src,0)
+				resist()
+				resist_attempts += 1
+				resisting = FALSE
+		if((mobility_flags & MOBILITY_CANSTAND) && (stand_attempts < 3))
 			resisting = TRUE
 			npc_stand()
 			resisting = FALSE
 		else
 			stand_attempts = 0
+			resist_attempts = 0
 			if(!handle_combat())
 				if(mode == AI_IDLE && !pickupTarget)
 					npc_idle()
@@ -328,10 +332,11 @@
 		swap_hand()
 		Weapon = get_active_held_item()
 		OffWeapon = get_inactive_held_item()
-	if(!(mobility_flags & MOBILITY_STAND))
-		aimheight_change(rand(10,19))
+
+	if(!(mobility_flags & MOBILITY_STAND)) // If not standing stand, aim low
+		aimheight_change(rand(1, 10))
 	else
-		aimheight_change(rand(10,19))
+		aimheight_change(rand(10, 19))  
 
 	// attack with weapon if we have one
 	if(Weapon)
