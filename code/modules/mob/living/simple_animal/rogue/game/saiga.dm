@@ -257,7 +257,7 @@
 
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/update_icon()
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/update_icon()
 	cut_overlays()
 	..()
 	if(stat != DEAD)
@@ -271,7 +271,7 @@
 			add_overlay(mounted)
 
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/get_sound(input)
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/get_sound(input)
 	switch(input)
 		if("aggro")
 			return pick('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
@@ -282,19 +282,19 @@
 		if("idle")
 			return pick('sound/vo/mobs/saiga/idle (1).ogg','sound/vo/mobs/saiga/idle (2).ogg','sound/vo/mobs/saiga/idle (3).ogg','sound/vo/mobs/saiga/idle (4).ogg','sound/vo/mobs/saiga/idle (5).ogg','sound/vo/mobs/saiga/idle (6).ogg','sound/vo/mobs/saiga/idle (7).ogg')
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/Initialize()
 	. = ..()
 	if(tame)
 		tamed()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/taunted(mob/user)
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/taunted(mob/user)
 	emote("aggro")
 	Retaliate()
 	GiveTarget(user)
 	return
 
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tamed()
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tamed()
 	..()
 	deaggroprob = 20
 	if(can_buckle)
@@ -305,11 +305,11 @@
 		D.set_vehicle_dir_layer(EAST, OBJ_LAYER)
 		D.set_vehicle_dir_layer(WEST, OBJ_LAYER)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/death()
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/death()
 	unbuckle_all_mobs()
 	.=..()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/eat_plants()
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/eat_plants()
 	//..()
 	var/obj/structure/spacevine/SV = locate(/obj/structure/spacevine) in loc
 	if(SV)
@@ -317,7 +317,7 @@
 		food = max(food + 30, 100)
 
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/simple_limb_hit(zone)
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/simple_limb_hit(zone)
 	if(!zone)
 		return ""
 	switch(zone)
@@ -357,7 +357,7 @@
 			return "foreleg"
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled/Initialize()
 	. = ..()
 	var/obj/item/natural/saddle/S = new(src)
 	ssaddle = S

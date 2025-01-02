@@ -193,7 +193,7 @@
 	name = "Mounted Knight"
 	tutorial = "You are the picture-perfect knight from a high tale, knowledgeable in riding steeds into battle. You specialize in weapons most useful on a saiga including spears, swords and maces, but know your way around a shield."
 	outfit = /datum/outfit/job/roguetown/knight/mountedknight
-	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
+	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled
 
 	category_tags = list(CTAG_ROYALGUARD)
 
