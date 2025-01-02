@@ -22596,6 +22596,7 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
+/obj/item/storage/keyring/councillor,
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/manor)
 "nPT" = (
