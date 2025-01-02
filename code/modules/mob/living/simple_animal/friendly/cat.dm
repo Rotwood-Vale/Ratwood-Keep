@@ -25,7 +25,11 @@
 	unsuitable_atmos_damage = 1
 	animal_species = /mob/living/simple_animal/pet/cat
 	childtype = list(/mob/living/simple_animal/pet/cat/kitten)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 1, /obj/item/organ/ears/cat = 1, /obj/item/organ/tail/cat = 1)
+	butcher_results = list(
+					/obj/item/reagent_containers/food/snacks/meat/slab = 1,
+					/obj/item/organ/ears/cat = 1,
+					/obj/item/organ/tail/cat = 1,
+					)
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -214,6 +218,18 @@
 				set_resting(FALSE)
 			else
 				emote("me", 1, pick("grooms its fur.", "twitches its whiskers.", "shakes out its coat."))
+
+		else if (prob(1))
+			playsound(src, pick(
+							'sound/vo/mobs/cat/cat_meow1.ogg',
+							'sound/vo/mobs/cat/cat_meow2.ogg',
+							'sound/vo/mobs/cat/cat_meow3.ogg',
+							'sound/vo/mobs/cat/cat_purr1.ogg',
+							'sound/vo/mobs/cat/cat_purr2.ogg',
+							'sound/vo/mobs/cat/cat_purr3.ogg',
+							'sound/vo/mobs/cat/cat_purr4.ogg',
+							), 100, TRUE)
+
 	..()
 
 	make_babies()
@@ -262,8 +278,6 @@
 		else
 			if(M && stat != DEAD)
 				emote("me", 1, "hisses!")
-
-
 
 /mob/living/simple_animal/pet/cat/inn/attack_hand(mob/living/carbon/human/M) // Gato Basado - not all pets are welcome
 	. = ..()
