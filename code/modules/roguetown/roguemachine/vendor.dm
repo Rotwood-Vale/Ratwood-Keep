@@ -317,3 +317,16 @@
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
 		held_items[P]["PRICE"] = 7
+
+/obj/structure/roguemachine/vendor/street_shop02
+	lockid = "steward"
+	name = "Street shop key seller."
+	desc = "Get key from shop here!"
+
+/obj/structure/roguemachine/vendor/street_shop02/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/street_shop02))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 7

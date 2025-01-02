@@ -259,7 +259,7 @@
 
 #define JDO_ARCHIVIST 18
 
-#define JDO_CHIEF 19
+#define JDO_MAYOR 19
 #define JDO_GUILDSMITH 20
 #define JDO_APPRENTICE 21
 
@@ -362,7 +362,7 @@
 	/datum/job/roguetown/prisonerr
 
 #define YEOMEN_ROLES \
-	/datum/job/roguetown/woodsman,\
+	/datum/job/roguetown/mayor,\
 	/datum/job/roguetown/archivist,\
 	/datum/job/roguetown/architect,\
 	/datum/job/roguetown/barkeep,\
