@@ -48,6 +48,7 @@
 	aggressive = 1
 
 	remains_type = /obj/effect/decal/remains/bigrat
+	eat_forever = TRUE
 
 //new ai, old ai off
 	AIStatus = AI_OFF

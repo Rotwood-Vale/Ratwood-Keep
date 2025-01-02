@@ -405,7 +405,6 @@
 #include "code\datums\achievements\_achievement_data.dm"
 #include "code\datums\achievements\_awards.dm"
 #include "code\datums\achievements\boss_achievements.dm"
-#include "code\datums\achievements\boss_scores.dm"
 #include "code\datums\achievements\misc_achievements.dm"
 #include "code\datums\atmosphere\_atmosphere.dm"
 #include "code\datums\atmosphere\planetary.dm"
@@ -2009,7 +2008,12 @@
 #include "code\datums\ai\controllers\troll.dm"
 #include "code\datums\ai\controllers\volf.dm"
 
+#include "code\datums\ai\controllers\farm_animals\chicken.dm"
 #include "code\datums\ai\controllers\farm_animals\cow.dm"
+#include "code\datums\ai\controllers\farm_animals\bull.dm"
+#include "code\datums\ai\controllers\farm_animals\saiga.dm"
+#include "code\datums\ai\controllers\farm_animals\goat.dm"
+#include "code\datums\ai\controllers\farm_animals\truffle_pig.dm"
 
 #include "code\datums\ai\hostile\_hostile_controller.dm"
 

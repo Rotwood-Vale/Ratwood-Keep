@@ -1,5 +1,5 @@
 ///For farm animals
-///The actual eating can probably be refactored.
+///The actual eating can probably be improved
 /datum/ai_behavior/eat_food_from_ground
 	action_cooldown = 5 SECONDS
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
@@ -25,7 +25,7 @@
 	if(istype(living_pawn, /mob/living/simple_animal)) //they're probably a farm animal
 		var/mob/living/simple_animal/hostile/retaliate/rogue/mob = controller.pawn
 		//Check if animal is full and not an overeater
-		if(mob.food == mob.food_max && !mob.eat_forever) 
+		if(mob.food >= mob.food_max && !mob.eat_forever) 
 			return
 
 //Eat food below, dangerous, qdeletes

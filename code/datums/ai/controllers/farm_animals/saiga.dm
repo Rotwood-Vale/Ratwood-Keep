@@ -1,4 +1,7 @@
-/datum/ai_controller/basic_controller/goat
+/datum/ai_controller/farm_animals/tamed_saiga
+	movement_delay = 0.4 SECONDS
+
+	ai_movement = /datum/ai_movement/basic_avoidance
 
 	blackboard = list(
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items(),
@@ -11,7 +14,6 @@
 
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/target_retaliate,
+		/datum/ai_planning_subtree/eat_food/farm_animals,
 		/datum/ai_planning_subtree/find_food,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree,
-		//datum/ai_planning_subtree/random_speech/goat,
 	)
