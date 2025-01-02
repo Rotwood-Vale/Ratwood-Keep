@@ -647,7 +647,7 @@
 	if(current_cycle >=33 && prob(15))
 		C.spew_organ()
 		C.vomit(0, TRUE, TRUE, 4)
-		to_chat(C, span_danger("I feel something lumpy come up as you vomit."))
+		to_chat(C, span_danger("I feel something lumpy come up..."))
 
 /datum/reagent/toxin/curare
 	name = "Curare"
