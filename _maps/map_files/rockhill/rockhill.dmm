@@ -1578,6 +1578,13 @@
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
+"aWq" = (
+/obj/structure/roguemachine/atm{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town)
 "aWs" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/hexstone,
@@ -8050,6 +8057,13 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/harbor)
+"eVo" = (
+/obj/structure/roguemachine/atm{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town)
 "eVw" = (
 /obj/structure/fluff/railing/wood{
 	pixel_y = -4;
@@ -9281,6 +9295,17 @@
 "fHB" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/indoors/town/tavern)
+"fHD" = (
+/obj/effect/decal/cobbleedge{
+	dir = 4;
+	pixel_x = -20
+	},
+/obj/structure/roguemachine/atm{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/bath)
 "fHF" = (
 /obj/structure/fluff/railing/fence,
 /turf/open/floor/rogue/dirt,
@@ -19199,9 +19224,6 @@
 	lockid = "street_smithshop01"
 	},
 /obj/item/ingot/iron,
-/obj/structure/roguemachine/atm{
-	pixel_y = -32
-	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "lLa" = (
@@ -24511,6 +24533,12 @@
 /obj/item/ingot/iron,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors)
+"oSG" = (
+/obj/structure/roguemachine/atm{
+	pixel_y = -29
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town)
 "oSM" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/ruinedwood{
@@ -25668,10 +25696,8 @@
 	},
 /area/rogue/indoors/shelter/town/harbor)
 "pHq" = (
-/obj/structure/fluff/walldeco/customflag{
-	pixel_y = 32
-	},
-/turf/closed/wall/mineral/rogue/stone,
+/obj/structure/roguemachine/atm,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "pHA" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue,
@@ -38793,9 +38819,9 @@
 	dir = 4;
 	pixel_x = -20
 	},
-/obj/structure/roguemachine/atm{
+/obj/structure/roguemachine/lottery_roguetown{
 	pixel_y = 0;
-	pixel_x = -30
+	pixel_x = -31
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath)
@@ -313185,7 +313211,7 @@ gjv
 tVN
 vXn
 vXn
-vXn
+oSG
 uln
 vIa
 xAt
@@ -333490,8 +333516,8 @@ evo
 evo
 evo
 uln
-evo
-qxh
+uln
+pHq
 rNm
 dgM
 fnA
@@ -334355,7 +334381,7 @@ nNJ
 rla
 uTQ
 evo
-rNm
+qxh
 rNm
 pIR
 fnA
@@ -338235,7 +338261,7 @@ wbg
 wbg
 yht
 cgb
-tVN
+aWq
 tVN
 tVN
 vXn
@@ -342125,7 +342151,7 @@ wbg
 cxv
 xAt
 vbM
-pHq
+uln
 uln
 vbM
 evo
@@ -342556,7 +342582,7 @@ wbg
 wbg
 obA
 blx
-rNm
+eVo
 fYL
 lRz
 oim
@@ -352024,7 +352050,7 @@ gtA
 ahx
 xLM
 jOP
-kEL
+fHD
 hNe
 cvu
 oME
