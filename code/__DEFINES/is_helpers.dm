@@ -60,6 +60,8 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 //Mobs
 #define isliving(A) (istype(A, /mob/living))
 
+#define issimple(A) (istype(A, /mob/living/simple_animal))
+
 #define isbrain(A) (istype(A, /mob/living/brain))
 
 //Carbon mobs

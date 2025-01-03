@@ -408,6 +408,7 @@
 #include "code\datums\achievements\_awards.dm"
 #include "code\datums\achievements\boss_achievements.dm"
 #include "code\datums\achievements\misc_achievements.dm"
+
 #include "code\datums\atmosphere\_atmosphere.dm"
 #include "code\datums\atmosphere\planetary.dm"
 #include "code\datums\brain_damage\brain_trauma.dm"
@@ -2002,7 +2003,6 @@
 #include "code\datums\ai\controllers\dragger.dm"
 #include "code\datums\ai\controllers\dragon.dm"
 #include "code\datums\ai\controllers\fretensis.dm"
-#include "code\datums\ai\controllers\elite_orc.dm"
 #include "code\datums\ai\controllers\haunt.dm"
 #include "code\datums\ai\controllers\minotaur.dm"
 #include "code\datums\ai\controllers\mole.dm"
@@ -2011,6 +2011,7 @@
 #include "code\datums\ai\controllers\orc.dm"
 #include "code\datums\ai\controllers\rous.dm"
 #include "code\datums\ai\controllers\spider.dm"
+#include "code\datums\ai\controllers\skeleton.dm"
 #include "code\datums\ai\controllers\troll.dm"
 #include "code\datums\ai\controllers\volf.dm"
 

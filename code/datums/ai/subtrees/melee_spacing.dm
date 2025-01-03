@@ -9,13 +9,27 @@
 	var/view_distance = 8
 	/// the run away behavior we will use
 	var/run_away_behavior = /datum/ai_behavior/step_away
+	var/need_los = FALSE
+
+/datum/ai_planning_subtree/melee_spacing/ranged //keep distance during attack cooldown, dip back in after. This may be cycle taxing
+	/// How close will we allow our target to get?
+	minimum_distance = 3
+	/// How far away will we allow our target to get?
+	maximum_distance = 6
+
+	/// the run away behavior we will use
+	///run_away_behavior = /datum/ai_behavior/step_away
+	need_los = TRUE
+
 
 /datum/ai_planning_subtree/melee_spacing/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
 	var/atom/target = controller.blackboard[target_key]
 	var/mob/living/living_pawn = controller.pawn
 
-	if (!isliving(target))// || !can_see(controller.pawn, target, view_distance)) //Chase into vision if need be.
+	if (!isliving(target))
+		return
+	if(need_los && !can_see(controller.pawn, target, view_distance)) //Chase into vision if need be. For ranged
 		return
 	
 	var/range = get_dist(living_pawn, target)

@@ -42,7 +42,7 @@
 	del_on_death = TRUE
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
 						/obj/item/natural/hide = 2, /obj/item/natural/bundle/bone/full = 1)
-	aggressive = 1
+	aggressive = TRUE
 
 //new ai, old ai off
 	can_have_ai = FALSE //disable native ai
@@ -91,8 +91,8 @@
 	melee_damage_lower = 40
 	melee_damage_upper = 50
 	armor_penetration = 40
-	maxHealth = 500
-	health = 500
+	maxHealth = ORC_HEALTH * 5
+	health = ORC_HEALTH * 5
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/orcravager,
 			/obj/item/rogueweapon/halberd/bardiche,
 			/obj/effect/decal/cleanable/blood)
@@ -130,7 +130,7 @@
 	clickcd = ORC_ATTACK_SPEED
 
 /datum/intent/spear/thrust/orcthrust
-	clickcd = ORC_ATTACK_SPEED * 1.1
+	clickcd = ORC_ATTACK_SPEED * 1.2
 	//slower swing timer because it has 2 reach
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/get_sound(input)
@@ -223,7 +223,8 @@
 	icon_dead = "orcbow"
 	projectiletype = /obj/projectile/bullet/reusable/arrow/orc
 	projectilesound = 'sound/combat/Ranged/flatbow-shot-01.ogg'
-	ranged = 1
+	casingtype = /obj/item/ammo_casing/caseless/rogue/arrow
+	ranged = TRUE
 	retreat_distance = 2
 	minimum_distance = 5
 	ranged_cooldown_time = 60
@@ -237,6 +238,9 @@
 	can_have_ai = FALSE //disable native ai
 	AIStatus = AI_OFF
 	ai_controller = /datum/ai_controller/orc_ranged
+
+/mob/living/simple_animal/hostile/retaliate/rogue/orc/ranged/Initialize()
+	. = ..()
 
 /mob/living/simple_animal/hostile/retaliate/orc/death(gibbed)
 	..()

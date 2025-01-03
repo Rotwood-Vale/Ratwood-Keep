@@ -22,7 +22,7 @@
 
 	living_pawn.face_atom(target)
 
-	if(istype(living_pawn, /mob/living/simple_animal)) //they're probably a farm animal
+	if(issimple(living_pawn)) //they're probably a farm animal
 		var/mob/living/simple_animal/hostile/retaliate/rogue/mob = controller.pawn
 		//Check if animal is full and not an overeater
 		if(mob.food >= mob.food_max && !mob.eat_forever) 

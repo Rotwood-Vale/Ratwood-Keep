@@ -18,6 +18,8 @@
 
 #define RAT_HEALTH 65
 
+#define SKELETON_HEALTH 100
+
 #define TROLL_HEALTH 350
 #define TROLLBOG_HEALTH 350
 

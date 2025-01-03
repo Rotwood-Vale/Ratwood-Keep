@@ -17,3 +17,9 @@
 
 #define COMSIG_MOB_ABILITY_STARTED "comsig_mob_ability_started"
 #define COMSIG_MOB_ABILITY_FINISHED "comsig_mob_ability_finished"
+
+#define COMSIG_SIMPLEMOB_PRE_ATTACK_RANGED "basicmob_pre_attack_ranged"
+	#define COMPONENT_CANCEL_RANGED_ATTACK COMPONENT_CANCEL_ATTACK_CHAIN //! Cancel to prevent the attack from happening
+
+///from the ranged_attacks component for basic mobs: (mob/living/basic/firer, atom/target, modifiers)
+#define COMSIG_SIMPLEMOB_POST_ATTACK_RANGED "basicmob_post_attack_ranged"
