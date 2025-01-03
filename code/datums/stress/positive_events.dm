@@ -10,12 +10,12 @@
 
 /datum/stressevent/cumok
 	timer = 60 MINUTES
-	stressadd = -5
+	stressadd = -3
 	desc = span_green("I came.")
 
 /datum/stressevent/cumgood
 	timer = 60 MINUTES
-	stressadd = -10
+	stressadd = -5
 	desc = span_boldgreen("I came.")
 
 /datum/stressevent/lovezizo
