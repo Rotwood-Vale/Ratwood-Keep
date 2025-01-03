@@ -113,6 +113,7 @@
 					backl = /obj/item/storage/backpack/rogue/satchel
 					backr = /obj/item/rogueweapon/shield/wood
 					beltr = /obj/item/rogueweapon/mace
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					H.change_stat("strength", 2)
 					H.change_stat("endurance", 2)
 					H.change_stat("constitution", 1)
@@ -143,6 +144,7 @@
 					backr = /obj/item/rogueweapon/shield/tower/metal
 					backl = /obj/item/storage/backpack/rogue/satchel
 					beltr = /obj/item/rogueweapon/mace/steel
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader/t
 					H.change_stat("endurance", 2)
 					H.change_stat("constitution", 2)
@@ -169,6 +171,7 @@
 					backr = /obj/item/rogueweapon/shield/tower/metal
 					backl = /obj/item/storage/backpack/rogue/satchel
 					beltr = /obj/item/rogueweapon/sword/decorated
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 					H.change_stat("endurance", 2)
 					H.change_stat("constitution", 2)
