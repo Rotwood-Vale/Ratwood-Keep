@@ -41,7 +41,3 @@
 		if(do_after(user,2 SECONDS, target = src))
 			reagents.trans_to(I, reagents.total_volume)
 	return TRUE
-
-/obj/item/reagent_containers/glass/bucket/pot/stone
-	name = "stone pot"
-	desc = "A pot made out of stone"

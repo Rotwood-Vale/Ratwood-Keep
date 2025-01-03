@@ -34,7 +34,7 @@
 		/obj/item/leash = 15,
 		/obj/item/customlock = 30,
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 30,
-		/obj/item/shard = 15,
+		/obj/item/natural/glass/shard = 15,
 		/obj/item/natural/feather = 25,
 		/obj/item/natural/cloth = 30,
 		/obj/item/kitchen/spoon = 5, //My... Spoon!

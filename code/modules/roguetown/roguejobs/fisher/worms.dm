@@ -37,7 +37,7 @@
 					/obj/item/leash = 15,
 					/obj/item/customlock = 35,
 					/obj/item/storage/belt/rogue/pouch/coins/poor = 25,
-					/obj/item/shard = 1, //Bait is smaller
+					/obj/item/natural/glass/shard = 1, //Bait is smaller
 					/obj/item/natural/feather = 15,
 					/obj/item/natural/cloth = 15,
 					/obj/item/kitchen/spoon = 1,
@@ -92,7 +92,7 @@
 		/obj/item/leash = 45,
 		/obj/item/customlock = 45,
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 45,
-		/obj/item/shard = 45,
+		/obj/item/natural/glass/shard = 45,
 		/obj/item/natural/feather = 45,
 		/obj/item/natural/cloth = 45,
 		/obj/item/kitchen/spoon = 45,

@@ -280,38 +280,6 @@
 /datum/artificer_recipe/prosthetics
 	i_type = "Prosthetics"
 
-/datum/artificer_recipe/prosthetics/wood/arm_left
-	name = "Left Wooden Arm (+2 Plank) (+1 Wooden Cog)"
-	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
-	created_item = /obj/item/bodypart/l_arm/prosthetic/wood
-	hammers_per_item = 4
-	skill_level = 2
-
-/datum/artificer_recipe/prosthetics/wood/arm_right
-	name = "Right Wooden Arm (+2 Plank) (+1 Wooden Cog)"
-	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
-	created_item = /obj/item/bodypart/r_arm/prosthetic/wood
-	hammers_per_item = 4
-	skill_level = 2
-
-/datum/artificer_recipe/prosthetics/wood/leg_left
-	name = "Left Wooden Leg (+2 Plank) (+1 Wooden Cog)"
-	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
-	created_item = /obj/item/bodypart/l_leg/prosthetic/wood
-	hammers_per_item = 4
-	skill_level = 2
-
-/datum/artificer_recipe/prosthetics/wood/leg_right
-	name = "Right Wooden Leg (+2 Plank) (+1 Wooden Cog)"
-	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
-	created_item = /obj/item/bodypart/r_leg/prosthetic/wood
-	hammers_per_item = 4
-	skill_level = 2
-
 /datum/artificer_recipe/prosthetics/wood/eye
 	name = "Wooden Eyeball"
 	required_item = /obj/item/natural/wood/plank

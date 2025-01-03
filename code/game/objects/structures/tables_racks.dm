@@ -231,7 +231,7 @@
 /obj/structure/table/glass/Initialize()
 	. = ..()
 //	debris += new frame
-//	debris += new /obj/item/shard
+//	debris += new /obj/item/natural/glass/shard
 
 /obj/structure/table/glass/Destroy()
 	. = ..()
@@ -265,7 +265,7 @@
 		var/atom/movable/AM = I
 		AM.forceMove(T)
 		debris -= AM
-		if(istype(AM, /obj/item/shard))
+		if(istype(AM, /obj/item/natural/glass/shard))
 			AM.throw_impact(L)
 	L.Paralyze(100)
 	qdel(src)
@@ -283,7 +283,7 @@
 
 /obj/structure/table/glass/narsie_act()
 	color = NARSIE_WINDOW_COLOUR
-	for(var/obj/item/shard/S in debris)
+	for(var/obj/item/natural/glass/shard/S in debris)
 		S.color = NARSIE_WINDOW_COLOUR
 
 /*

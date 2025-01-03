@@ -60,14 +60,14 @@
 	if(!(flags_1 & NODECONSTRUCT_1))
 		dump()
 		if(!disassembled)
-			new /obj/item/shard( src.loc )
+			new /obj/item/natural/glass/shard( src.loc )
 	qdel(src)
 
 /obj/structure/displaycase/obj_break(damage_flag)
 	if(!broken && !(flags_1 & NODECONSTRUCT_1))
 		density = FALSE
 		broken = 1
-		new /obj/item/shard( src.loc )
+		new /obj/item/natural/glass/shard( src.loc )
 		playsound(src, "shatter", 70, TRUE)
 		update_icon()
 	..()

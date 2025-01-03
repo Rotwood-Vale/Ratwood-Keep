@@ -17,7 +17,7 @@
 	metalizer_result = /obj/item/rogueore/iron
 
 /obj/item/grown/log/tree/attacked_by(obj/item/I, mob/living/user) //This serves to reward woodcutting
-	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount)
+	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount && lumber)
 		var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 		var/lumber_time = (40 - (skill_level * 5))
 		var/minimum = 2
@@ -55,6 +55,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
+	lumber = /obj/item/natural/wood/plank
 	metalizer_result = /obj/item/rogueore/copper
 
 /obj/item/natural/wood/plank
@@ -124,6 +125,7 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	lumber_amount = 0
 	metalizer_result = /obj/item/needle
+	lumber = null
 
 /obj/item/grown/log/tree/stick/Crossed(mob/living/L)
 	. = ..()
@@ -195,4 +197,5 @@
 	gripped_intents = null
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	lumber_amount = 0
+	lumber = null
 	metalizer_result = /obj/item/ammo_casing/caseless/rogue/arrow/iron

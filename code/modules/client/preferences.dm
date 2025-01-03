@@ -154,6 +154,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/violated = list()
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
+
+	var/list/preference_message_list = list()
+	
 	var/defiant = TRUE
 	var/virginity = FALSE
 	var/char_accent = "No accent"

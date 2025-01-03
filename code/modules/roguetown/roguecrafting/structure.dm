@@ -235,45 +235,6 @@
 	verbage = "constructs"
 	skill_level = 2
 
-/datum/crafting_recipe/roguetown/structure/dye_bin
-	name = "dye bin"
-	result = /obj/structure/dye_bin
-	reqs = list(
-		/obj/item/grown/log/tree/small = 1,
-	)
-	verbage_simple = "make"
-	verbage = "makes"
-	skill_level = 0
-/*
-/datum/crafting_recipe/roguetown/structure/stairs
-	name = "stairs (up)"
-	result = /obj/structure/stairs
-	reqs = list(/obj/item/grown/log/tree/small = 1)
-
-	verbage = "constructs"
-	craftsound = 'sound/foley/Building-01.ogg'
-	ontile = TRUE
-
-/datum/crafting_recipe/roguetown/structure/stairs/TurfCheck(mob/user, turf/T)
-	var/turf/checking = get_step_multiz(T, UP)
-	if(!checking)
-		return FALSE
-	if(!istype(checking,/turf/open/transparent/openspace))
-		return FALSE
-	checking = get_step(checking, user.dir)
-	if(!checking)
-		return FALSE
-	if(!isopenturf(checking))
-		return FALSE
-	if(istype(checking,/turf/open/transparent/openspace))
-		return FALSE
-	for(var/obj/structure/S in checking)
-		if(istype(S, /obj/structure/stairs))
-			return FALSE
-		if(S.density)
-			return FALSE
-	return TRUE
-*/
 /datum/crafting_recipe/roguetown/structure/stairsd
 	name = "wooden stairs (down)"
 	result = /obj/structure/stairs/d

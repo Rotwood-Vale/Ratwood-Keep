@@ -629,9 +629,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	center_requirement = /mob/living/carbon/human
 
 	n_req = /obj/item/bodypart/head
-	s_req = /obj/item/shard
-	e_req = /obj/item/shard
-	w_req = /obj/item/shard
+	s_req = /obj/item/natural/glass/shard
+	e_req = /obj/item/natural/glass/shard
+	w_req = /obj/item/natural/glass/shard
 
 	function = /proc/falseappearance
 
