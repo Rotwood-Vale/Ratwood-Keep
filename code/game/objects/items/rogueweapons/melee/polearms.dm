@@ -72,27 +72,120 @@
 
 /obj/item/rogueweapon/woodstaff/aries
 	name = "staff of the shepherd"
-	desc = "Your flock awaits your protection and guidance."
+	desc = "A blessed long silver staff adorned with an reinforced gold ornament atop. It is adorned with symbolism and icons of the Successors atop."
 	force = 25
 	force_wielded = 28
+	max_integrity = 300 // From my code diving it was 200. It being unique to the Priest it should probably get this
+	smeltresult = /obj/item/ingot/silver
 	icon_state = "aries"
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/64.dmi'
+	resistance_flags = FIRE_PROOF
 	pixel_y = 0
 	pixel_x = 0
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	bigboy = FALSE
-	gripsprite = FALSE
-	gripped_intents = null
+	sellprice = 460
+	bigboy = TRUE
+	gripsprite = TRUE
+	gripped_intents = list(SPEAR_BASH,/datum/intent/mace/smash/wood)
+	var/last_used = 0
 
 /obj/item/rogueweapon/woodstaff/aries/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.6,"sx" = -6,"sy" = 2,"nx" = 8,"ny" = 2,"wx" = -4,"wy" = 2,"ex" = 1,"ey" = 2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 300,"wturn" = 32,"eturn" = -23,"nflip" = 0,"sflip" = 100,"wflip" = 8,"eflip" = 0)
+				return list("shrink" = 0.6,"sx" = -6,"sy" = -1,"nx" = 8,"ny" = 0,"wx" = -4,"wy" = 0,"ex" = 2,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 32,"eturn" = -23,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("wielded")
 				return list("shrink" = 0.6,"sx" = 4,"sy" = -2,"nx" = -3,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+
+/obj/item/rogueweapon/woodstaff/aries/pickup(mob/living/user)
+	if(!HAS_TRAIT(user, TRAIT_CHOSEN))
+		to_chat(user, "<font color='yellow'>UNWORTHY HANDS TOUCH THE STAFF, CEASE OR BE PUNISHED</font>")
+		spawn(30)
+			if(loc == user)
+				user.adjust_fire_stacks(5)
+				user.IgniteMob()
+
+/obj/item/rogueweapon/woodstaff/aries/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+		if(V)
+			if(V.disguised)
+				to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.adjustFireLoss(40)
+				H.fire_act(1,10)
+			else
+				to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.adjustFireLoss(40)
+				H.fire_act(1,10)
+		if(V_lord)
+			to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(40)
+			H.fire_act(1,10)
+		if(W && W.transformed == TRUE)
+			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
+			H.Knockdown(10)
+			H.Paralyze(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+
+
+/obj/item/rogueweapon/woodstaff/aries/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
+	if(world.time < src.last_used + 100)
+		to_chat(user, span_notice("The silver effect is on cooldown."))
+		return
+
+	. = ..()
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		if(V)
+			if(V.disguised)
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
+				to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+			else
+				H.Stun(20)
+				to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+		if(V_lord)
+			H.Knockdown(10)
+			H.Paralyze(10)
+			to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+			src.last_used = world.time
+		if(W && W.transformed == TRUE)
+			H.adjustFireLoss(25)
+			H.Paralyze(10)
+			H.Stun(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+			to_chat(H, span_userdanger("I'm hit by my BANE!"))
+			src.last_used = world.time
 
 
 /obj/item/rogueweapon/spear
