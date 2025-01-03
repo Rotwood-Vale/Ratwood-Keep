@@ -5044,6 +5044,9 @@
 /area/rogue/outdoors/bog)
 "ddQ" = (
 /obj/structure/rack/rogue,
+/obj/item/storage/keyring/mercenary,
+/obj/item/storage/keyring/mercenary,
+/obj/item/storage/keyring/mercenary,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter/town/harbor)
 "det" = (
