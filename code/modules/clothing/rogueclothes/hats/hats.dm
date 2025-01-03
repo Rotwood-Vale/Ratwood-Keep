@@ -12,6 +12,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
+	grid_height = 64
+	grid_width = 64
+
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()
 	user.update_fov_angles()

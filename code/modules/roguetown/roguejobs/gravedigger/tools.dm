@@ -18,6 +18,9 @@
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 50
 
+	grid_width = 32
+	grid_height = 96
+
 /obj/item/rogueweapon/shovel/pre_attack(atom/A, mob/living/user, params)
 	. = ..()
 	if(user.used_intent.type != /datum/intent/shovelscoop)
@@ -182,6 +185,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_blade_int = 0
 	smeltresult = null
+	grid_height = 64
 
 /obj/item/burial_shroud
 	name = "winding sheet"
