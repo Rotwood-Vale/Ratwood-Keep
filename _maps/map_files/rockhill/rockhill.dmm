@@ -2179,9 +2179,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/roofs)
 "bnP" = (
-/obj/structure/closet/crate/drawer{
-	pixel_y = 16
-	},
+/obj/structure/roguewindow/openclose/reinforced,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "bnV" = (
@@ -4958,11 +4956,9 @@
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town)
 "dbg" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_x = -32;
-	pixel_y = 0
+/turf/open/floor/rogue/rooftop/green{
+	dir = 4
 	},
-/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "dbh" = (
 /obj/structure/fluff/clock,
@@ -27657,12 +27653,6 @@
 	icon_state = "wooden_floort"
 	},
 /area/rogue/outdoors/town)
-"qVN" = (
-/obj/structure/roguewindow/openclose/reinforced{
-	dir = 8
-	},
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/manor)
 "qVP" = (
 /obj/structure/rack/rogue,
 /obj/item/key/roomi{
@@ -34330,6 +34320,7 @@
 	layer = 2.8;
 	pixel_x = 8
 	},
+/obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "uZb" = (
@@ -432474,8 +432465,8 @@ fZJ
 fZJ
 fZJ
 aCU
+wQB
 oif
-dbg
 uYU
 moX
 aCU
@@ -432906,7 +432897,7 @@ fZJ
 fZJ
 fZJ
 aCU
-oif
+fIk
 pKb
 iur
 aCU
@@ -433770,7 +433761,7 @@ fZJ
 fZJ
 fZJ
 aCU
-oif
+agS
 oif
 oif
 oif
@@ -434202,8 +434193,8 @@ fZJ
 fZJ
 fZJ
 aCU
-agS
-wQB
+vfH
+oif
 oif
 oif
 aCU
@@ -434633,9 +434624,9 @@ qvB
 fZJ
 fZJ
 fZJ
-tDq
-vfH
-fIk
+aCU
+aCU
+aCU
 oif
 tCU
 aCU
@@ -435065,10 +435056,10 @@ qvB
 fZJ
 fZJ
 fZJ
-aCU
+dbg
+xzQ
 bnP
 lGX
-oif
 dpH
 aCU
 fZJ
@@ -435497,8 +435488,8 @@ qvB
 fZJ
 fZJ
 fZJ
-aCU
-aCU
+dbg
+dbg
 aCU
 aCU
 aCU
@@ -544796,7 +544787,7 @@ xAt
 xAt
 mKP
 kms
-qVN
+kms
 kms
 kms
 niX
@@ -545226,12 +545217,12 @@ esF
 xAt
 xAt
 xAt
+xAt
+sXz
 uKX
 sXz
 sXz
-sXz
-sXz
-esF
+uKX
 xAt
 uKX
 sXz
@@ -545658,12 +545649,12 @@ esF
 xAt
 xAt
 xAt
-vAb
-hGn
-hGn
-hGn
-hGn
-eUb
+xAt
+sXz
+uKX
+uKX
+uKX
+uKX
 xAt
 uKX
 sXz
