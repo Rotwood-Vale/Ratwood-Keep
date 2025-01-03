@@ -1991,6 +1991,8 @@
 #include "code\datums\ai\behaviors\resist.dm"
 #include "code\datums\ai\behaviors\recuperate.dm"
 #include "code\datums\ai\behaviors\run_from_target.dm"
+#include "code\datums\ai\behaviors\travel_towards.dm"
+
 #include "code\datums\ai\behaviors\use_in_hand.dm"
 #include "code\datums\ai\behaviors\use_on_object.dm"
 #include "code\datums\ai\behaviors\use_targeted_ability.dm"
@@ -2023,12 +2025,12 @@
 
 #include "code\datums\ai\subtrees\attack_adjacent_target.dm"
 #include "code\datums\ai\subtrees\attack_obstacle_in_path.dm"
+#include "code\datums\ai\subtrees\call_reinforcements.dm"
 #include "code\datums\ai\subtrees\find_food.dm"
 #include "code\datums\ai\subtrees\flee_nearest_target.dm"
 #include "code\datums\ai\subtrees\flee_target.dm"
 #include "code\datums\ai\subtrees\eat_body.dm"
 #include "code\datums\ai\subtrees\eat_food.dm"
-
 #include "code\datums\ai\subtrees\move_to_cardinal.dm"
 #include "code\datums\ai\subtrees\melee_spacing.dm"
 #include "code\datums\ai\subtrees\random_speech.dm"
@@ -2037,7 +2039,7 @@
 #include "code\datums\ai\subtrees\simple_find_target.dm"
 #include "code\datums\ai\subtrees\simple_melee_subtree.dm"
 #include "code\datums\ai\subtrees\targeted_ability_use.dm"
-
+#include "code\datums\ai\subtrees\travel_to_point.dm"
 
 #include "code\datums\ai\targetting_datum\simple_targetting_datum.dm"
 #include "code\datums\ai\targetting_datum\simple_targetting_allow_item.dm"
