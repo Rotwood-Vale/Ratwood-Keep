@@ -16,7 +16,7 @@
 
 /datum/outfit/job/roguetown/architect/pre_equip(mob/living/carbon/human/H)         ///////////// fuck being a dumb virgin
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	head = /obj/item/clothing/head/roguetown/helmet/kettle
