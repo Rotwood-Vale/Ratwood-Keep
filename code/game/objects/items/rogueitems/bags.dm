@@ -11,6 +11,9 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	max_integrity = 300
 
+	grid_width = 64
+	grid_height = 64
+
 	component_type = /datum/component/storage/concrete/roguetown/sack
 
 /obj/item/storage/roguebag/examine(mob/user)
@@ -36,7 +39,6 @@
 		return FALSE
 	else
 		return TRUE
-
 
 /obj/item/storage/roguebag/attack_right(mob/user)
 	. = ..()
