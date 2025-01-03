@@ -381,41 +381,41 @@
 // --------- BLACKSTEEL RECIPES-----------
 
 /datum/anvil_recipe/armor/blacksteel/cuirass
-	name = "Кираса из черной стали (+1 Черная сталь)"
+	name = "Кираса из чёрной стали (+1 Чёрная сталь)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
 	skill_level = 4
 
 /datum/anvil_recipe/armor/blacksteel/platechest
-	name = "Пластинчатая броня из черной стали (+3 Черная сталь)"
+	name = "Пластинчатая броня из чёрной стали (+3 Чёрная сталь)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
 	skill_level = 5
 
 /datum/anvil_recipe/armor/blacksteel/platelegs
-	name = "Пластинчатые поножи из черной стали (+1 Черная сталь)"
+	name = "Пластинчатые поножи из чёрной стали (+1 Чёрная сталь)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/under/roguetown/blacksteel/platelegs
 	skill_level = 3
 
 /datum/anvil_recipe/armor/blacksteel/bucket
-	name = "Шлем-ведро из черной стали (Топфхельм) (+1 Черная сталь)"
+	name = "Шлем-ведро из чёрной стали (Топфхельм) (+1 Чёрная сталь)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
 	skill_level = 3
 
 /datum/anvil_recipe/armor/blacksteel/plategloves
-	name = "Пластинчатые рукавицы из черной стали"
+	name = "Пластинчатые рукавицы из чёрной стали"
 	req_bar = /obj/item/ingot/blacksteel
 	created_item = /obj/item/clothing/gloves/roguetown/blacksteel/plategloves
 	skill_level = 3
 
 /datum/anvil_recipe/armor/blacksteel/plateboots
-	name = "Пластинчатые сапоги из черной стали"
+	name = "Пластинчатые сапоги из чёрной стали"
 	req_bar = /obj/item/ingot/blacksteel
 	created_item = /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
 	skill_level = 3
