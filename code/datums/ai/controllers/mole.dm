@@ -9,8 +9,7 @@
 	)
 
 	planning_subtrees = list(
-		/datum/ai_planning_subtree/flee_target,
-
+		/datum/ai_planning_subtree/target_retaliate,
 		/datum/ai_planning_subtree/simple_find_target/mole,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 

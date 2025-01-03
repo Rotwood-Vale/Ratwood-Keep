@@ -60,6 +60,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/Initialize()
 	. = ..()
 	update_icon()
+	AddElement(/datum/element/ai_retaliate)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BASHDOORS, TRAIT_GENERIC)
 

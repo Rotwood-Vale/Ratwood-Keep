@@ -9,7 +9,7 @@
 	)
 
 	planning_subtrees = list(
-
+		/datum/ai_planning_subtree/target_retaliate,
 		/datum/ai_planning_subtree/simple_find_target/troll,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree, //may be doubling up on subtrees. todo: check perf crix
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/opportunistic,

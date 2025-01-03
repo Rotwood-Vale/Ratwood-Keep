@@ -48,6 +48,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mossback/Initialize(mapload, mob/user, townercrab = FALSE)
 	. = ..()
+	AddElement(/datum/element/ai_retaliate)
 	if(user)
 		friends += user.name
 		if (townercrab)

@@ -33,7 +33,10 @@
 	AIStatus = AI_OFF
 	ai_controller = /datum/ai_controller/mudcrab
 	
-
+/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab/Initialize()
+	..()
+	AddElement(/datum/element/ai_retaliate)
+	
 /mob/living/simple_animal/mudcrabcrab/Life()
 	..()
 	//CRAB movement

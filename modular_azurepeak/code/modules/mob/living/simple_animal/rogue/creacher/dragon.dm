@@ -82,6 +82,8 @@
 
 	leap.Grant(src)
 
+	AddElement(/datum/element/ai_retaliate)
+
 	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, leap)
 	
 	//ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC) // Need a weakness

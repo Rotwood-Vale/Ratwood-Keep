@@ -8,6 +8,7 @@
 	)
 
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/target_retaliate,
 		/datum/ai_planning_subtree/simple_find_target/closest,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 		
@@ -26,6 +27,7 @@
 	)
 
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/target_retaliate,
 		/datum/ai_planning_subtree/simple_find_target/closest,
 		/datum/ai_planning_subtree/melee_spacing,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/spear,
@@ -43,6 +45,7 @@
 	)
 
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/target_retaliate,
 		/datum/ai_planning_subtree/simple_find_target/closest,
 		/datum/ai_planning_subtree/basic_ranged_attack_subtree,
 	)

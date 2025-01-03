@@ -49,6 +49,10 @@
 	AIStatus = AI_OFF
 	ai_controller = /datum/ai_controller/orc
 
+/mob/living/simple_animal/hostile/retaliate/rogue/orc/Initialize()
+	. = ..()
+	AddElement(/datum/element/ai_retaliate)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/orc2
 	icon_state = "savageorc2"
 	icon_living = "savageorc2"

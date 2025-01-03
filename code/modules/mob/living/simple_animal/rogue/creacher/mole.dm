@@ -63,6 +63,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mole/Initialize()
 	. = ..()
 	gender = MALE
+	AddElement(/datum/element/ai_retaliate)
 	if(prob(33))
 		gender = FEMALE
 	update_icon()
