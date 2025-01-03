@@ -1,5 +1,5 @@
 /datum/ai_controller/troll
-	movement_delay = 0.5 SECONDS
+	movement_delay = TROLL_MOVEMENT_SPEED
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

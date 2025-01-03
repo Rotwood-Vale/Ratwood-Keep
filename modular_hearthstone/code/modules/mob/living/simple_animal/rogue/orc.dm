@@ -14,8 +14,8 @@
 	STACON = 9
 	STASTR = 14
 	STASPD = 13
-	maxHealth = 100
-	health = 100
+	maxHealth = ORC_HEALTH
+	health = ORC_HEALTH
 	harm_intent_damage = 15
 	melee_damage_lower = 25
 	melee_damage_upper = 30
@@ -24,7 +24,7 @@
 	retreat_distance = 0
 	minimum_distance = 0
 	limb_destroyer = 1
-	base_intents = list(/datum/intent/simple/axe)
+	base_intents = list(/datum/intent/simple/axe/orc)
 	attack_verb_continuous = "hacks"
 	attack_verb_simple = "hack"
 	attack_sound = 'sound/blank.ogg'
@@ -67,8 +67,8 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 	armor_penetration = 35
-	maxHealth = 200
-	health = 200
+	maxHealth = ORC_HEALTH * 2 //TWICE THE ORC
+	health = ORC_HEALTH * 2
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/orcmarauder,
 			/obj/item/rogueweapon/sword/iron/messer,
 			/obj/effect/decal/cleanable/blood)
@@ -126,8 +126,11 @@
 			/obj/item/rogueweapon/spear/bonespear,
 			/obj/effect/decal/cleanable/blood)
 
+/datum/intent/simple/axe/orc
+	clickcd = ORC_ATTACK_SPEED
+
 /datum/intent/spear/thrust/orcthrust
-	clickcd = CLICK_CD_MELEE + 2.5
+	clickcd = ORC_ATTACK_SPEED * 1.1
 	//slower swing timer because it has 2 reach
 
 /mob/living/simple_animal/hostile/retaliate/rogue/orc/get_sound(input)
@@ -228,8 +231,8 @@
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc2,
 			/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 			/obj/item/ammo_casing/caseless/rogue/arrow,	/obj/item/ammo_casing/caseless/rogue/arrow, /obj/item/ammo_casing/caseless/rogue/arrow,	/obj/effect/decal/cleanable/blood)
-	maxHealth = 50
-	health = 50
+	maxHealth = ORC_HEALTH * 0.5
+	health = ORC_HEALTH * 0.5
 
 	can_have_ai = FALSE //disable native ai
 	AIStatus = AI_OFF
@@ -238,10 +241,4 @@
 /mob/living/simple_animal/hostile/retaliate/orc/death(gibbed)
 	..()
 	update_icon()
-
-
-/mob/living/simple_animal/hostile/retaliate/rogue/orc/original
-	AIStatus = AI_ON
-	can_have_ai = TRUE
-
 

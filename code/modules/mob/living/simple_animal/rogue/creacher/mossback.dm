@@ -13,12 +13,12 @@
 	turns_per_move = 3
 	see_in_dark = 10
 	move_to_delay = 3
-	base_intents = list(/datum/intent/simple/claw)
+	base_intents = list(/datum/intent/simple/claw/mossback)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/crab = 5)
 	faction = list("crabs")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 150
-	maxHealth = 200
+	health = MOSSBACK_HEALTH
+	maxHealth = MOSSBACK_HEALTH
 	melee_damage_lower = 35
 	melee_damage_upper = 50
 	vision_range = 4
@@ -115,3 +115,6 @@
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
 	return ..()
+
+/datum/intent/simple/claw/mossback
+	clickcd = MOSSBACK_ATTACK_SPEED

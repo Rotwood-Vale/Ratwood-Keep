@@ -1,5 +1,5 @@
 /datum/ai_controller/mudcrab
-	movement_delay = 4 SECONDS
+	movement_delay = MUDCRAB_MOVEMENT_SPEED
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

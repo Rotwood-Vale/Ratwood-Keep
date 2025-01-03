@@ -16,7 +16,7 @@
 	pixel_y = -8
 	vision_range = 5
 	aggro_vision_range = 9
-	base_intents = list(/datum/intent/simple/bite)
+	base_intents = list(/datum/intent/simple/bite/bigrat)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
 					/obj/item/natural/hide = 1, /obj/item/natural/bone = 2)
 	faction = list("rats")
@@ -158,3 +158,5 @@
 			return "foreleg"
 	return ..()
 
+/datum/intent/simple/bite/bigrat
+	clickcd = RAT_ATTACK_SPEED

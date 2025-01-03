@@ -1,5 +1,5 @@
 /datum/ai_controller/elite_orc
-	movement_delay = 0.5 SECONDS
+	movement_delay = ORC_MOVEMENT_SPEED
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

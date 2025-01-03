@@ -1,5 +1,5 @@
 /datum/ai_controller/fretensis
-	movement_delay = 0.6 SECONDS
+	movement_delay = RAT_MOVEMENT_SPEED
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

@@ -11,15 +11,15 @@
 	turns_per_move = 2
 	see_in_dark = 6
 	move_to_delay = 5
-	base_intents = list(/datum/intent/simple/claw)
+	base_intents = list(/datum/intent/simple/claw/mole)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 7,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur = 1,
 						/obj/item/natural/bone = 3)
 	faction = list("wolfs")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 340
-	maxHealth = 340
+	health = MOLE_HEALTH
+	maxHealth = MOLE_HEALTH
 	melee_damage_lower = 19
 	melee_damage_upper = 29
 	vision_range = 7
@@ -136,3 +136,5 @@
 			return "foreleg"
 	return ..()
 
+/datum/intent/simple/claw/mole
+	clickcd = MOLE_ATTACK_SPEED

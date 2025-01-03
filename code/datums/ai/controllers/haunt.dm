@@ -1,6 +1,6 @@
 //Their sprite is spirits so they can probably move fast.
 /datum/ai_controller/haunt
-	movement_delay = 0.3 SECONDS
+	movement_delay = HAUNT_MOVEMENT_SPEED
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

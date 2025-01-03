@@ -21,8 +21,8 @@
 						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 2)
 	faction = list("caves")
 
-	health = 600
-	maxHealth = 600
+	health = MINOTAUR_HEALTH
+	maxHealth = MINOTAUR_HEALTH
 	melee_damage_lower = 55
 	melee_damage_upper = 80
 	vision_range = 3
@@ -161,6 +161,7 @@
 	candodge = TRUE
 	canparry = TRUE
 	item_d_type = "stab"
+	clickcd = MINOTAUR_ATTACK_SPEED
 
 /datum/intent/simple/minotaur_axe
 	name = "minotaur axe"
@@ -174,8 +175,9 @@
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-	reach = 1 
+	reach = 2 
 	item_d_type = "stab"
+	clickcd = MINOTAUR_ATTACK_SPEED
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/original
 	AIStatus = AI_ON

@@ -1,31 +1,31 @@
-/mob/living/simple_animal/hostile/rogue/haunt
-	name = "haunt"
+/mob/living/simple_animal/hostile/rogue/dragger
+	icon = 'icons/roguetown/underworld/enigma_dragger.dmi'
+	icon_state = "dragger"
+	icon_living = "dragger"
+	icon_dead = "dragger_dead"
+	name = "dragger"
 	desc = ""
-	icon = 'icons/roguetown/mob/monster/wraith.dmi'
-	icon_state = "haunt"
-	icon_living = "haunt"
-	icon_dead = null
 	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
-	movement_type = FLYING
+	movement_type = GROUND
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	pass_flags = PASSTABLE|PASSGRILLE
-	base_intents = list(/datum/intent/simple/slash)
-	gender = MALE
+	base_intents = list(/datum/intent/simple/dragger)
+	gender = FEMALE
 	speak_chance = 0
 	turns_per_move = 5
 	response_help_continuous = "passes through"
 	response_help_simple = "pass through"
-	maxHealth = HAUNT_HEALTH
-	health = HAUNT_HEALTH
-	spacewalk = TRUE
+	maxHealth = DRAGGER_HEALTH
+	health = DRAGGER_HEALTH
+	spacewalk = FALSE
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
 	speed = 1
 	move_to_delay = 5 //delay for the automated movement.
 	harm_intent_damage = 1
 	obj_damage = 1
-	melee_damage_lower = 15
-	melee_damage_upper = 25
+	melee_damage_lower = 30
+	melee_damage_upper = 45
 	attack_same = FALSE
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	dodge_sound = 'sound/combat/dodge.ogg'
@@ -33,7 +33,7 @@
 	d_intent = INTENT_PARRY
 	speak_emote = list("growls")
 	limb_destroyer = 1
-	del_on_death = TRUE
+	del_on_death = FALSE
 	STALUC = 11
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -43,17 +43,15 @@
 	defdrain = 20
 	canparry = TRUE
 	retreat_health = null
-	var/obj/structure/bonepile/slavepile
 
-	food_type = list(/obj/item/reagent_containers/food/snacks, /obj/item/bodypart)	
 	can_have_ai = FALSE //disable native ai
 	AIStatus = AI_OFF
-	ai_controller = /datum/ai_controller/haunt
+	ai_controller = /datum/ai_controller/dragger
 
-/mob/living/simple_animal/hostile/rogue/haunt/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
+/mob/living/simple_animal/hostile/rogue/dragger/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE
 
-/mob/living/simple_animal/hostile/rogue/haunt/simple_limb_hit(zone)
+/mob/living/simple_animal/hostile/rogue/dragger/simple_limb_hit(zone)
 	if(!zone)
 		return ""
 	switch(zone)
@@ -102,115 +100,25 @@
 
 	return ..()
 
-/mob/living/simple_animal/hostile/rogue/haunt/omen
-	name = "omen"
-	desc = "A vengeful spirit comes to haunt the living!"
-	maxHealth = 200
-	health = 200
-	melee_damage_lower = 30
-	melee_damage_upper = 40
-
-/obj/structure/bonepile
-	icon = 'icons/roguetown/mob/monster/wraith.dmi'
-	icon_state = "hauntpile"
-	max_integrity = 100
-	anchored = TRUE
-	density = FALSE
-	layer = BELOW_OBJ_LAYER
-	var/list/haunts = list()
-	var/maxhaunts = 1
-	var/datum/looping_sound/boneloop/soundloop
-	var/spawning = FALSE
-	attacked_sound = 'sound/vo/mobs/ghost/skullpile_hit.ogg'
-
-/obj/structure/bonepile/Initialize()
-	. = ..()
-	soundloop = new(src, FALSE)
-	soundloop.start()
-//	for(var/i in 1 to maxhaunts)
-	spawn_haunt()
-
-/obj/structure/bonepile/update_icon()
-	. = ..()
-	if(spawning)
-		icon_state = "hauntpile-r"
-	else
-		icon_state = "hauntpile"
-
-/obj/structure/bonepile/proc/createhaunt()
-	if(QDELETED(src))
-		return
-	if(!spawning)
-		return
-	spawning = FALSE
-	var/mob/living/simple_animal/hostile/rogue/haunt/H = new (get_turf(src))
-	H.slavepile = src
-	haunts += H
-	update_icon()
-
-/obj/structure/bonepile/proc/spawn_haunt()
-	if(QDELETED(src))
-		return
-	if(spawning)
-		return
-	spawning = TRUE
-	update_icon()
-	addtimer(CALLBACK(src, PROC_REF(createhaunt)), 4 SECONDS)
-
-/obj/structure/bonepile/Destroy()
-	soundloop.stop()
-	spawning = FALSE
-	for(var/H in haunts)
-		var/mob/living/simple_animal/hostile/rogue/haunt/D = H
-		D.death()
-	var/spawned = pick(/obj/item/reagent_containers/powder/spice)
-	new spawned(get_turf(src))
-	. = ..()
-
-/obj/structure/bonepile/attackby(obj/item/W, mob/user, params)
-	. = ..()
-	if(user)
-		for(var/H in haunts)
-			var/mob/living/simple_animal/hostile/rogue/haunt/D = H
-			D.GiveTarget(user)
-
-/mob/living/simple_animal/hostile/rogue/haunt/taunted(mob/user)
+/mob/living/simple_animal/hostile/rogue/dragger/taunted(mob/user)
 	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/rogue/haunt/Initialize()
+/mob/living/simple_animal/hostile/rogue/dragger/Initialize()
 	. = ..()
 	set_light(2, 2, 2, l_color = "#c0523f")
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 
-/mob/living/simple_animal/hostile/rogue/haunt/Destroy()
-	set_light(0)
-	if(slavepile)
-		slavepile.haunts -= src
-		slavepile.spawn_haunt()
-		slavepile = null
-	. = ..()
 
-/mob/living/simple_animal/hostile/rogue/haunt/death(gibbed)
+/mob/living/simple_animal/hostile/rogue/dragger/death(gibbed)
 	emote("death")
 	..()
 
-/mob/living/simple_animal/hostile/rogue/haunt/Life()
+/mob/living/simple_animal/hostile/rogue/dragger/Life()
 	. = ..()
-	if(slavepile)
-		var/offset_x = x - slavepile.x
-		var/offset_y = y - slavepile.y
-		if(offset_x > 8 || offset_x < -8 || offset_y > 8 || offset_y < -8 || (z != slavepile.z))
-			if(isturf(slavepile.loc))
-				src.forceMove(slavepile.loc)
-			else
-				death()
-	if(!target)
-		if(prob(3))
-			emote(pick("laugh", "moan", "whisper"), TRUE)
 
-/mob/living/simple_animal/hostile/rogue/haunt/get_sound(input)
+/mob/living/simple_animal/hostile/rogue/dragger/get_sound(input)
 	switch(input)
 		if("laugh")
 			return pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg','sound/vo/mobs/ghost/laugh (4).ogg','sound/vo/mobs/ghost/laugh (5).ogg','sound/vo/mobs/ghost/laugh (6).ogg')
@@ -223,16 +131,23 @@
 		if("aggro")
 			return pick('sound/vo/mobs/ghost/aggro (1).ogg','sound/vo/mobs/ghost/aggro (2).ogg','sound/vo/mobs/ghost/aggro (3).ogg','sound/vo/mobs/ghost/aggro (4).ogg','sound/vo/mobs/ghost/aggro (5).ogg','sound/vo/mobs/ghost/aggro (6).ogg')
 
-/mob/living/simple_animal/hostile/rogue/haunt/AttackingTarget()
+/mob/living/simple_animal/hostile/rogue/dragger/AttackingTarget()
 	. = ..()
-	if(. && prob(10) && iscarbon(target))
+	if(. && prob(8) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Immobilize(50)
 		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
 				span_danger("\The [src] paralyzes me!"))
 		emote("laugh")
 
-/datum/intent/simple/slash
+
+/obj/effect/landmark/underworldsafe/Crossed(atom/movable/AM, oldloc)
+	if(istype(AM, /mob/living/simple_animal/hostile/rogue/dragger))
+		for(var/mob/living/carbon/human/A in view(4))
+			to_chat(A, "The monster's form dematerializes as it nears the Carriage.")
+		qdel(AM)
+
+/datum/intent/simple/dragger
 	name = "chop"
 	icon_state = "inchop"
 	attack_verb = list("cuts", "slashes")
@@ -241,6 +156,5 @@
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	chargetime = 0
 	penfactor = 10
-	swingdelay = 8
-	clickcd = HAUNT_ATTACK_SPEED
-
+	swingdelay = 3
+	clickcd = DRAGGER_ATTACK_SPEED

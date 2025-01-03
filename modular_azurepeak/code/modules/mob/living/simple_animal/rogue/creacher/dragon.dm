@@ -20,8 +20,8 @@
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 20,
 						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 4)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 800
-	maxHealth = 800
+	health = DRAGON_HEALTH
+	maxHealth = DRAGON_HEALTH
 	melee_damage_lower = 50
 	melee_damage_upper = 70
 	vision_range = 7
@@ -50,15 +50,6 @@
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/dragon
 //	stat_attack = UNCONSCIOUS
-
-/*
-Working with this:
-Wyrm/Whelp (no fire, quite weak, probably a summon for broodmother at some point)
-Young (regular) (leap)
-Adult (broodmother) (fire short CD)
-Ancient (?)
-Greatwyrm (?)
-*/
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/Initialize()
 	. = ..()
@@ -177,8 +168,9 @@ Greatwyrm (?)
 /datum/intent/simple/bite/dragon_bite //the model/hitbox is too big so it never got to attack. Increase reach
 	reach = 2
 	swingdelay = 2
-	clickcd = CLICK_CD_MELEE * 0.90 //It is a dragon so it bites slightly faster
+	clickcd = DRAGON_ATTACK_SPEED //It is a dragon so it bites slightly faster
 	penfactor = 60 // It is a dragon so it bites hard
+
 /obj/projectile/magic/aoe/dragon_breath
     name = "fire hairball"
     icon_state = "fireball"
@@ -199,8 +191,8 @@ Greatwyrm (?)
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother
-	health = 1600
-	maxHealth = 1600
+	health = DRAGON_BROODMOTHER_HEALTH
+	maxHealth = DRAGON_BROODMOTHER_HEALTH
 	name = "dragon broodmother"
 	//projectiletype = /obj/projectile/magic/aoe/dragon_breath
 	//projectilesound = 'sound/blank.ogg'

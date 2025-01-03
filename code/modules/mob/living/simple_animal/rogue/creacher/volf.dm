@@ -1,3 +1,5 @@
+
+
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf
 	icon = 'icons/roguetown/mob/monster/vol.dmi'
 	name = "volf"
@@ -17,8 +19,8 @@
 						/obj/item/natural/fur = 1, /obj/item/natural/bone = 4)
 	faction = list("wolfs")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 120
-	maxHealth = 120
+	health = WOLF_HEALTH
+	maxHealth = WOLF_HEALTH
 	melee_damage_lower = 19
 	melee_damage_upper = 29
 	vision_range = 7
@@ -159,3 +161,8 @@
 	AIStatus = AI_ON
 	can_have_ai = TRUE
 	ai_controller = null
+
+/datum/intent/simple/bite/volf
+	clickcd = WOLF_ATTACK_SPEED
+
+

@@ -24,13 +24,13 @@
 	aggro_vision_range = 6
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 15,
 						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3)
-	health = 400
-	maxHealth = 350
+	health = TROLLBOG_HEALTH * 1.1
+	maxHealth = TROLLBOG_HEALTH
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,
 					/obj/item/bodypart,
 					/obj/item/organ)
 
-	base_intents = list(/datum/intent/simple/headbutt, /datum/intent/simple/bite)
+	base_intents = list(/datum/intent/simple/headbutt, /datum/intent/unarmed/claw/trollbog)
 	attack_sound = list('sound/combat/wooshes/blunt/wooshhuge (1).ogg','sound/combat/wooshes/blunt/wooshhuge (2).ogg','sound/combat/wooshes/blunt/wooshhuge (3).ogg')
 	melee_damage_lower = 30
 	melee_damage_upper = 50
@@ -161,3 +161,7 @@
 		QDEL_NULL(eyes)
 	eyes = new /obj/item/organ/eyes/night_vision/nightmare
 	eyes.Insert(src)
+
+/datum/intent/unarmed/claw/trollbog
+	clickcd = TROLLBOG_ATTACK_SPEED //It is a troll so it can probably swing fast.
+	penfactor = 20 // A troll punching you with it's troll hands.

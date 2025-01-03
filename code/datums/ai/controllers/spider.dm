@@ -1,5 +1,5 @@
 /datum/ai_controller/spider
-	movement_delay = 0.8 SECONDS
+	movement_delay = HONEYSPIDER_MOVEMENT_SPEED
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

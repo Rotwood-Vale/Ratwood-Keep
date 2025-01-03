@@ -1,5 +1,5 @@
 /datum/ai_controller/orc
-	movement_delay = 0.6 SECONDS
+	movement_delay = ORC_MOVEMENT_SPEED
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 
@@ -16,7 +16,7 @@
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 
 /datum/ai_controller/orc_ranged
-	movement_delay = 0.7 SECONDS
+	movement_delay = ORC_MOVEMENT_SPEED * 1.2 //ranged malus
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

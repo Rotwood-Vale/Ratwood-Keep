@@ -1,5 +1,5 @@
 /datum/ai_controller/dragger //maybe eat limbs
-	movement_delay = 1 SECONDS
+	movement_delay = DRAGGER_MOVEMENT_SPEED
 
 	ai_movement = /datum/ai_movement/basic_avoidance
 

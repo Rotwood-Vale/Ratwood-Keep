@@ -11,14 +11,14 @@
 	move_to_delay = 4
 	vision_range = 5
 	aggro_vision_range = 9
-	base_intents = list(/datum/intent/simple/bite)
+	base_intents = list(/datum/intent/simple/bite/honeyspider)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
 					/obj/item/natural/silk = 2)
 	faction = list("spiders")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	attack_sound = 'sound/combat/wooshes/punch/punchwoosh (2).ogg'
-	health = 65
-	maxHealth = 65
+	health = HONEYSPIDER_HEALTH
+	maxHealth = HONEYSPIDER_HEALTH
 	melee_damage_lower = 17
 	melee_damage_upper = 21
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -165,3 +165,5 @@
 			return "foreleg"
 	return ..()
 
+/datum/intent/simple/bite/honeyspider
+	clickcd = HONEYSPIDER_ATTACK_SPEED

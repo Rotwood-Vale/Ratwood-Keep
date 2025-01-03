@@ -257,12 +257,6 @@
 	STASPD = 5
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/bull
 
-/mob/living/simple_animal/hostile/retaliate/rogue/cow/test
-//new ai, old ai off
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
-	ai_controller = /datum/ai_controller/farm_animals/cow
-
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/test/Initialize()
 	. = ..()
 	AddElement(/datum/element/ai_retaliate)
