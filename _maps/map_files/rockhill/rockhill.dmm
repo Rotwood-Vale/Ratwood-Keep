@@ -924,6 +924,15 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
+"aEC" = (
+/obj/structure/closet/crate/chest{
+	locked = 1;
+	lockid = "shop"
+	},
+/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/rogue/satchel,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "aED" = (
 /obj/structure/bars/grille{
 	dir = 4
@@ -3400,6 +3409,10 @@
 /obj/item/rope/chain,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"ceJ" = (
+/obj/structure/mannequin/male/female,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "cfm" = (
 /obj/structure/mannequin/male,
 /turf/open/floor/rogue/blocks/stonered,
@@ -4187,6 +4200,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"cDi" = (
+/obj/structure/mannequin/male,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "cDj" = (
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/academy)
@@ -11947,6 +11964,15 @@
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
+"hpa" = (
+/obj/structure/mineral_door/wood/donjon{
+	locked = 1;
+	lockid = "shop";
+	masterkey = 0;
+	lockdiff = 2
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "hpj" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
@@ -12720,6 +12746,10 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/manor)
+"hMa" = (
+/obj/item/roguemachine/merchant,
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/shop)
 "hMg" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -17604,6 +17634,9 @@
 /obj/machinery/light/rogue/oven/west,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"kHv" = (
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "kHz" = (
 /obj/structure/chair/bench/church/smallbench{
 	dir = 8
@@ -18662,6 +18695,11 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/academy)
+"lvj" = (
+/obj/structure/mannequin/male/female,
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "lvm" = (
 /obj/effect/decal/cleanable/vomit/old,
 /obj/effect/decal/cobbleedge{
@@ -21001,6 +21039,14 @@
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
+"mPY" = (
+/obj/structure/closet/crate/chest{
+	locked = 1;
+	lockid = "shop"
+	},
+/obj/item/storage/backpack/rogue/backpack,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "mQj" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -25812,6 +25858,15 @@
 /obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/town/basement)
+"pJH" = (
+/obj/structure/mineral_door/wood/donjon{
+	locked = 1;
+	lockid = "shop";
+	masterkey = 0;
+	lockdiff = 2
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/shop)
 "pKb" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/wood,
@@ -26501,6 +26556,10 @@
 /obj/structure/bed/rogue/inn/wooldouble,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/bath)
+"qkz" = (
+/obj/structure/roguemachine/merchantvend,
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors/town/shop)
 "qkH" = (
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/indoors/town)
@@ -28081,6 +28140,9 @@
 	icon_state = "linoleum"
 	},
 /area/rogue/indoors/town/shop)
+"rmQ" = (
+/turf/closed/wall/mineral/rogue/decowood,
+/area/rogue/outdoors/town/harbor)
 "rnw" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble/mossy,
@@ -31730,6 +31792,11 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/harbor)
+"tuf" = (
+/obj/structure/rack/rogue,
+/obj/machinery/light/rogue/wallfire/candle/r,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "tuu" = (
 /obj/structure/flora/roguegrass/bush/wall,
 /turf/open/floor/rogue/twig,
@@ -36166,6 +36233,10 @@
 /obj/effect/landmark/start/prisonerb,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
+"wfI" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/shop)
 "wfN" = (
 /obj/structure/bookcase/random,
 /obj/effect/decal/cleanable/cobweb{
@@ -36691,6 +36762,10 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
+"wvo" = (
+/obj/structure/bars/grille,
+/turf/open/transparent/openspace,
+/area/rogue/indoors/town/shop)
 "wvr" = (
 /obj/effect/landmark/tram/queued_path/cargo_map_exit{
 	next_path_id = "cargo_return_1"
@@ -232415,9 +232490,9 @@ xRS
 xRS
 xRS
 xRS
+hFo
 xRS
-xRS
-xRS
+hFo
 hkm
 toW
 toW
@@ -232847,9 +232922,9 @@ xRS
 xRS
 xRS
 xRS
+hFo
 xRS
-xRS
-xRS
+hFo
 hkm
 toW
 gfQ
@@ -233711,9 +233786,9 @@ xRS
 xRS
 xRS
 xRS
+hFo
 xRS
-xRS
-xRS
+hFo
 hkm
 toW
 aVV
@@ -234143,9 +234218,9 @@ xRS
 xRS
 xRS
 xRS
+hFo
 xRS
-xRS
-xRS
+hFo
 hkm
 toW
 toW
@@ -342575,11 +342650,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+toW
+toW
+toW
+toW
+toW
 toW
 toW
 toW
@@ -343007,11 +343082,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+toW
+nhZ
+bdC
+bdC
+bdC
 toW
 tBJ
 cRX
@@ -343439,12 +343514,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
 toW
+bdC
+hMa
+bdC
+bdC
+pJH
 bdC
 btI
 btI
@@ -343871,11 +343946,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+toW
+nhZ
+bdC
+bdC
+bdC
 toW
 nhZ
 btI
@@ -344303,11 +344378,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+toW
+toW
+toW
+toW
+toW
 toW
 mHV
 mHV
@@ -344744,7 +344819,7 @@ toW
 gWn
 gWn
 toW
-bdC
+qkz
 bdC
 toW
 toW
@@ -452736,11 +452811,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+toW
+toW
+toW
+toW
+toW
 nDX
 nDX
 nDX
@@ -453168,11 +453243,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+toW
+cDi
+kHv
+wfI
+kHv
 nDX
 xit
 qpO
@@ -453600,11 +453675,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+toW
+lvj
+wvo
+kHv
+mPY
 nDX
 xit
 ouc
@@ -454032,11 +454107,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+toW
+cDi
+kHv
+kHv
+aEC
 nDX
 nDX
 nDX
@@ -454464,11 +454539,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+toW
+ceJ
+kHv
+kHv
+kHv
 nDX
 nLJ
 vSv
@@ -454896,12 +454971,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
-nDX
+toW
+toW
+toW
+tuf
+kHv
+hpa
 vSv
 vSv
 vSv
@@ -455330,9 +455405,9 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
+toW
+toW
+toW
 nDX
 dCf
 dCf
@@ -562897,11 +562972,11 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
+dwC
+dwC
+dwC
+dwC
+dwC
 dwC
 dwC
 dwC
@@ -563329,12 +563404,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
 dwC
+rmQ
+rmQ
+rmQ
+pHT
+pHT
 pHT
 pHT
 pHT
@@ -563761,12 +563836,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
 dwC
+rmQ
+sPt
+rmQ
+pHT
+pHT
 pHT
 pHT
 pHT
@@ -564193,12 +564268,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
 dwC
+rmQ
+rmQ
+rmQ
+pHT
+pHT
 pHT
 pHT
 pHT
@@ -564625,12 +564700,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
 dwC
+pHT
+pHT
+pHT
+pHT
+pHT
 pHT
 pHT
 pHT
@@ -565057,12 +565132,12 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
-iXq
-iXq
 dwC
+dwC
+dwC
+pHT
+pHT
+pHT
 pHT
 pHT
 pHT
@@ -565491,9 +565566,9 @@ iXq
 iXq
 iXq
 iXq
-iXq
-iXq
-iXq
+dwC
+dwC
+dwC
 dwC
 pHT
 pHT
@@ -568091,7 +568166,7 @@ iXq
 iXq
 iXq
 iXq
-iXq
+uZn
 iXq
 iXq
 iXq
