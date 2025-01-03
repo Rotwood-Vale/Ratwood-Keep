@@ -27,8 +27,9 @@
 	health = TROLLBOG_HEALTH * 1.1
 	maxHealth = TROLLBOG_HEALTH
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,
-					/obj/item/bodypart,
-					/obj/item/organ)
+					//obj/item/bodypart,
+					//obj/item/organ
+					)
 
 	base_intents = list(/datum/intent/simple/headbutt, /datum/intent/unarmed/claw/trollbog)
 	attack_sound = list('sound/combat/wooshes/blunt/wooshhuge (1).ogg','sound/combat/wooshes/blunt/wooshhuge (2).ogg','sound/combat/wooshes/blunt/wooshhuge (3).ogg')

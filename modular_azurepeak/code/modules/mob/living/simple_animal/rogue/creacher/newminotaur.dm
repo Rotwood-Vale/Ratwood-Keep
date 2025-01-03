@@ -33,7 +33,10 @@
 	retreat_distance = 0
 	minimum_distance = 0
 	milkies = FALSE
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, 
+	//obj/item/bodypart, 
+	//obj/item/organ
+	)
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	pooptype = null
 
