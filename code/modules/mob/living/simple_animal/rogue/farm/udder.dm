@@ -9,14 +9,18 @@
 /obj/item/udder/proc/generateMilk()
 	reagents.add_reagent(/datum/reagent/consumable/milk, 1)
 
-/obj/item/udder/proc/milkAnimal(obj/item/reagent_containers/glass/container, mob/user)
-	var/space_left = container.volume - container.reagents.total_volume
-	if(space_left < 0.01) //These are floating point values, I'm not sure space_left <= 0 would work here?
-		to_chat(user, span_warning("[container] is full."))
+/obj/item/udder/proc/milkAnimal(obj/O, mob/living/user = usr)
+	var/obj/item/reagent_containers/glass/G = O
+	if(G.reagents.total_volume >= G.volume)
+		to_chat(user, span_warning("[O] is full."))
 		return
-	if(reagents.total_volume < 5)
-		user.visible_message(span_notice("The udder is dry! Wait a bit longer..."))
+	if(!reagents.has_reagent(/datum/reagent/consumable/milk, 5))
+		to_chat(user, span_warning("The udder is dry. Wait a bit longer..."))
+		user.changeNext_move(10)
 		return
-	if(do_after(user, 20, target = src))
-		reagents.trans_to(container, min(rand(15,25), space_left))
-		user.visible_message(span_notice("[user] milks [src] using \the [container]."), span_notice("I milk [src] using \the [container]."))
+	if(do_after(user, 1 SECONDS, target = src))
+		reagents.trans_to(O, rand(5,10))
+		user.visible_message(span_notice("[user] milks [src] using \the [O]"))
+		playsound(O, pick('sound/vo/mobs/cow/milking (1).ogg', 'sound/vo/mobs/cow/milking (2).ogg'), 100, TRUE, -1)
+		user.Immobilize(1 SECONDS)
+		user.changeNext_move(10)

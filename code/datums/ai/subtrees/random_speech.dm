@@ -33,3 +33,9 @@
 			controller.queue_behavior(/datum/ai_behavior/perform_emote, pick(emote_see))
 		else
 			controller.queue_behavior(/datum/ai_behavior/perform_speech, pick(speak))
+
+/datum/ai_planning_subtree/random_speech/cow
+	speech_chance = 1
+	speak = list("moo?","moo","MOOOOOO")
+	emote_hear = list("brays.")
+	emote_see = list("shakes her head.")

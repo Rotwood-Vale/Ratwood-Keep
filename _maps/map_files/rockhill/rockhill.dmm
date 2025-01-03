@@ -5468,7 +5468,6 @@
 /area/rogue/indoors/town)
 "dpK" = (
 /obj/structure/telescope,
-/obj/effect/sunlight,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/shelter/town/harbor)
 "dpP" = (
@@ -12391,10 +12390,6 @@
 	dir = 5
 	},
 /area/rogue/outdoors/town)
-"hEe" = (
-/obj/effect/landmark/mapGenerator/sunlights,
-/turf/closed/mineral/rogue/bedrock,
-/area/rogue/under/cavewet/bogcaves)
 "hEj" = (
 /obj/structure/bookcase/random/archive,
 /obj/item/book/rogue/law{
@@ -480787,7 +480782,7 @@ fyc
 fyc
 fyc
 fyc
-hEe
+fyc
 "}
 (2,1,5) = {"
 xKo
