@@ -1,116 +1,121 @@
 /datum/anvil_recipe/tools
-	i_type = "Tools"
+	i_type = "Инструменты"
+	appro_skill = /datum/skill/craft/blacksmithing
+	skill_level = 1
+
 /datum/anvil_recipe/general
-	i_type = "General"
+	i_type = "Общее"
+	appro_skill = /datum/skill/craft/blacksmithing
+	skill_level = 1
 
 // --------- IRON -----------
 /datum/anvil_recipe/general/torch
-	name = "Torches 5x (+1 Coal)"
+	name = "Факелы 5x (+1 Уголь)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/rogueore/coal)
 	created_item = list(/obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal)
 
 /datum/anvil_recipe/general/locks
-	name = "Locks 2x"
+	name = "Замки 2x"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/customlock, /obj/item/customlock)
 
 /datum/anvil_recipe/general/keys
-	name = "Keys 2x"
+	name = "Ключи 2x"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/key_custom_blank, /obj/item/key_custom_blank)
 
 /datum/anvil_recipe/tools/iron/scissors
-	name = "Scissors"
+	name = "Ножницы"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/huntingknife/scissors
 
 /datum/anvil_recipe/tools/iron/pan
-	name = "Skillet"
+	name = "Сковорода"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/cooking/pan
 
 /datum/anvil_recipe/general/catbell
-	name = "Catbell x3"
+	name = "Колокольчик x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/catbell,
 						/obj/item/catbell,
 						/obj/item/catbell)
 
 /datum/anvil_recipe/general/iron/keyring
-	name = "Keyrings 3x"
+	name = "Связка для ключей 3x"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/storage/keyring, /obj/item/storage/keyring, /obj/item/storage/keyring)
 
 /datum/anvil_recipe/general/iron/sewingneedle
-	name = "Sewing Needles 5x"
+	name = "Иглы для шитья 5x"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/needle, /obj/item/needle, /obj/item/needle, /obj/item/needle, /obj/item/needle)
 
 /datum/anvil_recipe/tools/iron/shovel
-	name = "Shovel (+2 Sticks)"
+	name = "Лопата (+2 Палки)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/shovel
 
 /datum/anvil_recipe/tools/iron/hammer
-	name = "Hammer (+1 Stick)"
+	name = "Молоток (+1 Палка)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hammer
 
 /datum/anvil_recipe/tools/iron/tongs
-	name = "Tongs"
+	name = "Клещи"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/tongs
 
 /datum/anvil_recipe/tools/iron/sickle
-	name = "Sickle (+1 Stick)"
+	name = "Серп (+1 Палка)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/sickle
 
 /datum/anvil_recipe/tools/iron/pick
-	name = "Pickaxe (+1 Stick)"
+	name = "Кирка (+1 Палка)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick
 
 /datum/anvil_recipe/tools/iron/hoe
-	name = "Hoe (+2 Sticks)"
+	name = "Мотыга (+2 Палки)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hoe
 
 /datum/anvil_recipe/tools/iron/pitchfork
-	name = "Pitchfork (+2 Sticks)"
+	name = "Вилы (+2 Палки)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pitchfork
 
 /datum/anvil_recipe/general/iron/lamptern
-	name = "Lamptern"
+	name = "Фонарь"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/flashlight/flare/torch/lantern
 
 /datum/anvil_recipe/tools/iron/thresher
-	name = "Thresher (+1 Stick)"
+	name = "Молотилка (+1 Палка)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/thresher
 
 /datum/anvil_recipe/general/chain
-	name = "Chain"
+	name = "Цепь"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rope/chain
 
 /datum/anvil_recipe/general/chainleash
-	name = "Chain Leash"
+	name = "Поводок-цепь"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/leash/chain
 
 /datum/anvil_recipe/general/iron/ramrod
-	name = "Replacement Ramrods x3"
+	name = "Фляга для пороха x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/ramrod,
 						/obj/item/ramrod,
@@ -120,7 +125,7 @@
 	skill_level = 0
 
 /datum/anvil_recipe/tools/lockpicks
-	name = "Lockpicks x3"
+	name = "Отмычки x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/lockpick,
 						/obj/item/lockpick,
@@ -129,7 +134,7 @@
 	skill_level = 1
 
 /datum/anvil_recipe/tools/lockpickring
-	name = "Lockpickrings x3"
+	name = "Связка для отмычек x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/lockpickring,
 						/obj/item/lockpickring,
@@ -140,53 +145,53 @@
 // --------- Steel -----------
 
 /datum/anvil_recipe/tools/steel/pick
-	name = "Pickaxe (+1 Stick)"
+	name = "Кирка (+1 Палка)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick/steel
 
 /datum/anvil_recipe/tools/steel/scissors
-	name = "Scissors"
+	name = "Ножницы"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/huntingknife/scissors/steel
 
-/datum/anvil_recipe/tools/surgery/steel/scalpel
-	name = "Scalpel"
+/datum/anvil_recipe/tools/steel/surgery/scalpel
+	name = "Скальпель"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/scalpel
 
-/datum/anvil_recipe/tools/surgery/steel/saw
-	name = "Surgical Saw"
+/datum/anvil_recipe/tools/steel/surgery/saw
+	name = "Хирургическая пила"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/saw
 
-/datum/anvil_recipe/tools/surgery/steel/hemostat
-	name = "Forceps"
+/datum/anvil_recipe/tools/steel/surgery/hemostat
+	name = "Зажим"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/hemostat
 
-/datum/anvil_recipe/tools/surgery/steel/retractor
-	name = "Speculum"
+/datum/anvil_recipe/tools/steel/surgery/retractor
+	name = "Спекулум"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/retractor
 
-/datum/anvil_recipe/tools/surgery/steel/bonesetter
-	name = "Bone Forceps"
+/datum/anvil_recipe/tools/steel/surgery/bonesetter
+	name = "Костоправы"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/bonesetter
 
-/datum/anvil_recipe/tools/surgery/steel/cautery
-	name = "Cautery Iron"
+/datum/anvil_recipe/tools/steel/surgery/cautery
+	name = "Прижигательное железо"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
 	
-/datum/anvil_recipe/general/cupsgold
-	name = "Cowbell"
+/datum/anvil_recipe/general/cowbell
+	name = "Коровий колокольчик"
 	req_bar = /obj/item/ingot/copper
 	created_item = list(/obj/item/catbell/cow)
 
-/datum/anvil_recipe/general/cowbell
-	name = "Cowbell x3"
+/datum/anvil_recipe/general/cowbellpack
+	name = "Коровий колокольчик x3"
 	req_bar = /obj/item/ingot/copper
 	created_item = list(/obj/item/catbell/cow,
 						/obj/item/catbell/cow,

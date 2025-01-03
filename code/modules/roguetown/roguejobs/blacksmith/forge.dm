@@ -1,8 +1,8 @@
 
 /obj/machinery/light/rogue/forge
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "stone forge"
-	desc = "This forge sings of war and creation."
+	name = "каменный горн"
+	desc = "Этот горн поёт о войне и творени"
 	icon_state = "forge0"
 	base_state = "forge"
 	density = TRUE
@@ -35,11 +35,11 @@
 			T.hott = tyme
 			addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
 			T.update_icon()
-			user.visible_message(span_info("[user] heats the bar."))
+			user.visible_message(span_info("[user] нагревает слиток."))
 			return
 	else
 		if(istype(W, /obj/item/reagent_containers/glass/bowl))
-			to_chat(user, "<span class='notice'>Remove the pot from the forge first.</span>")
+			to_chat(user, "<span class='notice'>Сначала уберите посуду с кузницы.</span>")
 			return
 		if(istype(attachment, /obj/item/cooking/pan))
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
@@ -60,13 +60,13 @@
 			var/obj/item/reagent_containers/glass/bucket/pot = attachment
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/oat))
 				if(!pot.reagents.has_reagent(/datum/reagent/water, 66))
-					to_chat(user, "<span class='notice'>Not enough water.</span>")
+					to_chat(user, "<span class='notice'>Недостаточно воды.</span>")
 					return TRUE
 				if(pot.reagents.chem_temp < 374)
-					to_chat(user, "<span class='warning'>[pot] isn't boiling!</span>")
+					to_chat(user, "<span class='warning'>[pot] не кипит!</span>")
 					return
 				if(do_after(user,2 SECONDS, target = src))
-					user.visible_message("<span class='info'>[user] places [W] into the pot.</span>")
+					user.visible_message("<span class='info'>[user] кладет [W] в кастрюлю.</span>")
 					qdel(W)
 					playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
 					pot.reagents.remove_reagent(/datum/reagent/water, 65)
@@ -78,13 +78,13 @@
 
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/veg))
 				if(!pot.reagents.has_reagent(/datum/reagent/water, 65))
-					to_chat(user, "<span class='notice'>Not enough water.</span>")
+					to_chat(user, "<span class='notice'>Недостаточно воды.</span>")
 					return TRUE
 				if(pot.reagents.chem_temp < 374)
-					to_chat(user, "<span class='warning'>[pot] isn't boiling!</span>")
+					to_chat(user, "<span class='warning'>[pot] не кипит!</span>")
 					return
 				if(do_after(user,2 SECONDS, target = src))
-					user.visible_message("<span class='info'>[user] places [W] into the pot.</span>")
+					user.visible_message("<span class='info'>[user] кладет [W] в кастрюлю.</span>")
 					playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
 					pot.reagents.remove_reagent(/datum/reagent/water, 32)
 					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced))
@@ -109,13 +109,13 @@
 
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/meat))
 				if(!pot.reagents.has_reagent(/datum/reagent/water, 66))
-					to_chat(user, "<span class='notice'>Not enough water.</span>")
+					to_chat(user, "<span class='notice'>Недостаточно воды.</span>")
 					return TRUE
 				if(pot.reagents.chem_temp < 374)
-					to_chat(user, "<span class='warning'>[pot] isn't boiling!</span>")
+					to_chat(user, "<span class='warning'>[pot] не кипит!</span>")
 					return
 				if(do_after(user,2 SECONDS, target = src))
-					user.visible_message("<span class='info'>[user] places [W] into the pot.</span>")
+					user.visible_message("<span class='info'>[user] кладет [W] в кастрюлю.</span>")
 					playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
 					pot.reagents.remove_reagent(/datum/reagent/water, 65)
 					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish))
@@ -187,10 +187,10 @@
 		if(on)
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
-				H.visible_message(span_info("[H] warms \his hand over the embers."))
+				H.visible_message(span_info("[H] греет \his руку над углями."))
 				if(do_after(H, 50, target = src))
 					var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-					to_chat(H, span_warning("HOT!"))
+					to_chat(H, span_warning("ГОРЯЧО!!"))
 					if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 						H.update_damage_overlays()
 			return TRUE

@@ -2,8 +2,8 @@
 /obj/item/rogueweapon/hammer
 	force = 21
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	name = "hammer"
-	desc = "Each strikes reverberate loudly chanting war!"
+	name = "молот"
+	desc = "Каждый удар наполняет воздух звуком, зовущим к сражению!"
 	icon_state = "hammer"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -28,7 +28,7 @@
 		if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
 			return
 		if(attacked_item.obj_integrity <= 0)
-			user.visible_message(span_warning("[attacked_item] is broken! I cannot fix it..."))
+			user.visible_message(span_warning("[attacked_item] сломан! Я не могу это починить..."))
 			return
 
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= 0)
@@ -44,15 +44,15 @@
 			repair_percent *= attacked_item.max_integrity
 			exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
 			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
-			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
-				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
+			if(repair_percent == 0.01) // Если неумелая попытка ремонта удалась
+				to_chat(user, span_warning("Вы неуклюже немного починили [attacked_item]."))
 			else	
-				user.visible_message(span_info("[user] repairs [attacked_item]!"))
+				user.visible_message(span_info("[user] чинит [attacked_item]!"))
 			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
 			return
 		else
-			user.visible_message(span_warning("[user] damages [attacked_item]!"))
-			attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "blunt")
+			user.visible_message(span_warning("[user] повреждает [attacked_item]!"))
+			attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "тупой")
 			return
 
 	if(isstructure(attacked_object) && !user.cmode)
@@ -60,7 +60,7 @@
 		if(!attacked_structure.hammer_repair || !attacked_structure.max_integrity)
 			return
 		if(blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) <= 0)
-			to_chat(user, span_warning("I don't know how to repair this.."))
+			to_chat(user, span_warning("Я не знаю, как это починить..."))
 			return
 		repair_percent *= blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) * attacked_structure.max_integrity
 		exp_gained = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity) - attacked_structure.obj_integrity
@@ -123,8 +123,8 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/hammer/wood
-	name = "wooden mallet"
-	desc = "A wooden mallet is an artificers second best friend! But it may also come in handy to a smith..."
+	name = "деревянный молоток"
+	desc = "Деревянный молоток - второй лучший друг мастера! Но он также может пригодиться кузнецу..."
 	icon_state = "whammer"
 	force = 16
 	smeltresult = null
@@ -133,8 +133,8 @@
 /obj/item/rogueweapon/tongs
 	force = 10
 	possible_item_intents = list(/datum/intent/mace/strike)
-	name = "tongs"
-	desc = "A pair of iron jaws used to carry hot ingots."
+	name = "клещи"
+	desc = "Железные клещи, используемые для переноски горячего металла."
 	icon_state = "tongs"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -149,7 +149,7 @@
 /obj/item/rogueweapon/tongs/examine(mob/user)
 	. = ..()
 	if(hott)
-		. += span_warning("The tip is hot to the touch.")
+		. += span_warning("Кончик горячий на ощупь.")
 
 /obj/item/rogueweapon/tongs/get_temperature()
 	if(hott)

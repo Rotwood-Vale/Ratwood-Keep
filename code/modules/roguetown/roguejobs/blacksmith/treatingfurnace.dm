@@ -1,6 +1,6 @@
 /obj/structure/treating_furnace
-	name = "heat treatment furnace"
-	desc = "A furnace to case-harden armor, supposedly for protection, but more for style."
+	name = "печь для термообработки"
+	desc = "Печь для цементации брони, предположительно для защиты, но больше для стиля."
 	icon = 'icons/roguetown/misc/forge.dmi'
 	icon_state = "treatment0"
 	density = TRUE
@@ -22,22 +22,22 @@
 			/obj/item/clothing/shoes/roguetown/armor/steel
 			)
 	var/static/list/selectable_colors = list(
-  		"Scrape Off Coating" = "#ffffff",
-		"Burn With Oil" = "#5f5f5f",
-		"Low" = "#f9d083",
-		"Medium" = "#6f6398",
-		"Medium-Hot" = "#6c7ca8",
-		"Hot" = "#7395b5",
-		"Scorching" = "#8bb7c4",
-		"Close to Melting" = "#b6d2c2"
+		"Соскоблить покрытие" = "#ffffff",
+		"Обжечь маслом" = "#5f5f5f",
+		"Низкий" = "#f9d083",
+		"Средний" = "#6f6398",
+		"Средне-горячий" = "#6c7ca8",
+		"Горячий" = "#7395b5",
+		"Обжигающий" = "#8bb7c4",
+		"Близко к плавлению" = "#b6d2c2"
 		)
 
 /obj/structure/treating_furnace/examine(mob/user)
 	. = ..()
 	if(coal_charges > 0)
-		. += span_info("There's some coal inside to case-harden the armor")
+		. += span_info("Внутри есть немного угля для укрепления брони")
 	else
-		. += span_info("There's no coal inside")
+		. += span_info("Внутри нет угля")
 
 /obj/structure/treating_furnace/update_icon()
 	. = ..()
@@ -53,16 +53,16 @@
 
 /obj/structure/treating_furnace/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/rogueore/coal))
-		to_chat(user, span_notice("I toss the coal into the furnace"))
+		to_chat(user, span_notice("Я бросаю уголь в печь"))
 		coal_charges += 1
 		update_icon()
 		qdel(I)
 		return
 	if(is_type_in_list(I, allowed_types))
 		if(!user.transferItemToLoc(I, src))
-			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
+			to_chat(user, "<span class='warning'>[I] прилип к вашей руке!</span>")
 			return
-		user.visible_message("<span class='notice'>[user] inserts [I] into the [src].</span>")
+		user.visible_message("<span class='notice'>[user] вставляет [I] в [src].</span>")
 
 		inserted = I
 	else
@@ -72,21 +72,21 @@
 	return FALSE
 
 /obj/structure/treating_furnace/ui_interact(mob/user)
-	var/list/dat = list("<TITLE>heat treatment furnace</TITLE><BR>")
+	var/list/dat = list("<TITLE>печь для термообработки</TITLE><BR>")
 	if(!inserted)
-		dat += "Nothing inside."
+		dat += "Внутри ничего нет."
 	else
-		dat += "Item inserted: [inserted]<BR>"
-		dat += "<A href='?src=\ref[src];eject=1'>Take [inserted] out.</A><BR><BR>"
+		dat += "Вставленный предмет: [inserted]<BR>"
+		dat += "<A href='?src=\ref[src];eject=1'>Вынуть [inserted].</A><BR><BR>"
 		if(coal_charges <= 0)
-			dat += "No coal inside."
+			dat += "Внутри нет угля."
 		else
-			dat += "<A href='?src=\ref[src];select=1'>Choose a temperature.</A><BR>"
-			dat += "Color: <font color='[activecolor]'>&#9899;</font>"
-			dat += "<A href='?src=\ref[src];paint=1'>Heat-treat the armor.</A><BR><BR>"
-			dat += "<A href='?src=\ref[src];clear=1'>Scrape the case-hardened layer off.</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];select=1'>Выбрать температуру.</A><BR>"
+			dat += "Цвет: <font color='[activecolor]'>&#9899;</font>"
+			dat += "<A href='?src=\ref[src];paint=1'>Термообработать броню.</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];clear=1'>Снять слой укрепления.</A><BR><BR>"
 
-	var/datum/browser/menu = new(user, "colormate","heat treatment furnace", 400, 400, src)
+	var/datum/browser/menu = new(user, "colormate","печь для термообработки", 400, 400, src)
 	menu.set_content(dat.Join(""))
 	menu.open()
 
@@ -102,7 +102,7 @@
 		return
 
 	if(href_list["select"])
-		var/choice = input(usr,"Heat-treat to:","Temperature",null) as null|anything in selectable_colors
+		var/choice = input(usr,"Термообработать до:","Температура",null) as null|anything in selectable_colors
 		if(!choice)
 			return
 		activecolor = selectable_colors[choice]
