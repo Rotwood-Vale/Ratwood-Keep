@@ -14,7 +14,7 @@
 		)
 
 /datum/anvil_recipe/valuables/special/ringp
-	name = "Благословенное кольцо (+1 Псикросс)"
+	name = "Кольцо благославления (+1 Псикросс)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/ringP
 	additional_items = list(

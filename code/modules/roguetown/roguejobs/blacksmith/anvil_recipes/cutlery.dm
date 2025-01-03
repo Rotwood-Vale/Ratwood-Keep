@@ -71,10 +71,11 @@
 /datum/anvil_recipe/cutlery/iron/fork
 	name = "Железная вилка x3"
 	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/kitchen/ironfork,
-						/obj/item/kitchen/ironfork,
-						/obj/item/kitchen/ironfork
-					)
+	created_item = list(
+		/obj/item/kitchen/ironfork,
+		/obj/item/kitchen/ironfork,
+		/obj/item/kitchen/ironfork
+	)
 	skill_level = 1
 
 /datum/anvil_recipe/cutlery/iron/spoon
