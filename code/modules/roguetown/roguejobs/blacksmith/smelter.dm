@@ -1,7 +1,7 @@
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "stone furnace"
-	desc = "A stone furnace, weathered by time and heat."
+	name = "каменная печь"
+	desc = "Каменная печь, закаленная временем и жаром."
 	icon_state = "cavesmelter0"
 	base_state = "cavesmelter"
 	anchored = TRUE
@@ -26,7 +26,7 @@
 			ore -= I
 			I.forceMove(T)
 			T.hingot = I
-			user.visible_message(span_info("[user] retrieves [I] from [src]."))
+			user.visible_message(span_info("[user] достает [I] из [src]."))
 			if(on)
 				var/tyme = world.time
 				T.hott = tyme
@@ -43,24 +43,24 @@
 	if((ore.len < maxore) && W.smeltresult)
 		W.forceMove(src)
 		ore += W
-		user.visible_message("<span class='warning'>[user] puts something in the smelter.</span>")
+		user.visible_message("<span class='warning'>[user] кладёт что-то в плавильню.</span>")
 		cooking = 0
 		return
 	else
-		to_chat(user, span_warning("[W.name] cannot be smelted."))
+		to_chat(user, span_warning("[W.name] не может быть переплавлен."))
 	return ..()
 
 
 /obj/machinery/light/rogue/smelter/attack_hand(mob/user, params)
 	if(on)
-		to_chat(user, span_warning("It's too hot."))
+		to_chat(user, span_warning("Слишком горячо."))
 		return
 	if(ore.len)
 		var/obj/item/I = ore[ore.len]
 		ore -= I
 		I.loc = user.loc
 		user.put_in_active_hand(I)
-		user.visible_message(span_info("[user] retrieves [I] from [src]."))
+		user.visible_message(span_info("[user] достает [I] из [src]."))
 	else
 		return ..()
 
@@ -90,7 +90,7 @@
 
 /obj/machinery/light/rogue/smelter/great
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "great furnace"
+	name = "большая печь"
 	icon_state = "smelter0"
 	base_state = "smelter"
 	anchored = TRUE
@@ -128,14 +128,14 @@
 							blacksteelalloy = blacksteelalloy + 2
 
 					if(steelalloy == 7)
-						testing("STEEL ALLOYED")
+						testing("СТАЛЬ СПЛАВЛЕНА")
 						maxore = 3 // Coal no longer turns to steel
 						alloy = /obj/item/ingot/steel
 					else if(bronzealloy == 7)
-						testing("BRONZE ALLOYED")
+						testing("БРОНЗА СПЛАВЛЕНА")
 						alloy = /obj/item/ingot/bronze
 					else if(blacksteelalloy == 7)
-						testing("BLACKSTEEL ALLOYED")
+						testing("ЧЁРНАЯ СТАЛЬ СПЛАВЛЕНА")
 						alloy = /obj/item/ingot/blacksteel
 					else
 						alloy = null
@@ -156,5 +156,5 @@
 								qdel(I)
 					maxore = initial(maxore)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
-					visible_message(span_notice("[src] is finished."))
+					visible_message(span_notice("[src] завершена."))
 					cooking = 31

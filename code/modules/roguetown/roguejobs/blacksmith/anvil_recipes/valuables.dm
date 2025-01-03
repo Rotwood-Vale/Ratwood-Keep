@@ -1,39 +1,43 @@
 /datum/anvil_recipe/valuables
-	i_type = "Valuables"
-
-/datum/anvil_recipe/valuables/special/ringf
-	name = "flame ring (+1 Fat, +1 stone, +1 Fiber)"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/ring/lantern
-	additional_items = list(/obj/item/reagent_containers/food/snacks/fat, /obj/item/natural/stone, /obj/item/natural/fibers)
-
-/datum/anvil_recipe/valuables/special/ringp
-	name = "blessed ring (+1 Psicross)"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/ringP
-	additional_items = list(/obj/item/clothing/neck/roguetown/psicross)
-
-/datum/anvil_recipe/valuables
+	i_type = "Ценности"
 	appro_skill = /datum/skill/craft/blacksmithing
 	skill_level = 2
 
+/datum/anvil_recipe/valuables/special/ringf
+	name = "Кольцо пламени (+1 Жир, +1 Камень, +1 Волокно)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/ring/lantern
+	additional_items = list(
+		/obj/item/reagent_containers/food/snacks/fat,
+		/obj/item/natural/stone,
+		/obj/item/natural/fibers
+		)
+
+/datum/anvil_recipe/valuables/special/ringp
+	name = "Кольцо благославления (+1 Псикросс)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/ringP
+	additional_items = list(
+		/obj/item/clothing/neck/roguetown/psicross
+		)
+
 /datum/anvil_recipe/valuables/gold
-	name = "Statue"
+	name = "Статуя"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/roguestatue/gold
 
 /datum/anvil_recipe/valuables/silver
-	name = "Statue"
+	name = "Статуя"
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/roguestatue/silver
 
 /datum/anvil_recipe/valuables/iron
-	name = "Statue"
+	name = "Статуя"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/roguestatue/iron
 
 /datum/anvil_recipe/valuables/steel
-	name = "Statue"
+	name = "Статуя"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/roguestatue/steel
 
@@ -55,53 +59,65 @@
 //	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/gold/rings
-	name = "Rings 3x"
+	name = "Кольца 3x"
 	req_bar = /obj/item/ingot/gold
-	created_item = list(/obj/item/clothing/ring/gold, /obj/item/clothing/ring/gold, /obj/item/clothing/ring/gold)
+	created_item = list(
+		/obj/item/clothing/ring/gold, 
+        /obj/item/clothing/ring/gold, 
+        /obj/item/clothing/ring/gold
+		)
 
 /datum/anvil_recipe/valuables/silver/rings
-	name = "Rings 3x"
+	name = "Кольца 3x"
 	req_bar = /obj/item/ingot/silver
-	created_item = list(/obj/item/clothing/ring/silver, /obj/item/clothing/ring/silver, /obj/item/clothing/ring/silver)
+	created_item = list(
+		/obj/item/clothing/ring/silver, 
+        /obj/item/clothing/ring/silver, 
+        /obj/item/clothing/ring/silver
+		)
 
 /datum/anvil_recipe/valuables/copper/rings
-	name = "Rings 3x"
+	name = "Кольца 3x"
 	req_bar = /obj/item/ingot/copper
-	created_item = list(/obj/item/clothing/ring/copper, /obj/item/clothing/ring/copper, /obj/item/clothing/ring/copper)
+	created_item = list(
+		/obj/item/clothing/ring/copper, 
+        /obj/item/clothing/ring/copper,
+        /obj/item/clothing/ring/copper
+		)
 
 //Gold Rings
 /datum/anvil_recipe/valuables/gold/emering
-	name = "Gemerald Ring (+1 Gemerald)"
+	name = "Изумрудное кольцо (+1 Изумруд)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/green)	
 	created_item = /obj/item/clothing/ring/emerald
 
 /datum/anvil_recipe/valuables/gold/ruby
-	name = "Rontz Ring (+1 Rontz)"
+	name = "Рубиновое кольцо (+1 Рубин)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem)	
 	created_item = /obj/item/clothing/ring/ruby
 
 /datum/anvil_recipe/valuables/gold/topaz
-	name = "Toper Ring (+1 Toper)"
+	name = "Топазовое кольцо (+1 Топаз)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/yellow)	
 	created_item = /obj/item/clothing/ring/topaz
 
 /datum/anvil_recipe/valuables/gold/quartz
-	name = "Blortz Ring (+1 Blortz)"
+	name = "Кварцевое кольцо (+1 Кварц)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/blue)	
 	created_item = /obj/item/clothing/ring/quartz
 
 /datum/anvil_recipe/valuables/gold/sapphire
-	name = "Saffira Ring (+1 Saffira)"
+	name = "Сапфировое кольцо (+1 Сапфир)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/violet)	
 	created_item = /obj/item/clothing/ring/sapphire
 
 /datum/anvil_recipe/valuables/gold/diamond
-	name = "Dorpel Ring (+1 Dorpel)"
+	name = "Алмазное кольцо (+1 Алмаз)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/diamond)	
 	created_item = /obj/item/clothing/ring/diamond
@@ -109,37 +125,37 @@
 //Silver rings
 
 /datum/anvil_recipe/valuables/silver/emering
-	name = "Gemerald Ring (+1 Gemerald)"
+	name = "Изумрудное кольцо (+1 Изумруд)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/green)	
 	created_item = /obj/item/clothing/ring/emeralds
 
 /datum/anvil_recipe/valuables/silver/ruby
-	name = "Rontz Ring (+1 Rontz)"
+	name = "Рубиновое кольцо (+1 Рубин)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem)	
 	created_item = /obj/item/clothing/ring/rubys
 
 /datum/anvil_recipe/valuables/silver/topaz
-	name = "Toper Ring (+1 Toper)"
+	name = "Топазовое кольцо (+1 Топаз)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/yellow)	
 	created_item = /obj/item/clothing/ring/topazs
 
 /datum/anvil_recipe/valuables/silver/quartz
-	name = "Blortz Ring (+1 Blortz)"
+	name = "Кварцевое кольцо (+1 Кварц)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/blue)	
 	created_item = /obj/item/clothing/ring/quartzs
 
 /datum/anvil_recipe/valuables/silver/sapphire
-	name = "Saffira Ring (+1 Saffira)"
+	name = "Сапфировое кольцо (+1 Сапфир)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/violet)	
 	created_item = /obj/item/clothing/ring/sapphires
 
 /datum/anvil_recipe/valuables/silver/diamond
-	name = "Dorpel Ring (+1 Dorpel)"
+	name = "Алмазное кольцо (+1 Алмаз)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/diamond)	
 	created_item = /obj/item/clothing/ring/diamonds
@@ -147,43 +163,49 @@
 // Copper rings
 
 /datum/anvil_recipe/valuables/copper/emering
-	name = "Gemerald Ring (+1 Gemerald)"
+	name = "Изумрудное кольцо (+1 Изумруд)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/green)	
 	created_item = /obj/item/clothing/ring/emeraldc
 
 /datum/anvil_recipe/valuables/copper/ruby
-	name = "Rontz Ring (+1 Rontz)"
+	name = "Рубиновое кольцо (+1 Рубин)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem)	
 	created_item = /obj/item/clothing/ring/rubyc
 
 /datum/anvil_recipe/valuables/copper/topaz
-	name = "Toper Ring (+1 Toper)"
+	name = "Топазовое кольцо (+1 Топаз)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/yellow)	
 	created_item = /obj/item/clothing/ring/topazc
 
 /datum/anvil_recipe/valuables/copper/quartz
-	name = "Blortz Ring (+1 Blortz)"
+	name = "Кварцевое кольцо (+1 Кварц)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/blue)	
 	created_item = /obj/item/clothing/ring/quartzc
 
 /datum/anvil_recipe/valuables/copper/sapphire
-	name = "Saffira Ring (+1 Saffira)"
+	name = "Сапфировое кольцо (+1 Сапфир)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/violet)	
 	created_item = /obj/item/clothing/ring/sapphirec
 
 /datum/anvil_recipe/valuables/copper/diamond
-	name = "Dorpel Ring (+1 Dorpel)"
+	name = "Алмазное кольцо (+1 Алмаз)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/diamond)	
 	created_item = /obj/item/clothing/ring/diamondc
 
 /datum/anvil_recipe/valuables/dragon
-	name = "Dragon Ring (+ Secrets)"
-	req_bar =  /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/silver, /obj/item/roguegem/blue, /obj/item/roguegem/violet, /obj/item/clothing/neck/roguetown/psicross)	
+	name = "Драконье кольцо (+ Секреты)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(
+			/obj/item/ingot/gold, 
+			/obj/item/ingot/silver, 
+			/obj/item/roguegem/blue, 
+			/obj/item/roguegem/violet, 
+			/obj/item/clothing/neck/roguetown/psicross
+		)	
 	created_item = /obj/item/clothing/ring/dragon_ring
