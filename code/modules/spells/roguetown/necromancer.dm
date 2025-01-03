@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/strengthen_undead
 	name = "Strengthen Undead"
-	desc = "Suffuse a target with necrotic energies, mending the undead and paralyzing the living."
+	desc = "Suffuse a target with necrotic energies, mending the undead and maiming the living."
 	invocation = "Kral'chal!"
 	invocation_type = "shout"
 	overlay_state = "raiseskele"
@@ -33,8 +33,6 @@
 			target.visible_message(span_danger("[target] reforms under the vile energy!"), span_notice("I'm remade by dark magic!"))
 			return TRUE
 		target.visible_message(span_info("Necrotic energy floods over [target]!"), span_userdanger("I feel colder as the dark energy floods into me!"))
-		if(iscarbon(target))
-			target.Paralyze(50)
 		else
 			target.adjustBruteLoss(20)
 		return TRUE
