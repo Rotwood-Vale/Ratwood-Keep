@@ -14,6 +14,9 @@
 	sellprice = 30
 	dropshrink = 0.6
 
+	grid_height = 32
+	grid_width = 32
+
 	var/mob/current_owner
 	var/last_scry
 	w_class = WEIGHT_CLASS_SMALL
