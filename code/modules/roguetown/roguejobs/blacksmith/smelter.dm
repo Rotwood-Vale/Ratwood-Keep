@@ -43,7 +43,7 @@
 	if((ore.len < maxore) && W.smeltresult)
 		W.forceMove(src)
 		ore += W
-		user.visible_message("<span class='warning'>[user] кладет что-то в плавильню.</span>")
+		user.visible_message("<span class='warning'>[user] кладёт что-то в плавильню.</span>")
 		cooking = 0
 		return
 	else
@@ -135,7 +135,7 @@
 						testing("БРОНЗА СПЛАВЛЕНА")
 						alloy = /obj/item/ingot/bronze
 					else if(blacksteelalloy == 7)
-						testing("ЧЕРНАЯ СТАЛЬ СПЛАВЛЕНА")
+						testing("ЧЁРНАЯ СТАЛЬ СПЛАВЛЕНА")
 						alloy = /obj/item/ingot/blacksteel
 					else
 						alloy = null

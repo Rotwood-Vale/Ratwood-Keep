@@ -1,6 +1,6 @@
 /obj/structure/treating_furnace
 	name = "печь для термообработки"
-	desc = "Печь для цементации брони, предположительно для защиты, но больше для стиля."
+	desc = "Печь для укрепления брони, предположительно для защиты, но больше для стиля."
 	icon = 'icons/roguetown/misc/forge.dmi'
 	icon_state = "treatment0"
 	density = TRUE

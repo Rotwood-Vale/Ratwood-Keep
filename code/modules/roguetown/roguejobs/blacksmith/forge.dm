@@ -2,7 +2,7 @@
 /obj/machinery/light/rogue/forge
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "каменный горн"
-	desc = "Этот горн поёт о войне и творени"
+	desc = "Этот горн поёт о войне и творении."
 	icon_state = "forge0"
 	base_state = "forge"
 	density = TRUE
@@ -66,7 +66,7 @@
 					to_chat(user, "<span class='warning'>[pot] не кипит!</span>")
 					return
 				if(do_after(user,2 SECONDS, target = src))
-					user.visible_message("<span class='info'>[user] кладет [W] в кастрюлю.</span>")
+					user.visible_message("<span class='info'>[user] кладёт [W] в кастрюлю.</span>")
 					qdel(W)
 					playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
 					pot.reagents.remove_reagent(/datum/reagent/water, 65)
@@ -84,7 +84,7 @@
 					to_chat(user, "<span class='warning'>[pot] не кипит!</span>")
 					return
 				if(do_after(user,2 SECONDS, target = src))
-					user.visible_message("<span class='info'>[user] кладет [W] в кастрюлю.</span>")
+					user.visible_message("<span class='info'>[user] кладёт [W] в кастрюлю.</span>")
 					playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
 					pot.reagents.remove_reagent(/datum/reagent/water, 32)
 					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced))
@@ -115,7 +115,7 @@
 					to_chat(user, "<span class='warning'>[pot] не кипит!</span>")
 					return
 				if(do_after(user,2 SECONDS, target = src))
-					user.visible_message("<span class='info'>[user] кладет [W] в кастрюлю.</span>")
+					user.visible_message("<span class='info'>[user] кладёт [W] в кастрюлю.</span>")
 					playsound(src.loc, 'sound/items/Fish_out.ogg', 20, TRUE)
 					pot.reagents.remove_reagent(/datum/reagent/water, 65)
 					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish))
@@ -190,7 +190,7 @@
 				H.visible_message(span_info("[H] греет \his руку над углями."))
 				if(do_after(H, 50, target = src))
 					var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-					to_chat(H, span_warning("ГОРЯЧО!!"))
+					to_chat(H, span_warning("ГОРЯЧО!"))
 					if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 						H.update_damage_overlays()
 			return TRUE

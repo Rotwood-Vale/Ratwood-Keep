@@ -2,7 +2,7 @@
 /obj/machinery/anvil
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "железная наковальня"
-	desc = "Ее поверхность изуродована бесчисленными ударами молота."
+	desc = "Её поверхность изуродована бесчисленными ударами молота."
 	icon_state = "anvil"
 	var/hott = null
 	var/obj/item/ingot/hingot
@@ -115,7 +115,7 @@
 		return
 
 	if(W.anvilrepair)
-		user.visible_message(span_info("[user] кладет [W] на наковальню."))
+		user.visible_message(span_info("[user] кладёт [W] на наковальню."))
 		W.forceMove(src.loc)
 		return
 	..()

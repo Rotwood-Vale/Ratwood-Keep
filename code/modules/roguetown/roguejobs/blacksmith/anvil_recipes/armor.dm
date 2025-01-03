@@ -61,13 +61,13 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/skullcap
 
 /datum/anvil_recipe/armor/iron/studded
-	name = "Клепаная кожаная броня (+1 Кожаная броня)"
+	name = "Клёпаная кожаная броня (+1 Кожаная броня)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded
 
 /datum/anvil_recipe/armor/iron/lbrigandine
-	name = "Легкая бригантина (+1 Ткань)"
+	name = "Лёгкая бригантина (+1 Ткань)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/cloth)
 	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine/light
