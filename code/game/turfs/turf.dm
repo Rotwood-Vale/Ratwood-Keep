@@ -108,6 +108,9 @@
 
 	queue_smooth_neighbors(src)
 
+	if(shine)
+		make_shiny(shine)
+
 	return INITIALIZE_HINT_NORMAL
 
 /turf/proc/Initalize_Atmos(times_fired)

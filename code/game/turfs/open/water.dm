@@ -39,6 +39,8 @@
 	var/swim_skill = FALSE
 	nomouseover = FALSE
 	var/swimdir = FALSE
+	var/notake = FALSE // cant pick up with reagent containers
+	shine = SHINE_SHINY
 
 /turf/open/water/Initialize()
 	.  = ..()
