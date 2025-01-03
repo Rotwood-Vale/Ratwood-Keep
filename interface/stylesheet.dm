@@ -7,28 +7,28 @@
 // Sample font-size: DM: 8 CSS: 64px
 
 /client/script = {"<style>
-body					{word-wrap: break-word; overflow-x: hidden; overflow-y: scroll; color: #c9c1ba; font-size: 16px; font-family: "Pterra";}
+body					{word-wrap: break-word; overflow-x: hidden; overflow-y: scroll; color: #c9c1ba; font-size: 16px; font-family: "Mookmania";}
 
-h1, h2, h3, h4, h5, h6	{color: #c9c1ba;	font-family: Pterra;}
+h1, h2, h3, h4, h5, h6	{color: #c9c1ba;	font-family: Mookmania;}
 
-em						{font-style: normal;	font-weight: bold; font-family: Pterra;}
+em						{font-style: normal;	font-weight: bold; font-family: Mookmania;}
 
 a:link						{color: #ae83cb;	font-weight: bold;}
 
-.motd					{color: #638500;	font-family: Pterra;}
+.motd					{color: #638500;	font-family: Mookmania;}
 .motd h1, .motd h2, .motd h3, .motd h4, .motd h5, .motd h6
 	{color: #638500;	text-decoration: underline;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover
 	{color: #638500;}
-h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
+h1.alert, h2.alert	{color: #c9c1ba;font-family: Mookmania, TrueType;}
 .italics				{font-style: italic;}
 
 .bold					{font-weight: bold;}
 
 .prefix					{font-weight: bold;}
 
-.ooc					{color: #c5c5c5;	font-weight: bold; font-family: Pterra;}
-.adminobserverooc		{color: #cca300;	font-weight: bold; font-family: Pterra;}
+.ooc					{color: #c5c5c5;	font-weight: bold; font-family: Mookmania;}
+.adminobserverooc		{color: #cca300;	font-weight: bold; font-family: Mookmania;}
 .adminooc				{color: #4972bc;	font-weight: bold;}
 
 .adminsay				{color:	#FF4500;	font-weight: bold;}
@@ -36,7 +36,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 
 .name					{					font-weight: bold;}
 
-.say					{font-family: Pterra;}
+.say					{font-family: Mookmania;}
 .deadsay				{color: #e2c1ff;}
 .binarysay				{color: #20c20e;	background-color: #000000;	display: block;}
 .binarysay a			{color: #00ff00;}
@@ -125,25 +125,26 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Pterra, TrueType;}
 .papyrus				{font-family: "Papyrus", cursive, sans-serif;}
 .robot					{font-family: "Courier New", cursive, sans-serif;}
 
-.human					{font-family: "Honoka Mincho", Pterra;}
-.elf					{font-family: "Dauphin", cursive, Pterra;}
-.dwarf					{font-family: "MasonAlternate", Pterra;}
-.sandspeak				{font-family: "Arabolical", Pterra;}
-.delf					{font-family: "Dauphin", Pterra;}
-.hellspeak				{font-family: "Xaphan", Pterra; font-size: 110%;}
-.undead					{font-family: "FriskyVampire", Pterra;}
-.orc					{font-family: "Thief by The Riddler", Pterra;}
-.beast					{font-family: "Thief by The Riddler", Pterra;}
-.reptile				{font-family: "Kingthings Petrock", Pterra; font-size: 120%;}
-.faexin					{font-family: "Sweet Dreams", Pterra;}
-.lupian					{font-family: "Emperialisme", Pterra; font-size: 120%;}
-.felid					{font-family: "Rasyideen", Pterra; font-size: 120%;}
+.human					{font-family: "Honoka Mincho", Mookmania;}
+.elf					{font-family: "Nickainley Normal", Nickainley Normal;}
+.dwarf					{font-family: "Propaniac", Propaniac;}
+.sandspeak				{font-family: "Schwabacher", Schwabacher;}
+.celestial				{font-family: "Kamelia", Kamelia;}
+.delf					{font-family: "Dauphin", Mookmania;}
+.hellspeak				{font-family: "Comforter Brush", Comforter Brush; font-size: 110%;}
+.undead					{font-family: "FDMedian", FDMedian;}
+.orc					{font-family: "VizaviTYGRA", VizaviTYGRA;}
+.beast					{font-family: "VizaviTYGRA", VizaviTYGRA;}
+.reptile				{font-family: "Kautiva Cyrillic Black", Kautiva Cyrillic Black; font-size: 120%;}
+.faexin					{font-family: "DreamScar", DreamScar;}
+.lupian					{font-family: "ALOT Gutenberg B Normal", ALOT Gutenberg B Normal; font-size: 120%;}
+.felid					{font-family: "Satyr SP", Satyr SP; font-size: 120%;}
 
 .torture				{color: #42ff20}
 
 .command_headset		{font-weight: bold;	font-size: 3;}
 .small					{font-size: 50%;}
-.smallyell				{font-size: 70%;font-family: Pterra;}
+.smallyell				{font-size: 70%;font-family: Mookmania;}
 .big					{font-size: 120%;}
 .reallybig				{font-size: 180%;}
 .extremelybig			{font-size: 220%;}

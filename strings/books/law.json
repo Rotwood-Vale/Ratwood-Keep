@@ -1,79 +1,48 @@
-{"Contents":["<center><font size='12'><b>Tome of Justice</b><br></font>
+{"Contents": ["<center><font size='12'><b>Книга Правосудия</b><br></font>
 <hr><br> 
-<b>Issued by the Chancery of the Kingdom</b><br><br>
+<b>Издано канцелярией Герцогства</b><br><br>
 <hr><br></center>
-<u><b>Introduction:</b></u><br>
-Herein lies the framework for justice within the realm. This tome shall serve as a guide for adjudicators in delivering equitable sentences, ensuring justice is achieved in the name of Ravox. The protections outlined within this tome do not extend to individuals classified as outlaws.<br><br>
-Adjudicators shall consider the following factors when rendering a verdict and determining appropriate sentences: the nature of the offence, the accused's criminal history, their moral blameworthiness, how a reasonable person would have acted under similar circumstances, whom the offended party was, and any aggravating or mitigating factors.<br><br>
-<u><b>Overview of Criminal Sanctions:</b></u><br>
+<u><b>Введение:</b></u><br>
+Здесь изложены основы правосудия в пределах герцогства. Эта книга служит руководством для судей, обеспечивая вынесение справедливых приговоров и достижение правосудия во имя Равокса. Защита, описанная в этой книге, не распространяется на лиц, признанных вне закона.<br><br>
+Судьи должны учитывать следующие факторы при вынесении приговора и назначении наказаний: характер преступления, криминальное прошлое обвиняемого, их моральная ответственность, как разумное существо поступило бы в аналогичных обстоятельствах, кто был потерпевшим, а также любые отягчающие или смягчающие обстоятельства.<br><br>
+<u><b>Обзор уголовных наказаний:</b></u><br>
 <ol>
-<li><b>Execution</b>: Shall be carried out by public beheading, burning, or hanging.</li>
-<li><b>Enslavement</b>: Shall only be available for offences where it is specifically outlined.</li>
-<li><b>Exile</b>: Duration of exile shall be determined based on the offence's severity.</li>
-<li><b>Imprisonment</b>: Duration shall be dependent on the severity of the offence; imprisonment can be permanent in extreme cases.</li>
-<li><b>Dismemberment</b>: Permanent removal of body parts as a punishment for severe crimes.</li>
-<li><b>Maiming</b>: Severe injury that does not result in the loss of a limb or life.</li>
-<li><b>Public Humiliation</b>: Public shaming or other forms of disgrace such as being locked in a public pillory for a duration of time.</li>
-<li><b>Fines</b>: Payable to the Crown or to the noble of the land where the offence occurred. Failure to pay shall result in imprisonment or indentured servitude.</li>
-<li><b>Damages</b>: Paid to the victim or their family. If the offender cannot pay, they shall be subjected to imprisonment or indentured servitude.</li>
+<li><b>Казнь</b>: Проводится посредством публичного обезглавливания, сожжения или повешения.</li>
+<li><b>Порабощение</b>: Применяется только за преступления, специально указанные для такого наказания.</li>
+<li><b>Изгнание</b>: Продолжительность определяется тяжестью преступления.</li>
+<li><b>Заключение</b>: Продолжительность зависит от тяжести преступления; в крайних случаях может быть пожизненным.</li>
+<li><b>Членовредительство</b>: Постоянное удаление частей тела за серьёзные преступления.</li>
+<li><b>Калечение</b>: Серьёзные телесные повреждения, не приводящие к потере конечностей или жизни.</li>
+<li><b>Публичное унижение</b>: Публичное порицание или другие формы позора, такие как заключение в публичную колодку на определённый срок.</li>
+<li><b>Штрафы</b>: Выплачиваются короне или дворянину земли, где было совершено преступление. Невыплата штрафа приведёт к заключению или работе в долговом рабстве.</li>
+<li><b>Возмещение убытков</b>: Выплачивается жертве или её семье. Если преступник не может заплатить, он будет подвергнут заключению или долговому рабству.</li>
 </ol><br>
-<u><b>Codified Offences:</b></u><br>
-Below are the criminal offences recognized by the Kingdom, along with suggested criminal sanctions. Courts of law may issue alternative sentences as they deem just, but sentences harsher than those prescribed herein shall only be imposed with caution lest the adjudicator hinders the Crown's Justice.<br><br>
-<u><b>I. Offences Against the Crown, Royalty and the Nobility:</b></u><br>
+<u><b>Кодифицированные преступления:</b></u><br>
+Ниже перечислены уголовные преступления, признанные Герцогством, с предложенными уголовными наказаниями. Суды могут выносить альтернативные приговоры, если считают их справедливыми, но наказания, более жёсткие, чем предписанные здесь, должны назначаться с осторожностью, чтобы судья не препятствовал правосудию монарха.<br><br>
+<u><b>I. Преступления против Герцогства, Герцогской семьи и дворянства:</b></u><br>
 <ol>
-<li><b>Assault, Murder, or Impersonation of the Monarch, Royalty, Crown Representatives or Nobility:</b> Execution, enslavement, exile, imprisonment, maiming, or public humiliation.</li>
-<li><b>Extortion of the Monarch, Royalty, Crown Representatives or Nobility:</b> Execution, enslavement, exile, imprisonment, maiming, or public humiliation.</li>
-<li><b>Defamation of the Monarch, Royalty, Crown Representatives or Nobility:</b> Imprisonment, maiming, public humiliation, fines, or damages. Repeat offenders shall have their tongue removed if the defamation was spoken, or their hands removed if the defamation was written.</li>
-<li><b>Defacing or Disrespecting Royal Symbols or Property:</b> Imprisonment, maimage, public humiliation, or fines.</li>
-<li><b>High Treason:</b> Execution.</li>
-<li><b>Petty Treason:</b> Exile, imprisonment, maimage, or public humiliation.</li>
-<li><b>Forgery:</b> Execution, exile, imprisonment, dismemberment, maiming, or public humiliation.</li>
-<li><b>Tax Avoidance:</b> Enslavement, exile, imprisonment, maiming, public humiliation, or fines.</li>
-<li><b>Hindering the Crown's Justice:</b> Execution, imprisonment, or fines.</li>
+<li><b>Нападение, убийство или самозванство Монарха, членов Герцогской семьи, представителей Короны или дворянства:</b> Казнь, порабощение, изгнание, заключение, калечение или публичное унижение.</li>
+<li><b>Вымогательство у Монарха, членов Герцогской семьи, представителей Короны или дворянства:</b> Казнь, порабощение, изгнание, заключение, калечение или публичное унижение.</li>
+<li><b>Клевета на Монарха, членов Герцогской семьи, представителей Короны или дворянства:</b> Заключение, калечение, публичное унижение, штрафы или возмещение убытков. Повторные преступники лишаются языка, если клевета была устной, или рук, если она была письменной.</li>
+<li><b>Осквернение или неуважение к государственным символам или дворянской собственности:</b> Заключение, калечение, публичное унижение или штрафы.</li>
+<li><b>Государственная измена:</b> Казнь.</li>
+<li><b>Семейная измена:</b> Изгнание, заключение, калечение или публичное унижение.</li>
+<li><b>Подделка документов:</b> Казнь, изгнание, заключение, членовредительство, калечение или публичное унижение.</li>
+<li><b>Уклонение от уплаты налогов:</b> Порабощение, изгнание, заключение, калечение, публичное унижение или штрафы.</li>
+<li><b>Препятствование правосудию государства:</b> Казнь, заключение или штрафы.</li>
 </ol><br>
-<u><b>II. Offences Against the Divine Church of the Ten and the Holy Inquisition:</b></u><br>
+<u><b>II. Преступления против Святой Церкви Десяти и Святой Инквизиции:</b></u><br>
 <ol>
-<li><b>Assault, Murder, or Impersonation of Ordained Clergy or Inquisition Members:</b> Execution, imprisonment, dismemberment, maiming, public humiliation, or damages.</li>
-<li><b>Corrupting Clergy or Inquisition Members:</b> Execution, imprisonment, dismemberment, maiming, public humiliation, or damages.</li>
-<li><b>Public Indecency on Hallowed Ground:</b> Imprisonment, maiming, public humiliation, or damages.</li>
-<li><b>Blasphemy Against the Ten:</b> A warning shall be issued. Failure to comply shall be deemed heresy.</li>
-<li><b>Heresy:</b><br>
-<b><i>Greater Heresy</i></b> (Worship of the Inhumen): Execution, enslavement, or imprisonment.<br>
-<b><i>Lesser Heresy</i></b> (contradiction of the teachings of the Divine Church of the Ten): Imprisonment, maiming, fines, or damages paid to the Divine Church of the Ten.<br>
-<b><i>Note</i></b>: Psydonites are permitted to practice their faith by the Crown, provided it is not disruptive to followers of the Ten.
-<li><b>Desecration of Holy Symbols or Church Property:</b> Imprisonment, dismemberment, maiming, public humiliation, or damages.</li>
-<li><b>Use of Unholy Powers:</b> Execution, exile, imprisonment, or dismemberment.</li>
-<li><b>Theft of Goods or Offerings Given to the Ten:</b> Imprisonment, dismemberment, public humiliation, or damages.</li>
-<li><b>Disturbing the Dead:</b> Imprisonment or damages paid to both the Divine Church of the Ten and to the deceased's descendants.</li>
-</ol><br>
-<u><b>III. Offences Against Public Order:</b></u><br>
-<ol>
-<li><b>Arson:</b> Execution, imprisonment, fines, or damages.</li>
-<li><b>Brandishing Weapons Without Lawful Cause:</b> Imprisonment, public humiliation, or fines.</li>
-<li><b>Espionage:</b> Execution or imprisonment.</li>
-<li><b>Theft:</b> Imprisonment, maiming, public humiliation, or damages. Repeat offenders may be subject to dismemberment, but this shall not occur on the first offence.</li>
-<li><b>Fencing Stolen Goods:</b> Imprisonment, or fines.</li>
-<li><b>Vandalism:</b> Imprisonment, fines, or damages.</li>
-<li><b>Littering:</b> Imprisonment, fines, or damages.</li>
-<li><b>Poisoning:</b> Execution, imprisonment, fines, or damages.</li>
-<li><b>Extortion During Times of Hardship:</b> Exile, imprisonment, fines, or damages.</li>
-</ol><br>
-<u><b>IV. Offences Against Commoners:</b></u><br>
-<ol>
-<li><b>Assault of a Citizen:</b> Imprisonment, maiming, public humiliation, or damages.</li>
-<li><b>Extortion of a Citizen:</b> Imprisonment, fines, or damages.</li>
-<li><b>Burglary:</b> Imprisonment, maiming, public humiliation, fines or damages. Repeat offenders may be subject to dismemberment, but this shall not occur on the first offence.</li>
-<li><b>Robbery:</b> Imprisonment, maiming, public humiliation, fines or damages. Repeat offenders may be subject to dismemberment, but this shall not occur on the first offence.</li>
-<li><b>Damage to Property or Livestock:</b> Fines or damages.</li>
-<li><b>Disturbing the Peace:</b> Fines. Repeat offenders shall face harsher penalties, including imprisonment.</li>
-<li><b>Murder Without Lawful Excuse:</b> Execution, exile, imprisonment, or damages paid to the victim's family.</li>
-<li><b>Murder With Lawful Excuse:</b> Imprisonment, fines, or damages unless absolved of all guilt by an adjudicator.</li>
-<li><b>Unlicenced Slavery, the Enslavement of Citizens, and the Enslavement Foreigners of Respected Status (Nobility, Merchant Traders, Skilled Labourers):</b> The offender shall be enslaved and the Crown shall have the option to purchase them at a fair market rate.</li><br>
-<b><i>Note</i></b>: Individuals do not require a licence to purchase and own slaves or to transfer the ownership of slaves by way of inheritance.
-</ol><br>
-<u><b>Additional Notes on Legal Procedure:</b></u><br>
-<ol>
-<li><b>Trial Process:</b> According to Ravox's Justice, every accused individual is entitled to a fair trial where the charges are clearly presented, and the accused is given the opportunity to present a defence.</li>
-<li><b>Appeals:</b> Royalty and landed nobility convicted of offences may appeal their sentence to the Crown (which may be referred to the Chancery). Unlanded nobility may appeal their sentence to landed nobility of the rank of Count or higher (which may be referred to the Chancery), or to the Chancery. Appeals shall be filed within a year of the conviction.</li>
-<li><b>Protections of the Accused:</b> Every accused individual shall be presumed innocent until proven guilty. Evidence shall be presented for a conviction to be secured. Members of royalty and the nobility are entitled to a higher evidentiary standard than commoners.</li>
+<li><b>Нападение, убийство или самозванство Священнослужителей или членов Инквизиции:</b> Казнь, заключение, членовредительство, калечение, публичное унижение или возмещение убытков.</li>
+<li><b>Коррупция священнослужителей или членов Инквизиции:</b> Казнь, заключение, членовредительство, калечение, публичное унижение или возмещение убытков.</li>
+<li><b>Непристойное поведение на священной земле:</b> Заключение, калечение, публичное унижение или возмещение убытков.</li>
+<li><b>Богохульство против Десяти:</b> Выносится предупреждение. Невыполнение приводит к обвинению в ереси.</li>
+<li><b>Ересь:</b><br>
+<b><i>Большая ересь</i></b> (поклонение Презренным богам): Казнь, порабощение или заключение.<br>
+<b><i>Малая ересь</i></b> (противоречие учению Святой Церкви Десяти): Заключение, калечение, штрафы или возмещение убытков Святой Церкви Десяти.<br>
+<b><i>Примечание</i></b>: Псидонитам разрешено исповедовать свою веру, если она не мешает последователям Десяти.
+<li><b>Осквернение священных символов или собственности Церкви:</b> Заключение, членовредительство, калечение, публичное унижение или возмещение убытков.</li>
+<li><b>Использование нечестивых сил:</b> Казнь, изгнание, заключение или членовредительство.</li>
+<li><b>Кража подношений или имущества Церкви:</b> Заключение, членовредительство, публичное унижение или возмещение убытков.</li>
+<li><b>Осквернение мёртвых:</b> Заключение или возмещение убытков как Церкви, так и наследникам усопшего.</li>
 </ol>"]}

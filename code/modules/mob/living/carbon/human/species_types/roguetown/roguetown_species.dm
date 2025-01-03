@@ -23,7 +23,7 @@
 			return strings("spanish_replacement.json", "full")
 		if("Half Orc accent")
 			return strings("middlespeak.json", "full")
-		if("Akula accent")
+		if("axian accent")
 			return strings("axian_replacement.json", "full")
 
 /datum/species/proc/post_accent_treatment(mob/living/carbon/human, message)
@@ -122,9 +122,9 @@
 		switch(chosen_regex)
 			if(REGEX_FULLWORD)
 				// Full word regex (full world replacements)
-				message = replacetextEx(message, regex("\\b[uppertext(key)]\\b|\\A[uppertext(key)]\\b|\\b[uppertext(key)]\\Z|\\A[uppertext(key)]\\Z", "(\\w+)/g"), uppertext(value))
-				message = replacetextEx(message, regex("\\b[capitalize(key)]\\b|\\A[capitalize(key)]\\b|\\b[capitalize(key)]\\Z|\\A[capitalize(key)]\\Z", "(\\w+)/g"), capitalize(value))
-				message = replacetextEx(message, regex("\\b[key]\\b|\\A[key]\\b|\\b[key]\\Z|\\A[key]\\Z", "(\\w+)/g"), value)
+				message = replacetextEx(message, regex("[uppertext(key)]", "(\\w+)/g"), uppertext(value))
+				message = replacetextEx(message, regex("[capitalize(key)]", "(\\w+)/g"), capitalize(value))
+				message = replacetextEx(message, regex("[key]", "(\\w+)/g"), value)
 			if(REGEX_STARTWORD)
 				// Start word regex (Some words that get different endings)
 				message = replacetextEx(message, regex("\\b[uppertext(key)]|\\A[uppertext(key)]", "(\\w+)/g"), uppertext(value))
@@ -141,6 +141,7 @@
 				message = replacetextEx(message, key, value)
 
 	return message
+
 
 #undef REGEX_FULLWORD
 #undef REGEX_STARTWORD
