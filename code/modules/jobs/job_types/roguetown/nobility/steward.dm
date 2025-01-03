@@ -24,9 +24,11 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/steward
 	backr = /obj/item/storage/backpack/rogue/satchel
+	mask = /obj/item/clothing/mask/rogue/spectacles
+	backpack_contents = list(/obj/item/clothing/mask/rogue/spectacles = 1)
 
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
-	
+
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
@@ -43,26 +45,8 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.change_stat("intelligence", 2)
 		H.change_stat("perception", 1)
+		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 
-	if(H.charflaw)
-		if(H.charflaw.type != /datum/charflaw/badsight)
-			var/obj/item/bodypart/O = H.get_bodypart(BODY_ZONE_R_ARM)
-			if(O)
-				O.drop_limb()
-				qdel(O)
-			O = H.get_bodypart(BODY_ZONE_L_ARM)
-			if(O)
-				O.drop_limb()
-				qdel(O)
-			H.regenerate_limb(BODY_ZONE_R_ARM)
-			H.regenerate_limb(BODY_ZONE_L_ARM)
-			H.charflaw = new /datum/charflaw/badsight()
-			if(!istype(H.wear_mask, /obj/item/clothing/mask/rogue/spectacles))
-				qdel(H.wear_mask)
-				mask = /obj/item/clothing/mask/rogue/spectacles
 
-/datum/outfit/job/roguetown/steward/post_equip(mob/living/carbon/human/H)
-	..()
-	H.virginity = TRUE
