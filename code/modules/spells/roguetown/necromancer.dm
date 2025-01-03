@@ -33,7 +33,7 @@
 			target.visible_message(span_danger("[target] reforms under the vile energy!"), span_notice("I'm remade by dark magic!"))
 			return TRUE
 		target.visible_message(span_info("Necrotic energy floods over [target]!"), span_userdanger("I feel colder as the dark energy floods into me!"))
-		else
+		if(!iscarbon(target))
 			target.adjustBruteLoss(20)
 		return TRUE
 	return FALSE
