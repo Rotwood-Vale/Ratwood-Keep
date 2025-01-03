@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/strengthen_undead
 	name = "Strengthen Undead"
-	desc = "Suffuse a target with necrotic energies, mending the undead and maiming the living."
+	desc = "Suffuse a target with necrotic energies, mending the undead."
 	invocation = "Kral'chal!"
 	invocation_type = "shout"
 	overlay_state = "raiseskele"
