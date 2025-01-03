@@ -68,17 +68,21 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+			r_hand = /obj/item/rogueweapon/thresher
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 			belt = /obj/item/storage/belt/rogue/leather/rope
+			beltl = /obj/item/rogueweapon/sickle
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			head = /obj/item/clothing/head/roguetown/strawhat
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			armor = /obj/item/clothing/suit/roguetown/armor/workervest
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			backl = /obj/item/storage/backpack/rogue/backpack
+			backpack_contents = list(/obj/item/seeds/wheat = 2, /obj/item/seeds/apple = 1, /obj/item/ash = 3)
 			H.change_stat("strength", 1)
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 1)
