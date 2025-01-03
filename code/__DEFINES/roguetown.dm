@@ -39,12 +39,12 @@
 	/datum/species/demihuman, \
 	/datum/species/elf/dark,\
 	/datum/species/tieberian,\
-	/datum/species/anthromorphsmall,\
-	/datum/species/kobold, \
-	/datum/species/halforc, \
-	/datum/species/goblinp
 
 #define RACES_TOLERATED \
+	/datum/species/goblinp, \
+	/datum/species/halforc, \
+	/datum/species/kobold, \
+	/datum/species/anthromorphsmall
 
 #define RACES_SHUNNED \
 
