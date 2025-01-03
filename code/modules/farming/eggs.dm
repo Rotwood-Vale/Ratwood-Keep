@@ -1,9 +1,9 @@
-
 /obj/item/reagent_containers/food/snacks/egg
 	icon = 'modular/Neu_Food/icons/food.dmi'
 	name = "cackleberry"
 	desc = ""
 	icon_state = "egg"
+	dropshrink = 0.8
 	list_reagents = list(/datum/reagent/consumable/eggyolk = 5)
 	cooked_type = null
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/friedegg
@@ -11,7 +11,8 @@
 	foodtype = MEAT
 	grind_results = list()
 	rotprocess = 15 MINUTES
-	var/fertile = TRUE
+
+	var/fertile = FALSE
 
 /obj/item/reagent_containers/food/snacks/egg/become_rotten()
 	. = ..()
@@ -28,3 +29,6 @@
 		O.pixel_y = rand(-8,8)
 		visible_message("<span class='warning'>[H] crushes [src] underfoot.</span>")
 		qdel(src)
+
+/obj/item/reagent_containers/food/snacks/egg/proc/hatch(mob/living/simple_animal/hostile/retaliate/rogue/chicken/parent)
+	new /mob/living/simple_animal/hostile/retaliate/rogue/chicken/chick(get_turf(parent))
