@@ -29,8 +29,8 @@
 	var/locked = FALSE								//when locked nothing can see inside or use it.
 
 	var/max_w_class = WEIGHT_CLASS_SMALL			//max size of objects that will fit.
-	var/max_combined_w_class = 14					//max combined sizes of objects that will fit.
-	var/max_items = 7								//max number of objects that will fit.
+	var/max_combined_w_class = 1000					//max combined sizes of objects that will fit.
+	var/max_items = 1000								//max number of objects that will fit.
 
 	var/emp_shielded = FALSE
 
@@ -40,10 +40,11 @@
 	var/allow_quick_empty = FALSE					//allow empty verb which allows dumping on the floor of everything inside quickly.
 	var/allow_quick_gather = FALSE					//allow toggle mob verb which toggles collecting all items from a tile.
 
-	var/allow_dump_out = FALSE
+	var/allow_dump_out = FALSE						//allow dumping out contents via LMB click-dragging
 
 	var/collection_mode = COLLECT_EVERYTHING
 
+	var/insert_verb = "tuck"						//you "tuck" things into a bag
 	var/insert_preposition = "in"					//you put things "in" a bag, but "on" a tray.
 
 	var/display_numerical_stacking = FALSE			//stack things of the same type and show as a single object with a number.
@@ -59,11 +60,11 @@
 	var/datum/action/item_action/storage_gather_mode/modeswitch_action
 
 	//Screen variables: Do not mess with these vars unless you know what you're doing. They're not defines so storage that isn't in the same location can be supported in the future.
-	var/screen_max_columns = 7							//These two determine maximum screen sizes.
-	var/screen_max_rows = INFINITY
+	var/screen_max_columns = INFINITY							//These two determine maximum screen sizes.
+	var/screen_max_rows = 9
 	var/screen_pixel_x = 16								//These two are pixel values for screen loc of boxes and closer
 	var/screen_pixel_y = 16
-	var/screen_start_x = 4								//These two are where the storage starts being rendered, screen_loc wise.
+	var/screen_start_x = 1								//These two are where the storage starts being rendered, screen_loc wise.
 	var/screen_start_y = 2
 	//End
 
@@ -72,8 +73,6 @@
 	//Vrell - Used for repair bypass clicks
 	var/being_repaired = FALSE
 
-	var/spills_on_move = TRUE 					//Reagent containers inside this will not spill if the storage moves. (For trays.)
-	//roguespill.dm additionally handles spilling on a containing bag getting equipped - change the code if you want something else to ignore that behavior
 
 /datum/component/storage/Initialize(datum/component/storage/concrete/master)
 	if(!isatom(parent))
@@ -154,6 +153,7 @@
 /datum/component/storage/proc/update_actions()
 	QDEL_NULL(modeswitch_action)
 	return
+/*
 	if(!isitem(parent) || !allow_quick_gather)
 		return
 	var/obj/item/I = parent
@@ -164,6 +164,7 @@
 		if(!istype(M))
 			return
 		modeswitch_action.Grant(M)
+*/
 
 /datum/component/storage/proc/change_master(datum/component/storage/concrete/new_master)
 	if(new_master == src || (!isnull(new_master) && !istype(new_master)))
@@ -199,10 +200,9 @@
 	for(var/mob/living/L in can_see_contents())
 		if(!L.CanReach(A))
 			hide_from(L)
-	if(spills_on_move)
-		for(var/obj/item/reagent_containers/I in A.contents)
-			if(I.reagents && I.spillable)
-				I.reagents.remove_all(3)
+	for(var/obj/item/reagent_containers/I in A.contents)
+		if(I.reagents && I.spillable)
+			I.reagents.remove_all(3)
 
 /datum/component/storage/proc/attack_self(datum/source, mob/M)
 	if(locked)
@@ -297,14 +297,14 @@
 	progress.update(progress.goal - things.len)
 	return FALSE
 
-/datum/component/storage/proc/quick_empty(mob/M)
+/datum/component/storage/proc/quick_empty(mob/user) // Evidently this handles emptying sacks in Roguetown...
 	var/atom/A = parent
-	if(!M.canUseStorage() || !A.Adjacent(M) || M.incapacitated())
+	if(!user.canUseStorage() || !A.Adjacent(user) || user.incapacitated()) // Some sanity checks
 		return
 	if(locked)
 //		to_chat(M, span_warning("[parent] seems to be locked!"))
 		return FALSE
-	A.add_fingerprint(M)
+	A.add_fingerprint(user)
 //	to_chat(M, span_notice("I start dumping out [parent]."))
 //	var/turf/T = get_turf(A)
 	var/list/things = contents()
@@ -313,12 +313,21 @@
 //	while (do_after(M, dump_time, TRUE, T, FALSE, CALLBACK(src, PROC_REF(mass_remove_from_storage), T, things, progress)))
 //		stoplag(1)
 //	qdel(progress)
-	var/turf/target = get_turf(A)
-	for(var/obj/item/I in things)
+	var/turf/T = get_step(user, user.dir)
+	for(var/obj/structure/S in T) // Is there a structure in the way that isn't a chest, table, rack, or handcart? Can't dump the sack out on that
+		if(S.density && !istype(S, /obj/structure/table) && !istype(S, /obj/structure/closet/crate) && !istype(S, /obj/structure/rack) && !istype(S, /obj/structure/bars) && !istype(S, /obj/structure/handcart))
+			to_chat(user, span_warning("Something in the way."))
+			return
+
+	if(istype(T, /turf/closed)) // Is there an impassible turf in the way? Don't dump the sack out on that
+		to_chat(user, span_warning("Something in the way."))
+		return
+
+	for(var/obj/item/I in things) // If the above aren't true, dump the sack onto the tile in front of us
 		things -= I
 //		if(I.loc != real_location)
 //			continue
-		remove_from_storage(I, target)
+		remove_from_storage(I, T)
 		I.pixel_x = initial(I.pixel_x) + rand(-10,10)
 		I.pixel_y = initial(I.pixel_y) + rand(-10,10)
 //		if(trigger_on_found && I.on_found())
@@ -384,8 +393,8 @@
 		numbered_contents = _process_numerical_display()
 		adjusted_contents = numbered_contents.len
 
-	var/columns = CLAMP(max_items, 1, screen_max_columns)
-	var/rows = CLAMP(CEILING(adjusted_contents / columns, 1), 1, screen_max_rows)
+	var/rows = CLAMP(max_items, 1, screen_max_rows)
+	var/columns = CLAMP(CEILING(adjusted_contents / rows, 1), 1, screen_max_columns)
 	standard_orient_objs(rows, columns, numbered_contents)
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
@@ -423,7 +432,7 @@
 				cy++
 				if(cy - screen_start_y >= rows)
 					break
-	closer.screen_loc = "[screen_start_x + cols]:[screen_pixel_x],[screen_start_y]:[screen_pixel_y]"
+	closer.screen_loc = "[screen_start_x]:[screen_pixel_x],[screen_start_y+rows]:[screen_pixel_y]"
 
 /datum/component/storage/proc/show_to(mob/M)
 	if(!M.client)
@@ -544,7 +553,6 @@
 
 //This proc is called when you want to place an item into the storage item.
 /datum/component/storage/proc/attackby(datum/source, obj/item/I, mob/M, params)
-	//Vrell - Adding a block here to allow sewing/hammering to repair containers. Clicking while trying to sew will bypass this requirement.
 	if(isitem(parent))
 		if(istype(I, /obj/item/rogueweapon/hammer))
 			var/obj/item/storage/this_item = parent
@@ -561,6 +569,7 @@
 		if(M.used_intent.type == /datum/intent/snip) //This makes it so we can salvage
 			return FALSE
 	being_repaired = FALSE
+
 	if(!can_be_inserted(I, FALSE, M))
 		var/atom/real_location = real_location()
 		if(real_location.contents.len >= max_items) //don't use items on the backpack if they don't fit
@@ -765,11 +774,11 @@
 		playsound(parent, "rustle", 50, TRUE, -5)
 	for(var/mob/viewing in viewers(user, null))
 		if(M == viewing)
-			to_chat(usr, span_notice("I tuck [I] [insert_preposition]to [parent]."))
+			to_chat(usr, span_notice("I [insert_verb] [I] [insert_preposition]to [parent]."))
 		else if(in_range(M, viewing)) //If someone is standing close enough, they can tell what it is...
-			viewing.show_message(span_notice("[M] tucks [I] [insert_preposition]to [parent]."), MSG_VISUAL)
+			viewing.show_message(span_notice("[M] [insert_verb]s [I] [insert_preposition]to [parent]."), MSG_VISUAL)
 		else
-			viewing.show_message(span_notice("[M] tucks something [insert_preposition]to [parent]."), MSG_VISUAL)
+			viewing.show_message(span_notice("[M] [insert_verb]s something [insert_preposition]to [parent]."), MSG_VISUAL)
 
 /datum/component/storage/proc/update_icon()
 	if(isobj(parent))
@@ -970,7 +979,7 @@
 	collection_mode = (collection_mode+1)%3
 	switch(collection_mode)
 		if(COLLECT_SAME)
-			to_chat(user, span_notice("[parent] now picks up all items of a single type at once."))
+			to_chat(user, span_notice("[parent] now picks up all items in a tile at once."))
 		if(COLLECT_EVERYTHING)
 			to_chat(user, span_notice("[parent] now picks up all items in a tile at once."))
 		if(COLLECT_ONE)

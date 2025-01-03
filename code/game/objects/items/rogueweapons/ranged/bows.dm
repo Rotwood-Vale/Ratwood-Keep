@@ -20,6 +20,9 @@
 	associated_skill = /datum/skill/combat/bows
 	metalizer_result = /obj/item/restraints/legcuffs/beartrap/armed
 
+	grid_height = 32
+	grid_width = 64
+
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/getonmobprop(tag)
 	. = ..()
 	if(tag)

@@ -23,6 +23,9 @@
 	damfactor = 2
 	metalizer_result = /obj/structure/bars/pipe
 
+	grid_height = 64
+	grid_width = 64
+
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()
 	if(tag)
