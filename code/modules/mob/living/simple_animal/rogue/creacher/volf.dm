@@ -17,7 +17,7 @@
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur = 1, /obj/item/natural/bone = 4)
-	faction = list("wolfs", "undead")
+	faction = list("wolfs", "zombie")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = WOLF_HEALTH
 	maxHealth = WOLF_HEALTH
