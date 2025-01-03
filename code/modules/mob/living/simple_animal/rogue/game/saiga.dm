@@ -399,7 +399,7 @@
 	tame = TRUE
 
 
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled/Initialize()
 	. = ..()
 	var/obj/item/natural/saddle/S = new(src)
 	ssaddle = S
