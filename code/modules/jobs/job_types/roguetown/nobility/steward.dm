@@ -24,6 +24,8 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/steward
 	backr = /obj/item/storage/backpack/rogue/satchel
+	mask = /obj/item/clothing/mask/rogue/spectacles
+	backpack_contents = list(/obj/item/clothing/mask/rogue/spectacles = 1)
 
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 
@@ -46,3 +48,5 @@
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+
+
