@@ -21,7 +21,7 @@
 	if(H.gender == MALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 		pants = /obj/item/clothing/under/roguetown/trou
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+		shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 		head = /obj/item/clothing/head/roguetown/nightman
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress

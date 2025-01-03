@@ -30,7 +30,7 @@
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/white
 		head  = /obj/item/clothing/head/roguetown/roguehood/black
 	else
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+		shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		head = /obj/item/clothing/head/roguetown/nightman
