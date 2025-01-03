@@ -17,6 +17,9 @@
 	var/last_check_time
 	var/in_container = FALSE //currently just stops "was bitten X times!" messages on canned food
 
+	grid_width = 32
+	grid_height = 32
+
 /obj/item/reagent_containers/food/Initialize(mapload)
 	. = ..()
 	if(!mapload)
