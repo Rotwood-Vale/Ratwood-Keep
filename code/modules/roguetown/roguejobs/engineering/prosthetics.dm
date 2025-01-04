@@ -303,8 +303,7 @@
 	desc = "A replacement left arm, engineered out of bronze."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
-	max_damage = 100
-	max_damage = 20
+	max_damage = 170
 	max_integrity = 350
 	sellprice = 40
 	fingers = TRUE
@@ -315,8 +314,7 @@
 	desc = "A replacement right arm, engineered out of bronze."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
-	max_damage = 100
-	max_damage = 20
+	max_damage = 170
 	max_integrity = 350
 	sellprice = 40
 	fingers = TRUE 
