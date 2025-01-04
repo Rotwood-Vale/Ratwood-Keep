@@ -2530,6 +2530,14 @@
 /obj/structure/roguetent,
 /turf/open/floor/rogue/grasscold,
 /area/rogue/indoors/shelter/druidgrove)
+"byG" = (
+/obj/structure/lever/wall{
+	dir = 4;
+	redstone_id = "lava_bastion";
+	name = "BURN"
+	},
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors)
 "byL" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /obj/structure/fluff/walldeco/maidensigil,
@@ -12386,8 +12394,8 @@
 	},
 /area/rogue/outdoors/town)
 "hEe" = (
-/obj/structure/toilet,
-/turf/open/floor/rogue/blocks,
+/obj/structure/roguemachine/scomm/l,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "hEj" = (
 /obj/structure/bookcase/random/archive,
@@ -18041,7 +18049,8 @@
 "kYh" = (
 /obj/structure/kybraxor{
 	pixel_x = -32;
-	pixel_y = -32
+	pixel_y = -32;
+	redstone_id = "lava_bastion"
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
@@ -18720,8 +18729,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/bog)
 "lwC" = (
-/obj/effect/decal/cleanable/vomit/old,
-/obj/structure/chair/stool/rogue,
+/obj/structure/toilet,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "lwD" = (
@@ -23962,6 +23970,11 @@
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/tile/bfloorz,
 /area/rogue/indoors/town/church)
+"oAL" = (
+/obj/effect/decal/cleanable/vomit/old,
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "oAS" = (
 /obj/effect/decal/cobbleedge{
 	dir = 4;
@@ -27272,10 +27285,6 @@
 /obj/effect/spawner/roguemap/hauntpile,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/mountains)
-"qIV" = (
-/obj/structure/roguemachine/scomm/l,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "qJm" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/blocks/stonered/tiny,
@@ -328857,7 +328866,7 @@ pAV
 pnH
 ssB
 ssB
-ooJ
+byG
 pAV
 orU
 xXH
@@ -331881,7 +331890,7 @@ pAV
 pAV
 ddv
 wlD
-lwC
+oAL
 pAV
 pAV
 pAV
@@ -332311,7 +332320,7 @@ pAV
 wMV
 cyr
 pAV
-hEe
+lwC
 mfz
 wYd
 ozx
@@ -442039,7 +442048,7 @@ fZJ
 pAV
 pAV
 pAV
-qIV
+hEe
 wlD
 wlD
 wlD
