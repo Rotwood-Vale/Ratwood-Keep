@@ -248,7 +248,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/checkreqroles()
 	var/list/readied_jobs = list()
-	var/list/required_jobs = list()
+	var/list/required_jobs = list("Duke")
 
 	// Start now server button
 	if(start_immediately)
