@@ -5,7 +5,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/newmoon
 	maximum_possible_slots = 10
-	min_pq = 4
+	min_pq = 10
 	torch = FALSE
 	cmode_music = 'sound/music/combat_desertrider.ogg'
 	category_tags = list(CTAG_MERCENARY)
@@ -26,14 +26,6 @@
 	backl = /obj/item/rogueweapon/sword/sabre_freeze
 	wrists = /obj/item/clothing/neck/roguetown/psicross/noc
 
-	if(iself(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Timberborn"]
-		H.update_body()
-	if(isdemihuman(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Lalvestine"]
-		H.update_body()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)

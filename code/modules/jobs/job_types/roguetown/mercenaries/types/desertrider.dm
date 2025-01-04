@@ -5,7 +5,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider
 	maximum_possible_slots = 10
-	min_pq = 2
+	min_pq = 8
 	torch = FALSE
 	cmode_music = 'sound/music/combat_desertrider.ogg'
 	category_tags = list(CTAG_MERCENARY)
@@ -24,15 +24,6 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	neck = /obj/item/clothing/neck/roguetown/shalal
-
-	if(ishumannorthern(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Shalvistine"]
-		H.update_body()
-	if(isdemihuman(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Shalvistine"]
-		H.update_body()
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

@@ -128,13 +128,13 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		beltr = /obj/item/gun/ballistic/arquebus_pistol
 		beltl = /obj/item/ammo_holder/bullet/lead
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+		backr = /obj/item/storage/backpack/rogue/satchel/black
+		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/powderflask = 1)
 		backl = /obj/item/clothing/suit/roguetown/armor/leather/duchess
 		gloves = /obj/item/clothing/gloves/roguetown/leather/black
 		id = /obj/item/clothing/ring/active/nomag
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
-		backr = /obj/item/storage/backpack/rogue/satchel/black
-		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/powderflask = 1)
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
