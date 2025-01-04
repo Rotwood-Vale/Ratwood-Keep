@@ -402,6 +402,7 @@
 #include "code\datums\outdoor_datum.dm"
 #include "code\datums\outfit.dm"
 #include "code\datums\pollutant.dm"
+#include "code\datums\loadout.dm"
 #include "code\datums\pollution.dm"
 #include "code\datums\position_point_vector.dm"
 #include "code\datums\profiling.dm"

@@ -157,6 +157,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/defiant = TRUE
 	var/virginity = FALSE
 	var/char_accent = "No accent"
+	var/datum/loadout_item/loadout
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
 	var/has_spawned = FALSE
 
@@ -422,6 +423,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
 			dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
+			dat += "<br><b>Loadout Item:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a>"
 
 			dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
@@ -1509,6 +1511,24 @@ Slots: [job.spawn_positions]</span>
 					nudeshot_link = new_nudeshot_link
 					to_chat(user, "<span class='notice'>Successfully updated nudeshot picture</span>")
 					log_game("[user] has set their Nudeshot image to '[nudeshot_link]'.")
+
+				if("loadout_item")
+					var/list/loadouts_available = list("None")
+					for (var/path as anything in GLOB.loadout_items)
+						var/datum/loadout_item/loadout = GLOB.loadout_items[path]
+						if (!loadout.name)
+							continue
+						loadouts_available[loadout.name] = loadout
+					var/loadout_input = input(user, "Choose your character's loadout item.", "Loadout") as null|anything in loadouts_available
+					if(loadout_input)
+						if(loadout_input == "None")
+							loadout = null
+							to_chat(user, "Who needs stuff anyway?")
+						else
+							loadout = loadouts_available[loadout_input]
+							to_chat(user, "<font color='yellow'><b>[loadout.name]</b></font>")
+							if(loadout.desc)
+								to_chat(user, "[loadout.desc]")
 
 				if("species")
 

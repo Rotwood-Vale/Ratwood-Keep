@@ -325,6 +325,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		charflaw = GLOB.character_flaws[charflaw]
 		charflaw = new charflaw()
 
+/datum/preferences/proc/_load_loadout(S)
+	var/loadout_type
+	S["loadout"] >> loadout_type
+	if (loadout_type)
+		loadout = new loadout_type()
+
 /datum/preferences/proc/_load_appearence(S)
 	S["real_name"]			>> real_name
 	S["gender"]				>> gender
@@ -382,6 +388,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	_load_species(S)
 
 	_load_flaw(S)
+
+	_load_loadout(S)
 
 	if(!S["features["mcolor"]"] || S["features["mcolor"]"] == "#000")
 		WRITE_FILE(S["features["mcolor"]"]	, "#FFF")
@@ -597,6 +605,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["update_mutant_colors"] , update_mutant_colors)
 	WRITE_FILE(S["headshot_link"] , headshot_link)
 	WRITE_FILE(S["nudeshot_link"] , nudeshot_link)
+	if(loadout)
+		WRITE_FILE(S["loadout"] , loadout.type)
+	else
+		WRITE_FILE(S["loadout"] , null)
 
 	return TRUE
 
