@@ -15,17 +15,8 @@
 
 	var/chance2hit = 0
 
-	if(check_zone(zone) == zone)
-		chance2hit += 10
-
 	if(user.mind)
-		chance2hit += (user.mind.get_skill_level(associated_skill) * 7)
-
-	if(used_intent)
-		if(used_intent.blade_class == BCLASS_STAB)
-			chance2hit += user.STAPER
-		if(used_intent.blade_class == BCLASS_CUT)
-			chance2hit += round(user.STAPER/2)
+		chance2hit += (user.mind.get_skill_level(associated_skill) * 10)
 
 	if(I)
 		if(I.wlength == WLENGTH_SHORT)
@@ -33,28 +24,21 @@
 
 		chance2hit += ((user.STAPER-10)*5)
 
-
+	if(!istype(user.rmb_intent, /datum/rmb_intent/aimed))
+		chance2hit += (user.STAPER)
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 		chance2hit += (user.STAPER)*2
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
 		chance2hit -= 20
 
-	chance2hit = CLAMP(chance2hit, 5, 99)
+	chance2hit = CLAMP(chance2hit, 0, 100)
 
-	if(prob(chance2hit))
+	if(prob(chance2hit)) // Check if hit
 		return zone
 	else
-		if(prob(chance2hit+5))
-			if(check_zone(zone) == zone)
-				return zone
-			else
-				if(user.client?.prefs.showrolls)
-					to_chat(user, span_warning("Accuracy fail! [chance2hit]%"))
-				return check_zone(zone)
-		else
-			if(user.client?.prefs.showrolls)
-				to_chat(user, span_warning("Double accuracy fail! [chance2hit]%"))
-			return BODY_ZONE_CHEST
+		if(user.client?.prefs.showrolls)
+			to_chat(user, span_warning("Accuracy fail! [chance2hit]%"))
+		return BODY_ZONE_CHEST // If missed and not a precision zone, return CHEST
 
 /mob/proc/get_generic_parry_drain()
 	return 30
