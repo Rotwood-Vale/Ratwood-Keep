@@ -3842,9 +3842,7 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/mountains)
 "cuY" = (
-/obj/structure/closet/crate/chest{
-	lockid = "clinic"
-	},
+/obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "cva" = (
@@ -9741,9 +9739,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town/harbor)
 "fWX" = (
-/obj/structure/mineral_door/wood/deadbolt{
-	dir = 1
-	},
+/obj/structure/mineral_door/wood/towner/generic,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town)
 "fXh" = (
@@ -10664,7 +10660,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "gAZ" = (
-/obj/structure/mineral_door/wood/towner/generic,
+/obj/structure/mineral_door/wood/towner/farmer,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "gBu" = (
@@ -13506,7 +13502,9 @@
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/basement)
 "imF" = (
-/obj/structure/fermenting_barrel,
+/obj/machinery/light/rogue/hearth,
+/obj/structure/fluff/railing/border,
+/obj/item/cooking/pan,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "imW" = (
@@ -16528,9 +16526,10 @@
 /area/rogue/indoors/town)
 "jZQ" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/hoe,
-/obj/item/rogueweapon/thresher,
-/obj/item/rogueweapon/sickle,
+/obj/item/seeds/sweetleaf,
+/obj/item/seeds/sweetleaf,
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/pipeweed,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "kac" = (
@@ -17367,12 +17366,12 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "kFy" = (
-/obj/structure/fluff/railing/border{
+/obj/structure/flora/roguegrass,
+/obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/obj/structure/handcart,
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/shelter/town)
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "kFL" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/grass,
@@ -17930,6 +17929,10 @@
 	icon_state = "paving"
 	},
 /area/rogue/indoors/town/church)
+"lbg" = (
+/obj/structure/fermenting_barrel,
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town)
 "lbB" = (
 /obj/structure/closet/crate/roguecloset/lord,
 /obj/item/scomstone,
@@ -19449,7 +19452,10 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter/town/harbor)
 "lZQ" = (
-/obj/structure/closet/crate/chest,
+/obj/structure/closet/crate/chest{
+	lockid = "towner_farmer";
+	locked = 1
+	},
 /obj/item/seeds/apple,
 /obj/item/seeds/apple,
 /obj/item/seeds/wheat,
@@ -19573,11 +19579,13 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "mcc" = (
-/obj/structure/closet/crate/chest,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/sweetleaf,
-/obj/item/seeds/sweetleaf,
+/obj/structure/closet/crate/chest{
+	lockid = "towner_farmer";
+	locked = 1
+	},
+/obj/item/rogueweapon/sickle,
+/obj/item/rogueweapon/thresher,
+/obj/item/rogueweapon/hoe,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "mcp" = (
@@ -21119,7 +21127,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/fermenting_barrel/water,
+/obj/structure/well,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "naj" = (
@@ -23261,6 +23269,17 @@
 "ooJ" = (
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
+"opi" = (
+/obj/machinery/light/rogue/wallfire/candle,
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/obj/structure/fluff/railing/border{
+	dir = 10;
+	icon_state = "border"
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town)
 "opl" = (
 /obj/structure/lever/wall{
 	dir = 8;
@@ -24752,11 +24771,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/sewer)
 "phP" = (
-/obj/structure/closet/crate/chest{
-	lockid = "clinic"
-	},
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/glass/cup/wooden,
+/obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "phR" = (
@@ -28487,8 +28502,9 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "rGi" = (
-/obj/structure/mineral_door/wood/deadbolt{
-	dir = 1
+/obj/structure/mineral_door/wood/towner/farmer{
+	resident_key_amount = 0;
+	grant_resident_key = 0
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
@@ -30221,6 +30237,15 @@
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"sJR" = (
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
+	},
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town)
 "sJZ" = (
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/rtfield)
@@ -31141,6 +31166,12 @@
 /obj/structure/roguemachine/atm,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/shop)
+"tmw" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "tmD" = (
 /obj/structure/fluff/walldeco/chains,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -34082,9 +34113,7 @@
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/indoors/shelter/mountains)
 "vbG" = (
-/obj/structure/closet/crate/chest{
-	lockid = "clinic"
-	},
+/obj/structure/closet/crate/chest,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/blocks,
@@ -213976,7 +214005,7 @@ wSn
 qvR
 qvR
 qvR
-qvR
+rBC
 qvR
 qvR
 qvR
@@ -216135,7 +216164,7 @@ wSn
 gtF
 gTO
 gTO
-qvR
+pAt
 qvR
 ujF
 ujF
@@ -217431,7 +217460,7 @@ uaL
 uaL
 uaL
 uaL
-xvN
+kFy
 qvR
 qvR
 iNT
@@ -224335,10 +224364,10 @@ qvR
 qvR
 qvR
 wjb
-qvR
-ouv
-qvR
-nzJ
+uaL
+tmw
+uaL
+wjb
 qvR
 qvR
 qvR
@@ -224767,10 +224796,10 @@ spp
 qvR
 qvR
 nzJ
-qvR
 uaL
-qvR
-nzJ
+uaL
+uaL
+wjb
 qvR
 qvR
 xvN
@@ -322359,7 +322388,7 @@ xAt
 xAt
 uln
 uln
-qxh
+opi
 rNm
 bhc
 uln
@@ -322793,7 +322822,7 @@ uln
 qPK
 jlO
 rNm
-wQS
+sJR
 uln
 bMg
 cxv
@@ -323222,7 +323251,7 @@ evo
 xAt
 xAt
 uln
-jlO
+lbg
 jlO
 rNm
 bhc
@@ -339665,7 +339694,7 @@ gvc
 jRA
 cbo
 jRA
-jRA
+aGD
 gvc
 erZ
 erZ
@@ -340527,7 +340556,7 @@ erZ
 erZ
 gvc
 rvc
-kFy
+giC
 jRA
 ezR
 gvc
