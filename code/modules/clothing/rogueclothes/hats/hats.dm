@@ -1209,6 +1209,7 @@
 /obj/item/clothing/head/peaceflower/dropped(mob/living/carbon/human/user)
 	..()
 	REMOVE_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
+	user.remove_stress(/datum/stressevent/eora)
 
 /obj/item/clothing/head/peaceflower/proc/peace_check(mob/living/user)
 	// return true if we should be unequippable, return false if not
