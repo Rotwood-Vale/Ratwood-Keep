@@ -490,3 +490,16 @@
 	sellprice = 40
 	armor_class = ARMOR_CLASS_LIGHT
 
+/obj/item/clothing/suit/roguetown/armor/leather/harlequinsuit
+	name = "Harlequinsuit coat"
+	desc = "Just old jester's suit"
+	icon_state = "harlequinsuit"
+	item_state = "harlequinsuit"
+	blocksound = SOFTHIT
+	armor = list("blunt" = 70, "slash" = 100, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	nodismemsleeves = TRUE
+	body_parts_covered = CHEST|GROIN|VITALS
+	max_integrity = 300
+	sellprice = 25
+	armor_class = ARMOR_CLASS_LIGHT

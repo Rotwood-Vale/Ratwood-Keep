@@ -122,6 +122,12 @@
 	desc = "A steel mask, made for those who have snouts, protecting the eyes, nose and muzzle while obscuring the face."
 	icon_state = "smask_hound"
 
+/obj/item/clothing/mask/rogue/facemask/steel/harlequin
+	name = "steel harlequin mask"
+	desc = "A mask of steel which protects the eyes, nose and mouth while also obscuring the face, made in jester style."
+	icon_state = "smask_harlequin"
+	max_integrity = 200
+
 /obj/item/clothing/mask/rogue/shepherd
 	name = "halfmask"
 	icon_state = "shepherd"

@@ -241,6 +241,10 @@
 /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	icon_state = "sdaggeralt"
 
+/obj/item/rogueweapon/huntingknife/idagger/steel/parrydagger
+	icon_state = "parrydagger"
+	wdefense = 10
+
 /obj/item/rogueweapon/huntingknife/idagger/silver
 	name = "silver dagger"
 	desc = "This silver dagger can be the banishment of vampires and werewolves."
