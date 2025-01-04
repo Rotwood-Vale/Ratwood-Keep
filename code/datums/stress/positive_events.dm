@@ -110,7 +110,7 @@
 
 /datum/stressevent/eora
 	stressadd = -4
-	timer = 1 MINUTES
+	timer = 9999999999 MINUTES
 	desc = span_boldgreen("Eora makes me happy.")
 
 /datum/stressevent/vblood
