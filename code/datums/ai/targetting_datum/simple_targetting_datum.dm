@@ -7,6 +7,10 @@
 
 ///Returns something the target might be hiding inside of
 /datum/targetting_datum/proc/find_hidden_mobs(mob/living/living_mob, atom/target)
+
+	if(!QDELETED(target))
+		return
+
 	var/atom/target_hiding_location
 	if(istype(target.loc, /obj/structure/closet))
 		target_hiding_location = target.loc

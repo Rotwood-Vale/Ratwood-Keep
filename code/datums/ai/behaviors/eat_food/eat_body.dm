@@ -37,7 +37,7 @@
 			var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			for(var/zone in limb_list)
 				limb = C.get_bodypart(zone)
-				if(limb && prob(10)) //10% chance for limbs to appear and be dismembered
+				if(limb && prob(2)) //2% chance per limb to appear and be dismembered
 					limb.dismember()
 					finish_action(controller, TRUE)
 					return
