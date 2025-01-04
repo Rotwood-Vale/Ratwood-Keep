@@ -117,6 +117,9 @@
 		var/obj/structure/roguewindow/door = locate(/obj/structure/roguewindow) in src
 		if(!door.climbable)
 			return
+	
+	if(locate(/obj/structure/stairs) in src)
+		return
 
 	if(!(turf_flags & TURF_EFFECT_AFFECTABLE) || density || !effect)
 		return
