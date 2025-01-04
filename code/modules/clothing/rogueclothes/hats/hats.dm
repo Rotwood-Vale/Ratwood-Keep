@@ -1204,7 +1204,7 @@
 	. = ..()
 	if(slot == SLOT_HEAD)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
-		owner.add_stress(/datum/stressevent/eora)
+		add_stress(/datum/stressevent/eora)
 
 /obj/item/clothing/head/peaceflower/dropped(mob/living/carbon/human/user)
 	..()
