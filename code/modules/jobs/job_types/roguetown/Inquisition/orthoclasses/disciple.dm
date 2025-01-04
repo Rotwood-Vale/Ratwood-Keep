@@ -33,13 +33,13 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_spellpoints(-6)
 		H.change_stat("strength", 3)
 		H.change_stat("speed", 2)
 		H.change_stat("perception", -1)
 		H.change_stat("endurance", -1)
 		H.change_stat("constitution", -1)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch) // Pre-set spell list
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/forcewall)
@@ -48,3 +48,7 @@
 		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
+
+	var/datum/devotion/C = new /datum/devotion(H, H.patron)
+	C.grant_spells_templar(H)
+	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
