@@ -8,7 +8,7 @@
 
 /datum/outfit/job/roguetown/disciple/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
+	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	cloak = /obj/item/clothing/cloak/psydontabard/alt
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
@@ -19,6 +19,9 @@
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	id = /obj/item/clothing/ring/silver
 	backl = /obj/item/storage/backpack/rogue/satchel
+	mask = /obj/item/clothing/mask/rogue/facemask/psydonmask
+	head = /obj/item/clothing/head/roguetown/roguehood/psydon
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	backpack_contents = list(/obj/item/roguekey/inquisition = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) 
