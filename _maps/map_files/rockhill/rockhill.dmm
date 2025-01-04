@@ -26483,10 +26483,6 @@
 /obj/structure/bed/rogue/inn/wooldouble,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/bath)
-"qkz" = (
-/obj/structure/roguemachine/merchantvend,
-/turf/open/floor/rogue/concrete,
-/area/rogue/indoors/town/shop)
 "qkH" = (
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/indoors/town)
@@ -29710,6 +29706,10 @@
 /obj/effect/spawner/lootdrop/roguetown/dungeon/tools,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/shelter/mountains)
+"skC" = (
+/obj/structure/roguemachine/merchantvend,
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue/indoors/town/shop)
 "skP" = (
 /turf/closed/wall/mineral/rogue/wooddark/end{
 	dir = 1
@@ -344723,8 +344723,8 @@ iXq
 toW
 gWn
 gWn
-toW
-qkz
+skC
+bdC
 bdC
 toW
 toW
