@@ -221,16 +221,6 @@
 		return FALSE
 	return TRUE
 
-/datum/stressevent/blueb
-	timer = 1 MINUTES
-	stressadd = 2
-	desc = span_red("My loins ache!")
-
-/datum/stressevent/blueb/can_apply(mob/living/user)
-	if(HAS_TRAIT(user, TRAIT_CRACKHEAD))
-		return FALSE
-	return TRUE
-
 /datum/stressevent/leechcult
 	timer = 1 MINUTES
 	stressadd = 3
