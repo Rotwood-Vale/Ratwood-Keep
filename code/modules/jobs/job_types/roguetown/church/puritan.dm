@@ -100,7 +100,7 @@
 			say(pick(torture_lines), spans = list("torture"))
 			if(painpercent >= 100)
 				H.emote("painscream")
-				H.confession_time("antag")
+				H.confess_sins("antag")
 				return
 	to_chat(src, span_warning("Not ready to speak yet."))
 
@@ -128,25 +128,9 @@
 			say(pick(faith_lines), spans = list("torture"))
 			if(painpercent >= 100)
 				H.emote("painscream")
-				H.confession_time("patron")
+				H.confess_sins("patron")
 				return
 	to_chat(src, span_warning("Not ready to speak yet."))
-
-/mob/living/carbon/human/proc/confession_time(confession_type = "antag")
-	var/timerid = addtimer(CALLBACK(src, PROC_REF(confess_sins)), 6 SECONDS, TIMER_STOPPABLE)
-	var/responsey = alert(src, "Resist torture? (1 TRI)", "TORTURE", "Yes","No")
-	if(!responsey)
-		responsey = "No"
-	if(SStimer.timer_id_dict[timerid])
-		deltimer(timerid)
-	else
-		to_chat(src, span_warning("Too late..."))
-		return
-	if(responsey == "Yes")
-		adjust_triumphs(-1)
-		confess_sins(confession_type, resist = TRUE)
-	else
-		confess_sins(confession_type)
 
 /mob/living/carbon/human/proc/confess_sins(confession_type = "antag", resist)
 	var/static/list/innocent_lines = list(
