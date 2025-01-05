@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/food/snacks/fish
 	name = "рыба"
-	desc = "Свежая кровь запятнала её серебристую чешую. Мягкий блеск серебряных чешуек мерцает на свету."
+	desc = "Ещё видны остатки крови на е чешуе. Мягкий блеск серебристых чешуек мерцает на свету."
 	icon_state = "carp"
 	icon = 'icons/roguetown/misc/fish.dmi'
 	verb_say = "glubs"
@@ -29,7 +29,7 @@
 			name = "легендарная [initial(name)]"
 		if("ultra")
 			sellprice = sellprice * 4
-			name = "ультраредкая [initial(name)]"
+			name = "крайне редкая [initial(name)]"
 		if("rare")
 			sellprice = sellprice * 2
 			name = "редкая [initial(name)]"

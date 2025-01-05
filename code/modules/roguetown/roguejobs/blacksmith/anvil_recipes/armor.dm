@@ -369,7 +369,7 @@
 // --------- GOLD -----------
 
 /datum/anvil_recipe/armor/gold/belt
-	name = "Позолоченный пояс"
+	name = "Золотой пояс"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/storage/belt/rogue/leather/plaquegold
 

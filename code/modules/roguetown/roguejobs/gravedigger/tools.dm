@@ -3,7 +3,7 @@
 	possible_item_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel)
 	gripped_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel, /datum/intent/axe/chop/stone)
 	name = "лопата"
-	desc = "Незаменима для рытья (могил) в этой затянутой мраком земле."
+	desc = "Незаменима для копания (могил) в этой тёмной земле."
 	icon_state = "shovel"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -99,7 +99,7 @@
 			update_icon()
 			return
 		if(istype(T, /turf/open/floor/rogue/grass))
-			to_chat(user, span_warning("There is grass in the way."))
+			to_chat(user, span_warning("Здесь мешает трава."))
 			return
 		return
 	. = ..()
@@ -158,8 +158,8 @@
 
 /obj/item/rogueweapon/shovel/small
 	force = 7
-	name = "заступ"
-	desc = "Незаменимый инструмент для возделывания почвы."
+	name = "лопатка"
+	desc = "Незаменимый инструмент для вскапывания почвы."
 	icon_state = "spade"
 	sharpness = IS_BLUNT
 	//dropshrink = 0.8
@@ -173,7 +173,7 @@
 
 /obj/item/burial_shroud
 	name = "погребальный саван"
-	desc = "Погребальный покров для усопших."
+	desc = "Погребальное покрывало для усопшего."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "shroud_folded"
 	w_class = WEIGHT_CLASS_SMALL
@@ -199,7 +199,7 @@
 
 /obj/structure/closet/burial_shroud
 	name = "погребальный саван"
-	desc = "Погребальный покров для усопших."
+	desc = "Погребальное покрывало для усопшего."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "shroud"
 	density = FALSE
@@ -250,7 +250,7 @@
 		qdel(src)
 
 /obj/item/bodybag
-	name = "body bag"
+	name = "мешок для трупов"
 	desc = ""
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "bodybag_folded"
@@ -286,7 +286,7 @@
 
 
 /obj/structure/closet/body_bag
-	name = "body bag"
+	name = "мешок для трупов"
 	desc = ""
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "bodybag"

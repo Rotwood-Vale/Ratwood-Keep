@@ -3,7 +3,7 @@
 /obj/machinery/light/rogue/oven
 	icon = 'icons/roguetown/misc/lighting.dmi'
 	name = "каменная печь"
-	desc = "Стоит на страже против голода и тьмы, когда горит."
+	desc = "Стоит спасает от голода и тьмы, когда растоплена."
 	icon_state = "oven1"
 	base_state = "oven"
 	density = FALSE
@@ -51,7 +51,7 @@
 				food -= I
 				qdel(I)
 				food += C
-				visible_message(span_notice("Какой аппетитный запах!"))
+				visible_message(span_notice("Запахло чем-то вкусным!"))
 				need_underlay_update = TRUE
 		update_icon()
 

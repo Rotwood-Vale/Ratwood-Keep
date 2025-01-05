@@ -116,13 +116,13 @@
 		if(0.5 to 0.8)
 			. += span_bloody("[p_theyre(TRUE)] хорошо накормлена.")
 		if(0.1 to 0.5)
-			. += span_warning("[p_they(TRUE)] жажд[p_s()]ет пищи.")
+			. += span_warning("[p_they(TRUE)] жажд[p_s()]ет крови.")
 		if(-INFINITY to 0.1)
 			. += span_dead("[p_theyre(TRUE)] изголодалась.")
 	if(!giving)
-		. += span_warning("[p_theyre(TRUE)] [pick("чавкает", "сосёт", "втягивает")].")
+		. += span_warning("[p_theyre(TRUE)] [pick("хлебает", "сосёт", "втягивает")].")
 	else
-		. += span_notice("[p_theyre(TRUE)] [pick("изрыгает", "отрыгивает", "выплёвывает")].")
+		. += span_notice("[p_theyre(TRUE)] [pick("изрыгает", "изрыгает", "источает")].")
 	if(drainage)
 		START_PROCESSING(SSobj, src)
 
@@ -133,7 +133,7 @@
 		if(!affecting)
 			return
 		if(!get_location_accessible(H, check_zone(user.zone_selected)))
-			to_chat(user, span_warning("Что-то мешает."))
+			to_chat(user, span_warning("Что-то мешает прицепить пиявку."))
 			return
 		var/used_time = (70 - (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10))/2
 		if(completely_silent)
@@ -148,9 +148,9 @@
 		if(completely_silent)
 			return
 		if(M == user)
-			user.visible_message(span_notice("[user] прикладывает [src] к своей [affecting]."), span_notice("Я прикладываю пиявку к своей [affecting]."))
+			user.visible_message(span_notice("[user] прицепляю [src] к своей [affecting]."), span_notice("Я прикладываю пиявку к своей [affecting]."))
 		else
-			user.visible_message(span_notice("[user] прикладывает [src] к [affecting] [M]."), span_notice("Я прикладываю пиявку к [affecting] [M]."))
+			user.visible_message(span_notice("[user] прицепляю [src] к [affecting] [M]."), span_notice("Я прикладываю пиявку к [affecting] [M]."))
 		return
 	return ..()
 
@@ -203,12 +203,12 @@
 		"глупая" = 2,
 		"тупая" = 2,
 		"демоническая" = 1,
-		"граггоидная" = 1,
+		"граггароидная" = 1,
 		"зизоидная" = 1,
 	)
 	var/static/list/all_descs = list(
 		"Какое отвратительное создание." = 10,
-		"Просто мерзость." = 5,
+		"Какая огромная!" = 5,
 		"Скользкая..." = 3,
 		"Такая сочная и полная крови." = 3,
 		"Обожаю эту пиявку!" = 2,
@@ -223,7 +223,7 @@
 	switch(evilness_rating)
 		if(MAX_LEECH_EVILNESS to INFINITY) //maximized evilness holy shit
 			color = "#ff0000"
-			adjectives += pick("злая", "зловещая", "человеконенавистническая")
+			adjectives += pick("злая", "зловещая", "мизантропная")
 			descs += span_danger("Эта просто переполнена ненавистью!")
 		if(5) //this leech is painfully average, it gets no adjectives
 			if(prob(3))
@@ -231,7 +231,7 @@
 				descs += "На эту совершенно скучно смотреть."
 		if(-INFINITY to 1) //this leech is pretty terrible at being a leech
 			adjectives += pick("жалкая", "никчёмная", "удручающая")
-			descs += span_dead("Эта жаждет лишь смерти.")
+			descs += span_dead("Эта жаждет лишь своей смерти.")
 		else
 			var/adjective_amount = 1
 			if(prob(5))
@@ -256,7 +256,7 @@
 	return TRUE
 
 /obj/item/natural/worms/leech/cheele
-	name = "чиле"
+	name = "медицинская пиявка" //непереводимая игра слов в оригинале
 	desc = "Прекрасный, наполняющий кровью альтруистичный организм, созданный самой Пестрой."
 	icon_state = "cheele"
 	color = null
@@ -297,7 +297,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/V = user
 		if(prob(5))
-			V.say(pick("СЛАВА ЗИЗО!", "СМЕРТЬ ДЕСЯТИ..."))
+			V.say(pick("ХВАЛА ЗИЗО!", "СМЕРТЬ ДЕСЯТИ..."))
 		V.add_stress(/datum/stressevent/leechcult)
 
 #undef MAX_LEECH_EVILNESS

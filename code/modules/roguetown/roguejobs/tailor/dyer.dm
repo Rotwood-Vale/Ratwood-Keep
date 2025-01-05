@@ -1,6 +1,6 @@
 /obj/structure/dye_bin
-	name = "красильный чан"
-	desc = "Деревянный чан, наполненный водой для окрашивания тканей."
+	name = "красильная бочка"
+	desc = "Деревянная бочка, наполненная цветной водой."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "dye_bin"
 	density = TRUE
@@ -75,9 +75,9 @@
 /obj/structure/dye_bin/examine(mob/user)
 	. = ..()
 	if(berry_charges > 0)
-		. += span_info("В чане плавают разноцветные красители")
+		. += span_info("В бочке плавают разноцветные красители")
 	else
-		. += span_info("В чане нет красителей")
+		. += span_info("В бочке нет красителей")
 
 /obj/structure/dye_bin/update_icon()
 	. = ..()
@@ -99,7 +99,7 @@
 		return
 	if(is_type_in_list(I, allowed_types))
 		if(!user.transferItemToLoc(I, src))
-			to_chat(user, "<span class='warning'>[I] прилип к руке!</span>")
+			to_chat(user, "<span class='warning'>[I] невозможно отцепить от руки!</span>")
 			return
 		user.visible_message("<span class='notice'>[user] опускает [I] в [src].</span>")
 
@@ -111,21 +111,21 @@
 	return FALSE
 
 /obj/structure/dye_bin/ui_interact(mob/user)
-	var/list/dat = list("<TITLE>красильный чан</TITLE><BR>")
+	var/list/dat = list("<TITLE>красильная бочка</TITLE><BR>")
 	if(!inserted)
 		dat += "Внутри пусто."
 	else
-		dat += "Погружено: [inserted]<BR>"
+		dat += "Погружёно: [inserted]<BR>"
 		dat += "<A href='?src=\ref[src];eject=1'>Достать [inserted]</A><BR><BR>"
 		if(berry_charges <= 0)
 			dat += "Нет красителя."
 		else
 			dat += "<A href='?src=\ref[src];select=1'>Смешать краску.</A><BR>"
 			dat += "Цвет: <font color='[activecolor]'>&#9899;</font>"
-			dat += "<A href='?src=\ref[src];paint=1'>Втереть краситель.</A><BR><BR>"
-			dat += "<A href='?src=\ref[src];clear=1'>Обесцветить.</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];paint=1'>Окрасить.</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];clear=1'>Смыть краску.</A><BR><BR>"
 
-	var/datum/browser/menu = new(user, "красильный чан","красильный чан", 400, 400, src)
+	var/datum/browser/menu = new(user, "красильная бочка","красильная бочка", 400, 400, src)
 	menu.set_content(dat.Join(""))
 	menu.open()
 
@@ -137,7 +137,7 @@
 	add_fingerprint(usr)
 
 	if(href_list["close"])
-		usr << browse(null, "window=красильный чан")
+		usr << browse(null, "window=красильная бочка")
 		return
 
 	if(href_list["select"])

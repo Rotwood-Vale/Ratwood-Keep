@@ -1,6 +1,6 @@
 /obj/structure/fluff/grindstone
-	name = "точильный камень"
-	desc = "Точильный камень, используемый для перемалывания предметов в реагенты."
+	name = "перетирающие жернова"
+	desc = "Жернова, перетерающие предметы в жидкость."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "millstone"
 	density = TRUE
@@ -35,14 +35,14 @@
 
 /obj/structure/fluff/grindstone/attack_hand(mob/user)
 	if(to_grind.len == 0)
-		to_chat(user, span_warning("Нечего молоть!"))
+		to_chat(user, span_warning("Нечего перетирать!"))
 		return TRUE
 	if(do_after(user, 8, target = src))
-		user.visible_message(span_notice("[user] использует точильный камень"), \
-						span_notice("Я начинаю использовать точильный камень"))
+		user.visible_message(span_notice("[user] использует жернова"), \
+						span_notice("Я начинаю использовать жернова"))
 		grindUp(to_grind, usr)
-		user.visible_message(span_notice("[user] закончил использовать точильный камень"), \
-						span_notice("Я закончил использовать точильный камень"))
+		user.visible_message(span_notice("[user] закончил использовать жернова"), \
+						span_notice("Я закончил использовать жернова"))
 		return TRUE
 	..()
 
@@ -57,8 +57,8 @@
 			if(reagents.holder_full())
 				to_chat(user, span_warning("[src] полон."))
 				return
-			user.visible_message(span_notice("[user] выливает [I] в [src]."), \
-							span_notice("Я выливаю [I] в [src]."))
+			user.visible_message(span_notice("[user] заливает [I] в [src]."), \
+							span_notice("Я заливаю [I] в [src]."))
 			for(var/i in 1 to 10)
 				if(do_after(user, 8, target = src))
 					if(!I.reagents.total_volume)
@@ -92,12 +92,12 @@
 			return
 	if(istype(grindable))
 		if(!grindable.grind_results)
-			to_chat(user, span_warning("Я не могу это перемолоть во что-либо."))
+			to_chat(user, span_warning("Я не могу это перетереть."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
-			to_chat(user, span_warning("[I] прилип к моей руке!"))
+			to_chat(user, span_warning("[I] невозможно отцепить от моей руки!"))
 			return TRUE
-		to_chat(user, span_info("Я помещаю [I] в [src]."))
+		to_chat(user, span_info("Я кладу [I] в [src]."))
 		to_grind += grindable
 		return TRUE
 	..()

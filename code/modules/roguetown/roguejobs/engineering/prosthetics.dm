@@ -269,7 +269,7 @@
 
 /obj/item/bodypart/l_arm/prosthetic/bronze
 	name = "бронзовая левая рука"
-	desc = "Сменная левая рука, искусно выкованная из бронзы."
+	desc = "Протез левой руки, созданный с применением бронзовых механизмов."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	max_damage = 20
@@ -279,7 +279,7 @@
 
 /obj/item/bodypart/r_arm/prosthetic/bronze
 	name = "бронзовая правая рука"
-	desc = "Сменная правая рука, искусно выкованная из бронзы."
+	desc = "Протез правой руки, созданный с применением бронзовых механизмов."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	max_damage = 20
