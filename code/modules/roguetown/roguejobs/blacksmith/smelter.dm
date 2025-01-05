@@ -1,6 +1,6 @@
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "каменная печь"
+	name = "каменная плавильня" // дабы не было путаницы со stone oven
 	desc = "Каменная печь, закаленная временем и жаром."
 	icon_state = "cavesmelter0"
 	base_state = "cavesmelter"
@@ -90,7 +90,7 @@
 
 /obj/machinery/light/rogue/smelter/great
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "большая печь"
+	name = "Большая плавильня"
 	icon_state = "smelter0"
 	base_state = "smelter"
 	anchored = TRUE
@@ -128,14 +128,14 @@
 							blacksteelalloy = blacksteelalloy + 2
 
 					if(steelalloy == 7)
-						testing("СТАЛЬ СПЛАВЛЕНА")
+						testing("СТАЛЬ ВЫПЛАВЛЕНА")
 						maxore = 3 // Coal no longer turns to steel
 						alloy = /obj/item/ingot/steel
 					else if(bronzealloy == 7)
-						testing("БРОНЗА СПЛАВЛЕНА")
+						testing("БРОНЗА ВЫПЛАВЛЕНА")
 						alloy = /obj/item/ingot/bronze
 					else if(blacksteelalloy == 7)
-						testing("ЧЁРНАЯ СТАЛЬ СПЛАВЛЕНА")
+						testing("ЧЁРНАЯ СТАЛЬ ВЫПЛАВЛЕНА")
 						alloy = /obj/item/ingot/blacksteel
 					else
 						alloy = null
