@@ -156,5 +156,5 @@
 								qdel(I)
 					maxore = initial(maxore)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
-					visible_message(span_notice("[src] завершена."))
+					visible_message(span_notice("[src] завершила работу."))
 					cooking = 31
