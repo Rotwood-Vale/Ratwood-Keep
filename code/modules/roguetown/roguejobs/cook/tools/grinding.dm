@@ -1,6 +1,6 @@
 /obj/structure/fluff/grindstone
-	name = "точильный камень"
-	desc = "Точильный камень, используемый для перемалывания предметов в реагенты."
+	name = "grindstone"
+	desc = "A grindstone used to grind items into reagents."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "millstone"
 	density = TRUE
@@ -35,14 +35,14 @@
 
 /obj/structure/fluff/grindstone/attack_hand(mob/user)
 	if(to_grind.len == 0)
-		to_chat(user, span_warning("Нечего молоть!"))
+		to_chat(user, span_warning("Nothing to grind!"))
 		return TRUE
 	if(do_after(user, 8, target = src))
-		user.visible_message(span_notice("[user] использует точильный камень"), \
-						span_notice("Я начинаю использовать точильный камень"))
+		user.visible_message(span_notice("[user] begins to grind the grindstone"), \
+						span_notice("I begin to grind the grindstone."))
 		grindUp(to_grind, usr)
-		user.visible_message(span_notice("[user] закончил использовать точильный камень"), \
-						span_notice("Я закончил использовать точильный камень"))
+		user.visible_message(span_notice("[user] finishes grinding the grindstone"), \
+						span_notice("I finish grinding the grindstone."))
 		return TRUE
 	..()
 
@@ -52,13 +52,13 @@
 		if(user.used_intent.type == INTENT_POUR) //Something like a glass. Player probably wants to transfer TO it.
 			testing("attackobj2")
 			if(!I.reagents.total_volume)
-				to_chat(user, span_warning("[I] пуст!"))
+				to_chat(user, span_warning("[I] is empty!"))
 				return
 			if(reagents.holder_full())
-				to_chat(user, span_warning("[src] полон."))
+				to_chat(user, span_warning("[src] is full."))
 				return
-			user.visible_message(span_notice("[user] выливает [I] в [src]."), \
-							span_notice("Я выливаю [I] в [src]."))
+			user.visible_message(span_notice("[user] pours [I] into [src]."), \
+							span_notice("I pour [I] into [src]."))
 			for(var/i in 1 to 10)
 				if(do_after(user, 8, target = src))
 					if(!I.reagents.total_volume)
@@ -73,13 +73,13 @@
 		if(is_drainable() && (user.used_intent.type == /datum/intent/fill)) //A dispenser. Transfer FROM it TO us.
 			testing("attackobj3")
 			if(!reagents.total_volume)
-				to_chat(user, span_warning("[src] пуст!"))
+				to_chat(user, span_warning("[src] is empty!"))
 				return
 			if(I.reagents.holder_full())
-				to_chat(user, span_warning("[I] полон."))
+				to_chat(user, span_warning("[I] is full."))
 				return
-			user.visible_message(span_notice("[user] наполняет [I] из [src]."), \
-								span_notice("Я наполняю [I] из [src]."))
+			user.visible_message(span_notice("[user] fills [I] with [src]."), \
+								span_notice("I fill [I] with [src]."))
 			for(var/i in 1 to 10)
 				if(do_after(user, 8, target = src))
 					if(I.reagents.holder_full())
@@ -92,12 +92,12 @@
 			return
 	if(istype(grindable))
 		if(!grindable.grind_results)
-			to_chat(user, span_warning("Я не могу это перемолоть во что-либо."))
+			to_chat(user, span_warning("I can't grind this into anything."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
-			to_chat(user, span_warning("[I] прилип к моей руке!"))
+			to_chat(user, span_warning("[I] is stuck to my hand!"))
 			return TRUE
-		to_chat(user, span_info("Я помещаю [I] в [src]."))
+		to_chat(user, span_info("I place [I] into [src]."))
 		to_grind += grindable
 		return TRUE
 	..()

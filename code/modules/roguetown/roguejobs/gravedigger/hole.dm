@@ -1,7 +1,7 @@
 
 /obj/structure/closet/dirthole
-	name = "яма"
-	desc = "Просто небольшая яма..."
+	name = "hole"
+	desc = "Just a small hole..."
 	icon_state = "hole1"
 	icon = 'icons/turf/roguefloor.dmi'
 	var/stage = 1
@@ -19,13 +19,13 @@
 	layer = 2.8
 
 /obj/structure/closet/dirthole/grave
-	desc = "Яма достаточно большая для гроба."
+	desc = "A hole big enough for a coffin."
 	stage = 3
 	faildirt = 3
 	icon_state = "grave"
 
 /obj/structure/closet/dirthole/closed
-	desc = "Холмик земли, под которым что-то скрыто."
+	desc = "A mound of dirt with something below."
 	stage = 4
 	faildirt = 3
 	climb_offset = 10
@@ -55,7 +55,7 @@
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
 		if(lootroll == 1)
-			. += span_warning("Лучше дать этому упокоенному спать дальше.")
+			. += span_warning("Better let this one sleep.")
 
 /obj/structure/closet/dirthole/insertion_allowed(atom/movable/AM)
 	if(istype(AM, /obj/structure/closet/crate/chest) || istype(AM, /obj/structure/closet/burial_shroud))
@@ -158,8 +158,8 @@
 	duration = 10 MINUTES
 
 /atom/movable/screen/alert/status_effect/debuff/cursed
-	name = "Проклятие"
-	desc = "Я чувствую себя... невезучим."
+	name = "Cursed"
+	desc = "I feel... unlucky."
 	icon_state = "debuff"
 
 /obj/structure/closet/dirthole/MouseDrop_T(atom/movable/O, mob/living/user)
@@ -186,14 +186,14 @@
 		return
 	var/list/targets = list(O, src)
 	add_fingerprint(user)
-	user.visible_message(span_warning("[user] [actuallyismob ? "пытается ":""]запихнуть [O] в [src]."), \
-				 	 	span_warning("Я [actuallyismob ? "пытаюсь ":""]запихнуть [O] в [src]."), \
-				 	 	span_hear("Я слышу лязг."))
+	user.visible_message(span_warning("[user] [actuallyismob ? "tries to ":""]stuff [O] into [src]."), \
+				 	 	span_warning("I [actuallyismob ? "try to ":""]stuff [O] into [src]."), \
+				 	 	span_hear("I hear clanging."))
 	if(actuallyismob)
 		if(do_after_mob(user, targets, 40))
-			user.visible_message(span_notice("[user] запихивает [O] в [src]."), \
-							 	 span_notice("Я запихиваю [O] в [src]."), \
-							 	 span_hear("Я слышу громкий удар."))
+			user.visible_message(span_notice("[user] stuffs [O] into [src]."), \
+							 	 span_notice("I stuff [O] into [src]."), \
+							 	 span_hear("I hear a loud bang."))
 			O.forceMove(T)
 			user_buckle_mob(O, user)
 	else
@@ -231,19 +231,19 @@
 /obj/structure/closet/dirthole/update_icon()
 	switch(stage)
 		if(1)
-			name = "яма"
+			name = "hole"
 			icon_state = "hole1"
 			can_buckle = FALSE
 		if(2)
-			name = "яма"
+			name = "hole"
 			icon_state = "hole2"
 			can_buckle = FALSE
 		if(3)
-			name = "могильная яма"
+			name = "pit"
 			icon_state = "grave"
 			can_buckle = TRUE
 		if(4)
-			name = "могила"
+			name = "grave"
 			icon_state = "gravecovered"
 			can_buckle = FALSE
 	update_abovemob()

@@ -1,6 +1,6 @@
 /obj/structure/dye_bin
-	name = "красильный чан"
-	desc = "Деревянный чан, наполненный водой для окрашивания тканей."
+	name = "dye bin"
+	desc = "A bin with water."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "dye_bin"
 	density = TRUE
@@ -37,47 +37,47 @@
 			)
 	var/activecolor = "#FFFFFF"
 	var/static/list/selectable_colors = list(
-		"Белый" = "#ffffff",
-		"Чёрный" = "#414143",
-		"Светло-серый" = "#999999",
-		"Магический серый" = "#6c6c6c",
-		"Магический красный" = "#b8252c",
-		"Магический синий" = "#4756d8",
-		"Магический жёлтый" = "#c1b144",
-		"Магический зелёный" = "#759259",
-		"Меловой белый" = "#f4ecde",
-		"Вымоченный" = "#bbbbbb",
-		"Кремовый" = "#fffdd0",
-		"Оранжевый" = "#bd6606",
-		"Золотой" = "#f9a602",
-		"Тысячелистниковый" = "#f0cb76",
-		"Вайдовый жёлтый" = "#f4c430",
-		"Охра жёлтая" = "#cb9d06",
-		"Болотная желчь" = "#b5b004",
-		"Оливковый" = "#98bf64",
-		"Зелёный" = "#428138",
-		"Тёмно-зелёный" = "#264d26",
-		"Бирюзовый" = "#249589",
-		"Барвинковый" = "#8f99fb",
-		"Вайдовый синий" = "#597fb9",
-		"Королевский пурпур" = "#8747b1",
-		"Пурпурный" = "#962e5c",
-		"Орсельный" = "#66023C",
-		"Охра красная" = "#913831",
-		"Красный" = "#a32121",
-		"Бордовый" = "#550000",
-		"Крестьянский бурый" = "#685542",
-		"Земляной" = "#7c6d5c",
-		"Каштановый" = "#613613",
-		"Рыжевато-коричневый" = "#7f461b"
+		"White" = "#ffffff",
+		"Black" = "#414143",
+		"Light Grey" = "#999999",
+		"Mage Grey" = "#6c6c6c",
+		"Mage Red" = "#b8252c",
+		"Mage Blue" = "#4756d8",
+		"Mage Yellow" = "#c1b144",
+		"Mage Green" = "#759259",
+		"Chalk White" = "#f4ecde",
+		"Dunked in Water" = "#bbbbbb",
+		"Cream" = "#fffdd0",
+		"Orange" = "#bd6606",
+		"Gold" = "#f9a602",
+		"Yarrow" = "#f0cb76",
+		"Yellow Weld" = "#f4c430",
+		"Yellow Ochre" = "#cb9d06",
+		"Baby Puke" = "#b5b004",
+		"Olive" = "#98bf64",
+		"Green" = "#428138",
+		"Dark Green" = "#264d26",
+		"Teal" = "#249589",
+		"Periwinkle Blue" = "#8f99fb",
+		"Woad Blue" = "#597fb9",
+		"Royal Purple" = "#8747b1",
+		"Magenta" = "#962e5c",
+		"Orchil" = "#66023C",
+		"Red Ochre" = "#913831",
+		"Red" = "#a32121",
+		"Maroon" = "#550000",
+		"Peasant Brown" = "#685542",
+		"Dirt" = "#7c6d5c",
+		"Chestnut" = "#613613",
+		"Russet" = "#7f461b"
 		)
 
 /obj/structure/dye_bin/examine(mob/user)
 	. = ..()
 	if(berry_charges > 0)
-		. += span_info("В чане плавают разноцветные красители")
+		. += span_info("There's some colorful dyes floating inside")
 	else
-		. += span_info("В чане нет красителей")
+		. += span_info("There's no dyes inside")
 
 /obj/structure/dye_bin/update_icon()
 	. = ..()
@@ -92,16 +92,16 @@
 
 /obj/structure/dye_bin/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
-		to_chat(user, span_notice("Я выжимаю [I] для получения красителя."))
+		to_chat(user, span_notice("I squeeze \the [I] into some colorful dye."))
 		berry_charges += 5
 		update_icon()
 		qdel(I)
 		return
 	if(is_type_in_list(I, allowed_types))
 		if(!user.transferItemToLoc(I, src))
-			to_chat(user, "<span class='warning'>[I] прилип к руке!</span>")
+			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
 			return
-		user.visible_message("<span class='notice'>[user] опускает [I] в [src].</span>")
+		user.visible_message("<span class='notice'>[user] inserts [I] into the [src].</span>")
 
 		inserted = I
 	else
@@ -111,21 +111,21 @@
 	return FALSE
 
 /obj/structure/dye_bin/ui_interact(mob/user)
-	var/list/dat = list("<TITLE>красильный чан</TITLE><BR>")
+	var/list/dat = list("<TITLE>dye bucket</TITLE><BR>")
 	if(!inserted)
-		dat += "Внутри пусто."
+		dat += "Nothing inside."
 	else
-		dat += "Погружено: [inserted]<BR>"
-		dat += "<A href='?src=\ref[src];eject=1'>Достать [inserted]</A><BR><BR>"
+		dat += "Item inserted: [inserted]<BR>"
+		dat += "<A href='?src=\ref[src];eject=1'>Take [inserted] out.</A><BR><BR>"
 		if(berry_charges <= 0)
-			dat += "Нет красителя."
+			dat += "No dye inside."
 		else
-			dat += "<A href='?src=\ref[src];select=1'>Смешать краску.</A><BR>"
-			dat += "Цвет: <font color='[activecolor]'>&#9899;</font>"
-			dat += "<A href='?src=\ref[src];paint=1'>Втереть краситель.</A><BR><BR>"
-			dat += "<A href='?src=\ref[src];clear=1'>Обесцветить.</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];select=1'>Mix a color.</A><BR>"
+			dat += "Color: <font color='[activecolor]'>&#9899;</font>"
+			dat += "<A href='?src=\ref[src];paint=1'>Rub the dyes in.</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];clear=1'>Bleach it.</A><BR><BR>"
 
-	var/datum/browser/menu = new(user, "красильный чан","красильный чан", 400, 400, src)
+	var/datum/browser/menu = new(user, "colormate","dye bucket", 400, 400, src)
 	menu.set_content(dat.Join(""))
 	menu.open()
 
@@ -137,11 +137,11 @@
 	add_fingerprint(usr)
 
 	if(href_list["close"])
-		usr << browse(null, "window=красильный чан")
+		usr << browse(null, "window=colormate")
 		return
 
 	if(href_list["select"])
-		var/choice = input(usr,"Смешать краску:","Dyes",null) as null|anything in selectable_colors
+		var/choice = input(usr,"Mix a color:","Dyes",null) as null|anything in selectable_colors
 		if(!choice)
 			return
 		activecolor = selectable_colors[choice]

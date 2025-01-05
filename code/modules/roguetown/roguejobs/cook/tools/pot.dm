@@ -1,7 +1,7 @@
 /obj/item/reagent_containers/glass/bucket/pot
 	force = 10
-	name = "котёл"
-	desc = "Железный котёл для варки"
+	name = "pot"
+	desc = "A pot made out of iron"
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
@@ -36,12 +36,12 @@
 
 /obj/item/reagent_containers/glass/bucket/pot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/glass/bowl))
-		to_chat(user, "<span class='notice'>Наполняю миску...</span>")
+		to_chat(user, "<span class='notice'>Filling the bowl...</span>")
 		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 70, FALSE)
 		if(do_after(user,2 SECONDS, target = src))
 			reagents.trans_to(I, reagents.total_volume)
 	return TRUE
 
 /obj/item/reagent_containers/glass/bucket/pot/stone
-	name = "каменный котёл"
-	desc = "Котёл, высеченный из камня"
+	name = "stone pot"
+	desc = "A pot made out of stone"

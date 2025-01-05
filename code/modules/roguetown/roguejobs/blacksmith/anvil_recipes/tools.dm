@@ -115,7 +115,7 @@
 	created_item = /obj/item/leash/chain
 
 /datum/anvil_recipe/general/iron/ramrod
-	name = "Шомпол x3"
+	name = "Фляга для пороха x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/ramrod,
 						/obj/item/ramrod,

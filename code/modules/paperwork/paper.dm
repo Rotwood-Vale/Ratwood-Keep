@@ -60,7 +60,6 @@
 	drop_sound = 'sound/foley/dropsound/paper_drop.ogg'
 	pickup_sound =  'sound/blank.ogg'
 	grind_results = list(/datum/reagent/cellulose = 3)
-	resistance_flags = FIRE_PROOF
 
 
 	var/extra_headers //For additional styling or other js features.

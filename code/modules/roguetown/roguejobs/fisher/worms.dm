@@ -3,8 +3,8 @@
 	var/list/fishloot = null
 
 /obj/item/natural/worms
-	name = "червяк"
-	desc = "Любимая наживка отважных рыбаков, решивших бросить вызов мрачным водам."
+	name = "worm"
+	desc = "The favorite bait of the courageous fishermen who venture these dark waters."
 	icon_state = "worm1"
 	throwforce = 10
 	baitchance = 75
@@ -59,8 +59,8 @@
 		//Super Rare: 4.95%
 
 /obj/item/natural/worms/grubs //Pretty rare, they keep the old loot table including the super-gacha chance of getting useless bullshit.
-	name = "личинка"
-	desc = "Наживка для отчаянных или дерзких."
+	name = "grub"
+	desc = "Bait for the desperate, or the daring."
 	baitchance = 100
 	color = null
 	fishloot = list(

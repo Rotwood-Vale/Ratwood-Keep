@@ -2,8 +2,8 @@
 
 /obj/machinery/light/rogue/oven
 	icon = 'icons/roguetown/misc/lighting.dmi'
-	name = "каменная печь"
-	desc = "Стоит на страже против голода и тьмы, когда горит."
+	name = "stone oven"
+	desc = "Stands sentinel against hunger and darkness when lit."
 	icon_state = "oven1"
 	base_state = "oven"
 	density = FALSE
@@ -35,7 +35,7 @@
 			W.forceMove(src)
 			food += W
 			playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 50) // neu cooking
-			user.visible_message(span_warning("[user] кладёт что-то в печь."))
+			user.visible_message(span_warning("[user] puts something in the oven."))
 			need_underlay_update = TRUE
 			update_icon()
 			return
@@ -51,7 +51,7 @@
 				food -= I
 				qdel(I)
 				food += C
-				visible_message(span_notice("Какой аппетитный запах!"))
+				visible_message(span_notice("Something smells good!"))
 				need_underlay_update = TRUE
 		update_icon()
 
