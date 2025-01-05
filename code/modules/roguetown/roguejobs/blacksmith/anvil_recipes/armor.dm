@@ -258,7 +258,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/helmetvolf
-	name = "Песиглаый шлем (+1 Сталь)"
+	name = "Песиглавый шлем (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/volfplate
