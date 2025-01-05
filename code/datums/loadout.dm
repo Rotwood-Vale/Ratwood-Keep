@@ -107,3 +107,15 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/fishnet
 	name = "Fishnet Stockings"
 	path = /obj/item/clothing/under/roguetown/tights/stockings/fishnet
+
+/datum/loadout_item/leathercollar
+	name = "leather collar"
+	path = /obj/item/clothing/neck/roguetown/collar/leather
+
+/datum/loadout_item/catbellcollar
+	name = "jingly leather collar(cat)"
+	path = /obj/item/clothing/neck/roguetown/collar/leather/bell
+
+/datum/loadout_item/cowbellcollar
+	name = "jingly leather collar(cow)"
+	path = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
