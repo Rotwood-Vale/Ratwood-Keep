@@ -1,4 +1,4 @@
-/datum/ai_planning_subtree/melee_spacing //keep distance during attack cooldown, dip back in after. This may be cycle taxing
+/datum/ai_planning_subtree/spacing //keep distance during attack cooldown, dip back in after. This may be cycle taxing
 	/// Blackboard key holding atom we want to stay away from
 	var/target_key = BB_BASIC_MOB_CURRENT_TARGET
 	/// How close will we allow our target to get?
@@ -11,18 +11,26 @@
 	var/run_away_behavior = /datum/ai_behavior/step_away
 	var/need_los = FALSE
 
-/datum/ai_planning_subtree/melee_spacing/ranged //keep distance during attack cooldown, dip back in after. This may be cycle taxing
+/datum/ai_planning_subtree/spacing/spear
+	minimum_distance = 2
+	/// How far away will we allow our target to get?
+	maximum_distance = 2
+
+/datum/ai_planning_subtree/spacing/melee
+	minimum_distance = 2
+	/// How far away will we allow our target to get?
+	maximum_distance = 2
+
+/datum/ai_planning_subtree/spacing/ranged //keep distance during attack cooldown, dip back in after. This may be cycle taxing
 	/// How close will we allow our target to get?
 	minimum_distance = 3
 	/// How far away will we allow our target to get?
 	maximum_distance = 6
 
-	/// the run away behavior we will use
-	///run_away_behavior = /datum/ai_behavior/step_away
-	need_los = TRUE
+	need_los = TRUE // this means that simple ranged mobs will seek out their targets - probably at their own peril
 
 
-/datum/ai_planning_subtree/melee_spacing/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
+/datum/ai_planning_subtree/spacing/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
 	var/atom/target = controller.blackboard[target_key]
 	var/mob/living/living_pawn = controller.pawn
@@ -33,18 +41,19 @@
 		return
 	
 	var/range = get_dist(living_pawn, target)
-	
-	if ((range < minimum_distance) || (living_pawn.next_move > world.time)) // take a step back -- buy time till next attack
+	var/ready_to_attack = living_pawn.next_move < world.time
+
+	if ((range < minimum_distance) || (!ready_to_attack)) // take a step back -- buy time till next attack
 		controller.queue_behavior(run_away_behavior, target_key, minimum_distance)
 		return
-	var/canReach = living_pawn.Adjacent(target) || living_pawn.CanReach(target) //Check adjacency first because (probably) cheaper
-	if ((range > maximum_distance) || (living_pawn.next_move < world.time) || !canReach) // next attack ready or target too far for us
-		if(!canReach) //living_pawn.a_intent.reach if we can't raech then move into melee - probably on a corner
+	var/canReach = need_los || living_pawn.Adjacent(target) || living_pawn.CanReach(target)  //Check adjacency first because (probably) cheaper
+	if ((range > maximum_distance) || (ready_to_attack) || !canReach) // next attack ready or target too far for us
+		if(!canReach) //living_pawn.a_intent.reach if we can't reach then move into melee - possibly on a corner
 			minimum_distance = 1
 		controller.queue_behavior(/datum/ai_behavior/pursue_to_range, target_key, minimum_distance)
 		return
 
-/datum/ai_planning_subtree/melee_spacing/cover_minimum_distance
+/datum/ai_planning_subtree/spacing/cover_minimum_distance
 	run_away_behavior = /datum/ai_behavior/cover_minimum_distance
 
 /// Take one step away

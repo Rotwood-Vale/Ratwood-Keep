@@ -2032,7 +2032,7 @@
 #include "code\datums\ai\subtrees\eat_body.dm"
 #include "code\datums\ai\subtrees\eat_food.dm"
 #include "code\datums\ai\subtrees\move_to_cardinal.dm"
-#include "code\datums\ai\subtrees\melee_spacing.dm"
+#include "code\datums\ai\subtrees\spacing.dm"
 #include "code\datums\ai\subtrees\random_speech.dm"
 #include "code\datums\ai\subtrees\retaliate_subtree.dm"
 #include "code\datums\ai\subtrees\self_recovery.dm"

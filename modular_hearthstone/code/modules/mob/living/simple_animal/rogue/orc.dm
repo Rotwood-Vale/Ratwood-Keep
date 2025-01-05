@@ -82,7 +82,7 @@
 	icon_living = "orcmarauder_spear"
 	icon_dead = "orcmarauder_spear"
 	base_intents = list(/datum/intent/spear/thrust/orcthrust)
-	ai_controller = /datum/ai_controller/elite_orc
+	ai_controller = /datum/ai_controller/spear_orc
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/orcmarauder,
 			/obj/item/rogueweapon/spear,
 			/obj/effect/decal/cleanable/blood)
@@ -105,7 +105,7 @@
 	icon_state = "savageorc_spear"
 	icon_living = "savageorc_spear"
 	icon_dead = "savageorc_spear"
-	ai_controller = /datum/ai_controller/elite_orc
+	ai_controller = /datum/ai_controller/spear_orc
 	base_intents = list(/datum/intent/spear/thrust/orcthrust)
 	melee_damage_lower = 30
 	melee_damage_upper = 30
@@ -124,7 +124,7 @@
 	icon_state = "savageorc_spear2"
 	icon_living = "savageorc_spear2"
 	icon_dead = "savageorc_spear2"
-	ai_controller = /datum/ai_controller/elite_orc
+	ai_controller = /datum/ai_controller/spear_orc
 	base_intents = list(/datum/intent/spear/thrust/orcthrust)
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc2,
 			/obj/item/rogueweapon/spear/bonespear,
