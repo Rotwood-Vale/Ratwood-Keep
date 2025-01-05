@@ -72,6 +72,7 @@
 /datum/action/cooldown/mob_cooldown/fire_breath/cone
 	name = "Fire Cone"
 	desc = "Breathe several lines of fire directed at a target."
+	cooldown_time = 45 SECONDS
 	/// The angles relative to the target that shoot lines of fire
 	var/list/angles = list(-20, 0, 20)
 
@@ -86,7 +87,7 @@
 	button_icon = 'icons/effects/fire.dmi'
 	button_icon_state = "light"
 	desc = "Breathe flames in all directions."
-	cooldown_time = 10.5 SECONDS
+	cooldown_time = 60.5 SECONDS
 	//click_to_activate = FALSE
 	/// How many fire lines do we produce to turn a full circle?
 	var/sectors = 12
