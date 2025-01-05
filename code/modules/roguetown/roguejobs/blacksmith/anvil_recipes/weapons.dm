@@ -128,7 +128,7 @@
 	created_item = /obj/item/rogueweapon/sword
 
 /datum/anvil_recipe/weapons/steel/swordshort
-	name = "Рыцарский меч"
+	name = "Короткий меч"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/sword/short
 
@@ -143,7 +143,7 @@
 	created_item = /obj/item/rogueweapon/sword/rapier
 
 /datum/anvil_recipe/weapons/steel/cutlass
-	name = "Кортик"
+	name = "Абордажная сабля"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/sword/cutlass
 
@@ -192,7 +192,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/steel/langesmesser
-	name = "Длинноклинковый мессер (+1 Сталь)"
+	name = "Лангмессер (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/rider/messer
@@ -239,7 +239,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/steel/eaglebeak
-	name = "Орлиный клюв (+1 Сталь) (+1 Маленькое бревно)"
+	name = "Клевец (+1 Сталь) (+1 Маленькое бревно)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/eaglebeak
@@ -322,7 +322,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/terminus
-	name = "Меч Терминуса (Терминус Эст) (+1 Золотой слиток) (+1 Сталь) (+1 Ронтц)"
+	name = "Terminus Est (+1 Золотой слиток) (+1 Сталь) (+1 Ронтц)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem)	
 	created_item = /obj/item/rogueweapon/sword/long/exe/cloth

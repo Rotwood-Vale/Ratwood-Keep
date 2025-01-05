@@ -1,6 +1,6 @@
 /obj/machinery/tanningrack
-	name = "drying rack"
-	desc = "A tanning rack for the preparation and curing of hides into leather, it can be moved with the help of a wooden stake."
+	name = "сушильная стойка"
+	desc = "Стойка для выделки и просушки шкур в кожу, которую можно передвигать с помощью деревянного кола."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "dryrack"
 	var/obj/item/natural/hide/hide
@@ -15,9 +15,9 @@
 /obj/machinery/tanningrack/examine(mob/user)
 	. = ..()
 	if(hide)
-		. += span_warning("There is a piece of hide ready to be worked. I might need a knife for this.")
+		. += span_warning("Здесь натянута шкура, готовая к обработке. Возможно, мне понадобится нод для этого.")
 	if(!anchored)
-		. += span_warning("It is un-anchored and able to be moved.")
+		. += span_warning("Стойка не закреплена и может быть передвинута.")
 
 /obj/machinery/tanningrack/attack_hand(mob/user, params)
 	if(hide)
@@ -35,7 +35,7 @@
 			update_icon()
 			return
 		else
-			to_chat(user, span_warning("The rack is already occupied!"))
+			to_chat(user, span_warning("Стойка уже занята!"))
 			return
 	if((user.used_intent.type == /datum/intent/dagger/cut || user.used_intent.type == /datum/intent/sword/cut || user.used_intent.type == /datum/intent/axe/cut) && hide)
 		if(anchored)
@@ -43,7 +43,7 @@
 			var/work_time = (120 - (skill_level * 15))
 			var/pieces_to_spawn = rand(1, min(skill_level + 1, 6)) //Random number from 1 to skill level
 			var/sound_played = FALSE
-			to_chat(user, span_warning("I begin scraping the hide's skin..."))
+			to_chat(user, span_warning("Начинаю соскребать мездру со шкуры..."))
 			if(!do_after(user, work_time, target = user))
 				return
 			playsound(src,pick('sound/items/book_open.ogg','sound/items/book_page.ogg'), 100, FALSE)
@@ -55,21 +55,21 @@
 					new /obj/item/natural/cured/essence(get_turf(user))
 					if(!sound_played)
 						sound_played = TRUE
-						to_chat(user, span_warning("Dendor provides..."))
+						to_chat(user, span_warning("Дендор благоволит..."))
 						playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
 				else
 					new /obj/item/natural/hide/cured(get_turf(user))
 			return
 		else
-			to_chat(user, span_warning("I need to anchor this down with a wooden stake before I can work this hide."))
+			to_chat(user, span_warning("Нужно закрепить стойку деревянным колом, прежде чем обрабатывать шкуру."))
 			return
 	if(istype(I, /obj/item/grown/log/tree/stake))
 		if(anchored)
 			anchored = FALSE
-			to_chat(user, span_warning("The [src] can now be moved."))
+			to_chat(user, span_warning("[src] теперь можно передвинуть."))
 		else
 			anchored = TRUE
-			to_chat(user, span_warning("You anchor [src]."))
+			to_chat(user, span_warning("Вы закрепляете [src]."))
 		playsound(src,pick('sound/foley/woodclimb.ogg'), 100, TRUE)
 		return
 	..()

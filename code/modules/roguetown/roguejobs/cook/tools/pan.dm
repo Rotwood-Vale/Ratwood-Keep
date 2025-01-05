@@ -2,8 +2,8 @@
 	force = 20
 	throwforce = 15
 	possible_item_intents = list(/datum/intent/mace/strike/shovel)
-	name = "iron skillet"
-	desc = "Two in one: Cook and smash heads."
+	name = "чугунная сковорода"
+	desc = "Два в одном: готовь еду и головы проламывай."
 	icon_state = "pan"
 	//icon = 'icons/roguetown/items/cooking.dmi'
 	//lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'

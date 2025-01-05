@@ -3,7 +3,7 @@
 		return
 
 	if(user.zone_selected != body_zone) //so we can't replace a leg with an arm, or a human arm with a monkey arm.
-		to_chat(user, span_warning("[src] isn't the right type for [parse_zone(user.zone_selected)]."))
+		to_chat(user, span_warning("[src] не подходит для [parse_zone(user.zone_selected)]."))
 		return -1
 
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
@@ -12,7 +12,7 @@
 
 	if(user.temporarilyRemoveItemFromInventory(src))
 		attach_limb(H)
-		user.visible_message(span_notice("[user] attaches [src] to [H]."))
+		user.visible_message(span_notice("[user] прикрепляет [src] к [H]."))
 		return 1
 
 /obj/item/bodypart/l_arm/prosthetic
@@ -90,8 +90,8 @@
 // --------- WOOD PROSTHETICS -----------
 
 /obj/item/bodypart/l_arm/prosthetic/wood
-	name = "left wooden arm"
-	desc = "A left arm of wood."
+	name = "деревянная левая рука"
+	desc = "Левая рука, вырезанная из дерева."
 	icon_state = "prarm" 
 	resistance_flags = FLAMMABLE
 	max_damage = 20
@@ -101,8 +101,8 @@
 	metalizer_result = /obj/item/bodypart/l_arm/prosthetic/iron
 
 /obj/item/bodypart/r_arm/prosthetic/wood
-	name = "right wooden arm"
-	desc = "A right arm of wood."
+	name = "деревянная правая рука"
+	desc = "Правая рука, вырезанная из дерева."
 	icon_state = "prarm" 
 	resistance_flags = FLAMMABLE
 	max_damage = 20
@@ -112,8 +112,8 @@
 	metalizer_result = /obj/item/bodypart/r_arm/prosthetic/iron
 
 /obj/item/bodypart/l_leg/prosthetic/wood
-	name = "left wooden leg"
-	desc = "A left leg of wood."
+	name = "деревянная левая нога"
+	desc = "Левая нога, вырезанная из дерева."
 	icon_state = "pleg" 
 	resistance_flags = FLAMMABLE
 	max_damage = 20
@@ -124,8 +124,8 @@
 	metalizer_result = /obj/item/bodypart/l_leg/prosthetic/iron
 
 /obj/item/bodypart/r_leg/prosthetic/wood
-	name = "right wooden leg"
-	desc = "A right leg of wood."
+	name = "деревянная правая нога"
+	desc = "Правая нога, вырезанная из дерева."
 	icon_state = "pleg" 
 	resistance_flags = FLAMMABLE
 	max_damage = 20
@@ -140,8 +140,8 @@
 
 
 /obj/item/bodypart/l_arm/prosthetic/iron
-	name = "iron left arm"
-	desc = "A left arm of iron."
+	name = "железная левая рука"
+	desc = "Левая рука, выкованная из железа."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
@@ -150,8 +150,8 @@
 	sellprice = 30
 
 /obj/item/bodypart/r_arm/prosthetic/iron
-	name = "iron right arm"
-	desc = "A right arm of iron."
+	name = "железная правая рука"
+	desc = "Правая рука, выкованная из железа."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
@@ -160,8 +160,8 @@
 	sellprice = 30
 
 /obj/item/bodypart/l_leg/prosthetic/iron
-	name = "iron left leg"
-	desc = "A left leg of iron."
+	name = "железная левая нога"
+	desc = "Левая нога, выкованная из железа."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
@@ -171,8 +171,8 @@
 	sellprice = 30
 
 /obj/item/bodypart/r_leg/prosthetic/iron
-	name = "iron right leg"
-	desc = "A right leg of iron."
+	name = "железная правая нога"
+	desc = "Правая нога, выкованная из железа."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
@@ -185,8 +185,8 @@
 // --------- STEEL PROSTHETICS -----------
 
 /obj/item/bodypart/l_arm/prosthetic/steel
-	name = "steel left arm"
-	desc = "A left arm of steel."
+	name = "стальная левая рука"
+	desc = "Левая рука, выкованная из стали."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
@@ -195,8 +195,8 @@
 	sellprice = 40
 
 /obj/item/bodypart/r_arm/prosthetic/steel
-	name = "steel right arm"
-	desc = "A right arm of steel."
+	name = "стальная правая рука"
+	desc = "Правая рука, выкованная из стали."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
@@ -205,8 +205,8 @@
 	sellprice = 40
 
 /obj/item/bodypart/l_leg/prosthetic/steel
-	name = "steel left leg"
-	desc = "A left leg of steel."
+	name = "стальная левая нога"
+	desc = "Левая нога, выкованная из стали."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
@@ -216,8 +216,8 @@
 	sellprice = 40
 
 /obj/item/bodypart/r_leg/prosthetic/steel
-	name = "steel right leg"
-	desc = "A right leg of steel."
+	name = "стальная правая нога"
+	desc = "Правая нога, выкованная из стали."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_NORMAL
@@ -229,8 +229,8 @@
 // --------- GOLD PROSTHETICS -----------
 
 /obj/item/bodypart/l_arm/prosthetic/gold
-	name = "golden left arm"
-	desc = "A left arm of cogs and gold."
+	name = "золотая левая рука"
+	desc = "Левая рука из шестерёнок и золота."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_BULKY
@@ -239,8 +239,8 @@
 
 
 /obj/item/bodypart/r_arm/prosthetic/gold
-	name = "golden right arm"
-	desc = "A right arm of cogs and gold."
+	name = "золотая правая рука"
+	desc = "Правая рука из шестерёнок и золота."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_BULKY
@@ -248,8 +248,8 @@
 	sellprice = 70
 
 /obj/item/bodypart/l_leg/prosthetic/gold
-	name = "golden left leg"
-	desc = "A left leg of cogs and gold."
+	name = "золотая левая нога"
+	desc = "Левая нога из шестерёнок и золота."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_BULKY
@@ -257,8 +257,8 @@
 	sellprice = 70
 
 /obj/item/bodypart/r_leg/prosthetic/gold
-	name = "golden right leg"
-	desc = "A right leg of cogs and gold."
+	name = "золотая правая нога"
+	desc = "Правая нога из шестерёнок и золота."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_BULKY
@@ -268,8 +268,8 @@
 // --------- BRONZE PROSTHETICS -----------
 
 /obj/item/bodypart/l_arm/prosthetic/bronze
-	name = "bronze left arm"
-	desc = "A replacement left arm, engineered out of bronze."
+	name = "бронзовая левая рука"
+	desc = "Сменная левая рука, искусно выкованная из бронзы."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	max_damage = 20
@@ -278,8 +278,8 @@
 	fingers = TRUE
 
 /obj/item/bodypart/r_arm/prosthetic/bronze
-	name = "bronze right arm"
-	desc = "A replacement right arm, engineered out of bronze."
+	name = "бронзовая правая рука"
+	desc = "Сменная правая рука, искусно выкованная из бронзы."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
 	max_damage = 20

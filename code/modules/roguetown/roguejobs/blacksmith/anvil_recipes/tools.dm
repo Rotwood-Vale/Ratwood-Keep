@@ -36,7 +36,7 @@
 	created_item = /obj/item/cooking/pan
 
 /datum/anvil_recipe/general/catbell
-	name = "Колокольчик x3"
+	name = "Колокольчик для кошек x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/catbell,
 						/obj/item/catbell,
@@ -115,7 +115,7 @@
 	created_item = /obj/item/leash/chain
 
 /datum/anvil_recipe/general/iron/ramrod
-	name = "Фляга для пороха x3"
+	name = "Шомпол x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/ramrod,
 						/obj/item/ramrod,
