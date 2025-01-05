@@ -639,10 +639,8 @@
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician)
 "auX" = (
-/obj/structure/bars/grille{
-	density = 1
-	},
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/structure/bars/grille,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "avT" = (
@@ -1261,7 +1259,10 @@
 	dir = 6;
 	icon_state = "largetable"
 	},
-/obj/item/book/rogue/law,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden{
+	pixel_x = -6
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "aXA" = (
@@ -2856,7 +2857,6 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/shelter/woods)
 "cvw" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
 /obj/structure/roguemachine/scomm{
 	pixel_y = -32
 	},
@@ -6912,22 +6912,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/church/chapel)
-"gjG" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "largetable"
-	},
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81
-	},
-/obj/structure/mineral_door/wood/deadbolt/shutter{
-	dir = 2;
-	lockdir = 1;
-	name = "counter hatch"
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/town/garrison)
 "gjH" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -14653,11 +14637,11 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/exposed/town/keep)
 "njf" = (
-/obj/structure/bars/grille{
-	density = 1
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
 	},
-/obj/machinery/light/rogue/wallfire/candle/l,
-/turf/open/floor/rogue/cobblerock,
+/obj/structure/fermenting_barrel/water,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "njH" = (
 /obj/machinery/light/rogue/torchholder/r,
@@ -17156,7 +17140,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/woods)
 "prO" = (
-/obj/structure/fermenting_barrel/water,
+/obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "prR" = (
@@ -23693,10 +23677,8 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
 "vqp" = (
-/obj/structure/bars/grille{
-	density = 1
-	},
-/turf/open/floor/rogue/cobble,
+/obj/structure/bars/grille,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "vqB" = (
 /obj/structure/bars,
@@ -24303,7 +24285,7 @@
 	dir = 4;
 	icon_state = "largetable"
 	},
-/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/book/rogue/law,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "vZe" = (
@@ -25197,7 +25179,9 @@
 /obj/effect/decal/cobbleedge{
 	dir = 8
 	},
-/turf/closed/wall/mineral/rogue/stone/moss,
+/obj/structure/bars/grille,
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "wLy" = (
 /obj/structure/closet/crate/roguecloset,
@@ -26714,8 +26698,12 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
 "xRO" = (
-/obj/structure/bars/grille,
-/turf/open/floor/rogue/cobblerock,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/table/wood,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "xSg" = (
 /obj/structure/fluff/railing/wood{
@@ -67159,7 +67147,7 @@ wLs
 wzd
 vYw
 aXp
-oUz
+njf
 oUz
 ctF
 ctF
@@ -67312,7 +67300,7 @@ hRm
 xtL
 uTA
 pkG
-njf
+vqp
 spZ
 spZ
 spZ
@@ -67626,13 +67614,13 @@ qBv
 iFm
 pkG
 vvp
-gjG
+xRO
 cBC
 oTI
 spZ
 nXi
 oBq
-prO
+dZn
 rzj
 haW
 goh
@@ -67944,7 +67932,7 @@ oUz
 hRm
 hRm
 hRm
-mjI
+prO
 dZn
 dZn
 hRm
@@ -68100,8 +68088,8 @@ xJI
 xJI
 pPS
 xJI
-hRm
-hRm
+oUz
+oUz
 dZn
 wWa
 hRm
@@ -68415,8 +68403,8 @@ wfx
 qxD
 qxD
 wfx
-jsn
-jsn
+oUz
+oUz
 iXt
 oUz
 oUz
