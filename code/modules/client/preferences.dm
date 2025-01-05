@@ -216,8 +216,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		if(pref_species.desc)
 			to_chat(user, "[pref_species.desc]")
 		if(pref_species.expanded_desc)
-			to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Read More</a>")
-		to_chat(user, "<font color='red'>Classes reset.</font>")
+			to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Читать ещё</a>")
+		to_chat(user, "<font color='red'>Сбросить.</font>")
 	random_character(gender)
 	accessory = "Nothing"
 
@@ -262,15 +262,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			// NEXT ROW
 			dat += "<tr>"
 			dat += "<td style='width:33%;text-align:left'>"
-			dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
+			dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Сменить персонажа</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=job;task=menu'>Class Selection</a>"
+			dat += "<a href='?_src_=prefs;preference=job;task=menu'>Роли и профессии</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
-			dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
+			dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Привязка клавиш</a>"
 			dat += "</td>"
 			dat += "</tr>"
 
@@ -280,7 +280,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Villain Selection</a>"
+			dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Антагонисты</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
@@ -294,7 +294,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
+			dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>Триумфы:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
 			if(SStriumphs.triumph_buys_enabled)
 				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Buy</a>"
 			dat += "</td>"
@@ -312,7 +312,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<td width=40% valign='top'>"
 
 // 			-----------START OF IDENT TABLE-----------
-			dat += "<h2>Identity</h2>"
+			dat += "<h2>Личность</h2>"
 			dat += "<table width='100%'><tr><td width='75%' valign='top'>"
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>Always Random Name: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME_ANTAG]'>When Antagonist: [(randomise[RANDOM_NAME_ANTAG]) ? "Yes" : "No"]</a>"
@@ -330,17 +330,17 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(!(AGENDER in pref_species.species_traits))
 				var/dispGender
 				if(gender == MALE)
-					dispGender = "Man"
+					dispGender = "Мужчина"
 				else if(gender == FEMALE)
-					dispGender = "Woman"
+					dispGender = "Женщина"
 				else
 					dispGender = "Other"
-				dat += "<b>Sex:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
+				dat += "<b>Пол:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
 				if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
 
-			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
+			dat += "<b>Возраст:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 
 //			dat += "<br><b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
 //			if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
@@ -348,20 +348,20 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE_ANTAG]'>When Antagonist: [(randomise[RANDOM_AGE_ANTAG]) ? "Yes" : "No"]</A>"
 
 //			dat += "<b><a href='?_src_=prefs;preference=name;task=random'>Random Name</A></b><BR>"
-			dat += "<b>Flaw:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
+			dat += "<b>Изъян:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
-			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
-			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
+			dat += "<b>Вера:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
+			dat += "<b>Патрон:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
+			dat += "<b>Семья:</b> <a href='?_src_=prefs;preference=family'>[family ? "Да!" : "Нет"]</a><BR>" // Disabling until its working
 			if(family != FAMILY_NONE)
-				dat += "<B>Family Preferences:</B>"
+				dat += "<B>Предпочтения в семье:</B>"
 				if(gender == MALE)
 					family_gender = list(FEMALE)
 				else
 					family_gender = list(MALE)
-				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
+				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Раса</a></small>"
 				dat += "<BR>"
-			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+			dat += "<b>Преобладающая рука:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Левша" : "Правша"]</a><BR>"
 
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
@@ -389,11 +389,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<td width=20% valign='top'>"
 			// Rightmost column, 40% width
 			dat += "<td width=40% valign='top'>"
-			dat += "<h2>Body</h2>"
+			dat += "<h2>Тело</h2>"
 
 //			-----------START OF BODY TABLE-----------
 			dat += "<table width='100%'><tr><td width='1%' valign='top'>"
-			dat += "<b>Update feature colors with change:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
+			dat += "<b>Авто-обновновление цвета с учетом изменений:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
 
@@ -417,21 +417,21 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
 
 
-			dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
-			dat += "<br><b>Voice Pitch: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
-			dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
-			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
-			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
-			dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
-			dat += "<br><b>Loadout Item:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a>"
+			dat += "<b>Цвет голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
+			dat += "<br><b>Тон голоса: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
+			dat += "<br><b>Акценты:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
+			dat += "<br><b>Особенности:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
+			dat += "<br><b>Татуировки:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
+			dat += "<br><b>Описания:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
+			dat += "<br><b>Лодаут:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a>"
 
-			dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
+			dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Изменить</a>"
 			if(headshot_link != null)
-				dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
+				dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>Посмотреть</a>"
 
-			dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
+			dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Изменить</a>"
 			if(nudeshot_link != null)
-				dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
+				dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>Посмотреть</a>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
@@ -633,7 +633,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "</tr></table>"
 
 		if(3) // Custom keybindings
-			used_title = "Keybinds"
+			used_title = "Привязка клавиш"
 			// Create an inverted list of keybindings -> key
 			var/list/user_binds = list()
 			for (var/key in key_bindings)
@@ -676,15 +676,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 
 	if(!IsGuestKey(user.key))
-		dat += "<a href='?_src_=prefs;preference=save'>Save</a><br>"
-		dat += "<a href='?_src_=prefs;preference=load'>Undo</a><br>"
+		dat += "<a href='?_src_=prefs;preference=save'>Сохранить</a><br>"
+		dat += "<a href='?_src_=prefs;preference=load'>Откатить</a><br>"
 
 	var/mob/dead/new_player/N = user
 	// well.... one empty slot here for something I suppose lol
 	dat += "<table width='100%'>"
 	dat += "<tr>"
 	dat += "<td width='33%' align='left'>"
-	dat += "<a class='animationcolor' href='byond://?src=[REF(N)];rpprompt=1'>Lore Primer</a><br>"
+	dat += "<a class='animationcolor' href='byond://?src=[REF(N)];rpprompt=1'>Краткая сводка мира</a><br>"
 //	dat += "<a href='byond://?src=[REF(N)];rgprompt=1'>Religion Primer</a><br>"
 	dat += 	"</td>"
 	dat += "<td width='33%' align='center'>"
@@ -1475,9 +1475,9 @@ Slots: [job.spawn_positions]</span>
 						voice_pitch = new_voice_pitch
 
 				if("headshot")
-					to_chat(user, "<span class='notice'>Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
-					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
-					to_chat(user, "<span class='notice'>Resolution: 250x250 pixels.</span>")
+					to_chat(user, "<span class='notice'>Пожалуйста, используйте относительно SFW изображение головы и плеч, чтобы сохранить уровень погружения. И последнее, ["<span class='bold'>не используйте фотографии из реальной жизни или любые несерьезные, мемные изображения.</span>"]</span>")
+					to_chat(user, "<span class='notice'>Если фотокарточка не отображается в игре, убедитесь, что это прямая ссылка на изображение, которая правильно открывается в браузере.</span>")
+					to_chat(user, "<span class='notice'>Разрешение: 250x250 pixels.</span>")
 					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "Headshot", headshot_link) as text|null
 					if(new_headshot_link == null)
 						return
@@ -1494,9 +1494,9 @@ Slots: [job.spawn_positions]</span>
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
 
 				if("nudeshot")
-					to_chat(user, "<span class='notice'>["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
-					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
-					to_chat(user, "<span class='notice'>Resolution: 360x480 pixels.</span>")
+					to_chat(user, "<span class='notice'>["<span class='bold'>Не используйте фотографии из реальной жизни или любые несерьезные, мемные изображения.</span>"]</span>")
+					to_chat(user, "<span class='notice'>Если фотокарточка не отображается в игре, убедитесь, что это прямая ссылка на изображение, которая правильно открывается в браузере.</span>")
+					to_chat(user, "<span class='notice'>Разрешение: 360x480 pixels.</span>")
 					var/new_nudeshot_link = input(user, "Input the nudeshot link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "Nudeshot", nudeshot_link) as text|null
 					if(new_nudeshot_link == null)
 						return

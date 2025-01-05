@@ -2,20 +2,18 @@
 	race = /datum/species/human/halfelf
 
 /datum/species/human/halfelf
-	name = "Half-Elf"
+	name = "Полуэльф"
 	id = "helf"
-	desc = "<b>Half Elf</b><br>\
-	The child of an Elf and Humen, Half-Elves are generally frowned \
-	upon by more conservative peoples, although as racial tensions lower, \
-	more and more half-elves are being born. To the point that some scholars \
-	worry that someday, it may be impossible to distinguish the two species. \
-	Half-Elves are extremely diverse, as they bring in human and elvish culture\
-	and it is widely considered that Half-Elf culture is simply a melting pot of \
-	various other cultures condensing into one vibrant entity. \
-	Due to their heritage, Half-Elves tend to gain racial traits depending on how strong their fathers, or mothers, genes were. \
-	Half-Elves also typically try to find identity in one of two regions they have similarities towards."
+	desc = "<b>Полуэльф</b><br>\
+	Ребёнок эльфа и человека, Полуэльфы обычно не пользуются уважением среди более консервативных народов, \
+	хотя с уменьшением расовых напряжений всё больше полуэльфов рождается. Некоторые учёные беспокоятся, \
+	что однажды может стать невозможно отличить эти две расы друг от друга. Полуэльфы чрезвычайно разнообразны, \
+	так как в их культуре сочетаются человеческие и эльфийские элементы, \
+	и широко считается, что культура полуэльфов представляет собой плавильный котёл различных культур, сливающихся в одно яркое целое. \
+	Благодаря своему наследию полуэльфы, как правило, унаследуют расовые черты в зависимости от силы генов их отцов или матерей. \
+	Полуэльфы также часто пытаются найти своё место в одной из двух региональных культур, к которым у них есть сходства."
 
-	skin_tone_wording = "Identity"
+	skin_tone_wording = "Идентичность"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
