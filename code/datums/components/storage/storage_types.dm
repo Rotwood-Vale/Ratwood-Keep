@@ -24,7 +24,6 @@
 	insert_preposition = "on"
 	allow_quick_gather = TRUE
 	allow_quick_empty = TRUE
-	display_numerical_stacking = TRUE
 	click_gather = TRUE
 
 /datum/component/storage/concrete/roguetown/belt
