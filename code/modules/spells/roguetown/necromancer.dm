@@ -379,7 +379,7 @@
 	cmode_music = 'sound/music/combat_cult.ogg'
 
 	patron = master.patron
-	mob_biotypes = MOB_UNDEAD
+	mob_biotypes |= MOB_UNDEAD
 	faction = list("undead")
 	ambushable = FALSE
 	underwear = "Nude"
@@ -411,8 +411,6 @@
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC) //Skeletons can't regen stamina and have shit skills so after dicussion with Gyran, this'll be a bandaid. If it proves unbalanced I'll figure out a way to let them regen stam reliably.
-
 	update_body()
 
 	to_chat(src, span_userdanger("My master is [master.real_name]."))

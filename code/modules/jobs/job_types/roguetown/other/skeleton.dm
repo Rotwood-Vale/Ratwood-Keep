@@ -46,7 +46,7 @@
 		H.underwear = "Nude"
 		if(H.charflaw)
 			QDEL_NULL(H.charflaw)
-		H.mob_biotypes = MOB_UNDEAD
+		H.mob_biotypes |= MOB_UNDEAD
 		H.faction = list("undead")
 		H.name = "skelelon"
 		H.real_name = "skelelon"

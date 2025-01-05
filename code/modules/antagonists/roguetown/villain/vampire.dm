@@ -61,7 +61,6 @@
 		ADD_TRAIT(owner.current, TRAIT_NOBLE, TRAIT_GENERIC)
 	owner.special_role = name
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, TRAIT_GENERIC)
@@ -83,7 +82,8 @@
 //			batform = new
 //			owner.current.AddSpell(batform)
 	owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
-	owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
+	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
+	
 	if(!is_lesser)
 		owner.current.verbs |= /mob/living/carbon/human/proc/blood_strength
 		owner.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
@@ -341,34 +341,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = TRUE
 	max_integrity = 0
-
-/mob/living/carbon/human/proc/vamp_regenerate()
-	set name = "Regenerate"
-	set category = "VAMPIRE"
-	var/silver_curse_status = FALSE
-	for(var/datum/status_effect/debuff/silver_curse/silver_curse in status_effects)
-		silver_curse_status = TRUE
-		break
-	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
-	if(!VD)
-		return
-	if(VD.disguised)
-		to_chat(src, span_warning("My curse is hidden."))
-		return
-	if(silver_curse_status)
-		to_chat(src, span_warning("My BANE is not letting me REGEN!."))	
-		return
-	if(VD.vitae < 100)
-		to_chat(src, span_warning("Not enough vitae, I require 100 and I have currently have [VD.vitae]."))
-		return
-	to_chat(src, span_greentext("! REGENERATE !"))
-	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-	VD.handle_vitae(-500)
-	
-	if(VD.heal_damage(50, 50))
-		VD.update_damage_overlays()
-	if(VD.heal_wounds(50))
-		VD.update_damage_overlays()
 
 /mob/living/carbon/human/proc/vampire_infect()
 	if(!mind)

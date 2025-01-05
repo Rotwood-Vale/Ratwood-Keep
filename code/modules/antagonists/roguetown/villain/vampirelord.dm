@@ -61,7 +61,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.special_role = name
 	//ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
-	//ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
@@ -83,7 +82,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	eyes = new /obj/item/organ/eyes/night_vision/zombie
 	eyes.Insert(owner.current)
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix)
-	owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
+	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
 	vamp_look()
 	if(isspawn)
@@ -339,7 +338,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	V.update_body()
 	V.update_hair()
 	V.update_body_parts(redraw = TRUE)
-	V.mob_biotypes = MOB_UNDEAD
+	V.mob_biotypes |= MOB_UNDEAD
 	V.faction = list("undead")
 	if(isspawn)
 		V.vampire_disguise()
@@ -441,7 +440,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			to_chat(owner, "<font color='red'>I am refreshed and have grown stronger. The visage of the bat is once again available to me. I can also once again access my portals.</font>")
 		if(1)
 			vamplevel = 2
-			owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
+			owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 			owner.current.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodsteal)
 			owner.current.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning)
 			owner.adjust_skillrank(/datum/skill/magic/blood, 3, TRUE)
@@ -474,7 +473,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				if(thrall.special_role == "Vampire Spawn")
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_strength
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
-					thrall.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
+					thrall.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 					for(var/S in MOBSTATS)
 						thrall.current.change_stat(S, 3) //Overall stat nerf to VLord (not huge)
 	return
@@ -1430,6 +1429,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
+	chargetime = 5 SECONDS
+	movement_interrupt = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/gaseousform
@@ -1440,29 +1441,65 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
+	chargetime = 5 SECONDS
+	movement_interrupt = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/gaseousform
 
 // Spells
-/obj/effect/proc_holder/spell/targeted/vl_regenerate
-	name = "Regenerate"
+/obj/effect/proc_holder/spell/targeted/vamp_rejuv
+	name = "Rejuvenate"
+	desc = "Regenerates my targeted limb and Replenishes half my stamina. Recharges every 30 seconds. I must stand still."
 	overlay_state = "doc"
 	action_icon = 'icons/mob/actions/roguespells.dmi'
-	releasedrain = 100
+	releasedrain = 0
 	chargedrain = 0
-	chargetime = 0
+	chargetime = 2 SECONDS
 	range = -1
 	warnie = "sydwarning"
-	movement_interrupt = FALSE
+	movement_interrupt = TRUE
 	chargedloop = null
-	invocation_type = "shout"
+	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/blood
 	antimagic_allowed = FALSE
 	charge_max = 30 SECONDS
+	cooldown_min = 30 SECONDS
 	include_user = TRUE
 	max_targets = 1
-	vitaedrain = 125
-	charge_max = 60
-	cooldown_min = 50
+	vitaedrain = 0
 
-/obj/effect/proc_holder/spell/targeted/vl_regenerate/cast(list/targets, mob/user = usr)
-	
+/obj/effect/proc_holder/spell/targeted/vamp_rejuv/cast(list/targets, mob/user = usr)
+	if(user && iscarbon(user))
+		var/mob/living/carbon/vampire = user
+		var/obj/item/bodypart/affecting = vampire.get_bodypart(check_zone(vampire.zone_selected))
+		var/datum/antagonist/vampirelord/VD = vampire.mind.has_antag_datum(/datum/antagonist/vampirelord)
+		var/bloodskill = vampire.mind.get_skill_level(/datum/skill/magic/blood)
+
+		var/silver_curse_status = FALSE // Fail to cast condition.
+		for(var/datum/status_effect/debuff/silver_curse/silver_curse in vampire.status_effects)
+			silver_curse_status = TRUE
+			break
+		if(silver_curse_status)
+			to_chat(src, span_danger("My BANE is not letting me rejuvenate!"))	
+			return
+		
+		// How much the vampire will heal by.
+		var/bloodroll = roll("[bloodskill]d8") + (vampire.STACON * 1.5) // Spawn heals less.
+		if(VD) // Vampire lords heal more than regular vampires.
+			if(VD.disguised)
+				to_chat(src, span_warning("My curse is hidden."))
+				revert_cast()
+				return
+			bloodroll = roll("[bloodskill]d10") + (vampire.STACON * 2) // VL heals more. D8 -> D10. CON * 1.5 -> 2
+		if(affecting)
+			if(affecting.heal_damage(bloodroll)) // Slightly / moderately effective at healing flat damage.
+				vampire.update_damage_overlays()
+			if(affecting.heal_wounds(bloodroll * 2)) // Should be effective at clearing wounds.
+				vampire.update_damage_overlays()
+		else
+			to_chat(vampire, span_warning("I fail to rejuvenate, I'm missing that limb!"))
+			return
+		vampire.rogstam_add(vampire.maxrogstam / 2)
+		vampire.rogfat_add(vampire.maxrogfat / 2)
+		to_chat(vampire, span_greentext("! REJUVENATE AMT: [bloodroll] !"))
+		vampire.visible_message(span_danger("[vampire] is surrounded by an wreath of shadows for a moment as their wounds mend!"))
+		vampire.playsound_local(get_turf(vampire), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
