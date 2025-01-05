@@ -18,6 +18,9 @@
 	minstr = 5
 	blade_dulling = DULLING_BASHCHOP
 
+	grid_height = 96
+	grid_width = 32
+
 /datum/intent/lordbash
 	name = "bash"
 	blade_class = BCLASS_BLUNT
@@ -103,6 +106,9 @@
 	wdefense = 5
 	var/charge = 100
 	var/on = FALSE
+
+	grid_height = 96
+	grid_width = 64
 
 /obj/item/rogueweapon/mace/stunmace/getonmobprop(tag)
 	. = ..()
