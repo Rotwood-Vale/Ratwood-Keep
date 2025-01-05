@@ -32,7 +32,7 @@
 
 		var/mob/M = get(A, /mob)
 		if(M)
-			message += " - Реакция проведдена: [ADMIN_LOOKUPFLW(M)]"
+			message += " - Реакция проведена: [ADMIN_LOOKUPFLW(M)]"
 		else
 			message += " - Последний отпечаток пальца: [(A.fingerprintslast ? A.fingerprintslast : "N/A")]"
 
