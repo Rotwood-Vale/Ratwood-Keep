@@ -108,6 +108,8 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Fishnet Stockings"
 	path = /obj/item/clothing/under/roguetown/tights/stockings/fishnet
 
+
+// Collars
 /datum/loadout_item/leathercollar
 	name = "leather collar"
 	path = /obj/item/clothing/neck/roguetown/collar/leather
@@ -119,3 +121,51 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/cowbellcollar
 	name = "jingly leather collar(cow)"
 	path = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
+
+/datum/loadout_item/nobledress
+	name = "noble dress"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/nobledress
+
+// Masks
+
+/datum/loadout_item/pigmask
+	name = "pig mask"
+	path = /obj/item/clothing/mask/pig
+
+/datum/loadout_item/pigface
+	name = "pig face"
+	path = /obj/item/clothing/mask/pig/cursed
+
+/datum/loadout_item/ratmask
+	name = "rat mask"
+	path = /obj/item/clothing/mask/rat
+
+/datum/loadout_item/foxmask
+	name = "fox mask"
+	path = /obj/item/clothing/mask/rat/fox
+
+/datum/loadout_item/beemask
+	name = "bee mask"
+	path = /obj/item/clothing/mask/rat/bee
+
+/datum/loadout_item/bearmask
+	name = "bear face"
+	path = /obj/item/clothing/mask/rat/bear
+
+/datum/loadout_item/batmask
+	name = "bat mask"
+	path = /obj/item/clothing/mask/rat/bat
+
+/datum/loadout_item/ravenmask
+	name = "raven mask"
+	path = /obj/item/clothing/mask/rat/raven
+
+/datum/loadout_item/jackalmask
+	name = "jackal mask"
+	path = /obj/item/clothing/mask/rat/jackal
+
+/datum/loadout_item/tribalmask
+	name = "tribal face"
+	path = /obj/item/clothing/mask/rat/tribal
+
+
