@@ -1,6 +1,6 @@
 /obj/machinery/artificer_table
 	name = "стол изобретателя"
-	desc = "Деревянная рабочая станция изобретателя, благословленная какой-то странной машиной, или, возможно... магией..."
+	desc = "Деревянный стол изобретателя, работающий благодаря странному механизму, или, возможно... магии..."
 	icon_state = "art_table"
 	icon = 'icons/roguetown/misc/tables.dmi'
 	var/obj/item/material
@@ -15,7 +15,7 @@
 /obj/machinery/artificer_table/examine(mob/user)
 	. = ..()
 	if(material)
-		. += span_warning("Здесь находится [initial(material.name)], готово к обработке.")
+		. += span_warning("Здесь находится [initial(material.name)], готовое к обработке.")
 
 /obj/machinery/artificer_table/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/natural/wood/plank) || istype(I, /obj/item/ingot))
@@ -55,7 +55,7 @@
 			return
 		if(skill < material.artrecipe.skill_level)
 			if(prob(max(0, 25 - user.goodluck(2) - (skill * 2))))
-				to_chat(user, span_warning("О да, моя некомпетентность приносит плоды."))
+				to_chat(user, span_warning("О да, моя некомпетентность приносит свои плоды!"))
 				playsound(src,'sound/combat/hits/onwood/destroyfurniture.ogg', 100, FALSE)
 				user.mind.add_sleep_experience(material.artrecipe.appro_skill, (user.STAINT * material.artrecipe.skill_level)) // Getting exp for failing
 				qdel(material)
