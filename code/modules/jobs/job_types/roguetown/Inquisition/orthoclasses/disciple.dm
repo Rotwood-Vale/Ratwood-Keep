@@ -37,9 +37,9 @@
 		H.mind.adjust_spellpoints(-6)
 		H.change_stat("strength", 3)
 		H.change_stat("speed", 2)
+		H.change_stat("endurance", 2)
 		H.change_stat("perception", -1)
-		H.change_stat("endurance", -1)
-		H.change_stat("constitution", -1)
+		H.change_stat("constitution", -2)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch) // Pre-set spell list
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/forcewall)
