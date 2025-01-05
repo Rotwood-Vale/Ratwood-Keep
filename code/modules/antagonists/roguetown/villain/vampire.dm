@@ -358,13 +358,17 @@
 	if(silver_curse_status)
 		to_chat(src, span_warning("My BANE is not letting me REGEN!."))	
 		return
-	if(VD.vitae < 500)
-		to_chat(src, span_warning("Not enough vitae."))
+	if(VD.vitae < 100)
+		to_chat(src, span_warning("Not enough vitae, I require 100 and I have currently have [VD.vitae]."))
 		return
 	to_chat(src, span_greentext("! REGENERATE !"))
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 	VD.handle_vitae(-500)
-	fully_heal()
+	
+	if(VD.heal_damage(50, 50))
+		VD.update_damage_overlays()
+	if(VD.heal_wounds(50))
+		VD.update_damage_overlays()
 
 /mob/living/carbon/human/proc/vampire_infect()
 	if(!mind)

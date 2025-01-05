@@ -59,9 +59,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	C.vampires |= owner
 	. = ..()
 	owner.special_role = name
-	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
+	//ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
+	//ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
@@ -1441,3 +1441,28 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/gaseousform
+
+// Spells
+/obj/effect/proc_holder/spell/targeted/vl_regenerate
+	name = "Regenerate"
+	overlay_state = "doc"
+	action_icon = 'icons/mob/actions/roguespells.dmi'
+	releasedrain = 100
+	chargedrain = 0
+	chargetime = 0
+	range = -1
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	chargedloop = null
+	invocation_type = "shout"
+	associated_skill = /datum/skill/magic/blood
+	antimagic_allowed = FALSE
+	charge_max = 30 SECONDS
+	include_user = TRUE
+	max_targets = 1
+	vitaedrain = 125
+	charge_max = 60
+	cooldown_min = 50
+
+/obj/effect/proc_holder/spell/targeted/vl_regenerate/cast(list/targets, mob/user = usr)
+	
