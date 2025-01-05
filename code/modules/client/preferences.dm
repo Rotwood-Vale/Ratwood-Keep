@@ -1514,11 +1514,15 @@ Slots: [job.spawn_positions]</span>
 
 				if("loadout_item")
 					var/list/loadouts_available = list("None")
-					for (var/path as anything in GLOB.loadout_items)
-						var/datum/loadout_item/loadout = GLOB.loadout_items[path]
-						if (!loadout.name)
-							continue
-						loadouts_available[loadout.name] = loadout
+	
+					// Check if the user is a patreon of level 1
+					if(check_patreon_lvl(user.ckey) == 1)
+						for (var/path as anything in GLOB.loadout_items)
+							var/datum/loadout_item/loadout = GLOB.loadout_items[path]
+							if (!loadout.name)
+								continue
+							loadouts_available[loadout.name] = loadout
+	
 					var/loadout_input = input(user, "Choose your character's loadout item.", "Loadout") as null|anything in loadouts_available
 					if(loadout_input)
 						if(loadout_input == "None")
@@ -1529,6 +1533,9 @@ Slots: [job.spawn_positions]</span>
 							to_chat(user, "<font color='yellow'><b>[loadout.name]</b></font>")
 							if(loadout.desc)
 								to_chat(user, "[loadout.desc]")
+					else
+						to_chat(user, "You are not authorized to use this loadout.")
+
 
 				if("species")
 
