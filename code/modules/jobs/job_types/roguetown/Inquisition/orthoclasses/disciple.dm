@@ -37,6 +37,7 @@
 
 /datum/outfit/job/roguetown/disciple/proc/brute_equip(mob/living/carbon/human/H)
 	backpack_contents = list(/obj/item/roguekey/inquisition = 1, /obj/item/clothing/cloak/psydontabard/alt)
+	gloves = /obj/item/clothing/gloves/roguetown/chain/psydon
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
