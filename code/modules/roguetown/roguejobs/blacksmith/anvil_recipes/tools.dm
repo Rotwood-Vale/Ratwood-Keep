@@ -36,7 +36,7 @@
 	created_item = /obj/item/cooking/pan
 
 /datum/anvil_recipe/general/catbell
-	name = "Колокольчик x3"
+	name = "Кошачий колокольчик x3"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/catbell,
 						/obj/item/catbell,
@@ -110,7 +110,7 @@
 	created_item = /obj/item/rope/chain
 
 /datum/anvil_recipe/general/chainleash
-	name = "Поводок-цепь"
+	name = "Цепной поводок"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/leash/chain
 
@@ -166,26 +166,26 @@
 	created_item = /obj/item/rogueweapon/surgery/saw
 
 /datum/anvil_recipe/tools/steel/surgery/hemostat
-	name = "Зажим"
+	name = "Щипцы"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/hemostat
 
 /datum/anvil_recipe/tools/steel/surgery/retractor
-	name = "Спекулум"
+	name = "Расширитель"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/retractor
 
 /datum/anvil_recipe/tools/steel/surgery/bonesetter
-	name = "Костоправы"
+	name = "Костоправ"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/bonesetter
 
 /datum/anvil_recipe/tools/steel/surgery/cautery
-	name = "Прижигательное железо"
+	name = "Прижигатель"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
 	
-/datum/anvil_recipe/general/cowbell
+/datum/anvil_recipe/general/cowbell //зачем 2 варианта???
 	name = "Коровий колокольчик"
 	req_bar = /obj/item/ingot/copper
 	created_item = list(/obj/item/catbell/cow)
