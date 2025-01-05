@@ -3,8 +3,8 @@
 	flag = GOBLINRABBLE
 	department_flag = GOBLIN
 	faction = "Station"
-	total_positions = 9
-	spawn_positions = 9
+	total_positions = 6
+	spawn_positions = 6
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	tutorial = "You're the lowest of the low. A goblin among many other goblins. \
