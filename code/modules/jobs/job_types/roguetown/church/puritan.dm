@@ -159,7 +159,7 @@
 	var/resist_chance
 	if(resist)
 		to_chat(span_boldwarning("I attempt to resist the torture!"))
-		resist_chance = (STAINT + STACON) + 10
+		resist_chance = (STAINT + STAEND) + 10
 		if(confession_type == "antag")
 			resist_chance += 25
 	if(!resist || (resist_chance && prob(resist_chance)))
