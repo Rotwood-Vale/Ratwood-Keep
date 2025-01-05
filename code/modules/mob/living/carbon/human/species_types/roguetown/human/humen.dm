@@ -2,18 +2,15 @@
 	race = /datum/species/human/northern
 
 /datum/species/human/northern
-	name = "Humen"
+	name = "Человек"
 	id = "humen"
-	desc = "<b>Humen</b><br>\
-	Humen (or Human) are the eldest of the weeping gods creation. Noted for their\
-	tenacity and overwhelming population, humans tend to outnumber the other races. \
-	at a rate of about ten to one in regions such as Grenzelhoft. Althrough to the west \
-	the opposite is true. Humen come from a vast swathe of cultures and ethnicity, most of which\
-	have historically been at odds with one another. Being the eldest of the weeping God, humen\
-	tend to find fortune easier than the other races, and are so diverse that no other racial trait\
-	are dominant in their species..."
+	desc = "<b>Человек</b><br>\
+	Люди являются самыми древними созданиями старого бога. Отличаются своей упорностью и преобладающим населением, люди, как правило, \
+	превосходят другие расы по численности в соотношении примерно десяти к одному в таких регионах, как Гренцельхоф.\
+	Хотя на западе ситуация обратная. Люди происходят из обширного спектра культур и этнических групп, многие из которых исторически находились в конфликте друг с другом. \
+	Будучи древнейшими созданиями плачущего Бога, люди чаще находят удачу легче, чем другие расы, и настолько разнообразны, что никакие другие расовые черты не доминируют в их виде..."
 
-	skin_tone_wording = "Ancestry"
+	skin_tone_wording = "Происхождение"
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
