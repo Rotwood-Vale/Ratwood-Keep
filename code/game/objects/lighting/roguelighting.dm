@@ -105,6 +105,12 @@
 	seton(TRUE)
 	. = ..()
 
+
+/obj/machinery/light/rogue/OnCrafted(dirin)
+	. = ..()
+	can_damage = TRUE
+	burn_out()
+
 /obj/machinery/light/rogue/weather_trigger(W)
 	if(W==/datum/weather/rain)
 		START_PROCESSING(SSweather,src)
@@ -265,6 +271,16 @@
 		return
 	. = ..()
 
+/obj/machinery/light/rogue/break_light_tube(skip_sound_and_sparks = 0)
+	if(status == LIGHT_EMPTY || status == LIGHT_BROKEN)
+		return
+	if(!skip_sound_and_sparks)
+		if(status == LIGHT_OK || status == LIGHT_BURNED)
+			playsound(src.loc, 'sound/blank.ogg', 75, TRUE)
+		if(on)
+			do_sparks(3, TRUE, src)
+	update()
+
 /obj/machinery/light/rogue/firebowl
 	name = "brazier"
 	icon = 'icons/roguetown/misc/lighting.dmi'
@@ -384,7 +400,7 @@
 	pixel_y = 32
 	soundloop = null
 
-/obj/machinery/light/rogue/wallfire/candle/OnCrafted(dirin, user)
+/obj/machinery/light/rogue/wallfire/candle/OnCrafted(dirin)
 	pixel_x = 0
 	pixel_y = 0
 	switch(dirin)
@@ -466,14 +482,11 @@
 	. = ..()
 
 /obj/machinery/light/rogue/torchholder/OnCrafted(dirin, user)
-	if(dirin == NORTH)
+	dir = turn(dirin, 180)
+	if(dir == SOUTH)
 		pixel_y = 32
-	dirin = turn(dirin, 180)
 	QDEL_NULL(torchy)
-	on = FALSE
-	set_light(0)
-	update_icon()
-	. = ..(dirin)
+	. = ..()
 
 /obj/machinery/light/rogue/torchholder/process()
 	if(on)

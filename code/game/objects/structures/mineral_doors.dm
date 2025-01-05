@@ -772,7 +772,7 @@
 		to_chat(user, span_warning("The door doesn't lock from this side."))
 
 /obj/structure/mineral_door/wood/donjon
-	desc = "dungeon door"
+	desc = "This door has a built-in viewport."
 	icon_state = "donjondir"
 	base_state = "donjon"
 	keylock = TRUE
@@ -788,6 +788,14 @@
 	repair_skill = /datum/skill/craft/carpentry
 	metalizer_result = null
 	smeltresult = /obj/item/ingot/iron
+
+/obj/structure/mineral_door/wood/donjon/OnCrafted(dirin)
+	dir = turn(dirin, 180)
+	viewportdir = dir
+	. = ..()
+
+/obj/structure/mineral_door/wood/donjon/stone/OnCrafted(dirin)
+	return ..()
 
 /obj/structure/mineral_door/wood/donjon/stone
 	desc = "stone door"
@@ -822,7 +830,7 @@
 	if(get_dir(src,user) == viewportdir)
 		view_toggle(user)
 	else
-		to_chat(user, span_warning("The viewport doesn't toggle from this side."))
+		to_chat(user, span_warning("The viewport can't be moved from this side."))
 		return
 
 /obj/structure/mineral_door/wood/donjon/proc/view_toggle(mob/user)

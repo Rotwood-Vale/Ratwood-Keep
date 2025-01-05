@@ -240,19 +240,19 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	throwforce += bonus_force // It gets added to throw damage too
 	possible_item_intents = given_intent_list // And heres ur new extra intents too
 
-/obj/item/natural/stone/attackby(obj/item/W, mob/user, params)
+/obj/item/natural/stone/pre_attack_right(atom/A, mob/living/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(istype(W, /obj/item/natural/stone))
+	if(istype(A, /obj/item/natural/stone))
 		playsound(src.loc, pick('sound/items/stonestone.ogg'), 100)
-		user.visible_message(span_info("[user] strikes the stones together."))
+		user.visible_message("<span class='info'>[user] strikes the stones together.</span>")
 		if(prob(10))
 			var/datum/effect_system/spark_spread/S = new()
 			var/turf/front = get_step(user,user.dir)
 			S.set_up(1, 1, front)
 			S.start()
-	else
-		..()
-
+		return
+	. = ..()
+	
 /obj/item/natural/rock
 	name = "rock"
 	desc = "A rock protudes from the ground."

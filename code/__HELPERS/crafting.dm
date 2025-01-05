@@ -117,14 +117,15 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 		return
 	var/list/contents = get_surroundings(user)
 	var/turf/T = get_step(user, user.dir)
+	
 	var/obj/N
 	var/result_name
-
 	if(islist(R.result))
 		N = R.result[1]
+		result_name = N.name + "s"
 	else
 		N = R.result
-	result_name = N.name
+		result_name = N.name
 
 	if(isopenturf(T) && R.wallcraft)
 		to_chat(user, span_warning("Need to craft this on a wall."))

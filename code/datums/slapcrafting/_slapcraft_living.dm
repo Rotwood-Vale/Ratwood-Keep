@@ -73,11 +73,12 @@
 
 	fallback_loc = drop_location() //We may have moved
 
-	if(!target_recipe.in_place_craft)
+	if(!target_recipe.anchor_craft)
 		if(!put_in_hands(assembly))
 			assembly.forceMove(fallback_loc)
 	else
 		assembly.forceMove(alt_fallback)
+	var/turf/result_loc = target_recipe.get_result_location(assembly, src)
 
 	var/datum/slapcraft_step/step_two = target_recipe.next_suitable_step(src, second_item, assembly.step_states, check_type_only = TRUE)
 	// Perform the second step, also disassemble it if we stopped working on it, because keeping 1 component assembly is futile.
@@ -98,7 +99,7 @@
 		if(!in_hands)
 			for(var/datum/weakref/W as anything in assembly.finished_items)
 				var/obj/item/finished_item = W.resolve()
-				finished_item.forceMove(fallback_loc)
+				finished_item.forceMove(result_loc)
 
 		assembly.finished_items = null
 

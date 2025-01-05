@@ -131,10 +131,10 @@
 	return 1
 
 /obj/structure/fluff/railing/OnCrafted(dirin)
-	. = ..()
 	var/lay = getwlayer(dir)
 	if(lay)
 		layer = lay
+	. = ..()
 
 /obj/structure/fluff/railing/corner
 	icon_state = "railing_corner"
@@ -146,6 +146,7 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/railing/stonehedge
+	name = "stone railing"
 	icon_state = "stonehedge"
 	blade_dulling = DULLING_BASHCHOP
 	layer = ABOVE_MOB_LAYER

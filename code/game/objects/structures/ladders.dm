@@ -215,7 +215,6 @@
 	blade_dulling = DULLING_BASHCHOP
 
 /obj/structure/wallladder/OnCrafted(dirin)
-	. = ..()
 	layer = BELOW_MOB_LAYER
 	switch(dir)
 		if(NORTH)
@@ -226,3 +225,4 @@
 			pixel_x = -4
 		if(EAST)
 			pixel_x = 4
+	. = ..()

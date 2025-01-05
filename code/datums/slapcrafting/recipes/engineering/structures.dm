@@ -31,9 +31,13 @@
 /datum/slapcraft_recipe/engineering/structure/trapdoor/check_craft_requirements(mob/user, turf/T)
 	if(istype(T,/turf/open/transparent/openspace))
 		return TRUE
+	if(istype(T, /turf/open/water))
+		return TRUE
 	if(istype(T,/turf/open/lava))
 		return TRUE // its just too hilarious not to allow this
-	return TRUE
+	for(var/obj/structure/floordoor/FD in T)
+		return FALSE
+	return ..()
 
 
 /datum/slapcraft_recipe/engineering/structure/pressure_plate
@@ -82,12 +86,3 @@
 		)
 	result_type = /obj/structure/bars/passage
 	craftsound = 'sound/foley/Building-01.ogg'
-
-/datum/slapcraft_recipe/engineering/structure/passage/check_craft_requirements(mob/user, turf/T)
-	if(istype(T,/turf/open/transparent/openspace))
-		return FALSE
-	if(istype(T,/turf/open/lava))
-		return FALSE
-	if(istype(T,/turf/open/water))
-		return FALSE
-	return TRUE

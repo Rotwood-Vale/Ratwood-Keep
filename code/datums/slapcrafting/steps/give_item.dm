@@ -20,13 +20,8 @@
 
 /datum/slapcraft_step/item/small_log/second
 
-/datum/slapcraft_step/item/small_log_second
-	desc = "Add a small log."
-	item_types = list(/obj/item/grown/log/tree/small)
+/datum/slapcraft_step/item/small_log/third
 
-/datum/slapcraft_step/item/gear
-	desc = "Add a cog."
-	item_types = list(/obj/item/roguegear)
 
 /datum/slapcraft_step/item/hide
 	desc = "Add some hide."
@@ -59,7 +54,7 @@
 /datum/slapcraft_step/item/stake/third
 
 /datum/slapcraft_step/item/stone
-	desc = "Add some stones."
+	desc = "Add some stone."
 	item_types = list(/obj/item/natural/stone)
 
 /datum/slapcraft_step/item/stone/second
@@ -77,7 +72,7 @@
 /datum/slapcraft_step/item/iron/second
 
 /datum/slapcraft_step/item/riddleofsteel
-	desc = "Add some riddle of steel."
+	desc = "Add a riddle of steel."
 	item_types = list(/obj/item/riddleofsteel)
 
 /datum/slapcraft_step/item/plank
@@ -101,3 +96,7 @@
 	item_types = list(/obj/item/natural/glass)
 
 /datum/slapcraft_step/item/glass/second
+
+/datum/slapcraft_step/item/silk
+	desc = "Add some silk."
+	item_types = list(/obj/item/natural/silk)

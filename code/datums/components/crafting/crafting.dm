@@ -25,7 +25,8 @@
 	dir = dirin
 	return
 
-/obj/item/OnCrafted(dirin)
+/obj/structure/OnCrafted(dirin)
+	obj_flags |= CAN_BE_HIT
 	. = ..()
 
 /turf/open/OnCrafted(dirin)

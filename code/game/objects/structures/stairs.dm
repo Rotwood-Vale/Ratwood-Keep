@@ -60,8 +60,10 @@
 	var/turf/partner = get_step_multiz(get_turf(src), UP)
 	partner = get_step(partner, dirin)
 	if(isopenturf(partner))
-		var/obj/stairs = new /obj/structure/stairs(partner)
-		stairs.dir = dirin
+		var/obj/structure/stairs/stairs = locate() in partner
+		if(!stairs)
+			stairs = new /obj/structure/stairs(partner)
+		stairs.dir = dir
 
 /obj/structure/stairs/d/OnCrafted(dirin)
 	dir = turn(dirin, 180)
@@ -76,8 +78,22 @@
 	var/turf/partner = get_step_multiz(get_turf(src), DOWN)
 	partner = get_step(partner, dirin)
 	if(isopenturf(partner))
-		var/obj/stairs = new /obj/structure/stairs/stone(partner)
-		stairs.dir = turn(dirin, 180)
+		var/obj/structure/stairs/stairs = locate() in partner
+		if(!stairs)
+			stairs = new /obj/structure/stairs(partner)
+		stairs.dir = dir
+	return
+
+/obj/structure/stairs/stone/d/OnCrafted(dirin)
+	dir = turn(dirin, 180)
+	var/turf/partner = get_step_multiz(get_turf(src), DOWN)
+	partner = get_step(partner, dirin)
+	if(isopenturf(partner))
+		var/obj/structure/stairs/stairs = locate() in partner
+		if(!stairs)
+			stairs = new /obj/structure/stairs/stone(partner)
+		stairs.dir = dir
+	return
 
 /obj/structure/stairs/Initialize(mapload)
 	return ..()

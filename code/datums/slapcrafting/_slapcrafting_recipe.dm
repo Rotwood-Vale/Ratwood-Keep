@@ -11,7 +11,7 @@
 	var/list/steps
 
 	/// Type of the item that will be yielded as the result.
-	var/result_type
+	var/atom/result_type
 	/// Amount of how many resulting types will be crafted.
 	var/result_amount = 1
 	/// Instead of result type you can use this as associative list of types to amounts for a more varied output
@@ -20,7 +20,7 @@
 	/// Weight class of the assemblies for this recipe.
 	var/assembly_weight_class = WEIGHT_CLASS_NORMAL
 	/// Suffix for the assembly name.
-	var/assembly_name_prefix = "work in progress"
+	var/assembly_name_prefix = "incomplete"
 
 	/// Category this recipe is in the handbook.
 	var/category = SLAP_CAT_MISC
@@ -36,12 +36,15 @@
 
 	/// Should we print text when we finish? Mostly used to de-bloat chat.
 	var/show_finish_text = FALSE
-	///our crafting difficulty
-	var/craftdiff = 0
+	///Crafting difficulty for finishing recipe
+	var/craftdiff = 1
 	var/datum/skill/skillcraft
-	var/in_place_craft = FALSE
+	var/anchor_craft = FALSE
 	var/craftsound
+	///Place finished result in front of assembly in user's direction. Mutually exclusive with offset_user.
 	var/offset_forward = FALSE
+	///Place finished result at user's location. Mutually exclusive with offset_forward.
+	var/offset_user = FALSE
 
 /datum/slapcraft_recipe/New()
 	. = ..()
@@ -187,13 +190,7 @@
 	return image(icon = 'icons/mob/radial.dmi', icon_state = "radial_rotate")
 
 /// User has finished the recipe in an assembly.
-/datum/slapcraft_recipe/proc/finish_recipe(mob/living/user, obj/item/slapcraft_assembly/assembly)
-	var/turf/checked_turf = get_turf(assembly)
-	if(offset_forward)
-		checked_turf = get_step(checked_turf, user.dir)
-	if(!check_craft_requirements(user, checked_turf))
-		to_chat(user, "<span class='warning'>I can't craft here.</span>")
-		return
+/datum/slapcraft_recipe/proc/finish_recipe(mob/living/user, obj/item/slapcraft_assembly/assembly, last_type, obj/item/last_item)
 	var/prob2craft = 25
 	var/prob2fail = 1
 	if(craftdiff)
@@ -213,21 +210,31 @@
 			prob2craft += ((10-L.STAINT)*-1)*2
 	if(prob2craft < 1)
 		to_chat(user, "<span class='danger'>I lack the skills for this...</span>")
-		dispose_assembly(assembly)
+		breakdown_assembly(assembly)
 		return
 	else
 		prob2craft = CLAMP(prob2craft, 5, 99)
-		if(prob(prob2fail))
-			to_chat(user, "<span class='danger'>MISTAKE! I've failed to craft [name]!</span>")
-			dispose_assembly(assembly)
+		if(prob(prob2fail)) //critical fail
+			to_chat(user, "<span class='danger'>MISTAKE! I've completely fumbled completing \the [name]!</span>")
+			breakdown_assembly(assembly)
 			return
 		if(!prob(prob2craft))
 			if(user.client?.prefs.showrolls)
-				to_chat(user, "<span class='danger'>I've failed to craft [name]. (Success chance: [prob2craft]%)</span>")
-				dispose_assembly(assembly)
+				to_chat(user, "<span class='danger'>I've failed to complete \the [name]. (Success chance: [prob2craft]%)</span>")
+				assembly.step_states[last_type] = FALSE
+				var/datum/slapcraft_step/next_step = assembly.recipe.next_suitable_step(user, last_item, assembly.step_states)
+				if(!next_step)
+					return
+				// Try and do it
+				next_step.perform(user, last_item, assembly)
 				return
-			to_chat(user, "<span class='danger'>I've failed to craft [name].</span>")
-			dispose_assembly(assembly)
+			to_chat(user, "<span class='danger'>I've failed to complete \the [name].</span>")
+			assembly.step_states[last_type] = FALSE
+			var/datum/slapcraft_step/next_step = assembly.recipe.next_suitable_step(user, last_item, assembly.step_states)
+			if(!next_step)
+				return
+			// Try and do it
+			next_step.perform(user, last_item, assembly)
 			return
 
 	if(show_finish_text)
@@ -247,7 +254,7 @@
 
 	assembly.being_finished = TRUE
 	var/list/results = list()
-	create_items(assembly, results, user.dir)
+	create_items(assembly, results, user)
 
 	// Move items which wanted to go to the resulted item into it. Only supports for the first created item.
 	var/atom/movable/first_item = results[1]
@@ -270,7 +277,7 @@
 	return TRUE
 
 /// The proc that creates the resulted item(s). Make sure to add them to the passed `results` list.
-/datum/slapcraft_recipe/proc/create_items(obj/item/slapcraft_assembly/assembly, list/results, direction)
+/datum/slapcraft_recipe/proc/create_items(obj/item/slapcraft_assembly/assembly, list/results, mob/living/user)
 	/// Check if we want to craft multiple items, if yes then populate the list passed by the argument with them.
 	var/list/multi_to_craft
 	if(result_list)
@@ -285,8 +292,8 @@
 			var/shift_pixels = (amount > 1)
 
 			for(var/i in 1 to amount)
-				var/atom/movable/new_thing = create_item(path, assembly, direction)
-				new_thing.OnCrafted(direction)
+				var/atom/movable/new_thing = create_item(path, assembly, user)
+				new_thing.OnCrafted(user.dir)
 
 				if(shift_pixels)
 					new_thing.pixel_x += rand(-4,4)
@@ -294,10 +301,8 @@
 				results += new_thing
 
 /// Creates and returns a new item. This gets called for every item that is supposed to be created in the recipe.
-/datum/slapcraft_recipe/proc/create_item(item_path, obj/item/slapcraft_assembly/assembly, direction)
-	if(offset_forward)
-		return new item_path(get_step(assembly.drop_location(), direction))
-	return new item_path(assembly.drop_location())
+/datum/slapcraft_recipe/proc/create_item(item_path, obj/item/slapcraft_assembly/assembly, mob/living/user)
+	return new item_path(get_result_location(assembly, user))
 
 /// Behaviour after the item is created, and before the slapcrafting assembly is disposed.
 /// Here you can move the components into the item if you wish, or do other stuff with them.
@@ -308,5 +313,16 @@
 /datum/slapcraft_recipe/proc/dispose_assembly(obj/item/slapcraft_assembly/assembly)
 	qdel(assembly)
 
+/// Here is the proc to get rid of the assembly, should one want to override it to handle that differently.
+/datum/slapcraft_recipe/proc/breakdown_assembly(obj/item/slapcraft_assembly/assembly)
+	assembly.disassemble()
+
 /datum/slapcraft_recipe/proc/check_craft_requirements(mob/user, turf/T)
 	return TRUE
+
+/datum/slapcraft_recipe/proc/get_result_location(obj/item/slapcraft_assembly/assembly, mob/living/user)
+	if(offset_forward)
+		return get_step(assembly.drop_location(), user.dir)
+	else if(offset_user)
+		return get_turf(user)
+	return assembly.drop_location()
