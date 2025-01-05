@@ -15,7 +15,7 @@
 /obj/machinery/artificer_table/examine(mob/user)
 	. = ..()
 	if(material)
-		. += span_warning("Здесь готов [initial(material.name)] для обработки.")
+		. += span_warning("Здесь находится [initial(material.name)], готово к обработке.")
 
 /obj/machinery/artificer_table/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/natural/wood/plank) || istype(I, /obj/item/ingot))
