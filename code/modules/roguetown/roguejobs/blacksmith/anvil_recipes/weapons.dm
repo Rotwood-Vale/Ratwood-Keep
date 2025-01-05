@@ -61,14 +61,14 @@
 	skill_level = 0
 
 /datum/anvil_recipe/weapons/iron/spear
-	name = "Копье (+1 Полено)"
+	name = "Копье (+1 Маленькое полено)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear
 	skill_level = 0
 
 /datum/anvil_recipe/weapons/iron/bardiche
-	name = "Бердыш (+1 Железо) (+1 Полено)"
+	name = "Бердыш (+1 Железо) (+1 Маленькое полено)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/halberd/bardiche
@@ -100,7 +100,7 @@
 	created_item = /obj/item/rogueweapon/mace/warhammer
 
 /datum/anvil_recipe/weapons/iron/polemace
-	name = "Годендаг (+1 Полено)"
+	name = "Годендаг (+1 Маленькое полено)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/goden
@@ -171,7 +171,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/steel/battleaxe
-	name = "Секира (+1 Сталь)"
+	name = "Боевой топор (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/stoneaxe/battle
@@ -206,21 +206,21 @@
 	skill_level = 4
 
 /datum/anvil_recipe/weapons/steel/greatsword
-	name = "Большой двуручник (+2 Стали)" //звучит как говно, но лучше варианта не нашёл
+	name = "Большой двуручник (+2 Стали)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/greatsword
 	skill_level = 3
 
 /datum/anvil_recipe/weapons/steel/lucerne
-	name = "Люцеранский молот (+1 Сталь) (+1 Полено)"
+	name = "Люцеранский молот (+1 Сталь) (+1 Маленькое полено)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/eaglebeak/lucerne
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/steel/billhook
-	name = "Биллхук (+1 Полено)"
+	name = "Биллхук (+1 Маленькое полено)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/billhook
@@ -232,21 +232,21 @@
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 
 /datum/anvil_recipe/weapons/steel/halberd
-	name = "Алебарда (+1 Сталь) (+1 Полено)"
+	name = "Алебарда (+1 Сталь) (+1 Маленькое полено)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/halberd
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/steel/eaglebeak
-	name = "Клевец (+1 Сталь) (+1 Полено)"
+	name = "Клевец (+1 Сталь) (+1 Маленькое полено)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/eaglebeak
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/steel/grandmace
-	name = "Большая булава (+1 Полено)"
+	name = "Большая булава (+1 Маленькое полено)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/goden/steel
@@ -337,7 +337,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/bronze/spear
-	name = "Бронзовое копье (+1 Бронза) (+1 Полено)"
+	name = "Бронзовое копье (+1 Бронза) (+1 Маленькое полено)"
 	req_bar = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/bronze
@@ -354,7 +354,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/iron/towershield
-	name = "Башенный щит (+1 Полено)"
+	name = "Башенный щит (+1 Маленькое полено)"
 	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/small)

@@ -217,7 +217,7 @@
 	created_item = /obj/item/clothing/neck/roguetown/gorget/steel/oring
 
 /datum/anvil_recipe/armor/steel/kettle
-	name = "Шапель"
+	name = "Капеллина"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/kettle
 
@@ -244,7 +244,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/helmetbuc
-	name = "Топфхелм (+1 Сталь)" //какой шлем ведро, ты ёбу дал???
+	name = "Топфхелм (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
@@ -258,7 +258,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/helmetvolf
-	name = "Песиглавый шлем (+1 Сталь)"
+	name = "Пёсиглавый шлем (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/volfplate
@@ -293,63 +293,63 @@
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel/hound
 
 /datum/anvil_recipe/armor/steel/astratahelm
-	name = "Шлем астратита (+1 Сталь)" 
+	name = "Астратанский шлем (+1 Сталь)" 
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/astratahelm_alt
-	name = "Шлем астратита (Альт.) (+1 Сталь)"
+	name = "Астратанский шлем (Альтернативный) (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/malumhelm
-	name = "Шлем маллуммита (+1 Сталь)"
+	name = "Малуммитский шлем (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/malum
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/necrahelm
-	name = "Шлем некранита (+1 Сталь)"
+	name = "Некранский шлем (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/necrahelm_alt
-	name = "Шлем некранита (Альт.) (+1 Сталь)"
+	name = "Некранский шлем (Альтернативный) (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/nochelm
-	name = "Шлем ноктита (+1 Сталь)"
+	name = "Ноктианский шлем (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/noc
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/dendorhelm
-	name = "Шлем дендорита (+1 Сталь)"
+	name = "Дендоритский шлем (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/dendor
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/ravoxian
-	name = "Шлем равоксита (+1 Сталь)"
+	name = "Равоксианский шлем (+1 Сталь)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/eoran
-	name = "Шлем эорита"
+	name = "Эоранский шлем"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
 	skill_level = 2

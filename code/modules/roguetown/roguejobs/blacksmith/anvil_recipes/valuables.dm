@@ -4,7 +4,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/valuables/special/ringf
-	name = "Пылающее кольцо (+1 Жир, +1 Камень, +1 Волокно)" //отражает суть, ибо фактически это факел в слот кольца. а то с "кольцом пламени" можно подумать что это про защиту от горения
+	name = "Пылающее кольцо (+1 Жир, +1 Камень, +1 Волокно)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/ring/lantern
 	additional_items = list(

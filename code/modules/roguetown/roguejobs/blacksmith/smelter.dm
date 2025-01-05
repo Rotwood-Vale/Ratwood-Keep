@@ -90,7 +90,7 @@
 
 /obj/machinery/light/rogue/smelter/great
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "Большая плавильня"
+	name = "большая плавильня"
 	icon_state = "smelter0"
 	base_state = "smelter"
 	anchored = TRUE

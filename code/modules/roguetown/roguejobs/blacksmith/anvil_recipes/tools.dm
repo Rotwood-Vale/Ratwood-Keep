@@ -185,7 +185,7 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
 	
-/datum/anvil_recipe/general/cowbell //зачем 2 варианта???
+/datum/anvil_recipe/general/cowbell
 	name = "Коровий колокольчик"
 	req_bar = /obj/item/ingot/copper
 	created_item = list(/obj/item/catbell/cow)
