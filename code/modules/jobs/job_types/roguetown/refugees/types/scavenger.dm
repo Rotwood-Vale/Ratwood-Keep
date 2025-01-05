@@ -68,7 +68,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			r_hand = /obj/item/rogueweapon/thresher
