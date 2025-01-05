@@ -1479,14 +1479,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			silver_curse_status = TRUE
 			break
 		if(silver_curse_status)
-			to_chat(src, span_danger("My BANE is not letting me rejuvenate!"))	
+			to_chat(vampire, span_danger("My BANE is not letting me rejuvenate!"))
 			return
 		
 		// How much the vampire will heal by.
 		var/bloodroll = roll("[bloodskill]d8") + (vampire.STACON * 1.5) // Spawn heals less.
 		if(VD) // Vampire lords heal more than regular vampires.
 			if(VD.disguised)
-				to_chat(src, span_warning("My curse is hidden."))
+				to_chat(vampire, span_warning("My curse is hidden."))
 				revert_cast()
 				return
 			bloodroll = roll("[bloodskill]d10") + (vampire.STACON * 2) // VL heals more. D8 -> D10. CON * 1.5 -> 2
