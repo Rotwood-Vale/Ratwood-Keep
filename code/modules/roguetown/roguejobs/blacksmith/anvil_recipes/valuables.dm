@@ -87,37 +87,37 @@
 
 //Gold Rings
 /datum/anvil_recipe/valuables/gold/emering
-	name = "Изумрудное кольцо (+1 Изумруд)"
+	name = "Гемеральдное кольцо (+1 Гемеральд)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/green)	
 	created_item = /obj/item/clothing/ring/emerald
 
 /datum/anvil_recipe/valuables/gold/ruby
-	name = "Рубиновое кольцо (+1 Рубин)"
+	name = "Ронтцовое кольцо (+1 Ронтц)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem)	
 	created_item = /obj/item/clothing/ring/ruby
 
 /datum/anvil_recipe/valuables/gold/topaz
-	name = "Топазовое кольцо (+1 Топаз)"
+	name = "Топеровое кольцо (+1 Топер)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/yellow)	
 	created_item = /obj/item/clothing/ring/topaz
 
 /datum/anvil_recipe/valuables/gold/quartz
-	name = "Кварцевое кольцо (+1 Кварц)"
+	name = "Блортцевое кольцо (+1 Блортц)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/blue)	
 	created_item = /obj/item/clothing/ring/quartz
 
 /datum/anvil_recipe/valuables/gold/sapphire
-	name = "Сапфировое кольцо (+1 Сапфир)"
+	name = "Саффировое кольцо (+1 Саффир)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/violet)	
 	created_item = /obj/item/clothing/ring/sapphire
 
 /datum/anvil_recipe/valuables/gold/diamond
-	name = "Алмазное кольцо (+1 Алмаз)"
+	name = "Дорпельное кольцо (+1 Дорпель)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/diamond)	
 	created_item = /obj/item/clothing/ring/diamond
@@ -125,37 +125,37 @@
 //Silver rings
 
 /datum/anvil_recipe/valuables/silver/emering
-	name = "Изумрудное кольцо (+1 Изумруд)"
+	name = "Гемеральдное кольцо (+1 Гемеральд)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/green)	
 	created_item = /obj/item/clothing/ring/emeralds
 
 /datum/anvil_recipe/valuables/silver/ruby
-	name = "Рубиновое кольцо (+1 Рубин)"
+	name = "Ронтцовое кольцо (+1 Ронтц)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem)	
 	created_item = /obj/item/clothing/ring/rubys
 
 /datum/anvil_recipe/valuables/silver/topaz
-	name = "Топазовое кольцо (+1 Топаз)"
+	name = "Топеровое кольцо (+1 Топер)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/yellow)	
 	created_item = /obj/item/clothing/ring/topazs
 
 /datum/anvil_recipe/valuables/silver/quartz
-	name = "Кварцевое кольцо (+1 Кварц)"
+	name = "Блортцевое кольцо (+1 Блортц)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/blue)	
 	created_item = /obj/item/clothing/ring/quartzs
 
 /datum/anvil_recipe/valuables/silver/sapphire
-	name = "Сапфировое кольцо (+1 Сапфир)"
+	name = "Саффировое кольцо (+1 Саффир)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/violet)	
 	created_item = /obj/item/clothing/ring/sapphires
 
 /datum/anvil_recipe/valuables/silver/diamond
-	name = "Алмазное кольцо (+1 Алмаз)"
+	name = "Дорпельное кольцо (+1 Дорпель)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/roguegem/diamond)	
 	created_item = /obj/item/clothing/ring/diamonds
@@ -163,37 +163,37 @@
 // Copper rings
 
 /datum/anvil_recipe/valuables/copper/emering
-	name = "Изумрудное кольцо (+1 Изумруд)"
+	name = "Гемеральдное кольцо (+1 Гемеральд)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/green)	
 	created_item = /obj/item/clothing/ring/emeraldc
 
 /datum/anvil_recipe/valuables/copper/ruby
-	name = "Рубиновое кольцо (+1 Рубин)"
+	name = "Ронтцовое кольцо (+1 Ронтц)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem)	
 	created_item = /obj/item/clothing/ring/rubyc
 
 /datum/anvil_recipe/valuables/copper/topaz
-	name = "Топазовое кольцо (+1 Топаз)"
+	name = "Топеровое кольцо (+1 Топер)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/yellow)	
 	created_item = /obj/item/clothing/ring/topazc
 
 /datum/anvil_recipe/valuables/copper/quartz
-	name = "Кварцевое кольцо (+1 Кварц)"
+	name = "Блортцевое кольцо (+1 Блортц)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/blue)	
 	created_item = /obj/item/clothing/ring/quartzc
 
 /datum/anvil_recipe/valuables/copper/sapphire
-	name = "Сапфировое кольцо (+1 Сапфир)"
+	name = "Саффировое кольцо (+1 Саффир)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/violet)	
 	created_item = /obj/item/clothing/ring/sapphirec
 
 /datum/anvil_recipe/valuables/copper/diamond
-	name = "Алмазное кольцо (+1 Алмаз)"
+	name = "Дорпельное кольцо (+1 Дорпель)"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/roguegem/diamond)	
 	created_item = /obj/item/clothing/ring/diamondc
