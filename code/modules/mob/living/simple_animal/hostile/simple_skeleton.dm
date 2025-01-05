@@ -188,6 +188,6 @@
 	
 /datum/intent/simple/spear/skeleton
 	reach = 2
-	clickcd = SKELETON_ATTACK_SPEED
+	clickcd = SKELETON_ATTACK_SPEED * 1.2
 	chargetime = 1
 	animname = "stab"
