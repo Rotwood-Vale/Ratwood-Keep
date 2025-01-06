@@ -370,23 +370,7 @@ All foods are distributed among various categories. Use common sense.
 	if(istype(W, /obj/item/storage))
 		..() // -> item/attackby()
 		return 0
-/*	if(istype(W, /obj/item/reagent_containers/food/snacks))
-		var/obj/item/reagent_containers/food/snacks/S = W
-		if(custom_food_type && ispath(custom_food_type))
-			if(S.w_class > WEIGHT_CLASS_SMALL)
-				to_chat(user, span_warning("[S] is too big for [src]!"))
-				return 0
-			if(!S.customfoodfilling || istype(W, /obj/item/reagent_containers/food/snacks/customizable) || istype(W, /obj/item/reagent_containers/food/snacks/pizzaslice/custom) || istype(W, /obj/item/reagent_containers/food/snacks/cakeslice/custom))
-				to_chat(user, span_warning("[src] can't be filled with [S]!"))
-				return 0
-			if(contents.len >= 20)
-				to_chat(user, span_warning("I can't add more ingredients to [src]!"))
-				return 0
-			var/obj/item/reagent_containers/food/snacks/customizable/C = new custom_food_type(get_turf(src))
-			C.initialize_custom_food(src, S, user)
-			return 0
-*/
-
+		
 	if(W.get_sharpness() && W.wlength == WLENGTH_SHORT)
 		if(slice_bclass == BCLASS_CHOP)
 			user.visible_message(span_notice("[user] chops [src]!"))
