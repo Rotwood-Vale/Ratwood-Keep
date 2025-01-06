@@ -216,34 +216,8 @@
 	C.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
 	after_ejaculation()
 
-/datum/sex_controller/proc/calculate_milk()
-	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
-	var milk_amount
-
-	if(isseelie(user))
-		milk_amount = 1
-		if(vagina.pregnant)
-			milk_amount = milk_amount + 2 //If anyone is doing this... Shame on you
-	else
-		milk_amount = 6
-		if(vagina.pregnant)
-			milk_amount = milk_amount + 12 //I ran the numbers, a breastfeeding woman can produce a stick of butter with one session
-	return milk_amount = round(milk_amount * (((user.nutrition + user.hydration)/2)/500))
-
-/datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
-	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
-	var/milk_amount
-	log_combat(user, user, "Was milked into a container")
-	user.visible_message(span_lovebold("[user] lactates into [C]!"))
-	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
-	milk_amount = calculate_milk()
-	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
-	user.adjust_hydration(-(milk_amount * 20))
-	user.adjust_nutrition(-(milk_amount * 20))
-	breasts.last_milked = world.time
-	after_milking()
-
 /datum/sex_controller/proc/after_ejaculation()
+	user.add_stress(/datum/stressevent/cumok)
 	set_arousal(40)
 	adjust_charge(-CHARGE_FOR_CLIMAX)
 	user.emote("sexmoanhvy", forced = TRUE)
@@ -252,6 +226,8 @@
 	if(HAS_TRAIT(user, TRAIT_BAOTHA_CURSE))
 		user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
 	SSticker.cums++
+	cuckold_check()
+
 
 /datum/sex_controller/proc/after_milking()
 	set_arousal(80)
@@ -261,17 +237,21 @@
 
 /datum/sex_controller/proc/after_intimate_climax()
 	if(user == target)
+		if(HAS_TRAIT(target, TRAIT_GOODLOVER))
+			user.add_stress(/datum/stressevent/cumgood)
 		return
 	if(HAS_TRAIT(target, TRAIT_GOODLOVER))
 		if(!user.mob_timers["cumtri"])
 			user.mob_timers["cumtri"] = world.time
 			user.adjust_triumphs(1)
 			to_chat(user, span_love("Our loving is a true TRIUMPH!"))
+			user.add_stress(/datum/stressevent/cumgood)
 	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
 		if(!target.mob_timers["cumtri"])
 			target.mob_timers["cumtri"] = world.time
 			target.adjust_triumphs(1)
 			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
+			user.add_stress(/datum/stressevent/cumgood)
 
 /datum/sex_controller/proc/just_ejaculated()
 	return (last_ejaculation_time + 2 SECONDS >= world.time)
@@ -460,13 +440,6 @@
 		return FALSE
 	ejaculate_container(user.get_active_held_item())
 
-/datum/sex_controller/proc/handle_container_milk()
-	if(arousal < PASSIVE_EJAC_THRESHOLD)
-		return
-	if(is_spent())
-		return
-	milk_container(user.get_active_held_item())
-
 /datum/sex_controller/proc/handle_cock_milking(mob/living/carbon/human/milker)
 	if(arousal < ACTIVE_EJAC_THRESHOLD)
 		return
@@ -475,11 +448,6 @@
 	if(!can_ejaculate())
 		return FALSE
 	ejaculate_container(milker.get_active_held_item())
-
-/datum/sex_controller/proc/handle_breast_milking(mob/living/carbon/human/milker)
-	if(arousal < ACTIVE_EJAC_THRESHOLD)
-		return
-	milk_container(milker.get_active_held_item())
 
 /datum/sex_controller/proc/can_use_penis()
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
@@ -802,3 +770,22 @@
 			return "<span class='love_high'>[string]</span>"
 		if(SEX_FORCE_EXTREME)
 			return "<span class='love_extreme'>[string]</span>"
+
+/datum/sex_controller/proc/cuckold_check()
+	//First, check if the target has a family.
+	var/datum/family/F = target.getFamily(TRUE)
+	if(!F)
+		return
+
+
+	//Second, check if target has a spouse relation.
+	var/list/rels = F.getRelations(target,REL_TYPE_SPOUSE)
+
+	if(!length(rels))
+		return
+
+	for(var/datum/relation/R in rels) //Loop through all the spouses (Should only be one.)
+		var/mob/living/carbon/human/cuckold = R.target:resolve()
+		if(!cuckold || cuckold == user)
+			continue
+		GLOB.cuckolds |= "[cuckold.job] [cuckold.real_name] (by [user.real_name])"

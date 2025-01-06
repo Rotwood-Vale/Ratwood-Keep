@@ -256,7 +256,67 @@
 
 //Start of a breath chain, calls breathe()
 /mob/living/carbon/handle_breathing(times_fired)
+	var/breath_effect_prob = 0
+	var/turf/turf = get_turf(src)
+	var/turf_temp = turf.temperature
+
+	if(turf_temp <= T0C - 50)
+		breath_effect_prob = 100
+	else if(turf_temp <= T0C - 25)
+		breath_effect_prob = 50
+	else if(turf_temp <= T0C - 10)
+		breath_effect_prob = 25
+	else if(turf_temp <= T0C)
+		breath_effect_prob = 15
+
+	var/turf/snow_turf = get_turf(src)
+	if(snow_shiver > world.time)
+		breath_effect_prob += 50
+	else if(snow_turf.snow)
+		breath_effect_prob += 50
+
+	if(prob(breath_effect_prob))
+		// Breathing into your mask, no particle. We can add fogged up glasses later
+		if(is_mouth_covered())
+			return
+		emit_breath_particle(/particles/fog/breath)
+
 	return
+
+/mob/living/proc/emit_breath_particle(particle_type)
+	ASSERT(ispath(particle_type, /particles))
+
+	var/obj/effect/abstract/particle_holder/holder = new(src, particle_type)
+	var/particles/breath_particle = holder.particles
+	var/breath_dir = dir
+
+	var/list/particle_grav = list(0, 0.1, 0)
+	var/list/particle_pos = list(0, 6, 0)
+	if(breath_dir & NORTH)
+		particle_grav[2] = 0.2
+		breath_particle.rotation = pick(-45, 45)
+		// Layer it behind the mob since we're facing away from the camera
+		holder.pixel_w -= 4
+		holder.pixel_y += 4
+	if(breath_dir & WEST)
+		particle_grav[1] = -0.2
+		particle_pos[1] = -5
+		breath_particle.rotation = -45
+	if(breath_dir & EAST)
+		particle_grav[1] = 0.2
+		particle_pos[1] = 5
+		breath_particle.rotation = 45
+	if(breath_dir & SOUTH)
+		particle_grav[2] = 0.2
+		breath_particle.rotation = pick(-45, 45)
+		// Shouldn't be necessary but just for parity
+		holder.pixel_w += 4
+		holder.pixel_y -= 4
+
+	breath_particle.gravity = particle_grav
+	breath_particle.position = particle_pos
+
+	QDEL_IN(holder, breath_particle.lifespan)
 
 /mob/living/carbon/proc/has_smoke_protection()
 	if(HAS_TRAIT(src, TRAIT_NOBREATH))
@@ -308,10 +368,6 @@
 						dna.previous.Remove("blood_type")
 					dna.temporary_mutations.Remove(mut)
 					continue
-
-	radiation -= min(radiation, RAD_LOSS_PER_TICK)
-	if(radiation > RAD_MOB_SAFE)
-		adjustToxLoss(log(radiation-RAD_MOB_SAFE)*RAD_TOX_COEFFICIENT)
 
 /mob/living/carbon/handle_embedded_objects()
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
@@ -520,7 +576,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 /mob/living/carbon/proc/liver_failure()
 	reagents.end_metabolization(src, keep_liverless = TRUE) //Stops trait-based effects on reagents, to prevent permanent buffs
 	reagents.metabolize(src, can_overdose=FALSE, liverless = TRUE)
-	if(HAS_TRAIT(src, TRAIT_STABLELIVER) || HAS_TRAIT(src, TRAIT_NOMETABOLISM))
+	if(HAS_TRAIT(src, TRAIT_NOMETABOLISM))
 		return
 	adjustToxLoss(4, TRUE,  TRUE)
 //	if(prob(30))

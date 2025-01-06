@@ -4,6 +4,10 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = null
 	w_class = WEIGHT_CLASS_TINY
+
+	grid_height = 64
+	grid_width = 32
+	
 	var/amount_per_transfer_from_this = 5
 	var/list/possible_transfer_amounts = list(5,10,15,20,25,30)
 	var/volume = 30
@@ -128,7 +132,7 @@
 	reagents.expose_temperature(1000)
 	..()
 
-/obj/item/reagent_containers/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/item/reagent_containers/temperature_expose(exposed_temperature, exposed_volume)
 	reagents.expose_temperature(exposed_temperature)
 
 /obj/item/reagent_containers/on_reagent_change(changetype)

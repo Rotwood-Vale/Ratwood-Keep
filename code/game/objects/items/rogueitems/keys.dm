@@ -15,6 +15,9 @@
 	drop_sound = 'sound/items/gems (1).ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 
+	grid_height = 32
+	grid_width = 32
+
 /obj/item/key/Initialize()
 	. = ..()
 	if(lockid)
@@ -40,6 +43,9 @@
 	max_integrity = 10
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
 	destroy_sound = 'sound/items/pickbreak.ogg'
+
+	grid_width = 32
+	grid_height = 64
 
 //custom key
 /obj/item/key/custom
@@ -173,11 +179,11 @@
 	icon_state = "hornkey"
 	lockid = "tavern"
 
-/obj/item/key/velder
-	name = "elder's key"
-	desc = "This key should open and close the elder's home."
+/obj/item/key/mayor
+	name = "mayor's key"
+	desc = "This key should open and close the townhall and the mayor's home."
 	icon_state = "brownkey"
-	lockid = "velder"
+	lockid = "mayor"
 
 /obj/item/key/tavern/village
 	lockid = "vtavern"
@@ -529,3 +535,9 @@
 	desc = "This old key opens shop #1 in merchant street area."
 	icon_state = "rustkey"
 	lockid = "street_shop01"
+
+/obj/item/key/street_shop02
+	name = "Street shop key #2"
+	desc = "This old key opens shop #2 behind the mayor's house."
+	icon_state = "rustkey"
+	lockid = "street_shop02"

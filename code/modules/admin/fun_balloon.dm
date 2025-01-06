@@ -74,21 +74,4 @@
 		var/turf/T = find_safe_turf()
 		new /obj/effect/temp_visual/gravpush(get_turf(M))
 		M.forceMove(T)
-		to_chat(M, span_notice("Pop!"))
-
-/obj/effect/station_crash
-	name = "station crash"
-	desc = ""
-	icon = 'icons/obj/items_and_weapons.dmi'
-	icon_state = "syndballoon"
-	anchored = TRUE
-
-/obj/effect/station_crash/Initialize()
-	..()
-	for(var/S in SSshuttle.stationary)
-		var/obj/docking_port/stationary/SM = S
-		if(SM.id == "emergency_home")
-			var/new_dir = turn(SM.dir, 180)
-			SM.forceMove(get_ranged_target_turf(SM, new_dir, rand(3,15)))
-			break
-	return INITIALIZE_HINT_QDEL
+		to_chat(M, "<span class='notice'>Pop!</span>")

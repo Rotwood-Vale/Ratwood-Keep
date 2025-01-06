@@ -38,6 +38,7 @@
 	lockhash = 0
 	lockid = null
 	var/lockbroken = 0
+	var/lockdiff = 0 //how hard it is to pick the lock of a door
 	var/locksound = 'sound/foley/doors/woodlock.ogg'
 	var/unlocksound = 'sound/foley/doors/woodlock.ogg'
 	var/rattlesound = 'sound/foley/doors/lockrattle.ogg'
@@ -504,7 +505,7 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 	else
 		var/lockprogress = 0
-		var/locktreshold = 100
+		var/locktreshold = 100 + (lockdiff * 20)
 
 		var/mob/living/L = user
 
@@ -524,6 +525,7 @@
 		pickchance += pickskill * 10
 		pickchance += perbonus
 		pickchance += luckbonus
+		pickchance -= lockdiff * 10
 		pickchance = clamp(pickchance, 1, 95)
 
 		while(!QDELETED(I) &&(lockprogress < locktreshold))
@@ -536,7 +538,7 @@
 				if(L.mind)
 					var/amt2raise = L.STAINT
 					var/boon = L.STALUC/4
-					L.mind.adjust_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
+					L.mind.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
 				if(lockprogress >= locktreshold)
 					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
 					lock_toggle(user)

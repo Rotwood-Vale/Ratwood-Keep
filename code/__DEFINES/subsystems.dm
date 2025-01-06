@@ -136,7 +136,6 @@
 #define INIT_ORDER_STICKY_BAN		-10
 #define INIT_ORDER_LIGHTING			-20
 #define INIT_ORDER_OUTDOOR_EFFECTS  -21
-#define INIT_ORDER_SHUTTLE			-22
 #define INIT_ORDER_MINOR_MAPPING	-40
 #define INIT_ORDER_PATH				-50
 #define INIT_ORDER_DISCORD			-60
@@ -145,7 +144,8 @@
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
-
+#define FIRE_PRIORITY_SLOW_OBJECTS 5
+#define FIRE_PRIORITY_ENCHANTMENT 10
 #define FIRE_PRIORITY_ROLE_CLASS_HANDLER 10
 #define FIRE_PRIORITY_PING			10
 #define FIRE_PRIORITY_WET_FLOORS	10
@@ -196,19 +196,9 @@
 
 
 //! ## Overlays subsystem
-// A reasonable number of maximum overlays an object needs
-// If you think you need more, rethink it
-#define MAX_ATOM_OVERLAYS 300
 
 ///Compile all the overlays for an atom from the cache lists
 #define POST_OVERLAY_CHANGE(changed_on) \
-	if(length(changed_on.overlays) >= MAX_ATOM_OVERLAYS) { \
-		var/text_lays = overlays2text(changed_on.overlays); \
-		stack_trace("Too many overlays on [changed_on.type] - [length(changed_on.overlays)], refusing to update and cutting.\
-			\n What follows is a printout of all existing overlays at the time of the overflow \n[text_lays]"); \
-		changed_on.overlays.Cut(); \
-		changed_on.add_overlay(mutable_appearance('icons/testing/greyscale_error.dmi')); \
-	} \
 	if(alternate_appearances) { \
 		for(var/I in changed_on.alternate_appearances){\
 			var/datum/atom_hud/alternate_appearance/AA = changed_on.alternate_appearances[I];\

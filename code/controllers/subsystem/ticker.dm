@@ -248,7 +248,12 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/checkreqroles()
 	var/list/readied_jobs = list()
-	var/list/required_jobs = list()
+	var/list/required_jobs = list("Duke")
+
+	// Start now server button
+	if(start_immediately)
+		job_change_locked = TRUE
+		return TRUE
 
 	for(var/V in required_jobs)
 		for(var/mob/dead/new_player/player in GLOB.player_list)
@@ -261,6 +266,13 @@ SUBSYSTEM_DEF(ticker)
 							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
 							continue
 					readied_jobs.Add(V)
+
+#ifndef FASTLOAD
+	if(!("Duke" in readied_jobs))
+		var/list/stuffy = list("Set Duke to 'high' in your class preferences to start the game!", "PLAY Duke NOW!", "A Duke is required to start.", "Pray for a Duke.", "One day, there will be a Duke.", "Just try playing Duke.", "If you don't play Duke, the game will never start.", "We need at least one Duke to start the game.", "We're waiting for you to pick Duke to start.", "Still no Duke is readied..", "I'm going to lose my mind if we don't get a Duke readied up.","No. The game will not start because there is no Duke.")
+		to_chat(world, span_purple("[pick(stuffy)]"))
+		return FALSE
+#endif
 
 	job_change_locked = TRUE
 	return TRUE
@@ -380,6 +392,22 @@ SUBSYSTEM_DEF(ticker)
 		transfer_characters()	//transfer keys to the new mobs
 		log_game("GAME SETUP: transfer characters success")
 
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
+			if(H.client)
+				var/datum/job/J = SSjob.GetJob(H.job)
+				if(!J)
+					continue
+				if(SSjob.GetJob(H.job).family_blacklisted)
+					continue
+				if(SSfamily.special_role_blacklist.Find(H.mind.special_role))
+					continue
+				if(H.client.prefs.family == FAMILY_FULL)
+					SSfamily.family_candidates += H
+
+
+		SSfamily.SetupLordFamily()
+		SSfamily.SetupFamilies()
+
 	for(var/I in round_start_events)
 		var/datum/callback/cb = I
 		cb.InvokeAsync()
@@ -408,8 +436,6 @@ SUBSYSTEM_DEF(ticker)
 	log_game("GAME SETUP: Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time - (world.timeofday - init_start)
 	round_start_irl = REALTIMEOFDAY
-//	SSshuttle.emergency.startTime = world.time
-//	SSshuttle.emergency.setTimer(ROUNDTIMERBOAT)
 
 	SSdbcore.SetRoundStart()
 
@@ -526,6 +552,7 @@ SUBSYSTEM_DEF(ticker)
 				var/atom/movable/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
 			livings += living
+			GLOB.character_ckey_list[living.real_name] = living.ckey
 			if(ishuman(living))
 				try_apply_character_post_equipment(living)
 	if(livings.len)
@@ -586,8 +613,6 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/check_maprotate()
 	if (!CONFIG_GET(flag/maprotation))
-		return
-	if (SSshuttle.emergency && SSshuttle.emergency.mode != SHUTTLE_ESCAPE || SSshuttle.canRecall())
 		return
 	if (maprotatechecked)
 		return
@@ -687,8 +712,6 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "The project started by [station_name()] to upgrade their silicon units with advanced equipment have been largely successful, though they have thus far refused to release schematics in a violation of company policy."
 		if(CLOCK_PROSELYTIZATION)
 			news_message = "The burst of energy released near [station_name()] has been confirmed as merely a test of a new weapon. However, due to an unexpected mechanical error, their communications system has been knocked offline."
-		if(SHUTTLE_HIJACK)
-			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
 
 	if(news_message)
 		send2otherserver(news_source, news_message,"News_Report")
@@ -750,6 +773,7 @@ SUBSYSTEM_DEF(ticker)
 		return
 
 	SStriumphs.end_triumph_saving_time()
+
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time

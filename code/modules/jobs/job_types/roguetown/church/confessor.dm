@@ -40,7 +40,7 @@ Please do not confuse the two.
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	mask = /obj/item/clothing/mask/rogue/shepherd
+	mask = /obj/item/clothing/mask/rogue/rag
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

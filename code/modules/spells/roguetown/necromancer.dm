@@ -15,7 +15,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 15 SECONDS
 	miracle = FALSE
-	cost = 2
+	cost = 4
 	chargedrain = 1
 	xp_gain = TRUE
 
@@ -95,7 +95,7 @@
 
 /obj/effect/proc_holder/spell/invoked/raise_undead_lesser
 	name = "Lesser Raise Undead"
-	cost = 6	
+	cost = 6
 	desc = "Reanimate a corpse as a skeleton. You can maintain two sapient skeletons, the rest will be mindless. The body must have all limbs and its head."
 	clothes_req = FALSE
 	range = 7
@@ -221,6 +221,11 @@
 		to_chat(user, span_warning("I cannot raise goblins."))
 		return FALSE
 
+	// bandaid like the goblins, should also prevent farming the sewers for a free skeleton army
+	if(istype(obj, /mob/living/carbon/human/species/human/northern/bum))
+		to_chat(user, span_warning("I cannot raise this wretch."))
+		return FALSE
+
 	var/mob/living/carbon/human/target = obj
 
 	if(target.stat != DEAD)
@@ -252,9 +257,9 @@
 	if(target.necrotarget == TRUE)
 		to_chat(user, span_warning("I am already trying to raise this corpse."))
 		return FALSE
-	
+
 	target.set_necrotarget(TRUE)
-	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)	
+	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
 	if(user.mind.boneboys < user.mind.bonemax)
 		to_chat(user, span_warning("I have the capacity to sustain another self aware skeleton!"))
@@ -313,7 +318,7 @@
 		return TRUE
 
 	target.set_necrotarget(TRUE)
-	return FALSE	
+	return FALSE
 
 /mob/living/proc/handle_necromancy()
 	if(src.mind.boneboy == FALSE)
@@ -358,6 +363,12 @@
 	mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 	mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
 	mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE) //Some basic skills, for actual undead servants. Don't have to be all combat
+	mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/labor/mining, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
 	mind.current.job = null
 
 	dna.species.species_traits |= NOBLOOD
@@ -366,7 +377,7 @@
 
 
 	cmode_music = 'sound/music/combat_cult.ogg'
-	
+
 	patron = master.patron
 	mob_biotypes = MOB_UNDEAD
 	faction = list("undead")
@@ -389,6 +400,7 @@
 
 	can_do_sex = FALSE //where my bonger go
 
+	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC) //Why wasn't this a thing from the start
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
@@ -448,7 +460,7 @@
 
 /obj/effect/proc_holder/spell/self/command_undead/cast(mob/user = usr)
 	..()
-	
+
 	var/message = input("Speak to your minions!", "LICH") as text|null
 
 	if(!message)
@@ -485,14 +497,14 @@
 
 /obj/effect/proc_holder/spell/invoked/revoke_unlife/cast(list/targets, mob/living/carbon/human/user)
 	. = ..()
-	
+
 	var/obj = targets[1]
 
 	if(!obj || !istype(obj, /mob/living/carbon/human))
 		to_chat(user, span_warning("I should cast this spell on a misbehaving minion."))
 		return
 	var/mob/living/carbon/human/target = obj
-	
+
 	if(target.stat == DEAD)
 		to_chat(user, span_warning("This one is already dead, best reanimate it."))
 		return
@@ -500,12 +512,12 @@
 	if(!(target in user.minions))
 		to_chat(user, span_warning("This is not one of mine."))
 		return
-	
+
 	if(!target.client)
 		target.death()
 		to_chat(user, span_warning("The strings are cut, the mindless one comes undone."))
 		return
-	
+
 	to_chat(target, span_warning("I have disappointed my Master! I feel Necra's scythe catch upon my very soul!"))
 	target.death()
 	sleep(1 SECONDS)

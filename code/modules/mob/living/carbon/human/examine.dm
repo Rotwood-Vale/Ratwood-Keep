@@ -40,11 +40,6 @@
 		m2 = "my"
 		m3 = "I have"
 
-	if(isliving(user))
-		var/mob/living/L = user
-		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA))
-			obscure_name = TRUE
-
 	var/static/list/unknown_names = list(
 		"Unknown",
 		"Unknown Man",
@@ -82,7 +77,7 @@
 				display_as_wanderer = TRUE
 			if(J.foreign_examine)
 				display_as_foreign = TRUE
-			if(J.flag == MERCENARY)
+			if(J.mercenary_examine)
 				are_mercenary = TRUE
 			if(islatejoin && !are_mercenary)
 				is_returning = TRUE
@@ -94,7 +89,7 @@
 			var/datum/job/OJ = SSjob.GetJob(user.job)
 			if(OJ.foreign_examine)
 				am_foreign = TRUE
-			if(OJ.flag == MERCENARY)
+			if(OJ.mercenary_examine)
 				am_mercenary = TRUE
 
 		if(display_as_wanderer)
@@ -133,8 +128,14 @@
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			if(H.marriedto == name)
-				. += span_love("It's my spouse.")
+			if(H.isFamily(src))
+				var/datum/relation/R = H.getRelationship(src)
+				if(R)
+					. += "It's my [R.name]!"
+			else if(family)
+				var/datum/family/F = getFamily()
+				if(F)
+					. += "Ah, they belong to the [F.name] family!"
 
 		if(display_as_foreign && user != src)
 			if(are_mercenary && am_mercenary)

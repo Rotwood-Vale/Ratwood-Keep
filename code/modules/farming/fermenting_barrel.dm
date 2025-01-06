@@ -6,7 +6,6 @@
 	density = TRUE
 	opacity = FALSE
 	anchored = FALSE
-	pressure_resistance = 2 * ONE_ATMOSPHERE
 	max_integrity = 300
 	drag_slowdown = 2
 	var/open = FALSE
@@ -45,6 +44,8 @@
 		var/success
 		for(var/obj/item/reagent_containers/food/snacks/grown/bagged_fruit in I.contents)
 			if(try_ferment(bagged_fruit, user, TRUE))
+				var/datum/component/storage/STR = I.GetComponent(/datum/component/storage)
+				STR.remove_from_storage(bagged_fruit)
 				success = TRUE
 		if(success)
 			to_chat(user, span_info("I dump the contents of [I] into [src]."))

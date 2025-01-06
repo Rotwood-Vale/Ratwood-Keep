@@ -43,7 +43,6 @@ SUBSYSTEM_DEF(traumas)
 	)
 
 	phobia_species = list(
-		"lizards" = typecacheof(list(/datum/species/lizard)),
 	)
 
 	return ..()

@@ -43,6 +43,9 @@
 	. = ..()
 	var/atom/target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
 	var/escaped =  !target || !can_see(controller.pawn, target, run_distance) // If we can't see it we got away
+	if (!controller.blackboard[BB_BASIC_MOB_FLEEING])
+		finish_action(controller, succeeded = TRUE)
+		return
 	if (escaped)
 		finish_action(controller, succeeded = TRUE)
 		return

@@ -12,6 +12,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
+	grid_height = 64
+	grid_width = 64
+
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()
 	user.update_fov_angles()
@@ -51,7 +54,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon
 	color = "#78a3c9"
-	
+
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
@@ -127,6 +130,17 @@
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
 
+/obj/item/clothing/head/roguetown/eoramask
+	name = "eoran mask"
+	desc = "A silver opera mask worn by the faithful of Eora, usually during their rituals."
+	icon_state = "eoramask"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	dynamic_hair_suffix = ""
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	resistance_flags = FIRE_PROOF // Made of metal
+
 /obj/item/clothing/head/roguetown/roguehood/astrata
 	name = "sun hood"
 	desc = "A hood worn by those who favor Astrata. Praise the firstborn sun!"
@@ -186,10 +200,14 @@
 
 /obj/item/clothing/head/roguetown/priestmask
 	name = "solar visage"
-	desc = "The sanctified helm of the most devoted. Thiefs beware."
+	desc = "The sanctified helm of the most devoted. Thieves beware."
 	color = null
 	icon_state = "priesthead"
 	item_state = "priesthead"
+	body_parts_covered = HEAD|HAIR|EARS|NECK
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	armor = list("blunt" = 20, "slash" = 20, "stab" = 20, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_ASSASSIN)
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
 
@@ -690,7 +708,7 @@
 	icon_state = "volfplate"
 	item_state = "volfplate"
 	adjustable = CAN_CADJUST
-	max_integrity = 300 
+	max_integrity = 300
 	emote_environment = 3
 	armor_class = ARMOR_CLASS_MEDIUM
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
@@ -1167,19 +1185,6 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
-/obj/item/clothing/head/roguetown/eoramask
-	name = "eoran mask"
-	desc = "A silver rabbit mask worn by the faithful of Eora, usually during their rituals."
-	color = null
-	icon_state = "eoramask"
-	item_state = "eoramask"
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
-	worn_x_dimension = 64
-	worn_y_dimension = 64
-	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
-	dynamic_hair_suffix = ""
-	resistance_flags = FIRE_PROOF // Made of metal
-
 /obj/item/clothing/head/peaceflower
 	name = "eoran bud"
 	desc = "A flower of gentle petals, associated with Eora or Necra. Usually adorned as a headress or laid at graves as a symbol of love or peace."
@@ -1199,10 +1204,12 @@
 	. = ..()
 	if(slot == SLOT_HEAD)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
+		user.add_stress(/datum/stressevent/eora)
 
 /obj/item/clothing/head/peaceflower/dropped(mob/living/carbon/human/user)
 	..()
 	REMOVE_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
+	user.remove_stress(/datum/stressevent/eora)
 
 /obj/item/clothing/head/peaceflower/proc/peace_check(mob/living/user)
 	// return true if we should be unequippable, return false if not
@@ -1259,6 +1266,15 @@
 	clothing_flags = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/head/roguetown/inqhat
+	name = "inquisitorial hat"
+	desc = "Redemption is your currency."
+	icon_state = "inqhat"
+	item_state = "inqhat"
+	sewrepair = TRUE
+
+
 
 //----------------- BLACKSTEEL ---------------------
 

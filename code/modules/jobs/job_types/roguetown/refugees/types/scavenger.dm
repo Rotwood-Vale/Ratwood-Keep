@@ -68,36 +68,40 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+			r_hand = /obj/item/rogueweapon/thresher
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 			belt = /obj/item/storage/belt/rogue/leather/rope
+			beltl = /obj/item/rogueweapon/sickle
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			head = /obj/item/clothing/head/roguetown/strawhat
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			armor = /obj/item/clothing/suit/roguetown/armor/workervest
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			backl = /obj/item/storage/backpack/rogue/backpack
+			backpack_contents = list(/obj/item/seeds/wheat = 2, /obj/item/seeds/apple = 1, /obj/item/ash = 3)
 			H.change_stat("strength", 1)
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
 
 		if("Tracker")
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random

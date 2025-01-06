@@ -125,6 +125,9 @@
 	lumber_amount = 0
 	metalizer_result = /obj/item/needle
 
+	grid_height = 64
+	grid_width = 32
+
 /obj/item/grown/log/tree/stick/Crossed(mob/living/L)
 	. = ..()
 	if(istype(L))

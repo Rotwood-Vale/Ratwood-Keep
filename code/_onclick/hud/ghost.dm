@@ -106,6 +106,7 @@
 	using.screen_loc = ui_ghost_teleport
 	static_inventory += using
 
+
 	using = new /atom/movable/screen/ghost/moveup(null, src)
 	using.screen_loc = ui_ghost_moveup
 	static_inventory += using

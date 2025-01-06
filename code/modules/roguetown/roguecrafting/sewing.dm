@@ -577,19 +577,21 @@
 	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/leathercoat
-	name = "leather coat"
+	name = "leather coat (4 leather, fur, fiber; JOURNEYMAN)"
 	result = /obj/item/clothing/suit/roguetown/armor/leathercoat
 	reqs = list(/obj/item/natural/hide/cured = 4,
 				/obj/item/natural/fur = 1,
 				/obj/item/natural/fibers = 1)
-	skill_level = 4
+	skill_level = 3
 
-/datum/crafting_recipe/roguetown/sewing/leathercoat
-	name = "heavy leather coat"
+/datum/crafting_recipe/roguetown/sewing/leathercoat/heavy
+	name = "heavy leather coat (4 furs, leather, fiber; EXPERT)"
 	result = /obj/item/clothing/suit/roguetown/armor/leathercoat/heavy
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fur = 4,
 				/obj/item/natural/fibers = 1)
+	skill_level = 4
+
 /datum/crafting_recipe/roguetown/sewing/shoes
 	name = "simple shoes (leather; NOVICE)"
 	result = list(/obj/item/clothing/shoes/roguetown/simpleshoes)
@@ -820,7 +822,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/shirt
 	name = "shirt (formal silks) - (5 silks; LOOM, JOURNEYMAN)"
-	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan)
+	result = list(/obj/item/clothing/suit/roguetown/shirt/grenzelhoft)
 	reqs = list(/obj/item/natural/silk = 5)
 	skill_level = 3
 

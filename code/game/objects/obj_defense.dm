@@ -116,9 +116,9 @@
 		if(M.environment_smash)
 			play_soundeffect = 0
 		if(M.obj_damage)
-			. = attack_generic(M, M.obj_damage, M.melee_damage_type, M.d_type, play_soundeffect, M.armor_penetration)
+			. = attack_generic(M, M.obj_damage, M.melee_damage_type, M.damage_type, play_soundeffect, M.armor_penetration)
 		else
-			. = attack_generic(M, rand(M.melee_damage_lower,M.melee_damage_upper), M.melee_damage_type, M.d_type, play_soundeffect, M.armor_penetration)
+			. = attack_generic(M, rand(M.melee_damage_lower,M.melee_damage_upper), M.melee_damage_type, M.damage_type, play_soundeffect, M.armor_penetration)
 		if(. && !play_soundeffect)
 			playsound(src, 'sound/blank.ogg', 100, TRUE)
 

@@ -129,7 +129,6 @@
 	pushed_mob.visible_message(span_danger("[user] slams [pushed_mob] onto \the [src]!"), \
 								span_danger("[user] slams you onto \the [src]!"))
 	log_combat(user, pushed_mob, "tabled", null, "onto [src]")
-	SEND_SIGNAL(pushed_mob, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table)
 
 /obj/structure/table/proc/tableheadsmash(mob/living/user, mob/living/pushed_mob)
 	pushed_mob.Knockdown(30)
@@ -159,8 +158,8 @@
 				deconstruct(TRUE, 1)
 			return
 
-	if(istype(I, /obj/item/storage/bag/tray))
-		var/obj/item/storage/bag/tray/T = I
+	if(istype(I, /obj/item/storage/tray))
+		var/obj/item/storage/tray/T = I
 		if(T.contents.len > 0) // If the tray isn't empty
 			SEND_SIGNAL(I, COMSIG_TRY_STORAGE_QUICK_EMPTY, drop_location())
 			user.visible_message(span_notice("[user] empties [I] on [src]."))
@@ -201,10 +200,6 @@
 			var/turf/T = get_turf(src)
 			if(buildstack)
 				new buildstack(T, buildstackamount)
-			else
-				for(var/i in custom_materials)
-					var/datum/material/M = i
-					new M.sheet_type(T, FLOOR(custom_materials[M] / MINERAL_MATERIAL_AMOUNT, 1))
 			if(!wrench_disassembly)
 				new frame(T)
 			else

@@ -190,6 +190,21 @@
 				SStreasury.give_money_account(amount_to_pay, H)
 	if(href_list["compact"])
 		compact = !compact
+	if(href_list["withdraw"])
+		var/withdraw_amount = input(usr, "How much to withdraw", src) as null|num
+		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
+			return
+		if(findtext(num2text(withdraw_amount), "."))
+			return
+		if(!withdraw_amount || !SStreasury.treasury_value)
+			return
+		if(withdraw_amount < 1)
+			return
+		// If we try to withdraw more than is in the treasury, set the withdraw amount to the treasury value instead.
+		withdraw_amount = min(withdraw_amount, SStreasury.treasury_value)
+
+		SStreasury.remove_money_treasury(withdraw_amount, "direct withdraw")
+		budget2change(withdraw_amount, usr)
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/steward/proc/do_import(datum/roguestock/D,number)
@@ -241,7 +256,8 @@
 			contents += " <a href='?src=\ref[src];compact=1'>\[Compact: [compact? "ENABLED" : "DISABLED"]\]</a><BR>"
 			contents += "<center>Bank<BR>"
 			contents += "--------------<BR>"
-			contents += "Treasury: [SStreasury.treasury_value]m</center><BR>"
+			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
+			contents += "<a href='?src=\ref[src];withdraw=1'>\[Withdraw\]</a></center><BR>"
 			contents += "<a href='?src=\ref[src];payroll=1'>\[Pay by Class\]</a><BR><BR>"
 			if(compact)
 				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)

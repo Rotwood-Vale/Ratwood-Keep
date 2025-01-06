@@ -3,6 +3,7 @@
 #define VAMP_LEVEL_TWO 12000
 #define VAMP_LEVEL_THREE 15000
 #define VAMP_LEVEL_FOUR 20000
+#define VAMP_MAX_VITAE 65000 //Makes Vamp Lord more vulnerable lategame.
 
 GLOBAL_LIST_EMPTY(vampire_objects)
 
@@ -361,7 +362,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				var/turf/T = H.loc
 				if(T.can_see_sky())
 					if(T.get_lumcount() > 0.15)
-						if(!isspawn)
+						if(!isspawn && !disguised) //VLord has no access to disguise by default, but this is good for adminbus. 
 							to_chat(H, span_warning("Astrata spurns me! I must get out of her rays!")) // VLord is more punished for daylight excursions.
 							var/turf/N = H.loc
 							if(N.can_see_sky())
@@ -392,7 +393,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	handle_vitae(-1)
 
 /datum/antagonist/vampirelord/proc/handle_vitae(change, tribute)
-	var/tempcurrent = vitae
+	var/sanitized = clamp(vitae, 0, VAMP_MAX_VITAE) 
+	var/tempcurrent = sanitized  //Stops Vitae from going below 0.
 	if(!isspawn)
 		mypool.update_pool(change)
 	if(isspawn)
@@ -418,6 +420,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			starved = FALSE
 			for(var/S in MOBSTATS)
 				owner.current.change_stat(S, 5)
+	vitae = sanitized //Should hopefully prevent any future vitae issues.
 
 /datum/antagonist/vampirelord/proc/move_to_spawnpoint()
 	owner.current.forceMove(pick(GLOB.vlord_starts))
@@ -432,7 +435,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			for(var/obj/structure/vampire/portalmaker/S in GLOB.vampire_objects)
 				S.unlocked = TRUE
 			for(var/S in MOBSTATS)
-				owner.current.change_stat(S, 2)
+				owner.current.change_stat(S, 1)
 			for(var/obj/structure/vampire/bloodpool/B in GLOB.vampire_objects)
 				B.nextlevel = VAMP_LEVEL_TWO
 			to_chat(owner, "<font color='red'>I am refreshed and have grown stronger. The visage of the bat is once again available to me. I can also once again access my portals.</font>")
@@ -445,7 +448,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			gas = new
 			owner.current.AddSpell(gas)
 			for(var/S in MOBSTATS)
-				owner.current.change_stat(S, 2)
+				owner.current.change_stat(S, 1)
 			for(var/obj/structure/vampire/bloodpool/B in GLOB.vampire_objects)
 				B.nextlevel = VAMP_LEVEL_THREE
 			to_chat(owner, "<font color='red'>My power is returning. I can once again access my spells. I have also regained usage of my mist form.</font>")
@@ -473,7 +476,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
 					thrall.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
 					for(var/S in MOBSTATS)
-						thrall.current.change_stat(S, 2)
+						thrall.current.change_stat(S, 3) //Overall stat nerf to VLord (not huge)
 	return
 
 // SPAWN

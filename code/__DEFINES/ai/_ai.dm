@@ -51,3 +51,38 @@
 #define BB_NEXT_HUNGRY "BB_NEXT_HUNGRY"
 ///what we're going to eat next
 #define BB_FOOD_TARGET "bb_food_target"
+
+///Baby-making blackboard
+///Types of animal we can make babies with.
+#define BB_BABIES_PARTNER_TYPES "BB_babies_partner"
+///Types of animal that we make as a baby.
+#define BB_BABIES_CHILD_TYPES "BB_babies_child"
+///Current partner target
+#define BB_BABIES_TARGET "BB_babies_target"
+
+///Finding adult mob
+///key holds the adult we found
+#define BB_FOUND_MOM "BB_found_mom"
+///key for our nest
+#define BB_NESTBOX "BB_nestbox"
+///list of types of mobs we will look for
+#define BB_FIND_MOM_TYPES "BB_find_mom_types"
+///list of types of mobs we must ignore
+#define BB_IGNORE_MOM_TYPES "BB_ignore_mom_types"
+/// Typecache of weakrefs to mobs this mob is friends with, will follow their instructions and won't attack them
+#define BB_FRIENDS_LIST "BB_friends_list"
+
+///are we ready to breed?
+#define BB_BREED_READY "BB_breed_ready"
+///maximum kids we can have
+#define BB_MAX_CHILDREN "BB_max_children"
+
+#define BB_NEST_LIST "BB_nestlist"
+#define BB_NEST_IGNORE_LIST "BB_nest_ignore"
+/// Converts a probability/second chance to probability/seconds_per_tick chance
+/// For example, if you want an event to happen with a 10% per second chance, but your proc only runs every 5 seconds, do `if(prob(100*SPT_PROB_RATE(0.1, 5)))`
+#define SPT_PROB_RATE(prob_per_second, seconds_per_tick) (1 - (1 - (prob_per_second)) ** (seconds_per_tick))
+
+/// Like SPT_PROB_RATE but easier to use, simply put `if(SPT_PROB(10, 5))`
+#define SPT_PROB(prob_per_second_percent, seconds_per_tick) (prob(100*SPT_PROB_RATE((prob_per_second_percent)/100, (seconds_per_tick))))
+// )

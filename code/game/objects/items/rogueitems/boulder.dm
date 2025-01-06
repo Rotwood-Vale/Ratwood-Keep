@@ -26,7 +26,7 @@
 
 /obj/item/boulder/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(launched)
-		if(!istype(hit_atom, /turf/open/space))
+		if(!istype(hit_atom, /turf/open/transparent/openspace))
 			playsound(get_turf(src), pick(incoming), 100, FALSE)
 			spawn(travel_time * 6)
 				explosion(get_turf(src), 1, -1, 2, 0)

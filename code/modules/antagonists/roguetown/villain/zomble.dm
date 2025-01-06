@@ -12,7 +12,7 @@
 	var/soundpack_m
 	var/soundpack_f
 	var/stored_skills
-	var/stored_experience 
+	var/stored_experience
 
 	var/STASTR
 	var/STASPD
@@ -27,6 +27,7 @@
 	var/has_turned = FALSE
 
 	rogue_enabled = TRUE
+	var/mutable_appearance/rotflies
 
 /datum/antagonist/zombie/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/vampirelord))
@@ -53,6 +54,7 @@
 	if(zombie.dna?.species)
 		soundpack_m = zombie.dna.species.soundpack_m
 		soundpack_f = zombie.dna.species.soundpack_f
+		rotflies = mutable_appearance('icons/roguetown/mob/rotten.dmi', "deadite")
 	base_intents = zombie.base_intents
 	cmode_music = zombie.cmode_music
 	patron = zombie.patron
@@ -83,10 +85,13 @@
 	if(zombie.dna?.species)
 		zombie.dna.species.soundpack_m = soundpack_m
 		zombie.dna.species.soundpack_f = soundpack_f
+		zombie.cut_overlay(rotflies)
 	zombie.base_intents = base_intents
 
 	owner.known_skills = stored_skills
 	owner.skill_experience = stored_experience
+
+	zombie.can_do_sex = TRUE
 
 	zombie.update_a_intents()
 	zombie.aggressive = FALSE
@@ -150,11 +155,11 @@
 
 	revived = TRUE //so we can die for real later
 	zombie.add_client_colour(/datum/client_colour/monochrome)
-	
+
 	if(zombie.mind)
 		special_role = zombie.mind.special_role
 		zombie.mind.special_role = name
-		
+
 	if(zombie.dna?.species)
 		soundpack_m = zombie.dna.species.soundpack_m
 		soundpack_f = zombie.dna.species.soundpack_f
@@ -181,7 +186,7 @@
 	var/mob/living/carbon/human/deadite = owner?.current
 	deadite.try_do_deadite_bite()
 	deadite.try_do_deadite_idle()
-	
+
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag
 /datum/antagonist/zombie/proc/wake_zombie(infected_wake = FALSE)
