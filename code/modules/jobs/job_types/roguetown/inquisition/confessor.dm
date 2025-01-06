@@ -5,7 +5,8 @@ Please do not confuse the two.
 /datum/job/roguetown/shepherd
 	title = "Confessor"
 	flag = CONFESSOR
-	department_flag = CHURCHMEN
+	department_flag = INQUISITION
+	selection_color = JCOLOR_INQUISITION
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
@@ -23,7 +24,7 @@ Please do not confuse the two.
 	whitelist_req = TRUE
 	display_order = JDO_SHEPHERD
 	give_bank_account = 3
-	min_pq = 4
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/shepherd

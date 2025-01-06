@@ -1,7 +1,8 @@
 /datum/job/roguetown/puritan
 	title = "Inquisitor"
 	flag = PURITAN
-	department_flag = CHURCHMEN
+	department_flag = INQUISITION
+	selection_color = JCOLOR_INQUISITION
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -18,7 +19,7 @@
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
 	give_bank_account = 200
-	min_pq = 8
+	min_pq = 0
 	max_pq = null
 
 /datum/outfit/job/roguetown/puritan
