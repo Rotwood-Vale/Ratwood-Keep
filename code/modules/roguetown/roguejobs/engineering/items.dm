@@ -36,7 +36,7 @@
 		return
 	else
 		linking = S
-		to_chat(user, span_info("Соединеяем..."))
+		to_chat(user, span_info("Начинаем соединение..."))
 		return
 	..()
 

@@ -56,19 +56,19 @@
 	var/mob/living/player = user
 	var/skill = player.mind.get_skill_level(/datum/skill/craft/engineering)
 	if(current_charge)
-		. += span_warning("The contraption has [current_charge] charges left.")
+		. += span_warning("У этого механизма осталось [current_charge] зарядов для использования.")
 	if(!current_charge)
-		. += span_warning("This contraption requires a new [initial(accepted_power_source.name)] to function.")
+		. += span_warning("Этот механизм просит новую [initial(accepted_power_source.name)] для работы.")
 	if(misfire_chance && skill < 6)
 		if(skill > 2)
-			. += span_warning("You calculate this contraptions chance of failure to be anywhere between [max(0, (misfire_chance - skill) - rand(4))]% and [max(2, (misfire_chance - skill) + rand(3))]%.")
+			. += span_warning("Вы рассчитываете что шанс неисправности механизма примерн равен от [max(0, (misfire_chance - skill) - rand(4))]% до [max(2, (misfire_chance - skill) + rand(3))]%.")
 		else
-			. += span_warning("It seems slightly unstable...")
+			. += span_warning("Оно выглядит нестабильным...")
 	if(skill >= 6 && sneaky_misfire_chance)
-		. += span_warning("This contraption has a chance for catastrophic failure in the hands of the inexperient.")
+		. += span_warning("Этот механизм имеет шанс .")
 
 /obj/item/contraption/proc/battery_collapse(obj/O, mob/living/user)
-	to_chat(user, span_info("The [accepted_power_source.name] wastes away into nothing."))
+	to_chat(user, span_info("[accepted_power_source.name] в заряднике рассыпается в пыль."))
 	playsound(src, pick('sound/combat/hits/onmetal/grille (1).ogg', 'sound/combat/hits/onmetal/grille (2).ogg', 'sound/combat/hits/onmetal/grille (3).ogg'), 100, FALSE)
 	shake_camera(user, 1, 1)
 	var/datum/effect_system/spark_spread/S = new()
@@ -79,7 +79,7 @@
 
 /obj/item/contraption/proc/misfire(obj/O, mob/living/user)
 	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT * 5))
-	to_chat(user, span_info("Oh fuck."))
+	to_chat(user, span_info("Проклятье!."))
 	playsound(src, 'sound/misc/bell.ogg', 100)
 	addtimer(CALLBACK(src, PROC_REF(misfire_result), O, user), rand(5, 30))
 
@@ -109,17 +109,17 @@
 		shake_camera(user, 1, 1)
 		S.set_up(1, 1, front)
 		S.start()
-		to_chat(user, "<span class='warning'>[cog.name] inserted!</span>")
+		to_chat(user, "<span class='warning'>[cog.name] вставлена!</span>")
 	if(istype(I, accepted_power_source))
 		user.changeNext_move(CLICK_CD_FAST)
 		S.set_up(1, 1, front)
 		S.start()
 		if(current_charge)
-			to_chat(user, span_info("I try to insert the [I.name] but theres already \a [initial(accepted_power_source.name)] inside!"))
+			to_chat(user, span_info("Я пытаюсь вставить [I.name], но внутри уже есть \a [initial(accepted_power_source.name)]!"))
 			playsound(src, 'sound/combat/hits/blunt/woodblunt (2).ogg', 100, TRUE)
 			shake_camera(user, 1, 1)
 		else
-			to_chat(user, span_info("I insert the [I.name] and the [name] starts ticking."))
+			to_chat(user, span_info("Я вставляю [I.name] и [name] начинает ритмично постукивать."))
 			current_charge = charge_per_source
 			playsound(src, 'sound/combat/hits/blunt/woodblunt (2).ogg', 100, TRUE)
 			qdel(I)
@@ -131,7 +131,7 @@
 /obj/item/contraption/proc/hammer_action(obj/item/I, mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
 	flick(off_icon, src)
-	user.visible_message(span_info("[user] beats the [name] into submission!"))
+	user.visible_message(span_info("[user] ударяет [name] по заряднику!"))
 	playsound(src, pick('sound/combat/hits/onmetal/sheet (1).ogg', 'sound/combat/hits/onmetal/sheet (2).ogg', 'sound/combat/hits/onmetal/grille (1).ogg', 'sound/combat/hits/onmetal/grille (2).ogg', 'sound/combat/hits/onmetal/grille (3).ogg'), 100, TRUE)
 	shake_camera(user, 1, 1)
 	var/datum/effect_system/spark_spread/S = new()
@@ -157,7 +157,7 @@
 /obj/item/contraption/attack_obj(obj/O, mob/living/user)
 	if(!current_charge)
 		flick(off_icon, src)
-		to_chat(user, span_info("The contraption beeps! It requires \a [initial(accepted_power_source.name)]!"))
+		to_chat(user, span_info("Механизм гудит! Он требует \a [initial(accepted_power_source.name)] для работы!"))
 		playsound(src, 'sound/magic/magic_nulled.ogg', 100, TRUE)
 		return
 
