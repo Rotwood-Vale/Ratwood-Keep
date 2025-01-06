@@ -4341,6 +4341,12 @@
 "dKO" = (
 /turf/open/floor/rogue/dirt/ambush,
 /area/rogue/under/cave)
+"dLb" = (
+/obj/structure/closet/crate/chest/neu,
+/obj/item/reagent_containers/food/snacks/rogue/bread,
+/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/garrison)
 "dLv" = (
 /obj/item/chair/rogue,
 /turf/open/floor/rogue/concrete,
@@ -6897,7 +6903,7 @@
 	dir = 4;
 	lockid = "garrison"
 	},
-/turf/open/floor/rogue/blocks,
+/turf/closed,
 /area/rogue/indoors/town/cell)
 "gii" = (
 /obj/structure/fluff/railing/border{
@@ -8093,12 +8099,11 @@
 	},
 /area/rogue/indoors/town/manor)
 "hpA" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
-/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "tablewood2"
+	},
+/obj/item/rogueweapon/huntingknife/cleaver,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "hpC" = (
@@ -12087,11 +12092,14 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/bath)
 "kSx" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w"
+	},
 /obj/structure/table/wood{
-	dir = 6;
+	dir = 4;
 	icon_state = "largetable"
 	},
-/obj/item/rogueweapon/huntingknife/cleaver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "kSP" = (
@@ -14421,8 +14429,11 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/shop)
 "mXZ" = (
-/obj/structure/closet/crate/chest/neu,
-/obj/item/reagent_containers/food/snacks/rogue/bread,
+/obj/structure/closet/crate/roguecloset,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "mZc" = (
@@ -17863,11 +17874,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "pSu" = (
-/obj/structure/table/wood{
-	dir = 10;
-	icon_state = "tablewood2"
-	},
-/obj/structure/fluff/millstone,
+/obj/structure/closet/crate/roguecloset,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "pTw" = (
@@ -19944,11 +19955,8 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "rQG" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/cooking/platter,
-/obj/item/cooking/platter,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/reagent_containers/glass/bowl,
+/obj/machinery/light/rogue/hearth,
+/obj/item/cooking/pan,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "rQI" = (
@@ -22733,11 +22741,22 @@
 	},
 /area/rogue/indoors/town)
 "unf" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w"
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 6
+	},
 /obj/structure/table/wood{
 	dir = 5;
 	icon_state = "largetable"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/paper{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/natural/feather,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "ung" = (
@@ -22768,8 +22787,18 @@
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town)
 "upc" = (
-/obj/machinery/light/rogue/hearth,
-/obj/item/cooking/pan,
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w"
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 5
+	},
+/obj/structure/table/wood{
+	dir = 6;
+	icon_state = "largetable"
+	},
+/obj/item/book/rogue/law,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "upZ" = (
@@ -69589,9 +69618,9 @@ sRc
 uez
 lpp
 ntT
-lpp
 ghS
 lpp
+ntT
 oUb
 hef
 hef
@@ -69895,7 +69924,7 @@ mDF
 jsn
 hpA
 wJI
-spZ
+dLb
 wfx
 spZ
 dZn
