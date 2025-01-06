@@ -111,6 +111,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Faulds"
 	path = /obj/item/clothing/cloak/fauld
 
+/datum/loadout_item/leatherbikini
+	name = "Leather Bikini"
+	path = /obj/item/clothing/suit/roguetown/armor/leather/bikini
+
 //ACCESSORIES
 /datum/loadout_item/stockings
 	name = "Stockings"
