@@ -1,8 +1,7 @@
 /datum/virtue/items/rich
 	name = "Rich and Shrewd"
-	desc = "Through a stroke of luck or shrewd planning, I've come into a considerable amount of mammon and other stashed valuables. I can tell the value of those I speak to, and what they offer."
+	desc = "Through a stroke of luck or shrewd planning, I've come into a considerable amount of mammon. I can tell the value of those I speak to, and what they offer."
 	added_traits = list(TRAIT_SEEPRICES_SHITTY)
-	added_stashed_items = list("Heirloom Amulet" = /obj/item/clothing/neck/roguetown/ornateamulet)
 	added_skills = list(/datum/skill/misc/reading = 1)	//So the spell would work
 	
 /datum/virtue/items/rich/apply_to_human(mob/living/carbon/human/recipient)
