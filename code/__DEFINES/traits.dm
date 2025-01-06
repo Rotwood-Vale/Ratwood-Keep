@@ -180,8 +180,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
 	TRAIT_SILVER_BLESSED = span_info("I am anointed with holy silver, which preserves me from curses that bite."),
 	TRAIT_GOODTRAINER = span_info("I am a good teacher, and when it comes to weaponry I can train others to be just as skilled as I am."),
-	TRAIT_OUTDOORSMAN = span_info("My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds.")
-	TRAIT_BIGGUY = span_info("My immense frame and size allows me to smash through wooden walls, and into people with more effectiveness.")
+	TRAIT_OUTDOORSMAN = span_info("My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds."),
+	TRAIT_BIGGUY = span_info("My immense frame and size allows me to smash through wooden walls, and into people with more effectiveness."),
 ))
 
 // trait accessor defines
