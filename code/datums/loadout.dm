@@ -79,6 +79,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen
 
+/datum/loadout_item/nobledress
+	name = "noble dress"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/nobledress
+
+/datum/loadout_item/velvetdress
+	name = "velvet dress"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/velvetdress
+
 /datum/loadout_item/bardress
 	name = "Bar Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress
@@ -94,6 +102,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/straplessdress
 	name = "Strapless Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless
+
+/datum/loadout_item/battleskirt
+	name = "Battle Skirt"
+	path = /obj/item/clothing/cloak/fauld/battleskirt
+
+/datum/loadout_item/faulds
+	name = "Faulds"
+	path = /obj/item/clothing/cloak/fauld
 
 //ACCESSORIES
 /datum/loadout_item/stockings
@@ -124,10 +140,6 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/cowbellcollar
 	name = "jingly leather collar(cow)"
 	path = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
-
-/datum/loadout_item/nobledress
-	name = "noble dress"
-	path = /obj/item/clothing/suit/roguetown/shirt/dress/nobledress
 
 // Masks
 /*
