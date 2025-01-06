@@ -65,7 +65,7 @@
 	created_item = /obj/item/rogueweapon/hammer
 
 /datum/anvil_recipe/tools/iron/tongs
-	name = "Клещи"
+	name = "Кузнечные клещи"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/tongs
 
@@ -166,7 +166,7 @@
 	created_item = /obj/item/rogueweapon/surgery/saw
 
 /datum/anvil_recipe/tools/steel/surgery/hemostat
-	name = "Щипцы"
+	name = "Зажим"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/hemostat
 
