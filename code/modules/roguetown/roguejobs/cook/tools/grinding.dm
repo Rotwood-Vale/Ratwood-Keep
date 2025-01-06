@@ -1,6 +1,6 @@
 /obj/structure/fluff/grindstone
-	name = "точильный камень"
-	desc = "Точильный камень, используемый для перемалывания предметов в реагенты."
+	name = "перетирающие жернова"
+	desc = "Перетирающие жернова, используемые для перемалывания предметов в реагенты."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "millstone"
 	density = TRUE
@@ -38,11 +38,11 @@
 		to_chat(user, span_warning("Нечего молоть!"))
 		return TRUE
 	if(do_after(user, 8, target = src))
-		user.visible_message(span_notice("[user] использует точильный камень"), \
-						span_notice("Я начинаю использовать точильный камень"))
+		user.visible_message(span_notice("[user] использует жернова"), \
+						span_notice("Я начинаю использовать жернова"))
 		grindUp(to_grind, usr)
-		user.visible_message(span_notice("[user] закончил использовать точильный камень"), \
-						span_notice("Я закончил использовать точильный камень"))
+		user.visible_message(span_notice("[user] закончил использовать жернова"), \
+						span_notice("Я закончил использовать жернова"))
 		return TRUE
 	..()
 
@@ -92,7 +92,7 @@
 			return
 	if(istype(grindable))
 		if(!grindable.grind_results)
-			to_chat(user, span_warning("Я не могу это перемолоть во что-либо."))
+			to_chat(user, span_warning("Я не могу это перетереть во что-либо."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
 			to_chat(user, span_warning("[I] прилип к моей руке!"))

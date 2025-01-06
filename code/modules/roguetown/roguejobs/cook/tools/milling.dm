@@ -1,6 +1,6 @@
 /obj/structure/fluff/millstone
-	name = "жёрнов"
-	desc = "Каменный жёрнов для перемалывания зерна в муку." //People have been mistaking the "It's Empty" on examine for it eating grain. This is not the case.
+	name = "Молотильные жернова"
+	desc = "Молотильные жернова для перемалывания зерна в муку." //People have been mistaking the "It's Empty" on examine for it eating grain. This is not the case.
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "millstone"
 	density = TRUE
@@ -38,7 +38,7 @@
 		to_chat(user, span_warning("Нечего молоть!"))
 		return TRUE
 	if(do_after(user, 8, target = src))
-		user.visible_message(span_notice("[user] начинает вращать жёрнов"), \
+		user.visible_message(span_notice("[user] начинает вращать жёрнова"), \
 						span_notice("Я начинаю вращать жёрнов."))
 		grindUp(to_grind, usr)
 		user.visible_message(span_notice("[user] заканчивает молоть"), \
