@@ -135,3 +135,51 @@
 /datum/pollutant/food/fried_crow
 	name = "fried crows"
 	scent = "fried crows"
+
+/datum/pollutant/food/oatmeal
+	name = "boiled oats"
+	scent = "boiled oats"
+
+/datum/pollutant/food/potato_stew
+	name = "potato stew"
+	scent = "potato stew"
+
+/datum/pollutant/food/onion_stew
+	name = "onion soup"
+	scent = "onion soup"
+
+/datum/pollutant/food/cabbage_stew
+	name = "cabbage soup"
+	scent = "cabbage soup"
+
+/datum/pollutant/food/turnip_stew
+	name = "turnip soup"
+	scent = "turnip soup"
+
+/datum/pollutant/food/fish_stew
+	name = "fish stew"
+	scent = "fish stew"
+
+/datum/pollutant/food/chicken_stew
+	name = "chicken stew"
+	scent = "chicken stew"
+
+/datum/pollutant/food/meat_stew
+	name = "meat stew"
+	scent = "meat stew"
+
+/datum/pollutant/food/egg_soup
+	name = "egg soup"
+	scent = "egg soup"
+
+/datum/pollutant/food/truffle_stew
+	name = "truffle stew"
+	scent = "truffle stew"
+
+/datum/pollutant/food/cheese_soup
+	name = "cheese soup"
+	scent = "cheese soup"
+
+/datum/pollutant/food/druqks
+	name = "acrid air"
+	scent = "acrid air"
