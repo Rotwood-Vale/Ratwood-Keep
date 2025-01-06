@@ -2,7 +2,7 @@
 	force = 12
 	possible_item_intents = list(ROD_CAST, SPEAR_BASH)
 	name = "удочка"
-	desc = "Сделана из промокшего дерева и грубого шпагата. Орудие в битве со здешними тёмными водами"
+	desc = "Сделана из промокшего дерева и грубой бечёвки. Орудие в битве со здешними тёмными водами"
 	icon_state = "rod"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT

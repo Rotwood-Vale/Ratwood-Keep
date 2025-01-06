@@ -4,7 +4,7 @@
 	reqs = list(/obj/item/grown/log/tree/stick = 1)
 	time = 10 SECONDS
 	verbage_simple = "пытается поставить"
-	verbage = "поставил"
+	verbage = "поставлено"
 	craftsound = 'sound/foley/Building-01.ogg'
 	structurecraft = /obj/structure/closet/dirthole
 	skill_level = 0

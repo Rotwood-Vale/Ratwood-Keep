@@ -19,7 +19,7 @@
 	layer = 2.8
 
 /obj/structure/closet/dirthole/grave
-	desc = "Большая яма, в которую модно закопать гроб."
+	desc = "Большая яма, в которую можно закопать гроб."
 	stage = 3
 	faildirt = 3
 	icon_state = "grave"

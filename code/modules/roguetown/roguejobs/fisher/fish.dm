@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/food/snacks/fish
 	name = "рыба"
-	desc = "Ещё видны остатки крови на е чешуе. Мягкий блеск серебристых чешуек мерцает на свету."
+	desc = "На её чешуе ещё видны остатки крови. Мягкий блеск серебристых чешуек мерцает на свету."
 	icon_state = "carp"
 	icon = 'icons/roguetown/misc/fish.dmi'
 	verb_say = "glubs"

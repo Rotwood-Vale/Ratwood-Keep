@@ -1,6 +1,6 @@
 /obj/structure/dye_bin
 	name = "красильная бочка"
-	desc = "Деревянная бочка, наполненная цветной водой."
+	desc = "Деревянная бочка, наполненная водой для окрашивания тканей."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "dye_bin"
 	density = TRUE

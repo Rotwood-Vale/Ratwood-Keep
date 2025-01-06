@@ -256,7 +256,7 @@
 	return TRUE
 
 /obj/item/natural/worms/leech/cheele
-	name = "медицинская пиявка" //непереводимая игра слов в оригинале
+	name = "медицинская пиявка"
 	desc = "Прекрасный, наполняющий кровью альтруистичный организм, созданный самой Пестрой."
 	icon_state = "cheele"
 	color = null
@@ -297,7 +297,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/V = user
 		if(prob(5))
-			V.say(pick("ХВАЛА ЗИЗО!", "СМЕРТЬ ДЕСЯТИ..."))
+			V.say(pick("СЛАВА ЗИЗО!", "СМЕРТЬ ДЕСЯТИ..."))
 		V.add_stress(/datum/stressevent/leechcult)
 
 #undef MAX_LEECH_EVILNESS
