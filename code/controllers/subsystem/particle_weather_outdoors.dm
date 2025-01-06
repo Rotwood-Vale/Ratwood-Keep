@@ -61,6 +61,7 @@ SUBSYSTEM_DEF(outdoor_effects)
 	                                                   new /datum/time_of_day/midnight())
 
 
+	var/list/turf_weather_affectable_z_levels = list()
 
 /datum/controller/subsystem/outdoor_effects/proc/fullPlonk()
 	for (var/z in SSmapping.levels_by_trait(ZTRAIT_STATION))
@@ -69,6 +70,7 @@ SUBSYSTEM_DEF(outdoor_effects)
 
 /datum/controller/subsystem/outdoor_effects/Initialize(timeofday)
 	if(!initialized)
+		turf_weather_affectable_z_levels = SSmapping.levels_by_trait(ZTRAIT_WEATHER_STUFF)
 		get_time_of_day()
 		InitializeTurfs()
 		initialized = TRUE
@@ -260,7 +262,7 @@ SUBSYSTEM_DEF(outdoor_effects)
 
 
 //get our weather overlay
-/datum/controller/subsystem/outdoor_effects/proc/get_weather_overlay() //TODO VANDERLIN: Restore this to 32x48 for some extra
+/datum/controller/subsystem/outdoor_effects/proc/get_weather_overlay() //TODO: Restore this to 32x48 for some extra
 	var/mutable_appearance/MA = new /mutable_appearance()
 	MA.icon 			  = 'icons/effects/weather_overlay.dmi'
 	MA.icon_state 		  = "weather_overlay"

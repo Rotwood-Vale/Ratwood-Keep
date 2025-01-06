@@ -2782,8 +2782,8 @@
 /area/rogue/under/town/goblin)
 "Hc" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/storage/bag/tray,
-/obj/item/storage/bag/tray,
+/obj/item/storage/tray,
+/obj/item/storage/tray,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
