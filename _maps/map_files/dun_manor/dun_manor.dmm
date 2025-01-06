@@ -2857,10 +2857,8 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/shelter/woods)
 "cvw" = (
-/obj/structure/roguemachine/scomm{
-	pixel_y = -32
-	},
-/turf/open/floor/rogue/blocks,
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "cvy" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/trollbog,
@@ -17139,10 +17137,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/woods)
-"prO" = (
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors/town/garrison)
 "prR" = (
 /obj/effect/landmark/start/artificer{
 	dir = 1
@@ -67304,7 +67298,7 @@ vqp
 spZ
 spZ
 spZ
-cvw
+spZ
 hRm
 hRm
 rzj
@@ -68090,7 +68084,7 @@ xJI
 pPS
 xJI
 jsn
-prO
+cvw
 wWa
 hRm
 pJQ
