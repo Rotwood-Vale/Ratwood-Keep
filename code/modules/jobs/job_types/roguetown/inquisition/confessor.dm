@@ -24,7 +24,7 @@ Please do not confuse the two.
 	whitelist_req = TRUE
 	display_order = JDO_SHEPHERD
 	give_bank_account = 3
-	min_pq = 0
+	min_pq = 4
 	max_pq = null
 
 /datum/outfit/job/roguetown/shepherd
