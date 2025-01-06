@@ -316,7 +316,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<table width='100%'><tr><td width='75%' valign='top'>"
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>Always Random Name: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME_ANTAG]'>When Antagonist: [(randomise[RANDOM_NAME_ANTAG]) ? "Yes" : "No"]</a>"
-			dat += "<b>Имя персонажа:</b> "
+			dat += "<b>Имя:</b> "
 			if(check_nameban(user.ckey))
 				dat += "<a href='?_src_=prefs;preference=name;task=input'>NAMEBANNED</a><BR>"
 			else

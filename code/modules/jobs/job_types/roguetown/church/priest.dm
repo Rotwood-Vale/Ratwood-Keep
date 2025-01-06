@@ -12,7 +12,9 @@
 	allowed_patrons = ALL_DIVINE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "The Divine is all that matters in a world of the immoral. The Weeping God left his children to rule over us mortals and you will preach their wisdom to any who still heed their will. The faithless are growing in number, it is up to you to shepard them to a Gods-fearing future."
+	tutorial = "Божественное - это все, что имеет значение в мире безнравственных. \
+	Плачущий Бог оставил своих детей править нами, смертными, и вы будете проповедовать их мудрость всем, кто еще прислушивается к их воле. \
+	Безбожников становится все больше, и именно вам предстоит направить их в богобоязненное будущее."
 	whitelist_req = FALSE
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/templar, /obj/effect/proc_holder/spell/self/convertrole/monk)

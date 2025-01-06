@@ -11,11 +11,11 @@
 
 	display_order = JDO_DUNGEONEER
 
-	tutorial = "Sometimes at night you stare into the vacant room and feel the loneliness of your existence crawl into whatever remains of your loathsome soul. \
-	You will never know hunger, thirst or want as long as you stay obedient to your Lord: \
-	Just as you’ll never forget the sounds a saw makes cutting through the bone, what a drowning man will gurgle out between the blood and teeth strangling his breath. \
-	You’re a terrible person, and the carriagemen are going to enjoy walking you down that lonesome path to hell. \
-	Only three things command you on this wretched plane, Necra, Mammon, and the Marshal. "
+	tutorial = "Иногда по ночам ты смотришь в пустую комнату и чувствуешь, как одиночество твоего существования заползает во все остатки твоей мерзкой души. \
+	Ты никогда не будешь знать голода, жажды или нужды, пока будешь послушен своему Господу: \
+	Ты никогда не забудешь, какие звуки издает пила, распиливая кость, какие звуки издает утопающий, когда его дыхание перекрывают кровь и зубы. \
+	Ты ужасный человек, и извозчики с удовольствием проведут тебя по одинокой дороге в ад. \
+	Только три вещи повелевают вами на этом жалком плане: Некра, Маммон и Маршал."
 
 	outfit = /datum/outfit/job/roguetown/dungeoneer
 	give_bank_account = 98

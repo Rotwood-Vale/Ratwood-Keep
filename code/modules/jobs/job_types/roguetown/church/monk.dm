@@ -10,7 +10,10 @@
 	allowed_patrons = ALL_ACOLYTE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/monk
-	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble cleric is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Priest in their daily tasks, maybe today will be the day something interesting happens."
+	tutorial = "Обязанности, еще обязанности... Еще больше обязанностей... \
+	О, как утомительна жизнь скромного аколита... \
+	У вас есть вера, но даже вы знаете, что отказались от жизни, полной приключений, ради безопасности в Церкви. \
+	Помогай жрецу в его повседневных делах, может быть, именно сегодня произойдет что-то интересное."
 
 	display_order = JDO_MONK
 	give_bank_account = TRUE

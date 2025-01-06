@@ -9,9 +9,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	tutorial = "Responsible for the safety of the city and the enforcement of the law, \
-	you walk among the downtrodden, delivering justice and pain. \
-	Your loyalty lies in the Sheriff and the cityfolk, for neither clergy nor nobility understand the hardships of a commoner."
+	tutorial = "Отвечая за безопасность города и соблюдение закона,\
+	вы ходите среди угнетенных, неся справедливость и боль. \
+	Ваша верность принадлежит шерифу и горожанам, ибо ни духовенство, ни дворянство не понимают тягот простолюдина."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 

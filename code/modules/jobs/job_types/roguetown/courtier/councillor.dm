@@ -9,11 +9,11 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_COUNCILLOR
-	tutorial = "You may have inherited this role, bought your way into it, or were appointed by the Marshal themselves; \
-			Regardless of origin, you now serve as an assistant, planner, and juror for the Marshal. \
-			You help him oversee the taxation, construction, and planning of new laws. \
-			You only answer to the Duke, Marshal, Duchess, Heir, or Heiress. However, your main focus is to assist the Marshal with their duties."
-	whitelist_req = FALSE
+	tutorial = "Вы могли унаследовать эту должность, купить ее или быть назначены самим маршалом;\
+			Независимо от происхождения, теперь вы служите помощником, планировщиком и присяжным маршала. \
+			Вы помогаете ему следить за налогообложением, строительством и планированием новых законов. \
+			Вы подчиняетесь только герцогу, маршалу, герцогине, наследнику или наследнице. Однако ваша основная задача - помогать маршалу в выполнении его обязанностей."
+
 	outfit = /datum/outfit/job/roguetown/councillor
 	
 	give_bank_account = 40
