@@ -61,7 +61,7 @@
 		. += span_warning("Этот механизм просит новую [initial(accepted_power_source.name)] для работы.")
 	if(misfire_chance && skill < 6)
 		if(skill > 2)
-			. += span_warning("Вы рассчитываете что шанс неисправности механизма примерн равен от [max(0, (misfire_chance - skill) - rand(4))]% до [max(2, (misfire_chance - skill) + rand(3))]%.")
+			. += span_warning("Вы рассчитываете, что шанс неисправности механизма примерно равен от [max(0, (misfire_chance - skill) - rand(4))]% до [max(2, (misfire_chance - skill) + rand(3))]%.")
 		else
 			. += span_warning("Оно выглядит нестабильным...")
 	if(skill >= 6 && sneaky_misfire_chance)
