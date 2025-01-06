@@ -248,7 +248,12 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/checkreqroles()
 	var/list/readied_jobs = list()
-	var/list/required_jobs = list()
+	var/list/required_jobs = list("Duke")
+
+	// Start now server button
+	if(start_immediately)
+		job_change_locked = TRUE
+		return TRUE
 
 	for(var/V in required_jobs)
 		for(var/mob/dead/new_player/player in GLOB.player_list)
@@ -261,6 +266,13 @@ SUBSYSTEM_DEF(ticker)
 							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
 							continue
 					readied_jobs.Add(V)
+
+#ifndef FASTLOAD
+	if(!("Duke" in readied_jobs))
+		var/list/stuffy = list("Set Duke to 'high' in your class preferences to start the game!", "PLAY Duke NOW!", "A Duke is required to start.", "Pray for a Duke.", "One day, there will be a Duke.", "Just try playing Duke.", "If you don't play Duke, the game will never start.", "We need at least one Duke to start the game.", "We're waiting for you to pick Duke to start.", "Still no Duke is readied..", "I'm going to lose my mind if we don't get a Duke readied up.","No. The game will not start because there is no Duke.")
+		to_chat(world, span_purple("[pick(stuffy)]"))
+		return FALSE
+#endif
 
 	job_change_locked = TRUE
 	return TRUE
