@@ -149,7 +149,7 @@
 	skill_level = 4
 
 /datum/artificer_recipe/contraptions/smelter
-	name = "Портативная плавильня (+1 Уголь)"
+	name = "Переносная плавильня (+1 Уголь)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/rogueore/coal = 1)
 	created_item = /obj/item/contraption/smelter
