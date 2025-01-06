@@ -155,6 +155,7 @@
 	desc = ""
 	icon_state = "border"
 	passcrawl = FALSE
+	has_reflection = FALSE
 
 /obj/structure/fluff/railing/fence
 	name = "palisade"
