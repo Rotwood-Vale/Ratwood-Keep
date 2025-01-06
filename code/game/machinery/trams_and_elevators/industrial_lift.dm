@@ -22,6 +22,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 	plane = GAME_PLANE
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER //no TILE_BOUND since we're potentially multitile
+	has_reflection = FALSE
 
 	///ID used to determine what lift types we can merge with
 	var/lift_id = BASIC_LIFT_ID
@@ -170,6 +171,8 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 					continue
 
 				initial_contents += new_initial_contents
+
+				movable_contents.vis_contents -= movable_contents?.basic_reflection
 
 ///signal handler for COMSIG_MOVABLE_UPDATE_GLIDE_SIZE: when a movable in lift_load changes its glide_size independently.
 ///adds that movable to a lazy list, movables in that list have their glide_size updated when the tram next moves

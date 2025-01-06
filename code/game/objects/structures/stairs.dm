@@ -13,6 +13,7 @@
 	anchored = TRUE
 	layer = 2
 	nomouseover = TRUE
+	has_reflection = FALSE
 
 /obj/structure/stairs/stone
 	name = "stone stairs"
