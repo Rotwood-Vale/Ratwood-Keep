@@ -529,3 +529,8 @@
 	reqs = list(/obj/item/natural/stone = 5)
 	always_available = TRUE
 
+/datum/crafting_recipe/roguetown/wood_hammer
+	name = "wooden mallet"
+	result = /obj/item/rogueweapon/hammer/wood
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	craftdiff = 0

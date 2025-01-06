@@ -122,12 +122,6 @@
 
 // --------- TOOLS -----------
 
-/datum/artificer_recipe/wood/tools
-	name = "Wooden Mallet"
-	created_item = /obj/item/rogueweapon/hammer/wood
-	hammers_per_item = 8
-	i_type = "Tools"
-
 /datum/artificer_recipe/bronze/tools
 	name = "Bronze Lamptern"
 	created_item = /obj/item/flashlight/flare/torch/lantern/bronzelamptern
