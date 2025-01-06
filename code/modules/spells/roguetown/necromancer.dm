@@ -305,7 +305,7 @@
 	else if(user.mind.boneboys >= user.mind.bonemax)
 		to_chat(user, span_warning("I cannot sustain another self aware skeleton, this one shall be mindless.."))
 		to_chat(target, span_warning("I feel my soul being drawn downward as a foreign presence invades my body!"))
-		target.client.try_descend() //Couldn't figure out how to eject to ghost despite spending like an hour looking, so instead shunt to underworld. Let them skip the waiting line
+		target.ghostize(FALSE)
 		target.turn_to_minion(user)
 		target.visible_message(span_warning("[target.real_name]'s eyes light up with a weak glow."), runechat_message = TRUE)
 
@@ -509,7 +509,7 @@
 	to_chat(target, span_warning("I have disappointed my Master! I feel Necra's scythe catch upon my very soul!"))
 	target.death()
 	sleep(1 SECONDS)
-	target.client.try_descend()
+	target.ghostize(FALSE)
 	to_chat(user, span_warning("The disappointment is no more, its husk free for a more.. Malleable soul."))
 
 
