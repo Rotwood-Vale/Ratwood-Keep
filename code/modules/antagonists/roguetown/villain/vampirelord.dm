@@ -1453,7 +1453,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	releasedrain = 0
 	chargedrain = 0
-	chargetime = 2 SECONDS
+	chargetime = 0
 	range = -1
 	warnie = "sydwarning"
 	movement_interrupt = TRUE
@@ -1461,11 +1461,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/blood
 	antimagic_allowed = FALSE
-	charge_max = 30 SECONDS
-	cooldown_min = 30 SECONDS
+	charge_max = 1 MINUTES
+	cooldown_min = 1 MINUTES
 	include_user = TRUE
 	max_targets = 1
-	vitaedrain = 0
+	vitaedrain = 250
 
 /obj/effect/proc_holder/spell/targeted/vamp_rejuv/cast(list/targets, mob/user = usr)
 	if(user && iscarbon(user))
