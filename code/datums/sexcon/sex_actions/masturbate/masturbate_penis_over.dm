@@ -2,6 +2,11 @@
 	name = "Jerk over them"
 	check_same_tile = FALSE
 
+/datum/sex_action/masturbate_penis_over/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Рука. Подрочить на партнёра."
+
 /datum/sex_action/masturbate_penis_over/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -22,23 +27,33 @@
 
 /datum/sex_action/masturbate_penis_over/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] starts jerking over [target]..."))
+	user.visible_message(span_warning("[user] начинает дрочить на [target]..."))
 
 /datum/sex_action/masturbate_penis_over/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	var/chosen_verb = pick(list("jerks his cock", "strokes his cock", "masturbates", "jerks off"))
+	var/chosen_verb
+	if(user.client.prefs.be_russian)
+		chosen_verb = pick(list("мастурбирует", "играется со своим членом", "дрочит свой хер", "душит своего удава", "вздрачивает член", "стимулирует член"))
+	else
+		chosen_verb = pick(list("jerks his cock", "strokes his cock", "masturbates", "jerks off"))
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [chosen_verb] over [target]"))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [chosen_verb] на [target]"))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
 
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_lovebold("[user] cums over [target]'s body!"))
+		if(user.client.prefs.be_russian)
+			user.visible_message(span_lovebold("[user] кончает на тело [target]"))
+		else
+			user.visible_message(span_lovebold("[user] cums on [target]"))
 		user.sexcon.cum_onto()
 
 /datum/sex_action/masturbate_penis_over/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] stops jerking off."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] прекращает дрочить."))
+	else
+		user.visible_message(span_warning("[user] stops jerking off."))
 
 /datum/sex_action/masturbate_penis_over/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

@@ -4,6 +4,11 @@
 	stamina_cost = 1.0
 	gags_target = TRUE
 
+/datum/sex_action/force_cunnilingus/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Вагина. Заставить вылизать."
+
 /datum/sex_action/force_cunnilingus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -26,11 +31,17 @@
 
 /datum/sex_action/force_cunnilingus/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] forces [target]'s head against her cunt!"))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] ведёт голову [target] к своей киске!"))
+	else
+		user.visible_message(span_warning("[user] forces [target]'s head against her cunt!"))
 
 /datum/sex_action/force_cunnilingus/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to suck her cunt."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] заставляет [target] вылизать свою вагину."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to suck her cunt."))
 	target.make_sucking_noise()
 	do_thrust_animate(target, user)
 
@@ -42,7 +53,10 @@
 
 /datum/sex_action/force_cunnilingus/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls [target]'s head away."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] отводит голову [target] от своей киски."))
+	else	
+		user.visible_message(span_warning("[user] pulls [target]'s head away."))
 
 /datum/sex_action/force_cunnilingus/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

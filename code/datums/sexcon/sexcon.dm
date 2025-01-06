@@ -752,13 +752,25 @@
 /datum/sex_controller/proc/get_generic_force_adjective()
 	switch(force)
 		if(SEX_FORCE_LOW)
-			return pick(list("gently", "carefully", "tenderly", "gingerly", "delicately", "lazingly"))
+			if(usr?.client?.prefs?.be_russian)
+				return pick(list("аккуратно", "деликатно", "осторожно", "бережно", "ласково", "тактично"))
+			else
+				return pick(list("gently", "carefully", "tenderly", "gingerly", "delicately", "lazily"))
 		if(SEX_FORCE_MID)
-			return pick(list("firmly", "vigorously", "eagerly", "steadily", "intently"))
+			if(usr?.client?.prefs?.be_russian)
+				return pick(list("активно", "с нетерпением", "неуклонно", "интенсивно", "энергично"))
+			else
+				return pick(list("firmly", "vigorously", "eagerly", "steadily", "intently"))
 		if(SEX_FORCE_HIGH)
-			return pick(list("roughly", "carelessly", "forcefully", "fervently", "fiercely"))
+			if(usr?.client?.prefs?.be_russian)
+				return pick(list("грубо", "небрежно", "с силой", "пылко", "свирепо"))
+			else
+				return pick(list("roughly", "carelessly", "forcefully", "fervently", "fiercely"))
 		if(SEX_FORCE_EXTREME)
-			return pick(list("brutally", "violently", "relentlessly", "savagely", "mercilessly"))
+			if(usr?.client?.prefs?.be_russian)
+				return pick(list("брутально", "безжалостно", "зверски", "жестоко", "дико", "беспощадно", "нещадно"))
+			else
+				return pick(list("brutally", "savagely", "cruelly", "wildly", "savagely", "unmercifully"))
 
 /datum/sex_controller/proc/spanify_force(string)
 	switch(force)

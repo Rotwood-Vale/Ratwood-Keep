@@ -3,6 +3,11 @@
 	check_incapacitated = FALSE
 	gags_target = TRUE
 
+/datum/sex_action/facesitting/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Попа. Сесть на голову."
+
 /datum/sex_action/facesitting/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -25,12 +30,22 @@
 
 /datum/sex_action/facesitting/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] sits their butt on [target]'s face!"))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] садится на голову [target]!"))
+	else
+		user.visible_message(span_warning("[user] sits their butt on [target]'s face!"))
 
 /datum/sex_action/facesitting/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	var/verbstring = pick(list("rubs", "smushes", "forces"))
+	var/verbstring
+	if(user.client.prefs.be_russian)
+		verbstring = pick(list("трётся", "скользит", "пихается", "давится"))
+	else
+		verbstring = pick(list("rubs", "smushes", "forces"))
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [verbstring] their butt against [target] face."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [verbstring] своей задницей об голову [target]!"))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] [verbstring] their butt against [target] face."))
 	target.make_sucking_noise()
 	do_thrust_animate(user, target)
 
@@ -43,7 +58,10 @@
 
 /datum/sex_action/facesitting/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] gets off [target]'s face."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] поднимается с головы [target]!"))
+	else
+		user.visible_message(span_warning("[user] gets off [target]'s face."))
 
 /datum/sex_action/facesitting/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

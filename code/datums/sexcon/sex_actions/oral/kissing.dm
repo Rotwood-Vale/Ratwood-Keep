@@ -3,6 +3,11 @@
 	check_same_tile = FALSE
 	check_incapacitated = FALSE
 
+/datum/sex_action/kissing/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Поцелуй."
+
 /datum/sex_action/kissing/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -19,11 +24,14 @@
 
 /datum/sex_action/kissing/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] starts making out with [target]..."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] приближается к [target]..."))
+	else
+		user.visible_message(span_warning("[user] starts making out with [target]..."))
 
 /datum/sex_action/kissing/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] makes out with [target]..."))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] целует губы [target]..."))
 	user.make_sucking_noise()
 	
 	user.sexcon.perform_sex_action(user, 1, 2, TRUE)
@@ -34,4 +42,7 @@
 
 /datum/sex_action/kissing/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] stops making out with [target] ..."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] отводит голову в сторону от [target]..."))
+	else
+		user.visible_message(span_warning("[user] stops making out with [target]..."))

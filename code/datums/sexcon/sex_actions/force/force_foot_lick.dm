@@ -4,6 +4,11 @@
 	require_grab = TRUE
 	stamina_cost = 1.0
 
+/datum/sex_action/force_foot_lick/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Язык. Заставить вылизать ноги."
+
 /datum/sex_action/force_foot_lick/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -24,13 +29,22 @@
 
 /datum/sex_action/force_foot_lick/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] shoves their feet against [target]'s head!"))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] ведёт голову [target] к своим ногам!"))
+	else
+		user.visible_message(span_warning("[user] shoves their feet against [target]'s head!"))
 
 /datum/sex_action/force_foot_lick/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to lick his feet."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] заставляет [target] вылизать его ноги."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to lick his feet."))
 	target.make_sucking_noise()
 
 /datum/sex_action/force_foot_lick/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls their feet away from [target]'s head."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] уводит голову [target] в сторону от своих ног..."))
+	else
+		user.visible_message(span_warning("[user] pulls their feet away from [target]'s head."))

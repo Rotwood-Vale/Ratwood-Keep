@@ -215,8 +215,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		if(pref_species.desc)
 			to_chat(user, "[pref_species.desc]")
 		if(pref_species.expanded_desc)
-			to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Read More</a>")
-		to_chat(user, "<font color='red'>Classes reset.</font>")
+			if(user.client.prefs.be_russian)
+				to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Читать ещё</a>")
+			else
+				to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Read More</a>")
+		if(user.client.prefs.be_russian)
+			to_chat(user, "<font color='red'>СБРОСИТЬ</font>")
+		else
+			to_chat(user, "<font color='red'>Classes reset.</font>")
 	random_character(gender)
 	accessory = "Nothing"
 
@@ -261,15 +267,24 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			// NEXT ROW
 			dat += "<tr>"
 			dat += "<td style='width:33%;text-align:left'>"
-			dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Сменить Персонажа</a>"
+			else
+				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=job;task=menu'>Class Selection</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<a href='?_src_=prefs;preference=job;task=menu'>Выбрать Роль/Профессию</a>"
+			else
+				dat += "<a href='?_src_=prefs;preference=job;task=menu'>Class Selection</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
-			dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Привязка Клавиш</a>"
+			else
+				dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
 			dat += "</td>"
 			dat += "</tr>"
 
@@ -279,7 +294,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Villain Selection</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Антагонисты</a>"
+			else
+				dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Villain Selection</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
@@ -293,7 +311,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
+			if(user.client.prefs.be_russian)
+				dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>ТРИУМФЫ:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "Отсутствуют"]"
+			else
+				dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
 			if(SStriumphs.triumph_buys_enabled)
 				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Buy</a>"
 			dat += "</td>"
@@ -311,35 +332,59 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<td width=40% valign='top'>"
 
 // 			-----------START OF IDENT TABLE-----------
-			dat += "<h2>Identity</h2>"
+			if(user.client.prefs.be_russian)
+				dat += "<h2>Личность</h2>"
+			else
+				dat += "<h2>Identity</h2>"
 			dat += "<table width='100%'><tr><td width='75%' valign='top'>"
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>Always Random Name: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME_ANTAG]'>When Antagonist: [(randomise[RANDOM_NAME_ANTAG]) ? "Yes" : "No"]</a>"
-			dat += "<b>Name:</b> "
+			if(user.client.prefs.be_russian)
+				dat += "<b>Имя:</b> "
+			else
+				dat += "<b>Name:</b> "
 			if(check_nameban(user.ckey))
 				dat += "<a href='?_src_=prefs;preference=name;task=input'>NAMEBANNED</a><BR>"
 			else
 				dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a> <a href='?_src_=prefs;preference=name;task=random'>\[R\]</a>"
 
 			dat += "<BR>"
-			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+			if(user.client.prefs.be_russian)
+				dat += "<b>Раса:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+			else
+				dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 //			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
 
 			if(!(AGENDER in pref_species.species_traits))
 				var/dispGender
 				if(gender == MALE)
-					dispGender = "Man"
+					if(user.client.prefs.be_russian)
+						dispGender = "Мужчина"
+					else
+						dispGender = "Man"
 				else if(gender == FEMALE)
-					dispGender = "Woman"
+					if(user.client.prefs.be_russian)
+						dispGender = "Женщина"
+					else
+						dispGender = "Woman"
 				else
-					dispGender = "Other"
-				dat += "<b>Sex:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
+					if(user.client.prefs.be_russian)
+						dispGender = "Другое"
+					else
+						dispGender = "Other"
+				if(user.client.prefs.be_russian)
+					dat += "<b>Пол:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
+				else
+					dat += "<b>Sex:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
 				if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
 
-			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
+			if(user.client.prefs.be_russian)
+				dat += "<b>Возраст:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
+			else
+				dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 
 //			dat += "<br><b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
 //			if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
@@ -347,20 +392,38 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE_ANTAG]'>When Antagonist: [(randomise[RANDOM_AGE_ANTAG]) ? "Yes" : "No"]</A>"
 
 //			dat += "<b><a href='?_src_=prefs;preference=name;task=random'>Random Name</A></b><BR>"
-			dat += "<b>Flaw:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
+			if(user.client.prefs.be_russian)
+				dat += "<b>Изъян:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
+			else
+				dat += "<b>Flaw:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
-			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
-			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
+			if(user.client.prefs.be_russian)
+				dat += "<b>Вера:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
+			else
+				dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
+			if(user.client.prefs.be_russian)
+				dat += "<b>Покровитель:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
+			else
+				dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
+			if(user.client.prefs.be_russian)
+				dat += "<b>Семья:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>"
+			else
+				dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
 			if(family != FAMILY_NONE)
-				dat += "<B>Family Preferences:</B>"
+				if(user.client.prefs.be_russian)
+					dat += "<B>Предпочтения в семье:</B>"
+				else
+					dat += "<B>Family Preferences:</B>"
 				if(gender == MALE)
 					family_gender = list(FEMALE)
 				else
 					family_gender = list(MALE)
 				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
 				dat += "<BR>"
-			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+			if(user.client.prefs.be_russian)
+				dat += "<b>Основная Рука:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+			else
+				dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
@@ -388,11 +451,17 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<td width=20% valign='top'>"
 			// Rightmost column, 40% width
 			dat += "<td width=40% valign='top'>"
-			dat += "<h2>Body</h2>"
+			if(user.client.prefs.be_russian)
+				dat += "<h2>Тело</h2>"
+			else
+				dat += "<h2>Body</h2>"
 
 //			-----------START OF BODY TABLE-----------
 			dat += "<table width='100%'><tr><td width='1%' valign='top'>"
-			dat += "<b>Update feature colors with change:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
+			if(user.client.prefs.be_russian)
+				dat += "<b>Авто-обновновление цвета:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
+			else
+				dat += "<b>Update feature colors with change:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
 
@@ -406,7 +475,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 							break
 				//Second comment on how stupid this is. TODO: REFACTOR THIS SHITTY FUCKING SYSTEM. We shouldn't be using associative lists like this.
 
-				dat += "<b>[skin_tone_wording]:	 </b><span style='font-size:104%'>[heldtone]</span><a href='?_src_=prefs;preference=s_tone;task=input'>	Change </a>"
+				if(user.client.prefs.be_russian)
+					dat += "<b>Цвет Кожи: [skin_tone_wording] </b><span style='font-size:104%'>[heldtone]</span><a href='?_src_=prefs;preference=s_tone;task=input'>	Change </a>"
+				else
+					dat += "<b>Skin Tone: [skin_tone_wording] </b><span style='font-size:104%'>[heldtone]</span><a href='?_src_=prefs;preference=s_tone;task=input'>	Change </a>"
 				dat += "<br>"
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
@@ -416,20 +488,50 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
 
 
-			dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
-			dat += "<br><b>Voice Pitch: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
-			dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
-			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
-			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
-			dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<b>Цвет Голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Изменить</a>"
+			else
+				dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Тон Голоса: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
+			else
+				dat += "<br><b>Voice Pitch: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Акцент:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
+			else
+				dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Особенности:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Изменить</a>"
+			else
+				dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Нательные Рисунки:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Изменить</a>"
+			else
+				dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Дополнительное Описание:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Изменить</a>"
+			else
+				dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
 
-			dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Изменить</a>"
+			else
+				dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
-				dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
+				if(user.client.prefs.be_russian)
+					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>Показать</a>"
+				else
+					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
 
-			dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Изменить</a>"
+			else
+				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
 			if(nudeshot_link != null)
-				dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
+				if(user.client.prefs.be_russian)
+					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>Показать</a>"
+				else
+					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
@@ -631,7 +733,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "</tr></table>"
 
 		if(3) // Custom keybindings
-			used_title = "Keybinds"
+			if(user.client.prefs.be_russian)
+				used_title = "Привязка Клавиш"
+			else
+				used_title = "Keybinds"
 			// Create an inverted list of keybindings -> key
 			var/list/user_binds = list()
 			for (var/key in key_bindings)
@@ -674,26 +779,42 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 
 	if(!IsGuestKey(user.key))
-		dat += "<a href='?_src_=prefs;preference=save'>Save</a><br>"
-		dat += "<a href='?_src_=prefs;preference=load'>Undo</a><br>"
+		if(user.client.prefs.be_russian)
+			dat += "<a href='?_src_=prefs;preference=save'>Сохранить</a><br>"
+			dat += "<a href='?_src_=prefs;preference=load'>Откатить</a><br>"
+		else
+			dat += "<a href='?_src_=prefs;preference=save'>Save</a><br>"
+			dat += "<a href='?_src_=prefs;preference=load'>Undo</a><br>"
 
 	var/mob/dead/new_player/N = user
 	// well.... one empty slot here for something I suppose lol
 	dat += "<table width='100%'>"
 	dat += "<tr>"
 	dat += "<td width='33%' align='left'>"
-	dat += "<a class='animationcolor' href='byond://?src=[REF(N)];rpprompt=1'>Lore Primer</a><br>"
+	if(user.client.prefs.be_russian)
+		dat += "<a class='animationcolor' href='byond://?src=[REF(N)];rpprompt=1'>Краткая Сводка Мира</a><br>"
+	else
+		dat += "<a class='animationcolor' href='byond://?src=[REF(N)];rpprompt=1'>Lore Primer</a><br>"
 //	dat += "<a href='byond://?src=[REF(N)];rgprompt=1'>Religion Primer</a><br>"
 	dat += 	"</td>"
 	dat += "<td width='33%' align='center'>"
-	dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "Be Special"]</b></a><BR>"
+	if(user.client.prefs.be_russian)
+		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>ОСОБЕННЫЙ</font>" : "Быть Особенным"]</b></a><BR>"
+	else
+		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "Be Special"]</b></a><BR>"
 	if(istype(N))
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			switch(N.ready)
 				if(PLAYER_NOT_READY)
-					dat += "<b>UNREADY</b> <a href='byond://?src=[REF(N)];ready=[PLAYER_READY_TO_PLAY]'>READY</a>"
+					if(user.client.prefs.be_russian)
+						dat += "<b>НЕ ГОТОВ</b> <a href='byond://?src=[REF(N)];ready=[PLAYER_READY_TO_PLAY]'>ГОТОВ</a>"
+					else
+						dat += "<b>UNREADY</b> <a href='byond://?src=[REF(N)];ready=[PLAYER_READY_TO_PLAY]'>READY</a>"
 				if(PLAYER_READY_TO_PLAY)
-					dat += "<a href='byond://?src=[REF(N)];ready=[PLAYER_NOT_READY]'>UNREADY</a> <b>READY</b>"
+					if(user.client.prefs.be_russian)
+						dat += "<a href='byond://?src=[REF(N)];ready=[PLAYER_NOT_READY]'>НЕ ГОТОВ</a> <b>ГОТОВ</b>"
+					else
+						dat += "<a href='byond://?src=[REF(N)];ready=[PLAYER_NOT_READY]'>UNREADY</a> <b>READY</b>"
 		else
 			if(!is_active_migrant())
 				dat += "<a href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
@@ -705,9 +826,22 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
-	dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
-	dat += "<b>Be a virgin:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
-	dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
+	if(user.client.prefs.be_russian)
+		dat += "<b>Русскоязычность:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
+	else
+		dat += "<b>Be Russian:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
+	if(user.client.prefs.be_russian)
+		dat += "<b>Нон-Кон:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
+	else
+		dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
+	if(user.client.prefs.be_russian)
+		dat += "<b>Девственность:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
+	else
+		dat += "<b>Be a virgin:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
+	if(user.client.prefs.be_russian)
+		dat += "<b>Быть Голосом:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
+	else
+		dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	dat += "</td>"
 	dat += "</tr>"
 	dat += "</table>"
@@ -1416,9 +1550,14 @@ Slots: [job.spawn_positions]</span>
 					var/faith_input = input(user, "Choose your character's faith", "Faith") as null|anything in faiths_named
 					if(faith_input)
 						var/datum/faith/faith = faiths_named[faith_input]
-						to_chat(user, "<font color='purple'>Faith: [faith.name]</font>")
-						to_chat(user, "<font color='purple'>Background: [faith.desc]</font>")
-						to_chat(user, "<font color='purple'>Likely Worshippers: [faith.worshippers]</font>")
+						if(usr?.client?.prefs?.be_russian)
+							to_chat(user, "<font color='purple'>Вера: [faith.name]</font>")
+							to_chat(user, "<font color='purple'>История: [faith.desc]</font>")
+							to_chat(user, "<font color='purple'>Верователи: [faith.worshippers]</font>")
+						else
+							to_chat(user, "<font color='purple'>Faith: [faith.name]</font>")
+							to_chat(user, "<font color='purple'>Background: [faith.desc]</font>")
+							to_chat(user, "<font color='purple'>Likely Worshippers: [faith.worshippers]</font>")
 						selected_patron = GLOB.patronlist[faith.godhead] || GLOB.patronlist[pick(GLOB.patrons_by_faith[faith_input])]
 
 				if("patron")
@@ -1432,10 +1571,16 @@ Slots: [job.spawn_positions]</span>
 					var/god_input = input(user, "Choose your character's patron god", "[current_faith.name]") as null|anything in patrons_named
 					if(god_input)
 						selected_patron = patrons_named[god_input]
-						to_chat(user, "<font color='purple'>Patron: [selected_patron]</font>")
-						to_chat(user, "<font color='purple'>Domain: [selected_patron.domain]</font>")
-						to_chat(user, "<font color='purple'>Background: [selected_patron.desc]</font>")
-						to_chat(user, "<font color='purple'>Likely Worshippers: [selected_patron.worshippers]</font>")
+						if(usr?.client?.prefs?.be_russian)
+							to_chat(user, "<font color='purple'>Бог-Покровитель: [selected_patron]</font>")
+							to_chat(user, "<font color='purple'>Домен: [selected_patron.domain]</font>")
+							to_chat(user, "<font color='purple'>История: [selected_patron.desc]</font>")
+							to_chat(user, "<font color='purple'>Верователи: [selected_patron.worshippers]</font>")
+						else
+							to_chat(user, "<font color='purple'>Patron: [selected_patron]</font>")
+							to_chat(user, "<font color='purple'>Domain: [selected_patron.domain]</font>")
+							to_chat(user, "<font color='purple'>Background: [selected_patron.desc]</font>")
+							to_chat(user, "<font color='purple'>Likely Worshippers: [selected_patron.worshippers]</font>")
 
 				if("bdetail")
 					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
@@ -1473,9 +1618,14 @@ Slots: [job.spawn_positions]</span>
 						voice_pitch = new_voice_pitch
 
 				if("headshot")
-					to_chat(user, "<span class='notice'>Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
-					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
-					to_chat(user, "<span class='notice'>Resolution: 250x250 pixels.</span>")
+					if(user.client.prefs.be_russian)
+						to_chat(user, "<span class='notice'>Пожалуйста, используйте Safe For Working изображение головы и плеч, чтобы сохранить уровень погружения. И последнее, ["<span class='bold'>не используйте фотографии из реальной жизни или любые несерьезные, мемные изображения.</span>"]</span>")
+						to_chat(user, "<span class='notice'>Если фотокарточка не отображается в игре, убедитесь, что это прямая ссылка на изображение, которая правильно открывается в браузере.</span>")
+						to_chat(user, "<span class='notice'>Разрешение: 250x250 pixels.</span>")
+					else
+						to_chat(user, "<span class='notice'>Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
+						to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
+						to_chat(user, "<span class='notice'>Resolution: 250x250 pixels.</span>")
 					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "Headshot", headshot_link) as text|null
 					if(new_headshot_link == null)
 						return
@@ -1492,9 +1642,14 @@ Slots: [job.spawn_positions]</span>
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
 
 				if("nudeshot")
-					to_chat(user, "<span class='notice'>["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
-					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
-					to_chat(user, "<span class='notice'>Resolution: 360x480 pixels.</span>")
+					if(user.client.prefs.be_russian)
+						to_chat(user, "<span class='notice'>["<span class='bold'>Не используйте фотографии из реальной жизни или любые несерьезные, мемные изображения.</span>"]</span>")
+						to_chat(user, "<span class='notice'>Если фотокарточка не отображается в игре, убедитесь, что это прямая ссылка на изображение, которая правильно открывается в браузере.</span>")
+						to_chat(user, "<span class='notice'>Разрешение: 360x480 pixels.</span>")
+					else
+						to_chat(user, "<span class='notice'>["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
+						to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
+						to_chat(user, "<span class='notice'>Resolution: 360x480 pixels.</span>")
 					var/new_nudeshot_link = input(user, "Input the nudeshot link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "Nudeshot", nudeshot_link) as text|null
 					if(new_nudeshot_link == null)
 						return
@@ -1909,25 +2064,55 @@ Slots: [job.spawn_positions]</span>
 				if("be_defiant")
 					defiant = !defiant
 					if(defiant)
-						to_chat(user, span_notice("You will now have resistance from people violating you, but be punished for trying to violate others." + " " + span_boldwarning("(COMBAT Mode will disable ERP interactions. Bypassing this is a bannable offense, AHELP if necessary.)")))
+						if(user.client.prefs.be_russian)
+							to_chat(user, span_notice("Теперь вы будете сопротивляться людям, нарушающим ваши права, но будете наказаны за попытку нарушить права других." + " " + span_boldwarning("(Режим COMBAT отключит ERP-взаимодействие. Обход этого режима является нарушением. Используйте AHELP, если необходимо.)")))
+						else
+							to_chat(user, span_notice("You will now have resistance from people violating you, but be punished for trying to violate others." + " " + span_boldwarning("(COMBAT Mode will disable ERP interactions. Bypassing this is a bannable offense, AHELP if necessary.)")))
 					else
-						to_chat(user, span_boldwarning("You fully immerse yourself in the grim experience, waiving your resistance from people violating you, but letting you do the same unto other non-defiants"))
+						to_chat(user, span_boldwarning("Вы полностью погружаетесь в мрачное сосуществование с миром, отказываясь от сопротивления людей, насилующих вас, но позволяя делать то же самое с другими людьми, не являющимися девиантами."))
+
+				if("be_russian")
+					be_russian = !be_russian
+					if(be_russian)
+						if(user.client.prefs.be_russian)
+							to_chat(user, span_notice("Вы Русский. Поздравляю."))
+						else
+							to_chat(user, span_notice("You have enabled Russian and it is under development."))
+					else
+						if(user.client.prefs.be_russian)
+							to_chat(user, span_notice("Выписан из Русских. Не поздравляю."))
+						else
+							to_chat(user, span_boldwarning("You have disable Russian and it is still under development."))
 
 				if("be_virgin")
 					virginity = !virginity
 					if(virginity)
-						to_chat(user, span_notice("You have not once indulged in the temptations of the flesh.")) 
+						if(user.client.prefs.be_russian)
+							to_chat(user, span_notice("Вы ни разу не поддавались искушениям плоти.")) 
+						else
+							to_chat(user, span_notice("You have not once indulged in the temptations of the flesh."))
 					else
-						to_chat(user, span_notice("You have. In a word. Fucked before.")) //Someone word this better please kitty is high and words are hard
+						if(user.client.prefs.be_russian)
+							to_chat(user, span_notice("Вы девственны. Одним словом - трахались до этого моментума."))
+						else
+							to_chat(user, span_notice("You have. In a word. Fucked before.")) //Someone word this better please kitty is high and words are hard
 
 				if("schizo_voice")
 					toggles ^= SCHIZO_VOICE
 					if(toggles & SCHIZO_VOICE)
-						to_chat(user, "<span class='warning'>You are now a voice.\n\
+						if(user.client.prefs.be_russian)
+							to_chat(user, "<span class='warning'>Вы теперь Голос.\n\
+										Как голос, вы будете получать размышления от игроков, спрашивающих об игровых механиках!\n\
+										Хорошие голоса будут вознаграждены PQ за ответы на медитации, а плохие - наказаны по усмотрению Карен.</span>")
+						else
+							to_chat(user, "<span class='warning'>You are now a voice.\n\
 										As a voice, you will receive meditations from players asking about game mechanics!\n\
 										Good voices will be rewarded with PQ for answering meditations, while bad ones are punished at the discretion of jannies.</span>")
 					else
-						to_chat(user, span_warning("You are no longer a voice."))
+						if(user.client.prefs.be_russian)
+							to_chat(user, span_notice("Вы больше не являетесь голосом."))
+						else
+							to_chat(user, span_warning("You are no longer a voice."))
 
 				if("migrants")
 					migrant.show_ui()

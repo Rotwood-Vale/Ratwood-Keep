@@ -1,6 +1,11 @@
 /datum/sex_action/toy_other_vagina
 	name = "Use toy on their cunt"
 
+/datum/sex_action/toy_other_vagina/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Вагина. Использовать игрушку."
+
 /datum/sex_action/toy_other_vagina/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -26,21 +31,34 @@
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
 		//Scream and rib break
-		user.visible_message(span_warning("[user] forces \the [dildo] in [target]'s tiny cunt!"))
+		if(user.client.prefs.be_russian)
+			user.visible_message(span_warning("[user] вталкивает \the [dildo] в пиздёнку [target]!"))
+		else
+			user.visible_message(span_warning("[user] forces \the [dildo] in [target]'s tiny cunt!"))
 		var/obj/item/bodypart/BPC = target.get_bodypart(BODY_ZONE_CHEST)
 		var/obj/item/bodypart/BPG = target.get_bodypart(BODY_ZONE_PRECISE_GROIN)
 		BPC.add_wound(/datum/wound/fracture/chest)
 		BPG.add_wound(/datum/wound/fracture/groin)
 		target.apply_damage(30, BRUTE, BPC)
 	else
-		user.visible_message(span_warning("[user] shoves \the [dildo] in [target]'s cunt..."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(span_warning("[user] вводит \the [dildo] в вагину [target]..."))
+		else
+			user.visible_message(span_warning("[user] shoves \the [dildo] in [target]'s cunt..."))
 
 /datum/sex_action/toy_other_vagina/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	if(user.sexcon.do_message_signature("[type]"))
 		if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
-			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] stuffs [target]'s tiny cunt..."))
+			if(user.client.prefs.be_russian)
+				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трахает пиздёнку [target] при помощи \the [dildo]..."))
+			else
+				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] stuffs [target]'s tiny cunt..."))
 		else
-			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] pleasures [target]'s cunt..."))
+			if(user.client.prefs.be_russian)
+				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трахает вагину [target] при помощи \the [dildo]..."))
+			else
+				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] pleasures [target]'s cunt..."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
@@ -54,7 +72,10 @@
 /datum/sex_action/toy_other_vagina/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
-	user.visible_message(span_warning("[user] pulls out \the [dildo] from [target]'s cunt."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] вытаскивает \the [dildo] из вагины [target]."))
+	else
+		user.visible_message(span_warning("[user] pulls out \the [dildo] from [target]'s cunt."))
 
 /datum/sex_action/toy_other_vagina/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

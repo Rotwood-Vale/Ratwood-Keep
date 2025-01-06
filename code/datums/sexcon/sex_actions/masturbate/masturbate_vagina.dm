@@ -1,5 +1,10 @@
 /datum/sex_action/masturbate_vagina
-	name = "Stroke clit"
+	name = "Stroke Clit"
+
+/datum/sex_action/masturbate_vagina/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Рука. Поиграться со своей вагиной."
 
 /datum/sex_action/masturbate_vagina/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)
@@ -19,11 +24,17 @@
 
 /datum/sex_action/masturbate_vagina/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] starts stroking her clit..."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] начинает теребить свой клитор..."))
+	else
+		user.visible_message(span_warning("[user] starts stroking her clit..."))
 
 /datum/sex_action/masturbate_vagina/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] strokes her clit..."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] теребит свой клитор..."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] strokes her clit..."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
@@ -32,7 +43,10 @@
 
 /datum/sex_action/masturbate_vagina/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] stops stroking."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] заканчивает с мастурбацией."))
+	else
+		user.visible_message(span_warning("[user] stops stroking."))
 
 /datum/sex_action/masturbate_vagina/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

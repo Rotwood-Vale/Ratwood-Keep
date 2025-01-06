@@ -4,6 +4,11 @@
 	require_grab = TRUE
 	stamina_cost = 1.0
 
+/datum/sex_action/force_pitjob/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Рука. Заставить подрочить себе подмышкой."
+
 /datum/sex_action/force_pitjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -26,11 +31,17 @@
 
 /datum/sex_action/force_pitjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] grabs [target]'s arm and shoves their cock under it!"))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] ведёт подмышку [target] к своему члену!"))
+	else
+		user.visible_message(span_warning("[user] grabs [target]'s arm and shoves their cock under it!"))
 
 /datum/sex_action/force_pitjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s armpit."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] заставляет [target] использовать свою подмышку, чтобы подрочить себе."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s armpit."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 
@@ -39,4 +50,7 @@
 
 /datum/sex_action/force_pitjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls their cock out from [target]'s armpit."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] вытаскивает свой член из пространства между подмышкой [target]."))
+	else
+		user.visible_message(span_warning("[user] pulls their cock out from [target]'s armpit."))

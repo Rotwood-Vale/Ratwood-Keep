@@ -4,6 +4,11 @@
 	require_grab = TRUE
 	stamina_cost = 1.0
 
+/datum/sex_action/force_armpit_lick/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Язык. Заставить вылизать подмышку."
+
 /datum/sex_action/force_armpit_lick/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -22,13 +27,22 @@
 
 /datum/sex_action/force_armpit_lick/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] shoves their armpit against [target]'s mouth!"))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] прижимает голову [target] к своей подмышке!"))
+	else
+		user.visible_message(span_warning("[user] shoves their armpit against [target]'s mouth!"))
 
 /datum/sex_action/force_armpit_lick/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to lick their armpit."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] заставляет [target] лизать свою подмышку."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to lick their armpit."))
 	target.make_sucking_noise()
 
 /datum/sex_action/force_armpit_lick/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls their armpit away from [target]'s head."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] отталкивает голову [target] от своей подмышки."))
+	else
+		user.visible_message(span_warning("[user] pulls their armpit away from [target]'s head."))

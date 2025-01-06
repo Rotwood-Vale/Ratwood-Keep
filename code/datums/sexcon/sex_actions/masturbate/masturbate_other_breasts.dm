@@ -1,6 +1,11 @@
 /datum/sex_action/masturbate_other_breasts
-	name = "Rub their breasts"
+	name = "Трогать грудь партнёра"
 	check_same_tile = FALSE
+
+/datum/sex_action/masturbate_other_breasts/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Рука. Поиграться с грудью."
 
 /datum/sex_action/masturbate_other_breasts/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -20,18 +25,27 @@
 
 /datum/sex_action/masturbate_other_breasts/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] starts rubbing [target]'s breasts..."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] хватается за сиськи [target]..."))
+	else
+		user.visible_message(span_warning("[user] starts rubbing [target]'s breasts..."))
 
 /datum/sex_action/masturbate_other_breasts/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fondles [target]'s breasts..."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] играется с грудью [target]..."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fondles [target]'s breasts..."))
 
 	user.sexcon.perform_sex_action(target, 1, 4, TRUE)
 	target.sexcon.handle_passive_ejaculation()
 
 /datum/sex_action/masturbate_other_breasts/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] stops stroking [target]'s breasts."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] убирает свои конечности с груди [target]."))
+	else
+		user.visible_message(span_warning("[user] stops stroking [target]'s breasts."))
 
 /datum/sex_action/masturbate_other_breasts/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

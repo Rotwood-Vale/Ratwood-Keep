@@ -445,10 +445,16 @@
 	if(ismob(target))
 		var/mob/M = target
 		var/list/targetl = list(target)
-		user.visible_message(span_green("[user] waves friendly at [M]."), span_green("I wave friendly at [M]."), ignored_mobs = targetl)
+		if(M.client.prefs.be_russian)
+			user.visible_message(span_green("[user] дружелюбно машет [M]."), span_green("Я дружелюбно приветствую [M]."), ignored_mobs = targetl)
+		else
+			user.visible_message(span_green("[user] gives [M] a friendly wave."), span_green("I give [M] a friendly wave."), ignored_mobs = targetl)
 		if(M.client)
 			if(M.can_see_cone(user))
-				to_chat(M, span_green("[user] gives me a friendly wave."))
+				if(M.client.prefs.be_russian)
+					to_chat(M, span_green("[user] дружелюбно машет рукой."))
+				else
+					to_chat(M, span_green("[user] gives me a friendly wave."))
 	return
 
 /datum/intent/simple/headbutt

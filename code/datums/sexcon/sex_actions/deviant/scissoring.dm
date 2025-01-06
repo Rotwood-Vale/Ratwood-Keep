@@ -2,6 +2,11 @@
 	name = "Scissor them"
 	check_incapacitated = FALSE
 
+/datum/sex_action/scissoring/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Вагина. Потереться об вагину."
+
 /datum/sex_action/scissoring/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -28,11 +33,17 @@
 
 /datum/sex_action/scissoring/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] spreads her legs and aligns her cunt against [target]'s own!"))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] расставляет ноги и приближается к вагине [target] своей вагиной!"))
+	else
+		user.visible_message(span_warning("[user] spreads her legs and aligns her cunt against [target]'s own!"))
 
 /datum/sex_action/scissoring/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] scissors with [target]'s cunt."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трётся об вагину [target] вагиной."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] scissors with [target]'s cunt."))
 	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 
@@ -44,4 +55,7 @@
 
 /datum/sex_action/scissoring/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] stops scissoring with [target]."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] убирает киску от киски [target]."))
+	else
+		user.visible_message(span_warning("[user] stops scissoring with [target]."))
