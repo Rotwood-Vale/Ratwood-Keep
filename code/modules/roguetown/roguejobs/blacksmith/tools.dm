@@ -13,6 +13,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	associated_skill = /datum/skill/combat/maces
 	smeltresult = /obj/item/ingot/iron
+	var/can_smith = TRUE
 
 /obj/item/rogueweapon/hammer/attack_obj(obj/attacked_object, mob/living/user)
 	if(!isliving(user) || !user.mind)
@@ -129,6 +130,7 @@
 	force = 16
 	smeltresult = null
 	metalizer_result = /obj/item/rogueweapon/hammer
+	can_smith = FALSE
 
 /obj/item/rogueweapon/tongs
 	force = 10
