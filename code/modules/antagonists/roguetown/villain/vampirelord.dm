@@ -440,7 +440,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			to_chat(owner, "<font color='red'>I am refreshed and have grown stronger. The visage of the bat is once again available to me. I can also once again access my portals.</font>")
 		if(1)
 			vamplevel = 2
-			owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 			owner.current.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodsteal)
 			owner.current.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning)
 			owner.adjust_skillrank(/datum/skill/magic/blood, 3, TRUE)
@@ -1425,7 +1424,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	name = "Bat Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 750
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
@@ -1437,7 +1436,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	name = "Mist Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 750
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
@@ -1472,7 +1471,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		var/mob/living/carbon/vampire = user
 		var/obj/item/bodypart/affecting = vampire.get_bodypart(check_zone(vampire.zone_selected))
 		var/datum/antagonist/vampirelord/VD = vampire.mind.has_antag_datum(/datum/antagonist/vampirelord)
-		var/bloodskill = vampire.mind.get_skill_level(/datum/skill/magic/blood)
+		var/bloodskill = user.mind.get_skill_level(/datum/skill/magic/blood)
 
 		var/silver_curse_status = FALSE // Fail to cast condition.
 		for(var/datum/status_effect/debuff/silver_curse/silver_curse in vampire.status_effects)
@@ -1491,14 +1490,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				return
 			bloodroll = roll("[bloodskill]d10") + (vampire.STACON * 2) // VL heals more. D8 -> D10. CON * 1.5 -> 2
 		if(affecting)
-			if(affecting.heal_damage(bloodroll)) // Slightly / moderately effective at healing flat damage.
+			if(affecting.heal_damage(bloodroll, bloodroll)) // Slightly / moderately effective at healing flat damage.
 				vampire.update_damage_overlays()
-			if(affecting.heal_wounds(bloodroll * 2)) // Should be effective at clearing wounds.
+			if(affecting.heal_wounds(bloodroll * 2, bloodroll * 2)) // Should be effective at clearing wounds.
 				vampire.update_damage_overlays()
 		else
 			to_chat(vampire, span_warning("I fail to rejuvenate, I'm missing that limb!"))
 			return
-		vampire.rogstam_add(vampire.maxrogstam / 2)
+		vampire.rogstam_add(-(vampire.maxrogstam / 2))
 		vampire.rogfat_add(vampire.maxrogfat / 2)
 		to_chat(vampire, span_greentext("! REJUVENATE AMT: [bloodroll] !"))
 		vampire.visible_message(span_danger("[vampire] is surrounded by an wreath of shadows for a moment as their wounds mend!"))
