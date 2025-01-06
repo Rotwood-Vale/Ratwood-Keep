@@ -67,6 +67,7 @@
 	if(prob(33))
 		gender = FEMALE
 	update_icon()
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mole/death(gibbed)
 	..()

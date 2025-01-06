@@ -16,9 +16,9 @@
 		/datum/ai_planning_subtree/simple_self_recovery, //Can change this up if eating starts to heal
 
 		/datum/ai_planning_subtree/find_dead_bodies,
-		/datum/ai_planning_subtree/find_food,
-		/datum/ai_planning_subtree/find_dead_bodies,
 		/datum/ai_planning_subtree/eat_dead_body,
+		/datum/ai_planning_subtree/find_food,
+		/datum/ai_planning_subtree/eat_food,
 	
 	)
 

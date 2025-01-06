@@ -36,6 +36,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab/Initialize()
 	..()
 	AddElement(/datum/element/ai_retaliate)
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
 	
 /mob/living/simple_animal/mudcrabcrab/Life()
 	..()

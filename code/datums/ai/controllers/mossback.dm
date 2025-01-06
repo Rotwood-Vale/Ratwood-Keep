@@ -12,6 +12,8 @@
 		/datum/ai_planning_subtree/target_retaliate,
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
+		/datum/ai_planning_subtree/find_food,
+		/datum/ai_planning_subtree/eat_food,
 
 	)
 
