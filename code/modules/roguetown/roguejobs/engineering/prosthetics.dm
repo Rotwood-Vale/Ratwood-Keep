@@ -29,6 +29,7 @@
 	max_integrity = 0
 	sellprice = 0
 	fingers = FALSE 
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic
 	name = "debug right arm"
@@ -44,6 +45,7 @@
 	max_integrity = 0
 	sellprice = 0
 	fingers = FALSE
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic
 	name = "debug left leg"
@@ -59,6 +61,7 @@
 	max_integrity = 0
 	sellprice = 0
 	organ_slowdown = 0
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_leg/prosthetic
 	name = "debug right leg"
@@ -74,6 +77,7 @@
 	max_integrity = 0
 	sellprice = 0
 	organ_slowdown = 0
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_arm/prosthetic/attack(mob/living/M, mob/user)
 	prosthetic_attachment(M, user)
@@ -94,46 +98,50 @@
 	desc = "Левая рука, вырезанная из дерева."
 	icon_state = "prarm" 
 	resistance_flags = FLAMMABLE
-	max_damage = 20
+	max_damage = 100
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
 	metalizer_result = /obj/item/bodypart/l_arm/prosthetic/iron
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic/wood
 	name = "деревянная правая рука"
 	desc = "Правая рука, вырезанная из дерева."
 	icon_state = "prarm" 
 	resistance_flags = FLAMMABLE
-	max_damage = 20
+	max_damage = 100
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
 	metalizer_result = /obj/item/bodypart/r_arm/prosthetic/iron
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic/wood
 	name = "деревянная левая нога"
 	desc = "Левая нога, вырезанная из дерева."
 	icon_state = "pleg" 
 	resistance_flags = FLAMMABLE
-	max_damage = 20
+	max_damage = 100
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
 	organ_slowdown = 1.3
 	metalizer_result = /obj/item/bodypart/l_leg/prosthetic/iron
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_leg/prosthetic/wood
 	name = "деревянная правая нога"
 	desc = "Правая нога, вырезанная из дерева."
 	icon_state = "pleg" 
 	resistance_flags = FLAMMABLE
-	max_damage = 20
+	max_damage = 100
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 300
 	sellprice = 20
 	organ_slowdown = 1.3
 	metalizer_result = /obj/item/bodypart/r_leg/prosthetic/iron
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 
 // --------- IRON PROSTHETICS -----------
@@ -144,42 +152,50 @@
 	desc = "Левая рука, выкованная из железа."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic/iron
 	name = "железная правая рука"
 	desc = "Правая рука, выкованная из железа."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic/iron
 	name = "железная левая нога"
 	desc = "Левая нога, выкованная из железа."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.2
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_leg/prosthetic/iron
 	name = "железная правая нога"
 	desc = "Правая нога, выкованная из железа."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 150
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.2
 	brute_reduction = 5
 	burn_reduction = 5
 	sellprice = 30
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 
 // --------- STEEL PROSTHETICS -----------
@@ -189,42 +205,50 @@
 	desc = "Левая рука, выкованная из стали."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic/steel
 	name = "стальная правая рука"
 	desc = "Правая рука, выкованная из стали."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic/steel
 	name = "стальная левая нога"
 	desc = "Левая нога, выкованная из стали."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.1
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_leg/prosthetic/steel
 	name = "стальная правая нога"
 	desc = "Правая нога, выкованная из стали."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 200
 	w_class = WEIGHT_CLASS_NORMAL
 	organ_slowdown = 1.1
 	brute_reduction = 10
 	burn_reduction = 10
 	sellprice = 40
+	anvilrepair = /datum/skill/craft/blacksmithing
 	
 // --------- GOLD PROSTHETICS -----------
 
@@ -233,9 +257,11 @@
 	desc = "Левая рука из шестерёнок и золота."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 120
 	w_class = WEIGHT_CLASS_BULKY
 	fingers = TRUE
 	sellprice = 70
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 
 /obj/item/bodypart/r_arm/prosthetic/gold
@@ -243,15 +269,18 @@
 	desc = "Правая рука из шестерёнок и золота."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 120
 	w_class = WEIGHT_CLASS_BULKY
 	fingers = TRUE
 	sellprice = 70
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/l_leg/prosthetic/gold
 	name = "золотая левая нога"
 	desc = "Левая нога из шестерёнок и золота."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 120
 	w_class = WEIGHT_CLASS_BULKY
 	organ_slowdown = 0
 	sellprice = 70
@@ -261,9 +290,11 @@
 	desc = "Правая нога из шестерёнок и золота."
 	icon_state = "pleg" 
 	resistance_flags = FIRE_PROOF
+	max_damage = 120
 	w_class = WEIGHT_CLASS_BULKY
 	organ_slowdown = 0
 	sellprice = 70
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 // --------- BRONZE PROSTHETICS -----------
 
@@ -272,17 +303,19 @@
 	desc = "Протез левой руки, созданный с применением бронзовых механизмов."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
-	max_damage = 20
+	max_damage = 170
 	max_integrity = 350
 	sellprice = 40
 	fingers = TRUE
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/bodypart/r_arm/prosthetic/bronze
 	name = "бронзовая правая рука"
 	desc = "Протез правой руки, созданный с применением бронзовых механизмов."
 	icon_state = "prarm" 
 	resistance_flags = FIRE_PROOF
-	max_damage = 20
+	max_damage = 170
 	max_integrity = 350
 	sellprice = 40
 	fingers = TRUE 
+	anvilrepair = /datum/skill/craft/blacksmithing

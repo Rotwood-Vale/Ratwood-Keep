@@ -134,7 +134,7 @@
 
 /mob/living/carbon/human/proc/confession_time(confession_type = "antag")
 	var/timerid = addtimer(CALLBACK(src, PROC_REF(confess_sins)), 6 SECONDS, TIMER_STOPPABLE)
-	var/responsey = alert(src, "Resist torture? (1 TRI)", "TORTURE", "Yes","No")
+	var/responsey = alert(src, "Resist torture?", "TORTURE", "Yes","No")
 	if(!responsey)
 		responsey = "No"
 	if(SStimer.timer_id_dict[timerid])
@@ -143,7 +143,6 @@
 		to_chat(src, span_warning("Too late..."))
 		return
 	if(responsey == "Yes")
-		adjust_triumphs(-1)
 		confess_sins(confession_type, resist = TRUE)
 	else
 		confess_sins(confession_type)
@@ -157,7 +156,13 @@
 		"I HAVE NOTHING TO SAY...!",
 		"WHY ME?!",
 	)
-	if(!resist)
+	var/resist_chance
+	if(resist)
+		to_chat(span_boldwarning("I attempt to resist the torture!"))
+		resist_chance = (STAINT + STAEND) + 10
+		if(confession_type == "antag")
+			resist_chance += 25
+	if(!resist || (resist_chance && prob(resist_chance)))
 		var/list/confessions = list()
 		switch(confession_type)
 			if("patron")
@@ -171,4 +176,5 @@
 		if(length(confessions))
 			say(pick(confessions), spans = list("torture"))
 			return
+	to_chat(span_good("I resist the torture!"))
 	say(pick(innocent_lines), spans = list("torture"))

@@ -38,7 +38,7 @@
 		to_chat(user, span_warning("Нечего перемалывать!"))
 		return TRUE
 	if(do_after(user, 8, target = src))
-		user.visible_message(span_notice("[user] начинает вращать жёрнов"), \
+		user.visible_message(span_notice("[user] начинает вращать жёрнова"), \
 						span_notice("Я начинаю вращать жёрнов."))
 		grindUp(to_grind, usr)
 		user.visible_message(span_notice("[user] заканчиваю перемалывание"), \
