@@ -1,7 +1,8 @@
 /obj/item/reagent_containers/glass/bucket/pot
 	force = 10
 	name = "pot"
-	desc = "A pot made out of iron"
+	desc = "The peasants friend, when filled with boiling water it will turn the driest oats to filling oatmeal."
+
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
@@ -85,7 +86,7 @@
 		created_recipe.start_cooking(src, user)
 		return TRUE
 	return TRUE
-	
+
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()
 	cut_overlays()
 	if(reagents.total_volume > 0)
@@ -110,13 +111,23 @@
 			reagents.trans_to(I, reagents.total_volume)
 	return TRUE
 
-/obj/item/reagent_containers/glass/bucket/pot/stone
-	name = "stone pot"
-	desc = "A pot made out of stone"
+/obj/item/reagent_containers/glass/bucket/pot/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
+	if(reagents.total_volume > 5)
+		new /obj/effect/decal/cleanable/food/mess/soup(get_turf(src))
+	..()
+
+/obj/item/reagent_containers/glass/bucket/pot/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.5,"sx" = -5,"sy" = -8,"nx" = 7,"ny" = -9,"wx" = -1,"wy" = -8,"ex" = -1,"ey" = -8,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0)
+
 
 ///this is where pot recipes go
 
 /datum/pot_recipe
+	var/name = "Generic Pot Recipe"
 	abstract_type = /datum/pot_recipe
 	var/datum/reagent/produced_reagent
 	var/water_volume = 33
@@ -135,6 +146,8 @@
 	var/fallback = FALSE
 	///the amount we pollute
 	var/pollute_amount = 600
+	///do we hide from books?
+	var/hides_from_books = FALSE
 
 /datum/pot_recipe/proc/start_cooking(obj/item/reagent_containers/glass/bucket/pot, mob/living/user)
 	cooking_pot = pot
@@ -175,85 +188,93 @@
 /datum/pot_recipe/proc/post_recipe()
 	return
 
-/datum/pot_recipe/oatmeal
+/datum/pot_recipe/cooking
+	abstract_type = /datum/pot_recipe/cooking
+
+/datum/pot_recipe/cooking/oatmeal
+	name = "oatmeal"
 	produced_reagent = /datum/reagent/consumable/soup/oatmeal
-	required_items = list(/obj/item/reagent_containers/food/snacks/produce/oat = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/grown/oat = 1)
 	finished_smell = /datum/pollutant/food/oatmeal
 
-/datum/pot_recipe/potato_stew
+/datum/pot_recipe/cooking/potato_stew
+	name = "potato stew"
 	cooking_time = 80 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/veggie/potato
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced = 1)
 	finished_smell = /datum/pollutant/food/potato_stew
 
-/datum/pot_recipe/onion_stew
+/datum/pot_recipe/cooking/onion_stew
+	name = "onion stew"
 	cooking_time = 60 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/veggie/onion
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1)
 	finished_smell = /datum/pollutant/food/onion_stew
 
-/datum/pot_recipe/cabbage_stew
+/datum/pot_recipe/cooking/cabbage_stew
+	name = "cabbage stew"
 	cooking_time = 70 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/veggie/cabbage
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced = 1)
 	finished_smell = /datum/pollutant/food/cabbage_stew
 
-/datum/pot_recipe/turnip_stew
+/datum/pot_recipe/cooking/turnip_stew
 	cooking_time = 70 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/veggie/turnip
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/veg/turnip_sliced = 1)
 	finished_smell = /datum/pollutant/food/turnip_stew
 
-/datum/pot_recipe/fish_stew
+/datum/pot_recipe/cooking/fish_stew
+	name = "fish stew"
 	cooking_time = 80 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/stew/fish
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish = 1)
 	finished_smell = /datum/pollutant/food/fish_stew
 
-/datum/pot_recipe/chicken_stew
+/datum/pot_recipe/cooking/chicken_stew
+	name = "chicken stew"
 	cooking_time = 90 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/stew/chicken
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry = 1)
 	finished_smell = /datum/pollutant/food/chicken_stew
 
-/datum/pot_recipe/chicken_stew/cutlet
+/datum/pot_recipe/cooking/chicken_stew/cutlet
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet = 1)
 
-/datum/pot_recipe/spider_stew
+/datum/pot_recipe/cooking/spider_stew
+	name = "spider stew"
 	cooking_time = 90 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/stew/gross
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1)
 	finished_smell = /datum/pollutant/food/potato_stew
 
-/datum/pot_recipe/generic_meat_stew
+/datum/pot_recipe/cooking/generic_meat_stew
+	name = "meat stew"
 	cooking_time = 90 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/stew/meat
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat = 1)
 	finished_smell = /datum/pollutant/food/meat_stew
 	fallback = TRUE
 
-/datum/pot_recipe/egg_soup
+/datum/pot_recipe/cooking/egg_soup
+	name = "egg soup"
 	cooking_time = 80 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/egg
 	required_items = list(/obj/item/reagent_containers/food/snacks/egg = 1)
 	finished_smell = /datum/pollutant/food/egg_soup
 
-/datum/pot_recipe/truffle_stew
-	cooking_time = 80 SECONDS
-	produced_reagent = /datum/reagent/consumable/soup/stew/truffle
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/truffles = 1)
-	finished_smell = /datum/pollutant/food/truffle_stew
-
-/datum/pot_recipe/cheese_soup
+/datum/pot_recipe/cooking/cheese_soup
+	name = "cheese soup"
 	cooking_time = 80 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/cheese
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/cheese = 1)
 	finished_smell = /datum/pollutant/food/cheese_soup
 
-/datum/pot_recipe/cheese_soup/wedge
+/datum/pot_recipe/cooking/cheese_soup/wedge
 	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/cheddarwedge = 1)
 
 /datum/pot_recipe/drugs
+	name = "drukqs"
 	cooking_time = 50 SECONDS
 	water_conversion = 0.45
 	produced_reagent = /datum/reagent/druqks
@@ -266,15 +287,14 @@
 	cooking_pot.reagents.add_reagent(/datum/reagent/water/spicy, remaining_water)
 
 /datum/pot_recipe/yuck_soup
+	name = "yuck soup"
+	hides_from_books = TRUE
 	cooking_time = 60 SECONDS
 	produced_reagent = /datum/reagent/yuck/cursed_soup
-	required_items = list(/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison = 1)
 
 /datum/pot_recipe/yuck_soup/poo
 	required_items = list(/obj/item/natural/poo = 1)
-
-/datum/pot_recipe/yuck_soup/toxicshrooms
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/toxicshrooms = 1)
 
 /datum/pot_recipe/yuck_soup/worms
 	required_items = list(/obj/item/natural/worms = 1)
@@ -290,9 +310,12 @@
 	fallback = TRUE
 
 /datum/pot_recipe/gross_stew
+	name = "gross stew"
+	hides_from_books = TRUE
 	cooking_time = 60 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/stew/gross
 	required_items = list(/obj/item/reagent_containers/food/snacks/smallrat/dead = 1)
 
 /datum/pot_recipe/gross_stew/bad_recipe
 	required_items = list(/obj/item/reagent_containers/food/snacks/badrecipe = 1)
+

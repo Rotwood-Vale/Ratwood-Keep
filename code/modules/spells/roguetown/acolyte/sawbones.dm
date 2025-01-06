@@ -1334,7 +1334,6 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	var/brew_amt = 24
 	var/brewing_time
 	var/start_time
-	var/mill_result = null
 
 /obj/item/reagent_containers/glass/alembic/Initialize()
 	create_reagents(100, REFILLABLE | DRAINABLE | AMOUNT_VISIBLE) // 2 Bottles capacity

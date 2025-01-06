@@ -73,18 +73,22 @@ All foods are distributed among various categories. Use common sense.
 	var/rotprocess = FALSE
 	var/become_rot_type = null
 
-
 	var/fertamount = 50
-	
-	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
-	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
-	var/distill_amt = 12
 
 	drop_sound = 'sound/foley/dropsound/food_drop.ogg'
 	smeltresult = /obj/item/ash
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 
+	var/chopping_sound = FALSE // does it play a choppy sound when batch sliced?
+	var/slice_sound = FALSE // does it play the slice sound when sliced?
+	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
+	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
+	var/distill_amt = 12
+
 	var/cooked_smell
+
+	var/list/sizemod = null
+	var/list/raritymod = null
 
 /datum/intent/food
 	name = "feed"
@@ -112,7 +116,7 @@ All foods are distributed among various categories. Use common sense.
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(begin_rotting)))
 	if(cooked_type || fried_type)
 		cooktime = 30 SECONDS
-	. = ..()
+	..()
 
 /obj/item/reagent_containers/food/snacks/proc/begin_rotting()
 	START_PROCESSING(SSobj, src)
@@ -120,8 +124,13 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
-		if(!istype(loc, /obj/structure/closet/crate/chest) && !(locate(/obj/structure/table) in loc) && !istype(loc, /obj/structure/roguemachine/vendor))
-			warming -= 20 //ssobj processing has a wait of 20
+		var/obj/structure/closet/crate/chest/chest = locate(/obj/structure/closet/crate/chest) in get_turf(src)
+		if(!chest)
+			var/obj/structure/table/located = locate(/obj/structure/table) in loc
+			if(located)
+				warming -= 5
+			else
+				warming -= 20 //ssobj processing has a wait of 20
 			if(warming < (-1*rotprocess))
 				if(become_rotten())
 					STOP_PROCESSING(SSobj, src)
@@ -182,7 +191,7 @@ All foods are distributed among various categories. Use common sense.
 			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
 		initialize_cooked_food(result, 1)
 		return result
-	if(istype(A,/obj/machinery/light/rogue/hearth) || istype(A,/obj/machinery/light/rogue/forge) || istype(A,/obj/machinery/light/rogue/firebowl) || istype(A,/obj/machinery/light/rogue/campfire))
+	if(istype(A,/obj/machinery/light/rogue/hearth) || istype(A,/obj/machinery/light/rogue/firebowl) || istype(A,/obj/machinery/light/rogue/campfire))
 		var/obj/item/result
 		if(fried_type)
 			result = new fried_type(A)
@@ -232,7 +241,11 @@ All foods are distributed among various categories. Use common sense.
 		return
 
 	if(eat_effect)
-		eater.apply_status_effect(eat_effect)
+		if(islist(eat_effect))
+			for(var/effect in eat_effect)
+				eater.apply_status_effect(effect)
+		else
+			eater.apply_status_effect(eat_effect)
 	eater.taste(reagents)
 
 	if(!reagents.total_volume)
@@ -245,9 +258,8 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/attack_self(mob/user)
 	return
 
-
 /obj/item/reagent_containers/food/snacks/attack(mob/living/M, mob/living/user, def_zone)
-	if(user.used_intent.type == INTENT_HARM)
+	if(user.used_intent.type != /datum/intent/food)
 		return ..()
 	if(!eatverb)
 		eatverb = pick("bite","chew","nibble","gnaw","gobble","chomp")
@@ -353,25 +365,41 @@ All foods are distributed among various categories. Use common sense.
 			else
 				. += "[src] was bitten multiple times!"
 
+
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/storage))
 		..() // -> item/attackby()
 		return 0
-	if(user.used_intent.blade_class == slice_bclass && W.wlength == WLENGTH_SHORT)
-		if(slice_bclass == BCLASS_CHOP)
-			//	RTD meat chopping noise
-			if(prob(66))
-				user.visible_message(span_warning("[user] chops [src]!"))
+/*	if(istype(W, /obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/S = W
+		if(custom_food_type && ispath(custom_food_type))
+			if(S.w_class > WEIGHT_CLASS_SMALL)
+				to_chat(user, span_warning("[S] is too big for [src]!"))
 				return 0
-			else
-				user.visible_message(span_notice("[user] chops [src]!"))
-				slice(W, user)
-				return 1
+			if(!S.customfoodfilling || istype(W, /obj/item/reagent_containers/food/snacks/customizable) || istype(W, /obj/item/reagent_containers/food/snacks/pizzaslice/custom) || istype(W, /obj/item/reagent_containers/food/snacks/cakeslice/custom))
+				to_chat(user, span_warning("[src] can't be filled with [S]!"))
+				return 0
+			if(contents.len >= 20)
+				to_chat(user, span_warning("I can't add more ingredients to [src]!"))
+				return 0
+			var/obj/item/reagent_containers/food/snacks/customizable/C = new custom_food_type(get_turf(src))
+			C.initialize_custom_food(src, S, user)
+			return 0
+*/
+
+	if(W.get_sharpness() && W.wlength == WLENGTH_SHORT)
+		if(slice_bclass == BCLASS_CHOP)
+			user.visible_message(span_notice("[user] chops [src]!"))
+			slice(W, user)
+			return 1
+		if(slice_bclass == BCLASS_CUT)
+			user.visible_message(span_notice("[user] slices [src]!"))
+			slice(W, user)
+			return 1
 		else if(slice(W, user))
 			return 1
-		else
-			return ..()
-	return ..()
+
+	..()
 //Called when you finish tablecrafting a snack.
 /obj/item/reagent_containers/food/snacks/CheckParts(list/parts_list, datum/crafting_recipe/food/R)
 	..()
@@ -408,6 +436,10 @@ All foods are distributed among various categories. Use common sense.
 		to_chat(user, span_warning("I need to use a table."))
 		return FALSE
 
+	if(slice_sound)
+		playsound(get_turf(user), 'modular/Neu_Food/sound/slicing.ogg', 60, TRUE, -1) // added some choppy sound
+	if(chopping_sound)
+		playsound(get_turf(user), 'modular/Neu_Food/sound/chopping_block.ogg', 60, TRUE, -1) // added some choppy sound
 	if(slice_batch)
 		if(!do_after(user, 30, target = src))
 			return FALSE
@@ -550,9 +582,7 @@ All foods are distributed among various categories. Use common sense.
 		add_fingerprint(user)
 		contents += W
 		stored_item = 1
-	else
-		return ..()
-	return ..()
+		return 1 // no afterattack here
 
 /obj/item/reagent_containers/food/snacks/MouseDrop(atom/over)
 	var/turf/T = get_turf(src)

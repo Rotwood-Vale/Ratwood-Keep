@@ -13,16 +13,18 @@
 	reagent_flags = INJECTABLE
 	resistance_flags = FLAMMABLE
 	destroy_sound
+	grid_width = 32
+	grid_height = 32
+
+	var/do_random_pixel_offset = TRUE
 	var/foodtype = NONE
 	var/last_check_time
 	var/in_container = FALSE //currently just stops "was bitten X times!" messages on canned food
 
-	grid_width = 32
-	grid_height = 32
 
 /obj/item/reagent_containers/food/Initialize(mapload)
 	. = ..()
-	if(!mapload)
+	if(!mapload && do_random_pixel_offset)
 		pixel_x = rand(-5, 5)
 		pixel_y = rand(-5, 5)
 

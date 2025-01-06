@@ -128,7 +128,7 @@
 						qdel(W)
 						sleep(1000)
 						playsound(src, "bubbles", 30, TRUE)
-						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/yucky, 65)
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/gross, 65)
 						pot.reagents.remove_reagent(/datum/reagent/water, 1)
 					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet) || istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry))
 						qdel(W)

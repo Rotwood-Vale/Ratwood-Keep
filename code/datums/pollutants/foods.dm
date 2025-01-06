@@ -92,10 +92,6 @@
 	name = "cooked angler fish"
 	scent = "cooked angler fish"
 
-/datum/pollutant/food/truffles
-	name = "cooked truffles"
-	scent = "cooked truffles"
-
 /datum/pollutant/food/bacon
 	name = "fried bacon"
 	scent = "fried bacon"
@@ -171,10 +167,6 @@
 /datum/pollutant/food/egg_soup
 	name = "egg soup"
 	scent = "egg soup"
-
-/datum/pollutant/food/truffle_stew
-	name = "truffle stew"
-	scent = "truffle stew"
 
 /datum/pollutant/food/cheese_soup
 	name = "cheese soup"
