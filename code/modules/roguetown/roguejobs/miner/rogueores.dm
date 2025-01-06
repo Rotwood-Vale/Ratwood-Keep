@@ -8,7 +8,7 @@
 	grid_height = 32
 
 /obj/item/rogueore/gold
-	name = "сырое золото"
+	name = "золотая руда"
 	desc = "Куча грязных блестящих самородков!"
 	icon_state = "oregold1"
 	smeltresult = /obj/item/ingot/gold
@@ -21,7 +21,7 @@
 
 
 /obj/item/rogueore/silver
-	name = "сырое серебро"
+	name = "серебряная руда"
 	desc = "Сверкающая руда лунного оттенка."
 	icon_state = "oresilv1"
 	smeltresult = /obj/item/ingot/silver
@@ -34,7 +34,7 @@
 
 
 /obj/item/rogueore/iron
-	name = "сырое железо"
+	name = "железная руда"
 	desc = "Тёмная руда, воплощающая грубую силу."
 	icon_state = "oreiron1"
 	smeltresult = /obj/item/ingot/iron
@@ -47,8 +47,8 @@
 
 
 /obj/item/rogueore/copper
-	name = "сырая медь"
-	desc = "Отполированная руда с красноватым отблеском."
+	name = "медная руда"
+	desc = "Руда с красноватым отблеском."
 	icon_state = "orecop1"
 	smeltresult = /obj/item/ingot/copper
 	grind_results = list(/datum/reagent/copper = 15)
@@ -59,8 +59,8 @@
 	return ..()
 
 /obj/item/rogueore/tin
-	name = "сырое олово"
-	desc = "Масса мягкой, почти податливой белой руды."
+	name = "оловянная руда"
+	desc = "Масса мягкой, податливой белой руды."
 	icon_state = "oretin1"
 	smeltresult = /obj/item/ingot/tin
 	sellprice = 4
@@ -71,7 +71,7 @@
 
 /obj/item/rogueore/coal
 	name = "уголь"
-	desc = "Тёмные куски, которые со временем превращаются в тлеющие угли."
+	desc = "Тёмные глыбы, которые со временем превращаются в тлеющие угли."
 	icon_state = "orecoal1"
 	firefuel = 30 MINUTES
 	smeltresult = /obj/item/rogueore/coal
@@ -175,7 +175,7 @@
 
 /obj/item/ingot/blacksteel
 	name = "слиток чёрной стали"
-	desc = "Пожертвовав священными свойствами серебра ради грубой силы, этот странный и мощный слиток окружён мрачными слухами о своём происхождении..."
+	desc = "Пожертвовав святыми свойствами серебра ради грубой силы, этот странный и мощный слиток окружён мрачными слухами о своём происхождении..."
 	icon_state = "ingotblacksteel"
 	smeltresult = /obj/item/ingot/blacksteel
 	sellprice = 90

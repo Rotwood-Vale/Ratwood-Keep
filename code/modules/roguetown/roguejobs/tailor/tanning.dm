@@ -1,6 +1,6 @@
 /obj/machinery/tanningrack
-	name = "сушильная стойка"
-	desc = "Стойка для выделки и просушки шкур в кожу, которую можно передвигать с помощью деревянного кола."
+	name = "сушилка"
+	desc = "Сушилка для выделки кожи из шкур, которую можно передвигать с помощью деревянного кола."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "dryrack"
 	var/obj/item/natural/hide/hide
@@ -15,9 +15,9 @@
 /obj/machinery/tanningrack/examine(mob/user)
 	. = ..()
 	if(hide)
-		. += span_warning("Здесь натянута шкура, готовая к обработке. Возможно, мне понадобится нод для этого.")
+		. += span_warning("Здесь натянута шкура, готовая к обработке. Мне понадобиться нож для этого.")
 	if(!anchored)
-		. += span_warning("Стойка не закреплена и может быть передвинута.")
+		. += span_warning("Сушилка не закреплена и может быть передвинута.")
 
 /obj/machinery/tanningrack/attack_hand(mob/user, params)
 	if(hide)
@@ -35,7 +35,7 @@
 			update_icon()
 			return
 		else
-			to_chat(user, span_warning("Стойка уже занята!"))
+			to_chat(user, span_warning("Здесь уже натянута шкура!"))
 			return
 	if((user.used_intent.type == /datum/intent/dagger/cut || user.used_intent.type == /datum/intent/sword/cut || user.used_intent.type == /datum/intent/axe/cut) && hide)
 		if(anchored)
@@ -43,7 +43,7 @@
 			var/work_time = (120 - (skill_level * 15))
 			var/pieces_to_spawn = rand(1, min(skill_level + 1, 6)) //Random number from 1 to skill level
 			var/sound_played = FALSE
-			to_chat(user, span_warning("Начинаю соскребать мездру со шкуры..."))
+			to_chat(user, span_warning("Начинаю соскребать волосы и мездру со шкуры..."))
 			if(!do_after(user, work_time, target = user))
 				return
 			playsound(src,pick('sound/items/book_open.ogg','sound/items/book_page.ogg'), 100, FALSE)
@@ -61,7 +61,7 @@
 					new /obj/item/natural/hide/cured(get_turf(user))
 			return
 		else
-			to_chat(user, span_warning("Нужно закрепить стойку деревянным колом, прежде чем обрабатывать шкуру."))
+			to_chat(user, span_warning("Нужно закрепить сушилку деревянным колом, прежде чем обрабатывать шкуру."))
 			return
 	if(istype(I, /obj/item/grown/log/tree/stake))
 		if(anchored)

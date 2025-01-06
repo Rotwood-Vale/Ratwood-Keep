@@ -19,7 +19,7 @@
 	layer = 2.8
 
 /obj/structure/closet/dirthole/grave
-	desc = "Яма достаточно большая для гроба."
+	desc = "Большая яма, в которую можно закопать гроб."
 	stage = 3
 	faildirt = 3
 	icon_state = "grave"
@@ -55,7 +55,7 @@
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
 		if(lootroll == 1)
-			. += span_warning("Лучше дать этому упокоенному спать дальше.")
+			. += span_warning("Лучше не тревожить этого покойника.")
 
 /obj/structure/closet/dirthole/insertion_allowed(atom/movable/AM)
 	if(istype(AM, /obj/structure/closet/crate/chest) || istype(AM, /obj/structure/closet/burial_shroud))
@@ -119,7 +119,7 @@
 //								playsound(mastert,'sound/items/dig_shovel.ogg', 100, TRUE)
 //								mastert.ChangeTurf(T.type, flags = CHANGETURF_INHERIT_AIR)
 //								return
-			to_chat(user, span_warning("I can't dig myself any deeper."))
+			to_chat(user, span_warning("Я не могу копать дальше."))
 			return
 		var/used_str = 10
 		if(iscarbon(user))
@@ -231,11 +231,11 @@
 /obj/structure/closet/dirthole/update_icon()
 	switch(stage)
 		if(1)
-			name = "яма"
+			name = "ямка"
 			icon_state = "hole1"
 			can_buckle = FALSE
 		if(2)
-			name = "яма"
+			name = "ямка"
 			icon_state = "hole2"
 			can_buckle = FALSE
 		if(3)

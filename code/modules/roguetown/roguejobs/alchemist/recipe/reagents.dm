@@ -32,12 +32,12 @@
 
 		var/mob/M = get(A, /mob)
 		if(M)
-			message += " - Переносится: [ADMIN_LOOKUPFLW(M)]"
+			message += " - Реакция проведена: [ADMIN_LOOKUPFLW(M)]"
 		else
 			message += " - Последний отпечаток пальца: [(A.fingerprintslast ? A.fingerprintslast : "N/A")]"
 
 		message_admins(message, 0, 1)
-		log_game("[reaction_name] реакция появления химического существа происходит в [AREACOORD(T)] переносится [key_name(M)] с последним отпечатком пальца [A.fingerprintslast? A.fingerprintslast : "N/A"]")
+		log_game("[reaction_name] химическая реакция порождения существа [AREACOORD(T)] была проведена [key_name(M)] на основе последнего отпечатка пальца: [A.fingerprintslast? A.fingerprintslast : "N/A"]")
 
 		playsound(get_turf(holder.my_atom), 'sound/blank.ogg', 100, TRUE)
 

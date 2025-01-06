@@ -3,7 +3,7 @@
 	force = 21
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	name = "молот"
-	desc = "Каждый удар наполняет воздух звуком, зовущим к сражению!"
+	desc = "Каждый его удар воспевает войну!"
 	icon_state = "hammer"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -69,7 +69,7 @@
 		if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
 			return
 		if(attacked_item.obj_integrity <= 0)
-			user.visible_message(span_warning("[attacked_item] сломан! Я не могу это починить..."))
+			user.visible_message(span_warning("[attacked_item] сломано! Я не могу это починить..."))
 			return
 
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= 0)
@@ -86,7 +86,7 @@
 			exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
 			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
 			if(repair_percent == 0.01) // Если неумелая попытка ремонта удалась
-				to_chat(user, span_warning("Вы неуклюже немного починили [attacked_item]."))
+				to_chat(user, span_warning("Вы кое-как починили [attacked_item]."))
 			else	
 				user.visible_message(span_info("[user] чинит [attacked_item]!"))
 			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
@@ -108,7 +108,7 @@
 		attacked_structure.obj_integrity = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity)
 		blacksmith_mind.add_sleep_experience(attacked_structure.hammer_repair, exp_gained/1.5) //We gain as much exp as we fix
 		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
-		user.visible_message(span_info("[user] repairs [attacked_structure]!"))
+		user.visible_message(span_info("[user] восстанавливает [attacked_structure]!"))
 		return
 
 	. = ..()
@@ -164,8 +164,8 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/hammer/wood
-	name = "деревянный молоток"
-	desc = "Деревянный молоток - второй лучший друг мастера! Но он также может пригодиться кузнецу..."
+	name = "киянка"
+	desc = "Киянка - второй лучший друг изобретателя! Но может пригодиться и кузнецу..."
 	icon_state = "whammer"
 	force = 16
 	smeltresult = null

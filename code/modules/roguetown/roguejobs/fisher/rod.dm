@@ -2,7 +2,7 @@
 	force = 12
 	possible_item_intents = list(ROD_CAST, SPEAR_BASH)
 	name = "удочка"
-	desc = "Сделана из старого дерева и грубой бечёвки. Инструмент в битве с тёмными водами."
+	desc = "Сделана из промокшего дерева и грубой бечёвки. Орудие в битве со здешними тёмными водами"
 	icon_state = "rod"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -63,8 +63,8 @@
 		return ..()
 
 	var/mob/living/current_fisherman = user
-	current_fisherman.visible_message(span_warning("[current_fisherman] casts a line!"), \
-						span_notice("I cast a line."))
+	current_fisherman.visible_message(span_warning("[current_fisherman] забрасывает удочку!"), \
+						span_notice("Я забрасываю удочку."))
 	playsound(loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
 
 	var/amt2raise = 0 //How much exp we gain on catch

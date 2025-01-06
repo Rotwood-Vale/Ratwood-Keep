@@ -46,7 +46,7 @@
 
 /obj/item/rogueweapon/pick/steel
 	name = "стальная кирка"
-	desc = "С укреплённой рукоятью и прочным древком - это превосходный инструмент для исследования тьмы."
+	desc = "С укреплённой рукоятью и прочным древком - это превосходный инструмент для копания во тьме."
 	force_wielded = 28
 	icon_state = "steelpick"
 	possible_item_intents = list(/datum/intent/pick)
@@ -55,8 +55,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/pick/drill
-	name = "часовой бур"
-	desc = "Великолепно сложное инженерное творение, способное сокрушать стены за секунды, а не часы."
+	name = "заводной бур"
+	desc = "Великолепное творение инженерии, способное сокрушать стены за секунды, а не часы."
 	force_wielded = 30
 	icon_state = "drill"
 	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'

@@ -1,6 +1,6 @@
 /obj/structure/fluff/millstone
-	name = "Молотильные жернова"
-	desc = "Молотильные жернова для перемалывания зерна в муку." //People have been mistaking the "It's Empty" on examine for it eating grain. This is not the case.
+	name = "ручная мельница"
+	desc = "Каменный жёрнов для перемалывания зерна в муку." //People have been mistaking the "It's Empty" on examine for it eating grain. This is not the case.
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "millstone"
 	density = TRUE
@@ -35,14 +35,14 @@
 
 /obj/structure/fluff/millstone/attack_hand(mob/user)
 	if(to_grind.len == 0)
-		to_chat(user, span_warning("Нечего молоть!"))
+		to_chat(user, span_warning("Нечего перемалывать!"))
 		return TRUE
 	if(do_after(user, 8, target = src))
 		user.visible_message(span_notice("[user] начинает вращать жёрнова"), \
 						span_notice("Я начинаю вращать жёрнов."))
 		grindUp(to_grind, usr)
-		user.visible_message(span_notice("[user] заканчивает молоть"), \
-						span_notice("Я закончил молоть."))
+		user.visible_message(span_notice("[user] заканчиваю перемалывание"), \
+						span_notice("Я закончил перемалывание."))
 		return TRUE
 	..()
 
@@ -57,7 +57,7 @@
 			if(reagents.holder_full())
 				to_chat(user, span_warning("[src] полон."))
 				return
-			user.visible_message(span_notice("[user] переливает [I] в [src]."), \
+			user.visible_message(span_notice("[user] заливаю [I] в [src]."), \
 							span_notice("Я переливаю [I] в [src]."))
 			for(var/i in 1 to 10)
 				if(do_after(user, 8, target = src))
@@ -95,7 +95,7 @@
 			to_chat(user, span_warning("Я не могу это перемолоть."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
-			to_chat(user, span_warning("[I] прилип к моей руке!"))
+			to_chat(user, span_warning("[I] невозможно отцепить от моей руки!"))
 			return TRUE
 		to_chat(user, span_info("Я кладу [I] в [src]."))
 		to_grind += grindable

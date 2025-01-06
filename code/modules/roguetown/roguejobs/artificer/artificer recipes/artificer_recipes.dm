@@ -65,7 +65,7 @@
 	i_type = "Общее"
 
 /datum/artificer_recipe/wood //TNevermind this being silly, I was silly and this needs to be redone proper
-	name = "Деревянная шестерёнка"
+	name = "Деревянная шестерня"
 	required_item = /obj/item/natural/wood/plank
 	created_item = /obj/item/roguegear/wood/basic
 	hammers_per_item = 5
@@ -73,21 +73,21 @@
 	i_type = "Общее"
 
 /datum/artificer_recipe/wood/reliable
-	name = "Надёжная деревянная шестерёнка (+1 Эссенция древесины)"
+	name = "Надёжная деревянная шестерня (+1 Эссенция древесины)"
 	created_item = /obj/item/roguegear/wood/reliable
 	additional_items = list(/obj/item/grown/log/tree/small/essence = 1)
 	hammers_per_item = 10
 	skill_level = 2
 
 /datum/artificer_recipe/wood/unstable
-	name = "Нестабильная деревянная шестерёнка (+1 Эссенция дикой природы)"
+	name = "Нестабильная деревянная шестерня (+1 Эссенция дикости)"
 	created_item = /obj/item/roguegear/wood/unstable
 	additional_items = list(/obj/item/natural/cured/essence = 1)
 	hammers_per_item = 10
 	skill_level = 3
 
 /datum/artificer_recipe/bronze
-	name = "Бронзовая шестерёнка"
+	name = "Бронзовая шестерня"
 	required_item = /obj/item/ingot/bronze
 	created_item = /obj/item/roguegear/bronze
 	hammers_per_item = 10
@@ -95,14 +95,14 @@
 	i_type = "Общее"
 
 /datum/artificer_recipe/general/copper/cog
-	name = "Медная шестерёнка"
+	name = "Медная шестерня"
 	required_item = /obj/item/ingot/copper
 	created_item = /obj/item/roguegear/bronze
 	hammers_per_item = 10
 	skill_level = 1
 
 /datum/artificer_recipe/general/tin/cog
-	name = "Оловянная шестерёнка"
+	name = "Оловянная шестерня"
 	required_item = /obj/item/ingot/tin
 	created_item = /obj/item/roguegear/bronze
 	hammers_per_item = 10
@@ -123,7 +123,7 @@
 // --------- TOOLS -----------
 
 /datum/artificer_recipe/wood/tools
-	name = "Деревянный молоток"
+	name = "Киянка"
 	created_item = /obj/item/rogueweapon/hammer/wood
 	hammers_per_item = 8
 	i_type = "Инструменты"
@@ -141,7 +141,7 @@
 	i_type = "Устройства"
 
 /datum/artificer_recipe/contraptions/metalizer
-	name = "Металлизатор дерева (+1 Деревянная шестерёнка)"
+	name = "Металлизатор дерева (+1 Деревянная шестерня)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/roguegear/wood/basic = 1)
 	created_item = /obj/item/contraption/wood_metalizer
@@ -157,7 +157,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/contraptions/imprinter
-	name = "Импринтер замков (+1 Надёжная деревянная шестерёнка)"
+	name = "Печататель замков (+1 Надёжная деревянная шестерня)" //трудности перевода
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/roguegear/wood/reliable = 1)
 	created_item = /obj/item/contraption/lock_imprinter
@@ -196,7 +196,7 @@
 	sellprice = 6
 
 /datum/artificer_recipe/wood/weapons/hshield
-	name = "Щит-защитник (+1 Выделанная кожа)"
+	name = "Щит Экю (+1 Выделанная кожа)" //а для меня перевод дарк солусов авторитетный источник + форма щита схожая
 	created_item = /obj/item/rogueweapon/shield/heater/crafted
 	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/hide/cured = 1)
 	hammers_per_item = 6
@@ -281,7 +281,7 @@
 	i_type = "Протезы"
 
 /datum/artificer_recipe/prosthetics/wood/arm_left
-	name = "Левая деревянная рука (+2 Доска) (+1 Деревянная шестерёнка)"
+	name = "Левая деревянная рука (+2 Доска) (+1 Деревянная шестерня)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
 	created_item = /obj/item/bodypart/l_arm/prosthetic/wood
@@ -289,7 +289,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/prosthetics/wood/arm_right
-	name = "Правая деревянная рука (+2 Доска) (+1 Деревянная шестерёнка)"
+	name = "Правая деревянная рука (+2 Доска) (+1 Деревянная шестерня)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
 	created_item = /obj/item/bodypart/r_arm/prosthetic/wood
@@ -297,7 +297,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/prosthetics/wood/leg_left
-	name = "Левая деревянная нога (+2 Доска) (+1 Деревянная шестерёнка)"
+	name = "Левая деревянная нога (+2 Доска) (+1 Деревянная шестерня)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
 	created_item = /obj/item/bodypart/l_leg/prosthetic/wood
@@ -305,7 +305,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/prosthetics/wood/leg_right
-	name = "Правая деревянная нога (+2 Доска) (+1 Деревянная шестерёнка)"
+	name = "Правая деревянная нога (+2 Доска) (+1 Деревянная шестерня)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
 	created_item = /obj/item/bodypart/r_leg/prosthetic/wood
@@ -322,7 +322,7 @@
 // --------- BRONZE -----------
 
 /datum/artificer_recipe/bronze/prosthetic
-	name = "Бронзовая левая рука (+1 шестерёнка)"
+	name = "Бронзовая левая рука (+1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/bronze
 	hammers_per_item = 15
 	skill_level = 4
@@ -330,13 +330,13 @@
 	i_type = "Протезы"
 
 /datum/artificer_recipe/bronze/prosthetic/arm_right
-	name = "Бронзовая правая рука (+1 шестерёнка)"
+	name = "Бронзовая правая рука (+1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/bronze
 
 // --------- GOLD -----------
 
 /datum/artificer_recipe/gold/prosthetic // Guh this need a gold subtype oh well maybe some day there will be a golden cock! COG I MEAN GOD OMG
-	name = "Золотая левая рука (+2 Шестеренки)"
+	name = "Золотая левая рука (+2 Бронзовая шестерня)"
 	required_item = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/l_arm/prosthetic/gold
 	additional_items = list(/obj/item/roguegear/bronze = 2)
@@ -345,21 +345,21 @@
 	i_type = "Протезы"
 
 /datum/artificer_recipe/gold/prosthetic/arm_right
-	name = "Золотая правая рука (+2 Шестеренки)"
+	name = "Золотая правая рука (+2 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/gold
 
 /datum/artificer_recipe/gold/prosthetic/leg_left
-	name = "Золотая левая нога (+2 Шестеренки)"
+	name = "Золотая левая нога (+2 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/gold
 
 /datum/artificer_recipe/gold/prosthetic/leg_right
-	name = "Золотая правая нога (+2 Шестеренки)"
+	name = "Золотая правая нога (+2 ШБронзовая шестерня)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/gold
 
 // --------- STEEL -----------
 
 /datum/artificer_recipe/steel/prosthetic
-	name = "Стальная левая рука (+1 Сталь, +1 шестерёнка)"
+	name = "Стальная левая рука (+1 Сталь, +1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/steel
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel = 1, /obj/item/roguegear/bronze = 1)
@@ -368,15 +368,15 @@
 	i_type = "Протезы"
 
 /datum/artificer_recipe/steel/prosthetic/arm_right
-	name = "Стальная правая рука (+1 Сталь, +1 шестерёнка)"
+	name = "Стальная правая рука (+1 Сталь, +1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/steel
 
 /datum/artificer_recipe/steel/prosthetic/leg_left
-	name = "Стальная левая нога (+1 Сталь, +1 шестерёнка)"
+	name = "Стальная левая нога (+1 Сталь, +1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/steel
 
 /datum/artificer_recipe/steel/prosthetic/leg_right
-	name = "Стальная правая нога (+1 Сталь, +1 шестерёнка)"
+	name = "Стальная правая нога (+1 Сталь, +1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/steel
 
 // --------- GUNS -----------
@@ -385,7 +385,7 @@
 	i_type = "Огнестрельное оружие"
 
 /datum/artificer_recipe/guns/barrel
-	name = "Ствол оружия (+1 Сталь)"
+	name = "Оружейный ствол (+1 Сталь)"
 	required_item = /obj/item/ingot/steel
 	created_item = /obj/item/gunbarrel
 	additional_items = list(/obj/item/ingot/steel = 1)
@@ -393,7 +393,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/guns/parts
-	name = "Замок оружия (+1 шестерёнка)"
+	name = "Фитильный замок (+1 Бронзовая шестерня)"
 	required_item = /obj/item/ingot/steel
 	created_item = /obj/item/gunlock
 	additional_items = list(/obj/item/roguegear/bronze = 1)
@@ -401,7 +401,7 @@
 	skill_level = 3
 
 /datum/artificer_recipe/guns/stock
-	name = "Приклад оружия"
+	name = "Приклад"
 	required_item = /obj/item/natural/wood/plank
 	created_item = /obj/item/gunstock
 	hammers_per_item = 5
@@ -418,7 +418,7 @@
 	skill_level = 4
 
 /datum/artificer_recipe/guns/blunderbuss
-	name = "Бандук (+1 Приклад) (+1 Замок) (+1 Ствол)"
+	name = "Бландербасс (+1 Приклад) (+1 Замок) (+1 Ствол)" //КАКОЙ БАНДУК???
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/gunlock = 1,
 							/obj/item/gunstock = 1,
@@ -430,7 +430,7 @@
 // --------- IRON -----------
 
 /datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
-	name = "Железная левая рука (+1 Доска) (+1 шестерёнка)"
+	name = "Железная левая рука (+1 Доска) (+1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/iron
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/roguegear/bronze = 1)
@@ -439,13 +439,13 @@
 	i_type = "Протезы"
 
 /datum/artificer_recipe/iron/prosthetic/arm_right
-	name = "Железная правая рука (+1 Доска) (+1 шестерёнка)"
+	name = "Железная правая рука (+1 Доска) (+1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/iron
 
 /datum/artificer_recipe/iron/prosthetic/leg_left
-	name = "Железная левая нога (+1 Доска) (+1 шестерёнка)"
+	name = "Железная левая нога (+1 Доска) (+1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/iron
 
 /datum/artificer_recipe/iron/prosthetic/leg_right
-	name = "Железная правая нога (+1 Доска) (+1 шестерёнка)"
+	name = "Железная правая нога (+1 Доска) (+1 Бронзовая шестерня)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/iron
