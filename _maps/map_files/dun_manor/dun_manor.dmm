@@ -17140,7 +17140,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/woods)
 "prO" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "prR" = (
@@ -67775,8 +67775,8 @@ auX
 vQw
 jRc
 rBd
-dZn
-dZn
+jTe
+cpW
 dZn
 rzj
 qUD
@@ -67932,9 +67932,9 @@ oUz
 hRm
 hRm
 hRm
-prO
-dZn
-dZn
+hRm
+oUz
+iXt
 hRm
 qZj
 dZn
@@ -68086,11 +68086,11 @@ vvp
 xJI
 xJI
 xJI
+xJI
 pPS
 xJI
-oUz
-oUz
-dZn
+jsn
+prO
 wWa
 hRm
 pJQ
@@ -68403,9 +68403,9 @@ wfx
 qxD
 qxD
 wfx
-oUz
-oUz
-iXt
+jsn
+dZn
+dZn
 oUz
 oUz
 qZS
@@ -68561,7 +68561,7 @@ kUe
 nTw
 mnG
 jsn
-rPD
+dZn
 dZn
 dZn
 rPD
