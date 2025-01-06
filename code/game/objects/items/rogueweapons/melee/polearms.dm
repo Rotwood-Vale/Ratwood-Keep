@@ -239,6 +239,99 @@
 	max_integrity = 50
 	throwforce = 20
 
+/obj/item/rogueweapon/fishspear
+	force = 18
+	force_wielded = 30
+	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
+	name = "fishing spear"
+	desc = "This two-pronged and barbed spear was made to catch those pesky fish."
+	icon_state = "fishspear"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	bigboy = TRUE
+	gripsprite = TRUE
+	wlength = WLENGTH_GREAT
+	w_class = WEIGHT_CLASS_BULKY
+	minstr = 8
+	max_blade_int = 200
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/steel
+	associated_skill = /datum/skill/combat/polearms
+	blade_dulling = DULLING_BASHCHOP
+	walking_stick = TRUE
+	wdefense = 4
+	thrown_bclass = BCLASS_STAB
+	throwforce = 35
+	resistance_flags = FLAMMABLE
+
+/obj/item/rogueweapon/fishspear/depthseek //DO NOT ADD RECIPE. MEANT TO BE AN ABYSSORITE RELIC. IDEA COURTESY OF LORDINQPLAS
+	force = 35
+	force_wielded = 55
+	name = "blessed depthseeker"
+	desc = "A beautifully crafted weapon, with handle carved of some beast's bone, inlaid with smooth seaglass at pommel and head, with two prongs smithed of fine dwarven steel. The seaglass carving at the head is a masterwork in and of itself, you can feel an abyssal energy radiating off it."
+	icon_state = "depthseek"
+	smeltresult = /obj/item/ingot/blacksteel
+	max_blade_int = 600
+	wdefense = 8
+	throwforce = 50
+
+/obj/item/rogueweapon/fishspear/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.6,
+					"sx" = -6,
+					"sy" = 7,
+					"nx" = 6,
+					"ny" = 8,
+					"wx" = 0,
+					"wy" = 6,
+					"ex" = -1,
+					"ey" = 8,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = -50,
+					"sturn" = 40,
+					"wturn" = 50,
+					"eturn" = -50,
+					"nflip" = 0,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+			if("wielded")
+				return list(
+					"shrink" = 0.6,
+					"sx" = 3,
+					"sy" = 1,
+					"nx" = -3,
+					"ny" = 1,
+					"wx" = -9,
+					"wy" = 1,
+					"ex" = 9,
+					"ey" = 1,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = -30,
+					"sturn" = 30,
+					"wturn" = -30,
+					"eturn" = 30,
+					"nflip" = 8,
+					"sflip" = 0,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+
 /obj/item/rogueweapon/halberd
 	force = 15
 	force_wielded = 30
