@@ -20,8 +20,7 @@
 /datum/crafting_recipe/roguetown/turfs/woodplatform
 	name = "wooden platform"
 	result = /turf/open/floor/rogue/ruinedwood/platform
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/natural/fibers = 1)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	verbage_simple = "construct"
 	verbage = "constructs"
@@ -104,8 +103,7 @@
 /datum/crafting_recipe/roguetown/turfs/stoneplatform
 	name = "stone platform"
 	result = /turf/open/floor/rogue/blocks/platform
-	reqs = list(/obj/item/natural/stone = 1,
-				/obj/item/natural/fibers = 1)
+	reqs = list(/obj/item/natural/stone = 1)
 	skillcraft = /datum/skill/craft/masonry
 	verbage_simple = "build"
 	verbage = "builds"
@@ -205,7 +203,8 @@
 /datum/crafting_recipe/roguetown/turfs/twigplatform
 	name = "twig platform"
 	result = /turf/open/floor/rogue/twig/platform
-	reqs = list(/obj/item/grown/log/tree/stick = 3)
+	reqs = list(/obj/item/grown/log/tree/stick = 3,
+				/obj/item/natural/fibers = 1)
 	skillcraft = /datum/skill/craft/crafting
 	verbage_simple = "assemble"
 	verbage = "assembles"
