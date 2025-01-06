@@ -84,7 +84,7 @@
 	
 	var/broadcastmessage = ""
 
-	broadcastmessage += "\n\n<@&[CONFIG_GET(string/new_round_ping)]>, the server will reboot shortly!"
+	broadcastmessage += "\n\n<@ping]>, сервер перезапускается!"
 
 	send2chat(new /datum/tgs_message_content(broadcastmessage), CONFIG_GET(string/chat_roundend_notice_tag))
 			
