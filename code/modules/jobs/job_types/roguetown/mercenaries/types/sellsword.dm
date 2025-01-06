@@ -13,7 +13,7 @@
 /datum/outfit/job/roguetown/mercenary/sellsword/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Swordsman","Fencer", "Cutthroat")
+	var/classes = list("Swordsman","Fencer", "Cutthroat", "Archer")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -138,3 +138,38 @@
 				H.change_stat("perception", 1)
 				H.change_stat("speed", 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+		if("Archer")
+			H.set_blindness(0)
+			to_chat(H, span_warning("You set your sights on your next hunt. With your bow, few will manage to escape."))
+			head = /obj/item/clothing/head/roguetown/roguehood
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+			neck = /obj/item/storage/keyring/mercenary
+			pants = /obj/item/clothing/under/roguetown/trou/leather
+			gloves = /obj/item/clothing/gloves/roguetown/leather
+			belt = /obj/item/storage/belt/rogue/leather
+			armor = /obj/item/clothing/suit/roguetown/armor/leather
+			backl = /obj/item/storage/backpack/rogue/satchel
+			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+			beltl = /obj/item/ammo_holder/quiver/arrows
+
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger)
+
+			if(H.mind)
+				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+				H.change_stat("strength", 2)
+				H.change_stat("endurance", 1)
+				H.change_stat("constitution", 1)
+				H.change_stat("perception", 1)
+				H.change_stat("speed", 1)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
