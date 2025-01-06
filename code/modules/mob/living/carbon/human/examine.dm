@@ -139,21 +139,21 @@
 
 		if(display_as_foreign && user != src)
 			if(are_mercenary && am_mercenary)
-				. += span_notice("A Mercenary")
+				. += span_notice("Наёмник")
 			else if(!am_foreign)
-				. += span_phobia("A Foreigner...")
+				. += span_phobia("Чужестранец...")
 
 		if(name in GLOB.excommunicated_players)
-			. += span_userdanger("EXCOMMUNICATED!")
+			. += span_userdanger("ОТЛУЧЕН ОТ ЦЕРКВИ!")
 
 		if(name in GLOB.heretical_players)
-			. += span_userdanger("HERETIC'S BRAND! SHAME!")
+			. += span_userdanger("КЛЕЙМО ЕРЕТИКА! ПОЗОР!")
 		if(iszizocultist(user) || iszizolackey(user))
 			if(virginity)
 				. += "<span class='userdanger'>VIRGIN!</span>"
 
 		if(real_name in GLOB.outlawed_players)
-			. += "<span class='userdanger'>OUTLAW!</span>"
+			. += "<span class='userdanger'>ПРЕСТУПНИК!</span>"
 		if(mind && mind.special_role)
 		else
 			if(mind && mind.special_role == "Vampire Lord")

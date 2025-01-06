@@ -2,15 +2,13 @@
 	race = /datum/species/axian
 
 /datum/species/axian
-	name = "Axian"
+	name = "Аксиан"
 	id = "axian"
-	desc = "<b>Axian</b><br>\
-	Axians are a proud, shark-like people that have a heritage founded in maritime trade, tax evasion, and piracy. \
-	While known for being strong in spirit and promoting robust commercial practices, they have gained infamy for \
-	possessing an intense distaste for both the nobility and taxes, making them a prime target of discrimination and suspicion."
-	expanded_desc =	"Axians are a proud, shark-like people that have a heritage founded in maritime trade, tax evasion, and piracy. While known for \
-	being strong in spirit and promoting robust commercial practices, they have gained infamy for possessing an intense distaste for \
-	both the nobility and taxes, making them a prime target of discrimination and suspicion. They are oftentimes scapegoats for crime \
+	desc = "<b>Аксиан</b><br>\
+	Аксиане - гордый, похожий на акулу народ, наследие которого основано на морской торговле, уклонении от налогов и пиратстве. \
+	Хотя они известны тем, что сильны духом и поощряют активную коммерческую деятельность, они приобрели дурную славу за то,\
+	что они испытывают сильное отвращение к дворянству и налогам, что делает их главной мишенью для дискриминации и подозрительности."
+	expanded_desc =	"They are oftentimes scapegoats for crime \
 	and are often blamed for any signs of dissent, oftentimes becoming the first to be persecuted for any rebellious activities present \
 	in the region. Furthermore, they often are accused of being Matthiosan, oftentimes having their assets forcibly seized by opportunistic schemers. \
 	<br><br> \
