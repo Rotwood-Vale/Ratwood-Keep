@@ -120,9 +120,16 @@
 /mob/living/carbon/human/proc/on_daypass()
 	if(dna?.species)
 		if(STUBBLE in dna.species.species_traits)
+			if (mob_biotypes & MOB_UNDEAD)
+				return
 			if(gender == MALE)
-				has_stubble = TRUE
-				update_hair()
+				var/datum/bodypart_feature/hair/facial/beard = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+				if (!beard)
+					return
+				if (beard.accessory_type == /datum/sprite_accessory/hair/facial/shaved)
+					beard.accessory_type = /datum/sprite_accessory/hair/facial/stubble
+					to_chat(src, span_warning("My face itches."))
+					update_hair()
 
 
 /mob/living/carbon/human/handle_traits()
