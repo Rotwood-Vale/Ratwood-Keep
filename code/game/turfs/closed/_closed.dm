@@ -95,14 +95,14 @@
 							if(T.max_integrity > 500) 	//Custom-set HP wall, should be respected
 								T.take_damage(max_integrity / 3)
 							else
-								T.take_damage(max_integrity/ 2)
+								T.take_damage(max_integrity / 2)
 						else
 							T.take_damage(rand(0,50))	//Keep trying, I guess. You'll get it eventually.
 						is_bigguy = TRUE
 				if(is_bigguy)
-					H.Immobilize(30)
+					H.Immobilize(20)
 					//FUCKS you up
-					H.apply_damage(150, BRUTE, "chest", H.run_armor_check("chest", "blunt", damage = 150))
+					H.apply_damage(80, BRUTE, "chest", H.run_armor_check("chest", "blunt", damage = 80))
 					playsound(src, "meteor", 100, TRUE)
 				else
 					H.Immobilize(10)

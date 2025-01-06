@@ -11,7 +11,7 @@
 
 /datum/virtue/utility/beautiful
 	name = "Beautiful"
-	desc = "Wherever I go, I turn heads, such is my natural beauty. I am also rather good in bed."
+	desc = "Wherever I go, I turn heads, such is my natural beauty. I am also rather good in bed, though they always say that."
 	added_traits = list(TRAIT_BEAUTIFUL,TRAIT_GOODLOVER)
 
 /datum/virtue/utility/deadened
@@ -21,13 +21,13 @@
 
 /datum/virtue/utility/light_steps
 	name = "Light Steps"
-	desc = "Years of skulking about have left my steps quiet."
+	desc = "Years of skulking about have left my steps quiet, and my hunched gait quicker."
 	added_traits = list(TRAIT_LIGHT_STEP)
 	added_skills = list(list(/datum/skill/misc/sneaking, 3, 6))
 
 /datum/virtue/utility/linguist
 	name = "Intellectual"
-	desc = "I've spent my life surrounded by various books or foreigners. I've picked up several tongues, and general wits. (+1 INT, 3 Languages, Stashed Book)"
+	desc = "I've spent my life surrounded by various books or sophisticated foreigners, be it through travel or other fortunes beset on my life. I've picked up several tongues and wits, and keep a journal closeby. (+1 INT, 3 Languages, Stashed Book)"
 
 /datum/virtue/utility/linguist/apply_to_human(mob/living/carbon/human/recipient)
 	var/list/selectable_languages = list(/datum/language/elvish, /datum/language/dwarvish, /datum/language/orcish, /datum/language/hellspeak, /datum/language/draconic, /datum/language/celestial)
@@ -100,7 +100,7 @@
 
 /datum/virtue/utility/performer
 	name = "Performer"
-	desc = "Music, artistry and the act of showmanship carried me through life. I've hidden a favorite instrument of mine, know how to woo partners, and how to crack eggs of hecklers."
+	desc = "Music, artistry and the act of showmanship carried me through life. I've hidden a favorite instrument of mine, know how to please anyone I touch, and how to crack the eggs of hecklers."
 	added_traits = list(TRAIT_NUTCRACKER,TRAIT_GOODLOVER)
 
 /datum/virtue/utility/performer/apply_to_human(mob/living/carbon/human/recipient)

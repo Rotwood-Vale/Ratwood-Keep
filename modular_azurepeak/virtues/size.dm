@@ -1,6 +1,6 @@
 /datum/virtue/size/giant
 	name = "Giant"
-	desc = "I've always been larger, stronger and hardier than the average person. I tend to lumber around a lot, though..."
+	desc = "I've always been larger, stronger and hardier than the average person. I tend to lumber around a lot, and my immense size can break down frail, wooden walls."
 	added_stats = list(STAT_STRENGTH = 2, STAT_CONSTITUTION = 1, STAT_SPEED = -2)
 	added_traits = list(TRAIT_BIGGUY)
 	triumph_cost = 2
