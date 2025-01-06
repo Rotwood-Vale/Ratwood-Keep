@@ -144,7 +144,7 @@
 
 /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	name = "grenzelhoft boots"
-	desc = "A pair of fine boots worn by mercenaries."
+	desc = "A pair of fine boots worn by Grenzelhoftian legionaries."
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'

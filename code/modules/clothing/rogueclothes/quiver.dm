@@ -28,7 +28,7 @@
 	name = "bullet pouch"
 	icon_state = "pouch0"
 	item_state = "pouch"
-	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
+	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	max_storage = 10
 	ammo_type = list(/obj/item/ammo_casing) //common denominator type for runelock and arquebus bullets
 
