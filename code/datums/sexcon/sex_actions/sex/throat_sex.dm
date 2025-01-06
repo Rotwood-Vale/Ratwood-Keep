@@ -3,6 +3,11 @@
 	stamina_cost = 1.0
 	gags_target = TRUE
 
+/datum/sex_action/throat_sex/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Член. Вытрахать в глотку."
+
 /datum/sex_action/throat_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -27,18 +32,24 @@
 
 /datum/sex_action/throat_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] slides his cock into [target]'s throat!"))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] вводит член в глотку [target]!"))
+	else
+		user.visible_message(span_warning("[user] slides his cock into [target]'s throat!"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/throat_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s throat."))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] ебёт глотку [target]..."))
 	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_lovebold("[user] cums into [target]'s throat!"))
+		if(user.client.prefs.be_russian)
+			user.visible_message(span_lovebold("[user] кончает в глотку [target]!"))
+		else
+			user.visible_message(span_lovebold("[user] cums into [target]'s throat!"))
 		user.sexcon.cum_into()
 		user.virginity = FALSE
 
@@ -51,7 +62,10 @@
 
 /datum/sex_action/throat_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls his cock out of [target]'s throat."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] вынимает член из глотки [target]."))
+	else
+		user.visible_message(span_warning("[user] pulls his cock out of [target]'s throat."))
 
 /datum/sex_action/throat_sex/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

@@ -2,6 +2,11 @@
 	name = "Rub their body"
 	check_same_tile = FALSE
 
+/datum/sex_action/rub_body/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Рука. Погладить тело."
+
 /datum/sex_action/rub_body/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -16,11 +21,17 @@
 
 /datum/sex_action/rub_body/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] places their hands onto [target]..."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] кладёт свои конечности на тело [target]..."))
+	else
+		user.visible_message(span_warning("[user] places their hands onto [target]..."))
 
 /datum/sex_action/rub_body/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rubs [target]'s body..."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] гладит тело [target]..."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rubs [target]'s body..."))
 	user.make_sucking_noise()
 
 	user.sexcon.perform_sex_action(target, 0.5, 0, TRUE)
@@ -28,7 +39,10 @@
 
 /datum/sex_action/rub_body/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] stops rubbing [target]'s body ..."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] убирает свои конечности от тела [target]..."))
+	else
+		user.visible_message(span_warning("[user] stops rubbing [target]'s body ..."))
 
 /datum/sex_action/rub_body/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

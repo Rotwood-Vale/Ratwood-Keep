@@ -135,6 +135,9 @@
 			if(newprice)
 				if(findtext(num2text(newprice), "."))
 					return attack_hand(usr)
+				if(newprice < 0)
+					to_chat(usr, span_warning("DENIED!"))
+					return attack_hand(usr)
 				held_items[O]["PRICE"] = newprice
 	return attack_hand(usr)
 

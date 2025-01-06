@@ -3,6 +3,11 @@
 	check_incapacitated = FALSE
 	gags_user = TRUE
 
+/datum/sex_action/rimming/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Лицо. Вылизать задницу."
+
 /datum/sex_action/rimming/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -20,16 +25,28 @@
 /datum/sex_action/rimming/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
-		user.visible_message(span_warning("[user] starts licking [target]'s entire butt..."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(span_warning("[user] приближает своё лицо к огромной заднице [target]..."))
+		else
+			user.visible_message(span_warning("[user] starts licking [target]'s entire butt..."))
 	else
-		user.visible_message(span_warning("[user] starts rimming [target]'s butt..."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(span_warning("[user] приближает своё лицо к заднице [target]..."))
+		else
+			user.visible_message(span_warning("[user] starts rimming [target]'s butt..."))
 
 /datum/sex_action/rimming/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
 		if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
-			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] licks [target]'s entire butt..."))
+			if(user.client.prefs.be_russian)
+				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] вылизывает огромную задницу [target]..."))
+			else
+				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] licks [target]'s entire butt..."))
 		else
-			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rims [target]'s butt..."))
+			if(user.client.prefs.be_russian)
+				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] вылизывает задницу [target]..."))
+			else
+				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rims [target]'s butt..."))
 	user.make_sucking_noise()
 	do_thrust_animate(user, target)
 
@@ -39,9 +56,15 @@
 /datum/sex_action/rimming/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
-		user.visible_message(span_warning("[user] stops licking [target]'s butt ..."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(span_warning("[user] отводит голову в сторону от огромной задницы [target]..."))
+		else
+			user.visible_message(span_warning("[user] stops licking [target]'s butt..."))
 	else
-		user.visible_message(span_warning("[user] stops rimming [target]'s butt ..."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(span_warning("[user] отводит голову в сторону от задницы [target]..."))
+		else
+			user.visible_message(span_warning("[user] stops rimming [target]'s butt..."))
 
 /datum/sex_action/rimming/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

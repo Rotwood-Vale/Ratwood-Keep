@@ -4,6 +4,11 @@
 	stamina_cost = 1.0
 	gags_target = TRUE
 
+/datum/sex_action/force_armpit_nuzzle/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Лицо. Прижать к подмышке."
+
 /datum/sex_action/force_armpit_nuzzle/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -22,11 +27,18 @@
 
 /datum/sex_action/force_armpit_nuzzle/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] forces [target]'s head against their armpit!"))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] прижимает голову [target] к своей подмышке!"))
+	else
+		user.visible_message(span_warning("[user] forces [target]'s head against their armpit!"))
+	
 
 /datum/sex_action/force_armpit_nuzzle/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to nuzzle their armpit."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] тыкает [target] в свою подмышку."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to nuzzle their armpit."))
 	do_thrust_animate(target, user)
 
 	user.sexcon.perform_sex_action(user, 0.5, 0, TRUE)
@@ -34,7 +46,10 @@
 
 /datum/sex_action/force_armpit_nuzzle/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls [target]'s head away from their armpit."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] отводит голову [target] от своей подмышки."))
+	else
+		user.visible_message(span_warning("[user] pulls [target]'s head away from their armpit."))
 
 /datum/sex_action/force_armpit_nuzzle/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

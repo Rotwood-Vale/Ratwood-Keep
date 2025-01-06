@@ -4,6 +4,11 @@
 	require_grab = TRUE
 	stamina_cost = 1.0
 
+/datum/sex_action/force_footjob/New()
+	. = ..()
+	if(usr?.client?.prefs?.be_russian)
+		name = "Член. Заставить подрочить себе."
+
 /datum/sex_action/force_footjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
@@ -28,11 +33,18 @@
 
 /datum/sex_action/force_footjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] grabs [target]'s feet and clamps them around his cock!"))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] ведёт стопы [target] к своему члену!"))
+	else
+		user.visible_message(span_warning("[user] grabs [target]'s feet and clamps them around his cock!"))
 
 /datum/sex_action/force_footjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] uses [target] feet to jerk off."))
+		if(user.client.prefs.be_russian)
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] заставляет [target] использовать свои стопы, чтобы подрочить себе."))
+		else
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] uses [target] feet to jerk off."))
+		
 	playsound(user, 'sound/misc/mat/fingering.ogg', 20, TRUE, -2, ignore_walls = FALSE)
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
@@ -40,4 +52,7 @@
 
 /datum/sex_action/force_footjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls his cock out from inbetween [target]'s feet."))
+	if(user.client.prefs.be_russian)
+		user.visible_message(span_warning("[user] вытаскивает свой член из пространства между стоп [target]."))
+	else
+		user.visible_message(span_warning("[user] pulls his cock out from inbetween [target]'s feet."))
