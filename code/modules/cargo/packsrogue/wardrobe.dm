@@ -137,8 +137,8 @@
 	name = "Formal Silks"
 	cost = 20
 	contains = list(
-					/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
-					/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
+					/obj/item/clothing/suit/roguetown/shirt/grenzelhoft,
+					/obj/item/clothing/suit/roguetown/shirt/grenzelhoft,
 				)
 
 /datum/supply_pack/rogue/wardrobe/pants/formal

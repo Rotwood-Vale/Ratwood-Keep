@@ -12,6 +12,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
+	grid_height = 64
+	grid_width = 64
+
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()
 	user.update_fov_angles()
@@ -1201,10 +1204,12 @@
 	. = ..()
 	if(slot == SLOT_HEAD)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
+		user.add_stress(/datum/stressevent/eora)
 
 /obj/item/clothing/head/peaceflower/dropped(mob/living/carbon/human/user)
 	..()
 	REMOVE_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")
+	user.remove_stress(/datum/stressevent/eora)
 
 /obj/item/clothing/head/peaceflower/proc/peace_check(mob/living/user)
 	// return true if we should be unequippable, return false if not

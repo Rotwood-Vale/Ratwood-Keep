@@ -317,7 +317,7 @@
 		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
 		if(!affecting)
 			affecting = get_bodypart(BODY_ZONE_CHEST)
-		var/armor = run_armor_check(affecting, M.d_type, armor_penetration = M.a_intent.penfactor, damage = damage)
+		var/armor = run_armor_check(affecting, M.damage_type, armor_penetration = M.a_intent.penfactor, damage = damage)
 		next_attack_msg.Cut()
 
 		var/nodmg = FALSE
