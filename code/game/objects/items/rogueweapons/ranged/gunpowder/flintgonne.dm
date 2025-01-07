@@ -151,7 +151,6 @@
 
 /datum/intent/shoot/flintgonne
 	chargedrain = 0
-	chargetime = 1
 
 /datum/intent/shoot/flintgonne/can_charge()
 	if(mastermob && masteritem.wielded)
@@ -163,15 +162,15 @@
 	if(mastermob && chargetime)
 		var/newtime = chargetime
 		//skill block
-		newtime = newtime + 240
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 15)
+		newtime = newtime + 90
+		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 20)
 		//per block
 		newtime = newtime + 20
 		newtime = newtime - ((mastermob.STAPER)*1.5)
 		if(newtime > 0)
 			return newtime
 		else
-			return 0.1
+			return 5
 	return chargetime
 
 /datum/intent/arc/flintgonne
@@ -188,12 +187,12 @@
 			return FALSE*/
 		return TRUE
 
-/datum/intent/arc/flintgonne/get_chargetime()
+/datum/intent/arc/arquebus/get_chargetime()
 	if(mastermob && chargetime)
 		var/newtime = chargetime
 		//skill block
-		newtime = newtime + 240
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 15)
+		newtime = newtime + 120
+		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 20)
 		//per block
 		newtime = newtime + 20
 		newtime = newtime - ((mastermob.STAPER)*1.5)
