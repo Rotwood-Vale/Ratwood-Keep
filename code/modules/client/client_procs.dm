@@ -1125,7 +1125,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 /client/proc/commendsomeone(var/forced = FALSE)
 	if(!can_commend(forced))
 		return
-	if(alert(src,"Был ли в этом раунде персонаж, которого вы хотели бы похвалить?", "Коммендация", "ДА", "НЕТ") != "ДА")
+	if(alert(src,"Был ли в этом раунде персонаж, действия которого вы хотели бы оценить?", "Оценка", "ДА", "НЕТ") != "ДА")
 		return
 	var/list/selections = GLOB.character_ckey_list.Copy()
 	if(!selections.len)
@@ -1141,18 +1141,54 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		to_chat(src, span_warning("Никого с таким именем не найдено"))
 		return
 	var/theykey = selections[selection]
+	var/action = alert(src, "Как вы хотите оценить [selection]?", "Выбор действия", "Похвалить", "Покарать", "Отмена")
+	if(action == "Отмена")
+		return
 	if(theykey == ckey)
-		to_chat(src,"Вы не можете похвалить себя.")
+		to_chat(src,"Вы не можете оценить себя.")
 		return
 	if(!can_commend(forced))
 		return
 	if(theykey)
 		prefs.commendedsomeone = TRUE
-		add_commend(theykey, ckey)
-		to_chat(src,"[selection] commended.")
-		log_game("COMMEND: [ckey] commends [theykey].")
-		log_admin("COMMEND: [ckey] commends [theykey].")
+		if(action == "Похвалить")
+			add_commend(theykey, ckey)
+			to_chat(src,"[selection] commended.")
+			log_game("COMMEND: [ckey] commends [theykey].")
+			log_admin("COMMEND: [ckey] commends [theykey].")
+		else if(action == "Покарать")
+			add_uncommend(theykey, ckey)
+			to_chat(src,"[selection] uncommended.")
+			log_game("COMMEND: [ckey] uncommends [theykey].")
+			log_admin("COMMEND: [ckey] uncommends [theykey].")
 	return
+
+/proc/add_uncommend(key, giver, reason)
+	if(!giver || !key)
+		return
+	var/curcomm = 0
+	var/json_file = file("data/player_saves/[copytext(key,1,2)]/[key]/commends.json")
+	if(!fexists(json_file))
+		WRITE_FILE(json_file, "{}")
+	var/list/json = json_decode(file2text(json_file))
+	if(json[giver])
+		curcomm = json[giver]
+	curcomm++
+	json[giver] = curcomm
+	fdel(json_file)
+	WRITE_FILE(json_file, json_encode(json))
+
+	var/fakekey = usr.ckey
+	if(usr.ckey in GLOB.anonymize)
+		fakekey = get_fake_key(usr.ckey)
+
+	var/raisin = stripped_input("Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
+	if(!raisin)
+		to_chat(src, span_boldwarning("Причина не указана."))
+		return
+
+	if(curcomm == 1)
+		adjust_playerquality(-1, ckey(key), fakekey, raisin)
 
 // Handles notifying funeralized players on login, or forcing them back to lobby, depending on configs. Called on /client/New().
 /client/proc/funeral_login()
