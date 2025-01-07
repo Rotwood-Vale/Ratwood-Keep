@@ -163,10 +163,10 @@
 	if(mastermob && chargetime)
 		var/newtime = chargetime
 		//skill block
-		newtime = newtime + 260
+		newtime = newtime + 200 //Has delay when firing so 'aiming' is more playerside based.
 		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 15)
 		//per block
-		newtime = newtime + 40
+		newtime = newtime + 20
 		newtime = newtime - ((mastermob.STAPER)*1.5)
 		if(newtime > 0)
 			return newtime
