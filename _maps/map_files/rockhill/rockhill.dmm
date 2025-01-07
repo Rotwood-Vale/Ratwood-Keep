@@ -1250,6 +1250,21 @@
 "aOv" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
+"aON" = (
+/obj/structure/chair/stool/rogue,
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-n";
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w";
+	pixel_y = 7
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "aOZ" = (
 /turf/closed/wall/mineral/rogue/wooddark/end{
 	dir = 8
@@ -1484,21 +1499,6 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"aUQ" = (
-/obj/structure/chair/stool/rogue,
-/obj/effect/decal/cobbleedge{
-	dir = 10;
-	icon_state = "cobbleedge-n";
-	pixel_x = 2;
-	pixel_y = 8
-	},
-/obj/effect/decal/cobbleedge{
-	dir = 10;
-	icon_state = "cobbleedge-w";
-	pixel_y = 7
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
 "aUT" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -2192,22 +2192,6 @@
 "bot" = (
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/indoors/shelter/mountains)
-"boP" = (
-/obj/structure/chair/stool/rogue,
-/obj/effect/decal/cobbleedge{
-	dir = 10;
-	icon_state = "cobbleedge-e"
-	},
-/obj/effect/decal/cobbleedge{
-	icon_state = "cobbleedge-sread";
-	pixel_y = -10
-	},
-/obj/item/book/rogue/law{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
 "bpk" = (
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/bath)
@@ -10959,6 +10943,22 @@
 /obj/structure/plasticflaps,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
+"gIq" = (
+/obj/structure/chair/stool/rogue,
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-e"
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-sread";
+	pixel_y = -10
+	},
+/obj/item/book/rogue/law{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "gIO" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/fermenting_barrel/random/water{
@@ -16734,6 +16734,10 @@
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/academy)
+"kgC" = (
+/obj/structure/bars/tough,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "kgD" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -25713,6 +25717,18 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/academy)
+"pMT" = (
+/obj/structure/chair/stool/rogue,
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-sread";
+	pixel_y = -10
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "pNc" = (
 /turf/closed/wall/mineral/rogue/stone/window/blue_moss,
 /area/rogue/indoors/town/church)
@@ -28280,10 +28296,6 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
-"rxh" = (
-/obj/structure/bars/tough,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "rxl" = (
 /obj/item/paper/scroll,
 /obj/structure/table/wood{
@@ -28490,12 +28502,6 @@
 /obj/item/reagent_containers/powder/salt,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-"rEm" = (
-/obj/effect/decal/cobbleedge{
-	dir = 10
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
 "rEG" = (
 /obj/structure/flora/roguegrass/bush/wall,
 /turf/open/floor/rogue/grasscold,
@@ -28996,6 +29002,20 @@
 	dir = 4
 	},
 /area/rogue/indoors/town/manor)
+"rTV" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-n";
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-sread";
+	pixel_y = -6;
+	pixel_x = -4
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "rUg" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -30831,6 +30851,12 @@
 /obj/structure/flora/roguegrass/bush/wall,
 /turf/open/floor/rogue/grassred,
 /area/rogue/indoors/shelter/druidgrove)
+"tcX" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "tcY" = (
 /obj/structure/roguemachine/vendor,
 /turf/closed/wall/mineral/rogue/wooddark,
@@ -30963,14 +30989,6 @@
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/indoors/shelter/mountains)
-"tgq" = (
-/obj/structure/chair/stool/rogue,
-/obj/effect/decal/cobbleedge{
-	icon_state = "cobbleedge-sread";
-	pixel_y = -10
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
 "tgU" = (
 /obj/structure/flora/newleaf/corner{
 	dir = 6
@@ -33779,20 +33797,6 @@
 /obj/structure/mineral_door/wood/towner/blacksmith,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
-"uQj" = (
-/obj/effect/decal/cobbleedge{
-	dir = 10;
-	icon_state = "cobbleedge-n";
-	pixel_x = 2;
-	pixel_y = 8
-	},
-/obj/effect/decal/cobbleedge{
-	icon_state = "cobbleedge-sread";
-	pixel_y = -6;
-	pixel_x = -4
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
 "uQo" = (
 /obj/structure/bars/tough,
 /turf/open/water/river{
@@ -331078,10 +331082,10 @@ prO
 wVI
 ylJ
 wbg
-rxh
-aUQ
-rEm
-tgq
+kgC
+aON
+tcX
+pMT
 pAV
 giP
 xXH
@@ -331511,7 +331515,7 @@ pAV
 dGp
 pAV
 pAV
-uQj
+rTV
 wlD
 oAL
 pAV
@@ -331945,7 +331949,7 @@ cyr
 pAV
 lwC
 mfz
-boP
+gIq
 pAV
 cyr
 pAV
