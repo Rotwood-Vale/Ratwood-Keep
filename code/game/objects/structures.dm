@@ -43,7 +43,7 @@
 					if(max_integrity > 1000) 	//Custom-set HP door, should be respected
 						take_damage(max_integrity / 6 + 1)
 					else
-						(H.STASTR >= 13)	//STR adding role w/ Giant or half-orc, seems fair
+						if(H.STASTR >= 13)	//STR adding role w/ Giant or half-orc, seems fair
 							take_damage((max_integrity / 3) * 2 + 1)
 						else 
 							take_damage(max_integrity / 3 + 1)
