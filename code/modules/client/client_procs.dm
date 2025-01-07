@@ -1118,40 +1118,63 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		return FALSE
 	if(prefs.commendedsomeone)
 		if(!silent)
-			to_chat(src, span_danger("You already commended someone this round."))
+			if(usr?.client?.prefs?.be_russian)
+				to_chat(src, span_danger("Вы уже похвалили кого-то в этом раунде."))
+			else
+				to_chat(src, span_danger("You already commended someone this round."))
 		return FALSE
 	return TRUE
 
 /client/proc/commendsomeone(var/forced = FALSE)
 	if(!can_commend(forced))
 		return
-	if(alert(src,"Был ли в этом раунде персонаж, действия которого вы хотели бы оценить?", "Оценка", "ДА", "НЕТ") != "ДА")
+	if(usr?.client?.prefs?.be_russian)
+		if(alert(src,"Был ли в этом раунде персонаж, действия которого вы хотели бы оценить?", "Оценка", "ДА", "НЕТ") != "ДА")
+	else
+		if(alert(src,"Was there a character in this round whose actions you would like to evaluate?", "Commend", "YES", "NO") != "YES")
 		return
 	var/list/selections = GLOB.character_ckey_list.Copy()
 	if(!selections.len)
 		return
 	var/selection
 	if(SSticker.current_state == GAME_STATE_FINISHED)
-		selection = input(src,"Персонаж?") as null|anything in sortList(selections)
+		if(usr?.client?.prefs?.be_russian)
+			selection = input(src,"Персонаж?") as null|anything in sortList(selections)
+		else
+			selection = input(src,"Персонаж?") as null|anything in sortList(selections)
 	else
-		selection = input(src, "Персонаж?") as null|text
+		if(usr?.client?.prefs?.be_russian)
+			selection = input(src, "Персонаж?") as null|text
+		else
+			selection = input(src, "Character?") as null|text
+			
 	if(!selection)
 		return
 	if(!selections[selection])
-		to_chat(src, span_warning("Никого с таким именем не найдено"))
+		if(usr?.client?.prefs?.be_russian)
+			to_chat(src, span_warning("Никого с таким именем не найдено"))
+		else
+			to_chat(src, span_warning("No one by that name was found"))
 		return
 	var/theykey = selections[selection]
-	var/action = alert(src, "Как вы хотите оценить [selection]?", "Выбор действия", "Похвалить", "Покарать", "Отмена")
-	if(action == "Отмена")
+	var/action 
+	if(usr?.client?.prefs?.be_russian)
+		action = alert(src, "Как вы хотите оценить [selection]?", "Выбор действия", "Похвалить", "Покарать", "Отмена")
+	else
+		action = alert(src, "How do you want to evaluate [selection]?", "Action selection", "Commend", "Unommend", "Cancellation")
+	if(action == "Отмена" || action == "Cancellation")
 		return
 	if(theykey == ckey)
-		to_chat(src,"Вы не можете оценить себя.")
+		if(usr?.client?.prefs?.be_russian)
+			to_chat(src,"Вы не можете оценить себя.")
+		else
+			to_chat(src,"You can't commend yourself.")
 		return
 	if(!can_commend(forced))
 		return
 	if(theykey)
 		prefs.commendedsomeone = TRUE
-		if(action == "Похвалить")
+		if(action == "Похвалить" || action == "Commend")
 			add_commend(theykey, ckey)
 			to_chat(src,"[selection] commended.")
 			log_game("COMMEND: [ckey] commends [theykey].")
