@@ -107,7 +107,8 @@
 		"Bloodaxe" = SKIN_COLOR_BLOOD_AXE,
 		"Splitjaw" = SKIN_COLOR_GROONN, //Changed name from Gronn, which no longer aligned with lore here or elsewhere.
 		"Blackhammer" = SKIN_COLOR_BLACK_HAMMER,
-		"Skullseeker" = SKIN_COLOR_SKULL_SEEKER
+		"Skullseeker" = SKIN_COLOR_SKULL_SEEKER,
+		"Lightraider" = SKIN_COLOR_LIGHT_RAIDER
 	)
 
 /datum/species/halforc/get_hairc_list()
