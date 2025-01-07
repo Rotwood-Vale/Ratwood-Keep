@@ -75,17 +75,15 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 			H.grant_language(/datum/language/celestial)
-
-		H.adjust_blindness(-3)
-		var/weapons = list("Shamshir","Whips and Knives",)
-		var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-		H.set_blindness(0)
-		switch(weapon_choice)
-			if("Shamshir")
-				backl = /obj/item/rogueweapon/sword/long/rider
-			if("Whips and Knives")	///They DO enslave people after all
-				r_hand = /obj/item/rogueweapon/whip
-				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
+			var/weapons = list("Shamshir","Whips and Knives",)
+			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			H.set_blindness(0)
+			switch(weapon_choice)
+				if("Shamshir")
+					backl = /obj/item/rogueweapon/sword/long/rider
+				if("Whips and Knives")	///They DO enslave people after all
+					r_hand = /obj/item/rogueweapon/whip
+					l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 
 		if("Blade Caster")
 			H.set_blindness(0)
