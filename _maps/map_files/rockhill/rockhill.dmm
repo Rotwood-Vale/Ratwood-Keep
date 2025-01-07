@@ -2768,6 +2768,12 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
+"bGL" = (
+/obj/structure/floordoor/gatehatch/outer{
+	redstone_id = "lava_bastion"
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors)
 "bHz" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -8327,10 +8333,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
-"fcl" = (
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors)
 "fcn" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -8486,6 +8488,9 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter/town)
+"fhg" = (
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/mountains)
 "fhs" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newbranch/connector,
@@ -23682,6 +23687,9 @@
 "oty" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town/harbor)
+"otN" = (
+/turf/closed/wall/mineral/rogue/stone/window/moss,
+/area/rogue/indoors)
 "otW" = (
 /obj/structure/stairs,
 /obj/structure/fluff/railing/wood{
@@ -23755,12 +23763,6 @@
 /obj/structure/toilet,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/tavern)
-"ovY" = (
-/obj/structure/floordoor/gatehatch/outer{
-	redstone_id = "lava_bastion"
-	},
-/turf/open/transparent/openspace,
-/area/rogue/indoors)
 "owa" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -24994,9 +24996,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/druidgrove)
-"phF" = (
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/mountains)
 "phJ" = (
 /obj/structure/fluff/statue/scare,
 /turf/open/floor/rogue/cobblerock,
@@ -26158,6 +26157,10 @@
 /obj/structure/plasticflaps,
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
+"pVs" = (
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors)
 "pVB" = (
 /obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/cobblerock,
@@ -27974,9 +27977,6 @@
 "rhT" = (
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/druidgrove)
-"rhV" = (
-/turf/closed/wall/mineral/rogue/stone/window/moss,
-/area/rogue/indoors)
 "rij" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -220014,7 +220014,7 @@ rSC
 rRb
 lrs
 cTA
-aBb
+gUu
 gUu
 cTA
 fVh
@@ -220446,7 +220446,7 @@ gLf
 rRb
 lrs
 cTA
-gUu
+lIb
 gUu
 cTA
 fVh
@@ -322405,7 +322405,7 @@ pAV
 wlD
 wlD
 pAV
-phF
+fhg
 erZ
 erZ
 erZ
@@ -328449,7 +328449,7 @@ ptg
 pAV
 dGp
 pAV
-fcl
+pVs
 snS
 nhD
 ooJ
@@ -329746,9 +329746,9 @@ wbg
 wbg
 wlD
 uMO
-ovY
-ovY
-ovY
+bGL
+bGL
+bGL
 qmO
 xXH
 xXH
@@ -330178,9 +330178,9 @@ wbg
 wbg
 wlD
 wlD
-ovY
+bGL
 kYh
-ovY
+bGL
 wlD
 jXZ
 jXZ
@@ -330610,9 +330610,9 @@ wbg
 yht
 wlD
 cuk
-ovY
-ovY
-ovY
+bGL
+bGL
+bGL
 wlD
 xXH
 xXH
@@ -439910,7 +439910,7 @@ rhe
 jCh
 jCh
 muL
-rhV
+otN
 erZ
 erZ
 erZ
@@ -440774,7 +440774,7 @@ bth
 jCh
 jCh
 muL
-rhV
+otN
 erZ
 erZ
 erZ
