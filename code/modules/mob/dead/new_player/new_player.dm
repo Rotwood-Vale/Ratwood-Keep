@@ -571,6 +571,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	omegalist += list(GLOB.courtier_positions)
 	omegalist += list(GLOB.garrison_positions)
 	omegalist += list(GLOB.church_positions)
+	omegalist += list(GLOB.inquisition_positions)
 	omegalist += list(GLOB.foreigner_positions)
 	omegalist += list(GLOB.yeoman_positions)
 	omegalist += list(GLOB.peasant_positions)
@@ -613,6 +614,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					cat_name = "Garrison"
 				if (CHURCHMEN)
 					cat_name = "Churchmen"
+				if (INQUISITION)
+					cat_name = "Inquisition"
 				if (YEOMEN)
 					cat_name = "Yeomen"
 				if (PEASANTS)
@@ -623,8 +626,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					cat_name = "Mercenaries"
 				if (FOREIGNERS)
 					cat_name = "Foreigners"
-				if (GOBLIN)
-					cat_name = "Goblins"
 
 			dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
 			dat += "<legend align='center' style='font-weight: bold; color: [cat_color]'>[cat_name]</legend>"

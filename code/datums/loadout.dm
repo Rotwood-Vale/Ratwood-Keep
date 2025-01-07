@@ -15,6 +15,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Straw Hat"
 	path = /obj/item/clothing/head/roguetown/strawhat
 
+/datum/loadout_item/grenzelhofthat
+	name = "Grenzelhoft hat"
+	path = /obj/item/clothing/head/roguetown/grenzelhofthat
+
+/datum/loadout_item/archercap
+	name = "Archer cap"
+	path = /obj/item/clothing/head/roguetown/archercap
+
 /datum/loadout_item/bardhat
 	name = "Bard Hat"
 	path = /obj/item/clothing/head/roguetown/bardhat
@@ -52,7 +60,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 //SHOES
 /datum/loadout_item/darkboots
 	name = "Dark Boots"
-	path = /obj/item/clothing/shoes/roguetown/boots
+	path = /obj/item/clothing/shoes/roguetown/armor
 
 /datum/loadout_item/shortboots
 	name = "Short Boots"
@@ -111,6 +119,15 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Faulds"
 	path = /obj/item/clothing/cloak/fauld
 
+/datum/loadout_item/leatherbikini
+	name = "Leather Bikini"
+	path = /obj/item/clothing/suit/roguetown/armor/leather/bikini
+
+/datum/loadout_item/fencergambeneson
+	name = "fencer gambeson"
+	path = /obj/item/clothing/suit/roguetown/armor/gambeson/otavan
+
+
 //ACCESSORIES
 /datum/loadout_item/stockings
 	name = "Stockings"
@@ -141,7 +158,19 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "jingly leather collar(cow)"
 	path = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
 
-// Masks
+/datum/loadout_item/cowbellcollar
+	name = "jingly leather collar(cow)"
+	path = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
+
+/datum/loadout_item/fencycollar
+	name = "Fencer neckguar"
+	path = /obj/item/clothing/neck/roguetown/fencerguard
+
+ //Masks
+
+/datum/loadout_item/naledimask
+	name = "war scholar's mask"
+	path = /obj/item/clothing/mask/rogue/lordmask/naledi
 /*
 /datum/loadout_item/pigmask
 	name = "pig mask"
