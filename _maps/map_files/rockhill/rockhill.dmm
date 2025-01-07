@@ -1484,6 +1484,21 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"aUQ" = (
+/obj/structure/chair/stool/rogue,
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-n";
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w";
+	pixel_y = 7
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "aUT" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -2177,6 +2192,22 @@
 "bot" = (
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/indoors/shelter/mountains)
+"boP" = (
+/obj/structure/chair/stool/rogue,
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-e"
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-sread";
+	pixel_y = -10
+	},
+/obj/item/book/rogue/law{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "bpk" = (
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/bath)
@@ -14187,6 +14218,10 @@
 	icon_state = "longtable"
 	},
 /obj/item/rogueweapon/huntingknife/idagger/steel,
+/obj/item/book/rogue/law{
+	pixel_x = -7;
+	pixel_y = 7
+	},
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town)
 "iHi" = (
@@ -18514,6 +18549,16 @@
 /area/rogue/outdoors/bog)
 "lwC" = (
 /obj/structure/toilet,
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-n";
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-e"
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "lwD" = (
@@ -19651,6 +19696,14 @@
 /area/rogue/outdoors/town/roofs)
 "mfz" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/effect/decal/cobbleedge{
+	dir = 5;
+	pixel_x = -10
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-e"
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "mfA" = (
@@ -23666,6 +23719,14 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
+"ozx" = (
+/obj/structure/table/wood,
+/obj/item/book/rogue/law{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors)
 "ozA" = (
 /obj/structure/toilet,
 /turf/open/floor/rogue/cobble,
@@ -23723,6 +23784,10 @@
 "oAL" = (
 /obj/effect/decal/cleanable/vomit/old,
 /obj/structure/chair/stool/rogue,
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-sread";
+	pixel_y = -10
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "oAS" = (
@@ -28215,6 +28280,10 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
+"rxh" = (
+/obj/structure/bars/tough,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "rxl" = (
 /obj/item/paper/scroll,
 /obj/structure/table/wood{
@@ -28421,6 +28490,12 @@
 /obj/item/reagent_containers/powder/salt,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
+"rEm" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "rEG" = (
 /obj/structure/flora/roguegrass/bush/wall,
 /turf/open/floor/rogue/grasscold,
@@ -30888,6 +30963,14 @@
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/indoors/shelter/mountains)
+"tgq" = (
+/obj/structure/chair/stool/rogue,
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-sread";
+	pixel_y = -10
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "tgU" = (
 /obj/structure/flora/newleaf/corner{
 	dir = 6
@@ -33696,6 +33779,20 @@
 /obj/structure/mineral_door/wood/towner/blacksmith,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
+"uQj" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-n";
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-sread";
+	pixel_y = -6;
+	pixel_x = -4
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "uQo" = (
 /obj/structure/bars/tough,
 /turf/open/water/river{
@@ -327527,7 +327624,7 @@ pND
 dCn
 ooJ
 dRz
-dRz
+ozx
 ooJ
 fiv
 fyA
@@ -330981,10 +331078,10 @@ prO
 wVI
 ylJ
 wbg
-xSX
-wYd
-ddv
-wYd
+rxh
+aUQ
+rEm
+tgq
 pAV
 giP
 xXH
@@ -331414,7 +331511,7 @@ pAV
 dGp
 pAV
 pAV
-ddv
+uQj
 wlD
 oAL
 pAV
@@ -331848,7 +331945,7 @@ cyr
 pAV
 lwC
 mfz
-wYd
+boP
 pAV
 cyr
 pAV
