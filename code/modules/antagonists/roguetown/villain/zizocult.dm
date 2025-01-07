@@ -82,6 +82,8 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			return FALSE
 		if(new_owner.assigned_role in GLOB.church_positions)
 			return FALSE
+		if(new_owner.assigned_role in GLOB.inquisition_positions)
+			return FALSE
 		if(new_owner.unconvertable)
 			return FALSE
 		if(new_owner.current && HAS_TRAIT(new_owner.current, TRAIT_MINDSHIELD))

@@ -271,6 +271,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					continue
 				if(candidate.assigned_role in GLOB.church_positions) // Many of these guys vanishing would suck
 					continue
+				if(candidate.assigned_role in GLOB.inquisition_positions) // Many of these guys vanishing would suck
+					continue
 				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
 
@@ -347,6 +349,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				if(rebelguy.assigned_role in GLOB.youngfolk_positions)
 					blockme = TRUE
 				if(rebelguy.assigned_role in GLOB.church_positions)
+					blockme = TRUE
+				if(rebelguy.assigned_role in GLOB.inquisition_positions)
 					blockme = TRUE
 				if(rebelguy.assigned_role in GLOB.yeoman_positions)
 					blockme = TRUE

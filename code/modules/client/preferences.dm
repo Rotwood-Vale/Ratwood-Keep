@@ -2,6 +2,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 GLOBAL_LIST_EMPTY(chosen_names)
 
+GLOBAL_LIST_INIT(name_adjustments, list())
+
 /datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
@@ -1538,6 +1540,8 @@ Slots: [job.spawn_positions]</span>
 							real_name = new_name
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+					GLOB.name_adjustments |= "[parent] changed their characters name to [new_name]."
+					log_character("[parent] changed their characters name to [new_name].")
 
 //				if("age")
 //					var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Years Dead") as num|null
