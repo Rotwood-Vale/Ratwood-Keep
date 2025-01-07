@@ -25,9 +25,13 @@
 	icon = 'icons/roguetown/clothing/donator.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/donator.dmi'
 	icon_state = "fencercollar"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 100, "fire" = 0, "acid" = 0)
+	max_integrity = 150
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK
 	body_parts_covered = NECK
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = PLATEHIT
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/mask/rogue/lordmask/naledi
@@ -46,19 +50,25 @@
 	desc = "For the merry men."
 	icon_state = "archercap"
 
-/obj/item/clothing/suit/roguetown/shirt/otavan
-	slot_flags = ITEM_SLOT_SHIRT
+/obj/item/clothing/suit/roguetown/armor/gambeson/otavan
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "fencer gambeson"
+	desc = "A large shirt with heavy padding meant to be used below armor."
 	icon = 'icons/roguetown/clothing/donator.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/donator.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/donator.dmi'
-	name = "fencer gambeson"
 	icon_state = "fancygamb"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
-	flags_inv = HIDEBOOB|HIDECROTCH
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
+	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "piercing" = 25, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
+	blocksound = SOFTUNDERHIT
+	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	armor_class = ARMOR_CLASS_LIGHT
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /datum/crafting_recipe/roguetown/leather/bikini

@@ -125,7 +125,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 
 /datum/loadout_item/fencergambeneson
 	name = "fencer gambeson"
-	path = /obj/item/clothing/suit/roguetown/shirt/otavan
+	path = /obj/item/clothing/suit/roguetown/armor/gambeson/otavan
 
 
 //ACCESSORIES
