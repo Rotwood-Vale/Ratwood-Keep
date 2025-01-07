@@ -1162,7 +1162,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(usr?.client?.prefs?.be_russian)
 		action = alert(src, "Как вы хотите оценить [selection]?", "Выбор действия", "Похвалить", "Покарать", "Отмена")
 	else
-		action = alert(src, "How do you want to evaluate [selection]?", "Action selection", "Commend", "Unommend", "Cancellation")
+		action = alert(src, "How do you want to evaluate [selection]?", "Action selection", "Commend", "Uncommend", "Cancellation")
 	if(action == "Отмена" || action == "Cancellation")
 		return
 	if(theykey == ckey)
