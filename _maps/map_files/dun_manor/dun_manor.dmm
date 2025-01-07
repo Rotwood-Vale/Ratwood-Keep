@@ -733,10 +733,6 @@
 /obj/machinery/loom,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
-"azu" = (
-/obj/machinery/light/rogue/torchholder/l,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
 "azO" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/beach)
@@ -1904,12 +1900,6 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
-"bzw" = (
-/obj/structure/roguewindow,
-/turf/closed/wall/mineral/rogue/wooddark/end{
-	dir = 4
-	},
-/area/rogue/indoors)
 "bzx" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -20015,6 +20005,7 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
+/obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "ruG" = (
@@ -26377,6 +26368,10 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/manor)
+"xat" = (
+/turf/closed/wall/mineral/rogue/wooddark/vertical,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "xaG" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -45570,10 +45565,10 @@ ogi
 ogi
 ogi
 obx
-kIz
-mAd
+xat
+jmO
 nsn
-bzw
+jmO
 obx
 obx
 pBY
@@ -45728,7 +45723,7 @@ ogi
 bId
 uqv
 rux
-azu
+bRO
 bRO
 rWF
 hbA
@@ -46040,7 +46035,7 @@ azO
 ogi
 ogi
 bId
-uqv
+jmO
 bRO
 bRO
 bRO
