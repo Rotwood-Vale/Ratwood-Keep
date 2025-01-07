@@ -230,8 +230,8 @@
 
 /datum/crafting_recipe/roguetown/woodtray
 	name = "wooden trays (x2)"
-	result = list(/obj/item/storage/bag/tray,
-				/obj/item/storage/bag/tray)
+	result = list(/obj/item/storage/tray,
+				/obj/item/storage/tray)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /datum/crafting_recipe/roguetown/woodbowl

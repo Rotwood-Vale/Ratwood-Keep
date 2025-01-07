@@ -8,7 +8,7 @@
 	spawn_positions = 1
 
 	allowed_races = RACES_TOLERATED_UP
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "You served your time gracefully as a Knight of the crown, and now you've grown into a role which many men dream to become. \
 				You are the Marshal's chosen, a Banneret, elevated to command His Highness' personal retinue. \
