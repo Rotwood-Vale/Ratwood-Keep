@@ -3980,9 +3980,9 @@
 "czb" = (
 /obj/structure/rack/rogue,
 /obj/machinery/light/rogue/torchholder/l,
-/obj/item/gun/ballistic/arquebus,
-/obj/item/gun/ballistic/arquebus,
-/obj/item/gun/ballistic/arquebus,
+/obj/item/gun/ballistic/flintgonne,
+/obj/item/gun/ballistic/flintgonne,
+/obj/item/gun/ballistic/flintgonne,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "czd" = (
@@ -9297,8 +9297,7 @@
 /area/rogue/under/town/basement)
 "fIB" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 8;
-	icon_state = "torchwall1"
+	dir = 8
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
@@ -13384,14 +13383,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
-"ikq" = (
-/obj/structure/stairs{
-	dir = 8
-	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town)
 "ikD" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood{
@@ -23199,8 +23190,7 @@
 	dir = 8
 	},
 /obj/structure/fluff/railing/border{
-	dir = 10;
-	icon_state = "border"
+	dir = 10
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
@@ -431991,7 +431981,7 @@ bmi
 bmi
 bmi
 bmi
-ikq
+sso
 thT
 fZJ
 fZJ
