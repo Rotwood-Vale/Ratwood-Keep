@@ -1,9 +1,19 @@
-<!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
+# Описание
 
-## About The Pull Request
+<!-- Поменяй этот комментарий на краткое описание изменений, которые ты внёс -->
+<!-- Если изменения косметические и ты уверен в их работоспособности, можно не проверять на локальном сервере. -->
+<!-- Создавать предложку или багрепорт тоже необязательно. Если же они были, вставь ссылку на них. -->
+- [ ] Изменения были проверены на локальном сервере
+- [ ] Этот пулл-реквест готов к тест-мерджу.
+- [ ] Изменения были портированы с другого сервера <!-- Если да, напиши, с какого. Желательно с ссылкой на их репозиторий-->
 
-<!-- Describe The Pull Request. Please be sure every change is documented or this can delay review and even discourage maintainers from merging your PR! -->
+## Причина изменений
 
-## Why It's Good For The Game
+<!-- Тут напиши причину, по которой твой пулл-реквест будет полезен для игры. -->
 
-<!-- Argue for the merits of your changes and how they benefit the game, especially if they are controversial and/or far reaching. If you can't actually explain WHY what you are doing will improve the game, then it probably isn't good for the game in the first place. -->
+## Демонстрация изменений
+
+<!-- Можешь вставить тут видео или скриншоты изменений, если они будут полезны для проверяющего пулл-реквест.
+	 Вставлять их можно Ctr+C, Ctr+V. -->
+
+<!-- Теперь можешь отправлять пулл-реквест на ревью. Не удаляй ветку, пока его полностью не замерджат. -->
