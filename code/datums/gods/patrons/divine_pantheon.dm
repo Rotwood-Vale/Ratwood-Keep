@@ -7,7 +7,7 @@
 	name = "Астрата"
 	domain = "Богиня Солнца, Дня и Порядка"
 	desc = "Первенец Псайдона, близнец Нока, одарила разумным существам Солнцем как своим божественным даром."
-	worshippers = "Последователи: благородные, фанатичные крестоносцы и люд, и фермеры."
+	worshippers = "Благородные, фанатичные крестоносцы и люд, и фермеры."
 	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
 	t3 = /obj/effect/proc_holder/spell/invoked/revive
@@ -72,8 +72,8 @@
 /datum/patron/divine/necra
 	name = "Некра"
 	domain = "Богиня Смерти и Загробного мира"
-	desc = "Леди в вуали - боязливая, но уважаемая богиня, который ведет мертвых."
-	worshippers = "Мертвые, скорбящие, могильщики"
+	desc = "Леди в вуали - боязливая, но уважаемая богиня, который ведет души мертвых."
+	worshippers = "Мертвецы, скорбящие, могильщики"
 	mob_traits = list(TRAIT_SOUL_EXAMINE)
 	t1 = /obj/effect/proc_holder/spell/targeted/burialrite
 	t2 = /obj/effect/proc_holder/spell/targeted/churn
@@ -105,7 +105,7 @@
 /datum/patron/divine/pestra
 	name = "Пестра"
 	domain = "Богиня разложения, болезней и медицины"
-	desc = "Любящая дочь Псайдона, одаренный доктор."
+	desc = "Любящая дочь Псайдона, гениальный лекарь."
 	worshippers = "Больные, лекари, аптекари"
 	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
 	t0 = list(/obj/effect/proc_holder/spell/invoked/diagnose, /obj/effect/proc_holder/spell/invoked/lesser_heal) // Combine both spells on t0
@@ -136,7 +136,7 @@
 
 /datum/patron/divine/eora
 	name = "Эора"
-	domain = "Богиня любви, жизни и красоты"
+	domain = "Богиня Любви, Жизни и Красоты"
 	desc = "Божественным даром Эоры была семья, и она научила разумное существо создавать искусство и вино, чтобы он мог наслаждаться полной жизнью. \
 	Она учит любви к семье и красоте и ненавидит всё, что им угрожает."
 	worshippers = "Любовники, заботливые бабушки и дедушки, молодожены, миротворцы"
