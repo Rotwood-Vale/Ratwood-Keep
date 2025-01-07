@@ -1,7 +1,7 @@
 
 <p align="center">
  <img width="450px" src="https://res.cloudinary.com/dxckdses2/image/upload/v1730145846/ydfd9atasnhj9jn3r5jw.png" align="center" alt="Ratwood Stats" />
- <h1 align="center">RATWOOD</h1>
+ <h1 align="center">REDMOON</h1>
  <h2 align="center">Anthros Allowed Medieval Roleplay</h2>
 </p>
 
@@ -27,7 +27,7 @@
 
 | Website                   | Link                                           |
 |---------------------------|------------------------------------------------|
-| Discord          | [discord.gg/nQDetK6ktR](https://discord.gg/nQDetK6ktR) |
+| Discord          | [https://discord.gg/ss13-bluemoon](https://discord.gg/ss13-bluemoon) |
 | Wiki                      | [wiki.ratwood.rip](https://wiki.ratwood.rip/index.php/Main_Page) |
 
 </div>
@@ -42,11 +42,11 @@
 
 # LICENSE
 
-## Ratwood
+## Redmoon
 
 All original code and assets of this repository are under the [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) unless otherwise indicated.
 
-## Ratwood - Proprietary
+## Redmoon - Proprietary
 
 The following code and assets are under a custom proprietary license as per author or client's wishes.
 
