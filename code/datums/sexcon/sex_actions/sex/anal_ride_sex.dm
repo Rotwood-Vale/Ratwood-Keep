@@ -4,11 +4,6 @@
 	aggro_grab_instead_same_tile = FALSE
 	check_incapacitated = FALSE
 
-/datum/sex_action/anal_ride_sex/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Попа. Сесть на член."
-
 /datum/sex_action/anal_ride_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

@@ -1,11 +1,6 @@
 /datum/sex_action/masturbate_penis_other
-	name = "Придушить удава партнёра"
+	name = "Jerk them off"
 	check_same_tile = FALSE
-
-/datum/sex_action/masturbate_penis_other/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Подрочить."
 
 /datum/sex_action/masturbate_penis_other/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

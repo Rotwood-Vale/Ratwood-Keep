@@ -68,9 +68,13 @@
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	set waitfor = FALSE
 
-	log_game("Раунд окончен.")
+	log_game("The round has ended.")
 
-	to_chat(world, "<BR><BR><BR><span class='reallybig'>Вот и закончилась еще одна неделя на территории Королевства Bluewood Keep.</span>")
+	if(usr?.client?.prefs?.be_russian)
+		to_chat(world, "<BR><BR><BR><span class='reallybig'>Вот и закончилась еще одна неделя на территории Королевства Redmoon Keep.</span>")
+	else
+		to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends another week in Redmoon Keep.</span>")
+
 	get_end_reason()
 
 	var/list/key_list = list()

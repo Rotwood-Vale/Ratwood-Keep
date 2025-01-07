@@ -1,11 +1,6 @@
 /datum/sex_action/titjob
 	name = "Use their tits to get off"
 
-/datum/sex_action/titjob/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Член. Подрочить сиськами."
-
 /datum/sex_action/titjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

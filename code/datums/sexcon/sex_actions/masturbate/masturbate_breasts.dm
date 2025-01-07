@@ -1,11 +1,6 @@
 /datum/sex_action/masturbate_breasts
 	name = "Rub breasts"
 
-/datum/sex_action/masturbate_breasts/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Поиграться со своей грудью."
-
 /datum/sex_action/masturbate_breasts/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)
 		return FALSE

@@ -1122,37 +1122,37 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		return FALSE
 	return TRUE
 
-// /client/proc/commendsomeone(var/forced = FALSE)
-// 	if(!can_commend(forced))
-// 		return
-// 	if(alert(src,"Was there a character during this round that you would like to anonymously commend?", "Commendation", "YES", "NO") != "YES")
-// 		return
-// 	var/list/selections = GLOB.character_ckey_list.Copy()
-// 	if(!selections.len)
-// 		return
-// 	var/selection
-// 	if(SSticker.current_state == GAME_STATE_FINISHED)
-// 		selection = input(src,"Which Character?") as null|anything in sortList(selections)
-// 	else
-// 		selection = input(src, "Which Character?") as null|text
-// 	if(!selection)
-// 		return
-// 	if(!selections[selection])
-// 		to_chat(src, span_warning("Not found anyone with that name"))
-// 		return
-// 	var/theykey = selections[selection]
-// 	if(theykey == ckey)
-// 		to_chat(src,"You can't commend yourself.")
-// 		return
-// 	if(!can_commend(forced))
-// 		return
-// 	if(theykey)
-// 		prefs.commendedsomeone = TRUE
-// 		add_commend(theykey, ckey)
-// 		// to_chat(src,"[selection] commended.")
-// 		// log_game("COMMEND: [ckey] commends [theykey].")
-// 		// log_admin("COMMEND: [ckey] commends [theykey].")
-// 	return
+/client/proc/commendsomeone(var/forced = FALSE)
+	if(!can_commend(forced))
+		return
+	if(alert(src,"Был ли в этом раунде персонаж, которого вы хотели бы похвалить?", "Коммендация", "ДА", "НЕТ") != "ДА")
+		return
+	var/list/selections = GLOB.character_ckey_list.Copy()
+	if(!selections.len)
+		return
+	var/selection
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		selection = input(src,"Персонаж?") as null|anything in sortList(selections)
+	else
+		selection = input(src, "Персонаж?") as null|text
+	if(!selection)
+		return
+	if(!selections[selection])
+		to_chat(src, span_warning("Никого с таким именем не найдено"))
+		return
+	var/theykey = selections[selection]
+	if(theykey == ckey)
+		to_chat(src,"Вы не можете похвалить себя.")
+		return
+	if(!can_commend(forced))
+		return
+	if(theykey)
+		prefs.commendedsomeone = TRUE
+		add_commend(theykey, ckey)
+		to_chat(src,"[selection] commended.")
+		log_game("COMMEND: [ckey] commends [theykey].")
+		log_admin("COMMEND: [ckey] commends [theykey].")
+	return
 
 // Handles notifying funeralized players on login, or forcing them back to lobby, depending on configs. Called on /client/New().
 /client/proc/funeral_login()

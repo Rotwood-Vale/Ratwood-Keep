@@ -488,13 +488,25 @@
 		dat += "<center><a href='?src=[REF(src)];task=speed_down'>\<</a> [speed_name] <a href='?src=[REF(src)];task=speed_up'>\></a> ~|~ <a href='?src=[REF(src)];task=force_down'>\<</a> [force_name] <a href='?src=[REF(src)];task=force_up'>\></a></center>"
 	else
 		dat += "<center><a href='?src=[REF(src)];task=speed_down'>\<</a> [speed_name] <a href='?src=[REF(src)];task=speed_up'>\></a> ~|~ <a href='?src=[REF(src)];task=force_down'>\<</a> [force_name] <a href='?src=[REF(src)];task=force_up'>\></a> ~|~ <a href='?src=[REF(src)];task=manual_arousal_down'>\<</a> [manual_arousal_name] <a href='?src=[REF(src)];task=manual_arousal_up'>\></a></center>"
-	dat += "<center>| <a href='?src=[REF(src)];task=toggle_finished'>[do_until_finished ? "UNTIL IM FINISHED" : "UNTIL I STOP"]</a> |</center>"
-	if(target == user)
-		dat += "<center>Doing unto yourself</center>"
+	if(usr?.client?.prefs?.be_russian)
+		dat += "<center>| <a href='?src=[REF(src)];task=toggle_finished'>[do_until_finished ? "ДО ТЕХ ПОР, ПОКА Я НЕ ОСТАНОВЛЮСЬ" : "ДО ТЕХ ПОР, ПОКА Я НЕ ОСТАНОВЛЮСЬ"]</a> |</center>"
 	else
-		dat += "<center>Doing unto [target]'s</center>"
+		dat += "<center>| <a href='?src=[REF(src)];task=toggle_finished'>[do_until_finished ? "UNTIL I STOP" : "UNTIL I STOP"]</a> |</center>"
+	if(target == user)
+		if(usr?.client?.prefs?.be_russian)
+			dat += "<center>Делаю себе хорошо</center>"
+		else
+			dat += "<center>Doing unto yourself</center>"
+	else
+		if(usr?.client?.prefs?.be_russian)
+			dat += "<center>Делаю [target] хорошо</center>"
+		else
+			dat += "<center>Doing unto [target]'s</center>"
 	if(current_action)
-		dat += "<center><a href='?src=[REF(src)];task=stop'>Stop</a></center>"
+		if(usr?.client?.prefs?.be_russian)
+			dat += "<center><a href='?src=[REF(src)];task=stop'>Остановить</a></center>"
+		else
+			dat += "<center><a href='?src=[REF(src)];task=stop'>Stop</a></center>"
 	else
 		dat += "<br>"
 	dat += "<table width='100%'><td width='50%'></td><td width='50%'></td><tr>"
@@ -509,7 +521,10 @@
 			link = "linkOff"
 		if(current_action == action_type)
 			link = "linkOn"
-		dat += "<center><a class='[link]' href='?src=[REF(src)];task=action;action_type=[action_type]'>[action.name]</a></center>"
+		if(usr?.client?.prefs?.be_russian)
+			dat += "<center><a class='[link]' href='?src=[REF(src)];task=action;action_type=[action_type]'>[action.ru_name]</a></center>"
+		else
+			dat += "<center><a class='[link]' href='?src=[REF(src)];task=action;action_type=[action_type]'>[action.name]</a></center>"
 		dat += "</td>"
 		i++
 		if(i >= 2)
@@ -517,7 +532,11 @@
 			dat += "</tr><tr>"
 
 	dat += "</tr></table>"
-	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 490, 550)
+	var/datum/browser/popup
+	if(usr?.client?.prefs?.be_russian)
+		popup = new(user, "sexcon", "<center>Утолить Желание</center>", 490, 550)
+	else
+		popup = new(user, "sexcon", "<center>Sate Desire</center>", 490, 550)
 	popup.set_content(dat.Join())
 	popup.open()
 	return
@@ -719,35 +738,71 @@
 /datum/sex_controller/proc/get_force_string()
 	switch(force)
 		if(SEX_FORCE_LOW)
-			return "<font color='#eac8de'>GENTLE</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#eac8de'>ОСТОРОЖНО</font>"
+			else
+				return "<font color='#eac8de'>GENTLE</font>"
 		if(SEX_FORCE_MID)
-			return "<font color='#e9a8d1'>FIRM</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#e9a8d1'>АКТИВНО</font>"
+			else
+				return "<font color='#e9a8d1'>FIRM</font>"
 		if(SEX_FORCE_HIGH)
-			return "<font color='#f05ee1'>ROUGH</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#f05ee1'>ГРУБО</font>"
+			else
+				return "<font color='#f05ee1'>ROUGH</font>"
 		if(SEX_FORCE_EXTREME)
-			return "<font color='#d146f5'>BRUTAL</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#d146f5'>БРУТАЛЬНО</font>"
+			else
+				return "<font color='#d146f5'>BRUTAL</font>"
 
 /datum/sex_controller/proc/get_speed_string()
 	switch(speed)
 		if(SEX_SPEED_LOW)
-			return "<font color='#eac8de'>SLOW</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#eac8de'>МЕДЛЕННО</font>"
+			else
+				return "<font color='#eac8de'>SLOW</font>"
 		if(SEX_SPEED_MID)
-			return "<font color='#e9a8d1'>STEADY</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#e9a8d1'>НОРМАЛЬНО</font>"
+			else
+				return "<font color='#e9a8d1'>STEADY</font>"
 		if(SEX_SPEED_HIGH)
-			return "<font color='#f05ee1'>QUICK</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#f05ee1'>БЫСТРО</font>"
+			else
+				return "<font color='#f05ee1'>QUICK</font>"
 		if(SEX_SPEED_EXTREME)
-			return "<font color='#d146f5'>UNRELENTING</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#d146f5'>СТРЕМИТЕЛЬНО</font>"
+			else
+				return "<font color='#d146f5'>UNRELENTING</font>"
 
 /datum/sex_controller/proc/get_manual_arousal_string()
 	switch(manual_arousal)
 		if(SEX_MANUAL_AROUSAL_DEFAULT)
-			return "<font color='#eac8de'>NATURAL</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#eac8de'>ЕСТЕСТВЕННО</font>"
+			else
+				return "<font color='#eac8de'>NATURAL</font>"
 		if(SEX_MANUAL_AROUSAL_UNAROUSED)
-			return "<font color='#e9a8d1'>UNAROUSED</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#e9a8d1'>НЕВОЗБУЖДЕННЫЙ</font>"
+			else
+				return "<font color='#e9a8d1'>UNAROUSED</font>"
 		if(SEX_MANUAL_AROUSAL_PARTIAL)
-			return "<font color='#f05ee1'>PARTIALLY ERECT</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#f05ee1'>ЧАСТИЧНОЕ ВОЗБУЖДЕНИЕ</font>"
+			else
+				return "<font color='#f05ee1'>PARTIALLY ERECT</font>"
 		if(SEX_MANUAL_AROUSAL_FULL)
-			return "<font color='#d146f5'>FULLY ERECT</font>"
+			if(usr?.client?.prefs?.be_russian)
+				return "<font color='#d146f5'>ПОЛНОЕ ВОЗБУЖДЕНИЕ</font>"
+			else
+				return "<font color='#d146f5'>FULLY ERECT</font>"
 
 /datum/sex_controller/proc/get_generic_force_adjective()
 	switch(force)

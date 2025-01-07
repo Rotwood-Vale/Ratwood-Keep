@@ -3,11 +3,6 @@
 	check_incapacitated = FALSE
 	gags_user = TRUE
 
-/datum/sex_action/cunnilingus/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Вагина. Вылизать."
-
 /datum/sex_action/cunnilingus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

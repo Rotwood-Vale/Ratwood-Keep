@@ -3,11 +3,6 @@
 	check_same_tile = FALSE
 	check_incapacitated = FALSE
 
-/datum/sex_action/kissing/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Поцелуй."
-
 /datum/sex_action/kissing/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

@@ -3,11 +3,6 @@
 	check_incapacitated = FALSE
 	gags_user = TRUE
 
-/datum/sex_action/rimming/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Лицо. Вылизать задницу."
-
 /datum/sex_action/rimming/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

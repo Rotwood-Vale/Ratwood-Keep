@@ -2,11 +2,6 @@
 	name = "Frot them"
 	check_incapacitated = FALSE
 
-/datum/sex_action/frotting/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Член. Потереться об член."
-
 /datum/sex_action/frotting/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

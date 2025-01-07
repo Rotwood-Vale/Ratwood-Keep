@@ -1,11 +1,6 @@
 /datum/sex_action/toy_other_vagina
 	name = "Use toy on their cunt"
 
-/datum/sex_action/toy_other_vagina/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Вагина. Использовать игрушку."
-
 /datum/sex_action/toy_other_vagina/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

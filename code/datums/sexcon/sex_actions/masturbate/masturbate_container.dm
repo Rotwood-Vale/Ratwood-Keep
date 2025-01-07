@@ -1,11 +1,6 @@
 /datum/sex_action/masturbate_container
 	name = "Masturbate into container"
 
-/datum/sex_action/masturbate_container/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Член (На себе). Подрочить в контейнер."
-
 /datum/sex_action/masturbate_container/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)
 		return FALSE

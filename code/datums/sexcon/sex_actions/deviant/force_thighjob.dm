@@ -1,11 +1,6 @@
 /datum/sex_action/force_thighjob
 	name = "Use their thighs to get off"
 
-/datum/sex_action/force_thighjob/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Член. Заставить подрочить бедрами."
-
 /datum/sex_action/force_thighjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

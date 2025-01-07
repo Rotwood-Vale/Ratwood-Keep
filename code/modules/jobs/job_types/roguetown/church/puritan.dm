@@ -166,8 +166,12 @@
 		var/list/confessions = list()
 		switch(confession_type)
 			if("patron")
-				if(length(patron?.confess_lines))
-					confessions += patron.confess_lines
+				if(usr?.client?.prefs?.be_russian)
+					if(length(patron?.ru_confess_lines))
+						confessions += patron.ru_confess_lines
+				else
+					if(length(patron?.confess_lines))
+						confessions += patron.confess_lines
 			if("antag")
 				for(var/datum/antagonist/antag in mind?.antag_datums)
 					if(!length(antag.confess_lines))

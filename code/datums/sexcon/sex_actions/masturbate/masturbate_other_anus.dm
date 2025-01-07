@@ -1,11 +1,6 @@
 /datum/sex_action/masturbate_other_anus
-	name = "Нырнуть пальцами в попу"
+	name = "Finger their butt"
 	check_same_tile = FALSE
-
-/datum/sex_action/masturbate_other_anus/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Поиграться с попкой."
 
 /datum/sex_action/masturbate_other_anus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

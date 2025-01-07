@@ -3,11 +3,6 @@
 	check_incapacitated = FALSE
 	gags_user = TRUE
 
-/datum/sex_action/suck_balls/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)\
-		name = "Рот. Сосать яйца."
-
 /datum/sex_action/suck_balls/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE
