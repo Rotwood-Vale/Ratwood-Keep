@@ -194,7 +194,7 @@
 	if(!raisin)
 		to_chat(src, span_boldwarning("No reason given."))
 		return
-	adjust_playerquality(amt2change, theykey, src.ckey, raisin)
+	adjust_playerquality(theykey, amt2change, raisin, src.ckey)
 	for(var/client/C in GLOB.clients) // I hate this, but I'm not refactoring the cancer above this point.
 		if(lowertext(C.key) == lowertext(theykey))
 			to_chat(C, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [key] for reason: [raisin]</span></span>")

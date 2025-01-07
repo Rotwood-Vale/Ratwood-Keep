@@ -43,3 +43,29 @@
 	// If we got here, they arent in the list. Chuck 'em in!
 	SSdiscord.notify_members += sender.mention
 	return "You will now be notified when the server restarts"
+
+// PQ
+/datum/tgs_chat_command/pq
+	name = "pq"
+	help_text = "Add or remove Player Quality points from user"
+
+/datum/tgs_chat_command/pq/Run(datum/tgs_chat_user/sender, params)
+	if(!params)
+		return "Использование: !pq <ckey> <amount> <reason>"
+	
+	var/list/paramslist = splittext(params, " ")
+	if(length(paramslist) < 2)
+		return "Недостаточно параметров. Использование: !pq <ckey> <amount> <reason>"
+	
+	var/target_ckey = ckey(paramslist[1])
+	var/amount = text2num(paramslist[2])
+	var/reason = length(paramslist) > 2 ? jointext(paramslist.Copy(3), " ") : "Не указана"
+	
+	if(!amount)
+		return "Некорректное количество очков"
+
+	// Используем функцию adjust_playerquality вместо прямого изменения
+	if(!adjust_playerquality(target_ckey, amount, sender.friendly_name, reason))
+		return "Игрок [target_ckey] не найден"
+	
+	return "PQ игрока [target_ckey] изменен на [amount] ([reason])"
