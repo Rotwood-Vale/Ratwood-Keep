@@ -476,7 +476,7 @@
 /area/rogue/indoors/town/magician)
 "aoP" = (
 /obj/structure/roguewindow/openclose/reinforced,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
 "aoQ" = (
 /obj/structure/rack/rogue,
@@ -2219,6 +2219,10 @@
 	pixel_y = 0;
 	pixel_x = 32
 	},
+/obj/structure/mineral_door/bars{
+	locked = 1;
+	lockid = "steward"
+	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
 "bPk" = (
@@ -2420,8 +2424,11 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
 "bYp" = (
-/obj/structure/roguemachine/atm,
-/turf/open/floor/rogue/hexstone,
+/obj/structure/chair/wood/rogue/chair3{
+	dir = 4
+	},
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
 "bYv" = (
 /obj/effect/decal/mossy{
@@ -3654,7 +3661,10 @@
 /obj/item/roguekey/tailor,
 /obj/item/roguekey/shop,
 /obj/item/roguekey/nightmaiden,
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/structure/lever/wall{
+	pixel_x = 32;
+	redstone_id = "steward_shutter"
+	},
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town)
 "ddU" = (
@@ -6281,14 +6291,11 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "fCR" = (
-/obj/effect/decal/cobbleedge{
-	dir = 9
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
 	},
-/obj/machinery/light/rogue/lanternpost{
-	dir = 1
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/town)
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town)
 "fDk" = (
 /obj/structure/chair/bench/couch{
 	icon_state = "redcouch2"
@@ -13822,6 +13829,7 @@
 /obj/item/reagent_containers/glass/cup/wooden{
 	pixel_x = -7
 	},
+/obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "mxw" = (
@@ -14041,7 +14049,7 @@
 	lockid = "steward";
 	name = "DORM"
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
 "mIn" = (
 /obj/machinery/light/rogue/firebowl/stump,
@@ -17840,8 +17848,11 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
 "pWV" = (
-/obj/structure/mineral_door/wood/violet,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/obj/structure/lever/wall{
+	redstone_id = "steward_shutter";
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "pXl" = (
 /obj/effect/decal/cobbleedge{
@@ -18657,7 +18668,7 @@
 /area/rogue/indoors/shelter/mountains)
 "qNG" = (
 /obj/machinery/light/rogue/oven/west,
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "qOg" = (
 /obj/structure/table/wood{
@@ -19521,7 +19532,10 @@
 /obj/effect/decal/cobbleedge{
 	dir = 4
 	},
-/turf/open/floor/rogue/dirt,
+/obj/machinery/light/rogue/lanternpost{
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "rCZ" = (
 /obj/structure/fluff/railing/border{
@@ -21908,7 +21922,10 @@
 /turf/open/floor/rogue/twig/platform,
 /area/rogue/indoors/shelter/woods)
 "tFb" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/structure/chair/wood/rogue/chair3{
+	dir = 8
+	},
+/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
 "tFp" = (
@@ -25923,10 +25940,8 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town)
 "xnR" = (
-/obj/structure/lever/wall{
-	pixel_x = 32;
-	redstone_id = "steward_shutter"
-	},
+/obj/effect/landmark/start/clerk,
+/obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
 "xoh" = (
@@ -63452,11 +63467,11 @@ gtN
 gtN
 vOh
 hvn
-hvn
-fCR
-fJa
-bYp
-ixA
+xqr
+xqr
+xqr
+xqr
+xnR
 cep
 cep
 fHA
@@ -63609,9 +63624,9 @@ gtN
 wHO
 hvn
 hvn
-hvn
 xqr
-xqr
+cep
+cep
 rTj
 vQF
 mdb
@@ -63766,9 +63781,9 @@ mNo
 hvn
 hvn
 hvn
-hvn
 xqr
 tpX
+cep
 bPh
 cep
 fiB
@@ -63923,10 +63938,10 @@ jOv
 dau
 hvn
 hvn
-hvn
 xqr
-xqr
-xqr
+cep
+cep
+rTj
 cep
 tQW
 cep
@@ -64080,14 +64095,14 @@ mNo
 hvn
 hvn
 hvn
-hvn
-hvn
+xqr
+xqr
+xqr
 xqr
 rDe
 cep
 cep
 cep
-xnR
 ddE
 xqr
 bpI
@@ -64240,11 +64255,11 @@ hvn
 hvn
 fjm
 xqr
-aZs
-bxf
-bxf
-bxf
 xqr
+bxf
+bxf
+bxf
+aZs
 xqr
 xqr
 fjm
@@ -64397,7 +64412,7 @@ hvn
 hvn
 xqr
 xqr
-rjf
+pWV
 rjf
 rjf
 rjf
@@ -87950,7 +87965,7 @@ ouw
 xqr
 sDf
 cep
-xqr
+cep
 xqr
 xqr
 xqr
@@ -88107,9 +88122,9 @@ ouw
 xqr
 xqr
 cep
-xqr
+cep
 qgx
-qgx
+bYp
 uOU
 xqr
 ouw
@@ -88264,10 +88279,10 @@ ouw
 xqr
 xqr
 cep
-pWV
-qgx
+cep
 cDJ
 suJ
+fCR
 xqr
 ouw
 ouw
@@ -88421,10 +88436,10 @@ ouw
 ouw
 xqr
 cep
-xqr
-tFb
+cep
 cDJ
 rag
+suJ
 xqr
 ouw
 ouw
@@ -88578,9 +88593,9 @@ ouw
 ouw
 aoP
 cep
-xqr
+cep
 qgx
-qgx
+tFb
 iOl
 ffs
 ouw
@@ -88735,8 +88750,8 @@ xqr
 xqr
 xqr
 pUt
+cep
 xqr
-pWV
 xqr
 xqr
 xqr
@@ -88893,7 +88908,7 @@ qQX
 mKe
 cep
 cep
-cep
+apZ
 eyU
 mxr
 xqr
@@ -89050,7 +89065,7 @@ qQX
 cep
 cep
 ixA
-cep
+apZ
 apZ
 apZ
 ffs
