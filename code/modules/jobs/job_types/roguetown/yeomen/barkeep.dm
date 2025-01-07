@@ -8,7 +8,10 @@
 
 	allowed_races = RACES_SHUNNED_UP
 
-	tutorial = "Liquor Lodging and Lavish Baths, youre the life of the party and a rich bastard because of it. Well before that pesky merchant came around and convinced people to take up the bottle instead of the tankred, you were the reason the hardworking men and women of this town could rest."
+	tutorial = "Известная таверна Рокхилла, прославившаяся разбавленным пивом, мошенниками-воришками, комнатами ниже среднего и несвежей едой. \
+	Суровая торговля привела к тому, что владельцы часто менялись; \
+	как правило, настойчивые, сильные и злые хозяева заставляют своих клиентов оплачивать счета, либо избивая их, либо нанимая других для этой цели.\
+	Те, кто слишком добр, оказываются ограбленными и в долгах."
 
 	outfit = /datum/outfit/job/roguetown/barkeep
 	display_order = JDO_BARKEEP

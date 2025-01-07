@@ -1,8 +1,8 @@
 /datum/subclass/merchant
 	name = "Merchant"
-	tutorial = "Whether you once had a shop or have always been a traveling salesman, exchange of goods is your expertise. \
-				Before it was overtaken by the rot, you managed to flee your old settlement with a few goods to be sold along the way. \
-				Seeking refuge in a rumored safe haven, you hope to find a place where to continue plying your trade, dubious it may be."
+	tutorial = "Неважно, был ли у вас когда-то магазин или вы всегда были разъездным торговцем, обмен товарами - это ваша специализация. \
+				Прежде чем война и разруха поглотили ваш дом, вы успели покинуть свое старое поселение, прихватив по пути несколько товаров. \
+				В поисках убежища, о котором ходят слухи, вы надеетесь найти место, где сможете продолжить свое ремесло, каким бы сомнительным оно ни было."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

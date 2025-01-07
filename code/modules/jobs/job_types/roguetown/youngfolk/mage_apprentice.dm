@@ -9,7 +9,9 @@
 	allowed_races = RACES_TOLERATED_UP_PLUS_SMOLFOLK
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "Your master once saw potential in you, something you are uncertain if they still do with your recent studies. The path to using magic is something treacherous and untamed, and you are still decades away from calling yourself even a journeyman in the field. Listen and serve, and someday you will earn your hat."
+	tutorial = "Когда-то ваш учитель разглядел в вас потенциал, и вы не уверены, что он все еще видит в вас потенциал с учетом ваших последних исследований. \
+	Путь к использованию магии - это нечто коварное и неизведанное, и вам еще не один десяток лет, чтобы назвать себя даже подмастерьем в этой области. \
+	Слушайте и служите, и однажды вы заслужите свою шляпу."
 
 	spells = list(/obj/effect/proc_holder/spell/invoked/learnspell)
 	outfit = /datum/outfit/job/roguetown/wapprentice

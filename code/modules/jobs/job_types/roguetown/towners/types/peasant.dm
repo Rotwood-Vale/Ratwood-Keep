@@ -1,7 +1,7 @@
 /datum/subclass/farmer
 	name = "Farmer"
-	tutorial = "As a Peasent, you are a skilled farmer, able to grow a variety of berrys and apples. \
-	Join the local Soilsmen at their farm, or make your own little orchard."
+	tutorial = "Как крестьянин, вы умелый фермер, способный выращивать различные ягоды и яблоки. \
+	Присоединяйтесь к местным soilsons на их ферме или создайте свой собственный маленький сад."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/towner/farmer

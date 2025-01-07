@@ -1,6 +1,7 @@
 /datum/subclass/towndoctor
 	name = "Town Physician"
-	tutorial = "You are a freelance physician, taking jobs patching thos up when you can for whatever they can or are willing to pay. its thankless and most of the time it ends up being for free with you swearing to yourself 'next one will appreciate it'"
+	tutorial = "Вы - доктор, берущийся за работу, латая тех, кого можете, за любую сумму, которую они могут или готовы заплатить. \
+	Это неблагодарное занятие, и чаще всего оно заканчивается тем, что вы не получаете маммоны, клянясь себе «следующий мне заплатят»."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/towner/doctor

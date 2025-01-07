@@ -8,7 +8,10 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
-	tutorial = "You're too valuable to outright kill yet not a free person. You either messed up really bad or got very unlucky. Either way, the crown has held you hostage until you home country pays your ransom, as if that would ever happen. Might as well start praying to whatever god you find solace in."
+	tutorial = "Вы слишком ценны, чтобы вас убивать, но при этом не свободны. \
+	Вы либо очень сильно облажались, либо вам очень не повезло. \
+	В любом случае герцог или герцогиня держит вас в заложниках до тех пор, пока ваша родина не заплатит за вас выкуп, как будто это когда-нибудь случится. \
+	С таким же успехом можно начать молиться любому богу, в котором вы находите утешение."
 
 	outfit = /datum/outfit/job/roguetown/hostage
 	banned_leprosy = FALSE

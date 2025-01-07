@@ -1,8 +1,8 @@
 /datum/subclass/ecclesiast
 	name = "Ecclesiast"
-	tutorial = "After having devoted the majority of your life to the Church of the Successors, \
-				you find yourself in a foreign land, fleeing from the encroaching rot, a catastrophe \
-				that is putting your unwavering faith to test."
+	tutorial = "Посвятив большую часть своей жизни Церкви Десяти,\
+				вы оказываетесь в чужой стране, спасаясь от надвигающейся войны, катастрофы,\\\
+				которая подвергает испытанию вашу непоколебимую веру."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
