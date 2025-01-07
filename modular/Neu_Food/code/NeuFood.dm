@@ -404,7 +404,28 @@
 	slot_flags = ITEM_SLOT_HIP
 	resistance_flags = NONE
 	max_integrity = 300
+	component_type = /datum/component/storage/concrete/roguetown/foodbag
 
+/obj/item/storage/foodbag/examine(mob/user)
+	. = ..()
+	if(contents.len)
+		. += span_notice("[contents.len] thing[contents.len > 1 ? "s" : ""] in the sack.")
+
+/obj/item/storage/backpack/rogue/attack_right(mob/user)
+	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
+	if(CP)
+		CP.rmb_show(user)
+		return TRUE
+
+/obj/item/storage/foodbag/update_icon()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	var/list/things = STR.contents()
+	if(things.len)
+		icon_state = "sack_rope"
+		w_class = WEIGHT_CLASS_NORMAL
+	else
+		icon_state = "sack_rope"
+		w_class = WEIGHT_CLASS_NORMAL
 
 /*-------------\
 | Pot reagents |

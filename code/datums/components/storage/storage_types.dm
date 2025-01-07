@@ -84,6 +84,23 @@
 	allow_quick_empty = TRUE
 	insert_preposition = "in"
 
+/datum/component/storage/concrete/roguetown/foodbag
+	max_w_class = WEIGHT_CLASS_NORMAL
+	screen_max_rows = 3
+	screen_max_columns = 3
+	click_gather = TRUE
+	allow_quick_gather = TRUE
+	allow_quick_empty = TRUE
+	allow_dump_out = TRUE
+	collection_mode = COLLECT_EVERYTHING
+	dump_time = 0
+	insert_preposition = "in"
+
+/datum/component/storage/concrete/roguetown/foodbag/New(datum/P, ...)
+	. = ..()
+	can_hold = typecacheof(list(/obj/item/reagent_containers/food/))
+
+
 /datum/component/storage/concrete/roguetown/cigarettepack
 	screen_max_rows = 2
 	screen_max_columns = 3
