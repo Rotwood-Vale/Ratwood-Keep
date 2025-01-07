@@ -411,7 +411,7 @@
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC) //Skeletons can't regen stamina and have shit skills so after dicussion with Gyran, this'll be a bandaid. If it proves unbalanced I'll figure out a way to let them regen stam reliably.
+	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC) //Skeletons can't regen stamina and have shit skills so after dicussion with Gyran, this'll be a bandaid. If it proves unbalanced I'll figure out a way to let them regen stam reliably.
 
 	update_body()
 

@@ -610,7 +610,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/beepsky_smash/on_mob_life(mob/living/carbon/M)
 	M.Jitter(2)
 	if(HAS_TRAIT(M.mind, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-		M.adjustStaminaLoss(-10, 0)
+		//M.adjustStaminaLoss(-10, 0)
 		if(prob(20))
 			new /datum/hallucination/items_other(M)
 	..()
@@ -1240,14 +1240,14 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	M.dizziness +=2
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1*REM, 150)
 	if(prob(20))
-		M.adjustStaminaLoss(10)
+		//M.adjustStaminaLoss(10)
 		M.drop_all_held_items()
 		to_chat(M, span_notice("I cant feel my hands!"))
 	if(current_cycle > 5)
 		if(prob(20))
 			var/t = pickt()
 			ADD_TRAIT(M, t, type)
-			M.adjustStaminaLoss(10)
+			//M.adjustStaminaLoss(10)
 		if(current_cycle > 30)
 			M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2*REM)
 			if(current_cycle > 50 && prob(15))
@@ -1263,7 +1263,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_R_ARM, type)
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_R_LEG, type)
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_L_LEG, type)
-	M.adjustStaminaLoss(10)
+	//M.adjustStaminaLoss(10)
 	..()
 
 /datum/reagent/consumable/ethanol/hippies_delight
@@ -1455,7 +1455,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		L.adjustFireLoss(-1)
 		L.adjustToxLoss(-1)
 		L.adjustOxyLoss(-1)
-		L.adjustStaminaLoss(-1)
+		//L.adjustStaminaLoss(-1)
 	L.visible_message(span_warning("[L] shivers with renewed vigor!"), span_notice("One taste of [lowertext(name)] fills you with energy!"))
 	if(!L.stat && heal_points == 20) //brought us out of softcrit
 		L.visible_message(span_danger("[L] lurches to [L.p_their()] feet!"), span_boldnotice("Up and at 'em, kid."))
@@ -1466,7 +1466,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		L.adjustFireLoss(-1)
 		L.adjustToxLoss(-0.5)
 		L.adjustOxyLoss(-3)
-		L.adjustStaminaLoss(-5)
+		//L.adjustStaminaLoss(-5)
 		. = TRUE
 	..()
 
@@ -1666,7 +1666,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/fanciulli/on_mob_metabolize(mob/living/M)
 	if(M.health > 0)
-		M.adjustStaminaLoss(20)
+		//M.adjustStaminaLoss(20)
 		. = TRUE
 	..()
 
@@ -1689,7 +1689,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/branca_menta/on_mob_metabolize(mob/living/M)
 	if(M.health > 0)
-		M.adjustStaminaLoss(35)
+		//M.adjustStaminaLoss(35)
 		. = TRUE
 	..()
 
@@ -1886,7 +1886,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/turbo/on_mob_life(mob/living/carbon/M)
 	if(prob(4))
 		to_chat(M, span_notice("[pick("You feel disregard for the rule of law.", "You feel pumped!", "Your head is pounding.", "Your thoughts are racing..")]"))
-	M.adjustStaminaLoss(-M.drunkenness * 0.25)
+	//M.adjustStaminaLoss(-M.drunkenness * 0.25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/old_timer

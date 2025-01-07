@@ -764,7 +764,7 @@
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(intentional)
-			if(!C.rogfat_add(10))
+			if(!C.stamina_add(10))
 				to_chat(C, span_warning("I try to scream but my voice fails me."))
 				. = FALSE
 

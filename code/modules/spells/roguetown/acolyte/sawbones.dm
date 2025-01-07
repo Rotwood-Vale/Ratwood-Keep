@@ -645,7 +645,7 @@
 	M.adjustToxLoss(2, 0)
 
 /datum/reagent/medicine/caffeine/on_mob_life(mob/living/carbon/M)
-	M.rogstam_add(800)
+	M.energy_add(800)
 	..()
 	. = 1
 	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
