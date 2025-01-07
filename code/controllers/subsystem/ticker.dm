@@ -469,6 +469,8 @@ SUBSYSTEM_DEF(ticker)
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
 	send2irc("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
+	if(CONFIG_GET(string/role_assign_channel_id))
+		send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/role_assign_channel_id)]> | Раунд Номер "#[GLOB.round_id]:" стартует на Хранилище Красной Луны!"), CONFIG_GET(string/chat_announce_new_game))
 	setup_done = TRUE
 
 	job_change_locked = FALSE

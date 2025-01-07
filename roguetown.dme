@@ -264,6 +264,7 @@
 #include "code\controllers\subsystem.dm"
 #include "code\controllers\configuration\config_entry.dm"
 #include "code\controllers\configuration\configuration.dm"
+#include "code\controllers\configuration\entries\bot.dm"
 #include "code\controllers\configuration\entries\comms.dm"
 #include "code\controllers\configuration\entries\dbconfig.dm"
 #include "code\controllers\configuration\entries\discord.dm"
