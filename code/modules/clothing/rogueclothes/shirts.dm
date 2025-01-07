@@ -341,7 +341,7 @@
 /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	name = "grenzelhoftian hip-shirt"
-	desc = "A baggy shirt commonly worn by grenzelhoftian emperiate. that signifies the wearer's regiment and company."
+	desc = "A baggy shirt commonly worn by grenzelhoftian soliders it signifies the wearer's regiment and company."
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "grenzelshirt"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
