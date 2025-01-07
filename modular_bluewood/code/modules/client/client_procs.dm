@@ -1,3 +1,8 @@
+/client/New()
+	. = ..()
+	spawn(20)
+		process_donator_bonus()
+
 /client/proc/process_donator_bonus()
 	set waitfor = 0
 	
@@ -37,13 +42,9 @@
 	
 	// Отмечаем что бонус получен в preferences
 	if(prefs)
-		prefs.donator_bonus_received = !prefs.donator_bonus_received
+		prefs.donator_bonus_received = TRUE
 		prefs.save_preferences()
+		prefs.save_character()
 	
 	to_chat(src, span_notice("Вы получили +15 PQ как бонус для донатера. Спасибо за поддержку!"))
 	message_admins("PQ: [ckey] получил бонус донатера (+15 PQ)")
-
-/client/New()
-	. = ..()
-	spawn(20)
-		process_donator_bonus()
