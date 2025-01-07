@@ -24954,7 +24954,7 @@
 /obj/structure/lever/wall{
 	dir = 4;
 	redstone_id = "shutter_bastion";
-	name = "Isolation"
+	name = "Isolate"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
