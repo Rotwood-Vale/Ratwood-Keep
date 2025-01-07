@@ -10957,10 +10957,6 @@
 /obj/item/cooking/pan,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
-"jMx" = (
-/obj/machinery/light/rogue/oven/south,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors)
 "jML" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /turf/open/floor/rogue/cobble,
@@ -46039,7 +46035,7 @@ ogi
 ogi
 bId
 uqv
-jMx
+bRO
 bRO
 bRO
 bRO
