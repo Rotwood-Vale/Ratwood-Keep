@@ -92,7 +92,7 @@
 	if(mastermob && chargetime)
 		var/newtime = chargetime
 		//skill block
-		newtime = newtime + 80
+		newtime = newtime + 90
 		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 20)
 		//per block
 		newtime = newtime + 20
