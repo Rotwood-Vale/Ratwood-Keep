@@ -24,7 +24,7 @@
 	skillcraft = /datum/skill/craft/carpentry
 	verbage_simple = "construct"
 	verbage = "constructs"
-	skill_level = 1
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/turfs/woodplatform/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
@@ -103,11 +103,11 @@
 /datum/crafting_recipe/roguetown/turfs/stoneplatform
 	name = "stone platform"
 	result = /turf/open/floor/rogue/blocks/platform
-	reqs = list(/obj/item/natural/stone = 1)
+	reqs = list(/obj/item/natural/stone = 2)
 	skillcraft = /datum/skill/craft/masonry
 	verbage_simple = "build"
 	verbage = "builds"
-	skill_level = 1
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/turfs/stoneplatform/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
