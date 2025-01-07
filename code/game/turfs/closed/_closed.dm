@@ -87,28 +87,10 @@
 		if(ishuman(AM))
 			var/mob/living/carbon/human/H = AM
 			if(H.dir == get_dir(H,src) && H.m_intent == MOVE_INTENT_RUN && (H.mobility_flags & MOBILITY_STAND))
-				var/is_bigguy = FALSE
-				if(HAS_TRAIT(H,TRAIT_BIGGUY))
-					if(istype(src,/turf/closed/wall/mineral/rogue))
-						var/turf/closed/wall/mineral/rogue/T = src
-						if(T.smashable)
-							if(T.max_integrity > 500) 	//Custom-set HP wall, should be respected
-								T.take_damage(max_integrity / 3)
-							else
-								T.take_damage(max_integrity / 2)
-						else
-							T.take_damage(rand(0,50))	//Keep trying, I guess. You'll get it eventually.
-						is_bigguy = TRUE
-				if(is_bigguy)
-					H.Immobilize(20)
-					//FUCKS you up
-					H.apply_damage(80, BRUTE, "chest", H.run_armor_check("chest", "blunt", damage = 80))
-					playsound(src, "meteor", 100, TRUE)
-				else
-					H.Immobilize(10)
-					H.apply_damage(15, BRUTE, "head", H.run_armor_check("head", "blunt", damage = 15))
-					playsound(src, "genblunt", 100, TRUE)
+				H.Immobilize(10)
+				H.apply_damage(15, BRUTE, "head", H.run_armor_check("head", "blunt", damage = 15))
 				H.toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
+				playsound(src, "genblunt", 100, TRUE)
 				H.visible_message(span_warning("[H] runs into [src]!"), span_warning("I run into [src]!"))
 				addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
 
