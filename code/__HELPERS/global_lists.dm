@@ -49,6 +49,13 @@
 		if(patron.preference_accessible)
 			GLOB.preference_patrons[path] = patron
 
+	// Barks
+	for(var/path in subtypesof(/datum/bark))
+		var/datum/bark/B = new path()
+		GLOB.bark_list[B.id] = path
+		if(B.allow_random)
+			GLOB.bark_random_list[B.id] = path
+
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.
 /proc/init_subtypes(prototype, list/L)
