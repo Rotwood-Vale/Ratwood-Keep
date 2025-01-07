@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Leather Bikini"
 	path = /obj/item/clothing/suit/roguetown/armor/leather/bikini
 
-/datum/loadout_item/battleskirt
+/datum/loadout_item/fencergambeneson
 	name = "fencer gambeson"
 	path = /obj/item/clothing/suit/roguetown/shirt/otavan
 
