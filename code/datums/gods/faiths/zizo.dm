@@ -1,8 +1,8 @@
 /datum/faith/zizo
-	name = "Zizo"
-	desc = "Reality bows to the Godhead.\n\
-		A long time ago, Zizo achieved the impossible: she vanquished Psydon and took His place. \
-		The feeble minded cling to the so-called Successors and the forsaken Inhumen, some even claim Psydon still lives!\n\
-		The godhead smiles upon us as we defile Psydon's creation and become the divinities we were always meant to be."
-	worshippers = "Necromancers, The Power-hungry,  Cultists and Heretics of all kinds"
+	name = "Зизо"
+	desc = "Реальность склоняется перед Божеством.\n\
+		Давным-давно Зизо совершила невозможное: она победила Псайдона и заняла его место. \
+		Слабоумные цепляются за так называемых Преемников и забытый пантеон Презренных, некоторые даже утверждают, что Псайдон все еще жив!\n\
+		Божество улыбается нам, когда мы оскверняем творение Псайдона и становимся божествами, которыми всегда должны были быть."
+	worshippers = "Некроманты, жаждущие власти, культисты и еретики всех мастей"
 	godhead = /datum/patron/zizo

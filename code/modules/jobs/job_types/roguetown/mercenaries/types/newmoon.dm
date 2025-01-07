@@ -1,6 +1,11 @@
 /datum/subclass/newmoon
 	name = "New Moon Spellblade"
-	tutorial = "The New Moon Spellblades of Zybantia are the remnants of a fallen Nocite monastery in an unknown region of Lalvestine, the last major stronghold of the Ten in the Zybantian Empire. Their monastic lyfestyle and devotion collapsed quickly under the weight of the Rot, and they were forced from a lyfe of devout solitude into that of a common sellsword; Noc’s blessings proving rather useful when slaying monsters and Men alike. For whatever reason, you find yourself in Rockhill, offering your skills to the highest bidder. Knowledge is power, or so She says."
+	tutorial = "Заклинатели Новолуния Зибантии - остатки погибшего монастыря последователей Нока в неизвестном регионе Лалвестина, \
+	последнего крупного оплота Десяти в Зибантийской империи. \
+	Их монашеский образ жизни и набожность быстро рухнули под тяжестью крупнейшей войны между Зибантии и Грензельхофтом, \
+	и из жизни благочестивого уединения они превратились в обычных наемников; \
+	благословения Нока оказались весьма полезными при убийстве как монстров, так и людей. \
+	По какой-то причине вы оказались в Рокхилле, предлагая свои навыки тому, кто больше заплатит. Знание - сила, так говорит Она."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/newmoon

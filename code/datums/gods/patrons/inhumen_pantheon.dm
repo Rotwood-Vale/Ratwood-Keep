@@ -5,37 +5,38 @@
 	confess_lines = list()
 
 /datum/patron/inhumen/graggar
-	name = "Graggar"
-	domain = "God of Conquest, Murder and Pillaging"
-	desc = "The Heartless One, Graggar taught dark elves that might makes right and created goblins in his image."
-	worshippers = "Prisoners, Murderers and the Cruel"
+	name = "Граггар"
+	domain = "Бог завоеваний, убийств и мародёрства"
+	desc = "Бессердечный, Граггар научил злых существ, что сила есть право, и создал гоблинов, и орков по своему образу и подобию."
+	worshippers = "Заключенные, убийцы и жестокие существа"
 	mob_traits = list(TRAIT_ORGAN_EATER)
 	confess_lines = list(
-		"GRAGGAR IS THE BEAST I WORSHIP!",
-		"GRAGGAR BRINGS UNHOLY DESTRUCTION!",
-		"THE BLACK SUN DEMANDS BLOOD!",
+		"ГРАГГАР - ЗВЕРЬ, КОТОРОМУ Я ПОКЛОНЯЮСЬ!",
+		"ГРАГГАР НЕСЁТ НЕЧЕСТИВОЕ РАЗРУШЕНИЕ!",
+		"ЧЁРНОЕ СОЛНЦЕ ТРЕБУЕТ КРОВИ!",
 	)
 
 /datum/patron/inhumen/matthios 
-	name = "Matthios"
-	domain = "God of Robbery, Mugging and Redistribution of Wealth"
-	desc = "Man turned God, Matthios taught man that only through theft and popular revolts can social woes be alleviated."
-	worshippers = "Highwaymen, Robbers and Downtrodden Peasants"
+	name = "Маттиос"
+	domain = "Бог грабежа, разбоя и перераспределения богатства"
+	desc = "Человек, превратившийся в бога, Маттиос учил людей, что только с помощью воровства и народных восстаний можно облегчить социальные беды."
+	worshippers = "Бандиты, разбойники и угнетенные крестьяне"
 	mob_traits = list(TRAIT_COMMIE)
 	confess_lines = list(
-		"MATTHIOS STEALS FROM THE WORTHLESS!",
-		"MATTHIOS IS JUSTICE!",
-		"MATTHIOS IS MY LORD!",
+		"МАТИОС КРАДЕТ У НИКЧЕМНЫХ!",
+		"МАТИОС - ЭТО СПРАВЕДЛИВОСТЬ!",
+		"МАТИОС - МОЙ ГОСПОДИН!",
 	)
 
 /datum/patron/inhumen/baotha
-    name = "Baotha"
-    domain = "Goddess of Degeneracy, Debauchery and Addiction"
-    desc = "Woman turned God, Baotha taught man that life is too short to care for the consequences of their pleasures and leads them to peculiar vices and perversions. "
-    worshippers = "Perverts, Gamblers, Drunkards, and Bards"
+    name = "Баота"
+    domain = "Богиня вырождения, разврата и наркомании"
+    desc = "Женщина, превратившаяся в бога, Баота учила разумных существ, что жизнь слишком коротка, чтобы заботиться о последствиях своих удовольствий, \
+	и вела их к своеобразным порокам и извращениям."
+    worshippers = "Извращенцы, азартные игроки, пьяницы и барды"
     mob_traits = list(TRAIT_CRACKHEAD)
     confess_lines = list(
-        "BAOTHA DEMANDS PLEASURE!",
-        "LIVE, LAUGH, LOVE!",
-        "BAOTHA IS MY JOY!",
+        "БАОТА ТРЕБУЕТ УДОВОЛЬСТВИЯ!",
+        "ЖИВИ, СМЕЙСЯ, ЛЮБИ!",
+        "БАОТА - МОЯ РАДОСТЬ!",
 	)

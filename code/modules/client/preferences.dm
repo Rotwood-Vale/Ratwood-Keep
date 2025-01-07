@@ -407,22 +407,22 @@ GLOBAL_LIST_EMPTY(chosen_names)
 							break
 				//Second comment on how stupid this is. TODO: REFACTOR THIS SHITTY FUCKING SYSTEM. We shouldn't be using associative lists like this.
 
-				dat += "<b>[skin_tone_wording]:	 </b><span style='font-size:104%'>[heldtone]</span><a href='?_src_=prefs;preference=s_tone;task=input'>	Change </a>"
+				dat += "<b>[skin_tone_wording]:	 </b><span style='font-size:104%'>[heldtone]</span><a href='?_src_=prefs;preference=s_tone;task=input'>	Изменить </a>"
 				dat += "<br>"
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 
-				dat += "<b>Mutant Color #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
-				dat += "<b>Mutant Color #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
-				dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
+				dat += "<b>Mutant Color #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Изменить</a><BR>"
+				dat += "<b>Mutant Color #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Изменить</a><BR>"
+				dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Изменить</a><BR>"
 
 
-			dat += "<b>Цвет голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
+			dat += "<b>Цвет голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Изменить</a>"
 			dat += "<br><b>Тон голоса: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
 			dat += "<br><b>Акценты:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
-			dat += "<br><b>Особенности:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
-			dat += "<br><b>Татуировки:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
-			dat += "<br><b>Описания:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
+			dat += "<br><b>Особенности:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Изменить</a>"
+			dat += "<br><b>Татуировки:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Изменить</a>"
+			dat += "<br><b>Описания:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Изменить</a>"
 			dat += "<br><b>Лодаут:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a>"
 
 			dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Изменить</a>"
@@ -1418,9 +1418,9 @@ Slots: [job.spawn_positions]</span>
 					var/faith_input = input(user, "Choose your character's faith", "Faith") as null|anything in faiths_named
 					if(faith_input)
 						var/datum/faith/faith = faiths_named[faith_input]
-						to_chat(user, "<font color='purple'>Faith: [faith.name]</font>")
-						to_chat(user, "<font color='purple'>Background: [faith.desc]</font>")
-						to_chat(user, "<font color='purple'>Likely Worshippers: [faith.worshippers]</font>")
+						to_chat(user, "<font color='purple'>Вера: [faith.name]</font>")
+						to_chat(user, "<font color='purple'>Описание: [faith.desc]</font>")
+						to_chat(user, "<font color='purple'>Предполагаемые последователи: [faith.worshippers]</font>")
 						selected_patron = GLOB.patronlist[faith.godhead] || GLOB.patronlist[pick(GLOB.patrons_by_faith[faith_input])]
 
 				if("patron")
@@ -1434,10 +1434,10 @@ Slots: [job.spawn_positions]</span>
 					var/god_input = input(user, "Choose your character's patron god", "[current_faith.name]") as null|anything in patrons_named
 					if(god_input)
 						selected_patron = patrons_named[god_input]
-						to_chat(user, "<font color='purple'>Patron: [selected_patron]</font>")
-						to_chat(user, "<font color='purple'>Domain: [selected_patron.domain]</font>")
-						to_chat(user, "<font color='purple'>Background: [selected_patron.desc]</font>")
-						to_chat(user, "<font color='purple'>Likely Worshippers: [selected_patron.worshippers]</font>")
+						to_chat(user, "<font color='purple'>Патрон: [selected_patron]</font>")
+						to_chat(user, "<font color='purple'>Домен: [selected_patron.domain]</font>")
+						to_chat(user, "<font color='purple'>Описание: [selected_patron.desc]</font>")
+						to_chat(user, "<font color='purple'>Предполагаемые последователи: [selected_patron.worshippers]</font>")
 
 				if("bdetail")
 					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")

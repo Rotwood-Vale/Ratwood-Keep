@@ -144,7 +144,7 @@
 				. += span_phobia("Чужестранец...")
 
 		if(name in GLOB.excommunicated_players)
-			. += span_userdanger("ОТЛУЧЕН ОТ ЦЕРКВИ!")
+			. += span_userdanger("ОТЛУЧЁН ОТ ЦЕРКВИ!")
 
 		if(name in GLOB.heretical_players)
 			. += span_userdanger("КЛЕЙМО ЕРЕТИКА! ПОЗОР!")
