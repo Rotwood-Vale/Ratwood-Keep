@@ -63,8 +63,6 @@ GLOBAL_VAR(restart_counter)
 		GLOB.rogue_round_id = "[pick(GLOB.roundid)][GLOB.round_id]-[timestamp]"
 	SetupLogs()
 	load_poll_data()
-	if(CONFIG_GET(string/channel_announce_new_game_message))
-		send2chat(new /datum/tgs_message_content(CONFIG_GET(string/channel_announce_new_game_message)), CONFIG_GET(string/channel_announce_new_game))
 
 #ifndef USE_CUSTOM_ERROR_HANDLER
 	world.log = file("[GLOB.log_directory]/dd.log")
