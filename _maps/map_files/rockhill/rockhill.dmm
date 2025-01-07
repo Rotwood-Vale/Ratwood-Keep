@@ -7275,10 +7275,17 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "exa" = (
-/obj/structure/fluff/walldeco/wantedposter,
 /obj/structure/closet/crate/chest{
+	locked = 1;
 	lockid = "bog_gatehouse"
 	},
+/obj/effect/decal/cobbleedge{
+	dir = 6
+	},
+/obj/item/flashlight/flare/torch/metal,
+/obj/item/flashlight/flare/torch/lantern,
+/obj/item/flashlight/flare/torch/lantern,
+/obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "exg" = (
@@ -8544,14 +8551,10 @@
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/manor)
 "fiv" = (
-/obj/structure/mineral_door/wood/donjon{
-	locked = 1;
-	lockid = "bog_gatehouse";
-	name = "Gatehouse";
-	lockdiff = 2;
-	dir = 1
+/obj/structure/stairs/stone{
+	dir = 4
 	},
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "fiA" = (
 /obj/item/reagent_containers/food/snacks/crow{
@@ -18590,12 +18593,6 @@
 "lyG" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town/tavern)
-"lyL" = (
-/obj/structure/stairs/stone{
-	dir = 4
-	},
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors)
 "lyO" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
@@ -19192,12 +19189,11 @@
 	locked = 1;
 	lockid = "bog_gatehouse"
 	},
-/obj/effect/decal/cobbleedge{
-	dir = 6
-	},
-/obj/item/flashlight/flare/torch/metal,
-/obj/item/flashlight/flare/torch/lantern,
-/obj/item/flashlight/flare/torch/lantern,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "lPh" = (
@@ -29848,6 +29844,16 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"svZ" = (
+/obj/structure/mineral_door/wood/donjon{
+	locked = 1;
+	lockid = "bog_gatehouse";
+	name = "Gatehouse";
+	lockdiff = 2;
+	dir = 1
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors)
 "swa" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/fluff/railing/wood{
@@ -34691,8 +34697,6 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
 "vvb" = (
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/glass/cup/wooden,
 /obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -325391,8 +325395,8 @@ wlD
 ujK
 kuV
 juC
-fiv
-kxi
+svZ
+ddv
 ddv
 ddv
 xSX
@@ -327118,7 +327122,7 @@ eDl
 ooJ
 ooJ
 ooJ
-lyL
+fiv
 rDt
 faB
 aQJ
