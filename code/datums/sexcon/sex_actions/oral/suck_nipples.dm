@@ -2,11 +2,6 @@
 	name = "Suck their nipples"
 	check_same_tile = FALSE
 
-/datum/sex_action/suck_nipples/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рот. Пососать соски."
-
 /datum/sex_action/suck_nipples/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

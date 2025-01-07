@@ -4,11 +4,6 @@
 	require_grab = TRUE
 	stamina_cost = 1.0
 
-/datum/sex_action/force_footjob/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Член. Заставить подрочить себе."
-
 /datum/sex_action/force_footjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

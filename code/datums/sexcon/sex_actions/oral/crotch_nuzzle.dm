@@ -2,11 +2,6 @@
 	name = "Nuzzle their crotch"
 	check_incapacitated = FALSE
 
-/datum/sex_action/crotch_nuzzle/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Лицо. Прижаться к паху."
-
 /datum/sex_action/crotch_nuzzle/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

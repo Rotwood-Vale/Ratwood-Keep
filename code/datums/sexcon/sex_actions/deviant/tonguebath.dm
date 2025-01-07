@@ -2,11 +2,6 @@
 	name = "Bathe with tongue"
 	check_incapacitated = FALSE
 
-/datum/sex_action/tonguebath/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Язык. Вылизать тело."
-
 /datum/sex_action/tonguebath/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

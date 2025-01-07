@@ -1,11 +1,6 @@
 /datum/sex_action/masturbate_penis
 	name = "Jerk Off"
 
-/datum/sex_action/masturbate_penis/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Подрочить свой член."
-
 /datum/sex_action/masturbate_penis/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)
 		return FALSE

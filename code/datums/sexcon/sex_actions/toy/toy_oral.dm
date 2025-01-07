@@ -2,11 +2,6 @@
 	name = "Swallow toy"
 	gags_user = TRUE
 
-/datum/sex_action/toy_oral/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рот (На себе). Сосать игрушку."
-
 /datum/sex_action/toy_oral/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)
 		return FALSE

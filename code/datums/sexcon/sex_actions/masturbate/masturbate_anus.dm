@@ -1,11 +1,6 @@
 /datum/sex_action/masturbate_anus
 	name = "Finger butt"
 
-/datum/sex_action/masturbate_anus/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Поиграться с задницей."
-
 /datum/sex_action/masturbate_anus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)
 		return FALSE

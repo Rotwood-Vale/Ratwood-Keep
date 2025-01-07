@@ -3,11 +3,6 @@
 	check_same_tile = FALSE
 	check_incapacitated = FALSE
 
-/datum/sex_action/pitjob/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Подрочить подмышкой."
-
 /datum/sex_action/pitjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

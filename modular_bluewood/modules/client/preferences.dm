@@ -1,2 +1,2 @@
 /datum/preferences
-	var/be_russian = TRUE
+	var/be_russian = FALSE

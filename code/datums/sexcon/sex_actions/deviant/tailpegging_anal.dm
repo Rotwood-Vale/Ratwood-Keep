@@ -2,11 +2,6 @@
 	name = "Peg butt with tail"
 	check_incapacitated = FALSE
 
-/datum/sex_action/tailpegging_anal/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Хвост. Вставить в задницу."
-
 /datum/sex_action/tailpegging_anal/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

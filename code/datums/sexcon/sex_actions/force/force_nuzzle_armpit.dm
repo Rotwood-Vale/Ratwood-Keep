@@ -4,11 +4,6 @@
 	stamina_cost = 1.0
 	gags_target = TRUE
 
-/datum/sex_action/force_armpit_nuzzle/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Лицо. Прижать к подмышке."
-
 /datum/sex_action/force_armpit_nuzzle/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

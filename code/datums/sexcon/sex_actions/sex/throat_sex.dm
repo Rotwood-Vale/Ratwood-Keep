@@ -3,11 +3,6 @@
 	stamina_cost = 1.0
 	gags_target = TRUE
 
-/datum/sex_action/throat_sex/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Член. Вытрахать в глотку."
-
 /datum/sex_action/throat_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

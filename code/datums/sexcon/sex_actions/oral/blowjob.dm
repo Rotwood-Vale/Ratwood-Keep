@@ -4,11 +4,6 @@
 	check_incapacitated = FALSE
 	gags_user = TRUE
 
-/datum/sex_action/blowjob/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Член. Отсосать."
-
 /datum/sex_action/blowjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

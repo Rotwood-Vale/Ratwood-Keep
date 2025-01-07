@@ -2,11 +2,6 @@
 	name = "Rub their body"
 	check_same_tile = FALSE
 
-/datum/sex_action/rub_body/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Погладить тело."
-
 /datum/sex_action/rub_body/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

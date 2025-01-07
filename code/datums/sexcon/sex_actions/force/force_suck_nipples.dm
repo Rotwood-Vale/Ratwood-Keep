@@ -3,11 +3,6 @@
 	require_grab = TRUE
 	stamina_cost = 1.0
 
-/datum/sex_action/force_suck_nipples/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Заставить пососать соски."
-
 /datum/sex_action/force_suck_nipples/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

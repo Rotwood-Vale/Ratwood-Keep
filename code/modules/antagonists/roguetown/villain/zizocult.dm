@@ -196,7 +196,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	mob_timers["cult_communicate"] = world.time
 
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/speak = input("What do you speak of?", "RATWOOD") as text|null
+	var/speak = input("What do you speak of?", "REDMOON") as text|null
 	if(!speak)
 		return
 	whisper("O schlet'a ty'schkotot ty'skvoro...")
@@ -273,7 +273,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			if(path.circle == sigil_type)
 				rituals |= path.name
 
-		var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in rituals
+		var/ritualnameinput = input(user, "Rituals", "REDMOON") as null|anything in rituals
 		testing("ritualnameinput [ritualnameinput]")
 		var/datum/ritual/pickritual
 
@@ -427,7 +427,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		to_chat(src, span_danger("My hands aren't bloody enough."))
 		return
 
-	var/input = input("Sigil Type", "RATWOOD") as null|anything in runes
+	var/input = input("Sigil Type", "REDMOON") as null|anything in runes
 	if(!input)
 		return
 
@@ -446,7 +446,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 	var/mob/living/carbon/human/choice = input(src, "Whom do you no longer have use for?", "ROGUETOWN") as null|anything in possible
 	if(choice)
-		var/alert = alert(src, "Are you sure?", "RATWOOD", "Yes", "Cancel")
+		var/alert = alert(src, "Are you sure?", "REDMOON", "Yes", "Cancel")
 		if(alert == "Yes")
 			visible_message(span_danger("[src] reaches out, ripping up [choice]'s soul!"))
 			to_chat(choice, span_userdanger("I HAVE FAILED MY LEADER! I HAVE FAILED ZIZO! NOTHING ELSE BUT DEATH REMAINS FOR ME NOW!"))
@@ -498,7 +498,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 				to_chat(user.mind, span_danger("\"The veil is too strong to support more than ten cultists.\""))
 				return
 			var/datum/antagonist/zizocultist/PR = user.mind.has_antag_datum(/datum/antagonist/zizocultist)
-			var/alert = alert(H, "YOU WILL BE SHOWN THE TRUTH. DO YOU RESIST? (Resisting: 1 TRI)", "RATWOOD", "Yield", "Resist")
+			var/alert = alert(H, "YOU WILL BE SHOWN THE TRUTH. DO YOU RESIST? (Resisting: 1 TRI)", "REDMOON", "Yield", "Resist")
 			H.anchored = TRUE
 			if(alert == "Yield")
 				to_chat(H.mind, span_notice("I see the truth now! It all makes so much sense! They aren't HERETICS! They want the BEST FOR US!"))
@@ -662,7 +662,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 
 /obj/item/pactofunity/attack_self(mob/user)
 	. = ..()
-	var/alert = alert(user, "Rip up the pact of unity?", "RATWOOD", "RIP", "Cancel")
+	var/alert = alert(user, "Rip up the pact of unity?", "REDMOON", "RIP", "Cancel")
 	if(alert == "RIP")
 		user.playsound_local(user, 'sound/foley/cloth_rip.ogg', 50)
 		to_chat(signed.mind, span_userdanger("I FAILED! MY LIFE DWINDLES!"))
@@ -683,7 +683,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		return
 	if(!H.stat)
 		to_chat(user, span_info("I courteously offer \the [src] to [H]."))
-		if(alert(H, "Sign the pact with your blood?", "RATWOOD", "Yes", "No") != "Yes")
+		if(alert(H, "Sign the pact with your blood?", "REDMOON", "Yes", "No") != "Yes")
 			return
 		if(H.stat)
 			return
@@ -819,7 +819,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	for(var/obj/item/paper/P in C.contents)
 		var/info = ""
 		info = sanitize(P.info)
-		var/input = stripped_input(user, "To whom do we send this message?", "RATWOOD")
+		var/input = stripped_input(user, "To whom do we send this message?", "REDMOON")
 		if(!input)
 			return
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)

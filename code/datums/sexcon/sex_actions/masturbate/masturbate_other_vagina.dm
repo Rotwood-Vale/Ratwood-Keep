@@ -2,11 +2,6 @@
 	name = "Stroke their clit"
 	check_same_tile = FALSE
 
-/datum/sex_action/masturbate_other_vagina/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Поиграться с вагиной."
-
 /datum/sex_action/masturbate_other_vagina/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

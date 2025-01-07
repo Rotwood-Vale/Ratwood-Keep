@@ -2,11 +2,6 @@
 	name = "Jerk over them"
 	check_same_tile = FALSE
 
-/datum/sex_action/masturbate_penis_over/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Подрочить на партнёра."
-
 /datum/sex_action/masturbate_penis_over/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

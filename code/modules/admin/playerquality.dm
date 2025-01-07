@@ -200,25 +200,32 @@
 			to_chat(C, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [key] for reason: [raisin]</span></span>")
 			return
 
-// /proc/add_commend(key, giver)
-// 	if(!giver || !key)
-// 		return
-// 	var/curcomm = 0
-// 	var/json_file = file("data/player_saves/[copytext(key,1,2)]/[key]/commends.json")
-// 	if(!fexists(json_file))
-// 		WRITE_FILE(json_file, "{}")
-// 	var/list/json = json_decode(file2text(json_file))
-// 	if(json[giver])
-// 		curcomm = json[giver]
-// 	curcomm++
-// 	json[giver] = curcomm
-// 	fdel(json_file)
-// 	WRITE_FILE(json_file, json_encode(json))
+/proc/add_commend(key, giver)
+	if(!giver || !key)
+		return
+	var/curcomm = 0
+	var/json_file = file("data/player_saves/[copytext(key,1,2)]/[key]/commends.json")
+	if(!fexists(json_file))
+		WRITE_FILE(json_file, "{}")
+	var/list/json = json_decode(file2text(json_file))
+	if(json[giver])
+		curcomm = json[giver]
+	curcomm++
+	json[giver] = curcomm
+	fdel(json_file)
+	WRITE_FILE(json_file, json_encode(json))
 
-// 	//add the pq, only on the first commend
-// 	if(curcomm == 1)
-// //	if(get_playerquality(key) < 29)
-// 		adjust_playerquality(1, ckey(key))
+	var/fakekey = usr.ckey
+	if(usr.ckey in GLOB.anonymize)
+		fakekey = get_fake_key(usr.ckey)
+
+	var/raisin = stripped_input("Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
+	if(!raisin)
+		to_chat(src, span_boldwarning("Причина не указана."))
+		return
+
+	if(curcomm == 1)
+		adjust_playerquality(1, ckey(key), fakekey, raisin)
 
 /proc/get_commends(key)
 	if(!key)
