@@ -82,7 +82,7 @@
 
 /obj/item/clothing/gloves/roguetown/grenzelgloves
 	name = "grenzelhoft gloves"
-	desc = "Fancy gloves worn by the Grenzelhoft Legionaries."
+	desc = "Fancy gloves worn by the Grenzelhoft emperiate."
 	icon_state = "grenzelgloves"
 	item_state = "grenzelgloves"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'

@@ -1,6 +1,6 @@
 /datum/subclass/grenzelhoft
 	name = "Grenzelhoft Mercenary"
-	tutorial = "Experts, Professionals, Expensive. Those are the first words that come to mind when the emperiate Grenzelhoft Free Corps is mentioned. While you may work for coin like any common sellsword, maintaining the honor of the Legion will be of utmost priority or may otherwise face the loss of everything."
+	tutorial = "Experts, Professionals, Expensive. Those are the first words that come to mind when the emperiate Grenzelhoft Free Corps is mentioned. While you may work for coin like any common sellsword, maintaining the honor of the Company will be of utmost priority or may otherwise face the loss of everything."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/axian,

@@ -1,7 +1,7 @@
 /datum/subclass/grenzelhoft_jager
 	name = "Grenzelhoft Jäger"
 	tutorial = "Trackers, Huntsmen, Marksmen. Those are the first words that describe a Jäger of the Free Corps. \
-	Jägers are skilled handgonners and scouts of the Legions of the Grenzel Emperiate. Beastmen and elves are commonly found to \
+	Jägers are skilled handgonners and scouts of the Companies of the Grenzel Emperiate. Beastmen and elves are commonly found to \
 	fill the Auxiliary ranks, however you are one of the lucky few that was allowed to join the Free Corps. \
 	You are expected to provide the Guild with your expertise in tracking, and scouting. Alongside your marksmanship."
 	allowed_sexes = list(MALE, FEMALE)
