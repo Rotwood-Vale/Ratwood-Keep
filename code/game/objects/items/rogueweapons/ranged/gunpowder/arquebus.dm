@@ -81,6 +81,7 @@
 
 /datum/intent/shoot/arquebus
 	chargedrain = 0
+	chargetime = 1
 
 /datum/intent/shoot/arquebus/can_charge()
 	if(mastermob && masteritem.wielded)
@@ -92,8 +93,8 @@
 	if(mastermob && chargetime)
 		var/newtime = chargetime
 		//skill block
-		newtime = newtime + 80
-		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 20)
+		newtime = newtime + 140
+		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 15)
 		//per block
 		newtime = newtime + 20
 		newtime = newtime - ((mastermob.STAPER)*1.5)

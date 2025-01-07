@@ -7,7 +7,7 @@
 	force = 10
 	force_wielded = 15
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
-	gripped_intents = list(/datum/intent/shoot/arquebus, /datum/intent/arc/arquebus, INTENT_GENERIC)
+	gripped_intents = list(/datum/intent/shoot/flintgonne, /datum/intent/arc/flintgonne, INTENT_GENERIC)
 	internal_magazine = TRUE
 	mag_type = /obj/item/ammo_box/magazine/internal/arquebus
 	pixel_y = -16
@@ -148,6 +148,60 @@
 			to_chat(user, span_warning("There's already a [R.name] inside of the [name]."))
 			return
 		user.stop_sound_channel(gunchannel)
+
+/datum/intent/shoot/flintgonne
+	chargedrain = 0
+	chargetime = 1
+
+/datum/intent/shoot/flintgonne/can_charge()
+	if(mastermob && masteritem.wielded)
+		if(!masteritem.wielded)
+			return FALSE
+		return TRUE
+
+/datum/intent/shoot/flintgonne/get_chargetime()
+	if(mastermob && chargetime)
+		var/newtime = chargetime
+		//skill block
+		newtime = newtime + 240
+		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 15)
+		//per block
+		newtime = newtime + 20
+		newtime = newtime - ((mastermob.STAPER)*1.5)
+		if(newtime > 0)
+			return newtime
+		else
+			return 0.1
+	return chargetime
+
+/datum/intent/arc/flintgonne
+	chargetime = 1
+	chargedrain = 0
+
+/datum/intent/arc/flintgonne/can_charge()
+	if(mastermob && masteritem.wielded)
+		if(!masteritem.wielded)
+			return FALSE
+/*		if(mastermob.get_num_arms(FALSE) < 2)
+			return FALSE
+		if(mastermob.get_inactive_held_item())
+			return FALSE*/
+		return TRUE
+
+/datum/intent/arc/flintgonne/get_chargetime()
+	if(mastermob && chargetime)
+		var/newtime = chargetime
+		//skill block
+		newtime = newtime + 240
+		newtime = newtime - (mastermob.mind.get_skill_level(/datum/skill/combat/firearms) * 15)
+		//per block
+		newtime = newtime + 20
+		newtime = newtime - ((mastermob.STAPER)*1.5)
+		if(newtime > 0)
+			return newtime
+		else
+			return 1
+	return chargetime
 
 /obj/item/gun/ballistic/flintgonne/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 
