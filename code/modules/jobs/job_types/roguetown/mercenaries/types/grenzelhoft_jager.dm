@@ -2,7 +2,8 @@
 	name = "Grenzelhoft Jäger"
 	tutorial = "Trackers, Huntsmen, Marksmen. Those are the first words that describe a Jäger of the Free Corps. \
 	Jägers are skilled handgonners and scouts of the Legions of the Grenzel Emperiate. Beastmen and elves are commonly found to \
-	fill the Auxiliary ranks, however you are one of the lucky few that was allowed to join the Free Corps."
+	fill the Auxiliary ranks, however you are one of the lucky few that was allowed to join the Free Corps. \
+	You are expected to provide the Guild with your expertise in tracking, and scouting. Alongside your marksmanship."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/axian,
@@ -20,7 +21,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_jager
 	maximum_possible_slots = 3
-	min_pq = 0
+	min_pq = 18
 	torch = FALSE
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	category_tags = list(CTAG_MERCENARY)
