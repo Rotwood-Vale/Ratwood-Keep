@@ -2,19 +2,17 @@
 	race = /datum/species/halforc
 
 /datum/species/halforc
-	name = "Half Orc"
+	name = "Полуорк"
 	id = "halforc"
-	desc = "<b>Half Orcs</b><br>\
-	With the Ironmask clan on a centuries-long warpath to consolidate all orcs within their banner, \
-	crushed orc tribes have lost their menfolk and war-widows have been scattered to the hinterlands. \
-	Between human civilization and orc savagery, orc-women opting for exile over dishonor have become \
-	more common visitors to fur trading posts and prospecting camps, eventually leading to half-orcs \
-	being born in these rough places otherwise devoid of a fairer sex. Your mother-clan is in thrall \
-	to the Ironmask, true orcs would kill you as a mongrel dog and your father’s people cannot decide \
-	between mere distrust and disgust. Yet somehow your wandering feet came to Rockhill, where \
-	half-orcs ply muscle and their hardiness in the rough underbelly or outer reaches of society."
+	desc = "<b>Полуорк</b><br>\
+	С кланом Железная Маска, который уже веками ведет войну с целью объединения всех орков под своим знаменем, \
+	разгромленные оркские племена потеряли своих мужчин, а вдовы воинов были разбросаны по отдаленным землям. \
+	Между человеческой цивилизацией и оркским варварством оркские женщины, выбирающие изгнание вместо позора, \
+	стали более частыми посетителями меховых торговых постов и разведывательных лагерей, что в итоге привело к рождению полуорков в этих суровых местах, \
+	где отсутствует женский пол. Ваш клан подчинен Железной Маске, настоящие орки убили бы вас как помесь.\
+	Тем не менее, ваши блуждающие ноги привели вас в Рокхилл, где полуорки применяют свою силу и выносливость в недрах пещер или на окраинах общества."
 
-	skin_tone_wording = "Clan"
+	skin_tone_wording = "Клан"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)

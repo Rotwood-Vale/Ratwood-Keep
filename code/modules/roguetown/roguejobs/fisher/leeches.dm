@@ -1,8 +1,8 @@
 #define MAX_LEECH_EVILNESS 10
 
 /obj/item/natural/worms/leech
-	name = "leech"
-	desc = "A disgusting, blood-sucking parasite."
+	name = "пиявка"
+	desc = "Отвратительный кровососущий паразит."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "leech"
 	baitchance = 100
@@ -112,17 +112,17 @@
 	. = ..()
 	switch(blood_storage/blood_maximum)
 		if(0.8 to INFINITY)
-			. += span_bloody("<B>[p_theyre(TRUE)] fat and engorged with blood.</B>")
+			. += span_bloody("<B>[p_theyre(TRUE)] разбухла и налилась кровью.</B>")
 		if(0.5 to 0.8)
-			. += span_bloody("[p_theyre(TRUE)] well fed.")
+			. += span_bloody("[p_theyre(TRUE)] хорошо накормлена.")
 		if(0.1 to 0.5)
-			. += span_warning("[p_they(TRUE)] want[p_s()] a meal.")
+			. += span_warning("[p_they(TRUE)] жажд[p_s()]ет крови.")
 		if(-INFINITY to 0.1)
-			. += span_dead("[p_theyre(TRUE)] starved.")
+			. += span_dead("[p_theyre(TRUE)] изголодалась.")
 	if(!giving)
-		. += span_warning("[p_theyre(TRUE)] [pick("slurping", "sucking", "inhaling")].")
+		. += span_warning("[p_theyre(TRUE)] [pick("хлебает", "сосёт", "втягивает")].")
 	else
-		. += span_notice("[p_theyre(TRUE)] [pick("vomiting", "gorfing", "exhaling")].")
+		. += span_notice("[p_theyre(TRUE)] [pick("изрыгает", "изрыгает", "источает")].")
 	if(drainage)
 		START_PROCESSING(SSobj, src)
 
@@ -133,7 +133,7 @@
 		if(!affecting)
 			return
 		if(!get_location_accessible(H, check_zone(user.zone_selected)))
-			to_chat(user, span_warning("Something in the way."))
+			to_chat(user, span_warning("Что-то мешает прицепить пиявку."))
 			return
 		var/used_time = (70 - (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10))/2
 		if(completely_silent)
@@ -148,9 +148,9 @@
 		if(completely_silent)
 			return
 		if(M == user)
-			user.visible_message(span_notice("[user] places [src] on [user.p_their()] [affecting]."), span_notice("I place a leech on my [affecting]."))
+			user.visible_message(span_notice("[user] прицепляю [src] к своей [affecting]."), span_notice("Я прикладываю пиявку к своей [affecting]."))
 		else
-			user.visible_message(span_notice("[user] places [src] on [M]'s [affecting]."), span_notice("I place a leech on [M]'s [affecting]."))
+			user.visible_message(span_notice("[user] прицепляю [src] к [affecting] [M]."), span_notice("Я прикладываю пиявку к [affecting] [M]."))
 		return
 	return ..()
 
@@ -193,27 +193,27 @@
 		"#ff31e4" = 1,
 	)
 	var/static/list/all_adjectives = list(
-		"blood-sucking" = 20,
-		"disgusting" = 10,
-		"vile" = 8,
-		"repugnant" = 4,
-		"revolting" = 4,
-		"grotesque" = 4,
-		"hideous" = 4,
-		"stupid" = 2,
-		"dumb" = 2,
-		"demonic" = 1,
-		"graggoid" = 1,
-		"zizoid" = 1,
+		"кровососущая" = 20,
+		"омерзительная" = 10,
+		"мерзкая" = 8,
+		"отвратительная" = 4,
+		"тошнотворная" = 4,
+		"уродливая" = 4,
+		"безобразная" = 4,
+		"глупая" = 2,
+		"тупая" = 2,
+		"демоническая" = 1,
+		"граггароидная" = 1,
+		"зизоидная" = 1,
 	)
 	var/static/list/all_descs = list(
-		"What a disgusting creature." = 10,
-		"Fucking gross." = 5,
-		"Slippery..." = 3,
-		"So yummy and full of blood." = 3,
-		"I love this leech!" = 2,
-		"It is so beautiful." = 2,
-		"I wish I was a leech." = 1,
+		"Какое отвратительное создание." = 10,
+		"Какая огромная!" = 5,
+		"Скользкая..." = 3,
+		"Такая сочная и полная крови." = 3,
+		"Обожаю эту пиявку!" = 2,
+		"Она так прекрасна." = 2,
+		"Хотел бы я быть пиявкой." = 1,
 	)
 	var/list/possible_adjectives = all_adjectives.Copy()
 	var/list/possible_descs = all_descs.Copy()
@@ -223,15 +223,15 @@
 	switch(evilness_rating)
 		if(MAX_LEECH_EVILNESS to INFINITY) //maximized evilness holy shit
 			color = "#ff0000"
-			adjectives += pick("evil", "malevolent", "misanthropic")
-			descs += span_danger("This one is bursting with hatred!")
+			adjectives += pick("злая", "зловещая", "мизантропная")
+			descs += span_danger("Эта просто переполнена ненавистью!")
 		if(5) //this leech is painfully average, it gets no adjectives
 			if(prob(3))
-				adjectives += pick("average", "ordinary", "boring")
-				descs += "This one is extremely boring to look at."
+				adjectives += pick("обычная", "заурядная", "скучная")
+				descs += "На эту совершенно скучно смотреть."
 		if(-INFINITY to 1) //this leech is pretty terrible at being a leech
-			adjectives += pick("pitiful", "pathetic", "depressing")
-			descs += span_dead("This one yearns for nothing but death.")
+			adjectives += pick("жалкая", "никчёмная", "удручающая")
+			descs += span_dead("Эта жаждет лишь своей смерти.")
 		else
 			var/adjective_amount = 1
 			if(prob(5))
@@ -256,8 +256,8 @@
 	return TRUE
 
 /obj/item/natural/worms/leech/cheele
-	name = "cheele"
-	desc = "A beautiful, blood-infusing altruistic organism made by Pestra herself."
+	name = "медицинская пиявка"
+	desc = "Прекрасный, наполняющий кровью альтруистичный организм, созданный самой Пестрой."
 	icon_state = "cheele"
 	color = null
 	consistent = TRUE
@@ -270,15 +270,15 @@
 	. = ..()
 	giving = !giving
 	if(giving)
-		user.visible_message(span_notice("[user] squeezes [src]."),\
-							span_notice("I squeeze [src]. It will now infuse blood."))
+		user.visible_message(span_notice("[user] сжимает [src]."),\
+							span_notice("Я сжимаю [src]. Теперь она будет вливать кровь."))
 	else
-		user.visible_message(span_notice("[user] squeezes [src]."),\
-							span_notice("I squeeze [src]. It will now extract blood."))
+		user.visible_message(span_notice("[user] сжимает [src]."),\
+							span_notice("Я сжимаю [src]. Теперь она будет высасывать кровь."))
 
 /obj/item/natural/worms/leech/propaganda
-	name = "accursed leech"
-	desc = "A leech like none other."
+	name = "проклятая пиявка"
+	desc = "Пиявка, какой не бывало прежде."
 	drainage = 0
 	blood_sucking = 0
 	completely_silent = TRUE
@@ -297,7 +297,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/V = user
 		if(prob(5))
-			V.say(pick("PRAISE ZIZO!", "DEATH TO THE TEN..."))
+			V.say(pick("СЛАВА ЗИЗО!", "СМЕРТЬ ДЕСЯТИ..."))
 		V.add_stress(/datum/stressevent/leechcult)
 
 #undef MAX_LEECH_EVILNESS

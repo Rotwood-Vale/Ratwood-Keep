@@ -226,6 +226,8 @@
 	if(H.voicecolor_override)
 		usedcolor = H.voicecolor_override
 	if(raw_message)
+		if(lowertext(raw_message) == pick("say laws.", "state laws."))
+			dictate_laws()
 		if(calling)
 			if(calling.calling == src)
 				calling.repeat_message(raw_message, src, usedcolor, message_language)

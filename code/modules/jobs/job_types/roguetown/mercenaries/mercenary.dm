@@ -12,7 +12,7 @@
 	faction = "Station"
 	total_positions = 10
 	spawn_positions = 10 //subject to change, was originally 6
-	min_pq = 0
+	min_pq = 5
 	max_pq = null
 	subclass_cat_rolls = list(CTAG_MERCENARY = 20)
 	PQ_boost_divider = 10

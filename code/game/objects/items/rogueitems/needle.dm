@@ -70,8 +70,6 @@
 			qdel(I)
 		return
 
-
-
 /obj/item/needle/attack_obj(obj/O, mob/living/user)
 	var/obj/item/I = O
 	if(can_repair)

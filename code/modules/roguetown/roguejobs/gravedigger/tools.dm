@@ -2,8 +2,8 @@
 	force = 21
 	possible_item_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel)
 	gripped_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel, /datum/intent/axe/chop/stone)
-	name = "shovel"
-	desc = "Essential for digging (graves) in this darkened earth."
+	name = "лопата"
+	desc = "Незаменима для копания (могил) в этой тёмной земле."
 	icon_state = "shovel"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -115,7 +115,7 @@
 			update_icon()
 			return
 		if(istype(T, /turf/open/floor/rogue/grass))
-			to_chat(user, span_warning("There is grass in the way."))
+			to_chat(user, span_warning("Здесь мешает трава."))
 			return
 		return
 	. = ..()
@@ -174,8 +174,8 @@
 
 /obj/item/rogueweapon/shovel/small
 	force = 7
-	name = "spade"
-	desc = "Indispensable for tending the soil."
+	name = "лопатка"
+	desc = "Незаменимый инструмент для вскапывания почвы."
 	icon_state = "spade"
 	sharpness = IS_BLUNT
 	//dropshrink = 0.8
@@ -188,8 +188,8 @@
 	grid_height = 64
 
 /obj/item/burial_shroud
-	name = "winding sheet"
-	desc = "A burial veil for the deceased."
+	name = "погребальный саван"
+	desc = "Погребальное покрывало для усопшего."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "shroud_folded"
 	w_class = WEIGHT_CLASS_SMALL
@@ -214,8 +214,8 @@
 
 
 /obj/structure/closet/burial_shroud
-	name = "winding sheet"
-	desc = "A burial veil for the deceased."
+	name = "погребальный саван"
+	desc = "Погребальное покрывало для усопшего."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "shroud"
 	density = FALSE
@@ -258,15 +258,15 @@
 		if(!ishuman(usr))
 			return
 		if(contents.len)
-			to_chat(usr, span_warning("There are too many things inside of [src] to fold it up!"))
+			to_chat(usr, span_warning("Слишком много вещей внутри [src], чтобы свернуть!"))
 			return
-		visible_message(span_notice("[usr] folds up [src]."))
+		visible_message(span_notice("[usr] сворачивает [src]."))
 		var/obj/item/bodybag/B = foldedbag_instance || new foldedbag_path
 		usr.put_in_hands(B)
 		qdel(src)
 
 /obj/item/bodybag
-	name = "body bag"
+	name = "мешок для трупов"
 	desc = ""
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "bodybag_folded"
@@ -302,7 +302,7 @@
 
 
 /obj/structure/closet/body_bag
-	name = "body bag"
+	name = "мешок для трупов"
 	desc = ""
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "bodybag"
@@ -343,12 +343,12 @@
 		if(!ishuman(usr))
 			return
 		if(opened)
-			to_chat(usr, "<span class='warning'>I wrestle with [src], but it won't fold while unzipped.</span>")
+			to_chat(usr, "<span class='warning'>Я пытаюсь свернуть [src], но не могу, пока он расстёгнут.</span>")
 			return
 		if(contents.len)
-			to_chat(usr, "<span class='warning'>There are too many things inside of [src] to fold it up!</span>")
+			to_chat(usr, "<span class='warning'>Слишком много вещей внутри [src], чтобы свернуть!</span>")
 			return
-		visible_message("<span class='notice'>[usr] folds up [src].</span>")
+		visible_message("<span class='notice'>[usr] сворачивает [src].</span>")
 		var/obj/item/bodybag/B = foldedbag_instance || new foldedbag_path
 		usr.put_in_hands(B)
 		qdel(src)

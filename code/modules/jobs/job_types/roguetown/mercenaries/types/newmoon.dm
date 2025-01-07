@@ -2,15 +2,10 @@
 	name = "New Moon Spellblade"
 	tutorial = "The New Moon Spellblades of Zybantia are the remnants of a fallen Nocite monastery in an unknown region of Lalvestine, the last major stronghold of the Ten in the Zybantian Empire. Their monastic lyfestyle and devotion collapsed quickly under the weight of the Rot, and they were forced from a lyfe of devout solitude into that of a common sellsword; Noc’s blessings proving rather useful when slaying monsters and Men alike. For whatever reason, you find yourself in Rockhill, offering your skills to the highest bidder. Knowledge is power, or so She says."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(
-		/datum/species/tabaxi,
-		/datum/species/elf/wood,
-		/datum/species/demihuman,
-		/datum/species/tieberian
-	)
+	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/newmoon
 	maximum_possible_slots = 10
-	min_pq = 4
+	min_pq = 10
 	torch = FALSE
 	cmode_music = 'sound/music/combat_desertrider.ogg'
 	category_tags = list(CTAG_MERCENARY)
@@ -31,14 +26,6 @@
 	backl = /obj/item/rogueweapon/sword/sabre_freeze
 	wrists = /obj/item/clothing/neck/roguetown/psicross/noc
 
-	if(iself(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Timberborn"]
-		H.update_body()
-	if(isdemihuman(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Lalvestine"]
-		H.update_body()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
