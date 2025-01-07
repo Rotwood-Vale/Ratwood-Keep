@@ -58,7 +58,7 @@
 		return "Недостаточно параметров. Использование: !pq <ckey> <amount> <reason>"
 	
 	var/target_ckey = ckey(paramslist[1])
-	message_admins("PQ: Попытка изменить PQ для '[target_ckey]' на [amount] от [sender.friendly_name]")
+	message_admins("PQ: Попытка изменить PQ для '[target_ckey]' на <amount> от [sender.friendly_name]")
 	
 	if(!target_ckey)
 		return "Некорректный ckey"
