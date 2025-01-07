@@ -23666,12 +23666,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
-"ozx" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 4
-	},
-/turf/closed/wall/mineral/rogue/stone,
-/area/rogue/indoors)
 "ozA" = (
 /obj/structure/toilet,
 /turf/open/floor/rogue/cobble,
@@ -327539,7 +327533,7 @@ fiv
 fyA
 pAV
 xSX
-nhU
+qbG
 qbG
 qbG
 qbG
@@ -331855,7 +331849,7 @@ pAV
 lwC
 mfz
 wYd
-ozx
+pAV
 cyr
 pAV
 pAV
