@@ -69,14 +69,14 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/last_pull
 
 /obj/structure/lever/red/attack_hand(mob/user)
-	if(world.time < last_pull + 70)
+	if(world.time < last_pull + 50)
 		return
 	last_pull = world.time
 	. = ..()
 	icon_state = "leverwallred[toggled]"
 
 /obj/structure/lever/red/onkick(mob/user)
-	if(world.time < last_pull + 70)
+	if(world.time < last_pull + 50)
 		return
 	last_pull = world.time
 	. = ..()

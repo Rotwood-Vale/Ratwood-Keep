@@ -2768,12 +2768,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
-"bGL" = (
-/obj/structure/floordoor/gatehatch/outer{
-	redstone_id = "lava_bastion"
-	},
-/turf/open/transparent/openspace,
-/area/rogue/indoors)
 "bHz" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -4402,6 +4396,11 @@
 	pixel_x = -8;
 	pixel_y = 7
 	},
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w";
+	pixel_y = -6
+	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
 "cJq" = (
@@ -6007,6 +6006,12 @@
 	dir = 8
 	},
 /area/rogue/outdoors/mountains)
+"dIv" = (
+/obj/effect/decal/cobbleedge{
+	dir = 9
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors)
 "dIw" = (
 /obj/structure/table/wood,
 /obj/item/candle/skull/lit,
@@ -6281,6 +6286,10 @@
 	icon_state = "horzw"
 	},
 /area/rogue/indoors/town/church/chapel)
+"dRz" = (
+/obj/structure/table/wood,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors)
 "dRU" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
@@ -6546,6 +6555,14 @@
 /obj/structure/roguetent,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/druidgrove)
+"dZk" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w";
+	pixel_y = -6
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors)
 "dZp" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -7407,6 +7424,10 @@
 /obj/structure/roguemachine/mail/l,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town/harbor)
+"eAl" = (
+/obj/machinery/light/rogue/wallfire/candle,
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors)
 "eAr" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -8488,9 +8509,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter/town)
-"fhg" = (
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/mountains)
 "fhs" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newbranch/connector,
@@ -14996,6 +15014,13 @@
 	},
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/outdoors/town/harbor)
+"jak" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w"
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/indoors)
 "jap" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
@@ -23687,9 +23712,6 @@
 "oty" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town/harbor)
-"otN" = (
-/turf/closed/wall/mineral/rogue/stone/window/moss,
-/area/rogue/indoors)
 "otW" = (
 /obj/structure/stairs,
 /obj/structure/fluff/railing/wood{
@@ -26157,10 +26179,6 @@
 /obj/structure/plasticflaps,
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
-"pVs" = (
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors)
 "pVB" = (
 /obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/cobblerock,
@@ -34321,6 +34339,9 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/rogue/outdoors/town/roofs)
+"uWv" = (
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/mountains)
 "uWH" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/twig,
@@ -39105,6 +39126,9 @@
 /obj/item/kitchen/spoon,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"xRl" = (
+/turf/closed/wall/mineral/rogue/stone/window/moss,
+/area/rogue/indoors)
 "xRr" = (
 /obj/structure/fluff/walldeco/wantedposter,
 /obj/structure/mineral_door/wood/window{
@@ -39348,6 +39372,12 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
+"xYY" = (
+/obj/structure/floordoor/gatehatch/outer{
+	redstone_id = "lava_bastion"
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors)
 "xZg" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -322405,7 +322435,7 @@ pAV
 wlD
 wlD
 pAV
-fhg
+uWv
 erZ
 erZ
 erZ
@@ -325424,7 +325454,7 @@ pAV
 pAV
 aQJ
 ddv
-wlD
+jak
 wlD
 cDC
 jCh
@@ -325854,9 +325884,9 @@ wbg
 vdN
 pAV
 ddv
-wlD
-wlD
-wlD
+fyA
+faB
+dIv
 wlD
 ujK
 kuV
@@ -327157,7 +327187,7 @@ hGf
 cJf
 nZT
 vjM
-faB
+dZk
 gBU
 wlD
 ddv
@@ -328018,8 +328048,8 @@ pAV
 pND
 dCn
 ooJ
-ooJ
-ooJ
+dRz
+dRz
 ooJ
 fiv
 fyA
@@ -328449,7 +328479,7 @@ ptg
 pAV
 dGp
 pAV
-pVs
+eAl
 snS
 nhD
 ooJ
@@ -329746,9 +329776,9 @@ wbg
 wbg
 wlD
 uMO
-bGL
-bGL
-bGL
+xYY
+xYY
+xYY
 qmO
 xXH
 xXH
@@ -330178,9 +330208,9 @@ wbg
 wbg
 wlD
 wlD
-bGL
+xYY
 kYh
-bGL
+xYY
 wlD
 jXZ
 jXZ
@@ -330610,9 +330640,9 @@ wbg
 yht
 wlD
 cuk
-bGL
-bGL
-bGL
+xYY
+xYY
+xYY
 wlD
 xXH
 xXH
@@ -439910,7 +439940,7 @@ rhe
 jCh
 jCh
 muL
-otN
+xRl
 erZ
 erZ
 erZ
@@ -440774,7 +440804,7 @@ bth
 jCh
 jCh
 muL
-otN
+xRl
 erZ
 erZ
 erZ
