@@ -4,11 +4,6 @@
 	stamina_cost = 1.0
 	gags_target = TRUE
 
-/datum/sex_action/force_cunnilingus/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Вагина. Заставить вылизать."
-
 /datum/sex_action/force_cunnilingus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

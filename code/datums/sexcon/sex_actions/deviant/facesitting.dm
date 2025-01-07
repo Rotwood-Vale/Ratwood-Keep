@@ -3,11 +3,6 @@
 	check_incapacitated = FALSE
 	gags_target = TRUE
 
-/datum/sex_action/facesitting/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Попа. Сесть на голову."
-
 /datum/sex_action/facesitting/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

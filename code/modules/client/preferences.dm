@@ -212,12 +212,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	real_name = pref_species.random_name(gender,1)
 	ResetJobs()
 	if(user)
-		if(pref_species.desc)
-			to_chat(user, "[pref_species.desc]")
-		if(pref_species.expanded_desc)
-			if(user.client.prefs.be_russian)
-				to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Читать ещё</a>")
-			else
+		if(user.client.prefs.be_russian)
+			if(pref_species.ru_desc)
+				to_chat(user, "[pref_species.ru_desc]")
+			if(pref_species.ru_expanded_desc)
+				to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.ru_expanded_desc]'>Читать ещё</a>")
+		else
+			if(pref_species.desc)
+				to_chat(user, "[pref_species.desc]")
+			if(pref_species.expanded_desc)
 				to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Read More</a>")
 		if(user.client.prefs.be_russian)
 			to_chat(user, "<font color='red'>СБРОСИТЬ</font>")
@@ -260,7 +263,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/used_title
 	switch(current_tab)
 		if (0) // Character Settings#
-			used_title = "Character Sheet"
+			if(usr?.client?.prefs?.be_russian)
+				used_title = "Лист Персонажа"
+			else
+				used_title = "Character Sheet"
 
 			// Top-level menu table
 			dat += "<table style='width: 100%; line-height: 20px;'>"
@@ -350,7 +356,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<BR>"
 			if(user.client.prefs.be_russian)
-				dat += "<b>Раса:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+				dat += "<b>Раса:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.ru_name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 			else
 				dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 //			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
@@ -483,9 +489,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 
-				dat += "<b>Mutant Color #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
-				dat += "<b>Mutant Color #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
-				dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
+				if(user.client.prefs.be_russian)
+					dat += "<b>Цвет Тела #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Изменить</a><BR>"
+					dat += "<b>Цвет Тела #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Изменить</a><BR>"
+					dat += "<b>Цвет Тела #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Изменить</a><BR>"
+				else
+					dat += "<b>Mutant Color #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
+					dat += "<b>Mutant Color #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
+					dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
 
 
 			if(user.client.prefs.be_russian)
@@ -939,8 +950,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			HTML += "<tr bgcolor='#000000'><td width='60%' align='right'>"
 			var/rank = job.title
 			var/used_name = "[job.title]"
+			var/used_tutorial = job.tutorial
+			if(user.client.prefs.be_russian && job.ru_title)
+				used_name = job.ru_title
+				used_tutorial = job.ru_tutorial
 			if(gender == FEMALE && job.f_title)
-				used_name = "[job.f_title]"
+				if(user.client.prefs.be_russian)
+					used_name = "[job.ru_f_title]"
+				else
+					used_name = "[job.f_title]"
 			lastJob = job
 			if(is_role_banned(user.ckey, job.title))
 				HTML += "[used_name]</td> <td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
@@ -1013,7 +1031,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 </style>
 
 <div class="tutorialhover"><font>[used_name]</font>
-<span class="tutorial">[job.tutorial]<br>
+<span class="tutorial">[used_tutorial]<br>
 Slots: [job.spawn_positions]</span>
 </div>
 
@@ -1551,9 +1569,9 @@ Slots: [job.spawn_positions]</span>
 					if(faith_input)
 						var/datum/faith/faith = faiths_named[faith_input]
 						if(usr?.client?.prefs?.be_russian)
-							to_chat(user, "<font color='purple'>Вера: [faith.name]</font>")
-							to_chat(user, "<font color='purple'>История: [faith.desc]</font>")
-							to_chat(user, "<font color='purple'>Верователи: [faith.worshippers]</font>")
+							to_chat(user, "<font color='purple'>Вера: [faith.ru_name]</font>")
+							to_chat(user, "<font color='purple'>История: [faith.ru_desc]</font>")
+							to_chat(user, "<font color='purple'>Верователи: [faith.ru_worshippers]</font>")
 						else
 							to_chat(user, "<font color='purple'>Faith: [faith.name]</font>")
 							to_chat(user, "<font color='purple'>Background: [faith.desc]</font>")
@@ -1572,10 +1590,10 @@ Slots: [job.spawn_positions]</span>
 					if(god_input)
 						selected_patron = patrons_named[god_input]
 						if(usr?.client?.prefs?.be_russian)
-							to_chat(user, "<font color='purple'>Бог-Покровитель: [selected_patron]</font>")
-							to_chat(user, "<font color='purple'>Домен: [selected_patron.domain]</font>")
-							to_chat(user, "<font color='purple'>История: [selected_patron.desc]</font>")
-							to_chat(user, "<font color='purple'>Верователи: [selected_patron.worshippers]</font>")
+							to_chat(user, "<font color='purple'>Бог-Покровитель: [selected_patron.ru_name]</font>")
+							to_chat(user, "<font color='purple'>Домен: [selected_patron.ru_domain]</font>")
+							to_chat(user, "<font color='purple'>История: [selected_patron.ru_desc]</font>")
+							to_chat(user, "<font color='purple'>Верователи: [selected_patron.ru_worshippers]</font>")
 						else
 							to_chat(user, "<font color='purple'>Patron: [selected_patron]</font>")
 							to_chat(user, "<font color='purple'>Domain: [selected_patron.domain]</font>")
@@ -1676,12 +1694,16 @@ Slots: [job.spawn_positions]</span>
 								continue
 						else
 							continue
-						crap += bla
+						var/display_name = bla.name
+						if(user.client?.prefs?.be_russian && bla.ru_name)
+							display_name = bla.ru_name
+						crap[display_name] = bla
 
 					var/result = input(user, "Select a race", "Roguetown") as null|anything in crap
 
 					if(result)
-						set_new_race(result, user)
+						var/datum/species/selected_species = crap[result]
+						set_new_race(selected_species, user)
 
 				if("update_mutant_colors")
 					update_mutant_colors = !update_mutant_colors

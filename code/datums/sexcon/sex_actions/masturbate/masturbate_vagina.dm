@@ -1,11 +1,6 @@
 /datum/sex_action/masturbate_vagina
 	name = "Stroke Clit"
 
-/datum/sex_action/masturbate_vagina/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Рука. Поиграться со своей вагиной."
-
 /datum/sex_action/masturbate_vagina/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)
 		return FALSE

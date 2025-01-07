@@ -4,11 +4,6 @@
 	stamina_cost = 1.0
 	gags_target = TRUE
 
-/datum/sex_action/force_rimming/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Лицо. Заставить вылизать задницу."
-
 /datum/sex_action/force_rimming/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

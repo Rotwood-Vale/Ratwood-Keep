@@ -1,11 +1,6 @@
 /datum/sex_action/toy_anal
 	name = "Pleasure butt with toy"
 
-/datum/sex_action/toy_anal/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Попа (На себе). Использовать игрушку."
-
 /datum/sex_action/toy_anal/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)
 		return FALSE

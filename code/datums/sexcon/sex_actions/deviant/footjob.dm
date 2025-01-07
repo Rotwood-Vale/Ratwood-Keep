@@ -3,11 +3,6 @@
 	check_same_tile = FALSE
 	check_incapacitated = FALSE
 
-/datum/sex_action/footjob/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Член. Подрочить ногами."
-
 /datum/sex_action/footjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

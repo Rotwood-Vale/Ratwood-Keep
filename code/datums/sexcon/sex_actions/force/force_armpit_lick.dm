@@ -4,11 +4,6 @@
 	require_grab = TRUE
 	stamina_cost = 1.0
 
-/datum/sex_action/force_armpit_lick/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Язык. Заставить вылизать подмышку."
-
 /datum/sex_action/force_armpit_lick/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

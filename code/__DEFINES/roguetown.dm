@@ -48,7 +48,8 @@
 	/datum/species/kobold
 
 #define RACES_VERY_SHUNNED \
-	/datum/species/halforc
+	/datum/species/halforc,\
+	/datum/species/goblinp
 
 #define RACES_GOBLIN \
 	/datum/species/goblinp

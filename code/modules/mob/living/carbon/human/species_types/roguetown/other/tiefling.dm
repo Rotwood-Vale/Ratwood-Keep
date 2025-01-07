@@ -6,7 +6,7 @@
 	id = "tiefling"
 	desc = "<b>Tiefling</b><br>\
 	Tieflings, also known as Infernal-Spawn by the Dwarves, are a relatively new species in Grimmoria. \
-  	Having shown up sometime within the past two centuries in relatively great numbers, it is understood that they lack any cultural identity \
+	Having shown up sometime within the past two centuries in relatively great numbers, it is understood that they lack any cultural identity \
     as many seem to simply integrate within whatever society they find themselves born into. \
     The unholy origins of Tieflings are well-established; it is known that many favor the Inhumen under Baotha. \
     Many have claimed that they are the spawn of a succubus or incubus of Baotha laying with a mortal, \

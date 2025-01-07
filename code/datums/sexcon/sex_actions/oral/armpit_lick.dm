@@ -3,11 +3,6 @@
 	check_same_tile = FALSE
 	check_incapacitated = FALSE
 
-/datum/sex_action/armpit_lick/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Язык. Вылизать подмышку."
-
 /datum/sex_action/armpit_lick/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

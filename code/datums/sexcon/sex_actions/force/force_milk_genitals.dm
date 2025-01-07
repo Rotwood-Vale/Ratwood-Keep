@@ -2,11 +2,6 @@
 	name = "Forcibly milk cock"
 	check_same_tile = FALSE
 
-/datum/sex_action/force_milk_genitals/New()
-	. = ..()
-	if(usr?.client?.prefs?.be_russian)
-		name = "Член. Подрочить в контейнер."
-
 /datum/sex_action/force_milk_genitals/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return FALSE

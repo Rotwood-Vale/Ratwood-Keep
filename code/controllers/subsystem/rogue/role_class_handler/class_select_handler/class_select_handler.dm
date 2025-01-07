@@ -314,7 +314,10 @@
 		if(locvar_check in SSrole_class_handler.sorted_class_categories[CTAG_CHALLENGE])
 			plus_power = 0
 			cur_picked_class = locvar_check
-			class_select_slop()
+			if(usr?.client?.prefs?.be_russian)
+				ru_class_select_slop()
+			else
+				class_select_slop()
 			return
 
 		// Safety check. Make sure the thing that got rammed into the href is actually in the rolled list
@@ -322,7 +325,10 @@
 		if(locvar_check in rolled_classes) 
 			plus_power = rolled_classes[locvar_check]	// Get the plus power too
 			cur_picked_class = locvar_check
-			class_select_slop()
+			if(usr?.client?.prefs?.be_russian)
+				ru_class_select_slop()
+			else
+				class_select_slop()
 		return
 
 	if(href_list["yes_to_class_select"]) // Send the data over and wrap it up.
@@ -342,7 +348,10 @@
 		if(locvar_check in special_session_queue)
 			cur_picked_class = locvar_check
 			special_selected = TRUE
-			class_select_slop()
+			if(usr?.client?.prefs?.be_russian)
+				ru_class_select_slop()
+			else
+				class_select_slop()
 		return
 
 	if(href_list["show_challenge_class"])
