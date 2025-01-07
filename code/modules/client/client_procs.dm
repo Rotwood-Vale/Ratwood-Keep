@@ -1130,9 +1130,10 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		return
 	if(usr?.client?.prefs?.be_russian)
 		if(alert(src,"Был ли в этом раунде персонаж, действия которого вы хотели бы оценить?", "Оценка", "ДА", "НЕТ") != "ДА")
+			return
 	else
 		if(alert(src,"Was there a character in this round whose actions you would like to evaluate?", "Commend", "YES", "NO") != "YES")
-		return
+			return
 	var/list/selections = GLOB.character_ckey_list.Copy()
 	if(!selections.len)
 		return
