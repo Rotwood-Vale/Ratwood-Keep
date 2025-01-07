@@ -203,3 +203,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/feather
 	name = "Feather"
 	path = /obj/item/natural/feather
+
+/datum/loadout_item/collar
+	name = "Collar"
+	path = /obj/item/clothing/neck/roguetown/collar
+
+/datum/loadout_item/bell_collar
+	name = "Bell Collar"
+	path = /obj/item/clothing/neck/roguetown/collar/bell_collar

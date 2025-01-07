@@ -1086,6 +1086,22 @@
 	name = "Ye Old McSqueeb"
 	icon_state = "mcsqueeb"	
 
+/datum/sprite_accessory/hair/head/highlander
+	name = "Highlander"
+	icon_state = "highlander"	
+
+/datum/sprite_accessory/hair/head/royalcurls
+	name = "Royal Curls"
+	icon_state = "royalcurls"	
+
+/datum/sprite_accessory/hair/head/dreadlocksmessy
+	name = "Dreadlocks Messy"
+	icon_state = "dreadlong"	
+
+/datum/sprite_accessory/hair/head/suave
+	name = "Suave"
+	icon_state = "suave"	
+
 /datum/sprite_accessory/hair/head/vulpkian
 	abstract_type = /datum/sprite_accessory/hair/head/vulpkian
 	icon = 'icons/mob/sprite_accessory/hair/vulpkian_hair.dmi'

@@ -248,6 +248,10 @@
 	sewrepair = TRUE
 	flags_inv = HIDEEARS
 
+/obj/item/clothing/head/roguetown/jester/Initialize()
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_JINGLE_BELLS, 2)
+
 /obj/item/clothing/head/roguetown/strawhat
 	name = "straw hat"
 	desc = "Keeps the sun off your head while toiling the fields."
@@ -396,6 +400,13 @@
 	sewrepair = TRUE
 	//dropshrink = 0.75
 	dynamic_hair_suffix = null
+
+/obj/item/clothing/head/roguetown/inqhat
+	name = "inquisitorial hat"
+	desc = "To keep ones vision away from the heavens, and focused on the sin beneath the soil."
+	icon_state = "inqhat"
+	item_state = "inqhat"
+	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/headband/red
 	color = CLOTHING_RED
@@ -552,16 +563,6 @@
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
 	armor = list("blunt" = 80, "slash" = 90, "piercing" = 100, "stab" = 70, "fire" = 0, "acid" = 0)
-	
-/obj/item/clothing/head/roguetown/helmet/psydonbarbute
-	name = "psydonian barbute"
-	desc = "A barbute styled with Psydonian Imagery."
-	icon_state = "psydonbarbute"
-	item_state = "psydonbarbute"
-	block2add = FOV_BEHIND
-	flags_inv = HIDEEARS|HIDEFACE
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	body_parts_covered = FULL_HEAD
 
 /obj/item/clothing/head/roguetown/helmet/kettle/attackby(obj/item/W, mob/living/user, params)
 	..()
@@ -940,9 +941,16 @@
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
 
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute
+	name = "psydonian barbute"
+	desc = "A ceremonial barbute, masterfully forged to represent Psydon's divine authority. The Order of Saint Malum's artisans have chiseled this pronged visage into more statues than you could possibly imagine."
+	icon_state = "psydonbarbute"
+	item_state = "psydonbarbute"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
-	name ="otavan armet"
-	desc = "Headwear commonly worn by Templars in service to the Inquisition of Otava. PSYDON Endures."
+	name = "psydonian armet"
+	desc = "An ornate helmet, whose visor has been bound shut with blacksteel chains. The Order of Saint Eora often decorates these armets with flowers - not only as a lucky charm gifted to them by fair maidens and family, but also as a vibrant reminder that 'happiness has to be fought for.'" 
 	icon_state = "psydonarmet"
 	item_state = "psydonarmet"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
@@ -977,6 +985,14 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 	name = "noc helmet"
@@ -1453,12 +1469,12 @@
 
 /obj/item/clothing/head/roguetown/roguehood/psydon
 	name = "psydonian hood"
-	desc = "A hood worn by those who favor Psydon. Forever enduring!"
+	desc = "A hood worn by Psydon's disciples, oft-worn in conjunction with its matching tabard."
 	icon_state = "psydonhood"
 	item_state = "psydonhood"
 	color = null
 	body_parts_covered = NECK
-	slot_flags = ITEM_SLOT_HEAD
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	adjustable = CAN_CADJUST

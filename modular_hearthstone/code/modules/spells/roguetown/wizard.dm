@@ -965,7 +965,7 @@
 
 /obj/effect/proc_holder/spell/invoked/guidance
 	name = "Guidance"
-	desc = "Makes one's hand travel true, blessing them with arcyne luck in combat."
+	desc = "Makes one's hand travel true, blessing them with arcyne luck in combat. (+10% chance to hit with melee, +10% chance to defend from melee)"
 	cost = 2
 	xp_gain = TRUE
 	releasedrain = 60
@@ -1153,7 +1153,7 @@
 	armor_penetration = 10
 	woundclass = BCLASS_SMASH
 	nodamage = FALSE
-	flag = "bullet"
+	flag = "magic"
 	hitsound = 'sound/combat/hits/blunt/shovel_hit2.ogg'
 	speed = 1
 
@@ -1210,7 +1210,7 @@
 				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
 				return 
 
-			if(L.STASTR <= 13)
+			if(L.STASTR <= 11)
 				L.adjustBruteLoss(30)
 				L.Knockdown(5)
 				to_chat(L, "<span class='userdanger'>You're magically weighed down, losing your footing!</span>")
@@ -1244,7 +1244,8 @@
 	active = FALSE
 	releasedrain = 7
 	chargedrain = 0
-	chargetime = 0
+	chargetime = 20
+	charge_max = 15 SECONDS
 	warnie = "spellwarning"
 	overlay_state = "fetch"
 	no_early_release = TRUE

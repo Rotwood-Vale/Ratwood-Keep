@@ -39,7 +39,7 @@
 	},
 /area/rogue/outdoors/woods)
 "ak" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck{
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck{
 	tame = 1
 	},
 /turf/open/floor/rogue/dirt/road,
@@ -164,7 +164,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "es" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck,
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
 "fA" = (

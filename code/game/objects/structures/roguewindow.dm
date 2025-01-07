@@ -167,6 +167,9 @@
 	if(brokenstate)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
+	if(HAS_TRAIT(user, TRAIT_BASHDOORS))
+		src.take_damage(15)
+		return
 	src.visible_message(span_info("[user] knocks on [src]."))
 	add_fingerprint(user)
 	playsound(src, 'sound/misc/glassknock.ogg', 100)
@@ -175,6 +178,7 @@
 	if(!brokenstate)
 		attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 		new /obj/item/natural/glass/shard (get_turf(src))
+		new /obj/effect/decal/cleanable/glass(get_turf(src))
 		climbable = TRUE
 		brokenstate = TRUE
 		opacity = FALSE

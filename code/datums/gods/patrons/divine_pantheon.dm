@@ -52,7 +52,7 @@
 	domain = "God of the Ocean, Storms and the Tide"
 	desc = "The strongest of the Ten; when awakened, the world flooded for a thousand daes and a thousand nights before he was put to slumber. Resting fitfully did Dendor split from his skull like a gaping wound. Communes rarely with his followers, only offering glimpses in dreams. Gifted primordial Man water. "
 	worshippers = "Men of the Sea, Primitive Aquatics"
-	mob_traits = list(TRAIT_ABYSSOR_SWIM)
+	mob_traits = list(TRAIT_ABYSSOR_SWIM, TRAIT_SEA_DRINKER)
 	t1 = /obj/effect/proc_holder/spell/invoked/abyssor_bends
 	t2 = /obj/effect/proc_holder/spell/invoked/abyssheal
 	t3 = /obj/effect/proc_holder/spell/invoked/call_mossback
@@ -131,7 +131,11 @@
 	domain = "God of Fire, Destruction and Rebirth"
 	desc = "Opinionless god of the crafts. He teaches that great works for killing or saving are great works, either way. The well-oiled guillotine and the well-sharpened axe are tools, and there is no good and evil to their craft."
 	worshippers = "Smiths, Miners, Engineers"
-	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
+	mob_traits = list(TRAIT_FORGEBLESSED)
+	t1 = /obj/effect/proc_holder/spell/invoked/vigorousexchange
+	t2 = /obj/effect/proc_holder/spell/invoked/heatmetal
+	t3 = /obj/effect/proc_holder/spell/invoked/hammerfall
+	t4 = /obj/effect/proc_holder/spell/invoked/craftercovenant
 	confess_lines = list(
 		"MALUM IS MY MUSE!",
 		"TRUE VALUE IS IN THE TOIL!",

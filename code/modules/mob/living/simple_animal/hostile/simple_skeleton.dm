@@ -169,4 +169,3 @@
 	icon = 'modular_hearthstone/icons/mob/skeletons.dmi'
 	icon_state = "skull"
 	w_class = WEIGHT_CLASS_SMALL
-

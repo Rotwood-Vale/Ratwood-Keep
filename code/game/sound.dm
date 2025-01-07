@@ -380,9 +380,29 @@
 				soundin = pick('sound/combat/wooshes/blunt/wooshlarge (1).ogg','sound/combat/wooshes/blunt/wooshlarge (2).ogg','sound/combat/wooshes/blunt/wooshlarge (3).ogg')
 			if("punchwoosh")
 				soundin = pick('sound/combat/wooshes/punch/punchwoosh (1).ogg','sound/combat/wooshes/punch/punchwoosh (2).ogg','sound/combat/wooshes/punch/punchwoosh (3).ogg')
-
-
-
-
-
+			if(SFX_CHAIN_STEP)
+				soundin = pick(
+							'sound/foley/footsteps/armor/chain (1).ogg',
+							'sound/foley/footsteps/armor/chain (2).ogg',
+							'sound/foley/footsteps/armor/chain (3).ogg',
+							)
+			if(SFX_PLATE_STEP)
+				soundin = pick(
+							'sound/foley/footsteps/armor/plate (1).ogg',
+							'sound/foley/footsteps/armor/plate (2).ogg',
+							'sound/foley/footsteps/armor/plate (3).ogg',
+							)
+			if(SFX_PLATE_COAT_STEP)
+				soundin = pick(
+							'sound/foley/footsteps/armor/coatplates (1).ogg',
+							'sound/foley/footsteps/armor/coatplates (2).ogg',
+							'sound/foley/footsteps/armor/coatplates (3).ogg',
+							)
+			if(SFX_JINGLE_BELLS)
+				soundin = pick(
+							'sound/items/jinglebell1.ogg',
+							'sound/items/jinglebell2.ogg',
+							'sound/items/jinglebell3.ogg',
+							'sound/items/jinglebell4.ogg',
+							)
 	return soundin

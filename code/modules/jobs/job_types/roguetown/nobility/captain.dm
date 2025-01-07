@@ -34,6 +34,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	cloak = /obj/item/clothing/cloak/stabard/guardhood
+	id = /obj/item/scomstone/garrison
 
 /datum/job/roguetown/captain/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -149,7 +150,7 @@
 	tutorial = "As the first among finest you ride at the speartip of cavalier forces, barreling saiga and blades through \
 	the soft flanks of enemy formations."
 	outfit = /datum/outfit/job/roguetown/captain/cavalry
-	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
+	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled
 	category_tags = list(CTAG_CAPTAIN)
 
 /datum/outfit/job/roguetown/captain/cavalry/pre_equip(mob/living/carbon/human/H)

@@ -336,7 +336,7 @@
 			if(prob(20))
 				r_hand = /obj/item/rogueweapon/flail
 				l_hand = /obj/item/rogueweapon/shield/wood
-
+        
 //////////////////   INVADER ZIM	//////////////////
 
 /obj/structure/gob_portal
