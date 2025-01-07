@@ -1,7 +1,8 @@
 /datum/job/roguetown/puritan
 	title = "Inquisitor"
 	flag = PURITAN
-	department_flag = CHURCHMEN
+	department_flag = INQUISITION
+	selection_color = JCOLOR_INQUISITION
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -11,8 +12,8 @@
 		/datum/patron/psydon
 	)
 	tutorial = "Созданная в связи с возрождением культа Псайдона,\
-	Инквизиция отправила вас в Рокхилл с целью искоренить богохульников и проклятых в этих землях. \
-	Руководствуясь религиозным рвением и паранойей, вы надеетесь, что ваш непростой союз с Церковью Десяти устоит."
+    Инквизиция отправила вас в Рокхилл с целью искоренить богохульников и проклятых в этих землях. \
+    Руководствуясь религиозным рвением и паранойей, вы надеетесь, что ваш непростой союз с Церковью Десяти устоит."
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/puritan

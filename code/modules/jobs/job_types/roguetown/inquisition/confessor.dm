@@ -5,7 +5,8 @@ Please do not confuse the two.
 /datum/job/roguetown/shepherd
 	title = "Confessor"
 	flag = CONFESSOR
-	department_flag = CHURCHMEN
+	department_flag = INQUISITION
+	selection_color = JCOLOR_INQUISITION
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
@@ -16,8 +17,8 @@ Please do not confuse the two.
 	)
 
 	tutorial = "Исповедники - теневые агенты церкви, нанятые для слежки за населением и поддержания его нравственности. \
-	Самые фанатичные представители духовенства, их главная задача - помогать местному инквизитору в его работе. \
-	Будь то выбивание признаний в грехах или охота на ночных зверей и культистов, которые прячутся у всех на виду."
+    Самые фанатичные представители духовенства, их главная задача - помогать местному инквизитору в его работе. \
+    Будь то выбивание признаний в грехах или охота на ночных зверей и культистов, которые прячутся у всех на виду."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
 	whitelist_req = TRUE
