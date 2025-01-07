@@ -49,7 +49,6 @@
 
 	// Gives shorter weapons accuracy buffs and larger, more unwieldy weapons an accuracy debuff. Decapitating someone in the middle of combat in one clean swipe is not easy.
 	if(I)
-	{
 		switch(I.wlength)
 			if(WLENGTH_SHORT) // Daggers and such, easy to control.
 				chance2hit += 10
@@ -59,7 +58,6 @@
 				chance2hit += 0
 			if(WLENGTH_GREAT) // Long/Large weapons, harder to control.
 				chance2hit -= 5
-	}
 
 	// Stabbing is much more precise generally speaking
 	// Cutting is less precise but still more precise than blunt weapons
@@ -91,19 +89,12 @@
 	// First roll, we roll to hit and take a penalty from the limb we're trying to target. The penalty is intended to be offset by the character's skills, perception.
 	// You'll likely need Aimed Intent if you wanna hit those small spots like the eyes!
 	if(prob(chance2hit + cumulative_penalty))
-	{
 		if(user.client && user.client.prefs && user.client.prefs.showrolls)
-		{
 			// Tasty, tasty feedback
-			var/total_val_success = chance2hit
-			var/displayed_val_success = clamp(total_val_success, 0, 100)
-			var/msg_success = "Successful hit! Chance To Hit Roll=[chance2hit], Targeted Zone Penalty=[acc_zone_penalties[zone] || 0], Result=[displayed_val_success] (Unclamped: [total_val_success])"
+			var/msg_success = "Successful hit! There was a [chance2hit]% chance to hit!"
 			to_chat(user, "<span style='color: green;'>[msg_success]</span>")
-		}
 		return zone
-	}
 	else
-	{
 		// Alright, "cumulative penalty" is pretty self explanatory, so I'll be quick. When you make an attack on a small zone like the eyes, you get a penalty, in the previous version,
 		// You would get basically what amounts to a reroll. So if you target the top of the skull and miss, you get to roll again to hit the head. I thought that's dumb.
 		// So now, instead of the version where we skip the head and go straight to the CHEST, you get to reroll the zone but instead you get the penalties from both zones!
@@ -113,41 +104,24 @@
 		var/secondary_zone = check_zone(zone)
 		// First Accuracy Fail Roll
 		if(prob(chance2hit + cumulative_penalty))
-		{
 			if(secondary_zone == zone)
-			{
 				return zone
-			}
 			else
-			{
 				if(user.client && user.client.prefs && user.client.prefs.showrolls)
-				{
 					// Debugging good.
-					var/total_val = chance2hit + cumulative_penalty
-					var/displayed_val = clamp(total_val, 0, 100)
-					var/msg = "Accuracy fail! Chance To Hit Roll=[chance2hit], Cumulative Penalty=[cumulative_penalty], Result=[displayed_val] (Unclamped: [total_val])"
+					var/msg = "Accuracy fail! There was a [chance2hit]% chance to hit!"
 					to_chat(user, span_warning(msg))
-				}
 				return secondary_zone
-			}
-		}
 		else
-		{
 			// Final result after failing miserably
 			cumulative_penalty += (acc_zone_penalties[secondary_zone] || 0)
 
 			if(user.client && user.client.prefs && user.client.prefs.showrolls)
-			{
 				// This is just for seeing how awfully you failed. -70 commonly puts you at 0 for your roll. Maybe aim for something easier to hit, Mr.Novice Swordsmanship...
-				var/total_val_2 = chance2hit + cumulative_penalty
-				var/displayed_val_2 = clamp(total_val_2, 0, 100)
-				var/msg2 = "Double accuracy fail! Chance To Hit Roll=[chance2hit], Cumulative Penalty=[cumulative_penalty], Result=[displayed_val_2] (Unclamped: [total_val_2])"
+				var/msg2 = "Double accuracy fail! There was a [chance2hit]% chance to hit!"
 				to_chat(user, span_warning(msg2))
-			}
 
 			return BODY_ZONE_CHEST
-		}
-	}
 
 /mob/proc/get_generic_parry_drain()
 	return 30
