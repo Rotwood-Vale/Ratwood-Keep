@@ -35,7 +35,7 @@
 		BODY_ZONE_PRECISE_R_FOOT = -30, // See above above above
 
 		// General Body Zones
-		BODY_ZONE_HEAD = -20, // Head is a comparatively large combat compared to most of the precision zones, but still mobile.
+		BODY_ZONE_HEAD = -20, // Head is a comparatively large target compared to most of the precision zones, but still mobile.
 		BODY_ZONE_CHEST = 0,
 		BODY_ZONE_L_ARM = -10, // Larger target but similarly fast and unpredictable like the attaches hands and feet.
 		BODY_ZONE_R_ARM = -10, // See above
@@ -60,6 +60,19 @@
 			if(WLENGTH_GREAT) // Long/Large weapons, harder to control.
 				chance2hit -= 5
 	}
+
+	// Stabbing is much more precise generally speaking
+	// Cutting is less precise but still more precise than blunt weapons
+	// When using a blunt weapon, you utilize the inertia of the swing, which makes it harder to redirect your attack on a moving/dodging target
+	if(used_intent)
+		switch(used_intent.blade_class)
+			if(BCLASS_STAB)
+				chance2hit += 8 // Stabbing is precise
+			if(BCLASS_CUT)
+				chance2hit += 4 // Cutting is more precise than a big inertia based swing
+			if(BCLASS_BLUNT)
+				chance2hit -= 4 // Once again, most of the force with blunt weapons comes from the swing, if your target moves, it's harder to adjust.
+								// I might eventually include something like this if I end up making a dodge/parry rework/overhaul for that system.
 
 	// Reworks the PER bonus that I felt either wasn't particularly impactful or ended up too overscaled with this system.
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
