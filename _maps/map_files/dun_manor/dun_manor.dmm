@@ -1904,6 +1904,12 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
+"bzw" = (
+/obj/structure/roguewindow,
+/turf/closed/wall/mineral/rogue/wooddark/end{
+	dir = 4
+	},
+/area/rogue/indoors)
 "bzx" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -45567,7 +45573,7 @@ obx
 kIz
 mAd
 nsn
-kuN
+bzw
 obx
 obx
 pBY
