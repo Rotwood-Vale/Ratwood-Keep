@@ -58,6 +58,11 @@
 		return "Недостаточно параметров. Использование: !pq <ckey> <amount> <reason>"
 	
 	var/target_ckey = ckey(paramslist[1])
+	message_admins("PQ: Попытка изменить PQ для '[target_ckey]' на [amount] от [sender.friendly_name]")
+	
+	if(!target_ckey)
+		return "Некорректный ckey"
+	
 	var/amount = text2num(paramslist[2])
 	var/reason = length(paramslist) > 2 ? jointext(paramslist.Copy(3), " ") : "Не указана"
 	
@@ -65,7 +70,10 @@
 		return "Некорректное количество очков"
 
 	// Используем функцию adjust_playerquality вместо прямого изменения
-	if(!adjust_playerquality(target_ckey, amount, sender.friendly_name, reason))
-		return "Игрок [target_ckey] не найден"
+	var/result = adjust_playerquality(target_ckey, amount, sender.friendly_name, reason)
+	if(!result)
+		message_admins("PQ: Не удалось найти игрока '[target_ckey]' в базе данных")
+		return "Игрок [target_ckey] не найден в базе данных. Убедитесь, что игрок заходил на сервер хотя бы раз"
 	
+	message_admins("PQ: Успешно изменен PQ для '[target_ckey]'")
 	return "PQ игрока [target_ckey] изменен на [amount] ([reason])"
