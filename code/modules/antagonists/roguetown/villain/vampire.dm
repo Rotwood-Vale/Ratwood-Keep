@@ -61,12 +61,18 @@
 		ADD_TRAIT(owner.current, TRAIT_NOBLE, TRAIT_GENERIC)
 	owner.special_role = name
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, TRAIT_GENERIC)
+	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, TRAIT_GENERIC)
+	owner.current.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+	/datum/rmb_intent/aimed,\
+	/datum/rmb_intent/strong,\
+	/datum/rmb_intent/riposte,\
+	/datum/rmb_intent/weak)
 	owner.current.cmode_music = 'sound/music/combat_vamp2.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -95,6 +101,7 @@
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("I am no longer a [job_rank]!"))
 	owner.special_role = null
+	owner.current.possible_rmb_intents = initial(owner.current.possible_rmb_intents)
 	if(!isnull(batform))
 		owner.current.RemoveSpell(batform)
 		QDEL_NULL(batform)

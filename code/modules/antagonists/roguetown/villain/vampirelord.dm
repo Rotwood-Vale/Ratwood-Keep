@@ -61,6 +61,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.special_role = name
 	//ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
@@ -74,6 +75,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	for(var/obj/structure/fluff/traveltile/vampire/tile in GLOB.traveltiles)
 		tile.show_travel_tile(owner.current)
 	ADD_TRAIT(owner.current, TRAIT_VAMP_DREAMS, "[type]")
+	owner.current.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+	/datum/rmb_intent/aimed,\
+	/datum/rmb_intent/strong,\
+	/datum/rmb_intent/riposte,\
+	/datum/rmb_intent/weak)
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -272,6 +278,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("I am no longer a [job_rank]!"))
 	owner.special_role = null
+	owner.current.possible_rmb_intents = initial(owner.current.possible_rmb_intents)
 	if(!isnull(batform))
 		owner.current.RemoveSpell(batform)
 		QDEL_NULL(batform)
@@ -389,7 +396,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			if(disguised)
 				to_chat(H, span_warning("My disguise fails!"))
 				H.vampire_undisguise(src)
-	handle_vitae(-1)
+	if(disguised) // Being diguised drains vitae, other wise there is no vitae drain, allows vampires to relax and RP in the mansion.
+		handle_vitae(-1)
 
 /datum/antagonist/vampirelord/proc/handle_vitae(change, tribute)
 	var/sanitized = clamp(vitae, 0, VAMP_MAX_VITAE) 
@@ -1480,22 +1488,20 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		var/datum/antagonist/vampirelord/VD = vampire.mind.has_antag_datum(/datum/antagonist/vampirelord)
 		var/bloodskill = user.mind.get_skill_level(/datum/skill/magic/blood)
 		// How much the vampire will heal by.
-		var/bloodroll = roll("[bloodskill]d8") + (vampire.STACON * 1.5) // Spawn heals less.
+		var/bloodroll = (roll("[bloodskill]d8") + (vampire.STACON * 1.5)) * 2 // Spawn heals less.
 		if(VD) // Vampire lords heal more than regular vampires.
 			if(VD.disguised)
 				to_chat(vampire, span_warning("My curse is hidden."))
 				revert_cast()
 				return
-			bloodroll = roll("[bloodskill]d10") + (vampire.STACON * 2) // VL heals more. D8 -> D10. CON * 1.5 -> 2
-		vampire.heal_overall_damage(bloodroll * 2, bloodroll * 2)
-		vampire.adjustToxLoss(-bloodroll * 8) // Purges toxins.
+			bloodroll = (roll("[bloodskill]d10") + (vampire.STACON * 2)) * 3 // VL heals more. D8 -> D10. CON * 1.5 -> 2 (Multiplier 2 -> 3)
+		vampire.heal_overall_damage(bloodroll, bloodroll)
+		vampire.adjustToxLoss(-bloodroll * 10) // Purges toxins.
 		vampire.adjustOxyLoss(-bloodroll)
-		vampire.adjustOrganLoss(-bloodroll / 2)
-		vampire.heal_wounds(bloodroll * 4)
+		vampire.adjustOrganLoss(-bloodroll)
+		vampire.heal_wounds(bloodroll * 20)
 		vampire.blood_volume += BLOOD_VOLUME_SURVIVE
 		vampire.update_damage_overlays()
-		vampire.rogstam_add(-(vampire.maxrogstam / 2))
-		vampire.rogfat_add(vampire.maxrogfat / 2)
 		to_chat(vampire, span_greentext("! REJUVENATE AMT: [bloodroll] !"))
 		vampire.visible_message(span_danger("[vampire] is surrounded by an wreath of shadows for a moment as their wounds mend!"))
 		vampire.playsound_local(get_turf(vampire), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
