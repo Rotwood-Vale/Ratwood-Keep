@@ -72,6 +72,10 @@
 		var/mob/living/carbon/human/H = holder
 		L[DNA_SKIN_TONE_BLOCK] = H.skin_tone
 		L[DNA_EYE_COLOR_BLOCK] = H.eye_color
+		L[DNA_BARK_SOUND_BLOCK] = construct_block(GLOB.bark_list.Find(H.vocal_bark_id), GLOB.bark_list.len)
+		L[DNA_BARK_SPEED_BLOCK] = construct_block(H.vocal_speed * 4, 16)
+		L[DNA_BARK_PITCH_BLOCK] = construct_block(H.vocal_pitch * 30, 48)
+		L[DNA_BARK_VARIANCE_BLOCK] = construct_block(H.vocal_pitch_range * 48, 48)
 
 	for(var/i=1, i<=DNA_UNI_IDENTITY_BLOCKS, i++)
 		if(L[i])
@@ -113,6 +117,14 @@
 					setblock(uni_identity, blocknumber, construct_block(G_FEMALE, 3))
 				else
 					setblock(uni_identity, blocknumber, construct_block(G_PLURAL, 3))
+		if(DNA_BARK_SOUND_BLOCK)
+			setblock(uni_identity, blocknumber, construct_block(GLOB.bark_list.Find(H.vocal_bark_id), GLOB.bark_list.len))
+		if(DNA_BARK_SPEED_BLOCK)
+			setblock(uni_identity, blocknumber, construct_block(H.vocal_speed * 4, 16))
+		if(DNA_BARK_PITCH_BLOCK)
+			setblock(uni_identity, blocknumber, construct_block(H.vocal_pitch * 30, 48))
+		if(DNA_BARK_VARIANCE_BLOCK)
+			setblock(uni_identity, blocknumber, construct_block(H.vocal_pitch_range * 48, 48))
 
 
 /datum/dna/proc/is_same_as(datum/dna/D)
@@ -234,7 +246,7 @@
 
 /mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0)
 	..()
-//	var/structure = dna.uni_identity
+	var/structure = dna.uni_identity
 //	hair_color = getblock(structure, DNA_HAIR_COLOR_BLOCK)
 //	facial_hair_color = getblock(structure, DNA_FACIAL_HAIR_COLOR_BLOCK)
 //	skin_tone = getblock(structure, DNA_SKIN_TONE_BLOCK)
@@ -246,6 +258,10 @@
 		update_hair()
 		if(mutcolor_update)
 			update_body_parts()
+		set_bark(GLOB.bark_list[deconstruct_block(getblock(structure, DNA_BARK_SOUND_BLOCK), GLOB.bark_list.len)])
+		vocal_speed = (deconstruct_block(getblock(structure, DNA_BARK_SPEED_BLOCK), 16) / 4)
+		vocal_pitch = (deconstruct_block(getblock(structure, DNA_BARK_PITCH_BLOCK), 48) / 30)
+		vocal_pitch_range = (deconstruct_block(getblock(structure, DNA_BARK_VARIANCE_BLOCK), 48) / 48)
 
 
 

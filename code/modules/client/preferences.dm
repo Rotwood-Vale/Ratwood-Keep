@@ -429,9 +429,26 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
 				dat += "<BR>"
 			if(user.client.prefs.be_russian)
-				dat += "<b>Основная Рука:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+				dat += "<b>Основная Рука:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a>"
 			else
-				dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+				dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Цвет Голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Изменить</a>"
+			else
+				dat += "<br><b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Тон Голоса: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
+			else
+				dat += "<br><b>Voice Pitch: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Изменить</a>"
+			else
+				dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
+			if(headshot_link != null)
+				if(user.client.prefs.be_russian)
+					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>Показать</a>"
+				else
+					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
 
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
@@ -500,15 +517,19 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					dat += "<b>Mutant Color #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
 					dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
 
-
+			var/datum/bark/B = GLOB.bark_list[bark_id]
 			if(user.client.prefs.be_russian)
-				dat += "<b>Цвет Голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Изменить</a>"
+				dat += "<b>Звук Барка:</b> <a href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "INVALID"]</a>"
+				dat += "<br><b>Скорость Барка:</b> <a href='?_src_=prefs;preference=barkspeed;task=input'>[bark_speed]</a>"
+				dat += "<br><b>Тон Барка:</b> <a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a>"
+				dat += "<br><b>Отклонение Барка:</b> <a href='?_src_=prefs;preference=barkvary;task=input'>[bark_variance]</a>"
+				dat += "<br><a href='?_src_=prefs;preference=barkpreview'>Прослушать Барк</a>"
 			else
-				dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
-			if(user.client.prefs.be_russian)
-				dat += "<br><b>Тон Голоса: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
-			else
-				dat += "<br><b>Voice Pitch: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
+				dat += "<b>Vocal Bark Sound: </b><a href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "INVALID"]</a>"
+				dat += "<br><b>Vocal Bark Speed: </b><a href='?_src_=prefs;preference=barkspeed;task=input'>[bark_speed]</a>"
+				dat += "<br><b>Vocal Bark Pitch: </b><a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a>"
+				dat += "<br><b>Vocal Bark Variance: </b><a href='?_src_=prefs;preference=barkvary;task=input'>[bark_variance]</a>"
+				dat += "<br><a href='?_src_=prefs;preference=barkpreview'>Preview Bark</a>"
 			if(user.client.prefs.be_russian)
 				dat += "<br><b>Акцент:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
 			else
@@ -525,17 +546,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<br><b>Дополнительное Описание:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Изменить</a>"
 			else
 				dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
-
-			if(user.client.prefs.be_russian)
-				dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Изменить</a>"
-			else
-				dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
-			if(headshot_link != null)
-				if(user.client.prefs.be_russian)
-					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>Показать</a>"
-				else
-					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
-
 			if(user.client.prefs.be_russian)
 				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Изменить</a>"
 			else
@@ -1617,6 +1627,43 @@ Slots: [job.spawn_positions]</span>
 							return
 						voice_color = sanitize_hexcolor(new_voice)
 
+				if("barksound")
+					var/list/woof_woof = list()
+					for(var/path in GLOB.bark_list)
+						var/datum/bark/B = GLOB.bark_list[path]
+						if(initial(B.ignore))
+							continue
+						if(initial(B.ckeys_allowed))
+							var/list/allowed = initial(B.ckeys_allowed)
+							if(!allowed.Find(user.client.ckey))
+								continue
+						woof_woof[initial(B.name)] = initial(B.id)
+					var/new_bork = input(user, "Choose your desired vocal bark", "Character Preference") as null|anything in woof_woof
+					if(new_bork)
+						bark_id = woof_woof[new_bork]
+						var/datum/bark/B = GLOB.bark_list[bark_id] //Now we need sanitization to take into account bark-specific min/max values
+						bark_speed = round(clamp(bark_speed, initial(B.minspeed), initial(B.maxspeed)), 1)
+						bark_pitch = clamp(bark_pitch, initial(B.minpitch), initial(B.maxpitch))
+						bark_variance = clamp(bark_variance, initial(B.minvariance), initial(B.maxvariance))
+
+				if("barkspeed")
+					var/datum/bark/B = GLOB.bark_list[bark_id]
+					var/borkset = input(user, "Choose your desired bark speed (Higher is slower, lower is faster). Min: [initial(B.minspeed)]. Max: [initial(B.maxspeed)]", "Character Preference") as null|num
+					if(!isnull(borkset))
+						bark_speed = round(clamp(borkset, initial(B.minspeed), initial(B.maxspeed)), 1)
+
+				if("barkpitch")
+					var/datum/bark/B = GLOB.bark_list[bark_id]
+					var/borkset = input(user, "Choose your desired baseline bark pitch. Min: [initial(B.minpitch)]. Max: [initial(B.maxpitch)]", "Character Preference") as null|num
+					if(!isnull(borkset))
+						bark_pitch = clamp(borkset, initial(B.minpitch), initial(B.maxpitch))
+
+				if("barkvary")
+					var/datum/bark/B = GLOB.bark_list[bark_id]
+					var/borkset = input(user, "Choose your desired baseline bark pitch. Min: [initial(B.minvariance)]. Max: [initial(B.maxvariance)]", "Character Preference") as null|num
+					if(!isnull(borkset))
+						bark_variance = clamp(borkset, initial(B.minvariance), initial(B.maxvariance))
+
 				if("view_headshot")
 					var/list/dat = list("<img src='[headshot_link]' width='250px' height='250px'>")
 					var/datum/browser/popup = new(user, "headshot", "<div align='center'>Headshot</div>", 310, 320)
@@ -2162,6 +2209,23 @@ Slots: [job.spawn_positions]</span>
 					user << browse(null, "window=lobby_window")
 					return
 
+				if("barkpreview")
+					if(SSticker.current_state == GAME_STATE_STARTUP) //Timers don't tick at all during game startup, so let's just give an error message
+						to_chat(user, "<span class='warning'>Bark previews can't play during initialization!</span>")
+						return
+					if(!COOLDOWN_FINISHED(src, bark_previewing))
+						return
+					if(!parent || !parent.mob)
+						return
+					COOLDOWN_START(src, bark_previewing, (5 SECONDS))
+					var/atom/movable/barkbox = new(get_turf(parent.mob))
+					barkbox.set_bark(bark_id)
+					var/total_delay
+					for(var/i in 1 to (round((32 / bark_speed)) + 1))
+						addtimer(CALLBACK(barkbox, TYPE_PROC_REF(/atom/movable, bark), list(parent.mob), 7, 70, BARK_DO_VARY(bark_pitch, bark_variance)), total_delay)
+						total_delay += rand(DS2TICKS(bark_speed/4), DS2TICKS(bark_speed/4) + DS2TICKS(bark_speed/4)) TICKS
+					QDEL_IN(barkbox, total_delay)
+
 				if("save")
 					save_preferences()
 					save_character()
@@ -2290,6 +2354,11 @@ Slots: [job.spawn_positions]</span>
 
 	character.headshot_link = headshot_link
 	character.nudeshot_link = nudeshot_link
+
+	character.set_bark(bark_id)
+	character.vocal_speed = bark_speed
+	character.vocal_pitch = bark_pitch
+	character.vocal_pitch_range = bark_variance
 
 	if(parent)
 		var/list/L = get_player_curses(parent.ckey)

@@ -23,3 +23,7 @@
 	H.update_body()
 	H.update_hair()
 	H.update_body_parts()
+
+	H.set_bark(pick(GLOB.bark_random_list))
+	H.vocal_pitch = BARK_PITCH_RAND(H.gender)
+	H.vocal_pitch_range = BARK_VARIANCE_RAND
