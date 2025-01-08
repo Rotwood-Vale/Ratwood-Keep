@@ -19,11 +19,9 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "1"
 	layer = GASFIRE_LAYER
-	blend_mode = BLEND_ADD
-	light_system = MOVABLE_LIGHT
-	light_range = LIGHT_RANGE_FIRE
-	light_power = 1
+	light_range =  LIGHT_RANGE_FIRE
 	light_color = LIGHT_COLOR_FIRE
+	blend_mode = BLEND_ADD
 
 	var/volume = 125
 	var/temperature = 100+T0C
@@ -140,6 +138,10 @@
 	if(life <= 0)
 		qdel(src)
 		return
+
+	for(var/mob/living/carbon/human/H in view(2, src))
+		if(H.has_flaw(/datum/charflaw/addiction/pyromaniac))
+			H.sate_addiction()
 
 	perform_exposure()
 	return

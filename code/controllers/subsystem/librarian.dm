@@ -17,7 +17,11 @@ SUBSYSTEM_DEF(librarian)
 /proc/file2book(filename)
 	if(!filename)
 		return list()
-	var/json_file = file("strings/books/[filename]")
+	var/json_file
+	if(usr?.client?.prefs?.be_russian)
+		json_file = file("strings/ru_books/[filename]")
+	else
+		json_file = file("strings/books/[filename]")
 	testing("filebegin")
 	if(fexists(json_file))
 		testing("file1")

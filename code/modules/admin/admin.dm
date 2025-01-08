@@ -332,7 +332,7 @@
 	if(!check_rights(0))
 		return
 
-	var/dat = {"
+	var/dat = {"<meta charset='UTF-8'>
 		<center><B>Game Panel</B></center><hr>\n
 		<A href='?src=[REF(src)];[HrefToken()];c_mode=1'>Change Game Mode</A><br>
 		"}
