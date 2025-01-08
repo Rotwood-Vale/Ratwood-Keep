@@ -95,6 +95,18 @@
 			var/datum/job/J = SSjob.GetJob(user.mind?.assigned_role)
 			if(J?.department_flag & GARRISON || J?.department_flag & NOBLEMEN)
 				. += span_greentext("<b>[m1] an agent of the court!</b>")
+		
+		if(has_flaw(/datum/charflaw/addiction/lovefiend) && user.has_flaw(/datum/charflaw/addiction/lovefiend))
+			. += span_aiprivradio("[m1] as lovesick as I.")
+		
+		if(has_flaw(/datum/charflaw/addiction/junkie) && user.has_flaw(/datum/charflaw/addiction/junkie))
+			. += span_deadsay("[m1] carrying the same dust marks on their nose as I.")
+
+		if(has_flaw(/datum/charflaw/addiction/smoker) && user.has_flaw(/datum/charflaw/addiction/smoker))
+			. += span_suppradio("[m1] enveloped by the familiar, faint stench of smoke. I know it well.")
+
+		if(has_flaw(/datum/charflaw/addiction/alcoholic) && user.has_flaw(/datum/charflaw/addiction/alcoholic))
+			. += span_syndradio("[m1] struggling to hide the hangover, and the stench of spirits. We're alike.")
 
 		var/villain_text = get_villain_text()
 		if(villain_text)
