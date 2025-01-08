@@ -28,6 +28,7 @@
 		return
 
 	Alive.death(FALSE)
+	ADD_TRAIT(Alive, TRAIT_RITUALIZED, TRAIT_GENERIC)
 	
 	// Code mostly taken from the old revive, no guarantee it does everything it should
 	var/mob/living/carbon/spirit/underworld_spirit = Dead.get_spirit()
@@ -37,9 +38,13 @@
 		ghost.mind.transfer_to(Dead, TRUE)
 
 	Dead.grab_ghost(force = TRUE) // even suicides
+	Dead.revive(admin_revive = TRUE)
 	Dead.emote("breathgasp")
 	Dead.Jitter(100)
-	Dead.revive(admin_revive = TRUE)
+
+	// Remove the ritualized trait from the resurrected person, in case they died to the same ritual. This also makes sure cpr will work on them if they die after the ritual.
+	if(HAS_TRAIT(Dead, TRAIT_RITUALIZED))
+		REMOVE_TRAIT(Dead, TRAIT_RITUALIZED, TRAIT_GENERIC)
 
 	// Seelie stuff
 	if(isseelie(Dead))

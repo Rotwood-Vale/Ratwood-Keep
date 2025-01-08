@@ -100,6 +100,8 @@
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
 
+
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_CHOSEN = "Appointed by the Church of the Successors, you hold authority over all spiritual matters in the City.",
@@ -392,3 +394,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 #define TRAIT_LIGHT_STEP		"light_step"
 #define TRAIT_DRUNK_HEALING		"drunk_healing"
+
+// RITUALS
+
+#define TRAIT_RITUALIZED "Ritualized" //This is used to prevent cpr to work on humans that just got sacrificed
