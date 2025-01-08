@@ -14,8 +14,6 @@
 	min_pq = 0
 	max_pq = null
 
-/datum/job/roguetown/goblinrabble/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-
 /datum/outfit/job/roguetown/goblinrabble
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 
@@ -26,7 +24,6 @@
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	l_hand = /obj/item/rogueweapon/huntingknife/stoneknife
-	r_hand = /obj/item/rogueweapon/spear/stone
 	belt = /obj/item/storage/belt/rogue/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/keyring/goblin = 1, /obj/item/lockpick = 1)
@@ -34,8 +31,7 @@
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, round(rand(1,5)), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, round(rand(1,5)), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
@@ -44,10 +40,10 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.change_stat("strength", -1)
-		H.change_stat("perception", 2)
+		H.change_stat("strength", -2)
+		H.change_stat("perception", 1)
 		H.change_stat("speed", 2)
+		H.change_stat("intelligence", 2)
 		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 
 //If a non-Goblin gets control by admin intervention.
