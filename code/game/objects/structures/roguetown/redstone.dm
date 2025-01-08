@@ -64,6 +64,25 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	. = ..()
 	icon_state = "leverwall[toggled]"
 
+/obj/structure/lever/red
+	icon_state = "leverwallred0"
+	var/last_pull
+
+/obj/structure/lever/red/attack_hand(mob/user)
+	if(world.time < last_pull + 50)
+		return
+	last_pull = world.time
+	. = ..()
+	icon_state = "leverwallred[toggled]"
+
+/obj/structure/lever/red/onkick(mob/user)
+	if(world.time < last_pull + 50)
+		return
+	last_pull = world.time
+	. = ..()
+	icon_state = "leverwallred[toggled]"
+	
+
 /obj/structure/repeater
 	name = "repeater"
 	desc = "Repeats a signal a set amount of times into an adjacently linked machine when activated by a signal. Looks suspiciously like a barrel."
