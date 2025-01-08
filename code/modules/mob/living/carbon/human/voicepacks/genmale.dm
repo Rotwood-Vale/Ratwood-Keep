@@ -94,5 +94,7 @@
 				used = 'sound/vo/attn.ogg'
 			if("psst")
 				used = 'sound/vo/psst.ogg'
+			if("mrrp")
+				used = 'sound/vo/mrrp.ogg'
 
 	return used
