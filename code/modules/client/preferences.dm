@@ -433,9 +433,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			else
 				dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a>"
 			if(user.client.prefs.be_russian)
-				dat += "<b>Цвет Голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Изменить</a>"
+				dat += "<br<b>Цвет Голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Изменить</a>"
 			else
-				dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
+				dat += "<br<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
 			if(user.client.prefs.be_russian)
 				dat += "<br><b>Тон Голоса: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
 			else
@@ -529,17 +529,17 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 			var/datum/bark/B = GLOB.bark_list[bark_id]
 			if(user.client.prefs.be_russian)
-				dat += "<br><b>Звук Барка:</b> <a href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "INVALID"]</a>"
+				dat += "<b>Звук Барка:</b> <a href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "INVALID"]</a>"
 				dat += "<br><b>Скорость Барка:</b> <a href='?_src_=prefs;preference=barkspeed;task=input'>[bark_speed]</a>"
 				dat += "<br><b>Тон Барка:</b> <a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a>"
 				dat += "<br><b>Отклонение Барка:</b> <a href='?_src_=prefs;preference=barkvary;task=input'>[bark_variance]</a>"
 				dat += "<br><a href='?_src_=prefs;preference=barkpreview'>Прослушать Барк</a>"
 			else
-				dat += "<br><b>Vocal Bark Sound: </b><a href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "INVALID"]</a>"
+				dat += "<b>Vocal Bark Sound: </b><a href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "INVALID"]</a>"
 				dat += "<br><b>Vocal Bark Speed: </b><a href='?_src_=prefs;preference=barkspeed;task=input'>[bark_speed]</a>"
 				dat += "<br><b>Vocal Bark Pitch: </b><a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a>"
 				dat += "<br><b>Vocal Bark Variance: </b><a href='?_src_=prefs;preference=barkvary;task=input'>[bark_variance]</a>"
-				dat += "<br><a href='?_src_=prefs;preference=barkpreview'>Preview Bark</a>"
+				dat += " <a href='?_src_=prefs;preference=barkpreview'>Preview Bark</a>"
 			if(user.client.prefs.be_russian)
 				dat += "<br><b>Акцент:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
 			else
