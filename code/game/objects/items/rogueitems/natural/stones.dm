@@ -448,9 +448,9 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 				blockcount--
 			else if(blockcount >= 2)
 				var/obj/item/natural/bundle/stoneblock/B = new(get_turf(user))
-				B.amount = clamp(blockcount, 2, 3)
+				B.amount = clamp(blockcount, 2, 4)
 				B.update_bundle()
-				blockcount -= clamp(blockcount, 2, 3)
+				blockcount -= clamp(blockcount, 2, 4)
 				user.put_in_hands(B)
 		for(var/obj/item/natural/stoneblock/F in get_turf(src))
 			playsound(get_turf(user.loc), 'sound/foley/stone_scrape.ogg', 100)
@@ -471,11 +471,11 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	w_class = WEIGHT_CLASS_NORMAL
 	stackname = "stone blocks"
 	stacktype = /obj/item/natural/stoneblock
-	maxamount = 3
+	maxamount = 4
 	icon1 = "stoneblockbundle1"
-	icon1step = 2
+	icon1step = 3
 	icon2 = "stoneblockbundle2"
-	icon2step = 3
+	icon2step = 4
 
 
 /obj/structure/roguerock/attackby(obj/item/W, mob/living/user, params)

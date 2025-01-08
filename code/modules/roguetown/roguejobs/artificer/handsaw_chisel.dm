@@ -53,7 +53,7 @@
 		qdel(src)
 		return
 
-	else if(istype(W, /obj/item/rogueweapon/hammer/plain))
+	else if(istype(W, /obj/item/rogueweapon/hammer/iron))
 		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
 		var/obj/item/rogueweapon/chisel/tool/hammer/F = new(src.loc)
@@ -109,7 +109,7 @@
 
 /obj/item/rogueweapon/chisel/tool/mallet
 	icon_state = "chiselm"
-	item_state = "chisel"
+	item_state = "whammer"
 /obj/item/rogueweapon/chisel/tool/mallet/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/rogueweapon/hammer/wood/E = new(src.loc)
@@ -120,9 +120,10 @@
 
 /obj/item/rogueweapon/chisel/tool/hammer
 	icon_state = "chiselh"
+	item_state = "hammer"
 /obj/item/rogueweapon/chisel/tool/hammer/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
-	var/obj/item/rogueweapon/hammer/plain/E = new(src.loc)
+	var/obj/item/rogueweapon/hammer/iron/E = new(src.loc)
 	user.put_in_hands(E)
 	user.put_in_hands(F)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
@@ -130,6 +131,7 @@
 
 /obj/item/rogueweapon/chisel/tool/hammerclaw
 	icon_state = "chiselc"
+	item_state = "clawh"
 /obj/item/rogueweapon/chisel/tool/hammerclaw/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/rogueweapon/hammer/claw/E = new(src.loc)
@@ -140,6 +142,7 @@
 
 /obj/item/rogueweapon/chisel/tool/stone
 	icon_state = "chisels"
+	item_state = "chisels"
 /obj/item/rogueweapon/chisel/tool/stone/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/natural/stone/E = new(src.loc)
@@ -150,6 +153,7 @@
 
 /obj/item/rogueweapon/chisel/tool/stoneblock
 	icon_state = "chiselb"
+	item_state = "chiselb"
 /obj/item/rogueweapon/chisel/tool/stoneblock/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/natural/stoneblock/E = new(src.loc)

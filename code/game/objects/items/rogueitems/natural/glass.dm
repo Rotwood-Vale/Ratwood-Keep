@@ -41,9 +41,11 @@
 				B.amount = clamp(stackcount, 2, 3)
 				B.update_bundle()
 				stackcount -= clamp(stackcount, 2, 3)
+				user.put_in_hands(B)
 		for(var/obj/item/natural/glass/F in get_turf(src))
 			playsound(get_turf(user.loc), 'sound/foley/dropsound/glass_drop.ogg', 90)
 			qdel(F)
+
 
 //................	Glass panes stack	............... //
 /obj/item/natural/bundle/glass
@@ -108,5 +110,3 @@
 	. = ..()
 	playsound(loc,'sound/foley/glass_step.ogg', 35, FALSE)
 
-
-/obj/effect/decal/cleanable/glass
