@@ -2,7 +2,7 @@
 	name = "divine sigils"
 	desc = "Holy sigils drawn by the followers of the Successors."
 	icon_state = "center"
-	icon = 'icons/obj/sigils/sigils_zizo.dmi' //PLACEHOLDER
+	icon = 'icons/obj/sigils/sigils_divine.dmi' //PLACEHOLDER
 
 	rituals_type = /datum/ritual/divine
 
