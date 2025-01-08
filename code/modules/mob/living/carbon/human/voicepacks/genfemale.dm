@@ -92,9 +92,9 @@
 			if("sexmoanhvy")
 				used = list('sound/vo/female/gen/se/sex (1).ogg','sound/vo/female/gen/se/sex (2).ogg','sound/vo/female/gen/se/sex (3).ogg','sound/vo/female/gen/se/sex (4).ogg','sound/vo/female/gen/se/sex (5).ogg','sound/vo/female/gen/se/sex (6).ogg','sound/vo/female/gen/se/sex (7).ogg','sound/vo/female/gen/se/sex (8).ogg')
 			if("trill")
-				used = list('sound/vo/mrrp.ogg','sound/vo/male/gen/mrrp(2).ogg')
+				used = list('sound/vo/mrrp.ogg','sound/vo/mrrp (2).ogg')
 			if("meow")
-				used = list('sound/vo/meow.ogg','sound/vo/male/gen/meow(2).ogg')
+				used = list('sound/vo/meow.ogg','sound/vo/meow (2).ogg')
 			if("hiss")
 				used = 'sound/vo/hiss.ogg'
 
