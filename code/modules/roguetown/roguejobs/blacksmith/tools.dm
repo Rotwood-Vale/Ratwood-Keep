@@ -155,7 +155,7 @@
 	icon_state = "hammer_w"
 	item_state = "hammer_w"
 	force = 16
-	metalizer_result = /obj/item/rogueweapon/hammer
+	metalizer_result = /obj/item/rogueweapon/hammer/iron
 
 //................	Tongs	............... //
 /obj/item/rogueweapon/tongs
