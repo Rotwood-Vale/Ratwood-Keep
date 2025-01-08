@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(excommunicated_players)
+GLOBAL_LIST_EMPTY(heretical_players)
 
 /datum/job/roguetown/priest
 	title = "Priest"
@@ -84,10 +86,8 @@
 	H.verbs |= /mob/living/carbon/human/proc/churchexcommunicate
 	H.verbs |= /mob/living/carbon/human/proc/churchannouncement
 	H.verbs |= /mob/living/carbon/human/proc/churchhereticsbrand
-//	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-//		H.underwear = "Femleotard"
-//		H.underwear_color = CLOTHING_BLACK
-//		H.update_body()
+	H.verbs |= /mob/living/carbon/human/proc/draw_sigil_divine
+
 
 /datum/outfit/job/roguetown/priest/post_equip(mob/living/carbon/human/H)
 	..()
