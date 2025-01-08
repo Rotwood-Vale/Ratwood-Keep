@@ -1204,9 +1204,9 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(json))
 
-	var/fakekey = usr.ckey
-	if(usr.ckey in GLOB.anonymize)
-		fakekey = get_fake_key(usr.ckey)
+	var/fakekey = giver.ckey
+	if(giver.ckey in GLOB.anonymize)
+		fakekey = get_fake_key(giver.ckey)
 
 	var/raisin = stripped_input("Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
 	if(!raisin)
