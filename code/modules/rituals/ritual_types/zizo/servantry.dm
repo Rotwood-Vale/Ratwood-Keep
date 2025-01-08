@@ -89,7 +89,7 @@
 		if(H.charflaw)
 			QDEL_NULL(H.charflaw)
 		H.update_body()
-		H.mob_biotypes = MOB_UNDEAD
+		H.mob_biotypes |= MOB_UNDEAD
 		H.faction = list("undead")
 
 		H.STASPD = rand(7,10)
@@ -138,7 +138,7 @@
 						return
 					if(istype(HL.wear_neck, /obj/item/clothing/neck/roguetown/psicross))
 						return
-					if(HAS_TRAIT(HL, TRAIT_NOROGSTAM))
+					if(HAS_TRAIT(HL, TRAIT_NOSLEEP) || HAS_TRAIT(HL, TRAIT_NOROGSTAM))
 						return
 					to_chat(HL.mind, span_warning("I'm so sleepy..."))
 					HL.SetSleeping(30)
