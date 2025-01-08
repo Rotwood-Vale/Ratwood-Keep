@@ -9,8 +9,6 @@
 	textper = 108
 	maxlen = 2000
 	throw_range = 3
-	resistance_flags = FIRE_PROOF
-
 
 /obj/item/paper/scroll/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))

@@ -80,13 +80,6 @@
 			C.mob.playsound_local(C.mob, 'sound/music/credits.ogg', 100, FALSE)
 		if(isliving(C.mob) && C.ckey)
 			key_list += C.ckey
-	
-	
-	var/broadcastmessage = ""
-
-	broadcastmessage += "\n\n @ping , сервер перезапускается!"
-
-	send2chat(new /datum/tgs_message_content(broadcastmessage), CONFIG_GET(string/chat_roundend_notice_tag))
 			
 //	if(key_list.len)
 //		add_roundplayed(key_list)
