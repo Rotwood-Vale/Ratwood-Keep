@@ -4,12 +4,6 @@
 	bark_pitch = BARK_PITCH_RAND(gender)
 	bark_variance = BARK_VARIANCE_RAND
 
-randomize_human(mob/living/carbon/human/H, include_gender = FALSE)
-	. = ..()
-	H.set_bark(pick(GLOB.bark_random_list))
-	H.vocal_pitch = BARK_PITCH_RAND(H.gender)
-	H.vocal_pitch_range = BARK_VARIANCE_RAND
-
 //Datums for barks and bark accessories
 
 /datum/bark
