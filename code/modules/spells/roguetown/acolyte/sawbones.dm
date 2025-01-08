@@ -115,11 +115,7 @@
 				new_wings.Insert(fairy_target)
 		target.update_body()
 		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
-		if(target.mind)
-			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
-				adjust_playerquality(revive_pq, user.ckey)
-				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
-			target.mind.remove_antag_datum(/datum/antagonist/zombie)
+		target.mind?.remove_antag_datum(/datum/antagonist/zombie)
 		return TRUE
 	to_chat(user, span_warning("I need to prime their heart first."))
 	revert_cast()
