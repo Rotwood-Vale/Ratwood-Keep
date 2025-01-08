@@ -6905,7 +6905,7 @@
 	dir = 4;
 	lockid = "garrison"
 	},
-/turf/closed,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/cell)
 "gii" = (
 /obj/structure/fluff/railing/border{
