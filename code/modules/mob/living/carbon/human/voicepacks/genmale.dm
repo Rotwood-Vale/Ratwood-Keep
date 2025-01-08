@@ -94,7 +94,11 @@
 				used = 'sound/vo/attn.ogg'
 			if("psst")
 				used = 'sound/vo/psst.ogg'
-			if("mrrp")
-				used = 'sound/vo/mrrp.ogg'
+			if("trill")
+				used = list('sound/vo/mrrp.ogg','sound/vo/male/gen/mrrp (2).ogg')
+			if("meow")
+				used = list('sound/vo/meow.ogg','sound/vo/male/gen/meow (2).ogg')
+			if("hiss")
+				used = 'sound/vo/hiss.ogg'
 
 	return used
