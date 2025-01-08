@@ -87,7 +87,7 @@
 			to_chat(user, span_warning("Nothing happens."))
 			revert_cast()
 			return FALSE
-		if(world.time > target.mob_timers["deathdied"] + 5 MINUTES)
+		if(world.time > target.mob_timers["lastdied"] + 5 MINUTES)
 			to_chat(user, span_warning("It's too late."))
 			revert_cast()
 			return FALSE
