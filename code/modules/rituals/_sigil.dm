@@ -169,10 +169,10 @@
 	for(var/obj/A in T)
 		if(istype(A, /obj/effect/decal/cleanable/sigil))
 			to_chat(M, span_warning("There is already a sigil here."))
-			return
+			return FALSE
 		if(A.density && !(A.flags_1 & ON_BORDER_1))
 			to_chat(M, span_warning("There is already something here!"))
-			return
+			return FALSE
 	if(do_after(M, 5 SECONDS))
 		M.bloody_hands--
 		M.update_inv_gloves()
@@ -210,12 +210,14 @@
 				)
 			else
 				stack_trace("Someone tried to draw an invalid sigil type. This is likely a bug in one of the draw_sigil procs.")
-				return
+				return FALSE
 
 		for(var/i = 1; i <= alldirs.len; i++)
 			var/turf/floor = get_step(src, alldirs[i])
 			var/sigil = sigilsPath[i]
 
 			new sigil(floor)
+
+	return TRUE
 
 

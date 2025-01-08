@@ -30,4 +30,9 @@
 		return
 
 	var/turf/open/floor/T = get_turf(src.loc)
-	T.generateSigils(src, "DIVINE", input)
+
+	// Only one successfully drawn sigil per owner
+	if(T.generateSigils(src, "DIVINE", input))
+		verbs -= /mob/living/carbon/human/proc/draw_sigil_divine
+
+
