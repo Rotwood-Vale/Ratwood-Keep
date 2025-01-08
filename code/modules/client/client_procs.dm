@@ -1142,7 +1142,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		if(usr?.client?.prefs?.be_russian)
 			selection = input(src,"Персонаж?") as null|anything in sortList(selections)
 		else
-			selection = input(src,"Персонаж?") as null|anything in sortList(selections)
+			selection = input(src,"Character?") as null|anything in sortList(selections)
 	else
 		if(usr?.client?.prefs?.be_russian)
 			selection = input(src, "Персонаж?") as null|text

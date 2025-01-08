@@ -309,7 +309,7 @@ SUBSYSTEM_DEF(vote)
 		. += "<h2>Start a vote:</h2><hr><ul><li>"
 		//restart
 		var/avr = CONFIG_GET(flag/allow_vote_restart)
-		if(avr) // if(trialmin || avr)
+		if(trialmin || avr)
 			. += "<a href='?src=[REF(src)];vote=restart'>Restart</a>"
 		else
 			. += "<font color='grey'>Restart (Disallowed)</font>"
@@ -318,7 +318,7 @@ SUBSYSTEM_DEF(vote)
 		. += "</li><li>"
 		//gamemode
 		var/avm = CONFIG_GET(flag/allow_vote_mode)
-		if(avm) // if(trialmin || avr)
+		if(trialmin || avr)
 			. += "<a href='?src=[REF(src)];vote=gamemode'>GameMode</a>"
 		else
 			. += "<font color='grey'>GameMode (Disallowed)</font>"
