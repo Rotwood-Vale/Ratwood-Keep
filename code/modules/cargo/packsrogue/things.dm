@@ -74,6 +74,11 @@
 	cost = 50
 	contains = list(/obj/item/flashlight/flare/torch/lantern)
 
+/datum/supply_pack/rogue/bandit/Things/Handsaw
+	name = "Handsaw"
+	cost = 80
+	contains = list(/obj/item/rogueweapon/handsaw)
+
 /datum/supply_pack/rogue/bandit/Things/westleach
 	name = "Shhig Brand Zigs"
 	cost = 40
