@@ -263,7 +263,7 @@
 	slot_flags = null
 	max_integrity = 20
 	firefuel = 5 MINUTES
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	bundletype = /obj/item/natural/bundle/plank
 	smeltresult = /obj/item/ash
 /obj/item/natural/wood/plank/attack_right(mob/living/user)
@@ -307,7 +307,7 @@
 	throwforce = 0
 	throw_range = 2
 	firefuel = 10 MINUTES
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	stackname = "plank"
 	stacktype = /obj/item/natural/wood/plank
 	maxamount = 6
