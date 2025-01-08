@@ -222,6 +222,9 @@
 				nuarea.contents += src
 				change_area(A, nuarea)
 
+/turf/proc/can_traverse_safely(atom/movable/traveler)
+	return TRUE
+
 /turf/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -646,3 +649,4 @@
 //Should return new turf
 /turf/proc/Melt()
 	return ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+

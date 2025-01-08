@@ -1963,7 +1963,6 @@
 #include "code\controllers\subsystem\processing\ai_behaviours.dm"
 #include "code\controllers\subsystem\processing\ai_movement.dm"
 
-
 #include "code\datums\actions\action_cooldown.dm"
 
 #include "code\datums\actions\mobs\dragonbreath.dm"
@@ -1977,7 +1976,6 @@
 #include "code\datums\ai\ai_movement\astar_movement.dm"
 #include "code\datums\ai\ai_movement\basic_avoidance.dm"
 #include "code\datums\ai\ai_movement\dumb_movement.dm"
-#include "code\datums\ai\ai_movement\tmp_turfs.dm" //remove this after debloat crix
 
 #include "code\datums\ai\behaviors\eat_food\eat_foodstuffs.dm"
 #include "code\datums\ai\behaviors\eat_food\eat_body.dm"

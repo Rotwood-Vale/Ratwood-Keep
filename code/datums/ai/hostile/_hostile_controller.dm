@@ -160,7 +160,6 @@
 	set_command_mode(speaker, command)
 
 /// Whether we got here via radial menu or a verbal command, this is where we actually process what our new command will be
-//crix todo: this stuff doesn't work yet / need an animal/npc trainer class to develop this
 /datum/ai_controller/hostile_friend/proc/set_command_mode(mob/commander, command)
 	COOLDOWN_START(src, command_cooldown, AI_HOSTILE_COMMAND_COOLDOWN)
 

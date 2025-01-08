@@ -170,7 +170,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	if(!pawn_turf)
 		CRASH("AI controller [src] controlling pawn ([pawn]) is not on a turf.")
 #endif
-	if(!length(SSmobs.clients_by_zlevel[pawn_turf?.z]) && (!length(SSmobs.dead_players_by_zlevel[pawn_turf?.z]))) //performance: check both ghost and player z levels
+	if(!length(SSmobs.clients_by_zlevel[pawn_turf?.z]))
 		return AI_STATUS_OFF
 	return AI_STATUS_ON
 

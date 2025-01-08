@@ -157,11 +157,6 @@
 			return "foreleg"
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/original
-	AIStatus = AI_ON
-	can_have_ai = TRUE
-	ai_controller = null
-
 /datum/intent/simple/bite/volf
 	clickcd = WOLF_ATTACK_SPEED
 

@@ -317,7 +317,7 @@
 		return FALSE
 	if(QDELETED(src) || QDELETED(M))
 		return FALSE
-	if(!M.CanReach(src)) //crix keep an eye on this, used to be .adjacent
+	if(!M.CanReach(src)) // Possible performance hit.
 		return FALSE
 	if(M.incapacitated())
 		return FALSE
