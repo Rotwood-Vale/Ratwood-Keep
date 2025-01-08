@@ -82,6 +82,5 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 2)
-		H.change_stat("speed", 2)
+		H.change_stat("speed", 3)
 		H.change_stat("perception", 2)
-		H.change_stat("constitution", 1)
