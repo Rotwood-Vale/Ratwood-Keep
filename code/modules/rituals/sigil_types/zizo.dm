@@ -1,8 +1,8 @@
 /obj/effect/decal/cleanable/sigil/zizo
-	name = "occult sigils"
+	name = "occult sigil"
 	desc = "Strange, evil runics."
 	icon_state = "center"
-	icon = 'icons/obj/sigils/sigils_zizo.dmi'
+	icon = 'icons/obj/sigils/sigil_zizo.dmi'
 
 	rituals_type = /datum/ritual/zizo
 

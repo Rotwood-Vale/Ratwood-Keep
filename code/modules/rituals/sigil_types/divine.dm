@@ -1,8 +1,8 @@
 /obj/effect/decal/cleanable/sigil/divine
-	name = "divine sigils"
+	name = "divine sigil"
 	desc = "Holy sigils drawn by the followers of the Successors."
 	icon_state = "center"
-	icon = 'icons/obj/sigils/sigils_divine.dmi' //PLACEHOLDER
+	icon = 'icons/obj/sigils/sigil_pantheon.dmi' 
 
 	rituals_type = /datum/ritual/divine
 
