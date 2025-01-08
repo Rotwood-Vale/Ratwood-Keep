@@ -2,31 +2,24 @@
 	race = /datum/species/dracon
 
 /datum/species/dracon
-	name = "Drakian"
+	name = "Драконид"
 	id = "dracon"
-	desc = "<b>Drakian</b><br>\
-	Drakians are a proud and ancient race that trace their heritage to dragons of old. \
-	They are highly protective of their bloodline and do everything in their power to make sure it does not spread beyond their own, \
-	as they believe themselves to be guardians of tradition and that it is their ultimate duty to maintain their prestige as a race. \
-	After all, a single drop of draconic blood in one's bloodline means that they will experience all of the benefits of having draconic ancestors such as agelessness."
-	expanded_desc = "Drakians are a proud and ancient race that trace their heritage to dragons of old. \
-	They are highly protective of their bloodline and do everything in their power to make sure it does not spread beyond their own, \
-	as they believe themselves to be guardians of tradition and that it is their ultimate duty to maintain their prestige as a race. \
-	After all, a single drop of draconic blood in ones bloodline means that they will experience all of the benefits of having draconic ancestors such as agelessness.\
+	desc = "<b>Драконид</b><br>\
+	Дракониды или дракийцы - гордая и древняя раса, ведущая свою родословную от древних драконов. \
+	Они очень берегут свою родословную и делают все возможное, чтобы она не распространялась за пределы их собственной, \
+	поскольку считают себя хранителями традиций и считают, что их высший долг - поддерживать престиж расы. \
+	В конце концов, одна капля драконьей крови в родословной означает, что разумное существо получит все преимущества драконьих предков, такие как безвозрастность."
+	expanded_desc = "Однако за это приходится платить. Изначально их считали одной из самых благородных рас, \
+	но теперь их ненавидят за невыносимое высокомерие и часто считают, что они совершенно не в ладах с остальным обществом. \
+	Их неспособность иметь представление о времени, отказ идти на компромисс или вступать в браки, а также неприятие любых технологий, угрожающих их превосходству,\
+	нажили им бесчисленное множество врагов - от аксиан до дворфов. Например, они считают всех вайлдкинов с драконьими чертами или кровью неполноценными. \
 	<br><br> \
-	Yet, it comes at a cost. \
-	While initially viewed as one of the noblest races, \
-	they are now hated for their insufferable arrogance and often appear completely out of touch with the rest of society. \
-	Their inability to have a concept of time, refusal to compromise or intermarry, \
-	along with their rejection of any technology that threatens their supremacy have earned them countless enemies from Axians to Dwarves. \
-	For instance, they view any Wild-kin with draconic features or blood as inherently inferior. \
-	Yet, not all Drakians are like this with some believing it is their duty to help lesser races, although many still view these Drakians to be just as insufferable.\
-	<br><br> \
-	In the past, Drakians held positions of power and prestige across all the realms. \
-	Many try to style themselves after knight-philosophers in an attempt to hide their brutish ways. \
-	When in reality, most Drakians are known for being bloody conquerors. \
-	However, the rise of humans have caused their ambitions to crumble, forcing them to work with other races, especially at the climax of the Great Sissean Uprising. \
-	Furthermore, dwindling numbers have caused Drakians to increasingly abandon the ways of old, forcing them to adapt to a more modern way of life."
+	Однако не все дракониды таковы: некоторые считают своим долгом помогать низшим расам, хотя многие все равно считают таких драконидов столь же невыносимыми. \
+	В прошлом дракониды занимали высокие посты во всех королевствах. Многие из них пытаются изобразить из себя рыцарей-философов, пытаясь скрыть свой грубый образ жизни. \
+	На самом же деле большинство драконидов известны как кровавые завоеватели. \
+	Однако с появлением государств людей, эльфов и дворфов их амбиции рухнули,\
+	заставив их сотрудничать с другими расами, особенно в кульминационный момент Великого ящеролюдского восстания. \
+	Кроме того, сокращение численности заставляет дракийцев все чаще отказываться от старых традиций, вынуждая их приспосабливаться к более современному образу жизни."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST

@@ -1,13 +1,13 @@
 /datum/patron/zizo
-	name = "Zizo"
-	domain = "All that is Evil."
-	desc = "A long time ago, a single woman achieved the impossible: she challenged God, and won."
-	worshippers = "Necromancers, The Power-hungry,  Cultists and Heretics of all kinds"
+	name = "Зизо"
+	domain = "Все, что является злом."
+	desc = "Давным-давно одна дроу-женщина совершила невозможное: она бросила вызов Богу и победила."
+	worshippers = "Некроманты, жаждущие власти, культисты и еретики всех мастей"
 	mob_traits = list(TRAIT_ZIZO_MARKED)
 	associated_faith = /datum/faith/zizo
 	confess_lines = list(
-		"PRAISE ZIZO!",
-		"LONG LIVE ZIZO!",
-		"ZIZO IS THE GOD QUEEN!",
-		"ZIZO HAS PREVAILED!",
+		"ХВАЛА ЗИЗО!",
+		"ДА ЗДРАВСТВУЕТ ЗИЗО!",
+		"ЗИЗО - КОРОЛЕВА БОГОВ!",
+		"ЗИЗО ПОБЕДИЛА!",
 	)

@@ -2,7 +2,7 @@
 	race = /datum/species/demihuman
 
 /datum/species/demihuman
-	name = "Half-Kin"
+	name = "Халфкин"
 	id = "demihuman"
 	desc = "In time you will learn the history of this race"
 	skin_tone_wording = "Ancestry"

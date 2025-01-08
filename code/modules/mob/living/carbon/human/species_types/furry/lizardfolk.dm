@@ -2,22 +2,20 @@
 	race = /datum/species/lizardfolk
 
 /datum/species/lizardfolk
-	name = "Sissean"
+	name = "Ящеролюд"
 	id = "lizardfolk"
-	desc = "<b>Sissean</b><br>\
-	Sisseans are hardy, reptilian people that share a unique bond among their kind due to being the target \
-	of oppression and enslavement by other races, particularly by Humans and Drakians. They take pride in \
-	their resilience and adaptability, and they can be found all over the world for one reason or another."
-	expanded_desc = "Sisseans are hardy, reptilian people that share a unique bond among their kind due to being the target of oppression \
-	and enslavement by other races, particularly by Humans and Drakians. They take pride in their resilience and adaptability,\
-	and they can be found all over the world for one reason or another. Once a nomadic, tribal people, Sisseans are often forced \
-	to hide and settle in deserts, swamps, bogs, and other typically inhospitable lands. Their appearance changes based on the lands \
-	they adapt to, allowing for crocodilian appearance if from the swamp to lizard-like appearances if from the desert. \
+	desc = "<b>Ящеролюд</b><br>\
+	Ящеролюды - выносливый народ рептилий, который отличается уникальной связью между себе подобными, \
+	поскольку был объектом угнетения и порабощения со стороны других рас, в частности людей и дракийцев. \
+	Они гордятся своей стойкостью и приспособляемостью, и их можно встретить по всему миру по той или иной причине."
+	expanded_desc = "Когда-то кочевой, племенной народ, яшеролюди часто вынуждены скрываться и селиться в пустынях, болотах, \
+	трясинах и других обычно негостеприимных землях. Их внешность меняется в зависимости от того, к каким землям они приспосабливаются, \
+	- от крокодильего облика, если они родом из болот, до ящероподобного, если из пустыни. \
 	<br><br> \
-	They can also be found in large, bustling cities, particularly slave cities where their strength, toughness, and endurance \
-	makes them particularly valuable. Sisseans often despise weakness and instead find solace in suffering. They tend to be \
-	highly religious, although of course, no race is monolithic. In fact, some Sisseans have become successful with some rising to \
-	the rank of nobility in many different kingdoms despite all adversity, but this often makes them targets of their jealous peers."
+	Их также можно встретить в больших шумных городах, особенно в городах работорговцев, где их сила, выносливость делают их особенно ценными. \
+	Ящеролюды часто презирают слабость и находят утешение в страданиях. \
+	Они, как правило, очень религиозны, хотя, конечно, ни одна раса не является монолитной. Несмотря на все невзгоды, \
+	некоторые ящеролюды добились успеха и стали дворянами в разных королевствах, но это часто делает их мишенью для завистливых сверстников."
 	skin_tone_wording = "Skin Colors"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
