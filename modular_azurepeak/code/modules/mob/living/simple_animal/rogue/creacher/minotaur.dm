@@ -77,6 +77,7 @@
 	base_intents = list(/datum/intent/simple/minotaur_axe)
 	melee_damage_lower = 65
 	melee_damage_upper = 85
+	limb_destroyer = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe/female
 	icon_state = "MinotaurFem_Axe"
@@ -175,14 +176,14 @@
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = "genchop"
-	chargetime = 20
+	chargetime = 10
 	penfactor = 10
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
 	reach = 2 
 	item_d_type = "stab"
-	clickcd = MINOTAUR_ATTACK_SPEED
+	clickcd = MINOTAUR_AXE_ATTACK_SPEED
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/original
 	AIStatus = AI_ON
