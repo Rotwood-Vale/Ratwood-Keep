@@ -136,7 +136,11 @@
 
 /obj/item/natural/bundle/examine(mob/user)
 	. = ..()
-	to_chat(user, span_notice("There are [amount] [stackname] in this bundle."))
+	if(amount == maxamount )
+		to_chat(user, span_notice("There are [amount] [stackname] in this bundle. It can not take any more."))
+	else
+		to_chat(user, span_notice("There are [amount] [stackname] in this bundle."))
+
 
 /obj/item/natural/bundle/proc/update_bundle()
 	if(firefuel != 0)

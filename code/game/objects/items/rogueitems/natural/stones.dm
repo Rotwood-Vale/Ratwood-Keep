@@ -169,9 +169,9 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	var/list/desc_jumbler = list()
 
 	switch(bluntness_rating)
-		if(2 to 8)
+		if(2 to 9)
 			extra_intent_list += pick(blunt_intents) // Add one
-		if(9 to 10)
+		if(10)
 			for(var/muhdik in blunt_intents) // add all intent to possible things
 				extra_intent_list += muhdik
 
@@ -179,9 +179,9 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			desc_jumbler += pick(GLOB.stone_bluntness_descs)
 
 	switch(sharpness_rating)
-		if(2 to 8)
+		if(2 to 9)
 			extra_intent_list += pick(sharp_intents) // Add one
-		if(9 to 10)
+		if(10)
 			for(var/mofugga in sharp_intents) // add all intent to possible things
 				extra_intent_list += mofugga
 
@@ -202,12 +202,12 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			stone_desc += " [picked_desc]" // We put the descs after the original one
 
 	switch(stone_personality_rating)
-		if(10 to 22)
-			if(prob(3)) // Stone has a 3 percent chance to have a personality despite missing its roll
+		if(10 to 23)
+			if(prob(2)) // Stone has a 2 percent chance to have a personality despite missing its roll
 				stone_title = "[stone_title] of [pick(GLOB.stone_personalities)]"
 				stone_desc += " [pick(GLOB.stone_personality_descs)]"
 				bonus_force += rand(1,5) // Personality gives a stone some more power too
-		if(23 to 25)
+		if(24 to 25)
 			stone_title = "[stone_title] of [pick(GLOB.stone_personalities)]"
 			stone_desc += " [pick(GLOB.stone_personality_descs)]"
 			bonus_force += rand(1,5) // Personality gives a stone some more power too
@@ -217,7 +217,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 	bonus_force = rand(0, max_force_range) // Your total bonus force is now between 1 and your sharpness/bluntness totals
 
-	if(prob(5)) // We hit the jackpot, a magical stone! JUST FOR ME!
+	if(prob(2)) // We hit the jackpot, a magical stone! JUST FOR ME!
 		filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 		var/magic_force = rand(1,10) //Roll, we need this seperate for now otherwise people will know the blunt/sharp boosts too
 		stone_title = "[pick(GLOB.stone_magic_names)] [stone_title] +[magic_force]"
@@ -240,8 +240,10 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	throwforce += bonus_force // It gets added to throw damage too
 	possible_item_intents = given_intent_list // And heres ur new extra intents too
 
-/obj/item/natural/stone/attackby(obj/item/W, mob/user, params)
+/obj/item/natural/stone/attackby(obj/item/W, mob/living/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
+	var/skill_level = user.mind.get_skill_level(/datum/skill/craft/masonry)
+	var/work_time = (40 - (skill_level * 5))
 	if(istype(W, /obj/item/natural/stone))
 		playsound(src.loc, pick('sound/items/stonestone.ogg'), 100)
 		user.visible_message(span_info("[user] strikes the stones together."))
@@ -250,6 +252,18 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			var/turf/front = get_step(user,user.dir)
 			S.set_up(1, 1, front)
 			S.start()
+	if( user.used_intent.type == /datum/intent/chisel )
+		playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
+		user.visible_message("<span class='info'>[user] chisels the stone into a block.</span>")
+		if(do_after(user, 2 SECONDS))
+			new /obj/item/natural/stoneblock(get_turf(src.loc))
+			new /obj/effect/decal/cleanable/debris/stony(get_turf(src))
+			playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
+			qdel(src)
+			user.mind.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*0.2))
+		return
+	else if(istype(W, /obj/item/rogueweapon/chisel/tool))
+		to_chat(user, span_warning("You most use both hands to chisel blocks."))
 	else
 		..()
 
@@ -307,8 +321,10 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 				S.set_up(1, 1, front)
 				S.start()
 
-/obj/item/natural/rock/attackby(obj/item/W, mob/user, params)
+/obj/item/natural/rock/attackby(obj/item/W, mob/living/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
+	var/skill_level = user.mind.get_skill_level(/datum/skill/craft/masonry)
+	var/work_time = (120 - (skill_level * 15))
 	if(istype(W, /obj/item/natural/stone))
 		user.visible_message(span_info("[user] strikes the stone against the rock."))
 		playsound(src.loc, 'sound/items/stonestone.ogg', 100)
@@ -327,6 +343,20 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			S.set_up(1, 1, front)
 			S.start()
 		return
+	if( user.used_intent.type == /datum/intent/chisel )
+		playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
+		user.visible_message("<span class='info'>[user] chisels the rock into blocks.</span>")
+		if(do_after(user, work_time))
+			new /obj/item/natural/stoneblock(get_turf(src.loc))
+			new /obj/item/natural/stoneblock(get_turf(src.loc))
+			new /obj/item/natural/stoneblock(get_turf(src.loc))
+			new /obj/effect/decal/cleanable/debris/stony(get_turf(src))
+			playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
+			user.mind.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*0.5))
+			qdel(src)
+		return
+	else if(istype(W, /obj/item/rogueweapon/chisel/tool))
+		to_chat(user, span_warning("You most use both hands to chisel blocks."))
 	..()
 
 
@@ -388,3 +418,81 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/rock/gem
 	mineralType = /obj/item/roguegem/random
+
+
+//................	Stone blocks	............... //
+/obj/item/natural/stoneblock
+	name = "stone block"
+	desc = "A rectangular stone block for building."
+	icon = 'icons/roguetown/items/crafting.dmi'
+	icon_state = "stoneblock"
+	drop_sound = 'sound/foley/brickdrop.ogg'
+	hitsound = 'sound/foley/brickdrop.ogg'
+	possible_item_intents = list(INTENT_GENERIC)
+	force = 10
+	throwforce = 18 //brick is valid weapon
+	w_class = WEIGHT_CLASS_SMALL
+	bundletype = /obj/item/natural/bundle/stoneblock
+	sellprice = 2
+/obj/item/natural/stoneblock/attack_right(mob/user)
+	. = ..()
+	to_chat(user, span_warning("I start to collect [src]..."))
+	if(move_after(user, 4 SECONDS, target = src))
+		var/blockcount = 0
+		for(var/obj/item/natural/stoneblock/F in get_turf(src))
+			blockcount++
+		while(blockcount > 0)
+			if(blockcount == 1)
+				var/obj/item/natural/stoneblock/S = new(get_turf(user))
+				user.put_in_hands(S)
+				blockcount--
+			else if(blockcount >= 2)
+				var/obj/item/natural/bundle/stoneblock/B = new(get_turf(user))
+				B.amount = clamp(blockcount, 2, 3)
+				B.update_bundle()
+				blockcount -= clamp(blockcount, 2, 3)
+				user.put_in_hands(B)
+		for(var/obj/item/natural/stoneblock/F in get_turf(src))
+			playsound(get_turf(user.loc), 'sound/foley/stone_scrape.ogg', 100)
+			qdel(F)
+
+//................ Stone block stack	............... //
+/obj/item/natural/bundle/stoneblock
+	name = "stack of stone blocks"
+	desc = "A stack of stone blocks."
+	icon_state = "stoneblockbundle1"
+	icon = 'icons/roguetown/items/crafting.dmi'
+	drop_sound = 'sound/foley/brickdrop.ogg'
+	hitsound = list('sound/combat/hits/blunt/shovel_hit.ogg', 'sound/combat/hits/blunt/shovel_hit2.ogg', 'sound/combat/hits/blunt/shovel_hit3.ogg')
+	possible_item_intents = list(/datum/intent/use)
+	force = 2
+	throwforce = 0	// useless for throwing unless solo
+	throw_range = 2
+	w_class = WEIGHT_CLASS_NORMAL
+	stackname = "stone blocks"
+	stacktype = /obj/item/natural/stoneblock
+	maxamount = 3
+	icon1 = "stoneblockbundle1"
+	icon1step = 2
+	icon2 = "stoneblockbundle2"
+	icon2step = 3
+
+
+/obj/structure/roguerock/attackby(obj/item/W, mob/living/user, params)
+	. = ..()
+	if( user.used_intent.type == /datum/intent/chisel )
+		playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
+		user.visible_message("<span class='info'>[user] chisels the rock into blocks.</span>")
+		if(do_after(user, 10 SECONDS))
+			new /obj/item/natural/stoneblock(get_turf(src.loc))
+			new /obj/item/natural/stoneblock(get_turf(src.loc))
+			new /obj/item/natural/stoneblock(get_turf(src.loc))
+			new /obj/item/natural/stoneblock(get_turf(src.loc))
+			new /obj/effect/decal/cleanable/debris/stony(get_turf(src))
+			playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
+			user.mind.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*1))
+			qdel(src)
+		return
+	else if(istype(W, /obj/item/rogueweapon/chisel/tool))
+		to_chat(user, span_warning("You most use both hands to chisel blocks."))
+

@@ -12,7 +12,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
 	associated_skill = /datum/skill/combat/maces
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = /obj/item/ash
 
 	grid_width = 32
 	grid_height = 64
@@ -113,8 +113,12 @@
 
 	. = ..()
 
-/obj/item/rogueweapon/hammer/claw
+/obj/item/rogueweapon/hammer/plain	// iron hammer
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/rogueweapon/hammer/claw	// steel hammer
 	icon_state = "clawh"
+	smeltresult = /obj/item/ingot/steel
 
 /*
 /obj/item/rogueweapon/hammer/claw/attack_turf(turf/T, mob/living/user)

@@ -32,23 +32,6 @@
 	. = ..()
 	reagents.add_reagent(/datum/reagent/ash, 30) //double the amount of ash.
 
-/obj/effect/decal/cleanable/glass
-	name = "tiny shards"
-	desc = ""
-	icon = 'icons/obj/shards.dmi'
-	icon_state = "tiny"
-	beauty = -100
-
-/obj/effect/decal/cleanable/glass/Initialize()
-	. = ..()
-	setDir(pick(GLOB.cardinals))
-
-/obj/effect/decal/cleanable/glass/ex_act()
-	qdel(src)
-
-/obj/effect/decal/cleanable/glass/plasma
-	icon_state = "plasmatiny"
-
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"
 	desc = ""
@@ -203,3 +186,26 @@
 	icon = 'icons/effects/confetti_and_decor.dmi'
 	icon_state = "confetti"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT //the confetti itself might be annoying enough
+
+//................	Debris decals (result from crafting or destroying items thats just visual)	............... //
+/obj/effect/decal/cleanable/debris
+	name = ""
+	desc = ""
+	icon = 'icons/roguetown/items/crafting.dmi'
+	icon_state = "tiny"
+	beauty = -20
+/obj/effect/decal/cleanable/debris/Initialize()
+	. = ..()
+	setDir(pick(GLOB.cardinals))
+	pixel_x += rand(-1,1)
+	pixel_y += rand(-1,1)
+
+/obj/effect/decal/cleanable/debris/glassy
+	icon_state = "tiny"
+	beauty = -100
+/obj/effect/decal/cleanable/debris/glassy/Crossed(mob/living/L)
+	. = ..()
+	playsound(loc,'sound/foley/glass_step.ogg', 50, FALSE)
+
+/obj/effect/decal/cleanable/debris/stony
+	icon_state = "pebbly"
