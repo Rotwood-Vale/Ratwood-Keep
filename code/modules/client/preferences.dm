@@ -433,9 +433,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			else
 				dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a>"
 			if(user.client.prefs.be_russian)
-				dat += "<br<b>Цвет Голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Изменить</a>"
+				dat += "<br><b>Цвет Голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Изменить</a>"
 			else
-				dat += "<br<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
+				dat += "<br><b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
 			if(user.client.prefs.be_russian)
 				dat += "<br><b>Тон Голоса: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
 			else
@@ -449,16 +449,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>Показать</a>"
 				else
 					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
-
-			if(user.client.prefs.be_russian)
-				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Изменить</a>"
-			else
-				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
-			if(nudeshot_link != null)
-				if(user.client.prefs.be_russian)
-					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>Показать</a>"
-				else
-					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
 
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
@@ -539,7 +529,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<br><b>Vocal Bark Speed: </b><a href='?_src_=prefs;preference=barkspeed;task=input'>[bark_speed]</a>"
 				dat += "<br><b>Vocal Bark Pitch: </b><a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a>"
 				dat += "<br><b>Vocal Bark Variance: </b><a href='?_src_=prefs;preference=barkvary;task=input'>[bark_variance]</a>"
-				dat += " <a href='?_src_=prefs;preference=barkpreview'>Preview Bark</a>"
+				dat += "<br><a href='?_src_=prefs;preference=barkpreview'>Preview Bark</a>"
 			if(user.client.prefs.be_russian)
 				dat += "<br><b>Акцент:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
 			else
@@ -556,6 +546,15 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<br><b>Дополнительное Описание:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Изменить</a>"
 			else
 				dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Изменить</a>"
+			else
+				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
+			if(nudeshot_link != null)
+				if(user.client.prefs.be_russian)
+					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>Показать</a>"
+				else
+					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
