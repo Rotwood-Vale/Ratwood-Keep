@@ -84,3 +84,4 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 3)
 		H.change_stat("perception", 2)
+		H.change_stat("constitution", 1) // 9 Points with no armor skill.
