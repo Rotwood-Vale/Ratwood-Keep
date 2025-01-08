@@ -113,13 +113,13 @@
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				if(dna.species.name == H.dna.species.name)
-					. += span_nicegreen("[m1] privy to the truths of this world. One of us.")
+					. += span_nicegreen("[m1] privy to the dangers of all these strangers around us. Just like me.")
 				else
-					. += span_nicegreen("[m1] one of the good ones.")
+					. += span_nicegreen("[m1] one of the good ones. He hates other faces as much as I.")
 		if(has_flaw(/datum/charflaw/masochist) && user.has_flaw(/datum/charflaw/addiction/sadist))
 			. += span_secradio("[m1] marked by scars inflicted for pleasure. A delectable target for my urges.")
 		if(has_flaw(/datum/charflaw/addiction/sadist) && user.has_flaw(/datum/charflaw/masochist))
-			. += span_secradio("[m1] so very tense, and has a brutal sight filled with desire to inflict pain. So exciting.")
+			. += span_secradio("[m1] looking with eyes filled with a desire to inflict pain. So exciting.")
 
 		var/villain_text = get_villain_text()
 		if(villain_text)
