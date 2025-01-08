@@ -8,7 +8,7 @@
 ///Returns something the target might be hiding inside of
 /datum/targetting_datum/proc/find_hidden_mobs(mob/living/living_mob, atom/target)
 
-	if(!QDELETED(target))
+	if(!QDELETED(target) || !target.loc)
 		return
 
 	var/atom/target_hiding_location

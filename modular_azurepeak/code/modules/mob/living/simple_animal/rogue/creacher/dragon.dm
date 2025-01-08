@@ -52,6 +52,8 @@
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/dragon
+
+	limb_destroyer = TRUE
 //	stat_attack = UNCONSCIOUS
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/Initialize()
@@ -199,12 +201,9 @@
 	health = DRAGON_BROODMOTHER_HEALTH
 	maxHealth = DRAGON_BROODMOTHER_HEALTH
 	name = "dragon broodmother"
-	//projectiletype = /obj/projectile/magic/aoe/dragon_breath
-	//projectilesound = 'sound/blank.ogg'
-	//ranged = 0
-	//ranged_message = "breathes fire"
 	ranged_cooldown_time = 20 SECONDS
 	var/datum/action/cooldown/mob_cooldown/fire_breath/cone/fire_breath
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother/Initialize()
 	. = ..()
