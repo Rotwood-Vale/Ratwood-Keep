@@ -465,13 +465,11 @@ SUBSYSTEM_DEF(ticker)
 	set waitfor = FALSE
 	mode.post_setup()
 
-//	send2adminchat(new /datum/tgs_message_content(" @ping | New round!"))
-//	if(CONFIG_GET(string/new_round_ping))
-//		send2chat(new /datum/tgs_message_content(" @ping | New round стартует!"))
+	if(CONFIG_GET(string/new_round_ping))
+		send2chat(new /datum/tgs_message_content("Новый раунд начинается! <@&[CONFIG_GET(string/new_round_ping)]> "), CONFIG_GET(string/chat_announce_new_game))
 	setup_done = TRUE
 
 	job_change_locked = FALSE
-
 //	setup_hell()
 	SStriumphs.fire_on_PostSetup()
 	for(var/i in GLOB.start_landmarks_list)
