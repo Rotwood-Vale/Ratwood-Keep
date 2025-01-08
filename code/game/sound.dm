@@ -95,7 +95,7 @@
 	. = ..()
 	animate(src, alpha = 0, time = duration, easing = EASE_IN)
 */
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel, pressure_affected = TRUE, sound/S, repeat, muffled, max_distance, falloff_distance = 0, falloff_exponent = FALLOFF_SOUNDS, distance_multiplier = 1)
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel, pressure_affected = TRUE, sound/S, repeat, muffled)
 	if(!client || !can_hear())
 		return FALSE
 
@@ -135,23 +135,25 @@
 
 		//sound volume falloff with distance
 		var/distance = get_dist(T, turf_source)
-		
-		distance *= distance_multiplier
 
-		if(max_distance) //If theres no max_distance we're not a 3D sound, so no falloff.
-			S.volume -= (max(distance - falloff_distance, 0) ** (1 / falloff_exponent)) / ((max(max_distance, distance) - falloff_distance) ** (1 / falloff_exponent)) * S.volume
-			//https://www.desmos.com/calculator/sqdfl8ipgf
-		else if(falloff)
-			S.volume -= (distance * (0.10 * S.volume)) //10% each step
-			if(S.volume <= 0)
-				return FALSE //No sound
+		S.volume -= (distance * (0.10 * S.volume)) //10% each step
+		if(S.volume <= 0)
+			return FALSE //No sound
 
 		var/dx = turf_source.x - T.x // Hearing from the right/left
-		S.x = dx * distance_multiplier
+		if(dx <= 1 && dx >= -1) //if we're  close enough we're heard in both ears
+			S.x = 0
+		else
+			S.x = dx
 		var/dz = turf_source.y - T.y // Hearing from infront/behind
-		S.z = dz * distance_multiplier
-		var/dy = (turf_source.z - T.z) * 2 // Hearing from above / below, multiplied by 2 because we assume height is further along coords.
-		S.y = dy + distance_multiplier
+		if(dz <= 1 && dz >= -1) //if we're  close enough we're heard in both ears
+			S.z = 0
+		else
+			S.z = dz
+		var/dy = (turf_source.z - T.z) * 2 // Hearing from  above / below, multiplied by 5 because we assume height is further along coords.
+		S.y = dy
+
+		S.falloff = (falloff ? falloff : FALLOFF_SOUNDS)
 
 	if(repeat)
 		if(istype(repeat, /datum/looping_sound))
@@ -181,9 +183,8 @@
 //				play_ambience(get_area(src))
 			S.repeat = 1
 
-		S.falloff = (falloff ? falloff : FALLOFF_SOUNDS)
-
 	SEND_SOUND(src, S)
+
 	return TRUE
 
 /proc/sound_to_playing_players(soundin, volume = 100, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
