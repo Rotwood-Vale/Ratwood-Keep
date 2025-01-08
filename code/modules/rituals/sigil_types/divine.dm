@@ -32,6 +32,5 @@
 
 
 /obj/effect/decal/cleanable/sigil/divine/attack_hand(mob/living/user)
+	
 	. = ..()
-	if(.)
-		user.playsound_local(user, 'sound/misc/vampirespell.ogg', 100)

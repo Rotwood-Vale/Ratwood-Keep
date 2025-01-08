@@ -58,5 +58,6 @@
 
 	Dead.update_body()
 	Dead.visible_message(span_notice("[Dead] is revived!"), span_green("I awake from the void."))
+	Dead.playsound_local(Dead, 'sound/misc/vampirespell.ogg', 100)
 	Dead.mind?.remove_antag_datum(/datum/antagonist/zombie)
 
