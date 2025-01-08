@@ -6,10 +6,11 @@
 	desc = ""
 
 	grid_width = 32
-	grid_height = 32
+	grid_height = 64
 
 	w_class = WEIGHT_CLASS_TINY
 	var/bundletype = null
+	var/bundling_time = 4 SECONDS
 
 /obj/item/natural/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/natural/bundle))

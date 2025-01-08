@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	force = 10
 	throwforce = 15
 	slot_flags = ITEM_SLOT_MOUTH
-	w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	mill_result = /obj/item/reagent_containers/powder/alch/stone
 
 /obj/item/natural/stone/Initialize()
@@ -243,7 +243,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 /obj/item/natural/stone/attackby(obj/item/W, mob/living/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/craft/masonry)
-	var/work_time = (40 - (skill_level * 5))
+	var/work_time = (35 - (skill_level * 5))
 	if(istype(W, /obj/item/natural/stone))
 		playsound(src.loc, pick('sound/items/stonestone.ogg'), 100)
 		user.visible_message(span_info("[user] strikes the stones together."))
@@ -255,14 +255,14 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	if( user.used_intent.type == /datum/intent/chisel )
 		playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
 		user.visible_message("<span class='info'>[user] chisels the stone into a block.</span>")
-		if(do_after(user, 2 SECONDS))
+		if(do_after(user, work_time))
 			new /obj/item/natural/stoneblock(get_turf(src.loc))
 			new /obj/effect/decal/cleanable/debris/stony(get_turf(src))
 			playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
 			qdel(src)
 			user.mind.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*0.2))
 		return
-	else if(istype(W, /obj/item/rogueweapon/chisel/tool))
+	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))
 		to_chat(user, span_warning("You most use both hands to chisel blocks."))
 	else
 		..()
@@ -355,7 +355,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			user.mind.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*0.5))
 			qdel(src)
 		return
-	else if(istype(W, /obj/item/rogueweapon/chisel/tool))
+	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))
 		to_chat(user, span_warning("You most use both hands to chisel blocks."))
 	..()
 
@@ -436,21 +436,23 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	sellprice = 2
 /obj/item/natural/stoneblock/attack_right(mob/user)
 	. = ..()
+	if(user.get_active_held_item())
+		return
 	to_chat(user, span_warning("I start to collect [src]..."))
 	if(move_after(user, 4 SECONDS, target = src))
-		var/blockcount = 0
+		var/stackcount = 0
 		for(var/obj/item/natural/stoneblock/F in get_turf(src))
-			blockcount++
-		while(blockcount > 0)
-			if(blockcount == 1)
+			stackcount++
+		while(stackcount > 0)
+			if(stackcount == 1)
 				var/obj/item/natural/stoneblock/S = new(get_turf(user))
 				user.put_in_hands(S)
-				blockcount--
-			else if(blockcount >= 2)
+				stackcount--
+			else if(stackcount >= 2)
 				var/obj/item/natural/bundle/stoneblock/B = new(get_turf(user))
-				B.amount = clamp(blockcount, 2, 4)
+				B.amount = clamp(stackcount, 2, 4)
 				B.update_bundle()
-				blockcount -= clamp(blockcount, 2, 4)
+				stackcount -= clamp(stackcount, 2, 4)
 				user.put_in_hands(B)
 		for(var/obj/item/natural/stoneblock/F in get_turf(src))
 			playsound(get_turf(user.loc), 'sound/foley/stone_scrape.ogg', 100)
@@ -462,8 +464,11 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	desc = "A stack of stone blocks."
 	icon_state = "stoneblockbundle1"
 	icon = 'icons/roguetown/items/crafting.dmi'
+	grid_width = 64
+	grid_height = 64
 	drop_sound = 'sound/foley/brickdrop.ogg'
 	hitsound = list('sound/combat/hits/blunt/shovel_hit.ogg', 'sound/combat/hits/blunt/shovel_hit2.ogg', 'sound/combat/hits/blunt/shovel_hit3.ogg')
+	pickup_sound = 'sound/foley/brickdrop.ogg'
 	possible_item_intents = list(/datum/intent/use)
 	force = 2
 	throwforce = 0	// useless for throwing unless solo
@@ -472,11 +477,10 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	stackname = "stone blocks"
 	stacktype = /obj/item/natural/stoneblock
 	maxamount = 4
-	icon1 = "stoneblockbundle1"
+	icon1 = "stoneblockbundle2"
 	icon1step = 3
-	icon2 = "stoneblockbundle2"
+	icon2 = "stoneblockbundle3"
 	icon2step = 4
-
 
 /obj/structure/roguerock/attackby(obj/item/W, mob/living/user, params)
 	. = ..()
@@ -493,6 +497,6 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			user.mind.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*1))
 			qdel(src)
 		return
-	else if(istype(W, /obj/item/rogueweapon/chisel/tool))
+	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))
 		to_chat(user, span_warning("You most use both hands to chisel blocks."))
 

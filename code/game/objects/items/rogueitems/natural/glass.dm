@@ -8,6 +8,8 @@
 	experimental_inhand = FALSE
 	icon_state = "glasspane"
 	dropshrink = 0.8
+	grid_width = 64
+	grid_height = 64
 	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
 	possible_item_intents = list(/datum/intent/use)
 	force = 0
@@ -27,8 +29,10 @@
 		playsound(src, 'sound/foley/glassbreak.ogg', 90, TRUE)
 		qdel(src)
 /obj/item/natural/glass/attack_right(mob/user)
+	if(user.get_active_held_item())
+		return
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 5 SECONDS, target = src))
+	if(move_after(user, 4 SECONDS, target = src))
 		var/stackcount = 0
 		for(var/obj/item/natural/glass/F in get_turf(src))
 			stackcount++
@@ -58,6 +62,8 @@
 	icon_state = "glasspane1"
 	item_state = "glasspane"
 	dropshrink = 0.8
+	grid_width = 64
+	grid_height = 64
 	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
 	possible_item_intents = list(/datum/intent/use)
 	force = 15

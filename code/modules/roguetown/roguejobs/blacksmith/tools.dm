@@ -1,11 +1,16 @@
-
-/obj/item/rogueweapon/hammer
+//................	Hammers	............... //
+/obj/item/rogueweapon/hammer	// The template
 	force = 21
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	name = "hammer"
-	desc = "Each strikes reverberate loudly chanting war!"
-	icon_state = "hammer"
+	name = "not a hammer"
+	desc = "Just a template. Report to devs."
 	icon = 'icons/roguetown/weapons/tools.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
+	experimental_inhand = FALSE
+	experimental_onhip = FALSE
+	experimental_onback = FALSE
 	sharpness = IS_BLUNT
 	wlength = 10
 	slot_flags = ITEM_SLOT_HIP
@@ -113,20 +118,21 @@
 	. = ..()
 
 /obj/item/rogueweapon/hammer/iron	// iron hammer
-	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
-	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
-	experimental_inhand = FALSE
+	name = "hammer"
+	desc = "Each strikes reverberate loudly chanting war!"
+	icon_state = "hammer_i"
+	item_state = "hammer_i"
 	smeltresult = /obj/item/ingot/iron
 
-/obj/item/rogueweapon/hammer/claw	// steel hammer
-	icon_state = "clawh"
-	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
-	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
-	experimental_inhand = FALSE
+/obj/item/rogueweapon/hammer/steel	// steel hammer
+	name = "claw hammer"
+	desc = "Steel to drive the iron nail without mercy."
+	icon_state = "hammer_s"
+	item_state = "hammer_s"
 	smeltresult = /obj/item/ingot/steel
 
 /*
-/obj/item/rogueweapon/hammer/claw/attack_turf(turf/T, mob/living/user)
+/obj/item/rogueweapon/hammer/steel/attack_turf(turf/T, mob/living/user)
 	if(!user.cmode)
 		if(T.hammer_repair && T.max_integrity && !T.obj_broken)
 			var/repair_percent = 0.05
@@ -146,14 +152,12 @@
 /obj/item/rogueweapon/hammer/wood
 	name = "wooden mallet"
 	desc = "A wooden mallet is an artificers second best friend! But it may also come in handy to a smith..."
-	icon_state = "whammer"
-	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
-	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
-	experimental_inhand = FALSE
+	icon_state = "hammer_w"
+	item_state = "hammer_w"
 	force = 16
-	smeltresult = null
 	metalizer_result = /obj/item/rogueweapon/hammer
 
+//................	Tongs	............... //
 /obj/item/rogueweapon/tongs
 	force = 10
 	possible_item_intents = list(/datum/intent/mace/strike)

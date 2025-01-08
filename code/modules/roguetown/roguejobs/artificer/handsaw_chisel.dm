@@ -7,12 +7,15 @@
 	name = "handsaw"
 	desc = "Iron tool for woodworking."
 	icon_state = "handsaw"
+	item_state = "handsaw"
 	icon = 'icons/roguetown/items/crafting.dmi'
 	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
 	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
 	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
 	experimental_inhand = FALSE
 	experimental_onhip = FALSE
+	grid_width = 32
+	grid_height = 96
 	sharpness = IS_SHARP
 	wdefense = 0
 	wlength = WLENGTH_LONG
@@ -24,55 +27,7 @@
 	associated_skill = /datum/skill/combat/maces
 	max_blade_int = 50
 
-/obj/item/rogueweapon/chisel/attackby(obj/item/W, mob/living/user, params)
-	. = ..()
-	if(istype(W,/obj/item/natural/stoneblock))
-		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
-		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
-		var/obj/item/rogueweapon/chisel/tool/stoneblock/F = new(src.loc)
-		user.put_in_hands(F)
-		qdel(W)
-		qdel(src)
-		return
-
-	else if(istype(W,/obj/item/natural/stone))
-		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
-		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
-		var/obj/item/rogueweapon/chisel/tool/stone/F = new(src.loc)
-		user.put_in_hands(F)
-		qdel(W)
-		qdel(src)
-		return
-
-	else if(istype(W, /obj/item/rogueweapon/hammer/claw))
-		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
-		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
-		var/obj/item/rogueweapon/chisel/tool/hammerclaw/F = new(src.loc)
-		user.put_in_hands(F)
-		qdel(W)
-		qdel(src)
-		return
-
-	else if(istype(W, /obj/item/rogueweapon/hammer/iron))
-		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
-		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
-		var/obj/item/rogueweapon/chisel/tool/hammer/F = new(src.loc)
-		user.put_in_hands(F)
-		qdel(W)
-		qdel(src)
-		return
-
-	else if(istype(W, /obj/item/rogueweapon/hammer/wood))
-		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
-		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
-		var/obj/item/rogueweapon/chisel/tool/mallet/F = new(src.loc)
-		user.put_in_hands(F)
-		qdel(W)
-		qdel(src)
-		return
-
-
-
+//................	Chisel	............... //
 /obj/item/rogueweapon/chisel
 	name = "chisel"
 	desc = "Add something to strike it with before doing stonework. Like a mallet or a stone."
@@ -82,6 +37,8 @@
 	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
 	experimental_inhand = FALSE
 	experimental_onhip = FALSE
+	grid_width = 32
+	grid_height = 64
 	force = 10
 	throwforce = 2
 	possible_item_intents = list(/datum/intent/stab)
@@ -90,7 +47,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	wdefense = 0
 	blade_dulling = 0
-	max_integrity = 150
+	max_integrity = 140
 	slot_flags = ITEM_SLOT_HIP
 	swingsound = list('sound/combat/wooshes/blunt/shovel_swing.ogg','sound/combat/wooshes/blunt/shovel_swing2.ogg')
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
@@ -98,70 +55,114 @@
 	max_blade_int = 50
 	dropshrink = 0.9
 
+/obj/item/rogueweapon/chisel/attackby(obj/item/W, mob/living/user, params)
+	. = ..()
+	if(istype(W,/obj/item/natural/stoneblock))
+		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
+		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
+		var/obj/item/rogueweapon/chisel/assembly/stoneblock/F = new(src.loc)
+		qdel(W)
+		user.put_in_hands(F)
+		qdel(src)
+		return
+
+	else if(istype(W,/obj/item/natural/stone))
+		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
+		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
+		var/obj/item/rogueweapon/chisel/assembly/stone/F = new(src.loc)
+		qdel(W)
+		user.put_in_hands(F)
+		qdel(src)
+		return
+
+	else if(istype(W, /obj/item/rogueweapon/hammer/steel))
+		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
+		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
+		var/obj/item/rogueweapon/chisel/assembly/hammerclaw/F = new(src.loc)
+		qdel(W)
+		user.put_in_hands(F)
+		qdel(src)
+		return
+
+	else if(istype(W, /obj/item/rogueweapon/hammer/iron))
+		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
+		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
+		var/obj/item/rogueweapon/chisel/assembly/hammer/F = new(src.loc)
+		qdel(W)
+		user.put_in_hands(F)
+		qdel(src)
+		return
+
+	else if(istype(W, /obj/item/rogueweapon/hammer/wood))
+		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
+		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
+		var/obj/item/rogueweapon/chisel/assembly/mallet/F = new(src.loc)
+		qdel(W)
+		user.put_in_hands(F)
+		qdel(src)
+		return
 
 //................	Chisel toolset	............... //
-/obj/item/rogueweapon/chisel/tool
+/obj/item/rogueweapon/chisel/assembly	// template
 	name = "chisel set"
-	desc = ""
-	icon_state = "chisel"
+	desc = "Ready to shape stones when held in a steady grip. Can be separated easily."
 	possible_item_intents = list(/datum/intent/hit)
 	gripped_intents =  list(/datum/intent/chisel)
 
-/obj/item/rogueweapon/chisel/tool/mallet
+/obj/item/rogueweapon/chisel/assembly/mallet
 	icon_state = "chiselm"
-	item_state = "whammer"
-/obj/item/rogueweapon/chisel/tool/mallet/attack_right(mob/user)
+	item_state = "hammer_w"
+/obj/item/rogueweapon/chisel/assembly/mallet/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/rogueweapon/hammer/wood/E = new(src.loc)
 	user.put_in_hands(E)
-	user.put_in_hands(F)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
+	user.put_in_hands(F)
 
-/obj/item/rogueweapon/chisel/tool/hammer
+/obj/item/rogueweapon/chisel/assembly/hammer
 	icon_state = "chiselh"
-	item_state = "hammer"
-/obj/item/rogueweapon/chisel/tool/hammer/attack_right(mob/user)
+	item_state = "hammer_i"
+/obj/item/rogueweapon/chisel/assembly/hammer/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/rogueweapon/hammer/iron/E = new(src.loc)
 	user.put_in_hands(E)
-	user.put_in_hands(F)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
+	user.put_in_hands(F)
 
-/obj/item/rogueweapon/chisel/tool/hammerclaw
+/obj/item/rogueweapon/chisel/assembly/hammerclaw
 	icon_state = "chiselc"
-	item_state = "clawh"
-/obj/item/rogueweapon/chisel/tool/hammerclaw/attack_right(mob/user)
+	item_state = "hammer_s"
+/obj/item/rogueweapon/chisel/assembly/hammerclaw/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
-	var/obj/item/rogueweapon/hammer/claw/E = new(src.loc)
+	var/obj/item/rogueweapon/hammer/steel/E = new(src.loc)
 	user.put_in_hands(E)
-	user.put_in_hands(F)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
+	user.put_in_hands(F)
 
-/obj/item/rogueweapon/chisel/tool/stone
+/obj/item/rogueweapon/chisel/assembly/stone
 	icon_state = "chisels"
 	item_state = "chisels"
-/obj/item/rogueweapon/chisel/tool/stone/attack_right(mob/user)
+/obj/item/rogueweapon/chisel/assembly/stone/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/natural/stone/E = new(src.loc)
 	user.put_in_hands(E)
-	user.put_in_hands(F)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
+	user.put_in_hands(F)
 
-/obj/item/rogueweapon/chisel/tool/stoneblock
+/obj/item/rogueweapon/chisel/assembly/stoneblock
 	icon_state = "chiselb"
 	item_state = "chiselb"
-/obj/item/rogueweapon/chisel/tool/stoneblock/attack_right(mob/user)
+/obj/item/rogueweapon/chisel/assembly/stoneblock/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/natural/stoneblock/E = new(src.loc)
 	user.put_in_hands(E)
-	user.put_in_hands(F)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
-
+	user.put_in_hands(F)
 
 
 /datum/intent/chisel

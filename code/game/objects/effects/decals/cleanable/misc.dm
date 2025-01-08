@@ -197,10 +197,9 @@
 /obj/effect/decal/cleanable/debris/Initialize()
 	. = ..()
 	setDir(pick(GLOB.cardinals))
-	pixel_x += rand(-1,1)
-	pixel_y += rand(-1,1)
 
 /obj/effect/decal/cleanable/debris/glassy
+	name = "glass shards"
 	icon_state = "tiny"
 	beauty = -100
 /obj/effect/decal/cleanable/debris/glassy/Crossed(mob/living/L)
@@ -208,4 +207,20 @@
 	playsound(loc,'sound/foley/glass_step.ogg', 50, FALSE)
 
 /obj/effect/decal/cleanable/debris/stony
+	name = "stone chippings"
 	icon_state = "pebbly"
+
+/obj/effect/decal/cleanable/debris/woody	// sawdust gets cleared by weather
+	name = "sawdust"
+	icon_state = "woody"
+/obj/effect/decal/cleanable/debris/woody/Initialize()
+	START_PROCESSING(SSprocessing, src)
+	GLOB.weather_act_upon_list += src
+	. = ..()
+/obj/effect/decal/cleanable/debris/woody/Destroy()
+	STOP_PROCESSING(SSprocessing, src)
+	GLOB.weather_act_upon_list -= src
+	. = ..()
+/obj/effect/decal/cleanable/debris/woody/weather_act_on(weather_trait, severity)
+	qdel(src)
+
