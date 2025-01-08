@@ -2698,7 +2698,8 @@
 /area/rogue/outdoors/mountains)
 "cmg" = (
 /obj/structure/mineral_door/bars{
-	lockid = "farm"
+	lockid = "farm";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
