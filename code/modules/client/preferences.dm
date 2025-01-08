@@ -2138,14 +2138,13 @@ Slots: [job.spawn_positions]</span>
 					defiant = !defiant
 					if(defiant)
 						if(user.client.prefs.be_russian)
-							to_chat(user, span_boldwarning("Вы полностью погружаетесь в мрачное сосуществование с миром, отказываясь от сопротивления людей, насилующих вас, но позволяя делать то же самое с другими людьми, не являющимися девиантами."))
-						else
-							to_chat(user, span_boldwarning("You fully immerse yourself in the dark coexistence with the world, refusing to resist people who abuse you, but allowing them to do the same to others who are not deviants."))
-					else
-						if(user.client.prefs.be_russian)
 							to_chat(user, span_notice("Теперь вы будете сопротивляться людям, нарушающим ваши права, но будете наказаны за попытку нарушить права других." + " " + span_boldwarning("(Режим COMBAT отключит ERP-взаимодействие. Обход этого режима является нарушением. Используйте AHELP, если необходимо.)")))
 						else
 							to_chat(user, span_notice("You will now have resistance from people violating you, but be punished for trying to violate others." + " " + span_boldwarning("(COMBAT Mode will disable ERP interactions. Bypassing this is a bannable offense, AHELP if necessary.)")))
+					else
+							to_chat(user, span_boldwarning("Вы полностью погружаетесь в мрачное сосуществование с миром, отказываясь от сопротивления людей, насилующих вас, но позволяя делать то же самое с другими людьми, не являющимися девиантами."))
+						else
+							to_chat(user, span_boldwarning("You fully immerse yourself in the dark coexistence with the world, refusing to resist people who abuse you, but allowing them to do the same to others who are not deviants."))
 
 				if("be_russian")
 					be_russian = !be_russian
