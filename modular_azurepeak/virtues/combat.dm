@@ -69,7 +69,7 @@
 
 /datum/virtue/combat/duelist
 	name = "Duelist Apprentice"
-	desc = "I have trained under a duelist of considerable skill, and always have my trusty rapier close at hand. (+1 to Swords, Minimum Apprentice)"
+	desc = "I have trained under a duelist of considerable skill, and always have my trusty rapier close at hand. (+1 to Swords, Up to Expert, Minimum Apprentice)"
 	added_stashed_items = list("Rapier" = /obj/item/rogueweapon/sword/rapier)
 
 /datum/virtue/combat/duelist/apply_to_human(mob/living/carbon/human/recipient)
@@ -81,7 +81,7 @@
 
 /datum/virtue/combat/bowman
 	name = "Toxophilite"
-	desc = "I have studied underneath a bowman of considerable skill, and always have my trusty bow and a quiver of arrows close at hand. (+1 to Bows, Minimum Apprentice)"
+	desc = "I have studied underneath a bowman of considerable skill, and always have my trusty bow and a quiver of arrows close at hand. (+1 to Bows, Up to Legendary, Minimum Apprentice)"
 	added_stashed_items = list("Recurve Bow" = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
 								"Quiver (Arrows)" = /obj/item/quiver/arrows
 	)
@@ -90,7 +90,7 @@
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/bows) < SKILL_LEVEL_JOURNEYMAN)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
-		added_skills = list(list(/datum/skill/combat/bows, 1, 4))
+		added_skills = list(list(/datum/skill/combat/bows, 1, 6))
 		handle_skills(recipient)
 /*/datum/virtue/combat/tavern_brawler
 	name = "Tavern Brawler"
