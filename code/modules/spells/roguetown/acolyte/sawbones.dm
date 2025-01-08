@@ -77,53 +77,57 @@
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast(list/targets, mob/living/user)
 	. = ..()
-	if(isliving(targets[1]) && targets[1].has_status_effect(/datum/status_effect/debuff/wheart))
-		testing("revived1")
-		var/mob/living/target = targets[1]
-		if(target == user)
-			revert_cast()
-			return FALSE
-		if(target.stat < DEAD)
-			to_chat(user, span_warning("Nothing happens."))
-			revert_cast()
-			return FALSE
-		if(target.mob_biotypes & MOB_UNDEAD)
-			to_chat(user, span_warning("It's undead, I can't."))
-			revert_cast()
-			return FALSE
-		if(!target.revive(full_heal = FALSE))
-			to_chat(user, span_warning("They need to be mended more."))
-			revert_cast()
-			return FALSE
-		testing("revived2")
-		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
-		//GET OVER HERE!
-		if(underworld_spirit)
-			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
-			qdel(underworld_spirit)
-			ghost.mind.transfer_to(target, TRUE)
-		target.grab_ghost(force = TRUE)
-		target.emote("breathgasp")
-		target.Jitter(100)
-		if(isseelie(target))
-			var/mob/living/carbon/human/fairy_target = target
-			fairy_target.set_heartattack(FALSE)
-			var/obj/item/organ/wings/Wing = fairy_target.getorganslot(ORGAN_SLOT_WINGS)
-			if(Wing == null)
-				var/wing_type = fairy_target.dna.species.organs[ORGAN_SLOT_WINGS]
-				var/obj/item/organ/wings/seelie/new_wings = new wing_type()
-				new_wings.Insert(fairy_target)
-		target.update_body()
-		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
-		if(target.mind)
-			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
-				adjust_playerquality(revive_pq, user.ckey)
-				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
-			target.mind.remove_antag_datum(/datum/antagonist/zombie)
-		return TRUE
-	to_chat(user, span_warning("I need to prime their heart first."))
-	revert_cast()
-	return FALSE
+
+	if(!isliving(targets[1]))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/target = targets[1]
+	if(target == user)
+		revert_cast()
+		return FALSE
+	if(target.stat < DEAD)
+		to_chat(user, span_warning("Nothing happens."))
+		revert_cast()
+		return FALSE
+	if(HAS_TRAIT(target, TRAIT_RITUALIZED))
+		to_chat(user, span_warning("The life essence was sucked out of this body."))
+		revert_cast()
+		return FALSE
+	if(world.time > target.mob_timers["lastdied"] + 5 MINUTES)
+		to_chat(user, span_warning("It's too late."))
+		revert_cast()
+		return FALSE
+	if(target.mob_biotypes & MOB_UNDEAD)
+		to_chat(user, span_warning("It's undead, I can't."))
+		revert_cast()
+		return FALSE
+	if(!target.revive(full_heal = FALSE))
+		to_chat(user, span_warning("They need to be mended more."))
+		revert_cast()
+		return FALSE
+	
+	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
+	//GET OVER HERE!
+	if(underworld_spirit)
+		var/mob/dead/observer/ghost = underworld_spirit.ghostize()
+		qdel(underworld_spirit)
+		ghost.mind.transfer_to(target, TRUE)
+	target.grab_ghost(force = TRUE)
+	target.emote("breathgasp")
+	target.Jitter(100)
+	if(isseelie(target))
+		var/mob/living/carbon/human/fairy_target = target
+		fairy_target.set_heartattack(FALSE)
+		var/obj/item/organ/wings/Wing = fairy_target.getorganslot(ORGAN_SLOT_WINGS)
+		if(Wing == null)
+			var/wing_type = fairy_target.dna.species.organs[ORGAN_SLOT_WINGS]
+			var/obj/item/organ/wings/seelie/new_wings = new wing_type()
+			new_wings.Insert(fairy_target)
+	target.update_body()
+	target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
+	target.mind?.remove_antag_datum(/datum/antagonist/zombie)
+	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
@@ -162,8 +166,6 @@
 		return FALSE
 
 	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-
-	testing("curerot2")
 
 	if(was_zombie)
 		target.mind.remove_antag_datum(/datum/antagonist/zombie)
@@ -291,28 +293,6 @@
 		return FALSE
 	return TRUE
 
-/obj/item/organ/heart/weak
-	name = "weakened heart"
-	desc = "This seems hardly functional."
-
-/datum/status_effect/debuff/wheart
-	id = "wheart"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/wheart
-	effectedstats = list("strength" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
-
-/atom/movable/screen/alert/status_effect/debuff/wheart
-	name = "Weak Heart"
-	desc = "I feel drained and sluggish. My heart beats painfully."
-
-/obj/item/organ/heart/weak/Insert(mob/living/carbon/M)
-	..()
-	M.apply_status_effect(/datum/status_effect/debuff/wheart)
-
-/obj/item/organ/heart/weak/Remove(mob/living/carbon/M, special = 0)
-	..()
-	if(M.has_status_effect(/datum/status_effect/debuff/wheart))
-		M.remove_status_effect(/datum/status_effect/debuff/wheart)
-
 /obj/item/organ/liver/weak
 	name = "weakened liver"
 	desc = "This seems hardly functional."
@@ -385,59 +365,7 @@
 		liver.Insert(target)
 		return TRUE
 
-
-/datum/surgery/bypass
-	name = "Coronary Artery Bypass Surgery"
-	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	possible_locs = list(BODY_ZONE_CHEST)
-	steps = list(
-		/datum/surgery_step/incise,
-		/datum/surgery_step/clamp,
-		/datum/surgery_step/retract,
-		/datum/surgery_step/saw,
-		/datum/surgery_step/bypass,
-		/datum/surgery_step/cauterize,
-	)
-
-/datum/surgery_step/bypass
-	name = "Perform Heart Rejuvination"
-	time = 20 SECONDS
-	accept_hand = TRUE
-	implements = list(
-		TOOL_HEMOSTAT = 60,
-		TOOL_IMPROVHEMOSTAT = 30,
-		TOOL_HAND = 10,
-	)
-	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_CLAMPED | SURGERY_RETRACTED | SURGERY_BROKEN
-	skill_min = SKILL_LEVEL_EXPERT
-	skill_median = SKILL_LEVEL_MASTER
-
-/datum/surgery_step/bypass/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	if(target.has_status_effect(/datum/status_effect/debuff/wheart))
-		to_chat(user, "Their heart is too weak")
-		return FALSE
-	else
-		display_results(user, target, span_notice("I begin to bypass the arteries in [target]'s heart...."),
-			span_notice("[user] begins to bypass the arteries in [target]'s heart."),
-			span_notice("[user] begins to bypass the arteries in [target]'s heart."))
-		return TRUE
-
-/datum/surgery_step/bypass/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I successfully bypass the arteries in [target]'s heart."),
-		span_notice("[user] successfully bypassess the arteries in [target]'s heart, restoring its function!"),
-		span_notice("[user] successfully bypassess the arteries in [target]'s heart, restoring its function!"))
-	var/obj/item/organ/heart/heart = target.getorganslot(ORGAN_SLOT_HEART)
-	if(heart)
-		heart.Remove(target)
-		QDEL_NULL(heart)
-		heart = new /obj/item/organ/heart/weak
-		heart.Insert(target)
-		return TRUE
-
 //------------------------------------------------reagents--------------------------------------------//
-
-
 
 /obj/item/reagent_containers/powder/alch
 	name = "essence"
