@@ -14435,7 +14435,6 @@
 /area/rogue/outdoors/bog)
 "iLJ" = (
 /obj/structure/roguemachine/scomm/r,
-/obj/structure/handcart,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/rtfield)
 "iLK" = (
@@ -24713,6 +24712,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"oYo" = (
+/obj/structure/handcart,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "oYq" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -29715,8 +29718,7 @@
 "slZ" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
-	lockid = "velder";
-	locked = 1
+	lockid = "velder"
 	},
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble,
@@ -204737,7 +204739,7 @@ ogN
 hHF
 iDD
 hHF
-cyr
+wMV
 hHI
 hHI
 faB
@@ -207321,7 +207323,7 @@ uaL
 wSn
 uaL
 uaL
-uaL
+oYo
 fxx
 fxx
 fxx
@@ -314467,10 +314469,10 @@ kqe
 kqe
 kqe
 kqe
+kqe
 ryI
 wOD
 mVz
-wOD
 wOD
 wOD
 mVz
@@ -314899,11 +314901,11 @@ kqe
 kqe
 kqe
 kqe
+kqe
 nqU
 oJO
 xou
 xou
-kEQ
 xou
 xou
 kEQ
@@ -315331,8 +315333,8 @@ kqe
 wVp
 kqe
 kqe
+kqe
 wcr
-xou
 xou
 xou
 xou
@@ -315763,11 +315765,11 @@ kqe
 kqe
 kqe
 qTK
+kqe
 nqU
 xbb
 xou
 odD
-uVt
 uVt
 oFj
 xou
@@ -316195,11 +316197,11 @@ kqe
 kqe
 kqe
 kqe
+kqe
 nqU
 nzp
 xou
 mqO
-jCh
 nqx
 nBj
 xou
@@ -316627,10 +316629,10 @@ kqe
 kqe
 kqe
 kqe
+kqe
 ryI
 nqU
 kor
-nqU
 nqU
 nqU
 ryI
@@ -319652,7 +319654,7 @@ nqU
 jCh
 jCh
 lIV
-bzm
+ifg
 bzm
 bzm
 nqU
