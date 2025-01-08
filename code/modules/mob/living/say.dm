@@ -288,9 +288,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/speaker_has_ceiling		= TRUE
 
 	var/turf/speaker_turf = get_turf(src)
-	var/ceiling_turf = GET_TURF_ABOVE(speaker_turf)
-	if(ceiling_turf)
-		if(istransparentturf(ceiling_turf))
+	var/speaker_ceiling = GET_TURF_ABOVE(speaker_turf)
+	if(speaker_ceiling)
+		if(istransparentturf(speaker_ceiling))
 			speaker_has_ceiling = FALSE
 	if(eavesdropping_modes[message_mode])
 		eavesdrop_range = EAVESDROP_EXTRA_RANGE
@@ -353,7 +353,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
 	for(var/_AM in listening)
 		var/atom/movable/AM = _AM
-		var/turf/listener_turf = get_turf(_AM)
+		var/turf/listener_turf = get_turf(AM)
 		var/listener_ceiling = GET_TURF_ABOVE(listener_turf)
 		if(listener_ceiling)
 			if(istransparentturf(listener_ceiling))
