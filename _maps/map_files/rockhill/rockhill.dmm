@@ -1119,7 +1119,7 @@
 	lockid = "blacksmith"
 	},
 /obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /obj/item/key/blacksmith,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -15025,8 +15025,8 @@
 	locked = 1;
 	lockid = "blacksmith"
 	},
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
 /obj/item/rogueweapon/pick/steel,
 /obj/item/rogueweapon/pick/steel,
 /obj/item/rogueweapon/pick,
@@ -15769,7 +15769,7 @@
 /area/rogue/indoors/town/bath)
 "jEp" = (
 /obj/machinery/anvil/crafted,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "jEq" = (
@@ -16182,7 +16182,7 @@
 	},
 /obj/item/rogueweapon/tongs,
 /obj/item/key/blacksmith,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -17463,7 +17463,7 @@
 	locked = 1;
 	lockid = "blacksmith"
 	},
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /obj/item/rogueweapon/tongs,
 /obj/item/key/blacksmith,
 /turf/open/floor/rogue/ruinedwood{
@@ -21723,7 +21723,7 @@
 	},
 /obj/item/key/blacksmith,
 /obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},

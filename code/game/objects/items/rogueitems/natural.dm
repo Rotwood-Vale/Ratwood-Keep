@@ -6,7 +6,7 @@
 	desc = ""
 
 	grid_width = 32
-	grid_height = 64
+	grid_height = 32
 
 	w_class = WEIGHT_CLASS_TINY
 	var/bundletype = null
