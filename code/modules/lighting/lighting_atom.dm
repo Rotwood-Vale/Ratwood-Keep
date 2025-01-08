@@ -2,6 +2,8 @@
 /atom
 	var/light_power = 1 // Intensity of the light.
 	var/light_range = 0 // Range in tiles of the light.
+	///Range where light begins to taper into darkness in tiles.
+	var/light_outer_range = 0
 	var/light_color     // Hexadecimal RGB string representing the colour of the light.
 	var/light_depth = 1 // how many zs we can go down through open spaces
 	var/light_height = 1

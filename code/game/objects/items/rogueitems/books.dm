@@ -503,8 +503,14 @@
 		return
 	if(in_range(user, src) || isobserver(user))
 		var/dat = {"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
-			<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type=\"text/css\">
-					body { background-image:url('book.png');background-repeat: repeat; }</style></head><body scroll=yes>"}
+			<html>
+			<head>
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+				<style type=\"text/css\">
+					body { background-image:url('book.png');background-repeat: repeat; }
+				</style>
+			</head>
+			<body scroll=yes>"}
 		for(var/I in page_texts)
 			dat += "<p>[I]</p>"
 		dat += "<br>"

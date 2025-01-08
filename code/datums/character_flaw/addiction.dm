@@ -77,6 +77,14 @@
 	time = 40 MINUTES
 	needsate_text = "Time for a drink."
 
+/// PYROMANIAC
+
+/datum/charflaw/addiction/pyromaniac // from tf2?
+	name = "Servant of Fire"
+	desc = "The warmth and just seeing something turn to ash is so much fun!"
+	time = 10 MINUTES
+	needsate_text = "I need to see something turn to ash, or be on fire. Anything!"
+
 
 /// JUNKIE
 

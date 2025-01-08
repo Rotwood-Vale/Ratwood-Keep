@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
 	"Hunted"=/datum/charflaw/dead_or_alive,
+	"Fire Servant"=/datum/charflaw/addiction/pyromaniac,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
 	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw
 	))
