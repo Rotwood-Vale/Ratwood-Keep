@@ -80,7 +80,7 @@
 	result = /turf/open/floor/rogue/cobblerock
 	reqs = list(/obj/item/natural/stone = 1)
 	skill_level = 0
-/datum/crafting_recipe/roguetown/turfs/stone/TurfCheck(mob/user, turf/T)
+/datum/crafting_recipe/roguetown/turfs/stone/cobblerock/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/floor/rogue/dirt))

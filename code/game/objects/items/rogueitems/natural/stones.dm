@@ -127,8 +127,12 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/stone
 	name = "stone"
-	icon_state = "stone1"
 	desc = "A piece of rough ground stone."
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	icon_state = "stone1"
+	item_state = "stone"
+	experimental_inhand = FALSE
 	gripped_intents = null
 	dropshrink = 0.75
 	possible_item_intents = list(INTENT_GENERIC)
@@ -426,6 +430,10 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	desc = "A rectangular stone block for building."
 	icon = 'icons/roguetown/items/crafting.dmi'
 	icon_state = "stoneblock"
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	item_state = "block"
+	experimental_inhand = FALSE
 	drop_sound = 'sound/foley/brickdrop.ogg'
 	hitsound = 'sound/foley/brickdrop.ogg'
 	possible_item_intents = list(INTENT_GENERIC)
@@ -464,6 +472,10 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	desc = "A stack of stone blocks."
 	icon_state = "stoneblockbundle1"
 	icon = 'icons/roguetown/items/crafting.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	item_state = "block"
+	experimental_inhand = FALSE
 	grid_width = 64
 	grid_height = 64
 	drop_sound = 'sound/foley/brickdrop.ogg'

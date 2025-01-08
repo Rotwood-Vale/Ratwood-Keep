@@ -106,6 +106,8 @@
 /obj/item/rogueweapon/chisel/assembly	// template
 	name = "chisel set"
 	desc = "Ready to shape stones when held in a steady grip. Can be separated easily."
+	grid_width = 64
+	grid_height = 64
 	possible_item_intents = list(/datum/intent/hit)
 	gripped_intents =  list(/datum/intent/chisel)
 
@@ -144,7 +146,7 @@
 
 /obj/item/rogueweapon/chisel/assembly/stone
 	icon_state = "chisels"
-	item_state = "chisels"
+	item_state = "stone"
 /obj/item/rogueweapon/chisel/assembly/stone/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/natural/stone/E = new(src.loc)
@@ -155,7 +157,7 @@
 
 /obj/item/rogueweapon/chisel/assembly/stoneblock
 	icon_state = "chiselb"
-	item_state = "chiselb"
+	item_state = "block"
 /obj/item/rogueweapon/chisel/assembly/stoneblock/attack_right(mob/user)
 	var/obj/item/rogueweapon/chisel/F = new(src.loc)
 	var/obj/item/natural/stoneblock/E = new(src.loc)
