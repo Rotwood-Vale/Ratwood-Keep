@@ -713,7 +713,6 @@
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 		if(blood_volume <= 0)
 			health = 0
-	//staminaloss = getStaminaLoss()
 	update_stat()
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 

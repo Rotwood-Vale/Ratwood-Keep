@@ -2,7 +2,7 @@
 	var/athletics_skill = 0
 	if(mind)
 		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
-	max_stamina = (STAEND + athletics_skill) * 10 //This here is the calculation for max FATIGUE / GREEN
+	max_stamina = (STAEND + athletics_skill) * 10 //This here is the calculation for max STAMINA / GREEN
 	if(world.time > last_fatigued + 50) //regen fatigue
 		var/added = energy / max_energy // Add an amount of stamina from our energy pool. Blue -> Green
 		added = round(-10+ (added*-40))

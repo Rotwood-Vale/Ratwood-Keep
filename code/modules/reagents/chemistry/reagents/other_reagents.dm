@@ -913,7 +913,6 @@
 	..()
 
 /datum/reagent/stimulum/on_mob_life(mob/living/carbon/M)
-	//M.adjustStaminaLoss(-2*REM, 0)
 	M.adjustToxLoss(current_cycle*0.1*REM, 0) // 1 toxin damage per cycle at cycle 10
 	..()
 

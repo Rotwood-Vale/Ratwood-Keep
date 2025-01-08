@@ -180,7 +180,6 @@
 	M.AdjustUnconscious(-40, FALSE)
 	M.AdjustParalyzed(-40, FALSE)
 	M.AdjustImmobilized(-40, FALSE)
-	//M.adjustStaminaLoss(-2, 0)
 	M.Jitter(2)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, rand(1,4))
 	if(prob(5))

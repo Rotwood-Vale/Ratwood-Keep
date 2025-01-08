@@ -155,7 +155,9 @@
 			M.drowsyness += 1
 			M.slurring += 3
 		if(5 to 8)
-			//M.adjustStaminaLoss(40, 0)
+			M.confused += 2
+			M.drowsyness += 2
+			M.slurring += 3
 		if(9 to INFINITY)
 			fakedeath_active = TRUE
 			M.fakedeath(type)
@@ -807,7 +809,6 @@
 	M.say("oof ouch my bones", forced = /datum/reagent/toxin/bonehurtingjuice)
 
 /datum/reagent/toxin/bonehurtingjuice/on_mob_life(mob/living/carbon/M)
-	//M.adjustStaminaLoss(7.5, 0)
 	if(prob(20))
 		switch(rand(1, 3))
 			if(1)
