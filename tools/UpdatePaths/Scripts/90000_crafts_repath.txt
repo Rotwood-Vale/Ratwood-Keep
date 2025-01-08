@@ -1,2 +1,1 @@
-/obj/item/natural/glass_shard : /obj/item/natural/glass/shard{@OLD}
 /obj/effect/decal/cleanable/debris/glassy : /obj/effect/decal/cleanable/glass{@OLD}
