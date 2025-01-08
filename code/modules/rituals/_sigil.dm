@@ -11,6 +11,8 @@
 	/// The list of rituals that can be performed with this sigil.
 	var/rituals = list()
 
+/obj/effect/decal/cleanable/sigil/
+
 /obj/effect/decal/cleanable/sigil/N
 	icon_state = "N"
 
