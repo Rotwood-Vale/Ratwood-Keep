@@ -165,18 +165,44 @@
 
 	emote("choke", intentional = TRUE)
 
-/datum/emote/living/mrrp
-	key = "mrrp"
-	key_third_person = "mrrps"
-	message = "mrrps."
+/datum/emote/living/trill
+	key = "trill"
+	key_third_person = "trills"
+	message = "trills."
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
-/mob/living/carbon/human/verb/emote_mrrp()
-	set name = "Mrrp"
+/mob/living/carbon/human/verb/emote_trill()
+	set name = "Trill"
 	set category = "Noises"
 
-	emote("mrrp", intentional = TRUE)
+	emote("trill", intentional = TRUE)
+
+/datum/emote/living/meow
+	key = "meow"
+	key_third_person = "meows"
+	message = "meows."
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_meow()
+	set name = "Meow"
+	set category = "Noises"
+
+	emote("meow", intentional = TRUE)
+
+/datum/emote/living/hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses!"
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_hiss()
+	set name = "Hiss"
+	set category = "Noises"
+
+	emote("hiss", intentional = TRUE)
 
 /datum/emote/living/cross
 	key = "crossarms"
