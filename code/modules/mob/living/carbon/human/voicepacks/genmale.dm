@@ -99,6 +99,6 @@
 			if("meow")
 				used = list('sound/vo/meow.ogg','sound/vo/meow (2).ogg')
 			if("hiss")
-				used = 'sound/vo/hiss.ogg'
+				used = list('sound/vo/hiss.ogg','sound/vo/hiss (2).ogg')
 
 	return used
