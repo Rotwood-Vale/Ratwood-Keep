@@ -165,6 +165,19 @@
 
 	emote("choke", intentional = TRUE)
 
+/datum/emote/living/mrrp
+	key = "mrrp"
+	key_third_person = "mrrps"
+	message = "mrrps."
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_mrrp()
+	set name = "Mrrp"
+	set category = "Noises"
+
+	emote("mrrp", intentional = TRUE)
+
 /datum/emote/living/cross
 	key = "crossarms"
 	key_third_person = "crossesarms"
