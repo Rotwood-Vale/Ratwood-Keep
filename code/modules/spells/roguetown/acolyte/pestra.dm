@@ -155,7 +155,7 @@
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
-		testing("curerot1")
+
 		var/mob/living/target = targets[1]
 		if(target == user)
 			revert_cast()
@@ -169,7 +169,7 @@
 
 		for(var/obj/structure/fluff/psycross/S in oview(5, user))
 			S.AOE_flash(user, range = 8)
-		testing("curerot2")
+
 		if(was_zombie)
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 			target.Unconscious(20 SECONDS)
@@ -197,17 +197,13 @@
 		
 		for(var/trait in GLOB.traits_deadite)
 			REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
-	
-		if(target.stat < DEAD) // Drag and shove ghost back in.
-			var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
-			if(underworld_spirit)
-				var/mob/dead/observer/ghost = underworld_spirit.ghostize()
-				ghost.mind.transfer_to(target, TRUE)
-				qdel(underworld_spirit)
-		target.grab_ghost(force = TRUE) // even suicides
+
+		// Ensures derotting does not in fact revive, only resetting the death process.
+		target.death(FALSE)
 
 		target.update_body()
-		target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+		target.visible_message(span_notice("The rot leaves [target]'s body! For now..."))
+		
 		if(target.mind?.funeral && (target.stat != DEAD) && !CONFIG_GET(flag/force_respawn_on_funeral))
 			to_chat(target, span_warning("My funeral rites are undone!"))
 			target.mind.funeral = FALSE
