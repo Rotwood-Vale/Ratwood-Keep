@@ -101,7 +101,7 @@
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 	if(H.mind)
 		assign_skills(H)
-	H.verbs |= list(/mob/proc/haltyell, /mob/proc/trill, /mob/proc/meow, /mob/proc/hiss)
+	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/bogguardsman/proc/assign_skills(mob/living/carbon/human/bogger)
@@ -150,18 +150,3 @@
 	bogger.change_stat("speed", 2)
 	bogger.change_stat("constitution", 1)
 	bogger.change_stat("endurance", 2)
-
-/mob/proc/trill()
-	set name = "Trill"
-	set category = "Noises"
-	emote("trill")
-
-/mob/proc/meow()
-	set name = "Meow"
-	set category = "Noises"
-	emote("meow")
-
-/mob/proc/hiss()
-	set name = "Hiss"
-	set category = "Noises"
-	emote("hiss")
