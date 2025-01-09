@@ -8,19 +8,25 @@
 
 /datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/roguehood/mage
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
-	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
-	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/rogueweapon/huntingknife
-	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(
-						/obj/item/flashlight/flare/torch = 1,
-						)
+	H.adjust_blindness(-3)
+	var/classes = list("Sorcerer","Spellsinger","Necromancer")
+	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
+
+	switch(classchoice)
+	
+		if("Sorcerer")
+			to_chat(H, span_warning("You are a learned mage and a scholar, having spent your life studying the arcane and its ways."))
+			head = /obj/item/clothing/head/roguetown/roguehood/mage
+			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+			pants = /obj/item/clothing/under/roguetown/trou/leather
+			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
+			belt = /obj/item/storage/belt/rogue/leather/rope
+			beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			beltl = /obj/item/rogueweapon/huntingknife
+			backl = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 	r_hand = /obj/item/rogueweapon/woodstaff
 	if(H.mind)
 		to_chat(H, span_warning("Magic is often times refered to as an art. At times it is treated as a primordial beast, chaos incarnate. To more learned men it is a precise science, to be studied and examined. In the end, magic is all three of the above. It is Art, Chaos, and Science: a blessing, a curse, and progress. It all depends on who calls upon it, and for what purpose."))

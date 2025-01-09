@@ -80,6 +80,9 @@
 		if(HAS_TRAIT(src, TRAIT_NOBLE) && HAS_TRAIT(user, TRAIT_NOBLE))
 			. += span_notice("A fellow noble.")
 
+		if(HAS_TRAIT(src, TRAIT_OUTLAW))
+			. += span_userdanger("A fugitive!")
+
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.marriedto == name)
