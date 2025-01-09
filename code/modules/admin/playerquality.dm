@@ -215,23 +215,8 @@
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(json))
 
-	var/fakekey
-	if(istype(giver, /client))
-		var/client/C = giver
-		fakekey = C.ckey
-	else
-		fakekey = giver
-
-	if(fakekey in GLOB.anonymize)
-		fakekey = get_fake_key(fakekey)
-
-	var/raisin = stripped_input(usr, "Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
-	if(!raisin)
-		to_chat(usr, span_boldwarning("Причина не указана."))
-		return
-
 	if(curcomm == 1)
-		adjust_playerquality(1, ckey(key), fakekey, raisin)
+		adjust_playerquality(1, ckey(key))
 
 /proc/get_commends(key)
 	if(!key)
