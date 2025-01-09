@@ -57,7 +57,18 @@
 	name = "Hammer (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/hammer
+	created_item = /obj/item/rogueweapon/hammer/iron
+
+/datum/anvil_recipe/tools/iron/handsaw
+	name = "Handsaw (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/handsaw
+
+/datum/anvil_recipe/tools/iron/chisel
+	name = "Chisel"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/chisel
 
 /datum/anvil_recipe/tools/iron/tongs
 	name = "Tongs"
@@ -138,6 +149,12 @@
 	skill_level = 0
 
 // --------- Steel -----------
+
+/datum/anvil_recipe/tools/steel/hammer
+	name = "Claw hammer (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/hammer/steel
 
 /datum/anvil_recipe/tools/steel/pick
 	name = "Pickaxe (+1 Stick)"
