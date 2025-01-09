@@ -425,6 +425,26 @@
 	icon_state = "tallbush[pick(1,2)]"
 
 
+/*	..................   Wild Swampweed   ................... */
+/obj/structure/wild_swampweed
+	name = "swampweed"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "weed2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf = 1)
+/obj/structure/wild_swampweed/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf (get_turf(src))
+		qdel(src)
+/obj/structure/wild_swampweed/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
 /obj/structure/flora/rogueshroom
 	name = "mushroom"
 	desc = "Mushrooms are the only happy beings in this island."
