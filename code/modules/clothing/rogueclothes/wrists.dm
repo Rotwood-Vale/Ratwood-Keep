@@ -8,6 +8,9 @@
 	sewrepair = TRUE
 	fiber_salvage = FALSE
 
+	grid_width = 32
+	grid_height = 64
+
 /obj/item/clothing/wrists/roguetown/bracers
 	name = "bracers"
 	desc = ""

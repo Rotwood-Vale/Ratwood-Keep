@@ -1,7 +1,8 @@
 /datum/job/roguetown/puritan
 	title = "Inquisitor"
 	flag = PURITAN
-	department_flag = CHURCHMEN
+	department_flag = INQUISITION
+	selection_color = JCOLOR_INQUISITION
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -28,16 +29,17 @@
 
 /datum/outfit/job/roguetown/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
-	shoes = /obj/item/clothing/shoes/roguetown/armor
+	shoes = /obj/item/clothing/shoes/roguetown/armor/inqboots
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
 	beltl = /obj/item/storage/belt/rogue/pouch/ammo
-	head = /obj/item/clothing/head/roguetown/puritan
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	head = /obj/item/clothing/head/roguetown/inqhat
+	gloves = /obj/item/clothing/gloves/roguetown/inqgloves
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat
 	backr = /obj/item/rogueweapon/sword/rapier
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver, /obj/item/lockpick = 1)
@@ -133,7 +135,7 @@
 
 /mob/living/carbon/human/proc/confession_time(confession_type = "antag")
 	var/timerid = addtimer(CALLBACK(src, PROC_REF(confess_sins)), 6 SECONDS, TIMER_STOPPABLE)
-	var/responsey = alert(src, "Resist torture? (1 TRI)", "TORTURE", "Yes","No")
+	var/responsey = alert(src, "Resist torture?", "TORTURE", "Yes","No")
 	if(!responsey)
 		responsey = "No"
 	if(SStimer.timer_id_dict[timerid])
@@ -142,7 +144,6 @@
 		to_chat(src, span_warning("Too late..."))
 		return
 	if(responsey == "Yes")
-		adjust_triumphs(-1)
 		confess_sins(confession_type, resist = TRUE)
 	else
 		confess_sins(confession_type)
@@ -156,7 +157,13 @@
 		"I HAVE NOTHING TO SAY...!",
 		"WHY ME?!",
 	)
-	if(!resist)
+	var/resist_chance
+	if(resist)
+		to_chat(span_boldwarning("I attempt to resist the torture!"))
+		resist_chance = (STAINT + STAEND) + 10
+		if(confession_type == "antag")
+			resist_chance += 25
+	if(!resist || (resist_chance && prob(resist_chance)))
 		var/list/confessions = list()
 		switch(confession_type)
 			if("patron")
@@ -170,4 +177,5 @@
 		if(length(confessions))
 			say(pick(confessions), spans = list("torture"))
 			return
+	to_chat(span_good("I resist the torture!"))
 	say(pick(innocent_lines), spans = list("torture"))

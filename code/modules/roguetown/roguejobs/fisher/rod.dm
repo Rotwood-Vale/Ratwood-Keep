@@ -9,6 +9,10 @@
 	wlength = 33
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_BULKY
+
+	grid_height = 96
+	grid_width = 32
+	
 	///The current bait that we have attached to our fishing rod
 	var/obj/item/baited = null
 

@@ -46,6 +46,9 @@
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
 
+///trait determines if this mob can breed given by /datum/component/breeding
+#define TRAIT_MOB_BREEDER "mob_breeder"
+
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
 #define TRAIT_ORGAN_EATER "Blessing of Graggar" //can eat organs
@@ -54,7 +57,7 @@
 #define TRAIT_ZIZO_MARKED "Blessing of Zizo" //basically just here so that they can avoid a negative moodlet
 #define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
-#define TRAIT_CHOSEN "Astrata's Chosen"
+#define TRAIT_CHOSEN "Consecrated Priest"
 #define TRAIT_NOCTURNAL "Noc's Moonlight" //Grants weak darkvision- lighting alpha 145, amplified for mages using the DV spell- alpha 200
 #define TRAIT_FORGEBLESSED "Malum's Devout" //Reduces the fatigue cost of smithing a bit.
 
@@ -72,7 +75,6 @@
 #define TRAIT_LIMPDICK "limp_dick"
 #define TRAIT_SEXPASS "sexpass"
 #define TRAIT_STEELHEARTED "steelhearted" //no bad mood from dismembering or seeing this
-#define TRAIT_IWASREVIVED "iwasrevived" //prevents PQ gain from reviving the same person twice
 #define TRAIT_IWASUNZOMBIFIED "iwasunzombified" //prevents PQ gain from curing a zombie twice
 #define TRAIT_IWASHAUNTED "iwashaunted" //prevents spawning a haunt from a decapitated body twice
 #define TRAIT_SCHIZO_AMBIENCE "schizo_ambience" //replaces all ambience with creepy shit
@@ -98,9 +100,11 @@
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
 
+
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
-	TRAIT_CHOSEN = "Astrata choose you to represent her glory.",
+	TRAIT_CHOSEN = "Appointed by the Church of the Successors, you hold authority over all spiritual matters in the City.",
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
 	TRAIT_ZJUMP = "Time to reach a new high.",
@@ -390,3 +394,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 #define TRAIT_LIGHT_STEP		"light_step"
 #define TRAIT_DRUNK_HEALING		"drunk_healing"
+
+// RITUALS
+
+#define TRAIT_RITUALIZED "Ritualized" //This is used to prevent cpr to work on humans that just got sacrificed

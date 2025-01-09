@@ -5,7 +5,8 @@ Please do not confuse the two.
 /datum/job/roguetown/shepherd
 	title = "Confessor"
 	flag = CONFESSOR
-	department_flag = CHURCHMEN
+	department_flag = INQUISITION
+	selection_color = JCOLOR_INQUISITION
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
@@ -40,7 +41,7 @@ Please do not confuse the two.
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	mask = /obj/item/clothing/mask/rogue/shepherd
+	mask = /obj/item/clothing/mask/rogue/rag
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
