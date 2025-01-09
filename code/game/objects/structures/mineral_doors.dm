@@ -407,7 +407,7 @@
 		return
 	else
 		var/obj/item/roguekey/K = I
-		if(K.lockhash == lockhash)
+		if(K.lockhash == lockhash || istype(K, /obj/item/roguekey/lord)) //master key cares not for lockhashes
 			lock_toggle(user)
 			if(autobump)
 				src.Open()
@@ -644,6 +644,7 @@
 	repair_cost_first = /obj/item/grown/log/tree/small
 	repair_cost_second = /obj/item/grown/log/tree/small	
 	repair_skill = /datum/skill/craft/carpentry
+	ridethrough = TRUE
 
 /obj/structure/mineral_door/wood/window
 	opacity = FALSE
