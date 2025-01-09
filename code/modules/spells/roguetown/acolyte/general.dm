@@ -20,7 +20,8 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
+		var/datum/antagonist/vampirelord/VD = target.mind?.has_antag_datum(/datum/antagonist/vampirelord)
+		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD) && (VD && !VD.disguised)) //positive energy harms the undead, disguised vampires are healed.
 			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 			target.adjustFireLoss(10)
 			target.fire_act(1,10)
@@ -112,7 +113,8 @@
 	. = ..()
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
+		var/datum/antagonist/vampirelord/VD = target.mind?.has_antag_datum(/datum/antagonist/vampirelord)
+		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD) && (VD && !VD.disguised)) //positive energy harms the undead, disguised vampires are healed.
 			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 			target.adjustFireLoss(25)
 			target.fire_act(1,10)
