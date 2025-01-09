@@ -318,7 +318,7 @@ SUBSYSTEM_DEF(vote)
 		. += "</li><li>"
 		//gamemode
 		var/avm = CONFIG_GET(flag/allow_vote_mode)
-		if(trialmin || avr)
+		if(trialmin || avm)
 			. += "<a href='?src=[REF(src)];vote=gamemode'>GameMode</a>"
 		else
 			. += "<font color='grey'>GameMode (Disallowed)</font>"
@@ -397,7 +397,7 @@ SUBSYSTEM_DEF(vote)
 /mob/verb/vote()
 	set category = "OOC"
 	set name = "Vote"
-	// set hidden = 1
+	set hidden = 1
 	var/datum/browser/noclose/popup = new(src, "vote", "Voting Panel")
 	popup.set_window_options("can_close=0")
 	popup.set_content(SSvote.interface(client))
