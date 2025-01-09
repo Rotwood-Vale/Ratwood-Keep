@@ -20,6 +20,10 @@
 	w_class = WEIGHT_CLASS_BULKY
 	bundletype = /obj/item/natural/bundle/glass
 	sellprice = 6
+/obj/item/natural/glass/attackby(obj/item, mob/living/user)
+	if(item_flags & IN_STORAGE)
+		return
+	. = ..()
 /obj/item/natural/glass/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)
 	if(!..()) //was it caught by a mob?
 		new /obj/item/natural/glass_shard(get_turf(src))
@@ -49,7 +53,6 @@
 		for(var/obj/item/natural/glass/F in get_turf(src))
 			playsound(get_turf(user.loc), 'sound/foley/dropsound/glass_drop.ogg', 90)
 			qdel(F)
-
 
 //................	Glass panes stack	............... //
 /obj/item/natural/bundle/glass
