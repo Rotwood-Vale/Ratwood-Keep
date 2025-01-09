@@ -230,11 +230,11 @@
 #define JDO_CLERK 3.1
 #define JDO_MARSHAL 4
 #define JDO_COUNCILLOR 4.1
+#define JDO_MAGICIAN 5
+#define JDO_PHYSICIAN 6
 
 // Courtiers
-#define JDO_MAGICIAN 5
 #define JDO_MAGEAPPRENTICE 5.1
-#define JDO_PHYSICIAN 6
 #define JDO_JESTER 7
 #define JDO_BUTLER 7.1
 #define JDO_SERVANT 7.2
@@ -322,13 +322,13 @@
 	/datum/job/roguetown/wapprentice,\
 	/datum/job/roguetown/servant,\
 	/datum/job/roguetown/squire,\
-	/datum/job/roguetown/butler,\
-	/datum/job/roguetown/magician
+	/datum/job/roguetown/butler
 
 #define NOBLE_ROLES \
 	/datum/job/roguetown/prince,\
 	/datum/job/roguetown/councillor,\
 	/datum/job/roguetown/physician,\
+	/datum/job/roguetown/magician,\
 	/datum/job/roguetown/marshal,\
 	/datum/job/roguetown/captain,\
 	/datum/job/roguetown/hand,\
