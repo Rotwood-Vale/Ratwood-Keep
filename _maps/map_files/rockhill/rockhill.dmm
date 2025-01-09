@@ -497,9 +497,19 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/shelter/town/harbor)
 "aqY" = (
-/obj/structure/fluff/statue/gargoyle/moss,
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/under/town/basement)
+/obj/structure/lever/red{
+	dir = 4;
+	name = "DROP";
+	redstone_id = "lava_bastion"
+	},
+/obj/structure/lever/red{
+	dir = 6;
+	name = "BURN";
+	redstone_id = "lava_bastioncell";
+	pixel_x = -10
+	},
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors)
 "arl" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -1063,20 +1073,6 @@
 /obj/item/clothing/under/roguetown/tights/stockings/fishnet/random,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/bath)
-"aIK" = (
-/obj/structure/lever/red{
-	dir = 4;
-	name = "DROP";
-	redstone_id = "lava_bastion"
-	},
-/obj/structure/lever/red{
-	dir = 6;
-	name = "BURN";
-	redstone_id = "lava_bastioncell";
-	pixel_x = -10
-	},
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors)
 "aIT" = (
 /obj/machinery/light/rogue/firebowl/standing/green,
 /obj/structure/fluff/railing/wood{
@@ -3754,12 +3750,6 @@
 "cpf" = (
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/town/manor)
-"cpj" = (
-/obj/machinery/light/rogue/torchholder/l{
-	dir = 8
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
 "cpn" = (
 /turf/closed/wall/mineral/rogue/decostone/mossy/long,
 /area/rogue/indoors/town/church)
@@ -3948,11 +3938,8 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
 "cwl" = (
-/obj/structure/floordoor{
-	redstone_id = "lava_bastioncell"
-	},
-/obj/machinery/light/rogue/wallfire/candle,
-/turf/open/transparent/openspace,
+/obj/item/roguebin/trash,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "cwo" = (
 /obj/structure/fluff/railing/border{
@@ -7519,6 +7506,16 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
+"ezy" = (
+/obj/structure/mineral_door/wood/donjon{
+	dir = 8;
+	locked = 1;
+	lockid = "bog_gatehouse";
+	name = "Acid Cell";
+	lockdiff = 2
+	},
+/turf/open/floor/rogue/blocks/green,
+/area/rogue/under/town/basement)
 "ezJ" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -9776,14 +9773,8 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "fQq" = (
-/obj/structure/mineral_door/wood/donjon{
-	dir = 8;
-	locked = 1;
-	lockid = "bog_gatehouse";
-	name = "Acid Cell";
-	lockdiff = 2
-	},
-/turf/open/floor/rogue/blocks/green,
+/obj/structure/fluff/statue/gargoyle/moss,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "fQx" = (
 /obj/structure/table/wood{
@@ -10227,8 +10218,8 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
 "ghN" = (
-/obj/item/roguebin/trash,
-/turf/open/floor/rogue/cobble,
+/obj/machinery/light/rogue/torchholder/l,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "ghO" = (
 /obj/structure/fluff/railing/wood{
@@ -18218,13 +18209,15 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town)
 "kYh" = (
+/obj/structure/floordoor/gatehatch/inner{
+	redstone_id = "lava_bastion"
+	},
 /obj/structure/kybraxor{
 	pixel_x = -32;
 	pixel_y = -32;
-	redstone_id = "lava_bastion"
-	},
-/obj/structure/floordoor/gatehatch/inner{
-	redstone_id = "lava_bastion"
+	redstone_id = "lava_bastion";
+	desc = "Hungry for the poor.";
+	name = "Balar"
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
@@ -19081,10 +19074,10 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors)
 "lBT" = (
-/obj/structure/fermenting_barrel/random/water{
-	name = "Water barrel"
+/obj/structure/floordoor{
+	redstone_id = "lava_bastioncell"
 	},
-/turf/open/floor/rogue/cobble/mossy,
+/turf/open/transparent/openspace,
 /area/rogue/under/town/basement)
 "lBW" = (
 /obj/structure/flora/roguegrass,
@@ -33001,6 +32994,7 @@
 /obj/structure/floordoor{
 	redstone_id = "lava_bastioncell"
 	},
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/transparent/openspace,
 /area/rogue/under/town/basement)
 "tWB" = (
@@ -36387,7 +36381,9 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/druidgrove)
 "wcJ" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/structure/fermenting_barrel/random/water{
+	name = "Water barrel"
+	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "wcK" = (
@@ -37305,6 +37301,12 @@
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
+"wHH" = (
+/obj/machinery/light/rogue/torchholder/l{
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "wHU" = (
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/town/basement)
@@ -107609,8 +107611,8 @@ cTA
 ivF
 ozA
 cTA
-ghN
-cpj
+cwl
+wHH
 iTw
 iTw
 hrA
@@ -108471,10 +108473,10 @@ bpD
 lLK
 lLK
 cTA
-aqY
+fQq
 gUu
 gUu
-wcJ
+ghN
 gUu
 sFm
 cTA
@@ -111495,12 +111497,12 @@ bpD
 lLK
 lLK
 cTA
-aqY
+fQq
 gUu
-wcJ
+ghN
 srZ
 gUu
-lBT
+wcJ
 cTA
 vTW
 vTW
@@ -219500,7 +219502,7 @@ lIb
 gUu
 cTA
 ykB
-fQq
+ezy
 ykB
 cTA
 cTA
@@ -219931,9 +219933,9 @@ cTA
 gUu
 gUu
 cTA
-cwl
 tWi
-tWi
+lBT
+lBT
 cTA
 cTA
 cTA
@@ -220363,9 +220365,9 @@ cTA
 gUu
 gUu
 ykB
-tWi
-tWi
-tWi
+lBT
+lBT
+lBT
 cTA
 cTA
 cTA
@@ -220795,9 +220797,9 @@ cTA
 lIb
 gUu
 cTA
-tWi
-tWi
-tWi
+lBT
+lBT
+lBT
 cTA
 cTA
 cTA
@@ -329230,7 +329232,7 @@ rDt
 pnH
 ssB
 ssB
-aIK
+aqY
 rDt
 orU
 xXH
