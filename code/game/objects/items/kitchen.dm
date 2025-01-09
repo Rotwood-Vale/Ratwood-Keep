@@ -57,6 +57,7 @@
 	name = "rolling pin"
 	desc = ""
 	icon_state = "rolling_pin"
+	item_state = "rolling_pin"
 	force = 8
 	throwforce = 5
 	throw_speed = 1

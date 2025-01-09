@@ -61,10 +61,6 @@ proc/get_surroundings(mob/user)
 			continue
 		if(I.flags_1 & HOLOGRAM_1)
 			continue
-		if(istype(I, /obj/item/stack))
-			var/obj/item/stack/S = I
-			surroundings["other"][I.type] += S.amount
-		else if(istype(I, /obj/item/natural/bundle))
 			var/obj/item/natural/bundle/B = I
 			surroundings["other"][B.stacktype] += B.amount
 		else if(I.tool_behaviour)
@@ -362,28 +358,6 @@ proc/del_reqs(datum/crafting_recipe/R, mob/user)
 						RC.on_reagent_change()
 					else
 						surroundings -= RC
-			else if(ispath(A, /obj/item/stack))
-				var/obj/item/stack/S
-				var/obj/item/stack/SD
-				while(amt > 0)
-					S = locate(A) in surroundings
-					if(S.amount >= amt)
-						if(!locate(S.type) in Deletion)
-							SD = new S.type()
-							Deletion += SD
-						S.use(amt)
-						SD = locate(S.type) in Deletion
-						SD.amount += amt
-						continue main_loop
-					else
-						amt -= S.amount
-						if(!locate(S.type) in Deletion)
-							Deletion += S
-						else
-							data = S.amount
-							S = locate(S.type) in Deletion
-							S.add(data)
-						surroundings -= S
 			else if(ispath(A, /obj/item/natural) || A == /obj/item/grown/log/tree/stick)
 				while(amt > 0)
 					for(var/obj/item/natural/bundle/B in get_environment(user))
@@ -425,13 +399,6 @@ proc/del_reqs(datum/crafting_recipe/R, mob/user)
 				RG.volume = partlist[A]
 			. += RG
 			Deletion -= RG
-			continue
-		else if(istype(A, /obj/item/stack))
-			var/obj/item/stack/ST = locate(A) in Deletion
-			if(ST.amount > partlist[A])
-				ST.amount = partlist[A]
-			. += ST
-			Deletion -= ST
 			continue
 		else
 			while(partlist[A] > 0)

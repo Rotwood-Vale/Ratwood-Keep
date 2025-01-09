@@ -10,8 +10,6 @@
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "wrap_paper"
 	item_flags = NOBLUDGEON
-	amount = 25
-	max_amount = 25
 	resistance_flags = FLAMMABLE
 
 /obj/item/stack/wrapping_paper/use(used, transfer)
@@ -27,13 +25,10 @@
 
 /obj/item/stack/packageWrap
 	name = "package wrapper"
-	singular_name = "wrapping sheet"
 	desc = ""
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "deliveryPaper"
 	item_flags = NOBLUDGEON
-	amount = 25
-	max_amount = 25
 	resistance_flags = FLAMMABLE
 	grind_results = list(/datum/reagent/cellulose = 5)
 

@@ -125,9 +125,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette
 	name = "cigarette"
 	desc = ""
-	icon_state = "cigoff"
 	throw_speed = 0.5
-	item_state = "cigoff"
 	w_class = WEIGHT_CLASS_TINY
 	body_parts_covered = null
 	grind_results = list()
@@ -505,16 +503,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		reagents.clear_reagents()
 //		name = "empty [initial(name)]"
 	return
-
-/obj/item/clothing/mask/cigarette/pipe/cobpipe
-	name = "corn cob pipe"
-	desc = ""
-	icon_state = "cobpipeoff"
-	item_state = "cobpipeoff"
-	icon_on = "cobpipeon"  //Note - these are in masks.dmi
-	icon_off = "cobpipeoff"
-	smoketime = 0
-
 
 /////////
 //ZIPPO//

@@ -135,6 +135,7 @@
 	name = "lute"
 	desc = "Its graceful curves were designed to weave joyful melodies."
 	icon_state = "lute"
+	item_state = "lute"
 	song_list = list("A Knight's Return" = 'sound/music/instruments/lute (1).ogg',
 	"Amongst Fare Friends" = 'sound/music/instruments/lute (2).ogg',
 	"The Road Traveled by Few" = 'sound/music/instruments/lute (3).ogg',
@@ -147,6 +148,7 @@
 	name = "accordion"
 	desc = "A harmonious vessel of nostalgia and celebration."
 	icon_state = "accordion"
+	item_state = "accordion"
 	song_list = list("Her Healing Tears" = 'sound/music/instruments/accord (1).ogg',
 	"Peddler's Tale" = 'sound/music/instruments/accord (2).ogg',
 	"We Toil Together" = 'sound/music/instruments/accord (3).ogg',
@@ -158,6 +160,7 @@
 	name = "guitar"
 	desc = "A finely crafted instrument of string and wood."
 	icon_state = "guitar"
+	item_state = "guitar"
 	song_list = list("Fire-Cast Shadows" = 'sound/music/instruments/guitar (1).ogg',
 	"The Forced Hand" = 'sound/music/instruments/guitar (2).ogg',
 	"Regrets Unpaid" = 'sound/music/instruments/guitar (3).ogg',

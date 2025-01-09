@@ -22,7 +22,6 @@
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	possible_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = NONE
 	liked_food = NONE
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
