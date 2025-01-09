@@ -12,7 +12,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 /datum/supply_pack/rogue/bandit/Knave/helmet/hhelmet
-	name = "Horned cap"
+	name = "Horned Cap"
 	cost = 100
 	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
 //neck
@@ -29,19 +29,19 @@
 //wrist
 
 /datum/supply_pack/rogue/bandit/Knave/leather/Lbracers
-	name = "Leather bracers"
+	name = "Leather Bracers"
 	cost = 24
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 //pants
 
 /datum/supply_pack/rogue/bandit/Knave/leatherpantsadvanced
-	name = "hardened leather chausses"
+	name = "Hardened Leather Chausses"
 	cost = 200
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
 //gauntlets
 
 /datum/supply_pack/rogue/bandit/Knave/leather/Lgloves
-	name = "hardened leather gloves"
+	name = "Hardened Leather Gloves"
 	cost = 150
 	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 //armor

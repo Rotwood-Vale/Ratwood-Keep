@@ -62,15 +62,20 @@
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 //armor
 
+/datum/supply_pack/rogue/bandit/Brigand/gambeson
+	name = "Gambeson"
+	cost = 24
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
+
 /datum/supply_pack/rogue/bandit/Brigand/Haubergeon
 	name = "Haubergeon"
 	cost = 100
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail)
 
-/datum/supply_pack/rogue/bandit/Brigand/lightgambeson
-	name = "Light Gambeson"
+/datum/supply_pack/rogue/bandit/Brigand/lightbrigandine
+	name = "Light Brigandine"
 	cost = 150
-	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
+	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine/light)
 
 /datum/supply_pack/rogue/bandit/Brigand/steelcuirass
 	name = "Steel Cuirass"
@@ -89,7 +94,7 @@
 //flail
 
 /datum/supply_pack/rogue/bandit/Brigand/flail
-	name = "Iron flail"
+	name = "Iron Flail"
 	cost = 60
 	contains = list(/obj/item/rogueweapon/flail)
 
@@ -120,7 +125,7 @@
 	contains = list(/obj/item/rogueweapon/mace/goden/steel)
 
 /datum/supply_pack/rogue/bandit/Brigand/warhammer
-	name = "steel warhammer"
+	name = "Steel Warhammer"
 	cost = 250
 	contains = list(/obj/item/rogueweapon/mace/warhammer/steel)
 //axe

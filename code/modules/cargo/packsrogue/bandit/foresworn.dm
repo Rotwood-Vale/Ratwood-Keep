@@ -58,6 +58,7 @@
 	name = "Grenzel Pants"
 	cost = 24
 	contains = list(/obj/item/clothing/under/roguetown/grenzelpants)
+
 /datum/supply_pack/rogue/bandit/foresworn/chainlegs
 	name = "Chain Chausses"
 	cost = 100
@@ -81,6 +82,11 @@
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 //armor
 
+/datum/supply_pack/rogue/bandit/foresworn/gambeson
+	name = "Gambeson"
+	cost = 24
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
+
 /datum/supply_pack/rogue/bandit/foresworn/Haubergeon
 	name = "Haubergeon"
 	cost = 100
@@ -97,14 +103,14 @@
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale)
 
 /datum/supply_pack/rogue/bandit/foresworn/hgambeson
-	name = "hardened leather coat"
+	name = "Hardened Leather Coat"
 	cost = 150
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/advanced)
 
-/datum/supply_pack/rogue/bandit/foresworn/lightgambeson
-	name = "Light Gambeson"
+/datum/supply_pack/rogue/bandit/foresworn/lightbrigandine
+	name = "Light Brigandine"
 	cost = 150
-	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
+	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine/light)
 
 /datum/supply_pack/rogue/bandit/foresworn/hauberk
 	name = "Hauberk"
@@ -113,7 +119,7 @@
 //swords
 
 /datum/supply_pack/rogue/bandit/foresworn/dridersword
-	name = "Zybantine sword"
+	name = "Zybantine Sword"
 	cost = 100
 	contains = list(/obj/item/rogueweapon/sword/long/rider)
 

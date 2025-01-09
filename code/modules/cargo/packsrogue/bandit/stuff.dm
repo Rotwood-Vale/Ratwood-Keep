@@ -9,22 +9,22 @@
 	contains = list(/obj/item/storage/belt/rogue/leather)
 
 /datum/supply_pack/rogue/bandit/Stuff/leatherpants
-	name = "Leather trousers"
+	name = "Leather Trousers"
 	cost = 40
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather)
 
 /datum/supply_pack/rogue/bandit/Stuff/leathergloves
-	name = "Leather gloves"
+	name = "Leather Gloves"
 	cost = 20
 	contains = list(/obj/item/clothing/gloves/roguetown/leather)
 
 /datum/supply_pack/rogue/bandit/Stuff/leathershoes
-	name = "Leather shoes"
+	name = "Leather Shoes"
 	cost = 20
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather)
 
 /datum/supply_pack/rogue/bandit/Stuff/hardleathershoes
-	name = "Hardened Leather shoes"
+	name = "Hardened Leather Shoes"
 	cost = 60
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather/advanced)
 
@@ -89,7 +89,7 @@
 	contains = list(/obj/item/clothing/cloak/tabard)
 
 /datum/supply_pack/rogue/bandit/Stuff/hidearmor
-	name = "Hide armor"
+	name = "Hide Armor"
 	cost = 40
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/hide)
 

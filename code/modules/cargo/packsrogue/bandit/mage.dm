@@ -24,20 +24,20 @@
 //wrist
 
 /datum/supply_pack/rogue/bandit/Mage/leather/Lbracers
-	name = "Leather bracers"
+	name = "Leather Bracers"
 	cost = 25
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 //gauntlets
 
 /datum/supply_pack/rogue/bandit/Mage/leather/Lgloves
-	name = "hardened leather gloves"
+	name = "Hardened Leather Gloves"
 	cost = 150
 	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 //armor
 
 /datum/supply_pack/rogue/bandit/Mage/gambeson
 	name = "Gambeson"
-	cost = 50
+	cost = 24
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/bandit/Mage/leather

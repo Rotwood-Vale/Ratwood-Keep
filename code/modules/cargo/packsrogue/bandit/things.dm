@@ -30,7 +30,7 @@
 	contains = list(/obj/item/storage/backpack/rogue/satchel)
 
 /datum/supply_pack/rogue/bandit/Things/pouch
-	name = "pouch"
+	name = "Pouch"
 	cost = 20
 	contains = list(/obj/item/storage/belt/rogue/pouch)
 

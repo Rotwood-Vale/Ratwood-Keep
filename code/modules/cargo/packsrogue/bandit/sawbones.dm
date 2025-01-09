@@ -11,7 +11,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 /datum/supply_pack/rogue/bandit/Sawbones/helmet/hhelmet
-	name = "Horned cap"
+	name = "Horned Cap"
 	cost = 100
 	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
 //neck
@@ -23,13 +23,13 @@
 //wrist
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/Lbracers
-	name = "Leather bracers"
+	name = "Leather Bracers"
 	cost = 25
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 //gauntlets
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather/Lgloves
-	name = "hardened leather gloves"
+	name = "Hardened Leather Gloves"
 	cost = 150
 	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 //pants
@@ -42,7 +42,7 @@
 
 /datum/supply_pack/rogue/bandit/Sawbones/gambeson
 	name = "Gambeson"
-	cost = 50
+	cost = 24
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/bandit/Sawbones/leather
