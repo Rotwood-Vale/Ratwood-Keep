@@ -72,14 +72,18 @@ SUBSYSTEM_DEF(nightshift)
 	return
 
 /mob/living/carbon/human/update_tod(todd)
+
 	if(client)
 		var/area/areal = get_area(src)
 		if(!cmode)
 			SSdroning.play_area_sound(areal, src.client)
 		SSdroning.play_loop(areal, src.client)
+
 	if(todd == "dawn")
+		try_grow_beard()
 		if(HAS_TRAIT(src, TRAIT_VAMP_DREAMS))
 			apply_status_effect(/datum/status_effect/debuff/vamp_dreams)
+
 	if(todd == "night")
 		if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 			return ..()

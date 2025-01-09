@@ -41,6 +41,7 @@
 			id = /obj/item/clothing/ring/gold
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			// TODO: randomized content table
+			backl = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/clothing/ring/silver = 2, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 2, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 2)
 			H.change_stat("intelligence", 2)
 			H.change_stat("perception", 3)
