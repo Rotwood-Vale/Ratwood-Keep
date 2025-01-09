@@ -57,12 +57,10 @@
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 4)
 		H.mind.adjust_spellpoints(8)
-		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-			H.change_stat("speed", -1)
-			H.change_stat("intelligence", 1)
-			H.change_stat("perception", 1)
-		
+		if(H.age == AGE_OLD) //old wizards are wise and experienced they should not get arcane 1 for being old
+			belt = /obj/item/storage/belt/rogue/leather/plaquegold
+			head = /obj/item/clothing/head/roguetown/wizhat //brings back the iconic wizard gear
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/wizard //blue robes, blue pointy hat
 		if(H.gender == MALE)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 
