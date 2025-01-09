@@ -10,11 +10,13 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "You served your time gracefully as a Knight of the crown, and now you've grown into a role which many men dream to become. \
-				You are the Marshal's chosen, a Banneret, elevated to command His Highness' personal retinue. \
-				Keep your men in line, as for this realm to prosper, the duke must be safe. \
-				The Men at Arms and the Gatemaster are under your direct supervision. \
-				The only men on par with you, as part of the armed retinue and not under your direct command, are your fellow Knights."
+	tutorial = "Вы с честью отслужили свой срок в качестве рыцаря герцога, а теперь выросли до той должности, о которой мечтают многие. \
+				Вы - избранник маршала, баннерет, возведенный в ранг командира лейб-гвардии Его Высочества. \
+				Держите своих людей в узде, ведь для процветания герцогства монарх должен быть в безопасности. \
+				Вы непосредственно подчиняетесь герцогу, герцогской семье и маршалу. \
+				Лейб-гвардия и привратник находятся под вашим непосредственным руководством. \
+				Единственные люди, которые входят в состав лейб-гвардии и не находятся под вашим непосредственным командованием, это ваши коллеги-рыцари."
+
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
 

@@ -9,7 +9,9 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "Long hours and back-breaking work wouldnt even describe a quarter of what you do in a day for your Master. Its exhausting, filthy and you dont get much freetime: but someday youll get your own smithy, and youll have TWICE as many apprentices as your master does."
+	tutorial = "Долгие часы и изнурительный труд - это даже не четверть того, что вы делаете за день для своего мастера. \
+	Это изнурительно, грязно, и у тебя не так много свободного времени: но однажды ты получишь собственную кузницу, \
+	и у тебя будет в два раза больше подмастерьев, чем у твоего мастера."
 
 	outfit = /datum/outfit/job/roguetown/bapprentice
 	display_order = JDO_APPRENTICE

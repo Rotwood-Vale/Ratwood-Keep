@@ -10,7 +10,10 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "You’ve never felt the gnawing of the winter, never known the bite of hunger and certainly have never known what the peasantry call a honest day's work. In your youth you were as free as any bird in the sky, but that is of the past. Your noble duties are fast approaching and you will soon have to choose: Continue to spend life leisurely, or stalwartly shoulder the duties you've been handed."
+	tutorial = "Вы никогда не ощущали зимней грызни, не знали, что такое голод, и уж тем более не знали, что крестьяне называют честным рабочим днем. \
+	В юности вы были свободны, как любая птица в небе, но это в прошлом. \
+	Ваши благородные обязанности быстро приближаются, и скоро вам придется выбирать: \
+	Продолжать вести праздный образ жизни или стойко выполнять возложенные на вас обязанности."
 
 	outfit = /datum/outfit/job/roguetown/prince
 	display_order = JDO_PRINCE

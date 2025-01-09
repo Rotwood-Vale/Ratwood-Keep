@@ -11,9 +11,11 @@
 	allowed_patrons = list(
 		/datum/patron/psydon
 	)
-	tutorial = "Created with the re-emergence of the cult of Psydon, \
-	The Inquisition has sent you to Rockhill on a quest to root out the blasphemous and the accursed of these lands. \
-	Guided by religious fervor and paranoia, you hope that your uneasy alliance with the Church will hold."
+
+	tutorial = "Созданная в связи с возрождением культа Псайдона,\
+    Инквизиция отправила вас в Рокхилл с целью искоренить богохульников и проклятых в этих землях. \
+    Руководствуясь религиозным рвением и паранойей, вы надеетесь, что ваш непростой союз с Церковью Десяти устоит."
+
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/puritan

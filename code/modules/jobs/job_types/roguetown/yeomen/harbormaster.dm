@@ -8,11 +8,10 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "A long retired captain, \
-	you have seen everything the many ports of the known world have to offer. \
-	During the dae, you comfortably sit back and manage the flow of goods of the local harbor, \
-	but at night your mind looks to the south, to the great maritime cities and exotic markets of Grenzelhoft and Zybantium, now fallen to the Rot. \
-	You work closely with the merchant, ensuring the safety of the harbor and the goods that pass through it."
+	tutorial = "Капитан в отставке, видел все, что могут предложить многочисленные порты известного мира. \
+	В дневное время он удобно устроился и управляет потоком товаров в местной гавани, но по ночам его мысли устремлены на юг, \
+	к великим морским городам и экзотическим рынкам Грензельхофта и Зибантии. \
+	Тесно сотрудничает с торговцем, обеспечивая безопасность гавани и проходящих через нее товаров."
 
 	display_order = JDO_HARBORMASTER
 	whitelist_req = FALSE

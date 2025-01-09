@@ -1,6 +1,10 @@
 /datum/subclass/desert_rider
 	name = "Desert Rider"
-	tutorial = "Hooded figures clad in red and easily identifiable by their distinctive emblem, the Desert Riders of Shalvistine are a loosely-governed society of mercenaries and refugees hailing from the fringes of the Zybantian Empire. You were riding saigaback before you could even walk, and you likely feel more at ease on four legs than two. Due to political unrest with neighboring Lalvestine, increasingly deadly sandstorms, or merely a sense of adventure, you find yourself with the Mercenaries’ Guild in Rockhill, selling your skills with the blade to those willing to pay."
+	tutorial = "Облаченные в красные капюшоны и легко узнаваемые по отличительной эмблеме, \
+	Пустынные всадники Шалвестины - это свободно управляемое общество наемников и беженцев, прибывших с окраин Зибантийской империи. \
+	Вы ездили на сайгаке еще до того, как научились ходить, и, скорее всего, чувствуете себя более комфортно на четырех ногах, чем на двух. \
+	Из-за политических волнений в соседнем Лалвестине, все более смертоносных песчаных бурь или просто из чувства приключений вы оказались в Гильдии наемников в Рокхилле, \
+	продавая свои навыки владения клинком тем, кто готов платить."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider

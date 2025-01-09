@@ -2,9 +2,10 @@
 	race = /datum/species/anthromorphsmall
 
 /datum/species/anthromorphsmall
-	name = "Verminvolk" 
+	name = "Верминволк" 
 	id = "anthromorphsmall"
-	desc = "A race akin to wild-kin, except afflicted with significantly smaller stature. A bit less respected than their kin due to their closer resemblance to vermin, like the dichotomy between Kobold and Sissean."
+	desc = "Раса, схожая с вайлдкинами, но отличающаяся значительно меньшим ростом. \
+	Несколько менее уважаемы, чем их сородичи, из-за более близкого сходства с вредителями, как дихотомия между кобольдами и ящеролюдами."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,

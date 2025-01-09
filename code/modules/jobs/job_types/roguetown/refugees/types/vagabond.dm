@@ -1,8 +1,8 @@
 /datum/subclass/vagabond
 	name = "Vagabond"
-	tutorial = "Your life never really amounted to much. Wandering has always been your lifestyle regardless of the \
-				plagues and strife gripping the world. You've strayed to yet another city, bringing your dubious career with you, \
-				your life might yet turn around, but it probably wont."
+	tutorial = "Твоя жизнь никогда не была такой уж насыщенной. Странствия всегда были вашим образом жизни, несмотря на \
+				чумы и раздоров, охвативших мир. Вы отправились в очередной город, прихватив с собой сомнительную репутацию. \
+				Возможно, ваша жизнь еще перевернется, но, скорее всего, этого не произойдет."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

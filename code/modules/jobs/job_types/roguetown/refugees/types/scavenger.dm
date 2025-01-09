@@ -1,7 +1,7 @@
 /datum/subclass/scavenger
 	name = "Scavenger"
-	tutorial = "Your life has been one of simple hardship and labor, whether out of necessity or choice. As you fled from the rot, \
-				you learned how to best use and gather the natural resources around you.\ "
+	tutorial = "Ваша жизнь - это сплошные лишения и труд, по необходимости или по собственному желанию. Когда вы бежали от войны,\
+				вы узнали, как лучше использовать и собирать природные ресурсы вокруг вас."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

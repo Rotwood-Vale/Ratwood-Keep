@@ -9,9 +9,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
-	tutorial = "A Knight with expert training; \
-	Born into petty nobility and raised as a squire from a young age, now you Guard the Duke or Duchess, answer to their commands, and protect the court's honor. \
-	You're wholly dedicated to the standing Regent and their safety. Do not fail."
+	tutorial = "Вы - воин с экспертной подготовкой; рожденный в мелком дворянстве и с юных лет воспитанный как оруженосец, \
+	а теперь охраняете герцога как его верный рыцарь, подчиняется его приказам и защищает его честь. \
+	Полностью предан герцогу, герцогской семье, а так же приближенным к трону. "
 	display_order = JDO_KNIGHT
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/knight

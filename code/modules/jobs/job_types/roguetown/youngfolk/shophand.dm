@@ -9,8 +9,8 @@
 	allowed_races = RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
-	tutorial = "The Merchant has taken you under his wing to learn the arcane arts of mercantilism, numeracy, literacy, and the joy of organizing the shelves. \
-	It is mind numbing and repetitive, but at least you have a roof over your head and comfortable surroundings. Given time, perhaps you will run the town's barter."
+	tutorial = "Купец взял вас под свое крыло, чтобы вы научились искусству меркантилизма, счету, грамоте и радости организации полок. \
+	Это скучная и повторяющаяся работа, но, по крайней мере, у вас есть крыша над головой и уютная обстановка. Со временем, возможно, вы станете руководить городской торговлей."
 
 	outfit = /datum/outfit/job/roguetown/shophand
 	display_order = JDO_SHOPHAND

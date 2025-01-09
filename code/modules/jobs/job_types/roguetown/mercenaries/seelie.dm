@@ -7,7 +7,9 @@
 	spawn_positions = 5
 	allowed_races = list(/datum/species/seelie,)
 	allowed_ages = ALL_AGES_LIST
-	tutorial = "You are a fae sprite that came into existance around this town, either recently or long ago. Perhaps you support people in their trade and craft, or you may be a disruptive nuisance that plagues the town. Either way, your miriad of mysterious spells and abilites will support you in your endeavours."
+	tutorial = "Вы - фея, появившийся в окрестностях этого города недавно или очень давно. \
+	Возможно, вы помогаете людям в их ремеслах и промыслах, а возможно, являетесь помехой, досаждающей городу. \
+	В любом случае, ваша мириада таинственных заклинаний и способностей поможет вам в ваших начинаниях."
 	outfit = /datum/outfit/job/roguetown/seelie
 	display_order = JDO_SEELIE
 	min_pq = 20

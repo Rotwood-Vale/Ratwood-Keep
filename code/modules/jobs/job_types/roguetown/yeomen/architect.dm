@@ -1,6 +1,7 @@
 /datum/job/roguetown/architect
 	title = "Architect"
-	tutorial = "There are ancient secrets within stone, something your creed has known since man built upon dirt. You've pride in your work, youre the only reason this place doesn't fall apart."
+	tutorial = "В камне заключены древние тайны, о которых ваше кредо знало с тех пор, как человек стал строить на земле. \
+	Вы гордитесь своей работой, и только благодаря вам это место не разваливается."
 	flag = ARCHITECT
 	department_flag = COURTIERS
 	faction = "Station"

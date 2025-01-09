@@ -6,7 +6,8 @@
 	total_positions = 75
 	spawn_positions = 75
 	allowed_races = RACES_VERY_SHUNNED_UP
-	tutorial = "You've lived in this shithole for effectively all your life. You are not an explorer, nor exactly a warrior in many cases. You're just some average poor bastard who thinks they'll be something someday."
+	tutorial = "Вы прожили в этой дыре фактически всю свою жизнь. Вы не исследователь и не воин во многих случаях. \
+	Вы просто обычный бедный ублюдок, который думает, что когда-нибудь станет кем-то."
 	subclass_cat_rolls = list(CTAG_TOWNER = 20)
 	outfit = null
 	outfit_female = null

@@ -1,6 +1,7 @@
 /datum/subclass/foresworn //Generalist glass. Good with a variety of weapons, more even spread stats.
 	name = "Foresworn"
-	tutorial = "Perhaps a mercenary, perhaps a deserter - at one time, you killed for a master in return for gold. Now you live with no such master over your head - and take what you please."
+	tutorial = "Возможно, наемник, возможно, дезертир - когда-то вы убивали для хозяина в обмен на золото. \
+	Теперь вы живете без хозяина над головой - и берете все, что вам заблагорассудится."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/foresworn

@@ -8,11 +8,11 @@
 
 	allowed_sexes = list(MALE, FEMALE) //same as town guard
 	allowed_races = RACES_SHUNNED_UP // same as town guard
-	tutorial = "You've known combat your entire life. \
-	There isn't a way to kill a man you havent practiced in the tapestries of war itself. \
-	You wouldn't call yourself a hero, those belong to the men left rotting in the fields of where you practiced your ancient trade. \
-	You don't sleep well at night anymore, you don't like remembering what you've had to do to survive. \
-	Trading adventure for stable pay was the only logical solution, and maybe someday you'll get to lay down the blade..."
+	tutorial = "Ты знаешь, что такое бой, всю свою жизнь. \
+	Нет такого способа убить человека, который бы не практиковался на гобеленах самой войны. \
+	Ты не назовешь себя героем, это относится к тем, кто остался гнить на полях, где ты практиковал свое военное ремесло. \
+	Вы больше не спите спокойно по ночам, вам не нравится вспоминать, что вам пришлось сделать, чтобы выжить. \
+	Променять приключения на стабильную зарплату было единственным логичным решением, и, возможно, когда-нибудь ты сможешь сложить клинок..."
 
 	allowed_ages = list(AGE_OLD)
 	display_order = JDO_VET

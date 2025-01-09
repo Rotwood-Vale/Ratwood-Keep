@@ -8,7 +8,9 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE
-	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
+	tutorial = "Каково это - быть крысой в клетке? Вы одиноки и находитесь на милости у своих похитителей, вас держат в заложниках.\
+	Вы проводите дни в ожидании случайного шанса, что кто-то придет заплатить за вас выкуп.\
+	С таким же успехом можно начать молиться любому богу, в котором вы находите утешение."
 
 	outfit = /datum/outfit/job/roguetown/prisonerb
 	banned_leprosy = FALSE

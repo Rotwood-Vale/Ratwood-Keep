@@ -9,7 +9,9 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_STEWARD
-	tutorial = "Coin, Coin, Coin! Oh beautiful coin: You're addicted to it, and you hold the position as the Duke's personal treasurer of both coin and information. You know the power silver and gold has on a man's mortal soul, and you know just what lengths they'll go to in order to get even more. Keep your festering economy and your rats alive, the'yre the only two things you can weigh any trust into anymore."
+	tutorial = "Монета, монета, монета! О прекрасная монета: вы пристрастились к ней и занимаете должность личного казначея герцога, \
+	хранящего как монеты, так и информацию. Вы знаете, какую силу серебро и золото оказывают на смертную душу человека, \
+	и знаете, на что они пойдут, чтобы получить еще больше. Сохраните свою гниющую экономику и своих крыс в ГЕРМЕС'е - это единственные две вещи, которым можно больше доверять."
 	outfit = /datum/outfit/job/roguetown/steward
 	give_bank_account = 17
 	min_pq = 2

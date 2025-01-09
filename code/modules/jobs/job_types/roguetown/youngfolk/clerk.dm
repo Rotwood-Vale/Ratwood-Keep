@@ -10,7 +10,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "You have been granted the privilege of serving as a clerk in the Steward's office. You help the Steward with anything they need, and learn how coin keeps the town moving and prosperous."
+	tutorial = "Вы получили привилегию служить клерком в офисе казначея. \
+	Вы помогаете казначею во всем, что ему нужно, и узнаете, как монеты обеспечивают движение и процветание города."
 
 	outfit = /datum/outfit/job/roguetown/clerk
 	display_order = JDO_CLERK

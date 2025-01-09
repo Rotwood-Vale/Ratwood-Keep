@@ -1,6 +1,6 @@
 /datum/subclass/magos
 	name = "Magos"
-	tutorial = "Trained in the arcane or occult arts, you have fled from the rot looking for a place to continue your studies."
+	tutorial = "Обучаясь магическим или оккультным искусствам, вы бежали от катастроф и войн в поисках места, где можно продолжить обучение."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

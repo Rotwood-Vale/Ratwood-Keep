@@ -1,11 +1,11 @@
 /datum/patron/psydon
 	name = "Psydon"
-	domain = "The Original God"
-	desc = "The first True God, Psydon is the creator of all things. He is believed dead by the Church of the Successors."
-	worshippers = "Heretics, Inquisitors, and re-emerging believers"
+	domain = "Первозданный Бог"
+	desc = "Первый Истинный Бог, Псидон - создатель всего сущего. Церковь Преемников считает его мертвым." // точно не наебка для одного уебка
+	worshippers = "Еретики, Иквизиторы, и вновь появляющиеся верующие"
 	associated_faith = /datum/faith/psydon
 	confess_lines = list(
-		"THERE IS ONLY ONE GOD!",
-		"THE SUCCESSORS ARE FALSE GODS!",
-		"PSYDON LIVES!",
+		"ЕСТЬ ТОЛЬКО ОДИН БОГ!",
+		"ПРЕЕМНИКИ - ЛОЖНЫЕ БОГИ!",
+		"ПСАЙДОН ЖИВ!",
 	)

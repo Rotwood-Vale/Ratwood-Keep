@@ -5,145 +5,146 @@
 
 /datum/patron/divine/astrata
 	name = "Astrata"
-	domain = "Goddess of the Sun, Day, and Order"
-	desc = "The Firstborn of Psydon, twin of Noc, gifted man the Sun as her divine gift."
-	worshippers = "The Noble Hearted, Zealots and Farmers"
+	domain = "Богиня Солнца, Дня и Порядка"
+	desc = "Первенец Псайдона, близнец Нока, одарила разумным существам Солнцем как своим божественным даром."
+	worshippers = "Благородные, фанатичные крестоносцы и люд, и фермеры."
 	t1 = /obj/effect/proc_holder/spell/invoked/sacred_flame_rogue
 	t2 = /obj/effect/proc_holder/spell/invoked/heal
 	confess_lines = list(
-		"ASTRATA IS MY LIGHT!",
-		"ASTRATA BRINGS LAW!",
-		"I SERVE THE GLORY OF THE SUN!",
+		"АСТРАТА МОЙ СВЕТ!",
+		"АСТРАТА ПРИНОСИТ ПОРЯДОК!",
+		"Я СЛУЖУ ВО СЛАВУ СОЛНЦА!",
 	)
 
 /datum/patron/divine/noc
 	name = "Noc"
-	domain = "God of the Moon, Night, and Knowledge"
-	desc = "The Firstborn of Psydon, twin of Astrata, gifted man divine knowledge."
-	worshippers = "Wizards and Scholars"
+	domain = "Богиня Луны, Ночи и Знаний"
+	desc = "Первенец Псайдона, близнец Астраты, одаренная божественными знаниями."
+	worshippers = "Волшебники и ученые"
 	mob_traits = list(TRAIT_NOCTURNAL) //lighting alpha 245. DV spell is 220, DV spell w/noc or DV special is 200
 	t1 = /obj/effect/proc_holder/spell/invoked/blindness
 	t2 = /obj/effect/proc_holder/spell/invoked/invisibility
 	confess_lines = list(
-		"NOC IS NIGHT!",
-		"NOC SEES ALL!",
-		"I SEEK THE MYSTERIES OF THE MOON!",
+		"НОК - ЭТО НОЧЬ!",
+		"НОК ВСЕ ВИДИТ!",
+		"Я ИЩУ ТАЙНЫ ЛУНЫ!",
 	)
 
 /datum/patron/divine/dendor
 	name = "Dendor"
-	domain = "God of the Earth and Nature"
-	desc = "The Primordial Son of Psydon, patron of beasts and the wood. Gone mad with time."
-	worshippers = "Druids, Beasts, Madmen"
+	domain = "Бог Земли и Природы"
+	desc = "Первородный сын Псайдона, покровитель зверей и леса. Со временем сошел с ума и уснул."
+	worshippers = "Друиды, звери, безумцы"
 	mob_traits = list(TRAIT_VINE_WALKER)
 	t1 = /obj/effect/proc_holder/spell/targeted/blesscrop
 	t2 = /obj/effect/proc_holder/spell/targeted/beasttame
 	t3 = /obj/effect/proc_holder/spell/targeted/conjure_vines
 	confess_lines = list(
-		"DENDOR PROVIDES!",
-		"THE TREEFATHER BRINGS BOUNTY!",
-		"I ANSWER THE CALL OF THE WILD!",
+		"ДЕНДОР ОБЕСПЕЧИВАЕТ ЕДОЙ!",
+		"ОТЕЦ ДЕРЕВЬЕВ ПРИНОСИТ ЩЕДРОСТЬ!",
+		"Я ОТВЕЧАЮ НА ЗОВ ДИКОЙ ПРИРОДЫ!",
 	)
 
 /datum/patron/divine/abyssor
 	name = "Abyssor"
-	domain = "God of the Ocean, Storms and the Tide"
-	desc = "The Beloved Son, gifted primordial men food and water."
-	worshippers = "Men of the Sea, Primitive Aquatics"
+	domain = "Бог Океана, Штормов и Приливов"
+	desc = "Возлюбленный Сын, одаривший первобытных разумных существ пищей и водой."
+	worshippers = "Люди моря, моряки и рыболовы"
 	confess_lines = list(
-		"ABYSSOR COMMANDS THE WAVES!",
-		"THE OCEAN'S FURY IS ABYSSOR'S WILL!",
-		"I AM DRAWN BY THE PULL OF THE TIDE!",
+		"АБИССОР ПОВЕЛЕВАЕТ ВОЛНАМИ!",
+		"ЯРОСТЬ ОКЕАНА - ВОЛЯ АБИССОРА!",
+		"МЕНЯ ВЛЕЧЁТ ПРИЛИВ!",
 	)
 
 /datum/patron/divine/ravox
 	name = "Ravox"
-	domain = "God of War, Justice and Strength"
-	desc = "The strongest of Psydon's children, he watches man from afar."
-	worshippers = "Warriors, Sellswords & those who seek Justice"
+	domain = "Бог Войны, Справедливости и Силы"
+	desc = "Самый сильный из детей Псайдона, он наблюдает за людьми издалека."
+	worshippers = "Войны, Наёмники и те, кто ищет справедливости"
 	t1 = /obj/effect/proc_holder/spell/invoked/burden
 	confess_lines = list(
-		"RAVOX IS JUSTICE!",
-		"THROUGH STRIFE, GRACE!",
-		"THE DRUMS OF WAR BEAT IN MY CHEST!",
+		"РАВОКС - ЭТО СПРАВЕДЛИВОСТЬ!",
+		"ЧЕРЕЗ РАЗДОРЫ - К БЛАГОДАТИ!",
+		"БАРАБАНЫ ВОЙНЫ БЬЮТ В МОЕЙ ГРУДИ!",
 	)
 
 /datum/patron/divine/necra
 	name = "Necra"
-	domain = "Goddess of Death and the Afterlife"
-	desc = "The Veiled Lady, a feared but respected God who leads the dead."
-	worshippers = "The Dead, Mourners, Gravekeepers"
+	domain = "Богиня Смерти и Загробного мира"
+	desc = "Леди в вуали - боязливая, но уважаемая богиня, который ведет души мертвых."
+	worshippers = "Мертвецы, скорбящие, могильщики"
 	mob_traits = list(TRAIT_SOUL_EXAMINE)
 	t1 = /obj/effect/proc_holder/spell/targeted/burialrite
 	t2 = /obj/effect/proc_holder/spell/targeted/churn
 	t3 = /obj/effect/proc_holder/spell/targeted/soulspeak
 	confess_lines = list(
-		"ALL SOULS FIND THEIR WAY TO NECRA!",
-		"THE UNDERMAIDEN IS OUR FINAL REPOSE!",
-		"I FEAR NOT DEATH, MY LADY AWAITS ME!",
+		"ВСЕ ДУШИ ПОПАДАЮТ К НЕКРЕ!",
+		"ЛЕДИ В ВУАЛИ - НАШ ПОСЛЕДНИЙ ПОКОЙ!",
+		"Я НЕ БОЮСЬ СМЕРТИ, МОЯ ГОСПОЖА ЖДЕТ МЕНЯ!",
 	)
 
 /datum/patron/divine/xylix
 	name = "Xylix"
-	domain = "God of Trickery, Freedom and Inspiration"
-	desc = "The Mad-God, gifted man wanderlust and a thousand tricks."
-	worshippers = "Cheats, Frauds, Silver-Tongued devils and Roguish Types"
+	domain = "Бог Хитрости, Обмана, Свободы и Вдохновения"
+	desc = "Безумный бог, одаривший разумное существо жаждой странствий и тысячей хитростей."
+	worshippers = "Обманщики, мошенники, дьяволы с серебряным языком и жуликоватые типы"
 	confess_lines = list(
-		"ASTRATA IS MY LIGHT!",
-		"NOC IS NIGHT!",
-		"DENDOR PROVIDES!",
-		"ABYSSOR COMMANDS THE WAVES!",
-		"RAVOX IS JUSTICE!",
-		"ALL SOULS FIND THEIR WAY TO NECRA!",
-		"HAHAHAHA! AHAHAHA! HAHAHAHA!",
-		"PESTRA SOOTHES ALL ILLS!",
-		"MALUM IS MY MUSE!",
-		"EORA BRINGS US TOGETHER!",
+		"АСТРАТА - МОЙ СВЕТ!",
+		"НОК - НОЧЬ!",
+		"ДЕНДОР ОБЕСПЕЧИВАЕТ ЕДОЙ!",
+		"АБИССОР ПОВЕЛЕВАЕТ ВОЛНАМИ!",
+		"РАВОКС - ЭТО СПРАВЕДЛИВОСТЬ!",
+		"ВСЕ ДУШИ НАХОДЯТ СВОЙ ПУТЬ У НЕКРЫ!",
+		"ХАХАХАХА! АХАХАХА! ХАХАХАХА!",
+		"ПЕСТРА УСПОКАИВАЕТ ВСЕ НЕДУГИ!",
+		"МАЛУМ - МОЯ МУЗА!",
+		"ЭОРА ОБЪЕДИНЯЕТ НАС!",
 	)
 
 /datum/patron/divine/pestra
 	name = "Pestra"
-	domain = "Goddess of Decay, Disease and Medicine"
-	desc = "The Loving Daughter of Psydon, gifted man medicine."
-	worshippers = "The Sick, Phyicians, Apothecaries"
+	domain = "Богиня Разложения, Болезней и Медицины"
+	desc = "Любящая дочь Псайдона, гениальный лекарь."
+	worshippers = "Больные, лекари, аптекари"
 	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
 	t0 = list(/obj/effect/proc_holder/spell/invoked/diagnose, /obj/effect/proc_holder/spell/invoked/lesser_heal) // Combine both spells on t0
 	t1 = /obj/effect/proc_holder/spell/invoked/heal
 	t2 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
 	t3 = /obj/effect/proc_holder/spell/invoked/cure_rot
 	confess_lines = list(
-		"PESTRA SOOTHES ALL ILLS!",
-		"DECAY IS A CONTINUATION OF LIFE!",
-		"MY AFFLICTION IS MY TESTAMENT!",
+		"ПЕСТРА УСПОКАИВАЕТ ВСЕ НЕДУГИ!",
+		"РАЗЛОЖЕНИЕ - ЭТО ПРОДОЛЖЕНИЕ ЖИЗНИ!",
+		"МОЙ НЕДУГ - МОЕ ЗАВЕЩАНИЕ!",
 	)
 
 /datum/patron/divine/malum
 	name = "Malum"
-	domain = "God of Fire, Destruction and Rebirth"
-	desc = "The Opinionless God, his children hold no malice in their actions."
-	worshippers = "Smiths, Miners, Artists"
+	domain = "Бог огня, Разрушения и Ремесла"
+	desc = "Бесстрастный Бог, его дети не таят зла в своих поступках."
+	worshippers = "Кузнецы, шахтеры, художники, ремесленники"
 	mob_traits = list(TRAIT_FORGEBLESSED)
 	t1 = /obj/effect/proc_holder/spell/invoked/vigorousexchange
 	t2 = /obj/effect/proc_holder/spell/invoked/heatmetal
 	t3 = /obj/effect/proc_holder/spell/invoked/hammerfall
 	t4 = /obj/effect/proc_holder/spell/invoked/craftercovenant
 	confess_lines = list(
-		"MALUM IS MY MUSE!",
-		"TRUE VALUE IS IN THE TOIL!",
-		"I AM AN INSTRUMENT OF CREATION!",
+		"МАЛУМ - МОЯ МУЗА!",
+		"ИСТИННАЯ ЦЕННОСТЬ - В ТРУДЕ!",
+		"Я - ИНСТРУМЕНТ ТВОРЕНИЯ!",
 	)
 
 /datum/patron/divine/eora
 	name = "Eora"
-	domain = "Goddess of Love, Life, and Beauty"
-	desc = "Eora's divine gift was family, and She taught man to make art and wine that he might live life to its fullest. She teaches love for family and beauty, and hates all that threaten them."
-	worshippers = "Lovers, Doting Grandparents, Harlots"
+	domain = "Богиня Любви, Жизни и Красоты"
+	desc = "Божественным даром Эоры была семья, и она научила разумное существо создавать искусство и вино, чтобы он мог наслаждаться полной жизнью. \
+	Она учит любви к семье и красоте и ненавидит всё, что им угрожает."
+	worshippers = "Любовники, заботливые бабушки и дедушки, молодожены, миротворцы"
 	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
 	t1 = /obj/effect/proc_holder/spell/invoked/eoracurse
 	t2 = /obj/effect/proc_holder/spell/invoked/bud
 	t3 = /obj/effect/proc_holder/spell/invoked/eoracharm
 	confess_lines = list(
-		"EORA BRINGS US TOGETHER!",
-		"HER BEAUTY IS EVEN IN THIS TORMENT!",
-		"I LOVE YOU, EVEN AS YOU TRESPASS AGAINST ME!",
+		"ЭОРА ОБЪЕДИНЯЕТ НАС!",
+		"ЕЕ КРАСОТА ДАЖЕ В ЭТИХ МУЧЕНИЯХ!",
+		"Я ЛЮБЛЮ ТЕБЯ, ДАЖЕ КОГДА ТЫ ПОСЯГАЕШЬ НА МЕНЯ!",
 	)

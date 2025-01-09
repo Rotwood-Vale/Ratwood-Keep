@@ -1,7 +1,7 @@
 /datum/subclass/hunter
 	name = "Hunter"
-	tutorial = "You are a hunter, with your bow you hunt the fauna in the bog, skinning what you kill to use in skincrafting \
-	cooking any meat left over, your role is one that is not done by many, but important in the circulation of clothing and light armor."
+	tutorial = "Вы охотник, с луком вы охотитесь на фауну в болоте, снимаете шкуры с убитых, чтобы использовать их для выделки шкур. \
+	Вашу роль выполняют немногие, но она важна для изготовления одежды и легких доспехов."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/towner/hunter

@@ -8,7 +8,9 @@
 
 	allowed_races = RACES_SHUNNED_UP
 
-	tutorial = "You studied for many decades under your master with a few other apprentices to become an smith, a trade that certainly has seen a boom in revenue in recent times with many a bannerlord seeing the importance in maintaining a well-equipped army."
+	tutorial = "В течение многих десятилетий вы учились у своего мастера и еще нескольких подмастерьев, \
+	чтобы стать кузнецом - ремесло, которое, безусловно, переживает бум доходов в последнее время: \
+	многие знаменосцы понимают, как важно содержать хорошо оснащенную армию."
 
 	outfit = /datum/outfit/job/roguetown/guildsmith
 	display_order = JDO_GUILDSMITH

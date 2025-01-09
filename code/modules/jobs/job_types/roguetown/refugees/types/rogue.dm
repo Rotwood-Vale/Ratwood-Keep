@@ -1,8 +1,8 @@
 /datum/subclass/rogue
 	name = "Rogue"
-	tutorial = "A life of crime has led you to wander from city to city, always looking for an opportunity to \
-				make a quick buck at someone else's expense. The ever spreading rot has pushed you towards a new haven, \
-				where illicit profit is sure to be made."
+	tutorial = "Преступная жизнь заставила вас скитаться из города в город, постоянно выискивая возможность \
+				нажиться за чужой счет. Постоянные войны и катастрофы подтолкнули вас к новому пристанищу,\
+				где можно получить незаконную прибыль."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

@@ -9,9 +9,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = ALL_AGES_LIST
-	tutorial = "Either a fresh lowborn recruit or a veteran of the now defunct bog guard, you have been assigned to the newly established Vanguard. \
-	You have a roof over your head, coin in your pocket, and a thankless job protecting the outskirts of town against what lurks beyond.\
-	The Bastion must not fall."
+	tutorial = "Вы - либо новобранец, либо ветеран ныне несуществующей болотной стражи, и вас назначили в недавно созданный Авангард - корпус пограничной стражи. \
+	У вас есть крыша над головой, монеты в кармане и неблагодарная работа - защищать окраины города от того, что таится за его пределами.\
+	Бастион не должен пасть."
 	display_order = JDO_TOWNGUARD
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/bog

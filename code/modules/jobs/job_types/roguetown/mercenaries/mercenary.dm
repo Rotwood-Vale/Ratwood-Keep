@@ -2,7 +2,9 @@
 	title = "Mercenary"
 	flag = MERCENARY
 	department_flag = MERCENARIES
-	tutorial = "You've travelled the lands and plied your sword and skill for mammon and blood. You are loyal only to the highest bidder and yourself, not to a lord like a common soldier. Perhaps you've enlisted with a guild, perhaps you're a member of a holy order, perhaps you're just a cut above the typical bandit."
+	tutorial = "Вы путешествуете по землям и используете свой меч и мастерство ради маммонов и крови. \
+	Вы верны только тому, кто больше заплатит, и самому себе, а не лорду, как обычные солдаты. \
+	Возможно, вы вступили в гильдию, возможно, являетесь членом святого ордена, возможно, вы просто выше обычного бандита."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = null
