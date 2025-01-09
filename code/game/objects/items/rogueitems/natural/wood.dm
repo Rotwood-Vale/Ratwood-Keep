@@ -1,8 +1,13 @@
 /obj/item/grown/log/tree
 	icon = 'icons/roguetown/items/natural.dmi'
 	name = "log"
-	desc = "A big tree log. It's very heavy, and huge."
+	desc = "A big tree log. It's very heavy and cumbersome, best cut into pieces for more uses."
 	icon_state = "log"
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
+//	attacked_sound = 'sound/misc/woodhit.ogg'
 	blade_dulling = DULLING_CUT
 	max_integrity = 30
 	static_debris = list(/obj/item/grown/log/tree/small = 2)
@@ -17,8 +22,24 @@
 	metalizer_result = /obj/item/rogueore/iron
 
 /obj/item/grown/log/tree/attacked_by(obj/item/I, mob/living/user) //This serves to reward woodcutting
+	user.changeNext_move(CLICK_CD_MELEE)
+	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+	var/planking_time = (40 - (skill_level * 5))
+	if(istype(I, /obj/item/rogueweapon/handsaw))
+		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
+		user.visible_message("<span class='notice'>[user] starts sawing [src] to smaller pieces.</span>")
+		if(do_after(user, planking_time))
+			new /obj/item/grown/log/tree/small(get_turf(src.loc))
+			new /obj/item/grown/log/tree/small(get_turf(src.loc))
+			if(prob(skill_level + user.goodluck(2)))	// when sawing instead of essence you get extra small log
+				new /obj/item/grown/log/tree/small(get_turf(src.loc))
+			if(user.is_holding(src))
+				user.dropItemToGround(src)
+			user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+			new /obj/effect/decal/cleanable/debris/woody(get_turf(src))
+			qdel(src)
+			return
 	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount)
-		var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 		var/lumber_time = (40 - (skill_level * 5))
 		var/minimum = 2
 		playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
@@ -43,10 +64,13 @@
 		return TRUE
 	..()
 
+//................	Small log	............... //
 /obj/item/grown/log/tree/small
 	name = "small log"
-	desc = "Smaller log that came from a larger log. Suitable for building."
+	desc = "Piece of lumber cut from a larger log. Suitable for building."
 	icon_state = "logsmall"
+	grid_width = 64
+	grid_height = 96
 	max_integrity = 30
 	static_debris = list(/obj/item/grown/log/tree/stick = 3)
 	firefuel = 20 MINUTES
@@ -56,38 +80,28 @@
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
 	metalizer_result = /obj/item/rogueore/copper
+/obj/item/grown/log/tree/small/attackby(obj/item/I, mob/living/user, params)
+	if(item_flags & IN_STORAGE)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+	var/planking_time = (45 - (skill_level * 5))
+	if(istype(I, /obj/item/rogueweapon/handsaw))
+		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
+		user.visible_message("<span class='notice'>[user] starts sawing planks from [src].</span>")
+		if(do_after(user, planking_time))
+			var/obj/item/natural/wood/plank/S = new /obj/item/natural/wood/plank(get_turf(src.loc))
+			if(user.is_holding(src))
+				user.dropItemToGround(src)
+				user.put_in_hands(S)
+			user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+			new /obj/effect/decal/cleanable/debris/woody(get_turf(src))
+			qdel(src)
+			return
+	..()
 
-/obj/item/natural/wood/plank
-	name = "wood plank"
-	desc = "A wooden plank ready to be worked."
-	icon_state = "wplank"
-	firefuel = 5 MINUTES
-	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = /obj/item/ash
-	bundletype = /obj/item/natural/bundle/plank
-	metalizer_result = /obj/item/rogueore/tin
 
-
-/obj/item/natural/bundle/plank
-	name = "wooden planks"
-	icon_state = "planks1"
-	possible_item_intents = list(/datum/intent/use)
-	desc = "Wooden planks bundled together for easy handling."
-	force = 0
-	throwforce = 0
-	maxamount = 10
-	firefuel = 30 MINUTES
-	resistance_flags = FLAMMABLE
-	w_class = WEIGHT_CLASS_BULKY
-	spitoutmouth = FALSE
-	stacktype = /obj/item/natural/wood/plank
-	stackname = "plank"
-	icon1 = "planks1"
-	icon1step = 5
-	icon2 = "planks2"
-	icon2step = 10
-	smeltresult = /obj/item/ash
-
+//................	Lumber essence	............... //
 /obj/item/grown/log/tree/small/essence
 	name = "essence of lumber"
 	desc = "A mystical essence embued with the power of Dendor. Very good source of fuel."
@@ -97,6 +111,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	metalizer_result = /obj/item/rogueore/gold
 
+//................	Unstrung bow	............... //
 /obj/item/grown/log/tree/bowpartial
 	name = "unstrung bow"
 	desc = "A partially completed bow, still waiting to be strung."
@@ -110,10 +125,12 @@
 	lumber_amount = 0
 	metalizer_result = null
 
+//................	Stick	............... //
 /obj/item/grown/log/tree/stick
 	name = "stick"
 	icon_state = "stick1"
-	desc = "A dry stick from a tree branch."
+	item_state = "stick"
+	desc = "A tree branch perhaps."
 	blade_dulling = 0
 	max_integrity = 20
 	static_debris = null
@@ -152,20 +169,43 @@
 	playsound(user,'sound/items/seedextract.ogg', 100, FALSE)
 	qdel(src)
 
+/obj/item/grown/log/tree/stick/attack_right(mob/living/user)
+	. = ..()
+	if(user.get_active_held_item())
+		return
+	to_chat(user, span_warning("I start to collect [src]..."))
+	if(move_after(user, 4 SECONDS, target = src))
+		var/stackcount = 0
+		for(var/obj/item/grown/log/tree/stick/F in get_turf(src))
+			stackcount++
+		while(stackcount > 0)
+			if(stackcount == 1)
+				var/obj/item/grown/log/tree/stick/S = new(get_turf(user))
+				user.put_in_hands(S)
+				stackcount--
+			else if(stackcount >= 2)
+				var/obj/item/natural/bundle/stick/B = new(get_turf(user))
+				B.amount = clamp(stackcount, 2, 4)
+				B.update_bundle()
+				stackcount -= clamp(stackcount, 2, 4)
+				user.put_in_hands(B)
+		for(var/obj/item/grown/log/tree/stick/F in get_turf(src))
+			playsound(get_turf(user.loc), 'sound/foley/dropsound/wooden_drop.ogg', 100)
+			qdel(F)
+
+
 /obj/item/grown/log/tree/stick/attackby(obj/item/I, mob/living/user, params)
 	var/mob/living/carbon/human/H = user
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(user.used_intent?.blade_class == BCLASS_CUT)
 		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
-		if(do_after(user, 20))
-			user.visible_message(span_notice("[user] sharpens [src]."))
+		user.visible_message(span_notice("[user] starts sharpening [src]."))
+		if(do_after(user, 4 SECONDS))
 			var/obj/item/grown/log/tree/stake/S = new /obj/item/grown/log/tree/stake(get_turf(src.loc))
 			if(user.is_holding(src))
 				user.dropItemToGround(src)
 				user.put_in_hands(S)
 			qdel(src)
-		else
-			user.visible_message(span_warning("[user] sharpens [src]."))
 		return
 	if(istype(I, /obj/item/grown/log/tree/stick))
 		var/obj/item/natural/bundle/stick/F = new(src.loc)
@@ -182,10 +222,13 @@
 			qdel(src)
 	..()
 
+//................	Stake	............... //
 /obj/item/grown/log/tree/stake
 	name = "stake"
 	icon_state = "stake"
-	desc = "A wooden stake, and it's pointy end!"
+	grid_width = 32
+	grid_height = 64
+	desc = "A sharpened piece of wood, fantastic for piercing"
 	force = 10
 	throwforce = 5
 	possible_item_intents = list(/datum/intent/stab, /datum/intent/pick)
@@ -199,3 +242,80 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	lumber_amount = 0
 	metalizer_result = /obj/item/ammo_casing/caseless/rogue/arrow/iron
+
+
+//................	Wooden planks	............... //
+/obj/item/natural/wood/plank
+	name = "wooden plank"
+	desc = "A flat piece of wood, useful for flooring."
+	icon = 'icons/roguetown/items/crafting.dmi'
+	icon_state = "plank"
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	grid_width = 64
+	grid_height = 224
+	attacked_sound = 'sound/misc/woodhit.ogg'
+	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
+	possible_item_intents = list(/datum/intent/use)
+	force = 6
+	throwforce = 0
+	obj_flags = null
+	resistance_flags = FLAMMABLE
+	slot_flags = null
+	max_integrity = 20
+	firefuel = 5 MINUTES
+	w_class = WEIGHT_CLASS_BULKY
+	bundletype = /obj/item/natural/bundle/plank
+	smeltresult = /obj/item/ash
+/obj/item/natural/wood/plank/attack_right(mob/living/user)
+	if(user.get_active_held_item())
+		return
+	to_chat(user, span_warning("I start to collect [src]..."))
+	if(move_after(user, 4 SECONDS, target = src))
+		var/stackcount = 0
+		for(var/obj/item/natural/wood/plank/F in get_turf(src))
+			stackcount++
+		while(stackcount > 0)
+			if(stackcount == 1)
+				var/obj/item/natural/wood/plank/S = new(get_turf(user))
+				user.put_in_hands(S)
+				stackcount--
+			else if(stackcount >= 2)
+				var/obj/item/natural/bundle/plank/B = new(get_turf(user))
+				B.amount = clamp(stackcount, 2, 6)
+				B.update_bundle()
+				stackcount -= clamp(stackcount, 2, 6)
+				user.put_in_hands(B)
+		for(var/obj/item/natural/wood/plank/F in get_turf(src))
+			playsound(get_turf(user.loc), 'sound/foley/dropsound/wooden_drop.ogg', 80)
+			qdel(F)
+
+//................	Wooden plan stack	............... //
+/obj/item/natural/bundle/plank
+	name = "stack of wooden planks"
+	desc = "Several planks in a neat pile."
+	icon_state = "plankbundle1"
+	item_state = "plankbundle"
+	icon = 'icons/roguetown/items/crafting.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	grid_width = 128
+	grid_height = 224
+	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
+	possible_item_intents = list(/datum/intent/use)
+	force = 0
+	throwforce = 0
+	throw_range = 2
+	firefuel = 10 MINUTES
+	w_class = WEIGHT_CLASS_BULKY
+	stackname = "plank"
+	stacktype = /obj/item/natural/wood/plank
+	maxamount = 6
+	icon1 = "plankbundle2"
+	icon1step = 3
+	icon2 = "plankbundle3"
+	icon2step = 5
+	smeltresult = /obj/item/ash
+
