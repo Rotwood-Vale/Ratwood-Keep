@@ -204,8 +204,6 @@
             return
         if (uses_remaining == 1)
             to_chat(user, span_notice("This is your last charge. Use it wisely!"))
-        if (M.has_status_effect(/datum/status_effect/debuff/death_weaken))
-            M.remove_status_effect(/datum/status_effect/debuff/death_weaken)
         M.apply_status_effect(/datum/status_effect/buff/blessed)
         M.add_stress(/datum/stressevent/blessed)
         user.visible_message(span_notice("[user] blesses [M]."))
