@@ -1,14 +1,14 @@
 /datum/patron/godless
 	name = "Godless"
-	domain = "Ontological Reality"
-	desc = "No gods or kings, only man! Gods exist but you give them the finger."
-	worshippers = "Madmen, beasts and some dwarves"
+	domain = "Онтологическая реальность"
+	desc = "Нет ни богов, ни королей, только люди! Боги существуют, но вы показываете на них пальцем."
+	worshippers = "Безумцы, звери и несколько дворфов"
 	associated_faith = /datum/faith/godless
 	preference_accessible = FALSE
 	undead_hater = FALSE
 	confess_lines = list(
-		"Gods are WORTHLESS!",
-		"I DON'T NEED GODS!",
-		"I AM MY OWN GOD!",
-		"NO GODS, NO MASTERS!",
+		"Боги не нужны!",
+		"МНЕ НЕ НУЖНЫ БОГИ!",
+		"Я САМ СЕБЕ БОГ!",
+		"НЕТ БОГОВ - НЕТ ХОЗЯЕВ!",
 	)

@@ -16,7 +16,7 @@
 			return
 	..()
 
-/obj/item/clothing/mask/pig
+/obj/item/clothing/mask/rogue/pig
 	name = "pig mask"
 	desc = ""
 	icon_state = "pig"
@@ -26,17 +26,17 @@
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
 
-/obj/item/clothing/mask/pig/handle_speech(datum/source, list/speech_args)
+/obj/item/clothing/mask/rogue/pig/handle_speech(datum/source, list/speech_args)
 	if(!CHECK_BITFIELD(clothing_flags, VOICEBOX_DISABLED))
 		speech_args[SPEECH_MESSAGE] = pick("Oink!","Squeeeeeeee!","Oink Oink!")
 
-/obj/item/clothing/mask/pig/cursed
+/obj/item/clothing/mask/rogue/pig/cursed
 	name = "pig face"
 	desc = ""
 	flags_inv = HIDEFACIALHAIR
 	clothing_flags = NONE
 
-/obj/item/clothing/mask/rat
+/obj/item/clothing/mask/rogue/rat
 	name = "rat mask"
 	desc = ""
 	icon_state = "rat"
@@ -44,43 +44,43 @@
 	flags_inv = HIDEFACE
 	flags_cover = MASKCOVERSMOUTH
 
-/obj/item/clothing/mask/rat/fox
+/obj/item/clothing/mask/rogue/rat/fox
 	name = "fox mask"
 	desc = ""
 	icon_state = "fox"
 	item_state = "fox"
 
-/obj/item/clothing/mask/rat/bee
+/obj/item/clothing/mask/rogue/rat/bee
 	name = "bee mask"
 	desc = ""
 	icon_state = "bee"
 	item_state = "bee"
 
-/obj/item/clothing/mask/rat/bear
+/obj/item/clothing/mask/rogue/rat/bear
 	name = "bear mask"
 	desc = ""
 	icon_state = "bear"
 	item_state = "bear"
 
-/obj/item/clothing/mask/rat/bat
+/obj/item/clothing/mask/rogue/rat/bat
 	name = "bat mask"
 	desc = ""
 	icon_state = "bat"
 	item_state = "bat"
 
-/obj/item/clothing/mask/rat/raven
+/obj/item/clothing/mask/rogue/rat/raven
 	name = "raven mask"
 	desc = ""
 	icon_state = "raven"
 	item_state = "raven"
 
-/obj/item/clothing/mask/rat/jackal
+/obj/item/clothing/mask/rogue/rat/jackal
 	name = "jackal mask"
 	desc = ""
 	icon_state = "jackal"
 	item_state = "jackal"
 
-/obj/item/clothing/mask/rat/tribal
+/obj/item/clothing/mask/rogue/rat/tribal
 	name = "tribal mask"
 	desc = ""
 	icon_state = "bumba"

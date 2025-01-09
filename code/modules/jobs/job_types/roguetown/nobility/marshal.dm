@@ -5,17 +5,18 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_MARSHAL
-	tutorial = "You and your Councillors are the judge and jury, only overruled by His Majesty. \
-				Plan with the Councillors on any issues, laws, judgements, and construction that are required to adapt to the new world. \
-				Your two assistant Councillors are there to fuel your wonderful ideas, lifting the weight of responsibility off your shoulders. \
-				Delegate tasks, enforce taxes and justice upon the unruly. Keep the town running, and enrich it with new architecture. \
-				After all, the Duke entrusted you with leading and maintaining his military might. \
-				It may be the Duke's land, but you pull the strings in this town. \
-				All in the name of fulfilling your duty to your Duke."
+	tutorial = "Вы - командующий армией герцога, судья, и ваши советники - присяжные, и только по решению Его Величества можно отменить ваши законы, предписания и решения. \
+				Планируйте вместе с советниками все вопросы, законы, решения и строительство, которые необходимы для адаптации к новому миру. \
+				Два ваших помощника - Советники - подпитывают ваши замечательные идеи, снимая груз ответственности с ваших плеч. \
+				Делегируйте задания, взыскивайте налоги и вершите правосудие над непокорными. Поддерживайте город в рабочем состоянии и обогащайте его новой архитектурой. \
+				В конце концов, герцог доверил вам руководство и поддержание своей военной мощи. \
+				Может быть, это и земля герцога, но вы дергаете за ниточки в этом городе. \
+				И все это во имя выполнения своего долга перед герцогом."
+
 	whitelist_req = FALSE
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard, /obj/effect/proc_holder/spell/self/convertrole/bog)

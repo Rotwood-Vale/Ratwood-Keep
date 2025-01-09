@@ -1,30 +1,30 @@
 /datum/crafting_recipe/roguetown/gravemarker
-	name = "grave marker"
+	name = "надгробие"
 	result = /obj/structure/gravemarker
 	reqs = list(/obj/item/grown/log/tree/stick = 1)
 	time = 10 SECONDS
-	verbage_simple = "tie together"
-	verbage = "ties together"
+	verbage_simple = "пытается поставить"
+	verbage = "поставлено"
 	craftsound = 'sound/foley/Building-01.ogg'
 	structurecraft = /obj/structure/closet/dirthole
 	skill_level = 0
 
 /datum/crafting_recipe/roguetown/gravemarker/TurfCheck(mob/user, turf/T)
 	if(!(locate(/obj/structure/closet/dirthole) in T))
-		to_chat(user, span_warning("There is no grave here."))
+		to_chat(user, span_warning("Здесь нет могилы."))
 		return FALSE
 	for(var/obj/structure/closet/dirthole/D in T)
 		if(D.stage != 4)
-			to_chat(user, span_warning("The grave isn't covered."))
+			to_chat(user, span_warning("Могила не засыпана."))
 			return FALSE
 	if(locate(/obj/structure/gravemarker) in T)
-		to_chat(user, span_warning("This grave is already hallowed."))
+		to_chat(user, span_warning("На этой могиле уже есть надгробие."))
 		return FALSE
 	return TRUE
 
 /obj/structure/gravemarker
-	name = "grave marker"
-	desc = "A simple marker honouring the departed.."
+	name = "надгробие"
+	desc = "Простой крест над могилой усопшего..."
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "gravemarker1"
 	density = FALSE

@@ -178,8 +178,8 @@ SUBSYSTEM_DEF(vote)
 			if(vote && 1<=vote && vote<=choices.len)
 				voted += usr.ckey
 				var/vote_power = 1
-				if(usr.client.holder)
-					vote_power += 5
+				/*if(usr.client.holder)
+					vote_power += 5*/
 				if(ishuman(usr))
 					var/mob/living/carbon/H = usr
 					if(H.stat != DEAD)

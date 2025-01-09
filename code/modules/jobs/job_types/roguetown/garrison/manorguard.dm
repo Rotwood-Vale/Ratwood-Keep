@@ -9,9 +9,11 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	tutorial = "Having proven yourself loyal and capable, you are entrusted to defend the Royal Family and their Court, \
-				trained regularly in combat and siege warfare you stand a small chance of surviving the Duke's reign. \
-				It's an honor to die as part of His Highness' retinue, the Marshal reminds you every night."
+	tutorial = "Доказав свою преданность и способности, вы получили смысл жизни - защищать герцогскую семью и её двор в качестве лейб-гвардейца. \
+				Вы непосредственно подчиняетесь своему капитану лейб-гвардии.\
+				Если вы регулярно проходите обучение боевым и осадным действиям, у вас есть небольшой шанс пережить правление герцога.\
+				Умереть в составе лейб-гвардии Его Высочества - большая честь, маршал напоминает вам об этом каждую ночь."
+
 	display_order = JDO_CASTLEGUARD
 	whitelist_req = TRUE
 

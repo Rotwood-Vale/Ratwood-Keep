@@ -2,28 +2,27 @@
 	race = /datum/species/axian
 
 /datum/species/axian
-	name = "Axian"
+	name = "Аксиан"
 	id = "axian"
-	desc = "<b>Axian</b><br>\
-	Axians are a proud, shark-like people that have a heritage founded in maritime trade, tax evasion, and piracy. \
-	While known for being strong in spirit and promoting robust commercial practices, they have gained infamy for \
-	possessing an intense distaste for both the nobility and taxes, making them a prime target of discrimination and suspicion."
-	expanded_desc =	"Axians are a proud, shark-like people that have a heritage founded in maritime trade, tax evasion, and piracy. While known for \
-	being strong in spirit and promoting robust commercial practices, they have gained infamy for possessing an intense distaste for \
-	both the nobility and taxes, making them a prime target of discrimination and suspicion. They are oftentimes scapegoats for crime \
-	and are often blamed for any signs of dissent, oftentimes becoming the first to be persecuted for any rebellious activities present \
-	in the region. Furthermore, they often are accused of being Matthiosan, oftentimes having their assets forcibly seized by opportunistic schemers. \
+	desc = "<b>Аксиан</b><br>\
+	Аксиане - гордый, похожий на акулу народ, наследие которого основано на морской торговле, уклонении от налогов и пиратстве. \
+	Хотя они известны тем, что сильны духом и поощряют активную коммерческую деятельность, они приобрели дурную славу за то,\
+	что они испытывают сильное отвращение к дворянству и налогам, что делает их главной мишенью для дискриминации и подозрительности."
+	expanded_desc =	"Они часто становятся козлами отпущения за преступления, их часто обвиняют в любых проявлениях инакомыслия, \
+	и они часто становятся первыми, кого преследуют за любые мятежные действия, происходящие в регионе. \
+	Кроме того, их часто обвиняют в том, что они маттиоситы, а их имущество нередко насильно конфискуют беспринципные интриганы.  \
 	<br><br> \
-	Due to their penchant for trade, travel, and being kicked out of various kingdoms, they can be found all over the world, oftentimes \
-	seeing places most could not even dream of. They look down at those they considered the \"settled\" and often uproot themselves quite \
-	often in their lifetimes, particularly when it proves to be most profitable. However, many Axians often find their sanity being clawed \
-	away as they sometimes find themselves stuck in one place. \
+	Благодаря их склонности к торговле, путешествиям и изгнанию из различных королевств, их можно встретить по всему миру, часто они видят места, \
+	о которых большинство даже не могло мечтать. Они свысока смотрят на тех, кого считают «оседлыми», \
+	и нередко за свою жизнь сами переезжают с места на место, особенно если это оказывается наиболее выгодным. \
+	Однако многие аксиане часто замечают, что их рассудок уходит из-под ног, так как они иногда застревают на одном месте. \
 	<br><br> \
-	Axians were once unified under the Grand Ainoan Republic but have since scattered in recent times. Ainoa was a dominant maritime power, \
-	controlling key trade goods and routes that rivaled those of Giza and the Zybantinians. However, the disruption of the slave trade following \
-	the Great Sissean Uprisings plunged the republic into economic and moral chaos with many leaders accused of Matthiosan worship. This turmoil \
-	eventually sparked the brutal Ainoan Crusade, splintering the republic into several rump states led by merchant warlords and so-called pirate kings. \
-	However, instead of trying to reclaim the glory of the past, Axians embrace their new lifestyle and thrive in the chaos."
+	Когда-то аксианцы были объединены под властью Айноанской Республики, но в последнее время они стали разрозненными. \
+	Айноа была доминирующей морской державой, контролирующей ключевые торговые товары и маршруты, которые соперничали с маршрутами Гизы и Зибантии. \
+	Однако разрушение работорговли после Великих ящеролюдских восстаний повергло республику в экономический и моральный хаос, а многие лидеры были обвинены в поклонении Маттиосу. \
+	Эти беспорядки в конечном итоге спровоцировали жестокий Айноанский крестовый поход, в результате которого республика распалась на несколько разрозненных государств,\
+	возглавляемых торговыми военачальниками и так называемыми пиратскими королями. Однако вместо того, чтобы пытаться вернуть былую славу, \
+	аксианцы принимают свой новый образ жизни и процветают в хаосе."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WATERBREATHING)

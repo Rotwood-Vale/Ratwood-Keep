@@ -1,8 +1,8 @@
 /datum/subclass/deserter
 	name = "Deserter"
-	tutorial = "You deserted your post and fled from the battlefield \
-				after having witnessed first hand the horrors of war and the disastrous campaigns against the deadite hordes of the south.\
-				You now seek refuge in a place where your past allegiance wont be recognized, hoping that the rot hasn't followed you.\ "
+	tutorial = "Вы покинули свой пост и бежали с поля боя.\
+				после того, как на собственном опыте убедились в ужасах войны и провальных кампаниях против другого государства.\
+				Теперь вы ищете убежище в месте, где ваше прошлое подданство не будет признано, надеясь, что война не последует за вами снова."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

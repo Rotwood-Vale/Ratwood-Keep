@@ -10,7 +10,8 @@
 	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
 	allowed_ages = ALL_AGES_LIST
 
-	tutorial = "Granted a life of comfortable servitute in the Duke's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
+	tutorial = "Получив право на беспечную жизнь в поместье герцога, \
+	вы выполняете приказы старшего дворецкого или горничной и проводите свой день, выполняя необходимые, но рутинные задания."
 
 	outfit = /datum/outfit/job/roguetown/servant
 	display_order = JDO_SERVANT

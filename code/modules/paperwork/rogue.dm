@@ -10,7 +10,6 @@
 	maxlen = 2000
 	throw_range = 3
 
-
 /obj/item/paper/scroll/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
 		if(!open)

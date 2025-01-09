@@ -9,11 +9,10 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
-	tutorial = "You're hired muscle for the local brothel. \
-				You work directly under the Whitevein Lounge's ownership, whether that be a Nightmaster or Nightmatron. \
-				Assure nobody causes trouble or harms the prostitutes, \
-				alongside the added help of keeping the long arm of the law away from the shady business happening inside."
-
+	tutorial = "Вы - наемный работник местного борделя. \
+				Вы работаете под непосредственным руководством владельца Whitevein Lounge, будь то Nightmaster или Nightmatron. \
+				Вы следите за тем, чтобы никто не создавал проблем и не причинял вреда проституткам,\
+				а также помогать длинной руке закона держать подальше от теневого бизнеса, происходящего внутри."
 	outfit = /datum/outfit/job/roguetown/grabber
 	display_order = JDO_GRABBER
 	give_bank_account = TRUE

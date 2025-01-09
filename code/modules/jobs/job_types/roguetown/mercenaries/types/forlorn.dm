@@ -1,11 +1,13 @@
 /datum/subclass/forlorn
 	name = "Forlorn Hope Mercenary"
-	tutorial = "The Order of the Forlorn Hope, a holy order founded in the name of Noc and the banishment of the rot. Now it is riddled with the wounded, the veterans and the landless of the Vakran civil war. Take up the banner and fight again in the name of the Ten, or use the pretense of faith and zealotry to make ends meet by any means necessary."
+	tutorial = "Орден Забытой Надежды - святой орден, основанный во имя Нока и помощи ближним. \
+	Теперь он полон раненых, ветеранов и безземельных гражданской войны в Валории. \
+	Возьмите знамя и снова сражайтесь во имя Десяти или используйте притворство веры и фанатизма, чтобы свести концы с концами любыми средствами."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin)
+	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/forlorn
 	maximum_possible_slots = 10
-	min_pq = 4
+	min_pq = 20
 	torch = FALSE
 	cmode_music = 'sound/music/combat_forlorn.ogg'
 	category_tags = list(CTAG_MERCENARY)

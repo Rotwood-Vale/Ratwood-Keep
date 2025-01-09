@@ -577,7 +577,8 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/simple/roguefonts
 	verify = TRUE
 	assets = list(
-		"pterra.ttf" = 'interface/fonts/pterra.ttf',
+		"Mookmania.otf" = 'interface/fonts/Mookmania.otf', // основной шрифт
+		"ebbe.ttf" = 'interface/fonts/ebbe.ttf',
 		"chiseld.ttf" = 'interface/fonts/chiseld.ttf',
 		"blackmoor.ttf" = 'interface/fonts/blackmoor.ttf',
 		"handwrite.ttf" = 'interface/fonts/handwrite.ttf',
@@ -585,16 +586,17 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"book2.ttf" = 'interface/fonts/book1.ttf',
 		"book3.ttf" = 'interface/fonts/book1.ttf',
 		"book4.ttf" = 'interface/fonts/book1.ttf',
-		"dwarf.ttf" = 'interface/fonts/languages/dwarf.ttf',
-		"elf.ttf" = 'interface/fonts/languages/elf.ttf',
-		"hell.ttf" = 'interface/fonts/languages/hell.ttf',
-		"orc.ttf" = 'interface/fonts/languages/orc.ttf',
-		"sand.ttf" = 'interface/fonts/languages/sand.ttf',
-		"undead.ttf" = 'interface/fonts/languages/undead.ttf',
-		"draconic.ttf" = 'interface/fonts/languages/draconic.ttf',
-		"fae.ttf" = 'interface/fonts/languages/fae.ttf',
-		"lupian.ttf" = 'interface/fonts/languages/lupian.ttf',
-		"felid.ttf" = 'interface/fonts/languages/felid.ttf'
+		"Propaniac.ttf" = 'interface/fonts/languages/Propaniac.ttf', // дварфы
+		"Nickainley Normal.ttf" = 'interface/fonts/languages/Nickainley Normal.ttf', // Эльфы
+		"Comforter Brush.otf" = 'interface/fonts/languages/Comforter Brush.otf', // Тифлинги
+		"VizaviTYGRA.ttf" = 'interface/fonts/languages/VizaviTYGRA.ttf', // Орки
+		"Kamelia.ttf" = 'interface/fonts/languages/Kamelia.ttf', // ангелы
+		"FDMedian.ttf" = 'interface/fonts/languages/FDMedian.ttf', // нежить
+		"Kautiva Cyrillic Black.ttf" = 'interface/fonts/languages/Kautiva Cyrillic Black.ttf', // ящерицы
+		"DreamScar.ttf" = 'interface/fonts/languages/DreamScar.ttf', // винкс
+		"ALOT Gutenberg B Normal.ttf" = 'interface/fonts/languages/ALOT Gutenberg B Normal.ttf', // вульпы
+		"Satyr SP.otf" = 'interface/fonts/languages/Satyr SP.otf', // фелиниды
+		"Schwabacher.ttf" = 'interface/fonts/languages/Schwabacher.ttf'
 	)
 
 /datum/asset/spritesheet/goonchat

@@ -1,6 +1,8 @@
 /datum/subclass/sellsword
 	name = "Sellsword"
-	tutorial = "You are a common sellsword, regarded as scum by many. You travelled the isle working as a bodyguard, mercenary or a cutthroat. You're loyal to your own well being and the sounds mammons make in your pouch."
+	tutorial = "Вы - обычный наймит, которого многие считают отбросом. \
+	Вы путешествуете по острову, работая телохранителем, наемником или головорезом. \
+	Вы верны собственному благополучию и звукам, которые издают маммоны в вашем мешочке."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/sellsword

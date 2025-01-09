@@ -188,15 +188,6 @@
 #define SEELIE		(1<<2)
 #define MERC_CLERK	(1<<3)
 
-#define GOBLIN		(1<<9)
-
-#define GOBLINCHIEF	(1<<0)
-#define GOBLINCOOK	(1<<1)
-#define GOBLINGUARD	(1<<2)
-#define GOBLINSMITH	(1<<3)
-#define GOBLINRABBLE	(1<<4)
-#define GOBLINSHAMAN	(1<<5)
-
 #define SLOP		(1<<10)
 
 #define TESTER		(1<<0)

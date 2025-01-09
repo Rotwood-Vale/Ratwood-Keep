@@ -14,7 +14,9 @@
 	min_pq = -30
 	max_pq = null
 
-	tutorial = "The stench of your piss-laden clothes dont bug you anymore, the glances of disgust and loathing others give you is just a friendly greeting; the only reason you've not been killed already is because Volfs are known to be repelled by decaying flesh. You're going to be a solemn reminder what happens when something unwanted is born into this world."
+	tutorial = "Вонь от вашей пропахшей мочой одежды больше не досаждает вам, взгляды отвращения и презрения, которые бросают на вас окружающие, - всего лишь дружеское приветствие; \
+	единственная причина, по которой вас еще не убили, заключается в том, что оборотней, как известно, отталкивает разлагающаяся плоть. \
+	Ты станешь торжественным напоминанием о том, что происходит, когда в этом мире рождается что-то нежеланное."
 	display_order = JDO_VAGRANT
 	show_in_credits = FALSE
 	can_random = FALSE

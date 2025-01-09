@@ -2,22 +2,20 @@
 	race = /datum/species/tieberian
 
 /datum/species/tieberian
-	name = "Tiefling"
+	name = "Тифлинг"
 	id = "tiefling"
-	desc = "<b>Tiefling</b><br>\
-	Tieflings, also known as Infernal-Spawn by the Dwarves, are a relatively new species in Grimmoria. \
-  	Having shown up sometime within the past two centuries in relatively great numbers, it is understood that they lack any cultural identity \
-    as many seem to simply integrate within whatever society they find themselves born into. \
-    The unholy origins of Tieflings are well-established; it is known that many favor the Inhumen under Baotha. \
-    Many have claimed that they are the spawn of a succubus or incubus of Baotha laying with a mortal, \
-    in this, the claims are entirely true; they have faced near-insurmountable struggles as a result. \
-    Facing scrutiny, judgement and even genocide in the past. Wounding many Tiefling psyches' \
-    and leading to most seeking a solitary life outside the watchful eyes of others. \
-    Tieflings, while nominally mortal, are incapable of reproduction outside of their race. \
-    Tiefling tend to be extremely perceptive and paranoid, as luck is rarely on their side \
-    and their unique biology makes them extremely susceptible to injury."
+	desc = "<b>Тифлинг</b><br>\
+	Тифлинги, которых дворфы также называют инфернальными отродьями, — относительно новый вид в Гримории. \
+	Появившись в течение последних двух столетий в значительном количестве, они не обладают какой-либо культурной самобытностью. \
+	Многие из них просто интегрируются в общество, в котором рождаются. \
+	Нечестивое происхождение тифлингов хорошо известно. Говорят, что многие из них служат Презренным богам при Баоте. \
+	Ходят слухи, что они — порождения суккубов или инкубов Баоты, совокупившихся со смертными.\
+	Это лишь домысли и неподтвержденная информация. В результате тифлинги сталкиваются с почти непреодолимыми трудностями.\
+	В прошлом они подвергались преследованиям, осуждению и даже геноциду, что нанесло глубокую травму их коллективной психике. \
+	Это привело к тому, что большинство тифлингов стремится к уединенной жизни вдали от чужих глаз. \
+	Тифлинги чрезвычайно проницательны и параноидальны, так как удача редко бывает на их стороне. Их уникальная биология делает их особенно восприимчивыми к травмам."
 
-	skin_tone_wording = "Progenitor"
+	skin_tone_wording = "Прародитель"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)

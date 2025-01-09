@@ -7,3 +7,4 @@
 ## The force-respawning behavior will apply whether the players are connected or not, and respawn code will be called on mob login.
 #FORCE_RESPAWN_ON_FUNERAL
 
+#NEW_ROUND_PING

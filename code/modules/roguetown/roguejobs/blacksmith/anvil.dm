@@ -1,8 +1,8 @@
 
 /obj/machinery/anvil
 	icon = 'icons/roguetown/misc/forge.dmi'
-	name = "iron anvil"
-	desc = "It's surface is marred by countless hammer strikes."
+	name = "железная наковальня"
+	desc = "Её поверхность изуродована бесчисленными ударами молота."
 	icon_state = "anvil"
 	var/hott = null
 	var/obj/item/ingot/hingot
@@ -19,7 +19,7 @@
 /obj/machinery/anvil/examine(mob/user)
 	. = ..()
 	if(hingot && hott)
-		. += span_warning("[hingot] is too hot to touch.")
+		. += span_warning("[hingot] слишком горячий, чтобы его трогать.")
 
 /obj/machinery/anvil/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/rogueweapon/tongs))
@@ -73,7 +73,7 @@
 		spawn(1)
 			while(hingot)
 				if(!hott)
-					to_chat(user, span_warning("It's too cold."))
+					to_chat(user, span_warning("Он слишком холодный."))
 					return
 				if(!hingot.currecipe)
 					return
@@ -115,7 +115,7 @@
 		return
 
 	if(W.anvilrepair)
-		user.visible_message(span_info("[user] places [W] on the anvil."))
+		user.visible_message(span_info("[user] кладёт [W] на наковальню."))
 		W.forceMove(src.loc)
 		return
 	..()
@@ -134,7 +134,7 @@
 	if(!valid_types.len)
 		return
 
-	var/i_type_choice = input(user, "Choose a type", "Anvil") as null|anything in valid_types
+	var/i_type_choice = input(user, "Выберите тип", "Наковальня") as null|anything in valid_types
 	if(!i_type_choice)
 		return
 
@@ -151,7 +151,7 @@
 			appro_recipe -= R
 
 	if(appro_recipe.len)
-		var/datum/chosen_recipe = input(user, "Choose A Creation", "Anvil") as null|anything in sortNames(appro_recipe.Copy())
+		var/datum/chosen_recipe = input(user, "Выберите рецепт", "Наковальня") as null|anything in sortNames(appro_recipe.Copy())
 		if(!hingot.currecipe && chosen_recipe)
 			hingot.currecipe = new chosen_recipe.type(hingot)
 			return TRUE
@@ -161,7 +161,7 @@
 /obj/machinery/anvil/attack_hand(mob/user, params)
 	if(hingot)
 		if(hott)
-			to_chat(user, span_warning("It's too hot."))
+			to_chat(user, span_warning("Он слишком горячий."))
 			return
 		else
 			var/obj/item/I = hingot

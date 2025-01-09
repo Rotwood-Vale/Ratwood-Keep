@@ -19,7 +19,6 @@
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/kobold,\
-	/datum/species/goblinp,\
 	/datum/species/seelie,\
 )
 
@@ -32,26 +31,27 @@
 	/datum/species/lupian,\
 	/datum/species/vulpkanin,\
 	/datum/species/moth,\
-	/datum/species/dracon,
-
-#define RACES_TOLERATED \
+	/datum/species/dracon,\
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
 	/datum/species/axian,\
 	/datum/species/anthromorph,\
-	/datum/species/demihuman
-
-#define RACES_SHUNNED \
+	/datum/species/demihuman, \
 	/datum/species/elf/dark,\
 	/datum/species/tieberian,\
-	/datum/species/anthromorphsmall,\
-	/datum/species/kobold
+
+#define RACES_TOLERATED \
+	/datum/species/goblinp, \
+	/datum/species/halforc, \
+	/datum/species/kobold, \
+	/datum/species/anthromorphsmall
+
+#define RACES_SHUNNED \
 
 #define RACES_VERY_SHUNNED \
-	/datum/species/halforc
+
 
 #define RACES_GOBLIN \
-	/datum/species/goblinp
 
 #define RACES_SEELIE \
 	/datum/species/seelie	//Seelie having its own global define and nothing else will prevent allowing it via RACES_ALL_KINDS

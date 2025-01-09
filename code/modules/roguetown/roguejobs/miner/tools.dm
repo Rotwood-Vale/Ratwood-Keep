@@ -1,8 +1,8 @@
 /obj/item/rogueweapon/pick
 	force = 21
 	possible_item_intents = list(/datum/intent/pick)
-	name = "iron pick"
-	desc = "This tool is essential to mine in the dark depths."
+	name = "железная кирка"
+	desc = "Этот инструмент незаменим для добычи руды в тёмных глубинах."
 	icon_state = "pick"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -45,8 +45,8 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/pick/steel
-	name = "steel pick"
-	desc = "With a reinforced handle and sturdy shaft, this is a superior tool for delving in the darkness."
+	name = "стальная кирка"
+	desc = "С укреплённой рукоятью и прочным древком - это превосходный инструмент для копания во тьме."
 	force_wielded = 28
 	icon_state = "steelpick"
 	possible_item_intents = list(/datum/intent/pick)
@@ -55,8 +55,8 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/pick/drill
-	name = "clockwork drill"
-	desc = "A wonderfully complex work of engineering capable of shredding walls in seconds as opposed to hours."
+	name = "заводной бур"
+	desc = "Великолепное творение инженерии, способное сокрушать стены за секунды, а не часы."
 	force_wielded = 30
 	icon_state = "drill"
 	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'

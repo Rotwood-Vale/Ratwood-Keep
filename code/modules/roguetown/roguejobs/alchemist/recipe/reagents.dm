@@ -27,17 +27,17 @@
 	if(holder && holder.my_atom)
 		var/atom/A = holder.my_atom
 		var/turf/T = get_turf(A)
-		var/message = "A [reaction_name] reaction has occurred in [ADMIN_VERBOSEJMP(T)]"
+		var/message = "Реакция [reaction_name] произошла в [ADMIN_VERBOSEJMP(T)]"
 		message += " (<A HREF='?_src_=vars;Vars=[REF(A)]'>VV</A>)"
 
 		var/mob/M = get(A, /mob)
 		if(M)
-			message += " - Carried By: [ADMIN_LOOKUPFLW(M)]"
+			message += " - Реакция проведена: [ADMIN_LOOKUPFLW(M)]"
 		else
-			message += " - Last Fingerprint: [(A.fingerprintslast ? A.fingerprintslast : "N/A")]"
+			message += " - Последний отпечаток пальца: [(A.fingerprintslast ? A.fingerprintslast : "N/A")]"
 
 		message_admins(message, 0, 1)
-		log_game("[reaction_name] chemical mob spawn reaction occuring at [AREACOORD(T)] carried by [key_name(M)] with last fingerprint [A.fingerprintslast? A.fingerprintslast : "N/A"]")
+		log_game("[reaction_name] химическая реакция порождения существа [AREACOORD(T)] была проведена [key_name(M)] на основе последнего отпечатка пальца: [A.fingerprintslast? A.fingerprintslast : "N/A"]")
 
 		playsound(get_turf(holder.my_atom), 'sound/blank.ogg', 100, TRUE)
 

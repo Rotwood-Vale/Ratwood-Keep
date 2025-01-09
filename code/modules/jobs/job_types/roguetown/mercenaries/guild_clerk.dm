@@ -2,10 +2,10 @@
 	title = "Guild Clerk"
 	flag = MERC_CLERK
 	department_flag = MERCENARIES
-	tutorial = "Tidy. Crass. Foul mouthed. The first words that come to mind for the unsung hero of the mercenary guild's contract clerk. \
-	The medium by which the mercenaries go through for the average town goer to secure a mercenary and a fair price to accompany. \
-	Not only are you responsible for organizing contracts for the mercenaries, but also ensuring the proper use and delivery of the rewards from the excidium. \
-	It's a thankless task, but someone has to do it. May as well be you."
+	tutorial = "Опрятный. Грубый. Неистовый. Это первые слова, которые приходят на ум для невоспетых героев - контрактников гильдии наемников. \
+	Средство, через которое проходят наемники, чтобы обычный горожанин мог найти себе наёмника и получить за него справедливую цену. \
+	Вы отвечаете не только за организацию контрактов для наёмников, но и за правильное использование и доставку вознаграждений из эксидиума. \
+	Это неблагодарная работа, но кто-то должен ее выполнять. Возможно, это будешь ты."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = ALL_AGES_LIST

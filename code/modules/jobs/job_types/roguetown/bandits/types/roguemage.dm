@@ -1,6 +1,7 @@
 /datum/subclass/roguemage //mage class - like the refugee mage, but more evil.
 	name = "Rogue Mage"
-	tutorial = "Those fools at the academy laughed at you and cast you from the ivory tower of higher learning and magickal practice. No matter - you will ascend to great power one day, but first you need wealth - vast amounts of it. Show those fools in the town what REAL magic looks like."
+	tutorial = "Эти глупцы из академии посмеялись над вами и выгнали из башни из слоновой кости высшего образования и магической практики. \
+	Неважно - однажды ты вознесешься к великой власти, но сначала тебе нужно богатство - огромное количество богатства. Покажите этим глупцам в городе, как выглядит настоящая магия."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/roguemage

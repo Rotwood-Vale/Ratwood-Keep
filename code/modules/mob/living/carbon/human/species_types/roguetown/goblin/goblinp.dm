@@ -2,15 +2,17 @@
 	race = /datum/species/goblinp
 
 /datum/species/goblinp
-	name = "Goblin"
+	name = "Разумный гоблин"
 	id = "goblinp"
-	desc = "<b>Goblin</b><br>\
-	A vile, cursed race of green skinned fiends with brains as small as their hearts. Be not fooled by their appearance - What they lack in stature, they possess in sheer malice."
+	desc = "<b>Разумные гоблины</b><br>\
+	Гоблины, которые отреклись от своего создателя - Граггара, и пошли по пути просветлению Эоры, давшая им шанс на искупление, \
+	смогли в течении нескольких десятилетий обжиться в некоторых цивилизованных городах. К ним до всех пор относятся с презрением, недоверием и опаской, \
+	однако некоторые из них доказали, что имеют талант изобретать из шестерёнок и болтов что-то новое и неизведанное."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
 	use_skintones = TRUE
-	skin_tone_wording = "Skin Color"
+	skin_tone_wording = "Цвет кожи"
 	limbs_icon_m = 'icons/mob/species/goblin_male.dmi'
 	limbs_icon_f = 'icons/mob/species/goblin_female.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -50,8 +52,8 @@
 	specstats = list(
 		"strength" = -2, 
 		"perception" = 0, 
-		"intelligence" = -2, 
-		"constitution" = 2,
+		"intelligence" = 0, 
+		"constitution" = 0,
 		"endurance" = 1, 
 		"speed" = 2, 
 		"fortune" = -1

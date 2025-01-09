@@ -2,18 +2,14 @@
 	race = /datum/species/anthromorph
 
 /datum/species/anthromorph
-	name = "Wild-Kin"
+	name = "Вайлдкин"
 	id = "anthromorph"
-	desc = "<b>Wild-Kin</b><br>\
-	Wild-kins are a highly diverse and varied group of people who were born into unfortunate circumstances. \
-	Many wild-kins were either born to human parents or were once human themselves, having been turned by \
-	cursed items, powerful wizardry, or as punishment by the gods for their sins."
-	expanded_desc = "Wild-kins are a highly diverse and varied group of people who were born into unfortunate circumstances. \
-	Many wild-kins were either born to human parents or were once human themselves, having been turned by cursed items, \
-	powerful wizardry, or as punishment by the gods for their sins. However, some are born to wild-kins themselves, \
-	while others are half-breeds between other races. Regardless of their origin, many wild-kins face discrimination \
-	by those ignorant of their origins. Yet, due to their prominence in numbers and the growing number of wild-kins \
-	among noble families, they have been begrudgingly accepted into society, although not without consequences."
+	desc = "<b>Вайлдкин</b><br>\
+	Вайлдкины - это очень разнообразная и разносторонняя группа людей, которые родились в несчастливых обстоятельствах. \
+	Многие из них либо родились от человеческих родителей, либо сами когда-то были людьми, превратившись в антропоморфных существ, благодаря проклятым предметам,\
+	могущественному колдовству или в наказание богов за свои грехи. Однако некоторые рождаются у самих дикарей, а другие являются полукровками между другими расами.\
+	Независимо от происхождения, многие вайлдкины сталкиваются с дискриминацией со стороны тех, кто не знает об их происхождении.\
+	Тем не менее, благодаря их численному превосходству и растущему числу вайлдкинов среди знатных семей, они были неохотно приняты в общество, хотя и не без последствий."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
