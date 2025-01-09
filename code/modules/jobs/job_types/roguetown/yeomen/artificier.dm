@@ -20,6 +20,20 @@
 
 /datum/outfit/job/roguetown/artificer/pre_equip(mob/living/carbon/human/H)
 	..()
+	head = /obj/item/clothing/head/roguetown/hatfur
+	if(prob(50))
+		head = /obj/item/clothing/head/roguetown/hatblu
+	mask = /obj/item/clothing/mask/rogue/spectacles/golden
+	cloak = /obj/item/clothing/cloak/apron/waist/brown
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltl = /obj/item/key/artificer
+	backl = /obj/item/storage/backpack/rogue/backpack
+	backpack_contents = list(/obj/item/rogueweapon/hammer/steel = 1, /obj/item/rogueweapon/handsaw = 1, /obj/item/rogueweapon/chisel = 1)
+	pants = /obj/item/clothing/under/roguetown/trou
+	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
@@ -38,20 +52,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
-	head = /obj/item/clothing/head/roguetown/hatfur
-	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/hatblu
-//	armor = /obj/item/clothing/suit/roguetown/armor/workervest
-	cloak = /obj/item/clothing/cloak/apron/waist/brown
-	pants = /obj/item/clothing/under/roguetown/trou
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltl = /obj/item/key/artificer
-	mask = /obj/item/clothing/mask/rogue/spectacles/golden
-	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/rogueweapon/hammer/claw = 1, /obj/item/key/artificer)
+
 	H.change_stat("strength", 1)
 	H.change_stat("intelligence", 2)
 	H.change_stat("endurance", 1)
