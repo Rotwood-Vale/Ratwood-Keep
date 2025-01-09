@@ -170,69 +170,36 @@
 	key_third_person = "trills"
 	message = "trills."
 	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
-
-/mob/living/carbon/human/verb/emote_trill()
-	set name = "Trill"
-	set category = "Noises"
-
-	if(is_species(usr, /datum/species/tabaxi))
-		emote("trill", intentional = TRUE)
-	else 
-		to_chat(usr, span_warning("I can't vocalize this..."))
 
 /datum/emote/living/meow
 	key = "meow"
 	key_third_person = "meows"
 	message = "meows."
 	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
-
-/mob/living/carbon/human/verb/emote_meow()
-	set name = "Meow"
-	set category = "Noises"
-
-	if(is_species(usr, /datum/species/tabaxi))
-		emote("meow", intentional = TRUE)
-	else 
-		to_chat(usr, span_warning("I can't vocalize this..."))
-
 
 /datum/emote/living/hiss
 	key = "hiss"
 	key_third_person = "hisses"
 	message = "hisses!"
 	message_muffled = "make a muffled noise."
+	only_forced_audio = TRUE
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
-
-/mob/living/carbon/human/verb/emote_hiss()
-	set name = "Hiss"
-	set category = "Noises"
-
-	if(is_species(usr, /datum/species/tabaxi))
-		emote("hiss", intentional = TRUE)
-	else 
-		to_chat(usr, span_warning("I can't vocalize this..."))
 
 /datum/emote/living/purr
 	key = "purr"
 	key_third_person = "purrs"
 	message = "purrs."
 	message_muffled = "make a muffled noise."
+	only_forced_audio = TRUE
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
-
-/mob/living/carbon/human/verb/emote_purr()
-	set name = "Purr"
-	set category = "Noises"
-
-	if(is_species(usr, /datum/species/tabaxi))
-		emote("purr", intentional = TRUE)
-	else 
-		to_chat(usr, span_warning("I can't vocalize this..."))
 
 /datum/emote/living/cross
 	key = "crossarms"
