@@ -18025,7 +18025,9 @@
 /obj/structure/kybraxor{
 	pixel_x = -32;
 	pixel_y = -32;
-	redstone_id = "lava_bastion"
+	redstone_id = "lava_bastion";
+	desc = "Hungry for the poor.";
+	name = "Balar"
 	},
 /obj/structure/floordoor/gatehatch/inner{
 	redstone_id = "lava_bastion"
