@@ -353,16 +353,14 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		for(var/mob/M in listening)
 			if(!M.client)
 				continue
-			// if(!(M.client.prefs.toggles & SOUND_BARK))
-			// 	listening -= M
-		var/barks = min(round((LAZYLEN(message) / vocal_speed)) + 1, BARK_MAX_BARKS)
+		var/barks = min(round((LAZYLEN(message) / max(vocal_speed, 1))) + 1, BARK_MAX_BARKS)
 		var/total_delay
 		vocal_current_bark = world.time
 		for(var/i in 1 to barks)
 			if(total_delay > BARK_MAX_TIME)
 				break
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, bark), listening, (message_range * (is_yell ? 4 : 1)), (vocal_volume * (is_yell ? 1.5 : 1)), BARK_DO_VARY(vocal_pitch, vocal_pitch_range), vocal_current_bark), total_delay)
-			total_delay += rand(DS2TICKS(vocal_speed / BARK_SPEED_BASELINE), DS2TICKS(vocal_speed / BARK_SPEED_BASELINE) + DS2TICKS((vocal_speed / BARK_SPEED_BASELINE) * (is_yell ? 0.5 : 1))) TICKS
+			total_delay += rand(DS2TICKS(max(vocal_speed, 1) / BARK_SPEED_BASELINE), DS2TICKS(max(vocal_speed, 1) / BARK_SPEED_BASELINE) + DS2TICKS((max(vocal_speed, 1) / BARK_SPEED_BASELINE) * (is_yell ? 0.5 : 1))) TICKS
 
 /mob/proc/binarycheck()
 	return FALSE

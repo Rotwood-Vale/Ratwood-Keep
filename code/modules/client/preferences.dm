@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				used_title = "Character Sheet"
 
 			// Top-level menu table
-			dat += "<table style='width: 100%; line-height: 20px;'>"
+			dat += "<table style='width: 100%; line-height: 18px;'>"
 			// NEXT ROW
 			dat += "<tr>"
 			dat += "<td style='width:33%;text-align:left'>"
@@ -449,6 +449,15 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>Показать</a>"
 				else
 					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
+			if(user.client.prefs.be_russian)
+				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Изменить</a>"
+			else
+				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
+			if(nudeshot_link != null)
+				if(user.client.prefs.be_russian)
+					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>Показать</a>"
+				else
+					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
 
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
@@ -546,15 +555,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<br><b>Дополнительное Описание:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Изменить</a>"
 			else
 				dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
-			if(user.client.prefs.be_russian)
-				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Изменить</a>"
-			else
-				dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
-			if(nudeshot_link != null)
-				if(user.client.prefs.be_russian)
-					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>Показать</a>"
-				else
-					dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
@@ -851,19 +851,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += "<td width='33%' align='right'>"
 	if(user.client.prefs.be_russian)
 		dat += "<b>Русскоязычность:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
-	else
-		dat += "<b>Be Russian:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
-	if(user.client.prefs.be_russian)
 		dat += "<b>Нон-Кон:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
-	else
-		dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
-	if(user.client.prefs.be_russian)
 		dat += "<b>Девственность:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
-	else
-		dat += "<b>Be a virgin:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
-	if(user.client.prefs.be_russian)
 		dat += "<b>Быть Голосом:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	else
+		dat += "<b>Be Russian:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
+		dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
+		dat += "<b>Be a virgin:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
 		dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	dat += "</td>"
 	dat += "</tr>"
