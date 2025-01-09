@@ -183,3 +183,20 @@
 /datum/species/tabaxi/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+
+	H.verbs |= list(/mob/proc/trill, /mob/proc/meow, /mob/proc/hiss)
+
+/mob/proc/trill()
+	set name = "Trill"
+	set category = "Noises"
+	emote("trill")
+
+/mob/proc/meow()
+	set name = "Meow"
+	set category = "Noises"
+	emote("meow")
+
+/mob/proc/hiss()
+	set name = "Hiss"
+	set category = "Noises"
+	emote("hiss")
