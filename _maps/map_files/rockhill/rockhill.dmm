@@ -505,8 +505,8 @@
 /obj/structure/lever/red{
 	dir = 6;
 	name = "BURN";
-	redstone_id = "lava_bastioncell";
-	pixel_x = -10
+	pixel_x = -10;
+	redstone_id = "lava_bastioncell"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
@@ -1146,7 +1146,7 @@
 	lockid = "blacksmith"
 	},
 /obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /obj/item/key/blacksmith,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -7509,10 +7509,10 @@
 "ezy" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
+	lockdiff = 2;
 	locked = 1;
 	lockid = "bog_gatehouse";
-	name = "Acid Cell";
-	lockdiff = 2
+	name = "Acid Cell"
 	},
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/under/town/basement)
@@ -7913,10 +7913,10 @@
 "eKm" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
+	lockdiff = 2;
 	locked = 1;
 	lockid = "bog_gatehouse";
-	name = "Armory";
-	lockdiff = 2
+	name = "Armory"
 	},
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/under/town/basement)
@@ -16064,7 +16064,7 @@
 /area/rogue/indoors/town/bath)
 "jEp" = (
 /obj/machinery/anvil/crafted,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "jEq" = (
@@ -16466,7 +16466,7 @@
 	},
 /obj/item/rogueweapon/tongs,
 /obj/item/key/blacksmith,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -17784,7 +17784,7 @@
 	locked = 1;
 	lockid = "blacksmith"
 	},
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /obj/item/rogueweapon/tongs,
 /obj/item/key/blacksmith,
 /turf/open/floor/rogue/ruinedwood{
@@ -18213,11 +18213,11 @@
 	redstone_id = "lava_bastion"
 	},
 /obj/structure/kybraxor{
+	desc = "Hungry for the poor.";
+	name = "Balar";
 	pixel_x = -32;
 	pixel_y = -32;
-	redstone_id = "lava_bastion";
-	desc = "Hungry for the poor.";
-	name = "Balar"
+	redstone_id = "lava_bastion"
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
@@ -22094,7 +22094,7 @@
 	},
 /obj/item/key/blacksmith,
 /obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
