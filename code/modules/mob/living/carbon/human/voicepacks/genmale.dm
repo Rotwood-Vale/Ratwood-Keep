@@ -94,5 +94,13 @@
 				used = 'sound/vo/attn.ogg'
 			if("psst")
 				used = 'sound/vo/psst.ogg'
+			if("trill")
+				used = list('sound/vo/mrrp.ogg','sound/vo/mrrp (2).ogg')
+			if("meow")
+				used = list('sound/vo/meow.ogg','sound/vo/meow (2).ogg')
+			if("hiss")
+				used = list('sound/vo/hiss.ogg','sound/vo/hiss (2).ogg')
+			if("purr")
+				used = list('sound/vo/purr.ogg','sound/vo/purr (2).ogg')
 
 	return used
