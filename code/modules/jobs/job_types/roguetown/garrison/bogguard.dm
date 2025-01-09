@@ -150,3 +150,18 @@
 	bogger.change_stat("speed", 2)
 	bogger.change_stat("constitution", 1)
 	bogger.change_stat("endurance", 2)
+
+/mob/proc/trill()
+	set name = "Trill"
+	set category = "Noises"
+	emote("trill")
+
+/mob/proc/meow()
+	set name = "Meow"
+	set category = "Noises"
+	emote("meow")
+
+/mob/proc/hiss()
+	set name = "Hiss"
+	set category = "Noises"
+	emote("hiss")
