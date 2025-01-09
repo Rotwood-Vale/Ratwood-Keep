@@ -184,7 +184,7 @@
 			switch(weapon_choice)
 				if("Rapier")
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-					beltr = /obj/item/rogueweapon/sword/sabre
+					beltr = /obj/item/rogueweapon/sword/rapier
 				if("Dagger")
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 					beltr = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
