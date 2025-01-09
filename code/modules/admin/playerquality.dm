@@ -215,13 +215,19 @@
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(json))
 
-	var/fakekey = giver.ckey
-	if(giver.ckey in GLOB.anonymize)
-		fakekey = get_fake_key(giver.ckey)
+	var/fakekey
+	if(istype(giver, /client))
+		var/client/C = giver
+		fakekey = C.ckey
+	else
+		fakekey = giver
 
-	var/raisin = stripped_input("Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
+	if(fakekey in GLOB.anonymize)
+		fakekey = get_fake_key(fakekey)
+
+	var/raisin = stripped_input(usr, "Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
 	if(!raisin)
-		to_chat(src, span_boldwarning("Причина не указана."))
+		to_chat(usr, span_boldwarning("Причина не указана."))
 		return
 
 	if(curcomm == 1)
