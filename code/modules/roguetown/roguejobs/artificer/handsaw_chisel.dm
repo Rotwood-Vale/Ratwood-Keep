@@ -115,8 +115,8 @@
 	icon_state = "chiselm"
 	item_state = "hammer_w"
 /obj/item/rogueweapon/chisel/assembly/mallet/attack_right(mob/user)
-	var/obj/item/rogueweapon/chisel/F = new(src.loc)
-	var/obj/item/rogueweapon/hammer/wood/E = new(src.loc)
+	var/obj/item/rogueweapon/chisel/F = new(user.loc)
+	var/obj/item/rogueweapon/hammer/wood/E = new(user.loc)
 	user.put_in_hands(E)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
@@ -126,8 +126,8 @@
 	icon_state = "chiselh"
 	item_state = "hammer_i"
 /obj/item/rogueweapon/chisel/assembly/hammer/attack_right(mob/user)
-	var/obj/item/rogueweapon/chisel/F = new(src.loc)
-	var/obj/item/rogueweapon/hammer/iron/E = new(src.loc)
+	var/obj/item/rogueweapon/chisel/F = new(user.loc)
+	var/obj/item/rogueweapon/hammer/iron/E = new(user.loc)
 	user.put_in_hands(E)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
@@ -137,8 +137,8 @@
 	icon_state = "chiselc"
 	item_state = "hammer_s"
 /obj/item/rogueweapon/chisel/assembly/hammerclaw/attack_right(mob/user)
-	var/obj/item/rogueweapon/chisel/F = new(src.loc)
-	var/obj/item/rogueweapon/hammer/steel/E = new(src.loc)
+	var/obj/item/rogueweapon/chisel/F = new(user.loc)
+	var/obj/item/rogueweapon/hammer/steel/E = new(user.loc)
 	user.put_in_hands(E)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
@@ -148,8 +148,8 @@
 	icon_state = "chisels"
 	item_state = "stone"
 /obj/item/rogueweapon/chisel/assembly/stone/attack_right(mob/user)
-	var/obj/item/rogueweapon/chisel/F = new(src.loc)
-	var/obj/item/natural/stone/E = new(src.loc)
+	var/obj/item/rogueweapon/chisel/F = new(user.loc)
+	var/obj/item/natural/stone/E = new(user.loc)
 	user.put_in_hands(E)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
@@ -159,8 +159,8 @@
 	icon_state = "chiselb"
 	item_state = "block"
 /obj/item/rogueweapon/chisel/assembly/stoneblock/attack_right(mob/user)
-	var/obj/item/rogueweapon/chisel/F = new(src.loc)
-	var/obj/item/natural/stoneblock/E = new(src.loc)
+	var/obj/item/rogueweapon/chisel/F = new(user.loc)
+	var/obj/item/natural/stoneblock/E = new(user.loc)
 	user.put_in_hands(E)
 	playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 	qdel(src)
