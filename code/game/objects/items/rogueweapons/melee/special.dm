@@ -66,6 +66,11 @@
 
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
+			var/area/target_area = get_area(H)
+
+			if(!istype(target_area, /area/rogue/indoors/town/manor))
+				to_chat(user, span_danger("The rod cannot be used outside the manor."))
+				return
 
 			if(H == HU)
 				return
