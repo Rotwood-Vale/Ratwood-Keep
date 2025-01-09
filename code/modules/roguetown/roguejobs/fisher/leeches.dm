@@ -10,7 +10,7 @@
 		/obj/item/reagent_containers/food/snacks/fish/carp = 100,
 		/obj/item/reagent_containers/food/snacks/fish/eel = 100,
 		/obj/item/reagent_containers/food/snacks/fish/angler = 20,
-		/obj/item/grown/log/tree/stick = 2,
+		/obj/item/grown/log/tree/stick = 3,
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
 		/obj/item/natural/cloth = 1,
 		/obj/item/ammo_casing/caseless/rogue/arrow = 1,
