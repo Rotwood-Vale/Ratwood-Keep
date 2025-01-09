@@ -74,6 +74,11 @@
 	cost = 50
 	contains = list(/obj/item/flashlight/flare/torch/lantern)
 
+/datum/supply_pack/rogue/bandit/Things/Handsaw
+	name = "Handsaw"
+	cost = 80
+	contains = list(/obj/item/rogueweapon/handsaw)
+
 /datum/supply_pack/rogue/bandit/Things/westleach
 	name = "Shhig Brand Zigs"
 	cost = 40
@@ -102,7 +107,7 @@
 /datum/supply_pack/rogue/bandit/Things/hammer
 	name = "Hammer"
 	cost = 250
-	contains = list(/obj/item/rogueweapon/hammer)
+	contains = list(/obj/item/rogueweapon/hammer/iron)
 
 /datum/supply_pack/rogue/bandit/Things/horse
 	name = "Horse"
