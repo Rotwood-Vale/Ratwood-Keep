@@ -176,9 +176,8 @@
 			target.emote("breathgasp")
 			target.Jitter(100)
 
-			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
-				adjust_playerquality(unzombification_pq, user.ckey)
-				ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, "[type]")
+
+		ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
 
 		var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 		if(rot)

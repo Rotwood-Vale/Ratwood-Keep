@@ -102,6 +102,9 @@
 		to_chat(user, span_warning("It's undead, I can't."))
 		revert_cast()
 		return FALSE
+	if(HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED))
+		revert_cast()
+		return FALSE
 	if(!target.revive(full_heal = FALSE))
 		to_chat(user, span_warning("They need to be mended more."))
 		revert_cast()
@@ -125,7 +128,7 @@
 			var/obj/item/organ/wings/seelie/new_wings = new wing_type()
 			new_wings.Insert(fairy_target)
 	target.update_body()
-	target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
+	target.visible_message(span_notice("[target] breathes once more!"), span_green("I awake from the void."))
 	target.mind?.remove_antag_datum(/datum/antagonist/zombie)
 	return TRUE
 
@@ -170,9 +173,8 @@
 	if(was_zombie)
 		target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		target.Jitter(100)
-		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
-			adjust_playerquality(unzombification_pq, user.ckey)
-			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
+			
+	ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
 
 	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 
