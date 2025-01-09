@@ -75,7 +75,6 @@
 #define TRAIT_LIMPDICK "limp_dick"
 #define TRAIT_SEXPASS "sexpass"
 #define TRAIT_STEELHEARTED "steelhearted" //no bad mood from dismembering or seeing this
-#define TRAIT_IWASREVIVED "iwasrevived" //prevents PQ gain from reviving the same person twice
 #define TRAIT_IWASUNZOMBIFIED "iwasunzombified" //prevents PQ gain from curing a zombie twice
 #define TRAIT_IWASHAUNTED "iwashaunted" //prevents spawning a haunt from a decapitated body twice
 #define TRAIT_SCHIZO_AMBIENCE "schizo_ambience" //replaces all ambience with creepy shit
@@ -100,6 +99,8 @@
 #define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
+
+
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -393,3 +394,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 #define TRAIT_LIGHT_STEP		"light_step"
 #define TRAIT_DRUNK_HEALING		"drunk_healing"
+
+// RITUALS
+
+#define TRAIT_RITUALIZED "Ritualized" //This is used to prevent cpr to work on humans that just got sacrificed
