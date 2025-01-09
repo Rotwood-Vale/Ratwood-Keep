@@ -6,7 +6,7 @@
 
 /datum/supply_pack/rogue/bandit/Things/healthpot
 	name = "Health Potion"
-	cost = 50
+	cost = 30
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 
 /datum/supply_pack/rogue/bandit/Things/manapot
@@ -36,7 +36,7 @@
 
 /datum/supply_pack/rogue/bandit/Things/chain
 	name = "Chain"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rope/chain)
 
 /datum/supply_pack/rogue/bandit/Things/rope
@@ -51,7 +51,7 @@
 
 /datum/supply_pack/rogue/bandit/Things/hknife
 	name = "Hunting Knife"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/rogueweapon/huntingknife)
 
 /datum/supply_pack/rogue/bandit/Things/pickaxe
