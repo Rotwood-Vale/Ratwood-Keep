@@ -68,7 +68,7 @@
 /area/rogue/under/town/sewer)
 "L" = (
 /obj/structure/table/wood,
-/obj/item/rogueweapon/hammer/claw,
+/obj/item/rogueweapon/hammer/steel,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/sewer)
 "P" = (
