@@ -16273,6 +16273,10 @@
 "jNL" = (
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town/church)
+"jNY" = (
+/obj/structure/fluff/statue/gargoyle/moss,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/town/basement)
 "jOd" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -108176,7 +108180,7 @@ bpD
 lLK
 lLK
 cTA
-wUz
+jNY
 gUu
 gUu
 aqY
@@ -109044,7 +109048,7 @@ pOI
 yfk
 cTA
 cTA
-ykB
+cTA
 cTA
 cTA
 dFE
@@ -110772,7 +110776,7 @@ wUz
 gUu
 cTA
 cTA
-ykB
+cTA
 tmD
 cTA
 dFE
@@ -111200,11 +111204,11 @@ bpD
 lLK
 lLK
 cTA
-wUz
+jNY
 gUu
-gUu
-srZ
 aqY
+srZ
+gUu
 aIK
 cTA
 vTW
