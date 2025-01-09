@@ -214,7 +214,7 @@
 		var/used_title = title
 		if((H.gender == FEMALE) && f_title)
 			used_title = f_title
-		scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
+		scom_announce("[H.real_name] the [used_title] arrives to Rockhill.")
 
 	if(give_bank_account)
 		if(give_bank_account > 1)
@@ -227,33 +227,6 @@
 
 	if(cmode_music)
 		H.cmode_music = cmode_music
-	
-	if(GLOB.hugbox_duration)
-		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_start)), 1)
-
-/mob/living/carbon/human/proc/hugboxing_start()
-	to_chat(src, span_warning("I will be in danger once I start moving."))
-	status_flags |= GODMODE
-	ADD_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(hugboxing_moved))
-	//Lies, it goes away even if you don't move after enough time
-	if(GLOB.hugbox_duration_still)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration_still)
-
-/mob/living/carbon/human/proc/hugboxing_moved()
-	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
-	to_chat(src, span_danger("I have [DisplayTimeText(GLOB.hugbox_duration)] before my protection runs out!"))
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_end)), GLOB.hugbox_duration)
-
-/mob/living/carbon/human/proc/hugboxing_end()
-	if(QDELETED(src))
-		return
-	//hugbox already ended
-	if(!(status_flags & GODMODE))
-		return
-	status_flags &= ~GODMODE
-	REMOVE_TRAIT(src, TRAIT_PACIFISM, HUGBOX_TRAIT)
-	to_chat(src, span_danger("I feel no longer safe."))
 
 /datum/job/proc/add_spells(mob/living/H)
 	if(spells && H.mind)
