@@ -100,7 +100,7 @@
 
 // Gold
 
-/datum/anvil_recipe/general/cupsgold
+/datum/anvil_recipe/cutlery/cupsgold
 	name = "Gold Goblets 3x"
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden)

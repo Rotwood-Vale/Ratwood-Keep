@@ -25,7 +25,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 	var/planking_time = (40 - (skill_level * 5))
-	if(istype(I, /obj/item/rogueweapon/handsaw))
+	if(lumber_amount && I.tool_behaviour == TOOL_SAW || I.tool_behaviour == TOOL_IMPROVSAW)
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
 		user.visible_message("<span class='notice'>[user] starts sawing [src] to smaller pieces.</span>")
 		if(do_after(user, planking_time))
@@ -80,13 +80,15 @@
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
 	metalizer_result = /obj/item/rogueore/copper
+
+
 /obj/item/grown/log/tree/small/attackby(obj/item/I, mob/living/user, params)
 	if(item_flags & IN_STORAGE)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+	var/skill_level = user.mind.get_skill_level(/datum/skill/craft/carpentry)
 	var/planking_time = (45 - (skill_level * 5))
-	if(istype(I, /obj/item/rogueweapon/handsaw))
+	if(I.tool_behaviour == TOOL_SAW || I.tool_behaviour == TOOL_IMPROVSAW)
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
 		user.visible_message("<span class='notice'>[user] starts sawing planks from [src].</span>")
 		if(do_after(user, planking_time))
