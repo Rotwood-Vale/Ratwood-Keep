@@ -77,7 +77,7 @@
 		/datum/ai_planning_subtree/simple_find_target/closest,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/spear,
 		/datum/ai_planning_subtree/travel_to_point/and_clear_target,
-		/datum/ai_planning_subtree/melee_spacing,
+		/datum/ai_planning_subtree/spacing/melee,
 		
 	)
 /datum/ai_controller/orc_ranged/event
