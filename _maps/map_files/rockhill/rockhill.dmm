@@ -227,10 +227,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
-"afb" = (
-/obj/structure/roguemachine/atm,
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/rtfield)
 "afk" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 8
@@ -37252,12 +37248,6 @@
 "www" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter/town/harbor)
-"wwB" = (
-/obj/structure/roguemachine/atm,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors/town)
 "wxa" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/head/roguetown/hatfur,
@@ -218897,7 +218887,7 @@ jlz
 fxw
 fxw
 bkS
-afb
+sjP
 jbe
 uaL
 dWG
@@ -223645,7 +223635,7 @@ qbG
 qbG
 eaG
 qkH
-wwB
+bmi
 bmi
 bmi
 bOT
