@@ -472,7 +472,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		if (PRESTI_MOTE)
 			extra_fatigue = 15 // same deal here
 
-	user.rogfat_add(fatigue_used + extra_fatigue)
+	user.stamina_add(fatigue_used + extra_fatigue)
 
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	if (skill_level >= SKILL_LEVEL_EXPERT)
@@ -1051,7 +1051,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		if(!do_after(user, 5 SECONDS, target = spelltarget))
 			return
 		spelltarget.apply_status_effect(/datum/status_effect/buff/darkvision)
-		user.rogfat_add(80)
+		user.stamina_add(80)
 		if(spelltarget != user)
 			user.visible_message("[user] draws a glyph in the air and touches [spelltarget] with an arcyne focus.")
 		else

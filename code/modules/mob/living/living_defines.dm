@@ -125,10 +125,14 @@
 	var/list/ownedSoullinks //soullinks we are the owner of
 	var/list/sharedSoullinks //soullinks we are a/the sharer of
 
-	var/maxrogstam = 1000
-	var/maxrogfat = 100
-	var/rogstam = 1000
-	var/rogfat = 0
+	/// Long term - Blue bar
+	var/max_energy = 1000
+	/// Short term - Green bar
+	var/max_stamina = 100
+	/// Long term - Blue bar
+	var/energy = 1000
+	/// Short term - Green bar
+	var/stamina = 0
 
 	var/last_fatigued = 0
 	var/last_ps = 0
@@ -142,7 +146,8 @@
 	var/encumbrance = 0
 
 	var/eyesclosed = 0
-	var/fallingas = 0
+	/// Accumulation of tiredness, once it reaches a certain threshold and the mob's eyes are closed, they'll go to sleep. Only increases when the eyes are closed and a few other factors.
+	var/sleep_accumulation = 0
 
 	var/bleed_rate = 0 //how much are we bleeding
 	var/bleedsuppress = 0 //for stopping bloodloss, eventually this will be limb-based like bleeding

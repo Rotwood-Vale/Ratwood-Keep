@@ -104,7 +104,6 @@
 
 			playsound(get_turf(src), on_stun_sound, 75, TRUE, -1)
 			target.Knockdown(knockdown_time_carbon)
-			target.adjustStaminaLoss(stamina_damage)
 			additional_effects_carbon(target, user)
 
 			log_combat(user, target, "stunned", src)
