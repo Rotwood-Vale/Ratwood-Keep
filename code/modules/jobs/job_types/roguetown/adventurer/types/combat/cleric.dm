@@ -167,8 +167,13 @@
 			C.passive_devotion_gain += 0.25
 			C.grant_spells(H)
 			START_PROCESSING(SSobj, C)
+			GLOB.excommunicated_players += H.real_name
 
 	switch(H.patron?.type)
+		if(/datum/patron/old_god)
+			neck = /obj/item/clothing/neck/roguetown/psicross
+			cloak = /obj/item/clothing/cloak/psydontabard
+			head = /obj/item/clothing/head/roguetown/roguehood/psydon
 		if(/datum/patron/divine/astrata)
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
