@@ -40,7 +40,7 @@
 	pants = /obj/item/clothing/under/roguetown/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
-	backr = /obj/item/gun/ballistic/flintgonne
+	backr = /obj/item/gun/ballistic/firearm/flintgonne
 	backpack_contents = list(/obj/item/storage/keyring/mercenary = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/flint = 1, /obj/item/bedroll = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 
 
