@@ -149,7 +149,7 @@
 			H.change_stat("speed", 2)
 
 		if("Outlaw")
-			to_chat(H, span_warning("You're a seasoned criminal known for your heinous acts, your face plasted on wanted posters across the region. A life of theft, robbery, and ill-gotten-gains comes naturally to you."))
+			to_chat(H, span_warning("You're a seasoned criminal known for your heinous acts, your face plastered on wanted posters across the region. A life of theft, robbery, and ill-gotten-gains comes naturally to you."))
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
