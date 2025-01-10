@@ -4,9 +4,8 @@
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = 0
-	spawn_positions = 0 //disables roundst-art spawn of pilgrims but allows migrant waves
+	spawn_positions = 0 //disables round-start spawn of pilgrims but allows migrant waves
 	allowed_races = RACES_ALL_KINDS
-	traits_applied = list(TRAIT_OUTLANDER)
 	tutorial = "Fleeing misfortune you head your way towards Azure Peak, you're not a soldier or an explorer, but a humble migrant trying to look for a better life, if you get to survive the trip that is."
 
 	outfit = null
@@ -22,7 +21,6 @@
 	display_order = JDO_PILGRIM
 	min_pq = -20
 	max_pq = null
-	round_contrib_points = 2
 	wanderer_examine = TRUE
 	advjob_examine = TRUE
 	always_show_on_latechoices = FALSE

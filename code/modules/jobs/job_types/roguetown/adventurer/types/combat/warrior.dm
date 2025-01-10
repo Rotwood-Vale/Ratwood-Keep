@@ -32,6 +32,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 			H.set_blindness(0)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			var/weapons = list("Greatsword","Grand Mace","Billhook","Battle Axe")
@@ -63,6 +64,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 			gloves = /obj/item/clothing/gloves/roguetown/chain/iron
+			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 
 		if("Duelist")
 			to_chat(H, span_warning("You are an esteemed swordsmen who foregoes armor in exchange for a more nimble fighting style."))
@@ -111,6 +113,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 			H.cmode_music = 'sound/music/combat_gronn.ogg'
@@ -152,6 +155,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			ADD_TRAIT (H, TRAIT_OUTLAW, TRAIT_GENERIC)
 			var/weapons = list("Estoc","Mace + Shield","Flail + Shield","Lucerne","Battle Axe")
@@ -180,7 +184,7 @@
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 1)
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
+			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
 			gloves = /obj/item/clothing/gloves/roguetown/chain
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			neck = /obj/item/clothing/neck/roguetown/bevor

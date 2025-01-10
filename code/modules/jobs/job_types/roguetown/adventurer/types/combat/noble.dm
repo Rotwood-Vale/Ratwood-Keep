@@ -68,6 +68,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 			H.set_blindness(0)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			var/weapons = list("Bastard Sword","Mace + Shield","Flail + Shield","Billhook")

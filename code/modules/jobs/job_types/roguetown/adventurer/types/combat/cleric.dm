@@ -32,6 +32,8 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			backl = /obj/item/storage/backpack/rogue/satchel
 			belt = /obj/item/storage/belt/rogue/leather
+			var/datum/devotion/C = new /datum/devotion(H, H.patron)
+			C.grant_spells_templar(H)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
@@ -67,6 +69,9 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+			var/datum/devotion/C = new /datum/devotion(H, H.patron)
+			C.grant_spells_templar(H)
 			var/weapons = list("Bastard Sword","Mace","Flail")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
@@ -90,6 +95,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			cloak = /obj/item/clothing/cloak/cape/archivist
 			pants = /obj/item/clothing/under/roguetown/tights
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			backr = /obj/item/rogueweapon/woodstaff
@@ -110,12 +116,14 @@
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 1)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
-			C.passive_devotion_gain += 0.1
+			C.passive_devotion_gain += 0.25
 			C.grant_spells(H)
+			START_PROCESSING(SSobj, C)
 
 		if("Heretic")
 			to_chat(H, span_warning("You are a heretic, spurned by the church, cast out from society - frowned upon by Psydon and his children for your faith."))
-			H.set_patron(/datum/patron/inhumen/zizo)
+			if (H.patron != /datum/patron/inhumen/zizo && H.patron != /datum/patron/inhumen/matthios)
+				H.set_patron(pick(/datum/patron/inhumen/zizo, /datum/patron/inhumen/matthios)) // zizo/matthios are the only two ascendants with miracles
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -144,17 +152,22 @@
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 1)
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
-			gloves = /obj/item/clothing/gloves/roguetown/chain
-			pants = /obj/item/clothing/under/roguetown/chainlegs
-			neck = /obj/item/clothing/neck/roguetown/bevor
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
+			cloak = /obj/item/clothing/cloak/cape/crusader
+			gloves = /obj/item/clothing/gloves/roguetown/chain/blk
+			pants = /obj/item/clothing/under/roguetown/chainlegs/blk
+			neck = /obj/item/clothing/neck/roguetown/gorget
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/blk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
-			shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blk
 			belt = /obj/item/storage/belt/rogue/leather/steel
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/tower/metal
+			var/datum/devotion/C = new /datum/devotion(H, H.patron)
+			C.passive_devotion_gain += 0.25
+			C.grant_spells(H)
+			START_PROCESSING(SSobj, C)
 
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
@@ -192,3 +205,16 @@
 			beltl = /obj/item/roguekey/inhumen
 
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+
+
+/obj/item/clothing/gloves/roguetown/chain/blk
+		color = CLOTHING_GREY
+
+/obj/item/clothing/under/roguetown/chainlegs/blk
+		color = CLOTHING_GREY
+
+/obj/item/clothing/suit/roguetown/armor/plate/blk
+		color = CLOTHING_GREY
+
+/obj/item/clothing/shoes/roguetown/boots/armor/blk
+		color = CLOTHING_GREY
