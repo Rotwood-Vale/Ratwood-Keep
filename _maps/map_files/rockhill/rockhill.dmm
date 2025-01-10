@@ -1038,13 +1038,6 @@
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-"aHp" = (
-/obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/sheriff{
-	dir = 1
-	},
-/turf/open/floor/rogue/herringbone,
-/area/rogue/under/town/basement)
 "aHC" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/town/bath)
@@ -1380,6 +1373,13 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
+"aRR" = (
+/obj/structure/bed/rogue/inn/hay,
+/obj/effect/landmark/start/sheriff{
+	dir = 1
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "aRV" = (
 /obj/structure/mineral_door/wood{
 	lockdiff = 3;
@@ -4182,13 +4182,6 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
-"cCl" = (
-/obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/sheriff{
-	dir = 1
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
 "cCr" = (
 /obj/structure/fluff/walldeco/stone,
 /turf/closed/wall/mineral/rogue/craftstone,
@@ -15785,6 +15778,18 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"juC" = (
+/obj/structure/rack/rogue,
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
+/turf/open/floor/rogue/concrete,
+/area/rogue/under/town/basement)
 "juU" = (
 /obj/effect/landmark/tram/queued_path{
 	next_path_id = "cargo_map_exit";
@@ -17977,6 +17982,13 @@
 "kOn" = (
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
+"kOo" = (
+/obj/structure/bed/rogue/inn/hay,
+/obj/effect/landmark/start/sheriff{
+	dir = 1
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/under/town/basement)
 "kOy" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/carpet/lord/right,
@@ -32437,6 +32449,19 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
+"tEb" = (
+/obj/structure/rack/rogue,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/turf/open/floor/rogue/concrete,
+/area/rogue/under/town/basement)
 "tEn" = (
 /obj/structure/mineral_door/wood/towner/generic,
 /turf/open/floor/rogue/ruinedwood{
@@ -36506,7 +36531,6 @@
 /obj/structure/roguemachine/mail{
 	mailtag = "Bastion"
 	},
-/obj/effect/landmark/start/bogmaster,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "whO" = (
@@ -215572,7 +215596,7 @@ lrs
 lrs
 scn
 scn
-cCl
+aRR
 cBf
 cTA
 ijv
@@ -216003,7 +216027,7 @@ lrs
 lrs
 lrs
 scn
-cCl
+aRR
 wHU
 pCT
 cTA
@@ -216014,7 +216038,7 @@ qMi
 cTA
 oVi
 cBf
-cCl
+aRR
 cTA
 qbG
 qbG
@@ -216867,7 +216891,7 @@ lrs
 lrs
 lrs
 cTA
-cCl
+aRR
 wHU
 wHU
 cTA
@@ -216878,7 +216902,7 @@ iTw
 qRc
 wHU
 wHU
-aHp
+kOo
 cTA
 qbG
 qbG
@@ -217732,7 +217756,7 @@ bJu
 lrs
 scn
 scn
-aHp
+kOo
 tuM
 cTA
 taV
@@ -217741,7 +217765,7 @@ qng
 wNF
 cTA
 cBf
-aHp
+kOo
 cTA
 cTA
 qbG
@@ -224214,7 +224238,7 @@ cTA
 vFP
 nvb
 nvb
-yfk
+tEb
 nvb
 diK
 blt
@@ -225078,7 +225102,7 @@ cTA
 cTA
 tmd
 nvb
-yfk
+juC
 nvb
 iXu
 qXU
