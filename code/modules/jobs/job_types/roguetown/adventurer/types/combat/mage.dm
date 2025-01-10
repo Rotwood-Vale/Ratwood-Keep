@@ -1,10 +1,11 @@
 /datum/advclass/mage
 	name = "Mage"
-	tutorial = "Mages are usually grown-up apprentices of wizards. They are seeking adventure, using their arcyne knowledge to aid or ward off other adventurers."
+	tutorial = "Mages are skilled in the arcane. Scholars all over the world spend years studying magic - most do not succeed."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/mage
 	category_tags = list(CTAG_ADVENTURER)
+	traits_applied = list(TRAIT_OUTLANDER)
 
 /datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -91,7 +92,7 @@
 				if("Viola")
 					backr = /obj/item/rogue/instrument/viola
 				if("Vocal Talisman")
-					backr = /obj/item/rogue/instrument/vocal
+					backr = /obj/item/rogue/instrument/vocals
 
 		if("Necromancer")
 			H.set_patron(/datum/patron/inhumen/zizo)
@@ -108,7 +109,7 @@
 			beltl = /obj/item/rogueweapon/huntingknife
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/woodstaff
-			backpack_contents = list(/obj/item/spellbook_unfinished/pre_arcyne = 1, /obj/item/roguegem/amethyst = 1)
+			backpack_contents = list(/obj/item/spellbook_unfinished/pre_arcyne = 1, /obj/item/roguegem/amethyst = 1, /obj/item/roguekey/inhumen = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -126,8 +127,6 @@
 			H.change_stat("speed", 1)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bonechill)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_lesser_undead)
 			H.faction |= "undead"
 			H.mind.adjust_spellpoints(1)

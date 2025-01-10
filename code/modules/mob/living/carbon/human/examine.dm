@@ -82,6 +82,9 @@
 
 		if(HAS_TRAIT(src, TRAIT_OUTLAW))
 			. += span_userdanger("A fugitive!")
+		
+		if (HAS_TRAIT(src, TRAIT_OUTLANDER) && !HAS_TRAIT(user, TRAIT_OUTLANDER)) 
+			. += span_phobia("A foreigner...")
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user

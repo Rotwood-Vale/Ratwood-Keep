@@ -182,9 +182,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
 	TRAIT_SILVER_BLESSED = span_info("I am anointed with holy silver, which preserves me from curses that bite."),
 	TRAIT_GOODTRAINER = span_info("I am a good teacher, and when it comes to weaponry I can train others to be just as skilled as I am."),
-	TRAIT_SEA_DRINKER = span_info("As a denizen of the deep, I can drink salty ocean water safely.")
-	TRAIT_OUTLAW = span_info ("I'm on the run from the law!")
-	TRAIT_OUTLANDER = span_info("I am a foreigner, a visitor in these lands. The locals here may look down upon me - I should tread carefully.")
+	TRAIT_SEA_DRINKER = span_info("As a denizen of the deep, I can drink salty ocean water safely."),
+	TRAIT_OUTLAW = span_info ("I'm on the run from the law!"),
+	TRAIT_OUTLANDER = span_info("I am a foreigner, a visitor in these lands. The locals here may look down upon me - I should tread carefully."),
 	TRAIT_OUTDOORSMAN = span_info("My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds.")
 ))
 

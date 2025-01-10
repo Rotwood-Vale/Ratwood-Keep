@@ -94,6 +94,7 @@
 			H.change_stat("speed", 1)
 			H.change_stat("strength", 1)
 			H.change_stat("endurance", 1)
+			H.set_blindness(0)
 
 		if("Bombadier")
 			to_chat(H, span_warning("Bombs? You've got them. Plenty of them - and the skills to make more. You've spent years training under skilled alchemists and have found the perfect mix to create some chaos - now go blow something up!"))
@@ -118,3 +119,4 @@
 			H.change_stat("constitution", 1)
 			H.change_stat("strength", 2)
 			H.change_stat("intelligence", 2)
+			H.set_blindness(0)

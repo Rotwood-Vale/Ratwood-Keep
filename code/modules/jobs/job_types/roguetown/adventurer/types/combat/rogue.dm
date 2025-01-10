@@ -1,5 +1,5 @@
 /datum/advclass/rogue
-	name = "Scoundrel"
+	name = "Rogue"
 	tutorial = "Thieves, scoundrels, and silver-tongued charlatans from all walks of life."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
@@ -9,9 +9,8 @@
 
 /datum/outfit/job/roguetown/adventurer/rogue/pre_equip(mob/living/carbon/human/H)
 	..()
-	var/classchoice
 	H.adjust_blindness(-3)
-	var/classes = list("Treasure Hunter","Rogue","Bard","Outlaw")
+	var/classes = list("Treasure Hunter","Thief","Bard","Outlaw")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	switch(classchoice)
 	
@@ -61,7 +60,7 @@
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 3)
 
-		if("Rogue")
+		if("Thief")
 			to_chat(H, span_warning("You are a scoundrel and a thief. A master in getting into places you shouldn't be and taking things that aren't rightfully yours."))
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/leather

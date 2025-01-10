@@ -1,4 +1,3 @@
-//shield sword
 /datum/advclass/sfighter
 	name = "Warrior"
 	tutorial = "Trained warriors and estemeed swordsmen from all corners of the world, \
@@ -33,10 +32,10 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.set_blindness(0)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			var/weapons = list("Greatsword","Grand Mace","Billhook","Battle Axe")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-			H.set_blindness(0)
 			switch(weapon_choice)
 				if("Greatsword")
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
@@ -76,10 +75,10 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
+			H.set_blindness(0)
 			H.cmode_music = 'sound/music/combat_duelist.ogg'
 			var/weapons = list("Rapier","Dagger")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-			H.set_blindness(0)
 			switch(weapon_choice)
 				if("Rapier")
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
@@ -146,7 +145,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
@@ -157,6 +156,8 @@
 			ADD_TRAIT (H, TRAIT_OUTLAW, TRAIT_GENERIC)
 			var/weapons = list("Estoc","Mace + Shield","Flail + Shield","Lucerne","Battle Axe")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			H.set_blindness(0)
+			switch(weapon_choice)
 				if("Estoc")
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 					r_hand = /obj/item/rogueweapon/estoc
@@ -166,7 +167,7 @@
 					beltr = /obj/item/rogueweapon/mace/steel
 					backr = /obj/item/rogueweapon/shield/tower/metal
 				if("Flail + Shield")
-					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 					beltr = /obj/item/rogueweapon/flail/sflail
 					backr = /obj/item/rogueweapon/shield/tower/metal
 				if("Lucerne")
@@ -176,7 +177,6 @@
 				if("Battle Axe")
 					H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 					backr = /obj/item/rogueweapon/stoneaxe/battle
-			H.set_blindness(0)
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 1)
