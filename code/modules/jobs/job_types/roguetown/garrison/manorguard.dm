@@ -3,8 +3,8 @@
 	flag = MANATARMS
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = 6
+	total_positions = 10
+	spawn_positions = 10
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -16,8 +16,8 @@
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/manorguard
-	give_bank_account = 22
-	min_pq = 6
+	give_bank_account = 30
+	min_pq = 5
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
