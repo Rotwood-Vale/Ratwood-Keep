@@ -100,14 +100,8 @@
 /obj/item/storage/keyring/councillor
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon,  /obj/item/key/manor)
 
-/obj/item/storage/keyring/bog_guard
-	keys = list(/obj/item/key/bog_gatehouse)
-
-/obj/item/storage/keyring/bog_master
-	keys = list(/obj/item/key/bog_gatehouse, /obj/item/key/bog_master)
-
 /obj/item/storage/keyring/town_watch
-	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/town_armory)
+	keys = list(/obj/item/key/town_dungeon, /obj/item/key/bog_gatehouse, /obj/item/key/town_barracks, /obj/item/key/town_armory)
 
 /obj/item/storage/keyring/sheriff
 	keys = list(/obj/item/key/sheriff_office, /obj/item/key/town_armory, /obj/item/key/town_barracks, /obj/item/key/town_dungeon)
@@ -137,7 +131,7 @@
 	keys = list(/obj/item/key/tavern/village, /obj/item/key/roomvi/village, /obj/item/key/roomv/village, /obj/item/key/roomiv/village, /obj/item/key/roomiii/village, /obj/item/key/roomii/village, /obj/item/key/roomi/village)
 
 /obj/item/storage/keyring/gatemaster
-	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
+	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/bog_gatehouse, /obj/item/key/bog_master, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
 
 /obj/item/storage/keyring/merchant
 	keys = list(/obj/item/key/shop, /obj/item/key/merchant)
