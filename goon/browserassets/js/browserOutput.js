@@ -757,8 +757,7 @@ $(function() {
 		});
 		var actualTerms = savedTerms.length != 0 ? savedTerms.join(', ') : null;
 		if (actualTerms) {
-			actualTerms = actualTerms.substring(0, actualTerms.length - 2);
-			//internalOutput('<span class="internal boldnshit">Loaded highlight strings of: ' + actualTerms+'</span>', 'internal');
+			internalOutput('<span class="internal boldnshit">Loaded highlight strings of: ' + actualTerms+'</span>', 'internal');
 			opts.highlightTerms = savedTerms;
 		}
 	}
@@ -1135,12 +1134,10 @@ $(function() {
 
 		opts.highlightTerms = [];
 		for (var count = 0; count < opts.highlightLimit; count++) {
-
 			var term = $('#highlightTermInput'+count).val();
 			if (term !== null && /\S/.test(term)) {
 				opts.highlightTerms.push(term.trim().toLowerCase());
 			}
-			count++;
 		}
 
 		var color = $('#highlightColor').val();
@@ -1156,6 +1153,7 @@ $(function() {
 		setCookie('highlightterms', JSON.stringify(opts.highlightTerms), 365);
 		setCookie('highlightcolor', opts.highlightColor, 365);
 	});
+
 
 	$('#clearMessages').click(function() {
 		$messages.empty();
