@@ -331,6 +331,7 @@
 /obj/item/roguekey/physician{
 	pixel_y = 9
 	},
+/obj/item/clothing/mask/rogue/physician,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -1346,10 +1347,6 @@
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/suit/roguetown/shirt/tunic,
 /obj/item/clothing/suit/roguetown/shirt/tunic,
-/obj/item/clothing/suit/roguetown/shirt/tunic,
-/obj/item/clothing/suit/roguetown/shirt/tunic,
-/obj/item/clothing/suit/roguetown/shirt/tunic/black,
-/obj/item/clothing/suit/roguetown/shirt/tunic/black,
 /obj/item/clothing/suit/roguetown/shirt/tunic/black,
 /obj/item/clothing/suit/roguetown/shirt/tunic/black,
 /obj/item/flashlight/flare/torch/lantern,
@@ -18781,6 +18778,7 @@
 	dir = 8;
 	icon_state = "largetable"
 	},
+/obj/item/clothing/mask/rogue/physician,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -24863,6 +24861,7 @@
 	dir = 4;
 	icon_state = "largetable"
 	},
+/obj/item/clothing/mask/rogue/physician,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
