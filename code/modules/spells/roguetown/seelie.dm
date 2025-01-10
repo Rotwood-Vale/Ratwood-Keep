@@ -139,23 +139,23 @@
 	if(iscarbon(targets[1]))
 		var/mob/living/target = targets[1]
 		var/mob/living/carbon/human/caster = user
-		if((target.rogstam > 100) && (caster.rogstam < (caster.maxrogstam - 60)) )
+		if((target.energy > 100) && (caster.energy < (caster.max_energy - 60)) )
 			to_chat(target, span_warning("I suddenly feel burdened and fatigued!"))
 			to_chat(user, span_warning("I reinvigorate myself with [target]'s energy!"))
 			user.log_message("has drained the stamina from [key_name(target)]", LOG_ATTACK)
 			target.log_message("has had their stamina drained by [key_name(user)]", LOG_ATTACK)
-			target.rogstam_add(-100)
-			caster.rogstam_add(61)
+			target.energy_add(-100)
+			caster.stamina_add(61)
 			return TRUE
-		else if(target.rogstam < 100)
+		else if(target.energy < 100)
 			to_chat(user, span_warning("[target] is too exhausted to drain from!"))
 			return FALSE
-		else if(caster.rogstam >= (caster.maxrogstam - 60))
+		else if(caster.energy >= (caster.max_energy - 60))
 			to_chat(target, span_warning("I suddenly feel burdened and fatigued!"))
 			to_chat(user, span_warning("I dont feel any more invigorated than I did..."))
 			user.log_message("has drained the stamina from [key_name(target)]", LOG_ATTACK)
 			target.log_message("has had their stamina drained by [key_name(user)]", LOG_ATTACK)
-			target.rogstam_add(-100)
+			target.energy_add(-100)
 			return TRUE
 		else
 			to_chat(user, span_warning("I have no idea how I caused this to happen"))

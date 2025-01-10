@@ -163,12 +163,12 @@
 			if(!(M.status_flags & CANPUSH) || HAS_TRAIT(M, TRAIT_PUSHIMMUNE))
 				to_chat(user, span_warning("Can't get a grip!"))
 				return FALSE
-			user.rogfat_add(rand(7,15))
+			user.stamina_add(rand(7,15))
 			M.grippedby(user)
 		if(/datum/intent/grab/choke)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M) && M != user)
-					user.rogfat_add(rand(1,3))
+					user.stamina_add(rand(1,3))
 					var/mob/living/carbon/C = M
 					if(get_location_accessible(C, BODY_ZONE_PRECISE_NECK))
 						if(prob(25))
@@ -183,15 +183,15 @@
 		if(/datum/intent/grab/twist)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M))
-					user.rogfat_add(rand(3,8))
+					user.stamina_add(rand(3,8))
 					twistlimb(user)
 		if(/datum/intent/grab/twistitem)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(ismob(M))
-					user.rogfat_add(rand(3,8))
+					user.stamina_add(rand(3,8))
 					twistitemlimb(user)
 		if(/datum/intent/grab/remove)
-			user.rogfat_add(rand(3,13))
+			user.stamina_add(rand(3,13))
 			if(isitem(sublimb_grabbed))
 				removeembeddeditem(user)
 			else
@@ -204,13 +204,13 @@
 				if(user.loc != M.loc)
 					to_chat(user, span_warning("I must be on top of them."))
 					return
-				user.rogfat_add(rand(1,3))
+				user.stamina_add(rand(1,3))
 				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
 								span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
 				M.Stun(max(((65 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)) * combat_modifier), 20))
 				user.Immobilize(20 - skill_diff)
 			else
-				user.rogfat_add(rand(5,15))
+				user.stamina_add(rand(5,15))
 				if(prob(clamp((((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
 					M.visible_message(span_danger("[user] shoves [M] to the ground!"), \
 									span_userdanger("[user] shoves me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
@@ -227,7 +227,7 @@
 					I = M.get_active_held_item()
 				else
 					I = M.get_inactive_held_item()
-			user.rogfat_add(rand(3,8))
+			user.stamina_add(rand(3,8))
 			var/probby = clamp((((3 + (((user.STASTR - M.STASTR)/4) + skill_diff)) * 10) * combat_modifier), 5, 95)
 			if(I)
 				if(M.mind)

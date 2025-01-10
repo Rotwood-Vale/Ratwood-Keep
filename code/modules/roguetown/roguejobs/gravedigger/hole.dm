@@ -126,7 +126,7 @@
 			var/mob/living/carbon/C = user
 			if(C.domhand)
 				used_str = C.get_str_arms(C.used_hand)
-			C.rogfat_add(max(60 - (used_str * 5), 1))
+			C.stamina_add(max(60 - (used_str * 5), 1))
 		if(stage < 3)
 			if(faildirt < 2)
 				if(prob(used_str * 5))

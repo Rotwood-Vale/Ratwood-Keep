@@ -849,7 +849,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 /obj/effect/hallucination/danger/lava/Crossed(atom/movable/AM)
 	if(AM == target)
-		target.adjustStaminaLoss(20)
 		new /datum/hallucination/fire(target)
 
 /obj/effect/hallucination/danger/chasm
@@ -947,7 +946,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if(target.fire_stacks <= 0)
 			clear_fire()
 			return
-		target.adjustStaminaLoss(15)
 		sleep(20)
 	clear_fire()
 
