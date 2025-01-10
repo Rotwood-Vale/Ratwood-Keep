@@ -25,7 +25,7 @@ var $messages, $subOptions, $subAudio, $selectedSub, $contextMenu, $filterMessag
 var opts = {
 	//General
 	'messageCount': 0, //A count...of messages...
-	'messageLimit': 2053, //A limit...for the messages...
+	'messageLimit': 5000, //A limit...for the messages...
 	'scrollSnapTolerance': 10, //If within x pixels of bottom
 	'clickTolerance': 10, //Keep focus if outside x pixels of mousedown position on mouseup
 	'imageRetryDelay': 50, //how long between attempts to reload images (in ms)
@@ -41,7 +41,6 @@ var opts = {
 	'suppressSubClose': false, //Whether or not we should be hiding the selected sub menu
 	'highlightTerms': [],
 	'highlightLimit': 5,
-	'highlightColor': '#FFFF00', //The color of the highlighted message
 	'pingDisabled': false, //Has the user disabled the ping counter
 
 	//Ping display
@@ -1018,6 +1017,30 @@ $(function() {
 		setCookie('pingdisabled', (opts.pingDisabled ? 'true' : 'false'), 365);
 	});
 
+	$('#highlightTerm').click(function(e) {
+		if ($('.popup .highlightTerm').is(':visible')) {return;}
+		var termInputs = '';
+		for (var i = 0; i < opts.highlightLimit; i++) {
+			termInputs += '<div><input type="text" name="highlightTermInput'+i+'" id="highlightTermInput'+i+'" class="highlightTermInput'+i+'" maxlength="255" value="'+(opts.highlightTerms[i] ? opts.highlightTerms[i] : '')+'" /></div>';
+		}
+
+		var popupContent = '<div class="head" style="color: white;">String Highlighting</div>' + 
+		'<div class="highlightPopup" id="highlightPopup" style="background-color: black;">' + 
+		'<div style="color: white;">Choose up to ' + opts.highlightLimit + ' strings that will highlight the line when they appear in chat.</div>' + 
+		'<form id="highlightTermForm">' + 
+			termInputs + 
+			'<div style="color: white;">' + 
+			'<input type="text" name="highlightColor" id="highlightColor" class="highlightColor" ' + 
+			'style="background-color: #007bff; color: white;" ' + 
+			'value="#007bff" maxlength="7" /></div>' + 
+			'<div style="color: white;"><input type="submit" name="highlightTermSubmit" id="highlightTermSubmit" class="highlightTermSubmit" value="Save" /></div>' + 
+		'</form>' + 
+	'</div>';
+		
+		createPopup(popupContent, 250);
+	});
+	
+
 	$('#saveLog').click(function(e) {
 		// Requires IE 10+ to issue download commands. Just opening a popup
 		// window will cause Ctrl+S to save a blank page, ignoring innerHTML.
@@ -1032,7 +1055,7 @@ $(function() {
 			success: function(styleData) {
 				var blob = new Blob(['<head><title>Chat Log</title><style>', styleData, '</style></head><body>', $messages.html(), '</body>']);
 
-				var fname = 'SS13 Chat Log';
+				var fname = 'Azure Peaks Chat Log';
 				var date = new Date(), month = date.getMonth(), day = date.getDay(), hours = date.getHours(), mins = date.getMinutes(), secs = date.getSeconds();
 				fname += ' ' + date.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
 				fname += ' ' + (hours < 10 ? '0' : '') + hours + (mins < 10 ? '0' : '') + mins + (secs < 10 ? '0' : '') + secs;
@@ -1042,24 +1065,74 @@ $(function() {
 			}
 		});
 	});
-
-	$('#highlightTerm').click(function(e) {
-		if ($('.popup .highlightTerm').is(':visible')) {return;}
-		var termInputs = '';
-		for (var i = 0; i < opts.highlightLimit; i++) {
-			termInputs += '<div><input type="text" name="highlightTermInput'+i+'" id="highlightTermInput'+i+'" class="highlightTermInput'+i+'" maxlength="255" value="'+(opts.highlightTerms[i] ? opts.highlightTerms[i] : '')+'" /></div>';
+	
+	//clone of above but strips html
+	$('#saveLogTxt').click(function(e) {
+		if (!window.Blob) {
+			output('<span class="big red">This function is only supported on modern browsers. Upgrade if possible.</span>', 'internal');
+			return;
 		}
-		var popupContent = '<div class="head">String Highlighting</div>' +
-			'<div class="highlightPopup" id="highlightPopup">' +
-				'<div>Choose up to '+opts.highlightLimit+' strings that will highlight the line when they appear in chat.</div>' +
-				'<form id="highlightTermForm">' +
-					termInputs +
-					'<div><input type="text" name="highlightColor" id="highlightColor" class="highlightColor" '+
-						'style="background-color: '+(opts.highlightColor ? opts.highlightColor : '#FFFF00')+'" value="'+(opts.highlightColor ? opts.highlightColor : '#FFFF00')+'" maxlength="7" /></div>' +
-					'<div><input type="submit" name="highlightTermSubmit" id="highlightTermSubmit" class="highlightTermSubmit" value="Save" /></div>' +
-				'</form>' +
-			'</div>';
-		createPopup(popupContent, 250);
+	
+
+		var plainText = '';
+		$messages.children().each(function() {
+			plainText += $(this).text() + '\n'; 
+		});
+	
+		var blob = new Blob([plainText], { type: 'text/plain' });
+	
+		var fname = 'Azure Peak Chat Log';
+		var date = new Date(), month = date.getMonth() + 1, day = date.getDate(), hours = date.getHours(), mins = date.getMinutes(), secs = date.getSeconds();
+		fname += ' ' + date.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+		fname += ' ' + (hours < 10 ? '0' : '') + hours + (mins < 10 ? '0' : '') + mins + (secs < 10 ? '0' : '') + secs;
+		fname += '.txt';
+	
+		if (window.navigator.msSaveBlob) {
+			window.navigator.msSaveBlob(blob, fname);
+		} else {
+			var link = document.createElement('a');
+			link.href = URL.createObjectURL(blob);
+			link.download = fname;
+			link.click();
+			URL.revokeObjectURL(link.href);
+		}
+		internalOutput('<span class="internal boldnshit">Log file saved.</span>', 'internal');
+	});
+
+	$('#startLogging').click(function () {
+		if (!window.Blob) {
+			alert('Your browser does not support modern file-saving features. Please update your browser.');
+			return;
+		}
+		internalOutput('<span class="internal boldnshit">Log file saved.</span>', 'internal');
+		// Accumulated log content
+		let logContent = '';
+	
+		// Start periodic logging
+		setInterval(function () {
+			// Extract plain text from chat messages
+			const newContent = $messages.children().map(function () {
+				return $(this).text();
+			}).get().join('\n') + '\n';
+	
+			// Append new content to the log
+			logContent += newContent;
+	
+			// Create a Blob and trigger a download
+			const blob = new Blob([logContent], { type: 'text/plain' });
+			const link = document.createElement('a');
+			link.href = URL.createObjectURL(blob);
+			link.download = 'Azure_Peak_Chat_Log.txt'; // Default file name
+			link.style.display = 'none';
+	
+			// Append link to the document, click it, then remove it
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+	
+			// Revoke the Blob URL to save memory
+			URL.revokeObjectURL(link.href);
+		}, 5000); // Save logs every 5 seconds
 	});
 
 	$('body').on('keyup', '#highlightColor', function() {
