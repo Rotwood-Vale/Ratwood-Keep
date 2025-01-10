@@ -1734,9 +1734,6 @@
 /obj/machinery/light/rogue/oven/south,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/banditcamp)
-"kB" = (
-/turf/closed/mineral/rogue/bedrock,
-/area/rogue/outdoors/woods)
 "kF" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -1754,10 +1751,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/bread,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
-"kR" = (
-/obj/structure/roguemachine/hoardbarrier,
-/turf/open/floor/rogue/carpet,
-/area/rogue/indoors/banditcamp)
 "la" = (
 /obj/effect/landmark/start/bandit{
 	dir = 8
@@ -2023,10 +2016,6 @@
 /obj/item/rogueweapon/huntingknife,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/goblin)
-"qB" = (
-/obj/structure/roguemachine/Hoardmaster,
-/turf/open/floor/rogue/carpet,
-/area/rogue/indoors/banditcamp)
 "qP" = (
 /obj/structure/rack/rogue,
 /obj/item/ammo_holder/quiver/bolts,
@@ -2413,13 +2402,6 @@
 "yK" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/town/goblin)
-"zf" = (
-/obj/item/reagent_containers/powder/spice,
-/obj/structure/closet/crate/chest{
-	lockid = "bandit"
-	},
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/banditcamp)
 "zq" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/blocks,
@@ -2981,14 +2963,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue)
-"Ll" = (
-/obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/banditcamp)
 "Lm" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/huntingknife/idagger/steel,
@@ -3235,7 +3209,9 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/banditcamp)
 "QG" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/structure/closet/crate/chest{
+	lockid = "bandit"
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/banditcamp)
 "QP" = (
@@ -4136,7 +4112,7 @@ bz
 bz
 bz
 bz
-kB
+Iw
 "}
 (3,1,1) = {"
 rQ
@@ -5460,8 +5436,8 @@ bz
 bz
 TG
 QG
+QG
 Rd
-Ll
 Pu
 TG
 yw
@@ -5689,7 +5665,7 @@ bz
 bz
 bz
 TG
-qB
+xS
 xS
 xS
 xS
@@ -5919,7 +5895,7 @@ bz
 bz
 bz
 TG
-kR
+xS
 xS
 xS
 xS
@@ -6149,14 +6125,14 @@ bz
 bz
 bz
 TG
-kR
+xS
 xS
 xS
 xS
 TG
 kw
 yw
-zf
+RB
 RB
 Xp
 bj
@@ -6381,7 +6357,7 @@ Te
 TG
 QG
 Rd
-Rd
+QG
 Pu
 TG
 YB
