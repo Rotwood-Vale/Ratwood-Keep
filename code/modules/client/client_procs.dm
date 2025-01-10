@@ -1189,7 +1189,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			message_admins("[ckey] uncommends [theykey].")
 	return
 
-/proc/add_uncommend(key, giver, reason)
+/client/proc/add_uncommend(key, giver)
 	if(!giver || !key)
 		return
 	var/curcomm = 0
@@ -1204,8 +1204,17 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(json))
 
+	var/fakekey = src.ckey
+	if(src.ckey in GLOB.anonymize)
+		fakekey = get_fake_key(src.ckey)
+
+	var/raisin = stripped_input(src, "Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
+	if(!raisin)
+		to_chat(src, span_boldwarning("Причина не указана."))
+		return
+
 	if(curcomm == 1)
-		adjust_playerquality(-1, ckey(key))
+		adjust_playerquality(-1, ckey(key), fakekey, raisin)
 
 // Handles notifying funeralized players on login, or forcing them back to lobby, depending on configs. Called on /client/New().
 /client/proc/funeral_login()
