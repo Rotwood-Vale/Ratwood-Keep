@@ -55,6 +55,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 			belt = /obj/item/storage/belt/rogue/leather/steel
 			backl = /obj/item/storage/backpack/rogue/satchel
+			beltl = /obj/item/flashlight/flare/torch/lantern
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -76,7 +77,7 @@
 			switch(weapon_choice)
 				if("Bastard Sword")
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-					r_hand = /obj/item/rogueweapon/sword/long
+					beltr = /obj/item/rogueweapon/sword/long
 				if("Mace + Shield")
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
