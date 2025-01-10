@@ -42,7 +42,7 @@
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 					r_hand = /obj/item/rogueweapon/greatsword/zwei
 					backr = /obj/item/gwstrap
-				if("War Club")
+				if("Mace")
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 					beltr = /obj/item/rogueweapon/mace
 				if("Billhook")
