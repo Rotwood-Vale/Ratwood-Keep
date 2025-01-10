@@ -115,7 +115,8 @@ function linkify(parent, insertBefore, text) {
 		// add the link
 		var link = document.createElement("a");
 		link.href = href;
-		link.textContent = match[0];
+		link.href = encodeURI(href);
+		link.textContent = match[0].replace(/</g, '&lt;').replace(/>/g, '&gt;');
 		parent.insertBefore(link, insertBefore);
 
 		start = regex.lastIndex;
@@ -469,7 +470,7 @@ function toHex(n) {
 	return "0123456789ABCDEF".charAt((n-n%16)/16) + "0123456789ABCDEF".charAt(n%16);
 }
 
-function swap() { //Swap to darkmode
+/*function swap() { //Swap to darkmode
 	if (opts.darkmode){
 		document.getElementById("sheetofstyles").href = "browserOutput.css";
 		opts.darkmode = false;
@@ -480,7 +481,7 @@ function swap() { //Swap to darkmode
 		runByond('?_src_=chat&proc=swaptodarkmode');
 	}
 	setCookie('darkmode', (opts.darkmode ? 'true' : 'false'), 365);
-}
+}*/
 
 function handleClientData(ckey, ip, compid) {
 	//byond sends player info to here
@@ -734,7 +735,6 @@ $(function() {
 		'shighlightColor': getCookie('highlightcolor'),
 		'smusicVolume': getCookie('musicVolume'),
 		'smessagecombining': getCookie('messagecombining'),
-		'sdarkmode': getCookie('darkmode'),
 	};
 
 	if (savedConfig.fontsize) {
@@ -756,7 +756,12 @@ $(function() {
 		//internalOutput('<span class="internal boldnshit">Loaded ping display of: '+(opts.pingDisabled ? 'hidden' : 'visible')+'</span>', 'internal');
 	}
 	if (savedConfig.shighlightTerms) {
-		var savedTerms = $.parseJSON(savedConfig.shighlightTerms);
+		try {
+			var savedTerms = $.parseJSON(savedConfig.shighlightTerms);
+		} catch (e) {
+			console.error('Invalid JSON in highlight terms:', e);
+			savedTerms = [];
+		}
 		var actualTerms = '';
 		for (var i = 0; i < savedTerms.length; i++) {
 			if (savedTerms[i]) {
@@ -855,7 +860,8 @@ $(function() {
 	$messages.on('click', 'a', function(e) {
 		var href = $(this).attr('href');
 		$(this).addClass('visited');
-		if (href[0] == '?' || (href.length >= 8 && href.substring(0,8) == 'byond://')) {
+		
+		if (isValidUrl(href)) {
 			runByond(href);
 		} else {
 			href = escaper(href);
@@ -1124,6 +1130,7 @@ $(function() {
 	$('#toggleCombine').click(function(e) {
 		opts.messageCombining = !opts.messageCombining;
 		setCookie('messagecombining', (opts.messageCombining ? 'true' : 'false'), 365);
+		internalOutput('<span class="internal boldnshit">Toggled combine to: '+opts.messageCombining+'</span>', 'internal');
 	});
 
 	$('img.icon').error(iconError);
@@ -1144,3 +1151,13 @@ $(function() {
 	$('#userBar').show();
 	opts.priorChatHeight = $(window).height();
 });
+
+function isValidUrl(href) {
+	const allowedProtocols = ['byond:', 'http:', 'https:'];
+	try {
+		const url = new URL(href);
+		return allowedProtocols.includes(url.protocol);
+	} catch (url) {
+		return href[0] === '?';
+	}
+}
