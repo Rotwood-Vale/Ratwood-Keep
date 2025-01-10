@@ -1274,6 +1274,7 @@
 					H.dropItemToGround(I)
 					if(I)	//In case it's something that gets qdel'd on drop
 						I.throw_at(throw_target, 7, 4)
+						H.throw_mode_off()
 
 /obj/projectile/magic/repel/on_hit(target)
 
