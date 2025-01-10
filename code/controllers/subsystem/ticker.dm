@@ -175,7 +175,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 //			to_chat(world, span_boldnotice("Welcome to [station_name()]!"))
-			send2chat(new /datum/tgs_message_content("Сервер перезапустился. Скоро начнется новый раунд! <@&[CONFIG_GET(string/new_round_ping)]> "))
+			send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/game_alert_role_id)]> Раунд **[GLOB.round_id]** стартует! \nЕсли вы хотите получить роль для уведомления о новой игре, то вам в <#[CONFIG_GET(string/role_assign_channel_id)]>."), CONFIG_GET(string/channel_announce_new_game))
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -466,7 +466,7 @@ SUBSYSTEM_DEF(ticker)
 	set waitfor = FALSE
 	mode.post_setup()
 
-	if(CONFIG_GET(string/new_round_ping))
+	if(CONFIG_GET(string/game_alert_role_id))
 		send2chat(new /datum/tgs_message_content("Новый раунд начинается!"), CONFIG_GET(string/chat_announce_new_game))
 	setup_done = TRUE
 
