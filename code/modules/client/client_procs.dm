@@ -1189,7 +1189,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			message_admins("[ckey] uncommends [theykey].")
 	return
 
-/proc/add_uncommend(key, giver, reason)
+/client/proc/add_uncommend(key, giver)
 	if(!giver || !key)
 		return
 	var/curcomm = 0
@@ -1204,19 +1204,13 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(json))
 
-	var/fakekey
-	if(istype(giver, /client))
-		var/client/C = giver
-		fakekey = C.ckey
-	else
-		fakekey = giver
+	var/fakekey = src.ckey
+	if(src.ckey in GLOB.anonymize)
+		fakekey = get_fake_key(src.ckey)
 
-	if(fakekey in GLOB.anonymize)
-		fakekey = get_fake_key(fakekey)
-
-	var/raisin = stripped_input(usr, "Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
+	var/raisin = stripped_input(src, "Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
 	if(!raisin)
-		to_chat(usr, span_boldwarning("Причина не указана."))
+		to_chat(src, span_boldwarning("Причина не указана."))
 		return
 
 	if(curcomm == 1)

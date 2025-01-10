@@ -612,7 +612,7 @@
 	var/datum/sex_action/action = SEX_ACTION(current_action)
 	action.on_start(user, target)
 	while(TRUE)
-		if(!user.rogfat_add(action.stamina_cost * get_stamina_cost_multiplier()))
+		if(!user.stamina_add(action.stamina_cost * get_stamina_cost_multiplier()))
 			break
 		if(!do_after(user, (action.do_time / get_speed_multiplier()), target = target))
 			break

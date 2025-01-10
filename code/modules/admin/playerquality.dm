@@ -200,7 +200,7 @@
 			to_chat(C, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [key] for reason: [raisin]</span></span>")
 			return
 
-/proc/add_commend(key, giver)
+/client/proc/add_commend(key, giver)
 	if(!giver || !key)
 		return
 	var/curcomm = 0
@@ -215,19 +215,13 @@
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(json))
 
-	var/fakekey
-	if(istype(giver, /client))
-		var/client/C = giver
-		fakekey = C.ckey
-	else
-		fakekey = giver
+	var/fakekey = src.ckey
+	if(src.ckey in GLOB.anonymize)
+		fakekey = get_fake_key(src.ckey)
 
-	if(fakekey in GLOB.anonymize)
-		fakekey = get_fake_key(fakekey)
-
-	var/raisin = stripped_input(usr, "Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
+	var/raisin = stripped_input(src, "Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
 	if(!raisin)
-		to_chat(usr, span_boldwarning("Причина не указана."))
+		to_chat(src, span_boldwarning("Причина не указана."))
 		return
 
 	if(curcomm == 1)

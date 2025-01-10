@@ -101,7 +101,7 @@
 	alpha = 173
 
 /datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)
-	M.rogstam_add(100)
+	M.energy_add(100)
 	..()
 	. = 1
 
