@@ -24,7 +24,7 @@
 	reqs = list(/obj/item/natural/wood/plank = 1)
 	skill_level = 2
 
-/datum/crafting_recipe/roguetown/turfs/woodplatform
+/datum/crafting_recipe/roguetown/turfs/wood/woodplatform
 	name = "platform (wood)"
 	result = /turf/open/floor/rogue/ruinedwood/platform
 	reqs = list(/obj/item/natural/wood/plank = 2)
