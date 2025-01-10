@@ -523,7 +523,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["customizer_entries"] >> customizer_entries
 	validate_customizer_entries()
 
-	bluewood_character_pref_load(S)
+	redmoon_character_pref_load(S)
 
 	return TRUE
 
@@ -605,7 +605,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["headshot_link"] , headshot_link)
 	WRITE_FILE(S["nudeshot_link"] , nudeshot_link)
 
-	bluewood_character_pref_save(S)
+	redmoon_character_pref_save(S)
 
 	return TRUE
 
