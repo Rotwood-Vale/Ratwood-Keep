@@ -7,7 +7,8 @@
 	spawn_positions = 4
 	antag_job = TRUE
 	allowed_races = RACES_VERY_SHUNNED_UP	//Begone foul seelies. Your age of banditry is gone
-	tutorial = "Long ago you did a crime worthy of your bounty being hung on the wall outside of the local inn. You now live with your fellow freemen in the bog, and generally get up to no good."
+	tutorial = "Когда-то давно вы совершили преступление, достойное того, чтобы за него вас повесили на виселице у местного трактира. \
+	Теперь вы живете со своими собратьями на болоте и, как правило, занимаетесь не своим делом."
 
 	outfit = null
 	outfit_female = null

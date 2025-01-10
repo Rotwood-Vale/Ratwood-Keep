@@ -2,25 +2,18 @@
 	race = /datum/species/dwarf/mountain
 
 /datum/species/dwarf/mountain
-	name = "Dwarf"
+	name = "Дворф"
 	id = "dwarfm"
 	clothes_id = "dwarf"
-	desc = "<b>Dwarf</b><br>\
-	A proud and robust race of short mountain folk, \
-	the dwarves are known for their pride in martial strength \
-	and their tenacity towards their ancient traditions.\
-	A Dwarf, much like the rock that they carve their fortress out of \
-	is stubborn and ancient, with their race being the longest lived of all \
-	of the weeping gods creation. They, like stone: also rarely change \
-	and tend to shun the modernization of the world around them. \
-	Instead, a Dwarf looks to his ancestorial heritage for guidance on \
-	the various challenges they face. Even if, in some irony: this behaviour \
-	leads the race towards technological advacement as they continue \
-	to improve their craft through powerful mechanization and forging \
-	Dwarves are hearty, but are not known for their speed or eyesight... \
-	Each dwarf hails from a ancient fortress named after the most plentiful mineral."
+	desc = "<b>Дворф</b><br>\
+	Гордый и крепкий народ короткорослых горных жителей, дворфы известны своей гордостью за боевую силу и приверженностью древним традициям. \
+	Дворф, подобно камню, из которого он высекает свою крепость, упрям и древен, а его раса — самая долголетняя из всех творений старого бога. \
+	Они, как и камень, редко меняются и склонны избегать модернизации окружающего мира. Вместо этого дворф обращается к наследию своих предков за советом по различным \
+	возникающим перед ним трудностям. Хотя, в некотором роде, это поведение иронично приводит к технологическому прогрессу, \
+	так как они продолжают совершенствовать своё ремесло с помощью мощной механизации и кузнечного дела. Дворфы крепки, но не известны своей быстротой или зрением. \
+	Каждый дворф происходит из древней крепости, названной в честь самого распространённого минерала."
 
-	skin_tone_wording = "Dwarf Fortress"
+	skin_tone_wording = "Крепость дворфов"
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,YOUNGBEARD,STUBBLE,OLDGREY)

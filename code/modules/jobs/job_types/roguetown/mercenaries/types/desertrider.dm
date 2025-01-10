@@ -1,19 +1,15 @@
 /datum/subclass/desert_rider
 	name = "Desert Rider"
-	tutorial = "Hooded figures clad in red and easily identifiable by their distinctive emblem, the Desert Riders of Shalvistine are a loosely-governed society of mercenaries and refugees hailing from the fringes of the Zybantian Empire. You were riding saigaback before you could even walk, and you likely feel more at ease on four legs than two. Due to political unrest with neighboring Lalvestine, increasingly deadly sandstorms, or merely a sense of adventure, you find yourself with the Mercenaries’ Guild in Rockhill, selling your skills with the blade to those willing to pay."
+	tutorial = "Облаченные в красные капюшоны и легко узнаваемые по отличительной эмблеме, \
+	Пустынные всадники Шалвестины - это свободно управляемое общество наемников и беженцев, прибывших с окраин Зибантийской империи. \
+	Вы ездили на сайгаке еще до того, как научились ходить, и, скорее всего, чувствуете себя более комфортно на четырех ногах, чем на двух. \
+	Из-за политических волнений в соседнем Лалвестине, все более смертоносных песчаных бурь или просто из чувства приключений вы оказались в Гильдии наемников в Рокхилле, \
+	продавая свои навыки владения клинком тем, кто готов платить."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(
-		/datum/species/tieberian,
-		/datum/species/lizardfolk,
-		/datum/species/tabaxi,
-		/datum/species/human/northern,
-		/datum/species/demihuman,
-		/datum/species/anthromorph,
-		/datum/species/elf/dark,
-	)
+	allowed_races = RACES_TOLERATED_UP
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider
 	maximum_possible_slots = 10
-	min_pq = 2
+	min_pq = 8
 	torch = FALSE
 	cmode_music = 'sound/music/combat_desertrider.ogg'
 	category_tags = list(CTAG_MERCENARY)
@@ -32,15 +28,6 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	neck = /obj/item/clothing/neck/roguetown/shalal
-
-	if(ishumannorthern(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Shalvistine"]
-		H.update_body()
-	if(isdemihuman(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Shalvistine"]
-		H.update_body()
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

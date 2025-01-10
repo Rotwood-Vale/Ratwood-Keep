@@ -8,10 +8,10 @@
 
 	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE
 
-	tutorial = "The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. \
-		You command a position of a fool, envious of the position your superiors have upon you. \
-		Your cheap tricks and illusions of intelligence will only work for so long, \
-		and someday you'll find yourself at the end of something sharper than you."
+	tutorial = "Грензельхофты славились своими шутами - мудрецами, у которых язык был так же остр, как и остроумие. \
+		Вы занимаете позицию шута, завидуя тому положению, которое занимает ваше начальство. \
+		Твои дешевые трюки и иллюзии ума действуют лишь до поры до времени,\
+		и однажды ты окажешься в руках чего-то более острого, чем ты сам."
 
 	allowed_ages = ALL_AGES_LIST
 	spells = list(/obj/effect/proc_holder/spell/self/telljoke,/obj/effect/proc_holder/spell/self/telltragedy)

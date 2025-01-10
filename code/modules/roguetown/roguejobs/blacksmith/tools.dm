@@ -2,8 +2,8 @@
 /obj/item/rogueweapon/hammer	// The template
 	force = 21
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	name = "not a hammer"
-	desc = "Just a template. Report to devs."
+	name = "молот"
+	desc = "Каждый его удар воспевает войну!"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
 	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
@@ -73,7 +73,7 @@
 		if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
 			return
 		if(attacked_item.obj_integrity <= 0)
-			user.visible_message(span_warning("[attacked_item] is broken! I cannot fix it..."))
+			user.visible_message(span_warning("[attacked_item] сломано! Я не могу это починить..."))
 			return
 
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= 0)
@@ -89,15 +89,15 @@
 			repair_percent *= attacked_item.max_integrity
 			exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
 			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
-			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
-				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
+			if(repair_percent == 0.01) // Если неумелая попытка ремонта удалась
+				to_chat(user, span_warning("Вы кое-как починили [attacked_item]."))
 			else	
-				user.visible_message(span_info("[user] repairs [attacked_item]!"))
+				user.visible_message(span_info("[user] чинит [attacked_item]!"))
 			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
 			return
 		else
-			user.visible_message(span_warning("[user] damages [attacked_item]!"))
-			attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "blunt")
+			user.visible_message(span_warning("[user] повреждает [attacked_item]!"))
+			attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "тупой")
 			return
 
 	if(isstructure(attacked_object) && !user.cmode)
@@ -105,14 +105,14 @@
 		if(!attacked_structure.hammer_repair || !attacked_structure.max_integrity)
 			return
 		if(blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) <= 0)
-			to_chat(user, span_warning("I don't know how to repair this.."))
+			to_chat(user, span_warning("Я не знаю, как это починить..."))
 			return
 		repair_percent *= blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) * attacked_structure.max_integrity
 		exp_gained = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity) - attacked_structure.obj_integrity
 		attacked_structure.obj_integrity = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity)
 		blacksmith_mind.add_sleep_experience(attacked_structure.hammer_repair, exp_gained/1.5) //We gain as much exp as we fix
 		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
-		user.visible_message(span_info("[user] repairs [attacked_structure]!"))
+		user.visible_message(span_info("[user] восстанавливает [attacked_structure]!"))
 		return
 
 	. = ..()
@@ -150,8 +150,8 @@
 */
 
 /obj/item/rogueweapon/hammer/wood
-	name = "wooden mallet"
-	desc = "A wooden mallet is an artificers second best friend! But it may also come in handy to a smith..."
+	name = "киянка"
+	desc = "Киянка - второй лучший друг изобретателя! Но может пригодиться и кузнецу..."
 	icon_state = "hammer_w"
 	item_state = "hammer_w"
 	force = 16
@@ -161,8 +161,8 @@
 /obj/item/rogueweapon/tongs
 	force = 10
 	possible_item_intents = list(/datum/intent/mace/strike)
-	name = "tongs"
-	desc = "A pair of iron jaws used to carry hot ingots."
+	name = "клещи"
+	desc = "Железные клещи, используемые для переноски горячего металла."
 	icon_state = "tongs"
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
@@ -180,7 +180,7 @@
 /obj/item/rogueweapon/tongs/examine(mob/user)
 	. = ..()
 	if(hott)
-		. += span_warning("The tip is hot to the touch.")
+		. += span_warning("Кончик горячий на ощупь.")
 
 /obj/item/rogueweapon/tongs/get_temperature()
 	if(hott)

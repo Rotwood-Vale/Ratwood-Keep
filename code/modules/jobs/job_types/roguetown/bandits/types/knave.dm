@@ -1,6 +1,7 @@
 /datum/subclass/knave //sneaky bastards - ranged classes of two flavors archers and rogues
 	name = "Knave"
-	tutorial = "Not all followers of Matthios take by force. Thieves, poachers, and ne'er-do-wells of all forms steal from others from the shadows, long gone before their marks realize their misfortune."
+	tutorial = "Не все последователи Маттиоса берут силой. \
+	Воры, браконьеры и пройдохи всех мастей крадут у других из тени, уходя задолго до того, как их следы осознают свое несчастье."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/knave

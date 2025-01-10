@@ -1,6 +1,6 @@
 /datum/subclass/brigand //Strength class, starts with axe or flails and medium armor training
 	name = "Brigand"
-	tutorial = "Cast from society, you use your powerful physical might and endurance to take from those who are weaker from you."
+	tutorial = "Изгнанный из общества, вы используете свою мощную физическую силу и выносливость, чтобы отбирать у тех, кто слабее вас."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/brigand

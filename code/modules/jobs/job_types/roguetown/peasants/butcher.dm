@@ -8,7 +8,8 @@
 
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = ALL_AGES_LIST
-	tutorial = "Some say you're a strange individual, some say you're a cheat, while some claim you're a savant in the art of sausage making. Without your skilled hands and knifework, most of the livestock around the town would be wasted. "
+	tutorial = "Кто-то говорит, что вы странный человек, кто-то - мошенник, а кто-то утверждает, что вы сведущи в искусстве изготовления колбас.\
+	 Без ваших умелых рук и ножей большая часть скота в городе пропала бы."
 
 	outfit = /datum/outfit/job/roguetown/beastmaster
 	display_order = JDO_BUTCHER

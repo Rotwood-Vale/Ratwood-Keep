@@ -1,8 +1,8 @@
 /datum/subclass/noble
 	name = "Noble"
-	tutorial = "You were once a person of importance in your local community, but the plague and civil strife have left you with nothing. \
-				Noble in blood but no longer in wealth, you have spent your last riches to embark on a journey towards a place \
-				where you can re-establish your lineage."
+	tutorial = "Когда-то вы были важной персоной в своем обществе, но чума и гражданские беспорядки оставили вас ни с чем. \
+				Благородный по крови, но не по богатству, вы потратили свое последнее богатство, чтобы отправиться в путешествие к месту,\
+				где вы сможете восстановить свой род."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

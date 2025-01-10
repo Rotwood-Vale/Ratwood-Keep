@@ -1,8 +1,8 @@
 /datum/subclass/performer
 	name = "Performer"
-	tutorial = "Your whole life has been a degrading spectacle. Whether as part of a traveling circus or lone performer, \
-				you've learned how to sell your talents or your body. The depressing state of the world has driven you to \
-				seek refuge in a place where entertainment is still valued, even if it's just a distraction from the catastrophe."
+	tutorial = "Вся ваша жизнь - это унизительное зрелище. Будь то часть странствующего цирка или одинокий артист,\
+				вы научились продавать свои таланты или тело. Удручающее состояние мира заставило вас \
+				искать убежище в месте, где развлечения все еще ценятся, даже если это просто отвлечение от катастрофы."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

@@ -175,7 +175,6 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 //			to_chat(world, span_boldnotice("Welcome to [station_name()]!"))
-			send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/game_alert_role_id)]> Round **[GLOB.round_id]** starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles."), CONFIG_GET(string/channel_announce_new_game))
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -466,13 +465,11 @@ SUBSYSTEM_DEF(ticker)
 	set waitfor = FALSE
 	mode.post_setup()
 
-	var/list/adm = get_admin_counts()
-	var/list/allmins = adm["present"]
-	send2irc("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
+	if(CONFIG_GET(string/new_round_ping))
+		send2chat(new /datum/tgs_message_content("Новый раунд начинается! <@&[CONFIG_GET(string/new_round_ping)]> "), CONFIG_GET(string/chat_announce_new_game))
 	setup_done = TRUE
 
 	job_change_locked = FALSE
-
 //	setup_hell()
 	SStriumphs.fire_on_PostSetup()
 	for(var/i in GLOB.start_landmarks_list)

@@ -2,22 +2,18 @@
 	race = /datum/species/elf/wood
 
 /datum/species/elf/wood
-	name = "Elf"
+	name = "Эльф"
 	id = "elfw"
-	desc = "<b>Elf</b><br>\
-	Elves, or Wood-Elf by the Elder races, are a generic term for tall, pointy-eared \
-	humanoids that trace their original heritage to the ancient mysterious Snow Elves. \
-	Considering their diverse history, it is extremely difficult for other mortals \
-	to even concept the various intricacies found in elven society, and the hundreds \
-	if not thousands of tribes that exist within their culture! \
-	Elves tend to be looked poorly upon by humans, as historically the two races have \
-	been rivals in various conflicts and territorial disputes. This however does not stop \
-	many humans and elves from forming relationships, which are capable of producing child.\
-	Elves are known for their intelligence and sharp eyes, but their graceful nature does \
-	not lend itself to the concepts of strength or durability... \
-	There are elves from a small smattering of tribes in these parts."
+	desc = "<b>Эльф</b><br>\
+	Эльфы (или Лесные Эльфы в языке Древних рас) — это общее название для высоких гуманоидов с заострёнными ушами,\
+	которые ведут своё происхождение от древних таинственных Снежных Эльфов.\
+	Учитывая их разнообразную историю, другим смертным чрезвычайно трудно понять многочисленные тонкости, присущие эльфийскому обществу, и сотни, если не тысячи племён, \
+	существующих в их культуре! Эльфы часто плохо воспринимаются людьми, поскольку исторически эти две расы были соперниками в различных конфликтах и территориальных спорах. \
+	Тем не менее, это не мешает многим людям и эльфам формировать отношения, способные приводить к рождению детей. \
+	Эльфы известны своим интеллектом и острым зрением, но их грациозная природа не способствует развитию силы или стойкости.\
+	В этих краях можно встретить эльфов из небольшого числа племён."
 
-	skin_tone_wording = "Tribal Identity"
+	skin_tone_wording = "Племенная идентичность"
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)

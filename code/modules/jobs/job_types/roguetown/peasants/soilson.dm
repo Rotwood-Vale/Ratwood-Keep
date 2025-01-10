@@ -10,8 +10,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_SHUNNED_UP
 
-	tutorial = "It is a simple life you live, your basic understanding of life is something many would be envious of if they knew how perfect it was. You know a good day's work, the sweat on your brow is yours: Famines and plague may take its toll, but you know how to celebrate life well. Till the soil and produce fresh food for those around you, and maybe youll be more than an unsung hero someday."
-
+	tutorial = "Вы живете просто, ваше базовое понимание жизни - это то, чему многие могли бы позавидовать, если бы знали, насколько оно идеально. \
+	Вы знаете, что такое хороший рабочий день, так как пот на вашем челе доказывает это. Голод и чума могут взять свое, но вы знаете, как хорошо отпраздновать жизнь. \
+	Возделывайте землю и производите свежую пищу для окружающих, и, возможно, когда-нибудь вы станете не просто невоспетым героем."
 
 	f_title = "Soilbride"
 	outfit = /datum/outfit/job/roguetown/farmer

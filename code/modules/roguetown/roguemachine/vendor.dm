@@ -135,8 +135,13 @@
 			if(newprice)
 				if(findtext(num2text(newprice), "."))
 					return attack_hand(usr)
+					// Проверка на отрицательную цену
+				if(newprice < 0)
+					to_chat(usr, span_warning("ИДИ НАХУЙ ПИДОРАС!"))
+					return attack_hand(usr)
 				held_items[O]["PRICE"] = newprice
-	return attack_hand(usr)
+		return attack_hand(usr)
+
 
 /obj/structure/roguemachine/vendor/attack_hand(mob/living/user)
 	. = ..()

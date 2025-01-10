@@ -1,9 +1,9 @@
 /datum/reagent/medicine/healthpot
-	name = "Health Potion"
-	description = "Gradually regenerates all types of damage."
+	name = "Зелье здоровья"
+	description = "Постепенно восстанавливает все виды повреждений."
 	reagent_state = LIQUID
 	color = "#ff0000"
-	taste_description = "health"
+	taste_description = "здоровья"
 	overdose_threshold = 0
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 210
@@ -28,11 +28,11 @@
 	. = 1
 //super and minor health potions
 /datum/reagent/medicine/lesserhealthpot
-	name = "Lesser Health Potion"
-	description = "Gradually minorly all types of damage."
+	name = "Малое зелье здоровья"
+	description = "Постепенно восстанавливает небольшое количество всех видов повреждений."
 	reagent_state = LIQUID
 	color = "#ff6b6b"
-	taste_description = "cold oil and flesh"
+	taste_description = "холодного масла и плоти"
 	overdose_threshold = 0
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 210
@@ -49,11 +49,11 @@
 
 	
 /datum/reagent/medicine/greaterhealthpot
-	name = "Greater Health Potion"
-	description = "Greatly heals all types of damage."
+	name = "Большое зелье здоровья"
+	description = "Значительно исцеляет все виды повреждений."
 	reagent_state = LIQUID
 	color = "#ff7700"
-	taste_description = "orange"
+	taste_description = "рыжести" //цвет зелья рыжий, поэтому такая хуйня
 	overdose_threshold = 47 //45 units in a bottle, 2 units to safeguard
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	alpha = 210
@@ -91,11 +91,11 @@
 
 
 /datum/reagent/medicine/manapot
-	name = "Mana Potion"
-	description = "Gradually regenerates stamina."
+	name = "Зелье маны"
+	description = "Постепенно восстанавливает выносливость."
 	reagent_state = LIQUID
 	color = "#0000ff"
-	taste_description = "manna"
+	taste_description = "маны"
 	overdose_threshold = 0
 	metabolization_rate = 20 * REAGENTS_METABOLISM
 	alpha = 173
@@ -106,8 +106,8 @@
 	. = 1
 
 /datum/reagent/berrypoison
-	name = "Berry Poison"
-	description = "Contains a poisonous thick, dark purple liquid."
+	name = "Ягодный яд"
+	description = "Густая, тёмная жидкость." //нуууууу, тут вообще голубой цвет, так что опустим цвет
 	reagent_state = LIQUID
 	color = "#00B4FF"
 	metabolization_rate = 0.1
@@ -119,8 +119,8 @@
 	return ..()
 
 /datum/reagent/organpoison
-	name = "Organ Poison"
-	description = "A viscous black liquid clings to the glass."
+	name = "Яд из органов"
+	description = "Вязкая черная жидкость прилипает к стеклу." //Красный цвет...
 	reagent_state = LIQUID
 	color = "#ff2f00"
 	metabolization_rate = 0.1
@@ -134,11 +134,11 @@
 	return ..()
 
 /datum/reagent/erpjuice/cum
-	name = "Erotic Fluid"
-	description = "A thick, sticky, cream like fluid. produced during an orgasm."
+	name = "Любовный сок"
+	description = "Густая, липкая, кремообразная жидкость, выделяемая во время оргазма."
 	reagent_state = LIQUID
 	color = "#ebebeb"
-	taste_description = "salty and tangy"
+	taste_description = "солёный, терпкий"
 	metabolization_rate = 0.1
 
 /datum/reagent/erpjuice/cum/on_mob_life(mob/living/carbon/M) //Rejoice, cum whores can now very inefficiently drink cum to substain themselves.
@@ -152,7 +152,7 @@
 	..()
 
 /datum/crafting_recipe/roguetown/cooking/soap
-	name = "soap"
+	name = "Мыло"
 	reqs = list(
 		/obj/item/ash = 1,
 		/datum/reagent/water = 10,

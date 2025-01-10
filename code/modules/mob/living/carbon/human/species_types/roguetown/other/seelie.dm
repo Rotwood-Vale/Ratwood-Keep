@@ -3,17 +3,17 @@
 	gender = FEMALE
 
 /datum/species/seelie
-	name = "Seelie"
+	name = "Фея"
 	id = "seelie"
-	desc = "<b>Seelie</b><br>\
-	The smallest of Fae-folk, Seelie are a mysterious race and not well understood. \
-    Parentless creatures and unable to reproduce naturally, it is clear that they do not propogate in a typical human way. \
-    Instead, Seelie tend to appear and gather in places of chaos and misfortune, thriving in such an environment. \
-    Seelie are known to have Elemental Attunements, an influence of nature that mystically sprung them into existance. \
-    Any tribalism or history regarding the race is scarce and uncommmon, and as such misconception and myth surrounds them. \
-    The wary traveller should take heed of such beings, as both fortune and missery is said to accompany the little troublemakers."
+	desc = "<b>Фея</b><br>\
+	Феи - загадочная и малопонятная раса. \
+    Не имея родителей и не имея возможности размножаться естественным путем, они не размножаются обычным человеческим способом. \
+    Вместо этого, феи обычно появляются и собираются в местах хаоса и несчастий, процветая в такой обстановке. \
+    Известно, что у фей есть элементарные атрибуты, влияние природы, которая мистическим образом вызвала их к жизни. \
+    Любая родовая принадлежность или история расы скудна и малоизвестна, поэтому их окружают заблуждения и мифы. \
+    Осторожные путешественники должны остерегаться таких существ, поскольку, как говорят, маленькие нарушители спокойствия сопровождаются как удачей, так и несчастьем."
 
-	skin_tone_wording = "Elemental Connection"
+	skin_tone_wording = "Элементарная связь"
 
 	//gender = FEMALE
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)	//Default shit that ever race gets

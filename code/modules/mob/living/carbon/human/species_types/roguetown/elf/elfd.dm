@@ -2,16 +2,14 @@
 	race = /datum/species/elf/dark
 
 /datum/species/elf/dark
-	name = "Dark Elf"
+	name = "Тёмный эльф"
 	id = "elfd"
-	desc = "<b>Dark Elf</b><br>\
-	Elves, are a generic term for tall, pointy-eared humanoids\
-    Of whom trace their original heritage to the ancient mysterious Snow Elves. \
-	These ones are of a dark complexion and originate mostly from the underdark. \
-    Their culture and entire lives normally involve serving the evil gods of the inhumen pantheon. \
-    Previously rare but in recent times, more and more dark elfs can be seen on the surface. \
-    The ones who aren't overtly cruel and bloodthirsty, tend to flee to the surface lest they get culled by their own society, \
-    while some more sinister ones abandon their cities in search of new and greater power."
+	desc = "<b>Тёмный эльф</b><br>\
+	Эльфы — это общее название для высоких гуманоидов с заострёнными ушами, происхождение которых уходит корнями к древним таинственным снежным эльфам. \
+	Тёмные эльфы имеют тёмный оттенок кожи и в основном происходят из подземелий. Их культура и жизнь обычно связаны со служением злым богам презренного пантеона. \
+	Ранее они были редкостью, но в последнее время всё больше тёмных эльфов можно встретить на поверхности. Те из них, \
+	кто не является откровенно жестоким и кровожадным, склонны искать укрытие на поверхности, чтобы избежать преследования со стороны своего общества,\
+	в то время как более зловещие представители покидают свои города в поисках новой и большей силы."
 
 /*
 	Former RT Desc: These guys were undead which doesn't really fit considering now you have a ton of them walking around.
@@ -28,7 +26,7 @@
 	without careful upkeep...\
 	They typically trace their beginnings to how their progenator died before being raised."
 */
-	skin_tone_wording = "Origin City-State"
+	skin_tone_wording = "Город-подземелье"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
@@ -106,17 +104,15 @@
 		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
+	
+	languages = list(
+		/datum/language/common,
+		/datum/language/elvish
+	)
 
 	gender_swapping = TRUE
 	stress_examine = TRUE
 	stress_desc = span_red("A loathesome dark elf.")
-
-/datum/species/elf/dark/get_span_language(datum/language/message_language)
-	if(!message_language)
-		return
-	if(message_language.type == /datum/language/elvish)
-		return list(SPAN_DELF)
-	return message_language.spans
 
 /datum/species/elf/dark/get_skin_list()
 	return list(

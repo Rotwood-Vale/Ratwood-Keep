@@ -9,8 +9,8 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	total_positions = 25
 	spawn_positions = 25
 	allowed_races = RACES_VERY_SHUNNED_UP
-	tutorial = "People of all walks of life have fled the rot, seeking refuge in the many rumored safe havens of the world. \
-				One of these refugees, you have left everything behind to seek a new life in a foreign land."
+	tutorial = "Люди всех слоев общества бегут от гниения, ища убежища в многочисленных убежищах мира, о которых ходят слухи. \
+				Один из этих беженцев, вы оставили все позади, чтобы искать новую жизнь в чужой стране."
 
 
 	outfit = null

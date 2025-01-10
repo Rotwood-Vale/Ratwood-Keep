@@ -1,5 +1,5 @@
 /obj/item/rogueore
-	name = "ore"
+	name = "руда"
 	icon = 'icons/roguetown/items/ore.dmi'
 	icon_state = "ore"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -8,8 +8,8 @@
 	grid_height = 32
 
 /obj/item/rogueore/gold
-	name = "raw gold"
-	desc = "A clump of dirty lustrous nuggets!"
+	name = "золотая руда"
+	desc = "Куча грязных блестящих самородков!"
 	icon_state = "oregold1"
 	smeltresult = /obj/item/ingot/gold
 	grind_results = list(/datum/reagent/gold = 15)
@@ -21,8 +21,8 @@
 
 
 /obj/item/rogueore/silver
-	name = "raw silver"
-	desc = "A gleaming ore of moonlight hue."
+	name = "серебряная руда"
+	desc = "Сверкающая руда лунного оттенка."
 	icon_state = "oresilv1"
 	smeltresult = /obj/item/ingot/silver
 	grind_results = list(/datum/reagent/silver = 15)
@@ -34,8 +34,8 @@
 
 
 /obj/item/rogueore/iron
-	name = "raw iron"
-	desc = "A dark ore of rugged strength."
+	name = "железная руда"
+	desc = "Тёмная руда, воплощающая грубую силу."
 	icon_state = "oreiron1"
 	smeltresult = /obj/item/ingot/iron
 	grind_results = list(/datum/reagent/iron = 15)
@@ -47,8 +47,8 @@
 
 
 /obj/item/rogueore/copper
-	name = "raw copper"
-	desc = "A burnished ore with reddish gleams."
+	name = "медная руда"
+	desc = "Руда с красноватым отблеском."
 	icon_state = "orecop1"
 	smeltresult = /obj/item/ingot/copper
 	grind_results = list(/datum/reagent/copper = 15)
@@ -59,8 +59,8 @@
 	return ..()
 
 /obj/item/rogueore/tin
-	name = "raw tin"
-	desc = "A mass of soft, almost malleable white ore."
+	name = "оловянная руда"
+	desc = "Масса мягкой, податливой белой руды."
 	icon_state = "oretin1"
 	smeltresult = /obj/item/ingot/tin
 	sellprice = 4
@@ -70,8 +70,8 @@
 	..()
 
 /obj/item/rogueore/coal
-	name = "coal"
-	desc = "Dark lumps that become smoldering embers later in life."
+	name = "уголь"
+	desc = "Тёмные глыбы, которые со временем превращаются в тлеющие угли."
 	icon_state = "orecoal1"
 	firefuel = 30 MINUTES
 	smeltresult = /obj/item/rogueore/coal
@@ -83,14 +83,14 @@
 	return ..()
 
 /obj/item/rogueore/cinnabar
-	name = "cinnabar"
-	desc = "Red gems that contain the essence of quicksilver."
+	name = "киноварь"
+	desc = "Красные самоцветы, в которых заключена эссенция ртути."
 	icon_state = "orecinnabar"
 	grind_results = list(/datum/reagent/mercury = 15)
 	sellprice = 5
 
 /obj/item/ingot
-	name = "ingot"
+	name = "слиток"
 	icon = 'icons/roguetown/items/ore.dmi'
 	icon_state = "ingot"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -121,61 +121,61 @@
 	return ..()
 
 /obj/item/ingot/gold
-	name = "gold bar"
-	desc = "Solid wealth in your hands."
+	name = "золотой слиток"
+	desc = "Чистое богатство в твоих руках."
 	icon_state = "ingotgold"
 	smeltresult = /obj/item/ingot/gold
 	grind_results = list(/datum/reagent/gold = 15)
 	sellprice = 100
 
 /obj/item/ingot/iron
-	name = "iron bar"
-	desc = "Forged strength. Essential for crafting."
+	name = "железный слиток"
+	desc = "Кованая мощь. Незаменим в ремесле."
 	icon_state = "ingotiron"
 	smeltresult = /obj/item/ingot/iron
 	grind_results = list(/datum/reagent/iron = 15)
 	sellprice = 25
 
 /obj/item/ingot/copper
-	name = "copper bar"
-	desc = "This bar causes a gentle tingling sensation when touched."
+	name = "медный слиток"
+	desc = "Этот слиток вызывает лёгкое покалывание при прикосновении."
 	icon_state = "ingotcop"
 	smeltresult = /obj/item/ingot/copper
 	grind_results = list(/datum/reagent/copper = 15)
 	sellprice = 25
 
 /obj/item/ingot/tin
-	name = "tin bar"
-	desc = "An ingot of strangely soft and malleable essence."
+	name = "оловянный слиток"
+	desc = "Слиток с удивительно мягкой и пластичной структурой."
 	icon_state = "ingottin"
 	smeltresult = /obj/item/ingot/tin
 	sellprice = 25
 
 /obj/item/ingot/bronze
-	name = "bronze bar"
-	desc = "A hard and durable alloy favored by engineers and followers of Malum alike."
+	name = "бронзовый слиток"
+	desc = "Твёрдый и прочный сплав, почитаемый инженерами и последователями Малума."
 	icon_state = "ingotbronze"
 	smeltresult = /obj/item/ingot/bronze
 	sellprice = 30
 
 /obj/item/ingot/silver
-	name = "silver bar"
-	desc = "This bar radiates purity. Treasured by the realms."
+	name = "серебряный слиток"
+	desc = "Этот слиток излучает чистоту. Ценится во всех королевствах."
 	icon_state = "ingotsilv"
 	smeltresult = /obj/item/ingot/silver
 	grind_results = list(/datum/reagent/silver = 15)
 	sellprice = 60
 	
 /obj/item/ingot/steel
-	name = "steel bar"
-	desc = "This ingot is a stalwart defender of the kingdom."
+	name = "стальной слиток"
+	desc = "Этот слиток - надежный защитник королевства."
 	icon_state = "ingotsteel"
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 40
 
 /obj/item/ingot/blacksteel
-	name = "blacksteel bar"
-	desc = "Sacrificing the holy elements of silver for raw strength, this strange and powerful ingot's origin carries dark rumors.."
+	name = "слиток чёрной стали"
+	desc = "Пожертвовав святыми свойствами серебра ради грубой силы, этот странный и мощный слиток окружён мрачными слухами о своём происхождении..."
 	icon_state = "ingotblacksteel"
 	smeltresult = /obj/item/ingot/blacksteel
 	sellprice = 90

@@ -8,10 +8,11 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
-	tutorial = "Tales speak of the Gatemaster's legendary ability to stand still at a gate and ask people questions. \
-	Rivaled only by a tree's ability to stay in place, Gatemasters are known to stock up for the long weeks. \
-	Using subordinates and helpers to bring them supplies, just as Dendor feeds nature's roots so it may last. \
-	Unfortunately, the thundering voice of the Marshal or their Councillors tends to snap you out of the trance."
+	tutorial = "Вы - страж великих врат замка, отвечающий за безопасность двора. \
+				У вас имеется огнестрельное оружие, лук и арбалет и являетесь самым искусным снайпером на Энигме.\
+				Вы непосредственно подчиняетесь капитану лейб-гвардии, а также маршалу. \
+				Говорят, что вы обладаете недюжинной силой сидеть на месте, открывать и закрывать ворота замка."
+
 	display_order = JDO_GATEMASTER
 
 	outfit = /datum/outfit/job/roguetown/gatemaster
@@ -75,11 +76,6 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 1)
-	if(H.gender == FEMALE)
-		var/acceptable = list("Tomboy", "Bob", "Curly Short")
-		if(!(H.hairstyle in acceptable))
-			H.hairstyle = pick(acceptable)
-			H.update_hair()
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

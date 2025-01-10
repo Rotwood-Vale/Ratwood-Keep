@@ -1,8 +1,8 @@
 /datum/subclass/healer
 	name = "Healer"
-	tutorial = "Whether you have helped people on the battlefield or concocted ailments in private, your life has been dedicated \
-				to healing the sick and wounded. You've joined a refugee caravan to escape the spreading rot, a sickness which even someone \
-				like you cannot truly explain."
+	tutorial = "Помогали ли вы людям на поле боя или придумывали лекарства наедине с собой, ваша жизнь была посвящена \
+				исцелению больных и раненых. Вы присоединились к каравану беженцев, чтобы спастись от распространяющейся чумы, катастроф и войны, которую даже такой человек,\
+				как вы, не может объяснить."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS

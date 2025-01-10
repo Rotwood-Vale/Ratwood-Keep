@@ -16,9 +16,9 @@ Please do not confuse the two.
 		/datum/patron/psydon
 	)
 
-	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. \
-	As the most fanatical members of the clergy, their main concern is assisting the local Inquisitor with their work. \
-	Whether that be in extracting confessions of sin or hunting night beasts and cultists that hide in plain sight."
+	tutorial = "Исповедники - теневые агенты церкви, нанятые для слежки за населением и поддержания его нравственности. \
+    Самые фанатичные представители духовенства, их главная задача - помогать местному инквизитору в его работе. \
+    Будь то выбивание признаний в грехах или охота на ночных зверей и культистов, которые прячутся у всех на виду."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
 	whitelist_req = TRUE
