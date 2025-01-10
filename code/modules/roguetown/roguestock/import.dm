@@ -27,21 +27,6 @@
 	locked = TRUE
 	masterkey = TRUE
 
-/datum/roguestock/import/vanguard
-	name = "Vanguard Equipment Crate"
-	desc = "Starting kit for a new Vanguard."
-	item_type = /obj/structure/closet/crate/chest/steward/vanguard
-	export_price = 50
-	importexport_amt = 1
-
-/obj/structure/closet/crate/chest/steward/vanguard/Initialize()
-	. = ..()
-	new /obj/item/clothing/cloak/raincloak/vanguard(src)
-	new /obj/item/storage/keyring/bog_guard(src)
-	new /obj/item/clothing/suit/roguetown/armor/gambeson(src)
-	new /obj/item/rogueweapon/mace/cudgel(src)
-	new /obj/item/rope/chain(src)
-	
 /datum/roguestock/import/townguard
 	name = "Watchman Equipment Crate"
 	desc = "Starting kit for a new Watchman."

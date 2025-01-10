@@ -32794,7 +32794,7 @@
 /area/rogue/indoors/town)
 "tQY" = (
 /obj/structure/roguemachine/mail{
-	mailtag = "Vanguard Bastion"
+	mailtag = "Bastion"
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
@@ -36544,7 +36544,7 @@
 /area/rogue/indoors/shelter/mountains)
 "whJ" = (
 /obj/structure/roguemachine/mail{
-	mailtag = "Vanguard Bastion"
+	mailtag = "Bastion"
 	},
 /obj/effect/landmark/start/bogmaster,
 /turf/open/floor/rogue/cobble,

@@ -318,9 +318,6 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercs
 #define CTAG_HENCH			"CAT_HENCH"			// Whitevein Guards
 
-//Garrison
-#define CTAG_BOG			"CAT_BOG"			//Vanguard
-
 //Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_ANTAG			"CAT_ANTAG"			// Antag class - results in an antag

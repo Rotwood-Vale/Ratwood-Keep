@@ -22,7 +22,7 @@
 /obj/item/clothing/suit/roguetown/shirt/shadow
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	name = "vanguard uniform"
-	desc = "A nightly uniform worn by those that protect the citizenry from what lurks beyond."
+	desc = "A nightly uniform worn by those that protect the citizenry from what lurks beyond, said to belong to a long extinct group."
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS
 	icon = 'icons/roguetown/clothing/newclothes/dripobj.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/newclothes/onmob/onmobdrip.dmi'
