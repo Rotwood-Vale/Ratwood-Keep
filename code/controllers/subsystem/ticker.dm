@@ -175,7 +175,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 //			to_chat(world, span_boldnotice("Welcome to [station_name()]!"))
-			send2chat(new /datum/tgs_message_content("Новый раунд начинается! <@&[CONFIG_GET(string/new_round_ping)]> "))
+			send2chat(new /datum/tgs_message_content("Сервер перезапустился. Скоро начнется новый раунд! <@&[CONFIG_GET(string/new_round_ping)]> "))
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
