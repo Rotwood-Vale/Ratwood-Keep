@@ -1086,42 +1086,6 @@ $(function() {
 		internalOutput('<span class="internal boldnshit">Log file saved.</span>', 'internal');
 	});
 
-	$('#startLogging').click(function () {
-		if (!window.Blob) {
-			alert('Your browser does not support modern file-saving features. Please update your browser.');
-			return;
-		}
-		internalOutput('<span class="internal boldnshit">Log file saved.</span>', 'internal');
-		// Accumulated log content
-		let logContent = '';
-	
-		// Start periodic logging
-		setInterval(function () {
-			// Extract plain text from chat messages
-			const newContent = $messages.children().map(function () {
-				return $(this).text();
-			}).get().join('\n') + '\n';
-	
-			// Append new content to the log
-			logContent += newContent;
-	
-			// Create a Blob and trigger a download
-			const blob = new Blob([logContent], { type: 'text/plain' });
-			const link = document.createElement('a');
-			link.href = URL.createObjectURL(blob);
-			link.download = 'Azure_Peak_Chat_Log.txt'; // Default file name
-			link.style.display = 'none';
-	
-			// Append link to the document, click it, then remove it
-			document.body.appendChild(link);
-			link.click();
-			document.body.removeChild(link);
-	
-			// Revoke the Blob URL to save memory
-			URL.revokeObjectURL(link.href);
-		}, 5000); // Save logs every 5 seconds
-	});
-
 	$('body').on('keyup', '#highlightColor', function() {
 		var color = $('#highlightColor').val();
 		color = color.trim();

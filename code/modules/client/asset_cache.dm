@@ -411,7 +411,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/group/tgui
 	children = list(
 		/datum/asset/simple/tgui,
-	//	/datum/asset/simple/fontawesome
+		/datum/asset/simple/fontawesome
 	)
 
 /datum/asset/simple/headers
@@ -539,7 +539,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 
 /datum/asset/simple/jquery
-	verify = FALSE
+	verify = TRUE
 	assets = list(
 		"jquery.min.js"            = 'goon/browserassets/js/jquery.min.js',
 	)
