@@ -191,3 +191,4 @@
 			H.change_stat("constitution", 1)
 			H.change_stat("endurance", 2)
 			H.change_stat("speed", 3)
+			GLOB.outlawed_players += H.real_name
