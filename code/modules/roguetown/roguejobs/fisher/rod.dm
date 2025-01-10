@@ -24,6 +24,10 @@
 	icon_state = "inuse"
 	no_attack = TRUE
 
+/obj/item/fishingrod/New()
+	. = ..()
+	icon_state = "sickle[rand(1,3)]"
+
 /obj/item/fishingrod/attack_self(mob/user)
 	if(user.doing)
 		user.doing = 0

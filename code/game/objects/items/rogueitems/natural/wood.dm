@@ -185,18 +185,19 @@
 				stackcount--
 			else if(stackcount >= 2)
 				var/obj/item/natural/bundle/stick/B = new(get_turf(user))
-				B.amount = clamp(stackcount, 2, 4)
+				B.amount = clamp(stackcount, 2, 6)
 				B.update_bundle()
-				stackcount -= clamp(stackcount, 2, 4)
+				stackcount -= clamp(stackcount, 2, 6)
 				user.put_in_hands(B)
 		for(var/obj/item/grown/log/tree/stick/F in get_turf(src))
 			playsound(get_turf(user.loc), 'sound/foley/dropsound/wooden_drop.ogg', 100)
 			qdel(F)
 
-
 /obj/item/grown/log/tree/stick/attackby(obj/item/I, mob/living/user, params)
 	var/mob/living/carbon/human/H = user
 	user.changeNext_move(CLICK_CD_MELEE)
+	if(istype(I, /obj/item/rogueweapon/handsaw))
+		return
 	if(user.used_intent?.blade_class == BCLASS_CUT)
 		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
 		user.visible_message(span_notice("[user] starts sharpening [src]."))
