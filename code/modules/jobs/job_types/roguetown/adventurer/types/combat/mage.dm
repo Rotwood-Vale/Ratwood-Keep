@@ -48,7 +48,6 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		if("Spellsinger")
 			to_chat(H, span_warning("You belong to a school of bards renowned for their study of both the arcane and the arts."))
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			head = /obj/item/clothing/head/roguetown/bucklehat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/black
