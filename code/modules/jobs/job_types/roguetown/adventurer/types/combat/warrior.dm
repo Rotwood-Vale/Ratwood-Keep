@@ -35,16 +35,16 @@
 			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 			H.set_blindness(0)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-			var/weapons = list("Greatsword","Grand Mace","Billhook","Battle Axe")
+			var/weapons = list("Greatsword","Mace","Billhook","Battle Axe")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
 				if("Greatsword")
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 					r_hand = /obj/item/rogueweapon/greatsword/zwei
 					backr = /obj/item/gwstrap
-				if("Grand Mace")
+				if("War Club")
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-					beltr = /obj/item/rogueweapon/mace/goden/steel
+					beltr = /obj/item/rogueweapon/mace
 				if("Billhook")
 					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 					r_hand = /obj/item/rogueweapon/spear/billhook
@@ -67,7 +67,7 @@
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 
 		if("Duelist")
-			to_chat(H, span_warning("You are an esteemed swordsmen who foregoes armor in exchange for a more nimble fighting style."))
+			to_chat(H, span_warning("You are an esteemed swordsman who foregoes armor in exchange for a more nimble fighting style."))
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
