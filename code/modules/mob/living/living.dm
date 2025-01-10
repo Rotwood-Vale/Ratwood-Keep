@@ -713,7 +713,6 @@
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 		if(blood_volume <= 0)
 			health = 0
-	staminaloss = getStaminaLoss()
 	update_stat()
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
@@ -751,7 +750,6 @@
 	SetImmobilized(0, FALSE)
 	SetParalyzed(0, FALSE)
 	SetSleeping(0, FALSE)
-	setStaminaLoss(0)
 	SetUnconscious(0, FALSE)
 	if(should_update_mobility)
 		update_mobility()
@@ -1058,7 +1056,7 @@
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
 	if(prob(resist_chance))
-		rogfat_add(rand(5,15))
+		stamina_add(rand(5,15))
 		visible_message(span_warning("[src] breaks free of [pulledby]'s grip!"), \
 						span_notice("I break free of [pulledby]'s grip!"), null, null, pulledby)
 		to_chat(pulledby, span_danger("[src] breaks free of my grip!"))
@@ -1073,7 +1071,7 @@
 
 		return FALSE
 	else
-		rogfat_add(rand(5,15))
+		stamina_add(rand(5,15))
 		var/shitte = ""
 //		if(client?.prefs.showrolls)
 //			shitte = " ([resist_chance]%)"
@@ -1322,9 +1320,6 @@
 		to_chat(src, span_warning("I try to fire [G], but can't use the trigger!"))
 		return FALSE
 	return TRUE
-
-/mob/living/proc/update_stamina()
-	return
 
 /mob/living/proc/owns_soul()
 	if(mind)
@@ -1705,7 +1700,6 @@
 			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
 			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
 			BRAIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brain' id='brain'>[getOrganLoss(ORGAN_SLOT_BRAIN)]</a>
-			STAMINA:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=stamina' id='stamina'>[getStaminaLoss()]</a>
 		</font>
 	"}
 
