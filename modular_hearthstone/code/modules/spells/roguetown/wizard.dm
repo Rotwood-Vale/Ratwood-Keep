@@ -1272,7 +1272,8 @@
 				var/atom/throw_target = get_edge_target_turf(H, get_dir(user,get_step(user,user.dir)))
 				if(throw_target)
 					H.dropItemToGround(I)
-					I.throw_at(throw_target, 7, 4)
+					if(I)	//In case it's something that gets qdel'd on drop
+						I.throw_at(throw_target, 7, 4)
 
 /obj/projectile/magic/repel/on_hit(target)
 
