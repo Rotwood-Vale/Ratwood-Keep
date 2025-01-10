@@ -18,7 +18,7 @@
 				All in the name of fulfilling your duty to your Duke."
 	whitelist_req = FALSE
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard, /obj/effect/proc_holder/spell/self/convertrole/bog)
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard)
 	outfit = /datum/outfit/job/roguetown/marshal
 
 	give_bank_account = 40

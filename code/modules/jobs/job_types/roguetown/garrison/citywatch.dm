@@ -3,8 +3,8 @@
 	flag = GUARDSMAN
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 11
-	spawn_positions = 11
+	total_positions = 20
+	spawn_positions = 20
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -16,8 +16,8 @@
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/citywatch
-	give_bank_account = 16
-	min_pq = 1
+	give_bank_account = 30
+	min_pq = null
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_guard.ogg'
@@ -45,7 +45,7 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/citywatch/proc/assign_skills(mob/living/carbon/human/guard)
-	guard.mind.adjust_skillrank(/datum/skill/combat/maces, pick(3,4), TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
