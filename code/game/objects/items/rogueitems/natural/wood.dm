@@ -198,8 +198,6 @@
 /obj/item/grown/log/tree/stick/attackby(obj/item/I, mob/living/user, params)
 	var/mob/living/carbon/human/H = user
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(istype(I, /obj/item/rogueweapon/handsaw))
-		return
 	if(user.used_intent?.blade_class == BCLASS_CUT)
 		playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 100)
 		user.visible_message(span_notice("[user] starts sharpening [src]."))

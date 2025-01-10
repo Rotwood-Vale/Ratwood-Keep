@@ -134,7 +134,6 @@
 	icon_state = "spade"
 	item_state = "spade"
 	sharpness = IS_BLUNT
-	//dropshrink = 0.8
 	gripped_intents = null
 	wlength = WLENGTH_SHORT
 	slot_flags = ITEM_SLOT_HIP

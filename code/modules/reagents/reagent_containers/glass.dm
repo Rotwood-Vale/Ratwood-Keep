@@ -267,22 +267,17 @@
 /obj/item/reagent_containers/glass/bucket/wooden
 	name = "bucket"
 	icon_state = "woodbucket"
-	item_state = "woodbucket"
 	icon = 'icons/roguetown/items/misc.dmi'
-
 	possible_item_intents = list(/datum/intent/fill, INTENT_POUR, INTENT_SPLASH, INTENT_GENERIC)
 	force = 5
 	throwforce = 10
 	amount_per_transfer_from_this = 9
-	volume = 300 //100 oz
+	volume = 300 //100 oz remember to edit 
 	armor = list("blunt" = 25, "slash" = 20, "stab" = 15, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 50)
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	dropshrink = 0.8
 	slot_flags = null
-
-/obj/item/reagent_containers/glass/bucket/wooden/alter
-	icon = 'modular/Neu_Food/icons/cooking.dmi'
 
 /obj/item/reagent_containers/glass/bucket/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/natural/cloth))
@@ -317,14 +312,14 @@
 	cut_overlays()
 
 	if(reagents.total_volume > 0)
-		if(reagents.total_volume <= 50)
-			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_half")
+		if(reagents.total_volume <= ((volume)/6))
+			var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/misc.dmi', "bucket_half")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)
 
-		if(reagents.total_volume > 50)
-			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_full")
+		if(reagents.total_volume > ((volume)*0.8))
+			var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/misc.dmi', "bucket_full")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)

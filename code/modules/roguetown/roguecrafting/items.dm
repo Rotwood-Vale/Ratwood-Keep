@@ -188,9 +188,8 @@
 
 /datum/crafting_recipe/roguetown/peasantwarflail
 	name = "peasant war flail"
-	result = /obj/item/rogueweapon/flail/peasantwarflail
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/rope = 1,
+	result = /obj/item/rogueweapon/thresher/wflail
+	reqs = list(/obj/item/rope/chain = 1,
 				/obj/item/rogueweapon/thresher = 1)
 	skill_level = 2
 
