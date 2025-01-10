@@ -95,7 +95,6 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			cloak = /obj/item/clothing/cloak/cape/archivist
 			pants = /obj/item/clothing/under/roguetown/tights
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			backr = /obj/item/rogueweapon/woodstaff
@@ -205,7 +204,6 @@
 			beltl = /obj/item/roguekey/inhumen
 
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-
 
 /obj/item/clothing/gloves/roguetown/chain/blk
 		color = CLOTHING_GREY
