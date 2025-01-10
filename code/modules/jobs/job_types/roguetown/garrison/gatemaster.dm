@@ -8,15 +8,14 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
-	tutorial = "Tales speak of the Gatemaster's legendary ability to stand still at a gate and ask people questions. \
-	Rivaled only by a tree's ability to stay in place, Gatemasters are known to stock up for the long weeks. \
-	Using subordinates and helpers to bring them supplies, just as Dendor feeds nature's roots so it may last. \
-	Unfortunately, the thundering voice of the Marshal or their Councillors tends to snap you out of the trance."
+	tutorial = "You have only one duty, and it is a vital one: manning the Bastion gate and controlling the official point of entry to the city.  \
+	You work alongside the citywatch and the Sheriff, but ultimately take orders from Captain. \
+	Listen carefully to the laws of the Duchy to determine who will get in and who will stay out, your life and the safety of all the cityfolk depend on it..."
 	display_order = JDO_GATEMASTER
 
 	outfit = /datum/outfit/job/roguetown/gatemaster
-	give_bank_account = 3
-	min_pq = 4
+	give_bank_account = 25
+	min_pq = null
 	max_pq = null
 	
 	cmode_music = 'sound/music/combat_guard2.ogg'
