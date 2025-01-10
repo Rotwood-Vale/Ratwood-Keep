@@ -86,7 +86,7 @@
 
 		if("Hymnist")
 			H.set_blindness(0)
-			to_chat(H, span_warning("You a devout worshipper of the divine. You've spent your youth studying scriptures and serving in church choirs - and now you wander spreading the good word of your faith."))
+			to_chat(H, span_warning("You are a devout worshipper of the divine. You've spent your youth studying scriptures and serving in church choirs - and now you wander spreading the good word of your faith."))
 			backl = /obj/item/storage/backpack/rogue/satchel
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
