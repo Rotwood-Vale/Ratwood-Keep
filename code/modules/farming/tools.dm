@@ -39,7 +39,7 @@
 	name = "war flail"
 	desc = "A peasants thresher turned into a weapon of war."
 	icon_state = "wflail"
-	icon_state = "wflail"
+	item_state = "wflail"
 	minstr = 9
 	possible_item_intents = list(/datum/intent/flail/strike)
 	gripped_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash, /datum/intent/flailthresh)
@@ -230,9 +230,10 @@
 				forked -= I
 			to_chat(user, span_warning("I dump the stalks."))
 		update_icon()
+		playsound(loc,"plantcross", 80, FALSE)
 		return
 	..()
-
+		
 /obj/item/rogueweapon/pitchfork/ungrip(mob/living/carbon/user, show_message = TRUE)
 	if(forked.len)
 		var/turf/T = get_turf(user)
@@ -245,12 +246,8 @@
 /obj/item/rogueweapon/pitchfork/update_icon()
 	if(forked.len)
 		icon_state = "pitchforkstuff"
-		item_state = "pitchforkstuff"
+		item_state = "pitchforkstuff"	// onmob itemstate does not update, TO DO
 	else
 		icon_state = initial(icon_state)
 		item_state = "pitchfork1"
 	..()
-
-/obj/item/rogueweapon/pitchfork/transform()
-	. = ..()
-	update_icon()

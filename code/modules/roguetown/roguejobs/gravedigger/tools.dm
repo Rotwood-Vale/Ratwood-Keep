@@ -59,8 +59,10 @@
 /obj/item/rogueweapon/shovel/update_icon()
 	if(heldclod)
 		icon_state = "dirt[initial(icon_state)]"
+		item_state = "dirt[initial(icon_state)]"	// onmob itemstate does not update, TO DO
 	else
 		icon_state = "[initial(icon_state)]"
+		item_state = "[initial(item_state)]"
 
 /datum/intent/mace/strike/shovel
 	hitsound = list('sound/combat/hits/blunt/shovel_hit.ogg', 'sound/combat/hits/blunt/shovel_hit2.ogg', 'sound/combat/hits/blunt/shovel_hit3.ogg')
@@ -126,6 +128,7 @@
 			return
 		return
 	. = ..()
+
 
 /obj/item/rogueweapon/shovel/small
 	force = 7
