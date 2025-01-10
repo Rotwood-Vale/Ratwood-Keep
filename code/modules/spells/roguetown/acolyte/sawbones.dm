@@ -1358,7 +1358,7 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 		grinding_started = TRUE // Mark grinding as started
 		to_chat(user, "I start grinding...")
 		if((do_after(user, 25, target = src)) && grinded)
-			if(grinded.mill_result) // This goes first.
+			if(grinded.mill_result && !istype(user.rmb_intent, /datum/rmb_intent/strong)) // This goes first. Strong intent to bypass.
 				new grinded.mill_result(get_turf(src))
 				QDEL_NULL(grinded)
 				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
@@ -1368,17 +1368,21 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 				grinded.on_juice()
 				reagents.add_reagent_list(grinded.juice_results)
 				to_chat(user, "I juice [grinded] into a fine liquid.")
-			if(grinded.reagents) // Food and pills.
-				grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
+			if(grinded.grind_results && !isemptylist(grinded.grind_results))
+				grinded.on_grind()
+				reagents.add_reagent_list(grinded.grind_results)
+				to_chat(user, "I break [grinded] into powder.")
 				QDEL_NULL(grinded)
 				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
 				grinding_started = FALSE // Reset grinding status
 				return
-			grinded.on_grind()
-			reagents.add_reagent_list(grinded.grind_results)
-			to_chat(user, "I break [grinded] into powder.")
-			QDEL_NULL(grinded)
-			icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
+			if(grinded.reagents) // Other stuff that might have reagents in them, let's not cause a runtime shall we?
+				grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
+				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
+				to_chat(user, "I pound [grinded] into mush.")
+				QDEL_NULL(grinded)
+				grinding_started = FALSE // Reset grinding status
+				return
 			grinding_started = FALSE // Reset grinding status
 			return
 		else

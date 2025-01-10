@@ -103,8 +103,7 @@
 	created_item = list(/obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel)
 
 // Gold
-
-/datum/anvil_recipe/cutlery/gold/cups
+/datum/anvil_recipe/cutlery/cupsgold
 	name = "Золотые кубки 3x"
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden)
