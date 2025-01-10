@@ -1040,7 +1040,9 @@
 /area/rogue/indoors)
 "aHp" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/bogguardlate,
+/obj/effect/landmark/start/sheriff{
+	dir = 1
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/town/basement)
 "aHC" = (
@@ -1378,13 +1380,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
-"aRR" = (
-/obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/bogguardlate{
-	dir = 1
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
 "aRV" = (
 /obj/structure/mineral_door/wood{
 	lockdiff = 3;
@@ -1612,10 +1607,6 @@
 /obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
-"aXd" = (
-/obj/effect/landmark/start/watchman,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/garrison)
 "aXl" = (
 /obj/effect/decal/cobbleedge{
 	dir = 5
@@ -1817,6 +1808,9 @@
 	pixel_y = 32
 	},
 /obj/structure/bed/rogue,
+/obj/effect/landmark/start/watchman{
+	dir = 8
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "bdN" = (
@@ -1957,6 +1951,9 @@
 "biv" = (
 /obj/structure/roguemachine/scomm,
 /obj/structure/bed/rogue,
+/obj/effect/landmark/start/watchman{
+	dir = 8
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "biB" = (
@@ -4187,7 +4184,9 @@
 /area/rogue/indoors/town/tavern)
 "cCl" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/bogguardlate,
+/obj/effect/landmark/start/sheriff{
+	dir = 1
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "cCr" = (
@@ -7595,9 +7594,6 @@
 /obj/structure/chair/wood{
 	dir = 8
 	},
-/obj/effect/landmark/start/gatemaster{
-	dir = 8
-	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
 "eBC" = (
@@ -9237,9 +9233,6 @@
 /area/rogue/indoors/town/dwarfin)
 "fyg" = (
 /obj/structure/chair/wood/rogue/fancy{
-	dir = 1
-	},
-/obj/effect/landmark/start/sheriff{
 	dir = 1
 	},
 /turf/open/floor/carpet/royalblack,
@@ -15792,12 +15785,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-"juC" = (
-/obj/effect/landmark/start/bogguardsman{
-	dir = 1
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "juU" = (
 /obj/effect/landmark/tram/queued_path{
 	next_path_id = "cargo_map_exit";
@@ -16283,6 +16270,7 @@
 /area/rogue/indoors/town)
 "jJW" = (
 /obj/structure/chair/wood/rogue,
+/obj/effect/landmark/start/gatemaster,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "jKf" = (
@@ -17455,9 +17443,6 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/effect/landmark/start/bogguardsman{
-	dir = 1
-	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "kuZ" = (
@@ -17992,13 +17977,6 @@
 "kOn" = (
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
-"kOo" = (
-/obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/bogguardlate{
-	dir = 1
-	},
-/turf/open/floor/rogue/herringbone,
-/area/rogue/under/town/basement)
 "kOy" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/carpet/lord/right,
@@ -18740,6 +18718,9 @@
 /area/rogue/indoors/town)
 "lqo" = (
 /obj/structure/bed/rogue,
+/obj/effect/landmark/start/sheriff{
+	dir = 1
+	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
 "lqF" = (
@@ -21393,12 +21374,6 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
-"mWy" = (
-/obj/effect/landmark/start/watchman{
-	dir = 1
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/garrison)
 "mWE" = (
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/blocks,
@@ -23178,9 +23153,6 @@
 	},
 /obj/effect/decal/cobbleedge{
 	dir = 5
-	},
-/obj/effect/landmark/start/bogguardsman{
-	dir = 1
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
@@ -32465,12 +32437,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
-"tEb" = (
-/obj/effect/landmark/start/watchman{
-	dir = 8
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/garrison)
 "tEn" = (
 /obj/structure/mineral_door/wood/towner/generic,
 /turf/open/floor/rogue/ruinedwood{
@@ -32831,9 +32797,6 @@
 "tRG" = (
 /obj/effect/decal/cobbleedge{
 	dir = 6
-	},
-/obj/effect/landmark/start/bogguardsman{
-	dir = 1
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
@@ -35004,9 +34967,6 @@
 "vjM" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
-	},
-/obj/effect/landmark/start/bogguardsman{
-	dir = 1
 	},
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -39397,6 +39357,9 @@
 /area/rogue/indoors/shelter/town)
 "xPg" = (
 /obj/structure/bed/rogue,
+/obj/effect/landmark/start/watchman{
+	dir = 8
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "xPJ" = (
@@ -216051,7 +216014,7 @@ qMi
 cTA
 oVi
 cBf
-aRR
+cCl
 cTA
 qbG
 qbG
@@ -216915,7 +216878,7 @@ iTw
 qRc
 wHU
 wHU
-kOo
+aHp
 cTA
 qbG
 qbG
@@ -217778,7 +217741,7 @@ qng
 wNF
 cTA
 cBf
-kOo
+aHp
 cTA
 cTA
 qbG
@@ -326208,7 +326171,7 @@ dIv
 wlD
 ujK
 kuV
-juC
+wlD
 ddv
 ddv
 ddv
@@ -326639,8 +326602,8 @@ pAV
 pAV
 whJ
 wlD
-juC
-juC
+wlD
+wlD
 pAV
 pAV
 lPc
@@ -327071,7 +327034,7 @@ pAV
 pAV
 exa
 wlD
-juC
+wlD
 tRG
 pAV
 pAV
@@ -455331,7 +455294,7 @@ eZy
 kIh
 gRj
 tNj
-aXd
+kIh
 gIg
 gIg
 wvE
@@ -456195,10 +456158,10 @@ tKg
 kIh
 eUz
 tNj
-aXd
+kIh
 gIg
 gIg
-mWy
+kIh
 tNj
 kEE
 gIg
@@ -456627,10 +456590,10 @@ pZz
 kIh
 kIh
 tNj
-aXd
+kIh
 gIg
 gIg
-mWy
+kIh
 tNj
 fHM
 gIg
@@ -457491,9 +457454,9 @@ lZp
 lay
 kIh
 tNj
-tEb
-tEb
-tEb
+kIh
+kIh
+kIh
 aKC
 tNj
 ohm
