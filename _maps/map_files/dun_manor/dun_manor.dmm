@@ -18202,7 +18202,7 @@
 "qly" = (
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
-	lockid = "steward";
+	lockid = "tavern";
 	name = "STAFF"
 	},
 /turf/open/floor/rogue/ruinedwood/chevron,
