@@ -395,7 +395,7 @@
 	name = "hat (fancy) - (2 cloths, fiber, feather; EXPERT)"
 	result = list(/obj/item/clothing/head/roguetown/fancyhat)
 	reqs = list(/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1
+				/obj/item/natural/fibers = 1,
 				/obj/item/natural/feather = 1)
 	skill_level = 4
 
