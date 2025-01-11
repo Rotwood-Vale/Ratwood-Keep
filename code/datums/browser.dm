@@ -23,7 +23,6 @@
 		return
 	user = nuser
 	window_id = nwindow_id
-	RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(user_deleted))
 	if(!no_close_movement)
 		if(ismob(nuser))
 			if(user.client)
@@ -39,7 +38,6 @@
 		height = nheight
 	if (nref)
 		ref = nref
-		RegisterSignal(ref, COMSIG_PARENT_QDELETING, PROC_REF(ref_deleted))
 	add_stylesheet("common", 'html/browser/common.css') // this CSS sheet is common to all UIs
 
 /datum/browser/proc/add_head_content(nhead_content)
@@ -484,16 +482,3 @@
 	// so just reset the user mob's machine var
 	if(src && src.mob)
 		src.mob.unset_machine()
-
-/datum/browser/Destroy(force, ...)
-	. = ..()
-	ref = null
-	user = null
-
-/datum/browser/proc/user_deleted(datum/source)
-	SIGNAL_HANDLER
-	user = null
-
-/datum/browser/proc/ref_deleted(datum/source)
-	SIGNAL_HANDLER
-	ref = null
