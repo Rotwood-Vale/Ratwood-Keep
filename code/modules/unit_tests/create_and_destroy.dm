@@ -108,7 +108,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 
 	// spin until the first item in the check queue is older than start_time
 	var/garbage_queue_processed = FALSE
-
+	var/list/queue_to_check = SSgarbage.queues[GC_QUEUE_CHECK]
 	while(!garbage_queue_processed || !SSgarbage.can_fire)
 		if(!SSgarbage.can_fire) // probably running find references
 			CHECK_TICK
