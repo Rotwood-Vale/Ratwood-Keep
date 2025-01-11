@@ -129,7 +129,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.set_blindness(0)
 			ADD_TRAIT(H, TRAIT_SQUIRE_REPAIR, TRAIT_GENERIC)
 			H.change_stat("strength", 1)
