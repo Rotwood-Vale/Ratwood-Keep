@@ -103,7 +103,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 
 		if("Barbarian")
-			to_chat(H, span_warning("You are a brutal warrior who foregoes armor in exchange for raw strength. You specialize in unarmed combat and wrestling."))
+			to_chat(H, span_warning("You are a brutal warrior who foregoes armor in order to showcase your raw strength. You specialize in unarmed combat and wrestling."))
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
