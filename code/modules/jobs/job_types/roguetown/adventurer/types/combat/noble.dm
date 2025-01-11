@@ -19,15 +19,20 @@
 		if("Aristocrat")
 			to_chat(H, span_warning("You are a traveling noble visiting foreign lands. With wealth, come the poor, ready to pilfer you of your hard earned (inherited) coin, so tread lightly unless you want to meet a grizzly end."))
 			shoes = /obj/item/clothing/shoes/roguetown/boots
-			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/red
-			pants = /obj/item/clothing/under/roguetown/tights/black
 			belt = /obj/item/storage/belt/rogue/leather/black
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			backl = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 			id = /obj/item/clothing/ring/silver
-			cloak = /obj/item/clothing/cloak/half/red
 			beltl = /obj/item/rogueweapon/sword/sabre/dec
+			if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
+			cloak = /obj/item/clothing/cloak/half/red
+			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/red
+			pants = /obj/item/clothing/under/roguetown/tights/black
+			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
+			shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
+			pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/purple
+			cloak = /obj/item/clothing/cloak/raincloak/purple
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
