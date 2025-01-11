@@ -11,5 +11,5 @@
 /obj/item/clothing/gloves/roguetown/plate/blk
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 
-/obj/item/clothing/shoes/roguetown/boots/armor/blkknight
+/obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
