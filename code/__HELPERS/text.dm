@@ -21,7 +21,7 @@
 /proc/strip_html_simple(t, limit=MAX_MESSAGE_LEN)
 	if(!t || !istext(t))
 		return ""
-		
+
 	t = copytext_char(t, 1, limit)
 	var/list/strip_chars = list("<",">")
 	var/list/text_parts = list()
@@ -35,7 +35,7 @@
 				text_parts += copytext_char(t, last_pos, index)
 			last_pos = index + 1
 			index = findtext(t, char, last_pos)
-	
+
 	// Add any remaining text after the last stripped character
 	if(last_pos <= length(t))
 		text_parts += copytext_char(t, last_pos)
