@@ -395,8 +395,8 @@ function output(message, flag) {
 			entry.className += ' hidden';
 			entry.setAttribute('data-filter', filteredOut);
 		}
-
-		$(entry).find('[replaceRegex]').each(replaceRegex);
+		entry.innerHTML = DOMPurify.sanitize(entry.innerHTML);
+		$(entry).find('[replaceRegex]').each(replaceRegex); //just in case
 
 		$last_message = trimmed_message;
 		$messages[0].appendChild(entry);
@@ -695,6 +695,11 @@ function handleToggleClick($sub, $toggle) {
 if (typeof $ === 'undefined') {
 	var div = document.getElementById('loading').childNodes[1];
 	div += '<br><br>ERROR: Jquery did not load.';
+}
+
+if (typeof DOMPurify === 'undefined') {
+    var div = document.getElementById('loading').childNodes[1];
+    div.innerHTML += '<br><br>ERROR: DOMPurify did not load.';
 }
 
 $(function() {
@@ -1060,12 +1065,14 @@ $(function() {
 			return;
 		}
 	
-
-		var plainText = '';
+		let plainText = '';
 		$messages.children().each(function() {
-			plainText += $(this).text() + '\n'; 
+			const tempDiv = document.createElement('div');
+			tempDiv.innerHTML = $(this).html(); 
+			const messageText = tempDiv.innerText.replace(/\n+/g, '\n').trim();
+			plainText += messageText + '\n'; //add newline to end
 		});
-	
+
 		var blob = new Blob([plainText], { type: 'text/plain' });
 	
 		var fname = 'Azure Peak Chat Log';

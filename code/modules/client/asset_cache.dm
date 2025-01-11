@@ -531,10 +531,17 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/group/goonchat
 	children = list(
 		/datum/asset/simple/jquery,
+		/datum/asset/simple/purify,
 		/datum/asset/simple/goonchat,
 		/datum/asset/spritesheet/goonchat,
 		/datum/asset/simple/fontawesome,
 		/datum/asset/simple/roguefonts
+	)
+
+/datum/asset/simple/purify
+	verify = TRUE
+	assets = list(
+		"purify.min.js"            = 'goon/browserassets/js/purify.min.js',
 	)
 
 
