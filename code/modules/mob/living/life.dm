@@ -45,6 +45,10 @@
 
 		//Random events (vomiting etc)
 		handle_random_events()
+		//Handle temperature/pressure differences between body and environment
+		var/datum/gas_mixture/environment = loc?.return_air()
+		if(environment)
+			handle_environment(environment)
 
 		handle_gravity()
 
@@ -104,7 +108,7 @@
 					Stun(110)
 					Knockdown(110)
 
-/mob/living/proc/handle_environment()
+/mob/living/proc/handle_environment(datum/gas_mixture/environment)
 	return
 
 /mob/living/proc/handle_fire()
