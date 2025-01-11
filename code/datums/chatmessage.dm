@@ -136,7 +136,6 @@
 		return finish_image_generation(mheight, target, owner, complete_text, lifespan)
 	var/datum/callback/our_callback = CALLBACK(src, PROC_REF(finish_image_generation), mheight, target, owner, complete_text, lifespan)
 	SSrunechat.message_queue += our_callback
-	return
 
 
 
