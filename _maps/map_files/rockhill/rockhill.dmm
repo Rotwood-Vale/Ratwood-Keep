@@ -1375,9 +1375,7 @@
 /area/rogue/indoors)
 "aRR" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/sheriff{
-	dir = 1
-	},
+/obj/effect/landmark/start/watchman,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "aRV" = (
@@ -17984,9 +17982,7 @@
 /area/rogue/indoors/town/church)
 "kOo" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/effect/landmark/start/sheriff{
-	dir = 1
-	},
+/obj/effect/landmark/start/watchman,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/town/basement)
 "kOy" = (
