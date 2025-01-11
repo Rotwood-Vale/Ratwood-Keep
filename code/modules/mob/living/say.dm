@@ -288,7 +288,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/speaker_has_ceiling		= TRUE
 
 	var/turf/speaker_turf = get_turf(src)
-	var/speaker_ceiling = GET_TURF_ABOVE(speaker_turf)
+	var/turf/speaker_ceiling = get_step_multiz(speaker_turf, UP)
 	if(speaker_ceiling)
 		if(istransparentturf(speaker_ceiling))
 			speaker_has_ceiling = FALSE
@@ -354,20 +354,36 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	for(var/_AM in listening)
 		var/atom/movable/AM = _AM
 		var/turf/listener_turf = get_turf(AM)
-		var/listener_ceiling = GET_TURF_ABOVE(listener_turf)
+		var/turf/listener_ceiling = get_step_multiz(listener_turf, UP)
 		if(listener_ceiling)
 			if(istransparentturf(listener_ceiling))
 				listener_has_ceiling = FALSE
 		if(!Zs_too && !isobserver(AM))
 			if(AM.z != src.z)
 				continue
-		if(Zs_too)
+		if(Zs_too && AM.z != AM.z)
 			if(AM.z < src.z && listener_has_ceiling)	//Listener is below the speaker and has a ceiling above them
 				continue
 			if(AM.z > src.z && speaker_has_ceiling)		//Listener is above the speaker and the speaker has a ceiling above
 				continue
 			if(listener_has_ceiling && speaker_has_ceiling && AM.z != src.z)	//Both have a ceiling, on different z-levels -- no hearing at all
 				continue
+			var/listener_obstructed = TRUE
+			var/speaker_obstructed = TRUE
+			if(src != AM)	//We always hear ourselves.
+				if(!speaker_has_ceiling && isliving(AM))
+					var/mob/living/M = AM
+					for(var/mob/living/MH in viewers(world.view, speaker_ceiling))
+						if(M == MH)
+							speaker_obstructed = FALSE
+					
+				if(!listener_has_ceiling)
+					for(var/mob/living/ML in viewers(world.view, listener_ceiling))
+						if(ML == src)
+							listener_obstructed = FALSE
+				if(listener_obstructed && speaker_obstructed)
+					continue
+
 		if(eavesdrop_range && get_dist(source, AM) > message_range && !(the_dead[AM]))
 			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)
 		else
