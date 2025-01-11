@@ -121,6 +121,7 @@
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+			backl = /obj/item/storage/backpack/rogue/satchel
 			cloak = /obj/item/clothing/cloak/half/red
 			backpack_contents = list(/obj/item/lockpick)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
