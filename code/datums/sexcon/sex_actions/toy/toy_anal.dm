@@ -20,7 +20,7 @@
 /datum/sex_action/toy_anal/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] прижимает \the [dildo] к своему заду..."))
 	else
 		user.visible_message(span_warning("[user] starts shoving \the [dildo] in their butt..."))
@@ -28,7 +28,7 @@
 /datum/sex_action/toy_anal/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] играется со своей задницей при помощи \the [dildo]."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] pleasures their butt with \the [dildo]."))
@@ -40,7 +40,7 @@
 /datum/sex_action/toy_anal/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вынимает \the [dildo] из своей задницы."))
 	else
 		user.visible_message(span_warning("[user] pulls \the [dildo] from their butt."))

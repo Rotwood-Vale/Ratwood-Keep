@@ -25,12 +25,12 @@
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
 		//Entire groin area being covered due to size
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] прижимается к киске [target]..."))
 		else
 			user.visible_message(span_warning("[user] starts licking [target]'s clit..."))
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] прижимается к клитору [target]..."))
 		else
 			user.visible_message(span_warning("[user] starts licking [target]'s clit..."))
@@ -39,12 +39,12 @@
 	if(user.sexcon.do_message_signature("[type]"))
 		if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
 			//Entire groin area being covered due to size
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] вылизывает вагину [target]..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] licks [target]'s entire groin..."))
 		else
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] вылизывает клитор [target]..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s clit..."))
@@ -53,7 +53,7 @@
 
 	user.sexcon.perform_sex_action(target, 2, 3, TRUE)
 	if(target.sexcon.check_active_ejaculation())
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			target.visible_message(span_lovebold("[target] пускает сквирт в рот [user]!"))
 		else
 			target.visible_message(span_lovebold("[target] ejaculates into [user]'s mouth!"))
@@ -63,12 +63,12 @@
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Size difference check, non-fairy on fairy will say this
 		//Entire groin area being covered due to size
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] убирает свою голову от киски [target]..."))
 		else
 			user.visible_message(span_warning("[user] stops licking [target]'s clit..."))
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] облизывается и уводит голову в сторону от клитора [target]..."))
 		else
 			user.visible_message(span_warning("[user] stops licking [target]'s clit..."))

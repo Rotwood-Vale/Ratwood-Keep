@@ -28,14 +28,14 @@
 
 /datum/sex_action/force_footjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] ведёт стопы [target] к своему члену!"))
 	else
 		user.visible_message(span_warning("[user] grabs [target]'s feet and clamps them around his cock!"))
 
 /datum/sex_action/force_footjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] заставляет [target] использовать свои стопы, чтобы подрочить себе."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] uses [target] feet to jerk off."))
@@ -47,7 +47,7 @@
 
 /datum/sex_action/force_footjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вытаскивает свой член из пространства между стоп [target]."))
 	else
 		user.visible_message(span_warning("[user] pulls his cock out from inbetween [target]'s feet."))

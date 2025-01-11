@@ -20,14 +20,14 @@
 
 /datum/sex_action/masturbate_other_breasts/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] хватается за сиськи [target]..."))
 	else
 		user.visible_message(span_warning("[user] starts rubbing [target]'s breasts..."))
 
 /datum/sex_action/masturbate_other_breasts/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] играется с грудью [target]..."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fondles [target]'s breasts..."))
@@ -37,7 +37,7 @@
 
 /datum/sex_action/masturbate_other_breasts/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] убирает свои конечности с груди [target]."))
 	else
 		user.visible_message(span_warning("[user] stops stroking [target]'s breasts."))

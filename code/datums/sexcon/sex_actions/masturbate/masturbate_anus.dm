@@ -15,14 +15,14 @@
 
 /datum/sex_action/masturbate_anus/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] приоткрывает свою задницу..."))
 	else
 		user.visible_message(span_warning("[user] starts fingering their butt..."))
 
 /datum/sex_action/masturbate_anus/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] ласкает свой анус..."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fingers their butt..."))
@@ -33,7 +33,7 @@
 
 /datum/sex_action/masturbate_anus/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] заканчивает с мастурбацией."))
 	else
 		user.visible_message(span_warning("[user] stops fingering their butt."))

@@ -26,7 +26,7 @@
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
 		//Scream and rib break
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] вталкивает \the [dildo] в пиздёнку [target]!"))
 		else
 			user.visible_message(span_warning("[user] forces \the [dildo] in [target]'s tiny cunt!"))
@@ -36,7 +36,7 @@
 		BPG.add_wound(/datum/wound/fracture/groin)
 		target.apply_damage(30, BRUTE, BPC)
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] вводит \the [dildo] в вагину [target]..."))
 		else
 			user.visible_message(span_warning("[user] shoves \the [dildo] in [target]'s cunt..."))
@@ -45,12 +45,12 @@
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	if(user.sexcon.do_message_signature("[type]"))
 		if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трахает пиздёнку [target] при помощи \the [dildo]..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] stuffs [target]'s tiny cunt..."))
 		else
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трахает вагину [target] при помощи \the [dildo]..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] pleasures [target]'s cunt..."))
@@ -67,7 +67,7 @@
 /datum/sex_action/toy_other_vagina/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вытаскивает \the [dildo] из вагины [target]."))
 	else
 		user.visible_message(span_warning("[user] pulls out \the [dildo] from [target]'s cunt."))

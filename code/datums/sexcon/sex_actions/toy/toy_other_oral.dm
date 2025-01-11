@@ -23,7 +23,7 @@
 /datum/sex_action/toy_other_oral/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вводит \the [dildo] в рот [target]..."))
 	else
 		user.visible_message(span_warning("[user] forces [target]'s to gobble on \the [dildo]..."))
@@ -31,7 +31,7 @@
 /datum/sex_action/toy_other_oral/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трахает рот [target] при помощи \the [dildo]..."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to suck on the dildo..."))
@@ -40,7 +40,7 @@
 /datum/sex_action/toy_other_oral/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	var/obj/item/dildo = get_dildo_in_either_hand(user)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вытаскивает \the [dildo] изо рта [target]."))
 	else
 		user.visible_message(span_warning("[user] pulls \the [dildo] from [target]'s mouth."))

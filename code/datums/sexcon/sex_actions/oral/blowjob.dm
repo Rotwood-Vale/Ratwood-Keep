@@ -27,12 +27,12 @@
 /datum/sex_action/blowjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] притрагивается к члену [target] язычком..."))	//Changed to licking due to fairy size
 		else
 			user.visible_message(span_warning("[user] starts licking [target]'s cock..."))	//Changed to licking due to fairy size
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] обхватывает член [target] язычком..."))
 		else
 			user.visible_message(span_warning("[user] starts sucking [target]'s cock..."))
@@ -40,12 +40,12 @@
 /datum/sex_action/blowjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
 		if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] лижет член [target]..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] licks [target]'s cock..."))
 		else
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] сосёт член [target]..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s cock..."))
@@ -57,13 +57,13 @@
 		user.sexcon.perform_deepthroat_oxyloss(user, 1.3)
 	if(target.sexcon.check_active_ejaculation())
 		if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				target.visible_message(span_lovebold("[target] кончает на лицо и волосы [user]!"))
 			else
 				target.visible_message(span_lovebold("[target] cums onto [user]'s hair and face!"))
 			target.sexcon.cum_onto()
 		else
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				target.visible_message(span_lovebold("[target] кончает в рот [user]!"))
 			else
 				target.visible_message(span_lovebold("[target] cums into [user]'s mouth!"))
@@ -72,12 +72,12 @@
 /datum/sex_action/blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] убирает язык от члена [target]"))
 		else
 			user.visible_message(span_warning("[user] stops licking [target]'s cock ..."))
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user], чавкнув, убирает член [target] из своего рта..."))
 		else
 			user.visible_message(span_warning("[user] stops sucking [target]'s cock ..."))

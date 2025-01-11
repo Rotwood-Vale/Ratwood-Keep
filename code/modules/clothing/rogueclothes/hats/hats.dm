@@ -41,7 +41,7 @@
 	toggle_icon_state = TRUE
 	max_integrity = 100
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide/cured
+	salvage_result = /obj/item/natural/cloth
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced
 	name = "hood"
@@ -51,6 +51,7 @@
 	max_integrity = 150
 	blocksound = SOFTHIT
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon
 	color = "#78a3c9"

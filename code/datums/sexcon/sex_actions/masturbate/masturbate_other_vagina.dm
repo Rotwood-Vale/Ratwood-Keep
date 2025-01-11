@@ -22,12 +22,12 @@
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Fairy on non-fairy will be fucking, otherwise normal
 		//Stroking becomes finger fucking instead
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] начинает трахать вагину [target] пальцем!"))
 		else
 			user.visible_message(span_warning("[user] starts fucking [target]'s cunt with their finger..."))
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] дотрагивается до киски [target]!"))
 		else
 			user.visible_message(span_warning("[user] starts stroking [target]'s clit..."))
@@ -36,12 +36,12 @@
 	if(user.sexcon.do_message_signature("[type]"))
 		if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Fairy on non-fairy will be fucking, otherwise normal
 			//Stroking becomes finger fucking instead
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] грубо трахает вагину [target] пальцем..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s cunt with their finger..."))
 		else
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] играется с киской [target]..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] strokes [target]'s clit..."))
@@ -54,12 +54,12 @@
 /datum/sex_action/masturbate_other_vagina/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Fairy on non-fairy will be fucking, otherwise normal
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] убирает пальцы от вагины [target]."))
 		else
 			user.visible_message(span_warning("[user] stops fucking [target]'s cunt with their finger."))
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] убирает пальцы от киски [target]."))
 		else
 			user.visible_message(span_warning("[user] stops stroking [target]'s clit."))

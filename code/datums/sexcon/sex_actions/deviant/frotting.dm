@@ -26,14 +26,14 @@
 
 /datum/sex_action/frotting/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] расставляет ноги и приближается к члену [target] своим членом!"))
 	else
 		user.visible_message(span_warning("[user] shoves his cock against [target]'s own!"))
 
 /datum/sex_action/frotting/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трётся об член [target] своим членом."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] frots cocks together with [target]'s."))
@@ -47,7 +47,7 @@
 
 /datum/sex_action/frotting/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] убирает член от члена [target]."))
 	else
 		user.visible_message(span_warning("[user] lets go off both their cocks."))

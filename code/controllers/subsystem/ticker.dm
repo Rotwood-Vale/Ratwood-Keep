@@ -175,7 +175,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 //			to_chat(world, span_boldnotice("Welcome to [station_name()]!"))
-			send2chat(new /datum/tgs_message_content("Новый раунд начинается на [SSmapping.config.map_name]!"), CONFIG_GET(string/chat_announce_new_game))
+			send2chat(new /datum/tgs_message_content("Новый раунд под кодовым значением [GLOB.rogue_round_id] начинается на [SSmapping.config.map_name]!"), CONFIG_GET(string/chat_announce_new_game))
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -470,7 +470,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/allmins = adm["present"]
 	send2irc("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
 	if(CONFIG_GET(string/new_round_ping))
-		send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/new_round_ping)]> | Новый раунд стартует на [SSmapping.config.map_name]!"), CONFIG_GET(string/chat_announce_new_game))
+		send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/new_round_ping)]> | Новый раунд под номером [GLOB.round_id] стартует на [SSmapping.config.map_name]!"), CONFIG_GET(string/chat_announce_new_game))
 	setup_done = TRUE
 
 	job_change_locked = FALSE

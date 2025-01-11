@@ -28,14 +28,14 @@
 
 /datum/sex_action/scissoring/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] расставляет ноги и приближается к вагине [target] своей вагиной!"))
 	else
 		user.visible_message(span_warning("[user] spreads her legs and aligns her cunt against [target]'s own!"))
 
 /datum/sex_action/scissoring/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трётся об вагину [target] вагиной."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] scissors with [target]'s cunt."))
@@ -50,7 +50,7 @@
 
 /datum/sex_action/scissoring/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] убирает киску от киски [target]."))
 	else
 		user.visible_message(span_warning("[user] stops scissoring with [target]."))
