@@ -2056,6 +2056,7 @@
 #include "modular_redmoon\code\datums\sexcon\sex_actions\toy\toy_vaginal.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\ranged\gunpowder\ammo.dm"
 #include "modular_redmoon\code\game\objects\structures\roguetown\musicbox.dm"
+#include "modular_redmoon\code\modules\armor\rogueclothes\armor.dm"
 #include "modular_redmoon\code\modules\client\client_procs.dm"
 #include "modular_redmoon\code\modules\client\customizer\organs\genitals.dm"
 #include "modular_redmoon\code\modules\surgery\organs\feature_organs\tails.dm"
