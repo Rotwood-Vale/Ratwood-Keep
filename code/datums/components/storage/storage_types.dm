@@ -38,7 +38,7 @@
 	not_while_equipped = FALSE
 
 /datum/component/storage/concrete/roguetown/keyring
-	screen_max_rows = 2
+	screen_max_rows = 3
 	screen_max_columns = 4
 	max_w_class = WEIGHT_CLASS_SMALL
 	allow_dump_out = TRUE
