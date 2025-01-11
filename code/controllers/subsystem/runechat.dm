@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(runechat)
 	name = "Runechat"
-	priority = FIRE_PRIORITY_DEFAULT
+	priority = FIRE_PRIORITY_RUNECHAT
 
 	var/list/datum/callback/message_queue = list()
 

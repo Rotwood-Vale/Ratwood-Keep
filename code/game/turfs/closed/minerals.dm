@@ -126,7 +126,7 @@
 			if(prob(23))
 				new rockType(src)
 		SSblackbox.record_feedback("tally", "ore_mined", mineralAmt, mineralType)
-	else if(user.goodluck(2))
+	else if(user?.goodluck(2))
 		var/newthing = pickweight(list(/obj/item/natural/rock/salt = 2, /obj/item/natural/rock/iron = 1, /obj/item/natural/rock/coal = 2))
 //		to_chat(user, "<span class='notice'>Bonus ducks!</span>")
 		new newthing(src)
@@ -196,7 +196,6 @@
 	smooth = SMOOTH_TRUE | SMOOTH_MORE
 	smooth_icon = 'icons/turf/walls/cwall.dmi'
 	wallclimb = TRUE
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	canSmoothWith = list(/turf/closed/mineral/random/rogue, /turf/closed/mineral/rogue)
 	turf_type = /turf/open/floor/rogue/naturalstone
 	above_floor = /turf/open/floor/rogue/naturalstone
@@ -226,7 +225,6 @@
 	smooth = SMOOTH_TRUE | SMOOTH_MORE
 	smooth_icon = 'icons/turf/walls/cwall.dmi'
 	wallclimb = TRUE
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	canSmoothWith = list(/turf/closed/mineral/random/rogue, /turf/closed/mineral/rogue)
 	turf_type = /turf/open/floor/rogue/naturalstone
 	baseturfs = /turf/open/floor/rogue/naturalstone
