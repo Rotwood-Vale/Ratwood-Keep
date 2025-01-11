@@ -10364,6 +10364,10 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
+"jmg" = (
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/town)
 "jmk" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/cup/silver,
@@ -56823,7 +56827,7 @@ cfn
 qzo
 xDC
 mbj
-gog
+jmg
 gog
 oyZ
 xDC
@@ -106128,10 +106132,10 @@ tXZ
 cjg
 cjg
 cjg
-rgb
+xmF
 rAY
 bPQ
-cUd
+xOq
 wzp
 wzp
 wzp
@@ -106442,10 +106446,10 @@ tXZ
 cjg
 cjg
 cjg
-rXy
+rgb
 bPQ
 bPQ
-rXy
+cUd
 wzp
 wzp
 wzp
@@ -106756,10 +106760,10 @@ tXZ
 cjg
 cjg
 cjg
-rgb
+xmF
 nTS
 bPQ
-cUd
+xOq
 wzp
 wzp
 wzp
