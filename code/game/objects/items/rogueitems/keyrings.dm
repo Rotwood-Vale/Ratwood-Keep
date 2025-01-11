@@ -104,7 +104,7 @@
 	keys = list(/obj/item/key/town_dungeon, /obj/item/key/bog_gatehouse, /obj/item/key/town_barracks, /obj/item/key/town_armory)
 
 /obj/item/storage/keyring/sheriff
-	keys = list(/obj/item/key/sheriff_office, /obj/item/key/town_armory, /obj/item/key/town_barracks, /obj/item/key/town_dungeon)
+	keys = list(/obj/item/key/sheriff_office, /obj/item/key/town_armory, /obj/item/key/town_barracks, /obj/item/key/town_dungeon, /obj/item/key/bog_gatehouse, /obj/item/key/bog_master)
 
 /obj/item/storage/keyring/man_at_arms
 	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
