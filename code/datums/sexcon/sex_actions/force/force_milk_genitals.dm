@@ -22,7 +22,7 @@
 	return TRUE
 
 /datum/sex_action/force_milk_genitals/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] начинает дрочить член [target] над [user.get_active_held_item()]!"))
 	else
 		user.visible_message(span_warning("[user] starts masturbating [target] into [user.get_active_held_item()]..."))
@@ -31,7 +31,7 @@
 /datum/sex_action/force_milk_genitals/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
 		var/chosen_verb
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			chosen_verb = pick(list("активно мастурбирует член [target] над [user.get_active_held_item()]", "массирует член [target] над [user.get_active_held_item()]", "дрочит член [target] над [user.get_active_held_item()]"))
 		else
 			chosen_verb = pick(list("pleasures cock [target] over [user.get_active_held_item()]", "sensually massages cock [target] over [user.get_active_held_item()]", "masturbates [target] cock over [user.get_active_held_item()]"))
@@ -43,7 +43,7 @@
 	target.sexcon.handle_cock_milking(user)
 
 /datum/sex_action/force_milk_genitals/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] прекращает дрочить член [target] над контейнером."))
 	else
 		user.visible_message(span_warning("[user] stops jerking [target] into the container."))

@@ -27,7 +27,7 @@
 
 /datum/sex_action/throat_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вводит член в глотку [target]!"))
 	else
 		user.visible_message(span_warning("[user] slides his cock into [target]'s throat!"))
@@ -41,7 +41,7 @@
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_lovebold("[user] кончает в глотку [target]!"))
 		else
 			user.visible_message(span_lovebold("[user] cums into [target]'s throat!"))
@@ -57,7 +57,7 @@
 
 /datum/sex_action/throat_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вынимает член из глотки [target]."))
 	else
 		user.visible_message(span_warning("[user] pulls his cock out of [target]'s throat."))

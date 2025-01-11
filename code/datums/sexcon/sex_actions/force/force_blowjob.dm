@@ -28,7 +28,7 @@
 
 /datum/sex_action/force_blowjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] ведёт голову [target] к своему члену!"))
 	else
 		user.visible_message(span_warning("[user] forces [target]'s head down to swallow and suck on his cock!"))
@@ -36,7 +36,7 @@
 
 /datum/sex_action/force_blowjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] вталкивает член в рот [target]."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to suck his cock."))
@@ -45,7 +45,7 @@
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_lovebold("[user] кончает в горло [target]!"))
 		else
 			user.visible_message(span_lovebold("[user] cums into [target]'s throat!"))
@@ -58,7 +58,7 @@
 
 /datum/sex_action/force_blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вытаскивает свой член из рта [target]."))
 	else
 		user.visible_message(span_warning("[user] pulls his cock out of [target]'s throat."))

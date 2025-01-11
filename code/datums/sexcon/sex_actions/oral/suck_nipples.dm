@@ -21,13 +21,13 @@
 	return TRUE
 
 /datum/sex_action/suck_nipples/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] присасывается к соскам [target]..."))
 	else
 		user.visible_message(span_warning("[user] starts sucking [target]'s nipples..."))
 
 /datum/sex_action/suck_nipples/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] сосёт соски [target]..."))
 	else
 		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s nipples..."))
@@ -40,17 +40,17 @@
 	if(target.getorganslot(ORGAN_SLOT_BREASTS).lactating && milk_to_add > 0 && prob(25))
 		user.reagents.add_reagent(/datum/reagent/consumable/milk, milk_to_add)
 		target.getorganslot(ORGAN_SLOT_BREASTS).milk_stored -= milk_to_add
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			to_chat(user, span_notice("Я чувствую парное молочко!"))
 		else
 			to_chat(user, span_notice("I can taste milk."))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			to_chat(target, span_notice("Я чувствую, как молоко покидает мою грудь."))
 		else
 			to_chat(target, span_notice("I can feel milk leaking from my buds."))
 
 /datum/sex_action/suck_nipples/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user], чавкнув, убирает сосок [target] из своего рта..."))
 	else
 		user.visible_message(span_warning("[user] stops sucking [target]'s nipples..."))

@@ -26,12 +26,12 @@
 /datum/sex_action/suck_balls/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] приближает язык к яйцам [target]..."))	//Fairy too small to do anything but lick instead
 		else
 			user.visible_message(span_warning("[user] starts licking [target]'s balls..."))
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] приоткрывает рот, приближаясь к яйцам [target]..."))
 		else
 			user.visible_message(span_warning("[user] starts sucking [target]'s balls..."))
@@ -40,12 +40,12 @@
 /datum/sex_action/suck_balls/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
 		if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] лижет яйца [target]..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] licks [target]'s balls..."))
 		else
-			if(user.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] сосёт яйца [target]..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] sucks [target]'s balls..."))
@@ -57,12 +57,12 @@
 /datum/sex_action/suck_balls/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	if(HAS_TRAIT(user, TRAIT_TINY) && !(HAS_TRAIT(target, TRAIT_TINY)))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] отводит голову в сторону от [target]..."))
 		else
 			user.visible_message(span_warning("[user] stops licking [target]'s balls ..."))
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] отводит голову в сторону от [target]..."))
 		else
 			user.visible_message(span_warning("[user] stops sucking [target]'s balls ..."))

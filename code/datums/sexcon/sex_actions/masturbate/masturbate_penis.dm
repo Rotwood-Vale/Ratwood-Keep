@@ -21,14 +21,14 @@
 
 /datum/sex_action/masturbate_penis/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] начинает дрочить свой член..."))
 	else
 		user.visible_message(span_warning("[user] starts jerking off..."))
 
 /datum/sex_action/masturbate_penis/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/chosen_verb 
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		chosen_verb = pick(list("мастурбирует", "играется со своим членом", "дрочит свой хер", "душит своего удава", "вздрачивает член", "стимулирует член"))
 	else
 		chosen_verb = pick(list("jerks his cock", "strokes his cock", "masturbates", "jerks off"))
@@ -42,7 +42,7 @@
 
 /datum/sex_action/masturbate_penis/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] заканчивает с мастурбацией."))
 	else
 		user.visible_message(span_warning("[user] stops jerking off."))

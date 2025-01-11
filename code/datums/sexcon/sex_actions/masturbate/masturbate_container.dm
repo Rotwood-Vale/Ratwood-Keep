@@ -23,14 +23,14 @@
 	return TRUE
 
 /datum/sex_action/masturbate_container/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] начинает дрочить над [user.get_active_held_item()]..."))
 	else
 		user.visible_message(span_warning("[user] starts masturbating into [user.get_active_held_item()]..."))
 
 /datum/sex_action/masturbate_container/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/chosen_verb
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		chosen_verb = pick(list("активно мастурбирует над [user.get_active_held_item()]", "массирует свои гениталии над [user.get_active_held_item()]", "дрочит над [user.get_active_held_item()]"))
 	else
 		chosen_verb = pick(list("pleasures themself over [user.get_active_held_item()]", "sensually massages themself over [user.get_active_held_item()]", "masturbates over [user.get_active_held_item()]"))
@@ -43,7 +43,7 @@
 	user.sexcon.handle_container_ejaculation()
 
 /datum/sex_action/masturbate_container/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] заканчивает с мастурбацией."))
 	else
 		user.visible_message(span_warning("[user] stops masturbating into the container."))

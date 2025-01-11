@@ -27,7 +27,7 @@
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))	//Humen on Seelie
 		//Scream and rib break
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] вталкивает член в маленькую задницу [target]!"))
 		else
 			user.visible_message(span_warning("[user] forces his cock into [target]'s tiny butt!"))
@@ -37,12 +37,12 @@
 		BPG.add_wound(/datum/wound/fracture/groin)
 		target.apply_damage(30, BRUTE, BPC)
 	else if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY))	//Seelie on Humen
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] вводит член в анальное кольцо [target], безуспешно!"))
 		else
 			user.visible_message(span_warning("[user] tries and fails to insert his tiny cock into [target]'s butt!"))
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] вводит член в анальное кольцо [target]!"))
 		else
 			user.visible_message(span_warning("[user] slides his cock into [target]'s butt!"))
@@ -50,7 +50,7 @@
 
 /datum/sex_action/anal_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY))	//Seelie on Humen
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] пытается вытрахать задницу [target], безуспешно."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] tries to fuck [target]'s ass, unsuccessfully."))
@@ -59,7 +59,7 @@
 		return FALSE //Return because male seelie cannot succesfully penetrate a large humen target
 
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] ебёт анальное кольцо [target]."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s ass."))
@@ -73,7 +73,7 @@
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_lovebold("[user] кончает в задницу [target]!"))
 		else
 			user.visible_message(span_lovebold("[user] cums in [target]'s ass!"))
@@ -90,7 +90,7 @@
 
 /datum/sex_action/anal_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вынимает член из задницы [target]."))
 	else
 		user.visible_message(span_warning("[user] pulls his cock out of [target]'s ass."))

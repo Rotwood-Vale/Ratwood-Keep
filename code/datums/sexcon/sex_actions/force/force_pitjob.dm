@@ -26,14 +26,14 @@
 
 /datum/sex_action/force_pitjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] ведёт подмышку [target] к своему члену!"))
 	else
 		user.visible_message(span_warning("[user] grabs [target]'s arm and shoves their cock under it!"))
 
 /datum/sex_action/force_pitjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] заставляет [target] использовать свою подмышку, чтобы подрочить себе."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s armpit."))
@@ -45,7 +45,7 @@
 
 /datum/sex_action/force_pitjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вытаскивает свой член из пространства между подмышкой [target]."))
 	else
 		user.visible_message(span_warning("[user] pulls their cock out from [target]'s armpit."))

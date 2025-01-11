@@ -19,7 +19,7 @@
 
 /datum/sex_action/kissing/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] приближается к [target]..."))
 	else
 		user.visible_message(span_warning("[user] starts making out with [target]..."))
@@ -37,7 +37,7 @@
 
 /datum/sex_action/kissing/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] отводит голову в сторону от [target]..."))
 	else
 		user.visible_message(span_warning("[user] stops making out with [target]..."))

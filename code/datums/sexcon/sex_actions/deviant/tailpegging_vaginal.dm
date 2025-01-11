@@ -26,7 +26,7 @@
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))	//Humen on Seelie
 		//Scream and rib break
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] вталкивает свой член в пиздёнку [target]!"))
 		else
 			user.visible_message(span_warning("[user] forces their tail into [target]'s tiny cunt!"))
@@ -36,12 +36,12 @@
 		BPG.add_wound(/datum/wound/fracture/groin)
 		target.apply_damage(30, BRUTE, BPC)
 	else if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY))	//Seelie on Humen
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] пытается вставить свой хвост во влагалище [target], безуспешно!"))
 		else
 			user.visible_message(span_warning("[user] tries and fails to insert their tiny tail into [target]'s cunt!"))
 	else
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(span_warning("[user] вводит свой хвост в вагину [target]!"))
 		else
 			user.visible_message(span_warning("[user] slides their tail into [target]'s cunt!"))
@@ -49,7 +49,7 @@
 
 /datum/sex_action/tailpegging_vaginal/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!(HAS_TRAIT(target, TRAIT_TINY)) && HAS_TRAIT(user, TRAIT_TINY)) //Male seelie trying to fuck normal size humen
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] пытается вставлять свой хвост во влагалище [target], безуспешно."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] tries to fuck [target]'s cunt with their tail, unsuccessfully."))
@@ -57,7 +57,7 @@
 		playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 		return FALSE //Return because male seelie cannot succesfully penetrate a large humen target
 	if(user.sexcon.do_message_signature("[type]"))
-		if(user.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трахает вагину [target] своим хвостом."))
 		else
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s cunt with their tail."))
@@ -79,7 +79,7 @@
 
 /datum/sex_action/tailpegging_vaginal/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	if(user.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		user.visible_message(span_warning("[user] вытаскивает влажный хвост из вагины [target]."))
 	else
 		user.visible_message(span_warning("[user] pulls their tail out of [target]'s cunt."))
