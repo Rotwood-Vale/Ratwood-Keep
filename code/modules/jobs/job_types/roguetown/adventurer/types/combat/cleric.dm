@@ -25,7 +25,7 @@
 		if("Monk")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a wandering acolyte, versed in both miracles and martial arts."))
-			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			gloves = /obj/item/clothing/gloves/roguetown/plate
 			pants = /obj/item/clothing/under/roguetown/trou/leather

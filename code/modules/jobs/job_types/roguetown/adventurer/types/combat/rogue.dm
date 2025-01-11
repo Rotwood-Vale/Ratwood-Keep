@@ -17,15 +17,15 @@
 		if("Treasure Hunter")
 			to_chat(H, span_warning("You are a treasure hunter trained in hunting for valuables. Discern what is treasure or not, your fortune could be hidden anywhere."))
 			pants = /obj/item/clothing/under/roguetown/trou/leather
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/brown
 			backl = /obj/item/storage/backpack/rogue/satchel
 			belt = /obj/item/storage/belt/rogue/leather
-			gloves = /obj/item/clothing/gloves/roguetown/fingerless
+			gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backr = /obj/item/rogueweapon/shovel
-			head = /obj/item/clothing/head/roguetown/puritan
+			head = /obj/item/clothing/head/roguetown/fedora
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			backpack_contents = list(/obj/item/lockpick)
@@ -72,7 +72,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			beltl = /obj/item/lockpickring
+			beltl = /obj/item/lockpickring/mundane
 			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 			H.cmode_music = 'sound/music/combat_rogue.ogg'
@@ -154,7 +154,7 @@
 		if("Outlaw")
 			to_chat(H, span_warning("You're a seasoned criminal known for your heinous acts, your face plastered on wanted posters across the region. A life of theft, robbery, and ill-gotten-gains comes naturally to you."))
 			pants = /obj/item/clothing/under/roguetown/trou/leather
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			backl = /obj/item/storage/backpack/rogue/satchel
@@ -163,7 +163,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			beltl = /obj/item/lockpickring
+			beltl = /obj/item/lockpickring/mundane
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)

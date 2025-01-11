@@ -51,13 +51,14 @@
 			head = /obj/item/clothing/head/roguetown/bucklehat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/black
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
 			belt = /obj/item/storage/belt/rogue/leather
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/white
+			armor = /obj/item/clothing/suit/roguetown/shirt/tunic/purple
 			cloak = /obj/item/clothing/cloak/raincloak/purple
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			beltr = /obj/item/rogueweapon/sword/sabre
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)

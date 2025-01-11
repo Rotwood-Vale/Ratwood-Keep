@@ -42,7 +42,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
@@ -84,7 +83,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
@@ -98,13 +97,17 @@
 			to_chat(H, span_warning("Bombs? You've got them. Plenty of them - and the skills to make more. You've spent years training under skilled alchemists and have found the perfect mix to create some chaos - now go blow something up!"))
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			pants = /obj/item/clothing/under/roguetown/trou/leather
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+			head = /obj/item/clothing/head/roguetown/roguehood
+			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
+			pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/mageorange
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			belt = /obj/item/storage/belt/rogue/leather
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			beltl = /obj/item/rogueweapon/mace/cudgel
-			backpack_contents = list(/obj/item/bomb = 3)
+			backpack_contents = list(/obj/item/bomb = 4)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
