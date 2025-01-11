@@ -2,7 +2,8 @@
 	if(!istype(user))
 		return
 	if(user.mind)
-		user.mind.i_know_person(src)
+		if(job != "Bandit")
+			user.mind.i_know_person(src)
 	var/datum/species/self_species = dna.species
 	var/datum/species/examiner_species = user.dna.species
 	if(self_species.stress_examine && self_species.type != examiner_species.type)
