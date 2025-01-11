@@ -9,7 +9,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	tutorial = "You have only one duty, and it is a vital one: manning the Bastion gate and controlling the official point of entry to the city.  \
-	You work alongside the citywatch and the Sheriff, but ultimately take orders from Captain. \
+	You work alongside the citywatch and the Sheriff, but ultimately take orders from the Captain. \
 	Listen carefully to the laws of the Duchy to determine who will get in and who will stay out, your life and the safety of all the cityfolk depend on it..."
 	display_order = JDO_GATEMASTER
 
