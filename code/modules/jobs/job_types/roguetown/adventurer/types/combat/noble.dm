@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/noble
-	traits_applied = list(TRAIT_NOBLE, TRAIT_OUTLANDER)
+	traits_applied = list(TRAIT_OUTLANDER)
 	category_tags = list(CTAG_ADVENTURER)
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled
 
@@ -37,6 +37,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
+			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 1)
@@ -72,6 +73,7 @@
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 			H.set_blindness(0)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 			var/weapons = list("Bastard Sword","Mace + Shield","Flail + Shield","Billhook")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
@@ -98,7 +100,7 @@
 			H.change_stat("intelligence", 1)
 
 		if("Squire Errant")
-			to_chat(H, span_warning("You are a squire who has traveled far in search of a master to train you."))
+			to_chat(H, span_warning("You are a squire who has traveled far in search of a master to train you and a lord to knight you."))
 			head = /obj/item/clothing/head/roguetown/roguehood
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 			gloves = /obj/item/clothing/gloves/roguetown/leather
