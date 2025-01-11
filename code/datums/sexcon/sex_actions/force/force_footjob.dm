@@ -1,5 +1,5 @@
 /datum/sex_action/force_footjob
-	name = "Use their feet to get off"
+	name = "Вздрочнуть чужими ножками"
 	check_same_tile = FALSE
 	require_grab = TRUE
 	stamina_cost = 1.0
@@ -28,11 +28,11 @@
 
 /datum/sex_action/force_footjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] grabs [target]'s feet and clamps them around his cock!"))
+	user.visible_message(span_warning("[user] ловит ножки [target] и обхватывает ими свой член!"))
 
 /datum/sex_action/force_footjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] uses [target] feet to jerk off."))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] дрочит ступнями [target]."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 20, TRUE, -2, ignore_walls = FALSE)
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
@@ -40,4 +40,4 @@
 
 /datum/sex_action/force_footjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls his cock out from inbetween [target]'s feet."))
+	user.visible_message(span_warning("[user] убирает свой хер от ножек [target]."))

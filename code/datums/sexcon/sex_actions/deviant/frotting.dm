@@ -1,5 +1,5 @@
 /datum/sex_action/frotting
-	name = "Frot them"
+	name = "Фехтование"
 	check_incapacitated = FALSE
 
 /datum/sex_action/frotting/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -26,11 +26,11 @@
 
 /datum/sex_action/frotting/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] shoves his cock against [target]'s own!"))
+	user.visible_message(span_warning("[user] толкается своим хером о ствол [target]!"))
 
 /datum/sex_action/frotting/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] frots cocks together with [target]'s."))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] скрещивает пенисы вместе с [target]."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 20, TRUE, -2, ignore_walls = FALSE)
 
 	user.sexcon.perform_sex_action(user, 1, 4, TRUE)
@@ -41,4 +41,4 @@
 
 /datum/sex_action/frotting/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] lets go off both their cocks."))
+	user.visible_message(span_warning("[user] уводит свой хер в сторону"))

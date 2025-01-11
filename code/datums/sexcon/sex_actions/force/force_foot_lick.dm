@@ -1,5 +1,5 @@
 /datum/sex_action/force_foot_lick
-	name = "Force them to lick your feet"
+	name = "Заставить вылизать ножки"
 	check_same_tile = FALSE
 	require_grab = TRUE
 	stamina_cost = 1.0
@@ -24,13 +24,13 @@
 
 /datum/sex_action/force_foot_lick/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] shoves their feet against [target]'s head!"))
+	user.visible_message(span_warning("[user] упирает своим ступни в лицо [target]!"))
 
 /datum/sex_action/force_foot_lick/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to lick his feet."))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] заставляет [target] вылизывать ножки."))
 	target.make_sucking_noise()
 
 /datum/sex_action/force_foot_lick/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls their feet away from [target]'s head."))
+	user.visible_message(span_warning("[user] убирает ножки с лика [target]."))

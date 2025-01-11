@@ -1,5 +1,5 @@
 /datum/sex_action/force_blowjob
-	name = "Force them to suck"
+	name = "Заставить отсосать"
 	require_grab = TRUE
 	stamina_cost = 1.0
 	gags_target = TRUE
@@ -28,18 +28,18 @@
 
 /datum/sex_action/force_blowjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] forces [target]'s head down to swallow and suck on his cock!"))
+	user.visible_message(span_warning("[user] прижимает голову [target] к паху и заталкивает свой член прямо в рот!"))
 	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
 
 /datum/sex_action/force_blowjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to suck his cock."))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] насаживает [target] на свой хер, проталкивая тот в глотку до упора."))
 	target.make_sucking_noise()
 	do_thrust_animate(target, user)
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_lovebold("[user] cums into [target]'s throat!"))
+		user.visible_message(span_lovebold("[user] кончает прямо в глотку [target]!"))
 		user.sexcon.cum_into()
 
 	user.sexcon.perform_sex_action(target, 0, 7, FALSE)
@@ -49,7 +49,7 @@
 
 /datum/sex_action/force_blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls his cock out of [target]'s throat."))
+	user.visible_message(span_warning("[user] вынимает свой ствол из пасти [target]."))
 
 /datum/sex_action/force_blowjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

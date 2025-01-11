@@ -1,5 +1,5 @@
 /datum/sex_action/pitjob
-	name = "Jerk them off with armpit"
+	name = "Воспользоваться подмышками"
 	check_same_tile = FALSE
 	check_incapacitated = FALSE
 
@@ -28,14 +28,14 @@
 	if(HAS_TRAIT(user, TRAIT_TINY) && !HAS_TRAIT(target, TRAIT_TINY))
 		user.visible_message(span_warning("[user] presses their tiny underarm against [target]'s cock..."))
 	else
-		user.visible_message(span_warning("[user] puts [target]'s cock under their arm..."))
+		user.visible_message(span_warning("[user] зажимает член [target] под своим плечом..."))
 
 /datum/sex_action/pitjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
 		if(HAS_TRAIT(user, TRAIT_TINY) && !HAS_TRAIT(target, TRAIT_TINY))
 			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rubs their armpit along [target]'s cock..."))
 		else
-			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] squeezes [target]'s cock with their armpit..."))
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] придавливает пенис [target] к своей подмышке и двигает плечом..."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 
 	user.sexcon.perform_sex_action(target, 2, 4, TRUE)
@@ -47,7 +47,7 @@
 	if(HAS_TRAIT(user, TRAIT_TINY) && !HAS_TRAIT(target, TRAIT_TINY))
 		user.visible_message(span_warning("[user] stops rubbing their armpit along [target]'s cock."))
 	else
-		user.visible_message(span_warning("[user] stops jerking [target] off with their armpit."))
+		user.visible_message(span_warning("[user] расслабив руку, выпускает пенис [target] из под своей руки."))
 
 /datum/sex_action/pitjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target.sexcon.finished_check())

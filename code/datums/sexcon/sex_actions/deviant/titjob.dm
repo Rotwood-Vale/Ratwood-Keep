@@ -1,5 +1,5 @@
 /datum/sex_action/titjob
-	name = "Use their tits to get off"
+	name = "Вздрочнуть сиськами"
 
 /datum/sex_action/titjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -26,16 +26,16 @@
 /datum/sex_action/titjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
-		user.visible_message(span_warning("[user] grabs [target] and starts rubbing their body against his cock!"))
+		user.visible_message(span_warning("[user] хватает [target] и трет телом о свой ствол!"))
 	else
-		user.visible_message(span_warning("[user] grabs [target]'s tits and shoves his cock inbetween!"))
+		user.visible_message(span_warning("[user] хватает сиськи [target] и погружает свой хер в ложбинку!"))
 
 /datum/sex_action/titjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
 		if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
-			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] rubs their cock agains [target]'s body."))
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] скользит своим пенисом по телу [target]."))
 		else
-			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s tits."))
+			user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трахает сиськи [target]."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 20, TRUE, -2, ignore_walls = FALSE)
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
@@ -44,6 +44,6 @@
 /datum/sex_action/titjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
 	if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY)))
-		user.visible_message(span_warning("[user] pulls his cock away from [target]'s body."))
+		user.visible_message(span_warning("[user] отодвигает тело [target] от своего пениса."))
 	else
-		user.visible_message(span_warning("[user] pulls his cock out from inbetween [target]'s tits."))
+		user.visible_message(span_warning("[user] поднимает хер из ложбинки меж грудей [target]."))

@@ -1,5 +1,5 @@
 /datum/sex_action/force_armpit_lick
-	name = "Force them to lick your armpit"
+	name = "Заставить вылизать свои подмышки"
 	check_same_tile = FALSE
 	require_grab = TRUE
 	stamina_cost = 1.0
@@ -22,13 +22,13 @@
 
 /datum/sex_action/force_armpit_lick/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] shoves their armpit against [target]'s mouth!"))
+	user.visible_message(span_warning("[user] упирается своими подмыхами в рот [target]!"))
 
 /datum/sex_action/force_armpit_lick/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] forces [target] to lick their armpit."))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] заставляет [target] лизать свои подмышки."))
 	target.make_sucking_noise()
 
 /datum/sex_action/force_armpit_lick/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] pulls their armpit away from [target]'s head."))
+	user.visible_message(span_warning("[user] резким движением отрывает [target] от своего плеча."))
