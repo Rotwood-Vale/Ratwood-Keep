@@ -374,6 +374,14 @@
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
 
+/datum/crafting_recipe/roguetown/sewing/bardhat
+	name = "hat (bard) - (2 leather, fiber, feather; JOURNEYMAN)"
+	result = list(/obj/item/clothing/head/roguetown/bardhat)
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/feather = 1)
+	skill_level = 3
+
 /* craftdif of 4 EXPERT */
 
 /datum/crafting_recipe/roguetown/sewing/stockdress
@@ -384,17 +392,11 @@
 	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/fancyhat
-	name = "hat (fancy) - (2 cloths, fiber; EXPERT)"
+	name = "hat (fancy) - (2 cloths, fiber, feather; EXPERT)"
 	result = list(/obj/item/clothing/head/roguetown/fancyhat)
 	reqs = list(/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1)
-	skill_level = 4
-
-/datum/crafting_recipe/roguetown/sewing/bardhat
-	name = "hat (bard) - (2 cloths, fiber; EXPERT)"
-	result = list(/obj/item/clothing/head/roguetown/bardhat)
-	reqs = list(/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1)
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/feather = 1)
 	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/chaperon
