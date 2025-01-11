@@ -576,7 +576,7 @@
 	for(var/loot_type in plant.uproot_loot)
 		new loot_type(loc)
 
-/// Yields produce on its tile if it's ready for harvest
+/// Yields NO produce on its tile if it's ready for harvest
 /obj/structure/soil/proc/ruin_produce()
 	produce_ready = FALSE
 	if(!plant.perennial)
