@@ -5,7 +5,7 @@
 	desc = "Plant fibers. The peasants make their living making these into clothing."
 	force = 0
 	throwforce = 0
-	color = "#534d3e"
+	color = "#726851"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH
@@ -270,7 +270,7 @@
 	force = 0
 	throwforce = 0
 	maxamount = 6
-	color = "#534d3e"
+	color = "#726851"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH
