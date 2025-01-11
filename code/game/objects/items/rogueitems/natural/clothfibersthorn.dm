@@ -5,7 +5,7 @@
 	desc = "Plant fibers. The peasants make their living making these into clothing."
 	force = 0
 	throwforce = 0
-	color = "#454032"
+	color = "#534d3e"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH
@@ -270,7 +270,7 @@
 	force = 0
 	throwforce = 0
 	maxamount = 6
-	color = "#454032"
+	color = "#534d3e"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH
@@ -331,11 +331,19 @@
 /obj/item/natural/bundle/stick
 	name = "bundle of sticks"
 	icon_state = "stickbundle1"
+	item_state = "stickbundle"
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
 	possible_item_intents = list(/datum/intent/use)
 	desc = "Stick alone.. Weak. Stick together.. Strong."
-	maxamount = 10
+	maxamount = 6
 	force = 0
 	throwforce = 0
+	grid_width = 32
+	grid_height = 64
+	base_width = 32
+	base_height = 64
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
@@ -345,7 +353,7 @@
 	icon1 = "stickbundle1"
 	icon1step = 4
 	icon2 = "stickbundle2"
-	icon2step = 7
+	icon2step = 6
 	icon3 = "stickbundle3"
 
 /obj/item/natural/bundle/stick/attackby(obj/item/W, mob/living/user)
