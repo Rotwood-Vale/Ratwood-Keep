@@ -165,6 +165,42 @@
 
 	emote("choke", intentional = TRUE)
 
+/datum/emote/living/trill
+	key = "trill"
+	key_third_person = "trills"
+	message = "trills."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/meow
+	key = "meow"
+	key_third_person = "meows"
+	message = "meows."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses!"
+	message_muffled = "make a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/purr
+	key = "purr"
+	key_third_person = "purrs"
+	message = "purrs."
+	message_muffled = "make a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
 /datum/emote/living/cross
 	key = "crossarms"
 	key_third_person = "crossesarms"

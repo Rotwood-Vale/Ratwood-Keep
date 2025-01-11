@@ -165,38 +165,3 @@
 	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle. It clearly needs to see more use."
 	minstr = 8
 	icon_state = "gwhip"
-
-
-/obj/item/rogueweapon/flail/peasantwarflail
-	force = 10
-	force_wielded = 25
-	possible_item_intents = list(/datum/intent/flail/strike)
-	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/flail/strike/smashrange)
-	name = "peasant war flail"
-	desc = "An agricultural flail turned into a weapon of war."
-	icon_state = "peasantwarflail"
-	icon = 'icons/roguetown/weapons/64.dmi'
-	pixel_y = -16
-	pixel_x = -16
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	bigboy = TRUE
-	gripsprite = TRUE
-	wlength = WLENGTH_GREAT
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = null
-	minstr = 12
-	wbalance = -2
-	smeltresult = /obj/item/ingot/iron
-	associated_skill = /datum/skill/combat/polearms
-	blade_dulling = DULLING_BASHCHOP
-	wdefense = 1
-
-/obj/item/rogueweapon/flail/peasantwarflail/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.6,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)

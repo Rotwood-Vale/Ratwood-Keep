@@ -5,9 +5,16 @@
 	name = "лопата"
 	desc = "Незаменима для копания (могил) в этой тёмной земле."
 	icon_state = "shovel"
+	item_state = "shovel"
 	icon = 'icons/roguetown/weapons/tools.dmi'
+	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	experimental_onhip = FALSE
+	experimental_onback = FALSE
+	gripspriteonmob = TRUE
 	sharpness = IS_BLUNT
-	//dropshrink = 0.8
 	wdefense = 3
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
@@ -52,8 +59,10 @@
 /obj/item/rogueweapon/shovel/update_icon()
 	if(heldclod)
 		icon_state = "dirt[initial(icon_state)]"
+		item_state = "dirt[initial(icon_state)]"	// onmob itemstate does not update, TO DO
 	else
 		icon_state = "[initial(icon_state)]"
+		item_state = "[initial(item_state)]"
 
 /datum/intent/mace/strike/shovel
 	hitsound = list('sound/combat/hits/blunt/shovel_hit.ogg', 'sound/combat/hits/blunt/shovel_hit2.ogg', 'sound/combat/hits/blunt/shovel_hit3.ogg')
@@ -120,65 +129,14 @@
 		return
 	. = ..()
 
-/obj/item/rogueweapon/shovel/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,
-"sx" = 0,
-"sy" = -10,
-"nx" = 2,
-"ny" = -8,
-"wx" = -9,
-"wy" = -8,
-"ex" = 5,
-"ey" = -11,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 105,
-"sturn" = -90,
-"wturn" = 0,
-"eturn" = 90,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 1)
-			if("wielded")
-				return list("shrink" = 0.8,
-"sx" = 3,
-"sy" = -5,
-"nx" = -8,
-"ny" = -5,
-"wx" = 0,
-"wy" = -5,
-"ex" = 5,
-"ey" = -5,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 1,
-"nturn" = 135,
-"sturn" = -135,
-"wturn" = 240,
-"eturn" = 30,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 1)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
 
 /obj/item/rogueweapon/shovel/small
 	force = 7
 	name = "лопатка"
 	desc = "Незаменимый инструмент для вскапывания почвы."
 	icon_state = "spade"
+	item_state = "spade"
 	sharpness = IS_BLUNT
-	//dropshrink = 0.8
 	gripped_intents = null
 	wlength = WLENGTH_SHORT
 	slot_flags = ITEM_SLOT_HIP

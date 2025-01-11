@@ -4,9 +4,15 @@
 	name = "железная кирка"
 	desc = "Этот инструмент незаменим для добычи руды в тёмных глубинах."
 	icon_state = "pick"
+	item_state = "pick"
 	icon = 'icons/roguetown/weapons/tools.dmi'
+	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	experimental_onhip = FALSE
+	experimental_onback = FALSE
 	sharpness = IS_BLUNT
-	//dropshrink = 0.8
 	wlength = 10
 	max_integrity = 400
 	slot_flags = ITEM_SLOT_HIP
@@ -15,44 +21,19 @@
 	smeltresult = /obj/item/ingot/iron
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/rogueweapon/pick/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,
-"sx" = -15,
-"sy" = -12,
-"nx" = 9,
-"ny" = -11,
-"wx" = -11,
-"wy" = -11,
-"ex" = 1,
-"ey" = -12,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 90,
-"sturn" = -90,
-"wturn" = -90,
-"eturn" = 90,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
 /obj/item/rogueweapon/pick/steel
 	name = "стальная кирка"
 	desc = "С укреплённой рукоятью и прочным древком - это превосходный инструмент для копания во тьме."
 	force_wielded = 28
 	icon_state = "steelpick"
+	item_state = "steelpick"
 	possible_item_intents = list(/datum/intent/pick)
 	gripped_intents = list(/datum/intent/pick)
 	max_integrity = 600
 	smeltresult = /obj/item/ingot/steel
+/obj/item/rogueweapon/pick/steel/New()
+	. = ..()
+	icon_state = "steelpick[rand(1,2)]"
 
 /obj/item/rogueweapon/pick/drill
 	name = "заводной бур"
@@ -64,8 +45,6 @@
 	item_state = "drill"
 	possible_item_intents = list(/datum/intent/mace/smash)
 	gripped_intents = list(/datum/intent/drill)
-	experimental_inhand = FALSE
-	experimental_onback = FALSE
 	slot_flags = ITEM_SLOT_BACK
 	gripspriteonmob = TRUE
 	var/datum/looping_sound/drill/drill_loop
