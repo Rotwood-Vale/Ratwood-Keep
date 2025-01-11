@@ -44,7 +44,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		add_overlay(M)
 
 /turf/open/transparent/openspace/airless
-	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/transparent/openspace/debug/update_multiz()
 	..()
@@ -97,6 +96,8 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		return TRUE
 	return FALSE
 
+/turf/open/transparent/openspace/can_traverse_safely(atom/movable/traveler)
+	return FALSE
 
 /turf/open/transparent/openspace/proc/CanCoverUp()
 	return can_cover_up

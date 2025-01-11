@@ -111,6 +111,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/breedchildren = 3
 
 	///Simple_animal access.
+	var/list/lock_hashes
 	///Innate access uses an internal ID card.
 	var/obj/item/card/id/access_card = null
 	///In the event that you want to have a buffing effect on the mob, but don't want it to stack with other effects, any outside force that applies a buff to a simple mob should at least set this to 1, so we have something to check against.
@@ -285,6 +286,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(stat != DEAD)
 		if(health <= 0)
 			death()
+			SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, DEAD)
 			return
 	if(footstep_type)
 		AddComponent(/datum/component/footstep, footstep_type)
@@ -349,62 +351,30 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 						emote("me", 2, pick(emote_hear))
 
 
-/mob/living/simple_animal/proc/environment_is_safe(datum/gas_mixture/environment, check_temp = FALSE)
+/mob/living/simple_animal/proc/environment_is_safe(check_temp = FALSE)
 	. = TRUE
 
 	if(pulledby && pulledby.grab_state >= GRAB_KILL && atmos_requirements["min_oxy"])
 		. = FALSE //getting choked
 
-	if(isturf(src.loc) && isopenturf(src.loc))
-		var/turf/open/ST = src.loc
-		if(ST.air)
-			var/ST_gases = ST.air.gases
-			ST.air.assert_gases(arglist(GLOB.hardcoded_gases))
-
-			var/tox = ST_gases[/datum/gas/plasma][MOLES]
-			var/oxy = ST_gases[/datum/gas/oxygen][MOLES]
-			var/n2  = ST_gases[/datum/gas/nitrogen][MOLES]
-			var/co2 = ST_gases[/datum/gas/carbon_dioxide][MOLES]
-
-			ST.air.garbage_collect()
-
-			if(atmos_requirements["min_oxy"] && oxy < atmos_requirements["min_oxy"])
-				. = FALSE
-			else if(atmos_requirements["max_oxy"] && oxy > atmos_requirements["max_oxy"])
-				. = FALSE
-			else if(atmos_requirements["min_tox"] && tox < atmos_requirements["min_tox"])
-				. = FALSE
-			else if(atmos_requirements["max_tox"] && tox > atmos_requirements["max_tox"])
-				. = FALSE
-			else if(atmos_requirements["min_n2"] && n2 < atmos_requirements["min_n2"])
-				. = FALSE
-			else if(atmos_requirements["max_n2"] && n2 > atmos_requirements["max_n2"])
-				. = FALSE
-			else if(atmos_requirements["min_co2"] && co2 < atmos_requirements["min_co2"])
-				. = FALSE
-			else if(atmos_requirements["max_co2"] && co2 > atmos_requirements["max_co2"])
-				. = FALSE
-		else
-			if(atmos_requirements["min_oxy"] || atmos_requirements["min_tox"] || atmos_requirements["min_n2"] || atmos_requirements["min_co2"])
-				. = FALSE
-
 	if(check_temp)
-		var/areatemp = get_temperature(environment)
+		//ATMO/TURF/TEMPERATURE
+		var/turf/cur_turf = get_turf(src)
+		var/areatemp = cur_turf.temperature
 		if((areatemp < minbodytemp) || (areatemp > maxbodytemp))
 			. = FALSE
 
 
-/mob/living/simple_animal/handle_environment(datum/gas_mixture/environment)
+/mob/living/simple_animal/handle_environment()
 	var/atom/A = src.loc
 	if(isturf(A))
-		var/areatemp = get_temperature(environment)
+		//ATMO/TURF/TEMPERATURE
+		var/turf/cur_turf = A
+		var/areatemp = cur_turf.temperature
 		if( abs(areatemp - bodytemperature) > 5)
 			var/diff = areatemp - bodytemperature
 			diff = diff / 5
 			adjust_bodytemperature(diff)
-
-	if(!environment_is_safe(environment))
-		adjustHealth(unsuitable_atmos_damage)
 
 	handle_temperature_damage()
 
@@ -880,14 +850,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 //		eat_plants()
 
 /mob/living/simple_animal/proc/eat_plants()
-//	if(food >= 10 MINUTES)
-//		return
-
-//	var/obj/structure/spacevine/SV = locate(/obj/structure/spacevine) in loc
-//	if(SV)
-//		SV.eat(src)
-//		eaten = TRUE
-//		food = min(food + 5 MINUTES, 10 MINUTES)
 
 	var/obj/item/reagent_containers/food/I = locate(/obj/item/reagent_containers/food) in loc
 	if(is_type_in_list(I, food_type))

@@ -13,7 +13,6 @@
 	animate_movement = SLIDE_STEPS
 	flags_1 = HEAR_1
 	hud_possible = list(ANTAG_HUD)
-	pressure_resistance = 8
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 	throwforce = 10
 	vis_flags = VIS_INHERIT_PLANE
@@ -219,6 +218,9 @@
 
 	///Allows a datum to intercept all click calls this mob is the source of
 	var/datum/click_intercept
+
+	///For storing what do_after's someone has, key = string, value = amount of interactions of that type happening.
+	var/list/do_afters
 
 	///THe z level this mob is currently registered in
 	var/registered_z = null
