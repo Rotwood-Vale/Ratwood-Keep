@@ -322,6 +322,9 @@
 
 	if(!obj_turf)
 		return
+	
+	if(!obj_turf.outdoor_effect)
+		return
 
 	if(obj_turf.outdoor_effect?.weatherproof)
 		return
