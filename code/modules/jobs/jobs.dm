@@ -128,23 +128,24 @@ GLOBAL_LIST_INIT(job_assignment_order, get_job_assignment_order())
 /proc/get_job_assignment_order()
 	var/list/sorting_order = list()
 	sorting_order += GLOB.noble_positions
+	sorting_order += GLOB.church_positions
 	sorting_order += GLOB.courtier_positions
 	sorting_order += GLOB.garrison_positions
-	sorting_order += GLOB.church_positions
 	sorting_order += GLOB.inquisition_positions
 	sorting_order += GLOB.yeoman_positions
 	sorting_order += GLOB.peasant_positions
 	sorting_order += GLOB.youngfolk_positions
 	sorting_order += GLOB.mercenary_positions
 	sorting_order += GLOB.foreigner_positions
+
 	return sorting_order
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(
-	EXP_TYPE_TOWNER = list("titles" = peasant_positions | apprentices_positions | youngfolk_positions | serf_positions),
-	EXP_TYPE_NOBLE = list("titles" = noble_positions),
-	EXP_TYPE_CHURCH = list("titles" = church_positions),
+	EXP_TYPE_TOWNER = list("titles" = peasant_positions | yeoman_positions | youngfolk_positions),
+	EXP_TYPE_NOBLE = list("titles" = noble_positions | courtier_positions),
+	EXP_TYPE_CHURCH = list("titles" = church_positions | inquisition_positions),
 	EXP_TYPE_GUARDS = list("titles" = garrison_positions),
-	EXP_TYPE_ADVENTURER = list("titles" = allmig_positions),
+	EXP_TYPE_ADVENTURER = list("titles" = foreigner_positions | mercenary_positions),
 ))
 
 GLOBAL_LIST_INIT(exp_specialmap, list(
@@ -152,6 +153,7 @@ GLOBAL_LIST_INIT(exp_specialmap, list(
 	EXP_TYPE_ANTAG = list(),
 	EXP_TYPE_GHOST = list() // dead people, observers
 ))
+
 GLOBAL_PROTECT(exp_jobsmap)
 GLOBAL_PROTECT(exp_specialmap)
 

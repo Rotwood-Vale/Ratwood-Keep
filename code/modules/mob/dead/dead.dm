@@ -79,8 +79,6 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	for(var/datum/job/job in SSjob.occupations)
 		if(!job)
 			continue
-		if(!job.shows_in_list)
-			continue
 		var/readiedas = 0
 		var/list/PL = list()
 		for(var/mob/dead/new_player/player in GLOB.player_list)

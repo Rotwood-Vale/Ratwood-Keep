@@ -18,6 +18,8 @@
 #define ROLE_ZIZOIDCULTIST		"Cultist"
 #define ROLE_LICH				"Lich"
 
+#define ROLE_NECRO_SKELETON		"Necromancer Skeleton"
+
 
 GLOBAL_LIST_INIT(special_roles_rogue, list(
 	ROLE_MANIAC = /datum/antagonist/maniac,
