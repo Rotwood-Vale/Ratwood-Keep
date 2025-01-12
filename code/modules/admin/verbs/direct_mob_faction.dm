@@ -1,6 +1,6 @@
 /client/proc/mass_direct()
 	set name = "Direct Mobs"
-	set category = "Admin"
+	set category = "GameMaster"
 	if(holder)
 		holder.mass_direct_mobs()
 
