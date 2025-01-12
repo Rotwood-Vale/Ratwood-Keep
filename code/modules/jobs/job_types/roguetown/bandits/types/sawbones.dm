@@ -37,12 +37,11 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //Given for consistencysake as the idol still provides scalemail.
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC) // Vital for any surgical role dealing in potentially decaying bodies.
 	H.change_stat("strength", 2)
-	H.change_stat("intelligence", 3)
+	H.change_stat("intelligence", -2)
 	H.change_stat("speed", 1)
 	H.change_stat("fortune", 1)
 	if(H.age == AGE_OLD)
 		H.change_stat("speed", -1)
-		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/docheal)
