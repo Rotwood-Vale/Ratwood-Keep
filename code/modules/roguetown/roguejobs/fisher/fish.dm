@@ -116,6 +116,47 @@
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 
+/obj/item/reagent_containers/food/snacks/fish/oyster
+	name = "oyster"
+	desc = "Description goes here"
+	icon_state = "oysters"
+	sellprice = 5
+	var/closed
+	var/pearl 
+
+/obj/item/reagent_containers/food/snacks/fish/oyster/Initialize()
+	. = ..()
+	var/pearl_chosen = pickweight(list("bpearl" = 1, "pearl" =40, "nopearl"=200))
+	switch(pearl_chosen)
+		if("nopearl")
+			pearl = null
+		if("pearl")
+			pearl = /obj/item/pearl
+		if("bpearl")
+			pearl = /obj/item/pearl/black
+	closed = TRUE
+
+/obj/item/reagent_containers/food/snacks/fish/oyster/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/rogueweapon/huntingknife))
+		if(closed)
+			user.visible_message("<span class='notice'>[user] opens the oyster with the knife.</span>")
+			closed = FALSE
+			if(pearl)
+				icon_state = "oysters_pearl"
+			else
+				icon_state = "oysters_nopearl"
+
+/obj/item/reagent_containers/food/snacks/fish/oyster/attack_right(mob/user)
+	if(user.get_active_held_item())
+		return
+	else
+		if(pearl && !closed)
+			var/obj/item/pearl/P
+			for(P in src)
+				user.put_in_hands(P)
+				pearl = null
+				icon_state = "oysters_nopearl"
+
 /obj/item/reagent_containers/food/snacks/rogue/fryfish
 	icon = 'icons/roguetown/misc/fish.dmi'
 	trash = null
