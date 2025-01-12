@@ -137,17 +137,16 @@
 			if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 				H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-				pants = /obj/item/clothing/under/roguetown/trou/leather
-				shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
+				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
+				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
-				backr = /obj/item/rogueweapon/stoneaxe/battle
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
-				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/bikini
+				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 				shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
-				backr = /obj/item/rogueweapon/stoneaxe/battle
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather
