@@ -215,6 +215,16 @@
 	name = "amulet of Malum"
 	icon_state = "malum"
 	desc = ""
+
+/obj/item/clothing/neck/roguetown/psicross/pearl //put it as a psycross so it can be used for miracles
+	name = "pearl amulet"
+	icon_state = "pearlcross"
+	desc = "An amulet made of white pearls, usually worn by fishers or sailors."
+
+/obj/item/psicross/neck/roguetown/psicross/bpearl
+	name = "blue pearl amulet"
+	icon_state = "bpearlcross"
+	desc = "An amulet made of rare blue pearls, usually worn by priests and worshippers of Abyssor, or as lucky charms for captains of ships."
 	
 /obj/item/clothing/neck/roguetown/psicross/eora
 	name = "amulet of Eora"
