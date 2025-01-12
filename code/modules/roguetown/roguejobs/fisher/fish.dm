@@ -118,22 +118,22 @@
 
 /obj/item/reagent_containers/food/snacks/fish/oyster
 	name = "oyster"
-	desc = "Description goes here"
+	desc = "Description goes here" //Still need icons for all of the rarities
 	icon_state = "oysters"
 	sellprice = 5
 	var/closed
-	var/pearl 
+	var/obj/item/pearl
 
 /obj/item/reagent_containers/food/snacks/fish/oyster/Initialize()
 	. = ..()
-	var/pearl_chosen = pickweight(list("bpearl" = 1, "pearl" =40, "nopearl"=200))
+	var/pearl_chosen = pickweight(list("bpearl" = 1, "pearl" =40, "nopearl"=200)) //rarities should probably be changed later
 	switch(pearl_chosen)
 		if("nopearl")
 			pearl = null
 		if("pearl")
-			pearl = /obj/item/pearl
+			pearl = new /obj/item/pearl(src)
 		if("bpearl")
-			pearl = /obj/item/pearl/black
+			pearl = new /obj/item/pearl/black(src)
 	closed = TRUE
 
 /obj/item/reagent_containers/food/snacks/fish/oyster/attackby(obj/item/I, mob/user, params)
@@ -142,7 +142,7 @@
 			user.visible_message("<span class='notice'>[user] opens the oyster with the knife.</span>")
 			closed = FALSE
 			if(pearl)
-				icon_state = "oysters_pearl"
+				icon_state = "oysters_pearl" //pearls should probably be made into an overlay later, for all of the rarities
 			else
 				icon_state = "oysters_nopearl"
 
@@ -150,12 +150,10 @@
 	if(user.get_active_held_item())
 		return
 	else
-		if(pearl && !closed)
-			var/obj/item/pearl/P
-			for(P in src)
-				user.put_in_hands(P)
-				pearl = null
-				icon_state = "oysters_nopearl"
+		if(pearl)
+			user.put_in_hands(pearl)
+			pearl = null
+			icon_state = "oysters_nopearl"
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish
 	icon = 'icons/roguetown/misc/fish.dmi'

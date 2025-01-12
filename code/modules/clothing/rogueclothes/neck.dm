@@ -221,7 +221,7 @@
 	icon_state = "pearlcross"
 	desc = "An amulet made of white pearls, usually worn by fishers or sailors."
 
-/obj/item/psicross/neck/roguetown/psicross/bpearl
+/obj/item/clothing/neck/roguetown/psicross/bpearl
 	name = "blue pearl amulet"
 	icon_state = "bpearlcross"
 	desc = "An amulet made of rare blue pearls, usually worn by priests and worshippers of Abyssor, or as lucky charms for captains of ships."
