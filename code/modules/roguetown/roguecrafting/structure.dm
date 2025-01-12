@@ -416,6 +416,15 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 
+/datum/crafting_recipe/roguetown/structure/standingblue
+	name = "standing fire (blue)"
+	result = /obj/machinery/light/rogue/firebowl/standing/blue
+	reqs = list(/obj/item/natural/stone = 1,
+				/obj/item/rogueore/coal = 1,
+				/obj/item/ash = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+
 /datum/crafting_recipe/roguetown/structure/oven
 	name = "oven"
 	result = /obj/machinery/light/rogue/oven
