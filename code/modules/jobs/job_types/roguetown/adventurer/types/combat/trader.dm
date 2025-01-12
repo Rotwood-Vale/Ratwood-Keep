@@ -6,9 +6,9 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/trader
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	traits_applied = list(TRAIT_OUTLANDER, TRAIT_SEEPRICES)
-	classes = list("Peddler" = "You make your coin peddling in spices and illicit wares.",
-					"Brewer" = "You make your coin peddling imported alcohols from all over the world.",
-					"Jeweler" = "You make your coin peddling exotic jewelry and gems.")
+	classes = list("Peddler" = "You make your coin peddling in spices and performing back-alley 'medical' procedures. Hope your patient didn't need that kidney.",
+					"Brewer" = "You make your coin peddling imported alcohols from all over the world, though you're no stranger to the craft, and have experience brewing your own ale in a pinch.",
+					"Jeweler" = "You make your coin peddling exotic jewelry, gems, and shiny things.")
 
 /datum/outfit/job/roguetown/adventurer/trader/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -46,7 +46,7 @@
 			H.change_stat("speed", 1)
 
 		if("Brewer")
-			to_chat(H, span_warning("You make your coin peddling imported alcohols from all over the world."))
+			to_chat(H, span_warning("You make your coin peddling imported alcohols from all over the world, though you're no stranger to the craft, and have experience brewing your own ale in a pinch."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
@@ -72,7 +72,7 @@
 			H.change_stat("constitution", 1)
 
 		if ("Jeweler")
-			to_chat(H, span_warning("You make your coin peddling exotic jewelry and gems."))
+			to_chat(H, span_warning("You make your coin peddling exotic jewelry, gems, and shiny things."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
