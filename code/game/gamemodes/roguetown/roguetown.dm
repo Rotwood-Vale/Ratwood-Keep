@@ -94,19 +94,17 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	if(!forced && world.time < next_check_lord)
 		return
 	next_check_lord = world.time + 1 MINUTES
-	var/lord_found = FALSE
 	var/lord_dead = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(H.mind)
 			if(H.job == "Duke")
-				lord_found = TRUE
 				if(H.stat == DEAD)
 					lord_dead = TRUE
 				else
 					if(lord_dead)
 						lord_dead = FALSE
 					break
-	if(lord_dead || !lord_found)
+	if(lord_dead)
 		if(!missing_lord_time)
 			missing_lord_time = world.time
 		if(world.time > missing_lord_time + 10 MINUTES)
