@@ -20,7 +20,7 @@
 	//Obnoxiously 3D -- INCREASE Z level to make them further away
 	transform			   = list( 1, 0, 0,  0  ,
 								   0, 1, 0,  0  ,
-								   0, 0, 1, 1/2, //Get twice as Small every 2 Z
+								   0, 0, 1, 1/4, //Get twice as Small every 4 Z
 								   0, 0, 0,  1  )
 
 //Animate particle effect to a severity
@@ -164,7 +164,7 @@
 	addtimer(CALLBACK(src, PROC_REF(wind_down)), weather_duration)
 
 	if(particleEffectType)
-		SSParticleWeather.SetparticleEffect(new particleEffectType);
+		SSParticleWeather.SetparticleEffect(new particleEffectType, blend_type, filter_type);
 
 	if(weather_special_effect)
 		SSParticleWeather.weather_special_effect = new weather_special_effect(src)
@@ -322,7 +322,7 @@
 
 	if(!obj_turf)
 		return
-	
+
 	if(!obj_turf.outdoor_effect)
 		return
 

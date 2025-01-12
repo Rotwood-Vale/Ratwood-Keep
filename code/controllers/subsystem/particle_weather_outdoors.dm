@@ -236,6 +236,9 @@ SUBSYSTEM_DEF(outdoor_effects)
 		var/static/datum/lighting_corner/dummy/dummy_lighting_corner = new
 
 		var/list/corners = OE.source_turf.corners
+		if(!length(corners))
+			OE.source_turf.generate_missing_corners()
+			corners = OE.source_turf.corners
 		var/datum/lighting_corner/cr = corners[3] || dummy_lighting_corner
 		var/datum/lighting_corner/cg = corners[2] || dummy_lighting_corner
 		var/datum/lighting_corner/cb = corners[4] || dummy_lighting_corner
