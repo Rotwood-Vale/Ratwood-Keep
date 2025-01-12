@@ -590,7 +590,6 @@
 	var/cmode_music = list(
 						'sound/music/combat.ogg',
 						'sound/music/combat2.ogg',
-						'sound/music/combat_HEAVY_METAL.ogg',
 						'sound/music/combat_weird.ogg',
 						)
 
