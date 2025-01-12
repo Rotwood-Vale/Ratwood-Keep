@@ -51,10 +51,10 @@
 		if("billhook")
 			r_hand = /obj/item/rogueweapon/spear/billhook
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		if ("halberd")
+		if("halberd")
 			r_hand = /obj/item/rogueweapon/halberd
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		if ("zweihander")
+		if("zweihander")
 			r_hand = /obj/item/rogueweapon/greatsword/zwei
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		else

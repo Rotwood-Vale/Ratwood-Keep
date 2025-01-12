@@ -56,11 +56,11 @@
 	switch(chosen_weapon)
 		if("billhook")
 			r_hand = /obj/item/rogueweapon/spear/billhook
-		if ("halberd")
+		if("halberd")
 			r_hand = /obj/item/rogueweapon/halberd
-		if ("zweihander")
+		if("zweihander")
 			r_hand = /obj/item/rogueweapon/greatsword/zwei
-		if ("estoc")
+		if("estoc")
 			r_hand = /obj/item/rogueweapon/estoc
 		else
 			r_hand = /obj/item/rogueweapon/halberd
