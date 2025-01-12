@@ -19,24 +19,26 @@
 	switch(classchoice)
 	
 		if("Peddler")
-			to_chat(H, span_warning("You make your coin peddling in spices and illicit wares."))
+			to_chat(H, span_warning("You make your coin peddling in spices and performing back-alley 'medical' procedures. Hope your patient didn't need that kidney."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 			head = /obj/item/clothing/head/roguetown/roguehood
 			mask = /obj/item/clothing/mask/rogue/facemask/steel
 			shoes = /obj/item/clothing/shoes/roguetown/boots
+			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			shirt = /obj/item/clothing/suit/roguetown/shirt/robe
 			belt = /obj/item/storage/belt/rogue/leather
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			beltr = /obj/item/storage/belt/rogue/surgery_bag/full
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/reagent_containers/powder/spice = 2, /obj/item/reagent_containers/powder/ozium = 1, /obj/item/reagent_containers/powder/moondust = 2)
 			H.change_stat("intelligence", 3)
@@ -46,13 +48,15 @@
 		if("Brewer")
 			to_chat(H, span_warning("You make your coin peddling imported alcohols from all over the world."))
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
 			mask = /obj/item/clothing/mask/rogue/ragmask
 			shoes = /obj/item/clothing/shoes/roguetown/boots
+			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			cloak = /obj/item/clothing/suit/roguetown/armor/longcoat
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/red
@@ -74,6 +78,8 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 2, TRUE)
 			mask = /obj/item/clothing/mask/rogue/facemask/goldmask
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/black
