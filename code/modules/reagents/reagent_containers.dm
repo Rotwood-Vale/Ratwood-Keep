@@ -35,14 +35,14 @@
 
 	if(spillable)
 		GLOB.weather_act_upon_list |= src
-/*
+
 /obj/item/reagent_containers/weather_act_on(weather_trait, severity)
 	if(weather_trait != PARTICLEWEATHER_RAIN || !COOLDOWN_FINISHED(src, fill_cooldown))
 		return
 
 	reagents.add_reagent(/datum/reagent/water, clamp(severity * 0.5, 1, 5))
 	COOLDOWN_START(src, fill_cooldown, 10 SECONDS)
-*/
+
 /obj/item/reagent_containers/Destroy()
 	. = ..()
 	if(spillable)
