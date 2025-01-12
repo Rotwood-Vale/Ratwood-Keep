@@ -48,11 +48,12 @@
 	if(!produce_ready)
 		return
 	apply_farming_fatigue(user, 5)
-	add_sleep_experience(user, /datum/skill/labor/farming, user.STAINT * 2)
+	add_sleep_experience(user, /datum/skill/labor/farming, user.STAINT) //Half now
 
 	var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
 	var/chance_to_ruin = 50 - (farming_skill * 25)
 	if(prob(chance_to_ruin))
+		adjust_plant_health(-30)
 		ruin_produce()
 		to_chat(user, span_warning("I ruin the produce..."))
 		return
@@ -62,11 +63,17 @@
 	if(prob(chance_to_ruin_single))
 		feedback = "I harvest the produce, ruining a little."
 		modifier -= 1
+		adjust_plant_health(-10) //Same as stepping on it
+		if(plant_health <= 0)
+			to_chat(user, span_warning("I ruin the produce..."))
+			ruin_produce()
+			return
 	var/chance_to_get_extra = -75 + (farming_skill * 25)
 	if(prob(chance_to_get_extra))
 		feedback = "I harvest the produce well."
 		modifier += 1
 
+	add_sleep_experience(user, /datum/skill/labor/farming, user.STAINT) //Half when you succeed
 	to_chat(user, span_notice(feedback))
 	yield_produce(modifier)
 
@@ -581,9 +588,6 @@
 	produce_ready = FALSE
 	if(!plant.perennial)
 		uproot()
-	else
-		adjust_plant_health(-30)
-		adjust_weeds(10) //Cuz I'm evil
 	update_icon()
 
 /// Yields produce on its tile if it's ready for harvest
