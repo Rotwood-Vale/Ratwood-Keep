@@ -30,7 +30,6 @@
 
 	family_blacklisted = TRUE
 
-
 	cmode_music = 'sound/music/combat_bandit2.ogg'
 
 /datum/job/roguetown/bandit/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -49,3 +48,4 @@
 	var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
 	H.mind.add_antag_datum(new_antag)
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
+

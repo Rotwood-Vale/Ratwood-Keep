@@ -16,7 +16,7 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
@@ -27,15 +27,50 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	shoes = /obj/item/clothing/shoes/roguetown/armor
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
-	mask = /obj/item/clothing/mask/rogue/facemask/steel
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	var/mask2choose = pickweight(list("Shepherd" = 1, "Iron" = 1, "Steel" = 1))
+	switch(mask2choose)
+		if("Shepherd")
+			mask = /obj/item/clothing/mask/rogue/shepherd
+		if("Iron")
+			mask = /obj/item/clothing/mask/rogue/facemask
+		if("Steel")
+			mask = /obj/item/clothing/mask/rogue/facemask/steel
+	var/neck2choose = pickweight(list("Coif" = 1, "Chaincoif" = 2, "Gorget" = 2))
+	switch(neck2choose)
+		if("Coif")
+			neck = /obj/item/clothing/neck/roguetown/coif
+		if("Chaincoif")
+			neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+		if("Gorget")
+			neck = /obj/item/clothing/neck/roguetown/gorget
+	var/armor2choose = pickweight(list("Hide" = 2, "Leather" = 2, "Chain" = 1))
+	switch(armor2choose)
+		if("Gambeson")
+			armor = /obj/item/clothing/suit/roguetown/armor/leather
+			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+		if("Paddedr")
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+			wrists = /obj/item/clothing/wrists/roguetown/bracers
+		if("Chain")
+			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+	var/pants2choose = pickweight(list("Leather" = 1, "Chain" = 1))
+	switch(pants2choose)
+		if("Leather")
+			pants = /obj/item/clothing/under/roguetown/trou/leather
+		if("Chain")
+			pants = /obj/item/clothing/under/roguetown/chainlegs
+	var/boots2choose = pickweight(list("Dark" = 1, "Leather" = 1))
+	switch(boots2choose)
+		if("Dark")
+			shoes = /obj/item/clothing/shoes/roguetown/armor
+		if("Leather")
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	H.change_stat("strength", 2) //less buffs than brigand but less int debuff also somewhat faster
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
@@ -49,6 +84,7 @@
 	switch(weapon_choice)
 		if("Spear") //Deserter watchman. Maybe should be shield and spear? plenty of shields at the bandit hideout though.
 			r_hand = /obj/item/rogueweapon/spear
+			beltr = /obj/item/rogueweapon/huntingknife
 			head = /obj/item/clothing/head/roguetown/helmet/skullcap
 		if("Sword & Shield") //Mercenary on the wrong side of the law
 			backl= /obj/item/rogueweapon/shield/wood

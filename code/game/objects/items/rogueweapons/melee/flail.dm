@@ -91,6 +91,26 @@
 	smeltresult = /obj/item/ingot/steel
 	minstr = 5
 
+/obj/item/rogueweapon/flail/crusher
+	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash)
+	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/flail/strike/smashrange)
+	force_wielded = 24
+	name = "crusher"
+	desc = "A very long, heavy flail."
+	icon_state = "crusher"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	bigboy = TRUE
+	gripsprite = TRUE
+	wlength = WLENGTH_LONG
+	slot_flags = FALSE
+	swingsound = BLUNTWOOSH_HUGE
+	minstr = 10
+	walking_stick = TRUE
+
 
 /datum/intent/whip/lash
 	name = "lash"

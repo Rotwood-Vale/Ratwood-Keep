@@ -128,14 +128,14 @@
 		ammo += B
 	update_icon()
 
-/*
-/obj/item/ammo_holder/Parrows/Initialize()
+
+/obj/item/ammo_holder/quiver/poisonarrows/Initialize()
 	..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/ammo_casing/caseless/rogue/arrow/poison/A = new()
-		arrows += A
+		ammo += A
 	update_icon()
-
+/*
 /obj/item/ammo_holder/Pbolts/Initialize()
 	..()
 	for(var/i in 1 to max_storage)

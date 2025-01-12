@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/bandit/roguemage
 	category_tags = list(CTAG_BANDIT)
 	cmode_music = 'sound/music/combat_bandit_mage.ogg'
-	maximum_possible_slots = 2
+	maximum_possible_slots = 0
 
 /datum/outfit/job/roguetown/bandit/roguemage/pre_equip(mob/living/carbon/human/H)
 	..()

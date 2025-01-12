@@ -804,6 +804,71 @@ obj/structure/bars/steel
 	icon_state = "evilidol"
 	icon = 'icons/roguetown/misc/structure.dmi'
 
+/obj/structure/fluff/statue/evil/attackby(obj/item/W, mob/user, params)
+	if(user.mind)
+		var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
+		if(B)
+			if(istype(W, /obj/item/roguecoin) || istype(W, /obj/item/roguegem) || istype(W, /obj/item/reagent_containers/glass/cup/silver) || istype(W, /obj/item/reagent_containers/glass/cup/golden) || istype(W, /obj/item/clothing/ring) || istype(W, /obj/item/clothing/head/roguetown/crown) || istype(W, /obj/item/roguestatue))
+				if(B.tri_amt >= 10)
+					to_chat(user, "<span class='warning'>The mouth doesn't open.</span>")
+					return
+				if(!istype(W, /obj/item/roguecoin))
+					B.contrib += (W.get_real_price() / 2) //sell jewerly and other fineries, though at a lesser price compared to fencing them first
+				else
+					B.contrib += W.get_real_price()
+				if(B.contrib >= 100)
+					B.tri_amt++
+					user.mind.adjust_triumphs(1)
+					B.contrib -= 100
+					var/obj/item/I
+					switch(B.tri_amt)
+						if(1)
+							I = new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(user.loc)
+						if(2)
+							if(user.mind.get_skill_level(/datum/skill/misc/lockpicking) > 2)
+								I = new /obj/item/lockpickring/mundane(user.loc)
+							else if(user.mind.get_skill_level(/datum/skill/combat/wrestling) > 3)
+								I = new /obj/item/clothing/head/roguetown/helmet/horned(user.loc)
+							else
+								I = new /obj/item/natural/bundle/cloth/bandage/full(user.loc)
+						if(3)
+							I = new /obj/item/reagent_containers/powder/moondust(user.loc)
+						if(4)
+							if(user.mind.get_skill_level(/datum/skill/combat/polearms) > 2)
+								I = new /obj/item/rogueweapon/halberd/bardiche(user.loc)
+							else if(user.mind.get_skill_level(/datum/skill/combat/bows) > 2)
+								I = new /obj/item/ammo_holder/quiver/poisonarrows(user.loc)
+							else if(user.mind.get_skill_level(/datum/skill/combat/swords) > 2)
+								I = new /obj/item/rogueweapon/sword/long(user.loc)
+							else
+								I = new /obj/item/rogueweapon/mace/steel(user.loc)
+						if(6)
+							if(HAS_TRAIT(user, TRAIT_MEDIUMARMOR))
+								if(prob(50))
+									I = new /obj/item/clothing/suit/roguetown/armor/plate/scale(user.loc)
+								else
+									I = new /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk(user.loc)
+							if(HAS_TRAIT(user, TRAIT_DODGEEXPERT))
+								if(prob(50))
+									I = new /obj/item/clothing/suit/roguetown/armor/leather/studded(user.loc)							
+								else
+									I = new /obj/item/clothing/suit/roguetown/armor/chainmail/iron(user.loc)	
+							if(HAS_TRAIT(user, TRAIT_HEAVYARMOR))
+								if(prob(50))
+									I = new /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest(user.loc)
+						if(8)
+							I = new /obj/item/clothing/ring/active/nomag(user.loc)
+					if(I)
+						I.sellprice = 0
+					playsound(loc,'sound/items/carvgood.ogg', 50, TRUE)
+				else
+					playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
+				playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
+				qdel(W)
+				return
+	..()
+
+/* This system suited for use with the Hoard. Since disabled, trying the version above with individual rewards.
 // What items the idol will accept
 	var/treasuretypes = list(
 		/obj/item/roguecoin,
@@ -820,8 +885,10 @@ obj/structure/bars/steel
 		/obj/item/rogue/painting,
 		/obj/item/clothing/head/roguetown/crown/serpcrown,
 		/obj/item/clothing/head/roguetown/vampire,
+		/obj/item/reagent_containers/glass/cup/steel,
+		/obj/item/reagent_containers/glass/cup/silver,
+		/obj/item/reagent_containers/glass/cup/golden,
 		/obj/item/scomstone
-	)
 
 /obj/structure/fluff/statue/evil/attackby(obj/item/W, mob/user, params)
 	if(!HAS_TRAIT(user, TRAIT_COMMIE))
@@ -852,6 +919,8 @@ obj/structure/bars/steel
 				to_chat(user, span_warning("This item isn't a good offering."))
 				return
 	..()
+*/
+
 
 /obj/structure/fluff/psycross
 	name = "pantheon cross"

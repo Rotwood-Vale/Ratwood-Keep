@@ -31,13 +31,33 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	shoes = /obj/item/clothing/shoes/roguetown/armor
-	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
+	var/boots2choose = pickweight(list("Short" = 1,"Dark" = 2, "Leather" = 2))
+	switch(boots2choose)
+		if("Short")
+			shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		if("Dark")
+			shoes = /obj/item/clothing/shoes/roguetown/armor
+		if("Leather")
+			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+	var/mask2choose = pickweight(list("Rag" = 2, "Shepherd" = 2, "Steel" = 1))
+	switch(mask2choose)
+		if("Rag")
+			mask = /obj/item/clothing/mask/rogue/rag
+		if("Shepherd")
+			mask = /obj/item/clothing/mask/rogue/shepherd
+		if("Steel")
+			mask = /obj/item/clothing/mask/rogue/facemask/steel/hound
+	var/armor2choose = pickweight(list("Gambeson" = 1, "Leather" = 1))
+	switch(armor2choose)
+		if("Gambeson")
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+		if("Leather")
+			armor = /obj/item/clothing/suit/roguetown/armor/leather	
+			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	H.change_stat("strength", 1)
 	H.change_stat("constitution", 1)
-	H.change_stat("intelligence", -3)
+	H.change_stat("intelligence", -2)
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 2) //It's all about speed and perception
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) //gets dodge expert but no medium armor training - gotta stay light
@@ -47,12 +67,13 @@
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("2x Dagger") //Rogue
-			cloak = /obj/item/clothing/cloak/raincloak
+			head = /obj/item/clothing/head/roguetown/roguehood/reinforced
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 			H.change_stat("speed", 2)
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
