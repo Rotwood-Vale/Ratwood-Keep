@@ -31,6 +31,8 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/roguehood
 			mask = /obj/item/clothing/mask/rogue/facemask/steel
 			shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -56,6 +58,8 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			mask = /obj/item/clothing/mask/rogue/ragmask/black
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -82,6 +86,8 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			mask = /obj/item/clothing/mask/rogue/lordmask
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/black
@@ -109,6 +115,8 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			head = /obj/item/clothing/head/roguetown/roguehood/black
 			mask = /obj/item/clothing/mask/rogue/skullmask
 			shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -120,6 +128,8 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 			beltl = /obj/item/flashlight/flare/torch/lantern
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			backpack_contents = list(/obj/item/clothing/neck/roguetown/psicross = 2, /obj/item/clothing/neck/roguetown/psicross/silver = 1, /obj/item/clothing/neck/roguetown/psicross/wood = 2)
 			H.change_stat("intelligence", 3)
@@ -129,11 +139,13 @@
 
 		if ("Scholar")
 			to_chat(H, span_warning("You are a scholar traveling the world in order to write a book about your ventures. You trade in stories and tales of your travels."))
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/roguehood/black
 			mask = /obj/item/clothing/mask/rogue/spectacles/golden
 			shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -144,7 +156,8 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 			beltl = /obj/item/flashlight/flare/torch/lantern
-			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
+			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			backpack_contents = list(/obj/item/paper/scroll = 3, /obj/item/natural/feather = 1, /obj/item/book/rogue/knowledge1 = 1)
 			H.change_stat("intelligence", 3)
 			H.change_stat("perception", 1)
