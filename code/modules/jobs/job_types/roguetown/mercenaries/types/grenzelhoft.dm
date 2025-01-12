@@ -36,17 +36,30 @@
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel
 
-	//quick and gay way to do random loadouts
-	var/equipment = rand(1, 3)
-	if(equipment == 1)
-		r_hand = /obj/item/rogueweapon/spear/billhook
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-	else if (equipment == 2)
-		r_hand = /obj/item/rogueweapon/halberd
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-	else if (equipment == 3)
-		r_hand = /obj/item/rogueweapon/greatsword/zwei
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	var/list/weapon_options = list(
+		"billhook",
+		"halberd",
+		"zweihander",
+	)
+
+	var/chosen_weapon = input(
+		"Pick a weapon",
+		"Available weapons",
+	) as anything in weapon_options
+
+	switch(chosen_weapon)
+		if("billhook")
+			r_hand = /obj/item/rogueweapon/spear/billhook
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+		if ("halberd")
+			r_hand = /obj/item/rogueweapon/halberd
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+		if ("zweihander")
+			r_hand = /obj/item/rogueweapon/greatsword/zwei
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		else
+			r_hand = /obj/item/rogueweapon/halberd
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 
 	//Humie grenzelhofts are always set to be, well, grenzelhoft
 	if(ishumannorthern(H))
