@@ -61,6 +61,7 @@ proc/get_surroundings(mob/user)
 			continue
 		if(I.flags_1 & HOLOGRAM_1)
 			continue
+		if(istype(I, /obj/item/natural/bundle))
 			var/obj/item/natural/bundle/B = I
 			surroundings["other"][B.stacktype] += B.amount
 		else if(I.tool_behaviour)
