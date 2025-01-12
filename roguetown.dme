@@ -1927,6 +1927,7 @@
 #include "modular_azurepeak\code\modules\jobs\job_types\roguetown\vagabond\wanted.dm"
 #include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\minotaur.dm"
 #include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\dragon.dm"
+#include "modular_azurepeak\code\modules\mob\living\simple_animal\rogue\creacher\gethsmane.dm"
 #include "modular_azurepeak\code\modules\spells\minion_order.dm"
 #include "modular_azurepeak\code\modules\spells\orison.dm"
 #include "modular_azurepeak\code\modules\spells\warscholar.dm"
@@ -2026,7 +2027,6 @@
 
 #include "code\datums\ai\subtrees\attack_adjacent_target.dm"
 #include "code\datums\ai\subtrees\attack_obstacle_in_path.dm"
-#include "code\datums\ai\subtrees\being_a_minion.dm"
 #include "code\datums\ai\subtrees\call_reinforcements.dm"
 #include "code\datums\ai\subtrees\find_food.dm"
 #include "code\datums\ai\subtrees\flee_nearest_target.dm"
