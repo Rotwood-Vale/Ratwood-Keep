@@ -20,7 +20,7 @@
 		if("Treasure Hunter")
 			
 			to_chat(H, span_warning("You are a treasure hunter trained in hunting for valuables. Discern what is treasure or not, your fortune could be hidden anywhere."))
-			mask = /obj/item/clothing/head/roguetown/roguehood/mage
+			mask = /obj/item/clothing/head/roguetown/roguehood
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			backl = /obj/item/storage/backpack/rogue/satchel
