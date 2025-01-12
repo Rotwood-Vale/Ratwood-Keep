@@ -587,7 +587,8 @@
 /obj/structure/soil/proc/ruin_produce()
 	produce_ready = FALSE
 	if(!plant.perennial)
-		uproot()
+		adjust_weeds(-100)
+		plant = null
 	update_icon()
 
 /// Yields produce on its tile if it's ready for harvest
