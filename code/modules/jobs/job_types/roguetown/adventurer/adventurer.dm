@@ -4,7 +4,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration, 40 SECONDS)
 GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 
 /datum/job/roguetown/adventurer
-	title = "Outlander"
+	title = "Adventurer"
 	flag = ADVENTURER
 	department_flag = PEASANTS
 	faction = "Station"

@@ -7,7 +7,7 @@
 	traits_applied = list(TRAIT_OUTLANDER)
 	vampcompat = FALSE
 	outfit = /datum/outfit/job/roguetown/adventurer/cleric
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 
 /datum/outfit/job/roguetown/adventurer/cleric
 	allowed_patrons = ALL_PATRONS
@@ -17,7 +17,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Monk","Paladin","Hymnist","Heretic")
+	var/classes = list("Monk","Paladin","Hymnist")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -123,57 +123,6 @@
 			C.grant_spells(H)
 			START_PROCESSING(SSobj, C)
 
-		if("Heretic")
-			to_chat(H, span_warning("You are a heretic, spurned by the church, cast out from society - frowned upon by Psydon and his children for your faith."))
-			if (H.patron != /datum/patron/inhumen/zizo && H.patron != /datum/patron/inhumen/matthios)
-				H.set_patron(pick(/datum/patron/inhumen/zizo, /datum/patron/inhumen/matthios)) // zizo/matthios are the only two ascendants with miracles
-			H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-			H.set_blindness(0)
-			var/weapons = list("Bastard Sword","Mace","Flail")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-			switch(weapon_choice)
-				if("Bastard Sword")
-					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-					beltr = /obj/item/rogueweapon/sword/long
-				if("Mace")
-					H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-					beltr = /obj/item/rogueweapon/mace/steel
-				if("Flail")
-					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-					beltr = /obj/item/rogueweapon/flail/sflail
-			H.change_stat("strength", 2)
-			H.change_stat("constitution", 2)
-			H.change_stat("endurance", 1)
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
-			cloak = /obj/item/clothing/cloak/cape/crusader
-			gloves = /obj/item/clothing/gloves/roguetown/chain/blk
-			pants = /obj/item/clothing/under/roguetown/chainlegs/blk
-			neck = /obj/item/clothing/neck/roguetown/gorget
-			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-			armor = /obj/item/clothing/suit/roguetown/armor/plate/blk
-			wrists = /obj/item/clothing/wrists/roguetown/bracers
-			shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blk
-			belt = /obj/item/storage/belt/rogue/leather/steel
-			backl = /obj/item/storage/backpack/rogue/satchel
-			backr = /obj/item/rogueweapon/shield/tower/metal
-			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
-			var/datum/devotion/C = new /datum/devotion(H, H.patron)
-			C.passive_devotion_gain += 0.25
-			C.grant_spells(H)
-			START_PROCESSING(SSobj, C)
-			GLOB.excommunicated_players += H.real_name
-
 	switch(H.patron?.type)
 		if(/datum/patron/old_god)
 			neck = /obj/item/clothing/neck/roguetown/psicross
@@ -214,18 +163,3 @@
 			beltl = /obj/item/roguekey/inhumen
 		if (/datum/patron/inhumen/matthios)
 			H.cmode_music = 'sound/music/combat_cult.ogg'
-			beltl = /obj/item/roguekey/inhumen
-
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-
-/obj/item/clothing/gloves/roguetown/chain/blk
-		color = CLOTHING_GREY
-
-/obj/item/clothing/under/roguetown/chainlegs/blk
-		color = CLOTHING_GREY
-
-/obj/item/clothing/suit/roguetown/armor/plate/blk
-		color = CLOTHING_GREY
-
-/obj/item/clothing/shoes/roguetown/boots/armor/blk
-		color = CLOTHING_GREY

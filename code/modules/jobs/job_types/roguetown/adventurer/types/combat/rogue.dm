@@ -5,12 +5,12 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/rogue
 	traits_applied = list(TRAIT_OUTLANDER)
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 
 /datum/outfit/job/roguetown/adventurer/rogue/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Treasure Hunter","Thief","Bard","Outlaw")
+	var/classes = list("Treasure Hunter","Thief","Bard",)
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	switch(classchoice)
 	
@@ -150,49 +150,3 @@
 			H.change_stat("intelligence", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 2)
-
-		if("Outlaw")
-			to_chat(H, span_warning("You're a seasoned criminal known for your heinous acts, your face plastered on wanted posters across the region. A life of theft, robbery, and ill-gotten-gains comes naturally to you."))
-			pants = /obj/item/clothing/under/roguetown/trou/leather
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
-			cloak = /obj/item/clothing/cloak/raincloak/mortus
-			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-			backl = /obj/item/storage/backpack/rogue/satchel
-			belt = /obj/item/storage/belt/rogue/leather
-			gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
-			shoes = /obj/item/clothing/shoes/roguetown/boots
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			beltl = /obj/item/lockpickring/mundane
-			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
-			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 5, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/traps, 5, TRUE)
-			H.cmode_music = 'sound/music/combat_rogue.ogg'
-			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_OUTLAW, TRAIT_GENERIC)
-			var/weapons = list("Rapier","Dagger")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-			H.set_blindness(0)
-			switch(weapon_choice)
-				if("Rapier")
-					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-					beltr = /obj/item/rogueweapon/sword/rapier
-				if("Dagger")
-					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-					beltr = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
-			H.change_stat("strength", -1)
-			H.change_stat("constitution", 1)
-			H.change_stat("endurance", 2)
-			H.change_stat("speed", 3)
-			GLOB.outlawed_players += H.real_name

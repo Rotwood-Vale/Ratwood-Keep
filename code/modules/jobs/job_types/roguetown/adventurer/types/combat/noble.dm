@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/noble
 	traits_applied = list(TRAIT_OUTLANDER)
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled
 
 /datum/outfit/job/roguetown/adventurer/noble/pre_equip(mob/living/carbon/human/H)
@@ -26,13 +26,13 @@
 			id = /obj/item/clothing/ring/silver
 			beltl = /obj/item/rogueweapon/sword/sabre/dec
 			if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
-			cloak = /obj/item/clothing/cloak/half/red
-			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/red
-			pants = /obj/item/clothing/under/roguetown/tights/black
+				cloak = /obj/item/clothing/cloak/half/red
+				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/red
+				pants = /obj/item/clothing/under/roguetown/tights/black
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
-			shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
-			pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/purple
-			cloak = /obj/item/clothing/cloak/raincloak/purple
+				shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
+				pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/purple
+				cloak = /obj/item/clothing/cloak/raincloak/purple
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)

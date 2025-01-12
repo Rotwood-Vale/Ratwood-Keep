@@ -6,13 +6,13 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 
 
 /datum/outfit/job/roguetown/adventurer/sfighter/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Battlemaster","Duelist","Barbarian","Deserter")
+	var/classes = list("Battlemaster","Duelist","Barbarian")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	backpack_contents = list(
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
@@ -151,59 +151,3 @@
 				backr = /obj/item/rogueweapon/stoneaxe/battle
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather
-
-		if("Deserter")
-			to_chat(H, span_warning("You were once a venerated and revered knight - now, a traitor who abandoned your liege. You live the life of an outlaw, shunned and looked down upon by society."))
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
-			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-			ADD_TRAIT (H, TRAIT_OUTLAW, TRAIT_GENERIC)
-			var/weapons = list("Estoc","Mace + Shield","Flail + Shield","Lucerne","Battle Axe")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-			H.set_blindness(0)
-			switch(weapon_choice)
-				if("Estoc")
-					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-					r_hand = /obj/item/rogueweapon/estoc
-					backr = /obj/item/gwstrap
-				if("Mace + Shield")
-					H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-					beltr = /obj/item/rogueweapon/mace/steel
-					backr = /obj/item/rogueweapon/shield/tower/metal
-				if("Flail + Shield")
-					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-					beltr = /obj/item/rogueweapon/flail/sflail
-					backr = /obj/item/rogueweapon/shield/tower/metal
-				if("Lucerne")
-					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-					r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
-					backr = /obj/item/gwstrap
-				if("Battle Axe")
-					H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-					backr = /obj/item/rogueweapon/stoneaxe/battle
-			H.change_stat("strength", 2)
-			H.change_stat("constitution", 2)
-			H.change_stat("endurance", 1)
-			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-			gloves = /obj/item/clothing/gloves/roguetown/chain
-			pants = /obj/item/clothing/under/roguetown/chainlegs
-			neck = /obj/item/clothing/neck/roguetown/bevor
-			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates
-			wrists = /obj/item/clothing/wrists/roguetown/bracers
-			shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-			belt = /obj/item/storage/belt/rogue/leather/steel
-			backl = /obj/item/storage/backpack/rogue/satchel
-			GLOB.outlawed_players += H.real_name

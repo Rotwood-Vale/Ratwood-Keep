@@ -4,13 +4,13 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/mage
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	traits_applied = list(TRAIT_OUTLANDER)
 
 /datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Sorcerer","Spellsinger","Necromancer")
+	var/classes = list("Sorcerer","Spellsinger")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -95,41 +95,3 @@
 					backr = /obj/item/rogue/instrument/viola
 				if("Vocal Talisman")
 					backr = /obj/item/rogue/instrument/vocals
-
-		if("Necromancer")
-			H.set_patron(/datum/patron/inhumen/zizo)
-			to_chat(H, span_warning("You have been ostracized and hunted by society for your dark magics and perversion of life."))
-			head = /obj/item/clothing/head/roguetown/roguehood/black
-			shoes = /obj/item/clothing/shoes/roguetown/boots
-			pants = /obj/item/clothing/under/roguetown/trou/leather
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
-			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			beltl = /obj/item/rogueweapon/huntingknife
-			backl = /obj/item/storage/backpack/rogue/satchel
-			backr = /obj/item/rogueweapon/woodstaff
-			backpack_contents = list(/obj/item/spellbook_unfinished/pre_arcyne = 1, /obj/item/roguegem/amethyst = 1, /obj/item/roguekey/inhumen = 1, /obj/item/flashlight/flare/torch = 1)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
-			ADD_TRAIT(H, TRAIT_ZOMBIE_IMMUNE, TRAIT_GENERIC)
-			H.cmode_music = 'sound/music/combat_cult.ogg'
-			if(H.age == AGE_OLD)
-				H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-				H.mind.adjust_spellpoints(1)
-			H.change_stat("intelligence", 4)
-			H.change_stat("endurance", 1)
-			H.change_stat("speed", 1)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bonechill)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_lesser_undead)
-			H.mind.adjust_spellpoints(1)
-			GLOB.excommunicated_players += H.real_name
