@@ -38,7 +38,7 @@
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC) // Vital for any surgical role dealing in potentially decaying bodies.
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", -2)
-	H.change_stat("speed", 1)
+	H.change_stat("speed", 2)
 	H.change_stat("fortune", 1)
 	if(H.age == AGE_OLD)
 		H.change_stat("speed", -1)
