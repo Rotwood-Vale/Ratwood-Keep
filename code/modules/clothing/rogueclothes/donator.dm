@@ -71,10 +71,10 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
-/datum/crafting_recipe/roguetown/leather/bikini
+/datum/crafting_recipe/roguetown/hunting/bikini
 	name = "leather bikini armor"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
-	reqs = list(/obj/item/natural/hide = 2)
+	reqs = list(/obj/item/natural/hide/cured = 2)
 	sellprice = 26
 
 /datum/anvil_recipe/armor/studdedbikini
