@@ -74,7 +74,7 @@
 			if(usedkey in GLOB.anonymize)
 				usedkey = get_fake_key(usedkey)
 			var/list/thinz = list("takes a seat.", "settles in.", "joins the session", "joins the table.", "becomes a player.")
-			SEND_TEXT(world, span_notice("[usedkey] [pick(thinz)]"))
+			to_chat(world, span_notice("[usedkey] [pick(thinz)]"))
 
 	if(funeral_respawn) // returned to lobby after memorialization
 		to_chat(src, span_notice("You were returned to the lobby after having been given a proper memorial."))
