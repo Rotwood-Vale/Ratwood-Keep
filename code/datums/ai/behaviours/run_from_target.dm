@@ -58,6 +58,8 @@
 			finish_action(controller, TRUE)
 		return
 
+	plot_path_away_from(controller, target)
+
 /datum/ai_behavior/run_away_from_target/proc/plot_path_away_from(datum/ai_controller/controller, atom/target)
 	var/turf/target_destination = get_turf(controller.pawn)
 	var/static/list/offset_angles = list(45, 90, 135, 180, 225, 270)
