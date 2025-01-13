@@ -269,8 +269,8 @@
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if((istype(H.dna?.species, /datum/species/tabaxi) || istype(H.dna?.species, /datum/species/lupian)) && sublimb_grabbed == BODY_ZONE_PRECISE_NECK)
-			if(!H.wear_armor && H.age == AGE_ADULT) // Armor check and adults only
-				H.Paralyze(60) // 6 seconds of paralysis
+			if(get_location_accessible(H, BODY_ZONE_PRECISE_NECK) && H.age == AGE_ADULT) // Is the neck accessible? Also, only applies to adults
+				H.Paralyze(20) // 2 seconds of paralysis
 				to_chat(H, span_userdanger("You go limp as your scruff is twisted!"))
 				to_chat(user, span_warning("You twist [H]'s scruff, causing them to go limp!"))
 
