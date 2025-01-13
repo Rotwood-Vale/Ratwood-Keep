@@ -3,7 +3,11 @@
 
 /obj/item/storage/bag/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete/roguetown/tray)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.allow_quick_gather = TRUE
+	STR.allow_quick_empty = TRUE
+	STR.display_numerical_stacking = TRUE
+	STR.click_gather = TRUE
 
 /*
  * Trays - Agouri
@@ -25,6 +29,13 @@
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "tray_psy"
 	desc = ""
+
+/obj/item/storage/bag/tray/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.insert_preposition = "on"
+	STR.max_w_class = WEIGHT_CLASS_NORMAL // changed to fit platters, take care if its abused
+	update_icon()
 
 /obj/item/storage/bag/tray/Moved()
 	. = ..()

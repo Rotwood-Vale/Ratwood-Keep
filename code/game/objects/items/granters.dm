@@ -118,9 +118,6 @@
 	var/spell
 	var/spellname = "conjure bugs"
 
-	grid_width = 64
-	grid_height = 32
-
 /obj/item/book/granter/spell/already_known(mob/user)
 	if(!spell)
 		return TRUE
