@@ -166,4 +166,4 @@
 		if (/datum/patron/inhumen/matthios)
 			H.cmode_music = 'sound/music/combat_cult.ogg'
 
-H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
