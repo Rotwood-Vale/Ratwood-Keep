@@ -482,7 +482,7 @@
 		return
 	else
 		var/obj/item/key/K = I
-		if(K.lockhash == lockhash)
+		if(K.lockhash == lockhash || istype(K, /obj/item/key/lord))
 			lock_toggle(user)
 			if(autobump)
 				src.Open()
