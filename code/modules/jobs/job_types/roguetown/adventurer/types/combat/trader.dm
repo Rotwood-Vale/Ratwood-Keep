@@ -128,8 +128,6 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 			beltl = /obj/item/flashlight/flare/torch/lantern
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			backpack_contents = list(/obj/item/clothing/neck/roguetown/psicross = 2, /obj/item/clothing/neck/roguetown/psicross/silver = 1, /obj/item/clothing/neck/roguetown/psicross/wood = 2)
 			H.change_stat("intelligence", 3)
