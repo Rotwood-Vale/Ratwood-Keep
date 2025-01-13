@@ -24,6 +24,7 @@
 	insert_preposition = "on"
 	allow_quick_gather = TRUE
 	allow_quick_empty = TRUE
+	display_numerical_stacking = TRUE
 	click_gather = TRUE
 
 /datum/component/storage/concrete/roguetown/belt
@@ -75,8 +76,8 @@
 
 /datum/component/storage/concrete/roguetown/sack
 	max_w_class = WEIGHT_CLASS_NORMAL
-	screen_max_rows = 3
-	screen_max_columns = 3
+	screen_max_rows = 4
+	screen_max_columns = 4
 	click_gather = TRUE
 	collection_mode = COLLECT_EVERYTHING
 	dump_time = 0

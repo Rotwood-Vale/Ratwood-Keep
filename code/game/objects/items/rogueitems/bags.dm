@@ -40,19 +40,29 @@
 	else
 		return TRUE
 
-/obj/item/storage/backpack/rogue/attack_right(mob/user)
-	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
-	if(CP)
-		CP.rmb_show(user)
-		return TRUE
+/obj/item/storage/roguebag/attack_right(mob/user)
+	. = ..()
+	if(.)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	testing("yea144")
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	var/list/things = STR.contents()
+	if(things.len)
+		testing("yea64")
+		var/obj/item/I = pick(things)
+		STR.remove_from_storage(I, get_turf(user))
+		user.put_in_hands(I)
 
 /obj/item/storage/roguebag/update_icon()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	var/list/things = STR.contents()
 	if(things.len)
 		icon_state = "fbag"
+		w_class = WEIGHT_CLASS_BULKY
 	else
 		icon_state = "cbag"
+		w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/roguebag/getonmobprop(tag)
 	. = ..()

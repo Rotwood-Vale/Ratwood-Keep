@@ -1,31 +1,36 @@
+/obj/item/storage/bag
+	slot_flags = ITEM_SLOT_BELT
 
-/obj/item/storage/tray
+/obj/item/storage/bag/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/roguetown/tray)
+
+/*
+ * Trays - Agouri
+ *///wip
+/obj/item/storage/bag/tray
 	name = "tray"
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "tray"
 	desc = ""
+	force = 5
 	throwforce = 10
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_BULKY
-	resistance_flags = NONE
-	max_integrity = 100
+	flags_1 = CONDUCT_1
 
-	component_type = /datum/component/storage/concrete/roguetown/tray
-
-/obj/item/storage/tray/attack_right(mob/user)
-	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
-	if(CP)
-		CP.rmb_show(user)
-		return TRUE
-
-/obj/item/storage/tray/psy
+/obj/item/storage/bag/tray/psy
 	name = "tray"
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "tray_psy"
 	desc = ""
 
-/obj/item/storage/tray/attack(mob/living/M, mob/living/user)
+/obj/item/storage/bag/tray/Moved()
+	. = ..()
+	update_icon()
+
+/obj/item/storage/bag/tray/attack(mob/living/M, mob/living/user)
 	..()
 	// Drop all the things. All of them.
 	var/list/obj/item/oldContents = contents.Copy()
@@ -46,7 +51,7 @@
 			M.Paralyze(40)
 	update_icon()
 
-/obj/item/storage/tray/proc/do_scatter(obj/item/I)
+/obj/item/storage/bag/tray/proc/do_scatter(obj/item/I)
 	if (I)
 		for (var/i in 1 to rand(1, 2))
 			var/xOffset = rand(-16, 16)  // Adjust the range as needed
@@ -58,28 +63,20 @@
 
 			sleep(rand(2, 4))
 
-/obj/item/storage/tray/update_icon()
+/obj/item/storage/bag/tray/update_icon()
 	cut_overlays()
 	for(var/obj/item/I in contents)
+		add_overlay(new /mutable_appearance(I))
 		var/mutable_appearance/I_copy = new(I)
-		//some of the following is redundant
-		I_copy.cut_overlays()
-		I_copy.underlays = list()
-		I_copy.icon = initial(I.icon)
-		I_copy.icon_state = initial(I.icon_state)
 		I_copy.plane = FLOAT_PLANE + 1
 		I_copy.layer = FLOAT_LAYER
 		add_overlay(I_copy)
 
 
-/obj/item/storage/tray/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+/obj/item/storage/bag/tray/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	update_icon()
 
-/obj/item/storage/tray/Exited(atom/movable/gone, direction)
-	. = ..()
-	update_icon()
-
-/obj/item/storage/tray/Moved()
+/obj/item/storage/bag/tray/Exited(atom/movable/gone, direction)
 	. = ..()
 	update_icon()
