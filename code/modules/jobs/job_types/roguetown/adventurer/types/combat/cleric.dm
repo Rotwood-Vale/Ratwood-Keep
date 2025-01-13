@@ -88,7 +88,7 @@
 					beltr = /obj/item/rogueweapon/mace
 				if("Flail")
 					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-					beltr = /obj/item/rogueweapon/flail/flail
+					beltr = /obj/item/rogueweapon/flail
 			H.set_blindness(0)
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2)
