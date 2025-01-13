@@ -126,8 +126,8 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Mookmania, TrueType;}
 .robot					{font-family: "Courier New", cursive, sans-serif;}
 
 .human					{font-family: "Honoka Mincho", Mookmania;}
-.elf					{font-family: "Nickainley Normal", Nickainley Normal;}
-.dwarf					{font-family: "Propaniac", Propaniac;}
+.elf					{font-family: "Passions Conflict RUS", Passions Conflict RUS;}
+.dwarf					{font-family: "Celtes SP", Celtes SP;}
 .sandspeak				{font-family: "Schwabacher", Schwabacher;}
 .celestial				{font-family: "Kamelia", Kamelia;}
 .delf					{font-family: "Dauphin", Mookmania;}
@@ -136,7 +136,7 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Mookmania, TrueType;}
 .orc					{font-family: "VizaviTYGRA", VizaviTYGRA;}
 .beast					{font-family: "VizaviTYGRA", VizaviTYGRA;}
 .reptile				{font-family: "Kautiva Cyrillic Black", Kautiva Cyrillic Black; font-size: 120%;}
-.faexin					{font-family: "DreamScar", DreamScar;}
+.faexin					{font-family: "shakyhands", shakyhands;}
 .lupian					{font-family: "ALOT Gutenberg B Normal", ALOT Gutenberg B Normal; font-size: 120%;}
 .felid					{font-family: "Satyr SP", Satyr SP; font-size: 120%;}
 

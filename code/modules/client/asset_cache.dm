@@ -594,14 +594,14 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"book2.ttf" = 'interface/fonts/book1.ttf',
 		"book3.ttf" = 'interface/fonts/book1.ttf',
 		"book4.ttf" = 'interface/fonts/book1.ttf',
-		"Propaniac.ttf" = 'interface/fonts/languages/Propaniac.ttf', // дварфы
-		"Nickainley Normal.ttf" = 'interface/fonts/languages/Nickainley Normal.ttf', // Эльфы
+		"Celtes SP.otf" = 'interface/fonts/languages/Celtes SP.otf', // дварфы
+		"Passions Conflict RUS.otf" = 'interface/fonts/languages/Passions Conflict RUS.otf', // Эльфы
 		"Comforter Brush.otf" = 'interface/fonts/languages/Comforter Brush.otf', // Тифлинги
 		"VizaviTYGRA.ttf" = 'interface/fonts/languages/VizaviTYGRA.ttf', // Орки
 		"Kamelia.ttf" = 'interface/fonts/languages/Kamelia.ttf', // ангелы
 		"FDMedian.ttf" = 'interface/fonts/languages/FDMedian.ttf', // нежить
 		"Kautiva Cyrillic Black.ttf" = 'interface/fonts/languages/Kautiva Cyrillic Black.ttf', // ящерицы
-		"DreamScar.ttf" = 'interface/fonts/languages/DreamScar.ttf', // винкс
+		"shakyhands.otf" = 'interface/fonts/languages/shakyhands.otf', // винкс
 		"ALOT Gutenberg B Normal.ttf" = 'interface/fonts/languages/ALOT Gutenberg B Normal.ttf', // вульпы
 		"Satyr SP.otf" = 'interface/fonts/languages/Satyr SP.otf', // фелиниды
 		"Schwabacher.ttf" = 'interface/fonts/languages/Schwabacher.ttf'

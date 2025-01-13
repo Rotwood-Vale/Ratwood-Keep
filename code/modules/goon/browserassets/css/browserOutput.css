@@ -31,19 +31,24 @@ body {
   }
   
 @font-face { 
-  font-family: "Nickainley Normal"; 
-  src: url('Nickainley Normal.ttf'); 
+  font-family: "Passions Conflict RUS"; 
+  src: url('Passions Conflict RUS.otf'); 
   }
 
 @font-face { 
-  font-family: "Propaniac"; 
-  src: url('Propaniac.ttf'); 
+  font-family: "Celtes SP"; 
+  src: url('Celtes SP.otf'); 
   }
   
 @font-face { 
   font-family: "Kamelia"; 
   src: url('Kamelia.ttf'); 
   }
+
+@font-face { 
+  font-family: "shakyhands"; 
+  src: url('shakyhands.otf'); 
+	}
   
 @font-face {  
   font-family: "Comforter Brush"; 
@@ -51,8 +56,8 @@ body {
   }
 
 @font-face {  
-  font-family: "DreamScar"; 
-  src: url('DreamScar.ttf'); 
+  font-family: "Van Arkel"; 
+  src: url('Van Arkel.otf'); 
   }  
   
 @font-face { 
@@ -419,17 +424,17 @@ h1.alert, h2.alert	{color: #c9c1ba;font-family: Mookmania, TrueType;}
 .robot					{font-family: "Courier New", cursive, sans-serif;}
 
 .human					{font-family: "Honoka Mincho", Mookmania;}
-.elf					{font-family: "Comforter Brush", Comforter Brush; font-size: 110%;}
-.dwarf					{font-family: "VizaviTYGRA", VizaviTYGRA;}
+.elf					{font-family: "Passions Conflict RUS", Passions Conflict RUS; font-size: 180%;}
+.dwarf					{font-family: "Celtes SP", Celtes SP;}
 .sandspeak				{font-family: "Schwabacher", Schwabacher;}
 .celestial				{font-family: "Kamelia", Kamelia;}
-.delf					{font-family: "Comforter Brush", Comforter Brush; font-size: 110%;}
+.delf					{font-family: "Passions Conflict RUS", Passions Conflict RUS; font-size: 180%;}
 .hellspeak				{font-family: "Comforter Brush", Comforter Brush; font-size: 110%;}
 .undead					{font-family: "FDMedian", FDMedian;}
 .orc					{font-family: "VizaviTYGRA", VizaviTYGRA;}
 .beast					{font-family: "VizaviTYGRA", VizaviTYGRA;}
 .reptile				{font-family: "Kautiva Cyrillic Black", Kautiva Cyrillic Black; font-size: 120%;}
-.faexin					{font-family: "Comforter Brush", Comforter Brush; font-size: 110%;}
+.faexin					{font-family: "shakyhands", shakyhands; font-size: 110%;}
 .lupian					{font-family: "ALOT Gutenberg B Normal", ALOT Gutenberg B Normal; font-size: 120%;}
 .felid					{font-family: "Comforter Brush", Comforter Brush; font-size: 110%;}
 
