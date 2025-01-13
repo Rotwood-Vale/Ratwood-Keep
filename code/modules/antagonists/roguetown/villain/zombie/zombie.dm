@@ -190,7 +190,6 @@
 				zombie.mob_biotypes &= ~MOB_UNDEAD
 			zombie.faction -= "undead"
 			zombie.faction -= "zombie"
-			zombie.faction += "station"
 			zombie.faction += "neutral"
 			zombie.regenerate_organs()
 			if(has_turned)
@@ -245,7 +244,6 @@
 	zombie.mob_biotypes |= MOB_UNDEAD
 	zombie.faction += "undead"
 	zombie.faction += "zombie"
-	zombie.faction -= "station"
 	zombie.faction -= "neutral"
 	zombie.verbs |= /mob/living/carbon/human/proc/zombie_seek
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
