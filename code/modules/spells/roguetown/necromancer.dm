@@ -116,7 +116,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 30 SECONDS
-	var/cabal_affine = FALSE
+	var/cabal_affine = TRUE
 
 /obj/effect/proc_holder/spell/invoked/raise_lesser_undead/cast(list/targets, mob/living/user)
 	. = ..()
