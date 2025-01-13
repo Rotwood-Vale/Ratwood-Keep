@@ -111,17 +111,29 @@
 		if("Squire Errant")
 			to_chat(H, span_warning("You are a squire who has traveled far in search of a master to train you and a lord to knight you."))
 			head = /obj/item/clothing/head/roguetown/roguehood
-			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-			gloves = /obj/item/clothing/gloves/roguetown/leather
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			neck = /obj/item/clothing/neck/roguetown/chaincoif
-			pants = /obj/item/clothing/under/roguetown/trou/leather
+			cloak = /obj/item/clothing/cloak/stabard
+			neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			belt = /obj/item/storage/belt/rogue/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/rogueweapon/sword
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
+			var/armors = list("Light Armor","Medium Armor")
+			var/armor_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in armors
+			switch(armor_choice)
+				if("Light Armor")
+					shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+					pants = /obj/item/clothing/under/roguetown/trou/leather
+					gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
+					beltr = /obj/item/rogueweapon/huntingknife/idagger
+					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+				if("Medium Armor")
+					shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+					pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+					gloves = /obj/item/clothing/gloves/roguetown/chain/iron
+					beltr = /obj/item/rogueweapon/sword/iron
+					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
@@ -139,6 +151,5 @@
 			ADD_TRAIT(H, TRAIT_SQUIRE_REPAIR, TRAIT_GENERIC)
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 1)
-			H.change_stat("intelligence", 1)
-			H.change_stat("constitution", 1)
+			H.change_stat("intelligence", 2)
 			H.change_stat("speed", 1)
