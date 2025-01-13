@@ -125,7 +125,7 @@
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
 			var/armors = list("Light Armor","Medium Armor")
-			var/armor_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in armors
+			var/armor_choice = input("Choose your armor.", "TAKE UP ARMS") as anything in armors
 			switch(armor_choice)
 				if("Light Armor")
 					shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
