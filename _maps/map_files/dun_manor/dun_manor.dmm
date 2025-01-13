@@ -9570,17 +9570,15 @@
 /area/rogue/indoors/town/manor)
 "iHz" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/under/roguetown/tights/stockings/black,
-/obj/item/clothing/under/roguetown/tights/stockings/black,
-/obj/item/clothing/under/roguetown/tights/stockings/black,
-/obj/item/clothing/under/roguetown/tights/stockings/black,
-/obj/item/clothing/under/roguetown/tights/stockings/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/black,
 /obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/item/bath/soap,
+/obj/item/bath/soap,
+/obj/item/bath/soap,
+/obj/item/bath/soap,
+/obj/item/bath/soap,
+/obj/item/bath/soap,
+/obj/item/bath/soap,
+/obj/item/bath/soap,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "iHY" = (
