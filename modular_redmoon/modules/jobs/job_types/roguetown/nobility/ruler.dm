@@ -1,4 +1,6 @@
 /datum/job/roguetown/ruler
+	title = "Baron"
+	f_title "Baroness"
 	ru_title = "Барон"
 	ru_f_title = "Баронесса"
 	ru_tutorial = "Потомки первых поселенцев. Гомогенность их народа сменилась притоком различных мигрантов, \
