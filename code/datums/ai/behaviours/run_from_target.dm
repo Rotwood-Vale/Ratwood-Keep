@@ -48,17 +48,13 @@
 		finish_action(controller, succeeded = TRUE)
 		return
 
-	// If we can't find a valid path, finish the action as failed
-	if(!controller.current_movement_target || !plot_path_away_from(controller, target))
-		finish_action(controller, succeeded = FALSE)
-		return
+	if(!controller.current_movement_target || in_range(controller.pawn, controller.current_movement_target))
+		if(!plot_path_away_from(controller, target))
+			finish_action(controller, succeeded = FALSE)
+			return
 
-	if(!in_range(controller.pawn, controller.current_movement_target))
-		if(until_destination)
-			finish_action(controller, TRUE)
-		return
-
-	plot_path_away_from(controller, target)
+	if(until_destination && in_range(controller.pawn, controller.current_movement_target))
+		finish_action(controller, TRUE)
 
 /datum/ai_behavior/run_away_from_target/proc/plot_path_away_from(datum/ai_controller/controller, atom/target)
 	var/turf/target_destination = get_turf(controller.pawn)
