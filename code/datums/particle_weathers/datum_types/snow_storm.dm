@@ -187,7 +187,7 @@
 	update_overlays()
 
 /obj/structure/snow/proc/get_slowdown()
-	return 1 * bleed_layer
+	return 1.5 * bleed_layer
 
 /obj/structure/snow/proc/update_visuals_effects(datum/source, replace = TRUE, first = FALSE)
 	SIGNAL_HANDLER
