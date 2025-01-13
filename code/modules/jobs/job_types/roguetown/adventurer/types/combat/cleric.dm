@@ -60,8 +60,7 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 			shoes = /obj/item/clothing/shoes/roguetown/boots
-			neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
-			gloves = /obj/item/clothing/gloves/roguetown/chain/iron
+			gloves = /obj/item/clothing/gloves/roguetown/chain
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
