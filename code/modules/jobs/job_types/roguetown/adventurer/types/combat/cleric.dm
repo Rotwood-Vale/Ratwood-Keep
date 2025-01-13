@@ -128,7 +128,7 @@
 	switch(H.patron?.type)
 		if(/datum/patron/old_god)
 			neck = /obj/item/clothing/neck/roguetown/psicross
-			cloak = /obj/item/clothing/cloak/psydontabard
+			armor = /obj/item/clothing/cloak/psydontabard
 			head = /obj/item/clothing/head/roguetown/roguehood/psydon
 		if(/datum/patron/divine/astrata)
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -152,14 +152,20 @@
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
+			armor = /obj/item/clothing/cloak/templar/pestra //placeholder
+			head = /obj/item/clothing/head/roguetown/roguehood/black //placeholder
 		if(/datum/patron/divine/ravox)
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
+			armor = /obj/item/clothing/cloak/templar/ravox //placeholder
+			head = /obj/item/clothing/head/roguetown/roguehood/red //placeholder
 		if(/datum/patron/divine/malum)
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
+			head = /obj/item/clothing/head/roguetown/roguehood //placeholder
 			cloak = /obj/item/clothing/cloak/templar/malumite
 		if(/datum/patron/divine/eora)
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/eora
+			head = /obj/item/clothing/head/roguetown/eoramask
 		if(/datum/patron/inhumen/zizo)
 			H.cmode_music = 'sound/music/combat_cult.ogg'
 			beltl = /obj/item/roguekey/inhumen
