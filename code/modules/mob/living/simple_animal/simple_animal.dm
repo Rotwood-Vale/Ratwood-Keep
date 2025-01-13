@@ -171,6 +171,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	cmode = TRUE
 
 	var/remains_type
+	var/binded = FALSE
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
@@ -296,6 +297,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 /mob/living/simple_animal/proc/handle_automated_movement()
 	set waitfor = FALSE
+	if(binded)
+		return
 	if(!stop_automated_movement && wander && !doing)
 		if(ssaddle && has_buckled_mobs())
 			return 0

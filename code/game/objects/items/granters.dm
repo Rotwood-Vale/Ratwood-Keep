@@ -39,6 +39,9 @@
 
 
 /obj/item/book/granter/attack_self(mob/living/user)
+	if(user.mind?.has_studied == TRUE)
+		to_chat(user, span_notice("I struggle to study my arcane notes more- Perhaps a good rest would help."))
+		return FALSE
 	if(reading)
 		to_chat(user, span_warning("You're already reading this!"))
 		return FALSE
@@ -48,7 +51,7 @@
 		return FALSE
 	if(!user.can_read(src))
 		return FALSE
-	if(user.STAINT < 12)
+	if(user.STAINT < 12)	//12 is minimum int stat the prospective mages
 		to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
 		return FALSE
 	if(used)
