@@ -50,12 +50,13 @@
 		if("Spellsinger")
 			to_chat(H, span_warning("You belong to a school of bards renowned for their study of both the arcane and the arts."))
 			head = /obj/item/clothing/head/roguetown/bucklehat
+			mask = /obj/item/clothing/mask/rogue/ragmask/black
 			shoes = /obj/item/clothing/shoes/roguetown/boots
-			pants = /obj/item/clothing/under/roguetown/tights/black
-			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
+			pants = /obj/item/clothing/under/roguetown/tights/purple
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
 			belt = /obj/item/storage/belt/rogue/leather
-			armor = /obj/item/clothing/suit/roguetown/shirt/tunic/purple
+			armor = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 			cloak = /obj/item/clothing/cloak/raincloak/purple
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor

@@ -65,6 +65,7 @@
 			belt = /obj/item/storage/belt/rogue/leather/steel
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/flashlight/flare/torch/lantern
+			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -120,11 +121,7 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/sword
 			beltl = /obj/item/flashlight/flare/torch/lantern
-			backpack_contents = list(
-					/obj/item/storage/belt/rogue/pouch/coins/poor,
-					/obj/item/rogueweapon/hammer,
-					/obj/item/rogueweapon/tongs,
-					)
+			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)

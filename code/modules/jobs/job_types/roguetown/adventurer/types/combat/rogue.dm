@@ -116,6 +116,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
