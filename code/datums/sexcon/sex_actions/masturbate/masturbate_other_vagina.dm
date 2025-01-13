@@ -37,7 +37,7 @@
 		if(HAS_TRAIT(target, TRAIT_TINY) && !(HAS_TRAIT(user, TRAIT_TINY))) //Fairy on non-fairy will be fucking, otherwise normal
 			//Stroking becomes finger fucking instead
 			if(usr?.client?.prefs?.be_russian)
-				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] грубо трахает вагину [target] пальцем..."))
+				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] трахает вагину [target] пальцем..."))
 			else
 				user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s cunt with their finger..."))
 		else
