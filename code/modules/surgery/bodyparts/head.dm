@@ -68,7 +68,7 @@
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 		if(BODY_ZONE_PRECISE_NECK)
-			return list(/datum/intent/grab/move, /datum/intent/grab/choke)
+			return list(/datum/intent/grab/move, /datum/intent/grab/choke, /datum/intent/grab/twist)
 
 /obj/item/bodypart/head/Destroy()
 	QDEL_NULL(brainmob) //order is sensitive, see warning in handle_atom_del() below
