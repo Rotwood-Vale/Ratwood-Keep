@@ -69,8 +69,6 @@
 	name = "small log"
 	desc = "Piece of lumber cut from a larger log. Suitable for building."
 	icon_state = "logsmall"
-	grid_width = 64
-	grid_height = 96
 	max_integrity = 30
 	static_debris = list(/obj/item/grown/log/tree/stick = 3)
 	firefuel = 20 MINUTES
@@ -224,8 +222,6 @@
 /obj/item/grown/log/tree/stake
 	name = "stake"
 	icon_state = "stake"
-	grid_width = 32
-	grid_height = 64
 	desc = "A sharpened piece of wood, fantastic for piercing"
 	force = 10
 	throwforce = 5
@@ -251,8 +247,6 @@
 	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
 	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
 	experimental_inhand = FALSE
-	grid_width = 64
-	grid_height = 224
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	possible_item_intents = list(/datum/intent/use)
@@ -299,8 +293,6 @@
 	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
 	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
 	experimental_inhand = FALSE
-	grid_width = 128
-	grid_height = 224
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	possible_item_intents = list(/datum/intent/use)
 	force = 0
