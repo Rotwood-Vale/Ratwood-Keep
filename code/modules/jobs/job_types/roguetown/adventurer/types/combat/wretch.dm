@@ -213,7 +213,7 @@
 			H.change_stat("speed", 1)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bonechill)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_lesser_undead)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_lesser_undead/necromancer)
 			H.mind.adjust_spellpoints(1)
 			GLOB.excommunicated_players += H.real_name
 

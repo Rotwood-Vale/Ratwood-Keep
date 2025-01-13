@@ -116,7 +116,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	charge_max = 30 SECONDS
-	var/cabal_affine = TRUE
+	var/cabal_affine = FALSE
 
 /obj/effect/proc_holder/spell/invoked/raise_lesser_undead/cast(list/targets, mob/living/user)
 	. = ..()
@@ -138,6 +138,9 @@
 	else
 		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
 		return FALSE
+
+/obj/effect/proc_holder/spell/invoked/raise_lesser_undead/necromancer
+	cabal_affine = TRUE
 
 /obj/effect/proc_holder/spell/invoked/projectile/sickness
 	name = "Ray of Sickness"
