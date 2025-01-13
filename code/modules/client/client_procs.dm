@@ -1213,8 +1213,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		to_chat(src, span_boldwarning("Причина не указана."))
 		return
 
-	if(curcomm == 1)
-		adjust_playerquality(-1, ckey(key), fakekey, raisin)
+	adjust_playerquality(-1, ckey(key), fakekey, raisin)
 
 // Handles notifying funeralized players on login, or forcing them back to lobby, depending on configs. Called on /client/New().
 /client/proc/funeral_login()

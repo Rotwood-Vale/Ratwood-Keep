@@ -224,8 +224,7 @@
 		to_chat(src, span_boldwarning("Причина не указана."))
 		return
 
-	if(curcomm == 1)
-		adjust_playerquality(1, ckey(key), fakekey, raisin)
+	adjust_playerquality(1, ckey(key), fakekey, raisin)
 
 /proc/get_commends(key)
 	if(!key)
