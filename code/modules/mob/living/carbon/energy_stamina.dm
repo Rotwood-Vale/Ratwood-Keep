@@ -30,7 +30,7 @@
 /mob/living/energy_add(added as num)
 	if(HAS_TRAIT(src, TRAIT_NOSTAMINA))
 		return TRUE
-	if(m_intent == MOVE_INTENT_RUN)
+	if(mind && m_intent == MOVE_INTENT_RUN)
 		mind.add_sleep_experience(/datum/skill/misc/athletics, (STAINT*0.02))
 	energy += added
 	if(energy > max_energy)

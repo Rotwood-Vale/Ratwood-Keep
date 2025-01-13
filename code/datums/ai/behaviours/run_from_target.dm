@@ -36,23 +36,28 @@
 	if(!target)
 		return FALSE
 
-	plot_path_away_from(controller, target)
-	return ..()
+	// Only return TRUE if we successfully plotted a path
+	return plot_path_away_from(controller, target) && ..()
 
 /datum/ai_behavior/run_away_from_target/perform(delta_time, datum/ai_controller/controller, target_key, hiding_location_key)
 	. = ..()
 	var/atom/target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
-	var/escaped =  !target || !can_see(controller.pawn, target, run_distance) // If we can't see it we got away
-	if (!controller.blackboard[BB_BASIC_MOB_FLEEING])
+	var/escaped = !target || !can_see(controller.pawn, target, run_distance) // If we can't see it we got away
+	
+	if(!controller.blackboard[BB_BASIC_MOB_FLEEING] || escaped)
 		finish_action(controller, succeeded = TRUE)
 		return
-	if (escaped)
-		finish_action(controller, succeeded = TRUE)
+
+	// If we can't find a valid path, finish the action as failed
+	if(!controller.current_movement_target || !plot_path_away_from(controller, target))
+		finish_action(controller, succeeded = FALSE)
 		return
-	if (!in_range(controller.pawn, controller.current_movement_target))
+
+	if(!in_range(controller.pawn, controller.current_movement_target))
 		if(until_destination)
 			finish_action(controller, TRUE)
 		return
+
 	plot_path_away_from(controller, target)
 
 /datum/ai_behavior/run_away_from_target/proc/plot_path_away_from(datum/ai_controller/controller, atom/target)
