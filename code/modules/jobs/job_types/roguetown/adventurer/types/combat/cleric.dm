@@ -47,6 +47,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			H.cmode_music = 'sound/music/combat_holy.ogg'
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 1)
@@ -73,6 +74,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
+			H.cmode_music = 'sound/music/combat_holy.ogg'
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
@@ -115,6 +117,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			H.cmode_music = 'sound/music/combat_holy.ogg'
 			H.change_stat("intelligence", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("perception", 2)
