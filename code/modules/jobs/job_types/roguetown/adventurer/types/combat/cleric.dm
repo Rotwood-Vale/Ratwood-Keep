@@ -10,7 +10,8 @@
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	classes = list("Monk" = "You are a wandering acolyte, versed in both miracles and martial arts.",
 					"Paladin" = "A holy warrior. Where others of the clergy may have spent their free time studying scriptures, you have instead honed your skills with a blade.",
-					"Cantor" = "You are a devout worshipper of the divine. You've spent your youth studying scriptures and serving in church choirs - and now you wander spreading the good word of your faith.")
+					"Missionary" = "You are a devout worshipper of the divine with a deep connection to your patron god. You've spent your youth studying scriptures and serving your deity - now you wander into foreign lands, spreading the good word of your faith.",
+					"Hymnist" = "You were a bard once - but you've found a new calling. Your eyes have been opened to the divine, now you wander from city to city singing songs and telling tales of your patron's greatness.")
 
 /datum/outfit/job/roguetown/adventurer/cleric
 	allowed_patrons = ALL_PATRONS
@@ -20,7 +21,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Monk","Paladin","Cantor")
+	var/classes = list("Monk","Paladin","Hymnist","Missionary")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -29,9 +30,9 @@
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a wandering acolyte, versed in both miracles and martial arts."))
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			gloves = /obj/item/clothing/gloves/roguetown/plate
-			pants = /obj/item/clothing/under/roguetown/trou/leather
+			wrists = /obj/item/clothing/wrists/roguetown/bracers
+			gloves = /obj/item/clothing/gloves/roguetown/chain
+			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			backl = /obj/item/storage/backpack/rogue/satchel
 			belt = /obj/item/storage/belt/rogue/leather
@@ -47,6 +48,35 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+			switch(H.patron?.type)
+				if(/datum/patron/old_god)
+					cloak = /obj/item/clothing/cloak/psydontabard
+					head = /obj/item/clothing/head/roguetown/roguehood/psydon
+				if(/datum/patron/divine/astrata)
+					head = /obj/item/clothing/head/roguetown/roguehood/astrata
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
+				if(/datum/patron/divine/noc)
+					head =  /obj/item/clothing/head/roguetown/nochood
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/noc
+				if(/datum/patron/divine/abyssor)
+					head = /obj/item/clothing/head/roguetown/roguehood/abyssor
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
+				if(/datum/patron/divine/dendor)
+					head = /obj/item/clothing/head/roguetown/dendormask
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+				if(/datum/patron/divine/necra)
+					head = /obj/item/clothing/head/roguetown/necrahood
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+				if (/datum/patron/divine/malum)
+					head = /obj/item/clothing/head/roguetown/roguehood //placeholder
+					cloak = /obj/item/clothing/cloak/templar/malumite
+				if (/datum/patron/divine/eora)
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
+					head = /obj/item/clothing/head/roguetown/eoramask
+				else
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/black
+					head = /obj/item/clothing/head/roguetown/roguehood/black
 			H.cmode_music = 'sound/music/combat_holy.ogg'
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
@@ -59,7 +89,7 @@
 			backr = /obj/item/rogueweapon/shield/tower
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
-			pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			gloves = /obj/item/clothing/gloves/roguetown/chain
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
@@ -76,6 +106,33 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			H.cmode_music = 'sound/music/combat_holy.ogg'
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			switch(H.patron?.type)
+				if(/datum/patron/old_god)
+					cloak = /obj/item/clothing/cloak/psydontabard
+					head = /obj/item/clothing/head/roguetown/roguehood/psydon
+				if(/datum/patron/divine/astrata)
+					head = /obj/item/clothing/head/roguetown/roguehood/astrata
+					cloak = /obj/item/clothing/cloak/templar/astratan
+				if(/datum/patron/divine/noc)
+					head =  /obj/item/clothing/head/roguetown/nochood
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/noc
+				if(/datum/patron/divine/abyssor)
+					head = /obj/item/clothing/head/roguetown/roguehood/abyssor
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
+				if(/datum/patron/divine/dendor)
+					head = /obj/item/clothing/head/roguetown/dendormask
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+				if(/datum/patron/divine/necra)
+					head = /obj/item/clothing/head/roguetown/necrahood
+					cloak = /obj/item/clothing/cloak/templar/necran
+				if (/datum/patron/divine/malum)
+					head = /obj/item/clothing/head/roguetown/roguehood //placeholder
+					cloak = /obj/item/clothing/cloak/templar/malumite
+				if (/datum/patron/divine/eora)
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
+					head = /obj/item/clothing/head/roguetown/eoramask
+				else
+					cloak = /obj/item/clothing/cloak/cape/crusader
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_templar(H)
@@ -96,18 +153,89 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 1)
 
-		if("Cantor")
+		if("Hymnist")
 			H.set_blindness(0)
-			to_chat(H, span_warning("You are a devout worshipper of the divine. You've spent your youth studying scriptures and serving in church choirs - and now you wander spreading the good word of your faith."))
+			to_chat(H, span_warning("You were a bard once - but you've found a new calling. Your eyes have been opened to the divine, now you wander from city to city singing songs and telling tales of your patron's greatness."))
+			head = /obj/item/clothing/head/roguetown/bardhat
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+			backl = /obj/item/storage/backpack/rogue/satchel
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
+			gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
+			pants = /obj/item/clothing/under/roguetown/trou/leather
+			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			belt = /obj/item/storage/belt/rogue/leather
+			beltr = /obj/item/rogueweapon/sword/sabre
+			var/datum/devotion/C = new /datum/devotion(H, H.patron)
+			C.grant_spells_templar(H)
+			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
+			H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			H.cmode_music = 'sound/music/combat_bard.ogg'
+			H.change_stat("strength", 1)
+			H.change_stat("endurance", 1)
+			H.change_stat("speed", 2)
+			switch(H.patron?.type)
+				if(/datum/patron/old_god)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/psydon
+				if(/datum/patron/divine/astrata)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+				if(/datum/patron/divine/noc)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+				if(/datum/patron/divine/abyssor)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/abyssor
+				if(/datum/patron/divine/dendor)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
+				if(/datum/patron/divine/necra)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/necra
+				if (/datum/patron/divine/malum)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/malum
+				if (/datum/patron/divine/eora)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/eora
+				if (/datum/patron/divine/ravox)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
+				if (/datum/patron/divine/pestra)
+					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+				else
+					cloak = /obj/item/clothing/cloak/cape/crusader
+			var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman")
+			var/weapon_choice = input("Choose your instrument.", "TAKE UP ARMS") as anything in weapons
+			H.set_blindness(0)
+			switch(weapon_choice)
+				if("Harp")
+					backr = /obj/item/rogue/instrument/harp
+				if("Lute")
+					backr = /obj/item/rogue/instrument/lute
+				if("Accordion")
+					backr = /obj/item/rogue/instrument/accord
+				if("Guitar")
+					backr = /obj/item/rogue/instrument/guitar
+				if("Hurdy-Gurdy")
+					backr = /obj/item/rogue/instrument/hurdygurdy
+				if("Viola")
+					backr = /obj/item/rogue/instrument/viola
+				if("Vocal Talisman")
+					backr = /obj/item/rogue/instrument/vocals
+
+		if("Missionary")
+			H.set_blindness(0)
+			to_chat(H, span_warning("You are a devout worshipper of the divine with a deep connection to your patron god. You've spent your youth studying scriptures and serving your deity - now you wander into foreign lands, spreading the good word of your faith."))
 			backl = /obj/item/storage/backpack/rogue/satchel
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			backr = /obj/item/rogueweapon/woodstaff
 			belt = /obj/item/storage/belt/rogue/leather
+			beltr = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
@@ -116,29 +244,39 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-			var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman")
-			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-			H.set_blindness(0)
-			switch(weapon_choice)
-				if("Harp")
-					beltr = /obj/item/rogue/instrument/harp
-				if("Lute")
-					beltr = /obj/item/rogue/instrument/lute
-				if("Accordion")
-					beltr = /obj/item/rogue/instrument/accord
-				if("Guitar")
-					beltr = /obj/item/rogue/instrument/guitar
-				if("Hurdy-Gurdy")
-					beltr = /obj/item/rogue/instrument/hurdygurdy
-				if("Viola")
-					beltr = /obj/item/rogue/instrument/viola
-				if("Vocal Talisman")
-					beltr = /obj/item/rogue/instrument/vocals
 			H.cmode_music = 'sound/music/combat_holy.ogg'
 			H.change_stat("intelligence", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 1)
+			switch(H.patron?.type)
+				if(/datum/patron/old_god)
+					cloak = /obj/item/clothing/cloak/psydontabard
+					head = /obj/item/clothing/head/roguetown/roguehood/psydon
+				if(/datum/patron/divine/astrata)
+					head = /obj/item/clothing/head/roguetown/roguehood/astrata
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
+				if(/datum/patron/divine/noc)
+					head =  /obj/item/clothing/head/roguetown/nochood
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/noc
+				if(/datum/patron/divine/abyssor)
+					head = /obj/item/clothing/head/roguetown/roguehood/abyssor
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
+				if(/datum/patron/divine/dendor)
+					head = /obj/item/clothing/head/roguetown/dendormask
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+				if(/datum/patron/divine/necra)
+					head = /obj/item/clothing/head/roguetown/necrahood
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+				if (/datum/patron/divine/malum)
+					head = /obj/item/clothing/head/roguetown/roguehood //placeholder
+					cloak = /obj/item/clothing/cloak/templar/malumite
+				if (/datum/patron/divine/eora)
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
+					head = /obj/item/clothing/head/roguetown/eoramask
+				else
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/black //placeholder
+					head = /obj/item/clothing/head/roguetown/roguehood/black //placeholder
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.passive_devotion_gain += 0.25
 			C.grant_spells(H)
@@ -147,52 +285,28 @@
 	switch(H.patron?.type)
 		if(/datum/patron/old_god)
 			neck = /obj/item/clothing/neck/roguetown/psicross
-			cloak = /obj/item/clothing/cloak/psydontabard
-			head = /obj/item/clothing/head/roguetown/roguehood/psydon
 		if(/datum/patron/divine/astrata)
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
-			head = /obj/item/clothing/head/roguetown/roguehood/astrata
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
 		if(/datum/patron/divine/noc)
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
-			head =  /obj/item/clothing/head/roguetown/nochood
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/noc
 		if(/datum/patron/divine/abyssor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
-			head = /obj/item/clothing/head/roguetown/roguehood/abyssor
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
 		if(/datum/patron/divine/dendor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
-			head = /obj/item/clothing/head/roguetown/dendormask
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 		if(/datum/patron/divine/necra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
-			head = /obj/item/clothing/head/roguetown/necrahood
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
-			cloak = /obj/item/clothing/cloak/templar/pestra //placeholder
-			head = /obj/item/clothing/head/roguetown/roguehood/black //placeholder
 		if(/datum/patron/divine/ravox)
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
-			cloak = /obj/item/clothing/cloak/templar/ravox //placeholder
-			head = /obj/item/clothing/head/roguetown/roguehood/red //placeholder
 		if(/datum/patron/divine/malum)
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
-			head = /obj/item/clothing/head/roguetown/roguehood //placeholder
-			cloak = /obj/item/clothing/cloak/templar/malumite
 		if(/datum/patron/divine/eora)
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
-			head = /obj/item/clothing/head/roguetown/eoramask
 		if(/datum/patron/inhumen/zizo)
 			H.cmode_music = 'sound/music/combat_cult.ogg'
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/black //placeholder
-			head = /obj/item/clothing/head/roguetown/roguehood/black //placeholder
 			beltl = /obj/item/roguekey/inhumen
 		if (/datum/patron/inhumen/matthios)
 			H.cmode_music = 'sound/music/combat_cult.ogg'
-			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/black //placeholder
-			head = /obj/item/clothing/head/roguetown/roguehood/black //placeholder
 
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
