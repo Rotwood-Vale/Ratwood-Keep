@@ -702,6 +702,19 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		transfer_character()
 	GLOB.chosen_names += H.real_name
 
+	// REDMOON ADD START - start_reports_with_gender_lists - добавляем в списки в зависимости от половых органов
+	switch(H.gender)
+		if(MALE)
+			if(H.getorganslot(ORGAN_SLOT_VAGINA))
+				SSticker.males_with_vagina++
+			else
+				SSticker.males++
+		if(FEMALE)
+			if(H.getorganslot(ORGAN_SLOT_PENIS))
+				SSticker.females_with_penis++
+			else
+				SSticker.females++
+	// REDMOON ADD END
 
 /mob/proc/after_creation()
 	return
