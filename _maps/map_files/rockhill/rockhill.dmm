@@ -9978,7 +9978,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue/under/town/basement)
 "fVh" = (
-/turf/open/lava/acid,
+/turf/open/water/swamp/deep,
 /area/rogue/under/town/basement)
 "fVm" = (
 /obj/structure/fluff/walldeco/psybanner/red,
@@ -14814,6 +14814,13 @@
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
+"iOs" = (
+/obj/structure/bars,
+/turf/open/water/river{
+	icon_state = "rockwd";
+	water_reagent = /datum/reagent/water/gross
+	},
+/area/rogue/under/cave)
 "iOE" = (
 /obj/structure/closet/crate/chest{
 	locked = 1;
@@ -15809,6 +15816,13 @@
 	dir = 4
 	},
 /area/rogue/outdoors/town/roofs)
+"jqt" = (
+/obj/structure/bars,
+/turf/open/water/river{
+	dir = 1;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/town/basement)
 "jqA" = (
 /obj/item/reagent_containers/food/snacks/crow,
 /turf/open/floor/rogue/rooftop,
@@ -16039,6 +16053,15 @@
 /obj/structure/fog_wall,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/bog)
+"jAt" = (
+/obj/structure/mineral_door/wood/donjon{
+	dir = 8;
+	locked = 1;
+	lockid = "bog_gatehouse";
+	name = "Dungeons"
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/town/basement)
 "jBa" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/closed/wall/mineral/rogue/craftstone,
@@ -30363,6 +30386,13 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
+"snA" = (
+/obj/structure/bars,
+/turf/open/water/river{
+	dir = 1;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cave)
 "snH" = (
 /obj/structure/table/wood{
 	icon_state = "largetable"
@@ -40055,6 +40085,12 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/town)
+"yde" = (
+/turf/open/water/river{
+	dir = 1;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/town/basement)
 "ydg" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/church,
@@ -108695,7 +108731,7 @@ sFm
 cTA
 cTA
 cTA
-dFE
+bMj
 dFE
 dFE
 dFE
@@ -109125,9 +109161,9 @@ yfk
 gUu
 sFm
 cTA
-vTW
-vTW
 dFE
+sxv
+snA
 dFE
 dFE
 dFE
@@ -109553,13 +109589,13 @@ cTA
 pOI
 yfk
 cTA
-cTA
+jAt
 cTA
 cTA
 cTA
 dFE
-dFE
-dFE
+sxv
+snA
 dFE
 dFE
 dFE
@@ -109984,12 +110020,12 @@ lLK
 cTA
 uVb
 yfk
-cTA
-fVh
-fVh
-fVh
-cTA
-dFE
+ykB
+wrR
+wrR
+yde
+jqt
+sxv
 bMj
 bMj
 dFE
@@ -110419,11 +110455,11 @@ yfk
 cTA
 fVh
 fVh
-fVh
+yde
 cTA
-dFE
+kmK
 bMj
-dFE
+vTW
 dFE
 dFE
 dFE
@@ -110848,12 +110884,12 @@ lLK
 cTA
 gqF
 gqF
+ykB
+fVh
+fVh
+yde
 cTA
-fVh
-fVh
-fVh
-cTA
-dFE
+kmK
 bMj
 bMj
 dFE
@@ -111285,9 +111321,9 @@ cTA
 cTA
 tmD
 cTA
-dFE
-dFE
-dFE
+kmK
+bMj
+iOs
 dFE
 dFE
 dFE
@@ -111717,9 +111753,9 @@ srZ
 gUu
 wcJ
 cTA
-vTW
-vTW
-dFE
+kmK
+bMj
+iOs
 dFE
 dFE
 dFE
@@ -112151,7 +112187,7 @@ gDi
 cTA
 cTA
 cTA
-vTW
+bMj
 dFE
 rlu
 dFE
