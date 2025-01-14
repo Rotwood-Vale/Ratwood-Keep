@@ -2,9 +2,11 @@
 /mob/living/proc/get_bodypart(zone)
 	return
 
-/mob/living/carbon/get_bodypart(zone)
+var/chance2hit = 0
+
+/mob/living/carbon/get_bodypart(zone, user, target, src, chance2hit)
 	if(!zone)
-		zone = BODY_ZONE_CHEST
+		return triple_accuracy_failure(user, target, src, chance2hit)
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 		if(bodypart.body_zone == zone)
 			return bodypart

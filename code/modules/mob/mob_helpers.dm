@@ -8,9 +8,9 @@
 		. = Buckled.lowest_buckled_mob()
 
 ///Convert a PRECISE ZONE into the BODY_ZONE
-/proc/check_zone(zone)
+/proc/check_zone(zone, user, target, src, chance2hit)
 	if(!zone)
-		return BODY_ZONE_CHEST
+		return triple_accuracy_failure(user, target, src, chance2hit)
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
 			zone = BODY_ZONE_HEAD
