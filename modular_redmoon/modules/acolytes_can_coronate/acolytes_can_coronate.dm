@@ -8,11 +8,6 @@
 	if(!mind)
 		return
 
-	// Если нет плохого знамения из-за отсутствия лорда, коронация невозможна
-	if(!hasomen(OMEN_NOLORD))
-		to_chat(src, span_warning("I can only coronate a heir if we will be punished by the ten for having no ruler..."))
-		return FALSE
-
 	if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
 		to_chat(src, span_warning("I need to do this in the chapel."))
 		return FALSE
@@ -34,7 +29,20 @@
 		// коронация возможна только для наследников
 		if(HU.mind.assigned_role != "Heir")
 			to_chat(src, span_warning("Only noble heirs can become new baron!"))
-			return FALSE
+			continue
+
+		// Если нет плохого знамения из-за отсутствия лорда или лорд жив, коронация невозможна
+		if(!hasomen(OMEN_NOLORD))
+			var/lord_is_dead = TRUE
+			for(var/mob/living/carbon/human/potential_alive_ruler in GLOB.human_list)
+				if(potential_alive_ruler.mind)
+					if(potential_alive_ruler.job == "Duke")
+						if(potential_alive_ruler.stat != DEAD)
+							lord_is_dead = FALSE
+							break
+			if(!lord_is_dead)
+				to_chat(src, span_warning("I can only coronate a heir if our ruller will be dead..."))
+				continue
 
 		//Abdicate previous Duke
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
