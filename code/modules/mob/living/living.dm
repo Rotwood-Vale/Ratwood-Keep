@@ -183,8 +183,6 @@
 				if(6 to INFINITY)
 					self_points += 1
 			// If we have Giant virtue
-			if(HAS_TRAIT(src,TRAIT_BIGGUY))
-				self_points += 2
 			// If charging into the BACK of the enemy (facing away)
 			if(L.dir == get_dir(src, L))
 				self_points += 2
