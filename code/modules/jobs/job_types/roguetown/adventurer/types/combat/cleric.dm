@@ -184,25 +184,27 @@
 			H.change_stat("speed", 2)
 			switch(H.patron?.type)
 				if(/datum/patron/old_god)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/psydon
+					cloak = /obj/item/clothing/cloak/templar/psydon
 				if(/datum/patron/divine/astrata)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
+					cloak = /obj/item/clothing/cloak/templar/astrata
 				if(/datum/patron/divine/noc)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+					cloak = /obj/item/clothing/cloak/templar/noc
 				if(/datum/patron/divine/abyssor)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/abyssor
+					cloak = /obj/item/clothing/cloak/templar/abyssor
 				if(/datum/patron/divine/dendor)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
+					cloak = /obj/item/clothing/cloak/templar/dendor
 				if(/datum/patron/divine/necra)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/necra
+					cloak = /obj/item/clothing/cloak/templar/necra
 				if (/datum/patron/divine/malum)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/malum
+					cloak = /obj/item/clothing/cloak/templar/malum
 				if (/datum/patron/divine/eora)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/eora
+					cloak = /obj/item/clothing/cloak/templar/eora
 				if (/datum/patron/divine/ravox)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
+					cloak = /obj/item/clothing/cloak/templar/ravox
+				if (/datum/patron/divine/xylix)
+					cloak = /obj/item/clothing/cloak/templar/xylix
 				if (/datum/patron/divine/pestra)
-					cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+					cloak = /obj/item/clothing/cloak/templar/pestra
 				else
 					cloak = /obj/item/clothing/cloak/cape/crusader
 			var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman")
