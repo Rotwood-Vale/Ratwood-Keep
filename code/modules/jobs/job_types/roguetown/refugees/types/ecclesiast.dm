@@ -52,6 +52,8 @@
 		if(/datum/patron/psydon)
 			neck = /obj/item/clothing/neck/roguetown/psicross/silver
 			cloak = /obj/item/clothing/cloak/cape/puritan
+		if(/datum/patron/divine/xylix)
+			neck = /obj/item/clothing/neck/roguetown/psicross/xylix
 
 
 	switch(classchoice)

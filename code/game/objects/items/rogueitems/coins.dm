@@ -23,6 +23,7 @@
 	var/base_type //used for compares
 	var/quantity = 1
 	var/plural_name
+	var/rigged_outcome = 0 //1 for heads, 2 for tails
 
 /obj/item/roguecoin/Initialize(mapload, coin_amount)
 	. = ..()
@@ -53,13 +54,24 @@
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-5, 5)
 	if(isturf(T) && quantity > 1)
-		var/obj/structure/table/TA = locate() in T
-		if(!TA) //no table
-			var/obj/item/roguecoin/new_coin = new type(T)
+		for(var/i in 2 to quantity) // exclude the first coin
+			var/spawned_type = type
+			if(base_type)
+				switch(base_type)
+					if(CTYPE_GOLD)
+						spawned_type = /obj/item/roguecoin/gold
+					if(CTYPE_SILV)
+						spawned_type = /obj/item/roguecoin/silver
+					else
+						spawned_type = /obj/item/roguecoin/copper
+
+			var/obj/item/roguecoin/new_coin = new spawned_type
+			new_coin.forceMove(T)
 			new_coin.set_quantity(1) // prevent exploits with coin piles
 			new_coin.pixel_x = rand(-8, 8)
 			new_coin.pixel_y = rand(-5, 5)
-			set_quantity(quantity - 1)
+
+	set_quantity(1)
 
 /obj/item/roguecoin/get_real_price()
 	return sellprice * quantity
@@ -72,7 +84,7 @@
 /obj/item/roguecoin/examine(mob/user)
 	. = ..()
 	if(quantity > 1)
-		. += span_info("\Roman [quantity] coins.")
+		. += "<span class='info'>\Roman [quantity] coins.</span>"
 
 /obj/item/roguecoin/proc/merge(obj/item/roguecoin/G, mob/user)
 	if(!G)
@@ -88,12 +100,29 @@
 		return
 	set_quantity(quantity + amt_to_merge)
 	last_merged_heads_tails = G.heads_tails
+
 	G.set_quantity(G.quantity - amt_to_merge)
-	if(G.quantity == 0)
-		user.doUnEquip(G)
+	rigged_outcome = 0
+	G.rigged_outcome = 0
+	if(G.quantity <= 0)
 		qdel(G)
-	user.update_inv_hands()
 	playsound(loc, 'sound/foley/coins1.ogg', 100, TRUE, -2)
+
+/obj/item/roguecoin/attack_right(mob/user)
+	if(user.get_active_held_item())
+		return ..()
+	if(quantity == 1)
+		if(HAS_TRAIT(user, TRAIT_BLACKLEG))
+			switch(alert(user, "What will you rig the next coin flip to?","XYLIX","Heads","Tails","Play fair"))
+				if("Heads")
+					rigged_outcome = 1
+				if("Tails")
+					rigged_outcome = 2
+				if("Play fair")
+					rigged_outcome = 0
+		return
+	user.put_in_active_hand(new type(user.loc, 1))
+	set_quantity(quantity - 1)
 
 /obj/item/roguecoin/attack_hand(mob/user)
 	if(user.get_inactive_held_item() == src && quantity > 1)
@@ -125,12 +154,15 @@
 		return
 	flip_cd = world.time
 	playsound(user, 'sound/foley/coinphy (1).ogg', 100, FALSE)
-	if(prob(50))
-		user.visible_message(span_info("[user] flips the coin. Heads!"))
-		heads_tails = TRUE
-	else
-		user.visible_message(span_info("[user] flips the coin. Tails!"))
-		heads_tails = FALSE
+	var/flip_outcome = rigged_outcome ? rigged_outcome : prob(50)
+	switch(flip_outcome)
+		if(1)
+			user.visible_message("<span class='info'>[user] flips the coin. Heads!</span>")
+			heads_tails = TRUE
+		if(0,2)
+			user.visible_message("<span class='info'>[user] flips the coin. Tails!</span>")
+			heads_tails = FALSE
+	rigged_outcome = 0
 	update_icon()
 
 /obj/item/roguecoin/update_icon()
@@ -139,19 +171,17 @@
 		drop_sound = 'sound/foley/coins1.ogg'
 	else
 		drop_sound = 'sound/foley/coinphy (1).ogg'
-		
+
 	if(quantity == 1)
 		name = initial(name)
 		desc = initial(desc)
 		icon_state = "[base_type][heads_tails]"
 		dropshrink = 0.2
-		slot_flags = ITEM_SLOT_MOUTH
 		return
 
 	name = plural_name
 	desc = ""
 	dropshrink = 1
-	slot_flags = null
 	switch(quantity)
 		if(2)
 			dropshrink = 0.2 // this is just like the single coin, gotta shrink it
@@ -166,7 +196,7 @@
 			icon_state = "[base_type]5"
 		if(11 to 15)
 			icon_state = "[base_type]10"
-		if(16 to INFINITY)
+		if(16 to MAX_COIN_STACK_SIZE)
 			icon_state = "[base_type]15"
 
 
@@ -208,17 +238,20 @@
 	base_type = CTYPE_COPP
 	plural_name = "zennies"
 
-/obj/item/roguecoin/copper/pile/Initialize()
+/obj/item/roguecoin/copper/pile/Initialize(mapload, coin_amount)
 	. = ..()
-	set_quantity(rand(4,19))
+	if(!coin_amount)
+		set_quantity(rand(4,19))
 
-/obj/item/roguecoin/silver/pile/Initialize()
+/obj/item/roguecoin/silver/pile/Initialize(mapload, coin_amount)
 	. = ..()
-	set_quantity(rand(4,19))
+	if(!coin_amount)
+		set_quantity(rand(4,19))
 
-/obj/item/roguecoin/gold/pile/Initialize()
+/obj/item/roguecoin/gold/pile/Initialize(mapload, coin_amount)
 	. = ..()
-	set_quantity(rand(4,19))
+	if(!coin_amount)
+		set_quantity(rand(4,19))
 
 #undef CTYPE_GOLD
 #undef CTYPE_SILV

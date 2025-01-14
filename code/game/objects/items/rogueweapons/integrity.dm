@@ -6,7 +6,7 @@
 	/// Maximum blade integrity
 	var/max_blade_int = 0
 
-/obj/item/proc/remove_bintegrity(amt as num)
+/obj/item/proc/remove_bintegrity(amt as num, mob/user)
 	blade_int = blade_int - amt
 	if(blade_int <= 0)
 		blade_int = 0

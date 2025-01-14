@@ -47,6 +47,9 @@
 	ru_domain = "Бог Войны, Правосудия и Силы"
 	ru_desc = "Бог войны, справедливости и силы. Сильнейший из детей Псайдона, он следит за каждым человеком издали, что бы осудить его за грехи, когда настанет время."
 	ru_worshippers = "Воины и те, кто ищет Правосудие"
+	mob_traits = list(TRAIT_SHARPER_BLADES)
+	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
+	t1 = /obj/effect/proc_holder/spell/self/call_to_arms
 	ru_confess_lines = list(
 		"РАВОКС - ЭТО ПРАВОСУДИЕ!",
 		"МИЛОСТЬ ЧЕРЕЗ ВРАЖДУ!",
@@ -68,7 +71,10 @@
 	ru_name = "Ксайликс"
 	ru_domain = "Бог обмана, свободы и вдохновения"
 	ru_desc = "Безумный Бог, подаривший людям безумие и тысячу обманов."
-	ru_worshippers = "Шулеры, мошенники, серебряные языки и разбойник"
+	ru_worshippers = "Шулеры, мошенники, серебряные языки и разбойники"
+	mob_traits = list(TRAIT_BLACKLEG)
+	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
+	t1 = /obj/effect/proc_holder/spell/invoked/vicious_mimicry
 	ru_confess_lines = list(
 	"АСТРАТА - МОЙ СВЕТ!",
 	"НОК - ЭТО НОЧЬ!",
