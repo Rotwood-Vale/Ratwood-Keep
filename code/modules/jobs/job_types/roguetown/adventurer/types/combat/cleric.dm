@@ -159,7 +159,7 @@
 			head = /obj/item/clothing/head/roguetown/bardhat
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			backl = /obj/item/storage/backpack/rogue/satchel
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/shortshirt
+			shirt = /obj/item/clothing/suit/roguetown/shirt/shirt/shortshirt
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			pants = /obj/item/clothing/under/roguetown/trou/leather
