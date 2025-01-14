@@ -53,6 +53,8 @@
 	/// Global proc to call if the rune fails to be created
 	var/failed_to_create
 	var/active = FALSE
+	/// Tier var is used for 'tier' of rune, if the rune has tiers. EX: Summoning runes. If it doesn't have tiers, set tier to 0.
+	var/tier = 1
 
 
 /proc/isarcyne(mob/living/carbon/human/A)
@@ -69,6 +71,8 @@
 
 GLOBAL_LIST_INIT(rune_types, generate_rune_types())
 GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
+GLOBAL_LIST_INIT(allowedrunerituallist, generate_allowed_runeritual_types())
+
 /// Returns an associated list of rune types. [rune.cultist_name] = [typepath]
 /proc/generate_rune_types()
 	RETURN_TYPE(/list)
@@ -79,13 +83,20 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 		runes[initial(rune.name)] = rune // Uses the invoker name for displaying purposes
 	return runes
 
-/proc/generate_runeritual_types()
+/proc/generate_runeritual_types()	//debug list
 	RETURN_TYPE(/list)
 	var/list/runerituals = list()
-	for(var/datum/runerituals/runeritual as anything in subtypesof (/datum/runerituals))
-
+	for(var/datum/runerituals/runeritual as anything in typesof(/datum/runerituals))
 		runerituals[initial(runeritual.name)] = runeritual
-		to_chat(world, "Added ritual: [initial(runeritual.name)] with required_atoms: [runeritual.required_atoms]")
+	return runerituals
+
+/proc/generate_allowed_runeritual_types()	//list of all rituals for player use
+	RETURN_TYPE(/list)
+	var/list/runerituals = list()
+	for(var/datum/runerituals/runeritual as anything in typesof(/datum/runerituals))
+		if(runeritual.blacklisted)
+			continue
+		runerituals[initial(runeritual.name)] = runeritual
 	return runerituals
 
 /obj/effect/decal/cleanable/roguerune/Initialize(mapload)
@@ -170,18 +181,23 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 			fail_invoke()
 	else
 		var/list/invokers = can_invoke(user)
-		to_chat(user, span_notice("can_invoke"))
 		if(length(invokers) >= req_invokers)
-	//		var/list/rituals = list()
-
-			var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in GLOB.runeritualslist
+//			var/list/rituals = list()
+//			var/datum/runerituals/R
+//			for(R in GLOB.allowedrunerituallist)
+//				if(R.blacklisted)
+//					continue
+//				if(R.tier <= src.tier)
+//					to_chat(user, span_notice("for R in glob allowed ruenrituals"))
+//					rituals.Add(R)
+			var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in GLOB.allowedrunerituallist
 			testing("ritualnameinput [ritualnameinput]")
 			var/datum/runerituals/pickritual
-
-			pickritual = GLOB.runeritualslist[ritualnameinput]
+			pickritual = GLOB.allowedrunerituallist[ritualnameinput]
 			if(!pickritual)
 				return
-			to_chat(user, "Selected ritual: [pickritual.name] with required_atoms: [pickritual.required_atoms]")
+			if(!pickritual.tier <= src.tier)
+				to_chat(user, span_hierophant_warning("Your ritual rune is not strong enough to perform this ritual."))
 			invoke(invokers, pickritual)
 		else
 			to_chat(user, span_danger("You need [req_invokers - length(invokers)] more adjacent invokers to use this rune in such a manner."))	//Needs more invokers, fails invoke
@@ -243,18 +259,29 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 /obj/effect/decal/cleanable/roguerune/arcyne/knowledge/attack_hand(mob/living/user)
 	. = ..()
 
+/obj/effect/decal/cleanable/roguerune/arcyne/enchantment
+
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning	//32x32 rune t1(one tile)
 	name = "confinement matrix"
+	desc = "A relatively basic confinement matrix used to hold small things when summoned."
 	ritual_number = 3
+	tier = 1
 	can_be_scribed = TRUE
 	var/summoning = FALSE
-	var/summoned_mob
+	var/mob/living/simple_animal/summoned_mob
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/attack_hand(mob/living/user)
 	if(summoning)
-		summoning = FALSE
 		to_chat(user, span_notice("You release the summon from it's containment"))
+		sleep(10)
+		animate(summoned_mob, color = "#660099",time = 5)
+		REMOVE_TRAIT(summoned_mob, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
+		summoned_mob.status_flags -= GODMODE//remove godmode
+		summoned_mob.binded = FALSE	//BE FREE!!
+		summoned_mob = null
+		summoning = FALSE
 	. = ..()
+
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/invoke(list/invokers, datum/runerituals/runeritual)
 	//This proc contains the effects of the rune as well as things that happen afterwards. If you want it to spawn an object and then delete itself, have both here.
 	var/list/atom/movable/atoms_in_range = list()
@@ -272,20 +299,19 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 		if(close_atom == src)
 			continue
 		atoms_in_range += close_atom
-	var/datum/runerituals/pickritual = runeritual
-	to_chat(invokers, span_notice("[pickritual]"))
-
+	var/datum/runerituals/pickritual = new runeritual
+	to_chat(invokers, span_notice("invoked"))
 	to_chat(invokers, json_encode(pickritual.required_atoms, JSON_PRETTY_PRINT))
 	if(!islist(pickritual.required_atoms))
 		to_chat(invokers, span_notice("required atoms is NOT a list"))
+
 	// A copy of our requirements list.
 	// We decrement the values of to determine if enough of each key is present.
+
 	var/list/requirements_list = pickritual.required_atoms.Copy()
 	var/list/banned_atom_types = pickritual.banned_atom_types.Copy()
 	// A list of all atoms we've selected to use in this recipe.
 	var/list/selected_atoms = list()
-	to_chat(invokers, span_notice("[requirements_list]"))
-	to_chat(invokers, span_notice("going through list"))
 	for(var/atom/nearby_atom as anything in atoms_in_range)
 		// Go through all of our required atoms
 		for(var/req_type in requirements_list)
@@ -298,14 +324,12 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 					continue
 			else if(!istype(nearby_atom, req_type))
 				continue
-			to_chat(invokers, span_notice("[req_type]"))
 			// if list has items, check if the strict type is banned.
 			if(length(banned_atom_types))
 				if(nearby_atom.type in banned_atom_types)
 					continue
 			// This item is a valid type. Add it to our selected atoms list.
 			selected_atoms |= nearby_atom
-			to_chat(invokers, span_notice("[nearby_atom]"))
 			// If it's a stack, we gotta see if it has more than one inside,
 			// as our requirements may want more than one item of a stack
 			if(isstack(nearby_atom))
@@ -322,7 +346,6 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 		// <= 0 means it's fulfilled, skip
 		if(number_of_things <= 0)
 			continue
-		to_chat(invokers, span_notice("invoke"))
 		// > 0 means it's unfilfilled - the ritual has failed, we should tell them why
 		// Lets format the thing they're missing and put it into our list
 		var/formatted_thing = "[number_of_things] "
@@ -345,7 +368,6 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 		to_chat(usr, span_hierophant_warning("You are missing [english_list(what_are_we_missing)] in order to complete the ritual \"[pickritual.name]\"."))
 		return FALSE
 	playsound(usr, 'sound/magic/teleport_diss.ogg', 75, TRUE)
-	to_chat(invokers, span_notice("[selected_atoms]"))
 	// All the components have been invisibled, time to actually do the ritual. Call on_finished_recipe
 	// (Note: on_finished_recipe may sleep in the case of some rituals like summons, which expect ghost candidates.)
 	// - If the ritual was success (Returned TRUE), proceede to clean up the atoms involved in the ritual. The result has already been spawned by this point.
@@ -353,6 +375,7 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 	var/ritual_result = pickritual.on_finished_recipe(usr, selected_atoms, loc)
 	if(ismob(ritual_result))
 		summoned_mob = ritual_result
+		src.summoning = TRUE
 	if(ritual_result)
 		pickritual.cleanup_atoms(selected_atoms)
 
@@ -373,8 +396,10 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/mid// 96x96 rune t2(3x3 tile)
 	name = "sealate confinement matrix"
+	desc = "An adept confinement matrix improved with the addition of a sealate matrix; used to hold things when summoned."
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "sealate"
+	tier = 2
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32
 	pixel_z = 0
@@ -382,9 +407,11 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/adv	//160x160 rune t2(5x5 tile)
 	name = "warded sealate confinement matrix"
+	desc = "An thoroughly warded confinement matrix improved with the addition of a sealate matrix; used to hold larger, dangerous things when summoned."
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "warded"
 	runesize = 2
+	tier = 3
 	pixel_x = -64 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -64
 	pixel_z = 0
@@ -392,9 +419,11 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/max	//224x224 rune t3(7x7 tile)
 	name = "noc's eye warded sealate confinement matrix"
+	desc = "An thoroughly warded confinement matrix improved with a Noc's eye sealing measure and the addition of a sealate matrix; used to hold the largest, most dangerous things summonable."
 	icon = 'icons/effects/224x224.dmi'
 	icon_state = "hugerune"
 	runesize = 3
+	tier = 4
 	pixel_x = -96 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -96
 	pixel_z = 0
@@ -579,14 +608,20 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 	var/list/result_atoms = list()
 	var/list/banned_atom_types = list()
 	var/mob_to_summon
+	var/blacklisted = FALSE
+	var/tier = 0				/// Tier var is used for 'tier' of ritual, if the ritual has tiers. EX: Summoning rituals. If it doesn't have tiers, set tier to 0.
 
-/datum/runerituals/New()
-	.=..()
-	to_chat(world, "Initialized datum/runerituals with name: [name]")
+/datum/runerituals/buff
+
+/datum/runerituals/buff/knowledge
+
+/datum/runerituals/enchantment
+
 
 /datum/runerituals/summoning
 	name = "summoning ritual parent"
 	desc = "summoning parent rituals."
+	blacklisted = TRUE
 
 /datum/runerituals/summoning/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return summon_ritual_mob(user, loc, mob_to_summon)
@@ -601,10 +636,101 @@ GLOBAL_LIST_INIT(runeritualslist, generate_runeritual_types())
 		ADD_TRAIT(summoned, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
 		summoned.status_flags += GODMODE//It's not meant to be killable until released from it's planar binding.
 		summoned.binded = TRUE	//No auto movement, no moving to targets
+		animate(summoned, color = "#660099",time = 5)
 		return summoned
 
 /datum/runerituals/summoning/imp
 	name = "summoning lesser infernal"
 	desc = "summons an infernal imp"
+	blacklisted = FALSE
+	tier = 1
 	required_atoms = list(/obj/item/ash = 2, /obj/item/natural/obsidian = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/hellhound
+	name = "summoning hellhound"
+	desc = "summons a hellhound"
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list(/obj/item/natural/infernalash = 3, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t1 = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/watcher
+	name = "summoning infernal watcher"
+	desc = "summons an infernal watcher"
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list(/obj/item/natural/hellhoundfang = 2, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t2 =1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/archfiend
+	name = "summoning archfiend"
+	desc = "summons an archfiend"
+	blacklisted = FALSE
+	tier = 4
+	required_atoms = list(/obj/item/natural/moltencore = 1, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t3 =1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/sprite
+	name = "summoning sprite"
+	desc = "summons an fae sprite"
+	blacklisted = FALSE
+	tier = 1
+	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/glimmer
+	name = "summoning glimmerwing"
+	desc = "summons an fae spirit"
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
+
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+/datum/runerituals/summoning/dryad
+	name = "summoning dryad"
+	desc = "summons an drayd"
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/sylph
+	name = "summoning sylph"
+	desc = "summons an archfae"
+	blacklisted = FALSE
+	tier = 4
+	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/natural/heartwoodcore = 1, /obj/item/natural/melded/t3 = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/crawler
+	name = "summoning elemental crawler"
+	desc = "summons a minor elemental"
+	blacklisted = FALSE
+	tier = 1
+	required_atoms = list(/obj/item/natural/stone = 3, /obj/item/natural/manacrystal = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/warden
+	name = "summoning elemental warden"
+	desc = "summons an elemental"
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list(/obj/item/natural/elementalmote = 3, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t1 = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/behemoth
+	name = "summoning elemental behemoth"
+	desc = "summons a large elemental"
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list(/obj/item/natural/elementalshard = 2, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t2 =1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+/datum/runerituals/summoning/collossus
+	name = "summoning elemental collossus"
+	desc = "summons an huge elemental"
+	blacklisted = FALSE
+	tier = 4
+	required_atoms = list(/obj/item/natural/elementalfragment = 1, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t3 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing

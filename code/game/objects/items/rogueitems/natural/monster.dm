@@ -11,7 +11,7 @@
 /obj/item/natural/hellhoundfang//T2 mage summon loot
 	name = "hellhound fang"
 	icon_state = "wessence"
-	desc = "A mystical essence embued with the power of Dendor. Merely holding it transports one's mind to ancient times."
+	desc = "A sharp fang that glows bright red, no matter how long it's left to cool."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
