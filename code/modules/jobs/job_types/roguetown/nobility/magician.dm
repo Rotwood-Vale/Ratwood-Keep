@@ -11,9 +11,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	spells = list(/obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/invoked/projectile/fireballgreater, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	display_order = JDO_MAGICIAN
-	tutorial = "Ваше кредо - покорение магических искусств и постоянное стремление к знаниям. \
-		Вы обязаны жизнью герцогу, ибо именно его маммоны позволили вам продолжить обучение в эти темные времена. \
-		Взамен вы снова и снова проявляете себя как справедливый судья и доверенный советник в его правлении."
+	tutorial = "Your creed is one dedicated to the conquering of the arcane arts and the constant thrill of knowledge. \
+		You owe your life to the Lord, for it was his coin that allowed you to continue your studies in these dark times. \
+		In return, you have proven time and time again as justicar and trusted advisor to their reign."
 	outfit = /datum/outfit/job/roguetown/magician
 	whitelist_req = TRUE
 	give_bank_account = 47
