@@ -10,7 +10,7 @@
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	classes = list("Monk" = "You are a wandering acolyte, versed in both miracles and martial arts.",
 					"Paladin" = "A holy warrior. Where others of the clergy may have spent their free time studying scriptures, you have instead honed your skills with a blade.",
-					"Hymnist" = "You are a devout worshipper of the divine. You've spent your youth studying scriptures and serving in church choirs - and now you wander spreading the good word of your faith.")
+					"Cantor" = "You are a devout worshipper of the divine. You've spent your youth studying scriptures and serving in church choirs - and now you wander spreading the good word of your faith.")
 
 /datum/outfit/job/roguetown/adventurer/cleric
 	allowed_patrons = ALL_PATRONS
@@ -20,7 +20,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Monk","Paladin","Hymnist")
+	var/classes = list("Monk","Paladin","Cantor")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -96,18 +96,17 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 1)
 
-		if("Hymnist")
+		if("Cantor")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a devout worshipper of the divine. You've spent your youth studying scriptures and serving in church choirs - and now you wander spreading the good word of your faith."))
 			backl = /obj/item/storage/backpack/rogue/satchel
-			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			backr = /obj/item/rogueweapon/woodstaff
 			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/rogue/instrument/vocals
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
@@ -117,6 +116,24 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+			var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman")
+			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			H.set_blindness(0)
+			switch(weapon_choice)
+				if("Harp")
+					beltr = /obj/item/rogue/instrument/harp
+				if("Lute")
+					beltr = /obj/item/rogue/instrument/lute
+				if("Accordion")
+					beltr = /obj/item/rogue/instrument/accord
+				if("Guitar")
+					beltr = /obj/item/rogue/instrument/guitar
+				if("Hurdy-Gurdy")
+					beltr = /obj/item/rogue/instrument/hurdygurdy
+				if("Viola")
+					beltr = /obj/item/rogue/instrument/viola
+				if("Vocal Talisman")
+					beltr = /obj/item/rogue/instrument/vocals
 			H.cmode_music = 'sound/music/combat_holy.ogg'
 			H.change_stat("intelligence", 2)
 			H.change_stat("endurance", 1)
