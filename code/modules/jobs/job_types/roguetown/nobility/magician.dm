@@ -65,5 +65,3 @@
 		
 		if(H.gender == MALE)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
-
-
