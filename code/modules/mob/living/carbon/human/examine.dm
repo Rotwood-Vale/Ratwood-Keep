@@ -544,7 +544,7 @@
 					if(2)
 						. += span_love("Looks like [p_they()] tries to find someone.")
 					if(3)
-						. += span_love("[t_He]'s heart seem[p_s()] to ache for love.")
+						. += span_love("[p_their(TRUE)] heart seem[p_s()] to ache for love.")
 					if(4)
 						. += span_love("Feels like [p_they()] is lonely.")
 					if(5)
