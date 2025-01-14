@@ -10,7 +10,7 @@
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	classes = list("Monk" = "You are a wandering acolyte, versed in both miracles and martial arts.",
 					"Paladin" = "A holy warrior. Where others of the clergy may have spent their free time studying scriptures, you have instead honed your skills with a blade.",
-					"Missionary" = "You are a devout worshipper of the divine with a deep connection to your patron god. You've spent your youth studying scriptures and serving your deity - now you wander into foreign lands, spreading the good word of your faith.",
+					"Missionary" = "You are a devout worshipper of the divine with a strong connection to your patron god. You've spent years studying scriptures and serving your deity - now you wander into foreign lands, spreading the word of your faith.",
 					"Hymnist" = "You were a bard once - but you've found a new calling. Your eyes have been opened to the divine, now you wander from city to city singing songs and telling tales of your patron's greatness.")
 
 /datum/outfit/job/roguetown/adventurer/cleric
@@ -226,7 +226,7 @@
 
 		if("Missionary")
 			H.set_blindness(0)
-			to_chat(H, span_warning("You are a devout worshipper of the divine with a deep connection to your patron god. You've spent your youth studying scriptures and serving your deity - now you wander into foreign lands, spreading the good word of your faith."))
+			to_chat(H, span_warning("You are a devout worshipper of the divine with a strong connection to your patron god. You've spent years studying scriptures and serving your deity - now you wander into foreign lands, spreading the word of your faith."))
 			backl = /obj/item/storage/backpack/rogue/satchel
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 			pants = /obj/item/clothing/under/roguetown/trou/leather
