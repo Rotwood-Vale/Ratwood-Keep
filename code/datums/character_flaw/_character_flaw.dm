@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
 	"Hunted"=/datum/charflaw/dead_or_alive,
 	"Fire Servant"=/datum/charflaw/addiction/pyromaniac,
-	"Love Fiend" = /datum/charflaw/addiction/lovefiend, // REDMOON ADD - love_fiend_back
+	"Ache For Love" = /datum/charflaw/addiction/lovefiend, // REDMOON ADD - love_fiend_back,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
 	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw
 	))

@@ -1,5 +1,5 @@
 /datum/charflaw/addiction/lovefiend
-	name = "Love Fiend"
+	name = "Ache For Love"
 	desc = "My heart aches to have consensual love with someone..."
 	time = 1 HOURS
 	needsate_text = "My heart aches for love!.."
