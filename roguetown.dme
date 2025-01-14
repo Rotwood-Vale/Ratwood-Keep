@@ -2169,6 +2169,7 @@
 #include "modular_redmoon\modules\jobs\job_types\roguetown\youngfolk\shophand.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\youngfolk\smith_apprentice.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\youngfolk\squire.dm"
+#include "modular_redmoon\modules\lovefiend_returns\love_fiend_returns.dm"
 #include "modular_redmoon\modules\mob\living\carbon\human\species_types\_species.dm"
 #include "modular_redmoon\modules\mob\living\carbon\human\species_types\roguetown\aasimar.dm"
 #include "modular_redmoon\modules\mob\living\carbon\human\species_types\roguetown\anthromorph.dm"

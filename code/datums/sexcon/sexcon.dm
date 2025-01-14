@@ -227,7 +227,7 @@
 		user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
 	SSticker.cums++
 	cuckold_check()
-
+	consensual_act_check() // REDMOON ADD - love_fiend_back - проверка на добровольный секс
 
 /datum/sex_controller/proc/after_milking()
 	set_arousal(80)
