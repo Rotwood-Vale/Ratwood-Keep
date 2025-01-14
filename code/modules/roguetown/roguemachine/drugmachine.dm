@@ -134,9 +134,8 @@
 							return
 						secret_budget = 0
 					if("Direct")
-						if(secret_budget >= 1)
-							budget2change(floor(secret_budget), usr)
-							secret_budget = 0
+						budget2change(floor(secret_budget), usr)
+						secret_budget = 0
 			if("Enable Paying Taxes")
 				drugrade_flags &= ~DRUGRADE_NOTAX
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
