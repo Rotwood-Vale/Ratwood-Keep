@@ -148,12 +148,12 @@
 /obj/item/rogueweapon/mace/stunmace/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	. = ..()
 	if(on)
-		if(target.rogfat >= target.maxrogfat)
+		if(target.stamina >= target.max_stamina)
 			target.electrocute_act(5, src)
 			charge -= 6
 		else//TODO: Check target.STACON!!!!!!!!!!
-			target.rogstam_add(-10)
-			target.rogfat_add(5)
+			target.energy_add(-10)
+			target.stamina_add(5)
 			charge -= 3
 		if(charge <= 0)
 			on = FALSE

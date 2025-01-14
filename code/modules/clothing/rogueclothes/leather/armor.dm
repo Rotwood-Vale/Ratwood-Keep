@@ -25,7 +25,7 @@
 	name = "hardened leather coat"
 	desc = "Sturdy, durable, flexible. Will keep you alive in style."
 	icon_state = "leather_advanced"
-	max_integrity = 350
+	max_integrity = 200
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = list("blunt" = 75, "slash" = 60, "stab" = 30, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -34,7 +34,7 @@
 	name = "masterwork leather coat"
 	desc = "This coat is a craftsmanship marvel. Made with the finest leather. Strong, nimible, reliable."
 	icon_state = "leather_masterwork"
-	max_integrity = 400
+	max_integrity = 300
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP) //we're adding chop here!
 	armor = list("blunt" = 100, "slash" = 70, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
@@ -42,7 +42,7 @@
 	name = "hide armor"
 	desc = "A light armor of wildbeast hide. Far more durable than leather."
 	icon_state = "hidearmor"
-	max_integrity = 230
+	max_integrity = 175
 	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded
@@ -55,7 +55,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
 	nodismemsleeves = TRUE
 	body_parts_covered = CHEST|GROIN|VITALS
-	max_integrity = 300
+	max_integrity = 250
 	sellprice = 25
 	armor_class = ARMOR_CLASS_LIGHT
 
@@ -115,3 +115,18 @@
 	sewrepair = TRUE
 	armor_class = ARMOR_CLASS_LIGHT
 	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
+	name = "New Moon coat"
+	desc = "Light, fancy yet still fairly protective, this teal coat is a signature of the New Moon Holy Order with a noc amulet on in the middle of the chestpiece."
+	icon_state = "newmoon_jacket"
+	item_state = "newmoon_jacket"
+	blocksound = SOFTHIT
+	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	nodismemsleeves = TRUE
+	body_parts_covered = CHEST|GROIN|VITALS
+	max_integrity = 300
+	sellprice = 40
+	armor_class = ARMOR_CLASS_LIGHT
+

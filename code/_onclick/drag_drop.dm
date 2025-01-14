@@ -305,7 +305,7 @@
 				chargedprog = 100
 				mouse_pointer_icon = 'icons/effects/mousemice/swang/acharged.dmi'
 			else
-				if(!L.rogfat_add(L.used_intent.chargedrain))
+				if(!L.stamina_add(L.used_intent.chargedrain))
 					L.stop_attack()
 		return TRUE
 	else

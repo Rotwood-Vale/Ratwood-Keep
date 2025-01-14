@@ -210,7 +210,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
 	tastes = list("sweet" = 1,"bitterness" = 1)
 	eat_effect = /datum/status_effect/debuff/badmeal
-	rotprocess = 15 MINUTES
+	rotprocess = 60 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed
 	seed = /obj/item/seeds/pipeweed
@@ -224,7 +224,7 @@
 	list_reagents = list(/datum/reagent/drug/nicotine = 2, /datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
 	grind_results = list(/datum/reagent/drug/nicotine = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
-	rotprocess = 15 MINUTES
+	rotprocess = 60 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
 	seed = null

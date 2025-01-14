@@ -93,8 +93,6 @@
 	update_damage_hud()
 	update_health_hud()
 	update_mobility()
-	if(!gibbed && !QDELETED(src))
-		apply_status_effect(/datum/status_effect/debuff/death_weaken)
 	stop_pulling()
 
 	. = ..()

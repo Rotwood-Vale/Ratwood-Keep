@@ -31,7 +31,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	job = "Beggar"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	if(!bum_boss)
 		equipOutfit(new /datum/outfit/job/roguetown/vagrant_bum)
 

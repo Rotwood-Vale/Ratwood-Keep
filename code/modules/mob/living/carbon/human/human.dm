@@ -5,30 +5,40 @@
 		return
 	var/obj/item/held_item = user.get_active_held_item()
 	if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_MOUTH))
-		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
-			if(has_stubble)
-				if(user == src)
-					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] stubble with [held_item].</span>")
-				else
-					user.visible_message("<span class='danger'>[user] starts to shave [src]'s stubble with [held_item].</span>")
-				if(do_after(user, 50, needhand = 1, target = src))
-					has_stubble = FALSE
-					update_hair()
-				else
-					held_item.melee_attack_chain(user, src, params)
-			else if(facial_hairstyle != "None")
-				if(user == src)
-					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] facehairs with [held_item].</span>")
-				else
-					user.visible_message("<span class='danger'>[user] starts to shave [src]'s facehairs with [held_item].</span>")
-				if(do_after(user, 50, needhand = 1, target = src))
-					facial_hairstyle = "None"
-					update_hair()
-					if(dna?.species)
-						if(dna.species.id == "dwarf")
-							add_stress(/datum/stressevent/dwarfshaved)
-				else
-					held_item.melee_attack_chain(user, src, params)
+		if (!held_item.get_sharpness())
+			return
+		if (held_item.wlength != WLENGTH_SHORT)
+			return
+		var/datum/bodypart_feature/hair/facial/beard = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+		if (!beard)
+			user.show_message("Already clean shaven.")
+			return
+		if (beard.accessory_type == /datum/sprite_accessory/hair/facial/shaved)
+			user.show_message("Already clean shaven.")
+			return
+		if (beard.accessory_type == /datum/sprite_accessory/hair/facial/stubble)
+			if(user == src)
+				user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] stubble with [held_item].</span>")
+			else
+				user.visible_message("<span class='danger'>[user] starts to shave [src]'s stubble with [held_item].</span>")
+			if(do_after(user, 50, needhand = 1, target = src))
+				beard.accessory_type = /datum/sprite_accessory/hair/facial/shaved
+				update_hair()
+			else
+				held_item.melee_attack_chain(user, src, params)
+		else
+			if(user == src)
+				user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] facehairs with [held_item].</span>")
+			else
+				user.visible_message("<span class='danger'>[user] starts to shave [src]'s facehairs with [held_item].</span>")
+			if(do_after(user, 50, needhand = 1, target = src))
+				beard.accessory_type = /datum/sprite_accessory/hair/facial/shaved
+				update_hair()
+				if(dna?.species)
+					if(dna.species.id == "dwarfm")
+						add_stress(/datum/stressevent/dwarfshaved)
+			else
+				held_item.melee_attack_chain(user, src, params)
 		return
 	if(user == src)
 		if(get_num_arms(FALSE) < 1)
@@ -512,56 +522,56 @@
 			else
 				hud_used.healthdoll.icon_state = "healthdoll_DEAD"*/
 
-		if(hud_used.fats)
+		if(hud_used.stamina)
 			if(stat != DEAD)
 				. = 1
-				if(rogfat >= maxrogfat)
-					hud_used.fats.icon_state = "fat0"
-				else if(rogfat > maxrogfat*0.90)
-					hud_used.fats.icon_state = "fat10"
-				else if(rogfat > maxrogfat*0.80)
-					hud_used.fats.icon_state = "fat20"
-				else if(rogfat > maxrogfat*0.70)
-					hud_used.fats.icon_state = "fat30"
-				else if(rogfat > maxrogfat*0.60)
-					hud_used.fats.icon_state = "fat40"
-				else if(rogfat > maxrogfat*0.50)
-					hud_used.fats.icon_state = "fat50"
-				else if(rogfat > maxrogfat*0.40)
-					hud_used.fats.icon_state = "fat60"
-				else if(rogfat > maxrogfat*0.30)
-					hud_used.fats.icon_state = "fat70"
-				else if(rogfat > maxrogfat*0.20)
-					hud_used.fats.icon_state = "fat80"
-				else if(rogfat > maxrogfat*0.10)
-					hud_used.fats.icon_state = "fat90"
-				else if(rogfat >= 0)
-					hud_used.fats.icon_state = "fat100"
-		if(hud_used.stams)
+				if(stamina >= max_stamina)
+					hud_used.stamina.icon_state = "fat0"
+				else if(stamina > max_stamina*0.90)
+					hud_used.stamina.icon_state = "fat10"
+				else if(stamina > max_stamina*0.80)
+					hud_used.stamina.icon_state = "fat20"
+				else if(stamina > max_stamina*0.70)
+					hud_used.stamina.icon_state = "fat30"
+				else if(stamina > max_stamina*0.60)
+					hud_used.stamina.icon_state = "fat40"
+				else if(stamina > max_stamina*0.50)
+					hud_used.stamina.icon_state = "fat50"
+				else if(stamina > max_stamina*0.40)
+					hud_used.stamina.icon_state = "fat60"
+				else if(stamina > max_stamina*0.30)
+					hud_used.stamina.icon_state = "fat70"
+				else if(stamina > max_stamina*0.20)
+					hud_used.stamina.icon_state = "fat80"
+				else if(stamina > max_stamina*0.10)
+					hud_used.stamina.icon_state = "fat90"
+				else if(stamina >= 0)
+					hud_used.stamina.icon_state = "fat100"
+		if(hud_used.energy)
 			if(stat != DEAD)
 				. = 1
-				if(rogstam <= 0)
-					hud_used.stams.icon_state = "stam0"
-				else if(rogstam > maxrogstam*0.90)
-					hud_used.stams.icon_state = "stam100"
-				else if(rogstam > maxrogstam*0.80)
-					hud_used.stams.icon_state = "stam90"
-				else if(rogstam > maxrogstam*0.70)
-					hud_used.stams.icon_state = "stam80"
-				else if(rogstam > maxrogstam*0.60)
-					hud_used.stams.icon_state = "stam70"
-				else if(rogstam > maxrogstam*0.50)
-					hud_used.stams.icon_state = "stam60"
-				else if(rogstam > maxrogstam*0.40)
-					hud_used.stams.icon_state = "stam50"
-				else if(rogstam > maxrogstam*0.30)
-					hud_used.stams.icon_state = "stam40"
-				else if(rogstam > maxrogstam*0.20)
-					hud_used.stams.icon_state = "stam30"
-				else if(rogstam > maxrogstam*0.10)
-					hud_used.stams.icon_state = "stam20"
-				else if(rogstam > 0)
-					hud_used.stams.icon_state = "stam10"
+				if(energy <= 0)
+					hud_used.energy.icon_state = "stam0"
+				else if(energy > max_energy*0.90)
+					hud_used.energy.icon_state = "stam100"
+				else if(energy > max_energy*0.80)
+					hud_used.energy.icon_state = "stam90"
+				else if(energy > max_energy*0.70)
+					hud_used.energy.icon_state = "stam80"
+				else if(energy > max_energy*0.60)
+					hud_used.energy.icon_state = "stam70"
+				else if(energy > max_energy*0.50)
+					hud_used.energy.icon_state = "stam60"
+				else if(energy > max_energy*0.40)
+					hud_used.energy.icon_state = "stam50"
+				else if(energy > max_energy*0.30)
+					hud_used.energy.icon_state = "stam40"
+				else if(energy > max_energy*0.20)
+					hud_used.energy.icon_state = "stam30"
+				else if(energy > max_energy*0.10)
+					hud_used.energy.icon_state = "stam20"
+				else if(energy > 0)
+					hud_used.energy.icon_state = "stam10"
 
 		if(hud_used.zone_select)
 			hud_used.zone_select.update_icon()
