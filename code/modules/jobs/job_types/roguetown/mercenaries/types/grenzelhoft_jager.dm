@@ -20,7 +20,7 @@
 		/datum/species/elf/dark,
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_jager
-	maximum_possible_slots = 3
+	maximum_possible_slots = 4
 	min_pq = 18
 	torch = FALSE
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
@@ -78,8 +78,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 3)
