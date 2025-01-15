@@ -24,13 +24,13 @@
 	reqs = list(/obj/item/natural/wood/plank = 1)
 	skill_level = 2
 
-/datum/crafting_recipe/roguetown/turfs/wood/platform
+/datum/crafting_recipe/roguetown/turfs/wood/platform // REDMOON EDIT - fix_for_wooden_platforms - was /datum/crafting_recipe/roguetown/turfs/wood/woodplatform
 	name = "platform (wood)"
 	result = /turf/open/floor/rogue/ruinedwood/platform
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skill_level = 3
 
-/datum/crafting_recipe/roguetown/turfs/wood/platform/TurfCheck(mob/user, turf/T)
+/datum/crafting_recipe/roguetown/turfs/wood/platform/TurfCheck(mob/user, turf/T) // REDMOON EDIT - fix_for_wooden_platforms - was /datum/crafting_recipe/roguetown/turfs/woodenplatform
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/transparent/openspace))
