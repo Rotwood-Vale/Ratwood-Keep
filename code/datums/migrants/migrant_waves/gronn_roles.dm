@@ -157,7 +157,7 @@
 //Tribal
 /datum/migrant_role/gronn/tribal
 	name = "Gronn Tribal"
-	greet_text = "You are the bulk of the tribe. Skilled with bow and axe. Well adapted to surviving off the land. "
+	greet_text = "You are the bulk of the tribe. Skilled with bow and axe. Well adapted to surviving off the land."
 	outfit = /datum/outfit/job/roguetown/gronn/tribal
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/human/northern, /datum/species/halforc, /datum/species/goblinp)
