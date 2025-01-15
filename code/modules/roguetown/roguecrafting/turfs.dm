@@ -30,7 +30,7 @@
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skill_level = 3
 
-/datum/crafting_recipe/roguetown/turfs/wood/platform/TurfCheck(mob/user, turf/T) // REDMOON EDIT - fix_for_wooden_platforms - was /datum/crafting_recipe/roguetown/turfs/woodenplatform
+/datum/crafting_recipe/roguetown/turfs/wood/platform/TurfCheck(mob/user, turf/T) // REDMOON EDIT - fix_for_wooden_platforms - was /datum/crafting_recipe/roguetown/turfs/woodplatform/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/transparent/openspace))
