@@ -2191,4 +2191,5 @@
 #include "modular_redmoon\modules\mob\living\carbon\human\species_types\roguetown\tabaxi.dm"
 #include "modular_redmoon\modules\mob\living\carbon\human\species_types\roguetown\tiefling.dm"
 #include "modular_redmoon\modules\mob\living\carbon\human\species_types\roguetown\vulpkanin.dm"
+#include "modular_redmoon\modules\round_end_vote_for_people\round_end_vote_for_people.dm"
 // END_INCLUDE

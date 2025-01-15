@@ -1,0 +1,6 @@
+## Enable global barks
+## Uncomment this to allow player's speech barks #
+ENABLE_GLOBAL_BARKS
+
+## allow players to initiate the round end vote
+ALLOW_VOTE_ROUND_END
