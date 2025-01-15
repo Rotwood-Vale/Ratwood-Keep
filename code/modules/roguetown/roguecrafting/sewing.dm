@@ -579,7 +579,7 @@
 /datum/crafting_recipe/roguetown/sewing/leathercoat
 	name = "leather coat (3 leather, fur, fiber; JOURNEYMAN)"
 	result = /obj/item/clothing/suit/roguetown/armor/leathercoat
-	reqs = list(/obj/item/natural/hide/cured = 3
+	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/fur = 1,
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
