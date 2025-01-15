@@ -144,14 +144,14 @@
 	icon_state = "tent"
 	smooth = SMOOTH_FALSE
 	blade_dulling = DULLING_BASHCHOP
-	max_integrity = 300
+	max_integrity = 150
 	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 //	canSmoothWith = list(/turf/closed/wall/mineral/rogue/wood, /obj/structure/roguewindow, /turf/closed/wall/mineral/rogue/wooddark)
 	above_floor = /turf/open/floor/rogue/twig
 	baseturfs = list(/turf/open/floor/rogue/twig)
 	neighborlay = "dirtedge"
-	climbdiff = 99 //how are you even supposed to climb a tent??
+	climbdiff = 3
 	explosion_block = 0
 	hardness = 70
 
