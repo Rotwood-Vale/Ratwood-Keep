@@ -2069,6 +2069,7 @@
 #include "modular_redmoon\code\modules\spells\roguetown\acolyte\ravox.dm"
 #include "modular_redmoon\code\modules\spells\roguetown\acolyte\xylix.dm"
 #include "modular_redmoon\code\modules\surgery\organs\feature_organs\tails.dm"
+#include "modular_redmoon\modules\acolytes_can_coronate\acolytes_can_coronate.dm"
 #include "modular_redmoon\modules\client\preferences.dm"
 #include "modular_redmoon\modules\client\preferences_savefile.dm"
 #include "modular_redmoon\modules\events\goblininvasion.dm"
