@@ -73,7 +73,7 @@
 	added_stashed_items = list("Rapier" = /obj/item/rogueweapon/sword/rapier)
 
 /datum/virtue/combat/duelist/apply_to_human(mob/living/carbon/human/recipient)
-	if(recipient.mind?.get_skill_level(/datum/skill/combat/swords) < SKILL_LEVEL_JOURNEYMAN)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/swords) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
 		added_skills = list(list(/datum/skill/combat/swords, 1, 4))
@@ -87,7 +87,7 @@
 	)
 
 /datum/virtue/combat/bowman/apply_to_human(mob/living/carbon/human/recipient)
-	if(recipient.mind?.get_skill_level(/datum/skill/combat/bows) < SKILL_LEVEL_JOURNEYMAN)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/bows) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
 		added_skills = list(list(/datum/skill/combat/bows, 1, 6))
