@@ -37,9 +37,9 @@
 			// Set all minions to focus on the enemy target
 			src.process_minions(order_type = "attack", target = target)
 			return
-
-	revert_cast()
-	return
+	else
+		revert_cast()
+		return
 
 /obj/effect/proc_holder/spell/invoked/minion_order/proc/process_minions(var/order_type, turf/target_location = null, mob/living/target = null)
 	var/mob/caster = usr
@@ -55,23 +55,24 @@
 				minion.ai_controller.clear_blackboard_key(BB_FOLLOW_TARGET)
 				minion.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
 				minion.ai_controller.clear_blackboard_key(BB_TRAVEL_DESTINATION)
+				minion.ai_controller.clear_blackboard_key(BB_BASIC_MOB_RETALIATE_LIST)
 				count += 1
 				switch (order_type)
 					if ("goto")
 						minion.ai_controller.set_blackboard_key(BB_TRAVEL_DESTINATION, target_location)
 						//minion.balloon_alert(caster, "Going to [target_location].")
-						msg = " go to [target_location]"
+						msg = "go to [target_location]"
 					if ("follow")
 						minion.ai_controller.set_blackboard_key(BB_FOLLOW_TARGET, target)
 						//minion.balloon_alert(caster, "Following you.")
-						msg = " follow you."
+						msg = "follow you."
 					if ("aggressive")
 						//minion.balloon_alert(caster, "Returning to my natural state.")
-						msg = " roam free."
+						msg = "roam free."
 					if ("attack")
 						minion.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
 						//minion.balloon_alert(caster, "Attacking [target.name].")
-						msg = " attack [target.name]"
+						msg = "attack [target.name]"
 	if(count>0)
 		to_chat(caster, "Ordered [count] minions to " + msg)
 	else
