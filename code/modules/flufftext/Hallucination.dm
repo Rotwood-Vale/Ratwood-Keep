@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 /obj/effect/hallucination/simple
 	var/image_icon = 'icons/mob/alien.dmi'
-	var/image_state = "alienh_pounce"
+	var/image_state = "larva0[M]"
 	var/px = 0
 	var/py = 0
 	var/col_mod = null
@@ -139,71 +139,71 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	..()
 	var/turf/source = random_far_turf()
 	if(!battle_type)
-		battle_type = pick("laser","disabler","esword","gun","stunprod","harmbaton","bomb")
+		battle_type = pick("monster","magic","trap","blade","ouch","choke","dead")
 	feedback_details += "Type: [battle_type]"
 	switch(battle_type)
-		if("laser")
+		if("monster")
 			var/hits = 0
 			for(var/i in 1 to rand(5, 10))
-				target.playsound_local(source, 'sound/blank.ogg', 25, 1)
+				target.playsound_local(source, 'sound/combat/caught.ogg', 10, 1)
 				if(prob(50))
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/blank.ogg', 25, 1), rand(5,10))
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/misc/astratascream.ogg', 25, 1), rand(5,10))
 					hits++
 				else
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/blank.ogg', 25, 1), rand(5,10))
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/combat/caught.ogg', 15, 1), rand(5,10))
 				sleep(rand(CLICK_CD_RANGE, CLICK_CD_RANGE + 6))
 				if(hits >= 4 && prob(70))
-					target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
+					target.playsound_local(source, 'sound/foley/bodyfall (2).ogg', 35, 1)
 					break
-		if("disabler")
+		if("magic")
 			var/hits = 0
 			for(var/i in 1 to rand(5, 10))
-				target.playsound_local(source, 'sound/blank.ogg', 25, 1)
+				target.playsound_local(source, 'sound/magic/charging.ogg', 25, 1)
 				if(prob(50))
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/blank.ogg', 25, 1), rand(5,10))
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/magic/fireball.ogg', 35, 1), rand(5,10))
 					hits++
 				else
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/blank.ogg', 25, 1), rand(5,10))
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/magic/lightning.ogg', 35, 1), rand(5,10))
 				sleep(rand(CLICK_CD_RANGE, CLICK_CD_RANGE + 6))
 				if(hits >= 3 && prob(70))
-					target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
+					target.playsound_local(source, 'sound/foley/bodyfall (3).ogg', 35, 1)
 					break
-		if("esword")
-			target.playsound_local(source, 'sound/blank.ogg',15, 1)
+		if("trap")
+			target.playsound_local(source, 'sound/items/beartrap.ogg',15, 1)
 			for(var/i in 1 to rand(4, 8))
-				target.playsound_local(source, 'sound/blank.ogg', 50, 1)
+				target.playsound_local(source, 'sound/items/beartrap.ogg', 50, 1)
 				if(i == 4)
-					target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
+					target.playsound_local(source, 'sound/foley/bodyfall (2).ogg', 35, 1)
 				sleep(rand(CLICK_CD_MELEE, CLICK_CD_MELEE + 6))
-			target.playsound_local(source, 'sound/blank.ogg', 15, 1)
-		if("gun")
+			target.playsound_local(source, 'sound/beartrap.ogg', 15, 1)
+		if("blade")
 			var/hits = 0
 			for(var/i in 1 to rand(3, 6))
-				target.playsound_local(source, "sound/weapons/gunshot.ogg", 25, TRUE)
+				target.playsound_local(source, 'sound/combat/hits/bladed/genslash (1).ogg', 25, TRUE)
 				if(prob(60))
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/blank.ogg', 25, 1), rand(5,10))
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/combat/hits/bladed/genslash (2).ogg', 25, 1), rand(5,10))
 					hits++
 				else
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, "ricochet", 25, 1), rand(5,10))
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), source, 'sound/combat/hits/bladed/genslash (3).ogg', 25, 1), rand(5,10))
 				sleep(rand(CLICK_CD_RANGE, CLICK_CD_RANGE + 6))
 				if(hits >= 2 && prob(80))
-					target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
+					target.playsound_local(source, 'sound/foley/bodyfall (2).ogg', 35, 1)
 					break
-		if("stunprod") //Stunprod + cablecuff
-			target.playsound_local(source, 'sound/blank.ogg', 40, 1)
-			target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
+		if("ouch") //Getting injured and fall
+			target.playsound_local(source, 'sound/vo/female/gen/painscream (8).ogg', 40, 1)
+			target.playsound_local(source, 'sound/foley/bodyfall (2).ogg', 40, 1)
 			sleep(20)
 			target.playsound_local(source, 'sound/blank.ogg', 15, 1)
-		if("harmbaton") //zap n slap
-			target.playsound_local(source, 'sound/blank.ogg', 40, 1)
-			target.playsound_local(source, get_sfx("bodyfall"), 25, 1)
+		if("choke") //choke and fall
+			target.playsound_local(source, 'sound/vo/female/gen/deathgurgle (1).ogg', 50, 1)
+			target.playsound_local(source, 'sound/foley/bodyfall (2).ogg', 45, 1)
 			sleep(20)
 			for(var/i in 1 to rand(5, 12))
-				target.playsound_local(source, "swing_hit", 50, 1)
+				target.playsound_local(source, 'sound/foley/choke (3).ogg', 50, 1)
 				sleep(rand(CLICK_CD_MELEE, CLICK_CD_MELEE + 4))
-		if("bomb") // Tick Tock
+		if("dead") // You have died of dysentery
 			for(var/i in 1 to rand(3, 11))
-				target.playsound_local(source, 'sound/blank.ogg', 25, 0)
+				target.playsound_local(source, 'sound/misc/hello.ogg', 40, 0)
 				sleep(15)
 	qdel(src)
 
@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	set waitfor = FALSE
 	. = ..()
 	var/image/A = null
-	var/kind = force_kind ? force_kind : pick("nothing","monkey","corgi","carp","skeleton","demon","zombie")
+	var/kind = force_kind ? force_kind : pick("shadow","monster","ww","skeleton","spider","demon","maneater")
 	feedback_details += "Type: [kind]"
 	var/list/nearby
 	if(skip_nearby)
@@ -322,30 +322,30 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if(skip_nearby && (H in nearby))
 			continue
 		switch(kind)
-			if("nothing")
-				A = image('icons/effects/effects.dmi',H,"nothing")
-				A.name = "..."
-			if("monkey")//Monkey
-				A = image('icons/mob/monkey.dmi',H,"monkey1")
-				A.name = "Monkey ([rand(1,999)])"
-			if("carp")//Carp
-				A = image('icons/mob/carp.dmi',H,"carp")
-				A.name = "Space Carp"
-			if("corgi")//Corgi
-				A = image('icons/mob/pets.dmi',H,"corgi")
-				A.name = "Corgi"
-			if("skeleton")//Skeletons
-				A = image('icons/mob/human.dmi',H,"skeleton")
+			if("shadow")
+				A = image('icons/roguetown/maniac/dreamer_mobs.dmi',H,"M3")
+				A.name = "???"
+			if("monster")//Horror
+				A = image('icons/roguetown/mob/monster/horrors.dmi',H,"horror1")
+				A.name = "ZIZOZIZOZIZO"
+			if("skeleton")//skeleton
+				A = image('icons/roguetown/mob/skeleton_male.dmi',H,"z")
 				A.name = "Skeleton"
-			if("zombie")//Zombies
-				A = image('icons/mob/human.dmi',H,"zombie")
-				A.name = "Zombie"
+			if("ww")//ww
+				A = image('icons/roguetown/mob/monster/werewolf.dmi',H,"wwolf_m")
+				A.name = "Moon Howler"
+			if("spider")//Spider
+				A = image('icons/roguetown/mob/monster/spider.dmi',H,"skallax")
+				A.name = "Ambush spider"
+			if("maneater")//Maneater
+				A = image('icons/roguetown/mob/monster/maneater.dmi',H,"maneater")
+				A.name = "Maneater"
 			if("demon")//Demon
-				A = image('icons/mob/mob.dmi',H,"daemon")
-				A.name = "Demon"
-			if("custom")
+				A = image('icons/roguetown/mob/monster/hellkeeper.dmi',H,"hellkeeper")
+				A.name = ""
+			/*if("custom")
 				A = image(custom_icon_file, H, custom_icon)
-				A.name = custom_name
+				A.name = custom_name*/
 		A.override = 1
 		if(target.client)
 			delusions |= A
@@ -366,31 +366,31 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	set waitfor = FALSE
 	..()
 	var/image/A = null
-	var/kind = force_kind ? force_kind : pick("monkey","corgi","carp","skeleton","demon","zombie","robot")
+	var/kind = force_kind ? force_kind : pick("shadow","monster","ww","skeleton","spider","demon","maneater")
 	feedback_details += "Type: [kind]"
 	switch(kind)
-		if("monkey")//Monkey
-			A = image('icons/mob/monkey.dmi',target,"monkey1")
-		if("carp")//Carp
-			A = image('icons/mob/animal.dmi',target,"carp")
-		if("corgi")//Corgi
-			A = image('icons/mob/pets.dmi',target,"corgi")
-		if("skeleton")//Skeletons
-			A = image('icons/mob/human.dmi',target,"skeleton")
-		if("zombie")//Zombies
-			A = image('icons/mob/human.dmi',target,"zombie")
+		if("shadow")//shadowperson
+			A = image('icons/roguetown/maniac/dreamer_mobs.dmi',target,"M3")
+		if("monster")//Horror
+			A = image('icons/roguetown/mob/monster/horrors.dmi',target,"horror1")
+		if("ww")//Werewolf
+			A = image('icons/roguetown/mob/monster/werewolf.dmi',target,"wwolf_m")
+		if("skeleton")//Skeleton
+			A = image('icons/roguetown/mob/skeleton_male.dmi',target,"z")
+		if("spider")//Spider
+			A = image('icons/roguetown/mob/monster/spider.dmi',target,"skallax")
 		if("demon")//Demon
-			A = image('icons/mob/mob.dmi',target,"daemon")
-		if("robot")//Cyborg
-			A = image('icons/mob/robots.dmi',target,"robot")
+			A = image('icons/roguetown/mob/monster/hellkeeper.dmi',target,"hellkeeper")
+		if("maneater")//maneater
+			A = image('icons/roguetown/mob/monster/maneater.dmi',target,"maneater")
 			target.playsound_local(target,'sound/blank.ogg', 75, 1)
 		if("custom")
 			A = image(custom_icon_file, target, custom_icon)
 	A.override = 1
 	if(target.client)
 		if(wabbajack)
-			to_chat(target, "<span class='hear'>...wabbajack...wabbajack...</span>")
-			target.playsound_local(target,'sound/blank.ogg', 50, 1)
+			to_chat(target, "<span class='hear'>...they are coming...</span>")
+			target.playsound_local(target,'sound/misc/dun.ogg', 50, 1)
 		delusion = A
 		target.client.images |= A
 	QDEL_IN(src, duration)
@@ -421,9 +421,9 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	var/radio_messages = list("[pick_list_replacements(HAL_LINES_FILE, "people")] is [pick_list_replacements(HAL_LINES_FILE, "accusations")]!",\
 		"Help!",\
 		"[pick_list_replacements(HAL_LINES_FILE, "threat")] in [pick_list_replacements(HAL_LINES_FILE, "location")][prob(50)?"!":"!!"]",\
-		"[pick("Where's [target.first_name()]?", "Set [target.first_name()] to arrest!")]",\
-		"[pick("C","Ai, c","Someone c","Rec")]all the shuttle!",\
-		"AI [pick("rogue", "is dead")]!!")
+		"[pick("[target.first_name()] is a heretic!", "Make [target.first_name()] an outlaw!")]",\
+		"[pick("I","Squire","Somebody","They")] killed the priest!",\
+		"Duke [pick("is a Zizoid", "is a heretic")]!!")
 
 	var/mob/living/carbon/person = null
 	var/datum/language/understood_language = target.get_random_understood_language()
@@ -488,31 +488,29 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if(close_other) //increase the odds
 			for(var/i in 1 to 5)
 				message_pool.Add("<span class='warning'>I feel a tiny prick!</span>")
-		var/obj/item/storage/equipped_backpack = other.get_item_by_slot(SLOT_BACK)
+		var/obj/item/storage/equipped_backpack = other.get_item_by_slot(SLOT_BACK_L)
 		if(istype(equipped_backpack))
 			for(var/i in 1 to 5) //increase the odds
 				message_pool.Add("<span class='notice'>[other] puts the [pick(\
-					"revolver","energy sword","cryptographic sequencer","power sink","energy bow",\
-					"hybrid taser","stun baton","flash","syringe gun","circular saw","tank transfer valve",\
-					"ritual dagger","spellbook",\
-					"pulse rifle","captain's spare ID","hand teleporter","hypospray","antique laser gun","X-01 MultiPhase Energy Gun","station's blueprints"\
+					"killersice","crimson fang","severed head","crown of Azure Peak","master's rod",\
+					"master key","vault key", "steward's key", "ritual dagger","spellbook",\
 					)] into [equipped_backpack].</span>")
 
-		message_pool.Add("<B>[other]</B> [pick("sneezes","coughs")].")
+		message_pool.Add("<B>[other]</B> [pick("laughs","stares at you")].")
 
-	message_pool.Add("<span class='notice'>I hear something squeezing through the ducts...</span>", \
-		"<span class='notice'>My [pick("arm", "leg", "back", "head")] itches.</span>",\
+	message_pool.Add("<span class='notice'>I feel something crawling in my ear...</span>", \
+		"<span class='notice'>My [pick("arm", "leg", "back", "head")] begins to itch incessantly.</span>",\
 		"<span class='warning'>I feel [pick("hot","cold","dry","wet","woozy","faint")].</span>",
-		"<span class='warning'>My stomach rumbles.</span>",
+		"<span class='warning'>I cough up blood!</span>",
 		"<span class='warning'>My head hurts.</span>",
-		"<span class='warning'>I hear a faint buzz in my head.</span>",
+		"<span class='warning'>I hear a faint scratching in my head.</span>",
 		"<B>[target]</B> sneezes.")
 	if(prob(10))
 		message_pool.Add("<span class='warning'>Behind you.</span>",\
 			"<span class='warning'>I hear a faint laughter.</span>",
 			"<span class='warning'>I see something move.</span>",
 			"<span class='warning'>I hear skittering on the ceiling.</span>",
-			"<span class='warning'>I see an inhumanly tall silhouette moving in the distance.</span>")
+			"<span class='warning'>I see an inhumanly tall silhouette moving in the distance. It's coming towards me...</span>")
 	if(prob(10))
 		message_pool.Add("[pick_list_replacements(HAL_LINES_FILE, "advice")]")
 	var/chosen = pick(message_pool)
@@ -881,6 +879,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	..()
 	target.set_screwyhud(SCREWYHUD_DEAD)
 	target.Paralyze(300)
+	target.playsound_local(source, 'sound/misc/deth.ogg', 100, 0)
 	target.silent += 10
 	to_chat(target, "<span class='deadsay'><b>[target.real_name]</b> has died at <b>[get_area_name(target)]</b>.</span>")
 	if(prob(50))
@@ -894,8 +893,8 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			fakemob = target //ever been so lonely you had to haunt yourself?
 		if(fakemob)
 			sleep(rand(20, 50))
-			to_chat(target, "<span class='deadsay'><b>DEAD: [fakemob.name]</b> says, \"[pick("rip","why did i just drop dead?","hey [target.first_name()]","git gud","you too?","is the AI rogue?",\
-			"i[prob(50)?" fucking":""] hate [pick("blood cult", "clock cult", "revenants", "this round","this","myself","admins","you")]")]\"</span>")
+			to_chat(target, "<span class='deadsay'><b>DEAD: [fakemob.name]</b> says, \"[pick("rip","why did i just drop dead?","hey [target.first_name()]","lol poison?","you too?","was that a crossbow?",\
+			"i[prob(50)?" fucking":""] hate [pick("the ww", "the lich", "rogues", "this round","this","myself","squires","you")]")]\"</span>")
 	sleep(rand(70,90))
 	target.set_screwyhud(SCREWYHUD_NONE)
 	target.SetParalyzed(0)
