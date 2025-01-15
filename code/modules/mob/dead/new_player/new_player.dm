@@ -702,6 +702,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		transfer_character()
 	GLOB.chosen_names += H.real_name
 
+	H.add_gender_genitals_to_round_end_statistics() // BLUEMOON ADD - start_reports_with_gender_lists - добавляем в списки в зависимости от половых органов
 
 /mob/proc/after_creation()
 	return
