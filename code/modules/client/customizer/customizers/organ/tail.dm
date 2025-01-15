@@ -43,7 +43,7 @@
 		/datum/sprite_accessory/tail/cat,
 		/datum/sprite_accessory/tail/twocat,
 		/datum/sprite_accessory/tail/tiger,
-		/datum/sprite_accessory/tail/leopard
+		/datum/sprite_accessory/tail/leopard,
 		/datum/sprite_accessory/tail/lynx,
 		)
 
