@@ -235,7 +235,7 @@
 				if(BCLASS_CUT)
 					var/mob/living/lumberjacker = user
 					var/lumberskill = lumberjacker.mind.get_skill_level(/datum/skill/labor/lumberjacking)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.2
 					else
 						dullfactor = 0.45 + (lumberskill * 0.15)
@@ -244,7 +244,7 @@
 				if(BCLASS_CHOP)
 					var/mob/living/lumberjacker = user
 					var/lumberskill = lumberjacker.mind.get_skill_level(/datum/skill/labor/lumberjacking)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.3
 					else
 						dullfactor = 1.0 + (lumberskill * 0.25)
@@ -270,11 +270,11 @@
 		if(DULLING_BASHCHOP) //structures that can be attacked by clubs also (doors fences etc)
 			switch(user.used_intent.blade_class)
 				if(BCLASS_CUT)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.8
 					cont = TRUE
 				if(BCLASS_CHOP)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.8
 					else
 						dullfactor = 1.5

@@ -274,6 +274,19 @@
 		shit += "<br><font color='#93cac7'><span class='bold'>The Damned:</span></font> "
 		for(var/x in GLOB.confessors)
 			shit += "[x]"
+	// REDMOON ADD START - start_reports_with_gender_lists - вывод статистики в конце раунда о половой принадлежности
+	var/count_of_joined_characters = males + females + males_with_vagina + females_with_penis
+	var/percent_of_males = PERCENT(males/count_of_joined_characters)
+	var/percent_of_males_with_vagina = PERCENT(males_with_vagina/count_of_joined_characters)
+	var/percent_of_females = PERCENT(females/count_of_joined_characters)
+	var/percent_of_females_with_penis = PERCENT(females_with_penis/count_of_joined_characters)
+	shit += "<br><br><span class='bold'>⇕--------------------⇕</span>"
+	shit += "<br><font color='#a78fa8'><span class='bold'>Beginnings Statistics:</span></font> "
+	shit += "<br><font color='#4183c0'><span class='italics'>Men:</span></font> [males] ([percent_of_males]%)"
+	shit += "<br><font color='#c74ec1'><span class='italics'>Women:</span></font> [females] ([percent_of_females]%)"
+	shit += "<br><font color='#d19445'><span class='italics'>Men with female beginnings:</span></font> [males_with_vagina] ([percent_of_males_with_vagina]%)"
+	shit += "<br><font color='#80097a'><span class='italics'>Women with male beginnings:</span></font> [females_with_penis] ([percent_of_females_with_penis]%)"
+	// REDMOON ADD END
 	shit += "<br><br><span class='bold'>∇--------------------∇</span>"
 	to_chat(world, "[shit.Join()]")
 	return

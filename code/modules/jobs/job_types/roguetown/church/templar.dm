@@ -64,6 +64,9 @@
 			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
 			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 			mask = /obj/item/clothing/mask/rogue/facemask/goldmask
+		if("Xylix")
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar
+			wrists = /obj/item/clothing/neck/roguetown/psicross/xylix
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs

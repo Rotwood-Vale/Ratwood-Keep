@@ -60,6 +60,8 @@
 #define TRAIT_CHOSEN "Consecrated Priest"
 #define TRAIT_NOCTURNAL "Noc's Moonlight" //Grants weak darkvision- lighting alpha 145, amplified for mages using the DV spell- alpha 200
 #define TRAIT_FORGEBLESSED "Malum's Devout" //Reduces the fatigue cost of smithing a bit.
+#define TRAIT_SHARPER_BLADES "Sharper Blades" //Weapons lose less blade integrity
+#define TRAIT_BLACKLEG "Blackleg" //Rig coin, dice, cards in your favor
 
 #define TRAIT_KNEESTINGER_IMMUNITY "Kneestinger Immunity"
 #define TRAIT_BASHDOORS "bashdoors"
@@ -161,6 +163,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
+	TRAIT_SHARPER_BLADES = "My weapons lose their sharpness slower.",					// REDMOON ADD
+	TRAIT_BLACKLEG = "I can cheat by rigging coin and dice, and peek at cards.",		// REDMOON ADD
 	TRAIT_STUDENT = span_info("The scholar has taught me new skills!")
 ))
 
