@@ -338,3 +338,13 @@
 	icon_state = "hearttail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
+
+/datum/sprite_accessory/tail/dragongirl/dragontailm
+	name = "Dragon Tail(m)"
+	icon = 'icons/mob/sprite_accessory/tails/dragongirl.dmi'
+	icon_state = "dragontailm"
+
+/datum/sprite_accessory/tail/dragongirl/dragontailf
+	name = "Dragon Tail(f)"
+	icon = 'icons/mob/sprite_accessory/tails/dragongirl.dmi'
+	icon_state = "dragontailf"

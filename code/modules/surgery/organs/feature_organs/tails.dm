@@ -74,3 +74,8 @@
 	accessory_type =  /datum/sprite_accessory/tail/lizard/kobold
 	icon_state = "koboldtail"
 	can_penetrate = TRUE
+
+/obj/item/organ/tail/dragontail
+	name = "dragon tail"
+	accessory_type =  /datum/sprite_accessory/tail/dragongirl
+	can_penetrate = TRUE

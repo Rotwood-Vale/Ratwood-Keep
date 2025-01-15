@@ -163,3 +163,16 @@
 		/datum/sprite_accessory/horns/doublehorns,
 		/datum/sprite_accessory/horns/tiefhorns,
 		)
+
+datum/customizer/organ/horns/humanoid/dragongirl
+	customizer_choices = list(/datum/customizer_choice/organ/horns/humanoid/dragongirl)
+	default_disabled = FALSE
+
+/datum/customizer_choice/organ/horns/humanoid/dragongirl
+	name = "Horns"
+	organ_type = /obj/item/organ/horns
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/horns/dragonhornf,
+		/datum/sprite_accessory/horns/dragonhornm,
+		)

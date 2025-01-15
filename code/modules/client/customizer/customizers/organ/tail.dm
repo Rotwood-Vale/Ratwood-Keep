@@ -219,3 +219,15 @@
 		/datum/sprite_accessory/tail/lizard/spikes,
 		/datum/sprite_accessory/tail/snuppy,
 		)
+
+/datum/customizer/organ/tail/dragongirl
+	customizer_choices = list(/datum/customizer_choice/organ/tail/dragongirl)
+
+/datum/customizer_choice/organ/tail/dragongirl
+	name = "Dragon Tail"
+	organ_type = /obj/item/organ/tail/dragontail
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/tail/dragongirl/dragontailm,
+		/datum/sprite_accessory/tail/dragongirl/dragontailf,
+		)

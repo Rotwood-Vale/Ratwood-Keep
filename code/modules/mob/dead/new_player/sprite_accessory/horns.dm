@@ -153,3 +153,13 @@
 	icon = 'icons/mob/sprite_accessory/halforc.dmi'
 	icon_state = "orctusk"
 	default_colors = list("#F4F4BE")
+
+/datum/sprite_accessory/horns/dragonhornm
+	name = "Dragon Horns(m)"
+	icon = 'icons/mob/sprite_accessory/horns/dragongirl.dmi'
+	icon_state = "dragonhornf"
+
+/datum/sprite_accessory/horns/dragonhornf
+	name = "Dragon Horns(f)"
+	icon = 'icons/mob/sprite_accessory/horns/dragongirl.dmi'
+	icon_state = "dragonhornm"

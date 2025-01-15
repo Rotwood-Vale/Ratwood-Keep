@@ -20,6 +20,7 @@
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/seelie,\
+	/datum/species/dragongirl, \
 )
 
 #define RACES_RESPECTED \
@@ -39,6 +40,7 @@
 	/datum/species/demihuman, \
 	/datum/species/elf/dark,\
 	/datum/species/tieberian,\
+	/datum/species/dragongirl, \
 
 #define RACES_TOLERATED \
 	/datum/species/goblinp, \
@@ -95,6 +97,7 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/dragongirl, \
 )
 
 #define CLOTHED_RACES_TYPES list(\
@@ -119,6 +122,7 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/dragongirl, \
 )
 // Non-dwarf non-kobold non-goblin mostly
 #define NON_DWARVEN_RACE_TYPES list(\
@@ -139,6 +143,7 @@
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/seelie,\
+	/datum/species/dragongirl, \
 )
 // Non-elf non-dwarf non-kobold non-goblin mostly
 #define HUMANLIKE_RACE_TYPES list(\
@@ -154,6 +159,7 @@
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
+	/datum/species/dragongirl, \
 )
 // For their armour sets. Shouldn't need to define the sub species, but oh well.
 #define GOBLIN_RACE_TYPES list(\

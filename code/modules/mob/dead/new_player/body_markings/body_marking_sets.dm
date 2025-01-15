@@ -114,3 +114,20 @@
 	name = "Lovers"
 	body_marking_list = list(/datum/body_marking/moth/lovers)
 
+/datum/body_marking_set/dragongirl
+
+/datum/body_marking_set/dragongirl/z
+	name = "Покой"
+	body_marking_list = list(/datum/body_marking/dragongirl/z)
+
+/datum/body_marking_set/dragongirl/x
+	name = "Слово"
+	body_marking_list = list(/datum/body_marking/dragongirl/x)
+
+/datum/body_marking_set/dragongirl/c
+	name = "Сила"
+	body_marking_list = list(/datum/body_marking/dragongirl/c)
+
+/datum/body_marking_set/dragongirl/v
+	name = "Равновесие"
+	body_marking_list = list(/datum/body_marking/dragongirl/v)
