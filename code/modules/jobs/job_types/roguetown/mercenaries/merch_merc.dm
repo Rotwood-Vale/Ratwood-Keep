@@ -26,6 +26,7 @@
 
 /datum/outfit/job/roguetown/grabber/pre_equip(mob/living/carbon/human/H)
 	..()
+
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 		pants = /obj/item/clothing/under/roguetown/tights/sailor
@@ -49,8 +50,8 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 		if(prob(77))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
-
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger)
+	
+	r_hand = /obj/item/rogueweapon/huntingknife/idagger
 
 
 /datum/job/roguetown/grabber/after_spawn(mob/living/L, mob/M, latejoin = TRUE)

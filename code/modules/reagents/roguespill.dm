@@ -1,10 +1,9 @@
 /obj/item/storage/equipped(mob/user, slot)
 	. = ..()
-	if(!istype(src, /obj/item/storage/bag/tray))
-		for(var/obj/item/reagent_containers/I in contents)
-			if(I.reagents && I.spillable)
-				RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(check_spill), override = TRUE)
-				break
+	for(var/obj/item/reagent_containers/I in contents)
+		if(I.reagents && I.spillable)
+			RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(check_spill), override = TRUE)
+			break
 
 /obj/item/storage/proc/check_spill()
 	var/mob/living/L = loc
@@ -21,7 +20,7 @@
 /obj/item/reagent_containers/on_enter_storage(datum/component/storage/concrete/S)
 	..()
 	if(spillable)
-		if(S && S.spills_on_move)
+		if(S)
 			var/atom/real_location = S.real_location()
 			if(istype(real_location, /obj/item/storage))
 				var/obj/item/storage/I = real_location

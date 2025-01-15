@@ -1,51 +1,53 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf
 	icon = 'icons/roguetown/mob/monster/vol.dmi'
 	name = "volf"
+	desc = "Usually content to leave menfolk alone if well-fed, but something in the wilds turns them hungry, persistent, and vicious."
 	icon_state = "vv"
 	icon_living = "vv"
 	icon_dead = "vvd"
-	gender = MALE
+
+	faction = list("orcs")
 	emote_hear = null
 	emote_see = null
-	speak_chance = 1
-	turns_per_move = 3
-	see_in_dark = 6
-	move_to_delay = 3
-	base_intents = list(/datum/intent/simple/bite)
+	turns_per_move = 5
+	see_in_dark = 9
+	move_to_delay = 2
+	vision_range = 9
+	aggro_vision_range = 9
+
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur = 1)
-	faction = list("wolfs")
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 120
-	maxHealth = 120
-	melee_damage_lower = 19
-	melee_damage_upper = 29
-	vision_range = 7
-	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
-	simple_detect_bonus = 20
-	retreat_distance = 0
-	minimum_distance = 0
-	milkies = FALSE
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
-	footstep_type = FOOTSTEP_MOB_BAREFOOT
-	pooptype = null
+
+	health = VOLF_HEALTH
+	maxHealth = VOLF_HEALTH
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,
+					/obj/item/bodypart,
+					/obj/item/organ)
+
+	base_intents = list(/datum/intent/simple/bite)
+	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
+	melee_damage_lower = 15
+	melee_damage_upper = 20
+
 	STACON = 7
 	STASTR = 7
 	STASPD = 13
+
 	simple_detect_bonus = 20
+	retreat_distance = 0
+	minimum_distance = 0
 	deaggroprob = 0
-	defprob = 40
-	defdrain = 10
+	defprob = 35
+	defdrain = 5
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0.4
 	food = 0
-	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
-	dodgetime = 30
+	dodgetime = 17
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/wolf
+	body_eater = TRUE
 
 	///this mob was updated to new ai
 	AIStatus = AI_OFF
@@ -65,13 +67,14 @@
 	gender = MALE
 	if(prob(33))
 		gender = FEMALE
+	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	update_icon()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/death(gibbed)
 	..()
 	update_icon()
 
-/* Eyes that glow in the dark. They float over kybraxor pits at the moment.
+
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/update_icon()
 	cut_overlays()
 	..()
@@ -79,7 +82,7 @@
 		var/mutable_appearance/eye_lights = mutable_appearance(icon, "vve")
 		eye_lights.plane = 19
 		eye_lights.layer = 19
-		add_overlay(eye_lights)*/
+		add_overlay(eye_lights)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/get_sound(input)
 	switch(input)
@@ -105,6 +108,7 @@
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/find_food()
 	. = ..()
@@ -152,4 +156,3 @@
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
 	return ..()
-

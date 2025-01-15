@@ -165,6 +165,17 @@
 	/datum/species/goblin/moon,\
 )
 
+
+#define RACES_WITH_BEARD_GROWTH list(\
+	/datum/species/human/northern,\
+	/datum/species/human/halfelf,\
+	/datum/species/elf/wood,\
+	/datum/species/dwarf/mountain,\
+	/datum/species/aasimar,\
+	/datum/species/demihuman,\
+	/datum/species/goblinp,\
+)
+
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
@@ -287,7 +298,6 @@ GLOBAL_LIST_EMPTY(cuckolds)
 #define FAMILY_PARTIAL 2
 
 
-GLOBAL_LIST_EMPTY(sunlights)
 GLOBAL_LIST_EMPTY(head_bounties)
 GLOBAL_LIST_EMPTY(job_respawn_delays)
 

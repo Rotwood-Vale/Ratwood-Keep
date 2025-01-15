@@ -122,7 +122,7 @@
 
 /obj/projectile/magic/animate/on_hit(atom/target, blocked = FALSE)
 	var/mob/living/carbon/human/caster = firer
-	caster.rogstam_add(-120)	//Remove even more stam for this cast, couldnt be handled by releasedrain due to fatigue crit
+	caster.energy_add(-120)	//Remove even more stam for this cast, couldnt be handled by releasedrain due to fatigue crit
 	target.animate_atom_living(firer)
 	..()
 

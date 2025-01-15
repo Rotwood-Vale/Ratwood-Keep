@@ -39,12 +39,12 @@
 /area/rogue/indoors)
 "ak" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "al" = (
@@ -90,11 +90,11 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "aq" = (
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "ar" = (
-/obj/item/rogueweapon/hammer/claw,
+/obj/item/rogueweapon/hammer/steel,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "as" = (
@@ -501,11 +501,6 @@
 /obj/item/inhand_tester,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
-"bs" = (
-/obj/item/roguekey/lord,
-/obj/item/roguekey/lord,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors)
 "bt" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -750,10 +745,6 @@
 /obj/item/rogueweapon/mace/goden/steel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
-"bU" = (
-/obj/item/roguekey/lord,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "bV" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -775,7 +766,6 @@
 /obj/item/rogueweapon/greatsword,
 /obj/item/rogueweapon/greatsword,
 /obj/item/rogueweapon/greatsword,
-/obj/item/roguekey/lord,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "bX" = (
@@ -785,7 +775,6 @@
 	},
 /obj/item/rogueweapon/flail/sflail,
 /obj/item/rogueweapon/flail/sflail,
-/obj/item/roguekey/lord,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "bY" = (
@@ -928,16 +917,6 @@
 /obj/item/rogueweapon/mace,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
-"cp" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 9;
-	height = 5;
-	id = "emergency_home";
-	name = "BoxStation emergency evac bay";
-	width = 15
-	},
-/area/rogue/outdoors)
 "cq" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/beach)
@@ -947,12 +926,6 @@
 /area/rogue/outdoors)
 "cs" = (
 /obj/structure/roguemachine/drugmachine,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors)
-"ct" = (
-/obj/item/roguekey/graveyard{
-	lockid = "nightman"
-	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
 "cu" = (
@@ -1056,10 +1029,6 @@
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
-"cK" = (
-/obj/structure/roguemachine/submission,
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors)
 "cL" = (
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/cobble,
@@ -1083,10 +1052,6 @@
 "cQ" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/cobble,
-/area/rogue/outdoors)
-"cR" = (
-/obj/item/roguekey/merchant,
-/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors)
 "cS" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
@@ -5724,7 +5689,7 @@ ax
 ax
 ax
 ax
-bs
+bq
 bq
 bq
 bq
@@ -6476,7 +6441,7 @@ ac
 ac
 ab
 ab
-cK
+aJ
 aJ
 al
 al
@@ -7012,7 +6977,7 @@ ah
 bw
 am
 bM
-bU
+am
 ca
 ax
 ab
@@ -9061,7 +9026,7 @@ aJ
 aJ
 aJ
 cs
-ct
+aJ
 aJ
 aJ
 ah
@@ -9822,7 +9787,7 @@ at
 at
 ai
 cP
-cR
+ai
 ai
 ai
 ai
@@ -10601,7 +10566,7 @@ aM
 aM
 aM
 aM
-cp
+aM
 aM
 aM
 aM

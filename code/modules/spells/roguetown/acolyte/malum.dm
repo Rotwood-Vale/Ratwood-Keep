@@ -226,11 +226,11 @@ proc/apply_damage_if_covered(mob/living/carbon/target, list/body_zones, obj/item
 	if (!iscarbon(target)) 
 		return
 	if (target == user)
-		target.rogstam_add(starminatoregen)
+		target.energy_add(starminatoregen)
 		show_visible_message(usr, "As [user] intones the incantation, vibrant flames swirl around them.", "As you intones the incantation, vibrant flames swirl around you, You feel refreshed.")
-	else if (user.rogstam > (starminatoregen * 2))
-		user.rogstam_add(-(starminatoregen * 2))
-		target.rogstam_add(starminatoregen * 2)
+	else if (user.energy > (starminatoregen * 2))
+		user.energy_add(-(starminatoregen * 2))
+		target.energy_add(starminatoregen * 2)
 		show_visible_message(target, "As [user] intones the incantation, vibrant flames swirl around them, a dance of energy flowing towards [target].", "As [user] intones the incantation, vibrant flames swirl around them, a dance of energy flowing towards you. You feel refreshed")
 
 /obj/effect/proc_holder/spell/invoked/craftercovenant/cast(list/targets, mob/user = usr)

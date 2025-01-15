@@ -18,6 +18,9 @@
 	minstr = 5
 	blade_dulling = DULLING_BASHCHOP
 
+	grid_height = 96
+	grid_width = 32
+
 /datum/intent/lordbash
 	name = "bash"
 	blade_class = BCLASS_BLUNT
@@ -104,6 +107,9 @@
 	var/charge = 100
 	var/on = FALSE
 
+	grid_height = 96
+	grid_width = 64
+
 /obj/item/rogueweapon/mace/stunmace/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -142,12 +148,12 @@
 /obj/item/rogueweapon/mace/stunmace/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	. = ..()
 	if(on)
-		if(target.rogfat >= target.maxrogfat)
+		if(target.stamina >= target.max_stamina)
 			target.electrocute_act(5, src)
 			charge -= 6
 		else//TODO: Check target.STACON!!!!!!!!!!
-			target.rogstam_add(-10)
-			target.rogfat_add(5)
+			target.energy_add(-10)
+			target.stamina_add(5)
 			charge -= 3
 		if(charge <= 0)
 			on = FALSE

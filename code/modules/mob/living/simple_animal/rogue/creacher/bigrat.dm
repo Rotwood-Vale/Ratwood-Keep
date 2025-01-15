@@ -1,50 +1,55 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat
 	icon = 'icons/roguetown/mob/monster/bigrat.dmi'
 	name = "rous"
+	desc = ""
 	icon_state = "rat"
 	icon_living = "rat"
 	icon_dead = "rat1"
-	gender = MALE
-	emote_hear = list("squeaks.")
-	emote_see = list("cleans its nose.")
-	speak_chance = 1
-	turns_per_move = 3
-	see_in_dark = 6
-	move_to_delay = 5
 	pixel_x = -16
 	pixel_y = -8
-	vision_range = 5
-	aggro_vision_range = 9
-	base_intents = list(/datum/intent/simple/bite)
+
+	faction = list("rats")
+	emote_hear = list("squeaks.")
+	emote_see = list("cleans its nose.")
+	turns_per_move = 3
+	move_to_delay = 5
+	vision_range = 2
+	aggro_vision_range = 2
+
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
 					/obj/item/natural/hide = 1)
-	faction = list("rats")
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+
+	health = ROUS_HEALTH
+	maxHealth = ROUS_HEALTH
+
+	food_type = list(/obj/item/reagent_containers/food/snacks,
+					/obj/item/bodypart,
+					/obj/item/organ)
+
+	base_intents = list(/datum/intent/simple/bite)
 	attack_sound = 'sound/combat/wooshes/punch/punchwoosh (2).ogg'
-	health = 65
-	maxHealth = 65
+
 	melee_damage_lower = 17
 	melee_damage_upper = 21
-	environment_smash = ENVIRONMENT_SMASH_NONE
-	retreat_distance = 0
-	minimum_distance = 0
-	milkies = FALSE
-	food_type = list(/obj/item/reagent_containers/food/snacks, /obj/item/bodypart, /obj/item/organ)
-	footstep_type = FOOTSTEP_MOB_BAREFOOT
-	pooptype = null
+
 	STACON = 6
 	STASTR = 9
 	STASPD = 10
+
 	can_buckle = TRUE
 	buckle_lying = 0
+
+	retreat_distance = 0
+	minimum_distance = 0
 	deaggroprob = 0
 	defprob = 40
-	defdrain = 10
-	attack_same = 1
+	defdrain = 5
+	attack_same = FALSE // Lets two share a room.
 	retreat_health = 0.3
-	aggressive = 1
+	aggressive = TRUE
 	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/bigrat
+	body_eater = TRUE
 
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
@@ -59,13 +64,15 @@
 	pixel_y = -8
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/Initialize()
-	gender = pick(MALE, FEMALE)
+	. = ..()
+
+	gender = MALE
+	if(prob(33))
+		gender = FEMALE
 	if(gender == FEMALE)
 		icon_state = "Frat"
 		icon_living = "Frat"
 		icon_dead = "Frat1"
-		milkies = TRUE // must be done before ..()
-	. = ..()
 	update_icon()
 
 	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
@@ -73,6 +80,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/death(gibbed)
 	..()
+	unbuckle_all_mobs()
 	update_icon()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/tamed()
@@ -88,18 +96,17 @@
 		D.vehicle_move_delay = 6	//Slowdown the rous, its too fast
 		move_to_delay = 6
 
+//Inherit and add to the behavior of simple_animal user_buckle_mob, so that we only do a tiny check for rous inherently
+/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/user_buckle_mob(mob/living/M, mob/user)
+	//Logical check to make sure only Seelie or tiny mobs can ride on a rous
+	if(!HAS_TRAIT(M, TRAIT_TINY))
+		return
+	. = ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/find_food()
 	. = ..()
 	if(!.)
 		return eat_bodies()
-
-
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/death(gibbed)
-	..()
-	unbuckle_all_mobs()
-	update_icon()
-
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/update_icon()
 	cut_overlays()
@@ -139,13 +146,6 @@
 	if(pulledby && !tame)
 		Retaliate()
 		GiveTarget(pulledby)
-
-//Inherit and add to the behavior of simple_animal user_buckle_mob, so that we only do a tiny check for rous inherently
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/user_buckle_mob(mob/living/M, mob/user)
-	//Logical check to make sure only Seelie or tiny mobs can ride on a rous
-	if(!HAS_TRAIT(M, TRAIT_TINY))
-		return
-	. = ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat/simple_limb_hit(zone)
 	if(!zone)
@@ -188,3 +188,4 @@
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
 	return ..()
+

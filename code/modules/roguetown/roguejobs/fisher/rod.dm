@@ -9,6 +9,10 @@
 	wlength = 33
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_BULKY
+
+	grid_height = 96
+	grid_width = 32
+	
 	///The current bait that we have attached to our fishing rod
 	var/obj/item/baited = null
 
@@ -19,6 +23,10 @@
 	misscost = 0
 	icon_state = "inuse"
 	no_attack = TRUE
+
+/obj/item/fishingrod/New()
+	. = ..()
+	icon_state = "rod[rand(1,3)]"
 
 /obj/item/fishingrod/attack_self(mob/user)
 	if(user.doing)
@@ -43,7 +51,7 @@
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.6,"sx" = -17,"sy" = -1,"nx" = 11,"ny" = -1,"wx" = -14,"wy" = 0,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+				return list("shrink" = 0.6,"sx" = -14,"sy" = -1,"nx" = 11,"ny" = -1,"wx" = -11,"wy" = 0,"ex" = 5,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
