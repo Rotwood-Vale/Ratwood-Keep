@@ -14841,6 +14841,13 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/physician)
+"ndu" = (
+/obj/structure/chair/wood/rogue{
+	dir = 4
+	},
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/carpet/inn,
+/area/rogue/indoors/town/tavern)
 "ndv" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/item/roguebin/water,
@@ -22091,6 +22098,13 @@
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/under/town/sewer)
+"tqo" = (
+/obj/structure/chair/wood/rogue{
+	dir = 8
+	},
+/obj/effect/landmark/start/courtagent,
+/turf/open/floor/carpet/inn,
+/area/rogue/indoors/town/tavern)
 "tqp" = (
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	dir = 1
@@ -60033,7 +60047,7 @@ erC
 iYe
 iYe
 jwG
-dlj
+ndu
 dlj
 jwG
 jwG
@@ -60348,7 +60362,7 @@ xmj
 xmj
 jwG
 hGZ
-hGZ
+tqo
 jwG
 jwG
 kVC
