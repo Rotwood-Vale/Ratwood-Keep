@@ -38,6 +38,10 @@
 	H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	if(H.age == AGE_MIDDLEAGED)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
+	if(H.age == AGE_OLD)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 
 	H.change_stat("strength", 3)
 	H.change_stat("constitution", 1)
