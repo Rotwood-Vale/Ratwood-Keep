@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 					break
 		if("trap")
 			target.playsound_local(target, 'sound/items/beartrap.ogg',75, 1)
-			target.playsound_local(target, 'sound/vo/female/gen/painscream (8).ogg', 50, 1)
+			target.playsound_local(target, 'sound/vo/female/gen/painscream (5).ogg', 50, 1)
 			for(var/i in 1 to rand(3, 8))
 				target.playsound_local(target, 'sound/misc/bleed (1).ogg', 90, 1)
 				if(i == 4)
@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 					target.playsound_local(target, 'sound/vo/male/knight/pain (1).ogg', 55, 1)
 					break
 		if("ouch") //Getting injured and fall
-			target.playsound_local(target, 'sound/vo/female/gen/painscream (8).ogg', 50, 1)
+			target.playsound_local(target, 'sound/vo/female/gen/painscream (4).ogg', 50, 1)
 			sleep(8)
 			target.playsound_local(target, 'sound/foley/bodyfall (2).ogg', 60, 1)
 			sleep(20)
