@@ -654,7 +654,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			sleep(25)
 			target.playsound_local(target, 'sound/misc/bleed (3).ogg', 75)
 			sleep(25)
-			target.playsound_local(target, 'sound/misc/bleed (4).ogg', 85)
+			target.playsound_local(target, 'sound/misc/bleed (1).ogg', 85)
 		if("help")
 			target.playsound_local(target, 'sound/items/carvhelp.ogg', 50)
 		if("hello")
