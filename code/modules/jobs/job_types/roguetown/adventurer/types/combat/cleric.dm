@@ -75,8 +75,8 @@
 					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 					head = /obj/item/clothing/head/roguetown/eoramask
 				else
-					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/black
-					head = /obj/item/clothing/head/roguetown/roguehood/black
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe //placeholder, anyone who doesn't have cool patron drip sprites just gets generic brown robes
+					head = /obj/item/clothing/head/roguetown/roguehood
 			H.cmode_music = 'sound/music/combat_holy.ogg'
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
@@ -279,8 +279,8 @@
 					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 					head = /obj/item/clothing/head/roguetown/eoramask
 				else
-					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/black //placeholder
-					head = /obj/item/clothing/head/roguetown/roguehood/black //placeholder
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe //placeholder, anyone who doesn't have cool patron drip sprites just gets generic brown robes
+					head = /obj/item/clothing/head/roguetown/roguehood
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.passive_devotion_gain += 0.25
 			C.grant_spells(H)
