@@ -223,7 +223,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 	if(prob(2)) // We hit the jackpot, a magical stone! JUST FOR ME!
 		filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
-		var/magic_force = rand(1,10) //Roll, we need this seperate for now otherwise people will know the blunt/sharp boosts too
+		var/magic_force = rand(1,100) //Roll, we need this seperate for now otherwise people will know the blunt/sharp boosts too
 		stone_title = "[pick(GLOB.stone_magic_names)] [stone_title] +[magic_force]"
 		stone_desc += " [pick(GLOB.stone_magic_descs)]"
 		bonus_force += magic_force // Add on the magic force modifier
