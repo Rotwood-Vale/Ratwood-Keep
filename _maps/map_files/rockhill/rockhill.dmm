@@ -10698,6 +10698,12 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town)
+"fMn" = (
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
+/area/rogue/under/cave)
 "fNa" = (
 /obj/item/roguemachine/merchant{
 	pixel_y = 8
@@ -13655,7 +13661,7 @@
 	dir = 1;
 	icon_state = "wooden_floor2"
 	},
-/area/rogue/outdoors/town/harbor)
+/area/rogue/under/cave)
 "hvd" = (
 /obj/structure/bed/rogue/inn/wool,
 /obj/item/bedsheet/rogue/fabric,
@@ -19515,7 +19521,10 @@
 /area/rogue/under/town/basement)
 "kDH" = (
 /obj/effect/landmark/latejoin,
-/turf/open/floor/rogue/ruinedwood/platform,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
 /area/rogue/under/cave)
 "kDS" = (
 /obj/structure/rack/rogue,
@@ -23178,7 +23187,7 @@
 	dir = 1;
 	icon_state = "wooden_floor2"
 	},
-/area/rogue/outdoors/town/harbor)
+/area/rogue/under/cave)
 "mJh" = (
 /obj/structure/closet/crate/chest{
 	locked = 1;
@@ -29722,7 +29731,7 @@
 	dir = 1;
 	icon_state = "wooden_floor2"
 	},
-/area/rogue/outdoors/town/harbor)
+/area/rogue/under/cave)
 "qmx" = (
 /obj/structure/rogue/trophy/deer,
 /turf/open/floor/rogue/carpet,
@@ -41190,7 +41199,7 @@
 	dir = 1;
 	icon_state = "wooden_floor2"
 	},
-/area/rogue/outdoors/town/harbor)
+/area/rogue/under/cave)
 "wLx" = (
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
@@ -138685,7 +138694,7 @@ bpD
 bpD
 bpD
 bpD
-kDH
+bpD
 bpD
 bpD
 bpD
@@ -139118,7 +139127,7 @@ bpD
 bpD
 bpD
 bpD
-kDH
+bpD
 bpD
 bpD
 bpD
@@ -139549,7 +139558,7 @@ bpD
 bpD
 bpD
 bpD
-kDH
+bpD
 bpD
 bpD
 bpD
@@ -248845,8 +248854,8 @@ pzv
 pzv
 pzv
 ubf
-iyG
-iyG
+fMn
+kDH
 huQ
 oXd
 aOb
@@ -249279,7 +249288,7 @@ plx
 wPh
 qmr
 hXf
-iyG
+kDH
 hOY
 pzv
 pzv
@@ -249710,7 +249719,7 @@ pzv
 aiP
 agj
 mJe
-iyG
+kDH
 wKM
 qEP
 aiP
