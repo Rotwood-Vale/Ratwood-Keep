@@ -498,7 +498,31 @@
 		else
 			return CLAMP(w_class * 6, 10, 100) // Multiply the item's weight class by 6, then clamp the value between 10 and 100
 
+proc/get_attack_flavor_text(mob/user, obj/item/I)
+	if(!I)
+		return "inexpertly"
+
+	var/datum/skill/associated_skill = I.associated_skill
+	if(!associated_skill) 
+		return "inexpertly"
+
+	if(!user.mind)
+		return "inexpertly"
+
+	var/skill_level = user.mind.get_skill_level(associated_skill)
+	switch(skill_level)
+		if(SKILL_LEVEL_NOVICE)     return "inexpertly"
+		if(SKILL_LEVEL_APPRENTICE) return "amateurishly"
+		if(SKILL_LEVEL_JOURNEYMAN) return "competently"
+		if(SKILL_LEVEL_EXPERT)     return "adeptly"
+		if(SKILL_LEVEL_MASTER)     return "expertly"
+		if(SKILL_LEVEL_LEGENDARY)  return "masterfully"
+	return "inexpertly"
+
 /mob/living/proc/send_item_attack_message(obj/item/I, mob/living/user, hit_area)
+	if(!I)
+		return 0
+	var/flavor_text = get_attack_flavor_text(user, I)
 	var/message_verb = "attacked"
 	if(user.used_intent)
 		message_verb = "[pick(user.used_intent.attack_verb)]"
@@ -510,9 +534,9 @@
 	var/attack_message = "[src] is [message_verb][message_hit_area] with [I]!"
 	var/attack_message_local = "I'm [message_verb][message_hit_area] with [I]!"
 	if(user in viewers(src, null))
-		attack_message = "[user] [message_verb] [src][message_hit_area] with [I]!"
-		attack_message_local = "[user] [message_verb] me[message_hit_area] with [I]!"
-	visible_message(span_danger("[attack_message][next_attack_msg.Join()]"),\
-		span_danger("[attack_message_local][next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
+		attack_message = "[user] [flavor_text] [message_verb] [src][message_hit_area] with [I]!"
+		attack_message_local = "[user] [flavor_text] [message_verb] me[message_hit_area] with [I]!"
+	visible_message(span_danger("[flavor_text][attack_message][next_attack_msg.Join()]"),\
+		span_danger("[flavor_text][attack_message_local][next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 	next_attack_msg.Cut()
 	return 1
