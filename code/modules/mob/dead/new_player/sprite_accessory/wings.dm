@@ -244,3 +244,7 @@
 /datum/sprite_accessory/wings/large/harpyswept
 	name = "Harpy (Swept)"
 	icon_state = "harpys"
+
+/datum/sprite_accessory/wings/large/angelalt
+	name = "Angel (Alt)"
+	icon_state = "angelalt"
