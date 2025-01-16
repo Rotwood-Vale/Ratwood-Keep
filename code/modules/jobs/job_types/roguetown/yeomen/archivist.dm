@@ -17,8 +17,6 @@
 	max_pq = null
 	round_contrib_points = 3
 
-	cmode_music = 'sound/music/combat_fancy.ogg'
-
 /datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
@@ -97,9 +95,9 @@
 	/datum/skill/misc/climbing,
 	/datum/skill/misc/swimming,
 	/datum/skill/labor/butchering,
-	/datum/skill/labor/weaponsmithing,
-	/datum/skill/labor/armorsmithing,
-	/datum/skill/labor/tanning,
+	/datum/skill/craft/weaponsmithing,
+	/datum/skill/craft/armorsmithing,
+	/datum/skill/craft/tanning,
 	/datum/skill/craft/traps
     )
 	for(var/i = 1, i <= skill_choices.len, i++)
@@ -125,7 +123,7 @@
 					to_chat(L, span_warning("There's no way I could handle all that knowledge!"))
 					to_chat(usr, span_warning("My student cannot handle that much knowledge at once!"))
 					return // cannot teach the same student twice
-				if(!(item in list(/datum/skill/misc/reading, /datum/skill/misc/music, /datum/skill/craft/cooking, /datum/skill/misc/music, /datum/skill/misc/sewing)) && L.mind?.get_skill_level(item) < SKILL_LEVEL_NOVICE)
+				if(!(item in list(/datum/skill/misc/music, /datum/skill/craft/cooking, /datum/skill/misc/sewing, /datum/skill/misc/lockpicking, /datum/skill/misc/climbing)) && L.mind?.get_skill_level(item) < SKILL_LEVEL_NOVICE)
 					to_chat(L, span_warning("I cannot understand the lesson on [item.name], I need to get more skilled first!"))
 					to_chat(usr, span_warning("I try teaching [L] [item.name] but my student couldnt grasp the lesson!"))
 					return // some basic skill will not require you novice level
