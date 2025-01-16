@@ -31450,7 +31450,6 @@
 /area/rogue/under/cave)
 "rgH" = (
 /obj/structure/closet/crate/drawer,
-/obj/item/book/rogue/abyssor,
 /obj/item/perfume/random,
 /obj/item/roguegem/green{
 	pixel_y = -5;
@@ -37139,14 +37138,6 @@
 /obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town)
-"uuD" = (
-/obj/machinery/light/rogue/wallfire/candle,
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/closed/mineral/random/rogue,
-/area/rogue/under/cave)
 "uuE" = (
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/bog)
@@ -38547,7 +38538,6 @@
 	dir = 5;
 	icon_state = "largetable"
 	},
-/obj/item/book/rogue/secret/ledger,
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -38559,6 +38549,7 @@
 	icon_state = "borderfall";
 	pixel_x = -8
 	},
+/obj/item/book/rogue/abyssor,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "wooden_floor2"
@@ -140910,7 +140901,7 @@ bpD
 bpD
 bpD
 bpD
-uuD
+bpD
 bpD
 bpD
 bpD
