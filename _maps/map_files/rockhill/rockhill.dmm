@@ -19515,11 +19515,8 @@
 /area/rogue/under/town/basement)
 "kDH" = (
 /obj/effect/landmark/latejoin,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "wooden_floor2"
-	},
-/area/rogue/outdoors/town/harbor)
+/turf/open/floor/rogue/ruinedwood/platform,
+/area/rogue/under/cave)
 "kDS" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueore/tin,
@@ -138688,7 +138685,7 @@ bpD
 bpD
 bpD
 bpD
-bpD
+kDH
 bpD
 bpD
 bpD
@@ -139121,7 +139118,7 @@ bpD
 bpD
 bpD
 bpD
-bpD
+kDH
 bpD
 bpD
 bpD
@@ -139552,7 +139549,7 @@ bpD
 bpD
 bpD
 bpD
-bpD
+kDH
 bpD
 bpD
 bpD
@@ -248849,7 +248846,7 @@ pzv
 pzv
 ubf
 iyG
-kDH
+iyG
 huQ
 oXd
 aOb
@@ -249282,7 +249279,7 @@ plx
 wPh
 qmr
 hXf
-kDH
+iyG
 hOY
 pzv
 pzv
@@ -249713,7 +249710,7 @@ pzv
 aiP
 agj
 mJe
-kDH
+iyG
 wKM
 qEP
 aiP
