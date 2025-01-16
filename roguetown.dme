@@ -756,6 +756,7 @@
 #include "code\game\gamemodes\extended\extended.dm"
 #include "code\game\gamemodes\roguetown\roguetown.dm"
 #include "code\game\gamemodes\roguetown\roguewar.dm"
+#include "code\game\gamemodes\roguetown\picks\siege.dm"
 #include "code\game\gamemodes\sandbox\h_sandbox.dm"
 #include "code\game\gamemodes\sandbox\sandbox.dm"
 #include "code\game\machinery\_machinery.dm"
