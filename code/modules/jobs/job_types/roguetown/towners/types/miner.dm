@@ -47,3 +47,7 @@
 		H.change_stat("endurance", 1)
 		H.change_stat("constitution", 2)
 		H.change_stat("fortune", 2)
+	if(H.age == AGE_MIDDLEAGED)
+		H.mind.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
+	if(H.age == AGE_OLD)
+		H.mind.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
