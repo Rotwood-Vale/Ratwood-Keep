@@ -37430,13 +37430,6 @@
 /obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
-"uEt" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_y = 0;
-	invisibility = 1
-	},
-/turf/open/lava,
-/area/rogue/under/cavewet/bogcaves)
 "uEx" = (
 /obj/structure/bars/grille{
 	dir = 1
@@ -39664,9 +39657,11 @@
 	},
 /area/rogue/indoors/town/tavern)
 "vPI" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_y = 0;
-	invisibility = 1
+/obj/structure/fluff/walldeco/artificerflag{
+	icon_state = "openspace";
+	icon = 'icons/turf/roguefloor.dmi';
+	light_range = 1;
+	name = "light node"
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/bog)
@@ -117381,7 +117376,7 @@ dVO
 xkm
 dVO
 xkm
-uEt
+xkm
 huj
 xaf
 xaf
@@ -118673,7 +118668,7 @@ dVO
 dVO
 xkm
 xkm
-uEt
+xkm
 xkm
 dVO
 dVO
@@ -120393,7 +120388,7 @@ xkm
 xkm
 xkm
 xkm
-uEt
+xkm
 xkm
 xkm
 dVO
@@ -122112,7 +122107,7 @@ dVO
 xkm
 xkm
 xkm
-uEt
+xkm
 xkm
 xkm
 dVO
@@ -124267,7 +124262,7 @@ dVO
 dVO
 dVO
 xkm
-uEt
+xkm
 xkm
 dVO
 dVO
@@ -128577,7 +128572,7 @@ dVO
 dVO
 dVO
 xkm
-uEt
+xkm
 xkm
 xkm
 dVO
@@ -130734,7 +130729,7 @@ huj
 dVO
 dVO
 xkm
-uEt
+xkm
 xkm
 xkm
 dVO
@@ -132891,7 +132886,7 @@ dVO
 dVO
 xkm
 xkm
-uEt
+xkm
 xkm
 xkm
 dVO
@@ -134616,7 +134611,7 @@ dVO
 xkm
 xkm
 xkm
-uEt
+xkm
 xkm
 dVO
 dVO
@@ -135908,7 +135903,7 @@ dVO
 dVO
 xkm
 xkm
-uEt
+xkm
 xkm
 xkm
 xkm
@@ -137201,7 +137196,7 @@ dVO
 dVO
 xkm
 xkm
-uEt
+xkm
 xkm
 xkm
 dVO
@@ -138494,7 +138489,7 @@ dVO
 xkm
 xkm
 xkm
-uEt
+xkm
 xkm
 dVO
 dVO
@@ -139786,7 +139781,7 @@ dVO
 dVO
 xkm
 xkm
-uEt
+xkm
 xkm
 xkm
 dVO
@@ -140646,7 +140641,7 @@ huj
 huj
 dVO
 dVO
-uEt
+xkm
 xkm
 xkm
 dVO
@@ -227542,7 +227537,7 @@ uuE
 uuE
 uuE
 uuE
-vPI
+uuE
 hmJ
 sYx
 sYx
@@ -227973,7 +227968,7 @@ uuE
 uuE
 uuE
 uuE
-uuE
+vPI
 hmJ
 hmJ
 odi
@@ -228834,7 +228829,7 @@ hmJ
 uuE
 uuE
 uuE
-vPI
+uuE
 uuE
 uuE
 uuE
