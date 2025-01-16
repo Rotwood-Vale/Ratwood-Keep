@@ -17,6 +17,8 @@
 	max_pq = null
 	round_contrib_points = 3
 
+	cmode_music = 'sound/music/combat_fancy.ogg'
+
 /datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
@@ -84,14 +86,21 @@
     /datum/skill/misc/music,
     /datum/skill/misc/medicine,
     /datum/skill/misc/sewing,
-    /datum/skill/magic/arcane,
     /datum/skill/labor/farming,
     /datum/skill/craft/crafting,
     /datum/skill/craft/blacksmithing,
     /datum/skill/craft/carpentry,
     /datum/skill/craft/masonry,
     /datum/skill/craft/cooking,
-    /datum/skill/craft/engineering
+    /datum/skill/craft/engineering,
+	/datum/skill/misc/sneaking,
+	/datum/skill/misc/climbing,
+	/datum/skill/misc/swimming,
+	/datum/skill/labor/butchering,
+	/datum/skill/labor/weaponsmithing,
+	/datum/skill/labor/armorsmithing,
+	/datum/skill/labor/tanning,
+	/datum/skill/craft/traps
     )
 	for(var/i = 1, i <= skill_choices.len, i++)
 		choices["[skill_choices[i].name]"] = skill_choices[i]
