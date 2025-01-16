@@ -442,10 +442,13 @@
 
 /// Counts the number of players, can be set to ONLY count ready players.
 /proc/num_players(count_ready_only = FALSE)
+	if(!count_ready_only)
+		return LAZYLEN(GLOB.new_player_list)
+
 	. = 0
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/P = i
-		if(P.ready == PLAYER_READY_TO_PLAY || !count_ready_only)
+		if(P.ready == PLAYER_READY_TO_PLAY)
 			. ++
 
 /proc/reopen_roundstart_suicide_roles()
