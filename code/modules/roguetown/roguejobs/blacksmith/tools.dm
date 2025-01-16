@@ -34,7 +34,7 @@
 	if(isbodypart(attacked_object) && !user.cmode)
 		var/obj/item/bodypart/attacked_prosthetic = attacked_object
 		var/total_damage = attacked_prosthetic.brute_dam + attacked_prosthetic.burn_dam
-		if(!attacked_prosthetic.anvilrepair || (total_damage >= attacked_prosthetic.max_damage) || !isturf(attacked_prosthetic.loc))
+		if(!attacked_prosthetic.anvilrepair || !isturf(attacked_prosthetic.loc))
 			return
 		if((total_damage <= 0) && (attacked_prosthetic.obj_integrity >= attacked_prosthetic.max_integrity))
 			return
