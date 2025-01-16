@@ -49,6 +49,7 @@
 #define TRAIT_GOODTRAINER "Good Trainer"
 #define TRAIT_OUTDOORSMAN "Outdoorsman"
 #define TRAIT_SEA_DRINKER "Denizen of the Deep"
+#define TRAIT_INTELLECTUAL "Intellectual"
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
@@ -184,6 +185,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_OUTDOORSMAN = span_info("My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds."),
 	TRAIT_SEA_DRINKER = span_info("As a denizen of the deep, I can drink salty ocean water safely."),
  	TRAIT_BIGGUY = span_info("My immense frame and size allows me to smash through wooden doors, and into people with more effectiveness."),
+	TRAIT_INTELLECTUAL = span_info("I have a keen eye and can assess a person's prowess in wit and blade.")
 ))
 
 // trait accessor defines
