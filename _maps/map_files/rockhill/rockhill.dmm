@@ -22263,7 +22263,6 @@
 /area/rogue/indoors/town/tavern)
 "mkX" = (
 /obj/structure/roguemachine/vendor/street_shop01{
-	name = "Shop Key Seller.";
 	desc = "Get a key for the shop here!"
 	},
 /turf/closed/wall/mineral/rogue/decostone/cand,
@@ -29289,7 +29288,8 @@
 /area/rogue/indoors/town/dwarfin)
 "qaR" = (
 /obj/structure/roguemachine/vendor{
-	lockid = "street_shop01"
+	lockid = "street_shop01";
+	name = "PEDDLER - Utility Shop"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/outdoors/town)
@@ -33684,10 +33684,8 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/academy)
 "sBg" = (
-/obj/structure/roguemachine/vendor{
-	lockid = "portshop";
-	name = "Stall Key Seller";
-	desc = "Get keys for stalls here!"
+/obj/structure/roguemachine/vendor/smallstreet_master01{
+	lockid = "smallstreet_master01"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/outdoors/town)
