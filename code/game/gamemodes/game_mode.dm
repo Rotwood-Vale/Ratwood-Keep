@@ -441,7 +441,8 @@
 
 
 /datum/game_mode/proc/num_players()
-	. = len(GLOB.new_player_list)
+	// unsafe?
+	. = length(GLOB.new_player_list)
 
 
 /proc/reopen_roundstart_suicide_roles()
