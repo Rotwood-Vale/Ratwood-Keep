@@ -78,8 +78,11 @@
 	name = "Axian Tail"
 	organ_type = /obj/item/organ/tail/akula
 	sprite_accessories = list(
+		/datum/sprite_accessory/tail/data_shark,
+		/datum/sprite_accessory/tail/akulashark,
 		/datum/sprite_accessory/tail/shark,
 		/datum/sprite_accessory/tail/sharknofin,
+		/datum/sprite_accessory/tail/fshark
 		)
 
 /datum/customizer/organ/tail/tiefling
@@ -103,6 +106,7 @@
 	organ_type = /obj/item/organ/tail
 	generic_random_pick = TRUE
 	sprite_accessories = list(
+		/datum/sprite_accessory/tail/akulashark,
 		/datum/sprite_accessory/tail/cat,
 		/datum/sprite_accessory/tail/monkey,
 		/datum/sprite_accessory/tail/axolotl,
@@ -114,6 +118,7 @@
 		/datum/sprite_accessory/tail/corvid,
 		/datum/sprite_accessory/tail/cow,
 		/datum/sprite_accessory/tail/eevee,
+		/datum/sprite_accessory/tail/fshark,
 		/datum/sprite_accessory/tail/fennec,
 		/datum/sprite_accessory/tail/fish,
 		/datum/sprite_accessory/tail/fox,
@@ -165,6 +170,7 @@
 	name = "Wild-Kin Tail"
 	organ_type = /obj/item/organ/tail/anthro
 	sprite_accessories = list(
+		/datum/sprite_accessory/tail/akulashark,
 		/datum/sprite_accessory/tail/cat,
 		/datum/sprite_accessory/tail/monkey,
 		/datum/sprite_accessory/tail/axolotl,
@@ -176,6 +182,7 @@
 		/datum/sprite_accessory/tail/corvid,
 		/datum/sprite_accessory/tail/cow,
 		/datum/sprite_accessory/tail/eevee,
+		/datum/sprite_accessory/tail/fshark,
 		/datum/sprite_accessory/tail/fennec,
 		/datum/sprite_accessory/tail/fish,
 		/datum/sprite_accessory/tail/fox,
