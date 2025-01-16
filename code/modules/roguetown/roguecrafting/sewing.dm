@@ -579,18 +579,18 @@
 	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/leathercoat
-	name = "leather coat (4 leather, fur, fiber; JOURNEYMAN)"
+	name = "leather coat (3 leather, fur, fiber; JOURNEYMAN)"
 	result = /obj/item/clothing/suit/roguetown/armor/leathercoat
-	reqs = list(/obj/item/natural/hide/cured = 4,
+	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/fur = 1,
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/leathercoat/heavy
-	name = "heavy leather coat (4 furs, leather, fiber; EXPERT)"
+	name = "heavy leather coat (2 furs, 2 leather, fiber; EXPERT)"
 	result = /obj/item/clothing/suit/roguetown/armor/leathercoat/heavy
-	reqs = list(/obj/item/natural/hide/cured = 1,
-				/obj/item/natural/fur = 4,
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fur = 2,
 				/obj/item/natural/fibers = 1)
 	skill_level = 4
 
