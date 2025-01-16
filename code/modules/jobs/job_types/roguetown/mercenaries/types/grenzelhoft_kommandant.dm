@@ -40,30 +40,13 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/sword/long/rider/messer
 
-	// Okay, if you love to duplicate things...
-	var/list/weapon_options = list(
-		"billhook",
-		"halberd",
-		"zweihander",
-		"estoc",
-	)
-
-	var/chosen_weapon = input(
-		"Pick a weapon",
-		"Available weapons",
-	) as anything in weapon_options
-
-	switch(chosen_weapon)
-		if("billhook")
-			r_hand = /obj/item/rogueweapon/spear/billhook
-		if("halberd")
-			r_hand = /obj/item/rogueweapon/halberd
-		if("zweihander")
-			r_hand = /obj/item/rogueweapon/greatsword/zwei
-		if("estoc")
-			r_hand = /obj/item/rogueweapon/estoc
-		else
-			r_hand = /obj/item/rogueweapon/halberd
+	var/equipment = rand(1, 3)
+	if(equipment == 1)
+		r_hand = /obj/item/rogueweapon/spear/billhook
+	else if (equipment == 2)
+		r_hand = /obj/item/rogueweapon/halberd
+	else if (equipment == 3)
+		r_hand = /obj/item/rogueweapon/estoc
 
 	//Humie grenzelhofts are always set to be, well, grenzelhoft
 	if(ishumannorthern(H))
