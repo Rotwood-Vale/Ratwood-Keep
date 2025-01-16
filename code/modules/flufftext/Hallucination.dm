@@ -145,21 +145,21 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if("monster")
 			var/hits = 0
 			for(var/i in 1 to rand(5, 10))
-				target.playsound_local(target, 'sound/gore/flesh_eat_04.ogg', 50, 1)
+				target.playsound_local(target, pick('sound/gore/flesh_eat_01.ogg','sound/gore/flesh_eat_02.ogg','sound/gore/flesh_eat_03.ogg','sound/gore/flesh_eat_04.ogg'), 70, 1)
 				if(prob(50))
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), target, 'sound/combat/dismemberment/dismem (1).ogg', 45, 1), rand(5,10))
 					hits++
 				else
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), target, 'sound/combat/dismemberment/dismem (3).ogg', 15, 1), rand(5,10))
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), target, 'sound/combat/dismemberment/dismem (3).ogg', 35, 1), rand(5,10))
 				sleep(rand(CLICK_CD_RANGE, CLICK_CD_RANGE + 6))
 				if(hits >= 4 && prob(40))
-					target.playsound_local(target, 'sound/combat/caught.ogg', 65, 1)
+					target.playsound_local(target, 'sound/combat/caught.ogg', 75, 1)
 					sleep(10)
 					target.playsound_local(target, 'sound/vo/female/gen/painscream (8).ogg', 70, 1)
 					break
 		if("ranged")
 			var/hits = 0
-			for(var/i in 1 to rand(5, 10))
+			for(var/i in 1 to rand(5, 8))
 				target.playsound_local(target, 'sound/combat/Ranged/flatbow-shot-01.ogg', 55, 1)
 				if(prob(50))
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), target, 'sound/combat/hits/hi_arrow.ogg', 75, 1), rand(5,10))
@@ -189,10 +189,10 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			for(var/i in 1 to rand(3, 6))
 				target.playsound_local(target, 'sound/combat/hits/bladed/genslash (1).ogg', 35, TRUE)
 				if(prob(60))
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), target, 'sound/combat/hits/armor/plate_slashed (1).ogg', 40, 1), rand(5,10))
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), target, 'sound/combat/hits/armor/plate_slashed (1).ogg', 40, 1), rand(5,8))
 					hits++
 				else
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), target, 'sound/combat/hits/bladed/genslash (3).ogg', 45, 1), rand(5,10))
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, playsound_local), target, 'sound/combat/hits/bladed/genslash (3).ogg', 45, 1), rand(3,8))
 				sleep(rand(CLICK_CD_RANGE, CLICK_CD_RANGE + 6))
 				if(hits >= 2 && prob(80))
 					target.playsound_local(target, 'sound/vo/male/knight/pain (1).ogg', 55, 1)
@@ -212,19 +212,17 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			sleep(10)
 			target.playsound_local(target, 'sound/vo/male/gen/haltyell (1).ogg', 40, 1)
 			sleep(20)
-			for(var/i in 1 to rand(5, 10))
-				target.playsound_local(target, 'sound/combat/hits/bladed/genslash (3).ogg', 50, 1)
+			for(var/i in 1 to rand(2, 8))
+				target.playsound_local(target, list('sound/combat/hits/bladed/genslash (3).ogg','sound/combat/hits/armor/plate_slashed (1).ogg',\
+				'sound/combat/hits/bladed/genslash (2).ogg','sound/combat/hits/bladed/genslash (1).ogg'), 50, 1)
 				sleep(rand(2, 4))
 				target.playsound_local(target, 'sound/misc/bleed (1).ogg', 90, 1)
 				sleep(rand(CLICK_CD_MELEE, CLICK_CD_MELEE + 4))
 		if("grab") // Do you have a moment to talk about our lord and savior ZIZOZIZOZIZO
-			for(var/i in 1 to rand(3, 8))
+			for(var/i in 1 to rand(3, 6))
 				target.playsound_local(target, 'sound/foley/grab.ogg', 100, 0)
-				sleep(5)
-				target.playsound_local(target, 'sound/foley/struggle.ogg', 100, 0)
-				sleep(rand(CLICK_CD_MELEE, CLICK_CD_MELEE + 3))
-				target.playsound_local(target, 'sound/foley/struggle.ogg', 100, 0)
-				sleep(10)
+				sleep(rand(CLICK_CD_MELEE, CLICK_CD_MELEE + 8))
+
 	qdel(src)
 
 /datum/hallucination/items_other
@@ -348,7 +346,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			if("monster")//Horror
 				A = image('icons/roguetown/mob/monster/horrors.dmi',H,"horror1")
 				A.name = "ZIZOZIZOZIZO"
-				target.playsound_local(target, list('sound/combat/caught.ogg','sound/misc/astratascream.ogg'), 80, 1)
+				target.playsound_local(target, pick('sound/combat/caught.ogg','sound/misc/astratascream.ogg'), 80, 1)
 			if("skeleton")//skeleton
 				A = image('icons/roguetown/mob/skeleton_male.dmi',H,"z")
 				A.name = "Skeleton"
@@ -392,70 +390,70 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	switch(kind)
 		if("shadow")//shadowperson
 			A = image('icons/roguetown/maniac/dreamer_mobs.dmi',target,"M3")
-			target.playsound_local(target, list('sound/misc/heroin_rush.ogg'), 60, 1)
-			target.playsound_local(target, list('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg'), 80, 1)
-			sleep(10)
-			target.playsound_local(target, list('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/misc/heroin_rush.ogg'), 60, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg'), 80, 1)
+			/*sleep(10)
+			target.playsound_local(target, pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg'), 80, 1)
 			sleep(60)
-			target.playsound_local(target, list('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg'), 80, 1)
 			sleep(230)
-			target.playsound_local(target, list('sound/vo/mobs/ghost/death.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/ghost/death.ogg'), 80, 1)*/
 		if("monster")//Horror
 			A = image('icons/roguetown/mob/monster/horrors.dmi',target,"horror1")
-			target.playsound_local(target, list('sound/combat/gib (1).ogg'), 80, 1)
-			target.playsound_local(target, list('sound/misc/hel.ogg'), 80, 1)
-			sleep(10)
-			target.playsound_local(target, list('sound/combat/caught.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/combat/gib (1).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/misc/hel.ogg'), 80, 1)
+			/*sleep(10)
+			target.playsound_local(target, pick('sound/combat/caught.ogg'), 80, 1)
 			sleep(60)
-			target.playsound_local(target, list('sound/combat/caught.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/combat/caught.ogg'), 80, 1)
 			sleep(230)
-			target.playsound_local(target, list('sound/combat/gib (1).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/combat/gib (1).ogg'), 80, 1)*/
 		if("ww")//Werewolf
 			A = image('icons/roguetown/mob/monster/werewolf.dmi',target,"wwolf_m")
-			target.playsound_local(target, list('sound/combat/gib (1).ogg'), 80, 1)
-			target.playsound_local(target, list('sound/vo/mobs/wwolf/roar.ogg'), 80, 1)
-			sleep(10)
-			target.playsound_local(target, list('sound/vo/mobs/wwolf/howl (1).ogg','sound/vo/mobs/wwolf/howl (2).ogg','sound/vo/mobs/wwolf/sniff.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/combat/gib (1).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/wwolf/roar.ogg'), 80, 1)
+			/*sleep(10)
+			target.playsound_local(target, pick('sound/vo/mobs/wwolf/howl (1).ogg','sound/vo/mobs/wwolf/howl (2).ogg','sound/vo/mobs/wwolf/sniff.ogg'), 80, 1)
 			sleep(60)
-			target.playsound_local(target, list('sound/vo/mobs/wwolf/idle (1).ogg','sound/vo/mobs/wwolf/idle (2).ogg','sound/vo/mobs/wwolf/sniff.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/wwolf/idle (1).ogg','sound/vo/mobs/wwolf/idle (2).ogg','sound/vo/mobs/wwolf/sniff.ogg'), 80, 1)
 			sleep(230)
-			target.playsound_local(target, list('sound/combat/gib (1).ogg'), 80, 1)
-			target.playsound_local(target, list('sound/vo/mobs/wwolf/death.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/combat/gib (1).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/wwolf/death.ogg'), 80, 1)*/
 		if("skeleton")//Skeleton
 			A = image('icons/roguetown/mob/skeleton_male.dmi',target,"z")
-			target.playsound_local(target, list('sound/vo/mobs/skel/skeleton_rage (1).ogg','sound/vo/mobs/skel/skeleton_rage (2).ogg','sound/vo/mobs/skel/skeleton_rage (3).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/skel/skeleton_rage (1).ogg','sound/vo/mobs/skel/skeleton_rage (2).ogg','sound/vo/mobs/skel/skeleton_rage (3).ogg'), 80, 1)
 			sleep(10)
-			target.playsound_local(target, list('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg'), 80, 1)
+			/*target.playsound_local(target, pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg'), 80, 1)
 			sleep(60)
-			target.playsound_local(target, list('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg'), 80, 1)
 			sleep(220)
-			target.playsound_local(target, list('sound/vo/mobs/skel/skeleton_laugh.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/skel/skeleton_laugh.ogg'), 80, 1)
 			sleep(10)
-			target.playsound_local(target, list('sound/vo/mobs/skel/skeleton_death (2).ogg','sound/vo/mobs/skel/skeleton_death (1).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/skel/skeleton_death (2).ogg','sound/vo/mobs/skel/skeleton_death (1).ogg'), 80, 1)*/
 		if("spider")//Spider
 			A = image('icons/roguetown/mob/monster/spider.dmi',target,"skallax")
 		if("demon")//Demon
 			A = image('icons/roguetown/mob/monster/hellkeeper.dmi',target,"hellkeeper")
-			target.playsound_local(target, list('sound/combat/caught.ogg','sound/misc/astratascream.ogg'), 80, 1)
-			sleep(20)
-			target.playsound_local(target, list('sound/misc/carriage1.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/combat/caught.ogg','sound/misc/astratascream.ogg'), 80, 1)
+			/*sleep(20)
+			target.playsound_local(target, pick('sound/misc/carriage1.ogg'), 80, 1)
 			sleep(60)
-			target.playsound_local(target, list('sound/misc/carriage2.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/misc/carriage2.ogg'), 80, 1)
 			sleep(120)
-			target.playsound_local(target, list('sound/misc/carriage3.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/misc/carriage3.ogg'), 80, 1)
 			sleep(80)
-			target.playsound_local(target, list('sound/misc/carriage4.ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/misc/carriage4.ogg'), 80, 1)*/
 		if("maneater")//maneater
 			A = image('icons/roguetown/mob/monster/maneater.dmi',target,"maneater")
-			target.playsound_local(target, list('sound/vo/mobs/plant/attack (1).ogg','sound/vo/mobs/plant/attack (2).ogg','sound/vo/mobs/plant/attack (3).ogg','sound/vo/mobs/plant/attack (4).ogg'), 80, 1)
-			sleep(290)
-			target.playsound_local(target, list('sound/vo/mobs/plant/pain (1).ogg','sound/vo/mobs/plant/pain (2).ogg','sound/vo/mobs/plant/pain (3).ogg','sound/vo/mobs/plant/pain (4).ogg'), 80, 1)
+			target.playsound_local(target, pick('sound/vo/mobs/plant/attack (1).ogg','sound/vo/mobs/plant/attack (2).ogg','sound/vo/mobs/plant/attack (3).ogg','sound/vo/mobs/plant/attack (4).ogg'), 80, 1)
+			/*sleep(290)
+			target.playsound_local(target, pick('sound/vo/mobs/plant/pain (1).ogg','sound/vo/mobs/plant/pain (2).ogg','sound/vo/mobs/plant/pain (3).ogg','sound/vo/mobs/plant/pain (4).ogg'), 80, 1)*/
 		/*if("custom")
 			A = image(custom_icon_file, target, custom_icon)*/
 	A.override = 1
 	if(target.client)
 		if(wabbajack)
-			to_chat(target, list("<span class='hear'>...they are coming...</span>","<span class='holoparasite'>THEY ARE WATCHING ME</span>","<span class='userdanger'>I don't feel very good...</span>","<span class='artery'>...please...help...me...</span>"))
+			to_chat(target, pick("<span class='hear'>...they are coming...</span>","<span class='holoparasite'>THEY ARE WATCHING ME</span>","<span class='userdanger'>I don't feel very good...</span>","<span class='artery'>...please...help...me...</span>"))
 			target.playsound_local(target,'sound/misc/dun.ogg', 40, 1)
 		delusion = A
 		target.client.images |= A
