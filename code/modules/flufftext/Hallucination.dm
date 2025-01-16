@@ -719,7 +719,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			to_chat(target, "<h1 class='alert'>The Lich Decrees</h1>")
 			to_chat(target, "<br><br><span class='alert'>The throne is mine! Bring me [target.first_name()]...by force, if necessary</span><br><br>")
 			SEND_SOUND(target, 'sound/misc/royal_decree.ogg')
-			SEND_SOUND(target, 'sound/misc/zizo.ogg')
+			SEND_SOUND(target, 'sound/misc/zizo.ogg', 80)
 		if("ww")
 			to_chat(target, "<h1 class='alert'>The Werewolf Decrees</h1>")
 			to_chat(target, "<br><br><span class='alert'>AWOOOOOOOOOO!!! RRrrrRRrRRRRRrrrRRR RRrrrRRRrrrRRRRRrr [target.first_name()] RRrrRRRRRRRRRrrrRRR</span><br><br>")
