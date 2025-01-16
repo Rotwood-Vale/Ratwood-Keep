@@ -6,15 +6,15 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	/datum/hallucination/sounds = 50,
 	/datum/hallucination/battle = 20,
 	/datum/hallucination/dangerflash = 15,
-	/datum/hallucination/hudscrew = 12,
+//	/datum/hallucination/hudscrew = 12,
 	/datum/hallucination/fake_alert = 12,
 	/datum/hallucination/weird_sounds = 8,
 	/datum/hallucination/stationmessage = 7,
-	/datum/hallucination/items_other = 7,
+//	/datum/hallucination/items_other = 7,
 	/datum/hallucination/husks = 7,
-	/datum/hallucination/items = 4,
+//	/datum/hallucination/items = 4,
 	/datum/hallucination/fire = 3,
-	/datum/hallucination/self_delusion = 2,
+	/datum/hallucination/self_delusion = 3,
 	/datum/hallucination/delusion = 2,
 	/datum/hallucination/shock = 1,
 	/datum/hallucination/death = 1
@@ -735,21 +735,13 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 /datum/hallucination/fake_alert/New(mob/living/carbon/C, forced = TRUE, specific, duration = 150)
 	set waitfor = FALSE
 	..()
-	var/alert_type = pick("not_enough_oxy","not_enough_tox","not_enough_co2","too_much_oxy","too_much_co2","too_much_tox","newlaw","nutrition","charge","gravity","fire","locked","hacked","temphot","tempcold","pressure")
+	var/alert_type = pick("not_enough_oxy","too_much_tox","nutrition","charge","gravity","fire","locked","hacked","temphot","tempcold","pressure")
 	if(specific)
 		alert_type = specific
 	feedback_details += "Type: [alert_type]"
 	switch(alert_type)
 		if("not_enough_oxy")
 			target.throw_alert(alert_type, /atom/movable/screen/alert/not_enough_oxy, override = TRUE)
-		if("not_enough_tox")
-			target.throw_alert(alert_type, /atom/movable/screen/alert/not_enough_tox, override = TRUE)
-		if("not_enough_co2")
-			target.throw_alert(alert_type, /atom/movable/screen/alert/not_enough_co2, override = TRUE)
-		if("too_much_oxy")
-			target.throw_alert(alert_type, /atom/movable/screen/alert/too_much_oxy, override = TRUE)
-		if("too_much_co2")
-			target.throw_alert(alert_type, /atom/movable/screen/alert/too_much_co2, override = TRUE)
 		if("too_much_tox")
 			target.throw_alert(alert_type, /atom/movable/screen/alert/too_much_tox, override = TRUE)
 		if("nutrition")
@@ -927,7 +919,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	return ..()
 
 /obj/effect/hallucination/danger/anomaly/show_icon()
-	image = image('icons/effects/effects.dmi',src,"electricity2",OBJ_LAYER+0.01)
+	image = image('icons/roguetown/manic/dreamer_mobs.dmi',src,"M3",OBJ_LAYER+0.01)
 	if(target.client)
 		target.client.images += image
 
@@ -1067,10 +1059,12 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 					M.Turn(90)
 					body.transform = M
 					target.halbody = body
-				if(2,3)
-					target.halbody = image('icons/mob/human.dmi',husk_point,"husk",TURF_LAYER)
+				if(2)
+					target.halbody = image('icons/roguetown/mob/monsters/horrors.dmi',husk_point,"horror3",TURF_LAYER)
+				if(3)
+					target.halbody = image('icons/roguetown/mob/monsters/horrors.dmi',husk_point,"headcrab",TURF_LAYER)
 				if(4)
-					target.halbody = image('icons/mob/alien.dmi',husk_point,"alienother",TURF_LAYER)
+					target.halbody = image('icons/roguetown/manic/dreamer_mobs.dmi',husk_point,"M3",TURF_LAYER)
 
 			if(target.client)
 				target.client.images += target.halbody
