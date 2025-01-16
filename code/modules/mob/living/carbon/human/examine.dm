@@ -472,20 +472,21 @@
 		var/final_int = STAINT
 		var/addition
 		if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
-			addition = " [t_He] tries to hide it."
+			addition = span_revenminor("[t_He] tries to hide how smart [m1].")
 		var/int_diff = final_int - L.STAINT
-		switch(int_diff)
-			if(5 to INFINITY)
-				. += span_revenwarning("[t_He] look[p_s()] far more intelligent than I.")
-			if(2 to 5)
-				. += span_revenminor("[t_He] look[p_s()] smarter than I.")
-			if(-1 to 1)
-				. += "[t_He] look[p_s()] about as intelligent as I."
-			if(-5 to -2)
-				. += span_revennotice("[t_He] look[p_s()] dumber than I.")
-			if(-INFINITY to -5)
-				. += span_revennotice("[t_He] look[p_s()] as blunt-minded as a rock.")
-		if(addition)
+		if(!addition)
+			switch(int_diff)
+				if(5 to INFINITY)
+					. += span_revenwarning("[t_He] look[p_s()] far more intelligent than I.")
+				if(2 to 5)
+					. += span_revenminor("[t_He] look[p_s()] smarter than I.")
+				if(-1 to 1)
+					. += "[t_He] look[p_s()] about as intelligent as I."
+				if(-5 to -2)
+					. += span_revennotice("[t_He] look[p_s()] dumber than I.")
+				if(-INFINITY to -5)
+					. += span_revennotice("[t_He] look[p_s()] as blunt-minded as a rock.")
+		else
 			. += addition
 
 	if(maniac)
