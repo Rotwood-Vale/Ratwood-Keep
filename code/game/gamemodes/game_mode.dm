@@ -444,8 +444,7 @@
 	. = 0
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/P = i
-		if(P.ready == PLAYER_READY_TO_PLAY)
-			. ++
+		. ++
 
 /proc/reopen_roundstart_suicide_roles()
 	var/list/valid_positions = list()
