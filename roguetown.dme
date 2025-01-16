@@ -2057,7 +2057,6 @@
 #include "modular_redmoon\code\datums\sexcon\sex_actions\toy\toy_other_vaginal.dm"
 #include "modular_redmoon\code\datums\sexcon\sex_actions\toy\toy_vaginal.dm"
 #include "modular_redmoon\code\datums\status_effects\rogue\roguebaff.dm"
-#include "modular_redmoon\code\game\objects\items\bedsheets.dm"
 #include "modular_redmoon\code\game\objects\items\dice.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\integrity.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\ranged\gunpowder\ammo.dm"
