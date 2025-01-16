@@ -3738,6 +3738,10 @@
 /obj/item/clothing/neck/roguetown/psicross,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"ccz" = (
+/obj/structure/table/vtable,
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/town)
 "ccW" = (
 /obj/structure/mirror,
 /turf/open/floor/rogue/tile/bath,
@@ -12456,11 +12460,16 @@
 /turf/open/floor/rogue/metal,
 /area/rogue/outdoors/town/harbor)
 "gKX" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	pixel_x = 3
 	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/outdoors/town)
+/obj/effect/landmark/latejoin,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
+/area/rogue/outdoors/town/harbor)
 "gLf" = (
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
@@ -16238,17 +16247,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
-"iQA" = (
-/obj/structure/fluff/railing/border{
-	dir = 4;
-	pixel_x = 3
-	},
-/obj/effect/landmark/latejoin,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "wooden_floor2"
-	},
-/area/rogue/outdoors/town/harbor)
 "iRk" = (
 /obj/structure/well,
 /turf/open/floor/rogue/dirt,
@@ -19531,13 +19529,6 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"kDH" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "wooden_floor2"
-	},
-/area/rogue/outdoors/town/harbor)
 "kDS" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueore/tin,
@@ -31980,8 +31971,10 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/bath)
 "rwn" = (
-/obj/structure/table/vtable,
-/turf/open/floor/rogue/concrete,
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4
+	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/outdoors/town)
 "rws" = (
 /obj/structure/fluff/railing/border{
@@ -248873,7 +248866,7 @@ pzv
 pzv
 pzv
 ubf
-kDH
+iyG
 iyG
 huQ
 oXd
@@ -249738,7 +249731,7 @@ pzv
 aiP
 jUC
 mJe
-iQA
+gKX
 agj
 wuw
 aiP
@@ -347834,8 +347827,8 @@ thT
 hZr
 hZr
 hZr
-gKX
-gKX
+rwn
+rwn
 vsC
 wbg
 fnA
@@ -348267,7 +348260,7 @@ dPj
 fpa
 fpa
 jqC
-rwn
+ccz
 vsC
 fnA
 fnA
