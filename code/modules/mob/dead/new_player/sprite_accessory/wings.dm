@@ -204,6 +204,14 @@
 	name = "mechanical dragon wings"
 	icon_state = "robowing"
 
+/datum/sprite_accessory/wings/wide/featheralt1
+	name = "Feathery Alt"
+	icon_state = "featheryalt1"
+
+/datum/sprite_accessory/wings/wide/featheralt2
+	name = "Feathery Alt 2"
+	icon_state = "featheryalt2"
+
 /datum/sprite_accessory/wings/huge
 	abstract_type = /datum/sprite_accessory/wings/huge
 	icon = 'icons/mob/sprite_accessory/wings/wings_huge.dmi'

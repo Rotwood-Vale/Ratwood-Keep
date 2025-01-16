@@ -29,7 +29,7 @@
 	unconditional_flight = TRUE
 	can_open = TRUE
 
-/obj/item/organ/wings/flight/angel
+/obj/item/organ/wings/flight/aasimar
 	name = "angel wings"
 	desc = "A pair of magnificent, feathery wings. They look strong enough to lift you up in the air."
 
