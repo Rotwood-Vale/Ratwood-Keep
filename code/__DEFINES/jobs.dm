@@ -120,13 +120,17 @@
 #define CHURCHMEN		(1<<2)
 
 #define PRIEST		(1<<0)
-#define PURITAN		(1<<2)
-#define MONK		(1<<3)
-#define GRAVEDIGGER	(1<<4)
-#define CONFESSOR	(1<<5)
-#define DRUID		(1<<6)
+#define MONK		(1<<1)
+#define GRAVEDIGGER	(1<<2)
+#define DRUID		(1<<3)
 
-#define COURTIERS	(1<<3)
+/// INQUISITION
+#define INQUISITION		(1<<3)
+
+#define PURITAN		(1<<0)
+#define CONFESSOR	(1<<1)
+
+#define COURTIERS	(1<<4)
 
 #define JESTER		(1<<0)
 #define WIZARD		(1<<1)
@@ -134,7 +138,7 @@
 #define BUTLER		(1<<3)
 #define COUNCILLOR	(1<<4)
 
-#define YEOMEN		(1<<4)
+#define YEOMEN		(1<<5)
 
 #define BARKEEP		(1<<0)
 #define ARCHIVIST	(1<<1)
@@ -148,7 +152,7 @@
 #define APOTHECARY	(1<<9)
 #define ARCHITECT	(1<<10)
 
-#define PEASANTS	(1<<5)
+#define PEASANTS	(1<<6)
 
 #define HUNTER		(1<<0)
 #define FARMER		(1<<1)
@@ -166,7 +170,7 @@
 #define PRISONERB	(1<<13)
 #define LUNATIC		(1<<14)
 
-#define YOUNGFOLK	(1<<6)
+#define YOUNGFOLK	(1<<7)
 
 #define APPRENTICE	(1<<0)
 #define CHURCHLING	(1<<1)
@@ -184,7 +188,7 @@
 #define SEELIE		(1<<2)
 #define MERC_CLERK	(1<<3)
 
-#define GOBLIN		(1<<8)
+#define GOBLIN		(1<<9)
 
 #define GOBLINCHIEF	(1<<0)
 #define GOBLINCOOK	(1<<1)
@@ -193,13 +197,13 @@
 #define GOBLINRABBLE	(1<<4)
 #define GOBLINSHAMAN	(1<<5)
 
-#define SLOP		(1<<9)
+#define SLOP		(1<<10)
 
 #define TESTER		(1<<0)
 #define DEATHKNIGHT (1<<1)
 #define SKELETON	(1<<2)
 
-#define FOREIGNERS	(1<<10)
+#define FOREIGNERS	(1<<11)
 #define REFUGEE	(1<<0)
 #define MIGRANT		(1<<1)
 #define BANDIT		(1<<2)
@@ -207,6 +211,7 @@
 #define JCOLOR_NOBLE "#aa83b9"
 #define JCOLOR_COURTIER "#81adc8"
 #define JCOLOR_CHURCH "#c0ba8d"
+#define JCOLOR_INQUISITION "#790f73"
 #define JCOLOR_SOLDIER "#b18484"
 #define JCOLOR_YEOMAN "#819e82"
 #define JCOLOR_PEASANT "#b09262"
@@ -225,11 +230,11 @@
 #define JDO_CLERK 3.1
 #define JDO_MARSHAL 4
 #define JDO_COUNCILLOR 4.1
+#define JDO_MAGICIAN 5
+#define JDO_PHYSICIAN 6
 
 // Courtiers
-#define JDO_MAGICIAN 5
 #define JDO_MAGEAPPRENTICE 5.1
-#define JDO_PHYSICIAN 6
 #define JDO_JESTER 7
 #define JDO_BUTLER 7.1
 #define JDO_SERVANT 7.2
@@ -246,13 +251,14 @@
 #define JDO_BOGGUARD 9.1
 
 #define JDO_PRIEST 10
+#define JDO_TEMPLAR 10.1
+#define JDO_MONK 10.2
+#define JDO_DRUID 10.3
+#define JDO_CHURCHLING 10.4
+#define JDO_GRAVEMAN 10.5
+
 #define JDO_PURITAN 11
-#define JDO_TEMPLAR 12
-#define JDO_MONK 13
-#define JDO_DRUID 13.1
-#define JDO_CHURCHLING 14
-#define JDO_GRAVEMAN 15
-#define JDO_SHEPHERD 16
+#define JDO_SHEPHERD 11.1
 
 #define JDO_MERCHANT 17
 #define JDO_SHOPHAND 17.1
@@ -316,13 +322,13 @@
 	/datum/job/roguetown/wapprentice,\
 	/datum/job/roguetown/servant,\
 	/datum/job/roguetown/squire,\
-	/datum/job/roguetown/butler,\
-	/datum/job/roguetown/magician
+	/datum/job/roguetown/butler
 
 #define NOBLE_ROLES \
 	/datum/job/roguetown/prince,\
 	/datum/job/roguetown/councillor,\
 	/datum/job/roguetown/physician,\
+	/datum/job/roguetown/magician,\
 	/datum/job/roguetown/marshal,\
 	/datum/job/roguetown/captain,\
 	/datum/job/roguetown/hand,\
@@ -337,13 +343,15 @@
 
 #define CHURCH_ROLES \
 	/datum/job/roguetown/churchling,\
-	/datum/job/roguetown/shepherd,\
 	/datum/job/roguetown/druid,\
 	/datum/job/roguetown/monk,\
 	/datum/job/roguetown/undertaker,\
 	/datum/job/roguetown/priest,\
-	/datum/job/roguetown/puritan,\
 	/datum/job/roguetown/templar
+
+#define INQUISITION_ROLES \
+	/datum/job/roguetown/puritan,\
+	/datum/job/roguetown/shepherd
 
 #define PEASANT_ROLES \
 	/datum/job/roguetown/towner,\

@@ -234,6 +234,10 @@
 	minstr = 0
 	wdefense = 3
 
+	grid_height = 96
+	grid_width = 64
+
+
 /obj/item/rogueweapon/mace/cudgel/getonmobprop(tag)
 	. = ..()
 	if(tag)

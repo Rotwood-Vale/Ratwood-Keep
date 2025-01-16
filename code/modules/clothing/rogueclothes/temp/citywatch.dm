@@ -8,11 +8,11 @@
 	item_state = "citywatch"
 	blocksound = PLATEHIT
 	do_sound_chain = TRUE
-	body_parts_covered = CHEST|GROIN|VITALS|ARMS
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	body_parts_covered = CHEST|GROIN|VITALS
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	max_integrity = 250
-	armor_class = ARMOR_CLASS_HEAVY
+	armor_class = ARMOR_CLASS_MEDIUM
 	clothing_flags = CANT_SLEEP_IN
 	anvilrepair = /datum/skill/craft/blacksmithing
 	sewrepair = FALSE
@@ -25,11 +25,12 @@
 	icon_state = "citywatch_helmet"
 	item_state = "citywatch_helmet"
 	max_integrity = 225
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_SMASH, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	armor_class = ARMOR_CLASS_MEDIUM
 	smeltresult = /obj/item/ingot/steel
-	body_parts_covered = HEAD|HAIR|EARS|NECK
+	body_parts_covered = HEAD|HAIR|EARS
 	flags_inv = HIDEHAIR
+	clothing_flags = CANT_SLEEP_IN
 	anvilrepair = /datum/skill/craft/blacksmithing
 	sewrepair = FALSE
 

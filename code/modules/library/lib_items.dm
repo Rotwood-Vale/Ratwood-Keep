@@ -23,7 +23,9 @@
 	max_integrity = 200
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
 	var/state = 0
-	var/list/allowed_books = list(/obj/item/book, /obj/item/storage/book) //Things allowed in the bookcase
+	
+	/// Things allowed in the bookcase
+	var/list/allowed_books = list(/obj/item/book, /obj/item/storage/book)
 
 /obj/structure/bookcase/examine(mob/user)
 	. = ..()
@@ -70,22 +72,27 @@
 			update_icon()
 
 /obj/structure/bookcase/attackby(obj/item/I, mob/user, params)
-	if(!istype(I, /obj/item/book))
-		return ..()
-	if(!user.transferItemToLoc(I, src))
+	. = ..()
+	if(!is_type_in_list(I, allowed_books))
 		return
+	if(length(contents) >= 15)
+		return
+	user.visible_message("[user] starts to put [I] into [src].", "You start to put [I] into [src].")
+	if(!do_after(user, 1.5 SECONDS, target = src))
+		return
+	I.forceMove(src)
 	update_icon()
 
 /obj/structure/bookcase/deconstruct(disassembled = TRUE)
 //	new /obj/item/stack/sheet/mineral/wood(loc, 4)
-	for(var/obj/item/book/B in contents)
+	for(var/obj/item/B in contents)
 		B.forceMove(get_turf(src))
 	qdel(src)
 
 
 /obj/structure/bookcase/update_icon()
 	if((contents.len >= 1) && (contents.len <= 15))
-		icon_state = "[based][contents.len]"
+		icon_state = "[based][length(contents)]"
 	else
 		icon_state = "bookcase"
 

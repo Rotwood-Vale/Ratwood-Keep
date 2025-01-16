@@ -29,6 +29,13 @@
 	smeltresult = /obj/item/ingot/iron
 	can_cdg = TRUE
 
+	grid_height = 64
+	grid_width = 32
+
+/obj/item/rogueweapon/huntingknife/Initialize()
+	. = ..()
+	AddElement(/datum/element/tipped_item)
+
 
 /datum/intent/dagger
 	clickcd = 8

@@ -24,6 +24,9 @@
 	flags_inv = HIDEBOOB|HIDECROTCH
 	w_class = WEIGHT_CLASS_NORMAL //Anti-pouch storage due to the weight class no longer being small.
 
+	grid_width = 64
+	grid_height = 96
+
 /obj/item/clothing/suit/roguetown/armor/chainmail
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "haubergeon"
@@ -472,18 +475,3 @@
 	max_integrity = 550 // Hardened to Replace the chainmaille they got before.
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_ASSASSIN, BCLASS_TWIST)
 	body_parts_covered = CHEST|GROIN|VITALS
-
-/obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
-	name = "New Moon coat"
-	desc = "Light, fancy yet still fairly protective, this teal coat is a signature of the New Moon Holy Order with a noc amulet on in the middle of the chestpiece."
-	icon_state = "newmoon_jacket"
-	item_state = "newmoon_jacket"
-	blocksound = SOFTHIT
-	armor = list("blunt" = 70, "slash" = 100, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
-	nodismemsleeves = TRUE
-	body_parts_covered = CHEST|GROIN|VITALS
-	max_integrity = 300
-	sellprice = 40
-	armor_class = ARMOR_CLASS_LIGHT
-

@@ -118,9 +118,9 @@
 				user.do_attack_animation(M, visual_effect_icon = user.used_intent.animname)
 			return
 	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-		user.rogfat_add(10)
+		user.stamina_add(10)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-		user.rogfat_add(10)
+		user.stamina_add(10)
 	if(M.checkdefense(user.used_intent, user))
 		if(M.d_intent == INTENT_PARRY)
 			if(!M.get_active_held_item() && !M.get_inactive_held_item()) //we parried with a bracer, redirect damage
@@ -328,7 +328,7 @@
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
-		if(user.rogfat_add(5))
+		if(user.stamina_add(5))
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
 			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
@@ -355,7 +355,7 @@
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
-		if(user.rogfat_add(5))
+		if(user.stamina_add(5))
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
 			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))

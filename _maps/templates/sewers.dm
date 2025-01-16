@@ -57,7 +57,7 @@
 		/obj/item/clothing/mask/cigarette/pipe = 3,
 		/obj/item/paper = 3,
 		/obj/item/reagent_containers/glass/bowl = 3,
-		/obj/item/storage/bag/tray = 3,
+		/obj/item/storage/tray = 3,
 
 		//medical
 		/obj/item/needle = 4,
@@ -87,7 +87,7 @@
 		/obj/item/flint = 4,
 		/obj/item/rogueweapon/stoneaxe/woodcut = 3,
 		/obj/item/rogueweapon/stoneaxe = 3,
-		/obj/item/rogueweapon/hammer = 3,
+		/obj/item/rogueweapon/hammer/wood = 3,
 		/obj/item/rogueweapon/tongs = 3,
 		/obj/item/rogueweapon/pick = 3,
 
