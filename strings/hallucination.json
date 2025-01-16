@@ -1,7 +1,7 @@
 {
 	"suspicion": [
-		"@pick(add_name)i'm watching you...",
-		"@pick(add_name)i know what you're doing",
+		"@pick(add_name)I'm watching you...",
+		"@pick(add_name)I know what you're doing",
 		"@pick(add_name)what are you hiding?",
 		"I saw that"
 	],
@@ -9,7 +9,7 @@
 	"conversation": [
 		"Yes",
 		"Yeah",
-		"Yup",
+		"Aye",
 		"No",
 		"Nah",
 		"I doubt it",
@@ -18,8 +18,8 @@
 		"But...",
 		"Hold on",
 		"Hmm",
-		"Yeah, i know",
-		"Weird"
+		"Yeah, I know",
+		"Peculiar"
 	],
 
 	"greetings": [
@@ -74,7 +74,7 @@
 	"aggressive": [
 		"@pick(add_name)give me that!",
 		"@pick(add_name)stop it!",
-		"@pick(add_name)i'm going to kill you!",
+		"@pick(add_name)I'm going to kill you!",
 		"@pick(add_name)fuck you!"
 	],
 
@@ -109,7 +109,7 @@
 	],
 
 	"people": [
-		"Captain",
+		"Guard captain",
 		"Sergeant",
 		"physician",
 		"apothecary",
