@@ -346,7 +346,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			if("monster")//Horror
 				A = image('icons/roguetown/mob/monster/horrors.dmi',H,"horror1")
 				A.name = "ZIZOZIZOZIZO"
-				target.playsound_local(target, pick('sound/combat/caught.ogg','sound/misc/astratascream.ogg'), 80, 1)
 			if("skeleton")//skeleton
 				A = image('icons/roguetown/mob/skeleton_male.dmi',H,"z")
 				A.name = "Skeleton"
@@ -392,13 +391,13 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			A = image('icons/roguetown/maniac/dreamer_mobs.dmi',target,"M3")
 			target.playsound_local(target, pick('sound/misc/heroin_rush.ogg'), 60, 1)
 			target.playsound_local(target, pick('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg'), 80, 1)
-			/*sleep(10)
+			/*sleep(10) //I'm not good enough at coding to know how to implement these sounds, but here are the sounds if you want to fix and add them
 			target.playsound_local(target, pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg'), 80, 1)
 			sleep(60)
 			target.playsound_local(target, pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg'), 80, 1)
 			sleep(230)
 			target.playsound_local(target, pick('sound/vo/mobs/ghost/death.ogg'), 80, 1)*/
-		if("monster")//Horror
+		if("monster")//Bodyhorror
 			A = image('icons/roguetown/mob/monster/horrors.dmi',target,"horror1")
 			target.playsound_local(target, pick('sound/combat/gib (1).ogg'), 80, 1)
 			target.playsound_local(target, pick('sound/misc/hel.ogg'), 80, 1)
@@ -432,9 +431,11 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			target.playsound_local(target, pick('sound/vo/mobs/skel/skeleton_death (2).ogg','sound/vo/mobs/skel/skeleton_death (1).ogg'), 80, 1)*/
 		if("spider")//Spider
 			A = image('icons/roguetown/mob/monster/spider.dmi',target,"skallax")
+			target.playsound_local(target, 'sound/vo/mobs/spider/idle (1).ogg', 80, 1)
 		if("demon")//Demon
 			A = image('icons/roguetown/mob/monster/hellkeeper.dmi',target,"hellkeeper")
 			target.playsound_local(target, pick('sound/combat/caught.ogg','sound/misc/astratascream.ogg'), 80, 1)
+			target.playsound_local(target, 'sound/misc/carriage1.ogg', 80, 1)
 			/*sleep(20)
 			target.playsound_local(target, pick('sound/misc/carriage1.ogg'), 80, 1)
 			sleep(60)
@@ -480,7 +481,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		"[pick_list_replacements(HAL_LINES_FILE, "aggressive")]",\
 		"[pick_list_replacements(HAL_LINES_FILE, "help")]!!",\
 		"[pick_list_replacements(HAL_LINES_FILE, "escape")]",\
-		"I'm infected, [pick_list_replacements(HAL_LINES_FILE, "infection_advice")]!",\
+		"I was bitten by a [pick("deddite","werebeast","vampire","squire")], [pick_list_replacements(HAL_LINES_FILE, "infection_advice")]!",\
 		"[pick_list_replacements(HAL_LINES_FILE, "people")] is [pick_list_replacements(HAL_LINES_FILE, "accusations")]!",\
 		"Help!",\
 		"[pick_list_replacements(HAL_LINES_FILE, "threat")] in [pick_list_replacements(HAL_LINES_FILE, "location")][prob(50)?"!":"!!"]",\
@@ -510,7 +511,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if(!chosen)
 			chosen = capitalize(pick(speak_messages))
 		chosen = replacetext(chosen, "%TARGETNAME%", target_name)
-		var/image/speech_overlay = image('icons/mob/talk.dmi', person, "default0", layer = ABOVE_MOB_LAYER)
+		var/image/speech_overlay = image('icons/mob/talk.dmi', person, "default0a", layer = ABOVE_MOB_LAYER)
 		var/message = target.compose_message(person,understood_language,chosen,null,list(person.speech_span),face_name = TRUE)
 		feedback_details += "Type: Talk, Source: [person.real_name], Message: [message]"
 		to_chat(target, message)
@@ -521,6 +522,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		var/spans = list(person.speech_span)
 		if(target.client?.prefs)
 			if (target.client?.prefs.chat_on_map)
+				sleep(30)
 				target.create_chat_message(person, understood_language, chosen, spans, 0)
 	/*else // Radio talk
 		var/chosen = specific_message
@@ -595,7 +597,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	..()
 	var/turf/source = random_far_turf()
 	if(!sound_type)
-		sound_type = pick("door","door hit","creepy","magic","far explosion","mech","glass","alarm","beepsky","mech","wall decon","door hack")
+		sound_type = pick("door","door hit","creepy","magic","far explosion","mech","glass","alarm","lockpick","skele","door pick")
 	feedback_details += "Type: [sound_type]"
 	//Strange audio
 	switch(sound_type)
@@ -615,33 +617,23 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if("far explosion")
 			target.playsound_local(source, 'sound/misc/explode/explosionclose (2).ogg', 60, 1)
 		if("glass")
-			target.playsound_local(source, pick('sound/blank.ogg'), 50, 1)
+			target.playsound_local(source, pick('sound/combat/hits/onglass/glassbreak (1).ogg','sound/combat/hits/onglass/glassbreak (2).ogg'), 50, 1)
 		if("alarm")
-			target.playsound_local(source, 'sound/blank.ogg', 100, 0)
-		if("beepsky")
-			target.playsound_local(source, 'sound/blank.ogg', 35, 0)
-		if("mech")
-			var/mech_dir = pick(GLOB.cardinals)
-			for(var/i in 1 to rand(4,9))
-				if(prob(75))
-					target.playsound_local(source, 'sound/blank.ogg', 40, 1)
-					source = get_step(source, mech_dir)
-				else
-					target.playsound_local(source, 'sound/blank.ogg', 40, 1)
-					mech_dir = pick(GLOB.cardinals)
-				sleep(10)
-		//Deconstructing a wall
-		if("wall decon")
-			target.playsound_local(source, 'sound/blank.ogg', 50, 1)
+			target.playsound_local(source, 'sound/misc/gold_license.ogg', 100, 0)
+		if("lockpick")
+			target.playsound_local(source, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 95, 0)
+		//Spooky scary skeletons
+		if("skele")
+			target.playsound_local(source, pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg'), 80, 1)
+			sleep(30)
+			target.playsound_local(source, pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg'), 80, 1)
 			sleep(105)
-			target.playsound_local(source, 'sound/blank.ogg', 50, 1)
-			sleep(15)
-			target.playsound_local(source, 'sound/blank.ogg', 50, 1)
+			target.playsound_local(source, pick('sound/vo/mobs/skel/skeleton_laugh.ogg'), 60, 1)
 		//Hacking a door
-		if("door hack")
-			target.playsound_local(source, 'sound/blank.ogg', 50, 1)
+		if("door pick")
+			target.playsound_local(source, 'sound/items/pickbad.ogg', 70, 1)
 			sleep(rand(40,80))
-			target.playsound_local(source, 'sound/blank.ogg', 30, 1)
+			target.playsound_local(source, 'sound/items/pickgood2.ogg', 50, 1)
 	qdel(src)
 
 /datum/hallucination/weird_sounds
@@ -651,40 +643,39 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	..()
 	var/turf/source = random_far_turf()
 	if(!sound_type)
-		sound_type = pick("phone","hallelujah","highlander","laughter","hyperspace","game over","creepy","tesla")
+		sound_type = pick("bleed","help","hello","zizo","evil","drill","laughter","creepy")
 	feedback_details += "Type: [sound_type]"
 	//Strange audio
 	switch(sound_type)
-		if("phone")
-			target.playsound_local(source, 'sound/blank.ogg', 15)
+		if("bleed")
+			target.playsound_local(target, 'sound/misc/bleed (1).ogg', 85)
 			sleep(25)
-			target.playsound_local(source, 'sound/blank.ogg', 15)
+			target.playsound_local(target, 'sound/misc/bleed (2).ogg', 75)
 			sleep(25)
-			target.playsound_local(source, 'sound/blank.ogg', 15)
+			target.playsound_local(target, 'sound/misc/bleed (3).ogg', 75)
 			sleep(25)
-			target.playsound_local(source, 'sound/blank.ogg', 15)
-		if("hyperspace")
-			target.playsound_local(null, 'sound/blank.ogg', 50)
-		if("hallelujah")
-			target.playsound_local(source, 'sound/blank.ogg', 50)
-		if("highlander")
-			target.playsound_local(null, 'sound/blank.ogg', 50)
-		if("game over")
-			target.playsound_local(source, 'sound/blank.ogg', 50)
+			target.playsound_local(target, 'sound/misc/bleed (4).ogg', 85)
+		if("help")
+			target.playsound_local(target, 'sound/items/carvhelp.ogg', 50)
+		if("hello")
+			target.playsound_local(target, 'sound/items/carvhello.ogg', 50)
+		if("zizo")
+			target.playsound_local(target, 'sound/misc/zizo.ogg', 50)
+		if("evil")
+			target.playsound_local(target, 'sound/misc/evilevent.ogg', 50)
+		if("drill")
+			target.playsound_local(source, 'sound/misc/TheDrill.ogg', 50)
 		if("laughter")
 			if(prob(50))
-				target.playsound_local(source, 'sound/blank.ogg', 50, 1)
+				target.playsound_local(source, 'sound/misc/HL (1).ogg', 60, 1)
 			else
-				target.playsound_local(source, pick('sound/blank.ogg'), 50, 1)
+				target.playsound_local(source, pick('sound/misc/HL (2).ogg','sound/misc/HL (3).ogg','sound/misc/HL (5).ogg'), 60, 1)
 		if("creepy")
-		//These sounds are (mostly) taken from Hidden: Source
-			target.playsound_local(source, pick(CREEPY_SOUNDS), 50, 1)
-		if("tesla") //Tesla loose!
-			target.playsound_local(source, 'sound/blank.ogg', 35, 1)
-			sleep(30)
-			target.playsound_local(source, 'sound/blank.ogg', 65, 1)
-			sleep(30)
-			target.playsound_local(source, 'sound/blank.ogg', 100, 1)
+			target.playsound_local(target, pick('sound/misc/sting1.ogg','sound/misc/sting2.ogg','sound/misc/obey.ogg','sound/villain/hall_appear1.ogg',\
+			'sound/villain/hall_appear2.ogg','sound/villain/hall_appear3.ogg'), 80, 1)
+			sleep(60)
+			target.playsound_local(target, pick('sound/misc/sting1.ogg','sound/misc/sting2.ogg','sound/misc/obey.ogg','sound/villain/hall_appear1.ogg',\
+			'sound/villain/hall_appear2.ogg','sound/villain/hall_appear3.ogg'), 80, 1)
 
 	qdel(src)
 
