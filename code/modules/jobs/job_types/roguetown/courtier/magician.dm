@@ -30,11 +30,12 @@
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/keyring/mage
+	beltr = /obj/item/storage/magebag/apprentice
+	beltl = /obj/item/storage/keyring/mage
 	id = /obj/item/clothing/ring/gold
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/lovepotion,/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
+	backpack_contents = list(/obj/item/lovepotion,/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/book/granter/spellbook/master, /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
@@ -60,7 +61,7 @@
 			H.change_stat("speed", -1)
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 1)
-		
+
 		if(H.gender == MALE)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 

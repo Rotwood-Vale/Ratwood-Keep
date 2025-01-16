@@ -11,7 +11,7 @@
 
 	tutorial = "Your master once saw potential in you, something you are uncertain if they still do with your recent studies. The path to using magic is something treacherous and untamed, and you are still decades away from calling yourself even a journeyman in the field. Listen and serve, and someday you will earn your hat."
 
-	spells = list(/obj/effect/proc_holder/spell/invoked/learnspell)
+	spells = list(/obj/effect/proc_holder/spell/invoked/learnspell,/obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	outfit = /datum/outfit/job/roguetown/wapprentice
 
 	display_order = JDO_MAGEAPPRENTICE
@@ -25,8 +25,10 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltr = /obj/item/storage/keyring/mage
+	beltr = /obj/item/storage/magebag/apprentice
+	beltl = /obj/item/storage/keyring/mage
 	r_hand = /obj/item/rogueweapon/woodstaff
+	backpack_contents = list(/obj/item/chalk = 1, /obj/item/book/granter/spellbook/apprentice = 1)
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest
