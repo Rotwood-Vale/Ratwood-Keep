@@ -38,7 +38,7 @@
 
 
 	var/weapons = list("billhook", "halberd", "zweihander")
-	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapon
+	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
 
 	switch(weaponschoice)
 
