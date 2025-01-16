@@ -1,5 +1,10 @@
 #define HAL_LINES_FILE "hallucination.json"
-
+/* Still needs updating:
+items
+items_other
+hudscrew
+fake_alert
+Chat and dangerflash could use polishing*/
 GLOBAL_LIST_INIT(hallucination_list, list(
 	/datum/hallucination/chat = 100,
 	/datum/hallucination/message = 60,
