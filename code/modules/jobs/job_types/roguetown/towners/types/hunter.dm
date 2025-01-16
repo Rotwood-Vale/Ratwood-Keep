@@ -47,5 +47,5 @@
 		H.mind.adjust_skillrank(/datum/skill/hunting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 	if(H.age == AGE_OLD)
-		H.mind.adjust_skillrank(/datum/skill/hunting, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/hunting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
