@@ -1944,25 +1944,6 @@
 /obj/item/bedsheet/rogue/pelt,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
-"bdL" = (
-/obj/structure/chair/stool/rogue{
-	pixel_x = -4
-	},
-/obj/effect/landmark/start/villager{
-	dir = 8
-	},
-/obj/structure/fluff/railing/border{
-	pixel_y = 25
-	},
-/obj/structure/fluff/railing/border{
-	dir = 4;
-	pixel_x = 3
-	},
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "wooden_floor2"
-	},
-/area/rogue/outdoors/town/harbor)
 "bdN" = (
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/outdoors/rtfield)
@@ -12474,6 +12455,12 @@
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/outdoors/town/harbor)
+"gKX" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4
+	},
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/outdoors/town)
 "gLf" = (
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
@@ -16252,9 +16239,16 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
 "iQA" = (
-/obj/structure/table/vtable/v2,
-/turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/town)
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	pixel_x = 3
+	},
+/obj/effect/landmark/latejoin,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
+/area/rogue/outdoors/town/harbor)
 "iRk" = (
 /obj/structure/well,
 /turf/open/floor/rogue/dirt,
@@ -18328,13 +18322,13 @@
 /area/rogue/indoors/town/church)
 "jUC" = (
 /obj/structure/fluff/railing/border{
-	dir = 4;
-	pixel_x = 3
+	dir = 8;
+	pixel_x = -7
 	},
-/obj/effect/landmark/latejoin,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "wooden_floor2"
+/obj/structure/fluff/railing/border,
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/town/harbor)
 "jUK" = (
@@ -19537,6 +19531,13 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"kDH" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
+/area/rogue/outdoors/town/harbor)
 "kDS" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueore/tin,
@@ -23197,9 +23198,21 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "mJe" = (
-/obj/structure/table/vtable,
-/turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/town)
+/obj/structure/chair/stool/rogue{
+	pixel_x = -4
+	},
+/obj/effect/landmark/start/villager{
+	dir = 8
+	},
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	pixel_x = 3
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
+/area/rogue/outdoors/town/harbor)
 "mJh" = (
 /obj/structure/closet/crate/chest{
 	locked = 1;
@@ -30454,16 +30467,6 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/town/basement)
-"qEP" = (
-/obj/structure/fluff/railing/border{
-	dir = 8;
-	pixel_x = -7
-	},
-/turf/open/water/river{
-	dir = 8;
-	icon_state = "rockwd"
-	},
-/area/rogue/outdoors/town/harbor)
 "qEZ" = (
 /obj/structure/chair/stool/rogue,
 /obj/effect/landmark/start/longshoreman,
@@ -31977,10 +31980,8 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/bath)
 "rwn" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4
-	},
-/turf/open/floor/rogue/churchmarble,
+/obj/structure/table/vtable,
+/turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town)
 "rws" = (
 /obj/structure/fluff/railing/border{
@@ -36466,6 +36467,7 @@
 	dir = 4;
 	pixel_x = 8
 	},
+/obj/structure/fluff/railing/border,
 /turf/open/water/river{
 	dir = 8;
 	icon_state = "rockwd"
@@ -41213,6 +41215,10 @@
 	},
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors/town/manor)
+"wKM" = (
+/obj/structure/table/vtable/v2,
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/town)
 "wLx" = (
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
@@ -248867,7 +248873,7 @@ pzv
 pzv
 pzv
 ubf
-wPh
+kDH
 iyG
 huQ
 oXd
@@ -249730,9 +249736,9 @@ hkm
 pzv
 pzv
 aiP
-qEP
-bdL
 jUC
+mJe
+iQA
 agj
 wuw
 aiP
@@ -347828,8 +347834,8 @@ thT
 hZr
 hZr
 hZr
-rwn
-rwn
+gKX
+gKX
 vsC
 wbg
 fnA
@@ -348261,7 +348267,7 @@ dPj
 fpa
 fpa
 jqC
-mJe
+rwn
 vsC
 fnA
 fnA
@@ -348693,7 +348699,7 @@ dbh
 fpa
 fpa
 ven
-iQA
+wKM
 esR
 gpI
 gpI
