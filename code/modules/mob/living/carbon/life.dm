@@ -22,9 +22,10 @@
 		handle_embedded_objects()
 		handle_blood()
 		handle_roguebreath()
+		handle_energy_recovery()
+		handle_sleep()
 		var/bprv = handle_bodyparts()
 		if(bprv & BODYPART_LIFE_UPDATE_HEALTH)
-			update_stamina() //needs to go before updatehealth to remove stamcrit
 			updatehealth()
 		update_stress()
 		handle_nausea()
@@ -34,88 +35,6 @@
 			else
 				if(getOxyLoss() < 20)
 					heart_attacking = FALSE
-
-		var/cant_fall_asleep = FALSE
-		var/cause = " I just can't..."
-		for(var/obj/item/clothing/thing in get_equipped_items(FALSE))
-			if(thing.clothing_flags & CANT_SLEEP_IN)
-				cant_fall_asleep = TRUE
-				cause = " \The [thing] bothers me..."
-				break
-
-		if(HAS_TRAIT(src, TRAIT_NUDE_SLEEPER))
-			if(length(get_equipped_items()))
-				cause = " I need to be nude to be comfortable..."
-				cant_fall_asleep = TRUE
-
-		//Healing while sleeping in a bed
-		if(IsSleeping())
-			var/sleepy_mod = 0.5
-			var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
-			if(buckled?.sleepy)
-				sleepy_mod = buckled.sleepy
-			else if(isturf(loc)) //No illegal tech.
-				var/obj/structure/bed/rogue/bed = locate() in loc
-				if(bed)
-					sleepy_mod = bed.sleepy
-			if(nutrition > 0 || yess)
-				rogstam_add(sleepy_mod * 15)
-			if(hydration > 0 || yess)
-				if(!bleed_rate)
-					blood_volume = min(blood_volume + (4 * sleepy_mod), BLOOD_VOLUME_NORMAL)
-				for(var/obj/item/bodypart/affecting as anything in bodyparts)
-					//for context, it takes 5 small cuts (0.2 x 5) or 3 normal cuts (0.4 x 3) for a bodypart to not be able to heal itself
-					if(affecting.get_bleed_rate() >= 1)
-						continue
-					if(affecting.heal_damage(sleepy_mod, sleepy_mod, required_status = BODYPART_ORGANIC))
-						src.update_damage_overlays()
-					for(var/datum/wound/wound as anything in affecting.wounds)
-						if(!wound.sleep_healing)
-							continue
-						wound.heal_wound(wound.sleep_healing * sleepy_mod)
-				adjustToxLoss(-sleepy_mod)
-				if(eyesclosed && !HAS_TRAIT(src, TRAIT_NOSLEEP))
-					Sleeping(300)
-		else if(!IsSleeping() && !HAS_TRAIT(src, TRAIT_NOSLEEP))
-			// Resting on a bed or something
-			var/sleepy_mod = 0
-			if(buckled?.sleepy)
-				sleepy_mod = buckled.sleepy
-			else if(isturf(loc) && !(mobility_flags & MOBILITY_STAND))
-				var/obj/structure/bed/rogue/bed = locate() in loc
-				if(bed)
-					sleepy_mod = bed.sleepy
-			if(sleepy_mod > 0)
-				if((eyesclosed && !cant_fall_asleep) || (eyesclosed && !(fallingas >= 14 && cant_fall_asleep)) || InCritical()) // its a little slop but im not sure on how to else
-					if(!fallingas)
-						to_chat(src, span_warning("I'll fall asleep soon..."))
-					fallingas++
-					if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
-						fallingas++
-					if(fallingas > 15)
-						Sleeping(300)
-				else if(eyesclosed && fallingas >= 14 && cant_fall_asleep)
-					to_chat(src, span_boldwarning("I can't sleep...[cause]"))
-					fallingas = 1
-				else
-					rogstam_add(sleepy_mod * 10)
-			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
-			else if(!(mobility_flags & MOBILITY_STAND))
-				if((eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !cant_fall_asleep) || (eyesclosed && !HAS_TRAIT(src, TRAIT_NUDE_SLEEPER) && !(fallingas >= 14 && cant_fall_asleep)) || InCritical())
-					if(!fallingas)
-						to_chat(src, span_warning("I'll fall asleep soon, although a bed would be more comfortable..."))
-					fallingas++
-					if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
-						fallingas++
-					if(fallingas > 25)
-						Sleeping(300)
-				else if(eyesclosed && fallingas >= 14 && cant_fall_asleep)
-					to_chat(src, span_boldwarning("I can't sleep...[cause]"))
-					fallingas = 1
-				else
-					rogstam_add(10)
-			else if(fallingas)
-				fallingas = 0
 				
 		if(!IsSleeping() && (mobility_flags & MOBILITY_STAND) && isseelie(src) && (haswings(src) == TRUE) && !(buckled)) //Very slop but dont know of another way
 			fairy_hover()
@@ -736,3 +655,107 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		animate(src, pixel_y = pixel_y - 2, time = 5, loop = -1)
 
 	//animate(src, pixel_x = rand(-2, 2), pixel_y = rand(-2, 2), time = 20)
+
+/// Handles sleep. Mobs with no_sleep trait cannot sleep.
+/*
+*	The mob tries to go to sleep or IS sleeping
+*
+*	Accounts for...
+*	TRAIT_NOSLEEP
+*	CANT_SLEEP_IN
+*	TRAIT_NUDE_SLEEPER
+*	Hunger and Hydration.
+*/
+/mob/living/carbon/proc/handle_sleep()
+	if(HAS_TRAIT(src, TRAIT_NOSLEEP))
+		return
+	var/can_sleep = TRUE
+	var/bleedrate
+	var/cause = "I can't sleep because..."
+	for(var/obj/item/clothing/thing in get_equipped_items(FALSE))
+		if(thing.clothing_flags & CANT_SLEEP_IN)
+			can_sleep = FALSE
+			cause += " \n\The [thing] bothers me..."
+
+	if(HAS_TRAIT(src, TRAIT_NUDE_SLEEPER))
+		if(length(get_equipped_items()))
+			cause += "\nI need to be nude to be comfortable..."
+			can_sleep = FALSE
+	if(sleep_accumulation > 15 && eyesclosed && resting && !can_sleep)
+		if(mob_timers["handle_sleep"])
+			if(world.time < mob_timers["handle_sleep"] + 30 SECONDS)
+				return
+		to_chat(src, span_boldwarning("[cause]"))
+		mob_timers["handle_sleep"] = world.time 
+		return
+	var/sleep_modifier // Modifier to multiply healing bonuses by and by how fast we fall asleep.
+	if(buckled?.sleepy)
+		sleep_modifier = buckled.sleepy
+	else if(isturf(loc)) //No illegal tech.
+		var/obj/structure/bed/rogue/bed = locate() in loc
+		if(bed)
+			sleep_modifier = bed.sleepy
+	if(IsSleeping() && !InFullCritical())
+		if(!sleep_modifier)
+			sleep_modifier = 0.75
+		var/requires_hydration = !HAS_TRAIT(src, TRAIT_NOHUNGER)
+		if(hydration > 0 || !requires_hydration) // No hydration? No healing.
+			if(!bleedrate)
+				blood_volume = min(blood_volume + (4 * sleep_modifier), BLOOD_VOLUME_NORMAL)
+			for(var/obj/item/bodypart/affecting as anything in bodyparts)
+				//for context, it takes 5 small cuts (0.2 x 5) or 3 normal cuts (0.4 x 3) for a bodypart to not be able to heal itself
+				if(affecting.heal_damage(sleep_modifier, sleep_modifier, required_status = BODYPART_ORGANIC))
+					src.update_damage_overlays()
+				for(var/datum/wound/wound as anything in affecting.wounds)
+					if(!wound.sleep_healing)
+						continue
+					wound.heal_wound(wound.sleep_healing * sleep_modifier)
+			adjustToxLoss(-sleep_modifier)
+		if(eyesclosed && !HAS_TRAIT(src, TRAIT_NOSLEEP))
+			Sleeping(300)
+	else if((eyesclosed && resting) || (eyesclosed && InCritical()))
+		var/sleep_bedless
+		if(!sleep_modifier) // resting on ground
+			sleep_modifier = 1
+			sleep_bedless = ", although a bed would be more comfortable"
+		if(!sleep_accumulation)
+			to_chat(src, span_warning("I'll fall asleep soon[sleep_bedless]..."))
+		if(HAS_TRAIT(src, TRAIT_FASTSLEEP))
+			sleep_modifier += 2
+		sleep_accumulation += sleep_modifier
+		if(sleep_accumulation > 25)
+			Sleeping(300)
+	else if(sleep_accumulation)
+		sleep_accumulation = 0
+
+/*
+*	Handles resting and recovery energy (Blue bar)
+*
+*	Recovery rate is determined by:
+*		Whether or not you're resting on a bed.
+*		Sleeping
+*		Max energy
+*/
+/mob/living/carbon/proc/handle_energy_recovery()
+	if(HAS_TRAIT(src, TRAIT_NOSTAMINA))
+		energy = max_energy
+		return
+	if(nutrition <= 0 && !HAS_TRAIT(src, TRAIT_NOHUNGER)) // No food? No Stamina.
+		if(mob_timers["energy_recovery"])
+			if(world.time < mob_timers["energy_recovery"] + 30 SECONDS)
+				return
+		to_chat(src, span_bad("I am too hungry to recover... "))
+		mob_timers["energy_recovery"] = world.time
+		return
+	if(resting)
+		var/recovery_amt
+		var/bed_recovery_modifier = 1
+		var/obj/structure/bed/rogue/bed = locate() in loc
+		if(bed)
+			bed_recovery_modifier = bed.sleepy
+		if(IsSleeping())
+			recovery_amt = (max_energy * 0.10) * bed_recovery_modifier // Example: max energy 1000 -> 100 energy on ground, 300 on bed
+		else
+			recovery_amt = (max_energy * 0.02) * bed_recovery_modifier // Example: max energy 1000 -> 20 energy on ground, 60 on bed
+		
+		energy_add(recovery_amt)

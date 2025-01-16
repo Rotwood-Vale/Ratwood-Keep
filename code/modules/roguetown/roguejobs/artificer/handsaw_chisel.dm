@@ -2,7 +2,7 @@
 //................	Handsaw	............... //
 /obj/item/rogueweapon/handsaw
 	force = 5
-	possible_item_intents = list(/datum/intent/mace/strike/shovel)
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	gripped_intents = null
 	name = "handsaw"
 	desc = "Iron tool for woodworking."
@@ -21,10 +21,11 @@
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP
+	tool_behaviour = TOOL_IMPROVSAW
 	swingsound = list('sound/combat/wooshes/blunt/shovel_swing.ogg','sound/combat/wooshes/blunt/shovel_swing2.ogg')
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
 	smeltresult = /obj/item/ingot/iron
-	associated_skill = /datum/skill/combat/maces
+	associated_skill = /datum/skill/combat/knives
 	max_blade_int = 50
 
 //................	Chisel	............... //
@@ -51,7 +52,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	swingsound = list('sound/combat/wooshes/blunt/shovel_swing.ogg','sound/combat/wooshes/blunt/shovel_swing2.ogg')
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
-	associated_skill = /datum/skill/combat/maces
+	associated_skill = /datum/skill/combat/knives
 	max_blade_int = 50
 	dropshrink = 0.9
 

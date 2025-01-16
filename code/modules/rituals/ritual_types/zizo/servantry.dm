@@ -101,7 +101,7 @@
 		H.verbs |= /mob/living/carbon/human/proc/communicate
 
 		ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
-		ADD_TRAIT(H, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOHUNGER, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBREATH, TRAIT_GENERIC)
@@ -138,7 +138,7 @@
 						return
 					if(istype(HL.wear_neck, /obj/item/clothing/neck/roguetown/psicross))
 						return
-					if(HAS_TRAIT(HL, TRAIT_NOSLEEP) || HAS_TRAIT(HL, TRAIT_NOROGSTAM))
+					if(HAS_TRAIT(HL, TRAIT_NOSLEEP) || HAS_TRAIT(HL, TRAIT_NOSTAMINA))
 						return
 					to_chat(HL.mind, span_warning("I'm so sleepy..."))
 					HL.SetSleeping(30)

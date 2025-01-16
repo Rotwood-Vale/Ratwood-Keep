@@ -187,10 +187,16 @@
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/peasantwarflail
-	name = "peasant war flail"
-	result = /obj/item/rogueweapon/flail/peasantwarflail
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/rope = 1,
+	name = "peasant war flail (chain)"
+	result = /obj/item/rogueweapon/thresher/wflail
+	reqs = list(/obj/item/rope/chain = 1,
+				/obj/item/rogueweapon/thresher = 1)
+	skill_level = 2
+
+/datum/crafting_recipe/roguetown/peasantwarflail_alt
+	name = "peasant war flail (chained)"
+	result = /obj/item/rogueweapon/thresher/wflail
+	reqs = list(/obj/item/leash/chain = 1,			// wish there werent 2 chains with diff item pathing ngl
 				/obj/item/rogueweapon/thresher = 1)
 	skill_level = 2
 

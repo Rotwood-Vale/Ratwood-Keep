@@ -1,22 +1,52 @@
+/*-----------\
+|  Thresher  |
+\-----------*/
+
 /obj/item/rogueweapon/thresher
-	force = 10
-	force_wielded = 15
-	possible_item_intents = list(MACE_STRIKE)
-	gripped_intents = list(MACE_STRIKE,/datum/intent/flailthresh)
 	name = "thresher"
-	desc = "A shredding tool for farmers."
-	icon_state = "flail"
+	desc = "Crushes grain, or skulls."
+	icon_state = "thresher"
+	item_state = "thresher"
 	icon = 'icons/roguetown/weapons/tools.dmi'
-	item_state = "mace_greyscale"
-	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
-	sharpness = IS_BLUNT
-	//dropshrink = 0.8
-	slot_flags = ITEM_SLOT_BACK
-	wlength = 33
+	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	experimental_onback = FALSE
+	experimental_onhip = FALSE
 	gripsprite = TRUE
+	gripspriteonmob = TRUE
+	slot_flags = ITEM_SLOT_BACK
+	sharpness = IS_BLUNT
+	wlength = WLENGTH_LONG
+	w_class = WEIGHT_CLASS_BULKY
+	blade_dulling = DULLING_BASHCHOP
+	walking_stick = TRUE
+	minstr = 6
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = null
+	associated_skill = /datum/skill/combat/whipsflails
+	possible_item_intents = list(MACE_STRIKE)
+	gripped_intents = list(/datum/intent/flailthresh,MACE_STRIKE)
+
+	force = 10
+	force_wielded = 14
+	wdefense = 2
+	wbalance = -2
+	wlength = 66
+
+/obj/item/rogueweapon/thresher/wflail
+	name = "war flail"
+	desc = "A peasants thresher turned into a weapon of war."
+	icon_state = "wflail"
+	item_state = "wflail"
+	minstr = 9
+	possible_item_intents = list(/datum/intent/flail/strike)
+	gripped_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash, /datum/intent/flailthresh)
+
+	force = 12
+	force_wielded = 25
+
 /datum/intent/flailthresh
 	name = "thresh"
 	icon_state = "inthresh"
@@ -25,57 +55,6 @@
 	candodge = FALSE
 	misscost = 0
 	no_attack = TRUE
-
-/obj/item/rogueweapon/thresher/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.7,
-"sx" = -16,
-"sy" = -3,
-"nx" = 5,
-"ny" = -3,
-"wx" = -13,
-"wy" = -4,
-"ex" = -1,
-"ey" = -4,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = -15,
-"sturn" = 12,
-"wturn" = 0,
-"eturn" = 354,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.8,
-"sx" = -3,
-"sy" = -14,
-"nx" = -12,
-"ny" = -15,
-"wx" = -9,
-"wy" = -14,
-"ex" = -4,
-"ey" = -13,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 0,
-"sturn" = -6,
-"wturn" = -3,
-"eturn" = -21,
-"nflip" = 8,
-"sflip" = 0,
-"wflip" = 0,
-"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/thresher/afterattack(obj/target, mob/user, proximity)
 	if(user.used_intent.type == /datum/intent/flailthresh)
@@ -86,129 +65,82 @@
 				found = TRUE
 				C.thresh()
 			if(found)
-				playsound(loc,"plantcross", 100, FALSE)
-				playsound(loc,"smashlimb", 50, FALSE)
-				user.visible_message(span_notice("[user] threshes the stalks!"), \
-									span_notice("I thresh the stalks."))
+				playsound(loc,"plantcross", 90, FALSE)
+				playsound(loc,"smashlimb", 35, FALSE)
+				apply_farming_fatigue(user, 10)
+				user.visible_message("<span class='notice'>[user] threshes the stalks!</span>", \
+									"<span class='notice'>I thresh the stalks.</span>")
 			return
 	..()
 
+
+/*---------\
+|  Sickle  |
+\---------*/
+
 /obj/item/rogueweapon/sickle
-	force = 10
-	possible_item_intents = list(DAGGER_CUT)
 	name = "sickle"
 	desc = "Rusted blade, worn handle, symbol of toil."
-	icon_state = "sickle"
+	icon_state = "sickle1"
+	item_state = "sickle"
 	icon = 'icons/roguetown/weapons/tools.dmi'
-	item_state = "crysknife"
-	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	experimental_onback = FALSE
+	experimental_onhip = FALSE
 	sharpness = IS_SHARP
-	//dropshrink = 0.8
-	wlength = 10
 	slot_flags = ITEM_SLOT_HIP
+	thrown_bclass = BCLASS_CUT
+	drop_sound = 'sound/foley/dropsound/blade_drop.ogg'
 	max_blade_int = 50
 	smeltresult = /obj/item/ingot/iron
-
-/obj/item/rogueweapon/sickle/getonmobprop(tag)
+	possible_item_intents = list(DAGGER_CUT)
+	associated_skill = /datum/skill/combat/knives
+	force = 11
+	wdefense = 0
+	wlength = 10
+/obj/item/rogueweapon/sickle/New()
 	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,
-"sx" = -13,
-"sy" = -4,
-"nx" = 7,
-"ny" = -4,
-"wx" = -10,
-"wy" = -4,
-"ex" = 0,
-"ey" = -4,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 0,
-"sturn" = 0,
-"wturn" = 0,
-"eturn" = 0,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+	icon_state = "sickle[rand(1,3)]"
 
+
+/*------\
+|  Hoe  |
+\------*/
 
 /obj/item/rogueweapon/hoe
-	force = 10
-	force_wielded = 15
-	possible_item_intents = list(/datum/intent/pick)
-	gripped_intents = list(/datum/intent/pick,SPEAR_BASH,TILL_INTENT)
 	name = "hoe"
-	desc = "A tool for tiling soil. It's all dirty and worn."
+	desc = ""
 	icon_state = "hoe"
-	slot_flags = ITEM_SLOT_BACK
+	item_state = "hoe"
 	icon = 'icons/roguetown/weapons/tools.dmi'
-	item_state = "pitchfork"
-	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
+	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	experimental_onback = FALSE
+	experimental_onhip = FALSE
+	gripspriteonmob = TRUE
+	wlength = WLENGTH_LONG
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	minstr = 5
 	sharpness = IS_BLUNT
-	//dropshrink = 0.8
-	wlength = 33
+	walking_stick = TRUE
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	smeltresult = /obj/item/ingot/iron
-
-/obj/item/rogueweapon/hoe/getonmobprop(tag)
+	possible_item_intents = list(/datum/intent/pick)
+	gripped_intents = list(TILL_INTENT,/datum/intent/pick,SPEAR_BASH)
+	associated_skill = /datum/skill/combat/polearms
+	force = 5
+	force_wielded = 10
+	wdefense = 2
+	wlength = 66
+/obj/item/rogueweapon/hoe/New()
 	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.7,
-"sx" = -11,
-"sy" = 1,
-"nx" = 12,
-"ny" = 0,
-"wx" = -7,
-"wy" = -0,
-"ex" = 6,
-"ey" = 3,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = -15,
-"sturn" = 12,
-"wturn" = 0,
-"eturn" = 354,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.8,
-"sx" = 4,
-"sy" = -6,
-"nx" = -8,
-"ny" = -6,
-"wx" = 2,
-"wy" = -6,
-"ex" = 5,
-"ey" = -3,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 1,
-"nturn" = -40,
-"sturn" = 40,
-"wturn" = 60,
-"eturn" = 25,
-"nflip" = 8,
-"sflip" = 0,
-"wflip" = 0,
-"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+	icon_state = "hoe[rand(1,3)]"
 
 /obj/item/rogueweapon/hoe/attack_turf(turf/T, mob/living/user)
 	if(user.used_intent.type == /datum/intent/till)
@@ -222,13 +154,13 @@
 			return
 		if(istype(T, /turf/open/floor/rogue/dirt))
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
-			if(do_after(user, 3 SECONDS, target = src))	
+			if(do_after(user, 2 SECONDS, target = src))
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 				var/obj/structure/soil/soil = get_soil_on_turf(T)
 				if(soil)
 					soil.user_till_soil(user)
 				else
-					apply_farming_fatigue(user, 10)
+					apply_farming_fatigue(user, 8)
 					new /obj/structure/soil(T)
 			return
 	. = ..()
@@ -241,96 +173,42 @@
 	candodge = FALSE
 	misscost = 0
 
-/*
-//make this attack_turf instead
-/obj/item/rogueweapon/hoe/afterattack(obj/target, mob/user, proximity)
-	if((!proximity) || (!wielded))
-		return ..()
 
-	if(istype(target, /turf/open/floor/rogue/dirt))
-		var/obj/machinery/crop/R = locate() in target
-		if(R)
-			to_chat(user,span_warning("There's already a mound here."))
-			return
-		if(prob(10)) //ROGTODO make this farming skill based maybe a stat too
-			user.visible_message(span_notice("[user] tills the soil!"), \
-								span_notice("I till the soil."))
-			new /obj/machinery/crop(target)
-		else
-			to_chat(user,span_warning("I till the soil."))
-		return
-	..()
-*/
+/*------------\
+|  Pitchfork  |
+\------------*/
+
 /obj/item/rogueweapon/pitchfork
+	name = "pitchfork"
+	desc = "Compost, chaff, hay, it matters not."
+	icon_state = "pitchfork"
+	item_state = "pitchfork"
+	icon = 'icons/roguetown/weapons/tools.dmi'
+	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	experimental_onback = FALSE
+	experimental_onhip = FALSE
+	gripspriteonmob = TRUE
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	blade_dulling = DULLING_BASHCHOP
+	walking_stick = TRUE
+	minstr = 6
+	var/list/forked = list()
+	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
+	possible_item_intents = list(SPEAR_BASH)
+	gripped_intents = list(DUMP_INTENT,SPEAR_BASH,SPEAR_THRUST)
+	smeltresult = /obj/item/ingot/iron
+	associated_skill = /datum/skill/combat/polearms
+	thrown_bclass = BCLASS_STAB
+	throwforce = 15
 
 	force = 10
-	force_wielded = 15
-	possible_item_intents = list(SPEAR_BASH)
-	gripped_intents = list(SPEAR_BASH,SPEAR_THRUST,DUMP_INTENT)
-	name = "pitchfork"
-	desc = "Iron tines on a sturdy shaft essential for farmlike labour."
-	icon_state = "pitchfork"
-	icon = 'icons/roguetown/weapons/tools.dmi'
-	item_state = "pitchfork"
-	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
-	sharpness = IS_BLUNT
-	//dropshrink = 0.8
-	wlength = 33
-	var/list/forked = list()
-	slot_flags = ITEM_SLOT_BACK
-	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
-	smeltresult = /obj/item/ingot/iron
-/obj/item/rogueweapon/pitchfork/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.7,
-"sx" = -16,
-"sy" = -3,
-"nx" = 5,
-"ny" = -3,
-"wx" = -13,
-"wy" = -4,
-"ex" = -1,
-"ey" = -4,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = -15,
-"sturn" = 12,
-"wturn" = 0,
-"eturn" = 354,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.8,
-"sx" = -3,
-"sy" = -14,
-"nx" = -12,
-"ny" = -15,
-"wx" = -9,
-"wy" = -14,
-"ex" = -4,
-"ey" = -13,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 0,
-"sturn" = -6,
-"wturn" = -3,
-"eturn" = -21,
-"nflip" = 8,
-"sflip" = 0,
-"wflip" = 0,
-"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+	force_wielded = 22
+	wdefense = 1
+	wlength = WLENGTH_LONG
 
 /datum/intent/pforkdump
 	name = "scoop"
@@ -352,9 +230,10 @@
 				forked -= I
 			to_chat(user, span_warning("I dump the stalks."))
 		update_icon()
+		playsound(loc,"plantcross", 80, FALSE)
 		return
 	..()
-
+		
 /obj/item/rogueweapon/pitchfork/ungrip(mob/living/carbon/user, show_message = TRUE)
 	if(forked.len)
 		var/turf/T = get_turf(user)
@@ -367,6 +246,8 @@
 /obj/item/rogueweapon/pitchfork/update_icon()
 	if(forked.len)
 		icon_state = "pitchforkstuff"
+		item_state = "pitchforkstuff"	// onmob itemstate does not update, TO DO
 	else
 		icon_state = initial(icon_state)
+		item_state = "pitchfork1"
 	..()
