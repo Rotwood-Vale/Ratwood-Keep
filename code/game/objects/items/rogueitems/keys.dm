@@ -541,3 +541,45 @@
 	desc = "This old key opens shop #2 behind the mayor's house."
 	icon_state = "rustkey"
 	lockid = "street_shop02"
+
+/obj/item/key/smallstreet_shop01
+	name = "Small shop key #1"
+	desc = "This key opens peddler #1 at the market square."
+	icon_state = "rustkey"
+	lockid = "smallstreet_shop01"
+
+/obj/item/key/smallstreet_shop02
+	name = "Small shop key #2"
+	desc = "This key opens peddler #2 at the market square."
+	icon_state = "rustkey"
+	lockid = "smallstreet_shop02"
+
+/obj/item/key/smallstreet_shop03
+	name = "Small shop key #3"
+	desc = "This key opens peddler #3 at the market square."
+	icon_state = "rustkey"
+	lockid = "smallstreet_shop03"
+
+/obj/item/key/smallstreet_shop04
+	name = "Small shop key #4"
+	desc = "This key opens peddler #4 at the market square."
+	icon_state = "rustkey"
+	lockid = "smallstreet_shop04"
+
+/obj/item/key/smallstreet_shop05
+	name = "Small shop key #5"
+	desc = "This key opens peddler #5 at the market square."
+	icon_state = "rustkey"
+	lockid = "smallstreet_shop05"
+
+/obj/item/key/smallstreet_shop06
+	name = "Small shop key #6"
+	desc = "This key opens peddler #6 at the market square."
+	icon_state = "rustkey"
+	lockid = "smallstreet_shop06"
+
+/obj/item/key/smallstreet_master01
+	name = "Small shop master key"
+	desc = "This key opens peddler selling shop keys."
+	icon_state = "rustkey"
+	lockid = "smallstreet_master01"
