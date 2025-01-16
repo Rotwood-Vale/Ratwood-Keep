@@ -41,7 +41,7 @@
 	backl = /obj/item/rogueweapon/sword/long/rider/messer
 
 	var/weapons = list("billhook", "halberd", "zweihander", "estoc")
-	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapon
+	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
 
 	switch(weaponschoice)
 		if("billhook")
