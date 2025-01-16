@@ -28,9 +28,9 @@
 
 /datum/outfit/job/roguetown/mercenary/grenzelhoft_jager/pre_equip(mob/living/carbon/human/H)
 	..()
-	wrists = /obj/item/ammo_holder/bullet/lead
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/powderflask
+	beltl = /obj/item/ammo_holder/bullet/lead
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 	backl = /obj/item/storage/backpack/rogue/backpack
 	neck = /obj/item/clothing/neck/roguetown/gorget
@@ -41,7 +41,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/gun/ballistic/firearm/flintgonne
-	backpack_contents = list(/obj/item/storage/keyring/mercenary = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/flint = 1, /obj/item/bedroll = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
+	backpack_contents = list(/obj/item/storage/keyring/mercenary = 1, /obj/item/powderflask= 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/flint = 1, /obj/item/bedroll = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 
 
 	//Humie grenzelhofts are always set to be, well, grenzelhoft
