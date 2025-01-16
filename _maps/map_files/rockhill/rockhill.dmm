@@ -11779,6 +11779,12 @@
 /obj/item/clothing/under/roguetown/tights/stockings/fishnet/white{
 	pixel_x = -15
 	},
+/obj/item/clothing/under/roguetown/tights/stockings/silk/black{
+	pixel_x = 4
+	},
+/obj/item/clothing/under/roguetown/tights/stockings/silk/white{
+	pixel_x = -16
+	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/bath)
 "gtU" = (
