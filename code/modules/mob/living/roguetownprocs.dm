@@ -202,7 +202,7 @@
 	return FALSE
 
 /proc/triple_accuracy_failure_rolls_on(mob/living/user, mob/living/target, datum/intent/i, turf/T, var/chance2hit)
-	var/msg3 = "Triple Accuracy Fail! Missed with a [chance2hit]% chance to hit!"
+	var/msg3 = "Triple Accuracy Fail! Damnit! They dodged at the last second! I missed with a [chance2hit]% chance to hit!"
 	to_chat(user, span_warning(msg3))
 	playsound(target, "sound/combat/dodge.ogg", 75)
 	user.do_attack_animation(T, i.animname, null, 0)
