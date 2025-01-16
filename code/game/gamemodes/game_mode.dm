@@ -441,10 +441,8 @@
 
 
 /datum/game_mode/proc/num_players()
-	. = 0
-	for(var/i in GLOB.new_player_list)
-		var/mob/dead/new_player/P = i
-		. ++
+	. = len(GLOB.new_player_list)
+
 
 /proc/reopen_roundstart_suicide_roles()
 	var/list/valid_positions = list()
