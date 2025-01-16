@@ -919,7 +919,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	return ..()
 
 /obj/effect/hallucination/danger/anomaly/show_icon()
-	image = image('icons/roguetown/manic/dreamer_mobs.dmi',src,"M3",OBJ_LAYER+0.01)
+	image = image('icons/roguetown/maniac/dreamer_mobs.dmi',src,"M3",OBJ_LAYER+0.01)
 	if(target.client)
 		target.client.images += image
 
