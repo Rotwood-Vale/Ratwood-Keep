@@ -1060,11 +1060,11 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 					body.transform = M
 					target.halbody = body
 				if(2)
-					target.halbody = image('icons/roguetown/mob/monsters/horrors.dmi',husk_point,"horror3",TURF_LAYER)
+					target.halbody = image('icons/roguetown/mob/monster/horrors.dmi',husk_point,"horror3",TURF_LAYER)
 				if(3)
-					target.halbody = image('icons/roguetown/mob/monsters/horrors.dmi',husk_point,"headcrab",TURF_LAYER)
+					target.halbody = image('icons/roguetown/mob/monster/horrors.dmi',husk_point,"headcrab",TURF_LAYER)
 				if(4)
-					target.halbody = image('icons/roguetown/manic/dreamer_mobs.dmi',husk_point,"M3",TURF_LAYER)
+					target.halbody = image('icons/roguetown/maniac/dreamer_mobs.dmi',husk_point,"M3",TURF_LAYER)
 
 			if(target.client)
 				target.client.images += target.halbody
