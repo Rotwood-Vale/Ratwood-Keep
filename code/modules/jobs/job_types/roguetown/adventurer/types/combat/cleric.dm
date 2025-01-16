@@ -269,6 +269,7 @@
 				if(/datum/patron/divine/dendor)
 					head = /obj/item/clothing/head/roguetown/dendormask
 					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+					H.cmode_music = 'sound/music/combat_druid.ogg'
 				if(/datum/patron/divine/necra)
 					head = /obj/item/clothing/head/roguetown/necrahood
 					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/necra
