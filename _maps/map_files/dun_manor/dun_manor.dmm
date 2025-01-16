@@ -3920,9 +3920,9 @@
 /area/rogue/indoors/town/manor)
 "dlj" = (
 /obj/structure/chair/wood/rogue{
-	dir = 1
+	dir = 4
 	},
-/turf/open/floor/rogue/ruinedwood,
+/turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern)
 "dll" = (
 /turf/closed/wall/mineral/rogue/craftstone,
@@ -8595,6 +8595,12 @@
 	},
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors/town/manor)
+"hGZ" = (
+/obj/structure/chair/wood/rogue{
+	dir = 8
+	},
+/turf/open/floor/carpet/inn,
+/area/rogue/indoors/town/tavern)
 "hHi" = (
 /obj/structure/stairs{
 	dir = 4
@@ -8606,7 +8612,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/turf/open/floor/rogue/ruinedwood,
+/turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern)
 "hHv" = (
 /obj/machinery/light/rogue/hearth,
@@ -11935,7 +11941,7 @@
 /area/rogue/indoors/town/church/chapel)
 "kGP" = (
 /obj/structure/chair/wood/rogue,
-/turf/open/floor/carpet/red,
+/turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern)
 "kGW" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
@@ -12433,6 +12439,12 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/under/town/sewer)
+"kVC" = (
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors/town/tavern)
 "kWJ" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
@@ -13540,7 +13552,7 @@
 "lTw" = (
 /obj/structure/chair/wood/rogue,
 /obj/machinery/light/rogue/wallfire/candle/r,
-/turf/open/floor/rogue/ruinedwood,
+/turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern)
 "lTE" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -15404,6 +15416,9 @@
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"nCP" = (
+/turf/open/floor/carpet/inn,
+/area/rogue/indoors/town/tavern)
 "nDO" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/hexstone,
@@ -19624,7 +19639,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 1
 	},
-/turf/open/floor/carpet/red,
+/turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern)
 "rhy" = (
 /obj/structure/mineral_door/wood/donjon{
@@ -58698,7 +58713,7 @@ bPL
 xIK
 xIK
 xIK
-xzW
+xIK
 xIK
 xIK
 qyy
@@ -58855,8 +58870,8 @@ wBZ
 xIK
 xIK
 xIK
-xIK
-xIK
+dlj
+dlj
 xIK
 qyy
 adV
@@ -58865,7 +58880,7 @@ cQV
 lBX
 eVv
 cuJ
-xIK
+xzW
 xIK
 qWO
 wss
@@ -59012,8 +59027,8 @@ wBZ
 sgY
 xIK
 xIK
-xIK
-xIK
+hHp
+hHp
 xIK
 qyy
 adV
@@ -59169,8 +59184,8 @@ wBZ
 hHi
 jRY
 dyo
-hkC
-hkC
+hGZ
+hGZ
 xIK
 qyy
 adV
@@ -59326,8 +59341,8 @@ gRQ
 raW
 oXG
 tGm
-xaG
-xaG
+xIK
+xIK
 xIK
 qyy
 adV
@@ -59483,8 +59498,8 @@ gRQ
 raW
 raW
 tGm
-kwG
-kwG
+dlj
+dlj
 xIK
 qyy
 adV
@@ -59640,15 +59655,15 @@ wBZ
 raW
 raW
 tGm
+hHp
+hHp
 xIK
 xIK
-xIK
-qyy
-adV
-raW
-raW
-raW
-sjq
+wNd
+lIC
+lIC
+oBv
+eVv
 kwY
 hkd
 epe
@@ -59797,15 +59812,15 @@ wBZ
 raW
 raW
 tGm
+hGZ
+hGZ
 xIK
 xIK
 xIK
+qyy
+qyy
 xIK
-wNd
-lIC
-lIC
-oBv
-eVv
+sjq
 mpE
 hkd
 epe
@@ -59954,13 +59969,13 @@ gRQ
 raW
 raW
 tGm
-hkC
-hkC
 xIK
 xIK
 xIK
-qyy
-qyy
+xIK
+xIK
+xIK
+xIK
 xIK
 sjq
 ihh
@@ -60111,11 +60126,11 @@ gRQ
 raW
 bGJ
 tGm
-xaG
-xaG
+dlj
+dlj
 xIK
-xIK
-xIK
+dlj
+dlj
 xIK
 xIK
 xIK
@@ -60268,11 +60283,11 @@ wBZ
 xVj
 kdI
 ucN
-kwG
-kwG
+hHp
+hHp
 xIK
-xIK
-xIK
+hHp
+hHp
 xIK
 xIK
 xIK
@@ -60425,11 +60440,11 @@ wBZ
 bSI
 xIK
 xIK
+hGZ
+hGZ
 xIK
-xIK
-xIK
-xIK
-xIK
+hGZ
+hGZ
 xIK
 xIK
 qly
@@ -60896,8 +60911,8 @@ wor
 iYe
 xIK
 xIK
-jBO
-jBO
+nCP
+nCP
 xIK
 eVv
 mmc
@@ -61052,10 +61067,10 @@ wBZ
 qVm
 aYl
 xIK
-jBO
-jBO
-jBO
-jBO
+nCP
+nCP
+nCP
+nCP
 eVv
 mmc
 xIK
@@ -61209,10 +61224,10 @@ gRQ
 cdT
 xmj
 crP
-jBO
-jBO
-jBO
-jBO
+nCP
+nCP
+nCP
+nCP
 eVv
 wBZ
 wBZ
@@ -82880,7 +82895,7 @@ pov
 aXA
 eVv
 kGP
-xaG
+hHp
 rhr
 sUP
 sjq
@@ -83037,7 +83052,7 @@ pov
 aXA
 eVv
 kGP
-xaG
+hHp
 rhr
 pov
 tvn
@@ -83824,7 +83839,7 @@ aPn
 cyh
 cyh
 erC
-pov
+kVC
 eVv
 sjq
 sjq
@@ -85864,7 +85879,7 @@ sjq
 pov
 lTw
 hHp
-dlj
+rhr
 pov
 tRR
 sjq
