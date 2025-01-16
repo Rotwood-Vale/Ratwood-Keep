@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 /obj/effect/hallucination/simple
 	var/image_icon = 'icons/mob/alien.dmi'
-	var/image_state = "larva0[M]"
+	var/image_state = "larva0"
 	var/px = 0
 	var/py = 0
 	var/col_mod = null
@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 				if(i == 4)
 					target.playsound_local(source, 'sound/foley/bodyfall (2).ogg', 35, 1)
 				sleep(rand(CLICK_CD_MELEE, CLICK_CD_MELEE + 6))
-			target.playsound_local(source, 'sound/beartrap.ogg', 15, 1)
+			target.playsound_local(source, 'sound/items/beartrap.ogg', 15, 1)
 		if("blade")
 			var/hits = 0
 			for(var/i in 1 to rand(3, 6))
@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			target.playsound_local(source, 'sound/foley/bodyfall (2).ogg', 45, 1)
 			sleep(20)
 			for(var/i in 1 to rand(5, 12))
-				target.playsound_local(source, 'sound/foley/choke (3).ogg', 50, 1)
+				target.playsound_local(source, 'sound/vo/female/gen/choke (3).ogg', 50, 1)
 				sleep(rand(CLICK_CD_MELEE, CLICK_CD_MELEE + 4))
 		if("dead") // You have died of dysentery
 			for(var/i in 1 to rand(3, 11))
@@ -879,7 +879,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	..()
 	target.set_screwyhud(SCREWYHUD_DEAD)
 	target.Paralyze(300)
-	target.playsound_local(source, 'sound/misc/deth.ogg', 100, 0)
+	target.playsound_local(target, 'sound/misc/deth.ogg', 100, 0)
 	target.silent += 10
 	to_chat(target, "<span class='deadsay'><b>[target.real_name]</b> has died at <b>[get_area_name(target)]</b>.</span>")
 	if(prob(50))
