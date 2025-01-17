@@ -14411,13 +14411,6 @@
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"mEJ" = (
-/obj/effect/decal/cobbleedge{
-	dir = 8
-	},
-/obj/effect/landmark/start/courtagent,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/town)
 "mFr" = (
 /obj/effect/decal/cobbleedge{
 	dir = 8
@@ -17102,7 +17095,8 @@
 /area/rogue/indoors/town/physician)
 "oRe" = (
 /obj/structure/mineral_door/wood/window{
-	lockid = "tavern"
+	lockid = "tavern";
+	locked = 1
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town/tavern)
@@ -18628,11 +18622,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "qjQ" = (
-/obj/effect/landmark/start/villager{
-	dir = 4
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
+/obj/structure/roguemachine/withdraw,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "qko" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/dirt/road,
@@ -24673,10 +24665,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town)
-"vGT" = (
-/obj/structure/roguemachine/withdraw,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/tavern)
 "vHc" = (
 /turf/closed/wall/mineral/rogue/pipe,
 /area/rogue/indoors/town/dwarfin)
@@ -57912,7 +57900,7 @@ tVC
 fQr
 hvn
 hvn
-mEJ
+sKj
 sKj
 hvn
 hvn
@@ -58069,7 +58057,7 @@ tVC
 miQ
 fBB
 nrk
-qjQ
+hvn
 hvn
 lgj
 lgj
@@ -60115,7 +60103,7 @@ raW
 cQV
 cED
 sjq
-vGT
+qjQ
 hkd
 hkd
 xsx
