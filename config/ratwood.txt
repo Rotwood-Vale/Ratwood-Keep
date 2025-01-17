@@ -10,7 +10,3 @@
 ## Roundstart ping
 ## Won't do anything if unset
 #NEW_ROUND_PING
-
-# Enable global barks
-# Uncomment this to allow player's speech barks #
-ENABLE_GLOBAL_BARKS

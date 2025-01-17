@@ -307,6 +307,16 @@ SUBSYSTEM_DEF(vote)
 			. += "(<a href='?src=[REF(src)];vote=cancel'>Cancel Vote</a>) "
 	else
 		. += "<h2>Start a vote:</h2><hr><ul><li>"
+		// REDMOON ADD START - votes_for_people - воут на Round End
+		var/round_end_vote_allowed_to_players = CONFIG_GET(flag/allow_vote_round_end)
+		if(trialmin || round_end_vote_allowed_to_players)
+			. += "<a href='?src=[REF(src)];vote=round_end'>End Round (after 15 minutes)</a>"
+		else
+			. += "<font color='grey'>End Round (Disallowed)</font>"
+		if(trialmin)
+			. += "\t(<a href='?src=[REF(src)];vote=toggle_round_end'>[round_end_vote_allowed_to_players ? "Allowed" : "Disallowed"]</a>)"
+		. += "</li><li>"
+		// REDMOON ADD END
 		//restart
 		var/avr = CONFIG_GET(flag/allow_vote_restart)
 		if(trialmin || avr)
@@ -361,6 +371,11 @@ SUBSYSTEM_DEF(vote)
 		if("cancel")
 			if(usr.client.holder)
 				reset()
+		// REDMOON ADD START - votes_for_people - воут на Round End
+		if("toggle_round_end")
+			if(usr.client.holder && trialmin)
+				CONFIG_SET(flag/allow_vote_round_end, !CONFIG_GET(flag/allow_vote_round_end))
+		// REDMOON ADD END
 		if("toggle_restart")
 			if(usr.client.holder && trialmin)
 				CONFIG_SET(flag/allow_vote_restart, !CONFIG_GET(flag/allow_vote_restart))
@@ -370,6 +385,11 @@ SUBSYSTEM_DEF(vote)
 		if("toggle_map")
 			if(usr.client.holder && trialmin)
 				CONFIG_SET(flag/allow_vote_map, !CONFIG_GET(flag/allow_vote_map))
+		// REDMOON ADD START - votes_for_people - воут на Round End
+		if("round_end")
+			if(CONFIG_GET(flag/allow_vote_round_end) || usr.client.holder)
+				initiate_vote("endround",usr.key)
+		// REDMOON ADD END
 		if("restart")
 			if(CONFIG_GET(flag/allow_vote_restart) || usr.client.holder)
 				initiate_vote("restart",usr.key)
