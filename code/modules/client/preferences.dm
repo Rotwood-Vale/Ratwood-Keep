@@ -2385,6 +2385,7 @@ Slots: [job.spawn_positions]</span>
 	character.headshot_link = headshot_link
 	character.nudeshot_link = nudeshot_link
 
+	character.background = background
 	character.set_bark(bark_id)
 	character.vocal_speed = bark_speed
 	character.vocal_pitch = bark_pitch
