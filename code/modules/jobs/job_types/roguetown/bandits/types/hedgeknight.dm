@@ -11,45 +11,81 @@
 	pickprob = 30
 
 /datum/outfit/job/roguetown/bandit/hedgeknight/pre_equip(mob/living/carbon/human/H)
-	..()
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
-	gloves = /obj/item/clothing/gloves/roguetown/chain
-	pants = /obj/item/clothing/under/roguetown/chainlegs
-	cloak = /obj/item/clothing/cloak/tabard/blkknight
-	if(prob(30))
-		neck = /obj/item/clothing/neck/roguetown/bervor
-	else
-		neck = /obj/item/clothing/neck/roguetown/gorget
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	shoes = /obj/item/clothing/shoes/roguetown/armor
-	belt = /obj/item/storage/belt/rogue/leather
-	r_hand = /obj/item/rogueweapon/greatsword/zwei
-	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-	if(prob(30))
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-	H.change_stat("strength", 4)
-	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 2)
-	H.change_stat("intelligence", -1)
-	H.change_stat("speed", -2)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
-	H.verbs |= /mob/proc/haltyell
-	H.ambushable = FALSE
+..()
+head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
+gloves = /obj/item/clothing/gloves/roguetown/chain
+pants = /obj/item/clothing/under/roguetown/chainlegs
+cloak = /obj/item/clothing/cloak/tabard/blkknight
+if(prob(30))
+neck = /obj/item/clothing/neck/roguetown/bervor
+else
+neck = /obj/item/clothing/neck/roguetown/gorget
+shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+armor = /obj/item/clothing/suit/roguetown/armor/plate/full
+wrists = /obj/item/clothing/wrists/roguetown/bracers
+shoes = /obj/item/clothing/shoes/roguetown/armor
+belt = /obj/item/storage/belt/rogue/leather
+r_hand = /obj/item/rogueweapon/greatsword/zwei
+backr = /obj/item/storage/backpack/rogue/satchel/black
+backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
+H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/joincomrades)
+H.change_stat("strength", 3)
+H.change_stat("perception", 1)
+H.change_stat("intelligence", 2)
+H.change_stat("constitution", 2)
+H.change_stat("endurance", 2)
+H.change_stat("speed", -1)
+ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
+H.verbs |= /mob/proc/haltyell
+H.ambushable = FALSE
+
+/obj/effect/proc_holder/spell/invoked/joincomrades
+    name = "Recruit Comrade"
+    desc = "Recruit someone to your cause and change their patron to Matthios."
+    overlay_state = "recruit_bog"
+    antimagic_allowed = TRUE
+    charge_max = 100
+    var/recruitment_message = "Join us, %RECRUIT!"
+    var/recruitment_range = 3
+    var/accept_message = "I will, comrade!"
+    var/refuse_message = "I refuse."
+
+/obj/effect/proc_holder/spell/invoked/joincomrades/cast(list/targets, mob/user = usr)
+    . = ..()
+    var/list/recruitment = list()
+    for(var/mob/living/carbon/human/recruit in (get_hearers_in_view(recruitment_range, user) - user))
+        if(!recruit.patron || recruit.patron.type == /datum/patron/inhumen/matthios)
+            continue
+        recruitment[recruit.name] = recruit
+    if(!length(recruitment))
+        to_chat(user, span_warning("There are no potential comrades in range."))
+        return
+    var/inputty = input(user, "Select a potential comrade!", "[name]") as anything in recruitment
+    if(inputty)
+        var/mob/living/carbon/human/recruit = recruitment[inputty]
+        if(!QDELETED(recruit) && (recruit in get_hearers_in_view(recruitment_range, user)))
+            if(recruit.patron && recruit.patron.type != /datum/patron/inhumen/matthios)
+                var/response = input(recruit, "The hedge knight offers to join the free men. Do you accept?", "Offer") as null|text
+                if(response == "Yes")
+                    recruit.patron = /datum/patron/inhumen/matthios
+                    recruit << "You are one of free men now."
+                    user << "You have successfully accepted [recruit]'as one of your comrades."
+                else
+                    recruit << "You have declined the offer."
+                    user << "[recruit] has declined the offer."
+            else
+                user << "[recruit]'s patron is already Matthios."
