@@ -12757,6 +12757,7 @@
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/fabric_double,
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/effect/landmark/start/nightman,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
 "lfB" = (
@@ -15541,7 +15542,7 @@
 	lockid = "nightman";
 	dir = 4
 	},
-/turf/closed,
+/turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "nFb" = (
 /obj/structure/chair/wood/rogue{
