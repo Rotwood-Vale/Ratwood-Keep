@@ -5,7 +5,7 @@
 	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold, /datum/species/seelie)
 	weight = 50
 
-/datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
+/datum/special_trait/tiny/on_apply(mob/living/carbon/human/character)
 	character.mob_size -= 1
 	character.change_stat("strength", -2)
 	character.change_stat("constitution", -2)
