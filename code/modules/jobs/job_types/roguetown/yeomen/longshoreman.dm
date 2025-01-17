@@ -11,7 +11,7 @@
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "You answered Abyssor's call when you were young, though in troublesome ways, \
 	pilaging for treasury from anyone who'd cross your path. Now your captain retires from a life of crime, \
-	setting down as do you, serving them with undying loyalty, even if under a different banner."
+	setting down as do you, serving them with undying loyalty along with their supervisors, the steward and merchant. Protect your employer's best interests as best you can and keep the rabble out."
 	display_order = JDO_LONGSHOREMAN
 	whitelist_req = TRUE
 
