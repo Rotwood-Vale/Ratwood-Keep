@@ -83,10 +83,18 @@
     /datum/skill/misc/riding,
     /datum/skill/misc/music,
     /datum/skill/misc/medicine,
+	/datum/skill/misc/sneaking,
+	/datum/skill/misc/stealing,
+	/datum/skill/misc/climbing,
+	/datum/skill/misc/swimming,
     /datum/skill/misc/sewing,
-    /datum/skill/magic/arcane,
     /datum/skill/labor/farming,
-    /datum/skill/craft/crafting,
+	/datum/skill/labor/butchering,
+	/datum/skill/craft/weaponsmithing,
+	/datum/skill/craft/armorsmithing,
+	/datum/skill/craft/tanning,
+	/datum/skill/craft/traps,
+	/datum/skill/craft/crafting,
     /datum/skill/craft/blacksmithing,
     /datum/skill/craft/carpentry,
     /datum/skill/craft/masonry,
@@ -116,7 +124,7 @@
 					to_chat(L, span_warning("There's no way I could handle all that knowledge!"))
 					to_chat(usr, span_warning("My student cannot handle that much knowledge at once!"))
 					return // cannot teach the same student twice
-				if(!(item in list(/datum/skill/misc/reading, /datum/skill/misc/music, /datum/skill/craft/cooking, /datum/skill/misc/music, /datum/skill/misc/sewing)) && L.mind?.get_skill_level(item) < SKILL_LEVEL_NOVICE)
+				if(!(item in list(/datum/skill/misc/music, /datum/skill/craft/cooking, /datum/skill/misc/sewing, /datum/skill/misc/lockpicking, /datum/skill/misc/climbing)) && L.mind?.get_skill_level(item) < SKILL_LEVEL_NOVICE)
 					to_chat(L, span_warning("I cannot understand the lesson on [item.name], I need to get more skilled first!"))
 					to_chat(usr, span_warning("I try teaching [L] [item.name] but my student couldnt grasp the lesson!"))
 					return // some basic skill will not require you novice level
