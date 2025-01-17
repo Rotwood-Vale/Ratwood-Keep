@@ -29,6 +29,16 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 //This proc sends the asset to the client, but only if it needs it.
 //This proc blocks(sleeps)
 /proc/send_asset(client/client, asset_name)
+	if(!istype(client))
+		if(ismob(client))
+			var/mob/M = client
+			if(M.client)
+				client = M.client 
+			else
+				return FALSE //no client, no care
+		else
+			return FALSE     //only mobs have clients
+
 	if(!send_asset_internal(client, asset_name))
 		return FALSE
 	client.sending |= asset_name
@@ -40,21 +50,22 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 
 //This proc doesn't
 /proc/send_asset_async(client/client, asset_name)
+	if(!istype(client))    // Don't really want to do this here; needs to be refactored
+		if(ismob(client))  //duplicate check in above proc
+			var/mob/M = client
+			if(M.client)
+				client = M.client 
+			else
+				return FALSE //no client, no care
+		else
+			return FALSE     //only mobs have clients
+
 	if(!send_asset_internal(client, asset_name))
 		return FALSE
 	client.cache += asset_name
 	return TRUE
 
 /proc/send_asset_internal(client/client, asset_name)
-	if(!istype(client))
-		if(ismob(client))
-			var/mob/M = client
-			if(M.client)
-				client = M.client
-			else
-				return FALSE
-		else
-			return FALSE
 
 	if(client.cache.Find(asset_name) || client.sending.Find(asset_name))
 		return FALSE
