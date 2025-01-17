@@ -17817,6 +17817,16 @@
 /obj/item/natural/poo/horse,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"jNw" = (
+/obj/structure/mineral_door/wood/red{
+	lockid = "butcher";
+	name = "Butcher"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/indoors)
 "jNx" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/wool,
@@ -39287,6 +39297,13 @@
 "vWv" = (
 /obj/structure/table/wood/crafted,
 /turf/open/floor/rogue/grass,
+/area/rogue/indoors)
+"vWD" = (
+/obj/structure/mineral_door/wood/red{
+	lockid = "butcher";
+	name = "Butcher"
+	},
+/turf/open/floor/rogue/concrete,
 /area/rogue/indoors)
 "vWF" = (
 /obj/structure/table/wood{
@@ -208653,7 +208670,7 @@ hHI
 faB
 wlD
 faB
-tyc
+vWD
 ddv
 vOi
 wrw
@@ -210379,7 +210396,7 @@ rDr
 rDr
 jju
 lAX
-tyc
+jNw
 pAV
 vuM
 jju
