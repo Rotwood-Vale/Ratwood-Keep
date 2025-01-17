@@ -60,7 +60,7 @@
 
 /datum/supply_pack/rogue/weapons/daggerss
 	name = "Steel Daggers"
-	cost = 105 //3 steel
+	cost = 90 //3 steel
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
@@ -78,7 +78,7 @@
 
 /datum/supply_pack/rogue/weapons/crossbow
 	name = "Crossbows"
-	cost = 120// 3 steel + misc
+	cost = 105// 3 steel + misc
 	contains = list(
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,

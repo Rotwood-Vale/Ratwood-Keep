@@ -5,7 +5,7 @@
 
 /datum/supply_pack/rogue/food/lesserhealthpot
 	name = "Minor Healing Potion"
-	cost = 9
+	cost = 25
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot,
 					/obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot,
@@ -31,8 +31,8 @@
 				)
 
 /datum/supply_pack/rogue/food/meat
-	name = "Dry Meat"
-	cost = 15
+	name = "Coppiettes"
+	cost = 25
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
 					/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
@@ -65,8 +65,8 @@
 				)
 
 /datum/supply_pack/rogue/food/pepper
-	name = "Pepper"
-	cost = 120
+	name = "Pepper mill"
+	cost = 40
 	contains = list(/obj/item/reagent_containers/food/condiment/peppermill)
 
 /datum/supply_pack/rogue/food/butter

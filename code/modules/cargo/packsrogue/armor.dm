@@ -6,7 +6,7 @@
 //steel prices are 35 per and cheap armour is 15 per, iron bars are also 20 per
 /datum/supply_pack/rogue/armor/helmet
 	name = "Steel Helmet"
-	cost = 70//2 steel
+	cost = 60//2 steel
 	contains = list(
 					/obj/item/clothing/head/roguetown/helmet,
 					/obj/item/clothing/head/roguetown/helmet,
@@ -22,7 +22,7 @@
 	
 /datum/supply_pack/rogue/armor/coif/steel
 	name = "Steel Coif"
-	cost = 70//2 steel
+	cost = 60//2 steel
 	contains = list(
 					/obj/item/clothing/neck/roguetown/chaincoif,
 					/obj/item/clothing/neck/roguetown/chaincoif,
@@ -30,7 +30,7 @@
 	
 /datum/supply_pack/rogue/armor/mask/steel
 	name = "Steel Mask"
-	cost = 70//2 steel
+	cost = 60//2 steel
 	contains = list(
 					/obj/item/clothing/mask/rogue/facemask/steel,
 					/obj/item/clothing/mask/rogue/facemask/steel,
@@ -38,7 +38,7 @@
 
 /datum/supply_pack/rogue/armor/mask/steel/hound
 	name = "Steel Hound Mask"
-	cost = 70//2 steel
+	cost = 60//2 steel
 	contains = list(
 					/obj/item/clothing/mask/rogue/facemask/steel/hound,
 					/obj/item/clothing/mask/rogue/facemask/steel/hound,
@@ -46,7 +46,7 @@
 			
 /datum/supply_pack/rogue/armor/bracers
 	name = "Steel Bracers"
-	cost = 70//2 steel
+	cost = 60//2 steel
 	contains = list(
 					/obj/item/clothing/wrists/roguetown/bracers,
 					/obj/item/clothing/wrists/roguetown/bracers,
@@ -54,7 +54,7 @@
 
 /datum/supply_pack/rogue/armor/chaingauntlets
 	name = "Steel Chain Gauntlets"
-	cost = 70//2 steel
+	cost = 60//2 steel
 	contains = list(
 					/obj/item/clothing/gloves/roguetown/chain,
 					/obj/item/clothing/gloves/roguetown/chain,
@@ -62,7 +62,7 @@
 	
 /datum/supply_pack/rogue/armor/boots
 	name = "Steel Boots"
-	cost = 70//2 steel
+	cost = 60//2 steel
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/armor,
 					/obj/item/clothing/shoes/roguetown/armor,
@@ -100,9 +100,9 @@
 					/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
 				)
 
-/datum/supply_pack/rogue/armor/haubergon
-	name = "Haubergon"
-	cost = 70//2 steel
+/datum/supply_pack/rogue/armor/haubergeon
+	name = "Haubergeon"
+	cost = 60//2 steel
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/chainmail,
 					/obj/item/clothing/suit/roguetown/armor/chainmail,
@@ -110,7 +110,7 @@
 	
 /datum/supply_pack/rogue/armor/hauberk
 	name = "Hauberk"
-	cost = 140//2 steel
+	cost = 120//4 steel
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
 					/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
@@ -118,7 +118,7 @@
 
 /datum/supply_pack/rogue/armor/halfplate
 	name = "Half-Plate Armor"
-	cost = 210//6 steel
+	cost = 180//6 steel
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/plate/half,
 					/obj/item/clothing/suit/roguetown/armor/plate/half,
@@ -126,7 +126,7 @@
 
 /datum/supply_pack/rogue/armor/plate/full
 	name = "Full Plate"
-	cost = 280//8 steel
+	cost = 240//8 steel
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/plate/full,
 					/obj/item/clothing/suit/roguetown/armor/plate/full,
