@@ -13284,7 +13284,7 @@
 "lFW" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
-	lockid = s
+	lockid = "nightmaiden"
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/bath)
