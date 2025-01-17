@@ -7431,7 +7431,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/manor)
 "gAj" = (
-/obj/structure/roguemachine/withdraw,
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "gAl" = (
@@ -24673,6 +24673,10 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town)
+"vGT" = (
+/obj/structure/roguemachine/withdraw,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "vHc" = (
 /turf/closed/wall/mineral/rogue/pipe,
 /area/rogue/indoors/town/dwarfin)
@@ -60111,7 +60115,7 @@ raW
 cQV
 cED
 sjq
-ihh
+vGT
 hkd
 hkd
 xsx
