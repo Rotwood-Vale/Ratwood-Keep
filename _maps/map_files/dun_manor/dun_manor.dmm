@@ -8514,6 +8514,16 @@
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/town/roofs)
+"hFp" = (
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/obj/structure/mineral_door/wood/window{
+	locked = 1;
+	lockid = "tavern"
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/tavern)
 "hFr" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -17672,6 +17682,13 @@
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town)
+"pyZ" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/reagent_containers/glass/bowl,
+/turf/open/floor/carpet/inn,
+/area/rogue/indoors/town/tavern)
 "pzh" = (
 /obj/structure/fluff/psycross,
 /obj/structure/fluff/railing/wood{
@@ -21901,12 +21918,12 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/cell)
 "tgW" = (
-/obj/structure/table/wood/fancy/blue,
-/obj/structure/roguemachine/musicbox{
-	pixel_y = 12
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
 	},
-/turf/open/floor/carpet/red,
-/area/rogue/indoors/town/shop)
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/carpet/inn,
+/area/rogue/indoors/town/tavern)
 "tgZ" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/under/roguetown/chainlegs/iron,
@@ -26769,6 +26786,13 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town)
+"xvN" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/cooking/platter,
+/turf/open/floor/carpet/inn,
+/area/rogue/indoors/town/tavern)
 "xvY" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newleaf/corner{
@@ -58982,15 +59006,15 @@ wBZ
 bSI
 jwG
 jwG
-hHp
-hHp
+pra
+tgW
 jwG
 rEc
 adV
 kEv
 raW
 cIU
-evJ
+hFp
 xIK
 xIK
 xIK
@@ -59610,8 +59634,8 @@ lwZ
 raW
 raW
 erC
-hHp
-hHp
+xvN
+pra
 jwG
 jwG
 wNd
@@ -60238,8 +60262,8 @@ wBZ
 xVj
 nRN
 ucN
-hHp
-hHp
+pra
+pyZ
 jwG
 nCP
 nCP
@@ -89602,7 +89626,7 @@ ouw
 ouw
 lvh
 pPe
-tgW
+pPe
 kWL
 dFL
 ioB
