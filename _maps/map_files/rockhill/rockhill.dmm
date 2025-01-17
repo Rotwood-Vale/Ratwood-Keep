@@ -4232,6 +4232,15 @@
 /obj/structure/fluff/walldeco/psybanner/red,
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/town/church)
+"cre" = (
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town)
 "crg" = (
 /turf/closed/wall/mineral/rogue/roofwall/middle{
 	dir = 4
@@ -37988,6 +37997,13 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/shelter/mountains)
+"vkO" = (
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/obj/structure/fluff/railing/border,
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town)
 "vkR" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -42749,6 +42765,10 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church/chapel)
+"xRC" = (
+/obj/structure/bars/cemetery,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "xRK" = (
 /obj/structure/roguewindow/openclose/reinforced,
 /turf/open/floor/rogue/ruinedwood{
@@ -354141,8 +354161,8 @@ mwE
 xkz
 jvl
 mwE
-auT
-xGW
+xRC
+wVI
 wbg
 wbg
 wbg
@@ -354574,7 +354594,7 @@ fUg
 rfx
 mwE
 xGW
-xGW
+wVI
 wbg
 wbg
 wbg
@@ -355007,9 +355027,9 @@ jHc
 tOZ
 xGW
 wVI
-wbg
-wbg
-wbg
+wMH
+bdL
+dED
 teW
 dPw
 eBN
@@ -355439,9 +355459,9 @@ jHc
 jHc
 xGW
 wVI
-wMH
-bdL
-dED
+ezt
+cre
+vkO
 sTU
 dPw
 aED
@@ -355872,7 +355892,7 @@ jHc
 xGW
 wVI
 ezt
-cmZ
+xAt
 kIC
 jLH
 dPw
