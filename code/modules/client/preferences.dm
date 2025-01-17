@@ -318,13 +318,17 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			dat += "<a href='?_src_=prefs;preference=playerquality;task=menu'><b>PQ:</b></a> [get_playerquality(user.ckey, text = TRUE)]"
 			dat += "</td>"
 
-			dat += "<td style='width:33%;text-align:center'>"
+			dat += "<td style='width:45%;text-align:center'>"
 			if(usr?.client?.prefs?.be_russian)
 				dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>ТРИУМФЫ:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "Отсутствуют"]"
 			else
 				dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
-			if(SStriumphs.triumph_buys_enabled)
-				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Buy</a>"
+			if(usr?.client?.prefs?.be_russian)
+				if(SStriumphs.triumph_buys_enabled)
+					dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>МАГАЗИН</a>"
+			else
+				if(SStriumphs.triumph_buys_enabled)
+					dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>TRIUMPH BUY</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
@@ -825,6 +829,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>ОСОБЕННЫЙ</font>" : "Быть Особенным"]</b></a><BR>"
 	else
 		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "Be Special"]</b></a><BR>"
+	if(usr?.client?.prefs?.be_russian)
+		dat += "<b>Предыстория:</b> <a href='?_src_=prefs;preference=background;task=input'>[background.ru_name]</a><BR>"
+	else
+		dat += "<b>Background:</b> <a href='?_src_=prefs;preference=background;task=input'>[background.name]</a><BR>"
 	if(istype(N))
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			switch(N.ready)
@@ -1570,9 +1578,14 @@ Slots: [job.spawn_positions]</span>
 					var/list/faiths_named = list()
 					for(var/path as anything in GLOB.preference_faiths)
 						var/datum/faith/faith = GLOB.faithlist[path]
-						if(!faith.name)
-							continue
-						faiths_named[faith.name] = faith
+						if(usr?.client?.prefs?.be_russian)
+							if(!faith.ru_name)
+								continue
+							faiths_named[faith.ru_name] = faith
+						else
+							if(!faith.name)
+								continue
+							faiths_named[faith.name] = faith
 					var/faith_input = input(user, "Choose your character's faith", "Faith") as null|anything in faiths_named
 					if(faith_input)
 						var/datum/faith/faith = faiths_named[faith_input]
@@ -1620,6 +1633,29 @@ Slots: [job.spawn_positions]</span>
 							to_chat(user, "<font color='red'>This voice color is too dark for mortals.</font>")
 							return
 						voice_color = sanitize_hexcolor(new_voice)
+
+				if ("background")
+					var/list/backgrounds_available = list()
+					for (var/path as anything in GLOB.backgrounds)
+						var/datum/background/background = GLOB.backgrounds[path]
+						if(usr?.client?.prefs?.be_russian)
+							if (!background.ru_name)
+								continue
+							backgrounds_available[background.ru_name] = background
+						else
+							if (!background.name)
+								continue
+							backgrounds_available[background.name] = background
+					var/background_input = input(user, "Choose your character's background", "Background") as null|anything in backgrounds_available
+					if (background_input)
+						var/datum/background/background_chosen = backgrounds_available[background_input]
+						background = background_chosen
+						if(usr?.client?.prefs?.be_russian)
+							to_chat(user, "<font color='purple'>[background.ru_name]</font>")
+							to_chat(user, "<font color='purple'>[background.ru_description_string()]</font>")
+						else
+							to_chat(user, "<font color='purple'>[background.name]</font>")
+							to_chat(user, "<font color='purple'>[background.description_string()]</font>")
 
 				if("barksound")
 					var/list/woof_woof = list()

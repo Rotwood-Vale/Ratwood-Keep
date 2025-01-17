@@ -56,6 +56,12 @@
 		if(B.allow_random)
 			GLOB.bark_random_list[B.id] = path
 
+	// Backgrounds
+	for (var/path in subtypesof(/datum/background))
+		var/datum/background/background = new path()
+		GLOB.backgrounds[path] = background
+	sortList(GLOB.backgrounds, GLOBAL_PROC_REF(cmp_text_dsc))
+
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.
 /proc/init_subtypes(prototype, list/L)
