@@ -534,6 +534,23 @@
 			if(-INFINITY to -5)
 				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
 
+		// REDMOON ADD - love_fiend_back - визуальное опознание персонажей, ищущих отношения
+		if(!appears_dead && stat == CONSCIOUS && has_flaw(/datum/charflaw/addiction/lovefiend))
+			var/datum/charflaw/addiction/flaw = charflaw
+			if(!flaw.sated)
+				switch(rand(1,5))
+					if(1)
+						. += span_love("[t_He] look[p_s()] lonely.")
+					if(2)
+						. += span_love("Looks like [p_they()] tries to find someone.")
+					if(3)
+						. += span_love("[p_their(TRUE)] heart seem[p_s()] to ache for love.")
+					if(4)
+						. += span_love("Feels like [p_they()] is lonely.")
+					if(5)
+						. += span_love("[t_He] tries to catch a glance.")
+		// REDMOON ADD END
+
 	if(maniac)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
 		if(heart)
