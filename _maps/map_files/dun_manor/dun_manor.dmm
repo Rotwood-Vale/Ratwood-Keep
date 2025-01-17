@@ -14411,6 +14411,10 @@
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"mEJ" = (
+/obj/structure/fireaxecabinet/south,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "mFr" = (
 /obj/effect/decal/cobbleedge{
 	dir = 8
@@ -18622,8 +18626,8 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "qjQ" = (
-/obj/structure/roguemachine/withdraw,
-/turf/open/floor/rogue/blocks,
+/obj/structure/roguemachine/atm,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "qko" = (
 /obj/structure/spider/stickyweb,
@@ -23792,7 +23796,7 @@
 /turf/closed/wall/mineral/rogue/pipe,
 /area/rogue/indoors/town)
 "uGz" = (
-/obj/structure/fireaxecabinet/south,
+/obj/structure/roguemachine/withdraw,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "uHq" = (
@@ -58847,7 +58851,7 @@ jwG
 jwG
 jwG
 eVv
-xIK
+qjQ
 xzW
 xIK
 qWO
@@ -60103,7 +60107,7 @@ raW
 cQV
 cED
 sjq
-qjQ
+mEJ
 hkd
 hkd
 xsx
