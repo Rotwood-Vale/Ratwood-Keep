@@ -39,10 +39,10 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.change_stat("speed", 2)
-		H.change_stat("perception", 2)
-		H.change_stat("intelligence", 1)
-		H.change_stat("endurance", 1)
+		H.change_stat(STAT_SPEED, 2)
+		H.change_stat(STAT_PERCEPTION, 2)
+		H.change_stat(STAT_INTELLIGENCE, 1)
+		H.change_stat(STAT_ENDURANCE, 1)
 	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
 	
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
@@ -91,10 +91,10 @@
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE) //Futureproofing, does nothing for now.
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.change_stat("perception", 2)
-		H.change_stat("speed", 1)
-		H.change_stat("intelligence", 1)
-		H.change_stat("endurance", 1)
+		H.change_stat(STAT_PERCEPTION, 2)
+		H.change_stat(STAT_SPEED, 1)
+		H.change_stat(STAT_INTELLIGENCE, 1)
+		H.change_stat(STAT_ENDURANCE, 1)
 	
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)

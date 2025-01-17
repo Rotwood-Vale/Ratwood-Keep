@@ -36,10 +36,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.change_stat("intelligence", pick(0,1,1))
-		H.change_stat("speed", 2)
-		H.change_stat("endurance", 1)
-		H.change_stat("perception", 3)
+		H.change_stat(STAT_INTELLIGENCE, pick(0,1,1))
+		H.change_stat(STAT_SPEED, 2)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_PERCEPTION, 3)
 		H.cmode_music = 'sound/music/combat_duelist.ogg'
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

@@ -136,7 +136,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/status_effect/debuff/badvision
 	id = "badvision"
 	alert_type = null
-	effectedstats = list("perception" = -20, "speed" = -5)
+	effectedstats = list(STAT_PERCEPTION = -20, STAT_SPEED = -5)
 	duration = 100
 
 /datum/charflaw/badsight/apply_post_equipment(mob/user)
