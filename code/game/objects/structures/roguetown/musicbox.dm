@@ -136,17 +136,20 @@
 		if(!volume_selection)
 			to_chat(user, span_info("I change my mind..."))
 			return
+		if(volume_selection == curvol)
+			to_chat(user, span_info("The dial is already set to that volume!"))
+			return
 		playsound(loc, pick('sound/misc/keyboard_select (1).ogg','sound/misc/keyboard_select (2).ogg','sound/misc/keyboard_select (3).ogg','sound/misc/keyboard_select (4).ogg'), 100, FALSE, -1)
 		user.visible_message(span_info("[user] presses a button on \the [src]."),span_info("I press a button on \the [src]."))
 		volume_selection = clamp(volume_selection, 0, 100)
+		if(curvol<volume_selection)
+			to_chat(user, span_info("I make \the [src] get louder."))
+		else
+			to_chat(user, span_info("I make \the [src] get quieter."))
 		curvol = volume_selection
 		playsound(loc, 'sound/misc/Bug.ogg', 100, FALSE, -1)
 		playmusic("STOP")
 		playmusic("START")
-		if(curvol<volume_selection)
-			to_chat(user, span_info("I make \the [src] gets louder."))
-		else
-			to_chat(user, span_info("I make \the [src] gets quieter."))
 
 	update_icon()
 
