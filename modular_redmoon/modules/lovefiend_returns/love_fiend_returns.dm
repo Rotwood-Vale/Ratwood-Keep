@@ -4,6 +4,10 @@
 	time = 1 HOURS
 	needsate_text = "My heart aches for love!.."
 
+/datum/sex_controller/after_ejaculation()
+	. = ..()
+	consensual_act_check()
+
 /datum/sex_controller/proc/consensual_act_check()
 	var/mob/living/carbon/human/partner = null
 
