@@ -1,7 +1,7 @@
-#define STAT_STRENGTH 1
-#define STAT_PERCEPTION 2
-#define STAT_INTELLIGENCE 3
-#define STAT_ENDURANCE 4
-#define STAT_CONSTITUTION 5
-#define STAT_SPEED 6
-#define STAT_FORTUNE 7
+#define STAT_STRENGTH "strenght"
+#define STAT_PERCEPTION "perception"
+#define STAT_INTELLIGENCE "intelligence"
+#define STAT_ENDURANCE "endurance"
+#define STAT_CONSTITUTION "constitution"
+#define STAT_SPEED "speed"
+#define STAT_FORTUNE "fortune"
