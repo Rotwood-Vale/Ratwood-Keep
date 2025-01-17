@@ -187,12 +187,12 @@
 /datum/supply_pack/rogue/weapons/arquebus
 	name = "Arquebus Rifle"
 	cost = 100
-	contains = list(/obj/item/gun/ballistic/arquebus)
+	contains = list(/obj/item/gun/ballistic/firearm/arquebus)
 
 /datum/supply_pack/rogue/weapons/handgonne
 	name = "Handgonne"
 	cost = 60
-	contains = list(/obj/item/gun/ballistic/handgonne)
+	contains = list(/obj/item/gun/ballistic/firearm/handgonne)
 
 /datum/supply_pack/rogue/weapons/powderflask
 	name = "Powderflask"
