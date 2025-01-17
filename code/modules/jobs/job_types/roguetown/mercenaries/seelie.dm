@@ -30,6 +30,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, pick(0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing , 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
@@ -39,3 +40,5 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell)
+	    ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_LEAPER, TRAIT_GENERIC)
