@@ -16688,8 +16688,8 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
 "oDP" = (
-/obj/machinery/light/rogue/torchholder/c,
-/turf/open/floor/rogue/cobble,
+/obj/structure/chair/wood/rogue/chair3,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "oDU" = (
 /obj/structure/stationary_bell{
@@ -23108,10 +23108,9 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/rtfield)
 "ulg" = (
-/obj/effect/spawner/lootdrop/roguetown/sewers,
-/obj/structure/spider/stickyweb,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/sewer)
+/obj/machinery/light/rogue/torchholder/l,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "ulo" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -34814,7 +34813,7 @@ icN
 icN
 icN
 aFE
-kAA
+iIi
 pNQ
 gdw
 gdw
@@ -34971,7 +34970,7 @@ icN
 icN
 icN
 laD
-kAA
+iIi
 pNQ
 gdw
 xMY
@@ -37146,9 +37145,9 @@ pNQ
 pNQ
 heh
 cVE
-hYd
-gdw
-bBD
+cVE
+iSP
+ulg
 bBD
 bBD
 bBD
@@ -37169,9 +37168,9 @@ xpt
 xpt
 bBD
 bBD
-pqy
+gdw
 lKl
-lKl
+exi
 exi
 exi
 exi
@@ -37300,12 +37299,12 @@ gdw
 pNQ
 pNQ
 pNQ
-iMs
+kFV
 heh
 cVE
-ulg
-gdw
-oDP
+cVE
+mBm
+bBD
 bBD
 bBD
 bBD
@@ -37327,10 +37326,10 @@ xpt
 bBD
 bBD
 pqy
-lKl
 exi
-qko
-lKl
+exi
+exi
+exi
 exi
 exi
 lKl
@@ -37456,7 +37455,7 @@ bCZ
 gdw
 gdw
 pNQ
-iMs
+kFV
 iMs
 heh
 cVE
@@ -37484,7 +37483,7 @@ pOg
 bBD
 bBD
 gdw
-pNQ
+lKl
 qOY
 qOY
 qOY
@@ -37643,7 +37642,7 @@ eIt
 gdw
 pNQ
 pNQ
-pNQ
+iMs
 qOY
 pNQ
 pNQ
@@ -37930,9 +37929,9 @@ pNQ
 qOY
 pmA
 heh
-tGy
+cVE
 gdw
-vFB
+oDP
 bBD
 ahZ
 bBD
@@ -37944,7 +37943,7 @@ bBD
 pZE
 bBD
 eTu
-xpt
+pOg
 xpt
 bBD
 nze
