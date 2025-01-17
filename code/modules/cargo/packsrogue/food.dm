@@ -86,3 +86,52 @@
 					/obj/item/reagent_containers/food/snacks/rogue/honey,
 					/obj/item/reagent_containers/food/snacks/rogue/honey,
 				)
+
+/datum/supply_pack/rogue/food/veggie
+	name = "Vegetables Pack"
+	cost = 50
+	contains = list(
+					/obj/item/reagent_containers/food/snacks/grown/cabbage,
+					/obj/item/reagent_containers/food/snacks/grown/onion,
+					/obj/item/reagent_containers/food/snacks/grown/garlic,
+					/obj/item/reagent_containers/food/snacks/grown/carrot,
+					/obj/item/reagent_containers/food/snacks/grown/potato,
+					/obj/item/reagent_containers/food/snacks/grown/radish,
+					/obj/item/reagent_containers/food/snacks/grown/beet,
+					)
+
+/datum/supply_pack/rogue/food/fruit
+	name = "Fruit Pack"
+	cost = 50
+	contains = list(
+					/obj/item/reagent_containers/food/snacks/grown/pear,
+					/obj/item/reagent_containers/food/snacks/grown/cherry,
+					/obj/item/reagent_containers/food/snacks/grown/olive,
+					/obj/item/reagent_containers/food/snacks/grown/nut,
+					/obj/item/reagent_containers/food/snacks/grown/tomato,
+					/obj/item/reagent_containers/food/snacks/grown/eggplant,
+					/obj/item/reagent_containers/food/snacks/grown/bean,
+					/obj/item/reagent_containers/food/snacks/grown/bellpepper,
+					/obj/item/reagent_containers/food/snacks/grown/peas,
+					/obj/item/reagent_containers/food/snacks/grown/cucumber,
+					)
+
+/datum/supply_pack/rogue/food/grain
+	name = "Grain Pack"
+	cost = 40
+	contains = list(
+					/obj/item/reagent_containers/food/snacks/grown/wheat,
+					/obj/item/reagent_containers/food/snacks/grown/wheat,
+					/obj/item/reagent_containers/food/snacks/grown/oat,
+					/obj/item/reagent_containers/food/snacks/grown/oat,
+					/obj/item/reagent_containers/food/snacks/grown/rice,
+					/obj/item/reagent_containers/food/snacks/grown/rice,
+					)
+
+/datum/supply_pack/rogue/food/tea
+	name = "Tea"
+	cost = 15
+	contains = list(/obj/item/reagent_containers/food/snacks/grown/tea,
+					/obj/item/reagent_containers/food/snacks/grown/tea,
+					/obj/item/reagent_containers/food/snacks/grown/tea,
+					)

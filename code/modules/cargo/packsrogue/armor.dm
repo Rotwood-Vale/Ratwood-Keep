@@ -76,6 +76,14 @@
 					/obj/item/clothing/suit/roguetown/armor/gambeson,
 				)
 
+/datum/supply_pack/rogue/armor/gambeson/heavy
+	name = "Padded Gambeson"
+	cost = 60
+	contains = list(
+					/obj/item/clothing/suit/roguetown/armor/gambeson/heavy,
+					/obj/item/clothing/suit/roguetown/armor/gambeson/heavy,
+				)
+
 /datum/supply_pack/rogue/armor/leather
 	name = "Leather Armor"
 	cost = 30//cheap armour for the masses
@@ -116,6 +124,11 @@
 					/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
 				)
 
+/datum/supply_pack/rogue/armor/hauberk/single
+	name = "Hauberk"
+	cost = 70
+	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk)
+
 /datum/supply_pack/rogue/armor/halfplate
 	name = "Half-Plate Armor"
 	cost = 180//6 steel
@@ -124,6 +137,11 @@
 					/obj/item/clothing/suit/roguetown/armor/plate/half,
 				)
 
+/datum/supply_pack/rogue/armor/halfplate/single
+	name = "Half-Plate Armor"
+	cost = 110
+	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half)
+
 /datum/supply_pack/rogue/armor/plate/full
 	name = "Full Plate"
 	cost = 240//8 steel
@@ -131,3 +149,8 @@
 					/obj/item/clothing/suit/roguetown/armor/plate/full,
 					/obj/item/clothing/suit/roguetown/armor/plate/full,
 				)
+
+/datum/supply_pack/rogue/armor/plate/full/single
+	name = "Full Plate"
+	cost = 140
+	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full)

@@ -15,6 +15,11 @@
 	cost = 8
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
+/datum/supply_pack/rogue/luxury/sshigs
+	name = "Sshig Brand Zigs"
+	cost = 40
+	contains = list(/obj/item/storage/fancy/shhig)
+
 /datum/supply_pack/rogue/luxury/perfume
 	name = "Perfume"
 	cost = 10 //steward can get these in bulk for 12 per
@@ -79,6 +84,11 @@
 	name = "Drum"
 	cost = 10
 	contains = list(/obj/item/rogue/instrument/drum)
+
+/datum/supply_pack/rogue/luxury/psiring
+	name = "Blessed Ring"
+	cost = 60
+	contains = list(/obj/item/clothing/ringP)
 
 /datum/supply_pack/rogue/luxury/nomag
 	name = "Ring of Null Magic"
