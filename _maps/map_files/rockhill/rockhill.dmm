@@ -27718,6 +27718,13 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
+"pmh" = (
+/obj/structure/bars/pipe{
+	dir = 1;
+	icon = 'icons/turf/roguefloor.dmi'
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town)
 "pmi" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
@@ -351999,7 +352006,7 @@ xAt
 xAt
 xAt
 xAt
-xAt
+pmh
 xAt
 xAt
 xAt
@@ -352863,7 +352870,7 @@ xAt
 xAt
 xAt
 xAt
-jmQ
+pmh
 thT
 qka
 xAt
