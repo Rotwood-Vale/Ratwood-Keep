@@ -36,11 +36,11 @@
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	H.change_stat("strength", 2) //less buffs than brigand but less int debuff also somewhat faster
-	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 2)
-	H.change_stat("intelligence", -2)
-	H.change_stat("speed", 2)
+	H.change_stat(STAT_STRENGTH, 2) //less buffs than brigand but less int debuff also somewhat faster
+	H.change_stat(STAT_ENDURANCE, 2)
+	H.change_stat(STAT_CONSTITUTION, 2)
+	H.change_stat(STAT_INTELLIGENCE, -2)
+	H.change_stat(STAT_SPEED, 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
 	var/weapons = list("Spear","Sword & Shield")

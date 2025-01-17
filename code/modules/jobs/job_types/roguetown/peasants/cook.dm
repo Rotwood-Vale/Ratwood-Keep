@@ -42,11 +42,11 @@
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/roguetown/cookhat
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-		H.change_stat("constitution", 2)
+		H.change_stat(STAT_CONSTITUTION, 2)
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/roguetown/cookhat
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-		H.change_stat("constitution", 2)
+		H.change_stat(STAT_CONSTITUTION, 2)

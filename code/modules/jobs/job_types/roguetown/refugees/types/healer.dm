@@ -42,9 +42,9 @@
 			backr = /obj/item/rogueweapon/woodstaff
 			backl = /obj/item/storage/backpack/rogue/backpack
 			backpack_contents = list( /obj/item/reagent_containers/glass/bottle = 2, /obj/item/reagent_containers/glass/mortar = 1,  /obj/item/reagent_containers/glass/alembic = 1, /obj/item/thermometer)
-			H.change_stat("intelligence", 2)
-			H.change_stat("fortune", 1)
-			H.change_stat("strength", -1)
+			H.change_stat(STAT_INTELLIGENCE, 2)
+			H.change_stat(STAT_FORTUNE, 1)
+			H.change_stat(STAT_STRENGTH, -1)
 
 		if("War Surgeon")
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -70,9 +70,9 @@
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 			backl = /obj/item/storage/backpack/rogue/backpack
 			backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1)
-			H.change_stat("strength", -1)
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", 1)
+			H.change_stat(STAT_STRENGTH, -1)
+			H.change_stat(STAT_INTELLIGENCE, 2)
+			H.change_stat(STAT_PERCEPTION, 1)
 			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 
 	H.set_blindness(0)

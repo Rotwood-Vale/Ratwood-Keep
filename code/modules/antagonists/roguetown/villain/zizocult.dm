@@ -44,21 +44,21 @@
 	owner.current.verbs |= /mob/living/carbon/human/proc/communicate
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
-	H.change_stat("strength", 2)
+	H.change_stat(STAT_STRENGTH, 2)
 
 	if(islesser)
 		add_objective(/datum/objective/zizoserve)
 		owner.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		H.change_stat("intelligence", -2)
+		H.change_stat(STAT_INTELLIGENCE, -2)
 		greet()
 	else
 		add_objective(/datum/objective/zizo)
 		owner.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		owner.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-		H.change_stat("strength", 1)
-		H.change_stat("endurance", 2)
-		H.change_stat("constitution", 2)
-		H.change_stat("speed", 1)
+		H.change_stat(STAT_STRENGTH, 1)
+		H.change_stat(STAT_ENDURANCE, 2)
+		H.change_stat(STAT_CONSTITUTION, 2)
+		H.change_stat(STAT_SPEED, 1)
 		greet()
 		owner.special_role = ROLE_ZIZOIDCULTIST
 		owner.current.verbs |= /mob/living/carbon/human/proc/draw_sigil_zizo

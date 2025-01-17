@@ -37,8 +37,8 @@
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		cloak = /obj/item/clothing/cloak/apron/brown
-		H.change_stat("intelligence", 3)
-		H.change_stat("speed", -1)
+		H.change_stat(STAT_INTELLIGENCE, 3)
+		H.change_stat(STAT_SPEED, -1)
 	else
 		pants = /obj/item/clothing/under/roguetown/trou
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
@@ -46,6 +46,6 @@
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		cloak = /obj/item/clothing/cloak/apron/brown
-		H.change_stat("intelligence", 2)
-		H.change_stat("speed", -2)
+		H.change_stat(STAT_INTELLIGENCE, 2)
+		H.change_stat(STAT_SPEED, -2)
 */

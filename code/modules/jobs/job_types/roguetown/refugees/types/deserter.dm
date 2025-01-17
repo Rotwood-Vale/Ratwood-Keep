@@ -46,10 +46,10 @@
 			backr = /obj/item/rogueweapon/shield/wood
 			beltl = /obj/item/rogueweapon/huntingknife
 			beltr = /obj/item/rogueweapon/sword/iron/messer
-			H.change_stat("strength", 2)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRENGTH, 2)
+			H.change_stat(STAT_ENDURANCE, 2)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_SPEED, 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 		if("Crossbowman")
@@ -74,10 +74,10 @@
 			beltl = /obj/item/ammo_holder/quiver/bolts
 			beltr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
-			H.change_stat("strength", 1)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRENGTH, 1)
+			H.change_stat(STAT_ENDURANCE, 2)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_SPEED, 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		
 		if("Pikeman")	
@@ -100,10 +100,10 @@
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
-			H.change_stat("strength", 2)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRENGTH, 2)
+			H.change_stat(STAT_ENDURANCE, 2)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_SPEED, 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		
 		if("Handgonner")
@@ -128,10 +128,10 @@
 			shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 			gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
-			H.change_stat("strength", 1)
-			H.change_stat("endurance", 1)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 2)
-			H.change_stat("intelligence", 2)
+			H.change_stat(STAT_STRENGTH, 1)
+			H.change_stat(STAT_ENDURANCE, 1)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_SPEED, 2)
+			H.change_stat(STAT_INTELLIGENCE, 2)
 
 	H.set_blindness(0)

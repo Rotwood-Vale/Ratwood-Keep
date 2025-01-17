@@ -40,13 +40,13 @@
 	soundpack_m = /datum/voicepack/werewolf
 	soundpack_f = /datum/voicepack/werewolf
 	specstats = list(
-		"strength" = 5, 
-		"perception" = 5, 
-		"intelligence" = -3, 
-		"constitution" = 5, 
-		"endurance" = 5, 
-		"speed" = 3, 
-		"fortune" = 0
+		STAT_STRENGTH = 5, 
+		STAT_PERCEPTION = 5, 
+		STAT_INTELLIGENCE = -3, 
+		STAT_CONSTITUTION = 5, 
+		STAT_ENDURANCE = 5, 
+		STAT_SPEED = 3, 
+		STAT_FORTUNE = 0
 		)
 	enflamed_icon = "widefire"
 	organs = list(

@@ -104,9 +104,9 @@
 				to_chat(src, span_boldred("I'M FREAKING OUT!!!"))
 
 	if(new_stress >= 15)
-		change_stat("fortune", -1, "stress")
+		change_stat(STAT_FORTUNE, -1, "stress")
 	else
-		change_stat("fortune", 0, "stress")
+		change_stat(STAT_FORTUNE, 0, "stress")
 
 	if(new_stress >= 20)
 		roll_streak_freakout()

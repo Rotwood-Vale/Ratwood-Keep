@@ -62,11 +62,11 @@ Please do not confuse the two.
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
-		H.change_stat("intelligence", -1)
-		H.change_stat("endurance", 1)
-		H.change_stat("strength", 2)
-		H.change_stat("speed", 2)
-		H.change_stat("perception", 1)
+		H.change_stat(STAT_INTELLIGENCE, -1)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_STRENGTH, 2)
+		H.change_stat(STAT_SPEED, 2)
+		H.change_stat(STAT_PERCEPTION, 1)
 
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return

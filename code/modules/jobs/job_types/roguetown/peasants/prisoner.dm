@@ -33,16 +33,16 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-		H.change_stat("intelligence", 1)
-		H.change_stat("fortune", 2)
+		H.change_stat(STAT_INTELLIGENCE, 1)
+		H.change_stat(STAT_FORTUNE, 2)
 		var/datum/antagonist/new_antag = new /datum/antagonist/prisoner()
 		H.mind.add_antag_datum(new_antag)
 	ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
 	if(H.gender == FEMALE)
-		H.change_stat("strength", -1)
+		H.change_stat(STAT_STRENGTH, -1)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	if(H.gender == MALE)
-		H.change_stat("strength", -1)
+		H.change_stat(STAT_STRENGTH, -1)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random

@@ -48,12 +48,12 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-			H.change_stat("perception", 1)
-			H.change_stat("strength", 1)
-			H.change_stat("constitution", 1)
-			H.change_stat("endurance", -2) //a life free from hard labor
-			H.change_stat("speed", 1)
-			H.change_stat("intelligence", 2)
+			H.change_stat(STAT_PERCEPTION, 1)
+			H.change_stat(STAT_STRENGTH, 1)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_ENDURANCE, -2) //a life free from hard labor
+			H.change_stat(STAT_SPEED, 1)
+			H.change_stat(STAT_INTELLIGENCE, 2)
 
 	else
 		beltl = /obj/item/storage/keyring/royal
@@ -71,10 +71,10 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-			H.change_stat("perception", 2)
-			H.change_stat("endurance", -2)
-			H.change_stat("strength", -1)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 2)
-			H.change_stat("intelligence", 2)
+			H.change_stat(STAT_PERCEPTION, 2)
+			H.change_stat(STAT_ENDURANCE, -2)
+			H.change_stat(STAT_STRENGTH, -1)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_SPEED, 2)
+			H.change_stat(STAT_INTELLIGENCE, 2)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)

@@ -69,8 +69,8 @@
 			H.STASTR = rand(1, 20)
 			H.STAINT = rand(5, 20)
 			H.STALUC = rand(1, 20)
-		H.change_stat("constitution", -rand(0, 2))
-		H.change_stat("endurance", -rand(0, 2))
+		H.change_stat(STAT_CONSTITUTION, -rand(0, 2))
+		H.change_stat(STAT_ENDURANCE, -rand(0, 2))
 		H.real_name = "[H.real_name] the Wise"
 		H.name = "[H.name] the Wise"
 		H.facial_hairstyle = "Knowledge"
@@ -121,10 +121,10 @@
 		l_hand = /obj/item/rogueweapon/mace/woodclub
 	else
 		l_hand = null
-	H.change_stat("strength", -1)
-	H.change_stat("intelligence", -4)
-	H.change_stat("constitution", -3)
-	H.change_stat("endurance", -3)
+	H.change_stat(STAT_STRENGTH, -1)
+	H.change_stat(STAT_INTELLIGENCE, -4)
+	H.change_stat(STAT_CONSTITUTION, -3)
+	H.change_stat(STAT_ENDURANCE, -3)
 
 /datum/outfit/job/roguetown/vagrant
 	name = "Beggar"

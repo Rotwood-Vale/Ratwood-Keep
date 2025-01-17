@@ -83,12 +83,12 @@
 					beltl = /obj/item/rogueweapon/sword/rapier
 					backl = /obj/item/storage/backpack/rogue/satchel
 					backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1)
-					H.change_stat("intelligence", 1)
-					H.change_stat("strength", 1)
-					H.change_stat("endurance", 1)
-					H.change_stat("speed", 1)
-					H.change_stat("constitution", 1)
-					H.change_stat("perception", 2)
+					H.change_stat(STAT_INTELLIGENCE, 1)
+					H.change_stat(STAT_STRENGTH, 1)
+					H.change_stat(STAT_ENDURANCE, 1)
+					H.change_stat(STAT_SPEED, 1)
+					H.change_stat(STAT_CONSTITUTION, 1)
+					H.change_stat(STAT_PERCEPTION, 2)
 					H.verbs |= /mob/living/carbon/human/proc/torture_victim
 					H.verbs |= /mob/living/carbon/human/proc/faith_test
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
@@ -114,10 +114,10 @@
 					backr = /obj/item/rogueweapon/shield/wood
 					beltr = /obj/item/rogueweapon/mace
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-					H.change_stat("strength", 2)
-					H.change_stat("endurance", 2)
-					H.change_stat("constitution", 1)
-					H.change_stat("speed", 1)
+					H.change_stat(STAT_STRENGTH, 2)
+					H.change_stat(STAT_ENDURANCE, 2)
+					H.change_stat(STAT_CONSTITUTION, 1)
+					H.change_stat(STAT_SPEED, 1)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells(H)
@@ -146,11 +146,11 @@
 					beltr = /obj/item/rogueweapon/mace/steel
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader/t
-					H.change_stat("endurance", 2)
-					H.change_stat("constitution", 2)
-					H.change_stat("intelligence", 1)
-					H.change_stat("perception", 1)
-					H.change_stat("strength", 2)
+					H.change_stat(STAT_ENDURANCE, 2)
+					H.change_stat(STAT_CONSTITUTION, 2)
+					H.change_stat(STAT_INTELLIGENCE, 1)
+					H.change_stat(STAT_PERCEPTION, 1)
+					H.change_stat(STAT_STRENGTH, 2)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 					H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
@@ -173,11 +173,11 @@
 					beltr = /obj/item/rogueweapon/sword/decorated
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
-					H.change_stat("endurance", 2)
-					H.change_stat("constitution", 2)
-					H.change_stat("intelligence", 1)
-					H.change_stat("perception", 1)
-					H.change_stat("strength", 2)
+					H.change_stat(STAT_ENDURANCE, 2)
+					H.change_stat(STAT_CONSTITUTION, 2)
+					H.change_stat(STAT_INTELLIGENCE, 1)
+					H.change_stat(STAT_PERCEPTION, 1)
+					H.change_stat(STAT_STRENGTH, 2)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 					H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
@@ -205,10 +205,10 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backl = /obj/item/storage/backpack/rogue/backpack
 			r_hand = /obj/item/rogueweapon/woodstaff
-			H.change_stat("strength", 3)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 2)
-			H.change_stat("intelligence", 1)
+			H.change_stat(STAT_STRENGTH, 3)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_SPEED, 2)
+			H.change_stat(STAT_INTELLIGENCE, 1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 
 	H.set_blindness(0)

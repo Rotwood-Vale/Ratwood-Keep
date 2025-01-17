@@ -98,7 +98,7 @@
 /datum/status_effect/buff/snekbt
 	id = "Snake Bite"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("strength" = 2, "constitution" = 2, "speed" = -3)
+	effectedstats = list(STAT_STRENGTH = 2, STAT_CONSTITUTION = 2, STAT_SPEED = -3)
 	duration = 31+13+22.6 SECONDS
 
 /datum/stressevent/snekbt

@@ -28,10 +28,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-		H.change_stat("strength", -1)
-		H.change_stat("constitution", -1)
-		H.change_stat("intelligence", 2)
-		H.change_stat("perception", 2)
+		H.change_stat(STAT_STRENGTH, -1)
+		H.change_stat(STAT_CONSTITUTION, -1)
+		H.change_stat(STAT_INTELLIGENCE, 2)
+		H.change_stat(STAT_PERCEPTION, 2)
 
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights

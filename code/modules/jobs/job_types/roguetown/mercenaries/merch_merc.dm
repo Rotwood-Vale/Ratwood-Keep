@@ -82,10 +82,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.change_stat("endurance", 3)
-		H.change_stat("strength", 2)
-		H.change_stat("constitution", 2)
-		H.change_stat("intelligence", -2)
+		H.change_stat(STAT_ENDURANCE, 3)
+		H.change_stat(STAT_STRENGTH, 2)
+		H.change_stat(STAT_CONSTITUTION, 2)
+		H.change_stat(STAT_INTELLIGENCE, -2)
 
 //Female leaning grunt. Based around the sword entirely. Nutcracker too, I guess, since that's funny.
 /datum/subclass/grabber_adherent
@@ -108,10 +108,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		H.change_stat("speed", 3)
-		H.change_stat("endurance", 2)
-		H.change_stat("perception", 2)
-		H.change_stat("intelligence", -2)
+		H.change_stat(STAT_SPEED, 3)
+		H.change_stat(STAT_ENDURANCE, 2)
+		H.change_stat(STAT_PERCEPTION, 2)
+		H.change_stat(STAT_INTELLIGENCE, -2)
 		ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 
 //Male leaning grunt. Entire thing is based around unarmed combat, akin to a monk. Doesn't get dodge expert, for obvious reasons.
@@ -132,8 +132,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		H.change_stat("strength", 3)//On par with monk.
-		H.change_stat("endurance", 1)
-		H.change_stat("speed", 1)
-		H.change_stat("constitution", 1)
-		H.change_stat("intelligence", -4)//On par with a beggar.
+		H.change_stat(STAT_STRENGTH, 3)//On par with monk.
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_SPEED, 1)
+		H.change_stat(STAT_CONSTITUTION, 1)
+		H.change_stat(STAT_INTELLIGENCE, -4)//On par with a beggar.

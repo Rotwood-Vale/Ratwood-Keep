@@ -121,7 +121,7 @@
 	W.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 
 	if(isseelie(W.stored_mob))
-		W.change_stat("speed", -3)
+		W.change_stat(STAT_SPEED, -3)
 
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
@@ -177,7 +177,7 @@
 	W.mind.skill_experience = WA.stored_experience.Copy()
 
 	if(isseelie(W.stored_mob))
-		W.change_stat("speed", 3)
+		W.change_stat(STAT_SPEED, 3)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/claws)
 

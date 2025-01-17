@@ -62,33 +62,33 @@
 					change_stat(S, H.dna.species.specstats_m[S])
 		switch(H.age)
 			if(AGE_MIDDLEAGED)
-				change_stat("speed", -1)
-				change_stat("endurance", 1)
+				change_stat(STAT_SPEED, -1)
+				change_stat(STAT_ENDURANCE, 1)
 			if(AGE_OLD)
-				change_stat("strength", -1)
-				change_stat("speed", -2)
-				change_stat("perception", -1)
-				change_stat("constitution", -2)
-				change_stat("intelligence", 3)
-				change_stat("fortune", 1)
+				change_stat(STAT_STRENGTH, -1)
+				change_stat(STAT_SPEED, -2)
+				change_stat(STAT_PERCEPTION, -1)
+				change_stat(STAT_CONSTITUTION, -2)
+				change_stat(STAT_INTELLIGENCE, 3)
+				change_stat(STAT_FORTUNE, 1)
 		if(HAS_TRAIT(src, TRAIT_LEPROSY))
-			change_stat("strength", -5)
-			change_stat("speed", -5)
-			change_stat("endurance", -2)
-			change_stat("constitution", -2)
-			change_stat("intelligence", -5)
-			change_stat("fortune", -5)
+			change_stat(STAT_STRENGTH, -5)
+			change_stat(STAT_SPEED, -5)
+			change_stat(STAT_ENDURANCE, -2)
+			change_stat(STAT_CONSTITUTION, -2)
+			change_stat(STAT_INTELLIGENCE, -5)
+			change_stat(STAT_FORTUNE, -5)
 		if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
-			change_stat("strength", -3)
-			change_stat("speed", -3)
-			change_stat("endurance", -3)
-			change_stat("constitution", -3)
-			change_stat("intelligence", -3)
-			change_stat("fortune", -3)
+			change_stat(STAT_STRENGTH, -3)
+			change_stat(STAT_SPEED, -3)
+			change_stat(STAT_ENDURANCE, -3)
+			change_stat(STAT_CONSTITUTION, -3)
+			change_stat(STAT_INTELLIGENCE, -3)
+			change_stat(STAT_FORTUNE, -3)
 			H.voice_color = "c71d76"
 			set_eye_color(H, "#c71d76", "#c71d76")
 		if(isseelie(src))	//Check necessary to prevent seelie getting default stats when no other changes apply
-			change_stat("strength", -9)
+			change_stat(STAT_STRENGTH, -9)
 
 /mob/living/proc/change_stat(stat, amt, index)
 	if(!stat)
@@ -109,7 +109,7 @@
 //			statindex[index]["amt"] = amt
 	var/newamt = 0
 	switch(stat)
-		if("strength")
+		if(STAT_STRENGTH)
 			if(isseelie(src))
 				STASTR = 1
 				return
@@ -132,7 +132,7 @@
 				BUFSTR++
 			STASTR = newamt
 
-		if("perception")
+		if(STAT_PERCEPTION)
 			newamt = STAPER + amt
 			if(BUFPER < 0)
 				BUFPER = BUFPER + amt
@@ -155,7 +155,7 @@
 			update_sight() //Needed.
 			update_fov_angles()
 
-		if("intelligence")
+		if(STAT_INTELLIGENCE)
 			newamt = STAINT + amt
 			if(BUFINT < 0)
 				BUFINT = BUFINT + amt
@@ -175,7 +175,7 @@
 				BUFINT++
 			STAINT = newamt
 
-		if("constitution")
+		if(STAT_CONSTITUTION)
 			newamt = STACON + amt
 			if(BUFCON < 0)
 				BUFCON = BUFCON + amt
@@ -195,7 +195,7 @@
 				BUFCON++
 			STACON = newamt
 
-		if("endurance")
+		if(STAT_ENDURANCE)
 			newamt = STAEND + amt
 			if(BUFEND < 0)
 				BUFEND = BUFEND + amt
@@ -215,7 +215,7 @@
 				BUFEND++
 			STAEND = newamt
 
-		if("speed")
+		if(STAT_SPEED)
 			newamt = STASPD + amt
 			if(BUFSPE < 0)
 				BUFSPE = BUFSPE + amt
@@ -235,7 +235,7 @@
 				BUFSPE++
 			STASPD = newamt
 
-		if("fortune")
+		if(STAT_FORTUNE)
 			newamt = STALUC + amt
 			if(BUFLUC < 0)
 				BUFLUC = BUFLUC + amt

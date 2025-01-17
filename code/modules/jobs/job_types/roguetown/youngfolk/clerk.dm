@@ -33,9 +33,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-		H.change_stat("strength", -1)
-		H.change_stat("intelligence", 1)
-		H.change_stat("fortune", 1)
+		H.change_stat(STAT_STRENGTH, -1)
+		H.change_stat(STAT_INTELLIGENCE, 1)
+		H.change_stat(STAT_FORTUNE, 1)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 
 	if(H.gender == MALE)

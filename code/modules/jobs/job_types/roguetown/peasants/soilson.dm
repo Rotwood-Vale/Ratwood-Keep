@@ -38,10 +38,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.change_stat("strength", 1)
-		H.change_stat("endurance", 2)
-		H.change_stat("constitution", 1)
-		H.change_stat("speed", 1)
+		H.change_stat(STAT_STRENGTH, 1)
+		H.change_stat(STAT_ENDURANCE, 2)
+		H.change_stat(STAT_CONSTITUTION, 1)
+		H.change_stat(STAT_SPEED, 1)
 
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather/rope

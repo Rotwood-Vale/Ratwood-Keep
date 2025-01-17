@@ -57,12 +57,12 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			backpack_contents = list(/obj/item/lockpick = 1)
-			H.change_stat("strength", 1)
-			H.change_stat("intelligence", 1)
-			H.change_stat("perception", 1)
-			H.change_stat("endurance", 1)
-			H.change_stat("speed", 1)
-			H.change_stat("fortune", -1)
+			H.change_stat(STAT_STRENGTH, 1)
+			H.change_stat(STAT_INTELLIGENCE, 1)
+			H.change_stat(STAT_PERCEPTION, 1)
+			H.change_stat(STAT_ENDURANCE, 1)
+			H.change_stat(STAT_SPEED, 1)
+			H.change_stat(STAT_FORTUNE, -1)
 
 		if("Drunkard")
 			r_hand = /obj/item/reagent_containers/glass/bottle/rogue/wine
@@ -85,10 +85,10 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE) //Climbing into windows to steal drugs or booze.
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-			H.change_stat("intelligence", -2)
-			H.change_stat("constitution", 1)
-			H.change_stat("strength", 1)
-			H.change_stat("fortune", 2)
+			H.change_stat(STAT_INTELLIGENCE, -2)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_STRENGTH, 1)
+			H.change_stat(STAT_FORTUNE, 2)
 
 		if("Gravedigger")
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -116,10 +116,10 @@
 			beltl = /obj/item/rogueweapon/sword/iron/short
 			backl = /obj/item/rogueweapon/shovel
 			head = /obj/item/clothing/head/roguetown/puritan
-			H.change_stat("strength", 2)
-			H.change_stat("perception", 1)
-			H.change_stat("speed", 2) 
-			H.change_stat("endurance", 1)
-			H.change_stat("fortune", 1)
+			H.change_stat(STAT_STRENGTH, 2)
+			H.change_stat(STAT_PERCEPTION, 1)
+			H.change_stat(STAT_SPEED, 2) 
+			H.change_stat(STAT_ENDURANCE, 1)
+			H.change_stat(STAT_FORTUNE, 1)
 
 	H.set_blindness(0)

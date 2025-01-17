@@ -43,6 +43,6 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 
-	H.change_stat("strength", 2)
-	H.change_stat("endurance", 1)
-	H.change_stat("constitution", 1)
+	H.change_stat(STAT_STRENGTH, 2)
+	H.change_stat(STAT_ENDURANCE, 1)
+	H.change_stat(STAT_CONSTITUTION, 1)

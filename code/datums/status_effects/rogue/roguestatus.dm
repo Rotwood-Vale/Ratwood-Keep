@@ -1,6 +1,6 @@
 /datum/status_effect/moodbad
 	id = "moodbad"
-	effectedstats = list("fortune" = -1)
+	effectedstats = list(STAT_FORTUNE = -1)
 	alert_type = /atom/movable/screen/alert/status_effect/moodbad
 
 /atom/movable/screen/alert/status_effect/moodbad
@@ -10,7 +10,7 @@
 
 /datum/status_effect/moodvbad
 	id = "moodvbad"
-	effectedstats = list("fortune" = -2)
+	effectedstats = list(STAT_FORTUNE = -2)
 	alert_type = /atom/movable/screen/alert/status_effect/moodvbad
 
 /atom/movable/screen/alert/status_effect/moodvbad
@@ -20,7 +20,7 @@
 
 /datum/status_effect/moodgood
 	id = "moodgood"
-	effectedstats = list("fortune" = 1)
+	effectedstats = list(STAT_FORTUNE = 1)
 	alert_type = /atom/movable/screen/alert/status_effect/moodgood
 
 /atom/movable/screen/alert/status_effect/moodgood
@@ -30,7 +30,7 @@
 
 /datum/status_effect/moodvgood
 	id = "moodvgood"
-	effectedstats = list("fortune" = 2)
+	effectedstats = list(STAT_FORTUNE = 2)
 	alert_type = /atom/movable/screen/alert/status_effect/moodvgood
 
 /atom/movable/screen/alert/status_effect/moodvgood
