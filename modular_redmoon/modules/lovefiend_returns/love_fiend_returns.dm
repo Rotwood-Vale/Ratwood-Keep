@@ -16,7 +16,7 @@
 		if(need_to_be_violated(potential_partner))
 			continue
 		// Партнёр должен быть с игроком
-		if(!partner.mind)
+		if(!potential_partner.mind)
 			continue
 		else
 			partner = potential_partner
@@ -32,7 +32,7 @@
 			if(need_to_be_violated(potential_partner))
 				continue
 			// Партнёр должен быть с игроком
-			if(!partner.mind)
+			if(!potential_partner.mind)
 				continue
 			else
 				partner = potential_partner
