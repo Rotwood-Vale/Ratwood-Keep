@@ -3,6 +3,8 @@
 	ru_domain = "Богиня Солнца, Дня и Порядка"
 	ru_desc = "Богиня Солнца, дня, порядка и совершенства. Перворожденная Псайдона, близнец Нока. Даровала солнце людям, как свой священный дар."
 	ru_worshippers = "Высокодуховные, Фанатики и Фермеры"
+	t3 = /obj/effect/proc_holder/spell/invoked/cure_rot
+	t4 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
 	ru_confess_lines = list(
 		"АСТРАТА - МОЙ СВЕТ!",
 		"АСТРАТА ПРИВОДИТ ПОРЯДОК!",
