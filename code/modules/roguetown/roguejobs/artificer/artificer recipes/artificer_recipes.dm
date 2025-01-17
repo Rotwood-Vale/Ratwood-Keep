@@ -413,7 +413,7 @@
 	additional_items = list(/obj/item/gunlock = 1,
 							/obj/item/gunstock = 1,
 							/obj/item/gunbarrel = 1)
-	created_item = list(/obj/item/gun/ballistic/arquebus)
+	created_item = list(/obj/item/gun/ballistic/firearm/arquebus)
 	hammers_per_item = 10
 	skill_level = 4
 
@@ -423,7 +423,7 @@
 	additional_items = list(/obj/item/gunlock = 1,
 							/obj/item/gunstock = 1,
 							/obj/item/gunbarrel = 1)
-	created_item = list(/obj/item/gun/ballistic/blunderbuss)
+	created_item = list(/obj/item/gun/ballistic/firearm/blunderbuss)
 	hammers_per_item = 10
 	skill_level = 4
 

@@ -20,7 +20,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	cloak = /obj/item/clothing/cloak/tabard/musketeer
 	backl = /obj/item/storage/backpack/rogue/satchel/musketeer
-	backr = /obj/item/gun/ballistic/arquebus
+	backr = /obj/item/gun/ballistic/firearm/arquebus
 	beltr = /obj/item/rogueweapon/sword/rapier
 	beltl = /obj/item/ammo_holder/bullet/lead
 	if(H.mind)
