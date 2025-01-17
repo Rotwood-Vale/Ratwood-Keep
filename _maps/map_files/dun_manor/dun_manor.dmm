@@ -1769,7 +1769,9 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/shop)
 "brI" = (
-/obj/item/roguebin/water,
+/obj/structure/chair/wood/rogue{
+	dir = 4
+	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "brK" = (
@@ -9142,6 +9144,11 @@
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/garrison)
+"ifJ" = (
+/obj/structure/chair/stool/rogue,
+/obj/effect/spawner/lootdrop/roguetown/sewers,
+/turf/open/floor/rogue/blocks/green,
+/area/rogue/under/town/sewer)
 "ifV" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -9160,6 +9167,12 @@
 	dir = 8
 	},
 /area/rogue/indoors/town)
+"igP" = (
+/obj/structure/chair/wood/rogue{
+	dir = 8
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/tavern)
 "ihh" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
@@ -10143,6 +10156,7 @@
 /area/rogue/indoors/shelter/woods)
 "jaZ" = (
 /obj/machinery/light/rogue/torchholder/c,
+/obj/item/roguebin/water,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "jbj" = (
@@ -16140,6 +16154,9 @@
 /obj/machinery/light/rogue/torchholder/c{
 	pixel_y = -32
 	},
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "ohE" = (
@@ -18576,7 +18593,7 @@
 /obj/machinery/light/rogue/torchholder/l{
 	dir = 8
 	},
-/turf/open/floor/rogue/wood,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "qmT" = (
 /obj/structure/fluff/walldeco/painting/seraphina{
@@ -19213,10 +19230,10 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/exposed/town/keep)
 "qTF" = (
-/obj/effect/decal/cobbleedge{
-	dir = 9
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
 	},
-/turf/open/floor/rogue/wood,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "qTJ" = (
 /obj/effect/decal/cobbleedge{
@@ -25647,6 +25664,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/shelter/woods)
+"wFf" = (
+/obj/machinery/light/rogue/torchholder/l,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/tavern)
 "wFk" = (
 /obj/structure/bookcase,
 /obj/item/book/rogue/sword,
@@ -33373,7 +33394,7 @@ pmA
 heh
 cVE
 cVE
-cVE
+kkj
 kAA
 iUf
 mOe
@@ -34470,7 +34491,7 @@ pfh
 gdw
 pmA
 bHA
-bHA
+jRM
 ipJ
 cVE
 cVE
@@ -34790,7 +34811,7 @@ cVE
 mEu
 mXL
 ljo
-nOZ
+ifJ
 nOZ
 cVE
 heh
@@ -35576,7 +35597,7 @@ avq
 fzX
 aUo
 nOZ
-nOZ
+ifJ
 cVE
 heh
 pmA
@@ -58503,7 +58524,7 @@ cyk
 laX
 eVv
 eVv
-jwG
+xIK
 wBZ
 eRp
 yeh
@@ -58659,8 +58680,8 @@ hvn
 cyk
 kWJ
 lnd
-eRp
-jwG
+wFf
+xIK
 bfW
 jwG
 jwG
@@ -58816,8 +58837,8 @@ axE
 cyk
 ljm
 ejy
-wwc
-jwG
+brI
+xIK
 wBZ
 eTi
 jwG
@@ -58973,8 +58994,8 @@ axE
 hvn
 ljm
 hXD
-tuG
-jwG
+qTF
+xIK
 wBZ
 bSI
 jwG
@@ -59130,8 +59151,8 @@ axE
 hvn
 ljm
 ucW
-nFb
-jwG
+igP
+xIK
 wBZ
 hHi
 wLy
@@ -59287,11 +59308,11 @@ axE
 hvn
 ljm
 jRH
-jwG
-jwG
+xIK
+xIK
 lwZ
 raW
-oXG
+bGJ
 erC
 jwG
 jwG
@@ -59444,8 +59465,8 @@ axE
 hvn
 ljm
 nPo
-wwc
-jwG
+brI
+xIK
 wBZ
 uMX
 raW
@@ -59601,8 +59622,8 @@ hvn
 hvn
 ljm
 ucW
-tuG
-jwG
+qTF
+xIK
 lwZ
 raW
 raW
@@ -59758,8 +59779,8 @@ hvn
 tVC
 ljm
 eZo
-nFb
-jwG
+igP
+xIK
 lwZ
 raW
 raW
@@ -59915,8 +59936,8 @@ tVC
 jQH
 ljm
 ejy
-jwG
-jwG
+xIK
+xIK
 wBZ
 uMX
 raW
@@ -60072,19 +60093,19 @@ tVC
 hvn
 ljm
 hXD
-wwc
-jwG
+brI
+xIK
 lwZ
 raW
-bGJ
+oXG
 erC
 iYe
 iYe
 jwG
-ndu
-dlj
-jwG
-jwG
+nCP
+nCP
+nCP
+nCP
 jwG
 evJ
 ihh
@@ -60229,8 +60250,8 @@ hvn
 dRZ
 ljm
 ucW
-tuG
-jwG
+qTF
+xIK
 wBZ
 xVj
 nRN
@@ -60238,10 +60259,10 @@ ucN
 hHp
 hHp
 jwG
-hHp
-hHp
-jwG
-jwG
+nCP
+nCP
+nCP
+nCP
 jwG
 sjq
 ykK
@@ -60386,8 +60407,8 @@ hvn
 dRZ
 scl
 hXD
-nFb
-jwG
+igP
+xIK
 wBZ
 bSI
 jwG
@@ -60395,10 +60416,10 @@ jwG
 xmj
 xmj
 jwG
-hGZ
-tqo
-jwG
-jwG
+nCP
+nCP
+nCP
+nCP
 kVC
 wBZ
 wBZ
@@ -60544,7 +60565,7 @@ hvn
 jnF
 lnd
 qlZ
-qTF
+xIK
 wBZ
 aLh
 jwG
@@ -60859,8 +60880,8 @@ pJn
 pJn
 pJn
 wBZ
-iYe
-iYe
+dlj
+ndu
 jwG
 jwG
 nCP
@@ -61173,8 +61194,8 @@ pJn
 bDS
 ctF
 gRQ
-xmj
-xmj
+tqo
+hGZ
 crP
 nCP
 nCP
