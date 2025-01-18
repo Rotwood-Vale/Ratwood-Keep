@@ -2855,7 +2855,9 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town/roofs)
 "cpF" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/structure/fluff/walldeco/painting/queen{
+	pixel_y = 32
+	},
 /turf/open/floor/rogue/tile{
 	icon_state = "glyph4"
 	},
@@ -4421,9 +4423,11 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "dJn" = (
-/obj/structure/roguewindow,
-/turf/closed,
-/area/rogue/indoors/town/tavern)
+/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/turf/open/floor/rogue/tile{
+	icon_state = "linoleum"
+	},
+/area/rogue/indoors/town/vault)
 "dJp" = (
 /obj/structure/flora/newtree{
 	dir = 1
@@ -13169,8 +13173,8 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
 "lwZ" = (
-/obj/structure/roguewindow,
-/turf/open/floor/rogue/ruinedwood/herringbone,
+/obj/structure/roguemachine/lottery_roguetown,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
 "lxe" = (
 /obj/structure/closet/crate/chest{
@@ -17067,7 +17071,7 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "oQa" = (
-/obj/item/rogue/painting/queen,
+/obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/tile{
 	icon_state = "glyph5"
 	},
@@ -27759,13 +27763,11 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
 "yeh" = (
-/obj/structure/roguemachine/lottery_roguetown{
-	pixel_y = 0;
-	pixel_x = -32
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/turf/open/floor/rogue/tile{
+	icon_state = "linoleum"
 	},
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/wood,
-/area/rogue/indoors/town/tavern)
+/area/rogue/indoors/town/vault)
 "yel" = (
 /obj/structure/rack/rogue,
 /obj/item/roguegear{
@@ -46085,7 +46087,7 @@ pNQ
 dCX
 dCX
 xlI
-xlI
+dJn
 xlI
 iNR
 dCX
@@ -47341,7 +47343,7 @@ pNQ
 dCX
 dCX
 xlI
-xlI
+yeh
 xlI
 ekq
 dCX
@@ -58526,15 +58528,15 @@ eVv
 eVv
 wBZ
 wBZ
-wBZ
-wBZ
+etw
+etw
 wBZ
 wBZ
 etw
 wBZ
 wBZ
-dJn
-gRQ
+etw
+etw
 wBZ
 wBZ
 wBZ
@@ -58683,7 +58685,7 @@ eVv
 xIK
 wBZ
 eRp
-yeh
+jwG
 jwG
 rAJ
 pra
@@ -59466,7 +59468,7 @@ ljm
 jRH
 xIK
 xIK
-dJn
+etw
 raW
 bGJ
 erC
@@ -59780,7 +59782,7 @@ ljm
 ucW
 cJl
 xIK
-lwZ
+etw
 raW
 raW
 erC
@@ -59937,7 +59939,7 @@ ljm
 eZo
 wmh
 xIK
-lwZ
+etw
 raW
 raW
 erC
@@ -60094,7 +60096,7 @@ ljm
 ejy
 xIK
 xIK
-lwZ
+etw
 raW
 raW
 erC
@@ -60408,7 +60410,7 @@ ljm
 ucW
 cJl
 xIK
-dJn
+etw
 raW
 oXG
 erC
@@ -60723,7 +60725,7 @@ lnd
 qlZ
 xIK
 wBZ
-bSI
+lwZ
 jwG
 jwG
 jwG
@@ -61349,7 +61351,7 @@ hvn
 pJn
 bDS
 ctF
-gRQ
+etw
 tqo
 hGZ
 crP
@@ -61510,10 +61512,10 @@ wBZ
 wBZ
 xpA
 eVv
-gRQ
+etw
 bPL
 bPL
-dJn
+etw
 eVv
 wYG
 oaL
