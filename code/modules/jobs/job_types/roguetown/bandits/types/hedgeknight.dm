@@ -11,47 +11,47 @@
 	pickprob = 30
 
 /datum/outfit/job/roguetown/bandit/hedgeknight/pre_equip(mob/living/carbon/human/H)
-..()
-head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
-gloves = /obj/item/clothing/gloves/roguetown/chain
-pants = /obj/item/clothing/under/roguetown/chainlegs
-cloak = /obj/item/clothing/cloak/tabard/blkknight
-if(prob(30))
-neck = /obj/item/clothing/neck/roguetown/bervor
-else
-neck = /obj/item/clothing/neck/roguetown/gorget
-shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-armor = /obj/item/clothing/suit/roguetown/armor/plate/full
-wrists = /obj/item/clothing/wrists/roguetown/bracers
-shoes = /obj/item/clothing/shoes/roguetown/armor
-belt = /obj/item/storage/belt/rogue/leather
-r_hand = /obj/item/rogueweapon/greatsword/zwei
-backr = /obj/item/storage/backpack/rogue/satchel/black
-backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
-H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
-H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
-H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
-H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/joincomrades)
-H.change_stat("strength", 3)
-H.change_stat("perception", 1)
-H.change_stat("intelligence", 2)
-H.change_stat("constitution", 2)
-H.change_stat("endurance", 2)
-H.change_stat("speed", -1)
-ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
-H.verbs |= /mob/proc/haltyell
-H.ambushable = FALSE
+	..()
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
+	gloves = /obj/item/clothing/gloves/roguetown/chain
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	cloak = /obj/item/clothing/cloak/tabard/blkknight
+	if(prob(30))
+		neck = /obj/item/clothing/neck/roguetown/bervor
+	else
+		neck = /obj/item/clothing/neck/roguetown/gorget
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	shoes = /obj/item/clothing/shoes/roguetown/armor
+	belt = /obj/item/storage/belt/rogue/leather
+	r_hand = /obj/item/rogueweapon/greatsword/zwei
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/joincomrades)
+	H.change_stat("strength", 3)
+	H.change_stat("perception", 1)
+	H.change_stat("intelligence", 2)
+	H.change_stat("constitution", 2)
+	H.change_stat("endurance", 2)
+	H.change_stat("speed", -1)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
+	H.verbs |= /mob/proc/haltyell
+	H.ambushable = FALSE
 
 /obj/effect/proc_holder/spell/invoked/joincomrades
     name = "Recruit Comrade"
