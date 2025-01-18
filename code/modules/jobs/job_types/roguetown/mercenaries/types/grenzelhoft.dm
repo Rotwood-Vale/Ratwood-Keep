@@ -1,6 +1,6 @@
 /datum/subclass/grenzelhoft
 	name = "Grenzelhoft Mercenary"
-	tutorial = "Experts, Professionals, Expensive. Those are the first words that come to mind when the emperiate Grenzelhoft Free Corps is mentioned. While you may work for coin like any common sellsword, maintaining the honor of the Company will be of the utmost priority."
+	tutorial = "Experts, Professionals, Expensive. Those are the first words that come to mind when the emperiate Grenzelhoft mercenary guild is mentioned. While you may work for coin like any common sellsword, maintaining the prestige of the guild will be of utmost priority."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/axian,
@@ -36,12 +36,18 @@
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel
 
+	var/list/weapon_options = list(
+		"billhook",
+		"halberd",
+		"zweihander",
+	)
 
-	var/weapons = list("billhook", "halberd", "zweihander")
-	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
+	var/chosen_weapon = input(
+		"Pick a weapon",
+		"Available weapons",
+	) as anything in weapon_options
 
-	switch(weaponschoice)
-
+	switch(chosen_weapon)
 		if("billhook")
 			r_hand = /obj/item/rogueweapon/spear/billhook
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
