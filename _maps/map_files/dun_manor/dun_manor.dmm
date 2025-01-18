@@ -4422,12 +4422,6 @@
 /obj/structure/roguetent,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
-"dJn" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/l,
-/turf/open/floor/rogue/tile{
-	icon_state = "linoleum"
-	},
-/area/rogue/indoors/town/vault)
 "dJp" = (
 /obj/structure/flora/newtree{
 	dir = 1
@@ -13688,16 +13682,11 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
 "lXN" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable_mid"
+/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/turf/open/floor/rogue/tile{
+	icon_state = "linoleum"
 	},
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81
-	},
-/turf/closed,
-/area/rogue/under/town/sewer)
+/area/rogue/indoors/town/vault)
 "lYo" = (
 /obj/structure/floordoor/gatehatch/inner{
 	redstone_id = "gatelava"
@@ -43482,7 +43471,7 @@ cVE
 heh
 cVE
 nOZ
-lXN
+aZD
 bHA
 bHA
 jRM
@@ -46087,7 +46076,7 @@ pNQ
 dCX
 dCX
 xlI
-dJn
+lXN
 xlI
 iNR
 dCX
