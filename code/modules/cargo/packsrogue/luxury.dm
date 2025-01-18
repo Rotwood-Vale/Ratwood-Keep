@@ -87,7 +87,7 @@
 
 /datum/supply_pack/rogue/luxury/psiring
 	name = "Blessed Ring"
-	cost = 60
+	cost = 40
 	contains = list(/obj/item/clothing/ringP)
 
 /datum/supply_pack/rogue/luxury/nomag

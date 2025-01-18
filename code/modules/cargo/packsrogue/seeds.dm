@@ -102,9 +102,6 @@
 					/obj/item/seeds/potato,
 					/obj/item/seeds/potato,
 					/obj/item/seeds/potato,
-					/obj/item/seeds/garlic,
-					/obj/item/seeds/carrot,
-					/obj/item/seeds/radish,
 				)
 
 /datum/supply_pack/rogue/seeds/orchard
@@ -117,8 +114,4 @@
 					/obj/item/seeds/apple,
 					/obj/item/seeds/apple,
 					/obj/item/seeds/apple,
-					/obj/item/seeds/pear,
-					/obj/item/seeds/tomato,
-					/obj/item/seeds/eggplant,
-					/obj/item/seeds/bean,
 				)

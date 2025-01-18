@@ -92,28 +92,12 @@
 	cost = 50
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/grown/cabbage,
+					/obj/item/reagent_containers/food/snacks/grown/cabbage,
 					/obj/item/reagent_containers/food/snacks/grown/onion,
-					/obj/item/reagent_containers/food/snacks/grown/garlic,
-					/obj/item/reagent_containers/food/snacks/grown/carrot,
+					/obj/item/reagent_containers/food/snacks/grown/onion,
 					/obj/item/reagent_containers/food/snacks/grown/potato,
-					/obj/item/reagent_containers/food/snacks/grown/radish,
+					/obj/item/reagent_containers/food/snacks/grown/potato,
 					/obj/item/reagent_containers/food/snacks/grown/beet,
-					)
-
-/datum/supply_pack/rogue/food/fruit
-	name = "Fruit Pack"
-	cost = 50
-	contains = list(
-					/obj/item/reagent_containers/food/snacks/grown/pear,
-					/obj/item/reagent_containers/food/snacks/grown/cherry,
-					/obj/item/reagent_containers/food/snacks/grown/olive,
-					/obj/item/reagent_containers/food/snacks/grown/nut,
-					/obj/item/reagent_containers/food/snacks/grown/tomato,
-					/obj/item/reagent_containers/food/snacks/grown/eggplant,
-					/obj/item/reagent_containers/food/snacks/grown/bean,
-					/obj/item/reagent_containers/food/snacks/grown/bellpepper,
-					/obj/item/reagent_containers/food/snacks/grown/peas,
-					/obj/item/reagent_containers/food/snacks/grown/cucumber,
 					)
 
 /datum/supply_pack/rogue/food/grain

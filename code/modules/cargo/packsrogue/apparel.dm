@@ -15,7 +15,7 @@
 
 /datum/supply_pack/rogue/apparel/bags/satchels
 	name = "Satchel"
-	cost = 30
+	cost = 10
 	contains = list(
 					/obj/item/storage/backpack/rogue/satchel,
 					/obj/item/storage/backpack/rogue/satchel,
@@ -24,12 +24,12 @@
 
 /datum/supply_pack/rogue/apparel/bags/backpacks
 	name = "Backpack"
-	cost = 21
+	cost = 15
 	contains = list(/obj/item/storage/backpack/rogue/backpack)
 
 /datum/supply_pack/rogue/apparel/bags/pouches
 	name = "Pouch"
-	cost = 15
+	cost = 10
 	contains = list(
 					/obj/item/storage/belt/rogue/pouch,
 					/obj/item/storage/belt/rogue/pouch,
@@ -38,7 +38,7 @@
 
 /datum/supply_pack/rogue/apparel/belts
 	name = "Belt"
-	cost = 15
+	cost = 10
 	contains = list(
 					/obj/item/storage/belt/rogue/leather,
 					/obj/item/storage/belt/rogue/leather,
