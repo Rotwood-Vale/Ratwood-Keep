@@ -27,7 +27,7 @@
 /datum/outfit/job/roguetown/mayor/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	r_hand = /obj/item/gun/ballistic/firearm/arquebus_pistol
+	r_hand = /obj/item/gun/ballistic/arquebus_pistol
 	head = /obj/item/clothing/head/roguetown/nightman //will do for now
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black

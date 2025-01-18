@@ -22,7 +22,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	wrists = /obj/item/storage/keyring/architect
-	backr = /obj/item/gun/ballistic/firearm/blunderbuss
+	backr = /obj/item/gun/ballistic/blunderbuss
 	backl = /obj/item/rogueweapon/pick/drill
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
