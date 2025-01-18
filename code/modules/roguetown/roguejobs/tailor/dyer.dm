@@ -17,8 +17,9 @@
 			)
 
 	var/static/list/selectable_colors = list(
-		"White" = "#ffffff",
+		"Royal White" = "#ffffff",
 		"Black" = "#414143",
+		"Royal Black"="#2b292e",
 		"Light Grey" = "#999999",
 		"Dark Grey" = "#505050",
 		"Mage Grey" = "#6c6c6c",
@@ -30,28 +31,35 @@
 		"Dunked in Water" = "#bbbbbb",
 		"Cream" = "#fffdd0",
 		"Orange" = "#bd6606",
+		"Royal Orange"="#df8405",
 		"Gold" = "#f9a602",
 		"Yarrow" = "#f0cb76",
 		"Yellow Weld" = "#f4c430",
 		"Yellow Ochre" = "#cb9d06",
+		"Royal Yellow"="#ffcd43",
 		"Baby Puke" = "#b5b004",
 		"Olive" = "#98bf64",
 		"Green" = "#428138",
+		"Royal Green"="#264d26",
 		"Dark Green" = "#264d26",
-		"Teal" = "#249589",
+		"Royal Teal" = "#249589",
 		"Periwinkle Blue" = "#8f99fb",
 		"Woad Blue" = "#597fb9",
+		"Royal Blue"="#173266",
+		"Royal Azure"="#007fff",
 		"Royal Purple" = "#8747b1",
 		"Magenta" = "#962e5c",
 		"Orchil" = "#66023C",
 		"Red Ochre" = "#913831",
-		"Red" = "#a32121",
+		"Red" = "#8b2323",
+		"Royal Red"="#8b2323",
 		"Maroon" = "#550000",
+		"Royal Majenta"="#962e5c",
 		"Peasant Brown" = "#685542",
 		"Dirt" = "#7c6d5c",
 		"Chestnut" = "#613613",
-		"Russet" = "#7f461b"
-		)
+		"Russet" = "#7f461b",
+		"Royal Brown"="#61462c")
 		
 /obj/machinery/gear_painter/Destroy()
 	inserted.forceMove(drop_location())
