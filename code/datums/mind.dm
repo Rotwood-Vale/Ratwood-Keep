@@ -514,7 +514,13 @@
 /datum/mind/proc/show_memory(mob/recipient, window=1)
 	if(!recipient)
 		recipient = current
-	var/output = "<B>[current.real_name]'s Memories:</B><br>"
+	// REDMOON ADD START - фикс для русских букв 
+	var/output = ""
+	if(window)
+		output += "<html><head><meta http-equiv='Content-Type' content='text/html; charset=utf-8'><title>Мои воспоминания:</title></head>"
+	else
+	// REDMOON ADD END
+		output = "<B>Мои воспоминания:</B><br>"
 	output += memory
 
 
