@@ -20452,7 +20452,7 @@
 	},
 /obj/structure/fluff/railing/wood{
 	dir = 1;
-	layer = 2.7;
+	layer = 2;
 	pixel_y = 7
 	},
 /turf/open/floor/rogue/ruinedwood/platform,
@@ -40564,6 +40564,14 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs)
+"wGh" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2;
+	pixel_y = 7
+	},
+/turf/open/floor/rogue/ruinedwood/platform,
+/area/rogue/outdoors/town/harbor)
 "wGs" = (
 /obj/structure/bars/passage/steel{
 	redstone_id = "gate_churchcell"
@@ -222865,7 +222873,7 @@ rRb
 rRb
 rRb
 gLf
-rSC
+aCz
 rSC
 rSC
 otg
@@ -223733,7 +223741,7 @@ udz
 otg
 ctJ
 aCz
-aCz
+rSC
 rSC
 otg
 otg
@@ -224598,7 +224606,7 @@ rRb
 rRb
 rRb
 lrs
-otg
+jcc
 rRb
 nXf
 rRb
@@ -225030,7 +225038,7 @@ lrs
 lrs
 lrs
 lrs
-otg
+ipb
 lrs
 lrs
 lrs
@@ -241873,7 +241881,7 @@ hgi
 xrC
 xrC
 nvH
-xrC
+nvH
 xrC
 fJX
 nvH
@@ -246170,7 +246178,7 @@ hkm
 kgT
 hkm
 hkm
-dMr
+wGh
 hhx
 hhx
 hhx
