@@ -445,7 +445,7 @@
 
 /obj/item/clothing/cloak/stabard/grenzelhoft
 	name = "grenzelhoft mercenary tabard"
-	desc = "A tabard bearing the colors of the Grenzelhoft Free Corps."
+	desc = "A tabard bearing the colors of the Grenzelhoft emperiate mercenary guild."
 	color = CLOTHING_YELLOW
 	detail_color = CLOTHING_RED
 	detail_tag = "_box"
