@@ -114,6 +114,10 @@
 				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
 				if(input)
 					done_step = possible_steps[input]
+				// REDMOON ADD START - фикс нанесения ударов без КД при распиливании костей (бой со скелетами)
+				else
+					return TRUE
+				// REDMOON ADD END
 			else
 				done_step = possible_steps[possible_steps[1]]
 			if(done_step?.try_op(user, src, user.zone_selected, I, user.used_intent, try_to_fail))
