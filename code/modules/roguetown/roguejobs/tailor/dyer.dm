@@ -51,7 +51,7 @@
 		"Magenta" = "#962e5c",
 		"Orchil" = "#66023C",
 		"Red Ochre" = "#913831",
-		"Red" = "#8b2323",
+		"Red" = "#a32121",
 		"Royal Red"="#8b2323",
 		"Maroon" = "#550000",
 		"Royal Majenta"="#962e5c",
