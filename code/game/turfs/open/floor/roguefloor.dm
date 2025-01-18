@@ -550,6 +550,8 @@
 /turf/open/floor/rogue/greenstone/turf_destruction(damage_flag)
 	. = ..()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+/turf/open/floor/rogue/greenstone/runed
+	icon_state = "greenstoneruned"
 
 /turf/open/floor/rogue/hexstone
 	icon_state = "hexstone"

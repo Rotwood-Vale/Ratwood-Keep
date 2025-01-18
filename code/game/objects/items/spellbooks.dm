@@ -487,12 +487,7 @@
 /obj/item/roguegem/diamond
 	arcyne_potency = 15
 
-/obj/item/roguegem/amethyst
-	name = "amythortz"
-	icon_state = "amethyst"
-	sellprice = 18
-	arcyne_potency = 25
-	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it' worth little."
+
 
 /obj/item/book/granter/spellbook/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	if(istype(P, /obj/item/roguegem))

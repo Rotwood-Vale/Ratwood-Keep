@@ -97,3 +97,14 @@ require only minor tweaks.
 #define PLACE_LAVA_RUIN "lavaland" //On lavaland ruin z levels(s)
 #define PLACE_BELOW "below" //On z levl below - centered on same tile
 #define PLACE_ISOLATED "isolated" //On isolated ruin z level
+
+/// Map spot is allowed
+#define MAP_DEPLOY_ALLOWED "allowed"
+/// Map spot has turfs that restrict deployment
+#define MAP_DEPLOY_BAD_TURFS "bad turfs"
+/// Map spot has areas that restrict deployment
+#define MAP_DEPLOY_BAD_AREA "bad area"
+/// Map spot has anchored objects that restrict deployment
+#define MAP_DEPLOY_ANCHORED_OBJECTS "anchored objects"
+/// Map spot is out of bounds from the maps x/y coordinates
+#define MAP_DEPLOY_OUTSIDE_MAP "outside map"

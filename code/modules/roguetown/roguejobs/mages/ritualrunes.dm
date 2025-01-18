@@ -57,9 +57,10 @@
 	/// ritual result is the result of a ritual!
 	var/ritual_result
 	//atoms in ranges
-	var/list/atom/movable/atoms_in_range
-	var/datum/runerituals/pickritual
+	var/list/atom/movable/atoms_in_range	//list for atoms in range of rune
+	var/datum/runerituals/pickritual		//selected
 	var/list/selected_atoms
+	var/associated_ritual = null	//Associated ritual for runes with only 1 ritual. Use in tandom with ritual_number
 
 /proc/isarcyne(mob/living/carbon/human/A)
 	return istype(A) && A.mind && (A.mind?.get_skill_level(/datum/skill/magic/arcane) > SKILL_LEVEL_NONE)	//checks if person has arcane skill
@@ -77,6 +78,9 @@ GLOBAL_LIST_INIT(t1rune_types, generate_t1rune_types())
 GLOBAL_LIST_INIT(t2rune_types, generate_t2rune_types())
 GLOBAL_LIST_INIT(t3rune_types, generate_t3rune_types())
 GLOBAL_LIST_INIT(t4rune_types, generate_t4rune_types())
+
+/// List of all teleport runes
+GLOBAL_LIST(teleport_runes)
 
 /// Returns an associated list of rune types. [rune.cultist_name] = [typepath]
 /proc/generate_rune_types()
@@ -357,6 +361,7 @@ GLOBAL_LIST_INIT(t4rune_types, generate_t4rune_types())
 	desc = "subtype used for arcane rituals- you should not be seeing this."
 	magictype = "arcyne"
 	can_be_scribed = FALSE
+
 /obj/effect/decal/cleanable/roguerune/arcyne/attack_hand(mob/living/user)
 	if(!isarcyne(user))
 		to_chat(user, span_warning("You aren't able to understand the words of [src]."))
@@ -367,6 +372,7 @@ GLOBAL_LIST_INIT(t4rune_types, generate_t4rune_types())
 	name = "Knowledge rune"
 	desc = "arcane symbols pulse upon the ground..."
 	icon_state = "6"
+	invocation = "Thal’miren vek’laris un’vethar!"
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	layer = SIGIL_LAYER
 	color = "#3A0B61"
@@ -382,12 +388,11 @@ GLOBAL_LIST_INIT(t4rune_types, generate_t4rune_types())
 	desc = "arcane symbols litter the ground- is that a wall of some sort?"
 	icon_state = "wall"
 	tier = 2
+	invocation = "Fren’aleth ar’quor!"
 	ritual_number = TRUE
 	can_be_scribed = TRUE
-	var/template_id = "shelter_alpha"
-	var/datum/map_template/shelter/template
+	color = "#184075"
 	var/list/barriers = list()
-	var/obj/structure/arcyne_wall/AC
 
 /obj/effect/decal/cleanable/roguerune/arcyne/wall/Destroy()
 	QDEL_LIST_CONTENTS(barriers)
@@ -406,22 +411,72 @@ GLOBAL_LIST_INIT(t4rune_types, generate_t4rune_types())
 	if(!..())	//VERY important. Calls parent and checks if it fails. parent/invoke has all the checks for ingredients
 		to_chat(invokers, span_warning("!..()!"))
 		return
-	to_chat(invokers, span_warning("arcyne wall construction"))
-	var/mob/living/user = usr
-	var/current_turf = usr.loc
-	var/turf/target_turf = get_step(src, user.dir)
-	var/turf/target_turf_two = get_step(target_turf, turn(user.dir, 90))
-	var/turf/target_turf_three = get_step(target_turf, turn(user.dir, -90))
-	if(!locate(/obj/structure/arcyne_wall/caster) in target_turf)
-		var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf)
-		src.barriers += newbarrier
-	if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_two)
-		var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_two)
-		src.barriers += newbarrier
-	if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_three)
-		var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_three)
-		src.barriers += newbarrier
-	active = TRUE
+	if(pickritual.tier == 1)
+		var/mob/living/user = usr
+		var/turf/target_turf = get_step(get_step(src, user.dir), user.dir)
+		var/turf/target_turf_two = get_step(target_turf, turn(user.dir, 90))
+		var/turf/target_turf_three = get_step(target_turf, turn(user.dir, -90))
+		var/turf/target_turf_four = get_step(target_turf_two, turn(user.dir, 90))
+		var/turf/target_turf_five = get_step(target_turf_three, turn(user.dir, -90))
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_two)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_two, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_three)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_three, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_four)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_four, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_five)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_five, user)
+			src.barriers += newbarrier
+		active = TRUE
+	else
+		var/mob/living/user = usr
+		var/turf/target_turf = get_step(get_step(src, user.dir), user.dir)
+		var/turf/target_turf_two = get_step(target_turf, turn(user.dir, 90))
+		var/turf/target_turf_three = get_step(target_turf, turn(user.dir, -90))
+		var/turf/target_turf_four = get_step(target_turf_two, turn(user.dir, 90))
+		var/turf/target_turf_five = get_step(target_turf_three, turn(user.dir, -90))
+		var/turf/target_turfline2 = get_step(target_turf, user.dir)
+		var/turf/target_turfline2_two = get_step(target_turfline2, turn(user.dir, 90))
+		var/turf/target_turfline2_three = get_step(target_turfline2, turn(user.dir, -90))
+		var/turf/target_turfline2_four = get_step(target_turfline2_two, turn(user.dir, 90))
+		var/turf/target_turfline2_five = get_step(target_turfline2_three, turn(user.dir, -90))
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_two)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_two, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_three)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_three, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_four)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_four, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_five)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_five, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turfline2)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turfline2, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turfline2_two)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turfline2_two, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turfline2_three)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turfline2_three, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turfline2_four)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turfline2_four, user)
+			src.barriers += newbarrier
+		if(!locate(/obj/structure/arcyne_wall/caster) in target_turfline2_five)
+			var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turfline2_five, user)
+			src.barriers += newbarrier
+		active = TRUE
 
 	if(ritual_result)
 		pickritual.cleanup_atoms(selected_atoms)
@@ -437,36 +492,47 @@ GLOBAL_LIST_INIT(t4rune_types, generate_t4rune_types())
 			to_chat(living_invoker,  span_italics("[src] saps your strength!"))
 	do_invoke_glow()
 
-/obj/effect/decal/cleanable/roguerune/arcyne/wall/greater
+/obj/effect/decal/cleanable/roguerune/arcyne/wallgreater
 	name = "fortress accession matrix"
-	desc = "arcane symbols litter the ground- is that a wall of some sort?"
+	desc = "A massive sigil- is that a wall in the center?"
 	icon = 'icons/effects/160x160.dmi'
-	icon_state = "test"
+	icon_state = "walltest"
 	tier = 3
+	invocation = "Thar’morak dul’vorr keth’alor!"
+	ritual_number = FALSE
+	runesize = 2
 	pixel_x = -64 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -64
 	pixel_z = 0
 	can_be_scribed = TRUE
+//	var/id = "arcyne_fortress"
+	var/datum/map_template/template
+	var/fortress = /datum/map_template/arcyne_fortress
+	var/list/barriers = list()
+	associated_ritual = /datum/runerituals/wall/t3
 
-/obj/effect/decal/cleanable/roguerune/arcyne/wall/greater/invoke(list/invokers, datum/runerituals/runeritual)
+
+/obj/effect/decal/cleanable/roguerune/arcyne/wallgreater/proc/get_template(/datum/map_template/arcyne_fortress/fortress)
+
+	to_chat(usr, span_hierophant_warning("template retrieving"))
+	var/datum/map_template/temporary = new fortress
+	template =  SSmapping.map_templates[temporary.id]
+	if(!template)
+		WARNING("Shelter template ([template.id]) not found!")
+		qdel(src)
+
+
+/obj/effect/decal/cleanable/roguerune/arcyne/wallgreater/invoke(list/invokers, datum/runerituals/runeritual)
+	runeritual = associated_ritual
 	if(!..())	//VERY important. Calls parent and checks if it fails. parent/invoke has all the checks for ingredients
 		return
-	var/mob/living/user = usr
-	var/turf/target_turf = get_step(get_step(src, user.dir),user.dir)
-	var/turf/target_turfs = get_step(target_turf, user.dir)
-	var/turf/target_turf_two = get_step(target_turfs, turn(user.dir, 90))
-	var/turf/target_turf_three = get_step(target_turfs, turn(user.dir, -90))
-	if(!locate(/obj/structure/arcyne_wall/caster) in target_turfs)
-		var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turfs)
-		src.barriers += newbarrier
-	if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_two)
-		var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_two)
-		src.barriers += newbarrier
-	if(!locate(/obj/structure/arcyne_wall/caster) in target_turf_three)
-		var/obj/structure/arcyne_wall/caster/newbarrier = new(target_turf_three)
-		src.barriers += newbarrier
-	active = TRUE
+	if(QDELETED(src))
+		return
+	var/turf/deploy_location = get_turf(src)
+	get_template(template)
 
+	template.load(deploy_location, centered = TRUE)
+	to_chat(usr, span_hierophant_warning("template.load complete"))
 	if(ritual_result)
 		pickritual.cleanup_atoms(selected_atoms)
 
@@ -482,11 +548,113 @@ GLOBAL_LIST_INIT(t4rune_types, generate_t4rune_types())
 	do_invoke_glow()
 
 /obj/effect/decal/cleanable/roguerune/arcyne/enchantment
+	invocation = "Vey’thralis en’kael dun’vora!"
+
+
+/obj/effect/decal/cleanable/roguerune/arcyne/teleport
+	name = "planar convergence matrix"
+	desc = "A large spiraling sigil that seems to thrum with power."
+	icon = 'icons/effects/160x160.dmi'
+	icon_state = "portal"
+	tier = 2
+	invocation = "add later!"
+	ritual_number = FALSE
+	runesize = 2
+	pixel_x = -64 //So the big ol' 96x96 sprite shows up right
+	pixel_y = -64
+	pixel_z = 0
+	can_be_scribed = TRUE
+	associated_ritual = /datum/runerituals/teleport
+	var/listkey
+/obj/effect/decal/cleanable/roguerune/arcyne/teleport/Initialize(mapload, set_keyword)
+	. = ..()
+	var/area/A = get_area(src)
+	var/locname = initial(A.name)
+	listkey = set_keyword ? "[set_keyword] [locname]":"[locname]"
+	LAZYADD(GLOB.teleport_runes, src)
+
+/obj/effect/rune/teleport/Destroy()
+	LAZYREMOVE(GLOB.teleport_runes, src)
+	return ..()
+
+/obj/effect/decal/cleanable/roguerune/arcyne/teleport/invoke(list/invokers, datum/runerituals/runeritual)
+	runeritual = associated_ritual
+	if(!..())	//VERY important. Calls parent and checks if it fails. parent/invoke has all the checks for ingredients
+		return
+	var/mob/living/user = invokers[1] //the first invoker is always the user
+	var/list/potential_runes = list()
+	var/list/teleportnames = list()
+	for(var/obj/effect/decal/cleanable/roguerune/arcyne/teleport/teleport_rune as anything in GLOB.teleport_runes)
+		if(teleport_rune != src)
+			potential_runes[avoid_assoc_duplicate_keys(teleport_rune.listkey, teleportnames)] = teleport_rune
+
+	if(!length(potential_runes))
+		to_chat(user, span_warning("There are no valid runes to teleport to!"))
+		log_game("Teleport rune activated by [user] at [COORD(src)] failed - no other teleport runes.")
+		fail_invoke()
+		return
+
+	var/turf/T = get_turf(src)
+	var/input_rune_key = input(user, "Rune to teleport to", "Teleportation Target") as null|anything in potential_runes //we know what key they picked
+	if(isnull(input_rune_key))
+		return
+	if(isnull(potential_runes[input_rune_key]))
+		fail_invoke()
+		return
+	var/obj/effect/rune/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
+	if(!Adjacent(user) || QDELETED(src) || !actual_selected_rune)
+		fail_invoke()
+		return
+
+	var/turf/target = get_turf(actual_selected_rune)
+	if(target.is_blocked_turf(TRUE))
+		to_chat(user, span_warning("The target rune is blocked. Attempting to teleport to it would be massively unwise."))
+		log_game("Teleport rune activated by [user] at [COORD(src)] failed - destination blocked.")
+		fail_invoke()
+		return
+	var/movedsomething = FALSE
+	var/moveuserlater = FALSE
+	var/movesuccess = FALSE
+	for(var/atom/movable/A in range(runesize, src))
+		if(istype(A, /obj/effect/dummy/phased_mob))
+			continue
+		if(ismob(A))
+			if(!isliving(A)) //Let's not teleport ghosts and AI eyes.
+				continue
+			if(ishuman(A))
+				new /obj/effect/temp_visual/dir_setting/cult/phase/out(T, A.dir)
+				new /obj/effect/temp_visual/dir_setting/cult/phase(target, A.dir)
+		if(A == user)
+			moveuserlater = TRUE
+			movedsomething = TRUE
+			continue
+		if(!A.anchored)
+			movedsomething = TRUE
+			if(do_teleport(A, target, channel = TELEPORT_CHANNEL_CULT))
+				movesuccess = TRUE
+	if(movedsomething)
+		..()
+		playsound(src, 'sound/magic/cosmic_expansion.ogg', 50, TRUE)
+		playsound(target, 'sound/magic/cosmic_expansion.ogg', 50, TRUE)
+		if(moveuserlater)
+			if(do_teleport(user, target, channel = TELEPORT_CHANNEL_CULT))
+				movesuccess = TRUE
+		if(movesuccess)
+			visible_message(span_warning("There is a sharp crack of inrushing air, and everything above the rune disappears!"), null, "<i>You hear a sharp crack.</i>")
+			to_chat(user, span_cult("You[moveuserlater ? "r vision blurs, and you suddenly appear somewhere else":" send everything above the rune away"]."))
+		else
+			to_chat(user, span_cult("You[moveuserlater ? "r vision blurs briefly, but nothing happens":" try send everything above the rune away, but the teleportation fails"]."))
+		if(movesuccess)
+			target.visible_message(span_warning("There is a boom of outrushing air as something appears above the rune!"), null, "<i>You hear a boom.</i>")
+	else
+		fail_invoke()
+
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning	//32x32 rune t1(one tile)
 	name = "confinement matrix"
 	desc = "A relatively basic confinement matrix used to hold small things when summoned."
 	ritual_number = TRUE
+	invocation = "Rhegal vex'ultraa!"
 	tier = 1
 	can_be_scribed = TRUE
 	var/summoning = FALSE
@@ -502,103 +670,19 @@ GLOBAL_LIST_INIT(t4rune_types, generate_t4rune_types())
 		REMOVE_TRAIT(summoned_mob, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
 		summoned_mob.status_flags -= GODMODE//remove godmode
 		summoned_mob.binded = FALSE	//BE FREE!!
+		summoned_mob.candodge = TRUE
 		summoned_mob = null
 		summoning = FALSE
 		return
 	. = ..()
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/invoke(list/invokers, datum/runerituals/runeritual)
-	//This proc contains the effects of the rune as well as things that happen afterwards. If you want it to spawn an object and then delete itself, have both here.
-	var/list/atom/movable/atoms_in_range = list()
-	for(var/atom/close_atom as anything in range(runesize, src))
-		if(!ismovable(close_atom))
-			continue
-		if(isitem(close_atom))
-			var/obj/item/close_item = close_atom
-			if(close_item.item_flags & ABSTRACT) //woops sacrificed your own head
-				continue
-		if(close_atom.invisibility)
-			continue
-		if(close_atom == usr)
-			continue
-		if(close_atom == src)
-			continue
-		atoms_in_range += close_atom
-	var/datum/runerituals/pickritual = new runeritual
-	to_chat(invokers, json_encode(pickritual.required_atoms, JSON_PRETTY_PRINT))
-	if(!islist(pickritual.required_atoms))
-		to_chat(invokers, span_notice("required atoms is NOT a list"))
-
-	// A copy of our requirements list.
-	// We decrement the values of to determine if enough of each key is present.
-
-	var/list/requirements_list = pickritual.required_atoms.Copy()
-	var/list/banned_atom_types = pickritual.banned_atom_types.Copy()
-	// A list of all atoms we've selected to use in this recipe.
-	var/list/selected_atoms = list()
-	for(var/atom/nearby_atom as anything in atoms_in_range)
-		// Go through all of our required atoms
-		for(var/req_type in requirements_list)
-			// We already have enough of this type, skip
-			if(requirements_list[req_type] <= 0)
-				continue
-			// If req_type is a list of types, check all of them for one match.
-			if(islist(req_type))
-				if(!(is_type_in_list(nearby_atom, req_type)))
-					continue
-			else if(!istype(nearby_atom, req_type))
-				continue
-			// if list has items, check if the strict type is banned.
-			if(length(banned_atom_types))
-				if(nearby_atom.type in banned_atom_types)
-					continue
-			// This item is a valid type. Add it to our selected atoms list.
-			selected_atoms |= nearby_atom
-			// If it's a stack, we gotta see if it has more than one inside,
-			// as our requirements may want more than one item of a stack
-			if(isstack(nearby_atom))
-				var/obj/item/stack/picked_stack = nearby_atom
-				requirements_list[req_type] -= picked_stack.amount // Can go negative, but doesn't matter. Negative = fulfilled
-
-			// Otherwise, just add the mark down the item as fulfilled x1
-			else
-				requirements_list[req_type]--
-
-	var/list/what_are_we_missing = list()
-	for(var/req_type in requirements_list)
-		var/number_of_things = requirements_list[req_type]
-		// <= 0 means it's fulfilled, skip
-		if(number_of_things <= 0)
-			continue
-		// > 0 means it's unfilfilled - the ritual has failed, we should tell them why
-		// Lets format the thing they're missing and put it into our list
-		var/formatted_thing = "[number_of_things] "
-		if(islist(req_type))
-			var/list/req_type_list = req_type
-			var/list/req_text_list = list()
-			for(var/atom/possible_type as anything in req_type_list)
-				req_text_list += pickritual.parse_required_item(possible_type)
-			formatted_thing += english_list(req_text_list, and_text = "or")
-
-		else
-			formatted_thing = pickritual.parse_required_item(req_type)
-
-		what_are_we_missing += formatted_thing
-
-	if(length(what_are_we_missing))
-		// Let them know it screwed up
-		to_chat(usr, span_hierophant_warning("ritual failed, missing components!"))
-		// Then let them know what they're missing
-		to_chat(usr, span_hierophant_warning("You are missing [english_list(what_are_we_missing)] in order to complete the ritual \"[pickritual.name]\"."))
-		fail_invoke()
-		return FALSE
-	playsound(usr, 'sound/magic/teleport_diss.ogg', 75, TRUE)
-
+	if(!..())	//VERY important. Calls parent and checks if it fails. parent/invoke has all the checks for ingredients
+		return
 	// All the components have been invisibled, time to actually do the ritual. Call on_finished_recipe
 	// (Note: on_finished_recipe may sleep in the case of some rituals like summons, which expect ghost candidates.)
 	// - If the ritual was success (Returned TRUE), proceede to clean up the atoms involved in the ritual. The result has already been spawned by this point.
 	// - If the ritual failed for some reason (Returned FALSE), likely due to no ghosts taking a role or an error, we shouldn't clean up anything, and reset.
-	ritual_result = pickritual.on_finished_recipe(usr, selected_atoms, loc)
 	if(ismob(ritual_result))
 		summoned_mob = ritual_result
 		src.summoning = TRUE

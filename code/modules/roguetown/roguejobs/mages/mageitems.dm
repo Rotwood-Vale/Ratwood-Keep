@@ -134,7 +134,7 @@
 	var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 
 	user.visible_message(span_notice("I start drag the blade in the shape of symbols and sigils"))
-	playsound(loc, 'sound/magic/bladescrape.ogg', 100, TRUE)
+	playsound(loc, 'sound/misc/chalkdraw.ogg', 100, TRUE)
 	if(do_after(user, crafttime, target = src))
 		user.visible_message(span_warning("[user] carves an arcyne rune with [user.p_their()] [src]!"), \
 		span_notice("I finish dragging the blade in symbols and circles, leaving behind an ritual rune"))
@@ -211,8 +211,8 @@
 	var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 
 	user.visible_message(span_notice("I start drag the blade in the shape of symbols and sigils"))
+	playsound(loc, 'sound/magic/bladescrape.ogg', 100, TRUE)
 	if(do_after(user, crafttime, target = src))
-		playsound(loc, 'sound/magic/bladescrape.ogg', 100, TRUE)
 		user.visible_message(span_warning("[user] carves an arcyne rune with [user.p_their()] [src]!"), \
 		span_notice("I finish dragging the blade in symbols and circles, leaving behind an ritual rune"))
 		new rune_to_scribe(Turf)
@@ -233,67 +233,14 @@
 	return FALSE
 
 
-//adapted from forcefields.dm, this needs to be destructible
-/obj/structure/arcyne_wall
-	desc = "A wall of pure arcyne force."
-	name = "Arcyne Wall"
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "forcefield"
-	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
-	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
-	opacity = 0
-	density = TRUE
-	max_integrity = 200
-	CanAtmosPass = ATMOS_PASS_DENSITY
-	climbable = TRUE
-	climb_time = 0
 
-/obj/structure/arcyne_wall/Initialize()
-	. = ..()
+/obj/item/roguegem/amethyst
+	name = "amythortz"
+	icon_state = "amethyst"
+	sellprice = 18
+	arcyne_potency = 25
+	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it' worth little."
 
-/obj/structure/arcyne_wall/caster
-	var/mob/caster
-
-/obj/structure/arcyne_wall/caster/Initialize(mapload, mob/summoner)
-	. = ..()
-	caster = summoner
-
-/obj/structure/arcyne_wall/caster/CanPass(atom/movable/mover, turf/target)	//only the caster can move through this freely
-	if(mover == caster)
-		return TRUE
-	if(ismob(mover))
-		var/mob/M = mover
-		if(M.anti_magic_check(chargecost = 0) || structureclimber == M)
-			return TRUE
-	return FALSE
-
-/obj/structure/arcyne_wall/greater
-	desc = "An immensely strong wall of pure arcyne force."
-	name = "Greater Arcyne Wall"
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "forcefield"
-	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
-	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
-	max_integrity = 1100
-	CanAtmosPass = ATMOS_PASS_DENSITY
-	climbable = TRUE
-	climb_time = 0
-
-/obj/structure/arcyne_wall/greater/caster
-	var/mob/caster
-
-/obj/structure/arcyne_wall/greater/caster/Initialize(mapload, mob/summoner)
-	. = ..()
-	caster = summoner
-
-/obj/structure/arcyne_wall/greater/caster/CanPass(atom/movable/mover, turf/target)	//only the caster can move through this freely
-	if(mover == caster)
-		return TRUE
-	if(ismob(mover))
-		var/mob/M = mover
-		if(M.anti_magic_check(chargecost = 0) || structureclimber == M)
-			return TRUE
-	return FALSE
 
 ////////////////////////////////////////Magic resources go below here////////////////////
 

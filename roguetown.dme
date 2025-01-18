@@ -9,6 +9,7 @@
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
 #include "_maps\conflict_marker.dm"
+#include "_maps\templates\arcyne_fortress.dm"
 #include "_maps\templates\bog_shack_small.dm"
 #include "_maps\templates\sewers.dm"
 #include "_maps\templates\smalldungeons.dm"
@@ -1773,6 +1774,7 @@
 #include "code\modules\roguetown\roguejobs\gravedigger\hole.dm"
 #include "code\modules\roguetown\roguejobs\gravedigger\tools.dm"
 #include "code\modules\roguetown\roguejobs\mages\mageitems.dm"
+#include "code\modules\roguetown\roguejobs\mages\magestructures.dm"
 #include "code\modules\roguetown\roguejobs\mages\ritualdatums.dm"
 #include "code\modules\roguetown\roguejobs\mages\ritualrunes.dm"
 #include "code\modules\roguetown\roguejobs\miner\rogueores.dm"

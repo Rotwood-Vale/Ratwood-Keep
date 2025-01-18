@@ -81,6 +81,8 @@ GLOBAL_LIST_INIT(t4wallrunerituallist, generate_t4wall_rituallist())
 	RETURN_TYPE(/list)
 	var/list/runerituals = list()
 	for(var/datum/runerituals/runeritual as anything in subtypesof(/datum/runerituals/wall))
+		if(runeritual.tier < 3)
+			continue
 		runerituals[initial(runeritual.name)] = runeritual
 	return runerituals
 
@@ -163,7 +165,7 @@ GLOBAL_LIST_INIT(t4wallrunerituallist, generate_t4wall_rituallist())
 	name = "lesser arcyne wall"
 	tier = 1
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/natural/elementalmote = 3, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/natural/elementalmote = 2, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t1 = 1)
 
 /datum/runerituals/wall/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return 1
@@ -171,16 +173,22 @@ GLOBAL_LIST_INIT(t4wallrunerituallist, generate_t4wall_rituallist())
 /datum/runerituals/wall/t2
 	name = "greater arcyne wall"
 	tier = 2
+	required_atoms = list(/obj/item/natural/elementalmote = 4, /obj/item/natural/manacrystal = 2, /obj/item/natural/melded/t1 = 1)
 
 /datum/runerituals/wall/t2/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return 2
 
 /datum/runerituals/wall/t3
-	name = "lesser arcyne fortress"
+	name = "arcyne fortress"
 	tier = 3
-/datum/runerituals/wall/t4
-	name = "greater arcyne fortress"
+	required_atoms = list(/obj/item/natural/artifacts = 3, /obj/item/natural/manacrystal = 3, /obj/item/natural/melded/t3 = 1)
+
+
+/datum/runerituals/teleport
+	name = "planar convergence"
 	tier = 3
+	required_atoms = list(/obj/item/natural/artifacts = 1, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t3 = 1) //adjust this later
+
 ////////////////SUMMONING RITUALS///////////////////
 /datum/runerituals/summoning
 	name = "summoning ritual parent"
@@ -201,6 +209,7 @@ GLOBAL_LIST_INIT(t4wallrunerituallist, generate_t4wall_rituallist())
 		ADD_TRAIT(summoned, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
 		summoned.status_flags += GODMODE//It's not meant to be killable until released from it's planar binding.
 		summoned.binded = TRUE	//No auto movement, no moving to targets
+		summoned.candodge = FALSE
 		animate(summoned, color = "#ff0000",time = 5)
 		return summoned
 
