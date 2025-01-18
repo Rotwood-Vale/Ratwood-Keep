@@ -1,3 +1,5 @@
+// Check comments with "start_reports_with_gender_lists" for all related code.
+
 /datum/controller/subsystem/ticker
 	var/males = 0
 	var/females = 0

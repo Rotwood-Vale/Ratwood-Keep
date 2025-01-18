@@ -396,7 +396,8 @@ SUBSYSTEM_DEF(ticker)
 				if(SSfamily.special_role_blacklist.Find(H.mind.special_role))
 					continue
 				if(H.client.prefs.family == FAMILY_FULL)
-					SSfamily.family_candidates += H
+					if(!(H.mind.assigned_role in list("Heir", "Duke Consort", "Duke"))) // REDMOON ADD - memory_for_family_members - фикс бага с тем, что у семейки герцога их 2, если включить "иметь семью" за члена семьи. МОЖЕТ ПОТРЕБОВАТЬСЯ УБРАТЬ В БУДУЩЕМ
+						SSfamily.family_candidates += H
 
 
 		SSfamily.SetupLordFamily()

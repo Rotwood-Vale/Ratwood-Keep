@@ -239,9 +239,26 @@ SUBSYSTEM_DEF(family)
 	if(!R)
 		R = new /datum/relation/relative(holder,target)
 	relations += R
+	// REDMOON ADD START - memory_for_family_members
+	// информация в memories. Модулярнее сделать не получилось.
+	if(holder.mind)
+		holder.mind.store_memory("<b>[target.real_name] ([target.job])</b> is my <b>[R.name]</b>. [target.p_they(TRUE)] is [target.age] [target.dna.species.name].")
+	// REDMOON ADD END
 	if(announce)
 		spawn(1)
-			to_chat(holder,"<span class='notice'>My [R.name]. [target.real_name] ([target.dna.species.name], [target.job], [target.age]) is here alongside me.</span>")
+			to_chat(holder,"<span class='notice'><b>[target.real_name] ([target.job])</b> is my <b>[R.name]</b>. [target.p_they(TRUE)] is [target.age] [target.dna.species.name]. I remember that.</span>") // REDMOON EDIT - was to_chat(holder,"<span class='notice'>My [R.name], [target.real_name] ([target.dna.species.name], [target.job], [target.age]) is here alongside me.</span>")
+			// REDMOON ADD START - memory_for_family_members - оповещение об альтернативных гениталиях 
+			var/altered_genitals = FALSE
+			switch(target.gender)
+				if(MALE)
+					if(target.getorganslot(ORGAN_SLOT_VAGINA))
+						altered_genitals = TRUE
+				if(FEMALE)
+					if(target.getorganslot(ORGAN_SLOT_PENIS))
+						altered_genitals = TRUE
+			if(altered_genitals)
+				to_chat(holder, "[target.p_their(TRUE)] genitals are... Uncommon.")
+			// REDMOON ADD END
 
 		R.onConnect(holder,target) //Bit of hack to have this here. But it stops church marriages from being given rings.
 
@@ -278,6 +295,25 @@ SUBSYSTEM_DEF(family)
 			if(HAS_TRAIT(member, TRAIT_NOBLE) && !HAS_TRAIT(target, TRAIT_NOBLE))
 				return
 
+			// REDMOON ADD START
+			// memory_for_family_members - только персонажами с нужным CKEY могут быть партнёрами, если он выставлен
+			if(member.client.prefs.spouse_ckey)
+				if(target.client.ckey != lowertext(member.client.prefs.spouse_ckey))
+					return FALSE
+			
+				if(member.client.ckey != lowertext(target.client.prefs.spouse_ckey))
+					return FALSE
+			// memory_for_family_members - согласие на альтернативные гениталии у партнёра
+			switch(target.gender)
+				if(MALE)
+					if(target.getorganslot(ORGAN_SLOT_VAGINA))
+						if(!member.client.prefs.allow_alt_genitals_for_spouse)
+							return FALSE
+				if(FEMALE)
+					if(target.getorganslot(ORGAN_SLOT_PENIS))
+						if(!member.client.prefs.allow_alt_genitals_for_spouse)
+							return FALSE
+			// REDMOON ADD END
 			return TRUE //suitable.
 
 		if(REL_TYPE_SIBLING)

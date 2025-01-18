@@ -423,15 +423,27 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
 			if(family != FAMILY_NONE)
 				if(usr?.client?.prefs?.be_russian)
-					dat += "<B>Предпочтения в семье:</B>"
+					dat += "<B>Предпочтения в семье:<br></B>"
 				else
-					dat += "<B>Family Preferences:</B>"
+					dat += "<B>Family Preferences:<br></B>"
 				if(gender == MALE)
 					family_gender = list(FEMALE)
 				else
 					family_gender = list(MALE)
-				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
+				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'><b>Race</b></a></small>"
 				dat += "<BR>"
+				// REDMOON ADD START - memory_for_family_members - возможность выставить CKEY игрока, с которым хочется создать семью
+				if(usr?.client?.prefs?.be_russian)
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=name'><b>Душа второй половинки: [spouse_ckey ? spouse_ckey : "(Случайная)"]</b></a></small>"
+				else
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=name'><b>Spouse soul: [spouse_ckey ? spouse_ckey : "(Random)"]</b></a></small>"
+				dat += "<BR>"
+				if(usr?.client?.prefs?.be_russian)
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=genitals'><b>У мужа/жены допустимо иное начало: [allow_alt_genitals_for_spouse ? "Да" : "Нет"]</b></a></small>"
+				else
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=genitals'><b>Spouse can have beginning of other gender: [allow_alt_genitals_for_spouse ? "Yes" : "No"]</b></a></small>"
+				dat += "<BR>"
+				// REDMOON ADD EDN
 			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Основная Рука:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a>"
 			else
@@ -1393,7 +1405,19 @@ Slots: [job.spawn_positions]</span>
 							family_species -= choices[choice]
 						else
 							family_species += choices[choice]
+			// REDMOON ADD START
+			// memory_for_family_members - возможность выставить CKEY игрока, с которым хочется создать семью
+			if("name")
+				var/potential_spouse_ckey = input(usr, "Add CKEY of your spouse! Check it twice! Leave the field clear to have random spouse with other parameters.", "Bloodbinding", null) as text
+				if(!potential_spouse_ckey)
+					spouse_ckey = null
+				spouse_ckey = potential_spouse_ckey
+			// memory_for_family_members - возможность согласиться на альтернативные гениталии у партнёра (или отказаться)
+			if("genitals")
+				allow_alt_genitals_for_spouse = !allow_alt_genitals_for_spouse
+			// REDMOON ADD END
 
+			// REDMOON ADD END
 
 	else if(href_list["preference"] == "keybinds")
 		switch(href_list["task"])
@@ -1974,6 +1998,28 @@ Slots: [job.spawn_positions]</span>
 						to_chat(user, span_warning("You may switch your character and choose any role, if you don't meet the requirements (if any are specified) it won't be applied"))
 
 				if("family")
+					// REDMOON ADD START - memory_for_family_members - оповещение о правилах семей
+					if(usr?.client?.prefs?.be_russian)
+						to_chat(usr, span_warning("<hr>\
+						<b>Обязательные условия для семей:</b>\
+						<br>Вы должны зайти с начала раунда. \
+						<br>Барон и Консорт - одна семья. \
+						<br>У аколитов и жрецов не может быть семьи. \
+						<br>У бандитов, лагеря гоблинов, мигрантов и беженцев нет семей. \
+						<br>Семья не может официально быть однополой. \
+						<br>Молодой и старый не могут быть парой. \
+						<br>Дворяне не могут иметь супругу из нижнего сословья и наоборот."))
+					else
+						to_chat(usr, span_warning("<hr>\
+						<b>Mandatory rules for families:</b>\
+						<br>You MUST not be late-joiner (roundstart only). \
+						<br>Your only family as Baron and Consort - are you two. \
+						<br>You cannot have family as an acolyte or the priest. \
+						<br>You cannot be outsider role (bandits, goblins, refuges and migrants). \
+						<br>You cannot be official same-sex family. It is dark ages. \
+						<br>You cannot have too much of age difference (adult with old). \
+						<br>You cannot be noble and have your spouse in lower class."))
+					// REDMOON ADD END
 					if(family == FAMILY_NONE)
 						family = FAMILY_FULL
 					else
