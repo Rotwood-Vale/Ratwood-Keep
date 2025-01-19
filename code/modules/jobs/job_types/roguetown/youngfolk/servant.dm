@@ -9,26 +9,56 @@
 
 	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
 	allowed_ages = ALL_AGES_LIST
+	subclass_cat_rolls = list(CTAG_SERVANT = 20)
 
 	tutorial = "Granted a life of comfortable servitute in the Duke's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
 
-	outfit = /datum/outfit/job/roguetown/servant
 	display_order = JDO_SERVANT
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
 
-/datum/outfit/job/roguetown/servant/pre_equip(mob/living/carbon/human/H)
+/datum/job/roguetown/servant/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
+	if(L)
+		var/mob/living/carbon/human/H = L
+		H.advsetup = 1
+		H.invisibility = INVISIBILITY_MAXIMUM
+		H.become_blind("advsetup")
+
+/datum/subclass/servant/groundkeeper
+	name = "Groundkeeper"
+	tutorial = "You're just a servant who's sole purpose is keeping the manor in good condition."
+	outfit = /datum/outfit/job/roguetown/servant/groundkeeper
+	category_tags = list(CTAG_SERVANT)
+	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
+
+/datum/outfit/job/roguetown/servant/groundkeeper/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.gender == MALE)
+		pants = /obj/item/clothing/under/roguetown/tights
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	if(H.gender == FEMALE)
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/black
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
+		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		cloak = /obj/item/clothing/cloak/apron/waist
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/keyring/servant
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/needle = 1)
 	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		if(!isseelie(H))
 			H.change_stat("strength", -1)
 			H.change_stat("constitution", -1)
@@ -42,19 +72,99 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/replenish)			//Replenish was a cut spell now being added for Seelie maids, will replenish EMPTY bushes with more berries
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/sate_crop)			//Different from Dendor spell, will satisfy crop hunger but not bless it
 
+/datum/subclass/servant/chef
+	name = "Chef"
+	tutorial = "You are Their Lordship's favorite cook. Do NOT to put poison into the meals."
+	outfit = /datum/outfit/job/roguetown/servant/chef
+	category_tags = list(CTAG_SERVANT)
+	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
+
+/datum/outfit/job/roguetown/servant/chef/pre_equip(mob/living/carbon/human/H)
+	..()
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/storage/keyring/servant
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
-	else
+	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/black
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		cloak = /obj/item/clothing/cloak/apron/waist
-		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/storage/keyring/servant
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/keyring/servant
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		if(!isseelie(H))
+			H.change_stat("strength", -1)
+			H.change_stat("constitution", -1)
+			H.change_stat("intelligence", 1)
+			H.change_stat("perception", 1)
+			H.change_stat("speed", 1)
+		else if(isseelie(H))
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/replenish)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/sate_crop)
+	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
+
+/datum/subclass/servant/bankrupt
+	name = "Bankrupt Aristocrat"
+	tutorial = "You were born into low nobility, but unfortunately for you your family has gone bankrupt. \
+	Now you must work alongside with peasants in order to pay your debts back. Hide your true identity from the others."
+	outfit = /datum/outfit/job/roguetown/servant/bankrupt
+	category_tags = list(CTAG_SERVANT)
+	allowed_races = RACES_SHUNNED_UP
+
+/datum/outfit/job/roguetown/servant/bankrupt/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.gender == MALE)
+		pants = /obj/item/clothing/under/roguetown/tights
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	if(H.gender == FEMALE)
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/black
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
+		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		cloak = /obj/item/clothing/cloak/apron/waist
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/keyring/servant
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	id = /obj/item/clothing/ring/silver
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		H.change_stat("strength", -1)
+		H.change_stat("constitution", -1)
+		H.change_stat("endurance", -1)
+		H.change_stat("intelligence", 2)
+		H.change_stat("perception", 1)
+		H.change_stat("speed", 1)
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
