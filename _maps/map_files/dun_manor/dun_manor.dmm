@@ -5303,19 +5303,12 @@
 "exx" = (
 /obj/item/kitchen/spoon,
 /obj/item/kitchen/rollingpin,
-/obj/structure/rack/rogue/shelf,
 /obj/structure/closet/crate/chest{
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
 	},
-/obj/item/reagent_containers/glass/cup/wooden{
-	pixel_x = 5;
-	pixel_y = 39
-	},
-/obj/item/reagent_containers/glass/cup/wooden{
-	pixel_x = -5;
-	pixel_y = 39
-	},
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town)
 "eyU" = (
@@ -19403,7 +19396,17 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
+/obj/item/cooking/pan,
 /obj/item/clothing/cloak/apron/waist,
+/obj/structure/rack/rogue/shelf,
+/obj/item/reagent_containers/glass/cup/wooden{
+	pixel_x = 5;
+	pixel_y = 39
+	},
+/obj/item/reagent_containers/glass/cup/wooden{
+	pixel_x = -5;
+	pixel_y = 39
+	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town)
 "qLb" = (
