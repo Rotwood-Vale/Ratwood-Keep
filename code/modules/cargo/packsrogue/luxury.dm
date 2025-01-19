@@ -93,7 +93,7 @@
 
 /datum/supply_pack/rogue/luxury/riddleofsteel
 	name = "Riddle of Steel"
-	cost = 400
+	cost = 500
 	contains = list(/obj/item/riddleofsteel)
 
 /datum/supply_pack/rogue/luxury/polishing_kit
