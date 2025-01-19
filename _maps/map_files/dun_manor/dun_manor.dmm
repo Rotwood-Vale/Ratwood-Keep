@@ -1567,7 +1567,6 @@
 	icon_state = "longtable"
 	},
 /obj/item/natural/feather,
-/obj/item/psydonmusicbox,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/town/basement)
 "bjq" = (
@@ -6245,7 +6244,6 @@
 "fsW" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/scomstone,
-/obj/item/rogueweapon/whip/antique,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/town/basement)
 "ftb" = (
@@ -12880,6 +12878,7 @@
 /obj/item/reagent_containers/glass/bottle/rogue/manapot,
 /obj/item/book/rogue/bibble,
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/item/roguekey/psydonkey,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/town/basement)
 "llw" = (
@@ -18647,6 +18646,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach)
+"qlc" = (
+/obj/structure/reliquarybox,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/under/town/basement)
 "qli" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/rogue/naturalstone,
@@ -37456,7 +37459,7 @@ gdw
 epW
 gnM
 gnM
-gnM
+qlc
 haQ
 fsW
 gdw
