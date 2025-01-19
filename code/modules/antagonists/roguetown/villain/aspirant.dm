@@ -5,7 +5,7 @@
 	job_rank = ROLE_ASPIRANT
 	show_in_roundend = FALSE
 	confess_lines = list(
-		"THE THRONE BELONGS TO ME!",
+		"THE CHOSEN MUST TAKE THE THRONE!",
 	)
 	increase_votepwr = FALSE
 	rogue_enabled = TRUE
