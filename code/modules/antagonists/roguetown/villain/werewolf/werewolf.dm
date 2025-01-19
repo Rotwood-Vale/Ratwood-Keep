@@ -127,7 +127,7 @@
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE
-	max_integrity = 250
+	max_integrity = 1500
 	item_flags = DROPDEL
 
 /datum/intent/simple/werewolf
