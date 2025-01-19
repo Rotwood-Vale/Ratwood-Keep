@@ -396,16 +396,28 @@
 			lol++
 			switch(lol)
 				if(1)
-					intent1 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 64, pixel_y = 16, layer = layer+0.02)
+					if(usr?.client?.prefs?.be_russian)
+						intent1 = image(icon='icons/mob/ru_roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 64, pixel_y = 16, layer = layer+0.02)
+					else
+						intent1 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 64, pixel_y = 16, layer = layer+0.02)
 					add_overlay(intent1, TRUE)
 				if(2)
-					intent2 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 96, pixel_y = 16, layer = layer+0.02)
+					if(usr?.client?.prefs?.be_russian)
+						intent2 = image(icon='icons/mob/ru_roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 96, pixel_y = 16, layer = layer+0.02)
+					else
+						intent2 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 96, pixel_y = 16, layer = layer+0.02)
 					add_overlay(intent2, TRUE)
 				if(3)
-					intent3 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 64, layer = layer+0.02)
+					if(usr?.client?.prefs?.be_russian)
+						intent3 = image(icon='icons/mob/ru_roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 64, layer = layer+0.02)
+					else
+						intent3 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 64, layer = layer+0.02)
 					add_overlay(intent3, TRUE)
 				if(4)
-					intent4 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 96, layer = layer+0.02)
+					if(usr?.client?.prefs?.be_russian)
+						intent4 = image(icon='icons/mob/ru_roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 96, layer = layer+0.02)
+					else
+						intent4 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 96, layer = layer+0.02)
 					add_overlay(intent4, TRUE)
 		if(ismob(usr))
 			var/mob/M = usr
@@ -427,22 +439,46 @@
 			other = r_index
 		switch(used_index)
 			if(1)
-				border1 = image(icon='icons/mob/roguehud.dmi',icon_state="intentselected", pixel_x = 64, pixel_y = 16, layer = layer+0.01)
+				if(usr?.client?.prefs?.be_russian)
+					border1 = image(icon='icons/mob/ru_roguehud.dmi',icon_state="intentselected", pixel_x = 64, pixel_y = 16, layer = layer+0.01)
+				else
+					border1 = image(icon='icons/mob/roguehud.dmi',icon_state="intentselected", pixel_x = 64, pixel_y = 16, layer = layer+0.01)
 			if(2)
-				border1 = image(icon='icons/mob/roguehud.dmi',icon_state="intentselected", pixel_x = 96, pixel_y = 16, layer = layer+0.01)
+				if(usr?.client?.prefs?.be_russian)
+					border1 = image(icon='icons/mob/ru_roguehud.dmi',icon_state="intentselected", pixel_x = 96, pixel_y = 16, layer = layer+0.01)
+				else
+					border1 = image(icon='icons/mob/roguehud.dmi',icon_state="intentselected", pixel_x = 96, pixel_y = 16, layer = layer+0.01)
 			if(3)
-				border1 = image(icon='icons/mob/roguehud.dmi',icon_state="intentselected", pixel_x = 64, layer = layer+0.01)
+				if(usr?.client?.prefs?.be_russian)
+					border1 = image(icon='icons/mob/ru_roguehud.dmi',icon_state="intentselected", pixel_x = 64, layer = layer+0.01)
+				else
+					border1 = image(icon='icons/mob/roguehud.dmi',icon_state="intentselected", pixel_x = 64, layer = layer+0.01)
 			if(4)
-				border1 = image(icon='icons/mob/roguehud.dmi',icon_state="intentselected", pixel_x = 96, layer = layer+0.01)
+				if(usr?.client?.prefs?.be_russian)
+					border1 = image(icon='icons/mob/ru_roguehud.dmi',icon_state="intentselected", pixel_x = 96, layer = layer+0.01)
+				else
+					border1 = image(icon='icons/mob/roguehud.dmi',icon_state="intentselected", pixel_x = 96, layer = layer+0.01)
 		switch(other)
 			if(1)
-				border2 = image(icon='icons/mob/roguehud.dmi',icon_state=used, pixel_x = 64, pixel_y = 16, layer = layer+0.01)
+				if(usr?.client?.prefs?.be_russian)
+					border2 = image(icon='icons/mob/ru_roguehud.dmi',icon_state=used, pixel_x = 64, pixel_y = 16, layer = layer+0.01)
+				else
+					border2 = image(icon='icons/mob/roguehud.dmi',icon_state=used, pixel_x = 64, pixel_y = 16, layer = layer+0.01)
 			if(2)
-				border2 = image(icon='icons/mob/roguehud.dmi',icon_state=used, pixel_x = 96, pixel_y = 16, layer = layer+0.01)
+				if(usr?.client?.prefs?.be_russian)
+					border2 = image(icon='icons/mob/ru_roguehud.dmi',icon_state=used, pixel_x = 96, pixel_y = 16, layer = layer+0.01)
+				else
+					border2 = image(icon='icons/mob/roguehud.dmi',icon_state=used, pixel_x = 96, pixel_y = 16, layer = layer+0.01)
 			if(3)
-				border2 = image(icon='icons/mob/roguehud.dmi',icon_state=used, pixel_x = 64, layer = layer+0.01)
+				if(usr?.client?.prefs?.be_russian)
+					border2 = image(icon='icons/mob/ru_roguehud.dmi',icon_state=used, pixel_x = 64, layer = layer+0.01)
+				else
+					border2 = image(icon='icons/mob/roguehud.dmi',icon_state=used, pixel_x = 64, layer = layer+0.01)
 			if(4)
-				border2 = image(icon='icons/mob/roguehud.dmi',icon_state=used, pixel_x = 96, layer = layer+0.01)
+				if(usr?.client?.prefs?.be_russian)
+					border2 = image(icon='icons/mob/ru_roguehud.dmi',icon_state=used, pixel_x = 96, layer = layer+0.01)
+				else
+					border2 = image(icon='icons/mob/roguehud.dmi',icon_state=used, pixel_x = 96, layer = layer+0.01)
 		add_overlay(border2, TRUE)
 		add_overlay(border1, TRUE)
 
@@ -1673,6 +1709,10 @@
 		var/atom/movable/screen/rintent_selection/R = new(M.client)
 		var/datum/rmb_intent/RI = new X
 		R.stored_intent = X
+		if(usr?.client?.prefs?.be_russian)
+			R.icon = 'icons/mob/ru_roguehud.dmi'
+		else
+			R.icon = 'icons/mob/roguehud.dmi'
 		R.icon_state = RI.icon_state
 		R.name = RI.name
 		R.desc = RI.desc

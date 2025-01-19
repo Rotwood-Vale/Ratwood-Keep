@@ -1989,6 +1989,7 @@
 #include "modular\Neu_Food\code\raw\NeuFood_veggies.dm"
 #include "modular\Smoker\code\Smoker.dm"
 #include "modular\ze_genesis_call\genesis_call.dm"
+#include "modular_redmoon\code\_onclick\hud\screen_objects.dm"
 #include "modular_redmoon\code\controllers\subsystem\rogue\role_class_select\class_select_handler.dm"
 #include "modular_redmoon\code\controllers\subsystem\rogue\triumphs\triumph_buy_datums\giant.dm"
 #include "modular_redmoon\code\controllers\subsystem\rogue\triumphs\triumph_buy_datums\grenzelhoft.dm"

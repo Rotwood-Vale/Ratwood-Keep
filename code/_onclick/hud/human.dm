@@ -114,7 +114,10 @@
 	stressies.screen_loc = rogueui_stress
 	static_inventory += stressies
 
-	rmb_intent = new /atom/movable/screen/rmbintent(owner.client)
+	if(usr?.client?.prefs?.be_russian)
+		rmb_intent = new /atom/movable/screen/rmbintent/rus(owner.client)
+	else
+		rmb_intent = new /atom/movable/screen/rmbintent(owner.client)
 	rmb_intent.hud = src
 	rmb_intent.screen_loc = rogueui_rmbintents
 	static_inventory += rmb_intent
@@ -125,15 +128,24 @@
 	bloods.screen_loc = rogueui_blood
 	static_inventory += bloods
 
-	quad_intents = new /atom/movable/screen/quad_intents
+	if(usr?.client?.prefs?.be_russian)
+		quad_intents = new /atom/movable/screen/quad_intents/rus
+	else
+		quad_intents = new /atom/movable/screen/quad_intents
 	quad_intents.hud = src
 	static_inventory += quad_intents
 
-	def_intent = new /atom/movable/screen/def_intent
+	if(usr?.client?.prefs?.be_russian)
+		def_intent = new /atom/movable/screen/def_intent/rus
+	else
+		def_intent = new /atom/movable/screen/def_intent
 	def_intent.hud = src
 	static_inventory += def_intent
 
-	cmode_button = new /atom/movable/screen/cmode
+	if(usr?.client?.prefs?.be_russian)
+		cmode_button = new /atom/movable/screen/cmode/rus
+	else
+		cmode_button = new /atom/movable/screen/cmode
 	cmode_button.hud = src
 	static_inventory += cmode_button
 
@@ -327,13 +339,19 @@
 	inv_box.hud = src
 	static_inventory += inv_box
 
-	using = new /atom/movable/screen/drop()
+	if(usr?.client?.prefs?.be_russian)
+		using = new /atom/movable/screen/drop/rus()
+	else
+		using = new /atom/movable/screen/drop()
 	using.icon = ui_style
 	using.screen_loc = rogueui_drop
 	using.hud = src
 	static_inventory += using
 
-	throw_icon = new /atom/movable/screen/throw_catch()
+	if(usr?.client?.prefs?.be_russian)
+		throw_icon = new /atom/movable/screen/throw_catch/rus()
+	else
+		throw_icon = new /atom/movable/screen/throw_catch()
 	throw_icon.icon = ui_style
 	throw_icon.screen_loc = rogueui_throw
 	throw_icon.hud = src
@@ -351,12 +369,18 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new/atom/movable/screen/skills
+	if(usr?.client?.prefs?.be_russian)
+		using = new/atom/movable/screen/skills/rus
+	else
+		using = new/atom/movable/screen/skills
 	using.icon = ui_style
 	using.screen_loc = rogueui_skills
 	static_inventory += using
 
-	using = new/atom/movable/screen/craft
+	if(usr?.client?.prefs?.be_russian)
+		using = new/atom/movable/screen/craft/rus
+	else
+		using = new/atom/movable/screen/craft
 	using.icon = ui_style
 	using.screen_loc = rogueui_craft
 	static_inventory += using
@@ -369,13 +393,19 @@
 	hotkeybuttons += using
 */
 //sneak button
-	using = new /atom/movable/screen/rogmove
+	if(usr?.client?.prefs?.be_russian)
+		using = new /atom/movable/screen/rogmove/rus
+	else
+		using = new /atom/movable/screen/rogmove
 	using.screen_loc = rogueui_moves
 	using.hud = src
 	static_inventory += using
 	using.update_icon_state()
 //sprint button
-	using = new /atom/movable/screen/rogmove/sprint
+	if(usr?.client?.prefs?.be_russian)
+		using = new /atom/movable/screen/rogmove/sprint/rus
+	else
+		using = new /atom/movable/screen/rogmove/sprint
 	using.screen_loc = rogueui_moves
 	using.hud = src
 	static_inventory += using
