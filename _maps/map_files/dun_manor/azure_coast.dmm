@@ -3915,6 +3915,11 @@
 /obj/item/roguebin/water/gross,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/cave/orcdungeon)
+"CR" = (
+/obj/structure/closet/crate/chest/lootbox,
+/obj/item/clothing/neck/roguetown/psicross/naledi,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/orcdungeon)
 "CT" = (
 /obj/structure/mineral_door/bars,
 /turf/open/floor/rogue/blocks,
@@ -15378,7 +15383,7 @@ Gt
 kX
 uj
 eq
-gO
+CR
 eJ
 UR
 sT
