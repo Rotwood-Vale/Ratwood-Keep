@@ -57,6 +57,7 @@
 		ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 
 /datum/outfit/job/roguetown/disciple/proc/nadeli_equip(mob/living/carbon/human/H)
+	backpack_contents = list(/obj/item/roguekey/inquisition = 1)
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	cloak = /obj/item/clothing/cloak/psydontabard/alt
 	if(H.mind)
