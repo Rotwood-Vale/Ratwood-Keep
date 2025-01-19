@@ -51,6 +51,10 @@
 	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
+	if(!H.has_language(/datum/language/orcish))
+		H.grant_language(/datum/language/orcish)
+		to_chat(H, span_info("I can speak Orchish with ,o before my speech."))
+
 //Shaman
 /datum/migrant_role/gronn/shaman
 	name = "Gronn Shaman"
@@ -105,6 +109,10 @@
 	C.grant_spells(H)//No real spells of Graggar, yet.
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
+	if(!H.has_language(/datum/language/orcish))
+		H.grant_language(/datum/language/orcish)
+		to_chat(H, span_info("I can speak Orchish with ,o before my speech."))
+
 //Warrior
 /datum/migrant_role/gronn/warrior
 	name = "Gronn Warrior"
@@ -153,6 +161,10 @@
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+
+	if(!H.has_language(/datum/language/orcish))
+		H.grant_language(/datum/language/orcish)
+		to_chat(H, span_info("I can speak Orchish with ,o before my speech."))
 
 //Tribal
 /datum/migrant_role/gronn/tribal
@@ -204,6 +216,10 @@
 	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
+	if(!H.has_language(/datum/language/orcish))
+		H.grant_language(/datum/language/orcish)
+		to_chat(H, span_info("I can speak Orchish with ,o before my speech."))
+
 //Slave
 /datum/migrant_role/gronn/slave
 	name = "Gronn Slave"
@@ -243,3 +259,7 @@
 	H.cmode_music = 'sound/music/combat_gronn.ogg'
 
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+
+	if(!H.has_language(/datum/language/orcish))
+		H.grant_language(/datum/language/orcish)
+		to_chat(H, span_info("I can speak Orchish with ,o before my speech."))
