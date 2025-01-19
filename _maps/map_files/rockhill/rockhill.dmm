@@ -22632,7 +22632,12 @@
 	pixel_y = -3
 	},
 /obj/item/rogueweapon/whip{
-	pixel_y = 6
+	pixel_y = 2;
+	pixel_x = -4
+	},
+/obj/item/clothing/head/roguetown/menacing{
+	pixel_y = 8;
+	pixel_x = 3
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/bath)
@@ -36955,6 +36960,13 @@
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/outdoors/town/harbor)
+"uEX" = (
+/obj/structure/glowshroom,
+/turf/open/water/river{
+	icon_state = "rockwd";
+	water_reagent = /datum/reagent/water/gross
+	},
+/area/rogue/under/cave)
 "uFt" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -110158,7 +110170,7 @@ iTw
 pSP
 cTA
 dFE
-rlu
+dFE
 dFE
 dFE
 boa
@@ -114477,7 +114489,7 @@ dFE
 gyj
 dFE
 dFE
-dFE
+rlu
 dFE
 dFE
 jFF
@@ -115341,7 +115353,7 @@ jyI
 jyI
 vTW
 dFE
-rlu
+dFE
 dFE
 dFE
 jFF
@@ -118797,7 +118809,7 @@ cLd
 cTA
 jyI
 tMK
-rlu
+dFE
 dFE
 dFE
 jFF
@@ -122253,7 +122265,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -127006,7 +127018,7 @@ rlu
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 bpD
@@ -129597,7 +129609,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -133055,7 +133067,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 bpD
 bpD
@@ -135647,7 +135659,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 bpD
 bpD
@@ -139102,7 +139114,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -141694,7 +141706,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 bpD
@@ -142987,7 +142999,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -143849,7 +143861,7 @@ bpD
 bpD
 dFE
 dFE
-dFE
+rlu
 dFE
 dFE
 dFE
@@ -145577,7 +145589,7 @@ bpD
 bpD
 dFE
 dFE
-dFE
+rlu
 dFE
 dFE
 dFE
@@ -146440,7 +146452,7 @@ bpD
 bpD
 bpD
 wPC
-wPC
+uEX
 wPC
 wPC
 wPC
@@ -146876,7 +146888,7 @@ bpD
 bpD
 bpD
 bpD
-wPC
+uEX
 dFE
 dFE
 dFE
@@ -148172,9 +148184,9 @@ bpD
 bpD
 bpD
 bpD
-wPC
+uEX
 dFE
-rlu
+dFE
 dFE
 jFF
 fjw
@@ -230676,7 +230688,7 @@ gLf
 gLf
 rRb
 kdN
-ptr
+kdN
 kdN
 iyZ
 jQS
@@ -233269,7 +233281,7 @@ wbg
 wbg
 wbg
 esR
-ptr
+kdN
 kdN
 jQS
 iyZ
@@ -235430,7 +235442,7 @@ wVI
 wbg
 oAn
 kdN
-ptr
+kdN
 iyZ
 iyZ
 qbG
@@ -237157,7 +237169,7 @@ jsu
 wVI
 wVI
 oAn
-ptr
+kdN
 kdN
 iyZ
 iyZ
