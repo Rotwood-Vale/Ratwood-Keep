@@ -7,7 +7,7 @@
 	"azure_forest.dmm",
 	"azure_coast.dmm"
 	],
-	"traits": [{"Name": "Dun Manor", "Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true},
+	"traits": [{"Name": "Dun Manor", "Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true},
 	{"Name": "Magma Crater"},
 	{"Name": "Azure Forest", "Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true},
 	{"Name": "Azure Coast", "Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true}],

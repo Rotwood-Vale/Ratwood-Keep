@@ -530,9 +530,10 @@
 			mmb_intent.charging_slowdown = ranged_ability.charging_slowdown
 			mmb_intent.chargedloop = ranged_ability.chargedloop
 			mmb_intent.update_chargeloop()
-
-	hud_used.quad_intents.switch_intent(input)
-	hud_used.give_intent.switch_intent(input)
+	
+	if(hud_used)		
+		hud_used.quad_intents.switch_intent(input)
+		hud_used.give_intent.switch_intent(input)
 	givingto = null
 
 /mob/verb/def_intent_change(input as num)
@@ -587,7 +588,11 @@
 /mob
 	var/last_aimhchange = 0
 	var/aimheight = 11
-	var/cmode_music = 'sound/music/combat.ogg'
+	var/cmode_music = list(
+						'sound/music/combat.ogg',
+						'sound/music/combat2.ogg',
+						'sound/music/combat_weird.ogg',
+						)
 
 /mob/proc/aimheight_change(input)
 	var/old_zone = zone_selected

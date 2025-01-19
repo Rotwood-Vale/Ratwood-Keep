@@ -182,7 +182,9 @@
 				// Five or above tiles between people
 				if(6 to INFINITY)
 					self_points += 1
-
+			// If we have Giant virtue
+			if(HAS_TRAIT(src,TRAIT_BIGGUY))
+				self_points += 2
 			// If charging into the BACK of the enemy (facing away)
 			if(L.dir == get_dir(src, L))
 				self_points += 2
@@ -1422,6 +1424,8 @@
 //Mobs on Fire
 /mob/living/proc/IgniteMob()
 	if(fire_stacks > 0 && !on_fire)
+		if(HAS_TRAIT(src, TRAIT_NOFIRE) && prob(90)) // Nofire is described as nonflammable, not immune. 90% chance of avoiding ignite
+			return
 		testing("ignis")
 		on_fire = 1
 		src.visible_message(span_warning("[src] catches fire!"), \

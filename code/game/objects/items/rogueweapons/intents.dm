@@ -321,6 +321,7 @@
 	noaa = TRUE
 	charging_slowdown = 3
 	warnoffset = 20
+	var/strength_check = FALSE //used when we fire HEAVY bows
 
 /datum/intent/shoot/prewarning()
 	if(masteritem && mastermob)
@@ -337,7 +338,8 @@
 	noaa = TRUE
 	charging_slowdown = 3
 	warnoffset = 20
-
+	var/strength_check = FALSE //used when we fire HEAVY bows
+	
 /datum/intent/proc/arc_check()
 	return FALSE
 
@@ -530,7 +532,7 @@
 /datum/intent/simple/spear
 	name = "spear"
 	icon_state = "instrike"
-	attack_verb = list("stabs", "skewers", "bashes")
+	attack_verb = list("stabs", "skewers")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = list("genthrust", "genstab")
