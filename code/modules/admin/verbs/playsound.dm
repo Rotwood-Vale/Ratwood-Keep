@@ -245,8 +245,7 @@ GLOBAL_LIST_INIT(ambience_files, list(
 	'sound/music/area/shop.ogg',
 	'sound/music/area/spidercave.ogg',
 	'sound/music/area/towngen.ogg',
-	'sound/music/area/townstreets.ogg',
-	'sound/music/jukeboxes/tav3.ogg'
+	'sound/music/area/townstreets.ogg'
 	))
 
 /client/verb/preload_sounds()
