@@ -2,7 +2,7 @@
 
 /datum/tgs_chat_embed/provider/author/glob
 	name = "Ксайликс вещает"
-	icon_url = "https://media.discordapp.net/attachments/1287095900103250030/1305984123621605386/faeywild-mini.jpg?ex=673503ff&is=6733b27f&hm=b7aec850ffc21a8edeb99f497c15ae2ac6b5303ec2a107ca576efbf3b1493226&format=webp&"
+	icon_url = "https://cdn.discordapp.com/attachments/1325992384684884115/1330502172906885131/IMG_4957.png?ex=678e3635&is=678ce4b5&hm=525f0416de455a33fabe2b014f91a546bc2883f670dd2785afbc95add71375e4&"
 
 /world/TgsInitializationComplete()
 	. = ..()
