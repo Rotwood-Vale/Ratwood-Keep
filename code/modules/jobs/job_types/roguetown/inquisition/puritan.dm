@@ -152,10 +152,10 @@
 	var/static/list/innocent_lines = list(
 		"I DON'T KNOW!",
 		"STOP THE PAIN!!",
-		"I DON'T DESERVE THIS!",
-		"THE PAIN!",
-		"I HAVE NOTHING TO SAY...!",
-		"WHY ME?!",
+		"I AM INNOCENT!",
+		"IT HURTS!",
+		"NO MORE, PLEASE!",
+		"WHY?!!",
 	)
 	var/resist_chance
 	if(resist)
