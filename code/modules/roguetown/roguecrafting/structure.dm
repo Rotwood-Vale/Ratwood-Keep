@@ -469,6 +469,15 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 
+/datum/crafting_recipe/roguetown/structure/operatingtable
+	name = "operating table"
+	result = /obj/structure/table/optable
+	reqs = list(/obj/item/grown/log/tree/small = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/structure/stonetable
 	name = "stone table"
 	result = /obj/structure/table/church
