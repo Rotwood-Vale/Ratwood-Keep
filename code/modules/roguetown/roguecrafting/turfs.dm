@@ -179,6 +179,22 @@
 			return
 	return TRUE
 
+/datum/crafting_recipe/roguetown/turfs/twigplatform
+	name = "twig platform"
+	result = /turf/open/floor/rogue/twig/platform
+	reqs = list(/obj/item/grown/log/tree/stick = 3,
+				/obj/item/rope = 1)
+	skillcraft = /datum/skill/craft/crafting
+	verbage_simple = "assemble"
+	verbage = "assembles"
+	skill_level = 2
+
+/datum/crafting_recipe/roguetown/turfs/twigplatform/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/transparent/openspace))
+	return TRUE
+
 /datum/crafting_recipe/roguetown/turfs/tentwall
 	name = "tent wall"
 	result = /turf/closed/wall/mineral/rogue/tent
