@@ -13,6 +13,7 @@
 
 	tutorial = "Granted a life of comfortable servitute in the Duke's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
 
+	outfit = /datum/outfit/job/roguetown/servant
 	display_order = JDO_SERVANT
 	give_bank_account = TRUE
 	min_pq = -10
@@ -26,14 +27,7 @@
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
 
-/datum/subclass/servant/groundkeeper
-	name = "Groundkeeper"
-	tutorial = "You're just a servant who's sole purpose is keeping the manor in good condition."
-	outfit = /datum/outfit/job/roguetown/servant/groundkeeper
-	category_tags = list(CTAG_SERVANT)
-	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
-
-/datum/outfit/job/roguetown/servant/groundkeeper/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/servant/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights
@@ -48,6 +42,15 @@
 	beltr = /obj/item/storage/keyring/servant
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backr = /obj/item/storage/backpack/rogue/satchel
+
+/datum/subclass/servant/groundkeeper
+	name = "Groundkeeper"
+	tutorial = "You're just a servant who's sole purpose is keeping the manor in good condition."
+	outfit = /datum/outfit/job/roguetown/servant/groundkeeper
+	category_tags = list(CTAG_SERVANT)
+	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
+
+/datum/outfit/job/roguetown/servant/groundkeeper/pre_equip(mob/living/carbon/human/H)
 	backpack_contents = list(/obj/item/needle = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
@@ -81,19 +84,6 @@
 
 /datum/outfit/job/roguetown/servant/chef/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	if(H.gender == FEMALE)
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/black
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-		cloak = /obj/item/clothing/cloak/apron/waist
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/keyring/servant
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
@@ -132,20 +122,7 @@
 
 /datum/outfit/job/roguetown/servant/bankrupt/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	if(H.gender == FEMALE)
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/black
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-		cloak = /obj/item/clothing/cloak/apron/waist
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/keyring/servant
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	id = /obj/item/clothing/ring/silver
-	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)

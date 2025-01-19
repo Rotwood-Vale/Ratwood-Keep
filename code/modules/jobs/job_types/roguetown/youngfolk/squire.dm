@@ -13,6 +13,7 @@
 	tutorial = "You are a little hero bound to your master. Often mistreated, you are still a warrior, yet a young and an inexperienced one. \
 	The dae when you will be proudly charging into the enemy wearing a plate armor will come eventually, but for now... NOT A STEP FROM YOUR MASTER!"
 
+	outfit = /datum/outfit/job/roguetown/squire
 	display_order = JDO_SQUIRE
 	give_bank_account = TRUE
 	min_pq = -5 //squires aren't great but they can do some damage
@@ -20,11 +21,33 @@
 
 /datum/job/roguetown/squire/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
-	if(L)
+	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
+		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
+			var/obj/item/clothing/S = H.cloak
+			var/index = findtext(H.real_name, " ")
+			if(index)
+				index = copytext(H.real_name, 1,index)
+			if(!index)
+				index = H.real_name
+			S.name = "squire jupon ([index])"
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
+
+/datum/outfit/job/roguetown/squire/pre_equip(mob/living/carbon/human/H)
+	..()
+	head = /obj/item/clothing/head/roguetown/helmet/sallet
+	pants = /obj/item/clothing/under/roguetown/tights
+	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
+	shoes = /obj/item/clothing/shoes/roguetown/armor
+	belt = /obj/item/storage/belt/rogue/leather
+	beltl = /obj/item/storage/keyring/squire
+	beltr = /obj/item/rogueweapon/sword/short
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(/obj/item/rope/chain = 1)
 
 /datum/subclass/squire/knight
 	name = "Knight in Training"
@@ -34,18 +57,7 @@
 
 /datum/outfit/job/roguetown/squire/knight/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/kettle
-	pants = /obj/item/clothing/under/roguetown/tights
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
-	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	shoes = /obj/item/clothing/shoes/roguetown/armor
-	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/keyring/servant
-	beltr = /obj/item/rogueweapon/sword/short
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rope/chain = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
@@ -70,18 +82,6 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-/datum/outfit/job/roguetown/squire/knight/post_equip(mob/living/carbon/human/H)
-	..()
-	if(ishuman(H))
-		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
-			var/obj/item/clothing/S = H.cloak
-			var/index = findtext(H.real_name, " ")
-			if(index)
-				index = copytext(H.real_name, 1,index)
-			if(!index)
-				index = H.real_name
-			S.name = "squire jupon ([index])"
-
 /datum/subclass/squire/apprentice
 	name = "Diligent Apprentice"
 	tutorial = "You are a freshly enlisted fellow yet to be ready serve your liege on your own. You knight will take care of your training as well as you shall take care of them."
@@ -90,18 +90,7 @@
 
 /datum/outfit/job/roguetown/squire/apprentice/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/kettle
-	pants = /obj/item/clothing/under/roguetown/tights
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
-	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	shoes = /obj/item/clothing/shoes/roguetown/armor
-	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/keyring/servant
-	beltr = /obj/item/rogueweapon/sword/short
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rope/chain = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
@@ -125,18 +114,6 @@
 		H.change_stat("endurance", 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-/datum/outfit/job/roguetown/squire/apprentice/post_equip(mob/living/carbon/human/H)
-	..()
-	if(ishuman(H))
-		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
-			var/obj/item/clothing/S = H.cloak
-			var/index = findtext(H.real_name, " ")
-			if(index)
-				index = copytext(H.real_name, 1,index)
-			if(!index)
-				index = H.real_name
-			S.name = "squire jupon ([index])"
-
 /datum/subclass/squire/levy
 	name = "Levy Recruit"
 	tutorial = "You were supposed to live a lyfe of a humble farmer, yet the lyfe had other plans for you. Taken away from your parents, you joined the ranks of levies."
@@ -145,18 +122,7 @@
 
 /datum/outfit/job/roguetown/squire/levy/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/kettle
-	pants = /obj/item/clothing/under/roguetown/tights
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
-	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	shoes = /obj/item/clothing/shoes/roguetown/armor
-	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/keyring/servant
-	beltr = /obj/item/rogueweapon/sword/short
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rope/chain = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
@@ -182,15 +148,3 @@
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
-
-/datum/outfit/job/roguetown/squire/levy/post_equip(mob/living/carbon/human/H)
-	..()
-	if(ishuman(H))
-		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
-			var/obj/item/clothing/S = H.cloak
-			var/index = findtext(H.real_name, " ")
-			if(index)
-				index = copytext(H.real_name, 1,index)
-			if(!index)
-				index = H.real_name
-			S.name = "squire jupon ([index])"

@@ -13,6 +13,7 @@
 
 	tutorial = "You’ve never felt the gnawing of the winter, never known the bite of hunger and certainly have never known what the peasantry call a honest day's work. In your youth you were as free as any bird in the sky, but that is of the past. Your noble duties are fast approaching and you will soon have to choose: Continue to spend life leisurely, or stalwartly shoulder the duties you've been handed."
 
+	outfit = /datum/outfit/job/roguetown/prince
 	display_order = JDO_PRINCE
 	give_bank_account = TRUE
 	min_pq = -10
@@ -33,13 +34,7 @@
 	if(GLOB.lordsurname && H)
 		give_lord_surname(H)
 
-/datum/subclass/prince/devout
-	name = "Devout Successor"
-	tutorial = "Your fate was already defined the moment you were born. One dae you shall inherit the throne and your father's realm. But for now, you can just enjoy your highborn lyfe."
-	outfit = /datum/outfit/job/roguetown/prince/devout
-	category_tags = list(CTAG_HEIR)
-
-/datum/outfit/job/roguetown/prince/devout/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/heir
@@ -53,6 +48,15 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backr = /obj/item/storage/backpack/rogue/satchel
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
+
+/datum/subclass/prince/devout
+	name = "Devout Successor"
+	tutorial = "Your fate was already defined the moment you were born. One dae you shall inherit the throne and your father's realm. But for now, you can just enjoy your highborn lyfe."
+	outfit = /datum/outfit/job/roguetown/prince/devout
+	category_tags = list(CTAG_HEIR)
+
+/datum/outfit/job/roguetown/prince/devout/pre_equip(mob/living/carbon/human/H)
+	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
@@ -88,19 +92,7 @@
 	category_tags = list(CTAG_HEIR)
 
 /datum/outfit/job/roguetown/prince/militant/pre_equip(mob/living/carbon/human/H)
-	if(H.gender == MALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heir
-		belt = /obj/item/storage/belt/rogue/leather
-		pants = /obj/item/clothing/under/roguetown/tights
-	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heiress
-		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/white
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	beltl = /obj/item/storage/keyring/royal
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	backr = /obj/item/storage/backpack/rogue/satchel
-	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
@@ -134,18 +126,6 @@
 	category_tags = list(CTAG_HEIR)
 
 /datum/outfit/job/roguetown/prince/bookworm/pre_equip(mob/living/carbon/human/H)
-	if(H.gender == MALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heir
-		belt = /obj/item/storage/belt/rogue/leather
-		pants = /obj/item/clothing/under/roguetown/tights
-	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heiress
-		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/white
-	beltl = /obj/item/storage/keyring/royal
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	backr = /obj/item/storage/backpack/rogue/satchel
-	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
@@ -183,18 +163,6 @@
 	category_tags = list(CTAG_HEIR)
 
 /datum/outfit/job/roguetown/prince/inbred/pre_equip(mob/living/carbon/human/H)
-	if(H.gender == MALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heir
-		belt = /obj/item/storage/belt/rogue/leather
-		pants = /obj/item/clothing/under/roguetown/tights
-	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heiress
-		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/white
-	beltl = /obj/item/storage/keyring/royal
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	backr = /obj/item/storage/backpack/rogue/satchel
-	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
