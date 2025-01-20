@@ -849,11 +849,10 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 /obj/item/storage/fancy/pilltin/wake
 	name = "pill tin (wake)"
 
-	populate_contents = list(
-		/obj/item/reagent_containers/pill/caffpill,
-		/obj/item/reagent_containers/pill/caffpill,
-		/obj/item/reagent_containers/pill/caffpill
-	)
+/obj/item/storage/fancy/pilltin/wake/PopulateContents()
+	new /obj/item/reagent_containers/pill/caffpill(src)
+	new /obj/item/reagent_containers/pill/caffpill(src)
+	new /obj/item/reagent_containers/pill/caffpill(src)
 
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
@@ -923,19 +922,16 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 		/obj/item/needle/pestra
 	))
 
-/obj/item/storage/fancy/skit
-	populate_contents = list(
-		/obj/item/rogueweapon/surgery/scalpel,
-		/obj/item/rogueweapon/surgery/saw,
-		/obj/item/rogueweapon/surgery/hemostat,
-		/obj/item/rogueweapon/surgery/hemostat,
-		/obj/item/rogueweapon/surgery/retractor,
-		/obj/item/rogueweapon/surgery/bonesetter,
-		/obj/item/rogueweapon/surgery/cautery,
-		/obj/item/natural/worms/leech/cheele,
-		/obj/item/needle/pestra
-	)
-
+/obj/item/storage/fancy/skit/PopulateContents()
+	new /obj/item/rogueweapon/surgery/scalpel(src)
+	new /obj/item/rogueweapon/surgery/saw(src)
+	new /obj/item/rogueweapon/surgery/hemostat(src)
+	new /obj/item/rogueweapon/surgery/hemostat(src)
+	new /obj/item/rogueweapon/surgery/retractor(src)
+	new /obj/item/rogueweapon/surgery/bonesetter(src)
+	new /obj/item/rogueweapon/surgery/cautery(src)
+	new /obj/item/natural/worms/leech/cheele(src)
+	new /obj/item/needle/pestra(src)
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
@@ -946,15 +942,10 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	throwforce = 1
 	slot_flags = null
 
-	populate_contents = list(
-		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
-		/obj/item/natural/bundle/cloth/bandage/full,
-		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
-		/obj/item/reagent_containers/pill/pnkpill,
-		/obj/item/candle/yellow,
-		/obj/item/needle,
-		/obj/item/book/rogue/medical_notebook
-	)
+/obj/item/storage/fancy/ifak/PopulateContents()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	for(var/i = 1 to STR.max_items)
+		new spawn_type(src)
 
 /obj/item/storage/fancy/ifak/update_icon()
 	if(fancy_open)
@@ -1013,8 +1004,16 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 		/obj/item/needle,
 		/obj/item/needle/thorn,
 		/obj/item/needle/pestra,
-		/obj/item/book/rogue/medical_notebook
 	))
+
+/obj/item/storage/fancy/ifak/PopulateContents()
+	new /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju(src)
+	new /obj/item/natural/bundle/cloth/bandage/full(src)
+	new /obj/item/reagent_containers/hypospray/medipen/sty/detox(src)
+	new /obj/item/reagent_containers/pill/pnkpill(src)
+	new /obj/item/candle/yellow(src)
+	new /obj/item/needle(src)
+	new /obj/item/book/rogue/medical_notebook(src)
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"
