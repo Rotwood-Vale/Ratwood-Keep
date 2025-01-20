@@ -4,9 +4,6 @@
 	icon_state = "ore"
 	w_class = WEIGHT_CLASS_NORMAL
 
-	grid_width = 32
-	grid_height = 32
-
 /obj/item/rogueore/gold
 	name = "raw gold"
 	desc = "A clump of dirty lustrous nuggets!"
@@ -96,9 +93,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = null
 	var/datum/anvil_recipe/currecipe
-
-	grid_width = 64
-	grid_height = 32
 
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
