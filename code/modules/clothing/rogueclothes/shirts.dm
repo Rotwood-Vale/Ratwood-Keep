@@ -16,9 +16,6 @@
 	flags_inv = HIDEBOOB
 	w_class = WEIGHT_CLASS_SMALL
 
-	grid_width = 64
-	grid_height = 64
-
 /obj/item/clothing/suit/roguetown/shirt/undershirt
 	name = "shirt"
 	desc = ""

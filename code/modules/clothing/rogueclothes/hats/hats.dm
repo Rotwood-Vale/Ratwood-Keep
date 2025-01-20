@@ -12,9 +12,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
-	grid_height = 64
-	grid_width = 64
-
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()
 	user.update_fov_angles()
@@ -587,6 +584,7 @@
 	desc = "A steel helmet which protects the ears."
 	smeltresult = /obj/item/ingot/steel
 	body_parts_covered = HEAD|HAIR|EARS
+	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/roguetown/helmet/sallet/attackby(obj/item/W, mob/living/user, params)
 	..()
@@ -633,7 +631,7 @@
 	icon_state = "sallet_visor"
 	max_integrity = 275
 	adjustable = CAN_CADJUST
-	flags_inv = HIDEFACE
+	flags_inv = HIDEFACE|HIDEEARS
 	flags_cover = HEADCOVERSEYES
 	armor_class = ARMOR_CLASS_MEDIUM
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
@@ -1022,7 +1020,7 @@
 	max_integrity = 235
 	emote_environment = 3
 	body_parts_covered = HEAD|HAIR|EARS
-	flags_inv = HIDEHAIR
+	flags_inv = HIDEHAIR|HIDEEARS
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
 
