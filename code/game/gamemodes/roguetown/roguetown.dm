@@ -193,8 +193,14 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				pick_cultist()
 				log_game("Major Antagonist: Cultists")
 	else//Lowpop? Least destructive major antag.
-		pick_rebels()
-		log_game("Major Antagonist: Peasant Rebellion")
+		var/major_roll_lowpop = pick(1,2)
+		switch(major_roll_lowpop)
+			if(1)
+				pick_rebels()
+				log_game("Major Antagonist: Peasant Rebellion")
+			if(2)
+				pick_vampires()
+				log_game("Major Antagonist: Vampires")
 
 	if(prob(100))
 		pick_bandits()

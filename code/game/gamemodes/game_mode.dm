@@ -440,7 +440,11 @@
 
 
 
-/datum/game_mode/proc/num_players()
+/// Counts the number of players, can be set to ONLY count ready players.
+/proc/num_players(count_ready_only = FALSE)
+	if(!count_ready_only)
+		return LAZYLEN(GLOB.new_player_list)
+
 	. = 0
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/P = i
