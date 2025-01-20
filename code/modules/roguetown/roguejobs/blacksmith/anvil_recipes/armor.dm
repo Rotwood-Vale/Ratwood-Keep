@@ -8,6 +8,8 @@
 //-> and not messy names like ibreastplate and hplate
 
 // --------- IRON RECIPES -----------
+/datum/anvil_recipe/armor/iron
+	skill_level = 3
 
 /datum/anvil_recipe/armor/iron/chainmail
 	name = "Chainmail"
@@ -89,14 +91,12 @@
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/clothing/head/roguetown/helmet/goblin
-	skill_level = 2
 
 /datum/anvil_recipe/armor/iron/plategoblin
 	name = "Goblin Mail (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
-	skill_level = 2
 
 /datum/anvil_recipe/armor/iron/chainkini
 	name = "Chainkini (+1 Cured Leather)"
@@ -106,6 +106,8 @@
 	skill_level = 6
 
 // --------- STEEL -----------
+/datum/anvil_recipe/armor/steel
+	skill_level = 4
 
 /datum/anvil_recipe/armor/steel/haubergeon
 	name = "Haubergeon"
@@ -117,35 +119,31 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/halfplate
-	name = "Half-Plate Armour (+2 Steel)"
+	name = "Half-Plate Armour (+2 Steel, +1 Cured Hide)"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/steel)
+	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate
-	skill_level = 3
 
 /datum/anvil_recipe/armor/steel/fullplate
-	name = "Full-Plate Armour (+3 Steel)"
+	name = "Full-Plate Armour (+3 Steel, +2 Cured Hide)"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel)
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full
-	skill_level = 4
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/coatplates
 	name = "Coat Of Plates (+1 Cloth)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/natural/cloth)
 	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates
-	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/brigandine
 	name = "Brigandine (+1 Steel) (+2 Cloth)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/cloth, /obj/item/natural/cloth)
 	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine
-	skill_level = 3
 
 /datum/anvil_recipe/armor/steel/chaincoif
 	name = "Chain Coif"
@@ -158,8 +156,9 @@
 	created_item = /obj/item/clothing/gloves/roguetown/chain
 
 /datum/anvil_recipe/armor/steel/plateglove
-	name = "Plate Gauntlets"
+	name = "Plate Gauntlets (+1 Cured Hide)"
 	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/gloves/roguetown/plate
 
 /datum/anvil_recipe/armor/steel/chainleg
@@ -177,14 +176,12 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/under/roguetown/platelegs
-	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/cuirass
 	name = "Cuirass (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half
-	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/scalemail
 	name = "Scalemail"
@@ -241,34 +238,29 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/helmetbuc
 	name = "Bucket Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
-	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/helmetpig
 	name = "Pigface Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
-	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/helmetvolf
 	name = "Volf Face Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/volfplate
-	skill_level = 3
 
 /datum/anvil_recipe/armor/steel/bascinet
 	name = "Bascinet Helmet"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet
-	skill_level = 2
 
 
 
@@ -277,11 +269,12 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/plateboot
-	name = "Plated Boots"
+	name = "Plated Boots (+1 Cured Hide)"
 	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/shoes/roguetown/armor/steel
 
 /datum/anvil_recipe/armor/platemask/steel
@@ -299,62 +292,62 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/astratahelm_alt
 	name = "Astratan Helmet Alt (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/malumhelm
 	name = "Malummite Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/malum
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/necrahelm
 	name = "Necran Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/necrahelm_alt
 	name = "Necran Helmet Alt (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/nochelm
 	name = "Noctian Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/noc
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/dendorhelm
 	name = "Dendorite Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/dendor
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/ravoxian
 	name = "Ravoxian Helmet (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/eoran
 	name = "Eoran Helmet"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
-	skill_level = 2
+	skill_level = 5
 
 /datum/anvil_recipe/armor/steel/belt_steel
 	name = "Steel Belt"
@@ -387,37 +380,37 @@
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
-	skill_level = 4
+	skill_level = 5
 
 /datum/anvil_recipe/armor/blacksteel/platechest
 	name = "Blacksteel Plate Armor (+3 Blacksteel)"
 	req_bar = /obj/item/ingot/blacksteel
-	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel)
+	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
-	skill_level = 5
+	skill_level = 6
 
 /datum/anvil_recipe/armor/blacksteel/platelegs
 	name = "Blacksteel Plate Chausses (+1 Blacksteel)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/under/roguetown/blacksteel/platelegs
-	skill_level = 3
+	skill_level = 5
 
 /datum/anvil_recipe/armor/blacksteel/bucket
 	name = "Blacksteel Bucket Helmet (+1 Blacksteel)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
-	skill_level = 3
+	skill_level = 5
 
 /datum/anvil_recipe/armor/blacksteel/plategloves
 	name = "Blacksteel Plate Gauntlets"
 	req_bar = /obj/item/ingot/blacksteel
 	created_item = /obj/item/clothing/gloves/roguetown/blacksteel/plategloves
-	skill_level = 3
+	skill_level = 5
 
 /datum/anvil_recipe/armor/blacksteel/plateboots
 	name = "Blacksteel Plate Boots"
 	req_bar = /obj/item/ingot/blacksteel
 	created_item = /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
-	skill_level = 3
+	skill_level = 5

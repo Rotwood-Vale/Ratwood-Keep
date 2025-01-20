@@ -1,5 +1,9 @@
 /datum/anvil_recipe/tools
 	i_type = "Tools"
+
+/datum/anvil_recipe/tools/steel
+	skill_level = 3
+
 /datum/anvil_recipe/general
 	i_type = "General"
 
@@ -137,7 +141,6 @@
 						/obj/item/lockpick,
 						/obj/item/lockpick
 						)
-	skill_level = 1
 
 /datum/anvil_recipe/tools/lockpickring
 	name = "Lockpickrings x3"
@@ -146,7 +149,6 @@
 						/obj/item/lockpickring,
 						/obj/item/lockpickring
 						)
-	skill_level = 0
 
 // --------- Steel -----------
 
@@ -196,11 +198,6 @@
 	name = "Cautery Iron"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
-	
-/datum/anvil_recipe/general/cupsgold
-	name = "Cowbell"
-	req_bar = /obj/item/ingot/copper
-	created_item = list(/obj/item/catbell/cow)
 
 /datum/anvil_recipe/general/cowbell
 	name = "Cowbell x3"
