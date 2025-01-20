@@ -25,19 +25,15 @@
 /obj/item/organ/wings/anthro
 	name = "wild-kin wings"
 
-/obj/item/organ/wings/flight
-	unconditional_flight = TRUE
-	can_open = TRUE
-
-/obj/item/organ/wings/flight/aasimar
+/obj/item/organ/wings/aasimar
 	name = "angel wings"
 	desc = "A pair of magnificent, feathery wings. They look strong enough to lift you up in the air."
 
-/obj/item/organ/wings/flight/dragon
+/obj/item/organ/wings/dragon
 	name = "dragon wings"
 	desc = "A pair of intimidating, membranous wings. They look strong enough to lift you up in the air."
 
-/obj/item/organ/wings/flight/megamoth
+/obj/item/organ/wings/megamoth
 	name = "megamoth wings"
 	desc = "A pair of horrifyingly large, fuzzy wings. They look strong enough to lift you up in the air."
 

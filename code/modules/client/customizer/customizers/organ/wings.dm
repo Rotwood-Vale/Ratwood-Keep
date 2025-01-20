@@ -15,12 +15,12 @@
 
 /datum/customizer_choice/organ/wings/aasimar
 	name = "Angel Wings"
-	organ_type = /obj/item/organ/wings/flight/aasimar
+	organ_type = /obj/item/organ/wings/aasimar
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/feathery,
-		/datum/sprite_accessory/wings/huge/angel,
 		/datum/sprite_accessory/wings/wide/featheralt1,
-		/datum/sprite_accessory/wings/wide/featheralt2
+		/datum/sprite_accessory/wings/wide/featheralt2,
+		/datum/sprite_accessory/wings/huge/angel
 		)
 
 /datum/customizer/organ/wings/anthro
@@ -36,7 +36,6 @@
 		/datum/sprite_accessory/wings/feathery,
 		/datum/sprite_accessory/wings/wide/succubus,
 		/datum/sprite_accessory/wings/bee,
-		/datum/sprite_accessory/wings/large/angelalt,
 		/datum/sprite_accessory/wings/wide/dragon_alt1,
 		/datum/sprite_accessory/wings/wide/dragon_alt2,
 		/datum/sprite_accessory/wings/wide/harpywings,
