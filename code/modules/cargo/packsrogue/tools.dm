@@ -185,7 +185,7 @@
 	name = "Tongs & Hammer"
 	cost = 50
 	contains = list(/obj/item/rogueweapon/tongs,
-					/obj/item/rogueweapon/hammer,
+					/obj/item/rogueweapon/hammer/iron,
 					)
 
 /datum/supply_pack/rogue/tools/farm
