@@ -65,7 +65,6 @@
 			H.change_stat("fortune", -1)
 
 		if("Drunkard")
-			r_hand = /obj/item/reagent_containers/glass/bottle/rogue/wine
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
@@ -76,7 +75,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/clothing/mask/cigarette/rollie/cannabis
 			beltl = /obj/item/flint
-			backpack_contents = list(/obj/item/storage/pill_bottle/dice = 1, /obj/item/toy/cards/deck = 1)
+			backpack_contents = list(/obj/item/storage/pill_bottle/dice = 1, /obj/item/toy/cards/deck = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
