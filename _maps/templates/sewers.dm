@@ -57,7 +57,7 @@
 		/obj/item/clothing/mask/cigarette/pipe = 3,
 		/obj/item/paper = 3,
 		/obj/item/reagent_containers/glass/bowl = 3,
-		/obj/item/storage/tray = 3,
+		/obj/item/storage/bag/tray = 3,
 
 		//medical
 		/obj/item/needle = 4,

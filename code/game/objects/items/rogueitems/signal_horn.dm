@@ -6,9 +6,6 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_NORMAL
 
-	grid_height = 32
-	grid_width = 64
-
 /obj/item/signal_horn/attack_self(mob/living/user)
 	. = ..()
 	user.visible_message("<span class='warning'>[user] is about to sound the [src]!</span>")
