@@ -102,6 +102,9 @@
 		to_chat(user, span_warning("It's undead, I can't."))
 		revert_cast()
 		return FALSE
+	if(HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED))
+		revert_cast()
+		return FALSE
 	if(!target.revive(full_heal = FALSE))
 		to_chat(user, span_warning("They need to be mended more."))
 		revert_cast()
@@ -125,7 +128,7 @@
 			var/obj/item/organ/wings/seelie/new_wings = new wing_type()
 			new_wings.Insert(fairy_target)
 	target.update_body()
-	target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
+	target.visible_message(span_notice("[target] breathes once more!"), span_green("I awake from the void."))
 	target.mind?.remove_antag_datum(/datum/antagonist/zombie)
 	return TRUE
 
@@ -169,12 +172,9 @@
 
 	if(was_zombie)
 		target.mind.remove_antag_datum(/datum/antagonist/zombie)
-		target.Unconscious(20 SECONDS)
-		target.emote("breathgasp")
 		target.Jitter(100)
-		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
-			adjust_playerquality(unzombification_pq, user.ckey)
-			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
+			
+	ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
 
 	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 
@@ -196,16 +196,11 @@
 	for(var/trait in GLOB.traits_deadite)
 		REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
 
-	if(target.stat < DEAD) // Drag and shove ghost back in.
-		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
-		if(underworld_spirit)
-			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
-			ghost.mind.transfer_to(target, TRUE)
-			qdel(underworld_spirit)
-	target.grab_ghost(force = TRUE) // even suicides
-	
+	// Ensures derotting does not in fact revive, only resetting the death process.
+	target.death(FALSE)
+
 	target.update_body()
-	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+	target.visible_message(span_notice("The rot leaves [target]'s body! For now..."))
 
 	return TRUE
 
