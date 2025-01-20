@@ -30,10 +30,6 @@
 
 
 /*	........   Templates / Base items   ................ */
-/obj/item/reagent_containers // added vars used in neu cooking, might be used for other things too in the future. How it works is in each items attackby code.
-	var/short_cooktime = FALSE  // based on cooking skill
-	var/long_cooktime = FALSE
-
 /obj/item/reagent_containers/food/snacks/rogue // base food type, for icons and cooktime, and to make it work with processes like pie making
 	icon = 'modular/Neu_Food/icons/food.dmi'
 	desc = ""

@@ -116,6 +116,7 @@
 /datum/sprite_accessory/tail/fox2
 	name = "Fox 2"
 	icon_state = "fox2"
+	can_wag = TRUE
 
 /datum/sprite_accessory/tail/hawk
 	name = "Hawk"

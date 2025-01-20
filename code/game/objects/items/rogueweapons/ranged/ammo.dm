@@ -13,7 +13,7 @@
 
 /obj/projectile/bullet/reusable/bolt
 	name = "bolt"
-	damage = 35
+	damage = 36
 	damage_type = BRUTE
 	armor_penetration = 35
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -53,7 +53,7 @@
 
 /obj/projectile/bullet/reusable/arrow
 	name = "arrow"
-	damage = 35
+	damage = 36
 	damage_type = BRUTE
 	armor_penetration = 10
 	icon = 'icons/roguetown/weapons/ammo.dmi'

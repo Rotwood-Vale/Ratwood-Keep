@@ -460,7 +460,7 @@
 	hitsound = "punch_hard"
 	chargetime = 0
 	penfactor = 10
-	swingdelay = 0
+	swingdelay = 2 SECONDS
 	candodge = TRUE
 	canparry = TRUE
 	item_d_type = "blunt"
@@ -474,7 +474,7 @@
 	hitsound = "smallslash"
 	chargetime = 0
 	penfactor = 0
-	swingdelay = 3
+	swingdelay = 1 SECONDS
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
@@ -489,10 +489,9 @@
 	hitsound = "smallslash"
 	chargetime = 0
 	penfactor = 0
-	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-
+	swingdelay = 1.5 SECONDS
 
 /datum/intent/unarmed/claw
 	name = "claw"
@@ -501,6 +500,7 @@
 	animname = "cut"
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
+	swingdelay = 1
 	penfactor = 20
 	candodge = TRUE
 	canparry = TRUE
@@ -585,7 +585,7 @@
 	hitsound = "smallslash"
 	chargetime = 0
 	penfactor = 2
-	swingdelay = 1
+	swingdelay = 1 SECONDS
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "pecks the air!"
