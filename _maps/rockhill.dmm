@@ -4468,9 +4468,9 @@
 "czb" = (
 /obj/structure/rack/rogue,
 /obj/machinery/light/rogue/torchholder/l,
-/obj/item/gun/ballistic/arquebus,
-/obj/item/gun/ballistic/arquebus,
-/obj/item/gun/ballistic/arquebus,
+/obj/item/gun/ballistic/firearm/arquebus,
+/obj/item/gun/ballistic/firearm/arquebus,
+/obj/item/gun/ballistic/firearm/arquebus,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "czd" = (
@@ -28464,7 +28464,7 @@
 /obj/item/powderflask{
 	pixel_y = 14
 	},
-/obj/item/gun/ballistic/arquebus_pistol{
+/obj/item/gun/ballistic/firearm/arquebus_pistol{
 	pixel_y = 14
 	},
 /obj/effect/decal/cobbleedge{
