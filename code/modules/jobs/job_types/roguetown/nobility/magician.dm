@@ -2,7 +2,7 @@
 	title = "Court Magos"
 	flag = WIZARD
 	department_flag = NOBLEMEN
-	selection_color = JCOLOR_COURTIER
+	selection_color = JCOLOR_NOBLE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -57,8 +57,8 @@
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 4)
 		H.mind.adjust_spellpoints(8)
-		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+		if(H.age == AGE_OLD) //old wizards are wise and experienced they should not get arcane 1 for being old
+			belt = /obj/item/storage/belt/rogue/leather/plaquegold //golden belt to show how valuable they are to the duke
 			H.change_stat("speed", -1)
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 1)

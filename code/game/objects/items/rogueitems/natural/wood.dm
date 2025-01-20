@@ -237,6 +237,8 @@
 	lumber_amount = 0
 	metalizer_result = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 
+/obj/item/grown/log/tree/stake/attackby(obj/item/I, mob/user, params)
+	return
 
 //................	Wooden planks	............... //
 /obj/item/natural/wood/plank

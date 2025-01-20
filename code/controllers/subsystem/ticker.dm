@@ -206,15 +206,9 @@ SUBSYSTEM_DEF(ticker)
 				tipped = TRUE
 
 			if(timeLeft <= 0)
-				if(!checkreqroles())
-/*					if(failedstarts >= 13)
-						current_state = GAME_STATE_SETTING_UP
-						Master.SetRunLevel(RUNLEVEL_SETUP)
-						if(start_immediately)
-							fire()
-					else*/
-					current_state = GAME_STATE_STARTUP
-					start_at = world.time + 600
+				if(!checkreqroles()) // Unable to find a duke.
+					current_state = GAME_STATE_PREGAME
+					start_at = world.time + 60 SECONDS
 					timeLeft = null
 					Master.SetRunLevel(RUNLEVEL_LOBBY)
 				else
@@ -227,7 +221,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!setup())
 				//setup failed
 				current_state = GAME_STATE_STARTUP
-				start_at = world.time + 600
+				start_at = world.time + 60 SECONDS
 				timeLeft = null
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
