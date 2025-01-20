@@ -14,9 +14,6 @@
 	fiber_salvage = FALSE
 	salvage_amount = 1
 
-	grid_width = 64
-	grid_height = 32
-
 /obj/item/clothing/gloves/roguetown/fingerless
 	name = "fingerless gloves"
 	desc = "Gloves with holes for fingers, preferred by archers."

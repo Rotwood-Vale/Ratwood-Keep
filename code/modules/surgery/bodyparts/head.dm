@@ -15,9 +15,6 @@
 	max_stamina_damage = 100
 	dismember_wound = /datum/wound/dismemberment/head
 
-	grid_width = 64
-	grid_height = 64
-
 	var/mob/living/brain/brainmob = null //The current occupant.
 	var/obj/item/organ/brain/brain = null //The brain organ
 	var/obj/item/organ/eyes/eyes

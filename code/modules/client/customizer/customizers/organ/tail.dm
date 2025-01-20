@@ -44,6 +44,7 @@
 		/datum/sprite_accessory/tail/twocat,
 		/datum/sprite_accessory/tail/tiger,
 		/datum/sprite_accessory/tail/leopard,
+		/datum/sprite_accessory/tail/lynx,
 		)
 
 /datum/customizer/organ/tail/lizard
@@ -160,6 +161,7 @@
 		/datum/sprite_accessory/tail/lizard/dtiger,
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
+		/datum/sprite_accessory/tail/lynx,
 		)
 
 /datum/customizer/organ/tail/anthro
@@ -225,4 +227,5 @@
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
 		/datum/sprite_accessory/tail/snuppy,
+		/datum/sprite_accessory/tail/lynx,
 		)

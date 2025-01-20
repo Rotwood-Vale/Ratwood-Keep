@@ -15,10 +15,6 @@
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/blank.ogg'
 	pickup_sound =  'sound/blank.ogg'
-
-	grid_width = 32
-	grid_height = 64
-	
 	var/dat				//Actual page content
 	var/due_date = 0	//Game time in 1/10th seconds
 	var/author			//Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
@@ -32,7 +28,6 @@
 	var/textper = 100
 	var/our_font = "Rosemary Roman"
 	var/override_find_book = FALSE
-
 
 /obj/item/book/attack_self(mob/user)
 	if(!user.can_read(src))

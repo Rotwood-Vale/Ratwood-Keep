@@ -46,9 +46,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	sharpness = IS_SHARP
 	resistance_flags = FIRE_PROOF
 
-	grid_height = 32
-	grid_width = 32
-
 /obj/item/throwing_star/ninja
 	name = "ninja throwing star"
 	throwforce = 30
