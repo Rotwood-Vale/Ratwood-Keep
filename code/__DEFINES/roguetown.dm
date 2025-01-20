@@ -320,6 +320,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 
 //Garrison
 #define CTAG_BOG			"CAT_BOG"			//Vanguard
+#define CTAG_MAA			"CAT_MAA"			// Man-At-Arms
 
 //Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
