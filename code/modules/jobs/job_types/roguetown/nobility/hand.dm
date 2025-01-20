@@ -67,3 +67,5 @@
 		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	else if(isseelie(H))	//Since seelie hands no longer get heavy armor, giving them dodge expert instead
 		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_LEAPER, TRAIT_GENERIC)
