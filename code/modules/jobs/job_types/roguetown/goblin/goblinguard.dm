@@ -69,10 +69,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.change_stat("strength", 3)
-		H.change_stat("perception", 1)
-		H.change_stat("endurance", 1)
-		H.change_stat("intelligence", -2)
+		H.change_stat(STAT_STRENGTH, 3)
+		H.change_stat(STAT_PERCEPTION, 1)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_INTELLIGENCE, -2)
 
 /datum/subclass/gob_outrider
 	name = "Outrider"
@@ -102,10 +102,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("perception", 2)
-		H.change_stat("endurance", 1)
-		H.change_stat("intelligence", -2)
+		H.change_stat(STAT_STRENGTH, 2)
+		H.change_stat(STAT_PERCEPTION, 2)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_INTELLIGENCE, -2)
 
 /datum/subclass/gob_raider
 	name = "Raider"
@@ -129,11 +129,11 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.change_stat("strength", 4)
-		H.change_stat("constitution", 1)
-		H.change_stat("endurance", 1)
-		H.change_stat("perception", -2)
-		H.change_stat("intelligence", -4)
+		H.change_stat(STAT_STRENGTH, 4)
+		H.change_stat(STAT_CONSTITUTION, 1)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_PERCEPTION, -2)
+		H.change_stat(STAT_INTELLIGENCE, -4)
 
 /datum/subclass/gob_archer
 	name = "Boltslinger"
@@ -161,8 +161,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.change_stat("strength", 1)
-		H.change_stat("constitution", 1)
-		H.change_stat("endurance", 1)
-		H.change_stat("perception", 4)
-		H.change_stat("intelligence", -1)
+		H.change_stat(STAT_STRENGTH, 1)
+		H.change_stat(STAT_CONSTITUTION, 1)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_PERCEPTION, 4)
+		H.change_stat(STAT_INTELLIGENCE, -1)

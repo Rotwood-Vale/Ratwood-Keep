@@ -44,8 +44,8 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backl = /obj/item/storage/backpack/rogue/satchel
 
-	H.change_stat("perception", 1)
-	H.change_stat("speed", 2)
+	H.change_stat(STAT_PERCEPTION, 1)
+	H.change_stat(STAT_SPEED, 2)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_churchling(H)

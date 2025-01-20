@@ -44,8 +44,8 @@
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 				pants =	/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random
 				belt =	/obj/item/storage/belt/rogue/leather/cloth
-			H.change_stat("constitution", 1)
-			H.change_stat("endurance", 2)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_ENDURANCE, 2)
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 
 		if("Minstrel")
@@ -89,9 +89,9 @@
 					backr = /obj/item/rogue/instrument/flute
 				if(5)
 					backr = /obj/item/rogue/instrument/drum
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", 2)
-			H.change_stat("speed", 2)
+			H.change_stat(STAT_INTELLIGENCE, 2)
+			H.change_stat(STAT_PERCEPTION, 2)
+			H.change_stat(STAT_SPEED, 2)
 			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 
 		if("Harlequin")
@@ -113,9 +113,9 @@
 			beltl = /obj/item/storage/belt/rogue/pouch
 			head = /obj/item/clothing/head/roguetown/jester
 			neck = /obj/item/clothing/neck/roguetown/coif
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", -1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_INTELLIGENCE, 2)
+			H.change_stat(STAT_PERCEPTION, -1)
+			H.change_stat(STAT_SPEED, 1)
 			ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 
 	H.set_blindness(0)

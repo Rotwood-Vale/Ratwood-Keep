@@ -46,10 +46,10 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			backpack_contents = list(/obj/item/lockpickring/mundane = 1)
-			H.change_stat("strength", -1)
-			H.change_stat("perception", 1)
-			H.change_stat("speed", 3)
-			H.change_stat("intelligence", 1)
+			H.change_stat(STAT_STRENGTH, -1)
+			H.change_stat(STAT_PERCEPTION, 1)
+			H.change_stat(STAT_SPEED, 3)
+			H.change_stat(STAT_INTELLIGENCE, 1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
@@ -75,10 +75,10 @@
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltl = /obj/item/ammo_holder/quiver/bolts
 			backpack_contents = list(/obj/item/reagent_containers/powder/ozium = 2, /obj/item/reagent_containers/glass/bottle/mercury = 2, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1)
-			H.change_stat("perception", 1) 
-			H.change_stat("endurance", 1)
-			H.change_stat("speed", 1)
-			H.change_stat("fortune", 1)
+			H.change_stat(STAT_PERCEPTION, 1) 
+			H.change_stat(STAT_ENDURANCE, 1)
+			H.change_stat(STAT_SPEED, 1)
+			H.change_stat(STAT_FORTUNE, 1)
 			H.cmode_music = 'sound/music/combat_pirate.ogg'
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
@@ -104,10 +104,10 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
-			H.change_stat("strength", 1)
-			H.change_stat("perception", 1)
-			H.change_stat("speed", 1)
-			H.change_stat("intelligence", -1)
+			H.change_stat(STAT_STRENGTH, 1)
+			H.change_stat(STAT_PERCEPTION, 1)
+			H.change_stat(STAT_SPEED, 1)
+			H.change_stat(STAT_INTELLIGENCE, -1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 

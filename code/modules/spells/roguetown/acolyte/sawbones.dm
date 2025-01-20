@@ -300,7 +300,7 @@
 /datum/status_effect/debuff/wliver
 	id = "wliver"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/wliver
-	effectedstats = list("strength" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
+	effectedstats = list(STAT_STRENGTH = -3, STAT_CONSTITUTION = -3, STAT_ENDURANCE = -3, STAT_SPEED = -3)
 
 /atom/movable/screen/alert/status_effect/debuff/wliver
 	name = "Weak Liver"

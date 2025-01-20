@@ -20,7 +20,7 @@
 
 /datum/special_trait/thickskin/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BREADY, "[type]")
-	character.change_stat("constitution", 2)
+	character.change_stat(STAT_CONSTITUTION, 2)
 
 /datum/special_trait/curseofcain
 	name = "Flawed Immortality"
@@ -57,9 +57,9 @@
 
 /datum/special_trait/underworldassassin/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
-	character.change_stat("strength", -1)
-	character.change_stat("endurance", 2)
-	character.change_stat("speed", 2)
+	character.change_stat(STAT_STRENGTH, -1)
+	character.change_stat(STAT_ENDURANCE, 2)
+	character.change_stat(STAT_SPEED, 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
@@ -72,7 +72,7 @@
 
 /datum/special_trait/lightfooted/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
-	character.change_stat("speed", 1)
+	character.change_stat(STAT_SPEED, 1)
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 
 /datum/special_trait/night_owl
@@ -99,7 +99,7 @@
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
-	character.change_stat("speed", 2)
+	character.change_stat(STAT_SPEED, 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE) //will make a unique trait later on
 	character.mind.special_items["Rapier"] = /obj/item/rogueweapon/sword/rapier
 
@@ -109,7 +109,7 @@
 	weight = 25
 
 /datum/special_trait/eagle_eyed/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat("perception", 2)
+	character.change_stat(STAT_PERCEPTION, 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 5, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
 	character.mind.special_items["Crossbow"] = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
@@ -153,8 +153,8 @@
 	weight = 100
 
 /datum/special_trait/corn_fed/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat("constitution", 2)
-	character.change_stat("intelligence", -2)
+	character.change_stat(STAT_CONSTITUTION, 2)
+	character.change_stat(STAT_INTELLIGENCE, -2)
 
 /datum/special_trait/bookworm
 	name = "Bookworm"
@@ -294,7 +294,7 @@
 	ADD_TRAIT(character, TRAIT_DODGEEXPERT, "[type]")
 	ADD_TRAIT(character, TRAIT_GOODRUNNER, "[type]")
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE)
-	character.change_stat("speed", 3)
+	character.change_stat(STAT_SPEED, 3)
 
 /datum/special_trait/gourmand
 	name = "Gourmand"
@@ -324,9 +324,9 @@
 
 /datum/special_trait/backproblems/on_apply(mob/living/carbon/human/character)
 	character.mob_size += 1
-	character.change_stat("strength", 2)
-	character.change_stat("constitution", 2)
-	character.change_stat("speed", -2)
+	character.change_stat(STAT_STRENGTH, 2)
+	character.change_stat(STAT_CONSTITUTION, 2)
+	character.change_stat(STAT_SPEED, -2)
 	character.transform = character.transform.Scale(1.25, 1.25)
 	character.transform = character.transform.Translate(0, (0.25 * 16))
 	character.update_transform()
@@ -348,8 +348,8 @@
 	weight = 100
 
 /datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat("speed", -2)
-	character.change_stat("intelligence", -4)
+	character.change_stat(STAT_SPEED, -2)
+	character.change_stat(STAT_INTELLIGENCE, -4)
 
 /datum/special_trait/hussite
 	name = "Known Heretic"
@@ -450,9 +450,9 @@
 	weight = 50
 
 /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
-	character.change_stat("strength", -2)
-	character.change_stat("constitution", -2)
-	character.change_stat("endurance", -1)
+	character.change_stat(STAT_STRENGTH, -2)
+	character.change_stat(STAT_CONSTITUTION, -2)
+	character.change_stat(STAT_ENDURANCE, -1)
 
 /datum/special_trait/lazy
 	name = "Lazy"
@@ -460,11 +460,11 @@
 	weight = 200
 
 /datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
-	character.change_stat("strength", -1)
-	character.change_stat("constitution", -1)
-	character.change_stat("endurance", -1)
-	character.change_stat("speed", -1)
-	character.change_stat("perception", -1)
+	character.change_stat(STAT_STRENGTH, -1)
+	character.change_stat(STAT_CONSTITUTION, -1)
+	character.change_stat(STAT_ENDURANCE, -1)
+	character.change_stat(STAT_SPEED, -1)
+	character.change_stat(STAT_PERCEPTION, -1)
 
 /datum/special_trait/bad_week
 	name = "Bad Week"
@@ -557,9 +557,9 @@
 /datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	character.change_stat("strength", 2)
-	character.change_stat("constitution", 2)
-	character.change_stat("speed", -2)
+	character.change_stat(STAT_STRENGTH, 2)
+	character.change_stat(STAT_CONSTITUTION, 2)
+	character.change_stat(STAT_SPEED, -2)
 
 /datum/special_trait/seed_feed
 	name = "Seed & Feed"

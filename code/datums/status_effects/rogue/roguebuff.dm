@@ -5,7 +5,7 @@
 /datum/status_effect/buff/drunk
 	id = "drunk"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/drunk
-	effectedstats = list("intelligence" = -2, "endurance" = 1)
+	effectedstats = list(STAT_INTELLIGENCE = -2, STAT_ENDURANCE = 1)
 	duration = 5 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/drunk
@@ -17,7 +17,7 @@
 /datum/status_effect/buff/foodbuff
 	id = "foodbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
-	effectedstats = list("constitution" = 1,"endurance" = 1)
+	effectedstats = list(STAT_CONSTITUTION = 1,STAT_ENDURANCE = 1)
 	duration = 10 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/foodbuff
@@ -28,7 +28,7 @@
 /datum/status_effect/buff/druqks
 	id = "druqks"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("intelligence" = 5,"speed" = 3,"fortune" = -5)
+	effectedstats = list(STAT_INTELLIGENCE = 5,STAT_SPEED = 3,STAT_FORTUNE = -5)
 	duration = 10 SECONDS
 
 /datum/status_effect/buff/druqks/on_apply()
@@ -64,7 +64,7 @@
 /datum/status_effect/buff/eoradruqks
 	id = "druqks"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = -3,"fortune" = -5, "constitution" = -2)
+	effectedstats = list(STAT_SPEED = -3,STAT_FORTUNE = -5, STAT_CONSTITUTION = -2)
 	duration = 20 SECONDS
 
 /datum/status_effect/buff/eoradruqks/on_apply()
@@ -97,7 +97,7 @@
 /datum/status_effect/buff/ozium
 	id = "ozium"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = -5, "perception" = 2)
+	effectedstats = list(STAT_SPEED = -5, STAT_PERCEPTION = 2)
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/ozium/on_apply()
@@ -113,7 +113,7 @@
 /datum/status_effect/buff/moondust
 	id = "moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = 4, "endurance" = 4, "perception" = -3)
+	effectedstats = list(STAT_SPEED = 4, STAT_ENDURANCE = 4, STAT_PERCEPTION = -3)
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/moondust/on_apply()
@@ -128,7 +128,7 @@
 /datum/status_effect/buff/moondust_purest
 	id = "purest moondust"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = 5, "endurance" = 5, "perception" = -2)
+	effectedstats = list(STAT_SPEED = 5, STAT_ENDURANCE = 5, STAT_PERCEPTION = -2)
 	duration = 40 SECONDS
 
 /datum/status_effect/buff/moondust_purest/on_apply()
@@ -142,7 +142,7 @@
 /datum/status_effect/buff/weed
 	id = "weed"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/weed
-	effectedstats = list("intelligence" = 2,"speed" = -2,"fortune" = 2)
+	effectedstats = list(STAT_INTELLIGENCE = 2,STAT_SPEED = -2,STAT_FORTUNE = 2)
 	duration = 10 SECONDS
 
 /datum/status_effect/buff/weed/on_apply()
@@ -230,13 +230,13 @@
 /datum/status_effect/buff/haste
 	id = "haste"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/haste
-	effectedstats = list("speed" = 3)
+	effectedstats = list(STAT_SPEED = 3)
 	duration = 1.5 MINUTES
 
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("intelligence" = 2, "endurance" = 4, "speed" = -3)
+	effectedstats = list(STAT_INTELLIGENCE = 2, STAT_ENDURANCE = 4, STAT_SPEED = -3)
 	duration = 20 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/seelie_drugs
@@ -271,7 +271,7 @@
 /datum/status_effect/buff/seelie/happy
 	id = "Seelie Blessing"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/seelie/happy
-	effectedstats = list("fortune" = 2)
+	effectedstats = list(STAT_FORTUNE = 2)
 	duration = 60 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/seelie/happy

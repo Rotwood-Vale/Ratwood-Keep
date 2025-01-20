@@ -6,7 +6,7 @@
 /datum/status_effect/debuff/hungryt1
 	id = "hungryt1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt1
-	effectedstats = list("constitution" = -1)
+	effectedstats = list(STAT_CONSTITUTION = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt1
@@ -17,7 +17,7 @@
 /datum/status_effect/debuff/hungryt2
 	id = "hungryt2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt2
-	effectedstats = list("strength" = -2, "constitution" = -2, "endurance" = -1)
+	effectedstats = list(STAT_STRENGTH = -2, STAT_CONSTITUTION = -2, STAT_ENDURANCE = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt2
@@ -28,7 +28,7 @@
 /datum/status_effect/debuff/hungryt3
 	id = "hungryt3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt3
-	effectedstats = list("strength" = -5, "constitution" = -3, "endurance" = -2)
+	effectedstats = list(STAT_STRENGTH = -5, STAT_CONSTITUTION = -3, STAT_ENDURANCE = -2)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt3
@@ -53,7 +53,7 @@
 /datum/status_effect/debuff/moondust_crash
 	id = "moondust_crash"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/moondust_crash
-	effectedstats = list("speed" = -3, "endurance" = -3)
+	effectedstats = list(STAT_SPEED = -3, STAT_ENDURANCE = -3)
 	duration = 20 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/moondust_crash
@@ -65,7 +65,7 @@
 /datum/status_effect/debuff/thirstyt1
 	id = "thirsty1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt1
-	effectedstats = list("endurance" = -1)
+	effectedstats = list(STAT_ENDURANCE = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt1
@@ -76,7 +76,7 @@
 /datum/status_effect/debuff/thirstyt2
 	id = "thirsty2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt2
-	effectedstats = list("speed" = -1, "endurance" = -2)
+	effectedstats = list(STAT_SPEED = -1, STAT_ENDURANCE = -2)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt2
@@ -87,7 +87,7 @@
 /datum/status_effect/debuff/thirstyt3
 	id = "thirsty3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt3
-	effectedstats = list("strength" = -1, "speed" = -2, "endurance" = -3)
+	effectedstats = list(STAT_STRENGTH = -1, STAT_SPEED = -2, STAT_ENDURANCE = -3)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt3
@@ -150,7 +150,7 @@
 /datum/status_effect/debuff/bleeding
 	id = "bleedingt1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/bleedingt1
-	effectedstats = list("speed" = -1)
+	effectedstats = list(STAT_SPEED = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/bleedingt1
@@ -161,7 +161,7 @@
 /datum/status_effect/debuff/bleedingworse
 	id = "bleedingt2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/bleedingt2
-	effectedstats = list("strength" = -1, "speed" = -2)
+	effectedstats = list(STAT_STRENGTH = -1, STAT_SPEED = -2)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/bleedingt2
@@ -172,7 +172,7 @@
 /datum/status_effect/debuff/bleedingworst
 	id = "bleedingt3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/bleedingt3
-	effectedstats = list("strength" = -3, "speed" = -4)
+	effectedstats = list(STAT_STRENGTH = -3, STAT_SPEED = -4)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/bleedingt3
@@ -183,7 +183,7 @@
 /datum/status_effect/debuff/sleepytime
 	id = "sleepytime"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/sleepytime
-	effectedstats = list("speed" = -1, "endurance" = -1)
+	effectedstats = list(STAT_SPEED = -1, STAT_ENDURANCE = -1)
 
 /atom/movable/screen/alert/status_effect/debuff/sleepytime
 	name = "Tired"
@@ -193,7 +193,7 @@
 /datum/status_effect/debuff/muscle_sore
 	id = "muscle_sore"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/muscle_sore
-	effectedstats = list("strength" = -1, "endurance" = -1)
+	effectedstats = list(STAT_STRENGTH = -1, STAT_ENDURANCE = -1)
 
 /atom/movable/screen/alert/status_effect/debuff/muscle_sore
 	name = "Muscle Soreness"
@@ -203,7 +203,7 @@
 /datum/status_effect/debuff/goblingas
 	id = "goblingas"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/goblingas
-	effectedstats = list("intelligence" = -3, "endurance" = -3)
+	effectedstats = list(STAT_INTELLIGENCE = -3, STAT_ENDURANCE = -3)
 	duration = 40 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/goblingas
@@ -223,7 +223,7 @@
 /datum/status_effect/debuff/cumbrained
 	id = "cumbrained"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/cumbrained
-	effectedstats = list("intelligence" = -10, "strength" = -6, "speed" = -6)
+	effectedstats = list(STAT_INTELLIGENCE = -10, STAT_STRENGTH = -6, STAT_SPEED = -6)
 	duration = 60 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/cumbrained
@@ -272,7 +272,7 @@
 /datum/status_effect/buff/seelie/sad
 	id = "Seelie Curse"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/seelie/sad
-	effectedstats = list("fortune" = -2)
+	effectedstats = list(STAT_FORTUNE = -2)
 	duration = 60 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/seelie/sad
@@ -283,7 +283,7 @@
 /datum/status_effect/debuff/seelie_wing_curse
 	id = "seelie_wing_curse"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/seelie_wing_curse
-	effectedstats = list("fortune" = -2)
+	effectedstats = list(STAT_FORTUNE = -2)
 	duration = 4 MINUTES
 
 /atom/movable/screen/alert/status_effect/debuff/seelie_wing_curse
@@ -295,7 +295,7 @@
 /datum/status_effect/debuff/ravox_burden
 	id = "ravox_burden"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_burden
-	effectedstats = list("speed" = -2, "endurance" = -3)
+	effectedstats = list(STAT_SPEED = -2, STAT_ENDURANCE = -3)
 	duration = 12 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/ravox_burden

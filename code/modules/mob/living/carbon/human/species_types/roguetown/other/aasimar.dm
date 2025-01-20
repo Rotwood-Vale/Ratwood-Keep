@@ -44,13 +44,13 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-        "strength" = -1,
-        "perception" = 0,
-        "intelligence" = 2,
-        "constitution" = -2,
-        "endurance" = 0,
-        "speed" = 0,
-        "fortune" = 2,
+        STAT_STRENGTH = -1,
+        STAT_PERCEPTION = 0,
+        STAT_INTELLIGENCE = 2,
+        STAT_CONSTITUTION = -2,
+        STAT_ENDURANCE = 0,
+        STAT_SPEED = 0,
+        STAT_FORTUNE = 2,
         )
 	enflamed_icon = "widefire"
 	customizers = list(

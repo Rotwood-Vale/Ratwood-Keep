@@ -54,7 +54,7 @@
 		H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/gladiator
-	H.change_stat("intelligence", 2)
-	H.change_stat("perception", 3)
-	H.change_stat("strength", -1)
+	H.change_stat(STAT_INTELLIGENCE, 2)
+	H.change_stat(STAT_PERCEPTION, 3)
+	H.change_stat(STAT_STRENGTH, -1)
 

@@ -36,12 +36,12 @@
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 		neck = /obj/item/storage/keyring/innkeep
 		cloak = /obj/item/clothing/cloak/apron/waist
-		H.change_stat("strength", 1)
-		H.change_stat("endurance", 1)
+		H.change_stat(STAT_STRENGTH, 1)
+		H.change_stat(STAT_ENDURANCE, 1)
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltl = /obj/item/storage/keyring/innkeep
-		H.change_stat("endurance", 1)
-		H.change_stat("constitution", 1)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_CONSTITUTION, 1)

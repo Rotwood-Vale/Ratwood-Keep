@@ -99,9 +99,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
-		H.change_stat("intelligence", 1)
-		H.change_stat("endurance", 1)
-		H.change_stat("perception", -1)
+		H.change_stat(STAT_INTELLIGENCE, 1)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_PERCEPTION, -1)
 		if (H.patron.type == /datum/patron/divine/malum)
 			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue) // weaker astra fire spell. mostly for lighting things.
 
