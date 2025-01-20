@@ -1782,13 +1782,6 @@
 /obj/structure/plasticflaps,
 /turf/open/water/swamp/deep,
 /area/rogue/under/town/sewer)
-"baa" = (
-/obj/structure/fluff/railing/border{
-	dir = 5
-	},
-/obj/structure/stairs/stone,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "bao" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -4292,6 +4285,12 @@
 /obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
+"ctg" = (
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "ctq" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newbranch/leafless{
@@ -8887,12 +8886,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/cave)
-"eON" = (
-/obj/structure/stairs/stone{
-	dir = 8
-	},
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors/town/church)
 "ePc" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -21336,6 +21329,13 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"lOr" = (
+/obj/structure/fluff/railing/border{
+	dir = 5
+	},
+/obj/structure/stairs/stone,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "lOH" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -28918,12 +28918,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
-"pTU" = (
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "pUl" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -29368,8 +29362,8 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
 "qkh" = (
-/obj/structure/bed/rogue/shit,
 /mob/living/carbon/human/species/human/northern/bum/ambush,
+/obj/structure/bed/rogue/sleepingbag,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/sewer)
 "qkG" = (
@@ -42104,6 +42098,12 @@
 	icon_state = "horzw"
 	},
 /area/rogue/indoors/town/magician)
+"xxv" = (
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/church)
 "xxx" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -329216,7 +329216,7 @@ jak
 cDC
 jCh
 fIT
-baa
+lOr
 pAV
 pAV
 aQJ
@@ -359427,8 +359427,8 @@ eBN
 fLC
 eBN
 qPA
-eON
-eON
+xxv
+xxv
 noB
 qSY
 uKB
@@ -439810,7 +439810,7 @@ xjS
 bEY
 eSQ
 eSQ
-pTU
+ctg
 yeN
 yeN
 mnV
