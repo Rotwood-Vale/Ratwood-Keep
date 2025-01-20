@@ -335,17 +335,6 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			S.set_up(1, 1, front)
 			S.start()
 		return
-	if(istype(W, /obj/item/reagent_containers/glass/bottle/rogue))
-		var/reagent_to_check = /datum/reagent/medicine/manapot
-		var/reagents = W.reagents
-		if(reagent_to_check in reagents  && isarcyne(user))
-			var/crafttime = (60 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
-			if(do_after(user, crafttime, target = src))
-				to_chat(user, span_notice("Infuse the rock with mana, and it throbs in a deep purple..."))
-				var/obj/amythortz = new /obj/item/roguegem/amethyst
-				qdel(W)
-				qdel(src)
-				user.put_in_active_hand(amythortz)
 	..()
 
 

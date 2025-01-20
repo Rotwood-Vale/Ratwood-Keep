@@ -7,14 +7,14 @@ GLOBAL_LIST_INIT(t3summoningrunerituallist, generate_t3summoning_rituallist())
 GLOBAL_LIST_INIT(t4summoningrunerituallist, generate_t4summoning_rituallist())
 GLOBAL_LIST_INIT(t2wallrunerituallist, generate_t2wall_rituallist())
 GLOBAL_LIST_INIT(t4wallrunerituallist, generate_t4wall_rituallist())
-
+GLOBAL_LIST_INIT(buffrunerituallist, generate_buff_rituallist())
+GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 /proc/generate_runeritual_types()	//debug list
 	RETURN_TYPE(/list)
 	var/list/runerituals = list()
 	for(var/datum/runerituals/runeritual as anything in typesof(/datum/runerituals))
 		runerituals[initial(runeritual.name)] = runeritual
 	return runerituals
-
 /proc/generate_allowed_runeritual_types()	//list of all non-summoning rituals for player use
 	RETURN_TYPE(/list)
 	var/list/runerituals = list()
@@ -82,6 +82,26 @@ GLOBAL_LIST_INIT(t4wallrunerituallist, generate_t4wall_rituallist())
 	var/list/runerituals = list()
 	for(var/datum/runerituals/runeritual as anything in subtypesof(/datum/runerituals/wall))
 		if(runeritual.tier < 3)
+			continue
+		runerituals[initial(runeritual.name)] = runeritual
+	return runerituals
+
+/proc/generate_buff_rituallist()	//list of all rituals for player use
+	RETURN_TYPE(/list)
+	var/list/runerituals = list()
+	for(var/datum/runerituals/runeritual as anything in subtypesof(/datum/runerituals/buff))
+		if(runeritual.tier > 1)
+			continue
+		if(runeritual.blacklisted)
+			continue
+		runerituals[initial(runeritual.name)] = runeritual
+	return runerituals
+
+/proc/generate_t2buff_rituallist()	//list of all rituals for player use
+	RETURN_TYPE(/list)
+	var/list/runerituals = list()
+	for(var/datum/runerituals/runeritual as anything in subtypesof(/datum/runerituals/buff))
+		if(runeritual.blacklisted)
 			continue
 		runerituals[initial(runeritual.name)] = runeritual
 	return runerituals
@@ -156,7 +176,80 @@ GLOBAL_LIST_INIT(t4wallrunerituallist, generate_t4wall_rituallist())
 
 /datum/runerituals/buff
 	blacklisted = TRUE
-/datum/runerituals/buff/knowledge
+	tier = 1
+	var/buff
+/datum/runerituals/knowledge
+	name = "knowledge gain"
+	tier = 1
+	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/manacrystal = 1)
+
+/datum/runerituals/knowledge/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
+	return TRUE
+
+/datum/runerituals/buff/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
+	return TRUE
+
+/datum/runerituals/buff/strength
+	name = "arcane augmentation of strength"
+	buff = /datum/status_effect/buff/magicstrength
+	tier = 2
+	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/manacrystal = 1,)
+
+/datum/runerituals/buff/lesserstrength
+	name = "lesser arcane augmentation of strength"
+	buff = /datum/status_effect/buff/magicstrength/lesser
+	blacklisted = FALSE
+
+/datum/runerituals/buff/constitution
+	name = "fortify constitution"
+	buff = /datum/status_effect/buff/magicconstitution
+	tier = 2
+	blacklisted = FALSE
+
+/datum/runerituals/buff/lesserconstitution
+	name = "lesser fortify constitution"
+	buff = /datum/status_effect/buff/magicconstitution/lesser
+	blacklisted = FALSE
+
+/datum/runerituals/buff/speed
+	name = "haste"
+	buff = /datum/status_effect/buff/magicspeed
+	tier = 2
+	blacklisted = FALSE
+
+/datum/runerituals/buff/lesserspeed
+	name = "lesser haste"
+	buff = /datum/status_effect/buff/magicspeed/lesser
+	blacklisted = FALSE
+
+/datum/runerituals/buff/perception
+	name = "arcane eyes"
+	buff = /datum/status_effect/buff/magicperception
+	tier = 2
+	blacklisted = FALSE
+
+/datum/runerituals/buff/lesserperception
+	name = "lesser arcane eyes"
+	buff = /datum/status_effect/buff/magicperception/lesser
+	blacklisted = FALSE
+
+/datum/runerituals/buff/endurance
+	name = "vitalized endurance"
+	buff = /datum/status_effect/buff/magicendurance
+	tier = 2
+	blacklisted = FALSE
+
+/datum/runerituals/buff/lesserendurance
+	name = "lesser vitalized endurance"
+	buff = /datum/status_effect/buff/magicendurance/lesser
+	blacklisted = FALSE
+
+/datum/runerituals/buff/nightvision
+	name = "darksight"
+	buff = /datum/status_effect/buff/darkvision
+	blacklisted = FALSE
 
 /datum/runerituals/enchantment
 
@@ -181,13 +274,15 @@ GLOBAL_LIST_INIT(t4wallrunerituallist, generate_t4wall_rituallist())
 /datum/runerituals/wall/t3
 	name = "arcyne fortress"
 	tier = 3
-	required_atoms = list(/obj/item/natural/artifacts = 3, /obj/item/natural/manacrystal = 3, /obj/item/natural/melded/t3 = 1)
+	required_atoms = list(/obj/item/natural/artifact = 3, /obj/item/natural/manacrystal = 3, /obj/item/natural/melded/t3 = 1)
 
 
 /datum/runerituals/teleport
 	name = "planar convergence"
 	tier = 3
-	required_atoms = list(/obj/item/natural/artifacts = 1, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t3 = 1) //adjust this later
+	required_atoms = list(/obj/item/natural/artifact = 1, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t3 = 1) //adjust this later
+/datum/runerituals/teleport/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
+	return TRUE
 
 ////////////////SUMMONING RITUALS///////////////////
 /datum/runerituals/summoning

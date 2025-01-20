@@ -161,7 +161,8 @@
 	name = "glowing purple silver dagger"
 	desc = "This dagger glows a faint purple. Quicksilver runs across its blade."
 	var/is_bled = FALSE
-	var/rune_to_scribe = null
+	var/obj/effect/decal/cleanable/roguerune/rune_to_scribe = null
+	var/chosen_keyword
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne/Initialize()
 	. = ..()
@@ -208,6 +209,10 @@
 	if(structures_in_way == TRUE)
 		to_chat(user, span_cult("There is a structure, rune or wall in the way."))
 		return
+	if(initial(rune_to_scribe.req_keyword))
+		chosen_keyword = stripped_input(user, "Keyword for the new rune", "Ratwood", max_length = MAX_NAME_LEN)
+		if(!chosen_keyword)
+			return FALSE
 	var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 
 	user.visible_message(span_notice("I start drag the blade in the shape of symbols and sigils"))
@@ -215,7 +220,7 @@
 	if(do_after(user, crafttime, target = src))
 		user.visible_message(span_warning("[user] carves an arcyne rune with [user.p_their()] [src]!"), \
 		span_notice("I finish dragging the blade in symbols and circles, leaving behind an ritual rune"))
-		new rune_to_scribe(Turf)
+		new rune_to_scribe(Turf, chosen_keyword)
 
 /obj/item/rogueweapon/huntingknife/idagger/proc/check_for_structures_and_closed_turfs(loc, var/obj/effect/decal/cleanable/roguerune/rune_to_scribe)
 	for(var/turf/T in range(loc, rune_to_scribe.runesize))
@@ -241,6 +246,147 @@
 	arcyne_potency = 25
 	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it' worth little."
 
+
+
+/obj/item/mimictrinket
+	name = "mimic trinket"
+	desc = "A small mimic, imbued with the arcane to make it docile. It can transform into anything it touchs. "
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "mimic_trinket"
+	possible_item_intents = list(/datum/intent/use)
+	var/duration = 10 MINUTES
+	var/oldicon
+	var/oldicon_state
+	var/olddesc
+	var/oldname
+	var/ready = TRUE
+	var/timing_id
+
+/obj/item/mimictrinket/attack_self(mob/living/carbon/human/user)
+	if(timing_id)
+		deltimer(timing_id)
+		timing_id = null
+		ready = TRUE
+/obj/item/mimictrinket/proc/revert()
+	icon = oldicon
+	icon_state = oldicon_state
+	name = oldname
+	desc = olddesc
+	ready = TRUE
+	if(timing_id)
+		deltimer(timing_id)
+		timing_id = null
+
+/obj/item/mimictrinket/attack_obj(obj/target, mob/living/user)
+	if(ready)
+		to_chat(user,span_notice("The [src] takes the form of [target]!"))
+		oldicon = icon
+		oldicon_state = icon_state
+		olddesc = desc
+		oldname = name
+		icon = target.icon
+		icon_state = target.icon_state
+		name = target.name
+		desc = target.desc
+		ready = FALSE
+		timing_id = addtimer(CALLBACK(src, PROC_REF(revert), user), duration,TIMER_STOPPABLE) // Minus two so we play the sound and decap faster
+
+
+/obj/item/hourglass/temporal
+	name = "temporal hourglass"
+	desc = "An arcane infused hourglass that glows with magick."
+	icon = 'icons/obj/hourglass.dmi'
+	icon_state = "hourglass_idle"
+	var/turf/target
+	var/mob/living/victim
+
+/obj/item/hourglass/temporal/toggle(mob/user)
+	if(!timing_id)
+		to_chat(user,span_notice("I flip the [src]."))
+		start()
+		flick("hourglass_flip",src)
+		target = get_turf(src)
+		victim = user
+	else
+		to_chat(user,span_notice("I stop the [src].")) //Sand magically flows back because that's more convinient to use.
+		stop()
+
+obj/item/hourglass/temporal/stop()
+	..()
+	do_teleport(victim, target, channel = TELEPORT_CHANNEL_QUANTUM)
+
+/obj/item/natural/feather/infernal
+	name = "infernal feather"
+	icon_state = "hellfeather"
+	possible_item_intents = list(/datum/intent/use)
+	desc = "A fluffy feather."
+
+/obj/item/flashlight/flare/torch/lantern/voidlamptern
+	name = "void lamptern"
+	icon_state = "voidlamp"
+	item_state = "voidlamp"
+	desc = "An old lamptern that seems darker and darker the longer you look at it."
+	light_range = 8
+	light_color = "#000000"
+	light_power = -3
+	on = FALSE
+
+/obj/item/clothing/ring/active/shimmeringlens
+	name = "shimmering lens"
+
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "lense"
+	w_class = WEIGHT_CLASS_NORMAL
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	cdtime = 10 MINUTES
+	activetime = 30 SECONDS
+
+/obj/item/clothing/ring/active/shimmeringlens/active/attack_right(mob/user)
+	if(loc != user)
+		return
+	if(cooldowny)
+		if(world.time < cooldowny + cdtime)
+			to_chat(user, span_warning("Nothing happens."))
+			return
+	user.visible_message(span_warning("[user] looks through the [src]!"))
+	if(activate_sound)
+		playsound(user, activate_sound, 100, FALSE, -1)
+	cooldowny = world.time
+	addtimer(CALLBACK(src, PROC_REF(demagicify)), activetime)
+	active = TRUE
+	activate(user)
+
+/obj/item/clothing/ring/active/shimmeringlens/activate(mob/user)
+	ADD_TRAIT(user, TRAIT_XRAY_VISION, "[type]")
+
+/obj/item/clothing/ring/active/shimmeringlens/demagicify()
+	var/mob/living/user = usr
+	REMOVE_TRAIT(user,TRAIT_XRAY_VISION, "[type]")
+	active = FALSE
+
+/obj/item/sendingstonesummoner/Initialize()
+	var/mob/living/user = usr
+	var/obj/item/natural/stone/sending/item1 = new /obj/item/natural/stone/sending
+	var/obj/item/natural/stone/sending/item2 = new /obj/item/natural/stone/sending
+	item1.paired_with = item2
+	item2.paired_with = item1
+	item1.icon_state = "whet"
+	item2.icon_state = "whet"
+	item1.color = "#d8aeff"
+	item2.color = "#d8aeff"
+	user.put_in_hands(item1, FALSE)
+	user.put_in_hands(item2, FALSE)
+	qdel(src)
+
+/obj/item/natural/stone/sending
+	name = "sending stone"
+	desc = "One of a pair of sending stones."
+	var/obj/item/natural/stone/sending/paired_with
+
+/obj/item/natural/stone/sending/attack_self(mob/user)
+	var/input_text = input(user, "Enter your message:", "Message")
+	if(input_text)
+		paired_with.say(input_text)
 
 ////////////////////////////////////////Magic resources go below here////////////////////
 
@@ -269,8 +415,8 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/natural/artifacts
-	name = "runed artifacts"
+/obj/item/natural/artifact
+	name = "runed artifact"
 	icon_state = "wessence"
 	desc = "Volcanic glass cooled from molten lava rapidly."
 	resistance_flags = FLAMMABLE

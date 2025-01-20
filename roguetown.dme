@@ -1773,6 +1773,7 @@
 #include "code\modules\roguetown\roguejobs\gravedigger\gravemarker.dm"
 #include "code\modules\roguetown\roguejobs\gravedigger\hole.dm"
 #include "code\modules\roguetown\roguejobs\gravedigger\tools.dm"
+#include "code\modules\roguetown\roguejobs\mages\arcana_crafting.dm"
 #include "code\modules\roguetown\roguejobs\mages\mageitems.dm"
 #include "code\modules\roguetown\roguejobs\mages\magestructures.dm"
 #include "code\modules\roguetown\roguejobs\mages\ritualdatums.dm"
