@@ -3060,6 +3060,15 @@
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/manor)
+"bHm" = (
+/obj/structure/lever/wall{
+	dir = 4;
+	name = "Privacy Shutters";
+	redstone_id = "stw_window";
+	pixel_y = -8
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/manor)
 "bHz" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -3882,6 +3891,14 @@
 	},
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/outdoors/town/harbor)
+"cfz" = (
+/obj/structure/lever/wall{
+	dir = 4;
+	name = "Privacy Shutters";
+	redstone_id = "stw_window2"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor)
 "cfB" = (
 /obj/structure/roguewindow/curtain{
 	dir = 8
@@ -10724,6 +10741,10 @@
 /obj/structure/roguewindow/curtain{
 	dir = 4
 	},
+/obj/structure/bars/passage/shutter{
+	name = "Privacy Shutter";
+	redstone_id = "stw_window2"
+	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "fLb" = (
@@ -11123,6 +11144,16 @@
 /obj/structure/fluff/walldeco/psybanner/red,
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/indoors/town/church/chapel)
+"fVD" = (
+/obj/structure/lever/wall{
+	dir = 4;
+	name = "Desk Shutters";
+	redstone_id = "stw_desk"
+	},
+/turf/open/floor/rogue/tile{
+	icon_state = "bfloorz"
+	},
+/area/rogue/indoors/town/manor)
 "fWD" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/fluff/railing/wood{
@@ -17260,6 +17291,10 @@
 	layer = 2.81
 	},
 /obj/structure/bell_common,
+/obj/structure/bars/passage/shutter{
+	name = "Steward";
+	redstone_id = "stw_desk"
+	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
 "jnN" = (
@@ -20468,6 +20503,10 @@
 /area/rogue/outdoors/rtfield)
 "ldN" = (
 /obj/structure/roguewindow/curtain,
+/obj/structure/bars/passage/shutter{
+	name = "Privacy Shutter";
+	redstone_id = "stw_window2"
+	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "lec" = (
@@ -22468,6 +22507,10 @@
 "mjR" = (
 /obj/structure/roguewindow/curtain{
 	dir = 8
+	},
+/obj/structure/bars/passage/shutter{
+	name = "Privacy Shutter";
+	redstone_id = "stw_window"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -28041,6 +28084,10 @@
 /area/rogue/under/town/sewer)
 "phO" = (
 /obj/structure/roguewindow/curtain,
+/obj/structure/bars/passage/shutter{
+	name = "Privacy Shutter";
+	redstone_id = "stw_window"
+	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "pii" = (
@@ -28728,6 +28775,10 @@
 /obj/structure/roguewindow/curtain{
 	dir = 8
 	},
+/obj/structure/bars/passage/shutter{
+	name = "Privacy Shutter";
+	redstone_id = "stw_window2"
+	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "pCw" = (
@@ -29322,12 +29373,11 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "pSL" = (
-/obj/structure/mineral_door/wood{
-	icon_state = "wcr";
+/obj/structure/mineral_door/wood/donjon{
+	dir = 2;
 	lockdiff = 4;
 	locked = 1;
-	lockid = "steward";
-	name = "Steward balcony"
+	lockid = "steward"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -33543,6 +33593,10 @@
 /obj/structure/bars{
 	icon_state = "barsbent";
 	layer = 2.81
+	},
+/obj/structure/bars/passage/shutter{
+	name = "Steward";
+	redstone_id = "stw_desk"
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
@@ -329950,7 +330004,7 @@ pfp
 uYE
 uYE
 uYE
-uYE
+fVD
 uYE
 jxy
 kPc
@@ -439679,7 +439733,7 @@ oif
 phO
 ciB
 oif
-oif
+bHm
 tXF
 fOs
 jBi
@@ -549837,7 +549891,7 @@ xAt
 xAt
 esF
 ldN
-xlm
+cfz
 iJu
 mjf
 kJJ
