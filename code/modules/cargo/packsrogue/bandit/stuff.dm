@@ -9,22 +9,22 @@
 	contains = list(/obj/item/storage/belt/rogue/leather)
 
 /datum/supply_pack/rogue/bandit/Stuff/leatherpants
-	name = "Leather trousers"
+	name = "Leather Trousers"
 	cost = 40
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather)
 
 /datum/supply_pack/rogue/bandit/Stuff/leathergloves
-	name = "Leather gloves"
+	name = "Leather Gloves"
 	cost = 20
 	contains = list(/obj/item/clothing/gloves/roguetown/leather)
 
 /datum/supply_pack/rogue/bandit/Stuff/leathershoes
-	name = "Leather shoes"
+	name = "Leather Shoes"
 	cost = 20
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather)
 
 /datum/supply_pack/rogue/bandit/Stuff/hardleathershoes
-	name = "Hardened Leather shoes"
+	name = "Hardened Leather Shoes"
 	cost = 60
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather/advanced)
 
@@ -58,22 +58,22 @@
 	cost = 20
 	contains = list(/obj/item/clothing/cloak/half)
 
-/datum/supply_pack/rogue/bandit/Stuff/graincloak
+/datum/supply_pack/rogue/bandit/Stuff/greenraincloak
 	name = "Green Rain-Cloak"
 	cost = 25
 	contains = list(/obj/item/clothing/cloak/raincloak/green)
 
-/datum/supply_pack/rogue/bandit/Stuff/braincloak
+/datum/supply_pack/rogue/bandit/Stuff/blueraincloak
 	name = "Blue Rain-Cloak"
 	cost = 25
 	contains = list(/obj/item/clothing/cloak/raincloak/blue)
 
-/datum/supply_pack/rogue/bandit/Stuff/rraincloak
+/datum/supply_pack/rogue/bandit/Stuff/redraincloak
 	name = "Red Rain-Cloak"
 	cost = 25
 	contains = list(/obj/item/clothing/cloak/raincloak/red)
 
-/datum/supply_pack/rogue/bandit/Stuff/rraincloak
+/datum/supply_pack/rogue/bandit/Stuff/furcloak
 	name = "Fur Cloak"
 	cost = 60
 	contains = list(/obj/item/clothing/cloak/raincloak/furcloak)
@@ -89,7 +89,7 @@
 	contains = list(/obj/item/clothing/cloak/tabard)
 
 /datum/supply_pack/rogue/bandit/Stuff/hidearmor
-	name = "Hide armor"
+	name = "Hide Armor"
 	cost = 40
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/hide)
 
@@ -145,7 +145,7 @@
 
 /datum/supply_pack/rogue/bandit/Stuff/chainleash
 	name = "Chain Leash"
-	cost = 50
+	cost = 60
 	contains = list(/obj/item/leash/chain)
 
 /datum/supply_pack/rogue/bandit/Stuff/leathercollar
