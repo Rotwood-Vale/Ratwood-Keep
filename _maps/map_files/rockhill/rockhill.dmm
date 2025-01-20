@@ -484,6 +484,13 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/manor)
+"anz" = (
+/obj/structure/fluff/railing/border{
+	dir = 8;
+	pixel_x = s
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "aok" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood/platform,
@@ -8862,6 +8869,12 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
+"eNG" = (
+/obj/structure/bed/rogue/inn/wooldouble,
+/obj/item/bedsheet/rogue/double_pelt,
+/obj/effect/landmark/start/seamster,
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors)
 "eNX" = (
 /obj/structure/chair/bench/couch/r,
 /obj/machinery/light/rogue/wallfire/candle/blue,
@@ -9962,6 +9975,12 @@
 	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church/chapel)
+"fsf" = (
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "fsu" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/mountains)
@@ -10029,6 +10048,11 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"fve" = (
+/obj/effect/landmark/chest_or_mimic,
+/obj/item/kitchen/ironspoon/silver,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/under/town/sewer)
 "fvK" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newleaf,
@@ -12040,6 +12064,12 @@
 /obj/structure/glowshroom,
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
+"gEg" = (
+/obj/structure/flora/roguegrass/maneater/real{
+	pixel_y = 8
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/town/sewer)
 "gEH" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 1
@@ -38234,13 +38264,6 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
-"vqL" = (
-/obj/structure/fluff/railing/border{
-	dir = 8;
-	pixel_x = s
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
 "vra" = (
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
@@ -40492,12 +40515,6 @@
 /obj/item/reagent_containers/food/snacks/deadmouse,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/sewer)
-"wCT" = (
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
 "wDj" = (
 /obj/structure/roguewindow/openclose{
 	dir = 8
@@ -209550,7 +209567,7 @@ lrs
 lrs
 lrs
 lrs
-rHO
+fve
 lrs
 lrs
 lrs
@@ -216465,7 +216482,7 @@ lrs
 lrs
 cqB
 cqB
-cqB
+gEg
 aCz
 rSC
 otg
@@ -219494,8 +219511,8 @@ cCl
 wHU
 pCT
 cTA
-vqL
-wCT
+anz
+fsf
 iTw
 qMi
 cTA
@@ -222900,7 +222917,7 @@ sYw
 sYw
 sYw
 rSC
-rSC
+cqB
 hFG
 rSC
 maJ
@@ -223765,7 +223782,7 @@ fPR
 sYw
 rSC
 aCz
-otg
+gEg
 otg
 rSC
 pVn
@@ -224195,7 +224212,7 @@ fPR
 fPR
 fPR
 sYw
-rSC
+cqB
 otg
 otg
 rSC
@@ -329637,7 +329654,7 @@ kDY
 wsY
 wsY
 ggO
-qdB
+eNG
 dlR
 wbg
 dlR
