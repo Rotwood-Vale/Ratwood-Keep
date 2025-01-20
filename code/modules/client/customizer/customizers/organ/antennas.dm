@@ -32,4 +32,7 @@
 		/datum/sprite_accessory/antenna/moth/witchwing,
 		/datum/sprite_accessory/antenna/moth/regal,
 		/datum/sprite_accessory/antenna/moth/mothra,
+		/datum/sprite_accessory/antenna/moth/brown,
+		/datum/sprite_accessory/antenna/moth/rosy,
+		/datum/sprite_accessory/antenna/moth/feathery,
 		)
