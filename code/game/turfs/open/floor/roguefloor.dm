@@ -78,8 +78,8 @@
 /turf/open/floor/rogue/twig/platform
 	name = "platform"
 	desc = "A destructible platform."
-	damage_deflection = 6
-	max_integrity = 200
+	damage_deflection = 4
+	max_integrity = 150
 	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/fence_hit1.ogg','sound/combat/hits/onwood/fence_hit2.ogg','sound/combat/hits/onwood/fence_hit3.ogg')
 
