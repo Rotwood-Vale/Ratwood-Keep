@@ -1,60 +1,235 @@
 /proc/accuracy_check(zone, mob/living/user, mob/living/target, associated_skill, datum/intent/used_intent, obj/item/I)
+	var/chance2hit = 0
 	if(!zone)
-		return
+		return triple_accuracy_failure(user, target, src, chance2hit)
 	if(user == target)
 		return zone
-	if(zone == BODY_ZONE_CHEST)
-		return zone
-	if(target.grabbedby == user)
-		if(user.grab_state >= GRAB_AGGRESSIVE)
-			return zone
 	if(!(target.mobility_flags & MOBILITY_STAND))
 		return zone
-	if( (target.dir == turn(get_dir(target,user), 180)))
+	if((target.dir == turn(get_dir(target,user), 180)))
 		return zone
+	if((target.pulledby == user && user.grab_state >= GRAB_PASSIVE) || (user.pulledby == target && target.grab_state >= GRAB_PASSIVE))
+		chance2hit += 50
+	if(target.grab_state >= GRAB_AGGRESSIVE || user.grab_state >= GRAB_AGGRESSIVE)
+		chance2hit += 50
 
-	var/chance2hit = 0
 
-	if(check_zone(zone) == zone)
-		chance2hit += 10
+	var/skilled_recovery = 0
+	if(user.mind && associated_skill)
+		skilled_recovery = user.mind.get_skill_level(associated_skill)
 
 	if(user.mind)
-		chance2hit += (user.mind.get_skill_level(associated_skill) * 7)
+		if(!associated_skill) // This is just for improvised weapons(chairs as weapons, etc. Though imo, using improvised weapons should use Unarmed.)
+			chance2hit += 15
+		else
+			chance2hit += (user.mind.get_skill_level(associated_skill) * 15) // Adjusted the numbers. Base C2H is your skill level x 15. So, it's higher/more impactful the higher your skill.
 
-	if(used_intent)
-		if(used_intent.blade_class == BCLASS_STAB)
-			chance2hit += user.STAPER
-		if(used_intent.blade_class == BCLASS_CUT)
-			chance2hit += round(user.STAPER/2)
+	if(!user.mind)
+		var/chance = 50
+		if(prob(chance))
+			return zone
+		else
+			if(prob(chance))
+				var/secondary_zone = check_zone(zone)
+				return secondary_zone
+			else
+				if(prob(chance))
+					return BODY_ZONE_CHEST
+				else
+					if(prob(chance))
+						return triple_accuracy_failure_npc(user, target)
 
+	var/mob/T = target
+	if(T && !T.cmode)
+		chance2hit += 200 // Changed to fit with the theme of "minor dodges", if someone isn't in combat mode you always have a 100% chance to hit any zone.
+
+	var/list/acc_zone_penalties = list(
+		// Precision Zones (Small/Difficult targets) : These are the targets that are small, mobile or difficult to hit precisely.
+		BODY_ZONE_PRECISE_SKULL = -25, // Top of the head
+		BODY_ZONE_PRECISE_EARS = -25, // Yeah, ears. Good luck with that in the intensity of combat.
+		BODY_ZONE_PRECISE_R_EYE = -35, // Same with eyes, tiny target. Better luck with a Dagger, but with a sword? Come on.
+		BODY_ZONE_PRECISE_L_EYE = -35, // See above
+		BODY_ZONE_PRECISE_NOSE = -30, // Bigger than the eyes, but there are better ways to go about giving someone a nosejob.
+		BODY_ZONE_PRECISE_MOUTH = -30, // Mouths are generally small on the face and used for kissing, not stabbing.
+		BODY_ZONE_PRECISE_NECK = -30, // While the neck may seem big, it's quite thin and very hard to hit in a real fight where your opponent isn't a training dummy.
+		BODY_ZONE_PRECISE_STOMACH = -10, // Smaller target than the CHEST.
+		BODY_ZONE_PRECISE_GROIN = -15, // Larger than a lot of areas but usually not stationary so long as the target has hips and legs.
+		BODY_ZONE_PRECISE_L_HAND = -15, // In the middle of combat? The Hands and Feet are fast and /incredibly/ unpredictable, you could land a few solid hits if you're skilled, but they're not a big, easy target at all.
+		BODY_ZONE_PRECISE_R_HAND = -15, // See above
+		BODY_ZONE_PRECISE_L_FOOT = -20, // See above above
+		BODY_ZONE_PRECISE_R_FOOT = -20, // See above above above
+
+		// General Body Zones
+		BODY_ZONE_HEAD = -15, // Head is a comparatively large target compared to most of the precision zones, but still mobile.
+		BODY_ZONE_CHEST = 0,
+		BODY_ZONE_L_ARM = -5, // Larger target but similarly fast and unpredictable like the attached hands and feet.
+		BODY_ZONE_R_ARM = -5, // See above
+		BODY_ZONE_L_LEG = -10, // See above
+		BODY_ZONE_R_LEG = -10 // See above
+	)
+	// Gone over the numbers again for the current lethality system and to ensure the assumed Skill Level is Journeyman.
+	// Combined with the new "Skilled Recovery", being an Expert should FEEL like you're an Expert. At least in comparison to being Journeyman.
+
+	if(zone in acc_zone_penalties)
+		chance2hit += acc_zone_penalties[zone]
+
+	// Gives shorter weapons accuracy buffs and larger, more unwieldy weapons an accuracy debuff. Decapitating someone in the middle of combat in one clean swipe is not easy.
 	if(I)
-		if(I.wlength == WLENGTH_SHORT)
-			chance2hit += 10
+		switch(I.wlength)
+			if(WLENGTH_SHORT) // Daggers and such, easy to control.
+				chance2hit += 10
+			if(WLENGTH_NORMAL) // Standard One-Handed Weapons, good control.
+				chance2hit += 5
+			if(WLENGTH_LONG) // Two-Handed weapons, decent control.
+				chance2hit += 0
+			if(WLENGTH_GREAT) // Long/Large weapons, harder to control.
+				chance2hit -= 5
 
-		chance2hit += ((user.STAPER-10)*5)
+	// Stabbing is much more precise generally speaking
+	// Cutting is less precise but still more precise than blunt weapons
+	// When using a blunt weapon, you utilize the inertia of the swing, which makes it harder to redirect your attack on a moving/dodging target
+	if(used_intent)
+		switch(used_intent.blade_class)
+			if(BCLASS_STAB)
+				chance2hit += 8 // Stabbing is precise
+			if(BCLASS_CUT)
+				chance2hit += 4 // Cutting is more precise than a big inertia based swing
+			if(BCLASS_BLUNT)
+				chance2hit -= 5 // Once again, most of the force with blunt weapons comes from the swing, if your target moves, it's harder to adjust.
+								// I might eventually include something like this if I end up making a dodge/parry rework/overhaul for that system.
+			if(BCLASS_SMASH)
+				chance2hit -= 15 // Smash is just an even more inertia reliant swing. I'm not so sure that this'll even make much of an impact on maces,
+								// since the main problem seems to be their balance as opposed to the fact they can hit chest.
 
-
+	// Reworks the PER bonus that I felt either wasn't particularly impactful or ended up too overscaled with this system.
+	if(user.mind)
+		chance2hit += (user.STAPER)
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
-		chance2hit += (user.STAPER)*2
+		chance2hit += 15 // Equivalent to one Skill Level's worth of accuracy.
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-		chance2hit -= 20
+		chance2hit -= 15 // Equivalent to one Skill Level's worth of accuracy.
 
-	chance2hit = CLAMP(chance2hit, 5, 99)
+	// Clamped C2H so we don't get 115% or -50% rolls.
+	chance2hit = CLAMP(chance2hit, 5, 95)
 
-	if(prob(chance2hit))
+	// Important Var, it's the special snowflake that contains the cumulative penalty you'll see below.
+	var/cumulative_penalty = 0
+
+	// First roll, we roll to hit and take a penalty from the limb we're trying to target. The penalty is intended to be offset by the character's skills, perception.
+	// You'll likely need Aimed Intent if you wanna hit those small spots like the eyes!
+	if(prob(chance2hit + cumulative_penalty))
+		if(user.mind && user.client && user.client.prefs && user.client.prefs.showrolls)
+			// Tasty, tasty feedback
+			var/msg_success = "Successful hit! There was a [chance2hit]% chance to hit!"
+			to_chat(user, "<span style='color: green;'>[msg_success]</span>")
 		return zone
 	else
-		if(prob(chance2hit+5))
-			if(check_zone(zone) == zone)
-				return zone
+		if(zone == BODY_ZONE_CHEST)
+			if(prob(chance2hit + cumulative_penalty))
+				return chest_accuracy_failure(user, target, src, chance2hit)
 			else
-				if(user.client?.prefs.showrolls)
-					to_chat(user, span_warning("Accuracy fail! [chance2hit]%"))
-				return check_zone(zone)
+				return triple_accuracy_failure(user, target, src, chance2hit)
+
+		// Alright, "cumulative penalty" is pretty self explanatory, so I'll be quick. When you make an attack on a small zone like the eyes, you get a penalty, in the previous version,
+		// You would get basically what amounts to a reroll. So if you target the top of the skull and miss, you get to roll again to hit the head. I thought that's dumb.
+		// So now, instead of the version where we skip the head and go straight to the CHEST, you get to reroll the zone but instead you get the penalties from both zones!
+		// If you attack the eyes, you get their acc penalty which is -50, your "secondary_zone" penalty will also be added, for the Head, that's -20. So /-70/ if you miss the eyes.  
+		cumulative_penalty += (acc_zone_penalties[zone] || 0)
+
+		// First Accuracy Fail Roll
+		if(prob(chance2hit + cumulative_penalty + (skilled_recovery * 5)))
+			return accuracy_failure(zone, user, target, src, chance2hit)
 		else
-			if(user.client?.prefs.showrolls)
-				to_chat(user, span_warning("Double accuracy fail! [chance2hit]%"))
-			return BODY_ZONE_CHEST
+			cumulative_penalty += (acc_zone_penalties[zone] || 0)
+			if(prob(chance2hit + cumulative_penalty + (skilled_recovery * 10)))
+				return double_accuracy_failure(user, target, src, chance2hit)
+			else
+				return triple_accuracy_failure(user, target, src, chance2hit)
+
+/proc/accuracy_failure(zone, mob/living/user, mob/living/target, var/src, var/chance2hit)
+	var/secondary_zone = check_zone(zone)
+
+	if(user.mind && user.client && user.client.prefs && user.client.prefs.showrolls)
+		// Debugging good.
+		var/msg = "Accuracy fail! They dodged but I made a skilled recovery on the first attempt! There was a [chance2hit]% chance to hit!"
+		to_chat(user, span_warning(msg))
+		playsound(target, 'sound/combat/dodge.ogg', 25)
+	else
+		var/nodebugmsg = "Damnit! They dodged but I made a skilled recovery on the first attempt!"
+		to_chat(user, span_warning(nodebugmsg))
+		playsound(target, 'sound/combat/dodge.ogg', 25)
+	return secondary_zone
+
+/proc/chest_accuracy_failure(mob/living/user, mob/living/target, var/src, var/chance2hit)
+
+	if(user.mind && user.client && user.client.prefs && user.client.prefs.showrolls)
+		// Debugging good.
+		var/msg = "Accuracy fail! They dodged but I made a skilled recovery on the first attempt! There was a [chance2hit]% chance to hit!"
+		to_chat(user, span_warning(msg))
+		playsound(target, 'sound/combat/dodge.ogg', 25)
+	else
+		var/nodebugmsg = "Damnit! They dodged but I made a skilled recovery on the first attempt!"
+		to_chat(user, span_warning(nodebugmsg))
+		playsound(target, 'sound/combat/dodge.ogg', 25)
+	return BODY_ZONE_CHEST
+
+/proc/double_accuracy_failure(mob/living/user, mob/living/target, var/src, var/chance2hit)
+
+	if(user.mind && user.client && user.client.prefs && user.client.prefs.showrolls)
+		var/msg2 = "Double accuracy fail! They dodged but I made a skilled recovery on the second attempt! There was a [chance2hit]% chance to hit!"
+		to_chat(user, span_warning(msg2))
+		playsound(target, 'sound/combat/dodge.ogg', 50)
+	else
+		var/nodebugmsg2 = "Damnit! They dodged but I made a skilled recovery on the second attempt!"
+		to_chat(user, span_warning(nodebugmsg2))
+		playsound(target, 'sound/combat/dodge.ogg', 50)
+	return BODY_ZONE_CHEST
+
+/proc/triple_accuracy_failure(mob/living/user, mob/living/target, var/src, var/chance2hit, atom/A)
+	if(!user)
+		return FALSE
+
+	if(!user.used_intent)
+		user.used_intent = new /datum/intent/unarmed
+	var/turf/T = get_turf(target)
+	var/datum/intent/i = user.used_intent
+
+	if(user.mind && user.client && user.client.prefs && user.client.prefs.showrolls)
+		// This is just for seeing how awfully you failed. -70 commonly puts you at 0 for your roll. Maybe aim for something easier to hit, Mr.Novice Swordsmanship...
+		triple_accuracy_failure_rolls_on(user, target, i, T, chance2hit)
+	else
+		triple_accuracy_failure_rolls_off(user, target, i, T, chance2hit)
+	return FALSE
+
+/proc/triple_accuracy_failure_rolls_on(mob/living/user, mob/living/target, datum/intent/i, turf/T, var/chance2hit)
+	var/msg3 = "Triple Accuracy Fail! Damnit! They dodged at the last second! I missed with a [chance2hit]% chance to hit!"
+	to_chat(user, span_warning(msg3))
+	playsound(target, "sound/combat/dodge.ogg", 75)
+	user.do_attack_animation(T, i.animname, null, 0)
+	if(i.miss_sound)
+		playsound(get_turf(user), i.miss_sound, 75, FALSE)
+	target.visible_message(span_warning("<b>[target]</b> dodges [user]'s attack!"))
+	user.aftermiss()
+
+/proc/triple_accuracy_failure_rolls_off(mob/living/user, mob/living/target, datum/intent/i, turf/T, var/chance2hit)
+	var/nodebugmsg3 = "Damnit! They dodged at the last second! I missed!"
+	to_chat(user, span_warning(nodebugmsg3))
+	playsound(target, "sound/combat/dodge.ogg", 75)
+	user.do_attack_animation(target, i.animname, null, 0)
+	if(i.miss_sound)
+		playsound(get_turf(user), i.miss_sound, 75, FALSE)
+	target.visible_message(span_warning("<b>[target]</b> dodges [user]'s attack!"))
+	user.aftermiss()
+
+/proc/triple_accuracy_failure_npc(mob/living/user, mob/living/target, datum/intent/i, turf/T, var/chance2hit)
+	playsound(target, "sound/combat/dodge.ogg", 75)
+	var/anim_effect = (i && i.animname != "" ? i.animname : "strike")
+	user.do_attack_animation(target, anim_effect, null, 0)
+	if(i && i.miss_sound)
+		playsound(get_turf(user), i.miss_sound, 75, FALSE)
+	target.visible_message(span_warning("<b>[target]</b> dodges [user]'s attack!"))
+	user.aftermiss()
+
 
 /mob/proc/get_generic_parry_drain()
 	return 30
@@ -113,6 +288,8 @@
 
 	switch(d_intent)
 		if(INTENT_PARRY)
+			if(triple_accuracy_failure())
+				return FALSE
 			if(HAS_TRAIT(src, TRAIT_CHUNKYFINGERS))
 				return FALSE
 			if(pulledby == user && pulledby.grab_state >= GRAB_AGGRESSIVE)
@@ -248,6 +425,8 @@
 					testing("failparry")
 					return FALSE
 		if(INTENT_DODGE)
+			if(triple_accuracy_failure())
+				return FALSE
 			if(pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE)
 				return FALSE
 			if(pulling == user)

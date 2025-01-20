@@ -1184,6 +1184,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 */
 		var/selzone = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
 
+		if(selzone == FALSE)
+			return triple_accuracy_failure(user, target, src, chance2hit)
+		
 		var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 
 		if(!affecting)
