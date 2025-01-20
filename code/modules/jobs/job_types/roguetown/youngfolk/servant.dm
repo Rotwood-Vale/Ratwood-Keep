@@ -45,23 +45,28 @@
 
 /datum/subclass/servant/groundkeeper
 	name = "Groundkeeper"
-	tutorial = "You're just a servant who's sole purpose is keeping the manor in good condition."
+	tutorial = "Cleaning, repairs, chores... The manor must always look great and presentable for the unexpected guests. \
+	It is within your responsibility to make sure the keep stays in decent conditions."
 	outfit = /datum/outfit/job/roguetown/servant/groundkeeper
 	category_tags = list(CTAG_SERVANT)
 	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
 
 /datum/outfit/job/roguetown/servant/groundkeeper/pre_equip(mob/living/carbon/human/H)
-	backpack_contents = list(/obj/item/needle = 1)
+	backpack_contents = list(/obj/item/needle = 1, /obj/item/soap = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		if(H.gender == MALE)
+			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+		if(H.gender == FEMALE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		if(!isseelie(H))
 			H.change_stat("strength", -1)
 			H.change_stat("constitution", -1)
@@ -77,7 +82,8 @@
 
 /datum/subclass/servant/chef
 	name = "Chef"
-	tutorial = "You are Their Lordship's favorite cook. Do NOT to put poison into the meals."
+	tutorial = "You are Their Lordship's favorite cook. Your task is simple: prepare feasts, feed the nobles and the retinue. \
+	Why wouldnt you brew a barrel full of wine or something else as well? And remember... Do NOT put bad berries into your meals."
 	outfit = /datum/outfit/job/roguetown/servant/chef
 	category_tags = list(CTAG_SERVANT)
 	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
@@ -115,7 +121,8 @@
 /datum/subclass/servant/bankrupt
 	name = "Bankrupt Aristocrat"
 	tutorial = "You were born into low nobility, but unfortunately for you your family has gone bankrupt. \
-	Now you must work alongside with peasants in order to pay your debts back. Hide your true identity from the others."
+	The crown of Rockhill agreed to pay your debts off in return for your service, but you didnt expect them to make you a literal servant. \
+	Now you must find your way back into the high society, as well as hide your shame of lowlife work."
 	outfit = /datum/outfit/job/roguetown/servant/bankrupt
 	category_tags = list(CTAG_SERVANT)
 	allowed_races = RACES_SHUNNED_UP

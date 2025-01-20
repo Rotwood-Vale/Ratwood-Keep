@@ -49,13 +49,14 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rope/chain = 1)
 
-/datum/subclass/squire/knight
-	name = "Knight in Training"
-	tutorial = "Born into nobility, you are yet to become a real knight. Yet, the Gods smile upon you. Train hard and eventually you will be the one in need of a squire."
-	outfit = /datum/outfit/job/roguetown/squire/knight
+/datum/subclass/squire/Page
+	name = "Page"
+	tutorial = "Born into nobility, you are yet to become a real knight. Yet, the Gods smile upon you, so eventually you will be the one in need of a squire. \
+	A riddle, little one, who is superior: a noble squire or an unremarkable man-at-arms?"
+	outfit = /datum/outfit/job/roguetown/squire/page
 	category_tags = list(CTAG_SQUIRE)
 
-/datum/outfit/job/roguetown/squire/knight/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/squire/page/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	if(H.mind)
@@ -82,13 +83,14 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-/datum/subclass/squire/apprentice
-	name = "Diligent Apprentice"
-	tutorial = "You are a freshly enlisted fellow yet to be ready serve your liege on your own. You knight will take care of your training as well as you shall take care of them."
-	outfit = /datum/outfit/job/roguetown/squire/apprentice
+/datum/subclass/squire/recruit
+	name = "Recruit"
+	tutorial = "You are a freshly enlisted fellow yet to be ready serve your liege on your own. You knight will take care of your training as well as you shall take care of them. \
+	Thanks to your diligence, you are outperform lots of your kins in battle."
+	outfit = /datum/outfit/job/roguetown/squire/recruit
 	category_tags = list(CTAG_SQUIRE)
 
-/datum/outfit/job/roguetown/squire/apprentice/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/squire/recruit/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	if(H.mind)
@@ -115,9 +117,10 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/subclass/squire/levy
-	name = "Levy Recruit"
-	tutorial = "You were supposed to live a lyfe of a humble farmer, yet the lyfe had other plans for you. Taken away from your parents, you joined the ranks of levies."
-	outfit = /datum/outfit/job/roguetown/squire/apprentice
+	name = "Levy"
+	tutorial = "You were supposed to live a lyfe of a humble farmer, yet the lyfe had other plans for you. Taken away from your parents, you joined the ranks of levies. \
+	Nobody knows how far you could go with your commoner education living among nobles and experienced warriors. But hey, lyfe in the village taught you a lot."
+	outfit = /datum/outfit/job/roguetown/squire/levy
 	category_tags = list(CTAG_SQUIRE)
 
 /datum/outfit/job/roguetown/squire/levy/pre_equip(mob/living/carbon/human/H)

@@ -28,13 +28,14 @@
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
 
-/datum/subclass/clerk/treasurer
-	name = "Young Treasurer"
-	tutorial = "You are a noble given the Steward's apprenticeship. It is your calling that eventually you will take your master's place."
-	outfit = /datum/outfit/job/roguetown/clerk/treasurer
+/datum/subclass/clerk/apprentice
+	name = "Noble Apprentice"
+	tutorial = "You were born in a noble family and the moment you grew up, your parents decided to give you under apprenticeship of the Steward. \
+	It is your calling that eventually you will take your master's place, but for now, you must follow the Steward's orders and lessons."
+	outfit = /datum/outfit/job/roguetown/clerk/apprentice
 	category_tags = list(CTAG_CLERK)
 
-/datum/outfit/job/roguetown/clerk/treasurer/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/clerk/apprentice/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
@@ -63,13 +64,14 @@
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
-/datum/subclass/clerk/peasant
-	name = "Exceptional Peasant"
-	tutorial = "You might've already starved to death, but luckily for you the Steward noticed your capabilities and gave you an offer that changed your lyfe. Dont disappoint your master."
-	outfit = /datum/outfit/job/roguetown/clerk/peasant
+/datum/subclass/clerk/assistant
+	name = "Ignoble Assistant"
+	tutorial = "You might've already starved to death, but luckily for you the Steward noticed your capabilities and gave you an offer that changed your lyfe. \
+	It is a rare occasion for a commoner to be granted a great honor of apprenticeship in the matters of coin. Dont disappoint your master."
+	outfit = /datum/outfit/job/roguetown/clerk/assistant
 	category_tags = list(CTAG_CLERK)
 
-/datum/outfit/job/roguetown/clerk/peasant/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/clerk/assistant/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan

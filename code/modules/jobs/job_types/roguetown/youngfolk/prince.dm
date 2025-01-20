@@ -49,13 +49,14 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 
-/datum/subclass/prince/devout
-	name = "Devout Successor"
-	tutorial = "Your fate was already defined the moment you were born. One dae you shall inherit the throne and your father's realm. But for now, you can just enjoy your highborn lyfe."
-	outfit = /datum/outfit/job/roguetown/prince/devout
+/datum/subclass/prince/sheltered
+	name = "Sheltered Successor"
+	tutorial = "Your fate was already defined the moment you were born. One dae you shall inherit the throne and your father's realm. \
+	But for now, you can just enjoy your highborn lyfe."
+	outfit = /datum/outfit/job/roguetown/prince/sheltered
 	category_tags = list(CTAG_HEIR)
 
-/datum/outfit/job/roguetown/prince/devout/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/prince/sheltered/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
@@ -87,7 +88,8 @@
 
 /datum/subclass/prince/militant
 	name = "Militant"
-	tutorial = "All this aristocratic haughtiness has never been for you, your heart desired battle instead. Given the opportunity, you'd lead the retinue into battle personally."
+	tutorial = "All this aristocratic haughtiness has never been for you, your heart desired battle instead. \
+	Given the opportunity, you'd lead the retinue into battle personally."
 	outfit = /datum/outfit/job/roguetown/prince/militant
 	category_tags = list(CTAG_HEIR)
 
@@ -121,7 +123,8 @@
 
 /datum/subclass/prince/bookworm
 	name = "Bookworm"
-	tutorial = "You have never felt fancy about company of the others. Knowledge however is your desire. Through the years you studied lots of arts and given the time you'd study a lot more."
+	tutorial = "You have never felt fancy about company of the others. Knowledge however is your desire. \
+	Through the years you studied lots of arts and given the time you'd study a lot more."
 	outfit = /datum/outfit/job/roguetown/prince/bookworm
 	category_tags = list(CTAG_HEIR)
 
