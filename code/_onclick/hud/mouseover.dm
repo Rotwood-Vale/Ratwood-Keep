@@ -161,8 +161,7 @@
 	icon = 'icons/mouseover.dmi'
 	icon_state = "mouseover"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	layer = ABOVE_HUD_LAYER+3
-	plane = HUD_PLANE + 1
+	layer = ABOVE_HUD_LAYER+1
 
 /atom/movable/screen/movable/mouseover/maptext
 	name = ""

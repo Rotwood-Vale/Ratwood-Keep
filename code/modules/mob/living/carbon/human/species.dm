@@ -2056,6 +2056,46 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	T.wagging = FALSE
 	H.update_body_parts(TRUE)
 
+////////////////
+//Wing Opening//
+////////////////
+
+/datum/species/proc/can_flare_wings(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return FALSE
+	var/obj/item/organ/wings/W = H.getorganslot(ORGAN_SLOT_WINGS)
+	if(!W)
+		return FALSE
+	if(W.can_open)
+		return TRUE
+	return FALSE
+
+/datum/species/proc/is_flaring_wings(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return FALSE
+	var/obj/item/organ/wings/W = H.getorganslot(ORGAN_SLOT_WINGS)
+	if(!W)
+		return FALSE
+	return W.is_open
+
+/datum/species/proc/start_flaring_wings(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return
+	var/obj/item/organ/wings/W = H.getorganslot(ORGAN_SLOT_WINGS)
+	if(!W)
+		return FALSE
+	W.is_open = TRUE
+	H.update_body_parts(TRUE)
+
+/datum/species/proc/stop_flaring_wings(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return
+	var/obj/item/organ/wings/W = H.getorganslot(ORGAN_SLOT_WINGS)
+	if(!W)
+		return
+	W.is_open = FALSE
+	H.update_body_parts(TRUE)
+
 ///////////////
 //FLIGHT SHIT//
 ///////////////

@@ -144,9 +144,6 @@
 	light_height = 0
 	metalizer_result = /obj/item/flashlight/flare/torch/lantern
 
-	grid_width = 32
-	grid_height = 32
-
 /obj/item/flashlight/flare/torch/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -266,9 +263,6 @@
 	var/max_occupants = 1 //Hard-cap so you can't have multiple seelie in one carrier
 	metalizer_result = null
 	smeltresult = /obj/item/ingot/iron
-	
-	grid_height = 64
-	grid_width = 64
 
 /obj/item/flashlight/flare/torch/lantern/process()
 	open_flame(heat)

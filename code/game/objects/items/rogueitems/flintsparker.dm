@@ -12,9 +12,6 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	w_class = WEIGHT_CLASS_TINY
 
-	grid_height = 32
-	grid_width = 32
-
 /obj/item/flint/attack_self(mob/living/user)
 	if(world.time < flintcd + 10)
 		return
