@@ -137,12 +137,9 @@ All foods are distributed among various categories. Use common sense.
 			return FALSE
 		else
 			var/obj/item/reagent_containers/NU = new become_rot_type(loc)
-			var/atom/movable/location = loc
 			NU.reagents.clear_reagents()
 			reagents.trans_to(NU.reagents, reagents.maximum_volume)
 			qdel(src)
-			if(!location || !SEND_SIGNAL(location, COMSIG_TRY_STORAGE_INSERT, NU, null, TRUE, TRUE))
-				NU.forceMove(get_turf(NU.loc))
 			return TRUE
 	else
 		color = "#6c6897"
@@ -403,7 +400,7 @@ All foods are distributed among various categories. Use common sense.
 			!isturf(src.loc) || \
 			!(locate(/obj/structure/table) in src.loc) && \
 			!(locate(/obj/structure/table/optable) in src.loc) && \
-			!(locate(/obj/item/storage/tray) in src.loc) \
+			!(locate(/obj/item/storage/bag/tray) in src.loc) \
 		)
 		to_chat(user, span_warning("I need to use a table."))
 		return FALSE

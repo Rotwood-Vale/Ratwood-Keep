@@ -5,9 +5,6 @@
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "lovebottle"
 
-	grid_height = 64
-	grid_width = 32
-
 /obj/item/lovepotion/attack(mob/living/carbon/human/M, mob/user)
 	if(!isliving(M) || M.stat == DEAD)
 		to_chat(user, span_warning("A love potion can only be metabolized by living beings. I'd best not waste it!"))
