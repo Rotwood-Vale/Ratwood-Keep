@@ -128,7 +128,7 @@
 	icon_state = "ingotiron"
 	smeltresult = /obj/item/ingot/iron
 	grind_results = list(/datum/reagent/iron = 15)
-	sellprice = 25
+	sellprice = 20
 
 /obj/item/ingot/copper
 	name = "copper bar"
@@ -136,14 +136,14 @@
 	icon_state = "ingotcop"
 	smeltresult = /obj/item/ingot/copper
 	grind_results = list(/datum/reagent/copper = 15)
-	sellprice = 25
+	sellprice = 20
 
 /obj/item/ingot/tin
 	name = "tin bar"
 	desc = "An ingot of strangely soft and malleable essence."
 	icon_state = "ingottin"
 	smeltresult = /obj/item/ingot/tin
-	sellprice = 25
+	sellprice = 20
 
 /obj/item/ingot/bronze
 	name = "bronze bar"
@@ -165,7 +165,7 @@
 	desc = "This ingot is a stalwart defender of the kingdom."
 	icon_state = "ingotsteel"
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 40
+	sellprice = 30
 
 /obj/item/ingot/blacksteel
 	name = "blacksteel bar"

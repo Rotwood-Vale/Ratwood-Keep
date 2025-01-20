@@ -60,12 +60,17 @@
 
 /datum/supply_pack/rogue/weapons/daggerss
 	name = "Steel Daggers"
-	cost = 105 //3 steel
+	cost = 90 //3 steel
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 				)
+
+/datum/supply_pack/rogue/weapons/daggerss/single
+	name = "Steel Dagger"
+	cost = 40
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
 
 /datum/supply_pack/rogue/weapons/shield
 	name = "Wooden Shields"
@@ -78,12 +83,17 @@
 
 /datum/supply_pack/rogue/weapons/crossbow
 	name = "Crossbows"
-	cost = 120// 3 steel + misc
+	cost = 105// 3 steel + misc
 	contains = list(
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 				)
+
+/datum/supply_pack/rogue/weapons/crossbow/single
+	name = "Crossbow"
+	cost = 40
+	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
 
 /datum/supply_pack/rogue/weapons/bow
 	name = "Bows"
@@ -123,6 +133,11 @@
 					/obj/item/ammo_holder/quiver/arrows,
 				)
 
+/datum/supply_pack/rogue/weapons/quivers/arrows/single
+	name = "Quiver of Arrows"
+	cost = 30
+	contains = list(/obj/item/ammo_holder/quiver/arrows)
+
 /datum/supply_pack/rogue/weapons/quivers/bolts
 	name = "Quiver of Bolts"
 	cost = 60//3 iron
@@ -132,6 +147,10 @@
 					/obj/item/ammo_holder/quiver/bolts,
 				)
 
+/datum/supply_pack/rogue/weapons/quivers/bolts/single
+	name = "Quiver of Bolts"
+	cost = 30
+	contains = list(/obj/item/ammo_holder/quiver/bolts)
 /*
 /datum/supply_pack/rogue/weapons/Parrows
 	name = "Poisoned Arrows"
@@ -165,3 +184,27 @@
 					)
 */
 
+/datum/supply_pack/rogue/weapons/arquebus
+	name = "Arquebus Rifle"
+	cost = 100
+	contains = list(/obj/item/gun/ballistic/arquebus)
+
+/datum/supply_pack/rogue/weapons/handgonne
+	name = "Handgonne"
+	cost = 60
+	contains = list(/obj/item/gun/ballistic/handgonne)
+
+/datum/supply_pack/rogue/weapons/powderflask
+	name = "Powderflask"
+	cost = 30
+	contains = list(/obj/item/powderflask)
+
+/datum/supply_pack/rogue/weapons/bullet
+	name = "Bullet Pouch (lead)"
+	cost = 40
+	contains = list(/obj/item/ammo_holder/bullet/lead)
+
+/datum/supply_pack/rogue/weapons/bullet/grape
+	name = "Bullet Pouch (grape)"
+	cost = 40
+	contains = list(/obj/item/ammo_holder/bullet/grapeshot)
