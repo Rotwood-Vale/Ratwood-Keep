@@ -1782,6 +1782,13 @@
 /obj/structure/plasticflaps,
 /turf/open/water/swamp/deep,
 /area/rogue/under/town/sewer)
+"baa" = (
+/obj/structure/fluff/railing/border{
+	dir = 5
+	},
+/obj/structure/stairs/stone,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "bao" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -4448,6 +4455,9 @@
 "cyg" = (
 /obj/structure/stairs/stone,
 /obj/structure/stairs/stone,
+/obj/structure/fluff/railing/border{
+	dir = 5
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "cyr" = (
@@ -8877,6 +8887,12 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/cave)
+"eON" = (
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/church)
 "ePc" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -28902,6 +28918,12 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
+"pTU" = (
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors)
 "pUl" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -30259,6 +30281,11 @@
 	dir = 6;
 	pixel_x = -8;
 	pixel_y = -8
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w";
+	pixel_y = 1
 	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/tavern)
@@ -245804,7 +245831,7 @@ frO
 vtq
 cZY
 bfx
-pzv
+hkm
 plx
 bTS
 uoQ
@@ -246236,7 +246263,7 @@ mfg
 tft
 cGK
 npm
-pzv
+hkm
 aOb
 gMO
 otg
@@ -328714,7 +328741,7 @@ xIh
 uRd
 rOQ
 vdZ
-edF
+jbJ
 qJm
 eZR
 vJJ
@@ -328757,7 +328784,7 @@ qQE
 kYX
 jCh
 jMi
-wlD
+eDl
 pAV
 pAV
 pAV
@@ -329189,7 +329216,7 @@ jak
 cDC
 jCh
 fIT
-rws
+baa
 pAV
 pAV
 aQJ
@@ -349861,7 +349888,7 @@ hXf
 iXq
 iXq
 iXq
-iXq
+hXf
 pNg
 ihm
 oIZ
@@ -359400,8 +359427,8 @@ eBN
 fLC
 eBN
 qPA
-bCk
-bCk
+eON
+eON
 noB
 qSY
 uKB
@@ -438918,7 +438945,7 @@ pAV
 vFq
 oBq
 jCh
-jCh
+jMi
 eDl
 pAV
 pAV
@@ -439350,7 +439377,7 @@ pAV
 iCV
 kYX
 jCh
-jCh
+fIT
 cyg
 pAV
 pAV
@@ -439783,7 +439810,7 @@ xjS
 bEY
 eSQ
 eSQ
-wlD
+pTU
 yeN
 yeN
 mnV
