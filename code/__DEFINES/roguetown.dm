@@ -318,8 +318,16 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercs
 #define CTAG_HENCH			"CAT_HENCH"			// Whitevein Guards
 
+//Courtiers
+#define CTAG_SERVANT		"CAT_SERVANT"		// Maids and butlers
+#define CTAG_CLERK			"CAT_CLERK"			// Clerks
+
 //Garrison
-#define CTAG_BOG			"CAT_BOG"			//Vanguard
+#define CTAG_BOG			"CAT_BOG"			// Vanguard
+#define CTAG_SQUIRE			"CAT_SQUIRE"		// Squires
+
+//Nobles			Eventually all of them will get their subclasses
+#define CTAG_HEIR			"CAT_HEIR"			// Heirs
 
 //Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
