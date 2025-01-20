@@ -79,15 +79,13 @@
 		return
 	if(G.base_type != base_type)
 		return
-	if(user)
-		if(user.get_inactive_held_item() != G && !isturf(G.loc) && user.get_active_held_item() != G)
-			return
 
 	var/amt_to_merge = min(G.quantity, MAX_COIN_STACK_SIZE - quantity)
 	if(amt_to_merge <= 0)
 		return
 	set_quantity(quantity + amt_to_merge)
 	last_merged_heads_tails = G.heads_tails
+
 	G.set_quantity(G.quantity - amt_to_merge)
 	if(G.quantity == 0)
 		user.doUnEquip(G)
@@ -173,10 +171,7 @@
 /obj/item/roguecoin/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/roguecoin))
 		var/obj/item/roguecoin/G = I
-		if(item_flags & IN_STORAGE)
-			merge(G, user)
-		else
-			G.merge(src, user)
+		merge(G, user)
 		return
 	return ..()
 
