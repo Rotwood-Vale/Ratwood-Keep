@@ -1,7 +1,7 @@
 /datum/triumph_buy/giant
 	triumph_buy_id = "Giant"
-	desc = "You are a giant!"
-	triumph_cost = 25
+	desc = "Giant! Not working on a kobold, seelie, verminvolk or a dwarf."
+	triumph_cost = 10
 	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
