@@ -27,11 +27,11 @@
 	if(locate(/obj/machinery/anvil) in attacked_object.loc)
 		repair_percent *= 2 // Double the repair amount if we're using an anvil
 	var/exp_gained = 0
-	
+
 	if(isbodypart(attacked_object) && !user.cmode)
 		var/obj/item/bodypart/attacked_prosthetic = attacked_object
 		var/total_damage = attacked_prosthetic.brute_dam + attacked_prosthetic.burn_dam
-		if(!attacked_prosthetic.anvilrepair || ((total_damage >= attacked_prosthetic.max_damage) && (attacked_prosthetic.obj_integrity >= attacked_prosthetic.max_integrity)) || !isturf(attacked_prosthetic.loc))
+		if(!attacked_prosthetic.anvilrepair || !isturf(attacked_prosthetic.loc))
 			return
 		if((total_damage <= 0) && (attacked_prosthetic.obj_integrity >= attacked_prosthetic.max_integrity))
 			return
@@ -52,10 +52,9 @@
 			attacked_prosthetic.burn_dam = max(attacked_prosthetic.burn_dam - repair_percent, 0)
 			total_damage = attacked_prosthetic.brute_dam + attacked_prosthetic.burn_dam
 			attacked_prosthetic.obj_integrity = min(attacked_prosthetic.obj_integrity + repair_percent, attacked_prosthetic.max_integrity)
-			attacked_prosthetic.heal_wounds(100) //yeah fuck it, it's 2am and I've been coding since 6pm - wow50000
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_prosthetic]."))
-			else	
+			else
 				user.visible_message(span_info("[user] repairs [attacked_prosthetic]!"))
 			blacksmith_mind.add_sleep_experience(attacked_prosthetic.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
 			return
@@ -88,7 +87,7 @@
 			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
-			else	
+			else
 				user.visible_message(span_info("[user] repairs [attacked_item]!"))
 			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
 			return
