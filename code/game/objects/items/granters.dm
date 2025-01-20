@@ -44,7 +44,7 @@
 		recoil(user)
 		return FALSE
 	if(reading)
-		to_chat(user, span_warning("You're already reading this!"))
+		to_chat(user, span_warning("I'm already reading this!"))
 		return FALSE
 	if(!user.can_read(src))
 		return FALSE
@@ -54,9 +54,9 @@
 	if(user.STAINT < 12)
 			to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
 			return FALSE */
-	if(used)
-		if(oneuse)
-			recoil(user)
+	if(used && oneuse)
+		to_chat(user, span_warning("This fount of knowledge was not meant to be sipped from twice!"))
+		recoil(user)
 		return FALSE
 	on_reading_start(user)
 	reading = TRUE
