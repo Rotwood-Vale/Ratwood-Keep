@@ -5,7 +5,6 @@
 	var/rummage_if_nodrop = TRUE
 	var/component_type = /datum/component/storage/concrete
 	obj_flags = CAN_BE_HIT
-	var/list/populate_contents = list()
 
 /obj/item/storage/get_dumping_location(obj/item/storage/source,mob/user)
 	return src
@@ -41,13 +40,6 @@
 //Cyberboss says: "USE THIS TO FILL IT, NOT INITIALIZE OR NEW"
 
 /obj/item/storage/proc/PopulateContents()
-	for(var/path in populate_contents)
-		var/obj/item/new_item = new path(loc)
-		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
-			new_item.inventory_flip(null, TRUE)
-			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
-				testing("Deleting:[new_item] from [src]")
-				qdel(new_item)
 
 /obj/item/storage/proc/emptyStorage()
 	var/datum/component/storage/ST = GetComponent(/datum/component/storage)

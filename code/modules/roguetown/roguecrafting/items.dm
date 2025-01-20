@@ -236,8 +236,8 @@
 
 /datum/crafting_recipe/roguetown/woodtray
 	name = "wooden trays (x2)"
-	result = list(/obj/item/storage/tray,
-				/obj/item/storage/tray)
+	result = list(/obj/item/storage/bag/tray,
+				/obj/item/storage/bag/tray)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /datum/crafting_recipe/roguetown/woodbowl
@@ -497,8 +497,8 @@
 
 /datum/crafting_recipe/roguetown/sawedoff
 	name = "handgonne"
-	result = /obj/item/gun/ballistic/handgonne
-	reqs = list(/obj/item/gun/ballistic/arquebus = 1)
+	result = /obj/item/gun/ballistic/firearm/handgonne
+	reqs = list(/obj/item/gun/ballistic/firearm/arquebus = 1)
 	skill_level = 0
 	tools = list(/obj/item/rogueweapon/surgery/saw = 1)
 

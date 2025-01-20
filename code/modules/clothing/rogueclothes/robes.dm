@@ -85,10 +85,10 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/robe/black
-	color = null
+	color = "#222222"
 
 /obj/item/clothing/suit/roguetown/shirt/robe/white
-	color = null
+	color = "#F9F9F9"
 
 /obj/item/clothing/suit/roguetown/shirt/robe/priest
 	name = "solar vestments"

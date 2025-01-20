@@ -96,14 +96,11 @@
 				if(prob(L.STASPD * 1.5))
 					..()
 				else
-					if(item_flags & IN_STORAGE)
-						..()
-					else
-						dir = pick(GLOB.cardinals)
-						step(src, dir)
-						to_chat(user, span_warning("I fail to snatch it by the tail!"))
-						playsound(src, pick('sound/vo/mobs/rat/rat_life.ogg','sound/vo/mobs/rat/rat_life2.ogg','sound/vo/mobs/rat/rat_life3.ogg'), 100, TRUE, -1)
-						return
+					dir = pick(GLOB.cardinals)
+					step(src, dir)
+					to_chat(user, span_warning("I fail to snatch it by the tail!"))
+					playsound(src, pick('sound/vo/mobs/rat/rat_life.ogg','sound/vo/mobs/rat/rat_life2.ogg','sound/vo/mobs/rat/rat_life3.ogg'), 100, TRUE, -1)
+					return
 	..()
 
 /obj/item/reagent_containers/food/snacks/smallrat/process()

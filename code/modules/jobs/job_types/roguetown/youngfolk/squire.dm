@@ -35,6 +35,17 @@
 		H.change_stat(STAT_PERCEPTION, 1)
 		H.change_stat(STAT_CONSTITUTION, 1)
 		H.change_stat(STAT_SPEED, 1)
+	if(H.gender == MALE)
+		pants = /obj/item/clothing/under/roguetown/tights
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
+		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+		shoes = /obj/item/clothing/shoes/roguetown/armor
+		belt = /obj/item/storage/belt/rogue/leather
+		beltl = /obj/item/storage/keyring/servant
+		beltr = /obj/item/rogueweapon/sword/short
+		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+		backr = /obj/item/storage/backpack/rogue/satchel
+	else
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
