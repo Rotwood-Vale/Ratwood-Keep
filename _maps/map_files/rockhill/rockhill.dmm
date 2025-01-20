@@ -38234,6 +38234,13 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
+"vqL" = (
+/obj/structure/fluff/railing/border{
+	dir = 8;
+	pixel_x = s
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "vra" = (
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
@@ -40485,6 +40492,12 @@
 /obj/item/reagent_containers/food/snacks/deadmouse,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/sewer)
+"wCT" = (
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "wDj" = (
 /obj/structure/roguewindow/openclose{
 	dir = 8
@@ -43419,9 +43432,6 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "ygR" = (
-/obj/item/storage/tray,
-/obj/item/storage/tray,
-/obj/item/storage/tray,
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/reagent_containers/glass/bowl,
@@ -218620,7 +218630,7 @@ scn
 scn
 aVQ
 cTA
-cBf
+fPR
 aJk
 cTA
 cTA
@@ -219052,7 +219062,7 @@ scn
 cCl
 cBf
 cTA
-cBf
+fPR
 aJk
 cTA
 cTA
@@ -219484,8 +219494,8 @@ cCl
 wHU
 pCT
 cTA
-cBf
-iTw
+vqL
+wCT
 iTw
 qMi
 cTA
