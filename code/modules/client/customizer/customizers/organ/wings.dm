@@ -21,6 +21,7 @@
 		/datum/sprite_accessory/wings/feathery,
 		/datum/sprite_accessory/wings/wide/succubus,
 		/datum/sprite_accessory/wings/bee,
+		/datum/sprite_accessory/wings/large/angelalt,
 		/datum/sprite_accessory/wings/wide/dragon_alt1,
 		/datum/sprite_accessory/wings/wide/dragon_alt2,
 		/datum/sprite_accessory/wings/wide/harpywings,
@@ -33,6 +34,7 @@
 		/datum/sprite_accessory/wings/wide/low_wings_top,
 		/datum/sprite_accessory/wings/wide/spider,
 		/datum/sprite_accessory/wings/huge/dragon,
+		/datum/sprite_accessory/wings/huge/angel,
 		/datum/sprite_accessory/wings/large/harpyswept,
 		)
 
@@ -43,6 +45,8 @@
 	name = "Fluvian Wings"
 	organ_type = /obj/item/organ/wings/moth
 	sprite_accessories = list(
+		/datum/sprite_accessory/wings/huge/megamoth,
+		/datum/sprite_accessory/wings/huge/mothra,
 		/datum/sprite_accessory/wings/moth/plain,
 		/datum/sprite_accessory/wings/moth/monarch,
 		/datum/sprite_accessory/wings/moth/luna,
@@ -81,6 +85,7 @@
 		/datum/sprite_accessory/wings/bee,
 		/datum/sprite_accessory/wings/bat,
 		/datum/sprite_accessory/wings/feathery,
+		/datum/sprite_accessory/wings/large/angelalt,
 		/datum/sprite_accessory/wings/wide/succubus,
 		/datum/sprite_accessory/wings/bee,
 		/datum/sprite_accessory/wings/wide/dragon_alt1,
@@ -91,9 +96,13 @@
 		/datum/sprite_accessory/wings/wide/harpywings_top,
 		/datum/sprite_accessory/wings/wide/harpywingsalt1_top,
 		/datum/sprite_accessory/wings/wide/harpywingsalt2_top,
+		/datum/sprite_accessory/wings/large/harpyswept,
 		/datum/sprite_accessory/wings/wide/low_wings,
 		/datum/sprite_accessory/wings/wide/low_wings_top,
 		/datum/sprite_accessory/wings/huge/dragon,
+		/datum/sprite_accessory/wings/huge/angel,
+		/datum/sprite_accessory/wings/huge/megamoth,
+		/datum/sprite_accessory/wings/huge/mothra,
 		/datum/sprite_accessory/wings/large/harpyswept,
 		/datum/sprite_accessory/wings/moth/plain,
 		/datum/sprite_accessory/wings/moth/monarch,

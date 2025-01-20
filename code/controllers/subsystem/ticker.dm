@@ -549,7 +549,6 @@ SUBSYSTEM_DEF(ticker)
 				var/atom/movable/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
 			livings += living
-			GLOB.character_ckey_list[living.real_name] = living.ckey
 			if(ishuman(living))
 				try_apply_character_post_equipment(living)
 	if(livings.len)
