@@ -1,5 +1,5 @@
 // This mode will become the main basis for the typical roguetown round. Based off of chaos mode.
-var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "None", "Aspirants", "Bandits", "Maniac", "Cultists", "Lich", "CANCEL") // This is mainly used for forcemgamemodes
+var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "None", "Aspirants", "Bandits", "Maniac", "Cultists", "Lich", "Siege", "CANCEL") // This is mainly used for forcemgamemodes
 
 /datum/game_mode/chaosmode
 	name = "roguemode"
@@ -159,12 +159,15 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				if("Cultists")
 					pick_cultist()
 					log_game("Major Antagonist: Cultists")
+				if("Siege")
+					pick_siegers()
+					log_game("Major Antagonist: Siege")
 				if("None")
 					log_game("Major Antagonist: None")
 		return TRUE
 
 	if(num_players() >= 64)
-		var/major_roll_highpop = pick(1,2,3,4)
+		var/major_roll_highpop = pick(1,2,3,4,5)
 		switch(major_roll_highpop)
 			if(1)
 				pick_rebels()
@@ -179,6 +182,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 			if(4)
 				pick_lich()
 				log_game("Major Antagonist: Lich")
+			if(5)
+				pick_siegers()
+				log_game("Major Antagonist: Siege")
 	else if(num_players() >= 52)
 		var/major_roll_midpop = pick(1,2,3)
 		switch(major_roll_midpop)
