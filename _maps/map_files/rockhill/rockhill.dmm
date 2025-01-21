@@ -7035,7 +7035,6 @@
 "dMF" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 4;
-	lockid = "town_barracks";
 	name = "Arena"
 	},
 /turf/open/floor/rogue/cobble,
@@ -18589,7 +18588,6 @@
 	dir = 8;
 	lockdiff = 4;
 	locked = 1;
-	lockid = "steward";
 	name = "Arena"
 	},
 /turf/open/floor/rogue/cobble,
