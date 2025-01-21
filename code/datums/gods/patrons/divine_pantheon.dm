@@ -43,7 +43,6 @@
 	worshippers = "Warriors, Sellswords & those who seek Justice"
 	t1 = /obj/effect/proc_holder/spell/invoked/burden
 
-
 /datum/patron/divine/necra
 	name = "Necra"
 	domain = "Goddess of Death and the Afterlife"
