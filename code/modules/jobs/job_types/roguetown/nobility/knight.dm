@@ -60,7 +60,7 @@
 	if(prob(50))
 		r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 	else
-		r_hand = /obj/item/rogueweapon/mace/goden/steel
+		r_hand = /obj/item/rogueweapon/greatsword
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
