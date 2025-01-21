@@ -6,7 +6,7 @@
 
 /datum/supply_pack/rogue/weapons/sword
 	name = "Iron Swords"
-	cost = 60//3 iron
+	cost = 50//3 iron
 	contains = list(
 					/obj/item/rogueweapon/sword/iron,
 					/obj/item/rogueweapon/sword/iron,
@@ -15,7 +15,7 @@
 
 /datum/supply_pack/rogue/weapons/mace
 	name = "Iron Maces"
-	cost = 60//3 iron
+	cost = 50//3 iron
 	contains = list(
 					/obj/item/rogueweapon/mace,
 					/obj/item/rogueweapon/mace,
@@ -24,7 +24,7 @@
 
 /datum/supply_pack/rogue/weapons/dagger
 	name = "Iron Daggers"
-	cost = 60//3 iron
+	cost = 50//3 iron
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger,
 					/obj/item/rogueweapon/huntingknife/idagger,
@@ -33,7 +33,7 @@
 
 /datum/supply_pack/rogue/weapons/axe
 	name = "Iron Axes"
-	cost = 60//3 iron
+	cost = 50//3 iron
 	contains = list(
 					/obj/item/rogueweapon/stoneaxe/woodcut,
 					/obj/item/rogueweapon/stoneaxe/woodcut,
@@ -42,7 +42,7 @@
 
 /datum/supply_pack/rogue/weapons/spear
 	name = "Iron Spears"
-	cost = 60//3 iron
+	cost = 50//3 iron
 	contains = list(
 					/obj/item/rogueweapon/spear,
 					/obj/item/rogueweapon/spear,
@@ -51,7 +51,7 @@
 
 /datum/supply_pack/rogue/weapons/flail
 	name = "Iron Flails"
-	cost = 60//3 iron
+	cost = 50//3 iron
 	contains = list(
 					/obj/item/rogueweapon/flail,
 					/obj/item/rogueweapon/flail,
@@ -60,7 +60,7 @@
 
 /datum/supply_pack/rogue/weapons/daggerss
 	name = "Steel Daggers"
-	cost = 90 //3 steel
+	cost = 80 //3 steel
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
@@ -69,7 +69,7 @@
 
 /datum/supply_pack/rogue/weapons/daggerss/single
 	name = "Steel Dagger"
-	cost = 40
+	cost = 30
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
 
 /datum/supply_pack/rogue/weapons/shield
@@ -83,7 +83,7 @@
 
 /datum/supply_pack/rogue/weapons/crossbow
 	name = "Crossbows"
-	cost = 105// 3 steel + misc
+	cost = 90// 3 steel + misc
 	contains = list(
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
@@ -92,7 +92,7 @@
 
 /datum/supply_pack/rogue/weapons/crossbow/single
 	name = "Crossbow"
-	cost = 40
+	cost = 30
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
 
 /datum/supply_pack/rogue/weapons/bow
@@ -186,25 +186,25 @@
 
 /datum/supply_pack/rogue/weapons/arquebus
 	name = "Arquebus Rifle"
-	cost = 100
+	cost = 90
 	contains = list(/obj/item/gun/ballistic/firearm/arquebus)
 
 /datum/supply_pack/rogue/weapons/handgonne
 	name = "Handgonne"
-	cost = 60
+	cost = 50
 	contains = list(/obj/item/gun/ballistic/firearm/handgonne)
 
 /datum/supply_pack/rogue/weapons/powderflask
 	name = "Powderflask"
-	cost = 30
+	cost = 20
 	contains = list(/obj/item/powderflask)
 
 /datum/supply_pack/rogue/weapons/bullet
 	name = "Bullet Pouch (lead)"
-	cost = 40
+	cost = 30
 	contains = list(/obj/item/ammo_holder/bullet/lead)
 
 /datum/supply_pack/rogue/weapons/bullet/grape
 	name = "Bullet Pouch (grape)"
-	cost = 40
+	cost = 30
 	contains = list(/obj/item/ammo_holder/bullet/grapeshot)

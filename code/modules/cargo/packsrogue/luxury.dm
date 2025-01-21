@@ -17,7 +17,7 @@
 
 /datum/supply_pack/rogue/luxury/sshigs
 	name = "Sshig Brand Zigs"
-	cost = 40
+	cost = 25
 	contains = list(/obj/item/storage/fancy/shhig)
 
 /datum/supply_pack/rogue/luxury/perfume
@@ -84,6 +84,16 @@
 	name = "Drum"
 	cost = 10
 	contains = list(/obj/item/rogue/instrument/drum)
+
+/datum/supply_pack/rogue/luxury/deck
+	name = "Deck of cards"
+	cost = 15
+	contains = list(/obj/item/toy/cards/deck)
+
+/datum/supply_pack/rogue/luxury/dice
+	name = "Full bag of dice"
+	cost = 15
+	contains = list(/obj/item/storage/pill_bottle/dice)
 
 /datum/supply_pack/rogue/luxury/psiring
 	name = "Blessed Ring"

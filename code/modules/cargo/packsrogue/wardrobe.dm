@@ -38,7 +38,7 @@
 
 /datum/supply_pack/rogue/wardrobe/cloaks/fur
 	name = "Fur Cloaks"
-	cost = 80 //needs to be this high, due to it being salvagable into fur
+	cost = 70 //needs to be this high, due to it being salvagable into fur
 	contains = list(
 					/obj/item/clothing/cloak/raincloak/furcloak,
 					/obj/item/clothing/cloak/raincloak/furcloak,
