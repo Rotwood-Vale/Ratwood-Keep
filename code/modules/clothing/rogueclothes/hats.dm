@@ -88,12 +88,14 @@
 
 /obj/item/clothing/head/roguetown/roguehood/shalal/hijab
 	name = "Hijab"
+	flags_inv = null
 	desc = "Flowing like blood from a wound, this tithe of cloth-and-silk spills out to the shoulders. It carries the telltale mark of Naledian stitcheries."
 	item_state = "hijab"
 	icon_state = "deserthood"
 
 /obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
 	name = "Heavy Hood"
+	flags_inv = null
 	desc = "This thick lump of burlap completely shrouds your head, protecting it from harsh weather and nosey protagonists alike."
 	color = CLOTHING_BROWN
 	item_state = "heavyhood"
