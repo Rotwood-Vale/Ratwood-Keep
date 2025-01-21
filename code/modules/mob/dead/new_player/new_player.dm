@@ -577,6 +577,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	omegalist += list(GLOB.peasant_positions)
 	omegalist += list(GLOB.mercenary_positions)
 	omegalist += list(GLOB.youngfolk_positions)
+	omegalist += list(GLOB.goblin_positions) // REDMOON ADD - goblins_tribe_latejoin - добавляем гоблинов в лейтжоин
 
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode

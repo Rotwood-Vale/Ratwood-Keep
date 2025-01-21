@@ -178,8 +178,13 @@
 					rolled_classes[boostclass] += 1
 
 	if(!rolled_classes.len)
-		linked_client.mob.returntolobby()
+		message_admins("REPORT ABOUT THIS TO DEV! INFORMATION: Client: [linked_client.key], PQ: [get_playerquality(linked_client.ckey)], Species: [H.dna.species.name]") // REDMOON ADD 
+		to_chat(H, span_boldred("Something fucked up. REPORT TO DEVELOPERS EACH TIME YOU SEE THIS (probably, sub-classes were fucked up by a dev). For now, call for an admin.")) // REDMOON ADD 
+		qdel(H) // REDMOON ADD - удаляем моба, чтобы отправить игрока в лобби
+		linked_client.returntolobby() // REDMOON EDIT - если вызывать эту штуку на живого моба, то пишется, что живым нельзя в лобби
 		message_admins("CLASS_SELECT_HANDLER HAD PERSON WITH 0 CLASS SELECT OPTIONS. THIS IS REALLY BAD! RETURNED THEM TO LOBBY")
+		qdel(src) // REDMOON ADD - на всякий случай, пусть удаляется ещё
+		return // REDMOON ADD
 
 // Something is calling to tell this datum a class it rolled is currently maxed out.
 // More slopcode!
