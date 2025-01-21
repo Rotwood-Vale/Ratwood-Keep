@@ -15,7 +15,7 @@
 
 /datum/customizer_choice/organ/wings/aasimar
 	name = "Angel Wings"
-	organ_type = /obj/item/organ/wings/aasimar
+	organ_type = /obj/item/organ/wings/angel
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/feathery,
 		/datum/sprite_accessory/wings/wide/featheralt1,
