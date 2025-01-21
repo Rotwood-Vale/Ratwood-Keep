@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(nightshift)
 
 	if(todd == "night")
 		if(HAS_TRAIT(src, TRAIT_DARKLING))
-			return()
+			return ..()
 		if(HAS_TRAIT(src, TRAIT_NOSTAMINA))
 			return ..()
 		if(HAS_TRAIT(src, TRAIT_NOSLEEP))
