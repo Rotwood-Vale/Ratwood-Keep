@@ -2,7 +2,7 @@
 	name = "Defiant"
 	slot = MOB_DESCRIPTOR_SLOT_NOTHING
 	verbage = "looks"
-	describe = "defiant!"
+	describe = span_artery("defiant!")
 	show_obscured = TRUE
 
 /datum/mob_descriptor/defiant/can_describe(mob/living/described)
