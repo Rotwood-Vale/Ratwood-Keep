@@ -55,6 +55,7 @@
 	But for now, you can just enjoy your highborn lyfe."
 	outfit = /datum/outfit/job/roguetown/prince/sheltered
 	category_tags = list(CTAG_HEIR)
+	maximum_possible_slots = 2
 
 /datum/outfit/job/roguetown/prince/sheltered/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -92,6 +93,7 @@
 	Given the opportunity, you'd lead the retinue into battle personally."
 	outfit = /datum/outfit/job/roguetown/prince/militant
 	category_tags = list(CTAG_HEIR)
+	maximum_possible_slots = 1
 
 /datum/outfit/job/roguetown/prince/militant/pre_equip(mob/living/carbon/human/H)
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -127,6 +129,7 @@
 	Through the years you studied lots of arts and given the time you'd study a lot more."
 	outfit = /datum/outfit/job/roguetown/prince/bookworm
 	category_tags = list(CTAG_HEIR)
+	maximum_possible_slots = 1
 
 /datum/outfit/job/roguetown/prince/bookworm/pre_equip(mob/living/carbon/human/H)
 	if(H.mind)
@@ -164,6 +167,7 @@
 	You were doomed to become a disgrace to your family, yet you still live in the manor. For now."
 	outfit = /datum/outfit/job/roguetown/prince/inbred
 	category_tags = list(CTAG_HEIR)
+	maximum_possible_slots = 1
 
 /datum/outfit/job/roguetown/prince/inbred/pre_equip(mob/living/carbon/human/H)
 	if(H.mind)

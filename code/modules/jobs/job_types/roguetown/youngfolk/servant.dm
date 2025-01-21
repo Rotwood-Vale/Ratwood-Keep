@@ -46,10 +46,11 @@
 /datum/subclass/servant/groundkeeper
 	name = "Groundkeeper"
 	tutorial = "Cleaning, repairs, chores... The manor must always look great and presentable for the unexpected guests. \
-	It is within your responsibility to make sure the keep stays in decent conditions."
+	It is within your responsibility to make sure the keep stays in decent condition."
 	outfit = /datum/outfit/job/roguetown/servant/groundkeeper
 	category_tags = list(CTAG_SERVANT)
 	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
+	maximum_possible_slots = 3
 
 /datum/outfit/job/roguetown/servant/groundkeeper/pre_equip(mob/living/carbon/human/H)
 	backpack_contents = list(/obj/item/needle = 1, /obj/item/soap = 1)
@@ -65,8 +66,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		if(H.gender == MALE)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 		if(H.gender == FEMALE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		if(!isseelie(H))
 			H.change_stat("strength", -1)
 			H.change_stat("constitution", -1)
@@ -87,6 +90,7 @@
 	outfit = /datum/outfit/job/roguetown/servant/chef
 	category_tags = list(CTAG_SERVANT)
 	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
+	maximum_possible_slots = 3
 
 /datum/outfit/job/roguetown/servant/chef/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -126,6 +130,7 @@
 	outfit = /datum/outfit/job/roguetown/servant/bankrupt
 	category_tags = list(CTAG_SERVANT)
 	allowed_races = RACES_SHUNNED_UP
+	maximum_possible_slots = 1
 
 /datum/outfit/job/roguetown/servant/bankrupt/pre_equip(mob/living/carbon/human/H)
 	..()

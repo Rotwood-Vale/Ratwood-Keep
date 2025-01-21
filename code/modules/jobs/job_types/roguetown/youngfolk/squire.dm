@@ -55,6 +55,7 @@
 	A riddle, little one, who is superior: a noble squire or an unremarkable man-at-arms?"
 	outfit = /datum/outfit/job/roguetown/squire/page
 	category_tags = list(CTAG_SQUIRE)
+	maximum_possible_slots = 2
 
 /datum/outfit/job/roguetown/squire/page/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -89,6 +90,7 @@
 	Thanks to your diligence, you are outperform lots of your kins in battle."
 	outfit = /datum/outfit/job/roguetown/squire/recruit
 	category_tags = list(CTAG_SQUIRE)
+	maximum_possible_slots = 2
 
 /datum/outfit/job/roguetown/squire/recruit/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -122,6 +124,7 @@
 	Nobody knows how far you could go with your commoner education living among nobles and experienced warriors. But hey, lyfe in the village taught you a lot."
 	outfit = /datum/outfit/job/roguetown/squire/levy
 	category_tags = list(CTAG_SQUIRE)
+	maximum_possible_slots = 2
 
 /datum/outfit/job/roguetown/squire/levy/pre_equip(mob/living/carbon/human/H)
 	..()
