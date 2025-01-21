@@ -284,6 +284,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/static/list/eavesdropping_modes = list(MODE_WHISPER = TRUE, MODE_WHISPER_CRIT = TRUE)
 	var/eavesdrop_range = 0
 	var/Zs_too = FALSE
+	var/Zs_all = FALSE
+	var/Zs_yell = FALSE
 	var/listener_has_ceiling	= TRUE
 	var/speaker_has_ceiling		= TRUE
 
@@ -298,6 +300,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		Zs_too = TRUE
 		if(say_test(message) == "2")	//CIT CHANGE - ditto
 			message_range += 10
+			Zs_yell = TRUE
+		if(say_test(message) == "3")	//Big "!!" shout
+			Zs_all = TRUE
 	// AZURE EDIT: thaumaturgical loudness (from orisons)
 	if (has_status_effect(/datum/status_effect/thaumaturgy))
 		spans |= SPAN_REALLYBIG
@@ -360,7 +365,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(!Zs_too && !isobserver(AM))
 			if(AM.z != src.z)
 				continue
-		if(Zs_too && AM.z != AM.z)
+		if(Zs_too && AM.z != src.z && !Zs_all)
 			if(AM.z < src.z && listener_has_ceiling)	//Listener is below the speaker and has a ceiling above them
 				continue
 			if(AM.z > src.z && speaker_has_ceiling)		//Listener is above the speaker and the speaker has a ceiling above
@@ -369,16 +374,16 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				continue
 			var/listener_obstructed = TRUE
 			var/speaker_obstructed = TRUE
-			if(src != AM)	//We always hear ourselves.
+			if(src != AM && !Zs_yell)	//We always hear ourselves. Zs_yell will allow a "!" shout to bypass walls one z level up or below.
 				if(!speaker_has_ceiling && isliving(AM))
 					var/mob/living/M = AM
 					for(var/mob/living/MH in viewers(world.view, speaker_ceiling))
-						if(M == MH)
+						if(M == MH && MH.z == speaker_ceiling?.z)
 							speaker_obstructed = FALSE
 					
 				if(!listener_has_ceiling)
 					for(var/mob/living/ML in viewers(world.view, listener_ceiling))
-						if(ML == src)
+						if(ML == src && ML.z == listener_ceiling?.z)
 							listener_obstructed = FALSE
 				if(listener_obstructed && speaker_obstructed)
 					continue
