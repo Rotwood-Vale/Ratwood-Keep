@@ -45,8 +45,6 @@
 	name = "Fluvian Wings"
 	organ_type = /obj/item/organ/wings/moth
 	sprite_accessories = list(
-		/datum/sprite_accessory/wings/huge/megamoth,
-		/datum/sprite_accessory/wings/huge/mothra,
 		/datum/sprite_accessory/wings/moth/plain,
 		/datum/sprite_accessory/wings/moth/monarch,
 		/datum/sprite_accessory/wings/moth/luna,
