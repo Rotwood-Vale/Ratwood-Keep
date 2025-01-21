@@ -147,7 +147,7 @@ SUBSYSTEM_DEF(vote)
 				if(. == "Continue Playing")
 					log_game("LOG VOTE: CONTINUE PLAYING AT [REALTIMEOFDAY]")
 					addomen(OMEN_ROUNDSTART)
-					GLOB.round_timer = GLOB.round_timer + ROUND_EXTENSION_TIME
+					GLOB.round_timer = world.time + ROUND_EXTENSION_TIME
 				else
 					log_game("LOG VOTE: ELSE  [REALTIMEOFDAY]")
 					var/datum/game_mode/chaosmode/C = SSticker.mode
