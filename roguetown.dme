@@ -2078,6 +2078,7 @@
 #include "modular_redmoon\modules\acolytes_can_coronate\acolytes_can_coronate.dm"
 #include "modular_redmoon\modules\client\preferences.dm"
 #include "modular_redmoon\modules\client\preferences_savefile.dm"
+#include "modular_redmoon\modules\cloak_hoods_fix\cloak_hoods_fix.dm"
 #include "modular_redmoon\modules\events\goblininvasion.dm"
 #include "modular_redmoon\modules\events\haunts.dm"
 #include "modular_redmoon\modules\events\poltergeist.dm"
