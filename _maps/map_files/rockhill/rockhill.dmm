@@ -560,11 +560,9 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
 "aqz" = (
-/obj/structure/glowshroom,
-/turf/open/water/cleanshallow{
-	layer = 1.90
-	},
-/area/rogue/outdoors/town/harbor)
+/obj/machinery/light/rogue/campfire,
+/turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town)
 "aqE" = (
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -14737,7 +14735,7 @@
 	lockid = "harbor";
 	name = "Lighthouse"
 	},
-/turf/closed/wall/mineral/rogue/stone/moss,
+/turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town/harbor)
 "hVB" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner,
@@ -36820,6 +36818,7 @@
 	icon_state = "borderfall";
 	pixel_x = -8
 	},
+/obj/item/key/shop,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "wooden_floor2"
@@ -37365,9 +37364,17 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/town)
 "uuj" = (
-/obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/town)
+/obj/structure/fluff/railing/border{
+	dir = 9;
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/structure/fluff/railing/border{
+	dir = 10;
+	pixel_x = -5
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/outdoors/town/harbor)
 "uul" = (
 /obj/structure/fluff/walldeco/psybanner,
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue,
@@ -40020,9 +40027,10 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "vVy" = (
-/obj/machinery/light/rogue/campfire,
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/town)
+/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/glowshroom,
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/town/harbor)
 "vVQ" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -236255,7 +236263,7 @@ xRS
 xRS
 xRS
 wTU
-qFz
+hZk
 rCb
 aOb
 qFz
@@ -237121,7 +237129,7 @@ uGP
 uEx
 hXf
 hkm
-wTU
+vVy
 hkm
 rCb
 bdq
@@ -238414,7 +238422,7 @@ xRS
 xRS
 hkm
 hkm
-hkm
+qFz
 rCb
 hkm
 qFz
@@ -246658,7 +246666,7 @@ mkZ
 ctu
 ctu
 ctu
-aqz
+ctu
 ctu
 ctu
 ctu
@@ -247090,7 +247098,7 @@ ghV
 cgk
 ghV
 liN
-iTz
+uuj
 liN
 bus
 cGj
@@ -347291,7 +347299,7 @@ iXq
 iXq
 eah
 fnA
-uuj
+fnA
 fnA
 esR
 fUg
@@ -347723,7 +347731,7 @@ iXq
 iXq
 bQo
 fUg
-vVy
+fnA
 wbg
 qUA
 fUg
@@ -348156,7 +348164,7 @@ blx
 seu
 esR
 jIq
-wbg
+aqz
 esR
 fnA
 fUg
