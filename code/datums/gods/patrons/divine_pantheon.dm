@@ -36,7 +36,6 @@
 	desc = "The Beloved Son, gifted primordial men food and water."
 	worshippers = "Men of the Sea, Primitive Aquatics"
 
-
 /datum/patron/divine/ravox
 	name = "Ravox"
 	domain = "God of War, Justice and Strength"
