@@ -215,7 +215,7 @@
 	keys = list(/obj/item/key/goblin, /obj/item/key/goblinguard, /obj/item/key/goblinchief)
 
 /obj/item/storage/keyring/harbormaster
-	keys = list(/obj/item/key/harbor, /obj/item/key/ship)
+	keys = list(/obj/item/key/harbor, /obj/item/key/ship, /obj/item/key/shop,)
 
 
 /obj/item/lockpickring
