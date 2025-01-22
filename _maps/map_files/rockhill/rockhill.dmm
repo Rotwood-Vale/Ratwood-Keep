@@ -4024,6 +4024,14 @@
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
+"ciP" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/druidgrove)
 "ciY" = (
 /obj/structure/fluff/railing/border{
 	dir = 8;
@@ -8180,7 +8188,7 @@
 	layer = 2.81
 	},
 /obj/structure/bars/passage/shutter{
-	name = "Toy Store";
+	name = "Toy Shop";
 	redstone_id = "gambleaccess"
 	},
 /turf/open/floor/rogue/herringbone,
@@ -9099,7 +9107,7 @@
 	icon_state = "borderfall";
 	pixel_y = -8
 	},
-/obj/structure/closet/crate/roguecloset/dark{
+/obj/structure/fermenting_barrel/random/wine{
 	pixel_y = 8
 	},
 /turf/open/floor/rogue/concrete,
@@ -12425,7 +12433,7 @@
 /obj/structure/fluff/walldeco/church/line,
 /obj/structure/lever/wall{
 	dir = 8;
-	name = "Gambling Den Shutters";
+	name = "Toy Shop Shutters";
 	redstone_id = "gambleaccess";
 	pixel_y = 2
 	},
@@ -12561,9 +12569,6 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "gKU" = (
-/obj/structure/fluff/walldeco/stone{
-	pixel_x = -32
-	},
 /obj/structure/fluff/railing/border{
 	dir = 6
 	},
@@ -12575,7 +12580,7 @@
 /obj/structure/bell_common{
 	dir = 4;
 	pixel_x = -9;
-	pixel_y = -9
+	pixel_y = -15
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue/outdoors/town/harbor)
@@ -12933,15 +12938,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/rtfield)
-"gWi" = (
-/obj/structure/flora/roguegrass/bush/wall,
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -7;
-	pixel_y = 2
-	},
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/druidgrove)
 "gWn" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/shop)
@@ -13286,9 +13282,6 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
 "hfu" = (
-/obj/structure/fluff/walldeco/stone{
-	pixel_x = -32
-	},
 /obj/structure/fluff/railing/border{
 	dir = 5
 	},
@@ -13738,8 +13731,10 @@
 	},
 /obj/structure/fluff/walldeco/maidensigil,
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
-/obj/structure/fermenting_barrel/random/wine{
-	pixel_x = -2
+/obj/structure/lever{
+	pixel_y = 4;
+	name = "Front Desk Shutters";
+	redstone_id = "whitevein_desk"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/bath)
@@ -15093,13 +15088,17 @@
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "ieR" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -7;
-	pixel_y = 2
+/obj/structure/table/wood,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
 	},
-/turf/open/floor/rogue/grassred,
-/area/rogue/outdoors/druidgrove)
+/obj/structure/bars/passage/shutter{
+	name = "Whitevein Lounge";
+	redstone_id = "whitevein_desk"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/bath)
 "ieU" = (
 /obj/structure/table/wood{
 	icon_state = "map4"
@@ -15395,6 +15394,13 @@
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town/roofs)
+"ipW" = (
+/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/fluff/walldeco/stone{
+	pixel_x = -32
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/town/harbor)
 "iqd" = (
 /obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/blocks,
@@ -18238,17 +18244,6 @@
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/bath)
-"jNz" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -7;
-	pixel_y = 2
-	},
-/obj/structure/fluff/railing/wood{
-	pixel_y = -8
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/druidgrove)
 "jNL" = (
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town/church)
@@ -24008,13 +24003,11 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "mZF" = (
-/obj/effect/decal/cobbleedge{
-	dir = 4;
-	icon_state = "borderfall";
-	pixel_x = 8
+/obj/structure/fluff/railing/border{
+	dir = 6
 	},
-/obj/structure/fluff/walldeco/stone{
-	pixel_x = 32
+/obj/structure/fluff/railing/border{
+	dir = 5
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
@@ -25578,7 +25571,7 @@
 	},
 /obj/structure/bell_common,
 /obj/structure/bars/passage/shutter{
-	name = "Toy Store";
+	name = "Toy Shop";
 	redstone_id = "gambleaccess"
 	},
 /turf/open/floor/rogue/herringbone,
@@ -27019,6 +27012,12 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"oCh" = (
+/obj/structure/fluff/walldeco/stone{
+	pixel_x = -32
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/town/harbor)
 "oCi" = (
 /obj/structure/closet/crate/drawer{
 	keylock = 1;
@@ -30667,7 +30666,7 @@
 	layer = 2.81
 	},
 /obj/structure/bars/passage/shutter{
-	name = "Toy Store";
+	name = "Toy Shop";
 	redstone_id = "gambleaccess"
 	},
 /turf/open/floor/rogue/herringbone,
@@ -32950,13 +32949,11 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "rUg" = (
-/obj/effect/decal/cobbleedge{
-	dir = 4;
-	icon_state = "borderfall";
-	pixel_x = 8
+/obj/structure/fluff/railing/border{
+	dir = 5
 	},
-/obj/structure/fluff/walldeco/stone{
-	pixel_x = 32
+/obj/structure/fluff/railing/border{
+	dir = 6
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
@@ -33369,6 +33366,15 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/harbor)
+"seV" = (
+/obj/structure/flora/roguegrass/bush,
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/druidgrove)
 "sfo" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newleaf,
@@ -39908,6 +39914,17 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
+"vOI" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/druidgrove)
 "vOS" = (
 /obj/structure/stairs/stone{
 	dir = 4
@@ -39969,6 +39986,15 @@
 	icon_state = "roofg"
 	},
 /area/rogue/outdoors/town/roofs)
+"vQG" = (
+/obj/structure/flora/roguegrass/bush/wall,
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/druidgrove)
 "vQO" = (
 /obj/structure/fluff/statue/astrata/gold{
 	pixel_x = -12
@@ -44417,15 +44443,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
-"yjK" = (
-/obj/structure/flora/roguegrass/bush,
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_x = -7;
-	pixel_y = 2
-	},
-/turf/open/floor/rogue/grassred,
-/area/rogue/outdoors/druidgrove)
 "yky" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town/tavern)
@@ -245882,9 +245899,9 @@ eFJ
 soz
 eFJ
 soz
-eFJ
+ieR
 jfg
-eFJ
+ieR
 soz
 eFJ
 soz
@@ -246308,7 +246325,7 @@ cbU
 hkm
 hkm
 aOb
-wTU
+ipW
 hkm
 omc
 gxl
@@ -246322,7 +246339,7 @@ fgz
 gxl
 hDn
 hkm
-hkm
+oCh
 wTU
 hkm
 hSc
@@ -254144,7 +254161,7 @@ nWI
 wYF
 eRw
 cix
-jNz
+vOI
 eRw
 jsk
 xQO
@@ -254569,15 +254586,15 @@ gRh
 sfo
 iiy
 gqd
-yjK
+seV
 uoS
 oCO
 rXZ
 dWy
-gWi
+vQG
 rXZ
 eLn
-ieR
+ciP
 xQO
 xQO
 xQO
