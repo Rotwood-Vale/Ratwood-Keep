@@ -93,6 +93,8 @@
 	gripped_intents = null
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	lumber_amount = 0
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/grown/log/tree/stick/Crossed(mob/living/L)
 	. = ..()

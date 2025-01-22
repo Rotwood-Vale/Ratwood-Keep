@@ -12,6 +12,7 @@
 	slot_flags = ITEM_SLOT_RING
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	anvilrepair = /datum/skill/craft/armorsmithing
+	drop_sound = 'sound/foley/coinphy (1).ogg'
 
 /obj/item/clothing/ring/silver
 	name = "silver ring"
