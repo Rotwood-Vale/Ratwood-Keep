@@ -88,7 +88,7 @@
 
 /datum/virtue/utility/artificer
 	name = "Artificer's Apprentice"
-	desc = "In my youth, I worked under a skilled artificer, studying construction and engineering. (Apprentice in artificer skills.)"
+	desc = "In my youth, I worked under a skilled artificer, studying construction and engineering. (Apprentice in artificer skills)"
 	added_skills = list(list(/datum/skill/craft/crafting, 2, 2),
 						list(/datum/skill/craft/carpentry, 2, 2),
 						list(/datum/skill/craft/masonry, 2, 2),
