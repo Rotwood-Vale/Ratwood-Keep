@@ -99,7 +99,7 @@
 
 /datum/virtue/combat/guarded
 	name = "Guarded"
-	desc = "I have long kept my true capabilities a secret. Sometimes being deceptively weak can save one's life. Such a virtue allows me to see and avoid feints easier."
+	desc = "I have long kept my true capabilities and vices a secret. Sometimes being deceptively weak can save one's lyfe. Such a virtue allows me to avoid and perform feints easier."
 	added_traits = list(TRAIT_DECEIVING_MEEKNESS)
 
 /*/datum/virtue/combat/impervious
