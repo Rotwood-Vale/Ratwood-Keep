@@ -69,6 +69,7 @@
 		testing("revived1")
 		var/mob/living/target = targets[1]
 		if(target == user)
+			revert_cast()
 			return FALSE
 		if(GLOB.tod == "night")
 			to_chat(user, span_warning("Let there be light."))
