@@ -1,4 +1,19 @@
-/*	..................   Spider stuff   ................... */
+/*	..................   FLOORS   ................... */
+
+/turf/open/water/bath/pool
+	desc = "Clear water, pleasant temperature. Soothing."
+	icon_state = "bathtile_pool"
+/turf/open/water/bath/pool/Initialize()
+	.  = ..()
+	icon_state = "bathtile_pool"
+
+/turf/open/water/bath/pool/mid
+	icon_state = "bathtile_pool_mid"
+/turf/open/water/bath/pool/mid/Initialize()
+	.  = ..()
+	icon_state = "bathtile_pool_mid"
+
+/*	..................   SPIDER   ................... */
 
 /obj/structure/spider/stickyweb
 	name = "web"

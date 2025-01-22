@@ -95,6 +95,42 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
+/obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
+	name = "tinker suit"
+	desc = "Typical fashion of the best engineers."
+	icon_state = "artishirt"
+
+/obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
+	name = "low cut tunic"
+	desc = "A tunic exposing much of the shoulders and neck. Shoulders?! How scandalous..."
+	icon_state = "lowcut"
+
+/obj/item/clothing/suit/roguetown/shirt/shadowshirt
+	name = "silk shirt"
+	desc = "A sleeveless shirt woven of glossy material."
+	icon_state = "shadowshirt"
+	item_state = "shadowshirt"
+	r_sleeve_status = SLEEVE_TORN
+	l_sleeve_status = SLEEVE_TORN
+	body_parts_covered = CHEST|VITALS
+
+/obj/item/clothing/suit/roguetown/shirt/apothshirt
+	name = "apothecary shirt"
+	desc = "When trudging through late-autumn forests, one needs to keep warm."
+	icon_state = "apothshirt"
+	item_state = "apothshirt"
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	body_parts_covered = CHEST|VITALS
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat
+	name = "fancy coat"
+	desc = "A fancy tunic and coat combo. How elegant."
+	icon_state = "noblecoat"
+	sleevetype = "noblecoat"
+	color = CLOTHING_WHITE
+	boobed = TRUE
+
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"
 
