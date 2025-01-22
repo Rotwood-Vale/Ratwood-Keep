@@ -146,6 +146,19 @@
 				. += span_beautiful_fem("[m1] beautiful!")
 			if (THEY_THEM, THEY_THEM_F, IT_ITS)
 				. += span_beautiful_nb("[m1] good-looking!")
+			
+	var/is_stupid = FALSE
+	var/is_smart = FALSE
+	var/is_normal = FALSE
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+
+		if(HAS_TRAIT(H, TRAIT_INTELLECTUAL) || get_skill_level(H, /datum/skill/craft/blacksmithing) >= SKILL_EXP_EXPERT)
+			is_smart = TRUE	//Most of this is determining integrity of objects + seeing multiple layers. 
+		if(H?.STAINT < 10 && !is_smart)
+			is_stupid = TRUE
+		if(((H?.STAINT - 10) + (H?.STAPER - 10) + H?.mind?.get_skill_level(/datum/skill/misc/reading)) > 5)
+			is_normal = TRUE
 
 	if(user != src)
 		var/datum/mind/Umind = user.mind
@@ -162,35 +175,83 @@
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 
 	if(wear_shirt && !(SLOT_SHIRT in obscured))
-		. += "[m3] [wear_shirt.get_examine_string(user)]."
+		if(!wear_armor)
+			. += "[m3] [wear_shirt.get_examine_string(user)]."
+		else
+			if(is_smart)
+				var/str = "[m3] [wear_shirt.get_examine_string(user)]. "
+				str += wear_shirt.integrity_check()
+				. += str
+			else if(!is_stupid && is_normal)
+				. += "[m3] [wear_shirt.get_examine_string(user)]."
 
 	//uniform
 	if(wear_pants && !(SLOT_PANTS in obscured))
-		//accessory
-		var/accessory_msg
-		if(istype(wear_pants, /obj/item/clothing/under))
-			var/obj/item/clothing/under/U = wear_pants
-			if(U.attached_accessory)
-				accessory_msg += " with [icon2html(U.attached_accessory, user)] \a [U.attached_accessory]"
-
-		. += "[m3] [wear_pants.get_examine_string(user)][accessory_msg]."
+		if(!wear_armor)
+			if(is_normal || is_smart)
+				//accessory
+				var/accessory_msg
+				if(istype(wear_pants, /obj/item/clothing/under))
+					var/obj/item/clothing/under/U = wear_pants
+					if(U.attached_accessory)
+						accessory_msg += " with [icon2html(U.attached_accessory, user)] \a [U.attached_accessory]"
+				var/str = "[m3] [wear_pants.get_examine_string(user)][accessory_msg]. "
+				if(is_smart)
+					str += "[wear_pants.integrity_check()]"
+				. += str
 
 	//head
 	if(head && !(SLOT_HEAD in obscured))
-		. += "[m3] [head.get_examine_string(user)] on [m2] head."
+		if(is_smart)
+			var/str = "[m3] [head.get_examine_string(user)] on [m2] head. "
+			str += head.integrity_check()
+			. += str
+		else if(is_stupid)
+			if(istype(head,/obj/item/clothing/head/roguetown/helmet))
+				. += "[m3] some kinda helmet!"
+			else
+				. += "[m3] some kinda hat!"
+		else
+			. += "[m3] [head.get_examine_string(user)]"
+
 	//suit/armor
 	if(wear_armor && !(SLOT_ARMOR in obscured))
-		. += "[m3] [wear_armor.get_examine_string(user)]."
+		if(is_smart)
+			var/str = "[m3] [wear_armor.get_examine_string(user)]. "
+			str += wear_armor.integrity_check()
+			. += str
+		else if (is_stupid)
+			if(istype(wear_armor,/obj/item/clothing/armor))
+				var/obj/item/clothing/armor/examined_armor = wear_armor
+				switch(examined_armor.armor_class)
+					if(ARMOR_CLASS_LIGHT)
+						. += "[m3] some flimsy leathers!"
+					if(ARMOR_CLASS_MEDIUM)
+						if(HAS_TRAIT(user, TRAIT_MEDIUMARMOR))
+							. += "[m3] [wear_armor.get_examine_string(user)]."
+						else
+							. += "[m3] some metal and leather!"
+					if(ARMOR_CLASS_HEAVY)
+						if(HAS_TRAIT(user, TRAIT_HEAVYARMOR))
+							. += "[m3] [wear_armor.get_examine_string(user)]."
+						else
+							. += "[m3] some heavy metal stuff!"
+		else
+			. += "[m3] [wear_armor.get_examine_string(user)]."
 		//suit/armor storage
 		if(s_store && !(SLOT_S_STORE in obscured))
-			. += "[m1] carrying [s_store.get_examine_string(user)] on [m2] [wear_armor.name]."
+			if(is_normal || is_smart)
+				. += "[m1] carrying [s_store.get_examine_string(user)] on [m2] [wear_armor.name]."
 	//back
 //	if(back)
 //		. += "[m3] [back.get_examine_string(user)] on [m2] back."
 
 	//cloak
 	if(cloak && !(SLOT_CLOAK in obscured))
-		. += "[m3] [cloak.get_examine_string(user)] on [m2] shoulders."
+		if(!is_stupid)
+			. += "[m3] [cloak.get_examine_string(user)] on [m2] shoulders."
+		else
+			. += "[m3] some kinda clothy thing on [m2] shoulders!"
 
 	//right back
 	if(backr && !(SLOT_BACK_R in obscured))
