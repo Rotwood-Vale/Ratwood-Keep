@@ -191,13 +191,13 @@
 				limb.skeletonized = FALSE
 				limb.update_limb()
 				limb.update_disabled()
-		
+
 		// un-deadite'ing process
 		target.mob_biotypes &= ~MOB_UNDEAD // the zombie antag on_loss() does this as well, but this is for the times it doesn't work properly. We check if they're any special undead role first.
-		
+
 		for(var/trait in GLOB.traits_deadite)
 			REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
-	
+
 		if(target.stat < DEAD) // Drag and shove ghost back in.
 			var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
 			if(underworld_spirit)
@@ -225,3 +225,49 @@
 		to_chat(user, span_warning("I need a holy cross."))
 		return FALSE
 	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/clean_body
+    name = "Clean Body"
+    overlay_state = "clearinfection"
+    releasedrain = 30
+    chargedrain = 0
+    chargetime = 0
+    range = 7
+    warnie = "sydwarning"
+    movement_interrupt = FALSE
+    sound = 'sound/gore/flesh_eat_03.ogg'
+    invocation_type = "whisper"
+    associated_skill = /datum/skill/magic/holy
+    antimagic_allowed = TRUE
+    charge_max = 30 SECONDS
+    miracle = TRUE
+    devotion_cost = 50
+    req_items = list(/obj/item/clothing/neck/roguetown/psicross)
+
+/obj/effect/proc_holder/spell/invoked/clean_body/cast(list/targets, mob/living/user)
+    . = ..()
+    if(isliving(targets[1]))
+        var/mob/living/target = targets[1]
+        if(HAS_TRAIT(target, TRAIT_ASTRATA_CURSE))
+            target.visible_message(span_danger("[target] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
+            target.cursed_freak_out()
+            return FALSE
+        if(HAS_TRAIT(target, TRAIT_ATHEISM_CURSE))
+            target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
+            target.cursed_freak_out()
+            return FALSE
+        target.visible_message(span_info("[target]'s body starts to sweat and become hot!"), span_notice("Pestra's hand goes though my body... I do feel sick..."))
+        target.reagents.add_reagent(/datum/reagent/water/gross, 15)
+        target.reagents.add_reagent(/datum/reagent/medicine/purify, 5)
+
+        // Will clean body from toxins and chemistry
+        spawn(135 SECONDS) delay_clean_body_effect(target)
+       	return TRUE
+    revert_cast()
+    return FALSE
+
+/proc/delay_clean_body_effect(mob/living/target)
+    target.visible_message(span_danger("Toxins are leaving my body..."))
+    target.adjustToxLoss(-25)
+    target.reagents.remove_all_type(/datum/reagent, 50)
+    target.emote("scream")
