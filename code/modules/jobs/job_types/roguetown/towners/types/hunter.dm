@@ -43,5 +43,5 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 3)
 		H.change_stat("speed", 1)
-	if(H.age != AGE_ADULT)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+		if(H.age != AGE_ADULT)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
