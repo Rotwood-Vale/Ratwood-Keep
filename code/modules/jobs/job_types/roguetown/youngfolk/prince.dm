@@ -55,7 +55,7 @@
 	But for now, you can just enjoy your highborn lyfe."
 	outfit = /datum/outfit/job/roguetown/prince/sheltered
 	category_tags = list(CTAG_HEIR)
-	maximum_possible_slots = 2
+	maximum_possible_slots = 10
 
 /datum/outfit/job/roguetown/prince/sheltered/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -149,8 +149,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-		H.mind.adjust_spellpoints(3)
+		H.mind.adjust_spellpoints(1)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/message)
 		H.change_stat("intelligence", 3)
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 1)
