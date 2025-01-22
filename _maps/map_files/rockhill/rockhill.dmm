@@ -13285,6 +13285,9 @@
 /obj/structure/fluff/railing/border{
 	dir = 5
 	},
+/obj/structure/fluff/walldeco/stone{
+	pixel_x = -32
+	},
 /turf/open/floor/rogue/metal,
 /area/rogue/outdoors/town/harbor)
 "hfI" = (
@@ -24008,6 +24011,9 @@
 	},
 /obj/structure/fluff/railing/border{
 	dir = 5
+	},
+/obj/structure/fluff/walldeco/stone{
+	pixel_x = 32
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
@@ -245901,7 +245907,7 @@ eFJ
 soz
 ieR
 jfg
-ieR
+eFJ
 soz
 eFJ
 soz
