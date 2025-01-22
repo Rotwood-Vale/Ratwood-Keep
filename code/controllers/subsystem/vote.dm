@@ -147,7 +147,7 @@ SUBSYSTEM_DEF(vote)
 				if(. == "Continue Playing")
 					log_game("LOG VOTE: CONTINUE PLAYING AT [REALTIMEOFDAY]")
 					addomen(OMEN_ROUNDSTART)
-					GLOB.round_timer = world.time + ROUND_EXTENSION_TIME
+					GLOB.round_timer = GLOB.round_timer + ROUND_EXTENSION_TIME
 				else
 					log_game("LOG VOTE: ELSE  [REALTIMEOFDAY]")
 					var/datum/game_mode/chaosmode/C = SSticker.mode
@@ -155,7 +155,6 @@ SUBSYSTEM_DEF(vote)
 						log_game("LOG VOTE: ROUNDVOTEEND [REALTIMEOFDAY]")
 						to_chat(world, "\n<font color='purple'>[ROUND_END_TIME_VERBAL] remain.</font>")
 						C.roundvoteend = TRUE
-						GLOB.round_timer = world.time + ROUND_EXTENSION_TIME
 						C.round_ends_at = (world.time - SSticker.round_start_time) + ROUND_END_TIME
 	if(restart)
 		var/active_admins = 0
