@@ -549,6 +549,9 @@
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT
 	max_integrity = 200
+	
+	grid_height = 64
+	grid_width = 64
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"

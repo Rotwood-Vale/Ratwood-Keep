@@ -216,8 +216,15 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(!pixel_x && !pixel_y && !bigboy)
 		pixel_x = rand(-5,5)
 		pixel_y = rand(-5,5)
+		
 	if(twohands_required)
 		has_inspect_verb = TRUE
+
+	if(grid_width <= 0)
+		grid_width = (w_class * world.icon_size)
+	if(grid_height <= 0)
+		grid_height = (w_class * world.icon_size)
+
 	update_transform()
 
 
@@ -425,7 +432,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(istype(src,/obj/item/clothing))
 			var/obj/item/clothing/C = src
 			if(C.prevent_crits)
-				if(C.prevent_crits.len)
+				if(length(C.prevent_crits))
 					inspec += "\n<b>DEFENSE:</b>"
 					for(var/X in C.prevent_crits)
 						inspec += "\n<b>[X] damage</b>"
