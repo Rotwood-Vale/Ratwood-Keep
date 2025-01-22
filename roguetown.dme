@@ -605,6 +605,8 @@
 #include "code\datums\migrants\migrant_wave.dm"
 #include "code\datums\migrants\migrant_waves\fablefield roles.dm"
 #include "code\datums\migrants\migrant_waves\fablefield wave.dm"
+#include "code\datums\migrants\migrant_waves\gronn_roles.dm"
+#include "code\datums\migrants\migrant_waves\gronn_wave.dm"
 #include "code\datums\migrants\migrant_waves\heartfelt roles.dm"
 #include "code\datums\migrants\migrant_waves\heartfelt wave.dm"
 #include "code\datums\migrants\migrant_waves\musketeer roles.dm"
