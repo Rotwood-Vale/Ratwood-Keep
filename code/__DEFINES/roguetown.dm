@@ -31,7 +31,6 @@
 	/datum/species/aasimar,\
 	/datum/species/lupian,\
 	/datum/species/vulpkanin,\
-	/datum/species/moth,\
 	/datum/species/dracon,
 
 #define RACES_TOLERATED \
@@ -45,7 +44,8 @@
 	/datum/species/elf/dark,\
 	/datum/species/tieberian,\
 	/datum/species/anthromorphsmall,\
-	/datum/species/kobold
+	/datum/species/kobold,\
+	/datum/species/moth,\
 
 #define RACES_VERY_SHUNNED \
 	/datum/species/halforc
@@ -224,7 +224,8 @@
 	/datum/patron/zizo,\
 	/datum/patron/inhumen/matthios,\
 	/datum/patron/inhumen/baotha,\
-	/datum/patron/inhumen/graggar\
+	/datum/patron/inhumen/graggar,\
+	/datum/patron/esoteric/fate\
 )
 
 #define TEN_CURSES list(\

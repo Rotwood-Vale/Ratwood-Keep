@@ -7,7 +7,6 @@
 		/datum/species/vulpkanin,
 		/datum/species/lupian,
 		/datum/species/dracon,
-		/datum/species/moth, //grenzelmoft?
 		/datum/species/dwarf/mountain,
 		/datum/species/human/northern,
 		/datum/species/demihuman,
