@@ -32584,7 +32584,7 @@
 /obj/item/powderflask{
 	pixel_y = 14
 	},
-/obj/item/gun/ballistic/arquebus_pistol{
+/obj/item/gun/ballistic/firearm/arquebus_pistol{
 	pixel_y = 14
 	},
 /obj/structure/closet/crate/roguecloset/dark{
