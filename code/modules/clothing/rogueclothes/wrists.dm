@@ -7,6 +7,8 @@
 	resistance_flags = FLAMMABLE
 	sewrepair = TRUE
 	anvilrepair = null
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/clothing/wrists/roguetown/bracers
 	name = "bracers"

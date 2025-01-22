@@ -10,6 +10,7 @@
 	resistance_flags = NONE
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	max_integrity = 300
+	component_type = /datum/component/storage/concrete/roguetown/sack
 
 /obj/item/storage/roguebag/examine(mob/user)
 	. = ..()
@@ -59,23 +60,6 @@
 	else
 		icon_state = "cbag"
 		w_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/storage/roguebag/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 20
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_items = 20
-	STR.click_gather = TRUE
-	STR.attack_hand_interact = FALSE
-	STR.collection_mode = COLLECT_EVERYTHING
-	STR.dump_time = 0
-	STR.allow_quick_gather = TRUE
-	STR.allow_quick_empty = TRUE
-	STR.allow_look_inside = FALSE
-	STR.allow_dump_out = TRUE
-	STR.display_numerical_stacking = TRUE
-
 
 /obj/item/storage/roguebag/getonmobprop(tag)
 	. = ..()
