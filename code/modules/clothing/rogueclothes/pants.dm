@@ -181,7 +181,7 @@
 	item_state = "apothpants"
 
 /obj/item/clothing/under/roguetown/trou/artipants
-	name = "artificer trousers"
+	name = "tinker trousers"
 	desc = "Thick leather trousers to protect from sparks or stray gear projectiles. Judging by the wear, its had plenty of use."
 	icon_state = "artipants"
 	item_state = "artipants"
