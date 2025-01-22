@@ -79,7 +79,7 @@
 /datum/ai_behavior/find_and_set/dead_bodies/search_tactic(datum/ai_controller/controller, locate_paths, search_range)
 	var/list/found = list()
 	for(var/mob/living/mob in oview(search_range, controller.pawn))
-		if(mob.stat == CONSCIOUS) 
+		if(mob.stat != DEAD) 
 			continue
 		 if(istype(mob, /mob/living/carbon)) //hopefully not too taxing
 		 	var/mob/living/carbon/carbon_mob = mob

@@ -48,30 +48,38 @@
 		var/deaggro_chance = 23 // why 23? I don't know. It was in the code.
 		if(prob(deaggro_chance))
 			living_mob.visible_message(span_notice("[living_mob] calms down.")) 
-			controller.clear_blackboard_key(BB_BASIC_MOB_RETALIATE_LIST)
-			controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
+			controller.clear_blackboard_key(shitlist_key)
+			controller.clear_blackboard_key(target_key)
 			controller.CancelActions() // Otherwise they will try and get one last attack
 			finish_action(controller, succeeded = TRUE)
 			return
 
-	var/list/enemies_list = controller.blackboard[shitlist_key]
-	if (!length(enemies_list))
+	var/list/shitlist = controller.blackboard[shitlist_key]
+	if (!length(shitlist))
 		finish_action(controller, succeeded = FALSE)
 		return
 
-
-
-	if (controller.blackboard[target_key] in enemies_list) // Don't bother changing
-		finish_action(controller, succeeded = FALSE)
+	//If we're good with our current target - in enemies list and ok with targetting datum
+	if (!QDELETED(targetted) && (locate(targetted) in shitlist) && targetting_datum.can_attack(living_mob, targetted, vision_range))
+		finish_action(controller, succeeded = TRUE)
 		return
 
-	for(var/mob/living/living_target in enemies_list)
-		if(!living_target.rogue_sneaking)
+	var/list/enemies_list = list() //use shitlist to make new list of potentials
+	for(var/mob/living/living_target in shitlist)
+		if(!living_target.rogue_sneaking) // can't see them
 			continue
 		var/extra_chance = (living_mob.health <= living_mob.maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
 		if (!living_mob.npc_detect_sneak(living_target, extra_chance))
-			enemies_list -= living_target
+			continue //still can't see them
+		if(!targetting_datum.can_attack(living_mob, targetted)) //not ok with target strat
+			continue
+		enemies_list += living_target
 
+	if (!length(enemies_list)) // no valid targets, not shitlist or target so just clear everything. start again
+		controller.clear_blackboard_key(shitlist_key)
+		controller.clear_blackboard_key(target_key)
+		finish_action(controller, succeeded = FALSE)
+		return
 	var/atom/new_target = pick_final_target(controller, enemies_list)
 	controller.set_blackboard_key(target_key, new_target)
 

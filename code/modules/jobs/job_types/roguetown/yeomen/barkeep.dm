@@ -21,33 +21,42 @@
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/butchering, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE) //apprentice to do some basic repairs around the inn if need be
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
-	pants = /obj/item/clothing/under/roguetown/tights/random
+		if(H.age == AGE_MIDDLEAGED)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
+	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	backr = /obj/item/storage/backpack/rogue/satchel
-	cloak = /obj/item/clothing/cloak/apron/waist
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltr = /obj/item/storage/keyring/innkeep
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
+		cloak = /obj/item/clothing/cloak/apron/waist
 	else
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-	H.change_stat("strength", 1)
+		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
+	H.change_stat("strength", 1) ///7 points (weighted)
 	H.change_stat("endurance", 1)
 	H.change_stat("constitution", 1)
+	H.change_stat("intelligence", 1)
+	H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) // Guess they were a bard.
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

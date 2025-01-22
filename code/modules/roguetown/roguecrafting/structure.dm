@@ -416,6 +416,15 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 
+/datum/crafting_recipe/roguetown/structure/standingblue
+	name = "standing fire (blue)"
+	result = /obj/machinery/light/rogue/firebowl/standing/blue
+	reqs = list(/obj/item/natural/stone = 1,
+				/obj/item/rogueore/coal = 1,
+				/obj/item/ash = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+
 /datum/crafting_recipe/roguetown/structure/oven
 	name = "oven"
 	result = /obj/machinery/light/rogue/oven
@@ -459,6 +468,15 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/structure/operatingtable
+	name = "operating table"
+	result = /obj/structure/table/optable
+	reqs = list(/obj/item/grown/log/tree/small = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/stonetable
 	name = "stone table"
@@ -581,6 +599,16 @@
 	name = "wall candles"
 	result = /obj/machinery/light/rogue/wallfire/candle
 	reqs = list(/obj/item/natural/stone = 1, /obj/item/candle/yellow = 1)
+	verbage_simple = "build"
+	verbage = "builds"
+	skillcraft = /datum/skill/craft/masonry
+	wallcraft = TRUE
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/structure/wallcandleblue
+	name = "wall candles (blue)"
+	result = /obj/machinery/light/rogue/wallfire/candle/blue
+	reqs = list(/obj/item/natural/stone = 1, /obj/item/candle/yellow = 1, /obj/item/ash = 1)
 	verbage_simple = "build"
 	verbage = "builds"
 	skillcraft = /datum/skill/craft/masonry

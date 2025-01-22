@@ -165,6 +165,11 @@
 	minstr = 11
 	icon_state = "gwhip"
 
+/obj/item/rogueweapon/whip/antique/psywhip
+	name = "Daybreak"
+	desc = "I am wrath. I am silver. I am the mercy of HIM."
+	icon_state = "psywhip"
+	is_silver = TRUE
 
 /obj/item/rogueweapon/flail/peasantwarflail
 	force = 10
