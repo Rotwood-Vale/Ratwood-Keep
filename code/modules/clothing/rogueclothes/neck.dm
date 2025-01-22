@@ -354,6 +354,30 @@
 	sellprice = 100
 	anvilrepair = /datum/skill/craft/armorsmithing
 
+/obj/item/clothing/neck/roguetown/ornateamulet/noble
+	var/choicename = FALSE
+	name = "Heirloom Amulet"
+	desc = "An ornate amulet representing a prestigious noble house."
+	icon_state = "ornateamulet"
+	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_WRISTS|ITEM_SLOT_HIP
+	//dropshrink = 0.75
+	resistance_flags = FIRE_PROOF
+	sellprice = 10
+	anvilrepair = /datum/skill/craft/armorsmithing
+
+/obj/item/clothing/neck/roguetown/ornateamulet/noble/attack_right(mob/user)
+	if(choicename)
+		return
+	var/current_time = world.time
+	var/namechoice = input(user, "Input a new name", "Rename Object")
+	if(namechoice)
+		name = namechoice
+		choicename = TRUE
+	else
+		return
+	if(world.time > (current_time + 30 SECONDS))
+		return
+
 /obj/item/clothing/neck/roguetown/skullamulet
 	name = "Skull Amulet"
 	desc = "Gold shaped into the form of a skull, made into an amulet."
