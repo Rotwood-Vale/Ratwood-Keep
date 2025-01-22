@@ -497,8 +497,8 @@
 
 /datum/crafting_recipe/roguetown/sawedoff
 	name = "handgonne"
-	result = /obj/item/gun/ballistic/handgonne
-	reqs = list(/obj/item/gun/ballistic/arquebus = 1)
+	result = /obj/item/gun/ballistic/firearm/handgonne
+	reqs = list(/obj/item/gun/ballistic/firearm/arquebus = 1)
 	skill_level = 0
 	tools = list(/obj/item/rogueweapon/surgery/saw = 1)
 
