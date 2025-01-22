@@ -4002,6 +4002,15 @@
 /area/rogue/indoors/town/magician)
 "cix" = (
 /obj/machinery/light/rogue/firebowl/standing/green,
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	pixel_y = 10
+	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/druidgrove)
 "ciB" = (
@@ -7394,6 +7403,11 @@
 /area/rogue/under/town/basement)
 "dWy" = (
 /obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
+	},
 /turf/open/floor/rogue/grassred,
 /area/rogue/outdoors/druidgrove)
 "dWC" = (
@@ -12919,6 +12933,15 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/rtfield)
+"gWi" = (
+/obj/structure/flora/roguegrass/bush/wall,
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/druidgrove)
 "gWn" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/shop)
@@ -15070,11 +15093,13 @@
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "ieR" = (
-/obj/structure/roguewindow/curtain{
-	dir = 1
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
 	},
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/indoors/town/academy)
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/druidgrove)
 "ieU" = (
 /obj/structure/table/wood{
 	icon_state = "map4"
@@ -18213,6 +18238,17 @@
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/bath)
+"jNz" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/structure/fluff/railing/wood{
+	pixel_y = -8
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/druidgrove)
 "jNL" = (
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town/church)
@@ -44381,6 +44417,15 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
+"yjK" = (
+/obj/structure/flora/roguegrass/bush,
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/druidgrove)
 "yky" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town/tavern)
@@ -253235,7 +253280,7 @@ eRw
 maB
 maB
 maB
-oCO
+maB
 maB
 eRw
 eRw
@@ -253667,8 +253712,8 @@ oCO
 maB
 maB
 maB
-oCO
-oCO
+maB
+maB
 gij
 sjX
 eRw
@@ -254099,7 +254144,7 @@ nWI
 wYF
 eRw
 cix
-eLn
+jNz
 eRw
 jsk
 xQO
@@ -254524,15 +254569,15 @@ gRh
 sfo
 iiy
 gqd
-dQg
+yjK
 uoS
 oCO
 rXZ
 dWy
-qtV
+gWi
 rXZ
 eLn
-rXZ
+ieR
 xQO
 xQO
 xQO
@@ -341297,7 +341342,7 @@ fRs
 fRs
 fRs
 xtc
-ieR
+dLj
 deA
 wbg
 wbg
