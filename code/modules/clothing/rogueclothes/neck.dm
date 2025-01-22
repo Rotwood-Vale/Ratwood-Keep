@@ -358,12 +358,8 @@
 	var/choicename = FALSE
 	name = "Heirloom Amulet"
 	desc = "An ornate amulet representing a prestigious noble house."
-	icon_state = "ornateamulet"
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_WRISTS|ITEM_SLOT_HIP
-	//dropshrink = 0.75
-	resistance_flags = FIRE_PROOF
 	sellprice = 10
-	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/neck/roguetown/ornateamulet/noble/attack_right(mob/user)
 	if(choicename)
