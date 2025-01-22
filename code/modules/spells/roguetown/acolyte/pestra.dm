@@ -256,7 +256,7 @@
             target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
             target.cursed_freak_out()
             return FALSE
-        target.visible_message(span_info("[target]'s body starts to sweat and become hot!"), span_notice("Pestra's hand goes though my body... I do feel sick..."))
+        target.visible_message(span_info("[target]'s body starts to sweat and becomes hot!"), span_notice("Pestra's hand goes through my body... I feel sick..."))
         target.reagents.add_reagent(/datum/reagent/water/gross, 15)
         target.reagents.add_reagent(/datum/reagent/medicine/purify, 5)
 
