@@ -39,13 +39,12 @@
 /datum/component/darkling/proc/try_blind_darkling(var/mob/living/darkling)
 	if(next_blind > world.time)
 		return
-	else
-		//Gives us a nasty bump in light stress
-		current_light_stress = clamp(current_light_stress + 5, 0, max_light_stress)
-		darkling.flash_act()
-		darkling.blur_eyes(8)
-		next_blind = world.time + (rand(30 SECONDS, 60 SECONDS) * (darkling.STACON/10)) //Con determines how frequently you can get blinded
-		to_chat(parent, span_danger("It's too bright! My eyes!"))
+	//Gives us a nasty bump in light stress
+	current_light_stress = clamp(current_light_stress + 5, 0, max_light_stress)
+	darkling.flash_act()
+	darkling.blur_eyes(8)
+	next_blind = world.time + (rand(30 SECONDS, 60 SECONDS) * (darkling.STACON/10)) //Con determines how frequently you can get blinded
+	to_chat(parent, span_danger("It's too bright! My eyes!"))
 
 
 /datum/component/darkling/proc/apply_stress_effects(var/mob/living/darkling)
