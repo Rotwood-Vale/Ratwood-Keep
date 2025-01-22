@@ -15,9 +15,6 @@
 	drop_sound = 'sound/items/gems (1).ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 
-	grid_height = 32
-	grid_width = 32
-
 /obj/item/key/Initialize()
 	. = ..()
 	if(lockid)
@@ -43,9 +40,6 @@
 	max_integrity = 10
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
 	destroy_sound = 'sound/items/pickbreak.ogg'
-
-	grid_width = 32
-	grid_height = 64
 
 //custom key
 /obj/item/key/custom

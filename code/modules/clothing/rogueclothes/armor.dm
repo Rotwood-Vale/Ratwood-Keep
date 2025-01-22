@@ -24,9 +24,6 @@
 	flags_inv = HIDEBOOB|HIDECROTCH
 	w_class = WEIGHT_CLASS_NORMAL //Anti-pouch storage due to the weight class no longer being small.
 
-	grid_width = 64
-	grid_height = 96
-
 /obj/item/clothing/suit/roguetown/armor/chainmail
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "haubergeon"
