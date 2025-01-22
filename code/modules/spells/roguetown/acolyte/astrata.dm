@@ -80,6 +80,7 @@
 			return TRUE
 		if(!target.stat == DEAD)
 			to_chat(user, span_warning("Nothing happens, they need to be dead first."))
+			revert_cast()
 			return FALSE
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
