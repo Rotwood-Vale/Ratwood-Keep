@@ -483,11 +483,13 @@
 /obj/item/clothing/head/roguetown/nyle/consortcrown
 	name = "consort crown"
 	icon_state = "consortcrown"
+	item_state = "consortcrown"
 	sellprice = 100
 
 /obj/item/clothing/head/roguetown/circlet
 	name = "golden circlet"
-	icon_state = "goldcirclet"
+	icon_state = "circlet"
+	item_state = "circlet"
 	sellprice = 50
 
 /obj/item/clothing/head/roguetown/priesthat
@@ -1371,6 +1373,7 @@
 	desc = "My cure is most effective."
 	icon_state = "feldhood"
 	item_state = "feldhood"
+	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	color = null
 
 //............... Physicians Hood ............... //
@@ -1379,6 +1382,7 @@
 	desc = "My cure is mostly effective."
 	icon_state = "surghood"
 	item_state = "surghood"
+	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	color = null
 
 //............... Eora Helmet ............... //
