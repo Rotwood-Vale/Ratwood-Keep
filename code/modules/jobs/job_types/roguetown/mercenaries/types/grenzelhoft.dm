@@ -9,6 +9,7 @@
 		/datum/species/dracon,
 		/datum/species/dwarf/mountain,
 		/datum/species/human/northern,
+		/datum/species/moth,
 		/datum/species/demihuman,
 		/datum/species/anthromorph,
 		/datum/species/tabaxi
