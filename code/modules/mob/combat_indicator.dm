@@ -16,13 +16,14 @@
 
 /mob/living/toggle_cmode()
 	..()
+	log_message("[src] has " + (cmode ? "enabled" : "disabled") + " combat mode.", LOG_ATTACK)
 	toggle_combat_indicator()
 
 /datum/mob_descriptor/combat_mode
 	name = "Combat Mode"
 	slot = MOB_DESCRIPTOR_SLOT_NOTHING
 	verbage = "looks"
-	describe = span_narsie("ready for combat!")
+	describe = span_artery("ready for combat!")
 	show_obscured = TRUE
 
 /datum/mob_descriptor/combat_mode/can_describe(mob/living/described)
