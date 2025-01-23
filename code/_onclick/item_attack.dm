@@ -18,12 +18,16 @@
 		if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS))
 			to_chat(user, span_warning("...What?"))
 			return
+	to_chat(user,span_notice("Debug: is not grab"))
 	if(tool_behaviour && target.tool_act(user, src, tool_behaviour))
 		return
+	to_chat(user,span_notice("Debug: toolbehavior"))
 	if(pre_attack(target, user, params))
 		return
+	to_chat(user, span_notice("Debug: Preattack"))
 	if(target.attackby(src,user, params))
 		return
+	to_chat(user, span_notice("Debug: attackby"))
 	if(QDELETED(src) || QDELETED(target))
 		attack_qdeleted(target, user, TRUE, params)
 		return
@@ -295,7 +299,7 @@
 			if(!cont)
 				return 0
 		if(DULLING_PICK) //cannot deal damage if not a pick item. aka rock walls
-				    
+
 			if(user.used_intent.blade_class != BCLASS_PICK)
 				if(user.used_intent.blade_class != BCLASS_DRILL)
 					return 0
@@ -304,7 +308,7 @@
 			newforce = newforce * (8+(mineskill*1.5))
 			shake_camera(user, 1, 1)
 			miner.mind.add_sleep_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
-	
+
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
 		newforce = newforce * 0.5
@@ -338,6 +342,7 @@
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_OBJ, I, user)
 	return TRUE
 
 /turf/proc/attacked_by(obj/item/I, mob/living/user)
@@ -351,6 +356,7 @@
 	if(user.used_intent.no_attack)
 		return 0
 	user.changeNext_move(CLICK_CD_MELEE)
+
 	log_combat(user, src, "attacked", I)
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
@@ -366,6 +372,7 @@
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_TURF, I, user)
 	return TRUE
 
 /mob/living/proc/simple_limb_hit(zone)

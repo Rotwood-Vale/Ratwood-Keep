@@ -135,3 +135,24 @@
 			return
 	if(istype(I, /obj/item/reagent_containers/glass))
 	else ..()
+
+/obj/machinery/light/rogue/forge/arcane
+	icon = 'icons/roguetown/misc/forge.dmi'
+	name = "infernal forge"
+	desc = "This forge uses cycling magma from an internal core to heat things."
+	icon_state = "infernal0"
+	base_state = "infernal"
+	heat_time = 300
+
+/obj/machinery/light/rogue/forge/arcane/process()
+	if(isopenturf(loc))
+		var/turf/open/O = loc
+		if(IS_WET_OPEN_TURF(O))
+			extinguish()
+	if(on)
+		if(initial(fueluse) > 0)
+			if(fueluse > 0)
+				fueluse = max(fueluse - 10, 0)
+			if(fueluse == 0)//It's litterally powered by arcane lava. It's not gonna run out of fuel.
+				fueluse = 4000
+		update_icon()

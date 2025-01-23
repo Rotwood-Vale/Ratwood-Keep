@@ -1,14 +1,24 @@
+//T1 Enchantments
 /datum/magic_item/mundane/woodcut
 	name = "woodcutting"
-	description = "It is made of silver, shiny and pure."
+	description = "It is firm like an tree."
 	var/last_used
 
-/datum/magic_item/mundane/woodcut/on_hit(obj/item/source, atom/target, mob/user, proximity_flag, click_parameters)
-
-	to_chat(user, span_notice("on_hit"))
+/datum/magic_item/mundane/woodcut/on_hit_structure(var/obj/item/i, var/obj/target, var/mob/living/user)
 	if(istype(target, /obj/structure/flora))
 		var/obj/structure/flora/tree = target
 		tree.obj_integrity -= 70
+	. = ..()
+
+/datum/magic_item/mundane/mining
+	name = "mining"
+	description = "It is coated with rock."
+	var/last_used
+
+/datum/magic_item/mundane/mining/on_hit_structure(var/obj/item/i, var/turf/target, var/mob/living/user)
+	if(istype(target, /turf/closed/mineral/rogue))
+		var/turf/closed/mineral/rogue/rock = target
+		rock.turf_integrity -= 500
 	. = ..()
 
 /datum/magic_item/mundane/xylix

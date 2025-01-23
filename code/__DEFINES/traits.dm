@@ -157,7 +157,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
-	TRAIT_STUDENT = span_info("The scholar has taught me new skills!")
+	TRAIT_STUDENT = span_info("The scholar has taught me new skills!"),
+	TRAIT_BOG_TREKKING = "Expert in navigating these lands."
 ))
 
 // trait accessor defines
@@ -385,6 +386,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define INNATE_TRAIT "innate"
 
 // unique trait sources, still defines
+#define TRAIT_BOG_TREKKING "trekking"
 #define TRAIT_DARKVISION "darkvision"
 #define TRAIT_DARKVISION_BETTER "darkvisionbetter"
 #define CLONING_POD_TRAIT "cloning-pod"

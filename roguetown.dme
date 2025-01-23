@@ -532,6 +532,7 @@
 #include "code\datums\looping_sounds\item_sounds.dm"
 #include "code\datums\looping_sounds\weather.dm"
 #include "code\datums\magic_items\magic_item.dm"
+#include "code\datums\magic_items\greater_items\greater.dm"
 #include "code\datums\magic_items\mundane_items\mundane.dm"
 #include "code\datums\magic_items\mundane_items\silver.dm"
 #include "code\datums\magic_items\superior_items\nomagic.dm"
