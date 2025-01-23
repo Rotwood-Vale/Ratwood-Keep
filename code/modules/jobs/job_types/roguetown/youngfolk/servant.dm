@@ -51,10 +51,11 @@
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	else
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/black
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-		cloak = /obj/item/clothing/cloak/apron/waist
-		belt = /obj/item/storage/belt/rogue/leather
+		head = /obj/item/clothing/head/roguetown/maidhead
+		pants = pick(/obj/item/clothing/under/roguetown/tights/stockings/silk/black, /obj/item/clothing/under/roguetown/tights/stockings/silk/white)
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/maiddress
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		cloak = /obj/item/clothing/cloak/apron/waist/maid
+		belt = /obj/item/storage/belt/rogue/leather/cloth
 		beltr = /obj/item/storage/keyring/servant
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
