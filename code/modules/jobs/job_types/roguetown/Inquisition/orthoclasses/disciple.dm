@@ -36,8 +36,11 @@
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
 /datum/outfit/job/roguetown/disciple/proc/brute_equip(mob/living/carbon/human/H)
-	backpack_contents = list(/obj/item/roguekey/inquisition = 1, /obj/item/clothing/cloak/psydontabard/alt)
+	backpack_contents = list(/obj/item/roguekey/inquisition = 1)
 	gloves = /obj/item/clothing/gloves/roguetown/chain/psydon
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
+	cloak = /obj/item/clothing/cloak/psydontabard/alt
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
