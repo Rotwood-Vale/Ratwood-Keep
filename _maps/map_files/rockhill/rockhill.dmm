@@ -10696,9 +10696,9 @@
 "fIT" = (
 /obj/structure/stairs/stone,
 /obj/structure/fluff/railing/border{
-	dir = 6
+	dir = 5
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "fIV" = (
 /obj/structure/fluff/railing/border,
@@ -18169,7 +18169,9 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "jMi" = (
-/obj/structure/stairs/stone,
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "jMl" = (
@@ -19464,16 +19466,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/bath)
-"kuV" = (
-/obj/effect/landmark/start/bogguardsman{
-	dir = 1
-	},
-/obj/structure/fluff/railing/border{
-	dir = 8;
-	pixel_x = s
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors)
 "kuZ" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -329737,7 +329729,7 @@ lvw
 qQE
 kYX
 jCh
-jMi
+eDl
 eDl
 pAV
 pAV
@@ -330168,9 +330160,9 @@ aQJ
 ddv
 jak
 cDC
-jCh
+jMi
 fIT
-lOr
+eDl
 pAV
 pAV
 aQJ
@@ -330601,8 +330593,8 @@ faB
 dIv
 ujK
 oyF
-kuV
 qsc
+juC
 ddv
 ddv
 ddv
