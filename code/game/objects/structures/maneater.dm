@@ -229,7 +229,7 @@
 	max_seednutrition = 50
 	var/growth_stage = 1
 	var/max_growth_stage = 3
-	var/growth_time = 2 MINUTES
+	var/growth_time = 20 MINUTES
 
 
 /obj/structure/flora/roguegrass/maneater/real/juvenile/Initialize()
