@@ -39,13 +39,14 @@
 	/datum/species/axian,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
-	/datum/species/moth,
 
 #define RACES_SHUNNED \
 	/datum/species/elf/dark,\
 	/datum/species/tieberian,\
 	/datum/species/anthromorphsmall,\
 	/datum/species/kobold,\
+	/datum/species/moth,
+
 
 #define RACES_VERY_SHUNNED \
 	/datum/species/halforc
