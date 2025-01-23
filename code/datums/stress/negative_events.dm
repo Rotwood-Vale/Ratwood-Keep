@@ -338,10 +338,10 @@
 	timer = 3 MINUTES
 
 /datum/stressevent/darkling_toobright
-	stressadd = 5
+	stressadd = 1
 	desc = span_red("It's too bright, the light hurts my eyes.")
 	timer = 30 SECONDS
 /datum/stressevent/darkling_migraine
-	stressadd = 10
+	stressadd = 3
 	desc = span_red("My head is pounding, I need to rest in the darkness.")
 	timer = 1 MINUTES
