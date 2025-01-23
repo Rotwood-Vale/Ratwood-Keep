@@ -38,8 +38,8 @@
 	/datum/species/tabaxi,\
 	/datum/species/axian,\
 	/datum/species/anthromorph,\
-	/datum/species/demihuman
-	/datum/species/moth,\
+	/datum/species/demihuman,\
+	/datum/species/moth,
 
 #define RACES_SHUNNED \
 	/datum/species/elf/dark,\
