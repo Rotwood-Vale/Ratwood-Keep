@@ -325,6 +325,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 //Garrison
 #define CTAG_BOG			"CAT_BOG"			// Vanguard
 #define CTAG_SQUIRE			"CAT_SQUIRE"		// Squires
+#define CTAG_MAA			"CAT_MAA"			// Man-At-Arms
 
 //Nobles			Eventually all of them will get their subclasses
 #define CTAG_HEIR			"CAT_HEIR"			// Heirs

@@ -265,6 +265,15 @@
 	var/armor_block = C.run_armor_check(limb_grabbed, "blunt")
 	var/damage = user.get_punch_dmg()
 
+	// Scruffing
+	if(ishuman(C))
+		var/mob/living/carbon/human/H = C
+		if((istype(H.dna?.species, /datum/species/tabaxi) || istype(H.dna?.species, /datum/species/lupian)) && sublimb_grabbed == BODY_ZONE_PRECISE_NECK)
+			if(get_location_accessible(H, BODY_ZONE_PRECISE_NECK) && H.age == AGE_ADULT) // Is the neck accessible? Also, only applies to adults
+				H.Paralyze(20) // 2 seconds of paralysis
+				to_chat(H, span_userdanger("You go limp as your scruff is twisted!"))
+				to_chat(user, span_warning("You twist [H]'s scruff, causing them to go limp!"))
+
 	if(limb_grabbed.status == BODYPART_ROBOTIC)
 		C.visible_message(span_notice("[user] starts twisting [limb_grabbed] of [C], twisting it out of its socket!"), span_notice("I start twisting [limb_grabbed] from [src]."))
 		if(do_after(user, 60, target = src))
