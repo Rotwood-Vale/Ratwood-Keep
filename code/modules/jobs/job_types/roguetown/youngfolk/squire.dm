@@ -62,7 +62,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
@@ -87,7 +87,7 @@
 /datum/subclass/squire/recruit
 	name = "Recruit"
 	tutorial = "You are a freshly enlisted fellow yet to be ready serve your liege on your own. You knight will take care of your training as well as you shall take care of them. \
-	Thanks to your diligence, you are outperform lots of your kins in battle."
+	Thanks to your diligence, you outperform lots of your kins in battle."
 	outfit = /datum/outfit/job/roguetown/squire/recruit
 	category_tags = list(CTAG_SQUIRE)
 	maximum_possible_slots = 2
@@ -138,16 +138,27 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(1,2), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, pick(1,2), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, pick(1,2), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+		if(prob(25))
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+		if(prob(25))
+			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+		if(prob(25))
+			H.mind.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
+		if(prob(25))
+			H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
+		if(prob(25))
+			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
+		if(prob(25))
+			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
+
 		H.change_stat("strength", 1)
 		H.change_stat("perception", 1)
 		H.change_stat("constitution", 1)
