@@ -343,6 +343,14 @@
 	icon_state = "chef"
 	item_state = "chef"
 
+/obj/item/clothing/head/roguetown/maidhead
+	name = "maid headdress"
+	desc = "A decorative cloth headband clearly indicating the wearer as a maid."
+	icon = 'icons/roguetown/clothing/maiddress/maid.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/maiddress/onmob/maid.dmi'
+	icon_state = "maidhead"
+	item_state = "maidhead"
+
 /obj/item/clothing/head/roguetown/chaperon/greyscale
 	icon_state = "chap_alt"
 	item_state = "chap_alt"

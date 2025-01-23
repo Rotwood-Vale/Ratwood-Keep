@@ -241,6 +241,17 @@
 	. = ..()
 	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
 
+/obj/item/clothing/suit/roguetown/shirt/dress/maiddress
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "maid dress"
+	desc = "A distinctive black dress that should be kept clean and tidy - unless you want to be disciplined."
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon = 'icons/roguetown/clothing/maiddress/maid.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/maiddress/onmob/maid.dmi'
+	sleeved = 'icons/roguetown/clothing/maiddress/onmob/sleeves_shirts.dmi'
+	icon_state = "maiddress"
+	item_state = "maiddress"
+
 // 
 //   Velvet Dress
 //
