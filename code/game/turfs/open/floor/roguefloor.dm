@@ -600,6 +600,28 @@
 		add_overlay(New)
 	return New
 
+/turf/open/floor/rogue/underworld/space
+	name = "void"
+	desc = ""
+	icon_state = "undervoid"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/dirtland.wav'
+	smooth = SMOOTH_FALSE
+	slowdown = 50
+
+/turf/open/floor/rogue/underworld/space/sparkle_quiet
+	name = "void"
+	desc = ""
+	icon_state = "undervoid2"
+
+/turf/open/floor/rogue/underworld/space/quiet
+	name = "void"
+	desc = ""
+	icon_state = "undervoid3"
 
 /turf/open/floor/rogue/underworld/road
 	name = "ash"

@@ -13,6 +13,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	associated_skill = /datum/skill/combat/maces
 	smeltresult = /obj/item/ingot/iron
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/rogueweapon/hammer/attack_obj(obj/attacked_object, mob/living/user)
 	if(!isliving(user) || !user.mind)
@@ -186,6 +188,8 @@
 	var/obj/item/ingot/hingot = null
 	var/hott = FALSE
 	smeltresult = /obj/item/ingot/iron
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/rogueweapon/tongs/examine(mob/user)
 	. = ..()
