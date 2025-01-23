@@ -57,7 +57,7 @@
 		darkling.apply_status_effect(/datum/status_effect/debuff/darkling_glare)
 		darkling.blur_eyes(3)
 	//Migraines
-	if(src.current_light_stress > 30)
+	if(src.current_light_stress > 40)
 		darkling.blur_eyes(6)
 		darkling.overlay_fullscreen("painflash", /atom/movable/screen/fullscreen/painflash)
 		darkling.overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, 4)
@@ -70,11 +70,11 @@
 	var/light_amount = T.get_lumcount()
 	var/resistance_multiplier = 1
 	resistance_multiplier += darkling.fovangle > 5
-	var/light_resistance = (0.4 * (darkling.STAEND/10)) * resistance_multiplier
+	var/light_resistance = (0.6 * (darkling.STAEND/10)) * resistance_multiplier
 	var/light_multiplier = 1
 	if(GLOB.tod == "day" && isturf(darkling.loc))
 		var/turf/loc = darkling.loc
 		if(loc.can_see_sky())
-			light_multiplier += 1
+			light_multiplier += 0.5
 	var/incoming_light_stress = (light_amount * light_multiplier - light_resistance) 
 	return incoming_light_stress
