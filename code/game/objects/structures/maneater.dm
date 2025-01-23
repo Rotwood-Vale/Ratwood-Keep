@@ -196,7 +196,10 @@
 	if(istype(T, /turf/open/floor/rogue/dirt) || istype(T, /turf/open/floor/rogue/grass))
 		if(!proximity_flag)
 			return
-		for(var/turf/adjacent in orange(1, T))
+		for(var/obj/structure/flora/roguegrass/maneater/M in T)
+			to_chat(user, span_warning("The maneater plants need more space between them to grow."))
+			return
+		for(var/turf/adjacent in orange(2, T))
 			for(var/obj/structure/flora/roguegrass/maneater/M in adjacent)
 				to_chat(user, span_warning("The maneater plants need more space between them to grow."))
 				return
