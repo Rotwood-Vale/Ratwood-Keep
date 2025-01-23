@@ -84,6 +84,8 @@
 	minstr = 7
 	sellprice = 30
 	wdefense = 4
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/rogueweapon/sword/Initialize()
 	. = ..()
