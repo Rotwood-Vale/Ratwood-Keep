@@ -41,3 +41,7 @@
 		H.change_stat(STAT_CONSTITUTION, 1)
 		H.change_stat(STAT_SPEED, -1)
 		H.change_stat(STAT_FORTUNE, 1)
+		if(H.age == AGE_MIDDLEAGED)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)

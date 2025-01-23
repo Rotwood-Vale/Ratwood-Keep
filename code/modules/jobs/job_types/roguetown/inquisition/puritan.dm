@@ -152,10 +152,10 @@
 	var/static/list/innocent_lines = list(
 		"I DON'T KNOW!",
 		"STOP THE PAIN!!",
-		"I DON'T DESERVE THIS!",
-		"THE PAIN!",
-		"I HAVE NOTHING TO SAY...!",
-		"WHY ME?!",
+		"I AM INNOCENT!",
+		"IT HURTS!",
+		"NO MORE, PLEASE!",
+		"WHY?!!",
 	)
 	var/resist_chance
 	if(resist)
@@ -163,7 +163,7 @@
 		resist_chance = (STAINT + STAEND) + 10
 		if(confession_type == "antag")
 			resist_chance += 25
-	if(!resist || (resist_chance && prob(resist_chance)))
+	if(!resist || (resist_chance && !prob(resist_chance)))
 		var/list/confessions = list()
 		switch(confession_type)
 			if("patron")

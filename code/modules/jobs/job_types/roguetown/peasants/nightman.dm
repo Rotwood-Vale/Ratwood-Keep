@@ -32,10 +32,18 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
 	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/prostitute)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+		var/input = input("Choose an expertise", "Expertise") as anything in list("knives","whips & flails")
+		switch(input)
+			if("knives")
+				H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+			if("whips & flails")
+				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
@@ -49,3 +57,12 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 		else if(isdwarf(H))
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
+
+/obj/effect/proc_holder/spell/self/convertrole/prostitute
+	name = "Hire Prostitute"
+	new_role = "Prostitute"
+	overlay_state = "recruit_servant"
+	recruitment_faction = "Prostitute"
+	recruitment_message = "Work for me, %RECRUIT."
+	accept_message = "I will."
+	refuse_message = "I refuse."
