@@ -37,7 +37,8 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/flashlight/flare/torch/lantern
-			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
+			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor = 1
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_templar(H)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -92,7 +93,8 @@
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			gloves = /obj/item/clothing/gloves/roguetown/chain
-			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
+			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor = 1
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
@@ -166,9 +168,10 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/knifebelt/iron
 			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/special
+			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor = 1
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_templar(H)
-			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
@@ -311,7 +314,7 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 		if(/datum/patron/inhumen/zizo)
 			H.cmode_music = 'sound/music/combat_cult.ogg'
-			beltl = /obj/item/roguekey/inhumen
+			neck = /obj/item/roguekey/inhumen
 		if (/datum/patron/inhumen/matthios)
 			H.cmode_music = 'sound/music/combat_cult.ogg'
 

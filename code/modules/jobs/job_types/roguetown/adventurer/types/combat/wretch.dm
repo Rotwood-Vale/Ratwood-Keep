@@ -74,7 +74,8 @@
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 			belt = /obj/item/storage/belt/rogue/leather/steel
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
+			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor = 1
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 			GLOB.outlawed_players += H.real_name
 
 		
