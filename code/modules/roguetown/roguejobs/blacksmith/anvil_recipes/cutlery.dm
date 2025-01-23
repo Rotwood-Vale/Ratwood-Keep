@@ -10,7 +10,7 @@
   name = "Pewter Bowl 3x"
   req_bar = /obj/item/ingot/tin
   created_item = list(/obj/item/reagent_containers/glass/bowl/pewter, /obj/item/reagent_containers/glass/bowl/pewter, /obj/item/reagent_containers/glass/bowl/pewter)
-  skill_level = 1 // Pewter is v. easy to work with
+  skill_level = 0 // Pewter is v. easy to work with
 
 /datum/anvil_recipe/cutlery/tin/plate
   name = "Pewter Platter 3x"
