@@ -500,24 +500,24 @@
 
 proc/get_attack_flavor_text(mob/user, obj/item/I)
 	if(!I)
-		return "inexpertly"
+		return ""
 
 	var/datum/skill/associated_skill = I.associated_skill
 	if(!associated_skill) 
-		return "inexpertly"
+		return ""
 
 	if(!user.mind)
-		return "inexpertly"
+		return ""
 
 	var/skill_level = user.mind.get_skill_level(associated_skill)
 	switch(skill_level)
-		if(SKILL_LEVEL_NOVICE)     return "inexpertly"
-		if(SKILL_LEVEL_APPRENTICE) return "amateurishly"
-		if(SKILL_LEVEL_JOURNEYMAN) return "competently"
-		if(SKILL_LEVEL_EXPERT)     return "adeptly"
-		if(SKILL_LEVEL_MASTER)     return "expertly"
-		if(SKILL_LEVEL_LEGENDARY)  return "masterfully"
-	return "inexpertly"
+		if(SKILL_LEVEL_NOVICE)     return "inexpertly "
+		if(SKILL_LEVEL_APPRENTICE) return "amateurishly "
+		if(SKILL_LEVEL_JOURNEYMAN) return "competently "
+		if(SKILL_LEVEL_EXPERT)     return "adeptly "
+		if(SKILL_LEVEL_MASTER)     return "expertly "
+		if(SKILL_LEVEL_LEGENDARY)  return "masterfully "
+	return ""
 
 /mob/living/proc/send_item_attack_message(obj/item/I, mob/living/user, hit_area)
 	if(!I)
@@ -534,9 +534,9 @@ proc/get_attack_flavor_text(mob/user, obj/item/I)
 	var/attack_message = "[src] is [message_verb][message_hit_area] with [I]!"
 	var/attack_message_local = "I'm [message_verb][message_hit_area] with [I]!"
 	if(user in viewers(src, null))
-		attack_message = "[user] [flavor_text] [message_verb] [src][message_hit_area] with [I]!"
-		attack_message_local = "[user] [flavor_text] [message_verb] me[message_hit_area] with [I]!"
-	visible_message(span_danger("[flavor_text][attack_message][next_attack_msg.Join()]"),\
-		span_danger("[flavor_text][attack_message_local][next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
+		attack_message = "[user] [flavor_text][message_verb] [src][message_hit_area] with [I]!"
+		attack_message_local = "[user] [flavor_text][message_verb] me[message_hit_area] with [I]!"
+	visible_message(span_danger("[attack_message][next_attack_msg.Join()]"),\
+		span_danger("[attack_message_local][next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 	next_attack_msg.Cut()
 	return 1
