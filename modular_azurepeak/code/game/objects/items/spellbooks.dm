@@ -410,7 +410,7 @@
 	var/is_bled = FALSE
 	var/rune_to_scribe = /obj/effect/roguerune/
 
-/obj/item/rogueweapon/huntingknife/idagger/silver/attackby(obj/item/M, mob/user, params)
+/*/obj/item/rogueweapon/huntingknife/idagger/silver/attackby(obj/item/M, mob/user, params)
 	var/mob/living/carbon/gamer = user
 	if(istype(M, /obj/item/reagent_containers/powder/mana))
 		if(isarcyne(gamer))
@@ -424,7 +424,7 @@
 				user.put_in_active_hand(arcyne_knife)
 	else 
 		return ..()
-
+*/
 /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne/attack_self(mob/living/carbon/human/user)
 	if(!isarcyne(user))
 		return

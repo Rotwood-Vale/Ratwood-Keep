@@ -21,6 +21,9 @@
 		cost += dream_legendary_extra_cost
 	return cost
 
+/datum/skill/proc/skill_level_effect(level, datum/mind/mind)
+	return
+
 /datum/skill/proc/get_random_dream()
 	if(!dreams)
 		return null
