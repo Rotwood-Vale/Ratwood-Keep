@@ -470,6 +470,26 @@
 	sellprice = 50
 	anvilrepair = /datum/skill/craft/armorsmithing
 
+/obj/item/clothing/head/roguetown/nyle
+	name = "jewel of nyle"
+	icon_state = "nile"
+	body_parts_covered = null
+	slot_flags = ITEM_SLOT_HEAD
+	dynamic_hair_suffix = null
+	sellprice = 100
+	resistance_flags = FIRE_PROOF
+	anvilrepair = /datum/skill/craft/armorsmithing
+
+/obj/item/clothing/head/roguetown/nyle/consortcrown
+	name = "consort crown"
+	icon_state = "consortcrown"
+	sellprice = 100
+
+/obj/item/clothing/head/roguetown/circlet
+	name = "golden circlet"
+	icon_state = "goldcirclet"
+	sellprice = 50
+
 /obj/item/clothing/head/roguetown/priesthat
 	name = "priest's hat"
 	desc = ""
@@ -1331,6 +1351,54 @@
 		wise.change_stat("intelligence", -2, "wisehat")
 		to_chat(wise, span_red("I lose wisdom."))
 
+/obj/item/clothing/head/roguetown/shawl
+	name = "shawl"
+	desc = "Keeps the hair in check, and looks proper."
+	icon_state = "shawl"
+	flags_inv = HIDEEARS
+
+/obj/item/clothing/head/roguetown/articap
+	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."
+	icon_state = "articap"
+
+/obj/item/clothing/head/roguetown/brimmed
+	desc = "A simple brimmed hat that provides some relief from the sun."
+	icon_state = "brimmed"
+
+//............... Feldshers Hood ............... //
+/obj/item/clothing/head/roguetown/roguehood/feld
+	name = "feldsher's hood"
+	desc = "My cure is most effective."
+	icon_state = "feldhood"
+	item_state = "feldhood"
+	color = null
+
+//............... Physicians Hood ............... //
+/obj/item/clothing/head/roguetown/roguehood/phys
+	name = "physicker's hood"
+	desc = "My cure is mostly effective."
+	icon_state = "surghood"
+	item_state = "surghood"
+	color = null
+
+//............... Eora Helmet ............... //
+/obj/item/clothing/head/roguetown/helmet/sallet/eoran
+	name = "eora helmet"
+	desc = "A standard helmet forged in the style typical of Eoran worshippers, a simple yet practical protective piece of equipment. Upon it lays several laurels of flowers and other colorful ornaments, followed by several symbols and standards of the user's chapter, accomplishments or even punishment"
+	icon_state = "eorahelm"
+	item_state = "eorahelm"
+
+//................ Briar Thorns ............... //	- Dendor Briar
+/obj/item/clothing/head/roguetown/padded/briarthorns
+	name = "briar thorns"
+	desc = "The pain it causes perhaps can distract from the whispers of a mad God overpowering your sanity..."
+	icon_state = "briarthorns"
+
+/obj/item/clothing/head/roguetown/padded/briarthorns/pickup(mob/living/user)
+	. = ..()
+	to_chat(user, span_warning ("The thorns prick me."))
+	user.adjustBruteLoss(4)
+
 // azure addition - random wizard hats
 
 /obj/item/clothing/head/roguetown/wizhat/random/Initialize()
@@ -1341,6 +1409,8 @@
 	name = "witch hat"
 	desc = ""
 	icon_state = "witch"
+	item_state = "witch"
+	icon = 'icons/roguetown/clothing/head.dmi'
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/archercap
@@ -1352,16 +1422,6 @@
 	name = "doctor's hat"
 	desc = "My cure is most effective."
 	icon_state = "physhat"
-
-/obj/item/clothing/head/roguetown/nyle
-	name = "jewel of nyle"
-	icon_state = "nile"
-	body_parts_covered = null
-	slot_flags = ITEM_SLOT_HEAD
-	dynamic_hair_suffix = null
-	sellprice = 100
-	resistance_flags = FIRE_PROOF
-	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/head/roguetown/grenzelhofthat
 	name = "grenzelhoft plume hat"
