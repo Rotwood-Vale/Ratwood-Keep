@@ -32584,9 +32584,6 @@
 /obj/item/powderflask{
 	pixel_y = 14
 	},
-/obj/item/gun/ballistic/firearm/arquebus_pistol{
-	pixel_y = 14
-	},
 /obj/structure/closet/crate/roguecloset/dark{
 	locked = 1;
 	lockid = "merchant";
@@ -32594,6 +32591,7 @@
 	pixel_y = 2;
 	pixel_x = 2
 	},
+/obj/item/gun/ballistic/arquebus_pistol,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/shop)
 "rJc" = (
@@ -330579,7 +330577,7 @@ hBp
 hHI
 wVI
 fnA
-kDY
+nqU
 wsY
 wsY
 ggO
