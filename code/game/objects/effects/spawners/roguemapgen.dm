@@ -74,8 +74,11 @@
 	do_spawn()
 	return INITIALIZE_HINT_QDEL
 
+// Potions n shit
 /obj/effect/spawner/lootdrop/proc/do_spawn()
 	if(prob(probby))
+		if(!spawned)
+			return
 		var/obj/new_type = pick(spawned)
 		new new_type(get_turf(src))
 
@@ -137,7 +140,7 @@
 		/obj/item/alch/valeriana = 5,
 		/obj/item/alch/artemisia = 5,
 	)
-/obj/effect/spawner/roguemap/loot/potion_stats
+/obj/effect/spawner/lootdrop/potion_stats
 	icon_state = "lootstatpot"
 	spawned = list(
 		/obj/item/reagent_containers/glass/alchemical/strpot = 10,

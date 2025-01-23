@@ -22,7 +22,7 @@
 	vision_range = 6
 	aggro_vision_range = 6
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 15,
-						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3, obj/item/alch/sinew = 7, obj/item/alch/horn = 2)
+						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3, /obj/item/alch/sinew = 7, /obj/item/alch/horn = 2)
 	health = TROLL_HEALTH * 1.1
 	maxHealth = TROLL_HEALTH
 	food_type = list(
