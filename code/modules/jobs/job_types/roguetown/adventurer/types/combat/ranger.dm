@@ -76,6 +76,7 @@
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+			beltr = /obj/item/quiver/bolts
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)

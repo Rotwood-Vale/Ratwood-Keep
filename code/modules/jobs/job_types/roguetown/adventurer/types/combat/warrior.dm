@@ -17,9 +17,7 @@
 	H.adjust_blindness(-3)
 	var/classes = list("Battlemaster","Duelist","Barbarian")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
-	backpack_contents = list(
-		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
-		/obj/item/flashlight/flare/torch = 1)
+	backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 
 	switch(classchoice)
 
@@ -59,6 +57,7 @@
 			H.change_stat("constitution", 2)
 			belt = /obj/item/storage/belt/rogue/leather
 			backl = /obj/item/storage/backpack/rogue/satchel
+			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			pants = /obj/item/clothing/under/roguetown/chainlegs/iron
@@ -99,6 +98,7 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 			pants = /obj/item/clothing/under/roguetown/trou/leather
+			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			neck = /obj/item/clothing/neck/roguetown/gorget
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
@@ -146,6 +146,7 @@
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather
+				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/bikini
@@ -155,3 +156,4 @@
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather
+				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
