@@ -39,7 +39,7 @@
 /obj/item/storage/magebag/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 20
+	STR.max_combined_w_class = 42
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_items = 20
 	STR.set_holdable(list(
@@ -263,10 +263,7 @@
 	var/timing_id
 
 /obj/item/mimictrinket/attack_self(mob/living/carbon/human/user)
-	if(timing_id)
-		deltimer(timing_id)
-		timing_id = null
-		ready = TRUE
+	revert()
 /obj/item/mimictrinket/proc/revert()
 	icon = oldicon
 	icon_state = oldicon_state
@@ -279,7 +276,7 @@
 
 /obj/item/mimictrinket/attack_obj(obj/target, mob/living/user)
 	if(ready)
-		to_chat(user,span_notice("The [src] takes the form of [target]!"))
+		to_chat(user,span_notice("[src] takes the form of [target]!"))
 		oldicon = icon
 		oldicon_state = icon_state
 		olddesc = desc
@@ -333,15 +330,15 @@ obj/item/hourglass/temporal/stop()
 
 /obj/item/clothing/ring/active/shimmeringlens
 	name = "shimmering lens"
-
+	desc = "A radiantly shimmering glass of lens that shimmers with magick. Looking through it gives you a bit of a headache."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "lense"
+	icon_state = "lens"
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	cdtime = 10 MINUTES
 	activetime = 30 SECONDS
 
-/obj/item/clothing/ring/active/shimmeringlens/active/attack_right(mob/user)
+/obj/item/clothing/ring/active/shimmeringlens/attack_right(mob/user)
 	if(loc != user)
 		return
 	if(cooldowny)
@@ -387,6 +384,98 @@ obj/item/hourglass/temporal/stop()
 	var/input_text = input(user, "Enter your message:", "Message")
 	if(input_text)
 		paired_with.say(input_text)
+
+/obj/item/clothing/gloves/roguetown/nomagic
+	icon = 'icons/roguetown/clothing/gloves.dmi'
+	bloody_icon_state = "bloodyhands"
+	icon_state = "angle"
+	w_class = WEIGHT_CLASS_SMALL
+	var/active_item
+
+/obj/item/clothing/gloves/roguetown/nomagic/Initialize(mapload)
+	. = ..()
+	name = "mana binding gloves"
+	resistance_flags = FIRE_PROOF
+	var/datum/magic_item/mundane/nomagic/effect = new
+	AddComponent(/datum/component/magic_item, effect)
+
+/obj/item/clothing/gloves/roguetown/nomagic/equipped(mob/living/user, slot)
+	if(active_item)
+		return
+	var/slotbit = slotdefine2slotbit(slot)
+	if(slotbit == ITEM_SLOT_GLOVES)
+		active_item = TRUE
+		ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
+	. = ..()
+
+/obj/item/rope/chain/bindingshackles
+	name = "binding shackles"
+	desc = "arcane shackles imbued to bind and call forth the spark of understanding to a creature"
+	var/mob/living/fam
+	var/tier
+	var/being_used = FALSE
+	var/sentience_type = SENTIENCE_ORGANIC
+
+/obj/item/rope/chain/bindingshackles/attack(mob/living/simple_animal/hostile/retaliate/rogue/captive, mob/living/user)
+	if(captive.tier >= tier)
+		return
+
+	to_chat(user, span_notice("Trying to find familiar..."))
+	var/list/L = pollCandidatesForMob(
+		Question = "Do you want to play as [span_notice("[span_danger("[user.real_name]'s")] bound creature?")]?",
+		jobbanType = ROLE_PAI,
+		poll_time = 20 SECONDS,
+		ignore_category = POLL_IGNORE_SENTIENCE_POTION,
+	)
+	if(L.len > 0)
+		var/mob/chosen_one =  pick(L)
+		fam = captive
+		fam.key = chosen_one.key
+		to_chat(user, span_notice("[captive] looks at you with intelligence in it's eyes."))
+		chosen_one.mind.transfer_to(fam)
+		fam.fully_replace_character_name(null, "[user]'s familiar")
+		fam.get_language_holder().omnitongue = TRUE //Grants omnitongue
+		var/valid_input_name = custom_name(user)
+		if(valid_input_name)
+			fam.fully_replace_character_name(null, "[valid_input_name]")
+		qdel(src)
+	else
+		to_chat(user, span_notice("The [captive] stares at you hatefully. The creature's intelligence was not invoked."))
+
+/obj/item/rope/chain/bindingshackles/proc/custom_name(mob/awakener, var/mob/chosen_one, iteration = 1)
+	if(iteration > 5)
+		return "indecision" // The spirit of indecision
+	var/chosen_name = sanitize_name(stripped_input(chosen_one, "What are you named?"))
+	if(!chosen_name) // with the way that sanitize_name works, it'll actually send the error message to the awakener as well.
+		to_chat(awakener, span_warning("Your weapon did not select a valid name! Please wait as they try again.")) // more verbose than what sanitize_name might pass in it's error message
+		return custom_name(awakener, iteration++)
+	return chosen_name
+/*
+/obj/item/rope/chain/bindingshackles/attack(mob/living/simple_animal/hostile/retaliate/rogue/dumb_mob, mob/user)
+	if(being_used || !isliving(dumb_mob))//Already in use
+		return
+	if(dumb_mob.ckey) //only works on animals that aren't player controlled
+		to_chat(user, span_notice("already bound!"))
+		return
+	if(dumb_mob.stat)
+		to_chat(user, span_notice( "it's dead!"))
+		return
+	if(!dumb_mob.compare_sentience_type(sentience_type)) // Will also return false if not a basic or simple mob, which are the only two we want anyway
+		to_chat(user, span_notice("invalid creature!"))
+		return
+	to_chat(user, span_notice("attempting to bind..."))
+	being_used = TRUE
+	var/mob/chosen_one = pollCandidatesForMob(
+		question = "[span_danger(user.name)] is binding [span_notice(dumb_mob.name)] with [src.name]!]",
+		check_jobban = ROLE_SENTIENCE,
+		poll_time = 20 SECONDS,
+		checked_target = dumb_mob,
+		ignore_category = POLL_IGNORE_SENTIENCE_POTION,
+		alert_pic = dumb_mob,
+		role_name_text = "planar binding",
+		chat_text_border_icon = src,
+	)
+	on_poll_concluded(user, dumb_mob, chosen_one)*/
 
 ////////////////////////////////////////Magic resources go below here////////////////////
 

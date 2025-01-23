@@ -1,0 +1,70 @@
+/datum/magic_item/mundane/woodcut
+	name = "woodcutting"
+	description = "It is made of silver, shiny and pure."
+	var/last_used
+
+/datum/magic_item/mundane/woodcut/on_hit(obj/item/source, atom/target, mob/user, proximity_flag, click_parameters)
+
+	to_chat(user, span_notice("on_hit"))
+	if(istype(target, /obj/structure/flora))
+		var/obj/structure/flora/tree = target
+		tree.obj_integrity -= 70
+	. = ..()
+
+/datum/magic_item/mundane/xylix
+	name = "Xylix's boon"
+	description = "It almost seems to give off the faint sound of laughter."
+	var/last_used
+
+/datum/magic_item/mundane/xylix/on_equip(var/item/i, var/mob/living/user, slot)
+	. = ..()
+	if(slot == ITEM_SLOT_HANDS)
+		return
+	else
+		user.STALUC += 1
+		to_chat(user, span_notice("I feel rather lucky"))
+
+/datum/magic_item/mundane/xylix/on_drop(var/item/i, var/mob/living/user)
+	. = ..()
+	user.STALUC -= 1
+	to_chat(user, span_notice("I feel mundane once more"))
+
+/datum/magic_item/mundane/unyieldinglight
+	name = "unyielding light"
+	description = "It emits a shining light."
+	var/active = FALSE
+
+/datum/magic_item/mundane/unyieldinglight/on_use(var/obj/item/i, var/mob/living/user)
+	if(!active)
+		active = TRUE
+
+		i.light_color = "#3FBAFD"
+		to_chat(user, span_notice("I grip [i] lightly, and it abruptly lights up with shining light"))
+		i.set_light(TRUE)
+		i.light_range = 6
+	. = ..()
+
+/datum/magic_item/mundane/holding
+	name = "storage"
+	description = "It seems bigger on the inside."
+
+/datum/magic_item/mundane/holding/on_apply(var/obj/item/i)
+	.=..()
+	var/obj/item/storage = i
+	var/datum/component/storage/STR = storage.GetComponent(/datum/component/storage)
+
+	STR.max_combined_w_class = STR.max_combined_w_class * 2
+	STR.max_items = STR.max_items * 2
+
+
+/datum/magic_item/mundane/revealing
+	name = "revealing"
+	description = "It's light is painfully bright."
+	var/active = FALSE
+
+/datum/magic_item/mundane/revealing/on_apply(var/obj/item/i)
+	.=..()
+	var/obj/item/flashlight/flare/light = i
+	light.light_range = light.light_range * 2
+
+

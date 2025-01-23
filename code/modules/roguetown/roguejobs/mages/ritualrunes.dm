@@ -416,7 +416,8 @@ GLOBAL_LIST(teleport_runes)
 /obj/effect/decal/cleanable/roguerune/arcyne/empowerment	//used for better quality of learning, grants temporary 2 minute INT bonus.
 	name = "Empowerment Array"
 	desc = "arcane symbols pulse upon the ground..."
-	icon_state = "6"
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "empowerment"
 	tier = 2
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32

@@ -421,6 +421,7 @@
 	var/spark_cd = 0
 	var/xp_interval = 150 // really don't want people to spam this too much for xp - they will, but the intent is for them to not
 	var/xp_cooldown = 0
+	var/gatherspeed = 35
 
 /obj/item/melee/touch_attack/prestidigitation/Initialize()
 	. = ..()
@@ -439,6 +440,9 @@
 	switch (user.used_intent.type)
 		if (INTENT_HELP) // Clean something like a bar of soap
 			fatigue_used = handle_cost(user, PRESTI_CLEAN)
+			if(istype(target,/obj/structure/well/fountain/mana) || istype(target, /turf/open/lava))
+				gather_thing(target, user)
+				return
 			if (clean_thing(target, user))
 				handle_xp(user, fatigue_used, TRUE) // cleaning ignores the xp cooldown because it awards comparatively little
 		if (INTENT_DISARM) // Snap your fingers and produce a spark
@@ -543,6 +547,22 @@
 			return TRUE
 		return FALSE
 
+
+/obj/item/melee/touch_attack/prestidigitation/proc/gather_thing(atom/target, mob/living/carbon/human/user)
+	// adjusted from /obj/item/soap in clown_items.dm, some duplication unfortunately (needed for flavor)
+
+	// let's adjust the clean speed based on our skill level
+	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
+	gatherspeed = initial(gatherspeed) - (skill_level * 3) // 3 cleanspeed per skill level, from 35 down to a maximum of 17 (pretty quick)
+	var/turf/Turf = get_turf(target)
+	if (istype(target, /obj/structure/well/fountain/mana))
+		if (do_after(user, src.gatherspeed, target = target))
+			to_chat(user, span_notice("I mold the liquid mana in \the [target.name] with my arcane power, crystalizing it!"))
+			new /obj/item/natural/manacrystal(Turf)
+	if (istype(target, /turf/open/lava))
+		if (do_after(user, src.gatherspeed, target = target))
+			to_chat(user, span_notice("I mold a handful of oozing lava  with my arcane power, rapidly hardening it!"))
+			new /obj/item/natural/obsidian(user.loc)
 // Intents for prestidigitation
 
 /obj/effect/wisp/prestidigitation
@@ -586,6 +606,7 @@
 		/obj/effect/proc_holder/spell/targeted/touch/nondetection, // 1 cost
 		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
+		/obj/effect/proc_holder/spell/invoked/meteor_storm,
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
@@ -1104,7 +1125,366 @@
 	return TRUE
 
 
+/obj/effect/proc_holder/spell/invoked/frostbite5e
+	name = "Frostbite"
+	desc = "Freeze your enemy with an icy blast that does low damage, but reduces the target's Speed for a considerable length of time."
+	overlay_state = "null"
+	releasedrain = 50
+	chargetime = 3
+	charge_max = 25 SECONDS
+	//chargetime = 10
+	//charge_max = 30 SECONDS
+	range = 7
+	warnie = "spellwarning"
+	movement_interrupt = FALSE
+	no_early_release = FALSE
+	chargedloop = null
+	sound = 'sound/magic/whiteflame.ogg'
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	cost = 1
 
+	xp_gain = TRUE
+	miracle = FALSE
+
+	invocation = ""
+	invocation_type = "shout" //can be none, whisper, emote and shout
+
+/obj/effect/proc_holder/spell/invoked/frostbite5e/cast(list/targets, mob/living/user)
+	if(isliving(targets[1]))
+		var/mob/living/carbon/target = targets[1]
+		target.apply_status_effect(/datum/status_effect/buff/frostbite5e/) //apply debuff
+		target.adjustFireLoss(12) //damage
+		target.adjustBruteLoss(12)
+
+/datum/status_effect/buff/frostbite5e
+	id = "frostbite"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite5e
+	duration = 20 SECONDS
+	effectedstats = list("speed" = -2)
+
+/atom/movable/screen/alert/status_effect/buff/frostbite5e
+	name = "Frostbite"
+	desc = "I can feel myself slowing down."
+	icon_state = "debuff"
+	color = "#00fffb" //talk about a coder sprite
+
+/datum/status_effect/buff/frostbite5e/on_apply()
+	. = ..()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	var/newcolor = rgb(136, 191, 255)
+	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 20 SECONDS)
+	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
+
+/datum/status_effect/buff/frostbite5e/on_remove()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
+	. = ..()
+
+/obj/effect/proc_holder/spell/invoked/projectile/frostbolt // to do: get scroll icon
+	name = "Frost Bolt"
+	desc = "A ray of frozen energy, slowing the first thing it touches and lightly damaging it."
+	range = 8
+	projectile_type = /obj/projectile/magic/frostbolt
+	overlay_state = "null"
+	sound = list('sound/magic/whiteflame.ogg')
+	active = FALSE
+
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 3
+	charge_max = 13 SECONDS //cooldown
+
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	antimagic_allowed = FALSE //can you use it if you are antimagicked?
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	cost = 1
+
+	xp_gain = TRUE
+	miracle = FALSE
+
+/obj/effect/proc_holder/spell/self/frostbolt/cast(mob/user = usr)
+	var/mob/living/target = user
+	target.visible_message(span_warning("[target] hurls a frosty beam!"), span_notice("You hurl a frosty beam!"))
+	. = ..()
+
+/obj/projectile/magic/frostbolt
+	name = "Frost Dart"
+	icon_state = "ice_2"
+	damage = 25
+	damage_type = BURN
+	flag = "magic"
+	range = 10
+	speed = 12 //higher is slower
+	var/aoe_range = 0
+
+/obj/projectile/magic/frostbolt/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+		if(isliving(target))
+			var/mob/living/L = target
+			L.apply_status_effect(/datum/status_effect/buff/frostbite5e)
+			new /obj/effect/temp_visual/snap_freeze(get_turf(L))
+	qdel(src)
+
+/obj/effect/proc_holder/spell/targeted/lightninglure
+	name = "Lightning Lure"
+	overlay_state = "null"
+	releasedrain = 50
+	chargetime = 1
+	charge_max = 12 SECONDS
+	range = 3
+	warnie = "spellwarning"
+	movement_interrupt = FALSE
+	no_early_release = FALSE
+	chargedloop = null
+	sound = 'sound/magic/whiteflame.ogg'
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	cost = 2 // might even deserve a cost of 3
+
+	xp_gain = TRUE
+	miracle = FALSE
+
+	invocation = ""
+	invocation_type = "shout" //can be none, whisper, emote and shout
+	include_user = FALSE
+
+	var/delay = 3 SECONDS
+	var/sprite_changes = 10
+	var/datum/beam/current_beam = null
+
+/obj/effect/proc_holder/spell/targeted/lightninglure/cast(list/targets, mob/user = usr)
+	for(var/mob/living/carbon/C in targets)
+		user.visible_message(span_warning("[C] is connected to [user] with a lightning lure!"), span_warning("You create a static link with [C]."))
+		playsound(user, 'sound/items/stunmace_gen (2).ogg', 100)
+
+		var/x
+		for(x=1; x < sprite_changes; x++)
+			current_beam = new(user,C,time=30/sprite_changes,beam_icon_state="lightning[rand(1,12)]",btype=/obj/effect/ebeam, maxdistance=10)
+			INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
+			sleep(delay/sprite_changes)
+
+		var/dist = get_dist(user, C)
+		if (dist <= range)
+			C.electrocute_act(1, user) //just shock
+			//var/atom/throw_target = get_step(user, get_dir(user, C))
+			//C.throw_at(throw_target, 100, 2) //from source material but kinda op.
+		else
+			playsound(user, 'sound/items/stunmace_toggle (3).ogg', 100)
+			user.visible_message(span_warning("The lightning lure fizzles out!"), span_warning("[C] is too far away!"))
+
+/obj/effect/proc_holder/spell/invoked/mending
+	name = "Mending"
+	overlay_state = "null"
+	releasedrain = 50
+	chargetime = 5
+	charge_max = 20 SECONDS
+	//chargetime = 10
+	//charge_max = 30 SECONDS
+	range = 6
+	warnie = "spellwarning"
+	movement_interrupt = FALSE
+	no_early_release = FALSE
+	chargedloop = null
+	sound = 'sound/magic/whiteflame.ogg'
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	cost = 1
+
+	xp_gain = TRUE
+	miracle = FALSE
+
+	invocation = ""
+	invocation_type = "shout" //can be none, whisper, emote and shout
+
+/obj/effect/proc_holder/spell/invoked/mending/cast(list/targets, mob/living/user)
+	if(istype(targets[1], /obj/item))
+		var/obj/item/I = targets[1]
+		if(I.obj_integrity < I.max_integrity)
+			var/repair_percent = 0.25
+			repair_percent *= I.max_integrity
+			I.obj_integrity = min(I.obj_integrity + repair_percent, I.max_integrity)
+			user.visible_message(span_info("[I] glows in a faint mending light."))
+			if(I.obj_broken == TRUE)
+				I.obj_broken = FALSE
+		else
+			user.visible_message(span_info("[I] appears to be in pefect condition."))
+			revert_cast()
+	else
+		to_chat(user, span_warning("There is no item here!"))
+		revert_cast()
+
+/obj/effect/proc_holder/spell/invoked/arcyne_storm
+	name = "Arcyne storm"
+	desc = "Conjure ripples of force into existance over a large area, injuring any who enter"
+	cost = 2
+	xp_gain = TRUE
+	releasedrain = 50
+	chargedrain = 1
+	chargetime = 20
+	charge_max = 50 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = TRUE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	overlay_state = "hierophant"
+	range = 4
+	var/damage = 10
+
+/obj/effect/proc_holder/spell/invoked/arcyne_storm/cast(list/targets, mob/user = usr)
+	var/turf/T = get_turf(targets[1])
+	var/list/affected_turfs = list()
+	for(var/turf/turfs_in_range in range(range, T)) // use inrange instead of view
+		if(turfs_in_range.density)
+			continue
+		affected_turfs.Add(turfs_in_range)
+	for(var/i = 1, i < 16, i++)
+		addtimer(CALLBACK(src, PROC_REF(apply_damage), affected_turfs), wait = i * 1 SECONDS)
+	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/arcyne_storm/proc/apply_damage(var/list/affected_turfs)
+	for(var/turf/damage_turf in affected_turfs)
+		new /obj/effect/temp_visual/hierophant/squares(damage_turf)
+		for(var/mob/living/L in damage_turf.contents)
+			L.adjustBruteLoss(damage)
+			playsound(damage_turf, "genslash", 40, TRUE)
+			to_chat(L, "<span class='userdanger'>I'm cut by arcyne force!</span>")
+
+/obj/effect/temp_visual/trapice
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "blueshatter"
+	light_color = "#4cadee"
+	duration = 6
+	layer = MASSIVE_OBJ_LAYER
+
+/obj/effect/temp_visual/snap_freeze
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "shieldsparkles"
+	name = "rippeling arcyne ice"
+	desc = "Get out of the way!"
+	randomdir = FALSE
+	duration = 1 SECONDS
+	layer = MASSIVE_OBJ_LAYER
+
+/obj/effect/temp_visual/hierophant
+	name = "vortex energy"
+	layer = BELOW_MOB_LAYER
+	var/mob/living/caster //who made this, anyway
+
+/obj/effect/temp_visual/hierophant/Initialize(mapload, new_caster)
+	. = ..()
+	if(new_caster)
+		caster = new_caster
+
+/obj/effect/temp_visual/hierophant/squares
+	icon_state = "hierophant_squares"
+	duration = 3
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	randomdir = FALSE
+
+/obj/effect/temp_visual/hierophant/squares/Initialize(mapload, new_caster)
+	. = ..()
+
+/obj/effect/proc_holder/spell/invoked/meteor_storm
+	name = "Meteor storm"
+	desc = "Summons forth dangerous meteors from the sky to scatter and smash foes."
+	cost = 8
+	releasedrain = 50
+	chargedrain = 1
+	chargetime = 50
+	charge_max = 50 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = TRUE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+
+/obj/effect/proc_holder/spell/invoked/meteor_storm/cast(list/targets, mob/user = usr)
+	var/turf/T = get_turf(targets[1])
+//	var/list/affected_turfs = list()
+	playsound(T,'sound/magic/meteorstorm.ogg', 80, TRUE)
+	sleep(2)
+	create_meteors(T)
+
+//meteor storm and lightstorm.
+/obj/effect/proc_holder/spell/invoked/meteor_storm/proc/create_meteors(atom/target)
+	if(!target)
+		return
+	target.visible_message(span_boldwarning("Fire rains from the sky!"))
+	var/turf/targetturf = get_turf(target)
+	for(var/turf/turf as anything in RANGE_TURFS(6,targetturf))
+		if(prob(20))
+			new /obj/effect/temp_visual/target(turf)
+
+/obj/effect/temp_visual/fireball
+	icon = 'icons/obj/projectiles.dmi'
+	icon_state = "meteor"
+	name = "meteor"
+	desc = "Get out of the way!"
+	layer = FLY_LAYER
+	plane = GAME_PLANE_UPPER
+	randomdir = FALSE
+	duration = 9
+	pixel_z = 270
+
+/obj/effect/temp_visual/fireball/Initialize(mapload)
+	. = ..()
+	animate(src, pixel_z = 0, time = duration)
+
+/obj/effect/temp_visual/target
+	icon = 'icons/mob/actions/actions_items.dmi'
+	icon_state = "sniper_zoom"
+	layer = BELOW_MOB_LAYER
+	plane = GAME_PLANE
+	light_range = 2
+	duration = 9
+	var/exp_heavy = 0
+	var/exp_light = 3
+	var/exp_flash = 0
+	var/exp_fire = 3
+	var/exp_hotspot = 0
+	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
+
+/obj/effect/temp_visual/target/Initialize(mapload, list/flame_hit)
+	. = ..()
+	INVOKE_ASYNC(src, PROC_REF(fall), flame_hit)
+
+/obj/effect/temp_visual/target/proc/fall(list/flame_hit)	//Potentially minor explosion at each impact point
+	var/turf/T = get_turf(src)
+	playsound(T,'sound/magic/meteorstorm.ogg', 80, TRUE)
+	new /obj/effect/temp_visual/fireball(T)
+	sleep(duration)
+	if(ismineralturf(T))
+		var/turf/closed/mineral/M = T
+		M.gets_drilled()
+	new /obj/effect/hotspot(T)
+	for(var/mob/living/L in T.contents)
+		if(islist(flame_hit) && !flame_hit[L])
+			L.adjustFireLoss(40)
+			L.adjust_fire_stacks(8)
+			L.IgniteMob()
+			to_chat(L, span_userdanger("You're hit by a meteor!"))
+			flame_hit[L] = TRUE
+		else
+			L.adjustFireLoss(10) //if we've already hit them, do way less damage
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, hotspot_range = exp_hotspot, soundin = explode_sound)
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK
 #undef PRESTI_MOTE

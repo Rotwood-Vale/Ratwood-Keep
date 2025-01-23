@@ -52,6 +52,12 @@
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	sellprice = 6
 
+/datum/crafting_recipe/roguetown/hunting/summonerspouch
+	name = "summoners pouch"
+	result = list(/obj/item/storage/magebag)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+	sellprice = 6
+
 /datum/crafting_recipe/roguetown/hunting/satchel
 	name = "leather satchel"
 	result = list(/obj/item/storage/backpack/rogue/satchel)

@@ -607,7 +607,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 
-/obj/item/rogueweapon/sword/sabre/elf
+/obj/item/rogueweapon/sword/sabre/elf/Initialize()
 	.=..()
 	var/datum/magic_item/mundane/silver/effect = new
 	AddComponent(/datum/component/magic_item, effect)

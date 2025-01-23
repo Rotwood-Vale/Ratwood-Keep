@@ -242,7 +242,7 @@
 	smeltresult = /obj/item/ingot/silver
 	var/last_used = 0
 
-/obj/item/rogueweapon/huntingknife/idagger/silver/Initizalice()
+/obj/item/rogueweapon/huntingknife/idagger/silver/Initialize()
 	. = ..()
 	var/datum/magic_item/mundane/silver/effect = new
 	AddComponent(/datum/component/magic_item, effect)
