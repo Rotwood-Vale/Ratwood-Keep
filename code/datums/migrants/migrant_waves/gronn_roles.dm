@@ -38,10 +38,10 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
-		H.change_stat("strength", 3)
-		H.change_stat("constitution", 3)
-		H.change_stat("endurance", 3)
-		H.change_stat("intelligence", -1)
+		H.change_stat(STAT_STRENGTH, 3)
+		H.change_stat(STAT_CONSTITUTION, 3)
+		H.change_stat(STAT_ENDURANCE, 3)
+		H.change_stat(STAT_INTELLIGENCE, -1)
 
 	H.cmode_music = 'sound/music/combat_gronn.ogg'
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
@@ -89,10 +89,10 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-		H.change_stat("intelligence", 2)
-		H.change_stat("endurance", 2)
-		H.change_stat("strength", 1)
-		H.change_stat("constitution", 1)
+		H.change_stat(STAT_INTELLIGENCE, 2)
+		H.change_stat(STAT_ENDURANCE, 2)
+		H.change_stat(STAT_STRENGTH, 1)
+		H.change_stat(STAT_CONSTITUTION, 1)
 
 	H.cmode_music = 'sound/music/combat_gronn.ogg'
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
@@ -149,10 +149,10 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
-		H.change_stat("strength", 3)
-		H.change_stat("constitution", 3)
-		H.change_stat("endurance", 2)
-		H.change_stat("intelligence", -2)
+		H.change_stat(STAT_STRENGTH, 3)
+		H.change_stat(STAT_CONSTITUTION, 3)
+		H.change_stat(STAT_ENDURANCE, 2)
+		H.change_stat(STAT_INTELLIGENCE, -2)
 
 	H.cmode_music = 'sound/music/combat_gronn.ogg'
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
@@ -203,10 +203,10 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
-		H.change_stat("endurance", 3)
-		H.change_stat("strength", 2)
-		H.change_stat("constitution", 2)
-		H.change_stat("intelligence", -1)
+		H.change_stat(STAT_ENDURANCE, 3)
+		H.change_stat(STAT_STRENGTH, 2)
+		H.change_stat(STAT_CONSTITUTION, 2)
+		H.change_stat(STAT_INTELLIGENCE, -1)
 
 	H.cmode_music = 'sound/music/combat_gronn.ogg'
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
@@ -250,11 +250,11 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
-		H.change_stat("intelligence", 3)
-		H.change_stat("speed", 1)
-		H.change_stat("strength", -3)
-		H.change_stat("constitution", -2)
-		H.change_stat("fortune", -1)
+		H.change_stat(STAT_INTELLIGENCE, 3)
+		H.change_stat(STAT_SPEED, 1)
+		H.change_stat(STAT_STRENGTH, -3)
+		H.change_stat(STAT_CONSTITUTION, -2)
+		H.change_stat(STAT_FORTUNE, -1)
 
 	H.cmode_music = 'sound/music/combat_gronn.ogg'
 
