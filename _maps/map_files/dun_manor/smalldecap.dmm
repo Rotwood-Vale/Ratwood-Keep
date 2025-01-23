@@ -3391,6 +3391,15 @@
 "RQ" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/outdoors/mountains/decap/stepbelow)
+"RT" = (
+/obj/item/mortar{
+	pixel_x = 9;
+	pixel_y = 4
+	},
+/turf/open/floor/rogue/concrete{
+	dir = 8
+	},
+/area/rogue/outdoors/mountains/decap/stepbelow)
 "Sa" = (
 /obj/structure/mineral_door/wood{
 	locked = 1
@@ -10671,7 +10680,7 @@ pX
 pX
 pX
 JI
-IQ
+RT
 Jg
 Jg
 IQ

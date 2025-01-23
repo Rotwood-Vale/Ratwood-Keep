@@ -2150,6 +2150,7 @@
 /area/rogue/indoors/town)
 "bJb" = (
 /obj/structure/table/wood/fancy/black,
+/obj/item/mortar,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/physician)
 "bJK" = (
