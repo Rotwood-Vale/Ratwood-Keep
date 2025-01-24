@@ -200,6 +200,9 @@
 	hair_color = VD.cache_hair
 	eye_color = VD.cache_eyes
 	facial_hair_color = VD.cache_hair
+	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.eye_color = eye_color
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
@@ -209,13 +212,13 @@
 	if(!VD)
 		return
 	VD.disguised = FALSE
-//	VD.cache_skin = skin_tone
-//	VD.cache_eyes = eye_color
-//	VD.cache_hair = hair_color
 	skin_tone = "c9d3de"
 	hair_color = "181a1d"
 	facial_hair_color = "181a1d"
 	eye_color = "ff0000"
+	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.eye_color = eye_color
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
