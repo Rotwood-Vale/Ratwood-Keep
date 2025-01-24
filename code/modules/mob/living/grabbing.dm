@@ -270,6 +270,8 @@
 		var/mob/living/carbon/human/H = C
 		if((istype(H.dna?.species, /datum/species/tabaxi) || istype(H.dna?.species, /datum/species/lupian)) && sublimb_grabbed == BODY_ZONE_PRECISE_NECK)
 			if(get_location_accessible(H, BODY_ZONE_PRECISE_NECK) && H.age == AGE_ADULT) // Is the neck accessible? Also, only applies to adults
+				// Making it so it only works from behind, like chokeholds
+				if(user && (H.dir == turn(get_dir(H, user), 180)))
 				H.Paralyze(20) // 2 seconds of paralysis
 				to_chat(H, span_userdanger("You go limp as your scruff is twisted!"))
 				to_chat(user, span_warning("You twist [H]'s scruff, causing them to go limp!"))
