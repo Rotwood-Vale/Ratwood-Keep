@@ -3,7 +3,7 @@
 	group = "Armor"
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
-//steel prices are 35 per and cheap armour is 15 per, iron bars are also 20 per
+//steel prices are 25-20 per and cheap armour is 10 per, iron bars are also 15 per
 /datum/supply_pack/rogue/armor/helmet
 	name = "Steel Helmet"
 	cost = 45//2 steel
@@ -64,8 +64,8 @@
 	name = "Steel Boots"
 	cost = 45//2 steel
 	contains = list(
-					/obj/item/clothing/shoes/roguetown/armor,
-					/obj/item/clothing/shoes/roguetown/armor,
+					/obj/item/clothing/shoes/roguetown/armor/steel,
+					/obj/item/clothing/shoes/roguetown/armor/steel,
 				)
 
 /datum/supply_pack/rogue/armor/gambeson
