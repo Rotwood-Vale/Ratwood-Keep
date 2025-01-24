@@ -12084,9 +12084,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church/chapel)
-"gvG" = (
-/turf/open/dark_filler,
-/area/rogue/under/town/basement)
 "gvQ" = (
 /obj/structure/flora/newleaf/corner{
 	dir = 5
@@ -112602,7 +112599,7 @@ jyI
 cTA
 cTA
 cTA
-gvG
+cTA
 cTA
 mtD
 cTA
