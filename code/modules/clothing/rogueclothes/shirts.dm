@@ -273,7 +273,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	boobed = TRUE
-	flags_inv = HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	allowed_sex = list(MALE, FEMALE)

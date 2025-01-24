@@ -1049,6 +1049,15 @@
 "gG" = (
 /turf/open/water/ocean,
 /area/rogue/outdoors/beach)
+"gI" = (
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/structure/rack/rogue/shelf/biggest,
+/obj/item/mortar,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/cave)
 "gM" = (
 /obj/structure/table/vtable/v2,
 /obj/item/clothing/neck/roguetown/psicross/noc,
@@ -1429,6 +1438,10 @@
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter)
+"kK" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/beach/forest)
 "kL" = (
 /obj/structure/rack/rogue/shelf/big{
 	icon_state = "shelf_biggest";
@@ -2427,6 +2440,10 @@
 	icon_state = "chess"
 	},
 /area/rogue/under/cave/dukecourt)
+"sF" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grass,
+/area/rogue/under/cave/mazedungeon)
 "sG" = (
 /obj/structure/fermenting_barrel/water,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -3630,6 +3647,10 @@
 /obj/structure/mineral_door/bars,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter)
+"CU" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/beach/forest)
 "CV" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/rogueweapon/huntingknife/cleaver,
@@ -4481,6 +4502,11 @@
 /obj/machinery/anvil/crafted,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter)
+"JN" = (
+/obj/structure/flora/roguegrass,
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grass,
+/area/rogue/under/cave/mazedungeon)
 "JO" = (
 /obj/structure/rack/rogue,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
@@ -5104,6 +5130,10 @@
 /obj/structure/mineral_door/wood/window,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter)
+"OG" = (
+/obj/structure/flora/roguegrass/herb/salvia,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/beach/forest)
 "OH" = (
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/under/cave/mazedungeon)
@@ -5882,6 +5912,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/under/cave/dukecourt)
+"Vp" = (
+/obj/machinery/light/rogue/cauldron,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors/cave)
 "Vq" = (
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/beach)
@@ -6124,10 +6158,6 @@
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot{
 	pixel_x = -18;
 	pixel_y = 8
-	},
-/obj/item/reagent_containers/powder/health{
-	pixel_x = 5;
-	pixel_y = 14
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/under/cave/dukecourt)
@@ -10562,7 +10592,7 @@ em
 qp
 Gu
 DP
-eL
+sF
 eL
 DP
 ne
@@ -10824,7 +10854,7 @@ qp
 ip
 qp
 DP
-eL
+sF
 qp
 qp
 vn
@@ -11083,7 +11113,7 @@ qp
 qp
 qp
 qp
-DP
+JN
 DP
 qp
 vn
@@ -11214,7 +11244,7 @@ OH
 OH
 WO
 eL
-eL
+sF
 qp
 vn
 qp
@@ -11474,7 +11504,7 @@ HZ
 HZ
 qp
 eL
-DP
+JN
 qp
 VI
 VI
@@ -29199,7 +29229,7 @@ tO
 sA
 sT
 sT
-sT
+Vp
 RL
 Yv
 Yv
@@ -29328,7 +29358,7 @@ tO
 XN
 sT
 sT
-sT
+gI
 RL
 RL
 RL
@@ -41361,7 +41391,7 @@ pz
 pz
 pz
 pz
-pz
+kK
 pz
 pz
 pz
@@ -41471,7 +41501,7 @@ pz
 pz
 pz
 pz
-pz
+kK
 RL
 RL
 RL
@@ -41620,7 +41650,7 @@ XK
 XK
 pa
 pa
-pa
+CU
 pa
 pa
 pa
@@ -42025,7 +42055,7 @@ pz
 pz
 pz
 pz
-pz
+kK
 pz
 pz
 XK
@@ -42277,7 +42307,7 @@ pz
 pz
 pz
 pz
-pa
+CU
 pa
 pa
 pa
@@ -43015,7 +43045,7 @@ vF
 pz
 pz
 pz
-pz
+kK
 pz
 pz
 vF
@@ -43288,7 +43318,7 @@ pz
 pz
 pz
 pz
-pz
+kK
 UR
 UR
 UR
@@ -44244,7 +44274,7 @@ pz
 pz
 pz
 pz
-pz
+kK
 pz
 pz
 pz
@@ -45842,7 +45872,7 @@ pz
 pz
 Ez
 bW
-pa
+CU
 XK
 XK
 XK
@@ -45912,7 +45942,7 @@ UR
 UR
 pz
 pz
-pz
+kK
 pz
 pz
 vF
@@ -46452,7 +46482,7 @@ pz
 pz
 pz
 pz
-pa
+CU
 pa
 Fb
 pz
@@ -47280,7 +47310,7 @@ pa
 pa
 pa
 pa
-pa
+CU
 pz
 XK
 XK
@@ -47486,7 +47516,7 @@ pz
 pz
 pz
 pz
-pa
+CU
 pa
 pa
 mK
@@ -48078,7 +48108,7 @@ pz
 pz
 pa
 pa
-pa
+CU
 Jg
 sf
 Jg
@@ -48770,7 +48800,7 @@ pz
 pz
 pa
 pa
-pa
+CU
 pz
 pz
 pz
@@ -48864,7 +48894,7 @@ pa
 pa
 pa
 pa
-pa
+CU
 pa
 pa
 pa
@@ -49265,23 +49295,23 @@ pa
 pa
 pz
 pa
-pz
-pz
-pa
-pa
-pa
-pa
-pa
-pz
-pz
-pa
-pa
+kK
 pz
 pa
 pa
 pa
+pa
+pa
+pz
 pz
 pa
+pa
+pz
+pa
+pa
+pa
+pz
+CU
 pa
 pz
 pa
@@ -49381,7 +49411,7 @@ pa
 pz
 pz
 pa
-pa
+CU
 pz
 pa
 pa
@@ -49411,7 +49441,7 @@ pz
 pz
 pz
 pa
-pa
+CU
 pz
 pa
 mK
@@ -49494,7 +49524,7 @@ pz
 pz
 pa
 pa
-pa
+CU
 pa
 pz
 pa
@@ -49601,7 +49631,7 @@ tw
 tw
 tw
 tw
-pz
+kK
 pz
 pz
 pz
@@ -49662,7 +49692,7 @@ pa
 pa
 pa
 pa
-pa
+CU
 pa
 pz
 pa
@@ -50190,7 +50220,7 @@ pz
 pz
 pz
 pz
-pa
+CU
 pa
 mK
 lI
@@ -51041,7 +51071,7 @@ pz
 pa
 pa
 pa
-pa
+CU
 pa
 pa
 pz
@@ -51826,7 +51856,7 @@ pz
 pz
 pa
 pa
-pa
+CU
 pz
 pz
 pz
@@ -56775,7 +56805,7 @@ pz
 pz
 pz
 pz
-pz
+kK
 pz
 pz
 pz
@@ -57312,14 +57342,14 @@ pz
 pz
 pz
 pz
+kK
 pz
 pz
 pz
 pz
 pz
 pz
-pz
-pz
+kK
 pz
 pz
 pz
@@ -57407,7 +57437,7 @@ pz
 mz
 Mb
 pz
-pz
+kK
 pz
 mz
 mz
@@ -57972,7 +58002,7 @@ pz
 pz
 pz
 pz
-pz
+kK
 pz
 pz
 pz
@@ -58353,7 +58383,7 @@ BA
 pz
 pz
 pz
-pz
+kK
 pz
 pz
 pz
@@ -59339,7 +59369,7 @@ pZ
 pZ
 pZ
 pz
-pz
+OG
 pz
 uR
 hg
