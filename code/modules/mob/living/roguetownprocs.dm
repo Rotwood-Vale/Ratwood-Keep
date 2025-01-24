@@ -24,21 +24,6 @@
 		else
 			chance2hit += (user.mind.get_skill_level(associated_skill) * 15) // Adjusted the numbers. Base C2H is your skill level x 15. So, it's higher/more impactful the higher your skill.
 
-	if(!user.mind)
-		var/chance = 50
-		if(prob(chance))
-			return zone
-		else
-			if(prob(chance))
-				var/secondary_zone = check_zone(zone)
-				return secondary_zone
-			else
-				if(prob(chance))
-					return BODY_ZONE_CHEST
-				else
-					if(prob(chance))
-						return triple_accuracy_failure_npc(user, target)
-
 	var/mob/T = target
 	if(T && !T.cmode)
 		chance2hit += 200 // Changed to fit with the theme of "minor dodges", if someone isn't in combat mode you always have a 100% chance to hit any zone.
@@ -115,6 +100,23 @@
 	// Important Var, it's the special snowflake that contains the cumulative penalty you'll see below.
 	var/cumulative_penalty = 0
 
+	if(!user.mind)
+		var/npcchance = 60
+		if(prob(npcchance + cumulative_penalty))
+			return zone
+		else
+			cumulative_penalty += (acc_zone_penalties[zone] || 0)
+			if(prob(npcchance + cumulative_penalty))
+				var/secondary_zone = check_zone(zone)
+				return secondary_zone
+			else
+				var/secondary_zone = check_zone(zone)
+				cumulative_penalty += (acc_zone_penalties[secondary_zone] || 0)
+				if(prob(npcchance + cumulative_penalty))
+					return BODY_ZONE_CHEST
+				else
+					return triple_accuracy_failure_npc(user, target)
+
 	// First roll, we roll to hit and take a penalty from the limb we're trying to target. The penalty is intended to be offset by the character's skills, perception.
 	// You'll likely need Aimed Intent if you wanna hit those small spots like the eyes!
 	if(prob(chance2hit + cumulative_penalty))
@@ -140,7 +142,8 @@
 		if(prob(chance2hit + cumulative_penalty + (skilled_recovery * 5)))
 			return accuracy_failure(zone, user, target, src, chance2hit)
 		else
-			cumulative_penalty += (acc_zone_penalties[zone] || 0)
+			var/secondary_zone = check_zone(zone)
+			cumulative_penalty += (acc_zone_penalties[secondary_zone] || 0)
 			if(prob(chance2hit + cumulative_penalty + (skilled_recovery * 10)))
 				return double_accuracy_failure(user, target, src, chance2hit)
 			else
