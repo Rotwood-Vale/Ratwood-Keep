@@ -7,7 +7,7 @@
 	extra_range = 5
 	var/stress2give = /datum/stressevent/music
 	persistent_loop = TRUE
-	channel = CHANNEL_MUSIC
+	channel = CHANNEL_CMUSIC
 
 /datum/looping_sound/dmusloop/on_hear_sound(mob/M)
 	. = ..()

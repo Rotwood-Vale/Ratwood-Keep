@@ -66,25 +66,22 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE) //Keeping it up with Confessor
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE) //Keeping it up with Confessor
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) //Keeping it up with Confessor
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE) //Keeping it up with Confessor
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 5, TRUE) ///Ortho Confessor gets master in every stealth skill. Insane. 
-		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE) //To track down heretics to their evil lairs... 
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE) //Always thought it was crazy they got listening devices but NO means to effectively sneak them into places.
-		if(H.age == AGE_MIDDLEAGED)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-			H.change_stat("strength", 2) //to offset the age
-		H.change_stat("strength", 1) ///They deserve the whips too actually
-		H.change_stat("endurance", 2) ///Who the fuck gave Confessor 3 Endurance lmao
+		H.change_stat("strength", 1)
+		H.change_stat("endurance", 2)
 		H.change_stat("perception", 3)
-		H.change_stat("speed", 2) //NVM I don't want to get lynched by devs for this 
+		H.change_stat("speed", 2)
 		H.change_stat("intelligence", 3)
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
@@ -133,16 +130,12 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-		if(H.age == AGE_MIDDLEAGED)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-			H.change_stat("strength", 2) //to offset the age
-		H.change_stat("strength", 2)	///Templar stats but with perception and intelligence.
+		H.change_stat("strength", 2)
 		H.change_stat("endurance", 2) 
-		H.change_stat("constitution", 2) ///Theo said stats too good
+		H.change_stat("constitution", 2)
 		H.change_stat("speed", -1)
 
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
@@ -166,7 +159,6 @@
 		color = CLOTHING_GREY
 
 
-///So people don't get angry I removed the old Inquisitor
 
 /datum/advclass/puritan/gangster
 	name = "The SOUL of Psydon"

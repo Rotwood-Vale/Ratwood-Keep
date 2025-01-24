@@ -264,10 +264,7 @@
 
 /obj/item/roguemachine/mastermail/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_HUGE
-	STR.max_items = 999
+	AddComponent(/datum/component/storage/concrete/roguetown/mailmaster)
 
 /obj/item/roguemachine/mastermail/attack_hand(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)

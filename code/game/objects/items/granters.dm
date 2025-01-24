@@ -44,35 +44,38 @@
 		recoil(user)
 		return FALSE
 	if(reading)
-		to_chat(user, span_warning("You're already reading this!"))
+		to_chat(user, span_warning("I'm already reading this!"))
 		return FALSE
 	if(!user.can_read(src))
 		return FALSE
 	if(already_known(user))
 		return FALSE
-	if(!user.can_read(src))
-		return FALSE
 /*	AZURE PEAK REMOVAL -- UNUSED ANYWAY
 	if(user.STAINT < 12)
 			to_chat(user, span_warning("You can't make sense of the sprawling runes!"))
 			return FALSE */
-	if(used)
-		if(oneuse)
-			recoil(user)
+	if(used && oneuse)
+		to_chat(user, span_warning("This fount of knowledge was not meant to be sipped from twice!"))
+		recoil(user)
 		return FALSE
 	on_reading_start(user)
 	reading = TRUE
 	for(var/i=1, i<=pages_to_mastery, i++)
 		if(!turn_page(user))
-			on_reading_stopped()
 			reading = FALSE
-			return
-	if(do_after(user,50, user))
-		on_reading_finished(user)
+			on_reading_stopped()
+			return FALSE
+	if(do_after(user, 50, user))
 		reading = FALSE
-	return TRUE
+		on_reading_finished(user)
+		return TRUE
+	reading = FALSE //failsafe
+	return FALSE
 
 /obj/item/book/granter/spell
+	grid_width = 64
+	grid_height = 32
+
 	var/spell
 	var/spellname = "conjure bugs"
 

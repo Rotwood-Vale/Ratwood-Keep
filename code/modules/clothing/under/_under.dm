@@ -22,6 +22,9 @@
 	var/freshly_laundered = FALSE
 	bloody_icon_state = "bodyblood"
 
+	grid_width = 64
+	grid_height = 64
+
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
 	. = list()
 	if(!isinhands)

@@ -90,6 +90,10 @@ GLOBAL_LIST_INIT(freqtospan, list(
 					arrowpart = " ⇙"
 				if(SOUTHEAST)
 					arrowpart = " ⇘"
+			if(speakturf.z > sourceturf.z)
+				arrowpart += " ⇈"
+			if(speakturf.z < sourceturf.z)
+				arrowpart += " ⇊"
 			if(istype(speaker, /mob/living))
 				var/mob/living/L = speaker
 				namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
@@ -184,6 +188,8 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return output
 
 /proc/say_test(text)
+	if(copytext(text, length(text) - 1) == "!!")
+		return "3"
 	var/ending = copytext(text, length(text))
 	if (ending == "?")
 		return "1"

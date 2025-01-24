@@ -100,7 +100,16 @@
 		"Walnut-Stine" = SKIN_COLOR_WALNUT_STINE,
 		"Etrustcan-Dandelion" = SKIN_COLOR_ETRUSTCAN_DANDELION,
 		"Naledi-Born" = SKIN_COLOR_NALEDI_BORN,
-		"Kaze-Lotus" = SKIN_COLOR_KAZE_LOTUS
+		"Kaze-Lotus" = SKIN_COLOR_KAZE_LOTUS,
+		"Grenzel-Azuria" = SKIN_COLOR_GRENZEL_WOODS,
+		"Etrusca-Lirvas" = SKIN_COLOR_ETRUSCA_LIRVAS,
+		"Free Roamers" = SKIN_COLOR_FREE_FOLK,
+		"Avar Borne"	= SKIN_COLOR_AVAR_BORNE,
+		"Shalvine Roamer" = SKIN_COLOR_SHALVINE_AZURE,
+		"Lalve-Steppes" = SKIN_COLOR_LALVE_NALEDI,
+		"Naledi-Otava" = SKIN_COLOR_NALEDI_OTAVA,
+		"Grezel-Avar" = SKIN_COLOR_GRENZEL_AVAR,
+		"Hammer-Gronn" = SKIN_COLOR_HAMMER_GRONN
 	)
 
 /datum/species/human/halfelf/proc/languages(mob/living/carbon/human/literally_him)

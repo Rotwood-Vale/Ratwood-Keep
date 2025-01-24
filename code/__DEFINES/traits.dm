@@ -189,7 +189,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_OUTLANDER = span_info("I am a foreigner, a visitor in these lands. The locals here may look down upon me - I should tread carefully."),
 	TRAIT_OUTDOORSMAN = span_info("My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds."),
  	TRAIT_BIGGUY = span_info("My immense frame and size allows me to smash through wooden doors, and into people with more effectiveness."),
-	TRAIT_STUDENT =  span_info("I am overwhelmed by all this knowledge!")
+	TRAIT_STUDENT =  span_info("I am overwhelmed by all this knowledge!"),
+	TRAIT_LEGENDARY_ALCHEMIST = span_info("An expert in the art of finding herbs in the wild."),
 ))
 
 // trait accessor defines
@@ -354,6 +355,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ROTMAN "rotman" //you are a rotman and need occasional maintenance
 #define TRAIT_ZOMBIE_IMMUNE "zombie_immune" //immune to zombie infection
 #define TRAIT_NO_BITE "no_bite" //prevents biting
+#define TRAIT_LEGENDARY_ALCHEMIST		"Expert Herb Finder"
 
 //bodypart traits
 #define TRAIT_PARALYSIS	"paralysis" //Used for limb-based paralysis and full body paralysis
