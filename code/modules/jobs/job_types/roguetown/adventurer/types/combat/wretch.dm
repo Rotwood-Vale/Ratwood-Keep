@@ -97,6 +97,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
@@ -107,11 +108,11 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 5, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 5, TRUE)
-			H.cmode_music = 'sound/music/combat_rogue.ogg'
+			cmode_music = 'sound/music/combat_vaquero.ogg'
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_OUTLAW, TRAIT_GENERIC)
-			var/weapons = list("Rapier","Dagger")
+			var/weapons = list("Rapier","Dagger", "Whip")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			H.set_blindness(0)
 			switch(weapon_choice)
@@ -121,6 +122,9 @@
 				if("Dagger")
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 					beltr = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
+				if ("Whip")
+					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+					beltr = /obj/item/rogueweapon/whip
 			H.change_stat("strength", -1)
 			H.change_stat("constitution", 1)
 			H.change_stat("endurance", 2)
