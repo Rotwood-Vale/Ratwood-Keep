@@ -40,18 +40,13 @@
 		beltl = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		if(isdwarf(H))
-			armor = /obj/item/clothing/suit/roguetown/shirt/dress
-		else
-			if(prob(66))
-				armor = /obj/item/clothing/suit/roguetown/armor/armordress/alt
-			else
-				armor = /obj/item/clothing/suit/roguetown/armor/armordress
-		head = /obj/item/clothing/head/roguetown/hennin
+		head = /obj/item/clothing/head/roguetown/nyle/consortcrown
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/random	//Added Silk Stockings for the female nobles
 		id = /obj/item/clothing/ring/silver
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	else
+		head = /obj/item/clothing/head/roguetown/nyle/consortcrown
 		pants = /obj/item/clothing/under/roguetown/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy

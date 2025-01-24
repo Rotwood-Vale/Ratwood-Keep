@@ -20,11 +20,11 @@
 /datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
+		shirt = /obj/item/clothing/suit/roguetown/shirt/robe/archivist
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/black
 		head  = /obj/item/clothing/head/roguetown/roguehood/black
 	else
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+		shirt = /obj/item/clothing/suit/roguetown/shirt/robe/archivist
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		head = /obj/item/clothing/head/roguetown/nightman
@@ -39,6 +39,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 6, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
