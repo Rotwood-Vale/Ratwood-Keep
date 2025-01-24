@@ -1,4 +1,3 @@
-
 /datum/job/roguetown/priest
 	title = "Priest"
 	flag = PRIEST
