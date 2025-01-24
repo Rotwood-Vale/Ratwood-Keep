@@ -1316,7 +1316,6 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	brewing_started = FALSE // Reset brewing status after brewing completes
 
 /obj/item/reagent_containers/glass/alembic/attackby(obj/item/I, mob/user, params)
-	//This is a touch jank of a snowflake proc. I'll prolly redo it when I refactor alchemy later, but it's a solid stopgap for now ~Neri
 	if(istype(I, /obj/item))
 		if(user.mind.get_skill_level(/datum/skill/misc/treatment) <= 2)
 			to_chat(user, span_warning("I don't know how this works."))
