@@ -227,7 +227,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 /client/New(TopicData)
 	var/tdata = TopicData //save this for later use
-//	chatOutput = new /datum/chatOutput(src)
+	chatOutput = new /datum/chatOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
@@ -279,6 +279,10 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	fps = prefs.clientfps
+
+	if(prefs.prefer_old_chat == FALSE)
+		spawn() // Goonchat does some non-instant checks in start()
+			chatOutput.start()
 
 	if(fexists(roundend_report_file()))
 		verbs += /client/proc/show_previous_roundend_report
@@ -350,8 +354,6 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
-
-//	chatOutput.start() // Starts the chat
 
 	if(alert_mob_dupe_login)
 		spawn()
@@ -550,6 +552,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey
 	GLOB.clients -= src
+	QDEL_NULL(chatOutput)
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 	if(movingmob != null)
 		movingmob.client_mobs_in_contents -= mob
