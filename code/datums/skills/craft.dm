@@ -87,3 +87,17 @@
 		"...your knife scrapes away at skin, flesh and fat, cleaning up the piece of hide so that it may be made into a wonderful cloak for the lord...",
 		"...the hunter, their voice as rough as bark and their skin weathered like grain lets out a hearty laugh as he shows you his stitching..."
 	)
+	
+/datum/skill/craft/alchemy
+	name = "Alchemy"
+	dreams = list(
+		"...the smell of sulfur singes your nostrils... you taste iron... the smoke clears as you stare down at the reflection in your cauldron... the Queen stares back at you... she looks like she's crying..."
+	)
+
+/datum/skill/craft/alchemy/skill_level_effect(level, datum/mind/mind)
+	if(level > SKILL_LEVEL_MASTER)
+		ADD_TRAIT(mind?.current, TRAIT_LEGENDARY_ALCHEMIST, type)
+		//SEND_GLOBAL_SIGNAL(COMSIG_ATOM_ADD_TRAIT, (mind?.current, TRAIT_LEGENDARY_ALCHEMIST)
+	else if(HAS_TRAIT(mind?.current, TRAIT_LEGENDARY_ALCHEMIST))
+		REMOVE_TRAIT(mind?.current, TRAIT_LEGENDARY_ALCHEMIST, type)
+		//SEND_GLOBAL_SIGNAL(COMSIG_ATOM_ADD_TRAIT, (mind?.current, TRAIT_LEGENDARY_ALCHEMIST)
