@@ -6,7 +6,7 @@
 	item_chair = null
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
-	sleepy = 0.5
+	sleepy = 1
 //	pixel_y = 10
 	layer = OBJ_LAYER
 
@@ -137,7 +137,7 @@
 	max_integrity = 100
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
-	sleepy = 0.35
+	sleepy = 1
 	metalizer_result = /obj/item/roguestatue/iron/deformed
 
 /obj/item/chair/rogue/getonmobprop(tag)
@@ -279,7 +279,7 @@
 
 /obj/structure/bed/rogue/shit
 	icon_state = "shitbed"
-	sleepy = 1
+	sleepy = 1.5
 	metalizer_result = null
 
 /obj/structure/bed/rogue/sleepingbag
@@ -288,7 +288,7 @@
 	icon_state = "sleepingcloth"
 	attacked_sound = 'sound/foley/cloth_rip.ogg'
 	break_sound = 'sound/foley/cloth_rip.ogg'
-	sleepy = 0.5
+	sleepy = 1.5
 	metalizer_result = null
 
 /obj/structure/bed/rogue/sleepingbag/attack_hand(mob/user, params)
@@ -298,7 +298,7 @@
 		var/obj/item/sleepingbag/new_sleepingbag = new /obj/item/sleepingbag(get_turf(src))
 		new_sleepingbag.color = src.color
 		qdel(src)
-		
+
 /obj/item/sleepingbag
 	name = "roll of sleepcloth"
 	icon = 'icons/roguetown/misc/structure.dmi'

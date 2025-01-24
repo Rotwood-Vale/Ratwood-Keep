@@ -12,9 +12,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
-	grid_height = 64
-	grid_width = 64
-
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()
 	user.update_fov_angles()
@@ -1276,7 +1273,19 @@
 	item_state = "inqhat"
 	sewrepair = TRUE
 
-
+//Gronn
+/obj/item/clothing/head/roguetown/helmet/nomadhelmet
+	name = "nomad helmet"
+	desc = "An iron helmet with leather to help protect the neck."
+	icon_state = "nomadhelmet"
+	item_state = "nomadhelmet"
+	flags_inv = HIDEHAIR
+	body_parts_covered = HEAD|HAIR|EARS|NOSE|NECK
+	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	max_integrity = 250
+	anvilrepair = TRUE
+	smeltresult = /obj/item/ingot/iron
 
 //----------------- BLACKSTEEL ---------------------
 
