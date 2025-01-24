@@ -670,7 +670,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/tempmax = 8000
 	if(istype(C))
 		for(var/datum/mind/V in C.vampires)
-			if(V.special_role == "vampirespawn")
+			if(V.special_role == "Vampire Spawn")
 				tempmax += 4000
 		if(maximum != tempmax)
 			maximum = tempmax
