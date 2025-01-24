@@ -142,6 +142,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
+"abe" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "abu" = (
 /obj/structure/fluff/walldeco/rpainting{
 	pixel_x = -32
@@ -780,7 +784,6 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/item/reagent_containers/powder/health,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/shelter/mountains)
 "aBy" = (
@@ -1110,6 +1113,9 @@
 /obj/item/reagent_containers/glass/bottle/rogue/manapot,
 /obj/item/reagent_containers/glass/bottle/rogue/manapot,
 /obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
@@ -2218,8 +2224,14 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "bJb" = (
-/obj/structure/table/wood{
-	icon_state = "longtable"
+/obj/structure/table/wood/fancy/blue,
+/obj/item/mortar{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/obj/item/pestle{
+	pixel_x = -8;
+	pixel_y = 5
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/physician)
@@ -4627,8 +4639,18 @@
 /area/rogue/indoors/town)
 "dPY" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueweapon/huntingknife/chefknife,
-/obj/item/rogueweapon/huntingknife/chefknife,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/physician)
 "dQu" = (
@@ -5029,6 +5051,10 @@
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"egV" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grassred,
+/area/rogue/indoors/shelter/woods)
 "ehi" = (
 /obj/structure/bed/rogue/inn/wool,
 /obj/item/bedsheet/rogue/pelt,
@@ -5287,6 +5313,10 @@
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
+"esL" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/exposed/town/keep)
 "eto" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
@@ -7566,10 +7596,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "gxZ" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable"
-	},
+/obj/machinery/light/rogue/cauldron,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/physician)
 "gyc" = (
@@ -11085,6 +11112,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
+"jCL" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/rtfield)
 "jCV" = (
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/cobble,
@@ -12621,46 +12652,55 @@
 /area/rogue/under/cave)
 "kNu" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue{
-	layer = 7;
-	pixel_x = 8;
-	pixel_y = 20
-	},
-/obj/item/reagent_containers/glass/bottle/rogue{
-	layer = 6;
-	pixel_y = 20
-	},
-/obj/item/reagent_containers/glass/bottle/rogue{
-	layer = 5;
-	pixel_x = -8;
-	pixel_y = 20
-	},
-/obj/item/reagent_containers/glass/bottle/rogue{
-	layer = 5;
-	pixel_x = -8
-	},
-/obj/item/reagent_containers/glass/bottle/rogue{
-	layer = 6
-	},
-/obj/item/reagent_containers/glass/bottle/rogue{
-	layer = 7;
-	pixel_x = 8
-	},
-/obj/item/reagent_containers/glass/bottle/rogue{
-	layer = 6;
-	pixel_y = 10
-	},
-/obj/item/reagent_containers/glass/bottle/rogue{
-	layer = 5;
-	pixel_x = -8;
-	pixel_y = 10
-	},
-/obj/item/reagent_containers/glass/bottle/rogue{
-	layer = 7;
-	pixel_x = 8;
-	pixel_y = 10
-	},
 /obj/machinery/light/rogue/wallfire/candle/r,
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = 2;
+	pixel_y = -7
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = 8;
+	pixel_y = -7
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = 8;
+	pixel_y = -1
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = -4;
+	pixel_y = -7
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = -10;
+	pixel_y = -7
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = -10;
+	pixel_y = -1
+	},
+/obj/item/reagent_containers/glass/alchemical{
+	pixel_x = -10;
+	pixel_y = 6
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/physician)
 "kNz" = (
@@ -13827,6 +13867,10 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
+"lFO" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "lGq" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -17484,6 +17528,8 @@
 /obj/item/reagent_containers/glass/mortar,
 /obj/item/pestle,
 /obj/item/pestle,
+/obj/item/rogueweapon/huntingknife/chefknife,
+/obj/item/rogueweapon/huntingknife/chefknife,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/physician)
 "oMT" = (
@@ -23330,6 +23376,10 @@
 	},
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
+"tNZ" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/town)
 "tOl" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/blocks,
@@ -27894,6 +27944,10 @@
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"xIB" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "xIK" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -28475,6 +28529,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
+"yfC" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/rtfield)
 "yfI" = (
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/dirt/road,
@@ -54671,7 +54729,7 @@ ymg
 xeY
 jIk
 jIk
-wDa
+jCL
 jIk
 omo
 jIk
@@ -54972,7 +55030,7 @@ dOz
 dOz
 qAf
 qAf
-qAf
+egV
 qAf
 dZI
 lyQ
@@ -55130,7 +55188,7 @@ bxn
 bxn
 bxn
 qAf
-qAf
+egV
 dOz
 dZI
 lyQ
@@ -55395,7 +55453,7 @@ jIk
 jIk
 jIk
 jIk
-jIk
+lFO
 wDa
 wDa
 wDa
@@ -55895,7 +55953,7 @@ wDa
 jIk
 jIk
 jIk
-jIk
+lFO
 lyQ
 omo
 wDa
@@ -55928,7 +55986,7 @@ ymg
 fsP
 lyQ
 jIk
-lyQ
+yfC
 wDa
 jIk
 wDa
@@ -56096,7 +56154,7 @@ jIk
 omo
 wDa
 jIk
-jIk
+lFO
 jIk
 jIk
 jIk
@@ -56189,7 +56247,7 @@ wDa
 jIk
 wDa
 wDa
-wDa
+jCL
 jIk
 wDa
 jIk
@@ -56388,7 +56446,7 @@ mec
 xAZ
 qAf
 bxn
-qAf
+egV
 dOz
 umP
 fsP
@@ -56545,7 +56603,7 @@ rDX
 bxn
 bxn
 bxn
-qAf
+egV
 dOz
 koU
 fsP
@@ -56639,7 +56697,7 @@ wDa
 wDa
 wDa
 jIk
-jIk
+lFO
 wDa
 wDa
 wDa
@@ -56701,7 +56759,7 @@ bxn
 bxn
 bxn
 bxn
-qAf
+egV
 wbS
 dZI
 lyQ
@@ -56982,7 +57040,7 @@ jIk
 jIk
 jIk
 jIk
-jIk
+lFO
 jIk
 wDa
 jIk
@@ -57044,7 +57102,7 @@ jIk
 jIk
 jIk
 jIk
-jIk
+lFO
 dPz
 dPz
 eUz
@@ -57663,7 +57721,7 @@ jIk
 jIk
 jIk
 jIk
-jIk
+lFO
 jIk
 ymg
 cHT
@@ -58526,7 +58584,7 @@ ccX
 jIk
 jIk
 jIk
-wDa
+jCL
 jIk
 xOC
 xOC
@@ -59087,7 +59145,7 @@ fsP
 jIk
 omo
 wDa
-wDa
+jCL
 wDa
 jIk
 fsP
@@ -59102,7 +59160,7 @@ wDa
 wDa
 wDa
 jIk
-jIk
+lFO
 jIk
 jIk
 jIk
@@ -59334,7 +59392,7 @@ blC
 dPu
 dPu
 dPu
-xAg
+tNZ
 mmg
 iZj
 jQH
@@ -59606,7 +59664,7 @@ fRr
 wDa
 jIk
 wDa
-wDa
+jCL
 wDa
 wDa
 wDa
@@ -60387,7 +60445,7 @@ fRr
 jIk
 wDa
 wDa
-wDa
+jCL
 wDa
 wDa
 jIk
@@ -60646,7 +60704,7 @@ dHl
 dHl
 mkB
 ihm
-jIk
+lFO
 jIk
 jIk
 jIk
@@ -60838,7 +60896,7 @@ scb
 ylN
 ylN
 ylN
-jIk
+lFO
 eUz
 eUz
 xOC
@@ -61174,7 +61232,7 @@ jIk
 jIk
 jIk
 jIk
-jIk
+lFO
 jIk
 jIk
 jIk
@@ -61505,7 +61563,7 @@ ylN
 jIk
 jIk
 jIk
-wDa
+jCL
 wDa
 wDa
 jIk
@@ -61608,7 +61666,7 @@ ylN
 ylN
 fsP
 jIk
-wDa
+jCL
 wDa
 biI
 biI
@@ -62122,7 +62180,7 @@ wDa
 wDa
 wDa
 wDa
-wDa
+jCL
 jIk
 jIk
 kzk
@@ -62304,7 +62362,7 @@ bKO
 doE
 xAg
 xAg
-xAg
+tNZ
 axE
 hvn
 waT
@@ -62850,7 +62908,7 @@ fJa
 hvn
 hrK
 cxb
-cxb
+abe
 cxb
 ymg
 cHT
@@ -64889,7 +64947,7 @@ cxb
 cxb
 cxb
 cxb
-xAg
+tNZ
 xAg
 pJn
 pJn
@@ -65413,7 +65471,7 @@ dPz
 dPz
 jIk
 jIk
-jIk
+lFO
 jIk
 jIk
 jIk
@@ -65912,7 +65970,7 @@ loB
 fTZ
 cxb
 wze
-cxb
+abe
 xAg
 xAg
 pJn
@@ -66665,7 +66723,7 @@ dPz
 dPz
 jIk
 wDa
-jIk
+lFO
 jIk
 jIk
 jIk
@@ -66923,7 +66981,7 @@ waT
 ctF
 ctF
 ctF
-cxb
+abe
 waT
 mbj
 mbj
@@ -66988,7 +67046,7 @@ jIk
 jIk
 jIk
 jIk
-wDa
+jCL
 jIk
 xOC
 xOC
@@ -68729,7 +68787,7 @@ cxb
 tiD
 tiD
 tiD
-cxb
+abe
 bEW
 uHq
 uHq
@@ -69665,7 +69723,7 @@ doE
 iwJ
 doE
 lxT
-lxT
+esL
 lxT
 lxT
 lxT
@@ -69749,7 +69807,7 @@ doE
 ctF
 cxb
 cxb
-cxb
+abe
 gog
 biI
 xOC
@@ -69824,7 +69882,7 @@ waT
 lxT
 lxT
 lxT
-lxT
+esL
 lxT
 lxT
 vAy
@@ -70119,7 +70177,7 @@ dPz
 dPz
 jIk
 jIk
-jIk
+lFO
 jIk
 jIk
 omo
@@ -70284,7 +70342,7 @@ omo
 jIk
 jIk
 jIk
-jIk
+lFO
 lyQ
 lyQ
 xOC
@@ -71474,7 +71532,7 @@ waT
 oyZ
 waT
 jIk
-jIk
+lFO
 fsP
 biI
 xOC
@@ -73501,7 +73559,7 @@ doE
 bKO
 doE
 jIk
-jIk
+lFO
 jIk
 fsP
 fsP
@@ -73511,7 +73569,7 @@ biI
 biI
 biI
 jIk
-jIk
+lFO
 jIk
 jIk
 jIk
@@ -73972,7 +74030,7 @@ waT
 oyZ
 waT
 jIk
-fsP
+xIB
 fsP
 fsP
 biI
@@ -75178,7 +75236,7 @@ fsP
 jIk
 jIk
 jIk
-jIk
+lFO
 wDa
 wDa
 wDa
@@ -75186,7 +75244,7 @@ wDa
 jIk
 jIk
 jIk
-jIk
+lFO
 jIk
 jIk
 jIk
@@ -75338,18 +75396,18 @@ jIk
 jIk
 jIk
 jIk
+lFO
 jIk
-jIk
-jIk
+lFO
 jIk
 jIk
 jIk
 wDa
+jCL
 wDa
-wDa
 jIk
 jIk
-jIk
+lFO
 jIk
 jIk
 jIk
@@ -75499,7 +75557,7 @@ jIk
 jIk
 omo
 jIk
-jIk
+lFO
 wDa
 wDa
 wDa
@@ -75659,7 +75717,7 @@ jIk
 jIk
 jIk
 jIk
-jIk
+lFO
 omo
 dJp
 jIk
