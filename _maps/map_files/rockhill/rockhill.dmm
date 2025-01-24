@@ -7326,12 +7326,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
-"dSo" = (
-/obj/structure/roguewindow/openclose{
-	dir = 4
-	},
-/turf/open/dark_filler,
-/area/rogue/indoors)
 "dSp" = (
 /obj/structure/rack/rogue,
 /obj/item/kitchen/fork,
@@ -35766,12 +35760,6 @@
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/druidgrove)
-"tsv" = (
-/obj/structure/roguewindow/openclose{
-	dir = 8
-	},
-/turf/open/dark_filler,
-/area/rogue/indoors)
 "tsG" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
@@ -222351,7 +222339,7 @@ dlR
 hHI
 mKn
 dlR
-vuM
+mKn
 jju
 sjP
 sjP
@@ -329484,9 +329472,9 @@ oAo
 crl
 ryI
 nqU
-dSo
+fpL
 ryI
-dSo
+fpL
 nqU
 ryI
 uwX
@@ -332508,9 +332496,9 @@ nqU
 erZ
 ryI
 nqU
-tsv
+flT
 ryI
-tsv
+flT
 nqU
 ryI
 dzq
