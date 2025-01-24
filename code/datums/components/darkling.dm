@@ -49,7 +49,7 @@
 	darkling.flash_act()
 	darkling.blur_eyes(8)
 	next_blind = world.time + (rand(15 SECONDS, 40 SECONDS) * (darkling.STACON/10)) //Con determines how frequently you can get blinded
-	to_chat(parent, span_danger("It's too bright! My eyes!"))
+	to_chat(parent, span_danger("Bright lights, too fast! My eyes couldn't adjust."))
 
 //Applies the effects of our current light stress accumulation threshold
 /datum/component/darkling/proc/apply_stress_effects(var/mob/living/darkling)
