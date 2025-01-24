@@ -9,13 +9,14 @@
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	classes = list("Battlemaster" = "You are a seasoned weapon specialist, clad in maille, with years of experience in warfare and battle under your belt.",
 					"Duelist"= "You are an esteemed swordsman who foregoes armor in exchange for a more nimble fighting style.",
-					"Barbarian" = "You are a brutal warrior who foregoes armor in order to showcase your raw strength. You specialize in unarmed combat and wrestling.")
+					"Barbarian" = "You are a brutal warrior who foregoes armor in order to showcase your raw strength. You specialize in unarmed combat and wrestling.",
+					"Monster Hunter" = "You specialize in hunting down monsters and the undead, carrying two blades - one of silver, one of steel.")
 
 
 /datum/outfit/job/roguetown/adventurer/sfighter/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Battlemaster","Duelist","Barbarian")
+	var/classes = list("Battlemaster","Duelist","Barbarian","Monster Hunter")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 
@@ -159,3 +160,32 @@
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather
 				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+
+		if("Monster Hunter")
+			to_chat(H, span_warning("You specialize in hunting down monsters and the undead, carrying two blades - one of silver, one of steel."))
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			H.change_stat("strength", 2)
+			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 1)
+			H.change_stat("intelligence", 1)
+			backl = /obj/item/rogueweapon/sword/silver
+			backr = /obj/item/rogueweapon/sword
+			neck = /obj/item/clothing/neck/roguetown/psicross/silver
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+			belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/steel
+			shoes = /obj/item/clothing/shoes/roguetown/boots
+			pants = /obj/item/clothing/under/roguetown/tights/black
+			cloak = /obj/item/clothing/cloak/cape/puritan
+			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+			head = /obj/item/clothing/head/roguetown/bucklehat
+			gloves = /obj/item/clothing/gloves/roguetown/otavan
+			beltl = /obj/item/flashlight/flare/torch/lantern
