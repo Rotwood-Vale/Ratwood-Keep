@@ -138,37 +138,204 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			to_chat(src, "<span class='warning'>I feel your [pocket_side] pocket being fumbled with!</span>")
 
 	if(href_list["task"] == "assess")
-		if(!ismob(usr))
+		if(!ishuman(usr))
 			return
 		if(!ishuman(src))
 			return
 		var/mob/living/carbon/human/H = src
-		var/mob/user = usr
+		var/mob/living/carbon/human/user = usr
 		user.visible_message("[user] begins assessing [src].")
-		if(do_after(user, 30))
+		if(do_after_mob(src, list(user), (40 - (user.STAINT - 10) - (user.STAPER - 10))))
 			var/is_guarded = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)
+			var/is_smart = FALSE
+			var/is_stupid = FALSE
+			var/is_normal = FALSE
+			if(HAS_TRAIT(user, TRAIT_INTELLECTUAL) || ((user.STAINT - 10) + (user.STAPER - 10) + user.mind?.get_skill_level(/datum/skill/misc/reading)) >= 10)
+				is_smart = TRUE
+			if(user.STAINT < 10 && !is_smart)
+				is_stupid = TRUE
+			if(((user.STAINT - 10) + (user.STAPER - 10) + H?.mind?.get_skill_level(/datum/skill/misc/reading)) >= 5)
+				is_normal = TRUE
 			var/list/dat = list()
-			dat +="<center>"
-			if(!is_guarded)
-				dat +=("STR: \Roman [H.STASTR]<br>")
-				dat +=("PER: \Roman [H.STAPER]<br>")
-				dat +=("INT: \Roman [H.STAINT]<br>")
-				dat +=("CON: \Roman [H.STACON]<br>")
-				dat +=("END: \Roman [H.STAEND]<br>")
-				dat +=("SPD: \Roman [H.STASPD]<br>")
+			// Top-level table
+			dat += "<table style='width: 100%; line-height: 20px;'>"
+			// NEXT ROW
+			dat += "<tr>"
+			dat += "<td style='width:16%;text-align:left;vertical-align: text-top'>"
+			if(is_smart)
+				dat += "<b>STATS:</b><br><br>"
+				if(!is_guarded)
+					dat +=("STR: \Roman [H.STASTR]<br>")
+					dat +=("PER: \Roman [H.STAPER]<br>")
+					dat +=("INT: \Roman [H.STAINT]<br>")
+					dat +=("CON: \Roman [H.STACON]<br>")
+					dat +=("END: \Roman [H.STAEND]<br>")
+					dat +=("SPD: \Roman [H.STASPD]<br>")
+				else
+					dat +=("STR: \Roman [rand(1,20)]<br>")
+					dat +=("PER: \Roman [rand(1,20)]<br>")
+					dat +=("INT: \Roman [rand(1,20)]<br>")
+					dat +=("CON: \Roman [rand(1,20)]<br>")
+					dat +=("END: \Roman [rand(1,20)]<br>")
+					dat +=("SPD: \Roman [rand(1,20)]<br>")
+				if(is_guarded || job == "Jester")
+					dat += "Something feels off..."
+				dat += "</td>"
 			else
-				dat +=("STR: \Roman [rand(1,20)]<br>")
-				dat +=("PER: \Roman [rand(1,20)]<br>")
-				dat +=("INT: \Roman [rand(1,20)]<br>")
-				dat +=("CON: \Roman [rand(1,20)]<br>")
-				dat +=("END: \Roman [rand(1,20)]<br>")
-				dat +=("SPD: \Roman [rand(1,20)]<br>")
-			if(is_guarded || job == "Jester")
-				dat += "Something feels off..."
-			dat +="</center>"
-			var/datum/browser/popup = new(user, "assess", ntitle = "[src] Assesment", nwidth = 140, nheight = 290)
+				dat += "</td>"
+
+			dat += "<td style='width:33%;text-align:center;vertical-align: text-top'>"
+			dat += "<b>BODY:</b><br><br>"
+			dat += "<b>HEAD: </b>"
+			if(H.head)
+				dat += capitalize("[H.head.name]<br>")
+				dat += defense_report(H.head, is_stupid, is_normal, is_smart, "THE HEAD I THINK. MAYBE MORE?")
+			else
+				dat += "NOTHING <br>"
+			
+			dat += "<b>TORSO: </b>"
+			if(H.wear_armor)
+				dat += capitalize("[H.wear_armor.name]<br>")
+				dat += defense_report(H.wear_armor, is_stupid, is_normal, is_smart, "THE CHEST! PROBABLY GROIN TOO?")
+			else
+				dat += "NOTHING <br>"
+
+			dat += "<b>PANTS: </b>"
+			if(H.wear_pants)
+				dat += capitalize("[H.wear_pants.name]<br>")
+				dat += defense_report(H.wear_pants, is_stupid, is_normal, is_smart, "THE IMPORTANT PARTS! LEGS AS WELL, I THINK.")
+			else
+				dat += "NOTHING <br>"
+
+			//Extra stuff you can assess if you match the thresholds.
+			if((is_normal || is_smart) && !is_stupid)
+				dat += "<b>NECK: </b>"
+				if(H.wear_neck)
+					dat += capitalize("[H.wear_neck.name]<br>")
+					dat += defense_report(H.wear_neck, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
+				else
+					dat += "NOTHING <br>"
+
+				dat += "<b>GLOVES: </b>"
+				if(H.gloves)
+					dat += capitalize("[H.gloves.name]<br>")
+					dat += defense_report(H.gloves, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
+				else
+					dat += "NOTHING <br>"
+
+				dat += "<b>SHIRT: </b>"
+				if(H.wear_shirt)
+					dat += capitalize("[H.wear_shirt.name]<br>")
+					dat += defense_report(H.wear_shirt, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
+				else
+					dat += "NOTHING <br>"
+
+				dat += "<b>SHOES: </b>"
+				if(H.shoes)
+					dat += capitalize("[H.shoes.name]<br>")
+					dat += defense_report(H.shoes, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
+				else
+					dat += "NOTHING <br>"					
+
+			
+			dat += "</td>"
+
+			dat += "<td style='width:33%;text-align:center;vertical-align: text-top'>"
+			if(!is_guarded && !is_stupid)
+				dat += "<b>SKILLS:</b><br><br>"
+				for(var/S in subtypesof(/datum/skill/combat))
+					var/datum/skill/combat/SK = S
+					if(user.mind?.get_skill_level(S) > 0)
+						dat += "<b>[SK.name]</b><br>"
+						var/skilldiff = user.mind?.get_skill_level(S) - H.mind?.get_skill_level(S)
+						dat += "[skilldiff_report(skilldiff)] <br>"
+				if(is_smart)
+					for(var/S in subtypesof(/datum/skill))
+						if(user.mind?.get_skill_level(S) > 0)
+							if(!ispath(S, /datum/skill/combat))	//We already did these.
+								var/datum/skill/SL = S
+								dat += "<b>[SL.name]</b><br>"
+								var/skilldiff = user.mind?.get_skill_level(S) - H.mind?.get_skill_level(S)
+								dat += "[skilldiff_report(skilldiff)] <br>"
+							else
+								continue
+					
+			dat += "</td>"
+			dat += "</tr>"
+			var/datum/browser/popup = new(user, "assess", ntitle = "[src] Assesment", nwidth = 500, nheight = 600)
 			popup.set_content(dat.Join())
 			popup.open(FALSE)
-			return
 		return
 	return ..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that. - I made it worse sorry guys.
+
+//Sorry colorblind folks...
+/proc/colorgrade_rating(var/input, var/rating)
+	switch(rating)
+		if(0 to 20)
+			return "<font color = '#c91a1a'>[input]</font>"
+		if(20 to 40)
+			return "<font color = '#755211'>[input]</font>"
+		if(40 to 60)
+			return "<font color = '#d2d440'>[input]</font>"
+		if(60 to 80)
+			return "<font color = '#308020'>[input]</font>"
+		if(80 to 90)
+			return "<font color = '#0fe021'>[input]</font>"
+		if(100)
+			return "<font color = '#2492f8'>[input]</font>"
+
+/proc/defense_report(var/obj/item/clothing/C, var/stupid, var/normal, var/smart, var/stupid_string)
+	var/list/str = list()
+	if(C.armor)
+		var/defense = "<u><b>DEFENSE: </b></u><br>"
+		var/datum/armor/def_armor = C.armor
+		defense += "[colorgrade_rating("BLUNT", def_armor.blunt)] "
+		defense += "[colorgrade_rating("SLASH", def_armor.slash)] "
+		defense += "[colorgrade_rating("STAB", def_armor.stab)] "
+		defense += "[colorgrade_rating("PIERCING", def_armor.piercing)] "
+		str += "[defense]<br>"
+
+	var/coverage = "<u><b>COVERS: </b></u><br>"
+	if(!stupid)
+		for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
+			coverage += "<b>[zone] </b>"
+		str += "[coverage]<br>"
+	else
+		str += coverage
+		str += stupid_string
+	if(normal || smart)
+		var/crits = "PREVENTS CRITS: <br>"
+		for(var/zone in C.prevent_crits)
+			crits += "[capitalize(zone)] "
+		str += crits
+	str += "<br><br>"
+	return str
+
+/proc/skilldiff_report(var/input)
+	switch (input)
+		if(-6)
+			return "<font color = '#ff4ad2'>I know nothing. They -- everything.</font>"
+		if(-5)
+			return "<font color = '#eb0000'<i>I stand no chance against them.</i></font>"
+		if(-4)
+			return "<font color = '#c53c3c'<i>I am inferior.</i></font>"
+		if(-3)
+			return "<font color = '#db8484'<i>I am notably worse.</i></font>"
+		if(-2)
+			return "<font color = '#e4a1a1'<i>I am worse.</i></font>"
+		if(-1)
+			return "<font color = '#f8d3d3'<i>I am slightly worse.</i></font>"
+		if(0)
+			return "We are equal."
+		if(1)
+			return "<font color = '#3f6343'> I am slightly better.</font>"
+		if(2)
+			return "<font color = '#49944f'> I am better.</font>"
+		if(3)
+			return "<font color = '#44db51'> I am notably better.</font>"
+		if(4)
+			return"<font color = '#62b4be'> I am superior.</font>"
+		if(5)
+			return "<font color = '#2bdcfc'> They have no chance in this field.</font>"
+		if(6)
+			return "<font color = '#ff4ad2'> They know nothing. A whelp.</font>"

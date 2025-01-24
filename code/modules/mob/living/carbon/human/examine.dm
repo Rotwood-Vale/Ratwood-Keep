@@ -153,11 +153,11 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 
-		if(HAS_TRAIT(H, TRAIT_INTELLECTUAL) || get_skill_level(H, /datum/skill/craft/blacksmithing) >= SKILL_EXP_EXPERT)
+		if(HAS_TRAIT(H, TRAIT_INTELLECTUAL) || H.mind?.get_skill_level(H, /datum/skill/craft/blacksmithing) >= SKILL_EXP_EXPERT)
 			is_smart = TRUE	//Most of this is determining integrity of objects + seeing multiple layers. 
 		if(H?.STAINT < 10 && !is_smart)
 			is_stupid = TRUE
-		if(((H?.STAINT - 10) + (H?.STAPER - 10) + H?.mind?.get_skill_level(/datum/skill/misc/reading)) > 5)
+		if(((H?.STAINT - 10) + (H?.STAPER - 10) + H.mind?.get_skill_level(/datum/skill/misc/reading)) >= 5)
 			is_normal = TRUE
 
 	if(user != src)
@@ -221,8 +221,8 @@
 			str += wear_armor.integrity_check()
 			. += str
 		else if (is_stupid)
-			if(istype(wear_armor,/obj/item/clothing/armor))
-				var/obj/item/clothing/armor/examined_armor = wear_armor
+			if(istype(wear_armor, /obj/item/clothing/suit/roguetown/armor))
+				var/obj/item/clothing/suit/roguetown/armor/examined_armor = wear_armor
 				switch(examined_armor.armor_class)
 					if(ARMOR_CLASS_LIGHT)
 						. += "[m3] some flimsy leathers!"
@@ -248,23 +248,42 @@
 
 	//cloak
 	if(cloak && !(SLOT_CLOAK in obscured))
-		if(!is_stupid)
-			. += "[m3] [cloak.get_examine_string(user)] on [m2] shoulders."
-		else
+		if(is_smart)
+			var/str = "[m3] [cloak.get_examine_string(user)] on [m2] shoulders. "
+			str += cloak.integrity_check()
+			. += str
+		else if (is_stupid)
 			. += "[m3] some kinda clothy thing on [m2] shoulders!"
+		else
+			. += "[m3] [cloak.get_examine_string(user)] on [m2] shoulders."
 
 	//right back
 	if(backr && !(SLOT_BACK_R in obscured))
-		. += "[m3] [backr.get_examine_string(user)] on [m2] back."
+		if(is_smart)
+			var/str = "[m3] [backr.get_examine_string(user)] on [m2] back. "
+			str += backr.integrity_check()
+			. += str
+		else
+			. += "[m3] [backr.get_examine_string(user)] on [m2] back."
 
 	//left back
 	if(backl && !(SLOT_BACK_L in obscured))
-		. += "[m3] [backl.get_examine_string(user)] on [m2] back."
+		if(is_smart)
+			var/str = "[m3] [backl.get_examine_string(user)] on [m2] back. "
+			str += backl.integrity_check()
+			. += str
+		else
+			. += "[m3] [backl.get_examine_string(user)] on [m2] back."
 
 	//Hands
 	for(var/obj/item/I in held_items)
 		if(!(I.item_flags & ABSTRACT))
-			. += "[m1] holding [I.get_examine_string(user)] in [m2] [get_held_index_name(get_held_index_of_item(I))]."
+			if(is_smart)
+				var/str = "[m1] holding [I.get_examine_string(user)] in [m2] [get_held_index_name(get_held_index_of_item(I))]."
+				str += I.integrity_check()
+				. += str
+			else
+				. += "[m1] holding [I.get_examine_string(user)] in [m2] [get_held_index_name(get_held_index_of_item(I))]."
 
 	var/datum/component/forensics/FR = GetComponent(/datum/component/forensics)
 	//gloves
@@ -273,35 +292,79 @@
 	else if(FR && length(FR.blood_DNA))
 		var/hand_number = get_num_arms(FALSE)
 		if(hand_number)
-			. += "[m3][hand_number > 1 ? "" : " a"] <span class='bloody'>blood-stained</span> hand[hand_number > 1 ? "s" : ""]!"
+			if(is_stupid)
+				. += "[m3] got weird hands! They don't look right!"
+			else
+				. += "[m3][hand_number > 1 ? "" : " a"] <span class='bloody'>blood-stained</span> hand[hand_number > 1 ? "s" : ""]!"
 
 	//belt
 	if(belt && !(SLOT_BELT in obscured))
-		. += "[m3] [belt.get_examine_string(user)] about [m2] waist."
+		if(is_smart)
+			var/str = "[m3] [belt.get_examine_string(user)] about [m2] waist. "
+			str += belt.integrity_check()
+			. += str
+		else
+			. += "[m3] [belt.get_examine_string(user)] about [m2] waist."
 
 	//right belt
 	if(beltr && !(SLOT_BELT_R in obscured))
-		. += "[m3] [beltr.get_examine_string(user)] on [m2] belt."
+		if(is_smart)
+			var/str = "[m3] [beltr.get_examine_string(user)] on [m2] belt. "
+			str += beltr.integrity_check()
+			. += str
+		else
+			. += "[m3] [beltr.get_examine_string(user)] on [m2] belt."
 
 	//left belt
 	if(beltl && !(SLOT_BELT_L in obscured))
-		. += "[m3] [beltl.get_examine_string(user)] on [m2] belt."
+		if(is_smart)
+			var/str = "[m3] [beltl.get_examine_string(user)] on [m2] belt. "
+			str += beltr.integrity_check()
+			. += str
+		else
+			. += "[m3] [beltl.get_examine_string(user)] on [m2] belt."
 
 	//shoes
 	if(shoes && !(SLOT_SHOES in obscured))
-		. += "[m3] [shoes.get_examine_string(user)] on [m2] feet."
+		if(is_smart)
+			var/str = "[m3] [shoes.get_examine_string(user)] on [m2] feet. "
+			str += shoes.integrity_check()
+			. += str
+		else
+			. += "[m3] [shoes.get_examine_string(user)] on [m2] feet."
 
 	//mask
 	if(wear_mask && !(SLOT_WEAR_MASK in obscured))
-		. += "[m3] [wear_mask.get_examine_string(user)] on [m2] face."
+		if(is_smart)
+			var/str = "[m3] [wear_mask.get_examine_string(user)] on [m2] face. "
+			str += wear_mask.integrity_check()
+			. += str
+		else if(is_stupid)
+			. += "[m3] some kinda thing on [m2] face!"
+		else
+			. += "[m3] [wear_mask.get_examine_string(user)] on [m2] face."
 
 	//mouth
 	if(mouth && !(SLOT_MOUTH in obscured))
-		. += "[m3] [mouth.get_examine_string(user)] in [m2] mouth."
+		if(is_smart)
+			var/str = "[m3] [mouth.get_examine_string(user)] in [m2] mouth. "
+			str += mouth.integrity_check()
+			. += str
+		else if(is_stupid)
+			. += "[m3] some kinda thing on [m2] mouth!"
+		else
+			"[m3] [mouth.get_examine_string(user)] in [m2] mouth."
 
 	//neck
 	if(wear_neck && !(SLOT_NECK in obscured))
-		. += "[m3] [wear_neck.get_examine_string(user)] around [m2] neck."
+		if(is_smart)
+			var/str = "[m3] [wear_neck.get_examine_string(user)] around [m2] neck. "
+			str += wear_neck.integrity_check()
+			. += str
+		else if (is_stupid)
+			. += "[m3] something on [m2] neck!"
+		else
+			. += "[m3] [wear_neck.get_examine_string(user)] around [m2] neck."
 
 	//eyes
 	if(!(SLOT_GLASSES in obscured))
@@ -316,11 +379,30 @@
 
 	//ID
 	if(wear_ring && !(SLOT_RING in obscured))
-		. += "[m3] [wear_ring.get_examine_string(user)] on [m2] hands."
+		if(is_stupid)
+			. += "[m3] some sort of ring!"
+		else if(is_smart && istype(wear_ring, /obj/item/clothing/ring/active))
+			var/str = "[m3] [wear_ring.get_examine_string(user)] on [m2] hands. "
+			var/obj/item/clothing/ring/active/AR = wear_ring
+			if(AR.cooldowny)
+				if(world.time < AR.cooldowny + AR.cdtime)
+					str += span_warning("It cannot activate again, yet.")
+				else
+					str += span_warning("It is ready to use.")
+			. += str
+		else
+			. += "[m3] [wear_ring.get_examine_string(user)] on [m2] hands."
 
 	//wrists
 	if(wear_wrists && !(SLOT_WRISTS in obscured))
-		. += "[m3] [wear_wrists.get_examine_string(user)] on [m2] wrists."
+		if(is_smart)
+			var/str = "[m3] [wear_wrists.get_examine_string(user)] on [m2] wrists."
+			str += wear_wrists.integrity_check()
+			. += str
+		else if (is_stupid)
+			. += "[m3] something on [m2] wrists!"
+		else
+			. += "[m3] [wear_wrists.get_examine_string(user)] on [m2] wrists."
 
 	//handcuffed?
 	if(handcuffed)
@@ -367,40 +449,48 @@
 	// Bleeding
 	var/bleed_rate = get_bleed_rate()
 	if(bleed_rate)
-		var/bleed_wording = "bleeding"
-		switch(bleed_rate)
-			if(0 to 1)
-				bleed_wording = "bleeding slightly"
-			if(1 to 5)
-				bleed_wording = "bleeding"
-			if(5 to 10)
-				bleed_wording = "bleeding a lot"
-			if(10 to INFINITY)
-				bleed_wording = "bleeding profusely"
-		var/list/bleeding_limbs = list()
-		var/static/list/bleed_zones = list(
-			BODY_ZONE_HEAD,
-			BODY_ZONE_CHEST,
-			BODY_ZONE_R_ARM,
-			BODY_ZONE_L_ARM,
-			BODY_ZONE_R_LEG,
-			BODY_ZONE_L_LEG,
-		)
-		for(var/bleed_zone in bleed_zones)
-			var/obj/item/bodypart/bleeder = get_bodypart(bleed_zone)
-			if(!bleeder?.get_bleed_rate() || (!observer_privilege && !get_location_accessible(src, bleeder.body_zone)))
-				continue
-			bleeding_limbs += parse_zone(bleeder.body_zone)
-		if(length(bleeding_limbs))
-			if(bleed_rate >= 5)
-				msg += span_bloody("<B>[capitalize(m2)] [english_list(bleeding_limbs)] [bleeding_limbs.len > 1 ? "are" : "is"] [bleed_wording]!</B>")
+		if(!is_stupid)
+			var/bleed_wording = "bleeding"
+			switch(bleed_rate)
+				if(0 to 1)
+					bleed_wording = "bleeding slightly"
+				if(1 to 5)
+					bleed_wording = "bleeding"
+				if(5 to 10)
+					bleed_wording = "bleeding a lot"
+				if(10 to INFINITY)
+					bleed_wording = "bleeding profusely"
+			var/list/bleeding_limbs = list()
+			var/static/list/bleed_zones = list(
+				BODY_ZONE_HEAD,
+				BODY_ZONE_CHEST,
+				BODY_ZONE_R_ARM,
+				BODY_ZONE_L_ARM,
+				BODY_ZONE_R_LEG,
+				BODY_ZONE_L_LEG,
+			)
+			for(var/bleed_zone in bleed_zones)
+				var/obj/item/bodypart/bleeder = get_bodypart(bleed_zone)
+				if(!bleeder?.get_bleed_rate() || (!observer_privilege && !get_location_accessible(src, bleeder.body_zone)))
+					continue
+				bleeding_limbs += parse_zone(bleeder.body_zone)
+			if(length(bleeding_limbs))
+				if(bleed_rate >= 5)
+					msg += span_bloody("<B>[capitalize(m2)] [english_list(bleeding_limbs)] [bleeding_limbs.len > 1 ? "are" : "is"] [bleed_wording]!</B>")
+				else
+					msg += span_bloody("[capitalize(m2)] [english_list(bleeding_limbs)] [bleeding_limbs.len > 1 ? "are" : "is"] [bleed_wording]!")
 			else
-				msg += span_bloody("[capitalize(m2)] [english_list(bleeding_limbs)] [bleeding_limbs.len > 1 ? "are" : "is"] [bleed_wording]!")
+				if(bleed_rate >= 5)
+					msg += span_bloody("<B>[m1] [bleed_wording]</B>!")
+				else
+					msg += span_bloody("[m1] [bleed_wording]!")
 		else
-			if(bleed_rate >= 5)
-				msg += span_bloody("<B>[m1] [bleed_wording]</B>!")
-			else
-				msg += span_bloody("[m1] [bleed_wording]!")
+			if(isliving(user))
+				var/mob/living/M = user
+				if(M.patron.type == /datum/patron/inhumen/graggar)
+					msg += span_bloody("[m1] shedding lyfe's blood, exposing weakness!")
+				else
+					msg += span_bloody("[m1] letting out the red stuff!")
 
 	// Missing limbs
 	var/missing_head = FALSE
@@ -601,9 +691,10 @@
 
 	if((!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes))
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a>"
-
-	if(HAS_TRAIT(user,TRAIT_INTELLECTUAL) && get_dist(src, user) <= 2 && (!obscure_name || client?.prefs.masked_examine))
-		. += "<a href='?src=[REF(src)];task=assess;'>Assess</a>"
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(get_dist(src, H) <= 2 + floor(((H.STAPER - 10) / 2)) && (!obscure_name || client?.prefs.masked_examine))
+			. += "<a href='?src=[REF(src)];task=assess;'>Assess</a>"
 
 	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 	for(var/line in lines)
