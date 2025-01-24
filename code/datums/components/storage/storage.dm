@@ -29,8 +29,8 @@
 	var/locked = FALSE								//when locked nothing can see inside or use it.
 
 	var/max_w_class = WEIGHT_CLASS_SMALL			//max size of objects that will fit.
-	var/max_combined_w_class = 14					//max combined sizes of objects that will fit.
-	var/max_items = 7								//max number of objects that will fit.
+	var/max_combined_w_class = 1000					//max combined sizes of objects that will fit.
+	var/max_items = 1000							//max number of objects that will fit.
 
 	var/emp_shielded = FALSE
 
@@ -55,6 +55,8 @@
 
 	var/attack_hand_interact = TRUE					//interact on attack hand.
 	var/quickdraw = FALSE							//altclick interact
+
+	var/datum/action/item_action/storage_gather_mode/modeswitch_action
 
 	//Screen variables: Do not mess with these vars unless you know what you're doing. They're not defines so storage that isn't in the same location can be supported in the future.
 	var/screen_max_columns = 7							//These two determine maximum screen sizes.
@@ -116,12 +118,17 @@
 	RegisterSignal(parent, COMSIG_MOUSEDROP_ONTO, PROC_REF(mousedrop_onto))
 	RegisterSignal(parent, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(mousedrop_receive))
 
+	update_actions()
+
 /datum/component/storage/Destroy()
 	close_all()
 	QDEL_NULL(boxes)
 	QDEL_NULL(closer)
 	LAZYCLEARLIST(is_using)
 	return ..()
+
+/datum/component/storage/PreTransfer()
+	update_actions()
 
 /datum/component/storage/proc/set_holdable(can_hold_list, cant_hold_list)
 	can_hold_description = generate_hold_desc(can_hold_list)
@@ -140,6 +147,10 @@
 		desc += "\a [initial(valid_item.name)]"
 
 	return "\n\t<span class='notice'>[desc.Join("\n\t")]</span>"
+
+/datum/component/storage/proc/update_actions()
+	QDEL_NULL(modeswitch_action)
+	return
 
 /datum/component/storage/proc/change_master(datum/component/storage/concrete/new_master)
 	if(new_master == src || (!isnull(new_master) && !istype(new_master)))
@@ -398,7 +409,7 @@
 				cy++
 				if(cy - screen_start_y >= rows)
 					break
-	closer.screen_loc = "[screen_start_x + cols]:[screen_pixel_x],[screen_start_y]:[screen_pixel_y]"
+	closer.screen_loc = "[screen_start_x]:[screen_pixel_x],[screen_start_y+rows]:[screen_pixel_y]"
 
 /datum/component/storage/proc/show_to(mob/M)
 	if(!M.client)
@@ -894,6 +905,7 @@
 
 /datum/component/storage/proc/signal_on_pickup(datum/source, mob/user)
 	var/atom/A = parent
+	update_actions()
 	for(var/mob/M in range(1, A))
 		if(M.active_storage == src)
 			close(M)

@@ -36,13 +36,11 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 
-	head = /obj/item/clothing/head/roguetown/hatfur
-	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/hatblu
-//	armor = /obj/item/clothing/suit/roguetown/armor/workervest
+	head = /obj/item/clothing/head/roguetown/articap
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
 	cloak = /obj/item/clothing/cloak/apron/waist/brown
-	pants = /obj/item/clothing/under/roguetown/trou
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	pants = /obj/item/clothing/under/roguetown/trou/artipants
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid

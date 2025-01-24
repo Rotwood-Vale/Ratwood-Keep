@@ -52,6 +52,18 @@
 	charge_max = 60 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/bud/cast(list/targets, mob/living/user)
+	var/target = targets[1]
+	if(istype(target, /mob/living/carbon/human)) //Putting flower on head check
+		var/mob/living/carbon/human/C = target
+		if(!C.get_item_by_slot(SLOT_HEAD))
+			var/obj/item/clothing/head/peaceflower/F = new(get_turf(C))
+			C.equip_to_slot_if_possible(F, SLOT_HEAD, TRUE, TRUE)
+			to_chat(C, "<span class='info'>A flower of Eora blooms on my head. I feel at peace.</span>")
+			return TRUE
+		else
+			to_chat(user, "<span class='warning'>The target's head is covered. The flowers of Eora need an open space to bloom.</span>")
+			revert_cast()
+			return FALSE
 	var/turf/T = get_turf(targets[1])
 	if(!isclosedturf(T))
 		new /obj/item/clothing/head/peaceflower(T)

@@ -14,6 +14,8 @@
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
 	wdefense = 5
 	ingsize = 3
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/cooking/pan/examine(mob/user)
 	. = ..()
