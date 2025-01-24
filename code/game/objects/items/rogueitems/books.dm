@@ -478,6 +478,8 @@
 	icon_state = "manuscript"
 	dir = 2
 	resistance_flags = FLAMMABLE
+	grid_width = 32
+	grid_height = 64
 	var/number_of_pages = 2
 	var/compiled_pages = null
 	var/list/page_texts = list()
