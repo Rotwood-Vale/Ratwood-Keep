@@ -252,8 +252,11 @@
 			var/str = "[m3] [cloak.get_examine_string(user)] on [m2] shoulders. "
 			str += cloak.integrity_check()
 			. += str
-		else if (is_stupid)
-			. += "[m3] some kinda clothy thing on [m2] shoulders!"
+		else if (is_stupid)					//So they can tell the named RG tabards. If they can read them, anyway.
+			if(!istype(cloak, /obj/item/clothing/cloak/stabard) && H.mind?.get_skill_level(/datum/skill/misc/reading))
+				. += "[m3] some kinda clothy thing on [m2] shoulders!"
+			else
+				. += "[m3] [cloak.get_examine_string(user)] on [m2] shoulders."
 		else
 			. += "[m3] [cloak.get_examine_string(user)] on [m2] shoulders."
 
