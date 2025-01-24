@@ -4552,9 +4552,7 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church/chapel)
 "cwA" = (
-/obj/structure/roguemachine/scomm{
-	pixel_y = -32
-	},
+/obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "cwH" = (
@@ -8967,9 +8965,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/magician)
 "eJL" = (
-/obj/structure/roguemachine/scomm{
-	pixel_y = -32
-	},
+/obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/academy)
 "eKm" = (
@@ -19121,6 +19117,10 @@
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
+"kjF" = (
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors/rtfield)
 "kjP" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/tavern)
@@ -25805,9 +25805,7 @@
 /turf/closed/wall/mineral/rogue/stone/window/moss,
 /area/rogue/under/town/basement)
 "nXa" = (
-/obj/structure/roguemachine/scomm{
-	pixel_y = -32
-	},
+/obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church/chapel)
 "nXd" = (
@@ -40052,9 +40050,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "vOa" = (
-/obj/structure/roguemachine/scomm{
-	pixel_y = -32
-	},
+/obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/vault)
 "vOi" = (
@@ -40338,6 +40334,9 @@
 	pixel_x = 9
 	},
 /obj/item/storage/roguebag,
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/rtfield)
 "vXe" = (
@@ -41757,9 +41756,6 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "wKg" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 8
-	},
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "tablewood1"
@@ -215004,7 +215000,7 @@ wKg
 vWF
 lcg
 hUD
-sjP
+kjF
 fxx
 fxx
 fxx
