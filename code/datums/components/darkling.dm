@@ -1,5 +1,6 @@
 /datum/component/darkling
 	var/current_light_stress = 0															///Currently accumulated light stress for this darkling component
+	var/last_light_stress = 0																///Value of last light stress tick, used for determining blinding effects
 	var/max_light_stress = 100																///Maximum allowed light stress that the darkling can accumulate
 	var/next_blind																			///World time when the darkling is able to be blinded again by bright lights
 
@@ -22,45 +23,51 @@
 	if(darkling.eyesclosed || darkling.eye_blind)
 		src.current_light_stress -= 1.5
 		if(darkling.IsSleeping())
-			current_light_stress -= 5 	//Sleeping restores us much quicker
+			src.current_light_stress -= 5 	//Sleeping restores us much quicker
 		return
 	var/incoming_light_stress = get_light_stress_value(darkling)
 	src.current_light_stress = clamp(current_light_stress + incoming_light_stress, 0, max_light_stress)
-	if(incoming_light_stress > 0.5) 	//Try to blind us if the light is too bright
+	if(incoming_light_stress > 0 && incoming_light_stress - last_light_stress > 0.5) 	//Checks if we've just barreled into the light
 		try_blind_darkling(darkling)
+	src.last_light_stress = incoming_light_stress
 	apply_stress_effects(darkling)
 	
 
 //Triggers on movement. This is mostly so that getting blinded by lights is more responsive, instead of having to linger beside them
 /datum/component/darkling/proc/check_light_on_move(var/mob/living/darkling)
 	var/light_stress = get_light_stress_value(darkling)
-	if(light_stress > 0.5)
+	if(light_stress > 0 && light_stress - last_light_stress > 0.5) //Checks if we've just barreled into the light
 		try_blind_darkling(darkling)
 
 //Used to blind us when exposed to strong lights. Has a cooldown between blindings.
 /datum/component/darkling/proc/try_blind_darkling(var/mob/living/darkling)
-	//So that we aren't spamming people too much when they're in the light
+	//So that we aren't spamming people too much
 	if(next_blind > world.time)
 		return
 	//Gives us a nasty bump in light stress
 	current_light_stress = clamp(current_light_stress + 5, 0, max_light_stress)
 	darkling.flash_act()
 	darkling.blur_eyes(8)
-	next_blind = world.time + (rand(30 SECONDS, 60 SECONDS) * (darkling.STACON/10)) //Con determines how frequently you can get blinded
+	next_blind = world.time + (rand(15 SECONDS, 40 SECONDS) * (darkling.STACON/10)) //Con determines how frequently you can get blinded
 	to_chat(parent, span_danger("It's too bright! My eyes!"))
 
 //Applies the effects of our current light stress accumulation threshold
 /datum/component/darkling/proc/apply_stress_effects(var/mob/living/darkling)
+	//Small buff when in the dark and fully rested
+	if(src.current_light_stress == 0)
+		var/turf/T = get_turf(parent)
+		var/light_amount = T.get_lumcount()
+		if(light_amount <= 0.1)
+			darkling.apply_status_effect(/datum/status_effect/buff/darkling_darkly)
 	//Eye strain debuff
-	if(src.current_light_stress > 10)
+	if(src.current_light_stress > 15)
 		darkling.add_stress(/datum/stressevent/darkling_toobright)
 		darkling.apply_status_effect(/datum/status_effect/debuff/darkling_glare)
-		darkling.blur_eyes(3)
 	//Migraines
-	if(src.current_light_stress > 40)
-		darkling.blur_eyes(6)
+	if(src.current_light_stress > 50)
+		darkling.blur_eyes(2)
 		darkling.overlay_fullscreen("painflash", /atom/movable/screen/fullscreen/painflash)
-		darkling.overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, 4)
+		darkling.overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, 1)
 		darkling.add_stress(/datum/stressevent/darkling_migraine)
 		darkling.apply_status_effect(/datum/status_effect/debuff/darkling_migraine)
 
@@ -70,6 +77,7 @@
 	var/light_amount = T.get_lumcount()
 	var/resistance_multiplier = 1
 	resistance_multiplier += darkling.fovangle > 5
+	resistance_multiplier += darkling.get_eye_protection()
 	var/light_resistance = (0.6 * (darkling.STAEND/10)) * resistance_multiplier
 	var/light_multiplier = 1
 	if(GLOB.tod == "day" && isturf(darkling.loc))

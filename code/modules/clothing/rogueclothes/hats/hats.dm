@@ -84,12 +84,16 @@
 			body_parts_covered = HEAD|EARS|HAIR|NECK|NOSE|MOUTH
 			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 			flags_cover = null
+			flash_protect = FLASH_PROTECTION_FLASH
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
 			block2add = null
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
+/obj/item/clothing/head/roguetown/roguehood/shalal/ResetAdjust(mob/user)
+	. = ..()
+	flash_protect = initial(flash_protect)
 
 /obj/item/clothing/head/roguetown/roguehood/shalalz
 	name = "zybantine keffiyeh"
@@ -121,12 +125,17 @@
 			body_parts_covered = HEAD|EARS|HAIR|NECK|NOSE|MOUTH
 			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 			flags_cover = null
+			flash_protect = FLASH_PROTECTION_FLASH
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
 			block2add = null
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
+
+/obj/item/clothing/head/roguetown/roguehood/shalalz/ResetAdjust(mob/user)
+	. = ..()
+	flash_protect = initial(flash_protect)
 
 /obj/item/clothing/head/roguetown/eoramask
 	name = "eoran mask"

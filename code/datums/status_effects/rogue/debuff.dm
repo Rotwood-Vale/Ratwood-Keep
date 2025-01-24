@@ -318,8 +318,8 @@
 /datum/status_effect/debuff/darkling_migraine
 	id = "darkling_migraine"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/darkling_migraine
-	effectedstats = list("perception" = -1, "endurance" = -1, "speed" = -1)
-	duration = 1 MINUTES
+	effectedstats = list("endurance" = -1) //Will basically always be stacked with the eye strain penalty
+	duration = 20 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/darkling_migraine
 	name = "Migraine"
