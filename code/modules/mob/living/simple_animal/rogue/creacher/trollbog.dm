@@ -23,7 +23,7 @@
 	vision_range = 6
 	aggro_vision_range = 6
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 15,
-						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3, /obj/item/alch/sinew = 7, /obj/item/alch/horn = 2, /obj/alch/viscera = 3)
+						/obj/item/natural/hide = 15, /obj/item/natural/bundle/bone/full = 3, /obj/item/alch/sinew = 7, /obj/item/alch/horn = 2, /obj/item/alch/viscera = 3)
 	health = TROLLBOG_HEALTH * 1.1
 	maxHealth = TROLLBOG_HEALTH
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,

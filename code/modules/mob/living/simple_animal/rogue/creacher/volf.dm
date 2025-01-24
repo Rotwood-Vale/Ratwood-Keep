@@ -16,7 +16,7 @@
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
 						/obj/item/natural/hide = 2,
-						/obj/item/natural/fur = 1, /obj/item/natural/bone = 4, /obj/item/alch/sinew = 2, /obj/item/alch/bone = 1, /obj/alch/viscera = 1,
+						/obj/item/natural/fur = 1, /obj/item/natural/bone = 4, /obj/item/alch/sinew = 2, /obj/item/alch/bone = 1, /obj/item/alch/viscera = 1,
 						/obj/item/natural/fur = 1, 
 						/obj/item/natural/bone = 4,
 						/obj/item/natural/head/volf = 1)

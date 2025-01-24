@@ -104,7 +104,7 @@
 					/obj/item/reagent_containers/food/snacks/fat = 1,
 					/obj/item/natural/hide = 4,
 					/obj/item/natural/bundle/bone/full = 1,
-					/obj/item/clothing/head/roguetown/helmet/leather/saiga = 1, /obj/item/alch/sinew = 2, /obj/item/alch/bone = 1, /obj/alch/viscera = 1
+					/obj/item/clothing/head/roguetown/helmet/leather/saiga = 1, /obj/item/alch/sinew = 2, /obj/item/alch/bone = 1, /obj/item/alch/viscera = 1
 					)
 	faction = list("saiga")
 	attack_verb_continuous = "headbutts"
