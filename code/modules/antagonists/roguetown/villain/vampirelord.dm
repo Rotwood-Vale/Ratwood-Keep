@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(istype(examined_datum, /datum/antagonist/vampirelord/lesser))
 		return span_boldnotice("A vampire spawn.")
 	if(istype(examined_datum, /datum/antagonist/vampirelord))
-		return span_boldnotice("A Vampire Lord!.")
+		return span_boldnotice("A Vampire Lord!")
 	if(istype(examined_datum, /datum/antagonist/zombie))
 		return span_boldnotice("Another deadite.")
 	if(istype(examined_datum, /datum/antagonist/skeleton))
@@ -839,6 +839,16 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /datum/antagonist/skeleton/knight
 	name = "Death Knight"
 	increase_votepwr = FALSE
+	antag_hud_type = ANTAG_HUD_VAMPIRE
+	antag_hud_name = "Vspawn"
+
+/datum/antagonist/skeleton/knight/apply_innate_effects(mob/living/mob_override)
+	var/mob/living/M = mob_override || owner.current
+	add_antag_hud(antag_hud_type, antag_hud_name, M)
+
+/datum/antagonist/skeleton/knight/remove_innate_effects(mob/living/mob_override)
+	var/mob/living/M = mob_override || owner.current
+	remove_antag_hud(antag_hud_type, M)
 
 /datum/antagonist/skeleton/knight/on_gain()
 	. = ..()

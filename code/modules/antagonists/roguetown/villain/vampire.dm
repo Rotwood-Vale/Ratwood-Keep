@@ -200,7 +200,7 @@
 	hair_color = VD.cache_hair
 	eye_color = VD.cache_eyes
 	facial_hair_color = VD.cache_hair
-	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
 		eyes.eye_color = eye_color
 	update_body()
@@ -216,7 +216,7 @@
 	hair_color = "181a1d"
 	facial_hair_color = "181a1d"
 	eye_color = "ff0000"
-	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
 		eyes.eye_color = eye_color
 	update_body()
