@@ -102,7 +102,7 @@
 
 	if(!user.mind)
 		var/npcchance = 60
-		if(prob(npcchance + cumulative_penalty))
+		if(prob(npcchance + cumulative_penalty + acc_zone_penalties[zone]))
 			return zone
 		else
 			cumulative_penalty += (acc_zone_penalties[zone] || 0)
