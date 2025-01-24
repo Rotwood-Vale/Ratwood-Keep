@@ -59,6 +59,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
 			gloves = /obj/item/clothing/gloves/roguetown/chain
 			pants = /obj/item/clothing/under/roguetown/chainlegs
+			cloak = /obj/item/clothing/cloak/stabard
 			neck = /obj/item/clothing/neck/roguetown/bevor
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates

@@ -76,6 +76,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
 			H.set_blindness(0)
@@ -103,6 +104,7 @@
 			neck = /obj/item/clothing/neck/roguetown/gorget
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 			backl = /obj/item/storage/backpack/rogue/satchel
+			backr = /obj/item/rogueweapon/shield/buckler
 			belt = /obj/item/storage/belt/rogue/leather
 
 		if("Barbarian")

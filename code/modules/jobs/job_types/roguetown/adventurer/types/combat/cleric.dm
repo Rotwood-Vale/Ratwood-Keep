@@ -76,7 +76,7 @@
 					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 					head = /obj/item/clothing/head/roguetown/eoramask
 				else
-					cloak = /obj/item/clothing/suit/roguetown/shirt/robe //placeholder, anyone who doesn't have cool patron drip sprites just gets generic brown robes
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe //placeholder, anyone who doesn't have cool patron drip sprites just gets generic robes
 					head = /obj/item/clothing/head/roguetown/roguehood
 			H.cmode_music = 'sound/music/combat_holy.ogg'
 			H.change_stat("strength", 2)
@@ -110,29 +110,27 @@
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			switch(H.patron?.type)
 				if(/datum/patron/old_god)
-					cloak = /obj/item/clothing/cloak/psydontabard
-					head = /obj/item/clothing/head/roguetown/roguehood/psydon
+					cloak = /obj/item/clothing/cloak/templar/psydon
 				if(/datum/patron/divine/astrata)
-					head = /obj/item/clothing/head/roguetown/roguehood/astrata
-					cloak = /obj/item/clothing/cloak/templar/astratan
+					cloak = /obj/item/clothing/cloak/templar/astrata
 				if(/datum/patron/divine/noc)
-					head =  /obj/item/clothing/head/roguetown/nochood
-					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/noc
+					cloak = /obj/item/clothing/cloak/templar/noc
 				if(/datum/patron/divine/abyssor)
-					head = /obj/item/clothing/head/roguetown/roguehood/abyssor
-					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
+					cloak = /obj/item/clothing/cloak/templar/abyssor
 				if(/datum/patron/divine/dendor)
-					head = /obj/item/clothing/head/roguetown/dendormask
-					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+					cloak = /obj/item/clothing/cloak/templar/dendor
 				if(/datum/patron/divine/necra)
-					head = /obj/item/clothing/head/roguetown/necrahood
-					cloak = /obj/item/clothing/cloak/templar/necran
+					cloak = /obj/item/clothing/cloak/templar/necra
 				if (/datum/patron/divine/malum)
-					head = /obj/item/clothing/head/roguetown/roguehood //placeholder
-					cloak = /obj/item/clothing/cloak/templar/malumite
+					cloak = /obj/item/clothing/cloak/templar/malum
 				if (/datum/patron/divine/eora)
-					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
-					head = /obj/item/clothing/head/roguetown/eoramask
+					cloak = /obj/item/clothing/cloak/templar/eora
+				if (/datum/patron/divine/ravox)
+					cloak = /obj/item/clothing/cloak/templar/ravox
+				if (/datum/patron/divine/xylix)
+					cloak = /obj/item/clothing/cloak/templar/xylix
+				if (/datum/patron/divine/pestra)
+					cloak = /obj/item/clothing/cloak/templar/pestra
 				else
 					cloak = /obj/item/clothing/cloak/cape/crusader
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
@@ -284,7 +282,7 @@
 					cloak = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 					head = /obj/item/clothing/head/roguetown/eoramask
 				else
-					cloak = /obj/item/clothing/suit/roguetown/shirt/robe //placeholder, anyone who doesn't have cool patron drip sprites just gets generic brown robes
+					cloak = /obj/item/clothing/suit/roguetown/shirt/robe //placeholder, anyone who doesn't have cool patron drip sprites just gets generic robes
 					head = /obj/item/clothing/head/roguetown/roguehood
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.passive_devotion_gain += 0.25
