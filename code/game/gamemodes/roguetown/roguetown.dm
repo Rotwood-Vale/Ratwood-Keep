@@ -60,7 +60,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	if(allmig)
 		return FALSE
 
-	if(ttime >= GLOB.round_timer || roundvoteend)
+	if(roundvoteend)
 		if(ttime >= round_ends_at)
 			for(var/mob/living/carbon/human/H in GLOB.human_list)
 				if(H.stat != DEAD)
@@ -68,7 +68,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 						H.adjust_triumphs(H.allmig_reward)
 						H.allmig_reward = 0
 			return TRUE
-	else
+	else if(ttime >= GLOB.round_timer)
 		if(!SSvote.mode && SSticker.autovote)
 			SSvote.initiate_vote("endround", "Zizo")
 
