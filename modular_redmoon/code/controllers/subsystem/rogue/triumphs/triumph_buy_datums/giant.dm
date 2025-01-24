@@ -10,14 +10,6 @@
 /datum/triumph_buy/giant/on_activate(mob/living/carbon/human/H)
 	if(!usr)
 		return
-	if(usr.client.prefs.next_special_trait)
-		print_special_text(usr, usr.client.prefs.next_special_trait)
-		return
-	var/result = alert(usr, "You'll receive a unique trait for one round\nDo I really want become Giant?", "Be Giant", "Yes", "No")
-	if(result != "Yes")
-		return
-	if(usr.client.prefs.next_special_trait)
-		return
 	usr.client.prefs.next_special_trait = /datum/special_trait/backproblems
 	if(usr.client.prefs.next_special_trait)
 		log_game("SPECIALS: Rolled [usr.client.prefs.next_special_trait] for ckey: [usr.ckey]")
