@@ -152,19 +152,23 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.ambushable = FALSE
 
 /mob/living/carbon/human/proc/spawn_pick_class()
-	var/list/classoptions = list("Bard", "Fisher", "Hunter", "Miner", "Peasant", "Woodcutter", "Cheesemaker", "Blacksmith", "Carpenter", "Rogue", "Treasure Hunter", "Mage")
+	var/list/classoptions = list("Hunter", "Miner", "Town Physician", "Woodcutter", "Blacksmith", "Rogue", "Rogue Mage")
 	var/list/visoptions = list()
 
 	for(var/T in 1 to 5)
-		var/picked = pick(classoptions)
-		visoptions |= picked
+		if(length(classoptions))
+			visoptions += pick_n_take(classoptions)
 
-	var/selected = input(src, "Which class was I?", "VAMPIRE SPAWN") as anything in visoptions
+	var/selected = input(src, "Which class was I?", "VAMPIRE SPAWN") as anything in visoptions // Testing - use classoptions for all classes (And comment out 158 - 160)
 
 	for(var/datum/subclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
 		if(A.name == selected)
-			equipOutfit(A.outfit)
-			return
+			if(equipOutfit(A.outfit))
+				return
+			else
+				to_chat(src, span_clown("Failed to equip chosen class, choose a new one."))
+				log_message("ERROR: Unable to pick [A.name] as a subclass for vampire spawn.", LOG_GAME)
+				spawn_pick_class()
 
 /datum/outfit/job/roguetown/vamplord/pre_equip(mob/living/carbon/human/H)
 	..()
