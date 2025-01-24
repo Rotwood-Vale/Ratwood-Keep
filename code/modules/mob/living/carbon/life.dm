@@ -740,22 +740,64 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	if(HAS_TRAIT(src, TRAIT_NOSTAMINA))
 		energy = max_energy
 		return
-	if(nutrition <= 0 && !HAS_TRAIT(src, TRAIT_NOHUNGER)) // No food? No Stamina.
+	if(energy >= max_energy)
+		return
+	if(nutrition <= 0 && !HAS_TRAIT(src, TRAIT_NOHUNGER))
 		if(mob_timers["energy_recovery"])
 			if(world.time < mob_timers["energy_recovery"] + 30 SECONDS)
 				return
 		to_chat(src, span_bad("I am too hungry to recover... "))
 		mob_timers["energy_recovery"] = world.time
 		return
-	if(resting)
-		var/recovery_amt
-		var/bed_recovery_modifier = 1
-		var/obj/structure/bed/rogue/bed = locate() in loc
-		if(bed)
-			bed_recovery_modifier = bed.sleepy
-		if(IsSleeping())
-			recovery_amt = (max_energy * 0.10) * bed_recovery_modifier // Example: max energy 1000 -> 100 energy on ground, 300 on bed
+	var/obj/structure/bed/rogue/bed = locate() in loc
+	var/obj/structure/chair = locate() in loc
+	var/bed_recovery_modifier = 1
+	var/recovery_amt = 0
+
+	if(chair)
+		if(buckled)
+			recovery_amt = (max_energy * 0.015)
+		else if(buckled && resting)
+			recovery_amt = (max_energy * 0.015)
+		else if(IsSleeping() && buckled && resting)
+			recovery_amt = (max_energy * 0.03)
+	else
+		if(resting)
+			if(bed)
+				bed_recovery_modifier = bed.sleepy
+				if(IsSleeping())
+					if(buckled)
+						recovery_amt = (max_energy * 0.2) * bed_recovery_modifier
+					else
+						recovery_amt = (max_energy * 0.1) * bed_recovery_modifier
+		else if(IsSleeping())
+			recovery_amt = (max_energy * 0.02)
 		else
-			recovery_amt = (max_energy * 0.02) * bed_recovery_modifier // Example: max energy 1000 -> 20 energy on ground, 60 on bed
-		
-		energy_add(recovery_amt)
+			recovery_amt = (max_energy * 0.01)
+	var/baseregen = 2 // We use this for standard hydration and nutrition drain. 
+	var baseregenmod = baseregen + recovery_amt // We use this cute, little variable to add the base regen and previous recov amounts together for future calcies
+
+	var missingenergycounter = max_energy - energy // Using this to stop the code from regening energy if you have full energy. Without this it would constantly drain your nutrition and hydration for no gain.
+	if(missingenergycounter <= 0) // If there's no missing energy, do nothing.
+		return
+	if(baseregenmod > missingenergycounter) // Added this stopper so it doesn't return more energy than you need which, could possibly make you pay multiplicatives more.
+		baseregenmod = missingenergycounter
+
+	var regenround = round(baseregenmod) // No "14.84572384597234875218934".
+	if(regenround <= 0)
+		return
+
+	var halfcost = round(regenround / 2) // On testing, I think having it drain from one source first and then the other causes it to drain WAY TOO FAST
+
+	var nutritioncost = min(halfcost, nutrition) // Makes it so it doesn't drain more than we have
+	var hydrationcost = min(halfcost, hydration) // Makes it so it doesn't drain more than we have
+
+	var splitcost = nutritioncost + hydrationcost // So we split the cost, add them together and that is the pool we draw energy from.
+
+	if(splitcost > 0) // Checks if we can pay
+		nutrition -= nutritioncost
+		hydration -= hydrationcost
+
+		if(splitcost > regenround) // Just for edge case safeguarding
+			splitcost = regenround
+		energy_add(splitcost)

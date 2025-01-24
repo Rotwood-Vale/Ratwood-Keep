@@ -527,51 +527,51 @@
 				. = 1
 				if(stamina >= max_stamina)
 					hud_used.stamina.icon_state = "fat0"
-				else if(stamina > max_stamina*0.90)
+				else if(stamina > max_stamina*0.89)
 					hud_used.stamina.icon_state = "fat10"
-				else if(stamina > max_stamina*0.80)
+				else if(stamina > max_stamina*0.79)
 					hud_used.stamina.icon_state = "fat20"
-				else if(stamina > max_stamina*0.70)
+				else if(stamina > max_stamina*0.69)
 					hud_used.stamina.icon_state = "fat30"
-				else if(stamina > max_stamina*0.60)
+				else if(stamina > max_stamina*0.59)
 					hud_used.stamina.icon_state = "fat40"
-				else if(stamina > max_stamina*0.50)
+				else if(stamina > max_stamina*0.49)
 					hud_used.stamina.icon_state = "fat50"
-				else if(stamina > max_stamina*0.40)
+				else if(stamina > max_stamina*0.39)
 					hud_used.stamina.icon_state = "fat60"
-				else if(stamina > max_stamina*0.30)
+				else if(stamina > max_stamina*0.29)
 					hud_used.stamina.icon_state = "fat70"
-				else if(stamina > max_stamina*0.20)
+				else if(stamina > max_stamina*0.19)
 					hud_used.stamina.icon_state = "fat80"
-				else if(stamina > max_stamina*0.10)
+				else if(stamina > max_stamina*0.09)
 					hud_used.stamina.icon_state = "fat90"
-				else if(stamina >= 0)
+				else if(stamina <= 10)
 					hud_used.stamina.icon_state = "fat100"
 		if(hud_used.energy)
 			if(stat != DEAD)
 				. = 1
-				if(energy <= 0)
-					hud_used.energy.icon_state = "stam0"
-				else if(energy > max_energy*0.90)
+				if(energy >= max_energy)
 					hud_used.energy.icon_state = "stam100"
-				else if(energy > max_energy*0.80)
+				else if(energy > max_energy*0.89)
 					hud_used.energy.icon_state = "stam90"
-				else if(energy > max_energy*0.70)
+				else if(energy > max_energy*0.79)
 					hud_used.energy.icon_state = "stam80"
-				else if(energy > max_energy*0.60)
+				else if(energy > max_energy*0.69)
 					hud_used.energy.icon_state = "stam70"
-				else if(energy > max_energy*0.50)
+				else if(energy > max_energy*0.59)
 					hud_used.energy.icon_state = "stam60"
-				else if(energy > max_energy*0.40)
+				else if(energy > max_energy*0.49)
 					hud_used.energy.icon_state = "stam50"
-				else if(energy > max_energy*0.30)
+				else if(energy > max_energy*0.39)
 					hud_used.energy.icon_state = "stam40"
-				else if(energy > max_energy*0.20)
+				else if(energy > max_energy*0.29)
 					hud_used.energy.icon_state = "stam30"
-				else if(energy > max_energy*0.10)
+				else if(energy > max_energy*0.19)
 					hud_used.energy.icon_state = "stam20"
-				else if(energy > 0)
+				else if(energy > max_energy*0.09)
 					hud_used.energy.icon_state = "stam10"
+				else if(energy <= 10)
+					hud_used.energy.icon_state = "stam0"
 
 		if(hud_used.zone_select)
 			hud_used.zone_select.update_icon()

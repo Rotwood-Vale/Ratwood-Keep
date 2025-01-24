@@ -163,7 +163,7 @@
 			if(!(M.status_flags & CANPUSH) || HAS_TRAIT(M, TRAIT_PUSHIMMUNE))
 				to_chat(user, span_warning("Can't get a grip!"))
 				return FALSE
-			user.stamina_add(rand(7,15))
+			user.stamina_add(10)
 			M.grippedby(user)
 		if(/datum/intent/grab/choke)
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
@@ -402,8 +402,8 @@
 	candodge = FALSE
 	canparry = FALSE
 	no_attack = TRUE
-	misscost = 2
-	releasedrain = 2
+	misscost = 5
+	releasedrain = 0
 
 /datum/intent/grab/move
 	name = "grab move"
