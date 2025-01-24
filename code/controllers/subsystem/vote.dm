@@ -252,7 +252,7 @@ SUBSYSTEM_DEF(vote)
 					choices.Add(option)
 			if("endround")
 				if(initiator_key)
-					initiator_key = initiator
+					initiator = initiator_key
 				else
 					initiator_key = "Zizo"
 				choices.Add("Continue Playing","End Round")
@@ -262,7 +262,7 @@ SUBSYSTEM_DEF(vote)
 		mode = vote_type
 		initiator = initiator_key
 		started_time = world.time
-		var/text = "[capitalize(mode)] vote started by [initiator]."
+		var/text = "[capitalize(mode)] vote started by [initiator] / [usr]."
 		if(mode == "custom")
 			text += "\n[question]"
 		log_vote(text)
