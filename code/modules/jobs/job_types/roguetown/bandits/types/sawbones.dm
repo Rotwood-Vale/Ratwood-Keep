@@ -50,5 +50,4 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/purge)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/debride)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/cpr)
-	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

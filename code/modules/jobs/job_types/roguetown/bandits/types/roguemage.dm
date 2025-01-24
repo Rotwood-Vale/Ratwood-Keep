@@ -54,5 +54,4 @@
 		H.mind.adjust_spellpoints(4)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
-		H.verbs |= /mob/proc/haltyell
 		H.ambushable = FALSE
