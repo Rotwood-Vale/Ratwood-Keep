@@ -170,6 +170,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
@@ -186,4 +187,4 @@
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 			head = /obj/item/clothing/head/roguetown/bucklehat
 			gloves = /obj/item/clothing/gloves/roguetown/otavan
-			beltl = /obj/item/flashlight/flare/torch/lantern
+			beltl = /obj/item/reagent_containers/glass/bottle/rogue/stampot

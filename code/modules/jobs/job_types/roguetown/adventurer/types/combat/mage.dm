@@ -1,4 +1,4 @@
-/datum/advclass/mage
+mage /datum/advclass/mage
 	name = "Mage"
 	tutorial = "Mages are skilled in the arcane. Scholars all over the world spend years studying magic - most do not succeed."
 	allowed_sexes = list(MALE, FEMALE)
@@ -37,6 +37,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 			if(H.age == AGE_OLD)

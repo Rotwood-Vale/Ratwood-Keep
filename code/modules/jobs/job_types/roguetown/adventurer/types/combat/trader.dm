@@ -33,6 +33,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
 			head = /obj/item/clothing/head/roguetown/roguehood
 			mask = /obj/item/clothing/mask/rogue/facemask/steel
 			shoes = /obj/item/clothing/shoes/roguetown/boots
