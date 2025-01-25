@@ -70,6 +70,8 @@
 
 /obj/item/needle/attack_obj(obj/O, mob/living/user)
 	var/obj/item/I = O
+	if(isnull(I) || istype(I, /obj/item))
+		return
 	if(can_repair)
 		if(stringamt < 1)
 			to_chat(user, span_warning("The needle has no thread left!"))
