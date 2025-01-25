@@ -2224,12 +2224,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
 "bkT" = (
-/obj/item/needle/thorn,
-/obj/item/needle/thorn,
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
-	},
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/rtfield)
 "bkZ" = (
@@ -3656,6 +3651,8 @@
 /obj/structure/closet/crate/roguecloset/inn/south{
 	pixel_y = 6
 	},
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
 "bWt" = (
@@ -15060,10 +15057,18 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "icO" = (
-/obj/machinery/tanningrack,
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
+/obj/structure/closet/crate/chest{
+	lockid = "farm"
+	},
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/rtfield)
 "ida" = (
@@ -19109,6 +19114,12 @@
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
 "kjF" = (
@@ -24203,6 +24214,14 @@
 /obj/item/storage/keyring,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"ndc" = (
+/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/roguegrass/water,
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/outdoors/town/harbor)
 "ndu" = (
 /obj/structure/stairs{
 	dir = 8
@@ -26755,6 +26774,11 @@
 "ouf" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors/town/dwarfin)
+"ouj" = (
+/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/roguegrass/water,
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/town/harbor)
 "oul" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/cobble,
@@ -35867,6 +35891,7 @@
 /area/rogue/indoors/town/manor)
 "tvL" = (
 /obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/roguegrass/water,
 /turf/open/water/river{
 	dir = 1;
 	icon_state = "rockwd"
@@ -39830,16 +39855,36 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/dwarfin)
 "vIr" = (
-/obj/item/seeds/apple,
-/obj/item/seeds/apple,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
+	},
+/obj/item/seeds/apple{
+	pixel_x = 10
+	},
+/obj/item/seeds/apple{
+	pixel_x = 10
+	},
+/obj/item/seeds/wheat{
+	pixel_x = -10
+	},
+/obj/item/seeds/wheat{
+	pixel_x = -10
+	},
+/obj/item/seeds/pipeweed{
+	pixel_x = -10;
+	pixel_y = 10
+	},
+/obj/item/seeds/pipeweed{
+	pixel_x = -10;
+	pixel_y = 10
+	},
+/obj/item/seeds/potato{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/obj/item/seeds/potato{
+	pixel_x = 10;
+	pixel_y = 10
 	},
 /turf/open/floor/rogue/grassred,
 /area/rogue/outdoors/druidgrove)
@@ -40261,6 +40306,7 @@
 "vVy" = (
 /obj/structure/flora/ausbushes/reedbush,
 /obj/structure/glowshroom,
+/obj/structure/flora/roguegrass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/town/harbor)
 "vVQ" = (
@@ -41748,6 +41794,7 @@
 	dir = 1;
 	icon_state = "tablewood1"
 	},
+/obj/item/needle/thorn,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/rtfield)
 "wKp" = (
@@ -236504,7 +236551,7 @@ xRS
 xRS
 xRS
 xRS
-wTU
+ouj
 hZk
 rCb
 aOb
@@ -239526,7 +239573,7 @@ xRS
 hXf
 xRS
 xRS
-wTU
+ouj
 hXf
 hkm
 bdq
@@ -241257,7 +241304,7 @@ xRS
 hkm
 hkm
 hkm
-wTU
+ouj
 rCb
 bdq
 ofy
@@ -246490,7 +246537,7 @@ gxl
 hDn
 hkm
 oCh
-wTU
+ouj
 hkm
 hSc
 hXf
@@ -246932,7 +246979,7 @@ vtq
 cZY
 bfx
 hkm
-plx
+ndc
 bTS
 uoQ
 otg
@@ -249907,7 +249954,7 @@ oXd
 hkm
 pzv
 pzv
-plx
+ndc
 kDH
 iyG
 qmr
@@ -249917,7 +249964,7 @@ hOY
 pzv
 pzv
 pzv
-plx
+ndc
 pzv
 yfZ
 pzv
@@ -250784,7 +250831,7 @@ pzv
 kgT
 kgT
 pzv
-plx
+ndc
 pzv
 pzv
 pzv
