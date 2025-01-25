@@ -45,10 +45,10 @@
 //Health Defines
 #define HEALTH_THRESHOLD_CRIT 0
 #define HEALTH_THRESHOLD_FULLCRIT -50
-#define HEALTH_THRESHOLD_DEAD -100
-#define HEALTH_MAX_DAMAGE -200
+#define HEALTH_THRESHOLD_DEAD -200
+#define HEALTH_MAX_DAMAGE -250
 
-#define HEALTH_THRESHOLD_NEARDEATH -75 //Not used mechanically, but to determine if someone is so close to death they hear the other side
+#define HEALTH_THRESHOLD_NEARDEATH -150 //Not used mechanically, but to determine if someone is so close to death they hear the other side
 
 //Actual combat defines
 

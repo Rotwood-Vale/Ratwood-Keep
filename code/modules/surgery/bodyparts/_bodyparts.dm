@@ -322,33 +322,41 @@
 		return FALSE
 
 	//cap at maxdamage
-	var/overflow_dam = 0
+	var/overflow_dam_brute = 0
+	var/overflow_dam_burn = 0
 	if(brute_dam + brute > max_damage)
-		overflow_dam += (brute_dam + brute - max_damage)
+		overflow_dam_brute += (brute_dam + brute - max_damage)
 		brute_dam = max_damage
 	else
 		brute_dam += brute
 	if(burn_dam + burn > max_damage)
-		overflow_dam += (burn_dam + burn - max_damage)
+		overflow_dam_burn += (burn_dam + burn - max_damage)
 		burn_dam = max_damage
 	else
 		burn_dam += burn
-	if(overflow_dam >= 5)
-		if(owner)
-			overflow_dam = clamp(overflow_dam * 0.8, 5, 15) // Overflow shouldn't be the main source of critting. Max of 15 overflow.
-			var/list/temp_bodyparts = shuffle(owner.bodyparts)
-			for(var/obj/item/bodypart/bp in temp_bodyparts)
-				if(!istype(src, /obj/item/bodypart/chest) && !istype(src, /obj/item/bodypart/head))
-					if(istype(bp, /obj/item/bodypart/chest) || istype(bp, /obj/item/bodypart/head))
+	if(istype(src, /obj/item/bodypart/chest) || istype(src, /obj/item/bodypart/head))
+		if(overflow_dam_brute >= 5 || overflow_dam_burn >= 5)
+			if(owner)
+				// Overflow shouldn't be the main source of critting. Max of 15 overflow.
+				overflow_dam_brute = clamp(overflow_dam_brute * 0.8, 0, 15)
+				overflow_dam_burn = clamp(overflow_dam_burn * 0.8, 0, 15)
+				
+				// Shufle limbs to not damage the same ones over and over.
+				var/list/temp_bodyparts = shuffle(owner.bodyparts)
+				for(var/obj/item/bodypart/bp in temp_bodyparts)
+					if(bp == src) // Can't overflow onto itself.
 						continue
-				if(overflow_dam <= 1)
-					break
-				if(bp == src)
-					continue
-				if(bp.receive_damage(overflow_dam, overflow_dam))
-					overflow_dam *= 0.5 // Remaining overflow for next loop. Reduce by half. 50%
+					if(overflow_dam_burn <= 1 && overflow_dam_brute <= 1)
+						break
+					if(overflow_dam_brute >= 1)
+						if(bp.receive_damage(brute = overflow_dam_brute))
+							overflow_dam_brute *= 0.5 // Remaining overflow for next loop. Reduce by half. 50%
+					if(overflow_dam_burn >= 1)
+						if(bp.receive_damage(burn = overflow_dam_burn))
+							overflow_dam_burn *= 0.5 // Remaining overflow for next loop. Reduce by half. 50%
 	//We've dealt the physical damages, if there's room lets apply the stamina damage.
 	stamina_dam += round(CLAMP(stamina, 0, max_stamina_damage - stamina_dam), DAMAGE_PRECISION)
+	
 
 	if(owner)
 		if(!HAS_TRAIT(owner, TRAIT_NOPAIN))
