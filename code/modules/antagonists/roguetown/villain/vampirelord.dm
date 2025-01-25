@@ -31,7 +31,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/obj/structure/vampire/bloodpool/mypool
 	var/last_transform
 	var/cache_skin
-	var/cache_eyes
+	var/obj/item/organ/eyes/cache_eyes
+	var/cache_eye_color
 	var/cache_hair
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/batform //attached to the datum itself to avoid cloning memes, and other duplicates
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/gaseousform/gas
@@ -83,11 +84,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	vamp_look()
-	if(eyes)
-		eyes.Remove(owner.current,1)
-		QDEL_NULL(eyes)
-	eyes = new /obj/item/organ/eyes/night_vision/zombie
-	eyes.Insert(owner.current)
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix)
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
@@ -152,14 +148,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.ambushable = FALSE
 
 /mob/living/carbon/human/proc/spawn_pick_class()
-	var/list/classoptions = list("Hunter", "Miner", "Town Physician", "Woodcutter", "Blacksmith", "Rogue", "Rogue Mage")
+	var/list/classoptions = list("Hunter", "Miner", "Healer", "Woodcutter", "Blacksmith", "Rogue", "Magos", "Vagabond", "Scavenger")
 	var/list/visoptions = list()
 
-	for(var/T in 1 to 5)
+	for(var/T in 1 to 5) // leave as length(classoptions) for testing if you want all classes to show up.
 		if(length(classoptions))
 			visoptions += pick_n_take(classoptions)
 
-	var/selected = input(src, "Which class was I?", "VAMPIRE SPAWN") as anything in visoptions // Testing - use classoptions for all classes (And comment out 158 - 160)
+	var/selected = input(src, "Which class was I?", "VAMPIRE SPAWN") as anything in visoptions
 
 	for(var/datum/subclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
 		if(A.name == selected)
@@ -340,12 +336,19 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /datum/antagonist/vampirelord/proc/vamp_look()
 	var/mob/living/carbon/human/V = owner.current
 	cache_skin = V.skin_tone
-	cache_eyes = V.eye_color
+	var/obj/item/organ/eyes/eyes = V.getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		cache_eyes = V.dna?.species.organs[ORGAN_SLOT_EYES]
+		cache_eye_color = eyes.eye_color
+		eyes.Remove(V)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(V)
+	set_eye_color(V, "#ff0000", "#ff0000")
 	cache_hair = V.hair_color
 	V.skin_tone = "c9d3de"
 	V.hair_color = "181a1d"
 	V.facial_hair_color = "181a1d"
-	V.eye_color = "ff0000"
 	V.update_body()
 	V.update_hair()
 	V.update_body_parts(redraw = TRUE)
@@ -671,15 +674,12 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /obj/structure/vampire/bloodpool/proc/update_pool(change)
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/tempmax = 8000
-	if(istype(C))
-		for(var/datum/mind/V in C.vampires)
-			if(V.special_role == "Vampire Spawn")
-				tempmax += 4000
-		if(maximum != tempmax)
-			maximum = tempmax
-			if(current > maximum)
-				current = maximum
+	var/new_max = 8000
+	for(var/datum/mind/V in C.vampires)
+		if(V.special_role == "Vampire Spawn")
+			new_max += 4000
+	if(maximum != new_max)
+		maximum = new_max
 	if(debug)
 		maximum = 999999
 		current = 999999

@@ -198,14 +198,18 @@
 	VD.disguised = TRUE
 	skin_tone = VD.cache_skin
 	hair_color = VD.cache_hair
-	eye_color = VD.cache_eyes
 	facial_hair_color = VD.cache_hair
 	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
-		eyes.eye_color = eye_color
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new VD.cache_eyes
+	eyes.Insert(src)
+	set_eye_color(src, VD.cache_eye_color, VD.cache_eye_color)
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
+	eyes.update_accessory_colors()
 	to_chat(src, span_notice("My true form is hidden."))
 
 /mob/living/carbon/human/proc/vampire_undisguise(datum/antagonist/vampirelord/VD)
@@ -215,13 +219,17 @@
 	skin_tone = "c9d3de"
 	hair_color = "181a1d"
 	facial_hair_color = "181a1d"
-	eye_color = "ff0000"
 	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
-		eyes.eye_color = eye_color
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(src)
+	set_eye_color(src, "#FF0000", "#FF0000")
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
+	eyes.update_accessory_colors()
 	to_chat(src, span_notice("My true form is revealed."))
 
 
