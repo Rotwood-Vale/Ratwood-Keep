@@ -186,56 +186,56 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 
 			dat += "<td style='width:33%;text-align:center;vertical-align: text-top'>"
 			dat += "<b>BODY:</b><br><br>"
-			dat += "<b>HEAD: </b>"
+			dat += "<b><font size = 4; font color = '#dddada'>HEAD</b></font><br>"
 			if(H.head)
 				dat += capitalize("[H.head.name]<br>")
 				dat += defense_report(H.head, is_stupid, is_normal, is_smart, "THE HEAD I THINK. MAYBE MORE?")
 			else
-				dat += "NOTHING <br>"
+				dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
 			
-			dat += "<b>TORSO: </b>"
+			dat += "<b><font size = 4; font color = '#dddada'>TORSO</b></font><br>"
 			if(H.wear_armor)
 				dat += capitalize("[H.wear_armor.name]<br>")
 				dat += defense_report(H.wear_armor, is_stupid, is_normal, is_smart, "THE CHEST! PROBABLY GROIN TOO?")
 			else
-				dat += "NOTHING <br>"
+				dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
 
-			dat += "<b>PANTS: </b>"
+			dat += "<b><font size = 4; font color = '#dddada'>PANTS</b></font><br>"
 			if(H.wear_pants)
 				dat += capitalize("[H.wear_pants.name]<br>")
 				dat += defense_report(H.wear_pants, is_stupid, is_normal, is_smart, "THE IMPORTANT PARTS! LEGS AS WELL, I THINK.")
 			else
-				dat += "NOTHING <br>"
+				dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
 
 			//Extra stuff you can assess if you match the thresholds.
 			if((is_normal || is_smart) && !is_stupid)
-				dat += "<b>NECK: </b>"
+				dat += "<b><font size = 4; font color = '#dddada'>NECK</b></font><br>"
 				if(H.wear_neck)
 					dat += capitalize("[H.wear_neck.name]<br>")
 					dat += defense_report(H.wear_neck, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
 				else
-					dat += "NOTHING <br>"
+					dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
 
-				dat += "<b>GLOVES: </b>"
+				dat += "<b><font size = 4; font color = '#dddada'>GLOVES</b></font><br>"
 				if(H.gloves)
 					dat += capitalize("[H.gloves.name]<br>")
 					dat += defense_report(H.gloves, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
 				else
-					dat += "NOTHING <br>"
+					dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
 
-				dat += "<b>SHIRT: </b>"
+				dat += "<b><font size = 4; font color = '#dddada'>SHIRT</b></font><br>"
 				if(H.wear_shirt)
 					dat += capitalize("[H.wear_shirt.name]<br>")
 					dat += defense_report(H.wear_shirt, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
 				else
-					dat += "NOTHING <br>"
+					dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
 
-				dat += "<b>SHOES: </b>"
+				dat += "<b><font size = 4; font color = '#dddada'>SHOES</b></font><br>"
 				if(H.shoes)
 					dat += capitalize("[H.shoes.name]<br>")
 					dat += defense_report(H.shoes, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
 				else
-					dat += "NOTHING <br>"					
+					dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"					
 
 			
 			dat += "</td>"
@@ -246,59 +246,64 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				for(var/S in subtypesof(/datum/skill/combat))
 					var/datum/skill/combat/SK = S
 					if(user.mind?.get_skill_level(S) > 0)
-						dat += "<b>[SK.name]</b><br>"
+						dat += "<font size = 4; font color = '#dddada'><b>[SK.name]</b><br></font>"
 						var/skilldiff = user.mind?.get_skill_level(S) - H.mind?.get_skill_level(S)
 						dat += "[skilldiff_report(skilldiff)] <br>"
+						dat += "-----------------------<br>"
 				if(is_smart)
 					for(var/S in subtypesof(/datum/skill))
 						if(user.mind?.get_skill_level(S) > 0)
 							if(!ispath(S, /datum/skill/combat))	//We already did these.
 								var/datum/skill/SL = S
-								dat += "<b>[SL.name]</b><br>"
+								dat += "<font size = 4; font color = '#dddada'><b>[SL.name]</b><br></font>"
 								var/skilldiff = user.mind?.get_skill_level(S) - H.mind?.get_skill_level(S)
 								dat += "[skilldiff_report(skilldiff)] <br>"
+								dat += "-----------------------<br>"
 							else
 								continue
 					
 			dat += "</td>"
 			dat += "</tr>"
-			var/datum/browser/popup = new(user, "assess", ntitle = "[src] Assesment", nwidth = 500, nheight = 600)
+			var/datum/browser/popup = new(user, "assess", ntitle = "[src] Assesment", nwidth = 700, nheight = 600)
 			popup.set_content(dat.Join())
 			popup.open(FALSE)
 		return
 	return ..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that. - I made it worse sorry guys.
 
 //Sorry colorblind folks...
-/proc/colorgrade_rating(var/input, var/rating)
+/proc/colorgrade_rating(var/input, var/rating, var/elaborate = FALSE)
+	var/str
 	switch(rating)
 		if(0 to 20)
-			return "<font color = '#c91a1a'>[input]</font>"
+			str = elaborate ? "<font color = '#c91a1a'>[input] (BAD)</font>" : "<font color = '#c91a1a'>[input]</font>"
 		if(20 to 40)
-			return "<font color = '#755211'>[input]</font>"
+			str = elaborate ? "<font color = '#755211'>[input] (POOR)</font>" : "<font color = '#755211'>[input]</font>"
 		if(40 to 60)
-			return "<font color = '#d2d440'>[input]</font>"
+			str = elaborate ? "<font color = '#d2d440'>[input] (AVERAGE)</font>" : "<font color = '#d2d440'>[input]</font>"
 		if(60 to 80)
-			return "<font color = '#308020'>[input]</font>"
+			str = elaborate ? "<font color = '#308020'>[input] (GOOD)</font>" : "<font color = '#308020'>[input]</font>"
 		if(80 to 90)
-			return "<font color = '#0fe021'>[input]</font>"
+			str = elaborate ? "<font color = '#0fe021'>[input] (GREAT)</font>" : "<font color = '#0fe021'>[input]</font>"
 		if(100)
-			return "<font color = '#2492f8'>[input]</font>"
+			str = elaborate ? "<font color = '#2492f8'>[input] (IMMUNE)</font>" : "<font color = '#2492f8'>[input]</font>"
+	return str
 
 /proc/defense_report(var/obj/item/clothing/C, var/stupid, var/normal, var/smart, var/stupid_string)
 	var/list/str = list()
 	if(C.armor)
 		var/defense = "<u><b>DEFENSE: </b></u><br>"
 		var/datum/armor/def_armor = C.armor
-		defense += "[colorgrade_rating("BLUNT", def_armor.blunt)] "
-		defense += "[colorgrade_rating("SLASH", def_armor.slash)] "
-		defense += "[colorgrade_rating("STAB", def_armor.stab)] "
+		defense += "[colorgrade_rating("BLUNT", def_armor.blunt)] | "
+		defense += "[colorgrade_rating("SLASH", def_armor.slash)] | "
+		defense += "[colorgrade_rating("STAB", def_armor.stab)] | "
 		defense += "[colorgrade_rating("PIERCING", def_armor.piercing)] "
 		str += "[defense]<br>"
 
 	var/coverage = "<u><b>COVERS: </b></u><br>"
 	if(!stupid)
+		coverage += " | "
 		for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
-			coverage += "<b>[zone] </b>"
+			coverage += "<b>[zone] | </b>"
 		str += "[coverage]<br>"
 	else
 		str += coverage
@@ -308,7 +313,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		for(var/zone in C.prevent_crits)
 			crits += "[capitalize(zone)] "
 		str += crits
-	str += "<br><br>"
+	str += "<br>---------------------------<br>"
 	return str
 
 /proc/skilldiff_report(var/input)
