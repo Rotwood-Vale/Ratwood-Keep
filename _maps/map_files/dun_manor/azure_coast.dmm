@@ -1148,6 +1148,13 @@
 	max_integrity = 50000
 	},
 /area/rogue/under/cave/mazedungeon)
+"hf" = (
+/obj/effect/decal/cobbleedge{
+	dir = 5
+	},
+/obj/item/restraints/legcuffs/beartrap/armed,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/under/cave/orcdungeon)
 "hg" = (
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -1207,7 +1214,7 @@
 /area/rogue/indoors/shelter)
 "hF" = (
 /obj/structure/rack/rogue,
-/obj/effect/spawner/lootdrop/roguetown/dungeon,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/medical,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/orcdungeon)
 "hL" = (
@@ -1767,16 +1774,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mossback,
 /turf/open/water/ocean,
 /area/rogue/indoors/cave)
-"mG" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
-	health = 400;
-	healable = 0;
-	name = "Wounded Minotaur";
-	faction = list("orcs")
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/under/cave/orcdungeon)
 "mI" = (
 /obj/item/clothing/neck/roguetown/psicross/astrata,
 /turf/open/floor/rogue/blocks/platform,
@@ -2063,6 +2060,15 @@
 "oT" = (
 /obj/structure/bars/steel,
 /turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave/orcdungeon)
+"oU" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur{
+	health = 400;
+	healable = 0;
+	name = "Wounded Minotaur";
+	faction = list("orcs")
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/orcdungeon)
 "oX" = (
 /turf/closed/wall/mineral/rogue/tent{
@@ -2948,7 +2954,7 @@
 "vA" = (
 /obj/machinery/light/rogue/torchholder/l,
 /obj/structure/rack/rogue,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/medical,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/orcdungeon)
 "vC" = (
@@ -3545,10 +3551,6 @@
 "Ai" = (
 /obj/structure/fluff/statue/small,
 /turf/open/floor/rogue/blocks,
-/area/rogue/under/cave/orcdungeon)
-"An" = (
-/obj/effect/decal/cleanable/blood/gibs,
-/turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave/orcdungeon)
 "Ao" = (
 /turf/open/floor/rogue/dirt/road,
@@ -4701,9 +4703,6 @@
 /obj/item/clothing/neck/roguetown/psicross/astrata,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/orcdungeon)
-"IG" = (
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/under/cave/orcdungeon)
 "IH" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/cobble,
@@ -4933,6 +4932,11 @@
 	icon_state = "weird1"
 	},
 /area/rogue/under/cave/mazedungeon)
+"Kj" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/orc/orc_marauder,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/orcdungeon)
 "Kn" = (
 /turf/open/lava/smooth/lava_land_surface,
 /area/rogue/under/cave/orcdungeon)
@@ -5038,10 +5042,6 @@
 "KR" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter)
-"KS" = (
-/obj/item/restraints/legcuffs/beartrap/armed,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/under/cave/orcdungeon)
 "KT" = (
 /obj/structure/stairs/stone{
 	icon_state = "stonestairs";
@@ -5067,12 +5067,6 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/cave)
-"Lj" = (
-/obj/structure/fluff/walldeco/chains{
-	pixel_x = 9
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/cave/orcdungeon)
 "Lk" = (
 /obj/item/roguecoin/copper,
 /turf/open/water/sewer,
@@ -5120,7 +5114,10 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
 "LF" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/orc/orc_marauder/spear,
+/obj/structure/winch{
+	gid = "dungeondoor";
+	redstone_id = "graggarite1"
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/orcdungeon)
 "LH" = (
@@ -6183,9 +6180,7 @@
 /area/rogue/under/cave/mazedungeon)
 "TW" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/fluff/walldeco/chains{
-	pixel_x = 9
-	},
+/obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/orcdungeon)
 "TZ" = (
@@ -6453,10 +6448,6 @@
 "Wa" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cave/orcdungeon)
-"We" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/under/cave/orcdungeon)
 "Wi" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/money,
 /obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
@@ -6533,6 +6524,11 @@
 "WI" = (
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/under/cave/mazedungeon)
+"WJ" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/retaliate/rogue/orc/orc_marauder/spear,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/orcdungeon)
 "WL" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/cloth,
@@ -6888,6 +6884,13 @@
 /mob/living/simple_animal/hostile/rogue/haunt,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cave/mazedungeon)
+"Zz" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/structure/gate{
+	redstone_id = "graggarite1"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave/orcdungeon)
 "ZB" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/carpet/lord/left,
@@ -6907,7 +6910,7 @@
 "ZG" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/structure/rack/rogue,
-/obj/effect/spawner/lootdrop/roguetown/dungeon,
+/obj/effect/spawner/lootdrop/roguetown/dungeon/armor,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/orcdungeon)
 "ZH" = (
@@ -14734,7 +14737,7 @@ ms
 sT
 ms
 ms
-RL
+sT
 RL
 RL
 sA
@@ -14866,7 +14869,7 @@ sT
 ms
 ms
 ms
-RL
+ms
 sA
 qq
 yx
@@ -15125,7 +15128,7 @@ UR
 UR
 UR
 UR
-UR
+ms
 sT
 sA
 qq
@@ -15777,7 +15780,7 @@ Jx
 eJ
 UR
 UR
-UR
+ms
 ms
 ms
 sT
@@ -16027,15 +16030,15 @@ kX
 kX
 kX
 GX
-dB
+hf
 ob
 eJ
 gO
 kX
-wj
+WJ
 Jx
 LF
-dN
+eJ
 eJ
 eJ
 UR
@@ -16157,7 +16160,7 @@ zh
 kX
 kX
 eJ
-KS
+ob
 ob
 eJ
 yL
@@ -16165,7 +16168,7 @@ kX
 kX
 ZV
 EY
-EY
+Zz
 GL
 eJ
 UR
@@ -16555,7 +16558,7 @@ hZ
 kX
 kX
 rl
-Us
+eJ
 eJ
 eJ
 eJ
@@ -16685,7 +16688,7 @@ NP
 kX
 kX
 kX
-go
+Kj
 SB
 zF
 eJ
@@ -16811,7 +16814,7 @@ ob
 ob
 eJ
 eJ
-Lj
+uj
 kX
 Hz
 fw
@@ -17335,7 +17338,7 @@ ml
 eJ
 ZG
 vA
-hF
+ag
 kX
 kX
 eJ
@@ -32420,7 +32423,7 @@ eJ
 dN
 wj
 Us
-IG
+YY
 Us
 wj
 YY
@@ -32681,10 +32684,10 @@ eJ
 eJ
 Us
 kX
-We
+Sl
 kX
 Qi
-An
+NV
 Qi
 YY
 te
@@ -32941,9 +32944,9 @@ Mp
 GL
 kX
 kX
+oU
 kX
-kX
-mG
+Sl
 Qi
 Sl
 Sl
@@ -33200,7 +33203,7 @@ eJ
 eJ
 eJ
 kX
-IG
+YY
 kX
 kX
 NV
@@ -33334,7 +33337,7 @@ kX
 Us
 Qi
 wj
-IG
+YY
 eJ
 UR
 UR
@@ -33461,7 +33464,7 @@ dN
 Us
 kX
 kX
-We
+Sl
 kX
 Rh
 eJ
