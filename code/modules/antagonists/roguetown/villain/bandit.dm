@@ -4,6 +4,7 @@
 	antagpanel_category = "Bandit"
 	job_rank = ROLE_BANDIT
 	antag_hud_type = ANTAG_HUD_TRAITOR
+	allowed_races = RACES_VERY_SHUNNED_UP // why are seelies even considered for banditry, breh.
 	antag_hud_name = "bandit"
 	rogue_enabled = TRUE
 	confess_lines = list(
