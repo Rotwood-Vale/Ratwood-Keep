@@ -1,4 +1,4 @@
-mage /datum/advclass/mage
+/datum/advclass/mage
 	name = "Mage"
 	tutorial = "Mages are skilled in the arcane. Scholars all over the world spend years studying magic - most do not succeed."
 	allowed_sexes = list(MALE, FEMALE)
