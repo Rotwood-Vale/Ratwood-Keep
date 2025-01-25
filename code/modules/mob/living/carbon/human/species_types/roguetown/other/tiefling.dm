@@ -82,7 +82,7 @@
 		/datum/customizer/organ/horns/humanoid/tiefling,
 		/datum/customizer/organ/tail/tiefling,
 		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/human,
+		/datum/customizer/organ/penis/anthro, // REDMOON EDIT - заменяем на более "подходящее" - WAS: /datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		)
