@@ -240,7 +240,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			
 			dat += "</td>"
 
-			dat += "<td style='width:33%;text-align:center;vertical-align: text-top'>"
+			dat += "<td style='width:40%;text-align:center;vertical-align: text-top'>"
 			if(!is_guarded && !is_stupid)
 				dat += "<b>SKILLS:</b><br><br>"
 				for(var/S in subtypesof(/datum/skill/combat))
