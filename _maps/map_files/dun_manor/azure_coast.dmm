@@ -5115,8 +5115,8 @@
 /area/rogue/outdoors/beach)
 "LF" = (
 /obj/structure/winch{
-	gid = "dungeondoor";
-	redstone_id = "graggarite1"
+	gid = "graggaritegate";
+	redstone_id = "graggaritegate"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/orcdungeon)
@@ -6887,7 +6887,8 @@
 "Zz" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/structure/gate{
-	redstone_id = "graggarite1"
+	redstone_id = "graggaritegate";
+	gid = "graggaritegate"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/orcdungeon)
