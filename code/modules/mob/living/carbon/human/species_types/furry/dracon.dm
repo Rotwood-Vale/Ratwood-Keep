@@ -77,10 +77,10 @@
 		ORGAN_SLOT_FRILLS = /obj/item/organ/frills/lizard,
 		ORGAN_SLOT_HORNS = /obj/item/organ/horns,
 		ORGAN_SLOT_WINGS = /obj/item/organ/wings/dracon,
-		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		ORGAN_SLOT_PENIS = /obj/item/organ/penis/tapered,
-		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
+//		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles, // REDMOON REMOVAL - убираем форсирование половых органов
+//		ORGAN_SLOT_PENIS = /obj/item/organ/penis/tapered, // REDMOON REMOVAL - убираем форсирование половых органов
+//		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts, // REDMOON REMOVAL - убираем форсирование половых органов
+//		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina, // REDMOON REMOVAL - убираем форсирование половых органов
 		)
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,

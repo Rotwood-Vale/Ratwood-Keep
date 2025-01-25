@@ -71,7 +71,7 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/human,
+		/datum/customizer/organ/penis/equine, // REDMOON EDIT - заменяем на более "подходящее" - WAS: /datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		)
