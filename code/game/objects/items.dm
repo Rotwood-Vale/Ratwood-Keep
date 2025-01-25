@@ -193,8 +193,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	///The appropriate skill to repair this obj/item. If null, our object cannot be placed on an anvil to be repaired
 	var/anvilrepair
-	//this should be true or false
-	var/sewrepair
 
 	var/breakpath
 

@@ -69,7 +69,7 @@
 
 
 /obj/item/needle/attack_obj(obj/O, mob/living/user)
-	if(isnull(O) || !istype(O, /obj/item))
+	if(isnull(O))
 		return
 	var/obj/item/I = O
 	if(can_repair)
