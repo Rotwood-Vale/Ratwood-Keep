@@ -571,6 +571,7 @@
 /datum/reagent/alch/syrum_poison_berry/on_mob_life(mob/living/carbon/M)
 	M.add_nausea(9)
 	M.adjustToxLoss(4, 0)
+	..()
 
 /datum/reagent/medicine/caffeine/on_mob_life(mob/living/carbon/M)
 	M.energy_add(800)
