@@ -88,7 +88,7 @@
 	if(!is_type_in_list(L, lockpicks))
 		return
 	if(!is_type_in_list(the_wedge, wedges))
-		to_chat(user, "<span class='notice'>You need a wedge in order to lockpick the [P]!</span>")
+		to_chat(user, span_notice("You need a wedge in order to lockpick the [P]!"))
 		return
 
 	user.client.spawn_lockpicking_UI(P, user, L, the_wedge, difficulty, shown_difficulty, user.mind.get_skill_level(/datum/skill/misc/lockpicking))
@@ -298,7 +298,7 @@
 	qdel(src)
 	picking_object.being_picked = FALSE
 
-	to_chat(picker, "<span class='notice'>You stop picking the [picking_object.name]s lock.</span>")
+	to_chat(picker, span_notice("You stop picking the [picking_object.name]s lock."))
 
 /atom/movable/screen/movable/snap/lockpicking/proc/on_mouse_up(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
@@ -347,10 +347,11 @@
 
 	var/pick_x = sin(lock_angle)*6
 	var/pick_y = 6 + cos(lock_angle)*6 - 6
+	var/mob/living/living_picker = picker
 	if(failing)
 		if(break_checking_cooldown <= world.time)
-			if(prob(10 - skill_level))
-				to_chat(picker, "<span class='notice'>Your [the_lockpick] broke!</span>")
+			if(prob(50 - (skill_level * 10) - (living_picker.STALUC) + (difficulty * 10)))
+				to_chat(picker, span_warning("Your [the_lockpick] broke!"))
 				playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
 				qdel(the_lockpick)
 			break_checking_cooldown = world.time + 7 SECONDS
@@ -389,8 +390,8 @@
 
 	finish_lockpicking(user)
 
-	if(prob(60 - (skill_level * 10)))
-		to_chat(user, "<span class='notice'>Your [lockpick_used.name] broke!</span>")
+	if(prob(50 - (skill_level * 10) - (user.STALUC) + (difficulty * 10)))
+		to_chat(user, span_warning("Your [lockpick_used.name] broke!"))
 		playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
 		qdel(lockpick_used)
 
@@ -403,7 +404,7 @@
 
 	var/amt2raise = user.STAINT + (50 / difficulty)
 	var/boon = user.STALUC/4
-	user.mind?.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise * boon)
+	user.mind?.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
 	return TRUE
 
 /obj/proc/finish_lockpicking(mob/living/user)
@@ -411,7 +412,7 @@
 	if(!user)
 		return FALSE
 
-	to_chat(user, "<span class='notice'>You pick [name]s lock.</span>")
+	to_chat(user, span_notice("You pick [name]s lock."))
 	user.visible_message(span_notice("[user.name] picks [name]s lock."), span_notice("You pick the [name]s lock."))
 
 	being_picked = FALSE
