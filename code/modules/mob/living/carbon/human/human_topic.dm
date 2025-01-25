@@ -145,7 +145,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		var/mob/living/carbon/human/H = src
 		var/mob/living/carbon/human/user = usr
 		user.visible_message("[user] begins assessing [src].")
-		if(do_after_mob(src, list(user), (40 - (user.STAINT - 10) - (user.STAPER - 10))))
+		if(do_after_mob(user, list(src), (40 - (user.STAINT - 10) - (user.STAPER - 10) - user.mind?.get_skill_level(/datum/skill/misc/reading))))
 			var/is_guarded = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)
 			var/is_smart = FALSE
 			var/is_stupid = FALSE
@@ -267,6 +267,8 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			var/datum/browser/popup = new(user, "assess", ntitle = "[src] Assesment", nwidth = 700, nheight = 600)
 			popup.set_content(dat.Join())
 			popup.open(FALSE)
+		else
+			user.visible_message("[user] fails to assess [src]!")
 		return
 	return ..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that. - I made it worse sorry guys.
 
