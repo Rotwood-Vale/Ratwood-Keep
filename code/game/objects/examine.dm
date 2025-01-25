@@ -40,11 +40,16 @@
 	for(var/datum/examine_effect/E in examine_effects)
 		E.trigger(user)
 
-/obj/item/proc/integrity_check(var/span = TRUE)
+/obj/item/proc/integrity_check(var/span = TRUE, var/simple = FALSE)
 	if(max_integrity)
 		if(obj_integrity < max_integrity)
 			var/meme = round(((obj_integrity / max_integrity) * 100), 1)
 			var/result
+			if(simple)
+				if(meme <= 1)
+					return span_warning("It's broken.")
+				else
+					return ""
 			switch(meme)
 				if(0 to 1)
 					result = span ? span_warning("It's broken.") : "It's broken."
