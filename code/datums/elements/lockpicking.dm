@@ -347,9 +347,10 @@
 
 	var/pick_x = sin(lock_angle)*6
 	var/pick_y = 6 + cos(lock_angle)*6 - 6
+	var/mob/living/living_picker = picker
 	if(failing)
 		if(break_checking_cooldown <= world.time)
-			if(prob(95 - (skill_level * 10)))
+			if(prob(50 - (skill_level * 10) - (living_picker.STALUC) + (difficulty * 10)))
 				to_chat(picker, span_warning("Your [the_lockpick] broke!"))
 				playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
 				qdel(the_lockpick)
@@ -389,7 +390,7 @@
 
 	finish_lockpicking(user)
 
-	if(prob(95 - (skill_level * 10)))
+	if(prob(50 - (skill_level * 10) - (user.STALUC) + (difficulty * 10)))
 		to_chat(user, span_warning("Your [lockpick_used.name] broke!"))
 		playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
 		qdel(lockpick_used)
