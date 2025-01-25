@@ -120,7 +120,6 @@
 			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
 			H.cmode_music = 'sound/music/combat_gronn.ogg'
 			H.set_blindness(0)
 			var/weapons = list("Katar","Battle Axe","MY BARE HANDS!!!")
