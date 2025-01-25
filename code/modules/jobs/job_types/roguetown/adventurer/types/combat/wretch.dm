@@ -133,8 +133,9 @@
 
 		if("Heretic")
 			to_chat(H, span_warning("You are a heretic, spurned by the church, cast out from society - frowned upon by Psydon and his children for your faith."))
-			if (H.patron != /datum/patron/inhumen/zizo && H.patron != /datum/patron/inhumen/matthios)
-				H.set_patron(pick(/datum/patron/inhumen/zizo, /datum/patron/inhumen/matthios)) // zizo/matthios are the only two ascendants with miracles
+			if (!(istype(H.patron, /datum/patron/inhumen/zizo) || istype(H.patron, /datum/patron/inhumen/matthios)))
+				to_chat(H, span_warning("My former deity frowned upon my practices. I have since turned to a new god."))
+				H.set_patron(pick(/datum/patron/inhumen/zizo, /datum/patron/inhumen/matthios))
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)

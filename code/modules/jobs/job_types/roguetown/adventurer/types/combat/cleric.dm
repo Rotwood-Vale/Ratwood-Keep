@@ -81,7 +81,8 @@
 			H.cmode_music = 'sound/music/combat_holy.ogg'
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
-			H.change_stat("speed", 1)
+			H.change_stat("speed", 2)
+			H.change_stat("perception", -2)
 
 		if("Paladin")
 			to_chat(H, span_warning("A holy warrior. Where others of the clergy may have spent their free time studying scriptures, you have instead honed your skills with a blade."))
