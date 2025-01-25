@@ -144,25 +144,25 @@
 		return FALSE
 
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
-	var/obj/item/bodypart/target_larm = target.get_bodypart(BODY_ZONE_L_ARM)
-	var/obj/item/bodypart/target_rarm = target.get_bodypart(BODY_ZONE_R_ARM)
-	var/obj/item/bodypart/target_lleg = target.get_bodypart(BODY_ZONE_L_LEG)
-	var/obj/item/bodypart/target_rleg = target.get_bodypart(BODY_ZONE_R_LEG)
+	// var/obj/item/bodypart/target_larm = target.get_bodypart(BODY_ZONE_L_ARM)
+	// var/obj/item/bodypart/target_rarm = target.get_bodypart(BODY_ZONE_R_ARM)
+	// var/obj/item/bodypart/target_lleg = target.get_bodypart(BODY_ZONE_L_LEG)
+	// var/obj/item/bodypart/target_rleg = target.get_bodypart(BODY_ZONE_R_LEG)
 	if(!target_head)
 		to_chat(user, span_warning("This corpse is headless."))
 		return FALSE
-	if(!target_larm)
-		to_chat(user, span_warning("This corpse is missing a left arm."))
-		return FALSE
-	if(!target_rarm)
-		to_chat(user, span_warning("This corpse is missing a right arm."))
-		return FALSE
-	if(!target_lleg)
-		to_chat(user, span_warning("This corpse is missing a left leg."))
-		return FALSE
-	if(!target_rleg)
-		to_chat(user, span_warning("This corpse is missing a right leg."))
-		return FALSE
+	// if(!target_larm)
+	// 	to_chat(user, span_warning("This corpse is missing a left arm."))
+	// 	return FALSE
+	// if(!target_rarm)
+	// 	to_chat(user, span_warning("This corpse is missing a right arm."))
+	// 	return FALSE
+	// if(!target_lleg)
+	// 	to_chat(user, span_warning("This corpse is missing a left leg."))
+	// 	return FALSE
+	// if(!target_rleg)
+	// 	to_chat(user, span_warning("This corpse is missing a right leg."))
+	// 	return FALSE
 
 	var/offer_refused = FALSE
 
@@ -233,25 +233,25 @@
 		return FALSE
 
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
-	var/obj/item/bodypart/target_larm = target.get_bodypart(BODY_ZONE_L_ARM)
-	var/obj/item/bodypart/target_rarm = target.get_bodypart(BODY_ZONE_R_ARM)
-	var/obj/item/bodypart/target_lleg = target.get_bodypart(BODY_ZONE_L_LEG)
-	var/obj/item/bodypart/target_rleg = target.get_bodypart(BODY_ZONE_R_LEG)
+	// var/obj/item/bodypart/target_larm = target.get_bodypart(BODY_ZONE_L_ARM)
+	// var/obj/item/bodypart/target_rarm = target.get_bodypart(BODY_ZONE_R_ARM)
+	// var/obj/item/bodypart/target_lleg = target.get_bodypart(BODY_ZONE_L_LEG)
+	// var/obj/item/bodypart/target_rleg = target.get_bodypart(BODY_ZONE_R_LEG)
 	if(!target_head)
 		to_chat(user, span_warning("This corpse is headless."))
 		return FALSE
-	if(!target_larm)
-		to_chat(user, span_warning("This corpse is missing a left arm."))
-		return FALSE
-	if(!target_rarm)
-		to_chat(user, span_warning("This corpse is missing a right arm."))
-		return FALSE
-	if(!target_lleg)
-		to_chat(user, span_warning("This corpse is missing a left leg."))
-		return FALSE
-	if(!target_rleg)
-		to_chat(user, span_warning("This corpse is missing a right leg."))
-		return FALSE
+	// if(!target_larm)
+	// 	to_chat(user, span_warning("This corpse is missing a left arm."))
+	// 	return FALSE
+	// if(!target_rarm)
+	// 	to_chat(user, span_warning("This corpse is missing a right arm."))
+	// 	return FALSE
+	// if(!target_lleg)
+	// 	to_chat(user, span_warning("This corpse is missing a left leg."))
+	// 	return FALSE
+	// if(!target_rleg)
+	// 	to_chat(user, span_warning("This corpse is missing a right leg."))
+	// 	return FALSE
 
 	//Sanitychecker for lesser raise undead skeleton cap
 	if(target.necrotarget == TRUE)
