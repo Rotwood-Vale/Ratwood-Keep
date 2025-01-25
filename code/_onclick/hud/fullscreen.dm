@@ -109,6 +109,11 @@
 	layer = 20.19
 	plane = FULLSCREEN_PLANE
 
+/atom/movable/screen/fullscreen/painflash/should_show_to(mob/mymob)
+	if(HAS_TRAIT(mymob, TRAIT_NOPAIN))
+		return FALSE
+	return ..()
+
 /atom/movable/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
 	layer = UI_DAMAGE_LAYER

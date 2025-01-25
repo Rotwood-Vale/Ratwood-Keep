@@ -1450,6 +1450,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	range = -1
 	warnie = "sydwarning"
 	movement_interrupt = TRUE
+	stat_allowed = TRUE
 	chargedloop = null
 	invocation_type = "whisper"
 	associated_skill = /datum/skill/magic/blood

@@ -322,15 +322,27 @@
 		return FALSE
 
 	//cap at maxdamage
+	var/overflow_dam = 0
 	if(brute_dam + brute > max_damage)
+		overflow_dam += (brute_dam + brute - max_damage)
 		brute_dam = max_damage
 	else
 		brute_dam += brute
 	if(burn_dam + burn > max_damage)
+		overflow_dam += (burn_dam + burn - max_damage)
 		burn_dam = max_damage
 	else
 		burn_dam += burn
-
+	if(overflow_dam)
+		if(owner)
+			var/list/temp_bodyparts = shuffle(owner.bodyparts)
+			for(var/obj/item/bodypart/bp in temp_bodyparts)
+				if(overflow_dam <= 1)
+					break
+				if(bp == src)
+					continue
+				if(bp.receive_damage(overflow_dam, overflow_dam))
+					overflow_dam *= 0.5 // Remaining overflow for next loop. Reduce by half. 50%
 	//We've dealt the physical damages, if there's room lets apply the stamina damage.
 	stamina_dam += round(CLAMP(stamina, 0, max_stamina_damage - stamina_dam), DAMAGE_PRECISION)
 
@@ -371,7 +383,7 @@
 	var/total = brute_dam + burn_dam
 	if(include_stamina)
 		total = max(total, stamina_dam)
-	return total
+	return clamp(total, 0, max_damage)
 
 //Checks disabled status thresholds
 /obj/item/bodypart/proc/update_disabled()

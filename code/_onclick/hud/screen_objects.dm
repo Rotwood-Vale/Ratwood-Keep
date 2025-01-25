@@ -1263,11 +1263,6 @@
 			var/obj/item/bodypart/BP = X
 			if(BP.body_zone in H.get_missing_limbs())
 				continue
-			if(HAS_TRAIT(H, TRAIT_NOPAIN))
-				var/mutable_appearance/limby = mutable_appearance('icons/mob/roguehud64.dmi', "[H.gender == "male" ? "m" : "f"]-[BP.body_zone]")
-				limby.color = "#78a8ba"
-				. += limby
-				continue
 			var/damage = BP.burn_dam + BP.brute_dam
 			if(damage > BP.max_damage)
 				damage = BP.max_damage

@@ -94,7 +94,7 @@
 			. += span_warning("[m1] unconscious.")
 		else if(InCritical())
 			. += span_warning("[m1] barely conscious.")
-	if (stat == DEAD)
+	if (stat == DEAD || InFullCritical())
 		appears_dead = 1
 		. += span_warning("[m1] unconscious.")
 	var/trait_exam = common_trait_examine()

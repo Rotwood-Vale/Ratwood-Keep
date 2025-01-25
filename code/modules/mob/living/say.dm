@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/datum/saymode/saymode = SSradio.saymodes[talk_key]
 	var/message_mode = get_message_mode(message)
 	var/original_message = message
-	var/in_critical = InCritical()
+	var/in_critical = InFullCritical()
 
 	if(one_character_prefix[message_mode])
 		message = copytext(message, 2)
