@@ -29,7 +29,7 @@
 	result = /turf/open/floor/rogue/ruinedwood/platform
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	skill_level = 3
-/datum/crafting_recipe/roguetown/turfs/woodplatform/TurfCheck(mob/user, turf/T)
+/datum/crafting_recipe/roguetown/turfs/wood/woodplatform/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
 	if(!istype(T, /turf/open/transparent/openspace))
@@ -177,6 +177,23 @@
 	if(!istype(T, /turf/open/floor/rogue/dirt))
 		if(!istype(T, /turf/open/floor/rogue/grass))
 			return
+	return TRUE
+
+/datum/crafting_recipe/roguetown/turfs/twigplatform
+	name = "twig platform"
+	result = /turf/open/floor/rogue/twig/platform
+	reqs = list(/obj/item/grown/log/tree/stick = 3,
+				/obj/item/rope = 1)
+	skillcraft = /datum/skill/craft/crafting
+	verbage_simple = "assemble"
+	verbage = "assembles"
+	skill_level = 2
+
+/datum/crafting_recipe/roguetown/turfs/twigplatform/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/transparent/openspace))
+		return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/tentwall

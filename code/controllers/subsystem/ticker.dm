@@ -185,11 +185,7 @@ SUBSYSTEM_DEF(ticker)
 			if(isnull(timeLeft))
 				timeLeft = max(0,start_at - world.time)
 			totalPlayers = LAZYLEN(GLOB.new_player_list)
-			totalPlayersReady = 0
-			for(var/i in GLOB.new_player_list)
-				var/mob/dead/new_player/player = i
-				if(player.ready == PLAYER_READY_TO_PLAY)
-					++totalPlayersReady
+			totalPlayersReady = num_players(TRUE)
 
 			if(start_immediately)
 				timeLeft = 0
@@ -546,7 +542,6 @@ SUBSYSTEM_DEF(ticker)
 				var/atom/movable/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
 			livings += living
-			GLOB.character_ckey_list[living.real_name] = living.ckey
 			if(ishuman(living))
 				try_apply_character_post_equipment(living)
 	if(livings.len)
