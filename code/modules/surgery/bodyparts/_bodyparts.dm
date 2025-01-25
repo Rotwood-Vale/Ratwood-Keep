@@ -333,10 +333,14 @@
 		burn_dam = max_damage
 	else
 		burn_dam += burn
-	if(overflow_dam)
+	if(overflow_dam >= 5)
 		if(owner)
+			overflow_dam = clamp(overflow_dam * 0.8, 5, 15) // Overflow shouldn't be the main source of critting. Max of 15 overflow.
 			var/list/temp_bodyparts = shuffle(owner.bodyparts)
 			for(var/obj/item/bodypart/bp in temp_bodyparts)
+				if(!istype(src, /obj/item/bodypart/chest) && !istype(src, /obj/item/bodypart/head))
+					if(istype(bp, /obj/item/bodypart/chest) || istype(bp, /obj/item/bodypart/head))
+						continue
 				if(overflow_dam <= 1)
 					break
 				if(bp == src)
