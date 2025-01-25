@@ -62,6 +62,7 @@
 	bonus_tame_chance = 15
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse
+	var/milkies = TRUE
 	faction = list("saiga")
 	attack_verb_continuous = "headbutts"
 	attack_verb_simple = "headbutt"
