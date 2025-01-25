@@ -21,6 +21,41 @@ SUBSYSTEM_DEF(nightshift)
 
 	var/high_security_mode = FALSE
 
+proc/is_nighttime()
+	if(GLOB.tod == "night")  
+		return TRUE
+	return FALSE
+
+/mob/living/carbon
+	var/next_sleep_time = 0
+	var/sleep_interval = 432000
+
+datum/controller/subsystem/personal_sleep
+	name = "Personal Sleep"
+	wait = 10 SECONDS
+
+/proc/check_personal_sleep()
+	for(var/mob/living/carbon/M in GLOB.mob_list)
+		if(M)
+			if(M.next_sleep_time == 0)
+				M.next_sleep_time = station_time() + M.sleep_interval
+			else
+				if(!HAS_TRAIT(M, TRAIT_NOSLEEP) && !HAS_TRAIT(M, TRAIT_NOSTAMINA))
+					if(station_time() >= M.next_sleep_time)
+						if(!(HAS_TRAIT(M, TRAIT_NIGHT_OWL) && is_nighttime()))
+							M.ForceSleepyTime()
+							M.next_sleep_time = station_time() + M.sleep_interval
+						else
+							M.next_sleep_time = station_time() + 36000
+
+
+/datum/controller/subsystem/personal_sleep/fire(resumed = FALSE)
+	check_personal_sleep()
+
+/mob/living/carbon/proc/ForceSleepyTime()
+	apply_status_effect(/datum/status_effect/debuff/sleepytime)
+	add_stress(/datum/stressevent/sleepytime)
+
 /datum/controller/subsystem/nightshift/Initialize()
 	if(!CONFIG_GET(flag/enable_night_shifts))
 		can_fire = FALSE
@@ -84,7 +119,6 @@ SUBSYSTEM_DEF(nightshift)
 		if(HAS_TRAIT(src, TRAIT_VAMP_DREAMS))
 			apply_status_effect(/datum/status_effect/debuff/vamp_dreams)
 		if(HAS_TRAIT(src, TRAIT_DARKLING) && !HAS_TRAIT(src, TRAIT_NOSTAMINA) && !HAS_TRAIT(src, TRAIT_NOSLEEP))
-			apply_status_effect(/datum/status_effect/debuff/sleepytime)
 			add_stress(/datum/stressevent/sleepytime)
 
 	if(todd == "night")
@@ -94,8 +128,5 @@ SUBSYSTEM_DEF(nightshift)
 			return ..()
 		if(HAS_TRAIT(src, TRAIT_NOSLEEP))
 			return ..()
-		apply_status_effect(/datum/status_effect/debuff/sleepytime)
 		if(HAS_TRAIT(src, TRAIT_NIGHT_OWL))
 			add_stress(/datum/stressevent/night_owl)
-		else
-			add_stress(/datum/stressevent/sleepytime)
