@@ -530,7 +530,7 @@
 	description = "refined berry poison"
 	reagent_state = LIQUID
 	color = "#61DE2A"
-	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	metabolization_rate = 0.1
 	overdose_threshold = null
 
 /datum/reagent/alch/syrum_berry
@@ -568,9 +568,9 @@
 	M.reagents.remove_all_type(/datum/reagent, 1)
 	M.emote(pick("gag"))
 
-/datum/reagent/alch/syrum_poison_berry/on_mob_metabolize(mob/living/carbon/M)
+/datum/reagent/alch/syrum_poison_berry/on_mob_life(mob/living/carbon/M)
 	M.add_nausea(9)
-	M.adjustToxLoss(2, 0)
+	M.adjustToxLoss(4, 0)
 
 /datum/reagent/medicine/caffeine/on_mob_life(mob/living/carbon/M)
 	M.energy_add(800)
