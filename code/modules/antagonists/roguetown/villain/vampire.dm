@@ -210,6 +210,8 @@
 	update_hair()
 	update_body_parts(redraw = TRUE)
 	eyes.update_accessory_colors()
+	mob_biotypes &= ~MOB_UNDEAD
+	faction = list()
 	to_chat(src, span_notice("My true form is hidden."))
 
 /mob/living/carbon/human/proc/vampire_undisguise(datum/antagonist/vampirelord/VD)
@@ -230,6 +232,8 @@
 	update_hair()
 	update_body_parts(redraw = TRUE)
 	eyes.update_accessory_colors()
+	mob_biotypes |= MOB_UNDEAD
+	faction = list("undead")
 	to_chat(src, span_notice("My true form is revealed."))
 
 

@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	C.vampires |= owner
 	. = ..()
 	owner.special_role = name
-	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
+	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOSTAMINA, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
@@ -71,7 +71,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_MEDIUMARMOR, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_HEAVYARMOR, "[type]")
 	for(var/obj/structure/fluff/traveltile/vampire/tile in GLOB.traveltiles)
 		tile.show_travel_tile(owner.current)
@@ -82,7 +81,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	/datum/rmb_intent/riposte,\
 	/datum/rmb_intent/weak)
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
-	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	vamp_look()
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix)
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
@@ -345,6 +343,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	eyes = new /obj/item/organ/eyes/night_vision/zombie
 	eyes.Insert(V)
 	set_eye_color(V, "#ff0000", "#ff0000")
+	eyes.update_accessory_colors()
 	cache_hair = V.hair_color
 	V.skin_tone = "c9d3de"
 	V.hair_color = "181a1d"
@@ -354,8 +353,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	V.update_body_parts(redraw = TRUE)
 	V.mob_biotypes |= MOB_UNDEAD
 	V.faction = list("undead")
-	if(isspawn)
-		V.vampire_disguise()
+	// Cycles through disguises to properly get eye color and other factions set.
+	V.vampire_disguise()
+	V.vampire_undisguise()
 
 /datum/antagonist/vampirelord/on_life(mob/user)
 	if(!user)
