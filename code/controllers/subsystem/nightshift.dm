@@ -30,7 +30,7 @@ proc/is_nighttime()
 	var/next_sleep_time = 0
 	var/sleep_interval = 432000
 
-datum/controller/subsystem/personal_sleep
+/datum/controller/subsystem/personal_sleep
 	name = "Personal Sleep"
 	wait = 10 SECONDS
 
