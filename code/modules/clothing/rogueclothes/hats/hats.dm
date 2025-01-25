@@ -315,6 +315,11 @@
 	desc = "A comfortable warm hat lined with fur."
 	icon_state = "hatfur"
 
+/obj/item/clothing/head/roguetown/papakha
+	name = "Papakha Hat"
+	desc = "A comfortable warm hat lined with fur."
+	icon_state = "papakha"
+
 /obj/item/clothing/head/roguetown/hatblu
 	name = "fur hat"
 	desc = "A blue hat lined with fur."
