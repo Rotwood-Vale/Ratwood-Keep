@@ -272,9 +272,9 @@
 			if(get_location_accessible(H, BODY_ZONE_PRECISE_NECK) && H.age == AGE_ADULT) // Is the neck accessible? Also, only applies to adults
 				// Making it so it only works from behind, like chokeholds
 				if(user && (H.dir == turn(get_dir(H, user), 180)))
-				H.Paralyze(20) // 2 seconds of paralysis
-				to_chat(H, span_userdanger("You go limp as your scruff is twisted!"))
-				to_chat(user, span_warning("You twist [H]'s scruff, causing them to go limp!"))
+					H.Paralyze(20) // 2 seconds of paralysis
+					to_chat(H, span_userdanger("You go limp as your scruff is twisted!"))
+					to_chat(user, span_warning("You twist [H]'s scruff, causing them to go limp!"))
 
 	if(limb_grabbed.status == BODYPART_ROBOTIC)
 		C.visible_message(span_notice("[user] starts twisting [limb_grabbed] of [C], twisting it out of its socket!"), span_notice("I start twisting [limb_grabbed] from [src]."))
