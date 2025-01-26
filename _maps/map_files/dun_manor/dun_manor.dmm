@@ -4022,6 +4022,11 @@
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/town/basement/keep)
+"diX" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "diY" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement/keep)
@@ -7426,6 +7431,7 @@
 /area/rogue/indoors/town/shop)
 "gfc" = (
 /obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/town)
 "gfq" = (
@@ -10906,6 +10912,7 @@
 	dir = 6
 	},
 /obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "jeA" = (
@@ -11784,6 +11791,12 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
+"jRU" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood/herringbone,
+/area/rogue/indoors/town)
 "jRY" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -13205,6 +13218,11 @@
 /obj/structure/fluff/statue/knight,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
+"kUK" = (
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "kUP" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -15337,6 +15355,11 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
+"mIK" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "mIN" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
@@ -22069,6 +22092,11 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
+"scv" = (
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/town)
 "scD" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/shirt/tunic/white,
@@ -26710,12 +26738,6 @@
 	dir = 4
 	},
 /turf/closed/wall/mineral/rogue/decowood/vert,
-/area/rogue/indoors/town)
-"wjT" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "wkd" = (
 /obj/effect/decal/cobbleedge,
@@ -55558,9 +55580,9 @@ wDa
 jIk
 jIk
 oYo
-jIk
-ovj
-wDa
+cxb
+krt
+xAg
 cxb
 cxb
 cxb
@@ -55584,7 +55606,7 @@ vTS
 cxb
 cxb
 vTS
-aJv
+scv
 xAg
 krt
 tNG
@@ -55715,7 +55737,7 @@ omo
 jIk
 jIk
 jIk
-jIk
+cxb
 waT
 mbj
 mbj
@@ -56215,7 +56237,7 @@ pJn
 pJn
 pJn
 pJn
-paC
+diX
 klC
 fTZ
 rjf
@@ -56345,7 +56367,7 @@ jIk
 jIk
 cxb
 krt
-orK
+kUK
 xAg
 xAg
 mbj
@@ -56512,7 +56534,7 @@ mbj
 waT
 krt
 xAg
-paC
+diX
 cxb
 vTS
 krt
@@ -56521,7 +56543,7 @@ jex
 jex
 jex
 waT
-hqw
+mIK
 krt
 cxb
 bOa
@@ -56671,7 +56693,7 @@ pJn
 pJn
 pJn
 pJn
-hqw
+mIK
 cxb
 nVg
 pJn
@@ -56689,14 +56711,14 @@ pJn
 cxb
 cxb
 xAg
-aJv
+scv
 vTS
 pJn
 pJn
 pJn
 klC
 krt
-paC
+diX
 krt
 klC
 jDE
@@ -57143,7 +57165,7 @@ pJn
 pJn
 pJn
 xAg
-orK
+kUK
 wjg
 pJn
 pJn
@@ -57452,7 +57474,7 @@ ifJ
 dby
 bPQ
 mbj
-paC
+diX
 pJn
 pJn
 krt
@@ -57471,7 +57493,7 @@ pJn
 pJn
 pJn
 pJn
-paC
+diX
 mbj
 bPQ
 xmq
@@ -57942,7 +57964,7 @@ pJn
 pJn
 pJn
 xAg
-hqw
+mIK
 waT
 mbj
 mbj
@@ -58074,7 +58096,7 @@ cxb
 cxb
 cxb
 cxb
-hqw
+mIK
 mbj
 laf
 jMK
@@ -82130,7 +82152,7 @@ eSe
 mbj
 eSe
 sMD
-wjT
+jRU
 fTZ
 tXZ
 tXZ
