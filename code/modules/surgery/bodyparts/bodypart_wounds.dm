@@ -188,7 +188,7 @@
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
 /obj/item/bodypart/proc/try_crit(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
-	if(!bclass || !dam || (owner.status_flags & GODMODE))
+	if(!bclass || !dam || (owner.status_flags & GODMODE) || HAS_TRAIT(owner, TRAIT_CRITICAL_IMMUNITY))
 		return FALSE
 	var/list/attempted_wounds = list()
 	var/used
@@ -233,7 +233,7 @@
 	return FALSE
 
 /obj/item/bodypart/chest/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE)
-	if(!bclass || !dam || (owner.status_flags & GODMODE))
+	if(!bclass || !dam || (owner.status_flags & GODMODE) || HAS_TRAIT(owner, TRAIT_CRITICAL_IMMUNITY))
 		return FALSE
 	var/list/attempted_wounds = list()
 	var/used
@@ -285,6 +285,8 @@
 	return FALSE
 
 /obj/item/bodypart/head/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE)
+	if((owner.status_flags & GODMODE) || HAS_TRAIT(owner, TRAIT_CRITICAL_IMMUNITY))
+		return FALSE
 	var/static/list/eyestab_zones = list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE)
 	var/static/list/tonguestab_zones = list(BODY_ZONE_PRECISE_MOUTH)
 	var/static/list/nosestab_zones = list(BODY_ZONE_PRECISE_NOSE)

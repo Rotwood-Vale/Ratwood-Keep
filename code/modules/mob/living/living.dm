@@ -992,6 +992,8 @@
 	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1, ignore_walls=TRUE)
 	update_vision_cone()
 	addtimer(CALLBACK(src, PROC_REF(end_submit)), 600)
+	if(InCritical())
+		holder.add_reagent(/datum/reagent/medicine/epinephrine, 30)
 
 /mob/living/proc/end_submit()
 	surrendering = 0

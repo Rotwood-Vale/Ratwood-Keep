@@ -18,6 +18,7 @@
 #define TRAIT_DODGEEXPERT "Fast Reflexes"
 #define TRAIT_DECEIVING_MEEKNESS "Deceiving Meekness"
 #define TRAIT_CRITICAL_RESISTANCE "Critical Resistance"
+#define TRAIT_CRITICAL_IMMUNITY	"Critical Immunity"
 #define TRAIT_CRITICAL_WEAKNESS "Critical Weakness"
 #define TRAIT_MANIAC_AWOKEN "Awoken"
 #define TRAIT_NOSTAMINA "Indefatigable" //for ai
