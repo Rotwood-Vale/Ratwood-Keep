@@ -20,6 +20,7 @@
 	buckle_prevents_pull = 1
 	var/seednutrition = 0
 	var/max_seednutrition = 100
+	var/mob/planter = null
 
 /obj/structure/flora/roguegrass/maneater/real/Initialize()
 	. = ..()
@@ -68,6 +69,9 @@
 			playsound(src.loc, list('sound/vo/mobs/plant/attack (1).ogg','sound/vo/mobs/plant/attack (2).ogg','sound/vo/mobs/plant/attack (3).ogg','sound/vo/mobs/plant/attack (4).ogg'), 100, FALSE, -1)
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
+				if(src.planter == L) // We won't harm our planter
+					maneater_spit_out(C)
+					return
 				src.visible_message(span_danger("[src] starts to rip apart [C]!"))
 				spawn(50)
 					if(C && (C.buckled == src))
@@ -80,13 +84,12 @@
 								limb.dismember()
 								qdel(limb)
 								seednutrition += 20
+								if(C.mind) // eat only one limb of things with minds
+									maneater_spit_out(C)
+									return
 								return
-						if(C.mind) // Catch to save players from the worst fate
-							src.visible_message(span_danger("[src] spits out [C]!"))
-							unbuckle_mob(C)
-							var/turf/target = get_ranged_target_turf(src, pick(GLOB.alldirs), 3)
-							C.throw_at(target, 3, 2)
-							playsound(src,'sound/misc/maneaterspit.ogg', 100)
+						if(C.mind) // nugget case, just spit them out
+							maneater_spit_out(C)
 							return
 						limb = C.get_bodypart(BODY_ZONE_HEAD)
 						if(limb)
@@ -107,6 +110,16 @@
 						L.gib()
 						seednutrition += 30
 						return
+
+/obj/structure/flora/roguegrass/maneater/real/proc/maneater_spit_out(mob/living/C)
+	if(!C)
+		return
+	src.visible_message(span_danger("[src] spits out [C]!"))
+	unbuckle_mob(C)
+	var/turf/target = get_ranged_target_turf(src, pick(GLOB.alldirs), 3)
+	C.throw_at(target, 3, 2)
+	playsound(src,'sound/misc/maneaterspit.ogg', 100)
+	return TRUE
 
 /obj/structure/flora/roguegrass/maneater/real/update_icon()
 	if(obj_broken)
@@ -184,7 +197,7 @@
 
 /obj/item/maneaterseed
 	name = "maneater seed"
-	desc = "A seed from a maneater. It looks like it could grow into something dangerous."
+	desc = "A seed from a maneater. It looks like it could grow into something dangerous. It can only take root in green grass, or dirt."
 	icon = 'icons/roguetown/mob/monster/maneater.dmi'
 	icon_state = "maneater-seed"
 	max_integrity = 5
@@ -203,13 +216,18 @@
 			for(var/obj/structure/flora/roguegrass/maneater/M in adjacent)
 				to_chat(user, span_warning("The maneater plants need more space between them to grow."))
 				return
+		for(var/obj/effect/decal/D in T) //To stop planting on mapped cobble decals etc
+			to_chat(user, span_warning("The ground is too uneven to plant a maneater seed here."))
+			return
 		user.visible_message(span_notice("[user] begins planting a maneater seed."), \
 				span_notice("I begin planting the maneater seed."))
 		if(do_after(user, 10 SECONDS))
-			new /obj/structure/flora/roguegrass/maneater/real/juvenile(target)
+			var/obj/structure/flora/roguegrass/maneater/real/juvenile/myboy = new(T)
+			myboy.planter = user
 			user.visible_message(span_notice("[user] plants a maneater seed."), \
 				span_notice("I plant the maneater seed."))
 			qdel(src)
+			message_admins("[user]/([user.ckey]) plants a maneater seed at [ADMIN_VERBOSEJMP(T)]")
 			return
 	. = ..()
 
@@ -232,7 +250,7 @@
 	max_seednutrition = 50
 	var/growth_stage = 1
 	var/max_growth_stage = 3
-	var/growth_time = 20 MINUTES
+	var/growth_time = 5 SECONDS //20 mins
 
 
 /obj/structure/flora/roguegrass/maneater/real/juvenile/Initialize()
@@ -290,7 +308,8 @@
 		// Replace with adult form
 		visible_message(span_danger("[src] reaches full maturity!"))
 		var/turf/T = get_turf(src)
-		new /obj/structure/flora/roguegrass/maneater/real(T)
+		var/obj/structure/flora/roguegrass/maneater/real/myboy = new(T)
+		myboy.planter = src.planter
 		qdel(src)
 
 /obj/structure/flora/roguegrass/maneater/real/juvenile/update_icon()
