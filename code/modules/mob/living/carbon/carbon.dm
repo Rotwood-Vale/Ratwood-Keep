@@ -673,6 +673,7 @@
 		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
 	)
+	var/missing_limbs_multiplier = clamp(6 - bodyparts.len, 1, 6) // Damage multiplier for each missing limb, only applied to limbs (not the chest or head)
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts) //hardcoded to streamline things a bit
 		if(bodypart.status == BODYPART_ROBOTIC) // Prosthetic / Robotic limbs don't affect the calculation of total health
 			continue
@@ -694,9 +695,10 @@
 		// Regular zones
 		if((bp_damage / bodypart.max_damage) < 0.25) // Less than 25 percent of the limbs max health missing? No damage added to the total.
 			continue
-		total_damage += clamp((maxHealth / length(bodyparts)) * (bp_damage / bodypart.max_damage) * limb_damage_multiplier, 0, (maxHealth / length(bodyparts))) // Less body parts? More damage.
-	//health = round(maxHealth - used_damage, DAMAGE_PRECISION)
-	var/bloodloss = ((BLOOD_VOLUME_NORMAL - blood_volume) / BLOOD_VOLUME_NORMAL) * 100
+		total_damage += clamp(((maxHealth / length(bodyparts)) * missing_limbs_multiplier) * (bp_damage / bodypart.max_damage) * limb_damage_multiplier, 0, (maxHealth / length(bodyparts) * missing_limbs_multiplier)) // Less body parts? More damage.
+		if(HAS_TRAIT(src, TRAIT_NOBREATH) && bp_damage == bodypart.max_damage) // Snowflake catch for breathless mobs.
+			total_damage += ((maxHealth / 4) * missing_limbs_multiplier) // 25 * missing limbs count
+	var/bloodloss = HAS_TRAIT(src, TRAIT_NOBREATH) ? 0 : ((BLOOD_VOLUME_NORMAL - blood_volume) / BLOOD_VOLUME_NORMAL) * 100 // Fail safe for adding bloodloss damage to mobs that have no blood.
 	health = clamp(maxHealth - (total_oxy + total_tox + total_damage + (bloodloss / 4)), HEALTH_MAX_DAMAGE, maxHealth)
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
 	update_stat()

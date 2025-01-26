@@ -252,8 +252,12 @@
 		remove_bandage()
 	for(var/obj/item/I in embedded_objects)
 		remove_embedded_object(I)
-	for(var/obj/item/I in src) //dust organs
-		qdel(I)
+	if(!isnull(owner))
+		for(var/obj/item/organ/O in owner.internal_organs) //dust organs
+			qdel(O)
+	else
+		for(var/obj/item/organ/I in src) //dust organs
+			qdel(I)
 	skeletonized = TRUE
 	for(var/datum/wound/bloody_wound as anything in wounds)
 		if(isnull(bloody_wound.bleed_rate))
@@ -359,13 +363,14 @@
 	
 
 	if(owner)
-		if(!HAS_TRAIT(owner, TRAIT_NOPAIN))
-			if((brute + burn) < 10)
-				owner.flash_fullscreen("redflash1")
-			else if((brute + burn) < 20)
-				owner.flash_fullscreen("redflash2")
-			else if((brute + burn) >= 20)
-				owner.flash_fullscreen("redflash3")
+		if(!skeletonized)
+			if(!HAS_TRAIT(owner, TRAIT_NOPAIN) && status != BODYPART_ROBOTIC && !skeletonized)
+				if((brute + burn) < 10)
+					owner.flash_fullscreen("redflash1")
+				else if((brute + burn) < 20)
+					owner.flash_fullscreen("redflash2")
+				else if((brute + burn) >= 20)
+					owner.flash_fullscreen("redflash3")
 
 	if(owner && updating_health)
 		owner.updatehealth()
