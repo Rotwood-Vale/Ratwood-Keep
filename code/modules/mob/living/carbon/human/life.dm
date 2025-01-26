@@ -81,16 +81,16 @@
 
 		if(InFullCritical())
 			if(!HAS_TRAIT(src, TRAIT_NOBREATH))
-				apply_damage(10, OXY)
+				apply_damage(4, OXY)
 			else
-				apply_damage(5, BRUTE)
-				apply_damage(5, BURN)
+				apply_damage(2, BRUTE)
+				apply_damage(2, BURN)
 		else if(InCritical())
 			if(!HAS_TRAIT(src, TRAIT_NOBREATH))
-				apply_damage(5, OXY)
+				apply_damage(2, OXY)
 			else
-				apply_damage(2.5, BRUTE)
-				apply_damage(2.5, BURN)
+				apply_damage(1, BRUTE)
+				apply_damage(1, BURN)
 
 		if(mode == AI_OFF && !client && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			if(mob_timers["slo"])

@@ -2,7 +2,7 @@
 	name = "slash"
 	whp = 30
 	sewn_whp = 10
-	bleed_rate = 0.4
+	bleed_rate = 0.6
 	sewn_bleed_rate = 0.02
 	clotting_rate = 0.02
 	sewn_clotting_rate = 0.02
@@ -106,7 +106,7 @@
 	severity = WOUND_SEVERITY_SUPERFICIAL
 	whp = 40
 	sewn_whp = 12
-	bleed_rate = 1
+	bleed_rate = 0.4
 	sewn_bleed_rate = 0.05
 	clotting_rate = null
 	clotting_threshold = null

@@ -687,8 +687,8 @@
 
 		// LETHAL ZONES
 		if((bodypart.body_zone in lethal_zones))
-			//total_damage += clamp(((maxHealth / length(lethal_zones)) * (bp_damage / bodypart.max_damage) * limb_damage_multiplier), 0, (maxHealth / length(lethal_zones))) // Percentage based for lethal zones. Example: Head = 100% damaged, Chest = 0% damage => 50 damage total.
-			total_damage += clamp((maxHealth * (bp_damage / bodypart.max_damage) * limb_damage_multiplier), 0, maxHealth) // Damage Calculation Alternative
+			total_damage += clamp(((maxHealth / length(lethal_zones)) * (bp_damage / bodypart.max_damage) * limb_damage_multiplier), 0, (maxHealth / length(lethal_zones) + (maxHealth / 5))) // Percentage based for lethal zones. Example: Head = 100% damaged, Chest = 0% damage => 50 damage total.
+			//total_damage += clamp((maxHealth * (bp_damage / bodypart.max_damage) * limb_damage_multiplier), 0, maxHealth) // Damage Calculation Alternative
 			continue
 		
 		// Regular zones
@@ -697,7 +697,7 @@
 		total_damage += clamp((maxHealth / length(bodyparts)) * (bp_damage / bodypart.max_damage) * limb_damage_multiplier, 0, (maxHealth / length(bodyparts))) // Less body parts? More damage.
 	//health = round(maxHealth - used_damage, DAMAGE_PRECISION)
 	var/bloodloss = ((BLOOD_VOLUME_NORMAL - blood_volume) / BLOOD_VOLUME_NORMAL) * 100
-	health = maxHealth - (total_oxy + total_tox + total_damage + bloodloss)
+	health = maxHealth - (total_oxy + total_tox + total_damage + (bloodloss / 4))
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
 	update_stat()
 	if(InCritical())

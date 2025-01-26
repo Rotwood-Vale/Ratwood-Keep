@@ -1,7 +1,7 @@
 /datum/wound/bite
 	name = "bite"
-	bleed_rate = 0
-	sewn_bleed_rate = 0
+	bleed_rate = 0.5
+	sewn_bleed_rate = 0.5
 	clotting_threshold = null
 	sewn_clotting_threshold = null
 	whp = 30

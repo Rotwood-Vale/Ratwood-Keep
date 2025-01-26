@@ -25,7 +25,7 @@
 		return
 	if(human_owner.stat >= DEAD) //do shit the natural way i guess
 		return 
-	to_chat(human_owner, span_danger("I feel horrible... REALLY horrible..."))
+	to_chat(human_owner, span_infection("I feel horrible... REALLY horrible..."))
 	human_owner.mob_timers["puke"] = world.time
 	human_owner.vomit(1, blood = TRUE, stun = FALSE)
 	zombie_infection_timer = addtimer(CALLBACK(src, PROC_REF(wake_zombie)), zombie_infection_time, TIMER_STOPPABLE)
@@ -44,7 +44,7 @@
 	if(!zombie_antag || zombie_antag.has_turned)
 		return FALSE
 	owner.flash_fullscreen("redflash3")
-	to_chat(owner, span_danger("It hurts... Is this really the end for me?"))
+	to_chat(owner, span_infection("It hurts... Is this really the end for me?"))
 	owner.emote("scream") // heres your warning to others bro
 	owner.Knockdown(1)
 	zombie_antag.wake_zombie(TRUE)
@@ -60,7 +60,7 @@
 		return
 	if(human_owner.stat >= DEAD) //forget it
 		return 
-	to_chat(human_owner, span_danger("I feel horrible... REALLY horrible..."))
+	to_chat(human_owner, span_infection("I feel horrible... REALLY horrible..."))
 	human_owner.mob_timers["puke"] = world.time
 	human_owner.vomit(1, blood = TRUE, stun = FALSE)
 	werewolf_infection_timer = addtimer(CALLBACK(src, PROC_REF(wake_werewolf)), werewolf_infection_time, TIMER_STOPPABLE)
@@ -80,7 +80,7 @@
 		return FALSE
 	werewolf_infection_timer = null
 	owner.flash_fullscreen("redflash3")
-	to_chat(owner, span_danger("It hurts... Is this really the end for me?"))
+	to_chat(owner, span_infection("It hurts... Is this really the end for me?"))
 	owner.emote("scream") // heres your warning to others bro
 	owner.Knockdown(1)
 	return wolfy

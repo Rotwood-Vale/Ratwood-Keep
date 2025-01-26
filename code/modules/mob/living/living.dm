@@ -973,7 +973,7 @@
 	set name = "Yield"
 	set category = "IC"
 	set hidden = 1
-	if(surrendering || stat)
+	if(surrendering || InFullCritical() || stat == DEAD)
 		return
 	if(!instant)
 		if(alert(src, "Do you yield?", "SURRENDER", "Yes", "No") == "No")

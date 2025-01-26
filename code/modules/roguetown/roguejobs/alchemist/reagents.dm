@@ -11,9 +11,6 @@
 /datum/reagent/medicine/healthpot/on_mob_life(mob/living/carbon/M)
 	var/list/wCount = M.get_wounds()
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
-	else
-		//can overfill you with blood, but at a slower rate
 		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
 	if(wCount.len > 0)	
 		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep. 
@@ -61,9 +58,7 @@
 /datum/reagent/medicine/greaterhealthpot/on_mob_life(mob/living/carbon/M)
 	var/list/wCount = M.get_wounds()
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
-	else
-		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
+		M.blood_volume = min(M.blood_volume+25, BLOOD_VOLUME_MAXIMUM)
 	if(wCount.len > 0)	
 		M.heal_wounds(4)
 		M.update_damage_overlays()
@@ -148,7 +143,7 @@
 			H.adjust_hydration(1)
 			H.adjust_nutrition(0.5) //Semen is not very nutritious. The player can go about 3 rounds of cumming before needing to wait a long time code-wise to cum more.
 		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
-			H.blood_volume = min(H.blood_volume+10, BLOOD_VOLUME_NORMAL)
+			H.blood_volume = min(H.blood_volume+0.5, BLOOD_VOLUME_NORMAL)
 	..()
 
 /datum/crafting_recipe/roguetown/cooking/soap
