@@ -14442,10 +14442,10 @@
 /area/rogue/indoors)
 "hHD" = (
 /obj/structure/bed/rogue/inn/wool,
-/obj/item/bedsheet/rogue/fabric,
 /obj/effect/landmark/start/seelielate{
 	dir = 4
 	},
+/obj/item/bedsheet/rogue/pelt,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/outdoors/druidgrove)
 "hHF" = (
@@ -14973,12 +14973,8 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/druidgrove)
 "hVU" = (
-/obj/item/natural/stone{
-	pixel_x = 15;
-	pixel_y = -15
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/druidgrove)
+/turf/open/water/swamp/deep,
+/area/rogue/outdoors/rtfield)
 "hWg" = (
 /obj/structure/roguewindow/openclose{
 	dir = 8
@@ -43388,8 +43384,12 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/academy)
 "xti" = (
-/turf/open/water/swamp/deep,
-/area/rogue/outdoors/rtfield)
+/obj/item/natural/stone{
+	pixel_x = 15;
+	pixel_y = -15
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/druidgrove)
 "xtq" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -233089,8 +233089,8 @@ uaL
 qvR
 qvR
 qvR
-xti
-xti
+hVU
+hVU
 wSn
 cTH
 xrY
@@ -233515,14 +233515,14 @@ ryI
 ryI
 ryI
 wSn
-xti
-xti
+hVU
+hVU
 cix
 qvR
 spp
 qvR
-xti
-xti
+hVU
+hVU
 dsO
 cTH
 qvR
@@ -233947,15 +233947,15 @@ xvN
 qvR
 wSn
 wSn
-xti
-xti
+hVU
+hVU
 qvR
 spp
 qvR
 cTH
 uaL
-xti
-xti
+hVU
+hVU
 xvN
 qvR
 qvR
@@ -234386,8 +234386,8 @@ qvR
 uaL
 wSn
 uaL
-xti
-xti
+hVU
+hVU
 qvR
 xvN
 qvR
@@ -235245,8 +235245,8 @@ qvR
 xqL
 qvR
 qvR
-xti
-xti
+hVU
+hVU
 cTH
 wSn
 uaL
@@ -235676,8 +235676,8 @@ wSn
 uaL
 cTH
 uaL
-xti
-xti
+hVU
+hVU
 cTH
 wSn
 wSn
@@ -236108,9 +236108,9 @@ cTH
 wSn
 wSn
 cTH
-xti
-xti
-xti
+hVU
+hVU
+hVU
 spp
 qvR
 qvR
@@ -236542,7 +236542,7 @@ qvR
 wSn
 xvN
 xqL
-xti
+hVU
 qvR
 spp
 spp
@@ -236973,8 +236973,8 @@ uaL
 spp
 spp
 qvR
-xti
-xti
+hVU
+hVU
 wSn
 qvR
 qvR
@@ -237401,7 +237401,7 @@ ryI
 ryI
 ryI
 qvR
-xti
+hVU
 qvR
 wSn
 spp
@@ -237832,7 +237832,7 @@ uaL
 wSn
 cTH
 wSn
-xti
+hVU
 xvN
 cTH
 uaL
@@ -238264,8 +238264,8 @@ uaL
 wSn
 xqL
 wSn
-xti
-xti
+hVU
+hVU
 qvR
 xvN
 qvR
@@ -239132,7 +239132,7 @@ uaL
 xvN
 qvR
 ptV
-xti
+hVU
 cTH
 xvN
 spp
@@ -239564,8 +239564,8 @@ qvR
 qvR
 qvR
 qvR
-xti
-xti
+hVU
+hVU
 qvR
 qvR
 xvN
@@ -249938,7 +249938,7 @@ sfx
 sfx
 kIQ
 nUD
-hVU
+xti
 iiy
 iiy
 cGR
