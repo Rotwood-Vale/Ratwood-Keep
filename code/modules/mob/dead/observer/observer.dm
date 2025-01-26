@@ -81,8 +81,11 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	alpha = 100
 
 /mob/dead/observer/rogue/Move(n, direct)
-	. = ..()
+	if(world.time < next_move)
+		return
+	next_move = world.time + 3
 	setDir(direct)
+	. = ..()
 
 /mob/dead/observer/screye
 //	see_invisible = SEE_INVISIBLE_LIVING
@@ -365,7 +368,7 @@ Works together with spawning an observer, noted above.
 		ghost = new /mob/dead/observer/rogue(src)
 	if(!admin)
 		ghost.add_client_colour(/datum/client_colour/monochrome)
-		if(!iscarbon(src)) // Brainnn!
+		if(!iscarbon(src)) // Brainnnzz
 			ghost.icon = icon
 			ghost.icon_state = icon_state
 	ghost.ghostize_time = world.time
