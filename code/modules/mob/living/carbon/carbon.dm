@@ -697,7 +697,8 @@
 			continue
 		total_damage += clamp(((maxHealth / length(bodyparts)) * missing_limbs_multiplier) * (bp_damage / bodypart.max_damage) * limb_damage_multiplier, 0, (maxHealth / length(bodyparts) * missing_limbs_multiplier)) // Less body parts? More damage.
 		if(HAS_TRAIT(src, TRAIT_NOBREATH) && bp_damage == bodypart.max_damage) // Snowflake catch for breathless mobs.
-			total_damage += ((maxHealth / 4) * missing_limbs_multiplier) // 25 * missing limbs count
+			missing_limbs_multiplier = clamp(missing_limbs_multiplier++, 1, 6) // Basically counting them as crippled.
+			total_damage += ((maxHealth / 4) * missing_limbs_multiplier) // 50 * missing limbs count
 	var/bloodloss = HAS_TRAIT(src, TRAIT_NOBREATH) ? 0 : ((BLOOD_VOLUME_NORMAL - blood_volume) / BLOOD_VOLUME_NORMAL) * 100 // Fail safe for adding bloodloss damage to mobs that have no blood.
 	health = clamp(maxHealth - (total_oxy + total_tox + total_damage + (bloodloss / 4)), HEALTH_MAX_DAMAGE, maxHealth)
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
