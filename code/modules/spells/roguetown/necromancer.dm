@@ -143,6 +143,10 @@
 		to_chat(user, span_warning("I cannot raise the living."))
 		return FALSE
 
+	if(HAS_TRAIT(target, TRAIT_SPECIALUNDEAD))
+		to_chat(user, span_warning("This is an undead far beyond my perview. I cannot make it mine."))
+		return FALSE
+
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
 	var/obj/item/bodypart/target_larm = target.get_bodypart(BODY_ZONE_L_ARM)
 	var/obj/item/bodypart/target_rarm = target.get_bodypart(BODY_ZONE_R_ARM)
@@ -230,6 +234,10 @@
 
 	if(target.stat != DEAD)
 		to_chat(user, span_warning("I cannot raise the living."))
+		return FALSE
+
+	if(HAS_TRAIT(target, TRAIT_SPECIALUNDEAD))
+		to_chat(user, span_warning("This is an undead far beyond my perview. I cannot make it mine."))
 		return FALSE
 
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
