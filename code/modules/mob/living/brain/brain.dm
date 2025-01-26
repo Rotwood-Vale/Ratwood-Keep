@@ -6,6 +6,8 @@
 	see_invisible = SEE_INVISIBLE_LIVING
 	base_intents = list(INTENT_HELP, INTENT_HARM) //for mechas
 	speech_span = SPAN_ROBOT
+	icon_state = "brain"
+	icon = 'icons/obj/surgery.dmi'
 
 /mob/living/brain/Initialize()
 	. = ..()

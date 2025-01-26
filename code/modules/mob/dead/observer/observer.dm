@@ -365,6 +365,9 @@ Works together with spawning an observer, noted above.
 		ghost = new /mob/dead/observer/rogue(src)
 	if(!admin)
 		ghost.add_client_colour(/datum/client_colour/monochrome)
+		if(!iscarbon(src)) // Brainnn!
+			ghost.icon = icon
+			ghost.icon_state = icon_state
 	ghost.ghostize_time = world.time
 	SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
 	ghost.can_reenter_corpse = can_reenter_corpse

@@ -29,7 +29,15 @@
 /obj/item/organ/brain/Insert(mob/living/carbon/C, special = FALSE, drop_if_replaced = FALSE, no_id_transfer = FALSE)
 	. = ..()
 
-	name = "[C]'s brain"
+	if(name == initial(name))
+		var/real_name
+		if(brainmob?.mind)
+			real_name = brainmob.mind.name
+		else if(C?.mind)
+			real_name =  C.mind.name
+		else
+			real_name = C.real_name
+		name = "[real_name]'s brain"
 
 	if(brainmob)
 		if(brainmob.mind)
@@ -75,7 +83,7 @@
 		C.dna.copy_dna(brainmob.stored_dna)
 	if(L.mind?.current)
 		L.mind.transfer_to(brainmob)
-//	to_chat(brainmob, "<span class='notice'>I feel slightly disoriented. That's normal when you're just a brain.</span>")
+	to_chat(brainmob, "<span class='notice'>I feel slightly disoriented. That's normal when you're just a brain.</span>")
 
 /obj/item/organ/brain/attackby(obj/item/O, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)

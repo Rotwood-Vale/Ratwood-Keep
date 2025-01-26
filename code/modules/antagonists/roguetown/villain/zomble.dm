@@ -180,7 +180,10 @@
 		zombie.ghostize(TRUE) // Re-enter handles them being banned from Deadite.
 		return
 
-	addtimer(CALLBACK(src, PROC_REF(prompt_ghost), 1, src), 5 SECONDS)
+	if(zombie.mind)
+		if(zombie.mind.get_ghost(TRUE))
+			addtimer(CALLBACK(owner, TYPE_PROC_REF(/datum/mind, grab_ghost), TRUE, src), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(prompt_zombie)), 15 SECONDS)
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))
@@ -191,13 +194,9 @@
 	deadite.try_do_deadite_bite()
 	deadite.try_do_deadite_idle()
 
-/datum/antagonist/zombie/proc/prompt_ghost()
-	if(alert(owner.current, "Would you like to play as a deadite?", "DEADITE", "Yes", "No") != "Yes")
+/datum/antagonist/zombie/proc/prompt_zombie()
+	if(alert(owner, "Would you like to play as a deadite?", "DEADITE", "Yes", "No") != "Yes")
 		owner.current.ghostize(TRUE)
-	else
-		var/mob/dead/observer/ghost = owner.current.get_ghost()
-		if(ghost)
-			ghost.mind.transfer_to(owner.current, TRUE)
 
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag
