@@ -697,7 +697,7 @@
 		total_damage += clamp((maxHealth / length(bodyparts)) * (bp_damage / bodypart.max_damage) * limb_damage_multiplier, 0, (maxHealth / length(bodyparts))) // Less body parts? More damage.
 	//health = round(maxHealth - used_damage, DAMAGE_PRECISION)
 	var/bloodloss = ((BLOOD_VOLUME_NORMAL - blood_volume) / BLOOD_VOLUME_NORMAL) * 100
-	health = maxHealth - (total_oxy + total_tox + total_damage + (bloodloss / 4))
+	health = clamp(maxHealth - (total_oxy + total_tox + total_damage + (bloodloss / 4)), HEALTH_MAX_DAMAGE, maxHealth)
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
 	update_stat()
 	if(InCritical())
