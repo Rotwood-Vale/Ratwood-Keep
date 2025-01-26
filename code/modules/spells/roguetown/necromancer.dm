@@ -141,7 +141,7 @@
 
 /obj/effect/proc_holder/spell/invoked/raise_lesser_undead/necromancer
 	cabal_affine = TRUE
-	charge_max = 90 SECONDS
+	charge_max = 60 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/projectile/sickness
 	name = "Ray of Sickness"
