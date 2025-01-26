@@ -296,6 +296,8 @@
 	var/mob/living/simple_animal/S = user
 	if(istype(S) && S.deathmessage)
 		message_simple = S.deathmessage
+	if(HAS_TRAIT(user, TRAIT_NOBREATH))
+		message = "stops moving and falls limp."
 	. = ..()
 	message_simple = initial(message_simple)
 	if(. && user.deathsound)
