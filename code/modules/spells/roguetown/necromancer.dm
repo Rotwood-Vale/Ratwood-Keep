@@ -28,7 +28,7 @@
 			return TRUE
 		target.visible_message(span_info("Necrotic energy floods over [target]!"), span_userdanger("I feel colder as the dark energy floods into me!"))
 		if(iscarbon(target))
-			target.Paralyze(50)
+			target.Paralyze(5)
 		else
 			target.adjustBruteLoss(20)
 		return TRUE
