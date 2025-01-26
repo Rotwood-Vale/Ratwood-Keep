@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/char_accent = "No accent"
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
 	var/has_spawned = FALSE
-
+	var/prefer_old_chat = FALSE
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -838,13 +838,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += 	"</td>"
 	dat += "<td width='33%' align='center'>"
 	if(usr?.client?.prefs?.be_russian)
+		dat += "<br><b>Доп. Предмет:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a><BR>"
+	else
+		dat += "<br><b>Loadout Item:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a><BR>"
+	if(usr?.client?.prefs?.be_russian)
 		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>ОСОБЕННЫЙ</font>" : "Быть Особенным"]</b></a><BR>"
 	else
 		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "Be Special"]</b></a><BR>"
-	if(usr?.client?.prefs?.be_russian)
-		dat += "<b>Предыстория:</b> <a href='?_src_=prefs;preference=background;task=input'>[background.ru_name]</a><BR>"
-	else
-		dat += "<b>Background:</b> <a href='?_src_=prefs;preference=background;task=input'>[background.name]</a><BR>"
 	if(istype(N))
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			switch(N.ready)
@@ -1658,29 +1658,6 @@ Slots: [job.spawn_positions]</span>
 							return
 						voice_color = sanitize_hexcolor(new_voice)
 
-				if ("background")
-					var/list/backgrounds_available = list()
-					for (var/path as anything in GLOB.backgrounds)
-						var/datum/background/background = GLOB.backgrounds[path]
-						if(usr?.client?.prefs?.be_russian)
-							if (!background.ru_name)
-								continue
-							backgrounds_available[background.ru_name] = background
-						else
-							if (!background.name)
-								continue
-							backgrounds_available[background.name] = background
-					var/background_input = input(user, "Choose your character's background", "Background") as null|anything in backgrounds_available
-					if (background_input)
-						var/datum/background/background_chosen = backgrounds_available[background_input]
-						background = background_chosen
-						if(usr?.client?.prefs?.be_russian)
-							to_chat(user, "<font color='purple'>[background.ru_name]</font>")
-							to_chat(user, "<font color='purple'>[background.ru_description_string()]</font>")
-						else
-							to_chat(user, "<font color='purple'>[background.name]</font>")
-							to_chat(user, "<font color='purple'>[background.description_string()]</font>")
-
 				if("barksound")
 					var/list/woof_woof = list()
 					for(var/path in GLOB.bark_list)
@@ -1787,6 +1764,24 @@ Slots: [job.spawn_positions]</span>
 					nudeshot_link = new_nudeshot_link
 					to_chat(user, "<span class='notice'>Successfully updated nudeshot picture</span>")
 					log_game("[user] has set their Nudeshot image to '[nudeshot_link]'.")
+
+				if("loadout_item")
+					var/list/loadouts_available = list("None")
+					for (var/path as anything in GLOB.loadout_items)
+						var/datum/loadout_item/loadout = GLOB.loadout_items[path]
+						if (!loadout.name)
+							continue
+						loadouts_available[loadout.name] = loadout
+					var/loadout_input = input(user, "Choose your character's loadout item.", "Loadout") as null|anything in loadouts_available
+					if(loadout_input)
+						if(loadout_input == "None")
+							loadout = null
+							to_chat(user, "Who needs stuff anyway?")
+						else
+							loadout = loadouts_available[loadout_input]
+							to_chat(user, "<font color='yellow'><b>[loadout.name]</b></font>")
+							if(loadout.desc)
+								to_chat(user, "[loadout.desc]")
 
 				if("species")
 
@@ -2431,7 +2426,6 @@ Slots: [job.spawn_positions]</span>
 	character.headshot_link = headshot_link
 	character.nudeshot_link = nudeshot_link
 
-	character.background = background
 	character.set_bark(bark_id)
 	character.vocal_speed = bark_speed
 	character.vocal_pitch = bark_pitch
