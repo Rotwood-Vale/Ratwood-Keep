@@ -336,10 +336,25 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 //			testing("reges cant find")
 //			return "0"
 
+/client/verb/html_chat()
+	set name = "{Old Chat}"
+	set category = "Options"
+	set hidden = FALSE
+
+	prefs.prefer_old_chat = TRUE
+	prefs.save_preferences()
+	to_chat(src, "Going back to old chat.")
+
+	winset(src, "output", "is-visible=true;is-disabled=false")
+	winset(src, "browseroutput", "is-visible=false")
+
 /client/verb/fix_chat()
 	set name = "{FIX CHAT}"
 	set category = "Options"
 	set hidden = FALSE
+
+	prefs.prefer_old_chat = FALSE
+	prefs.save_preferences()
 	if(!check_rights(0))
 		return
 	if (!chatOutput || !istype(chatOutput))

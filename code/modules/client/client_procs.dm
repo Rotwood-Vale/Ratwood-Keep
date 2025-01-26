@@ -282,6 +282,10 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	fps = prefs.clientfps
 
+	if(prefs.prefer_old_chat == FALSE)
+		spawn() // Goonchat does some non-instant checks in start()
+			chatOutput.start()
+
 	if(fexists(roundend_report_file()))
 		verbs += /client/proc/show_previous_roundend_report
 
