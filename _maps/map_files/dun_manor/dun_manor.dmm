@@ -9447,11 +9447,6 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
-"hTg" = (
-/obj/machinery/light/rogue/torchholder/r,
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/open/floor/rogue/grassyel,
-/area/rogue/outdoors/town)
 "hTl" = (
 /obj/structure/chair/wood/rogue,
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
@@ -10023,10 +10018,6 @@
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
-"isD" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/town)
 "isP" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -10914,7 +10905,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 6
 	},
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "jeA" = (
@@ -11793,10 +11784,6 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-"jRU" = (
-/obj/machinery/light/rogue/torchholder/r,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/town)
 "jRY" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -14282,10 +14269,6 @@
 	dir = 5
 	},
 /turf/open/transparent/openspace,
-/area/rogue/outdoors/town)
-"lMv" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/rogue/grassred,
 /area/rogue/outdoors/town)
 "lNb" = (
 /obj/structure/rack/rogue,
@@ -26349,12 +26332,6 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician)
-"vRL" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/turf/open/floor/rogue/ruinedwood/herringbone,
-/area/rogue/indoors/town)
 "vRS" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/shield/tower/metal,
@@ -26735,10 +26712,11 @@
 /turf/closed/wall/mineral/rogue/decowood/vert,
 /area/rogue/indoors/town)
 "wjT" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/roguegrass,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/town)
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood/herringbone,
+/area/rogue/indoors/town)
 "wkd" = (
 /obj/effect/decal/cobbleedge,
 /obj/structure/fluff/littlebanners/bluewhite{
@@ -55605,10 +55583,10 @@ xAg
 vTS
 cxb
 cxb
-gcS
+vTS
+aJv
 xAg
-xAg
-cxb
+krt
 tNG
 tNG
 tNG
@@ -55765,7 +55743,7 @@ xAg
 pJn
 pJn
 pJn
-hqw
+cxb
 cxb
 tNG
 tNG
@@ -55905,7 +55883,7 @@ rjf
 idu
 mbj
 xAg
-gfc
+xAg
 mbj
 waT
 waT
@@ -56061,7 +56039,7 @@ tiz
 rjf
 gvf
 fTZ
-xAg
+aJv
 xAg
 mbj
 gvf
@@ -56367,7 +56345,7 @@ jIk
 jIk
 cxb
 krt
-hqw
+orK
 xAg
 xAg
 mbj
@@ -56376,7 +56354,7 @@ bPQ
 xNA
 mbj
 cxb
-hqw
+cxb
 waT
 mbj
 fTZ
@@ -56524,7 +56502,7 @@ jIk
 pJn
 bwO
 ukV
-cxb
+pJn
 bOa
 xAg
 waT
@@ -56535,7 +56513,7 @@ waT
 krt
 xAg
 paC
-hqw
+cxb
 vTS
 krt
 waT
@@ -56543,7 +56521,7 @@ jex
 jex
 jex
 waT
-cxb
+hqw
 krt
 cxb
 bOa
@@ -56682,7 +56660,7 @@ pJn
 eJl
 cZW
 pJn
-paC
+pJn
 krt
 xAg
 pJn
@@ -56693,25 +56671,25 @@ pJn
 pJn
 pJn
 pJn
-wjT
-paC
+hqw
+cxb
 nVg
 pJn
 pJn
 pJn
-paC
-hqw
+cxb
+cxb
 klC
-paC
+cxb
 pJn
 pJn
 pJn
 pJn
 pJn
 cxb
-hqw
+cxb
 xAg
-gcS
+aJv
 vTS
 pJn
 pJn
@@ -57153,25 +57131,25 @@ pJn
 eJl
 iYW
 pJn
-isD
+pJn
 cxb
 krt
 pJn
 pJn
 pJn
-jRU
+cxb
 pJn
 pJn
 pJn
 pJn
 xAg
-hqw
-hTg
+orK
+wjg
 pJn
 pJn
 pJn
 gcS
-gfc
+xAg
 klC
 klC
 pJn
@@ -57180,11 +57158,11 @@ pJn
 pJn
 pJn
 qPC
-gcS
-vTS
 xAg
 vTS
-gfc
+pJn
+pJn
+xAg
 wjg
 gfc
 vTS
@@ -57309,7 +57287,7 @@ jIk
 pJn
 eJl
 gVO
-xAg
+pJn
 bOa
 krt
 waT
@@ -57317,10 +57295,10 @@ mbj
 eoh
 mbj
 waT
-cxb
+krt
 pJn
 pJn
-gfc
+vTS
 xAg
 xAg
 waT
@@ -57976,7 +57954,7 @@ rjf
 sEp
 waT
 xAg
-gcS
+xAg
 klC
 klC
 klC
@@ -58091,7 +58069,7 @@ oYo
 jIk
 jIk
 omo
-wnS
+jIk
 cxb
 cxb
 cxb
@@ -58123,7 +58101,7 @@ pJn
 vTS
 cxb
 cxb
-hqw
+orK
 krt
 cxb
 krt
@@ -58292,7 +58270,7 @@ waT
 klC
 qPC
 klC
-lMv
+klC
 klC
 klC
 klC
@@ -58421,8 +58399,8 @@ mbj
 mbj
 mbj
 waT
-hqw
-xAg
+cxb
+qsB
 xAg
 fJa
 dQZ
@@ -59689,7 +59667,7 @@ cxb
 cxb
 hvn
 tVC
-tVC
+hvn
 tVC
 tVC
 tVC
@@ -59845,7 +59823,7 @@ xAg
 cxb
 uvM
 hvn
-tVC
+hvn
 hvn
 tVC
 tVC
@@ -60157,7 +60135,7 @@ tVC
 tVC
 hvn
 hvn
-tVC
+jQH
 hvn
 hvn
 hvn
@@ -82152,7 +82130,7 @@ eSe
 mbj
 eSe
 sMD
-vRL
+wjT
 fTZ
 tXZ
 tXZ
