@@ -231,6 +231,7 @@ GLOBAL_LIST_INIT(ambience_files, list(
 	'sound/music/area/bog.ogg',
 	'sound/music/area/caves.ogg',
 	'sound/music/area/church.ogg',
+	'sound/music/area/13angels.ogg',
 	'sound/music/area/dwarf.ogg',
 	'sound/music/area/field.ogg',
 	'sound/music/area/magiciantower.ogg',

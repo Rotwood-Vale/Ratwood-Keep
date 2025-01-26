@@ -1,0 +1,18 @@
+/datum/admins/proc/admin_command(command, target)
+	var/mob/resolved = locate(target)
+	if(QDELETED(resolved))
+		return
+
+	switch(command)
+		if(FLAG_GIB)
+			resolved.gib()
+		if(FLAG_PP)
+			show_player_panel(resolved)
+		if(FLAG_VV)
+			owner.debug_variables(resolved)
+		if(FLAG_JUMP)
+			owner.jumptomob(resolved)
+		if(FLAG_JUMP_GHOST)
+			if(!isobserver(owner))
+				owner.admin_ghost()
+			owner.jumptomob(resolved)

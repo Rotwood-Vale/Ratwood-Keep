@@ -54,7 +54,7 @@
 			mod = 6
 
 	var/spdchange = (10-STASPD)*0.1
-	spdchange = clamp(spdchange, -0.5, 1)  //if this is not clamped, maniacs will run at unfathomable speed
+	spdchange = clamp(spdchange, -2, 2)  //if this is not clamped, maniacs will run at unfathomable speed
 	mod = mod+spdchange
 	//maximum speed is achieved at 15spd, everything else results in insanity
 	add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
