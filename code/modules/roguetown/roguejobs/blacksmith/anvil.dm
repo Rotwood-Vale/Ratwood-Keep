@@ -105,7 +105,7 @@
 					advance_multiplier = 0.50
 				else
 					break
-		user.changeNext_move(user.used_intent.clickcd) //Swift intent smithing is the new secret tech
+		user.changeNext_move(user.used_intent.clickcd)
 		return
 
 
