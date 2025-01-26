@@ -337,7 +337,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 //			return "0"
 
 /client/verb/html_chat()
-	set name = "{Old Chat}"
+	set name = "{OLD CHAT}"
 	set category = "Options"
 	set hidden = FALSE
 
