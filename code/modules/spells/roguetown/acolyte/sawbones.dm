@@ -179,7 +179,7 @@
 	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 
 	if(rot)
-		rot.amount = 0
+		rot.time_of_death = 0
 
 	if(iscarbon(target))
 		var/mob/living/carbon/stinky = target
@@ -203,6 +203,10 @@
 			ghost.mind.transfer_to(target, TRUE)
 			qdel(underworld_spirit)
 	target.grab_ghost(force = TRUE) // even suicides
+
+	for(var/datum/wound/W in target.get_wounds()) // Cures deadite infections.
+		if(W.has_special_infection())
+			W.remove_special_infection("Zombie")
 	
 	target.update_body()
 	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))

@@ -395,7 +395,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/rotstuff = FALSE
 		var/datum/component/rot/simple/CR = GetComponent(/datum/component/rot/simple)
 		if(CR)
-			if(CR.amount >= 10 MINUTES)
+			if(CR.time_of_death + 10 MINUTES <= world.time)
 				rotstuff = TRUE
 		var/atom/Tsec = drop_location()
 		for(var/path in butcher)

@@ -343,6 +343,16 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/has_special_infection()
 	return (zombie_infection_timer || werewolf_infection_timer)
 
+/// Removes a special infection - "Zombie" OR "Werewolf"
+/datum/wound/proc/remove_special_infection(infection_type = "Zombie") // Zombie or Werewolf
+	if(!has_special_infection())
+		return
+	switch(infection_type)
+		if("Zombie")
+			zombie_infection_timer = null
+		if("Werewolf")
+			werewolf_infection_timer = null
+
 /// Some wounds cannot go away naturally
 /datum/wound/proc/should_persist()
 	if(has_special_infection())

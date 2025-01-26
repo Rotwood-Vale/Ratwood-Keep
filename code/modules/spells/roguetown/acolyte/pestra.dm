@@ -182,7 +182,7 @@
 
 		var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 		if(rot)
-			rot.amount = 0
+			rot.time_of_death = 0
 
 		if(iscarbon(target))
 			var/mob/living/carbon/stinky = target

@@ -1,6 +1,9 @@
+#define ROT_STAGE_ONE	15 MINUTES	// Raise as deadite
+#define ROT_STAGE_TWO	20 MINUTES	// Fully rot
+#define ROT_STAGE_THREE	30 MINUTES	// Skeletonize
+#define	ROT_STAGE_FOUR	40 MINUTES	// Dust
 /datum/component/rot
-	var/amount = 0
-	var/last_process = 0
+	var/time_of_death = 0
 	var/datum/looping_sound/fliesloop/soundloop
 	/// Stored skin tone to revert to before destroying if we don't zombify from rot.
 	var/skin_tone
@@ -10,8 +13,7 @@
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	if(new_amount)
-		amount = new_amount
+	time_of_death = world.time
 
 	soundloop = new(parent, FALSE)
 
@@ -26,11 +28,6 @@
 	. = ..()
 
 /datum/component/rot/process()
-	var/amt2add = 10 //1 second
-	if(last_process)
-		amt2add = ((world.time - last_process)/10) * amt2add
-	last_process = world.time
-	amount += amt2add
 	return
 
 /datum/component/rot/corpse/Initialize()
@@ -58,7 +55,7 @@
 		qdel(src)
 		return
 	
-	if(amount > 4 MINUTES)
+	if(time_of_death + ROT_STAGE_ONE < world.time)
 		if(is_zombie)
 			var/datum/antagonist/zombie/Z = C.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(Z && !Z.has_turned && !Z.revived && C.stat == DEAD)
@@ -70,13 +67,13 @@
 	for(var/obj/item/bodypart/B in C.bodyparts)
 		if(!B.skeletonized && B.is_organic_limb())
 			if(!B.rotted)
-				if(amount > 10 MINUTES)
+				if(time_of_death + ROT_STAGE_TWO < world.time)
 					B.rotted = TRUE
 					findonerotten = TRUE
 					shouldupdate = TRUE
 					C.change_stat("constitution", -8, "rottenlimbs")
 			else
-				if(amount > 25 MINUTES)
+				if(time_of_death + ROT_STAGE_THREE < world.time)
 					if(!is_zombie)
 						B.skeletonize()
 						if(C.dna && C.dna.species)
@@ -85,7 +82,7 @@
 						shouldupdate = TRUE
 				else
 					findonerotten = TRUE
-		if(amount > 35 MINUTES)
+		if(time_of_death + ROT_STAGE_FOUR < world.time)
 			if(!is_zombie)
 				if(B.skeletonized)
 					dustme = TRUE
@@ -121,21 +118,26 @@
 	if(L.stat != DEAD)
 		qdel(src)
 		return
-	if(amount > 15 MINUTES)
+	if(time_of_death + ROT_STAGE_TWO < world.time)
 		if(soundloop && soundloop.stopped)
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
 			T.pollute_turf(/datum/pollutant/rot, 50)
-	if(amount > 25 MINUTES)
+	if(time_of_death + ROT_STAGE_THREE < world.time)
 		qdel(src)
 		return L.dust(drop_items=TRUE)
 
 /datum/component/rot/gibs
-	amount = 0.005
+	time_of_death = 0.005
 
 /datum/looping_sound/fliesloop
 	mid_sounds = list('sound/misc/fliesloop.ogg')
 	mid_length = 60
 	volume = 50
 	extra_range = 0
+
+#undef ROT_STAGE_ONE
+#undef ROT_STAGE_TWO
+#undef ROT_STAGE_THREE
+#undef ROT_STAGE_FOUR

@@ -41,7 +41,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		qdel(cc)
 	client_colours = null
 	testing("EPICWIN!! [src] [type]")
-	ghostize(drawskip=TRUE)
+	ghostize()
 	..()
 	return QDEL_HINT_HARDDEL
 

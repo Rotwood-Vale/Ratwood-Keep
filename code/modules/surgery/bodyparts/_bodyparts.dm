@@ -244,7 +244,7 @@
 	var/turf/T = get_turf(src)
 	if(status != BODYPART_ROBOTIC)
 		playsound(T, 'sound/blank.ogg', 50, TRUE, -1)
-	for(var/obj/item/I in src)
+	for(var/obj/item/I in get_organs())
 		I.forceMove(T)
 
 /obj/item/bodypart/proc/skeletonize(lethal = TRUE)
@@ -252,7 +252,7 @@
 		remove_bandage()
 	for(var/obj/item/I in embedded_objects)
 		remove_embedded_object(I)
-	for(var/obj/item/I in src) //dust organs
+	for(var/obj/item/I in get_organs()) //dust organs
 		qdel(I)
 	skeletonized = TRUE
 	for(var/datum/wound/bloody_wound as anything in wounds)

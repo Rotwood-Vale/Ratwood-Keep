@@ -30,7 +30,7 @@
 		if(mind)	//You aren't allowed to return to brains that don't exist
 			mind.current = null
 		testing("BASEDLOL ")
-		ghostize(drawskip=TRUE)		//Ghostize checks for key so nothing else is necessary.
+		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	return ..()
 
 /mob/living/brain/update_mobility()
