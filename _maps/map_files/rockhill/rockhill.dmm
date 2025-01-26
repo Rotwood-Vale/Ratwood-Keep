@@ -4850,13 +4850,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
-"cBe" = (
-/obj/item/natural/stone{
-	pixel_y = 15;
-	pixel_x = -15
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/druidgrove)
 "cBf" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -14981,11 +14974,8 @@
 /area/rogue/outdoors/druidgrove)
 "hVU" = (
 /obj/item/natural/stone{
-	pixel_y = 15;
-	pixel_x = 15
-	},
-/obj/item/natural/stone{
-	pixel_x = 5
+	pixel_x = 15;
+	pixel_y = -15
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/druidgrove)
@@ -31487,6 +31477,20 @@
 	pixel_y = 22;
 	pixel_x = -5
 	},
+/obj/item/natural/stone{
+	pixel_x = -22
+	},
+/obj/item/natural/stone{
+	pixel_x = 22
+	},
+/obj/item/natural/stone{
+	pixel_x = -15;
+	pixel_y = -15
+	},
+/obj/item/natural/stone{
+	pixel_y = -15;
+	pixel_x = 15
+	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/druidgrove)
 "qQZ" = (
@@ -35844,12 +35848,6 @@
 "tnM" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave)
-"tnP" = (
-/obj/item/natural/stone{
-	pixel_x = -5
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/druidgrove)
 "toa" = (
 /obj/machinery/light/roguestreet/orange{
 	dir = 1;
@@ -43389,13 +43387,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/academy)
-"xti" = (
-/obj/item/natural/stone{
-	pixel_y = 15;
-	pixel_x = 15
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/druidgrove)
 "xtq" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -240856,7 +240847,7 @@ qvR
 qvR
 uaL
 efg
-sjP
+fxx
 uaL
 uaL
 wSn
@@ -249944,9 +249935,9 @@ sfx
 sfx
 kIQ
 nUD
-iiy
 hVU
-xti
+iiy
+iiy
 cGR
 uZx
 sfx
@@ -250809,8 +250800,8 @@ sfx
 uZx
 ruj
 fvK
-tnP
-cBe
+iiy
+iiy
 ewa
 kIQ
 sfx
@@ -469384,7 +469375,7 @@ fJh
 gqd
 jcO
 hVR
-lMb
+cwA
 vpR
 vpR
 pDG
@@ -469818,12 +469809,12 @@ akm
 cwA
 gqM
 mRe
-vAW
+eZr
 rXZ
 gmE
 byx
 bdD
-lMb
+cwA
 euP
 euP
 euP
@@ -471551,7 +471542,7 @@ vAW
 vAW
 blZ
 tps
-lMb
+cwA
 kIy
 swU
 euP
@@ -471976,7 +471967,7 @@ dNe
 vhH
 swa
 cwA
-lMb
+cwA
 vpR
 vpR
 pDG
@@ -579114,7 +579105,7 @@ cAj
 cAj
 hVR
 anm
-rXZ
+ttZ
 vAW
 vAW
 rXZ
@@ -580410,7 +580401,7 @@ duU
 mOX
 oWr
 kvI
-cmC
+vpR
 euP
 euP
 euP
@@ -581274,7 +581265,7 @@ kmB
 mOX
 oWr
 nnV
-cmC
+vpR
 euP
 euP
 euP
@@ -581705,7 +581696,7 @@ hUy
 hUy
 mOX
 rXZ
-rXZ
+ttZ
 vAW
 cmC
 gRh
