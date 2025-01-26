@@ -993,7 +993,7 @@
 	update_vision_cone()
 	addtimer(CALLBACK(src, PROC_REF(end_submit)), 600)
 	if(InCritical())
-		reagents.add_reagent(/datum/reagent/medicine/epinephrine, 10)
+		reagents.add_reagent(/datum/reagent/medicine/epinephrine, 1)
 
 /mob/living/proc/end_submit()
 	surrendering = 0
