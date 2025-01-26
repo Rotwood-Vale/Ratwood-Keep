@@ -17076,14 +17076,6 @@
 	dir = 8
 	},
 /area/rogue/outdoors/mountains)
-"jcK" = (
-/obj/structure/flora/roguegrass/bush/wall,
-/obj/structure/glowshroom{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/druidgrove)
 "jcO" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -470251,7 +470243,7 @@ rEj
 gqM
 gqM
 gqM
-jcK
+dXW
 vYw
 rsb
 bwO
@@ -579124,7 +579116,7 @@ bgS
 tvO
 gYJ
 cAj
-feq
+cAj
 swU
 swU
 phy
@@ -582580,7 +582572,7 @@ fNh
 oCO
 oCO
 cAj
-feq
+cAj
 swU
 ovk
 swU
