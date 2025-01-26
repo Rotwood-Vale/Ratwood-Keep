@@ -83,15 +83,8 @@
 	item_d_type = "stab"
 	ican_cdg = TRUE
 
-/datum/intent/sword/thrust/toothpick
-	name = "stab"
-	icon_state = "instab"
-	attack_verb = list("jabs", "picks")
-	clickcd = 8
-
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
-	wdefense = 4
 	name = "arming sword"
 	desc = "A short arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
 	icon_state = "shortsword"
@@ -99,20 +92,8 @@
 	gripped_intents = null
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
+	wdefense = 4
 	can_cdg = TRUE
-
-/obj/item/rogueweapon/sword/short/legendary
-	slot_flags = ITEM_SLOT_MOUTH
-	wdefense = 5
-	name = "toothpick"
-	desc = "An arming sword, this one seems to have undergone heat treatment. It's surprisingly light, even for its size."
-	max_blade_int = 150
-	max_integrity = 200
-	force = 19
-	color = CLOTHING_BLACK
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/toothpick, /datum/intent/sword/strike)
-	minstr = 5
-	sellprice = 169
 
 /obj/item/rogueweapon/sword/long
 	force = 25
