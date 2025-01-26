@@ -51,20 +51,20 @@
 	if(reason || admin)
 		var/thing = ""
 		if(amt > 0)
-			thing += "+[amt]"
+			thing += "Спасибо за игру (+[amt])"
 		if(amt < 0)
-			thing += "[amt]"
+			thing += "Жалоба на игру ([amt])"
 		if(admin)
-			thing += " by [admin]"
+			thing += " от <b>[admin]</b>"
 		if(reason)
-			thing += " for reason: [reason]"
+			thing += " за: <i>[reason]</i>"
 		if(amt == 0)
 			if(!reason && !admin)
 				return
 			if(admin)
-				thing = "NOTE from [admin]: [reason]"
+				thing = "<u>ЗАМЕТКА от [admin]: [reason]</u>"
 			else
-				thing = "NOTE: [reason]"
+				thing = "<u>ЗАМЕТКА: [reason]</u>"
 		thing += " ([GLOB.rogue_round_id])"
 		thing += "\n"
 		text2file(thing,"data/player_saves/[copytext(key,1,2)]/[key]/playerquality.txt")
@@ -81,8 +81,9 @@
 			msg += " - GM: [admin]"
 		if(reason)
 			msg += " - RSN: [reason]"
-		message_admins("[admin] adjusted [key]'s PQ by [amt] for reason: [reason]")
+		message_admins("[admin] [amt>0 ? "повысил" : "снял"] PQ [key][abs(amt) > 1 ? " на [amt]" : ""] за: \"<i>[reason]</i>\"") // REDMOON EDIT
 		log_admin("[admin] adjusted [key]'s PQ by [amt] for reason: [reason]")
+		send2irc("PQ", "[admin] [amt>0 ? "повысил" : "снял"] [key][abs(amt) > 1 ? " на [amt]" : ""] за: \"<i>[reason]</i>\"") // REDMOON ADD
 
 /client/proc/check_pq()
 	set category = "GameMaster"
@@ -210,21 +211,38 @@
 	var/list/json = json_decode(file2text(json_file))
 	if(json[giver])
 		curcomm = json[giver]
-	curcomm++
+	// REDMOON REMOVAL - перенесено ниже - WAS: curcomm++
 	json[giver] = curcomm
-	fdel(json_file)
-	WRITE_FILE(json_file, json_encode(json))
+	// REDMOON REMOVAL - перенесено ниже - WAS: fdel(json_file)
+	// REDMOON REMOVAL - перенесено ниже - WAS: WRITE_FILE(json_file, json_encode(json))
 
+	// REDMOON ADD START - причина для изменения PQ
 	var/fakekey = src.ckey
 	if(src.ckey in GLOB.anonymize)
 		fakekey = get_fake_key(src.ckey)
 
-	var/raisin = stripped_input(src, "Укажите краткую причину этого изменения", "Симулятор Бога", "", null)
+	var/raisin = stripped_input(src, "Укажите краткую причину этого изменения", "Будь крутым, а не гнилым", "", null)
 	if(!raisin)
 		to_chat(src, span_boldwarning("Причина не указана."))
-		return
+		return FALSE // REDMOON ADD - добавил FALSE
+	// REDMOON ADD END
 
-	adjust_playerquality(1, ckey(key), fakekey, raisin)
+	if(curcomm <= 0) // REDMOON EDIT - если больше 1, то коммендить нельзя - WAS: if(curcomm == 1)
+	//add the pq, only on the first commend
+//	if(get_playerquality(key) < 29)
+
+		adjust_playerquality(1, ckey(key), fakekey, raisin) // REDMOON EDIT - was adjust_playerquality(1, ckey(key))
+	// REDMOON ADD START - похвала без PQ
+		curcomm++
+		json[giver] = curcomm
+		fdel(json_file)
+		WRITE_FILE(json_file, json_encode(json))
+		return TRUE
+	else
+		give_comment(1, ckey(key), fakekey, raisin)
+		return TRUE
+
+	// REDMOON ADD END
 
 /proc/get_commends(key)
 	if(!key)

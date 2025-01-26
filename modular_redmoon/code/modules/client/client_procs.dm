@@ -1,12 +1,10 @@
 /client/New()
 	. = ..()
-	spawn(20)
-		process_donator_bonus()
+	process_donator_bonus()
 
 /client/proc/process_donator_bonus()
-	set waitfor = 0
 	
-	if((!ckey) || (prefs && prefs.donator_bonus_received))
+	if(!ckey || !prefs || prefs.donator_bonus_received)
 		return
 	
 	var/is_donor = FALSE
@@ -24,11 +22,11 @@
 	if(!is_donor)
 		return
 	
+
 	adjust_playerquality(15, ckey, "SYSTEM", "Donator bonus")
-	
-	if(prefs)
-		prefs.donator_bonus_received = TRUE
-		prefs.save_preferences()
-		prefs.save_character()
+
+	prefs.donator_bonus_received = TRUE
+	prefs.save_preferences()
+	prefs.save_character()
 	
 	to_chat(src, span_notice("Вы получили +15 PQ как бонус для донатера. Спасибо за поддержку!"))
