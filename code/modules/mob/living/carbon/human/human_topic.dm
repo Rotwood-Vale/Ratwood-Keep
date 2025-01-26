@@ -146,12 +146,13 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		var/mob/living/carbon/human/user = usr
 		user.visible_message("[user] begins assessing [src].")
 		if(do_after_mob(user, list(src), (40 - (user.STAINT - 10) - (user.STAPER - 10) - user.mind?.get_skill_level(/datum/skill/misc/reading))))
-			var/is_guarded = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)
-			var/is_smart = FALSE
-			var/is_stupid = FALSE
-			var/is_normal = FALSE
+			var/is_guarded = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)	//Will scramble Stats and prevent skills from being shown
+			var/is_smart = FALSE	//Maximum info (all skills, gear and stats) either Intellectual virtue or having high enough PER / INT / Reading
+			var/is_stupid = FALSE	//Less than 9 INT, Intellectual virtue overrides it.
+			var/is_normal = FALSE	//High amount of info -- most gear slots, combat skills. No stats.
+			//If you don't get any of these, you'll still get to see 3 gear slots and shown weapon skills in Assess.
 			if(HAS_TRAIT(user, TRAIT_INTELLECTUAL) || ((user.STAINT - 10) + (user.STAPER - 10) + user.mind?.get_skill_level(/datum/skill/misc/reading)) >= 10)
-				is_smart = TRUE
+				is_smart = TRUE	
 			if(user.STAINT < 10 && !is_smart)
 				is_stupid = TRUE
 			if(((user.STAINT - 10) + (user.STAPER - 10) + H?.mind?.get_skill_level(/datum/skill/misc/reading)) >= 5)
@@ -207,7 +208,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			else
 				dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
 
-			//Extra stuff you can assess if you match the thresholds.
+			//Extra stuff you can assess if you match the thresholds. (Neck, gloves, shirt and shoes)
 			if((is_normal || is_smart) && !is_stupid)
 				dat += "<b><font size = 4; font color = '#dddada'>NECK</b></font><br>"
 				if(H.wear_neck)
@@ -241,26 +242,49 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			dat += "</td>"
 
 			dat += "<td style='width:40%;text-align:center;vertical-align: text-top'>"
-			if(!is_guarded && !is_stupid)
+			if(!is_guarded && !is_stupid)	//We don't see Guarded people's skills at all.
 				dat += "<b>SKILLS:</b><br><br>"
-				for(var/S in subtypesof(/datum/skill/combat))
-					var/datum/skill/combat/SK = S
-					if(user.mind?.get_skill_level(S) > 0)
-						dat += "<font size = 4; font color = '#dddada'><b>[SK.name]</b><br></font>"
-						var/skilldiff = user.mind?.get_skill_level(S) - H.mind?.get_skill_level(S)
-						dat += "[skilldiff_report(skilldiff)] <br>"
-						dat += "-----------------------<br>"
-				if(is_smart)
-					for(var/S in subtypesof(/datum/skill))
+				var/list/wornstuff = list(H.backr, H.backl, H.beltl, H.beltr)
+				if(!is_normal && !is_smart)	//At minimum we get to see the skills of the weapons the person is holding, if we have them.
+					for(var/stuff in wornstuff)
+						if(stuff)
+							if(istype(stuff, /obj/item))
+								var/obj/item/wornthing = stuff
+								if(wornthing.associated_skill)
+									var/datum/skill/SK = wornthing.associated_skill
+									if(user.mind?.get_skill_level(SK) > 0)
+										dat += "<font size = 4; font color = '#dddada'><b>[SK.name]</b><br></font>"
+										var/skilldiff = user.mind?.get_skill_level(SK) - H.mind?.get_skill_level(SK)
+										dat += "[skilldiff_report(skilldiff)] <br>"
+										dat += "-----------------------<br>"
+					for(var/obj/item/I in held_items)	//Also what's in their hands!
+						if(!(I.item_flags & ABSTRACT))
+							if(I.associated_skill)
+								var/datum/skill/SK = I.associated_skill
+								if(user.mind?.get_skill_level(SK) > 0)
+									dat += "<font size = 4; font color = '#dddada'><b>[SK.name]</b><br></font>"
+									var/skilldiff = user.mind?.get_skill_level(SK) - H.mind?.get_skill_level(SK)
+									dat += "[skilldiff_report(skilldiff)] <br>"
+									dat += "-----------------------<br>"
+				else	//Otherwise, we get to see all of their combat skills
+					for(var/S in subtypesof(/datum/skill/combat))
+						var/datum/skill/combat/SK = S
 						if(user.mind?.get_skill_level(S) > 0)
-							if(!ispath(S, /datum/skill/combat))	//We already did these.
-								var/datum/skill/SL = S
-								dat += "<font size = 4; font color = '#dddada'><b>[SL.name]</b><br></font>"
-								var/skilldiff = user.mind?.get_skill_level(S) - H.mind?.get_skill_level(S)
-								dat += "[skilldiff_report(skilldiff)] <br>"
-								dat += "-----------------------<br>"
-							else
-								continue
+							dat += "<font size = 4; font color = '#dddada'><b>[SK.name]</b><br></font>"
+							var/skilldiff = user.mind?.get_skill_level(S) - H.mind?.get_skill_level(S)
+							dat += "[skilldiff_report(skilldiff)] <br>"
+							dat += "-----------------------<br>"
+					if(is_smart)	//And if we're smart enough, /all/ skills.
+						for(var/S in subtypesof(/datum/skill))
+							if(user.mind?.get_skill_level(S) > 0)
+								if(!ispath(S, /datum/skill/combat))	//We already did these.
+									var/datum/skill/SL = S
+									dat += "<font size = 4; font color = '#dddada'><b>[SL.name]</b><br></font>"
+									var/skilldiff = user.mind?.get_skill_level(S) - H.mind?.get_skill_level(S)
+									dat += "[skilldiff_report(skilldiff)] <br>"
+									dat += "-----------------------<br>"
+								else
+									continue
 					
 			dat += "</td>"
 			dat += "</tr>"
