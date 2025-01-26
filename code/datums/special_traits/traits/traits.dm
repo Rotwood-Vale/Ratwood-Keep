@@ -40,7 +40,7 @@
 
 /datum/special_trait/thinker/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("strength" -3)
-	character.change_stat("intelligence" +5)
+	character.change_stat("intelligence" 5)
 	
 	character.mind.adjust_spellpoints(6)
 	character.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
