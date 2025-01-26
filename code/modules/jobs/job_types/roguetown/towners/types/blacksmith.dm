@@ -1,7 +1,7 @@
 /datum/subclass/blacksmith
 	name = "Blacksmith"
 	tutorial = "A skilled blacksmith, able to forge capable weapons for warriors in the bog, \
-	only after building a forge for themselves ofourse."
+	only after building a forge for themselves of course."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/towner/blacksmith
@@ -41,3 +41,4 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", -1)
 		H.change_stat("fortune", 1)
+		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
