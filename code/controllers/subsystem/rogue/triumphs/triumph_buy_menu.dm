@@ -19,7 +19,7 @@
 
 
 /datum/triumph_buy_menu/proc/triumph_menu_startup_slop()
-	var/datum/asset/thicc_assets = get_asset_datum(/datum/asset/simple/stonekeep_triumph_buy_menu_slop_layout)
+	var/datum/asset/thicc_assets = get_asset_datum(/datum/asset/simple/blackedstone_triumph_buy_menu_slop_layout)
 	thicc_assets.send(linked_client)
 
 	show_menu()
