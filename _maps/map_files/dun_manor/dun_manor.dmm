@@ -26349,6 +26349,12 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician)
+"vRL" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood/herringbone,
+/area/rogue/indoors/town)
 "vRS" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/shield/tower/metal,
@@ -82146,7 +82152,7 @@ eSe
 mbj
 eSe
 sMD
-wIe
+vRL
 fTZ
 tXZ
 tXZ
