@@ -259,7 +259,8 @@
 
 /obj/structure/spacevine/Destroy()
 	for(var/datum/spacevine_mutation/SM in mutations)
-		SM.on_death(src)
+		if(!isnull(SM))
+			SM.on_death(src)
 	if(master)
 		master.VineDestroyed(src)
 	mutations = list()
