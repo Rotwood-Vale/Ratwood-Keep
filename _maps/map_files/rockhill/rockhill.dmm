@@ -43387,6 +43387,9 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/academy)
+"xti" = (
+/turf/open/water/swamp/deep,
+/area/rogue/outdoors/rtfield)
 "xtq" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -233086,8 +233089,8 @@ uaL
 qvR
 qvR
 qvR
-uaL
-uaL
+xti
+xti
 wSn
 cTH
 xrY
@@ -233512,14 +233515,14 @@ ryI
 ryI
 ryI
 wSn
-uaL
-uaL
+xti
+xti
 cix
 qvR
 spp
 qvR
-uaL
-uaL
+xti
+xti
 dsO
 cTH
 qvR
@@ -233944,15 +233947,15 @@ xvN
 qvR
 wSn
 wSn
-uaL
-uaL
+xti
+xti
 qvR
 spp
 qvR
 cTH
 uaL
-uaL
-qvR
+xti
+xti
 xvN
 qvR
 qvR
@@ -234383,8 +234386,8 @@ qvR
 uaL
 wSn
 uaL
-uaL
-qvR
+xti
+xti
 qvR
 xvN
 qvR
@@ -235242,8 +235245,8 @@ qvR
 xqL
 qvR
 qvR
-uaL
-uaL
+xti
+xti
 cTH
 wSn
 uaL
@@ -235673,8 +235676,8 @@ wSn
 uaL
 cTH
 uaL
-wSn
-uaL
+xti
+xti
 cTH
 wSn
 wSn
@@ -236105,9 +236108,9 @@ cTH
 wSn
 wSn
 cTH
-wSn
-wSn
-wSn
+xti
+xti
+xti
 spp
 qvR
 qvR
@@ -236539,7 +236542,7 @@ qvR
 wSn
 xvN
 xqL
-wSn
+xti
 qvR
 spp
 spp
@@ -236970,8 +236973,8 @@ uaL
 spp
 spp
 qvR
-uaL
-uaL
+xti
+xti
 wSn
 qvR
 qvR
@@ -237398,7 +237401,7 @@ ryI
 ryI
 ryI
 qvR
-uaL
+xti
 qvR
 wSn
 spp
@@ -237829,7 +237832,7 @@ uaL
 wSn
 cTH
 wSn
-uaL
+xti
 xvN
 cTH
 uaL
@@ -238261,8 +238264,8 @@ uaL
 wSn
 xqL
 wSn
-uaL
-qvR
+xti
+xti
 qvR
 xvN
 qvR
@@ -239129,7 +239132,7 @@ uaL
 xvN
 qvR
 ptV
-qvR
+xti
 cTH
 xvN
 spp
@@ -239561,8 +239564,8 @@ qvR
 qvR
 qvR
 qvR
-uaL
-uaL
+xti
+xti
 qvR
 qvR
 xvN
@@ -243020,7 +243023,7 @@ uaL
 wSn
 fxx
 wSn
-uaL
+fxx
 fxx
 wSn
 wSn
@@ -248191,7 +248194,7 @@ xNI
 oCO
 oCO
 rXZ
-vAW
+eZr
 xdh
 xdh
 ptC
@@ -252941,7 +252944,7 @@ lLo
 eKW
 oCO
 tSt
-vAW
+eZr
 rXZ
 oCO
 oCO
