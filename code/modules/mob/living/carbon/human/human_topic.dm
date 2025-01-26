@@ -145,7 +145,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		var/mob/living/carbon/human/H = src
 		var/mob/living/carbon/human/user = usr
 		user.visible_message("[user] begins assessing [src].")
-		if(do_after_mob(user, list(src), (40 - (user.STAINT - 10) - (user.STAPER - 10) - user.mind?.get_skill_level(/datum/skill/misc/reading))))
+		if(do_mob(user, src, (40 - (user.STAINT - 10) - (user.STAPER - 10) - user.mind?.get_skill_level(/datum/skill/misc/reading))))
 			var/is_guarded = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)	//Will scramble Stats and prevent skills from being shown
 			var/is_smart = FALSE	//Maximum info (all skills, gear and stats) either Intellectual virtue or having high enough PER / INT / Reading
 			var/is_stupid = FALSE	//Less than 9 INT, Intellectual virtue overrides it.
@@ -155,7 +155,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				is_smart = TRUE	
 			if(user.STAINT < 10 && !is_smart)
 				is_stupid = TRUE
-			if(((user.STAINT - 10) + (user.STAPER - 10) + H?.mind?.get_skill_level(/datum/skill/misc/reading)) >= 5)
+			if(!is_smart && !is_stupid && ((user.STAINT - 10) + (user.STAPER - 10) + H?.mind?.get_skill_level(/datum/skill/misc/reading)) >= 5)
 				is_normal = TRUE
 			var/list/dat = list()
 			// Top-level table
@@ -327,17 +327,18 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 
 	var/coverage = "<u><b>COVERS: </b></u><br>"
 	if(!stupid)
-		coverage += " | "
+		coverage += "<font color = '#cccccc'> | </font>"
 		for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
-			coverage += "<b>[zone] | </b>"
+			coverage += "<font color = '#cccccc'><b>[zone] | </b></font>"
 		str += "[coverage]<br>"
 	else
 		str += coverage
 		str += stupid_string
 	if(normal || smart)
-		var/crits = "PREVENTS CRITS: <br>"
+		var/crits = "<b><u>PREVENTS CRITS: </u></b><br>"
+		crits += "<font color = '#b9b9b9'>| </font>"
 		for(var/zone in C.prevent_crits)
-			crits += "[capitalize(zone)] "
+			crits += "<font color = '#b9b9b9'>[capitalize(zone)] | </font>"
 		str += crits
 	str += "<br>---------------------------<br>"
 	return str

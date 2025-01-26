@@ -333,7 +333,7 @@
 	if(beltl && !(SLOT_BELT_L in obscured))
 		if(is_smart)
 			var/str = "[m3] [beltl.get_examine_string(user)] on [m2] belt. "
-			str += beltr.integrity_check()
+			str += beltl.integrity_check()
 			. += str
 		else
 			. += "[m3] [beltl.get_examine_string(user)] on [m2] belt."
