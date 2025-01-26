@@ -4850,6 +4850,13 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
+"cBe" = (
+/obj/item/natural/stone{
+	pixel_x = 15;
+	pixel_y = -15
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/druidgrove)
 "cBf" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -35844,6 +35851,14 @@
 "tnM" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave)
+"tnP" = (
+/obj/structure/flora/roguegrass/bush/wall,
+/obj/structure/glowshroom{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/turf/closed/wall/mineral/rogue/wooddark,
+/area/rogue/outdoors/druidgrove)
 "toa" = (
 /obj/machinery/light/roguestreet/orange{
 	dir = 1;
@@ -43383,13 +43398,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/academy)
-"xti" = (
-/obj/item/natural/stone{
-	pixel_x = 15;
-	pixel_y = -15
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/druidgrove)
 "xtq" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -249938,7 +249946,7 @@ sfx
 sfx
 kIQ
 nUD
-xti
+cBe
 iiy
 iiy
 cGR
@@ -579973,7 +579981,7 @@ mOX
 rXZ
 rXZ
 vAW
-cmC
+vpR
 gRh
 vpR
 vpR
@@ -580408,7 +580416,7 @@ vpR
 euP
 euP
 euP
-moe
+tnP
 euP
 oaG
 kMH
@@ -581272,7 +581280,7 @@ vpR
 euP
 euP
 euP
-moe
+tnP
 euP
 dxY
 rEG
@@ -581701,7 +581709,7 @@ mOX
 rXZ
 ttZ
 vAW
-cmC
+vpR
 gRh
 vpR
 vpR
