@@ -65,23 +65,23 @@
 	item_state = "eorahelm"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/templar/AdjustClothes(mob/user)
-	if(loc == user)
-		playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
-		if(adjustable == CAN_CADJUST)
-			adjustable = CADJUSTED
-			icon_state = "[initial(icon_state)]_raised"
-			body_parts_covered = HEAD|HAIR|EARS
-			flags_inv = HIDEEARS
-			flags_cover = null
-			if(ishuman(user))
-				var/mob/living/carbon/H = user
-				H.update_inv_head()
-			block2add = FOV_DEFAULT
-		else if(adjustable == CADJUSTED)
-			ResetAdjust(user)
-			flags_inv = HIDEFACE
-			if(user)
-				if(ishuman(user))
-					var/mob/living/carbon/H = user
-					H.update_inv_head()
-		user.update_fov_angles()
+	playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
+
+	if(adjustable == CAN_CADJUST)
+		adjustable = CADJUSTED
+		icon_state = "[initial(icon_state)]_raised"
+		body_parts_covered = HEAD|HAIR|EARS
+		flags_inv = HIDEEARS|HIDEHAIR
+		flags_cover = null
+		if(ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_head()
+		block2add = FOV_DEFAULT
+	else if(adjustable == CADJUSTED)
+		ResetAdjust(user)
+
+	if(user)
+		if(ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_head()
+	user.update_fov_angles()
