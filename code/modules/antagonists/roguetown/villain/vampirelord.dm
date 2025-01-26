@@ -82,6 +82,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	/datum/rmb_intent/weak)
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
+	vamp_look()
 	if(eyes)
 		eyes.Remove(owner.current,1)
 		QDEL_NULL(eyes)
@@ -90,7 +91,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix)
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
-	vamp_look()
 	if(isspawn)
 		owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
 		add_objective(/datum/objective/vlordserve)
@@ -358,8 +358,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		return
 	if(H.advsetup)
 		return
-	if(!isspawn)
-		vitae = mypool.current
+	vitae = mypool.current
 	if(ascended)
 		return
 	if(world.time % 5)
@@ -400,20 +399,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		handle_vitae(-1)
 
 /datum/antagonist/vampirelord/proc/handle_vitae(change, tribute)
-	var/sanitized = clamp(vitae, 0, VAMP_MAX_VITAE) 
-	var/tempcurrent = sanitized  //Stops Vitae from going below 0.
-	if(!isspawn)
-		mypool.update_pool(change)
-	if(isspawn)
-		if(change > 0)
-			tempcurrent += change
-			if(tempcurrent > vmax)
-				tempcurrent = vmax // to prevent overflow
-		if(change < 0)
-			tempcurrent += change
-			if(tempcurrent < 0)
-				tempcurrent = 0 // to prevent excessive negative.
-		vitae = tempcurrent
+	mypool.update_pool(change) // Spawn and Vlord now share a blood pool.
 	if(tribute)
 		mypool.update_pool(tribute)
 	if(vitae <= 20)
@@ -427,7 +413,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			starved = FALSE
 			for(var/S in MOBSTATS)
 				owner.current.change_stat(S, 5)
-	vitae = sanitized //Should hopefully prevent any future vitae issues.
+	vitae = mypool.current
 
 /datum/antagonist/vampirelord/proc/move_to_spawnpoint()
 	owner.current.forceMove(pick(GLOB.vlord_starts))
@@ -480,7 +466,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				if(thrall.special_role == "Vampire Spawn")
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_strength
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
-					thrall.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 					for(var/S in MOBSTATS)
 						thrall.current.change_stat(S, 3) //Overall stat nerf to VLord (not huge)
 	return
@@ -696,6 +681,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		current = 999999
 	if(change)
 		current += change
+	current = clamp(current, 0, maximum)
 
 /obj/structure/vampire/bloodpool/proc/check_withdraw(change)
 	if(change < 0)
