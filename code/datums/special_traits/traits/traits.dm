@@ -293,7 +293,7 @@
 	weight = 100
 
 /datum/special_trait/civilizedbarbarian/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //Need to make trait improve hitting people with chairs, mugs, goblets. <real
+	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, "[type]") //Need to make trait improve hitting people with chairs, mugs, goblets. <real
 
 
 /datum/special_trait/jack_of_all_trades
