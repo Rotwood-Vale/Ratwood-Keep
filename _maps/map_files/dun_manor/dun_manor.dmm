@@ -12458,7 +12458,6 @@
 	dir = 8
 	},
 /obj/machinery/light/rogue/torchholder/c,
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town)
 "kwG" = (
