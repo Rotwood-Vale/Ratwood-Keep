@@ -13,7 +13,8 @@
 
 	for(var/T in get_traumas())
 		var/datum/brain_trauma/BT = T
-		BT.on_death()
+		if(!isnull(BT))
+			BT.on_death()
 
 	if(SSticker.mode)
 		SSticker.mode.check_win() //Calls the rounds wincheck, mainly for wizard, malf, and changeling now
