@@ -527,7 +527,7 @@
 
 /datum/special_trait/unlucky
 	name = "Unlucky"
-	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off.")
+	greet_text = span_boldwarning("Ever since I knocked over that glass vase, I just feel... off.")
 	weight = 60
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
