@@ -53,7 +53,9 @@
 		if(MOVE_INTENT_SNEAK)
 			mod = 6
 
-	movement_speed_function()
+	mod+(STASPD * 0.2 - 2)
+	//maximum speed is achieved at 15spd, everything else results in insanity
+	add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
 
 /mob/living/proc/update_turf_movespeed(turf/open/T)
 	if(isopenturf(T))
