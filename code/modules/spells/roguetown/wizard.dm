@@ -597,6 +597,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
 		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
+		/obj/effect/proc_holder/spell/invoked/lastresort, //0 cost
 	)
 
 	//Patron Spelllists
@@ -1219,6 +1220,78 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		return TRUE
 	revert_cast()
 	return FALSE
+
+/obj/effect/proc_holder/spell/invoked/lastresort
+	name = "Last Resort"
+	desc = "Deliberately disrupt your internal mana channeling, making you painfully detonate into gibblets after a short delay. A way out of fates worse than death. Permanently renders your body unrevivable."
+	school = "transmutation"
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 15
+	charge_max = 15 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 3
+	clothes_req = FALSE
+	active = FALSE
+	sound = 'sound/combat/fracture/fracturewet (1).ogg'
+	invocation_type = "none"
+	overlay_state = "raiseskele"
+	range = -1
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	xp_gain = FALSE
+	cost = 0
+
+
+/obj/effect/proc_holder/spell/invoked/lastresort/cast(mob/living/user)
+	switch(alert("Do you want to die horribly and become unrevivable?",,"Yes","No"))
+		if("Yes")
+			to_chat(user, span_warning("I begin ripping apart my mana channels, this will be quite painful!"))
+			user.visible_message(span_warning("[user] begins to violently contort, faintly glowing fissures tearing open across their body!"))
+			var/obj/item/bodypart/BPC = user.get_bodypart(BODY_ZONE_CHEST)
+			var/obj/item/bodypart/BPG = user.get_bodypart(BODY_ZONE_PRECISE_GROIN)
+			var/obj/item/bodypart/BPH = user.get_bodypart(BODY_ZONE_HEAD)
+			var/obj/item/bodypart/BPLA = user.get_bodypart(BODY_ZONE_L_ARM)
+			var/obj/item/bodypart/BPRA = user.get_bodypart(BODY_ZONE_R_ARM)
+			var/obj/item/bodypart/BPLL = user.get_bodypart(BODY_ZONE_L_LEG)
+			var/obj/item/bodypart/BPRL = user.get_bodypart(BODY_ZONE_R_LEG)
+			var/obj/item/bodypart/BPN = user.get_bodypart(BODY_ZONE_PRECISE_NECK)
+			BPC.add_wound(/datum/wound/artery/chest)
+			BPG.add_wound(/datum/wound/artery)
+			sleep(10)
+			BPN.add_wound(/datum/wound/dislocation/neck)
+			BPRL.add_wound(/datum/wound/artery)
+			sleep(10)
+			BPLL.add_wound(/datum/wound/artery)
+			BPC.add_wound(/datum/wound/fracture/chest)
+			sleep(10)
+			BPLA.add_wound(/datum/wound/dislocation)
+			BPRA.add_wound(/datum/wound/artery)
+			BPN.add_wound(/datum/wound/fracture/neck)
+			sleep(10)
+			BPH.add_wound(/datum/wound/artery)
+			BPLA.add_wound(/datum/wound/fracture)
+			BPRL.add_wound(/datum/wound/dislocation)
+			sleep(10)
+			BPN.add_wound(/datum/wound/artery/neck)
+			BPLL.add_wound(/datum/wound/dislocation)
+			BPRA.add_wound(/datum/wound/dislocation)
+			sleep(10)
+			BPLA.add_wound(/datum/wound/artery)
+			BPG.add_wound(/datum/wound/fracture/groin)
+			BPH.add_wound(/datum/wound/fracture/head)
+			sleep(10)
+			BPRA.add_wound(/datum/wound/fracture)
+			BPLL.add_wound(/datum/wound/fracture)
+			BPRL.add_wound(/datum/wound/fracture)
+			sleep(10)
+			log_game("[key_name(user)] exploded into gibblets with the last resort spell.")
+			user.gib()
+		if("No")
+			to_chat(user, span_warning("I decide against exploding!"))
+			return
 
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK
