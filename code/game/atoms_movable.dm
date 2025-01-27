@@ -201,7 +201,14 @@
 	var/move_dir = get_dir(pulling.loc, A)
 	if(!Process_Spacemove(move_dir))
 		return FALSE
+	var/turf/pre_turf = get_turf(pulling)
 	pulling.Move(get_step(pulling.loc, move_dir), move_dir, glide_size)
+	var/turf/post_turf = get_turf(pulling)
+	if(pre_turf.snow && !post_turf.snow)
+		SEND_SIGNAL(pre_turf.snow, COMSIG_MOB_OVERLAY_FORCE_REMOVE, pulling)
+		if(ismob(src))
+			var/mob/source = src
+			source.update_vision_cone()
 	return TRUE
 
 /mob/living/Move_Pulled(atom/A)
@@ -442,7 +449,7 @@
 
 //oldloc = old location on atom, inserted when forceMove is called and ONLY when forceMove is called!
 /atom/movable/Crossed(atom/movable/AM, oldloc)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM,)
 
 /atom/movable/Uncross(atom/movable/AM, atom/newloc)
 	. = ..()
@@ -550,9 +557,6 @@
 		return 1
 
 	if(!isturf(loc))
-		return 1
-
-	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
 		return 1
 
 	return 0

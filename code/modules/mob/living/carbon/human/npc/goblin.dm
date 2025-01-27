@@ -28,6 +28,7 @@
 /mob/living/carbon/human/species/goblin/hell
 	name = "hell goblin"
 	race = /datum/species/goblin/hell
+
 /mob/living/carbon/human/species/goblin/npc/hell
 	race = /datum/species/goblin/hell
 /mob/living/carbon/human/species/goblin/npc/ambush/hell
@@ -230,7 +231,7 @@
 	real_name = "goblin"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 //	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 //	blue breathes underwater, need a new specific one for this maybe organ cheque
 //	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
@@ -266,7 +267,7 @@
 			if(B.rotted)
 				var/turf/open/T = C.loc
 				if(istype(T))
-					T.add_pollutants(/datum/pollutant/rot, 1)
+					T.pollute_turf(/datum/pollutant/rot, 10)
 	if(should_update)
 		if(amount > 20 MINUTES)
 			C.update_body()
@@ -364,7 +365,7 @@
 
 /obj/structure/gob_portal/Initialize()
 	. = ..()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 	soundloop.start()
 	spawn_gob()
 

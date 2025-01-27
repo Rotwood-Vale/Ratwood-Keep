@@ -38,7 +38,6 @@
 /proc/create_area(mob/creator)
 	// Passed into the above proc as list/break_if_found
 	var/static/area_or_turf_fail_types = typecacheof(list(
-		/area/shuttle,
 		))
 	// Ignore these areas and dont let people expand them. They can expand into them though
 	var/static/blacklisted_areas = typecacheof(list(
@@ -46,7 +45,7 @@
 		))
 	var/list/turfs = detect_room(get_turf(creator), area_or_turf_fail_types, BP_MAX_ROOM_SIZE*2)
 	if(!turfs)
-		to_chat(creator, span_warning("The new area must be completely airtight and not a part of a shuttle."))
+		to_chat(creator, span_warning("The new area must be completely airtight."))
 		return
 	if(turfs.len > BP_MAX_ROOM_SIZE)
 		to_chat(creator, span_warning("The room you're in is too big. It is [turfs.len >= BP_MAX_ROOM_SIZE *2 ? "more than 100" : ((turfs.len / BP_MAX_ROOM_SIZE)-1)*100]% larger than allowed."))

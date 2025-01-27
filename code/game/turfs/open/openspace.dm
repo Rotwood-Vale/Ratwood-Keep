@@ -31,6 +31,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	canSmoothWith = list(/turf/closed/mineral,/turf/closed/wall/mineral/rogue, /turf/open/floor/rogue)
 	smooth = SMOOTH_MORE
 	neighborlay_override = "staticedge"
+	turf_flags = NONE
 
 /turf/open/transparent/openspace/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
@@ -42,9 +43,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		M.layer = SPLASHSCREEN_LAYER + 0.01
 		M.plane = OPENSPACE_BACKDROP_PLANE + 0.01
 		add_overlay(M)
-
-/turf/open/transparent/openspace/airless
-	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/transparent/openspace/debug/update_multiz()
 	..()
@@ -80,6 +78,8 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /turf/open/transparent/openspace/zPassOut(atom/movable/A, direction, turf/destination)
 	if(A.anchored)
+		return FALSE
+	if(HAS_TRAIT(A, TRAIT_I_AM_INVISIBLE_ON_A_BOAT))
 		return FALSE
 	if(direction == DOWN)
 		testing("dir=down")

@@ -106,6 +106,7 @@
 #define INIT_ORDER_INPUT			85
 #define INIT_ORDER_MATURITY_GUARD	84  // RATWOOD EDIT
 #define INIT_ORDER_VIS				80
+#define INIT_ORDER_SOUNDS 			79
 #define INIT_ORDER_ACHIEVEMENTS		77
 #define INIT_ORDER_MATERIALS		76
 #define INIT_ORDER_RESEARCH			75
@@ -113,6 +114,8 @@
 #define INIT_ORDER_JOBS				65
 #define INIT_ORDER_ROLE_CLASS_HANDLER 66
 #define INIT_ORDER_TRIUMPHS			67
+#define INIT_ORDER_AI_MOVEMENT 		56 //We need the movement setup
+#define INIT_ORDER_AI_CONTROLLERS 	55 //So the controller can get the ref
 #define INIT_ORDER_TICKER			55
 #define INIT_ORDER_MAPPING			50
 #define INIT_ORDER_NETWORKS			45
@@ -132,7 +135,6 @@
 #define INIT_ORDER_STICKY_BAN		-10
 #define INIT_ORDER_LIGHTING			-20
 #define INIT_ORDER_OUTDOOR_EFFECTS  -21
-#define INIT_ORDER_SHUTTLE			-22
 #define INIT_ORDER_MINOR_MAPPING	-40
 #define INIT_ORDER_PATH				-50
 #define INIT_ORDER_DISCORD			-60
@@ -141,7 +143,8 @@
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
-
+#define FIRE_PRIORITY_SLOW_OBJECTS 5
+#define FIRE_PRIORITY_ENCHANTMENT 10
 #define FIRE_PRIORITY_ROLE_CLASS_HANDLER 10
 #define FIRE_PRIORITY_PING			10
 #define FIRE_PRIORITY_WET_FLOORS	10
@@ -156,6 +159,8 @@
 #define FIRE_PRIORITY_MOUSECHARGE	20
 #define FIRE_PRIORITY_AIR			20
 #define FIRE_PRIORITY_NPC			20
+#define FIRE_PRIORITY_NPC_MOVEMENT 	21
+#define FIRE_PRIORITY_NPC_ACTIONS 	22
 #define FIRE_PRIORITY_PROCESS		25
 #define FIRE_PRIORITY_THROWING		25
 #define FIRE_PRIORITY_SPACEDRIFT	30
@@ -192,27 +197,12 @@
 //! ## Overlays subsystem
 
 ///Compile all the overlays for an atom from the cache lists
-#define COMPILE_OVERLAYS(A)\
-	if (TRUE) {\
-		var/list/ad = A.add_overlays;\
-		var/list/rm = A.remove_overlays;\
-		var/list/po = A.priority_overlays;\
-		if(LAZYLEN(rm)){\
-			A.overlays -= rm;\
-			rm.Cut();\
-		}\
-		if(LAZYLEN(ad)){\
-			A.overlays |= ad;\
-			ad.Cut();\
-		}\
-		if(LAZYLEN(po)){\
-			A.overlays |= po;\
-		}\
-		for(var/I in A.alternate_appearances){\
-			var/datum/atom_hud/alternate_appearance/AA = A.alternate_appearances[I];\
+#define POST_OVERLAY_CHANGE(changed_on) \
+	if(alternate_appearances) { \
+		for(var/I in changed_on.alternate_appearances){\
+			var/datum/atom_hud/alternate_appearance/AA = changed_on.alternate_appearances[I];\
 			if(AA.transfer_overlays){\
-				AA.copy_overlays(A, TRUE);\
+				AA.copy_overlays(changed_on, TRUE);\
 			}\
-		}\
-		A.flags_1 &= ~OVERLAY_QUEUED_1;\
+		} \
 	}

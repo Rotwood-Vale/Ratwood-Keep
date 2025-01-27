@@ -87,6 +87,12 @@ SUBSYSTEM_DEF(atoms)
 		qdeleted = TRUE
 	else if(!(A.flags_1 & INITIALIZED_1))
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
+	else
+		SEND_SIGNAL(A, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE)
+		var/atom/location = A.loc
+		if(location)
+			/// Sends a signal that the new atom `src`, has been created at `loc`
+			SEND_SIGNAL(location, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, A, arguments[1])
 
 	return qdeleted || QDELING(A)
 

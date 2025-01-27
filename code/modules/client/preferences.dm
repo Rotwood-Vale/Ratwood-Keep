@@ -2,6 +2,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 GLOBAL_LIST_EMPTY(chosen_names)
 
+GLOBAL_LIST_INIT(name_adjustments, list())
+
 /datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
@@ -139,6 +141,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/charflaw/charflaw
 
 	var/family = FAMILY_NONE
+	var/list/family_species = list()
+	var/list/family_gender = list()
 
 	var/crt = FALSE
 
@@ -153,6 +157,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
 	var/defiant = TRUE
+	var/virginity = FALSE
+	var/char_accent = "No accent"
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
 	var/has_spawned = FALSE
 
@@ -179,6 +185,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			return
 	//Set the race to properly run race setter logic
 	set_new_race(pref_species, null)
+
+	// Enable all races and genders for family preferences by default
+	family_species = list()
+	var/list/available_species = get_selectable_species()
+	for(var/species_name in available_species)
+		var/datum/species/S = GLOB.species_list[species_name]
+		family_species += S.id
+
+	family_gender = list(MALE,FEMALE)
+
 	if(!charflaw)
 		charflaw = pick(GLOB.character_flaws)
 		charflaw = GLOB.character_flaws[charflaw]
@@ -193,13 +209,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	menuoptions = list()
 	return
 
-/datum/preferences/proc/set_new_race(datum/species/new_race, user)
+/datum/preferences/proc/set_new_race(datum/species/new_race, mob/user)
 	pref_species = new_race
 	real_name = pref_species.random_name(gender,1)
 	ResetJobs()
 	if(user)
 		if(pref_species.desc)
 			to_chat(user, "[pref_species.desc]")
+		if(pref_species.expanded_desc)
+			to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Read More</a>")
 		to_chat(user, "<font color='red'>Classes reset.</font>")
 	random_character(gender)
 	accessory = "Nothing"
@@ -335,7 +353,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-//			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
+			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
+			if(family != FAMILY_NONE)
+				dat += "<B>Family Preferences:</B>"
+				if(gender == MALE)
+					family_gender = list(FEMALE)
+				else
+					family_gender = list(MALE)
+				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
+				dat += "<BR>"
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
 /*
@@ -373,8 +399,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(use_skintones)
 
 				var/skin_tone_wording = pref_species.skin_tone_wording // Both the skintone names and the word swap here is useless fluff
+				var/list/skin_tones = pref_species.get_skin_list()
+				var/heldtone
+				if(skin_tone)
+					for(var/tone in skin_tones)
+						if(skin_tone == skin_tones[tone])
+							heldtone = tone //your fault if this isn't uppercase.
+							break
+				//Second comment on how stupid this is. TODO: REFACTOR THIS SHITTY FUCKING SYSTEM. We shouldn't be using associative lists like this.
 
-				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
+				dat += "<b>[skin_tone_wording]:	 </b><span style='font-size:104%'>[heldtone]</span><a href='?_src_=prefs;preference=s_tone;task=input'>	Change </a>"
 				dat += "<br>"
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
@@ -386,6 +420,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
 			dat += "<br><b>Voice Pitch: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
+			dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
 			dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
 			dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
@@ -673,6 +708,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
 	dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
+	dat += "<b>Be a virgin:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
 	dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	dat += "</td>"
 	dat += "</tr>"
@@ -1176,6 +1212,25 @@ Slots: [job.spawn_positions]</span>
 	else if(href_list["preference"] == "triumph_buy_menu")
 		SStriumphs.startup_triumphs_menu(user.client)
 
+	else if(href_list["preference"] == "familypref")
+		switch(href_list["res"])
+			if("race")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.roundstart_races)
+						var/datum/species/S = GLOB.species_list[A]
+						var/index = "[(S.id in family_species) ? "(+)" : ""][S.name]"
+						choices[index] = S.id
+					choices += "(DONE)"
+					choice = input(usr,"Out of all the many races, none catch my fancy quite like... (+) = ON","RACE") as anything in choices
+					if(choice != "(CANCEL)")
+						if(choices[choice] in family_species)
+							family_species -= choices[choice]
+						else
+							family_species += choices[choice]
+
+
 	else if(href_list["preference"] == "keybinds")
 		switch(href_list["task"])
 			if("close")
@@ -1333,6 +1388,8 @@ Slots: [job.spawn_positions]</span>
 							real_name = new_name
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+					GLOB.name_adjustments |= "[parent] changed their characters name to [new_name]."
+					log_character("[parent] changed their characters name to [new_name].")
 
 //				if("age")
 //					var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Years Dead") as num|null
@@ -1340,7 +1397,7 @@ Slots: [job.spawn_positions]</span>
 //						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 
 				if("age")
-					var/new_age = input(user, "Choose your character's age (18-[pref_species.max_age])", "Yils Dead") as null|anything in pref_species.possible_ages
+					var/new_age = input(user, "Choose your character's age:", "Yils Dead") as null|anything in pref_species.possible_ages
 					if(new_age)
 						age = new_age
 						var/list/hairs
@@ -1508,6 +1565,11 @@ Slots: [job.spawn_positions]</span>
 					if(new_mutantcolor)
 						features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
 						try_update_mutant_colors()
+				
+				if("char_accent")
+					var/selectedaccent = input(user, "Choose your character's accent:", "Character Preference") as null|anything in GLOB.character_accents
+					if(selectedaccent)
+						char_accent = selectedaccent
 
 /*
 				if("color_ethereal")
@@ -1658,9 +1720,10 @@ Slots: [job.spawn_positions]</span>
 						to_chat(user, span_warning("You may switch your character and choose any role, if you don't meet the requirements (if any are specified) it won't be applied"))
 
 				if("family")
-					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
-					to_chat(user, "<font color='red'>[pick(loly)]</font>")
-					return
+					if(family == FAMILY_NONE)
+						family = FAMILY_FULL
+					else
+						family = FAMILY_NONE
 				if("hotkeys")
 					hotkeys = !hotkeys
 					if(hotkeys)
@@ -1854,6 +1917,13 @@ Slots: [job.spawn_positions]</span>
 					else
 						to_chat(user, span_boldwarning("You fully immerse yourself in the grim experience, waiving your resistance from people violating you, but letting you do the same unto other non-defiants"))
 
+				if("be_virgin")
+					virginity = !virginity
+					if(virginity)
+						to_chat(user, span_notice("You have not once indulged in the temptations of the flesh.")) 
+					else
+						to_chat(user, span_notice("You have. In a word. Fucked before.")) //Someone word this better please kitty is high and words are hard
+
 				if("schizo_voice")
 					toggles ^= SCHIZO_VOICE
 					if(toggles & SCHIZO_VOICE)
@@ -1996,6 +2066,7 @@ Slots: [job.spawn_positions]</span>
 	character.set_patron(selected_patron)
 	character.backpack = backpack
 	character.defiant = defiant
+	character.virginity = virginity
 
 	character.jumpsuit_style = jumpsuit_style
 
@@ -2027,6 +2098,8 @@ Slots: [job.spawn_positions]</span>
 		character.update_body()
 		character.update_hair()
 		character.update_body_parts(redraw = TRUE)
+	
+	character.char_accent = char_accent
 
 /datum/preferences/proc/get_default_name(name_id)
 	switch(name_id)

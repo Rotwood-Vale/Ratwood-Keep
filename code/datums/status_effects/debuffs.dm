@@ -67,8 +67,6 @@
 	needs_update_stat = TRUE
 
 /datum/status_effect/incapacitating/unconscious/tick()
-	if(owner.getStaminaLoss())
-		owner.adjustStaminaLoss(-0.3) //reduce stamina loss by 0.3 per tick, 6 per 2 seconds
 
 //SLEEPING
 /datum/status_effect/incapacitating/sleeping
@@ -126,7 +124,6 @@
 			break //Only count the first bedsheet
 		if(health_ratio > 0.8)
 			owner.adjustToxLoss(healing * 0.5, FALSE, TRUE)
-		owner.adjustStaminaLoss(healing)
 	if(human_owner && human_owner.drunkenness)
 		human_owner.drunkenness *= 0.997 //reduce drunkenness by 0.3% per tick, 6% per 2 seconds
 	if(prob(20))
@@ -306,24 +303,6 @@
 	. = ..()
 	deltimer(timerid)
 
-
-/datum/status_effect/gonbolaPacify
-	id = "gonbolaPacify"
-	status_type = STATUS_EFFECT_MULTIPLE
-	tick_interval = -1
-	alert_type = null
-
-/datum/status_effect/gonbolaPacify/on_apply()
-	ADD_TRAIT(owner, TRAIT_PACIFISM, "gonbolaPacify")
-	ADD_TRAIT(owner, TRAIT_MUTE, "gonbolaMute")
-	ADD_TRAIT(owner, TRAIT_JOLLY, "gonbolaJolly")
-	to_chat(owner, span_notice("I suddenly feel at peace and feel no need to make any sudden or rash actions..."))
-	return ..()
-
-/datum/status_effect/gonbolaPacify/on_remove()
-	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "gonbolaPacify")
-	REMOVE_TRAIT(owner, TRAIT_MUTE, "gonbolaMute")
-	REMOVE_TRAIT(owner, TRAIT_JOLLY, "gonbolaJolly")
 
 /datum/status_effect/trance
 	id = "trance"

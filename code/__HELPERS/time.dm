@@ -43,33 +43,37 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 		if(!GLOB.forecast)
 			switch(GLOB.tod)
 				if("dawn")
-					if(prob(12))
-						GLOB.forecast = "fog"
-					if(prob(13))
+					if(prob(25))
 						GLOB.forecast = "rain"
+//					if(prob(1))						SNOW COMMENTED OUT UNTIL ITS UPDATED TO FIX BUGS. ROGTODO
+//						GLOB.forecast = "snow"
 				if("day")
 					if(prob(5))
 						GLOB.forecast = "rain"
+//					if(prob(1))
+//						GLOB.forecast = "snow"
 				if("dusk")
-					if(prob(13))
+					if(prob(33))
 						GLOB.forecast = "rain"
+//					if(prob(1))
+//						GLOB.forecast = "snow"
 				if("night")
-					if(prob(5))
-						GLOB.forecast = "fog"
-					if(prob(21))
+					if(prob(40))
 						GLOB.forecast = "rain"
+//					if(prob(1))
+//						GLOB.forecast = "snow"
 			if(GLOB.forecast == "rain")
 				var/foundnd
-				for(var/datum/weather/rain/R in SSweather.curweathers)
+				if(SSParticleWeather?.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
 					foundnd = TRUE
 				if(!foundnd)
-					SSweather.run_weather(/datum/weather/rain, 1)
-		/*	if(GLOB.forecast == "fog")
+					SSParticleWeather?.run_weather(pick(/datum/particle_weather/rain_gentle, /datum/particle_weather/rain_storm))
+			else if(GLOB.forecast == "snow")
 				var/foundnd
-				for(var/datum/weather/fog/R in SSweather.curweathers)
+				if(SSParticleWeather?.runningWeather?.target_trait == PARTICLEWEATHER_SNOW)
 					foundnd = TRUE
 				if(!foundnd)
-					SSweather.run_weather(/datum/weather/fog, 1) */
+					SSParticleWeather?.run_weather(pick(/datum/particle_weather/snow_gentle, /datum/particle_weather/snow_storm))
 		else
 			switch(GLOB.forecast) //end the weather now
 				if("rain")
@@ -78,8 +82,6 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 					else
 						GLOB.forecast = null
 				if("rainbow")
-					GLOB.forecast = null
-				if("fog")
 					GLOB.forecast = null
 
 	if(GLOB.tod != oldtod)
@@ -209,3 +211,10 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 
 /proc/daysSince(realtimev)
 	return round((world.realtime - realtimev) / (24 HOURS))
+
+//returns time diff of two times normalized to time_rate_multiplier
+/proc/daytimeDiff(timeA, timeB)
+
+	//if the time is less than station time, add 24 hours (MIDNIGHT_ROLLOVER)
+	var/time_diff = timeA > timeB ? (timeB + 24 HOURS) - timeA : timeB - timeA
+	return time_diff / SSticker.station_time_rate_multiplier // normalise with the time rate multiplier

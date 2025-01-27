@@ -73,17 +73,3 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "broom"
 	resistance_flags = FLAMMABLE
-
-/obj/item/staff/stick
-	name = "stick"
-	desc = ""
-	icon = 'icons/obj/items_and_weapons.dmi'
-	icon_state = "cane"
-	item_state = "stick"
-	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
-	force = 3
-	throwforce = 5
-	throw_speed = 2
-	throw_range = 5
-	w_class = WEIGHT_CLASS_SMALL

@@ -5,14 +5,14 @@
 	name = "Aasimar"
 	id = "aasimar"
 	desc = "<b>Aasimar</b><br>\
-	Aasimar are born of a rare union between Humans and Angels. \
-	They bear the mark of their celestial touch through many varying physical features. \
-	Their looks resemble the traditional characteristics of whichever of the Gods the Angel parent was associated with. \
-	Most commonly, Aasimar are similar to Humans, albeit taller, and possess uncanny beauty. \
-	They have strangely colored skin and are more physically frail than the average Human. \
-	Because of their upbringing, they make for natural conduits for godly powers. \
-	Rockhills populace holds them with a mixture of uneasy fear or, and respect. \
-	It is also widely believed that an Aasimars death is a bad omen..."
+	Aasimar are born of a rare union between mortals and Celestials of the Ten. \
+    They bear the mark of their celestial touch through many varying physical features. \
+    Their looks resemble the traditional characteristics of whichever of the Gods the Celestial parent was associated with. \
+    Most commonly, many Aasimar are similar to Humans, albeit taller, and possess uncanny beauty, due generally to Eoran origins. \
+    They may have strangely colored skin and are more physically frail than the average mortal. \
+    Because of their upbringing, they make for natural conduits for godly powers. \
+    Rockhill's populace holds them with a mixture of wariness and respect. \
+    It is also widely believed that an Aasimar's unjust death is a bad omen, that the Ten will not take lightly."
 
 	skin_tone_wording = "Craft"
 
@@ -44,14 +44,14 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = -1,
-		"perception" = 0,
-		"intelligence" = 2,
-		"constitution" = -2,
-		"endurance" = 1,
-		"speed" = 0,
-		"fortune" = 1,
-		)
+        "strength" = -1,
+        "perception" = 0,
+        "intelligence" = 2,
+        "constitution" = -2,
+        "endurance" = 0,
+        "speed" = 0,
+        "fortune" = 2,
+        )
 	enflamed_icon = "widefire"
 	customizers = list(
 		/datum/customizer/organ/eyes/humanoid,
@@ -63,6 +63,7 @@
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
+		/datum/customizer/organ/wings/aasimar
 		)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
@@ -89,6 +90,7 @@
 
 /datum/species/aasimar/get_skin_list()
 	return list(
+		"Archon" = SKIN_COLOR_ARCHON,
 		"Planetar" = SKIN_COLOR_PLANETAR,
 		"Deva"	   = SKIN_COLOR_DEVA,
 		"Solar" = SKIN_COLOR_SOLAR,
@@ -132,20 +134,3 @@
 
 /datum/species/aasimar/random_surname()
 	return
-
-//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
-// "full" group in JSON lists
-/datum/species/aasimar/get_accent(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "full")
-
-// "start" group in JSON lists
-/datum/species/aasimar/get_accent_start(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "start")
-
-// "end" group in JSON lists
-/datum/species/aasimar/get_accent_end(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "end")
-
-// "syllable" group in JSON lists
-/datum/species/aasimar/get_accent_any(mob/living/carbon/human/H)
-	return strings("proper_replacement.json", "syllable")

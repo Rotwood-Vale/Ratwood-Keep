@@ -3,6 +3,7 @@
 #define VAMP_LEVEL_TWO 12000
 #define VAMP_LEVEL_THREE 15000
 #define VAMP_LEVEL_FOUR 20000
+#define VAMP_MAX_VITAE 65000 //Makes Vamp Lord more vulnerable lategame.
 
 GLOBAL_LIST_EMPTY(vampire_objects)
 
@@ -58,9 +59,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	C.vampires |= owner
 	. = ..()
 	owner.special_role = name
-	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
+	//ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOSTAMINA, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
@@ -69,20 +70,27 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_MEDIUMARMOR, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_HEAVYARMOR, "[type]")
 	for(var/obj/structure/fluff/traveltile/vampire/tile in GLOB.traveltiles)
 		tile.show_travel_tile(owner.current)
 	ADD_TRAIT(owner.current, TRAIT_VAMP_DREAMS, "[type]")
+	owner.current.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+	/datum/rmb_intent/aimed,\
+	/datum/rmb_intent/strong,\
+	/datum/rmb_intent/riposte,\
+	/datum/rmb_intent/weak)
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
+	vamp_look()
 	if(eyes)
 		eyes.Remove(owner.current,1)
 		QDEL_NULL(eyes)
 	eyes = new /obj/item/organ/eyes/night_vision/zombie
 	eyes.Insert(owner.current)
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix)
-	owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
+	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
-	vamp_look()
 	if(isspawn)
 		owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
 		add_objective(/datum/objective/vlordserve)
@@ -153,7 +161,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 	var/selected = input(src, "Which class was I?", "VAMPIRE SPAWN") as anything in visoptions
 
-	for(var/datum/advclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
+	for(var/datum/subclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
 		if(A.name == selected)
 			equipOutfit(A.outfit)
 			return
@@ -270,6 +278,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("I am no longer a [job_rank]!"))
 	owner.special_role = null
+	owner.current.possible_rmb_intents = initial(owner.current.possible_rmb_intents)
 	if(!isnull(batform))
 		owner.current.RemoveSpell(batform)
 		QDEL_NULL(batform)
@@ -336,7 +345,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	V.update_body()
 	V.update_hair()
 	V.update_body_parts(redraw = TRUE)
-	V.mob_biotypes = MOB_UNDEAD
+	V.mob_biotypes |= MOB_UNDEAD
+	V.faction = list("undead")
 	if(isspawn)
 		V.vampire_disguise()
 
@@ -348,8 +358,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		return
 	if(H.advsetup)
 		return
-	if(!isspawn)
-		vitae = mypool.current
+	vitae = mypool.current
 	if(ascended)
 		return
 	if(world.time % 5)
@@ -358,7 +367,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				var/turf/T = H.loc
 				if(T.can_see_sky())
 					if(T.get_lumcount() > 0.15)
-						if(!isspawn)
+						if(!isspawn && !disguised) //VLord has no access to disguise by default, but this is good for adminbus. 
 							to_chat(H, span_warning("Astrata spurns me! I must get out of her rays!")) // VLord is more punished for daylight excursions.
 							var/turf/N = H.loc
 							if(N.can_see_sky())
@@ -386,22 +395,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			if(disguised)
 				to_chat(H, span_warning("My disguise fails!"))
 				H.vampire_undisguise(src)
-	handle_vitae(-1)
+	if(disguised) // Being diguised drains vitae, other wise there is no vitae drain, allows vampires to relax and RP in the mansion.
+		handle_vitae(-1)
 
 /datum/antagonist/vampirelord/proc/handle_vitae(change, tribute)
-	var/tempcurrent = vitae
-	if(!isspawn)
-		mypool.update_pool(change)
-	if(isspawn)
-		if(change > 0)
-			tempcurrent += change
-			if(tempcurrent > vmax)
-				tempcurrent = vmax // to prevent overflow
-		if(change < 0)
-			tempcurrent += change
-			if(tempcurrent < 0)
-				tempcurrent = 0 // to prevent excessive negative.
-		vitae = tempcurrent
+	mypool.update_pool(change) // Spawn and Vlord now share a blood pool.
 	if(tribute)
 		mypool.update_pool(tribute)
 	if(vitae <= 20)
@@ -415,6 +413,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			starved = FALSE
 			for(var/S in MOBSTATS)
 				owner.current.change_stat(S, 5)
+	vitae = mypool.current
 
 /datum/antagonist/vampirelord/proc/move_to_spawnpoint()
 	owner.current.forceMove(pick(GLOB.vlord_starts))
@@ -429,20 +428,19 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			for(var/obj/structure/vampire/portalmaker/S in GLOB.vampire_objects)
 				S.unlocked = TRUE
 			for(var/S in MOBSTATS)
-				owner.current.change_stat(S, 2)
+				owner.current.change_stat(S, 1)
 			for(var/obj/structure/vampire/bloodpool/B in GLOB.vampire_objects)
 				B.nextlevel = VAMP_LEVEL_TWO
 			to_chat(owner, "<font color='red'>I am refreshed and have grown stronger. The visage of the bat is once again available to me. I can also once again access my portals.</font>")
 		if(1)
 			vamplevel = 2
-			owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
 			owner.current.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodsteal)
 			owner.current.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning)
 			owner.adjust_skillrank(/datum/skill/magic/blood, 3, TRUE)
 			gas = new
 			owner.current.AddSpell(gas)
 			for(var/S in MOBSTATS)
-				owner.current.change_stat(S, 2)
+				owner.current.change_stat(S, 1)
 			for(var/obj/structure/vampire/bloodpool/B in GLOB.vampire_objects)
 				B.nextlevel = VAMP_LEVEL_THREE
 			to_chat(owner, "<font color='red'>My power is returning. I can once again access my spells. I have also regained usage of my mist form.</font>")
@@ -468,9 +466,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				if(thrall.special_role == "Vampire Spawn")
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_strength
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
-					thrall.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
 					for(var/S in MOBSTATS)
-						thrall.current.change_stat(S, 2)
+						thrall.current.change_stat(S, 3) //Overall stat nerf to VLord (not huge)
 	return
 
 // SPAWN
@@ -522,11 +519,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!msg)
 		return
 	for(var/datum/mind/V in C.vampires)
-		to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(V, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 	for(var/datum/mind/D in C.deathknights)
-		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(D, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
-		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(A, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 
 /mob/living/carbon/human/proc/punish_spawn()
 	set name = "Punish Minion"
@@ -627,7 +624,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/datum/antagonist/vampirelord/lord = user.mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(user.mind.special_role != "Vampire Lord")
 		return
-	var/choice = input(user,"What to do?", "ROGUETOWN") as anything in useoptions|null
+	var/choice = input(user,"What to do?", "RATWOOD") as anything in useoptions|null
 	switch(choice)
 		if("Grow Power")
 			if(lord.vamplevel == 4)
@@ -684,6 +681,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		current = 999999
 	if(change)
 		current += change
+	current = clamp(current, 0, maximum)
 
 /obj/structure/vampire/bloodpool/proc/check_withdraw(change)
 	if(change < 0)
@@ -935,7 +933,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/objective/vampirelord/infiltrate/two/check_completion()
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/list/noblejobs = list("Duke", "Duchess", "Heir", "Heiress", "Hand", "Steward")
+	var/list/noblejobs = list("Duke", "Duke Consort", "Heir", "Heiress", "Hand", "Steward")
 	for(var/datum/mind/V in C.vampires)
 		if(V.current.job in noblejobs)
 			return TRUE
@@ -1225,11 +1223,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!msg)
 		return
 	for(var/datum/mind/V in C.vampires)
-		to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(V, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 	for(var/datum/mind/D in C.deathknights)
-		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(D, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.mob_list)
-		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
+		to_chat(A, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_up()
 	set category = "Arcane Eye"
@@ -1420,18 +1418,75 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	name = "Bat Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 750
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
+	chargetime = 5 SECONDS
+	movement_interrupt = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/gaseousform
 	name = "Mist Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 750
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
+	chargetime = 5 SECONDS
+	movement_interrupt = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/gaseousform
+
+// Spells
+/obj/effect/proc_holder/spell/targeted/vamp_rejuv
+	name = "Rejuvenate"
+	desc = "Regenerates my targeted limb and Replenishes half my stamina. Recharges every 30 seconds. I must stand still."
+	overlay_state = "doc"
+	action_icon = 'icons/mob/actions/roguespells.dmi'
+	releasedrain = 0
+	chargedrain = 0
+	chargetime = 0
+	range = -1
+	warnie = "sydwarning"
+	movement_interrupt = TRUE
+	chargedloop = null
+	invocation_type = "whisper"
+	associated_skill = /datum/skill/magic/blood
+	antimagic_allowed = FALSE
+	charge_max = 1 MINUTES
+	cooldown_min = 1 MINUTES
+	include_user = TRUE
+	max_targets = 1
+	vitaedrain = 250
+
+/obj/effect/proc_holder/spell/targeted/vamp_rejuv/cast(list/targets, mob/user = usr)
+	if(user && iscarbon(user))
+		var/mob/living/carbon/vampire = user
+		var/silver_curse_status = FALSE // Fail to cast condition.
+		for(var/datum/status_effect/debuff/silver_curse/silver_curse in vampire.status_effects)
+			silver_curse_status = TRUE
+			break
+		if(silver_curse_status)
+			to_chat(vampire, span_danger("My BANE is not letting me rejuvenate!"))
+			return
+
+		var/datum/antagonist/vampirelord/VD = vampire.mind.has_antag_datum(/datum/antagonist/vampirelord)
+		var/bloodskill = user.mind.get_skill_level(/datum/skill/magic/blood)
+		// How much the vampire will heal by.
+		var/bloodroll = (roll("[bloodskill]d8") + (vampire.STACON * 1.5)) * 2 // Spawn heals less.
+		if(VD) // Vampire lords heal more than regular vampires.
+			if(VD.disguised)
+				to_chat(vampire, span_warning("My curse is hidden."))
+				revert_cast()
+				return
+			bloodroll = (roll("[bloodskill]d10") + (vampire.STACON * 2)) * 3 // VL heals more. D8 -> D10. CON * 1.5 -> 2 (Multiplier 2 -> 3)
+		vampire.heal_overall_damage(bloodroll, bloodroll)
+		vampire.adjustToxLoss(-bloodroll * 10) // Purges toxins.
+		vampire.adjustOxyLoss(-bloodroll)
+		vampire.heal_wounds(bloodroll * 20)
+		vampire.blood_volume += BLOOD_VOLUME_SURVIVE
+		vampire.update_damage_overlays()
+		to_chat(vampire, span_greentext("! REJUVENATE AMT: [bloodroll] !"))
+		vampire.visible_message(span_danger("[vampire] is surrounded by an wreath of shadows for a moment as their wounds mend!"))
+		vampire.playsound_local(get_turf(vampire), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)

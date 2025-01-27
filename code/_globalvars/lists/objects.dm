@@ -1,23 +1,9 @@
 GLOBAL_LIST_EMPTY(cable_list)					    //Index for all cables, so that powernets don't have to look through the entire world all the time
 GLOBAL_LIST_EMPTY(portals)					        //list of all /obj/effect/portal
-GLOBAL_LIST_EMPTY(airlocks)					        //list of all airlocks
-GLOBAL_LIST_EMPTY(mechas_list)				        //list of all mechs. Used by hostile mobs target tracking.
-GLOBAL_LIST_EMPTY(shuttle_caller_list)  		    //list of all communication consoles and AIs, for automatic shuttle calls when there are none.
 GLOBAL_LIST_EMPTY(machines)					        //NOTE: this is a list of ALL machines now. The processing machines list is SSmachine.processing !
-GLOBAL_LIST_EMPTY(navigation_computers)				//list of all /obj/machinery/computer/camera_advanced/shuttle_docker
-GLOBAL_LIST_EMPTY(syndicate_shuttle_boards)	        //important to keep track of for managing nukeops war declarations.
-GLOBAL_LIST_EMPTY(navbeacons)					    //list of all bot nagivation beacons, used for patrolling.
-GLOBAL_LIST_EMPTY(teleportbeacons)			        //list of all tracking beacons used by teleporters
-GLOBAL_LIST_EMPTY(deliverybeacons)			        //list of all MULEbot delivery beacons.
-GLOBAL_LIST_EMPTY(deliverybeacontags)			    //list of all tags associated with delivery beacons.
-GLOBAL_LIST_EMPTY(nuke_list)
-GLOBAL_LIST_EMPTY(alarmdisplay)				        //list of all machines or programs that can display station alerts
-GLOBAL_LIST_EMPTY(singularities)				    //list of all singularities on the station (actually technically all engines)
 
 GLOBAL_LIST(chemical_reactions_list)				//list of all /datum/chemical_reaction datums. Used during chemical reactions
 GLOBAL_LIST(chemical_reagents_list)				//list of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
-GLOBAL_LIST_EMPTY(materials_list)				//list of all /datum/material datums indexed by material id.
-GLOBAL_LIST_EMPTY(tech_list)					//list of all /datum/tech datums indexed by id.
 GLOBAL_LIST_EMPTY(crafting_recipes)				//list of all table craft recipes
 GLOBAL_LIST_EMPTY(anvil_recipes)				//list of all table craft recipes
 GLOBAL_LIST_EMPTY(artificer_recipes)			//list of all artificer recipes
@@ -36,7 +22,7 @@ GLOBAL_LIST_EMPTY(trophy_cases)
 GLOBAL_LIST_EMPTY(wire_color_directory)
 GLOBAL_LIST_EMPTY(wire_name_directory)
 
-GLOBAL_LIST_EMPTY(ai_status_displays)
+GLOBAL_LIST_INIT(reverse_dir, list(2, 1, 3, 8, 10, 9, 11, 4, 6, 5, 7, 12, 14, 13, 15, 32, 34, 33, 35, 40, 42, 41, 43, 36, 38, 37, 39, 44, 46, 45, 47, 16, 18, 17, 19, 24, 26, 25, 27, 20, 22, 21, 23, 28, 30, 29, 31, 48, 50, 49, 51, 56, 58, 57, 59, 52, 54, 53, 55, 60, 62, 61, 63))
 
 GLOBAL_LIST_EMPTY(mob_spawners) 		    // All mob_spawn objects
 GLOBAL_LIST_EMPTY(alert_consoles)			// Station alert consoles, /obj/machinery/computer/station_alert

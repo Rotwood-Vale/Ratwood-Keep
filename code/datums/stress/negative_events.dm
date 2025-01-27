@@ -9,7 +9,7 @@
 	desc = span_red("Smells like death here.")
 
 /datum/stressevent/miasmagas/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER) && !HAS_TRAIT(user, TRAIT_NASTY_EATER) && !HAS_TRAIT(user, TRAIT_NOSTINK))
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_NASTY_EATER) || HAS_TRAIT(user, TRAIT_NOSTINK))
 		return FALSE
 	return TRUE
 
@@ -76,7 +76,7 @@
 	desc = span_red("Butchery.")
 
 /datum/stressevent/viewdismember/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER) && !HAS_TRAIT(user, TRAIT_STEELHEARTED))
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_STEELHEARTED))
 		return FALSE
 	return TRUE
 
@@ -88,7 +88,7 @@
 	desc = span_red("I saw something horrible!")
 
 /datum/stressevent/fviewdismember/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER) && !HAS_TRAIT(user, TRAIT_STEELHEARTED))
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_STEELHEARTED))
 		return FALSE
 	return TRUE
 
@@ -98,7 +98,7 @@
 	desc = span_red("I saw something ghastly.")
 
 /datum/stressevent/viewgib/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER))
 		return FALSE
 	return TRUE
 
@@ -138,7 +138,7 @@
 	desc = "<span class='red'>ZIZOZIZOZIZO</span>"
 
 /datum/stressevent/hatezizo/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
+	if(HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
 		return FALSE
 	return TRUE
 
@@ -148,7 +148,7 @@
 	desc = span_red("YUCK!")
 
 /datum/stressevent/burntmeal/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_NASTY_EATER))
+	if(HAS_TRAIT(user, TRAIT_NASTY_EATER))
 		return FALSE
 	return TRUE
 
@@ -158,7 +158,7 @@
 	desc = span_red("YUCK!")
 
 /datum/stressevent/rotfood/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_NASTY_EATER))
+	if(HAS_TRAIT(user, TRAIT_NASTY_EATER))
 		return FALSE
 	return TRUE
 
@@ -178,7 +178,7 @@
 	desc = span_red("It tastes VILE!")
 
 /datum/stressevent/badmeal/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_NASTY_EATER))
+	if(HAS_TRAIT(user, TRAIT_NASTY_EATER))
 		return FALSE
 	return TRUE
 
@@ -190,7 +190,7 @@
 	desc = span_red("I puked!")
 
 /datum/stressevent/vomit/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_NASTY_EATER))
+	if(HAS_TRAIT(user, TRAIT_NASTY_EATER))
 		return FALSE
 	return TRUE
 
@@ -207,7 +207,7 @@
 	desc = span_boldred("I was violated.")
 
 /datum/stressevent/cumbad/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_CRACKHEAD))
+	if(HAS_TRAIT(user, TRAIT_CRACKHEAD))
 		return FALSE
 	return TRUE
 
@@ -217,17 +217,7 @@
 	desc = span_boldred("What have I done?")
 
 /datum/stressevent/cumcorpse/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_CRACKHEAD))
-		return FALSE
-	return TRUE
-
-/datum/stressevent/blueb
-	timer = 1 MINUTES
-	stressadd = 2
-	desc = span_red("My loins ache!")
-
-/datum/stressevent/blueb/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_CRACKHEAD))
+	if(HAS_TRAIT(user, TRAIT_CRACKHEAD))
 		return FALSE
 	return TRUE
 
@@ -262,7 +252,7 @@
 	desc = span_red("There is so much blood here.. it's like a battlefield!")
 
 /datum/stressevent/viewdismember/can_apply(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER) && !HAS_TRAIT(user, TRAIT_STEELHEARTED))
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_STEELHEARTED))
 		return FALSE
 	return TRUE
 
@@ -297,11 +287,6 @@
 	stressadd_per_extra_stack = 2
 	desc = span_boldred("I'm broken.")
 	timer = 60 SECONDS
-
-/datum/stressevent/tortured/can_apply(mob/living/user)
-	if(user.has_flaw(/datum/charflaw/masochist))
-		return FALSE
-	return TRUE
 
 /datum/stressevent/confessed
 	stressadd = 3
@@ -351,3 +336,12 @@
 	stressadd = 6
 	desc = "I slept on the floor! What am I?! An animal?!"
 	timer = 3 MINUTES
+
+/datum/stressevent/darkling_toobright
+	stressadd = 1
+	desc = span_red("It's too bright, the light hurts my eyes.")
+	timer = 30 SECONDS
+/datum/stressevent/darkling_migraine
+	stressadd = 3
+	desc = span_red("My head is pounding, I need to rest in the darkness.")
+	timer = 1 MINUTES

@@ -23,7 +23,6 @@
 
 /datum/outfit/job/roguetown/templar/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.virginity = TRUE
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 	switch(H.patron.name)
@@ -70,7 +69,11 @@
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/key/church = 1)
+	switch(H.patron.name)
+		if("Necra")
+			backpack_contents = list(/obj/item/key/graveyard, /obj/item/key/church)
+		else
+			backpack_contents = list(/obj/item/key/church = 1)
 	backr = /obj/item/rogueweapon/shield/tower/metal
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -113,3 +116,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+
+/datum/outfit/job/roguetown/templar/post_equip(mob/living/carbon/human/H)
+	..()
+	H.virginity = TRUE

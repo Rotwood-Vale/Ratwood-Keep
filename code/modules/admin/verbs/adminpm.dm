@@ -167,9 +167,7 @@
 				to_chat(recipient, span_danger("[replymsg]"))
 				to_chat(src, span_notice("PM to-<b>Admins</b>: <span class='linkify'>[msg]</span>"))
 
-			//play the receiving admin the adminhelp sound (if they have them enabled)
-			if(recipient.prefs.toggles & SOUND_ADMINHELP)
-				SEND_SOUND(recipient, sound('sound/blank.ogg'))
+			SEND_SOUND(recipient, sound('sound/misc/adminhelp.ogg'))
 
 		else
 			if(holder)	//sender is an admin but recipient is not. Do BIG RED TEXT

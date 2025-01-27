@@ -38,6 +38,7 @@
 	lockhash = 0
 	lockid = null
 	var/lockbroken = 0
+	var/lockdiff = 0 //how hard it is to pick the lock of a door
 	var/locksound = 'sound/foley/doors/woodlock.ogg'
 	var/unlocksound = 'sound/foley/doors/woodlock.ogg'
 	var/rattlesound = 'sound/foley/doors/lockrattle.ogg'
@@ -52,8 +53,8 @@
 	var/resident_key_type
 	/// The required role of the resident
 	var/resident_role
-	/// The requied advclass of the resident
-	var/resident_advclass
+	/// The requied subclass of the resident
+	var/resident_subclass
 
 	damage_deflection = 10
 	leanable = TRUE
@@ -79,13 +80,13 @@
 		var/datum/job/job = SSjob.name_occupations[human.job]
 		if(job.type != resident_role)
 			return FALSE
-	if(resident_advclass)
+	if(resident_subclass)
 		if(!human.advjob)
 			return FALSE
-		var/datum/advclass/advclass = SSrole_class_handler.get_advclass_by_name(human.advjob)
-		if(!advclass)
+		var/datum/subclass/subclass = SSrole_class_handler.get_subclass_by_name(human.advjob)
+		if(!subclass)
 			return FALSE
-		if(advclass.type != resident_advclass)
+		if(subclass.type != resident_subclass)
 			return FALSE
 	var/alert = alert(user, "Is this my home?", "Home", "Yes", "No")
 	if(alert != "Yes")
@@ -252,6 +253,11 @@
 	if(try_award_resident_key(user))
 		return
 	if(locked)
+		if( user.used_intent.type == /datum/intent/unarmed/claw )
+			user.changeNext_move(CLICK_CD_MELEE)
+			to_chat(user, "<span class='warning'>The deadite claws at the door!!</span>")
+			take_damage(40, "brute", "melee", 1)
+			return
 		if(isliving(user))
 			var/mob/living/L = user
 			if(L.m_intent == MOVE_INTENT_SNEAK)
@@ -499,7 +505,7 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 	else
 		var/lockprogress = 0
-		var/locktreshold = 100
+		var/locktreshold = 100 + (lockdiff * 20)
 
 		var/mob/living/L = user
 
@@ -519,6 +525,7 @@
 		pickchance += pickskill * 10
 		pickchance += perbonus
 		pickchance += luckbonus
+		pickchance -= lockdiff * 10
 		pickchance = clamp(pickchance, 1, 95)
 
 		while(!QDELETED(I) &&(lockprogress < locktreshold))
@@ -531,7 +538,7 @@
 				if(L.mind)
 					var/amt2raise = L.STAINT
 					var/boon = L.STALUC/4
-					L.mind.adjust_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
+					L.mind.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
 				if(lockprogress >= locktreshold)
 					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
 					lock_toggle(user)
@@ -540,8 +547,8 @@
 					continue
 			else
 				playsound(loc, 'sound/items/pickbad.ogg', 40, TRUE)
-				I.take_damage(1)
-				to_chat(user, "<span class='warning'>Clack.</span>")
+				I.take_damage(1, BRUTE, "blunt")
+				to_chat(user, span_warning("Clack."))
 				continue
 		return
 
@@ -877,7 +884,7 @@
 	keylock = TRUE
 	grant_resident_key = TRUE
 	resident_key_type = /obj/item/key/townie
-	resident_role = /datum/job/roguetown/villager
+	resident_role = /datum/job/roguetown/towner
 	lockid = null //Will be randomized
 
 /obj/structure/mineral_door/wood/towner/generic
@@ -886,39 +893,31 @@
 	resident_key_amount = 2
 
 /obj/structure/mineral_door/wood/towner/blacksmith
-	resident_advclass = /datum/advclass/blacksmith
+	resident_subclass = /datum/subclass/blacksmith
 	lockid = "towner_blacksmith"
 
-/obj/structure/mineral_door/wood/towner/carpenter
-	resident_advclass = /datum/advclass/carpenter
-	lockid = "towner_carpenter"
-
-/obj/structure/mineral_door/wood/towner/cheesemaker
-	resident_advclass = /datum/advclass/cheesemaker
-	lockid = "towner_cheesemaker"
-
 /obj/structure/mineral_door/wood/towner/hunter
-	resident_advclass = /datum/advclass/hunter
+	resident_subclass = /datum/subclass/hunter
 	lockid = "towner_hunter"
 
 /obj/structure/mineral_door/wood/towner/miner
-	resident_advclass = /datum/advclass/miner
+	resident_subclass = /datum/subclass/miner
 	lockid = "towner_miner"
 
 /obj/structure/mineral_door/wood/towner/farmer
-	resident_advclass = /datum/advclass/farmer
+	resident_subclass = /datum/subclass/farmer
 	lockid = "towner_farmer"
 
 /obj/structure/mineral_door/wood/towner/towndoctor
-	resident_advclass = /datum/advclass/towndoctor
+	resident_subclass = /datum/subclass/towndoctor
 	lockid = "towner_towndoctor"
 
 /obj/structure/mineral_door/wood/towner/woodcutter
-	resident_advclass = /datum/advclass/woodcutter
+	resident_subclass = /datum/subclass/woodcutter
 	lockid = "towner_woodcutter"
 
 /obj/structure/mineral_door/wood/towner/fisher
-	resident_advclass = /datum/advclass/fisher
+	resident_subclass = /datum/subclass/fisher
 	lockid = "towner_fisher"
 
 /obj/structure/mineral_door/wood/deadbolt/shutter

@@ -84,8 +84,6 @@
 		return
 	if(message_language.type == /datum/language/dwarvish)
 		return list(SPAN_DWARF)
-//	if(message_language.type == /datum/language/common)
-//		return list(SPAN_DWARF)
 	return message_language.spans
 
 /datum/species/dwarf/mountain/get_skin_list()
@@ -146,24 +144,3 @@
 
 /datum/species/dwarf/mountain/random_surname()
 	return " [pick(world.file2list("strings/rt/names/dwarf/dwarmlast.txt"))]"
-
-//this accent is HORRIBLE right now, someone please fix this shit
-// oh yeah here we go again 85 to 23
-// changed my mind, if the accent were to return it should just be on a single subset of dwarves.
-
-//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
-// "full" group in JSON lists
-/datum/species/dwarf/mountain/get_accent(mob/living/carbon/human/H)
-	return strings("dwarf_replacement.json", "full")
-
-// "start" group in JSON lists
-/datum/species/dwarf/mountain/get_accent_start(mob/living/carbon/human/H)
-	return strings("dwarf_replacement.json", "start")
-
-// "end" group in JSON lists
-/datum/species/dwarf/mountain/get_accent_end(mob/living/carbon/human/H)
-	return strings("dwarf_replacement.json", "end")
-
-// "syllable" group in JSON lists
-/datum/species/dwarf/mountain/get_accent_any(mob/living/carbon/human/H)
-	return strings("dwarf_replacement.json", "syllable")

@@ -396,7 +396,7 @@ obj/structure/bars/steel
 	metalizer_result = /obj/item/roguegear/bronze
 
 /obj/structure/fluff/clock/Initialize()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 	soundloop.start()
 	. = ..()
 
@@ -430,8 +430,23 @@ obj/structure/bars/steel
 /obj/structure/fluff/clock/examine(mob/user)
 	. = ..()
 	if(!broke)
-		. += "Oh no, it's [station_time_timestamp("hh:mm")]."
-		. += "<span class='info'>(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)</span>"
+		var/day = "... actually, WHAT dae is it?"
+		switch(GLOB.dayspassed)
+			if(1)
+				day = "Moon's dae."
+			if(2)
+				day = "Tiw's dae."
+			if(3)
+				day = "Wedding's dae."
+			if(4)
+				day = "Thule's dae."
+			if(5)
+				day = "Freyja's dae."
+			if(6)
+				day = "Saturn's dae."
+			if(7)
+				day = "Sun's dae."
+		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]"
 
 /obj/structure/fluff/clock/CanPass(atom/movable/mover, turf/target)
 	if(get_dir(loc, mover) == dir)
@@ -470,11 +485,26 @@ obj/structure/bars/steel
 /obj/structure/fluff/wallclock/examine(mob/user)
 	. = ..()
 	if(!broke)
-		. += "Oh no, it's [station_time_timestamp("hh:mm")]."
-		. += "(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)"
+		var/day = "... actually, WHAT dae is it?"
+		switch(GLOB.dayspassed)
+			if(1)
+				day = "Moon's dae."
+			if(2)
+				day = "Tiw's dae."
+			if(3)
+				day = "Wedding's dae."
+			if(4)
+				day = "Thule's dae."
+			if(5)
+				day = "Freyja's dae."
+			if(6)
+				day = "Saturn's dae."
+			if(7)
+				day = "Sun's dae."
+		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]"
 
 /obj/structure/fluff/wallclock/Initialize()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 	soundloop.start()
 	. = ..()
 
@@ -725,7 +755,7 @@ obj/structure/bars/steel
 					user.changeNext_move(CLICK_CD_MELEE)
 					if(W.max_blade_int)
 						W.remove_bintegrity(5)
-					L.rogfat_add(rand(4,6))
+					L.stamina_add(rand(4,6))
 					if(!(L.mobility_flags & MOBILITY_STAND))
 						probby = 0
 					if(L.STAINT < 3)
@@ -881,73 +911,55 @@ obj/structure/bars/steel
 	if(user.mind)
 		if((user.mind.assigned_role == "Priest") || ((user.mind.assigned_role == "Acolyte") && (user.patron.type == /datum/patron/divine/eora)))
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
+
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
+				
 				if(A.bitten_names.len)
 					if(A.bitten_names.len == 2)
-						var/list/found_mobs = list()
+						var/mob/living/carbon/human/thegroom
+						var/mob/living/carbon/human/thebride
+						
 						for(var/mob/M in viewers(src, 7))
-							testing("check [M]")
-							if(found_mobs.len >= 2)
+							if(thegroom && thebride)
 								break
 							if(!ishuman(M))
 								continue
 							var/mob/living/carbon/human/C = M
-							for(var/X in A.bitten_names)
-								if(C.real_name == X)
-									testing("foundbiter [C.real_name]")
-									found_mobs += C
-						testing("foundmobslen [found_mobs.len]")
-						if(found_mobs.len == 2)
-							var/mob/living/carbon/human/FirstPerson
-							var/mob/living/carbon/human/SecondPerson
-							for(var/mob/living/carbon/human/M in found_mobs)
-								if(M.marriedto)
-									continue
-								if(!FirstPerson)
-									FirstPerson = M
-								else
-									if(!SecondPerson)
-										SecondPerson = M
-							if(!FirstPerson || !SecondPerson)
-								testing("fail22")
-								return
-							var/surname2use
-							var/index = findtext(FirstPerson.real_name, " ")
-							var/SecondPersonFirstName
-							FirstPerson.original_name = FirstPerson.real_name
-							SecondPerson.original_name = SecondPerson.real_name
-							if(!index)
-								surname2use = FirstPerson.dna.species.random_surname()
-							else
-								if(findtext(FirstPerson.real_name, " of ") || findtext(FirstPerson.real_name, " the "))
-									surname2use = FirstPerson.dna.species.random_surname()
-									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
-								else
-									surname2use = copytext(FirstPerson.real_name, index)
-									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
-							index = findtext(SecondPerson.real_name, " ")
-							if(index)
-								SecondPerson.change_name(copytext(SecondPerson.real_name, 1,index))
-							SecondPersonFirstName = SecondPerson.real_name
-							FirstPerson.change_name(FirstPerson.real_name + surname2use)
-							SecondPerson.change_name(SecondPerson.real_name + surname2use)
-							FirstPerson.marriedto = SecondPerson.real_name
-							SecondPerson.marriedto = FirstPerson.real_name
-							FirstPerson.adjust_triumphs(1)
-							SecondPerson.adjust_triumphs(1)
-							priority_announce("Rejoice, for [user.real_name] has united [FirstPerson.real_name] and [SecondPersonFirstName] in marriage!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
-							marriage = TRUE
-							qdel(A)
-//							if(FirstPerson.has_stress(/datum/stressevent/nobel))
-//								SecondPerson.add_stress(/datum/stressevent/nobel)
-//							if(SecondPerson.has_stress(/datum/stressevent/nobel))
-//								FirstPerson.add_stress(/datum/stressevent/nobel)
+							if(C.stat == DEAD)
+								continue
+							if(!C.client)
+								continue
+							if(C.family)
+								continue
+
+							if(C.real_name in A.bitten_names)
+								if(!thegroom)
+									thegroom = C
+								else if(!thebride)
+									thebride = C
+
+						if(!thegroom || !thebride)
+							return
+						
+						var/datum/family/F = SSfamily.makeFamily(thegroom)
+						if(!F)
+							return
+
+						F.addMember(thebride)
+						F.addRel(thegroom,thebride,REL_TYPE_SPOUSE)
+						F.addRel(thebride,thegroom,REL_TYPE_SPOUSE)
+
+						thegroom.adjust_triumphs(1)
+						thebride.adjust_triumphs(1)
+						priority_announce("[thegroom.real_name] has married [thebride.real_name]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+						marriage = TRUE
+						qdel(A)
 
 				if(!marriage)
 					A.burn()
 					return
-	. = ..()
+	return ..()
 
 /obj/structure/fluff/psycross/proc/check_prayer(mob/living/L,message)
 	if(!L || !message)
@@ -1133,3 +1145,198 @@ obj/structure/bars/steel
 	stake.forceMove(drop_location())
 	stake = null
 	qdel(src)
+
+/obj/structure/fluff/littlebanners
+	name = "hanging little banners"
+	desc = ""
+	icon = 'icons/obj/structures/decor.dmi'
+	icon_state = "hangingbanners_wr"
+	density = FALSE
+	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	blade_dulling = DULLING_BASH
+	resistance_flags = FLAMMABLE
+	max_integrity = 20
+	integrity_failure = 0.33
+	dir = SOUTH
+	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+
+
+/obj/structure/fluff/littlebanners/greenblue
+	icon_state = "hangingbanners_gb"
+
+/obj/structure/fluff/littlebanners/greenred
+	icon_state = "hangingbanners_gr"
+
+/obj/structure/fluff/littlebanners/bluewhite
+	icon_state = "hangingbanners_bw"
+
+/obj/structure/fluff/littlebanners/greenwhite
+	icon_state = "hangingbanners_gw"
+
+/obj/structure/fluff/littlebanners/bluered
+	icon_state = "hangingbanners_br"
+
+/obj/structure/fluff/littlebanners/MouseDrop(over_object, src_location, over_location)
+	. = ..()
+	if(over_object == usr && Adjacent(usr) && (in_range(src, usr) || usr.contents.Find(src)))
+		if(!ishuman(usr))
+			return
+		visible_message(span_notice("[usr] tears down [src]."))
+		if(do_after(usr, 30, target = src))
+			playsound(src,'sound/foley/dropsound/cloth_drop.ogg', 100, FALSE)
+			new /obj/item/natural/cloth (get_turf(src))
+			new /obj/item/natural/cloth (get_turf(src))
+			new /obj/item/natural/cloth (get_turf(src))
+			new /obj/item/natural/cloth (get_turf(src))
+			qdel(src)
+
+///Crafting
+
+/datum/crafting_recipe/roguetown/structure/littlebanners
+	name = "fair banners red-white"
+	result = list(/obj/structure/fluff/littlebanners)
+	reqs = list(/obj/item/natural/cloth = 4, /obj/item/natural/fibers)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/greenblue
+	name = "fair banners green-blue"
+	result = list(/obj/structure/fluff/littlebanners/greenblue)
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/greenred
+	name = "fair banners green-red"
+	result = list(/obj/structure/fluff/littlebanners/greenred)
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/bluewhite
+	name = "fair banners blue-white"
+	result = list(/obj/structure/fluff/littlebanners/bluewhite)
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/greenwhite
+	name = "fair banners green-white"
+	result = list(/obj/structure/fluff/littlebanners/greenwhite)
+
+/datum/crafting_recipe/roguetown/structure/littlebanners/bluered
+	name = "fair banners blue-red"
+	result = list(/obj/structure/fluff/littlebanners/bluered)
+
+/obj/structure/fluff/canopy
+	name = "Canopy"
+	desc = ""
+	icon = 'icons/obj/structures/decor.dmi'
+	icon_state = "canopy"
+	density = FALSE
+	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	blade_dulling = DULLING_BASH
+	resistance_flags = FLAMMABLE
+	max_integrity = 20
+	integrity_failure = 0.33
+	dir = SOUTH
+	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+
+/obj/structure/fluff/canopy/green
+	icon_state = "canopyg"
+
+/obj/structure/fluff/canopy/booth
+	icon_state = "canopyr-booth"
+
+/obj/structure/fluff/canopy/booth/booth02
+	icon_state = "canopyr-booth-2"
+
+/obj/structure/fluff/canopy/booth/booth_green
+	icon_state = "canopyg-booth"
+
+/obj/structure/fluff/canopy/booth/booth_green02
+	icon_state = "canopyg-booth-2"
+
+/obj/structure/fluff/canopy/side
+	icon_state = "canopyb-side"
+
+/obj/structure/fluff/canopy/side/end
+	icon_state = "canopyb-side-end"
+
+/obj/structure/fluff/canopy/booth/CanPass(atom/movable/mover, turf/target)
+	if(get_dir(loc, mover) == dir)
+		return 0
+	return !density
+
+/obj/structure/fluff/canopy/booth/CheckExit(atom/movable/O, turf/target)
+	if(get_dir(O.loc, target) == dir)
+		return 0
+	return !density
+
+/obj/structure/fluff/canopy/MouseDrop(mob/over)
+	. = ..()
+
+///Crafting
+
+/datum/crafting_recipe/roguetown/structure/display_booth01
+	name = "display booth"
+	result = list(/obj/structure/fluff/canopy, /obj/structure/table/wood/crafted)
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+
+/datum/crafting_recipe/roguetown/structure/display_booth02
+	name = "display booth green"
+	result = list(/obj/structure/fluff/canopy/green, /obj/structure/table/wood/crafted)
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+
+
+/datum/crafting_recipe/roguetown/structure/booth
+	name = "market booth"
+	result = list(/obj/structure/fluff/canopy/booth)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/structure/booth02
+	name = "market booth"
+	result = list(/obj/structure/fluff/canopy/booth/booth02)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/structure/booth_green
+	name = "green market booth"
+	result = list(/obj/structure/fluff/canopy/booth/booth_green)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/structure/booth_green_02
+	name = "green market booth02"
+	result = list(/obj/structure/fluff/canopy/booth/booth_green02)
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/cloth = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 0
+
+/obj/structure/fluff/canopy/MouseDrop(over_object, src_location, over_location)
+	. = ..()
+	if(over_object == usr && Adjacent(usr) && (in_range(src, usr) || usr.contents.Find(src)))
+		if(!ishuman(usr))
+			return
+		visible_message(span_notice("[usr] tears down [src]."))
+		if(do_after(usr, 30, target = src))
+			playsound(src,'sound/foley/dropsound/cloth_drop.ogg', 100, FALSE)
+			new /obj/item/grown/log/tree/small  (get_turf(src))
+			new /obj/item/natural/cloth (get_turf(src))
+			qdel(src)

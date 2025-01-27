@@ -11,7 +11,7 @@
 	// This shouldn't be modified directly, use the helper procs.
 	var/list/baseturfs = /turf/open/transparent/openspace
 
-	var/temperature = T20C
+	var/temperature = 293.15
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 
@@ -24,7 +24,6 @@
 	var/explosion_level = 0	//for preventing explosion dodging
 	var/explosion_id = 0
 
-	var/requires_activation	//add to air processing after initialize?
 	var/changing_turf = FALSE
 
 	var/bullet_bounce_sound = 'sound/blank.ogg' //sound played when a shell casing is ejected ontop of the turf.
@@ -85,10 +84,6 @@
 	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
 		add_overlay(/obj/effect/fullbright)
 
-	if(requires_activation)
-		CALCULATE_ADJACENT_TURFS(src)
-		SSair.add_to_active(src)
-
 	if (light_power && light_range)
 		update_light()
 
@@ -130,8 +125,6 @@
 	if(T)
 		T.multiz_turf_del(src, UP)
 	STOP_PROCESSING(SSweather,src)
-	if(pollutants)
-		pollutants = null
 	if(force)
 		..()
 		//this will completely wipe turf state
@@ -141,10 +134,8 @@
 		for(var/I in B.vars)
 			B.vars[I] = null
 		return
-	SSair.remove_from_active(src)
 	QDEL_LIST(blueprint_data)
 	flags_1 &= ~INITIALIZED_1
-	requires_activation = FALSE
 	..()
 
 #define SEE_SKY_YES 1
@@ -178,50 +169,6 @@
 			can_see_sky = SEE_SKY_NO
 			return can_see_sky()
 
-/turf/proc/update_see_sky()
-	can_see_sky = null
-	var/can = can_see_sky()
-	var/area/A = get_area(src)
-	if(istype(A,/area/shuttle))
-		return
-	if(can)
-		if(!A.outdoors)
-			var/area2new = /area/rogue/outdoors
-			if(A.converted_type)
-				area2new = A.converted_type
-			var/area/nuarea
-			if(primary_area)
-				nuarea = type2area(primary_area)
-				if(!nuarea.outdoors)
-					nuarea = null
-			if(!nuarea)
-				nuarea = type2area(area2new)
-				primary_area = A.type
-			if(nuarea)
-				A.contents -= src
-				nuarea.contents += src
-				change_area(A, nuarea)
-	else
-		if(A.outdoors)
-			var/area2new = /area/rogue/indoors/shelter
-			if(A.converted_type)
-				area2new = A.converted_type
-			var/area/nuarea
-			if(primary_area)
-				nuarea = type2area(primary_area)
-				if(nuarea.outdoors)
-					nuarea = null
-			if(!nuarea)
-				nuarea = type2area(area2new)
-				primary_area = A.type
-			if(!nuarea)
-				var/area/NA = new area2new()
-				nuarea = NA
-				primary_area = NA.type
-			if(nuarea)
-				A.contents -= src
-				nuarea.contents += src
-				change_area(A, nuarea)
 
 /turf/attack_hand(mob/user)
 	. = ..()
@@ -355,6 +302,9 @@
 
 /turf/Entered(atom/movable/AM)
 	..()
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, AM)
+	SEND_SIGNAL(AM, COMSIG_MOVABLE_TURF_ENTERED, src)
+
 	if(explosion_level && AM.ex_check(explosion_id))
 		AM.ex_act(explosion_level)
 
@@ -366,7 +316,7 @@
 /turf/open/Entered(atom/movable/AM)
 	..()
 	//melting
-	if(isobj(AM) && air && air.temperature > T0C)
+	if(isobj(AM) && temperature > 273.15)
 		var/obj/O = AM
 		if(O.obj_flags & FROZEN)
 			O.make_unfrozen()
@@ -430,12 +380,6 @@
 	for(var/obj/O in src)
 		if(O.level == 1 && (O.flags_1 & INITIALIZED_1))
 			O.hide(src.intact)
-
-// Removes all signs of lattice on the pos of the turf -Donkieyo
-/turf/proc/RemoveLattice()
-	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-	if(L && (L.flags_1 & INITIALIZED_1))
-		qdel(L)
 
 /turf/proc/phase_damage_creatures(damage,mob/U = null)//>Ninja Code. Hurts and knocks out creatures on this turf //NINJACODE
 	for(var/mob/living/M in src)

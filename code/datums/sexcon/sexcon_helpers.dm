@@ -52,7 +52,7 @@
 	user.sexcon.start(src)
 
 /mob/living/proc/can_do_sex()
-	return TRUE
+	return can_do_sex
 
 /mob/living/carbon/human/proc/make_sucking_noise()
 	if(gender == FEMALE)
@@ -67,7 +67,7 @@
 	var/obj/item/organ/vagina/vag = wife.getorganslot(ORGAN_SLOT_VAGINA)
 	if(!vag)
 		return
-	if(prob(25))
+	if(prob(33)) // 1/3rd chance. If possible, add 20% after second or third round of intercourse.
 		vag.be_impregnated(src)
 
 /mob/living/carbon/human/proc/get_highest_grab_state_on(mob/living/carbon/human/victim)

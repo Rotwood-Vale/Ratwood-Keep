@@ -326,6 +326,7 @@
 	desc = ""
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "jestershirt"
+	do_sound_bell = FALSE
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/shirts.dmi'
@@ -337,7 +338,7 @@
 /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	name = "grenzelhoftian hip-shirt"
-	desc = ""
+	desc = "Through the sands, dirt or rivers of blood: Always in style."
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "grenzelshirt"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'

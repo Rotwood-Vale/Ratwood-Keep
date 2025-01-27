@@ -74,6 +74,11 @@
 		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
+	halfchild_types = list(
+		"elfw" =  /datum/species/human/halfelf,
+		"halforc" = /datum/species/halforc,
+		"helf" = /datum/species/human/halfelf,
+	)
 
 /datum/species/human/northern/check_roundstart_eligible()
 	return TRUE
@@ -116,40 +121,3 @@
 	"red - blood" = "822b2b"
 
 	))
-
-//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
-// "full" group in JSON lists
-/datum/species/human/northern/get_accent(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-						return strings("german_replacement.json", "full")
-				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-						return strings("Anglish.json", "full")
-		return null
-
-// "start" group in JSON lists
-/datum/species/human/northern/get_accent_start(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-						return strings("german_replacement.json", "start")
-				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-						return strings("Anglish.json", "start")
-		return null
-
-// "end" group in JSON lists
-/datum/species/human/northern/get_accent_end(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-						return strings("german_replacement.json", "end")
-				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-						return strings("Anglish.json", "end")
-		return null
-
-// "syllable" group in JSON lists
-/datum/species/human/northern/get_accent_any(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-						return strings("german_replacement.json", "syllable")
-				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-						return strings("Anglish.json", "syllable")
-		return null

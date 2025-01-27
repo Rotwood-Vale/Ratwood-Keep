@@ -22,7 +22,7 @@
 		def_zone = CBP.body_zone
 	var/protection = 0
 	var/obj/item/clothing/used
-	var/list/body_parts = list(skin_armor, head, wear_mask, wear_wrists, wear_shirt, wear_neck, cloak, wear_armor, wear_pants, backr, backl, gloves, shoes, belt, s_store, glasses, ears, wear_ring) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
+	var/list/body_parts = list(skin_armor, head, wear_mask, wear_wrists, gloves, wear_neck, cloak, wear_armor, wear_shirt, shoes, wear_pants, backr, backl, belt, s_store, glasses, ears, wear_ring) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
 	for(var/bp in body_parts)
 		if(!bp)
 			continue
@@ -308,7 +308,7 @@
 		if(check_shields(M, damage, "the [M.name]", MELEE_ATTACK, M.armor_penetration))
 			return FALSE
 		var/zones = M.zone_selected
-		if(!ckey)
+		if(!M.ckey)
 			zones = pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_PRECISE_NECK, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 		var/dam_zone = dismembering_strike(M, zones)
 		if(!dam_zone) //Dismemberment successful
@@ -317,7 +317,7 @@
 		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
 		if(!affecting)
 			affecting = get_bodypart(BODY_ZONE_CHEST)
-		var/armor = run_armor_check(affecting, M.d_type, armor_penetration = M.a_intent.penfactor, damage = damage)
+		var/armor = run_armor_check(affecting, M.damage_type, armor_penetration = M.a_intent.penfactor, damage = damage)
 		next_attack_msg.Cut()
 
 		var/nodmg = FALSE
@@ -621,9 +621,7 @@
 	var/deep_examination = advanced
 	if(user == src)
 		m1 = "I am"
-		if(!deep_examination)
-			deep_examination = HAS_TRAIT(src, TRAIT_SELF_AWARE)
-		examination += span_notice("Let's see how I am doing.")
+		examination += "<span class='notice'>Let's see how I am doing.</span>"
 		if(!stat && !silent)
 			user.visible_message(span_notice("[src] examines [p_them()]self."), \
 				span_notice("I check myself for injuries."))
@@ -686,9 +684,7 @@
 	var/list/examination = list("<span class='info'>ø ------------ ø")
 	var/deep_examination = advanced
 	if(user == src)
-		if(!deep_examination)
-			deep_examination = HAS_TRAIT(src, TRAIT_SELF_AWARE)
-		examination += span_notice("Let's see how my [parse_zone(choice)] is doing.")
+		examination += "<span class='notice'>Let's see how my [parse_zone(choice)] is doing.</span>"
 		if(!stat && !silent)
 			visible_message(span_notice("[src] examines [p_their()] [parse_zone(choice)]."))
 	else if(user)

@@ -76,12 +76,6 @@
 	alpha = 255
 	show_when_dead = FALSE
 
-/datum/reagent/drug/snekbt/on_mob_end_metabolize(mob/living/M)
-	M.rogstam_add(-2500)
-	M.rogfat_add(2500) // crash you fucking junkie.
-	..()
-	. = 1
-
 /atom/movable/screen/fullscreen/bittensm/Initialize()
 	. = ..()
 	filters += filter(type="angular_blur",x=5,y=5,size=1)
@@ -121,7 +115,6 @@
 			PM = locate(/atom/movable/screen/plane_master/game_world_above) in owner.client.screen
 			PM.backdrop(owner)
 	owner.add_stress(/datum/stressevent/snekbt)
-	ADD_TRAIT(owner, TRAIT_PROSOPAGNOSIA, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(owner, TRAIT_SCHIZO_AMBIENCE, TRAIT_GENERIC)
@@ -138,10 +131,7 @@
 			PM.backdrop(owner)
 	owner.remove_stress(/datum/stressevent/snekbt)
 	owner.clear_fullscreen("snekbt")
-	owner.rogstam_add(-2500)
-	owner.rogfat_add(2500) // crash you fucking junkie.
 	owner.update_body_parts_head_only()
-	REMOVE_TRAIT(owner, TRAIT_PROSOPAGNOSIA, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_SCHIZO_AMBIENCE, TRAIT_GENERIC)

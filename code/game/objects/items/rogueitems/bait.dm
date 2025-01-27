@@ -15,6 +15,7 @@
 									/mob/living/simple_animal/hostile/retaliate/rogue/chicken = 55)
 	var/attraction_chance = 100
 	var/deployed = 0
+	var/deploy_speed = 2 SECONDS
 	resistance_flags = FLAMMABLE
 
 /obj/item/bait/Initialize()
@@ -25,7 +26,7 @@
 	. = ..()
 	user.visible_message(span_notice("[user] begins deploying the bait..."), \
 						span_notice("I begin deploying the bait..."))
-	if(do_after(user, 100, target = src)) //rogtodo hunting skill
+	if(do_after(user, deploy_speed, target = src)) //rogtodo hunting skill
 		user.dropItemToGround(src)
 		START_PROCESSING(SSobj, src)
 		name = "bait"
@@ -36,7 +37,7 @@
 	if(deployed)
 		user.visible_message(span_notice("[user] begins gathering up the bait..."), \
 							span_notice("I begin gathering up the bait..."))
-		if(do_after(user, 100, target = src)) //rogtodo hunting skill
+		if(do_after(user, deploy_speed, target = src)) //rogtodo hunting skill
 			STOP_PROCESSING(SSobj, src)
 			name = initial(name)
 			deployed = 0

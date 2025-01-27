@@ -40,11 +40,6 @@
 		m2 = "my"
 		m3 = "I have"
 
-	if(isliving(user))
-		var/mob/living/L = user
-		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA))
-			obscure_name = TRUE
-
 	var/static/list/unknown_names = list(
 		"Unknown",
 		"Unknown Man",
@@ -82,7 +77,7 @@
 				display_as_wanderer = TRUE
 			if(J.foreign_examine)
 				display_as_foreign = TRUE
-			if(J.flag == MERCENARY)
+			if(J.mercenary_examine)
 				are_mercenary = TRUE
 			if(islatejoin && !are_mercenary)
 				is_returning = TRUE
@@ -94,7 +89,7 @@
 			var/datum/job/OJ = SSjob.GetJob(user.job)
 			if(OJ.foreign_examine)
 				am_foreign = TRUE
-			if(OJ.flag == MERCENARY)
+			if(OJ.mercenary_examine)
 				am_mercenary = TRUE
 
 		if(display_as_wanderer)
@@ -133,8 +128,14 @@
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			if(H.marriedto == name)
-				. += span_love("It's my spouse.")
+			if(H.isFamily(src))
+				var/datum/relation/R = H.getRelationship(src)
+				if(R)
+					. += "It's my [R.name]!"
+			else if(family)
+				var/datum/family/F = getFamily()
+				if(F)
+					. += "Ah, they belong to the [F.name] family!"
 
 		if(display_as_foreign && user != src)
 			if(are_mercenary && am_mercenary)
@@ -164,12 +165,13 @@
 			if(mind.special_role == "Bandit")
 				if(HAS_TRAIT(user, TRAIT_COMMIE))
 					commie_text = span_notice("Free man!")
-				else
-					commie_text = span_userdanger("BANDIT!")
+
 			if(mind.special_role == "Vampire Lord")
 				. += span_userdanger("A MONSTER!")
+
 			if(mind.assigned_role == "Lunatic")
 				. += span_userdanger("LUNATIC!")
+
 			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 				. += span_userdanger("CURSED!")
 
@@ -304,9 +306,12 @@
 			. += "<span class='warning'>[m1] tied up with \a [handcuffed]!</span>"
 		else
 			. += "<A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'><span class='warning'>[m1] tied up with \a [handcuffed]!</span></A>"
- 
+
 	if(legcuffed)
 		. += "<A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'><span class='warning'>[m3] \a [legcuffed] around [m2] legs!</span></A>"
+
+	if(has_status_effect(/datum/status_effect/leash_pet))
+		. += "<A href='?src=[REF(src)];'><span class='warning'>[m3] \a leash hooked to [m2] collar!</span></A>"
 
 	//Gets encapsulated with a warning span
 	var/list/msg = list()
@@ -545,7 +550,7 @@
 				var/W = LAZYACCESS(heart.maniacs2wonder_ids, M)
 				var/N = M.owner?.name
 				. += span_notice("Inscryption[N ? " by [N]'s " : ""][W ? "Wonder #[W]" : ""]: [K ? K : ""]")
-				
+
 
 	if(Adjacent(user) || aghost_privilege)
 		if(observer_privilege)

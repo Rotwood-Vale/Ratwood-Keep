@@ -80,7 +80,9 @@
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
 	src.playsound_local(src, 'sound/misc/deth.ogg', 100)
-
+	if(src.mind)
+		if(src.mind.boneboy == TRUE)
+			handle_necromancy()
 	set_drugginess(0)
 	set_disgust(0)
 	cure_holdbreath()
@@ -91,11 +93,6 @@
 	update_damage_hud()
 	update_health_hud()
 	update_mobility()
-	med_hud_set_health()
-	med_hud_set_status()
-	if(!gibbed && !QDELETED(src))
-		addtimer(CALLBACK(src, PROC_REF(med_hud_set_status)), (DEFIB_TIME_LIMIT * 10) + 1)
-		apply_status_effect(/datum/status_effect/debuff/death_weaken)
 	stop_pulling()
 
 	. = ..()

@@ -28,12 +28,13 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/keyring/goblin = 1)
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, pick(0,0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(1,1,2), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2 , TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, pick(2,2,3), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, pick(1,1,2), TRUE)

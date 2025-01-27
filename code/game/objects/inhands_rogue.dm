@@ -3,11 +3,8 @@
 	var/list/onprop
 	var/d_type = "blunt"
 	var/worn_in
-//#ifdef TESTSERVER
 	var/force_reupdate_inhand = TRUE
-//#else
-//	var/force_reupdate_inhand = FALSE
-//#endif
+	
 // Initalize addon for the var for custom inhands 32x32.
 
 /obj/item/Initialize()
@@ -15,6 +12,14 @@
 	if(!experimental_inhand)
 		inhand_x_dimension = 32
 		inhand_y_dimension = 32
+
+// Helper items for spriters so they can see how in-hands look in game.
+// They're basically red square sprites placed on the floor so spriters can adjust their sprites properly
+// Used on admin testing area only.
+
+GLOBAL_LIST_INIT(IconStates_cache, list())
+
+// 32x32 in-hand helper item
 /obj/item/inhand_tester
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "inhand_test"
@@ -99,9 +104,13 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	var/icon/blended
 	var/skipoverlays = FALSE
 	if(behind)
-		if(isnull(has_behind_state))
-			has_behind_state = check_state_in_icon(icon, "[icon_state]_behind")
-		if(has_behind_state)
+		if(!(icon in GLOB.IconStates_cache))
+			var/icon/J = new(icon)
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache[icon] = istates
+
+		if("[icon_state]_behind" in GLOB.IconStates_cache[icon])
 			blended=icon("icon"=icon, "icon_state"="[icon_state]_behind")
 			skipoverlays = TRUE
 		else

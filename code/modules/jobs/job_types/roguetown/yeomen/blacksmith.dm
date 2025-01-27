@@ -18,9 +18,24 @@
 
 /datum/outfit/job/roguetown/guildsmith/pre_equip(mob/living/carbon/human/H)
 	..()
+	gloves = /obj/item/clothing/gloves/roguetown/leather
 	head = /obj/item/clothing/head/roguetown/hatfur
+	cloak = /obj/item/clothing/cloak/apron/blacksmith
+	backr = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/rogueweapon/hammer/iron = 1, /obj/item/rogueweapon/tongs = 1)
+	belt = /obj/item/storage/belt/rogue/leather
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltr = /obj/item/key/blacksmith
+	pants = /obj/item/clothing/under/roguetown/trou
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu
+	if(H.gender == MALE)
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+	else
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -32,26 +47,6 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
 
-	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/trou
-		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-		backr = /obj/item/storage/backpack/rogue/satchel
-		backpack_contents = list(/obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
-		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltr = /obj/item/key/blacksmith
-		cloak = /obj/item/clothing/cloak/apron/blacksmith
-	else
-		pants = /obj/item/clothing/under/roguetown/trou
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		backr = /obj/item/storage/backpack/rogue/satchel
-		backpack_contents = list(/obj/item/rogueweapon/hammer = 1, /obj/item/rogueweapon/tongs = 1)
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-		belt = /obj/item/storage/belt/rogue/leather
-		cloak = /obj/item/clothing/cloak/apron/blacksmith
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		beltr = /obj/item/key/blacksmith
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)
 	H.change_stat("endurance", 2)

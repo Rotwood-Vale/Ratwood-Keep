@@ -1,12 +1,12 @@
 /datum/roguestock/import
 	import_only = TRUE
 	stable_price = TRUE
-
+// Worked Iron standard rates should be 20, worked steel should be 25. Both will be added 5 for transport costs. Everything else should default to stockpile prices and +5 if worked other things can be added to the total costs
 /datum/roguestock/import/crackers
 	name = "Bin of Rations"
 	desc = "Low moisture bread that keeps well."
 	item_type = /obj/item/roguebin/crackers
-	export_price = 100
+	export_price = 100 //10 mammons per cracker
 	importexport_amt = 1
 
 /obj/item/roguebin/crackers/Initialize()
@@ -58,19 +58,19 @@
 	new /obj/item/rope/chain(src)
 
 /datum/roguestock/import/redpotion
-	name = "Crate of Health Potions"
+	name = "Crate of Lesser Health Potions"
 	desc = "Red that keeps men alive."
 	item_type = /obj/structure/closet/crate/chest/steward/redpotion
-	export_price = 100
+	export_price = 50
 	importexport_amt = 1
 
 /obj/structure/closet/crate/chest/steward/redpotion/Initialize()
 	. = ..()
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
 
 /datum/roguestock/import/perfume
 	name = "Crate of perfumes"
@@ -91,7 +91,7 @@
 	name = "Knight Equipment Crate"
 	desc = "Kit for a Knight."
 	item_type = /obj/structure/closet/crate/chest/steward/knight
-	export_price = 490
+	export_price = 530 //(15 steel)*35=525 extra keys and gimmicks cost an extra 5 mammons
 	importexport_amt = 1
 
 /obj/structure/closet/crate/chest/steward/knight/Initialize()
@@ -113,7 +113,7 @@
 	name = "Man at Arms Equipment Crate"
 	desc = "Kit for a Man at Arms."
 	item_type = /obj/structure/closet/crate/chest/steward/manatarms
-	export_price = 250
+	export_price = 335 //(8 steel 1 iron)=305 if iron costs 25 and steel costs 35 +5 for extra gimmicks
 	importexport_amt = 1
 
 /obj/structure/closet/crate/chest/steward/manatarms/Initialize()
@@ -134,7 +134,7 @@
 	name = "Crossbows Crate"
 	desc = "A crate with 3 crossbows with 3 full quivers."
 	item_type = /obj/structure/closet/crate/chest/steward/crossbow
-	export_price = 300
+	export_price = 405 //each quiver holds 20 bolts which is 4 iron and 4 sticks each and each crossbow is 1 steel so 135 per not including other materials
 	importexport_amt = 1
 
 /obj/structure/closet/crate/chest/steward/crossbow/Initialize()
@@ -162,7 +162,7 @@
 	name = "Farm Equipment Crate"
 	desc = "A crate with a pitchfork, sickle , hoe and some seeds."
 	item_type = /obj/structure/closet/crate/chest/steward/farmequip
-	export_price = 100
+	export_price = 75 //not combat related and 3 iron which is 75
 	importexport_amt = 1
 
 /obj/structure/closet/crate/chest/steward/farmequip/Initialize()
@@ -178,12 +178,12 @@
 	name = "Smith Crate"
 	desc = "Stone, coal , iron ingot, wood bin, bucket with hammer and tongs."
 	item_type = /obj/structure/closet/crate/chest/steward/blacksmith
-	export_price = 100
+	export_price = 135 //3 iron 8 stones 3 wood and one coal stones cost 4 per, worked iron standard rates should be below 25 for rounding stones wood and coal are all worth 5 each totaling at 135
 	importexport_amt = 1
 
 /obj/structure/closet/crate/chest/steward/blacksmith/Initialize()
 	. = ..()
-	new /obj/item/rogueweapon/hammer(src)
+	new /obj/item/rogueweapon/hammer/iron(src)
 	new /obj/item/rogueweapon/tongs(src)
 	new /obj/item/natural/stone(src)
 	new /obj/item/natural/stone(src)
@@ -200,7 +200,18 @@
 	new /obj/item/reagent_containers/glass/bucket/wooden(src)
 
 
+/datum/roguestock/import/craftsman
+	name = "Craftsman Crate"
+	desc = "Handsaw, chisel, hammer."
+	item_type = /obj/structure/closet/crate/chest/steward/craftsman
+	export_price = 60
+	importexport_amt = 1
 
+/obj/structure/closet/crate/chest/steward/craftsman/Initialize()
+	. = ..()
+	new /obj/item/rogueweapon/hammer/wood(src)
+	new /obj/item/rogueweapon/chisel(src)
+	new /obj/item/rogueweapon/handsaw(src)
 
 
 

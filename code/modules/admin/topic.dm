@@ -103,51 +103,6 @@
 			return
 		SSticker.mode.admin_panel()
 
-	else if(href_list["call_shuttle"])
-		if(!check_rights(R_ADMIN))
-			return
-
-
-		switch(href_list["call_shuttle"])
-			if("1")
-				if(EMERGENCY_AT_LEAST_DOCKED)
-					return
-				SSshuttle.emergency.request()
-				log_admin("[key_name(usr)] called the Emergency Shuttle.")
-				message_admins(span_adminnotice("[key_name_admin(usr)] called the Emergency Shuttle to the station."))
-
-			if("2")
-				if(EMERGENCY_AT_LEAST_DOCKED)
-					return
-				switch(SSshuttle.emergency.mode)
-					if(SHUTTLE_CALL)
-						SSshuttle.emergency.cancel()
-						log_admin("[key_name(usr)] sent the Emergency Shuttle back.")
-						message_admins(span_adminnotice("[key_name_admin(usr)] sent the Emergency Shuttle back."))
-					else
-						SSshuttle.emergency.cancel()
-						log_admin("[key_name(usr)] called the Emergency Shuttle.")
-						message_admins(span_adminnotice("[key_name_admin(usr)] called the Emergency Shuttle to the station."))
-
-
-
-	else if(href_list["edit_shuttle_time"])
-		if(!check_rights(R_SERVER))
-			return
-
-		var/timer = input("Enter new shuttle duration (seconds):","Edit Shuttle Timeleft", SSshuttle.emergency.timeLeft() ) as num|null
-		if(!timer)
-			return
-		SSshuttle.emergency.setTimer(timer*10)
-		log_admin("[key_name(usr)] edited the Emergency Shuttle's timeleft to [timer] seconds.")
-		minor_announce("The emergency shuttle will reach its destination in [round(SSshuttle.emergency.timeLeft(600))] minutes.")
-		message_admins(span_adminnotice("[key_name_admin(usr)] edited the Emergency Shuttle's timeleft to [timer] seconds."))
-	else if(href_list["trigger_centcom_recall"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		usr.client.trigger_centcom_recall()
-
 	else if(href_list["toggle_continuous"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -275,8 +230,6 @@
 				M.change_mob_type( /mob/living/carbon/monkey , null, null, delmob )
 			if("cat")
 				M.change_mob_type( /mob/living/simple_animal/pet/cat , null, null, delmob )
-			if("runtime")
-				M.change_mob_type( /mob/living/simple_animal/pet/cat/Runtime , null, null, delmob )
 			if("corgi")
 				M.change_mob_type( /mob/living/simple_animal/pet/dog/corgi , null, null, delmob )
 			if("ian")
@@ -792,46 +745,6 @@
 		Game() // updates the main game menu
 		HandleFSecret()
 
-	else if(href_list["monkeyone"])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
-		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-			return
-
-		log_admin("[key_name(usr)] attempting to monkeyize [key_name(H)].")
-		message_admins(span_adminnotice("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]."))
-		H.monkeyize()
-
-	else if(href_list["humanone"])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/living/carbon/monkey/Mo = locate(href_list["humanone"])
-		if(!istype(Mo))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/monkey.")
-			return
-
-		log_admin("[key_name(usr)] attempting to humanize [key_name(Mo)].")
-		message_admins(span_adminnotice("[key_name_admin(usr)] attempting to humanize [key_name_admin(Mo)]."))
-		Mo.humanize()
-
-	else if(href_list["corgione"])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/living/carbon/human/H = locate(href_list["corgione"])
-		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-			return
-
-		log_admin("[key_name(usr)] attempting to corgize [key_name(H)].")
-		message_admins(span_adminnotice("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]."))
-		H.corgize()
-
-
 	else if(href_list["forcespeech"])
 		if(!check_rights(R_FUN))
 			return
@@ -994,17 +907,6 @@
 		message_admins(span_danger("Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!"))
 		log_admin("[key_name(usr)] healed / Revived [key_name(L)].")
 
-	else if(href_list["makeanimal"])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/M = locate(href_list["makeanimal"])
-		if(isnewplayer(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/dead/new_player.")
-			return
-
-		usr.client.cmd_admin_animalize(M)
-
 	else if(href_list["adminplayeropts"])
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)
@@ -1087,7 +989,7 @@
 				if(DEAD)
 					status = "<font color='red'><b>Dead</b></font>"
 			health_description = "Status = [status]"
-			health_description += "<BR>Oxy: [L.getOxyLoss()] - Tox: [L.getToxLoss()] - Fire: [L.getFireLoss()] - Brute: [L.getBruteLoss()] - Clone: [L.getCloneLoss()] - Brain: [L.getOrganLoss(ORGAN_SLOT_BRAIN)] - Stamina: [L.getStaminaLoss()]"
+			health_description += "<BR>Oxy: [L.getOxyLoss()] - Tox: [L.getToxLoss()] - Fire: [L.getFireLoss()] - Brute: [L.getBruteLoss()] - Clone: [L.getCloneLoss()] - Brain: [L.getOrganLoss(ORGAN_SLOT_BRAIN)]]"
 		else
 			health_description = "This mob type has no health to speak of."
 

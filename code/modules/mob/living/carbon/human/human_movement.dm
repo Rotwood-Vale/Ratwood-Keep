@@ -19,14 +19,6 @@
 				return 0
 	return ..()
 
-/mob/living/carbon/human/experience_pressure_difference()
-	playsound(src, 'sound/blank.ogg', 50, TRUE)
-	if(shoes && istype(shoes, /obj/item/clothing))
-		var/obj/item/clothing/S = shoes
-		if (S.clothing_flags & NOSLIP)
-			return 0
-	return ..()
-
 /mob/living/carbon/human/mob_has_gravity()
 	. = ..()
 	if(!.)
@@ -59,18 +51,28 @@
 
 		if(wear_armor)
 			if(mobility_flags & MOBILITY_STAND)
-				var/obj/item/clothing/C = wear_armor
-				C.step_action()
+				var/obj/item/clothing/A = wear_armor
+				A.step_action()
 
+		if(wear_neck)
+			if(mobility_flags & MOBILITY_STAND)
+				var/obj/item/clothing/N = wear_neck
+				N.step_action()
+
+		if(wear_pants)
+			if(mobility_flags & MOBILITY_STAND)
+				var/obj/item/P = wear_pants
+				P.step_action()
+		
 		if(wear_shirt)
 			if(mobility_flags & MOBILITY_STAND)
-				var/obj/item/clothing/C = wear_shirt
-				C.step_action()
+				var/obj/item/clothing/SH = wear_shirt
+				SH.step_action()
 
 		if(cloak)
 			if(mobility_flags & MOBILITY_STAND)
-				var/obj/item/clothing/C = cloak
-				C.step_action()
+				var/obj/item/clothing/CL = cloak
+				CL.step_action()
 
 		if(shoes)
 			if(mobility_flags & MOBILITY_STAND)

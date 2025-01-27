@@ -86,8 +86,6 @@
 #define HUMAN_MAX_OXYLOSS 3
 #define HUMAN_CRIT_MAX_OXYLOSS (SSmobs.wait/30)
 
-#define STAMINA_REGEN_BLOCK_TIME (10 SECONDS)
-
 #define HEAT_DAMAGE_LEVEL_1 1 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 1 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 1 //Amount of damage applied when your body temperature passes the 460K point and you are on fire
@@ -431,6 +429,7 @@
 #define SKIN_COLOR_EBON "4e3729"
 
 //AASIMAR SKIN TONES
+#define SKIN_COLOR_ARCHON "feddcd"
 #define SKIN_COLOR_PLANETAR "ffd859"
 #define SKIN_COLOR_DEVA "b6f1f2"
 #define SKIN_COLOR_SOLAR "daeaeb"
@@ -438,7 +437,7 @@
 #define SKIN_COLOR_GAEIA "db874f"
 #define SKIN_COLOR_CELESTIAL "e1c565"
 #define SKIN_COLOR_OLYMPIA "c7f9cc"
-#define SKIN_COLOR_NECRAL "23130c"
+#define SKIN_COLOR_NECRAL "6e483c"
 #define SKIN_COLOR_ABYSSAL "22577a"
 
 //HALF ELF SKIN TONES
@@ -454,15 +453,19 @@
 #define SKIN_COLOR_BLACK_HAMMER "09371A"
 #define SKIN_COLOR_SHELLCREST "3C5166"
 #define SKIN_COLOR_SKULL_SEEKER "292413"
+#define SKIN_COLOR_LIGHT_RAIDER "9F9149"
 
 //TIEFLING SKIN TONES
-#define SKIN_COLOR_CASTILLIAN "cc5757"
-#define SKIN_COLOR_MYSTERIOUS "ff0000"
-#define SKIN_COLOR_SUCCUBUS "d2042d"
-#define SKIN_COLOR_INCUBUS "a23737"
-#define SKIN_COLOR_MEPHISTOPHELES "9197C5"
 #define SKIN_COLOR_ZARIEL "DBA960"
+#define SKIN_COLOR_LEVISTUS "5B5F96"
+#define SKIN_COLOR_GLASYA "cc5757"
+#define SKIN_COLOR_ASMODEUS "8F3F50"
+#define SKIN_COLOR_BAALZEBUL "991F1D"
+#define SKIN_COLOR_MEPHISTOPHELES "9197C5"
+#define SKIN_COLOR_FIERNA "C62D4C"
 #define SKIN_COLOR_DISPATER "B289C6"
+#define SKIN_COLOR_NYMSEA "A8619E"
+#define SKIN_COLOR_MAMMON "E0CED8"
 
 //ARGONIAN SKIN TONES
 #define SKIN_COLOR_AQUARELA "ffff88"
@@ -504,3 +507,6 @@
 #define SKIN_COLOR_FIRE "ff6e6e"
 #define SKIN_COLOR_FLORA "6afc74"
 #define SKIN_COLOR_ELECTRIC "faec8e"
+
+/// Humans are slowed by the difference between bodytemp and BODYTEMP_COLD_DAMAGE_LIMIT divided by this
+#define COLD_SLOWDOWN_FACTOR				20

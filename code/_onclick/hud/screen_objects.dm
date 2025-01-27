@@ -130,15 +130,13 @@
 		if(modifiers["right"])
 			if(H.craftingthing && (H.mind?.lastrecipe != null))
 				last_craft = world.time
-				var/datum/component/personal_crafting/C = H.craftingthing
 				to_chat(H, span_warning("I am crafting \a [H.mind?.lastrecipe] again."))
-				C.construct_item(H, H.mind?.lastrecipe)
+				construct_item(H, H.mind?.lastrecipe)
 		else
 			H.playsound_local(H, 'sound/misc/click.ogg', 100)
 			if(H.craftingthing)
 				last_craft = world.time
-				var/datum/component/personal_crafting/C = H.craftingthing
-				C.roguecraft(location, control, params, H)
+				roguecraft(location, control, params, H)
 			else
 				testing("what")
 
@@ -1772,15 +1770,15 @@
 		if(R.stage == 2)
 			add_overlay("rainlay")
 
-/atom/movable/screen/rogfat
-	name = "fatigue"
+/atom/movable/screen/stamina
+	name = "stamina"
 	desc = "My long-term weariness. Rest will be needed to recover this."
 	icon_state = "fat100"
 	icon = 'icons/mob/rogueheat.dmi'
 	screen_loc = rogueui_fat
 
-/atom/movable/screen/rogstam
-	name = "stamina"
+/atom/movable/screen/energy
+	name = "energy"
 	desc = "How winded I am. I need only a moment to catch my breath."
 	icon_state = "stam100"
 	icon = 'icons/mob/rogueheat.dmi'

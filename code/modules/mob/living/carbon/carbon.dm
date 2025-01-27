@@ -12,7 +12,6 @@
 	QDEL_LIST(internal_organs)
 	QDEL_LIST(bodyparts)
 	QDEL_LIST(implants)
-	remove_from_all_data_huds()
 	QDEL_NULL(dna)
 	GLOB.carbon_list -= src
 
@@ -354,6 +353,18 @@
 		ExtinguishMob(TRUE)
 	return
 
+/mob/living/carbon/resist_leash()
+	to_chat(src, span_notice("I reach for the hook on my collar..."))
+	//Determine how long it takes to remove the leash
+	var/deleash = 5 SECONDS
+	if(src.handcuffed)
+		deleash = 20 SECONDS
+	if(move_after(src, deleash, 0, target = src))
+		if(!QDELETED(src))
+			to_chat(src, "<span class='warning'>[src] has removed their leash!</span>")
+			src.remove_status_effect(/datum/status_effect/leash_pet)
+
+
 /mob/living/carbon/resist_restraints()
 	var/obj/item/I = null
 	var/type = 0
@@ -480,8 +491,6 @@
 	dropItemToGround(I)
 
 	var/modifier = 0
-	if(HAS_TRAIT(src, TRAIT_CLUMSY))
-		modifier -= 40 //Clumsy people are more likely to hit themselves -Honk!
 
 	switch(rand(1,100)+modifier) //91-100=Nothing special happens
 		if(-INFINITY to 0) //attack yourself
@@ -575,7 +584,7 @@
 		if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 			return TRUE
 		add_nausea(-100)
-		rogstam_add(-50)
+		energy_add(-50)
 		if(is_mouth_covered()) //make this add a blood/vomit overlay later it'll be hilarious
 			if(message)
 				visible_message(span_danger("[src] throws up all over [p_them()]self!"), \
@@ -680,24 +689,11 @@
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
 	update_stat()
 	update_mobility()
-//	if(((maxHealth - total_burn) < HEALTH_THRESHOLD_DEAD) && stat == DEAD )
-//		become_husk("burn")
-
-	med_hud_set_health()
 	if(stat == SOFT_CRIT)
 		add_movespeed_modifier(MOVESPEED_ID_CARBON_SOFTCRIT, TRUE, multiplicative_slowdown = SOFTCRIT_ADD_SLOWDOWN)
 	else
 		remove_movespeed_modifier(MOVESPEED_ID_CARBON_SOFTCRIT, TRUE)
-
-/mob/living/carbon/update_stamina()
-	var/stam = getStaminaLoss()
-	if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
-		enter_stamcrit()
-	else if(stam_paralyzed)
-		stam_paralyzed = FALSE
-	else
-		return
-	update_health_hud()
+	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /mob/living/carbon
 	var/lightning_flashing = FALSE
@@ -743,7 +739,7 @@
 		if(!isnull(G.lighting_alpha))
 			lighting_alpha = min(lighting_alpha, G.lighting_alpha)
 
-	if(HAS_TRAIT(src, TRAIT_DARKVISION_BETTER))
+	if(HAS_TRAIT(src, TRAIT_DARKVISION_BETTER) || HAS_TRAIT(src, TRAIT_DARKLING))
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_DARKVISION_BETTER)
 
 	if(HAS_TRAIT(src, TRAIT_DARKVISION)) //DV special prioritized over Noc's boon because DV special is better
@@ -1002,7 +998,6 @@
 	update_health_hud()
 //	update_tod_hud()
 	update_spd()
-	med_hud_set_status()
 
 //called when we get cuffed/uncuffed
 /mob/living/carbon/proc/update_handcuffed()
@@ -1136,7 +1131,6 @@
 /mob/living/carbon/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
-	VV_DROPDOWN_OPTION(VV_HK_MAKE_AI, "Make AI")
 	VV_DROPDOWN_OPTION(VV_HK_MODIFY_BODYPART, "Modify bodypart")
 	VV_DROPDOWN_OPTION(VV_HK_MODIFY_ORGANS, "Modify organs")
 	VV_DROPDOWN_OPTION(VV_HK_HALLUCINATION, "Hallucinate")
@@ -1186,12 +1180,6 @@
 					else
 						to_chat(usr, span_boldwarning("Only humans can be augmented."))
 		admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src]")
-	if(href_list[VV_HK_MAKE_AI])
-		if(!check_rights(R_SPAWN))
-			return
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
-			return
-		usr.client.holder.Topic("vv_override", list("makeai"=href_list[VV_HK_TARGET]))
 	if(href_list[VV_HK_MODIFY_ORGANS])
 		if(!check_rights(NONE))
 			return

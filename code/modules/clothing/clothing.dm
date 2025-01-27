@@ -71,6 +71,7 @@
 	var/detail_tag
 	var/detail_color
 	var/boobed_detail = TRUE //Whether details have their own boobed sprite
+	var/sleeved_detail = TRUE
 
 /obj/item/clothing/New()
 	..()
@@ -238,6 +239,20 @@
 		if(prevent_crits.len)
 			has_inspect_verb = TRUE
 
+	if(do_sound_chain)
+		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/chain (1).ogg',\
+													'sound/foley/footsteps/armor/chain (2).ogg',\
+													'sound/foley/footsteps/armor/chain (3).ogg'), 100)
+	else if(do_sound_plate)
+		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/plate (1).ogg',\
+													'sound/foley/footsteps/armor/plate (2).ogg',\
+													'sound/foley/footsteps/armor/plate (3).ogg'), 100)
+	else if(do_sound_bell)
+		AddComponent(/datum/component/squeak, list('sound/items/collarbell1.ogg',\
+													'sound/items/collarbell2.ogg',\
+													'sound/items/collarbell3.ogg',\
+													'sound/items/collarbell4.ogg'), 50, 100, 1) //Some of these are this kitty's very own collar bell :3 Guess which ones!
+
 /obj/item/clothing/MouseDrop(atom/over_object)
 	. = ..()
 	var/mob/M = usr
@@ -254,13 +269,20 @@
 	tastes = list("dust" = 1, "lint" = 1)
 	foodtype = CLOTH
 
-/obj/item/clothing/attack(mob/M, mob/user, def_zone)
+/obj/item/clothing/attack(mob/living/M, mob/living/user, def_zone)
 	if(user.used_intent.type != INTENT_HARM && ismoth(M))
 		var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
 		clothing_as_food.name = name
 		if(clothing_as_food.attack(M, user, def_zone))
 			take_damage(15, sound_effect=FALSE)
 		qdel(clothing_as_food)
+	else if(M.on_fire)
+		if(user == M)
+			return
+		user.changeNext_move(CLICK_CD_MELEE)
+		M.visible_message(span_warning("[user] pats out the flames on [M] with [src]!"))
+		M.adjust_fire_stacks(-2)
+		take_damage(10, BURN, "fire")
 	else
 		return ..()
 
@@ -441,11 +463,6 @@ BLIND     // can't see anything
 			if(3)
 				to_chat(usr, span_notice("My suit will now report my exact vital lifesigns as well as my coordinate position."))
 
-	if(ishuman(loc))
-		var/mob/living/carbon/human/H = loc
-		if(H.wear_pants == src)
-			H.update_suit_sensors()
-
 /obj/item/clothing/under/AltClick(mob/user)
 	if(..())
 		return 1
@@ -547,3 +564,5 @@ BLIND     // can't see anything
 		else
 			return FALSE
 	return TRUE
+
+

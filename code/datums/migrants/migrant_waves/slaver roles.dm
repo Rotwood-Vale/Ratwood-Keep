@@ -22,7 +22,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/whip/antique
-	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1, /obj/item/rope/chain = 1, /obj/item/flint = 1)
+	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot = 1, /obj/item/rope/chain = 1, /obj/item/flint = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 5, TRUE)
@@ -217,7 +217,7 @@
 /datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
-	neck = /obj/item/clothing/neck/roguetown/gorget/prisoner
+	neck = /obj/item/clothing/neck/roguetown/collar/leather/cursed
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/storage/belt/rogue/pouch
 	beltr = /obj/item/flint

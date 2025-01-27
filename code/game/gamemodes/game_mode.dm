@@ -173,14 +173,6 @@
 
 	replacementmode = pickweight(usable_modes)
 
-	if(SSshuttle.emergency)
-		switch(SSshuttle.emergency.mode) //Rounds on the verge of ending don't get new antags, they just run out
-			if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE)
-				return 1
-			if(SHUTTLE_CALL)
-				if(SSshuttle.emergency.timeLeft(1) < initial(SSshuttle.emergencyCallTime)*0.5)
-					return 1
-
 	var/matc = CONFIG_GET(number/midround_antag_time_check)
 	if(world.time >= (matc * 600))
 		message_admins("Convert_roundtype failed due to round length. Limit is [matc] minutes.")
@@ -239,8 +231,6 @@
 		return FALSE
 	if(replacementmode && round_converted == 2)
 		return replacementmode.check_finished()
-	if(SSshuttle.emergency && (SSshuttle.emergency.mode == SHUTTLE_ENDGAME))
-		return TRUE
 	if(station_was_nuked)
 		return TRUE
 	var/list/continuous = CONFIG_GET(keyed_list/continuous)
@@ -256,7 +246,6 @@
 				message_admins("The roundtype ([config_tag]) has no antagonists, continuous round has been defaulted to on and midround_antag has been defaulted to off.")
 				continuous[config_tag] = TRUE
 				midround_antag[config_tag] = FALSE
-				SSshuttle.clearHostileEnvironment(src)
 				return 0
 
 
@@ -451,7 +440,11 @@
 
 
 
-/datum/game_mode/proc/num_players()
+/// Counts the number of players, can be set to ONLY count ready players.
+/proc/num_players(count_ready_only = FALSE)
+	if(!count_ready_only)
+		return LAZYLEN(GLOB.new_player_list)
+
 	. = 0
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/P = i
@@ -579,10 +572,6 @@
 //Set result and news report here
 /datum/game_mode/proc/set_round_result()
 	SSticker.mode_result = "undefined"
-	if(station_was_nuked)
-		SSticker.news_report = STATION_DESTROYED_NUKE
-	if(EMERGENCY_ESCAPED_OR_ENDGAMED)
-		SSticker.news_report = STATION_EVACUATED
 
 /// Mode specific admin panel.
 /datum/game_mode/proc/admin_panel()

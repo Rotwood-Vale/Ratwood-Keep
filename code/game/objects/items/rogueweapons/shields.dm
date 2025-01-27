@@ -48,7 +48,7 @@
 /obj/item/rogueweapon/shield/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the projectile", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, args)
 	if(attack_type == THROWN_PROJECTILE_ATTACK || attack_type == PROJECTILE_ATTACK)
-		if(owner.client?.chargedprog == 100 && owner.used_intent?.tranged)
+		if(owner.used_intent?.tranged)
 			owner.visible_message(span_danger("[owner] blocks [hitby] with [src]!"))
 			return 1
 		else
@@ -79,11 +79,15 @@
 	coverage = 40
 	metalizer_result = /obj/item/cooking/pan
 
-/obj/item/rogueweapon/shield/wood/attack_hand(mob/user)
+/obj/item/rogueweapon/shield/wood/attack_right(mob/user)
 	if(!overlays.len)
-		var/icon/J = new('icons/roguetown/weapons/wood_heraldry.dmi')
-		var/list/istates = J.IconStates()
-		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(istates)
+		if(!('icons/roguetown/weapons/wood_heraldry.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/wood_heraldry.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/wood_heraldry.dmi'] = istates
+
+		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/wood_heraldry.dmi'])
 		if(!picked_name)
 			picked_name = "none"
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/wood_heraldry.dmi', picked_name)
@@ -92,6 +96,8 @@
 		var/mutable_appearance/MU = mutable_appearance(icon, "woodsh_detail")
 		MU.alpha = 114
 		add_overlay(MU)
+		if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+			cut_overlays()
 	else
 		..()
 
@@ -157,11 +163,14 @@
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 	return ..()
 
-/obj/item/rogueweapon/shield/tower/metal/attack_hand(mob/user)
+/obj/item/rogueweapon/shield/tower/metal/attack_right(mob/user)
 	if(!overlays.len)
-		var/icon/J = new('icons/roguetown/weapons/shield_heraldry.dmi')
-		var/list/istates = J.IconStates()
-		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(istates)
+		if(!('icons/roguetown/weapons/shield_heraldry.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/shield_heraldry.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/shield_heraldry.dmi'] = istates
+		var/picked_name = input(user, "Choose a Heraldry", "ROGUETOWN", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/shield_heraldry.dmi'])
 		if(!picked_name)
 			picked_name = "none"
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/shield_heraldry.dmi', picked_name)
@@ -170,6 +179,8 @@
 		var/mutable_appearance/MU = mutable_appearance(icon, "ironsh_detail")
 		MU.alpha = 90
 		add_overlay(MU)
+		if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
+			cut_overlays()
 	else
 		..()
 

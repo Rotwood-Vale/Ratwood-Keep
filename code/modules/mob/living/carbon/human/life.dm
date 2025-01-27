@@ -73,12 +73,13 @@
 		handle_curses()
 		handle_heart()
 		handle_liver()
-		update_rogfat()
-		update_rogstam()
+		update_stamina()
+		update_energy()
+		handle_environment()
 		if(charflaw && !charflaw.ephemeral)
 			charflaw.flaw_on_life(src)
 		if(health <= 0)
-			adjustOxyLoss(0.3)
+			apply_damage(2, OXY)
 		if(mode == AI_OFF && !client && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			if(mob_timers["slo"])
 				if(world.time > mob_timers["slo"] + 90 SECONDS)
@@ -116,21 +117,34 @@
 	. = ..()
 	name = get_visible_name()
 
-/mob/living/carbon/human/proc/on_daypass()
-	if(dna?.species)
-		if(STUBBLE in dna.species.species_traits)
-			if(gender == MALE)
-				has_stubble = TRUE
-				update_hair()
+/mob/living/carbon/human/proc/try_grow_beard()
 
-/mob/living/carbon/human/calculate_affecting_pressure(pressure)
-	if (wear_armor && head && istype(wear_armor, /obj/item/clothing) && istype(head, /obj/item/clothing))
-		var/obj/item/clothing/CS = wear_armor
-		var/obj/item/clothing/CH = head
-		if (CS.clothing_flags & CH.clothing_flags & STOPSPRESSUREDAMAGE)
-			return ONE_ATMOSPHERE
-	return pressure
+	if(!(dna?.species))
+		return
 
+	// Certain races dont grow beards
+	if(!(dna.species in RACES_WITH_BEARD_GROWTH))
+		return
+
+	if(!(STUBBLE in dna.species.species_traits))
+		return
+
+	if(mob_biotypes & MOB_UNDEAD)
+		return
+
+	// Change this if you want female dwarves with beard growth
+	if(gender != MALE)
+		return
+
+	var/datum/bodypart_feature/hair/facial/beard = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+	if(!beard)
+		return
+
+	if(beard.accessory_type == /datum/sprite_accessory/hair/facial/shaved)
+		beard.accessory_type = /datum/sprite_accessory/hair/facial/stubble
+		to_chat(src, span_warning("My face itches."))
+		update_hair()
+	
 
 /mob/living/carbon/human/handle_traits()
 	if (getOrganLoss(ORGAN_SLOT_BRAIN) >= 60)
@@ -139,12 +153,11 @@
 		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "brain_damage")
 	return ..()
 
-/mob/living/carbon/human/handle_mutations_and_radiation()
-	if(!dna || !dna.species.handle_mutations_and_radiation(src))
-		..()
+/mob/living/proc/handle_environment()
+	return
 
-/mob/living/carbon/human/handle_environment(datum/gas_mixture/environment)
-	dna.species.handle_environment(environment, src)
+/mob/living/carbon/human/handle_environment()
+	dna.species.handle_environment(src)
 
 ///FIRE CODE
 /mob/living/carbon/human/handle_fire()
@@ -165,10 +178,10 @@
 /mob/living/carbon/human/proc/get_thermal_protection()
 	var/thermal_protection = 0 //Simple check to estimate how protected we are against multiple temperatures
 	if(wear_armor)
-		if(wear_armor.max_heat_protection_temperature >= FIRE_SUIT_MAX_TEMP_PROTECT)
+		if(wear_armor.max_heat_protection_temperature >= 30000)
 			thermal_protection += (wear_armor.max_heat_protection_temperature*0.7)
 	if(head)
-		if(head.max_heat_protection_temperature >= FIRE_HELM_MAX_TEMP_PROTECT)
+		if(head.max_heat_protection_temperature >= 30000)
 			thermal_protection += (head.max_heat_protection_temperature*THERMAL_PROTECTION_HEAD)
 	thermal_protection = round(thermal_protection)
 	return thermal_protection

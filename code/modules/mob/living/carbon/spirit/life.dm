@@ -9,15 +9,8 @@
 	if (notransform)
 		return
 
-/mob/living/carbon/spirit/handle_environment(datum/gas_mixture/environment)
-	if(!environment)
-		return
-
-	var/loc_temp = get_temperature(environment)
-
-	if(stat != DEAD)
-		adjust_bodytemperature(natural_bodytemperature_stabilization())
-
+/mob/living/carbon/spirit/handle_environment()
+	var/loc_temp = BODYTEMP_NORMAL
 	if(!on_fire) //If you're on fire, you do not heat up or cool down based on surrounding gases
 		if(loc_temp < bodytemperature)
 			adjust_bodytemperature(max((loc_temp - bodytemperature) / BODYTEMP_COLD_DIVISOR, BODYTEMP_COOLING_MAX))
@@ -54,24 +47,6 @@
 
 	else
 		clear_alert("temp")
-
-	//Account for massive pressure differences
-
-	var/pressure = environment.return_pressure()
-	var/adjusted_pressure = calculate_affecting_pressure(pressure) //Returns how much pressure actually affects the mob.
-	switch(adjusted_pressure)
-		if(HAZARD_HIGH_PRESSURE to INFINITY)
-			adjustBruteLoss( min( ( (adjusted_pressure / HAZARD_HIGH_PRESSURE) -1 )*PRESSURE_DAMAGE_COEFFICIENT , MAX_HIGH_PRESSURE_DAMAGE) )
-			throw_alert("pressure", /atom/movable/screen/alert/highpressure, 2)
-		if(WARNING_HIGH_PRESSURE to HAZARD_HIGH_PRESSURE)
-			throw_alert("pressure", /atom/movable/screen/alert/highpressure, 1)
-		if(WARNING_LOW_PRESSURE to WARNING_HIGH_PRESSURE)
-			clear_alert("pressure")
-		if(HAZARD_LOW_PRESSURE to WARNING_LOW_PRESSURE)
-			throw_alert("pressure", /atom/movable/screen/alert/lowpressure, 1)
-		else
-			adjustBruteLoss( LOW_PRESSURE_DAMAGE )
-			throw_alert("pressure", /atom/movable/screen/alert/lowpressure, 2)
 
 	return
 

@@ -78,11 +78,9 @@
 		if(!brainmob.stored_dna)
 			brainmob.stored_dna = new /datum/dna/stored(brainmob)
 		C.dna.copy_dna(brainmob.stored_dna)
-		if(HAS_TRAIT(L, TRAIT_BADDNA))
-			brainmob.status_traits[TRAIT_BADDNA] = L.status_traits[TRAIT_BADDNA]
-//	if(L.mind?.current)
-//		L.mind.transfer_to(brainmob)
-//	to_chat(brainmob, span_notice("I feel slightly disoriented. That's normal when you're just a brain."))
+	if(L.mind?.current)
+		L.mind.transfer_to(brainmob)
+//	to_chat(brainmob, "<span class='notice'>I feel slightly disoriented. That's normal when you're just a brain.</span>")
 
 /obj/item/organ/brain/attackby(obj/item/O, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)

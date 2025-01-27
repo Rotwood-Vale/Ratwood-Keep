@@ -350,7 +350,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	else
 		new_character.mind_initialize()
 	if(!new_character.mind.assigned_role)
-		new_character.mind.assigned_role = "Adventurer"//If they somehow got a null assigned role.
+		new_character.mind.assigned_role = "refugee"//If they somehow got a null assigned role.
 
 	new_character.key = G_found.key
 
@@ -363,13 +363,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//Two variables to properly announce later on.
 	var/admin = key_name_admin(src)
 	var/player_key = G_found.key
-
-	//Now for special roles and equipment.
-	var/datum/antagonist/traitor/traitordatum = new_character.mind.has_antag_datum(/datum/antagonist/traitor)
-	if(traitordatum)
-		SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)
-		traitordatum.equip()
-
 
 	SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)//Or we simply equip them.
 
@@ -598,47 +591,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Change View Range", "[view]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/admin_call_shuttle()
-
-	set category = "Admin"
-	set name = "Call Shuttle"
-	set hidden = 1
-
-	if(EMERGENCY_AT_LEAST_DOCKED)
-		return
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
-	if(confirm != "Yes")
-		return
-
-	SSshuttle.emergency.request()
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Call Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(usr)] admin-called the emergency shuttle.")
-	message_admins(span_adminnotice("[key_name_admin(usr)] admin-called the emergency shuttle."))
-	return
-
-/client/proc/admin_cancel_shuttle()
-	set category = "Admin"
-	set name = "Cancel Shuttle"
-	set hidden = 1
-	if(!check_rights(0))
-		return
-	if(alert(src, "You sure?", "Confirm", "Yes", "No") != "Yes")
-		return
-
-	if(EMERGENCY_AT_LEAST_DOCKED)
-		return
-
-	SSshuttle.emergency.cancel()
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Cancel Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(usr)] admin-recalled the emergency shuttle.")
-	message_admins(span_adminnotice("[key_name_admin(usr)] admin-recalled the emergency shuttle."))
-
-	return
-
 /client/proc/everyone_random()
 	set category = "Fun"
 	set name = "Make Everyone Random"
@@ -713,9 +665,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/adding_hud = !has_antag_hud()
 
-	for(var/hudtype in list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL_ADVANCED, DATA_HUD_DIAGNOSTIC_ADVANCED)) // add data huds
-		var/datum/atom_hud/H = GLOB.huds[hudtype]
-		(adding_hud) ? H.add_hud_to(usr) : H.remove_hud_from(usr)
 	for(var/datum/atom_hud/antag/H in GLOB.huds) // add antag huds
 		(adding_hud) ? H.add_hud_to(usr) : H.remove_hud_from(usr)
 
@@ -896,19 +845,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins(msg)
 	admin_ticket_log(whom, msg)
 	log_admin("[key_name(usr)] punished [key_name(whom)] with [punishment].")
-
-/client/proc/trigger_centcom_recall()
-	if(!check_rights(R_ADMIN))
-		return
-	var/message = pick(GLOB.admiral_messages)
-	message = input("Enter message from the on-call admiral to be put in the recall report.", "Admiral Message", message) as text|null
-
-	if(!message)
-		return
-
-	message_admins("[key_name_admin(usr)] triggered a CentCom recall, with the admiral message of: [message]")
-	log_game("[key_name(usr)] triggered a CentCom recall, with the message of: [message]")
-	SSshuttle.centcom_recall(SSshuttle.emergency.timer, message)
 
 /client/proc/cmd_admin_check_player_exp()	//Allows admins to determine who the newer players are.
 	set category = "Admin"

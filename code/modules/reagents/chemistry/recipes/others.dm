@@ -11,12 +11,6 @@
 	results = list(/datum/reagent/spraytan = 2)
 	required_reagents = list(/datum/reagent/consumable/orangejuice = 1, /datum/reagent/fuel/oil = 1)
 
-/datum/chemical_reaction/spraytan2
-	name = "Spray Tan"
-	id = /datum/reagent/spraytan
-	results = list(/datum/reagent/spraytan = 2)
-	required_reagents = list(/datum/reagent/consumable/orangejuice = 1, /datum/reagent/consumable/cornoil = 1)
-
 /datum/chemical_reaction/impedrezene
 	name = "Impedrezene"
 	id = /datum/reagent/impedrezene
@@ -28,12 +22,6 @@
 	id = /datum/reagent/cryptobiolin
 	results = list(/datum/reagent/cryptobiolin = 3)
 	required_reagents = list(/datum/reagent/potassium = 1, /datum/reagent/oxygen = 1, /datum/reagent/consumable/sugar = 1)
-
-/datum/chemical_reaction/glycerol
-	name = "Glycerol"
-	id = /datum/reagent/glycerol
-	results = list(/datum/reagent/glycerol = 1)
-	required_reagents = list(/datum/reagent/consumable/cornoil = 3, /datum/reagent/toxin/acid = 1)
 
 /datum/chemical_reaction/sodiumchloride
 	name = "Salt"
@@ -111,33 +99,6 @@
 /datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
 	holder.create_foam(/datum/effect_system/foam_spread,2*created_volume,notification=span_danger("The solution spews out foam!"))
 
-/datum/chemical_reaction/metalfoam
-	name = "Metal Foam"
-	id = "metalfoam"
-	required_reagents = list(/datum/reagent/aluminium = 3, /datum/reagent/foaming_agent = 1, /datum/reagent/toxin/acid/fluacid = 1)
-	mob_react = FALSE
-
-/datum/chemical_reaction/metalfoam/on_reaction(datum/reagents/holder, created_volume)
-	holder.create_foam(/datum/effect_system/foam_spread/metal,5*created_volume,1,span_danger("The solution spews out a metallic foam!"))
-
-/datum/chemical_reaction/smart_foam
-	name = "Smart Metal Foam"
-	id = "smart_metal_foam"
-	required_reagents = list(/datum/reagent/aluminium = 3, /datum/reagent/smart_foaming_agent = 1, /datum/reagent/toxin/acid/fluacid = 1)
-	mob_react = TRUE
-
-/datum/chemical_reaction/smart_foam/on_reaction(datum/reagents/holder, created_volume)
-	holder.create_foam(/datum/effect_system/foam_spread/metal/smart,5*created_volume,1,span_danger("The solution spews out metallic foam!"))
-
-/datum/chemical_reaction/ironfoam
-	name = "Iron Foam"
-	id = "ironlfoam"
-	required_reagents = list(/datum/reagent/iron = 3, /datum/reagent/foaming_agent = 1, /datum/reagent/toxin/acid/fluacid = 1)
-	mob_react = FALSE
-
-/datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, created_volume)
-	holder.create_foam(/datum/effect_system/foam_spread/metal,5*created_volume,2,span_danger("The solution spews out a metallic foam!"))
-
 /datum/chemical_reaction/foaming_agent
 	name = "Foaming Agent"
 	id = /datum/reagent/foaming_agent
@@ -150,7 +111,6 @@
 	results = list(/datum/reagent/smart_foaming_agent = 3)
 	required_reagents = list(/datum/reagent/foaming_agent = 3, /datum/reagent/acetone = 1, /datum/reagent/iron = 1)
 	mix_message = "The solution mixes into a frothy metal foam and conforms to the walls of its container."
-
 
 /////////////////////////////// Cleaning and hydroponics /////////////////////////////////////////////////
 
@@ -223,21 +183,6 @@
 	required_reagents = list(/datum/reagent/fuel/oil = 1)
 	required_temp = 480
 
-//monkey powder heehoo
-/datum/chemical_reaction/monkey_powder
-	name = /datum/reagent/monkey_powder
-	id = /datum/reagent/monkey_powder
-	results = list(/datum/reagent/monkey_powder = 3)
-	required_reagents = list(/datum/reagent/consumable/banana = 1, /datum/reagent/consumable/nutriment=2,/datum/reagent/liquidgibs = 1)
-
-/datum/chemical_reaction/monkey
-	name = "monkey"
-	id = "monkey"
-	required_reagents = list(/datum/reagent/monkey_powder = 30, /datum/reagent/water = 1)
-
-/datum/chemical_reaction/monkey/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-	new /mob/living/carbon/monkey(location)
 //water electrolysis
 /datum/chemical_reaction/electrolysis
 	name = "electrolysis"
@@ -275,31 +220,11 @@
 	results = list(/datum/reagent/lye = 2)
 	required_reagents = list(/datum/reagent/ash = 1, /datum/reagent/water = 1, /datum/reagent/carbon = 1)
 
-/datum/chemical_reaction/royal_bee_jelly
-	name = "royal bee jelly"
-	id = /datum/reagent/royal_bee_jelly
-	results = list(/datum/reagent/royal_bee_jelly = 5)
-	required_reagents = list(/datum/reagent/toxin/mutagen = 10, /datum/reagent/consumable/honey = 40)
-
 /datum/chemical_reaction/laughter
 	name = /datum/reagent/consumable/laughter
 	id = /datum/reagent/consumable/laughter
 	results = list(/datum/reagent/consumable/laughter = 10) // Fuck it. I'm not touching this one.
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/banana = 1)
-
-/datum/chemical_reaction/yuck
-	name = "Organic Fluid"
-	id = /datum/reagent/yuck
-	results = list(/datum/reagent/yuck = 4)
-	required_reagents = list(/datum/reagent/fuel = 3)
-	required_container = /obj/item/reagent_containers/food/snacks/deadmouse
-
-/datum/chemical_reaction/cellulose_carbonization
-	name = "Cellulose_Carbonization"
-	id = /datum/reagent/carbon
-	results = list(/datum/reagent/carbon = 1)
-	required_reagents = list(/datum/reagent/cellulose = 1)
-	required_temp = 512
 
 /datum/chemical_reaction/hydrogen_peroxide
 	name = "Hydrogen peroxide"

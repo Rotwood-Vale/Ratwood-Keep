@@ -7,9 +7,6 @@
 	icon_state = "wall"
 	explosion_block = 1
 
-	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
-	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
-
 	baseturfs = list(/turf/open/floor/rogue/dirt/road)
 
 	var/hardness = 40 //lower numbers are harder. Used to determine the probability of a hulk smashing through.
@@ -90,15 +87,6 @@
 		playsound(src, 'sound/blank.ogg', 100, TRUE)
 		dismantle_wall(1)
 		return
-
-/turf/closed/wall/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
-	user.changeNext_move(CLICK_CD_MELEE)
-	to_chat(user, "<span class='notice'>I push the wall but nothing happens!</span>")
-	playsound(src, 'sound/blank.ogg', 25, TRUE)
-	add_fingerprint(user)
 
 /turf/closed/wall/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)

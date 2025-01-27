@@ -1,22 +1,3 @@
-
-/obj/item/clothing/proc/step_action() //this was made to rewrite clown shoes squeaking
-	SEND_SIGNAL(src, COMSIG_CLOTHING_STEP_ACTION)
-
-/obj/item/clothing
-	var/do_sound_chain = FALSE
-	var/do_sound_plate = FALSE
-
-/obj/item/clothing/Initialize()
-	. = ..()
-	if(do_sound_chain)
-		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/chain (1).ogg',\
-													'sound/foley/footsteps/armor/chain (2).ogg',\
-													'sound/foley/footsteps/armor/chain (3).ogg'), 100)
-	else if(do_sound_plate)
-		AddComponent(/datum/component/squeak, list('sound/foley/footsteps/armor/plate (1).ogg',\
-													'sound/foley/footsteps/armor/plate (2).ogg',\
-													'sound/foley/footsteps/armor/plate (3).ogg'), 100)
-
 /obj/item/clothing/suit/roguetown/armor
 	slot_flags = ITEM_SLOT_ARMOR
 	body_parts_covered = CHEST
@@ -98,7 +79,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "steel half-plate"
-	desc = "\'Adventurer-fit\' plate armor with pauldrons."
+	desc = "\'refugee-fit\' plate armor with pauldrons."
 	body_parts_covered = CHEST|GROIN|VITALS
 	icon_state = "halfplate"
 	item_state = "halfplate"
@@ -115,6 +96,21 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+
+/obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "inquisitorial duster"
+	desc = "Metal plates reinforce this heavy coat. You live, die, and live again."
+	body_parts_covered = CHEST|VITALS|GROIN|LEGS|ARMS
+	allowed_sex = list(MALE, FEMALE)
+	icon_state = "inqcoat"
+	item_state = "inqcoat"
+	sleevetype = "shirt"
+	blocksound = PLATEHIT
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	max_integrity = 180 // slightly lower than scale
+	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/plate/half
 	slot_flags = ITEM_SLOT_ARMOR
@@ -221,6 +217,8 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	sleeved_detail = FALSE
+	boobed_detail = FALSE
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()
 	. = ..()
@@ -306,7 +304,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
 	icon_state = "armordress"
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
@@ -327,7 +325,7 @@
 	desc = "A large padded defense jacket designed to be cheap, resewable and worn as its own armor or go beneath armor that protects the torso, arms and legs."
 	icon_state = "gambeson"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
-	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 25, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 45, "slash" = 30, "stab" = 35, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -338,10 +336,27 @@
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
 
+/obj/item/clothing/suit/roguetown/armor/gambeson/light
+	name = "light gambeson"
+	desc = "A barely padded gambeson, typically worn by the peasantry as cheap yet fashionable armor for the whole body."
+	icon_state = "gambesonl"
+	armor = list("blunt" = 30, "slash" = 15, "stab" = 20, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = null // It won't help, like, at all.
+	sellprice = 10
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+	name = "padded gambeson"
+	desc = "A gambeson with additional padding layers, hardened to make it more durable. It still cannot compare to proper armor."
+	icon_state = "gambesonp"
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
+	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	sellprice = 30
+
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	name = "arming jacket"
 	desc = "Similar to a gambeson, it is meant to be used under heavier armor."
 	icon_state = "dgamb"
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_SMASH)
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
@@ -411,7 +426,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "Blacksteel Plate Armor"
+	name = "blacksteel plate armor"
 	desc = "A suit of Full Plate smithed of durable blacksteel."
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
@@ -424,7 +439,7 @@
 	nodismemsleeves = TRUE
 	do_sound_plate = TRUE
 	blocking_behavior = null
-	max_integrity = 400
+	max_integrity = 600 // 100 better than normal steel plate. Inline with Cuirass vs Blacksteel Cuirass
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/blacksteel
 	armor_class = ARMOR_CLASS_HEAVY
@@ -435,7 +450,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "Blacksteel Cuirass"
+	name = "blacksteel cuirass"
 	desc = "A basic cuirass forged from blacksteel. It's somewhat more durable than regular steel."
 	body_parts_covered = CHEST|VITALS
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
@@ -451,16 +466,42 @@
 	smeltresult = /obj/item/ingot/blacksteel
 	armor_class = ARMOR_CLASS_MEDIUM
 
-/obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
-	name = "New Moon Coat"
-	desc = "Light, fancy yet still fairly protective, this teal coat is a signature of the New Moon Holy Order with a noc amulet on in the middle of the chestpiece."
-	icon_state = "newmoon_jacket"
-	item_state = "newmoon_jacket"
-	blocksound = SOFTHIT
-	armor = list("blunt" = 70, "slash" = 100, "stab" = 60, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
-	nodismemsleeves = TRUE
+/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass/hardened
+	name = "hardened blacksteel cuirass"
+	desc = "A hardened cuirass forged from blacksteel, personally issued to high-ranking officers of the Emperiate. It's somewhat more durable than regular steel. "
+	max_integrity = 550 // Hardened to Replace the chainmaille they got before.
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_ASSASSIN, BCLASS_TWIST)
 	body_parts_covered = CHEST|GROIN|VITALS
+
+//Gronn
+/obj/item/clothing/suit/roguetown/armor/hudesutu_quyaq
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Hudesutu quyaq"
+	desc = "Lamellar Armor made of iron and leathers."
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon_state = "hudesutu"
+	armor = list("blunt" = 65, "slash" = 60, "stab" = 55, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = CHAINHIT
+	do_sound_chain = TRUE
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	max_integrity = 250
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_LIGHT
+
+/obj/item/clothing/suit/roguetown/armor/kurche
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Kurche"
+	desc = "Pieces of Iron Plates and Leathers that protect the vitals."
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	icon_state = "kurche"
+	armor = list("blunt" = 75, "slash" = 65, "stab" = 70, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = CHAINHIT
+	do_sound_chain = TRUE
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	max_integrity = 300
-	sellprice = 40
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_LIGHT

@@ -84,10 +84,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 #endif
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/start/adventurerlate
-	name = "Adventurerlate"
+/obj/effect/landmark/start/refugeelate
+	name = "refugeelate"
 	icon_state = "arrow"
-	jobspawn_override = list("Skeleton", "Pilgrim", "Adventurer", "Migrant")
+	jobspawn_override = list("Skeleton", "Refugee", "Migrant")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/banditlate
@@ -224,8 +224,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Towner"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/woodsman
-	name = "Village Elder"
+/obj/effect/landmark/start/mayor
+	name = "Mayor"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/priest
@@ -261,7 +261,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightmaiden
-	name = "Bath Swain"
+	name = "Prostitute"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/merchant
@@ -273,7 +273,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/grabber
-	name = "Thug"
+	name = "Henchman"
 	icon_state = "arrow"
 
 
@@ -282,7 +282,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/archivist
-	name = "Archivist"
+	name = "Scholar"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/guildsmith
@@ -338,7 +338,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/lady
-	name = "Duchess"
+	name = "Duke Consort"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/prince
@@ -385,8 +385,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Barkeeper"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/adventurer
-	name = "Adventurer"
+/obj/effect/landmark/start/refugee
+	name = "refugee"
 	icon_state = "arrow"
 
 //yrf
@@ -413,6 +413,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/sapprentice
 	name = "Smithy Apprentice"
+	icon_state = "arrow"
+
+// Harbor
+/obj/effect/landmark/start/harbormaster
+	name = "Harbormaster"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/longshoreman
+	name = "Longshoreman"
 	icon_state = "arrow"
 
 //goblin

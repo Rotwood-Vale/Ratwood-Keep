@@ -48,6 +48,12 @@
 	var/spell_points
 	var/used_spell_points
 
+	//Lesser Necromancy Trackers
+	var/boneboys = 0
+	var/bonemax = 2
+	var/boneboy = FALSE
+	var/bonenecro = null
+
 	var/linglink
 	var/datum/martial_art/martial_art
 	var/static/default_martial_art = new/datum/martial_art
@@ -373,6 +379,18 @@
 /datum/mind/proc/adjust_spellpoints(points)
 	spell_points += points
 
+/datum/mind/proc/adjust_bonemax(points)
+	bonemax += points
+
+/datum/mind/proc/adjust_boneboys(points)
+	boneboys += points
+
+/datum/mind/proc/set_bonenecro(name)
+	bonenecro = name
+
+/datum/mind/proc/set_boneboy(value)
+	boneboy = value
+
 ///Gets the skill's singleton and returns the result of its get_skill_speed_modifier
 /datum/mind/proc/get_skill_speed_modifier(skill)
 	var/datum/skill/S = GetSkillRef(skill)
@@ -476,13 +494,6 @@
 			if(istype(A))
 				if(A.type == datum_type)
 					return A
-
-/datum/mind/proc/remove_traitor()
-	remove_antag_datum(/datum/antagonist/traitor)
-
-
-/datum/mind/proc/remove_all_antag() //For the Lazy amongst us.
-	remove_traitor()
 
 /datum/mind/proc/equip_traitor(employer = "The Syndicate", silent = FALSE, datum/antagonist/uplink_owner)
 	return
@@ -682,12 +693,6 @@
 		O.update_explanation_text()
 		to_chat(current, "<B>[O.flavor] #[obj_count]</B>: [O.explanation_text]")
 		obj_count++
-
-
-/datum/mind/proc/make_Traitor()
-	if(!(has_antag_datum(/datum/antagonist/traitor)))
-		add_antag_datum(/datum/antagonist/traitor)
-
 
 /datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S)
 	if(!S)
