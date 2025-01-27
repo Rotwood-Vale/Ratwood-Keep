@@ -193,6 +193,7 @@
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 			head = /obj/item/clothing/head/roguetown/bucklehat
 			gloves = /obj/item/clothing/gloves/roguetown/otavan
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/reagent_containers/glass/alchemical/strpot
 			beltr = /obj/item/rogueweapon/huntingknife
 			r_hand = /obj/item/flashlight/flare/torch
