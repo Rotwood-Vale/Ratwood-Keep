@@ -767,7 +767,7 @@
 
 /datum/special_trait/warhorse
 	name = "Warhorse"
-	greet_text = span_notice("You think you are <b>real soldiers</b>? Kiddo, don't make me laugh! You see this missing eye? If you've seen the crap <b>I've</b> seen, you'd be pissing your pants everytime you try to sleep! What was that? 'Burnt out old fart'? How about you square up and find out, you brat!")
+	greet_text = span_notice("You think you are <b>real soldiers</b>? Kiddo, don't make me laugh! If you've seen the crap <b>I've</b> seen, you'd be pissing your pants everytime you try to sleep! What was that? 'Burnt out old fart'? How about you square up and find out, you brat!")
 	req_text = "Be a Veteran"
 	allowed_jobs = list(/datum/job/roguetown/veteran)
 	weight = 10
@@ -775,10 +775,5 @@
 /datum/special_trait/warhorse/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")
 	ADD_TRAIT(character, TRAIT_NOSLEEP, "[type]")
-	switch(rand(1,2))
-		if(1)
-			ADD_TRAIT(character, TRAIT_CYCLOPS_LEFT, "[type]")
-		else
-			ADD_TRAIT(character, TRAIT_CYCLOPS_RIGHT, "[type]")
 	character.change_stat("strength", 4)
 	character.change_stat("speed", 3)
