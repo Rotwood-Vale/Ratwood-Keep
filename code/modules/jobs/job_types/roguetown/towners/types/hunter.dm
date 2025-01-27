@@ -23,7 +23,7 @@
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1)
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, pick(2,2,3), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
@@ -43,3 +43,5 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 3)
 		H.change_stat("speed", 1)
+		if(H.age != AGE_ADULT)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
