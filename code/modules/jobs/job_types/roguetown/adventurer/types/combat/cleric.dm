@@ -28,7 +28,7 @@
 
 		if("Monk")
 			H.set_blindness(0)
-			to_chat(H, span_warning("You are a wandering acolyte, versed in both miracles and martial arts."))
+			to_chat(H, span_warning("You are a wandering acolyte, versed in both miracles and martial arts. You forego the heavy armor paladins wear in favor of a more nimble approach to combat."))
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			gloves = /obj/item/clothing/gloves/roguetown/chain
@@ -82,7 +82,8 @@
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 2)
-			H.change_stat("perception", -2)
+			H.change_stat("perception", -1)
+			H.change_stat("intelligence", -1)
 
 		if("Paladin")
 			to_chat(H, span_warning("A holy warrior. Where others of the clergy may have spent their free time studying scriptures, you have instead honed your skills with a blade."))
