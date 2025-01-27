@@ -321,6 +321,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /datum/antagonist/vampirelord/lesser/greet()
 	to_chat(owner.current, span_userdanger("We are awakened from our slumber, Spawn of the feared Vampire Lord."))
 	owner.announce_objectives()
+	mypool.update_pool(1000)
 
 /datum/antagonist/vampirelord/proc/finalize_vampire()
 	owner.current.forceMove(pick(GLOB.vlord_starts))
@@ -670,7 +671,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/tempmax = 8000
 	if(istype(C))
 		for(var/datum/mind/V in C.vampires)
-			if(V.special_role == "vampirespawn")
+			if(V.special_role == "Vampire Spawn")
 				tempmax += 4000
 		if(maximum != tempmax)
 			maximum = tempmax
@@ -829,7 +830,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(alert(src, "A Vampire Lord is summoning you from the Underworld.", "Be Risen?", "Yes", "No") == "Yes")
 		if(!C.deathknightspawn)
 			to_chat(src, span_warning("Another soul was chosen."))
-		returntolobby()
+		var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as a Death Knight?", null, null, null, 100, src, POLL_IGNORE_NECROMANCER_SKELETON)
+		if(LAZYLEN(candidates))
+			var/mob/dead/observer/candidat = pick(candidates)
+			var/mob/living/carbon/human/new_knight = new /mob/living/carbon/human()
+			new_knight.forceMove(usr)
+			new_knight.ckey = candidat.ckey
+			new_knight.equipOutfit(/datum/job/roguetown/deathknight)
+			new_knight.regenerate_icons()
 
 // DEATH KNIGHT ANTAG
 /datum/antagonist/skeleton/knight
@@ -838,6 +846,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/antagonist/skeleton/knight/on_gain()
 	. = ..()
+	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(owner.current,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(owner.current)
+	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
 	owner.unknow_all_people()
 	for(var/datum/mind/MF in get_minds())

@@ -1,9 +1,9 @@
-/*/datum/round_event_control/rogue/skellyinvade
+/datum/round_event_control/rogue/skellyinvade
 	name = "Skelelon Invasion"
 	typepath = /datum/round_event/rogue/skellyinvade
 	weight = 10
 	max_occurrences = 999
-	min_players = 0
+	min_players = 25
 	req_omen = TRUE
 	todreq = list("night")
 
@@ -18,8 +18,8 @@
 
 /datum/round_event/rogue/skellyinvade/setup()
 	announceWhen = rand(announceWhen, announceWhen + 50)
-//	var/maxi = max(GLOB.badomens.len, 1)
-//	spawncount = 3 + maxi
+	var/maxi = max(GLOB.badomens.len, 1)
+	spawncount = 3 + maxi
 
 /datum/round_event/rogue/skellyinvade/start()
 	var/list/spawn_locs = GLOB.hauntstart.Copy()
@@ -31,4 +31,4 @@
 				if(isfloorturf(_T))
 					new /mob/living/carbon/human/species/skeleton/npc(_T)
 
-	return*/
+	return

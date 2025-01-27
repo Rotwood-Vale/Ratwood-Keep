@@ -191,12 +191,12 @@
 		if(LAZYLEN(candidates))
 			var/mob/C = pick(candidates)
 			target.turn_to_minion(user, C.ckey)
-			target.visible_message(span_warning("[target.real_name]'s eyes light up with an eerie glow."), runechat_message = TRUE)
+			target.visible_message(span_warning("[target.real_name]'s eyes light up with an STRONG glow."), runechat_message = TRUE)
 
 		//no candidates, raise as npc
 		else
 			target.turn_to_minion(user)
-			target.visible_message(span_warning("[target.real_name]'s eyes light up with a weak glow."), runechat_message = TRUE)
+			target.visible_message(span_warning("[target.real_name]'s eyes light up with a WEAK glow."), runechat_message = TRUE)
 
 		return TRUE
 
