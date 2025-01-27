@@ -1262,7 +1262,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 			BPG?.add_wound(/datum/wound/artery)
 			sleep(10)
 			BPN?.add_wound(/datum/wound/dislocation/neck)
-			BPR?.add_wound(/datum/wound/artery)
+			BPRL?.add_wound(/datum/wound/artery)
 			sleep(10)
 			BPLL?.add_wound(/datum/wound/artery)
 			BPC?.add_wound(/datum/wound/fracture/chest)
