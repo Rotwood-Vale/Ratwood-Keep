@@ -89,7 +89,8 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/tower
-			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 			shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -112,28 +113,40 @@
 			switch(H.patron?.type)
 				if(/datum/patron/old_god)
 					cloak = /obj/item/clothing/cloak/templar/psydon
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
 				if(/datum/patron/divine/astrata)
 					cloak = /obj/item/clothing/cloak/templar/astrata
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/astratan
 				if(/datum/patron/divine/noc)
 					cloak = /obj/item/clothing/cloak/templar/noc
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 				if(/datum/patron/divine/abyssor)
 					cloak = /obj/item/clothing/cloak/templar/abyssor
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 				if(/datum/patron/divine/dendor)
 					cloak = /obj/item/clothing/cloak/templar/dendor
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
 				if(/datum/patron/divine/necra)
 					cloak = /obj/item/clothing/cloak/templar/necra
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
 				if (/datum/patron/divine/malum)
 					cloak = /obj/item/clothing/cloak/templar/malum
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/malum
 				if (/datum/patron/divine/eora)
 					cloak = /obj/item/clothing/cloak/templar/eora
+					head = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
 				if (/datum/patron/divine/ravox)
 					cloak = /obj/item/clothing/cloak/templar/ravox
+					/obj/item/clothing/head/roguetown/helmet/heavy/bucket
 				if (/datum/patron/divine/xylix)
 					cloak = /obj/item/clothing/cloak/templar/xylix
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 				if (/datum/patron/divine/pestra)
 					cloak = /obj/item/clothing/cloak/templar/pestra
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 				else
 					cloak = /obj/item/clothing/cloak/cape/crusader
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 			H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_templar(H)

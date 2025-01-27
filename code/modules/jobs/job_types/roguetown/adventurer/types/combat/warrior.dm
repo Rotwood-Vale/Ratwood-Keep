@@ -18,7 +18,6 @@
 	H.adjust_blindness(-3)
 	var/classes = list("Battlemaster","Duelist","Barbarian","Monster Hunter")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
-	backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 
 	switch(classchoice)
 
@@ -37,13 +36,12 @@
 			H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 			H.set_blindness(0)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-			var/weapons = list("Greatsword","Mace","Billhook","Battle Axe")
+			var/weapons = list("Bastard Sword","Mace","Billhook","Battle Axe")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
-				if("Greatsword")
+				if("Bastard Sword")
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-					r_hand = /obj/item/rogueweapon/greatsword/zwei
-					backr = /obj/item/gwstrap
+					backr = /obj/item/rogueweapon/sword/long
 				if("Mace")
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 					beltr = /obj/item/rogueweapon/mace
@@ -66,6 +64,7 @@
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 			gloves = /obj/item/clothing/gloves/roguetown/chain/iron
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1)
 
 		if("Duelist")
 			to_chat(H, span_warning("You are an esteemed swordsman who foregoes armor in exchange for a more nimble fighting style."))
@@ -107,6 +106,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/buckler
 			belt = /obj/item/storage/belt/rogue/leather
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 
 		if("Barbarian")
 			to_chat(H, span_warning("You are a brutal warrior who foregoes armor in order to showcase your raw strength. You specialize in unarmed combat and wrestling."))
@@ -147,7 +147,8 @@
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather
-				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+				neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+				beltl = /obj/item/rogueweapon/huntingknife
 			if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/bikini
@@ -157,7 +158,9 @@
 				gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather
-				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+				neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+				beltl = /obj/item/rogueweapon/huntingknife
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 
 		if("Monster Hunter")
 			to_chat(H, span_warning("You specialize in hunting down monsters and the undead, carrying two blades - one of silver, one of steel."))
@@ -178,7 +181,7 @@
 			H.change_stat("intelligence", 1)
 			backl = /obj/item/rogueweapon/sword/silver
 			backr = /obj/item/rogueweapon/sword
-			neck = /obj/item/clothing/neck/roguetown/psicross/silver
+			wrists = /obj/item/clothing/neck/roguetown/psicross/silver
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 			belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/steel
 			shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -188,3 +191,5 @@
 			head = /obj/item/clothing/head/roguetown/bucklehat
 			gloves = /obj/item/clothing/gloves/roguetown/otavan
 			beltl = /obj/item/reagent_containers/glass/bottle/rogue/stampot
+			beltr = /obj/item/rogueweapon/huntingknife
+			r_hand = /obj/item/flashlight/flare/torch
