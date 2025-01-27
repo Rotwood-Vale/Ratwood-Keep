@@ -182,20 +182,19 @@
 			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 1)
 			H.change_stat("intelligence", 1)
-			backl = /obj/item/rogueweapon/sword/silver
+			beltr = /obj/item/rogueweapon/sword/silver
 			backr = /obj/item/rogueweapon/sword
+			backl = /obj/item/storage/backpack/rogue/satchel/black
 			wrists = /obj/item/clothing/neck/roguetown/psicross/silver
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 			belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/steel
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			cloak = /obj/item/clothing/cloak/cape/puritan
-			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-			head = /obj/item/clothing/head/roguetown/bucklehat
-			gloves = /obj/item/clothing/gloves/roguetown/otavan
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			beltr = /obj/item/rogueweapon/huntingknife
-			r_hand = /obj/item/flashlight/flare/torch
+			head = /obj/item/clothing/head/roguetown/bucklehat
+			gloves = /obj/item/clothing/gloves/roguetown/angle
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1)
 			beltl = pick(/obj/item/reagent_containers/glass/alchemical/strpot, 
 						/obj/item/reagent_containers/glass/alchemical/conpot, 
 						/obj/item/reagent_containers/glass/alchemical/endpot,
