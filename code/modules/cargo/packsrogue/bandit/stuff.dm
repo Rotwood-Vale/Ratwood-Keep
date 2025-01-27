@@ -43,6 +43,11 @@
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/random)
 
+/datum/supply_pack/rogue/bandit/Stuff/light_gambeson
+	name = "Light Gambeson"
+	cost = 30
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
+
 /datum/supply_pack/rogue/bandit/Stuff/tights
 	name = "Tights"
 	cost = 20

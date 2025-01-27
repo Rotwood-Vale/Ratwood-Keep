@@ -1484,7 +1484,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		vampire.heal_overall_damage(bloodroll, bloodroll)
 		vampire.adjustToxLoss(-bloodroll * 10) // Purges toxins.
 		vampire.adjustOxyLoss(-bloodroll)
-		vampire.adjustOrganLoss(-bloodroll)
 		vampire.heal_wounds(bloodroll * 20)
 		vampire.blood_volume += BLOOD_VOLUME_SURVIVE
 		vampire.update_damage_overlays()
