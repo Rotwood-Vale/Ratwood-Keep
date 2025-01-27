@@ -2087,7 +2087,6 @@
 #include "modular_redmoon\code\modules\client\customizer\organs\genitals.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\neck.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\robes.dm"
-#include "modular_redmoon\code\modules\mob\living\living_movement.dm"
 #include "modular_redmoon\code\modules\roguetown\roguejobs\artifcier\artifcier_recipes.dm"
 #include "modular_redmoon\code\modules\spells\roguetown\acolyte\ravox.dm"
 #include "modular_redmoon\code\modules\spells\roguetown\acolyte\xylix.dm"
