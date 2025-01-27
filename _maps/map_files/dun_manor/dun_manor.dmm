@@ -1883,7 +1883,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "bwO" = (
-/turf/closed/wall/mineral/rogue/stone/moss,
+/turf/closed/wall/mineral/rogue/decowood/vert,
 /area/rogue/outdoors/town)
 "bxf" = (
 /obj/structure/bars/passage/shutter{
@@ -5762,7 +5762,8 @@
 /turf/open/floor/rogue/hay,
 /area/rogue/indoors/town)
 "eJl" = (
-/turf/closed/wall/mineral/rogue/stone,
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
 "eJE" = (
 /obj/effect/decal/cobbleedge{
@@ -8375,8 +8376,9 @@
 /turf/open/floor/carpet/red,
 /area/rogue/under/town/sewer)
 "gVO" = (
-/obj/structure/roguemachine/atm{
-	mammonsiphoned = 250
+/obj/structure/roguemachine/stockpile{
+	pixel_y = 0;
+	pixel_x = -32
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
@@ -10724,10 +10726,6 @@
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
-"iYW" = (
-/obj/structure/roguemachine/stockpile,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/town)
 "iYY" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
@@ -24665,7 +24663,10 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/shop)
 "ukV" = (
-/obj/structure/fluff/walldeco/wantedposter,
+/obj/structure/roguemachine/atm{
+	pixel_x = -32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
 "ukZ" = (
@@ -55461,12 +55462,12 @@ dPz
 klC
 klC
 klC
-klC
+vvd
 klC
 ebi
 cxb
 ndg
-xAg
+qsB
 klC
 ymg
 cHT
@@ -55566,7 +55567,7 @@ jIk
 wDa
 jIk
 jIk
-oYo
+ebi
 cxb
 krt
 xAg
@@ -55592,9 +55593,9 @@ xAg
 vTS
 cxb
 cxb
-vTS
-scv
-xAg
+cxb
+cxb
+cxb
 krt
 tNG
 tNG
@@ -55611,7 +55612,7 @@ tNG
 tNG
 tNG
 klC
-klC
+vvd
 klC
 klC
 klC
@@ -55723,7 +55724,7 @@ wDa
 omo
 jIk
 jIk
-jIk
+cxb
 cxb
 waT
 mbj
@@ -55734,7 +55735,7 @@ mbj
 fTZ
 mbj
 waT
-cxb
+dex
 xAg
 waT
 mbj
@@ -55749,9 +55750,9 @@ mbj
 mbj
 waT
 xAg
-pJn
-pJn
-pJn
+kPr
+bwO
+kPr
 cxb
 cxb
 tNG
@@ -55880,7 +55881,7 @@ oYo
 omo
 jIk
 jIk
-jIk
+cxb
 cxb
 mbj
 sdg
@@ -55906,9 +55907,9 @@ pRZ
 sEp
 mbj
 pJn
-pJn
-pJn
-pJn
+gVO
+eJl
+ukV
 pJn
 krt
 cxb
@@ -56037,7 +56038,7 @@ wDa
 jIk
 jIk
 jIk
-pHC
+lxv
 cxb
 mbj
 tKw
@@ -56067,7 +56068,7 @@ pJn
 pJn
 pJn
 pJn
-cxb
+dex
 klC
 mbj
 nmp
@@ -56194,7 +56195,7 @@ wDa
 jIk
 jIk
 jIk
-jIk
+cxb
 cxb
 waT
 mbj
@@ -56219,7 +56220,7 @@ thW
 rjf
 rjf
 mbj
-pJn
+cZW
 pJn
 pJn
 pJn
@@ -56251,7 +56252,7 @@ qAf
 gAE
 mec
 dZI
-klC
+vvd
 klC
 ymg
 ymg
@@ -56351,7 +56352,7 @@ wDa
 jIM
 jIk
 jIk
-jIk
+cxb
 cxb
 krt
 kUK
@@ -56507,10 +56508,10 @@ qal
 wDa
 jIk
 jIk
-jIk
+nPK
 pJn
-bwO
-ukV
+pJn
+pJn
 pJn
 bOa
 xAg
@@ -56666,8 +56667,8 @@ fsP
 fsP
 pJn
 pJn
-eJl
-cZW
+pJn
+pJn
 pJn
 pJn
 krt
@@ -56688,7 +56689,7 @@ pJn
 pJn
 cxb
 cxb
-klC
+vvd
 cxb
 pJn
 pJn
@@ -56696,7 +56697,7 @@ pJn
 pJn
 pJn
 cxb
-cxb
+dex
 xAg
 scv
 vTS
@@ -57137,8 +57138,8 @@ ylN
 ylN
 pJn
 pJn
-eJl
-iYW
+pJn
+pJn
 pJn
 pJn
 cxb
@@ -57292,10 +57293,10 @@ ylN
 ylN
 ylN
 fsP
-jIk
+nPK
 pJn
-eJl
-gVO
+pJn
+pJn
 pJn
 bOa
 krt
@@ -57447,10 +57448,10 @@ ylN
 ylN
 ylN
 ylN
-nPK
+fsP
 fsP
 jIk
-jIk
+cxb
 cxb
 krt
 xAg
@@ -57597,7 +57598,7 @@ dPz
 wDa
 wDa
 fsP
-nPK
+fsP
 ylN
 ylN
 ylN
@@ -57607,11 +57608,11 @@ fsP
 fsP
 wDa
 jIk
-jIk
 oRI
 tVC
 tVC
 dtx
+cxb
 cxb
 fTZ
 rwd
@@ -57764,11 +57765,11 @@ wDa
 wDa
 jIk
 jIM
-jIk
 oRI
 sjI
 iiP
 dtx
+cxb
 cxb
 fTZ
 gJi
@@ -57914,18 +57915,18 @@ ylN
 ylN
 ylN
 ylN
+nPK
 fsP
-fsP
 wDa
 wDa
 wDa
-jIk
 jIk
 jIk
 oRI
 tVC
 tVC
 dtx
+cxb
 cxb
 fTZ
 oUq
@@ -58078,7 +58079,7 @@ oYo
 jIk
 jIk
 omo
-jIk
+cxb
 cxb
 cxb
 cxb
@@ -58108,7 +58109,7 @@ pJn
 pJn
 pJn
 vTS
-cxb
+dex
 cxb
 orK
 krt
@@ -58235,7 +58236,7 @@ omo
 jIk
 jIk
 fsP
-fsP
+gog
 gog
 gog
 gog
@@ -58431,7 +58432,7 @@ klC
 klC
 klC
 xAg
-xAg
+qsB
 klC
 klC
 vvd
@@ -58557,12 +58558,12 @@ gog
 cxb
 cxb
 xAg
-xAg
+qsB
 xAg
 xAg
 xAg
 cxb
-cxb
+dex
 xAg
 xAg
 xAg
