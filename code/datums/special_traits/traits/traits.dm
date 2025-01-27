@@ -746,7 +746,7 @@
 
 /datum/special_trait/thinker
 	name = "The Thinker"
-	greet_text = "Physique, Endurance, Constitution. The trinity of what builds a great leader and an even greater kingdom... or whatever those nimrods were yapping about! <b>I cast FIREBALL!!!</b>"
+	greet_text = span_notice("Physique, Endurance, Constitution. The trinity of what builds a great leader and an even greater kingdom... or whatever those nimrods were yapping about! <b>I cast FIREBALL!!!</b>")
 	req_text = "Ruler, worship Noc"
 	allowed_sexes = list(MALE)
 	allowed_patrons = list(/datum/patron/divine/noc)
