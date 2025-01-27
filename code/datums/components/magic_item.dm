@@ -17,6 +17,17 @@
 
 
 /datum/component/magic_item/proc/add_enchantment(var/datum/magic_item/magical_item_effect)
+	if(islist(magical_item_effect))
+		for(var/datum/magic_item/effect in magical_item_effect)
+			if(!istype(effect, /datum/magic_item))
+				continue
+			if(effect in magical_effects)
+				continue
+			add_single_enchantment(effect)
+	else
+		add_single_enchantment(magical_item_effect)
+
+/datum/component/magic_item/proc/add_single_enchantment(var/datum/magic_item/magical_item_effect)
 	if(magical_item_effect in magical_effects)
 		return
 	magical_effects.Add(magical_item_effect)

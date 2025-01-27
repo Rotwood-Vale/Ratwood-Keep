@@ -1124,52 +1124,19 @@
 	new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
 	return TRUE
 
-
-/obj/effect/proc_holder/spell/invoked/frostbite5e
-	name = "Frostbite"
-	desc = "Freeze your enemy with an icy blast that does low damage, but reduces the target's Speed for a considerable length of time."
-	overlay_state = "null"
-	releasedrain = 50
-	chargetime = 3
-	charge_max = 25 SECONDS
-	//chargetime = 10
-	//charge_max = 30 SECONDS
-	range = 7
-	warnie = "spellwarning"
-	movement_interrupt = FALSE
-	no_early_release = FALSE
-	chargedloop = null
-	sound = 'sound/magic/whiteflame.ogg'
-	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
-	cost = 1
-
-	xp_gain = TRUE
-	miracle = FALSE
-
-	invocation = ""
-	invocation_type = "shout" //can be none, whisper, emote and shout
-
-/obj/effect/proc_holder/spell/invoked/frostbite5e/cast(list/targets, mob/living/user)
-	if(isliving(targets[1]))
-		var/mob/living/carbon/target = targets[1]
-		target.apply_status_effect(/datum/status_effect/buff/frostbite5e/) //apply debuff
-		target.adjustFireLoss(12) //damage
-		target.adjustBruteLoss(12)
-
-/datum/status_effect/buff/frostbite5e
+/datum/status_effect/buff/frostbite
 	id = "frostbite"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite5e
+	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite
 	duration = 20 SECONDS
 	effectedstats = list("speed" = -2)
 
-/atom/movable/screen/alert/status_effect/buff/frostbite5e
+/atom/movable/screen/alert/status_effect/buff/frostbite
 	name = "Frostbite"
 	desc = "I can feel myself slowing down."
 	icon_state = "debuff"
-	color = "#00fffb" //talk about a coder sprite
+	color = "#00fffb"
 
-/datum/status_effect/buff/frostbite5e/on_apply()
+/datum/status_effect/buff/frostbite/on_apply()
 	. = ..()
 	var/mob/living/target = owner
 	target.update_vision_cone()
@@ -1178,7 +1145,7 @@
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 20 SECONDS)
 	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
 
-/datum/status_effect/buff/frostbite5e/on_remove()
+/datum/status_effect/buff/frostbite/on_remove()
 	var/mob/living/target = owner
 	target.update_vision_cone()
 	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
@@ -1218,7 +1185,7 @@
 /obj/projectile/magic/frostbolt
 	name = "Frost Dart"
 	icon_state = "ice_2"
-	damage = 25
+	damage = 20
 	damage_type = BURN
 	flag = "magic"
 	range = 10
@@ -1236,7 +1203,7 @@
 			return BULLET_ACT_BLOCK
 		if(isliving(target))
 			var/mob/living/L = target
-			L.apply_status_effect(/datum/status_effect/buff/frostbite5e)
+			L.apply_status_effect(/datum/status_effect/buff/frostbite)
 			new /obj/effect/temp_visual/snap_freeze(get_turf(L))
 	qdel(src)
 
@@ -1263,7 +1230,7 @@
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	include_user = FALSE
 
-	var/delay = 3 SECONDS
+	var/delay = 5 SECONDS
 	var/sprite_changes = 10
 	var/datum/beam/current_beam = null
 
@@ -1274,15 +1241,13 @@
 
 		var/x
 		for(x=1; x < sprite_changes; x++)
-			current_beam = new(user,C,time=30/sprite_changes,beam_icon_state="lightning[rand(1,12)]",btype=/obj/effect/ebeam, maxdistance=10)
+			current_beam = new(user,C,time=50/sprite_changes,beam_icon_state="lightning[rand(1,12)]",btype=/obj/effect/ebeam, maxdistance=10)
 			INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
 			sleep(delay/sprite_changes)
 
 		var/dist = get_dist(user, C)
 		if (dist <= range)
 			C.electrocute_act(1, user) //just shock
-			//var/atom/throw_target = get_step(user, get_dir(user, C))
-			//C.throw_at(throw_target, 100, 2) //from source material but kinda op.
 		else
 			playsound(user, 'sound/items/stunmace_toggle (3).ogg', 100)
 			user.visible_message(span_warning("The lightning lure fizzles out!"), span_warning("[C] is too far away!"))
@@ -1302,7 +1267,7 @@
 	chargedloop = null
 	sound = 'sound/magic/whiteflame.ogg'
 	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	associated_skill = /datum/skill/magic/arcane
 	cost = 1
 
 	xp_gain = TRUE
@@ -1344,7 +1309,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "hierophant"
-	range = 4
+	range = 3
 	var/damage = 10
 
 /obj/effect/proc_holder/spell/invoked/arcyne_storm/cast(list/targets, mob/user = usr)
@@ -1366,21 +1331,6 @@
 			playsound(damage_turf, "genslash", 40, TRUE)
 			to_chat(L, "<span class='userdanger'>I'm cut by arcyne force!</span>")
 
-/obj/effect/temp_visual/trapice
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "blueshatter"
-	light_color = "#4cadee"
-	duration = 6
-	layer = MASSIVE_OBJ_LAYER
-
-/obj/effect/temp_visual/snap_freeze
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "shieldsparkles"
-	name = "rippeling arcyne ice"
-	desc = "Get out of the way!"
-	randomdir = FALSE
-	duration = 1 SECONDS
-	layer = MASSIVE_OBJ_LAYER
 
 /obj/effect/temp_visual/hierophant
 	name = "vortex energy"
@@ -1456,7 +1406,7 @@
 	light_range = 2
 	duration = 9
 	var/exp_heavy = 0
-	var/exp_light = 3
+	var/exp_light = 2
 	var/exp_flash = 0
 	var/exp_fire = 3
 	var/exp_hotspot = 0
@@ -1485,6 +1435,181 @@
 		else
 			L.adjustFireLoss(10) //if we've already hit them, do way less damage
 	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, hotspot_range = exp_hotspot, soundin = explode_sound)
+
+/obj/effect/proc_holder/spell/targeted/summonweapon
+	name = "summon weapon"
+	desc = "summon an imbued weapon."
+	clothes_req = FALSE
+	school = "transmutation"
+	range = -1
+	include_user = TRUE
+	cooldown_min = 100
+	charge_max = 2 MINUTES
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	action_icon_state = "summons"
+	invocation = "Zar’kalthra ven’thelis!"
+	invocation_type = "Whisper"
+	cost = 2
+	var/obj/marked_item
+
+
+obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = usr)
+	for(var/mob/living/L in targets)
+		var/list/hand_items = list(L.get_active_held_item(),L.get_inactive_held_item())
+		var/message
+		if(!marked_item) //linking item to the spell
+			message = "<span class='notice'>"
+			message_admins("message")
+			for(var/obj/item/rogueweapon/item in hand_items)
+				if(item.item_flags & ABSTRACT)
+					continue
+				if(SEND_SIGNAL(item, COMSIG_ITEM_MARK_RETRIEVAL) & COMPONENT_BLOCK_MARK_RETRIEVAL)
+					continue
+				if(HAS_TRAIT(item, TRAIT_NODROP))
+					message += "Though it feels redundant, "
+				marked_item = 		item
+				message += "You imbue [item] for summoning.</span>"
+				name = "Summon [item]"
+				message_admins("message")
+				break
+
+			if(!marked_item)
+				if(hand_items)
+					message = span_warning("I aren't holding anything that can be imbued to summon!")
+				else
+					message = span_warning("I must hold the desired weapon in my hands to imbue it for summoning!")
+
+		else if(marked_item && marked_item in hand_items) //unlinking item to the spell
+			message = span_notice("I remove the imbuement on [marked_item] to use elsewhere.")
+			name = "Instant Summons"
+			marked_item = 		null
+			message_admins("[marked_item]")
+
+		else if(marked_item && QDELETED(marked_item)) //the item was destroyed at some point
+			message = span_warning("I sense my imbued weapon has been destroyed!")
+			name = "summon weapon"
+			marked_item = 		null
+
+		else	//Getting previously marked item
+			var/obj/item/rogueweapon/item_to_retrieve = marked_item
+			var/infinite_recursion = 0 //I don't want to know how someone could put something inside itself but these are wizards so let's be safe
+			while(!isturf(item_to_retrieve.loc) && infinite_recursion < 10) //if it's in something you get the whole thing.
+				if(isitem(item_to_retrieve.loc))
+					var/obj/item/I = item_to_retrieve.loc
+					if(I.item_flags & ABSTRACT) //Being able to summon abstract things because your item happened to get placed there is a no-no
+						break
+				if(ismob(item_to_retrieve.loc)) //If its on someone, properly drop it
+					var/mob/M = item_to_retrieve.loc
+					M.dropItemToGround(item_to_retrieve)
+					if(iscarbon(M)) //Edge case housekeeping
+						var/mob/living/carbon/C = M
+						for(var/X in C.bodyparts)
+							var/obj/item/bodypart/part = X
+							if(item_to_retrieve in part.embedded_objects)
+								part.remove_embedded_object(item_to_retrieve)
+								to_chat(C, span_warning("The [item_to_retrieve] that was embedded in your [L] has mysteriously vanished. How fortunate!"))
+								break
+					item_to_retrieve = item_to_retrieve.loc
+
+				infinite_recursion += 1
+
+			if(!item_to_retrieve)
+				return
+
+			if(item_to_retrieve.loc)
+				item_to_retrieve.loc.visible_message(span_warning("The [item_to_retrieve.name] suddenly disappears!"))
+			if(!L.put_in_hands(item_to_retrieve))
+				item_to_retrieve.forceMove(L.drop_location())
+				item_to_retrieve.loc.visible_message(span_warning("The [item_to_retrieve.name] suddenly appears!"))
+				playsound(get_turf(L), 'sound/blank.ogg', 50, TRUE)
+			else
+				item_to_retrieve.loc.visible_message(span_warning("The [item_to_retrieve.name] suddenly appears in [L]'s hand!"))
+				playsound(get_turf(L), 'sound/blank.ogg', 50, TRUE)
+
+
+		if(message)
+			to_chat(L, message)
+
+
+/obj/effect/proc_holder/spell/invoked/sundering_lightning
+	name = "Sundering Lightning"
+	desc = "Summons forth dangerous rapid lightning strikes."
+	cost = 8
+	releasedrain = 50
+	chargedrain = 1
+	chargetime = 50
+	charge_max = 50 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = TRUE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	range = 4
+
+/obj/effect/proc_holder/spell/invoked/sundering_lightning/cast(list/targets, mob/user = usr)
+	var/turf/T = get_turf(targets[1])
+//	var/list/affected_turfs = list()
+	playsound(T,'sound/weather/rain/thunder_1.ogg', 80, TRUE)
+	T.visible_message(span_boldwarning("The air feels crackling and charged!"))
+	sleep(30)
+	create_lightning(T)
+
+//meteor storm and lightstorm.
+/obj/effect/proc_holder/spell/invoked/sundering_lightning/proc/create_lightning(atom/target)
+	if(!target)
+		return
+	var/turf/targetturf = get_turf(target)
+	var/last_dist = 0
+	for(var/t in spiral_range_turfs(range, targetturf))
+		var/turf/T = t
+		if(!T)
+			continue
+		var/dist = get_dist(targetturf, T)
+		if(dist > last_dist)
+			last_dist = dist
+			sleep(2 + min(range - last_dist, 12) * 0.5) //gets faste
+		new /obj/effect/temp_visual/targetlightning(T)
+
+
+/obj/effect/temp_visual/lightning
+	icon = 'icons/effects/32x96.dmi'
+	icon_state = "lightning"
+	name = "lightningbolt"
+	desc = "ZAPP!!"
+	layer = FLY_LAYER
+	plane = GAME_PLANE_UPPER
+	randomdir = FALSE
+	duration = 7
+
+/obj/effect/temp_visual/lightning/Initialize(mapload)
+	. = ..()
+
+/obj/effect/temp_visual/targetlightning
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "trap"
+	layer = BELOW_MOB_LAYER
+	plane = GAME_PLANE
+	light_range = 2
+	duration =15
+	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
+
+/obj/effect/temp_visual/targetlightning/Initialize(mapload, list/flame_hit)
+	. = ..()
+	INVOKE_ASYNC(src, PROC_REF(storm), flame_hit)
+
+/obj/effect/temp_visual/targetlightning/proc/storm(list/flame_hit)	//electroshocktherapy
+	var/turf/T = get_turf(src)
+	sleep(duration)
+	playsound(T,'sound/magic/lightning.ogg', 80, TRUE)
+	new /obj/effect/temp_visual/lightning(T)
+
+	for(var/mob/living/L in T.contents)
+		L.electrocute_act(50)
+		to_chat(L, span_userdanger("You're hit by lightning!!!"))
+
+
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK
 #undef PRESTI_MOTE

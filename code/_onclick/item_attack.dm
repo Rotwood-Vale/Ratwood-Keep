@@ -18,16 +18,12 @@
 		if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS))
 			to_chat(user, span_warning("...What?"))
 			return
-	to_chat(user,span_notice("Debug: is not grab"))
 	if(tool_behaviour && target.tool_act(user, src, tool_behaviour))
 		return
-	to_chat(user,span_notice("Debug: toolbehavior"))
 	if(pre_attack(target, user, params))
 		return
-	to_chat(user, span_notice("Debug: Preattack"))
 	if(target.attackby(src,user, params))
 		return
-	to_chat(user, span_notice("Debug: attackby"))
 	if(QDELETED(src) || QDELETED(target))
 		attack_qdeleted(target, user, TRUE, params)
 		return
@@ -69,6 +65,15 @@
 		adf = round(adf * 1.4)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
 		adf = round(adf * 0.6)
+	for(var/obj/item/clothing/worn_thing in get_equipped_items(include_pockets = TRUE))//checks clothing worn by src.
+	// Things that are supposed to be worn, being held = cannot block
+		if(isclothing(worn_thing))
+			if(worn_thing in held_items)
+				continue
+		// Things that are supposed to be held, being worn = cannot block
+		else if(!(worn_thing in held_items))
+			continue
+		worn_thing.hit_response(src, user) //checks if clothing has hit response. Refer to Items.dm
 	user.changeNext_move(adf)
 	return I.attack(src, user)
 

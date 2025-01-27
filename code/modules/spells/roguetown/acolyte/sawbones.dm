@@ -16,7 +16,7 @@ On another note, have some funny coder-bickering commentary below.
 //// also I hate all of you. numberfuck this to death because you are too fucking stupid to code something from scratch.
 
 // Fuck you Mori, you're a dickhead that self inserts your OCs and cries when people complain about balance, and rightfully so.
-// You could have had your fuckin' self inserts and your shitcode, all you had to do was not act like a cunt, not throw a bitchfit. 
+// You could have had your fuckin' self inserts and your shitcode, all you had to do was not act like a cunt, not throw a bitchfit.
 // You wonder why everyone ended up hating you, read your above comments and get it through your fucking head. -- AnalWerewolf
 - - -
 
@@ -34,6 +34,19 @@ Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAA
 /obj/effect/proc_holder/spell/targeted/docheal  /////// miricle on 3x cooldown from normal
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "Rapid Treatment"
+	overlay_state = "doc"
+	range = 1
+	include_user = TRUE
+	sound = 'sound/gore/flesh_eat_03.ogg'
+	associated_skill = /datum/skill/misc/treatment
+	antimagic_allowed = TRUE
+	charge_max = 60 SECONDS
+	miracle = FALSE
+	devotion_cost = 0
+
+/obj/effect/proc_holder/spell/targeted/docheallsser  /////// lesser miricle, granted by enchanted rings
+	action_icon = 'icons/mob/actions/roguespells.dmi'
+	name = "Close Wounds"
 	overlay_state = "doc"
 	range = 1
 	include_user = TRUE
@@ -233,6 +246,29 @@ Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAA
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
 	return FALSE
+
+/obj/effect/proc_holder/spell/targeted/docheallsser/cast(list/targets, mob/living/user)
+	. = ..()
+	if(iscarbon(targets[1]))
+		var/mob/living/carbon/target = targets[1]
+		target.visible_message(span_green("[user] tends to [target]'s wounds."), span_notice("I feel better already."))
+		if(iscarbon(target))
+			var/mob/living/carbon/C = target
+			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
+			if(affecting)
+				if(affecting.heal_damage(25, 25))
+					C.update_damage_overlays()
+				if(affecting.heal_wounds(25))
+					C.update_damage_overlays()
+		else
+			target.adjustBruteLoss(-25)
+			target.adjustFireLoss(-25)
+		target.adjustToxLoss(-25)
+		target.adjustOxyLoss(-25)
+		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
+		return TRUE
+	return FALSE
+
 
 /obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
 	. = ..()
@@ -1173,7 +1209,7 @@ Another thing. WHY IS THIS A SET OF SPELLS WHEN WE HAVE A SURGICAL SYSTEM? RAAAA
 	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
-	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15) 
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15)
 	dissolvable = FALSE
 	grind_results = null
 
