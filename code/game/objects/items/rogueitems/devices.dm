@@ -43,7 +43,7 @@
 	desc = "Glints with verdant brilliance."
 	usage_prompt = "Summon PURITY"
 
-/obj/item/gem_device/goldface/on_use(mob/living/user)
+/obj/item/gem_device/purity/on_use(mob/living/user)
 	var/turf/step_turf = get_step(get_turf(user), user.dir)
 	do_sparks(3, TRUE, step_turf)
 	new /obj/structure/roguemachine/drugmachine(step_turf)
