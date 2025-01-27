@@ -630,7 +630,7 @@
 	weight = 10
 
 /datum/special_trait/leper/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_CRITICAL_WEAKNESS, "[type]")
+	ADD_TRAIT(character, TRAIT_LEPROSY, "[type]")
 
 
 // Job Specials
