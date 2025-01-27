@@ -21,7 +21,7 @@
 			spdchange = -0.4
 		if(STASPD == 10)
 			spdchange = 0
-	else
+	else if((STASPD => 10))
 		if(STASPD == 11)
 			spdchange = 0.2
 		if(STASPD == 12)
@@ -42,6 +42,8 @@
 			spdchange = 1.8
 		if(STASPD == 20)
 			spdchange = 2
+	else
+		spdchange = 2
 	mod = mod+spdchange
 	//maximum speed is achieved at 15spd, everything else results in insanity
 	add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
