@@ -1262,9 +1262,9 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "aXz" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/grassred,
-/area/rogue/indoors/shelter/woods)
+/obj/machinery/light/rogue/torchholder/r,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "aXA" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/wood,
@@ -5530,12 +5530,15 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "ewA" = (
-/obj/structure/fermenting_barrel/water,
-/obj/item/reagent_containers/glass/bucket,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
+/obj/structure/fluff/walldeco/customflag{
+	pixel_y = 32
 	},
-/area/rogue/indoors/town)
+/obj/effect/decal/cobbleedge{
+	dir = 6
+	},
+/obj/machinery/light/rogue/torchholder/r,
+/turf/open/floor/rogue/wood,
+/area/rogue/outdoors/town/roofs)
 "ewK" = (
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern)
@@ -5578,6 +5581,7 @@
 /obj/effect/decal/cobbleedge{
 	dir = 10
 	},
+/obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/town/roofs)
 "eyU" = (
@@ -8788,9 +8792,6 @@
 /area/rogue/under/town/basement)
 "hpe" = (
 /obj/structure/roguemachine/scomm,
-/obj/effect/decal/cobbleedge{
-	dir = 10
-	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
 "hpn" = (
@@ -17011,9 +17012,12 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "nVg" = (
+/obj/effect/decal/cobbleedge{
+	dir = 5
+	},
 /obj/machinery/light/rogue/torchholder/r,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/town)
+/turf/open/floor/rogue/wood,
+/area/rogue/outdoors/town/roofs)
 "nVB" = (
 /obj/structure/rack/rogue,
 /obj/item/storage/belt/rogue/leather/knifebelt/iron,
@@ -18285,11 +18289,9 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/town/sewer)
 "oTs" = (
-/obj/effect/decal/cobbleedge{
-	dir = 9
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town)
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/grassred,
+/area/rogue/indoors/shelter/woods)
 "oTI" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
@@ -25927,10 +25929,11 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach)
 "vuQ" = (
-/obj/effect/decal/cobbleedge{
-	dir = 6
+/obj/structure/fermenting_barrel/water,
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
 	},
-/turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
 "vvd" = (
 /obj/structure/flora/roguegrass/herb/random,
@@ -26737,6 +26740,7 @@
 /obj/effect/decal/cobbleedge{
 	dir = 9
 	},
+/obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/town/roofs)
 "wkS" = (
@@ -56380,7 +56384,7 @@ cxb
 krt
 klC
 mbj
-ewA
+vuQ
 bPQ
 jzM
 bPQ
@@ -56402,7 +56406,7 @@ bxn
 bxn
 bxn
 qAf
-aXz
+oTs
 dOz
 kZe
 klC
@@ -57142,7 +57146,7 @@ krt
 pJn
 pJn
 pJn
-nVg
+aXz
 pJn
 pJn
 pJn
@@ -57491,7 +57495,7 @@ klC
 klC
 kZe
 dZI
-aXz
+oTs
 bxn
 bxn
 bxn
@@ -57501,7 +57505,7 @@ rDX
 bxn
 bxn
 qAf
-aXz
+oTs
 dOz
 kZe
 gog
@@ -83066,7 +83070,7 @@ waT
 hpe
 qGx
 qGx
-oTs
+qGx
 waT
 uTW
 uTW
@@ -83220,10 +83224,10 @@ rjf
 rjf
 rjf
 ddz
-rjf
 qGx
 qGx
-rjf
+qGx
+qGx
 ddz
 rjf
 rjf
@@ -83370,24 +83374,24 @@ lcT
 lcT
 lcT
 lcT
-ltm
+nVg
 fJa
 rjf
 rjf
 rjf
 rjf
 waT
-vuQ
 qGx
 qGx
-gqY
+qGx
+qGx
 waT
 rjf
 rjf
 rjf
 rjf
 fJa
-iVG
+ewA
 lcT
 lcT
 lcT
