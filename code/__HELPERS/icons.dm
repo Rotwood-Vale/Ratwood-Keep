@@ -730,6 +730,10 @@ world
 				} \
 				current_layer = base_layer + appearance.layer + current_layer / 1000; \
 			} \
+			/* If we are using topdown rendering, chop that part off so things layer together as expected */ \
+			if((current_layer >= TOPDOWN_LAYER && current_layer < EFFECTS_LAYER) || current_layer > TOPDOWN_LAYER + EFFECTS_LAYER) { \
+				current_layer -= TOPDOWN_LAYER; \
+			} \
 			for (var/index_to_compare_to in 1 to layers.len) { \
 				var/compare_to = layers[index_to_compare_to]; \
 				if (current_layer < layers[compare_to]) { \
@@ -741,9 +745,10 @@ world
 		}
 
 	var/static/icon/flat_template = icon('icons/blanks/32x32.dmi', "nothing")
+	var/icon/flat = icon(flat_template)
 
 	if(!appearance || appearance.alpha <= 0)
-		return icon(flat_template)
+		return flat
 
 	if(start)
 		if(!defdir)
@@ -773,21 +778,28 @@ world
 
 	//Try to remove/optimize this section ASAP, CPU hog.
 	//Determines if there's directionals.
-	if(render_icon && curdir != SOUTH)
-		if (
-			!length(icon_states(icon(curicon, curstate, NORTH))) \
-			&& !length(icon_states(icon(curicon, curstate, EAST))) \
-			&& !length(icon_states(icon(curicon, curstate, WEST))) \
-		)
-			base_icon_dir = SOUTH
+	if(render_icon)
+		//Try to remove/optimize this section if you can, it's a CPU hog.
+		//Determines if there're directionals.
+		if (curdir != SOUTH)
+			// icon states either have 1, 4 or 8 dirs. We only have to check
+			// one of NORTH, EAST or WEST to know that this isn't a 1-dir icon_state since they just have SOUTH.
+			if(!length(icon_states(icon(curicon, curstate, NORTH))))
+				base_icon_dir = SOUTH
 
+		var/list/icon_dimensions = get_icon_dimensions(curicon)
+		var/icon_width = icon_dimensions["width"]
+		var/icon_height = icon_dimensions["height"]
+		if((icon_width != 32 || icon_height != 32) && (icon_width != 0 && icon_height != 0))
+			flat.Scale(icon_width, icon_height)
+		if(icon_width == 0 && icon_height == 0)
+			flat.Scale(32, 32)
 	if(!base_icon_dir)
 		base_icon_dir = curdir
 
 	var/curblend = appearance.blend_mode || defblend
 
 	if(appearance.overlays.len || appearance.underlays.len)
-		var/icon/flat = icon(flat_template)
 		// Layers will be a sorted list of icons/overlays, based on the order in which they are displayed
 		var/list/layers = list()
 		var/image/copy

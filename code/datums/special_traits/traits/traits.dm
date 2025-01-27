@@ -361,7 +361,7 @@
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
 	character.add_stress(/datum/stressevent/psycurse)
-	character.devotion.excommunicate()
+	character.devotion?.excommunicate()
 
 /datum/special_trait/bounty
 	name = "Hunted Man"

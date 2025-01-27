@@ -18,6 +18,7 @@
 	/// Our charge gauge
 	var/charge = SEX_MAX_CHARGE
 	/// Whether we want to screw until finished, or non stop
+	var/arousal_frozen = FALSE
 	var/do_until_finished = TRUE
 	var/last_arousal_increase_time = 0
 	var/last_ejaculation_time = 0
@@ -323,7 +324,8 @@
 		arousal_amt = 0
 		pain_amt = 0
 
-	adjust_arousal(arousal_amt)
+	if(!arousal_frozen) 
+		adjust_arousal(arousal_amt)
 
 	damage_from_pain(pain_amt)
 	try_do_moan(arousal_amt, pain_amt, applied_force, giving)
@@ -491,6 +493,14 @@
 	if(usr?.client?.prefs?.be_russian)
 		dat += "<center>| <a href='?src=[REF(src)];task=toggle_finished'>[do_until_finished ? "ДО ТЕХ ПОР, ПОКА Я НЕ ОСТАНОВЛЮСЬ" : "ДО ТЕХ ПОР, ПОКА Я НЕ ОСТАНОВЛЮСЬ"]</a> |</center>"
 	else
+		dat += "<center>| <a href='?src=[REF(src)];task=toggle_finished'>[do_until_finished ? "UNTIL IM FINISHED" : "UNTIL I STOP"]</a> |</center>"
+	if(usr?.client?.prefs?.be_russian)
+		dat += "<center><a href='?src=[REF(src)];task=set_arousal'>SET AROUSAL</a> | <a href='?src=[REF(src)];task=freeze_arousal'>[arousal_frozen ? "НЕ СДЕРЖИВАТЬСЯ" : "СДЕРЖИВАТЬСЯ"]</a></center>"
+	else
+		dat += "<center><a href='?src=[REF(src)];task=set_arousal'>SET AROUSAL</a> | <a href='?src=[REF(src)];task=freeze_arousal'>[arousal_frozen ? "UNFREEZE AROUSAL" : "FREEZE AROUSAL"]</a></center>"
+	if(target == user)
+		dat += "<center>Doing unto yourself</center>"
+	else
 		dat += "<center>| <a href='?src=[REF(src)];task=toggle_finished'>[do_until_finished ? "UNTIL I STOP" : "UNTIL I STOP"]</a> |</center>"
 	if(target == user)
 		if(usr?.client?.prefs?.be_russian)
@@ -567,6 +577,11 @@
 			adjust_arousal_manual(-1)
 		if("toggle_finished")
 			do_until_finished = !do_until_finished
+		if("set_arousal")
+			var/amount = input(user, "Value above 120 will immediately cause orgasm!", "Set Arousal", arousal) as num
+			set_arousal(amount)
+		if("freeze_arousal")
+			arousal_frozen = !arousal_frozen
 	show_ui()
 
 /datum/sex_controller/proc/try_stop_current_action()

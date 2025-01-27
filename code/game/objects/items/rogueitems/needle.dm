@@ -69,6 +69,8 @@
 
 
 /obj/item/needle/attack_obj(obj/O, mob/living/user)
+	if(isnull(O))
+		return
 	var/obj/item/I = O
 	if(can_repair)
 		if(stringamt < 1)

@@ -86,7 +86,6 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	H.verbs |= /mob/living/carbon/human/proc/churchexcommunicate
 	H.verbs |= /mob/living/carbon/human/proc/churchannouncement
 	H.verbs |= /mob/living/carbon/human/proc/churchhereticsbrand
-	H.verbs |= /mob/living/carbon/human/proc/draw_sigil_divine
 
 
 /datum/outfit/job/roguetown/priest/post_equip(mob/living/carbon/human/H)
