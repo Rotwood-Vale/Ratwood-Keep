@@ -66,6 +66,7 @@
 			mask = /obj/item/clothing/mask/rogue/facemask/goldmask
 		if("Xylix")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar
+			cloak = /obj/item/clothing/cloak/tabard/crusader/xylix
 			wrists = /obj/item/clothing/neck/roguetown/psicross/xylix
 		if("Abyssor")
 			cloak = /obj/item/clothing/cloak/tabard/crusader/abyssor
