@@ -18,6 +18,7 @@
 	/// Our charge gauge
 	var/charge = SEX_MAX_CHARGE
 	/// Whether we want to screw until finished, or non stop
+	var/arousal_frozen = FALSE
 	var/do_until_finished = TRUE
 	var/last_arousal_increase_time = 0
 	var/last_ejaculation_time = 0
@@ -216,34 +217,8 @@
 	C.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
 	after_ejaculation()
 
-/datum/sex_controller/proc/calculate_milk()
-	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
-	var milk_amount
-
-	if(isseelie(user))
-		milk_amount = 1
-		if(vagina.pregnant)
-			milk_amount = milk_amount + 2 //If anyone is doing this... Shame on you
-	else
-		milk_amount = 6
-		if(vagina.pregnant)
-			milk_amount = milk_amount + 12 //I ran the numbers, a breastfeeding woman can produce a stick of butter with one session
-	return milk_amount = round(milk_amount * (((user.nutrition + user.hydration)/2)/500))
-
-/datum/sex_controller/proc/milk_container(obj/item/reagent_containers/glass/C)
-	var/obj/item/organ/breasts/breasts = user.getorganslot(ORGAN_SLOT_BREASTS)
-	var/milk_amount
-	log_combat(user, user, "Was milked into a container")
-	user.visible_message(span_lovebold("[user] lactates into [C]!"))
-	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
-	milk_amount = calculate_milk()
-	C.reagents.add_reagent(/datum/reagent/consumable/milk, milk_amount)
-	user.adjust_hydration(-(milk_amount * 20))
-	user.adjust_nutrition(-(milk_amount * 20))
-	breasts.last_milked = world.time
-	after_milking()
-
 /datum/sex_controller/proc/after_ejaculation()
+	user.add_stress(/datum/stressevent/cumok)
 	set_arousal(40)
 	adjust_charge(-CHARGE_FOR_CLIMAX)
 	user.emote("sexmoanhvy", forced = TRUE)
@@ -252,6 +227,8 @@
 	if(HAS_TRAIT(user, TRAIT_BAOTHA_CURSE))
 		user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
 	SSticker.cums++
+	cuckold_check()
+
 
 /datum/sex_controller/proc/after_milking()
 	set_arousal(80)
@@ -261,17 +238,21 @@
 
 /datum/sex_controller/proc/after_intimate_climax()
 	if(user == target)
+		if(HAS_TRAIT(target, TRAIT_GOODLOVER))
+			user.add_stress(/datum/stressevent/cumgood)
 		return
 	if(HAS_TRAIT(target, TRAIT_GOODLOVER))
 		if(!user.mob_timers["cumtri"])
 			user.mob_timers["cumtri"] = world.time
 			user.adjust_triumphs(1)
 			to_chat(user, span_love("Our loving is a true TRIUMPH!"))
+			user.add_stress(/datum/stressevent/cumgood)
 	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
 		if(!target.mob_timers["cumtri"])
 			target.mob_timers["cumtri"] = world.time
 			target.adjust_triumphs(1)
 			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
+			user.add_stress(/datum/stressevent/cumgood)
 
 /datum/sex_controller/proc/just_ejaculated()
 	return (last_ejaculation_time + 2 SECONDS >= world.time)
@@ -343,7 +324,8 @@
 		arousal_amt = 0
 		pain_amt = 0
 
-	adjust_arousal(arousal_amt)
+	if(!arousal_frozen) 
+		adjust_arousal(arousal_amt)
 
 	damage_from_pain(pain_amt)
 	try_do_moan(arousal_amt, pain_amt, applied_force, giving)
@@ -460,13 +442,6 @@
 		return FALSE
 	ejaculate_container(user.get_active_held_item())
 
-/datum/sex_controller/proc/handle_container_milk()
-	if(arousal < PASSIVE_EJAC_THRESHOLD)
-		return
-	if(is_spent())
-		return
-	milk_container(user.get_active_held_item())
-
 /datum/sex_controller/proc/handle_cock_milking(mob/living/carbon/human/milker)
 	if(arousal < ACTIVE_EJAC_THRESHOLD)
 		return
@@ -475,11 +450,6 @@
 	if(!can_ejaculate())
 		return FALSE
 	ejaculate_container(milker.get_active_held_item())
-
-/datum/sex_controller/proc/handle_breast_milking(mob/living/carbon/human/milker)
-	if(arousal < ACTIVE_EJAC_THRESHOLD)
-		return
-	milk_container(milker.get_active_held_item())
 
 /datum/sex_controller/proc/can_use_penis()
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
@@ -521,6 +491,7 @@
 	else
 		dat += "<center><a href='?src=[REF(src)];task=speed_down'>\<</a> [speed_name] <a href='?src=[REF(src)];task=speed_up'>\></a> ~|~ <a href='?src=[REF(src)];task=force_down'>\<</a> [force_name] <a href='?src=[REF(src)];task=force_up'>\></a> ~|~ <a href='?src=[REF(src)];task=manual_arousal_down'>\<</a> [manual_arousal_name] <a href='?src=[REF(src)];task=manual_arousal_up'>\></a></center>"
 	dat += "<center>| <a href='?src=[REF(src)];task=toggle_finished'>[do_until_finished ? "UNTIL IM FINISHED" : "UNTIL I STOP"]</a> |</center>"
+	dat += "<center><a href='?src=[REF(src)];task=set_arousal'>SET AROUSAL</a> | <a href='?src=[REF(src)];task=freeze_arousal'>[arousal_frozen ? "UNFREEZE AROUSAL" : "FREEZE AROUSAL"]</a></center>"
 	if(target == user)
 		dat += "<center>Doing unto yourself</center>"
 	else
@@ -580,6 +551,11 @@
 			adjust_arousal_manual(-1)
 		if("toggle_finished")
 			do_until_finished = !do_until_finished
+		if("set_arousal")
+			var/amount = input(user, "Value above 120 will immediately cause orgasm!", "Set Arousal", arousal) as num
+			set_arousal(amount)
+		if("freeze_arousal")
+			arousal_frozen = !arousal_frozen
 	show_ui()
 
 /datum/sex_controller/proc/try_stop_current_action()
@@ -625,7 +601,7 @@
 	var/datum/sex_action/action = SEX_ACTION(current_action)
 	action.on_start(user, target)
 	while(TRUE)
-		if(!user.rogfat_add(action.stamina_cost * get_stamina_cost_multiplier()))
+		if(!user.stamina_add(action.stamina_cost * get_stamina_cost_multiplier()))
 			break
 		if(!do_after(user, (action.do_time / get_speed_multiplier()), target = target))
 			break
@@ -802,3 +778,22 @@
 			return "<span class='love_high'>[string]</span>"
 		if(SEX_FORCE_EXTREME)
 			return "<span class='love_extreme'>[string]</span>"
+
+/datum/sex_controller/proc/cuckold_check()
+	//First, check if the target has a family.
+	var/datum/family/F = target.getFamily(TRUE)
+	if(!F)
+		return
+
+
+	//Second, check if target has a spouse relation.
+	var/list/rels = F.getRelations(target,REL_TYPE_SPOUSE)
+
+	if(!length(rels))
+		return
+
+	for(var/datum/relation/R in rels) //Loop through all the spouses (Should only be one.)
+		var/mob/living/carbon/human/cuckold = R.target:resolve()
+		if(!cuckold || cuckold == user)
+			continue
+		GLOB.cuckolds |= "[cuckold.job] [cuckold.real_name] (by [user.real_name])"

@@ -46,8 +46,8 @@
 		"fortune" = 0
 		)
 	specstats_f = list(
-		"speed" = 0,
-		"perception" = 1,
+		"strength" = -1,
+		"perception" = 1
 	)
 	enflamed_icon = "widefire"
 	organs = list(
@@ -179,7 +179,61 @@
 /datum/species/tabaxi/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	// Add Tabaxi-specific emotes
+	C.verbs += list(
+		/mob/proc/purr,
+		/mob/proc/hiss,
+		/mob/proc/meow,
+		/mob/proc/trill,
+	)
 
 /datum/species/tabaxi/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+	// Remove Tabaxi-specific emotes
+	C.verbs -= list(
+		/mob/proc/purr,
+		/mob/proc/hiss,
+		/mob/proc/meow,
+		/mob/proc/trill,
+	)
+
+/mob/proc/purr()
+	set name = "Purr"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("purr")
+	next_move = world.time + 3 // 0.3 second cooldown
+
+/mob/proc/hiss()
+	set name = "Hiss"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("hiss")
+	next_move = world.time + 3
+
+/mob/proc/meow()
+	set name = "Meow"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("meow")
+	next_move = world.time + 3
+
+/mob/proc/trill()
+	set name = "Trill"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("trill")
+	next_move = world.time + 3

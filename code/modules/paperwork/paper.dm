@@ -52,7 +52,6 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_range = 1
 	throw_speed = 1
-	pressure_resistance = 0
 	slot_flags = ITEM_SLOT_HEAD
 	body_parts_covered = HEAD
 	resistance_flags = FLAMMABLE
@@ -161,7 +160,9 @@
 /obj/item/paper/proc/format_browse(t, mob/user)
 	user << browse_rsc('html/book.png')
 	var/dat = {"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
-			<html><head><style type=\"text/css\">
+			<html><head>
+			<meta charset=\"UTF-8\">
+			<style type=\"text/css\">
 			body { background-image:url('book.png');background-repeat: repeat; }</style></head><body scroll=yes>"}
 	dat += "[t]<br>"
 	dat += "<a href='?src=[REF(src)];close=1' style='position:absolute;right:50px'>Close</a>"
@@ -175,13 +176,6 @@
 
 	if(usr.incapacitated() || !usr.is_literate())
 		return
-	if(ishuman(usr))
-		var/mob/living/carbon/human/H = usr
-		if(HAS_TRAIT(H, TRAIT_CLUMSY) && prob(25))
-			to_chat(H, span_warning("I cut myself on the paper! Ahhhh! Ahhhhh!"))
-			H.damageoverlaytemp = 9001
-			H.update_damage_hud()
-			return
 	var/n_name = stripped_input(usr, "What would you like to label the paper?", "Paper Labelling", null, MAX_NAME_LEN)
 	if((loc == usr && usr.stat == CONSCIOUS))
 		name = "paper[(n_name ? text("- '[n_name]'") : null)]"

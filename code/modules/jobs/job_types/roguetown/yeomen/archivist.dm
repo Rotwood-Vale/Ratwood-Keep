@@ -1,8 +1,8 @@
 /datum/job/roguetown/archivist
 	title = "Scholar"
-	tutorial = "You've spent lots of time reading scrolls and tomes, gradually becoming a walking encyclopedia. \
-	Scholars meticulously preserve and organize ancient texts, safeguarding the collective knowledge of the realm for generations to come. \
-	Nobles and Peasants alike often seek the Scholars expertise on matters of history and fact."
+	tutorial = "Scholars meticulously preserve and organize ancient texts, safeguarding the collective knowledge of the realm for generations to come. \
+	Nobles and Peasants alike often seek the Scholars expertise on matters of history and fact. \
+	Make a good use of this and manage a little academy in this town, making profits by selling your knowledge, as well as potions."
 	flag = ARCHIVIST
 	department_flag = YEOMEN
 	faction = "Station"
@@ -30,34 +30,36 @@
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/white
 		head  = /obj/item/clothing/head/roguetown/roguehood/black
 	else
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+		shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		head = /obj/item/clothing/head/roguetown/nightman
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1, /obj/item/rogueweapon/huntingknife/idagger)
+	backpack_contents = list(/obj/item/storage/fancy/ifak = 1, /obj/item/rogueweapon/huntingknife/idagger)
 	beltl = /obj/item/storage/keyring/archivist
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	mask = /obj/item/clothing/mask/rogue/spectacles
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.grant_language(/datum/language/elvish)
 		H.grant_language(/datum/language/dwarvish)
 		H.grant_language(/datum/language/orcish)
 		H.grant_language(/datum/language/canilunzt)
 		H.grant_language(/datum/language/felid)
+		H.grant_language(/datum/language/draconic)
 		ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 		H.change_stat("strength", -1)
 		H.change_stat("constitution", -1)
@@ -111,7 +113,7 @@
 			to_chat(L, span_warning("In teaching myself, I become both the question and the answer."))
 			return
 		else
-			if(L in range(1, usr))
+			if(L in range(2, usr))
 				to_chat(usr, span_notice("My student needs some time to select a lesson."))
 				var/chosen_skill = input(L, "Most of the lessons require you to be no less than novice in the selected skill", "Choose a skill") as null|anything in choices
 				var/datum/skill/item = choices[chosen_skill]

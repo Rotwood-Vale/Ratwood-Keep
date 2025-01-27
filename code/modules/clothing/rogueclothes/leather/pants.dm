@@ -6,6 +6,7 @@
 	max_integrity = 130
 	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB)
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/under/roguetown/trou/leather/advanced
 	name = "hardened leather chausses"
@@ -27,5 +28,15 @@
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
 	desc = "Dark trousers worn by morticians while performing burial rites."
-	icon_state = "leathertrou"
+	icon_state = "trou"
 	color = "#151615"
+
+//Gronn
+/obj/item/clothing/under/roguetown/trou/nomadpants
+	name = "nomad pants"
+	desc = "Tight fitting leather pants worn under clothing of the steppes."
+	icon_state = "nomadpants"
+	max_integrity = 130
+	armor = list("blunt" = 20, "slash" = 25, "stab" = 20, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB)
+	salvage_result = /obj/item/natural/hide/cured

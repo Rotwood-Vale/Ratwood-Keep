@@ -83,7 +83,7 @@
 	slot_flags = ITEM_SLOT_MOUTH
 	dropshrink = 0.4
 	drop_sound = 'sound/items/gem.ogg'
-	sellprice = 400
+	sellprice = 100
 
 /obj/item/riddleofsteel/Initialize()
 	. = ..()

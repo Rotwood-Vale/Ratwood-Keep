@@ -39,12 +39,6 @@
 			adjustOxyLoss(damage_amount, forced = forced)
 		if(CLONE)
 			adjustCloneLoss(damage_amount, forced = forced)
-		if(STAMINA)
-			if(BP)
-				if(BP.receive_damage(0, 0, damage_amount))
-					update_damage_overlays()
-			else
-				adjustStaminaLoss(damage_amount, forced = forced)
 	if(damage_amount)
 		return damage_amount
 	else
@@ -96,28 +90,6 @@
 	if(HAS_TRAIT(src, TRAIT_TOXIMMUNE)) //Prevents toxin damage, but not healing
 		amount = min(amount, 0)
 	return ..()
-
-/mob/living/carbon/getStaminaLoss()
-	. = 0
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		. += round(BP.stamina_dam * BP.stam_damage_coeff, DAMAGE_PRECISION)
-
-/mob/living/carbon/adjustStaminaLoss(amount, updating_health = TRUE, forced = FALSE)
-	if(!forced && (status_flags & GODMODE))
-		return FALSE
-	if(amount > 0)
-		take_overall_damage(0, 0, amount, updating_health)
-	else
-		heal_overall_damage(0, 0, abs(amount), null, updating_health)
-	return amount
-
-/mob/living/carbon/setStaminaLoss(amount, updating_health = TRUE, forced = FALSE)
-	var/current = getStaminaLoss()
-	var/diff = amount - current
-	if(!diff)
-		return
-	adjustStaminaLoss(diff, updating_health, forced)
 
 /** adjustOrganLoss
   * inputs: slot (organ slot, like ORGAN_SLOT_HEART), amount (damage to be done), and maximum (currently an arbitrarily large number, can be set so as to limit damage)

@@ -38,10 +38,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/on_mob_life(mob/living/carbon/C)
 	if(C.drunkenness < volume * boozepwr * ALCOHOL_THRESHOLD_MODIFIER || boozepwr < 0)
 		var/booze_power = boozepwr
-		if(HAS_TRAIT(C, TRAIT_ALCOHOL_TOLERANCE)) //we're an accomplished drinker
-			booze_power *= 0.7
-		if(HAS_TRAIT(C, TRAIT_LIGHT_DRINKER))
-			booze_power *= 2
 		C.drunkenness = max((C.drunkenness + (sqrt(volume) * booze_power * ALCOHOL_RATE)), 0) //Volume, power, and server alcohol rate effect how quickly one gets drunk
 //		if(boozepwr > 0)
 //			var/obj/item/organ/liver/L = C.getorganslot(ORGAN_SLOT_LIVER)
@@ -143,8 +139,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	M.dizziness = max(0,M.dizziness-5)
 	M.drowsyness = max(0,M.drowsyness-3)
 	M.AdjustSleeping(-40, FALSE)
-	if(!HAS_TRAIT(M, TRAIT_ALCOHOL_TOLERANCE))
-		M.Jitter(5)
 	..()
 	. = 1
 
@@ -177,8 +171,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	M.drowsyness = max(0,M.drowsyness-7)
 	M.AdjustSleeping(-40)
 	M.adjust_bodytemperature(-5 * TEMPERATURE_DAMAGE_COEFFICIENT, BODYTEMP_NORMAL)
-	if(!HAS_TRAIT(M, TRAIT_ALCOHOL_TOLERANCE))
-		M.Jitter(5)
 	return ..()
 
 /datum/reagent/consumable/ethanol/thirteenloko/overdose_start(mob/living/M)
@@ -230,10 +222,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "glass of vodka"
 	glass_desc = ""
 	shot_glass_icon_state = "shotglassclear"
-
-/datum/reagent/consumable/ethanol/vodka/on_mob_life(mob/living/carbon/M)
-	M.radiation = max(M.radiation-2,0)
-	return ..()
 
 /datum/reagent/consumable/ethanol/bilk
 	name = "Bilk"
@@ -362,7 +350,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	shot_glass_icon_state = "shotglassgreen"
 
 /datum/reagent/consumable/ethanol/absinthe/on_mob_life(mob/living/carbon/M)
-	if(prob(10) && !HAS_TRAIT(M, TRAIT_ALCOHOL_TOLERANCE))
+	if(prob(10))
 		M.hallucination += 4 //Reference to the urban myth
 	..()
 
@@ -506,11 +494,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "Screwdriver"
 	glass_desc = ""
 
-/datum/reagent/consumable/ethanol/screwdrivercocktail/on_mob_life(mob/living/carbon/M)
-	if(M.mind && M.mind.assigned_role in list("Station Engineer", "Atmospheric Technician", "Chief Engineer")) //Engineers lose radiation poisoning at a massive rate.
-		M.radiation = max(M.radiation - 25, 0)
-	return ..()
-
 /datum/reagent/consumable/ethanol/booger
 	name = "Booger"
 	description = "Ewww..."
@@ -619,8 +602,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	var/datum/brain_trauma/special/beepsky/B
 
 /datum/reagent/consumable/ethanol/beepsky_smash/on_mob_metabolize(mob/living/carbon/M)
-	if(HAS_TRAIT(M, TRAIT_ALCOHOL_TOLERANCE))
-		metabolization_rate = 0.8
 	if(!HAS_TRAIT(M.mind, TRAIT_LAW_ENFORCEMENT_METABOLISM))
 		B = new()
 		M.gain_trauma(B, TRAUMA_RESILIENCE_ABSOLUTE)
@@ -629,7 +610,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/beepsky_smash/on_mob_life(mob/living/carbon/M)
 	M.Jitter(2)
 	if(HAS_TRAIT(M.mind, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-		M.adjustStaminaLoss(-10, 0)
 		if(prob(20))
 			new /datum/hallucination/items_other(M)
 	..()
@@ -666,14 +646,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "The Manly Dorf"
 	glass_desc = ""
 	var/dorf_mode
-
-/datum/reagent/consumable/ethanol/manly_dorf/on_mob_metabolize(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(HAS_TRAIT(H, TRAIT_ALCOHOL_TOLERANCE))
-			to_chat(H, "<span class='notice'>Now THAT is MANLY!</span>")
-			boozepwr = 5 //We've had worse in the mines
-			dorf_mode = TRUE
 
 /datum/reagent/consumable/ethanol/manly_dorf/on_mob_life(mob/living/carbon/M)
 	if(dorf_mode)
@@ -1204,9 +1176,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/atomicbomb/on_mob_life(mob/living/carbon/M)
 	M.set_drugginess(50)
-	if(!HAS_TRAIT(M, TRAIT_ALCOHOL_TOLERANCE))
-		M.confused = max(M.confused+2,0)
-		M.Dizzy(10)
+	M.confused = max(M.confused+2,0)
+	M.Dizzy(10)
 	if (!M.slurring)
 		M.slurring = 1
 	M.slurring += 3
@@ -1268,14 +1239,12 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	M.dizziness +=2
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1*REM, 150)
 	if(prob(20))
-		M.adjustStaminaLoss(10)
 		M.drop_all_held_items()
 		to_chat(M, span_notice("I cant feel my hands!"))
 	if(current_cycle > 5)
 		if(prob(20))
 			var/t = pickt()
 			ADD_TRAIT(M, t, type)
-			M.adjustStaminaLoss(10)
 		if(current_cycle > 30)
 			M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2*REM)
 			if(current_cycle > 50 && prob(15))
@@ -1291,7 +1260,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_R_ARM, type)
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_R_LEG, type)
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_L_LEG, type)
-	M.adjustStaminaLoss(10)
+	//M.adjustStaminaLoss(10)
 	..()
 
 /datum/reagent/consumable/ethanol/hippies_delight
@@ -1483,7 +1452,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		L.adjustFireLoss(-1)
 		L.adjustToxLoss(-1)
 		L.adjustOxyLoss(-1)
-		L.adjustStaminaLoss(-1)
 	L.visible_message(span_warning("[L] shivers with renewed vigor!"), span_notice("One taste of [lowertext(name)] fills you with energy!"))
 	if(!L.stat && heal_points == 20) //brought us out of softcrit
 		L.visible_message(span_danger("[L] lurches to [L.p_their()] feet!"), span_boldnotice("Up and at 'em, kid."))
@@ -1494,7 +1462,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		L.adjustFireLoss(-1)
 		L.adjustToxLoss(-0.5)
 		L.adjustOxyLoss(-3)
-		L.adjustStaminaLoss(-5)
 		. = TRUE
 	..()
 
@@ -1694,7 +1661,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/fanciulli/on_mob_metabolize(mob/living/M)
 	if(M.health > 0)
-		M.adjustStaminaLoss(20)
+		//M.adjustStaminaLoss(20)
 		. = TRUE
 	..()
 
@@ -1717,7 +1684,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/branca_menta/on_mob_metabolize(mob/living/M)
 	if(M.health > 0)
-		M.adjustStaminaLoss(35)
+		//M.adjustStaminaLoss(35)
 		. = TRUE
 	..()
 
@@ -1914,7 +1881,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/turbo/on_mob_life(mob/living/carbon/M)
 	if(prob(4))
 		to_chat(M, span_notice("[pick("You feel disregard for the rule of law.", "You feel pumped!", "Your head is pounding.", "Your thoughts are racing..")]"))
-	M.adjustStaminaLoss(-M.drunkenness * 0.25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/old_timer

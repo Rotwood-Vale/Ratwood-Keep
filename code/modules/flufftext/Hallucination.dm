@@ -442,7 +442,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		"Help!",\
 		"[pick_list_replacements(HAL_LINES_FILE, "threat")] in [pick_list_replacements(HAL_LINES_FILE, "location")][prob(50)?"!":"!!"]",\
 		"[pick("Where's [target.first_name()]?", "Set [target.first_name()] to arrest!")]",\
-		"[pick("C","Ai, c","Someone c","Rec")]all the shuttle!",\
 		"AI [pick("rogue", "is dead")]!!")
 
 	var/mob/living/carbon/person = null
@@ -850,7 +849,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 /obj/effect/hallucination/danger/lava/Crossed(atom/movable/AM)
 	if(AM == target)
-		target.adjustStaminaLoss(20)
 		new /datum/hallucination/fire(target)
 
 /obj/effect/hallucination/danger/chasm
@@ -948,7 +946,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if(target.fire_stacks <= 0)
 			clear_fire()
 			return
-		target.adjustStaminaLoss(15)
 		sleep(20)
 	clear_fire()
 

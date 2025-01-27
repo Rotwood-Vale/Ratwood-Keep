@@ -187,6 +187,9 @@
 				visible_message("[user] begins to butcher \the [src].")
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				if(do_after(user, used_time, target = src))
+					if(species_id == "vulpkanin" || species_id == "anthromorph" || species_id == "lupian" || species_id == "tabaxi")
+						new /obj/item/natural/fur(get_turf(src))
+
 					if(rotted)
 						var/obj/item/reagent_containers/food/snacks/rogue/meat/steak/rotten_steak = new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
 						rotten_steak.become_rotten()
@@ -341,10 +344,6 @@
 
 	if(owner && updating_health)
 		owner.updatehealth()
-		if(stamina > DAMAGE_PRECISION)
-			owner.update_stamina()
-			owner.stam_regen_start_time = world.time + STAMINA_REGEN_BLOCK_TIME
-			. = TRUE
 	consider_processing()
 	update_disabled()
 	return update_bodypart_damage_state() || .

@@ -467,10 +467,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					return JOB_UNAVAILABLE_SLOTFULL
 		else
 			return JOB_UNAVAILABLE_SLOTFULL
-//	if(job.title == "Adventurer" && latejoin)
+//	if(job.title == "refugee" && latejoin)
 //		for(var/datum/job/J in SSjob.occupations)
 //			if(J && J.total_positions && J.current_positions < 1 && J.title != job.title && (IsJobUnavailable(J.title))
-//				return JOB_UNAVAILABLE_GENERIC //we can't play adventurer if there isn't 1 of every other job that we can play
+//				return JOB_UNAVAILABLE_GENERIC //we can't play refugee if there isn't 1 of every other job that we can play
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE
@@ -530,7 +530,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		Spl.Fade(TRUE)
 //			character.playsound_local(get_turf(character), 'sound/blank.ogg', 25)
 
-		character.update_parallax_teleport()
 
 	SSticker.minds += character.mind
 
@@ -559,10 +558,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 
 /mob/dead/new_player/proc/LateChoices()
 	var/list/dat = list("<div class='notice' style='font-style: normal; font-size: 14px; margin-bottom: 2px; padding-bottom: 0px'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time, 1)]</div>")
-	if(SSshuttle.emergency)
-		switch(SSshuttle.emergency.mode)
-			if(SHUTTLE_ESCAPE)
-				dat += "<div class='notice red'>The last boat has left Roguetown.</div><br>"
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
 			SSjob.prioritized_jobs -= prioritized_job
@@ -576,6 +571,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	omegalist += list(GLOB.courtier_positions)
 	omegalist += list(GLOB.garrison_positions)
 	omegalist += list(GLOB.church_positions)
+	omegalist += list(GLOB.inquisition_positions)
+	omegalist += list(GLOB.foreigner_positions)
 	omegalist += list(GLOB.yeoman_positions)
 	omegalist += list(GLOB.peasant_positions)
 	omegalist += list(GLOB.mercenary_positions)
@@ -584,7 +581,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode
 		if(C.allmig)
-			omegalist = list(GLOB.allmig_positions)
+			omegalist = list(GLOB.foreigner_positions)
 	if(istype(SSticker.mode, /datum/game_mode/roguewar))
 		omegalist = list(GLOB.roguewar_positions)
 
@@ -617,6 +614,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					cat_name = "Garrison"
 				if (CHURCHMEN)
 					cat_name = "Churchmen"
+				if (INQUISITION)
+					cat_name = "Inquisition"
 				if (YEOMEN)
 					cat_name = "Yeomen"
 				if (PEASANTS)
@@ -625,6 +624,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					cat_name = "Sidefolk"
 				if (MERCENARIES)
 					cat_name = "Mercenaries"
+				if (FOREIGNERS)
+					cat_name = "Foreigners"
 				if (GOBLIN)
 					cat_name = "Goblins"
 

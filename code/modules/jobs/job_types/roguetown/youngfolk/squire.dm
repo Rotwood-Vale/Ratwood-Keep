@@ -42,7 +42,8 @@
 		shoes = /obj/item/clothing/shoes/roguetown/armor
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/keyring/servant
-		beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+		beltr = /obj/item/rogueweapon/sword/short
+		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		backr = /obj/item/storage/backpack/rogue/satchel
 	else
 		pants = /obj/item/clothing/under/roguetown/tights
@@ -51,5 +52,6 @@
 		shoes = /obj/item/clothing/shoes/roguetown/armor
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/keyring/servant
-		beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+		beltr = /obj/item/rogueweapon/sword/short
+		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		backr = /obj/item/storage/backpack/rogue/satchel

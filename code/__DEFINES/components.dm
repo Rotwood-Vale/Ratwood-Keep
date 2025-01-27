@@ -18,6 +18,11 @@
 
 /// /datum/element flags
 #define ELEMENT_DETACH		(1 << 0)
+/**
+ * Only elements created with the same arguments given after `id_arg_index` share an element instance
+ * The arguments are the same when the text and number values are the same and all other values have the same ref
+ */
+#define ELEMENT_BESPOKE		(1 << 1)
 
 // How multiple components of the exact same type are handled in the same datum
 /// old component is deleted (default)
@@ -91,7 +96,6 @@
 #define COMSIG_ATOM_BLOB_ACT "atom_blob_act"					//from base of atom/blob_act(): (/obj/structure/blob)
 #define COMSIG_ATOM_ACID_ACT "atom_acid_act"					//from base of atom/acid_act(): (acidpwr, acid_volume)
 #define COMSIG_ATOM_EMAG_ACT "atom_emag_act"					//from base of atom/emag_act(): (/mob/user)
-#define COMSIG_ATOM_RAD_ACT "atom_rad_act"						//from base of atom/rad_act(intensity)
 #define COMSIG_ATOM_NARSIE_ACT "atom_narsie_act"				//from base of atom/narsie_act(): ()
 #define COMSIG_ATOM_SING_PULL "atom_sing_pull"					//from base of atom/singularity_pull(): (S, current_size)
 #define COMSIG_ATOM_BSA_BEAM "atom_bsa_beam_pass"				//from obj/machinery/bsa/full/proc/fire(): ()
@@ -124,6 +128,10 @@
 #define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"				//from base of atom/attack_hand(): (mob/user)
 #define COMSIG_ATOM_ATTACK_PAW "atom_attack_paw"				//from base of atom/attack_paw(): (mob/user)
 	#define COMPONENT_NO_ATTACK_HAND 1							//works on all 3.
+///from base of atom/animal_attack(): (/mob/user)
+#define COMSIG_ATOM_ATTACK_ANIMAL "attack_animal"
+///from relay_attackers element: (atom/attacker, attack_flags)
+#define COMSIG_ATOM_WAS_ATTACKED "atom_was_attacked"
 //This signal return value bitflags can be found in __DEFINES/misc.dm
 #define COMSIG_ATOM_INTERCEPT_Z_FALL "movable_intercept_z_impact"	//called for each movable in a turf contents on /turf/zImpact(): (atom/movable/A, levels)
 
@@ -164,8 +172,6 @@
 #define COMSIG_MOVABLE_BUMP "movable_bump"						//from base of atom/movable/Bump(): (/atom)
 #define COMSIG_MOVABLE_IMPACT "movable_impact"					//from base of atom/movable/throw_impact(): (/atom/hit_atom, /datum/thrownthing/throwingdatum)
 #define COMSIG_MOVABLE_IMPACT_ZONE "item_impact_zone"			//from base of mob/living/hitby(): (mob/living/target, hit_zone)
-#define COMSIG_MOVABLE_BUCKLE "buckle"							//from base of atom/movable/buckle_mob(): (mob, force)
-#define COMSIG_MOVABLE_UNBUCKLE "unbuckle"						//from base of atom/movable/unbuckle_mob(): (mob, force)
 #define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"			//from base of atom/movable/throw_at(): (list/args)
 	#define COMPONENT_CANCEL_THROW 1
 #define COMSIG_MOVABLE_POST_THROW "movable_post_throw"			//from base of atom/movable/throw_at(): (datum/thrownthing, spin)
@@ -238,6 +244,8 @@
 #define COMSIG_LIVING_STATUS_PARALYZE "living_paralyze"			//from base of mob/living/Paralyze() (amount, update, ignore)
 #define COMSIG_LIVING_STATUS_IMMOBILIZE "living_immobilize"		//from base of mob/living/Immobilize() (amount, update, ignore)
 #define COMSIG_LIVING_STATUS_UNCONSCIOUS "living_unconscious"	//from base of mob/living/Unconscious() (amount, update, ignore)
+/// from base of mob/living/updatehealth()
+#define COMSIG_LIVING_HEALTH_UPDATE "living_health_update"
 #define COMSIG_LIVING_STATUS_SLEEP "living_sleeping"			//from base of mob/living/Sleeping() (amount, update, ignore)
 	#define COMPONENT_NO_STUN 1			//For all of them
 #define COMSIG_LIVING_CAN_TRACK "mob_cantrack"					//from base of /mob/living/can_track(): (mob/user)
@@ -250,6 +258,9 @@
 // /mob/living/simple_animal/hostile signals
 #define COMSIG_HOSTILE_ATTACKINGTARGET "hostile_attackingtarget"
 	#define COMPONENT_HOSTILE_NO_ATTACK 1
+///before attackingtarget has happened, source is the attacker and target is the attacked
+#define COMSIG_HOSTILE_PRE_ATTACKINGTARGET "hostile_pre_attackingtarget"
+	#define COMPONENT_HOSTILE_NO_PREATTACK (1<<0) //cancel the attack, only works before attack happens
 
 // /obj signals
 #define COMSIG_OBJ_DECONSTRUCT "obj_deconstruct"				//from base of obj/deconstruct(): (disassembled)
@@ -416,3 +427,5 @@
 #define COMSIG_XENO_TURF_CLICK_SHIFT "xeno_turf_click_shift"				//from turf ShiftClickOn(): (/mob)
 #define COMSIG_XENO_TURF_CLICK_CTRL "xeno_turf_click_alt"					//from turf AltClickOn(): (/mob)
 #define COMSIG_XENO_MONKEY_CLICK_CTRL "xeno_monkey_click_ctrl"				//from monkey CtrlClickOn(): (/mob)
+
+#define COMSIG_PARENT_IMPREGNATE "comsig_mob_impregnate"

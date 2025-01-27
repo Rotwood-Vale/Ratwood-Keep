@@ -74,17 +74,70 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/organ/tail/anthro,
+		/datum/customizer/organ/tail_feature/anthro,
+		/datum/customizer/organ/snout/anthro,
+		/datum/customizer/organ/ears/anthro,
+		/datum/customizer/organ/horns/anthro,
+		/datum/customizer/organ/frills/anthro,
 		/datum/customizer/organ/wings/seelie,
-		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/human,
-		/datum/customizer/organ/breasts/human,
-		/datum/customizer/organ/vagina/human,
-		)
+		/datum/customizer/organ/neck_feature/anthro,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
+		/datum/customizer/organ/breasts/animal,
+		/datum/customizer/organ/vagina/anthro,
+	)
+
+	body_marking_sets = list(
+		/datum/body_marking_set/none,
+		/datum/body_marking_set/belly,
+		/datum/body_marking_set/bellysocks,
+		/datum/body_marking_set/tiger,
+		/datum/body_marking_set/tiger_dark,
+	)
+
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
 		/datum/body_marking/eyeliner,
+		/datum/body_marking/plain,
+		/datum/body_marking/fox,
+		/datum/body_marking/wolf,
+		/datum/body_marking/tiger,
+		/datum/body_marking/tiger/dark,
+		/datum/body_marking/sock,
+		/datum/body_marking/socklonger,
+		/datum/body_marking/tips,
+		/datum/body_marking/bellyscale,
+		/datum/body_marking/bellyscaleslim,
+		/datum/body_marking/bellyscalesmooth,
+		/datum/body_marking/bellyscaleslimsmooth,
+		/datum/body_marking/buttscale,
+		/datum/body_marking/belly,
+		/datum/body_marking/bellyslim,
+		/datum/body_marking/butt,
+		/datum/body_marking/tie,
+		/datum/body_marking/tiesmall,
+		/datum/body_marking/backspots,
+		/datum/body_marking/front,
+		/datum/body_marking/drake_eyes,
 		/datum/body_marking/tonage,
+		/datum/body_marking/spotted,
 	)
+
+	descriptor_choices = list(
+		/datum/descriptor_choice/height,
+		/datum/descriptor_choice/body,
+		/datum/descriptor_choice/stature,
+		/datum/descriptor_choice/face,
+		/datum/descriptor_choice/face_exp,
+		/datum/descriptor_choice/skin_all,
+		/datum/descriptor_choice/voice,
+		/datum/descriptor_choice/prominent_one_wild,
+		/datum/descriptor_choice/prominent_two_wild,
+		/datum/descriptor_choice/prominent_three_wild,
+		/datum/descriptor_choice/prominent_four_wild,
+	)
+
 	languages = list(
 		/datum/language/common,
 		/datum/language/faexin,	//seelie speak here

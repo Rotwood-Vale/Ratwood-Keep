@@ -52,7 +52,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/w_class = WEIGHT_CLASS_NORMAL
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
 	pass_flags = PASSTABLE
-	pressure_resistance = 4
 	var/obj/item/master = null
 
 	var/heat_protection = 0 //flags which determine which body parts are protected from heat. Use the HEAD, CHEST, GROIN, etc. flags. See setup.dm
@@ -172,11 +171,18 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	var/firefuel = 0 //add this idiot
 
+	var/leashable = FALSE //More elegant solution to leashchecks
+
 	var/thrown_bclass = BCLASS_BLUNT
 
 	var/icon/experimental_inhand = TRUE
 	var/icon/experimental_onhip = FALSE
 	var/icon/experimental_onback = FALSE
+
+	var/do_sound_bell = FALSE
+	var/do_sound_chain = FALSE
+	var/do_sound_plate = FALSE
+	var/bell = FALSE
 
 	///trying to emote or talk with this in our mouth makes us muffled
 	var/muteinmouth = TRUE
@@ -187,8 +193,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	///The appropriate skill to repair this obj/item. If null, our object cannot be placed on an anvil to be repaired
 	var/anvilrepair
-	//this should be true or false
-	var/sewrepair
 
 	var/breakpath
 
@@ -230,6 +234,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		has_inspect_verb = TRUE
 	update_transform()
 
+/obj/item/proc/step_action() //this was made to rewrite clown shoes squeaking
+	SEND_SIGNAL(src, COMSIG_CLOTHING_STEP_ACTION)
 
 /obj/item/proc/update_transform()
 	transform = null
@@ -969,8 +975,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	else
 		. = ""
 
-/obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
-	return
+/obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, damage_type = "blunt")
+	return SEND_SIGNAL(src, COMSIG_ATOM_HITBY, AM, skipcatch, hitpush, blocked, throwingdatum, damage_type)
 
 
 /obj/item/attack_animal(mob/living/simple_animal/M)

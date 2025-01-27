@@ -84,8 +84,6 @@
 		return
 	if(message_language.type == /datum/language/dwarvish)
 		return list(SPAN_DWARF)
-//	if(message_language.type == /datum/language/common)
-//		return list(SPAN_DWARF)
 	return message_language.spans
 
 /datum/species/dwarf/mountain/get_skin_list()

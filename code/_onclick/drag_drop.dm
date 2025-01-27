@@ -187,9 +187,11 @@
 	if(mob.curplaying)
 		mob.curplaying.on_mouse_up()
 
-	if(!mob.fixedeye)
+	if(mob.tempfixeye)
 		mob.tempfixeye = FALSE
-		mob.nodirchange = FALSE
+
+		if(!mob.fixedeye)
+			mob.nodirchange = FALSE
 
 	if(mob.hud_used)
 		for(var/atom/movable/screen/eye_intent/eyet in mob.hud_used.static_inventory)
@@ -303,7 +305,7 @@
 				chargedprog = 100
 				mouse_pointer_icon = 'icons/effects/mousemice/swang/acharged.dmi'
 			else
-				if(!L.rogfat_add(L.used_intent.chargedrain))
+				if(!L.stamina_add(L.used_intent.chargedrain))
 					L.stop_attack()
 		return TRUE
 	else

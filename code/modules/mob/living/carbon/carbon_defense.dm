@@ -200,6 +200,7 @@
 	if(!lying_attack_check(user, I))
 		return
 	affecting = get_bodypart(check_zone(useder)) //precise attacks, on yourself or someone you are grabbing
+	user.mob_timers[MT_SNEAKATTACK] = world.time //Stops you from sneaking after hitting someone else.
 	if(!affecting) //missing limb
 		to_chat(user, span_warning("Unfortunately, there's nothing there."))
 		return FALSE
@@ -380,12 +381,6 @@
 				span_notice("I shake [src] to get [p_their()] attention."))
 	shake_camera(src, 2, 1)
 	SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "hug", /datum/mood_event/hug)
-	if(HAS_TRAIT(M, TRAIT_FRIENDLY))
-		var/datum/component/mood/mood = M.GetComponent(/datum/component/mood)
-		if (mood.sanity >= SANITY_GREAT)
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_hug", /datum/mood_event/besthug, M)
-		else if (mood.sanity >= SANITY_DISTURBED)
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_hug", /datum/mood_event/betterhug, M)
 	for(var/datum/brain_trauma/trauma in M.get_traumas())
 		trauma.on_hug(M, src)
 	AdjustStun(-60)

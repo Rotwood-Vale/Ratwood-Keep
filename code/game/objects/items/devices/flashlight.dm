@@ -155,7 +155,7 @@
 
 /obj/item/flashlight/flare/torch/Initialize()
 	. = ..()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 
 /obj/item/flashlight/flare/torch/process()
 	open_flame(heat)
@@ -236,7 +236,7 @@
 
 /obj/item/flashlight/flare/torch/get_temperature()
 	if(on)
-		return FIRE_MINIMUM_TEMPERATURE_TO_SPREAD
+		return 150+T0C
 	return ..()
 
 /obj/item/flashlight/flare/torch/metal

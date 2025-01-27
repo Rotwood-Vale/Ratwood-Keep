@@ -9,10 +9,10 @@
 	///What species get flights thanks to those wings. Important for moth wings
 	var/list/flight_for_species
 	///Whether a wing can be opened by the *wing emote. The sprite use a "_open" suffix, before their layer
-	var/can_open
+	var/can_open = TRUE
 	///Whether an openable wing is currently opened
-	var/is_open
-	///Whether the owner of wings has flight thanks to the wings
+	var/is_open = FALSE
+	///Whether the owner of wings has wings splayed
 	var/granted_flight
 
 //TODO: Well you know what this flight stuff is a bit complicated and hardcoded, this is enough for now
@@ -25,13 +25,13 @@
 /obj/item/organ/wings/anthro
 	name = "wild-kin wings"
 
+/obj/item/organ/wings/angel
+	name = "aasimar wings"
+	desc = "A pair of magnificent, feathery wings. They look strong enough to lift you up in the air."
+
 /obj/item/organ/wings/flight
 	unconditional_flight = TRUE
 	can_open = TRUE
-
-/obj/item/organ/wings/flight/angel
-	name = "angel wings"
-	desc = "A pair of magnificent, feathery wings. They look strong enough to lift you up in the air."
 
 /obj/item/organ/wings/flight/dragon
 	name = "dragon wings"
@@ -50,3 +50,4 @@
 	icon_state = "fairywingsnormal"
 	accessory_type = /datum/sprite_accessory/wings/seelie
 	sellprice = 50
+	

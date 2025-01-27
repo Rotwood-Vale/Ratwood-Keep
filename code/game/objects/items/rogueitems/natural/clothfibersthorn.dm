@@ -5,7 +5,7 @@
 	desc = "Plant fibers. The peasants make their living making these into clothing."
 	force = 0
 	throwforce = 0
-	color = "#454032"
+	color = "#534d3e"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH
@@ -16,8 +16,10 @@
 	bundletype = /obj/item/natural/bundle/fibers
 
 /obj/item/natural/fibers/attack_right(mob/user)
+	if(user.get_active_held_item())
+		return
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 5 SECONDS, target = src))
+	if(move_after(user, bundling_time, target = src))
 		var/fibercount = 0
 		for(var/obj/item/natural/fibers/F in get_turf(src))
 			fibercount++
@@ -30,6 +32,7 @@
 				B.amount = clamp(fibercount, 2, 6)
 				B.update_bundle()
 				fibercount -= clamp(fibercount, 2, 6)
+				user.put_in_hands(B)
 		for(var/obj/item/natural/fibers/F in get_turf(src))
 			qdel(F)
 
@@ -51,8 +54,10 @@
 	bundletype = /obj/item/natural/bundle/silk
 
 /obj/item/natural/silk/attack_right(mob/user)
+	if(user.get_active_held_item())
+		return
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 5 SECONDS, target = src))
+	if(move_after(user, bundling_time, target = src))
 		var/silkcount = 0
 		for(var/obj/item/natural/silk/F in get_turf(src))
 			silkcount++
@@ -65,6 +70,7 @@
 				B.amount = clamp(silkcount, 2, 6)
 				B.update_bundle()
 				silkcount -= clamp(silkcount, 2, 6)
+				user.put_in_hands(B)
 		for(var/obj/item/natural/silk/F in get_turf(src))
 			qdel(F)
 
@@ -116,8 +122,10 @@
 	user.cure_blind("blindfold_[REF(src)]")
 
 /obj/item/natural/cloth/attack_right(mob/user)
+	if(user.get_active_held_item())
+		return
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 1 SECONDS, target = src))
+	if(move_after(user, bundling_time, target = src))
 		var/clothcount = 0
 		for(var/obj/item/natural/cloth/F in get_turf(src))
 			clothcount++
@@ -130,16 +138,15 @@
 				B.amount = clamp(clothcount, 2, 10)
 				B.update_bundle()
 				clothcount -= clamp(clothcount, 2, 10)
+				user.put_in_hands(B)
 		for(var/obj/item/natural/cloth/F in get_turf(src))
+			playsound(user, "rustle", 70, FALSE, -4)
 			qdel(F)
 
 /obj/item/natural/cloth/examine(mob/user)
 	. = ..()
 	if(wet)
 		. += span_notice("It's wet!")
-
-/obj/item/natural/cloth/bandit
-	color = "#ff0000"
 
 // CLEANING
 
@@ -263,7 +270,7 @@
 	force = 0
 	throwforce = 0
 	maxamount = 6
-	color = "#454032"
+	color = "#534d3e"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH
@@ -322,9 +329,13 @@
 /obj/item/natural/bundle/stick
 	name = "bundle of sticks"
 	icon_state = "stickbundle1"
+	item_state = "stickbundle"
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
 	possible_item_intents = list(/datum/intent/use)
 	desc = "Stick alone.. Weak. Stick together.. Strong."
-	maxamount = 10
+	maxamount = 6
 	force = 0
 	throwforce = 0
 	firefuel = 5 MINUTES
@@ -336,7 +347,7 @@
 	icon1 = "stickbundle1"
 	icon1step = 4
 	icon2 = "stickbundle2"
-	icon2step = 7
+	icon2step = 6
 	icon3 = "stickbundle3"
 
 /obj/item/natural/bundle/stick/attackby(obj/item/W, mob/living/user)
@@ -404,8 +415,10 @@
 	stackname = "worms"
 
 /obj/item/natural/worms/attack_right(mob/user)
+	if(user.get_active_held_item())
+		return
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 5 SECONDS, target = src))
+	if(move_after(user, bundling_time, target = src))
 		var/wormcount = 0
 		for(var/obj/item/natural/worms/F in get_turf(src))
 			wormcount++
@@ -418,6 +431,7 @@
 				B.amount = clamp(wormcount, 2, 12)
 				B.update_bundle()
 				wormcount -= clamp(wormcount, 2, 12)
+				user.put_in_hands(B)
 		for(var/obj/item/natural/worms/F in get_turf(src))
 			qdel(F)
 

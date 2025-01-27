@@ -62,6 +62,7 @@
 /obj/item/clothing/under/roguetown/tights/jester
 	desc = "Funny tights!"
 	color = "#1E3B20"
+	do_sound_bell = FALSE
 
 /obj/item/clothing/under/roguetown/tights/lord
 	color = "#865c9c"
@@ -109,7 +110,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide/cured
+	salvage_result = /obj/item/natural/cloth
 
 /obj/item/clothing/under/roguetown/chainlegs
 	name = "chain chausses"
@@ -246,7 +247,9 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bklegs"
 	item_state = "bklegs"
+	max_integrity = 300
 //	adjustable = CAN_CADJUST
+	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)

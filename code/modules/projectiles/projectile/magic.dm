@@ -122,7 +122,7 @@
 
 /obj/projectile/magic/animate/on_hit(atom/target, blocked = FALSE)
 	var/mob/living/carbon/human/caster = firer
-	caster.rogstam_add(-120)	//Remove even more stam for this cast, couldnt be handled by releasedrain due to fatigue crit
+	caster.energy_add(-120)	//Remove even more stam for this cast, couldnt be handled by releasedrain due to fatigue crit
 	target.animate_atom_living(firer)
 	..()
 
@@ -359,7 +359,8 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
-		M.reagents.add_reagent(/datum/reagent/toxin, 3)
+		M.add_nausea(5) //Slight buff for stopping power, it's a real underwhelming combat spell otherwise.
+		M.reagents.add_reagent(/datum/reagent/toxin, 5) //Slight buff, was told this is ass as a combat spell, especially for 3 point cost.
 
 /obj/projectile/magic/sapping
 	name = "bolt of sapping"

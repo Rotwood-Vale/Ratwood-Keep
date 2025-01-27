@@ -227,7 +227,7 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	..()
 
 /datum/objective/maroon/check_completion()
-	return !target || !considered_alive(target) || (!target.current.onCentCom() && !target.current.onSyndieBase())
+	return !target || !considered_alive(target) || (!target.current.onCentCom())
 
 /datum/objective/maroon/update_explanation_text()
 	if(target && target.current)
@@ -319,20 +319,6 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 			return FALSE
 	return TRUE
 
-/datum/objective/escape/boat
-	name = "escape"
-	explanation_text = "Escape on the last boat out of ROGUETOWN."
-	team_explanation_text = "Escape on the last boat out of ROGUETOWN."
-
-/datum/objective/escape/boat/check_completion()
-	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
-		return FALSE
-	var/list/datum/mind/owners = get_owners()
-	for(var/datum/mind/M in owners)
-		if(!considered_escaped(M) || !SSshuttle.emergency.shuttle_areas[get_area(M.current)])
-			return FALSE
-	return TRUE
-
 
 
 /datum/objective/dungeoneer
@@ -345,47 +331,6 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	// Require all owners escape safely.
 	if(prisoner)
 		return TRUE
-
-
-/datum/objective/escape/escape_with_identity
-	name = "escape with identity"
-	var/target_real_name // Has to be stored because the target's real_name can change over the course of the round
-	var/target_missing_id
-
-/datum/objective/escape/escape_with_identity/find_target(dupe_search_range)
-	target = ..()
-	update_explanation_text()
-
-/datum/objective/escape/escape_with_identity/update_explanation_text()
-	if(target && target.current)
-		target_real_name = target.current.real_name
-		explanation_text = "Escape on the shuttle or an escape pod with the identity of [target_real_name], the [target.assigned_role]"
-		var/mob/living/carbon/human/H
-		if(ishuman(target.current))
-			H = target.current
-		if(H && H.get_id_name() != target_real_name)
-			target_missing_id = 1
-		else
-			explanation_text += " while wearing their identification card"
-		explanation_text += "." //Proper punctuation is important!
-
-	else
-		explanation_text = "Free Objective."
-
-/datum/objective/escape/escape_with_identity/check_completion()
-	if(!target || !target_real_name)
-		return TRUE
-	var/list/datum/mind/owners = get_owners()
-	for(var/datum/mind/M in owners)
-		if(!ishuman(M.current) || !considered_escaped(M))
-			continue
-		var/mob/living/carbon/human/H = M.current
-		if(H.dna.real_name == target_real_name && (H.get_id_name() == target_real_name || target_missing_id))
-			return TRUE
-	return FALSE
-
-/datum/objective/escape/escape_with_identity/admin_edit(mob/admin)
-	admin_simple_target_pick(admin)
 
 /datum/objective/survive
 	name = "survive"

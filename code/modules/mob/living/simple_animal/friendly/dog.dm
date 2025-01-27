@@ -556,7 +556,7 @@
 	icon_dead = "void_puppy_dead"
 	nofur = TRUE
 	unsuitable_atmos_damage = 0
-	minbodytemp = TCMB
+	minbodytemp = 2.7
 	maxbodytemp = T0C + 40
 
 /mob/living/simple_animal/pet/dog/corgi/puppy/void/Process_Spacemove(movement_dir = 0)
@@ -593,6 +593,32 @@
 	..()
 
 	make_babies()
+
+/mob/living/simple_animal/pet/dog/corgi/Cahir
+	name = "Cahir"
+	desc = "What a sleek fur and radiant eyes!"
+	icon = 'icons/roguetown/mob/monster/vol.dmi'
+	icon_state = "vv"
+	icon_living = "vv"
+	icon_dead = "vvd"
+	gender = MALE
+	emote_hear = null
+	emote_see = null
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "bops"
+	response_disarm_simple = "bop"
+	response_harm_continuous = "kicks"
+	response_harm_simple = "kick"
+	var/puppies = 0
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
+						/obj/item/natural/hide = 2,
+						/obj/item/natural/fur = 1)
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	health = 120
+	maxHealth = 120
+//	stat_attack = UNCONSCIOUS
+	remains_type = /obj/effect/decal/remains/wolf
 
 /mob/living/simple_animal/pet/dog/attack_hand(mob/living/carbon/human/M)
 	. = ..()

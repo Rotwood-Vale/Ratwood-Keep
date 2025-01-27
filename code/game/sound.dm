@@ -14,7 +14,7 @@
 		return
 
 	//allocate a channel if necessary now so its the same for everyone
-	channel = channel || open_sound_channel()
+	channel = channel || SSsounds.random_available_channel()
 
  	// Looping through the player list has the added bonus of working for mobs inside containers
 	var/sound/S = soundin
@@ -32,14 +32,15 @@
 	if(soundping)
 		ping_sound(source)
 
+	var/list/muffled_listeners = list() //this is very rudimentary list of muffled listeners above and below to mimic sound muffling (this is done through modifying the playsounds for them)
 	if(!ignore_walls) //these sounds don't carry through walls
 		listeners = listeners & hearers(maxdistance,turf_source)
 
 		if(above_turf && istransparentturf(above_turf))
-			listeners += hearers(maxdistance,above_turf)
+			muffled_listeners += hearers(maxdistance,above_turf)
 
 		if(below_turf && istransparentturf(turf_source))
-			listeners += hearers(maxdistance,below_turf)
+			muffled_listeners += hearers(maxdistance,below_turf)
 
 	else
 		if(above_turf)
@@ -49,14 +50,18 @@
 		if(below_turf)
 			listeners += SSmobs.clients_by_zlevel[below_turf.z]
 			listeners += SSmobs.dead_players_by_zlevel[below_turf.z]
-	
-	listeners += SSmobs.dead_players_by_zlevel[source_z]
 
+	listeners += SSmobs.dead_players_by_zlevel[source_z]
 	. = list()
 
 	for(var/mob/M as anything in listeners)
 		if(get_dist(M, turf_source) <= maxdistance)
 			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat))
+				. += M
+
+	for(var/mob/M as anything in muffled_listeners)
+		if(get_dist(M, turf_source) <= maxdistance)
+			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat, muffled = TRUE))
 				. += M
 
 
@@ -90,7 +95,7 @@
 	. = ..()
 	animate(src, alpha = 0, time = duration, easing = EASE_IN)
 */
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel, pressure_affected = TRUE, sound/S, repeat)
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel, pressure_affected = TRUE, sound/S, repeat, muffled)
 	if(!client || !can_hear())
 		return FALSE
 
@@ -98,7 +103,15 @@
 		S = sound(get_sfx(soundin))
 
 	S.wait = 0 //No queue
-	S.channel = channel || open_sound_channel()
+	S.channel = channel || SSsounds.random_available_channel()
+
+	if(muffled)
+		S.environment = 11
+		if(falloff)
+			falloff *= 1.5
+		else
+			falloff = FALLOFF_SOUNDS * 1.5
+		vol *= 0.75
 
 	var/vol2use = vol
 	if(client.prefs)
@@ -124,27 +137,6 @@
 		var/distance = get_dist(T, turf_source)
 
 		S.volume -= (distance * (0.10 * S.volume)) //10% each step
-/*
-		if(pressure_affected)
-			//Atmosphere affects sound
-			var/pressure_factor = 1
-			var/datum/gas_mixture/hearer_env = T.return_air()
-			var/datum/gas_mixture/source_env = turf_source.return_air()
-
-			if(hearer_env && source_env)
-				var/pressure = min(hearer_env.return_pressure(), source_env.return_pressure())
-				if(pressure < ONE_ATMOSPHERE)
-					pressure_factor = max((pressure - SOUND_MINIMUM_PRESSURE)/(ONE_ATMOSPHERE - SOUND_MINIMUM_PRESSURE), 0)
-			else //space
-				pressure_factor = 0
-
-			if(distance <= 1)
-				pressure_factor = max(pressure_factor, 0.15) //touching the source of the sound
-
-			S.volume *= pressure_factor
-			//End Atmosphere affecting sound
-*/
-
 		if(S.volume <= 0)
 			return FALSE //No sound
 
@@ -203,14 +195,13 @@
 			var/mob/M = m
 			M.playsound_local(M, null, volume, vary, frequency, falloff, channel, pressure_affected, S)
 
-/proc/open_sound_channel()
-	var/static/next_channel = 1	//loop through the available 1024 - (the ones we reserve) channels and pray that its not still being used
-	. = ++next_channel
-	if(next_channel > CHANNEL_HIGHEST_AVAILABLE)
-		next_channel = 1
-
 /mob/proc/stop_sound_channel(chan)
 	SEND_SOUND(src, sound(null, repeat = 0, wait = 0, channel = chan))
+
+/mob/proc/set_sound_channel_volume(channel, volume)
+	var/sound/S = sound(null, FALSE, FALSE, channel, volume)
+	S.status = SOUND_UPDATE
+	SEND_SOUND(src, S)
 
 /mob/proc/mute_sound_channel(chan)
 	for(var/sound/S in client.SoundQuery())

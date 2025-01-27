@@ -30,6 +30,13 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/cooking/pan
 
+/datum/anvil_recipe/general/catbell
+	name = "Catbell x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/catbell,
+						/obj/item/catbell,
+						/obj/item/catbell)
+
 /datum/anvil_recipe/general/iron/keyring
 	name = "Keyrings 3x"
 	req_bar = /obj/item/ingot/iron
@@ -50,7 +57,18 @@
 	name = "Hammer (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/hammer
+	created_item = /obj/item/rogueweapon/hammer/iron
+
+/datum/anvil_recipe/tools/iron/handsaw
+	name = "Handsaw (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/handsaw
+
+/datum/anvil_recipe/tools/iron/chisel
+	name = "Chisel"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/chisel
 
 /datum/anvil_recipe/tools/iron/tongs
 	name = "Tongs"
@@ -86,11 +104,6 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/flashlight/flare/torch/lantern
 
-/datum/anvil_recipe/general/iron/cups
-	name = "Cups 3x"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/reagent_containers/glass/cup,/obj/item/reagent_containers/glass/cup,/obj/item/reagent_containers/glass/cup)
-
 /datum/anvil_recipe/tools/iron/thresher
 	name = "Thresher (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
@@ -102,30 +115,10 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rope/chain
 
-/datum/anvil_recipe/tools/iron/fork
-	name = "Iron Fork x3"
+/datum/anvil_recipe/general/chainleash
+	name = "Chain Leash"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/kitchen/ironfork
-	skill_level = 1
-
-/datum/anvil_recipe/tools/iron/spoon
-	name = "Iron Spoon x3"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/kitchen/ironspoon,
-						/obj/item/kitchen/ironspoon,
-						/obj/item/kitchen/ironspoon
-					)
-	skill_level = 1
-
-/datum/anvil_recipe/tools/iron/bowl
-	name = "Iron Bowl x3"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/reagent_containers/glass/bowl/iron,
-						/obj/item/reagent_containers/glass/bowl/iron,
-						/obj/item/reagent_containers/glass/bowl/iron
-					)
-
-	skill_level = 1
+	created_item = /obj/item/leash/chain
 
 /datum/anvil_recipe/general/iron/ramrod
 	name = "Replacement Ramrods x3"
@@ -156,6 +149,12 @@
 	skill_level = 0
 
 // --------- Steel -----------
+
+/datum/anvil_recipe/tools/steel/hammer
+	name = "Claw hammer (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/hammer/steel
 
 /datum/anvil_recipe/tools/steel/pick
 	name = "Pickaxe (+1 Stick)"
@@ -197,22 +196,15 @@
 	name = "Cautery Iron"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
-
-/datum/anvil_recipe/general/steel/cups
-	name = "Goblets 3x"
-	req_bar = /obj/item/ingot/steel
-	created_item = list(/obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel)
-
-// --------- SILVER RECIPSE -----------
-
-/datum/anvil_recipe/general/steel/cups
-	name = "Goblets 3x"
-	req_bar = /obj/item/ingot/silver
-	created_item = list(/obj/item/reagent_containers/glass/cup/silver, /obj/item/reagent_containers/glass/cup/silver, /obj/item/reagent_containers/glass/cup/silver)
-
-// --------- GOLD RECIPES -----------
-
+	
 /datum/anvil_recipe/general/cupsgold
-	name = "Goblets 3x"
-	req_bar = /obj/item/ingot/gold
-	created_item = list(/obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden)
+	name = "Cowbell"
+	req_bar = /obj/item/ingot/copper
+	created_item = list(/obj/item/catbell/cow)
+
+/datum/anvil_recipe/general/cowbell
+	name = "Cowbell x3"
+	req_bar = /obj/item/ingot/copper
+	created_item = list(/obj/item/catbell/cow,
+						/obj/item/catbell/cow,
+						/obj/item/catbell/cow)

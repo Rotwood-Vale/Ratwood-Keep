@@ -94,7 +94,7 @@
 
 /obj/machinery/light/rogue/Initialize()
 	if(soundloop)
-		soundloop = new soundloop(list(src), FALSE)
+		soundloop = new soundloop(src, FALSE)
 		soundloop.start()
 	GLOB.fires_list += src
 	if(start_fuel)
@@ -265,16 +265,6 @@
 		return
 	. = ..()
 
-/obj/machinery/light/rogue/break_light_tube(skip_sound_and_sparks = 0)
-	if(status == LIGHT_EMPTY || status == LIGHT_BROKEN)
-		return	
-	if(!skip_sound_and_sparks)
-		if(status == LIGHT_OK || status == LIGHT_BURNED)
-			playsound(src.loc, 'sound/blank.ogg', 75, TRUE)
-		if(on)
-			do_sparks(3, TRUE, src)
-	update()
-
 /obj/machinery/light/rogue/firebowl
 	name = "brazier"
 	icon = 'icons/roguetown/misc/lighting.dmi'
@@ -344,6 +334,11 @@
 	bulb_colour = "#b9bcff"
 	icon_state = "standingb1"
 	base_state = "standingb"
+
+/obj/machinery/light/rogue/firebowl/standing/green
+	bulb_colour = "#8ee2a7"
+	icon_state = "standingg1"
+	base_state = "standingg"
 
 /obj/machinery/light/rogue/firebowl/standing/proc/knock_over() //use this later for jump impacts and shit
 	icon_state = "[base_state]over"
@@ -593,7 +588,7 @@
 	var/datum/looping_sound/boilloop/boilloop
 
 /obj/machinery/light/rogue/hearth/Initialize()
-	boilloop = new(list(src), FALSE)
+	boilloop = new(src, FALSE)
 	. = ..()
 
 /obj/machinery/light/rogue/hearth/attackby(obj/item/W, mob/living/user, params)
@@ -612,10 +607,10 @@
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
 				var/obj/item/reagent_containers/food/snacks/S = W
 				if(istype(W, /obj/item/reagent_containers/food/snacks/egg)) // added
-					playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
-					sleep(25) // to get egg crack before frying hiss
-					W.icon_state = "rawegg" // added
-					mouse_opacity = 0 // so you cannot scoop up raw egg in the pan. Returned to 1 in process proc below
+					if(W.icon_state != "rawegg")
+						playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
+						sleep(25) // to get egg crack before frying hiss
+						W.icon_state = "rawegg" // added
 				if(!food)
 					S.forceMove(src)
 					food = S
@@ -813,7 +808,6 @@
 				if(food)
 					var/obj/item/C = food.cooking(20, src)
 					if(C)
-						mouse_opacity = 1
 						qdel(food)
 						food = C
 			if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))

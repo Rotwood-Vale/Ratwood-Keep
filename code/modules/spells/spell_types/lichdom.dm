@@ -61,7 +61,6 @@
 
 		to_chat(M, span_danger("With a hideous feeling of emptiness you watch in horrified fascination as skin sloughs off bone! Blood boils, nerves disintegrate, eyes boil in their sockets! As my organs crumble to dust in my fleshless chest you come to terms with my choice. You're a lich!"))
 		M.mind.hasSoul = FALSE
-		M.set_species(/datum/species/skeleton)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			H.dropItemToGround(H.wear_pants)
@@ -128,7 +127,7 @@
 	lich.real_name = mind.name
 	mind.transfer_to(lich)
 	mind.grab_ghost(force=TRUE)
-	lich.hardset_dna(null,null,lich.real_name,null, new /datum/species/skeleton)
+	lich.hardset_dna(newreal_name = lich.real_name)
 	to_chat(lich, span_warning("My bones clatter and shudder as you are pulled back into this world!"))
 	var/turf/body_turf = get_turf(old_body)
 	lich.Paralyze(200 + 200*resurrections)

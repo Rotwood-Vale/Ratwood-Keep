@@ -4,8 +4,7 @@
 	see_invisible = SEE_INVISIBLE_LIVING
 	sight = 0
 	see_in_dark = 8
-	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD,NANITE_HUD,DIAG_NANITE_FULL_HUD)
-	pressure_resistance = 10
+	hud_possible = list(ANTAG_HUD)
 
 	var/resize = 1 //Badminnery resize
 	var/lastattacker = null
@@ -114,8 +113,7 @@
 
 	var/can_be_held = FALSE	//whether this can be picked up and held.
 
-	var/radiation = 0 //If the mob is irradiated.
-	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
+	var/ventcrawl_layer = 2
 	var/losebreath = 0
 
 	//List of active diseases
@@ -127,10 +125,14 @@
 	var/list/ownedSoullinks //soullinks we are the owner of
 	var/list/sharedSoullinks //soullinks we are a/the sharer of
 
-	var/maxrogstam = 1000
-	var/maxrogfat = 100
-	var/rogstam = 1000
-	var/rogfat = 0
+	/// Long term - Blue bar
+	var/max_energy = 1000
+	/// Short term - Green bar
+	var/max_stamina = 100
+	/// Long term - Blue bar
+	var/energy = 1000
+	/// Short term - Green bar
+	var/stamina = 0
 
 	var/last_fatigued = 0
 	var/last_ps = 0
@@ -144,7 +146,8 @@
 	var/encumbrance = 0
 
 	var/eyesclosed = 0
-	var/fallingas = 0
+	/// Accumulation of tiredness, once it reaches a certain threshold and the mob's eyes are closed, they'll go to sleep. Only increases when the eyes are closed and a few other factors.
+	var/sleep_accumulation = 0
 
 	var/bleed_rate = 0 //how much are we bleeding
 	var/bleedsuppress = 0 //for stopping bloodloss, eventually this will be limb-based like bleeding
@@ -174,7 +177,7 @@
 	 * if you really need to cancel someone who is sneaking, call update_sneak_invis(TRUE).*/
 	var/rogue_sneaking = FALSE
 	/* Can be used to change the lighting threshholds at which players can sneak.*/
-	var/rogue_sneaking_light_threshhold = 0.15
+	var/rogue_sneaking_light_threshhold = 0.15 //Default. Will be modified later~
 
 
 	/// Voice pitch for audible emotes

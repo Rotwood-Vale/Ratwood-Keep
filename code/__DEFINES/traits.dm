@@ -20,7 +20,7 @@
 #define TRAIT_CRITICAL_RESISTANCE "Critical Resistance"
 #define TRAIT_CRITICAL_WEAKNESS "Critical Weakness"
 #define TRAIT_MANIAC_AWOKEN "Awoken"
-#define TRAIT_NOROGSTAM "Indefatigable" //for ai
+#define TRAIT_NOSTAMINA "Indefatigable" //for ai
 #define TRAIT_NUDIST "Nudist" //you can't wear most clothes
 #define TRAIT_CYCLOPS_LEFT "Cyclops (Left)" //poked left eye
 #define TRAIT_CYCLOPS_RIGHT "Cyclops (Right)" //poked right eye
@@ -45,6 +45,10 @@
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
+#define TRAIT_DARKLING "Darkling"
+
+///trait determines if this mob can breed given by /datum/component/breeding
+#define TRAIT_MOB_BREEDER "mob_breeder"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "Blessing of Pestra" //can eat rotten food
@@ -54,7 +58,7 @@
 #define TRAIT_ZIZO_MARKED "Blessing of Zizo" //basically just here so that they can avoid a negative moodlet
 #define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
 #define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
-#define TRAIT_CHOSEN "Astrata's Chosen"
+#define TRAIT_CHOSEN "Consecrated Priest"
 #define TRAIT_NOCTURNAL "Noc's Moonlight" //Grants weak darkvision- lighting alpha 145, amplified for mages using the DV spell- alpha 200
 #define TRAIT_FORGEBLESSED "Malum's Devout" //Reduces the fatigue cost of smithing a bit.
 
@@ -98,9 +102,11 @@
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
 
+
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
-	TRAIT_CHOSEN = "Astrata choose you to represent her glory.",
+	TRAIT_CHOSEN = "Appointed by the Church of the Successors, you hold authority over all spiritual matters in the City.",
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
 	TRAIT_ZJUMP = "Time to reach a new high.",
@@ -125,7 +131,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CRITICAL_RESISTANCE = "I am resistant to wounds that would be life threatening to others.",
 	TRAIT_CRITICAL_WEAKNESS = span_danger("I am weak to wounds that others could survive."),
 	TRAIT_MANIAC_AWOKEN = span_danger("I am <b>WAKING UP</b> and the sheeple know this. They will resist."),
-	TRAIT_NOROGSTAM = "I have boundless energy, I will never tire.",
+	TRAIT_NOSTAMINA = "I have boundless energy, I will never tire.",
 	TRAIT_NUDIST = "I <b>refuse</b> to wear clothes. They are a hindrance to my freedom.",
 	TRAIT_CYCLOPS_LEFT = span_warning("My left eye has been poked out..."),
 	TRAIT_CYCLOPS_RIGHT = span_warning("My right eye has been poked out..."),
@@ -158,6 +164,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
 	TRAIT_STUDENT = span_info("The scholar has taught me new skills!"),
+	TRAIT_DARKLING = span_info("I am a creature of the dark and am sensitive to the light. The hateful sun is especially harsh on my eyes, and I prefer to sleep during the dae."),
 	TRAIT_BOG_TREKKING = "Expert in navigating these lands."
 ))
 
@@ -233,8 +240,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NEARSIGHT			"nearsighted"
 #define TRAIT_FAT				"fat"
 #define TRAIT_HUSK				"husk"
-#define TRAIT_BADDNA			"baddna"
-#define TRAIT_CLUMSY			"clumsy"
 #define TRAIT_CHUNKYFINGERS		"chunkyfingers" //means that you can't use weapons with normal trigger guards.
 #define TRAIT_DUMB				"dumb"
 #define TRAIT_MONKEYLIKE		"monkeylike" //sets IsAdvancedToolUser to FALSE
@@ -248,7 +253,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"
 #define TRAIT_PUSHIMMUNE		"push_immunity"
 #define TRAIT_STABLEHEART		"stable_heart"
-#define TRAIT_STABLELIVER		"stable_liver"
 #define TRAIT_NOPAINSTUN		"no_pain-stun"
 #define TRAIT_RESISTHEAT		"resist_heat"
 #define TRAIT_RESISTHEATHANDS	"resist_heat_handsonly" //For when you want to be able to touch hot things, but still want fire to be an issue.
@@ -256,7 +260,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RESISTHIGHPRESSURE	"resist_high_pressure"
 #define TRAIT_RESISTLOWPRESSURE	"resist_low_pressure"
 #define TRAIT_RADIMMUNE			"rad_immunity"
-#define TRAIT_VIRUSIMMUNE		"virus_immunity"
 #define TRAIT_PIERCEIMMUNE		"pierce_immunity"
 #define TRAIT_NODISMEMBER		"dismember_immunity"
 #define TRAIT_NOFIRE			"nonflammable"
@@ -273,8 +276,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOBREATH			"no_breath"
 #define TRAIT_HOLDBREATH		"hold_breath"
 #define TRAIT_HOLY				"holy"
-#define TRAIT_DEPRESSION		"depression"
-#define TRAIT_JOLLY				"jolly"
 #define TRAIT_NOCRITDAMAGE		"no_crit"
 #define TRAIT_NOSLIPWATER		"noslip_water"
 #define TRAIT_NOSLIPALL			"noslip_all"
@@ -289,9 +290,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PARALYSIS_R_ARM	"para-r-arm"
 #define TRAIT_PARALYSIS_L_LEG	"para-l-leg"
 #define TRAIT_PARALYSIS_R_LEG	"para-r-leg"
-#define TRAIT_CANNOT_OPEN_PRESENTS "cannot-open-presents"
-#define TRAIT_PRESENT_VISION    "present-vision"
-#define TRAIT_DISK_VERIFIER     "disk-verifier"
 #define TRAIT_NOMOBSWAP         "no-mob-swap"
 #define TRAIT_XRAY_VISION       "xray_vision"
 #define TRAIT_THERMAL_VISION    "thermal_vision"
@@ -308,14 +306,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_QUICKER_CARRY		"quicker-carry"
 #define TRAIT_UNINTELLIGIBLE_SPEECH "unintelligible-speech"
 #define TRAIT_LANGUAGE_BARRIER	"language-barrier"
-#define TRAIT_UNSTABLE			"unstable"
-#define TRAIT_OIL_FRIED			"oil_fried"
-#define TRAIT_MEDICAL_HUD		"med_hud"
-#define TRAIT_SECURITY_HUD		"sec_hud"
-#define TRAIT_MEDIBOTCOMINGTHROUGH "medbot" //Is a medbot healing you
 #define TRAIT_PASSTABLE			"passtable"
 #define TRAIT_NOFLASH			"noflash" //Makes you immune to flashes
-#define TRAIT_XENO_IMMUNE		"xeno_immune"//prevents xeno huggies implanting skeletons
 #define TRAIT_NOPAIN			"no_pain"
 #define TRAIT_DRUQK				"druqk"
 #define TRAIT_BURIED_COIN_GIVEN "buried_coin_given" // prevents a human corpse from being used for a corpse multiple times
@@ -331,32 +323,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 //item traits
 #define TRAIT_NODROP            "nodrop"
 #define TRAIT_NOEMBED			"noembed"
-#define TRAIT_T_RAY_VISIBLE     "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
-
-//quirk traits
-#define TRAIT_ALCOHOL_TOLERANCE	"alcohol_tolerance"
-#define TRAIT_AGEUSIA			"ageusia"
-#define TRAIT_HEAVY_SLEEPER		"heavy_sleeper"
-#define TRAIT_NIGHT_VISION		"night_vision"
-#define TRAIT_LIGHT_STEP		"light_step"
-#define TRAIT_SPIRITUAL			"spiritual"
-#define TRAIT_FAN_CLOWN			"fan_clown"
-#define TRAIT_FAN_MIME			"fan_mime"
-#define TRAIT_VORACIOUS			"voracious"
-#define TRAIT_SELF_AWARE		"self_aware"
-#define TRAIT_FREERUNNING		"freerunning"
-#define TRAIT_SKITTISH			"skittish"
-#define TRAIT_POOR_AIM			"poor_aim"
-#define TRAIT_PROSOPAGNOSIA		"prosopagnosia"
-#define TRAIT_DRUNK_HEALING		"drunk_healing"
-#define TRAIT_TAGGER			"tagger"
-#define TRAIT_PHOTOGRAPHER		"photographer"
-#define TRAIT_MUSICIAN			"musician"
-#define TRAIT_LIGHT_DRINKER		"light_drinker"
-#define TRAIT_FRIENDLY			"friendly"
-#define TRAIT_GRABWEAKNESS		"grab_weakness"
-#define TRAIT_SNOB				"snob"
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
@@ -427,6 +394,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define MADE_UNCLONEABLE "made-uncloneable"
 #define TIMESTOP_TRAIT "timestop"
 #define HUGBOX_TRAIT "hugbox"
-#define ADVENTURER_TRAIT "adventurer"
 
 #define TRAIT_I_AM_INVISIBLE_ON_A_BOAT "invisible_on_tram"
+
+#define TRAIT_LIGHT_STEP		"light_step"
+#define TRAIT_DRUNK_HEALING		"drunk_healing"
+
+// RITUALS
+
+#define TRAIT_RITUALIZED "Ritualized" //This is used to prevent cpr to work on humans that just got sacrificed

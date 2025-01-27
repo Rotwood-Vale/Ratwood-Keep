@@ -14,7 +14,7 @@
 	show_in_credits = FALSE
 	give_bank_account = FALSE
 
-	cmode_music = 'sound/music/combat_weird.ogg'
+	cmode_music = 'sound/music/antag/combatskeleton.ogg'
 
 /datum/job/roguetown/skeleton/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -46,12 +46,13 @@
 		H.underwear = "Nude"
 		if(H.charflaw)
 			QDEL_NULL(H.charflaw)
-		H.mob_biotypes = MOB_UNDEAD
+		H.mob_biotypes |= MOB_UNDEAD
 		H.faction = list("undead")
 		H.name = "skelelon"
 		H.real_name = "skelelon"
+		H.cmode_music = 'sound/music/antag/combatskeleton.ogg'
 		ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
-		ADD_TRAIT(H, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOHUNGER, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBREATH, TRAIT_GENERIC)
@@ -59,6 +60,11 @@
 		ADD_TRAIT(H, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOSLEEP, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
+		H.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+		/datum/rmb_intent/aimed,\
+		/datum/rmb_intent/strong,\
+		/datum/rmb_intent/riposte,\
+		/datum/rmb_intent/weak)
 		for(var/obj/item/bodypart/B in H.bodyparts)
 			B.skeletonize(FALSE)
 		H.update_body()

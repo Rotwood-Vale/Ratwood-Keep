@@ -46,6 +46,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/cpr)
 		H.change_stat("intelligence", 4)
 		H.change_stat("fortune", 2)
 

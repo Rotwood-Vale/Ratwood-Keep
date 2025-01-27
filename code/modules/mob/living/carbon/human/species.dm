@@ -176,6 +176,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/stress_examine = FALSE
 	var/stress_desc = null
 
+	var/list/halfchild_types //If this species is matched with a different race, determine their offspring species (If any).
+
 ///////////
 // PROCS //
 ///////////
@@ -956,6 +958,19 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //		hunger_rate *= H.physiology.hunger_mod
 		H.adjust_nutrition(-hunger_rate)
 
+		var/obj/item/organ/vagina/vagina = H.getorganslot(ORGAN_SLOT_VAGINA)
+		if(!isseelie(H))
+			if(vagina && vagina.pregnant)
+				if(H.getorganslot(ORGAN_SLOT_BREASTS))
+					if(H.nutrition > NUTRITION_LEVEL_HUNGRY && H.getorganslot(ORGAN_SLOT_BREASTS).lactating && H.getorganslot(ORGAN_SLOT_BREASTS).milk_max > H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored) //Vrell - numbers may need to be tweaked for balance but hey this works for now.
+						var/milk_to_make = min(hunger_rate, H.getorganslot(ORGAN_SLOT_BREASTS).milk_max - H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
+						H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored += milk_to_make
+						H.adjust_nutrition(-milk_to_make * 20)
+
+					else if(H.nutrition < NUTRITION_LEVEL_STARVING && H.getorganslot(ORGAN_SLOT_BREASTS).lactating) //Vrell - If starving, your milk drains automatically to slow your starvation.
+						var/milk_to_take = min(hunger_rate, H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
+						H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored -= milk_to_take
+						H.adjust_nutrition(milk_to_take * 20)
 
 	if (H.hydration > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOHUNGER))
 		// THEY HUNGER
@@ -1002,7 +1017,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	switch(H.nutrition)
 //		if(NUTRITION_LEVEL_FAT to INFINITY) //currently disabled/999999 define
-//			if(H.rogstam >= H.maxrogstam)
+//			if(H.energy >= H.max_energy)
 //				H.apply_status_effect(/datum/status_effect/debuff/fat)
 		if(NUTRITION_LEVEL_FAT to INFINITY)
 			H.add_stress(/datum/stressevent/stuffed)
@@ -1045,34 +1060,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/update_health_hud(mob/living/carbon/human/H)
 	return 0
-
-/datum/species/proc/handle_mutations_and_radiation(mob/living/carbon/human/H)
-	. = FALSE
-	var/radiation = H.radiation
-
-	if(HAS_TRAIT(H, TRAIT_RADIMMUNE))
-		radiation = 0
-		return TRUE
-
-	if(radiation > RAD_MOB_KNOCKDOWN && prob(RAD_MOB_KNOCKDOWN_PROB))
-		if(!H.IsParalyzed())
-			H.emote("collapse", TRUE)
-		H.Paralyze(RAD_MOB_KNOCKDOWN_AMOUNT)
-		to_chat(H, span_danger("I feel weak."))
-
-	if(radiation > RAD_MOB_VOMIT && prob(RAD_MOB_VOMIT_PROB))
-		H.vomit(10, TRUE)
-
-	if(radiation > RAD_MOB_MUTATE)
-		if(prob(1))
-			to_chat(H, "<span class='danger'>I mutate!</span>")
-			H.emote("gasp")
-			H.domutcheck()
-
-	if(radiation > RAD_MOB_HAIRLOSS)
-		if(prob(15) && !(H.hairstyle == "Bald") && (HAIR in species_traits))
-			to_chat(H, span_danger("My hair starts to fall out in clumps..."))
-			addtimer(CALLBACK(src, PROC_REF(go_bald), H), 50)
 
 /datum/species/proc/go_bald(mob/living/carbon/human/H)
 	if(QDELETED(H))	//may be called from a timer
@@ -1399,7 +1386,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(user.check_leg_grabbed(1) || user.check_leg_grabbed(2))
 		to_chat(user, span_notice("I can't move my leg!"))
 		return
-	if(user.rogfat >= user.maxrogfat)
+	if(user.stamina >= user.max_stamina)
 		return FALSE
 	if(!(user.mobility_flags & MOBILITY_STAND))
 		return FALSE
@@ -1461,7 +1448,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					target_table = locate(/obj/structure/table) in target_shove_turf.contents
 					shove_blocked = TRUE
 			else
-				if(stander && target.rogfat >= target.maxrogfat) //if you are kicked while fatigued, you are knocked down no matter what
+				if(stander && target.stamina >= target.max_stamina) //if you are kicked while fatigued, you are knocked down no matter what
 					target.Knockdown(100)
 
 		if(shove_blocked && !target.is_shove_knockdown_blocked() && !target.buckled)
@@ -1518,7 +1505,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		target.lastattackerckey = user.ckey
 		if(target.mind)
 			target.mind.attackedme[user.real_name] = world.time
-		user.rogfat_add(15)
+		user.stamina_add(15)
 		target.forcesay(GLOB.hit_appends)
 
 /datum/species/proc/spec_hitby(atom/movable/AM, mob/living/carbon/human/H)
@@ -1782,13 +1769,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(CLONE)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.clone_mod
 			H.adjustCloneLoss(damage_amount)
-		if(STAMINA)
-			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.stamina_mod
-			if(BP)
-				if(BP.receive_damage(0, 0, damage_amount))
-					H.update_stamina()
-			else
-				H.adjustStaminaLoss(damage_amount)
 		if(BRAIN)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.brain_mod
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, damage_amount)
@@ -1808,12 +1788,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /obj/item/proc/blockproj(mob/living/carbon/human/H)
 	return
 
-/datum/species/proc/handle_environment(datum/gas_mixture/environment, mob/living/carbon/human/H)
-	if(!environment)
-		return
-
-	var/loc_temp = H.get_temperature(environment)
-
+/datum/species/proc/handle_environment(mob/living/carbon/human/H)
+	var/loc_temp = BODYTEMP_NORMAL //TODO: make proximity based temperature
 	//Body temperature is adjusted in two parts: first there my body tries to naturally preserve homeostasis (shivering/sweating), then it reacts to the surrounding environment
 	//Thermal protection (insulation) has mixed benefits in two situations (hot in hot places, cold in hot places)
 	if(!H.on_fire) //If you're on fire, you do not heat up or cool down based on surrounding gases
@@ -1867,7 +1843,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		burn_damage = burn_damage * heatmod * H.physiology.heat_mod
 		if (H.stat < UNCONSCIOUS && (prob(burn_damage) * 10) / 4) //40% for level 3 damage on humans
 			H.emote("pain")
-		H.apply_damage(burn_damage, BURN, spread_damage = TRUE)
+		
+		H.apply_damage(CLAMP(burn_damage, 0, CONFIG_GET(number/per_tick/max_fire_damage)), BURN, spread_damage = TRUE)
 
 	else if(H.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT && !HAS_TRAIT(H, TRAIT_RESISTCOLD))
 		SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "hot")
@@ -1890,28 +1867,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
 		SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "cold")
 		SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "hot")
-
-	var/pressure = environment.return_pressure()
-	var/adjusted_pressure = H.calculate_affecting_pressure(pressure) //Returns how much pressure actually affects the mob.
-	switch(adjusted_pressure)
-		if(HAZARD_HIGH_PRESSURE to INFINITY)
-			if(!HAS_TRAIT(H, TRAIT_RESISTHIGHPRESSURE))
-				H.adjustBruteLoss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) -1 ) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE) * H.physiology.pressure_mod)
-				H.throw_alert("pressure", /atom/movable/screen/alert/highpressure, 2)
-			else
-				H.clear_alert("pressure")
-		if(WARNING_HIGH_PRESSURE to HAZARD_HIGH_PRESSURE)
-			H.throw_alert("pressure", /atom/movable/screen/alert/highpressure, 1)
-		if(WARNING_LOW_PRESSURE to WARNING_HIGH_PRESSURE)
-			H.clear_alert("pressure")
-		if(HAZARD_LOW_PRESSURE to WARNING_LOW_PRESSURE)
-			H.throw_alert("pressure", /atom/movable/screen/alert/lowpressure, 1)
-		else
-			if(HAS_TRAIT(H, TRAIT_RESISTLOWPRESSURE))
-				H.clear_alert("pressure")
-			else
-				H.adjustBruteLoss(LOW_PRESSURE_DAMAGE * H.physiology.pressure_mod)
-				H.throw_alert("pressure", /atom/movable/screen/alert/lowpressure, 2)
 
 //////////
 // FIRE //
@@ -1971,9 +1926,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		var/thermal_protection = H.get_thermal_protection()
 
-		if(thermal_protection >= FIRE_IMMUNITY_MAX_TEMP_PROTECT && !no_protection)
+		if(thermal_protection >= 30000 && !no_protection)
 			return
-		if(thermal_protection >= FIRE_SUIT_MAX_TEMP_PROTECT && !no_protection)
+		if(thermal_protection >= 30000 && !no_protection)
 			H.adjust_bodytemperature(11)
 		else
 			H.adjust_bodytemperature(BODYTEMP_HEATING_MAX + (H.fire_stacks * 12))
@@ -2098,6 +2053,46 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	T.wagging = FALSE
 	H.update_body_parts(TRUE)
 
+////////////////
+//Wing Opening//
+////////////////
+
+/datum/species/proc/can_flare_wings(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return FALSE
+	var/obj/item/organ/wings/W = H.getorganslot(ORGAN_SLOT_WINGS)
+	if(!W)
+		return FALSE
+	if(W.can_open)
+		return TRUE
+	return FALSE
+
+/datum/species/proc/is_flaring_wings(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return FALSE
+	var/obj/item/organ/wings/W = H.getorganslot(ORGAN_SLOT_WINGS)
+	if(!W)
+		return FALSE
+	return W.is_open
+
+/datum/species/proc/start_flaring_wings(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return
+	var/obj/item/organ/wings/W = H.getorganslot(ORGAN_SLOT_WINGS)
+	if(!W)
+		return FALSE
+	W.is_open = TRUE
+	H.update_body_parts(TRUE)
+
+/datum/species/proc/stop_flaring_wings(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return
+	var/obj/item/organ/wings/W = H.getorganslot(ORGAN_SLOT_WINGS)
+	if(!W)
+		return
+	W.is_open = FALSE
+	H.update_body_parts(TRUE)
+
 ///////////////
 //FLIGHT SHIT//
 ///////////////
@@ -2128,13 +2123,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/turf/T = get_turf(H)
 	if(!T)
 		return FALSE
-
-	var/datum/gas_mixture/environment = T.return_air()
-	if(environment && !(environment.return_pressure() > 30))
-		to_chat(H, span_warning("The atmosphere is too thin for you to fly!"))
-		return FALSE
-	else
-		return TRUE
+	return TRUE
 
 /datum/species/proc/flyslip(mob/living/carbon/human/H)
 	var/obj/buckled_obj

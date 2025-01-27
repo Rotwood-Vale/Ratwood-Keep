@@ -19,8 +19,8 @@
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "together"
 	baseturfs = /turf/open/water
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	slowdown = 5
+	turf_flags = NONE
 	var/obj/effect/overlay/water/water_overlay
 	var/obj/effect/overlay/water/top/water_top_overlay
 	bullet_sizzle = TRUE
@@ -87,7 +87,7 @@
 //				drained += (user.checkwornweight()*2)
 				if(!user.check_armor_skill())
 					drained += 40
-				if(!user.rogfat_add(drained))
+				if(!user.stamina_add(drained))
 					user.Immobilize(30)
 					addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, Knockdown), 30), 10)
 

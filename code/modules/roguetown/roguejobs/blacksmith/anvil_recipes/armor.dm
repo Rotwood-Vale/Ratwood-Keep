@@ -24,6 +24,11 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/neck/roguetown/gorget
 
+/datum/anvil_recipe/armor/iron/ogorg
+	name = "Ringed Gorget"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/neck/roguetown/gorget/oring
+
 /datum/anvil_recipe/armor/iron/breastplate
 	name = "Breastplate (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
@@ -56,7 +61,7 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/skullcap
 
 /datum/anvil_recipe/armor/iron/studded
-	name = "Studded Leather Armor (+Leather Armor)"
+	name = "Studded Leather Armor (+1 Leather Armor)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded
@@ -94,7 +99,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/armor/iron/chainkini
-	name = "Chainkini (+1 Leather)"
+	name = "Chainkini (+1 Cured Leather)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
@@ -136,7 +141,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/armor/steel/brigandine
-	name = "Brigandine (+1 Steel +2 Cloth)"
+	name = "Brigandine (+1 Steel) (+2 Cloth)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/cloth, /obj/item/natural/cloth)
 	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine
@@ -205,6 +210,11 @@
 	name = "Steel Gorget"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/neck/roguetown/gorget/steel
+
+/datum/anvil_recipe/armor/steel/sogorg
+	name = "Ringed Steel Gorget"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/neck/roguetown/gorget/steel/oring
 
 /datum/anvil_recipe/armor/steel/kettle
 	name = "Kettle"
@@ -373,28 +383,28 @@
 // --------- BLACKSTEEL RECIPES-----------
 
 /datum/anvil_recipe/armor/blacksteel/cuirass
-	name = "Blacksteel Cuirass"
+	name = "Blacksteel Cuirass (+1 Blacksteel)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
 	skill_level = 4
 
 /datum/anvil_recipe/armor/blacksteel/platechest
-	name = "Blacksteel Plate Armor"
+	name = "Blacksteel Plate Armor (+3 Blacksteel)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
 	skill_level = 5
 
 /datum/anvil_recipe/armor/blacksteel/platelegs
-	name = "Blacksteel Plate Chausses"
+	name = "Blacksteel Plate Chausses (+1 Blacksteel)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/under/roguetown/blacksteel/platelegs
 	skill_level = 3
 
 /datum/anvil_recipe/armor/blacksteel/bucket
-	name = "Blacksteel Bucket Helmet"
+	name = "Blacksteel Bucket Helmet (+1 Blacksteel)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/blacksteel/bucket

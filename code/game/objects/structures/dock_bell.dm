@@ -17,6 +17,9 @@
 		return
 	if(!do_after(user, 5 SECONDS, target = src))
 		return
+	if(!COOLDOWN_FINISHED(src, ring_bell))
+		to_chat(user, span_notice("Someone beat me to it!"))
+		return
 	visible_message(span_notice("[user] starts ringing the dock bell."))
 	playsound(get_turf(src), 'sound/misc/handbell.ogg', 50, 1)
 	if(!SSmerchant.cargo_docked && SSmerchant.cargo_boat.check_living())

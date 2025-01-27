@@ -226,7 +226,7 @@
 	..()
 	neck = /obj/item/clothing/neck/roguetown/talkstone
 	cloak = /obj/item/clothing/cloak/black_cloak
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
+	armor = /obj/item/clothing/suit/roguetown/shirt/robe/magered
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
@@ -236,6 +236,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/lovepotion,/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, "[type]")
+	ADD_TRAIT(H, TRAIT_NOBLE, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 5, TRUE)
@@ -266,7 +267,7 @@
 				head = /obj/item/clothing/head/roguetown/wizhat
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/wizard
 				H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
-		var/list/spells = list(/obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation, /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater)
+		var/list/spells = list(/obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation, /obj/effect/proc_holder/spell/invoked/projectile/fireballgreater)
 		for(var/S in spells)
 			H.mind.AddSpell(new S)
 
@@ -285,7 +286,7 @@
 
 /datum/outfit/job/roguetown/heartfelt/prior/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/clothing/neck/roguetown/psicross/astrata
+	neck = /obj/item/clothing/neck/roguetown/psicross/silver/astrata
 	head = /obj/item/clothing/head/roguetown/priestmask
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 	pants = /obj/item/clothing/under/roguetown/tights/black

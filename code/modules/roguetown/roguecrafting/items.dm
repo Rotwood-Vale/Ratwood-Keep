@@ -59,6 +59,22 @@
 	result = /obj/item/kitchen/rollingpin
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
+/datum/crafting_recipe/roguetown/bellcollar
+	name = "leather collar with catbell"
+	result = /obj/item/clothing/neck/roguetown/collar/leather/bell
+	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell = 1)
+	skill_level = 0
+	verbage_simple = "affix"
+	verbage = "affixes"
+
+/datum/crafting_recipe/roguetown/bellcollar/cow
+	name = "leather collar with cowbell"
+	result = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow
+	reqs = list(/obj/item/clothing/neck/roguetown/collar/leather = 1, /obj/item/catbell/cow = 1)
+	skill_level = 0
+	verbage_simple = "affix"
+	verbage = "affixes"
+
 /datum/crafting_recipe/roguetown/unclothbelt
 	name = "untie cloth belt"
 	result = /obj/item/natural/cloth
@@ -171,10 +187,16 @@
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/peasantwarflail
-	name = "peasant war flail"
-	result = /obj/item/rogueweapon/flail/peasantwarflail
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/rope = 1,
+	name = "peasant war flail (chain)"
+	result = /obj/item/rogueweapon/thresher/wflail
+	reqs = list(/obj/item/rope/chain = 1,
+				/obj/item/rogueweapon/thresher = 1)
+	skill_level = 2
+
+/datum/crafting_recipe/roguetown/peasantwarflail_alt
+	name = "peasant war flail (chained)"
+	result = /obj/item/rogueweapon/thresher/wflail
+	reqs = list(/obj/item/leash/chain = 1,			// wish there werent 2 chains with diff item pathing ngl
 				/obj/item/rogueweapon/thresher = 1)
 	skill_level = 2
 
@@ -375,7 +397,7 @@
 
 
 /obj/item/clothing/mask/cigarette/pipe/crafted
-	sellprice = 6
+	sellprice = 4
 
 /datum/crafting_recipe/roguetown/rod
 	name = "fishing rod"
@@ -475,13 +497,46 @@
 
 /datum/crafting_recipe/roguetown/sawedoff
 	name = "handgonne"
-	result = /obj/item/gun/ballistic/handgonne
-	reqs = list(/obj/item/gun/ballistic/arquebus = 1)
+	result = /obj/item/gun/ballistic/firearm/handgonne
+	reqs = list(/obj/item/gun/ballistic/firearm/arquebus = 1)
 	skill_level = 0
 	tools = list(/obj/item/rogueweapon/surgery/saw = 1)
+
+
+// Blacksmithing Recipes
+
+/datum/crafting_recipe/roguetown/gorget/oring
+	name = "ringed gorget"
+	skillcraft = /datum/skill/craft/blacksmithing
+	reqs = list(/obj/item/clothing/neck/roguetown/gorget = 1)
+	result = /obj/item/clothing/neck/roguetown/gorget/oring
+	skill_level = 2
+	tools = list(/obj/item/rogueweapon/hammer = 1)
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/gorget/soring
+	name = "ringed steel gorget"
+	skillcraft = /datum/skill/craft/blacksmithing
+	reqs = list(/obj/item/clothing/neck/roguetown/gorget/steel = 1)
+	result = /obj/item/clothing/neck/roguetown/gorget/steel/oring
+	skill_level = 2
+	tools = list(/obj/item/rogueweapon/hammer = 1)
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/chainleash
+	name = "chain leash"
+	skillcraft = /datum/skill/craft/blacksmithing
+	reqs = list(/obj/item/rope/chain = 1)
+	result = /obj/item/leash/chain
+	skill_level = 2
+	tools = list(/obj/item/rogueweapon/hammer = 1)
+	req_table = TRUE
+
+//Siege
 
 /datum/crafting_recipe/roguetown/boulder
 	name = "boulder"
 	result = /obj/item/boulder
 	reqs = list(/obj/item/natural/stone = 5)
 	always_available = TRUE
+

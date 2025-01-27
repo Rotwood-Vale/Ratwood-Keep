@@ -20,6 +20,7 @@
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/turf/closed, /turf/open/floor/rogue/volcanic, /turf/open/floor/rogue/dirt, /turf/open/floor/rogue/dirt/road,/turf/open/floor/rogue/naturalstone)
 	neighborlay_override = "lavedge"
+	turf_flags = NONE
 
 /turf/open/lava/Initialize()
 	. = ..()
@@ -44,9 +45,6 @@
 
 /turf/open/lava/MakeDry(wet_setting = TURF_WET_WATER)
 	return
-
-/turf/open/lava/airless
-	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/lava/Entered(atom/movable/AM)
 	if(!AM.throwing)
@@ -83,15 +81,6 @@
 	underlay_appearance.icon = 'icons/turf/floors.dmi'
 	underlay_appearance.icon_state = "basalt"
 	return TRUE
-
-/turf/open/lava/GetHeatCapacity()
-	. = 700000
-
-/turf/open/lava/GetTemperature()
-	. = 5000
-
-/turf/open/lava/TakeTemperature(temp)
-
 
 /turf/open/lava/proc/burn_stuff(AM)
 	. = 0
@@ -149,8 +138,8 @@
 			if("lava" in L.weather_immunities)
 				continue
 
-//			L.adjustFireLoss(50)
 			if(L) //mobs turning into object corpses could get deleted here.
+				L.adjustFireLoss(10)
 				L.adjust_fire_stacks(100)
 				L.IgniteMob()
 				if(L.health <= 0)
@@ -162,14 +151,6 @@
 	icon_state = "unsmooth"
 	smooth = SMOOTH_MORE | SMOOTH_BORDER
 	canSmoothWith = list(/turf/open/lava/smooth)
-
-/turf/open/lava/smooth/lava_land_surface
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
-	planetary_atmos = TRUE
-	baseturfs = /turf/open/lava/smooth/lava_land_surface
-
-/turf/open/lava/smooth/airless
-	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/lava/acid
 	name = "acid"

@@ -1,49 +1,56 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mole
 	icon = 'icons/roguetown/mob/monster/mole.dmi'
 	name = "mole"
+	desc = "Usually lurking underground, they sometimes grow to impossible sizes and come to the surface to satiate a strange, newfound hunger for flesh."
 	icon_state = "mole"
 	icon_living = "mole"
 	icon_dead = "mole_dead"
-	gender = MALE
+
+	faction = list("moles")
 	emote_hear = null
 	emote_see = null
-	speak_chance = 1
 	turns_per_move = 2
-	see_in_dark = 6
 	move_to_delay = 5
-	base_intents = list(/datum/intent/simple/claw)
+	vision_range = 7
+	aggro_vision_range = 9
+
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 7,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur = 1)
-	faction = list("wolfs")
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 340
-	maxHealth = 340
-	melee_damage_lower = 19
-	melee_damage_upper = 29
-	vision_range = 7
-	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
-	retreat_distance = 0
-	minimum_distance = 0
-	milkies = FALSE
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
-	footstep_type = FOOTSTEP_MOB_BAREFOOT
-	pooptype = null
+
+	health = MOLE_HEALTH
+	maxHealth = MOLE_HEALTH
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,
+					/obj/item/bodypart,
+					/obj/item/organ)
+
+	base_intents = list(/datum/intent/simple/claw)
+	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
+	melee_damage_lower = 20
+	melee_damage_upper = 40
+
 	STACON = 7
 	STASTR = 20
 	STASPD = 13
+	STAEND = 10
+
+	retreat_distance = 0
+	minimum_distance = 0
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
 	retreat_health = 0.3
 	food = 0
-	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
+
 	dodgetime = 30
-	aggressive = 1
-//	stat_attack = UNCONSCIOUS
+	aggressive = TRUE
 	remains_type = /obj/effect/decal/remains/mole
+	body_eater = TRUE
+
+	ai_controller = /datum/ai_controller/mole
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
 
 /obj/effect/decal/remains/mole
 	name = "remains"
@@ -57,6 +64,7 @@
 	if(prob(33))
 		gender = FEMALE
 	update_icon()
+	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mole/death(gibbed)
 	..()

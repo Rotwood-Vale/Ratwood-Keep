@@ -167,26 +167,26 @@
 // --------- WEAPON -----------
 
 /datum/artificer_recipe/wood/weapons //Again, a bit silly, but is important
-	name = "Wooden Staff"
+	name = "Wooden Staff (+1 Plank)"
 	created_item = /obj/item/rogueweapon/woodstaff
 	additional_items = list(/obj/item/natural/wood/plank = 1)
 	hammers_per_item = 3
 	i_type = "Weapons"
 
 /datum/artificer_recipe/wood/weapons/bow // easier recipe for bows
-	name = "Wooden Bow (+1 Fiber)"
+	name = "Wooden Bow (+1 Fiber) (+1 Plank)"
 	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	hammers_per_item = 3
 	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/fibers = 1)
 
 /datum/artificer_recipe/wood/weapons/wsword
-	name = "Wooden Sword"
+	name = "Wooden Sword (+1 Plank)"
 	created_item = /obj/item/rogueweapon/mace/wsword
 	additional_items = list(/obj/item/natural/wood/plank = 1)
 	hammers_per_item = 3
 
 /datum/artificer_recipe/wood/weapons/wshield
-	name = "Wooden Shield"
+	name = "Wooden Shield (+1 Plank)"
 	created_item = /obj/item/rogueweapon/shield/wood/crafted
 	additional_items = list(/obj/item/natural/wood/plank = 1)
 	hammers_per_item = 6
@@ -220,18 +220,58 @@
 	i_type = "Ammunition"
 
 /datum/artificer_recipe/ammunition/bolts
-	name = "Crossbow Bolts 5x (+1 Iron)"
+	name = "Crossbow Bolts 20x (+3 planks, +2 Iron)"
 	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/ingot/iron)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt)
+	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/ingot/iron, /obj/item/ingot/iron)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt
+					)
 	hammers_per_item = 6
 	skill_level = 2
 
 /datum/artificer_recipe/ammunition/arrows
-	name = "Arrows 5x (+1 Iron)"
+	name = "Arrows 20x (+3 Planks, +2 Iron)"
 	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/ingot/iron)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron)
+	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/ingot/iron, /obj/item/ingot/iron)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron
+					)
 	hammers_per_item = 6
 	skill_level = 2
 
@@ -241,7 +281,7 @@
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/prosthetics/wood/arm_left
-	name = "Left Wooden Arm (+1 Wooden Cog)"
+	name = "Left Wooden Arm (+2 Plank) (+1 Wooden Cog)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
 	created_item = /obj/item/bodypart/l_arm/prosthetic/wood
@@ -249,7 +289,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/prosthetics/wood/arm_right
-	name = "Right Wooden Arm (+1 Wooden Cog)"
+	name = "Right Wooden Arm (+2 Plank) (+1 Wooden Cog)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
 	created_item = /obj/item/bodypart/r_arm/prosthetic/wood
@@ -257,7 +297,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/prosthetics/wood/leg_left
-	name = "Left Wooden Leg (+1 Wooden Cog)"
+	name = "Left Wooden Leg (+2 Plank) (+1 Wooden Cog)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
 	created_item = /obj/item/bodypart/l_leg/prosthetic/wood
@@ -265,7 +305,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/prosthetics/wood/leg_right
-	name = "Right Wooden Leg (+1 Wooden Cog)"
+	name = "Right Wooden Leg (+2 Plank) (+1 Wooden Cog)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/natural/wood/plank = 2, /obj/item/roguegear/wood/basic = 1)
 	created_item = /obj/item/bodypart/r_leg/prosthetic/wood
@@ -368,29 +408,29 @@
 	skill_level = 2
 
 /datum/artificer_recipe/guns/arquebus
-	name = "Arquebus (+1 Stock, Lock, and Barrel)"
+	name = "Arquebus (+1 Stock) (+1 Lock) (+1 Barrel)"
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/gunlock = 1,
 							/obj/item/gunstock = 1,
 							/obj/item/gunbarrel = 1)
-	created_item = list(/obj/item/gun/ballistic/arquebus)
+	created_item = list(/obj/item/gun/ballistic/firearm/arquebus)
 	hammers_per_item = 10
 	skill_level = 4
 
 /datum/artificer_recipe/guns/blunderbuss
-	name = "Blunderbuss (+1 Stock, Lock, and Barrel)"
+	name = "Blunderbuss (+1 Stock) (+1 Lock) (+1 Barrel)"
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/gunlock = 1,
 							/obj/item/gunstock = 1,
 							/obj/item/gunbarrel = 1)
-	created_item = list(/obj/item/gun/ballistic/blunderbuss)
+	created_item = list(/obj/item/gun/ballistic/firearm/blunderbuss)
 	hammers_per_item = 10
 	skill_level = 4
 
 // --------- IRON -----------
 
 /datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
-	name = "Iron Left Arm (+1 Cog)"
+	name = "Iron Left Arm (+1 Plank) (+1 Cog)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/iron
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/roguegear/bronze = 1)
@@ -399,13 +439,13 @@
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/iron/prosthetic/arm_right
-	name = "Iron Right Arm (+1 Cog)"
+	name = "Iron Right Arm (+1 Plank) (+1 Cog)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/iron
 
 /datum/artificer_recipe/iron/prosthetic/leg_left
-	name = "Iron Left Leg (+1 Cog)"
+	name = "Iron Left Leg (+1 Plank) (+1 Cog)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/iron
 
 /datum/artificer_recipe/iron/prosthetic/leg_right
-	name = "Iron Right Leg (+1 Cog)"
+	name = "Iron Right Leg (+1 Plank) (+1 Cog)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/iron

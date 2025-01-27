@@ -14,7 +14,7 @@
 	outfit = /datum/outfit/job/roguetown/goblinguard
 	min_pq = 4
 	max_pq = null
-	advclass_cat_rolls = list(CTAG_GOBS = 20)
+	subclass_cat_rolls = list(CTAG_GOBS = 20)
 	advjob_examine = TRUE
 
 /datum/outfit/job/roguetown/goblinguard
@@ -44,7 +44,7 @@
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
 
-/datum/advclass/gob_brute
+/datum/subclass/gob_brute
 	name = "Brute"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
@@ -69,13 +69,12 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.change_stat("strength", 2)
+		H.change_stat("strength", 3)
 		H.change_stat("perception", 1)
-		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("intelligence", -2)
 
-/datum/advclass/gob_outrider
+/datum/subclass/gob_outrider
 	name = "Outrider"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
@@ -103,13 +102,12 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.change_stat("strength", 1)
+		H.change_stat("strength", 2)
 		H.change_stat("perception", 2)
-		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("intelligence", -2)
 
-/datum/advclass/gob_raider
+/datum/subclass/gob_raider
 	name = "Raider"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
@@ -126,7 +124,7 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3 , TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
@@ -137,7 +135,7 @@
 		H.change_stat("perception", -2)
 		H.change_stat("intelligence", -4)
 
-/datum/advclass/gob_archer
+/datum/subclass/gob_archer
 	name = "Boltslinger"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)

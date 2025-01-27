@@ -1,8 +1,8 @@
 /mob/living
 	/// Simple wound instances with no associated bodyparts
-	var/list/datum/wound/simple_wounds
+	var/list/datum/wound/simple_wounds = list()
 	/// Simple embedded objects with no associated bodyparts
-	var/list/obj/item/simple_embedded_objects
+	var/list/obj/item/simple_embedded_objects = list()
 
 /// Returns every embedded object we have, simple or not
 /mob/living/proc/get_embedded_objects()
@@ -34,6 +34,9 @@
 /mob/living/proc/get_wounds()
 	var/list/all_wounds = list()
 	if(length(simple_wounds))
+		for(var/datum/wound/wound as anything in simple_wounds) // Sanitizes the list so that we have no null pointers
+			if(isnull(wound))
+				simple_wounds -= wound
 		all_wounds += simple_wounds
 	return all_wounds
 

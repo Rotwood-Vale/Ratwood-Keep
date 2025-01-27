@@ -35,7 +35,7 @@
 		backr = /obj/item/storage/backpack/rogue/satchel
 	else
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
-		armor = /obj/item/clothing/suit/roguetown/armor/workervest
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black //If girlmagi have to have sandals I'm giving them a dress
 		backr = /obj/item/storage/backpack/rogue/satchel
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)

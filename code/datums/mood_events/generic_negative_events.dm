@@ -38,7 +38,7 @@
 	timeout = 3 MINUTES
 
 /datum/mood_event/eye_stab
-	description = "<span class='boldwarning'>I used to be an adventurer like you, until I took a screwdriver to the eye.</span>\n"
+	description = "<span class='boldwarning'>I used to be an refugee like you, until I took a screwdriver to the eye.</span>\n"
 	mood_change = -4
 	timeout = 3 MINUTES
 
@@ -70,19 +70,6 @@
 /datum/mood_event/embedded
 	description = "<span class='boldwarning'>Pull it out!</span>\n"
 	mood_change = -7
-
-/datum/mood_event/table
-	description = "<span class='warning'>Someone threw me on a table!</span>\n"
-	mood_change = -2
-	timeout = 2 MINUTES
-
-/datum/mood_event/table/add_effects()
-	if(isfelinid(owner))
-		var/mob/living/carbon/human/H = owner
-		H.dna.species.start_wagging_tail(H)
-		addtimer(CALLBACK(H.dna.species, TYPE_PROC_REF(/datum/species, stop_wagging_tail), H), 30)
-		description =  "<span class='nicegreen'>They want to play on the table!</span>\n"
-		mood_change = 2
 
 /datum/mood_event/table_headsmash
 	description = span_warning("My fucking head, that hurt...")
