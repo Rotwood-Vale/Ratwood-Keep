@@ -254,7 +254,7 @@
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	weight = 20
 
-/datum/special_trait/spring_in_my_step/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/freerunner/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_ZJUMP, "[type]")
 	ADD_TRAIT(character, TRAIT_LEAPER, "[type]")
 	ADD_TRAIT(character, TRAIT_NOFALLDAMAGE1, "[type]")
