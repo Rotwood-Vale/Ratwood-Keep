@@ -727,7 +727,7 @@
 	greet_text = span_notice("I keep two runelocks on me at all times. Sadly I forgot to load them today.")
 	req_text = "Be a Priest or Priestess"
 	allowed_jobs = list(/datum/job/roguetown/priest)
-	weight = 15
+	weight = 10
 
 /datum/special_trait/runic_faith/on_apply(mob/living/carbon/human/character, silent)
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
@@ -743,7 +743,7 @@
 	allowed_patrons = list(/datum/patron/divine/noc)
 	allowed_jobs = list(/datum/job/roguetown/ruler)
 	restricted_traits = list(TRAIT_SPELLCOCKBLOCK)
-	weight = 15
+	weight = 10
 
 /datum/special_trait/thinker/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("strength", -3)
