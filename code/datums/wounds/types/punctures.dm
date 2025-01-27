@@ -2,8 +2,8 @@
 	name = "puncture"
 	whp = 40
 	sewn_whp = 20
-	bleed_rate = 0.6
-	sewn_bleed_rate = 0.04
+	bleed_rate = 1.5
+	sewn_bleed_rate = 0.01
 	clotting_rate = 0.01
 	sewn_clotting_rate = 0.01
 	clotting_threshold = 0.2
@@ -19,8 +19,8 @@
 	name = "small puncture"
 	whp = 20
 	sewn_whp = 10
-	bleed_rate = 0.2
-	sewn_bleed_rate = 0.02
+	bleed_rate = 0.5
+	sewn_bleed_rate = 0.01
 	clotting_rate = 0.01
 	sewn_clotting_rate = 0.01
 	clotting_threshold = 0.1
@@ -31,7 +31,7 @@
 	name = "gaping puncture"
 	whp = 40
 	sewn_whp = 20
-	bleed_rate = 1.2
+	bleed_rate = 2
 	sewn_bleed_rate = 0.1
 	clotting_rate = 0.01
 	sewn_clotting_rate = 0.01
@@ -45,7 +45,7 @@
 	severity = WOUND_SEVERITY_SUPERFICIAL
 	whp = 40
 	sewn_whp = 20
-	bleed_rate = 1.2
+	bleed_rate = 2
 	sewn_bleed_rate = 0.1
 	clotting_rate = null
 	clotting_threshold = null

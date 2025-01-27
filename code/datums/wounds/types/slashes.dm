@@ -2,7 +2,7 @@
 	name = "slash"
 	whp = 30
 	sewn_whp = 10
-	bleed_rate = 0.6
+	bleed_rate = 1.5
 	sewn_bleed_rate = 0.02
 	clotting_rate = 0.02
 	sewn_clotting_rate = 0.02
@@ -19,7 +19,7 @@
 	name = "small slash"
 	whp = 15
 	sewn_whp = 5
-	bleed_rate = 0.2
+	bleed_rate = 1
 	sewn_bleed_rate = 0.01
 	clotting_rate = 0.02
 	sewn_clotting_rate = 0.02
@@ -31,7 +31,7 @@
 	name = "gruesome slash"
 	whp = 40
 	sewn_whp = 12
-	bleed_rate = 1
+	bleed_rate = 2
 	sewn_bleed_rate = 0.05
 	clotting_rate = 0.02
 	sewn_clotting_rate = 0.02
@@ -50,7 +50,7 @@
 	sound_effect = 'sound/combat/crit2.ogg'
 	whp = 100
 	sewn_whp = 35
-	bleed_rate = 20
+	bleed_rate = 30
 	sewn_bleed_rate = 0.8
 	clotting_rate = 0.02
 	sewn_clotting_rate = 0.02
