@@ -13815,6 +13815,12 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
+"lsF" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/roguegrass,
+/obj/structure/roguemachine/scomm,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "lsG" = (
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
@@ -56731,7 +56737,7 @@ cHT
 ymg
 nPK
 fsP
-lyQ
+fsP
 jIk
 lyQ
 wDa
@@ -56888,8 +56894,8 @@ uRQ
 uRQ
 pRq
 fsP
-jIk
-lyQ
+fsP
+fsP
 wDa
 jIk
 wDa
@@ -57045,8 +57051,8 @@ qzM
 qzM
 pRq
 fsP
-lyQ
-lyQ
+fsP
+fsP
 jIk
 wDa
 wDa
@@ -57202,7 +57208,7 @@ cHT
 ymg
 nPK
 fsP
-lyQ
+fsP
 jIk
 jIk
 jIk
@@ -57462,7 +57468,7 @@ ifJ
 dby
 bPQ
 mbj
-diX
+lsF
 pJn
 pJn
 krt
@@ -83063,7 +83069,7 @@ loI
 loI
 wkB
 fJa
-rjf
+nnu
 rjf
 rjf
 rjf
@@ -83377,7 +83383,7 @@ lcT
 lcT
 nVg
 fJa
-rjf
+nnu
 rjf
 rjf
 rjf
