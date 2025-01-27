@@ -48,6 +48,7 @@
 				if("Billhook")
 					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 					r_hand = /obj/item/rogueweapon/spear/billhook
+					backr = /obj/item/gwstrap
 				if("Battle Axe")
 					H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 					backr = /obj/item/rogueweapon/stoneaxe/battle
@@ -172,8 +173,9 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
@@ -190,6 +192,6 @@
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 			head = /obj/item/clothing/head/roguetown/bucklehat
 			gloves = /obj/item/clothing/gloves/roguetown/otavan
-			beltl = /obj/item/reagent_containers/glass/bottle/rogue/stampot
+			beltl = /obj/item/reagent_containers/glass/alchemical/strpot
 			beltr = /obj/item/rogueweapon/huntingknife
 			r_hand = /obj/item/flashlight/flare/torch
