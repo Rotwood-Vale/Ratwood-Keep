@@ -20,6 +20,7 @@
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/turf/closed, /turf/open/floor/rogue/volcanic, /turf/open/floor/rogue/dirt, /turf/open/floor/rogue/dirt/road,/turf/open/floor/rogue/naturalstone)
 	neighborlay_override = "lavedge"
+	turf_flags = NONE
 
 /turf/open/lava/Initialize()
 	. = ..()
@@ -137,8 +138,8 @@
 			if("lava" in L.weather_immunities)
 				continue
 
-//			L.adjustFireLoss(50)
 			if(L) //mobs turning into object corpses could get deleted here.
+				L.adjustFireLoss(10)
 				L.adjust_fire_stacks(100)
 				L.IgniteMob()
 				if(L.health <= 0)

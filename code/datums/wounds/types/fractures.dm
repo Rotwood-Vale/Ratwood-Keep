@@ -46,6 +46,8 @@
 		return FALSE
 	sleep_healing = max(sleep_healing, 1)
 	passive_healing = max(passive_healing, 1)
+	can_set = FALSE // No reason for us to be able to set the same bone multiple times.
+	check_name += span_bone(" (Set)")
 	return TRUE
 
 /datum/wound/fracture/head

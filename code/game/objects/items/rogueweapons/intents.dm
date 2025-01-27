@@ -574,3 +574,18 @@
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "stabs the air!"
+
+// Chicken
+/datum/intent/simple/peck
+	name = "peck"
+	icon_state = "instrike"
+	attack_verb = list("pecks", "scratches")
+	animname = "blank22"
+	blade_class = BCLASS_CUT
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 2
+	swingdelay = 1
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "pecks the air!"

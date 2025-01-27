@@ -335,7 +335,7 @@
 	name = "Godless"
 	greet_text = span_notice("Gods may exist, but know what? I care not.")
 	req_text = "Non-Church Role"
-	restricted_jobs = list(CHURCH_ROLES)
+	restricted_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
 	weight = 100
 
 /datum/special_trait/atheism/on_apply(mob/living/carbon/human/character, silent)
@@ -356,12 +356,12 @@
 	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
 	req_text = "Non-church role"
 	weight = 100
-	restricted_jobs = list(CHURCH_ROLES)
+	restricted_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
 	character.add_stress(/datum/stressevent/psycurse)
-	character.devotion.excommunicate()
+	character.devotion?.excommunicate()
 
 /datum/special_trait/bounty
 	name = "Hunted Man"
@@ -551,7 +551,7 @@
 	name = "Reps for Redemption"
 	greet_text = span_notice("Pain has finally transformed into gain.")
 	req_text = "Be a Church Role"
-	allowed_jobs = list(CHURCH_ROLES)
+	allowed_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
 	weight = 50
 
 /datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)

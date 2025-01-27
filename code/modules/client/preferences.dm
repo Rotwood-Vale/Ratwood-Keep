@@ -2,6 +2,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 GLOBAL_LIST_EMPTY(chosen_names)
 
+GLOBAL_LIST_INIT(name_adjustments, list())
+
 /datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
@@ -139,6 +141,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/charflaw/charflaw
 
 	var/family = FAMILY_NONE
+	var/list/family_species = list()
+	var/list/family_gender = list()
 
 	var/crt = FALSE
 
@@ -181,6 +185,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			return
 	//Set the race to properly run race setter logic
 	set_new_race(pref_species, null)
+
+	// Enable all races and genders for family preferences by default
+	family_species = list()
+	var/list/available_species = get_selectable_species()
+	for(var/species_name in available_species)
+		var/datum/species/S = GLOB.species_list[species_name]
+		family_species += S.id
+
+	family_gender = list(MALE,FEMALE)
+
 	if(!charflaw)
 		charflaw = pick(GLOB.character_flaws)
 		charflaw = GLOB.character_flaws[charflaw]
@@ -339,7 +353,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-//			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>Unknown</a><BR>" // Disabling until its working
+			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
+			if(family != FAMILY_NONE)
+				dat += "<B>Family Preferences:</B>"
+				if(gender == MALE)
+					family_gender = list(FEMALE)
+				else
+					family_gender = list(MALE)
+				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'>Race</a></small>"
+				dat += "<BR>"
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
 /*
@@ -1190,6 +1212,25 @@ Slots: [job.spawn_positions]</span>
 	else if(href_list["preference"] == "triumph_buy_menu")
 		SStriumphs.startup_triumphs_menu(user.client)
 
+	else if(href_list["preference"] == "familypref")
+		switch(href_list["res"])
+			if("race")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.roundstart_races)
+						var/datum/species/S = GLOB.species_list[A]
+						var/index = "[(S.id in family_species) ? "(+)" : ""][S.name]"
+						choices[index] = S.id
+					choices += "(DONE)"
+					choice = input(usr,"Out of all the many races, none catch my fancy quite like... (+) = ON","RACE") as anything in choices
+					if(choice != "(CANCEL)")
+						if(choices[choice] in family_species)
+							family_species -= choices[choice]
+						else
+							family_species += choices[choice]
+
+
 	else if(href_list["preference"] == "keybinds")
 		switch(href_list["task"])
 			if("close")
@@ -1347,6 +1388,8 @@ Slots: [job.spawn_positions]</span>
 							real_name = new_name
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+					GLOB.name_adjustments |= "[parent] changed their characters name to [new_name]."
+					log_character("[parent] changed their characters name to [new_name].")
 
 //				if("age")
 //					var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Years Dead") as num|null
@@ -1354,7 +1397,7 @@ Slots: [job.spawn_positions]</span>
 //						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 
 				if("age")
-					var/new_age = input(user, "Choose your character's age (18-[pref_species.max_age])", "Yils Dead") as null|anything in pref_species.possible_ages
+					var/new_age = input(user, "Choose your character's age:", "Yils Dead") as null|anything in pref_species.possible_ages
 					if(new_age)
 						age = new_age
 						var/list/hairs
@@ -1677,9 +1720,10 @@ Slots: [job.spawn_positions]</span>
 						to_chat(user, span_warning("You may switch your character and choose any role, if you don't meet the requirements (if any are specified) it won't be applied"))
 
 				if("family")
-					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
-					to_chat(user, "<font color='red'>[pick(loly)]</font>")
-					return
+					if(family == FAMILY_NONE)
+						family = FAMILY_FULL
+					else
+						family = FAMILY_NONE
 				if("hotkeys")
 					hotkeys = !hotkeys
 					if(hotkeys)

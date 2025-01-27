@@ -140,6 +140,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/can_apply_to_bodypart(obj/item/bodypart/affected)
 	if(bodypart_owner || owner || QDELETED(affected) || QDELETED(affected.owner))
 		return FALSE
+	if(affected.status == BODYPART_ROBOTIC)
+		return FALSE
 	if(!isnull(bleed_rate) && !affected.can_bloody_wound())
 		return FALSE
 	for(var/datum/wound/other_wound as anything in affected.wounds)
@@ -276,7 +278,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	return
 	
 /// Heals this wound by the given amount, and deletes it if it's healed completely
-/datum/wound/proc/heal_wound(heal_amount)
+/datum/wound/proc/heal_wound(heal_amount, iteration = 0)
 	// Wound cannot be healed normally, whp is null
 	if(isnull(whp))
 		return 0
@@ -295,6 +297,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 				remove_from_bodypart(src)
 			else if(owner)
 				remove_from_mob(src)
+			else if (iteration < 4)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/wound, heal_wound)), wait = 10 SECONDS, 0, iteration + 1)
 			else
 				qdel(src)
 	return amount_healed

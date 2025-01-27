@@ -173,11 +173,11 @@
 	icon_state = "hornkey"
 	lockid = "tavern"
 
-/obj/item/key/velder
-	name = "elder's key"
-	desc = "This key should open and close the elder's home."
+/obj/item/key/mayor
+	name = "mayor's key"
+	desc = "This key should open and close the townhall and the mayor's home."
 	icon_state = "brownkey"
-	lockid = "velder"
+	lockid = "mayor"
 
 /obj/item/key/tavern/village
 	lockid = "vtavern"
@@ -529,3 +529,9 @@
 	desc = "This old key opens shop #1 in merchant street area."
 	icon_state = "rustkey"
 	lockid = "street_shop01"
+
+/obj/item/key/street_shop02
+	name = "Street shop key #2"
+	desc = "This old key opens shop #2 behind the mayor's house."
+	icon_state = "rustkey"
+	lockid = "street_shop02"

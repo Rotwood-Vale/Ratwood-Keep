@@ -24,6 +24,8 @@
 		if(ore.len && !T.hingot)
 			var/obj/item/I = ore[ore.len]
 			ore -= I
+			if(isnull(I))
+				return
 			I.forceMove(T)
 			T.hingot = I
 			user.visible_message(span_info("[user] retrieves [I] from [src]."))

@@ -69,9 +69,7 @@
 		testing("revived1")
 		var/mob/living/target = targets[1]
 		if(target == user)
-			return FALSE
-		if(target.stat < DEAD)
-			to_chat(user, span_warning("Nothing happens."))
+			revert_cast()
 			return FALSE
 		if(GLOB.tod == "night")
 			to_chat(user, span_warning("Let there be light."))
@@ -81,8 +79,9 @@
 			target.visible_message(span_danger("[target] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
 			target.gib()
 			return TRUE
-		if(!target.revive(full_heal = FALSE))
-			to_chat(user, span_warning("Nothing happens."))
+		if(!target.stat == DEAD)
+			to_chat(user, span_warning("Nothing happens, they need to be dead first."))
+			revert_cast()
 			return FALSE
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
@@ -92,6 +91,7 @@
 			qdel(underworld_spirit)
 			ghost.mind.transfer_to(target, TRUE)
 		target.grab_ghost(force = TRUE) // even suicides
+		target.revive(admin_revive = TRUE)
 		target.emote("breathgasp")
 		target.Jitter(100)
 		if(isseelie(target))
@@ -108,7 +108,7 @@
 			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
 				adjust_playerquality(revive_pq, user.ckey)
 				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
-			target.mind.remove_antag_datum(/datum/antagonist/zombie)
+		target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		return TRUE
 	revert_cast()
 	return FALSE

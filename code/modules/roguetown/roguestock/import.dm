@@ -58,19 +58,19 @@
 	new /obj/item/rope/chain(src)
 
 /datum/roguestock/import/redpotion
-	name = "Crate of Health Potions"
+	name = "Crate of Lesser Health Potions"
 	desc = "Red that keeps men alive."
 	item_type = /obj/structure/closet/crate/chest/steward/redpotion
-	export_price = 100
+	export_price = 50
 	importexport_amt = 1
 
 /obj/structure/closet/crate/chest/steward/redpotion/Initialize()
 	. = ..()
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot(src)
 
 /datum/roguestock/import/perfume
 	name = "Crate of perfumes"
@@ -183,7 +183,7 @@
 
 /obj/structure/closet/crate/chest/steward/blacksmith/Initialize()
 	. = ..()
-	new /obj/item/rogueweapon/hammer(src)
+	new /obj/item/rogueweapon/hammer/iron(src)
 	new /obj/item/rogueweapon/tongs(src)
 	new /obj/item/natural/stone(src)
 	new /obj/item/natural/stone(src)
@@ -200,7 +200,18 @@
 	new /obj/item/reagent_containers/glass/bucket/wooden(src)
 
 
+/datum/roguestock/import/craftsman
+	name = "Craftsman Crate"
+	desc = "Handsaw, chisel, hammer."
+	item_type = /obj/structure/closet/crate/chest/steward/craftsman
+	export_price = 60
+	importexport_amt = 1
 
+/obj/structure/closet/crate/chest/steward/craftsman/Initialize()
+	. = ..()
+	new /obj/item/rogueweapon/hammer/wood(src)
+	new /obj/item/rogueweapon/chisel(src)
+	new /obj/item/rogueweapon/handsaw(src)
 
 
 

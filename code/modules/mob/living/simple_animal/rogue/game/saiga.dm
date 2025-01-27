@@ -197,7 +197,6 @@
 	retreat_distance = 0
 	minimum_distance = 0
 	retreat_health = 0.3
-	milkies = FALSE
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse
@@ -326,7 +325,6 @@
 	maxHealth = 20
 	pass_flags = PASSTABLE | PASSMOB
 	mob_size = MOB_SIZE_SMALL
-	milkies = FALSE
 	melee_damage_lower = 1
 	melee_damage_upper = 6
 	STACON = 5

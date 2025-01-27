@@ -584,7 +584,7 @@
 		if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 			return TRUE
 		add_nausea(-100)
-		rogstam_add(-50)
+		energy_add(-50)
 		if(is_mouth_covered()) //make this add a blood/vomit overlay later it'll be hilarious
 			if(message)
 				visible_message(span_danger("[src] throws up all over [p_them()]self!"), \
@@ -695,16 +695,6 @@
 		remove_movespeed_modifier(MOVESPEED_ID_CARBON_SOFTCRIT, TRUE)
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
-/mob/living/carbon/update_stamina()
-	var/stam = getStaminaLoss()
-	if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
-		enter_stamcrit()
-	else if(stam_paralyzed)
-		stam_paralyzed = FALSE
-	else
-		return
-	update_health_hud()
-
 /mob/living/carbon
 	var/lightning_flashing = FALSE
 
@@ -749,7 +739,7 @@
 		if(!isnull(G.lighting_alpha))
 			lighting_alpha = min(lighting_alpha, G.lighting_alpha)
 
-	if(HAS_TRAIT(src, TRAIT_DARKVISION_BETTER))
+	if(HAS_TRAIT(src, TRAIT_DARKVISION_BETTER) || HAS_TRAIT(src, TRAIT_DARKLING))
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_DARKVISION_BETTER)
 
 	if(HAS_TRAIT(src, TRAIT_DARKVISION)) //DV special prioritized over Noc's boon because DV special is better

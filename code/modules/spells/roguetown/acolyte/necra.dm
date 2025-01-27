@@ -63,8 +63,10 @@
 		if(L.mind)
 			var/datum/antagonist/vampirelord/lesser/V = L.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
 			if(V)
-				if(!V.disguised)
+				if(!V.disguised) // Being disguised makes you immune to being churned as people would abuse this to test for vampires wordlessly.
 					isvampire = TRUE
+				else
+					continue
 			if(L.mind.has_antag_datum(/datum/antagonist/zombie))
 				iszombie = TRUE
 			if(L.mind.special_role == "Vampire Lord")

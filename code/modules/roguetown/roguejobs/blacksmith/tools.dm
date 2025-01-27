@@ -1,18 +1,22 @@
-
-/obj/item/rogueweapon/hammer
+//................	Hammers	............... //
+/obj/item/rogueweapon/hammer	// The template
 	force = 21
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
-	name = "hammer"
-	desc = "Each strikes reverberate loudly chanting war!"
-	icon_state = "hammer"
+	name = "not a hammer"
+	desc = "Just a template. Report to devs."
 	icon = 'icons/roguetown/weapons/tools.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
+	experimental_inhand = FALSE
+	experimental_onhip = FALSE
+	experimental_onback = FALSE
 	sharpness = IS_BLUNT
-	//dropshrink = 0.8
 	wlength = 10
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
 	associated_skill = /datum/skill/combat/maces
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = /obj/item/ash
 
 /obj/item/rogueweapon/hammer/attack_obj(obj/attacked_object, mob/living/user)
 	if(!isliving(user) || !user.mind)
@@ -23,6 +27,43 @@
 	if(locate(/obj/machinery/anvil) in attacked_object.loc)
 		repair_percent *= 2 // Double the repair amount if we're using an anvil
 	var/exp_gained = 0
+
+	if(isbodypart(attacked_object) && !user.cmode)
+		var/obj/item/bodypart/attacked_prosthetic = attacked_object
+		var/total_damage = attacked_prosthetic.brute_dam + attacked_prosthetic.burn_dam
+		if(!attacked_prosthetic.anvilrepair || !isturf(attacked_prosthetic.loc))
+			return
+		if((total_damage <= 0) && (attacked_prosthetic.obj_integrity >= attacked_prosthetic.max_integrity))
+			return
+
+		if(blacksmith_mind.get_skill_level(attacked_prosthetic.anvilrepair) <= 0)
+			if(prob(30))
+				repair_percent = 0.01
+			else
+				repair_percent = 0
+		else
+			repair_percent *= blacksmith_mind.get_skill_level(attacked_prosthetic.anvilrepair)
+
+		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
+		if(repair_percent)
+			repair_percent *= attacked_prosthetic.max_damage
+			exp_gained = min(total_damage + repair_percent, attacked_prosthetic.max_damage) - total_damage
+			attacked_prosthetic.brute_dam = max(attacked_prosthetic.brute_dam - repair_percent, 0)
+			attacked_prosthetic.burn_dam = max(attacked_prosthetic.burn_dam - repair_percent, 0)
+			total_damage = attacked_prosthetic.brute_dam + attacked_prosthetic.burn_dam
+			attacked_prosthetic.obj_integrity = min(attacked_prosthetic.obj_integrity + repair_percent, attacked_prosthetic.max_integrity)
+			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
+				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_prosthetic]."))
+			else
+				user.visible_message(span_info("[user] repairs [attacked_prosthetic]!"))
+			blacksmith_mind.add_sleep_experience(attacked_prosthetic.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
+			return
+		else
+			user.visible_message(span_warning("[user] damages [attacked_prosthetic]!"))
+			attacked_prosthetic.take_damage(attacked_prosthetic.max_integrity * 0.1, BRUTE, "blunt")
+			attacked_prosthetic.brute_dam = (attacked_prosthetic.brute_dam + 0.1 * attacked_prosthetic.max_damage)
+			return
+
 	if(isitem(attacked_object) && !user.cmode)
 		var/obj/item/attacked_item = attacked_object
 		if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
@@ -46,7 +87,7 @@
 			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
-			else	
+			else
 				user.visible_message(span_info("[user] repairs [attacked_item]!"))
 			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
 			return
@@ -72,11 +113,22 @@
 
 	. = ..()
 
-/obj/item/rogueweapon/hammer/claw
-	icon_state = "clawh"
+/obj/item/rogueweapon/hammer/iron	// iron hammer
+	name = "hammer"
+	desc = "Each strikes reverberate loudly chanting war!"
+	icon_state = "hammer_i"
+	item_state = "hammer_i"
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/rogueweapon/hammer/steel	// steel hammer
+	name = "claw hammer"
+	desc = "Steel to drive the iron nail without mercy."
+	icon_state = "hammer_s"
+	item_state = "hammer_s"
+	smeltresult = /obj/item/ingot/steel
 
 /*
-/obj/item/rogueweapon/hammer/claw/attack_turf(turf/T, mob/living/user)
+/obj/item/rogueweapon/hammer/steel/attack_turf(turf/T, mob/living/user)
 	if(!user.cmode)
 		if(T.hammer_repair && T.max_integrity && !T.obj_broken)
 			var/repair_percent = 0.05
@@ -93,43 +145,15 @@
 	..()
 */
 
-/obj/item/rogueweapon/hammer/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,
-"sx" = -15,
-"sy" = -12,
-"nx" = 9,
-"ny" = -11,
-"wx" = -11,
-"wy" = -11,
-"ex" = 1,
-"ey" = -12,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 90,
-"sturn" = -90,
-"wturn" = -90,
-"eturn" = 90,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
 /obj/item/rogueweapon/hammer/wood
 	name = "wooden mallet"
 	desc = "A wooden mallet is an artificers second best friend! But it may also come in handy to a smith..."
-	icon_state = "whammer"
+	icon_state = "hammer_w"
+	item_state = "hammer_w"
 	force = 16
-	smeltresult = null
-	metalizer_result = /obj/item/rogueweapon/hammer
+	metalizer_result = /obj/item/rogueweapon/hammer/iron
 
+//................	Tongs	............... //
 /obj/item/rogueweapon/tongs
 	force = 10
 	possible_item_intents = list(/datum/intent/mace/strike)

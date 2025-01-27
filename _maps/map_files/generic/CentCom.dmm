@@ -18,19 +18,6 @@
 "ad" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue)
-"ae" = (
-/obj/structure/closet/crate/chest,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/hammer,
-/obj/machinery/light/rogue/torchholder{
-	dir = 4
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue)
 "af" = (
 /obj/structure/closet/crate/chest,
 /obj/item/rogueore/iron,
@@ -1735,10 +1722,6 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/banditcamp)
 "kB" = (
-/obj/effect/landmark/mapGenerator/sunlights{
-	endTurfX = 128;
-	endTurfY = 128
-	},
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/woods)
 "kF" = (
@@ -1920,6 +1903,18 @@
 /obj/structure/fluff/nest,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
+"oN" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/tongs,
+/obj/item/rogueweapon/tongs,
+/obj/item/rogueweapon/hammer/iron,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors)
 "pb" = (
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -2417,6 +2412,15 @@
 "yK" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/town/goblin)
+"zd" = (
+/obj/structure/rack/rogue/shelf/big,
+/obj/item/storage/bag/tray,
+/obj/item/storage/bag/tray,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/town/goblin)
 "zf" = (
 /obj/item/reagent_containers/powder/spice,
 /obj/structure/closet/crate/chest{
@@ -2430,13 +2434,6 @@
 /area/rogue/under/town/goblin)
 "zw" = (
 /turf/open/floor/carpet/royalblack,
-/area/rogue/under/town/goblin)
-"zG" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/obj/item/rogueweapon/hammer,
-/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "zX" = (
 /obj/structure/mineral_door/wood/donjon/stone{
@@ -2732,18 +2729,6 @@
 /obj/structure/closet/crate/coffin/vampire,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
-"Gv" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/obj/item/rogueweapon/hammer,
-/obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/hammer,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
-/area/rogue/indoors)
 "Gw" = (
 /obj/effect/landmark/start/goblincook{
 	dir = 4
@@ -2783,15 +2768,6 @@
 /obj/item/rope/chain,
 /obj/item/rope/chain,
 /turf/open/floor/rogue/blocks,
-/area/rogue/under/town/goblin)
-"Hc" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/item/storage/bag/tray,
-/obj/item/storage/bag/tray,
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/glass/cup/wooden,
-/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
 "Hf" = (
 /obj/structure/stairs/stone{
@@ -2855,9 +2831,6 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/banditcamp)
-"Iw" = (
-/turf/closed/mineral/rogue/bedrock,
-/area/rogue/outdoors/woods)
 "Iz" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/rogue/metal,
@@ -3213,6 +3186,13 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
+"Qm" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/rogueweapon/hammer/iron,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/goblin)
 "Qv" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -3246,6 +3226,19 @@
 /obj/machinery/light/rogue/oven/south,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
+"QR" = (
+/obj/structure/closet/crate/chest,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
+/obj/item/rogueweapon/hammer/iron,
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
 "QX" = (
 /obj/item/roguebin/water/gross,
 /obj/machinery/light/rogue/wallfire/candle,
@@ -3848,68 +3841,68 @@ bX
 bX
 bX
 rQ
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
 BY
 "}
 (2,1,1) = {"
@@ -4078,7 +4071,7 @@ vP
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -4281,7 +4274,7 @@ rQ
 bX
 bX
 aa
-ae
+QR
 af
 ah
 ai
@@ -4308,7 +4301,7 @@ xi
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -4370,7 +4363,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (4,1,1) = {"
 rQ
@@ -4538,7 +4531,7 @@ hQ
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -4600,7 +4593,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (5,1,1) = {"
 rQ
@@ -4768,7 +4761,7 @@ hQ
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -4830,7 +4823,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (6,1,1) = {"
 rQ
@@ -4998,7 +4991,7 @@ Le
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -5060,7 +5053,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (7,1,1) = {"
 rQ
@@ -5228,7 +5221,7 @@ hQ
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -5290,7 +5283,7 @@ bz
 bz
 Te
 bz
-Iw
+kB
 "}
 (8,1,1) = {"
 rQ
@@ -5458,7 +5451,7 @@ IY
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -5520,7 +5513,7 @@ bz
 bz
 Te
 bz
-Iw
+kB
 "}
 (9,1,1) = {"
 rQ
@@ -5688,7 +5681,7 @@ Mx
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -5750,7 +5743,7 @@ bz
 bz
 Te
 bz
-Iw
+kB
 "}
 (10,1,1) = {"
 rQ
@@ -5918,7 +5911,7 @@ sz
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -5980,7 +5973,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (11,1,1) = {"
 rQ
@@ -6148,7 +6141,7 @@ vP
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -6210,7 +6203,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (12,1,1) = {"
 rQ
@@ -6378,7 +6371,7 @@ vP
 vP
 bX
 rQ
-Iw
+kB
 bz
 bz
 Te
@@ -6440,7 +6433,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (13,1,1) = {"
 rQ
@@ -6608,7 +6601,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -6670,7 +6663,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (14,1,1) = {"
 rQ
@@ -6838,7 +6831,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 UI
@@ -6900,7 +6893,7 @@ Te
 Te
 Te
 Te
-Iw
+kB
 "}
 (15,1,1) = {"
 rQ
@@ -7068,7 +7061,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 UI
@@ -7130,7 +7123,7 @@ WI
 vQ
 vQ
 vQ
-Iw
+kB
 "}
 (16,1,1) = {"
 rQ
@@ -7298,7 +7291,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 UI
@@ -7360,7 +7353,7 @@ Wp
 Wp
 Wp
 dv
-Iw
+kB
 "}
 (17,1,1) = {"
 rQ
@@ -7528,7 +7521,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 UI
@@ -7590,7 +7583,7 @@ Wp
 Wp
 Wp
 dv
-Iw
+kB
 "}
 (18,1,1) = {"
 rQ
@@ -7758,7 +7751,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 Cm
 Cm
@@ -7820,7 +7813,7 @@ Wp
 Wp
 Wp
 dv
-Iw
+kB
 "}
 (19,1,1) = {"
 rQ
@@ -7988,7 +7981,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 Cm
 Cm
@@ -8050,7 +8043,7 @@ vQ
 vQ
 vQ
 dv
-Iw
+kB
 "}
 (20,1,1) = {"
 rQ
@@ -8218,7 +8211,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 Cm
 Cm
@@ -8280,7 +8273,7 @@ UH
 vQ
 vQ
 vQ
-Iw
+kB
 "}
 (21,1,1) = {"
 rQ
@@ -8448,7 +8441,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 Cm
 Cm
@@ -8510,7 +8503,7 @@ Te
 Te
 Te
 Te
-Iw
+kB
 "}
 (22,1,1) = {"
 rQ
@@ -8678,7 +8671,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 Cm
 Cm
@@ -8740,7 +8733,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (23,1,1) = {"
 rQ
@@ -8908,7 +8901,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 Cm
@@ -8970,7 +8963,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (24,1,1) = {"
 rQ
@@ -9138,7 +9131,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 Cm
@@ -9200,7 +9193,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (25,1,1) = {"
 rQ
@@ -9368,7 +9361,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 Cm
@@ -9430,7 +9423,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (26,1,1) = {"
 rQ
@@ -9598,7 +9591,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 Cm
@@ -9660,7 +9653,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (27,1,1) = {"
 rQ
@@ -9828,7 +9821,7 @@ vP
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 Cm
@@ -9890,7 +9883,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (28,1,1) = {"
 rQ
@@ -10058,7 +10051,7 @@ bX
 bX
 bX
 rQ
-Iw
+kB
 bz
 UI
 Cm
@@ -10120,7 +10113,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (29,1,1) = {"
 rQ
@@ -10288,7 +10281,7 @@ rQ
 rQ
 bX
 rQ
-Iw
+kB
 bz
 UI
 Cm
@@ -10350,7 +10343,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (30,1,1) = {"
 rQ
@@ -10518,7 +10511,7 @@ rQ
 rQ
 bX
 rQ
-Iw
+kB
 bz
 UI
 Cm
@@ -10580,7 +10573,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (31,1,1) = {"
 rQ
@@ -10748,7 +10741,7 @@ rQ
 rQ
 bX
 rQ
-Iw
+kB
 bz
 bz
 DB
@@ -10810,7 +10803,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (32,1,1) = {"
 rQ
@@ -10978,7 +10971,7 @@ rQ
 rQ
 bX
 rQ
-Iw
+kB
 bz
 bz
 DB
@@ -11040,7 +11033,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (33,1,1) = {"
 rQ
@@ -11208,7 +11201,7 @@ rQ
 rQ
 bX
 rQ
-Iw
+kB
 bz
 bz
 Cm
@@ -11270,7 +11263,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (34,1,1) = {"
 rQ
@@ -11438,7 +11431,7 @@ rQ
 rQ
 bX
 rQ
-Iw
+kB
 bz
 bz
 UI
@@ -11500,7 +11493,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (35,1,1) = {"
 rQ
@@ -11668,7 +11661,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 bz
 bz
 UI
@@ -11730,7 +11723,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (36,1,1) = {"
 rQ
@@ -11898,69 +11891,69 @@ rQ
 rQ
 rQ
 rQ
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
 "}
 (37,1,1) = {"
 rQ
@@ -12143,7 +12136,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 bz
 bz
 bz
@@ -12190,7 +12183,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (38,1,1) = {"
 rQ
@@ -12373,7 +12366,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 bz
 bB
 Te
@@ -12420,7 +12413,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (39,1,1) = {"
 rQ
@@ -12603,7 +12596,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 bz
 Te
 Te
@@ -12650,7 +12643,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (40,1,1) = {"
 rQ
@@ -12833,7 +12826,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 bz
 Te
 Te
@@ -12880,7 +12873,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (41,1,1) = {"
 rQ
@@ -13063,7 +13056,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 bz
 Te
 bB
@@ -13110,7 +13103,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (42,1,1) = {"
 rQ
@@ -13293,7 +13286,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 bz
 Te
 Te
@@ -13340,7 +13333,7 @@ Te
 bz
 bz
 bz
-Iw
+kB
 "}
 (43,1,1) = {"
 rQ
@@ -13523,7 +13516,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 bz
 bB
 Te
@@ -13570,7 +13563,7 @@ Te
 Te
 bz
 bz
-Iw
+kB
 "}
 (44,1,1) = {"
 rQ
@@ -13753,7 +13746,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 WB
 WB
 ct
@@ -13800,7 +13793,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (45,1,1) = {"
 rQ
@@ -13983,12 +13976,12 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 WB
 Vu
 cb
 cb
-Gv
+oN
 WB
 bJ
 nh
@@ -14030,7 +14023,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (46,1,1) = {"
 rQ
@@ -14213,7 +14206,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 WB
 pP
 cb
@@ -14260,7 +14253,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (47,1,1) = {"
 rQ
@@ -14443,7 +14436,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 WB
 QX
 cb
@@ -14490,7 +14483,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (48,1,1) = {"
 rQ
@@ -14673,7 +14666,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 WB
 bE
 cb
@@ -14720,7 +14713,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (49,1,1) = {"
 rQ
@@ -14894,16 +14887,16 @@ rQ
 rQ
 rQ
 rQ
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
 WB
 WB
 Yt
@@ -14950,7 +14943,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (50,1,1) = {"
 rQ
@@ -15124,7 +15117,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 pZ
 pZ
 pZ
@@ -15180,7 +15173,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (51,1,1) = {"
 rQ
@@ -15354,7 +15347,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 pZ
 pZ
 pZ
@@ -15410,7 +15403,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (52,1,1) = {"
 rQ
@@ -15584,7 +15577,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 pZ
 pZ
 pZ
@@ -15640,7 +15633,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (53,1,1) = {"
 rQ
@@ -15814,7 +15807,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 pZ
 pZ
 pZ
@@ -15870,7 +15863,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (54,1,1) = {"
 rQ
@@ -16044,7 +16037,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 pZ
 pZ
 pZ
@@ -16100,7 +16093,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (55,1,1) = {"
 rQ
@@ -16274,7 +16267,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 pZ
 pZ
 pZ
@@ -16330,7 +16323,7 @@ vQ
 vQ
 Te
 bz
-Iw
+kB
 "}
 (56,1,1) = {"
 rQ
@@ -16504,7 +16497,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 pZ
 pZ
 pZ
@@ -16560,7 +16553,7 @@ vQ
 vQ
 vQ
 sk
-Iw
+kB
 "}
 (57,1,1) = {"
 rQ
@@ -16734,17 +16727,17 @@ rQ
 rQ
 rQ
 rQ
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
 WB
 bF
 bO
@@ -16790,7 +16783,7 @@ vQ
 vQ
 vQ
 sk
-Iw
+kB
 "}
 (58,1,1) = {"
 rQ
@@ -16973,7 +16966,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 WB
 bG
@@ -17020,7 +17013,7 @@ vQ
 vQ
 vQ
 sk
-Iw
+kB
 "}
 (59,1,1) = {"
 rQ
@@ -17203,7 +17196,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 WB
 bH
@@ -17250,7 +17243,7 @@ vQ
 vQ
 vQ
 sk
-Iw
+kB
 "}
 (60,1,1) = {"
 rQ
@@ -17433,7 +17426,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 WB
@@ -17480,7 +17473,7 @@ vQ
 vQ
 Te
 bz
-Iw
+kB
 "}
 (61,1,1) = {"
 rQ
@@ -17663,7 +17656,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 WB
@@ -17710,7 +17703,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (62,1,1) = {"
 rQ
@@ -17893,7 +17886,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 WB
@@ -17940,7 +17933,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (63,1,1) = {"
 rQ
@@ -18123,7 +18116,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 cL
@@ -18170,7 +18163,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (64,1,1) = {"
 rQ
@@ -18353,7 +18346,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 cL
@@ -18400,7 +18393,7 @@ Te
 Te
 Te
 bz
-Iw
+kB
 "}
 (65,1,1) = {"
 rQ
@@ -18583,7 +18576,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 cL
@@ -18630,7 +18623,7 @@ Te
 bz
 bz
 bz
-Iw
+kB
 "}
 (66,1,1) = {"
 rQ
@@ -18813,7 +18806,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 cL
@@ -18860,7 +18853,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (67,1,1) = {"
 rQ
@@ -19043,7 +19036,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 cL
@@ -19090,7 +19083,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (68,1,1) = {"
 rQ
@@ -19273,7 +19266,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 cL
@@ -19320,7 +19313,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (69,1,1) = {"
 rQ
@@ -19503,7 +19496,7 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 cL
@@ -19550,7 +19543,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (70,1,1) = {"
 rQ
@@ -19733,13 +19726,13 @@ rQ
 rQ
 rQ
 rQ
-Iw
+kB
 cL
 cL
 cL
 cL
 cL
-Iw
+kB
 bz
 bz
 bz
@@ -19780,7 +19773,7 @@ bz
 bz
 bz
 bz
-Iw
+kB
 "}
 (71,1,1) = {"
 rQ
@@ -19963,54 +19956,54 @@ rQ
 rQ
 rQ
 rQ
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
-Iw
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
+kB
 "}
 (72,1,1) = {"
 rQ
@@ -45521,7 +45514,7 @@ AJ
 AJ
 qQ
 lu
-Hc
+zd
 Af
 Af
 Af
@@ -52652,7 +52645,7 @@ HH
 yK
 yK
 rE
-zG
+Qm
 pD
 Mk
 yK

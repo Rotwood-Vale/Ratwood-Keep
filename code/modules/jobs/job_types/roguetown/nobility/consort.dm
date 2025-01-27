@@ -19,6 +19,10 @@
 	min_pq = 0
 	max_pq = null
 
+	family_blacklisted = TRUE
+	ruler_family = TRUE
+	lord_rel_type = REL_TYPE_SPOUSE
+
 // Prevent same sex ruler-consorts
 /datum/job/roguetown/consort/special_job_check(mob/dead/new_player/player)
 	if(!player)
@@ -83,7 +87,7 @@
 		
 	else
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/gun/ballistic/arquebus_pistol
+		beltr = /obj/item/gun/ballistic/firearm/arquebus_pistol
 		beltl = /obj/item/ammo_holder/bullet/lead
 		r_hand = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich

@@ -59,9 +59,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	C.vampires |= owner
 	. = ..()
 	owner.special_role = name
-	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
+	//ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOSTAMINA, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
@@ -75,17 +75,22 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	for(var/obj/structure/fluff/traveltile/vampire/tile in GLOB.traveltiles)
 		tile.show_travel_tile(owner.current)
 	ADD_TRAIT(owner.current, TRAIT_VAMP_DREAMS, "[type]")
+	owner.current.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+	/datum/rmb_intent/aimed,\
+	/datum/rmb_intent/strong,\
+	/datum/rmb_intent/riposte,\
+	/datum/rmb_intent/weak)
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
+	vamp_look()
 	if(eyes)
 		eyes.Remove(owner.current,1)
 		QDEL_NULL(eyes)
 	eyes = new /obj/item/organ/eyes/night_vision/zombie
 	eyes.Insert(owner.current)
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix)
-	owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
+	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
-	vamp_look()
 	if(isspawn)
 		owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
 		add_objective(/datum/objective/vlordserve)
@@ -273,6 +278,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("I am no longer a [job_rank]!"))
 	owner.special_role = null
+	owner.current.possible_rmb_intents = initial(owner.current.possible_rmb_intents)
 	if(!isnull(batform))
 		owner.current.RemoveSpell(batform)
 		QDEL_NULL(batform)
@@ -339,7 +345,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	V.update_body()
 	V.update_hair()
 	V.update_body_parts(redraw = TRUE)
-	V.mob_biotypes = MOB_UNDEAD
+	V.mob_biotypes |= MOB_UNDEAD
 	V.faction = list("undead")
 	if(isspawn)
 		V.vampire_disguise()
@@ -352,8 +358,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		return
 	if(H.advsetup)
 		return
-	if(!isspawn)
-		vitae = mypool.current
+	vitae = mypool.current
 	if(ascended)
 		return
 	if(world.time % 5)
@@ -390,23 +395,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			if(disguised)
 				to_chat(H, span_warning("My disguise fails!"))
 				H.vampire_undisguise(src)
-	handle_vitae(-1)
+	if(disguised) // Being diguised drains vitae, other wise there is no vitae drain, allows vampires to relax and RP in the mansion.
+		handle_vitae(-1)
 
 /datum/antagonist/vampirelord/proc/handle_vitae(change, tribute)
-	var/sanitized = clamp(vitae, 0, VAMP_MAX_VITAE) 
-	var/tempcurrent = sanitized  //Stops Vitae from going below 0.
-	if(!isspawn)
-		mypool.update_pool(change)
-	if(isspawn)
-		if(change > 0)
-			tempcurrent += change
-			if(tempcurrent > vmax)
-				tempcurrent = vmax // to prevent overflow
-		if(change < 0)
-			tempcurrent += change
-			if(tempcurrent < 0)
-				tempcurrent = 0 // to prevent excessive negative.
-		vitae = tempcurrent
+	mypool.update_pool(change) // Spawn and Vlord now share a blood pool.
 	if(tribute)
 		mypool.update_pool(tribute)
 	if(vitae <= 20)
@@ -420,7 +413,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			starved = FALSE
 			for(var/S in MOBSTATS)
 				owner.current.change_stat(S, 5)
-	vitae = sanitized //Should hopefully prevent any future vitae issues.
+	vitae = mypool.current
 
 /datum/antagonist/vampirelord/proc/move_to_spawnpoint()
 	owner.current.forceMove(pick(GLOB.vlord_starts))
@@ -441,7 +434,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			to_chat(owner, "<font color='red'>I am refreshed and have grown stronger. The visage of the bat is once again available to me. I can also once again access my portals.</font>")
 		if(1)
 			vamplevel = 2
-			owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
 			owner.current.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodsteal)
 			owner.current.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning)
 			owner.adjust_skillrank(/datum/skill/magic/blood, 3, TRUE)
@@ -474,7 +466,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				if(thrall.special_role == "Vampire Spawn")
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_strength
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
-					thrall.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
 					for(var/S in MOBSTATS)
 						thrall.current.change_stat(S, 3) //Overall stat nerf to VLord (not huge)
 	return
@@ -690,6 +681,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		current = 999999
 	if(change)
 		current += change
+	current = clamp(current, 0, maximum)
 
 /obj/structure/vampire/bloodpool/proc/check_withdraw(change)
 	if(change < 0)
@@ -1426,18 +1418,75 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	name = "Bat Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 750
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
+	chargetime = 5 SECONDS
+	movement_interrupt = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/gaseousform
 	name = "Mist Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 750
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
+	chargetime = 5 SECONDS
+	movement_interrupt = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/gaseousform
+
+// Spells
+/obj/effect/proc_holder/spell/targeted/vamp_rejuv
+	name = "Rejuvenate"
+	desc = "Regenerates my targeted limb and Replenishes half my stamina. Recharges every 30 seconds. I must stand still."
+	overlay_state = "doc"
+	action_icon = 'icons/mob/actions/roguespells.dmi'
+	releasedrain = 0
+	chargedrain = 0
+	chargetime = 0
+	range = -1
+	warnie = "sydwarning"
+	movement_interrupt = TRUE
+	chargedloop = null
+	invocation_type = "whisper"
+	associated_skill = /datum/skill/magic/blood
+	antimagic_allowed = FALSE
+	charge_max = 1 MINUTES
+	cooldown_min = 1 MINUTES
+	include_user = TRUE
+	max_targets = 1
+	vitaedrain = 250
+
+/obj/effect/proc_holder/spell/targeted/vamp_rejuv/cast(list/targets, mob/user = usr)
+	if(user && iscarbon(user))
+		var/mob/living/carbon/vampire = user
+		var/silver_curse_status = FALSE // Fail to cast condition.
+		for(var/datum/status_effect/debuff/silver_curse/silver_curse in vampire.status_effects)
+			silver_curse_status = TRUE
+			break
+		if(silver_curse_status)
+			to_chat(vampire, span_danger("My BANE is not letting me rejuvenate!"))
+			return
+
+		var/datum/antagonist/vampirelord/VD = vampire.mind.has_antag_datum(/datum/antagonist/vampirelord)
+		var/bloodskill = user.mind.get_skill_level(/datum/skill/magic/blood)
+		// How much the vampire will heal by.
+		var/bloodroll = (roll("[bloodskill]d8") + (vampire.STACON * 1.5)) * 2 // Spawn heals less.
+		if(VD) // Vampire lords heal more than regular vampires.
+			if(VD.disguised)
+				to_chat(vampire, span_warning("My curse is hidden."))
+				revert_cast()
+				return
+			bloodroll = (roll("[bloodskill]d10") + (vampire.STACON * 2)) * 3 // VL heals more. D8 -> D10. CON * 1.5 -> 2 (Multiplier 2 -> 3)
+		vampire.heal_overall_damage(bloodroll, bloodroll)
+		vampire.adjustToxLoss(-bloodroll * 10) // Purges toxins.
+		vampire.adjustOxyLoss(-bloodroll)
+		vampire.heal_wounds(bloodroll * 20)
+		vampire.blood_volume += BLOOD_VOLUME_SURVIVE
+		vampire.update_damage_overlays()
+		to_chat(vampire, span_greentext("! REJUVENATE AMT: [bloodroll] !"))
+		vampire.visible_message(span_danger("[vampire] is surrounded by an wreath of shadows for a moment as their wounds mend!"))
+		vampire.playsound_local(get_turf(vampire), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)

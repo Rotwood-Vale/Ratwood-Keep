@@ -43,7 +43,7 @@
 
 	if (current_health_percentage > start_fleeing_below)
 		return
-	source.ai_controller.CancelActions()
+	source?.ai_controller.CancelActions()
 	source.ai_controller.set_blackboard_key(BB_BASIC_MOB_FLEEING, TRUE)
 	source.ai_controller.set_blackboard_key(BB_BASIC_MOB_NEXT_FLEEING, world.time + 60 SECONDS)
 
@@ -51,5 +51,5 @@
 	addtimer(CALLBACK(src, PROC_REF(cancel_flee), source), 10 SECONDS, flags = TIMER_UNIQUE)
 
 /datum/element/ai_flee_while_injured/proc/cancel_flee(mob/living/source)
-	source.ai_controller.set_blackboard_key(BB_BASIC_MOB_FLEEING, FALSE)
-	source.ai_controller.CancelActions()
+	source?.ai_controller?.set_blackboard_key(BB_BASIC_MOB_FLEEING, FALSE)
+	source?.ai_controller?.CancelActions()

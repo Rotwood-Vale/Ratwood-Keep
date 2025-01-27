@@ -1,46 +1,63 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken
 	name = "\improper chicken"
-	desc = ""
-	gender = FEMALE
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	desc = "A fat and mostly flightless bird. They produce eggs, or 'cackleberries'."
 	icon_state = "chicken_brown"
 	icon_living = "chicken_brown"
 	icon_dead = "chicken_brown_dead"
-	emote_see = list("pecks at the ground.","flaps its wings viciously.")
+
 	density = FALSE
-	base_intents = list(/datum/intent/simple/claw)
+	gender = FEMALE
+	pass_flags = PASSTABLE | PASSMOB
+	mob_size = MOB_SIZE_SMALL
+	ventcrawler = VENTCRAWLER_ALWAYS
+	emote_see = list("pecks at the ground.","flaps its wings viciously.")
 	speak_chance = 2
-	turns_per_move = 5
 	faction = list("chickens")
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1)
+
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1,
+						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1,
+						/obj/item/natural/feather = 1)
+
 	var/egg_type = /obj/item/reagent_containers/food/snacks/egg
-	food_type = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue,/obj/item/natural/worms,/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat)
+	food_type = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+					/obj/item/natural/worms, // well this works for domesticating but to actually eat it has to be a reagen_container/food object. Leaving it for now.
+					/obj/item/reagent_containers/food/snacks/grown/wheat,
+					/obj/item/reagent_containers/food/snacks/grown/oat)
+
+	health = CHICKEN_HEALTH
+	maxHealth = CHICKEN_HEALTH
+
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
 	response_disarm_simple = "gently push aside"
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
+
+	base_intents = list(/datum/intent/simple/peck)
 	melee_damage_lower = 1
-	melee_damage_upper = 8
+	melee_damage_upper = 5
+
 	pooptype = /obj/item/natural/poo/horse
-	health = 15
-	maxHealth = 15
-	ventcrawler = VENTCRAWLER_ALWAYS
+
 	var/eggsFertile = TRUE
 	var/body_color
 	var/icon_prefix = "chicken"
-	pass_flags = PASSTABLE | PASSMOB
-	mob_size = MOB_SIZE_SMALL
 	var/list/layMessage = EGG_LAYING_MESSAGES
 	var/list/validColors = list("brown","black","white")
 	var/static/chicken_count = 0
-	footstep_type = FOOTSTEP_MOB_BAREFOOT
-	STACON = 6
-	STASTR = 6
-	STASPD = 1
+
+	STACON = 2
+	STASTR = 2
+	STASPD = 5
 	tame = TRUE
+
+	AIStatus = AI_STATUS_OFF
+	can_have_ai = FALSE
+	ai_controller = /datum/ai_controller/basic_controller/chicken
+
+	var/chicken_init = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/get_sound(input)
 	switch(input)
@@ -92,11 +109,13 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/Initialize()
 	. = ..()
-	if(!body_color)
-		body_color = pick(validColors)
-	icon_state = "[icon_prefix]_[body_color]"
-	icon_living = "[icon_prefix]_[body_color]"
-	icon_dead = "[icon_prefix]_[body_color]_dead"
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
+	if(chicken_init)
+		if(!body_color)
+			body_color = pick(validColors)
+		icon_state = "[icon_prefix]_[body_color]"
+		icon_living = "[icon_prefix]_[body_color]"
+		icon_dead = "[icon_prefix]_[body_color]_dead"
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 	++chicken_count
@@ -108,55 +127,61 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/Life()
 	..()
 	if(!stat && (production > 29) && egg_type && isturf(loc) && !enemies.len)
-		testing("laying egg with [production] production")
-		if(locate(/obj/structure/fluff/nest) in loc)
-			visible_message(span_alertalien("[src] [pick(layMessage)]"))
-			production = max(production - 30, 0)
-			var/obj/item/reagent_containers/food/snacks/egg/E = new egg_type(get_turf(src))
-			E.pixel_x = rand(-6,6)
-			E.pixel_y = rand(-6,6)
-			if(eggsFertile)
-				if(chicken_count < MAX_CHICKENS && prob(50))
-					E.fertile = TRUE
-		else if(!stop_automated_movement)
+		if(!stop_automated_movement)
 			//look for nests
 			var/list/foundnests = list()
 			for(var/obj/structure/fluff/nest/N in oview(src))
 				foundnests += N
 			//if no nests, look for chaff and build one
 			if(!foundnests.len)
-				//look for chaff in our loc first, build nest
-				var/obj/item/CH = locate(/obj/item/natural/fibers) in loc
-				if(CH)
-					qdel(CH)
-					new /obj/structure/fluff/nest(loc)
-					visible_message(span_notice("[src] builds a nest."))
-				else
-					CH = locate(/obj/item/grown/log/tree/stick) in loc
-					if(CH)
-						qdel(CH)
-						new /obj/structure/fluff/nest(loc)
-						visible_message(span_notice("[src] builds a nest."))
-				//if cant find, look for chaff in view and move to it
-				var/list/foundchaff = list()
-				for(var/obj/item/natural/fibers/C in oview(src))
-					foundchaff += C
-				if(!foundchaff.len)
-					for(var/obj/item/grown/log/tree/stick/S in oview(src))
-						foundchaff += S
-				if(foundchaff.len)
-					stop_automated_movement = TRUE
-					Goto(pick(foundchaff),move_to_delay)
-					addtimer(CALLBACK(src, PROC_REF(return_action)), 15 SECONDS)
-			else
-				stop_automated_movement = TRUE
-				Goto(pick(foundnests),move_to_delay)
-				addtimer(CALLBACK(src, PROC_REF(return_action)), 15 SECONDS)
+				new /obj/structure/fluff/nest(loc)
+				visible_message("<span class='notice'>[src] builds a nest.</span>")
 
+/mob/living/simple_animal/hostile/retaliate/rogue/chicken/proc/hatch_eggs()
+	for(var/obj/item/reagent_containers/food/snacks/egg/egg in loc)
+		if(!egg.fertile)
+			continue
+		egg.hatch(src)
+		qdel(egg)
+
+
+/mob/living/simple_animal/hostile/retaliate/rogue/chicken/chick
+	name = "chick"
+	desc = "So cute!"
+	icon_state = "chick"
+	icon_living = "chick"
+	icon_dead = "chick_dead"
+
+	density = FALSE
+	gender = FEMALE
+	pass_flags = PASSTABLE | PASSMOB
+
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1,
+						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1,
+						/obj/item/natural/feather = 1)
+
+	health = CHICKEN_HEALTH / 2
+	maxHealth = CHICKEN_HEALTH / 2
+
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "gently pushes aside"
+	response_disarm_simple = "gently push aside"
+	response_harm_continuous = "kicks"
+	response_harm_simple = "kick"
+
+	base_intents = list(/datum/intent/simple/peck)
+	melee_damage_lower = 1
+	melee_damage_upper = 5
+	defprob = 50
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/chicken
+
+	ai_controller = /datum/ai_controller/basic_controller/chicken/baby
+	chicken_init = FALSE
 
 /obj/structure/fluff/nest
 	name = "nest"
-	desc = ""
+	desc = "a chicken's nest."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "nest"
 	density = FALSE

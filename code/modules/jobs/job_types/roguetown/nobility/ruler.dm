@@ -31,6 +31,9 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	give_bank_account = 1000
 	required = TRUE
 
+	family_blacklisted = TRUE
+	ruler_family = TRUE
+
 /datum/job/roguetown/exlord //just used to change the lords title
 	title = "Duke Emeritus"
 	f_title = "Duchess Emeritus"
@@ -67,7 +70,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		head = /obj/item/clothing/head/roguetown/crown/serpcrown
 		l_hand = /obj/item/rogueweapon/lordscepter
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/gun/ballistic/arquebus_pistol
+		beltr = /obj/item/gun/ballistic/firearm/arquebus_pistol
 		beltl = /obj/item/ammo_holder/bullet/lead
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/powderflask = 1)
