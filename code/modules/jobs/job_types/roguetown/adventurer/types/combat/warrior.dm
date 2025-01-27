@@ -194,6 +194,12 @@
 			head = /obj/item/clothing/head/roguetown/bucklehat
 			gloves = /obj/item/clothing/gloves/roguetown/otavan
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			beltl = /obj/item/reagent_containers/glass/alchemical/strpot
 			beltr = /obj/item/rogueweapon/huntingknife
 			r_hand = /obj/item/flashlight/flare/torch
+			beltl = pick(/obj/item/reagent_containers/glass/alchemical/strpot, 
+						/obj/item/reagent_containers/glass/alchemical/conpot, 
+						/obj/item/reagent_containers/glass/alchemical/endpot,
+						/obj/item/reagent_containers/glass/alchemical/spdpot,
+						/obj/item/reagent_containers/glass/alchemical/perpot,
+						/obj/item/reagent_containers/glass/alchemical/intpot,
+						/obj/item/reagent_containers/glass/alchemical/lucpot)
