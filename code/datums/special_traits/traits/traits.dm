@@ -471,7 +471,7 @@
 	weight = 100
 	restricted_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
 
-/datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/heretic/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
 	character.add_stress(/datum/stressevent/psycurse)
 	character.devotion?.excommunicate()
@@ -482,7 +482,7 @@
 	greet_text = span_boldwarning("Someone put a bounty on my head!")
 	weight = 100
 
-/datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/hunted/on_apply(mob/living/carbon/human/character, silent)
 	var/reason = ""
 	var/employer = "unknown employer"
 	var/employer_gender
@@ -727,7 +727,7 @@
 	greet_text = span_notice("I keep two runelocks on me at all times. Sadly I forgot to load them today.")
 	req_text = "Be a Priest or Priestess"
 	allowed_jobs = list(/datum/job/roguetown/priest)
-	weight = 10
+	weight = 15
 
 /datum/special_trait/runic_faith/on_apply(mob/living/carbon/human/character, silent)
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
@@ -743,7 +743,7 @@
 	allowed_patrons = list(/datum/patron/divine/noc)
 	allowed_jobs = list(/datum/job/roguetown/ruler)
 	restricted_traits = list(TRAIT_SPELLCOCKBLOCK)
-	weight = 10
+	weight = 15
 
 /datum/special_trait/thinker/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("strength", -3)

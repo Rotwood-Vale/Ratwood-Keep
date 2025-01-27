@@ -38,9 +38,9 @@
 	return TRUE
 
 /obj/item/gem_device/purity
-	name = "dorpel"
-	icon_state = "dorpel_cut"
-	desc = "Glints with verdant brilliance."
+	name = "rontz"
+	icon_state = "rontz_cut"
+	desc = "It's so bright."
 	usage_prompt = "Summon PURITY"
 
 /obj/item/gem_device/purity/on_use(mob/living/user)
