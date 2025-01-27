@@ -261,7 +261,8 @@
 	else
 		for(var/V in internal_organs)
 			var/obj/item/organ/O = V
-			O.on_death() //Needed so organs decay while inside the body.
+			if(!isnull(O))
+				O.on_death() //Needed so organs decay while inside the body.
 
 /mob/living/carbon/handle_mutations_and_radiation()
 	if(dna && dna.temporary_mutations.len)
