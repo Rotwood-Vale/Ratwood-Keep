@@ -38,8 +38,8 @@
 	return TRUE
 
 /obj/item/gem_device/purity
-	name = "rontz"
-	icon_state = "rontz_cut"
+	name = "gemerald"
+	icon_state = "emerald_cut"
 	desc = "It's so bright."
 	usage_prompt = "Summon PURITY"
 
