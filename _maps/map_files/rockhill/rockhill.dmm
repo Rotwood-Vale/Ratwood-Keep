@@ -5057,10 +5057,10 @@
 /area/rogue/indoors/town/bath)
 "cGR" = (
 /obj/item/natural/rock{
-	pixel_y = -7;
-	pixel_x = -5
+	pixel_y = 10;
+	pixel_x = -3
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/water/swamp/deep,
 /area/rogue/outdoors/druidgrove)
 "cHf" = (
 /turf/open/floor/rogue/churchbrick,
@@ -7347,9 +7347,9 @@
 "dQg" = (
 /obj/item/natural/rock{
 	pixel_y = 10;
-	pixel_x = 5
+	pixel_x = -5
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/water/swamp/deep,
 /area/rogue/outdoors/druidgrove)
 "dQj" = (
 /obj/structure/fluff/railing/border,
@@ -7755,6 +7755,10 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/church)
 "eaw" = (
+/obj/item/natural/rock{
+	pixel_y = -7;
+	pixel_x = 5
+	},
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/druidgrove)
 "eaD" = (
@@ -8521,13 +8525,6 @@
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
-"ewa" = (
-/obj/item/natural/rock{
-	pixel_y = -7;
-	pixel_x = 5
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/druidgrove)
 "ewn" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -25899,9 +25896,9 @@
 "nUD" = (
 /obj/item/natural/rock{
 	pixel_y = 10;
-	pixel_x = -3
+	pixel_x = 3
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/water/swamp/deep,
 /area/rogue/outdoors/druidgrove)
 "nUS" = (
 /obj/structure/fluff/railing/wood{
@@ -28766,13 +28763,6 @@
 /obj/item/grown/log/tree/small,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
-"prM" = (
-/obj/item/natural/rock{
-	pixel_y = 10;
-	pixel_x = -5
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/druidgrove)
 "prO" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -32493,10 +32483,10 @@
 /area/rogue/under/cave)
 "ruj" = (
 /obj/item/natural/rock{
-	pixel_y = 10;
-	pixel_x = 3
+	pixel_y = -7;
+	pixel_x = -5
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/water/swamp/deep,
 /area/rogue/outdoors/druidgrove)
 "ruk" = (
 /turf/closed/wall/mineral/rogue/stone/window/moss,
@@ -249073,11 +249063,11 @@ sfx
 sfx
 szy
 sfx
-eaw
+dQg
 uZx
 vOI
 kIQ
-eaw
+ruj
 sfx
 szy
 lxF
@@ -249504,13 +249494,13 @@ eLn
 sfx
 sfx
 jEL
-eaw
-uZx
-prM
-iiy
 cGR
 uZx
-eaw
+eLn
+iiy
+eLn
+uZx
+ruj
 jEL
 lxF
 sjX
@@ -249937,11 +249927,11 @@ sfx
 sfx
 sfx
 kIQ
-nUD
+eLn
 cBe
 iiy
 iiy
-cGR
+eLn
 uZx
 sfx
 sfx
@@ -250801,11 +250791,11 @@ sfx
 sfx
 sfx
 uZx
-ruj
+eLn
 fvK
 iiy
 iiy
-ewa
+eLn
 kIQ
 sfx
 sfx
@@ -251232,11 +251222,11 @@ eLn
 iiy
 sfx
 hUc
-eaw
+nUD
 uZx
-dQg
+eLn
 iiy
-ewa
+eLn
 uZx
 eaw
 hUc
@@ -251665,7 +251655,7 @@ lxF
 iiy
 gPS
 sfx
-eaw
+nUD
 kIQ
 vTe
 uZx
