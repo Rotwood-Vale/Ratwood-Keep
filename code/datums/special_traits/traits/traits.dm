@@ -1,7 +1,7 @@
 /datum/special_trait/nothing
 	name = "Nothing"
 	greet_text = span_notice("You get <b>NOTHING</b>! you <b>LOSE</b>! Good dae, Sire!")
-	weight = 20
+	weight = 10
 
 
 // Positive Specials
@@ -106,7 +106,7 @@
 /datum/special_trait/duelist
 	name = "Ambitious Swordsman"
 	greet_text = span_notice("I've traveled from land to land for months, treaded over countless corpses; challenged tyrants and heroes alike, slain entire retinues and inhumen warbands, yet I still stand. Perhaps a worthy opponent lives gere, on Enigma...? Mmmaybe I could use a little break, though...")
-	weight = 20
+	weight = 10
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
@@ -144,7 +144,7 @@
 /datum/special_trait/eagle_eyed
 	name = "Eagle Eyed"
 	greet_text = span_notice("I'd like to see them fire that obnoxiously loud stick with a bolt through their skull. I don't miss.")
-	weight = 20
+	weight = 10
 
 /datum/special_trait/eagle_eyed/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("perception", 2)
@@ -203,16 +203,14 @@
 	weight = 100
 
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
-	var/counter = 1
-	while(prob(40) && counter <= 3) // Stops you from getting more than 4 bombs total
-		character.mind.special_items["firebomb [counter]"] = /obj/item/bomb
-		counter++
+	character.mind.special_items["A firebomb"] = /obj/item/bomb
+	character.mind.special_items["Another firebomb"] = /obj/item/bomb
 
 
 /datum/special_trait/pineapple
 	name = "The safeword is 'Pineapple'"
 	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I'll need to grab my toy from that one tree.")
-	weight = 20
+	weight = 10
 
 /datum/special_trait/pineapple/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Whip"] = /obj/item/rogueweapon/whip
@@ -252,7 +250,7 @@
 	req_text = "Adult or Middle-Aged, Non-keep role."
 	restricted_jobs = list(KING_QUEEN_ROLES, GARRISON_ROLES, MANOR_ROLES)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	weight = 20
+	weight = 10
 
 /datum/special_trait/freerunner/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_ZJUMP, "[type]")
@@ -369,7 +367,7 @@
 /datum/special_trait/lucky
 	name = "Lucky"
 	greet_text = span_notice("I feel like the luckiest person alive! Misfortune trembles as I pass her by on a dae to dae basis!")
-	weight = 20
+	weight = 10
 
 /datum/special_trait/lucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC = rand(15, 20)
@@ -382,7 +380,7 @@
 
 /datum/special_trait/mule/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Drugs"] = /obj/item/storage/backpack/rogue/satchel/mule
-	character.mind.special_items["PURITY Gem"] = /obj/item/storage/backpack/rogue/satchel/mule
+	character.mind.special_items["PURITY Gem"] = /obj/item/gem_device/purity
 	character.mind.special_items["Whitevein Key"] = /obj/item/key/nightman
 	character.mind.special_items["Dagger"] = /obj/item/rogueweapon/huntingknife/idagger
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
@@ -611,7 +609,7 @@
 /datum/special_trait/missing_nose
 	name = "Missing Nose"
 	greet_text = span_boldwarning("I lost my nose in combat. This makes breathing difficult.")
-	weight = 60
+	weight = 40
 
 /datum/special_trait/missing_nose/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_MISSING_NOSE, "[type]")
@@ -632,7 +630,7 @@
 	greet_text = span_notice("I am quite rebellious for a noble. Screw Noble Customs!")
 	req_text = "Be a heir or heiress"
 	allowed_jobs = list(/datum/job/roguetown/prince)
-	weight = 60
+	weight = 40
 
 /datum/special_trait/royal_brat/on_apply(mob/living/carbon/human/character, silent)
 	QDEL_NULL(character.wear_pants)
@@ -668,7 +666,7 @@
 	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")
 	req_text = "Be a beggar"
 	allowed_jobs = list(/datum/job/roguetown/beggar)
-	weight = 60
+	weight = 40
 
 /datum/special_trait/my_precious/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, rand(1,3), TRUE)
@@ -729,7 +727,7 @@
 	greet_text = span_notice("I keep two runelocks on me at all times. Sadly I forgot to load them today.")
 	req_text = "Be a Priest or Priestess"
 	allowed_jobs = list(/datum/job/roguetown/priest)
-	weight = 20
+	weight = 10
 
 /datum/special_trait/runic_faith/on_apply(mob/living/carbon/human/character, silent)
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
@@ -745,7 +743,7 @@
 	allowed_patrons = list(/datum/patron/divine/noc)
 	allowed_jobs = list(/datum/job/roguetown/ruler)
 	restricted_traits = list(TRAIT_SPELLCOCKBLOCK)
-	weight = 20
+	weight = 10
 
 /datum/special_trait/thinker/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("strength", -3)
@@ -763,7 +761,7 @@
 	greet_text = span_notice("You think you are <b>real soldiers</b>? Kiddo, don't make me laugh! You see this missing eye? If you've seen the crap <b>I've</b> seen, you'd be pissing your pants everytime you try to sleep! What was that? 'Burnt out old fart'? How about you square up and find out, you brat!")
 	req_text = "Be a Veteran"
 	allowed_jobs = list(/datum/job/roguetown/veteran)
-	weight = 20
+	weight = 10
 
 /datum/special_trait/warhorse/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DECEIVING_MEEKNESS, "[type]")
