@@ -1257,6 +1257,15 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 			new /obj/effect/temp_visual/snap_freeze(get_turf(L))
 	qdel(src)
 
+/obj/effect/temp_visual/snap_freeze
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "shieldsparkles"
+	name = "rippeling arcyne ice"
+	desc = "Get out of the way!"
+	randomdir = FALSE
+	duration = 1 SECONDS
+	layer = MASSIVE_OBJ_LAYER
+
 /obj/effect/proc_holder/spell/targeted/lightninglure
 	name = "Lightning Lure"
 	overlay_state = "null"

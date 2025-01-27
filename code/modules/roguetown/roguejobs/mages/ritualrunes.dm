@@ -449,6 +449,42 @@ GLOBAL_LIST(teleport_runes)
 			to_chat(living_invoker,  span_italics("[src] saps your strength!"))
 	do_invoke_glow()
 
+/obj/effect/decal/cleanable/roguerune/arcyne/enchantment	//used for better quality of learning, grants temporary 2 minute INT bonus.
+	name = "Imbuement Array"
+	desc = "arcane symbols pulse upon the ground..."
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "empowerment"
+	tier = 2
+	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
+	pixel_y = -32
+	pixel_z = 0
+	invocation = "Thal’miren vek’laris un’vethar!"
+	layer = SIGIL_LAYER
+	color = "#3A0B61"
+	can_be_scribed = TRUE
+	ritual_number = TRUE
+
+/obj/effect/decal/cleanable/roguerune/arcyne/empowerment/invoke(list/invokers, datum/runerituals/buff/runeritual)
+	if(!..())	//VERY important. Calls parent and checks if it fails. parent/invoke has all the checks for ingredients
+		return
+
+	var/buffedstat = runeritual.buff
+	for(var/mob/living/invoker in range(runesize, src))
+		invoker.apply_status_effect(buffedstat)
+	if(ritual_result)
+		pickritual.cleanup_atoms(selected_atoms)
+
+	for(var/atom/invoker in invokers)
+		if(!isliving(invoker))
+			continue
+		var/mob/living/living_invoker = invoker
+		if(invocation)
+			living_invoker.say(invocation, language = /datum/language/common, ignore_spam = TRUE, forced = "cult invocation")
+		if(invoke_damage)
+			living_invoker.apply_damage(invoke_damage, BRUTE)
+			to_chat(living_invoker,  span_italics("[src] saps your strength!"))
+	do_invoke_glow()
+
 /obj/effect/decal/cleanable/roguerune/arcyne/wall
 	name = "wall accession matrix"
 	desc = "arcane symbols litter the ground- is that a wall of some sort?"

@@ -30,7 +30,6 @@
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
-	milkies = FALSE
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null

@@ -29,7 +29,7 @@
 	move_to_delay = 8	// basically speed when player controlled. Lower is faster, a lot faster.
 	see_in_dark = 6
 	robust_searching = TRUE
-	
+
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat = 1)
 
 	health = 40
@@ -55,8 +55,6 @@
 	candodge = TRUE
 	dodge_sound = 'sound/combat/dodge.ogg'
 	dodge_prob = 0
-	var/deaggroprob = 10
-	var/eat_forever
 	candodge = TRUE
 	var/tier = 0
 	search_objects = TRUE

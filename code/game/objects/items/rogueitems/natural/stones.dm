@@ -215,7 +215,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 				stone_desc += " [pick(GLOB.stone_personality_descs)]"
 				personality_modifier += rand(1,5) // Personality gives a stone some more power too
 		if(23 to 25)
-				bonus_force += rand(1,5) // Personality gives a stone some more power too
+			bonus_force += rand(1,5) // Personality gives a stone some more power too
 		if(24 to 25)
 			stone_title = "[stone_title] of [pick(GLOB.stone_personalities)]"
 			stone_desc += " [pick(GLOB.stone_personality_descs)]"

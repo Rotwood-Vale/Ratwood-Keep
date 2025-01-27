@@ -86,7 +86,7 @@
 					if(HAS_TRAIT(carbon_user, TRAIT_FORGEBLESSED))
 						carbon_user.stamina_add(max(21 - (used_str * 3), 0)*advance_multiplier)
 					else
-						carbon_user.rogfat_add(max(30 - (used_str * 3), 0)*advance_multiplier)
+						carbon_user.stamina_add(max(30 - (used_str * 3), 0)*advance_multiplier)
 				var/total_chance = 7 * user.mind.get_skill_level(hingot.currecipe.appro_skill) * user.STAPER/10 * hammer.quality
 				var/breakthrough = 0
 				if(prob((1 + total_chance)*advance_multiplier)) //Small chance to flash
