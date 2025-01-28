@@ -1,4 +1,4 @@
-/datum/subclass/gronnrefugee
+/datum/subclass/underdwellers
 	name = "Under Dwellers"
 	tutorial = "You are of those not quite fit for society, those who hide away in the caves and sewers. That society has deemed you lesser. So now, you live amongst your own little communities, far from where the surface dwellers dare see you."
 
@@ -8,12 +8,12 @@
 
 	maximum_possible_slots = 10
 
-	outfit = /datum/outfit/job/roguetown/refugee/gronnrefugee
+	outfit = /datum/outfit/job/roguetown/refugee/underdwellers
 
-/datum/outfit/job/roguetown/refugee/gronnrefugee
+/datum/outfit/job/roguetown/refugee/underdwellers
 	allowed_patrons = ALL_PATRONS
 
-/datum/outfit/job/roguetown/refugee/gronnrefugee/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/underdwellers/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
 	var/classes = list("Caveling", "Caveling Gatherer", "Caveling Tinkerer", "Caveling Shaman")

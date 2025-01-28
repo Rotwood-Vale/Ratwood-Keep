@@ -300,6 +300,10 @@
 	icon_state = "tophat"
 	color = CLOTHING_BLACK
 
+/obj/item/clothing/head/roguetown/witch
+	name = "Wych Hat"
+	icon_state = "witch"
+
 /obj/item/clothing/head/roguetown/bardhat
 	name = "hat"
 	icon_state = "bardhat"
