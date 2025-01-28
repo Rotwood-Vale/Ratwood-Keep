@@ -367,7 +367,7 @@
 /datum/special_trait/lucky
 	name = "Lucky"
 	greet_text = span_notice("I feel like the luckiest person alive! Misfortune trembles as I pass her by on a dae to dae basis!")
-	weight = 10
+	weight = 20
 
 /datum/special_trait/lucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC = rand(15, 20)
