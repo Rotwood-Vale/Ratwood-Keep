@@ -757,14 +757,14 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
 
-/obj/item/storage/backpack/rogue/backpack/rucksack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 10
-		STR.not_while_equipped = TRUE
+// /obj/item/storage/backpack/rogue/backpack/rucksack/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	if(STR)
+// 		STR.max_combined_w_class = 42
+// 		STR.max_w_class = WEIGHT_CLASS_NORMAL
+// 		STR.max_items = 10
+// 		STR.not_while_equipped = TRUE
 
 /obj/item/rogueweapon/surgery/saw/improv
 	name = "improvised saw"
@@ -837,22 +837,22 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	update_icon()
 	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
 
-/obj/item/storage/fancy/pilltin/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 12
-		STR.set_holdable(list(/obj/item/reagent_containers/pill))
+// /obj/item/storage/fancy/pilltin/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	if(STR)
+// 		STR.max_combined_w_class = 42
+// 		STR.max_w_class = WEIGHT_CLASS_NORMAL
+// 		STR.max_items = 12
+// 		STR.set_holdable(list(/obj/item/reagent_containers/pill))
 
 /obj/item/storage/fancy/pilltin/wake
 	name = "pill tin (wake)"
 
-/obj/item/storage/fancy/pilltin/wake/PopulateContents()
-	new /obj/item/reagent_containers/pill/caffpill(src)
-	new /obj/item/reagent_containers/pill/caffpill(src)
-	new /obj/item/reagent_containers/pill/caffpill(src)
+// /obj/item/storage/fancy/pilltin/wake/PopulateContents()
+// 	new /obj/item/reagent_containers/pill/caffpill(src)
+// 	new /obj/item/reagent_containers/pill/caffpill(src)
+// 	new /obj/item/reagent_containers/pill/caffpill(src)
 
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
@@ -903,35 +903,35 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	update_icon()
 	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
 
-/obj/item/storage/fancy/skit/ComponentInitialize()
-	..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 10
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 42
-	STR.set_holdable(list(
-		/obj/item/rogueweapon/surgery/scalpel,
-		/obj/item/rogueweapon/surgery/saw,
-		/obj/item/rogueweapon/surgery/hemostat,
-		/obj/item/rogueweapon/surgery/retractor,
-		/obj/item/rogueweapon/surgery/bonesetter,
-		/obj/item/rogueweapon/surgery/cautery,
-		/obj/item/natural/worms/leech/cheele,
-		/obj/item/needle,
-		/obj/item/needle/thorn,
-		/obj/item/needle/pestra
-	))
+// /obj/item/storage/fancy/skit/ComponentInitialize()
+// 	..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	STR.max_items = 10
+// 	STR.max_w_class = WEIGHT_CLASS_NORMAL
+// 	STR.max_combined_w_class = 42
+// 	STR.set_holdable(list(
+// 		/obj/item/rogueweapon/surgery/scalpel,
+// 		/obj/item/rogueweapon/surgery/saw,
+// 		/obj/item/rogueweapon/surgery/hemostat,
+// 		/obj/item/rogueweapon/surgery/retractor,
+// 		/obj/item/rogueweapon/surgery/bonesetter,
+// 		/obj/item/rogueweapon/surgery/cautery,
+// 		/obj/item/natural/worms/leech/cheele,
+// 		/obj/item/needle,
+// 		/obj/item/needle/thorn,
+// 		/obj/item/needle/pestra
+// 	))
 
-/obj/item/storage/fancy/skit/PopulateContents()
-	new /obj/item/rogueweapon/surgery/scalpel(src)
-	new /obj/item/rogueweapon/surgery/saw(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src)
-	new /obj/item/rogueweapon/surgery/retractor(src)
-	new /obj/item/rogueweapon/surgery/bonesetter(src)
-	new /obj/item/rogueweapon/surgery/cautery(src)
-	new /obj/item/natural/worms/leech/cheele(src)
-	new /obj/item/needle/pestra(src)
+// /obj/item/storage/fancy/skit/PopulateContents()
+// 	new /obj/item/rogueweapon/surgery/scalpel(src)
+// 	new /obj/item/rogueweapon/surgery/saw(src)
+// 	new /obj/item/rogueweapon/surgery/hemostat(src)
+// 	new /obj/item/rogueweapon/surgery/hemostat(src)
+// 	new /obj/item/rogueweapon/surgery/retractor(src)
+// 	new /obj/item/rogueweapon/surgery/bonesetter(src)
+// 	new /obj/item/rogueweapon/surgery/cautery(src)
+// 	new /obj/item/natural/worms/leech/cheele(src)
+// 	new /obj/item/needle/pestra(src)
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
@@ -942,10 +942,10 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	throwforce = 1
 	slot_flags = null
 
-/obj/item/storage/fancy/ifak/PopulateContents()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	for(var/i = 1 to STR.max_items)
-		new spawn_type(src)
+// /obj/item/storage/fancy/ifak/PopulateContents()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	for(var/i = 1 to STR.max_items)
+// 		new spawn_type(src)
 
 /obj/item/storage/fancy/ifak/update_icon()
 	if(fancy_open)
@@ -987,33 +987,33 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	update_icon()
 	to_chat(user, span_notice("[src] is now [fancy_open ? "open" : "closed"]."))
 
-/obj/item/storage/fancy/ifak/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 8
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 42
-	STR.set_holdable(list(
-		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
-		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
-		/obj/item/natural/cloth/bandage,
-		/obj/item/natural/bundle/cloth/bandage,
-		/obj/item/natural/bundle/cloth/bandage/full,
-		/obj/item/reagent_containers/pill/pnkpill,
-		/obj/item/candle,
-		/obj/item/needle,
-		/obj/item/needle/thorn,
-		/obj/item/needle/pestra,
-	))
+// /obj/item/storage/fancy/ifak/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	STR.max_items = 8
+// 	STR.max_w_class = WEIGHT_CLASS_NORMAL
+// 	STR.max_combined_w_class = 42
+// 	STR.set_holdable(list(
+// 		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
+// 		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
+// 		/obj/item/natural/cloth/bandage,
+// 		/obj/item/natural/bundle/cloth/bandage,
+// 		/obj/item/natural/bundle/cloth/bandage/full,
+// 		/obj/item/reagent_containers/pill/pnkpill,
+// 		/obj/item/candle,
+// 		/obj/item/needle,
+// 		/obj/item/needle/thorn,
+// 		/obj/item/needle/pestra,
+// 	))
 
-/obj/item/storage/fancy/ifak/PopulateContents()
-	new /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju(src)
-	new /obj/item/natural/bundle/cloth/bandage/full(src)
-	new /obj/item/reagent_containers/hypospray/medipen/sty/detox(src)
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-	new /obj/item/candle/yellow(src)
-	new /obj/item/needle(src)
-	new /obj/item/book/rogue/medical_notebook(src)
+// /obj/item/storage/fancy/ifak/PopulateContents()
+// 	new /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju(src)
+// 	new /obj/item/natural/bundle/cloth/bandage/full(src)
+// 	new /obj/item/reagent_containers/hypospray/medipen/sty/detox(src)
+// 	new /obj/item/reagent_containers/pill/pnkpill(src)
+// 	new /obj/item/candle/yellow(src)
+// 	new /obj/item/needle(src)
+// 	new /obj/item/book/rogue/medical_notebook(src)
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
 	name = "sealed bottle item"

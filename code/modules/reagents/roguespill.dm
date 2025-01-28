@@ -21,7 +21,7 @@
 /obj/item/reagent_containers/on_enter_storage(datum/component/storage/concrete/S)
 	..()
 	if(spillable)
-		if(S && S.spills_on_move)
+		if(S)
 			var/atom/real_location = S.real_location()
 			if(istype(real_location, /obj/item/storage))
 				var/obj/item/storage/I = real_location

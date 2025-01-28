@@ -248,7 +248,17 @@
 				if(!isnum(number))//Default to 1
 					number = 1
 				for(var/i in 1 to number)
-					H.equip_to_slot_or_del(new path(H),SLOT_IN_BACKPACK, TRUE)
+					var/obj/item/new_item = new path(H)
+					var/obj/item/item = H.get_item_by_slot(SLOT_BACK_L)
+					if(!item)
+						item = H.get_item_by_slot(SLOT_BACK_R)
+					if(!item || !SEND_SIGNAL(item, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
+						item = H.get_item_by_slot(SLOT_BACK_R)
+						if(!item || !SEND_SIGNAL(item, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
+							item = H.get_item_by_slot(SLOT_BELT)
+							if(!item || !SEND_SIGNAL(item, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
+								new_item.forceMove(get_turf(H))
+								message_admins("[type] had backpack_contents set but no room to store:[new_item]")
 
 	post_equip(H, visualsOnly)
 

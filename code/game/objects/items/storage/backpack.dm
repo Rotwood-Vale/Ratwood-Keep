@@ -21,9 +21,9 @@
 	resistance_flags = NONE
 	max_integrity = 300
 
-/obj/item/storage/backpack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 21
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_items = 21
+// /obj/item/storage/backpack/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	STR.max_combined_w_class = 21
+// 	STR.max_w_class = WEIGHT_CLASS_NORMAL
+// 	STR.max_items = 21

@@ -20,18 +20,48 @@
 	
 	cmode_music = 'sound/music/combat_weird.ogg'
 
-/datum/job/roguetown/deathknight/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+/datum/outfit/job/roguetown/deathknight/pre_equip(mob/living/carbon/human/H)
+	..()
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+
+	head = /obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
+	cloak = /obj/item/clothing/cloak/cape/blkknight
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+	gloves = /obj/item/clothing/gloves/roguetown/plate/blk
+	backl = /obj/item/rogueweapon/sword/long/judgement
+	belt = /obj/item/storage/belt/rogue/leather
+	pants = /obj/item/clothing/under/roguetown/platelegs/blk
+	shoes = /obj/item/clothing/shoes/roguetown/armor/steel/blkknight
+
+	H.change_stat("intelligence", 3)
+	H.change_stat("strength", 2)
+	H.change_stat("endurance", 2)
+	H.change_stat("constitution", 2)
+	H.change_stat("speed", -3)
+
+	H.ambushable = FALSE
+
+	var/datum/antagonist/new_antag = new /datum/antagonist/skeleton/knight()
+	H.mind.add_antag_datum(new_antag)
+
 	var/datum/game_mode/chaosmode/C = SSticker.mode
 	C.deathknightspawn = FALSE
-	C.deathknights |= L.mind
+	C.deathknights |= H.mind
 	..()
-	if(L)
-		var/mob/living/carbon/human/H = L
-		L.can_do_sex = FALSE
-		if(M.mind)
-			M.mind.special_role = "Death Knight"
-			M.mind.assigned_role = "Death Knight"
-			M.mind.current.job = null
+	if(H)
+		H.can_do_sex = FALSE
+		if(H.mind)
+			H.mind.special_role = "Death Knight"
+			H.mind.assigned_role = "Death Knight"
+			H.mind.current.job = null
 		if(H.dna && H.dna.species)
 			H.dna.species.species_traits |= NOBLOOD
 			H.dna.species.soundpack_m = new /datum/voicepack/skeleton()
@@ -83,38 +113,6 @@
 		for(var/obj/item/bodypart/B in H.bodyparts)
 			B.skeletonize(FALSE)
 		H.update_body()
-
-/datum/outfit/job/roguetown/deathknight/pre_equip(mob/living/carbon/human/H)
-	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-
-
-	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/platelegs/blk/death
-	shoes = /obj/item/clothing/shoes/roguetown/armor/steel/blkknight
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight/death
-	gloves = /obj/item/clothing/gloves/roguetown/plate/blk/death
-	backl = /obj/item/rogueweapon/sword/long/death
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
-
-	H.change_stat("intelligence", 3)
-	H.change_stat("strength", 2)
-	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 2)
-	H.change_stat("speed", -3)
-
-	H.ambushable = FALSE
-
-	var/datum/antagonist/new_antag = new /datum/antagonist/skeleton/knight()
-	H.mind.add_antag_datum(new_antag)
 
 /obj/item/clothing/suit/roguetown/armor/plate/blkknight/death
 	color = CLOTHING_BLACK

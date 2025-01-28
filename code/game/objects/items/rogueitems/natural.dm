@@ -71,6 +71,8 @@
 				update_bundle()
 				qdel(B)
 	else if(istype(W, stacktype))
+		if(item_flags & IN_STORAGE)
+			return
 		if(src.amount < src.maxamount)
 			to_chat(user, "You add the [W] to the [src].")
 			src.amount++

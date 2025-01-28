@@ -16,28 +16,29 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/storage/keyring/Initialize()
-    . = ..()
-    if(keys.len)
-        for(var/X in keys)
-            new X(src)
-            keys -= X
-    update_icon()
-    update_desc()
-
-/obj/item/storage/keyring/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 20
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = 9
-		STR.attack_hand_interact = FALSE
-		STR.click_gather = TRUE
-		STR.allow_dump_out = TRUE
-		STR.rustle_sound = FALSE
-		STR.set_holdable(list(
-			/obj/item/key,
-		))
+	for(var/X in keys)
+		var/obj/item/key/new_key = new X(loc)
+		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_key, null, TRUE, FALSE))
+			qdel(new_key)
+
+	update_icon()
+	update_desc()
+
+// /obj/item/storage/keyring/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	if(STR)
+// 		STR.max_combined_w_class = 20
+// 		STR.max_w_class = WEIGHT_CLASS_SMALL
+// 		STR.max_items = 9
+// 		STR.attack_hand_interact = FALSE
+// 		STR.click_gather = TRUE
+// 		STR.allow_dump_out = TRUE
+// 		STR.rustle_sound = FALSE
+// 		STR.set_holdable(list(
+// 			/obj/item/key,
+// 		))
 
 /obj/item/storage/keyring/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)

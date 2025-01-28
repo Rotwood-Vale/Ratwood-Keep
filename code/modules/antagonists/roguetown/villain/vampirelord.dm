@@ -780,11 +780,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		var/choice = input(user,"What to do?", "ROGUETOWN") as anything in useoptions|null
 		switch(choice)
 			if("Create Death Knight")
-				if(alert(user, "Create a Death Knight? Cost:5000","","Yes","No") == "Yes")
+				if(alert(user, "Create a Death Knight? Cost:10000","","Yes","No") == "Yes")
 					if(C.deathknights.len >= 3)
 						to_chat(user, "You cannot summon any more death knights.")
 						return
-					if(!lord.mypool.check_withdraw(-5000))
+					if(!lord.mypool.check_withdraw(-10000))
 						to_chat(user, "I don't have enough vitae!")
 						return
 					if(do_after(user, 100))
@@ -793,6 +793,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 						for(var/mob/dead/observer/D in GLOB.player_list)
 							D.death_knight_spawn()
 						for(var/mob/living/carbon/spirit/D in GLOB.player_list)
+							D.death_knight_spawn()
+						for(var/mob/dead/new_player/D in GLOB.player_list)
 							D.death_knight_spawn()
 				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
 			if("Steal the Sun")
@@ -825,19 +827,15 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		to_chat(user, "I don't have the power to use this!")
 
 /mob/proc/death_knight_spawn()
-	var/datum/game_mode/chaosmode/C = SSticker.mode
 	SEND_SOUND(src, sound('sound/misc/notice (2).ogg'))
-	if(alert(src, "A Vampire Lord is summoning you from the Underworld.", "Be Risen?", "Yes", "No") == "Yes")
-		if(!C.deathknightspawn)
-			to_chat(src, span_warning("Another soul was chosen."))
-		var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as a Death Knight?", null, null, null, 100, src, POLL_IGNORE_NECROMANCER_SKELETON)
-		if(LAZYLEN(candidates))
-			var/mob/dead/observer/candidat = pick(candidates)
-			var/mob/living/carbon/human/new_knight = new /mob/living/carbon/human()
-			new_knight.forceMove(usr)
-			new_knight.ckey = candidat.ckey
-			new_knight.equipOutfit(/datum/job/roguetown/deathknight)
-			new_knight.regenerate_icons()
+	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as a Death Knight?", null, null, null, 100, src, POLL_IGNORE_NECROMANCER_SKELETON)
+	if(LAZYLEN(candidates))
+		var/mob/dead/observer/candidat = pick(candidates)
+		var/mob/living/carbon/human/new_knight = new /mob/living/carbon/human/species/human/northern()
+		new_knight.forceMove(usr.loc)
+		new_knight.ckey = candidat.ckey
+		new_knight.equipOutfit(/datum/job/roguetown/deathknight)
+		new_knight.regenerate_icons()
 
 // DEATH KNIGHT ANTAG
 /datum/antagonist/skeleton/knight

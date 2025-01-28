@@ -12,20 +12,21 @@
 	equip_sound = 'sound/blank.ogg'
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
-	var/heldz_items = 3
+	// var/heldz_items = 3
 	sewrepair = TRUE
 	fiber_salvage = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 	var/datum/wound/artery/artery_wound
+	component_type = /datum/component/storage/concrete/roguetown/belt
 
-/obj/item/storage/belt/rogue/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = heldz_items
+// /obj/item/storage/belt/rogue/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	if(STR)
+// 		STR.max_combined_w_class = 6
+// 		STR.max_w_class = WEIGHT_CLASS_SMALL
+// 		STR.max_items = heldz_items
 
 /obj/item/storage/belt/rogue/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -111,7 +112,7 @@
 	icon_state = "leather"
 	item_state = "leather"
 	equip_sound = 'sound/blank.ogg'
-	heldz_items = 3
+	// heldz_items = 3
 
 /obj/item/storage/belt/rogue/leather/dropped(mob/living/carbon/human/user)
 	..()
@@ -169,15 +170,17 @@
 	icon_state = "rope"
 	item_state = "rope"
 	color = "#b9a286"
-	heldz_items = 1
+	// heldz_items = 1
 	salvage_result = /obj/item/rope
+	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth
 	name = "cloth sash"
 	desc = "A simple cloth sash."
 	icon_state = "cloth"
-	heldz_items = 1
+	// heldz_items = 1
 	salvage_result = /obj/item/natural/cloth
+	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth/lady
 	color = "#575160"
@@ -202,15 +205,16 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	fiber_salvage = FALSE
+	component_type = /datum/component/storage/concrete/roguetown/coin_pouch
 
-/obj/item/storage/belt/rogue/pouch/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = 3
-		STR.not_while_equipped = FALSE
+// /obj/item/storage/belt/rogue/pouch/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	if(STR)
+// 		STR.max_combined_w_class = 6
+// 		STR.max_w_class = WEIGHT_CLASS_SMALL
+// 		STR.max_items = 3
+// 		STR.not_while_equipped = FALSE
 
 /obj/item/storage/belt/rogue/pouch/coins/mid/Initialize()
 	. = ..()
@@ -284,6 +288,7 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	alternate_worn_layer = UNDER_CLOAK_LAYER
+	component_type = /datum/component/storage/concrete/roguetown/satchel
 
 /obj/item/storage/backpack/rogue/satchel/heartfelt/PopulateContents()
 	new /obj/item/natural/feather(src)
@@ -308,16 +313,16 @@
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK
 
-/obj/item/storage/backpack/rogue/satchel/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 18
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 4
-		STR.click_gather = TRUE
-		STR.allow_quick_empty = TRUE
-		STR.allow_dump_out = TRUE
+// /obj/item/storage/backpack/rogue/satchel/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	if(STR)
+// 		STR.max_combined_w_class = 18
+// 		STR.max_w_class = WEIGHT_CLASS_NORMAL
+// 		STR.max_items = 4
+// 		STR.click_gather = TRUE
+// 		STR.allow_quick_empty = TRUE
+// 		STR.allow_dump_out = TRUE
 
 
 /obj/item/storage/backpack/rogue/attack_right(mob/user)
@@ -339,16 +344,17 @@
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
+	component_type = /datum/component/storage/concrete/roguetown/backpack
 
-/obj/item/storage/backpack/rogue/backpack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 14
-		STR.not_while_equipped = TRUE
-		STR.allow_dump_out = TRUE
+// /obj/item/storage/backpack/rogue/backpack/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	if(STR)
+// 		STR.max_combined_w_class = 42
+// 		STR.max_w_class = WEIGHT_CLASS_NORMAL
+// 		STR.max_items = 14
+// 		STR.not_while_equipped = TRUE
+// 		STR.allow_dump_out = TRUE
 /*
 /obj/item/storage/belt/rogue/pickles
 	name = "jar of pickles"
