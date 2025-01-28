@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				return
 			else
 				to_chat(src, span_clown("Failed to equip chosen class, choose a new one."))
-				log_message("ERROR: Unable to pick [A.name] as a subclass for vampire spawn.", LOG_GAME)
+				log_message("ERROR: Unable to pick [A.name] as a subclass for [src].", LOG_GAME)
 				spawn_pick_class()
 
 /datum/outfit/job/roguetown/vamplord/pre_equip(mob/living/carbon/human/H)
@@ -792,6 +792,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 						return
 					if(do_after(user, 100))
 						to_chat(user, "I have summoned a knight from the underworld. I need only wait for them to materialize.")
+						lord.handle_vitae(-5000)
 						C.deathknightspawn = TRUE
 						for(var/mob/dead/observer/D in GLOB.player_list)
 							D.death_knight_spawn()
@@ -806,10 +807,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					to_chat(user, "It's already night!")
 					return
 				if(alert(user, "Force Enigma into Night? Cost:5000","","Yes","No") == "Yes")
-					if(!lord.mypool.check_withdraw(-2500))
+					if(!lord.mypool.check_withdraw(-5000))
 						to_chat(user, "I don't have enough vitae!")
 						return
 					if(do_after(user, 100))
+						lord.handle_vitae(-5000)
 						GLOB.todoverride = "night"
 						sunstolen = TRUE
 						settod()
