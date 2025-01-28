@@ -38,6 +38,7 @@
 #define BELT_LAYER				26		//only when looking south
 #define UNDER_CLOAK_LAYER		25
 #define HANDS_PART_LAYER		24
+#define OVER_HANDS_LAYER		23.5 // A patch to make some clothing with layers from 35 to 24 use "standart" SS13 icon_states and ignore sleeves code.
 #define GLOVES_LAYER			23
 #define ARM_DAMAGE_LAYER		22
 #define SHIRTSLEEVE_LAYER		21

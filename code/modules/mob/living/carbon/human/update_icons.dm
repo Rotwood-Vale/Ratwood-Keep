@@ -1196,7 +1196,7 @@ There are several things that need to be remembered:
 			var/armsindex = get_limbloss_index(ARM_RIGHT, ARM_LEFT)
 			var/target_layer = SHIRT_LAYER
 			if(wear_armor.ignore_sleeves_code)
-				target_layer = GLOVES_LAYER // Cursed, but much of clothing, that uses this varible, doesn't mean to use it with armor
+				target_layer = OVER_HANDS_LAYER // Cursed, but much of clothing, that uses this varible, doesn't mean to use it with armor
 			var/racecustom
 			if(dna.species.custom_clothes)
 				racecustom = dna.species.clothes_id
@@ -1263,7 +1263,7 @@ There are several things that need to be remembered:
 				racecustom = dna.species.clothes_id
 			var/target_layer = ARMOR_LAYER
 			if(wear_armor.ignore_sleeves_code)
-				target_layer = GLOVES_LAYER
+				target_layer = OVER_HANDS_LAYER
 			var/desired_gender_render = gender
 			if(dna.species.use_f)
 				desired_gender_render = FEMALE
