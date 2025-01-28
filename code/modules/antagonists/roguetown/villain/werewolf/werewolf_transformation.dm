@@ -125,6 +125,7 @@
 
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
+	W.AddSpell(new /obj/effect/proc_holder/spell/targeted/woundlick)
 
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
 
@@ -180,7 +181,7 @@
 		W.change_stat("speed", 3)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/howl)
 	W.RemoveSpell(new /obj/effect/proc_holder/spell/self/claws)
-
+	W.RemoveSpell(new /obj/effect/proc_holder/spell/targeted/woundlick)
 	W.regenerate_icons()
 
 	to_chat(W, span_userdanger("I return to my facade."))
