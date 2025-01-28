@@ -1,4 +1,19 @@
 #define ROUNDWAITER "1325992382021501050"
+#define FUNNY_VIDEOS_FILE_NAME "config/discord_videos.json"
+
+/proc/init_discord_videos()
+	if (!fexists(FUNNY_VIDEOS_FILE_NAME))
+		return null
+	var/list/videos_json = json_decode(file2text(FUNNY_VIDEOS_FILE_NAME))
+	if (!length(videos_json))
+		return null
+
+	var/list/contents = list()
+	for (var/entry in videos_json)
+		if (entry["content"])
+			contents += entry["content"]
+
+	return contents
 
 /datum/tgs_chat_embed/provider/author/glob
 	name = "Ксайликс вещает"
@@ -10,7 +25,7 @@
 				"О-о-о? Что это? Начало игры?",
 				"Это для меня? Начало игры?",
 				"ИГРА НАЧАЛАСЬ! :)",
-				"Давно-давно... Началась история, произошедшая в славном городе Рокхилл.",
+				"Давно-давно... началась история, произошедшая в славном городе Рокхилл.",
 				"Уэ. Новый раунд или что-то вроде того.",
 				"Я всегда возвращаюсь вместе с новой партией.",
 				"Мы начинаем новую партию!",
@@ -102,6 +117,17 @@
 	embed.fields = list(line, joinat)
 
 	send2chat(message, "status") //can't "CONFIG_GET" before mc start. Womp-womp
+
+	var/list/random_links = init_discord_videos()
+	if (!random_links || !length(random_links))
+		send2chat("Ошибка: не удалось загрузить ссылки из FUNNY_VIDEOS_FILE_NAME", "status")
+		return
+
+	var/random_link = pick(random_links)
+	var/last_roundend_message = "[random_link]"
+	var/datum/tgs_message_content/random_message = new(last_roundend_message)
+	spawn(5)
+		send2chat(random_message, "status")
 
 /world/proc/SendTGSRoundEnd()
 	var/count_of_joined_characters = SSticker.males + SSticker.females + SSticker.males_with_vagina + SSticker.females_with_penis
