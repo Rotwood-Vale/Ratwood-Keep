@@ -337,21 +337,25 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 	if(normal || smart)
 		var/list/critclasses = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH, BCLASS_PICK)
 		var/crits = "<b><u>PREVENTS CRITS: </u></b><br>"
-		crits += "<font color = '#b9b9b9'>| </font>"
+		crits += "<font color = '#69a1a8'>| </font>"
 		if(C.prevent_crits)
 			for(var/zone in C.prevent_crits)
 				for(var/crit in critclasses)
 					if(zone == crit)
+						if(zone == BCLASS_PICK)
+							zone = "pick"		//Pick is labelled as 'Stab'
 						zone = "<font color = '#69a1a8'>[capitalize(zone)] | </font>"
 						crits += zone
 						LAZYREMOVE(critclasses, crit)
 						continue
+		if(smart)
 			crits += "<br>"
 			crits += "<font color = '#a35252'>| </font>"
-
-		for(var/crit in critclasses)
-			crit = "<font color = '#a35252'>[capitalize(crit)] | </font>"
-			crits += crit
+			for(var/crit in critclasses)
+				if(crit == BCLASS_PICK)
+					crit = "pick"		//Pick is labelled as 'Stab', this prevents confusion
+				crit = "<font color = '#a35252'>[capitalize(crit)] | </font>"
+				crits += crit
 
 		str += crits
 	str += "<br>---------------------------<br>"
