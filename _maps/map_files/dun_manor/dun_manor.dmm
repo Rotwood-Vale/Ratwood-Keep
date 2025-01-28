@@ -13984,10 +13984,6 @@
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
-"lxJ" = (
-/turf/closed/wall/mineral/rogue/stone,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town)
 "lxN" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -26742,10 +26738,6 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town)
-"wks" = (
-/turf/closed/wall/mineral/rogue/stone/window,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town)
 "wkS" = (
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/rogue/blocks,
@@ -65459,7 +65451,7 @@ jMi
 rjf
 rjf
 apZ
-gAN
+fJa
 dll
 dll
 ntC
@@ -87279,7 +87271,7 @@ qhb
 qhb
 qhb
 fJa
-lxJ
+fJa
 fup
 fJa
 fJa
@@ -89789,7 +89781,7 @@ sQv
 ouw
 qhb
 qhb
-wks
+fJa
 baR
 jMi
 rjf
@@ -111616,7 +111608,7 @@ qhb
 qhb
 fJa
 fJa
-lxJ
+fJa
 fJa
 fJa
 qhb
@@ -112084,13 +112076,13 @@ qhb
 qhb
 qhb
 qhb
-gJZ
+fJa
 mfX
 qgx
 qgx
 qgx
 hNO
-wks
+fJa
 tXZ
 tXZ
 tXZ
@@ -112191,13 +112183,13 @@ tXZ
 tXZ
 tXZ
 qhb
-gJZ
+fJa
 tvE
 qgx
 qgx
 qgx
 mfX
-gJZ
+fJa
 qhb
 qhb
 ouw
@@ -112241,13 +112233,13 @@ qhb
 qhb
 qhb
 qhb
-gJZ
+fJa
 jWm
 qgx
 qgx
 qgx
 hjO
-wks
+fJa
 tXZ
 tXZ
 tXZ
@@ -112348,13 +112340,13 @@ tXZ
 tXZ
 tXZ
 qhb
-gJZ
+fJa
 lQM
 qgx
 qgx
 qgx
 jWm
-gJZ
+fJa
 qhb
 qhb
 ouw
