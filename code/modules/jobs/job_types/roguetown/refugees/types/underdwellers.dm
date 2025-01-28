@@ -36,7 +36,7 @@
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltl = /obj/item/rogueweapon/huntingknife = 1
+			beltl = /obj/item/rogueweapon/huntingknife
 			H.change_stat("strength", 1)
 			H.change_stat("speed", 1)
 			H.change_stat("intelligence", -1)
@@ -56,7 +56,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
 			belt = /obj/item/storage/belt/rogue/leather/rope
-			beltl = /obj/item/rogueweapon/huntingknife = 1
+			beltl = /obj/item/rogueweapon/huntingknife
 			beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			backl = /obj/item/storage/backpack/rogue/satchel
 			l_hand = /obj/item/ammo_holder/quiver/arrows
@@ -76,7 +76,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/art, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
@@ -102,7 +101,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather
 			backl = /obj/item/storage/backpack/rogue/satchel
