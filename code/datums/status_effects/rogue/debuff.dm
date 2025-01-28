@@ -325,3 +325,15 @@
 	name = "Migraine"
 	icon_state = "muscles"
 	desc = "My head is pounding, I can barely think. I need to get away from the light and rest a while!"
+
+/// Strengthen undead debuff
+/datum/status_effect/debuff/weaken_living
+	id = "weaken_living"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/weaken_living
+	effectedstats = list("speed" = -3, "constitution" = -3)
+	duration = 25 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/weaken_living
+	name = "Macabre chill"
+	desc = "I can feel the cold embrace of death seeping into my bones"
+	icon_state = "muscles"
