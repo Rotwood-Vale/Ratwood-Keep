@@ -96,7 +96,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-			head = /obj/item/clothing/head/roguetown/witch
 			cloak = /obj/item/clothing/cloak/black_cloak
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 			pants = /obj/item/clothing/under/roguetown/tights/purple

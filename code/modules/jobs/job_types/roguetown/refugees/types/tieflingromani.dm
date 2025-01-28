@@ -63,7 +63,7 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
 			head = /obj/item/clothing/head/roguetown/helmet/bandana
-			shirt = /obj/item/clothing/suit/roguetown/shirt/robe/magered
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/magered
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/tights
 			belt = /obj/item/storage/belt/rogue/leather/rope
