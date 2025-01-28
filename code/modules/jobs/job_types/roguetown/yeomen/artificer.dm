@@ -38,7 +38,8 @@
 
 	head = /obj/item/clothing/head/roguetown/articap
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
-	cloak = /obj/item/clothing/cloak/apron/waist/brown
+	cloak = /obj/item/clothing/cloak/apron/blacksmith
+	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves/blacksmith
 	pants = /obj/item/clothing/under/roguetown/trou/artipants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
