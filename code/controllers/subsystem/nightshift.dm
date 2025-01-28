@@ -28,7 +28,8 @@ proc/is_nighttime()
 
 /mob/living/carbon
 	var/next_sleep_time = 0
-	var/sleep_interval = 432000
+	var/first_sleep = 432000
+	var/sleep_interval = 864000
 
 /datum/controller/subsystem/personal_sleep
 	name = "Personal Sleep"
@@ -38,7 +39,7 @@ proc/is_nighttime()
 	for(var/mob/living/carbon/M in GLOB.mob_list)
 		if(M)
 			if(M.next_sleep_time == 0)
-				M.next_sleep_time = station_time() + M.sleep_interval
+				M.next_sleep_time = station_time() + M.first_sleep
 			else
 				if(!HAS_TRAIT(M, TRAIT_NOSLEEP) && !HAS_TRAIT(M, TRAIT_NOSTAMINA))
 					if(station_time() >= M.next_sleep_time)
