@@ -20,14 +20,16 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 70
 	maxHealth = 70
+	ranged = TRUE
+	projectiletype = /obj/projectile/magic/firebolt
 	melee_damage_lower = 15
 	melee_damage_upper = 17
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	simple_detect_bonus = 20
-	retreat_distance = 0
-	minimum_distance = 0
+	retreat_distance = 4
+	minimum_distance = 3
 	food_type = list()
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
@@ -41,16 +43,36 @@
 	del_on_deaggro = 44 SECONDS
 	retreat_health = 0.3
 	food = 0
-	attack_sound = list()
+	attack_sound = 'sound/combat/hits/bladed/smallslash (1).ogg'
+	attack_verb_continuous = "claws"
+	attack_verb_simple = "claw"
 	dodgetime = 30
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
-	remains_type = /obj/effect/decal/remains/wolf
 
 	///this mob was updated to new ai
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
-	ai_controller = /datum/ai_controller/imp
+//	AIStatus = AI_OFF
+//	can_have_ai = FALSE
+//	ai_controller = /datum/ai_controller/imp
+
+/obj/projectile/magic/firebolt
+	name = "ball of fire"
+	icon_state = "fireball"
+	damage = 20
+	damage_type = BURN
+	nodamage = FALSE
+	armor_penetration = 0
+	flag = "magic"
+	hitsound = 'sound/blank.ogg'
+
+/obj/projectile/magic/firebolt/on_hit(target)
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			M.visible_message(span_warning("[src] vanishes on contact with [target]!"))
+			qdel(src)
+			return BULLET_ACT_BLOCK
+	. = ..()
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/Initialize()
