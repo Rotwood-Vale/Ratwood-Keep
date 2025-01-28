@@ -16,7 +16,7 @@
 /datum/outfit/job/roguetown/refugee/underdarkrefugees/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Underdark Noble", "Underdark Assassin", "Underdark Wytch", "Underdark Fugitive")
+	var/classes = list("Underdark Noble", "Underdark Assassin", "Underdark Wych", "Underdark Fugitive")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)

@@ -1,5 +1,5 @@
-/datum/subclass/tieflingromani
-	name = "Tiefling Erghun"
+/datum/subclass/tieflingerguni
+	name = "Tiefling Erguni"
 	tutorial = "You and your families had been always those of wanderlust, tossed out from every town or city. Yet still one must find way to make a living, and so to the next place you go."
 
 	allowed_sexes = list(MALE, FEMALE)
@@ -8,15 +8,15 @@
 
 	maximum_possible_slots = 5
 
-	outfit = /datum/outfit/job/roguetown/refugee/tieflingromani
+	outfit = /datum/outfit/job/roguetown/refugee/tieflingerguni
 
-/datum/outfit/job/roguetown/refugee/tieflingromani
+/datum/outfit/job/roguetown/refugee/tieflingerguni
 	allowed_patrons = ALL_PATRONS
 
-/datum/outfit/job/roguetown/refugee/tieflingromani/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/tieflingerguni/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Vaquero", "Erghuni Fortune Teller", "Erghuni Prostitute", "Erghuni")
+	var/classes = list("Vaquero", "Erguni Fortune Teller", "Erguni Prostitute", "Erguni")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -55,7 +55,7 @@
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 
-		if("Erghuni Fortune Teller")
+		if("Erguni Fortune Teller")
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
@@ -84,7 +84,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/message)
 		
-		if("Erghuni Prostitute")	
+		if("Erguni Prostitute")	
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -107,7 +107,7 @@
 			H.change_stat("strength", -1)
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 		
-		if("Erghuni")
+		if("Erguni")
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
