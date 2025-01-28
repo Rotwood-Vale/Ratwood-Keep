@@ -156,3 +156,43 @@
 			if(fueluse == 0)//It's litterally powered by arcane lava. It's not gonna run out of fuel.
 				fueluse = 4000
 		update_icon()
+
+/obj/structure/leyline
+	name = "inactive leyline"
+	desc = "A curious arrangement of stones."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "inactiveleyline"
+	var/active = FALSE
+	var/mob/living/guardian = null
+	anchored = TRUE
+	density = TRUE
+	var/time_between_uses = 12000
+	var/last_process = 0
+
+/obj/structure/leyline/attack_hand(mob/living/user)
+	. = ..()
+	if(.)
+		return
+	if(last_process + time_between_uses > world.time)
+		to_chat(user, span_notice("The leyline appears to be drained of energy."))
+		return
+	if(!active)
+		to_chat(user, span_notice("I wave a hand through the circle of rocks. Nothing happens."))
+	last_process = world.time
+	update_icon()
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon)), time_between_uses)
+	if(guardian)
+		to_chat(user, span_danger("The leyline is abuzz with energy in a feedback from the [guardian]! It lashes out at me!"))
+		user.electrocute_act(10)
+
+	if(prob(60) && (!guardian))
+		if(do_after(user, 60))
+			to_chat(user, span_notice("I reach out towards the active leyline, peering within- and something peers back!"))
+			sleep(2 SECONDS)
+			guardian = new /mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan(src)
+			src.visible_message(span_danger("[src] emerges from the leyline rupture!"))
+
+	else
+		if(do_after(user, 60))
+			to_chat(user, span_notice("I reach out towards the active leyline, and it shatters! A large, usable piece of it drops at your feet."))
+			new /obj/item/natural/leyline(user)

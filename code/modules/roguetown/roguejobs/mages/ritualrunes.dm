@@ -228,6 +228,11 @@ GLOBAL_LIST(teleport_runes)
 					rituals += GLOB.buffrunerituallist
 				else
 					rituals+= GLOB.t2buffrunerituallist
+			else if(istype(src,/obj/effect/decal/cleanable/roguerune/arcyne/enchantment))
+				if(tier >= 3)
+					rituals += GLOB.t4enchantmentrunerituallist
+				else
+					rituals += GLOB.t2enchantmentrunerituallist
 			else if(istype(src,/obj/effect/decal/cleanable/roguerune/arcyne))
 				rituals += GLOB.allowedrunerituallist
 			var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in rituals
@@ -293,7 +298,7 @@ GLOBAL_LIST(teleport_runes)
 	pickritual = new runeritual
 	to_chat(invokers, json_encode(pickritual.required_atoms, JSON_PRETTY_PRINT))
 	if(!islist(pickritual.required_atoms))
-		to_chat(invokers, span_notice("required atoms is NOT a list"))	//debug message. Remove later.
+		return
 
 	// A copy of our requirements list.
 	// We decrement the values of to determine if enough of each required item is present.
@@ -421,10 +426,8 @@ GLOBAL_LIST(teleport_runes)
 	tier = 2
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32
-	pixel_z = 0
 	invocation = "Thal’miren vek’laris un’vethar!"
 	layer = SIGIL_LAYER
-	color = "#3A0B61"
 	can_be_scribed = TRUE
 	ritual_number = TRUE
 
@@ -453,24 +456,19 @@ GLOBAL_LIST(teleport_runes)
 	name = "Imbuement Array"
 	desc = "arcane symbols pulse upon the ground..."
 	icon = 'icons/effects/96x96.dmi'
-	icon_state = "empowerment"
+	icon_state = "imbuement"
 	tier = 2
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32
-	pixel_z = 0
 	invocation = "Thal’miren vek’laris un’vethar!"
 	layer = SIGIL_LAYER
-	color = "#3A0B61"
 	can_be_scribed = TRUE
 	ritual_number = TRUE
 
-/obj/effect/decal/cleanable/roguerune/arcyne/empowerment/invoke(list/invokers, datum/runerituals/buff/runeritual)
+
+/obj/effect/decal/cleanable/roguerune/arcyne/enchantment/invoke(list/invokers, datum/runerituals/enchantment/runeritual)
 	if(!..())	//VERY important. Calls parent and checks if it fails. parent/invoke has all the checks for ingredients
 		return
-
-	var/buffedstat = runeritual.buff
-	for(var/mob/living/invoker in range(runesize, src))
-		invoker.apply_status_effect(buffedstat)
 	if(ritual_result)
 		pickritual.cleanup_atoms(selected_atoms)
 
@@ -484,6 +482,17 @@ GLOBAL_LIST(teleport_runes)
 			living_invoker.apply_damage(invoke_damage, BRUTE)
 			to_chat(living_invoker,  span_italics("[src] saps your strength!"))
 	do_invoke_glow()
+
+/obj/effect/decal/cleanable/roguerune/arcyne/enchantment/greater	//used for better quality of learning, grants temporary 2 minute INT bonus.
+	name = "Greater Imbuement Array"
+	desc = "arcane symbols pulse upon the ground..."
+	icon = 'icons/effects/160x160.dmi'
+	icon_state = "imbuement"
+	tier = 3
+	pixel_x = -64 //So the big ol' 96x96 sprite shows up right
+	pixel_y = -64
+	invocation = "Thal’miren vek’laris un’vethar!"
+
 
 /obj/effect/decal/cleanable/roguerune/arcyne/wall
 	name = "wall accession matrix"
@@ -780,8 +789,8 @@ GLOBAL_LIST(teleport_runes)
 		animate(summoned_mob, color = null,time = 5)
 		REMOVE_TRAIT(summoned_mob, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
 		summoned_mob.status_flags -= GODMODE//remove godmode
-		summoned_mob.binded = FALSE	//BE FREE!!
 		summoned_mob.candodge = TRUE
+		summoned_mob.binded = FALSE
 		summoned_mob = null
 		summoning = FALSE
 		return

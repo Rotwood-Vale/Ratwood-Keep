@@ -50,7 +50,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/xylix
 	name = "enchanting scroll of xylix's grace"
-	desc = "A scroll imbued with an enchantment of luck."
+	desc = "A scroll imbued with an enchantment of luck. How fortunate!"
 	component = /datum/magic_item/mundane/xylix
 
 /obj/item/enchantmentscroll/xylix/attack_obj(obj/item/O, mob/living/user)

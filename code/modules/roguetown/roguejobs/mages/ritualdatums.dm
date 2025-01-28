@@ -9,6 +9,9 @@ GLOBAL_LIST_INIT(t2wallrunerituallist, generate_t2wall_rituallist())
 GLOBAL_LIST_INIT(t4wallrunerituallist, generate_t4wall_rituallist())
 GLOBAL_LIST_INIT(buffrunerituallist, generate_buff_rituallist())
 GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
+GLOBAL_LIST_INIT(t2enchantmentrunerituallist,generate_t2enchantment_rituallist())
+GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist())
+
 /proc/generate_runeritual_types()	//debug list
 	RETURN_TYPE(/list)
 	var/list/runerituals = list()
@@ -101,6 +104,27 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	RETURN_TYPE(/list)
 	var/list/runerituals = list()
 	for(var/datum/runerituals/runeritual as anything in subtypesof(/datum/runerituals/buff))
+		if(runeritual.blacklisted)
+			continue
+		runerituals[initial(runeritual.name)] = runeritual
+	return runerituals
+
+/proc/generate_t2enchantment_rituallist()	//list of all rituals for player use
+	RETURN_TYPE(/list)
+	var/list/runerituals = list()
+	for(var/datum/runerituals/runeritual as anything in subtypesof(/datum/runerituals/enchanting))
+		if(runeritual.blacklisted)
+			continue
+		if(runeritual.tier > 2)
+			continue
+		runerituals[initial(runeritual.name)] = runeritual
+	return runerituals
+
+
+/proc/generate_t4enchantment_rituallist()	//list of all rituals for player use
+	RETURN_TYPE(/list)
+	var/list/runerituals = list()
+	for(var/datum/runerituals/runeritual as anything in subtypesof(/datum/runerituals/enchanting))
 		if(runeritual.blacklisted)
 			continue
 		runerituals[initial(runeritual.name)] = runeritual
@@ -303,9 +327,9 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 		summoned = new mob_to_summon(loc)
 		ADD_TRAIT(summoned, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
 		summoned.status_flags += GODMODE//It's not meant to be killable until released from it's planar binding.
-		summoned.binded = TRUE	//No auto movement, no moving to targets
 		summoned.candodge = FALSE
 		animate(summoned, color = "#ff0000",time = 5)
+		summoned.binded = TRUE
 		return summoned
 
 
@@ -316,7 +340,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	blacklisted = FALSE
 	tier = 1
 	required_atoms = list(/obj/item/ash = 2, /obj/item/natural/obsidian = 1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp
 
 /datum/runerituals/summoning/hellhound
 	name = "summoning hellhound"
@@ -405,3 +429,201 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	tier = 4
 	required_atoms = list(/obj/item/natural/elementalfragment = 1, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t3 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+
+////////////////ENCHANTING RITUALS///////////////////
+/datum/runerituals/enchanting
+	name = "Enchanting"
+	desc = "Parent enchanting."
+	blacklisted = TRUE
+
+/datum/runerituals/enchanting/woodcut
+	name = "Woodcutting"
+	desc = "Good for cutting wood."
+	blacklisted = FALSE
+	tier = 1
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/woodcut)
+
+/datum/runerituals/enchanting/mining
+	name = "Mining"
+	desc = "Good for mining rock."
+	blacklisted = FALSE
+	tier = 1
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/mining)
+
+/datum/runerituals/enchanting/xylix
+	name = "Xylix's Grace"
+	desc = "How fortunate!"
+	blacklisted = FALSE
+	tier = 1
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/xylix)
+
+/datum/runerituals/enchanting/light
+	name = "Unyielding Light"
+	desc = "Provides light!"
+	blacklisted = FALSE
+	tier = 1
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/light)
+
+/datum/runerituals/enchanting/holding
+	name = "Compact Storing"
+	desc = "Makes things hold more!"
+	blacklisted = FALSE
+	tier = 1
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/holding)
+
+/datum/runerituals/enchanting/revealing
+	name = "Revealing Light"
+	desc = "Doubles brightness!"
+	blacklisted = FALSE
+	tier = 1
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/revealing)
+
+/datum/runerituals/enchanting/nightvision
+	name = "Dark Vision"
+	desc = "Provides dark sight!"
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/nightvision)
+
+/datum/runerituals/enchanting/featherstep
+	name = "Feather Step"
+	desc = "Provides dark sight!"
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/featherstep)
+
+/datum/runerituals/enchanting/fireresist
+	name = "Fire Resistance"
+	desc = "Provides resistance from fire!"
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/fireresist)
+
+/datum/runerituals/enchanting/climbing
+	name = "Spider movements"
+	desc = "Better climbing!"
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/climbing)
+
+/datum/runerituals/enchanting/thievery
+	name = "Thievery"
+	desc = "Better pickpocketting and lockpicks!"
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/thievery)
+
+/datum/runerituals/enchanting/trekk
+	name = "Swamp Trekking"
+	desc = "Provides easy movement through swamps."
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/trekk)
+
+/datum/runerituals/enchanting/smithing
+	name = "Smithing"
+	desc = "Better smithing."
+	blacklisted = FALSE
+	tier = 2
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/smithing)
+
+/datum/runerituals/enchanting/lifesteal
+	name = "Lyfestealing"
+	desc = "Steals health from foes."
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/lifesteal)
+
+/datum/runerituals/enchanting/frostveil
+	name = "Frostveil"
+	desc = "Chills foes."
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/frostveil)
+
+/datum/runerituals/enchanting/phoenixguard
+	name = "phoenixguard"
+	desc = "burns attackers."
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/phoenixguard)
+
+/datum/runerituals/enchanting/woundclosing
+	name = "Wound closing"
+	desc = "Closes wounds."
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/woundclosing)
+
+/datum/runerituals/enchanting/returningweapon
+	name = "Returning Weapon"
+	desc = "Summons weapons."
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/returningweapon)
+
+/datum/runerituals/enchanting/archery
+	name = "Archery"
+	desc = "Of bowmanship."
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/archery)
+
+/datum/runerituals/enchanting/leaping
+	name = "Leaping"
+	desc = "Further leaping."
+	blacklisted = FALSE
+	tier = 3
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/leaping)
+
+/datum/runerituals/enchanting/freeze
+	name = "Freezing"
+	desc = "Burns Foes."
+	blacklisted = FALSE
+	tier = 4
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/freeze)
+
+/datum/runerituals/enchanting/infernalflame
+	name = "Infernal Flame"
+	desc = "Burns Foes."
+	blacklisted = FALSE
+	tier = 4
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/infernalflame)
+
+/datum/runerituals/enchanting/briars
+	name = "Briar's Curse"
+	desc = "Harder hitting weapons at a cost."
+	blacklisted = FALSE
+	tier = 4
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/briars)
+
+/datum/runerituals/enchanting/rewind
+	name = "Temporal Rewind"
+	desc = "Rewinds time."
+	blacklisted = FALSE
+	tier = 4
+	required_atoms = list()
+	result_atoms = list(/obj/item/enchantmentscroll/rewind)

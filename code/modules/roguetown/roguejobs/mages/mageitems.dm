@@ -518,6 +518,13 @@ obj/item/hourglass/temporal/stop()
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
+/obj/item/natural/voidstone
+	name = "Voidstone"
+	icon_state = "wessence"
+	desc = "A piece of blackstone, it feels off to stare at it for long."
+	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_SMALL
+
 //combined items
 /obj/item/natural/melded
 	name = "arcane meld"
