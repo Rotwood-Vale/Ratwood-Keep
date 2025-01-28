@@ -63,7 +63,7 @@
 
 /datum/crafting_recipe/roguetown/alchemy/glassbottles
 	name = "alchemy bottle"
-	result = /obj/item/reagent_containers/glass/alchemical
+	result = list(/obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical)
 	reqs = list(/obj/item/natural/stone = 1, /obj/item/natural/dirtclod = 1)
 	craftdiff = 1
 	verbage_simple = "forge"
