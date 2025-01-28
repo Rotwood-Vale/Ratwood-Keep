@@ -10,6 +10,6 @@
 				testing("Deleting:[new_item] from [src]")
 				qdel(new_item)
 
-/obj/item/storage/belt/rogue/pouch/coins
+/obj/item/storage/belt/rogue/pouch
 	grid_height = 64
 	grid_width = 32
