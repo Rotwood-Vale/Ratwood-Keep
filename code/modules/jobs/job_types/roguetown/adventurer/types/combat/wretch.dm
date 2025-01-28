@@ -179,7 +179,6 @@
 			beltl = /obj/item/roguekey/inhumen
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
-			C.passive_devotion_gain += 0.25
 			C.grant_spells(H)
 			START_PROCESSING(SSobj, C)
 			GLOB.excommunicated_players += H.real_name

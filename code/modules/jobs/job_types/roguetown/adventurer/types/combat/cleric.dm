@@ -300,7 +300,6 @@
 					cloak = /obj/item/clothing/suit/roguetown/shirt/robe //placeholder, anyone who doesn't have cool patron drip sprites just gets generic robes
 					head = /obj/item/clothing/head/roguetown/roguehood
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
-			C.passive_devotion_gain += 0.25
 			C.grant_spells(H)
 			START_PROCESSING(SSobj, C)
 

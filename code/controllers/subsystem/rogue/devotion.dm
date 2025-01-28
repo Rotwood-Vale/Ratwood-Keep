@@ -115,6 +115,8 @@
 		H.mind.AddSpell(newspell)
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T1
+	passive_devotion_gain = 0.25
+	passive_progression_gain = 0.25
 	update_devotion(50, 50, silent = TRUE)
 
 /datum/devotion/proc/grant_spells_templar(mob/living/carbon/human/H)
