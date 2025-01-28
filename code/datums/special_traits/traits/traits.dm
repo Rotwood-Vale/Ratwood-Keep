@@ -370,7 +370,7 @@
 	weight = 10
 
 /datum/special_trait/lucky/on_apply(mob/living/carbon/human/character, silent)
-	character.STALUC = rand(20)
+	character.STALUC = rand(15, 20)
 
 
 /datum/special_trait/mule
