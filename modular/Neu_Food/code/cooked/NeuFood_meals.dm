@@ -37,8 +37,8 @@
 	desc = "Roasted flesh garnished with tender fried onions. Fragrant and slathered with juices of both ingredients to a perfect mouth-watering sauce."
 	icon_state = "onionsteak"
 	tastes = list("steak" = 1, "onions" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+3)
-	foodtype = MEAT
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	foodtype = MEAT | VEGETABLES
 	warming = 5 MINUTES
 	rotprocess = SHELFLIFE_DECENT
 	eat_effect = /datum/status_effect/buff/foodbuff
@@ -181,8 +181,8 @@
 
 /*	.................   Wiener & potato & onions   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
-	tastes = list("savory sausage" = 1, "potato" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	tastes = list("savory sausage" = 1, "potato" = 1, "onions" = 1)
 	name = "wiener meal"
 	desc = "Stout and nourishing."
 	icon_state = "wpotonion"
@@ -226,13 +226,15 @@
 
 /*	.................   Valerian Omelette   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
 	tastes = list("fried cackleberries" = 1, "cheese" = 1)
 	name = "valerian omelette"
 	desc = "Fried cackleberries on a bed of half-melted cheese, a dish from distant lands."
 	icon_state = "omelette"
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = SHELFLIFE_DECENT
+	foodtype = MEAT | DAIRY
+
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian/plated
 	icon_state = "omelette_plated"
 	item_state = "plate_food"
@@ -303,7 +305,7 @@
 	icon_state = "roastchicken"
 	tastes = list("tasty birdmeat" = 1)
 	cooked_type = null
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
 	rotprocess = SHELFLIFE_DECENT
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/attackby(obj/item/I, mob/living/user, params)
 	var/obj/item/reagent_containers/peppermill/mill = I
@@ -331,12 +333,15 @@
 
 	else
 		to_chat(user, "<span class='warning'>You need to put [src] on a table to knead in the spice.</span>")
+
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced
 	desc = "A plump bird, roasted perfection, spiced to taste divine."
 	eat_effect = /datum/status_effect/buff/foodbuff
 	name = "spiced bird-roast"
 	color = "#ffc0c0"
 	tastes = list("spicy birdmeat" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_AVERAGE)
+
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated
 	icon_state = "roastchicken_plated"
 	item_state = "plate_food"
