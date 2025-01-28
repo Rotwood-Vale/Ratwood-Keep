@@ -155,7 +155,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				is_smart = TRUE	
 			if(user.STAINT < 10 && !is_smart)
 				is_stupid = TRUE
-			if(!is_smart && !is_stupid && ((user.STAINT - 10) + (user.STAPER - 10) + H?.mind?.get_skill_level(/datum/skill/misc/reading)) >= 5)
+			if(!is_smart && !is_stupid && ((user.STAINT - 10) + (user.STAPER - 10) + user?.mind?.get_skill_level(/datum/skill/misc/reading)) >= 5)
 				is_normal = TRUE
 			var/list/dat = list()
 			// Top-level table
@@ -288,7 +288,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 					
 			dat += "</td>"
 			dat += "</tr>"
-			var/datum/browser/popup = new(user, "assess", ntitle = "[src] Assesment", nwidth = 700, nheight = 600)
+			var/datum/browser/popup = new(user, "assess", ntitle = "[src] Assesment", nwidth = 1000, nheight = 600)
 			popup.set_content(dat.Join())
 			popup.open(FALSE)
 		else
@@ -335,10 +335,24 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		str += coverage
 		str += stupid_string
 	if(normal || smart)
+		var/list/critclasses = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH, BCLASS_PICK)
 		var/crits = "<b><u>PREVENTS CRITS: </u></b><br>"
 		crits += "<font color = '#b9b9b9'>| </font>"
-		for(var/zone in C.prevent_crits)
-			crits += "<font color = '#b9b9b9'>[capitalize(zone)] | </font>"
+		if(C.prevent_crits)
+			for(var/zone in C.prevent_crits)
+				for(var/crit in critclasses)
+					if(zone == crit)
+						zone = "<font color = '#69a1a8'>[capitalize(zone)] | </font>"
+						crits += zone
+						LAZYREMOVE(critclasses, crit)
+						continue
+			crits += "<br>"
+			crits += "<font color = '#a35252'>| </font>"
+
+		for(var/crit in critclasses)
+			crit = "<font color = '#a35252'>[capitalize(crit)] | </font>"
+			crits += crit
+
 		str += crits
 	str += "<br>---------------------------<br>"
 	return str
