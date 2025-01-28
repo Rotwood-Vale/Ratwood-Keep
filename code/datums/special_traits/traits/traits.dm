@@ -381,7 +381,6 @@
 /datum/special_trait/mule/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Drugs"] = /obj/item/storage/backpack/rogue/satchel/mule
 	character.mind.special_items["PURITY Gem"] = /obj/item/gem_device/purity
-	character.mind.special_items["Whitevein Key"] = /obj/item/key/nightman
 	character.mind.special_items["Dagger"] = /obj/item/rogueweapon/huntingknife/idagger
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/knives, 2, TRUE)
 
