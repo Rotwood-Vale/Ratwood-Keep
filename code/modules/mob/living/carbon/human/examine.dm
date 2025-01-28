@@ -709,7 +709,7 @@
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a>"
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(get_dist(src, H) <= 2 + floor(((H.STAPER - 10) / 2)) && (!obscure_name || client?.prefs.masked_examine))
+		if(get_dist(src, H) <= 2 + clamp(floor(((H.STAPER - 10) / 2)),-1, 2) && (!obscure_name || client?.prefs.masked_examine))
 			. += "<a href='?src=[REF(src)];task=assess;'>Assess</a>"
 
 	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)

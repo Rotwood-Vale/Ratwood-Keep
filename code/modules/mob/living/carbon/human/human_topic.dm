@@ -145,7 +145,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		var/mob/living/carbon/human/H = src
 		var/mob/living/carbon/human/user = usr
 		user.visible_message("[user] begins assessing [src].")
-		if(do_mob(user, src, (40 - (user.STAINT - 10) - (user.STAPER - 10) - user.mind?.get_skill_level(/datum/skill/misc/reading))))
+		if(do_mob(user, src, (40 - (user.STAINT - 10) - (user.STAPER - 10) - user.mind?.get_skill_level(/datum/skill/misc/reading)), double_progress = TRUE))
 			var/is_guarded = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)	//Will scramble Stats and prevent skills from being shown
 			var/is_smart = FALSE	//Maximum info (all skills, gear and stats) either Intellectual virtue or having high enough PER / INT / Reading
 			var/is_stupid = FALSE	//Less than 9 INT, Intellectual virtue overrides it.
@@ -163,7 +163,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			// NEXT ROW
 			dat += "<tr>"
 			dat += "<td style='width:16%;text-align:left;vertical-align: text-top'>"
-			if(is_smart)
+			if(HAS_TRAIT(user, TRAIT_INTELLECTUAL))
 				dat += "<b>STATS:</b><br><br>"
 				if(!is_guarded)
 					dat +=("STR: \Roman [H.STASTR]<br>")
