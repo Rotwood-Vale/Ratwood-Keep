@@ -1,3 +1,4 @@
+
 // Diagnose
 /obj/effect/proc_holder/spell/invoked/diagnose
 	name = "Diagnose"
@@ -260,14 +261,13 @@
         target.reagents.add_reagent(/datum/reagent/water/gross, 15)
         target.reagents.add_reagent(/datum/reagent/medicine/purify, 5)
 
-        // Will clean body from toxins and chemistry
-        spawn(135 SECONDS) delay_clean_body_effect(target)
-       	return TRUE
+        addtimer(CALLBACK(src, .proc/clean_body_effect, target), 60 SECONDS, TIMER_CLIENT_TIME)
+        return TRUE
     revert_cast()
     return FALSE
 
-/proc/delay_clean_body_effect(mob/living/target)
-    target.visible_message(span_danger("Toxins are leaving my body..."))
-    target.adjustToxLoss(-25)
-    target.reagents.remove_all_type(/datum/reagent, 50)
-    target.emote("scream")
+/obj/effect/proc_holder/spell/invoked/clean_body/proc/clean_body_effect(mob/living/M)
+    M.visible_message(span_danger("Toxins are leaving my body..."))
+    M.adjustToxLoss(-25)
+    M.reagents.remove_all_type(/datum/reagent, 50)
+    M.emote("scream")
