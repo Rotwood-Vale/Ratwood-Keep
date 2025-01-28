@@ -86,7 +86,8 @@
 
 /*	.................   Smalldough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/doughslice
-	name = "smalldough"
+	name = "small dough"
+	desc = "A smaller piece of dough, normally used on making delicious pastries (Bake to make a bun, add cheese to make a cheesebun, combine with small dough to make big dough)"
 	icon_state = "doughslice"
 	slices_num = 0
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/bun
@@ -158,7 +159,7 @@
 /*	.................   Butterdough piece   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice
 	name = "butterdough piece"
-	desc = "A slice of pedigree, to create lines of history.(place in oven to make pastry. Roll to make pie dough, place one piedough in the oven to make a pie shell. Fry to make Frybread. Roll to make Handpie)"
+	desc = "A slice of pedigree, to create lines of history.(Place in oven to make pastry, Roll to make pie dough, Fry to make Frybread, Add raisins to make a biscuit, Slice to make a prezzel)"
 	icon_state = "butterdoughslice"
 	color = "#feffc1"
 	slices_num = 0
@@ -212,8 +213,8 @@
 
 /*	.................   Piedough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/piedough
-	name = "piedough"
-	desc = "The beginning of greater things to come.(Add mince or berries to make handpie!. bake to make a pie shell)"
+	name = "pie dough"
+	desc = "The beginning of greater things to come.(Add mince or berries to make handpie!. Bake to make a pie shell)"
 	icon_state = "piedough"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom
 	cooked_smell = /datum/pollutant/food/pie_base
@@ -333,7 +334,7 @@
 /*	.................   Breadslice & Toast   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/breadslice
 	name = "sliced bread"
-	desc = "A bit of comfort to start your dae.(Serve as is or add friend Cackleberry, cheese or butter! oven to toast it.)"
+	desc = "A bit of comfort to start your dae. (Serve as is or add fried Cackleberry, cheese, butter, salo or salomi slices! Oven to toast it.)"
 	icon_state = "loaf_slice"
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast
@@ -341,6 +342,8 @@
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/attackby(obj/item/I, mob/living/user, params)
 	if(user.mind)
 		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
@@ -407,44 +410,50 @@
 	name = "buttered toast"
 	icon_state = "toast_butter"
 	tastes = list("butter" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
 
 // -------------- BREAD WITH FOOD ON IT (not american sandwich) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/sandwich
 	desc = "A delightful piece of heaven, in every slice."
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
 	rotprocess = 30 MINUTES
-	eat_effect = /datum/status_effect/buff/foodbuff
+	bitesize = 2
+
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salami
 	tastes = list("salumoi" = 1,"bread" = 1)
 	name = "salumoi bread"
 	icon_state = "bread_salami"
 	foodtype = GRAIN | MEAT
+
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese
 	tastes = list("cheese" = 1,"bread" = 1)
 	name = "cheese bread"
 	icon_state = "bread_cheese"
 	foodtype = GRAIN | DAIRY
+
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/egg
 	tastes = list("cheese" = 1,"cackleberry" = 1)
 	name = "cackleberry bread"
 	icon_state = "bread_egg"
 	foodtype = GRAIN | MEAT
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	eat_effect = /datum/status_effect/buff/foodbuff
+
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salo
 	tastes = list("salty fat" = 1)
 	name = "salo bread"
 	icon_state = "bread_salo"
 	foodtype = GRAIN | MEAT
-
-
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	eat_effect = /datum/status_effect/buff/foodbuff
 
 /*	.................   Bread bun   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/bun
 	name = "bun"
 	desc = "Portable, quaint and entirely consumable (Serve as is or add cooked sausage to make a Dogroll)"
 	icon_state = "bun"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
-	w_class = WEIGHT_CLASS_NORMAL
+	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION)
+	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("bread" = 1)
 	bitesize = 2
 	rotprocess = SHELFLIFE_EXTREME
@@ -488,12 +497,14 @@
 	bitesize = 2
 	rotprocess = SHELFLIFE_DECENT
 
+/*  ..................   Frybread   ......................*/
 /obj/item/reagent_containers/food/snacks/rogue/frybread
 	name = "frybread"
 	desc = "Flatbread fried at high heat with butter to give it a crispy outside. Staple of the elven kitchen."
 	icon_state = "frybread"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION)
 	tastes = list("crispy bread with a soft inside" = 1)
+	foodtype = GRAIN | DAIRY | FRIED
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/foodbuff
@@ -501,27 +512,28 @@
 /*	.................   Pastry   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/pastry
 	name = "pastry"
-	desc = "Favored among children and sweetlovers."
+	desc = "Favored among children and sweetlovers. (Add sugar to make a sweetroll)"
 	icon_state = "pastry"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION)
 	tastes = list("crispy butterdough" = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/foodbuff
+	foodtype = GRAIN | DAIRY
 
 /*	.................   Sweetroll   ................... */
 
 /obj/item/reagent_containers/food/snacks/rogue/sweetroll
 	name = "sweetroll"
-	desc = ""
+	desc = "A pastry covered with sugar. The sweetolvers favourite."
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "sweetroll"
 	dropshrink = 0.75
-	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS + 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("sugar and crispy dough" = 1)
-	foodtype = SUGAR
+	foodtype = SUGAR | GRAIN | DAIRY
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/foodbuff
 
@@ -559,10 +571,11 @@
 	desc = "A treat made for a wretched dog like you."
 	icon_state = "biscuit"
 	filling_color = "#F0E68C"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION+SNACK_POOR)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
 	tastes = list("crispy butterdough" = 1, "raisins" = 1)
+	foodtype = GRAIN | DAIRY | FRUIT
 	eat_effect = /datum/status_effect/buff/foodbuff
 
 
@@ -579,12 +592,12 @@
 	name = "prezzel"
 	desc = "The next best thing since sliced bread, naturally, made by a dwarf."
 	icon_state = "prezzel"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION)
 	tastes = list("crispy butterdough" = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/foodbuff
-
+	foodtype = GRAIN | DAIRY
 
 /*	.................   Raisin bread   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/rbread_half
@@ -659,7 +672,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice
 	name = "raisin loaf slice"
 	icon_state = "raisinbread_slice"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = null
 	tastes = list("spelt" = 1,"dried fruit" = 1)
@@ -725,7 +738,7 @@
 	icon_state = "honeycake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/hcakeslice
-	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 40)
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cake"=1, "delicious honeyfrosting"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
@@ -739,13 +752,14 @@
 	name = "zybantine cake slice"
 	icon_state = "honeycakeslice"
 	slices_num = 0
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = SHELFLIFE_LONG
+
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice/plated
 	icon_state = "honeycakeslice_plated"
 	rotprocess = SHELFLIFE_EXTREME
@@ -771,7 +785,7 @@
 	icon_state = "cheesecake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/ccakeslice
-	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 40)
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cake"=1, "creamy cheese"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
@@ -785,13 +799,14 @@
 	name = "cheesecake slice"
 	icon_state = "cheesecake_slice"
 	slices_num = 0
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 2
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = SHELFLIFE_LONG
+
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice/plated
 	icon_state = "cheesecake_slice_plated"
 	rotprocess = SHELFLIFE_EXTREME
