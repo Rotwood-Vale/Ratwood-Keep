@@ -45,7 +45,7 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/storage/belt/rogue/surgery_bag/full
 			beltl = /obj/item/flashlight/flare/torch/lantern
-			backpack_contents = list(/obj/item/reagent_containers/powder/spice = 2, /obj/item/reagent_containers/powder/ozium = 1, /obj/item/reagent_containers/powder/moondust = 2)
+			backpack_contents = list(/obj/item/reagent_containers/powder/spice = 2, /obj/item/reagent_containers/powder/ozium = 1, /obj/item/reagent_containers/powder/moondust = 2, /obj/item/rogueweapon/huntingknife = 1)
 			H.change_stat("intelligence", 3)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 1)
@@ -72,7 +72,7 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/mace/cudgel
 			beltl = /obj/item/flashlight/flare/torch/lantern
-			backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/gronnmead = 1, /obj/item/reagent_containers/glass/bottle/rogue/beer/voddena = 1, /obj/item/reagent_containers/glass/bottle/rogue/beer/blackgoat = 1, /obj/item/reagent_containers/glass/bottle/rogue/elfred = 1, /obj/item/reagent_containers/glass/bottle/rogue/elfblue = 1)
+			backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/gronnmead = 1, /obj/item/reagent_containers/glass/bottle/rogue/beer/voddena = 1, /obj/item/reagent_containers/glass/bottle/rogue/beer/blackgoat = 1, /obj/item/reagent_containers/glass/bottle/rogue/elfred = 1, /obj/item/reagent_containers/glass/bottle/rogue/elfblue = 1, /obj/item/rogueweapon/huntingknife = 1)
 			H.change_stat("intelligence", 3)
 			H.change_stat("perception", 1)
 			H.change_stat("strength", 1)
@@ -100,8 +100,8 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 			beltl = /obj/item/flashlight/flare/torch/lantern
-			beltr = /obj/item/rogueweapon/hammer
-			backpack_contents = list(/obj/item/clothing/ring/silver = 2, /obj/item/roguegem/yellow = 1, /obj/item/roguegem/green = 1, /obj/item/rogueweapon/tongs = 1)
+			beltr = /obj/item/rogueweapon/huntingknife
+			backpack_contents = list(/obj/item/clothing/ring/silver = 2, /obj/item/clothing/ring/gold = 1, /obj/item/rogueweapon/tongs = 1, /obj/item/rogueweapon/hammer = 1, /obj/item/roguegem/yellow = 1, /obj/item/roguegem/green = 1)
 			H.change_stat("intelligence", 3)
 			H.change_stat("perception", 1)
 			H.change_stat("strength", 1)
@@ -131,7 +131,7 @@
 			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
-			backpack_contents = list(/obj/item/clothing/neck/roguetown/psicross = 2, /obj/item/clothing/neck/roguetown/psicross/silver = 1, /obj/item/clothing/neck/roguetown/psicross/wood = 2)
+			backpack_contents = list(/obj/item/clothing/neck/roguetown/psicross = 2, /obj/item/clothing/neck/roguetown/psicross/silver = 2, /obj/item/clothing/neck/roguetown/psicross/wood = 1, /obj/item/rogueweapon/huntingknife = 1)
 			H.change_stat("intelligence", 3)
 			H.change_stat("perception", 1)
 			H.change_stat("strength", 1)
@@ -158,7 +158,7 @@
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-			backpack_contents = list(/obj/item/paper/scroll = 3, /obj/item/natural/feather = 1, /obj/item/book/rogue/knowledge1 = 1)
+			backpack_contents = list(/obj/item/paper/scroll = 3, /obj/item/natural/feather = 1, /obj/item/book/rogue/knowledge1 = 1, /obj/item/rogueweapon/huntingknife = 1)
 			H.change_stat("intelligence", 3)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 1)
