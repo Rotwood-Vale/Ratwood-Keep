@@ -3,7 +3,7 @@
 	tutorial = "You are Refugees of Gronn. Be it the far and cold steppes, or of the Jade Empire. You have found yourself now here within Enigma. To what you do next? Is up to you."
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/human/northern, /datum/species/halforc, /datum/species/goblinp)
+	allowed_races = list(/datum/species/human/northern, /datum/species/halforc)
 	category_tags = list(CTAG_REFUGEE)
 
 	maximum_possible_slots = 5
