@@ -46,6 +46,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogue/instrument/guitar
 			beltl = /obj/item/flashlight/flare/torch/lantern
+			r_hand = /obj/item/rogueweapon/sword/rapier/dec
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 1)
