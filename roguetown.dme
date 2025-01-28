@@ -2185,7 +2185,6 @@
 #include "modular_redmoon\modules\jobs\job_types\roguetown\towners\types\seamster.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\towners\types\towndoctor.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\towners\types\woodcutter.dm"
-#include "modular_redmoon\modules\jobs\job_types\roguetown\yeomen\alchemist.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\yeomen\architect.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\yeomen\archivist.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\yeomen\artificier.dm"

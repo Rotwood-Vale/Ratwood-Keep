@@ -1,7 +1,4 @@
 /datum/subclass/grenzelhoft_kommandant
-	allowed_races = RACES_TOLERATED_UP
-
-/datum/subclass/grenzelhoft_kommandant
 	ru_name = "Командант Гренцельхофтских Наёмников"
 	ru_tutorial = "Эксперты, профессионалы, дорогие. Это первые слова, \
 	которые приходят на ум, когда говорят про наёмников из Гренцельхофта - гильдии профессионалов. \

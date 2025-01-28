@@ -1,7 +1,4 @@
 /datum/job/roguetown/captain
-	allowed_sexes = list(MALE, FEMALE)
-
-/datum/job/roguetown/captain
 	ru_title = "Капитан Гвардии"
 	ru_tutorial = "Знаменитый рыцарь, известный своей дисциплиной, лояльностью, \
 	преданностью своему правителю и военному делу. Вы капитан гвардии Барона, лично \

@@ -1,7 +1,4 @@
 /datum/subclass/desert_rider
-	allowed_races = RACES_TOLERATED_UP
-
-/datum/subclass/desert_rider
 	ru_name = "Пустынный Наёмник"
 	ru_tutorial = "Кровь, как песок пустыни, обагрили вам руки, \
 	алое свидетельство золота, которого вы жаждете. Вы пустынный всадник, \
