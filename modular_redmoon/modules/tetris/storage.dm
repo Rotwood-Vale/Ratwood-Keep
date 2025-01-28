@@ -9,3 +9,7 @@
 			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
 				testing("Deleting:[new_item] from [src]")
 				qdel(new_item)
+
+/obj/item/storage/belt/rogue/pouch/coins
+	grid_height = 64
+	grid_width = 32
