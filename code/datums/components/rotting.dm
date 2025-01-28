@@ -1,4 +1,4 @@
-#define ROT_STAGE_ONE	15 MINUTES	// Raise as deadite
+#define ROT_STAGE_ONE	8 MINUTES	// Raise as deadite
 #define ROT_STAGE_TWO	20 MINUTES	// Fully rot
 #define ROT_STAGE_THREE	30 MINUTES	// Skeletonize
 #define	ROT_STAGE_FOUR	40 MINUTES	// Dust
