@@ -404,7 +404,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/churchling
-	name = "Churchling"
+	name = "Novitiate"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/orphan
