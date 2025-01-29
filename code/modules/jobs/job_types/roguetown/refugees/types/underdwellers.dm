@@ -21,16 +21,19 @@
 
 	switch(classchoice)
 		if("Caveling")
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/sewing, 1, TRUE)
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
 			r_hand = /datum/supply_pack/rogue/weapons/spear
 			belt = /obj/item/storage/belt/rogue/leather/rope
@@ -38,21 +41,24 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
 			H.change_stat("strength", 1)
+			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
 			H.change_stat("intelligence", -1)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 
 		if("Caveling Gatherer")
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/sewing, 2, TRUE)
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
 			belt = /obj/item/storage/belt/rogue/leather/rope
@@ -62,7 +68,7 @@
 			l_hand = /obj/item/ammo_holder/quiver/arrows
 			H.change_stat("speed", 1)
 			H.change_stat("perception", 2)
-			H.change_stat("fortune", 1)
+			H.change_stat("fortune", 2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 		
 		if("Caveling Tinkerer")	
@@ -76,16 +82,16 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/smithing, 2, TRUE)
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			beltr = /obj/item/rogueweapon/huntingknife
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			backl = /obj/item/storage/backpack/rogue/satchel
+			backr = /obj/item/rogueweapon/hammer/wood
+			backpack_contents = list(/obj/item/rogueweapon/hammer/steel = 1, /obj/item/rogueweapon/handsaw = 1, /obj/item/rogueweapon/chisel = 1)
 			H.change_stat("intelligence", 2)
 			H.change_stat("strength", -1)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
@@ -116,6 +122,7 @@
 			H.change_stat("intelligence", 2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/message)
