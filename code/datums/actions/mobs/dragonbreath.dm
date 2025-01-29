@@ -43,7 +43,7 @@
 	// Guys we have already hit, no double dipping
 	var/list/hit_list = list(owner) // also don't burn ourselves
 	for(var/turf/target_turf in burn_turfs)
-		if (target_turf.is_blocked_turf(exclude_mobs = FALSE))
+		if (target_turf.is_blocked_turf(exclude_mobs = TRUE))
 			var/exp_heavy = 0
 			var/exp_light = 4
 			var/exp_flash = 0
