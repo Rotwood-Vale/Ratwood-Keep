@@ -9,7 +9,7 @@
 
 /*	..................   Pepper steak   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/peppersteak
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
 	tastes = list("steak" = 1, "pepper" = 1)
 	name = "peppersteak"
 	desc = "Roasted flesh flanked with a generous coating of ground pepper for intense flavor."
