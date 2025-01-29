@@ -302,7 +302,7 @@
 					continue
 				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
-			return .
+				return .
 
 /turf/open/water/swamp/deep
 	name = "murk"
@@ -337,7 +337,7 @@
 					continue
 				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
-			return .
+				return .
 
 /turf/open/water/cleanshallow
 	name = "water"
