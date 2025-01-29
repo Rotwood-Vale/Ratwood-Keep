@@ -47,7 +47,8 @@
 					/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
 					/obj/item/rogueweapon/huntingknife/idagger/navaja = 1,
 					/obj/item/lockpick = 1,
-					/obj/item/flashlight/flare/torch = 1
+					/obj/item/flashlight/flare/torch = 1,
+					/obj/item/roguekey/mercenary = 1
 					)
 	H.change_stat("strength", 1)
 	H.change_stat("intelligence", 2)
