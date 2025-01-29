@@ -1194,13 +1194,16 @@ There are several things that need to be remembered:
 		if(dna && dna.species.sexes)
 			var/mutable_appearance/shirt_overlay
 			var/armsindex = get_limbloss_index(ARM_RIGHT, ARM_LEFT)
+			var/target_layer = SHIRT_LAYER
+			if(wear_armor.ignore_sleeves_code)
+				target_layer = OVER_HANDS_LAYER // Cursed, but much of clothing, that uses this varible, doesn't mean to use it with armor
 			var/racecustom
 			if(dna.species.custom_clothes)
 				racecustom = dna.species.clothes_id
 			if(dna.species.use_f || (gender == FEMALE && !dna.species.use_m))
-				shirt_overlay = wear_shirt.build_worn_icon(default_layer = SHIRT_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, customi = racecustom, sleeveindex = armsindex, boobed_overlay = has_boobed_overlay())
+				shirt_overlay = wear_shirt.build_worn_icon(default_layer = target_layer, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, customi = racecustom, sleeveindex = armsindex, boobed_overlay = has_boobed_overlay())
 			else
-				shirt_overlay = wear_shirt.build_worn_icon(default_layer = SHIRT_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = FALSE, customi = racecustom, sleeveindex = armsindex)
+				shirt_overlay = wear_shirt.build_worn_icon(default_layer = target_layer, default_icon_file = 'icons/mob/clothing/feet.dmi', female = FALSE, customi = racecustom, sleeveindex = armsindex)
 
 			if(gender == MALE)
 				if(OFFSET_SHIRT in dna.species.offset_features)
@@ -1258,15 +1261,18 @@ There are several things that need to be remembered:
 			var/mutable_appearance/armor_overlay
 			if(dna.species.custom_clothes)
 				racecustom = dna.species.clothes_id
+			var/target_layer = ARMOR_LAYER
+			if(wear_armor.ignore_sleeves_code)
+				target_layer = OVER_HANDS_LAYER
 			var/desired_gender_render = gender
 			if(dna.species.use_f)
 				desired_gender_render = FEMALE
 			if(dna.species.use_m)
 				desired_gender_render = MALE
 			if(desired_gender_render == FEMALE)
-				armor_overlay = wear_armor.build_worn_icon(default_layer = ARMOR_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, customi = racecustom, sleeveindex = armsindex, boobed_overlay = has_boobed_overlay())
+				armor_overlay = wear_armor.build_worn_icon(default_layer = target_layer, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, customi = racecustom, sleeveindex = armsindex, boobed_overlay = has_boobed_overlay())
 			else
-				armor_overlay = wear_armor.build_worn_icon(default_layer = ARMOR_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = FALSE, customi = racecustom, sleeveindex = armsindex)
+				armor_overlay = wear_armor.build_worn_icon(default_layer = target_layer, default_icon_file = 'icons/mob/clothing/feet.dmi', female = FALSE, customi = racecustom, sleeveindex = armsindex)
 
 			if(gender == MALE)
 				if(OFFSET_ARMOR in dna.species.offset_features)

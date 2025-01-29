@@ -25,7 +25,7 @@
 */
 /datum/supply_pack/rogue/tools/chains
 	name = "Chains"
-	cost = 60 //3 iron
+	cost = 50 //3 iron
 	contains = list(
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,
@@ -34,7 +34,7 @@
 
 /datum/supply_pack/rogue/tools/lockpicks
 	name = "Lockpicks"
-	cost = 30
+	cost = 20
 	contains = list(/obj/item/lockpickring/mundane)
 
 /datum/supply_pack/rogue/tools/sacks
@@ -109,13 +109,23 @@
 
 /datum/supply_pack/rogue/tools/prarml
 	name = "Prosthetic Left Wooden Arm"
-	cost = 40
+	cost = 20
 	contains = list(/obj/item/bodypart/l_arm/prosthetic/wood)
 
 /datum/supply_pack/rogue/tools/prarmr
 	name = "Prosthetic Right Wooden Arm"
-	cost = 40
+	cost = 20
 	contains = list(/obj/item/bodypart/r_arm/prosthetic/wood)
+
+/datum/supply_pack/rogue/tools/prarmlB
+	name = "Advanced Prosthetic Left Bronze Arm"
+	cost = 60
+	contains = list(/obj/item/bodypart/l_arm/prosthetic/bronze)
+
+/datum/supply_pack/rogue/tools/prarmrB
+	name = "Advanced Prosthetic Right Bronze Arm"
+	cost = 60
+	contains = list(/obj/item/bodypart/r_arm/prosthetic/bronze)
 
 /datum/supply_pack/rogue/tools/waterskin
 	name = "Waterskin"
@@ -142,6 +152,59 @@
 					/obj/item/needle,
 					/obj/item/needle,
 					/obj/item/needle)
+
+/datum/supply_pack/rogue/tools/bandage
+	name = "Bandages"
+	cost = 25
+	contains = list(/obj/item/natural/bundle/cloth/bandage/full)
+
+/datum/supply_pack/rogue/tools/alembic
+	name = "Alembic"
+	cost = 30
+	contains = list(/obj/item/reagent_containers/glass/alembic)
+
+/datum/supply_pack/rogue/tools/ifak
+	name = "Personal Patch Kit"
+	cost = 50
+	contains = list(/obj/item/storage/fancy/ifak)
+
+/datum/supply_pack/rogue/tools/surgery
+	name = "Full Surgery Kit"
+	cost = 90
+	contains = list(/obj/item/storage/fancy/skit)
+
+/datum/supply_pack/rogue/tools/lamptern
+	name = "Lampterns"
+	cost = 50 //3 iron
+	contains = list(/obj/item/flashlight/flare/torch/lantern,
+					/obj/item/flashlight/flare/torch/lantern,
+					/obj/item/flashlight/flare/torch/lantern
+					)
+
+/datum/supply_pack/rogue/tools/smith
+	name = "Tongs & Hammer"
+	cost = 40
+	contains = list(/obj/item/rogueweapon/tongs,
+					/obj/item/rogueweapon/hammer/iron,
+					)
+
+/datum/supply_pack/rogue/tools/farm
+	name = "Farming Tools Set"
+	cost = 50
+	contains = list(/obj/item/rogueweapon/sickle,
+					/obj/item/rogueweapon/hoe,
+					/obj/item/rogueweapon/pitchfork,
+					)
+
+/datum/supply_pack/rogue/tools/skillet
+	name = "Iron skillet"
+	cost = 20
+	contains = list(/obj/item/cooking/pan)
+
+/datum/supply_pack/rogue/tools/scissors
+	name = "Iron scissors"
+	cost = 20
+	contains = list(/obj/item/rogueweapon/huntingknife/scissors)
 
 /datum/supply_pack/rogue/tools/shopkeyy
 	name = "Spare Shopkey"
