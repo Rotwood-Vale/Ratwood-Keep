@@ -33,6 +33,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 			gloves = /obj/item/clothing/gloves/roguetown/leather
