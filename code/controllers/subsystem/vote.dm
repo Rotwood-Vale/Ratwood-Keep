@@ -252,7 +252,7 @@ SUBSYSTEM_DEF(vote)
 					choices.Add(option)
 			if("endround")
 				if(initiator_key)
-					initiator = "[initiator_key] / [usr.real_name]"
+					initiator = "[initiator_key] / [usr]"
 				else
 					initiator_key = "Zizo"
 				choices.Add("Continue Playing","End Round")
