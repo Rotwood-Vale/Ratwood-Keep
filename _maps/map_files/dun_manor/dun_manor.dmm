@@ -967,7 +967,9 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
 "aLa" = (
-/obj/structure/mineral_door/wood/deadbolt,
+/obj/structure/mineral_door/wood/deadbolt{
+	locked = 1
+	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "aLh" = (
@@ -16311,9 +16313,8 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "nsG" = (
-/obj/structure/mineral_door/wood{
-	locked = 1;
-	lockid = "house6"
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/town)
@@ -24204,10 +24205,9 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/town/roofs/keep)
 "tPt" = (
-/obj/structure/mineral_door/wood{
-	locked = 1;
-	lockid = "house3";
-	name = "house iii"
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 8;
+	locked = 1
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -24861,10 +24861,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
 "uut" = (
-/obj/structure/mineral_door/wood{
-	locked = 1;
-	lockid = "house1";
-	name = "house i"
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 1;
+	locked = 1
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -26778,10 +26777,9 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
 "wms" = (
-/obj/structure/mineral_door/wood{
-	locked = 1;
-	lockid = "house2";
-	name = "house ii"
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 4;
+	locked = 1
 	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -72121,7 +72119,7 @@ pFo
 xqr
 waT
 dRZ
-cxb
+dex
 doE
 bKO
 doE
@@ -93249,7 +93247,7 @@ qhb
 qhb
 waT
 doE
-wms
+bou
 doE
 waT
 doE
