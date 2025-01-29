@@ -75,3 +75,12 @@
 	name = "Empty lockpicking ring"
 	cost = 40
 	contains = list(/obj/item/lockpickring)
+
+/datum/supply_pack/rogue/bandit/Knave/lockpickring
+	name = "Smoke bomb"
+	cost = 40
+	contains = list(/obj/item/smokebomb)
+/datum/supply_pack/rogue/bandit/Knave/lockpickring
+	name = "Bomb pouhc"
+	cost = 40
+	contains = list(/obj/item/ammo_holder/bomb)
