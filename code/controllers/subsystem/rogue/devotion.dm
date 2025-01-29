@@ -99,7 +99,7 @@
 	spell_unlocked = new spell_unlocked
 	if(!silent)
 		to_chat(holder, span_boldnotice("I have unlocked a new spell: [spell_unlocked]"))
-	usr.mind.AddSpell(spell_unlocked)
+	holder.mind.AddSpell(spell_unlocked)
 	LAZYADD(granted_spells, spell_unlocked)
 	return TRUE
 
