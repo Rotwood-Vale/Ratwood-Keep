@@ -36,18 +36,19 @@ proc/is_nighttime()
 	wait = 10 SECONDS
 
 /proc/check_personal_sleep()
+	var/day_length = 864000
 	for(var/mob/living/carbon/M in GLOB.mob_list)
 		if(M)
 			if(M.next_sleep_time == 0)
-				M.next_sleep_time = station_time() + M.first_sleep
+				M.next_sleep_time = (station_time() + M.first_sleep) % day_length
 			else
 				if(!HAS_TRAIT(M, TRAIT_NOSLEEP) && !HAS_TRAIT(M, TRAIT_NOSTAMINA))
 					if(station_time() >= M.next_sleep_time)
 						if(!(HAS_TRAIT(M, TRAIT_NIGHT_OWL) && is_nighttime()))
 							M.ForceSleepyTime()
-							M.next_sleep_time = station_time() + M.sleep_interval
+							M.next_sleep_time = (station_time() + M.sleep_interval) % day_length
 						else
-							M.next_sleep_time = station_time() + 36000
+							M.next_sleep_time = (station_time() + 36000) % day_length
 
 
 /datum/controller/subsystem/personal_sleep/fire(resumed = FALSE)
