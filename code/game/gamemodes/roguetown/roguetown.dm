@@ -164,7 +164,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		return TRUE
 
 	if(num_players() >= 64)
-		var/major_roll_highpop = pick(1,2,3,4)
+		var/major_roll_highpop = pick(1,2,3)
 		switch(major_roll_highpop)
 			if(1)
 				pick_rebels()
@@ -174,13 +174,10 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				pick_werewolves()
 				log_game("Major Antagonist: Vampires and Werewolves")
 			if(3)
-				pick_cultist()
-				log_game("Major Antagonist: Cultists")
-			if(4)
 				pick_lich()
 				log_game("Major Antagonist: Lich")
 	else if(num_players() >= 52)
-		var/major_roll_midpop = pick(1,2,3)
+		var/major_roll_midpop = pick(1,2)
 		switch(major_roll_midpop)
 			if(1)
 				pick_rebels()
@@ -189,12 +186,18 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				pick_vampires()
 				pick_werewolves()
 				log_game("Major Antagonist: Vampires and Werewolves")
-			if(3)
-				pick_cultist()
-				log_game("Major Antagonist: Cultists")
 	else//Lowpop? Least destructive major antag.
-		pick_rebels()
-		log_game("Major Antagonist: Peasant Rebellion")
+		var/major_roll_lowpop = pick(1,2,3)
+		switch(major_roll_lowpop)
+			if(1)
+				pick_rebels()
+				log_game("Major Antagonist: Peasant Rebellion")
+			if(2)
+				pick_vampires()
+				log_game("Major Antagonist: Vampires")
+			if(3)
+				pick_werewolves()
+				log_game("Major Antagonist: Werewolves")
 
 	if(prob(100))
 		pick_bandits()
@@ -204,9 +207,11 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
 
+/*
 	if(prob(10))
 		pick_maniac()
 		log_game("Minor Antagonist: Maniac")
+*/
 
 	return TRUE
 

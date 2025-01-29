@@ -24,9 +24,6 @@
 	flags_inv = HIDEBOOB|HIDECROTCH
 	w_class = WEIGHT_CLASS_NORMAL //Anti-pouch storage due to the weight class no longer being small.
 
-	grid_width = 64
-	grid_height = 96
-
 /obj/item/clothing/suit/roguetown/armor/chainmail
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "haubergeon"
@@ -114,6 +111,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	max_integrity = 180 // slightly lower than scale
 	armor_class = ARMOR_CLASS_MEDIUM
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite. NO CROPS FOR HANDS!
 
 /obj/item/clothing/suit/roguetown/armor/plate/half
 	slot_flags = ITEM_SLOT_ARMOR
@@ -182,6 +180,7 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/hand
 	slot_flags = ITEM_SLOT_ARMOR
@@ -201,6 +200,7 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR
@@ -475,3 +475,36 @@
 	max_integrity = 550 // Hardened to Replace the chainmaille they got before.
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_ASSASSIN, BCLASS_TWIST)
 	body_parts_covered = CHEST|GROIN|VITALS
+
+//Gronn
+/obj/item/clothing/suit/roguetown/armor/hudesutu_quyaq
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Hudesutu quyaq"
+	desc = "Lamellar Armor made of iron and leathers."
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	icon_state = "hudesutu"
+	armor = list("blunt" = 65, "slash" = 60, "stab" = 55, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = CHAINHIT
+	do_sound_chain = TRUE
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	max_integrity = 250
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_LIGHT
+
+/obj/item/clothing/suit/roguetown/armor/kurche
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Kurche"
+	desc = "Pieces of Iron Plates and Leathers that protect the vitals."
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	icon_state = "kurche"
+	armor = list("blunt" = 75, "slash" = 65, "stab" = 70, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = CHAINHIT
+	do_sound_chain = TRUE
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	max_integrity = 300
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/iron
+	armor_class = ARMOR_CLASS_LIGHT

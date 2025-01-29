@@ -261,7 +261,8 @@
 	else
 		for(var/V in internal_organs)
 			var/obj/item/organ/O = V
-			O.on_death() //Needed so organs decay while inside the body.
+			if(!isnull(O))
+				O.on_death() //Needed so organs decay while inside the body.
 
 /mob/living/carbon/handle_mutations_and_radiation()
 	if(dna && dna.temporary_mutations.len)
@@ -671,7 +672,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		return
 	var/can_sleep = TRUE
 	var/bleedrate
-	var/cause = list("I can't sleep because...")
+	var/cause = "I can't sleep because..."
 	for(var/obj/item/clothing/thing in get_equipped_items(FALSE))
 		if(thing.clothing_flags & CANT_SLEEP_IN)
 			can_sleep = FALSE
@@ -679,10 +680,14 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 
 	if(HAS_TRAIT(src, TRAIT_NUDE_SLEEPER))
 		if(length(get_equipped_items()))
-			cause += "I need to be nude to be comfortable..."
+			cause += "\nI need to be nude to be comfortable..."
 			can_sleep = FALSE
 	if(sleep_accumulation > 15 && eyesclosed && resting && !can_sleep)
+		if(mob_timers["handle_sleep"])
+			if(world.time < mob_timers["handle_sleep"] + 30 SECONDS)
+				return
 		to_chat(src, span_boldwarning("[cause]"))
+		mob_timers["handle_sleep"] = world.time 
 		return
 	var/sleep_modifier // Modifier to multiply healing bonuses by and by how fast we fall asleep.
 	if(buckled?.sleepy)
@@ -737,7 +742,11 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		energy = max_energy
 		return
 	if(nutrition <= 0 && !HAS_TRAIT(src, TRAIT_NOHUNGER)) // No food? No Stamina.
+		if(mob_timers["energy_recovery"])
+			if(world.time < mob_timers["energy_recovery"] + 30 SECONDS)
+				return
 		to_chat(src, span_bad("I am too hungry to recover... "))
+		mob_timers["energy_recovery"] = world.time
 		return
 	if(resting)
 		var/recovery_amt

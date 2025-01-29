@@ -13,9 +13,10 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
-	beltl = /obj/item/rogueweapon/hammer/wood
+	beltr = /obj/item/rogueweapon/hammer/wood
+	beltl = /obj/item/rogueweapon/handsaw
 	backr = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/rogueweapon/stoneaxe/woodcut
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/huntingknife = 1)
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	if(H.gender == FEMALE)
@@ -38,6 +39,10 @@
 	H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	if(H.age == AGE_MIDDLEAGED)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
+	if(H.age == AGE_OLD)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 
 	H.change_stat("strength", 3)
 	H.change_stat("constitution", 1)

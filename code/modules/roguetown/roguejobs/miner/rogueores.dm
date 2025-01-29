@@ -4,9 +4,6 @@
 	icon_state = "ore"
 	w_class = WEIGHT_CLASS_NORMAL
 
-	grid_width = 32
-	grid_height = 32
-
 /obj/item/rogueore/gold
 	name = "raw gold"
 	desc = "A clump of dirty lustrous nuggets!"
@@ -97,9 +94,6 @@
 	smeltresult = null
 	var/datum/anvil_recipe/currecipe
 
-	grid_width = 64
-	grid_height = 32
-
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = I
@@ -134,7 +128,7 @@
 	icon_state = "ingotiron"
 	smeltresult = /obj/item/ingot/iron
 	grind_results = list(/datum/reagent/iron = 15)
-	sellprice = 25
+	sellprice = 20
 
 /obj/item/ingot/copper
 	name = "copper bar"
@@ -142,14 +136,14 @@
 	icon_state = "ingotcop"
 	smeltresult = /obj/item/ingot/copper
 	grind_results = list(/datum/reagent/copper = 15)
-	sellprice = 25
+	sellprice = 20
 
 /obj/item/ingot/tin
 	name = "tin bar"
 	desc = "An ingot of strangely soft and malleable essence."
 	icon_state = "ingottin"
 	smeltresult = /obj/item/ingot/tin
-	sellprice = 25
+	sellprice = 20
 
 /obj/item/ingot/bronze
 	name = "bronze bar"
@@ -171,7 +165,7 @@
 	desc = "This ingot is a stalwart defender of the kingdom."
 	icon_state = "ingotsteel"
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 40
+	sellprice = 30
 
 /obj/item/ingot/blacksteel
 	name = "blacksteel bar"

@@ -16,9 +16,6 @@
 	flags_inv = HIDEBOOB
 	w_class = WEIGHT_CLASS_SMALL
 
-	grid_width = 64
-	grid_height = 64
-
 /obj/item/clothing/suit/roguetown/shirt/undershirt
 	name = "shirt"
 	desc = ""
@@ -35,6 +32,7 @@
 	sleeved = null
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
+	// Has sprite without crop for hands AND no sleeves
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	color = CLOTHING_BLACK
@@ -94,6 +92,7 @@
 	icon_state = "puritan_shirt"
 	allowed_race = CLOTHED_RACES_TYPES
 	salvage_result = /obj/item/natural/silk
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"
@@ -257,6 +256,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
 	icon_state = "velvetdress"
 	item_state = "velvetdress"
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/dress/velvetdress/black
 	color = CLOTHING_BLACK
@@ -281,6 +281,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
 	icon_state = "nobledress"
 	item_state = "nobledress"
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/dress/nobledress/black
 	color = CLOTHING_BLACK
@@ -341,7 +342,7 @@
 /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	name = "grenzelhoftian hip-shirt"
-	desc = ""
+	desc = "Through the sands, dirt or rivers of blood: Always in style."
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "grenzelshirt"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'

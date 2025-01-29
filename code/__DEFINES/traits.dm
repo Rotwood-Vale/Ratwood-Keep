@@ -45,6 +45,7 @@
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
+#define TRAIT_DARKLING "Darkling"
 
 ///trait determines if this mob can breed given by /datum/component/breeding
 #define TRAIT_MOB_BREEDER "mob_breeder"
@@ -72,9 +73,11 @@
 #define TRAIT_GOBLINCAMP "goblincamp"
 #define TRAIT_VAMPMANSION "vampiremansion"
 #define TRAIT_VAMP_DREAMS "vamp_dreams"
+#define TRAIT_SPECIALUNDEAD "specdead" //Prevents necromancers from instakilling vampires and liches by turning them into skeletons. Any new undead faction should either get this trait or a similar trait
 #define TRAIT_LIMPDICK "limp_dick"
 #define TRAIT_SEXPASS "sexpass"
 #define TRAIT_STEELHEARTED "steelhearted" //no bad mood from dismembering or seeing this
+#define TRAIT_IWASREVIVED "iwasrevived" //prevents PQ gain from reviving the same person twice
 #define TRAIT_IWASUNZOMBIFIED "iwasunzombified" //prevents PQ gain from curing a zombie twice
 #define TRAIT_IWASHAUNTED "iwashaunted" //prevents spawning a haunt from a decapitated body twice
 #define TRAIT_SCHIZO_AMBIENCE "schizo_ambience" //replaces all ambience with creepy shit
@@ -161,7 +164,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
-	TRAIT_STUDENT = span_info("The scholar has taught me new skills!")
+	TRAIT_STUDENT = span_info("The scholar has taught me new skills!"),
+	TRAIT_DARKLING = span_info("I am a creature of the dark and am sensitive to the light. The hateful sun is especially harsh on my eyes, and I prefer to sleep during the dae.")
 ))
 
 // trait accessor defines

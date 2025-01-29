@@ -12,9 +12,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
-	grid_height = 64
-	grid_width = 64
-
 /obj/item/clothing/head/roguetown/equipped(mob/user, slot)
 	. = ..()
 	user.update_fov_angles()
@@ -130,6 +127,7 @@
 			block2add = null
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
+
 
 /obj/item/clothing/head/roguetown/eoramask
 	name = "eoran mask"
@@ -587,6 +585,7 @@
 	desc = "A steel helmet which protects the ears."
 	smeltresult = /obj/item/ingot/steel
 	body_parts_covered = HEAD|HAIR|EARS
+	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/roguetown/helmet/sallet/attackby(obj/item/W, mob/living/user, params)
 	..()
@@ -633,7 +632,7 @@
 	icon_state = "sallet_visor"
 	max_integrity = 275
 	adjustable = CAN_CADJUST
-	flags_inv = HIDEFACE
+	flags_inv = HIDEFACE|HIDEEARS
 	flags_cover = HEADCOVERSEYES
 	armor_class = ARMOR_CLASS_MEDIUM
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
@@ -1022,7 +1021,7 @@
 	max_integrity = 235
 	emote_environment = 3
 	body_parts_covered = HEAD|HAIR|EARS
-	flags_inv = HIDEHAIR
+	flags_inv = HIDEHAIR|HIDEEARS
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
 
@@ -1275,7 +1274,19 @@
 	item_state = "inqhat"
 	sewrepair = TRUE
 
-
+//Gronn
+/obj/item/clothing/head/roguetown/helmet/nomadhelmet
+	name = "nomad helmet"
+	desc = "An iron helmet with leather to help protect the neck."
+	icon_state = "nomadhelmet"
+	item_state = "nomadhelmet"
+	flags_inv = HIDEHAIR
+	body_parts_covered = HEAD|HAIR|EARS|NOSE|NECK
+	armor = list("blunt" = 50, "slash" = 30, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	max_integrity = 250
+	anvilrepair = TRUE
+	smeltresult = /obj/item/ingot/iron
 
 //----------------- BLACKSTEEL ---------------------
 
