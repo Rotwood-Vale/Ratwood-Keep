@@ -278,3 +278,15 @@
 	name = "Seelie Blessing"
 	desc = "A nearby Seelie has brought me fortune."
 	icon_state = "stressg"
+
+
+/datum/status_effect/buff/darkling_darkly
+	id = "Darkling"
+	alert_type =  /atom/movable/screen/alert/status_effect/buff/darkling_darkly
+	effectedstats = list("perception" = 1)
+	duration = 5 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/darkling_darkly
+	name = "Darkling"
+	desc = "You are at home in the dark. Unbothered. In your lane. Moisturized."
+	icon_state = "stressg"
