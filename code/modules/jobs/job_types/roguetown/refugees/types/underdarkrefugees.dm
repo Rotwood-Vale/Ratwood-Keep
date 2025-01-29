@@ -86,7 +86,7 @@
 			H.set_patron(/datum/patron/zizo)
 			H.faction += "undead"
 		
-		if("Underdark Wytch")	
+		if("Underdark Wych")	
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
