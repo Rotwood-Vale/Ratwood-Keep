@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(TodUpdate)
 
 SUBSYSTEM_DEF(nightshift)
 	name = "Night Shift"
-	wait = 10 SECONDS
+	wait = 360 SECONDS
 	flags = SS_NO_TICK_CHECK
 	priority = 1
 	var/current_tod = null
@@ -33,7 +33,7 @@ proc/is_nighttime()
 
 /datum/controller/subsystem/personal_sleep
 	name = "Personal Sleep"
-	wait = 10 SECONDS
+	wait = 360 SECONDS
 
 /proc/check_personal_sleep()
 	var/day_length = 864000
