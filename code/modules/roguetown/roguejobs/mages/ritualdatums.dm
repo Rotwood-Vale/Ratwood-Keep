@@ -348,7 +348,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	blacklisted = FALSE
 	tier = 2
 	required_atoms = list(/obj/item/natural/infernalash = 3, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t1 = 1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound//temporary rat 4 testing
 
 /datum/runerituals/summoning/watcher
 	name = "summoning infernal watcher"
@@ -356,7 +356,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	blacklisted = FALSE
 	tier = 3
 	required_atoms = list(/obj/item/natural/hellhoundfang = 2, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t2 =1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher//temporary rat 4 testing
 
 /datum/runerituals/summoning/archfiend
 	name = "summoning archfiend"

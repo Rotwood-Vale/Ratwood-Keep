@@ -1,7 +1,6 @@
 // Infernal
 /obj/item/natural/infernalash//T1 mage summon loot
 	name = "infernal ash"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "infernalash"
 	desc = "Ash burnt and burnt once again. Smells of brimstone and hellfire. Still has embers within."
 	resistance_flags = FLAMMABLE
@@ -10,7 +9,7 @@
 
 /obj/item/natural/hellhoundfang//T2 mage summon loot
 	name = "hellhound fang"
-	icon_state = "wessence"
+	icon_state = "hellhound_fang"
 	desc = "A sharp fang that glows bright red, no matter how long it's left to cool."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
@@ -18,7 +17,7 @@
 
 /obj/item/natural/moltencore// T3 mage summon loot
 	name = "molten core"
-	icon_state = "wessence"
+	icon_state = "infernal_core"
 	desc = "A molten orb of rock and magick. It gives off waves of magical heat and energy."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
@@ -26,7 +25,7 @@
 
 /obj/item/natural/abyssalflame//T4 mage summon loot
 	name = "abyssal flame"
-	icon_state = "wessence"
+	icon_state = "abyssalflame"
 	desc = "A  flickering, black flame contained in a crystal; the heart of an archfiend. Or atleast, what passes for one. It pulses with dense thrums of magick."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
@@ -68,8 +67,8 @@
 //ELEMENTAL
 /obj/item/natural/elementalmote
 	name = "elemental mote"
-	icon_state = "wessence"
-	desc = "A mystical essence embued with the power of Dendor. Merely holding it transports one's mind to ancient times."
+	icon_state = "mote"
+	desc = "A mote of elemental, left behind. Small, yet glowing with arcana."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
@@ -77,7 +76,7 @@
 /obj/item/natural/elementalshard
 	name = "elemental shard"
 	icon_state = "wessence"
-	desc = "A mystical essence embued with the power of Dendor. Merely holding it transports one's mind to ancient times."
+	desc = "A torn shard of an elemental. Fitting within one hand, it gives off an arcane glow."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20

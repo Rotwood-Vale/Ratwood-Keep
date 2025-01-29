@@ -1674,7 +1674,7 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 		var/dist = get_dist(targetturf, T)
 		if(dist > last_dist)
 			last_dist = dist
-			sleep(2 + min(range - last_dist, 12) * 0.5) //gets faste
+			sleep(2 + min(range - last_dist, 12) * 0.5) //gets faster
 		new /obj/effect/temp_visual/targetlightning(T)
 
 
