@@ -494,7 +494,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("crispy bread and cream cheese" = 1)
 	foodtype = GRAIN | DAIRY
-	bitesize = 2
+	bitesize = 3
 	rotprocess = SHELFLIFE_DECENT
 
 /*  ..................   Frybread   ......................*/
