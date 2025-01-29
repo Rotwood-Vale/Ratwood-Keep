@@ -227,7 +227,7 @@
 /datum/class_select_handler/proc/browser_slop()
 	if(!linked_client)
 		return
-	SSassets.transport.send_assets(linked_client, list("try4_border.png", "try4.png", "slop_menustyle2.css"))
+	SSassets.transport.send_assets(linked_client, list("try4_border.png", "try4.png", "slop_menustyle2.css", "haha_skull.gif"))
 	//Opening tags and empty head
 	var/data = {"
 	<!DOCTYPE html>
