@@ -157,12 +157,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 	for(var/datum/subclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
 		if(A.name == selected)
-			if(equipOutfit(A.outfit))
-				return
-			else
+			if(!A.outfit)
 				to_chat(src, span_clown("Failed to equip chosen class, choose a new one."))
 				log_message("ERROR: Unable to pick [A.name] as a subclass for [src].", LOG_GAME)
 				spawn_pick_class()
+				return
+	
+			if(equipOutfit(A.outfit))
+				return
 
 /datum/outfit/job/roguetown/vamplord/pre_equip(mob/living/carbon/human/H)
 	..()
