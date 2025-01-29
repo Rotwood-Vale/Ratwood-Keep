@@ -281,22 +281,28 @@
 /turf/open/water/swamp/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
 	if(isliving(AM) && !AM.throwing)
-		if(!prob(3))
-			return
-		if(iscarbon(AM))
-			var/mob/living/carbon/C = AM
+		if(ishuman(AM))
+			var/mob/living/carbon/human/C = AM
+			var/chance = 3
+			if(C.m_intent == MOVE_INTENT_RUN)
+				chance = 6
+			if(C.m_intent == MOVE_INTENT_SNEAK)
+				chance = 1
+			if(!prob(chance))
+				return
 			if(C.blood_volume <= 0)
 				return
-			var/zonee = list(BODY_ZONE_R_LEG,BODY_ZONE_L_LEG)
-			for(var/X in zonee)
-				var/obj/item/bodypart/BP = C.get_bodypart(X)
+			var/list/zonee = list(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_CHEST)
+			for(var/i = 0, i <= zonee.len, i++)
+				var/zone = pick(zonee)
+				var/obj/item/bodypart/BP = C.get_bodypart(zone)
 				if(!BP)
 					continue
 				if(BP.skeletonized)
 					continue
 				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
-				return .
+			return .
 
 /turf/open/water/swamp/deep
 	name = "murk"
@@ -310,22 +316,26 @@
 /turf/open/water/swamp/deep/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
 	if(isliving(AM) && !AM.throwing)
-		if(!prob(8))
-			return
-		if(iscarbon(AM))
-			var/mob/living/carbon/C = AM
+		if(ishuman(AM))
+			var/mob/living/carbon/human/C = AM
+			var/chance = 6
+			if(C.m_intent == MOVE_INTENT_RUN)
+				chance = 12		//yikes
+			if(C.m_intent == MOVE_INTENT_SNEAK)
+				chance = 2
 			if(C.blood_volume <= 0)
 				return
-			var/zonee = list(BODY_ZONE_CHEST,BODY_ZONE_R_LEG,BODY_ZONE_L_LEG,BODY_ZONE_R_ARM,BODY_ZONE_L_ARM)
-			for(var/X in zonee)
-				var/obj/item/bodypart/BP = C.get_bodypart(X)
+			var/list/zonee = list(BODY_ZONE_CHEST,BODY_ZONE_R_LEG,BODY_ZONE_L_LEG,BODY_ZONE_R_ARM,BODY_ZONE_L_ARM)
+			for(var/i = 0, i <= zonee.len, i++)
+				var/zone = pick(zonee)
+				var/obj/item/bodypart/BP = C.get_bodypart(zone)
 				if(!BP)
 					continue
 				if(BP.skeletonized)
 					continue
 				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
-				return .
+			return .
 
 /turf/open/water/cleanshallow
 	name = "water"
