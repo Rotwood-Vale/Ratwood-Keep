@@ -13,7 +13,10 @@
 
 /obj/structure/fireaxecabinet/Initialize()
     . = ..()
-    heirloom = new /obj/item/rogueweapon/sword/long/heirloom
+    if(prob(99))
+		heirloom = new /obj/item/rogueweapon/sword/long/heirloom
+	else
+		heirloom = new /obj/item/rogueweapon/sword/long/judgement
     update_icon()
 
 /obj/structure/fireaxecabinet/Destroy()
