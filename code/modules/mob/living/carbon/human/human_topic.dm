@@ -297,32 +297,52 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 	return ..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that. - I made it worse sorry guys.
 
 //Sorry colorblind folks...
-/proc/colorgrade_rating(var/input, var/rating, var/elaborate = FALSE)
+/proc/colorgrade_rating(input, rating, elaborate = FALSE)
 	var/str
 	switch(rating)
-		if(0 to 20)
-			str = elaborate ? "<font color = '#c91a1a'>[input] (BAD)</font>" : "<font color = '#c91a1a'>[input]</font>"
-		if(20 to 40)
-			str = elaborate ? "<font color = '#755211'>[input] (POOR)</font>" : "<font color = '#755211'>[input]</font>"
-		if(40 to 60)
-			str = elaborate ? "<font color = '#d2d440'>[input] (AVERAGE)</font>" : "<font color = '#d2d440'>[input]</font>"
-		if(60 to 80)
-			str = elaborate ? "<font color = '#308020'>[input] (GOOD)</font>" : "<font color = '#308020'>[input]</font>"
-		if(80 to 90)
-			str = elaborate ? "<font color = '#0fe021'>[input] (GREAT)</font>" : "<font color = '#0fe021'>[input]</font>"
+		if(0)
+			var/color = "#f81a1a"
+			str = elaborate ? "<font color = '[color]'>[input] (F)</font>" : "<font color = '[color]'>[input] (F)</font>"
+		if(10 to 19)
+			var/color = "#680d0d"
+			str = elaborate ? "<font color = '[color]'>[input] (D)</font>" : "<font color = '[color]'>[input] (D)</font>"
+		if(20 to 39)
+			var/color = "#753e11"
+			str = elaborate ? "<font color = '[color]'>[input] (D+)</font>" : "<font color = '[color]'>[input] (D+)</font>"
+		if(40 to 49)
+			var/color = "#c0a739"
+			str = elaborate ? "<font color = '[color]'>[input] (C)</font>" : "<font color = '[color] (C to C+)'>[input]</font>"
+		if(50 to 59)
+			var/color = "#e3e63c"
+			str = elaborate ? "<font color = '[color]'>[input] (C+)</font>" : "<font color = '[color]'>[input] (C to C+)</font>"
+		if(60 to 69)
+			var/color = "#425c33"
+			str = elaborate ? "<font color = '[color]'>[input] (B)</font>" : "<font color = '[color]'>[input] (B to B+)</font>"
+		if(70 to 79)
+			var/color = "#1a9c00"
+			str = elaborate ? "<font color = '[color]'>[input] (B+)</font>" : "<font color = '[color]'>[input] (B to B+)</font>"
+		if(80 to 89)
+			var/color = "#0fe021"
+			str = elaborate ? "<font color = '[color]'>[input] (A)</font>" : "<font color = '[color]'>[input] (A to A+)</font>"
+		if(90 to 99)
+			var/color = "#ffffff"
+			str = elaborate ? "<font color = '[color]'>[input] (A+)</font>" : "<font color = '[color]'>[input] (A to A+)</font>"
 		if(100)
-			str = elaborate ? "<font color = '#2492f8'>[input] (IMMUNE)</font>" : "<font color = '#2492f8'>[input]</font>"
+			var/color = "#339dff"
+			str = elaborate ? "<font color = '[color]'>[input] (S)</font>" : "<font color = '[color]'>[input] (S)</font>"
+		else
+			str = "[input] (Above 100 or under 0! Contact coders.)"
 	return str
 
 /proc/defense_report(var/obj/item/clothing/C, var/stupid, var/normal, var/smart, var/stupid_string)
 	var/list/str = list()
 	if(C.armor)
-		var/defense = "<u><b>DEFENSE: </b></u><br>"
+		var/defense = "<u><b>ABSORPTION: </b></u><br>"
 		var/datum/armor/def_armor = C.armor
-		defense += "[colorgrade_rating("BLUNT", def_armor.blunt)] | "
-		defense += "[colorgrade_rating("SLASH", def_armor.slash)] | "
-		defense += "[colorgrade_rating("STAB", def_armor.stab)] | "
-		defense += "[colorgrade_rating("PIERCING", def_armor.piercing)] "
+		defense += "[colorgrade_rating("BLUNT", def_armor.blunt, smart)] | "
+		defense += "[colorgrade_rating("SLASH", def_armor.slash, smart)] | "
+		defense += "[colorgrade_rating("STAB", def_armor.stab, smart)] | "
+		defense += "[colorgrade_rating("PIERCING", def_armor.piercing, smart)] "
 		str += "[defense]<br>"
 
 	var/coverage = "<u><b>COVERS: </b></u><br>"
@@ -337,8 +357,8 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 	if(normal || smart)
 		var/list/critclasses = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH, BCLASS_PICK)
 		var/crits = "<b><u>PREVENTS CRITS: </u></b><br>"
-		crits += "<font color = '#69a1a8'>| </font>"
 		if(C.prevent_crits)
+			crits += "<font color = '#69a1a8'>| </font>"
 			for(var/zone in C.prevent_crits)
 				for(var/crit in critclasses)
 					if(zone == crit)

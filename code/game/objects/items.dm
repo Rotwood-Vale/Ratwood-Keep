@@ -1218,7 +1218,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(istype(src, /obj/item/clothing))
 		var/obj/item/clothing/C = src
 		if(C.armor)
-			var/defense = "<u><b>DEFENSE: </b></u><br>"
+			var/defense = "<u><b>ABSORPTION: </b></u><br>"
 			var/datum/armor/def_armor = C.armor
 			defense += "[colorgrade_rating("BLUNT", def_armor.blunt, elaborate = TRUE)] | "
 			defense += "[colorgrade_rating("SLASH", def_armor.slash, elaborate = TRUE)] | "
