@@ -410,12 +410,12 @@
 	name = "buttered toast"
 	icon_state = "toast_butter"
 	tastes = list("butter" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR+1)
 
 // -------------- BREAD WITH FOOD ON IT (not american sandwich) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/sandwich
 	desc = "A delightful piece of heaven, in every slice."
-	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR+1)
 	rotprocess = 30 MINUTES
 	bitesize = 2
 
