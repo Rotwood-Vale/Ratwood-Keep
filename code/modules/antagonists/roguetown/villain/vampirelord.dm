@@ -832,12 +832,16 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		to_chat(user, "I don't have the power to use this!")
 
 /mob/proc/death_knight_spawn()
-	var/datum/game_mode/chaosmode/C = SSticker.mode
 	SEND_SOUND(src, sound('sound/misc/notice (2).ogg'))
-	if(alert(src, "A Vampire Lord is summoning you from the Underworld.", "Be Risen?", "Yes", "No") == "Yes")
-		if(!C.deathknightspawn)
-			to_chat(src, span_warning("Another soul was chosen."))
-		returntolobby()
+	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as a Death Knight?", ROLE_VAMPIRE, null, null, 10 SECONDS, src, POLL_IGNORE_NECROMANCER_SKELETON)
+	if(LAZYLEN(candidates))
+		var/mob/dead/observer/C = pick(candidates)
+		log_game("VAMPIRE LOG: [C.ckey] chosen as new death knight.")
+		var/mob/living/carbon/human/new_knight = new /mob/living/carbon/human/species/human/northern()
+		new_knight.forceMove(usr.loc)
+		new_knight.ckey = C.key
+		new_knight.equipOutfit(/datum/job/roguetown/deathknight)
+		new_knight.regenerate_icons()
 
 // DEATH KNIGHT ANTAG
 /datum/antagonist/skeleton/knight
