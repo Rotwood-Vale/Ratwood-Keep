@@ -92,8 +92,6 @@
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
-		/datum/body_marking/harlequin,
-		/datum/body_marking/harlequinreversed,
 	)
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,

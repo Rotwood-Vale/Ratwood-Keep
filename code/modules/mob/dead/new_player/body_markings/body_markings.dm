@@ -332,19 +332,3 @@
 	affected_bodyparts = CHEST
 	default_color = DEFAULT_SECONDARY
 	covers_chest = TRUE
-
-/datum/body_marking/harlequin
-	icon = 'icons/mob/body_markings/plain_markings.dmi'
-	name = "Harlequin"
-	icon_state = "harlequin"
-	affected_bodyparts = HEAD | CHEST
-	default_color = DEFAULT_SECONDARY
-	covers_chest = TRUE
-
-/datum/body_marking/harlequinreversed
-	icon = 'icons/mob/body_markings/plain_markings.dmi'
-	name = "Harlequin (Reversed)"
-	icon_state = "harlequin_reversed"
-	affected_bodyparts = HEAD | CHEST
-	default_color = DEFAULT_SECONDARY
-	covers_chest = TRUE
