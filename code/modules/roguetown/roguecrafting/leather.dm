@@ -105,7 +105,7 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 28
 
-/datum/crafting_recipe/roguetown/hunting/bulletpouch
+/datum/crafting_recipe/roguetown/hunting/bombpouch
 	name = "bomb pouch"
 	result = /obj/item/ammo_holder/bomb
 	reqs = list(/obj/item/natural/hide/cured = 2,

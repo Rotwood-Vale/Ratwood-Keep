@@ -76,11 +76,11 @@
 	cost = 40
 	contains = list(/obj/item/lockpickring)
 
-/datum/supply_pack/rogue/bandit/Knave/lockpickring
+/datum/supply_pack/rogue/bandit/Knave/smokebomb
 	name = "Smoke bomb"
 	cost = 40
 	contains = list(/obj/item/smokebomb)
-/datum/supply_pack/rogue/bandit/Knave/lockpickring
-	name = "Bomb pouhc"
+/datum/supply_pack/rogue/bandit/Knave/bombpouch
+	name = "Bomb pouch"
 	cost = 40
 	contains = list(/obj/item/ammo_holder/bomb)
