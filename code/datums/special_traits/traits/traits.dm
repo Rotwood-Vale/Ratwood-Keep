@@ -292,7 +292,7 @@
 	greet_text = span_notice("I am <b>not</b> an aggressive drunk! Who the hell is spouting slander about me? I'm going over there to show them what's up! ... Oh? What?... You want some too?!")
 	weight = 100
 
-/datum/special_trait/civilizedbarbarian/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/tavernbrawler/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_CIVILIZEDBARBARIAN, "[type]") //Need to make trait improve hitting people with chairs, mugs, goblets. <real
 
 
