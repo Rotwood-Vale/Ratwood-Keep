@@ -33,7 +33,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/sewing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
 			r_hand = /datum/supply_pack/rogue/weapons/spear
 			belt = /obj/item/storage/belt/rogue/leather/rope
@@ -58,7 +58,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/sewing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
 			belt = /obj/item/storage/belt/rogue/leather/rope
@@ -83,7 +83,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/smithing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
 			belt = /obj/item/storage/belt/rogue/leather/rope

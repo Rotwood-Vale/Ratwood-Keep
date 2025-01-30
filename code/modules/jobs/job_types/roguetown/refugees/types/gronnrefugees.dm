@@ -32,7 +32,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/sewing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
 			head = /obj/item/clothing/head/roguetown/hatfur
 			shoes = /obj/item/clothing/shoes/roguetown/armor/nomadboots
