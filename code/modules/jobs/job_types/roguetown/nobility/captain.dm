@@ -41,9 +41,7 @@
 			S.name = "captain's cape ([index])"
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
-		var/honorary = "Ser Captain"
-		if(H.gender == FEMALE)
-			honorary = "Dame Captain"
+		var/honorary = "Knight-Captain"
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
 
