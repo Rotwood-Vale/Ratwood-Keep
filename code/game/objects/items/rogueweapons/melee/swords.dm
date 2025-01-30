@@ -14,7 +14,9 @@
 
 /datum/intent/sword/cut/sabre
 	clickcd = 10
-	
+
+/datum/intent/sword/cut/falx
+	penfactor = 20
 /datum/intent/sword/thrust
 	name = "stab"
 	icon_state = "instab"
@@ -51,7 +53,8 @@
 	swingdelay = 8
 	damfactor = 1.0
 	item_d_type = "slash"
-
+/datum/intent/sword/chop/falx
+	penfactor = 40
 //sword objs ฅ^•ﻌ•^ฅ
 
 /obj/item/rogueweapon/sword
@@ -99,6 +102,19 @@
 	force = 20
 	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
 	icon_state = "falchion"
+	gripped_intents = null
+	minstr = 4
+	wdefense = 6
+
+/obj/item/rogueweapon/sword/falx
+	name = "falx"
+	desc = "A blade with an odd curve forward, meant to penetrate armour and slice flesh."
+	parrysound = "bladedmedium"
+	force = 22
+	possible_item_intents = list(/datum/intent/sword/cut/falx,  /datum/intent/sword/chop/falx, /datum/intent/sword/strike)
+	icon_state = "falx"
+	max_blade_int = 100
+	max_integrity = 125
 	gripped_intents = null
 	minstr = 4
 	wdefense = 6
@@ -788,6 +804,113 @@
 				"westabove" = 0,
 				)
 
+/obj/item/rogueweapon/sword/long/romphaia
+	force = 25
+	force_wielded = 30
+	possible_item_intents = list(/datum/intent/sword/cut/falx, /datum/intent/sword/strike, /datum/intent/sword/chop/falx)
+	gripped_intents = list(/datum/intent/sword/cut/falx, /datum/intent/sword/strike, /datum/intent/sword/chop/falx)
+	icon_state = "romphaia"
+	name = "romphaia"
+	desc = "A longsword with a hooked end for punching through armour."
+	smeltresult = /obj/item/ingot/steel
+	max_integrity = 175
+
+/obj/item/rogueweapon/sword/long/romphaia/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen") return list(
+				"shrink" = 0.5,
+				"sx" = -14,
+				"sy" = -8,
+				"nx" = 15,
+				"ny" = -7,
+				"wx" = -10,
+				"wy" = -5,
+				"ex" = 7,
+				"ey" = -6,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				"nturn" = -13,
+				"sturn" = 110,
+				"wturn" = -60,
+				"eturn" = -30,
+				"nflip" = 1,
+				"sflip" = 1,
+				"wflip" = 8,
+				"eflip" = 1,
+				)
+			if("onback") return list(
+				"shrink" = 0.5,
+				"sx" = -1,
+				"sy" = 2,
+				"nx" = 0,
+				"ny" = 2,
+				"wx" = 2,
+				"wy" = 1,
+				"ex" = 0,
+				"ey" = 1,
+				"nturn" = 0,
+				"sturn" = 0,
+				"wturn" = 70,
+				"eturn" = 15,
+				"nflip" = 1,
+				"sflip" = 1,
+				"wflip" = 1,
+				"eflip" = 1,
+				"northabove" = 1,
+				"southabove" = 0,
+				"eastabove" = 0,
+				"westabove" = 0,
+				)
+			if("wielded") return list(
+				"shrink" = 0.6,
+				"sx" = 3,
+				"sy" = 5,
+				"nx" = -3,
+				"ny" = 5,
+				"wx" = -9,
+				"wy" = 4,
+				"ex" = 9,
+				"ey" = 1,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				"nturn" = 0,
+				"sturn" = 0,
+				"wturn" = 0,
+				"eturn" = 15,
+				"nflip" = 8,
+				"sflip" = 0,
+				"wflip" = 8,
+				"eflip" = 0,
+				)
+			if("onbelt") return list(
+				"shrink" = 0.4,
+				"sx" = -4,
+				"sy" = -6,
+				"nx" = 5,
+				"ny" = -6,
+				"wx" = 0,
+				"wy" = -6,
+				"ex" = -1,
+				"ey" = -6,
+				"nturn" = 100,
+				"sturn" = 156,
+				"wturn" = 90,
+				"eturn" = 180,
+				"nflip" = 0,
+				"sflip" = 0,
+				"wflip" = 0,
+				"eflip" = 0,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				)
 /obj/item/rogueweapon/sword/long/oathkeeper
 	name = "Oathkeeper"
 	desc = "An ornate golden blade with a ruby embedded in the hilt. Granted to the Knight Commander for their valiant service to the crown."
@@ -796,3 +919,113 @@
 	force_wielded = 35
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	icon_state = "kingslayer"
+
+/obj/item/rogueweapon/sword/long/eclipsum
+	force = 34
+	force_wielded = 50
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
+	icon_state = "astratasword"
+	name = "eclipsum sword"
+	desc = "A mutual effort of Noc and Astrata's followers, this blade was forged with both Silver and Gold alike. Blessed to hold strength and bring hope. Whether dae or nite."
+	is_silver = TRUE
+	smeltresult = /obj/item/ingot/silver
+	smelt_bar_num = 2
+	max_integrity = 999
+
+/obj/item/rogueweapon/sword/long/eclipsum/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen") return list(
+				"shrink" = 0.65,
+				"sx" = -14,
+				"sy" = -8,
+				"nx" = 15,
+				"ny" = -7,
+				"wx" = -10,
+				"wy" = -5,
+				"ex" = 7,
+				"ey" = -6,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				"nturn" = -13,
+				"sturn" = 110,
+				"wturn" = -60,
+				"eturn" = -30,
+				"nflip" = 1,
+				"sflip" = 1,
+				"wflip" = 8,
+				"eflip" = 1,
+				)
+			if("onback") return list(
+				"shrink" = 0.65,
+				"sx" = -1,
+				"sy" = 2,
+				"nx" = 0,
+				"ny" = 2,
+				"wx" = 2,
+				"wy" = 1,
+				"ex" = 0,
+				"ey" = 1,
+				"nturn" = 0,
+				"sturn" = 0,
+				"wturn" = 70,
+				"eturn" = 15,
+				"nflip" = 1,
+				"sflip" = 1,
+				"wflip" = 1,
+				"eflip" = 1,
+				"northabove" = 1,
+				"southabove" = 0,
+				"eastabove" = 0,
+				"westabove" = 0,
+				)
+			if("wielded") return list(
+				"shrink" = 0.6,
+				"sx" = 3,
+				"sy" = 5,
+				"nx" = -3,
+				"ny" = 5,
+				"wx" = -9,
+				"wy" = 4,
+				"ex" = 9,
+				"ey" = 1,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				"nturn" = 0,
+				"sturn" = 0,
+				"wturn" = 0,
+				"eturn" = 15,
+				"nflip" = 8,
+				"sflip" = 0,
+				"wflip" = 8,
+				"eflip" = 0,
+				)
+			if("onbelt") return list(
+				"shrink" = 0.4,
+				"sx" = -4,
+				"sy" = -6,
+				"nx" = 5,
+				"ny" = -6,
+				"wx" = 0,
+				"wy" = -6,
+				"ex" = -1,
+				"ey" = -6,
+				"nturn" = 100,
+				"sturn" = 156,
+				"wturn" = 90,
+				"eturn" = 180,
+				"nflip" = 0,
+				"sflip" = 0,
+				"wflip" = 0,
+				"eflip" = 0,
+				"northabove" = 0,
+				"southabove" = 1,
+				"eastabove" = 1,
+				"westabove" = 0,
+				)
