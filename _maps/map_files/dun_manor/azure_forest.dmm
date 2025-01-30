@@ -535,6 +535,14 @@
 	pixel_x = 6;
 	pixel_y = 15
 	},
+/obj/item/kitchen/spoon{
+	pixel_y = 8;
+	pixel_x = -2
+	},
+/obj/item/kitchen/spoon{
+	pixel_y = 8;
+	pixel_x = -8
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -3440,6 +3448,11 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"Cj" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/shelter/woods)
 "Cn" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -3918,7 +3931,10 @@
 "Gj" = (
 /obj/structure/table/wood,
 /obj/item/cooking/platter,
-/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon{
+	pixel_y = 8;
+	pixel_x = -2
+	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "Gn" = (
@@ -4341,6 +4357,11 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/beach/forest)
+"Jq" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/shelter/woods)
 "Jr" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -5248,9 +5269,7 @@
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 8
 	},
-/turf/closed/wall/mineral/rogue/roofwall/middle{
-	dir = 4
-	},
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter/woods)
 "RG" = (
 /obj/effect/decal/mossy{
@@ -5956,7 +5975,11 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "Xl" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/roguecloset/dark{
+	locked = 1;
+	lockid = "warden";
+	keylock = 1
+	},
 /obj/item/rogueweapon/shovel,
 /obj/item/rogueweapon/stoneaxe/woodcut,
 /turf/open/floor/rogue/woodturned,
@@ -6061,6 +6084,10 @@
 /mob/living/simple_animal/hostile/rogue/skeleton/guard,
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/town/basement)
+"Yb" = (
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/shelter/woods)
 "Ye" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "cobbleedge-sread"
@@ -46068,7 +46095,7 @@ NU
 gc
 vo
 XC
-XC
+Cj
 vE
 vE
 ro
@@ -46215,7 +46242,7 @@ XC
 XC
 XC
 XC
-XC
+Yb
 vo
 NU
 QN
@@ -46525,7 +46552,7 @@ lh
 lh
 GH
 GH
-XC
+Yb
 XC
 XC
 XC
@@ -46843,7 +46870,7 @@ MY
 eo
 om
 vo
-XC
+Yb
 XC
 NU
 vx
@@ -46852,7 +46879,7 @@ KJ
 Gh
 NU
 gB
-XC
+Yb
 XC
 Ls
 vo
@@ -47483,7 +47510,7 @@ kp
 vo
 Kv
 Kv
-XC
+Yb
 gc
 XC
 nt
@@ -47630,7 +47657,7 @@ Vh
 vE
 vo
 eg
-XC
+Yb
 vo
 kp
 IV
@@ -49049,7 +49076,7 @@ Fl
 Xl
 yI
 oa
-XC
+Jq
 XC
 vo
 ro
