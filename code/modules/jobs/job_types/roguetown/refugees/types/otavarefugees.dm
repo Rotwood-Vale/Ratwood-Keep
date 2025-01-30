@@ -43,7 +43,8 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/advanced
 			head = /obj/item/clothing/head/roguetown/papakha
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/gun/ballistic/firearm/arquebus_pistol
+			backr = /obj/item/gun/ballistic/firearm/handgonne
+			beltl = /obj/item/ammo_holder/bullet/lead
 			l_hand = /obj/item/rogueweapon/sword/sabre
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1,/obj/item/powderflask = 1)
 			H.change_stat("strength", 2)
