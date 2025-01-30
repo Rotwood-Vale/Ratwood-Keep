@@ -75,7 +75,7 @@
 			belt = /obj/item/storage/belt/rogue/leather/steel
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1)
 			GLOB.outlawed_players += H.real_name
 
 		
@@ -177,7 +177,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/tower/metal
 			beltl = /obj/item/roguekey/inhumen
-			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1)
+			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells(H)
 			START_PROCESSING(SSobj, C)
