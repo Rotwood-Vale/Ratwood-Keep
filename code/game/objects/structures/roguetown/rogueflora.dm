@@ -297,14 +297,19 @@
 	debris = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 1)
 	var/list/looty = list()
 	var/bushtype
+	//Why bother generating the same list for every single bush? Static list time.
+	var/static/list/bush_options = list(
+        /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 5,
+        /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison = 3,
+        /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1
+    )
+
+
 
 /obj/structure/flora/roguegrass/bush/Initialize()
-	var/area = get_area(src)
-	if(!isintown(area) && prob(88))
-		bushtype = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue=5,
-					/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison=3,
-					/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed=1))
-	
+	var/area/A = get_area(src)
+	if(prob(isintown(A) ? 10 : 88))
+		bushtype = pickweight(bush_options)
 	loot_replenish()
 	pixel_x += rand(-3,3)
 	return ..()
