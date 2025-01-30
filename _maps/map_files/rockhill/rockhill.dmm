@@ -19943,6 +19943,16 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/town/harbor)
+"kDO" = (
+/obj/structure/fluff/railing/border{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/outdoors/town/harbor)
 "kDS" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueore/tin,
@@ -249800,9 +249810,9 @@ pzv
 pzv
 pzv
 pzv
-hkm
-oXd
-hkm
+pzv
+kDO
+pzv
 pzv
 pzv
 pzv
@@ -250231,11 +250241,11 @@ pzv
 pzv
 pzv
 pzv
-hkm
-oXd
+pzv
+kDO
 pfF
-oXd
-hkm
+kDO
+pzv
 pzv
 pzv
 ndc
@@ -250662,13 +250672,13 @@ xRS
 pzv
 pzv
 pzv
-hkm
-oXd
+pzv
+kDO
 ijI
 fNl
 tRJ
-oXd
-hkm
+kDO
+pzv
 pzv
 pzv
 aiP
@@ -251094,13 +251104,13 @@ xRS
 xRS
 pzv
 pzv
-hkm
+pzv
 ijI
 fNl
 fNl
 fNl
 tRJ
-hkm
+pzv
 pzv
 pzv
 kgT
@@ -251525,15 +251535,15 @@ xRS
 xRS
 xRS
 xRS
-hkm
-oXd
+pzv
+kDO
 dPq
 fNl
 sde
 fNl
 tRJ
-oXd
-hkm
+kDO
+pzv
 pzv
 pzv
 pzv
@@ -251550,7 +251560,7 @@ pzv
 pzv
 pzv
 pzv
-aOb
+kgT
 pzv
 pzv
 wuB
@@ -251965,7 +251975,7 @@ hXf
 fBL
 fNl
 dRK
-hkm
+pzv
 pzv
 pzv
 pzv
@@ -251982,10 +251992,10 @@ kgT
 kgT
 pzv
 pzv
-hkm
-aOb
-aOb
-aOb
+pzv
+kgT
+kgT
+kgT
 wuB
 bJl
 boy
@@ -252397,27 +252407,27 @@ fBI
 iyG
 fNl
 dRK
-hkm
-hkm
-hkm
+pzv
+pzv
+pzv
 hXf
-hkm
-hkm
-hkm
+pzv
+pzv
+pzv
 hXf
-hkm
-hkm
-hkm
+pzv
+pzv
+pzv
 hXf
-hkm
-hkm
-hkm
+pzv
+pzv
+pzv
 hXf
-hkm
-hkm
-hkm
+pzv
+pzv
+pzv
 hXf
-aOb
+kgT
 wuB
 mvv
 wuY
@@ -362127,7 +362137,7 @@ iXq
 iXq
 iXq
 iXq
-xGW
+rfx
 auT
 mwE
 aOn
@@ -362559,7 +362569,7 @@ iXq
 iXq
 iXq
 iXq
-xGW
+vHK
 kJz
 hOh
 jqq
@@ -362991,7 +363001,7 @@ iXq
 iXq
 iXq
 iXq
-rfx
+vHK
 lDc
 vHK
 vHK
