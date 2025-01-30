@@ -16,6 +16,9 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	resistance_flags = FIRE_PROOF
 
+	grid_height = 32
+	grid_width = 32
+
 /obj/item/roguekey/Initialize()
 	. = ..()
 	if(lockid)
@@ -41,6 +44,9 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
 	destroy_sound = 'sound/items/pickbreak.ogg'
 	resistance_flags = FIRE_PROOF
+
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/roguekey/lord
 	name = "master key"
@@ -225,11 +231,48 @@
 	icon_state = "brownkey"
 	lockid = "roomvi"
 
-/obj/item/roguekey/roomhunt
-	name = "room HUNT key"
-	desc = "This is the HUNT key!"
+/obj/item/roguekey/roomvii
+	name = "room VII key"
+	desc = "The key to the seventh room."
 	icon_state = "brownkey"
-	lockid = "roomhunt"
+	lockid = "roomvii"
+
+
+/obj/item/roguekey/roomviii
+	name = "room VIII key"
+	desc = "The key to the eight room."
+	icon_state = "brownkey"
+	lockid = "roomviii"
+
+/obj/item/roguekey/fancyroomi
+	name = "luxury room I key"
+	desc = "The key to the first luxury room."
+	icon_state = "hornkey"
+	lockid = "fancyi"
+
+/obj/item/roguekey/fancyroomii
+	name = "luxury room II key"
+	desc = "The key to the second luxury room."
+	icon_state = "hornkey"
+	lockid = "fancyii"
+
+/obj/item/roguekey/fancyroomiii
+	name = "luxury room III key"
+	desc = "The key to the third luxury room."
+	icon_state = "hornkey"
+	lockid = "fancyiii"
+
+/obj/item/roguekey/fancyroomiv
+	name = "luxury room IV key"
+	desc = "The key to the fourth luxury room."
+	icon_state = "hornkey"
+	lockid = "fancyiv"
+
+/obj/item/roguekey/fancyroomv
+	name = "luxury room V key"
+	desc = "The key to the fifth luxury room."
+	icon_state = "hornkey"
+	lockid = "fancyv"
 
 //vampire mansion//
 /obj/item/roguekey/vampire
@@ -467,11 +510,6 @@
 	name = "stable ii key"
 	icon_state = "brownkey"
 	lockid = "stable2"
-
-/obj/item/roguekey/apartments/stable3
-	name = "stable iii key"
-	icon_state = "brownkey"
-	lockid = "stable3"
 
 //custom key
 /obj/item/roguekey/custom

@@ -40,6 +40,10 @@
 	if(drainage)
 		START_PROCESSING(SSobj, src)
 
+/obj/item/natural/worms/leech/update_icon()
+	. = ..()
+	icon_state = initial(icon_state)
+
 /obj/item/natural/worms/leech/process()
 	if(!drainage && !is_embedded)
 		return PROCESS_KILL

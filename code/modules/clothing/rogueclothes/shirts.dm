@@ -14,6 +14,9 @@
 	boobed = TRUE
 	sewrepair = TRUE
 	flags_inv = HIDEBOOB
+	
+	grid_width = 64
+	grid_height = 64
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt
 	name = "shirt"
@@ -92,6 +95,108 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
+/obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
+	name = "tinker suit"
+	desc = "Typical fashion of the best engineers."
+	icon_state = "artishirt"
+
+/obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
+	name = "low cut tunic"
+	desc = "A tunic exposing much of the shoulders and neck. Shoulders?! How scandalous..."
+	icon_state = "lowcut"
+
+/obj/item/clothing/suit/roguetown/shirt/shadowshirt
+	name = "silk shirt"
+	desc = "A sleeveless shirt woven of glossy material."
+	icon_state = "shadowshirt"
+	item_state = "shadowshirt"
+	r_sleeve_status = SLEEVE_TORN
+	l_sleeve_status = SLEEVE_TORN
+	body_parts_covered = CHEST|VITALS
+
+/obj/item/clothing/suit/roguetown/shirt/apothshirt
+	name = "apothecary shirt"
+	desc = "When trudging through late-autumn forests, one needs to keep warm."
+	icon_state = "apothshirt"
+	item_state = "apothshirt"
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	body_parts_covered = CHEST|VITALS
+
+/obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat
+	name = "fancy coat"
+	desc = "A fancy tunic and coat combo. How elegant."
+	icon_state = "noblecoat"
+	sleevetype = "noblecoat"
+	color = CLOTHING_WHITE
+	boobed = TRUE
+
+/obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
+	name = "tinker suit"
+	desc = "Typical fashion of the best engineers."
+	icon_state = "artishirt"
+
+//Royal clothing:
+//................ Royal Dress (Ball Gown)............... //
+/obj/item/clothing/suit/roguetown/shirt/dress/royal
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	icon = 'icons/roguetown/clothing/shirts_royalty.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
+	name = "royal gown"
+	desc = "An elaborate ball gown, a favoured fashion of queens and elevated nobility in Enigma."
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	icon_state = "royaldress"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts_royalty.dmi'
+	boobed = TRUE
+	detail_tag = "_detail"
+	detail_color = CLOTHING_BLACK
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+
+/obj/item/clothing/suit/roguetown/shirt/dress/royal/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/shirt/dress/royal/lordcolor(primary,secondary)
+	detail_color = primary
+	update_icon()
+
+/obj/item/clothing/suit/roguetown/shirt/dress/royal/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	else
+		GLOB.lordcolor += src
+
+/obj/item/clothing/suit/roguetown/shirt/dress/royal/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
+
+//................ Princess Dress ............... //
+/obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	name = "pristine dress"
+	desc = "A flowy, intricate dress made by the finest tailors in the land for the monarch's children."
+	icon_state = "princess"
+	boobed = TRUE
+	detail_color = CLOTHING_BLUE
+
+//................ Prince Shirt   ............... //
+/obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	name = "gilded dress shirt"
+	desc = "A gold-embroidered dress shirt specially tailored for the monarch's children."
+	icon_state = "prince"
+	boobed = TRUE
+	detail_color = CLOTHING_MAJENTA
+
+// End royal clothes
+
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"
 
@@ -158,6 +263,22 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/shirt/robe/archivist
+	name = "archivist's robe"
+	desc = "Robes belonging to seekers of knowledge."
+	icon_state = "archivist"
+	icon = 'icons/roguetown/clothing/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	boobed = TRUE
+	flags_inv = HIDECROTCH|HIDEBOOB
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	allowed_sex = list(MALE, FEMALE)
+	color = null
+	sellprice = 100
 
 /obj/item/clothing/suit/roguetown/shirt/tunic
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR

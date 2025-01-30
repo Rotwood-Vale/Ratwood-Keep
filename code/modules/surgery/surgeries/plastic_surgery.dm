@@ -24,13 +24,12 @@
 	skill_median = SKILL_LEVEL_EXPERT
 
 /datum/surgery_step/reshape_face/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	user.visible_message(span_notice("[user] begins to alter [target]'s appearance."), span_notice("I begin to alter [target]'s appearance..."))
 	display_results(user, target, span_notice("I begin to alter [target]'s appearance..."),
 		span_notice("[user] begins to alter [target]'s appearance."),
 		span_notice("[user] begins to make an incision in [target]'s face."))
 	return TRUE
 
-/datum/surgery_step/reshape_face/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
+/datum/surgery_step/reshape_face/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent)
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart?.has_wound(/datum/wound/facial/disfigurement))
 		display_results(user, target, span_notice("I successfully restore [target]'s appearance."),
@@ -39,9 +38,7 @@
 		bodypart.remove_wound(/datum/wound/facial/disfigurement)
 	else
 		var/list/names = list("Custom...")
-		if(ishuman(target))
-			var/mob/living/carbon/human/human_target
-			names += human_target.dna.species.random_name(target.gender, TRUE)
+		names += target.dna.species.random_name(target.gender, TRUE)
 		var/chosen_name = input(user, "Choose a new name to assign.", "Plastic Surgery") as null|anything in names
 		if(chosen_name == "Custom...")
 			chosen_name = input(user, "What name?", "Plastic surgery")

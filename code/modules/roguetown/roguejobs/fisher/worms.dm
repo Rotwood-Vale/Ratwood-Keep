@@ -33,19 +33,6 @@
 /obj/item/natural/worms/grubs/attack_right(mob/user)
 	return
 
-/obj/item/natural/worms/update_icon()
-	icon_state = "worm[amt]"
-	if(amt > 1)
-		name = "[initial(name)]s"
-	if(amt > 3)
-		name = "[initial(name)]4"
-	if(amt == 3)
-		name = "[initial(name)]3"
-	if(amt == 2)
-		name = "[initial(name)]2"
-	else
-		name = initial(name)
-
 /obj/item/natural/worms/Initialize()
 	. = ..()
 	dir = rand(0,8)

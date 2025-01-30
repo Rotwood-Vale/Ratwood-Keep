@@ -1,3 +1,40 @@
+// Reliquary Box and key - The Box Which contains these
+/obj/structure/reliquarybox
+	name = "Otavan Reliquary"
+	desc = "A foreboding red chest with a intricate lock design. It seems to only fit a very specific key. Choose wisely."
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "chestweird1"
+	anchored = TRUE
+	density = TRUE
+	var/opened = FALSE
+
+/obj/item/roguekey/psydonkey
+	icon_state = "birdkey"
+	name = "Reliquary Key"
+	desc = "The single use key with which to unleash woe. Choose wisely."
+
+/obj/structure/reliquarybox/attackby(obj/item/W, mob/user, params)
+	if(ishuman(user))
+		if(istype(W, /obj/item/roguekey/psydonkey))
+			if(opened)
+				to_chat(user, span_info("The reliquary box has already been opened..."))
+				return
+			qdel(W)
+			to_chat(user, span_info("The reliquary lock takes my key as it opens, I take a moment to ponder what power was delivered to us..."))
+			playsound(loc, 'sound/foley/doors/lock.ogg', 60)
+			to_chat(user,)
+			var/relics = list("Melancholic Crankbox - Antimagic", "Daybreak - Silver Whip")
+			var/relicchoice = input(user, "Choose your tool", "RELICS") as anything in relics
+			switch(relicchoice)
+				if("Melancholic Crankbox - Antimagic")
+					user.put_in_hands(new /obj/item/psydonmusicbox(user), TRUE)
+				if("Daybreak - Silver Whip")
+					user.put_in_hands(new /obj/item/rogueweapon/whip/antique/psywhip(user), TRUE)
+			to_chat(user, span_info("I retrieve the relic, may HE guide my hand."))
+			opened = TRUE
+			icon_state = "chestweird1open"
+			
+
 // Soul Churner - Music box which applies magic resistance to Inquisition members, greatly mood debuffs everyone not a Psydon worshipper.
 /obj/item/psydonmusicbox
 	name = "melancholic crankbox"
@@ -14,7 +51,6 @@
 	obj_flags = CAN_BE_HIT
 	twohands_required = TRUE
 	var/datum/looping_sound/psydonmusicboxsound/soundloop
-
 
 /obj/item/psydonmusicbox/examine(mob/user)
 	. = ..()
