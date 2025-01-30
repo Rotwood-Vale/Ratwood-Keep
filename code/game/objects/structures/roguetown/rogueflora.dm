@@ -299,10 +299,12 @@
 	var/bushtype
 
 /obj/structure/flora/roguegrass/bush/Initialize()
-	if(prob(88))
+	var/area = get_area(src)
+	if(!isintown(area) && prob(88))
 		bushtype = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue=5,
 					/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison=3,
 					/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed=1))
+	
 	loot_replenish()
 	pixel_x += rand(-3,3)
 	return ..()
