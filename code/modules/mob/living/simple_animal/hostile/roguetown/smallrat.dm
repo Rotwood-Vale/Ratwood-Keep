@@ -14,6 +14,8 @@
 	max_integrity = 10
 	sellprice = 0
 	rotprocess = null
+	grid_width = 32
+	grid_height = 32
 
 
 /obj/item/reagent_containers/food/snacks/smallrat/onbite(mob/living/carbon/human/user)
