@@ -84,7 +84,7 @@
 	if(item_flags & IN_STORAGE)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+	var/skill_level = user.mind.get_skill_level(/datum/skill/craft/carpentry)
 	var/planking_time = (45 - (skill_level * 5))
 	if(I.tool_behaviour == TOOL_SAW || I.tool_behaviour == TOOL_IMPROVSAW)
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
@@ -94,7 +94,7 @@
 			if(user.is_holding(src))
 				user.dropItemToGround(src)
 				user.put_in_hands(S)
-			user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+			user.mind.add_sleep_experience(/datum/skill/craft/carpentry, (user.STAINT*0.5))
 			new /obj/effect/decal/cleanable/debris/woody(get_turf(src))
 			qdel(src)
 			return
