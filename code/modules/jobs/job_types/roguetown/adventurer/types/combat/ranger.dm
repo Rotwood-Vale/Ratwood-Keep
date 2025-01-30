@@ -113,7 +113,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			beltl = /obj/item/rogueweapon/mace/cudgel
-			backpack_contents = list(/obj/item/bomb = 4)
+			backpack_contents = list(/obj/item/bomb = 4, /obj/item/rogueweapon/huntingknife = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
