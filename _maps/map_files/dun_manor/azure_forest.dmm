@@ -1857,6 +1857,13 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
+"py" = (
+/obj/structure/fluff/dryingrack,
+/obj/item/needle/thorn,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/shelter/woods)
 "pB" = (
 /obj/structure/spacevine{
 	opacity = 1
@@ -2662,7 +2669,6 @@
 /turf/open/water/sewer,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
 "wd" = (
-/obj/structure/fluff/dryingrack,
 /obj/structure/fluff/walldeco/rpainting/forest{
 	pixel_y = 32
 	},
@@ -5219,6 +5225,10 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/beach/forest)
+"Rw" = (
+/obj/effect/landmark/start/bogguardlate,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors/shelter/woods)
 "Rx" = (
 /turf/open/water/ocean,
 /area/rogue/outdoors/beach/forest)
@@ -47628,7 +47638,7 @@ kp
 vo
 gc
 vo
-Kv
+Rw
 Kv
 XC
 MU
@@ -47785,8 +47795,8 @@ vE
 vE
 oq
 vE
-vo
-vo
+QO
+QO
 vE
 vo
 vo
@@ -70083,7 +70093,7 @@ id
 rj
 rj
 rj
-rj
+Eo
 rj
 rj
 rj
@@ -71810,7 +71820,7 @@ hZ
 rj
 rj
 rj
-rj
+Eo
 rj
 rj
 rj
@@ -72750,7 +72760,7 @@ le
 ds
 rj
 rj
-rj
+Eo
 rj
 rj
 rj
@@ -73535,7 +73545,7 @@ Xz
 hZ
 rj
 rj
-rj
+Eo
 rj
 rj
 rj
@@ -94879,7 +94889,7 @@ rj
 rj
 rj
 ig
-UN
+py
 Su
 dR
 UN
@@ -97390,7 +97400,7 @@ rj
 rj
 rj
 rj
-rj
+Eo
 rj
 rj
 st
