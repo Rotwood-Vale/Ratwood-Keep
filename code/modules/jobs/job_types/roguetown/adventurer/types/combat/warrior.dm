@@ -107,7 +107,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/buckler
 			belt = /obj/item/storage/belt/rogue/leather
-			backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1)
+			backpack_contents = list(/obj/item/flashlight/flare/torch = 1)
 
 		if("Barbarian")
 			to_chat(H, span_warning("You are a brutal warrior who foregoes armor in order to showcase your raw strength. You specialize in unarmed combat and wrestling."))

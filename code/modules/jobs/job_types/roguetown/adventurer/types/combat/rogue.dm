@@ -32,8 +32,8 @@
 			head = /obj/item/clothing/head/roguetown/fedora
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			backpack_contents = list(/obj/item/lockpick)
-			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 4, TRUE)
+			backpack_contents = list(/obj/item/lockpick = 1, /obj/item/rogueweapon/huntingknife = 1)
+			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
@@ -112,7 +112,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
 			head = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -126,7 +126,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			backl = /obj/item/storage/backpack/rogue/satchel
 			cloak = /obj/item/clothing/cloak/half/red
-			backpack_contents = list(/obj/item/lockpick)
+			backpack_contents = list(/obj/item/lockpick = 1)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
