@@ -78,7 +78,7 @@
 
 /datum/supply_pack/rogue/bandit/Knave/smokebomb
 	name = "Smoke bomb"
-	cost = 40
+	cost = 25
 	contains = list(/obj/item/smokebomb)
 /datum/supply_pack/rogue/bandit/Knave/bombpouch
 	name = "Bomb pouch"
