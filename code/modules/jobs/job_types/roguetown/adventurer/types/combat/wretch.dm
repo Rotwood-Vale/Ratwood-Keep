@@ -3,6 +3,7 @@
 	tutorial = "Wretched, vile souls - cast out from society for their sins."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
+	maximum_possible_slots = 5
 	outfit = /datum/outfit/job/roguetown/adventurer/wretch
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_ADVENTURER)
