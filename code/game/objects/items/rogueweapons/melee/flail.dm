@@ -8,7 +8,7 @@
 	sharpness = IS_BLUNT
 	//dropshrink = 0.75
 	wlength = WLENGTH_NORMAL
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/whipsflails
 	anvilrepair = /datum/skill/craft/weaponsmithing
@@ -18,6 +18,8 @@
 	throwforce = 5
 	wdefense = 0
 	minstr = 4
+	grid_width = 32
+	grid_height = 96
 
 /datum/intent/flail/strike
 	name = "strike"
@@ -147,6 +149,8 @@
 	throwforce = 5
 	wdefense = 0
 	minstr = 6
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/rogueweapon/whip/getonmobprop(tag)
 	. = ..()

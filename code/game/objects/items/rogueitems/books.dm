@@ -10,6 +10,8 @@
 	drop_sound = 'sound/foley/dropsound/book_drop.ogg'
 	force = 5
 	associated_skill = /datum/skill/misc/reading
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/book/rogue/getonmobprop(tag)
 	. = ..()
