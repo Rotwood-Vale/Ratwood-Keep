@@ -105,7 +105,7 @@
 
 /datum/special_trait/duelist
 	name = "Ambitious Swordsman"
-	greet_text = span_notice("I've traveled from land to land for months, treaded over countless corpses; challenged tyrants and heroes alike, slain entire retinues and inhumen warbands, yet I still stand. Perhaps a worthy opponent lives gere, on Enigma...? Mmmaybe I could use a little break, though...")
+	greet_text = span_notice("I've traveled from land to land for months, treaded over countless corpses; challenged tyrants and heroes alike, slain entire retinues and inhumen warbands, yet I still stand. Perhaps a worthy opponent lives here, on Enigma...? Mmmaybe I could use a little break, though...")
 	weight = 10
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
