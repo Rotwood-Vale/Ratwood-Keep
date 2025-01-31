@@ -22,15 +22,6 @@
 
 /datum/outfit/job/roguetown/deathknight/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-
 	head = /obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
 	cloak = /obj/item/clothing/cloak/cape/blkknight
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight
@@ -40,17 +31,23 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/platelegs/blk
 	shoes = /obj/item/clothing/shoes/roguetown/armor/steel/blkknight
-
-	H.change_stat("intelligence", 3)
-	H.change_stat("strength", 2)
-	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 2)
-	H.change_stat("speed", -3)
-
-	H.ambushable = FALSE
-
-	var/datum/antagonist/new_antag = new /datum/antagonist/skeleton/knight()
-	H.mind.add_antag_datum(new_antag)
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+		H.change_stat("intelligence", 3)
+		H.change_stat("strength", 2)
+		H.change_stat("endurance", 2)
+		H.change_stat("constitution", 2)
+		H.change_stat("speed", -3)
+		H.ambushable = FALSE
+		var/datum/antagonist/new_antag = new /datum/antagonist/skeleton/knight()
+		H.mind.add_antag_datum(new_antag)
 
 	var/datum/game_mode/chaosmode/C = SSticker.mode
 	C.deathknightspawn = FALSE
