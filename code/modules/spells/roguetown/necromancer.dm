@@ -516,9 +516,9 @@
 		to_chat(user, span_warning("This one is already dead, best reanimate it."))
 		return
 
-	if(!(target in user.minions))
-		to_chat(user, span_warning("This is not one of mine."))
-		return
+	// if(!(target in user.minions))
+	// 	to_chat(user, span_warning("This is not one of mine."))
+	// 	return
 
 	if(!target.client)
 		target.death()
