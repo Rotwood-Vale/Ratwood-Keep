@@ -187,7 +187,8 @@
 			backr = /obj/item/rogueweapon/sword
 			backl = /obj/item/storage/backpack/rogue/satchel/black
 			wrists = /obj/item/clothing/neck/roguetown/psicross/silver
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+			armor = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 			belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/steel
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/under/roguetown/tights/black
