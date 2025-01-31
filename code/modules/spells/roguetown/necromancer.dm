@@ -43,7 +43,6 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	chargedloop = null
-	req_items = list(/obj/item/clothing/suit/roguetown/shirt/robe/necromancer)
 	sound = 'sound/items/beartrap.ogg'
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
