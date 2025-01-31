@@ -1719,6 +1719,17 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/manor)
+"bpt" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/kitchen/rollingpin,
+/obj/structure/roguemachine/stockpile{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town)
 "bpI" = (
 /obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/cobble,
@@ -3262,12 +3273,6 @@
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
-"cDJ" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/turf/closed,
-/area/rogue/indoors/town)
 "cDO" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
@@ -3916,6 +3921,9 @@
 	pixel_x = 32;
 	redstone_id = "steward_shutter"
 	},
+/obj/item/roguekey/archive,
+/obj/item/roguekey/apartments/stable1,
+/obj/item/roguekey/apartments/stable2,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town)
 "ddU" = (
@@ -8317,7 +8325,6 @@
 /obj/structure/bed/rogue/inn/double,
 /obj/structure/fluff/wallclock/r,
 /obj/item/bedsheet/rogue/fabric_double,
-/obj/effect/landmark/start/steward,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
 "gTl" = (
@@ -10145,10 +10152,6 @@
 "ixc" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/under/town/basement/keep)
-"ixA" = (
-/obj/effect/landmark/start/clerk,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town)
 "ixF" = (
 /obj/structure/fluff/walldeco/bigpainting/lake{
 	pixel_x = 0
@@ -12352,12 +12355,6 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/town/basement)
-"ksg" = (
-/obj/structure/closet/crate/roguecloset/dark,
-/obj/item/soap,
-/obj/item/clothing/suit/roguetown/shirt/tunic/white,
-/turf/open/floor/rogue/tile/bath,
-/area/rogue/indoors/town)
 "ksK" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood,
@@ -13578,6 +13575,7 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess,
 /obj/item/clothing/suit/roguetown/armor/silkcoat,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
+/obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
 "liZ" = (
@@ -19832,7 +19830,6 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
 "qhh" = (
-/obj/effect/landmark/start/clerk,
 /obj/structure/roguemachine/atm,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
@@ -19850,13 +19847,14 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
 "qhL" = (
-/obj/structure/mineral_door/wood/donjon{
-	locked = 1;
-	lockid = "steward"
-	},
 /obj/structure/fluff/walldeco/alarm{
 	pixel_y = 0;
 	pixel_x = 32
+	},
+/obj/structure/mineral_door/wood/donjon{
+	locked = 1;
+	lockid = "steward";
+	dir = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
@@ -22622,10 +22620,6 @@
 /obj/item/rope,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement/keep)
-"syB" = (
-/obj/effect/landmark/start/steward,
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town)
 "syG" = (
 /turf/closed/wall/mineral/rogue/wooddark/end{
 	dir = 8
@@ -23075,6 +23069,7 @@
 /obj/machinery/light/rogue/wallfire/candle/blue{
 	pixel_y = -32
 	},
+/obj/item/soap,
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/town)
 "sUf" = (
@@ -25384,13 +25379,6 @@
 	icon_state = "iron_line"
 	},
 /area/rogue/under/cave)
-"uOU" = (
-/obj/structure/chair/wood/rogue/chair3{
-	dir = 8
-	},
-/obj/machinery/light/rogue/wallfire/candle/r,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town)
 "uOV" = (
 /obj/structure/stairs{
 	dir = 8
@@ -29595,6 +29583,10 @@
 /obj/item/reagent_containers/powder/salt,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
+"ylo" = (
+/obj/machinery/light/rogue/wallfire/candle/r,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town)
 "ylz" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/hexstone,
@@ -66277,7 +66269,7 @@ xqr
 fyU
 bPh
 cep
-syB
+cep
 cep
 cep
 qhL
@@ -67532,7 +67524,7 @@ hvn
 xqr
 xqr
 xeP
-dDp
+rjf
 rjf
 rjf
 rjf
@@ -90929,7 +90921,7 @@ dlj
 xmq
 xmq
 tFb
-cDJ
+suJ
 ufL
 xqr
 ouw
@@ -91085,8 +91077,8 @@ ouw
 dlj
 xmq
 xmq
-qgx
-uOU
+ylo
+oeU
 oeU
 ffs
 ouw
@@ -91399,8 +91391,8 @@ qQX
 xGu
 cep
 cep
-apZ
 ody
+bpt
 tgW
 xqr
 ouw
@@ -91555,7 +91547,7 @@ xqr
 qQX
 inI
 cep
-ixA
+cep
 apZ
 apZ
 apZ
@@ -115423,7 +115415,7 @@ wTm
 qAQ
 bPQ
 rag
-ksg
+gmc
 rHW
 ouw
 qhb
