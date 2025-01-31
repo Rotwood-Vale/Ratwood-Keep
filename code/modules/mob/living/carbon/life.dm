@@ -740,6 +740,9 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	if(HAS_TRAIT(src, TRAIT_NOSTAMINA))
 		energy = max_energy
 		return
+	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
+		energy = max_energy
+		return
 	if(energy >= max_energy)
 		return
 	if(nutrition <= 0 && !HAS_TRAIT(src, TRAIT_NOHUNGER))
@@ -789,8 +792,8 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 
 	var halfcost = round(regenround / 2) // On testing, I think having it drain from one source first and then the other causes it to drain WAY TOO FAST
 
-	var nutritioncost = min(halfcost, nutrition) // Makes it so it doesn't drain more than we have
-	var hydrationcost = min(halfcost, hydration) // Makes it so it doesn't drain more than we have
+	var nutritioncost = round(min(halfcost, nutrition) * 0.67) // Makes it so it doesn't drain more than we have
+	var hydrationcost = round(min(halfcost, hydration) * 0.67) // Makes it so it doesn't drain more than we have
 
 	var splitcost = nutritioncost + hydrationcost // So we split the cost, add them together and that is the pool we draw energy from.
 
