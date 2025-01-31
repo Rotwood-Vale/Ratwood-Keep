@@ -183,7 +183,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/astrata
 	name = "amulet of Astrata"
-	desc = ""
+	desc = "A golden medallion, warm to the touch even in the dead of night. The sigil of the Queen of the Gods resembles the Psycross of her Father, and symbolizes her inheritance of His will. Blessed be Astrata, whose light banishes shadow and whose law shapes the world."
 	icon_state = "astrata"
 
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata
@@ -193,46 +193,48 @@
 
 /obj/item/clothing/neck/roguetown/psicross/noc
 	name = "amulet of Noc"
-	desc = ""
+	desc = "A pale silver moon, shimmering like starlight. To walk the Mentor's path is to open oneself to the mysteries of the cosmos, and seek the truth without hesitation. This amulet stares back at you, as if awaiting a question yet unasked."
 	icon_state = "noc"
 
 /obj/item/clothing/neck/roguetown/psicross/dendor
 	name = "amulet of Dendor"
-	desc = ""
+	desc = "A crude, twisted effigy of bone, root, and sinew. A reminder that these cobbled streets you walk are not truly of Dendor, lest you forget. Your heart longs for the shaded canopies of his domain, and to shed the pretenses of this grave mistake: civilization."
 	icon_state = "dendor"
 
 /obj/item/clothing/neck/roguetown/psicross/necra
 	name = "amulet of Necra"
-	desc = ""
+	desc = "The mark of Necra, the Undermaiden, who carries souls to their final rest. To wear it is to walk beside the shroud between life and death, and to ease the passage of the dying. What comes next is unknown - even to you - though you are certain Necra will judge them unerringly."
 	icon_state = "necra"
 
 /obj/item/clothing/neck/roguetown/psicross/pestra
 	name = "amulet of Pestra"
-	desc = ""
+	desc = "A symbol of mercy and selflessness, of Pestra, Our Lady in Agony. In wearing it, you vow to emulate her self-sacrifice: for as she saved Astrata, so too must you save Astrata's people. For without your wisdom - and her guidance - this world will end."
 	icon_state = "pestra"
 
 /obj/item/clothing/neck/roguetown/psicross/ravox
 	name = "amulet of Ravox"
-	desc = ""
+	desc = "A steel pendant - weathered by age - for the god of war and justice bears no gilded ornaments, only the steel and sweat of battle. Ravox's disciples forge these amulets from the blades of heroes slain in combat; you can feel the weight of their expectations hanging around your neck."
 	icon_state = "ravox"
 
 /obj/item/clothing/neck/roguetown/psicross/malum
 	name = "amulet of Malum"
 	icon_state = "malum"
-	desc = ""
+	desc = "An anvil inlaid with gold, each mark of Malum is a masterwork in earnest. He crafts wonders for gods and men alike, yet seeks neither praise nor devotion - only the perfection of his art. There is virtue in dedication, labor, and toil, for they are the fires that spur the forge of Astrata's civilization."
 	
 /obj/item/clothing/neck/roguetown/psicross/eora
 	name = "amulet of Eora"
-	desc = ""
+	desc = "A heart, for Eora so loved the world she taught us to love ourselves. Wearing it is to feel the warmth of a lover's embrace, and to carry the weight of a bond that even death cannot sever. In showing kindness, one creates a world - scoured as it is with evil and rot - worth saving."
 	icon_state = "eora"
 
 /obj/item/clothing/neck/roguetown/psicross/wood
 	name = "wooden psycross"
+	desc = "So zealous are PSYDON's followers that they will carve his symbol into everything they can reach, even wood, lest their descendants forget their covenant: to make war eternal against the Archenemy, Zizo."
 	icon_state = "psicrossw"
 	sellprice = 0
 
 /obj/item/clothing/neck/roguetown/psicross/silver
 	name = "silver psycross"
+	desc = "Make no mistake, son of PSYDON, this amulet is as valuable as any blade in your crusade. Inhumen monsters and cultists shrink at the sight of silver, for it is the All-Father's blood made manifest. So hoist it high, scream his name, and bathe this world in blood so that it might be redeemed."
 	icon_state = "psicrossiron"
 	sellprice = 50
 
@@ -286,7 +288,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden psycross"
-	desc = ""
+	desc = "A golden cross of PSYDON, who lives on in his daughter Astrata and her nine siblings. The Ten carry His will, yet His followers understand that their virtues stem from one single source, and that they must prepare the world for His inevitable return."
 	icon_state = "psicrossg"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
