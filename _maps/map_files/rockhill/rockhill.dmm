@@ -21895,14 +21895,6 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
-"lMb" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
-/obj/structure/glowshroom{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/outdoors/druidgrove)
 "lMu" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner{
 	dir = 1
@@ -27930,14 +27922,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
-"oTQ" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
-/obj/structure/glowshroom{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/outdoors/druidgrove)
 "oTX" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/dirt,
@@ -250327,7 +250311,7 @@ kua
 gkv
 wVy
 ekG
-oTQ
+cwA
 xdh
 uVs
 iiy
@@ -358754,7 +358738,7 @@ erZ
 jzC
 gqM
 gqM
-lMb
+cwA
 vpR
 xdh
 xdh
@@ -362210,7 +362194,7 @@ erZ
 jzC
 gqM
 gqM
-lMb
+cwA
 vpR
 xdh
 xdh
