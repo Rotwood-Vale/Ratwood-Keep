@@ -539,6 +539,8 @@
 	result = /obj/item/boulder
 	reqs = list(/obj/item/natural/stone = 5)
 	always_available = TRUE
+	
+//Bombs
 
 /datum/crafting_recipe/roguetown/smokebombefficient
 	name = "Smoke bomb (Ash Syrum)"
