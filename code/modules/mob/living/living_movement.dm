@@ -53,7 +53,7 @@
 		if(MOVE_INTENT_SNEAK)
 			mod = 6
 
-	var/spdchange = -(STASPD * 0.2 - 2)
+	var/spdchange = -(STASPD * 0.1 - 1)
 	mod = mod + spdchange
 	//maximum speed is achieved at 15spd, everything else results in insanity
 	add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
