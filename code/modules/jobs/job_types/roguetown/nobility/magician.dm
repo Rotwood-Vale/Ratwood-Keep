@@ -9,7 +9,7 @@
 
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
-	spells = list(/obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/invoked/projectile/fireballgreater, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+	spells = list(/obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	display_order = JDO_MAGICIAN
 	tutorial = "Your creed is one dedicated to the conquering of the arcane arts and the constant thrill of knowledge. \
 		You owe your life to the Lord, for it was his coin that allowed you to continue your studies in these dark times. \
@@ -26,6 +26,7 @@
 /datum/outfit/job/roguetown/magician/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/clothing/neck/roguetown/talkstone
+	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/magos
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -42,12 +43,12 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
@@ -56,7 +57,7 @@
 		H.change_stat("strength", -1)
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 4)
-		H.mind.adjust_spellpoints(8)
+		H.mind.adjust_spellpoints(17)
 		if(H.age == AGE_OLD) //old wizards are wise and experienced they should not get arcane 1 for being old
 			belt = /obj/item/storage/belt/rogue/leather/plaquegold //golden belt to show how valuable they are to the duke
 			H.change_stat("speed", -1)

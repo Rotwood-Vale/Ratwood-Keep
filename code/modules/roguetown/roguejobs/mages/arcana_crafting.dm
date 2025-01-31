@@ -39,7 +39,7 @@
 	result = /obj/item/clothing/gloves/roguetown/nomagic
 	reqs = list(/obj/item/clothing/gloves/roguetown/leather = 1,
 				/obj/item/roguegem = 1,
-				/obj/item/natural/melded/t2 = 1)
+				/obj/item/natural/melded/t3 = 1)
 	skill_level = 3
 
 /datum/crafting_recipe/roguetown/arcana/temporalhourglass
@@ -69,6 +69,13 @@
 /datum/crafting_recipe/roguetown/arcana/binding
 	name = "binding shackles"
 	result = /obj/item/mimictrinket
-	reqs = list(/obj/item/natural/wood/plank = 2,
+	reqs = list(/obj/item/rope/chain = 2,
 				/obj/item/natural/melded/t2 = 1)
 	skill_level = 2
+
+/datum/crafting_recipe/roguetown/arcana/forge
+	name = "infernal forge"
+	result = /obj/machinery/light/rogue/forge/arcane
+	reqs = list(/obj/item/natural/moltencore = 1,
+				/obj/item/natural/stone = 4)
+	skill_level = 3

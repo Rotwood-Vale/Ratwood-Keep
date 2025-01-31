@@ -6,6 +6,122 @@ Or during making lesser raise undead, it would try inheriting from normal raise 
 Please whenever possible, make each spell its own procholder, and do *not* have them inherit from another completed spell. Lest you bugger shit up.
 ~Neri. */
 
+
+/* MAGE GAMEPLAY LOOP NOTES:
+The amount of spellpoints mages has veries fairly significantly.
+Highly dependant on the mage's book quality for total amount, multiplied by a learning modifier dependant on arcana skill and reading as well as int.
+That said, mage apprentices for the most part, start off with 3 (6 if counting the first night's rest) spell points.
+Court magos has a total of 17 points, To allow for picking of their 'strongest' spell, between greater fireball, meteor, and sundering lightning.
+Theoretically someone could get 12 spell points to get one of those spells, in 4 nights, but odds are, it's unlikely.
+Unless of course, they went heavy into the gameplay loop, and got a better book. And even then, it's likely only feasible for apprentices given modifiers.
+*/
+//A spell to choose new spells, upon spawning or gaining levels
+/obj/effect/proc_holder/spell/invoked/learnspell			//Keep Learn spell at the top, so we may peruse the list of spells far easier.
+	name = "Attempt to learn a new spell"
+	desc = "Weave a new spell"
+	school = "transmutation"
+	overlay_state = "book1"
+	chargedrain = 0
+	chargetime = 0
+
+/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
+	. = ..()
+	//list of spells you can learn, it may be good to move this somewhere else eventually
+	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
+	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
+
+	var/list/spell_choices = list(
+		/obj/effect/proc_holder/spell/invoked/projectile/fireballgreater,// 10 cost	combat, AOE heavy single target damage
+		/obj/effect/proc_holder/spell/invoked/meteor_storm,				// 10 cost	combat, LARGE AOE, light damage.
+		/obj/effect/proc_holder/spell/invoked/sundering_lightningm		// 10 cost	combat, upper level AOE hard stunning damage
+		/obj/effect/proc_holder/spell/invoked/projectile/fireball,		// 3 cost	combat, damaging AOE + damages worn/held things
+		/obj/effect/proc_holder/spell/invoked/arcyne_storm,				// 3 cost	combat, light damaging AOE, stall/area denial spell
+		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,	// 3 cost	combat, single target damage, knockdown
+		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,		// 3 cost	combat, burstfire single target damage
+		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,	// 3 cost	combat, single target single shot damage
+		/obj/effect/proc_holder/spell/invoked/projectile/frostbolt,		// 3 cost	combat, single target, single shot lesser damage w/ slow
+		/obj/effect/proc_holder/spell/targeted/lightninglure,			// 3 cost	combat, ranged single target hard stun w/ time requirement.
+		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,		// 3 cost	utility hold spell. Target unable to move, but can fight.
+		/obj/effect/proc_holder/spell/invoked/findfamiliar,				// 3 cost	combat, summon spell.
+		/obj/effect/proc_holder/spell/invoked/push_spell,				// 3 cost	localized AOE knockback spell. Knocksdown/disarms victims
+		/obj/effect/proc_holder/spell/targeted/touch/darkvision,		// 2 cost	utility, dark sight
+		/obj/effect/proc_holder/spell/invoked/haste,					// 2 cost	utility/combatbuff, faster mve speed.
+		/obj/effect/proc_holder/spell/targeted/summonweapon,			// 2 cost	utility/combat, summons a marked weapon to caster.
+		/obj/effect/proc_holder/spell/invoked/mending,					// 2 cost	utility, repairs items.
+		/obj/effect/proc_holder/spell/invoked/message,					// 2 cost	utility, messages anyone you know the name of.
+		/obj/effect/proc_holder/spell/invoked/blade_burst,				// 2 cost	single target damage localized on rndm leg. possible bone break.
+		/obj/effect/proc_holder/spell/invoked/projectile/fetch,			// 2 cost	utility/combat, pulls single target closer
+		/obj/effect/proc_holder/spell/invoked/projectile/repel,			// 2 cost	utility/combat, flings single target away
+		/obj/effect/proc_holder/spell/invoked/forcewall_weak,			// 2 cost	utility/combat, places walls caster can walk through. stall spell.
+		/obj/effect/proc_holder/spell/targeted/touch/nondetection, 		// 1 cost	utility, no scrying your location.
+		/obj/effect/proc_holder/spell/invoked/featherfall,				// 1 cost	utility, no fall damage from 1 zlevel drop
+		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,	// free for all mage roles.
+	)
+
+	//Patron Spelllists
+	var/list/spell_choices_noc = list(
+		/obj/effect/proc_holder/spell/invoked/mageblindness,  // 2cost
+		/obj/effect/proc_holder/spell/invoked/mageinvisibility,
+	)
+
+	var/list/spell_choices_graggar = list(
+
+	)
+
+	var/list/spell_choices_matthios = list()
+
+	var/list/spell_choices_zizo = list(
+		/obj/effect/proc_holder/spell/invoked/strengthen_undead,// 4 cost
+		/obj/effect/proc_holder/spell/invoked/projectile/sickness,// 3 cost
+		/obj/effect/proc_holder/spell/invoked/eyebite,// 3 cost
+	)
+
+	if(user.patron.type == /datum/patron/divine/noc)
+		spell_choices.Add(spell_choices_noc)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/graggar)
+		spell_choices.Add(spell_choices_graggar)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/matthios)
+		spell_choices.Add(spell_choices_matthios)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/zizo)
+		spell_choices.Add(spell_choices_zizo)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
+	var/obj/effect/proc_holder/spell/item = choices[choice]
+	if(!item)
+		return     // user canceled;
+	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
+		return
+	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
+		if(knownspell.type == item.type)
+			to_chat(user,span_warning("You already know this one!"))
+			return	//already know the spell
+	if(item.cost > user.mind.spell_points - user.mind.used_spell_points)
+		to_chat(user,span_warning("You do not have enough experience to create a new spell."))
+		return		// not enough spell points
+	else
+		user.mind.used_spell_points += item.cost
+		user.mind.AddSpell(new item)
+
+
+
+
+
+
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "Bolt of Lightning"
 	desc = "Emit a bolt of lightning that burns and stuns a target."
@@ -236,7 +352,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 10	//Court mage starts with this, If they want a /second/ they can pay the massive price for it.
+	cost = 10
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/great
@@ -399,14 +515,15 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	active = FALSE
 	releasedrain = 7
 	chargedrain = 0
-	chargetime = 0
+	chargetime = 7
+	charge_max = 8 SECONDS
 	warnie = "spellwarning"
 	overlay_state = "fetch"
 	no_early_release = TRUE
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 1
+	cost = 2
 	xp_gain = TRUE
 
 /obj/projectile/magic/repel
@@ -604,9 +721,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 
 
 /obj/item/melee/touch_attack/prestidigitation/proc/gather_thing(atom/target, mob/living/carbon/human/user)
-	// adjusted from /obj/item/soap in clown_items.dm, some duplication unfortunately (needed for flavor)
 
-	// let's adjust the clean speed based on our skill level
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	gatherspeed = initial(gatherspeed) - (skill_level * 3) // 3 cleanspeed per skill level, from 35 down to a maximum of 17 (pretty quick)
 	var/turf/Turf = get_turf(target)
@@ -630,99 +745,6 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "wisp"
-
-//A spell to choose new spells, upon spawning or gaining levels
-/obj/effect/proc_holder/spell/invoked/learnspell
-	name = "Attempt to learn a new spell"
-	desc = "Weave a new spell"
-	school = "transmutation"
-	overlay_state = "book1"
-	chargedrain = 0
-	chargetime = 0
-
-/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
-	. = ..()
-	//list of spells you can learn, it may be good to move this somewhere else eventually
-	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
-	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
-
-	var/list/spell_choices = list(
-		/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
-		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,
-		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
-		/obj/effect/proc_holder/spell/invoked/findfamiliar,
-		/obj/effect/proc_holder/spell/invoked/push_spell,
-		/obj/effect/proc_holder/spell/targeted/touch/darkvision,// 2 cost
-		/obj/effect/proc_holder/spell/invoked/haste,
-		/obj/effect/proc_holder/spell/invoked/message,
-		/obj/effect/proc_holder/spell/invoked/blade_burst,
-		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
-		/obj/effect/proc_holder/spell/targeted/touch/nondetection, // 1 cost
-		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
-		/obj/effect/proc_holder/spell/invoked/featherfall,
-		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
-	)
-
-	//Patron Spelllists
-	var/list/spell_choices_noc = list(
-		/obj/effect/proc_holder/spell/invoked/mageblindness,  // 2cost
-		/obj/effect/proc_holder/spell/invoked/mageinvisibility,
-	)
-
-	var/list/spell_choices_graggar = list(
-
-	)
-
-	var/list/spell_choices_matthios = list()
-
-	var/list/spell_choices_zizo = list(
-		/obj/effect/proc_holder/spell/invoked/strengthen_undead,// 4 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/sickness,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/eyebite,// 3 cost
-	)
-
-	if(user.patron.type == /datum/patron/divine/noc)
-		spell_choices.Add(spell_choices_noc)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/inhumen/graggar)
-		spell_choices.Add(spell_choices_graggar)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/inhumen/matthios)
-		spell_choices.Add(spell_choices_matthios)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/zizo)
-		spell_choices.Add(spell_choices_zizo)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
-	var/obj/effect/proc_holder/spell/item = choices[choice]
-	if(!item)
-		return     // user canceled;
-	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
-		return
-	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
-		if(knownspell.type == item.type)
-			to_chat(user,span_warning("You already know this one!"))
-			return	//already know the spell
-	if(item.cost > user.mind.spell_points - user.mind.used_spell_points)
-		to_chat(user,span_warning("You do not have enough experience to create a new spell."))
-		return		// not enough spell points
-	else
-		user.mind.used_spell_points += item.cost
-		user.mind.AddSpell(new item)
 
 //forcewall
 /obj/effect/proc_holder/spell/invoked/forcewall_weak
@@ -764,7 +786,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	climbable = TRUE
 	climb_time = 0
-	var/timeleft = 10 SECONDS
+	var/timeleft = 20 SECONDS
 
 /obj/structure/forcefield_weak/Initialize()
 	. = ..()
@@ -1268,7 +1290,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
-	cost = 1
+	cost = 3
 
 	xp_gain = TRUE
 	miracle = FALSE
@@ -1326,7 +1348,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	sound = 'sound/magic/whiteflame.ogg'
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
-	cost = 2 // might even deserve a cost of 3
+	cost = 3 // might even deserve a cost of 3
 
 	xp_gain = TRUE
 	miracle = FALSE
@@ -1373,7 +1395,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	sound = 'sound/magic/whiteflame.ogg'
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 1
+	cost = 2
 
 	xp_gain = TRUE
 	miracle = FALSE
@@ -1459,7 +1481,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 /obj/effect/proc_holder/spell/invoked/meteor_storm
 	name = "Meteor storm"
 	desc = "Summons forth dangerous meteors from the sky to scatter and smash foes."
-	cost = 8
+	cost = 10
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 50
@@ -1640,7 +1662,7 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 /obj/effect/proc_holder/spell/invoked/sundering_lightning
 	name = "Sundering Lightning"
 	desc = "Summons forth dangerous rapid lightning strikes."
-	cost = 8
+	cost = 10
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 50

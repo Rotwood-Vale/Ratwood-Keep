@@ -1,6 +1,8 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/Initialize()
 	. = ..()
 	ADD_TRAIT(src,TRAIT_NOFIRE, "[type]")
+	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/Life()
 	..()
 	if(pulledby)
@@ -394,5 +396,3 @@
 		new spawnTypes(picked)
 		reinforcement_count--
 		continue
-
-

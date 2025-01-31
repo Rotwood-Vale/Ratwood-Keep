@@ -141,7 +141,7 @@
 		return
 	user.mind?.has_studied = TRUE
 	var/mob/living/reader = user
-	var/qualityoflearn = (reader.STAINT*2 + (user.mind?.get_skill_level(/datum/skill/misc/reading)*2) + (user.mind?.get_skill_level(/datum/skill/magic/arcane)*2))
+	var/qualityoflearn = (reader.STAINT*2 + (user.mind?.get_skill_level(/datum/skill/misc/reading)*10) + (user.mind?.get_skill_level(/datum/skill/magic/arcane)*10))
 	if(reader.has_status_effect(/datum/status_effect/buff/weed))
 		to_chat(user, span_smallgreen("Swampweed truly does open one's third eye to the secrets of the arcyne..."))
 		qualityoflearn += 3.5
@@ -166,17 +166,16 @@
 	testing("Quality of learning is [qualityoflearn]")
 	user.visible_message(span_warning("[user] is filled with arcyne energy! You witness [user.p_their()] body convulse and spark brightly."), \
 	span_notice("Noc blesses me. I have been granted knowledge and wisdom beyond my years, this tome's mysteries unveiled one at a time."))
-	qualityoflearn = 100 / qualityoflearn
+	qualityoflearn = qualityoflearn / 100
 	var/spellpoints = (src.bookquality * qualityoflearn)
-	spellpoints = ceil(qualityoflearn)
+	spellpoints = ceil(spellpoints)
 	user.mind.adjust_spellpoints(spellpoints)
 	user.log_message("successfully studied their spellbook and gained spellpoints", LOG_ATTACK, color="orange")
 	onlearned(user)
 	if(prob(55))
-		to_chat(user, span_notice("Confounded arcyne mysteries, what fool wrote this drivel!? I must sleep before I can bring myself to open this damned thing again..."))
-		to_chat(user, span_small("Some of those words I've heard before, but never read. I must meditate on their meaning..."))
+		to_chat(user, span_notice("Confounded arcyne mysteries, my notes has gone in circles. I must sleep before I can bring myself to open this damned thing again..."))
 		user.mind?.add_sleep_experience(/datum/skill/misc/reading, reader.STAINT*10)
-
+	to_chat(user, span_small("My notes include passages I've read before, but don't understand. I must sleep on their meaning..."))
 /obj/item/book/granter/spellbook/onlearned(mob/user)
 	used = FALSE
 

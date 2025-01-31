@@ -34,7 +34,7 @@
 //FAIRY
 /obj/item/natural/fairydust	//T1 mage summon loot
 	name = "fairy dust"
-	icon_state = "wessence"
+	icon_state = "fairy_dust"
 	desc = "A glittering powder from a fae sprite."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
@@ -42,7 +42,7 @@
 
 /obj/item/natural/iridescentscale	//T2 mage summon loot
 	name = "iridescent scales"
-	icon_state = "wessence"
+	icon_state = "iridescent_scale"
 	desc = "Tiny, colorful scales from a glimmerwing, they shine with inate magic"
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
@@ -50,7 +50,7 @@
 
 /obj/item/natural/heartwoodcore	//T3 mage summon loot
 	name = "heartwood core"
-	icon_state = "wessence"
+	icon_state = "heartwood_core"
 	desc = "A piece of enchanted wood imbued with the dryad’s essence. Merely holding it transports one's mind to ancient times."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
@@ -100,7 +100,7 @@
 //Nullmagic
 /obj/item/natural/voidstone
 	name = "voidstone"
-	icon_state = "wessence"
+	icon_state = "voidstone"
 	desc = "An incredibly rare substance torn from creatures immune to magick. This material forsakes Noc's gifts."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
