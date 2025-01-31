@@ -3539,11 +3539,10 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
 "cRY" = (
-/obj/structure/stairs,
 /obj/structure/fluff/railing/border{
-	dir = 8
+	dir = 9
 	},
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/bath)
 "cSc" = (
 /obj/item/clothing/mask/cigarette/rollie/nicotine,
@@ -3765,6 +3764,13 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/cow,
 /turf/open/floor/rogue/hay,
 /area/rogue/indoors/town)
+"dah" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/obj/structure/stairs/d,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/bath)
 "dau" = (
 /obj/structure/stairs{
 	dir = 1
@@ -8169,11 +8175,10 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/under/town/basement/keep)
 "gMV" = (
-/obj/structure/stairs,
 /obj/structure/fluff/railing/border{
-	dir = 4
+	dir = 5
 	},
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/bath)
 "gNm" = (
 /obj/structure/roguewindow/openclose/reinforced{
@@ -11530,7 +11535,10 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
 "jJz" = (
-/obj/structure/stairs,
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/obj/structure/stairs/d,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/bath)
 "jJT" = (
@@ -12445,6 +12453,10 @@
 /obj/structure/bars,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/town/basement)
+"kvP" = (
+/obj/structure/stairs/d,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/bath)
 "kws" = (
 /obj/structure/table/wood,
 /obj/item/paper/scroll,
@@ -34080,8 +34092,8 @@ oGa
 ngC
 ngC
 gOw
-ngC
 aoe
+jJz
 cRY
 kAA
 rZc
@@ -34238,10 +34250,10 @@ ngC
 ngC
 ngC
 ngC
-ngC
-jJz
+kvP
+bLX
 aPv
-pUC
+bLX
 pUC
 pUC
 bUa
@@ -34259,7 +34271,7 @@ fpz
 bUa
 pUC
 pUC
-pUC
+bLX
 jsZ
 lKl
 exi
@@ -34394,8 +34406,8 @@ rkL
 ngC
 ngC
 nDO
-ngC
 bGd
+dah
 gMV
 kAA
 bLX
