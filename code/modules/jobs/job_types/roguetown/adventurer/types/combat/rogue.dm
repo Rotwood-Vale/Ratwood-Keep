@@ -20,12 +20,12 @@
 		if("Treasure Hunter")
 			
 			to_chat(H, span_warning("You are a treasure hunter trained in hunting for valuables. Discern what is treasure or not, your fortune could be hidden anywhere."))
-			mask = /obj/item/clothing/head/roguetown/roguehood
 			pants = /obj/item/clothing/under/roguetown/trou/leather
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 			backl = /obj/item/storage/backpack/rogue/satchel
 			belt = /obj/item/storage/belt/rogue/leather
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backr = /obj/item/rogueweapon/shovel
@@ -46,6 +46,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
+			H.cmode_music = 'sound/music/combat_treasurehunter.ogg'
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 			var/weapons = list("Sabre","Whip")
