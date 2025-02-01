@@ -1413,3 +1413,19 @@
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return
+
+/datum/emote/living/flutter
+	key = "flutter"
+	key_third_person = "flutters!"
+	message = "flutters!"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_flutter()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/moth))
+		set name = "Flutter"
+		set category = "Noises"
+		emote("flutter", intentional = TRUE)
+	else
+		to_chat(usr, span_warning("Your back doesn't do that"))
+		return
