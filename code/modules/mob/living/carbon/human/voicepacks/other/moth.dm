@@ -11,6 +11,8 @@
 			used = pick('sound/vo/moth/moth_scream.ogg')
 		if("scream")
 			used = pick('sound/vo/moth/moth_scream.ogg')
+		if("laugh")
+			used = list('sound/vo/moth/moth_laugh1.ogg')
 	return used
 
 /datum/voicepack/female/moth/get_sound(soundin, modifiers)
@@ -28,4 +30,9 @@
 			used = pick('sound/vo/moth/moth_scream.ogg')
 		if("hmm")
 			used = list('sound/vo/female/elf/hmm (1).ogg','sound/vo/female/elf/hmm (2).ogg')
+		if("laugh")
+			used = list('sound/vo/moth/moth_laugh1.ogg')
+
+	if(!used) //we haven't found a racial specific sound so use generic
+		used = ..(soundin)
 	return used
