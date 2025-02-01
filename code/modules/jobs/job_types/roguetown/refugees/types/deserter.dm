@@ -115,9 +115,10 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			neck = /obj/item/clothing/neck/roguetown/coif
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/gun/ballistic/firearm/handgonne
 			beltl = /obj/item/ammo_holder/bullet/lead
@@ -127,7 +128,7 @@
 			pants = /obj/item/clothing/under/roguetown/grenzelpants
 			shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 			gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
 			H.change_stat("strength", 1)
 			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 1)
