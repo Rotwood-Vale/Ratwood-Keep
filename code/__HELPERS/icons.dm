@@ -790,9 +790,10 @@ world
 		var/list/icon_dimensions = get_icon_dimensions(curicon)
 		var/icon_width = icon_dimensions["width"]
 		var/icon_height = icon_dimensions["height"]
-		if(icon_width != 32 || icon_height != 32)
+		if((icon_width != 32 || icon_height != 32) && (icon_width != 0 && icon_height != 0))
 			flat.Scale(icon_width, icon_height)
-
+		if(icon_width == 0 && icon_height == 0)
+			flat.Scale(32, 32)
 	if(!base_icon_dir)
 		base_icon_dir = curdir
 

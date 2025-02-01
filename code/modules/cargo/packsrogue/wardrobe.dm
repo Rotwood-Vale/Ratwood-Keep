@@ -36,13 +36,29 @@
 					/obj/item/clothing/cloak/raincloak/green,
 				)
 
-/datum/supply_pack/rogue/wardrobe/gloves/fgloves
-	name = "Fingerless Gloves"
-	cost = 5
+/datum/supply_pack/rogue/wardrobe/cloaks/fur
+	name = "Fur Cloaks"
+	cost = 70 //needs to be this high, due to it being salvagable into fur
 	contains = list(
-					/obj/item/clothing/gloves/roguetown/fingerless,
-					/obj/item/clothing/gloves/roguetown/fingerless,
+					/obj/item/clothing/cloak/raincloak/furcloak,
+					/obj/item/clothing/cloak/raincloak/furcloak,
+	)
+
+/datum/supply_pack/rogue/wardrobe/gloves/silk
+	name = "Silk Gloves"
+	cost = 12
+	contains = list(
+					/obj/item/clothing/gloves/roguetown/shadow,
+					/obj/item/clothing/gloves/roguetown/shadow,
 				)
+
+/datum/supply_pack/rogue/wardrobe/gloves/grenzel
+	name = "Grenzelhoftian Gloves"
+	cost = 20
+	contains = list(
+				/obj/item/clothing/gloves/roguetown/grenzelgloves,
+				/obj/item/clothing/gloves/roguetown/grenzelgloves,
+	)
 
 /datum/supply_pack/rogue/wardrobe/hat/witchhat
 	name = "Witch-Hunter's Hats"
@@ -134,7 +150,7 @@
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/formal
-	name = "Formal Silks"
+	name = "Grenzelhoftian Formal Silks"
 	cost = 20
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/grenzelhoft,
@@ -145,8 +161,8 @@
 	name = "Formal Pants"
 	cost = 20
 	contains = list(
-					/obj/item/clothing/under/roguetown/tights/black,
-					/obj/item/clothing/under/roguetown/tights/black,
+					/obj/item/clothing/under/roguetown/shadow,
+					/obj/item/clothing/under/roguetown/shadow,
 				)
 
 /datum/supply_pack/rogue/wardrobe/shoes/noble

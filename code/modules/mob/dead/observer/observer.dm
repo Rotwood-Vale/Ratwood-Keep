@@ -547,6 +547,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	M.key = key
+	if(isnull(client))
+		return
 	client.verbs -= GLOB.ghost_verbs
 //	M.Login()	//wat
 	return
