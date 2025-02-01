@@ -165,6 +165,8 @@
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 1)
+			if (istype (H.patron, /datum/patron/inhumen/zizo))
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
 			cloak = /obj/item/clothing/cloak/cape/crusader
 			gloves = /obj/item/clothing/gloves/roguetown/chain/blk
