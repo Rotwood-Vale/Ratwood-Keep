@@ -10,7 +10,7 @@
 
 	cmode_music = 'sound/music/combat_duelist.ogg'
 
-	maximum_possible_slots = 15
+	maximum_possible_slots = 8
 
 	outfit = /datum/outfit/job/roguetown/refugee/rogue
 
@@ -97,6 +97,8 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			neck = /obj/item/clothing/neck/roguetown/coif
 			pants = /obj/item/clothing/under/roguetown/trou/leather
