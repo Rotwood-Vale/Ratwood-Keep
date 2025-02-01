@@ -8,7 +8,7 @@
 	allowed_races = RACES_ALL_KINDS
 	category_tags = list(CTAG_REFUGEE)
 
-	maximum_possible_slots = 5
+	maximum_possible_slots = 15
 
 	outfit = /datum/outfit/job/roguetown/refugee/merchant
 
