@@ -7,12 +7,21 @@
 /datum/outfit/job/roguetown/manorguard/footman/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
-	if(prob(50))
-		beltl = /obj/item/rogueweapon/sword
-	else
-		beltl = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 	backl = /obj/item/rogueweapon/shield/wood
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/storage/keyring/man_at_arms = 1, /obj/item/natural/cloth = 1)
+
+	var/weapons = list("sword", "axe")
+	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
+
+	switch(weaponschoice)
+
+		if("sword")
+			beltl = /obj/item/rogueweapon/sword
+		if("axe")
+			beltl = /obj/item/rogueweapon/stoneaxe/woodcut/steel
+		else
+			beltl = /obj/item/rogueweapon/sword
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
@@ -30,6 +39,6 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("constitution", 2)
-		H.change_stat("endurance", 1)
+		H.change_stat("endurance", 2)
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
