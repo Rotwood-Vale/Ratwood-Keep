@@ -25,6 +25,7 @@
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = list("blunt" = 75, "slash" = 60, "stab" = 30, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	// MAKE USE "leather"'s SLEEVE
 
 /obj/item/clothing/suit/roguetown/armor/leather/masterwork
 	name = "masterwork leather coat"
@@ -33,6 +34,7 @@
 	max_integrity = 300
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP) //we're adding chop here!
 	armor = list("blunt" = 100, "slash" = 70, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	// MAKE USE "leather"'s SLEEVE
 
 /obj/item/clothing/suit/roguetown/armor/leather/hide
 	name = "hide armor"
@@ -115,7 +117,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/cult_robe
 	name = "cultist robes"
 	desc = " "
-	icon_state = "warlock"
+	icon_state = "warlock" // BROKEN
 	item_state = "warlock"
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT)
@@ -143,3 +145,71 @@
 	sellprice = 40
 	armor_class = ARMOR_CLASS_LIGHT
 
+//Gronn
+/obj/item/clothing/suit/roguetown/armor/leather/chargah
+	name = "Chargah"
+	desc = "A robe made from padded cloth."
+	icon_state = "chargah"
+	item_state = "chargah"
+	armor = list("blunt" = 35, "slash" = 20, "stab" = 10, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT)
+	blocksound = SOFTHIT
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	blade_dulling = DULLING_BASHCHOP
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
+	armor_class = ARMOR_CLASS_LIGHT
+	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/suit/roguetown/armor/leather/hatanga_degel
+	name = "Hatanga Degel"
+	desc = "A soft padded armor made from leathers."
+	icon_state = "hatanga"
+	item_state = "hatanga"
+	armor = list("blunt" = 50, "slash" = 35, "stab" = 40, "bullet" = 30, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	blade_dulling = DULLING_BASHCHOP
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
+	armor_class = ARMOR_CLASS_LIGHT
+	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/suit/roguetown/armor/leather/hatanga_degel_fur
+	name = "Hatanga Degel Fur"
+	desc = "A soft padded armor made from leathers and fur."
+	icon_state = "hatangafur"
+	item_state = "hatangafur"
+	armor = list("blunt" = 55, "slash" = 40, "stab" = 45, "bullet" = 35, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	blade_dulling = DULLING_BASHCHOP
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
+	armor_class = ARMOR_CLASS_LIGHT
+	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/suit/roguetown/armor/leather/Huus_quyaq
+	name = "Huus quyaq"
+	desc = "Armor made of leather plates."
+	icon_state = "huus"
+	item_state = "huus"
+	armor = list("blunt" = 60, "slash" = 50, "stab" = 45, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	slot_flags = ITEM_SLOT_ARMOR
+	blade_dulling = DULLING_BASHCHOP
+	body_parts_covered = CHEST|GROIN|LEGS|VITALS
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
+	armor_class = ARMOR_CLASS_LIGHT
+	salvage_result = /obj/item/natural/hide/cured

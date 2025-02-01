@@ -16,6 +16,8 @@
 	var/list/restricted_jobs
 
 /datum/special_trait/proc/can_apply(mob/living/carbon/human/character)
+	if(isnull(character))
+		return FALSE
 	return TRUE
 
 /datum/special_trait/proc/on_apply(mob/living/carbon/human/character, silent)
