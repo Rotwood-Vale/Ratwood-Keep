@@ -58,7 +58,7 @@
 		body += "  <a href='?_src_=holder;[HrefToken()];modpq=adjust;mob=[REF(M)]'>\[adjust\]</a>     "
 
 		//Triumphs
-		body += "<b>Triumphs:</b> [M.get_triumphs()]."
+		body += "<b>Triumphs:</b> [M.get_triumphs()]"
 		body += "  <a href='?_src_=holder;[HrefToken()];modtriumphs=adjust;mob=[REF(M)]'>\[adjust\]</a>"
 		var/full_version = "Unknown"
 		if(M.client.byond_version)
