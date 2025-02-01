@@ -37,7 +37,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			neck = /obj/item/clothing/neck/roguetown/coif
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
@@ -47,7 +47,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
-			backpack_contents = list(/obj/item/lockpickring/mundane = 1)
+			backpack_contents = list(/obj/item/lockpickring/mundane = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
 			H.change_stat("strength", -1)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 3)
@@ -68,7 +68,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE) // let's them recognize reagents
 			head =/obj/item/clothing/head/roguetown/helmet/bandana
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+			neck = /obj/item/clothing/neck/roguetown/coif
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
@@ -77,6 +77,7 @@
 			backl = /obj/item/storage/backpack/rogue/backpack
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltl = /obj/item/ammo_holder/quiver/bolts
+			beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 			backpack_contents = list(/obj/item/reagent_containers/powder/ozium = 2, /obj/item/reagent_containers/glass/bottle/mercury = 2, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1)
 			H.change_stat("perception", 1) 
 			H.change_stat("endurance", 1)
@@ -97,7 +98,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			neck = /obj/item/clothing/neck/roguetown/coif
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
@@ -108,6 +109,7 @@
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			beltl = /obj/item/ammo_holder/quiver/arrows
+			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)
 			H.change_stat("intelligence", 1)
