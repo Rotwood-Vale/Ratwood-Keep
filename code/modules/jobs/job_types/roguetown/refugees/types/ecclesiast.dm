@@ -155,10 +155,10 @@
 					ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 					H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 				else
-					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 					belt = /obj/item/storage/belt/rogue/leather/plaquegold
