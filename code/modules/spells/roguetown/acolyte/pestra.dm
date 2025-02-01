@@ -233,16 +233,16 @@
     releasedrain = 30
     chargedrain = 0
     chargetime = 0
-    range = 7
+    range = 1
     warnie = "sydwarning"
     movement_interrupt = FALSE
     sound = 'sound/gore/flesh_eat_03.ogg'
     invocation_type = "whisper"
     associated_skill = /datum/skill/magic/holy
     antimagic_allowed = TRUE
-    charge_max = 30 SECONDS
+    charge_max = 60 SECONDS
     miracle = TRUE
-    devotion_cost = 50
+    devotion_cost = 100
     req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 
 /obj/effect/proc_holder/spell/invoked/clean_body/cast(list/targets, mob/living/user)
@@ -258,7 +258,7 @@
             target.cursed_freak_out()
             return FALSE
         target.visible_message(span_info("[target]'s body starts to sweat and becomes hot!"), span_notice("Pestra's hand goes through my body... I feel sick..."))
-        target.reagents.add_reagent(/datum/reagent/water/gross, 15)
+        target.reagents.add_reagent(/datum/reagent/water/gross, 2)
         target.reagents.add_reagent(/datum/reagent/medicine/purify, 5)
 
         addtimer(CALLBACK(src, .proc/clean_body_effect, target), 60 SECONDS, TIMER_CLIENT_TIME)
