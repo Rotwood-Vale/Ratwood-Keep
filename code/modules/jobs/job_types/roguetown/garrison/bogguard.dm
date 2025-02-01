@@ -121,9 +121,8 @@
 	bogger.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	bogger.change_stat("strength", 1)
+	bogger.change_stat("strength", 2)
 	bogger.change_stat("perception", 1)
-	bogger.change_stat("constitution", 1)
 	bogger.change_stat("endurance", 2)
 	bogger.change_stat("speed", 1)
 /datum/outfit/job/roguetown/ranger
@@ -131,7 +130,7 @@
 
 /datum/outfit/job/roguetown/ranger/proc/assign_skills(mob/living/carbon/human/bogger)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
-	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)

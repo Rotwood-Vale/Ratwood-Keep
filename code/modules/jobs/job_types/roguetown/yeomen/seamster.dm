@@ -44,7 +44,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 		H.change_stat("intelligence", 2)
 		H.change_stat("speed", 2)
-		H.change_stat("perception", 1)
+		H.change_stat("perception", 2)
 		H.change_stat("strength", -1)
 		if(isseelie(H))
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_berry)

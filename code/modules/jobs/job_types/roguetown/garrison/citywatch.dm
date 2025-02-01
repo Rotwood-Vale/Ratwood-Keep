@@ -22,7 +22,7 @@
 
 	cmode_music = 'sound/music/combat_guard.ogg'
 
-/datum/outfit/job/roguetown/citywatch/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/citywatch/pre_equip(mob/living/carbon/human/H) // more armored than a bogger, less than a man-at-arms
 	. = ..()
 	head = /obj/item/clothing/head/roguetown/helmet/citywatch
 	neck = /obj/item/clothing/neck/roguetown/gorget
@@ -30,12 +30,10 @@
 	cloak = /obj/item/clothing/cloak/citywatch
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	armor = /obj/item/clothing/suit/roguetown/armor/citywatch
-	gloves = /obj/item/clothing/gloves/roguetown/chain
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	beltl = /obj/item/storage/keyring/town_watch
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/rogueweapon/mace/stunmace
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
 	backl = null
@@ -53,18 +51,18 @@
 	guard.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE) // no, you don't need to climb after antags, no other non archer guard role has 3 climbing.
-	guard.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 	guard.change_stat("strength", 1)
+	guard.change_stat("endurance", 2)
 	guard.change_stat("perception", 2)
 	guard.change_stat("speed", 1)
-// less stat points because of roundstart armor they have, compared to vanguards.
 /mob/proc/haltyell()
 	set name = "HALT!"
 	set category = "Noises"
