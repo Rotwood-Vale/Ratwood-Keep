@@ -33,9 +33,12 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			neck = neck = /obj/item/clothing/neck/roguetown/coif
 			r_hand = /obj/item/soap/bath
+			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			if(H.gender == MALE)
 				pants =	/obj/item/clothing/under/roguetown/loincloth
 				belt =	/obj/item/storage/belt/rogue/leather/cloth
@@ -72,9 +75,10 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			head = /obj/item/clothing/head/roguetown/bardhat //with this hat, they will get all the pussy(or dick depending on preference(or both ig))
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			neck = /obj/item/clothing/neck/roguetown/coif
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
+			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)
 			var/instrument = pick(0,1,2,3,4,5)
 			switch(instrument)
 				if(0)
@@ -95,13 +99,14 @@
 			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 
 		if("Harlequin")
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 			H.cmode_music = 'sound/music/combat_jester.ogg'
 			H.verbs |= /mob/living/carbon/human/proc/ventriloquate
 			H.verbs |= /mob/living/carbon/human/proc/ear_trick
@@ -111,11 +116,13 @@
 			armor = /obj/item/clothing/suit/roguetown/shirt/jester
 			belt = /obj/item/storage/belt/rogue/leather
 			beltl = /obj/item/storage/belt/rogue/pouch
+			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			head = /obj/item/clothing/head/roguetown/jester
 			neck = /obj/item/clothing/neck/roguetown/coif
 			H.change_stat("intelligence", 2)
 			H.change_stat("perception", -1)
 			H.change_stat("speed", 1)
 			ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 
 	H.set_blindness(0)
