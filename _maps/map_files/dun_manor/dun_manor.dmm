@@ -2763,6 +2763,12 @@
 /obj/item/clothing/head/roguetown/necrahood,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
+/obj/item/clothing/cloak/templar/malumite,
+/obj/item/clothing/cloak/templar/malumite,
+/obj/item/clothing/cloak/templar/necran,
+/obj/item/clothing/cloak/templar/necran,
+/obj/item/clothing/cloak/templar/astratan,
+/obj/item/clothing/cloak/templar/astratan,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
 "cip" = (
