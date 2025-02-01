@@ -48,3 +48,7 @@
 		H.change_stat("strength", -1)
 		if(isseelie(H))
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_berry)
+		if(H.age == AGE_MIDDLEAGED)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)

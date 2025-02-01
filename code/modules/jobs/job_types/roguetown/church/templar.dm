@@ -106,7 +106,7 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 				beltr = /obj/item/rogueweapon/sword/long
 		H.change_stat("strength", 3)
-		H.change_stat("perception", 2)
+		H.change_stat("perception", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 2)
 		H.change_stat("endurance", 2)

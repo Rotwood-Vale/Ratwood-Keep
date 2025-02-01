@@ -22,11 +22,12 @@
 	head = /obj/item/clothing/head/roguetown/hatfur
 	cloak = /obj/item/clothing/cloak/apron/blacksmith
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/hammer/iron = 1, /obj/item/rogueweapon/tongs = 1)
+	backpack_contents = list(/obj/item/key/blacksmith = 1)
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltr = /obj/item/key/blacksmith
+	beltl = /obj/item/rogueweapon/tongs
+	beltr = /obj/item/rogueweapon/hammer/iron
 	pants = /obj/item/clothing/under/roguetown/trou
+	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu
 	if(H.gender == MALE)
@@ -45,8 +46,10 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-		if(H.age == AGE_OLD)
+		if(H.age == AGE_MIDDLEAGED)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
 
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 1)

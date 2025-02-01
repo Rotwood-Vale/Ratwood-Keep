@@ -32,10 +32,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.change_stat("strength", 1)
-		H.change_stat("perception", 3)
-		H.change_stat("constitution", -1)
+		H.change_stat("perception", 2)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 2)
 	H.verbs |= /mob/proc/haltyell

@@ -26,13 +26,12 @@
 	cloak = /obj/item/clothing/cloak/apron/waist/brown
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltr = /obj/item/lockpickring/mundane
 	beltl = /obj/item/key/artificer
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/rogueweapon/hammer/steel = 1, /obj/item/rogueweapon/handsaw = 1, /obj/item/rogueweapon/chisel = 1)
 	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-
+	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
@@ -40,20 +39,19 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 
 	H.change_stat("strength", 1)
 	H.change_stat("intelligence", 2)
 	H.change_stat("endurance", 1)
 	H.change_stat("constitution", 1)
-	H.change_stat("speed", -1)

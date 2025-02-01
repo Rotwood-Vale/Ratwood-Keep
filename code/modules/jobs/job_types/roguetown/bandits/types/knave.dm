@@ -36,7 +36,6 @@
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
 	H.change_stat("strength", 1)
-	H.change_stat("constitution", 1)
 	H.change_stat("intelligence", -3)
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 2) //It's all about speed and perception
@@ -63,7 +62,6 @@
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-			H.change_stat("strength", 2)
-			H.change_stat("perception", 1)
+			H.change_stat("perception", 3)
 	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

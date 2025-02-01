@@ -61,9 +61,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("endurance", 2)
-		H.change_stat("constitution", 3)
-		H.change_stat("perception", 3)
-		H.change_stat("intelligence", 3)
+		H.change_stat("constitution", 2)
+		H.change_stat("perception", 2)
+		H.change_stat("intelligence", 2)
 
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return

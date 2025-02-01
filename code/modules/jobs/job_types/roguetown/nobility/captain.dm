@@ -48,7 +48,7 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
-	armor = /obj/item/clothing/suit/roguetown/armor/plate
+	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
@@ -58,17 +58,17 @@
 	beltr = /obj/item/rogueweapon/mace/steel
 	beltl = /obj/item/rogueweapon/sword/sabre
 	cloak = /obj/item/clothing/cloak/stabard/guardhood
-	backl = /obj/item/rogueweapon/shield/tower
+	backl = /obj/item/rogueweapon/shield/tower/metal
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/storage/keyring/captain = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/signal_horn = 1, /obj/item/natural/feather = 1)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -78,12 +78,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.change_stat("strength", 3)
-		H.change_stat("perception", 2)
-		H.change_stat("intelligence", 3)
-		H.change_stat("constitution", 2)
+		H.change_stat("perception", 1)
+		H.change_stat("intelligence", 1)
+		H.change_stat("constitution", 3)
 		H.change_stat("endurance", 2)
-		H.change_stat("speed", 1)
-		H.change_stat("fortune", 2)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	if(H.gender == FEMALE)
 		var/acceptable = list("Tomboy", "Bob", "Curly Short")

@@ -60,7 +60,7 @@
 	if(prob(50))
 		r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 	else
-		r_hand = /obj/item/rogueweapon/mace/goden/steel
+		r_hand = /obj/item/rogueweapon/eaglebeak // can cross polearms with fellow knight.
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
@@ -78,7 +78,6 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.change_stat("strength", 4)
-		H.change_stat("perception", 1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 3)
 		H.change_stat("endurance", 2)

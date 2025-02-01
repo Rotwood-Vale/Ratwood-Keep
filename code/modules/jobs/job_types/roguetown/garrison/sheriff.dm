@@ -22,7 +22,7 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/citywatch
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	armor = /obj/item/clothing/suit/roguetown/armor/citywatch
+	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/sheriff //the drip is so back.
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -55,7 +55,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.change_stat("strength", 3)
 		H.change_stat("perception", 2)
-		H.change_stat("constitution", 2)
+		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.verbs |= /mob/proc/haltyell

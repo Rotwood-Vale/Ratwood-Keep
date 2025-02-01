@@ -66,7 +66,7 @@ Please do not confuse the two.
 		H.change_stat("endurance", 1)
 		H.change_stat("strength", 2)
 		H.change_stat("speed", 2)
-		H.change_stat("perception", 1)
+		H.change_stat("perception", 2)
 
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return

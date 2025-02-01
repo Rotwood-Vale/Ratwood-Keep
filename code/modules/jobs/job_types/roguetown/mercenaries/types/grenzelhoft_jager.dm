@@ -65,7 +65,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)

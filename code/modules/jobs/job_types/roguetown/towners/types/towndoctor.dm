@@ -14,7 +14,7 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/wood
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltr = /obj/item/rogueweapon/huntingknife/idagger
+	beltr = /obj/item/sleepingbag
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1,)
@@ -39,13 +39,13 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		if(H.age == AGE_MIDDLEAGED)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.change_stat("intelligence", 2)
-		H.change_stat("fortune", 2)
+		H.change_stat("perception", 1)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/docheal)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/stable)

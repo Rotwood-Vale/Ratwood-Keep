@@ -55,7 +55,6 @@
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-		H.mind.adjust_spellpoints(4)
 		if(H.age == AGE_OLD)
 			head = /obj/item/clothing/head/roguetown/wizhat/gen
 			H.change_stat("intelligence", 4)
@@ -63,7 +62,9 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", -2)
-		H.change_stat("endurance", 2)
+		H.change_stat("endurance", 1)
 		H.change_stat("speed", 2)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/darkvision)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)

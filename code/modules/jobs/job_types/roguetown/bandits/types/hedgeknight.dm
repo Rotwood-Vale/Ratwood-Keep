@@ -46,8 +46,8 @@
 	H.change_stat("strength", 4)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
-	H.change_stat("intelligence", -1)
-	H.change_stat("speed", -2)
+	H.change_stat("perception", 1)
+	H.change_stat("speed", -1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
