@@ -38,6 +38,7 @@
 		)
 
 /datum/customizer/organ/wings/moth
+	name = "Fluvian Wings"
 	allows_disabling = TRUE
 	default_disabled = FALSE
 	customizer_choices = list(/datum/customizer_choice/organ/wings/moth)
