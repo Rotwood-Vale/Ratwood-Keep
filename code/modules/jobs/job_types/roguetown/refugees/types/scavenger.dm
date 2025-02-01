@@ -26,7 +26,7 @@
 			r_hand = /obj/item/rogueweapon/pick
 			head = /obj/item/clothing/head/roguetown/hatfur
 			neck = /obj/item/clothing/neck/roguetown/coif
-			armor = /obj/item/clothing/suit/roguetown/armor/workervest
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			pants = /obj/item/clothing/under/roguetown/trou
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
@@ -59,7 +59,7 @@
 
 		if("Harvester")
 			head = /obj/item/clothing/head/roguetown/strawhat
-			armor = /obj/item/clothing/suit/roguetown/armor/workervest
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			neck = /obj/item/clothing/neck/roguetown/coif
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
@@ -97,6 +97,7 @@
 			neck = /obj/item/clothing/neck/roguetown/coif
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			belt = /obj/item/storage/belt/rogue/leather
@@ -121,7 +122,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 2)
