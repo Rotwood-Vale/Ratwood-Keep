@@ -32,16 +32,17 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE )
 			H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			pants = /obj/item/clothing/under/roguetown/tights
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
-			armor = /obj/item/clothing/suit/roguetown/shirt/rags
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			neck = /obj/item/clothing/neck/roguetown/coif
 			beltr = /obj/item/rogueweapon/huntingknife
 			backr = /obj/item/rogueweapon/woodstaff
 			backl = /obj/item/storage/backpack/rogue/backpack
-			backpack_contents = list( /obj/item/reagent_containers/glass/bottle = 2, /obj/item/reagent_containers/glass/mortar = 1,  /obj/item/reagent_containers/glass/alembic = 1, /obj/item/thermometer)
+			backpack_contents = list( /obj/item/reagent_containers/glass/bottle = 2, /obj/item/reagent_containers/glass/mortar = 1,  /obj/item/reagent_containers/glass/alembic = 1, /obj/item/thermometer, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 			H.change_stat("intelligence", 2)
 			H.change_stat("fortune", 1)
 			H.change_stat("strength", -1)
@@ -49,12 +50,14 @@
 		if("War Surgeon")
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)	//in line with town physicians and can now revive
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/docheal)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/stable)
@@ -62,6 +65,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/debride)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/cpr)
 			head = /obj/item/clothing/head/roguetown/nightman
+			neck = /obj/item/clothing/neck/roguetown/coif
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 			belt = /obj/item/storage/belt/rogue/leather
@@ -69,7 +73,7 @@
 			pants = /obj/item/clothing/under/roguetown/trou
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 			backl = /obj/item/storage/backpack/rogue/backpack
-			backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1)
+			backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot, /obj/structure/bed/rogue/sleepingbag)
 			H.change_stat("strength", -1)
 			H.change_stat("intelligence", 2)
 			H.change_stat("perception", 1)
