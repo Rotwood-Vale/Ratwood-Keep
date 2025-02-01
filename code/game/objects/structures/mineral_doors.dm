@@ -900,9 +900,9 @@
 	resident_subclass = /datum/subclass/hunter
 	lockid = "towner_hunter"
 
-/obj/structure/mineral_door/wood/towner/miner
-	resident_subclass = /datum/subclass/miner
-	lockid = "towner_miner"
+/obj/structure/mineral_door/wood/towner/mason
+	resident_subclass = /datum/subclass/mason
+	lockid = "towner_mason"
 
 /obj/structure/mineral_door/wood/towner/farmer
 	resident_subclass = /datum/subclass/farmer
@@ -911,10 +911,6 @@
 /obj/structure/mineral_door/wood/towner/towndoctor
 	resident_subclass = /datum/subclass/towndoctor
 	lockid = "towner_towndoctor"
-
-/obj/structure/mineral_door/wood/towner/woodcutter
-	resident_subclass = /datum/subclass/woodcutter
-	lockid = "towner_woodcutter"
 
 /obj/structure/mineral_door/wood/towner/fisher
 	resident_subclass = /datum/subclass/fisher

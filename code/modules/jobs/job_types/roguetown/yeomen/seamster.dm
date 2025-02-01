@@ -23,7 +23,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
-	beltr = /obj/item/rogueweapon/huntingknife/scissors
+	beltr = /obj/item/rogueweapon/huntingknife/scissors/steel
 	beltl = /obj/item/key/seamster
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle = 1)

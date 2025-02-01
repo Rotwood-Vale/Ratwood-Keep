@@ -18,16 +18,13 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	head = /obj/item/clothing/head/roguetown/fisherhat
 	backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/rogueweapon/shovel/small=1,/obj/item/rogueweapon/huntingknife)
-
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		armor = /obj/item/clothing/suit/roguetown/armor/workervest
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-
 	if(H.mind)
-
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
@@ -42,9 +39,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
 
-		H.change_stat("perception", 2)
+		H.change_stat("perception", 1)
 		H.change_stat("constitution", 1)
-		H.change_stat("fortune", 2)
+		H.change_stat("fortune", 1)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 5, TRUE)
 		else
