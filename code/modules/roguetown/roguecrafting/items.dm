@@ -220,7 +220,7 @@
 	skill_level = 1
 
 /datum/crafting_recipe/roguetown/woodbucket
-	name = "wooden bucket"
+	name = "bucket"
 	result = /obj/item/reagent_containers/glass/bucket/wooden
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
@@ -410,7 +410,7 @@
 	sellprice = 8
 
 /datum/crafting_recipe/roguetown/woodspade
-	name = "wood spade"
+	name = "spade"
 	result = /obj/item/rogueweapon/shovel/small
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 			/obj/item/grown/log/tree/stick = 1)
