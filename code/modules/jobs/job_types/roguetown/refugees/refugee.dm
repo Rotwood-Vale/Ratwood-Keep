@@ -6,8 +6,8 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	flag = REFUGEE
 	department_flag = FOREIGNERS
 	faction = "Station"
-	total_positions = 25
-	spawn_positions = 25
+	total_positions = 75
+	spawn_positions = 75
 	allowed_races = RACES_VERY_SHUNNED_UP
 	tutorial = "People of all walks of life have fled the rot, seeking refuge in the many rumored safe havens of the world. \
 				One of these refugees, you have left everything behind to seek a new life in a foreign land."
