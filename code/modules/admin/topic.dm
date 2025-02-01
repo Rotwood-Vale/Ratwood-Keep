@@ -1454,6 +1454,7 @@
 			return
 		var/mob/M = locate(href_list["mob"]) in GLOB.mob_list
 		usr.client.cmd_admin_mod_pq(M, href_list["modpq"])
+		show_player_panel(M)
 
 	else if(href_list["slowquery"])
 		if(!check_rights(R_ADMIN))
