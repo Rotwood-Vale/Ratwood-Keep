@@ -25,7 +25,7 @@
 		if("Prospector")
 			r_hand = /obj/item/rogueweapon/pick
 			head = /obj/item/clothing/head/roguetown/hatfur
-			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+			neck = /obj/item/clothing/neck/roguetown/coif
 			armor = /obj/item/clothing/suit/roguetown/armor/workervest
 			pants = /obj/item/clothing/under/roguetown/trou
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
@@ -34,7 +34,7 @@
 			beltr = /obj/item/rogueweapon/tongs
 			beltl = /obj/item/rogueweapon/hammer/wood
 			backl = /obj/item/storage/backpack/rogue/backpack
-			backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/rogueweapon/chisel = 1)
+			backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/rogueweapon/chisel = 1, /obj/item/storage/belt/rogue/pouch/coins/mid)
 
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE) //pickaxe
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) 
@@ -60,6 +60,7 @@
 		if("Harvester")
 			head = /obj/item/clothing/head/roguetown/strawhat
 			armor = /obj/item/clothing/suit/roguetown/armor/workervest
+			neck = /obj/item/clothing/neck/roguetown/coif
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			r_hand = /obj/item/rogueweapon/thresher
@@ -93,7 +94,7 @@
 			H.change_stat("speed", 1)
 
 		if("Tracker")
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			neck = /obj/item/clothing/neck/roguetown/coif
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 			gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -102,7 +103,7 @@
 			beltr = /obj/item/ammo_holder/quiver/arrows
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			backr = /obj/item/storage/backpack/rogue/satchel
-			backpack_contents = list(/obj/item/flint = 1, /obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1)
+			backpack_contents = list(/obj/item/flint = 1, /obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 			pants = /obj/item/clothing/under/roguetown/tights/random
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 
