@@ -48,8 +48,8 @@
 			belt = /obj/item/storage/belt/rogue/leather/black
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
-			neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/storage/belt/rogue/pouch/coins/rich)
+			neck = /obj/item/clothing/neck/roguetown/coif
 			id = /obj/item/clothing/ring/silver
 			pants = /obj/item/clothing/under/roguetown/tights/purple
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
@@ -79,8 +79,8 @@
 			belt = /obj/item/storage/belt/rogue/leather/black
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
-			neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/storage/belt/rogue/pouch/coins/rich )
+			neck = /obj/item/clothing/neck/roguetown/coif
 			id = /obj/item/clothing/ring/silver
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
 			r_hand = /obj/item/rogueweapon/woodstaff
@@ -101,12 +101,13 @@
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			cloak = /obj/item/clothing/cloak/heartfelt
 			armor = /obj/item/clothing/suit/roguetown/armor/heartfelt/lord
-			neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+			neck = /obj/item/clothing/neck/roguetown/coif
 			beltl = /obj/item/rogueweapon/sword/long/marlin
 			beltr = /obj/item/rogueweapon/huntingknife
 			gloves = /obj/item/clothing/gloves/roguetown/leather/black
 			backl = /obj/item/storage/backpack/rogue/satchel
 			id = /obj/item/clothing/ring/silver
+			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/rich)
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
