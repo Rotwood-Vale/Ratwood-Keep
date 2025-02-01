@@ -46,15 +46,22 @@
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 	miracle = TRUE
 	devotion_cost = 20
+	var/beast_tameable_factions = list("saiga", "chickens", "cows", "goats", "wolfs", "spiders")
 
 /obj/effect/proc_holder/spell/targeted/beasttame/cast(list/targets,mob/user = usr)
 	. = ..()
 	visible_message(span_green("[usr] soothes the beastblood with Dendor's whisper."))
 	var/tamed = FALSE
-	for(var/mob/living/simple_animal/hostile/retaliate/B in oview(2))
-		if(B.aggressive)
-			tamed = TRUE
-		B.aggressive = 0
+	for(var/mob/living/simple_animal/hostile/retaliate/B in get_hearers_in_view(2, usr))
+		if((B.mob_biotypes & MOB_UNDEAD))
+			continue
+		if(faction_check(B.faction, beast_tameable_factions))
+			B.tamed(TRUE)
+			B.aggressive = FALSE
+			if(B.ai_controller)
+				B.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
+				B.ai_controller.clear_blackboard_key(BB_BASIC_MOB_RETALIATE_LIST)
+				B.ai_controller.set_blackboard_key(BB_BASIC_MOB_TAMED, TRUE)
 	return tamed
 
 /obj/effect/proc_holder/spell/targeted/conjure_glowshroom
