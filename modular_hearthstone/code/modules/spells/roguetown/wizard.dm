@@ -1353,7 +1353,7 @@
 
 /obj/effect/proc_holder/spell/targeted/touch/lesserknock
 	name = "Lesser Knock"
-	desc = "A simple spell used to focuse the arcyne into that of an instrument for lockpicking. Can be dispelled by using it on anything that isn't a locked/unlocked door."
+	desc = "A simple spell used to focus the arcyne into an instrument for lockpicking. Can be dispelled by using it on anything that isn't a locked/unlocked door."
 	clothes_req = FALSE
 	drawmessage = "I prepare to perform a minor arcyne incantation."
 	dropmessage = "I release my minor arcyne focus."
