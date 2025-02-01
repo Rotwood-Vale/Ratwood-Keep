@@ -1043,6 +1043,7 @@
 #include "code\modules\admin\verbs\fix_air.dm"
 #include "code\modules\admin\verbs\fps.dm"
 #include "code\modules\admin\verbs\getlogs.dm"
+#include "code\modules\admin\verbs\local_lightsout.dm"
 #include "code\modules\admin\verbs\individual_logging.dm"
 #include "code\modules\admin\verbs\manipulate_organs.dm"
 #include "code\modules\admin\verbs\map_template_loadverb.dm"
