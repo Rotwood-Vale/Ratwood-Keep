@@ -64,7 +64,7 @@
 	guard.change_stat("strength", 1)
 	guard.change_stat("perception", 2)
 	guard.change_stat("speed", 1)
-// less stat points because of roundstart armor they havbe, compared to vanguards.
+// less stat points because of roundstart armor they have, compared to vanguards.
 /mob/proc/haltyell()
 	set name = "HALT!"
 	set category = "Noises"
