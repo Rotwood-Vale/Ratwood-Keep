@@ -32,12 +32,14 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/chaperon
+			neck = /obj/item/clothing/neck/roguetown/coif
 			cloak = /obj/item/clothing/cloak/raincloak/blue
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 			pants = /obj/item/clothing/under/roguetown/tights/sailor
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+			beltl = /obj/item/rogueweapon/huntingknife/idagger
 			id = /obj/item/clothing/ring/gold
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			// TODO: randomized content table
@@ -51,7 +53,7 @@
 		if("Spicer")
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
@@ -60,6 +62,8 @@
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+			neck = /obj/item/clothing/neck/roguetown/coif
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
 			belt = /obj/item/storage/belt/rogue/leather
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
