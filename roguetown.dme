@@ -483,7 +483,6 @@
 #include "code\datums\ai\subtrees\travel_to_point.dm"
 #include "code\datums\ai\targetting_datum\simple_targetting_allow_item.dm"
 #include "code\datums\ai\targetting_datum\simple_targetting_datum.dm"
-#include "code\datums\ai\subtrees\being_a_minion.dm"
 #include "code\datums\brain_damage\brain_trauma.dm"
 #include "code\datums\brain_damage\hypnosis.dm"
 #include "code\datums\brain_damage\imaginary_friend.dm"
