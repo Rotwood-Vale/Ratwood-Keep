@@ -49,7 +49,7 @@
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/storage/belt/rogue/pouch/coins/rich = 1)
-			neck = /obj/item/clothing/neck/roguetown/coif
+			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			id = /obj/item/clothing/ring/silver
 			pants = /obj/item/clothing/under/roguetown/tights/purple
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
@@ -80,7 +80,7 @@
 			beltr = /obj/item/flashlight/flare/torch/lantern
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/storage/belt/rogue/pouch/coins/rich = 1)
-			neck = /obj/item/clothing/neck/roguetown/coif
+			neck = /obj/item/clothing/neck/roguetown/leather
 			id = /obj/item/clothing/ring/silver
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
 			r_hand = /obj/item/rogueweapon/woodstaff
