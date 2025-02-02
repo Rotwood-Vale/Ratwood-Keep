@@ -194,5 +194,5 @@
 /datum/anvil_recipe/roguetown/sewing/goldanklet
 	name = "exotic silk anklets"
 	req_bar =  /obj/item/ingot/gold
-	created_item = list (/obj/item/clothing/shoes/roguetown/goldanklets)
+	created_item = list (/obj/item/clothing/shoes/roguetown/anklets)
 	skill_level = 6
