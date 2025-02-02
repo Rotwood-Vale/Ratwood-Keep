@@ -924,3 +924,24 @@
 				/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 4)
 	skill_level = 6
+
+/datum/crafting_recipe/roguetown/sewing/exoticsilkbra
+	name = "exotic silk bra - (4 silk, 1 gold ring; MASTER)"
+	result = list (/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra)
+	reqs = list(/obj/item/natural/silk = 3,
+				/obj/item/clothing/ring/gold = 1)
+	skill_level = 6
+
+/datum/crafting_recipe/roguetown/sewing/exoticsilkmask
+	name = "exotic silk mask - (1 silk, 1 gold ring; MASTER)"
+	result = list (/obj/item/clothing/mask/rogue/exoticsilkmask)
+	reqs = list(/obj/item/natural/silk = 2,
+				/obj/item/clothing/ring/gold = 1)
+	skill_level = 6
+
+/datum/crafting_recipe/roguetown/sewing/exoticsilkbelt
+	name = "exotic silk belt - (2 silk, 1 gold ring; MASTER)"
+	result = list (/obj/item/storage/belt/rogue/leather/exoticsilkbelt)
+	reqs = list(/obj/item/natural/silk = 3,
+				/obj/item/clothing/ring/gold = 1)
+	skill_level = 6
