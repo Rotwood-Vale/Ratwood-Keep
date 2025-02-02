@@ -66,12 +66,12 @@
 
 	var/list/enemies_list = list() //use shitlist to make new list of potentials
 	for(var/mob/living/living_target in shitlist)
-		if(!living_target.rogue_sneaking) // can't see them
+		if(living_target.rogue_sneaking) // can't see them
 			continue
 		var/extra_chance = (living_mob.health <= living_mob.maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
-		if (!living_mob.npc_detect_sneak(living_target, extra_chance))
+		if(!living_mob.npc_detect_sneak(living_target, extra_chance))
 			continue //still can't see them
-		if(!targetting_datum.can_attack(living_mob, targetted)) //not ok with target strat
+		if(!targetting_datum.can_attack(living_mob, living_target)) //not ok with target strat
 			continue
 		enemies_list += living_target
 

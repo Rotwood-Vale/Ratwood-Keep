@@ -68,6 +68,7 @@
 		gender = FEMALE
 	update_icon()
 	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
+	AddElement(/datum/element/ai_retaliate)
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/AttackingTarget()
