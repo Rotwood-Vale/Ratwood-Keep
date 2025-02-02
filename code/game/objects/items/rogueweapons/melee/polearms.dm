@@ -537,6 +537,5 @@
 	reach = 2
 	penfactor = 30
 	damfactor = 1.2
-	chargetime = 5
 	recovery = 20
 	clickcd = 10
