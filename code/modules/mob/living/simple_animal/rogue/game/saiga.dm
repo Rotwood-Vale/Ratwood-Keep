@@ -104,7 +104,7 @@
 					/obj/item/reagent_containers/food/snacks/fat = 1,
 					/obj/item/natural/hide = 4,
 					/obj/item/natural/bundle/bone/full = 1,
-					/obj/item/clothing/head/roguetown/helmet/leather/saiga = 1,
+					/obj/item/clothing/head/roguetown/helmet/leather/saiga = 1, /obj/item/alch/sinew = 2, /obj/item/alch/bone = 1, /obj/item/alch/viscera = 1
 					)
 	faction = list("saiga")
 	attack_verb_continuous = "headbutts"
@@ -190,7 +190,7 @@
 	if(can_buckle)
 		var/datum/component/riding/D = LoadComponent(/datum/component/riding)
 		D.set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 8), TEXT_SOUTH = list(0, 8), TEXT_EAST = list(-2, 8), TEXT_WEST = list(2, 8)))
-		D.set_vehicle_dir_layer(SOUTH, OBJ_LAYER)
+		D.set_vehicle_dir_layer(SOUTH, MOB_LAYER+0.1)
 		D.set_vehicle_dir_layer(NORTH, OBJ_LAYER)
 		D.set_vehicle_dir_layer(EAST, OBJ_LAYER)
 		D.set_vehicle_dir_layer(WEST, OBJ_LAYER)

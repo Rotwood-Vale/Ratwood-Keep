@@ -15,6 +15,9 @@
 	dropshrink = 0.6
 	resistance_flags = FIRE_PROOF
 
+	grid_height = 32
+	grid_width = 32
+
 	var/mob/current_owner
 	var/last_scry
 

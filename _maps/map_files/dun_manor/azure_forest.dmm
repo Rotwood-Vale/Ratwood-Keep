@@ -991,6 +991,10 @@
 /obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
+"iv" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/beach/forest)
 "iw" = (
 /obj/structure/fluff/railing/fence{
 	dir = 1
@@ -1731,6 +1735,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
+"of" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/beach/forest)
 "oj" = (
 /turf/closed/wall/mineral/rogue/pipe{
 	icon_state = "iron_corner";
@@ -1912,6 +1920,10 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/mountains)
+"pR" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods)
 "pS" = (
 /obj/structure/closet/crate/chest/crate,
 /obj/effect/spawner/lootdrop/roguetown/sewers,
@@ -5367,6 +5379,10 @@
 "SO" = (
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/swamp,
+/area/rogue/outdoors/woods)
+"ST" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)
 "SV" = (
 /obj/item/natural/stone{
@@ -19494,7 +19510,7 @@ en
 HT
 HT
 en
-nt
+ST
 nt
 nt
 gC
@@ -19653,7 +19669,7 @@ ZO
 ZO
 nt
 nt
-nt
+ST
 gC
 gC
 jW
@@ -23889,7 +23905,7 @@ jW
 jW
 jW
 jW
-nt
+ST
 nt
 nt
 jW
@@ -24522,7 +24538,7 @@ Ek
 nt
 nt
 jW
-jW
+pR
 nt
 Iu
 Iu
@@ -25300,7 +25316,7 @@ Iu
 Iu
 Iu
 nt
-nt
+ST
 jW
 yo
 yo
@@ -26405,7 +26421,7 @@ jW
 jW
 jW
 nt
-nt
+ST
 nt
 nt
 Iu
@@ -27775,7 +27791,7 @@ OA
 OA
 Rv
 OA
-OA
+iv
 OA
 OA
 OA
@@ -28271,7 +28287,7 @@ OA
 OA
 OA
 OA
-OA
+iv
 OA
 RI
 RI
@@ -28399,7 +28415,7 @@ RI
 OA
 OA
 OA
-OA
+iv
 RI
 OA
 OA
@@ -28417,7 +28433,7 @@ RI
 OA
 RI
 OA
-RI
+of
 vk
 vk
 Vx
@@ -33174,7 +33190,7 @@ Ek
 nt
 jW
 nt
-nt
+ST
 nt
 nt
 Ek
@@ -33903,7 +33919,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -33936,7 +33952,7 @@ jW
 By
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -34360,7 +34376,7 @@ GH
 GH
 Vh
 Vh
-jW
+pR
 jW
 jW
 ew
@@ -34449,7 +34465,7 @@ nt
 Ek
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -34856,7 +34872,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 Ek
 Ek
@@ -34890,7 +34906,7 @@ jW
 Ek
 nt
 nt
-nt
+ST
 nt
 nt
 jW
@@ -35006,7 +35022,7 @@ nt
 nt
 nt
 By
-jW
+pR
 jW
 nt
 nt
@@ -35250,7 +35266,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -36014,7 +36030,7 @@ jW
 nt
 nt
 nt
-nt
+ST
 jW
 MK
 jW
@@ -36431,7 +36447,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -37671,7 +37687,7 @@ nt
 nt
 By
 nt
-nt
+ST
 jW
 kV
 pC
@@ -37814,7 +37830,7 @@ jW
 nt
 nt
 nt
-jW
+pR
 jW
 jW
 jW
@@ -38245,7 +38261,7 @@ nt
 nt
 jW
 nt
-nt
+ST
 nt
 jW
 yo
@@ -38645,7 +38661,7 @@ nt
 nt
 jW
 nt
-nt
+ST
 Ek
 Ek
 nt
@@ -40239,6 +40255,7 @@ MK
 jW
 jW
 jW
+ST
 nt
 nt
 nt
@@ -40251,8 +40268,7 @@ nt
 nt
 nt
 nt
-nt
-nt
+ST
 nt
 nt
 MK
@@ -41266,7 +41282,7 @@ nt
 Ek
 nt
 nt
-nt
+ST
 nt
 nt
 jW
@@ -41476,7 +41492,7 @@ nt
 jW
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -41591,7 +41607,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 Ek
 nt
@@ -42202,7 +42218,7 @@ GH
 GH
 jW
 jW
-jW
+pR
 nt
 va
 Ek
@@ -42709,7 +42725,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 nt
 jW
@@ -42838,7 +42854,7 @@ nt
 Ek
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -43080,7 +43096,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -43638,7 +43654,7 @@ nt
 nt
 jW
 nt
-nt
+ST
 nt
 nt
 jW
@@ -43699,7 +43715,7 @@ yo
 nt
 nt
 nt
-nt
+ST
 nt
 jW
 jW
@@ -44404,7 +44420,7 @@ nt
 Ek
 yo
 nt
-nt
+ST
 yo
 By
 jW
@@ -44712,12 +44728,12 @@ jW
 nt
 nt
 nt
-nt
+ST
 nt
 jW
 jW
 yo
-nt
+ST
 yo
 yo
 jW
@@ -45211,7 +45227,7 @@ MK
 nt
 nt
 nt
-nt
+ST
 nt
 MK
 MK
@@ -45802,7 +45818,7 @@ gU
 gU
 GH
 jW
-jW
+pR
 jW
 nt
 nt
@@ -46688,7 +46704,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 dA
 jW
@@ -47331,7 +47347,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -48417,7 +48433,7 @@ nt
 jW
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -48737,7 +48753,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -49124,7 +49140,7 @@ jW
 Ek
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -49339,7 +49355,7 @@ nt
 jW
 nt
 Ek
-nt
+ST
 nt
 nt
 nt
@@ -49536,7 +49552,7 @@ nt
 Ek
 nt
 nt
-nt
+ST
 jW
 jW
 Vn
@@ -50142,7 +50158,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 nt
 jW
@@ -50387,7 +50403,7 @@ jW
 nt
 Ek
 Ek
-nt
+ST
 nt
 nt
 nt
@@ -50599,7 +50615,7 @@ jW
 jW
 nt
 nt
-nt
+ST
 nt
 nt
 jW
@@ -50717,7 +50733,7 @@ jW
 jW
 jW
 nt
-nt
+ST
 nt
 nt
 nt
@@ -51184,7 +51200,7 @@ Ek
 Ek
 nt
 nt
-nt
+ST
 Ek
 nt
 nt
@@ -51309,7 +51325,7 @@ jW
 jW
 nt
 nt
-nt
+ST
 nt
 nt
 nt
@@ -51566,7 +51582,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 nt
 nt
 Ek
@@ -61622,7 +61638,7 @@ nt
 jW
 Oj
 nt
-nt
+ST
 jW
 MK
 MK
@@ -63186,7 +63202,7 @@ jW
 jW
 nt
 nt
-nt
+ST
 nt
 jW
 AH
@@ -63356,7 +63372,7 @@ nt
 nt
 nt
 nt
-nt
+ST
 jW
 ew
 rj
@@ -64370,11 +64386,11 @@ jW
 jW
 jW
 nt
-nt
+ST
 jW
 jW
 nt
-jW
+pR
 jW
 jW
 nt
@@ -64530,7 +64546,7 @@ nt
 nt
 jW
 nt
-nt
+ST
 nt
 nt
 nt
@@ -66176,7 +66192,7 @@ jW
 jW
 nt
 nt
-nt
+ST
 nt
 nt
 nt

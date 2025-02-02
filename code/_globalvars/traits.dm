@@ -88,6 +88,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_XENO_IMMUNE" = TRAIT_XENO_IMMUNE,
 		"TRAIT_DRUQK" = TRAIT_DRUQK,
 		"TRAIT_SEEPRICES" = TRAIT_SEEPRICES,
+		"Expert Herb Finder" = TRAIT_LEGENDARY_ALCHEMIST,
 		"TRAIT_STUDENT" = TRAIT_STUDENT,
 	),
 	/obj/item/bodypart = list(

@@ -18,15 +18,15 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	mask = /obj/item/clothing/mask/rogue/facemask/psydonmask
 	head = /obj/item/clothing/head/roguetown/roguehood/psydon
-	var/classes = list("Otavan Brute", "Nadeli-Trained Scholar")
+	var/classes = list("Otavan Brute", "Naledi-Trained Scholar")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 	switch(classchoice)
 		if("Otavan Brute")
 			H.set_blindness(0)
 			brute_equip(H)
-		if("Nadeli-Trained Scholar")
+		if("Naledi-Trained Scholar")
 			H.set_blindness(0)
-			nadeli_equip(H)
+			naledi_equip(H)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
@@ -36,8 +36,10 @@
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
 /datum/outfit/job/roguetown/disciple/proc/brute_equip(mob/living/carbon/human/H)
-	backpack_contents = list(/obj/item/roguekey/inquisition = 1, /obj/item/clothing/cloak/psydontabard/alt)
+	backpack_contents = list(/obj/item/roguekey/inquisition = 1)
 	gloves = /obj/item/clothing/gloves/roguetown/chain/psydon
+	armor = /obj/item/clothing/suit/roguetown/armor/skin_armor/monk_skin
+	cloak = /obj/item/clothing/cloak/psydontabard/alt
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
@@ -48,15 +50,15 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.change_stat("strength", 3)
-		H.change_stat("endurance", 2)
-		H.change_stat("constitution", 2)
+		H.change_stat("endurance", 4)
+		H.change_stat("constitution", 4)
 		H.change_stat("intelligence", -2)
 		ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 
-/datum/outfit/job/roguetown/disciple/proc/nadeli_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/disciple/proc/naledi_equip(mob/living/carbon/human/H)
 	backpack_contents = list(/obj/item/roguekey/inquisition = 1)
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	cloak = /obj/item/clothing/cloak/psydontabard/alt

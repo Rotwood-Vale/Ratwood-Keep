@@ -77,7 +77,9 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/royal
+		cloak = /obj/item/clothing/cloak/lordcloak/ladycloak
+		wrists = /obj/item/clothing/wrists/roguetown/royalsleeves
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
