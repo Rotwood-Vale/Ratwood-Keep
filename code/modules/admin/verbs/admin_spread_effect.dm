@@ -2,6 +2,9 @@
 	set name = "Spread Effect"
 	set category = "Fun"
 
+	if(!check_rights(R_ADMIN))
+		return
+
 	var/list/effect_types = typesof(/datum/effect_system/smoke_spread)
 
 	var/list/effect_names = list()

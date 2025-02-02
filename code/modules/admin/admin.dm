@@ -834,11 +834,11 @@
 
 
 /datum/admins/proc/sleepall()
-	set name = "Sleep All"
+	set name = "inview Sleep"
 	set category = "GameMaster"
 	set hidden = FALSE
 
-	if(!check_rights(0))
+	if(!check_rights(R_ADMIN))
 		return
 
 	if(alert("This will sleep ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -849,11 +849,11 @@
 	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 
 /datum/admins/proc/wakeall()
-	set name = "Wake All"
+	set name = "inview Wake"
 	set category = "GameMaster"
 	set hidden = FALSE
 
-	if(!check_rights(0))
+	if(!check_rights(R_ADMIN))
 		return
 
 	if(alert("This wake ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
