@@ -2249,6 +2249,7 @@
 #include "modular_redmoon\modules\tetris\book.dm"
 #include "modular_redmoon\modules\tetris\cigs_lighters.dm"
 #include "modular_redmoon\modules\tetris\cloaks.dm"
+#include "modular_redmoon\modules\tetris\cult.dm"
 #include "modular_redmoon\modules\tetris\flashlight.dm"
 #include "modular_redmoon\modules\tetris\flintlock.dm"
 #include "modular_redmoon\modules\tetris\flintsparker.dm"
