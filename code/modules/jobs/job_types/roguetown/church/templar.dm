@@ -101,6 +101,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
+		H.cmode_music = 'sound/music/combat_holy.ogg'
 		H.change_stat("strength", 3)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 2)
@@ -197,6 +198,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)	//May tone down to 2; seems OK.
+		H.cmode_music = 'sound/music/combat_holy.ogg'
 		H.change_stat("strength", 2)
 		H.change_stat("constitution", 2)
 		H.change_stat("endurance", 3)

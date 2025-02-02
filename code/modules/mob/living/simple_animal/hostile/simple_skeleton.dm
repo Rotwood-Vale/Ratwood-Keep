@@ -6,7 +6,7 @@
 	icon_living = "skeleton"
 	icon_dead = "skeleton_dead"
 	gender = MALE
-	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	robust_searching = 1
 	turns_per_move = 1
 	move_to_delay = 3

@@ -148,7 +148,7 @@
 
 	var/list/next_attack_msg = list()
 
-	///The mob's summoner and probable master; high up.
+	///The NAME (not the reference) of the mob's summoner and probable master.
 	var/summoner = null
 
 
