@@ -80,10 +80,6 @@
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
 		/datum/body_marking_set/kobold_scale,
-		/datum/body_marking_set/belly,
-		/datum/body_marking_set/bellysocks,
-		/datum/body_marking_set/tiger,
-		/datum/body_marking_set/tiger_dark,
 	)
 	body_markings = list(
 		/datum/body_marking/small/plain,
