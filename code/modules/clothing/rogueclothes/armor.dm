@@ -51,6 +51,22 @@
 /obj/item/clothing/suit/roguetown/armor/armordress/alt
 	icon_state = "armordressalt"
 
+//otavan brute skin
+/obj/item/clothing/suit/roguetown/armor/skin_armor/monk_skin/Initialize(mapload)
+	. = ..()
+	name = "monk's skin"
+	resistance_flags = FIRE_PROOF
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	clothing_flags = ITEM_SLOT_ARMOR
+	icon_state = null
+
+/obj/item/clothing/suit/roguetown/armor/skin_armor/monk_skin/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
+
 //gambeson family
 
 /obj/item/clothing/suit/roguetown/armor/gambeson
@@ -105,6 +121,122 @@
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/councillor
 	color = "#646464"
+
+//................ Winter Dress ............... //
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress
+	name = "winter dress"
+	icon = 'icons/roguetown/clothing/shirts_royalty.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
+	desc = "A thick, padded, and comfortable dress to maintain both temperature and safety when leaving the keep."
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
+	icon_state = "winterdress"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts_royalty.dmi'
+	boobed = TRUE
+	detail_tag = "_detail"
+	detail_color = CLOTHING_BLACK
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress/lordcolor(primary,secondary)
+	detail_color = primary
+	update_icon()
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	else
+		GLOB.lordcolor += src
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/wintercommon
+	name = "winter dress"
+	icon = 'icons/roguetown/clothing/shirts_royalty.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
+	desc = "A thick, padded, and comfortable dress to maintain both temperature and safety when leaving the keep."
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
+	icon_state = "winterdress"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts_royalty.dmi'
+	boobed = TRUE
+	detail_tag = "_detail"
+	detail_color = CLOTHING_BLACK
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/wintercommon/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
+	name = "winter jacket"
+	desc = "The most elegant of furs and vivid of royal dyes combined together into a most classy jacket."
+	icon_state = "winterjacket"
+	detail_tag = "_detail"
+	color = CLOTHING_WHITE
+	detail_color = CLOTHING_BLACK
+
+/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket/lordcolor(primary,secondary)
+	detail_color = primary
+	update_icon()
+
+/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	else
+		GLOB.lordcolor += src
+
+/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
+
+/obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
+	name = "artificer jacket"
+	icon_state = "artijacket"
+	desc = "A thick leather jacket adorned with fur and cog decals. The height of Heartfelt fashion."
+
+/obj/item/clothing/suit/roguetown/armor/cuirass/iron/shadowplate
+	name = "scourge breastplate"
+	desc = "More form over function, this armor is fit for demonstration of might rather than open combat. The aged gilding slowly tarnishes away."
+	icon_state = "shadowplate"
+	item_state = "shadowplate"
+
+//................ Corset.................... //
+/obj/item/clothing/suit/roguetown/armor/corset
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "corset"
+	desc = "A leather binding to constrict one's figure... and lungs."
+	icon_state = "corset"
+	armor_class = ARMOR_CLASS_LIGHT
+	body_parts_covered = CHEST
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	name = "arming jacket"
@@ -745,7 +877,7 @@
  //--------------- BLACKSTEEL ---------------------
 
 /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_full_plate
-	name = "Blacksteel Plate Armor"
+	name = "blacksteel plate armor"
 	desc = "A suit of Full Plate smithed of durable blacksteel."
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
@@ -764,7 +896,7 @@
 	smelt_bar_num = 4
 
 /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate
-	name = "Blacksteel Cuirass"
+	name = "blacksteel cuirass"
 	desc = "A basic cuirass forged from blacksteel. It's somewhat more durable than regular steel."
 	body_parts_covered = CHEST|VITALS
 	icon_state = "grenzelcuirass"

@@ -645,3 +645,12 @@
 	craftdiff = 3
 	wallcraft = TRUE
 	ontile = TRUE
+
+/datum/crafting_recipe/roguetown/structure/cauldronalchemy
+	name = "alchemy cauldron"
+	result = /obj/machinery/light/rogue/cauldron
+	reqs = list(/obj/item/ingot/iron = 3)
+	verbage_simple = "assemble"
+	verbage = "assembles"
+	skillcraft = /datum/skill/craft/alchemy
+	craftdiff = 1

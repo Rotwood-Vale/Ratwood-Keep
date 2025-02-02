@@ -459,6 +459,69 @@
 	wdefense = 7
 	smeltresult = /obj/item/ingot/silver
 
+/obj/item/rogueweapon/halberd/glaive
+	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/bardiche, /datum/intent/axe/chop, SPEAR_BASH)
+	name = "glaive"
+	desc = "A curved blade on a pole, specialised in durability and defence, but expensive to manufacture."
+	icon_state = "bardiche"
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/steel
+	max_blade_int = 300
+	wdefense = 9
+/obj/item/rogueweapon/halberd/glaive/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.65,
+					"sx" = -6,
+					"sy" = 7,
+					"nx" = 6,
+					"ny" = 8,
+					"wx" = 0,
+					"wy" = 6,
+					"ex" = -1,
+					"ey" = 8,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = -50,
+					"sturn" = 40,
+					"wturn" = 50,
+					"eturn" = -50,
+					"nflip" = 0,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+			if("wielded")
+				return list(
+					"shrink" = 0.65,
+					"sx" = 3,
+					"sy" = -2,
+					"nx" = -3,
+					"ny" = -2,
+					"wx" = -9,
+					"wy" = -2,
+					"ex" = 9,
+					"ey" = -2,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 8,
+					"sflip" = 0,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+
 /obj/item/rogueweapon/eaglebeak
 	force = 15
 	force_wielded = 30

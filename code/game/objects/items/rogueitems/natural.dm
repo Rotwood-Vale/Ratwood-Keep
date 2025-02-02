@@ -61,6 +61,8 @@
 	var/base_height = 32
 
 /obj/item/natural/bundle/attackby(obj/item/W, mob/living/user)
+	if(item_flags & IN_STORAGE)
+		return
 	if(istype(W, /obj/item/natural/bundle))
 		var/obj/item/natural/bundle/B = W
 		if(src.stacktype == B.stacktype)

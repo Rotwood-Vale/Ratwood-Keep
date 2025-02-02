@@ -110,5 +110,7 @@
 				used = list('sound/vo/mobs/vw/idle (1).ogg', 'sound/vo/mobs/vw/idle (2).ogg', 'sound/vo/mobs/vw/idle (3).ogg', 'sound/vo/mobs/vw/idle (4).ogg')
 			if("bleat")
 				used = list('sound/vo/mobs/goat/idle (1).ogg', 'sound/vo/mobs/goat/idle (2).ogg', 'sound/vo/mobs/goat/idle (3).ogg')
+			if("chitter")
+				used = 'sound/vo/moth/mothchitter.ogg'
 
 	return used

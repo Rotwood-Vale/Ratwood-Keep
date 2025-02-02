@@ -4,7 +4,6 @@
 	name = "hide"
 	icon_state = "hide"
 	desc = "Hide from one of Dendor's creachers."
-	dropshrink = 0.50
 	force = 0
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL

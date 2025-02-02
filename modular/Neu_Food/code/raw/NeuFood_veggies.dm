@@ -13,6 +13,7 @@
 	tastes = list("onion" = 1)
 	chopping_sound = TRUE
 	dropshrink = 0.8
+	slices_num = 2
 
 /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced
 	name = "sliced onion"
@@ -39,7 +40,7 @@
 /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	desc = "A spud, dwarven icon of growth."
 	eat_effect = null
-	slices_num = 1
+	slices_num = 2
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked
 	tastes = list("potato" = 1)

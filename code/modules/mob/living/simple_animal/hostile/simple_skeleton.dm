@@ -6,7 +6,7 @@
 	icon_living = "skeleton"
 	icon_dead = "skeleton_dead"
 	gender = MALE
-	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	robust_searching = 1
 	turns_per_move = 1
 	move_to_delay = 3
@@ -116,7 +116,7 @@
 /mob/living/simple_animal/hostile/rogue/skeleton/Initialize(mapload, mob/user, cabal_affine = FALSE)
 	. = ..()
 	if(user)
-		friends += user.name
+		summoner = user.name
 		if (cabal_affine)
 			faction |= "cabal"
 
@@ -186,3 +186,14 @@
 	chargetime = 1
 	animname = "stab"
 
+
+
+/mob/living/simple_animal/hostile/rogue/skeleton/axe/event
+	ai_controller = /datum/ai_controller/simple_skeleton/event
+/mob/living/simple_animal/hostile/rogue/skeleton/spear/event
+	ai_controller = /datum/ai_controller/skeleton_spear/event
+/mob/living/simple_animal/hostile/rogue/skeleton/guard/event
+	ai_controller = /datum/ai_controller/simple_skeleton/event
+/mob/living/simple_animal/hostile/rogue/skeleton/bow/event
+	ai_controller = /datum/ai_controller/skeleton_ranged/event
+	

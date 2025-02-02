@@ -17,6 +17,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/datum/admins/proc/admin_sleep,
 	/client/proc/jumptoarea,
 	/client/proc/jumptokey,
+	/client/proc/mass_direct,
 	/datum/admins/proc/checkpq,
 	/datum/admins/proc/adjustpq,
 	/client/proc/jumptomob,
@@ -56,7 +57,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
 	/client/proc/stop_sounds,
 	/client/proc/mark_datum_mapview,
-	/client/proc/fix_air,				/*resets air in designated radius to its default atmos composition*/
 
 	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
 //	/datum/admins/proc/show_traitor_panel,	/*interface which shows a mob's mind*/ -Removed due to rare practical use. Moved to debug verbs ~Errorage
@@ -191,7 +191,8 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/reload_configuration,
 	/datum/admins/proc/create_or_modify_area,
 	/client/proc/returntolobby,
-	/client/proc/set_tod_override
+	/client/proc/set_tod_override,
+	/client/proc/stresstest_chat
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, GLOBAL_PROC_REF(release)))
 GLOBAL_PROTECT(admin_verbs_possess)
@@ -449,6 +450,48 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		GLOB.todoverride = null
 		world << "[ckey] has disabled the time of day override."
 	settod()
+
+/client/proc/stresstest_chat()
+	set name = "Stress Chat"
+	set category = "Debug"
+	set hidden = TRUE
+
+	if(!holder)
+		return
+	/*
+		#define SPAN_DWARF "dwarf"
+		#define SPAN_ELF "elf"
+		#define SPAN_SAND "sandspeak"
+		#define SPAN_DELF "delf"
+		#define SPAN_HELL "hellspeak"
+		#define SPAN_LUPIAN "lupian"
+		#define SPAN_BEAST "beast"
+		#define SPAN_ORC "orc"
+		#define SPAN_DRACONIC "reptile"
+		#define SPAN_UNDEAD "undead" //nyi
+		#define SPAN_CAT "cat" //nyi
+	*/
+	var/who = usr
+	var/languages = list(
+		"human",
+		"dwarf",
+		"elf",
+		"sandspeak",
+		"delf",
+		"beast",
+		"orc",
+		//"undead",
+		"hellspeak",
+		"reptile",
+		"lupian",
+		//"cat"
+
+	)
+
+	for(var/i = 1; i <= 100; i++)
+		for(var/lang in languages)
+			to_chat(who, "<span class='say'><span class='name'><span style='color:#ff6600;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>Jorrel</span></span> <span class='message'>says, \"<span class=' [lang] '>This is me speaking [lang].</span>\"</span></span>")
+
 
 /client/proc/ban_panel()
 	set name = "Banning Panel"
