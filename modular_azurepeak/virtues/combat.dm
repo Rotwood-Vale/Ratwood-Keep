@@ -31,7 +31,8 @@
 		new_faith.max_progression = CLERIC_REQ_1 - 20
 		recipient.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 		recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/orison)
-		recipient.mind?.AddSpell(new our_patron.t0) // i dunno... let's see how it plays out
+		if (!HAS_TRAIT(recipient, TRAIT_MEDIUMARMOR) && !HAS_TRAIT(recipient, TRAIT_HEAVYARMOR) && !HAS_TRAIT(recipient, TRAIT_DODGEEXPERT))
+			recipient.mind?.AddSpell(new our_patron.t0)
 	else
 		// for devotionists, bump up their maximum 1 tier and give them a TINY amount of passive devo gain
 		var/datum/devotion/our_faith = recipient.devotion

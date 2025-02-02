@@ -26,6 +26,11 @@
 	added_traits = list(TRAIT_LIGHT_STEP)
 	added_skills = list(list(/datum/skill/misc/sneaking, 3, 6))
 
+/datum/virtue/utility/resident
+	name = "Resident"
+	desc = "I'm a resident of Azure Peak. I have an account in the city's treasury and a home in the city."
+	added_traits = list(TRAIT_RESIDENT)
+
 /datum/virtue/utility/linguist
 	name = "Intellectual"
 	desc = "I've spent my life surrounded by various books or sophisticated foreigners, be it through travel or other fortunes beset on my life. I've picked up several tongues and wits, and keep a journal closeby. (+1 INT, 3 Languages, Stashed Book)"
@@ -68,32 +73,43 @@
 
 /datum/virtue/utility/blacksmith
 	name = "Blacksmith's Apprentice"
-	desc = "In my youth, I worked under a skilled blacksmith, honing my skills with an anvil. (Apprentice in blacksmithing skills)"
+	desc = "In my youth, I worked under a skilled blacksmith, honing my skills with an anvil. (Apprentice in crafting, blacksmithing, weaponsmithing, armorsmithing, and smelting.)"
 	added_skills = list(list(/datum/skill/craft/crafting, 2, 2),
 						list(/datum/skill/craft/weaponsmithing, 2, 2),
 						list(/datum/skill/craft/armorsmithing, 2, 2),
 						list(/datum/skill/craft/blacksmithing, 2, 2),
-						list(/datum/skill/craft/smelting, 2, 2),
+						list(/datum/skill/craft/smelting, 2, 2)
 	)
 
 /datum/virtue/utility/hunter
 	name = "Hunter's Apprentice"
-	desc = "In my youth, I trained under a skilled hunter, learning how to butcher animals and work with leather/hide. (Apprentice in tailoring/leatherworking skills)"
+	desc = "In my youth, I trained under a skilled hunter, learning how to butcher animals and work with leather/hide. (Apprentice in crafting, trapmaking, tracking, butchering, sewing, and tanning.)"
 	added_skills = list(list(/datum/skill/craft/crafting, 2, 2),
 						list(/datum/skill/craft/traps, 2, 2),
 						list(/datum/skill/labor/butchering, 2, 2),
 						list(/datum/skill/misc/sewing, 2, 2),
 						list(/datum/skill/craft/tanning, 2, 2),
+						list(/datum/skill/misc/tracking, 2, 2)
 	)
 
 /datum/virtue/utility/artificer
 	name = "Artificer's Apprentice"
-	desc = "In my youth, I worked under a skilled artificer, studying construction and engineering. (Apprentice in artificer skills)"
+	desc = "In my youth, I worked under a skilled artificer, studying construction and engineering. (Apprentice in crafting, engineering, carpentry, masonry, and smelting.)"
 	added_skills = list(list(/datum/skill/craft/crafting, 2, 2),
 						list(/datum/skill/craft/carpentry, 2, 2),
 						list(/datum/skill/craft/masonry, 2, 2),
 						list(/datum/skill/craft/engineering, 2, 2),
-						list(/datum/skill/craft/smelting, 2, 2),
+						list(/datum/skill/craft/smelting, 2, 2)
+	)
+
+/datum/virtue/utility/physician
+	name = "Physician's Apprentice"
+	desc = "In my youth, I worked under a skilled physician, studying medicine and alchemy. (Apprentice in crafting, alchemy, and medicine. Stashed first aid pouch.)"
+	added_stashed_items = list("Medicine Pouch" = /obj/item/storage/belt/rogue/pouch/medicine)
+	added_skills = list(list(/datum/skill/craft/crafting, 2, 2),
+						list(/datum/skill/craft/alchemy, 2, 2),
+						list(/datum/skill/misc/alchemy, 2, 2),
+						list(/datum/skill/misc/medicine, 2, 2)
 	)
 
 /datum/virtue/utility/feral_appetite

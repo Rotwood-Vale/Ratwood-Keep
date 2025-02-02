@@ -34,3 +34,9 @@
 	/obj/item/rogueweapon/surgery/cautery,
 	/obj/item/needle/pestra //Gets the special needle!
 	)
+
+/obj/item/storage/belt/rogue/pouch/medicine
+	populate_contents = list(
+	/obj/item/needle,
+	/obj/item/natural/bundle/cloth
+	)
