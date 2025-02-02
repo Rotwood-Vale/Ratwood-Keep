@@ -8,7 +8,7 @@
 	var/zombie_infection_timer
 
 	/// Werewolf infection probability for bites on this wound
-	var/werewolf_infection_probability = 8
+	var/werewolf_infection_probability = 30 //used to be a 2.4% chance to success because it was double rolled, this was always intended
 	/// Time taken until werewolf infection comes in
 	var/werewolf_infection_time = 2 MINUTES
 	/// Actual infection timer
