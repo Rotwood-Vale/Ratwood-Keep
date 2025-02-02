@@ -2769,6 +2769,10 @@
 /obj/item/clothing/cloak/templar/necran,
 /obj/item/clothing/cloak/templar/astratan,
 /obj/item/clothing/cloak/templar/astratan,
+/obj/item/clothing/suit/roguetown/shirt/robe/abyssor,
+/obj/item/clothing/suit/roguetown/shirt/robe/abyssor,
+/obj/item/clothing/head/roguetown/roguehood/abyssor,
+/obj/item/clothing/head/roguetown/roguehood/abyssor,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
 "cip" = (
@@ -9605,6 +9609,8 @@
 /obj/item/clothing/neck/roguetown/psicross/ravox,
 /obj/item/clothing/neck/roguetown/psicross/malum,
 /obj/item/clothing/neck/roguetown/psicross/malum,
+/obj/item/clothing/neck/roguetown/psicross/abyssor,
+/obj/item/clothing/neck/roguetown/psicross/abyssor,
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
