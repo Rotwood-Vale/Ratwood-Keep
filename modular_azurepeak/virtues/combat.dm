@@ -36,6 +36,15 @@
 		// for devotionists, bump up their maximum 1 tier and give them a TINY amount of passive devo gain
 		var/datum/devotion/our_faith = recipient.devotion
 		our_faith.passive_devotion_gain += 0.15
+		switch (our_faith.max_devotion)
+			if (CLERIC_REQ_0)
+				our_faith.max_devotion = CLERIC_REQ_1
+			if (CLERIC_REQ_1)
+				our_faith.max_devotion = CLERIC_REQ_2
+			if (CLERIC_REQ_2)
+				our_faith.max_devotion = CLERIC_REQ_3
+			if (CLERIC_REQ_3)
+				our_faith.max_devotion = CLERIC_REQ_4
 		switch (our_faith.max_progression)
 			if (CLERIC_REQ_0)
 				our_faith.max_progression = CLERIC_REQ_1
