@@ -99,7 +99,7 @@
 	spell_unlocked = new spell_unlocked
 	if(!silent)
 		to_chat(holder, span_boldnotice("I have unlocked a new spell: [spell_unlocked]"))
-	usr.mind.AddSpell(spell_unlocked)
+	holder.mind.AddSpell(spell_unlocked)
 	LAZYADD(granted_spells, spell_unlocked)
 	return TRUE
 
@@ -115,6 +115,8 @@
 		H.mind.AddSpell(newspell)
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T1
+	passive_devotion_gain = 0.25
+	passive_progression_gain = 0.25
 	update_devotion(50, 50, silent = TRUE)
 
 /datum/devotion/proc/grant_spells_templar(mob/living/carbon/human/H)

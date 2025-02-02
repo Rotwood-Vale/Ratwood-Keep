@@ -4,7 +4,6 @@
 	name = "hide"
 	icon_state = "hide"
 	desc = "Hide from one of Dendor's creachers."
-	dropshrink = 0.50
 	force = 0
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
@@ -23,6 +22,12 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	color = "#5c5243"
 	sellprice = 18
+
+/obj/item/natural/head/volf
+	name = "volf head"
+	desc = "the head of a fearsome volf."
+	icon_state = "volfhead"
+	layer = 3.1
 
 //RTD make this a storage item and make clickign on animals with things put it in storage
 /obj/item/natural/saddle

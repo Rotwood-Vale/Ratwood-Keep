@@ -246,3 +246,15 @@
 	color = null
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+
+/obj/item/clothing/suit/roguetown/shirt/robe/feld
+	name = "feldsher's robe"
+	desc = "Red to hide the blood."
+	icon_state = "feldrobe"
+	item_state = "feldrobe"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/phys
+	name = "physicker's robe"
+	desc = "Part robe, part butcher's apron."
+	icon_state = "surgrobe"
+	item_state = "surgrobe"

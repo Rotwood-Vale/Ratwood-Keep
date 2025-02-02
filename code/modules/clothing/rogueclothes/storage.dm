@@ -12,15 +12,9 @@
 	equip_sound = 'sound/blank.ogg'
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
-	var/heldz_items = 3
-
-/obj/item/storage/belt/rogue/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = heldz_items
+	component_type = /datum/component/storage/concrete/roguetown/belt
+	grid_width = 64
+	grid_height = 64
 
 /obj/item/storage/belt/rogue/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -35,7 +29,6 @@
 	icon_state = "leather"
 	item_state = "leather"
 	equip_sound = 'sound/blank.ogg'
-	heldz_items = 3
 	sewrepair = TRUE
 	resistance_flags = FIRE_PROOF
 
@@ -76,13 +69,11 @@
 	icon_state = "rope"
 	item_state = "rope"
 	color = "#b9a286"
-	heldz_items = 1
 
 /obj/item/storage/belt/rogue/leather/cloth
 	name = "cloth sash"
 	desc = ""
 	icon_state = "cloth"
-	heldz_items = 1
 
 /obj/item/storage/belt/rogue/leather/cloth/lady
 	color = "#575160"
@@ -108,15 +99,11 @@
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
 	resistance_flags = FIRE_PROOF
+	component_type = /datum/component/storage/concrete/roguetown/coin_pouch
 
-/obj/item/storage/belt/rogue/pouch/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = 3
-		STR.not_while_equipped = FALSE
+/obj/item/storage/belt/rogue/pouch/coins
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/storage/belt/rogue/pouch/coins/mid/Initialize()
 	. = ..()
@@ -183,10 +170,13 @@
 	bloody_icon_state = "bodyblood"
 	alternate_worn_layer = UNDER_CLOAK_LAYER
 	sewrepair = TRUE
+	component_type = /datum/component/storage/concrete/roguetown/satchel
 
-/obj/item/storage/backpack/rogue/satchel/heartfelt/PopulateContents()
-	new /obj/item/natural/feather(src)
-	new /obj/item/paper(src)
+/obj/item/storage/backpack/rogue/satchel/heartfelt
+	populate_contents = list(
+		/obj/item/natural/feather,
+		/obj/item/paper,
+	)
 
 /obj/item/storage/backpack/rogue/satchel/mule/PopulateContents()
 	for(var/i in 1 to 3)
@@ -202,17 +192,6 @@
 
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK
-
-/obj/item/storage/backpack/rogue/satchel/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 21
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 5
-		STR.click_gather = TRUE
-		STR.allow_quick_empty = TRUE
-		STR.allow_dump_out = TRUE
 
 /obj/item/storage/backpack/rogue/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -234,16 +213,7 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
-
-/obj/item/storage/backpack/rogue/backpack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 14
-		STR.not_while_equipped = TRUE
-		STR.allow_dump_out = TRUE
+	component_type = /datum/component/storage/concrete/roguetown/backpack
 
 /obj/item/storage/belt/rogue/leather/plaquegold/steward
 	name = "fancy gold belt"
@@ -262,8 +232,7 @@
 	var/max_storage = 8
 	var/list/arrows = list()
 	sewrepair = TRUE
-	heldz_items = 1
-
+	component_type = /datum/component/storage/concrete/roguetown/belt/knife_belt
 
 /obj/item/storage/belt/rogue/leather/knifebelt/attack_turf(turf/T, mob/living/user)
 	if(arrows.len >= max_storage)

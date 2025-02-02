@@ -3,6 +3,8 @@
 	icon = 'icons/roguetown/items/ore.dmi'
 	icon_state = "ore"
 	w_class = WEIGHT_CLASS_NORMAL
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/rogueore/gold
 	name = "raw gold"
@@ -83,6 +85,8 @@
 	smelted = TRUE
 	var/datum/anvil_recipe/currecipe
 	var/quality = SMELTERY_LEVEL_NORMAL
+	grid_width = 64
+	grid_height = 32
 
 /obj/item/ingot/examine()
 	. += ..()

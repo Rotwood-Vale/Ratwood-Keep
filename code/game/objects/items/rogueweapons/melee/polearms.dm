@@ -40,6 +40,14 @@
     damfactor = 1.0
     chargetime = 1
 
+/datum/intent/spear/cast
+	name = "cast"
+	chargetime = 0
+	noaa = TRUE
+	misscost = 0
+	icon_state = "inuse"
+	no_attack = TRUE
+
 /datum/intent/sword/cut/zwei
 	reach = 2
 
@@ -240,10 +248,8 @@
 	throwforce = 20
 
 /obj/item/rogueweapon/fishspear
-	force = 18
-	force_wielded = 30
-	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
+	force = 20
+	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH, SPEAR_CAST) //bash is for nonlethal takedowns, only targets limbs
 	name = "fishing spear"
 	desc = "This two-pronged and barbed spear was made to catch those pesky fish."
 	icon_state = "fishspear"
@@ -269,15 +275,71 @@
 	resistance_flags = FLAMMABLE
 
 /obj/item/rogueweapon/fishspear/depthseek //DO NOT ADD RECIPE. MEANT TO BE AN ABYSSORITE RELIC. IDEA COURTESY OF LORDINQPLAS
-	force = 35
-	force_wielded = 55
+	force = 45
 	name = "blessed depthseeker"
 	desc = "A beautifully crafted weapon, with handle carved of some beast's bone, inlaid with smooth seaglass at pommel and head, with two prongs smithed of fine dwarven steel. The seaglass carving at the head is a masterwork in and of itself, you can feel an abyssal energy radiating off it."
 	icon_state = "depthseek"
 	smeltresult = /obj/item/ingot/blacksteel
-	max_blade_int = 600
+	max_blade_int = 2600
 	wdefense = 8
 	throwforce = 50
+
+/obj/item/rogueweapon/fishspear/attack_self(mob/user)
+	if(user.used_intent.type == SPEAR_CAST)
+		if(user.doing)
+			user.doing = 0
+
+/obj/item/rogueweapon/fishspear/afterattack(obj/target, mob/user, proximity)
+	fishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/carp = 5,
+		/obj/item/reagent_containers/food/snacks/fish/angler = 1,
+		/obj/item/reagent_containers/food/snacks/fish/clownfish = 1,
+	)
+	var/sl = user.mind.get_skill_level(/datum/skill/labor/fishing) // User's skill level
+	var/ft = 160 //Time to get a catch, in ticks
+	var/fpp =  130 - (40 + (sl * 15)) // Fishing power penalty based on fishing skill level
+	if(istype(target, /turf/open/water))
+		if(user.used_intent.type == SPEAR_CAST && !user.doing)
+			if(target in range(user,3))
+				user.visible_message("<span class='warning'>[user] searches for a fish!</span>", \
+									"<span class='notice'>I begin looking for a fish to spear.</span>")
+				playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
+				ft -= (sl * 20) //every skill lvl is -2 seconds
+				ft = max(20,ft) //min of 2 seconds
+				if(do_after(user,ft, target = target))
+					var/fishchance = 100 // Total fishing chance, deductions applied below
+					if(user.mind)
+						if(!sl) // If we have zero fishing skill...
+							fishchance -= 50 // 50% chance to fish base
+						else
+							fishchance -= fpp // Deduct a penalty the lower our fishing level is (-0 at legendary)
+					var/mob/living/fisherman = user
+					if(prob(fishchance)) // Finally, roll the dice to see if we fish.
+						var/A = pickweight(fishloot)
+						var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
+						to_chat(user, "<span class='notice'>You see something!</span>")
+						playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
+						if(!do_after(user,ow, target = target))
+							if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
+								var/mob/M = A
+								if(M.type in subtypesof(/mob/living/simple_animal/hostile))
+									new M(target)
+								else
+									new M(user.loc)
+								user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
+							else
+								new A(user.loc)
+								to_chat(user, "<span class='warning'>Pull 'em in!</span>")
+								user.mind.add_sleep_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
+								playsound(src.loc, 'sound/items/Fish_out.ogg', 100, TRUE)
+						else
+							to_chat(user, "<span class='warning'>Damn, it got away... I should <b>pull away</b> next time.</span>")
+					else
+						to_chat(user, "<span class='warning'>Not a single fish...</span>")
+						user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT/2) // Pity XP.
+				else
+					to_chat(user, "<span class='warning'>I must stand still to fish.</span>")
+			update_icon()
 
 /obj/item/rogueweapon/fishspear/getonmobprop(tag)
 	. = ..()
@@ -379,6 +441,69 @@
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
+
+/obj/item/rogueweapon/halberd/glaive
+	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/bardiche, /datum/intent/axe/chop, SPEAR_BASH)
+	name = "glaive"
+	desc = "A curved blade on a pole, specialised in durability and defence, but expensive to manufacture."
+	icon_state = "bardiche"
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/steel
+	max_blade_int = 300
+	wdefense = 9
+/obj/item/rogueweapon/halberd/glaive/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.65,
+					"sx" = -6,
+					"sy" = 7,
+					"nx" = 6,
+					"ny" = 8,
+					"wx" = 0,
+					"wy" = 6,
+					"ex" = -1,
+					"ey" = 8,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = -50,
+					"sturn" = 40,
+					"wturn" = 50,
+					"eturn" = -50,
+					"nflip" = 0,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+			if("wielded")
+				return list(
+					"shrink" = 0.65,
+					"sx" = 3,
+					"sy" = -2,
+					"nx" = -3,
+					"ny" = -2,
+					"wx" = -9,
+					"wy" = -2,
+					"ex" = 9,
+					"ey" = -2,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 8,
+					"sflip" = 0,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
 
 /obj/item/rogueweapon/eaglebeak
 	force = 15

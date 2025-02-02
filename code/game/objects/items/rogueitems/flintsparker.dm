@@ -13,6 +13,8 @@
 	var/flintcd = 0
 	anvilrepair = /datum/skill/craft/blacksmithing
 	resistance_flags = FIRE_PROOF
+	grid_height = 32
+	grid_width = 32
 
 /obj/item/flint/attack_self(mob/living/user)
 	if(world.time < flintcd + 10)

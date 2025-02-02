@@ -233,12 +233,12 @@
 
 /mob/living/simple_animal/ex_act(severity, target, epicenter, devastation_range, heavy_impact_range, light_impact_range, flame_range)
 	..()
-	if (!severity)
+	if(!severity || !epicenter)
 		return
-	var/ddist = devastation_range
-	var/hdist = heavy_impact_range
-	var/ldist = light_impact_range
-	var/fdist = flame_range
+	var/ddist = devastation_range || 0
+	var/hdist = heavy_impact_range || 0
+	var/ldist = light_impact_range || 0
+	var/fdist = flame_range || 0
 	var/fodist = get_dist(src, epicenter)
 	var/brute_loss = 0
 	var/burn_loss = 0

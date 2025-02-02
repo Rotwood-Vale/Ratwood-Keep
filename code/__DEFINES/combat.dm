@@ -145,6 +145,7 @@
 #define SPEAR_THRUST		/datum/intent/spear/thrust
 #define SPEAR_BASH			/datum/intent/spear/bash
 #define SPEAR_CUT			/datum/intent/spear/cut
+#define SPEAR_CAST          /datum/intent/spear/cast
 
 #define MESSER_CHOP			/datum/intent/sword/chop/messer
 

@@ -93,8 +93,10 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		if(H.patron?.type == /datum/patron/divine/pestra)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
 			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 		if(H.patron?.type == /datum/patron/divine/malum)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
@@ -113,6 +115,7 @@
 		H.change_stat("intelligence", 3)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
+		H.cmode_music = 'sound/music/combat_holy.ogg'
 		if(H.patron?.type == /datum/patron/divine/necra)
 			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)

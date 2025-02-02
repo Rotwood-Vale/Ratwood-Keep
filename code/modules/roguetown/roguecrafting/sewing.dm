@@ -76,6 +76,28 @@
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/sewing/lowcut_shirt
+	name = "low cut tunic"
+	reqs = list(
+		/obj/item/natural/cloth = 2,
+		/obj/item/natural/fibers = 1,
+	)
+	result = /obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
+
+/datum/crafting_recipe/roguetown/sewing/noblecoat
+	name = "fancy coat"
+	result = /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat
+	reqs = list(/obj/item/natural/cloth = 3,
+			/obj/item/natural/silk = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/shadowshirt
+	name = "silk shirt"
+	result = /obj/item/clothing/suit/roguetown/shirt/shadowshirt
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/silk = 3)
+	craftdiff = 4
+
 /datum/crafting_recipe/roguetown/sewing/clothshirt
 	name = "cloth shirt"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt)
@@ -535,21 +557,21 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/keffiyeh
-	name = "Keffiyeh"
+	name = "keffiyeh"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/hijab
-	name = "Hijab"
+	name = "hijab"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/shalal/hijab)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/heavyhood
-	name = "Heavy Hood"
+	name = "heavy hood"
 	result = list(/obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)

@@ -232,6 +232,8 @@
 	name = "tome in waiting"
 	icon_state = "spellbook_unfinished"
 	desc = "A fully bound tome of scroll paper. It's lacking a certain arcyne energy."
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/natural/hide/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -412,7 +414,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/attackby(obj/item/M, mob/user, params)
 	var/mob/living/carbon/gamer = user
-	if(istype(M, /obj/item/reagent_containers/powder/mana))
+	if(istype(M, /obj/item/alch/golddust))
 		if(isarcyne(gamer))
 			var/crafttime = (60 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 			if(do_after(user, crafttime, target = src))

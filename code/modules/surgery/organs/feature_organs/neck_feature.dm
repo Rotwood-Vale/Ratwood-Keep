@@ -7,6 +7,5 @@
 	slot = ORGAN_SLOT_NECK_FEATURE
 
 /obj/item/organ/neck_feature/moth_fluff
-	accessory_type = /datum/sprite_accessory/neck_feature/moth_fluff/plain
 
 /obj/item/organ/neck_feature/anthro_fluff
