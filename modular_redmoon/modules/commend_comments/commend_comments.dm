@@ -46,6 +46,7 @@
 
 	if(curcomm >= 0) // Если комменд -1 или более, то нельзя дальше анкоммендить
 		adjust_playerquality(-1, ckey(key), fakekey, raisin)
+		send2irc("PQ", "[fakekey == ckey ? "[ckey]" : "[fake_key] ([ckey])"] [mob ? "([mob.real_name])" : ""] снял [key] за: \"<i>[raisin]</i>\"") // REDMOON ADD
 		curcomm--
 		json[giver] = curcomm
 		fdel(json_file)

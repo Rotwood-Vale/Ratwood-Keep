@@ -83,7 +83,8 @@
 			msg += " - RSN: [reason]"
 		message_admins("[admin] [amt>0 ? "повысил" : "снял"] PQ [key][abs(amt) > 1 ? " на [amt]" : ""] за: \"<i>[reason]</i>\"") // REDMOON EDIT
 		log_admin("[admin] adjusted [key]'s PQ by [amt] for reason: [reason]")
-		send2irc("PQ", "[admin] [amt>0 ? "повысил" : "снял"] [key][abs(amt) > 1 ? " на [amt]" : ""] за: \"<i>[reason]</i>\"") // REDMOON ADD
+		if(abs(amt) > 1)
+			send2irc("PQ", "[admin] [amt>0 ? "повысил" : "снял"] [key][abs(amt) > 1 ? " на [amt]" : ""] за: \"<i>[reason]</i>\"") // REDMOON ADD
 
 /client/proc/check_pq()
 	set category = "GameMaster"
@@ -224,6 +225,8 @@
 	var/raisin = stripped_input(src, "Укажите краткую причину этого изменения", "Будь крутым, а не гнилым", "", null)
 	if(!raisin)
 		to_chat(src, span_boldwarning("Причина не указана."))
+		fdel(json_file)
+		WRITE_FILE(json_file, json_encode(json))
 		return FALSE // REDMOON ADD - добавил FALSE
 	// REDMOON ADD END
 
@@ -232,7 +235,8 @@
 //	if(get_playerquality(key) < 29)
 
 		adjust_playerquality(1, ckey(key), fakekey, raisin) // REDMOON EDIT - was adjust_playerquality(1, ckey(key))
-	// REDMOON ADD START - похвала без PQ
+		// REDMOON ADD START - похвала без PQ
+		send2irc("PQ", "[fakekey == ckey ? "[ckey]" : "[fake_key] ([ckey])"] [mob ? "([mob.real_name])" : ""] повысил [key] за: \"<i>[raisin]</i>\"") // REDMOON ADD
 		curcomm++
 		json[giver] = curcomm
 		fdel(json_file)
