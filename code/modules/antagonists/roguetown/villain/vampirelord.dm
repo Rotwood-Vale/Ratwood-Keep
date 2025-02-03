@@ -137,8 +137,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/list/visoptions = list()
 
 	for(var/T in 1 to 5)
-		var/picked = pick(classoptions)
-		visoptions |= picked
+		if(length(classoptions))
+			visoptions += pick_n_take(classoptions)
 
 	var/selected = input(src, "Which class was I?", "VAMPIRE SPAWN") as anything in visoptions
 
