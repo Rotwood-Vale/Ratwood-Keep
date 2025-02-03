@@ -833,7 +833,7 @@
 	H.returntolobby()
 
 
-/datum/admins/proc/sleepall()
+/datum/admins/proc/sleep_view()
 	set name = "inview Sleep"
 	set category = "GameMaster"
 	set hidden = FALSE
@@ -848,7 +848,7 @@
 
 	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 
-/datum/admins/proc/wakeall()
+/datum/admins/proc/wake_view()
 	set name = "inview Wake"
 	set category = "GameMaster"
 	set hidden = FALSE
