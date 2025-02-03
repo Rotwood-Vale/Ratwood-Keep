@@ -72,6 +72,13 @@
 	resistance_flags = null
 	color = "#cbcac9"
 
+/obj/item/clothing/shoes/roguetown/anklets
+	name = "Gold Anklets"
+	desc = "Delicate golden hoops worn around the ankle."
+	icon_state = "anklets"
+	item_state = "anklets"
+	isbarefoot = TRUE
+	anvilrepair = /datum/skill/craft/blacksmithing
 
 // **ARMOURED** //
 

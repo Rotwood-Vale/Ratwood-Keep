@@ -188,3 +188,13 @@
 					/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress,
 					/obj/item/clothing/suit/roguetown/shirt/dress/velvetdress,
 				)
+
+/datum/supply_pack/rogue/wardrobe/exoticpack
+	name = "Exotic Silks Pack"
+	cost = 250
+	contains = list(
+					/obj/item/clothing/shoes/roguetown/anklets,
+					/obj/item/clothing/mask/rogue/exoticsilkmask,
+					/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra,
+					/obj/item/storage/belt/rogue/leather/exoticsilkbelt,
+				)
