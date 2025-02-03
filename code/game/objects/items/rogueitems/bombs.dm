@@ -93,3 +93,6 @@
 /obj/item/smokebomb/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	..()
 	explodes()
+/obj/item/smokebomb/attack_self(mob/user)
+	..()
+	explodes()
