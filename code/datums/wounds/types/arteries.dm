@@ -21,7 +21,7 @@
 	embed_chance = 40
 
 	zombie_infection_probability = 80 
-	werewolf_infection_probability = 100 //used to be a 4% chance, lmao
+	werewolf_infection_probability = 100 
 /datum/wound/artery/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/artery) && (type == other.type))
 		return FALSE
