@@ -153,11 +153,18 @@
 		revert_cast() // No need to consume the spell if it isn't properly cast.
 		return FALSE
 
-	var/mob/living/target = targets[1]
+	var/mob/living/carbon/target = targets[1]
 
 	if(target == user)
 		revert_cast()
 		return FALSE
+
+	// No more deskeletonization.
+	for(var/obj/item/bodypart/BP in target.bodyparts)
+		if(BP.skeletonized)
+			to_chat(user, span_warning("They're too far gone."))
+			revert_cast()
+			return FALSE
 
 	// If, for whatever reason, someone manages to capture a vampire with (somehow) rot??? This prevents them from losing their undead biotype.
 	if(target.mind?.has_antag_datum(/datum/antagonist/vampire) || target.mind?.has_antag_datum(/datum/antagonist/vampire/lesser) || target.mind?.has_antag_datum(/datum/antagonist/vampirelord))
@@ -179,7 +186,7 @@
 	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 
 	if(rot)
-		rot.amount = 0
+		rot.time_of_death = 0
 
 	if(iscarbon(target))
 		var/mob/living/carbon/stinky = target
@@ -203,6 +210,10 @@
 			ghost.mind.transfer_to(target, TRUE)
 			qdel(underworld_spirit)
 	target.grab_ghost(force = TRUE) // even suicides
+
+	for(var/datum/wound/W in target.get_wounds()) // Cures deadite infections.
+		if(W.has_special_infection())
+			W.remove_special_infection("Zombie")
 	
 	target.update_body()
 	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))

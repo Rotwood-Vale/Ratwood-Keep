@@ -1027,7 +1027,7 @@
 		B.brain_death = FALSE
 	var/datum/component/rot/corpse/CR = GetComponent(/datum/component/rot/corpse)
 	if(CR)
-		CR.amount = 0
+		CR.time_of_death = 0
 	if(admin_revive) //reset rot on admin revives
 		for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 			bodypart.rotted = FALSE
