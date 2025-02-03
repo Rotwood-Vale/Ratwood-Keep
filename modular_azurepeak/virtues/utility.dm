@@ -32,7 +32,7 @@
 	added_traits = list(TRAIT_INTELLECTUAL)
 
 /datum/virtue/utility/linguist/apply_to_human(mob/living/carbon/human/recipient)
-	var/list/selectable_languages = list(/datum/language/elvish, /datum/language/dwarvish, /datum/language/orcish, /datum/language/hellspeak, /datum/language/draconic, /datum/language/celestial)
+	var/list/selectable_languages = list(/datum/language/elvish, /datum/language/dwarvish, /datum/language/orcish, /datum/language/hellspeak, /datum/language/draconic, /datum/language/celestial, /datum/language/grenzelhoftian)
 	var/list/choices = list()
 	for(var/i = 1, i <= selectable_languages.len, i++)
 		if (recipient.has_language(selectable_languages[i]))
