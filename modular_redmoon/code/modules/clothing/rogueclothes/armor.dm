@@ -187,7 +187,6 @@
 	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
-	do_sound = FALSE
 	blocking_behavior = null
 	max_integrity = 675	//3 steel, 3 difficulty, and uncraftable
 	anvilrepair = /datum/skill/craft/blacksmithing
