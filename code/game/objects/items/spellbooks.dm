@@ -144,7 +144,7 @@
 	var/qualityoflearn = (reader.STAINT*2 + (user.mind?.get_skill_level(/datum/skill/misc/reading)*10) + (user.mind?.get_skill_level(/datum/skill/magic/arcane)*10))
 	if(reader.has_status_effect(/datum/status_effect/buff/weed))
 		to_chat(user, span_smallgreen("Swampweed truly does open one's third eye to the secrets of the arcyne..."))
-		qualityoflearn += 3.5
+		qualityoflearn += 10
 	var/obj/effect/decal/cleanable/roguerune/rune = (locate(/obj/effect/decal/cleanable/roguerune) in range(1, user))
 	if(rune)
 		to_chat(user, span_cultsmall("The rune beneath my feet glows..."))
@@ -168,7 +168,7 @@
 	span_notice("Noc blesses me. I have been granted knowledge and wisdom beyond my years, this tome's mysteries unveiled one at a time."))
 	qualityoflearn = qualityoflearn / 100
 	var/spellpoints = (src.bookquality * qualityoflearn)
-	spellpoints = ceil(spellpoints)
+	spellpoints = round(spellpoints)	//Rounds. 2.4 spellpoint level? too bad. You get 2, not 3.
 	user.mind.adjust_spellpoints(spellpoints)
 	user.log_message("successfully studied their spellbook and gained spellpoints", LOG_ATTACK, color="orange")
 	onlearned(user)

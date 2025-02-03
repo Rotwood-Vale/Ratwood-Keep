@@ -57,7 +57,7 @@
 		/obj/item/natural/elementalrelic,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/leyline,
-		/obj/item/natural/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
 		/obj/item/natural/manacrystal
 		))
 	STR.click_gather = TRUE
@@ -80,9 +80,9 @@
 	new /obj/item/natural/obsidian(src)
 	new /obj/item/natural/obsidian(src)
 	new /obj/item/natural/obsidian(src)
-	new /obj/item/natural/manabloom(src)
-	new /obj/item/natural/manabloom(src)
-	new /obj/item/natural/manabloom(src)
+	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(src)
+	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(src)
+	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(src)
 
 
 
@@ -385,28 +385,37 @@ obj/item/hourglass/temporal/stop()
 	if(input_text)
 		paired_with.say(input_text)
 
-/obj/item/clothing/gloves/roguetown/nomagic
-	icon = 'icons/roguetown/clothing/gloves.dmi'
-	bloody_icon_state = "bloodyhands"
-	icon_state = "angle"
-	w_class = WEIGHT_CLASS_SMALL
-	var/active_item
+/obj/item/clothing/neck/roguetown/collar/leather/nomagic
+	name = "mana-binding collar"
+	desc = "A comfortable collar made of leather. studded with red gems"
+	icon_state = "manabindingcollar"
+	color = null
+	slot_flags = ITEM_SLOT_NECK
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+	unequip_delay_self = 1200
 
-/obj/item/clothing/gloves/roguetown/nomagic/Initialize(mapload)
+/obj/item/clothing/neck/roguetown/collar/leather/nomagic/Initialize(mapload)
 	. = ..()
-	name = "mana binding gloves"
-	resistance_flags = FIRE_PROOF
 	var/datum/magic_item/mundane/nomagic/effect = new
 	AddComponent(/datum/component/magic_item, effect)
 
-/obj/item/clothing/gloves/roguetown/nomagic/equipped(mob/living/user, slot)
-	if(active_item)
-		return
-	var/slotbit = slotdefine2slotbit(slot)
-	if(slotbit == ITEM_SLOT_GLOVES)
-		active_item = TRUE
-		ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
+/obj/item/clothing/gloves/roguetown/nomagic
+	icon = 'icons/roguetown/clothing/gloves.dmi'
+	icon_state = "manabindinggloves"
+	bloody_icon_state = "bloodyhands"
+	name = "gem encrusted mana binding gloves"
+	resistance_flags = FIRE_PROOF
+	w_class = WEIGHT_CLASS_SMALL
+	allow_self_unequip = FALSE	//Can not remove these without help
+	equip_delay_self = 60
+	equip_delay_other = 60
+	strip_delay = 300
+
+/obj/item/clothing/gloves/roguetown/nomagic/Initialize(mapload)
 	. = ..()
+	var/datum/magic_item/mundane/nomagic/effect = new
+	AddComponent(/datum/component/magic_item, effect)
 
 /obj/item/rope/chain/bindingshackles
 	name = "binding shackles"
@@ -493,35 +502,60 @@ obj/item/hourglass/temporal/stop()
 	name = "leyline shards"
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "leyline"
-	desc = "Volcanic glass cooled from molten lava rapidly."
+	desc = "A shard of a fractured leyline, it glows with lost power."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/natural/manabloom
+/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
+	seed = /obj/item/seeds/manabloom
 	name = "mana bloom"
+	desc = "Glowing blue flower that seems to attract latent mana."
+	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "manabloom"
-	desc = "Volcanic glass cooled from molten lava rapidly."
+//	filling_color = "#008000"
+	bitesize_mod = 1
+	foodtype = VEGETABLES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	tastes = list("sweet" = 1,"bitterness" = 1)
+	eat_effect = /datum/status_effect/debuff/badmeal
+	rotprocess = 60 MINUTES
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/seeds/manabloom
+	seed_identity = "manabloom seeds"
+	plant_def_type = /datum/plant_def/manabloom
+
+/datum/plant_def/manabloom
+	name = "manabloom"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "manabloom0"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
 
 /obj/item/natural/artifact
 	name = "runed artifact"
 	icon_state = "runedartifact"
-	desc = "Volcanic glass cooled from molten lava rapidly."
+	desc = "an old stone from age long ago, marked with glowing sigils."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/natural/artifact/Initialize()
+	.=..()
+	var/list/listy = list("runedartifact", "runedartifact1")
+	var/newicon = pick(listy)
+	icon_state = newicon
 
 /obj/item/natural/manacrystal
 	name = "crytalized mana"
 	icon_state = "manacrystal"
-	desc = "Volcanic glass cooled from molten lava rapidly."
+	desc = "A crystal made of mana, woven into an artifical structure."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/voidstone
 	name = "Voidstone"
-	icon_state = "wessence"
-	desc = "A piece of blackstone, it feels off to stare at it for long."
+	icon_state = "voidstone"
+	desc = "A piece of blackstone, it feels disconcerting to stare at it for long."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 

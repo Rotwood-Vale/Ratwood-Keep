@@ -273,7 +273,8 @@
 	projectiletype = /obj/projectile/magic/aoe/fireball/rogue
 	ranged_message = "stares"
 
-
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the watcher
+	return
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/MeleeAction(patience = TRUE)
 	for(var/t in RANGE_TURFS(1, src))
@@ -295,6 +296,10 @@
 	new /obj/item/natural/moltencore(deathspot)
 	update_icon()
 	qdel(src)
+
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the fiend
+	return
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend
 	icon = 'icons/mob/summonable/32x32.dmi'
@@ -326,6 +331,7 @@
 	food_type = list()
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
+	STAEND = 15
 	STACON = 13
 	STASTR = 12
 	STASPD = 8
@@ -345,6 +351,13 @@
 	ranged_message = "throws fire"
 	var/flame_cd = 0
 	var/summon_cd = 0
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/death(gibbed)
+	..()
+	var/turf/deathspot = get_turf(src)
+	new /obj/item/natural/abyssalflame(deathspot)
+	update_icon()
+	qdel(src)
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/OpenFire(atom/A)

@@ -329,6 +329,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 		summoned.status_flags += GODMODE//It's not meant to be killable until released from it's planar binding.
 		summoned.candodge = FALSE
 		animate(summoned, color = "#ff0000",time = 5)
+		summoned.move_resist = MOVE_FORCE_EXTREMELY_STRONG
 		summoned.binded = TRUE
 		return summoned
 
@@ -371,7 +372,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons an fae sprite"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
 
 /datum/runerituals/summoning/glimmer
@@ -379,7 +380,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons an fae spirit"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
 
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
 /datum/runerituals/summoning/dryad
@@ -387,7 +388,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons an drayd"
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
 
 /datum/runerituals/summoning/sylph
@@ -395,7 +396,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons an archfae"
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/natural/heartwoodcore = 1, /obj/item/natural/melded/t3 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/heartwoodcore = 1, /obj/item/natural/melded/t3 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
 
 /datum/runerituals/summoning/crawler

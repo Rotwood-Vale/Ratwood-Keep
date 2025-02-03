@@ -38,6 +38,7 @@
 			if(H.head)
 				to_chat(H, span_warning("I'm already wearing something on my head."))
 				return
+
 			else if(H.equip_to_slot_if_possible(hood,SLOT_HEAD,0,0,1))
 				testing("begintog")
 				hoodtoggled = TRUE
@@ -47,6 +48,7 @@
 				else
 					if(toggle_icon_state)
 						src.icon_state = "[newicon]-hood"
+						hood.icon_state = newicon
 				H.update_inv_wear_suit()
 				H.update_inv_cloak()
 				H.update_inv_neck()
@@ -64,6 +66,7 @@
 		src.icon_state = "[initial(icon_state)]"
 	else
 		src.icon_state = newicon
+		hood.icon_state = newicon
 	hoodtoggled = FALSE
 	if(ishuman(hood.loc))
 		var/mob/living/carbon/H = hood.loc
@@ -228,13 +231,16 @@
 	toggle_icon_state = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/cloth
-	flags_inv = HIDEHAIR|HIDEFACIALHAIR|HIDEEARS
+	flags_inv = HIDEHAIR|HIDEFACIALHAIR//|HIDEEARS
 	block2add = FOV_BEHIND
+	var/newicon
+	var/robe_count = 0	/// This var basicly counts the numbers of times this robe has changes its appearence
 
 /obj/item/clothing/head/hooded/magehood/adept
 	name = "hood"
 	icon_state = "adept-red"
 	item_state = "adept-red"
+
 
 /obj/item/clothing/head/hooded/magehood/sorcerer
 	name = "hood"

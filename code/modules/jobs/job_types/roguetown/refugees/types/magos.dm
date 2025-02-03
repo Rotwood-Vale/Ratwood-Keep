@@ -148,7 +148,7 @@
 			H.change_stat("constitution", -2)
 			H.change_stat("endurance", -1)
 			H.change_stat("speed", -1)
-			H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can level arcane to get them
+			H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can make a spellbook to get some.
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			H.set_patron(/datum/patron/zizo)

@@ -385,7 +385,7 @@ GLOBAL_LIST(teleport_runes)
 	name = "Knowledge rune"
 	desc = "arcane symbols pulse upon the ground..."
 	icon_state = "6"
-	invocation = "Thal’miren vek’laris un’vethar!"
+	invocation = "Thal’ un’vethar!"
 	color = "#3A0B61"
 	spellbonus = 15
 	scribe_damage = 10
@@ -460,7 +460,7 @@ GLOBAL_LIST(teleport_runes)
 	tier = 2
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32
-	invocation = "Thal’miren vek’laris un’vethar!"
+	invocation = "Ral’kor vek’varun eyn’torath!"
 	layer = SIGIL_LAYER
 	can_be_scribed = TRUE
 	ritual_number = TRUE
@@ -491,7 +491,7 @@ GLOBAL_LIST(teleport_runes)
 	tier = 3
 	pixel_x = -64 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -64
-	invocation = "Thal’miren vek’laris un’vethar!"
+	invocation = "Zar’kalthra ul’norak ven’thelis!"
 
 
 /obj/effect/decal/cleanable/roguerune/arcyne/wall
@@ -657,9 +657,6 @@ GLOBAL_LIST(teleport_runes)
 			to_chat(living_invoker,  span_italics("[src] saps your strength!"))
 	do_invoke_glow()
 
-/obj/effect/decal/cleanable/roguerune/arcyne/enchantment
-	invocation = "Vey’thralis en’kael dun’vora!"
-
 
 /obj/effect/decal/cleanable/roguerune/arcyne/teleport
 	name = "planar convergence matrix"
@@ -774,6 +771,7 @@ GLOBAL_LIST(teleport_runes)
 	name = "confinement matrix"
 	desc = "A relatively basic confinement matrix used to hold small things when summoned."
 	ritual_number = TRUE
+	icon_state = "summon"
 	invocation = "Rhegal vex'ultraa!"
 	tier = 1
 	can_be_scribed = TRUE
@@ -791,6 +789,7 @@ GLOBAL_LIST(teleport_runes)
 		summoned_mob.status_flags -= GODMODE//remove godmode
 		summoned_mob.candodge = TRUE
 		summoned_mob.binded = FALSE
+		summoned_mob.move_resist = MOVE_RESIST_DEFAULT
 		summoned_mob = null
 		summoning = FALSE
 		return
@@ -859,9 +858,6 @@ GLOBAL_LIST(teleport_runes)
 	pixel_y = -96
 	pixel_z = 0
 	can_be_scribed = TRUE
-
-/obj/effect/decal/cleanable/roguerune/arcyne/enchanting
-
 
 
 

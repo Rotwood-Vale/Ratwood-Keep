@@ -1,4 +1,12 @@
 
+/obj/structure/fluff/walldeco/mageguild
+	name = "Mage's Guild"
+	icon_state = "mageguild"
+
+/obj/effect/turf_decal/magedecal
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "imbuement2"
+
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/arcyne_wall
 	desc = "A wall of pure arcyne force."
@@ -19,7 +27,7 @@
 
 /obj/structure/arcyne_wall/caster
 	var/mob/caster
-
+s
 /obj/structure/arcyne_wall/caster/Initialize(mapload, mob/summoner)
 	. = ..()
 	caster = summoner
@@ -95,11 +103,12 @@
 
 
 /obj/structure/well/fountain/mana
-	name = "water fountain"
+	name = "mana fountain"
 	desc = ""
 	icon = 'icons/roguetown/misc/64x64.dmi'
-	icon_state = "fountain"
+	icon_state = "manafountain"
 	layer = BELOW_MOB_LAYER
+	pixel_x = -16
 	layer = -0.1
 
 /obj/structure/well/fountain/mana/onbite(mob/user)
@@ -165,9 +174,12 @@
 	var/active = FALSE
 	var/mob/living/guardian = null
 	anchored = TRUE
-	density = TRUE
+	density = FALSE
 	var/time_between_uses = 12000
 	var/last_process = 0
+/obj/structure/leyline/Initialize()
+	.=..()
+	last_process = world.time
 
 /obj/structure/leyline/attack_hand(mob/living/user)
 	. = ..()
@@ -176,23 +188,113 @@
 	if(last_process + time_between_uses > world.time)
 		to_chat(user, span_notice("The leyline appears to be drained of energy."))
 		return
-	if(!active)
-		to_chat(user, span_notice("I wave a hand through the circle of rocks. Nothing happens."))
-	last_process = world.time
-	update_icon()
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon)), time_between_uses)
-	if(guardian)
-		to_chat(user, span_danger("The leyline is abuzz with energy in a feedback from the [guardian]! It lashes out at me!"))
-		user.electrocute_act(10)
-
-	if(prob(60) && (!guardian))
-		if(do_after(user, 60))
-			to_chat(user, span_notice("I reach out towards the active leyline, peering within- and something peers back!"))
-			sleep(2 SECONDS)
-			guardian = new /mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan(src)
-			src.visible_message(span_danger("[src] emerges from the leyline rupture!"))
+	if(!isarcyne(user))
+		if(!active)
+			to_chat(user, span_notice("I wave a hand through the circle of rocks. Nothing happens."))
+			return
+		else
+			if(prob(60) && (!guardian))
+				if(do_after(user, 60))
+					to_chat(user, span_notice("I reach out towards the active leyline, peering within- and something peers back!"))
+					sleep(2 SECONDS)
+					guardian = new /mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan(src.loc, src)
+					src.visible_message(span_danger("[src] emerges from the leyline rupture!"))
+			else
+				if(do_after(user, 60))
+					to_chat(user, span_notice("I reach out towards the active leyline, and it shatters! A large, usable piece of it drops at your feet."))
+					new /obj/item/natural/leyline(user.loc)
+					active = FALSE
+					icon_state = "inactiveleyline"
+					name = "inactive leyline"
+					desc = "A curious arrangement of stones."
+					update_icon()
+					last_process = world.time
 
 	else
-		if(do_after(user, 60))
-			to_chat(user, span_notice("I reach out towards the active leyline, and it shatters! A large, usable piece of it drops at your feet."))
-			new /obj/item/natural/leyline(user)
+		if(!active)
+			to_chat(user, span_notice("I wave a hand through the circle of rocks, and pulse my arcyne magic through it. The leyline activates!"))
+			icon_state = "leylinerupture"
+			name = "active leyline"
+			desc = "An active tear into the leyline. It gives off plenty of energy"
+			active = TRUE
+			update_icon()
+		else
+			if(guardian)
+				if(do_after(user, 60))
+					to_chat(user, span_danger("The leyline is abuzz with energy in a feedback from the [guardian]! It lashes out at me!"))
+					user.electrocute_act(10)
+
+			if(prob(60) && (!guardian))
+				if(do_after(user, 60))
+					to_chat(user, span_notice("I reach out towards the active leyline, peering within- and something peers back!"))
+					sleep(2 SECONDS)
+					guardian = new /mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan(src.loc, src)
+					src.visible_message(span_danger("[guardian] emerges from the leyline rupture!"))
+
+			else
+				if(do_after(user, 60))
+					to_chat(user, span_notice("I reach out towards the active leyline, and it shatters! A large, usable piece of it drops at your feet."))
+					new /obj/item/natural/leyline(user.loc)
+					active = FALSE
+					icon_state = "inactiveleyline"
+					name = "inactive leyline"
+					desc = "A curious arrangement of stones."
+					update_icon()
+					last_process = world.time
+
+/obj/structure/manaflower
+	name = "manaflower"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "manabloom"
+	color = null
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1)
+
+/obj/structure/manaflower/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom (get_turf(src))
+		qdel(src)
+/obj/structure/manaflower/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+
+/obj/structure/voidstoneobelisk
+	name = "Voidstone Obelisk"
+	desc = "A smooth unnatural Obelisk, looking at it provides the sense of unease."
+	icon = 'icons/mob/summonable/32x32.dmi'
+	icon_state = "dormantobelisk"
+	anchored = TRUE
+	density = TRUE
+
+/obj/structure/voidstoneobelisk/attacked_by(obj/item/I, mob/living/user)
+	user.changeNext_move(CLICK_CD_MELEE)
+	var/newforce = get_complex_damage(I, user, blade_dulling)
+	if(!newforce)
+		return 0
+	if(newforce < damage_deflection)
+		return 0
+	if(user.used_intent.no_attack)
+		return 0
+	log_combat(user, src, "attacked", I)
+	var/verbu = "hits"
+	verbu = pick(user.used_intent.attack_verb)
+	if(newforce > 1)
+		if(user.stamina_add(5))
+			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
+	user.visible_message(span_danger("[src] comes to life, archaic stone shifting into position!"))
+	sleep(2)
+	new /mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk(src.loc)
+	qdel(src)
+
+/obj/structure/voidstoneobelisk/attack_hand(mob/living/carbon/human/user)
+	to_chat(user, span_notice("You reach out to touch the abberant obelisk..."))
+	if(do_after(user, 3 SECONDS, target = src))
+		user.visible_message(span_danger("[src] comes to life, archaic stone shifting into position!"))
+		sleep(2)
+		new /mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk(src.loc)
+		qdel(src)

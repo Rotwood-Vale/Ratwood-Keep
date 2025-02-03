@@ -8,7 +8,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 
 
 /* MAGE GAMEPLAY LOOP NOTES:
-The amount of spellpoints mages has veries fairly significantly.
+The amount of spellpoints mages has varies fairly significantly.
 Highly dependant on the mage's book quality for total amount, multiplied by a learning modifier dependant on arcana skill and reading as well as int.
 That said, mage apprentices for the most part, start off with 3 (6 if counting the first night's rest) spell points.
 Court magos has a total of 17 points, To allow for picking of their 'strongest' spell, between greater fireball, meteor, and sundering lightning.
@@ -33,9 +33,8 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	var/list/spell_choices = list(
 		/obj/effect/proc_holder/spell/invoked/projectile/fireballgreater,// 10 cost	combat, AOE heavy single target damage
 		/obj/effect/proc_holder/spell/invoked/meteor_storm,				// 10 cost	combat, LARGE AOE, light damage.
-		/obj/effect/proc_holder/spell/invoked/sundering_lightningm		// 10 cost	combat, upper level AOE hard stunning damage
+		/obj/effect/proc_holder/spell/invoked/sundering_lightning,		// 10 cost	combat, upper level AOE hard stunning damage
 		/obj/effect/proc_holder/spell/invoked/projectile/fireball,		// 3 cost	combat, damaging AOE + damages worn/held things
-		/obj/effect/proc_holder/spell/invoked/arcyne_storm,				// 3 cost	combat, light damaging AOE, stall/area denial spell
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,	// 3 cost	combat, single target damage, knockdown
 		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,		// 3 cost	combat, burstfire single target damage
 		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,	// 3 cost	combat, single target single shot damage
@@ -44,12 +43,13 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,		// 3 cost	utility hold spell. Target unable to move, but can fight.
 		/obj/effect/proc_holder/spell/invoked/findfamiliar,				// 3 cost	combat, summon spell.
 		/obj/effect/proc_holder/spell/invoked/push_spell,				// 3 cost	localized AOE knockback spell. Knocksdown/disarms victims
+		/obj/effect/proc_holder/spell/invoked/arcyne_storm,				// 2 cost	combat, light damaging AOE, stall/area denial spell
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,		// 2 cost	utility, dark sight
 		/obj/effect/proc_holder/spell/invoked/haste,					// 2 cost	utility/combatbuff, faster mve speed.
 		/obj/effect/proc_holder/spell/targeted/summonweapon,			// 2 cost	utility/combat, summons a marked weapon to caster.
 		/obj/effect/proc_holder/spell/invoked/mending,					// 2 cost	utility, repairs items.
 		/obj/effect/proc_holder/spell/invoked/message,					// 2 cost	utility, messages anyone you know the name of.
-		/obj/effect/proc_holder/spell/invoked/blade_burst,				// 2 cost	single target damage localized on rndm leg. possible bone break.
+		/obj/effect/proc_holder/spell/invoked/blade_burst,				// 2 cost	combat, single target damage localized on rndm leg. possible bone break.
 		/obj/effect/proc_holder/spell/invoked/projectile/fetch,			// 2 cost	utility/combat, pulls single target closer
 		/obj/effect/proc_holder/spell/invoked/projectile/repel,			// 2 cost	utility/combat, flings single target away
 		/obj/effect/proc_holder/spell/invoked/forcewall_weak,			// 2 cost	utility/combat, places walls caster can walk through. stall spell.

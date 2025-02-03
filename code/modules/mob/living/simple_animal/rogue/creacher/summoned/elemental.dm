@@ -50,6 +50,8 @@
 			return "foreleg"
 	return ..()
 
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the elementals
+	return
 /datum/intent/simple/elemental_unarmed
 	name = "elemental unarmed"
 	icon_state = "instrike"
@@ -223,7 +225,7 @@
 	melee_damage_upper = 80
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
@@ -365,13 +367,13 @@
 	butcher_results = list()
 	faction = list("elemental")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 1000
-	maxHealth = 1000
+	health = 1500
+	maxHealth = 1500
 	melee_damage_lower = 40
 	melee_damage_upper = 70
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
