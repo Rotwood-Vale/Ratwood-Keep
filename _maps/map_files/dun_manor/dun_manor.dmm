@@ -23704,6 +23704,12 @@
 /obj/item/rogueweapon/huntingknife/idagger/silver,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/shop)
+"tab" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/tile/masonic{
+	dir = 8
+	},
+/area/rogue/indoors/town/manor)
 "tae" = (
 /turf/closed/wall/mineral/rogue/wooddark/horizontal,
 /area/rogue/outdoors/beach)
@@ -26244,6 +26250,10 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
+"vcM" = (
+/obj/structure/roguemachine/scomm/r,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement/keep)
 "vcT" = (
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/indoors/town/manor)
@@ -28400,10 +28410,6 @@
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/dwarfin)
-"wSM" = (
-/obj/structure/roguemachine/scomm/r,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement/keep)
 "wTj" = (
 /obj/structure/table/wood,
 /obj/item/natural/saddle,
@@ -51928,7 +51934,7 @@ pNQ
 pNQ
 dCX
 vUj
-wSM
+vcM
 iuO
 gOL
 gUU
@@ -75476,7 +75482,7 @@ pkG
 pkG
 vcT
 qNn
-cSR
+tab
 dEj
 vcT
 fAW
