@@ -13764,10 +13764,6 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
-"lgu" = (
-/obj/structure/roguemachine/scomm/r,
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement/keep)
 "lgG" = (
 /obj/structure/closet/crate/chest{
 	locked = 1;
@@ -18478,7 +18474,7 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/candle/skull,
+/obj/item/paper/scroll,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
 "oNE" = (
@@ -23683,11 +23679,11 @@
 /area/rogue/outdoors/town)
 "sYE" = (
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/item/natural/feather,
 /obj/structure/table/wood{
-	icon_state = "longtable_mid";
-	dir = 1
+	dir = 1;
+	icon_state = "longtable"
 	},
-/obj/item/paper/scroll,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
 "sZo" = (
@@ -27049,11 +27045,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "vUj" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable"
-	},
-/obj/item/natural/feather,
+/obj/structure/closet/crate/roguecloset/dark,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
 "vVs" = (
@@ -28408,6 +28400,10 @@
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/dwarfin)
+"wSM" = (
+/obj/structure/roguemachine/scomm/r,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement/keep)
 "wTj" = (
 /obj/structure/table/wood,
 /obj/item/natural/saddle,
@@ -51618,7 +51614,7 @@ pNQ
 pNQ
 dCX
 oNb
-iuO
+hMt
 bYX
 tml
 iuO
@@ -51775,7 +51771,7 @@ pNQ
 pNQ
 dCX
 sYE
-hMt
+iuO
 iuO
 ehu
 ehu
@@ -51932,7 +51928,7 @@ pNQ
 pNQ
 dCX
 vUj
-lgu
+wSM
 iuO
 gOL
 gUU
