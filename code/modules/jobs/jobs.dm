@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(noble_positions, list(
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
-	"Head Butler",
+	"Head Butler", // must always stay at the first position of the list
 	"Jester",
 ))
 
