@@ -151,6 +151,7 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	max_storage = 6
 	ammo_type = list(/obj/item/smokebomb)
+	color = "#b5b5b5"
 
 /obj/item/ammo_holder/bomb/smokebombs/Initialize()
 	. = ..()
