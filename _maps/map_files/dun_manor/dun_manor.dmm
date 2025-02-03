@@ -9458,12 +9458,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/woods)
-"hMt" = (
-/obj/effect/decal/cobbleedge{
-	dir = 5
-	},
-/turf/open/floor/rogue/ruinedwood,
-/area/rogue/under/town/basement/keep)
 "hMG" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -51773,7 +51767,7 @@ pNQ
 pNQ
 dCX
 sYE
-hMt
+iuO
 iuO
 ehu
 ehu
