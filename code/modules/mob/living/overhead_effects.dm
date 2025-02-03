@@ -21,6 +21,7 @@
 			overlays_standing[OBJ_LAYER] = appearance
 			apply_overlay(OBJ_LAYER)
 			addtimer(CALLBACK(humie, PROC_REF(clear_overhead_indicator), appearance), clear_time)
+			playsound(src, soundin, 100, FALSE, extrarange = -1, ignore_walls = FALSE)
 		else
 			var/list/can_see = list(src)
 			for(var/mob/M in viewers(world.view, src))
@@ -31,7 +32,8 @@
 			for(var/mob/M in can_see)
 				new /obj/effect/temp_visual/stress_event/invisible(get_turf(src.loc), M, icon_path, overlay_name, offset_list)
 				if(soundin)
-					playsound(M, soundin, 100, FALSE, extrarange = -1, ignore_walls = FALSE)
+					var/turf/T = get_turf(src)
+					M.playsound_local(T, soundin, 100, FALSE)
 
 /obj/effect/temp_visual/stress_event
 	icon = 'icons/mob/overhead_effects.dmi'
