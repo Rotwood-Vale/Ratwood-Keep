@@ -82,6 +82,18 @@
 		/datum/body_marking_set/kobold_scale,
 	)
 	body_markings = list(
+		/datum/body_marking/small/plain,
+		/datum/body_marking/small/sock,
+		/datum/body_marking/small/socklonger,
+		/datum/body_marking/small/tips,
+		/datum/body_marking/small/belly,
+		/datum/body_marking/small/bellyslim,
+		/datum/body_marking/small/butt,
+		/datum/body_marking/small/tie,
+		/datum/body_marking/small/tiesmall,
+		/datum/body_marking/small/backspots,
+		/datum/body_marking/small/front,
+		/datum/body_marking/small/spotted,
 	)
 	languages = list(
 		/datum/language/common,
