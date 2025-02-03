@@ -9458,6 +9458,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/woods)
+"hMt" = (
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement/keep)
 "hMG" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -13760,6 +13764,10 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
+"lgu" = (
+/obj/structure/roguemachine/scomm/r,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement/keep)
 "lgG" = (
 /obj/structure/closet/crate/chest{
 	locked = 1;
@@ -51615,7 +51623,7 @@ bYX
 tml
 iuO
 iuO
-dCX
+ixc
 pmA
 cVE
 heh
@@ -51767,12 +51775,12 @@ pNQ
 pNQ
 dCX
 sYE
+hMt
 iuO
-iuO
 ehu
 ehu
 ehu
-dCX
+ixc
 pmA
 rxQ
 gVe
@@ -51924,7 +51932,7 @@ pNQ
 pNQ
 dCX
 vUj
-iuO
+lgu
 iuO
 gOL
 gUU
@@ -52080,9 +52088,9 @@ exi
 pNQ
 pNQ
 dCX
-dCX
-dCX
-dCX
+ixc
+ixc
+ixc
 dCX
 dCX
 dCX
