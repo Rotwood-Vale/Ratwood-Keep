@@ -127,7 +127,7 @@ All foods are distributed among various categories. Use common sense.
 					STOP_PROCESSING(SSobj, src)
 
 /obj/item/reagent_containers/food/snacks/can_craft_with()
-	if(eat_effect == /datum/status_effect/debuff/rotfood)
+	if(eat_effect == /datum/status_effect/debuff/rotfood || bitecount > 0)
 		return FALSE
 	return ..()
 
