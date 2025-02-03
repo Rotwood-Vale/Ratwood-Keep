@@ -144,3 +144,18 @@
 	update_icon()
 */
 
+/obj/item/ammo_holder/bomb
+	name = "bomb pouch"
+	icon_state = "pouch0"
+	item_state = "pouch"
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
+	max_storage = 6
+	ammo_type = list(/obj/item/smokebomb)
+	color = "#b5b5b5"
+
+/obj/item/ammo_holder/bomb/smokebombs/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/smokebomb/A = new()
+		ammo += A
+	update_icon()

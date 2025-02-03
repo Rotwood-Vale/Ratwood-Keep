@@ -539,4 +539,20 @@
 	result = /obj/item/boulder
 	reqs = list(/obj/item/natural/stone = 5)
 	always_available = TRUE
+	
+//Bombs
 
+/datum/crafting_recipe/roguetown/smokebombefficient
+	name = "Smoke bomb (Ash Syrum)"
+	result = list(/obj/item/smokebomb,
+				  /obj/item/smokebomb,)
+	reqs = list(/datum/reagent/alch/syrum_ash = 7,
+				/obj/item/ingot/iron = 1)
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/smokebomb
+	name = "Smoke bomb (Coal)"
+	result = /obj/item/smokebomb
+	reqs = list(/obj/item/rogueore/coal = 1,
+				/obj/item/ingot/iron = 1)
+	req_table = TRUE
