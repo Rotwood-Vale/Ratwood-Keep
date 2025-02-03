@@ -64,4 +64,3 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", -3)
 		H.change_stat("intelligence", 5)
-	H.verbs |= /mob/proc/haltyell

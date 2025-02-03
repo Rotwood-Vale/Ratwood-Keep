@@ -33,6 +33,19 @@
 	. = ..()
 	if(GLOB.lordsurname && H)
 		give_lord_surname(H)
+	if(ishuman(H))
+		var/index = findtext(H.real_name, " ")
+		if(index)
+			index = copytext(H.real_name, 1,index)
+		if(!index)
+			index = H.real_name
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/honorary = "Lord"
+		if(H.gender == FEMALE)
+			honorary = "Lady"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 
 /datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
