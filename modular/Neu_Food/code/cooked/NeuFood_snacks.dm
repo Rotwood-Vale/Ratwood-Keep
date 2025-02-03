@@ -11,7 +11,7 @@
 	eat_effect = null
 	slices_num = 0
 	name = "frysteak"
-	desc = "A slab of beastflesh, fried to a perfect medium-rare(Serve as is or add Pepper, Onion or use with salt to make a Coppiette)"
+	desc = "A slab of beastflesh, fried to a perfect medium-rare (Serve as is or add Pepper, Onion or use with salt to make a Coppiette)"
 	icon_state = "frysteak"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
 	rotprocess = SHELFLIFE_DECENT
@@ -66,6 +66,7 @@
 	icon_state = "grenzbun"
 	foodtype = GRAIN | MEAT
 	warming = 5 MINUTES
+	bitesize = 4
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
 
@@ -112,7 +113,7 @@
 
 /*	.............   Twin fried cackleberries   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/two
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
 	tastes = list("fried cackleberries" = 1)
 	name = "fried cackleberries"
 	desc = "Double the yolks, double the fun."
@@ -210,8 +211,8 @@
 	name = "cooked cabbage"
 	icon_state = "cabbage_fried"
 	desc = "A peasant's delight."
-	bitesize = 6
-	list_reagents = list(/datum/reagent/consumable/nutriment = 6)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	tastes = list("warm cabbage" = 1)
 	rotprocess = SHELFLIFE_LONG
 /obj/item/reagent_containers/food/snacks/rogue/preserved/cabbage_fried/attackby(obj/item/I, mob/living/user, params)
@@ -272,8 +273,8 @@
 	name = "fried onion"
 	desc = "Seared onions roasted to a delicious set of rings."
 	icon_state = "onion_fried"
-	bitesize = 6
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	tastes = list("savoury morsel" = 1)
 	rotprocess = SHELFLIFE_DECENT
 /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried/attackby(obj/item/I, mob/living/user, params)
@@ -298,8 +299,8 @@
 	name = "fried potato"
 	desc = "Potato bits, well roasted."
 	icon_state = "potato_fried"
-	bitesize = 3
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	tastes = list("warm potato" = 1)
 	rotprocess = SHELFLIFE_LONG
 	

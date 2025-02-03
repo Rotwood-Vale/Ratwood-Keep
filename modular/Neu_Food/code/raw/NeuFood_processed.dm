@@ -9,10 +9,11 @@
 /obj/item/reagent_containers/food/snacks/fat
 	icon = 'modular/Neu_Food/icons/food.dmi'
 	name = "fat"
-	desc = ""
+	desc = "The raw fat from a butchered animal, tastes great most of the time (Add mince to make a wiener, use with salt and dryingrack to make salo)"
 	icon_state = "fat"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+
 /obj/item/reagent_containers/food/snacks/fat/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
@@ -68,7 +69,7 @@
 // -------------- CANDY -----------------
 /obj/item/reagent_containers/powder/sugar
 	name = "sugar"
-	desc = ""
+	desc = "Sweet embrace, goes great with pastries."
 	gender = PLURAL
 	icon_state = "sugar"
 	list_reagents = list(/datum/reagent/consumable/sugar = 1)
@@ -308,7 +309,7 @@
 	name = "salumoi"
 	icon_state = "salumoi_slice"
 	fried_type = null
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	bitesize = 1
 	tastes = list("salted meat" = 1)
 
@@ -443,7 +444,7 @@
 /obj/item/reagent_containers/food/snacks/butter
 	icon = 'modular/Neu_Food/icons/food.dmi'
 	name = "stick of butter"
-	desc = ""
+	desc = "The material that was used to make some of the best foods around, and the reason we have butterdough. Tastes good with toast."
 	icon_state = "butter6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTER_NUTRITION)
 	foodtype = DAIRY
@@ -614,12 +615,13 @@
 // -------------- CHEESE -----------------
 /obj/item/reagent_containers/food/snacks/rogue/cheese
 	name = "fresh cheese"
+	desc = "A fresh batch of glorious cheese, goes great on buns or as a cake ingredient! (Use with cloth and 3 other cheeses to make a cheese wheel)"
 	icon_state = "freshcheese"
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION)
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
-	foodtype = GRAIN
+	foodtype = DAIRY
 	eat_effect = null
 	rotprocess = SHELFLIFE_DECENT
 	become_rot_type = null
@@ -632,8 +634,9 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION*4)
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cheese" = 1)
+	foodtype = DAIRY
 	eat_effect = null
-	rotprocess = SHELFLIFE_LONG
+	rotprocess = SHELFLIFE_DECENT //Need it to be reasonably low to be able to make aged cheese
 	slices_num = 6
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
@@ -652,11 +655,12 @@
 	name = "wedge of cheese"
 	icon_state = "cheese_wedge"
 	bitesize = 3
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
+	foodtype = DAIRY
 	eat_effect = null
-	rotprocess = SHELFLIFE_LONG
+	rotprocess = SHELFLIFE_DECENT
 	slices_num = 3
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
@@ -682,6 +686,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
+	foodtype = DAIRY
 	eat_effect = null
 	rotprocess = 20 MINUTES
 	slices_num = null
