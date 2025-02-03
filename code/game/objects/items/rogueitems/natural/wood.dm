@@ -94,7 +94,7 @@
 			if(user.is_holding(src))
 				user.dropItemToGround(src)
 				user.put_in_hands(S)
-			user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+			user.mind.add_sleep_experience(/datum/skill/craft/carpentry, (user.STAINT*0.5))
 			new /obj/effect/decal/cleanable/debris/woody(get_turf(src))
 			qdel(src)
 			return
