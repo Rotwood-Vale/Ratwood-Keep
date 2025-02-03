@@ -115,11 +115,6 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	desc = "Ебать. Одежда."
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress
 
-/datum/loadout_item/sexydress
-	name = "Sexy Dress"
-	desc = "Ебать. Одежда."
-	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
-
 /datum/loadout_item/straplessdress
 	name = "Strapless Dress"
 	desc = "Ебать. Одежда."

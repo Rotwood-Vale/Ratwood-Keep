@@ -49,6 +49,7 @@
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
 			cloak = /obj/item/clothing/cloak/templar/necran
 		if("Pestra")
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/pestrahelm
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
 		if("Malum")
@@ -60,15 +61,19 @@
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
 			cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
 		if("Eora")
-			head = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/eorahelm
 			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
 			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 			mask = /obj/item/clothing/mask/rogue/facemask/goldmask
 		if("Xylix")
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar
+			if(prob(50))
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/xylixcagehelm
+			else
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/xylixhelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/xylix
 			wrists = /obj/item/clothing/neck/roguetown/psicross/xylix
 		if("Abyssor")
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorhelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/abyssor
 			H.mind?.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk

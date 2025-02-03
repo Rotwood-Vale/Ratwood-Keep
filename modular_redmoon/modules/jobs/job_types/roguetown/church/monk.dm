@@ -5,4 +5,4 @@
 	поите бедный люд, надеясь, что сегодня случится что-то интересное."
 
 /datum/outfit/job/roguetown/monk
-	allowed_patrons = list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/divine/xylix)
+	allowed_patrons = list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/divine/xylix, /datum/patron/divine/ravox, /datum/patron/divine/abyssor)

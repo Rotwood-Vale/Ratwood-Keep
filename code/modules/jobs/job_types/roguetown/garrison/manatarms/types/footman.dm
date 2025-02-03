@@ -6,7 +6,7 @@
 
 /datum/outfit/job/roguetown/manorguard/footman/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/sallet
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	if(prob(50))
 		beltl = /obj/item/rogueweapon/sword
 	else

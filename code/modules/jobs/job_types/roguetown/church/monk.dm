@@ -86,6 +86,20 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/xylix
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
+		if(/datum/patron/divine/ravox)
+			head = /obj/item/clothing/head/roguetown/roguehood/flagellanthood
+			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
+			pants = /obj/item/clothing/under/roguetown/loincloth
+			shoes = shoes = /obj/item/clothing/shoes/roguetown/sandals
+			shirt =	/obj/item/clothing/suit/roguetown/shirt/undershirt/ravoxrobe
+		if(/datum/patron/divine/abyssor)
+			head = /obj/item/clothing/head/roguetown/helmet/abyssorhat
+			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
+			pants = /obj/item/clothing/under/roguetown/tights/purple
+			armor =	/obj/item/clothing/suit/roguetown/shirt/robe/abyssoracorobe
+			shoes = /obj/item/clothing/shoes/roguetown/boots
+			H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 3, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
 		else
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
