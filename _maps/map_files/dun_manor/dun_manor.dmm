@@ -5898,7 +5898,8 @@
 "eNy" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "manor";
-	name = "Council Office"
+	name = "Council Office";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
@@ -8235,6 +8236,7 @@
 "gOL" = (
 /obj/structure/bed/rogue/inn,
 /obj/effect/landmark/start/councillor,
+/obj/item/bedsheet/rogue/pelt,
 /turf/open/floor/carpet/red,
 /area/rogue/under/town/basement/keep)
 "gPG" = (
@@ -8993,8 +8995,9 @@
 /area/rogue/indoors/town/shop)
 "hws" = (
 /obj/structure/mineral_door/wood/fancywood{
-	lockid = "manor";
-	name = "Marshal's Quarters"
+	lockid = "sheriff";
+	name = "Marshal's Quarters";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
@@ -17120,7 +17123,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
-/turf/closed,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "oaL" = (
 /obj/structure/closet/crate/chest{
