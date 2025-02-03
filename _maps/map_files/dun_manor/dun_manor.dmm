@@ -9463,7 +9463,7 @@
 	dir = 5
 	},
 /turf/open/floor/rogue/ruinedwood,
-/area/rogue/indoors/town/manor)
+/area/rogue/under/town/basement/keep)
 "hMG" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -75478,7 +75478,7 @@ pkG
 pkG
 vcT
 qNn
-ipx
+cSR
 dEj
 vcT
 fAW
