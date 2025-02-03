@@ -65,4 +65,4 @@
 
 /mob/living/proc/play_mental_break_indicator()
 	play_overhead_indicator('icons/mob/overhead_effects.dmi', "mentalbreak", 20)
-	playsound(src, 'sound/stressaffliction.ogg', 100, FALSE, ignore_walls = FALSE)
+	playsound(src, 'sound/stressaffliction.ogg', 100, FALSE, ignore_walls = FALSE, OBJ_LAYER)
