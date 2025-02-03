@@ -173,3 +173,23 @@
 	item_state = "mastbra"
 	desc = "This... bra is a craftsmanship marvel. Made with the finest leather. Strong, VERY-VERY nimible, reliable."
 	flags_inv = HIDEBOOB
+
+//CAPTAIN
+/obj/item/clothing/suit/roguetown/armor/plate/halfplateroyalguard
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "royal halfplate"
+	desc = "A basic cuirass of steel, decorated with gold."
+	body_parts_covered = CHEST|VITALS
+	icon_state = "royal"
+	item_state = "royal"
+	icon = 'modular_redmoon/icons/armor.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/armor_onmob.dmi'
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	do_sound = FALSE
+	blocking_behavior = null
+	max_integrity = 675	//3 steel, 3 difficulty, and uncraftable
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
+	armor_class = ARMOR_CLASS_MEDIUM

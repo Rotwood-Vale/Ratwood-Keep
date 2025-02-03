@@ -41,7 +41,7 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
-/obj/item/clothing/head/roguetown/helmet/footmanhelmet
+/obj/item/clothing/head/roguetown/helmet/heavy/footmanhelmet
 	name = "footman helmet"
 	desc = "A helmet worn in Grenzelhoft by rank and file soldiery. The color of the plume is often used to specify a soldier's batallion, making it easier to coordinate in battle."
 	block2add = FOV_BEHIND
@@ -55,7 +55,7 @@
 	var/picked = FALSE
 	smeltresult = /obj/item/ingot/iron
 
-/obj/item/clothing/head/roguetown/helmet/footmanhelmet/attack_right(mob/user)
+/obj/item/clothing/head/roguetown/helmet/heavy/footmanhelmet/attack_right(mob/user)
 	..()
 	if(!picked)
 		var/list/colors = list(
@@ -85,7 +85,7 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 
-/obj/item/clothing/head/roguetown/helmet/footmanhelmet/update_icon()
+/obj/item/clothing/head/roguetown/helmet/heavy/footmanhelmet/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
@@ -94,7 +94,7 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
-/obj/item/clothing/head/roguetown/helmet/grenzknighthelmet
+/obj/item/clothing/head/roguetown/helmet/heavy/grenzknighthelmet
 	name = "grenzelhoft knight helmet"
 	desc = "A helmet worn by Grenzelhoft knights, made of black-steel. The feathers on the back of it can be colored to show off ones noble house or allegiance."
 	block2add = FOV_BEHIND
@@ -108,7 +108,7 @@
 	var/picked = FALSE
 	smeltresult = /obj/item/ingot/iron
 
-/obj/item/clothing/head/roguetown/helmet/grenzknighthelmet/attack_right(mob/user)
+/obj/item/clothing/head/roguetown/helmet/heavy/grenzknighthelmet/attack_right(mob/user)
 	..()
 	if(!picked)
 		var/list/colors = list(
@@ -138,7 +138,7 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 
-/obj/item/clothing/head/roguetown/helmet/grenzknighthelmet/update_icon()
+/obj/item/clothing/head/roguetown/helmet/heavy/grenzknighthelmet/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
@@ -147,7 +147,7 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
-/obj/item/clothing/head/roguetown/helmet/decoratedknighthelm
+/obj/item/clothing/head/roguetown/helmet/heavy/decoratedknighthelm
 	name = "decorated knight helmet"
 	desc = "A lavish knight's helmet which allows a crest to be mounted on top."
 	block2add = FOV_BEHIND
@@ -161,7 +161,7 @@
 	var/picked = FALSE
 	smeltresult = /obj/item/ingot/steel
 
-/obj/item/clothing/head/roguetown/helmet/decoratedknighthelm/attack_right(mob/user)
+/obj/item/clothing/head/roguetown/helmet/heavy/decoratedknighthelm/attack_right(mob/user)
 	..()
 	if(!picked)
 		var/list/icons = list(
@@ -193,7 +193,7 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 
-/obj/item/clothing/head/roguetown/helmet/decoratedknighthelm/update_icon()
+/obj/item/clothing/head/roguetown/helmet/heavy/decoratedknighthelm/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
@@ -202,7 +202,7 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
-/obj/item/clothing/head/roguetown/helmet/decoratedhounskull
+/obj/item/clothing/head/roguetown/helmet/heavy/decoratedhounskull
 	name = "decorated hounskull"
 	desc = "A lavish hounskull which allows a crest to be mounted on top."
 	block2add = FOV_BEHIND
@@ -216,7 +216,7 @@
 	var/picked = FALSE
 	smeltresult = /obj/item/ingot/steel
 
-/obj/item/clothing/head/roguetown/helmet/decoratedhounskull/attack_right(mob/user)
+/obj/item/clothing/head/roguetown/helmet/heavy/decoratedhounskull/attack_right(mob/user)
 	..()
 	if(!picked)
 		var/list/icons = list(
@@ -248,7 +248,7 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 
-/obj/item/clothing/head/roguetown/helmet/decoratedhounskull/update_icon()
+/obj/item/clothing/head/roguetown/helmet/heavy/decoratedhounskull/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
@@ -468,3 +468,53 @@
 	flags_inv = HIDEHAIR|HIDEEARS
 	dynamic_hair_suffix = ""
 	edelay_type = 1
+
+/obj/item/clothing/head/roguetown/helmet/heavy/royalknight
+	name = "royal guard's helmet"
+	desc = "A helmet worn by those in the royal guard. Decorated with gold, its white feathers a sign of the oath made to protect the royals until death."
+	icon_state = "royalh"
+	item_state = "royalh"
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
+	adjustable = CAN_CADJUST
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/heavy/royalknight/black
+	color = CLOTHING_BLACK
+
+/obj/item/clothing/head/roguetown/helmet/heavy/royalknight/AdjustClothes(mob/user)
+	if(loc == user)
+		playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "royalhum"
+			body_parts_covered = HEAD|HAIR|EARS
+			flags_inv = HIDEHAIR
+			flags_cover = null
+			emote_environment = 0
+			update_icon()
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_head()
+			block2add = null
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			emote_environment = 3
+			update_icon()
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_head()
+		user.update_fov_angles()
+
+/obj/item/clothing/head/roguetown/helmet/heavy/royalknight/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
