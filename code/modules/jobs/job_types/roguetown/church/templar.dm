@@ -75,6 +75,7 @@
 		if("Abyssor")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorhelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/abyssor
+			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor
 			H.mind?.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
