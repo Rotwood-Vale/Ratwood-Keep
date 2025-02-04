@@ -38,8 +38,8 @@
 			return
 		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
 		var/cost = PA.cost
-		if(INQsway >= cost)
-			INQsway -= cost
+		if(fervor >= cost)
+			fervor -= cost
 			playsound(loc, 'sound/misc/purchase.ogg', 80, FALSE, -1)
 		else
 			say("The inquisition needs proof of your worth!")

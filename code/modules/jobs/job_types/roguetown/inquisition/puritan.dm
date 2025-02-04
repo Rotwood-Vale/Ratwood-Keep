@@ -21,7 +21,7 @@
 	give_bank_account = 200
 	min_pq = 8
 	max_pq = null
-	var/INQsway = 30
+	var/fervor = 30
 
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"
