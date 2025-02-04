@@ -21,6 +21,7 @@
 	give_bank_account = 200
 	min_pq = 8
 	max_pq = null
+	var/INQsway = 30
 
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"
@@ -74,6 +75,7 @@
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_PURITAN, TRAIT_GENERIC)
 
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Extract Confession"

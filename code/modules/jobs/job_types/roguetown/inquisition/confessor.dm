@@ -26,6 +26,7 @@ Please do not confuse the two.
 	give_bank_account = 3
 	min_pq = 4
 	max_pq = null
+	var/INQsway = 10
 
 /datum/outfit/job/roguetown/shepherd
 	name = "Confessor"

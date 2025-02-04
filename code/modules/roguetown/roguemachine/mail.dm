@@ -122,6 +122,7 @@
 				send_ooc_note("Confessions: [GLOB.confessors.len]/5", job = list("confessor", "inquisitor", "priest"))
 				playsound(loc, 'sound/magic/hallelujah.ogg', 100, FALSE, -1)
 				playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
+				h.mind.INQsway += 30
 		return
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/smallDelivery))
 		if(P.w_class >= WEIGHT_CLASS_BULKY)
