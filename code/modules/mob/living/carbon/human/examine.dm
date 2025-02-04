@@ -707,13 +707,14 @@
 			. += "<a href='?src=[REF(src)];inspect_limb=[checked_zone]'>Inspect [parse_zone(checked_zone)]</a>"
 			if(!(mobility_flags & MOBILITY_STAND) && user != src && (user.zone_selected == BODY_ZONE_CHEST))
 				. += "<a href='?src=[REF(src)];check_hb=1'>Listen to Heartbeat</a>"
-
-	if((!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes))
-		. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a>"
+				
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(get_dist(src, H) <= 2 + clamp(floor(((H.STAPER - 10) / 2)),-1, 2) && (!obscure_name || client?.prefs.masked_examine))
 			. += "<a href='?src=[REF(src)];task=assess;'>Assess</a>"
+
+	if((!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes))
+		. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a>"
 
 	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 	for(var/line in lines)
