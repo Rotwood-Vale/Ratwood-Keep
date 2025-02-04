@@ -2116,6 +2116,7 @@
 #include "modular_redmoon\code\modules\admin\holder2.dm"
 #include "modular_redmoon\code\modules\armor\rogueclothes\armor.dm"
 #include "modular_redmoon\code\modules\client\client_procs.dm"
+#include "modular_redmoon\code\modules\client\preferences_toggles.dm"
 #include "modular_redmoon\code\modules\client\customizer\organs\genitals.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\armor.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\cloaks.dm"

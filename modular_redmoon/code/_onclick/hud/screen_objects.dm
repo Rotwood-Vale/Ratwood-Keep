@@ -1,3 +1,6 @@
+/mob/living
+	var/tail_toggle = TRUE
+
 /atom/movable/screen/quad_intents/rus
 	icon = 'icons/mob/ru_roguehud.dmi'
 

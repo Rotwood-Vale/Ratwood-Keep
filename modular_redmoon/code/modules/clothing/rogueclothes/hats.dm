@@ -390,7 +390,7 @@
 	item_state = "xylixhelm"
 	icon = 'modular_redmoon/icons/hats.dmi'
 	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
-	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	emote_environment = 3
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel

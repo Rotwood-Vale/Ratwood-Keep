@@ -4,6 +4,8 @@
 	var/can_wag = TRUE
 
 /datum/sprite_accessory/tail_feature/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	if(!owner.tail_toggle)
+		return null
 	return is_human_part_visible(owner, HIDETAIL)
 
 /datum/sprite_accessory/tail_feature/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
