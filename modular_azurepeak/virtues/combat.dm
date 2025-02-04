@@ -128,6 +128,22 @@
 		added_skills = list(list(/datum/skill/combat/maces, 1, 3))
 		handle_skills(recipient)
 
+/datum/virtue/combat/Brawler
+	name = "Brawler's Apprentice"
+	desc = "I have trained under a skilled brawler, and have some experience fighting with my fists. (+1 to Unarmed and Wrestlin, Up to Journeyman, Minimum Apprentice.)"
+
+/datum/virtue/combat/executioner/apply_to_human(mob/living/carbon/human/recipient)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/unarmed) < SKILL_LEVEL_APPRENTICE)
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else
+		added_skills = list(list(/datum/skill/combat/unarmed, 1, 3))
+		handle_skills(recipient)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/wrestling) < SKILL_LEVEL_APPRENTICE)
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else
+		added_skills = list(list(/datum/skill/combat/wrestling, 1, 3))
+		handle_skills(recipient)
+
 
 /datum/virtue/combat/bowman
 	name = "Toxophilite"
