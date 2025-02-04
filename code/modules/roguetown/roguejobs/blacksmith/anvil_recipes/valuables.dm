@@ -1,6 +1,5 @@
 /datum/anvil_recipe/valuables
 	i_type = "Valuables"
-	skill_level = 4
 
 /datum/anvil_recipe/valuables/special/ringf
 	name = "flame ring (+1 Fat, +1 stone, +1 Fiber)"
@@ -14,11 +13,14 @@
 	created_item = /obj/item/clothing/ringP
 	additional_items = list(/obj/item/clothing/neck/roguetown/psicross)
 
+/datum/anvil_recipe/valuables
+	appro_skill = /datum/skill/craft/blacksmithing
+	skill_level = 2
+
 /datum/anvil_recipe/valuables/gold
 	name = "Statue"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/roguestatue/gold
-	skill_level = 5
 
 /datum/anvil_recipe/valuables/silver
 	name = "Statue"
@@ -29,7 +31,6 @@
 	name = "Statue"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/roguestatue/iron
-	skill_level = 3
 
 /datum/anvil_recipe/valuables/steel
 	name = "Statue"
@@ -67,7 +68,6 @@
 	name = "Rings 3x"
 	req_bar = /obj/item/ingot/copper
 	created_item = list(/obj/item/clothing/ring/copper, /obj/item/clothing/ring/copper, /obj/item/clothing/ring/copper)
-	skill_level = 3
 
 //Gold Rings
 /datum/anvil_recipe/valuables/gold/emering
@@ -145,8 +145,6 @@
 	created_item = /obj/item/clothing/ring/diamonds
 
 // Copper rings
-/datum/anvil_recipe/valuables/copper
-	skill_level = 3
 
 /datum/anvil_recipe/valuables/copper/emering
 	name = "Gemerald Ring (+1 Gemerald)"
@@ -189,4 +187,3 @@
 	req_bar =  /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/silver, /obj/item/roguegem/blue, /obj/item/roguegem/violet, /obj/item/clothing/neck/roguetown/psicross)	
 	created_item = /obj/item/clothing/ring/dragon_ring
-	skill_level = 6

@@ -121,8 +121,6 @@
 		/datum/body_marking/backspots,
 		/datum/body_marking/front,
 		/datum/body_marking/tonage,
-		/datum/body_marking/harlequin,
-		/datum/body_marking/harlequinreversed,
 	)
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,

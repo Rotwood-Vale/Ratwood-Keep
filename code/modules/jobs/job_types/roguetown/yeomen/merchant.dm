@@ -46,12 +46,9 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	pants = /obj/item/clothing/under/roguetown/tights/sailor
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltl = /obj/item/gun/ballistic/firearm/arquebus_pistol //merchant usually gets his pistol from the map, but it's currently broken and doesn't appear, and also gets stolen often when latejoining
+	beltl = /obj/item/storage/keyring/merchant
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	backl = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/gold
-	backpack_contents = list(/obj/item/storage/keyring/merchant)
-
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 		H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()

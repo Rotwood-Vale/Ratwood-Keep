@@ -60,8 +60,6 @@
 	ADD_TRAIT(L, TRAIT_SEEPRICES, "[type]")
 	ADD_TRAIT(L, TRAIT_CRITICAL_RESISTANCE, "[type]")
 	ADD_TRAIT(L, TRAIT_HEAVYARMOR, "[type]")
-	ADD_TRAIT(L, TRAIT_SPECIALUNDEAD, "[type]") //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
-
 	L.cmode_music = 'sound/music/combat_cult.ogg'
 	L.faction = list("undead")
 	if(L.charflaw)

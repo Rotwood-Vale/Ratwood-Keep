@@ -72,27 +72,3 @@
 	fuze--
 	if(fuze <= 0)
 		explode(TRUE)
-
-/obj/item/smokebomb
-	name = "Smoke bomb"
-	desc = "Harmless smoke explosion, in a shell."
-	icon_state = "bomb_smoke"
-	icon = 'icons/roguetown/items/misc.dmi'
-	w_class = WEIGHT_CLASS_SMALL
-	throwforce = 0
-	throw_speed = 0.5
-
-/obj/item/smokebomb/proc/explodes(skipprob)
-	STOP_PROCESSING(SSfastprocess, src)
-	var/turf/T = get_turf(src)
-	playsound(T, 'sound/misc/explode/incendiary (1).ogg', 100)
-	for(T in view(1, T))
-		new/obj/effect/particle_effect/smoke(T)
-	qdel(src)
-
-/obj/item/smokebomb/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	..()
-	explodes()
-/obj/item/smokebomb/attack_self(mob/user)
-	..()
-	explodes()

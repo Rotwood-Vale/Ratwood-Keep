@@ -9,6 +9,18 @@
 	export_price = 4
 	importexport_amt = 10
 
+/datum/roguestock/stockpile/wood/plank
+	name = "Wood Plank"
+	desc = "Wooden planks ready to be worked."
+	item_type = /obj/item/natural/wood/plank
+	held_items = list(2, 2)
+	payout_price = 4
+	withdraw_price = 5
+	transport_fee = 3
+	export_price = 5
+	importexport_amt = 10
+	passive_generation = 5
+
 /datum/roguestock/stockpile/stone
 	name = "Stone"
 	desc = "High quality rocks of stone used for construction."

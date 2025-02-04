@@ -1,5 +1,5 @@
 /datum/job/roguetown/churchling
-	title = "Novitiate"
+	title = "Churchling"
 	flag = CHURCHLING
 	department_flag = YOUNGFOLK
 	faction = "Station"
@@ -10,8 +10,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
-	tutorial = "It doesnt matter if you are an orphan, your family were zealots so they sent you here, or you just decided to follow the path of the Gods yourself. \
-	You ended up in the Rockhillian Church, given a shelter and food, submitting to the will of Their eminence. You have faith, and the rest is meaningless."
+	tutorial = "Your family were zealots, they scolded you with a studded belt and prayed like sinners every waking hour of the day they weren’t toiling in the fields. You escaped them by becoming a churchling, and a guaranteed education isnt so bad."
 
 	outfit = /datum/outfit/job/roguetown/churchling
 	display_order = JDO_CHURCHLING
@@ -22,6 +21,15 @@
 
 /datum/outfit/job/roguetown/churchling/pre_equip(mob/living/carbon/human/H)
 	..()
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	neck = /obj/item/clothing/neck/roguetown/psicross
 	if(H.gender == MALE)
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe
@@ -36,20 +44,8 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backl = /obj/item/storage/backpack/rogue/satchel
 
-	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.change_stat("perception", 1)
-		H.change_stat("speed", 2)
-		H.change_stat("endurance", 1)
+	H.change_stat("perception", 1)
+	H.change_stat("speed", 2)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_churchling(H)

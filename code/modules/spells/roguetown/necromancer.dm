@@ -34,7 +34,7 @@
 			return TRUE
 		target.visible_message(span_info("Necrotic energy floods over [target]!"), span_userdanger("I feel colder as the dark energy floods into me!"))
 		if(iscarbon(target))
-			target.apply_status_effect(/datum/status_effect/debuff/weaken_living)
+			target.Paralyze(50)
 		else
 			target.adjustBruteLoss(20)
 		return TRUE
@@ -143,10 +143,6 @@
 		to_chat(user, span_warning("I cannot raise the living."))
 		return FALSE
 
-	if(HAS_TRAIT(target, TRAIT_SPECIALUNDEAD))
-		to_chat(user, span_warning("This is an undead far beyond my perview. I cannot make it mine."))
-		return FALSE
-
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
 	var/obj/item/bodypart/target_larm = target.get_bodypart(BODY_ZONE_L_ARM)
 	var/obj/item/bodypart/target_rarm = target.get_bodypart(BODY_ZONE_R_ARM)
@@ -234,10 +230,6 @@
 
 	if(target.stat != DEAD)
 		to_chat(user, span_warning("I cannot raise the living."))
-		return FALSE
-
-	if(HAS_TRAIT(target, TRAIT_SPECIALUNDEAD))
-		to_chat(user, span_warning("This is an undead far beyond my perview. I cannot make it mine."))
 		return FALSE
 
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)

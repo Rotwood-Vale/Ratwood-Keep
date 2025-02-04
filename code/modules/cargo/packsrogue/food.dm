@@ -5,7 +5,7 @@
 
 /datum/supply_pack/rogue/food/lesserhealthpot
 	name = "Minor Healing Potion"
-	cost = 25
+	cost = 9
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot,
 					/obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot,
@@ -31,8 +31,8 @@
 				)
 
 /datum/supply_pack/rogue/food/meat
-	name = "Coppiettes"
-	cost = 25
+	name = "Dry Meat"
+	cost = 15
 	contains = list(
 					/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
 					/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
@@ -65,9 +65,9 @@
 				)
 
 /datum/supply_pack/rogue/food/pepper
-	name = "Pepper mill"
-	cost = 40
-	contains = list(/obj/item/reagent_containers/peppermill)
+	name = "Pepper"
+	cost = 120
+	contains = list(/obj/item/reagent_containers/food/condiment/peppermill)
 
 /datum/supply_pack/rogue/food/butter
 	name = "Butter"
@@ -86,36 +86,3 @@
 					/obj/item/reagent_containers/food/snacks/rogue/honey,
 					/obj/item/reagent_containers/food/snacks/rogue/honey,
 				)
-
-/datum/supply_pack/rogue/food/veggie
-	name = "Vegetables Pack"
-	cost = 50
-	contains = list(
-					/obj/item/reagent_containers/food/snacks/grown/cabbage,
-					/obj/item/reagent_containers/food/snacks/grown/cabbage,
-					/obj/item/reagent_containers/food/snacks/grown/onion,
-					/obj/item/reagent_containers/food/snacks/grown/onion,
-					/obj/item/reagent_containers/food/snacks/grown/potato,
-					/obj/item/reagent_containers/food/snacks/grown/potato,
-					/obj/item/reagent_containers/food/snacks/grown/beet,
-					)
-
-/datum/supply_pack/rogue/food/grain
-	name = "Grain Pack"
-	cost = 40
-	contains = list(
-					/obj/item/reagent_containers/food/snacks/grown/wheat,
-					/obj/item/reagent_containers/food/snacks/grown/wheat,
-					/obj/item/reagent_containers/food/snacks/grown/oat,
-					/obj/item/reagent_containers/food/snacks/grown/oat,
-					/obj/item/reagent_containers/food/snacks/grown/rice,
-					/obj/item/reagent_containers/food/snacks/grown/rice,
-					)
-
-/datum/supply_pack/rogue/food/tea
-	name = "Tea"
-	cost = 15
-	contains = list(/obj/item/reagent_containers/food/snacks/grown/tea,
-					/obj/item/reagent_containers/food/snacks/grown/tea,
-					/obj/item/reagent_containers/food/snacks/grown/tea,
-					)

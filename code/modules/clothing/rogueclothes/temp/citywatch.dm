@@ -16,7 +16,6 @@
 	clothing_flags = CANT_SLEEP_IN
 	anvilrepair = /datum/skill/craft/blacksmithing
 	sewrepair = FALSE
-	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/head/roguetown/helmet/citywatch
 	name = "city watch helmet"

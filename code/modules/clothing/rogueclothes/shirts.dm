@@ -32,7 +32,6 @@
 	sleeved = null
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
-	// Has sprite without crop for hands AND no sleeves
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	color = CLOTHING_BLACK
@@ -92,7 +91,6 @@
 	icon_state = "puritan_shirt"
 	allowed_race = CLOTHED_RACES_TYPES
 	salvage_result = /obj/item/natural/silk
-	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"
@@ -256,7 +254,6 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
 	icon_state = "velvetdress"
 	item_state = "velvetdress"
-	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/dress/velvetdress/black
 	color = CLOTHING_BLACK
@@ -281,7 +278,6 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
 	icon_state = "nobledress"
 	item_state = "nobledress"
-	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/dress/nobledress/black
 	color = CLOTHING_BLACK

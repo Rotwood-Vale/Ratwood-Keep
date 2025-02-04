@@ -1,6 +1,6 @@
 /datum/anvil_recipe/cutlery
   appro_skill = /datum/skill/craft/blacksmithing
-  skill_level = 0
+  skill_level = 1
   i_type = "Cutlery"
 
 // Tin / Pewterware
@@ -10,7 +10,7 @@
   name = "Pewter Bowl 3x"
   req_bar = /obj/item/ingot/tin
   created_item = list(/obj/item/reagent_containers/glass/bowl/pewter, /obj/item/reagent_containers/glass/bowl/pewter, /obj/item/reagent_containers/glass/bowl/pewter)
-  skill_level = 0 // Pewter is v. easy to work with
+  skill_level = 1 // Pewter is v. easy to work with
 
 /datum/anvil_recipe/cutlery/tin/plate
   name = "Pewter Platter 3x"
@@ -39,7 +39,7 @@
   name = "Silver Bowl 3x"
   req_bar = /obj/item/ingot/silver
   created_item = list(/obj/item/reagent_containers/glass/bowl/silver, /obj/item/reagent_containers/glass/bowl/silver, /obj/item/reagent_containers/glass/bowl/silver)
-  skill_level = 4
+  skill_level = 2
 
 /datum/anvil_recipe/cutlery/silver/plate
   name = "Silver Platter 3x"
@@ -97,12 +97,10 @@
 	name = "Steel Goblets 3x"
 	req_bar = /obj/item/ingot/steel
 	created_item = list(/obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel)
-	skill_level = 3
 
 // Gold
 
-/datum/anvil_recipe/cutlery/gold/cupsgold
+/datum/anvil_recipe/cutlery/cupsgold
 	name = "Gold Goblets 3x"
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden)
-	skill_level = 5

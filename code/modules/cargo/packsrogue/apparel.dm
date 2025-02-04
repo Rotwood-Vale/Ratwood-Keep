@@ -47,7 +47,7 @@
 
 /datum/supply_pack/rogue/apparel/crosses/silver
 	name = "Silver Cross"
-	cost = 60
+	cost = 150
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver)
 
 /datum/supply_pack/rogue/apparel/crosses/psicross
@@ -57,7 +57,7 @@
 
 /datum/supply_pack/rogue/apparel/gloves/leather
 	name = "Leather Gloves"
-	cost = 25
+	cost = 15
 	contains = list(
 					/obj/item/clothing/gloves/roguetown/leather,
 					/obj/item/clothing/gloves/roguetown/leather,
@@ -66,7 +66,7 @@
 
 /datum/supply_pack/rogue/apparel/boots/leather
 	name = "Leather Boots"
-	cost = 25
+	cost = 15
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/armor/leather,
 					/obj/item/clothing/shoes/roguetown/armor/leather,
@@ -75,7 +75,7 @@
 
 /datum/supply_pack/rogue/apparel/trousers/leather
 	name = "Leather Trousers"
-	cost = 25
+	cost = 15
 	contains = list(
 					/obj/item/clothing/under/roguetown/trou/leather,
 					/obj/item/clothing/under/roguetown/trou/leather,
@@ -92,7 +92,7 @@
 				)
 	
 /datum/supply_pack/rogue/apparel/shirts/tunic
-	name = "Tunic"
+	name = "Shirt"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/tunic,

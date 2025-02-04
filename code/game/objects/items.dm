@@ -154,7 +154,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/can_assin = FALSE		//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
 	var/can_cdg = FALSE			//Weapon: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
-	var/ignore_sleeves_code = FALSE // Use for clothing which has cropped parts for hands and doesn't use sleeved system. They will have layer under gloves
 	var/sleeved = null
 	var/sleevetype = null
 	var/nodismemsleeves = FALSE

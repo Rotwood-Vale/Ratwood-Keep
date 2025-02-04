@@ -17,4 +17,3 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
-	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite

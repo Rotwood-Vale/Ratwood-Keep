@@ -7,7 +7,6 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/duchess.dmi'
 	icon_state = "duchess"
 	item_state = "duchess"
-	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/head/roguetown/duchess_hood
 	name = "duchess hood"

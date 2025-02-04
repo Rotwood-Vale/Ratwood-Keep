@@ -19,4 +19,3 @@
 	sleeved = null
 	armor_class = ARMOR_CLASS_LIGHT
 	salvage_result = /obj/item/natural/hide/cured
-	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite

@@ -8,4 +8,3 @@
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS|ARMS
 	allowed_sex = list(MALE, FEMALE)
 	slot_flags = ITEM_SLOT_ARMOR
-	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite

@@ -29,9 +29,6 @@
 	smeltresult = /obj/item/ingot/iron
 	can_cdg = TRUE
 
-/obj/item/rogueweapon/huntingknife/Initialize()
-	. = ..()
-	AddElement(/datum/element/tipped_item)
 
 /datum/intent/dagger
 	clickcd = 8

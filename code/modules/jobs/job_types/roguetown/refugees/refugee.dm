@@ -31,7 +31,6 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = TRUE
 	same_job_respawn_delay = 15 MINUTES
-	announce_latejoin = FALSE
 
 	family_blacklisted = TRUE //we should have refugee-only families
 

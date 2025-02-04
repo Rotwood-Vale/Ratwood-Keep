@@ -483,6 +483,42 @@
 	ADD_TRAIT(character, TRAIT_NUDE_SLEEPER, "[type]")
 
 //job specials
+/datum/special_trait/punkprincess //I think everyone will like the Rebellous Prince-Like Princess. I'd love to do one for the prince as well that gives him princess loadout, but, up to you!
+	name = "Rebellous Daughter"
+	greet_text = span_notice("I am quite rebellious for a noblewoman. Screw Noble Customs!")
+	req_text = "Be a princess"
+	allowed_sexes = list(FEMALE)
+	allowed_jobs = list(/datum/job/roguetown/prince)
+	weight = 50
+
+/datum/special_trait/punkprincess/on_apply(mob/living/carbon/human/character, silent)
+	QDEL_NULL(character.wear_pants)
+	QDEL_NULL(character.wear_shirt)
+	QDEL_NULL(character.wear_armor)
+	QDEL_NULL(character.shoes)
+	QDEL_NULL(character.belt)
+	QDEL_NULL(character.beltl)
+	QDEL_NULL(character.beltr)
+	QDEL_NULL(character.backr)
+	QDEL_NULL(character.head)
+	character.equip_to_slot_or_del(new /obj/item/clothing/under/roguetown/tights/random(character), SLOT_PANTS)
+	character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/shirt/undershirt/guard(character), SLOT_SHIRT)
+	character.equip_to_slot_or_del(new /obj/item/clothing/suit/roguetown/armor/chainmail(character), SLOT_ARMOR)
+	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather(character), SLOT_BELT)
+	character.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/pouch/coins/rich(character), SLOT_BELT_R)
+	character.equip_to_slot_or_del(new /obj/item/storage/backpack/rogue/satchel(character), SLOT_BACK_R)
+	character.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/armor/nobleboot(character), SLOT_SHOES)
+	character.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/misc/reading, -2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/misc/sneaking, -2, TRUE)
+	character.mind.adjust_skillrank(/datum/skill/misc/stealing, -2, TRUE)
+
 /datum/special_trait/my_precious
 	name = "My Precious"
 	greet_text = span_notice("The ring, it's so shiny.. so valuable, I can feel it's power. It's all mine!")

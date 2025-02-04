@@ -301,21 +301,6 @@
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
 
-/turf/open/water/sea
-	name = "shallows"
-	desc = "Shallow salty seawater, gentle waves lap across the surface"
-	water_level = 2
-	water_color = "#034ea4"
-	water_reagent = /datum/reagent/water/salty
-
-/turf/open/water/sea/deep
-	name = "sea"
-	desc = "Deep salty seawater, who knows what dwells beneath the surface?"
-	water_level = 3
-	water_color = "#02014b"
-	slowdown = 5
-	swim_skill = TRUE
-
 /turf/open/water/swamp/deep
 	name = "murk"
 	desc = "Deep water with several weeds and algae on the surface."

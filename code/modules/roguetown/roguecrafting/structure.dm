@@ -165,7 +165,6 @@
 	skillcraft = /datum/skill/craft/blacksmithing
 	verbage_simple = "forge"
 	verbage = "forges"
-	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/smelter
 	name = "ore furnace"
