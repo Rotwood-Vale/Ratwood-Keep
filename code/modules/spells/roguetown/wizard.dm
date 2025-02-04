@@ -1583,7 +1583,6 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 		var/message
 		if(!marked_item) //linking item to the spell
 			message = "<span class='notice'>"
-			message_admins("message")
 			for(var/obj/item/rogueweapon/item in hand_items)
 				if(item.item_flags & ABSTRACT)
 					continue
@@ -1594,7 +1593,6 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 				marked_item = 		item
 				message += "You imbue [item] for summoning.</span>"
 				name = "Summon [item]"
-				message_admins("message")
 				break
 
 			if(!marked_item)
@@ -1607,7 +1605,6 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 			message = span_notice("I remove the imbuement on [marked_item] to use elsewhere.")
 			name = "Instant Summons"
 			marked_item = 		null
-			message_admins("[marked_item]")
 
 		else if(marked_item && QDELETED(marked_item)) //the item was destroyed at some point
 			message = span_warning("I sense my imbued weapon has been destroyed!")

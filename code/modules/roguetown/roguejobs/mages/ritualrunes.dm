@@ -147,37 +147,6 @@ GLOBAL_LIST(teleport_runes)
 			testing("[G.name]")
 			GLOB.runeritualslist[G.name] = G*/
 
-/obj/effect/decal/cleanable/roguerune/examine(mob/user)
-	. = ..()
-	if(magictype == "arcane")
-		if(isarcyne(user))
-			src.desc += "<b>Name:</b> [invoker_name]\n"+\
-			"<b>Effects:</b> [capitalize(invoker_desc)]\n"+\
-			"<b>Required Invokers:</b> [req_invokers_text ? "[req_invokers_text]":"[req_invokers]"]"
-		if(req_keyword && keyword)
-			. += "<b>Keyword:</b> [keyword]"
-	if(magictype == "divine")
-		if(isdivine(user))
-			. += "<b>Name:</b> [invoker_name]\n"+\
-			"<b>Effects:</b> [capitalize(invoker_desc)]\n"+\
-			"<b>Required Invokers:</b> [req_invokers_text ? "[req_invokers_text]":"[req_invokers]"]"
-		if(req_keyword && keyword)
-			. += "<b>Keyword:</b> [keyword]"
-	if(magictype == "druid")
-		if(isdruid(user))
-			. += "<b>Name:</b> [invoker_name]\n"+\
-			"<b>Effects:</b> [capitalize(invoker_desc)]\n"+\
-			"<b>Required Invokers:</b> [req_invokers_text ? "[req_invokers_text]":"[req_invokers]"]"
-		if(req_keyword && keyword)
-			. += "<b>Keyword:</b> [keyword]"
-	if(magictype == "blood")
-		if(isblood(user))
-			. += "<b>Name:</b> [invoker_name]\n"+\
-			"<b>Effects:</b> [capitalize(invoker_desc)]\n"+\
-			"<b>Required Invokers:</b> [req_invokers_text ? "[req_invokers_text]":"[req_invokers]"]"
-		if(req_keyword && keyword)
-			. += "<b>Keyword:</b> [keyword]"
-
 /obj/effect/decal/cleanable/roguerune/proc/do_invoke_glow()
 	set waitfor = FALSE
 	animate(src, transform = matrix()*2, alpha = 0, time = 5, flags = ANIMATION_END_NOW) //fade out
@@ -296,7 +265,6 @@ GLOBAL_LIST(teleport_runes)
 			continue
 		atoms_in_range += close_atom
 	pickritual = new runeritual
-	to_chat(invokers, json_encode(pickritual.required_atoms, JSON_PRETTY_PRINT))
 	if(!islist(pickritual.required_atoms))
 		return
 
