@@ -67,3 +67,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	item_flags = NOBLUDGEON
+
+/obj/item/bath/soap/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/slippery, 80)
