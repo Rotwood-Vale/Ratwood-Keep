@@ -23,7 +23,7 @@
 	dodgetime = 30
 	aggressive = 1
 	remains_type = null
-	var/summoner = null
+	summoner = null
 	var/timeleft = 30 SECONDS
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Initialize(mapload, mob/user)

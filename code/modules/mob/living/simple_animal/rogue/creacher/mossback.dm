@@ -40,7 +40,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mossback/Initialize(mapload, mob/user, townercrab = FALSE)
 	. = ..()
 	if(user)
-		friends += user.name
+		summoner += user.name
 		if (townercrab)
 			faction = list("neutral")
 			tamed(1)

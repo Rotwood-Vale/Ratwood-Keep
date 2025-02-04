@@ -104,10 +104,13 @@
 	miracle = TRUE
 	devotion_cost = 100
 	var/townercrab = TRUE //I was looking at this for three days and i am utterly stupid for not fixing it
+
 /obj/effect/proc_holder/spell/invoked/call_mossback/cast(list/targets, mob/living/user)
 	. = ..()
 	var/turf/T = get_turf(targets[1])
 	if(isopenturf(T))
+		if(!user.mind.has_spell(/obj/effect/proc_holder/spell/invoked/minion_order))
+			user.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
 		new /mob/living/simple_animal/hostile/retaliate/rogue/mossback(T, user, townercrab)
 		return TRUE
 	else

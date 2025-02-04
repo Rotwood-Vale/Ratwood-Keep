@@ -98,6 +98,8 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead_lesser)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_undead_lesser)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/revoke_unlife)
 			head = /obj/item/clothing/head/roguetown/necromhood
 			pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -139,6 +141,8 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead_lesser)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_undead_lesser)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/revoke_unlife)
 	head = /obj/item/clothing/head/roguetown/necromhood
 	pants = /obj/item/clothing/under/roguetown/trou/leather

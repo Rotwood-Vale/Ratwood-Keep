@@ -1,5 +1,9 @@
 /mob/living
 	var/tail_toggle = TRUE
+	///The NAME (not the reference) of the mob's summoner and probable master.
+	var/summoner = null
+	///For storing what do_after's someone has, key = string, value = amount of interactions of that type happening.
+	var/list/do_afters
 
 /atom/movable/screen/quad_intents/rus
 	icon = 'icons/mob/ru_roguehud.dmi'

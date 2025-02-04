@@ -30,3 +30,6 @@
 			controller.pathing_attempts++
 			if(controller.pathing_attempts >= max_pathing_attempts)
 				controller.CancelActions()
+
+/datum/ai_movement/basic_avoidance/backstep
+	//move_flags = MOVEMENT_LOOP_START_FAST

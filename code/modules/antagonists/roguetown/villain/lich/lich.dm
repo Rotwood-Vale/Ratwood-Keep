@@ -117,6 +117,8 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/command_undead)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strengthen_undead)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_undead_lesser)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireballgreater)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning)
