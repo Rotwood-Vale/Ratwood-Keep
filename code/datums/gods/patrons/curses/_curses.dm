@@ -134,6 +134,7 @@
 	if(mob_timers["freakout"])
 		if(world.time < mob_timers["freakout"] + 10 SECONDS)
 			flash_fullscreen("stressflash")
+			return
 	mob_timers["freakout"] = world.time
 	shake_camera(src, 1, 3)
 	flash_fullscreen("stressflash")
