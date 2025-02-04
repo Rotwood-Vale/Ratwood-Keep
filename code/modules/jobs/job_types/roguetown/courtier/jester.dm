@@ -28,7 +28,7 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/jester
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/servant
-	beltl = /obj/item/storage/belt/rogue/pouch
+	beltl = /obj/item/ammo_holder/bomb/smokebombs
 	head = /obj/item/clothing/head/roguetown/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
 	//Desc says grenzelhoft has great jesters so 50% change to raceswap because slop lore
