@@ -96,7 +96,7 @@
 
 /datum/virtue/combat/executioner
 	name = "Executioner Apprentice"
-	desc = "I have trained under a skilled executioner, and always have my trusty exeuctioner's axe close at hand. (+1 to Axes and Whip/sFlails, Up to Journeyman, Minimum Apprentice. Stashed battleaxe.)"
+	desc = "I have trained under a skilled executioner, and always have my trusty exeuctioner's axe close at hand. (+1 to Axes and Whips/Flails, Up to Journeyman, Minimum Apprentice. Stashed battleaxe.)"
 	added_stashed_items = list("Battleaxe" = /obj/item/rogueweapon/stoneaxe/battle)
 
 /datum/virtue/combat/executioner/apply_to_human(mob/living/carbon/human/recipient)
@@ -130,7 +130,7 @@
 
 /datum/virtue/combat/brawler
 	name = "Brawler Apprentice"
-	desc = "I have trained under a skilled brawler, and have some experience fighting with my fists. (+1 to Unarmed and Wrestlin, Up to Journeyman, Minimum Apprentice.)"
+	desc = "I have trained under a skilled brawler, and have some experience fighting with my fists. (+1 to Unarmed and Wrestling, Up to Journeyman, Minimum Apprentice.)"
 
 /datum/virtue/combat/executioner/apply_to_human(mob/living/carbon/human/recipient)
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/unarmed) < SKILL_LEVEL_APPRENTICE)
