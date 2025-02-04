@@ -574,7 +574,7 @@ GLOBAL_LIST(teleport_runes)
 	name = "fortress accession matrix"
 	desc = "A massive sigil- is that a wall in the center?"
 	icon = 'icons/effects/160x160.dmi'
-	icon_state = "walltest"
+	icon_state = "wall"
 	tier = 3
 	invocation = "Thar’morak dul’vorr keth’alor!"
 	ritual_number = FALSE

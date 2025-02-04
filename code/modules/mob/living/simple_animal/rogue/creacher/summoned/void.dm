@@ -783,11 +783,11 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	src.move_resist = MOVE_FORCE_VERY_STRONG
 	var/mob/living/carbon/target = targets[1]
 	var/distance = get_dist(user.loc,target.loc)
-	if(distance>7)
+	if(distance>3)
 		to_chat(user, span_colossus("[target.p_theyre(TRUE)] too far away!"))
 
 		return
-	if(do_after(user, 5 SECONDS, target = src))
+	if(do_after(user, 2 SECONDS, target = src))
 		user.Beam(target,icon_state="lightning[rand(1,12)]",time=5)
 		src.visible_message(span_colossus("[src] unleashes a storm of lightning from it's maw."))
 		Bolt(user,target,30,5,user)

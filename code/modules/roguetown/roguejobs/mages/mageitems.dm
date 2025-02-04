@@ -141,6 +141,8 @@
 		span_notice("I finish dragging the blade in symbols and circles, leaving behind an ritual rune"))
 		src.amount --
 		new rune_to_scribe(Turf)
+	if(amount = 0)
+		qdel(src)
 
 /obj/item/chalk/proc/check_for_structures_and_closed_turfs(loc, var/obj/effect/decal/cleanable/roguerune/rune_to_scribe)
 	for(var/turf/T in range(loc, rune_to_scribe.runesize))

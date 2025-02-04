@@ -1423,7 +1423,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	xp_gain = TRUE
 	releasedrain = 50
 	chargedrain = 1
-	chargetime = 20
+	chargetime = 35
 	charge_max = 50 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE

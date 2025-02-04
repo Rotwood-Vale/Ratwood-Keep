@@ -145,7 +145,7 @@
 	move_to_delay = 8
 	base_intents = list(/datum/intent/simple/elemental_unarmed)
 	butcher_results = list()
-	faction = list("infernal")
+	faction = list("elemental)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 240
 	maxHealth = 240
@@ -222,8 +222,8 @@
 	butcher_results = list()
 	faction = list("elemental")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 240
-	maxHealth = 240
+	health = 800
+	maxHealth = 800
 	melee_damage_lower = 55
 	melee_damage_upper = 80
 	vision_range = 7
@@ -269,14 +269,14 @@
 	in_melee = TRUE
 	if(!target)
 		return
-	addtimer(CALLBACK(src,PROC_REF(yeet)), 1 SECONDS)
+	addtimer(CALLBACK(src,PROC_REF(yeet),target), 1 SECONDS)
 	return target.attack_animal(src)
 
 /obj/effect/temp_visual/marker
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "trap"
 	light_range = 2
-	duration = 9
+	duration = 15
 	layer = ABOVE_ALL_MOB_LAYER //this doesnt render above mobs? it really should
 
 
@@ -325,7 +325,7 @@
 	var/turf/focalpoint = get_turf(target)
 	for (var/turf/open/visual in view(1, focalpoint))
 		new /obj/effect/temp_visual/marker(visual)
-	sleep(9)
+	sleep(15)
 	for (var/mob/living/screenshaken in view(1, focalpoint))
 		shake_camera(screenshaken, 5, 5)
 	for (var/mob/living/shaken in view(1, focalpoint))
@@ -483,8 +483,8 @@
 	. = ..()
 	var/list/spawnLists = list(/mob/living/simple_animal/hostile/retaliate/rogue/elemental/crawler,/mob/living/simple_animal/hostile/retaliate/rogue/elemental/crawler, /mob/living/simple_animal/hostile/retaliate/rogue/elemental/crawler)
 	var/reinforcement_count = 3
-	src.visible_message(span_notice("[src] breaks apart, scattering minor elementals about!"))
 	if(prob(20))
+		src.visible_message(span_notice("[src] breaks apart, scattering minor elementals about!"))
 		while(reinforcement_count > 0)
 			var/list/turflist = list()
 			for(var/turf/t in RANGE_TURFS(1, src))

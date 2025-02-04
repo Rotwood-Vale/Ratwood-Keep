@@ -163,7 +163,7 @@
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 6
 	see_in_dark = 6
 	move_to_delay = 6
 	base_intents = list(/datum/intent/simple/bite)
@@ -236,15 +236,15 @@
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 5
 	see_in_dark = 6
 	move_to_delay = 9
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("infernal")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 200
-	maxHealth = 200
+	health = 600
+	maxHealth = 600
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	vision_range = 7

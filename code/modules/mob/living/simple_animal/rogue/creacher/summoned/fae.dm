@@ -79,7 +79,7 @@
 	aggro_vision_range = 11
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	simple_detect_bonus = 20
-	retreat_distance = 6
+	retreat_distance = 3
 	minimum_distance = 0
 	food_type = list()
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
@@ -193,8 +193,10 @@
 		var/mob/living/targetted = target
 		targetted.apply_status_effect(/datum/status_effect/buff/seelie_drugs)
 		targetted.visible_message(span_danger("[src] dusts [target] with some kind of powder!"))
+		targetted.adjustToxLoss(15)
 		src.drug_cd = world.time
-	return target.attack_animal(src)
+	return
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad
 	icon = 'icons/mob/summonable/32x64.dmi'
@@ -208,7 +210,7 @@
 	speak_chance = 1
 	turns_per_move = 6
 	see_in_dark = 6
-	move_to_delay = 15
+	move_to_delay = 12
 	base_intents = list(/datum/intent/simple/elementalt2_unarmed)
 	butcher_results = list()
 	faction = list("fae")
@@ -322,8 +324,8 @@
 	butcher_results = list()
 	faction = list("fae")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 500
-	maxHealth = 500
+	health = 700
+	maxHealth = 700
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	vision_range = 7
@@ -367,7 +369,7 @@
 		return
 	visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
 
-	if(world.time >= shroom_cd + 100)
+	if(world.time >= shroom_cd + 250)
 		var/mob/living/targetted = target
 		create_shroom(targetted)
 		src.shroom_cd = world.time
@@ -381,10 +383,11 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/proc/create_shroom(atom/target)
+	target.visible_message(span_boldwarning("Kneestingers pop out from the ground around [src]!"))
 	if(!target)
 		return
 	for(var/turf/turf as anything in RANGE_TURFS(3,src.loc))
-		if(prob(30))
+		if(prob(25))
 			new /obj/structure/glowshroom(turf)
 
 

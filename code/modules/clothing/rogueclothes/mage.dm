@@ -190,20 +190,20 @@
 	if(!do_after(user, 20, target = user))
 		return
 	if(robe_count == 0)
-		icon_state = "warlock-blue"
-		newicon = "warlock-blue"
+		icon_state = "vizier-blue"
+		newicon = "vizier-blue"
 		robe_count += 1
 	else if(robe_count == 1)
-		icon_state = "warlock-green"
-		newicon = "warlock-green"
+		icon_state = "vizier-green"
+		newicon = "vizier-green"
 		robe_count += 1
 	else if(robe_count == 2)
-		icon_state = "warlock-gray"
-		newicon = "warlock-gray"
+		icon_state = "vizier-gray"
+		newicon = "vizier-gray"
 		robe_count += 1
 	else if(robe_count == 3)
-		icon_state = "warlock-red"
-		newicon = "warlock-red"
+		icon_state = "vizier-red"
+		newicon = "vizier-red"
 		robe_count = 0
 	picked = TRUE
 	to_chat(user, span_info("[src] magically changes it's colours!"))
