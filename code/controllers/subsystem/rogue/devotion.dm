@@ -73,6 +73,7 @@
 		return TRUE
 	progression = clamp(progression + prog_amt, 0, max_progression)
 	var/obj/effect/spell_unlocked
+	var/old_level = level
 	switch(level)
 		if(CLERIC_T0)
 			if(progression >= CLERIC_REQ_1)
@@ -90,6 +91,9 @@
 			if(progression >= CLERIC_REQ_4)
 				spell_unlocked = patron.t4
 				level = CLERIC_T4
+	if(level != old_level)
+		SEND_SIGNAL(patron, COMSIG_NEW_DEVOTION_LEVEL, holder, level)
+
 	if(!spell_unlocked || !holder?.mind || holder.mind.has_spell(spell_unlocked, specific = FALSE))
 		return TRUE
 	spell_unlocked = new spell_unlocked
