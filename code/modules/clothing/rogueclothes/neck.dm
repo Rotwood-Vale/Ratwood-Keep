@@ -171,7 +171,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"
-	desc = ""
+	desc = "An iron cross of PSYDON, who lives on in his daughter Astrata and her nine siblings. In His final moments, He struck a bargain with mankind: never allow His name to fade from the earth, and He will one day return."
 	icon_state = "psicross"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/neck.dmi'
 	//dropshrink = 0.75
@@ -188,7 +188,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/silver/astrata
 	name = "imbued amulet of Astrata"
-	desc = "Similar to a normal amulet of Astrata. This one is blessed and made of silver."
+	desc = "Similar to a normal amulet of Astrata. This one is blessed and made of silver. A queen does not bargain; she does not relent. Neither shall her followers - least of all the members of her clergy - for with PSYDON gone, Astrata bears the burden of His lineage. All of creation is within her scope, and so too is all of Rockhill within yours. Stay the course, lest she turn her gaze and everything falls to the scourge of heresy."
 	icon_state = "astrata"
 
 /obj/item/clothing/neck/roguetown/psicross/noc
