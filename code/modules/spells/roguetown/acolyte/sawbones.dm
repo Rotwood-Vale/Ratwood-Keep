@@ -693,16 +693,21 @@
 
 //---------------------------------------alch reactions----------------------------------------------//
 
+
+/datum/chemical_reaction/alch
+	name = "debug alch reaction"
+	mix_sound = 'sound/items/fillbottle.ogg'
+	id = /datum/reagent/alch
+	required_container = /obj/item/reagent_containers/glass/alembic
+
 /datum/chemical_reaction/alch/lesserhealth
 	name = "lesser health pot"
-	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/lesserhealthpot
 	results = list(/datum/reagent/medicine/lesserhealthpot = 45) //15 oz
 	required_reagents = list(/datum/reagent/alch/syrum_meat = 24, /datum/reagent/alch/syrum_ash = 24)
 
 /datum/chemical_reaction/alch/health //purify minor health pot into half a bottle by using essence of clarity (swampweed)
 	name = "health pot purification"
-	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/healthpot
 	results = list(/datum/reagent/medicine/healthpot = 22.5) //about 7.5 oz
 	required_reagents = list(/datum/reagent/medicine/lesserhealthpot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
@@ -710,7 +715,6 @@
 
 /datum/chemical_reaction/alch/greaterhealth //purify health pot into half a bottle of super by using essence of poison (poison berry) which used to be in the old red recipe
 	name = "greater health pot purification"
-	mix_sound = 'sound/items/fillbottle.ogg'
 	id = /datum/reagent/medicine/greaterhealthpot
 	results = list(/datum/reagent/medicine/greaterhealthpot = 22.5) //about 7.5 oz
 	required_reagents = list(/datum/reagent/medicine/healthpot = 45, /datum/reagent/alch/syrum_poison_berry = 24)
@@ -756,6 +760,22 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/powder/moondust(location)
+
+/datum/chemical_reaction/alch/puresalt
+	name = "puresalt"
+	id = "puresalt"
+	required_reagents = list(/datum/reagent/water/salty = 30) //Boil off the water to get pure salt
+	results = list(/datum/reagent/rawsalt = 15)
+	
+/datum/chemical_reaction/alch/saltsea
+	name = "saltsea"
+	id = "saltsea"
+	required_reagents = list(/datum/reagent/rawsalt = 15)
+
+/datum/chemical_reaction/alch/saltsea/on_reaction(datum/reagents/holder, created_volume)	
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/salt(location)
 
 /datum/chemical_reaction/alch/spice
 	name = "spiceify"
@@ -1280,7 +1300,7 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 
 /obj/item/reagent_containers/glass/alembic
 	name = "metal alembic"
-	possible_item_intents = list(INTENT_POUR, INTENT_SPLASH)
+	possible_item_intents = list(INTENT_POUR, INTENT_SPLASH, /datum/intent/fill) //It's janky and annoying to need to fill the alembic this way, but also Moricode is stupid and I'll refactor it later.
 	desc = "so you're an alchemist then?"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "alembic_empty"
