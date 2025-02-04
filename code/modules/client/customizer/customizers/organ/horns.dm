@@ -57,7 +57,8 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
-		/datum/sprite_accessory/horns/tiefling
+		/datum/sprite_accessory/horns/tiefling,
+		/datum/sprite_accessory/horns/tieflingalt
 		)
 
 /datum/customizer/organ/horns/demihuman
@@ -105,7 +106,8 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
-		/datum/sprite_accessory/horns/tiefling
+		/datum/sprite_accessory/horns/tiefling,
+		/datum/sprite_accessory/horns/tieflingalt
 		)
 
 /datum/customizer/organ/horns/anthro
@@ -153,5 +155,6 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
-		/datum/sprite_accessory/horns/tiefling
+		/datum/sprite_accessory/horns/tiefling,
+		/datum/sprite_accessory/horns/tieflingalt
 		)
