@@ -36,10 +36,10 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		pants = null
 	backpack_contents = list(/obj/item/seeds/wheat=1,/obj/item/seeds/apple=1,/obj/item/ash=1)
-	H.change_stat("strength", 1)
-	H.change_stat("endurance", 1)
-	H.change_stat("intelligence", -2)
-	H.change_stat("speed", -1)
+	H.change_stat(STAT_STRENGTH, 1)
+	H.change_stat(STAT_ENDURANCE, 1)
+	H.change_stat(STAT_INTELLIGENCE, -2)
+	H.change_stat(STAT_SPEED, -1)
 	if(H.age == AGE_MIDDLEAGED)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)

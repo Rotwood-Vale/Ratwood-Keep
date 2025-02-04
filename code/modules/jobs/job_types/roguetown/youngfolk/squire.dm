@@ -159,9 +159,9 @@
 		if(prob(25))
 			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 
-		H.change_stat("strength", 1)
-		H.change_stat("perception", 1)
-		H.change_stat("constitution", 1)
-		H.change_stat("speed", 1)
+		H.change_stat(STAT_STRENGTH, 1)
+		H.change_stat(STAT_PERCEPTION, 1)
+		H.change_stat(STAT_CONSTITUTION, 1)
+		H.change_stat(STAT_SPEED, 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)

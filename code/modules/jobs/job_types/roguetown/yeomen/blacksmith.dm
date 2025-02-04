@@ -47,9 +47,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
-
-	H.change_stat("strength", 2)
-	H.change_stat("intelligence", 1)
-	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 2)
+	H.change_stat(STAT_STRENGTH, 2)
+	H.change_stat(STAT_INTELLIGENCE, 1)
+	H.change_stat(STAT_ENDURANCE, 2)
+	H.change_stat(STAT_CONSTITUTION, 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

@@ -44,6 +44,6 @@
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random	
 	if(H.mind)
-		H.change_stat("strength", 2)
-		H.change_stat("endurance", 1)
-		H.change_stat("intelligence", -1)
+		H.change_stat(STAT_STRENGTH, 2)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_INTELLIGENCE, -1)

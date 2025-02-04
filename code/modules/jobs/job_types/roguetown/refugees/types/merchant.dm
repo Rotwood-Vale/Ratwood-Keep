@@ -43,9 +43,9 @@
 			// TODO: randomized content table
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/clothing/ring/silver = 2, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 2, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 2)
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", 3)
-			H.change_stat("strength", -1)
+			H.change_stat(STAT_INTELLIGENCE, 2)
+			H.change_stat(STAT_PERCEPTION, 3)
+			H.change_stat(STAT_STRENGTH, -1)
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
 		if("Spicer")

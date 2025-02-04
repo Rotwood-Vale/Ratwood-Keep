@@ -45,10 +45,10 @@
 			beltl = /obj/item/rogueweapon/sword/sabre
 			head = /obj/item/clothing/head/roguetown/helmet/leather
 			H.mind.adjust_spellpoints(2)
-			H.change_stat("intelligence", 2)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_INTELLIGENCE, 2)
+			H.change_stat(STAT_ENDURANCE, 2)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_SPEED, 1)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
@@ -75,11 +75,11 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			r_hand = /obj/item/rogueweapon/woodstaff
 			H.mind.adjust_spellpoints(7)
-			H.change_stat("strength", -1)
-			H.change_stat("intelligence", 3)
-			H.change_stat("constitution", -2)
-			H.change_stat("endurance", -1)
-			H.change_stat("speed", -1)
+			H.change_stat(STAT_STRENGTH, -1)
+			H.change_stat(STAT_INTELLIGENCE, 3)
+			H.change_stat(STAT_CONSTITUTION, -2)
+			H.change_stat(STAT_ENDURANCE, -1)
+			H.change_stat(STAT_SPEED, -1)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 			H.set_patron(/datum/patron/divine/noc)
 
@@ -109,11 +109,11 @@
 			beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 			beltl = /obj/item/rogueweapon/huntingknife
 			r_hand = /obj/item/rogueweapon/woodstaff
-			H.change_stat("strength", -1)
-			H.change_stat("intelligence", 3)
-			H.change_stat("constitution", -2)
-			H.change_stat("endurance", -1)
-			H.change_stat("speed", -1)
+			H.change_stat(STAT_STRENGTH, -1)
+			H.change_stat(STAT_INTELLIGENCE, 3)
+			H.change_stat(STAT_CONSTITUTION, -2)
+			H.change_stat(STAT_ENDURANCE, -1)
+			H.change_stat(STAT_SPEED, -1)
 			H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can level arcane to get them
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 			H.set_patron(/datum/patron/zizo)
@@ -150,11 +150,11 @@
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	beltl = /obj/item/rogueweapon/huntingknife
 	r_hand = /obj/item/rogueweapon/woodstaff
-	H.change_stat("strength", -1)
-	H.change_stat("intelligence", 3)
-	H.change_stat("constitution", -2)
-	H.change_stat("endurance", -1)
-	H.change_stat("speed", -1)
+	H.change_stat(STAT_STRENGTH, -1)
+	H.change_stat(STAT_INTELLIGENCE, 3)
+	H.change_stat(STAT_CONSTITUTION, -2)
+	H.change_stat(STAT_ENDURANCE, -1)
+	H.change_stat(STAT_SPEED, -1)
 	H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can level arcane to get them
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 	H.set_patron(/datum/patron/zizo)

@@ -43,11 +43,11 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("intelligence", 2)
-		H.change_stat("constitution", 6)
-		H.change_stat("endurance", 1)
-		H.change_stat("speed", 1)
+		H.change_stat(STAT_STRENGTH, 2)
+		H.change_stat(STAT_INTELLIGENCE, 2)
+		H.change_stat(STAT_CONSTITUTION, 6)
+		H.change_stat(STAT_ENDURANCE, 1)
+		H.change_stat(STAT_SPEED, 1)
 
 //If a non-Goblin or Horc gets control by admin intervention.
 	if(!H.has_language(/datum/language/orcish))

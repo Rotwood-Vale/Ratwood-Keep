@@ -28,10 +28,10 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 
-		H.change_stat("intelligence", 1)
-		H.change_stat("perception", 2)
-		H.change_stat("constitution", 1)
-		H.change_stat("speed", 1)
+		H.change_stat(STAT_INTELLIGENCE, 1)
+		H.change_stat(STAT_PERCEPTION, 2)
+		H.change_stat(STAT_CONSTITUTION, 1)
+		H.change_stat(STAT_SPEED, 1)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 5, TRUE)
 		else
