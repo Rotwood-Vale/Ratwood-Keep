@@ -56,26 +56,24 @@
 			H.faction += "undead"
 
 		if("Underdark Assassin")
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			head = /obj/item/clothing/head/roguetown/roguehood/reinforced
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 			pants = /obj/item/clothing/under/roguetown/tights/purple
 			gloves =/obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather
-			beltr = /obj/item/ammo_holder/quiver/bolts
 			beltl = /obj/item/rogueweapon/huntingknife/elvish
 			shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
-			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			backl = /obj/item/storage/backpack/rogue/satchel
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 1)
