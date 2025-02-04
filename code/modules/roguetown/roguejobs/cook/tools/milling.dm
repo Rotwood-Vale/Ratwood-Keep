@@ -10,17 +10,23 @@
 	var/list/obj/item/to_grind = list()
 
 /obj/structure/fluff/millstone/Initialize()
-	create_reagents(900, DRAINABLE | AMOUNT_VISIBLE | REFILLABLE)
+//	create_reagents(900, DRAINABLE | AMOUNT_VISIBLE | REFILLABLE) - REDMOON REMOVAL - GRINDSTONE_FIX - у него больше нет механа для реагентов
 	. = ..()
 
 /obj/structure/fluff/millstone/Destroy()
-	chem_splash(loc, 2, list(reagents))
-	qdel(reagents)
+//	chem_splash(loc, 2, list(reagents)) - REDMOON REMOVAL - GRINDSTONE_FIX - у него больше нет механа для реагентов
+//	qdel(reagents) - REDMOON REMOVAL - GRINDSTONE_FIX - у него больше нет механа для реагентов
 	qdel(to_grind)
 	..()
 
 /obj/structure/fluff/millstone/examine(mob/user, obj/structure/fluff/millstone/src_object)
 	. = ..()
+	// REDMOON ADD START - GRINDSTONE_FIX - дополняем описание
+	if(to_grind.len)
+		. += span_info("It has something inside!")
+	else
+		. += span_danger("It has nothing to grind.")
+	// REDMOON ADD END
 
 /obj/structure/fluff/millstone/proc/grindUp(list/obj/item/to_grind, mob/user)
 	for(var/obj/item/itemtogrind in to_grind)
@@ -91,7 +97,7 @@
 					break
 			return
 	if(istype(grindable))
-		if(!grindable.grind_results)
+		if(!grindable.mill_result) // REDMOON EDIT - фикс засовывания в гриндилку всякой бяки - WAS if(!grindable.grind_results)
 			to_chat(user, span_warning("I can't grind this into anything."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
