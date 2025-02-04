@@ -159,5 +159,5 @@
 				V.add_stress(/datum/stressevent/lovezizo)
 			else
 				V.add_stress(/datum/stressevent/hatezizo)
-		addtimer(CALLBACK(owner, TYPE_PROC_REF(/datum/game_mode/chaosmode, roundvoteend), TRUE), 5 MINUTES)
+		SSvote.initiate_vote("endround", "ASCENDED ZIZO CULT")
 		break
