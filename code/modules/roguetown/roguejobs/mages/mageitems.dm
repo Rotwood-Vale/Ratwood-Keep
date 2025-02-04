@@ -649,6 +649,7 @@ obj/item/hourglass/temporal/stop()
 /obj/item/natural/melded
 	name = "arcane meld"
 	icon_state = "wessence"
+	icon = 'icons/roguetown/items/natural.dmi'
 	desc = "You should not be seeing this"
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
@@ -656,29 +657,25 @@ obj/item/hourglass/temporal/stop()
 
 /obj/item/natural/melded/t1
 	name = "arcanic meld"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "meld"
 	desc = "A melding of infernal ash, fairy dust and elemental mote."
 
 /obj/item/natural/melded/t2
 	name = "dense arcanic meld"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "dmeld"
 	desc = "A melding of hellhound fang, iridescent scales and elemental shard."
 
 /obj/item/natural/melded/t3
 	name = "sorcerous weave"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "wessence"
+	icon_state = "weave"
 	desc = "A melding of molten core, heartwood core and elemental fragment."
 
 /obj/item/natural/melded/t4
 	name = "magical confluence"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "wessence"
+	icon_state = "confluence"
 	desc = "A melding of abyssal flame, sylvan essence and elemental relic."
 
 /obj/item/natural/melded/t5
-	name = "arcanic aberation"
-	icon_state = "wessence"
+	name = "arcanic aberration"
+	icon_state = "abberant"
 	desc = "A melding of arcane fusion and voidstone. It pulses erratically, power coiled tightly within and dangerous. Many would be afraid of going near this, let alone holding it."
