@@ -42,8 +42,8 @@
 
 		if (QDELETED(src)) // diseases can qdel the mob via transformations
 			return
-		if(src.fire_stacks > 0) //TEMPERATURE - If cold ever gets implemented, check it here too
-			handle_environment()
+
+		handle_environment()
 
 		//Random events (vomiting etc)
 		handle_random_events()
