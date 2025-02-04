@@ -4,6 +4,7 @@
 	ru_desc = "Богиня Солнца, дня, порядка и совершенства. Перворожденная Псайдона, близнец Нока. Даровала солнце людям, как свой священный дар."
 	ru_worshippers = "Высокодуховные, Фанатики и Фермеры"
 	t4 = /obj/effect/proc_holder/spell/invoked/cure_rot
+	mob_traits = list(TRAIT_SOUL_EXAMINE)
 	ru_confess_lines = list(
 		"АСТРАТА - МОЙ СВЕТ!",
 		"АСТРАТА ПРИВОДИТ ПОРЯДОК!",
@@ -42,6 +43,9 @@
 		"ГРОЗА ОКЕАНА - ВОЛЕЙ АБИССОРА!",
 		"Я ПРИТЯГИВАЮСЬ К ПРИЛИВУ!",
 	)
+	t1 = /obj/effect/proc_holder/spell/invoked/abyssor_bends
+	t2 = /obj/effect/proc_holder/spell/invoked/abyssheal
+	t3 = /obj/effect/proc_holder/spell/invoked/call_mossback
 
 /datum/patron/divine/ravox
 	ru_name = "Равокс"
@@ -49,8 +53,9 @@
 	ru_desc = "Бог войны, справедливости и силы. Сильнейший из детей Псайдона, он следит за каждым человеком издали, что бы осудить его за грехи, когда настанет время."
 	ru_worshippers = "Воины и те, кто ищет Правосудие"
 	mob_traits = list(TRAIT_SHARPER_BLADES)
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
 	t1 = /obj/effect/proc_holder/spell/self/call_to_arms
+	t2 = /obj/effect/proc_holder/spell/self/divine_strike
+	t3 = /obj/effect/proc_holder/spell/invoked/persistence
 	ru_confess_lines = list(
 		"РАВОКС - ЭТО ПРАВОСУДИЕ!",
 		"МИЛОСТЬ ЧЕРЕЗ ВРАЖДУ!",
@@ -73,9 +78,9 @@
 	ru_domain = "Бог обмана, свободы и вдохновения"
 	ru_desc = "Безумный Бог, подаривший людям безумие и тысячу обманов."
 	ru_worshippers = "Шулеры, мошенники, серебряные языки и разбойники"
-	mob_traits = list(TRAIT_BLACKLEG)
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
+	mob_traits = list(TRAIT_BLACKLEG, TRAIT_ANTISCRYING)
 	t1 = /obj/effect/proc_holder/spell/invoked/vicious_mimicry
+	t2 = /obj/effect/proc_holder/spell/invoked/wheel
 	ru_confess_lines = list(
 	"АСТРАТА - МОЙ СВЕТ!",
 	"НОК - ЭТО НОЧЬ!",

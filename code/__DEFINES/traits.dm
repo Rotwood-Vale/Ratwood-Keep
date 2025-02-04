@@ -168,6 +168,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
 	TRAIT_SHARPER_BLADES = span_info("My weapons lose their sharpness slower."),					// REDMOON ADD
 	TRAIT_BLACKLEG = span_info("I can cheat by rigging coin and dice, and peek at cards."),		// REDMOON ADD
+	TRAIT_INQUISITION = span_info("I am a member of the Inquisition. I can easily identify others of my cadre at a glance."), // REDMOON ADD
 	TRAIT_STUDENT = span_info("The scholar has taught me new skills!"),
 	TRAIT_DARKLING = span_info("I am a creature of the dark and am sensitive to the light. The hateful sun is especially harsh on my eyes, and I prefer to sleep during the dae.")
 ))

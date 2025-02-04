@@ -33,14 +33,17 @@
 			else
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt
 			cloak = /obj/item/clothing/cloak/templar/astratan
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/noc
 			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if("Dendor")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/dendor
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
+			H.cmode_music = 'sound/music/cmode/garrison/CombatForestGarrison.ogg'
 		if("Necra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
 			if(prob(50))
@@ -48,34 +51,36 @@
 			else
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
 			cloak = /obj/item/clothing/cloak/templar/necran
+			H.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
 		if("Pestra")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/pestrahelm
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if("Malum")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/malum
 			cloak = /obj/item/clothing/cloak/templar/malummite
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 		if("Ravox")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
 			cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 		if("Eora")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/eorahelm
 			wrists = /obj/item/clothing/neck/roguetown/psicross/eora
 			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
 			mask = /obj/item/clothing/mask/rogue/facemask/goldmask
+			H.cmode_music = 'sound/music/cmode/church/CombatEora.ogg'
 		if("Xylix")
-			if(prob(50))
-				head = /obj/item/clothing/head/roguetown/helmet/heavy/xylixcagehelm
-			else
-				head = /obj/item/clothing/head/roguetown/helmet/heavy/xylixhelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/xylix
 			wrists = /obj/item/clothing/neck/roguetown/psicross/xylix
+			H.cmode_music = 'sound/music/combat_lunatic.ogg'
 		if("Abyssor")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorhelm
 			cloak = /obj/item/clothing/cloak/tabard/crusader/abyssor
 			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			H.mind?.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
@@ -85,6 +90,8 @@
 	switch(H.patron.name)
 		if("Necra")
 			backpack_contents = list(/obj/item/key/graveyard, /obj/item/key/church)
+		if("Xylix")
+			backpack_contents = list(/obj/item/key/church, /obj/item/squeeze_me)
 		else
 			backpack_contents = list(/obj/item/key/church = 1)
 	backr = /obj/item/rogueweapon/shield/tower/metal

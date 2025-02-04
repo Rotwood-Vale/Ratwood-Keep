@@ -94,6 +94,7 @@
 					H.verbs |= /mob/living/carbon/human/proc/torture_victim
 					H.verbs |= /mob/living/carbon/human/proc/faith_test
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
 				else
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

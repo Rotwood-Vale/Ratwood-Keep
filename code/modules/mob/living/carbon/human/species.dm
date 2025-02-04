@@ -117,6 +117,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
+		ORGAN_SLOT_ANUS = /obj/item/organ/anus, // REDMOON ADD - добавляем жопу
 //		ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles, // REDMOON REMOVAL - убираем форсирование половых органов
 //		ORGAN_SLOT_PENIS = /obj/item/organ/penis, // REDMOON REMOVAL - убираем форсирование половых органов
 //		ORGAN_SLOT_BREASTS = /obj/item/organ/breasts, // REDMOON REMOVAL - убираем форсирование половых органов

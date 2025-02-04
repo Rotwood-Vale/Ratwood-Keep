@@ -51,6 +51,10 @@
 	domain = "God of the Ocean, Storms and the Tide"
 	desc = "The Beloved Son, gifted primordial men food and water."
 	worshippers = "Men of the Sea, Primitive Aquatics"
+	t1 = /obj/effect/proc_holder/spell/invoked/abyssor_bends
+	t2 = /obj/effect/proc_holder/spell/invoked/abyssheal
+	t3 = /obj/effect/proc_holder/spell/invoked/call_mossback
+	mob_traits = list(TRAIT_WATERBREATHING)
 	confess_lines = list(
 		"ABYSSOR COMMANDS THE WAVES!",
 		"THE OCEAN'S FURY IS ABYSSOR'S WILL!",
@@ -62,6 +66,7 @@
 	domain = "God of War, Justice and Strength"
 	desc = "The strongest of Psydon's children, he watches man from afar."
 	worshippers = "Warriors, Sellswords & those who seek Justice"
+	mob_traits = list(TRAIT_STEELHEARTED)
 	t1 = /obj/effect/proc_holder/spell/invoked/burden
 	confess_lines = list(
 		"RAVOX IS JUSTICE!",

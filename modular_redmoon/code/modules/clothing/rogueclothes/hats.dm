@@ -407,18 +407,21 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
-/obj/item/clothing/head/roguetown/helmet/abyssorhat
-	name = "abyssor hood"
-	desc = "A hood worn by worhippers of Abyssor. Those who worship Abyssor peer through the eyeslits of this hood with glassy, fishlike eyes, as though they long to be under the waves."
-	block2add = FOV_BEHIND
-	flags_inv = HIDEEARS|HIDEHAIR
+/obj/item/clothing/head/roguetown/roguehood/abyssor
+	name = "Abyssor Hood"
+	desc = "A hood worn by the followers of Abyssor, with a unique, coral-shaped mask. How do they even see out of this?"
+	color = null
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
 	icon_state = "abyssorhood"
 	item_state = "abyssorhood"
-	icon = 'modular_redmoon/icons/hats.dmi'
-	mob_overlay_icon = 'modular_redmoon/icons/head_64x64.dmi'
-	worn_x_dimension = 64
-	worn_y_dimension = 64
-	smeltresult = /obj/item/ash
+	body_parts_covered = HEAD|HAIR|NECK
+	slot_flags = ITEM_SLOT_HEAD
+	dynamic_hair_suffix = ""
+	edelay_type = 1
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	max_integrity = 100
 
 /obj/item/clothing/head/roguetown/helmet/heavy/pestrahelm
 	name = "Pestra Helmet"

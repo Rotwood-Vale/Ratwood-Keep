@@ -93,11 +93,12 @@
 			shoes = shoes = /obj/item/clothing/shoes/roguetown/sandals
 			shirt =	/obj/item/clothing/suit/roguetown/shirt/undershirt/ravoxrobe
 		if(/datum/patron/divine/abyssor)
-			head = /obj/item/clothing/head/roguetown/helmet/abyssorhat
+			head = /obj/item/clothing/head/roguetown/roguehood/abyssor
 			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			pants = /obj/item/clothing/under/roguetown/tights/purple
-			armor =	/obj/item/clothing/suit/roguetown/shirt/robe/abyssoracorobe
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 3, TRUE)
 			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
 		else

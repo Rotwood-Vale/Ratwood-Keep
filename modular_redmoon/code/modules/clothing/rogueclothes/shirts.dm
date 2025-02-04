@@ -8,7 +8,7 @@
 	allowed_sex = list(MALE, FEMALE)
 
 /obj/item/clothing/suit/roguetown/shirt/robe/abyssoracorobe
-	name = "abyssor robe"
+	name = "Abyssor Robe"
 	desc = "A fancy jacket common with merchants."
 	icon_state = "abyssorrobe"
 	icon = 'modular_redmoon/icons/shirts.dmi'
