@@ -227,6 +227,15 @@
 	icon_state = "spdagger"
 	wdefense = 6
 
+/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero
+	name = "sail dagger"
+	force = 18
+	throwforce = 18
+	desc = "An exceptionally protective parrying dagger popular in the Etruscan Isles, this dagger features a plain metal guard in the shape of a ship's sail."
+	wdefense = 9
+	icon = 'icons/roguetown/weapons/64.dmi'
+	icon_state = "sail_dagger"
+
 /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	icon_state = "sdaggeralt"
 
