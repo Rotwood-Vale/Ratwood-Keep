@@ -9,18 +9,16 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			return
 		var/mob/user = usr
 		var/list/dat = list()
+		dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[src]</b></font></div>"
 		if(valid_headshot_link(null, headshot_link, TRUE))
-			dat += "<br>"
 			dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div>")
-		dat += "<br>"
-		dat += "<div align='center'>[src]</div>"
 		if(flavortext)
 			dat += "<div align='left'>[replacetext(flavortext, "\n", "<BR>")]</div>"
 		if(ooc_notes)
 			dat += "<br>"
 			dat += "<div align='center'><b>OOC notes</b></div>"
 			dat += "<div align='left'>[replacetext(ooc_notes, "\n", "<BR>")]"
-		var/datum/browser/popup = new(user, "[src]", 600, 900)
+		var/datum/browser/popup = new(user, "[src]", nwidth = 600, nheight = 800)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
