@@ -1295,19 +1295,15 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	xp_gain = TRUE
 	miracle = FALSE
 
-/obj/effect/proc_holder/spell/self/frostbolt/cast(mob/user = usr)
-	var/mob/living/target = user
-	target.visible_message(span_warning("[target] hurls a frosty beam!"), span_notice("You hurl a frosty beam!"))
-	. = ..()
-
 /obj/projectile/magic/frostbolt
 	name = "Frost Dart"
 	icon_state = "ice_2"
 	damage = 20
+	nodamage = FALSE
 	damage_type = BURN
 	flag = "magic"
 	range = 10
-	speed = 12 //higher is slower
+	speed = 8 //higher is slower
 	var/aoe_range = 0
 
 /obj/projectile/magic/frostbolt/on_hit(target)
@@ -1323,7 +1319,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 			var/mob/living/L = target
 			L.apply_status_effect(/datum/status_effect/buff/frostbite)
 			new /obj/effect/temp_visual/snap_freeze(get_turf(L))
-	qdel(src)
+//	qdel(src)
 
 /obj/effect/temp_visual/snap_freeze
 	icon = 'icons/effects/effects.dmi'

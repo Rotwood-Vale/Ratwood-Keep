@@ -421,3 +421,15 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 	name = "enchanting scroll of temporal rewind"
 	desc = "A scroll imbued with an enchantment of temporal. Teleports you back where were hit, a few seconds after being hit."
 	component = /datum/magic_item/mythic/rewind
+
+/obj/item/enchantmentscroll/rewind/attack_obj(obj/item/O, mob/living/user)
+	.=..()
+	if(istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))
+		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
+		var/magiceffect= new component
+		O.AddComponent(/datum/component/magic_item, magiceffect)
+		O.name += " of temporal rewind"
+		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+		qdel(src)
+	else
+		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))

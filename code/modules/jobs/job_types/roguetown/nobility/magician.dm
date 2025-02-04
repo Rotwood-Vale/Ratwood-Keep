@@ -56,7 +56,7 @@
 		H.change_stat("strength", -1)
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 4)
-		H.mind.adjust_spellpoints(17)
+		H.mind.adjust_spellpoints(10)
 		if(H.age == AGE_OLD) //old wizards are wise and experienced they should not get arcane 1 for being old
 			belt = /obj/item/storage/belt/rogue/leather/plaquegold //golden belt to show how valuable they are to the duke
 			H.change_stat("speed", -1)

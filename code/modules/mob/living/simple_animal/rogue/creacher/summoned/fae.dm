@@ -3,6 +3,7 @@
 	ADD_TRAIT(src, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/Life()
 	..()
@@ -62,7 +63,7 @@
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 6
 	see_in_dark = 6
 	move_to_delay = 3
 	base_intents = list(/datum/intent/unarmed/claw)
@@ -100,6 +101,7 @@
 	dodgetime = 60
 	aggressive = 1
 	var/drug_cd
+	summon_primer = "You are an sprite, a small fae. You spend time wandering the wilds. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite/Initialize()
@@ -132,9 +134,9 @@
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 6
 	see_in_dark = 6
-	move_to_delay = 3
+	move_to_delay = 6
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("fae")
@@ -147,10 +149,9 @@
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	simple_detect_bonus = 20
-	ranged = TRUE
-	projectiletype = /obj/projectile/magic/aoe/fireball/rogue
-	retreat_distance = 7
-	minimum_distance = 5
+	ranged = FALSE
+	retreat_distance = 0
+	minimum_distance = 0
 	food_type = list()
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
@@ -168,6 +169,7 @@
 	dodgetime = 40
 	aggressive = 1
 	var/drug_cd
+	summon_primer = "You are a glimmerwing, a moderate sized fae. You spend time wandering forests, cursing unweary travellers. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing/Initialize()
 	. = ..()
@@ -194,7 +196,7 @@
 		src.drug_cd = world.time
 	return target.attack_animal(src)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad	//Make this cause giant vine tangled messes
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad
 	icon = 'icons/mob/summonable/32x64.dmi'
 	name = "dryad"
 	icon_state = "dryad"
@@ -204,9 +206,9 @@
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 6
 	see_in_dark = 6
-	move_to_delay = 8
+	move_to_delay = 15
 	base_intents = list(/datum/intent/simple/elementalt2_unarmed)
 	butcher_results = list()
 	faction = list("fae")
@@ -241,6 +243,7 @@
 //	stat_attack = UNCONSCIOUS
 	ranged = FALSE
 	var/vine_cd
+	summon_primer = "You are a dryad, a large sized fae. You spend time tending to forests, guarding sacred ground from tresspassers. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the watcher
 	return
@@ -312,9 +315,9 @@
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 6
 	see_in_dark = 6
-	move_to_delay = 3
+	move_to_delay = 6
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("fae")
@@ -351,10 +354,11 @@
 	ranged_message = "throws icey magick"
 	var/shroom_cd = 0
 	var/summon_cd = 0
+	summon_primer = "You are a sylph, a moderate sized fae. You spend time tending to to lesser spirits, keeping them in line and from going too wild. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
 
 /obj/projectile/magic/frostbolt/greater
 	name = "greater frostbolt"
-	damage = 35
+	damage = 25
 	range = 6
 	speed = 6 //higher is slower
 
@@ -363,7 +367,7 @@
 		return
 	visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
 
-	if(world.time >= src.shroom_cd + 100)
+	if(world.time >= shroom_cd + 100)
 		var/mob/living/targetted = target
 		create_shroom(targetted)
 		src.shroom_cd = world.time
@@ -379,6 +383,9 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/proc/create_shroom(atom/target)
 	if(!target)
 		return
+	for(var/turf/turf as anything in RANGE_TURFS(3,src.loc))
+		if(prob(30))
+			new /obj/structure/glowshroom(turf)
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/death(gibbed)

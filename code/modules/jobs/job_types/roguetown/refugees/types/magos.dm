@@ -107,7 +107,7 @@
 			beltl = /obj/item/rogueweapon/huntingknife
 			backl = /obj/item/storage/backpack/rogue/satchel
 			r_hand = /obj/item/rogueweapon/woodstaff
-			H.mind.adjust_spellpoints(7)
+			H.mind.adjust_spellpoints(5)
 			H.change_stat("strength", -2)
 			H.change_stat("intelligence", 2)
 			H.change_stat("constitution", -2)

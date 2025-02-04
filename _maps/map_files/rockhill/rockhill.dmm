@@ -7113,6 +7113,9 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/rtfield)
+"eiK" = (
+/turf/closed/wall/mineral/rogue/stone/blue_moss,
+/area/rogue/outdoors/bog)
 "eiZ" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -40301,6 +40304,9 @@
 /obj/item/rogueore/copper,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
+"xEJ" = (
+/turf/open/dark_filler,
+/area/rogue/outdoors/bog)
 "xEN" = (
 /obj/structure/chair/bench/church{
 	dir = 4
@@ -184745,9 +184751,9 @@ kDc
 wLx
 wLx
 wLx
-sNr
+eiK
 wLx
-sNr
+eiK
 wLx
 vIE
 brR
@@ -185607,7 +185613,7 @@ wLx
 kDc
 kDc
 wLx
-sNr
+eiK
 rCK
 boS
 fZC
@@ -185615,7 +185621,7 @@ fZC
 ort
 fZC
 fZC
-sNr
+eiK
 uRH
 sYx
 oXL
@@ -186047,7 +186053,7 @@ wXz
 fZC
 gDe
 gde
-sNr
+eiK
 odi
 sYx
 sYx
@@ -186478,7 +186484,7 @@ kvC
 ort
 fZC
 rCK
-sNr
+eiK
 kWT
 odi
 oXL
@@ -186905,7 +186911,7 @@ wLx
 wLx
 fhN
 fZC
-sNr
+eiK
 kvC
 rCK
 gDe
@@ -187337,8 +187343,8 @@ wLx
 wLx
 wLx
 wLx
-sNr
-sNr
+eiK
+eiK
 wLx
 wLx
 azn
@@ -294906,9 +294912,9 @@ uuE
 uuE
 uuE
 uuE
+eiK
 sNr
-sNr
-sNr
+eiK
 uuE
 uuE
 uuE
@@ -295768,7 +295774,7 @@ uuE
 uuE
 uuE
 uuE
-sNr
+eiK
 uuE
 nMW
 uuE
@@ -295776,7 +295782,7 @@ uuE
 uuE
 nMW
 uuE
-bdF
+eiK
 uuE
 uuE
 uuE
@@ -296208,7 +296214,7 @@ uuE
 uuE
 nMW
 uuE
-bdF
+eiK
 uuE
 uuE
 uuE
@@ -296632,7 +296638,7 @@ uuE
 uuE
 uuE
 uuE
-sNr
+eiK
 uuE
 nMW
 uuE
@@ -296640,7 +296646,7 @@ uuE
 uuE
 pKj
 dbG
-sNr
+eiK
 uuE
 uuE
 uuE
@@ -297066,13 +297072,13 @@ uuE
 uuE
 uuE
 uuE
-bdF
+eiK
 rlQ
 nMW
 pKj
 nMW
 wcI
-sNr
+eiK
 uuE
 uuE
 uuE
@@ -297498,12 +297504,12 @@ uuE
 uuE
 uuE
 uuE
-bdF
-bdF
+eiK
+eiK
+xEJ
 sNr
 sNr
-sNr
-bdF
+eiK
 uuE
 uuE
 uuE

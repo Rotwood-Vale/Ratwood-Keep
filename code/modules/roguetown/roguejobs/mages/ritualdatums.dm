@@ -219,62 +219,71 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	buff = /datum/status_effect/buff/magicstrength
 	tier = 2
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/natural/manacrystal = 1,)
+	required_atoms = list(/obj/item/natural/manacrystal = 2,/obj/item/natural/elementalshard = 2)
 
 /datum/runerituals/buff/lesserstrength
 	name = "lesser arcane augmentation of strength"
 	buff = /datum/status_effect/buff/magicstrength/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/elementalmote = 2,/obj/item/natural/manacrystal = 1)
 
 /datum/runerituals/buff/constitution
 	name = "fortify constitution"
 	buff = /datum/status_effect/buff/magicconstitution
 	tier = 2
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/manacrystal = 2, /obj/item/natural/obsidian = 4)
 
 /datum/runerituals/buff/lesserconstitution
 	name = "lesser fortify constitution"
 	buff = /datum/status_effect/buff/magicconstitution/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/manacrystal = 1, /obj/item/natural/obsidian = 2)
 
 /datum/runerituals/buff/speed
 	name = "haste"
 	buff = /datum/status_effect/buff/magicspeed
 	tier = 2
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/artifact = 2, /obj/item/natural/leyline = 2)
 
 /datum/runerituals/buff/lesserspeed
 	name = "lesser haste"
 	buff = /datum/status_effect/buff/magicspeed/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/artifact = 1, /obj/item/natural/leyline = 1)
 
 /datum/runerituals/buff/perception
 	name = "arcane eyes"
 	buff = /datum/status_effect/buff/magicperception
 	tier = 2
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 2, /obj/item/natural/hellhoundfang = 1)
 
 /datum/runerituals/buff/lesserperception
 	name = "lesser arcane eyes"
 	buff = /datum/status_effect/buff/magicperception/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/infernalash = 2)
 
 /datum/runerituals/buff/endurance
 	name = "vitalized endurance"
 	buff = /datum/status_effect/buff/magicendurance
 	tier = 2
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/obsidian = 2, /obj/item/natural/iridescentscale = 1)
 
 /datum/runerituals/buff/lesserendurance
 	name = "lesser vitalized endurance"
 	buff = /datum/status_effect/buff/magicendurance/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/obsidian = 2, /obj/item/natural/fairydust = 2)
 
 /datum/runerituals/buff/nightvision
 	name = "darksight"
 	buff = /datum/status_effect/buff/darkvision
 	blacklisted = FALSE
-
+	required_atoms = list(/obj/item/natural/manacrystal = 2, /obj/item/natural/iridescentscale = 1, /obj/item/natural/elementalshard = 1)
 /datum/runerituals/enchantment
 
 
@@ -304,7 +313,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 /datum/runerituals/teleport
 	name = "planar convergence"
 	tier = 3
-	required_atoms = list(/obj/item/natural/artifact = 1, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t3 = 1) //adjust this later
+	required_atoms = list(/obj/item/natural/artifact = 1, /obj/item/natural/leyline = 1, /obj/item/natural/melded/t3 = 1) //adjust this later
 /datum/runerituals/teleport/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return TRUE
 
@@ -356,15 +365,15 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons an infernal watcher"
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list(/obj/item/natural/hellhoundfang = 2, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t2 =1)
+	required_atoms = list(/obj/item/natural/hellhoundfang = 2, /obj/item/natural/obsidian = 2, /obj/item/natural/melded/t2 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher
 
 /datum/runerituals/summoning/archfiend
-	name = "summoning archfiend"
-	desc = "summons an archfiend"
+	name = "summoning fiend"
+	desc = "summons an fiend"
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list(/obj/item/natural/moltencore = 1, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t3 =1)
+	required_atoms = list(/obj/item/natural/moltencore = 1, /obj/item/natural/obsidian = 3, /obj/item/natural/melded/t3 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend
 
 /datum/runerituals/summoning/sprite
@@ -380,7 +389,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons an fae spirit"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 2, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
 
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
 /datum/runerituals/summoning/dryad
@@ -388,7 +397,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons an drayd"
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 2, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/bigrat//temporary rat 4 testing
 
 /datum/runerituals/summoning/sylph
@@ -442,7 +451,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Good for cutting wood."
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1, /obj/item/natural/manacrystal = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/woodcut)
 
 /datum/runerituals/enchanting/mining
@@ -450,7 +459,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Good for mining rock."
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1, /obj/item/natural/artifact = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/mining)
 
 /datum/runerituals/enchanting/xylix
@@ -458,7 +467,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "How fortunate!"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1, /obj/item/natural/leyline = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/xylix)
 
 /datum/runerituals/enchanting/light
@@ -466,7 +475,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Provides light!"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/elementalmote = 2)
 	result_atoms = list(/obj/item/enchantmentscroll/light)
 
 /datum/runerituals/enchanting/holding
@@ -474,7 +483,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Makes things hold more!"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/infernalash = 2, /obj/item/natural/fairydust = 2)
 	result_atoms = list(/obj/item/enchantmentscroll/holding)
 
 /datum/runerituals/enchanting/revealing
@@ -482,7 +491,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Doubles brightness!"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1, /obj/item/natural/fairydust = 2)
 	result_atoms = list(/obj/item/enchantmentscroll/revealing)
 
 /datum/runerituals/enchanting/nightvision
@@ -490,7 +499,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Provides dark sight!"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/iridescentscale = 1, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t1 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/nightvision)
 
 /datum/runerituals/enchanting/featherstep
@@ -498,7 +507,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Provides dark sight!"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/iridescentscale = 1, /obj/item/natural/fairydust = 1, /obj/item/natural/melded/t1 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/featherstep)
 
 /datum/runerituals/enchanting/fireresist
@@ -506,7 +515,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Provides resistance from fire!"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/hellhoundfang = 1, /obj/item/natural/infernalash = 1, /obj/item/natural/melded/t1 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/fireresist)
 
 /datum/runerituals/enchanting/climbing
@@ -514,7 +523,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Better climbing!"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/elementalshard = 1, /obj/item/natural/infernalash = 1, /obj/item/natural/melded/t1 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/climbing)
 
 /datum/runerituals/enchanting/thievery
@@ -522,7 +531,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Better pickpocketting and lockpicks!"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/hellhoundfang = 1, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t1 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/thievery)
 
 /datum/runerituals/enchanting/trekk
@@ -530,7 +539,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Provides easy movement through swamps."
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/elementalshard = 1, /obj/item/natural/artifact = 1, /obj/item/natural/melded/t1 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/trekk)
 
 /datum/runerituals/enchanting/smithing
@@ -538,7 +547,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Better smithing."
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/elementalshard = 1, /obj/item/natural/elementalmote = 1, /obj/item/natural/melded/t1 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/smithing)
 
 /datum/runerituals/enchanting/lifesteal
@@ -546,7 +555,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Steals health from foes."
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/heartwoodcore = 1, /obj/item/natural/hellhoundfang = 2, /obj/item/natural/melded/t2 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/lifesteal)
 
 /datum/runerituals/enchanting/frostveil
@@ -554,7 +563,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Chills foes."
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/elementalfragment = 1, /obj/item/natural/elementalshard = 2, /obj/item/natural/melded/t2 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/frostveil)
 
 /datum/runerituals/enchanting/phoenixguard
@@ -562,7 +571,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "burns attackers."
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/moltencore = 1, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/phoenixguard)
 
 /datum/runerituals/enchanting/woundclosing
@@ -570,7 +579,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Closes wounds."
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/heartwoodcore = 1, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/woundclosing)
 
 /datum/runerituals/enchanting/returningweapon
@@ -578,7 +587,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Summons weapons."
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/elementalfragment = 1, /obj/item/natural/fairydust = 2, /obj/item/natural/elementalmote = 2, /obj/item/natural/melded/t2 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/returningweapon)
 
 /datum/runerituals/enchanting/archery
@@ -586,7 +595,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Of bowmanship."
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/hellhoundfang = 2, /obj/item/natural/leyline = 2, /obj/item/natural/melded/t2 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/archery)
 
 /datum/runerituals/enchanting/leaping
@@ -594,15 +603,15 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Further leaping."
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/moltencore = 2, /obj/item/natural/leyline = 2, /obj/item/natural/melded/t2 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/leaping)
 
 /datum/runerituals/enchanting/freeze
 	name = "Freezing"
-	desc = "Burns Foes."
+	desc = "Freezes Foes into cubes of ice."
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/sylvanessence = 1, /obj/item/natural/moltencore = 2, /obj/item/natural/melded/t3 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/freeze)
 
 /datum/runerituals/enchanting/infernalflame
@@ -610,7 +619,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Burns Foes."
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/abyssalflame = 1, /obj/item/natural/obsidian = 4, /obj/item/natural/melded/t3 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/infernalflame)
 
 /datum/runerituals/enchanting/briars
@@ -618,7 +627,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Harder hitting weapons at a cost."
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/sylvanessence = 1, /obj/item/natural/heartwoodcore = 2, /obj/item/natural/melded/t3 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/briars)
 
 /datum/runerituals/enchanting/rewind
@@ -626,5 +635,5 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "Rewinds time."
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list()
+	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/elementalrelic = 1, /obj/item/natural/heartwoodcore = 2, /obj/item/natural/melded/t3 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/rewind)

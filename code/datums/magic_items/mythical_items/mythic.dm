@@ -88,7 +88,7 @@
 
 /datum/magic_item/mythic/rewind
 	name = "Temporal Rewind"
-	description = "Its seems both hold and new at the same time."
+	description = "Its seems both old and new at the same time."
 	var/last_used
 	var/active_item = FALSE
 	var/warned = FALSE

@@ -3,6 +3,7 @@
 	source = portal
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan
 	icon = 'icons/mob/summonable/32x32.dmi'

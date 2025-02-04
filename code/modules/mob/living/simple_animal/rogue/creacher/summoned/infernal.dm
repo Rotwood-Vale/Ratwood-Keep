@@ -99,6 +99,7 @@
 	ranged_message = "throws fire"
 	dodgetime = 30
 	aggressive = 1
+	summon_primer = "You are an imp, a small creature spending it's time in the infernal plane amusing itself and eating meat. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 //	stat_attack = UNCONSCIOUS
 
 	///this mob was updated to new ai
@@ -164,7 +165,7 @@
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
-	move_to_delay = 3
+	move_to_delay = 6
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("infernal")
@@ -195,6 +196,7 @@
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
 	dodgetime = 30
 	aggressive = 1
+	summon_primer = "You are an hellhound, a moderate sized canine made of heat and flame. You spend time in the infernal plane hunting and incinerating things to your hearts content. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 	var/flame_cd
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/Initialize()
@@ -236,7 +238,7 @@
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
-	move_to_delay = 5
+	move_to_delay = 9
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("infernal")
@@ -272,6 +274,7 @@
 	ranged_cooldown = 40
 	projectiletype = /obj/projectile/magic/aoe/fireball/rogue
 	ranged_message = "stares"
+	summon_primer = "You are an infernal watcher, a creature of lava and rock. You have watched over the chaos of the infernal plane long enough that it was been pointless to keep count. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the watcher
 	return
@@ -313,7 +316,7 @@
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
-	move_to_delay = 3
+	move_to_delay = 10
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("infernal")
@@ -351,6 +354,7 @@
 	ranged_message = "throws fire"
 	var/flame_cd = 0
 	var/summon_cd = 0
+	summon_primer = "You are fiend, a large sized demon from the infernal plane. You have imps and hounds at your beck and call, able to do whatever you wished. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/death(gibbed)
 	..()
@@ -365,12 +369,12 @@
 		return
 	visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
 
-	if(world.time >= src.flame_cd + 100)
+	if(world.time >= src.flame_cd + 250)
 		var/mob/living/targetted = target
 		create_meteors(targetted)
 		src.flame_cd = world.time
 
-	if(world.time >= src.summon_cd + 200)
+	if(world.time >= src.summon_cd + 600)
 		callforbackup()
 
 		src.summon_cd = world.time

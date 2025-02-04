@@ -2,6 +2,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/Life()
 	..()
 	if(pulledby)
@@ -109,6 +110,7 @@
 	attack_verb_simple = "pounds"
 	dodgetime = 0
 	aggressive = 1
+	summon_primer = "You are an crawler, a small elemental. Elementals such as yourself spend immeasurable time wandering about within your plane. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
 
 	///this mob was updated to new ai
 	AIStatus = AI_OFF
@@ -140,7 +142,7 @@
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
-	move_to_delay = 3
+	move_to_delay = 8
 	base_intents = list(/datum/intent/simple/elemental_unarmed)
 	butcher_results = list()
 	faction = list("infernal")
@@ -174,6 +176,7 @@
 	dodgetime = 30
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
+	summon_primer = "You are an warden, a moderate elemental. Elementals such as yourself guard your plane from intrusion zealously. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden/Initialize()
 	. = ..()
@@ -214,7 +217,7 @@
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
-	move_to_delay = 3
+	move_to_delay = 12
 	base_intents = list(/datum/intent/simple/elementalt2_unarmed)
 	butcher_results = list()
 	faction = list("elemental")
@@ -247,6 +250,7 @@
 	dodgetime = 30
 	aggressive = 1
 	var/rock_cd
+	summon_primer = "You are an behemoth, a large elemental. Elementals such as yourself often lead groups of wardens in defending your plane. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/Initialize()
 	. = ..()
@@ -362,7 +366,7 @@
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
-	move_to_delay = 8
+	move_to_delay = 15
 	base_intents = list(/datum/intent/simple/elementalt2_unarmed)
 	butcher_results = list()
 	faction = list("elemental")
@@ -399,6 +403,7 @@
 	dodgetime = 0
 	aggressive = 1
 	var/stomp_cd
+	summon_primer = "You are an collossus, a massive elemental. Elementals such as yourself are immeasurably old. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/collossus/MoveToTarget(list/possible_targets)//Step 5, handle movement between us and our target
 	stop_automated_movement = 1

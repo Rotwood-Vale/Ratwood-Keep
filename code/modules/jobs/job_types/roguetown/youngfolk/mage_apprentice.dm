@@ -45,7 +45,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)	//they get potion crafting round start now.
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		H.mind.adjust_spellpoints(1)
+		H.mind.adjust_spellpoints(3)
 		H.change_stat("intelligence", 3)
 		H.change_stat("strength", -1)
 

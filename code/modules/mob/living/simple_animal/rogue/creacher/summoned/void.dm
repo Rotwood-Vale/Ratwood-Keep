@@ -1,10 +1,11 @@
-/mob/living/simple_animal/hostile/retaliate/rogue/infernal/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk/Initialize()
 	. = ..()
 	ADD_TRAIT(src,TRAIT_NOFIRE, "[type]")
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
-
+	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 /mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the obelisk
 	return
 
@@ -25,12 +26,13 @@
 	faction = list("abberant")
 	emote_hear = null
 	emote_see = null
-	turns_per_move = 8
+	turns_per_move = 6
+	speed = 5
 	see_in_dark = 9
-	move_to_delay = 1
+	move_to_delay = 12
 	vision_range = 9
 	aggro_vision_range = 9
-
+	movement_type = FLYING
 	butcher_results = list()
 
 	health = 750
@@ -66,6 +68,7 @@
 	var/static/image/direction_overlay = image('icons/effects/effects.dmi', "obeliak_telegraph_dir")
 	/// A list of all the beam parts.
 	var/list/beam_parts = list()
+	summon_primer = "You are ancient. A construct built in an age before men, a time of dragons. Your builders don't seem to be around anymore, and time has past with you in standby. How you respond, is up to you."
 
 /datum/intent/simple/slam
 	name = "slam"
@@ -264,13 +267,15 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 	for(var/action_type in attack_action_types)
 		var/datum/action/innate/megafauna_attack/attack_action = new action_type()
 		attack_action.Grant(src)
 	var/obj/effect/proc_holder/spell/aoe_turf/repulse/voiddragon/repulse_action = new /obj/effect/proc_holder/spell/aoe_turf/repulse/voiddragon(src)
 	var/obj/effect/proc_holder/spell/invoked/sundering_lightning/lightning_action = new /obj/effect/proc_holder/spell/invoked/sundering_lightning
-	repulse_action.action.Grant(src)
-	lightning_action.action.Grant(src)
+//	repulse_action.action.Grant(src)
+//	lightning_action.action.Grant(src)
 	mob_spell_list += repulse_action
 	mob_spell_list += lightning_action
 
@@ -324,6 +329,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	melee_damage_upper = 40
 	retreat_distance = 0
 	minimum_distance = 0
+	aggressive = 1
 	speed = 5
 	move_to_delay = 5
 	ranged = TRUE
@@ -335,7 +341,8 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	var/list/attack_action_types = list(/datum/action/innate/megafauna_attack/sundering_lightning,
 							/datum/action/innate/megafauna_attack/dragon_slam,
 							/datum/action/innate/megafauna_attack/summon_obelisk,
-							/datum/action/innate/megafauna_attack/lava_swoop)
+							/datum/action/innate/megafauna_attack/lava_swoop,
+							/datum/action/innate/megafauna_attack/lightning_breath)
 	var/anger_modifier = 0
 	var/recovery_time = 0
 	var/chosen_attack = 1 // chosen attack num
@@ -346,6 +353,12 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	var/lightning_cd
 	var/summon_cd
 	var/slam_cd
+	summon_primer = "You are ancient. A creature long since banished to the void ages past, you were trapped in a seemingly timeless abyss. Now you've been freed, returned to the world- and everything has changed. It seems some of your constructs remain buried beneath the ground. How you react to these events, only time can tell."
+
+/mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/get_sound(input)
+	switch(input)
+		if("aggro")
+			return pick('sound/vo/mobs/vdragon/drgn.ogg')
 
 /datum/intent/unarmed/dragonclaw
 	name = "gouge"
@@ -365,36 +378,49 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	name = "Megafauna Attack"
 	icon_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = ""
-	var/mob/living/simple_animal/hostile/megafauna/M
+	var/mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/M
 	var/chosen_message
 	var/chosen_attack_num = 0
+
+/datum/action/innate/megafauna_attack/Grant(mob/living/L)
+	M = L
+	return ..()
+/datum/action/innate/megafauna_attack/Activate()
+	M.chosen_attack = chosen_attack_num
+	to_chat(M, chosen_message)
 
 /datum/action/innate/megafauna_attack/sundering_lightning
 	name = "Summon Sundering Lightning"
 	button_icon_state = "lightning"
-	chosen_message = "<span class='colossus'>You are now shooting fire at your target.</span>"
+	chosen_message = "<span class='colossus'>You are now summoning lightning from the sky.</span>"
 	chosen_attack_num = 1
 
 /datum/action/innate/megafauna_attack/dragon_slam
 	name = "Ground Slam shockwave"
 	icon_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "projectile"
-	chosen_message = "<span class='colossus'>You are now shooting fire at your target and raining fire around you.</span>"
+	chosen_message = "<span class='colossus'>You are now slamming the ground to make shockwaves.</span>"
 	chosen_attack_num = 2
 
 /datum/action/innate/megafauna_attack/summon_obelisk
 	name = "summon obelisk"
 	icon_icon = 'icons/effects/fire.dmi'
 	button_icon_state = "1"
-	chosen_message = "<span class='colossus'>You are now shooting mass fire at your target.</span>"
+	chosen_message = "<span class='colossus'>You are now summoning obelisks to help.</span>"
 	chosen_attack_num = 3
 
 /datum/action/innate/megafauna_attack/lava_swoop
 	name = "Lava Swoop"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "lavastaff_warn"
-	chosen_message = "<span class='colossus'>You are now swooping and raining lava at your target.</span>"
+	chosen_message = "<span class='colossus'>You are now swooping and striking lightning at your target.</span>"
 	chosen_attack_num = 4
+
+/datum/action/innate/megafauna_attack/lightning_breath
+	name = "Breath chain lightning"
+	button_icon_state = "lightning"
+	chosen_message = "<span class='colossus'>You are now breathing lightning.</span>"
+	chosen_attack_num = 5
 
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/OpenFire()
 	if(swooping)
@@ -410,25 +436,31 @@ It will also call down lightning strikes from the sky, and fling people with it'
 			if(2)
 				dragon_slam(src,2,10,8)
 			if(3)
-				summon_obelisk()
+				if(world.time >= summon_cd)
+					summon_obelisk()
 			if(4)
 				lava_swoop()
+			if(5)
+				src.visible_message(span_colossus("[src] opens his maw, and lightning crackles beyond it's teeth."))
+				chain_lightning(target, src)
 		return
-	if(world.time >= cl_cd)
-		chain_lightning()
-		sleep(10)
-	if(world.time >= summon_cd)
-		summon_obelisk()
 	if(prob(15 + anger_modifier))
 		lava_swoop()
+	if(world.time >= cl_cd)
+		src.visible_message(span_colossus("[src] opens his maw, and lightning crackles beyond it's teeth."))
+		chain_lightning(target, src)
+		return
+	if(health <= 0.75 * maxHealth && world.time >= summon_cd)
+		summon_obelisk()
+		return
 	if(world.time >= lightning_cd)
 		create_lightning(target)
-
+		return
 
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/summon_obelisk()
 	var/list/spawnLists = list(/mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk,/mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk)
 	var/reinforcement_count = 2
-	src.visible_message(span_notice("[src] summons abberant obelisks from beneath the ground."))
+	src.visible_message(span_cultbigbold("[src] summons abberant obelisks from beneath the ground."))
 	summon_cd = world.time + 2000
 	while(reinforcement_count > 0)
 		var/list/turflist = list()
@@ -451,6 +483,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 			addtimer(cb, (i - 1)*delay)
 	else
 		if(world.time >= slam_cd)
+			src.visible_message(span_colossus("[src] slams the ground, creating a shockwave!"))
 			dragon_slam(src,2,10,8)
 		AttackingTarget()
 	if(patience)
@@ -473,22 +506,12 @@ It will also call down lightning strikes from the sky, and fling people with it'
 					continue
 				to_chat(hit_mob, span_userdanger("[owner]'s ground slam shockwave sends you flying!"))
 				var/turf/thrownat = get_ranged_target_turf_direct(owner, hit_mob, throw_range, rand(-10, 10))
-				hit_mob.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
+				hit_mob.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING)
 				hit_mob.apply_damage(20, BRUTE)
 				shake_camera(hit_mob, 2, 1)
 			all_turfs -= stomp_turf
 		SLEEP_CHECK_DEATH(delay)
-/*
 
-/mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/cast(list/targets, mob/user = usr)
-	var/turf/T = get_turf(targets[1])
-//	var/list/affected_turfs = list()
-	playsound(T,'sound/weather/rain/thunder_1.ogg', 80, TRUE)
-	T.visible_message(span_boldwarning("The air feels crackling and charged!"))
-	sleep(30)
-	create_lightning(T) */
-
-//meteor storm and lightstorm.
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/create_lightning(atom/target)
 	if(!target)
 		return
@@ -505,67 +528,27 @@ It will also call down lightning strikes from the sky, and fling people with it'
 			sleep(2 + min(4 - last_dist, 12) * 0.5) //gets faster
 		new /obj/effect/temp_visual/targetlightning(T)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/lava_pools(amount, delay = 0.8)
+/mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/lightning_strikes(amount, delay = 0.8)
 	if(!target)
 		return
-	target.visible_message("<span class='boldwarning'>Lava starts to pool up around you!</span>")
+	target.visible_message(span_colossus("Lightning starts to strike down from the sky!"))
 	while(amount > 0)
 		if(QDELETED(target))
 			break
 		var/turf/T = pick(RANGE_TURFS(enraged ? 2 : 1, target))
-		new /obj/effect/temp_visual/lava_warning(T, enraged ? 18 SECONDS : 6 SECONDS) // longer reset time for the lava
+		new /obj/effect/temp_visual/targetlightning(T)
 		amount--
 		SLEEP_CHECK_DEATH(delay)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/lava_swoop(amount = 30)
 	if(health < maxHealth * 0.5)
 		return swoop_attack(lava_arena = TRUE, swoop_cooldown = enraged ? 2 SECONDS : 6 SECONDS)
-	INVOKE_ASYNC(src, PROC_REF(lava_pools), enraged ? 60 : amount)
+	INVOKE_ASYNC(src, PROC_REF(lightning_strikes), enraged ? 60 : amount)
 	swoop_attack(FALSE, target, 1000) // longer cooldown until it gets reset below
 	SLEEP_CHECK_DEATH(0)
 	if(health < maxHealth*0.5)
 		SetRecoveryTime(40)
-/*
-/mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/lava_arena()
-	if(!target)
-		return
-	target.visible_message("<span class='boldwarning'>[src] encases you in an arena of fire!</span>")
-	var/amount = 3
-	var/turf/center = get_turf(target)
-	var/list/walled = RANGE_TURFS(enraged ? 4 : 3, center) - RANGE_TURFS(enraged ? 3 : 2, center)
-	var/list/drakewalls = list()
-	for(var/turf/T in walled)
-		drakewalls += new /obj/effect/temp_visual/drakewall(T) // no people with lava immunity can just run away from the attack for free
-	var/list/indestructible_turfs = list()
-	for(var/turf/T in RANGE_TURFS(enraged ? 3 : 2, center))
-		if(!istype(T, /turf/closed/mineral/rogue/bedrock))
-			T.ChangeTurf(/turf/open/floor/rogue/volcanic)
-		else
-			indestructible_turfs += T
-	SLEEP_CHECK_DEATH(10) // give them a bit of time to realize what attack is actually happening
 
-	var/list/turfs = RANGE_TURFS(enraged ? 3 : 2, center)
-	while(amount > 0)
-		var/list/empty = indestructible_turfs.Copy() // can't place safe turfs on turfs that weren't changed to be open
-		var/any_attack = 0
-		for(var/turf/T in turfs)
-			for(var/mob/living/L in T.contents)
-				if(L.client)
-					empty += pick(((RANGE_TURFS(enraged ? 3 : 2, L) - RANGE_TURFS(enraged ? 2 : 1, L)) & turfs) - empty) // picks a turf within 2 of the creature not outside or in the shield
-					any_attack = 1
-		if(!any_attack)
-			for(var/obj/effect/temp_visual/drakewall/D in drakewalls)
-				qdel(D)
-			return 0 // nothing to attack in the arena time for enraged attack if we still have a target
-		for(var/turf/T in turfs)
-			if(!(T in empty))
-				new /obj/effect/temp_visual/lava_warning(T)
-			else if(!istype(T, /turf/closed/mineral/rogue/bedrock))
-				new /obj/effect/temp_visual/lava_safe(T)
-		amount--
-		SLEEP_CHECK_DEATH(24)
-	return 1 // attack finished completely
-*/
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/swoop_attack(lava_arena = FALSE, atom/movable/manual_target, swoop_cooldown = 30)
 	if(stat || swooping)
 		return
@@ -573,8 +556,10 @@ It will also call down lightning strikes from the sky, and fling people with it'
 		target = manual_target
 	if(!target)
 		return
+	playsound(loc, 'sound/vo/mobs/vdragon/drgnroar.ogg', 50, TRUE, -1)
 	stop_automated_movement = TRUE
 	swooping |= SWOOP_DAMAGEABLE
+	movement_type = FLYING
 	density = FALSE
 	icon_state = "shadow"
 	visible_message("<span class='boldwarning'>[src] swoops up high!</span>")
@@ -631,7 +616,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	playsound(loc, 'sound/misc/meteorimpact.ogg', 200, TRUE)
 	for(var/mob/living/L in orange(1, src))
 		if(L.stat)
-			visible_message("<span class='warning'>[src] slams down on [L], crushing [L.p_them()]!</span>")
+			visible_message(span_warning("[src] slams down on [L], crushing [L.p_them()]!"))
 			L.gib()
 		else
 			L.adjustBruteLoss(75)
@@ -641,10 +626,10 @@ It will also call down lightning strikes from the sky, and fling people with it'
 					throw_dir = pick(GLOB.alldirs)
 				var/throwtarget = get_edge_target_turf(src, throw_dir)
 				L.throw_at(throwtarget, 3)
-				visible_message("<span class='warning'>[L] is thrown clear of [src]!</span>")
+				visible_message(span_warning("[L] is thrown clear of [src]!</span>"))
 	for(var/mob/M in range(7, src))
 		shake_camera(M, 15, 1)
-
+	movement_type = GROUND
 	density = TRUE
 	SLEEP_CHECK_DEATH(1)
 	swooping &= ~SWOOP_DAMAGEABLE
@@ -788,20 +773,23 @@ It will also call down lightning strikes from the sky, and fling people with it'
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/chain_lightning(var/list/targets, mob/user = usr)
 	targets = list()
 	cl_cd = world.time + 500
-	for(var/mob/living/target in view(7, user))
+
+	for(var/mob/living/target in view(7, src))
+		if(target == src)
+			continue
+		if(istype(target,/mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk))
+			continue
 		targets += target
 	src.move_resist = MOVE_FORCE_VERY_STRONG
-	if(do_after(src, delay = 50, target = src))
-		var/mob/living/carbon/target = targets[1]
-		Snd=sound(null, repeat = 0, wait = 1, channel = Snd.channel) //byond, why you suck?
-		playsound(get_turf(user),Snd,50,FALSE)// Sorry MrPerson, but the other ways just didn't do it the way i needed to work, this is the only way.
-		if(get_dist(user,target)>7)
-			to_chat(user, span_warning("[target.p_theyre(TRUE)] too far away!"))
-			return
+	var/mob/living/carbon/target = targets[1]
+	var/distance = get_dist(user.loc,target.loc)
+	if(distance>7)
+		to_chat(user, span_colossus("[target.p_theyre(TRUE)] too far away!"))
 
-		playsound(get_turf(user), 'sound/blank.ogg', 50, TRUE)
+		return
+	if(do_after(user, 5 SECONDS, target = src))
 		user.Beam(target,icon_state="lightning[rand(1,12)]",time=5)
-		src.visible_message(span_danger("[src] opens it's maw and unleashes a lightning breath!"))
+		src.visible_message(span_colossus("[src] unleashes a storm of lightning from it's maw."))
 		Bolt(user,target,30,5,user)
 		src.move_resist = initial(src.move_resist)
 
@@ -809,14 +797,11 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	origin.Beam(target,icon_state="lightning[rand(1,12)]",time=5)
 	var/mob/living/carbon/current = target
 	if(current.anti_magic_check())
-		playsound(get_turf(current), 'sound/blank.ogg', 50, TRUE, -1)
 		current.visible_message(span_warning("[current] absorbs the spell, remaining unharmed!"), span_danger("I absorb the spell, remaining unharmed!"))
 	else if(bounces < 1)
 		current.electrocute_act(bolt_energy,"Lightning Bolt",flags = SHOCK_NOGLOVES)
-		playsound(get_turf(current), 'sound/blank.ogg', 50, TRUE, -1)
 	else
 		current.electrocute_act(bolt_energy,"Lightning Bolt",flags = SHOCK_NOGLOVES)
-		playsound(get_turf(current), 'sound/blank.ogg', 50, TRUE, -1)
 		var/list/possible_targets = new
 		for(var/mob/living/M in view(7,target))
 			if(user == M || target == M && los_check(current,M)) // || origin == M ? Not sure double shockings is good or not
