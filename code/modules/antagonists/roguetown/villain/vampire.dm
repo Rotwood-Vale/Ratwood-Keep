@@ -68,6 +68,7 @@
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, TRAIT_GENERIC)
+	ADD_TRAIT(owner.current, TRAIT_SPECIALUNDEAD, TRAIT_GENERIC) //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
 	owner.current.possible_rmb_intents = list(/datum/rmb_intent/feint,\
 	/datum/rmb_intent/aimed,\
 	/datum/rmb_intent/strong,\

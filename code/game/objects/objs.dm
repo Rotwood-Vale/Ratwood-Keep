@@ -46,6 +46,9 @@
 	/// Amont of multiplicative slowdown applied if pulled. >1 makes you slower, <1 makes you faster.
 	var/drag_slowdown 
 
+	///If the item can be repaired by sewing.
+	var/sewrepair = FALSE
+
 	var/blade_dulling = DULLING_BASHCHOP
 
 	var/debris = null

@@ -128,6 +128,7 @@
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
 
+
 /obj/item/clothing/head/roguetown/eoramask
 	name = "eoran mask"
 	desc = "A silver opera mask worn by the faithful of Eora, usually during their rituals."

@@ -20,7 +20,7 @@
 /datum/outfit/job/roguetown/refugee/rogue/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Thief", "Smuggler", "Cutthroat")
+	var/classes = list("Thief", "Smuggler", "Stalker")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -29,7 +29,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
@@ -40,11 +40,13 @@
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
 			belt = /obj/item/storage/belt/rogue/leather
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			beltl = /obj/item/rogueweapon/huntingknife/idagger
+			beltr = /obj/item/ammo_holder/bomb/smokebombs
 			backpack_contents = list(/obj/item/lockpickring/mundane = 1)
 			H.change_stat(STAT_STRENGTH, -1)
 			H.change_stat(STAT_PERCEPTION, 1)
@@ -63,6 +65,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE) 
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE) // let's them recognize reagents
 			head =/obj/item/clothing/head/roguetown/helmet/bandana
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -83,15 +86,15 @@
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
-		if("Cutthroat") //thief but less sneak and more stab
+		if("Stalker") //thief but ranger
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -102,13 +105,11 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
+			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
-			beltl = /obj/item/rogueweapon/huntingknife/idagger
-			H.change_stat(STAT_STRENGTH, 1)
-			H.change_stat(STAT_PERCEPTION, 1)
-			H.change_stat(STAT_SPEED, 1)
-			H.change_stat(STAT_INTELLIGENCE, -1)
+			beltl = /obj/item/ammo_holder/quiver/arrows
+			H.change_stat(STAT_PERCEPTION, 2)
+			H.change_stat(STAT_SPEED, 2)
+			H.change_stat(STAT_INTELLIGENCE, 1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-
 	H.set_blindness(0)

@@ -59,6 +59,7 @@
 		H.grant_language(/datum/language/orcish)
 		H.grant_language(/datum/language/canilunzt)
 		H.grant_language(/datum/language/felid)
+		H.grant_language(/datum/language/draconic)
 		ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 		H.change_stat(STAT_STRENGTH, -1)
 		H.change_stat(STAT_CONSTITUTION, -1)

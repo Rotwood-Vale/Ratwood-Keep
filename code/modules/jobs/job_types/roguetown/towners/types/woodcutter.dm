@@ -13,9 +13,10 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
-	beltl = /obj/item/rogueweapon/hammer/wood
+	beltr = /obj/item/rogueweapon/hammer/wood
+	beltl = /obj/item/rogueweapon/handsaw
 	backr = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/rogueweapon/stoneaxe/woodcut
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/huntingknife = 1)
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	if(H.gender == FEMALE)

@@ -227,27 +227,83 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stop All Playing Sounds") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 GLOBAL_LIST_INIT(ambience_files, list(
+	'sound/music/area/academy.ogg',
 	'sound/music/area/bath.ogg',
 	'sound/music/area/bog.ogg',
+	'sound/music/area/catacombs.ogg',
 	'sound/music/area/caves.ogg',
 	'sound/music/area/church.ogg',
+	'sound/music/area/decap.ogg',
+	'sound/music/area/druid.ogg',
+	'sound/music/area/dungeon.ogg',
 	'sound/music/area/dwarf.ogg',
 	'sound/music/area/field.ogg',
+	'sound/music/area/forest.ogg',
+	'sound/music/area/forestnight.ogg',
+	'sound/music/area/harbor.ogg',
 	'sound/music/area/magiciantower.ogg',
 	'sound/music/area/manorgarri.ogg',
+	'sound/music/area/manorgarri_old.ogg',
+	'sound/music/area/sargoth.ogg',
 	'sound/music/area/septimus.ogg',
 	'sound/music/area/sewers.ogg',
 	'sound/music/area/shop.ogg',
+	'sound/music/area/siege.ogg',
+	'sound/music/area/sleeping.ogg',
+	'sound/music/area/spidercave.ogg',
 	'sound/music/area/towngen.ogg',
 	'sound/music/area/townstreets.ogg',
-	'sound/music/area/sleeping.ogg',
-	'sound/music/jukeboxes/tav3.ogg'
-	))
+	'sound/music/jukeboxes/tav3.ogg',
+	'sound/music/area/underworlddrone.ogg',
+	'sound/misc/comboff.ogg',
+	'sound/misc/combon.ogg'
+))
 
-/client/verb/preload_sounds()
-	set category = "Options"
-	set name = "Preload Ambience"
+/client/New() // This tiny little bit of code is what we use to make preloading happen automatically upon a new client connecting.
+	..()
+	spawn(10)
+		PreloadAmbience()
 
-	for(var/music in GLOB.ambience_files)
-		mob.playsound_local(mob, music, 0.1)
-		sleep(10)
+/client/proc/PreloadAmbience()
+    if(!mob)
+        return
+
+    var/chunk_size = 3 // We use this for batches essentially
+    var/inbetween_delay = 5 // Added this to try to smooth the loading out a bit more. It's used to make it so each sound loaded within a chunk is separated by five ticks. Just so you're not bombarded with the full download at once.
+    var/chunk_delay = 10 // When a chunk ends, this var is what we use to give the client a little more breathing room. (Which should smooth out the load)
+    var/max_lag = 3 // This is the stop button. If the server is lagging too much, we halt preloading.
+
+    var/list/to_load = GLOB.ambience_files.Copy()
+    if(!to_load.len)
+        return
+
+    var/ambiencecounter = to_load.len
+
+    PreloadAmbienceChunk(1, ambiencecounter, chunk_size, inbetween_delay, chunk_delay, max_lag, to_load)
+
+
+/client/proc/PreloadAmbienceChunk(start, ambiencecounter, chunk_size, inbetween_delay, chunk_delay, max_lag, to_load)
+    if(world.tick_usage > max_lag)
+        return
+
+    if(!mob)
+        return
+
+    if(start > ambiencecounter)
+        return
+
+    var/chunkcap = start + chunk_size - 1
+    if(chunkcap > ambiencecounter)
+        chunkcap = ambiencecounter
+
+    for(var/i = start, i <= chunkcap, i++)
+        if(!mob)
+            return
+
+        var/sound_path = to_load[i]
+        mob.playsound_local(mob, sound_path, 0)
+        sleep(inbetween_delay)
+
+    sleep(chunk_delay)
+
+    PreloadAmbienceChunk(chunkcap + 1, ambiencecounter, chunk_size, inbetween_delay, chunk_delay, max_lag, to_load)

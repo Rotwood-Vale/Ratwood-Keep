@@ -15,6 +15,9 @@
 	cmode_music = 'sound/music/combat_desertrider.ogg'
 	category_tags = list(CTAG_MERCENARY)
 
+/datum/outfit/job/roguetown/mercenary/newmoon
+	allowed_patrons = list(/datum/patron/divine/noc)
+
 /datum/outfit/job/roguetown/mercenary/newmoon/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/armor
