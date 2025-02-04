@@ -172,7 +172,7 @@
 
 /obj/item/rogueweapon/spear/psyspear
 	name = "psydonian spear"
-	desc = "Silver spear, crafted to impale those the inquisiton hunts."
+	desc = "Silver spear, crafted to impale those the Inquisiton hunts."
 	icon_state = "psyspear"
 	is_silver = TRUE
 	max_blade_int = 150
