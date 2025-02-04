@@ -229,5 +229,5 @@
 	new /obj/item/rogueweapon/halberd/psyhalberd(src)
 	new /obj/item/rogueweapon/spear/psyspear(src)
 	new /obj/item/rogueweapon/sword/psysword(src)
-	new /obj/item/rogueweapon/mace/silver/psymace(src)
+	new /obj/item/rogueweapon/mace/goden/psymace(src)
 	new /obj/item/rogueweapon/stoneaxe/silver/psyaxe(src)
