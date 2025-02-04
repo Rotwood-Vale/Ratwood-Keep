@@ -307,6 +307,8 @@
 			playsound(src.loc, "burn", 100, TRUE)
 
 /obj/structure/spacevine/Crossed(mob/crosser)
+	if(isvineimmune(crosser))
+		return ..()
 	if(isliving(crosser))
 		for(var/datum/spacevine_mutation/SM in mutations)
 			SM.on_cross(src, crosser)

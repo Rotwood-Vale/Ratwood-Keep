@@ -42,3 +42,9 @@ GLOBAL_LIST_EMPTY(preference_patrons)
 /datum/patron/proc/on_loss(mob/living/pious)
 	for(var/trait in mob_traits)
 		REMOVE_TRAIT(pious, trait, "[type]")
+
+// For when we wanna give em new goodies (or weaknesses?) for being such a good little worshipper that isn't necessarily a spell
+/datum/patron/proc/on_new_devotion_level(datum/source, mob/living/pious, var/new_level)
+	SIGNAL_HANDLER
+
+	return new_level
