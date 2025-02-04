@@ -54,6 +54,7 @@
 			ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 			H.set_patron(/datum/patron/zizo)
 			H.faction += "undead"
+			H.cmode_music = 'sound/music/combatcult.ogg'
 
 		if("Underdark Assassin")
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -83,6 +84,7 @@
 			ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
 			H.set_patron(/datum/patron/zizo)
 			H.faction += "undead"
+			H.cmode_music = 'sound/music/combatcult.ogg'
 		
 		if("Underdark Wych")	
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
@@ -113,6 +115,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/message)
 			H.set_patron(/datum/patron/zizo)
 			H.faction += "undead"
+			H.cmode_music = 'sound/music/combatcult.ogg'
 		
 		if("Underdark Fugitive")
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -125,7 +128,8 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 			belt = /obj/item/storage/belt/rogue/leather/rope
-			pants = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+			pants = /obj/item/clothing/under/roguetown/tights/purple
 			cloak = /obj/item/clothing/cloak/raincloak/purple
 			H.change_stat("speed", 2)
 			H.change_stat("intelligence", 2)
