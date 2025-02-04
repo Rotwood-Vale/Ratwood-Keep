@@ -78,7 +78,7 @@
 			H.cmode_music = 'sound/music/combat_lunatic.ogg'
 		if("Abyssor")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorhelm
-			cloak = /obj/item/clothing/cloak/tabard/crusader/abyssor
+			cloak = /obj/item/clothing/cloak/abyssortabard
 			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			H.mind?.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)

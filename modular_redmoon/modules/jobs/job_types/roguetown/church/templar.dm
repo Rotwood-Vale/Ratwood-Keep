@@ -63,6 +63,6 @@
 			new /obj/item/clothing/cloak/tabard/crusader/xylix (user.loc)
 		if("Abyssor")
 			new /obj/item/clothing/head/roguetown/helmet/heavy/abyssorhelm (user.loc)
-			new /obj/item/clothing/cloak/tabard/crusader/abyssor (user.loc)
+			new /obj/item/clothing/cloak/abyssortabard (user.loc)
 	playsound(src, 'sound/ravein/small/hello_my_friend.ogg', 40, 1)
 	qdel(src)
