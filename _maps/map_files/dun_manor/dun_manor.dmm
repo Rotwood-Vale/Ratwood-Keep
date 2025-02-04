@@ -24414,6 +24414,7 @@
 /obj/item/roguekey/archive,
 /obj/item/roguekey/apartments/stable1,
 /obj/item/roguekey/apartments/stable2,
+/obj/item/roguekey/tavernkeep,
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town)
 "tzS" = (
