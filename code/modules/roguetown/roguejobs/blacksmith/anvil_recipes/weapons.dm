@@ -275,17 +275,20 @@
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/fishspear
 	craftdiff = 2
+
 /datum/anvil_recipe/weapons/steel/romphaia
 	name = "Romphaia (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/romphaia
 	craftdiff = 2
+
 /datum/anvil_recipe/weapons/steel/falx
 	name = "Falx"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/sword/falx
 	craftdiff = 2
+
 /datum/anvil_recipe/weapons/steel/glaive
 	name = "Glaive (+2 Steel, +1 Small Log)"
 	req_bar = /obj/item/ingot/steel
