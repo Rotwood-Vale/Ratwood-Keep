@@ -145,7 +145,7 @@
 	move_to_delay = 8
 	base_intents = list(/datum/intent/simple/elemental_unarmed)
 	butcher_results = list()
-	faction = list("elemental)
+	faction = list("elemental")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 240
 	maxHealth = 240
