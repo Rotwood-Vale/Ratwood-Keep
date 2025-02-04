@@ -1195,7 +1195,7 @@ There are several things that need to be remembered:
 			var/mutable_appearance/shirt_overlay
 			var/armsindex = get_limbloss_index(ARM_RIGHT, ARM_LEFT)
 			var/target_layer = SHIRT_LAYER
-			if(wear_armor.ignore_sleeves_code)
+			if(wear_shirt.ignore_sleeves_code)
 				target_layer = OVER_HANDS_LAYER // Cursed, but much of clothing, that uses this varible, doesn't mean to use it with armor
 			var/racecustom
 			if(dna.species.custom_clothes)
