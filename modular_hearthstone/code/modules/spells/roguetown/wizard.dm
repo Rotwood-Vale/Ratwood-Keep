@@ -1358,7 +1358,7 @@
 	drawmessage = "I prepare to perform a minor arcyne incantation."
 	dropmessage = "I release my minor arcyne focus."
 	school = "transmutation"
-	overlay_state = "prestidigitation"
+	overlay_state = "rune4"
 	chargedrain = 0
 	chargetime = 0
 	releasedrain = 5 // this influences -every- cost involved in the spell's functionality, if you want to edit specific features, do so in handle_cost
