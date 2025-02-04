@@ -317,7 +317,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			str = elaborate ? "<font color = '[color]'>[input] (D+)</font>" : "<font color = '[color]'>[input] (D+)</font>"
 		if(40 to 49)
 			var/color = "#c0a739"
-			str = elaborate ? "<font color = '[color]'>[input] (C)</font>" : "<font color = '[color] (C to C+)'>[input]</font>"
+			str = elaborate ? "<font color = '[color]'>[input] (C)</font>" : "<font color = '[color]'>[input] (C to C+)</font>"
 		if(50 to 59)
 			var/color = "#e3e63c"
 			str = elaborate ? "<font color = '[color]'>[input] (C+)</font>" : "<font color = '[color]'>[input] (C to C+)</font>"
