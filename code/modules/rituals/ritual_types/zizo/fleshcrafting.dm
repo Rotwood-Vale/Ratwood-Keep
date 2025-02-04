@@ -159,5 +159,6 @@
 				V.add_stress(/datum/stressevent/lovezizo)
 			else
 				V.add_stress(/datum/stressevent/hatezizo)
-		SSvote.initiate_vote("endround", "ASCENDED ZIZO CULT")
+		CM.roundvoteend = TRUE
+		CM.round_ends_at = (world.time - SSticker.round_start_time) + ROUND_END_TIME
 		break
