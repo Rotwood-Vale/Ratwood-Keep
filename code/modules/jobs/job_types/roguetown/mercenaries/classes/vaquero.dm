@@ -1,4 +1,4 @@
-/datum/advclass/vaquero
+/datum/advclass/mercenary/vaquero
 	name = "Vaquero"
 	tutorial = "A band of mercenaries hailing from the Isles of Etrusca, their name traced back to humble origins as cattle drivers."
 	outfit = /datum/outfit/job/roguetown/mercenary/vaquero
@@ -7,7 +7,7 @@
 	category_tags = list(CTAG_MERCENARY)
 	traits_applied = list(TRAIT_OUTLANDER)
 
-/datum/advclass/vaquero/equipme(mob/living/carbon/human/H)
+/datum/advclass/mercenary/vaquero/equipme(mob/living/carbon/human/H)
 	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled
 	return ..()
