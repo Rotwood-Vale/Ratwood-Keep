@@ -90,11 +90,6 @@
 	cost = 50
 	contains = list(/obj/item/rogueweapon/sword/long/rider)
 
-/datum/supply_pack/rogue/bandit/foresworn/dridersword
-	name = "Old Grenzel package..."
-	cost = 50
-	contains = list(/obj/item/rogueweapon/sword/long/rider)
-
 /datum/supply_pack/rogue/bandit/foresworn/grenzelpike
 	name = "Old Grenzel package..."
 	cost = 75
