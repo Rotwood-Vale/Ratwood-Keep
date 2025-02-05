@@ -6,7 +6,7 @@
 
 /datum/outfit/job/roguetown/manorguard/halberdier/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/sallet
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	beltl = /obj/item/rogueweapon/sword/short
 	r_hand = /obj/item/rogueweapon/halberd
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/storage/keyring/man_at_arms = 1, /obj/item/natural/cloth = 1)
