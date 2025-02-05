@@ -313,6 +313,8 @@
 
 /obj/item/clothing/equipped(mob/user, slot)
 	..()
+	if(armor_class == ARMOR_CLASS_HEAVY || armor_class == ARMOR_CLASS_MEDIUM)
+		RegisterSignal(user, COMSIG_ARMOR_SKILL_CHECKED, PROC_REF(armor_class_check))
 	if (!istype(user))
 		return
 	if(slot_flags & slotdefine2slotbit(slot)) //Was equipped to a valid slot for this item?
@@ -321,6 +323,18 @@
 				if(variable in user.vars)
 					LAZYSET(user_vars_remembered, variable, user.vars[variable])
 					user.vv_edit_var(variable, user_vars_to_edit[variable])
+
+/obj/item/clothing/proc/armor_class_check(datum/source, mob/wearer)
+	//We don't care about checking armor class for NPCs
+	if(!wearer.mind)
+		return
+	if(armor_class == ARMOR_CLASS_HEAVY)
+		if(!HAS_TRAIT(wearer, TRAIT_HEAVY_ARMOR))
+			return COMPONENT_UNTRAINED_FOR_HEAVY_ARMOR
+	if(armor_class == ARMOR_CLASS_MEDIUM)
+		if(!HAS_TRAIT(wearer, TRAIT_MEDIUM_ARMOR))
+			return COMPONENT_UNTRAINED_FOR_MEDIUM_ARMOR
+
 
 /obj/item/clothing/examine(mob/user)
 	. = ..()

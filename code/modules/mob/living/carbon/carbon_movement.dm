@@ -13,6 +13,12 @@
 
 /mob/living/carbon/Move(NewLoc, direct)
 	. = ..()
+	var/armor_check = check_armor_skill()
+	if(armor_check != COMPETENT_WITH_ARMOR)
+		var/untrained_armor_fatigue = 2
+		if(armor_check & COMPONENT_UNTRAINED_FOR_HEAVY_ARMOR)
+			untrained_armor_fatigue = 4
+		stamina_add(untrained_armor_fatigue)
 	if(. && !(movement_type & FLOATING)) //floating is easy
 		if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 			set_nutrition(NUTRITION_LEVEL_FED - 1)	//just less than feeling vigorous

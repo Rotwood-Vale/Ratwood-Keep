@@ -397,7 +397,7 @@
 		else
 			sneak_bonus = (target.mind?.get_skill_level(/datum/skill/misc/sneaking) * 5)
 		probby -= sneak_bonus
-	if(!target.check_armor_skill())
+	if(target.check_armor_skill() != COMPETENT_WITH_ARMOR)
 		probby += 85 //armor is loud as fuck
 		if (sneak_bonus)
 			probby += sneak_bonus // you don't get sneak bonus in heavy armor at all, on top of that
