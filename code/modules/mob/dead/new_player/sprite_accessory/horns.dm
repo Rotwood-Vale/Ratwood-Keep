@@ -179,6 +179,10 @@
 	name = "Tiefling"
 	icon_state = "tiebhorns"
 
+/datum/sprite_accessory/horns/tieflingalt
+	name = "Tiefling Alt"
+	icon_state = "tiebhornsalt"
+
 /datum/sprite_accessory/horns/halforc
 	name = "Half Orc"
 	icon = 'icons/mob/sprite_accessory/halforc.dmi'

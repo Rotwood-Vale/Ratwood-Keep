@@ -5,8 +5,7 @@
 	sight = 0
 	see_in_dark = 8
 	hud_possible = list(ANTAG_HUD)
-	pressure_resistance = 10
-
+	
 	var/resize = 1 //Badminnery resize
 	var/lastattacker = null
 	var/lastattackerckey = null
@@ -147,6 +146,10 @@
 	var/bleedsuppress = 0 //for stopping bloodloss, eventually this will be limb-based like bleeding
 
 	var/list/next_attack_msg = list()
+
+	///The NAME (not the reference) of the mob's summoner and probable master.
+	var/summoner = null
+
 
 	var/datum/component/personal_crafting/craftingthing
 

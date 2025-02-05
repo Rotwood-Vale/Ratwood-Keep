@@ -16,9 +16,9 @@
 	if(world.time < next_eat)
 		return
 
-	if(!controller.blackboard[BB_FOOD_TARGET])
-		controller.queue_behavior(/datum/ai_behavior/find_and_set/edible, BB_FOOD_TARGET, /obj/item, 2)
+	if(!controller.blackboard[BB_BASIC_MOB_FOOD_TARGET])
+		controller.queue_behavior(/datum/ai_behavior/find_and_set/edible, BB_BASIC_MOB_FOOD_TARGET, /obj/item, 2)
 		return
 
-	controller.queue_behavior(/datum/ai_behavior/eat_food, BB_FOOD_TARGET, BB_NEXT_HUNGRY)
+	controller.queue_behavior(/datum/ai_behavior/eat_food, BB_BASIC_MOB_FOOD_TARGET, BB_NEXT_HUNGRY)
 	return SUBTREE_RETURN_FINISH_PLANNING

@@ -12,10 +12,9 @@
 //defines for the gc_destroyed var
 
 // Defines for the ssgarbage queues
-#define GC_QUEUE_FILTER 1 //! short queue to filter out quick gc successes so they don't hang around in the main queue for 5 minutes
-#define GC_QUEUE_CHECK 2 //! main queue that waits 5 minutes because thats the longest byond can hold a reference to our shit.
-#define GC_QUEUE_HARDDELETE 3 //! short queue for things that hard delete instead of going thru the gc subsystem, this is purely so if they *can* softdelete, they will soft delete rather then wasting time with a hard delete.
-#define GC_QUEUE_COUNT 3 //! Number of queues, used for allocating the nested lists. Don't forget to increase this if you add a new queue stage
+#define GC_QUEUE_CHECK 1
+#define GC_QUEUE_HARDDELETE 2
+#define GC_QUEUE_COUNT 2 //increase this when adding more steps.
 
 #define GC_QUEUED_FOR_QUEUING -1
 #define GC_CURRENTLY_BEING_QDELETED -2

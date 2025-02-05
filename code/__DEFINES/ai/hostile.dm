@@ -6,6 +6,9 @@
 #define BB_ATTACK_TARGET "BB_ATTACK_TARGET"
 #define BB_VISION_RANGE "BB_VISION_RANGE"
 
+///Travel BB key
+#define BB_TRAVEL_DESTINATION "BB_travel_destination"
+
 /// Basically, what is our vision/hearing range.
 #define BB_HOSTILE_VISION_RANGE 10
 
@@ -39,7 +42,6 @@
 #define BB_BASIC_MOB_CURRENT_TARGET "BB_basic_current_target"
 #define BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION "BB_basic_current_target_hiding_location"
 #define BB_TARGETTING_DATUM "targetting_datum"
-#define BB_BASIC_MOB_FOOD_TARGET "BB_basic_food_target"
 #define BB_TARGETTING_DATUM_EQUIPMENT "equip_targetting_datum"
 #define BB_BASIC_MOB_RUN_WITH_ITEM "BB_run_with_item"
 #define BB_BASIC_MOB_EQUIPMENT_TARGET "BB_equipment_target"
@@ -63,9 +65,6 @@
 ///Hunting BB keys
 #define BB_CURRENT_HUNTING_TARGET "BB_current_hunting_target"
 #define BB_HUNTING_COOLDOWN "BB_hunting_cooldown"
-
-///Travel BB key
-#define BB_TRAVEL_DESTINATION "BB_travel_destination"
 
 ///Reinforcements BB key
 #define BB_BASIC_MOB_REINFORCEMENT_TARGET "BB_basic_mob_reinforcement_target"

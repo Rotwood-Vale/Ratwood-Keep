@@ -133,12 +133,12 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.ambushable = FALSE
 
 /mob/living/carbon/human/proc/spawn_pick_class()
-	var/list/classoptions = list("Bard", "Fisher", "Hunter", "Miner", "Peasant", "Woodcutter", "Cheesemaker", "Blacksmith", "Carpenter", "Rogue", "Treasure Hunter", "Mage")
+	var/list/classoptions = list("Ranger","Blacksmith","Carpenter","Seamstress","Rogue","Mage","Hunter","Trader")
 	var/list/visoptions = list()
 
 	for(var/T in 1 to 5)
-		var/picked = pick(classoptions)
-		visoptions |= picked
+		if(length(classoptions))
+			visoptions += pick_n_take(classoptions)
 
 	var/selected = input(src, "Which class was I?", "VAMPIRE SPAWN") as anything in visoptions
 
