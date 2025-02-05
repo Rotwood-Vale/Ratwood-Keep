@@ -1808,6 +1808,7 @@
 #include "code\modules\roguetown\roguemachine\camera.dm"
 #include "code\modules\roguetown\roguemachine\drugmachine.dm"
 #include "code\modules\roguetown\roguemachine\hoardmaster.dm"
+#include "code\modules\roguetown\roguemachine\indulgence.dm"
 #include "code\modules\roguetown\roguemachine\lottery.dm"
 #include "code\modules\roguetown\roguemachine\mail.dm"
 #include "code\modules\roguetown\roguemachine\merchant.dm"
