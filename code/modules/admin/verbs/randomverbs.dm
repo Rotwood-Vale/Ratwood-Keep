@@ -125,6 +125,57 @@
 	message_admins(span_adminnotice("[key_name_admin(usr)]: Modified [key_name(C)]'s antagonist reputation ([log_text])"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Modify Antagonist Reputation") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/cmd_admin_mod_triumphs(mob/M in GLOB.mob_list, operation)
+	set category = "Special Verbs"
+	set name = "Adjust Triumphs"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/msg = ""
+	var/log_text = ""
+	var/old_triumphs = M.get_triumphs()
+
+	var/prompt = "Please enter the amount of triumphs to add/remove:"
+
+	msg = input("Message:", prompt) as num|null
+
+	if (!msg)
+		return
+	
+	M.adjust_triumphs(msg)
+	log_text = "by [msg], from [old_triumphs] to [old_triumphs + msg]"
+
+	log_admin("[key_name(usr)]: Modified [M.ckey]'s Triumphs [log_text]")
+	message_admins(span_adminnotice("[key_name_admin(usr)]: Modified [M.ckey]'s Triumphs ([log_text])"))
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Modify Triumphs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_mod_pq(mob/M in GLOB.mob_list, operation)
+	set category = "Special Verbs"
+	set name = "Adjust Player Quality"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/amt = ""
+	var/reason = ""
+	var/prompt = "Please enter the amount of PQ to add/remove:"
+
+	amt = input("Message:", prompt) as num|null
+
+	if(!amt)
+		return
+	
+	prompt = "Please specify a reason for the adjustment:"
+	reason = input("Message:", prompt) as text|null
+	if(!reason)
+		reason = "Player Panel Adjustment"
+
+	adjust_playerquality(amt, M.ckey, usr, reason)
+
+	//Admin log happens in child proc
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Modify Player Quality") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/proc/cmd_admin_world_narrate()
 	set category = "Special Verbs"
 	set name = "Global Narrate"
