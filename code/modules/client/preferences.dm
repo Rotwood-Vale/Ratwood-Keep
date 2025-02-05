@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/char_accent = "No accent"
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
 	var/has_spawned = FALSE
-
+	var/prefer_old_chat = FALSE
 
 /datum/preferences/New(client/C)
 	parent = C
