@@ -20,10 +20,19 @@
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/grenzelhoft)
 
 /datum/supply_pack/rogue/bandit/foresworn/driderhead
-	name = "Desert Rider headdress"
+	name = "Desert Rider Headdress"
 	cost = 24
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
 
+/datum/supply_pack/rogue/bandit/foresworn/driderbelt
+	name = "Desert Rider Belt"
+	cost = 24
+	contains = list(/obj/item/storage/belt/rogue/leather/shalal)
+
+/datum/supply_pack/rogue/bandit/foresworn/dridershoes
+	name = "Desert Rider Shoes"
+	cost = 24
+	contains = list(/obj/item/clothing/shoes/roguetown/armor/shalal)
 //Armour
 /datum/supply_pack/rogue/bandit/Mage/gambeson
 	name = "Gambeson"
@@ -80,6 +89,17 @@
 	name = "Old Zybantine package..."
 	cost = 50
 	contains = list(/obj/item/rogueweapon/sword/long/rider)
+
+/datum/supply_pack/rogue/bandit/foresworn/dridersword
+	name = "Old Grenzel package..."
+	cost = 50
+	contains = list(/obj/item/rogueweapon/sword/long/rider)
+
+/datum/supply_pack/rogue/bandit/foresworn/grenzelpike
+	name = "Old Grenzel package..."
+	cost = 75
+	contains = list(/obj/item/rogueweapon/halberd)
+
 
 /datum/supply_pack/rogue/bandit/foresworn/spear
 	name = "Iron Spear"
