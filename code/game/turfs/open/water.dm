@@ -322,7 +322,7 @@
 				chance = 12		//yikes
 			if(C.m_intent == MOVE_INTENT_SNEAK)
 				chance = 2
-			if(prob(chance))
+			if(!prob(chance))
 				return
 			if(C.blood_volume <= 0)
 				return
