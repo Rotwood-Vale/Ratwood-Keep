@@ -2134,6 +2134,7 @@
 #include "modular_redmoon\code\modules\clothing\rogueclothes\neck.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\robes.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\shirts.dm"
+#include "modular_redmoon\code\modules\mob\living\emote.dm"
 #include "modular_redmoon\code\modules\roguetown\roguecrafting\items.dm"
 #include "modular_redmoon\code\modules\roguetown\roguejobs\artifcier\artifcier_recipes.dm"
 #include "modular_redmoon\code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\armor.dm"
