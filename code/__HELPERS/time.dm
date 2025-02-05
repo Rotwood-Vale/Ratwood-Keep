@@ -46,22 +46,41 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 			switch(GLOB.tod)
 				if("dawn")
 					if(prob(25))
-						GLOB.forecast = "rain"
+						if(OMEN_SUNSTEAL)
+							GLOB.forecast = "blood"
+						else
+							GLOB.forecast = "rain"
 				if("day")
 					if(prob(5))
-						GLOB.forecast = "rain"
+						if(OMEN_SUNSTEAL)
+							GLOB.forecast = "blood"
+						else
+							GLOB.forecast = "rain"
 				if("dusk")
 					if(prob(33))
-						GLOB.forecast = "rain"
+						if(OMEN_SUNSTEAL)
+							GLOB.forecast = "blood"
+						else
+							GLOB.forecast = "rain"
 				if("night")
 					if(prob(40))
-						GLOB.forecast = "rain"
+						if(OMEN_SUNSTEAL)
+							GLOB.forecast = "blood"
+						else
+							GLOB.forecast = "rain"
 			if(GLOB.forecast == "rain")
 				var/foundnd
 				if(SSParticleWeather?.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
 					foundnd = TRUE
 				if(!foundnd)
 					SSParticleWeather?.run_weather(pick(/datum/particle_weather/rain_gentle, /datum/particle_weather/rain_storm))
+
+			if(GLOB.forecast == "blood")
+				var/foundnd
+				if(SSParticleWeather?.runningWeather?.target_trait == PARTICLEWEATHER_BLOODRAIN)
+					foundnd = TRUE
+				if(!foundnd)
+					SSParticleWeather?.run_weather(pick(/datum/particle_weather/blood_rain_gentle, /datum/particle_weather/blood_rain_storm))
 		else
 			switch(GLOB.forecast) //end the weather now
 				if("rain")
