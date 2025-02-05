@@ -1,8 +1,8 @@
 /obj/structure/roguemachine/Indulgence
 	name = "Indulgence"
 	desc = ""
-	icon = 'icons/roguetown/misc/96x96.dmi'
-	icon_state = "Indulgence"
+	icon = 'icons/roguetown/misc/machines.dmi'
+	icon_state = "indulgence"
 	density = TRUE
 	blade_dulling = DULLING_BASH
 	max_integrity = 0
@@ -31,16 +31,13 @@
 		return
 	if(href_list["buy"])
 		var/mob/M = usr
-		var/datum/antagonist/bandit/B = M.mind.has_antag_datum(/datum/antagonist/bandit)
+		var/datum/job/roguetown/puritan/S = HAS_TRAIT(usr, TRAIT_PURITAN)
 		var/path = text2path(href_list["buy"])
-		if(!ispath(path, /datum/supply_pack/rogue/bandit))
-			message_admins("[usr.key] has attempted to purchase [sanitize(href_list["buy"])] with the INDULGENCE. This is likely a HREF exploit attempt!")
-			return
 		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
 		var/cost = PA.cost
-		if(fervor >= cost)
-			fervor -= cost
-			playsound(loc, 'sound/misc/purchase.ogg', 80, FALSE, -1)
+		if(S.fervor >= cost)
+			S.fervor -= cost
+			playsound(loc, 'sound/misc/coindispense.ogg', 80, FALSE, -1)
 		else
 			say("The inquisition needs proof of your worth!")
 			return
@@ -60,7 +57,7 @@
 /obj/structure/roguemachine/Indulgence/attack_hand(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_PURITAN))
 		return
-	var/datum/antagonist/bandit/B = usr.mind.has_antag_datum(/datum/antagonist/bandit)
+	var/datum/job/roguetown/puritan/S = HAS_TRAIT(usr, TRAIT_PURITAN)
 	. = ..()
 	if(.)
 		return
@@ -69,7 +66,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/contents
 	contents = "<center>Wishes for the Free<BR>"
-	contents += "<a href='?src=[REF(src)];change=1'>Your sway:</a> [I.sway]<BR>"
+	contents += "<a href='?src=[REF(src)];change=1'>Your sway:</a> [S.fervor]<BR>"
 
 
 	var/list/unlocked_cats = list("Inquisition")
