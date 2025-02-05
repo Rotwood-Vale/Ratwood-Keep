@@ -100,6 +100,7 @@
 	dodgetime = 30
 	aggressive = 1
 	summon_primer = "You are an imp, a small creature spending it's time in the infernal plane amusing itself and eating meat. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
+	tier = 1
 //	stat_attack = UNCONSCIOUS
 
 	///this mob was updated to new ai
@@ -198,6 +199,7 @@
 	aggressive = 1
 	summon_primer = "You are an hellhound, a moderate sized canine made of heat and flame. You spend time in the infernal plane hunting and incinerating things to your hearts content. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 	var/flame_cd
+	tier = 2
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/Initialize()
 	. = ..()
@@ -275,6 +277,7 @@
 	projectiletype = /obj/projectile/magic/aoe/fireball/rogue
 	ranged_message = "stares"
 	summon_primer = "You are an infernal watcher, a creature of lava and rock. You have watched over the chaos of the infernal plane long enough that it was been pointless to keep count. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
+	tier = 3
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the watcher
 	return
@@ -355,6 +358,7 @@
 	var/flame_cd = 0
 	var/summon_cd = 0
 	summon_primer = "You are fiend, a large sized demon from the infernal plane. You have imps and hounds at your beck and call, able to do whatever you wished. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
+	tier = 4
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/death(gibbed)
 	..()

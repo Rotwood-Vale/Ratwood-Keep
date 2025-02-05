@@ -135,7 +135,7 @@
 				/obj/item/natural/elementalrelic = 1)
 	skill_level = 2
 
-/datum/crafting_recipe/roguetown/arcana/meldt4
+/datum/crafting_recipe/roguetown/arcana/meldt5
 	name = "sorcerous weave"
 	result = /obj/item/natural/melded/t4
 	reqs = list(/obj/item/natural/melded/t4 = 1,

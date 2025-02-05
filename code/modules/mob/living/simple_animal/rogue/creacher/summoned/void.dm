@@ -69,6 +69,7 @@
 	/// A list of all the beam parts.
 	var/list/beam_parts = list()
 	summon_primer = "You are ancient. A construct built in an age before men, a time of dragons. Your builders don't seem to be around anymore, and time has past with you in standby. How you respond, is up to you."
+	tier = 3
 
 /datum/intent/simple/slam
 	name = "slam"
@@ -354,6 +355,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	var/summon_cd
 	var/slam_cd
 	summon_primer = "You are ancient. A creature long since banished to the void ages past, you were trapped in a seemingly timeless abyss. Now you've been freed, returned to the world- and everything has changed. It seems some of your constructs remain buried beneath the ground. How you react to these events, only time can tell."
+	tier = 5
 
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/get_sound(input)
 	switch(input)

@@ -102,7 +102,7 @@
 	aggressive = 1
 	var/drug_cd
 	summon_primer = "You are an sprite, a small fae. You spend time wandering the wilds. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
-
+	tier = 1
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite/Initialize()
 	. = ..()
@@ -170,6 +170,7 @@
 	aggressive = 1
 	var/drug_cd
 	summon_primer = "You are a glimmerwing, a moderate sized fae. You spend time wandering forests, cursing unweary travellers. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
+	tier = 2
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing/Initialize()
 	. = ..()
@@ -246,6 +247,7 @@
 	ranged = FALSE
 	var/vine_cd
 	summon_primer = "You are a dryad, a large sized fae. You spend time tending to forests, guarding sacred ground from tresspassers. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
+	tier = 3
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the watcher
 	return
@@ -357,6 +359,7 @@
 	var/shroom_cd = 0
 	var/summon_cd = 0
 	summon_primer = "You are a sylph, a moderate sized fae. You spend time tending to to lesser spirits, keeping them in line and from going too wild. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
+	tier = 4
 
 /obj/projectile/magic/frostbolt/greater
 	name = "greater frostbolt"

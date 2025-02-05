@@ -111,7 +111,7 @@
 	dodgetime = 0
 	aggressive = 1
 	summon_primer = "You are an crawler, a small elemental. Elementals such as yourself spend immeasurable time wandering about within your plane. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
-
+	tier = 1
 	///this mob was updated to new ai
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
@@ -177,6 +177,7 @@
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
 	summon_primer = "You are an warden, a moderate elemental. Elementals such as yourself guard your plane from intrusion zealously. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
+	tier = 2
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden/Initialize()
 	. = ..()
@@ -251,6 +252,7 @@
 	aggressive = 1
 	var/rock_cd
 	summon_primer = "You are an behemoth, a large elemental. Elementals such as yourself often lead groups of wardens in defending your plane. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
+	tier = 3
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/Initialize()
 	. = ..()
@@ -404,6 +406,7 @@
 	aggressive = 1
 	var/stomp_cd
 	summon_primer = "You are an collossus, a massive elemental. Elementals such as yourself are immeasurably old. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
+	tier = 4
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/collossus/MoveToTarget(list/possible_targets)//Step 5, handle movement between us and our target
 	stop_automated_movement = 1

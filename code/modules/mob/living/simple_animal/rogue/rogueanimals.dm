@@ -73,7 +73,6 @@
 
 	var/eat_forever
 	var/summon_primer = null
-
 /mob/living/simple_animal/hostile/retaliate/rogue/onbite(mob/living/carbon/human/user)
 	visible_message(span_danger("[user] bites [src]!"))
 	playsound(src, "smallslash", 100, TRUE, -1)
