@@ -335,7 +335,7 @@
 	experimental_inhand = FALSE
 	possible_item_intents = list(/datum/intent/use)
 	desc = "Stick alone.. Weak. Stick together.. Strong."
-	maxamount = 6
+	maxamount = 10
 	force = 0
 	throwforce = 0
 	firefuel = 5 MINUTES

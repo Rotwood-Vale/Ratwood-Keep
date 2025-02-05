@@ -18,22 +18,3 @@
 	if(item_flags & IN_STORAGE)
 		return
 	. = ..()
-
-/obj/item/natural/bundle/update_bundle()
-	. = ..()
-	var/increases = FLOOR(amount / items_per_increase, 1)
-	var/height = FALSE
-	grid_height = base_height
-	grid_width = base_width
-	for(var/i = 1 to increases)
-		if(height)
-			height = FALSE
-			grid_height += 32
-		else
-			height = TRUE
-			grid_width += 32
-	if(item_flags & IN_STORAGE)
-		var/obj/item/location = loc
-		var/datum/component/storage/storage = location.GetComponent(/datum/component/storage)
-		storage.update_item(src)
-		storage.orient2hud()

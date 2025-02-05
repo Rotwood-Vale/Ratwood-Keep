@@ -2293,6 +2293,7 @@
 #include "modular_redmoon\modules\tetris\armor.dm"
 #include "modular_redmoon\modules\tetris\bags.dm"
 #include "modular_redmoon\modules\tetris\bait.dm"
+#include "modular_redmoon\modules\tetris\blunt.dm"
 #include "modular_redmoon\modules\tetris\book.dm"
 #include "modular_redmoon\modules\tetris\cigs_lighters.dm"
 #include "modular_redmoon\modules\tetris\cloaks.dm"
@@ -2305,6 +2306,7 @@
 #include "modular_redmoon\modules\tetris\granters.dm"
 #include "modular_redmoon\modules\tetris\hats.dm"
 #include "modular_redmoon\modules\tetris\head.dm"
+#include "modular_redmoon\modules\tetris\instruments.dm"
 #include "modular_redmoon\modules\tetris\keyrings.dm"
 #include "modular_redmoon\modules\tetris\keys.dm"
 #include "modular_redmoon\modules\tetris\knives.dm"
@@ -2324,6 +2326,7 @@
 #include "modular_redmoon\modules\tetris\surgery_tools_rogue.dm"
 #include "modular_redmoon\modules\tetris\tools.dm"
 #include "modular_redmoon\modules\tetris\towercap.dm"
+#include "modular_redmoon\modules\tetris\waterskin.dm"
 #include "modular_redmoon\modules\tetris\weaponry.dm"
 #include "modular_redmoon\modules\tetris\wrists.dm"
 // END_INCLUDE

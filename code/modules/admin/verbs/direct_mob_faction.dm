@@ -57,7 +57,7 @@
 		if("set_radius")
 			var/new_radius = input("Enter new radius (1-50):", "Set Radius", radius) as num|null
 			if(new_radius)
-				radius = clamp(new_radius, 1, 50)
+				radius = clamp(new_radius, 1, 500)
 		
 		if("set_faction")
 			faction = href_list["faction"]

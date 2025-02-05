@@ -128,6 +128,46 @@
 	else
 		to_chat(user, span_notice("There are [amount] [stackname] in this bundle."))
 
+/obj/item/natural/bundle/pre_attack_right(atom/A, mob/living/user, params)
+	if(amount <= 0) //how did you manage to do this
+		qdel(src)
+		return
+	if(ismob(A))
+		return ..()
+	user.changeNext_move(CLICK_CD_MELEE)
+	if(amount >= maxamount)
+		to_chat(user, span_warning("There's not enough space in [src]."))
+		return TRUE
+	user.visible_message("[user] begins to gather all the [stackname] in front of them.", "I begin gathering all the [stackname] in front of me...")
+	var/turf/turflocation = get_turf(A)
+	for(var/obj/item/item in turflocation)
+		if(amount >= maxamount)
+			break
+		if(!istype(item, stacktype) && !istype(item, /obj/item/natural/bundle))
+			continue
+		if(!do_after(user, 5, TRUE, src))
+			break
+		if(item.loc != turflocation)
+			continue
+		if(istype(item, stacktype))
+			amount++
+			qdel(item)
+		else if(istype(item, /obj/item/natural/bundle))
+			var/obj/item/natural/bundle/B = item
+			if(B.stacktype == stacktype)
+				if(amount + B.amount > maxamount)
+					B.amount = (amount + B.amount) - maxamount
+					amount = maxamount
+					if(B.amount == 1)
+						new B.stacktype(B.loc)
+						qdel(B)
+					else
+						B.update_bundle()
+				else
+					amount += B.amount
+					qdel(B)
+		update_bundle()
+	return TRUE
 
 /obj/item/natural/bundle/proc/update_bundle()
 	if(firefuel != 0)
@@ -139,3 +179,21 @@
 	else
 		if(icon3 != null)
 			icon_state = icon3
+	var/increases = FLOOR(amount / items_per_increase, 1)
+
+	var/height = FALSE
+	grid_height = base_height
+	grid_width = base_width
+	for(var/i = 1 to increases)
+		if(height)
+			height = FALSE
+			grid_height += 32
+		else
+			height = TRUE
+			grid_width += 32
+	if(item_flags & IN_STORAGE)
+		var/obj/item/location = loc
+		var/datum/component/storage/storage = location.GetComponent(/datum/component/storage)
+
+		storage.update_item(src)
+		storage.orient2hud()
