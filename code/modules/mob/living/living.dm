@@ -1872,18 +1872,11 @@
 
 	if(!OS)
 		return
-	var/ttime = 10
-	if(STAPER > 5)
-		ttime = 10 - (STAPER - 5)
-		if(ttime < 0)
-			ttime = 0
 
 	visible_message(span_info("[src] looks down through [T]."))
 
-	if(!do_after(src, ttime, target = src))
-		return
 
-	changeNext_move(CLICK_CD_MELEE)
+	changeNext_move(CLICK_CD_RAPID)
 	reset_perspective(OS)
 	update_cone_show()
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))
