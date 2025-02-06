@@ -12494,10 +12494,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
-"gEd" = (
-/obj/structure/glowshroom,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/mountains)
 "gEH" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 1
@@ -360486,7 +360482,7 @@ erZ
 erZ
 erZ
 erZ
-gEd
+erZ
 erZ
 erZ
 erZ
