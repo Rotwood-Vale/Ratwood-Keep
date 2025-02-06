@@ -117,6 +117,22 @@
 	playsound(get_turf(src.mob), S, 50, FALSE, FALSE)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Local Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/play_local_sound_variable(S as sound)
+	set category = "Fun"
+	set name = "Play Variable Distance Sound"
+	if(!check_rights(R_SOUND))
+		return
+
+	var/dist = input(usr, "How far do you want this sound to extend?",, 50) as null|num
+	if(!dist)
+		return
+	dist = CLAMP(dist, 1, 100)
+
+	log_admin("[key_name(src)] played a local sound [S]")
+	message_admins("[key_name_admin(src)] played a local sound [S]")
+	playsound(get_turf(src.mob), S, dist, FALSE, FALSE)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Local Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/proc/play_web_sound()
 	set category = "Fun"
 	set name = "Play Internet Sound"

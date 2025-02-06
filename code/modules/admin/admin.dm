@@ -839,3 +839,37 @@
 
 	var/mob/living/carbon/human/H = mob
 	H.returntolobby()
+
+
+/datum/admins/proc/sleep_view()
+	set name = "inview Sleep"
+	set category = "GameMaster"
+	set hidden = FALSE
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	if(alert("This will sleep ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+		return
+	for(var/mob/living/M in view(usr.client))
+		M.SetSleeping(999999)
+
+	message_admins("[key_name(usr)] used Toggle Sleep In View.")
+
+/datum/admins/proc/wake_view()
+	set name = "inview Wake"
+	set category = "GameMaster"
+	set hidden = FALSE
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	if(alert("This wake ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
+		return
+	for(var/mob/living/M in view(usr.client))
+		var/S = M.IsSleeping()
+		if(S)
+			M.remove_status_effect(S)
+			M.set_resting(FALSE, TRUE)
+
+	message_admins("[key_name(usr)] used Toggle Wake In View.")
