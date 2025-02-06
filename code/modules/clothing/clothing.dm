@@ -311,12 +311,16 @@
 					user.vars[variable] = user_vars_remembered[variable]
 		user_vars_remembered = initial(user_vars_remembered) // Effectively this sets it to null.
 
+#define FATIGUING_SLOT(slot) (slot == SLOT_HANDS ? FALSE : slot == SLOT_SHOES ? FALSE : slot == SLOT_WRISTS ?\
+	FALSE : slot == SLOT_BELT_R ? FALSE : slot == SLOT_BELT_L ? FALSE : slot == SLOT_GLOVES ? FALSE : slot == SLOT_IN_BACKPACK ? FALSE : TRUE)
+
 /obj/item/clothing/equipped(mob/user, slot)
 	..()
-	if(armor_class == ARMOR_CLASS_HEAVY || armor_class == ARMOR_CLASS_MEDIUM)
-		RegisterSignal(user, COMSIG_ARMOR_SKILL_CHECKED, PROC_REF(armor_class_check))
 	if (!istype(user))
 		return
+	var/causes_fatigue = FATIGUING_SLOT(slot)
+	if(armor_class > ARMOR_CLASS_LIGHT && causes_fatigue)
+		RegisterSignal(user, COMSIG_ARMOR_SKILL_CHECKED, PROC_REF(armor_class_check))
 	if(slot_flags & slotdefine2slotbit(slot)) //Was equipped to a valid slot for this item?
 		if (LAZYLEN(user_vars_to_edit))
 			for(var/variable in user_vars_to_edit)
@@ -324,16 +328,21 @@
 					LAZYSET(user_vars_remembered, variable, user.vars[variable])
 					user.vv_edit_var(variable, user_vars_to_edit[variable])
 
+#undef FATIGUING_SLOT
+
 /obj/item/clothing/proc/armor_class_check(datum/source, mob/wearer)
+	SIGNAL_HANDLER
+
 	//We don't care about checking armor class for NPCs
 	if(!wearer.mind)
 		return
+	if(HAS_TRAIT(wearer, TRAIT_HEAVYARMOR)) //if you have heavy armor training, you're good with all armor
+		return
 	if(armor_class == ARMOR_CLASS_HEAVY)
-		if(!HAS_TRAIT(wearer, TRAIT_HEAVY_ARMOR))
-			return COMPONENT_UNTRAINED_FOR_HEAVY_ARMOR
-	if(armor_class == ARMOR_CLASS_MEDIUM)
-		if(!HAS_TRAIT(wearer, TRAIT_MEDIUM_ARMOR))
-			return COMPONENT_UNTRAINED_FOR_MEDIUM_ARMOR
+		return COMPONENT_UNTRAINED_FOR_HEAVY_ARMOR
+	if(HAS_TRAIT(wearer, TRAIT_MEDIUMARMOR)) //otherwise the only possible case is you're wearing medium armor
+		return //and if you have the training for that, you're good
+	return COMPONENT_UNTRAINED_FOR_MEDIUM_ARMOR
 
 
 /obj/item/clothing/examine(mob/user)

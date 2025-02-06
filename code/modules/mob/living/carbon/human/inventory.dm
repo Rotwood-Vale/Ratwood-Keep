@@ -241,6 +241,10 @@
 	if(index && !QDELETED(src) && dna.species.mutanthands) //hand freed, fill with claws, skip if we're getting deleted.
 		put_in_hand(new dna.species.mutanthands(), index)
 	SEND_SIGNAL(I, COMSIG_ITEM_UNEQUIPPED, src)
+	if(isclothing(I))
+		var/obj/item/clothing/possible_armor = I
+		if(possible_armor.armor_class > ARMOR_CLASS_LIGHT)
+			UnregisterSignal(src, COMSIG_ARMOR_SKILL_CHECKED)
 	if(I == wear_armor)
 		if(s_store && invdrop)
 			dropItemToGround(s_store, TRUE, silent = silent) //It makes no sense for your suit storage to stay on you if you drop your suit.

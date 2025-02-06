@@ -283,8 +283,11 @@
 #define COMSIG_ITEM_AFTERATTACK "item_afterattack"				//from base of obj/item/afterattack(): (atom/target, mob/user, params)
 #define COMSIG_ITEM_ATTACK_QDELETED "item_attack_qdeleted"		//from base of obj/item/attack_qdeleted(): (atom/target, mob/user, params)
 #define COMSIG_ITEM_EQUIPPED "item_equip"						//from base of obj/item/equipped(): (/mob/equipper, slot)
-	#define COMPETENT
+	#define COMPONENT_COMPETENT_WITH_ARMOR (1<<0)
+	#define COMPONENT_UNTRAINED_FOR_HEAVY_ARMOR (1<<1)
+	#define COMPONENT_UNTRAINED_FOR_MEDIUM_ARMOR (1<<2)
 #define COMSIG_ITEM_UNEQUIPPED "item_unequip"					//from base of mob/living/carbon/human/doUnEquip(): (obj/item/I, force, newloc, no_move, invdrop = TRUE, silent = FALSE)
+#define COMSIG_ARMOR_SKILL_CHECKED "armor_skill_checked"
 #define COMSIG_ITEM_DROPPED "item_drop"							//from base of obj/item/dropped(): (mob/user)
 #define COMSIG_ITEM_PICKUP "item_pickup"						//from base of obj/item/pickup(): (/mob/taker)
 #define COMSIG_ITEM_ATTACK_ZONE "item_attack_zone"				//from base of mob/living/carbon/attacked_by(): (mob/living/carbon/target, mob/living/user, hit_zone)

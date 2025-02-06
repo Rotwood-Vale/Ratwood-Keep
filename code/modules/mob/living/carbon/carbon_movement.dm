@@ -14,7 +14,7 @@
 /mob/living/carbon/Move(NewLoc, direct)
 	. = ..()
 	var/armor_check = check_armor_skill()
-	if(armor_check != COMPETENT_WITH_ARMOR)
+	if(armor_check != COMPONENT_COMPETENT_WITH_ARMOR)
 		var/untrained_armor_fatigue = 2
 		if(armor_check & COMPONENT_UNTRAINED_FOR_HEAVY_ARMOR)
 			untrained_armor_fatigue = 4

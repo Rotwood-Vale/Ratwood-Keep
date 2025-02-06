@@ -642,7 +642,7 @@
 					return
 				if(ishuman(L))
 					var/mob/living/carbon/human/H = L
-					if(H.check_armor_skill() != COMPETENT_WITH_ARMOR || H.legcuffed)
+					if(H.check_armor_skill() != COMPONENT_COMPETENT_WITH_ARMOR || H.legcuffed)
 						return
 			m_intent = MOVE_INTENT_RUN
 	if(hud_used && hud_used.static_inventory)
@@ -655,9 +655,9 @@
 	return TRUE
 
 /mob/living/carbon/human/check_armor_skill()
-	. = COMPETENT_WITH_ARMOR
+	. = COMPONENT_COMPETENT_WITH_ARMOR
 	///The signal will return a bitfield of any failure conditions (currently, untrained in heavy or medium)
-	var/failed_checks = SEND_SIGNAL(src, COMSIG_ARMOR_SKILL_CHECKED)
+	var/failed_checks = SEND_SIGNAL(src, COMSIG_ARMOR_SKILL_CHECKED, src)
 	if(failed_checks)
 		return failed_checks
 	return .
