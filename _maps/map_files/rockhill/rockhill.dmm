@@ -13629,10 +13629,6 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/sewer)
-"hjO" = (
-/obj/item/kitchen/rollingpin,
-/turf/open/floor/rogue/tile/checker,
-/area/rogue/indoors/town/manor)
 "hka" = (
 /obj/item/natural/poo/cow,
 /turf/open/floor/rogue/hay,
@@ -21503,9 +21499,12 @@
 	icon_state = "longtable"
 	},
 /obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_y = 10
+	pixel_y = 10;
+	pixel_x = 2
 	},
-/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon{
+	pixel_x = 10
+	},
 /obj/item/reagent_containers/peppermill,
 /turf/open/floor/rogue/tile/checker,
 /area/rogue/indoors/town/manor)
@@ -31672,6 +31671,8 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black,
 /obj/item/clothing/cloak/apron/cook,
 /obj/item/clothing/cloak/apron/cook,
+/obj/item/clothing/suit/roguetown/armor/leather/vest/black,
+/obj/item/clothing/suit/roguetown/armor/leather/vest/black,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "qUX" = (
@@ -34613,6 +34614,10 @@
 	icon_state = "longtable"
 	},
 /obj/item/cooking/pan,
+/obj/item/kitchen/rollingpin{
+	pixel_x = -10;
+	pixel_y = 8
+	},
 /turf/open/floor/rogue/tile/checker,
 /area/rogue/indoors/town/manor)
 "sGP" = (
@@ -41765,6 +41770,7 @@
 /obj/item/cooking/platter,
 /obj/item/cooking/platter,
 /obj/item/cooking/platter,
+/obj/item/storage/bag/tray,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "wAU" = (
@@ -327983,7 +327989,7 @@ vGc
 vGc
 sHm
 vDa
-hjO
+cNY
 cNY
 cNY
 eUJ
