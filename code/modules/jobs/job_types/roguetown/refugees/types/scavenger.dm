@@ -137,7 +137,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			beltr = /obj/item/rogueweapon/huntingknife
-			backpack_contents = list(/obj/item/needle = 1, obj/item/rogueweapon/huntingknife/scissors)
+			backpack_contents = list(/obj/item/needle = 1,  /obj/item/rogueweapon/huntingknife/scissors = 1)
 
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
@@ -148,7 +148,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-			h.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 
 			H.change_stat("intelligence", 2)
