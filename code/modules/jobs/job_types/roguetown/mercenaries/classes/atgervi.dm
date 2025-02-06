@@ -59,6 +59,7 @@
 			beltl = /obj/item/flashlight/flare/torch
 
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)	
+			H.cmode_music = 'sound/music/combat_vagarian.ogg'
 		if("Shaman")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a Shaman of the Northern Empty. Savage combatants who commune with their gods through gut-wrenching violence, rather than idle prayer."))
@@ -91,6 +92,8 @@
 			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC) //No weapons. Just beating them to death as God intended.
 			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC) //Their entire purpose is to rip people apart with their hands and teeth. I don't think they'd be too preturbed to see someone lose a limb.
 			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC) //Either no armor, or light armor.
+			ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+			H.cmode_music = 'sound/music/combat_shaman.ogg'
 	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/rogueweapon/huntingknife)
 
 
