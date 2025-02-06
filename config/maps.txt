@@ -14,10 +14,6 @@ Format:
 endmap
 
 map rockhill
-	#default
-	votable
-endmap
-
-map roguetest
 	default
+	votable
 endmap
