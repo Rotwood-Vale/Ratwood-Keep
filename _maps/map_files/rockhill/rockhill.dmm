@@ -3696,6 +3696,8 @@
 /obj/item/natural/cloth{
 	pixel_x = -5
 	},
+/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "bWi" = (
@@ -6090,14 +6092,6 @@
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/under/cavewet/bogcaves)
-"djp" = (
-/obj/structure/table/wood{
-	dir = 8;
-	icon_state = "largetable"
-	},
-/obj/item/reagent_containers/glass/bowl,
-/turf/open/floor/rogue/blocks/stonered,
-/area/rogue/indoors/town/manor)
 "djA" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -10508,8 +10502,20 @@
 /area/rogue/indoors/town/garrison)
 "fyz" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bucket/wooden,
-/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/fork,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
+/obj/item/kitchen/spoon,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "fyA" = (
@@ -21503,7 +21509,6 @@
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_y = 10
 	},
-/obj/item/kitchen/spoon,
 /obj/item/kitchen/spoon,
 /obj/item/reagent_containers/peppermill,
 /turf/open/floor/rogue/tile/checker,
@@ -41753,6 +41758,17 @@
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/cooking/platter/silver,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
+/obj/item/cooking/platter,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "wAU" = (
@@ -43865,14 +43881,6 @@
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
-"xGy" = (
-/obj/structure/table/wood{
-	dir = 4;
-	icon_state = "largetable"
-	},
-/obj/item/reagent_containers/glass/bowl,
-/turf/open/floor/rogue/blocks/stonered,
-/area/rogue/indoors/town/manor)
 "xGA" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
@@ -328428,7 +328436,7 @@ kth
 cNv
 qyB
 qUK
-djp
+qUK
 eni
 kYS
 kIS
@@ -331018,7 +331026,7 @@ ksG
 uOL
 kth
 nwI
-xGy
+bec
 bec
 ncF
 rIj
