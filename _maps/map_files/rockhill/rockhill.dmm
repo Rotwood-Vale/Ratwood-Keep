@@ -3693,6 +3693,9 @@
 /obj/item/soap,
 /obj/item/soap,
 /obj/item/soap,
+/obj/item/natural/cloth{
+	pixel_x = -5
+	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "bWi" = (
@@ -16549,9 +16552,9 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "iNJ" = (
-/obj/structure/bed/rogue,
 /obj/effect/landmark/start/physician,
 /obj/item/bedsheet/rogue/fabric,
+/obj/structure/bed/rogue/inn/wool,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "iNO" = (
@@ -19473,6 +19476,8 @@
 "koP" = (
 /obj/structure/rack/rogue,
 /obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "koU" = (
@@ -22251,6 +22256,7 @@
 "lWI" = (
 /obj/machinery/tanningrack,
 /obj/item/storage/roguebag,
+/obj/item/storage/roguebag,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "lWN" = (
@@ -24511,6 +24517,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/druidgrove)
 "nhC" = (
+/obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/tile{
 	icon_state = "glyph5"
 	},
@@ -30882,8 +30889,8 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/bath)
 "qAk" = (
-/obj/machinery/light/rogue/hearth,
-/turf/open/floor/rogue/blocks/stonered/tiny,
+/obj/machinery/tanningrack,
+/turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "qAQ" = (
 /obj/structure/closet/crate/chest{
@@ -31083,6 +31090,16 @@
 /obj/structure/chair/wood/rogue,
 /turf/open/floor/rogue/tile,
 /area/rogue/outdoors/town/roofs)
+"qFD" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/obj/machinery/light/rogue/hearth{
+	pixel_y = -6
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/manor)
 "qFX" = (
 /obj/effect/decal/cobbleedge{
 	dir = 4;
@@ -31650,6 +31667,10 @@
 /obj/item/clothing/under/roguetown/tights/stockings/black,
 /obj/item/clothing/cloak/apron/waist,
 /obj/item/clothing/cloak/apron/waist,
+/obj/item/clothing/suit/roguetown/shirt/undershirt/black,
+/obj/item/clothing/suit/roguetown/shirt/undershirt/black,
+/obj/item/clothing/cloak/apron/cook,
+/obj/item/clothing/cloak/apron/cook,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "qUX" = (
@@ -40332,9 +40353,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "vOa" = (
-/obj/structure/roguemachine/scomm,
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors/town/vault)
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/manor)
 "vOi" = (
 /obj/structure/chair/stool/rogue{
 	pixel_x = -5;
@@ -219982,7 +220003,7 @@ rpo
 opv
 rpo
 opv
-vOa
+rpo
 txa
 iTw
 lVE
@@ -327526,14 +327547,14 @@ vGc
 vGc
 sHm
 vDa
-eUJ
+vOa
 ldr
 eUJ
 uOL
 xDn
 uOL
-eUJ
-eUJ
+qAk
+nmn
 sHm
 xlm
 xlm
@@ -327963,7 +327984,7 @@ cNY
 cNY
 eUJ
 uOL
-nmn
+kNa
 eUJ
 eUJ
 vUX
@@ -328829,7 +328850,7 @@ eUJ
 eUJ
 eUJ
 eUJ
-kNa
+eUJ
 sHm
 sPu
 sPu
@@ -329266,7 +329287,7 @@ sHm
 vPY
 odT
 nZU
-wVO
+qFD
 qjD
 qvt
 qvt
@@ -329699,7 +329720,7 @@ cAg
 nlX
 bms
 cKY
-qAk
+kIS
 kIS
 kIS
 kIS
@@ -333164,7 +333185,7 @@ wtF
 wtF
 wtF
 wtF
-mwE
+jHc
 mwE
 nZQ
 auT
@@ -346619,7 +346640,7 @@ jYx
 sCn
 bht
 sco
-sco
+ouf
 sco
 sco
 teE
@@ -347050,7 +347071,7 @@ sCn
 veS
 veS
 eBZ
-sco
+ouf
 esR
 mLB
 sgq
@@ -347914,7 +347935,7 @@ pbR
 oJi
 ehw
 oJi
-ouf
+sco
 wVI
 fnA
 fnA
