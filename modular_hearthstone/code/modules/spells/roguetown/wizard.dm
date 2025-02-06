@@ -1481,7 +1481,7 @@
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
 		if(HAS_TRAIT(target,TRAIT_ZJUMP))
-			to_chat(user, "<span class='warning'>Their already able to jump that high!</span>")
+			to_chat(user, "<span class='warning'>They're already able to jump that high!</span>")
 			revert_cast()
 			return
 		ADD_TRAIT(target, TRAIT_ZJUMP, MAGIC_TRAIT)
