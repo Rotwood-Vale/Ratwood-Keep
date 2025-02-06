@@ -6,9 +6,10 @@
 	outfit = /datum/outfit/job/roguetown/mercenary/atgervi
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/combat_gronn.ogg'
+	traits_applied = list(TRAIT_OUTLANDER)
 
 /datum/outfit/job/roguetown/mercenary/atgervi
-	allowed_patrons = list(/datum/patron/inhumen)
+	allowed_patrons = ALL_INHUMEN_PATRONS
 
 /datum/outfit/job/roguetown/mercenary/atgervi/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -138,6 +139,7 @@
 	icon_state = "atgervi_shaman"
 	item_state = "atgervi_shaman"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/atgervi.dmi'
+	flags_inv = HIDEEARS
 	worn_x_dimension = 32
 	worn_y_dimension = 48
 
