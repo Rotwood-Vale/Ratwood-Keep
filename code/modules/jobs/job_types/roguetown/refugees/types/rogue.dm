@@ -37,7 +37,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
-			neck = /obj/item/clothing/neck/roguetown/coif
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
@@ -46,8 +46,8 @@
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
-			beltr = /obj/item/rogueweapon/huntingknife/idagger
-			backpack_contents = list(/obj/item/lockpickring/mundane = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
+			beltr = /obj/item/ammo_holder/bomb/smokebombs
+			backpack_contents = list(/obj/item/lockpickring/mundane = 1)
 			H.change_stat("strength", -1)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 3)
