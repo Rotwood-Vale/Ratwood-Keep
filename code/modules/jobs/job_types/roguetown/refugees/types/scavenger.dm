@@ -17,7 +17,7 @@
 /datum/outfit/job/roguetown/refugee/scavenger/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Prospector", "Harvester", "Tracker")
+	var/classes = list("Prospector", "Harvester", "Tracker", "Camp Follower")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -126,5 +126,35 @@
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 1)
+
+
+		if("Camp Follower")
+			neck = /obj/item/clothing/neck/roguetown/coif
+			pants = /obj/item/clothing/under/roguetown/tights/random
+			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light // A camp follower would likely have some form of light armor
+			backl = /obj/item/storage/backpack/rogue/backpack
+			belt = /obj/item/storage/belt/rogue/leather
+			beltl = /obj/item/flashlight/flare/torch/lantern
+			beltr = /obj/item/rogueweapon/huntingknife
+			backpack_contents = list(/obj/item/needle = 1, obj/item/rogueweapon/huntingknife/scissors)
+
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			h.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+
+			H.change_stat("intelligence", 2)
+			H.change_stat("perception", -1)
+			H.change_stat("speed", 1)
+			H.change_stat("endurance", 1)
+			H.change_stat("strength", -1)
 
 	H.set_blindness(0)
