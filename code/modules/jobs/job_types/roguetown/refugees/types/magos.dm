@@ -49,7 +49,7 @@
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 		if("Arcanist")
@@ -80,7 +80,7 @@
 			H.change_stat("constitution", -2)
 			H.change_stat("endurance", -1)
 			H.change_stat("speed", -1)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			H.set_patron(/datum/patron/divine/noc)
 
 		if("Occultist")
@@ -115,7 +115,7 @@
 			H.change_stat("endurance", -1)
 			H.change_stat("speed", -1)
 			H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can level arcane to get them
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			H.set_patron(/datum/patron/zizo)
 			H.faction += "undead"
 
@@ -156,6 +156,6 @@
 	H.change_stat("endurance", -1)
 	H.change_stat("speed", -1)
 	H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can level arcane to get them
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+	H.mind.AddSpell(new SPELL_LEARNSPELL)
 	H.set_patron(/datum/patron/zizo)
 	H.faction += "undead"

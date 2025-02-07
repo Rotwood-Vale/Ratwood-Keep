@@ -150,7 +150,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/message)
+		H.mind.AddSpell(new SPELL_MESSAGE)
 		H.mind.AddSpell(new SPELL_FETCH)
 		H.mind.AddSpell(new SPELL_DARKVISION)
 		H.change_stat("intelligence", 3)

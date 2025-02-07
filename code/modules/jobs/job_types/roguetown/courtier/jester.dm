@@ -14,7 +14,7 @@
 		and someday you'll find yourself at the end of something sharper than you."
 
 	allowed_ages = ALL_AGES_LIST
-	spells = list(/obj/effect/proc_holder/spell/self/telljoke,/obj/effect/proc_holder/spell/self/telltragedy)
+	spells = list(SPELL_TELLJOKE,SPELL_TELLTRAGEDY)
 	outfit = /datum/outfit/job/roguetown/jester
 	display_order = JDO_JESTER
 	give_bank_account = TRUE
