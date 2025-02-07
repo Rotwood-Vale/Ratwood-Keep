@@ -127,6 +127,7 @@
 		/datum/sprite_accessory/ears/mouse,
 		/datum/sprite_accessory/ears/big/acrador_long,
 		/datum/sprite_accessory/ears/big/acrador_short,
+		/datum/sprite_accessory/ears/big/sandfox_large,
 		)
 
 /datum/customizer/organ/ears/anthro
@@ -189,6 +190,7 @@
 		/datum/sprite_accessory/ears/mouse,
 		/datum/sprite_accessory/ears/big/acrador_long,
 		/datum/sprite_accessory/ears/big/acrador_short,
+		/datum/sprite_accessory/ears/big/sandfox_large,
 		)
 
 /datum/customizer/organ/ears/lizard
