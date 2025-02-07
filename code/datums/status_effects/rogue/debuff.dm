@@ -278,3 +278,14 @@
 	name = "Chilled"
 	desc = "I can barely feel my limbs!"
 	icon_state = "chilled"
+
+
+/datum/status_effect/debuff/ritesexpended
+	id = "ritesexpended"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ritesexpended
+	duration = 30 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/ritesexpended
+	name = "Rites Complete"
+	desc = "It will take time before I can next perform a rite."
+	icon_state = "ritesexpended"

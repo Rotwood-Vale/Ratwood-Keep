@@ -27,6 +27,7 @@
 	beltr = /obj/item/storage/keyring/churchie
 	id = /obj/item/clothing/ring/silver
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/ritechalk)
 	
 /datum/job/roguetown/templar/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -92,6 +93,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
+		ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 		if(H.patron?.type == /datum/patron/divine/pestra)
 			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
