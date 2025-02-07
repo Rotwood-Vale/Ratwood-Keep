@@ -46,8 +46,7 @@
 
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi
 			gloves = /obj/item/clothing/gloves/roguetown/angle/atgervi
-			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
 			pants = /obj/item/clothing/under/roguetown/trou/leather/atgervi
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather/atgervi
@@ -98,13 +97,13 @@
 
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
-	name = "Vagarian hauberk"
+	name = "vagarian hauberk"
 	desc = "The pride of the Hammerhold mercenaries a well crafted blend of chain and leather into a dense protective coat."
 	icon_state = "atgervi_raider_mail"
 	item_state = "atgervi_raider_mail"
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/atgervi
-	name = "Shamanic coat"
+	name = "shamanic coat"
 	desc = "A lightly protective coat, It embodies the second trial of the Northern shamans. To honor the leopard is too desire for more."
 	icon_state = "atgervi_shaman_coat"
 	item_state = "atgervi_shaman_coat"
@@ -122,17 +121,18 @@
 	item_state = "atgervi_raider_gloves"
 
 /obj/item/clothing/gloves/roguetown/plate/atgervi
-	name = "Beast claws"
+	name = "beast claws"
 	desc = "A menacing pair of plated claws, A closely protected tradition of the Shamans. The four claws embodying the four great beasts. Decorated with symbols of the gods they praise and the Gods they reject."
 	icon_state = "atgervi_shaman_gloves"
 	item_state = "atergvi_shaman_gloves"
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi
-	name = "Owl helmet"
+	name = "owl helmet"
 	desc = "A carefully forged steel helmet in the shape of an owl's face, with added chain to cover the face and neck against many blows."
 	icon_state = "atgervi_raider"
 	item_state = "atgervi_raider"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/atgervi.dmi'
+	block2add = null
 	worn_x_dimension = 32
 	worn_y_dimension = 48
 
@@ -166,15 +166,14 @@
 	attacked_sound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 250
+	experimental_inhand = FALSE
 
 /obj/item/rogueweapon/shield/atgervi/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,"sx" = -5,"sy" = -1,"nx" = 6,"ny" = -1,"wx" = 0,"wy" = -2,"ex" = 0,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0)
 			if("onback")
-				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+				return list("shrink" = 0.7,"sx" = -17,"sy" = -15,"nx" = -15,"ny" = -15,"wx" = -10,"wy" = -15,"ex" = -18,"ey" = -15,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel/atgervi
 	name = "Bearded Axe"
@@ -184,3 +183,15 @@
 	lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/rogue_righthand.dmi'
 	wlength = WLENGTH_LONG
+	experimental_onhip = TRUE
+
+/obj/item/rogueweapon/stoneaxe/woodcut/steel/atgervi/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -9,"sy" = -8,"nx" = 9,"ny" = -7,"wx" = -7,"wy" = -8,"ex" = 3,"ey" = -8,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 90,"sturn" = -90,"wturn" = -90,"eturn" = 90,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.8,"sx" = 2,"sy" = -8,"nx" = -6,"ny" = -3,"wx" = 3,"wy" = -4,"ex" = 4,"ey" = -3,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -44,"sturn" = 45,"wturn" = 47,"eturn" = 33,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.6,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 180,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 1,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
