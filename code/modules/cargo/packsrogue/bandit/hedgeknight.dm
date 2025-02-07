@@ -19,10 +19,20 @@
 	cost = 200
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/pigface)
 
+/datum/supply_pack/rogue/bandit/Knight/blkstelbuckhelm
+	name = "Blacksteel Bucket Helm"
+	cost = 500
+	contains = list(/obj/item/clothing/head/roguetown/helmet/blacksteel/bucket)
+
 /datum/supply_pack/rogue/bandit/Knight/Fullplate
 	name = "Steel Full plate"
 	cost = 350
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full)
+
+/datum/supply_pack/rogue/bandit/Knight/blacksteelfullplate
+	name = "Blacksteel Full plate"
+	cost = 750
+	contains = list(/obj/item/clothing/suit/roguetown/armor/blacksteel/platechest)
 
 /datum/supply_pack/rogue/bandit/Knight/hauberk
 	name = "Hauberk"
@@ -49,18 +59,53 @@
 	cost = 200
 	contains = list(/obj/item/clothing/gloves/roguetown/plate)
 
+/datum/supply_pack/rogue/bandit/Knight/blkplategaunt
+	name = "Blacksteel Plate Gauntlets"
+	cost = 350
+	contains = list(/obj/item/clothing/gloves/roguetown/blacksteel/plategloves)
+
 /datum/supply_pack/rogue/bandit/Knight/platechausses
 	name = "Plate Chausses"
 	cost = 300
 	contains = list(/obj/item/clothing/under/roguetown/platelegs)
+
+/datum/supply_pack/rogue/bandit/Knight/blkplatechausses
+	name = "Blacksteel Plate Chausses"
+	cost = 500
+	contains = list(/obj/item/clothing/under/roguetown/blacksteel/platelegs)
 
 /datum/supply_pack/rogue/bandit/Knight/plateboots
 	name = "Plated boots"
 	cost = 200
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 
+/datum/supply_pack/rogue/bandit/Knight/blkplateboots
+	name = "Blacksteel Plated boots"
+	cost = 400
+	contains = list(/obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots)
+
 //Weapons
 /datum/supply_pack/rogue/bandit/Knight/bsword
 	name = "Bastard Sword"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/sword/long)
+
+/datum/supply_pack/rogue/bandit/Knight/estoc
+	name = "Estoc"
+	cost = 350
+	contains = list(/obj/item/rogueweapon/estoc)
+
+/datum/supply_pack/rogue/bandit/Knight/greatsword
+	name = "Greatsword"
+	cost = 400
+	contains = list(/obj/item/rogueweapon/greatsword)
+
+/datum/supply_pack/rogue/bandit/Knight/Zweihandersword
+	name = "Zweihander"
+	cost = 200
+	contains = list(/obj/item/rogueweapon/greatsword/zwei)
+
+/datum/supply_pack/rogue/bandit/Knight/kiteshield
+	name = "Kite Shield"
+	cost = 200
+	contains = list(/obj/item/rogueweapon/shield/tower/metal)

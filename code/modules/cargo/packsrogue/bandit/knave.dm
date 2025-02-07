@@ -63,7 +63,7 @@
 //Misc
 /datum/supply_pack/rogue/bandit/Knave/Mancatcher
 	name = "Mancatcher"
-	cost = 50
+	cost = 100
 	contains = list(/obj/item/restraints/legcuffs/beartrap)
 
 /datum/supply_pack/rogue/bandit/Knave/lockpick

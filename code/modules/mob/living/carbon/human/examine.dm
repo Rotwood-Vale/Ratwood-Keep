@@ -102,6 +102,12 @@
 		if(GLOB.lord_titles[name])
 			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
 
+		if(HAS_TRAIT(src, TRAIT_NOBLE))
+			if(HAS_TRAIT(user, TRAIT_NOBLE))
+				. += span_notice("A fellow noble.")
+			else
+				. += span_notice("A noble!")
+
 		if(dna.species.use_skintones)
 			var/skin_tone_wording = dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"
 			var/list/skin_tones = dna.species.get_skin_list()
