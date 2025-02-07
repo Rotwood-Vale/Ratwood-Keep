@@ -95,4 +95,3 @@
 	if(!.)
 		return
 	recruit.verbs |= /mob/proc/haltyell
-
