@@ -844,9 +844,6 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
-"aya" = (
-/turf/closed/wall/mineral/rogue/roofwall/center,
-/area/rogue/outdoors/mountains)
 "ayo" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -4489,11 +4486,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
-"crg" = (
-/turf/closed/wall/mineral/rogue/roofwall/middle{
-	dir = 4
-	},
-/area/rogue/outdoors/mountains)
 "crk" = (
 /obj/machinery/light/roguestreet/orange/walllamp{
 	dir = 4
@@ -5514,11 +5506,6 @@
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/church)
-"cTb" = (
-/turf/closed/wall/mineral/rogue/roofwall/outercorner{
-	dir = 8
-	},
-/area/rogue/outdoors/mountains)
 "cTr" = (
 /obj/structure/mineral_door/wood/red{
 	locked = 1;
@@ -14955,9 +14942,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town/harbor)
-"hVB" = (
-/turf/closed/wall/mineral/rogue/roofwall/outercorner,
-/area/rogue/outdoors/mountains)
 "hVG" = (
 /obj/structure/toilet,
 /turf/open/floor/rogue/blocks,
@@ -17057,11 +17041,6 @@
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
-"jcy" = (
-/turf/closed/wall/mineral/rogue/roofwall/middle{
-	dir = 8
-	},
-/area/rogue/outdoors/mountains)
 "jcO" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -17884,9 +17863,6 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
-"jBN" = (
-/turf/closed/wall/mineral/rogue/roofwall/middle,
-/area/rogue/outdoors/mountains)
 "jBQ" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -21900,11 +21876,6 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
-"lMu" = (
-/turf/closed/wall/mineral/rogue/roofwall/outercorner{
-	dir = 1
-	},
-/area/rogue/outdoors/mountains)
 "lMB" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -30931,11 +30902,6 @@
 	dir = 1
 	},
 /area/rogue/outdoors/rtfield)
-"qBN" = (
-/turf/closed/wall/mineral/rogue/roofwall/middle{
-	dir = 1
-	},
-/area/rogue/outdoors/mountains)
 "qBX" = (
 /obj/structure/lever/wall{
 	dir = 8;
@@ -39678,11 +39644,6 @@
 /obj/structure/bars,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-"vuq" = (
-/turf/closed/wall/mineral/rogue/roofwall/outercorner{
-	dir = 4
-	},
-/area/rogue/outdoors/mountains)
 "vuC" = (
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/cobble/mossy,
@@ -439987,15 +439948,15 @@ erZ
 erZ
 erZ
 erZ
-hVB
-jcy
-jcy
-jcy
-jcy
-jcy
-vuq
-erZ
-erZ
+gxc
+gft
+gft
+gft
+gft
+gft
+krf
+fZJ
+fZJ
 erZ
 erZ
 erZ
@@ -440419,15 +440380,15 @@ gft
 gft
 krf
 erZ
-qBN
-aya
-aya
-aya
-aya
-aya
-jBN
-erZ
-erZ
+col
+eNY
+eNY
+eNY
+eNY
+eNY
+lHE
+fZJ
+fZJ
 erZ
 erZ
 erZ
@@ -440851,15 +440812,15 @@ eNY
 eNY
 lHE
 erZ
-qBN
-aya
-aya
-aya
-aya
-aya
-jBN
-erZ
-erZ
+col
+eNY
+eNY
+eNY
+eNY
+eNY
+lHE
+fZJ
+fZJ
 erZ
 erZ
 erZ
@@ -441283,15 +441244,15 @@ eNY
 eNY
 lHE
 erZ
-qBN
-aya
-aya
-aya
-aya
-aya
-jBN
-erZ
-erZ
+col
+eNY
+eNY
+eNY
+eNY
+eNY
+lHE
+fZJ
+fZJ
 erZ
 erZ
 erZ
@@ -441715,13 +441676,15 @@ eNY
 eNY
 lHE
 erZ
-qBN
-aya
-aya
-aya
-aya
-aya
-jBN
+col
+eNY
+eNY
+eNY
+eNY
+eNY
+lHE
+fZJ
+fZJ
 erZ
 erZ
 gxc
@@ -441730,8 +441693,6 @@ gft
 gft
 gft
 krf
-erZ
-erZ
 erZ
 erZ
 vIa
@@ -442147,13 +442108,15 @@ eNY
 eNY
 lHE
 erZ
-qBN
-aya
-aya
-aya
-aya
-aya
-jBN
+col
+eNY
+eNY
+eNY
+eNY
+eNY
+lHE
+fZJ
+fZJ
 erZ
 erZ
 col
@@ -442162,8 +442125,6 @@ eNY
 eNY
 eNY
 lHE
-erZ
-erZ
 erZ
 erZ
 vIa
@@ -442579,13 +442540,15 @@ eNY
 eNY
 lHE
 erZ
-qBN
-aya
-aya
-aya
-aya
-aya
-jBN
+col
+eNY
+eNY
+eNY
+eNY
+eNY
+lHE
+fZJ
+fZJ
 erZ
 erZ
 col
@@ -442594,8 +442557,6 @@ eNY
 eNY
 eNY
 lHE
-erZ
-erZ
 erZ
 erZ
 vIa
@@ -443011,13 +442972,15 @@ eNY
 eNY
 lHE
 erZ
-lMu
-crg
-crg
-crg
-crg
-crg
-cTb
+vjf
+lwY
+lwY
+lwY
+lwY
+lwY
+orm
+fZJ
+fZJ
 erZ
 erZ
 col
@@ -443026,8 +442989,6 @@ eNY
 eNY
 eNY
 lHE
-erZ
-erZ
 erZ
 erZ
 vIa
@@ -443452,14 +443413,14 @@ erZ
 erZ
 erZ
 erZ
+erZ
+erZ
 col
 eNY
 eNY
 eNY
 eNY
 lHE
-erZ
-erZ
 erZ
 erZ
 vIa
@@ -443884,14 +443845,14 @@ erZ
 erZ
 erZ
 erZ
+erZ
+erZ
 vjf
 lwY
 lwY
 lwY
 lwY
 orm
-erZ
-erZ
 erZ
 erZ
 vIa
