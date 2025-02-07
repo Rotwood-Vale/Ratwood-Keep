@@ -61,7 +61,6 @@
 	ADD_TRAIT(L, TRAIT_CRITICAL_RESISTANCE, "[type]")
 	ADD_TRAIT(L, TRAIT_HEAVYARMOR, "[type]")
 	ADD_TRAIT(L, TRAIT_SPECIALUNDEAD, "[type]") //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
-	ADD_TRAIT(L, TRAIT_NODISMEMBER, "[type]")
 
 	L.cmode_music = 'sound/music/combat_cult.ogg'
 	L.faction = list("undead")
@@ -110,8 +109,8 @@
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/treatment, 4, TRUE)
 
 	H.change_stat("strength", -1)
-	H.change_stat("intelligence", 5)
-	H.change_stat("constitution", 5)
+	H.change_stat("intelligence", 10)
+	H.change_stat("constitution", 10)
 	H.change_stat("endurance", -1)
 	H.change_stat("speed", -1)
 
