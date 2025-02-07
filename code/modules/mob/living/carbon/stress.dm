@@ -78,12 +78,14 @@ GLOBAL_LIST_INIT(stress_messages, world.file2list("strings/rt/stress_messages.tx
 		if(diff_abs > 1)
 			if(ascending)
 				to_chat(src, span_smallred("I gain stress."))
-				if(!rogue_sneaking || alpha >= 100)
-					play_stress_indicator()
+				if(diff_abs > 2)
+					if(!rogue_sneaking || alpha >= 100)
+						play_stress_indicator()
 			else
 				to_chat(src, span_smallgreen("I gain peace."))
-				if(!rogue_sneaking || alpha >= 100)
-					play_relief_indicator()
+				if(diff_abs > 2)
+					if(!rogue_sneaking || alpha >= 100)
+						play_relief_indicator()
 
 	var/old_threshold = get_stress_threshold(oldstress)
 	var/new_threshold = get_stress_threshold(new_stress)
