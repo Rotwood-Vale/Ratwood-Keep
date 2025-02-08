@@ -39,3 +39,10 @@
 	contains = list(
 					/mob/living/simple_animal/pet/cat,
 				)
+
+/datum/supply_pack/rogue/livestock/pig
+	name = "Pig"
+	cost = 80
+	contains = list(
+					/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig,
+				)
