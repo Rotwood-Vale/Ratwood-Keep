@@ -68,6 +68,13 @@
 				/obj/item/natural/fibers = 1)
 	skill_level = 1
 
+/datum/crafting_recipe/roguetown/sewing/armingcap
+	name = "cap (knit) - (2 cloths, fiber; NOVICE)"
+	result = list(/obj/item/clothing/head/roguetown/armingcap)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	skill_level = 1
+
 /datum/crafting_recipe/roguetown/sewing/Leyepatch
 	name = "eye patch (left) - (cloth, fiber; NOVICE)"
 	result = list(/obj/item/clothing/mask/rogue/eyepatch/left)
