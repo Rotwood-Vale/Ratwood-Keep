@@ -76,6 +76,17 @@
 	cost = 30
 	contains = list(/obj/item/rogue/instrument/vocals)
 
+/datum/supply_pack/rogue/luxury/toper
+	name = "Toper"
+	cost = 55
+	contains = list(/obj/item/roguegem/yellow)
+
+
+/datum/supply_pack/rogue/luxury/silverdagger
+	name = "Silver Dagger"
+	cost = 150
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver)
+
 /datum/supply_pack/rogue/luxury/nomag
 	name = "Ring of Null Magic"
 	cost = 300

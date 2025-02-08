@@ -107,6 +107,7 @@
 #define UPGRADE_FOOD		(1<<3)
 #define UPGRADE_WARDROBE	(1<<4)
 #define UPGRADE_ALCOHOLS	(1<<5)
+#define UPGRADE_LIVESTOCK   (1<<6)
 
 /obj/structure/roguemachine/merchantvend
 	name = "GOLDFACE"
@@ -219,6 +220,8 @@
 			options += "Purchase Wardrobe License (50)"
 		if(!(upgrade_flags & UPGRADE_ALCOHOLS))
 			options += "Purchase Alcohols License (50)"
+		if(!(upgrade_flags & UPGRADE_LIVESTOCK))
+			options += "Purchase Livestock License (50)"
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
 		if(!select)
 			return
@@ -281,6 +284,16 @@
 				budget -= 50
 				upgrade_flags |= UPGRADE_ALCOHOLS
 				playsound(loc, 'sound/misc/gold_license.ogg', 100, FALSE, -1)
+			if("Purchase Livestock License (50)")
+				if(upgrade_flags & UPGRADE_LIVESTOCK)
+					return
+				if(budget < 50)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 50
+				upgrade_flags |= UPGRADE_LIVESTOCK
+				playsound(loc, 'sound/misc/gold_license.ogg', 100, FALSE, -1)
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/merchantvend/attack_hand(mob/living/user)
@@ -319,6 +332,8 @@
 		unlocked_cats+="Wardrobe"
 	if(upgrade_flags & UPGRADE_ALCOHOLS)
 		unlocked_cats+="Alcohols"
+	if(upgrade_flags & UPGRADE_LIVESTOCK)
+		unlocked_cats+="Livestock"
 
 	if(current_cat == "1")
 		contents += "<center>"

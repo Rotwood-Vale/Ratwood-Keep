@@ -13,6 +13,7 @@
 
 	outfit = /datum/outfit/job/roguetown/merchant
 	give_bank_account = 22
+	noble_income = 100 // Guild Support - The sole Money Role outside of the keep, should help them keep pace a bit + pick up if they get completely knocked out of coin.
 	min_pq = 1 //"Yeah...my guy says the best I can do is one PQ, final offer"
 	max_pq = null
 	required = TRUE
