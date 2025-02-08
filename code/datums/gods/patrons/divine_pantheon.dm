@@ -1,7 +1,7 @@
 /datum/patron/divine
 	name = null
 	associated_faith = /datum/faith/divine
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
+	t0 = list(/obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/targeted/touch/orison)
 
 /datum/patron/divine/astrata
 	name = "Astrata"
