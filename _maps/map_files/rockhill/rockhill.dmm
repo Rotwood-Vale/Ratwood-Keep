@@ -30158,6 +30158,10 @@
 /obj/structure/roguemachine/steward{
 	pixel_x = 1
 	},
+/obj/machinery/light/rogue/wallfire/candle/blue/l{
+	pixel_x = 0;
+	pixel_y = 32
+	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
 "qhY" = (
