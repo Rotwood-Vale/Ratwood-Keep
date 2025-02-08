@@ -333,12 +333,12 @@
 /datum/roguestock/stockpile/honey
 	name = "Honey"
 	desc = "Definitely not spider milk. Delicacy."
-	item_type = /obj/item/rogueore/gold
+	item_type = /obj/item/reagent_containers/food/snacks/rogue/honey
 	held_items = list(0, 0)
-	payout_price = 25
-	withdraw_price = 50
+	payout_price = 10
+	withdraw_price = 25
 	transport_fee = 10
-	export_price = 50
+	export_price = 25
 	importexport_amt = 10
 	passive_generation = 2
 
