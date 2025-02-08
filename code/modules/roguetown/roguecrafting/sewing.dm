@@ -69,7 +69,7 @@
 	skill_level = 1
 
 /datum/crafting_recipe/roguetown/sewing/armingcap
-	name = "cap (knit) - (2 cloths, fiber; NOVICE)"
+	name = "arming cap - (2 cloths, fiber; NOVICE)"
 	result = list(/obj/item/clothing/head/roguetown/armingcap)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
@@ -255,9 +255,37 @@
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
 
-/datum/crafting_recipe/roguetown/sewing/wizhatblue
-	name = "hat (wizard) - (2 cloths, fiber; JOURNEYMAN)"
+/datum/crafting_recipe/roguetown/sewing/wizardhatblue
+	name = "wizard hat (blue) - (2 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/head/roguetown/wizhat)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/wizardhatred
+	name = "wizard hat (red) - (2 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/head/roguetown/wizhat/red)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/wizardhatyellow
+	name = "wizard hat (yellow) - (2 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/head/roguetown/wizhat/yellow)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/wizardhatgreen
+	name = "wizard hat (green) - (2 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/head/roguetown/wizhat/green)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/wizardhatblack
+	name = "wizard hat (black) - (2 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/head/roguetown/wizhat/black)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
@@ -272,13 +300,6 @@
 /datum/crafting_recipe/roguetown/sewing/robe
 	name = "robes (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe)
-	reqs = list(/obj/item/natural/cloth = 3,
-				/obj/item/natural/fibers = 1)
-	skill_level = 3
-
-/datum/crafting_recipe/roguetown/sewing/wizrobeblue
-	name = "robe (wizard) - (3 cloths, fiber; JOURNEYMAN)"
-	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/wizard)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
