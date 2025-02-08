@@ -38175,10 +38175,13 @@
 	},
 /area/rogue/under/cave)
 "uFt" = (
-/obj/structure/roguewindow/curtain{
-	dir = 1
+/obj/machinery/light/rogue/wallfire/candle/blue/l{
+	pixel_x = 0;
+	pixel_y = -32
 	},
-/turf/open/floor/rogue/churchrough,
+/turf/open/floor/rogue/tile{
+	icon_state = "bfloorz"
+	},
 /area/rogue/indoors/town/manor)
 "uFv" = (
 /obj/item/reagent_containers/food/snacks/crow{
@@ -328417,7 +328420,7 @@ mET
 rWq
 xQs
 rmz
-uFt
+pfp
 xAt
 xAt
 eoy
@@ -328848,8 +328851,8 @@ uYE
 vUh
 mEU
 eWS
-vXU
-jxy
+ghy
+pfp
 xAt
 xAt
 eoy
@@ -329280,8 +329283,8 @@ uYE
 mbM
 jqU
 ghy
-ghy
-pfp
+vXU
+jxy
 xAt
 xAt
 eoy
@@ -330572,7 +330575,7 @@ uYE
 uYE
 uYE
 fVD
-uYE
+uFt
 jxy
 kPc
 dsW
