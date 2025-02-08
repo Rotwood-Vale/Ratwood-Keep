@@ -52,6 +52,7 @@
 	possible_item_intents = list(/datum/intent/hit)
 	twohands_required = FALSE
 	var/datum/looping_sound/psydonmusicboxsound/soundloop
+	var/datum/looping_sound/overseermusicsound/real_soundloop
 	sellprice = 400
 
 /obj/item/psydonmusicbox/examine(mob/user)
@@ -70,21 +71,30 @@
 	update_icon()
 	if(cranking)
 		user.apply_status_effect(/datum/status_effect/buff/cranking_soulchurner)
-		soundloop.start()
+		if(!HAS_TRAIT(usr, TRAIT_INQUISITION))
+			real_soundloop.start()
+		else
+			soundloop.start()
 		var/songhearers = view(7, user)
 		for(var/mob/living/carbon/human/target in songhearers)
 			to_chat(target,span_cultsmall("[user] begins cranking the soul churner..."))
 	if(!cranking)
-		soundloop.stop()
+		if(!HAS_TRAIT(usr, TRAIT_INQUISITION))
+			real_soundloop.stop()
+		else
+			soundloop.stop()
 		user.remove_status_effect(/datum/status_effect/buff/cranking_soulchurner)
 
 /obj/item/psydonmusicbox/Initialize()
 	soundloop = new(src, FALSE)
+	real_soundloop = new(src, FALSE)
 	. = ..()
 
 /obj/item/psydonmusicbox/Destroy()
 	if(soundloop)
 		QDEL_NULL(soundloop)
+	if(real_soundloop)
+		QDEL_NULL(real_soundloop)
 	src.visible_message(span_cult("A great deluge of souls escapes the shattered box!"))
 	return ..()
 
@@ -99,7 +109,10 @@
 	cranking = FALSE
 	update_icon()
 	if(soundloop)
-		soundloop.stop()
+		if(!HAS_TRAIT(usr, TRAIT_INQUISITION))
+			real_soundloop.stop()
+		else
+			soundloop.stop()
 		user.remove_status_effect(/datum/status_effect/buff/cranking_soulchurner)
 
 /obj/item/psydonmusicbox/equipped(mob/living/user, silent)
@@ -107,7 +120,10 @@
 	cranking = FALSE
 	update_icon()
 	if(soundloop)
-		soundloop.stop()
+		if(!HAS_TRAIT(usr, TRAIT_INQUISITION))
+			real_soundloop.stop()
+		else
+			soundloop.stop()
 		user.remove_status_effect(/datum/status_effect/buff/cranking_soulchurner)
 
 /obj/item/psydonmusicbox/getonmobprop(tag)
