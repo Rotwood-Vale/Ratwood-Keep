@@ -36,16 +36,20 @@
 	playsound(src, "bubbles", 100, TRUE)
 	return TRUE
 
-/obj/structure/fermenting_barrel/attackby(obj/item/reagent_containers/food/snacks/I, mob/user, params)
-	if(istype(I,/obj/item/reagent_containers/food/snacks/grown))
+/obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/grown))
 		if(try_ferment(I, user))
+			playsound(src, pick('sound/foley/touch1.ogg','sound/foley/touch2.ogg','sound/foley/touch3.ogg'), 170, TRUE)
 			return TRUE
-	if(istype(I,/obj/item/storage/roguebag) && I.contents.len)
+	if(istype(I, /obj/item/storage/roguebag) && I.contents.len)
 		var/success
 		for(var/obj/item/reagent_containers/food/snacks/grown/bagged_fruit in I.contents)
 			if(try_ferment(bagged_fruit, user, TRUE))
+				var/datum/component/storage/STR = I.GetComponent(/datum/component/storage)
+				STR.remove_from_storage(bagged_fruit)
 				success = TRUE
 		if(success)
+			playsound(src, pick('sound/foley/touch1.ogg','sound/foley/touch2.ogg','sound/foley/touch3.ogg'), 170, TRUE)
 			to_chat(user, span_info("I dump the contents of [I] into [src]."))
 			I.update_icon()
 		else
