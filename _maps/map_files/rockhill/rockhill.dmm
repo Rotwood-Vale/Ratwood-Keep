@@ -27834,7 +27834,7 @@
 /obj/structure/bars/passage/shutter{
 	redstone_id = "warehouse_shutter"
 	},
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
 "oRS" = (
 /obj/structure/chair/wood/rogue/fancy{
@@ -463692,7 +463692,7 @@ ryI
 wsY
 siL
 siL
-wsY
+vIF
 oZH
 erZ
 erZ
@@ -464124,7 +464124,7 @@ ryI
 wsY
 ryI
 xiq
-vIF
+wQS
 nqU
 erZ
 erZ
@@ -464556,7 +464556,7 @@ ryI
 wsY
 siL
 siL
-wQS
+ngc
 oZH
 erZ
 erZ
@@ -464988,7 +464988,7 @@ ryI
 wsY
 wsY
 wsY
-ngc
+wsY
 nqU
 erZ
 erZ
@@ -551328,8 +551328,8 @@ gid
 izu
 izu
 izu
+izu
 uKX
-xAt
 uKX
 sXz
 sXz
@@ -551760,8 +551760,8 @@ svx
 hSp
 hSp
 hSp
+hSp
 ivH
-xAt
 uKX
 sXz
 sXz
