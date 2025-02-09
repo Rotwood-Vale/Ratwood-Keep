@@ -30,6 +30,7 @@
 	var/blood_timer
 
 /obj/effect/decal/cleanable/blood/Initialize(mapload)
+	GLOB.weather_act_upon_list += src
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return .
@@ -54,9 +55,15 @@
 		C.color = initial(color)
 
 /obj/effect/decal/cleanable/blood/Destroy()
+	GLOB.weather_act_upon_list -= src
 	deltimer(blood_timer)
 	blood_timer = null
 	return ..()
+
+/obj/effect/decal/cleanable/blood/weather_act_on(weather_trait, severity)
+	if(weather_trait != PARTICLEWEATHER_RAIN)
+		return
+	qdel(src)
 
 /obj/effect/decal/cleanable/blood/old
 	name = "dried blood"

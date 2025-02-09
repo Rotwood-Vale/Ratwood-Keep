@@ -227,6 +227,14 @@
 	icon_state = "spdagger"
 	wdefense = 6
 
+/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero
+	name = "sail dagger"
+	force = 15
+	throwforce = 15
+	desc = "An exceptionally protective parrying dagger popular in the Etruscan Isles, this dagger features a plain metal guard in the shape of a ship's sail."
+	wdefense = 7
+	icon_state = "sail_dagger"
+
 /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	icon_state = "sdaggeralt"
 
@@ -239,6 +247,15 @@
 	smeltresult = /obj/item/ingot/silver
 	last_used = 0
 	is_silver = TRUE
+
+/obj/item/rogueweapon/huntingknife/idagger/silver/psydagger
+	name = "psydonian dagger"
+	desc = "Silver dagger used by the finest of the inquisiton."
+	icon_state = "psydagger"
+	sellprice = 70
+	max_blade_int = 100
+	max_integrity = 210
+	wdefense = 3
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/pickup(mob/user)
 	. = ..()

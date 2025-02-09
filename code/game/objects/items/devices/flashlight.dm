@@ -157,8 +157,13 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/flashlight/flare/torch/Initialize()
+	GLOB.weather_act_upon_list += src
 	. = ..()
 	soundloop = new(src, FALSE)
+
+/obj/item/flashlight/flare/torch/Destroy()
+	GLOB.weather_act_upon_list -= src
+	. = ..()
 
 /obj/item/flashlight/flare/torch/process()
 	open_flame(heat)
@@ -195,6 +200,11 @@
 /obj/item/flashlight/flare/torch/extinguish()
 	if(on)
 		turn_off()
+
+/obj/item/flashlight/flare/torch/weather_act_on(weather_trait, severity)
+	if(weather_trait != PARTICLEWEATHER_RAIN)
+		return
+	extinguish()
 
 /obj/item/flashlight/flare/torch/turn_off()
 	playsound(src.loc, 'sound/items/firesnuff.ogg', 100)

@@ -89,6 +89,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	name = "formal silks"
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	icon_state = "puritan_shirt"
 	allowed_race = CLOTHED_RACES_TYPES
 	sleeved = 'icons/roguetown/clothing/onmob/shirts.dmi'

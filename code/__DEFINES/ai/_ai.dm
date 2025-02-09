@@ -53,7 +53,9 @@
 ///time until we should next eat, set by the generic hunger subtree
 #define BB_NEXT_HUNGRY "BB_NEXT_HUNGRY"
 ///what we're going to eat next
-#define BB_FOOD_TARGET "bb_food_target"
+#define BB_BASIC_MOB_FOOD_TARGET "BB_basic_food_target"
+///what corpse we'll next try to eat
+#define BB_BASIC_MOB_CORPSE_TARGET "BB_basic_mob_corpse_target"
 
 #define BB_BASIC_MOB_TAMED "BB_basic_mob_tamed"
 

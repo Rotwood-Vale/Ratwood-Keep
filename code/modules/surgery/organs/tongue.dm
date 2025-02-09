@@ -242,3 +242,7 @@
 
 /obj/item/organ/tongue/wild_tongue
 	name = "wild tongue"
+
+/obj/item/organ/tongue/moth
+	name = "moth tongue"
+	say_mod = "flutters"

@@ -229,6 +229,10 @@
 	name = "Dandy Pompadour"
 	icon_state = "dandypompadour"
 
+/datum/sprite_accessory/hair/head/dave
+	name = "Dave"
+	icon_state = "dave"
+
 /datum/sprite_accessory/hair/head/devillock
 	name = "Devil Lock"
 	icon_state = "devillock"
@@ -401,6 +405,10 @@
 	name = "Long Side Part"
 	icon_state = "longsidepart"
 
+/datum/sprite_accessory/hair/head/mediumbraid
+	name = "Medium Braid"
+	icon_state = "mediumbraid"
+
 /datum/sprite_accessory/hair/head/megaeyebrows
 	name = "Mega Eyebrows"
 	icon_state = "megaeyebrows"
@@ -542,6 +550,14 @@
 	name = "Ponytail (Country)"
 	icon_state = "ponytail-country"
 
+/datum/sprite_accessory/hair/head/countryponytailalt
+	name = "Ponytail (Country Alt)"
+	icon_state = "countryalt"
+
+/datum/sprite_accessory/hair/head/ponytailwitcher
+	name = "Ponytail (Witcher)"
+	icon_state = "ponytail_witcher"
+
 /datum/sprite_accessory/hair/head/fringetail
 	name = "Ponytail (Fringe)"
 	icon_state = "fringetail"
@@ -626,6 +642,10 @@
 	name = "Slightly Long Hair"
 	icon_state = "protagonist"
 
+/datum/sprite_accessory/hair/head/spicy
+	name = "Spicy"
+	icon_state = "spicy"
+
 /datum/sprite_accessory/hair/head/spiky
 	name = "Spiky"
 	icon_state = "spikey"
@@ -637,6 +657,14 @@
 /datum/sprite_accessory/hair/head/spiky3
 	name = "Spiky 3"
 	icon_state = "spiky2"
+
+/datum/sprite_accessory/hair/head/stacy
+	name = "Stacy"
+	icon_state = "stacy"
+
+/datum/sprite_accessory/hair/head/stacybun
+	name = "Stacy (Bun)"
+	icon_state = "stacy_bun"
 
 /datum/sprite_accessory/hair/head/swept
 	name = "Swept Back Hair"
@@ -865,6 +893,10 @@
 /datum/sprite_accessory/hair/head/ziegler
 	name = "Ziegler"
 	icon_state = "ziegler"
+
+/datum/sprite_accessory/hair/head/zoey
+	name = "Zoey"
+	icon_state = "zoey"
 
 /datum/sprite_accessory/hair/head/gronnbraid
 	name = "Gronn Braid"
@@ -1101,6 +1133,10 @@
 /datum/sprite_accessory/hair/head/suave
 	name = "Suave"
 	icon_state = "suave"	
+
+/datum/sprite_accessory/hair/head/kusanagi_alt
+	name = "Kusanagi (Alt)"
+	icon_state = "kusanagi_alt"
 
 /datum/sprite_accessory/hair/head/vulpkian
 	abstract_type = /datum/sprite_accessory/hair/head/vulpkian

@@ -45,11 +45,15 @@
 #define TRAIT_GUARDSMAN "Vigilant Guardsman"
 #define TRAIT_KNIGHTSMAN "Royal Defiance"
 #define TRAIT_WOODSMAN "Talented Woodsman"
+#define TRAIT_DEATHBARGAIN "Death Bargain" // Used by UNDERMAIDEN'S BARGAIN
+#define TRAIT_RITUALIST "Ritualist"  // Allows use of ritual chalk
 #define TRAIT_INQUISITION "Member of the Otavan Inquisition"
 #define TRAIT_GOODTRAINER "Good Trainer"
 #define TRAIT_OUTDOORSMAN "Outdoorsman"
 #define TRAIT_SEA_DRINKER "Denizen of the Deep"
 #define TRAIT_STUDENT		"Student"
+#define TRAIT_INTELLECTUAL "Intellectual"
+
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
@@ -102,6 +106,8 @@
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 #define TRAIT_SILVER_BLESSED "Silver Blessed"
+#define TRAIT_OUTLANDER "Outlander"
+#define TRAIT_OUTLAW "Outlaw"
 #define TRAIT_BIGGUY "Big Guy"
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -109,6 +115,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GUARDSMAN = span_info("I am vigilant in my duties. In the town of Azure Peak, my abilities are sharper due to my routine and familiarity."),
 	TRAIT_WOODSMAN = span_info("I am vigilant in my duties. In the grove and coast of Azure Peak, my abilities are sharper due to my routine and familiarity."),
 	TRAIT_KNIGHTSMAN = span_info("I am a stalwart defender of the crown. In the keep of Azure Peak, my abilities are sharper due to my routine and familiarity."),
+	TRAIT_DEATHBARGAIN = span_info("A horrible deal has been prepared in your name. May you never see it fulfilled..."),
+	TRAIT_RITUALIST = span_info("I am skilled in the holy arts. Using ritual chalk, I can more deftly channel my God's powers via runes."),
 	TRAIT_INQUISITION = span_info("I am a member of the Otavan Inquisition. I can easily identify others of my cadre at a glance."),
 	TRAIT_CHOSEN = "Astrata choose you to represent her glory.",
 	TRAIT_WEBWALK = "I can move freely between webs.",
@@ -182,11 +190,12 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
 	TRAIT_SILVER_BLESSED = span_info("I am anointed with holy silver, which preserves me from curses that bite."),
 	TRAIT_GOODTRAINER = span_info("I am a good teacher, and when it comes to weaponry I can train others to be just as skilled as I am."),
-	TRAIT_OUTDOORSMAN = span_info("My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds."),
 	TRAIT_SEA_DRINKER = span_info("As a denizen of the deep, I can drink salty ocean water safely."),
- 	TRAIT_BIGGUY = span_info("My immense frame and size allows me to smash through wooden doors, and into people with more effectiveness."),
+	TRAIT_BIGGUY = span_info("My immense frame and size allows me to smash through wooden doors, and into people with more effectiveness."),
+	TRAIT_OUTDOORSMAN = span_info("My experience in the wilds allows me to fall asleep on surfaces like treebranches as if they were beds."),
 	TRAIT_STUDENT =  span_info("I am overwhelmed by all this knowledge!"),
 	TRAIT_LEGENDARY_ALCHEMIST = span_info("An expert in the art of finding herbs in the wild."),
+	TRAIT_INTELLECTUAL = span_info("I have a keen eye and can assess a person's prowess in wit and blade."),
 ))
 
 // trait accessor defines

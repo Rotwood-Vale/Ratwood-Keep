@@ -5,6 +5,7 @@
 	. = ..()
 	var/obj/item/target = controller.blackboard[BB_BASIC_MOB_FOOD_TARGET]
 	if(QDELETED(target))
+		controller.clear_blackboard_key(BB_BASIC_MOB_FOOD_TARGET)
 		return
 	var/mob/living/pawn = controller.pawn
 	if(pawn.doing)

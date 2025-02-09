@@ -41,9 +41,12 @@
 	backpack_contents = list(
 		/obj/item/needle/pestra = 1,
 		/obj/item/natural/worms/leech/cheele = 1, //little buddy
+		/obj/item/ritechalk,
 	)
 	ADD_TRAIT(H, TRAIT_CHOSEN, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 	if(H.mind)
+		H.cmode_music = 'sound/music/combat_holy.ogg' 
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
@@ -55,6 +58,7 @@
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 		H.change_stat("strength", -1)

@@ -9,6 +9,9 @@
 	organ_slot = ORGAN_SLOT_NECK_FEATURE
 
 /datum/customizer/organ/neck_feature/moth_fluff
+	name = "Fluvian Fluff"
+	allows_disabling = TRUE
+	default_disabled = FALSE
 	customizer_choices = list(/datum/customizer_choice/organ/neck_feature/moth_fluff)
 
 /datum/customizer_choice/organ/neck_feature/moth_fluff

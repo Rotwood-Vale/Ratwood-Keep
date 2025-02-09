@@ -154,7 +154,7 @@
  * Begins dealing effects from weather to mobs in the area
  *
  */
-/datum/particle_weather/proc/start()
+/datum/particle_weather/proc/start(color)
 	if(running)
 		return //some cheeky git has started you early
 	weather_duration = rand(weather_duration_lower, weather_duration_upper)
@@ -162,7 +162,7 @@
 	addtimer(CALLBACK(src, PROC_REF(wind_down)), weather_duration)
 
 	if(particleEffectType)
-		SSParticleWeather.SetparticleEffect(new particleEffectType, blend_type, filter_type);
+		SSParticleWeather.SetparticleEffect(new particleEffectType, blend_type, filter_type, color);
 
 	//Always step severity to start
 	ChangeSeverity()
@@ -326,11 +326,11 @@
 
 	return TRUE
 
-
 /client/proc/run_particle_weather()
 	set category = "GameMaster"
 	set name = "Run Particle Weather"
 	set desc = "Triggers a particle weather"
+
 
 	if(!holder)
 		return
@@ -344,3 +344,39 @@
 	message_admins("[key_name_admin(usr)] started weather of type [weather_type].")
 	log_admin("[key_name(usr)] started weather of type [weather_type].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Run Particle Weather")
+
+/client/proc/run_custom_particle_weather()
+	set category = "GameMaster"
+	set name = "Run Custom Color Particle Weather"
+	set desc = "Triggers a particle weather"
+
+
+
+	if(!holder)
+		return
+
+	var/weather_type = input("Choose a weather", "Weather")  as null|anything in sortList(subtypesof(/datum/particle_weather), /proc/cmp_typepaths_asc)
+	if(!weather_type)
+		return
+
+	var/static/list/selectable_colors = list(
+	"Base Rain" = "#ccffff",
+	"Base Snow" = "#ffffff",
+	"Black" = "#414143",
+	"Olive" = "#98bf64",
+	"Green" = "#428138",
+	"Magenta" = "#962e5c",
+	"Red" = "#a32121",
+	"Gold" = "#f9a602"
+	)
+
+	var/color = input("Choose a weather color", "Weather")  as null|anything in selectable_colors
+	if(!color )
+		to_chat(usr, "hit")
+		color = "#ccffff" //base rain color
+
+	SSParticleWeather.run_weather(weather_type, TRUE, color)
+
+	message_admins("[key_name_admin(usr)] started weather of type [weather_type].")
+	log_admin("[key_name(usr)] started weather of type [weather_type].")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Run Custom Particle Weather")
