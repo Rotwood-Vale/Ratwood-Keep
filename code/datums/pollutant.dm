@@ -41,7 +41,7 @@
 			continue
 		if(!considered_alive(H.mind))
 			continue
-		if(H.has_stress_event(/datum/stressevent/perfume))
+		if(H.has_stress(/datum/stressevent/perfume))
 			continue
 
 		H.add_stress(/datum/stressevent/perfume)

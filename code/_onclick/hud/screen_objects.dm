@@ -1542,7 +1542,6 @@
 				M.client.mouseoverbox.screen_loc = null
 	..()
 
-
 /atom/movable/screen/stress
 	name = "sanity"
 	icon = 'icons/mob/roguehud.dmi'
@@ -1555,23 +1554,23 @@
 		var/mob/living/carbon/human/H = usr
 		if(!HAS_TRAIT(H, TRAIT_NOMOOD))
 			var/stress_amt = H.get_stress_amount()
-			if(stress_amt > 0)
+			if(stress_amt > STRESS_BAD)
 				state2use = "stress2"
-			if(stress_amt >= 5)
+			if(stress_amt >= STRESS_VBAD)
 				state2use = "stress3"
-			if(stress_amt >= 15)
+			if(stress_amt == STRESS_INSANE)
 				state2use = "stress4"
-			if(stress_amt >= 25)
+			if(stress_amt >= STRESS_INSANE)
 				state2use = "stress5"
 		if(H.has_status_effect(/datum/status_effect/buff/drunk))
 			state2use = "mood_drunk"
 		if(H.has_status_effect(/datum/status_effect/buff/druqks))
 			state2use = "mood_drunk"
 		if(H.InFullCritical())
-			state2use = "stress4"
+			state2use = "mood_fear"
 		if(H.mind)
 			if(H.mind.has_antag_datum(/datum/antagonist/zombie))
-				state2use = "stress4"
+				state2use = "mood_fear"
 		if(H.stat == DEAD)
 			state2use = "mood_dead"
 	add_overlay(state2use)
@@ -1584,10 +1583,10 @@
 		if(modifiers["left"])
 			if(M.charflaw)
 				to_chat(M, "*----*")
-				to_chat(M, span_info("[M.charflaw.desc]"))
+				to_chat(M, "<span class='info'>[M.charflaw.desc]</span>")
 			to_chat(M, "*--------*")
 			var/list/already_printed = list()
-			var/list/pos_stressors = M.get_positive_stressors()
+			var/list/pos_stressors = M.positive_stressors
 			for(var/datum/stressevent/S in pos_stressors)
 				if(S in already_printed)
 					continue
@@ -1602,10 +1601,10 @@
 				if(islist(S.desc))
 					ddesc = pick(S.desc)
 				if(cnt > 1)
-					to_chat(M, "[ddesc] (x[cnt])")
+					to_chat(M, "• [ddesc] (x[cnt])")
 				else
-					to_chat(M, "[ddesc]")
-			var/list/neg_stressors = M.get_negative_stressors()
+					to_chat(M, "• [ddesc]")
+			var/list/neg_stressors = M.negative_stressors
 			for(var/datum/stressevent/S in neg_stressors)
 				if(S in already_printed)
 					continue
@@ -1627,14 +1626,13 @@
 			to_chat(M, "*--------*")
 		if(modifiers["right"])
 			if(M.get_triumphs() <= 0)
-				to_chat(M, span_warning("I haven't TRIUMPHED."))
+				to_chat(M, "<span class='warning'>I haven't TRIUMPHED.</span>")
 				return
 			if(alert("Do you want to remember a TRIUMPH?", "", "Yes", "No") == "Yes")
-				if(!M.has_stress_event(/datum/stressevent/triumph))
-					M.add_stress(/datum/stressevent/triumph)
+				var/mob/living/carbon/V = M
+				if(V.add_stress(/datum/stressevent/triumph))
 					M.adjust_triumphs(-1)
 					M.playsound_local(M, 'sound/misc/notice (2).ogg', 100, FALSE)
-
 
 /atom/movable/screen/rmbintent
 	name = "alt intents"

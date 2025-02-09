@@ -190,10 +190,10 @@
 		for (var/mob/living/carbon/human/H in hearers(7, owner))
 			if (!H.client)
 				continue
-			if (!H.has_stress_event(/datum/stressevent/soulchurner))
+			if (!H.has_stress(/datum/stressevent/soulchurner))
 				switch(H.patron?.type)
 					if(/datum/patron/psydon)
-						if (!H.has_stress_event(/datum/stressevent/soulchurnerpsydon))
+						if (!H.has_stress(/datum/stressevent/soulchurnerpsydon))
 							H.add_stress(/datum/stressevent/soulchurnerpsydon)
 							if(usr?.client?.prefs?.be_russian)
 								to_chat(H, (span_hypnophrase("Голос из песни зовёт вас...")))

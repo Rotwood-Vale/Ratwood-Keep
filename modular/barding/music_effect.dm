@@ -43,7 +43,7 @@
 				continue
 			if(!H.can_hear())
 				continue
-			if (!H.has_stress_event(stress_to_apply))
+			if (!H.has_stress(stress_to_apply))
 				H.add_stress(stress_to_apply)
 				if (prob(50))
 					to_chat(H, stress_to_apply.desc)

@@ -13,9 +13,9 @@
 
 /datum/sex_action/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
-	if(user.has_stress_event(/datum/stressevent/saw_wonder))
+	if(user.has_stress(/datum/stressevent/saw_wonder))
 		user.remove_stress(/datum/stressevent/saw_wonder)
-	if(target.has_stress_event(/datum/stressevent/saw_wonder))
+	if(target.has_stress(/datum/stressevent/saw_wonder))
 		target.remove_stress(/datum/stressevent/saw_wonder)
 	if(user.has_curse(/datum/curse/zizo))
 		user.remove_curse(/datum/curse/zizo, TRUE)
