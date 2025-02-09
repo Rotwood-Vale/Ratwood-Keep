@@ -2260,6 +2260,7 @@
 #include "modular_redmoon\modules\jobs\job_types\roguetown\youngfolk\shophand.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\youngfolk\smith_apprentice.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\youngfolk\squire.dm"
+#include "modular_redmoon\modules\languages_tweaks\languages_tweaks.dm"
 #include "modular_redmoon\modules\lovefiend_returns\love_fiend_returns.dm"
 #include "modular_redmoon\modules\memory_for_family_members\memory_for_family_members.dm"
 #include "modular_redmoon\modules\mob\living\carbon\human\examine.dm"
