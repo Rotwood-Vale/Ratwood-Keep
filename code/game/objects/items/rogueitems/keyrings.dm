@@ -179,7 +179,7 @@
 	keys = list(/obj/item/key/keep_armory, /obj/item/key/steward, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_gatehouse, /obj/item/key/councillor_rooms, /obj/item/key/hand, /obj/item/key/walls, /obj/item/key/keep_dungeon, /obj/item/key/keep_barracks, /obj/item/key/manor)
 
 /obj/item/storage/keyring/steward
-	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor, /obj/item/key/shop)
+	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor,)
 
 /obj/item/storage/keyring/servant
 	keys = list(/obj/item/key/manor, /obj/item/key/keep_barracks)
