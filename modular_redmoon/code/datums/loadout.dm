@@ -250,6 +250,21 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	desc = "Ебать. Трубка. Жаль не из кожи."
 	path = /obj/item/rogue/instrument/flute
 
+/datum/loadout_item/hurdygurdy
+	name = "Hurdygurdy"
+	desc = "Ебать. Что это?"
+	path = /obj/item/rogue/instrument/hurdygurdy
+
+/datum/loadout_item/viola
+	name = "Viola"
+	desc = "Ебать. Музыкальная штука!"
+	path = /obj/item/rogue/instrument/viola
+
+/datum/loadout_item/vocals
+	name = "Vocalist's Talisman"
+	desc = "This talisman emanates a small shimmer of light. When held, it can amplify and even change one's voice."
+	path = /obj/item/rogue/instrument/vocals
+
 // Weapon
 /datum/loadout_item/hungingknife
 	name = "Hunting Knife"
