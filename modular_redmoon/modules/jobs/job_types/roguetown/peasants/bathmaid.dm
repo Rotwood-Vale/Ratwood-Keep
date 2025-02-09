@@ -9,4 +9,5 @@
 /datum/outfit/job/roguetown/nightmaiden/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
+	ADD_TRAIT(H, TRAIT_BARDIC_TRAINING, TRAIT_GENERIC)

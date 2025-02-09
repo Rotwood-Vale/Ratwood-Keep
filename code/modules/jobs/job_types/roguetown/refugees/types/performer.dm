@@ -93,6 +93,7 @@
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)
 			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_BARDIC_TRAINING, TRAIT_GENERIC)
 
 		if("Harlequin")
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
