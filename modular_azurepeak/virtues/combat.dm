@@ -130,8 +130,9 @@
 
 /datum/virtue/combat/brawler
 	name = "Brawler Apprentice"
-	desc = "I have trained under a skilled brawler, and have some experience fighting with my fists. (+1 to Unarmed and Wrestling, Up to Journeyman, Minimum Apprentice.)"
-
+	desc = "I have trained under a skilled brawler, and have some experience fighting with my fists. (+1 to Unarmed and Wrestling, Up to Journeyman, Minimum Apprentice. Stashed katar.)"
+	added_stashed_items = list("Katar" = /obj/item/rogueweapon/katar)
+	
 /datum/virtue/combat/executioner/apply_to_human(mob/living/carbon/human/recipient)
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/unarmed) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_APPRENTICE, silent = TRUE)
