@@ -1406,6 +1406,10 @@
 /obj/effect/proc_holder/spell/invoked/counterspell/cast(list/targets, mob/user = usr)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
+		if(HAS_TRAIT(target, TRAIT_COUNTERCOUNTERSPELL))
+			to_chat(user, "<span class='warning'>They've counterspelled my counterspell immediately! It's not going to work on them!</span>")
+			revert_cast()
+			return
 		ADD_TRAIT(target, TRAIT_SPELLCOCKBLOCK, MAGIC_TRAIT)
 		ADD_TRAIT(target, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
 		to_chat(target, span_warning("I feel as if my connection to the Arcyne disappears entirely. The air feels still..."))
