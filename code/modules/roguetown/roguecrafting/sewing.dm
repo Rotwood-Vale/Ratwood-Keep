@@ -481,12 +481,12 @@
 	sellprice = 12
 
 /datum/crafting_recipe/roguetown/sewing/sexydress
-	name = "sexy dress of legendary sewists"
+	name = "sheer dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy)
 	reqs = list(/obj/item/natural/cloth = 6,
 				/obj/item/natural/fibers = 3)
-	craftdiff = 6
-	sellprice = 25
+	craftdiff = 5
+	sellprice = 20
 
 /datum/crafting_recipe/roguetown/sewing/wizhatblue
 	name = "blue wizard hat"
@@ -576,3 +576,33 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/royalgown
+	name = "royal gown"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/royal)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 3)
+	tools = list(/obj/item/needle)
+	craftdiff = 6
+	sellprice = 45
+
+/datum/crafting_recipe/roguetown/sewing/royaldress
+	name = "royal dress"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/royal/princess)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 30
+
+/datum/crafting_recipe/roguetown/sewing/royalshirt
+	name = "royal shirt"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/royal/prince)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 30
