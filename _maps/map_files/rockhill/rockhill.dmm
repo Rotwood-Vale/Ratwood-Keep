@@ -1724,10 +1724,6 @@
 /obj/structure/fluff/railing/border{
 	dir = 10
 	},
-/obj/machinery/light/rogue/wallfire/candle/blue{
-	pixel_y = 0;
-	pixel_x = 32
-	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town)
 "aUB" = (
@@ -3051,10 +3047,6 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church)
 "bDJ" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1;
-	layer = 2
-	},
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
@@ -17335,9 +17327,11 @@
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "jlO" = (
-/turf/open/floor/rogue/rooftop/green{
-	dir = 1
+/obj/machinery/light/rogue/wallfire/candle/blue{
+	pixel_y = 0;
+	pixel_x = 32
 	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town)
 "jlY" = (
 /obj/structure/table/vtable/v2,
@@ -18145,11 +18139,6 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/key/shop,
-/obj/item/key/shop,
-/obj/item/key/shop,
-/obj/item/key/shop,
-/obj/item/key/shop,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter/town/harbor)
 "jKG" = (
@@ -33123,7 +33112,7 @@
 "rSy" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/pelt,
-/obj/effect/landmark/start/shophand,
+/obj/effect/landmark/start/longshoreman,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter/town/harbor)
 "rSC" = (
@@ -33179,6 +33168,9 @@
 "rTC" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors/town/roofs)
+"rTJ" = (
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town)
 "rTK" = (
 /turf/open/floor/rogue/tile/masonic{
 	dir = 4
@@ -33935,6 +33927,9 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
+"snT" = (
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town)
 "soz" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors/town/bath)
@@ -144269,9 +144264,9 @@ sYw
 fDy
 pXB
 dCM
-mKP
+dCM
 pIi
-mKP
+dCM
 dCM
 jKx
 fDy
@@ -442825,7 +442820,7 @@ fZJ
 fZJ
 fZJ
 fZJ
-nbz
+jBi
 evo
 evo
 bDJ
@@ -443257,10 +443252,10 @@ fZJ
 fZJ
 fZJ
 fZJ
-nbz
-vbM
+hkI
 cOw
 lVV
+snT
 sxL
 oTD
 fGz
@@ -443689,10 +443684,10 @@ fZJ
 fZJ
 fZJ
 fZJ
-nbz
-fGz
+jBi
 qzf
 lVV
+snT
 aUt
 dgd
 evo
@@ -444121,12 +444116,12 @@ fZJ
 fZJ
 fZJ
 fZJ
-nbz
-fGz
-fGz
-evo
-vbM
-fGz
+obT
+rTJ
+lVV
+snT
+jlO
+snT
 evo
 quJ
 fZJ
@@ -444553,13 +444548,13 @@ fZJ
 fZJ
 fZJ
 fZJ
-ptX
-kqe
-jlO
-jlO
-jlO
-jlO
-jlO
+obT
+obT
+evo
+evo
+vbM
+fGz
+evo
 rpr
 fZJ
 fZJ
