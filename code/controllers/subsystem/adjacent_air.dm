@@ -92,10 +92,8 @@ SUBSYSTEM_DEF(adjacent_air)
 //	air with both of the related adjacent cardinal tiles
 /turf/proc/GetAtmosAdjacentTurfs(alldir = 0)
 	var/adjacent_turfs
-	if (atmos_adjacent_turfs)
-		adjacent_turfs = atmos_adjacent_turfs.Copy()
-	else
-		adjacent_turfs = list()
+	air_update_turf(TRUE) // since no atmos subsystem, we need to generate turf atmos adjacency manually
+	adjacent_turfs = atmos_adjacent_turfs.Copy()
 	if (!alldir)
 		return adjacent_turfs
 	var/turf/curloc = src
