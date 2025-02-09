@@ -50,6 +50,61 @@
 	cost = 150
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver)
 
+/datum/supply_pack/rogue/apparel/crosses/divinepantheonastrata
+	name = "Astratan Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/astrata,
+				)
+
+/datum/supply_pack/rogue/apparel/crosses/divinepantheonmalum
+	name = "Malumite Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/malum,)
+
+/datum/supply_pack/rogue/apparel/crosses/divinepantheoneora
+	name = "Eoran Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/eora,)
+
+/datum/supply_pack/rogue/apparel/crosses/divinepantheonravox
+	name = "Ravox Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/ravox,)
+
+/datum/supply_pack/rogue/apparel/crosses/divinepantheonpestra
+	name = "Pestran Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/pestra,)
+
+/datum/supply_pack/rogue/apparel/crosses/divinepantheonnecra
+	name = "Necran Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/necra,)
+
+/datum/supply_pack/rogue/apparel/crosses/divinepantheondendor
+	name = "Dendor Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/dendor,)
+
+/datum/supply_pack/rogue/apparel/crosses/divinepantheonabyssor
+	name = "Abyssor Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/abyssor,)
+
+/datum/supply_pack/rogue/apparel/crosses/divinepantheonnoc
+	name = "Noc Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/noc,)
+
 /datum/supply_pack/rogue/apparel/crosses/psicross
 	name = "Psicross"
 	cost = 20

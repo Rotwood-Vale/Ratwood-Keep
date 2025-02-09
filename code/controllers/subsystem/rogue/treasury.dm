@@ -219,4 +219,7 @@ SUBSYSTEM_DEF(treasury)
 	for(var/mob/living/welfare_dependant in noble_incomes)
 		var/how_much = noble_incomes[welfare_dependant]
 		give_money_treasury(how_much, silent = TRUE)
-		give_money_account(how_much, welfare_dependant, "Noble Estate")
+		if(welfare_dependant.job == "Merchant")
+			give_money_account(how_much, welfare_dependant, "The Guild")
+		else
+			give_money_account(how_much, welfare_dependant, "Noble Estate")

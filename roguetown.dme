@@ -1134,6 +1134,7 @@
 #include "code\modules\cargo\packsrogue\Iconoclast.dm"
 #include "code\modules\cargo\packsrogue\Knave.dm"
 #include "code\modules\cargo\packsrogue\Knight.dm"
+#include "code\modules\cargo\packsrogue\livestock.dm"
 #include "code\modules\cargo\packsrogue\luxury.dm"
 #include "code\modules\cargo\packsrogue\Mage.dm"
 #include "code\modules\cargo\packsrogue\rawmat.dm"
