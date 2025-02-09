@@ -127,7 +127,7 @@
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE
-	max_integrity = 250
+	max_integrity = 1500
 	item_flags = DROPDEL
 
 /datum/intent/simple/werewolf
@@ -137,7 +137,7 @@
 	attack_verb = list("claws", "mauls", "eviscerates")
 	animname = "chop"
 	hitsound = "genslash"
-	penfactor = 30
+	penfactor = 50
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
