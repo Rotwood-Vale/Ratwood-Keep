@@ -118,7 +118,7 @@
 
 		if(!gibbed && yeae)
 			if(HU.marriedto == src)
-					HU.adjust_triumphs(-1)
+				HU.adjust_triumphs(-1)
 
 	. = ..()
 
