@@ -332,3 +332,10 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 	relevant_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/ears/big/sandfox_large
+	icon_state = "sandfox"
+	name = "Sandfox"
+	color_keys = 2
+	color_key_names = list("Ears", "Inner")
+	relevant_layers = list(BODY_ADJ_LAYER)
