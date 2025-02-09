@@ -74,6 +74,42 @@
 					/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
 				)
 
+/datum/supply_pack/rogue/weapons/parrydagger
+	name = "Sail Dagger"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero,
+				)
+
+/datum/supply_pack/rogue/weapons/parrydagger
+	name = "Shamshir"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/sword/long/rider,
+				)
+
+
+/datum/supply_pack/rogue/weapons/beardedaxe
+	name = "Bearded Axe"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/stoneaxe/woodcut/steel/atgervi,
+	)
+
+/datum/supply_pack/rogue/weapons/naledistaff
+	name = "Naledi Warstaff"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/woodstaff/naledi,
+	)
+
+/datum/supply_pack/rogue/weapons/pulaxe
+	name = "Pulaski Axe"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/stoneaxe/woodcut/pick,
+	)
+
 /datum/supply_pack/rogue/weapons/quiver
 	name = "Quiver"
 	cost = 5
