@@ -41,8 +41,10 @@
 	backpack_contents = list(
 		/obj/item/needle/pestra = 1,
 		/obj/item/natural/worms/leech/cheele = 1, //little buddy
+		/obj/item/ritechalk,
 	)
 	ADD_TRAIT(H, TRAIT_CHOSEN, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 	if(H.mind)
 		H.cmode_music = 'sound/music/combat_holy.ogg' 
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
