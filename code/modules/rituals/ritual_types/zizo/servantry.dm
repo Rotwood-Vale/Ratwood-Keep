@@ -135,6 +135,7 @@
 						to_chat(HL.mind, span_warning("I sense an unholy presence loom near my soul."))
 						return
 					if(HL == SSticker.rulermob)
+						to_chat(user.mind, span_warning("Дохуя хочешь."))
 						return
 					if(istype(HL.wear_neck, /obj/item/clothing/neck/roguetown/psicross))
 						return
