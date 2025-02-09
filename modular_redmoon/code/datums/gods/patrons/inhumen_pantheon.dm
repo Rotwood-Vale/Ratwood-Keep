@@ -30,3 +30,4 @@
 		"ЖИВИ, СМЕЙСЯ, ЛЮБИ!",
 		"БАОТА - МОЯ РАДОСТЬ!",
 	)
+	mob_traits = list(TRAIT_GOODLOVER, TRAIT_CRACKHEAD)
