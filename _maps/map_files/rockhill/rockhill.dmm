@@ -7501,7 +7501,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/bath)
 "dVK" = (
-/obj/structure/table/wood,
+/obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "vertw"
 	},
@@ -30618,7 +30618,7 @@
 /obj/structure/roguemachine/merchantvend{
 	pixel_x = 32
 	},
-/obj/structure/fermenting_barrel/water,
+/obj/structure/table/wood,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/shop)
 "quT" = (
