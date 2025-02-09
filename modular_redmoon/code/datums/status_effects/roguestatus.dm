@@ -1,6 +1,9 @@
 /datum/status_effect/stress
 	status_type = STATUS_EFFECT_REFRESH
 
+/atom/movable/screen/alert/status_effect/stress
+	icon = 'modular_redmoon/icons/screen_alert.dmi'
+
 /datum/status_effect/stress/stressinsane
 	id = "insane"
 	effectedstats = list("constitution" = -2, "endurance" = -2, "speed" = -2, "fortune" = -2)

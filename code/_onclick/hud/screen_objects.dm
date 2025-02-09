@@ -1583,7 +1583,7 @@
 		if(modifiers["left"])
 			if(M.charflaw)
 				to_chat(M, "*----*")
-				to_chat(M, "<span class='info'>[M.charflaw.desc]</span>")
+				to_chat(M, span_info("[M.charflaw.desc]"))
 			to_chat(M, "*--------*")
 			var/list/already_printed = list()
 			var/list/pos_stressors = M.positive_stressors
