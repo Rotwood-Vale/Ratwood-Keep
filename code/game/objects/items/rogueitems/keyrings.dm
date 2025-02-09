@@ -161,7 +161,7 @@
 	keys = list(/obj/item/key/manor, /obj/item/key/tower, /obj/item/key/mage)
 
 /obj/item/storage/keyring/innkeep
-	keys = list(/obj/item/key/tavern, /obj/item/key/fancyroomiii, /obj/item/key/fancyroomii, /obj/item/key/fancyroomi, /obj/item/key/roomvi, /obj/item/key/roomv, /obj/item/key/roomiv, /obj/item/key/roomiii, /obj/item/key/roomii, /obj/item/key/roomi)
+	keys = list(/obj/item/key/tavern, /obj/item/key/nightman, /obj/item/key/fancyroomiii, /obj/item/key/fancyroomii, /obj/item/key/fancyroomi, /obj/item/key/roomvi, /obj/item/key/roomv, /obj/item/key/roomiv, /obj/item/key/roomiii, /obj/item/key/roomii, /obj/item/key/roomi)
 
 /obj/item/storage/keyring/priest
 	keys = list(/obj/item/key/priest, /obj/item/key/confession, /obj/item/key/church, /obj/item/key/graveyard)
