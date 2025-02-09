@@ -81,6 +81,13 @@
 					/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero,
 				)
 
+/datum/supply_pack/rogue/weapons/erapier
+	name = "Etruscan Rapier"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/sword/rapier/vaquero,
+	)
+
 /datum/supply_pack/rogue/weapons/parrydagger
 	name = "Shamshir"
 	cost = 80
