@@ -116,7 +116,10 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/languageicon = ""
 	var/datum/language/D = GLOB.language_datum_instances[message_language]
 	if(istype(D) && D.display_icon(src))
-		languageicon = "[D.get_icon()] "
+		// REDMOON ADD START - languages-in-chat-fix - исправляем отображение русских языков в чате
+		var/image/r_icon = image(D.icon, icon_state = D.icon_state) 
+		languageicon =  "\icon[r_icon]&nbsp;" // WAS: languageicon = "[D.get_icon()] "
+		// REDMOON ADD END
 
 	return "[spanpart1][spanpart2][colorpart][freqpart][languageicon][compose_track_href(speaker, namepart)][namepart][compose_job(speaker, message_language, raw_message, radio_freq)][arrowpart][endspanpart][messagepart]"
 

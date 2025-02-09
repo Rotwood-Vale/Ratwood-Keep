@@ -276,7 +276,7 @@
 		for(var/x in GLOB.confessors)
 			shit += "[x]"
 	// REDMOON ADD START
-	// memory_for_family_members - вывод статистики в конце раунда о количестве семей
+	// family_changes - вывод статистики в конце раунда о количестве семей
 	shit += "<br><font color='#22833f'><span class='bold'>Rockhill had <b>[SSfamily.families.len]</b> families.</span></font>" // делится на 2, т.к. по 1 зачислятеся за каждое новое отношение
 	// start_reports_with_gender_lists - вывод статистики в конце раунда о половой принадлежности
 	var/count_of_joined_characters = males + females + males_with_vagina + females_with_penis

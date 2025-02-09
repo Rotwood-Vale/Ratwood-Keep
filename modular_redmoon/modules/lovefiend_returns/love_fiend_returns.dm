@@ -9,6 +9,9 @@
 	consensual_act_check()
 
 /datum/sex_controller/proc/consensual_act_check()
+	if(!user.has_flaw(/datum/charflaw/addiction/lovefiend)) // Пока что, это нужно только для этого изъяна
+		return TRUE
+
 	var/mob/living/carbon/human/partner = null
 
 	// Поиск партнёра на том же тайле
@@ -44,16 +47,13 @@
 
 	// Всё ещё не смогли найти партнёра. Проверка не пройдена
 	if(!partner)
-		if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
-			to_chat(user, span_boldred("I want to have consensual love with someone..."))
-			return
+		to_chat(user, span_boldred("I want to have consensual love with someone..."))
+		return FALSE
 
 	// What the fuck have you done
 	if(partner.stat == DEAD)
-		if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
-			to_chat(user, span_boldred("I want to love someone ALIVE!"))
-			return FALSE
+		to_chat(user, span_boldred("I want to love someone ALIVE!"))
+		return FALSE
 
 	// TODO - в будущем нужно реализовать привязку к партнёру, делающему действие, а не к поиску людей вокруг. Сделано так, чтобы не нужно было заканчивать в партнёра в обязаловке
-	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
-		user.sate_addiction()
+	user.sate_addiction()

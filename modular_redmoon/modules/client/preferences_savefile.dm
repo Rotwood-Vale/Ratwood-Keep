@@ -7,6 +7,14 @@
 	S["bark_pitch"] 									>> bark_pitch
 	S["bark_variance"] 									>> bark_variance
 
+	// family_changes
+	S["spouse_ckey"]									>> spouse_ckey
+	S["family_surname"]									>> family_surname
+	S["family_genitals"] 								>> family_genitals
+
+	if(!family_genitals)
+		family_genitals = list()
+
 	_load_loadout(S)
 
 /datum/preferences/proc/redmoon_character_pref_save(savefile/S)
@@ -22,6 +30,15 @@
 		WRITE_FILE(S["loadout"] 						, loadout.type)
 	else
 		WRITE_FILE(S["loadout"] 						, null)
+
+	WRITE_FILE(S["spouse_ckey"] 						, spouse_ckey) // family_changes - ckey второй половинки
+	WRITE_FILE(S["family_surname"] 						, family_surname) // family_changes - фамилия семьи
+	WRITE_FILE(S["family_genitals"] 					, family_genitals) // family_changes - проверка на половые органы партнёра
+
+/datum/preferences/proc/redmoon_copy_character(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE)
+	character.spouse_ckey = spouse_ckey // family_changes
+	character.family_surname = family_surname // family_changes
+	character.family_genitals = family_genitals
 
 /datum/preferences/proc/_load_loadout(S)
 	var/loadout_type

@@ -387,12 +387,12 @@ SUBSYSTEM_DEF(ticker)
 				var/datum/job/J = SSjob.GetJob(H.job)
 				if(!J)
 					continue
-				if(SSjob.GetJob(H.job).family_blacklisted)
+				if(SSjob.GetJob(H.job).family_blacklisted && !H.client.prefs.spouse_ckey) // REDMOON EDIT - family_changes - выставленный соигрок в семью обходит ограничения (можно быть мужем проститутки или женой бездомного) - WAS if(SSjob.GetJob(H.job).family_blacklisted
 					continue
 				if(SSfamily.special_role_blacklist.Find(H.mind.special_role))
 					continue
 				if(H.client.prefs.family == FAMILY_FULL)
-					if(!(H.mind.assigned_role in list("Heir", "Duke Consort", "Duke"))) // REDMOON ADD - memory_for_family_members - фикс бага с тем, что у семейки герцога их 2, если включить "иметь семью" за члена семьи. МОЖЕТ ПОТРЕБОВАТЬСЯ УБРАТЬ В БУДУЩЕМ
+					if(!(H.mind.assigned_role in list("Heir", "Duke Consort", "Duke"))) // REDMOON ADD - family_changes - фикс бага с тем, что у семейки герцога их 2, если включить "иметь семью" за члена семьи. МОЖЕТ ПОТРЕБОВАТЬСЯ УБРАТЬ В БУДУЩЕМ
 						SSfamily.family_candidates += H
 
 
