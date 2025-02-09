@@ -256,7 +256,7 @@ SUBSYSTEM_DEF(triumphs)
 			fdel(backup_file)
 
 		WRITE_FILE(backup_file, json_encode(saving_data))
-		fcopy(backup_file, target_file) //This sucks
+		fcopy("[backup_file]", "[target_file]") //This sucks
 		fdel(backup_file)
 
 
