@@ -111,3 +111,26 @@
 	name = "Polishing Kit"
 	cost = 100
 	contains = list(/obj/item/polishing_cream, /obj/item/armor_brush)
+
+
+/datum/supply_pack/rogue/luxury/talkstone
+	name = "Talkstone"
+	cost = 150
+	contains = list(/obj/item/clothing/neck/roguetown/talkstone)
+
+
+/datum/supply_pack/rogue/luxury/circlet
+	name = "Circlet"
+	cost = 80
+	contains = list(/obj/item/clothing/head/roguetown/circlet)
+
+
+/datum/supply_pack/rogue/luxury/goldring
+	name = "Gold Ring"
+	cost = 70
+	contains = list(/obj/item/clothing/ring/gold)
+
+/datum/supply_pack/rogue/luxury/signet
+	name = "Signet"
+	cost = 220
+	contains = list(/obj/item/clothing/ring/signet)
