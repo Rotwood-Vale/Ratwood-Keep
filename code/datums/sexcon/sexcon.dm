@@ -228,7 +228,9 @@
 		user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
 	SSticker.cums++
 	cuckold_check()
-
+	if(target && target)
+		SEND_SIGNAL(user, COMSIG_HUMAN_LEWD_FINISH, target, src)
+		SEND_SIGNAL(target, COMSIG_HUMAN_LEWD_FINISHED_ON, user, src)
 
 /datum/sex_controller/proc/after_milking()
 	set_arousal(80)

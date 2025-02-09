@@ -1,4 +1,4 @@
-#define PILLORY_HEAD_OFFSET      2 // How much we need to move the player to center their head
+#define PILLORY_HEAD_OFFSET 2 // How much we need to move the player to center their head
 
 /obj/structure/pillory
 	name = "Pillory"
@@ -13,11 +13,18 @@
 	density = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = GAME_PLANE_UPPER
-	var/latched = FALSE
 	locked = FALSE
+	var/latched = FALSE
 	var/base_icon = "pillory_single"
 	var/list/accepted_id = list()
 	var/keylock = TRUE
+	var/bounty_redemption_time = 5 MINUTES
+	var/bounty_step_reward = 50
+	var/bounty_timer
+	var/violation_bonus = 25
+	var/max_violation_bonus = 100
+	var/mob/living/carbon/human/bounty_hunter
+	var/datum/bounty/active_bounty
 
 /obj/structure/pillory/double/custom
 	keylock = FALSE
@@ -211,6 +218,8 @@
 
 	var/mob/living/carbon/human/H = M
 
+	check_bounty(M)
+
 	if (H.dna)
 		if (H.dna.species)
 			var/datum/species/S = H.dna.species
@@ -218,7 +227,7 @@
 			if (istype(S))
 				//H.cut_overlays()
 				H.update_body_parts_head_only()
-				switch(H.dna.species.name)
+				switch (H.dna.species.name)
 					if ("Dwarf", "Dwarf", "Kobold", "Goblin", "Verminvolk")
 						H.set_mob_offsets("bed_buckle", _x = 0, _y = PILLORY_HEAD_OFFSET)
 				icon_state = "[base_icon]-over"
@@ -233,11 +242,78 @@
 
 	..()
 
+
+/obj/structure/pillory/proc/check_bounty(mob/living/carbon/human/victim)
+	var/datum/bounty/found_bounty
+	var/mob/living/carbon/human/hunter = usr
+	if(!istype(hunter) || hunter == victim) return
+
+	if(!(hunter in SStreasury.bank_accounts))
+		say("No account found, unable to redeem bounty. Submit your fingers to a shylock for inspection.")
+		return
+
+	for(var/datum/bounty/bounty as anything in GLOB.head_bounties)
+		if(bounty.target == victim.real_name)
+			found_bounty = bounty
+			break
+	if(!found_bounty) return
+	
+	say("Detected a bounty of [found_bounty.amount] mammons on [victim.real_name]!")
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Bounty redemption to [hunter] starts now, reward in [DisplayTimeText(bounty_redemption_time)]."))
+	bounty_hunter = hunter
+	active_bounty = found_bounty
+	max_violation_bonus = initial(max_violation_bonus)
+	violation_bonus = initial(violation_bonus)
+	bounty_timer(victim, found_bounty)
+	RegisterSignal(victim, COMSIG_HUMAN_LEWD_FINISHED_ON, PROC_REF(add_violation_bonus))
+
+/obj/structure/pillory/proc/add_violation_bonus(mob/living/carbon/human/victim)
+	max_violation_bonus -= max(violation_bonus, 0)
+	if(max_violation_bonus <= 0)
+		return
+	pay_bounty(violation_bonus, victim, active_bounty, TRUE)
+
+/obj/structure/pillory/proc/bounty_timer(mob/living/carbon/human/victim, datum/bounty/redeem_bounty)
+	bounty_timer = addtimer(CALLBACK(src, PROC_REF(bounty_redeem), victim), bounty_redemption_time, TIMER_STOPPABLE)
+
+/obj/structure/pillory/proc/bounty_redeem(mob/living/carbon/human/victim)
+	pay_bounty(bounty_step_reward, victim, active_bounty)
+
+/obj/structure/pillory/proc/pay_bounty(amount = 0, mob/living/carbon/human/victim, datum/bounty/redeem_bounty, violation = FALSE)
+	if(amount <= 0 || !redeem_bounty) return 0
+	var/reward_amount = min(redeem_bounty.amount, amount)
+
+	if(reward_amount <= 0 && !(victim in buckled_mobs)) return 0
+
+	if(!SStreasury.give_money_account(reward_amount, bounty_hunter, "+[reward_amount] from [redeem_bounty.target] bounty"))
+		say("Treasury empty, unable to redeem bounty!")
+		return 0
+	redeem_bounty.amount -= reward_amount
+	if(redeem_bounty.amount <= 0)
+		GLOB.head_bounties -= redeem_bounty
+		qdel(redeem_bounty)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Bounty has been exhausted!"), 1 SECONDS)
+		if(reward_amount < 0)
+			return 0
+	if(violation)
+		say("Paid [reward_amount] mammon to [bounty_hunter] as a additional violation bonus!")
+	else
+		say("Rewarded [bounty_hunter] with [reward_amount] mammon!")
+		bounty_timer(bounty_hunter, victim, redeem_bounty)
+
+	return reward_amount
+
 /obj/structure/pillory/post_unbuckle_mob(mob/living/M)
 	//M.regenerate_icons()
 	M.reset_offsets("bed_buckle")
 	icon_state = "[base_icon]"
 	update_icon()
+	active_bounty = null
+	bounty_hunter = null
+	if(bounty_timer)
+		deltimer(bounty_timer)
+		bounty_timer = null
+	UnregisterSignal(M, COMSIG_HUMAN_LEWD_FINISHED_ON)
 	..()
 
 /obj/structure/pillory/unbuckle_mob(mob/living/user)
