@@ -14,6 +14,7 @@
 	mob_overlay = "cut"
 	can_sew = TRUE
 	can_cauterize = TRUE
+	can_become_infected = TRUE
 
 /datum/wound/slash/small
 	name = "small slash"
@@ -113,6 +114,7 @@
 	sew_threshold = 75
 	passive_healing = 0
 	sleep_healing = 0
+	wound_cleanliness = WOUND_CLEANLINESS_STERILE
 
 /datum/wound/slash/incision/sew_wound()
 	qdel(src)

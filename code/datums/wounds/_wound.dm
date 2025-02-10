@@ -75,6 +75,16 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// Some wounds make no sense on a dismembered limb and need to go
 	var/qdel_on_droplimb = FALSE
 
+	/// If TRUE, this wound can become infected
+	var/can_become_infected = FALSE
+
+	/// Cleanliness of the wound
+	var/wound_cleanliness = WOUND_CLEANLINESS_DIRTY
+
+	/// Current infection level of the wound
+	var/infection_level = 0
+
+
 /datum/wound/Destroy(force)
 	. = ..()
 	if(zombie_infection_timer)
@@ -269,7 +279,9 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		return FALSE
 	if(!isnull(clotting_threshold) && clotting_rate && (bleed_rate > clotting_threshold))
 		bleed_rate = max(clotting_threshold, bleed_rate - clotting_rate)
-	if(passive_healing)
+	if(can_become_infected && owner.mind) //We don't want to track infection for NPCs
+		process_infection()
+	if(passive_healing && infection_level <= WOUND_INFECTION_INFECTED)
 		heal_wound(passive_healing)
 	return TRUE
 
@@ -277,6 +289,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/on_death()
 	return
 	
+
+
 /// Heals this wound by the given amount, and deletes it if it's healed completely
 /datum/wound/proc/heal_wound(heal_amount, iteration = 0)
 	// Wound cannot be healed normally, whp is null
@@ -356,3 +370,24 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(weapon && !can_embed(weapon))
 		return FALSE
 	return prob(wound_or_boolean.embed_chance)
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+///////////////////INFECTION HANDLING LOGIC//////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
+///Called from the life() proc and responsible for handling non-werewolf, non-deadite wound infections
+/datum/wound/proc/process_infection()
+	if(infection_level > WOUND_INFECTION_INFECTED && owner != null)
+		owner.adjustToxLoss(0.5)
+		if(infection_level > WOUND_INFECTION_GANGRENOUS)
+			bodypart_owner.rotted = TRUE
+	infection_level =  clamp((infection_level + wound_cleanliness*0.1), 0, 300)
+	return
+
+/datum/wound/proc/treat_infection(var/treatment_effectiveness = 25)
+	infection_level = clamp((infection_level - treatment_effectiveness), 0, 300)
+	return

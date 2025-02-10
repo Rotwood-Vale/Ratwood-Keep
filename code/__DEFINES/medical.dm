@@ -128,3 +128,22 @@
 #define WOUND_SEVERITY_FATAL 5
 /// This wound has a zombie or werewolf infection
 #define WOUND_SEVERITY_BIOHAZARD 6
+
+/// Wound has become inflamed and will soon become infected
+#define WOUND_INFECTION_INFLAMED 30
+/// Wound is infected and will no longer heal on its own
+#define WOUND_INFECTION_INFECTED 50
+/// Wound is seriously infected and will soon become gangrenous
+#define WOUND_INFECTION_CRITICAL 75
+/// Wound has become gangrenous and can no longer be treated by most methods
+#define WOUND_INFECTION_GANGRENOUS 100
+
+
+/// Wound has been sterilized and it will not become infected
+#define WOUND_CLEANLINESS_STERILE 0
+/// Wound has been cleaned and will become infected more slowly
+#define WOUND_CLEANLINESS_CLEAN 1
+/// Wound is still dirty and needs to be cleaned
+#define WOUND_CLEANLINESS_DIRTY 3
+/// Wound has become filthy and really really needs to be cleaned
+#define WOUND_CLEANLINESS_FILTHY 4
