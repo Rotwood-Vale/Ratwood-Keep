@@ -4,6 +4,7 @@
 
 #define PARTICLEWEATHER_RAIN "weather_rain"
 #define PARTICLEWEATHER_SNOW "weather_snow"
+#define PARTICLEWEATHER_BLOODRAIN "weather_blood"
 
 GLOBAL_LIST_EMPTY(weather_act_upon_list)
 

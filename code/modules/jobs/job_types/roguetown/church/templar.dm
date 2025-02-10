@@ -27,6 +27,7 @@
 	beltr = /obj/item/storage/keyring/churchie
 	id = /obj/item/clothing/ring/silver
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/ritechalk)
 	
 /datum/job/roguetown/templar/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -75,6 +76,7 @@
 		if(/datum/patron/divine/malum)
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 			cloak = /obj/item/clothing/cloak/tabard/crusader/malum
+			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue)
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -91,6 +93,17 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
+		ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
+		if(H.patron?.type == /datum/patron/divine/pestra)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
+			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+		if(H.patron?.type == /datum/patron/divine/malum)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
 		H.cmode_music = 'sound/music/combat_holy.ogg'
 		H.change_stat("strength", 3)
 		H.change_stat("endurance", 2)
@@ -177,6 +190,17 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
+		if(H.patron?.type == /datum/patron/divine/pestra)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
+			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+		if(H.patron?.type == /datum/patron/divine/malum)
+			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)	//May tone down to 2; seems OK.
 		H.cmode_music = 'sound/music/combat_holy.ogg'
 		H.change_stat("strength", 2)

@@ -56,6 +56,7 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 				if("night")
 					if(prob(40))
 						GLOB.forecast = "rain"
+
 			if(GLOB.forecast == "rain")
 				var/foundnd
 				if(SSParticleWeather?.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)

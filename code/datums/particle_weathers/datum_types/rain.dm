@@ -1,4 +1,3 @@
-
 //Rain - goes down
 /particles/weather/rain
 	icon_state             = "drop"
@@ -35,6 +34,8 @@
 //Makes you a little chilly
 /datum/particle_weather/rain_gentle/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(1,3))
+	L.adjust_fire_stacks(-100)
+	L.SoakMob(FULL_BODY)
 
 /datum/particle_weather/rain_storm
 	name = "Rain"
@@ -56,3 +57,5 @@
 //Makes you a bit chilly
 /datum/particle_weather/rain_storm/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(3,5))
+	L.adjust_fire_stacks(-100)
+	L.SoakMob(FULL_BODY)

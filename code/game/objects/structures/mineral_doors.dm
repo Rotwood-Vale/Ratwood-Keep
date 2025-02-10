@@ -372,6 +372,8 @@
 			return
 	if(istype(I, /obj/item/lockpick))
 		trypicklock(I, user)
+	if(istype(I, /obj/item/melee/touch_attack/lesserknock))
+		trypicklock(I, user)
 	if(istype(I,/obj/item/lockpickring))
 		var/obj/item/lockpickring/pickring = I
 		if(pickring.picks.len)

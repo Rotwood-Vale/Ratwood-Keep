@@ -4,7 +4,8 @@
 	ai_movement = /datum/ai_movement/basic_avoidance
 
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic()
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_BASIC_MOB_TAMED = FALSE,
 	)
 
 	planning_subtrees = list(

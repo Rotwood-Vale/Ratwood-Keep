@@ -1442,6 +1442,20 @@
 		usr.client.cmd_admin_mod_antag_rep(C, href_list["modantagrep"])
 		show_player_panel(M)
 
+	else if(href_list["modtriumphs"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/M = locate(href_list["mob"]) in GLOB.mob_list
+		usr.client.cmd_admin_mod_triumphs(M, href_list["modtriumphs"])
+		show_player_panel(M)
+
+	else if(href_list["modpq"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/M = locate(href_list["mob"]) in GLOB.mob_list
+		usr.client.cmd_admin_mod_pq(M, href_list["modpq"])
+		show_player_panel(M)
+
 	else if(href_list["slowquery"])
 		if(!check_rights(R_ADMIN))
 			return

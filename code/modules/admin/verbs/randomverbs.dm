@@ -125,6 +125,57 @@
 	message_admins(span_adminnotice("[key_name_admin(usr)]: Modified [key_name(C)]'s antagonist reputation ([log_text])"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Modify Antagonist Reputation") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/cmd_admin_mod_triumphs(mob/M in GLOB.mob_list, operation)
+	set category = "Special Verbs"
+	set name = "Adjust Triumphs"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/msg = ""
+	var/log_text = ""
+	var/old_triumphs = M.get_triumphs()
+
+	var/prompt = "Please enter the amount of triumphs to add/remove:"
+
+	msg = input("Message:", prompt) as num|null
+
+	if (!msg)
+		return
+	
+	M.adjust_triumphs(msg)
+	log_text = "by [msg], from [old_triumphs] to [old_triumphs + msg]"
+
+	log_admin("[key_name(usr)]: Modified [M.ckey]'s Triumphs [log_text]")
+	message_admins(span_adminnotice("[key_name_admin(usr)]: Modified [M.ckey]'s Triumphs ([log_text])"))
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Modify Triumphs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_mod_pq(mob/M in GLOB.mob_list, operation)
+	set category = "Special Verbs"
+	set name = "Adjust Player Quality"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/amt = ""
+	var/reason = ""
+	var/prompt = "Please enter the amount of PQ to add/remove:"
+
+	amt = input("Message:", prompt) as num|null
+
+	if(!amt)
+		return
+	
+	prompt = "Please specify a reason for the adjustment:"
+	reason = input("Message:", prompt) as text|null
+	if(!reason)
+		reason = "Player Panel Adjustment"
+
+	adjust_playerquality(amt, M.ckey, usr, reason)
+
+	//Admin log happens in child proc
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Modify Player Quality") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/proc/cmd_admin_world_narrate()
 	set category = "Special Verbs"
 	set name = "Global Narrate"
@@ -805,15 +856,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_BRAINDAMAGE,
 		ADMIN_PUNISHMENT_GIB,
 		ADMIN_PUNISHMENT_BSA,
-		ADMIN_PUNISHMENT_FIREBALL,
-		ADMIN_PUNISHMENT_ROD,
-		ADMIN_PUNISHMENT_SUPPLYPOD_QUICK,
-		ADMIN_PUNISHMENT_SUPPLYPOD,
-		ADMIN_PUNISHMENT_MAZING,
-		ADMIN_PUNISHMENT_BRAZIL,
 		ADMIN_PUNISHMENT_CBT,
 		ADMIN_PUNISHMENT_NECKSNAP,
 		ADMIN_PUNISHMENT_LIAM,
+		ADMIN_PUNISHMENT_THROWMOB,
+		ADMIN_PUNISHMENT_CRIPPLE,
 	)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in sortList(punishment_list)
@@ -836,7 +883,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			target.gib(FALSE)
 		if(ADMIN_PUNISHMENT_BSA)
 			bluespace_artillery(target)
-		if(ADMIN_PUNISHMENT_SUPPLYPOD_QUICK)
+		/*if(ADMIN_PUNISHMENT_SUPPLYPOD_QUICK) These might be useful someday for another kind of payload send
 			var/target_path = input(usr,"Enter typepath of an atom you'd like to send with the pod (type \"empty\" to send an empty pod):" ,"Typepath","/obj/item/reagent_containers/food/snacks/grown/harebell") as null|text
 			var/obj/structure/closet/supplypod/centcompod/pod = new()
 			pod.damage = 40
@@ -866,7 +913,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			plaunch.temp_pod.effectStun = TRUE
 			plaunch.ui_interact(usr)
 			return //We return here because punish_log() is handled by the centcom_podlauncher datum
-
+		*/
 		if(ADMIN_PUNISHMENT_CBT)
 			if(!ishuman(target))
 				to_chat(usr,span_warning("Target must be human!"))
@@ -887,6 +934,31 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr,span_warning("Target must have a head!"))
 				return
 			affecting.add_wound(/datum/wound/fracture/neck)
+		if(ADMIN_PUNISHMENT_CRIPPLE)
+			if(!ishuman(target))
+				to_chat(usr,span_warning("Target must be human!"))
+				return
+			var/limbs_to_cripple = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
+			var/mob/living/carbon/human/humie = target
+
+			for(var/limb in limbs_to_cripple)
+				var/obj/item/bodypart/limb_to_cripple = humie.get_bodypart(limb)
+				limb_to_cripple.add_wound(/datum/wound/fracture)
+		if(ADMIN_PUNISHMENT_THROWMOB)
+			if(!ismob(target))
+				to_chat(usr,span_warning("Target must be a mob!"))
+				return
+			var/list/directions = list("North" = NORTH, "South" = SOUTH, "East" = EAST, "West" = WEST, "Northeast" = NORTHEAST, "Northwest" = NORTHWEST, "Southeast" = SOUTHEAST, "Southwest" = SOUTHWEST)
+			var/direction = input("Which direction?") in directions
+			direction = directions[direction]
+			var/target_tile = target.loc
+			for (var/i = 0; i < 10; i++)
+				var/turf/next_tile = get_step(target_tile, direction) 
+				if (!next_tile)
+					break
+				target_tile = next_tile
+			to_chat(target,span_warning("You are flung by a mysterious force..."))
+			target.throw_at(target = target_tile, range = 10, speed = 3, thrower = target, spin = 9, diagonals_first = FALSE, callback = null, force = 20)
 		if(ADMIN_PUNISHMENT_LIAM)
 			if(!ishuman(target))
 				to_chat(usr,span_warning("NO...IT COULDN'T BE... (Needs to be a carbon!)"))
@@ -1020,9 +1092,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/chosen_trait = input("Select trait to modify", "Trait") as null|anything in sortList(availible_traits)
 	if(!chosen_trait)
 		return
-	chosen_trait = availible_traits[chosen_trait]
 
-	var/source = "adminabuse"
+	var/source = TRAIT_GENERIC
 	switch(add_or_remove)
 		if("Add") //Not doing source choosing here intentionally to make this bit faster to use, you can always vv it.
 			ADD_TRAIT(D,chosen_trait,source)

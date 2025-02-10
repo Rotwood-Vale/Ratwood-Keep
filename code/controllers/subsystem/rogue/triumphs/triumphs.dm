@@ -248,14 +248,17 @@ SUBSYSTEM_DEF(triumphs)
 		triumph_amount_cache[target_ckey] += amt
 		var/list/saving_data = list()
 		var/target_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/triumphs.json")
-		if(fexists(target_file))
-			fdel(target_file)
+		var/backup_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/triumphs.backup.json")
 
 		saving_data["triumph_wipe_season"] = GLOB.triumph_wipe_season
 		saving_data["triumph_count"] = triumph_amount_cache[target_ckey]
-		WRITE_FILE(target_file, json_encode(saving_data))
-	else
-		triumph_amount_cache[target_ckey] = 0
+		if(fexists(backup_file))
+			fdel(backup_file)
+
+		WRITE_FILE(backup_file, json_encode(saving_data))
+		fcopy("[backup_file]", "[target_file]") //This sucks
+		fdel(backup_file)
+
 
 
 // Wipe the triumphs of one person
