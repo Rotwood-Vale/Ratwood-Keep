@@ -116,7 +116,7 @@
 	desc = "I have trained under a skilled militiaman, and always have my trusty billhook close at hand. (+1 to Maces and Polearms, Up to Journeyman, Minimum Apprentice. Stashed billhook.)"
 	added_stashed_items = list("Billhook" = /obj/item/rogueweapon/spear/billhook)
 
-/datum/virtue/combat/executioner/apply_to_human(mob/living/carbon/human/recipient)
+/datum/virtue/combat/militia/apply_to_human(mob/living/carbon/human/recipient)
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/polearms) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
@@ -133,7 +133,7 @@
 	desc = "I have trained under a skilled brawler, and have some experience fighting with my fists. (+1 to Unarmed and Wrestling, Up to Journeyman, Minimum Apprentice. Stashed katar.)"
 	added_stashed_items = list("Katar" = /obj/item/rogueweapon/katar)
 	
-/datum/virtue/combat/executioner/apply_to_human(mob/living/carbon/human/recipient)
+/datum/virtue/combat/brawler/apply_to_human(mob/living/carbon/human/recipient)
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/unarmed) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
