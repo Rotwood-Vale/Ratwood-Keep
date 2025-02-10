@@ -516,8 +516,8 @@
 					user.mind.adjust_triumphs(1)
 			if(HAS_TRAIT(user, TRAIT_POISONBITE))
 				if(C.reagents)
-					var/poison = user.STACON/2 //more peak species level, more poison
-					C.reagents.add_reagent(/datum/reagent/toxin/venom, poison/2)
+					var/poison = user.STACON/4 //more peak species level, more poison
+					C.reagents.add_reagent(/datum/reagent/toxin/venom, poison)
 					//C.reagents.add_reagent(/datum/reagent/medicine/soporpot, poison)
 					to_chat(user, span_warning("You inject venom into [C]!"))
 	else
