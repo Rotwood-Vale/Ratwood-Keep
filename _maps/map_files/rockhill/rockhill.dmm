@@ -3144,6 +3144,12 @@
 "bFe" = (
 /turf/open/water/swamp/deep,
 /area/rogue/under/town/basement)
+"bFi" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/town/sewer)
 "bFp" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -5161,6 +5167,15 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
+"cJJ" = (
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "wooden_floor2"
+	},
+/area/rogue/indoors/town/shop)
 "cKi" = (
 /obj/structure/chair/bench/church/smallbench{
 	pixel_y = 12
@@ -7839,15 +7854,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-"edN" = (
-/obj/structure/roguewindow/openclose/reinforced{
-	dir = 4
-	},
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "wooden_floor2"
-	},
-/area/rogue/indoors/town/shop)
 "edO" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/cobble,
@@ -34589,7 +34595,7 @@
 "sGu" = (
 /obj/structure/fluff/customsign{
 	desc = "Follow the road";
-	name = "Mines South"
+	name = "Mines - South"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
@@ -39735,6 +39741,13 @@
 	dir = 4
 	},
 /area/rogue/indoors)
+"vxJ" = (
+/obj/structure/fluff/customsign{
+	desc = "Follow the road";
+	name = "Whitevein - Down Below!"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/outdoors/town)
 "vyv" = (
 /obj/structure/bookcase/random/archive,
 /obj/item/book/rogue/arcyne,
@@ -246373,7 +246386,7 @@ lrs
 lrs
 lrs
 otg
-cqB
+bFi
 rHO
 lrs
 lrs
@@ -333183,7 +333196,7 @@ xAt
 eoy
 wbg
 wVI
-wVI
+vxJ
 eSt
 lyG
 orb
@@ -446397,9 +446410,9 @@ fZJ
 fZJ
 tsU
 aMR
-edN
+cJJ
 tsU
-edN
+cJJ
 aMR
 aMR
 fZJ
