@@ -49,6 +49,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 
 // Washing Implements
 
