@@ -1,11 +1,19 @@
-#define BULLET_DAMAGE		120
+#define RUNELOCK_DAMAGE		120 // Пистолет по стандарту всего один и он у Инквизитора. Ещё два может быть по Трейту.
+#define LEAD_DAMAGE			150 // Аркебуза - смертельное оружие для своего времени.
+#define GRAPE_DAMAGE		45  // Дробовик, ебать.
 #define ARROW_DAMAGE		33
 #define ARROW_PENETRATION	10
 #define BOLT_DAMAGE			44
 #define BOLT_PENETRATION	50
 
 /obj/projectile/bullet/reusable/runelock
-	damage = BULLET_DAMAGE
+	damage = RUNELOCK_DAMAGE
+
+/obj/projectile/bullet/lead
+	damage = LEAD_DAMAGE
+
+/obj/projectile/bullet/grapeshot	
+	damage = GRAPE_DAMAGE
 
 /obj/projectile/bullet/reusable/arrow
 	damage = ARROW_DAMAGE

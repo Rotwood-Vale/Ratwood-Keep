@@ -363,6 +363,8 @@
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
 		BB.damage = BB.damage * damfactor
+		if(user.STAPER > 10)
+			BB.damage = BB.damage * (user.STAPER / 10)
 		if(HAS_TRAIT(user, TRAIT_TINY))
 			BB.damage = (BB.damage * 0.3)
 	gunpowder = FALSE
