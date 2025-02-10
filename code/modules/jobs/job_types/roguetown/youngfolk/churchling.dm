@@ -47,9 +47,9 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.change_stat("perception", 1)
-		H.change_stat("speed", 2)
-		H.change_stat("endurance", 1)
+		H.change_stat(STAT_PERCEPTION, 1)
+		H.change_stat(STAT_SPEED, 2)
+		H.change_stat(STAT_ENDURANCE, 1)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_churchling(H)

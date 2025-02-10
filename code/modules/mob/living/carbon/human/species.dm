@@ -141,21 +141,21 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	)
 
 	var/list/specstats = list(
-		"strength" = 0,
-		"perception" = 0,
-		"intelligence" = 0,
-		"constitution" = 0,
-		"endurance" = 0,
-		"speed" = 0,
-		"fortune" = 0
+		STAT_STRENGTH = 0,
+		STAT_PERCEPTION = 0,
+		STAT_INTELLIGENCE = 0,
+		STAT_CONSTITUTION = 0,
+		STAT_ENDURANCE = 0,
+		STAT_SPEED = 0,
+		STAT_FORTUNE = 0
 		)
 	var/list/specstats_m = list(
-		"constitution" = 1,
-		"intelligence" = -1,
+		STAT_CONSTITUTION = 1,
+		STAT_INTELLIGENCE = -1,
 	)
 	var/list/specstats_f = list(
-		"strength" = -1,
-		"speed" = 1,
+		STAT_STRENGTH = -1,
+		STAT_SPEED = 1,
 	)
 	var/list/specskills
 	var/list/specskills_m

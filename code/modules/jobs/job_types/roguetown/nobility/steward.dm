@@ -43,9 +43,9 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.change_stat("intelligence", 2)
-		H.change_stat("perception", 1)
-		H.change_stat("speed", 1)
+		H.change_stat(STAT_INTELLIGENCE, 2)
+		H.change_stat(STAT_PERCEPTION, 1)
+		H.change_stat(STAT_SPEED, 1)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 

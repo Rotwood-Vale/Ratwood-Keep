@@ -51,11 +51,11 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 
-			H.change_stat("strength", 1)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("intelligence", 1)
-			H.change_stat("speed", -1)
+			H.change_stat(STAT_STRENGTH, 1)
+			H.change_stat(STAT_ENDURANCE, 2)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_INTELLIGENCE, 1)
+			H.change_stat(STAT_SPEED, -1)
 
 		if("Harvester")
 			head = /obj/item/clothing/head/roguetown/strawhat
@@ -87,10 +87,10 @@
 			H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 
-			H.change_stat("strength", 1)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRENGTH, 1)
+			H.change_stat(STAT_ENDURANCE, 2)
+			H.change_stat(STAT_CONSTITUTION, 1)
+			H.change_stat(STAT_SPEED, 1)
 
 		if("Tracker")
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -121,8 +121,8 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 
-			H.change_stat("intelligence", 1)
-			H.change_stat("perception", 2)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_INTELLIGENCE, 1)
+			H.change_stat(STAT_PERCEPTION, 2)
+			H.change_stat(STAT_SPEED, 1)
 
 	H.set_blindness(0)

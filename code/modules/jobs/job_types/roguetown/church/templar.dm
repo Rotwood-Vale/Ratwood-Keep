@@ -105,11 +105,11 @@
 			else
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 				beltr = /obj/item/rogueweapon/sword/long
-		H.change_stat("strength", 3)
-		H.change_stat("perception", 2)
-		H.change_stat("intelligence", 2)
-		H.change_stat("constitution", 2)
-		H.change_stat("endurance", 2)
+		H.change_stat(STAT_STRENGTH, 3)
+		H.change_stat(STAT_PERCEPTION, 2)
+		H.change_stat(STAT_INTELLIGENCE, 2)
+		H.change_stat(STAT_CONSTITUTION, 2)
+		H.change_stat(STAT_ENDURANCE, 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
