@@ -526,7 +526,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/sweetroll
 	name = "sweetroll"
-	desc = "A pastry covered with sugar. The sweetolvers favourite."
+	desc = "A pastry covered with sugar. The sweetlovers favourite."
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "sweetroll"
 	dropshrink = 0.75
