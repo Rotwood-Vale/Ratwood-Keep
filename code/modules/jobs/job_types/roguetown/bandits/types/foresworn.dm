@@ -42,6 +42,7 @@
 	H.change_stat("intelligence", -2)
 	H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
 	var/weapons = list("Spear","Sword & Shield")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
