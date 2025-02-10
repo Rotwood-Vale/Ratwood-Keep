@@ -109,6 +109,7 @@
 #define TRAIT_OUTLANDER "Outlander"
 #define TRAIT_OUTLAW "Outlaw"
 #define TRAIT_BIGGUY "Big Guy"
+#define TRAIT_RESIDENT "Resident"
 #define TRAIT_COUNTERCOUNTERSPELL "Counter Counterspell"
 
 GLOBAL_LIST_INIT(roguetraits, list(

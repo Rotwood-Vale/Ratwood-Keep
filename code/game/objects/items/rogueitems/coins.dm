@@ -214,6 +214,10 @@
 	. = ..()
 	set_quantity(rand(4,19))
 
+/obj/item/roguecoin/gold/virtuepile/Initialize()
+	. = ..()
+	set_quantity(rand(8,12))
+
 #undef CTYPE_GOLD
 #undef CTYPE_SILV
 #undef CTYPE_COPP
