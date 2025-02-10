@@ -315,7 +315,7 @@
 /datum/sex_controller/proc/perform_sex_action(mob/living/carbon/human/action_target, arousal_amt, pain_amt, giving)
 	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
 		arousal_amt *=1.5
-		if(prob(10) == 1) //1 in 10th percent chance each action to emit the message so they know who the fuckin' with.
+		if(prob(10))
 			var/lovermessage = pick("This feels so good!","I am in heaven!","This is too good to be possible!","By the ten!","I can't stop, too good!")
 			to_chat(action_target, span_love(lovermessage))
 	if(HAS_TRAIT(user, TRAIT_DEATHBYSNUSNU))
