@@ -59,9 +59,9 @@
 			H.change_stat("perception", 3)
 			H.change_stat("intelligence", 3)
 		else if(isseelie(H)) //Could just be an else, but prefer the extra layer
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell)			//Repulse, good for getting people away from the King
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)			//Rous taming still makes sense for a Hand, a 'master of words' vibe. Summoning rats however does not - its undignified
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe)	//Immobilizes for 3 seconds in a 3x3, seems fitting for a Hand to be able to calm the court room when theres chaos
+			H.mind.AddSpell(new SPELL_PUSH_SPELL)			//Repulse, good for getting people away from the King
+			H.mind.AddSpell(new SPELL_ROUSTAME)			//Rous taming still makes sense for a Hand, a 'master of words' vibe. Summoning rats however does not - its undignified
+			H.mind.AddSpell(new SPELL_SLOWDOWN_SPELL_AOE)	//Immobilizes for 3 seconds in a 3x3, seems fitting for a Hand to be able to calm the court room when theres chaos
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	if(!isseelie(H))	//Only give heavy armor trait for non-seelie hands
 		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

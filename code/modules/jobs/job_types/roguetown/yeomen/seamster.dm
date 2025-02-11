@@ -47,4 +47,4 @@
 		H.change_stat("perception", 1)
 		H.change_stat("strength", -1)
 		if(isseelie(H))
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_berry)
+			H.mind.AddSpell(new SPELL_SUMMON_BERRY)

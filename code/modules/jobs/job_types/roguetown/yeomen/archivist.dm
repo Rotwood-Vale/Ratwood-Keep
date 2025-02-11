@@ -12,7 +12,7 @@
 	allowed_ages = ALL_AGES_LIST
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/archivist
-	spells = list(/obj/effect/proc_holder/spell/invoked/teach, /obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation, /obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/invoked/message)
+	spells = list(SPELL_TEACH, SPELL_LEARNSPELL, SPELL_PRESTIDIGITATION, SPELL_FETCH, SPELL_MESSAGE)
 	display_order = JDO_ARCHIVIST
 	give_bank_account = 25
 	min_pq = 5 //the player should actually have some experience to properly play the role
@@ -166,4 +166,3 @@
 	else
 		revert_cast()
 		return FALSE
-

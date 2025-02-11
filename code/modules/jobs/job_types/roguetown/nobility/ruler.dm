@@ -14,11 +14,11 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	allowed_sexes = list(MALE, FEMALE)
 
 	spells = list(
-		/obj/effect/proc_holder/spell/self/grant_title,
-		/obj/effect/proc_holder/spell/self/grant_nobility,
-		/obj/effect/proc_holder/spell/self/convertrole/servant,
-		/obj/effect/proc_holder/spell/self/convertrole/guard,
-		/obj/effect/proc_holder/spell/self/convertrole/bog,
+		SPELL_GRANT_TITLE,
+		SPELL_GRANT_NOBILITY,
+		SPELL_CONVERT_ROLE_SERVANT,
+		SPELL_CONVERT_ROLE_GUARD,
+		SPELL_CONVERT_ROLE_BOG,
 	)
 	outfit = /datum/outfit/job/roguetown/lord
 	visuals_only_outfit = /datum/outfit/job/roguetown/lord/visuals
