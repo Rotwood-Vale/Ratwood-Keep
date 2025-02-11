@@ -218,6 +218,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 					playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 				if(SSroguemachine.key)
 					var/obj/item/key/lord/I = SSroguemachine.key
+					var/mob/living/carbon/human/HC = I.loc
 					if(!I)
 						I = new /obj/item/key/lord(src.loc)
 					if(I.item_flags & IN_STORAGE)
@@ -233,7 +234,6 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 						playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 						return
 					if(ishuman(I.loc))
-						var/mob/living/carbon/human/HC = I.loc
 						if(HC.stat != DEAD)
 							if(I in HC.held_items)
 								say("[HC.real_name] holds the key!")
