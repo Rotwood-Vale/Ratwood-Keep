@@ -521,7 +521,10 @@
 		pickchance *= P.picklvl
 		pickchance = clamp(pickchance, 1, 95)
 
-
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			message_admins("[H.real_name]([key_name(user)]) is attempting to lockpick [src.name]. [ADMIN_JMP(src)]")
+			log_admin("[H.real_name]([key_name(user)]) is attempting to lockpick [src.name].")
 
 		while(!QDELETED(I) &&(lockprogress < locktreshold))
 			if(!do_after(user, picktime, target = src))
@@ -534,6 +537,10 @@
 					add_sleep_experience(L, /datum/skill/misc/lockpicking, L.STAINT/2)
 				if(lockprogress >= locktreshold)
 					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
+					if(ishuman(user))
+						var/mob/living/carbon/human/H = user
+						message_admins("[H.real_name]([key_name(user)]) successfully lockpicked [src.name]. [ADMIN_JMP(src)]")
+						log_admin("[H.real_name]([key_name(user)]) successfully lockpicked [src.name].")
 					lock_toggle(user)
 					break
 				else
