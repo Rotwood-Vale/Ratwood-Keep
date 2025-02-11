@@ -218,14 +218,15 @@
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
 
-/datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H) 
 	..()
-	armor = /obj/item/clothing/suit/roguetown/shirt/rags
+	shirt = /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra 
 	neck = /obj/item/clothing/neck/roguetown/collar/leather/cursed
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/rogue/leather/exoticsilkbelt
 	beltl = /obj/item/storage/belt/rogue/pouch
 	beltr = /obj/item/flint
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	shoes = /obj/item/clothing/shoes/roguetown/anklets
+	mask = /obj/item/clothing/mask/rogue/exoticsilkmask
 	if(H.mind)
 		H.virginity = TRUE
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
