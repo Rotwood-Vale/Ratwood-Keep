@@ -327,13 +327,25 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 /datum/preferences/proc/_load_flaw(S)
 	var/charflaw_type
+	var/charflawtwo_type
+	var/list/flaws = GLOB.character_flaws.Copy()
 	S["charflaw"]			>> charflaw_type
+	S["charflawtwo"]		>> charflawtwo_type
 	if(charflaw_type)
 		charflaw = new charflaw_type()
 	else
-		charflaw = pick(GLOB.character_flaws)
+		charflaw = pick(flaws)
 		charflaw = GLOB.character_flaws[charflaw]
 		charflaw = new charflaw()
+		
+	flaws.Remove(charflaw.name)
+
+	if(charflawtwo_type)
+		charflawtwo = new charflawtwo_type()
+	else
+		charflawtwo = pick(flaws)
+		charflawtwo = GLOB.character_flaws[charflawtwo]
+		charflawtwo = new charflawtwo()
 
 /datum/preferences/proc/_load_statpack(S)
 	var/statpack_type
@@ -586,6 +598,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["randomise"]		, randomise)
 	WRITE_FILE(S["species"]			, pref_species.name)
 	WRITE_FILE(S["charflaw"]			, charflaw.type)
+	WRITE_FILE(S["charflawtwo"]			, charflawtwo.type)
 	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
 	WRITE_FILE(S["feature_mcolor2"]					, features["mcolor2"])
 	WRITE_FILE(S["feature_mcolor3"]					, features["mcolor3"])
