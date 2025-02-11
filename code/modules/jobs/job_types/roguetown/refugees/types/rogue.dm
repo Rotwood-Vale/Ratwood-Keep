@@ -46,7 +46,7 @@
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
-			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			beltr = /obj/item/ammo_holder/bomb/smokebombs
 			backpack_contents = list(/obj/item/lockpickring/mundane = 1)
 			H.change_stat("strength", -1)
 			H.change_stat("perception", 1)

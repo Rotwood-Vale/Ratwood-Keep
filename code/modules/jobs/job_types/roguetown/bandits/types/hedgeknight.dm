@@ -42,7 +42,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/joincomrades)
+	H.mind.AddSpell(new SPELL_JOINCOMRADES)
 	H.change_stat("strength", 4)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)

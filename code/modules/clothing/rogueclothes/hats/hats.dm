@@ -356,7 +356,7 @@
 
 /obj/item/clothing/head/roguetown/armingcap
 	name = "cap"
-	desc = "A light cap made of leather, usually worn under a helmet."
+	desc = "A light cap made of cloth, usually worn under a helmet."
 	icon_state = "armingcap"
 	item_state = "armingcap"
 	flags_inv = HIDEEARS
