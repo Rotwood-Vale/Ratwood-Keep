@@ -380,28 +380,9 @@
 	            /obj/item/natural/fibers = 1,
 	            /obj/item/natural/hide = 1)
 	tools = list(/obj/item/needle)
-	craftdiff = 4
+	craftdiff = 5
 	sellprice = 20
 		
-/datum/crafting_recipe/roguetown/leather/doublebeltedtrousers
-	name = "double-belted trousers"
-	result = list(/obj/item/clothing/under/roguetown/trou/beltpants)
-	reqs = list(/obj/item/natural/cloth = 1,
-	            /obj/item/natural/fibers = 1,
-	            /obj/item/natural/hide = 1)
-	tools = list(/obj/item/needle)
-	craftdiff = 4
-	sellprice = 17
-
-/datum/crafting_recipe/roguetown/leather/furpants
-	name = "fur pants"
-	result = list(/obj/item/clothing/under/roguetown/trou/leather/atgervi)
-	reqs = list(/obj/item/natural/fur = 1,
-	            /obj/item/natural/fibers = 1)
-	tools = list(/obj/item/needle)
-	craftdiff = 4
-	sellprice = 15
-
 /datum/crafting_recipe/roguetown/leather/gladsandals
 	name = "gladiator sandals"
 	result = list(/obj/item/clothing/shoes/roguetown/gladiator)
@@ -440,14 +421,6 @@
 	craftdiff = 6
 	sellprice = 25
 
-/datum/crafting_recipe/roguetown/leather/tribal
-	name = "pelt cloak"
-	result = list(/obj/item/clothing/cloak/tribal)
-	reqs = list(/obj/item/natural/hide = 2)
-	tools = list(/obj/item/needle)
-	craftdiff = 3
-	sellprice = 12
-
 /datum/crafting_recipe/roguetown/leather/volfmantle
 	name = "volf mantle"
 	result = list(/obj/item/clothing/cloak/volfmantle)
@@ -463,8 +436,8 @@
 	reqs = list(/obj/item/natural/hide = 2,
 	            /obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
-	craftdiff = 4
-	sellprice = 16
+	craftdiff = 5
+	sellprice = 23
 
 /datum/crafting_recipe/roguetown/leather/greatcoat
 	name = "greatcoat"
@@ -496,15 +469,6 @@
 	craftdiff = 5
 	sellprice = 24
 
-/datum/crafting_recipe/roguetown/leather/corset
-	name = "corset"
-	result = list(/obj/item/clothing/suit/roguetown/armor/corset)
-	reqs = list(/obj/item/natural/hide = 2,
-	            /obj/item/natural/fibers = 1)
-	tools = list(/obj/item/needle)
-	craftdiff = 4
-	sellprice = 14
-
 /datum/crafting_recipe/roguetown/leather/openrobes
 	name = "open robe"
 	result = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/atgervi)
@@ -512,7 +476,7 @@
 	            /obj/item/natural/fibers = 1,
 	            /obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
-	craftdiff = 4
-	sellprice = 15
+	craftdiff = 5
+	sellprice = 20
 	
 	

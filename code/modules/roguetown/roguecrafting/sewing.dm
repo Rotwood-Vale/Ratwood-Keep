@@ -10,12 +10,6 @@
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
-/datum/crafting_recipe/roguetown/sewing/handwraps
-	name = "hand wraps"
-	result = list(/obj/item/clothing/gloves/roguetown/angle/pontifex)
-	reqs = list(/obj/item/natural/cloth = 1)
-	craftdiff = 0
-
 /datum/crafting_recipe/roguetown/sewing/peasantcap
 	name = "peasant cap"
 	result = list(/obj/item/clothing/head/roguetown/armingcap)
@@ -620,15 +614,6 @@
 	craftdiff = 5
 	sellprice = 30
 
-/datum/crafting_recipe/roguetown/sewing/wizardrobes
-	name = "wizard robes"
-	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/wizard)
-	reqs = list(/obj/item/natural/cloth = 3,
-				/obj/item/natural/fibers = 2)
-	tools = list(/obj/item/needle)
-	craftdiff = 5
-	sellprice = 20
-
 /datum/crafting_recipe/roguetown/sewing/regalrobes
 	name = "regal robes"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/vampire)
@@ -842,16 +827,6 @@
 	craftdiff = 6
 	sellprice = 30
 
-/datum/crafting_recipe/roguetown/sewing/matroncloak
-	name = "clasped cloak"
-	result = list(/obj/item/clothing/cloak/matron)
-	reqs = list(/obj/item/natural/cloth = 2,
-	            /obj/item/natural/fibers = 2,
-				/obj/item/natural/silk = 1)
-	tools = list(/obj/item/needle)
-	craftdiff = 5
-	sellprice = 20
-
 /datum/crafting_recipe/roguetown/sewing/furovercoat
 	name = "fur overcoat"
 	result = list(/obj/item/clothing/cloak/black_cloak)
@@ -863,15 +838,6 @@
 	craftdiff = 5
 	sellprice = 22
 	
-/datum/crafting_recipe/roguetown/sewing/battlenun
-	name = "nun vestments"
-	result = list(/obj/item/clothing/cloak/battlenun)
-	reqs = list(/obj/item/natural/cloth = 2,
-	            /obj/item/natural/fibers = 2)
-	tools = list(/obj/item/needle)
-	craftdiff = 4
-	sellprice = 14
-
 /datum/crafting_recipe/roguetown/sewing/sleevelessovercoat
 	name = "sleeveless overcoat"
 	result = list(/obj/item/clothing/suit/roguetown/armor/leather/vest/hand)
