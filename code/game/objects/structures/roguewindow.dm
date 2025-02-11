@@ -25,6 +25,11 @@
 	update_icon()
 	..()
 
+/obj/structure/roguewindow/obj_destruction(damage_flag)
+	message_admins("Window destroyed. [ADMIN_JMP(src)]")
+	log_admin("Window destroyed at X:[src.x] Y:[src.y] Z:[src.z] in area: [get_area(src)]")
+	..()
+
 /obj/structure/roguewindow/update_icon()
 	if(brokenstate)
 		icon_state = "[base_state]br"
@@ -177,6 +182,8 @@
 /obj/structure/roguewindow/obj_break(damage_flag)
 	if(!brokenstate)
 		attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+		message_admins("Window broken. [ADMIN_JMP(src)]")
+		log_admin("Window broken at X:[src.x] Y:[src.y] Z:[src.z] in area: [get_area(src)]")
 		new /obj/item/natural/glass/shard (get_turf(src))
 		new /obj/effect/decal/cleanable/glass(get_turf(src))
 		climbable = TRUE

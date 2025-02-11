@@ -524,6 +524,7 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			message_admins("[H.real_name] is attempting to lockpick [src.name]. [ADMIN_JMP(src)]")
+			log_admin("[H.real_name] is attempting to lockpick [src.name].")
 
 		while(!QDELETED(I) &&(lockprogress < locktreshold))
 			if(!do_after(user, picktime, target = src))
