@@ -8,7 +8,7 @@
 	allowed_races = RACES_ALL_KINDS
 	category_tags = list(CTAG_REFUGEE)
 
-	maximum_possible_slots = 5
+	maximum_possible_slots = 15
 
 	outfit = /datum/outfit/job/roguetown/refugee/merchant
 
@@ -24,20 +24,22 @@
 	switch(classchoice)
 
 		if("Peddler")
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/chaperon
+			neck = /obj/item/clothing/neck/roguetown/coif
 			cloak = /obj/item/clothing/cloak/raincloak/blue
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 			pants = /obj/item/clothing/under/roguetown/tights/sailor
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+			beltl = /obj/item/rogueweapon/huntingknife/idagger
 			id = /obj/item/clothing/ring/gold
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			// TODO: randomized content table
@@ -49,17 +51,19 @@
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
 		if("Spicer")
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+			neck = /obj/item/clothing/neck/roguetown/coif
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless
 			belt = /obj/item/storage/belt/rogue/leather
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
