@@ -1009,8 +1009,8 @@
 	icon_state = "stole_purple"
 
 /obj/item/clothing/cloak/black_cloak
-	name = "fur coat"
-	desc = ""
+	name = "fur overcoat"
+	desc = "A very thick, baggy set of robes trimmed with fur, meant to be worn over one's clothing."
 	icon_state = "black_cloak"
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
