@@ -11,7 +11,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	tutorial = "Picked out of your political value rather than likely any form of love, you have become the Ruler's most trusted confidant and likely friend throughout your marriage. Your loyalty and, perhaps, love; will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat."
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant)
+	spells = list(SPELL_CONVERT_ROLE_SERVANT)
 	outfit = /datum/outfit/job/roguetown/consort
 
 	display_order = JDO_LADY

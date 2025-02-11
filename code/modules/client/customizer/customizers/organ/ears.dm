@@ -16,7 +16,8 @@
 	organ_type = /obj/item/organ/ears/vulpkanin
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/fox,
-		/datum/sprite_accessory/ears/vulp
+		/datum/sprite_accessory/ears/vulp,
+		/datum/sprite_accessory/ears/fennec
 		)
 
 /datum/customizer/organ/ears/lupian

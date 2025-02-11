@@ -25,13 +25,13 @@
 /obj/item/organ/wings/anthro
 	name = "wild-kin wings"
 
+/obj/item/organ/wings/angel
+	name = "aasimar wings"
+	desc = "A pair of magnificent, feathery wings. They look strong enough to lift you up in the air."
+
 /obj/item/organ/wings/flight
 	unconditional_flight = TRUE
 	can_open = TRUE
-
-/obj/item/organ/wings/flight/angel
-	name = "angel wings"
-	desc = "A pair of magnificent, feathery wings. They look strong enough to lift you up in the air."
 
 /obj/item/organ/wings/flight/dragon
 	name = "dragon wings"
@@ -50,3 +50,4 @@
 	icon_state = "fairywingsnormal"
 	accessory_type = /datum/sprite_accessory/wings/seelie
 	sellprice = 50
+	

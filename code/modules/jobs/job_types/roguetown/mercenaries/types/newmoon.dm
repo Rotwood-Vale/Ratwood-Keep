@@ -15,6 +15,9 @@
 	cmode_music = 'sound/music/combat_desertrider.ogg'
 	category_tags = list(CTAG_MERCENARY)
 
+/datum/outfit/job/roguetown/mercenary/newmoon
+	allowed_patrons = list(/datum/patron/divine/noc)
+
 /datum/outfit/job/roguetown/mercenary/newmoon/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/armor
@@ -62,5 +65,5 @@
 		H.change_stat("constitution", -2)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 2)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+		H.mind.AddSpell(new SPELL_LEARNSPELL)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
