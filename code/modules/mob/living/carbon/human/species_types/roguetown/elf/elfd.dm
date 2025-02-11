@@ -101,12 +101,12 @@
 		/datum/body_marking_set/bellysocks,
 		/datum/body_marking_set/tiger,
 		/datum/body_marking_set/tiger_dark,
-		/datum/body_marking/nose,
 	)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
 		/datum/body_marking/eyeliner,
-		/datum/body_marking/tonage
+		/datum/body_marking/tonage,
+		/datum/body_marking/nose,
 	)
 
 
