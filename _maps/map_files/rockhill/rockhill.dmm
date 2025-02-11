@@ -4010,9 +4010,6 @@
 "czb" = (
 /obj/structure/rack/rogue,
 /obj/machinery/light/rogue/torchholder/l,
-/obj/item/gun/ballistic/arquebus,
-/obj/item/gun/ballistic/arquebus,
-/obj/item/gun/ballistic/arquebus,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "czd" = (
@@ -15793,7 +15790,6 @@
 /obj/item/key/bog_gatehouse,
 /obj/item/key/bog_gatehouse,
 /obj/item/key/bog_master,
-/obj/item/gun/ballistic/handgonne,
 /obj/item/ammo_holder/bullet/lead,
 /obj/item/powderflask,
 /turf/open/floor/rogue/herringbone,
@@ -16328,6 +16324,10 @@
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/under/town/basement)
+"jGh" = (
+/obj/structure/roguemachine/Indulgence,
+/turf/closed/wall/mineral/rogue/decowood,
+/area/rogue/indoors/town)
 "jGp" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
 	STACON = 13;
@@ -16934,7 +16934,6 @@
 /obj/item/reagent_containers/powder/spice,
 /obj/item/ammo_holder/bullet/lead,
 /obj/item/powderflask,
-/obj/item/gun/ballistic/arquebus_pistol,
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/shop)
 "jWu" = (
@@ -27946,6 +27945,10 @@
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/shelter/mountains)
+"qQY" = (
+/obj/structure/roguemachine/Indulgence,
+/turf/open/floor/rogue/tile,
+/area/rogue/under/town/basement)
 "qQZ" = (
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/dirt,
@@ -247339,8 +247342,8 @@ txa
 iCT
 txa
 oUf
-lzb
-lzb
+qQY
+qQY
 mhb
 cTA
 cBf
@@ -336326,7 +336329,7 @@ wVI
 evo
 hMg
 nqr
-thT
+jGh
 qka
 rNm
 rNm
