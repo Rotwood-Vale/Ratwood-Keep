@@ -113,7 +113,7 @@
 			beltl = /obj/item/rogueweapon/huntingknife
 			backl = /obj/item/storage/backpack/rogue/backpack/rucksack
 			l_hand = /obj/item/rogueweapon/woodstaff
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
 			pants = /obj/item/clothing/under/roguetown/loincloth/brown
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
