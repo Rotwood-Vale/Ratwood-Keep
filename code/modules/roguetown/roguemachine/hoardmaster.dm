@@ -67,7 +67,7 @@
 		for(l=1,l<=shoplength,l++)
 			var/pathi = pick(PA.contains)
 			var/obj/item/I = new pathi(get_turf(M))
-			I.item_flag |= MATTIAS_PROPERTY
+			I.item_flags |= MATTIAS_PROPERTY
 			if(shoplength == 1)
 				M.put_in_hands(I)
 			else

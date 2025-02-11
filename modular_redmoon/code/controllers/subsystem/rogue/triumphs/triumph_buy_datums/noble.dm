@@ -10,7 +10,7 @@
 /datum/triumph_buy/bleublood/on_activate(mob/living/carbon/human/H)
 	if(!usr)
 		return
-	usr.client.prefs.next_special_trait = /datum/special_trait/bleublood
+	usr.client.prefs.next_special_trait = /datum/special_trait/noble
 	if(usr.client.prefs.next_special_trait)
 		log_game("SPECIALS: Rolled [usr.client.prefs.next_special_trait] for ckey: [usr.ckey]")
 		print_special_text(usr, usr.client.prefs.next_special_trait)

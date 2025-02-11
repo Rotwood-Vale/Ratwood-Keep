@@ -826,7 +826,7 @@ obj/structure/bars/steel
 /obj/structure/fluff/statue/evil/attackby(obj/item/W, mob/user, params)
 	if(!HAS_TRAIT(user, TRAIT_COMMIE))
 		return
-	if(W.item_flags & MATTIAS_PROPERT)
+	if(W.item_flags & MATTIAS_PROPERTY)
 		to_chat(user, span_warning("This item belongs to Matthios."))
 		return
 	var/donatedamnt = W.get_real_price()
