@@ -199,6 +199,8 @@
 				if(STAINT > 10)
 					var/bonus = round(((H.STAINT - 10) / 2)) * 10
 					if(bonus > 0)
+						if(HAS_TRAIT(H, TRAIT_HEAVYARMOR) || HAS_TRAIT(H, TRAIT_MEDIUMARMOR) || HAS_TRAIT(H, TRAIT_DODGEEXPERT))
+							clamp(bonus, 0, 25)
 						prob2defend += bonus
 
 			prob2defend = clamp(prob2defend, 5, 90)
@@ -483,6 +485,8 @@
 			if(H.STAINT > 10)
 				var/bonus = round(((H.STAINT - 10) / 2)) * 10
 				if(bonus > 0)
+					if(HAS_TRAIT(H, TRAIT_HEAVYARMOR) || HAS_TRAIT(H, TRAIT_MEDIUMARMOR) || HAS_TRAIT(H, TRAIT_DODGEEXPERT))
+						clamp(bonus, 0, 25)
 					prob2defend += bonus
 
 		prob2defend = clamp(prob2defend, 5, 90)
