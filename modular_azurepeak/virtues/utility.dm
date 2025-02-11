@@ -200,10 +200,3 @@
 	name = "(ASCENDANT) Seer"
 	desc = "You've spent your days studying the tales writ and told by the Ecclesiarchy's rejects and priests alike. You've grown to tell the followers by hunch and sight. They give themselves away so easily in this world slowly brewing to a fester."
 	added_traits = list(TRAIT_HERETIC_SEER)
-
-/datum/virtue/heretic/skeletonfriend
-	name = "(ASCENDANT) Death Aligned"
-	desc = "Zizo has smiled upon you, regardless of your current faith. Her gaping grin and hollow tears streaking down her cheeks linger in your mind, as you realise you've inched ever closer to succumbing to the rot beneath and all around you. Your soul has rotted to the point that the undead see you as an ally, and will not attack you. "
-
-/datum/virtue/heretic/skeletonfriend/apply_to_human(mob/living/carbon/human/recipient)
-	recipient.faction += "undead"
