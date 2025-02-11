@@ -25,6 +25,7 @@
 
 /obj/structure/table/roguetree
 	var/stump_type = null
+	icon = 'icons/roguetown/misc/foliagetall.dmi'
 
 /obj/structure/flora/roguetree/attack_right(mob/user)
 	if(user.mind && isliving(user))
