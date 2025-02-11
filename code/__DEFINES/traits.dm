@@ -111,6 +111,10 @@
 #define TRAIT_BIGGUY "Big Guy"
 #define TRAIT_RESIDENT "Resident"
 #define TRAIT_COUNTERCOUNTERSPELL "Counter Counterspell"
+#define TRAIT_UNSEEMLY "Ugly"
+#define TRAIT_HERETIC_SEER "Heretic Seer"
+#define TRAIT_DUALWIELDER "Dual Wielder"
+#define TRAIT_SENTINELOFWITS "Sentinel of Wits"
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -199,6 +203,10 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEGENDARY_ALCHEMIST = span_info("An expert in the art of finding herbs in the wild."),
 	TRAIT_INTELLECTUAL = span_info("I have a keen eye and can assess a person's prowess in wit and blade."),
 	TRAIT_COUNTERCOUNTERSPELL = span_info("I automatically know when to counter Counterspells, and can do so without even thinking about it."),
+	TRAIT_UNSEEMLY = span_info("My face is ugly and makes everyone who looks at me miserable."),
+	TRAIT_HERETIC_SEER = span_info("I can tell other Ascendant followers without sharing their faith."),
+	TRAIT_DUALWIELDER = span_info("If I wield two identical weapons, I  roll twice for my attacks, and so will the enemy against me. I do not suffer penalties from using my off-hand in combat."),
+	TRAIT_SENTINELOFWITS = span_info("My Intelligence aids in my defense. Every 2 points above 10 INT become an additional 10% chance to dodge or parry."),
 ))
 
 // trait accessor defines
@@ -402,6 +410,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
+#define TRAIT_VIRTUE "virtue"
 #define UNCONSCIOUS_BLIND "unconscious_blind"
 #define EYE_DAMAGE "eye_damage"
 #define GENETIC_MUTATION "genetic"

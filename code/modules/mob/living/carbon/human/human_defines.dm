@@ -122,3 +122,4 @@
 
 	var/voice_type = null // LETHALSTONE EDIT: defines what sound pack we use. keep this null so mobs resort to their typical gender typing - preferences set this
 	var/datum/statpack/statpack = null // Lethalstone Port - statpacks for greater customization
+	var/second_voice = "#a0a0a0"	// Virtue-specific. Can be swapped to / from and changed.

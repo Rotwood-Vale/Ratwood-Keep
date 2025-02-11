@@ -493,7 +493,7 @@
 			I.safe_throw_at(target,I.throw_range,I.throw_speed,src, force = move_force)
 
 /mob/living/carbon/proc/get_str_arms(num)
-	if(!domhand || !num)
+	if(!domhand || !num || HAS_TRAIT(src, TRAIT_DUALWIELDER))
 		return STASTR
 	var/used = STASTR
 	if(num == domhand)

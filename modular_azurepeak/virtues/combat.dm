@@ -182,3 +182,13 @@
 
 /datum/virtue/combat/rotcured/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.update_body() // applies the rot skin tone stuff
+
+/datum/virtue/combat/dualwielder
+	name = "Dual Wielder"
+	desc = "Whether it was by the Naledi scholars, Etruscan privateers or even the Kazengan senseis. I've been graced with the knowledge of how to wield two weapons at once, making my offense more formidable, at the expense of my defense. When I wield two identical type weapons, I roll attacks twice, but so does the enemy against me. I've also learned to become ambidextrous, ignoring any off-hand penalties."
+	added_traits = list(TRAIT_DUALWIELDER)
+
+/datum/virtue/combat/sharp
+	name = "Sentinel of Wits"
+	desc = "Whether it's by having an annoying sibling that kept prodding me with a stick, or years of study and observation, I've become adept at both parrying and dodging stronger opponents, by learning their moves and studying them. My own attacks however, still rely on true training of my weapons. I convert INT into dodge and parry chance, every 2 INT points above 10 adding 10% additional chance."
+	added_traits = list(TRAIT_SENTINELOFWITS)

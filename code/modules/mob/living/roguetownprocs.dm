@@ -194,11 +194,53 @@
 			// parrying while knocked down sucks ass
 			if(!(mobility_flags & MOBILITY_STAND))
 				prob2defend *= 0.65
-			prob2defend = clamp(prob2defend, 5, 90)
-			if(src.client?.prefs.showrolls)
-				to_chat(src, span_info("Roll to parry... [prob2defend]%"))
 
-			if(prob(prob2defend))
+			if(HAS_TRAIT(H, TRAIT_SENTINELOFWITS))
+				if(STAINT > 10)
+					var/bonus = round(((H.STAINT - 10) / 2)) * 10
+					if(bonus > 0)
+						prob2defend += bonus
+
+			prob2defend = clamp(prob2defend, 5, 90)
+
+			//Duel Wielding
+			var/attacker_dualw
+			var/defender_dualw
+			var/extraattroll
+			var/extradefroll
+
+			//Duel Wielder defense disadvantage
+			if(HAS_TRAIT(src, TRAIT_DUALWIELDER) && istype(offhand, mainhand))
+				extradefroll = prob(prob2defend)
+				defender_dualw = TRUE
+
+			//dual-wielder attack advantage
+			var/obj/item/mainh = user.get_active_held_item()
+			var/obj/item/offh = user.get_inactive_held_item()
+			if(mainh && offh && HAS_TRAIT(user, TRAIT_DUALWIELDER))
+				if(istype(mainh, offh))
+					extraattroll = prob(prob2defend)
+					attacker_dualw = TRUE
+					to_chat(world, "dual wielder triggered for offense")
+
+			if(src.client?.prefs.showrolls)
+				var/text = "Roll to parry... [prob2defend]%"
+				if(defender_dualw)
+					text += " Twice! Disadvantage!"
+				to_chat(src, span_info("[text]"))
+
+			var/parry_status = FALSE
+			if((defender_dualw && attacker_dualw) || (!defender_dualw && !attacker_dualw)) //They cancel each other out
+				if(prob(prob2defend))
+					parry_status = TRUE
+			else if(attacker_dualw)
+				if(!prob(prob2defend) || !extraattroll)
+					parry_status = FALSE
+			else if(defender_dualw)
+				if(prob(prob2defend) && extradefroll)
+					parry_status = TRUE
+
+			if(parry_status)
 				if(intenty.masteritem)
 					if(intenty.masteritem.wbalance < 0 && user.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
 						drained = drained + ( intenty.masteritem.wbalance * ((user.STASTR - src.STASTR) * -5) )
@@ -437,10 +479,56 @@
 		// dodging while knocked down sucks ass
 		if(!(L.mobility_flags & MOBILITY_STAND))
 			prob2defend *= 0.25
+
+		if(HAS_TRAIT(H, TRAIT_SENTINELOFWITS))
+			if(H.STAINT > 10)
+				var/bonus = round(((H.STAINT - 10) / 2)) * 10
+				if(bonus > 0)
+					prob2defend += bonus
+
 		prob2defend = clamp(prob2defend, 5, 90)
+
+		//------------Duel Wielding Checks------------
+		var/attacker_dualw
+		var/defender_dualw
+		var/extraattroll
+		var/extradefroll
+		var/mainhand = L.get_active_held_item()
+		var/offhand	= L.get_inactive_held_item()
+		//Duel Wielder defense disadvantage
+		if(mainhand && offhand)
+			if(HAS_TRAIT(src, TRAIT_DUALWIELDER) && istype(offhand, mainhand))
+				extradefroll = prob(prob2defend)
+				defender_dualw = TRUE
+
+		//dual-wielder attack advantage
+		var/obj/item/mainh = U.get_active_held_item()
+		var/obj/item/offh = U.get_inactive_held_item()
+		if(mainh && offh && HAS_TRAIT(U, TRAIT_DUALWIELDER))
+			if(istype(mainh, offh))
+				extraattroll = prob(prob2defend)
+				attacker_dualw = TRUE
+		//----------Dual Wielding check end---------
+
+
 		if(client?.prefs.showrolls)
-			to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
-		if(!prob(prob2defend))
+			var/text = "Roll to dodge... [prob2defend]%"
+			if(defender_dualw)
+				text += " Twice! Disadvantage!"
+			to_chat(src, span_info("[text]"))
+
+		var/dodge_status = FALSE
+		if((defender_dualw && attacker_dualw) || (!defender_dualw && !attacker_dualw)) //They cancel each other out
+			if(prob(prob2defend))
+				dodge_status = TRUE
+		else if(attacker_dualw)
+			if(!prob(prob2defend) || !extraattroll)
+				dodge_status = FALSE
+		else if(defender_dualw)
+			if(prob(prob2defend) && extradefroll)
+				dodge_status = TRUE
+
+		if(!dodge_status)
 			return FALSE
 		if(!H.rogfat_add(max(drained,5)))
 			to_chat(src, span_warning("I'm too tired to dodge!"))

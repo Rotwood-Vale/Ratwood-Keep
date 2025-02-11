@@ -59,6 +59,12 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if (!player.prefs)
 		return
 	var/virtue_type = player.prefs.virtue
+	var/virtuetwo_type = player.prefs.virtuetwo
+	if(player.prefs.statpack.name == "Virtuous" && virtuetwo_type)
+		if(!istype(virtuetwo_type, /datum/virtue/heretic))
+			apply_virtue(character, virtuetwo_type)
+		else if(istype(player.prefs.selected_patron, /datum/patron/inhumen))	//This is to prevent a very cheeky exploit of non-inhumens getting inhumen virtues
+			apply_virtue(character, virtuetwo_type)
 	apply_virtue(character, virtue_type)
 
 /proc/apply_charflaw_equipment(mob/living/carbon/human/character, client/player)
