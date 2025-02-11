@@ -79,11 +79,11 @@
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 1)
 		else if(isseelie(H))
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)	//Splash now waters crops AND cleans blood, in a 3x3 area but only IF the water bolt hits something
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)			//Good for meat for cooking
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)			//Good for meat for cooking
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/replenish)			//Replenish was a cut spell now being added for Seelie maids, will replenish EMPTY bushes with more berries
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/sate_crop)			//Different from Dendor spell, will satisfy crop hunger but not bless it
+			H.mind.AddSpell(new SPELL_SPLASH)	//Splash now waters crops AND cleans blood, in a 3x3 area but only IF the water bolt hits something
+			H.mind.AddSpell(new SPELL_SUMMON_RAT)			//Good for meat for cooking
+			H.mind.AddSpell(new SPELL_ROUSTAME)			//Good for meat for cooking
+			H.mind.AddSpell(new SPELL_REPLENISH)			//Replenish was a cut spell now being added for Seelie maids, will replenish EMPTY bushes with more berries
+			H.mind.AddSpell(new SPELL_SATE_CROP)			//Different from Dendor spell, will satisfy crop hunger but not bless it
 
 /datum/subclass/servant/chef
 	name = "Chef"
@@ -117,11 +117,11 @@
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 1)
 		else if(isseelie(H))
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/replenish)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/sate_crop)
+			H.mind.AddSpell(new SPELL_SPLASH)
+			H.mind.AddSpell(new SPELL_SUMMON_RAT)
+			H.mind.AddSpell(new SPELL_ROUSTAME)
+			H.mind.AddSpell(new SPELL_REPLENISH)
+			H.mind.AddSpell(new SPELL_SATE_CROP)
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 
 /datum/subclass/servant/bankrupt
