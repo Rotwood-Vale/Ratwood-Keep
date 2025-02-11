@@ -1,5 +1,5 @@
-/datum/subclass/manorguard/archer
-	name = "Retinue Archer"
+/datum/subclass/manorguard/gunner
+	name = "Retinue Gunner"
 	tutorial = "You are a member of the Ducal Retinue. Ensure the safety of the Duchy and their people, defend the powers that be from the horrors of the outside world, and keep the Duchy of Rockhill alive."
 	outfit = /datum/outfit/job/roguetown/manorguard/archer
 	category_tags = list(CTAG_MAA)
@@ -8,24 +8,20 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	beltl = /obj/item/rogueweapon/mace/cudgel
-	if(prob(50))
-		beltr = /obj/item/ammo_holder/quiver/bolts
-		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	else
-		beltr = /obj/item/ammo_holder/quiver/arrows
-		backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+	beltr = /obj/item/ammo_holder/bullet/lead
+	backl = /obj/item/gun/ballistic/firearm/arquebus
 
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/storage/keyring/man_at_arms = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/storage/keyring/man_at_arms = 1, /obj/item/powderflask)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
@@ -35,7 +31,6 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("perception", 3)
-		H.change_stat("constitution", -1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", 2)
 	H.verbs |= /mob/proc/haltyell
