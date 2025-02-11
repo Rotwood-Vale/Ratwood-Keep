@@ -191,6 +191,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				dat += defense_report(H.head, is_stupid, is_normal, is_smart, "THE HEAD I THINK. MAYBE MORE?")
 			else
 				dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
+				dat += "<br>---------------------------<br>"
 			
 			dat += "<b><font size = 4; font color = '#dddada'>TORSO</b></font><br>"
 			if(H.wear_armor)
@@ -198,6 +199,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				dat += defense_report(H.wear_armor, is_stupid, is_normal, is_smart, "THE CHEST! PROBABLY GROIN TOO?")
 			else
 				dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
+				dat += "<br>---------------------------<br>"
 
 			dat += "<b><font size = 4; font color = '#dddada'>PANTS</b></font><br>"
 			if(H.wear_pants)
@@ -205,6 +207,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				dat += defense_report(H.wear_pants, is_stupid, is_normal, is_smart, "THE IMPORTANT PARTS! LEGS AS WELL, I THINK.")
 			else
 				dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
+				dat += "<br>---------------------------<br>"
 
 			//Extra stuff you can assess if you match the thresholds. (Neck, gloves, shirt and shoes)
 			if((is_normal || is_smart) && !is_stupid)
@@ -214,6 +217,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 					dat += defense_report(H.wear_neck, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
 				else
 					dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
+					dat += "<br>---------------------------<br>"
 
 				dat += "<b><font size = 4; font color = '#dddada'>GLOVES</b></font><br>"
 				if(H.gloves)
@@ -221,6 +225,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 					dat += defense_report(H.gloves, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
 				else
 					dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
+					dat += "<br>---------------------------<br>"
 
 				dat += "<b><font size = 4; font color = '#dddada'>SHIRT</b></font><br>"
 				if(H.wear_shirt)
@@ -228,13 +233,14 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 					dat += defense_report(H.wear_shirt, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
 				else
 					dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
+					dat += "<br>---------------------------<br>"
 
 				dat += "<b><font size = 4; font color = '#dddada'>SHOES</b></font><br>"
 				if(H.shoes)
 					dat += capitalize("[H.shoes.name]<br>")
 					dat += defense_report(H.shoes, is_stupid, is_normal, is_smart, "I shouldn't be seeing this.")
 				else
-					dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"					
+					dat += "<font color = '#8b1616'<b>NOTHING</b></font> <br>"
 
 			
 			dat += "</td>"
@@ -309,7 +315,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			str = elaborate ? "<font color = '[color]'>[input] (D+)</font>" : "<font color = '[color]'>[input] (D+)</font>"
 		if(40 to 49)
 			var/color = "#c0a739"
-			str = elaborate ? "<font color = '[color]'>[input] (C)</font>" : "<font color = '[color] (C to C+)'>[input]</font>"
+			str = elaborate ? "<font color = '[color]'>[input] (C)</font>" : "<font color = '[color]'>[input] (C to C+)</font>"
 		if(50 to 59)
 			var/color = "#e3e63c"
 			str = elaborate ? "<font color = '[color]'>[input] (C+)</font>" : "<font color = '[color]'>[input] (C to C+)</font>"
@@ -354,8 +360,11 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		str += stupid_string
 	if(normal || smart)
 		var/list/critclasses = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH, BCLASS_PICK)
-		var/crits = "<b><u>PREVENTS CRITS: </u></b><br>"
+		var/crits
+		if(C.prevent_crits || smart)
+			crits = "<b><u>PREVENTS CRITS: </u></b>"
 		if(C.prevent_crits)
+			crits += "<br>"
 			crits += "<font color = '#69a1a8'>| </font>"
 			for(var/zone in C.prevent_crits)
 				for(var/crit in critclasses)

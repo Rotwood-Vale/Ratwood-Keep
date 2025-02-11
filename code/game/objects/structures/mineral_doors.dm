@@ -156,7 +156,8 @@
 	if(resident_role)
 		var/datum/job/job = SSjob.name_occupations[human.job]
 		if(job.type != resident_role)
-			return FALSE
+			if(!HAS_TRAIT(human, TRAIT_RESIDENT))
+				return FALSE
 	if(resident_advclass)
 		if(!human.advjob)
 			return FALSE
@@ -370,6 +371,8 @@
 			trykeylock(I, user)
 			return
 	if(istype(I, /obj/item/lockpick))
+		trypicklock(I, user)
+	if(istype(I, /obj/item/melee/touch_attack/lesserknock))
 		trypicklock(I, user)
 	if(istype(I,/obj/item/lockpickring))
 		var/obj/item/lockpickring/pickring = I

@@ -68,6 +68,7 @@
 		/datum/body_marking/flushed_cheeks,
 		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
+		/datum/body_marking/nose,
 	)
 
 /datum/species/human/northern/check_roundstart_eligible()

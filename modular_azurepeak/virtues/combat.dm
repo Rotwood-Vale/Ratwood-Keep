@@ -31,7 +31,8 @@
 		new_faith.max_progression = CLERIC_REQ_1 - 20
 		recipient.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 		recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/orison)
-		recipient.mind?.AddSpell(new our_patron.t0) // i dunno... let's see how it plays out
+		if (!HAS_TRAIT(recipient, TRAIT_MEDIUMARMOR) && !HAS_TRAIT(recipient, TRAIT_HEAVYARMOR) && !HAS_TRAIT(recipient, TRAIT_DODGEEXPERT) && !HAS_TRAIT(recipient, TRAIT_CRITICAL_RESISTANCE))
+			recipient.mind?.AddSpell(new our_patron.t0)
 	else
 		// for devotionists, bump up their maximum 1 tier and give them a TINY amount of passive devo gain
 		var/datum/devotion/our_faith = recipient.devotion
@@ -78,15 +79,72 @@
 
 /datum/virtue/combat/duelist
 	name = "Duelist Apprentice"
-	desc = "I have trained under a duelist of considerable skill, and always have my trusty rapier close at hand. (+1 to Swords, Up to Expert, Minimum Apprentice)"
+	desc = "I have trained under a duelist of considerable skill, and always have my trusty rapier close at hand. (+1 to Swords and Knives, Up to Journeyman, Minimum Apprentice. Stashed rapier.)"
 	added_stashed_items = list("Rapier" = /obj/item/rogueweapon/sword/rapier)
 
 /datum/virtue/combat/duelist/apply_to_human(mob/living/carbon/human/recipient)
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/swords) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
-		added_skills = list(list(/datum/skill/combat/swords, 1, 4))
+		added_skills = list(list(/datum/skill/combat/swords, 1, 3))
 		handle_skills(recipient)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/knives) < SKILL_LEVEL_APPRENTICE)
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else	
+		added_skills = list(list(/datum/skill/combat/knives, 1, 3))
+		handle_skills(recipient)
+
+/datum/virtue/combat/executioner
+	name = "Executioner Apprentice"
+	desc = "I have trained under a skilled executioner, and always have my trusty exeuctioner's axe close at hand. (+1 to Axes and Whips/Flails, Up to Journeyman, Minimum Apprentice. Stashed battleaxe.)"
+	added_stashed_items = list("Battleaxe" = /obj/item/rogueweapon/stoneaxe/battle)
+
+/datum/virtue/combat/executioner/apply_to_human(mob/living/carbon/human/recipient)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/whipsflails) < SKILL_LEVEL_APPRENTICE)
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else
+		added_skills = list(list(/datum/skill/combat/whipsflails, 1, 3))
+		handle_skills(recipient)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/axes) < SKILL_LEVEL_APPRENTICE)
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else
+		added_skills = list(list(/datum/skill/combat/axes, 1, 3))
+		handle_skills(recipient)
+
+/datum/virtue/combat/militia
+	name = "Militiaman Apprentice"
+	desc = "I have trained under a skilled militiaman, and always have my trusty billhook close at hand. (+1 to Maces and Polearms, Up to Journeyman, Minimum Apprentice. Stashed billhook.)"
+	added_stashed_items = list("Billhook" = /obj/item/rogueweapon/spear/billhook)
+
+/datum/virtue/combat/militia/apply_to_human(mob/living/carbon/human/recipient)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/polearms) < SKILL_LEVEL_APPRENTICE)
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else
+		added_skills = list(list(/datum/skill/combat/polearms, 1, 3))
+		handle_skills(recipient)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/maces) < SKILL_LEVEL_APPRENTICE)
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else
+		added_skills = list(list(/datum/skill/combat/maces, 1, 3))
+		handle_skills(recipient)
+
+/datum/virtue/combat/brawler
+	name = "Brawler Apprentice"
+	desc = "I have trained under a skilled brawler, and have some experience fighting with my fists. (+1 to Unarmed and Wrestling, Up to Journeyman, Minimum Apprentice. Stashed katar.)"
+	added_stashed_items = list("Katar" = /obj/item/rogueweapon/katar)
+	
+/datum/virtue/combat/brawler/apply_to_human(mob/living/carbon/human/recipient)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/unarmed) < SKILL_LEVEL_APPRENTICE)
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else
+		added_skills = list(list(/datum/skill/combat/unarmed, 1, 3))
+		handle_skills(recipient)
+	if(recipient.mind?.get_skill_level(/datum/skill/combat/wrestling) < SKILL_LEVEL_APPRENTICE)
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else
+		added_skills = list(list(/datum/skill/combat/wrestling, 1, 3))
+		handle_skills(recipient)
+
 
 /datum/virtue/combat/bowman
 	name = "Toxophilite"

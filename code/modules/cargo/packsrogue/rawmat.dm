@@ -59,6 +59,29 @@
 	/obj/item/natural/cloth,
 	/obj/item/natural/cloth)
 
+/datum/supply_pack/rogue/rawmats/stones
+	name = "Stone"
+	cost = 30
+	contains = list(/obj/item/natural/stone,
+	/obj/item/natural/stone,
+	/obj/item/natural/stone,
+	/obj/item/natural/stone,
+	/obj/item/natural/stone,
+	/obj/item/natural/stone,
+	/obj/item/natural/stone,
+	/obj/item/natural/stone,
+	/obj/item/natural/stone,
+	/obj/item/natural/stone,)
+
+/datum/supply_pack/rogue/rawmats/lumber
+	name = "Lumber"
+	cost = 30
+	contains = list(/obj/item/grown/log/tree/small,
+	/obj/item/grown/log/tree/small,
+	/obj/item/grown/log/tree/small,
+	/obj/item/grown/log/tree/small,
+	/obj/item/grown/log/tree/small,)
+
 /datum/supply_pack/rogue/rawmats/ash
 	name = "Ash"
 	cost = 20

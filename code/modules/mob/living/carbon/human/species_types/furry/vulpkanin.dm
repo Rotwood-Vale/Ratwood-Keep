@@ -86,6 +86,7 @@
 		/datum/body_marking/bellyslim,
 		/datum/body_marking/butt,
 		/datum/body_marking/tonage,
+		/datum/body_marking/nose,
 	)
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,
