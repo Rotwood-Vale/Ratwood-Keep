@@ -112,6 +112,7 @@
 		/datum/body_marking/drake_eyes,
 		/datum/body_marking/tonage,
 		/datum/body_marking/spotted,
+		/datum/body_marking/nose,
 	)
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,
