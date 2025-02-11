@@ -65,5 +65,5 @@
 		H.change_stat("constitution", -2)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 2)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+		H.mind.AddSpell(new SPELL_LEARNSPELL)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
