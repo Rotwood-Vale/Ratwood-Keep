@@ -220,6 +220,10 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 					var/obj/item/key/lord/I = SSroguemachine.key
 					if(!I)
 						I = new /obj/item/key/lord(src.loc)
+					if(I.item_flags & IN_STORAGE)
+						say("[HC.real_name] holds the key!")
+						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+						return
 					if(I && !ismob(I.loc))
 						I.anti_stall()
 						I = new /obj/item/key/lord(src.loc)
@@ -232,10 +236,6 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 						var/mob/living/carbon/human/HC = I.loc
 						if(HC.stat != DEAD)
 							if(I in HC.held_items)
-								say("[HC.real_name] holds the key!")
-								playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-								return
-							if(I.item_flags & IN_STORAGE)
 								say("[HC.real_name] holds the key!")
 								playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 								return
