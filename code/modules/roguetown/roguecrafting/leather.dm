@@ -346,7 +346,7 @@
 	sellprice = 80
 
 /datum/crafting_recipe/roguetown/leather/otavanleatherpants
-		name = "otavan leather trousers"
+	name = "otavan leather trousers"
 	result = list(/obj/item/clothing/under/roguetown/trou/otavan)
 	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1,
 	            /obj/item/natural/fibers = 1,
@@ -357,7 +357,7 @@
 	sellprice = 30
 
 /datum/crafting_recipe/roguetown/leather/leathertights
-		name = "leather tights"
+	name = "leather tights"
 	result = list(/obj/item/clothing/under/roguetown/trou/leathertights)
 	reqs = list(/obj/item/natural/hide = 1)
 	tools = list(/obj/item/needle)
