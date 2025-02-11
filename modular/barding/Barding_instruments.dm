@@ -172,32 +172,32 @@
 			var/musiclevel = user.mind.get_skill_level(/datum/skill/misc/music)
 			switch(musiclevel) // There has to be a better way to do this, but so far all I've tried doesn't work as intended.
 				if(1) // T1
-					buffs2pick += list("Noc's Brilliance (+1 INT)" = /datum/status_effect/bardicbuff/intelligence)
+					buffs2pick += list("Noc's Brilliance (+4 INT)" = /datum/status_effect/bardicbuff/intelligence)
 				if(1 to 2) // T2
-					buffs2pick += list("Noc's Brilliance (+1 INT)" = /datum/status_effect/bardicbuff/intelligence,
-									"Malum's Resilience (+1 END)" = /datum/status_effect/bardicbuff/endurance)
+					buffs2pick += list("Noc's Brilliance (+4 INT)" = /datum/status_effect/bardicbuff/intelligence,
+									"Malum's Resilience (+4 END)" = /datum/status_effect/bardicbuff/endurance)
 				if(1 to 3) // T3
-					buffs2pick += list("Noc's Brilliance (+1 INT)" = /datum/status_effect/bardicbuff/intelligence,
-									"Malum's Resilience (+1 END)" = /datum/status_effect/bardicbuff/endurance,
-									"Pestra's Blessing (+1 CON)" = /datum/status_effect/bardicbuff/constitution)
+					buffs2pick += list("Noc's Brilliance (+4 INT)" = /datum/status_effect/bardicbuff/intelligence,
+									"Malum's Resilience (+4 END)" = /datum/status_effect/bardicbuff/endurance,
+									"Pestra's Blessing (+3 CON)" = /datum/status_effect/bardicbuff/constitution)
 				if(1 to 4) // T4
-					buffs2pick += list("Noc's Brilliance (+1 INT)" = /datum/status_effect/bardicbuff/intelligence,
-									"Malum's Perseverance (+1 END)" = /datum/status_effect/bardicbuff/endurance,
-									"Pestra's Blessing (+1 CON)" = /datum/status_effect/bardicbuff/constitution,
-									"Xylix's Alacrity (+1 SPD)" = /datum/status_effect/bardicbuff/speed)
+					buffs2pick += list("Noc's Brilliance (+4 INT)" = /datum/status_effect/bardicbuff/intelligence,
+									"Malum's Perseverance (+4 END)" = /datum/status_effect/bardicbuff/endurance,
+									"Pestra's Blessing (+3 CON)" = /datum/status_effect/bardicbuff/constitution,
+									"Xylix's Alacrity (+6 SPD)" = /datum/status_effect/bardicbuff/speed)
 				if(1 to 5) // T5
-					buffs2pick += list("Noc's Brilliance (+1 INT)" = /datum/status_effect/bardicbuff/intelligence,
-									"Malum's Perseverance (+1 END)" = /datum/status_effect/bardicbuff/endurance,
-									"Pestra's Blessing (+1 CON)" = /datum/status_effect/bardicbuff/constitution,
-									"Xylix's Alacrity (+1 SPD)" = /datum/status_effect/bardicbuff/speed,
-									"Ravox's Righteous Fury (+1 STR, +1 PER)" = /datum/status_effect/bardicbuff/ravox)
+					buffs2pick += list("Noc's Brilliance (+4 INT)" = /datum/status_effect/bardicbuff/intelligence,
+									"Malum's Perseverance (+4 END)" = /datum/status_effect/bardicbuff/endurance,
+									"Pestra's Blessing (+3 CON)" = /datum/status_effect/bardicbuff/constitution,
+									"Xylix's Alacrity (+6 SPD)" = /datum/status_effect/bardicbuff/speed,
+									"Ravox's Righteous Fury (+2 STR, +2 PER)" = /datum/status_effect/bardicbuff/ravox)
 				if(6 to INFINITY) // Legendary onwards
-					buffs2pick += list("Noc's Brilliance (+1 INT)" = /datum/status_effect/bardicbuff/intelligence,
-									"Malum's Perseverance (+1 END)" = /datum/status_effect/bardicbuff/endurance,
-									"Pestra's Blessing (+1 CON)" = /datum/status_effect/bardicbuff/constitution,
-									"Xylix's Alacrity (+1 SPD)" = /datum/status_effect/bardicbuff/speed,
-									"Ravox's Righteous Fury (+1 STR, +1 PER)" = /datum/status_effect/bardicbuff/ravox,
-									"Astrata's Awakening (Purges sleep, +1 FOR)" = /datum/status_effect/bardicbuff/awaken) // TAKE THE LAND THAT MUST BE TAKEN
+					buffs2pick += list("Noc's Brilliance (+4 INT)" = /datum/status_effect/bardicbuff/intelligence,
+									"Malum's Perseverance (+4 END)" = /datum/status_effect/bardicbuff/endurance,
+									"Pestra's Blessing (+3 CON)" = /datum/status_effect/bardicbuff/constitution,
+									"Xylix's Alacrity (+6 SPD)" = /datum/status_effect/bardicbuff/speed,
+									"Ravox's Righteous Fury (+2 STR, +2 PER)" = /datum/status_effect/bardicbuff/ravox,
+									"Astrata's Awakening (Purges sleep, +10 FOR)" = /datum/status_effect/bardicbuff/awaken) // TAKE THE LAND THAT MUST BE TAKEN
 				else // debug
 					message_admins("<span class='warning'>[key_name(usr)] is a bard with zero music skill and couldn't choose a buff.</span>")
 			var/buff2use = input(user, "Which buff to add to your song?", "Bardic Buffs", name) as null|anything in buffs2pick

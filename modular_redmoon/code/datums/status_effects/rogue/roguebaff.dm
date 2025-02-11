@@ -113,6 +113,19 @@
 			owner.change_stat(S, effectedstats[S])
 		return TRUE
 
+/datum/status_effect/bardicbuff/on_remove()
+	if(owner.mind?.has_antag_datum(/datum/antagonist)) // Check if antag datum present
+		if(owner.mind?.isactuallygood()) // Then check if they're actually a "good" antag (purishep, prisoner)
+			for(var/S in effectedstats)
+				owner.change_stat(S, -effectedstats[S])
+			return TRUE
+		else // Otherwise, no buff
+			return FALSE
+	else // All non antags get the buffs
+		for(var/S in effectedstats)
+			owner.change_stat(S, -effectedstats[S])
+		return TRUE
+
 // SKELETON BARD BUFF ALERT
 /atom/movable/screen/alert/status_effect/bardbuff
 	name = "Musical buff"
@@ -121,39 +134,39 @@
 
 // TIER 1 - WEAK
 /datum/status_effect/bardicbuff/intelligence
-	name = "Enlightening (+1 INT)"
+	name = "Enlightening (+4 INT)"
 	id = "bardbuff_int"
-	effectedstats = list("intelligence" = 1)
+	effectedstats = list("intelligence" = 4)
 
 // TIER 2 - AVERAGE
 /datum/status_effect/bardicbuff/endurance
-	name = "Invigorating (+1 END)"
+	name = "Invigorating (+4 END)"
 	id = "bardbuff_end"
-	effectedstats = list("endurance" = 1)
+	effectedstats = list("endurance" = 4)
 
 // TIER 3 - SKILLED
 /datum/status_effect/bardicbuff/constitution
-	name = "Fortitude (+1 CON)"
+	name = "Fortitude (+3 CON)"
 	id = "bardbuff_con"
-	effectedstats = list("constitution" = 1)
+	effectedstats = list("constitution" = 3)
 
 // TIER 4 - EXPERT
 /datum/status_effect/bardicbuff/speed
-	name = "Inspiring (+1 SPD)"
+	name = "Inspiring (+6 SPD)"
 	id = "bardbuff_spd"
-	effectedstats = list("speed" = 1)
+	effectedstats = list("speed" = 6)
 
 // TIER 5 - MASTER
 /datum/status_effect/bardicbuff/ravox
-	name = "Empowering (+1 STR, +1 PER)"
+	name = "Empowering (+2 STR, +2 PER)"
 	id = "bardbuff_str"
-	effectedstats = list("strength" = 1, "perception" = 1)
+	effectedstats = list("strength" = 2, "perception" = 2)
 
 // TIER 6 - LEGENDARY
 /datum/status_effect/bardicbuff/awaken
 	name = "Awaken! (purges sleep)"
 	id = "bardbuff_awaken"
-	effectedstats = list("fortune" = 1)
+	effectedstats = list("fortune" = 10)
 
 /datum/status_effect/bardicbuff/awaken/on_apply()
 	if(iscarbon(owner))
@@ -183,3 +196,16 @@
 				to_chat(O, span_nicegreen("Astrata's blessed light cleanses away your tiredness!"))
 			else
 				return
+
+/datum/status_effect/bardicbuff/awaken/on_remove()
+	if(iscarbon(owner))
+		var/mob/living/carbon/O = owner
+		if(owner.mind?.has_antag_datum(/datum/antagonist))
+			if(owner.mind.isactuallygood()) // Check for "good antags"
+				for(var/S in effectedstats)
+					owner.change_stat(S, -effectedstats[S])
+				to_chat(O, span_warning("Astrata's light fades, leaving you weary."))
+		else
+			for(var/S in effectedstats)
+				owner.change_stat(S, -effectedstats[S])
+			to_chat(O, span_warning("Astrata's light fades, leaving you weary."))

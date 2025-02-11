@@ -216,7 +216,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	real_name = pref_species.random_name(gender,1)
 	ResetJobs()
 	if(user)
-		if(usr.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			if(pref_species.ru_desc)
 				to_chat(user, "[pref_species.ru_desc]")
 			if(pref_species.ru_expanded_desc)
@@ -226,7 +226,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				to_chat(user, "[pref_species.desc]")
 			if(pref_species.expanded_desc)
 				to_chat(user, "<a href='?src=[REF(user)];view_species_info=[pref_species.expanded_desc]'>Read More</a>")
-		if(usr.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			to_chat(user, "<font color='red'>СБРОСИТЬ</font>")
 		else
 			to_chat(user, "<font color='red'>Classes reset.</font>")
@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/used_title
 	switch(current_tab)
 		if (0) // Character Settings#
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				used_title = "Лист Персонажа"
 			else
 				used_title = "Character Sheet"
@@ -277,21 +277,21 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			// NEXT ROW
 			dat += "<tr>"
 			dat += "<td style='width:33%;text-align:left'>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Сменить Персонажа</a>"
 			else
 				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:center'>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<a href='?_src_=prefs;preference=job;task=menu'>Выбрать Роль/Профессию</a>"
 			else
 				dat += "<a href='?_src_=prefs;preference=job;task=menu'>Class Selection</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Привязка Клавиш</a>"
 			else
 				dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
@@ -304,7 +304,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:center'>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Антагонисты</a>"
 			else
 				dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Villain Selection</a>"
@@ -321,11 +321,11 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			dat += "</td>"
 
 			dat += "<td style='width:45%;text-align:center'>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>ТРИУМФЫ:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "Отсутствуют"]"
 			else
 				dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				if(SStriumphs.triumph_buys_enabled)
 					dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>МАГАЗИН</a>"
 			else
@@ -346,14 +346,14 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			dat += "<td width=40% valign='top'>"
 
 // 			-----------START OF IDENT TABLE-----------
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<h2>Личность</h2>"
 			else
 				dat += "<h2>Identity</h2>"
 			dat += "<table width='100%'><tr><td width='75%' valign='top'>"
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>Always Random Name: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME_ANTAG]'>When Antagonist: [(randomise[RANDOM_NAME_ANTAG]) ? "Yes" : "No"]</a>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Имя:</b> "
 			else
 				dat += "<b>Name:</b> "
@@ -363,7 +363,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a> <a href='?_src_=prefs;preference=name;task=random'>\[R\]</a>"
 
 			dat += "<BR>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Раса:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.ru_name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 			else
 				dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
@@ -373,21 +373,21 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			if(!(AGENDER in pref_species.species_traits))
 				var/dispGender
 				if(gender == MALE)
-					if(usr.client.prefs.be_russian)
+					if(usr?.client?.prefs?.be_russian)
 						dispGender = "Мужчина"
 					else
 						dispGender = "Man"
 				else if(gender == FEMALE)
-					if(usr.client.prefs.be_russian)
+					if(usr?.client?.prefs?.be_russian)
 						dispGender = "Женщина"
 					else
 						dispGender = "Woman"
 				else
-					if(usr.client.prefs.be_russian)
+					if(usr?.client?.prefs?.be_russian)
 						dispGender = "Другое"
 					else
 						dispGender = "Other"
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					dat += "<b>Пол:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
 				else
 					dat += "<b>Sex:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
@@ -395,7 +395,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
 
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Возраст:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 			else
 				dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
@@ -406,25 +406,25 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 //				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE_ANTAG]'>When Antagonist: [(randomise[RANDOM_AGE_ANTAG]) ? "Yes" : "No"]</A>"
 
 //			dat += "<b><a href='?_src_=prefs;preference=name;task=random'>Random Name</A></b><BR>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Изъян:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
 			else
 				dat += "<b>Flaw:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Вера:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			else
 				dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Покровитель:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
 			else
 				dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Семья:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>"
 			else
 				dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? "Yes!" : "No"]</a><BR>" // Disabling until its working
 			if(family != FAMILY_NONE)
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					dat += "<B>Предпочтения в семье:<br></B>"
 				else
 					dat += "<B>Family Preferences:<br></B>"
@@ -435,7 +435,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += " <small><a href='?_src_=prefs;preference=familypref;res=race'><b>Race</b></a></small>"
 				dat += "<BR>"
 				// REDMOON ADD START - family_changes 
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					dat += " <small><a href='?_src_=prefs;preference=familypref;res=ckey'><b>Душа второй половинки: [spouse_ckey ? spouse_ckey : "(Случайная)"]</b></a></small>"
 					dat += "<BR>"
 					dat += " <small><a href='?_src_=prefs;preference=familypref;res=surname'><b>Фамилия семьи: [family_surname ? family_surname : "(Нет)"]</b></a></small>"
@@ -449,24 +449,24 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					dat += " <small><a href='?_src_=prefs;preference=familypref;res=genitals'><b>Partner's beginning</b></a></small>"
 				dat += "<BR>"
 				// REDMOON ADD END
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Основная Рука:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a>"
 			else
 				dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<br><b>Цвет Голоса: </b><a href='?_src_=prefs;preference=voice;task=input'>Изменить</a>"
 			else
 				dat += "<br><b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<br><b>Тон Голоса: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
 			else
 				dat += "<br><b>Voice Pitch: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Изменить</a>"
 			else
 				dat += "<br><b>Headshot(1:1):</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>Показать</a>"
 				else
 					dat += "<a href='?_src_=prefs;preference=view_headshot;task=input'>View</a>"
@@ -506,14 +506,14 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			dat += "<td width=20% valign='top'>"
 			// Rightmost column, 40% width
 			dat += "<td width=40% valign='top'>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<h2>Тело</h2>"
 			else
 				dat += "<h2>Body</h2>"
 
 //			-----------START OF BODY TABLE-----------
 			dat += "<table width='100%'><tr><td width='1%' valign='top'>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Авто-обновновление цвета:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
 			else
 				dat += "<b>Update feature colors with change:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
@@ -530,7 +530,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 							break
 				//Second comment on how stupid this is. TODO: REFACTOR THIS SHITTY FUCKING SYSTEM. We shouldn't be using associative lists like this.
 
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					dat += "<b>Цвет Кожи: [skin_tone_wording] </b><span style='font-size:104%'>[heldtone]</span><a href='?_src_=prefs;preference=s_tone;task=input'>	Change </a>"
 				else
 					dat += "<b>Skin Tone: [skin_tone_wording] </b><span style='font-size:104%'>[heldtone]</span><a href='?_src_=prefs;preference=s_tone;task=input'>	Change </a>"
@@ -538,7 +538,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					dat += "<b>Цвет Тела #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Изменить</a><BR>"
 					dat += "<b>Цвет Тела #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Изменить</a><BR>"
 					dat += "<b>Цвет Тела #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Изменить</a><BR>"
@@ -548,7 +548,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					dat += "<b>Mutant Color #3:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
 
 			var/datum/bark/B = GLOB.bark_list[bark_id]
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Звук Барка:</b> <a href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "INVALID"]</a>"
 				dat += "<br><b>Скорость Барка:</b> <a href='?_src_=prefs;preference=barkspeed;task=input'>[bark_speed]</a>"
 				dat += "<br><b>Тон Барка:</b> <a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a>"
@@ -560,19 +560,19 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<br><b>Vocal Bark Pitch: </b><a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a>"
 				dat += "<br><b>Vocal Bark Variance: </b><a href='?_src_=prefs;preference=barkvary;task=input'>[bark_variance]</a>"
 				dat += "<br><a href='?_src_=prefs;preference=barkpreview'>Preview Bark</a>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<br><b>Акцент:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
 			else
 				dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent]</a>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<br><b>Особенности:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Изменить</a>"
 			else
 				dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<br><b>Нательные Рисунки:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Изменить</a>"
 			else
 				dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				dat += "<br><b>Дополнительное Описание:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Изменить</a>"
 			else
 				dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
@@ -777,7 +777,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			dat += "</tr></table>"
 
 		if(3) // Custom keybindings
-			if(usr.client.prefs.be_russian)
+			if(usr?.client?.prefs?.be_russian)
 				used_title = "Привязка Клавиш"
 			else
 				used_title = "Keybinds"
@@ -823,7 +823,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 
 	if(!IsGuestKey(user.key))
-		if(usr.client.prefs.be_russian)
+		if(usr?.client?.prefs?.be_russian)
 			dat += "<a href='?_src_=prefs;preference=save'>Сохранить</a><br>"
 			dat += "<a href='?_src_=prefs;preference=load'>Откатить</a><br>"
 		else
@@ -835,18 +835,18 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += "<table width='100%'>"
 	dat += "<tr>"
 	dat += "<td width='33%' align='left'>"
-	if(usr.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		dat += "<a class='animationcolor' href='byond://?src=[REF(N)];rpprompt=1'>Краткая Сводка Мира</a><br>"
 	else
 		dat += "<a class='animationcolor' href='byond://?src=[REF(N)];rpprompt=1'>Lore Primer</a><br>"
 //	dat += "<a href='byond://?src=[REF(N)];rgprompt=1'>Religion Primer</a><br>"
 	dat += 	"</td>"
 	dat += "<td width='33%' align='center'>"
-	if(usr.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		dat += "<br><b>Доп. Предмет:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a><BR>"
 	else
 		dat += "<br><b>Loadout Item:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a><BR>"
-	if(usr.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>ОСОБЕННЫЙ</font>" : "Быть Особенным"]</b></a><BR>"
 	else
 		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "Be Special"]</b></a><BR>"
@@ -854,12 +854,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			switch(N.ready)
 				if(PLAYER_NOT_READY)
-					if(usr.client.prefs.be_russian)
+					if(usr?.client?.prefs?.be_russian)
 						dat += "<b>НЕ ГОТОВ</b> <a href='byond://?src=[REF(N)];ready=[PLAYER_READY_TO_PLAY]'>ГОТОВ</a>"
 					else
 						dat += "<b>UNREADY</b> <a href='byond://?src=[REF(N)];ready=[PLAYER_READY_TO_PLAY]'>READY</a>"
 				if(PLAYER_READY_TO_PLAY)
-					if(usr.client.prefs.be_russian)
+					if(usr?.client?.prefs?.be_russian)
 						dat += "<a href='byond://?src=[REF(N)];ready=[PLAYER_NOT_READY]'>НЕ ГОТОВ</a> <b>ГОТОВ</b>"
 					else
 						dat += "<a href='byond://?src=[REF(N)];ready=[PLAYER_NOT_READY]'>UNREADY</a> <b>READY</b>"
@@ -874,7 +874,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
-	if(usr.client.prefs.be_russian)
+	if(usr?.client?.prefs?.be_russian)
 		dat += "<b>Русскоязычность:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
 		dat += "<b>Давать отпор:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
 		dat += "<b>Девственность:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
@@ -986,7 +986,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				used_name = job.ru_title
 				used_tutorial = job.ru_tutorial
 			if(gender == FEMALE && job.f_title)
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					used_name = "[job.ru_f_title]"
 				else
 					used_name = "[job.f_title]"
@@ -1414,7 +1414,7 @@ Slots: [job.spawn_positions]</span>
 			// family_changes - возможность выставить CKEY игрока, с которым хочется создать семью
 			if("ckey")
 				var/msg = "Add PLAYER CKEY of your spouse! Check it twice! Leave the field clear to have random spouse with other parameters."
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					msg = "Введите CKEY ИГРОКА вашей второй половинки! Вы и второй игрок должны правильно записать CKEY друг друга, чтобы это работало! Оставьте поле пустым, чтобы была случайная пара (в соответствии с остальными требованиями)."
 				var/potential_spouse_ckey = input(usr, msg, "Bloodbinding", null) as text
 				if(!potential_spouse_ckey)
@@ -1423,7 +1423,7 @@ Slots: [job.spawn_positions]</span>
 			// family_changes - возможность выставить название семьи
 			if("surname")
 				var/msg = "Add surname your family will be known as. You can join after roundstart to form a family if you set up your spouse soul."
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					msg = "Введите фамилию, под которой будет известна ваша семья. Вы можете зайти после начала раунда за членов одной семьи, если выставите душу второй половинки."
 				var/potential_family_surname = input(usr, msg, "Family History", null) as text
 				if(!potential_family_surname)
@@ -1431,7 +1431,7 @@ Slots: [job.spawn_positions]</span>
 				family_surname = potential_family_surname
 			// family_changes - выставление допустимых гениталий у партнёра
 			if("genitals")
-				if(usr.client.prefs.be_russian)
+				if(usr?.client?.prefs?.be_russian)
 					to_chat(usr, span_warning("<hr>\
 					<b>Обязательные условия для пары:</b>\
 					<br>Эора не благословит помолвку, если семья не способна породить жизнь."))
@@ -1640,7 +1640,7 @@ Slots: [job.spawn_positions]</span>
 					var/list/faiths_named = list()
 					for(var/path as anything in GLOB.preference_faiths)
 						var/datum/faith/faith = GLOB.faithlist[path]
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							if(!faith.ru_name)
 								continue
 							faiths_named[faith.ru_name] = faith
@@ -1651,7 +1651,7 @@ Slots: [job.spawn_positions]</span>
 					var/faith_input = input(user, "Choose your character's faith", "Faith") as null|anything in faiths_named
 					if(faith_input)
 						var/datum/faith/faith = faiths_named[faith_input]
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, "<font color='purple'>Вера: [faith.ru_name]</font>")
 							to_chat(user, "<font color='purple'>История: [faith.ru_desc]</font>")
 							to_chat(user, "<font color='purple'>Верователи: [faith.ru_worshippers]</font>")
@@ -1672,7 +1672,7 @@ Slots: [job.spawn_positions]</span>
 					var/god_input = input(user, "Choose your character's patron god", "[current_faith.name]") as null|anything in patrons_named
 					if(god_input)
 						selected_patron = patrons_named[god_input]
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, "<font color='purple'>Бог-Покровитель: [selected_patron.ru_name]</font>")
 							to_chat(user, "<font color='purple'>Домен: [selected_patron.ru_domain]</font>")
 							to_chat(user, "<font color='purple'>История: [selected_patron.ru_desc]</font>")
@@ -1756,7 +1756,7 @@ Slots: [job.spawn_positions]</span>
 						voice_pitch = new_voice_pitch
 
 				if("headshot")
-					if(usr.client.prefs.be_russian)
+					if(usr?.client?.prefs?.be_russian)
 						to_chat(user, "<span class='notice'>Пожалуйста, используйте Safe For Working изображение головы и плеч, чтобы сохранить уровень погружения. И последнее, ["<span class='bold'>не используйте фотографии из реальной жизни или любые несерьезные, мемные изображения.</span>"]</span>")
 						to_chat(user, "<span class='notice'>Если фотокарточка не отображается в игре, убедитесь, что это прямая ссылка на изображение, которая правильно открывается в браузере.</span>")
 						to_chat(user, "<span class='notice'>Разрешение: 250x250 pixels.</span>")
@@ -1780,7 +1780,7 @@ Slots: [job.spawn_positions]</span>
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
 
 				if("nudeshot")
-					if(usr.client.prefs.be_russian)
+					if(usr?.client?.prefs?.be_russian)
 						to_chat(user, "<span class='notice'>["<span class='bold'>Не используйте фотографии из реальной жизни или любые несерьезные, мемные изображения.</span>"]</span>")
 						to_chat(user, "<span class='notice'>Если фотокарточка не отображается в игре, убедитесь, что это прямая ссылка на изображение, которая правильно открывается в браузере.</span>")
 						to_chat(user, "<span class='notice'>Разрешение: 360x480 pixels.</span>")
@@ -2032,7 +2032,7 @@ Slots: [job.spawn_positions]</span>
 
 				if("family")
 					// REDMOON ADD START - family_changes - оповещение о правилах семей
-					if(usr.client.prefs.be_russian)
+					if(usr?.client?.prefs?.be_russian)
 						to_chat(usr, span_warning("<hr>\
 						<b>Обязательные условия для семей:</b>\
 						<br>● Барон, консорт и наследники - одна семья. \
@@ -2244,12 +2244,12 @@ Slots: [job.spawn_positions]</span>
 				if("be_defiant")
 					defiant = !defiant
 					if(defiant)
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, span_notice("Теперь вы будете сопротивляться людям, нарушающим ваши права, но будете наказаны за попытку нарушить права других." + " " + span_boldwarning("(Режим COMBAT отключит ERP-взаимодействие. Обход этого режима является нарушением. Используйте AHELP, если необходимо.)")))
 						else
 							to_chat(user, span_notice("You will now have resistance from people violating you, but be punished for trying to violate others." + " " + span_boldwarning("(COMBAT Mode will disable ERP interactions. Bypassing this is a bannable offense, AHELP if necessary.)")))
 					else
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, span_boldwarning("Вы полностью погружаетесь в мрачное сосуществование с миром, отказываясь от сопротивления людей, насилующих вас, но позволяя делать то же самое с другими людьми, не являющимися девиантами."))
 						else
 							to_chat(user, span_boldwarning("You fully immerse yourself in the dark coexistence with the world, refusing to resist people who abuse you, but allowing them to do the same to others who are not deviants."))
@@ -2257,12 +2257,12 @@ Slots: [job.spawn_positions]</span>
 				if("be_russian")
 					be_russian = !be_russian
 					if(be_russian)
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, span_notice("Вы Русский. Поздравляю."))
 						else
 							to_chat(user, span_notice("You have enabled Russian and it is under development."))
 					else
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, span_notice("Выписан из Русских. Не поздравляю."))
 						else
 							to_chat(user, span_boldwarning("You have disable Russian and it is still under development."))
@@ -2270,12 +2270,12 @@ Slots: [job.spawn_positions]</span>
 				if("be_virgin")
 					virginity = !virginity
 					if(virginity)
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, span_notice("Вы ни разу не поддавались искушениям плоти.")) 
 						else
 							to_chat(user, span_notice("You have not once indulged in the temptations of the flesh."))
 					else
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, span_notice("Вы не девственны. Одним словом - трахались до этого моментума."))
 						else
 							to_chat(user, span_notice("You have. In a word. Fucked before.")) //Someone word this better please kitty is high and words are hard
@@ -2283,7 +2283,7 @@ Slots: [job.spawn_positions]</span>
 				if("schizo_voice")
 					toggles ^= SCHIZO_VOICE
 					if(toggles & SCHIZO_VOICE)
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, "<span class='warning'>Вы теперь Голос.\n\
 										Как голос, вы будете получать размышления от игроков, спрашивающих об игровых механиках!\n\
 										Хорошие голоса будут вознаграждены PQ за ответы на медитации, а плохие - наказаны по усмотрению Карен.</span>")
@@ -2292,7 +2292,7 @@ Slots: [job.spawn_positions]</span>
 										As a voice, you will receive meditations from players asking about game mechanics!\n\
 										Good voices will be rewarded with PQ for answering meditations, while bad ones are punished at the discretion of jannies.</span>")
 					else
-						if(usr.client.prefs.be_russian)
+						if(usr?.client?.prefs?.be_russian)
 							to_chat(user, span_notice("Вы больше не являетесь голосом."))
 						else
 							to_chat(user, span_warning("You are no longer a voice."))
