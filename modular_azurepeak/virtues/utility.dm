@@ -172,7 +172,8 @@
 	desc = "Be it your family's habits in and out of womb, your own choices or Xylix's cruel roll of fate, you have been left unbearable to look at. Stuck to the unseen pits and crevices of the town, you've grown used to the foul odours of lyfe that often follow you. Corpses do not stink for you, and that is all the company you might find."
 	added_traits = list(TRAIT_UNSEEMLY, TRAIT_NOSTINK)
 
-/datum/virtue/utility/ugly/apply_to_human(mob/living/carbon/human/recipient)
+/datum/virtue/utility/ugly/handle_traits(mob/living/carbon/human/recipient)
+	..()
 	if(HAS_TRAIT(recipient, TRAIT_BEAUTIFUL))
 		to_chat(recipient, "Your repulsiveness and attractiveness cancel out! You become normal.")
 		REMOVE_TRAIT(recipient, TRAIT_BEAUTIFUL, TRAIT_VIRTUE)
