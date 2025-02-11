@@ -300,7 +300,11 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(!SScommunications.can_announce(user))
 		return
 
-	priority_announce("Henceforth, the vassal known as [victim.real_name] shall have the title of [new_pos].", "The [user.get_role_title()] Decrees", 'sound/misc/alert.ogg', "Captain")
+	if(alert("Do you want to announce this action to all of Rockhill?",,"Yes","No") != "Yes")
+		say("Henceforth, the vassal known as [victim.real_name] shall have the title of [new_pos]!")
+		return
+	else
+		priority_announce("Henceforth, the vassal known as [victim.real_name] shall have the title of [new_pos].", "The [user.get_role_title()] Decrees", 'sound/misc/alert.ogg', "Captain")
 
 /obj/structure/roguemachine/titan/proc/make_announcement(mob/living/user, raw_message)
 	if(!SScommunications.can_announce(user))
