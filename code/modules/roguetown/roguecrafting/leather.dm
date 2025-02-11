@@ -345,3 +345,97 @@
 	craftdiff = 3
 	sellprice = 80
 
+/datum/crafting_recipe/roguetown/leather/otavanleatherpants
+		name = "otavan leather trousers"
+	result = list(/obj/item/clothing/under/roguetown/trou/otavan)
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1,
+	            /obj/item/natural/fibers = 1,
+	            /obj/item/natural/hide = 2,
+				/obj/item/natural/fur = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 6
+	sellprice = 30
+
+/datum/crafting_recipe/roguetown/leather/leathertights
+		name = "leather tights"
+	result = list(/obj/item/clothing/under/roguetown/trou/leathertights)
+	reqs = list(/obj/item/natural/hide = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 3
+	sellprice = 10
+
+/datum/crafting_recipe/roguetown/artipants
+	name = "thin leather pants"
+	result = list(/obj/item/clothing/under/roguetown/trou/artipants)
+	reqs = list(/obj/item/natural/cloth = 1,
+	            /obj/item/natural/hide = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 3
+	sellprice = 11
+
+/datum/crafting_recipe/roguetown/sewing/baggyleatherpants
+	name = "baggy leather pants"
+	result = list(/obj/item/clothing/under/roguetown/trou/leather/pontifex)
+	reqs = list(/obj/item/natural/cloth = 1,
+	            /obj/item/natural/fibers = 1,
+	            /obj/item/natural/hide = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 20
+		
+/datum/crafting_recipe/roguetown/sewing/doublebeltedtrousers
+	name = "double-belted trousers"
+	result = list(/obj/item/clothing/under/roguetown/trou/beltpants)
+	reqs = list(/obj/item/natural/cloth = 1,
+	            /obj/item/natural/fibers = 1,
+	            /obj/item/natural/hide = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 17
+
+/datum/crafting_recipe/roguetown/sewing/furpants
+	name = "fur pants"
+	result = list(/obj/item/clothing/under/roguetown/trou/leather/atgervi)
+	reqs = list(/obj/item/natural/fur = 1,
+	            /obj/item/natural/fibers = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 15
+
+/datum/crafting_recipe/roguetown/sewing/gladsandals
+	name = "gladiator sandals"
+	result = list(/obj/item/clothing/shoes/roguetown/gladiator)
+	reqs = list(/obj/item/natural/hide = 2,
+	            /obj/item/natural/fibers = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 3
+	sellprice = 12
+
+/datum/crafting_recipe/roguetown/sewing/grenzelboots
+	name = "grenzelhoftian boots"
+	result = list(/obj/item/clothing/shoes/roguetown/grenzelhoft)
+	reqs = list(/obj/item/natural/hide = 2,
+	            /obj/item/natural/fibers = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 15
+	
+/datum/crafting_recipe/roguetown/sewing/otavanboots
+	name = "otavan leather boots"
+	result = list(/obj/item/clothing/shoes/roguetown/otavan)
+	reqs = list(/obj/item/natural/hide = 1,
+	            /obj/item/reagent_containers/food/snacks/tallow = 1,
+				/obj/item/natural/fur = 1,
+	            /obj/item/natural/fibers = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 6
+	sellprice = 25
+
+/datum/crafting_recipe/roguetown/sewing/buckleshoes
+	name = "buckled shoes"
+	result = list(/obj/item/clothing/shoes/roguetown/simpleshoes/buckle)
+	reqs = list(/obj/item/natural/hide = 1,
+	            /obj/item/natural/fibers = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 6
+	sellprice = 25

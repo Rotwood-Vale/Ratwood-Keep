@@ -10,6 +10,12 @@
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/handwraps
+	name = "hand wraps"
+	result = list(/obj/item/clothing/gloves/roguetown/angle/pontifex)
+	reqs = list(/obj/item/natural/cloth = 1)
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/sewing/peasantcap
 	name = "peasant cap"
 	result = list(/obj/item/clothing/head/roguetown/armingcap)
@@ -68,6 +74,13 @@
 	result = list(/obj/item/clothing/gloves/roguetown/fingerless)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/sewing/brimmed
+	name = "brimmed hat"
+	result = list(/obj/item/clothing/head/roguetown/brimmed)
+	reqs = list(/obj/item/natural/cloth = 1,
+				/obj/item/natural/fibers = 2)
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/sewing/tunic
@@ -606,3 +619,195 @@
 	tools = list(/obj/item/needle)
 	craftdiff = 5
 	sellprice = 30
+
+/datum/crafting_recipe/roguetown/sewing/wizardrobes
+	name = "wizard robes"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/wizard)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 20
+
+/datum/crafting_recipe/roguetown/sewing/regalrobes
+	name = "regal robes"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/vampire)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 30
+
+/datum/crafting_recipe/roguetown/sewing/grenzelshirt
+	name = "grenzelhoftian hip-shirt"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/grenzelhoft)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 20
+
+/datum/crafting_recipe/roguetown/sewing/silktunic
+	name = "ornate silk tunic"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/tunic/silktunic)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 25
+	
+/datum/crafting_recipe/roguetown/sewing/silkdress
+	name = "ornate silk dress"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/steward)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 30
+
+/datum/crafting_recipe/roguetown/sewing/archivist
+	name = "voluminous robes"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/archivist)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 25
+
+/datum/crafting_recipe/roguetown/sewing/apothshirt
+	name = "knitted sweater"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/apothshirt)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 15
+
+/datum/crafting_recipe/roguetown/sewing/artificer
+	name = "shirt and doublet"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/artificer)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/hide = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 20
+
+/datum/crafting_recipe/roguetown/sewing/winterdress
+	name = "winter dress"
+	result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress)
+	reqs = list(/obj/item/natural/cloth = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 25
+
+/datum/crafting_recipe/roguetown/sewing/skirt
+	name = "skirt"
+	result = list(/obj/item/clothing/under/roguetown/skirt)
+	reqs = list(/obj/item/natural/cloth = 1,
+				/obj/item/natural/fibers = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 10
+
+/datum/crafting_recipe/roguetown/sewing/clothshorts
+	name = "cloth shorts"
+	result = list(/obj/item/clothing/under/roguetown/tights/sailor)
+	reqs = list(/obj/item/natural/cloth = 1,
+				/obj/item/natural/fibers = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 3
+	sellprice = 5
+
+/datum/crafting_recipe/roguetown/sewing/grenzelpants
+	name = "grenzelhoftian paumpers"
+	result = list(/obj/item/clothing/under/roguetown/grenzelpants)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/hide = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 15
+
+/datum/crafting_recipe/roguetown/sewing/shadowpants
+	name = "silk pants"
+	result = list(/obj/item/clothing/under/roguetown/trou/shadowpants)
+	reqs = list(/obj/item/natural/cloth = 2,
+	            /obj/item/natural/silk = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 18
+
+/datum/crafting_recipe/roguetown/apothpants
+	name = "knitted pants"
+	result = list(/obj/item/clothing/under/roguetown/trou/apothecary)
+	reqs = list(/obj/item/natural/cloth = 1,
+	            /obj/item/natural/fibers = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 14
+
+/datum/crafting_recipe/roguetown/royalsleeves
+	name = "royal sleeves"
+	result = list(/obj/item/clothing/wrists/roguetown/royalsleeves)
+	reqs = list(/obj/item/natural/cloth = 1,
+	            /obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 19
+
+/datum/crafting_recipe/roguetown/nemes
+	name = "nemes"
+	result = list(/obj/item/clothing/head/roguetown/headdress)
+	reqs = list(/obj/item/natural/cloth = 2,
+	            /obj/item/natural/fibers = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 10
+
+/datum/crafting_recipe/roguetown/hatfur
+	name = "fur hat"
+	result = list(/obj/item/clothing/head/roguetown/hatfur)
+	reqs = list(/obj/item/natural/cloth = 1,
+	            /obj/item/natural/fibers = 1,
+				/obj/item/natural/fur = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 3
+	sellprice = 14
+
+/datum/crafting_recipe/roguetown/shawl
+	name = "shawl"
+	result = list(/obj/item/clothing/head/roguetown/shawl)
+	reqs = list(/obj/item/natural/cloth = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 2
+	sellprice = 5
+
+/datum/crafting_recipe/roguetown/grenzelhat
+	name = "grenzelhoftian hat"
+	result = list(/obj/item/clothing/head/roguetown/grenzelhofthat)
+	reqs = list(/obj/item/natural/cloth = 1,
+	            /obj/item/natural/fibers = 1,
+				/obj/item/natural/silk = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 5
+	sellprice = 15
+
+/datum/crafting_recipe/roguetown/articap
+	name = "flat cap"
+	result = list(/obj/item/clothing/head/roguetown/articap)
+	reqs = list(/obj/item/natural/cloth = 1,
+	            /obj/item/natural/fibers = 1,
+				/obj/item/natural/hide = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 4
+	sellprice = 14
+
