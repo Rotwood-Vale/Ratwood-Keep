@@ -42,6 +42,13 @@
 
 	return colors
 
+/datum/body_marking/nose
+	icon = 'icons/mob/body_markings/other_markings.dmi'
+	name = "Nose"
+	icon_state = "nose"
+	default_color = "FF0000"
+	affected_bodyparts = HEAD
+
 /datum/body_marking/flushed_cheeks
 	icon = 'icons/mob/body_markings/other_markings.dmi'
 	name = "Flushed Cheeks"
