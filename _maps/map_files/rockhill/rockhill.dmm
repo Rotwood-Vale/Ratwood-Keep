@@ -7480,7 +7480,7 @@
 	lockid = "archive";
 	name = "Academy"
 	},
-/turf/open/floor/rogue/herringbone,
+/turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/academy)
 "dVn" = (
 /obj/structure/roguemachine/mail/r{
@@ -10369,6 +10369,11 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"fvr" = (
+/obj/structure/fermenting_barrel,
+/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/turf/open/floor/rogue/ruinedwood/chevron,
+/area/rogue/indoors/town/academy)
 "fvK" = (
 /obj/item/natural/stone{
 	pixel_y = -15;
@@ -12861,6 +12866,15 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
+"gNy" = (
+/obj/structure/chair/bench/church{
+	dir = 4
+	},
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/academy)
 "gNG" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -14144,6 +14158,13 @@
 	},
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/town/bath)
+"hyX" = (
+/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/academy)
 "hzm" = (
 /obj/structure/roguewindow/curtain{
 	dir = 4
@@ -15401,10 +15422,7 @@
 	},
 /area/rogue/indoors)
 "ijD" = (
-/obj/structure/roguemachine/withdraw{
-	pixel_x = 32;
-	pixel_y = 0
-	},
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/academy)
 "ijH" = (
@@ -16308,6 +16326,7 @@
 "iHT" = (
 /obj/structure/table/vtable/v2,
 /obj/item/reagent_containers/glass/alembic,
+/obj/structure/roguemachine/withdraw,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/academy)
 "iIi" = (
@@ -21316,6 +21335,12 @@
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
+"lvE" = (
+/obj/structure/fluff/railing/border{
+	dir = 1
+	},
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/academy)
 "lvJ" = (
 /obj/structure/fluff/customsign{
 	desc = "Follow the road";
@@ -30997,12 +31022,14 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "qEF" = (
-/obj/structure/mineral_door/wood/towner/generic/two_keys,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
+/obj/structure/stairs{
+	dir = 4
 	},
-/area/rogue/indoors)
+/obj/structure/fluff/railing/border{
+	dir = 10
+	},
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/academy)
 "qEL" = (
 /obj/structure/closet/crate/roguecloset/inn/south{
 	keylock = 1;
@@ -34214,6 +34241,12 @@
 /obj/structure/roguetent,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/druidgrove)
+"svl" = (
+/obj/structure/fluff/railing/border{
+	dir = 5
+	},
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors/town/academy)
 "svo" = (
 /obj/structure/stairs{
 	dir = 8
@@ -35495,6 +35528,18 @@
 	},
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
+"thL" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4;
+	pixel_x = 10
+	},
+/obj/structure/fluff/railing/wood{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 7
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/outdoors/town)
 "thM" = (
 /obj/structure/globe,
 /turf/open/floor/rogue/carpet/lord/center,
@@ -44369,7 +44414,10 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "xTV" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/obj/structure/roguemachine/withdraw{
+	pixel_x = -32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/academy)
 "xUa" = (
@@ -44425,6 +44473,7 @@
 /obj/structure/table/vtable,
 /obj/item/reagent_containers/glass/mortar,
 /obj/structure/fluff/wallclock,
+/obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/academy)
 "xWl" = (
@@ -331859,8 +331908,8 @@ rfx
 esR
 xAt
 xAt
-bQV
-wVI
+eoy
+wbg
 fnA
 cPw
 wYt
@@ -332291,9 +332340,9 @@ wbg
 esR
 xAt
 xAt
-xAt
-bQV
+thL
 wVI
+fnA
 ezt
 sIT
 sIT
@@ -332724,8 +332773,8 @@ ocI
 xAt
 xAt
 xAt
-xAt
-eoy
+thL
+wVI
 aNW
 edc
 orb
@@ -341802,8 +341851,8 @@ nqU
 wbg
 fnA
 dLj
-ePR
-fRs
+hyX
+svl
 fRs
 fRs
 fRs
@@ -342234,8 +342283,8 @@ nqU
 wbg
 fnA
 oSn
-ght
-fRs
+qEF
+lvE
 erE
 erE
 erE
@@ -342667,7 +342716,7 @@ fnA
 wbg
 oSn
 oSn
-ruQ
+gNy
 swK
 erE
 ruQ
@@ -343963,7 +344012,7 @@ wbg
 wbg
 oSn
 ght
-erE
+ohu
 jtP
 wtS
 pbb
@@ -352210,7 +352259,7 @@ fnA
 jju
 dlR
 nqU
-qEF
+hsC
 nqU
 gym
 nqU
@@ -451968,7 +452017,7 @@ aes
 oSn
 xWj
 xTV
-vEO
+fvr
 vEO
 oSn
 uJh
