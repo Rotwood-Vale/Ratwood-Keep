@@ -100,6 +100,7 @@
 		/datum/body_marking/moth/grayscale/jungle,
 		/datum/body_marking/moth/grayscale/witchwing,
 		/datum/body_marking/moth/grayscale/lovers,
+		/datum/body_marking/nose,
 	)
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,
