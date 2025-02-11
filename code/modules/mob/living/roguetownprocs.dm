@@ -221,7 +221,6 @@
 				if(istype(mainh, offh))
 					extraattroll = prob(prob2defend)
 					attacker_dualw = TRUE
-					to_chat(world, "dual wielder triggered for offense")
 
 			if(src.client?.prefs.showrolls)
 				var/text = "Roll to parry... [prob2defend]%"
