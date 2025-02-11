@@ -355,6 +355,14 @@
 // 		STR.max_items = 14
 // 		STR.not_while_equipped = TRUE
 // 		STR.allow_dump_out = TRUE
+
+/obj/item/storage/belt/rogue/leather/exoticsilkbelt
+	name = "Exotic Silk Belt"
+	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
+	icon_state = "exoticsilkbelt"
+	// heldz_items = 1
+	sewrepair = TRUE
+	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
 /*
 /obj/item/storage/belt/rogue/pickles
 	name = "jar of pickles"
