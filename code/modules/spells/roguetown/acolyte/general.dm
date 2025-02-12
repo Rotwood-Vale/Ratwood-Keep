@@ -21,6 +21,7 @@
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		var/datum/antagonist/vampirelord/VD = target.mind?.has_antag_datum(/datum/antagonist/vampirelord)
+		var/healing = 5
 		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD) && (VD && !VD.disguised)) //positive energy harms the undead, disguised vampires are healed.
 			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 			target.adjustFireLoss(10)
@@ -40,6 +41,7 @@
 				target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_notice("Sentimental thoughts drive away my pains!"))
 			if(/datum/patron/divine/astrata)
 				target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
+				healing *= 1.33 // also a god that gives more healing stuff to her acolytes
 			if(/datum/patron/divine/noc)
 				target.visible_message(span_info("A shroud of soft moonlight falls upon [target]!"), span_notice("I'm shrouded in gentle moonlight!"))
 			if(/datum/patron/divine/dendor)
@@ -52,8 +54,10 @@
 				target.visible_message(span_info("A sense of quiet respite radiates from [target]!"), span_notice("I feel the Undermaiden's gaze turn from me for now!"))
 			if(/datum/patron/divine/xylix)
 				target.visible_message(span_info("A fugue seems to manifest briefly across [target]!"), span_notice("My wounds vanish as if they had never been there! "))
+				healing = healing * rand(0.25,2) //god of randomess
 			if(/datum/patron/divine/pestra)
 				target.visible_message(span_info("A aura of clinical care encompasses [target]!"), span_notice("I'm sewn back together by sacred medicine!"))
+				healing *= 1.6 // she's god of healing, reliable
 			if(/datum/patron/divine/malum)
 				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
 			if(/datum/patron/divine/eora)
@@ -81,10 +85,11 @@
 		else
 			target.adjustBruteLoss(-25)
 			target.adjustFireLoss(-25)
+		target.apply_status_effect(/datum/status_effect/buff/healing, healing)	
 		target.adjustToxLoss(-25)
 		target.adjustOxyLoss(-25)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
-		return TRUE
+		return TRUE	
 	revert_cast()
 	return FALSE
 

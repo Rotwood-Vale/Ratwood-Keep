@@ -49,7 +49,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
 	miracle = TRUE
-	devotion_cost = 50
+	devotion_cost = 35
 
 /obj/effect/proc_holder/spell/invoked/abyssheal/cast(list/targets, mob/living/user)
 	. = ..()
