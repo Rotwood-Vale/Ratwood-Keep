@@ -204,8 +204,6 @@
 			if(owner.mind.isactuallygood()) // Check for "good antags"
 				for(var/S in effectedstats)
 					owner.change_stat(S, -effectedstats[S])
-				to_chat(O, span_warning("Astrata's light fades, leaving you weary."))
 		else
 			for(var/S in effectedstats)
 				owner.change_stat(S, -effectedstats[S])
-			to_chat(O, span_warning("Astrata's light fades, leaving you weary."))
