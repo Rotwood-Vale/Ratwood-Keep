@@ -109,3 +109,9 @@
 	name = "Kite Shield"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/shield/tower/metal)
+
+//Horse
+/datum/supply_pack/rogue/bandit/Knight/saiga
+	name = "Saiga"
+	cost = 300
+	contains = list(/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled)
