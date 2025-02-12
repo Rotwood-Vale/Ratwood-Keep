@@ -147,7 +147,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/nickname = "Please Change Me"
 	var/highlight_color = "#FF0000"
 	var/datum/charflaw/charflaw
-	var/datum/charflaw/charflawtwo
 
 	var/family = FAMILY_NONE
 
@@ -365,8 +364,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(statpack.name == "Virtuous")
 				dat += "<b>Second Virtue:</b> <a href='?_src_=prefs;preference=virtuetwo;task=input'>[virtuetwo]</a><BR>"
 			dat += "<b>Vice:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
-			if(statpack.name == "Virtuous")
-				dat += "<b>Second Vice:</b> <a href='?_src_=prefs;preference=charflawtwo;task=input'>[charflawtwo]</a><BR>"
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
@@ -1629,10 +1626,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 				if("charflaw")
 					var/list/coom = GLOB.character_flaws.Copy()
-					if(coom[charflaw.name])
-						coom.Remove(charflaw.name)
-					if(coom[charflawtwo.name])
-						coom.Remove(charflawtwo.name)
 					var/result = input(user, "Select a flaw", "Roguetown") as null|anything in coom
 					if(result)
 						result = coom[result]
@@ -1640,21 +1633,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						charflaw = C
 						if(charflaw.desc)
 							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
-
-				if("charflawtwo")
-					var/list/coom = GLOB.character_flaws.Copy()
-					if(coom[charflaw.name])
-						coom.Remove(charflaw.name)
-					if(coom[charflawtwo.name])
-						coom.Remove(charflawtwo.name)
-					coom.Remove("Random or No Flaw")
-					var/result = input(user, "Select a flaw", "Roguetown") as null|anything in coom
-					if(result)
-						result = coom[result]
-						var/datum/charflaw/C = new result()
-						charflawtwo = C
-						if(charflawtwo.desc)
-							to_chat(user, "<span class='info'>[charflawtwo.desc]</span>")
 
 				if("mutant_color")
 					var/new_mutantcolor = color_pick_sanitized_lumi(user, "Choose your character's mutant #1 color:", "Character Preference","#"+features["mcolor"])
@@ -2174,10 +2152,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	if(charflaw)
 		character.charflaw = new charflaw.type()
 		character.charflaw.on_mob_creation(character)
-
-	if(charflawtwo)
-		character.charflawtwo = new charflawtwo.type()
-		character.charflawtwo.on_mob_creation(character)
 
 	character.dna.real_name = character.real_name
 

@@ -70,8 +70,6 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 /proc/apply_charflaw_equipment(mob/living/carbon/human/character, client/player)
 	if(character.charflaw)
 		character.charflaw.apply_post_equipment(character)
-	if(character.charflawtwo && player.prefs.statpack.name == "Virtuous")
-		character.charflawtwo.apply_post_equipment(character)
 
 /proc/apply_prefs_special(mob/living/carbon/human/character, client/player)
 	if(!player)

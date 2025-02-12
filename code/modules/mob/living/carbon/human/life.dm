@@ -74,8 +74,6 @@
 		update_rogstam()
 		if(charflaw && !charflaw.ephemeral)
 			charflaw.flaw_on_life(src)
-		if(charflawtwo && !charflawtwo.ephemeral)
-			charflawtwo.flaw_on_life(src)
 		if(health <= 0)
 			adjustOxyLoss(0.5)
 		if(mode == AI_OFF && !client && !HAS_TRAIT(src, TRAIT_NOSLEEP))
