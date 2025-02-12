@@ -751,20 +751,41 @@
 /// Returns patron-related examine text for the mob, if any. Can return null.
 /mob/living/proc/get_heretic_text(mob/examiner)
 	var/heretic_text
+	var/seer
+
 	if(HAS_TRAIT(src,TRAIT_DECEIVING_MEEKNESS))
 		return null
 
+	if(HAS_TRAIT(examiner, TRAIT_HERETIC_SEER))
+		seer = TRUE
+	
 	if(HAS_TRAIT(src, TRAIT_COMMIE))
-		if(HAS_TRAIT(examiner, TRAIT_COMMIE) || HAS_TRAIT(examiner, TRAIT_HERETIC_SEER))
+		if(seer)
+			heretic_text += "Matthiosan."
+			if(HAS_TRAIT(examiner, TRAIT_COMMIE))
+				heretic_text += " To share with. To take with. For all, and us."
+		else if(HAS_TRAIT(examiner, TRAIT_COMMIE))
 			heretic_text += "Comrade!"
 	else if((HAS_TRAIT(src, TRAIT_CABAL)))
-		if(HAS_TRAIT(examiner, TRAIT_CABAL) || HAS_TRAIT(examiner, TRAIT_HERETIC_SEER))
+		if(seer)
+			heretic_text += "A member of Zizo's cabal."
+			if(HAS_TRAIT(examiner, TRAIT_CABAL))
+				heretic_text += " May their ambitions not interfere with mine."
+		else if(HAS_TRAIT(examiner, TRAIT_CABAL))
 			heretic_text += "Another of the Cabal!"
 	else if((HAS_TRAIT(src, TRAIT_HORDE)))
-		if(HAS_TRAIT(examiner, TRAIT_HORDE) || HAS_TRAIT(examiner, TRAIT_HERETIC_SEER))
+		if(seer)
+			heretic_text += "Hardened by Graggar's Rituals."
+			if(HAS_TRAIT(examiner, TRAIT_HORDE))
+				heretic_text += " Mine were a glorious memory."
+		else if(HAS_TRAIT(examiner, TRAIT_HORDE))
 			heretic_text += "Anointed!"
 	else if((HAS_TRAIT(src, TRAIT_DEPRAVED)))
-		if(HAS_TRAIT(examiner, TRAIT_DEPRAVED) || HAS_TRAIT(examiner, TRAIT_HERETIC_SEER))
+		if(seer)
+			heretic_text += "Baotha's Touched."
+			if(HAS_TRAIT(examiner, TRAIT_DEPRAVED))
+				heretic_text += " She leads us to the greatest ends."
+		else if(HAS_TRAIT(examiner, TRAIT_DEPRAVED))
 			heretic_text += "Debased!"
 	
 	return heretic_text

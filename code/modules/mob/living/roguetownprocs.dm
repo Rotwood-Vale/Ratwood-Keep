@@ -196,12 +196,10 @@
 				prob2defend *= 0.65
 
 			if(HAS_TRAIT(H, TRAIT_SENTINELOFWITS))
-				if(STAINT > 10)
-					var/bonus = round(((H.STAINT - 10) / 2)) * 10
-					if(bonus > 0)
-						if(HAS_TRAIT(H, TRAIT_HEAVYARMOR) || HAS_TRAIT(H, TRAIT_MEDIUMARMOR) || HAS_TRAIT(H, TRAIT_DODGEEXPERT))
-							bonus = clamp(bonus, 0, 25)
-						prob2defend += bonus
+				if(ishuman(H))
+					var/mob/living/carbon/human/SH = H
+					var/sentinel = SH.calculate_sentinel_bonus()
+					prob2defend += sentinel
 
 			prob2defend = clamp(prob2defend, 5, 90)
 
@@ -482,12 +480,8 @@
 			prob2defend *= 0.25
 
 		if(HAS_TRAIT(H, TRAIT_SENTINELOFWITS))
-			if(H.STAINT > 10)
-				var/bonus = round(((H.STAINT - 10) / 2)) * 10
-				if(bonus > 0)
-					if(HAS_TRAIT(H, TRAIT_HEAVYARMOR) || HAS_TRAIT(H, TRAIT_MEDIUMARMOR) || HAS_TRAIT(H, TRAIT_DODGEEXPERT))
-						bonus = clamp(bonus, 0, 25)
-					prob2defend += bonus
+			var/sentinel = H.calculate_sentinel_bonus()
+			prob2defend += sentinel
 
 		prob2defend = clamp(prob2defend, 5, 90)
 
@@ -586,3 +580,27 @@
 	var/datum/atom_hud/antag/hud = GLOB.huds[antag_hud_type]
 	hud.leave_hud(src)
 	set_antag_hud(src, null)
+
+/mob/living/carbon/human/proc/calculate_sentinel_bonus()
+	if(STAINT > 10)
+		var/fakeint = STAINT
+		if(status_effects.len)
+			for(var/S in status_effects)
+				var/datum/status_effect/status = S
+				if(status.effectedstats.len)
+					if(status.effectedstats["intelligence"])
+						if(status.effectedstats["intelligence"] > 0)
+							fakeint -= status.effectedstats["intelligence"]
+		if(fakeint > 10)
+			var/bonus = round(((fakeint - 10) / 2)) * 10
+			if(bonus > 0)
+				if(HAS_TRAIT(src, TRAIT_HEAVYARMOR) || HAS_TRAIT(src, TRAIT_MEDIUMARMOR) || HAS_TRAIT(src, TRAIT_DODGEEXPERT) || HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+					bonus = clamp(bonus, 0, 25)
+				else
+					bonus = clamp(bonus, 0, 50)//20-21 INT
+			return bonus
+		else
+			return 0
+	else
+		return 0
+
