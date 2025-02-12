@@ -5,42 +5,16 @@ Example before I made greater fireball its own noninherited spell trying to grab
 Or during making lesser raise undead, it would try inheriting from normal raise undead and fire both procholders.
 Please whenever possible, make each spell its own procholder, and do *not* have them inherit from another completed spell. Lest you bugger shit up.
 ~Neri. */
-/*
-		/obj/effect/proc_holder/spell/invoked/projectile/fireballgreater,// 10 cost	combat, AOE heavy single target damage
-		/obj/effect/proc_holder/spell/invoked/meteor_storm,				// 10 cost	combat, LARGE AOE, light damage.
-		/obj/effect/proc_holder/spell/invoked/sundering_lightning,		// 10 cost	combat, upper level AOE hard stunning damage
-		/obj/effect/proc_holder/spell/invoked/projectile/fireball,		// 3 cost	combat, damaging AOE + damages worn/held things
-		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,	// 3 cost	combat, single target damage, knockdown
-		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,		// 3 cost	combat, burstfire single target damage
-		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,	// 3 cost	combat, single target single shot damage
-		/obj/effect/proc_holder/spell/invoked/projectile/frostbolt,		// 3 cost	combat, single target, single shot lesser damage w/ slow
-		/obj/effect/proc_holder/spell/targeted/lightninglure,			// 3 cost	combat, ranged single target hard stun w/ time requirement.
-		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,		// 3 cost	utility hold spell. Target unable to move, but can fight.
-		/obj/effect/proc_holder/spell/invoked/findfamiliar,				// 3 cost	combat, summon spell.
-		/obj/effect/proc_holder/spell/invoked/push_spell,				// 3 cost	localized AOE knockback spell. Knocksdown/disarms victims
-		/obj/effect/proc_holder/spell/invoked/arcyne_storm,				// 2 cost	combat, light damaging AOE, stall/area denial spell
-		/obj/effect/proc_holder/spell/targeted/touch/darkvision,		// 2 cost	utility, dark sight
-		/obj/effect/proc_holder/spell/invoked/haste,					// 2 cost	utility/combatbuff, faster mve speed.
-		/obj/effect/proc_holder/spell/targeted/summonweapon,			// 2 cost	utility/combat, summons a marked weapon to caster.
-		/obj/effect/proc_holder/spell/invoked/mending,					// 2 cost	utility, repairs items.
-		/obj/effect/proc_holder/spell/invoked/message,					// 2 cost	utility, messages anyone you know the name of.
-		/obj/effect/proc_holder/spell/invoked/blade_burst,				// 2 cost	combat, single target damage localized on rndm leg. possible bone break.
-		/obj/effect/proc_holder/spell/invoked/projectile/fetch,			// 2 cost	utility/combat, pulls single target closer
-		/obj/effect/proc_holder/spell/invoked/projectile/repel,			// 2 cost	utility/combat, flings single target away
-		/obj/effect/proc_holder/spell/invoked/forcewall_weak,			// 2 cost	utility/combat, places walls caster can walk through. stall spell.
-		/obj/effect/proc_holder/spell/targeted/touch/nondetection, 		// 1 cost	utility, no scrying your location.
-		/obj/effect/proc_holder/spell/invoked/featherfall,				// 1 cost	utility, no fall damage from 1 zlevel drop
-		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,	// free for all mage roles.
-		*/
+
 /* MAGE GAMEPLAY LOOP NOTES:
 The amount of spellpoints mages has varies fairly significantly.
 Highly dependant on the mage's book quality for total amount, multiplied by a learning modifier dependant on arcana skill and reading as well as int.
-That said, mage apprentices for the most part, start off with 3 (6 if counting the first night's rest) spell points.
+That said, mage apprentices for the most part, start off with 5 (8 if counting the first night's rest) spell points.
 Court magos has a total of 17 points, To allow for picking of their 'strongest' spell, between greater fireball, meteor, and sundering lightning.
 Theoretically someone could get 12 spell points to get one of those spells, in 4 nights, but odds are, it's unlikely.
 Unless of course, they went heavy into the gameplay loop, and got a better book. And even then, it's likely only feasible for apprentices given modifiers.
-*/
-//A spell to choose new spells, upon spawning or gaining levels
+-Radiantflash */
+//A spell to choose new spells, upon spawning or gaining levels - NOTE: Please keep this spell at the top of the file to make it better for organization -RadiantFlash
 /obj/effect/proc_holder/spell/invoked/learnspell
 	name = "Attempt to learn a new spell"
 	desc = "Weave a new spell"
@@ -51,27 +25,36 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 
 /obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
 	. = ..()
-	//list of spells you can learn, it may be good to move this somewhere else eventually
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
 	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
 
 	var/list/spell_choices = list(
-		SPELL_FIREBALL,
-/*3*/	SPELL_LIGHTNINGBOLT,
-		SPELL_SPITFIRE,
-		SPELL_ARCANEBOLT,
-		SPELL_SLOWDOWN_SPELL_AOE,
-		SPELL_FINDFAMILIAR,
-		SPELL_PUSH_SPELL,
-/*2*/	SPELL_DARKVISION,
-		SPELL_HASTE,
-		SPELL_MESSAGE,
-		SPELL_BLADE_BURST,
-		SPELL_FETCH,
-/*1*/	SPELL_NONDETECTION,
-		SPELL_PRESTIDIGITATION,
-		SPELL_FEATHERFALL,
-		SPELL_FORCEWALL_WEAK,
+		SPELL_FIREBALLGREATER,		// 10 cost	combat, AOE heavy single target damage
+		SPELL_METEOR,				// 10 cost	combat, LARGE AOE, light damage.
+		SPELL_SUNDER_LIGHTNING,		// 10 cost	combat, upper level AOE hard stunning damage
+		SPELL_FIREBALL,				// 3 cost	combat, damaging AOE + damages worn/held things
+		SPELL_LIGHTNINGBOLT,		// 3 cost	combat, single target damage, knockdown
+		SPELL_SPITFIRE,				// 3 cost	combat, burstfire single target damage
+		SPELL_ARCANEBOLT,			// 3 cost	combat, single target single shot damage
+		SPELL_FROSTBOLT,			// 3 cost	combat, single target, single shot lesser damage w/ slow
+		SPELL_LIGHTNINGLURE,		// 3 cost	combat, ranged single target hard stun w/ time requirement.
+		SPELL_SLOWDOWN_SPELL_AOE,	// 3 cost	utility hold spell. Target unable to move, but can fight.
+		SPELL_FINDFAMILIAR,			// 3 cost	combat, summon spell.
+		SPELL_REPULSE,				// 3 cost	localized AOE knockback spell. Knocksdown/disarms victims
+		SPELL_ARCYNE_STORM,			// 2 cost	combat, light damaging AOE, stall/area denial spell
+		SPELL_DARKVISION,			// 2 cost	utility, dark sight
+		SPELL_HASTE,				// 2 cost	utility/combatbuff, faster mve speed.
+		SPELL_SUMMON_WEAPON,		// 2 cost	utility/combat, summons a marked weapon to caster.
+		SPELL_MENDING,				// 2 cost	utility, repairs items
+		SPELL_MESSAGE,				// 2 cost	utility, messages anyone you know the name of.
+		SPELL_BLADE_BURST,			// 2 cost	combat, single target damage localized on rndm leg. possible bone break.
+		SPELL_FETCH,				// 2 cost	utility/combat, pulls single target closer
+		SPELL_REPEL,				// 2 cost	utility/combat, flings single target away
+		SPELL_FORCEWALL_WEAK,		// 2 cost	utility/combat, places walls caster can walk through. stall spell.
+		SPELL_NONDETECTION,			// 1 cost	utility, no scrying your location.
+		SPELL_FEATHERFALL,			// 1 cost	utility, no fall damage from 1 zlevel drop
+		SPELL_PRESTIDIGITATION		// free for all mage roles, Utility spell, used in gathering components and parlor tricks
+
 	)
 
 	//Patron Spelllists
