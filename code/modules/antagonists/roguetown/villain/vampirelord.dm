@@ -748,7 +748,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					user.playsound_local(get_turf(src), 'sound/misc/portalactivate.ogg', 100, FALSE, pressure_affected = FALSE)
 		if("CANCEL")
 			return
-/* DISABLED FOR NOW
+
 /obj/item/clothing/neck/roguetown/portalamulet/attack_self(mob/user)
 	. = ..()
 	if(alert(user, "Create a portal?", "PORTAL GEM", "Yes", "No") == "Yes")
@@ -761,7 +761,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if(uses <= 0)
 			visible_message("[src] shatters!")
 			qdel(src)
-*/
+
 /obj/structure/vampire/scryingorb/attack_hand(mob/living/carbon/human/user)
 	if(user.mind.special_role == "Vampire Lord")
 		user.visible_message("<font color='red'>[user]'s eyes turn dark red, as they channel the [src]</font>", "<font color='red'>I begin to channel my consciousness into a Predator's Eye.</font>")
