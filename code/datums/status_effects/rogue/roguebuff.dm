@@ -440,6 +440,7 @@
 
 
 /datum/status_effect/buff/guidinglight/on_remove()
+	. = ..()
 	playsound(owner, 'sound/items/firesnuff.ogg', 75, FALSE)
 	to_chat(owner, span_notice("The miraculous light surrounding me has fled..."))
 	owner.remove_filter(BLESSINGOFSUN_FILTER)
@@ -612,7 +613,7 @@
 	. = ..()
 	to_chat(owner, span_warning("I feel Dendor's blessing leave my body..."))
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
-	ADD_TRAIT(owner, TRAIT_STRONGBITE, TRAIT_GENERIC)
+	REMOVE_TRAIT(owner, TRAIT_STRONGBITE, TRAIT_GENERIC)
 
 /atom/movable/screen/alert/status_effect/buff/pacify
 	name = "Blessing of Eora"
