@@ -9,3 +9,9 @@
 
 /obj/effect/landmark/start/goblinrabble // Позволяет спавниться на этих точках гоблинам вместо обычных мест лейтжоина
 	jobspawn_override = list("Goblin Chief", "Goblin Shaman", "Goblin Rabble", "Goblin Smith", "Goblin Guard", "Goblin Cook")
+
+/datum/outfit/job/roguetown/goblinrabble/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
+	ADD_TRAIT(H, TRAIT_BARDIC_TRAINING, TRAIT_GENERIC)
