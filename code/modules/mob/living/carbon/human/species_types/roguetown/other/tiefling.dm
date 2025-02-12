@@ -12,7 +12,7 @@
 	Many have claimed that they are the spawn of a succubus (Or incubus) laying with a mortal. \
 	Due to this speculation, their species has suffered vast tragedy throughout their short history, \
 	facing harsh scrutiny, unfair judgement, and even outright genocide in the worst cases. This history of brutal treatment and prejudce has resulted in the damage of many a Tiefling's psyche, causing to most of their kind to seek a solitary life away from the judgemental eyes of others. Tieflings cannot reproduce with mortals, and as a result no half-breed exists. Tieflings tend to be extremely perceptive and paranoid, as luck is rarely on their side, and their unique biology makes them extremely susceptible to injury.<br>\
-	(+1 Intelligence)"
+	(+1 Constitution, +1 Intelligence)"
 
 	skin_tone_wording = "Progenitor"
 
@@ -43,7 +43,7 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	race_bonus = list(STAT_INTELLIGENCE = 1)
+	race_bonus = list(STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = 1)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
