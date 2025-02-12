@@ -433,7 +433,8 @@
 		if(target)
 			if(targets_from && isturf(targets_from.loc) && target.Adjacent(targets_from)) //If they're next to us, attack
 				MeleeAction()
-				stomp(target)
+				if(world.time >= stomp_cd + 250)
+					stomp(target)
 			else
 				if(rapid_melee > 1 && target_distance <= melee_queue_distance)
 					MeleeAction(FALSE)
@@ -458,6 +459,7 @@
 	new /obj/item/natural/elementalrelic(deathspot)
 	update_icon()
 	qdel(src)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/collossus/proc/stomp(target)
 	for (var/mob/living/stomped in view(1, src))
 		new	/obj/effect/temp_visual/stomp(stomped)
@@ -465,6 +467,7 @@
 		var/mob/living/L = stomped
 		L.throw_at(throw_target, 7, 4)
 		L.adjustBruteLoss(20)
+	stomp_cd = world.time
 
 /obj/projectile/earthenchunk
 	name = "Elemental Chunk"
@@ -502,4 +505,3 @@
 			continue
 
 	qdel(src)
-
