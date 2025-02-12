@@ -135,9 +135,6 @@
 			if(newprice)
 				if(findtext(num2text(newprice), "."))
 					return attack_hand(usr)
-				if(newprice < 0)
-					to_chat(usr, span_warning("DENIED!"))
-					return attack_hand(usr)
 				held_items[O]["PRICE"] = newprice
 	return attack_hand(usr)
 
@@ -284,8 +281,8 @@
 
 /obj/structure/roguemachine/vendor/portshop
 	lockid = "steward"
-	name = "Portshop Key Seller."
-	desc = "Get the key for the shop here!"
+	name = "Portshop key seller."
+	desc = "Get key from shop here!"
 
 /obj/structure/roguemachine/vendor/portshop/Initialize()
 	. = ..()
@@ -293,12 +290,12 @@
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
-		held_items[P]["PRICE"] = 10
+		held_items[P]["PRICE"] = 7
 
 /obj/structure/roguemachine/vendor/street_smithshop01
 	lockid = "steward"
-	name = "Shop Key Seller"
-	desc = "Get the key for the shop here!"
+	name = "Smith shop key seller."
+	desc = "Get key from shop here!"
 
 /obj/structure/roguemachine/vendor/street_smithshop01/Initialize()
 	. = ..()
@@ -306,12 +303,12 @@
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
-		held_items[P]["PRICE"] = 10
+		held_items[P]["PRICE"] = 7
 
 /obj/structure/roguemachine/vendor/street_shop01
 	lockid = "steward"
-	name = "Shop Key Seller"
-	desc = "Get the key for the shop here!"
+	name = "Street shop key seller."
+	desc = "Get key from shop here!"
 
 /obj/structure/roguemachine/vendor/street_shop01/Initialize()
 	. = ..()
@@ -319,12 +316,12 @@
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
-		held_items[P]["PRICE"] = 10
+		held_items[P]["PRICE"] = 7
 
 /obj/structure/roguemachine/vendor/street_shop02
 	lockid = "steward"
-	name = "Shop Key Seller"
-	desc = "Get the key for the shop here!"
+	name = "Street shop key seller."
+	desc = "Get key from shop here!"
 
 /obj/structure/roguemachine/vendor/street_shop02/Initialize()
 	. = ..()
@@ -332,23 +329,17 @@
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
-		held_items[P]["PRICE"] = 10
+		held_items[P]["PRICE"] = 7
 
 /obj/structure/roguemachine/vendor/smallstreet_master01
 	lockid = "steward"
-	name = "Stall Shop Key Seller"
-	desc = "Get the key for a stall here!"
+	name = "Market shop key seller."
+	desc = "Get key from shop here!"
 
 /obj/structure/roguemachine/vendor/smallstreet_master01/Initialize()
 	. = ..()
-	for(var/X in list(
-		/obj/item/key/smallstreet_shop01,
-		/obj/item/key/smallstreet_shop02,
-		/obj/item/key/smallstreet_shop03,
-		/obj/item/key/smallstreet_shop04,
-		/obj/item/key/smallstreet_shop05,
-		/obj/item/key/smallstreet_shop06))
+	for(var/X in list(/obj/item/key/smallstreet_shop01, /obj/item/key/smallstreet_shop02, /obj/item/key/smallstreet_shop03, /obj/item/key/smallstreet_shop04, /obj/item/key/smallstreet_shop05, /obj/item/key/smallstreet_shop06))
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
-		held_items[P]["PRICE"] = 10
+		held_items[P]["PRICE"] = 5
