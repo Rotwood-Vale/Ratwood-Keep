@@ -174,3 +174,7 @@
 	cost = 2000
 	contains = list(/obj/item/clothing/neck/roguetown/blkknight)
 
+/datum/supply_pack/rogue/bandit/Things/Dragonscale_ring
+	name = "Dragonscale Ring"
+	cost = 1500
+	contains = list(/obj/item/clothing/ring/dragon_ring)
