@@ -8347,10 +8347,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
-"erm" = (
-/obj/structure/fog_wall,
-/turf/open/floor/rogue/dirt,
-/area/rogue/under/cavewet/bogcaves)
 "erp" = (
 /obj/structure/stairs{
 	dir = 8
@@ -9583,6 +9579,12 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/harbor)
+"eYI" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/turf/open/floor/rogue/twig/platform,
+/area/rogue/outdoors/rtfield)
 "eYN" = (
 /obj/structure/closet/crate/chest{
 	lockid = "clinic"
@@ -16333,7 +16335,6 @@
 "iHT" = (
 /obj/structure/table/vtable/v2,
 /obj/item/reagent_containers/glass/alembic,
-/obj/structure/roguemachine/withdraw,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/academy)
 "iIi" = (
@@ -20214,9 +20215,6 @@
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
-"kKf" = (
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/under/cavewet/bogcaves)
 "kLP" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -24148,6 +24146,9 @@
 /obj/item/natural/bundle/fibers,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
+"mXg" = (
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/under/cavewet/bogcaves)
 "mXh" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/blocks,
@@ -28259,6 +28260,12 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"pch" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/rogue/twig/platform,
+/area/rogue/outdoors/rtfield)
 "pcu" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/dirt/road,
@@ -29691,12 +29698,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/harbor)
-"pRs" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/turf/open/floor/rogue/twig/platform,
-/area/rogue/outdoors/rtfield)
 "pRt" = (
 /obj/structure/closet/crate/chest{
 	lockid = "keep_dungeon_torture"
@@ -35679,6 +35680,10 @@
 "tjS" = (
 /turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue/indoors/town/church)
+"tjZ" = (
+/obj/structure/fog_wall,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves)
 "tkp" = (
 /obj/structure/table/wood{
 	dir = 4;
@@ -43182,12 +43187,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/dwarfin)
-"xmi" = (
-/obj/structure/fluff/railing/border{
-	dir = 4
-	},
-/turf/open/floor/rogue/twig/platform,
-/area/rogue/outdoors/rtfield)
 "xmn" = (
 /obj/structure/chair/bench/coucha/r,
 /turf/open/floor/rogue/wood,
@@ -101392,13 +101391,13 @@ gIc
 gIc
 gIc
 gIc
-erm
+tjZ
 iSc
 iSc
 iSc
 iSc
 iSc
-erm
+tjZ
 gIc
 whb
 whb
@@ -107876,8 +107875,8 @@ dVO
 qtE
 iad
 iad
-kKf
-kKf
+mXg
+mXg
 iad
 qtE
 dVO
@@ -110468,8 +110467,8 @@ whb
 qtE
 iad
 iad
-kKf
-kKf
+mXg
+mXg
 iad
 iad
 qtE
@@ -189936,13 +189935,13 @@ wSn
 wSn
 qvR
 uaL
-pRs
+eYI
 qbG
-pRs
-pRs
-pRs
-pRs
-pRs
+eYI
+eYI
+eYI
+eYI
+eYI
 twI
 twI
 gwH
@@ -190368,13 +190367,13 @@ qvR
 uaL
 wSn
 uaL
-xmi
-xmi
+pch
+pch
 qbG
-xmi
-xmi
+pch
+pch
 qbG
-xmi
+pch
 twI
 twI
 gwH
