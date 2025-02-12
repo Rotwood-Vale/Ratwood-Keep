@@ -5,32 +5,7 @@ Example before I made greater fireball its own noninherited spell trying to grab
 Or during making lesser raise undead, it would try inheriting from normal raise undead and fire both procholders.
 Please whenever possible, make each spell its own procholder, and do *not* have them inherit from another completed spell. Lest you bugger shit up.
 ~Neri. */
-
-
-/* MAGE GAMEPLAY LOOP NOTES:
-The amount of spellpoints mages has varies fairly significantly.
-Highly dependant on the mage's book quality for total amount, multiplied by a learning modifier dependant on arcana skill and reading as well as int.
-That said, mage apprentices for the most part, start off with 3 (6 if counting the first night's rest) spell points.
-Court magos has a total of 17 points, To allow for picking of their 'strongest' spell, between greater fireball, meteor, and sundering lightning.
-Theoretically someone could get 12 spell points to get one of those spells, in 4 nights, but odds are, it's unlikely.
-Unless of course, they went heavy into the gameplay loop, and got a better book. And even then, it's likely only feasible for apprentices given modifiers.
-*/
-//A spell to choose new spells, upon spawning or gaining levels
-/obj/effect/proc_holder/spell/invoked/learnspell			//Keep Learn spell at the top, so we may peruse the list of spells far easier.
-	name = "Attempt to learn a new spell"
-	desc = "Weave a new spell"
-	school = "transmutation"
-	overlay_state = "book1"
-	chargedrain = 0
-	chargetime = 0
-
-/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
-	. = ..()
-	//list of spells you can learn, it may be good to move this somewhere else eventually
-	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
-	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
-
-	var/list/spell_choices = list(
+/*
 		/obj/effect/proc_holder/spell/invoked/projectile/fireballgreater,// 10 cost	combat, AOE heavy single target damage
 		/obj/effect/proc_holder/spell/invoked/meteor_storm,				// 10 cost	combat, LARGE AOE, light damage.
 		/obj/effect/proc_holder/spell/invoked/sundering_lightning,		// 10 cost	combat, upper level AOE hard stunning damage
@@ -56,6 +31,124 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		/obj/effect/proc_holder/spell/targeted/touch/nondetection, 		// 1 cost	utility, no scrying your location.
 		/obj/effect/proc_holder/spell/invoked/featherfall,				// 1 cost	utility, no fall damage from 1 zlevel drop
 		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,	// free for all mage roles.
+		*/
+/* MAGE GAMEPLAY LOOP NOTES:
+The amount of spellpoints mages has varies fairly significantly.
+Highly dependant on the mage's book quality for total amount, multiplied by a learning modifier dependant on arcana skill and reading as well as int.
+That said, mage apprentices for the most part, start off with 3 (6 if counting the first night's rest) spell points.
+Court magos has a total of 17 points, To allow for picking of their 'strongest' spell, between greater fireball, meteor, and sundering lightning.
+Theoretically someone could get 12 spell points to get one of those spells, in 4 nights, but odds are, it's unlikely.
+Unless of course, they went heavy into the gameplay loop, and got a better book. And even then, it's likely only feasible for apprentices given modifiers.
+*/
+//A spell to choose new spells, upon spawning or gaining levels
+/obj/effect/proc_holder/spell/invoked/learnspell
+	name = "Attempt to learn a new spell"
+	desc = "Weave a new spell"
+	school = "transmutation"
+	overlay_state = "book1"
+	chargedrain = 0
+	chargetime = 0
+
+/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
+	. = ..()
+	//list of spells you can learn, it may be good to move this somewhere else eventually
+	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
+	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
+
+	var/list/spell_choices = list(
+		SPELL_FIREBALL,
+/*3*/	SPELL_LIGHTNINGBOLT,
+		SPELL_SPITFIRE,
+		SPELL_ARCANEBOLT,
+		SPELL_SLOWDOWN_SPELL_AOE,
+		SPELL_FINDFAMILIAR,
+		SPELL_PUSH_SPELL,
+/*2*/	SPELL_DARKVISION,
+		SPELL_HASTE,
+		SPELL_MESSAGE,
+		SPELL_BLADE_BURST,
+		SPELL_FETCH,
+/*1*/	SPELL_NONDETECTION,
+		SPELL_PRESTIDIGITATION,
+		SPELL_FEATHERFALL,
+		SPELL_FORCEWALL_WEAK,
+	)
+
+	//Patron Spelllists
+	var/list/spell_choices_noc = list(
+		SPELL_MAGEBLINDNESS,  // 2cost
+		SPELL_MAGEINVISIBILITY,
+	)
+
+	var/list/spell_choices_graggar = list(
+
+	)
+
+	var/list/spell_choices_matthios = list()
+
+	var/list/spell_choices_zizo = list(
+		SPELL_STRENGTHEN_UNDEAD,// 4 cost
+		SPELL_SICKNESS,// 3 cost
+		SPELL_EYEBITE,// 3 cost
+	)
+
+	if(user.patron.type == /datum/patron/divine/noc)
+		spell_choices.Add(spell_choices_noc)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/graggar)
+		spell_choices.Add(spell_choices_graggar)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/matthios)
+		spell_choices.Add(spell_choices_matthios)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/zizo)
+		spell_choices.Add(spell_choices_zizo)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
+	var/obj/effect/proc_holder/spell/item = choices[choice]
+	if(!item)
+		return     // user canceled;
+	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
+		return
+	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
+		if(knownspell.type == item.type)
+			to_chat(user,span_warning("You already know this one!"))
+			return	//already know the spell
+	if(item.cost > user.mind.spell_points - user.mind.used_spell_points)
+		to_chat(user,span_warning("You do not have enough experience to create a new spell."))
+		return		// not enough spell points
+	else
+		user.mind.used_spell_points += item.cost
+		user.mind.AddSpell(new item)
+
+/obj/effect/proc_holder/spell/invoked/learnspell			//Keep Learn spell at the top, so we may peruse the list of spells far easier.
+	name = "Attempt to learn a new spell"
+	desc = "Weave a new spell"
+	school = "transmutation"
+	overlay_state = "book1"
+	chargedrain = 0
+	chargetime = 0
+
+/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
+	. = ..()
+	//list of spells you can learn, it may be good to move this somewhere else eventually
+	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
+	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
+
+	var/list/spell_choices = list(
+
 	)
 
 	//Patron Spelllists

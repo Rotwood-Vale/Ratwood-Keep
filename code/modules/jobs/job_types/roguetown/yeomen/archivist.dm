@@ -12,7 +12,7 @@
 	allowed_ages = ALL_AGES_LIST
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/archivist
-	spells = list(/obj/effect/proc_holder/spell/invoked/teach, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation, /obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/invoked/message)
+	spells = list(SPELL_TEACH, SPELL_PRESTIDIGITATION, SPELL_FETCH, SPELL_MESSAGE)
 	display_order = JDO_ARCHIVIST
 	give_bank_account = 25
 	min_pq = 5 //the player should actually have some experience to properly play the role
@@ -87,20 +87,24 @@
 	. = ..()
 	var/list/choices = list()
 	var/list/skill_choices = list(
-    /datum/skill/misc/reading,
-    /datum/skill/misc/lockpicking,
-    /datum/skill/misc/riding,
-    /datum/skill/misc/music,
-    /datum/skill/misc/treatment,
-    /datum/skill/misc/sewing,
-    /datum/skill/magic/arcane,
-    /datum/skill/labor/farming,
-    /datum/skill/craft/crafting,
-    /datum/skill/craft/blacksmithing,
-    /datum/skill/craft/carpentry,
-    /datum/skill/craft/masonry,
-    /datum/skill/craft/cooking,
-    /datum/skill/craft/engineering
+	/datum/skill/craft/blacksmithing,
+	/datum/skill/craft/carpentry,
+	/datum/skill/craft/cooking,
+	/datum/skill/craft/crafting,
+	/datum/skill/craft/engineering,
+	/datum/skill/craft/hunting,
+	/datum/skill/craft/masonry,
+	/datum/skill/labor/farming,
+	/datum/skill/labor/fishing,
+	/datum/skill/labor/lumberjacking,
+	/datum/skill/labor/mining,
+	/datum/skill/magic/arcane,
+	/datum/skill/misc/lockpicking,
+	/datum/skill/misc/music,
+	/datum/skill/misc/reading,
+	/datum/skill/misc/riding,
+	/datum/skill/misc/sewing,
+	/datum/skill/misc/treatment
     )
 	for(var/i = 1, i <= skill_choices.len, i++)
 		choices["[skill_choices[i].name]"] = skill_choices[i]
@@ -162,4 +166,3 @@
 	else
 		revert_cast()
 		return FALSE
-

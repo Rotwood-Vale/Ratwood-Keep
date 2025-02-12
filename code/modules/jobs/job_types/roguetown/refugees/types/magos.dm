@@ -49,8 +49,8 @@
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+			H.mind.AddSpell(new SPELL_LEARNSPELL)
+			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 		if("Arcanist")	//slower casting roll, has better learning stats, and a better book.
@@ -81,8 +81,8 @@
 			H.change_stat("intelligence", 2)
 			H.change_stat("constitution", -2)
 			H.change_stat("endurance", -1)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+			H.mind.AddSpell(new SPELL_LEARNSPELL)
+			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			H.set_patron(/datum/patron/divine/noc)
 
 		if("Sorcerer")		//Faster casting roll, better arcana. Starts with more spell points. Has terrible learning stats, and a bad book. No chalk.
@@ -112,8 +112,8 @@
 			H.change_stat("intelligence", 2)
 			H.change_stat("constitution", -2)
 			H.change_stat("endurance", -1)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+			H.mind.AddSpell(new SPELL_LEARNSPELL)
+			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			H.set_patron(/datum/patron/divine/noc)
 
 		if("Occultist")
@@ -127,11 +127,11 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strengthen_undead)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead_lesser)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/revoke_unlife)
+			H.mind.AddSpell(new SPELL_STRENGTHEN_UNDEAD)
+			H.mind.AddSpell(new SPELL_SICKNESS)
+			H.mind.AddSpell(new SPELL_EYEBITE)
+			H.mind.AddSpell(new SPELL_RAISE_UNDEAD_LESSER)
+			H.mind.AddSpell(new SPELL_REVOKE_UNLIFE)
 			head = /obj/item/clothing/head/roguetown/necromhood
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
@@ -149,8 +149,8 @@
 			H.change_stat("endurance", -1)
 			H.change_stat("speed", -1)
 			H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can make a spellbook to get some.
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+			H.mind.AddSpell(new SPELL_LEARNSPELL)
+			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			H.set_patron(/datum/patron/zizo)
 			H.faction += "undead"
 
@@ -170,11 +170,11 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strengthen_undead)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/sickness)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead_lesser)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/revoke_unlife)
+	H.mind.AddSpell(new SPELL_STRENGTHEN_UNDEAD)
+	H.mind.AddSpell(new SPELL_SICKNESS)
+	H.mind.AddSpell(new SPELL_EYEBITE)
+	H.mind.AddSpell(new SPELL_RAISE_UNDEAD_LESSER)
+	H.mind.AddSpell(new SPELL_REVOKE_UNLIFE)
 	head = /obj/item/clothing/head/roguetown/necromhood
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
@@ -191,6 +191,7 @@
 	H.change_stat("endurance", -1)
 	H.change_stat("speed", -1)
 	H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can level arcane to get them
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+	H.mind.AddSpell(new SPELL_LEARNSPELL)
+	H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 	H.set_patron(/datum/patron/zizo)
 	H.faction += "undead"
