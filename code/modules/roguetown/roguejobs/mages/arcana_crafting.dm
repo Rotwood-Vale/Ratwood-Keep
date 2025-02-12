@@ -82,7 +82,7 @@
 
 /datum/crafting_recipe/roguetown/arcana/binding
 	name = "binding shackles"
-	result = /obj/item/mimictrinket
+	result = /obj/item/rope/chain/bindingshackles
 	reqs = list(/obj/item/rope/chain = 2,
 				/obj/item/natural/melded/t1 = 1)
 	skill_level = 2
@@ -101,7 +101,12 @@
 				/obj/item/natural/voidstone = 1)
 	skill_level = 4
 
-
+/datum/crafting_recipe/roguetown/arcana/arcanesigil
+	name = "arcane sigil"
+	result = /obj/item/clothing/ring/arcanesigil
+	reqs = list(/obj/item/natural/leyline = 1,
+				/obj/item/natural/melded/t4 = 1)
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/arcana/meldt1
 	name = "arcanic meld"
@@ -128,7 +133,7 @@
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/arcana/meldt4
-	name = "sorcerous weave"
+	name = "magical confluence"
 	result = /obj/item/natural/melded/t4
 	reqs = list(/obj/item/natural/abyssalflame = 1,
 				/obj/item/natural/sylvanessence = 1,
@@ -136,8 +141,8 @@
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/arcana/meldt5
-	name = "sorcerous weave"
-	result = /obj/item/natural/melded/t4
+	name = "arcanic abberation"
+	result = /obj/item/natural/melded/t5
 	reqs = list(/obj/item/natural/melded/t4 = 1,
 				/obj/item/natural/voidstone = 1)
 	skill_level = 2

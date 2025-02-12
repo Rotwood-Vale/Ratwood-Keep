@@ -341,6 +341,28 @@ obj/item/hourglass/temporal/stop()
 	cdtime = 10 MINUTES
 	activetime = 30 SECONDS
 
+/obj/item/clothing/ring/arcanesigil
+	name = "arcane sigil"
+	desc = "A radiantly shimmering sigil within an amulet, It seems to pulse with intense arcanic flows."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "amulet"
+	var/cdtime = 30 MINUTES
+	var/ready = TRUE
+
+/obj/item/clothing/ring/arcanesigil/attack_self(mob/living/carbon/human/user)
+	if(ready)
+		message_admins("ready")
+		if(do_after(user, 25, target = src))
+			to_chat(user,span_notice("[src] heats up to an almost burning temperature, flooding you with overwhelming arcane knowledge!"))
+			ready = FALSE
+			addtimer(CALLBACK(src, PROC_REF(revert), user), cdtime,TIMER_STOPPABLE) // Minus two so we play the sound and decap faster
+			user.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+	else
+		to_chat(user,span_notice("[src] remains inert. It must be gathering arcana!"))
+
+/obj/item/clothing/ring/arcanesigil/proc/revert()
+	ready = TRUE
+
 /obj/item/clothing/ring/active/shimmeringlens/attack_right(mob/user)
 	if(loc != user)
 		return
