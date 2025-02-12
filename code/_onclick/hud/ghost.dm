@@ -47,7 +47,7 @@
 							// Store the current time for the player
 							GLOB.job_respawn_delays[G.ckey] = world.time + target_job.same_job_respawn_delay
 
-				G.returntolobby()
+				G.returntolobby(0)
 
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"

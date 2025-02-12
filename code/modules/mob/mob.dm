@@ -581,7 +581,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Only works if flag/norespawn is allowed in config
  */
 /mob/verb/abandon_mob()
-	set name = "{RETURN TO LOBBY}"
+	set name = "{ABANDON MOB}"
 	set category = "Options"
 	set hidden = 1
 	if(!check_rights(0))
