@@ -155,6 +155,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/wizard
 	name = "wizard's robe"
+	desc = "Billowy, oversized robes with golden star designs. Perfect for the practicing magos."
 	icon_state = "wizardrobes"
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'

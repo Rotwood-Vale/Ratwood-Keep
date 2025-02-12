@@ -512,8 +512,8 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/head/roguetown/headdress
-	name = "foreign headdress"
-	desc = ""
+	name = "nemes"
+	desc = "A foreign silk headdress."
 	icon_state = "headdress"
 	sellprice = 10
 	sewrepair = TRUE
