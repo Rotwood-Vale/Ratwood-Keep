@@ -909,8 +909,13 @@
 	key = "haltyell"
 	message = "shouts a halt!"
 	emote_type = EMOTE_AUDIBLE
-	only_forced_audio = TRUE
-	show_runechat = FALSE
+	show_runechat = TRUE
+
+/mob/living/carbon/human/verb/emote_haltyell()
+	set name = "HALT!"
+	set category = "Noises"
+
+	emote("haltyell", intentional = TRUE)
 
 /datum/emote/living/rage
 	key = "rage"

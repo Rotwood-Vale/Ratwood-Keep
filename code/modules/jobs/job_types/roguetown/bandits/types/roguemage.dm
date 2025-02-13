@@ -54,5 +54,4 @@
 		H.mind.adjust_spellpoints(4)
 		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 		H.mind.AddSpell(new SPELL_LEARNSPELL)
-		H.verbs |= /mob/proc/haltyell
 		H.ambushable = FALSE

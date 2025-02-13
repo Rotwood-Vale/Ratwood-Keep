@@ -77,7 +77,6 @@
 		H.change_stat("perception", 2)
 		H.change_stat("endurance", 2)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
-	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
