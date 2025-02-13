@@ -80,7 +80,7 @@
 	check_cremation()
 
 /mob/living/carbon/handle_random_events()//BP/WOUND BASED PAIN
-	if(HAS_TRAIT(src, TRAIT_NOPAIN))
+	if(HAS_TRAIT(src, TRAIT_NOPAIN) || HAS_TRAIT(src, TRAIT_NOPAINSTUN))
 		return
 	if(!stat)
 		var/pain_threshold = STAEND * 10
@@ -159,8 +159,10 @@
 
 /mob/living/carbon/proc/get_complex_pain()
 	var/amt = 0
+	if(HAS_TRAIT(src, TRAIT_NOPAIN))
+		return amt
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
-		if(limb.status == BODYPART_ROBOTIC)
+		if(limb.status == BODYPART_ROBOTIC || limb.skeletonized)
 			continue
 		var/bodypart_pain = ((limb.brute_dam + limb.burn_dam) / limb.max_damage) * 100
 		for(var/datum/wound/wound as anything in limb.wounds)

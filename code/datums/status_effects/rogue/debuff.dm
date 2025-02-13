@@ -240,12 +240,12 @@
 
 /datum/status_effect/debuff/breedable/on_apply()
 	. = ..()
-	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+	ADD_TRAIT(owner, TRAIT_CRITICAL_IMMUNITY, id)
 	ADD_TRAIT(owner, TRAIT_SPELLCOCKBLOCK, id)
 
 /datum/status_effect/debuff/breedable/on_remove()
 	. = ..()
-	REMOVE_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, id)
+	REMOVE_TRAIT(owner, TRAIT_CRITICAL_IMMUNITY, id)
 	REMOVE_TRAIT(owner, TRAIT_SPELLCOCKBLOCK, id)
 
 /atom/movable/screen/alert/status_effect/debuff/breedable

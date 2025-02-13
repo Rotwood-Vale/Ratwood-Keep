@@ -665,34 +665,49 @@
 /mob/living/carbon/updatehealth()
 	if(status_flags & GODMODE)
 		return
-	var/total_burn	= 0
-//	var/total_brute	= 0
-	var/total_stamina = 0
+	var/total_damage = 0
 	var/total_tox = getToxLoss()
 	var/total_oxy = getOxyLoss()
-	var/used_damage = 0
+	var/total_stamina = 0
 	var/static/list/lethal_zones = list(
 		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
 	)
+	var/missing_limbs_multiplier = clamp(6 - bodyparts.len, 1, 6) // Damage multiplier for each missing limb, only applied to limbs (not the chest or head)
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts) //hardcoded to streamline things a bit
-		if(!(bodypart.body_zone in lethal_zones))
+		if(bodypart.status == BODYPART_ROBOTIC) // Prosthetic / Robotic limbs don't affect the calculation of total health
 			continue
-		var/my_burn = abs((bodypart.burn_dam / bodypart.max_damage) * DAMAGE_THRESHOLD_FIRE_CRIT)
-		total_burn = max(total_burn, my_burn)
-		used_damage = max(used_damage, my_burn)
-	if(used_damage < total_tox)
-		used_damage = total_tox
-	if(used_damage < total_oxy)
-		used_damage = total_oxy
-	health = round(maxHealth - used_damage, DAMAGE_PRECISION)
+		var/bp_damage = bodypart.get_damage()
+		var/limb_damage_multiplier = 1
+
+		// CON CHECK
+		if(STACON >= 10) // CON affects the amount of damage you take from each limb
+			limb_damage_multiplier -= (STACON / 100) // Max reduction of 20%
+		else
+			limb_damage_multiplier += ((20 - STACON) / 100) // Max of 20% extra damage
+
+		// LETHAL ZONES
+		if((bodypart.body_zone in lethal_zones))
+			total_damage += clamp(((maxHealth / length(lethal_zones)) * (bp_damage / bodypart.max_damage) * limb_damage_multiplier), 0, (maxHealth / length(lethal_zones) + (maxHealth / 5))) // Percentage based for lethal zones. Example: Head = 100% damaged, Chest = 0% damage => 50 damage total.
+			//total_damage += clamp((maxHealth * (bp_damage / bodypart.max_damage) * limb_damage_multiplier), 0, maxHealth) // Damage Calculation Alternative
+			continue
+		
+		// Regular zones
+		if((bp_damage / bodypart.max_damage) < 0.25) // Less than 25 percent of the limbs max health missing? No damage added to the total.
+			continue
+		total_damage += clamp(((maxHealth / length(bodyparts)) * missing_limbs_multiplier) * (bp_damage / bodypart.max_damage) * limb_damage_multiplier, 0, (maxHealth / length(bodyparts) * missing_limbs_multiplier)) // Less body parts? More damage.
+		if(HAS_TRAIT(src, TRAIT_NOBREATH) && bp_damage == bodypart.max_damage) // Snowflake catch for breathless mobs.
+			missing_limbs_multiplier = clamp(missing_limbs_multiplier++, 1, 6) // Basically counting them as crippled.
+			total_damage += ((maxHealth / 4) * missing_limbs_multiplier) // 25 * missing limbs count
+	var/bloodloss = HAS_TRAIT(src, TRAIT_NOBREATH) ? 0 : ((BLOOD_VOLUME_NORMAL - blood_volume) / BLOOD_VOLUME_NORMAL) * 100 // Fail safe for adding bloodloss damage to mobs that have no blood.
+	health = clamp(maxHealth - (total_oxy + total_tox + total_damage + (bloodloss / 4)), HEALTH_MAX_DAMAGE, maxHealth)
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
 	update_stat()
-	update_mobility()
-	if(stat == SOFT_CRIT)
+	if(InCritical())
 		add_movespeed_modifier(MOVESPEED_ID_CARBON_SOFTCRIT, TRUE, multiplicative_slowdown = SOFTCRIT_ADD_SLOWDOWN)
 	else
 		remove_movespeed_modifier(MOVESPEED_ID_CARBON_SOFTCRIT, TRUE)
+	update_mobility()
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /mob/living/carbon
@@ -858,8 +873,9 @@
 		if(!succumb_timer)
 			succumb_timer = world.time
 		overlay_fullscreen("crit", /atom/movable/screen/fullscreen/crit, severity)
-		overlay_fullscreen("DD", /atom/movable/screen/fullscreen/crit/death)
-		overlay_fullscreen("DDZ", /atom/movable/screen/fullscreen/crit/zeth)
+		if(InFullCritical())
+			overlay_fullscreen("DDZ", /atom/movable/screen/fullscreen/crit/zeth)
+			overlay_fullscreen("DD", /atom/movable/screen/fullscreen/crit/death)
 	else
 		if(succumb_timer)
 			succumb_timer = 0
