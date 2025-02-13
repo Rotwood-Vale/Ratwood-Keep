@@ -133,9 +133,37 @@
 
 /datum/sleep_adv/proc/show_ui(mob/living/user)
 	var/list/dat = list()
-	dat += "<center>Cycle \Roman[sleep_adv_cycle]</center>"
+	SSassets.transport.send_assets(user.client, list("try4_border.png", "try4.png", "slop_menustyle2.css", "gragstar.gif"))
+	dat += {"
+		<!DOCTYPE html>
+		<html lang='en'>
+		<head>
+			<meta charset='UTF-8'>
+			<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>
+			<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+			<style>
+				@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+				@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+				@import url('https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap');
+				body {
+					background-color: rgb(31, 20, 24);
+					background:
+						url('[SSassets.transport.get_asset_url("try4_border.png")]'),
+						url('[SSassets.transport.get_asset_url("try4.png")]');
+					background-repeat: no-repeat;
+					background-attachment: fixed;
+					background-size: 100% 100%;
+				}
+			</style>
+			<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("slop_menustyle2.css")]'>
+		</head>
+		"}
+	dat += "<body>"
+	dat += "<div id='top_handwriting'><center>Cycle \Roman[sleep_adv_cycle]</center></div>"
+	dat += "<div id='class_select_box_div'>"
 	dat += "<br><center>Dream, for those who dream may reach higher heights</center><br>"
 	dat += "<center>\Roman[sleep_adv_points]</center>"
+	dat += "<br>"
 	for(var/skill_type in SSskills.all_skills)
 		var/datum/skill/skill = GetSkillRef(skill_type)
 		if(!enough_sleep_xp_to_advance(skill_type, 1))
@@ -143,13 +171,19 @@
 		var/can_buy = can_buy_skill(skill_type)
 		var/next_level = get_next_level_for_skill(skill_type)
 		var/level_name = SSskills.level_names[next_level]
-		dat += "<br><a [can_buy ? "" : "class='linkOff'"] href='?src=[REF(src)];task=buy_skill;skill_type=[skill_type]'>[skill.name] ([level_name])</a> - \Roman[get_skill_cost(skill_type)]"
+		dat += "<div class='class_bar_div'><a class='vagrant' [can_buy ? "" : "class='linkOff'"] href='byond://?src=[REF(src)];task=buy_skill;skill_type=[skill_type]'>[skill.name] ([level_name])><img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32>\Roman[get_skill_cost(skill_type)]</span><img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32></a></div>"
 	dat += "<br>"
 	if(rolled_specials > 0)
 		var/can_buy = can_buy_special()
-		dat += "<br><a [can_buy ? "" : "class='linkOff'"] href='?src=[REF(src)];task=buy_special'>Dream something <b>special</b></a> - \Roman[get_special_cost()]"
+		dat += "<div class='class_bar_div'><a class='vagrant' [can_buy ? "" : "class='linkOff'"] href='byond://?src=[REF(src)];task=buy_special'>>Dream something <b>special</b></a>><img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32>\Roman[get_special_cost()]</span><img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32></a></div>"
+		dat += "<br><a [can_buy ? "" : "class='linkOff'"] href='byond://?src=[REF(src)];task=buy_special'>Dream something <b>special</b></a> - \Roman[get_special_cost()]"
 		dat += "<br>Specials can have negative or positive effects"
-	dat += "<br><br><center>Your points will be retained<br><a href='?src=[REF(src)];task=continue'>Continue</a></center>"
+	dat += "<div class='footer'>"
+	dat += "<br><br><center>Your points will be retained<br><a href='byond://?src=[REF(src)];task=continue'>Continue</a></center>"
+	dat += {"
+			</body>
+		</html>
+	"}
 	var/datum/browser/popup = new(user, "dreams", "<center>Dreams</center>", 350, 450)
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
