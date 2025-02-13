@@ -40,9 +40,8 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
-			H.change_stat("strength", 1)
+			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
-			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
 			H.change_stat("intelligence", -2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
@@ -68,7 +67,8 @@
 			beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			backl = /obj/item/storage/backpack/rogue/satchel
 			l_hand = /obj/item/ammo_holder/quiver/arrows
-			H.change_stat("perception", 2) // 2 more statpoints than the others since they don't get dodge expert/anything too unique
+			H.change_stat("strength", 1)
+			H.change_stat("perception", 2) // 3 more statpoints than the others since they don't get dodge expert/anything too unique
 			H.change_stat("fortune", 2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 
@@ -123,6 +123,7 @@
 			H.change_stat("speed", 1)
 			H.change_stat("intelligence", 2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
+			H.mind.AddSpell(new SPELL_CPR)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_churchling(H)
