@@ -1,7 +1,7 @@
 /datum/triumph_buy/lich
 	triumph_buy_id = "Antagcoin: Lich"
 	desc = "Antagcoin: Lich!"
-	triumph_cost = 300
+	triumph_cost = 150
 	category = TRIUMPH_CAT_ROUND_EFX
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
@@ -9,7 +9,7 @@
 /datum/triumph_buy/werewolf
 	triumph_buy_id = "Antagcoin: Werewolf"
 	desc = "Antagcoin: Werewolf!"
-	triumph_cost = 150
+	triumph_cost = 75
 	category = TRIUMPH_CAT_ROUND_EFX
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
@@ -17,7 +17,7 @@
 /datum/triumph_buy/maniac
 	triumph_buy_id = "Antagcoin: Maniac"
 	desc = "Antagcoin: Maniac!"
-	triumph_cost = 75
+	triumph_cost = 50
 	category = TRIUMPH_CAT_ROUND_EFX
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
@@ -25,7 +25,7 @@
 /datum/triumph_buy/cult
 	triumph_buy_id = "Antagcoin: Cult"
 	desc = "Antagcoin: Cult!"
-	triumph_cost = 50
+	triumph_cost = 25
 	category = TRIUMPH_CAT_ROUND_EFX
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE

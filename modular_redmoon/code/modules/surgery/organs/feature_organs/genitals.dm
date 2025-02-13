@@ -15,3 +15,14 @@
 	// spiller = TRUE
 	// blocker = ITEM_SLOT_PANTS
 	// bloatable = TRUE
+
+/obj/item/organ/butt
+	name = "butt"
+	icon = 'modular_redmoon/icons/surgery.dmi'
+	icon_state = "butt"
+	visible_organ = TRUE
+	zone = BODY_ZONE_PRECISE_STOMACH
+	slot = ORGAN_SLOT_BUTT
+	organ_dna_type = /datum/organ_dna/butt
+	accessory_type = /datum/sprite_accessory/butt/pair
+	var/butt_size = DEFAULT_BUTT_SIZE

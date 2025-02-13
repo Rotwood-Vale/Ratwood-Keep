@@ -87,6 +87,7 @@
 #define ORGAN_SLOT_BREASTS "breasts"
 #define ORGAN_SLOT_VAGINA "vagina"
 #define ORGAN_SLOT_ANUS "anus" //only used to store things for now
+#define ORGAN_SLOT_BUTT "butt" 
 
 #define BODYPART_FEATURE_HAIR "hair"
 #define BODYPART_FEATURE_FACIAL_HAIR "facehair"

@@ -68,6 +68,7 @@
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
+		/datum/customizer/organ/butt/human,
 		)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,

@@ -300,6 +300,7 @@
 #define OFFSET_CLOAK "cloak"
 #define OFFSET_MOUTH "mouth"
 #define OFFSET_PANTS "wear_pants"
+#define OFFSET_BUTT "butt"
 #define OFFSET_SHIRT "wear_shirt"
 #define OFFSET_ARMOR "wear_armor"
 #define OFFSET_HANDS "hands"
