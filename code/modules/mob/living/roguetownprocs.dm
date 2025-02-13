@@ -227,9 +227,15 @@
 				if(defender_dualw)
 					text += " Twice! Disadvantage!"
 				to_chat(src, span_info("[text]"))
+			
+			var/attacker_feedback 
+			if(user.client?.prefs.showrolls && attacker_dualw)
+				attacker_feedback = "Attacking with advantage."
 
 			var/parry_status = FALSE
 			if((defender_dualw && attacker_dualw) || (!defender_dualw && !attacker_dualw)) //They cancel each other out
+				if(attacker_feedback)
+					attacker_feedback += " Cancelled out!"
 				if(prob(prob2defend))
 					parry_status = TRUE
 			else if(attacker_dualw)
@@ -238,6 +244,9 @@
 			else if(defender_dualw)
 				if(prob(prob2defend) && extradefroll)
 					parry_status = TRUE
+
+			if(attacker_feedback)
+				to_chat(user, span_info("[attacker_feedback]"))
 
 			if(parry_status)
 				if(intenty.masteritem)
