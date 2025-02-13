@@ -160,6 +160,7 @@
 			cloak = /obj/item/clothing/cloak/tabard/crusader/noc
 		if(/datum/patron/divine/ravox)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/ravox
 			cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
 		if(/datum/patron/divine/malum)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
