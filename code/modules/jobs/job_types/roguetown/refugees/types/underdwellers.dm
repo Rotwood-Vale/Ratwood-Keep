@@ -108,6 +108,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			beltl = /obj/item/rogueweapon/huntingknife
@@ -125,6 +126,8 @@
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 			H.mind.AddSpell(new SPELL_CPR)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+			H.mind.adjust_spellpoints(1)
+			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_churchling(H)
 			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
