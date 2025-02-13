@@ -26,7 +26,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(get_playerquality(ckey) <= -5)
 		to_chat(src, span_danger("I can't use that."))
 		return
-
 	if(!holder)
 		if(!GLOB.ooc_allowed)
 			to_chat(src, span_danger("OOC is globally muted."))
@@ -135,6 +134,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(!holder)
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, span_danger("I cannot use OOC (muted)."))
+			return
+		if(!GLOB.ooc_allowed)
+			to_chat(src, span_danger("OOC is currently disabled."))
 			return
 	if(is_banned_from(ckey, "OOC"))
 		to_chat(src, span_danger("I have been banned from OOC."))
