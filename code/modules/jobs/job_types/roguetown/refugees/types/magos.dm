@@ -118,6 +118,7 @@
 			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			H.set_patron(/datum/patron/zizo)
 			H.faction += "undead"
+			H.cmode_music = 'sound/music/combatcult.ogg'
 
 	H.set_blindness(0)
 
