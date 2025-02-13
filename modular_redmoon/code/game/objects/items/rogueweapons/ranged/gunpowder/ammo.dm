@@ -4,7 +4,7 @@
 #define ARROW_DAMAGE		33
 #define ARROW_PENETRATION	10
 #define BOLT_DAMAGE			44
-#define BOLT_PENETRATION	50
+#define BOLT_PENETRATION	35
 
 /obj/projectile/bullet/reusable/runelock
 	damage = RUNELOCK_DAMAGE

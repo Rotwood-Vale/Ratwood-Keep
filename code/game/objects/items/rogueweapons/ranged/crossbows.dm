@@ -35,6 +35,14 @@
 /datum/intent/shoot/crossbow
 	chargedrain = 0 //no drain to aim a crossbow
 
+/datum/intent/shoot/crossbow/can_charge()
+	if(mastermob)
+		if(mastermob.get_num_arms(FALSE) < 2)
+			return FALSE
+		if(mastermob.get_inactive_held_item())
+			return FALSE
+	return TRUE
+
 /datum/intent/shoot/crossbow/get_chargetime()
 	if(mastermob && chargetime)
 		var/newtime = chargetime
@@ -53,6 +61,14 @@
 /datum/intent/arc/crossbow
 	chargetime = 1
 	chargedrain = 0 //no drain to aim a crossbow
+
+/datum/intent/arc/crossbow/can_charge()
+	if(mastermob)
+		if(mastermob.get_num_arms(FALSE) < 2)
+			return FALSE
+		if(mastermob.get_inactive_held_item())
+			return FALSE
+	return TRUE
 
 /datum/intent/arc/crossbow/get_chargetime()
 	if(mastermob && chargetime)
