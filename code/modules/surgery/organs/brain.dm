@@ -24,19 +24,22 @@
 	//two variables necessary for calculating whether we get a brain trauma or not
 	var/damage_delta = 0
 
-
 	var/list/datum/brain_trauma/traumas = list()
 
 /obj/item/organ/brain/Insert(mob/living/carbon/C, special = FALSE, drop_if_replaced = FALSE, no_id_transfer = FALSE)
 	. = ..()
 
-	name = "brain"
+	if(name == initial(name))
+		var/real_name
+		if(brainmob?.mind)
+			real_name = brainmob.mind.name
+		else if(C?.mind)
+			real_name =  C.mind.name
+		else
+			real_name = C.real_name
+		name = "[real_name]'s brain"
 
 	if(brainmob)
-//		if(C.key)
-//			testing("UHM BASED?? [C]")
-//			C.ghostize()
-
 		if(brainmob.mind)
 			brainmob.mind.transfer_to(C)
 		else
@@ -80,7 +83,7 @@
 		C.dna.copy_dna(brainmob.stored_dna)
 	if(L.mind?.current)
 		L.mind.transfer_to(brainmob)
-//	to_chat(brainmob, "<span class='notice'>I feel slightly disoriented. That's normal when you're just a brain.</span>")
+	to_chat(brainmob, "<span class='notice'>I feel slightly disoriented. That's normal when you're just a brain.</span>")
 
 /obj/item/organ/brain/attackby(obj/item/O, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -101,11 +104,14 @@
 		O.reagents.clear_reagents()
 		return
 
-	if(brainmob) //if we aren't trying to heal the brain, pass the attack onto the brainmob.
-		O.attack(brainmob, user) //Oh noooeeeee
 
-  if(O.force != 0 && !(O.item_flags & NOBLUDGEON))
-	  setOrganDamage(maxHealth) //fails the brain as the brain was attacked, they're pretty fragile.
+	if(user.rmb_intent != /datum/rmb_intent/weak)
+		if(brainmob) //if we aren't trying to heal the brain, pass the attack onto the brainmob.
+			O.attack(brainmob, user) //Oh noooeeeee
+
+		if(O.force != 0 && !(O.item_flags & NOBLUDGEON))
+			user.visible_message(span_notice("[user] bludgeons [O] against [src], damaging [src] beyond repair."), span_notice("I smack [O] against [src], damaging it beyond repair!"))
+			setOrganDamage(maxHealth) //fails the brain as the brain was attacked, they're pretty fragile.
 
 /obj/item/organ/brain/examine(mob/user)
 	. = ..()

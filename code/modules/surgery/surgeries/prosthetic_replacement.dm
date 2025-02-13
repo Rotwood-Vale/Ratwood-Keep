@@ -74,7 +74,7 @@
 					if(!rot) // In the case the rot component deleted itself because there was no head. Then add a new one that will automatically raise them as a deadite.
 						LoadComponent(human_target.rot_type)
 						rot = human_target.GetComponent(/datum/component/rot)
-						rot.amount = 10 MINUTES
+						rot.time_of_death = world.time + 15 MINUTES
 			else
 				LoadComponent(target.rot_type)
 	display_results(user, target, span_notice("I succeed transplanting [target]'s [parse_zone(target_zone)]."),
