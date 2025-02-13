@@ -388,12 +388,17 @@
 		return 0
 
 	var/returned = slowdown
+	var/negate_slowdown = FALSE
 	for(var/obj/item/I in user.held_items)
 		if(I.walking_stick)
 			if(!I.wielded)
 				var/mob/living/L = user
 				if(!L.cmode)
-					returned = max(returned-2, 0)
+					negate_slowdown = TRUE
+	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		negate_slowdown = TRUE
+	if(negate_slowdown)
+		returned = max(returned-2, 0)
 	return returned
 
 
@@ -697,6 +702,8 @@
 /turf/open/floor/rogue/greenstone/turf_destruction(damage_flag)
 	. = ..()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+/turf/open/floor/rogue/greenstone/runed
+	icon_state = "greenstoneruned"
 
 /turf/open/floor/rogue/hexstone
 	icon_state = "hexstone"

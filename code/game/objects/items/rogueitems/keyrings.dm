@@ -163,6 +163,9 @@
 /obj/item/storage/keyring/mage
 	keys = list(/obj/item/key/manor, /obj/item/key/tower, /obj/item/key/mage)
 
+/obj/item/storage/keyring/mageapprentice
+	keys = list(/obj/item/key/manor, /obj/item/key/tower)
+
 /obj/item/storage/keyring/innkeep
 	keys = list(/obj/item/key/tavern, /obj/item/key/nightman, /obj/item/key/fancyroomiii, /obj/item/key/fancyroomii, /obj/item/key/fancyroomi, /obj/item/key/roomvi, /obj/item/key/roomv, /obj/item/key/roomiv, /obj/item/key/roomiii, /obj/item/key/roomii, /obj/item/key/roomi)
 

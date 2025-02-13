@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(stone_personalities, list(
 	"Daredevil",
 	"Barbarics",
 	"Fanciness",
-	"Relaxing",	
+	"Relaxing",
 	"Blacked",
 	"Greed",
 	"Evil",
@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	"One must think, where did this stone come from?",
 	"If all stones were like this, then they would be some pretty great stones.",
 	"I wish my personality was like this stone's...",
-	"I could sure do a whole lot with this stone.", 
+	"I could sure do a whole lot with this stone.",
 	"I love stones!",
 ))
 
@@ -141,6 +141,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	slot_flags = ITEM_SLOT_MOUTH
 	w_class = WEIGHT_CLASS_SMALL
 	mill_result = /obj/item/reagent_containers/powder/alch/stone
+	/// If our stone is magical, this lets us know -how- magical. Maximum is 15.
+	var/magic_power = 0
 
 /obj/item/natural/stone/Initialize()
 	. = ..()
@@ -154,7 +156,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	var/stone_title = "stone" // Our stones title
 	var/stone_desc = "[desc]" // Total Bonus desc the stone will be getting
 
-	icon_state = "stone[rand(1,5)]" 
+	icon_state = "stone[rand(1,5)]"
 
 	var/bonus_force = 0 // Total bonus force the rock will be getting
 	var/list/given_intent_list = list(/datum/intent/hit) // By default you get this at least
@@ -193,7 +195,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			desc_jumbler += pick(GLOB.stone_sharpness_descs)
 
 	if(name_jumbler.len) // Both name jumbler and desc jumbler should be symmetrical in insertions conceptually anyways.
-		for(var/i in 1 to name_jumbler.len) //Theres only two right now 
+		for(var/i in 1 to name_jumbler.len) //Theres only two right now
 			if(!name_jumbler.len) // If list somehow empty get the hell out! Now~!
 				break
 			//Remove so theres no repeats
@@ -205,16 +207,23 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			stone_title = "[picked_name] [stone_title]" // Prefix and then stone
 			stone_desc += " [picked_desc]" // We put the descs after the original one
 
+	var/personality_modifier = 0
 	switch(stone_personality_rating)
 		if(10 to 23)
 			if(prob(2)) // Stone has a 2 percent chance to have a personality despite missing its roll
 				stone_title = "[stone_title] of [pick(GLOB.stone_personalities)]"
 				stone_desc += " [pick(GLOB.stone_personality_descs)]"
-				bonus_force += rand(1,5) // Personality gives a stone some more power too
+				personality_modifier += rand(1,5) // Personality gives a stone some more power too
+		if(23 to 25)
+			bonus_force += rand(1,5) // Personality gives a stone some more power too
 		if(24 to 25)
 			stone_title = "[stone_title] of [pick(GLOB.stone_personalities)]"
 			stone_desc += " [pick(GLOB.stone_personality_descs)]"
-			bonus_force += rand(1,5) // Personality gives a stone some more power too
+			personality_modifier += rand(1,5) // Personality gives a stone some more power too
+
+	if (personality_modifier)
+		bonus_force += personality_modifier
+		magic_power += personality_modifier
 
 	var/max_force_range = sharpness_rating + bluntness_rating // Add them together
 	//max_force_range = round(max_force_range/2) // Divide by 2 and round jus incase
@@ -227,6 +236,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 		stone_title = "[pick(GLOB.stone_magic_names)] [stone_title] +[magic_force]"
 		stone_desc += " [pick(GLOB.stone_magic_descs)]"
 		bonus_force += magic_force // Add on the magic force modifier
+		magic_power += magic_force
 
 	if(extra_intent_list.len)
 		for(var/i in 1 to min(4, extra_intent_list.len))
@@ -236,7 +246,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			var/cock = pick(extra_intent_list) // We pick one
 			given_intent_list += cock // Add it to the list
 			extra_intent_list -= cock // Remove it from the prev list
-	
+
 	//Now that we have built the history and lore of this stone, we apply it to the main vars.
 	name = stone_title
 	desc = stone_desc
@@ -384,7 +394,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			playsound(src.loc, pick('sound/items/sharpen_long1.ogg','sound/items/sharpen_long2.ogg'), 100)
 			user.visible_message(span_notice("[user] sharpens [src]!"))
 			degrade_bintegrity(0.5)
-			add_bintegrity(max_blade_int * 0.3) 
+			add_bintegrity(max_blade_int * 0.3)
 			if(blade_int >= max_blade_int)
 				to_chat(user, span_info("Fully sharpened."))
 			if(prob(35))

@@ -131,3 +131,11 @@
 #define SPELL_VAMP_REJUV							/obj/effect/proc_holder/spell/targeted/vamp_rejuv
 #define SPELL_VOICE_OF_GOD							/obj/effect/proc_holder/spell/voice_of_god
 #define SPELL_VOICE_OF_GOD_CLOWN					/obj/effect/proc_holder/spell/voice_of_god/clown
+#define SPELL_METEOR								/obj/effect/proc_holder/spell/invoked/meteor_storm
+#define SPELL_SUNDER_LIGHTNING						/obj/effect/proc_holder/spell/invoked/sundering_lightning
+#define SPELL_FROSTBOLT								/obj/effect/proc_holder/spell/invoked/projectile/frostbolt
+#define SPELL_LIGHTNINGLURE							/obj/effect/proc_holder/spell/targeted/lightninglure
+#define SPELL_ARCYNE_STORM							/obj/effect/proc_holder/spell/invoked/arcyne_storm
+#define SPELL_SUMMON_WEAPON							/obj/effect/proc_holder/spell/targeted/summonweapon
+#define SPELL_MENDING								/obj/effect/proc_holder/spell/invoked/mending
+#define SPELL_REPEL									/obj/effect/proc_holder/spell/invoked/projectile/repel
