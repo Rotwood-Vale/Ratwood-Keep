@@ -309,11 +309,15 @@
 
 /obj/item/gun/ballistic/firearm/arquebus_pistol
 	name = "arquebus pistol"
-	desc = "A small gunpowder weapon that shoots an armor piercing metal ball. While it has the same power as a regular handgonne, it is balanced to be used accurately in a single hand."
+	desc = "A small gunpowder weapon that shoots an armor piercing metal ball. \
+	While it has the same power as a regular handgonne, it is balanced to be used in a single hand. \
+	Of course, this comes at the cost of accuracy."
 	icon = 'icons/roguetown/weapons/32.dmi'
 	icon_state = "pistol"
 	item_state = "pistol"
 	force = 10
+	possible_item_intents = list(/datum/intent/shoot/firearm, /datum/intent/arc/firearm, INTENT_GENERIC)
+	gripped_intents = null
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_HIP
