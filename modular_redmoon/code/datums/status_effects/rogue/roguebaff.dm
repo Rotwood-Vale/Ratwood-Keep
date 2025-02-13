@@ -199,7 +199,6 @@
 
 /datum/status_effect/bardicbuff/awaken/on_remove()
 	if(iscarbon(owner))
-		var/mob/living/carbon/O = owner
 		if(owner.mind?.has_antag_datum(/datum/antagonist))
 			if(owner.mind.isactuallygood()) // Check for "good antags"
 				for(var/S in effectedstats)
