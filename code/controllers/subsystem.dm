@@ -220,3 +220,6 @@
 		if ("queued_priority") //editing this breaks things.
 			return 0
 	. = ..()
+
+/// Called after the config has been loaded or reloaded.
+/datum/controller/subsystem/proc/OnConfigLoad()
