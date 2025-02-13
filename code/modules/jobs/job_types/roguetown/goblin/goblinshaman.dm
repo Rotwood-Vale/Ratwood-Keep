@@ -7,8 +7,8 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
-	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
-	/obj/effect/proc_holder/spell/invoked/message, /obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose)
+	spells = list(SPELL_FETCH, SPELL_PRESTIDIGITATION,
+	SPELL_MESSAGE, SPELL_LESSER_HEAL, SPELL_DIAGNOSE)
 	tutorial = "Were you Humen, they'd call you a sorcerer. Perhaps a witch, even. But you know better than the rest. \
 	You're one of Graggar's chosen. A vessel for his power in this world, for better or worse. Serve as a spiritual advisor to your Chief. \
 	Assure he has all he needs to succeed, and, should he fail, take his place."
@@ -46,7 +46,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/cpr)
+		H.mind.AddSpell(new SPELL_CPR)
 		H.change_stat("intelligence", 4)
 		H.change_stat("fortune", 2)
 

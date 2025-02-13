@@ -16,7 +16,7 @@
 	display_order = JDO_BOGMASTER
 	whitelist_req = TRUE
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/bog)
+	spells = list(SPELL_CONVERT_ROLE_BOG)
 	outfit = /datum/outfit/job/roguetown/bogmaster
 
 	give_bank_account = 35
@@ -95,4 +95,3 @@
 	if(!.)
 		return
 	recruit.verbs |= /mob/proc/haltyell
-

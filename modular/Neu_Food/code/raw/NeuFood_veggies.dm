@@ -10,6 +10,7 @@
 /obj/item/reagent_containers/food/snacks/grown/onion/rogue
 	desc = "A wonderful vegetable with many layers and broad flavor profile."
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced
+	slices_num = 3
 	tastes = list("onion" = 1)
 	chopping_sound = TRUE
 	dropshrink = 0.8
@@ -17,7 +18,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced
 	name = "sliced onion"
 	icon_state = "onion_sliced"
-	slices_num = 3
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried
 	cooked_smell = /datum/pollutant/food/fried_onion
 	can_distill = TRUE

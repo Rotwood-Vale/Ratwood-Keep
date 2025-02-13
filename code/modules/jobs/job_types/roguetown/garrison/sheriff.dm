@@ -35,7 +35,7 @@
 	cloak = /obj/item/clothing/cloak/cape/black
 	backpack_contents = list(/obj/item/storage/keyring/sheriff = 1)
 	if(H.mind)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard)
+		H.mind.AddSpell(new SPELL_CONVERT_ROLE_GUARD)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
