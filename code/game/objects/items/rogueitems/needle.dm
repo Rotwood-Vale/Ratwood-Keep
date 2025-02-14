@@ -87,11 +87,12 @@
 				return
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
 			var/skill = ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10)
+			var/repairskill = ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 5)
 			var/sewtime = (60 - skill)
 			if(!do_after(user, sewtime, target = I))
 				return
 			if(prob(60 - skill)) //The more knowlegeable we are the less chance we damage the object
-				I.obj_integrity -= (60 - skill)
+				I.obj_integrity -= (30 - repairskill)
 				user.visible_message(span_info("[user] damages [I] due to a lack of skill!"))
 				playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
 				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing a repair teaches us something
