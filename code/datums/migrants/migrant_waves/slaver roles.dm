@@ -48,6 +48,7 @@
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 
 /datum/migrant_role/slaver/slavemercsword
 	name = "Zybantynian Blade Mercenary"

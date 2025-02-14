@@ -51,6 +51,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed",1)
+		ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 		H.mind.adjust_spellpoints(4)
 		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 		H.mind.AddSpell(new SPELL_LEARNSPELL)
