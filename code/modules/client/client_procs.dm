@@ -1185,6 +1185,12 @@ GLOBAL_LIST_EMPTY(respawncounts)
 			message_admins("[ckey] commends [theykey].")
 			REDMOON REMOVAL END */
 		else if(action == "Поругать" || action == "Uncommend")
+			if(get_playerquality(key) < 0) // Игроки с отрицательным PQ не могут снижать чужое PQ
+				to_chat(src, span_danger("У тебя слишком плохая репутация, чтобы обвинять кого-то."))
+				return FALSE
+			if(SSticker.current_state != GAME_STATE_FINISHED) // Снижать PQ можно только в конце раунда
+				to_chat(src, span_danger("Подожди конца раунда и лучше осмысли ситуацию."))
+				return FALSE
 			if(add_uncommend(theykey, ckey))
 				to_chat(src,"[selection] получит негативный комментарий (или даже -PQ, если это первый uncommend).")
 				prefs.commendedsomeone = TRUE // REDMOON ADD
