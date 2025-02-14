@@ -184,7 +184,7 @@
 			</body>
 		</html>
 	"}
-	var/datum/browser/popup = new(user, "dreams", "<center>Dreams</center>", 350, 450)
+	var/datum/browser/popup = new(user, "dreams", "<center>Dreams</center>", 450, 650)
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
