@@ -246,7 +246,7 @@
 		lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			icon_state = "idagger"
+			icon_state = "Regular Dagger"
 	else
 		..()
 
