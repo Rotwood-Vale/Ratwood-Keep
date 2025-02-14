@@ -59,6 +59,7 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"Cyborg",
 	ROLE_PAI))
 
+// FIRST POSITIONS SUCH AS DUKE OR HEAD BUTLER E.T.C. MUST ALWAYS STAY ON THE TOP OF THE LIST
 GLOBAL_LIST_INIT(noble_positions, list(
 	"Duke",
 	"Duke Consort",
@@ -68,24 +69,24 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"Councillor",
 	"Steward",
 	"Knight",
-	"Court Magos",
-	"Court Physician",
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
-	"Head Butler", // must always stay at the first position of the list
+	"Head Butler",
+	"Court Magos",
+	"Court Physician",
 	"Jester",
 ))
 
 GLOBAL_LIST_INIT(garrison_positions, list(
+	"Town Sheriff",
 	"Watchman",
-	"Vanguard",
 	"Warden",
+	"Gatemaster",
+	"Vanguard",
+	"Veteran",
 	"Man at Arms",
 	"Dungeoneer",
-	"Gatemaster",
-	"Town Sheriff",
-	"Veteran",
 ))
 
 GLOBAL_LIST_INIT(church_positions, list(
@@ -102,6 +103,7 @@ GLOBAL_LIST_INIT(inquisition_positions, list(
 ))
 
 GLOBAL_LIST_INIT(yeoman_positions, list(
+	"Mayor",
 	"Merchant",
 	"Scholar",
 	"Barkeep",
@@ -111,7 +113,6 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Architect",
 	"Artificer",
 	"Scribe",
-	"Mayor",
 	"Harbormaster",
 	"Longshoreman",
 ))
@@ -120,33 +121,33 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Soilson",
 	"Butcher",
 	"Cook",
-	"Lunatic",
 	"Miner",
 	"Hunter",
 	"Fisher",
 	"Lumberjack",
 	"Towner",
-	"Henchman",
 	"Nightmaster",
+	"Henchman",
 	"Prostitute",
 	"Docker",
 	"Prisoner",
 	"Beggar",
+	"Lunatic",
 	"Town Seelie",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
-	"Mercenary",
 	"Guild Clerk",
+	"Mercenary",
 ))
 
 GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Squire",
 	"Clerk",
-	"Smithy Apprentice",
-	"Magicians Apprentice",
-	"Churchling",
 	"Servant",
+	"Magicians Apprentice",
+	"Smithy Apprentice",
+	"Churchling",
 	"Shophand",
 ))
 
