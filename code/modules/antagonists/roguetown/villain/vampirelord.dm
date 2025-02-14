@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /obj/item/clothing/suit/roguetown/shirt/vampire
 	slot_flags = ITEM_SLOT_SHIRT
 	name = "regal silks"
-	desc = ""
+	desc = "A set of ornate robes with a sash coming across the breast."
 	body_parts_covered = CHEST|GROIN|LEGS|VITALS
 	icon_state = "vrobe"
 	item_state = "vrobe"

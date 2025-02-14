@@ -2865,6 +2865,9 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/abyssor,
 /obj/item/clothing/head/roguetown/roguehood/abyssor,
 /obj/item/clothing/head/roguetown/roguehood/abyssor,
+/obj/item/clothing/cloak/templar/pestran,
+/obj/item/clothing/cloak/templar/pestran,
+/obj/item/clothing/cloak/templar/pestran,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
 "cip" = (
@@ -10526,14 +10529,6 @@
 "iHz" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/obj/item/bath/soap,
-/obj/item/bath/soap,
-/obj/item/bath/soap,
-/obj/item/bath/soap,
-/obj/item/bath/soap,
-/obj/item/bath/soap,
-/obj/item/bath/soap,
-/obj/item/bath/soap,
 /obj/item/soap/bath,
 /obj/item/soap/bath,
 /obj/item/soap/bath,

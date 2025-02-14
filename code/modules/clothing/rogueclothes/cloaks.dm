@@ -715,6 +715,7 @@
 	nodismemsleeves = TRUE
 	inhand_mod = TRUE
 	allowed_race = NON_DWARVEN_RACE_TYPES
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/cloak/darkcloak/ComponentInitialize()
 	. = ..()
@@ -763,6 +764,7 @@
 	body_parts_covered = CHEST|GROIN
 	armor = list("blunt" = 25, "slash" = 5, "stab" = 15, "fire" = 24, "acid" = 0)
 	boobed = TRUE
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/cloak/apron/brown
 	color = CLOTHING_BROWN
@@ -823,6 +825,7 @@
 	inhand_mod = TRUE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood
 	toggle_icon_state = FALSE
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/wash_act(clean)
 	. = ..()
@@ -889,6 +892,7 @@
 	icon_state = "furgrey"
 	inhand_mod = FALSE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood/furhood
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/cloak/raincloak/furcloak/crafted/Initialize()
 	. = ..()
@@ -979,6 +983,7 @@
 	icon_state = "furcape"
 	item_state = "furcape"
 	inhand_mod = TRUE
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/cloak/chasuble
 	name = "chasuble"
@@ -1009,8 +1014,8 @@
 	icon_state = "stole_purple"
 
 /obj/item/clothing/cloak/black_cloak
-	name = "fur coat"
-	desc = ""
+	name = "fur overcoat"
+	desc = "A very thick, baggy set of robes trimmed with fur, meant to be worn over one's clothing."
 	icon_state = "black_cloak"
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
@@ -1020,6 +1025,7 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	sellprice = 50
 	nodismemsleeves = TRUE
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/cloak/heartfelt
 	name = "red cloak"

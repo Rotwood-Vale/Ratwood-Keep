@@ -5,7 +5,7 @@
 	name = "Vulpkian"
 	id = "vulpkanin"
 	desc = "Foxy creatures known for their cleverness and mischief. In ancient history they were Dendor's original champions, but as His madness grew the connect became frey and forgotten, leaving them to their own devices. Or, at least, that's what they say.<br>\
-	(+1 Intelligence)"
+	(+1 Intelligence, +1 Perception)"
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
@@ -34,7 +34,7 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	race_bonus = list(STAT_INTELLIGENCE = 1)
+	race_bonus = list(STAT_INTELLIGENCE = 1, STAT_INTELLIGENCE = 1)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,

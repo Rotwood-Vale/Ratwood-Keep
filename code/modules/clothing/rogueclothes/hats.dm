@@ -307,6 +307,7 @@
 	icon_state = "curator"
 	item_state = "curator"
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/head/roguetown/hatfur
 	name = "fur hat"
@@ -395,6 +396,7 @@
 	item_state = "armingcap"
 	flags_inv = HIDEEARS
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/hide
 	//dropshrink = 0.75
 
 /obj/item/clothing/head/roguetown/knitcap
@@ -512,8 +514,8 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 
 /obj/item/clothing/head/roguetown/headdress
-	name = "foreign headdress"
-	desc = ""
+	name = "nemes"
+	desc = "A foreign silk headdress."
 	icon_state = "headdress"
 	sellprice = 10
 	sewrepair = TRUE
@@ -920,6 +922,15 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
+/obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
+	name = "golden helmet"
+	icon_state = "topfhelm_gold"
+	item_state = "topfhelm_gold"
+	desc = "A full-head covering helm with the engravings of Ravox. Bravery. Justice. Ever Unyielding."
+
+/obj/item/clothing/head/roguetown/helmet/heavy/bucket/ravox/attackby(obj/item/W, mob/living/user, params)
+	return
+
 /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	name = "bucket helmet"
 	desc = "A helmet which covers the whole of the head. Offers excellent protection."
@@ -1244,6 +1255,7 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
@@ -1601,12 +1613,14 @@
 	desc = "A plain leather hat with decorative buckle. Made popular by the ne'er-do-wells of Etrusca."
 	icon_state = "bucklehat"
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/head/roguetown/duelhat //lifeweb sprite
 	name = "duelist's hat"
 	desc = "A feathered leather hat, to show them all your superiority."
 	icon_state = "duelhat"
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/hide
 
 
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
