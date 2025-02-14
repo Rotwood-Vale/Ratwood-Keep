@@ -22,10 +22,11 @@
 	min_pq = 18
 	torch = FALSE
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
-	category_tags = list(CTAG_MERCENARY)
+	category_tags = list(CTAG_MERCENARY_CAP)
 
 /datum/outfit/job/roguetown/mercenary/grenzelhoft_kommandant/pre_equip(mob/living/carbon/human/H)
 	..()
+	to_chat(src, span_warning("While the other Mercenaries are allowed to be independent, ensure they are paying their share and taking contracts the proper way. You are held to a higher standard as a Veteran. Teach them."))
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/mercenary_boss
@@ -43,22 +44,17 @@
 	var/weapons = list("billhook", "halberd", "zweihander", "estoc")
 	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
 
-	switch(weaponschoice)
+	switch(weaponschoice) //They were never supposed to get Master level weapons.
 		if("billhook")
 			r_hand = /obj/item/rogueweapon/spear/billhook
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		if("halberd")
 			r_hand = /obj/item/rogueweapon/halberd
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		if("zweihander")
 			r_hand = /obj/item/rogueweapon/greatsword/zwei
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		if("estoc")
 			r_hand = /obj/item/rogueweapon/estoc
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		else
 			r_hand = /obj/item/rogueweapon/halberd
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 
 	//Humie grenzelhofts are always set to be, well, grenzelhoft
 	if(ishumannorthern(H))
@@ -69,14 +65,11 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE) //Keeping for less-than-lethal maces.
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE) //Sword Grenz Mercs are 4.
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -86,4 +79,3 @@
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
