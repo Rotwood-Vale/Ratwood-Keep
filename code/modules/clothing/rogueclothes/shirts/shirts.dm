@@ -412,7 +412,7 @@
 	boobed = FALSE
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/sleeves_shirts.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
 	icon_state = "stewardtunic"
 	item_state = "stewardtunic"
 	flags_inv = HIDECROTCH|HIDEBOOB
@@ -432,7 +432,7 @@
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/sleeves_robes.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
 	icon_state = "shadowrobe"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL

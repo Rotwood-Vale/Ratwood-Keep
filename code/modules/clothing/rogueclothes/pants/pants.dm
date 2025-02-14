@@ -269,7 +269,7 @@
 	gender = PLURAL
 	icon = 'icons/roguetown/clothing/pants.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/pants.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/sleeves_pants.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
 	icon_state = "shadowpants"
 	max_integrity = 150
 	sewrepair = TRUE

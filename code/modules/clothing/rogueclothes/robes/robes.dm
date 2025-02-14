@@ -222,3 +222,47 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_armor()
+
+//----------------- MORE AZURE SPRITEWORK ---------------------
+
+/obj/item/clothing/suit/roguetown/shirt/robe/hierophant  //Be aware this item is clearly made for an Azure specific role, may require renaming.
+	name = "hierophant's kandys"
+	desc = "A thin piece of fabric worn under a robe to stop chafing and keep ones dignity if a harsh blow of wind comes through."
+	icon_state = "desertgown"
+	item_state = "desertgown"
+	color = null
+
+/obj/item/clothing/suit/roguetown/shirt/robe/pointfex  //Be aware this item is clearly made for an Azure specific role, may require renaming.
+	name = "pointfex's qaba"
+	desc = "A slimmed down, tighter fitting robe made of fine silks and fabrics. Somehow you feel more mobile in it than in the nude."
+	icon_state = "monkcloth"
+	item_state = "monkcloth"
+	color = null
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+
+/obj/item/clothing/suit/roguetown/shirt/robe/abyssor //thanks to cre for abyssor clothing sprites
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
+	name = "Aybssor Robes"
+	desc = "Worn by those who follow Abyssor's current."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	icon_state = "abyssorrobe"
+	icon = 'icons/roguetown/clothing/armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	boobed = TRUE
+	color = null
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+
+/obj/item/clothing/suit/roguetown/shirt/robe/feld  //Be aware this item is clearly made for an Azure specific role, may require renaming.
+	name = "feldsher's robe"
+	desc = "Red to hide the blood."
+	icon_state = "feldrobe"
+	item_state = "feldrobe"
+
+/obj/item/clothing/suit/roguetown/shirt/robe/phys
+	name = "Physician's Robe"
+	desc = "Part robe, part butcher's apron."
+	icon_state = "surgrobe"
+	item_state = "surgrobe"

@@ -734,7 +734,7 @@
 	desc = "A long leather coat made with quality materials for experienced hunters or noble explorers. The leather still offers some protection."
 	icon = 'icons/roguetown/clothing/armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/sleeves_armor.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	icon_state = "leathercoat"
 	blocksound = SOFTHIT
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS|LEGS
@@ -917,3 +917,174 @@
 	allowed_sex = list(MALE, FEMALE)
 	slot_flags = ITEM_SLOT_ARMOR
 	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
+
+//----------------- MORE AZURE SPRITEWORK ---------------------
+
+/obj/item/clothing/suit/roguetown/armor/leather/bikini
+	name = "leather bikini"
+	desc = "Flexible cowhide armor. Lightweight, better than nothing. Now in tasteful bikini shape."
+	body_parts_covered = CHEST|GROIN
+	icon_state = "leatherkini"
+	item_state = "leatherkini"
+	allowed_sex = list(FEMALE)
+	allowed_race = CLOTHED_RACES_TYPES
+
+/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
+	name = "studded leather bikini"
+	desc = "Studded leather is the most durable of all hides and leathers and about as light. This one is in bikini form."
+	body_parts_covered = CHEST|GROIN
+	icon_state = "studleatherkini"
+	item_state = "studleatherkini"
+	allowed_sex = list(FEMALE)
+	allowed_race = CLOTHED_RACES_TYPES
+
+/obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
+	name = "hide bikini"
+	desc = "A light armor of wildbeast hide. Far more durable than leather. This will not keep a person warm though..."
+	body_parts_covered = CHEST|GROIN
+	icon_state = "hidearmorkini"
+	item_state = "hidearmorkini"
+	allowed_sex = list(FEMALE)
+	allowed_race = CLOTHED_RACES_TYPES
+
+/obj/item/clothing/suit/roguetown/armor/plate/bikini
+	name = "half-plate bikini"
+	desc = "Half plate in bikini form, still just as protective somehow. Save for the stomach."
+	body_parts_covered = CHEST|GROIN
+	icon_state = "halfplatekini"
+	item_state = "halfplatekini"
+	allowed_sex = list(FEMALE)
+	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/bikini
+	name = "fullplate bikini"
+	desc = "Full plate in bikini form, full package and full exposure."
+	icon_state = "platekini"
+	allowed_sex = list(FEMALE)
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	equip_delay_self = 8 SECONDS
+	unequip_delay_self = 8 SECONDS
+	equip_delay_other = 3 SECONDS
+	strip_delay = 6 SECONDS
+
+/obj/item/clothing/suit/roguetown/armor/longcoat
+	name = "longcoat"
+	desc = "A padded longcoat meant to keep you warm in the frigid winters"
+	icon_state = "longcoat"
+	color = null
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	allowed_sex = list(MALE, FEMALE)
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/hierophant  //Be aware this item is clearly made for an Azure specific role, may require renaming.
+	name = "hierophant's shawl"
+	icon_state = "desertrobe"
+	item_state = "desertrobe"
+	desc = "A thick robe intervowen with spell-laced fabrics. Thick and protective while remaining light and breezy; the perfect gear for protecting one from the threats of the sun, the desert and the daemons, yet still allowing one to cast spells aptly."
+//	naledicolor = TRUE   //Azure specific most-likely will need someone to double check
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex //Be aware this item is clearly made for an Azure specific role, may require renaming.
+	name = "pontifex's kaftan"
+	icon_state = "monkleather"
+	item_state = "monkleather"
+	desc = "Tight boiled leathers that stretch and fit to one's frame perfectly."
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/fluted
+	name = "fluted hauberk"
+	desc = "An ornate cuirass, flanked with sleeves of steel maille."
+	icon_state = "flutedhauberk"
+	item_state = "flutedhauberk"
+
+/obj/item/clothing/suit/roguetown/armor/otavan  //Be aware this item is clearly made for an Azure specific role, may require renaming.
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "otavan half-plate"
+	desc = "half-plate armor with pauldrons."
+	body_parts_covered = CHEST|GROIN|VITALS
+	icon_state = "corsethalfplate"
+	item_state = "corsethalfplate"
+	adjustable = CAN_CADJUST
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "piercing" = 100, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	nodismemsleeves = TRUE
+	max_integrity = 500
+	allowed_sex = list(MALE, FEMALE)
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
+	equip_delay_self = 4 SECONDS
+	unequip_delay_self = 4 SECONDS
+	armor_class = ARMOR_CLASS_HEAVY
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
+/obj/item/clothing/suit/roguetown/armor/otavan/AdjustClothes(mob/user)
+	if(loc == user)
+		playsound(user, "sound/foley/dropsound/cloth_drop.ogg", 100, TRUE, -1)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "fancyhalfplate"
+			body_parts_covered = CHEST|GROIN|VITALS
+			flags_cover = null
+			emote_environment = 0
+			update_icon()
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_armor()
+			block2add = null
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			emote_environment = 3
+			update_icon()
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_armor()
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/otavan
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "fencer gambeson"
+	desc = "A large shirt with heavy padding meant to be used below armor."
+	icon_state = "fancygamb"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
+	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "piercing" = 25, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
+	blocksound = SOFTUNDERHIT
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	armor_class = ARMOR_CLASS_LIGHT
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
+/obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
+	name = "artificer jacket"
+	icon_state = "artijacket"
+	desc = "A thick leather jacket adorned with fur and cog decals. The height of Heartfelt fashion."
+
+/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket  //Will need looking into, sprite accounted for. 
+	name = "winter jacket"
+	desc = "The most elegant of furs and vivid of royal dyes combined together into a most classy jacket."
+	icon_state = "winterjacket"
+	detail_tag = "_detail"
+	color = CLOTHING_WHITE
+	detail_color = CLOTHING_BLACK
+
+/obj/item/clothing/suit/roguetown/armor/leather/jacket/apothover  //Azure is missing armor.dmi onmob sprites
+	name = "Apothocary Over"
+	icon_state = "apothover"
+	desc = ""
+
+/obj/item/clothing/suit/roguetown/armor/cuirass/iron/shadowplate
+	name = "scourge breastplate"
+	desc = "More form over function, this armor is fit for demonstration of might rather than open combat. The aged gilding slowly tarnishes away."
+	icon_state = "shadowplate"
+	item_state = "shadowplate"
+
+/obj/item/clothing/suit/roguetown/armor/corset
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "corset"
+	desc = "A leather binding to constrict one's figure... and lungs."
+	icon_state = "corset"
+	armor_class = ARMOR_CLASS_LIGHT
+	body_parts_covered = CHEST
