@@ -92,6 +92,7 @@
 		prefs.save_preferences()
 
 		mob.update_channel_volume(CHANNEL_AMBIENCE, prefs.mastervol)
+		mob.update_music_volume(CHANNEL_CMUSIC, prefs.musicvol)
 /*
 /client/verb/help_rpguide()
 	set category = "Options"
