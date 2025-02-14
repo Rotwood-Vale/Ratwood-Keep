@@ -1,10 +1,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur
-	icon = 'icons/mob/newminotaur.dmi'
+	icon = 'icons/roguetown/mob/monster/minotaur.dmi'
 	name = "Minotaur"
-	icon_state = "MinotaurMale"
-	icon_living = "MinotaurMale"
-	icon_dead = "MinotaurMale_dead"
+	icon_state = "minotaurcomplete"
+	icon_living = "minotaurcomplete"
+	icon_dead = "minotaurdead"
 	gender = MALE
 	emote_hear = null
 	emote_see = null
