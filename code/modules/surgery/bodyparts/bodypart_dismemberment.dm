@@ -39,6 +39,7 @@
 	playsound(C, pick(dismemsound), 50, FALSE, -1)
 	if(body_zone == BODY_ZONE_HEAD)
 		C.visible_message(span_danger("<B>[C] is [pick("BRUTALLY","VIOLENTLY","BLOODILY","MESSILY")] DECAPITATED!</B>"))
+		C.log_message("[C] is decapitated by [user]", LOG_ATTACK)
 	else
 		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "seperated", "unsewn")]!</B>"))
 	C.emote("painscream")
@@ -287,20 +288,11 @@
 		for(var/obj/item/worn_item in worn_items)
 			owner.dropItemToGround(worn_item, force = TRUE)
 
-//	owner.ghostize(0)
-//	if(brainmob)
-//		brainmob.ghostize(0)
-
+	if(isnull(owner))
+		return
 	qdel(owner.GetComponent(/datum/component/creamed)) //clean creampie overlay
-
 	name = "[owner.real_name]'s head"
 	. = ..()
-	if(brainmob)
-		QDEL_NULL(brainmob)
-	var/obj/item/organ/brain/BR = locate(/obj/item/organ/brain) in contents
-	if(BR)
-		if(BR.brainmob)
-			QDEL_NULL(BR.brainmob)
 
 //Attach a limb to a human and drop any existing limb of that type.
 /obj/item/bodypart/proc/replace_limb(mob/living/carbon/C, special)
