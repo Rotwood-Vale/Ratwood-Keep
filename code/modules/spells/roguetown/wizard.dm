@@ -581,28 +581,28 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
 
 	var/list/spell_choices = list(
-		/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
-		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,
-		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
-		/obj/effect/proc_holder/spell/invoked/findfamiliar,
-		/obj/effect/proc_holder/spell/invoked/push_spell,
-		/obj/effect/proc_holder/spell/targeted/touch/darkvision,// 2 cost
-		/obj/effect/proc_holder/spell/invoked/haste,
-		/obj/effect/proc_holder/spell/invoked/message,
-		/obj/effect/proc_holder/spell/invoked/blade_burst,
-		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
-		/obj/effect/proc_holder/spell/targeted/touch/nondetection, // 1 cost
-		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
-		/obj/effect/proc_holder/spell/invoked/featherfall,
-		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
+		SPELL_FIREBALL,
+/*3*/	SPELL_LIGHTNINGBOLT,
+		SPELL_SPITFIRE,
+		SPELL_ARCANEBOLT,
+		SPELL_SLOWDOWN_SPELL_AOE,
+		SPELL_FINDFAMILIAR,
+		SPELL_PUSH_SPELL,
+/*2*/	SPELL_DARKVISION,
+		SPELL_HASTE,
+		SPELL_MESSAGE,
+		SPELL_BLADE_BURST,
+		SPELL_FETCH,
+/*1*/	SPELL_NONDETECTION,
+		SPELL_PRESTIDIGITATION,
+		SPELL_FEATHERFALL,
+		SPELL_FORCEWALL_WEAK,
 	)
 
 	//Patron Spelllists
 	var/list/spell_choices_noc = list(
-		/obj/effect/proc_holder/spell/invoked/mageblindness,  // 2cost
-		/obj/effect/proc_holder/spell/invoked/mageinvisibility,
+		SPELL_MAGEBLINDNESS,  // 2cost
+		SPELL_MAGEINVISIBILITY,
 	)
 
 	var/list/spell_choices_graggar = list(
@@ -612,9 +612,9 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	var/list/spell_choices_matthios = list()
 
 	var/list/spell_choices_zizo = list(
-		/obj/effect/proc_holder/spell/invoked/strengthen_undead,// 4 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/sickness,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/eyebite,// 3 cost
+		SPELL_STRENGTHEN_UNDEAD,// 4 cost
+		SPELL_SICKNESS,// 3 cost
+		SPELL_EYEBITE,// 3 cost
 	)
 
 	if(user.patron.type == /datum/patron/divine/noc)

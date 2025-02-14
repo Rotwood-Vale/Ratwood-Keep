@@ -18,7 +18,7 @@
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard)
+	spells = list(SPELL_CONVERT_ROLE_GUARD)
 	outfit = /datum/outfit/job/roguetown/captain
 
 	give_bank_account = 26
