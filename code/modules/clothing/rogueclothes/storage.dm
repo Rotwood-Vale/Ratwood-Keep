@@ -48,7 +48,7 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if(!affecting) return
-	if(affecting.bandage) 
+	if(affecting.bandage)
 		to_chat(user, "There is already a dressing.")
 		return
 
@@ -64,7 +64,7 @@
 	if(affecting.bleeding)
 		affecting.try_bandage(src) // Handle standard wound bandaging
 
-	if(affecting.artery_bleed) 
+	if(affecting.artery_bleed)
 		affecting.artery_bleed = FALSE
 		artery_wound = affecting.get_wound(/datum/wound/artery) // Store the artery wound
 
@@ -253,15 +253,6 @@
 
 /obj/item/storage/belt/rogue/pouch/food/PopulateContents()
 	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-
-/obj/item/storage/belt/rogue/pouch/ammo
-	name = "sphere pouch"
-	desc = "Usually used for holding runelock sphreres."
-
-/obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
-	new /obj/item/ammo_casing/caseless/runelock(src)
-	new /obj/item/ammo_casing/caseless/runelock(src)
-	new /obj/item/ammo_casing/caseless/runelock(src)
 
 /obj/item/storage/backpack/rogue //holding salvage vars for children
 	sewrepair = TRUE
