@@ -1,3 +1,6 @@
+/obj/item/clothing/head/roguetown/helmet/heavy
+	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR|HIDEFACE
+
 /obj/item/clothing/head/roguetown/grenzelhofthat
 	armor = list("blunt" = 15, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	var/picked = FALSE

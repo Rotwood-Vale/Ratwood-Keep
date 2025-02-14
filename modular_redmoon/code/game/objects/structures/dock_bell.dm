@@ -27,4 +27,4 @@
 	else if(SSmerchant.cargo_docked)
 		SSmerchant.prepare_cargo_shipment()
 	COOLDOWN_START(src, ring_bell, 3 MINUTES)
-	COOLDOWN_START(src, outsider_ring_bell, 45 MINUTES)
+	COOLDOWN_START(src, outsider_ring_bell, 12 MINUTES)
