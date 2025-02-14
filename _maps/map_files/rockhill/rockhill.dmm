@@ -4705,9 +4705,6 @@
 "czb" = (
 /obj/structure/rack/rogue,
 /obj/machinery/light/rogue/torchholder/l,
-/obj/item/gun/ballistic/arquebus,
-/obj/item/gun/ballistic/arquebus,
-/obj/item/gun/ballistic/arquebus,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "czd" = (
@@ -16398,7 +16395,7 @@
 /area/rogue/indoors/town/dwarfin)
 "iJk" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/town/roofs)
+/area/rogue/indoors/town/tavern)
 "iJo" = (
 /obj/machinery/light/rogue/forge,
 /turf/open/floor/rogue/blocks/stonered,
@@ -17510,7 +17507,6 @@
 /obj/item/key/bog_gatehouse,
 /obj/item/key/bog_gatehouse,
 /obj/item/key/bog_master,
-/obj/item/gun/ballistic/handgonne,
 /obj/item/ammo_holder/bullet/lead,
 /obj/item/powderflask,
 /turf/open/floor/rogue/herringbone,
@@ -19123,10 +19119,14 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
 "kgi" = (
-/obj/structure/chair/wood{
-	dir = 1
+/obj/structure/bars/pipe{
+	dir = 4;
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "openspace";
+	pixel_x = -10;
+	pixel_y = 13
 	},
-/turf/open/floor/carpet/purple,
+/turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
 "kgm" = (
 /obj/structure/chair/wood/rogue/fancy{
@@ -19860,7 +19860,7 @@
 /turf/open/floor/rogue/metal{
 	icon_state = "plating2"
 	},
-/area/rogue/outdoors/town/roofs)
+/area/rogue/indoors/town/tavern)
 "kzC" = (
 /obj/machinery/light/rogue/wallfire/candle/blue{
 	pixel_y = 42
@@ -23510,7 +23510,6 @@
 	pixel_y = 2;
 	pixel_x = 2
 	},
-/obj/item/gun/ballistic/arquebus_pistol,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/shop)
 "mEu" = (
@@ -23614,7 +23613,7 @@
 "mHk" = (
 /obj/structure/chair/wood,
 /turf/open/floor/carpet/purple,
-/area/rogue/outdoors/town/roofs)
+/area/rogue/indoors/town/tavern)
 "mHt" = (
 /obj/item/rogueweapon/mace/woodclub,
 /turf/open/floor/rogue/cobble/mossy,
@@ -25674,9 +25673,6 @@
 /obj/item/seeds/pipeweed,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
-"nOx" = (
-/turf/open/floor/carpet/purple,
-/area/rogue/outdoors/town/roofs)
 "nOB" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -30269,7 +30265,7 @@
 	dir = 1;
 	icon_state = "vertw"
 	},
-/area/rogue/outdoors/town/roofs)
+/area/rogue/indoors/town/tavern)
 "qlL" = (
 /obj/structure/mineral_door/wood{
 	lockid = "church";
@@ -38850,7 +38846,7 @@
 	icon_state = "tablewood3"
 	},
 /turf/open/floor/carpet/purple,
-/area/rogue/outdoors/town/roofs)
+/area/rogue/indoors/town/tavern)
 "uWv" = (
 /obj/structure/stairs{
 	dir = 1
@@ -44433,7 +44429,7 @@
 "xUa" = (
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/outdoors/town/roofs)
+/area/rogue/indoors/town/tavern)
 "xUe" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 8;
@@ -444711,7 +444707,7 @@ lwY
 lwY
 orm
 eDv
-fZJ
+kgi
 fZJ
 fZJ
 fZJ
@@ -544488,9 +544484,9 @@ qvA
 qvA
 qvA
 mHb
-xAt
-xAt
-xAt
+uHa
+uHa
+uHa
 nbz
 gxc
 gft
@@ -550089,9 +550085,9 @@ eNY
 eNY
 eNY
 lHE
-gJG
-gJG
-gJG
+iJC
+iJC
+iJC
 jjE
 tdB
 buo
@@ -550521,9 +550517,9 @@ eNY
 eNY
 eNY
 lHE
-gJG
-gJG
-gJG
+iJC
+iJC
+iJC
 tRh
 sqN
 bDY
@@ -550953,9 +550949,9 @@ eNY
 eNY
 eNY
 lHE
-gJG
-gJG
-gJG
+iJC
+iJC
+iJC
 tRh
 tjM
 vQC
@@ -551385,9 +551381,9 @@ eNY
 eNY
 eNY
 lHE
-gJG
-gJG
-gJG
+iJC
+iJC
+iJC
 tRh
 gxc
 gft
@@ -553977,9 +553973,9 @@ xAt
 xAt
 nbz
 sqN
-nOx
+eCU
 xUa
-nOx
+eCU
 tRh
 jqs
 xAt
@@ -554411,7 +554407,7 @@ ptX
 nJM
 mHk
 uWa
-kgi
+xoe
 nbi
 rpr
 xAt
