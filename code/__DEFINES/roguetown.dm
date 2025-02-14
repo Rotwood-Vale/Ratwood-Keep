@@ -318,9 +318,17 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercs
 #define CTAG_HENCH			"CAT_HENCH"			// Whitevein Guards
 
+//Courtiers
+#define CTAG_SERVANT		"CAT_SERVANT"		// Maids and butlers
+#define CTAG_CLERK			"CAT_CLERK"			// Clerks
+
 //Garrison
-#define CTAG_BOG			"CAT_BOG"			//Vanguard
+#define CTAG_BOG			"CAT_BOG"			// Vanguard
+#define CTAG_SQUIRE			"CAT_SQUIRE"		// Squires
 #define CTAG_MAA			"CAT_MAA"			// Man-At-Arms
+
+//Nobles			Eventually all of them will get their subclasses
+#define CTAG_HEIR			"CAT_HEIR"			// Heirs
 
 //Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
@@ -348,16 +356,19 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define SNACK_DECENT 6
 #define SNACK_POOR 3
 
+//DOUGH
 #define DOUGH_NUTRITION MEAL_MEAGRE
-#define SMALLDOUGH_NUTRITION MEAL_MEAGRE/2
-#define BUTTERDOUGH_NUTRITION DOUGH_NUTRITION+BUTTERSLICE_NUTRITION
-#define BUTTERDOUGHSLICE_NUTRITION BUTTERDOUGH_NUTRITION/2
+#define SMALLDOUGH_NUTRITION MEAL_MEAGRE/2 //7.5
+#define BUTTERDOUGH_NUTRITION DOUGH_NUTRITION+BUTTERSLICE_NUTRITION //17
+#define BUTTERDOUGHSLICE_NUTRITION 8.5 //This should be butterdough_nutrition/2, but for some reason it returns 16 if you do that. So...
+//DAIRY
 #define BUTTER_NUTRITION SNACK_CHUNKY
-#define BUTTERSLICE_NUTRITION BUTTER_NUTRITION/6
+#define BUTTERSLICE_NUTRITION BUTTER_NUTRITION/6 //2
+#define FRESHCHEESE_NUTRITION SNACK_DECENT
+//MEAT
 #define MEATSLAB_NUTRITION SNACK_NUTRITIOUS
 #define SAUSAGE_NUTRITION SNACK_NUTRITIOUS
-#define MINCE_NUTRITION MEATSLAB_NUTRITION/2
-#define FRESHCHEESE_NUTRITION SNACK_DECENT
+#define MINCE_NUTRITION MEATSLAB_NUTRITION/2 //4.5
 
 /*	........   Rotting defines   ................ */
 #define SHELFLIFE_EXTREME 270 MINUTES

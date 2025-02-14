@@ -44,6 +44,7 @@
 		H.change_stat("speed", 2)
 		H.change_stat("constitution", 2)
 		H.change_stat("endurance", 2)
+		H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
@@ -96,6 +97,7 @@
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
+		H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
@@ -148,6 +150,7 @@
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
+		H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
@@ -200,6 +203,7 @@
 		H.change_stat("speed", 2)
 		H.change_stat("intelligence", 3)
 		H.change_stat("endurance", 2)
+		H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_XENOPHOBIC, TRAIT_GENERIC)
@@ -214,14 +218,15 @@
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
 
-/datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H) 
 	..()
-	armor = /obj/item/clothing/suit/roguetown/shirt/rags
+	shirt = /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra 
 	neck = /obj/item/clothing/neck/roguetown/collar/leather/cursed
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/rogue/leather/exoticsilkbelt
 	beltl = /obj/item/storage/belt/rogue/pouch
 	beltr = /obj/item/flint
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	shoes = /obj/item/clothing/shoes/roguetown/anklets
+	mask = /obj/item/clothing/mask/rogue/exoticsilkmask
 	if(H.mind)
 		H.virginity = TRUE
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
@@ -242,5 +247,6 @@
 		H.change_stat("intelligence", 3)
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", -1)
+		H.cmode_music = 'sound/music/combat_zybantine.ogg'
 
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)

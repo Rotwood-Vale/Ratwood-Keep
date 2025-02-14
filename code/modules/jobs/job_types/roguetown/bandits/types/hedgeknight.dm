@@ -42,7 +42,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/joincomrades)
+	H.mind.AddSpell(new SPELL_JOINCOMRADES)
 	H.change_stat("strength", 4)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
@@ -51,7 +51,6 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
-	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
 
 /obj/effect/proc_holder/spell/invoked/joincomrades

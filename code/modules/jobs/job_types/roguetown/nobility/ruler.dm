@@ -14,11 +14,11 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	allowed_sexes = list(MALE, FEMALE)
 
 	spells = list(
-		/obj/effect/proc_holder/spell/self/grant_title,
-		/obj/effect/proc_holder/spell/self/grant_nobility,
-		/obj/effect/proc_holder/spell/self/convertrole/servant,
-		/obj/effect/proc_holder/spell/self/convertrole/guard,
-		/obj/effect/proc_holder/spell/self/convertrole/bog,
+		SPELL_GRANT_TITLE,
+		SPELL_GRANT_NOBILITY,
+		SPELL_CONVERT_ROLE_SERVANT,
+		SPELL_CONVERT_ROLE_GUARD,
+		SPELL_CONVERT_ROLE_BOG,
 	)
 	outfit = /datum/outfit/job/roguetown/lord
 	visuals_only_outfit = /datum/outfit/job/roguetown/lord/visuals
@@ -62,6 +62,19 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		else
 			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Duchess of Rockhill.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
+		var/mob/living/carbon/human/H = L
+		var/index = findtext(H.real_name, " ")
+		if(index)
+			index = copytext(H.real_name, 1,index)
+		if(!index)
+			index = H.real_name
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/honorary = "Duke"
+		if(H.gender == FEMALE)
+			honorary = "Duchess"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
 	..()

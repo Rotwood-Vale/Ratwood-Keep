@@ -109,6 +109,8 @@
 		/datum/body_marking/front,
 		/datum/body_marking/tonage,
 		/datum/body_marking/spotted,
+		/datum/body_marking/harlequin,
+		/datum/body_marking/harlequinreversed,
 	)
 	languages = list(
 		/datum/language/common,
