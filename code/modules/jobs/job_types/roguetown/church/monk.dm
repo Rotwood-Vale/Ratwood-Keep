@@ -84,7 +84,7 @@
 		if(/datum/patron/divine/xylix)
 			head = /obj/item/clothing/head/roguetown/roguehood/random
 			neck = /obj/item/clothing/neck/roguetown/psicross/xylix
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/roguetown/armor
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
 		if(/datum/patron/divine/ravox)
 			head = /obj/item/clothing/head/roguetown/roguehood/flagellanthood
