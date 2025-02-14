@@ -307,6 +307,11 @@
 /obj/item/alch/salvia
 	name = "salvia"
 	icon_state = "salvia"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	body_parts_covered = NONE
+	w_class = WEIGHT_CLASS_TINY
+	alternate_worn_layer  = 8.9 //On top of helmet
 
 	major_pot = /datum/alch_cauldron_recipe/con_potion
 	med_pot = /datum/alch_cauldron_recipe/str_potion
@@ -354,6 +359,7 @@
 	body_parts_covered = NONE
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
+	alternate_worn_layer  = 8.9 //On top of helmet
 
 	major_pot = /datum/alch_cauldron_recipe/rosewater_potion
 	med_pot = /datum/alch_cauldron_recipe/end_potion

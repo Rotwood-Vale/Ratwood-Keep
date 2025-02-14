@@ -778,7 +778,70 @@
 // BOUQUETS & CROWNS
 
 /datum/crafting_recipe/roguetown/bouquet_rosa
+	name = "rosa bouquet"
+	result = /obj/item/bouquet/rosa
+	reqs = list(/obj/item/alch/rosa = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/paper/scroll = 1)
+	craftdiff = 0
+	verbage_simple = "arranged"
+	verbage = "arranges"
 
 /datum/crafting_recipe/roguetown/bouquet_salvia
+	name = "salvia bouquet"
+	result = /obj/item/bouquet/salvia
+	reqs = list(/obj/item/alch/salvia = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/paper/scroll = 1)
+	craftdiff = 0
+	verbage_simple = "arranged"
+	verbage = "arranges"
+
+/datum/crafting_recipe/roguetown/bouquet_matricaria
+	name = "matricaria bouquet"
+	result = /obj/item/bouquet/matricaria
+	reqs = list(/obj/item/alch/matricaria = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/paper/scroll = 1)
+	craftdiff = 0
+	verbage_simple = "arranged"
+	verbage = "arranges"
+
+/datum/crafting_recipe/roguetown/bouquet_calendula
+	name = "calendula bouquet"
+	result = /obj/item/bouquet/calendula
+	reqs = list(/obj/item/alch/calendula = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/paper/scroll = 1)
+	craftdiff = 0
+	verbage_simple = "arranged"
+	verbage = "arranges"
 
 /datum/crafting_recipe/roguetown/flowercrown_rosa
+	name = "rosa crown"
+	result = /obj/item/flowercrown/rosa
+	reqs = list(/obj/item/alch/rosa = 4,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 0
+	verbage_simple = "tied"
+	verbage = "ties"
+
+/datum/crafting_recipe/roguetown/flowercrown_salvia
+	name = "salvia crown"
+	result = /obj/item/flowercrown/salvia
+	reqs = list(/obj/item/alch/salvia = 4,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 0
+	verbage_simple = "tied"
+	verbage = "ties"
+
+/datum/crafting_recipe/roguetown/candle/eora
+	name = "eora's candle (x3)"
+	result = list(
+				/obj/item/candle/eora,
+				/obj/item/candle/eora,
+				/obj/item/candle/eora,
+				)
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1,
+				/obj/item/alch/rosa = 1,
+				/datum/reagent/water/blessed = 25)
