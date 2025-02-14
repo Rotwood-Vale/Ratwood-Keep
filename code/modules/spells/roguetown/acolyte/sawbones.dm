@@ -19,6 +19,19 @@
 	miracle = FALSE
 	devotion_cost = 0
 
+/obj/effect/proc_holder/spell/targeted/docheallsser  /////// lesser miricle, granted by enchanted rings
+	action_icon = 'icons/mob/actions/roguespells.dmi'
+	name = "Close Wounds"
+	overlay_state = "doc"
+	range = 1
+	include_user = TRUE
+	sound = 'sound/gore/flesh_eat_03.ogg'
+	associated_skill = /datum/skill/misc/treatment
+	antimagic_allowed = TRUE
+	charge_max = 60 SECONDS
+	miracle = FALSE
+	devotion_cost = 0
+
 /obj/effect/proc_holder/spell/targeted/stable // sets ox lose to 0 knocks out some toxin, brings blood levels to safe. epi stabalizes ox lose, antihol purges booze, water and iron slowly restores blood.
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "Stabilising Syringe"
@@ -245,6 +258,29 @@
 		return TRUE
 	revert_cast()
 	return FALSE
+
+/obj/effect/proc_holder/spell/targeted/docheallsser/cast(list/targets, mob/living/user)
+	. = ..()
+	if(iscarbon(targets[1]))
+		var/mob/living/carbon/target = targets[1]
+		target.visible_message(span_green("[user] tends to [target]'s wounds."), span_notice("I feel better already."))
+		if(iscarbon(target))
+			var/mob/living/carbon/C = target
+			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
+			if(affecting)
+				if(affecting.heal_damage(25, 25))
+					C.update_damage_overlays()
+				if(affecting.heal_wounds(25))
+					C.update_damage_overlays()
+		else
+			target.adjustBruteLoss(-25)
+			target.adjustFireLoss(-25)
+		target.adjustToxLoss(-25)
+		target.adjustOxyLoss(-25)
+		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
+		return TRUE
+	return FALSE
+
 
 /obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
 	. = ..()

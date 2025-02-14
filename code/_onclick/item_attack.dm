@@ -65,6 +65,15 @@
 		adf = round(adf * 1.4)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
 		adf = round(adf * 0.6)
+	for(var/obj/item/clothing/worn_thing in get_equipped_items(include_pockets = TRUE))//checks clothing worn by src.
+	// Things that are supposed to be worn, being held = cannot block
+		if(isclothing(worn_thing))
+			if(worn_thing in held_items)
+				continue
+		// Things that are supposed to be held, being worn = cannot block
+		else if(!(worn_thing in held_items))
+			continue
+		worn_thing.hit_response(src, user) //checks if clothing has hit response. Refer to Items.dm
 	user.changeNext_move(adf)
 	return I.attack(src, user)
 
@@ -295,7 +304,7 @@
 			if(!cont)
 				return 0
 		if(DULLING_PICK) //cannot deal damage if not a pick item. aka rock walls
-				    
+
 			if(user.used_intent.blade_class != BCLASS_PICK)
 				if(user.used_intent.blade_class != BCLASS_DRILL)
 					return 0
@@ -304,7 +313,7 @@
 			newforce = newforce * (8+(mineskill*1.5))
 			shake_camera(user, 1, 1)
 			miner.mind.add_sleep_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
-	
+
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
 		newforce = newforce * 0.5
@@ -338,6 +347,7 @@
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_OBJ, I, user)
 	return TRUE
 
 /turf/proc/attacked_by(obj/item/I, mob/living/user)
@@ -351,6 +361,7 @@
 	if(user.used_intent.no_attack)
 		return 0
 	user.changeNext_move(CLICK_CD_MELEE)
+
 	log_combat(user, src, "attacked", I)
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
@@ -366,6 +377,7 @@
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_TURF, I, user)
 	return TRUE
 
 /mob/living/proc/simple_limb_hit(zone)

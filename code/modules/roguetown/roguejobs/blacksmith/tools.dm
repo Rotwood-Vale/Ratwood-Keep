@@ -12,6 +12,8 @@
 	experimental_onhip = FALSE
 	experimental_onback = FALSE
 	sharpness = IS_BLUNT
+	var/quality = 1
+	//dropshrink = 0.8
 	wlength = 10
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
