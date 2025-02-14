@@ -1,28 +1,27 @@
-body {
-  	background-color: rgb(31, 20, 24);
-	background: url("try4_border.png"), url("try4.png");
-	background-repeat: no-repeat;
-	background-attachment: fixed; 
-	background-size: 100% 100%;
-
-}
-
 #top_handwriting {
-	font-family: "Jacquarda Bastarda 9", serif;
+	font-family: "UnifrakturMaguntia", cursive;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 32px;
-	color:#ff0808;
+	font-size: 38px;
+	color:#ab2020;
 }
 
-#class_select_box_div 
+#character_sheet {
+	font-family: "UnifrakturMaguntia", cursive;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 24px;
+	color:#ab2020;
+}
+
+#class_select_box_div
 {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
 }
 
-#green_plussa 
+#green_plussa
 {
 	color:greenyellow;
 }
@@ -37,17 +36,17 @@ img.ninetysskull{
 
 a.vagrant:link, a.vagrant:visited, a.vagrant:active, .linkOn, .linkOff
 {
-	font-family: "VT323", monospace;
-	font-weight: 400;
-	font-style: normal;
+	font-family: "Charm", cursive;
+  	font-weight: 700;
+  	font-style: normal;
 	font-size: 24px;
 
-	color: #CBCC97;
+	color: #9a9b70;
 	text-decoration: none;
 	text-align: center;
 	background: transparent;
 
-	padding: 1px 4px 1px 4px;
+	padding: 1px 1px 1px 1px;
 	margin: 0 2px 0 0;
 	cursor:default;
 }
@@ -60,15 +59,15 @@ a.vagrant:hover
 }
 
 a.vagrant:hover img.ninetysskull {
-	display: inline-block;  
+	display: inline-block;
 }
 
 a.bottom_buttons, a.bottom_buttons:link, a.bottom_buttons:visited, a.bottom_buttons:active {
-	font-family: "Jacquarda Bastarda 9", serif;
+	font-family: "UnifrakturMaguntia", cursive;
 	font-weight: 400;
 	font-style: normal;
 	font-size: 24px;
-	color: #ff0000;
+	color: #ab2020;
 
 	text-decoration: none;
 	text-align: center;
@@ -86,11 +85,11 @@ a.bottom_buttons:hover
 }
 
 a.mo_bottom_buttons, a.mo_bottom_buttons:link, a.mo_bottom_buttons:visited, a.mo_bottom_buttons:active {
-	font-family: "VT323", monospace;
-	font-weight: 400;
+	font-family: "Tangerine", cursive;
+	font-weight: 700;
 	font-style: normal;
-	font-size: 20px;
-	color: #00ff73;
+	font-size: 26px;
+	color: #249557;
 
 	text-decoration: none;
 	text-align: center;
@@ -108,8 +107,8 @@ a.mo_bottom_buttons:hover
 }
 
 .bottom_button_cost {
-	font-family: "Silkscreen", sans-serif;
-	font-weight: 400;
+	font-family: "Charm", cursive;
+	font-weight: 700;
 	font-style: normal;
 	font-size: 12px;
 	color: #ffffff;
@@ -117,11 +116,11 @@ a.mo_bottom_buttons:hover
 
 
 a.class_desc_YES_LINK, a.class_desc_YES_LINK:link, a.class_desc_YES_LINK:visited, a.class_desc_YES_LINK:active {
-	font-family: "Jacquarda Bastarda 9", serif;
+	font-family: "UnifrakturMaguntia", cursive;
 	font-weight: 400;
 	font-style: normal;
 	font-size: 24px;
-	color: #00ff00;
+	color: #249557;
 
 	text-decoration: none;
 	text-align: center;
@@ -145,27 +144,24 @@ a.class_desc_YES_LINK:hover
    width: 100%;
 }
 
-#button_div 
+#button_div
 {
 	flex: none;
 	align-self: flex-end;
 }
 
 .title_shit {
-	font-family: "VT323", monospace;
-	font-weight: 400;
+	font-family: "Tangerine", cursive;
+	font-weight: 700;
 	font-style: normal;
-	font-size: 26px;
+	font-size: 34px;
 	color: #ffffff;
 }
 
 .post_title_shit{
-	font-family: "Silkscreen", sans-serif;
+	font-family: "Charm", cursive;
 	font-weight: 400;
+	font-size: 20px;
 	font-style: normal;
 	color: #ffffff;
 }
-
-
-
-
