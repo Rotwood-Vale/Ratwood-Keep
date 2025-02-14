@@ -110,7 +110,7 @@
 	for(var/trait in GLOB.traits_deadite)
 		REMOVE_TRAIT(zombie, trait, TRAIT_GENERIC)
 
-	zombie.remove_client_colour(/datum/client_colour/monochrome)
+	zombie.remove_client_colour(/datum/client_colour/glass_colour/darkred)
 
 	if(!was_i_undead)
 		zombie.mob_biotypes &= ~MOB_UNDEAD
@@ -153,7 +153,7 @@
 		return
 
 	revived = TRUE //so we can die for real later
-	zombie.add_client_colour(/datum/client_colour/monochrome)
+	zombie.add_client_colour(/datum/client_colour/glass_colour/darkred)
 
 	if(zombie.mind)
 		special_role = zombie.mind.special_role
@@ -173,9 +173,17 @@
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
 
 	has_turned = TRUE
+	if(!zombie.cmode)
+		zombie.toggle_cmode()
 
-	// zombies cant rp, thus shouldnt be playable
-	zombie.ghostize(FALSE)
+	if(is_antag_banned(zombie.ckey, "Deadite"))
+		zombie.ghostize(TRUE) // Re-enter handles them being banned from Deadite.
+		return
+
+	if(zombie.mind)
+		if(zombie.mind.get_ghost(TRUE))
+			addtimer(CALLBACK(owner, TYPE_PROC_REF(/datum/mind, grab_ghost), TRUE, src), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(prompt_zombie)), 15 SECONDS)
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))
@@ -185,6 +193,10 @@
 	var/mob/living/carbon/human/deadite = owner?.current
 	deadite.try_do_deadite_bite()
 	deadite.try_do_deadite_idle()
+
+/datum/antagonist/zombie/proc/prompt_zombie()
+	if(alert(owner, "Would you like to play as a deadite?", "DEADITE", "Yes", "No") != "Yes")
+		owner.current.ghostize(TRUE)
 
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag
