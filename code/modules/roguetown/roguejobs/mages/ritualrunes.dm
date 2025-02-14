@@ -277,6 +277,17 @@ GLOBAL_LIST(teleport_runes)
 	selected_atoms = list()
 	for(var/atom/nearby_atom as anything in atoms_in_range)
 		// Go through all of our required atoms
+		if(istype(nearby_atom, /obj/item/reagent_containers))
+			var/obj/item/reagent_containers/RC = nearby_atom
+			if(RC.is_drainable())
+				for(var/req_type in requirements_list)
+					for(var/datum/reagent/A in RC.reagents.reagent_list)
+						if(A.volume < 15)
+							continue
+						if(req_type == A.type)
+							requirements_list[req_type] -= A.volume
+							selected_atoms |= nearby_atom
+
 		for(var/req_type in requirements_list)
 			// We already have enough of this type, skip
 			if(requirements_list[req_type] <= 0)
@@ -298,11 +309,9 @@ GLOBAL_LIST(teleport_runes)
 			if(isstack(nearby_atom))
 				var/obj/item/stack/picked_stack = nearby_atom
 				requirements_list[req_type] -= picked_stack.amount // Can go negative, but doesn't matter. Negative = fulfilled
-
 			// Otherwise, just add the mark down the item as fulfilled x1
 			else
 				requirements_list[req_type]--
-
 	var/list/what_are_we_missing = list()
 	for(var/req_type in requirements_list)
 		var/number_of_things = requirements_list[req_type]
@@ -392,6 +401,7 @@ GLOBAL_LIST(teleport_runes)
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "empowerment"
 	tier = 2
+	runesize = 1
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32
 	invocation = "Thal’miren vek’laris un’vethar!"
@@ -426,6 +436,7 @@ GLOBAL_LIST(teleport_runes)
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "imbuement"
 	tier = 2
+	runesize = 1
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32
 	invocation = "Ral’kor vek’varun eyn’torath!"
@@ -457,6 +468,7 @@ GLOBAL_LIST(teleport_runes)
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "imbuement"
 	tier = 3
+	runesize = 2
 	pixel_x = -64 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -64
 	invocation = "Zar’kalthra ul’norak ven’thelis!"
