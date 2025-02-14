@@ -44,6 +44,13 @@
 	additional_items = list(/obj/item/reagent_containers/glass/bottle/waterskin)
 	craftdiff = 3
 
+/datum/anvil_recipe/engineering/bronze/coolingbackpack
+	name = "Cooling Backpack" // why are these recipes capitalized differently than every other crafting recipe my ocddddddddddd
+	req_bar = /obj/item/ingot/bronze
+	created_item = /obj/item/storage/backpack/rogue/artibackpack
+	additional_items = list(/obj/item/roguegear, /obj/item/roguegear, /obj/item/roguegear, /obj/item/storage/backpack/rogue/backpack)
+	craftdiff = 5	
+
 // ------------ PROSTHETICS ----------------
 
 /datum/anvil_recipe/engineering/bronze/prosthetic/bronzeleftarm
