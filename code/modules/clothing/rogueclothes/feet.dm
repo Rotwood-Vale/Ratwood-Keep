@@ -30,6 +30,8 @@
 	item_state = "psydonboots"
 	sewrepair = TRUE
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/nobleboot
 	name = "noble boots"
@@ -41,6 +43,8 @@
 	item_state = "nobleboots"
 	sewrepair = TRUE
 	armor = list("blunt" = 35, "slash" = 15, "stab" = 25, "fire" = 0, "acid" = 0)
+	salvage_amount = 2
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/shortboots
 	name = "shortboots"
@@ -50,6 +54,8 @@
 	icon_state = "shortboots"
 	item_state = "shortboots"
 	sewrepair = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/ridingboots
 	name = "riding boots"
@@ -59,6 +65,8 @@
 	icon_state = "ridingboots"
 	item_state = "ridingboots"
 	sewrepair = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 ///obj/item/clothing/shoes/roguetown/ridingboots/Initialize()
 //	. = ..()
@@ -73,6 +81,8 @@
 	sewrepair = TRUE
 	resistance_flags = null
 	color = "#473a30"
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/simpleshoes/white
 	color = null
@@ -125,6 +135,8 @@
 	item_state = "leatherboots"
 	sewrepair = TRUE
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/boots/armor
 	name = "plated boots"
@@ -152,6 +164,8 @@
 	max_integrity = 200
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 100, "fire" = 0, "acid" = 0)
 	allowed_race = NON_DWARVEN_RACE_TYPES
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide
 
 /obj/item/clothing/shoes/roguetown/boots/armor/iron
 	name = "iron plated boots"
@@ -192,6 +206,8 @@
 	item_state = "furlinedboots"
 	sewrepair = TRUE
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
 	name = "fur lined anklets"
@@ -202,6 +218,8 @@
 	sewrepair = TRUE
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
 	is_barefoot = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/shoes/roguetown/boots/clothlinedanklets
 	name = "cloth lined anklets"
