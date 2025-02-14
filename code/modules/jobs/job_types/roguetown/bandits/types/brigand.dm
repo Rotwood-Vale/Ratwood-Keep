@@ -56,5 +56,4 @@
 			backl= /obj/item/rogueweapon/shield/wood
 			beltr = /obj/item/rogueweapon/flail
 
-	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
