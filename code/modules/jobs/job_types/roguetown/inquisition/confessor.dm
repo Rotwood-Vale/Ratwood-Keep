@@ -43,6 +43,7 @@ Please do not confuse the two.
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	mask = /obj/item/clothing/mask/rogue/rag
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/satchel

@@ -54,6 +54,12 @@
 			cloak = /obj/item/clothing/cloak/cape/puritan
 		if(/datum/patron/divine/xylix)
 			neck = /obj/item/clothing/neck/roguetown/psicross/xylix
+		if(/datum/patron/divine/abyssor)
+			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
+			head = /obj/item/clothing/head/roguetown/roguehood/abyssor
+			cloak = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
+		else
+			neck = /obj/item/clothing/neck/roguetown/psicross // futureproofing
 
 
 	switch(classchoice)
