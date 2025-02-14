@@ -82,3 +82,38 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
 	sewrepair = FALSE
+
+//----------------- MORE AZURE SPRITEWORK ---------------------
+
+/obj/item/clothing/wrists/roguetown/royalsleeves
+	name = "royal sleeves"
+	desc = "Sleeves befitting an elaborate gown."
+	slot_flags = ITEM_SLOT_WRISTS
+	icon_state = "royalsleeves"
+	item_state = "royalsleeves"
+	detail_tag = "_detail"
+	detail_color = CLOTHING_BLACK
+
+/obj/item/clothing/wrists/roguetown/royalsleeves/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/wrists/roguetown/royalsleeves/lordcolor(primary,secondary)
+	detail_color = primary
+	update_icon()
+
+/obj/item/clothing/wrists/roguetown/royalsleeves/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	else
+		GLOB.lordcolor += src
+
+/obj/item/clothing/wrists/roguetown/royalsleeves/Destroy()
+	GLOB.lordcolor -= src
+	return ..()

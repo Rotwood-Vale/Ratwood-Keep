@@ -323,3 +323,80 @@
 	armor = list("blunt" = 20, "slash" = 25, "stab" = 20, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB)
 	salvage_result = /obj/item/natural/hide/cured
+
+//----------------- MORE AZURE SPRITEWORK ---------------------
+
+/obj/item/clothing/under/roguetown/trou/leather/pontifex
+	name = "pontifex's chaqchur"
+	desc = "A handmade pair of baggy, thin leather pants. They end in a tight stocking around the calf, ballooning out around the thigh."
+	icon_state = "monkpants"
+	item_state = "monkpants"
+
+/obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
+	name = "heavy leather shorts"
+	desc = "A thick hide pair of shorts, favored by some for their ease of motion in spite of \
+	being less protective than full trousers."
+	icon_state = "rogueshorts"
+	item_state = "rogueshorts"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	body_parts_covered = GROIN
+
+/obj/item/clothing/under/roguetown/trou/otavan
+	name = "otavan leather trousers"
+	desc = "padded leather armor made by Otavan tailors, its quality is remarkable."
+	icon_state = "fencerpants"
+	resistance_flags = FIRE_PROOF
+	armor = list("blunt" = 85, "slash" = 75, "stab" = 70, "piercing" = 20, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	max_integrity = 300
+	blade_dulling = DULLING_BASHCHOP
+	sewrepair = TRUE
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
+/obj/item/clothing/under/roguetown/trou/apothecary
+	name = "apothecary trousers"
+	desc = "Heavily padded trousers. They're stained by countless herbs."
+	icon_state = "apothpants"
+	item_state = "apothpants"
+
+/obj/item/clothing/under/roguetown/trou/artipants
+	name = "tinker trousers"
+	desc = "Thick leather trousers to protect from sparks or stray gear projectiles. Judging by the wear, its had plenty of use."
+	icon_state = "artipants"
+	item_state = "artipants"
+
+/obj/item/clothing/under/roguetown/trou/leathertights
+	name = "leather tights"
+	desc = "Classy leather tights, form-fitting but tasteful."
+	icon_state = "leathertights"
+	item_state = "leathertights"
+
+/obj/item/clothing/under/roguetown/trou/beltpants
+	name = "belt-buckled trousers"
+	desc = "Dark leather trousers adorned with far too many buckles to be pragmatic."
+	icon_state = "beltpants"
+	item_state = "beltpants"
+
+/obj/item/clothing/under/roguetown/skirt
+	name = "skirt"
+	desc = "Long, flowing, and modest."
+	icon_state = "skirt"
+	item_state = "skirt"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/pants.dmi'
+
+/obj/item/clothing/under/roguetown/skirt/random
+	name = "skirt"
+
+/obj/item/clothing/under/roguetown/skirt/random/Initialize()
+	color = pick("#6b5445", "#435436", "#704542", "#79763f", CLOTHING_BLUE)
+	..()
+
+/obj/item/clothing/under/roguetown/skirt/blue
+	color = CLOTHING_BLUE
+
+/obj/item/clothing/under/roguetown/skirt/green
+	color = CLOTHING_GREEN
+
+/obj/item/clothing/under/roguetown/skirt/red
+	color = CLOTHING_RED

@@ -259,3 +259,10 @@
 		active_item = FALSE
 		return
 
+//----------------- MORE AZURE SPRITEWORK ---------------------
+
+/obj/item/clothing/ring/signet
+	name = "Signet Ring"
+	icon_state = "signet"
+	desc = "A large golden ring engraved with the Symbol of Psydon."
+	sellprice = 135

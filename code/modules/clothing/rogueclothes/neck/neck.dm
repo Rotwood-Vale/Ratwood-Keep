@@ -377,3 +377,47 @@
 	icon_state = "cowbellcollar"
 	slot_flags = ITEM_SLOT_NECK
 	salvage_result = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell/cow = 1)
+
+//----------------- MORE AZURE SPRITEWORK ---------------------
+
+/obj/item/clothing/neck/roguetown/ornateamulet
+	name = "Ornate Amulet"
+	desc = "A beautiful amulet, made of solid gold."
+	icon_state = "ornateamulet"
+	//dropshrink = 0.75
+	resistance_flags = FIRE_PROOF
+	sellprice = 100
+	anvilrepair = /datum/skill/craft/blacksmithing
+
+/obj/item/clothing/neck/roguetown/skullamulet
+	name = "Skull Amulet"
+	desc = "Gold shaped into the form of a skull, made into an amulet."
+	icon_state = "skullamulet"
+	//dropshrink = 0.75
+	resistance_flags = FIRE_PROOF
+	sellprice = 100
+	anvilrepair = /datum/skill/craft/blacksmithing
+
+/obj/item/clothing/neck/roguetown/gorget/forlorncollar
+	name = "forlorn collar"
+	desc = "A old reminder."
+	icon_state = "iwolfcollaralt"
+
+/obj/item/clothing/neck/roguetown/psicross/abyssor
+	name = "amulet of Abyssor"
+	desc = ""
+	icon_state = "abyssor"
+
+/obj/item/clothing/neck/roguetown/fencerguard
+	name = "fencer neckguard"
+	icon_state = "fencercollar"
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 100, "fire" = 0, "acid" = 0)
+	smeltresult = /obj/item/ingot/iron
+	anvilrepair = /datum/skill/craft/blacksmithing
+	max_integrity = 150
+	resistance_flags = FIRE_PROOF
+	slot_flags = ITEM_SLOT_NECK
+	body_parts_covered = NECK
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = PLATEHIT
+	allowed_race = NON_DWARVEN_RACE_TYPES

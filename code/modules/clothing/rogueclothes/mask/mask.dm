@@ -230,3 +230,58 @@
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
 					H.update_inv_wear_mask()
+
+//----------------- MORE AZURE SPRITEWORK ---------------------
+
+/obj/item/clothing/mask/rogue/skullmask
+	name = "skull mask"
+	desc = "A mask in the shape of a skull, designed to terrify."
+	icon_state = "skullmask"
+	max_integrity = 100
+	blocksound = PLATEHIT
+	break_sound = 'sound/foley/breaksound.ogg'
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	resistance_flags = FIRE_PROOF
+	armor = list("blunt" = 10, "slash" = 40, "stab" = 40, "fire" = 0, "acid" = 0)
+	prevent_crits = null
+	flags_inv = HIDEFACE
+	body_parts_covered = FACE
+	block2add = FOV_BEHIND
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	experimental_onhip = TRUE
+
+/obj/item/clothing/mask/rogue/wildguard
+	name = "wild guard"
+	desc = "A mask shaped after the beasts of dendor."
+	icon_state = "wildguard"
+	blocksound = PLATEHIT
+	break_sound = 'sound/foley/breaksound.ogg'
+	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
+	max_integrity = 100
+	resistance_flags = FIRE_PROOF
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	flags_inv = HIDEFACE
+	body_parts_covered = FACE
+	block2add = FOV_BEHIND
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/mask/rogue/shepherd/shadowmask
+	name = "purple halfmask"
+	icon_state = "shadowmask"
+	desc = "For when one wants to conceal their face while performing dastardly deeds in the name of the crown."
+
+/obj/item/clothing/mask/rogue/lordmask/naledi
+	name = "war scholar's mask"
+	item_state = "naledimask"
+	icon_state = "naledimask"
+	desc = "Runes and wards, meant for daemons; the gold has somehow rusted in unnatural, impossible agony. The most prominent of these etchings is in the shape of the Naledian psycross."
+	sellprice = 0
+
+/obj/item/clothing/mask/rogue/facemask/psydonmask
+	name = "psydonian mask"
+	desc = "A silver mask, forever locked in a rigor of uncontestable joy. The Order of Saint Xylix can't decide on whether it's meant to represent Psydon's 'mirthfulness', 'theatricality', or the unpredictable melding of both."
+	icon_state = "psydonmask"
+	item_state = "psydonmask"

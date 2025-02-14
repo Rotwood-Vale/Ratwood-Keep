@@ -1468,3 +1468,224 @@
 	icon_state = "duchess_hood"
 	item_state = "duchess_hood"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+
+//----------------- MORE AZURE SPRITEWORK ---------------------
+
+/obj/item/clothing/head/roguetown/witchhat
+	name = "witch hat"
+	desc = ""
+	icon_state = "witch"
+	item_state = "witch"
+	icon = 'icons/roguetown/clothing/head.dmi'
+	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/duelhat //lifeweb sprite
+	name = "duelist's hat"
+	desc = "A feathered leather hat, to show them all your superiority."
+	icon_state = "duelhat"
+	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute
+	name = "psydonian barbute"
+	desc = "A ceremonial barbute, masterfully forged to represent Psydon's divine authority. The Order of Saint Malum's artisans have chiseled this pronged visage into more statues than you could possibly imagine."
+	icon_state = "psydonbarbute"
+	item_state = "psydonbarbute"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
+	name = "psydonian armet"
+	desc = "An ornate helmet, whose visor has been bound shut with blacksteel chains. The Order of Saint Eora often decorates these armets with flowers - not only as a lucky charm gifted to them by fair maidens and family, but also as a vibrant reminder that 'happiness has to be fought for.'" 
+	icon_state = "psydonarmet"
+	item_state = "psydonarmet"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm/attackby(obj/item/W, mob/living/user, params)
+	..()
+	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
+		var/list/colors = list(
+		"Swan White"="#ffffff",
+		"Lavender"="#865c9c",
+		"Royal Purple"="#5E4687",
+		"Wine Rouge"="#752B55",
+		"Sow's skin"="#CE929F",
+		"Knight's Red"="#933030",
+		"Madroot Red"="#AD4545",
+		"Marigold Orange"="#E2A844",
+		"Politely, Yuck"="#685542",
+		"Astrata's Yellow"="#FFFD8D",
+		"Bog Green"="#375B48",
+		"Seafoam Green"="#49938B",
+		"Woad Blue"="#395480",
+		"Cornflower Blue"="#749EE8",
+		"Blacksteel Grey"="#404040",)
+
+		var/choice = input(user, "Choose a color.", "Orle") as anything in colors
+		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.transferItemToLoc(W, src, FALSE, FALSE)
+		detail_color = colors[choice]
+		detail_tag = "_detail"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_head()
+
+/obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/head/roguetown/roguehood/psydon
+	name = "psydonian hood"
+	desc = "A hood worn by Psydon's disciples, oft-worn in conjunction with its matching tabard."
+	icon_state = "psydonhood"
+	item_state = "psydonhood"
+	color = null
+	body_parts_covered = NECK
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	dynamic_hair_suffix = ""
+	edelay_type = 1
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	max_integrity = 100
+
+/obj/item/clothing/head/roguetown/roguehood/abyssor
+	name = "depths hood"
+	desc = "A hood worn by the followers of Abyssor, with a unique, coral-shaped mask. How do they even see out of this?"
+	color = null
+	icon_state = "abyssorhood"
+	item_state = "abyssorhood"
+	icon = 'icons/roguetown/clothing/head.dmi'
+	body_parts_covered = NECK
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	dynamic_hair_suffix = ""
+	edelay_type = 1
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	max_integrity = 100
+
+/obj/item/clothing/head/roguetown/roguehood/shalal/hijab
+	name = "hijab"
+	flags_inv = null
+	desc = "Flowing like blood from a wound, this tithe of cloth-and-silk spills out to the shoulders. It carries the telltale mark of Naledian stitcheries."
+	item_state = "hijab"
+	icon_state = "deserthood"
+
+/obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
+	name = "heavy hood"
+	flags_inv = null
+	desc = "This thick lump of burlap completely shrouds your head, protecting it from harsh weather and nosey protagonists alike."
+	color = CLOTHING_BROWN
+	item_state = "heavyhood"
+	icon_state = "heavyhood"
+
+/obj/item/clothing/head/roguetown/padded/briarthorns
+	name = "briar thorns"
+	desc = "The pain it causes perhaps can distract from the whispers of a mad God overpowering your sanity..."
+	icon_state = "briarthorns"
+
+/obj/item/clothing/head/roguetown/padded/briarthorns/pickup(mob/living/user)
+	. = ..()
+	to_chat(user, span_warning ("The thorns prick me."))
+	user.adjustBruteLoss(4)
+
+/obj/item/clothing/head/roguetown/articap
+	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."
+	icon_state = "articap"
+
+/obj/item/clothing/head/roguetown/brimmed
+	desc = "A simple brimmed hat that provides some relief from the sun."
+	icon_state = "brimmed"
+
+/obj/item/clothing/head/roguetown/roguehood/phys
+	name = "physicker's hood"
+	desc = "My cure is mostly effective."
+	icon_state = "surghood"
+	item_state = "surghood"
+	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	color = null
+
+/obj/item/clothing/head/roguetown/nyle/consortcrown
+	name = "consort crown"
+	icon_state = "consortcrown"
+	item_state = "consortcrown"
+	sellprice = 100
+
+/obj/item/clothing/head/roguetown/circlet
+	name = "golden circlet"
+	icon_state = "circlet"
+	item_state = "circlet"
+	sellprice = 50
+
+/obj/item/clothing/head/roguetown/helmet/otavan
+	name = "otavan helmet"
+	desc = ""
+	icon_state = "otavahelm"
+	item_state = "otavahelm"
+	adjustable = CAN_CADJUST
+	emote_environment = 3
+	body_parts_covered = FULL_HEAD
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/helmet/otavan/AdjustClothes(mob/user)
+	if(loc == user)
+		playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "otavahelm_raised"
+			body_parts_covered = HEAD|EARS|HAIR
+			flags_inv = HIDEEARS
+			flags_cover = null
+			emote_environment = 0
+			update_icon()
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_head()
+			block2add = null
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			emote_environment = 3
+			update_icon()
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_head()
+		user.update_fov_angles()
+
+/obj/item/clothing/head/roguetown/necramask
+	name = "death mask"
+	desc = "A hood with a decorated jaw bone at the chin,normally worn by some followers of Necra as a form of devotion"
+	color = null
+	icon_state = "deathface"
+	item_state = "deathface"
+	icon = 'icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
+	body_parts_covered = NECK|MOUTH //Jaw bone
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	dynamic_hair_suffix = ""
+	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/helmet/heavy/abyssorgreathelm
+	name = "abyssorite helmet"
+	desc = "A helmet commonly worn by Templars in service to Abyssor. It evokes imagery of the sea with a menacing crustacean visage."
+	icon_state = "abyssorgreathelm"
+	item_state = "abyssorgreathelm"
+	emote_environment = 3
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	block2add = FOV_BEHIND
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/head/roguetown/roguehood/feld
+	name = "feldsher's hood"
+	desc = "My cure is most effective."
+	icon_state = "feldhood"
+	item_state = "feldhood"
+	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	color = null

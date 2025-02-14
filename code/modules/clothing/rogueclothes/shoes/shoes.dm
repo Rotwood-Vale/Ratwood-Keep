@@ -193,3 +193,68 @@
 	max_integrity = 250
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP)
 	armor = list("blunt" = 45, "slash" = 40, "stab" = 40, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+//----------------- MORE AZURE SPRITEWORK ---------------------
+
+/obj/item/clothing/shoes/roguetown/boots/armor/iron
+	name = "iron plated boots"
+	desc = "Boots with iron for added protection."
+	body_parts_covered = FEET
+	icon_state = "armorironboots"
+	item_state = "armorironboots"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	color = null
+	blocksound = PLATEHIT
+	max_integrity = 200
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 70, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/shoes/roguetown/boots/furlinedboots
+	name = "fur lined boots"
+	desc = "Leather boots lined with fur."
+	gender = PLURAL
+	icon_state = "furlinedboots"
+	item_state = "furlinedboots"
+	sewrepair = TRUE
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/shoes/roguetown/boots/furlinedanklets
+	name = "fur lined anklets"
+	desc = "Leather anklets lined with fur, foot remains bare."
+	gender = PLURAL
+	icon_state = "furlinedanklets"
+	item_state = "furlinedanklets"
+	sewrepair = TRUE
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
+	isbarefoot = TRUE
+
+/obj/item/clothing/shoes/roguetown/boots/clothlinedanklets
+	name = "cloth lined anklets"
+	desc = "Cloth anklets lined with with fibers, foot remains bare."
+	gender = PLURAL
+	icon_state = "clothlinedanklets"
+	item_state = "furlinedanklets"
+	isbarefoot = TRUE
+	sewrepair = TRUE
+	armor = list("blunt" = 5, "slash" = 5, "stab" = 5, "fire" = 0, "acid" = 0) //Thinks its fair for a piece of cloth and fiber.
+
+/obj/item/clothing/shoes/roguetown/boots/psydonboots
+	name = "psydonian boots"
+	desc = "Blacksteel-heeled boots. The leather refuses to be worn down, no matter how far you march through these lands."
+	icon_state = "psydonboots"
+	item_state = "psydonboots"
+	sewrepair = TRUE
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/shoes/roguetown/otavan
+	name = "otavan leather boots"
+	desc = "Boots of outstanding craft, your fragile feet has never felt so protected and comfortable before."
+	body_parts_covered = FEET
+	icon_state = "fencerboots"
+	item_state = "fencerboots"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = SOFTHIT
+	max_integrity = 200
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 100, "fire" = 0, "acid" = 0)
+	allowed_race = NON_DWARVEN_RACE_TYPES
