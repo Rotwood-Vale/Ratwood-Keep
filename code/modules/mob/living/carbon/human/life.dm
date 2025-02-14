@@ -78,8 +78,20 @@
 		handle_environment()
 		if(charflaw && !charflaw.ephemeral)
 			charflaw.flaw_on_life(src)
-		if(health <= 0)
-			apply_damage(2, OXY)
+
+		if(InFullCritical())
+			if(!HAS_TRAIT(src, TRAIT_NOBREATH))
+				apply_damage(4, OXY)
+			else
+				apply_damage(2, BRUTE)
+				apply_damage(2, BURN)
+		else if(InCritical())
+			if(!HAS_TRAIT(src, TRAIT_NOBREATH))
+				apply_damage(2, OXY)
+			else
+				apply_damage(1, BRUTE)
+				apply_damage(1, BURN)
+
 		if(mode == AI_OFF && !client && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			if(mob_timers["slo"])
 				if(world.time > mob_timers["slo"] + 90 SECONDS)
@@ -373,7 +385,7 @@
 		adjustOxyLoss(8)
 		Unconscious(80)
 	// Tissues die without blood circulation
-	adjustBruteLoss(2)
+	adjustBruteLoss(8)
 
 /mob/living/carbon/human/proc/handle_vamp_dreams()
 	if(!HAS_TRAIT(src, TRAIT_VAMP_DREAMS))
