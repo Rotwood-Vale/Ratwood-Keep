@@ -78,7 +78,7 @@
 		if(stringamt < 1)
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
-		if(I.sewrepair && I.max_integrity && !I.obj_broken)
+		if(I.sewrepair && I.max_integrity)
 			if(I.obj_integrity == I.max_integrity)
 				to_chat(user, span_warning("This is not broken."))
 				return
