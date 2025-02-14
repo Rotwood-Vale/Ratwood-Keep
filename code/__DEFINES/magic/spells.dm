@@ -1,7 +1,7 @@
 #define SPELL_FIREBALL_old							/obj/effect/proc_holder/spell/aimed/fireball
 #define SPELL_BLINDNESS_AOE							/obj/effect/proc_holder/spell/aoe_turf/blindness
 #define SPELL_KNOCK									/obj/effect/proc_holder/spell/aoe_turf/knock
-#define SPELL_REPULSE								/obj/effect/proc_holder/spell/aoe_turf/repulse
+#define SPELL_REPULSE								/obj/effect/proc_holder/spell/aoe_turf/repulse	//This is the one we use.
 #define SPELL_REPULSE_XENO							/obj/effect/proc_holder/spell/aoe_turf/repulse/xeno
 #define SPELL_TIMESTOP								/obj/effect/proc_holder/spell/aoe_turf/timestop
 #define SPELL_BLOODCRAWL							/obj/effect/proc_holder/spell/bloodcrawl

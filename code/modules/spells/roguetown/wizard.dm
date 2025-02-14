@@ -40,7 +40,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		SPELL_LIGHTNINGLURE,		// 3 cost	combat, ranged single target hard stun w/ time requirement.
 		SPELL_SLOWDOWN_SPELL_AOE,	// 3 cost	utility hold spell. Target unable to move, but can fight.
 		SPELL_FINDFAMILIAR,			// 3 cost	combat, summon spell.
-		SPELL_REPULSE,				// 3 cost	localized AOE knockback spell. Knocksdown/disarms victims
+		SPELL_PUSH_SPELL,			// 3 cost	localized AOE knockback spell. Knocksdown/disarms victims
 		SPELL_ARCYNE_STORM,			// 2 cost	combat, light damaging AOE, stall/area denial spell
 		SPELL_DARKVISION,			// 2 cost	utility, dark sight
 		SPELL_HASTE,				// 2 cost	utility/combatbuff, faster mve speed.
@@ -115,88 +115,6 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	else
 		user.mind.used_spell_points += item.cost
 		user.mind.AddSpell(new item)
-
-/obj/effect/proc_holder/spell/invoked/learnspell			//Keep Learn spell at the top, so we may peruse the list of spells far easier.
-	name = "Attempt to learn a new spell"
-	desc = "Weave a new spell"
-	school = "transmutation"
-	overlay_state = "book1"
-	chargedrain = 0
-	chargetime = 0
-
-/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
-	. = ..()
-	//list of spells you can learn, it may be good to move this somewhere else eventually
-	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
-	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
-
-	var/list/spell_choices = list(
-
-	)
-
-	//Patron Spelllists
-	var/list/spell_choices_noc = list(
-		/obj/effect/proc_holder/spell/invoked/mageblindness,  // 2cost
-		/obj/effect/proc_holder/spell/invoked/mageinvisibility,
-	)
-
-	var/list/spell_choices_graggar = list(
-
-	)
-
-	var/list/spell_choices_matthios = list()
-
-	var/list/spell_choices_zizo = list(
-		/obj/effect/proc_holder/spell/invoked/strengthen_undead,// 4 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/sickness,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/eyebite,// 3 cost
-	)
-
-	if(user.patron.type == /datum/patron/divine/noc)
-		spell_choices.Add(spell_choices_noc)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/inhumen/graggar)
-		spell_choices.Add(spell_choices_graggar)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/inhumen/matthios)
-		spell_choices.Add(spell_choices_matthios)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/zizo)
-		spell_choices.Add(spell_choices_zizo)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
-	var/obj/effect/proc_holder/spell/item = choices[choice]
-	if(!item)
-		return     // user canceled;
-	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
-		return
-	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
-		if(knownspell.type == item.type)
-			to_chat(user,span_warning("You already know this one!"))
-			return	//already know the spell
-	if(item.cost > user.mind.spell_points - user.mind.used_spell_points)
-		to_chat(user,span_warning("You do not have enough experience to create a new spell."))
-		return		// not enough spell points
-	else
-		user.mind.used_spell_points += item.cost
-		user.mind.AddSpell(new item)
-
-
-
-
-
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "Bolt of Lightning"
