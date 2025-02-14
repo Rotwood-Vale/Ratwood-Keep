@@ -111,6 +111,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	max_integrity = 180 // slightly lower than scale
 	armor_class = ARMOR_CLASS_MEDIUM
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite. NO CROPS FOR HANDS!
 
 /obj/item/clothing/suit/roguetown/armor/plate/half
 	slot_flags = ITEM_SLOT_ARMOR
@@ -179,6 +180,7 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/armor/heartfelt/hand
 	slot_flags = ITEM_SLOT_ARMOR
@@ -198,6 +200,7 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = CANT_SLEEP_IN
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/armor/brigandine
 	slot_flags = ITEM_SLOT_ARMOR

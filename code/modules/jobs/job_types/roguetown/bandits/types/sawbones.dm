@@ -44,11 +44,10 @@
 		H.change_stat("speed", -1)
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/docheal)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/stable)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/purge)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/debride)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/cpr)
-	H.verbs |= /mob/proc/haltyell
+	H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
+	H.mind.AddSpell(new SPELL_DOCHEAL)
+	H.mind.AddSpell(new SPELL_STABLE)
+	H.mind.AddSpell(new SPELL_PURGE)
+	H.mind.AddSpell(new SPELL_DEBRIDE)
+	H.mind.AddSpell(new SPELL_CPR)
 	H.ambushable = FALSE

@@ -163,7 +163,19 @@
 	created_item = /obj/item/contraption/lock_imprinter
 	hammers_per_item = 12
 	skill_level = 4
-	
+
+/datum/artificer_recipe/contraptions/smokebombs
+	name = "smokebomb(s) (6) (+1 Coal)"
+	required_item = /obj/item/ingot/iron
+	additional_items = list(/obj/item/rogueore/coal = 1)
+	created_item = list(/obj/item/smokebomb,
+						/obj/item/smokebomb,
+						/obj/item/smokebomb,
+						/obj/item/smokebomb,
+						/obj/item/smokebomb,
+						/obj/item/smokebomb,)
+	hammers_per_item = 12
+	skill_level = 3
 // --------- WEAPON -----------
 
 /datum/artificer_recipe/wood/weapons //Again, a bit silly, but is important

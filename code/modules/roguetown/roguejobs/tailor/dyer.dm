@@ -33,7 +33,8 @@
 			/obj/item/clothing/suit/roguetown/armor/armordress,
 			/obj/item/storage,
 			/obj/item/bedroll,
-			/obj/item/clothing/under/roguetown/loincloth
+			/obj/item/clothing/under/roguetown/loincloth,
+			/obj/item/clothing/suit/roguetown/shirt/tunic
 			)
 	var/activecolor = "#FFFFFF"
 	var/static/list/selectable_colors = list(
@@ -59,7 +60,7 @@
 		"Dark Green" = "#264d26",
 		"Teal" = "#249589",
 		"Periwinkle Blue" = "#8f99fb",
-		"Woad Blue" = "#597fb9",
+		"Woad Blue" = "#537bc6",
 		"Royal Purple" = "#8747b1",
 		"Magenta" = "#962e5c",
 		"Orchil" = "#66023C",

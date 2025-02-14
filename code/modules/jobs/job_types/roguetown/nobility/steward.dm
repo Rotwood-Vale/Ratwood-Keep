@@ -9,11 +9,28 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_STEWARD
-	tutorial = "Coin, Coin, Coin! Oh beautiful coin: You're addicted to it, and you hold the position as the Duke's personal treasurer of both coin and information. You know the power silver and gold has on a man's mortal soul, and you know just what lengths they'll go to in order to get even more. Keep your festering economy and your rats alive, the'yre the only two things you can weigh any trust into anymore."
+	tutorial = "Coin, Coin, Coin! Oh beautiful coin: You're addicted to it, and you hold the position as the Duke's personal treasurer of both coin and information. You know the power silver and gold has on a man's mortal soul, and you know just what lengths they'll go to in order to get even more. Keep your festering economy alive along with your merchant business partner, they're the only two things you can weigh any trust into anymore."
 	outfit = /datum/outfit/job/roguetown/steward
 	give_bank_account = 17
 	min_pq = 2
 	max_pq = null
+
+/datum/job/roguetown/steward/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		var/index = findtext(H.real_name, " ")
+		if(index)
+			index = copytext(H.real_name, 1,index)
+		if(!index)
+			index = H.real_name
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/honorary = "Lord"
+		if(H.gender == FEMALE)
+			honorary = "Lady"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
 	..()

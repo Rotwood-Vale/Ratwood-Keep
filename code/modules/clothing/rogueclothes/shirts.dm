@@ -32,6 +32,7 @@
 	sleeved = null
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
+	// Has sprite without crop for hands AND no sleeves
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	color = CLOTHING_BLACK
@@ -91,6 +92,7 @@
 	icon_state = "puritan_shirt"
 	allowed_race = CLOTHED_RACES_TYPES
 	salvage_result = /obj/item/natural/silk
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"
@@ -254,6 +256,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
 	icon_state = "velvetdress"
 	item_state = "velvetdress"
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/dress/velvetdress/black
 	color = CLOTHING_BLACK
@@ -278,6 +281,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/nobledresses/onmob/shirts.dmi'
 	icon_state = "nobledress"
 	item_state = "nobledress"
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
 /obj/item/clothing/suit/roguetown/shirt/dress/nobledress/black
 	color = CLOTHING_BLACK
@@ -388,3 +392,12 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra
+	name = "Exotic Silks"
+	desc = "Fanciful gold laced silks barely able to conceal what little it covers."
+	icon_state = "exoticsilkbra"
+	item_state = "exoticsilkbra"
+	gender = PLURAL
+	body_parts_covered = CHEST|ARMS|VITALS
+	sewrepair = TRUE
