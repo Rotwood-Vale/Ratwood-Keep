@@ -200,7 +200,7 @@
 	//		popup.set_content()
 	//		popup.open()
 	//		popup.close()
-			mob << browse(null, "window=[X]")
+			mob << browse(null, "window=[X.window_id]")
 			open_popups -= X
 /**
   * Checks to see if you're being grabbed and if so attempts to break it
