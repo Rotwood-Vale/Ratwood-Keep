@@ -68,6 +68,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	desc = "Ебать. Плащ."
 	path = /obj/item/clothing/cloak/raincloak
 
+/datum/loadout_item/raincloak/apron/blacksmith
+	name = "Leather Apron"
+	desc = "Ебать. Фартук."
+	path = /obj/item/clothing/cloak/apron/blacksmith
 
 //SHOES
 /datum/loadout_item/darkboots
