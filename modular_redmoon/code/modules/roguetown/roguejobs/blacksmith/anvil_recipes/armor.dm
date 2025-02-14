@@ -50,3 +50,6 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/decoratedgbucket
 	skill_level = 3
 	i_type = "Armor"
+
+/datum/anvil_recipe/armor/gold
+	skill_level = 5
