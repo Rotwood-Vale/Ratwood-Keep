@@ -278,13 +278,28 @@
 			contents += "</center>"
 		if(TAB_BANK)
 			contents += "<a href='byond://?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
+			contents += " <a href='byond://?src=\ref[src];compact=1'>\[Compact: [compact? "ENABLED" : "DISABLED"]\]</a><BR>"
 			contents += "<center>Bank<BR>"
 			contents += "--------------<BR>"
 			contents += "Treasury: [SStreasury.treasury_value]m</center><BR>"
+			contents += "<a href='byond://?src=\ref[src];withdraw=1'>\[Withdraw\]</a></center><BR>"
 			contents += "<a href='byond://?src=\ref[src];payroll=1'>\[Pay by Class\]</a><BR><BR>"
-			for(var/mob/living/A in SStreasury.bank_accounts)
-				contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m<BR>"
-				contents += "<a href='byond://?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a> <a href='byond://?src=\ref[src];fineaccount=\ref[A]'>\[Fine Account\]</a><BR><BR>"
+			if(compact)
+				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
+					if(ishuman(A))
+						var/mob/living/carbon/human/tmp = A
+						contents += "[tmp.real_name] ([tmp.advjob ? tmp.advjob : tmp.job]) - [SStreasury.bank_accounts[A]]m"
+					else
+						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m"
+					contents += " / <a href='byond://?src=\ref[src];givemoney=\ref[A]'>\[PAY\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[FINE\]</a><BR><BR>"
+			else
+				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
+					if(ishuman(A))
+						var/mob/living/carbon/human/tmp = A
+						contents += "[tmp.real_name] ([tmp.advjob ? tmp.advjob : tmp.job]) - [SStreasury.bank_accounts[A]]m<BR>"
+					else
+						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m<BR>"
+					contents += "<a href='byond://?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[Fine Account\]</a><BR><BR>"
 		if(TAB_STOCK)
 			contents += "<a href='byond://?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
 			contents += " <a href='?src=\ref[src];compact=1'>\[Compact: [compact? "ENABLED" : "DISABLED"]\]</a><BR>"
@@ -320,17 +335,23 @@
 			contents += "<a href='byond://?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
 			contents += "<center>Imports<BR>"
 			contents += "--------------<BR>"
-			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
-			contents += "Lord's Tax: [SStreasury.tax_value*100]%<BR>"
-			contents += "Guild's Tax: [SStreasury.queens_tax*100]%</center><BR>"
-			for(var/datum/roguestock/import/A in SStreasury.stockpile_datums)
-				contents += "[A.name]<BR>"
-				contents += "[A.desc]<BR>"
-				if(!A.stable_price)
-					contents += "Demand: [A.demand2word()]<BR>"
-				contents += "<a href='byond://?src=\ref[src];import=\ref[A]'>\[Import [A.importexport_amt] ([A.get_import_price()])\]</a><BR><BR>"
-		if(TAB_BOUNTIES)
-			contents += "<a href='byond://?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
+			if(compact)
+				contents += "Treasury: [SStreasury.treasury_value]m"
+				contents += " / Lord's Tax: [SStreasury.tax_value*100]%"
+				contents += " / Guild's Tax: [SStreasury.queens_tax*100]%</center><BR>"
+				for(var/datum/roguestock/import/A in SStreasury.stockpile_datums)
+					contents += "<b>[A.name]:</b>"
+					contents += " <a href='byond://?src=\ref[src];import=\ref[A]'>\[Import [A.importexport_amt] ([A.get_import_price()])\]</a><BR><BR>"
+			else
+				contents += "Treasury: [SStreasury.treasury_value]m<BR>"
+				contents += "Lord's Tax: [SStreasury.tax_value*100]%<BR>"
+				contents += "Guild's Tax: [SStreasury.queens_tax*100]%</center><BR>"
+				for(var/datum/roguestock/import/A in SStreasury.stockpile_datums)
+					contents += "[A.name]<BR>"
+					contents += "[A.desc]<BR>"
+					if(!A.stable_price)
+						contents += "Demand: [A.demand2word()]<BR>"
+					contents += "<a href='byond://?src=\ref[src];import=\ref[A]'>\[Import [A.importexport_amt] ([A.get_import_price()])\]</a><BR><BR>"
 			contents += "<center>Bounties<BR>"
 			contents += "--------------<BR>"
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
@@ -356,7 +377,7 @@
 	"}
 	if(!canread)
 		contents = stars(contents)
-	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 220)
+	var/datum/browser/popup = new(user, "VENDORTHING", "", 500, 800)
 	popup.set_content(contents)
 	popup.set_window_options("can_minimize=0;can_maximize=0")
 	popup.open()
