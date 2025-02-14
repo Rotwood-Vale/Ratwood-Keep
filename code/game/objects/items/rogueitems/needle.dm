@@ -103,7 +103,7 @@
 					cloth.obj_fix()
 				playsound(loc, 'sound/foley/sewflesh.ogg', 50, TRUE, -2)
 				user.visible_message(span_info("[user] repairs [I]!"))
-				I.obj_integrity = min(I.obj_integrity + skill, I.max_integrity)
+				I.obj_integrity = min(I.obj_integrity + 20 + skill, I.max_integrity)
 		return
 	return ..()
 
