@@ -230,6 +230,9 @@
 			if(calling.calling == src)
 				calling.repeat_message(raw_message, src, usedcolor, message_language)
 			return
+		if(lowertext(raw_message) in list("say laws.", "state laws."))
+			dictate_laws()
+			return
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			if(!S.calling)
 				S.repeat_message(raw_message, src, usedcolor, message_language)
