@@ -7,6 +7,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Narcoleptic"=/datum/charflaw/narcoleptic,
 	"Masochist"=/datum/charflaw/masochist,
 	"Paranoid"=/datum/charflaw/paranoid,
+	"Bad Eyesight" =/datum/charflaw/badsight,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
 	"Cyclops (L)"=/datum/charflaw/noeyel,
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
