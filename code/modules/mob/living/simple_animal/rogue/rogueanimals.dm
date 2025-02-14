@@ -29,7 +29,7 @@
 	move_to_delay = 8	// basically speed when player controlled. Lower is faster, a lot faster.
 	see_in_dark = 6
 	robust_searching = TRUE
-	
+
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat = 1)
 
 	health = 40
@@ -55,6 +55,8 @@
 	candodge = TRUE
 	dodge_sound = 'sound/combat/dodge.ogg'
 	dodge_prob = 0
+	candodge = TRUE
+	var/tier = 0
 	search_objects = TRUE
 	can_saddle = FALSE
 
@@ -70,8 +72,7 @@
 	var/deaggroprob = 10
 
 	var/eat_forever
-
-
+	var/summon_primer = null
 /mob/living/simple_animal/hostile/retaliate/rogue/onbite(mob/living/carbon/human/user)
 	visible_message(span_danger("[user] bites [src]!"))
 	playsound(src, "smallslash", 100, TRUE, -1)
