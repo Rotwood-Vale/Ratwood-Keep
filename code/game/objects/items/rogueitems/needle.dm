@@ -92,7 +92,7 @@
 			if(!do_after(user, sewtime, target = I))
 				return
 			if(prob(60 - skill)) //The more knowlegeable we are the less chance we damage the object
-				I.obj_integrity -= (30 - repairskill)
+				I.obj_integrity = max(0, I.obj_integrity - (30 - repairskill))
 				user.visible_message(span_info("[user] damages [I] due to a lack of skill!"))
 				playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
 				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing a repair teaches us something
