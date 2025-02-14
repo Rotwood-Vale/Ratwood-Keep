@@ -34,52 +34,52 @@
 /datum/triumph_buy/lich/on_activate(mob/living/carbon/human/H)
 	if(!usr)
 		return
-	H.mind.special_items["Antagcoin: Lich"] = /obj/item/flip_me/lich
+	H.mind.special_items["Antagcoin: Lich"] = /obj/item/antagcoin/lich
 
 /datum/triumph_buy/werewolf/on_activate(mob/living/carbon/human/H)
 	if(!usr)
 		return
-	H.mind.special_items["Antagcoin: Werewolf"] = /obj/item/flip_me/werewolf
+	H.mind.special_items["Antagcoin: Werewolf"] = /obj/item/antagcoin/werewolf
 
 /datum/triumph_buy/maniac/on_activate(mob/living/carbon/human/H)
 	if(!usr)
 		return
-	H.mind.special_items["Antagcoin: Maniac"] = /obj/item/flip_me/maniac
+	H.mind.special_items["Antagcoin: Maniac"] = /obj/item/antagcoin/maniac
 
 /datum/triumph_buy/cult/on_activate(mob/living/carbon/human/H)
 	if(!usr)
 		return
-	H.mind.special_items["Antagcoin: Cult"] = /obj/item/flip_me/zizocultist
+	H.mind.special_items["Antagcoin: Cult"] = /obj/item/antagcoin/zizocultist
 
-/obj/item/flip_me
+/obj/item/antagcoin
 	name = "Flip Me"
 	desc = "Xylix's gift."
 	icon_state = "coin_valid"
-	icon = 'icons/roguetown/items/valuable.dmi'
+	icon = 'modular_redmoon/icons/economy.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	var/antagcoin_role
 	var/sideslist = list("valid", "salad")
 	var/coinflip
 	var/cooldown = 0
 
-/obj/item/flip_me/lich
+/obj/item/antagcoin/lich
 	antagcoin_role = /datum/antagonist/lich
 
-/obj/item/flip_me/werewolf
+/obj/item/antagcoin/werewolf
 	antagcoin_role = /datum/antagonist/werewolf
 
-/obj/item/flip_me/maniac
+/obj/item/antagcoin/maniac
 	antagcoin_role = /datum/antagonist/maniac
 
-/obj/item/flip_me/zizocultist
+/obj/item/antagcoin/zizocultist
 	antagcoin_role = /datum/antagonist/zizocultist
 
-/obj/item/flip_me/Initialize(mapload)
+/obj/item/antagcoin/Initialize(mapload)
 	. = ..()
 	coinflip = pick(sideslist)
 	icon_state = "coin_[coinflip]"
 
-/obj/item/flip_me/attack_self(mob/user)
+/obj/item/antagcoin/attack_self(mob/user)
 	if(cooldown < world.time)
 		cooldown = world.time + 15
 		flick("coin_[coinflip]_flip", src)
@@ -94,7 +94,7 @@
 				"<span class='hear'>You hear the clattering of loose change.</span>")
 	return TRUE//did the coin flip? useful for suicide_act
 
-/obj/item/flip_me/attack_right(mob/user)
+/obj/item/antagcoin/attack_right(mob/user)
 	if(!antagcoin_role)
 		return
 	var/mob/living/pre_antag = user
