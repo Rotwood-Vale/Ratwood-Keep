@@ -30,6 +30,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
 	head = /obj/item/clothing/head/roguetown/bardhat
+	mouth = /obj/item/alch/rosa
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants

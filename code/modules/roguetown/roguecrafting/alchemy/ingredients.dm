@@ -355,6 +355,10 @@
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
 
+	major_pot = /datum/alch_cauldron_recipe/rosewater_potion
+	med_pot = /datum/alch_cauldron_recipe/end_potion
+	minor_pot = /datum/alch_cauldron_recipe/antidote
+
 /obj/item/alch/rosa/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == SLOT_MOUTH)
@@ -362,6 +366,7 @@
 		user.update_inv_mouth()
 	else
 		icon_state = "rosa"
+		user.update_icon()
 
 //dust mix crafting
 /datum/crafting_recipe/roguetown/alch/feaudust
