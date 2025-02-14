@@ -1326,6 +1326,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 
 /obj/effect/proc_holder/spell/targeted/lightninglure
 	name = "Lightning Lure"
+	desc = "An electric connection forms between you and the target, and after several seconds of build up, shocks the target if they remain nearby."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 1
@@ -1371,6 +1372,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 
 /obj/effect/proc_holder/spell/invoked/mending
 	name = "Mending"
+	desc = "Arcana sinks into your chosen item and mends it's damage partly."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 5
@@ -1554,8 +1556,8 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, hotspot_range = exp_hotspot, soundin = explode_sound)
 
 /obj/effect/proc_holder/spell/targeted/summonweapon
-	name = "summon weapon"
-	desc = "summon an imbued weapon."
+	name = "Summon Weapon"
+	desc = "Summon an imbued weapon."
 	clothes_req = FALSE
 	school = "transmutation"
 	range = -1
