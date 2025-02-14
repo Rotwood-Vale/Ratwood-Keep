@@ -196,7 +196,7 @@
 
 /datum/virtue/utility/keenears
 	name = "Keen Ears"
-	desc = "Cowering from authorities, loved ones or by a generous gift of the gods, you've adapted a keen sense of hearing, and can identify the speakers even when they are out of sight, along with good eyes for tracking, letting you keep those you fear, or those you seek, in your sights."
+	desc = "Cowering from authorities, loved ones or by a generous gift of the gods, you've adapted a keen sense of hearing, and can identify the speakers even when they are out of sight, and their whispers are louder to you. Along with this, you've developed good eyes for tracking, letting you keep those you fear, or those you seek, in your sights."
 	added_skills = list(list(/datum/skill/misc/tracking, 3, 6))
 	added_traits = list(TRAIT_KEENEARS)
 
