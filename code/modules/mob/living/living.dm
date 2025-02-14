@@ -1056,7 +1056,7 @@
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
 	if(prob(resist_chance))
-		stamina_add(rand(5,15))
+		stamina_add(5)
 		visible_message(span_warning("[src] breaks free of [pulledby]'s grip!"), \
 						span_notice("I break free of [pulledby]'s grip!"), null, null, pulledby)
 		to_chat(pulledby, span_danger("[src] breaks free of my grip!"))
@@ -1071,7 +1071,7 @@
 
 		return FALSE
 	else
-		stamina_add(rand(5,15))
+		stamina_add(5)
 		var/shitte = ""
 //		if(client?.prefs.showrolls)
 //			shitte = " ([resist_chance]%)"
