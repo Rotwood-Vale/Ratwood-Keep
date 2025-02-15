@@ -1940,7 +1940,11 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town)
 "bAa" = (
-/obj/structure/roguemachine/scomm/r,
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "archive";
+	name = "alchemy room"
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
 "bAb" = (
@@ -14192,6 +14196,12 @@
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
+"lxy" = (
+/obj/structure/chair/wood/rogue/fancy{
+	dir = 8
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town)
 "lxN" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -14659,14 +14669,6 @@
 /obj/machinery/light/rogue/torchholder/c,
 /obj/structure/bed/rogue,
 /turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town)
-"lTt" = (
-/obj/structure/mineral_door/wood{
-	locked = 1;
-	lockid = "archive";
-	name = "alchemy room"
-	},
-/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
 "lTw" = (
 /obj/machinery/light/rogue/wallfire/candle,
@@ -18043,6 +18045,10 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
+"oxq" = (
+/obj/structure/roguemachine/scomm/r,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town)
 "oxt" = (
 /obj/structure/chair/bench/ultimacouch/r{
 	icon_state = "ultimacochright"
@@ -23455,12 +23461,6 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/town/basement/keep)
-"sNw" = (
-/obj/structure/chair/wood/rogue/fancy{
-	dir = 8
-	},
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town)
 "sNI" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner,
 /area/rogue/indoors/town/shop)
@@ -25680,6 +25680,10 @@
 "uBR" = (
 /turf/closed/mineral/random/rogue/med,
 /area/rogue/under/cave)
+"uBX" = (
+/obj/structure/roguewindow/openclose/reinforced,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/physician)
 "uCr" = (
 /obj/machinery/light/rogue/torchholder/l{
 	dir = 8
@@ -26208,10 +26212,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/tavern)
-"van" = (
-/obj/structure/roguewindow/openclose/reinforced,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/physician)
 "vay" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/structure/fluff/railing/border,
@@ -27744,6 +27744,9 @@
 /area/rogue/indoors)
 "wvm" = (
 /obj/structure/fluff/railing/border,
+/obj/structure/fluff/walldeco/rpainting/forest{
+	pixel_x = -32
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
 "wvo" = (
@@ -91390,7 +91393,7 @@ qhb
 qhb
 geM
 vpP
-sNw
+lxy
 lbI
 rCZ
 vpP
@@ -91863,7 +91866,7 @@ xqr
 hFy
 gSj
 jvN
-bAa
+oxq
 vpP
 oRx
 xqr
@@ -92021,7 +92024,7 @@ xqr
 xqr
 xqr
 xqr
-lTt
+bAa
 xqr
 xqr
 gCg
@@ -92333,7 +92336,7 @@ qhb
 ouw
 ouw
 ouw
-van
+uBX
 eVF
 gdK
 gdK
@@ -92647,7 +92650,7 @@ qhb
 ouw
 ouw
 ouw
-van
+uBX
 gxZ
 gdK
 gdK
