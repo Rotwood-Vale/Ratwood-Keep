@@ -6,7 +6,8 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/mage
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	traits_applied = list(TRAIT_OUTLANDER)
-	classes = list("Sorcerer","Spellsinger",)
+	classes = list("Sorcerer" = "You are a learned mage and a scholar, having spent your life studying the arcane and its ways.", 
+					"Spellsinger" = "You belong to a school of bards renowned for their study of both the arcane and the arts.")
 
 /datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)
 	..()
