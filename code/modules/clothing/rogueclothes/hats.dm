@@ -307,7 +307,7 @@
 	icon_state = "curator"
 	item_state = "curator"
 	sewrepair = TRUE
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/hatfur
 	name = "fur hat"
@@ -396,7 +396,7 @@
 	item_state = "armingcap"
 	flags_inv = HIDEEARS
 	sewrepair = TRUE
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 	//dropshrink = 0.75
 
 /obj/item/clothing/head/roguetown/knitcap
@@ -1255,7 +1255,7 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
@@ -1613,14 +1613,14 @@
 	desc = "A plain leather hat with decorative buckle. Made popular by the ne'er-do-wells of Etrusca."
 	icon_state = "bucklehat"
 	sewrepair = TRUE
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/duelhat //lifeweb sprite
 	name = "duelist's hat"
 	desc = "A feathered leather hat, to show them all your superiority."
 	icon_state = "duelhat"
 	sewrepair = TRUE
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 
 /obj/item/clothing/head/roguetown/helmet/heavy/volfplate

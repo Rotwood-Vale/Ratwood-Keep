@@ -764,7 +764,7 @@
 	body_parts_covered = CHEST|GROIN
 	armor = list("blunt" = 25, "slash" = 5, "stab" = 15, "fire" = 24, "acid" = 0)
 	boobed = TRUE
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/cloak/apron/brown
 	color = CLOTHING_BROWN
@@ -825,7 +825,7 @@
 	inhand_mod = TRUE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood
 	toggle_icon_state = FALSE
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/wash_act(clean)
 	. = ..()
