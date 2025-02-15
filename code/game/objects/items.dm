@@ -573,6 +573,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return FALSE
 	for(var/obj/structure/table/T in src.loc)
 		return TRUE
+	for(var/obj/machinery/anvil/A in src.loc)
+		return TRUE
 	return FALSE
 
 /obj/item/proc/allow_attack_hand_drop(mob/user)
