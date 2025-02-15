@@ -757,6 +757,16 @@ GLOBAL_LIST(teleport_runes)
 	can_be_scribed = TRUE
 	var/summoning = FALSE
 	var/mob/living/simple_animal/summoned_mob
+/obj/effect/decal/cleanable/roguerune/arcyne/summoning/Destroy()
+	if(summoning)
+		REMOVE_TRAIT(summoned_mob, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
+		summoned_mob.status_flags -= GODMODE//remove godmode
+		summoned_mob.candodge = TRUE
+		summoned_mob.binded = FALSE
+		summoned_mob.move_resist = MOVE_RESIST_DEFAULT
+		summoned_mob = null
+		summoning = FALSE
+	.=..()
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/attack_hand(mob/living/user)
 	if(summoning && isarcyne(user))

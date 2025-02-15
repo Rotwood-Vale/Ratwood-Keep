@@ -19,7 +19,7 @@ T1 Enchantments below here*/
 
 /obj/item/enchantmentscroll/woodcut/attack_obj(obj/item/O, mob/living/user)
 	.=..()
-	if(istype(O,/obj/item/rogueweapon/pick))
+	if(istype(O,/obj/item/rogueweapon/stoneaxe))
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
