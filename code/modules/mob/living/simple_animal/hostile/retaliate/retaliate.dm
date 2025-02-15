@@ -13,15 +13,20 @@
 /mob/living/simple_animal/hostile/retaliate
 	var/aggressive = 0
 
-/mob/living/simple_animal/hostile/retaliate/ListTargets()
+/mob/living/simple_animal/hostile/retaliate/CanAttack(atom/the_target)
+	. = ..()
+	//Follow the original code. Rip and Tear.
 	if(aggressive)
-		return ..()
-	else
-		if(!enemies.len)
-			return list()
-		var/list/see = ..()
-		see &= enemies // Remove all entries that aren't in enemies
-		return see
+		return .
+	//Hey i think thats a guy over there. Lemme reconsider brutalizing them.
+	if(isliving(the_target))
+		var/mob/living/L = the_target
+		// We hold no grudge against them.
+		if(!(L in enemies))
+			return FALSE
+		// REVENGE!!!
+		else
+			return TRUE
 
 /mob/living/simple_animal/hostile/retaliate/proc/Retaliate()
 //	var/list/around = view(src, vision_range)
@@ -29,19 +34,12 @@
 	var/list/around = hearers(vision_range, src)
 
 	for(var/atom/movable/A in around)
-		if(A in friends) //Makes the mob not target it's friends (only applies to tamed Rous)
-			continue
 		if(A == src)
 			continue
 		if(isliving(A))
 			var/mob/living/M = A
-			if(faction_check_mob(M) && attack_same || !faction_check_mob(M))
+			if(faction_check_mob(M) && attack_same || !faction_check_mob(M) && owner != M)
 				enemies |= M
-//		else if(ismecha(A))
-//			var/obj/mecha/M = A
-//			if(M.occupant)
-//				enemies |= M
-//				enemies |= M.occupant
 
 	for(var/mob/living/simple_animal/hostile/retaliate/H in around)
 		if(faction_check_mob(H) && !attack_same && !H.attack_same)

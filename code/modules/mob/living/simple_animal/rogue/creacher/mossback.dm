@@ -24,7 +24,9 @@
 	aggro_vision_range = 3
 	retreat_distance = 0
 	minimum_distance = 0
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	food_type = list(/obj/item/bodypart,
+					/obj/item/organ,
+					/obj/item/reagent_containers/food/snacks/rogue/meat/steak)
 	pooptype = null
 	deaggroprob = 0
 	defprob = 40
