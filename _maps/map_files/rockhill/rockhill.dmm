@@ -302,6 +302,14 @@
 	},
 /turf/open/floor/rogue/hay,
 /area/rogue/indoors)
+"aig" = (
+/obj/effect/wisp/prestidigitation{
+	pixel_x = 0;
+	name = "Will-o'-the-wisp";
+	desc = "A small, fiery ball of light made up of mystical energy."
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/rtfield)
 "aip" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -4422,13 +4430,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors)
-"cpM" = (
-/obj/effect/particle_effect/smoke,
-/turf/open/water/river{
-	dir = 8;
-	icon_state = "rockwd"
-	},
-/area/rogue/under/cavewet/bogcaves)
 "cqd" = (
 /obj/structure/table/wood{
 	icon_state = "map2"
@@ -13679,13 +13680,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town/harbor)
-"hjF" = (
-/obj/effect/wisp/prestidigitation{
-	pixel_x = 0;
-	name = "Will-o'-the-wisp"
-	},
-/turf/open/water/cleanshallow,
-/area/rogue/outdoors/rtfield)
 "hjJ" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
@@ -15269,10 +15263,7 @@
 /area/rogue/indoors/town/bath)
 "idq" = (
 /obj/item/natural/rock,
-/turf/open/water/river{
-	dir = 8;
-	icon_state = "rockwd"
-	},
+/turf/open/water/cleanshallow,
 /area/rogue/under/cavewet/bogcaves)
 "idt" = (
 /obj/structure/stairs{
@@ -17026,6 +17017,17 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/under/town/basement)
+"jaz" = (
+/obj/effect/wisp/prestidigitation{
+	pixel_x = 0;
+	name = "Will-o'-the-wisp";
+	desc = "A small, fiery ball of light made up of mystical energy."
+	},
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/outdoors/druidgrove)
 "jaB" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newbranch/leafless,
@@ -18127,6 +18129,12 @@
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/under/town/basement)
+"jGf" = (
+/obj/effect/particle_effect/smoke{
+	lifetime = 14400
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "jGp" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush{
 	STACON = 13;
@@ -19838,10 +19846,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/under/town/basement)
-"kya" = (
-/obj/effect/particle_effect/smoke,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cavewet/bogcaves)
 "kyq" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = -32
@@ -29750,6 +29754,13 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"pSY" = (
+/obj/effect/wisp/prestidigitation{
+	pixel_x = 0;
+	name = "Will-o'-the-wisp"
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/druidgrove)
 "pTa" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/rogue/ruinedwood,
@@ -32513,6 +32524,14 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
+"rvw" = (
+/obj/effect/wisp/prestidigitation{
+	pixel_x = 0;
+	name = "Will-o'-the-wisp";
+	desc = "A small, fiery ball of light made up of mystical energy."
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/druidgrove)
 "rvx" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/weapons,
 /turf/open/floor/rogue/dirt/road,
@@ -35501,13 +35520,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
-"tgq" = (
-/obj/effect/wisp/prestidigitation{
-	pixel_x = 0;
-	name = "Will-o'-the-wisp"
-	},
-/turf/open/water/cleanshallow,
-/area/rogue/outdoors/druidgrove)
 "tgU" = (
 /obj/structure/flora/newleaf/corner{
 	dir = 6
@@ -36862,16 +36874,6 @@
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
-"tNS" = (
-/obj/effect/wisp/prestidigitation{
-	pixel_x = 0;
-	name = "Will-o'-the-wisp"
-	},
-/turf/open/water/river{
-	dir = 8;
-	icon_state = "rockwd"
-	},
-/area/rogue/outdoors/druidgrove)
 "tOy" = (
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/herringbone,
@@ -39096,13 +39098,6 @@
 "vdN" = (
 /turf/open/floor/rogue/metal,
 /area/rogue/outdoors/town)
-"vdP" = (
-/obj/effect/particle_effect/steam,
-/turf/open/water/river{
-	dir = 8;
-	icon_state = "rockwd"
-	},
-/area/rogue/under/cavewet/bogcaves)
 "vdR" = (
 /obj/structure/roguemachine/lottery_roguetown,
 /turf/open/floor/rogue/carpet,
@@ -39440,14 +39435,6 @@
 	icon_state = "horzw"
 	},
 /area/rogue/under/town/basement)
-"vpt" = (
-/obj/item/natural/rock,
-/obj/effect/particle_effect/steam,
-/turf/open/water/river{
-	dir = 8;
-	icon_state = "rockwd"
-	},
-/area/rogue/under/cavewet/bogcaves)
 "vpz" = (
 /obj/structure/stairs{
 	dir = 4
@@ -43450,6 +43437,15 @@
 /obj/machinery/light/rogue/campfire/densefire,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
+"xsf" = (
+/obj/effect/particle_effect/smoke{
+	lifetime = 14400
+	},
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cavewet/bogcaves)
 "xsG" = (
 /obj/structure/fluff/statue/tdummy,
 /turf/open/floor/rogue/naturalstone,
@@ -243919,7 +243915,7 @@ gpl
 sJZ
 sJZ
 sJZ
-hjF
+aig
 qet
 sJZ
 pwC
@@ -245231,7 +245227,7 @@ sJZ
 sJZ
 sJZ
 sJZ
-hjF
+aig
 igr
 sJZ
 sJZ
@@ -249992,7 +249988,7 @@ eRw
 jsk
 maB
 maB
-tgq
+rvw
 jsk
 lhb
 lhb
@@ -251688,7 +251684,7 @@ oRe
 vAW
 hMB
 oCO
-lLo
+jaz
 iod
 dtE
 xdh
@@ -254306,7 +254302,7 @@ jsk
 maB
 maB
 jsk
-tgq
+pSY
 lhb
 lhb
 lhb
@@ -255144,7 +255140,7 @@ vIa
 vIa
 dmm
 lLo
-tNS
+lLo
 bLV
 bLV
 sjX
@@ -255159,7 +255155,7 @@ gij
 eRw
 maB
 maB
-tgq
+maB
 jsk
 maB
 maB
@@ -256013,7 +256009,7 @@ jsk
 maB
 bER
 maB
-maB
+rvw
 sjX
 maB
 bER
@@ -256454,7 +256450,7 @@ sjX
 maB
 jsk
 maB
-maB
+rvw
 jsk
 lhb
 lhb
@@ -258612,11 +258608,11 @@ xQO
 xQO
 gxt
 gxt
-cpM
-vdP
-vpt
-vdP
-cpM
+xsf
+aan
+idq
+aan
+xsf
 gxt
 gxt
 gxt
@@ -259046,7 +259042,7 @@ gxt
 gxt
 gxt
 gxt
-kya
+jGf
 gxt
 gxt
 gxt
