@@ -206,6 +206,7 @@
 /obj/machinery/light/rogue/torchholder/Initialize()
 	torchy = new /obj/item/flashlight/flare/torch(src)
 	torchy.spark_act()
+	torchy.weather_resistant = TRUE
 	. = ..()
 
 /obj/machinery/light/rogue/torchholder/OnCrafted(dirin, user)
@@ -234,6 +235,7 @@
 		return
 	if(torchy)
 		if(!istype(user) || !Adjacent(user) || !user.put_in_active_hand(torchy))
+			torchy.weather_resistant = FALSE
 			torchy.forceMove(loc)
 		torchy = null
 		on = FALSE
@@ -282,6 +284,7 @@
 				if(!user.transferItemToLoc(LR, src))
 					return
 				torchy = LR
+				torchy.weather_resistant = TRUE
 				on = TRUE
 				update()
 				update_icon()
@@ -290,6 +293,7 @@
 				if(!user.transferItemToLoc(LR, src))
 					return
 				torchy = LR
+				torchy.weather_resistant = TRUE
 				update_icon()
 			playsound(src.loc, 'sound/foley/torchfixtureput.ogg', 70)
 		return
