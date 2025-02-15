@@ -190,5 +190,5 @@
 
 /datum/virtue/combat/sharp
 	name = "Sentinel of Wits"
-	desc = "Whether it's by having an annoying sibling that kept prodding me with a stick, or years of study and observation, I've become adept at both parrying and dodging stronger opponents, by learning their moves and studying them. My own attacks however, still rely on true training of my weapons. I convert INT into dodge and parry chance, every 2 INT points above 10 adding 10% additional chance."
+	desc = "Whether it's by having an annoying sibling that kept prodding me with a stick, or years of study and observation, I've become adept at both parrying and dodging stronger opponents, by learning their moves and studying them. My own attacks however, still rely on true training of my weapons. \n I convert INT into dodge and parry chance, every 2 INT points above 10 adding 10% additional chance. Does not count artificial buffs to INT from potions or substances."
 	added_traits = list(TRAIT_SENTINELOFWITS)
