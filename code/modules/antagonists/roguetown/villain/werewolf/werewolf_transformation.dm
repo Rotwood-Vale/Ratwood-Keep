@@ -58,7 +58,10 @@
 			
 
 /mob/living/carbon/human/species/werewolf/death(gibbed)
+	H.emote("rage", forced = TRUE)
 	werewolf_untransform()
+	transformed = FALSE
+	untransforming = FALSE
 
 /mob/living/carbon/human/proc/werewolf_transform()
 	if(!mind)
