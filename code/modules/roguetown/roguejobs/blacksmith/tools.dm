@@ -66,6 +66,10 @@
 		if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
 			return
 
+		if(!attacked_item.ontable())
+			to_chat(user, span_warning("I should put this on a table or anvil first."))
+			return
+
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= 0)
 			if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) && locate(/obj/machinery/anvil) in attacked_object.loc)
 				repair_percent = 0.035
