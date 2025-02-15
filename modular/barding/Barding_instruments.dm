@@ -37,6 +37,7 @@
 	extra_range = 5
 	var/stress2give = /datum/stressevent/music
 	persistent_loop = TRUE
+	channel = CHANNEL_INSTRUMENTAL
 
 /datum/looping_sound/instrument/on_hear_sound(mob/M)
 	. = ..()
