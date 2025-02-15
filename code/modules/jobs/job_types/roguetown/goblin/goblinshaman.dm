@@ -46,9 +46,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-		H.mind.adjust_spellpoints(3)
 		H.mind.AddSpell(new SPELL_CPR)
-		H.mind.AddSpell(new SPELL_LEARNSPELL)
 		H.change_stat("intelligence", 4)
 		H.change_stat("fortune", 2)
 
