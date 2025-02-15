@@ -296,12 +296,14 @@
 
 	name = "[owner.real_name]'s head"
 	. = ..()
+	/* REDMOON REMOVAL START - decap_cannot_reenter_body_fix - очень опасный фикс (т.к. весь код связанный с органами это спагетти) невозможности вернуться в тело
 	if(brainmob)
 		QDEL_NULL(brainmob)
 	var/obj/item/organ/brain/BR = locate(/obj/item/organ/brain) in contents
 	if(BR)
 		if(BR.brainmob)
 			QDEL_NULL(BR.brainmob)
+	REDMOON REMOVAL END */
 
 //Attach a limb to a human and drop any existing limb of that type.
 /obj/item/bodypart/proc/replace_limb(mob/living/carbon/C, special)
