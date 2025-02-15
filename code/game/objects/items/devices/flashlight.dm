@@ -13,6 +13,7 @@
 	light_outer_range = 4
 	light_power = 1
 	slot_flags = ITEM_SLOT_BELT
+	var/weather_resistant = FALSE
 	possible_item_intents = list(INTENT_GENERIC)
 	var/on = FALSE
 
@@ -139,7 +140,6 @@
 	slot_flags = ITEM_SLOT_HIP
 	var/datum/looping_sound/torchloop/soundloop
 	var/should_self_destruct = TRUE //added for torch burnout
-	var/weather_resistant = FALSE
 	max_integrity = 40
 	fuel = 30 MINUTES
 	light_depth = 0
@@ -203,7 +203,9 @@
 		turn_off()
 
 /obj/item/flashlight/flare/torch/weather_act_on(weather_trait, severity)
-	if(weather_trait != PARTICLEWEATHER_RAIN && !weather_resistant)
+	if(weather_trait != PARTICLEWEATHER_RAIN)
+		return
+	if(weather_resistant)
 		return
 	extinguish()
 
