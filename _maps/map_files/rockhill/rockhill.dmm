@@ -44578,7 +44578,7 @@
 /obj/structure/floordoor/gatehatch/outer{
 	redstone_id = "lava_bastion"
 	},
-/turf/open/floor/rogue/concrete,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "xZf" = (
 /obj/machinery/light/rogue/wallfire{
@@ -334998,11 +334998,11 @@ wbg
 fnA
 yht
 yht
-ddv
-xYY
-xYY
-pxS
 qmO
+pxS
+pxS
+pxS
+cuk
 nrV
 xXH
 xXH
@@ -335430,12 +335430,12 @@ fnA
 aOv
 fCu
 wbg
-wlD
-jit
+ddv
+xYY
 kYh
 jit
-ddv
-sjP
+wlD
+jXZ
 sjP
 sjP
 jXZ
@@ -335863,10 +335863,10 @@ wbg
 yht
 yht
 ddv
-xYY
-xYY
 pxS
-ddv
+pxS
+pxS
+cuk
 nrV
 xXH
 xXH
