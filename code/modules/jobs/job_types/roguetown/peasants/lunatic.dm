@@ -18,7 +18,7 @@
 	tutorial = "The Lunatic, shunned by society and a magnet for misfortune. Your task is simple yet perilous: survive by any means, though your very existence invites danger from every corner. Seek redemption through kindness and camaraderie; it's your quickest escape from this cursed plight. Tread carefully, for trust is hard-won and easily lost."
 	display_order = JDO_LUNATIC
 
-	cmode_music = 'sound/music/combat_bum.ogg'
+	cmode_music = 'sound/music/combat_lunatic.ogg'
 
 /datum/outfit/job/roguetown/lunatic/pre_equip(mob/living/carbon/human/H)
 	..()
