@@ -58,7 +58,7 @@
 			
 
 /mob/living/carbon/human/species/werewolf/death(gibbed)
-	werewolf_untransform(TRUE, gibbed)
+	werewolf_untransform()
 
 /mob/living/carbon/human/proc/werewolf_transform()
 	if(!mind)
