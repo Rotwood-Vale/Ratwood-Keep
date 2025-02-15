@@ -107,7 +107,6 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 2, TRUE)
-			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
