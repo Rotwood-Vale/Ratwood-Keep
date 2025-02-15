@@ -4422,6 +4422,13 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors)
+"cpM" = (
+/obj/effect/particle_effect/smoke,
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cavewet/bogcaves)
 "cqd" = (
 /obj/structure/table/wood{
 	icon_state = "map2"
@@ -13672,6 +13679,13 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town/harbor)
+"hjF" = (
+/obj/effect/wisp/prestidigitation{
+	pixel_x = 0;
+	name = "Will-o'-the-wisp"
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/rtfield)
 "hjJ" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
@@ -19824,6 +19838,10 @@
 	icon_state = "vertw"
 	},
 /area/rogue/under/town/basement)
+"kya" = (
+/obj/effect/particle_effect/smoke,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "kyq" = (
 /obj/structure/fluff/walldeco/customflag{
 	pixel_x = -32
@@ -35483,6 +35501,13 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"tgq" = (
+/obj/effect/wisp/prestidigitation{
+	pixel_x = 0;
+	name = "Will-o'-the-wisp"
+	},
+/turf/open/water/cleanshallow,
+/area/rogue/outdoors/druidgrove)
 "tgU" = (
 /obj/structure/flora/newleaf/corner{
 	dir = 6
@@ -36837,6 +36862,16 @@
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
+"tNS" = (
+/obj/effect/wisp/prestidigitation{
+	pixel_x = 0;
+	name = "Will-o'-the-wisp"
+	},
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/outdoors/druidgrove)
 "tOy" = (
 /obj/structure/fluff/clock,
 /turf/open/floor/rogue/herringbone,
@@ -39061,6 +39096,13 @@
 "vdN" = (
 /turf/open/floor/rogue/metal,
 /area/rogue/outdoors/town)
+"vdP" = (
+/obj/effect/particle_effect/steam,
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cavewet/bogcaves)
 "vdR" = (
 /obj/structure/roguemachine/lottery_roguetown,
 /turf/open/floor/rogue/carpet,
@@ -39398,6 +39440,14 @@
 	icon_state = "horzw"
 	},
 /area/rogue/under/town/basement)
+"vpt" = (
+/obj/item/natural/rock,
+/obj/effect/particle_effect/steam,
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd"
+	},
+/area/rogue/under/cavewet/bogcaves)
 "vpz" = (
 /obj/structure/stairs{
 	dir = 4
@@ -243869,7 +243919,7 @@ gpl
 sJZ
 sJZ
 sJZ
-sJZ
+hjF
 qet
 sJZ
 pwC
@@ -245181,7 +245231,7 @@ sJZ
 sJZ
 sJZ
 sJZ
-sJZ
+hjF
 igr
 sJZ
 sJZ
@@ -249942,7 +249992,7 @@ eRw
 jsk
 maB
 maB
-maB
+tgq
 jsk
 lhb
 lhb
@@ -254256,7 +254306,7 @@ jsk
 maB
 maB
 jsk
-maB
+tgq
 lhb
 lhb
 lhb
@@ -255094,7 +255144,7 @@ vIa
 vIa
 dmm
 lLo
-lLo
+tNS
 bLV
 bLV
 sjX
@@ -255109,7 +255159,7 @@ gij
 eRw
 maB
 maB
-maB
+tgq
 jsk
 maB
 maB
@@ -257699,7 +257749,7 @@ bRF
 rBg
 rBg
 lhb
-aan
+idq
 aan
 idq
 lhb
@@ -258132,7 +258182,7 @@ rBg
 rBg
 idq
 aan
-aan
+dVO
 aan
 idq
 lhb
@@ -258562,11 +258612,11 @@ xQO
 xQO
 gxt
 gxt
-aan
-aan
-idq
-aan
-aan
+cpM
+vdP
+vpt
+vdP
+cpM
 gxt
 gxt
 gxt
@@ -258996,7 +259046,7 @@ gxt
 gxt
 gxt
 gxt
-dVO
+kya
 gxt
 gxt
 gxt
