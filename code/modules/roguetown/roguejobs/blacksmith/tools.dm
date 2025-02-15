@@ -67,7 +67,7 @@
 			return
 
 		if(!attacked_item.ontable())
-			to_chat(user, span_warning("I should put this on a table or anvil first."))
+			to_chat(user, span_warning("I should put this on a table or an anvil first."))
 			return
 
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= 0)
@@ -98,6 +98,7 @@
 			return
 		else
 			user.visible_message(span_warning("[user] fumbles trying to repair [attacked_item]!"))
+			attacked_item.obj_integrity = max(0, attacked_item.obj_integrity - (20 - repair_percent))
 			return
 
 	if(isstructure(attacked_object) && !user.cmode)
