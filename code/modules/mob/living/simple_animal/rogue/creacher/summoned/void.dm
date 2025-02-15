@@ -324,6 +324,8 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	icon_living = "dragon"
 	icon_dead = "dragon_dead"
 	speak_emote = list("roars")
+	emote_hear = null
+	emote_see = null
 	base_intents = list(/datum/intent/unarmed/dragonclaw)
 	faction = list("abberant")
 	melee_damage_lower = 40
@@ -614,7 +616,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	SLEEP_CHECK_DEATH(descentTime)
 	swooping &= ~SWOOP_INVULNERABLE
 	mouse_opacity = initial(mouse_opacity)
-	icon_state = "dragon"
+	icon_state = "[initial(icon_state)]"
 	playsound(loc, 'sound/misc/meteorimpact.ogg', 200, TRUE)
 	for(var/mob/living/L in orange(1, src))
 		if(L.stat)
@@ -647,10 +649,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 		return FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/visible_message(message, self_message, blind_message, chat_message_type)
-	if(swooping & SWOOP_INVULNERABLE) //to suppress attack messages without overriding every single proc that could send a message saying we got hit
-		return
-	return ..()
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/AttackingTarget()
 	if(!swooping)

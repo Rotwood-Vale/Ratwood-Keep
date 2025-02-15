@@ -68,6 +68,7 @@
 /obj/item/reagent_containers/glass/cup/silver/Initialize(mapload, vol)
 	var/datum/magic_item/mundane/silver/effect = new
 	AddComponent(/datum/component/magic_item, effect)
+	.=..()
 
 /obj/item/reagent_containers/glass/cup/skull
 	name = "skull goblet"

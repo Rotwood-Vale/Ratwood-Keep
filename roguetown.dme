@@ -1687,6 +1687,7 @@
 #include "code\modules\mob\living\simple_animal\rogue\creacher\minotaur.dm"
 #include "code\modules\mob\living\simple_animal\rogue\creacher\mole.dm"
 #include "code\modules\mob\living\simple_animal\rogue\creacher\poltergeist.dm"
+#include "code\modules\mob\living\simple_animal\rogue\creacher\reddragon.dm"
 #include "code\modules\mob\living\simple_animal\rogue\creacher\volf.dm"
 #include "code\modules\mob\living\simple_animal\rogue\creacher\summoned\elemental.dm"
 #include "code\modules\mob\living\simple_animal\rogue\creacher\summoned\fae.dm"

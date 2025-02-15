@@ -381,7 +381,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons an fae sprite"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite
 
 /datum/runerituals/summoning/glimmer
@@ -413,7 +413,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons a minor elemental"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/natural/stone = 3, /obj/item/natural/manacrystal = 1)
+	required_atoms = list(/obj/item/natural/stone = 2, /obj/item/natural/manacrystal = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/elemental/crawler
 
 /datum/runerituals/summoning/warden
@@ -557,7 +557,6 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	tier = 2
 	required_atoms = list(/datum/reagent/mercury = 15,/obj/item/paper/scroll = 1,/obj/item/natural/elementalshard = 1, /obj/item/natural/elementalmote = 1, /obj/item/natural/melded/t1 = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/smithing)
-
 /datum/runerituals/enchanting/lifesteal
 	name = "Lyfestealing"
 	desc = "Steals health from foes."
