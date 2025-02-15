@@ -435,12 +435,13 @@
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
 
-/datum/crafting_recipe/roguetown/structure/dryingrack
+/datum/crafting_recipe/roguetown/structure/tanningrack
 	name = "drying rack"
-	result = /obj/structure/fluff/dryingrack
+	result = /obj/machinery/tanningrack
 	reqs = list(/obj/item/grown/log/tree/stick = 3)
 	verbage_simple = "construct"
 	verbage = "constructs"
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/bed
 	name = "bed"
@@ -449,6 +450,7 @@
 				/obj/item/natural/fibers = 1)
 	verbage_simple = "construct"
 	verbage = "constructs"
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/nicebed
 	name = "nice bed"

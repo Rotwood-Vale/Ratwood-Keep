@@ -110,9 +110,9 @@
 	item_type = /obj/item/natural/hide
 	held_items = list(0, 0)
 	payout_price = 5
-	withdraw_price = 15
+	withdraw_price = 10
 	transport_fee = 2
-	export_price = 8
+	export_price = 10
 	importexport_amt = 5
 	passive_generation = 2
 
@@ -122,11 +122,22 @@
 	item_type = /obj/item/natural/fur
 	held_items = list(0, 0)
 	payout_price = 10
-	withdraw_price = 20
+	withdraw_price = 15
 	transport_fee = 4
 	export_price = 15
 	importexport_amt = 5
 	passive_generation = 1
+
+/datum/roguestock/stockpile/cured
+	name = "Cured Leather"
+	desc = "Cured Leather ready to be worked."
+	item_type = /obj/item/natural/hide/cured
+	held_items = list(2, 0)
+	payout_price = 5
+	withdraw_price = 7
+	transport_fee = 1
+	export_price = 7
+	importexport_amt = 10
 
 /datum/roguestock/stockpile/salt
 	name = "Salt"

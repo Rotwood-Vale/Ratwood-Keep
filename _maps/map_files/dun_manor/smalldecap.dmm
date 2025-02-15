@@ -772,7 +772,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/undeadmanor)
 "jS" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cave/undeadmanor)
 "jV" = (

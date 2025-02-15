@@ -1,7 +1,7 @@
 
 /datum/crafting_recipe/roguetown/leather
 	tools = list(/obj/item/needle)
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	skillcraft = /datum/skill/craft/tanning
 
 /datum/crafting_recipe/roguetown/leather/bedroll

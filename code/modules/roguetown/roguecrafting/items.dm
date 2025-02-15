@@ -635,7 +635,7 @@
 				  /obj/item/paper/scroll)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/datum/reagent/water = 48)
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/tribalrags

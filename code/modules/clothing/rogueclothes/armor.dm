@@ -47,7 +47,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/armordress/alt
 	icon_state = "armordressalt"
@@ -271,7 +271,7 @@
 	icon_state = "leather"
 //	color = "#514339"
 	body_parts_covered = CHEST|GROIN|VITALS
-	armor = list("blunt" = 65, "slash" = 30, "stab" = 40, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 50, "stab" = 30, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -282,13 +282,13 @@
 	max_integrity = 150
 	sellprice = 20
 	armor_class = ARMOR_CLASS_LIGHT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/hide
 	name = "hide armor"
 	desc = "A light armor of wildbeast hide. Far more durable than leather."
 	icon_state = "hidearmor"
-	max_integrity = 230
+	max_integrity = 250
 	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded
@@ -297,7 +297,7 @@
 	icon_state = "studleather"
 	item_state = "studleather"
 	blocksound = SOFTHIT
-	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 60, "stab" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
 	nodismemsleeves = TRUE
 	body_parts_covered = CHEST|GROIN|VITALS
@@ -312,30 +312,30 @@
 	for its wearer, shielding from blows and weather alike."
 	icon_state = "roguearmor"
 	item_state = "roguearmor"
-	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 60, "stab" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
 	max_integrity = 300
 	sellprice = 25
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/belted
-	name = "belted heavy leather armor"
-	desc = "A heavy steerhide jerkin bearing a supplementary utility belt."
+	name = "masterwork leather armor"
+	desc = "A heavy steerhide jerkin bearing a supplementary utility belt. Sturdy, durable, flexible. Will keep you alive in style."
 	icon_state = "roguearmor_belt"
 	item_state = "roguearmor_belt"
-	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
-	max_integrity = 300
+	max_integrity = 400
 	sellprice = 25
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
-	name = "armored leather coat"
-	desc = "A heavy steerhide jerkin that reaches past the hips and better protects the vitals."
+	name = "masterwork leather coat"
+	desc = "A heavy steerhide jerkin that reaches past the hips. Made with the finest leather. Strong, nimible, reliable."
 	icon_state = "roguearmor_coat"
 	item_state = "roguearmor_coat"
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS
-	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
-	max_integrity = 200
+	max_integrity = 400
 	sellprice = 25
 
 /obj/item/clothing/suit/roguetown/armor/leather/bikini
