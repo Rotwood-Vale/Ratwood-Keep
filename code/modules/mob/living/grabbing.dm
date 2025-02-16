@@ -619,6 +619,7 @@
 							var/datum/antagonist/vampirelord/lesser/new_antag = new /datum/antagonist/vampirelord/lesser()
 							new_antag.sired = TRUE
 							C.mind.add_antag_datum(new_antag)
+							C.set_patron(/datum/patron/zizo)
 							sleep(20)
 							C.fully_heal()
 							VDrinker.handle_vitae(0) // Updates pool max.
