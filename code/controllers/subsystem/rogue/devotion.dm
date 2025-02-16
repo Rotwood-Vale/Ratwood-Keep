@@ -250,9 +250,14 @@
 	set name = "Swap Voice"
 	set category = "Virtue"
 
+	if(!second_voice)
+		to_chat(src, span_info("I haven't decided on my second voice yet."))
+		return FALSE
 	if(voice_color != second_voice)
+		original_voice = voice_color
 		voice_color = second_voice
 		to_chat(src, span_info("I've changed my voice to the second one."))
 	else
-		voice_color = initial(voice_color)
+		voice_color = original_voice
 		to_chat(src, span_info("I've returned to my natural voice."))
+	return TRUE
