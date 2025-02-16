@@ -48,14 +48,15 @@
 	devotion_cost = 20
 
 /obj/effect/proc_holder/spell/targeted/beasttame/cast(list/targets,mob/user = usr)
-	. = ..()
-	visible_message(span_green("[usr] soothes the beastblood with Dendor's whisper."))
-	var/tamed = FALSE
+	playsound(get_turf(user), 'sound/vo/smokedrag.ogg', 100, TRUE)
+	visible_message("<FONT COLOR='green'>[usr] soothes the beastblood with Dendor's whisper.</FONT><BR>")
 	for(var/mob/living/simple_animal/hostile/retaliate/B in oview(2))
-		if(B.aggressive)
-			tamed = TRUE
+		if((B.mob_biotypes & MOB_UNDEAD))
+			continue
 		B.aggressive = 0
-	return tamed
+		B.ai_controller?.CancelActions()
+		B.tamed(user)
+	return ..()
 
 /obj/effect/proc_holder/spell/targeted/conjure_vines
 	name = "Vine Sprout"

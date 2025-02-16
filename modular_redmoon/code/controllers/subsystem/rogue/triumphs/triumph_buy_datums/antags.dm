@@ -30,6 +30,14 @@
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
+/datum/triumph_buy/revolution
+	triumph_buy_id = "Antagcoin: Revolution"
+	desc = "Antagcoin: Revolution!"
+	triumph_cost = 10
+	category = TRIUMPH_CAT_ROUND_EFX
+	pre_round_only = FALSE
+	visible_on_active_menu = FALSE
+
 // We fire this on activate, also DAMN is this nasty
 /datum/triumph_buy/lich/on_activate(mob/living/carbon/human/H)
 	if(!usr)
@@ -50,6 +58,11 @@
 	if(!usr)
 		return
 	H.mind.special_items["Antagcoin: Cult"] = /obj/item/antagcoin/zizocultist
+
+/datum/triumph_buy/revolution/on_activate(mob/living/carbon/human/H)
+	if(!usr)
+		return
+	H.mind.special_items["Antagcoin: Revolution"] = /obj/item/antagcoin/revolution
 
 /obj/item/antagcoin
 	name = "Flip Me"
@@ -73,6 +86,9 @@
 
 /obj/item/antagcoin/zizocultist
 	antagcoin_role = /datum/antagonist/zizocultist
+
+/obj/item/antagcoin/revolution
+	antagcoin_role = /datum/antagonist/prebel/head
 
 /obj/item/antagcoin/Initialize(mapload)
 	. = ..()

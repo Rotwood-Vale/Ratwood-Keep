@@ -10,3 +10,5 @@
 	who resorts to the last measures of surviving. United by worshipping former mortal one, the legendary Mattios, \
 	these fearsome band earns enough through plundering, robbery, murdering, racket and other felonies. All to \
 	ensure a better life for themselfs."
+	total_positions = 2
+	spawn_positions = 2
