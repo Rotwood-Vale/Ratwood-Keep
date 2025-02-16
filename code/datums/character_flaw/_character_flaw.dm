@@ -18,8 +18,6 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Cyclops (L)"=/datum/charflaw/noeyel,
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
-	"Heretic"=/datum/charflaw/heretic,
-	"Outlaw"=/datum/charflaw/outlaw,
 	"Sleepless"=/datum/charflaw/sleepless,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
 	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw,
@@ -482,24 +480,6 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	for(var/atom/movable/content in movable.contents)
 		mammons += get_mammons_in_atom(content)
 	return mammons
-
-/datum/charflaw/heretic
-	name = "Heretic"
-	desc = "I've been declared a known Heretic to the church, and bare a face they all recognise. I may be caught and face the consequences at any moment. Picking this Vice in an important role will not grant you any special treatment."
-
-/datum/charflaw/heretic/on_mob_creation(mob/user)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		GLOB.excommunicated_players += H.real_name
-
-/datum/charflaw/outlaw
-	name = "Outlaw"
-	desc = "I've been accused, rightfully or not, of high crimes against the duchy. Everyone in the town can recognise me for the villain that I am. I may be caught and face the consequences at any moment. Picking this Vice in an important role will not grant you any special treatment."
-
-/datum/charflaw/outlaw/on_mob_creation(mob/user)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		GLOB.outlawed_players += H.real_name
 
 /datum/charflaw/sleepless
 	name = "Insomnia"

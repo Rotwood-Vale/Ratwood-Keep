@@ -114,3 +114,7 @@
 /obj/item/herbseed/artemisia
 	makes_herb = /obj/structure/flora/roguegrass/herb/artemisia
 	seed_identity = "artemisia seeds"
+
+/obj/item/herbseed/rosa
+	makes_herb = /obj/structure/flora/roguegrass/herb/rosa
+	seed_identity = "rosa seeds"

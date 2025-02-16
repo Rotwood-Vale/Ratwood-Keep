@@ -139,6 +139,7 @@
 		/obj/item/alch/benedictus = 5,
 		/obj/item/alch/valeriana = 5,
 		/obj/item/alch/artemisia = 5,
+		/obj/item/alch/rosa = 5
 	)
 /obj/effect/spawner/lootdrop/potion_stats
 	icon_state = "lootstatpot"

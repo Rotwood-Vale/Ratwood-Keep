@@ -21,3 +21,11 @@
 	name = "necran tabard"
 	desc = "Deep dark blacks, swallowing all light as if the night itself."
 	icon_state = "necratabard"
+
+/obj/item/clothing/cloak/templar/pestran
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	alternate_worn_layer = TABARD_LAYER
+	boobed = TRUE
+	name = "pestran tabard"
+	desc = "A simple covering of green cloth, meant to keep rot and blood alike off it's wearer."
+	icon_state = "pestratabard"

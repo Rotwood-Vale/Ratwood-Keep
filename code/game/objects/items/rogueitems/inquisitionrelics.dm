@@ -27,9 +27,9 @@
 			var/relicchoice = input(user, "Choose your tool", "RELICS") as anything in relics
 			switch(relicchoice)
 				if("Melancholic Crankbox - Antimagic")
-					user.put_in_hands(new /obj/item/psydonmusicbox(user), TRUE)
+					user.put_in_hands(new /obj/item/psydonmusicbox(user))
 				if("Daybreak - Silver Whip")
-					user.put_in_hands(new /obj/item/rogueweapon/whip/antique/psywhip(user), TRUE)
+					user.put_in_hands(new /obj/item/rogueweapon/whip/antique/psywhip(user))
 				if("Inquistorial Armory - Weapons")
 					user.put_in_hands(new /obj/structure/closet/crate/chest/inqarmory)
 			to_chat(user, span_info("I retrieve the relic, may HE guide my hand."))

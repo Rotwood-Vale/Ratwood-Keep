@@ -138,13 +138,13 @@
 					head = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
 				if (/datum/patron/divine/ravox)
 					cloak = /obj/item/clothing/cloak/templar/ravox
-					/obj/item/clothing/head/roguetown/helmet/heavy/bucket
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
 				if (/datum/patron/divine/xylix)
 					cloak = /obj/item/clothing/cloak/templar/xylix
 					head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 				if (/datum/patron/divine/pestra)
 					cloak = /obj/item/clothing/cloak/templar/pestra
-					head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
+					head = /obj/item/clothing/head/roguetown/helmet/heavy/pestran
 				else
 					cloak = /obj/item/clothing/cloak/cape/crusader
 					head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
