@@ -11,7 +11,8 @@
 	if(HAS_TRAIT(src, TRAIT_BEAUTIFUL))
 		user.add_stress(/datum/stressevent/beautiful)
 	if(HAS_TRAIT(src, TRAIT_UNSEEMLY))
-		user.add_stress(/datum/stressevent/unseemly)
+		if(!HAS_TRAIT(user, TRAIT_UNSEEMLY))
+			user.add_stress(/datum/stressevent/unseemly)
 
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
