@@ -3,7 +3,7 @@
 	desc = "A pouch for carrying handfuls of summoning ingredients."
 	icon_state = "summoning"
 	item_state = "summoning"
-	icon = 'icons/roguetown/clothing/storage.dmi'
+	icon = 'icons/roguetown/clothing/mage.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP
 	resistance_flags = NONE
@@ -426,7 +426,7 @@ obj/item/hourglass/temporal/stop()
 	AddComponent(/datum/component/magic_item, effect)
 
 /obj/item/clothing/gloves/roguetown/nomagic
-	icon = 'icons/roguetown/clothing/gloves.dmi'
+	icon = 'icons/roguetown/clothing/mage.dmi'
 	icon_state = "manabindinggloves"
 	bloody_icon_state = "bloodyhands"
 	name = "gem encrusted mana binding gloves"
