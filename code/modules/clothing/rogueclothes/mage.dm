@@ -2,13 +2,13 @@
 	name = "mage robe"
 	desc = "base mage robe"
 	icon_state = "adept-red"
-	icon = 'icons/roguetown/clothing/shirts.dmi'
+	icon = 'icons/roguetown/clothing/mage.dmi'
 	color = null
 	slot_flags = ITEM_SLOT_ARMOR
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/mage.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/mage.dmi'
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	boobed = FALSE
@@ -103,7 +103,6 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/newmage/adept
 	name = "adept robe"
 	desc = "Standard robes for an arcane adept."
-	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "adept-red"
 	item_state = "adept-red"
 	hoodtype = /obj/item/clothing/head/hooded/magehood/adept
@@ -142,7 +141,6 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/newmage/sorcerer
 	name = "sorcerer robe"
 	desc = "Standard robes for an arcane sorcerer."
-	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "sorcerer-red"
 	item_state = "sorcerer-red"
 	hoodtype = /obj/item/clothing/head/hooded/magehood/sorcerer
@@ -179,7 +177,6 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/newmage/warlock
 	name = "warlock robe"
 	desc = "Standard robes for an arcane sorcerer."
-	icon = 'icons/roguetown/clothing/shirts.dmi'
 	icon_state = "vizier-red"
 	item_state = "vizier-red"
 	sleevetype = "shirt"
@@ -216,8 +213,8 @@
 	color = null
 	icon_state = "adept-red"
 	item_state = "adept-red"
-	icon = 'icons/roguetown/clothing/head.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
+	icon = 'icons/roguetown/clothing/magehead.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/magehead.dmi' //Overrides slot icon behavior
 	body_parts_covered = NECK
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
