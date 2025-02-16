@@ -9446,7 +9446,6 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/bath)
 "hKO" = (
-/obj/item/reagent_containers/food/snacks/fat,
 /obj/structure/closet/crate/chest{
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
@@ -15131,9 +15130,6 @@
 /obj/item/natural/hide,
 /obj/item/natural/hide,
 /obj/item/natural/hide,
-/obj/item/natural/hide,
-/obj/item/natural/hide,
-/obj/item/natural/hide,
 /obj/structure/closet/crate/chest{
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
@@ -20484,7 +20480,6 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town)
 "quZ" = (
-/obj/item/natural/fur,
 /obj/item/natural/fur,
 /obj/item/natural/fur,
 /obj/item/natural/fur,

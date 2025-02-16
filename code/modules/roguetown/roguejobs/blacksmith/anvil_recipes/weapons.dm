@@ -404,9 +404,9 @@
 
 /// SHIELDS
 /datum/anvil_recipe/weapons/steel/kiteshield
-	name = "Kite Shield (+1 Steel, +1 Hide)"
+	name = "Kite Shield (+1 Steel, +1 Cured Leather)"
 	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide)
+	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/rogueweapon/shield/tower/metal
 	craftdiff = 3
 
