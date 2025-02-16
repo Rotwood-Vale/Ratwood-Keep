@@ -58,7 +58,11 @@
 			
 
 /mob/living/carbon/human/species/werewolf/death(gibbed)
+	var/datum/antagonist/werewolf/wolfy = mind.has_antag_datum(/datum/antagonist/werewolf)
+	emote("rage", forced = TRUE)
 	werewolf_untransform()
+	wolfy.transformed = FALSE
+	wolfy.untransforming = FALSE // Reset untransforming phase
 
 /mob/living/carbon/human/proc/werewolf_transform()
 	if(!mind)
