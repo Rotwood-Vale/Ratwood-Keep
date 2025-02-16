@@ -192,7 +192,7 @@
 			to_chat(user, span_info("I wipe \the [T.name] with [src]."))
 			playsound(user, "clothwipe", 100, TRUE)
 		else
-			to_chat(user, span_warning("\the [name] is dry!"))
+			to_chat(user, span_warning("\The [name] is dry!"))
 
 
 // BANDAGING
