@@ -551,7 +551,7 @@ obj/item/hourglass/temporal/stop()
 	if(!(captive.type in summon_types))
 		to_chat(user, span_warning("[captive] cannot be bound by these shackles!"))
 		return
-	if(captive.tier >= tier)
+	if(captive.tier > tier)
 		to_chat(user, span_warning("[src] is not strong enough to bind [captive]!"))
 		return
 
