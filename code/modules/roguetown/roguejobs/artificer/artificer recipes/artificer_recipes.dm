@@ -97,14 +97,14 @@
 /datum/artificer_recipe/general/copper/cog
 	name = "Copper Cog"
 	required_item = /obj/item/ingot/copper
-	created_item = /obj/item/roguegear/bronze
+	created_item = /obj/item/roguegear/copper
 	hammers_per_item = 10
 	skill_level = 1
 
 /datum/artificer_recipe/general/tin/cog
 	name = "Tin Cog"
 	required_item = /obj/item/ingot/tin
-	created_item = /obj/item/roguegear/bronze
+	created_item = /obj/item/roguegear/tin
 	hammers_per_item = 10
 	skill_level = 1
 
