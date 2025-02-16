@@ -99,6 +99,7 @@
 	source.guardian = null
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/leyline(deathspot)
+	spill_embedded_objects()
 	update_icon()
 
 /obj/effect/temp_visual/lycan

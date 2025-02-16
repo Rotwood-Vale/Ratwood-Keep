@@ -161,7 +161,7 @@
 			qualityoflearn *= 0.5
 			qualityoflearn = min(qualityoflearn, 15)
 	if (born_of_rock)
-		// the rock tomes are a *lot* easier to make, so we make them worse by them reducing your chances by 20%
+		// the rock tomes are neat, and low quality. Might as well make them better to learn from!
 		qualityoflearn *= 1.2
 	testing("Quality of learning is [qualityoflearn]")
 	user.visible_message(span_warning("[user] is filled with arcyne energy! You witness [user.p_their()] body convulse and spark brightly."), \
@@ -376,7 +376,7 @@
 							newbook.desc += " Traces of multicolored stone limn its margins."
 							qdel(P)
 							qdel(src)
-						else if(the_rock.magic_power >5 && the_rock.magic_power >=10)
+						else if(the_rock.magic_power >=10)
 							var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/apprentice(loc)
 							newbook.owner = user
 							newbook.born_of_rock = TRUE
@@ -403,7 +403,7 @@
 								newbook.desc += " Traces of multicolored stone limn its margins."
 								qdel(P)
 								qdel(src)
-							else if(the_rock.magic_power >10)
+							else if(the_rock.magic_power >=10)
 								var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/apprentice(loc)
 								newbook.owner = user
 								newbook.born_of_rock = TRUE

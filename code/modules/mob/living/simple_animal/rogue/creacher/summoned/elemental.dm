@@ -127,6 +127,7 @@
 	new /obj/item/natural/elementalmote(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	sleep(1)
 	qdel(src)
 
@@ -188,6 +189,7 @@
 	new /obj/item/natural/elementalshard(deathspot)
 	new /obj/item/natural/elementalshard(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden/AttackingTarget()
@@ -264,6 +266,7 @@
 	new /obj/item/natural/elementalmote(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/AttackingTarget()
@@ -459,7 +462,11 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/elementalrelic(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
+	new /obj/item/natural/melded/t2
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/collossus/proc/stomp(target)

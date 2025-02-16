@@ -89,6 +89,7 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/voidstone(deathspot)
+	spill_embedded_objects()
 	update_icon()
 	sleep(1)
 	qdel(src)

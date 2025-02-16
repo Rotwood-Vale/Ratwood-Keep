@@ -281,12 +281,10 @@ GLOBAL_LIST(teleport_runes)
 			var/obj/item/reagent_containers/RC = nearby_atom
 			if(RC.is_drainable())
 				for(var/req_type in requirements_list)
-					for(var/datum/reagent/A in RC.reagents.reagent_list)
-						if(A.volume < 15)
-							continue
-						if(req_type == A.type)
-							requirements_list[req_type] -= A.volume
-							selected_atoms |= nearby_atom
+					var/datum/reagent/A = RC.reagents.get_reagent(req_type)
+					if(A && A.volume >= 15)
+						requirements_list[req_type] -= A.volume
+						selected_atoms |= nearby_atom
 
 		for(var/req_type in requirements_list)
 			// We already have enough of this type, skip

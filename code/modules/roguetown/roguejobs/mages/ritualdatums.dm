@@ -193,10 +193,17 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 			sac_stack.use(how_much_to_use)
 			continue
 
+		if(istype(sacrificed, /obj/item/reagent_containers))
+			var/obj/item/reagent_containers/RC = sacrificed
+			for(var/req_type in required_atoms)
+				var/amount = required_atoms[req_type]
+				if (RC.reagents.has_reagent(req_type, amount))
+					RC.reagents.remove_reagent(req_type, amount)
+					selected_atoms -= sacrificed
+			continue
+
 		selected_atoms -= sacrificed
 		qdel(sacrificed)
-
-
 
 /datum/runerituals/buff
 	blacklisted = TRUE

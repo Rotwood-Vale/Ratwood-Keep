@@ -114,6 +114,7 @@
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	sleep(1)
 	qdel(src)
 
@@ -181,6 +182,7 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/iridescentscale(deathspot)
 	new /obj/item/natural/iridescentscale(deathspot)
+	spill_embedded_objects()
 	update_icon()
 	qdel(src)
 
@@ -305,6 +307,7 @@
 	new /obj/item/natural/heartwoodcore(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
+	spill_embedded_objects()
 	update_icon()
 	qdel(src)
 
@@ -401,5 +404,9 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/sylvanessence(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/melded/t2
+	spill_embedded_objects()
 	update_icon()
 	qdel(src)

@@ -137,6 +137,7 @@
 	new /obj/item/natural/infernalash(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
+	spill_embedded_objects()
 	update_icon()
 	sleep(1)
 	qdel(src)
@@ -209,6 +210,7 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/hellhoundfang(deathspot)
 	new /obj/item/natural/hellhoundfang(deathspot)
+	spill_embedded_objects()
 	update_icon()
 	qdel(src)
 
@@ -302,6 +304,7 @@
 	new /obj/item/natural/moltencore(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
+	spill_embedded_objects()
 	update_icon()
 	qdel(src)
 
@@ -366,6 +369,10 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/abyssalflame(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/melded/t2
+	spill_embedded_objects()
 	update_icon()
 	qdel(src)
 
