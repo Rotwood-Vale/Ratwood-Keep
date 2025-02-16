@@ -112,6 +112,7 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
 	update_icon()
 	sleep(1)
 	qdel(src)
@@ -302,6 +303,8 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/heartwoodcore(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
 	update_icon()
 	qdel(src)
 

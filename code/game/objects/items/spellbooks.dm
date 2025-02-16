@@ -241,6 +241,13 @@
 	desc = "An incredible book that gives off glowing arcane motes,  it is filled with runes and arcane theories that is hard for even masters of arcane to understand. The arcane script glows and practically whispers from the page.."
 	bookquality = 12
 	sellprice = 400
+
+/obj/item/book/granter/spellbook/debug	//debug item to be used for testing and admin purposes
+	name = "Ancient arcanic grimoire"
+	desc = "An incredible book that gives off glowing arcane motes,  it is filled with runes and arcane theories that is hard for even masters of arcane to understand. The arcane script glows and practically whispers from the page.."
+	bookquality = 99
+	sellprice = 400
+
 /// Book slapcrafting
 
 /obj/item/spellbook_unfinished

@@ -372,7 +372,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/infernalflame/attack_obj(obj/item/O, mob/living/user)
 	.=..()
-	if(istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))
+	if(istype(O,/obj/item/gun/ballistic/revolver/grenadelauncher)|| istype(O,/obj/item/rogueweapon)|| istype(O,/obj/item/clothing))	//bow and crossbows included
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
@@ -389,7 +389,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/freeze/attack_obj(obj/item/O, mob/living/user)
 	.=..()
-	if(istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))
+	if(istype(O,/obj/item/gun/ballistic/revolver/grenadelauncher)||istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))//bow and crossbows included
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
@@ -407,7 +407,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/briars/attack_obj(obj/item/O, mob/living/user)
 	.=..()
-	if(istype(O,/obj/item/clothing)|| istype(O,/obj/item/rogueweapon))
+	if(istype(O,/obj/item/rogueweapon))
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)

@@ -29,9 +29,9 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
 
 	var/list/spell_choices = list(
-		SPELL_FIREBALLGREATER,		// 10 cost	combat, AOE heavy single target damage
-		SPELL_METEOR,				// 10 cost	combat, LARGE AOE, light damage.
-		SPELL_SUNDER_LIGHTNING,		// 10 cost	combat, upper level AOE hard stunning damage
+		SPELL_FIREBALLGREATER,		// 13 cost	combat, AOE heavy single target damage
+		SPELL_METEOR,				// 13 cost	combat, LARGE AOE, light damage.
+		SPELL_SUNDER_LIGHTNING,		// 13 cost	combat, upper level AOE hard stunning damage
 		SPELL_FIREBALL,				// 3 cost	combat, damaging AOE + damages worn/held things
 		SPELL_LIGHTNINGBOLT,		// 3 cost	combat, single target damage, knockdown
 		SPELL_SPITFIRE,				// 3 cost	combat, burstfire single target damage
@@ -99,6 +99,14 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		for(var/i = 1, i <= spell_choices.len, i++)
 			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
 
+	var/totalspellcount = 0
+	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
+		totalspellcount++
+	if(totalspellcount >= 12)
+		to_chat(user,span_warning("You can not memorize more spells then you already have!"))
+		return
+	var/spellsleft = 12 - totalspellcount
+	to_chat(user,span_warning("You can memorize [spellsleft] more spells."))
 	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
 	var/obj/effect/proc_holder/spell/item = choices[choice]
 	if(!item)
@@ -346,7 +354,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 10
+	cost = 13
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/great
@@ -1469,7 +1477,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 /obj/effect/proc_holder/spell/invoked/meteor_storm
 	name = "Meteor storm"
 	desc = "Summons forth dangerous meteors from the sky to scatter and smash foes."
-	cost = 10
+	cost = 13
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 50
@@ -1647,7 +1655,7 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 /obj/effect/proc_holder/spell/invoked/sundering_lightning
 	name = "Sundering Lightning"
 	desc = "Summons forth dangerous rapid lightning strikes."
-	cost = 10
+	cost = 13
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 50
