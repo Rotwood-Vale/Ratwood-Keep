@@ -155,13 +155,13 @@
 			S.x = 0
 		else
 			S.x = dx
-		var/dz = turf_source.y - T.y // Hearing from infront/behind
-		if(dz <= 1 && dz >= -1) //if we're  close enough we're heard in both ears
-			S.z = 0
+		var/dy = turf_source.y - T.y // Hearing from infront/behind Edit: someone fucked up. why is this z
+		if(dy <= 1 && dy >= -1) //if we're  close enough we're heard in both ears
+			S.y = 0
 		else
-			S.z = dz
-		var/dy = (turf_source.z - T.z) * 2 // Hearing from  above / below, multiplied by 5 because we assume height is further along coords.
-		S.y = dy
+			S.y = dy
+		var/dz = (turf_source.z - T.z) * 2 // Hearing from  above / below, multiplied by 5 because we assume height is further along coords.
+		S.z = dz
 
 		S.falloff = (falloff ? falloff : FALLOFF_SOUNDS)
 
@@ -182,9 +182,9 @@
 							update_sound_volume(DS, S.volume)
 							if(client.played_loops[D]["MUTESTATUS"]) //we have sound so turn this off
 								client.played_loops[D]["MUTESTATUS"] = null
-						return TRUE
-			else
-				D.thingshearing += src
+//							return TRUE
+
+			D.thingshearing += src
 			client.played_loops[D] = list()
 			client.played_loops[D]["SOUND"] = S
 			client.played_loops[D]["VOL"] = S.volume
