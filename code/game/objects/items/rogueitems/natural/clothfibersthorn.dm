@@ -189,8 +189,10 @@
 				qdel(C)
 			wet = max(wet-1, 0)
 	
-	to_chat(user, span_info("I wipe \the [T.name] with [src]."))
-	playsound(user, "clothwipe", 100, TRUE)
+			to_chat(user, span_info("I wipe \the [T.name] with [src]."))
+			playsound(user, "clothwipe", 100, TRUE)
+		else
+			to_chat(user, span_warning("\the [name] is dry!"))
 
 
 // BANDAGING
