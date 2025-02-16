@@ -141,7 +141,7 @@
 		return
 	user.mind?.has_studied = TRUE
 	var/mob/living/reader = user
-	var/qualityoflearn = (reader.STAINT*2 + (user.mind?.get_skill_level(/datum/skill/misc/reading)*10) + (user.mind?.get_skill_level(/datum/skill/magic/arcane)*10))
+	var/qualityoflearn = (reader.STAINT + (user.mind?.get_skill_level(/datum/skill/misc/reading)*10) + (user.mind?.get_skill_level(/datum/skill/magic/arcane)*5))
 	if(reader.has_status_effect(/datum/status_effect/buff/weed))
 		to_chat(user, span_smallgreen("Swampweed truly does open one's third eye to the secrets of the arcyne..."))
 		qualityoflearn += 10

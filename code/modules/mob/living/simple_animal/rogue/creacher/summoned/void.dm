@@ -288,6 +288,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)
+		TailSwipe(pulledby)
 
 
 
@@ -425,6 +426,13 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	button_icon_state = "lightning"
 	chosen_message = "<span class='colossus'>You are now breathing lightning.</span>"
 	chosen_attack_num = 5
+
+/mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/TailSwipe(mob/victim)
+	var/mob/living/target = victim
+	src.visible_message(span_notice("[src] slams [target] with it's tail, knocking them to the floor!"))
+	target.Paralyze(5)
+	target.apply_damage(20, BRUTE)
+	shake_camera(target, 2, 1)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/OpenFire()
 	if(swooping)

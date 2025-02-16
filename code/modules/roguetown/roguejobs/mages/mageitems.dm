@@ -656,7 +656,7 @@ obj/item/hourglass/temporal/stop()
 	icon_state = newicon
 
 /obj/item/natural/manacrystal
-	name = "crytalized mana"
+	name = "crystalized mana"
 	icon_state = "manacrystal"
 	desc = "A crystal made of mana, woven into an artifical structure."
 	resistance_flags = FLAMMABLE
