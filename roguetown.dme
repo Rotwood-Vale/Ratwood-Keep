@@ -2145,6 +2145,7 @@
 #include "modular_redmoon\code\game\objects\items\dice.dm"
 #include "modular_redmoon\code\game\objects\items\soap.dm"
 #include "modular_redmoon\code\game\objects\items\clothes\stockings.dm"
+#include "modular_redmoon\code\game\objects\items\rogueitems\dmusicbox.dm"
 #include "modular_redmoon\code\game\objects\items\rogueitems\flail.dm"
 #include "modular_redmoon\code\game\objects\items\rogueitems\inquisitionrelics.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\integrity.dm"
