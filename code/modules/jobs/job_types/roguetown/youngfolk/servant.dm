@@ -123,8 +123,8 @@
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 
 /datum/subclass/servant/bankrupt
-	name = "Bankrupt Aristocrat"
-	tutorial = "You were born into low nobility, but unfortunately for you your family has gone bankrupt. \
+	name = "Fallen Aristocrat"
+	tutorial = "You were born into nobility, but unfortunately for you your family has gone bankrupt. \
 	The crown of Rockhill agreed to pay your debts off in return for your service, but you didnt expect them to make you a literal servant. \
 	Now you must find your way back into the high society, as well as hide your shame of lowlife work."
 	outfit = /datum/outfit/job/roguetown/servant/bankrupt
