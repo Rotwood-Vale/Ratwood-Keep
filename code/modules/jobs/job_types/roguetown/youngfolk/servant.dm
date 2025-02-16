@@ -156,4 +156,3 @@
 		H.change_stat("intelligence", 2)
 		H.change_stat("perception", 1)
 		H.change_stat("speed", 1)
-	ADD_TRAIT(H, TRAIT_GENERIC)
