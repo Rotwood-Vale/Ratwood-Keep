@@ -330,6 +330,7 @@
 	climb_offset = 14
 	on = FALSE
 	cookonme = TRUE
+	soundloop = /datum/looping_sound/fireloop
 	var/obj/item/attachment = null
 	var/obj/item/reagent_containers/food/snacks/food = null
 	var/datum/looping_sound/boilloop/boilloop
@@ -565,6 +566,7 @@
 	bulb_colour = "#da5e21"
 	cookonme = TRUE
 	max_integrity = 30
+	soundloop = /datum/looping_sound/fireloop
 
 /obj/machinery/light/rogue/campfire/process()
 	..()
