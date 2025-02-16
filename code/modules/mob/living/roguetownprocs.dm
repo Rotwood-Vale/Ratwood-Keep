@@ -203,13 +203,13 @@
 
 			prob2defend = clamp(prob2defend, 5, 90)
 
-			//Duel Wielding
+			//Dual Wielding
 			var/attacker_dualw
 			var/defender_dualw
 			var/extraattroll
 			var/extradefroll
 
-			//Duel Wielder defense disadvantage
+			//Dual Wielder defense disadvantage
 			if(HAS_TRAIT(src, TRAIT_DUALWIELDER) && istype(offhand, mainhand))
 				extradefroll = prob(prob2defend)
 				defender_dualw = TRUE
@@ -224,8 +224,11 @@
 
 			if(src.client?.prefs.showrolls)
 				var/text = "Roll to parry... [prob2defend]%"
-				if(defender_dualw)
-					text += " Twice! Disadvantage!"
+				if((defender_dualw || attacker_dualw))
+					if(defender_dualw && attacker_dualw)
+						text += " Our dual wielding cancels out!"
+					else//If we're defending against or as a dual wielder, we roll disadv. But if we're both dual wielding it cancels out.
+						text += " Twice! Disadvantage!"
 				to_chat(src, span_info("[text]"))
 			
 			var/attacker_feedback 
