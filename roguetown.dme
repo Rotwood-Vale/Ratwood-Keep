@@ -2174,6 +2174,7 @@
 #include "modular_redmoon\code\modules\mob\dead\new_player\sprite_accessory\genitals.dm"
 #include "modular_redmoon\code\modules\mob\living\emote.dm"
 #include "modular_redmoon\code\modules\mob\living\carbon\stress.dm"
+#include "modular_redmoon\code\modules\mob\living\simple_animal\rogue\creacher\volf.dm"
 #include "modular_redmoon\code\modules\roguetown\roguecrafting\items.dm"
 #include "modular_redmoon\code\modules\roguetown\roguejobs\artifcier\artifcier_recipes.dm"
 #include "modular_redmoon\code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\armor.dm"
