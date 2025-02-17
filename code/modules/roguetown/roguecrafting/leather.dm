@@ -51,6 +51,13 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 30
 
+/datum/crafting_recipe/roguetown/leather/javelinbag
+	name = "javelin bag"
+	result = /obj/item/javelinbag
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow =1,
+				/obj/item/rope = 1)
+	sellprice = 30
+
 /datum/crafting_recipe/roguetown/leather/gwstrap
 	name = "Greatweapon Strap"
 	result = /obj/item/gwstrap
