@@ -516,3 +516,28 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 0)
 	dropshrink = 0.5
 	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
+	name = "fyritius flower"
+	seed = /obj/item/seeds/fyritius
+	desc = "A delicate orange flower that radiates warmth."
+	icon_state = "fyritius"
+	filling_color = "#ff5e00"
+	tastes = list("tastes like a burning coal and fire" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
+	dropshrink = 0.8
+	rotprocess = null
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/bloodied
+	name = "bloodied fyritius flower"
+	desc = "A once delicate orange flower, now soaked with gruesome accursed blood that slowly burns it away."
+	icon_state = "fyritius_blood"
+	filling_color = "#ff3300"
+	tastes = list("tastes like a burning coal and fire and blood" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
+	rotprocess = 10 MINUTES

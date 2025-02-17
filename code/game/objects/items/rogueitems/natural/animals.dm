@@ -101,3 +101,18 @@
 	var/obj/item/ssaddle
 	// A flat percentage bonus to our ability to detect sneaking people only. Use in lieu of giving mobs huge STAPER bonuses if you want them to be observant.
 	var/simple_detect_bonus = 0
+
+/obj/item/natural/bone
+	name = "bone"
+	icon_state = "bone"
+	desc = "The meatless remains of the dead. Whether it came from an animal or a person it all looks the same now."
+	blade_dulling = 0
+	max_integrity = 20
+	static_debris = null
+	obj_flags = null
+	firefuel = null
+	w_class = WEIGHT_CLASS_NORMAL
+	twohands_required = FALSE
+	gripped_intents = null
+	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
+	bundletype = /obj/item/natural/bundle/bone

@@ -222,9 +222,9 @@
 	desc = "A long mix of herb that product a special powder."
 	icon_state = "transisdust"
 
-	major_pot = /datum/alch_cauldron_recipe/gender_potion
+/*	major_pot = /datum/alch_cauldron_recipe/gender_potion
 	med_pot = /datum/alch_cauldron_recipe/gender_potion
-	minor_pot = /datum/alch_cauldron_recipe/gender_potion
+	minor_pot = /datum/alch_cauldron_recipe/gender_potion */
 
 //BEGIN THE HERBS
 
@@ -351,7 +351,7 @@
 	verbage = "mixes"
 	craftsound = 'sound/foley/scribble.ogg'
 	skillcraft = /datum/skill/craft/alchemy
-	craftdiff = 0
+//	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/alch/magicdust
 	name = "magic dust"
@@ -362,4 +362,4 @@
 	verbage = "mixes"
 	craftsound = 'sound/foley/scribble.ogg'
 	skillcraft = /datum/skill/craft/alchemy
-	craftdiff = 0
+//	craftdiff = 0

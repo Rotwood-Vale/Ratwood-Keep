@@ -57,7 +57,7 @@
 	..()
 	. = 1
 
-/datum/reagent/medicine/gender_potion
+/* /datum/reagent/medicine/gender_potion
 	name = "Gender Potion"
 	description = "Change the user's gender."
 	reagent_state = LIQUID
@@ -81,7 +81,7 @@
 		M.gender = MALE
 		M.visible_message(span_boldnotice("[M] suddenly looks more masculine!"), span_boldwarning("You suddenly feel more masculine!"))
 	M.regenerate_icons()
-	..()
+	..() */
 
 //Someone please remember to change this to actually do mana at some point?
 /datum/reagent/medicine/manapot
@@ -95,8 +95,8 @@
 	alpha = 173
 
 /datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.rogstam_add(30)
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.energy_add(30)
 	..()
 
 /datum/reagent/medicine/strongmana
@@ -107,8 +107,8 @@
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/strongmana/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.rogstam_add(120)
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.energy_add(120)
 	..()
 
 /datum/reagent/medicine/stampot
@@ -122,8 +122,8 @@
 	alpha = 173
 
 /datum/reagent/medicine/stampot/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.adjustStaminaLoss(-1.5)
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.stamina_add(1.5)
 	..()
 
 /datum/reagent/medicine/strongstam
@@ -134,8 +134,8 @@
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/strongstam/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.adjustStaminaLoss(-6)
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.stamina_add(6)
 	..()
 
 /datum/reagent/medicine/antidote
@@ -338,8 +338,8 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM * 3
 
 /datum/reagent/stampoison/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.adjustStaminaLoss(2.25) //Slowly leech stamina
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.stamina_add(-2.25) //Slowly leech stamina
 	return ..()
 
 /datum/reagent/strongstampoison
@@ -351,8 +351,8 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM * 9
 
 /datum/reagent/strongstampoison/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.adjustStaminaLoss(9) //Rapidly leech stamina
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.stamina_add(-9) //Rapidly leech stamina
 	return ..()
 
 

@@ -17,7 +17,7 @@
 
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6,
 						/obj/item/natural/hide = 2,
-						/obj/item/reagent_containers/food/snacks/fat = 1, obj/item/alch/sinew = 4, obj/item/alch/bone = 1)
+						/obj/item/reagent_containers/food/snacks/fat = 1, /obj/item/natural/bundle/bone/full = 1, obj/item/alch/sinew = 4, obj/item/alch/bone = 1)
 
 	health = COW_FEMALE_HEALTH
 	maxHealth = COW_FEMALE_HEALTH

@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat
 	icon = 'icons/roguetown/mob/monster/bigrat.dmi'
 	name = "rous"
-	desc = ""
+	desc = "This is a big rat with beady red eyes, drawn to decay and filth."
 	icon_state = "rat"
 	icon_living = "rat"
 	icon_dead = "rat1"
@@ -17,7 +17,7 @@
 	aggro_vision_range = 2
 
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
-					/obj/item/natural/hide = 1, obj/item/alch/sinew = 1, obj/item/alch/bone = 1)
+					/obj/item/natural/hide = 1, /obj/item/natural/bone = 2, obj/item/alch/sinew = 1, obj/item/alch/bone = 1)
 
 	health = ROUS_HEALTH
 	maxHealth = ROUS_HEALTH
