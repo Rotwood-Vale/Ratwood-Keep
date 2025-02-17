@@ -10,6 +10,9 @@
 		user.add_stress(/datum/stressevent/jesterphobia)
 	if(HAS_TRAIT(src, TRAIT_BEAUTIFUL))
 		user.add_stress(/datum/stressevent/beautiful)
+	if(HAS_TRAIT(src, TRAIT_UNSEEMLY))
+		if(!HAS_TRAIT(user, TRAIT_UNSEEMLY))
+			user.add_stress(/datum/stressevent/unseemly)
 
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
@@ -134,7 +137,7 @@
 		var/heretic_text = get_heretic_text(user)
 		if(heretic_text)
 			. += span_notice(heretic_text)
-		var/inquisition_text =get_inquisition_text(user)
+		var/inquisition_text = get_inquisition_text(user)
 		if(inquisition_text)
 			. +=span_notice(inquisition_text)
 
@@ -149,7 +152,16 @@
 				. += span_beautiful_fem("[m1] beautiful!")
 			if (THEY_THEM, THEY_THEM_F, IT_ITS)
 				. += span_beautiful_nb("[m1] good-looking!")
-			
+
+	if (HAS_TRAIT(src, TRAIT_UNSEEMLY))
+		switch (pronouns)
+			if (HE_HIM)
+				. += span_redtext("[m1] revolting!")
+			if (SHE_HER)
+				. += span_redtext("[m1] repugnant!")
+			if (THEY_THEM, THEY_THEM_F, IT_ITS)
+				. += span_redtext("[m1] repulsive!")
+
 	var/is_stupid = FALSE
 	var/is_smart = FALSE
 	var/is_normal = FALSE
@@ -740,14 +752,42 @@
 /// Returns patron-related examine text for the mob, if any. Can return null.
 /mob/living/proc/get_heretic_text(mob/examiner)
 	var/heretic_text
-	if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(examiner, TRAIT_COMMIE))
-		heretic_text += "Comrade!"
-	else if(HAS_TRAIT(src, TRAIT_CABAL) && HAS_TRAIT(examiner, TRAIT_CABAL))
-		heretic_text += "Another of the Cabal!"
-	else if(HAS_TRAIT(src, TRAIT_HORDE) && HAS_TRAIT(examiner, TRAIT_HORDE))
-		heretic_text += "Anointed!"
-	else if(HAS_TRAIT(src, TRAIT_DEPRAVED) && HAS_TRAIT(examiner, TRAIT_DEPRAVED))
-		heretic_text += "Debased!"
+	var/seer
+
+	if(HAS_TRAIT(src,TRAIT_DECEIVING_MEEKNESS))
+		return null
+
+	if(HAS_TRAIT(examiner, TRAIT_HERETIC_SEER))
+		seer = TRUE
+	
+	if(HAS_TRAIT(src, TRAIT_COMMIE))
+		if(seer)
+			heretic_text += "Matthiosan."
+			if(HAS_TRAIT(examiner, TRAIT_COMMIE))
+				heretic_text += " To share with. To take with. For all, and us."
+		else if(HAS_TRAIT(examiner, TRAIT_COMMIE))
+			heretic_text += "Comrade!"
+	else if((HAS_TRAIT(src, TRAIT_CABAL)))
+		if(seer)
+			heretic_text += "A member of Zizo's cabal."
+			if(HAS_TRAIT(examiner, TRAIT_CABAL))
+				heretic_text += " May their ambitions not interfere with mine."
+		else if(HAS_TRAIT(examiner, TRAIT_CABAL))
+			heretic_text += "Another of the Cabal!"
+	else if((HAS_TRAIT(src, TRAIT_HORDE)))
+		if(seer)
+			heretic_text += "Hardened by Graggar's Rituals."
+			if(HAS_TRAIT(examiner, TRAIT_HORDE))
+				heretic_text += " Mine were a glorious memory."
+		else if(HAS_TRAIT(examiner, TRAIT_HORDE))
+			heretic_text += "Anointed!"
+	else if((HAS_TRAIT(src, TRAIT_DEPRAVED)))
+		if(seer)
+			heretic_text += "Baotha's Touched."
+			if(HAS_TRAIT(examiner, TRAIT_DEPRAVED))
+				heretic_text += " She leads us to the greatest ends."
+		else if(HAS_TRAIT(examiner, TRAIT_DEPRAVED))
+			heretic_text += "Debased!"
 	
 	return heretic_text
 
