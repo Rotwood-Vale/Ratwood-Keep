@@ -41,9 +41,21 @@
 	..()
 
 /obj/item/roguegear/bronze
-	name = "cog"
+	name = "bronze cog"
 	desc = "A cog with teeth meticulously crafted for tight interlocking."
 	smeltresult = /obj/item/ingot/bronze
+
+/obj/item/roguegear/copper
+	name = "copper cog"
+	desc = "A cog made of the least precious of precious metals for practice or further research."
+	icon_state = "ccog"
+	smeltresult = /obj/item/ingot/copper
+
+/obj/item/roguegear/tin
+	name = "tin cog"
+	desc = "A cog made of tin, likely for practicing or as an contraption result."
+	icon_state = "tcog"
+	smeltresult = /obj/item/ingot/tin
 
 /obj/item/roguegear/wood
 	var/cart_capacity = 0
@@ -54,7 +66,7 @@
 	name = "wooden cog"
 	desc = "A very simple cog that has the ability to increase the carry capacity of a wooden cart."
 	icon_state = "wcog"
-	metalizer_result = /obj/item/roguegear/bronze
+	metalizer_result = /obj/item/roguegear/tin
 	cart_capacity = 90
 
 /obj/item/roguegear/wood/reliable
