@@ -44,7 +44,7 @@
 	name = "hardened leather bracers"
 	desc = "Hardened leather braces that will keep your wrists safe from bludgeoning."
 	icon_state = "albracers"
-	armor = list("blunt" = 100, "slash" = 60, "stab" = 50, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP, BCLASS_SMASH)
 	max_integrity = 250
 	salvage_amount = 1

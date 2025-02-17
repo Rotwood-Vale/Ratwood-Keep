@@ -48,6 +48,7 @@
 				return
 			playsound(src,pick('sound/items/book_open.ogg','sound/items/book_page.ogg'), 100, FALSE)
 			hide = null
+			qdel(hide)
 			user.mind.add_sleep_experience(/datum/skill/craft/tanning, user.STAINT * 2) //these numbers may need some revision
 			update_icon()
 			for(var/i = 0; i < pieces_to_spawn; i++)

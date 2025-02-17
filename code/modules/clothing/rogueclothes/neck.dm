@@ -47,9 +47,8 @@
 	slot_flags = ITEM_SLOT_NECK
 	blocksound = SOFTHIT
 	body_parts_covered = NECK
-	armor = list("blunt" = 100, "slash" = 60, "stab" = 40, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
-	toggle_icon_state = TRUE
 	sewrepair = TRUE
 	max_integrity = 150
 	salvage_result = /obj/item/natural/hide/cured
