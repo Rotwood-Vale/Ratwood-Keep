@@ -1,1 +1,1 @@
-#define FORCE_MAP "_maps/rockhill.json"
+#define FORCE_MAP "_maps/roguetest.json"

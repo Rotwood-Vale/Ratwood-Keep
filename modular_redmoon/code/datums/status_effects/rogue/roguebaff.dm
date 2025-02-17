@@ -137,72 +137,69 @@
 	name = "Enlightening (+4 INT)"
 	id = "bardbuff_int"
 	effectedstats = list("intelligence" = 4)
+	alert_type = /atom/movable/screen/alert/status_effect/bardbuff/intelligence
+
+/atom/movable/screen/alert/status_effect/bardbuff/intelligence
+	name = "Enlightening"
 
 // TIER 2 - AVERAGE
 /datum/status_effect/bardicbuff/endurance
 	name = "Invigorating (+4 END)"
 	id = "bardbuff_end"
 	effectedstats = list("endurance" = 4)
+	alert_type = /atom/movable/screen/alert/status_effect/bardbuff/endurance
+
+/atom/movable/screen/alert/status_effect/bardbuff/endurance
+	name = "Invigorating"
 
 // TIER 3 - SKILLED
 /datum/status_effect/bardicbuff/constitution
 	name = "Fortitude (+3 CON)"
 	id = "bardbuff_con"
 	effectedstats = list("constitution" = 3)
+	alert_type = /atom/movable/screen/alert/status_effect/bardbuff/constitution
+
+/atom/movable/screen/alert/status_effect/bardbuff/constitution
+	name = "Fortitude"
 
 // TIER 4 - EXPERT
 /datum/status_effect/bardicbuff/speed
 	name = "Inspiring (+6 SPD)"
 	id = "bardbuff_spd"
 	effectedstats = list("speed" = 6)
+	alert_type = /atom/movable/screen/alert/status_effect/bardbuff/speed
+
+/atom/movable/screen/alert/status_effect/bardbuff/speed
+	name = "Inspiring"
 
 // TIER 5 - MASTER
 /datum/status_effect/bardicbuff/ravox
 	name = "Empowering (+2 STR, +2 PER)"
 	id = "bardbuff_str"
 	effectedstats = list("strength" = 2, "perception" = 2)
+	alert_type = /atom/movable/screen/alert/status_effect/bardbuff/ravox
+
+/atom/movable/screen/alert/status_effect/bardbuff/ravox
+	name = "Empowering"
 
 // TIER 6 - LEGENDARY
 /datum/status_effect/bardicbuff/awaken
-	name = "Awaken! (purges sleep)"
+	name = "Awaken! (+energy, +stamina, +10 FOR)"
 	id = "bardbuff_awaken"
+	alert_type = /atom/movable/screen/alert/status_effect/bardbuff/awaken
 	effectedstats = list("fortune" = 10)
 
-/datum/status_effect/bardicbuff/awaken/on_apply()
-	if(iscarbon(owner))
-		var/mob/living/carbon/O = owner
-		if(owner.mind?.has_antag_datum(/datum/antagonist))
-			if(owner.mind.isactuallygood()) // Check for "good antags"
-				for(var/S in effectedstats)
-					owner.change_stat(S, effectedstats[S])
-				if(O.has_status_effect(/datum/status_effect/debuff/sleepytime))
-					O.remove_status_effect(/datum/status_effect/debuff/sleepytime)
-					O.remove_stress(/datum/stressevent/sleepytime)
-					if(O.IsSleeping())
-						O.SetSleeping(0) // WAKE UP!
-					O.adjust_triumphs(1) // Before people start crying about muh triumph lost
-					to_chat(O, span_nicegreen("Astrata's blessed light cleanses away your tiredness!"))
-			else
-				return
-		else
-			for(var/S in effectedstats)
-				owner.change_stat(S, effectedstats[S])
-			if(O.has_status_effect(/datum/status_effect/debuff/sleepytime))
-				O.remove_status_effect(/datum/status_effect/debuff/sleepytime)
-				O.remove_stress(/datum/stressevent/sleepytime)
-				if(O.IsSleeping())
-					O.SetSleeping(0) // GRAB A BRUSH AND PUT A LITTLE MAKEUP
-				O.adjust_triumphs(1) // Before people start crying about muh triumph lost
-				to_chat(O, span_nicegreen("Astrata's blessed light cleanses away your tiredness!"))
-			else
-				return
+/atom/movable/screen/alert/status_effect/bardbuff/awaken
+	name = "Awaken!"
 
-/datum/status_effect/bardicbuff/awaken/on_remove()
-	if(iscarbon(owner))
-		if(owner.mind?.has_antag_datum(/datum/antagonist))
-			if(owner.mind.isactuallygood()) // Check for "good antags"
-				for(var/S in effectedstats)
-					owner.change_stat(S, -effectedstats[S])
-		else
-			for(var/S in effectedstats)
-				owner.change_stat(S, -effectedstats[S])
+/datum/status_effect/bardicbuff/awaken/tick()
+	for (var/mob/living/carbon/human/H in hearers(7, owner))
+		if (!H.client)
+			continue
+		if(!H.can_hear())
+			continue
+		if(H.mind?.has_antag_datum(/datum/antagonist))
+			if(!H.mind?.isactuallygood())
+				continue
+		H.energy_add(1)
+		H.stamina_add(-0.5)

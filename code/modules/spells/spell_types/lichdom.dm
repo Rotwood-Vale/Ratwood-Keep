@@ -89,7 +89,7 @@
 /obj/item/phylactery/Initialize(mapload, datum/mind/newmind)
 	. = ..()
 	mind = newmind
-	name = "phylactery of [mind.name]"
+	name = "phylactery of [usr.mind.name]"
 
 	active_phylacteries++
 	GLOB.poi_list |= src

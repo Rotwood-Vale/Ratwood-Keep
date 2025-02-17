@@ -80,32 +80,27 @@
 
 /datum/stressevent/music
 	timer = 1 MINUTES
+	stressadd = 0
+	desc = span_green("The music is pleasant.")
+
+/datum/stressevent/music/two
 	stressadd = -1
 	desc = span_green("The music is relaxing.")
 
-/datum/stressevent/music/two
-	stressadd = -2
-	desc = span_green("The music is very relaxing.")
-	timer = 2 MINUTES
-
 /datum/stressevent/music/three
 	stressadd = -2
-	desc = span_green("The music saps my stress.")
-	timer = 4 MINUTES
+	desc = span_green("The music is wonderful.")
 
 /datum/stressevent/music/four
 	stressadd = -3
-	desc = span_green("The music is heavenly.")
-	timer = 6 MINUTES
+	desc = span_green("The music is enchanting.")
 
 /datum/stressevent/music/five
-	stressadd = -3
-	timer = 8 MINUTES
+	stressadd = -4
 	desc = span_green("The music is strummed by an angel.")
 
 /datum/stressevent/music/six
-	stressadd = -4
-	timer = 10 MINUTES
+	stressadd = -5
 	desc = span_boldgreen("The music is a blessing from Eora.")
 
 /datum/stressevent/eora
