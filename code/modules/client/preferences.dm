@@ -140,7 +140,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/domhand = 2
 	var/datum/charflaw/charflaw
 
-	var/family = FAMILY_NONE
 	
 
 	var/crt = FALSE
@@ -1363,6 +1362,7 @@ Slots: [job.spawn_positions]</span>
 
 				if("age")
 					var/new_age = input(user, "Choose your character's age (18-[pref_species.max_age])", "Yils Dead") as null|anything in pref_species.possible_ages
+					if(new_age)
 						age = new_age
 						var/list/hairs
 						if((age == AGE_OLD) && (OLDGREY in pref_species.species_traits))

@@ -117,8 +117,9 @@
 //					addomen(OMEN_NOBLEDEATH)
 
 		if(!gibbed && yeae)
-			if(HU.marriedto == src)
-				HU.adjust_triumphs(-1)
+			for(var/mob/living/carbon/human/HU in viewers(7, src))
+				if(HU.marriedto == src)
+					HU.adjust_triumphs(-1)
 
 	. = ..()
 
