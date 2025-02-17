@@ -52,6 +52,9 @@
 			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
+				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
+				armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 
 		if("Arcanist")	//slower casting roll, has better learning stats, and a better book.
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -84,6 +87,9 @@
 			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			H.set_patron(/datum/patron/divine/noc)
+			if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
+				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
 
 		if("Sorcerer")		//Faster casting roll, better arcana. Starts with more spell points. Has terrible learning stats, and a bad book. No chalk.
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -115,6 +121,9 @@
 			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			H.set_patron(/datum/patron/divine/noc)
+			if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
+				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
 
 		if("Occultist")
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)

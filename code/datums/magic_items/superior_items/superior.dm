@@ -32,7 +32,10 @@
 	. = ..()
 	if(slot == ITEM_SLOT_HANDS)
 		return
+	if(active_item)
+		return
 	else
+		active_item = TRUE
 		ADD_TRAIT(user, TRAIT_LIGHT_STEP, "[type]")
 		user.change_stat("speed", 1)
 		to_chat(user, span_notice("I feel much more nimble!"))
@@ -54,7 +57,10 @@
 	. = ..()
 	if(slot == ITEM_SLOT_HANDS)
 		return
+	if(active_item)
+		return
 	else
+		active_item = TRUE
 		ADD_TRAIT(user, TRAIT_NOFIRE, "[type]")
 		to_chat(user, span_notice("I feel fire-resistant!"))
 
@@ -98,6 +104,7 @@
 	if(active_item)
 		return
 	else
+		active_item = TRUE
 		user.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 		user.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 		to_chat(user, span_notice("I feel more dexterious!"))

@@ -11,9 +11,9 @@
 	sleeved = 'icons/roguetown/clothing/onmob/mage.dmi'
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	allowed_race = NON_DWARVEN_RACE_TYPES	//I don't have the sprites for these, so no shortfolk until a spriter can do it for me.
 	boobed = FALSE
 	toggle_icon_state = TRUE
-	allowed_race = NON_DWARVEN_RACE_TYPES
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	max_integrity = 200
 	color = null

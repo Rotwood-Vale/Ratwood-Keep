@@ -80,5 +80,3 @@
 	.=..()
 	var/obj/item/flashlight/flare/light = i
 	light.light_range = light.light_range * 2
-
-
