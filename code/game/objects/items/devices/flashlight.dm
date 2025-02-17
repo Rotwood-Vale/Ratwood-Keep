@@ -13,6 +13,7 @@
 	light_outer_range = 4
 	light_power = 1
 	slot_flags = ITEM_SLOT_BELT
+	var/weather_resistant = FALSE
 	possible_item_intents = list(INTENT_GENERIC)
 	var/on = FALSE
 
@@ -204,6 +205,8 @@
 
 /obj/item/flashlight/flare/torch/weather_act_on(weather_trait, severity)
 	if(weather_trait != PARTICLEWEATHER_RAIN)
+		return
+	if(weather_resistant)
 		return
 	extinguish()
 
