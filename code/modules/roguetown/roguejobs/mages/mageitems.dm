@@ -639,7 +639,7 @@ obj/item/hourglass/temporal/stop()
 /datum/plant_def/manabloom
 	name = "manabloom"
 	icon = 'icons/roguetown/misc/crops.dmi'
-	icon_state = "manabloom0"
+	icon_state = "manabloom"
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
 
 /obj/item/natural/artifact

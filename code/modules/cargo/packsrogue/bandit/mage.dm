@@ -48,6 +48,6 @@
 
 
 /datum/supply_pack/rogue/bandit/Mage/mercury
-	name = "Iron Spear"
+	name = "bottle of mercury"
 	cost = 50
 	contains = list(/obj/item/reagent_containers/glass/bottle/mercury)
