@@ -311,6 +311,7 @@
 	if(known_skills[S] >= old_level)
 		if(known_skills[S] > old_level)
 			to_chat(current, span_nicegreen("My [S.name] grows to [SSskills.level_names[known_skills[S]]]!"))
+			S.skill_level_effect(src, known_skills[S])
 		if(skill == /datum/skill/magic/arcane)
 			adjust_spellpoints(1)
 	else

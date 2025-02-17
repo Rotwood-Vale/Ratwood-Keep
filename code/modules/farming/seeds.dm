@@ -182,3 +182,7 @@
 /obj/item/seeds/mycelium/amanita
 	seed_identity = "red mushroom spores"
 	plant_def_type = /datum/plant_def/amanita
+
+/obj/item/seeds/poppy
+	seed_identity = "poppy seeds"
+	plant_def_type = /datum/plant_def/poppy

@@ -503,3 +503,16 @@
 	tastes = list("numb" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/amanitin = 3)
 	grind_results = list(/datum/reagent/toxin/amanitin = 6)
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/poppy // poppies, from vanderlin
+	name = "poppy"
+	desc = "For their crimson beauty and the sedating effect of their crushed seeds, these flowers are considered a symbol of Eora."
+	icon_state = "poppy"
+	seed = /obj/item/seeds/poppy
+	throwforce = 0
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 0)
+	dropshrink = 0.5
+	rotprocess = null

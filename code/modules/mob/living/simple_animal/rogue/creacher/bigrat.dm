@@ -17,7 +17,7 @@
 	aggro_vision_range = 2
 
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
-					/obj/item/natural/hide = 1)
+					/obj/item/natural/hide = 1, obj/item/alch/sinew = 1, obj/item/alch/bone = 1)
 
 	health = ROUS_HEALTH
 	maxHealth = ROUS_HEALTH
