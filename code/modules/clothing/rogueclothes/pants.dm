@@ -140,7 +140,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
-	name = "heavy leather shorts"
+	name = "hardened leather shorts"
 	desc = "A thick hide pair of shorts, favored by some for their ease of motion in spite of \
 	being less protective than full trousers."
 	icon_state = "rogueshorts"

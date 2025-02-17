@@ -145,7 +145,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/heavy_leather_pants
-	name = "heavy leather pants"
+	name = "hardened leather pants"
 	result = list(/obj/item/clothing/under/roguetown/heavy_leather_pants)
 	reqs = list(
 		/obj/item/natural/hide/cured = 1,
@@ -156,7 +156,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/leather/heavy_leather_pants/shorts
-	name = "heavy leather shorts"
+	name = "hardened leather shorts"
 	result = list(/obj/item/clothing/under/roguetown/heavy_leather_pants/shorts)
 	reqs = list(
 		/obj/item/natural/hide/cured = 1, //they cover less, you see
