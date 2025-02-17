@@ -1110,6 +1110,13 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
+"aQw" = (
+/obj/effect/decal/cobbleedge{
+	dir = 6
+	},
+/obj/machinery/light/rogue/torchholder/l,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/town)
 "aQA" = (
 /obj/structure/chair/bench/ultimacouch,
 /turf/open/floor/rogue/tile,
@@ -65149,7 +65156,7 @@ waT
 vOh
 hvn
 liZ
-rLi
+aQw
 sLb
 kLO
 api
