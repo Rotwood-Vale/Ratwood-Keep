@@ -320,7 +320,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 /datum/runerituals/teleport
 	name = "planar convergence"
 	tier = 3
-	required_atoms = list(/obj/item/natural/artifact = 1, /obj/item/natural/leyline = 1, /obj/item/natural/melded/t3 = 1) //adjust this later
+	required_atoms = list(/obj/item/natural/artifact = 1, /obj/item/natural/leyline = 1, /obj/item/natural/melded/t2 = 1) //adjust this later
 /datum/runerituals/teleport/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return TRUE
 

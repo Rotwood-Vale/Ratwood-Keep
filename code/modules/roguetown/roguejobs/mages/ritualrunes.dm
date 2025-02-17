@@ -231,7 +231,7 @@ GLOBAL_LIST(teleport_runes)
 				continue
 			if(invoker.stat != CONSCIOUS)
 				continue
-			if(magictype == "arcane")
+			if(magictype == "arcyne")
 				if(isarcyne(invoker))
 					invokers += invoker
 			if(magictype == "divine")
