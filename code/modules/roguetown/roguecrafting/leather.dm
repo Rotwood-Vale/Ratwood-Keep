@@ -12,7 +12,15 @@
 	tools = list(/obj/item/needle)
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 0
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/leather/corset
+	name = "corset"
+	result = /obj/item/clothing/suit/roguetown/armor/corset
+	reqs = list()
+	tools = list(/obj/item/needle)
+	sellprice = 15
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/pouch
 	name = "leather pouch"
