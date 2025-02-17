@@ -49,7 +49,14 @@
 	req_bar = /obj/item/ingot/bronze
 	created_item = /obj/item/storage/backpack/rogue/artibackpack
 	additional_items = list(/obj/item/roguegear, /obj/item/roguegear, /obj/item/roguegear, /obj/item/storage/backpack/rogue/backpack)
-	craftdiff = 5	
+	craftdiff = 5
+
+/datum/anvil_recipe/engineering/bronze/smokebomb
+	name = "Smoke Bomb"
+	req_bar = /obj/item/ingot/bronze
+	created_item = /obj/item/smokebomb
+	additional_items = list(/obj/item/roguegear, /obj/item/ash)
+	craftdiff = 3		
 
 // ------------ PROSTHETICS ----------------
 
