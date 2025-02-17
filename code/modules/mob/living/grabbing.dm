@@ -621,5 +621,6 @@
 							C.mind.add_antag_datum(new_antag)
 							sleep(20)
 							C.fully_heal()
+							VDrinker.handle_vitae(0) // Updates pool max.
 					if("No")
 						to_chat(user, span_warning("I decide [C] is unworthy."))

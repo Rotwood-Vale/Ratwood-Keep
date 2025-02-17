@@ -26,6 +26,29 @@
 	wbalance = -1
 	blade_dulling = DULLING_BASHCHOP
 
+/obj/item/rogueweapon/mace/attack_right(mob/user)
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/maceherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/maceherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/maceherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Iron Maces...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/maceherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/maceherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/maceherald.dmi'
+		lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = "Regular Mace"
+	else
+		..()
+
 /obj/item/rogueweapon/mace/church
 	force = 25
 	force_wielded = 30
@@ -47,6 +70,29 @@
 	smeltresult = /obj/item/ingot/steel
 	blade_dulling = DULLING_BASH
 	wdefense = 3
+
+/obj/item/rogueweapon/mace/steel/attack_right(mob/user)
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/smaceherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/smaceherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/smaceherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Steel Maces...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/smaceherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/smaceherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/smaceherald.dmi'
+		lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = "Regular S.Mace"
+	else
+		..()
 
 /obj/item/rogueweapon/mace/getonmobprop(tag)
 	if(tag)
