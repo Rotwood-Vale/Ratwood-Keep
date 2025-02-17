@@ -14566,6 +14566,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/clothing/cloak/apron/waist/brown,
+/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "lPB" = (
@@ -15134,7 +15135,6 @@
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
 	},
-/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "mmv" = (
@@ -17170,6 +17170,7 @@
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
 	},
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "nQj" = (
@@ -64981,8 +64982,8 @@ lcu
 uvM
 hvn
 waT
-sby
 oyZ
+sby
 oyZ
 mlJ
 waT

@@ -135,7 +135,7 @@
 	held_items = list(2, 0)
 	payout_price = 4
 	withdraw_price = 7
-	transport_fee = 1
+	transport_fee = 3
 	export_price = 7
 	importexport_amt = 10
 	passive_generation = 3
