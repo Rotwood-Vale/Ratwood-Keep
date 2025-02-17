@@ -1137,7 +1137,6 @@
 #include "code\modules\cargo\packsrogue\tools.dm"
 #include "code\modules\cargo\packsrogue\wardrobe.dm"
 #include "code\modules\cargo\packsrogue\weapons.dm"
-#include "code\modules\cargo\packsrogue\bandit\gear.dm"
 #include "code\modules\cargo\packsrogue\bandit\brigand.dm"
 #include "code\modules\cargo\packsrogue\bandit\clothing.dm"
 #include "code\modules\cargo\packsrogue\bandit\consumables.dm"
