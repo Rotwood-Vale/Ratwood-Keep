@@ -2171,6 +2171,7 @@
 #include "modular_redmoon\code\modules\clothing\rogueclothes\neck.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\robes.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\shirts.dm"
+#include "modular_redmoon\code\modules\mob\mob.dm"
 #include "modular_redmoon\code\modules\mob\dead\new_player\sprite_accessory\genitals.dm"
 #include "modular_redmoon\code\modules\mob\living\emote.dm"
 #include "modular_redmoon\code\modules\mob\living\carbon\stress.dm"
