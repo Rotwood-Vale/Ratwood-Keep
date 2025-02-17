@@ -102,6 +102,20 @@
 		)
 	sellprice = 20
 
+/datum/crafting_recipe/roguetown/leather/lgorget
+	name = "hardened leather gorget"
+	result = /obj/item/clothing/neck/roguetown/leather
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/leather/heavybracers
+	name = "hardened leather bracers"
+	result = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
 /datum/crafting_recipe/roguetown/leather/bracers
 	name = "leather bracers"
 	result = list(/obj/item/clothing/wrists/roguetown/bracers/leather,

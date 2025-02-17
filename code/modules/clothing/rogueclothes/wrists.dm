@@ -26,10 +26,10 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/leather
 	name = "leather bracers"
-	desc = ""
+	desc = "Standard leather bracers that offer some meager protection for the arms."
 	icon_state = "lbracers"
 	item_state = "lbracers"
-	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 50, "stab" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -37,6 +37,16 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	anvilrepair = null
 	sewrepair = TRUE
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/wrists/roguetown/bracers/leather/heavy
+	name = "hardened leather bracers"
+	desc = "Hardened leather braces that will keep your wrists safe from bludgeoning."
+	icon_state = "albracers"
+	armor = list("blunt" = 100, "slash" = 60, "stab" = 50, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP, BCLASS_SMASH)
+	max_integrity = 250
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 
