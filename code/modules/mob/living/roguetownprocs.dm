@@ -204,7 +204,16 @@
 						drained = drained + ( intenty.masteritem.wbalance * ((user.STASTR - src.STASTR) * -5) )
 			else
 				to_chat(src, span_warning("The enemy defeated my parry!"))
-				return FALSE
+				if(HAS_TRAIT(src, TRAIT_MAGEARMOR))
+					if(H.magearmor == 0)
+						H.magearmor = 1
+						H.apply_status_effect(/datum/status_effect/buff/magearmor)
+						to_chat(src, span_boldwarning("My mage armor absorbs the hit and dissipates!"))
+						return TRUE
+					else
+						return FALSE
+				else
+					return FALSE
 
 			drained = max(drained, 5)
 
@@ -335,7 +344,16 @@
 						user.aftermiss()
 						return TRUE
 					else
-						return FALSE
+						if(HAS_TRAIT(src, TRAIT_MAGEARMOR))
+							if(H.magearmor == 0)
+								H.magearmor = 1
+								H.apply_status_effect(/datum/status_effect/buff/magearmor)
+								to_chat(src, span_boldwarning("My mage armor absorbs the hit and dissipates!"))
+								return TRUE
+							else
+								return FALSE
+						else
+							return FALSE
 			else
 				return FALSE
 

@@ -13,7 +13,6 @@
 	desc = ""
 	icon_state = "drunk"
 
-
 /datum/status_effect/buff/foodbuff
 	id = "foodbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
@@ -231,6 +230,25 @@
 	to_chat(owner, span_warning("The rough floors slow my travels once again."))
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
 
+/atom/movable/screen/alert/status_effect/buff/magearmor
+	name = "Weakened Barrier"
+	desc = "My magical barrier is weakened."
+	icon_state = "stressvg"
+
+/datum/status_effect/buff/magearmor
+	id = "magearmor"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/magearmor
+
+/datum/status_effect/buff/magearmor/on_apply()
+	. = ..()
+	playsound(owner, 'sound/magic/magearmordown.ogg', 75, FALSE)
+	duration = (7-owner.mind.get_skill_level(/datum/skill/magic/arcane)) MINUTES
+
+/datum/status_effect/buff/magearmor/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("My magical barrier reforms."))
+	playsound(owner, 'sound/magic/magearmorup.ogg', 75, FALSE)
+	owner.magearmor = 0
 
 /atom/movable/screen/alert/status_effect/buff/guardbuffone
 	name = "Vigilant Guardsman"
