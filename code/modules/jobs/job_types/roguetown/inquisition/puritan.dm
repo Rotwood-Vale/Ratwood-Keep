@@ -36,7 +36,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
-	beltl = /obj/item/storage/belt/rogue/pouch/ammo
+	beltl = /obj/item/ammo_holder/bullet/runed
 	head = /obj/item/clothing/head/roguetown/inqhat
 	gloves = /obj/item/clothing/gloves/roguetown/inqgloves
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat
