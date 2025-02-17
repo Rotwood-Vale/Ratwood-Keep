@@ -17,7 +17,7 @@
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
 						/obj/item/reagent_containers/food/snacks/fat = 2,
 						/obj/item/natural/hide = 2,
-						/obj/item/natural/fur = 1, /obj/item/natural/bundle/bone/full = 1, obj/item/alch/sinew = 4, obj/item/alch/bone = 1)
+						/obj/item/natural/fur = 1, /obj/item/natural/bundle/bone/full = 1, /obj/item/alch/sinew = 4, /obj/item/alch/bone = 1)
 
 
 	health = GOAT_FEMALE_HEALTH

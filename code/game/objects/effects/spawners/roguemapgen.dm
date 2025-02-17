@@ -98,7 +98,7 @@
 	icon_state = "lootpotion"
 	spawned = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 10,
-		/obj/item/reagent_containers/glass/bottle/rogue/healthpotnew = 5,
+		/obj/item/reagent_containers/glass/bottle/rogue/greaterhealthpot = 5, //Look at changing this immediately. This is set up just for the testing. Will have to nuke mori's alchemy bullshit.
 		/obj/item/reagent_containers/glass/bottle/rogue/manapot = 10,
 		/obj/item/reagent_containers/glass/bottle/rogue/strongmanapot = 5,
 		/obj/item/reagent_containers/glass/bottle/rogue/stampot = 10,

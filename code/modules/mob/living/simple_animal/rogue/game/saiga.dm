@@ -108,7 +108,7 @@
 	icon_dead = "saigakid_dead"
 	icon_gib = "saigakid_gib"
 	animal_species = null
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1, /obj/item/natural/bundle/bone/full = 1, obj/item/alch/sinew = 2, obj/item/alch/bone = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1, /obj/item/natural/bundle/bone/full = 1, /obj/item/alch/sinew = 2, /obj/item/alch/bone = 1)
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 20
 	pass_flags = PASSTABLE | PASSMOB
