@@ -270,6 +270,7 @@
 
 	var/setparrytime = 12
 	var/dodgetime = 12
+	var/magearmor = 0
 
 	var/last_dodge = 0
 	var/last_parry = 0
