@@ -89,6 +89,7 @@
 
 /datum/crafting_recipe/roguetown/arcana/forge
 	name = "infernal forge"
+	req_table = FALSE
 	result = /obj/machinery/light/rogue/forge/arcane
 	reqs = list(/obj/item/natural/moltencore = 1,
 				/obj/item/natural/stone = 4)
