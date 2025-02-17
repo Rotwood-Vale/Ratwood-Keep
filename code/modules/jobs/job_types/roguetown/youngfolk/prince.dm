@@ -26,7 +26,8 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
-
+		SSfamilytree.AddRoyal(H, FAMILY_PROGENY)
+		
 /datum/job/roguetown/prince/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
 	if(GLOB.lordsurname && H)

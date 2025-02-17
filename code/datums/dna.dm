@@ -16,6 +16,8 @@
 	var/list/organ_dna = list()
 	///Body markings of the DNA's owner. This is for storing their original state for re-creating the character. They'll get changed on species mutation
 	var/list/list/body_markings = list()
+	//Familytree variable
+	var/parent_mix
 
 /datum/dna/New(mob/living/new_holder)
 	if(istype(new_holder))
@@ -313,3 +315,7 @@
 	if(value > values)
 		value = values
 	return value
+
+/mob/living/carbon/human/proc/MixDNA(mob/living/carbon/human/father = "", mob/living/carbon/human/mother = "", override = FALSE)
+	if(override == FALSE && dna.parent_mix)
+		dna.parent_mix = "[father]/[mother]"

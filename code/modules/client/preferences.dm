@@ -140,6 +140,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/domhand = 2
 	var/datum/charflaw/charflaw
 
+//Family system
+	var/family = FAMILY_NONE
+	var/setspouse = ""
+
 	
 
 	var/crt = FALSE
@@ -343,6 +347,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
+			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "None"]</a><BR>"
+			if(family == FAMILY_FULL || family == FAMILY_NEWLYWED)
+				dat += "<b>Preferred Spouse:</b> <a href='?_src_=prefs;preference=setspouse'>[setspouse ? setspouse : "None"]</a><BR>"
 			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
 
 /*
@@ -1665,6 +1672,27 @@ Slots: [job.spawn_positions]</span>
 						domhand = 2
 					else
 						domhand = 1
+
+				if("family")
+					var/list/famtree_options_list = list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_NEWLYWED, FAMILY_FULL, "EXPLAIN THIS TO ME")
+					var/new_family = input(user, "Do you have relatives in the kingdom?", "The Major Houses") as null|anything in famtree_options_list
+					if(new_family == "EXPLAIN THIS TO ME")
+						to_chat(user, span_purple("\
+						--[FAMILY_NONE] will disable this feature.<br>\
+						--[FAMILY_PARTIAL] will assign you as a progeny of a local house based on your species. This feature will instead assign you as a aunt or uncle to a local family if your older than ADULT.<br>\
+						--[FAMILY_NEWLYWED] assigns you a spouse without adding you to a family. Setspouse will prioritize pairing you with another newlywed with the same name as your setspouse.<br>\
+						--[FAMILY_FULL] will attempt to assign you as matriarch or patriarch of one of the local houses of the kingdom/town. Setspouse will will prevent \
+						players with the setspouse = None from matching with you unless their name equals your setspouse."))
+
+					else if(new_family)
+						family = new_family
+				//Setspouse is part of the family subsystem. It will check existing families for this character and attempt to place you in this family.
+				if("setspouse")
+					var/newspouse = input(user, "Input the name of another player:","Rememberin your spouse") as text|null
+					if(newspouse)
+						setspouse = newspouse
+					else
+						setspouse = null
 				if("bespecial")
 					if(next_special_trait)
 						print_special_text(user, next_special_trait)
@@ -2059,6 +2087,9 @@ Slots: [job.spawn_positions]</span>
 		character.update_body_parts(redraw = TRUE)
 	
 	character.char_accent = char_accent
+
+	character.familytree_pref = family
+	character.setspouse = setspouse
 
 /datum/preferences/proc/get_default_name(name_id)
 	switch(name_id)

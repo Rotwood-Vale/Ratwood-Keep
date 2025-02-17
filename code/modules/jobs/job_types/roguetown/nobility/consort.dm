@@ -42,6 +42,15 @@
 	display_order = JDO_LADY
 	give_bank_account = TRUE
 
+/datum/job/roguetown/consort/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(H.gender == FEMALE)
+			SSfamilytree.AddRoyal(H, FAMILY_MOTHER)
+		else
+			SSfamilytree.AddRoyal(H, FAMILY_FATHER)
+
 /datum/job/roguetown/consort/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
 	if(GLOB.lordsurname && H)
