@@ -114,7 +114,7 @@
 	sew_threshold = 75
 	passive_healing = 0
 	sleep_healing = 0
-	wound_cleanliness = WOUND_CLEANLINESS_STERILE
+	wound_cleanliness = WOUND_CLEANLINESS_CLEAN
 
 /datum/wound/slash/incision/sew_wound()
 	qdel(src)

@@ -16,6 +16,7 @@
 	sewn_overlay = "cut"
 	can_sew = TRUE
 	can_cauterize = TRUE
+	can_become_infected = TRUE
 	critical = TRUE
 	sleep_healing = 0
 	embed_chance = 40

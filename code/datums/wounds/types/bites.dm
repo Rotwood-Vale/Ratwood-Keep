@@ -10,6 +10,8 @@
 	mob_overlay = "cut"
 	can_sew = FALSE
 	can_cauterize = FALSE
+	can_become_infected = TRUE
+	wound_cleanliness = WOUND_CLEANLINESS_FILTHY //All sorts of nasty bacteria
 	passive_healing = 0.5
 
 /datum/wound/bite/small

@@ -699,18 +699,20 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	if(IsSleeping() && !InFullCritical())
 		if(!sleep_modifier)
 			sleep_modifier = 0.75
-		var/requires_hydration = !HAS_TRAIT(src, TRAIT_NOHUNGER)
-		if(hydration > 0 || !requires_hydration) // No hydration? No healing.
+		var/requires_sustenance = !HAS_TRAIT(src, TRAIT_NOHUNGER)
+		if((hydration > HYDRATION_LEVEL_DEHYDRATED && nutrition > NUTRITION_LEVEL_STARVING) || !requires_sustenance) // No food and water? No healing. Healing is taxing on the body and drains your hunger over time.
 			if(!bleedrate)
 				blood_volume = min(blood_volume + (4 * sleep_modifier), BLOOD_VOLUME_NORMAL)
 			for(var/obj/item/bodypart/affecting as anything in bodyparts)
 				//for context, it takes 5 small cuts (0.2 x 5) or 3 normal cuts (0.4 x 3) for a bodypart to not be able to heal itself
 				if(affecting.heal_damage(sleep_modifier, sleep_modifier, required_status = BODYPART_ORGANIC))
 					src.update_damage_overlays()
+					adjust_nutrition(-0.2)
 				for(var/datum/wound/wound as anything in affecting.wounds)
 					if(!wound.sleep_healing)
 						continue
 					wound.heal_wound(wound.sleep_healing * sleep_modifier)
+					adjust_nutrition(-0.5)
 			adjustToxLoss(-sleep_modifier)
 		if(eyesclosed && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			Sleeping(300)

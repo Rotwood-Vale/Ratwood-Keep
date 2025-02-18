@@ -70,6 +70,12 @@
 			healed_any = TRUE
 	return healed_any
 
+/mob/living/proc/clean_mob_wounds(var/sterilize = FALSE)
+	for(var/datum/wound/wound as anything in get_wounds())
+		if(wound.can_become_infected) //We aren't going to bother cleaning broken bones
+			wound.clean_infection(sterilize)
+
+
 /// Simple version for adding a wound - DO NOT CALL THIS ON CARBON MOBS!
 /mob/living/proc/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)
 	if(!wound || (status_flags & GODMODE) || !HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))

@@ -14,6 +14,7 @@
 	mob_overlay = "cut"
 	can_sew = TRUE
 	can_cauterize = TRUE
+	can_become_infected = TRUE
 
 /datum/wound/puncture/small
 	name = "small puncture"

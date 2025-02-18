@@ -185,6 +185,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		var/sounding = get_sound_effect(affected.owner, affected)
 		if(sounding)
 			playsound(affected.owner, sounding, 100, vary = FALSE)
+	RegisterSignal(affected.owner, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(clean_infection))
 	return TRUE
 
 /// Effects when a wound is gained on a bodypart
@@ -268,6 +269,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 /// Effects when this wound is removed from a given mob
 /datum/wound/proc/on_mob_loss(mob/living/affected)
+	UnregisterSignal(affected, COMSIG_COMPONENT_CLEAN_ACT)
 	if(mob_overlay)
 		affected.update_damage_overlays()
 	if(zombie_infection_timer)
@@ -382,8 +384,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 ///Called from the life() proc and responsible for handling non-werewolf, non-deadite wound infections
 /datum/wound/proc/process_infection()
 	if(infection_level > WOUND_INFECTION_INFECTED && owner != null)
-		owner.adjustToxLoss(0.5)
-		if(infection_level > WOUND_INFECTION_GANGRENOUS)
+		owner.adjustToxLoss(0.1)
+		if(infection_level > WOUND_INFECTION_GANGRENOUS && !bodypart_owner.rotted)
 			bodypart_owner.rotted = TRUE
 	infection_level =  clamp((infection_level + wound_cleanliness*0.1), 0, 300)
 	return
@@ -391,3 +393,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/treat_infection(var/treatment_effectiveness = 25)
 	infection_level = clamp((infection_level - treatment_effectiveness), 0, 300)
 	return
+
+/datum/wound/proc/clean_infection(var/sterilize = FALSE)
+	//This is mostly a helper, it's also useful if we need to do anything while cleaning. Like causing pain or something.
+	wound_cleanliness = sterilize ? WOUND_CLEANLINESS_STERILE : WOUND_CLEANLINESS_CLEAN
