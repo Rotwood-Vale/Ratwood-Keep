@@ -86,6 +86,7 @@
 	id = "sugar"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/sweet
 	effectedstats = list("fortune" = 1)
+	duration = 8 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/sweet
 	name = "Sweet embrace"
