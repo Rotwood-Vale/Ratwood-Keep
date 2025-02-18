@@ -251,9 +251,9 @@
 	sellprice = 26
 	craftdiff = 1
 
-/datum/crafting_recipe/roguetown/leather/heavy_leather_armor/belted
+/datum/crafting_recipe/roguetown/leather/heavy_leather_armor
 	name = "hardened leather armor"
-	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy/belted
+	result = /obj/item/clothing/suit/roguetown/armor/leather/heavy
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/reagent_containers/food/snacks/tallow = 1,

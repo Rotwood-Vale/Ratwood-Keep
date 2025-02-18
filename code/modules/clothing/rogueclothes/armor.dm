@@ -306,7 +306,7 @@
 	sellprice = 25
 	armor_class = ARMOR_CLASS_LIGHT
 
-/obj/item/clothing/suit/roguetown/armor/leather/heavy/belted
+/obj/item/clothing/suit/roguetown/armor/leather/heavy
 	name = "hardened leather armor"
 	desc = "A heavy steerhide jerkin with enough body to stand on its own. It forms a stiff, protective mantle \
 	for its wearer, shielding from blows and weather alike."

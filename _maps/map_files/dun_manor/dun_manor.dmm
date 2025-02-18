@@ -12101,8 +12101,8 @@
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/armor/leather/heavy,
 /obj/item/clothing/suit/roguetown/armor/leather/heavy,
-/obj/item/clothing/suit/roguetown/armor/leather/heavy/belted,
-/obj/item/clothing/suit/roguetown/armor/leather/heavy/belted,
+/obj/item/clothing/suit/roguetown/armor/leather/heavy,
+/obj/item/clothing/suit/roguetown/armor/leather/heavy,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
 "jVC" = (
