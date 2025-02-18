@@ -75,10 +75,10 @@
 		/datum/customizer/organ/tail/rat,
 		/datum/customizer/organ/snout/rat,
 		/datum/customizer/organ/ears/rat,
-		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/anthro,
+		/datum/customizer/organ/testicles/external,
+		/datum/customizer/organ/penis/rat,
 		/datum/customizer/organ/breasts/animal,
-		/datum/customizer/organ/vagina/anthro,
+		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,

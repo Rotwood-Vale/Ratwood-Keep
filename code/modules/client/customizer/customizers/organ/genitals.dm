@@ -87,6 +87,13 @@
 		/datum/customizer_choice/organ/penis/equine,
 		)
 
+/datum/customizer/organ/penis/rat
+	customizer_choices = list(
+		/datum/customizer_choice/organ/penis/human_anthro,
+		/datum/customizer_choice/organ/penis/tapered,
+		/datum/customizer_choice/organ/penis/knotted,
+		)
+
 /datum/customizer_choice/organ/penis/human
 	name = "Plain Penis"
 	organ_type = /obj/item/organ/penis
