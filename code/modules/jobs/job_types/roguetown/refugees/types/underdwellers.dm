@@ -40,6 +40,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
+			cloak = /obj/item/clothing/cloak/tribal
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 1)
@@ -67,6 +68,7 @@
 			beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			backl = /obj/item/storage/backpack/rogue/satchel
 			l_hand = /obj/item/ammo_holder/quiver/arrows
+			cloak = /obj/item/clothing/cloak/tribal
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 2) // 3 more statpoints than the others since they don't get dodge expert/anything too unique
 			H.change_stat("fortune", 2)
@@ -118,7 +120,7 @@
 			pants = /obj/item/clothing/under/roguetown/loincloth/brown
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
-			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown 
+			cloak = /obj/item/clothing/cloak/tribal
 			backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 1, /obj/item/rogueweapon/surgery/hemostat/improv = 1, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1)
 			H.change_stat("strength", -1)
 			H.change_stat("speed", 1)
