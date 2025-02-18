@@ -12,7 +12,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers
 	name = "bracers"
-	desc = ""
+	desc = "Steel bracers that protect the arms."
 	body_parts_covered = ARMS
 	icon_state = "bracers"
 	item_state = "bracers"
