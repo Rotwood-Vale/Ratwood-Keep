@@ -17,7 +17,7 @@
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = SHELFLIFE_DECENT
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 	bitesize = 4
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 /obj/item/reagent_containers/food/snacks/rogue/peppersteak/plated
@@ -43,7 +43,7 @@
 	warming = 5 MINUTES
 	bitesize = 5
 	rotprocess = SHELFLIFE_DECENT
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 /obj/item/reagent_containers/food/snacks/rogue/onionsteak/plated
 	icon_state = "onionsteak_plated"
@@ -68,7 +68,7 @@
 	warming = 3 MINUTES
 	bitesize = 5
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 /obj/item/reagent_containers/food/snacks/rogue/wienercabbage/plated
 	icon_state = "wienercabbage_plated"
 	item_state = "plate_food"
@@ -92,7 +92,7 @@
 	warming = 3 MINUTES
 	bitesize = 5
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotato/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(!experimental_inhand)
@@ -143,7 +143,7 @@
 	warming = 3 MINUTES
 	bitesize = 5
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 /obj/item/reagent_containers/food/snacks/rogue/wieneronions/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(!experimental_inhand)
@@ -195,7 +195,7 @@
 	warming = 3 MINUTES
 	bitesize = 6
 	rotprocess = SHELFLIFE_DECENT
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/greatmealbuff
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions/plated
 	icon_state = "wpotonion_plated"
 	item_state = "plate_food"
@@ -218,7 +218,7 @@
 	warming = 3 MINUTES
 	bitesize = 5
 	rotprocess = SHELFLIFE_DECENT
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 /obj/item/reagent_containers/food/snacks/rogue/frybirdtato/plated
 	icon_state = "frybirdtato_plated"
 	item_state = "plate_food"
@@ -239,7 +239,7 @@
 	desc = "Fried cackleberries on a bed of half-melted cheese, a dish from distant lands."
 	icon_state = "omelette"
 	bitesize = 6
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/greatmealbuff
 	rotprocess = SHELFLIFE_DECENT
 	foodtype = MEAT | DAIRY
 
@@ -345,7 +345,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced
 	desc = "A plump bird, roasted perfection, spiced to taste divine."
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 	name = "spiced bird-roast"
 	color = "#ffc0c0"
 	tastes = list("spicy birdmeat" = 1)
