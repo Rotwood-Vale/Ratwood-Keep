@@ -101,6 +101,7 @@
 	new /obj/item/natural/leyline(deathspot)
 	spill_embedded_objects()
 	update_icon()
+	qdel(src)
 
 /obj/effect/temp_visual/lycan
 	icon = 'icons/effects/effects.dmi'
