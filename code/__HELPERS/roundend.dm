@@ -276,8 +276,10 @@
 		for(var/x in GLOB.confessors)
 			shit += "[x]"
 	// REDMOON ADD START
-	// family_changes - вывод статистики в конце раунда о количестве семей
-	shit += "<br><font color='#22833f'><span class='bold'>Rockhill had <b>[SSfamily.families.len]</b> families.</span></font>" // делится на 2, т.к. по 1 зачислятеся за каждое новое отношение
+	//  вывод статистики в конце раунда о количестве семей и осквернённых Баотой
+	shit += "<br><font color='#115726'><span class='bold'>Tried to form up a familty: </span></font> [length(SSfamily.family_candidates)]"
+	shit += "<br><font color='#22833f'><span class='bold'>Families were in Rockhill:</span></font> [SSfamily.families.len]" // family_changes
+	shit += "<br><font color='#a1489d'><span class='bold'>Corrputed by Baotha:</span></font> [SSticker.violated_by_baotha.len]" // baotha_steals_triumphs
 	// start_reports_with_gender_lists - вывод статистики в конце раунда о половой принадлежности
 	var/count_of_joined_characters = males + females + males_with_vagina + females_with_penis
 	var/percent_of_males = PERCENT(males/count_of_joined_characters)

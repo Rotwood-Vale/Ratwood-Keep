@@ -67,7 +67,7 @@
 				target.visible_message(span_lovebold("[target] кончает в рот [user]!"))
 			else
 				target.visible_message(span_lovebold("[target] cums into [user]'s mouth!"))
-			target.sexcon.cum_into()
+			target.sexcon.cum_into(oral = TRUE, target_mob = user) // REDMOON EDIT - baotha_steals_triumphs - добавлены параметры, для правильного просчёта кого корраптят 
 
 /datum/sex_action/blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()

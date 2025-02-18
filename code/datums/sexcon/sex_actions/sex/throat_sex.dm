@@ -45,7 +45,7 @@
 			user.visible_message(span_lovebold("[user] кончает в глотку [target]!"))
 		else
 			user.visible_message(span_lovebold("[user] cums into [target]'s throat!"))
-		user.sexcon.cum_into()
+		user.sexcon.cum_into(oral = TRUE) // REDMOON EDIT - корректная проверка
 		user.virginity = FALSE
 
 	if(user.sexcon.considered_limp())
