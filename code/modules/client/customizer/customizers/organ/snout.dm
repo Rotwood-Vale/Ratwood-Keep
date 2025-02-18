@@ -245,3 +245,21 @@
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
 		)
+
+/datum/customizer/organ/snout/rat
+	customizer_choices = list(/datum/customizer_choice/organ/snout/rat)
+
+/datum/customizer_choice/organ/snout/rat
+	name = "Rat Snout"
+	organ_type = /obj/item/organ/snout/rat
+	sprite_accessories = list(
+	    /datum/sprite_accessory/snout/rodent,
+		/datum/sprite_accessory/snout/lcanid,
+		/datum/sprite_accessory/snout/lcanidalt,
+		/datum/sprite_accessory/snout/lcanidstriped,
+		/datum/sprite_accessory/snout/lcanidstripedalt,
+		/datum/sprite_accessory/snout/scanid,
+		/datum/sprite_accessory/snout/scanidalt,
+		/datum/sprite_accessory/snout/scanidalt2,
+		/datum/sprite_accessory/snout/scanidalt3,
+		)

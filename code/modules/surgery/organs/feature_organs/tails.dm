@@ -74,3 +74,8 @@
 	accessory_type =  /datum/sprite_accessory/tail/lizard/kobold
 	icon_state = "koboldtail"
 	can_penetrate = TRUE
+
+/obj/item/organ/tail/rat
+	name = "rat tail"
+	accessory_type =  /datum/sprite_accessory/tail/shark
+	can_penetrate = TRUE

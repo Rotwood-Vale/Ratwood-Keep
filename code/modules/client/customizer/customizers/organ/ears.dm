@@ -185,3 +185,15 @@
 		/datum/sprite_accessory/ears/big/acrador_short,
 		/datum/sprite_accessory/ears/lynx,
 		)
+
+/datum/customizer/organ/ears/rat
+	customizer_choices = list(/datum/customizer_choice/organ/ears/rat)
+
+/datum/customizer_choice/organ/ears/rat
+	name = "rat Ears"
+	organ_type = /obj/item/organ/ears/rat
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/murid,
+		/datum/sprite_accessory/ears/mouse,
+	)

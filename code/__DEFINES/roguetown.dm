@@ -21,6 +21,7 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/rat,\
 )
 
 #define RACES_RESPECTED \
@@ -45,7 +46,8 @@
 	/datum/species/elf/dark,\
 	/datum/species/tieberian,\
 	/datum/species/anthromorphsmall,\
-	/datum/species/kobold
+	/datum/species/kobold,\
+	/datum/species/rat
 
 #define RACES_VERY_SHUNNED \
 	/datum/species/halforc
@@ -95,6 +97,7 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/rat,\
 )
 
 #define CLOTHED_RACES_TYPES list(\
@@ -119,6 +122,7 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/rat,\
 )
 // Non-dwarf non-kobold non-goblin mostly
 #define NON_DWARVEN_RACE_TYPES list(\

@@ -103,6 +103,7 @@ GLOBAL_LIST_INIT(areas_in_town, typecacheof(list(
 #define istabaxi(A) (is_species(A, /datum/species/tabaxi))
 #define isvulpkanin(A) (is_species(A, /datum/species/vulpkanin))
 #define ismoth(A) (is_species(A, /datum/species/moth))
+#define israt(A) (is_species(A, /datum/species/rat))
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))
