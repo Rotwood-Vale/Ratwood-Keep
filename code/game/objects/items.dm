@@ -205,7 +205,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/list/examine_effects = list()
 
 	///played when an item that is equipped blocks a hit
-	var/list/blocksound 
+	var/list/blocksound
 
 	// played when item is placed on hip_r or hip_l, the belt side slots
 	var/sheathe_sound
@@ -224,6 +224,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	/// Number of torn sleves, important for salvaging calculations and examine text
 	var/torn_sleeve_number = 0
+	var/enchanted = FALSE
 
 /obj/item/Initialize()
 	. = ..()
@@ -350,7 +351,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(sharpness) //give sharp objects butchering functionality, for consistency
 		AddComponent(/datum/component/butchering, 80 * toolspeed)
 
-	if(max_blade_int) 
+	if(max_blade_int)
 		//set blade integrity to randomized 60% to 100% if not already set
 		if(!blade_int)
 			blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
@@ -630,6 +631,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		owner.visible_message(span_danger("[owner] blocks [attack_text] with [src]!"))
 		return 1
 	return 0
+
+/obj/item/proc/hit_response(mob/living/carbon/human/owner, mob/living/carbon/human/attacker)
+	SEND_SIGNAL(src, COMSIG_ITEM_HIT_RESPONSE, owner, attacker)		//sends signal for Magic_items. Used to call enchantments effects for worn items
+
 
 /obj/item/proc/talk_into(mob/M, input, channel, spans, datum/language/language)
 	return ITALICS | REDUCE_RANGE

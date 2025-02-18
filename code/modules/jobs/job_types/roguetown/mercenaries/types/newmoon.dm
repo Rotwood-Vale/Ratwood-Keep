@@ -30,6 +30,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
 	beltr = /obj/item/storage/keyring/mercenary
 	beltl = /obj/item/rogueweapon/huntingknife/idagger
+	backpack_contents = list(/obj/item/book/granter/spellbook/horrible = 1)
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/sword/sabre_freeze
 	wrists = /obj/item/clothing/neck/roguetown/psicross/noc
@@ -50,20 +51,19 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-		H.mind.adjust_spellpoints(4)
+		H.mind.adjust_spellpoints(1)
 		if(H.age == AGE_OLD)
-			head = /obj/item/clothing/head/roguetown/wizhat/gen
 			H.change_stat("intelligence", 4)
 			H.change_stat("strength", -2)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", -2)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 2)
 		H.mind.AddSpell(new SPELL_LEARNSPELL)
+		H.mind.AddSpell(new SPELL_SUMMON_WEAPON)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
