@@ -262,6 +262,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 	bundletype = /obj/item/natural/bundle/plank
 	smeltresult = /obj/item/ash
+	metalizer_result = /obj/item/rogueore/tin
+
 /obj/item/natural/wood/plank/attack_right(mob/living/user)
 	if(user.get_active_held_item())
 		return

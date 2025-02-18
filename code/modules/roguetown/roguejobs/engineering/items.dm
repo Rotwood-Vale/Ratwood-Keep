@@ -73,6 +73,7 @@
 	name = "reliable wooden cog"
 	desc = "A cog imbued with a special essence, making it very reliable. Used in carts and machinery."
 	icon_state = "wcog2"
+	metalizer_result = /obj/item/ingot/gold
 	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(32, 196, 218, 200))
 	cart_capacity = 120
 	misfire_modification = 0
@@ -85,3 +86,23 @@
 	filters = filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(167, 17, 17, 200))
 	cart_capacity = 140
 	misfire_modification = 100
+
+// --------- PARTS -----------
+
+/obj/item/roguepart
+	name = "exemple part"
+	icon = 'icons/roguetown/items/misc.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/roguepart/drill_chassis
+	name = "drill chassis"
+	desc = "A complex chassis of some undone engineering project."
+	icon_state = "drillchassis"
+	smeltresult = /obj/item/ingot/bronze
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/roguepart/conjunction
+	name = "clockwork conjunction"
+	desc = "Trio of small processed cogs: a tin, a copper and, it seems, a bronze one, ready to be used in various designes."
+	icon_state = "cl_conjunction"
+	smeltresult = /obj/item/ingot/bronze
