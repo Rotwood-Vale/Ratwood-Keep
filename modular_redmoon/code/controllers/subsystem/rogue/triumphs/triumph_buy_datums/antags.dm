@@ -38,6 +38,14 @@
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
+/datum/triumph_buy/triumph
+	triumph_buy_id = "Antagcoin: 50 Triumphs"
+	desc = "Antagcoin: 50 Triumphs!"
+	triumph_cost = 50
+	category = TRIUMPH_CAT_ROUND_EFX
+	pre_round_only = FALSE
+	visible_on_active_menu = FALSE
+
 // We fire this on activate, also DAMN is this nasty
 /datum/triumph_buy/lich/on_activate(mob/living/carbon/human/H)
 	if(!usr)
@@ -63,6 +71,11 @@
 	if(!usr)
 		return
 	H.mind.special_items["Antagcoin: Revolution"] = /obj/item/antagcoin/revolution
+
+/datum/triumph_buy/triumph/on_activate(mob/living/carbon/human/H)
+	if(!usr)
+		return
+	H.mind.special_items["Antagcoin: 50 Triumphs"] = /obj/item/antagcoin/triumph
 
 /obj/item/antagcoin
 	name = "Flip Me"
@@ -115,5 +128,11 @@
 		return
 	var/mob/living/pre_antag = user
 	pre_antag.mind.add_antag_datum(antagcoin_role)
+	playsound(src, 'sound/ravein/small/hello_my_friend.ogg', 100, 1)
+	qdel(src)
+
+/obj/item/antagcoin/triumph/attack_right(mob/user)
+	var/mob/living/pre_antag = user
+	pre_antag.adjust_triumphs(50)
 	playsound(src, 'sound/ravein/small/hello_my_friend.ogg', 100, 1)
 	qdel(src)

@@ -17,8 +17,4 @@
 	var/input = input(src, "how much") as num
 	if(mob && input)
 		mob.adjust_triumphs(input)
-
-
-
-
-
+	send2irc("[src] повысил/понизил количество триумфов [mob] на [input].")
