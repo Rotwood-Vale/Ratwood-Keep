@@ -71,6 +71,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		reagents.flags = reagent_flags
 		to_chat(user, span_notice("You carefully press the cork back into the mouth of [src]."))
 		spillable = FALSE
+		GLOB.weather_act_upon_list -= src
 		if(!fancy)
 			desc = "A bottle with a cork."
 	else
@@ -80,6 +81,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		to_chat(user, span_notice("You thumb off the cork from [src]."))
 		desc = desc_uncorked
 		spillable = TRUE
+		GLOB.weather_act_upon_list |= src
 		if(!fancy)
 			desc = "An open bottle, hopefully a cork is close by."
 	update_icon()
