@@ -20,6 +20,27 @@
 	current_cycle++
 	. = ..()
 
+
+/datum/reagent/medicine/epinephrine // Applied on yield / submission if in soft crit.
+	name = "Epinehrine"
+	description = "Caps oxyloss at -10, heals brute and burn damage until the person is out of crit."
+	reagent_state = LIQUID
+	color = "#94d65a"
+	metabolization_rate = 0.1 * REAGENTS_METABOLISM 
+	overdose_threshold = INFINITY
+	taste_description = "submission"
+	/// What level of health this reagent can heal up to.
+	var/max_health_reachable = HEALTH_THRESHOLD_CRIT + 1
+	/// Clamps oxyloss to -10 to 0
+	var/max_oxyloss = 10
+
+/datum/reagent/medicine/epinephrine/on_mob_life(mob/living/carbon/M)
+	if(M.health < max_health_reachable)
+		M.heal_overall_damage(brute = 1, burn = 1)
+	if(M.getOxyLoss() > max_oxyloss)
+		M.setOxyLoss(max_oxyloss)
+	. = ..()
+
 /datum/reagent/medicine/salglu_solution
 	name = "Saline-Glucose Solution"
 	description = "Has a 33% chance per metabolism cycle to heal brute and burn damage. Can be used as a temporary blood substitute."
