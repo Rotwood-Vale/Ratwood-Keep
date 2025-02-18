@@ -24,6 +24,7 @@
 	/// Skill level required to have a base 25% chance to craft this recipe.
 	var/skill_level = 1
 	var/sellprice = 0
+	var/gainxp = TRUE
 	//crafting diff, every diff removes 25% chance to craft
 
 /datum/crafting_recipe/pin_removal

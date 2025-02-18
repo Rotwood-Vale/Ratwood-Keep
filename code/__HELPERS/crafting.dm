@@ -217,7 +217,7 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 							I.OnCrafted(user.dir, user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [result_name]!"), \
 										span_notice("I [R.verbage_simple] \a [result_name]!"))
-					if(user.mind && R.skillcraft)
+					if(user.mind && R.skillcraft && R.gainxp)	//gainxp should return true for most recipes.
 						if(isliving(user))
 							var/mob/living/L = user
 							var/amt2raise = L.STAINT * 2// its different over here
