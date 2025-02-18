@@ -168,8 +168,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NUDE_SLEEPER = span_warning("I can't fall asleep unless I'm nude and in bed."),
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
 	TRAIT_STUDENT = span_info("The scholar has taught me new skills!"),
-	TRAIT_DARKLING = span_info("I am a creature of the dark and am sensitive to the light. The hateful sun is especially harsh on my eyes, and I prefer to sleep during the dae.")
-
+	TRAIT_DARKLING = span_info("I am a creature of the dark and am sensitive to the light. The hateful sun is especially harsh on my eyes, and I prefer to sleep during the dae."),
+	TRAIT_BOG_TREKKING = "Expert in navigating these lands.",
 	TRAIT_DEATHBYSNUSNU = "With strong intent, I can shatter pelvises.", // Ham change
 	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
 ))
@@ -360,6 +360,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define INNATE_TRAIT "innate"
 
 // unique trait sources, still defines
+#define TRAIT_BOG_TREKKING "trekking"
 #define TRAIT_DARKVISION "darkvision"
 #define TRAIT_DARKVISION_BETTER "darkvisionbetter"
 #define CLONING_POD_TRAIT "cloning-pod"
