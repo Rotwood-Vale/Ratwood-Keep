@@ -27,10 +27,6 @@
 		to_chat(usr, "<span class='danger'> Speech is currently admin-disabled.</span>")
 		return
 
-	if(prefs.muted & MUTE_LOOC)
-		to_chat(src, "<span class='danger'>I cannot use LOOC (muted).</span>")
-		return
-
 	if(!mob)
 		return
 
@@ -54,23 +50,13 @@
 	mob.log_talk(msg, LOG_LOOC)
 
 	var/prefix = "LOOC"
-	var/list/mobs = list()
-	var/muted = prefs.muted
 	for(var/mob/M in range(7,src))
-		var/added_text
 		var/client/C = M.client
 		if(!M.client)
 			continue
-		mobs += C
-		if(C in GLOB.admins)
-			added_text += " ([mob.ckey]) <A href='?_src_=holder;[HrefToken()];mute=[ckey];mute_type=[MUTE_LOOC]'><font color='[(muted & MUTE_LOOC)?"red":"blue"]'>\[MUTE\]</font></a>"
 		if (isobserver(M))
 			continue //Also handled later.
 
 		if(C.prefs.chat_toggles & CHAT_OOC)
-			to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name][added_text]:</EM> <span class='message'>[msg]</span></b></font>")
-
-	for(var/client/C in GLOB.admins)
-		if(C in mobs)
-			continue
-		to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name] ([mob.ckey]) <A href='?_src_=holder;[HrefToken()];mute=[ckey];mute_type=[MUTE_LOOC]'><font color='[(muted & MUTE_LOOC)?"red":"blue"]'>MUTE</font></a>:</EM> <span class='message'>[msg]</span></b></font>")
+			to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></b></font>")
+	to_chat(usr, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></b></font>")
