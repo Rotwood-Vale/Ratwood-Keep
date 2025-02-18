@@ -358,6 +358,9 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 
 /proc/defense_report(var/obj/item/clothing/C, var/stupid, var/normal, var/smart, var/stupid_string)
 	var/list/str = list()
+	if(!istype(C, /obj/item/clothing))
+		str += "<br>---------------------------<br>"
+		return str
 	if(C.armor)
 		var/defense = "<u><b>ABSORPTION: </b></u><br>"
 		var/datum/armor/def_armor = C.armor
