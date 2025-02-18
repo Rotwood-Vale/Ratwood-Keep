@@ -95,6 +95,11 @@
 		/datum/body_marking/small/tiesmall,
 		/datum/body_marking/small/front,
 	)
+
+	languages = list(
+		/datum/language/common,
+		/datum/language/squeakish
+	)
 	stress_examine = TRUE
 	stress_desc = span_red("Filthy vermin...")
 	descriptor_choices = list(

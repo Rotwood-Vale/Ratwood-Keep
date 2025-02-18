@@ -1439,6 +1439,7 @@
 #include "code\modules\language\roguetown\lupian.dm"
 #include "code\modules\language\roguetown\orc.dm"
 #include "code\modules\language\roguetown\sandspeak.dm"
+#include "code\modules\language\roguetown\squeakish.dm"
 #include "code\modules\language\roguetown\undead.dm"
 #include "code\modules\library\book.dm"
 #include "code\modules\library\lib_items.dm"

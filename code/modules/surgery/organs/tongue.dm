@@ -20,7 +20,8 @@
 		/datum/language/draconic,
 		/datum/language/faexin,
 		/datum/language/canilunzt,
-		/datum/language/felid
+		/datum/language/felid,
+		/datum/language/squeakish
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
