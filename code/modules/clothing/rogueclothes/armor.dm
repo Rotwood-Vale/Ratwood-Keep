@@ -297,7 +297,7 @@
 	icon_state = "studleather"
 	item_state = "studleather"
 	blocksound = SOFTHIT
-	armor = list("blunt" = 80, "slash" = 60, "stab" = 40, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 80, "stab" = 60, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
 	nodismemsleeves = TRUE
 	body_parts_covered = CHEST|GROIN|VITALS
