@@ -114,7 +114,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/candybase
 	name = "candy base"
-	desc = ""
+	desc = "About to become something great. (Add apple or berries)"
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "candybase"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
@@ -151,15 +151,16 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/applecandy
 	name = "apple candy"
-	desc = ""
+	desc = "Sweet sweet candy, "
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "applecandy6"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 12)
-	w_class = WEIGHT_CLASS_NORMAL
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("sweet, tart apple candy" = 1)
 	foodtype = SUGAR
 	bitesize = 6
 	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/sweet
 
 
 /obj/item/reagent_containers/food/snacks/rogue/applecandy/On_Consume(mob/living/eater)
@@ -180,12 +181,13 @@
 	desc = ""
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "berrycandy6"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 12)
-	w_class = WEIGHT_CLASS_NORMAL
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("sweet, tart berry candy" = 1)
 	foodtype = SUGAR
 	bitesize = 6
 	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/rogue/berrycandy/On_Consume(mob/living/eater)
 	..()
@@ -207,9 +209,9 @@
 	icon_state = "spiderhoney"
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
-	w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("sweetness and spiderwebs" = 1)
-	eat_effect = null
+	eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = null
 
 
@@ -650,6 +652,7 @@
 	become_rot_type = null
 	rotprocess = null
 	sellprice = 60
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
 	name = "wedge of cheese"
@@ -678,6 +681,7 @@
 	become_rot_type = null
 	rotprocess = null
 	sellprice = 10
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
 	name = "slice of cheese"
