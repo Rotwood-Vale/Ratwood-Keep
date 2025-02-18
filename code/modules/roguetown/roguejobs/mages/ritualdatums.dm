@@ -347,6 +347,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 		animate(summoned, color = "#ff0000",time = 5)
 		summoned.move_resist = MOVE_FORCE_EXTREMELY_STRONG
 		summoned.binded = TRUE
+		summoned.SetParalyzed(900)
 		return summoned
 
 

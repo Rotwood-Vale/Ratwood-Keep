@@ -137,15 +137,6 @@ GLOBAL_LIST(teleport_runes)
 	. = ..()
 	if(set_keyword)
 		keyword = set_keyword
-/*	if(!LAZYLEN(GLOB.runeritualslist))
-		testing("initializing ritualslist")
-		GLOB.runeritualslist = list()
-		var/static/list/rituals = subtypesof(/datum/runerituals)
-		for(var/path in rituals)
-			var/datum/ritual/G = path
-			testing("now initializing: [path]")
-			testing("[G.name]")
-			GLOB.runeritualslist[G.name] = G*/
 
 /obj/effect/decal/cleanable/roguerune/proc/do_invoke_glow()
 	set waitfor = FALSE
@@ -162,6 +153,9 @@ GLOBAL_LIST(teleport_runes)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
 
 /obj/effect/decal/cleanable/roguerune/attack_hand(mob/living/user)
+	if(rune_in_use)
+		to_chat(user, span_notice("Someone is already using this rune."))
+		return
 	if(.)
 		return
 	if(!ritual_number )					//Only one option of ritual for this rune
@@ -209,6 +203,7 @@ GLOBAL_LIST(teleport_runes)
 			var/datum/runerituals/pickritual1
 			pickritual1 = rituals[ritualnameinput]
 			if(!pickritual1 || pickritual1 == null)
+				rune_in_use = FALSE
 				return
 			if(pickritual1.tier > src.tier)
 				to_chat(user, span_hierophant_warning("Your ritual rune is not strong enough to perform this ritual."))
@@ -221,6 +216,7 @@ GLOBAL_LIST(teleport_runes)
 
 
 /obj/effect/decal/cleanable/roguerune/proc/can_invoke(mob/living/user=null)
+	rune_in_use = TRUE
 	//This proc determines if the rune can be invoked at the time. If there are multiple required invokers, it will find all nearby invokers.
 	var/list/invokers = list() //people eligible to invoke the rune
 	if(user)
@@ -249,6 +245,7 @@ GLOBAL_LIST(teleport_runes)
 	return invokers
 
 /obj/effect/decal/cleanable/roguerune/proc/invoke(list/invokers, datum/runerituals/runeritual)		//Generic invoke proc. This will be defined on every rune, along with effects.If you want to make an object, or provide a buff, do so through this proc., have both here.
+	rune_in_use = FALSE
 	atoms_in_range = list()
 	for(var/atom/close_atom as anything in range(runesize, src))
 		if(!ismovable(close_atom))
@@ -762,6 +759,7 @@ GLOBAL_LIST(teleport_runes)
 		summoned_mob.candodge = TRUE
 		summoned_mob.binded = FALSE
 		summoned_mob.move_resist = MOVE_RESIST_DEFAULT
+		summoned_mob.SetParalyzed(0)
 		summoned_mob = null
 		summoning = FALSE
 	.=..()
@@ -778,6 +776,7 @@ GLOBAL_LIST(teleport_runes)
 		summoned_mob.candodge = TRUE
 		summoned_mob.binded = FALSE
 		summoned_mob.move_resist = MOVE_RESIST_DEFAULT
+		summoned_mob.SetParalyzed(0)
 		summoned_mob = null
 		summoning = FALSE
 		return

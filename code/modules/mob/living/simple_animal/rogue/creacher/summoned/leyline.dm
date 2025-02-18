@@ -112,6 +112,8 @@
 	var/turf/turf_target = get_step(get_step(get_turf(target), src.dir), src.dir)
 	if(!(turf_target in view(12, src)))
 		return
+	if(!isopenturf(turf_target))
+		return
 	teleport_cooldown = world.time + 70
 	var/turf/source = get_turf(src)
 	new /obj/effect/temp_visual/lycan(turf_target, src)
