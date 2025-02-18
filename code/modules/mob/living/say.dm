@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(listener_ceiling)
 			if(istransparentturf(listener_ceiling))
 				listener_has_ceiling = FALSE
-		if(!Zs_too && !isobserver(AM))
+		if((!Zs_too && !isobserver(AM)) || message_mode == MODE_WHISPER)
 			if(AM.z != src.z)
 				continue
 		if(Zs_too && AM.z != src.z && !Zs_all)
