@@ -87,6 +87,9 @@
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 
+#define TRAIT_DEATHBYSNUSNU "Bed Breaker" // double sex damage (requires strong intent)
+#define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
+
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
 #define TRAIT_ATHEISM_CURSE "Curse of Atheism"
@@ -167,6 +170,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_STUDENT = span_info("The scholar has taught me new skills!"),
 	TRAIT_DARKLING = span_info("I am a creature of the dark and am sensitive to the light. The hateful sun is especially harsh on my eyes, and I prefer to sleep during the dae."),
 	TRAIT_BOG_TREKKING = "Expert in navigating these lands."
+	TRAIT_DEATHBYSNUSNU = "With strong intent, I can shatter pelvises.", // Ham change
+	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
 ))
 
 // trait accessor defines
@@ -315,6 +320,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BLOODLOSS_IMMUNE "bloodloss_immune" // can bleed, but will never die from blood loss
 #define TRAIT_ZOMBIE_IMMUNE "zombie_immune" //immune to zombie infection
 #define TRAIT_NO_BITE "no_bite" //prevents biting
+#define TRAIT_NO_BLOOD "no_blood" // Cannot bleed or have blood
 
 //bodypart traits
 #define TRAIT_PARALYSIS	"paralysis" //Used for limb-based paralysis and full body paralysis
