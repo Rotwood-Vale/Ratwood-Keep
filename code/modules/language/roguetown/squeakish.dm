@@ -1,6 +1,6 @@
 /datum/language/squeakish
 	name = "Squeakish"
-	desc = "Squeakish, is the chittering and hasty language of the Skaven. Skaven dialogue is often littered with a hodgepodge of rapid squeaks and trills. Squeakish words are short, clipped, and often repeated several times in a row in an effort to add emphasis to statements. Due to the speed with which Squeakish is spoken, long sentences are often broken up into several fragments."
+	desc = "Squeakish, is the chittering and hasty language of the Raukkis. Raukkis dialogue is often littered with a hodgepodge of rapid squeaks and trills. Squeakish words are short, clipped, and often repeated several times in a row in an effort to add emphasis to statements. Due to the speed with which Squeakish is spoken, long sentences are often broken up into several fragments."
 	speech_verb = "squeaks"
 	ask_verb = "trills"
 	exclaim_verb = "chitters"

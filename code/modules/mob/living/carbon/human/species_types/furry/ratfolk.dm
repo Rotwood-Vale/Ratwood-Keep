@@ -2,7 +2,7 @@
 	race = /datum/species/rat
 
 /datum/species/rat
-	name = "Rat" // to be changed
+	name = "Raukkis"
 	id = "rat"
 	desc = "" // to be added
 	default_color = "444"
@@ -101,7 +101,7 @@
 		/datum/language/squeakish
 	)
 	stress_examine = TRUE
-	stress_desc = span_red("Filthy vermin...")
+	stress_desc = span_red("Filthy vermin... I should watch my pockets..")
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,
 		/datum/descriptor_choice/body,
