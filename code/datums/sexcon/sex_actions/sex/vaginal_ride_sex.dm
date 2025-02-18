@@ -74,7 +74,7 @@
 			target.visible_message(span_lovebold("[target] кончает в вагину [user]!"))
 		else
 			target.visible_message(span_lovebold("[target] cums into [user]'s cunt!"))
-		target.sexcon.cum_into()
+		target.sexcon.cum_into(target_mob = user) // REDMOON EDIT - baotha_steals_triumphs - добавлены параметры, для правильного просчёта кого корраптят 
 		target.try_impregnate(user)
 		target.virginity = FALSE
 		user.virginity = FALSE

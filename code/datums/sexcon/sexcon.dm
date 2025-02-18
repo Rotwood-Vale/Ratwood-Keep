@@ -193,12 +193,18 @@
 	add_cum_floor(get_turf(target))
 	after_ejaculation()
 
-/datum/sex_controller/proc/cum_into(oral = FALSE)
+/datum/sex_controller/proc/cum_into(oral = FALSE, mob/living/target_mob = null) // REDMOON EDIT - baotha_steals_triumphs - добавлен target_mob для правильного просчёта, кого корраптят
+	if(target_mob) // REDMOON ADD - baotha_steals_triumphs - для правильного просчёта, кого корраптят
+		target = target_mob // REDMOON ADD
 	log_combat(user, target, "Came inside the target")
 	if(oral)
 		playsound(target, pick(list('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg')), 100, FALSE, ignore_walls = FALSE)
 	else
 		playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
+	if(user.patron.type == /datum/patron/inhumen/baotha) // REDMOON ADD START - baotha_steals_triumphs
+		baotha_process(user, target) // Баотит даёт
+	else
+		baotha_process(target, user) // REDMOON ADD END - баотит принимает
 	after_ejaculation()
 	if(!oral)
 		after_intimate_climax()
@@ -220,7 +226,12 @@
 /datum/sex_controller/proc/after_ejaculation()
 	user.add_stress(/datum/stressevent/cumok)
 	set_arousal(40)
-	adjust_charge(-CHARGE_FOR_CLIMAX)
+	if(user.patron) // REDMOON ADD START - Эора и Баота позволяют своему юзверю быть очень выносливым
+		if(user.patron.type != /datum/patron/inhumen/baotha || user.patron.type != /datum/patron/divine/eora)
+			if(prob(10))
+				to_chat(user, span_love((user.client.prefs.be_russian ? "Мой бог... Даёт мне сил продолжать! Славься!" : "My god... Grants me power to continue! Praise!")))
+		else // REDMOON ADD END
+			adjust_charge(-CHARGE_FOR_CLIMAX)
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
@@ -244,13 +255,13 @@
 	if(HAS_TRAIT(target, TRAIT_GOODLOVER))
 		if(!user.mob_timers["cumtri"])
 			user.mob_timers["cumtri"] = world.time
-			user.adjust_triumphs(1)
+//			user.adjust_triumphs(1)
 			to_chat(user, span_love("Our loving is a true TRIUMPH!"))
 			user.add_stress(/datum/stressevent/cumgood)
 	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
 		if(!target.mob_timers["cumtri"])
 			target.mob_timers["cumtri"] = world.time
-			target.adjust_triumphs(1)
+//			target.adjust_triumphs(1)
 			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
 			user.add_stress(/datum/stressevent/cumgood)
 
@@ -606,6 +617,7 @@
 	desire_stop = FALSE
 	user.doing = FALSE
 	current_action = null
+	actions_made = 0 // REDMOON ADD - baotha_steals_triumphs
 
 /datum/sex_controller/proc/try_start_action(action_type)
 	if(action_type == current_action)
@@ -650,6 +662,9 @@
 		if(desire_stop)
 			break
 		action.on_perform(user, target)
+		actions_made++ // REDMOON ADD - baotha_steals_triumphs
+		if(target.sexcon) // REDMOON ADD - baotha_steals_triumphs
+			target.sexcon.actions_made++ // REDMOON ADD - baotha_steals_triumphs
 		// It could want to finish afterwards the performed action
 		if(action.is_finished(user, target))
 			break

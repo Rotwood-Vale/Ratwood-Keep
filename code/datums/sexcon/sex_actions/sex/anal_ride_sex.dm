@@ -69,7 +69,7 @@
 			target.visible_message(span_lovebold("[target] кончает в задницу [user]!"))
 		else
 			target.visible_message(span_lovebold("[target] cums into [user]'s butt!"))
-		target.sexcon.cum_into()
+		target.sexcon.cum_into(target_mob = user) // REDMOON EDIT - baotha_steals_triumphs - добавлены параметры, для правильного просчёта кого корраптят 
 		target.virginity = FALSE
 
 /datum/sex_action/anal_ride_sex/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)

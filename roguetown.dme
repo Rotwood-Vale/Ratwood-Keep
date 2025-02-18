@@ -2191,6 +2191,7 @@
 #include "modular_redmoon\code\modules\surgery\organs\organ_dna.dm\_organ_dna.dm"
 #include "modular_redmoon\code\modules\tgs\roundspoke.dm"
 #include "modular_redmoon\modules\acolytes_can_coronate\acolytes_can_coronate.dm"
+#include "modular_redmoon\modules\baotha_steals_triumphs\baotha_steals_triumphs.dm"
 #include "modular_redmoon\modules\client\preferences.dm"
 #include "modular_redmoon\modules\client\preferences_savefile.dm"
 #include "modular_redmoon\modules\cloak_hoods_fix\cloak_hoods_fix.dm"
