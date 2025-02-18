@@ -374,3 +374,20 @@
 	produce_time = 2 MINUTES
 	weed_immune = TRUE
 	can_grow_underground = TRUE
+
+/datum/plant_def/fyritiusflower
+	name = "fyritius flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "fyritius"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
+	produce_amount_min = 1
+	produce_amount_max = 3
+
+/datum/plant_def/poppy
+	name = "poppies"
+	icon_state = "poppy"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/poppy
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 30
+	water_drain_rate = 1 / (2 MINUTES)

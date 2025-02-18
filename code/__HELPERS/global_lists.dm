@@ -30,6 +30,10 @@
 
 	init_subtypes(/datum/artificer_recipe, GLOB.artificer_recipes)
 
+	init_subtypes(/datum/alch_grind_recipe, GLOB.alch_grind_recipes)
+
+	init_subtypes(/datum/alch_cauldron_recipe,GLOB.alch_cauldron_recipes)
+
 	for(var/i in 0 to 20)
 		GLOB.mouseicons_human += file("icons/effects/mousemice/swang/[i * 5].dmi")
 

@@ -305,7 +305,8 @@
 	var/static/list/bush_options = list(
         /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 5,
         /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison = 3,
-        /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1
+        /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1
     )
 
 
