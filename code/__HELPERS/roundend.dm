@@ -260,12 +260,6 @@
 	shit += "<br><font color='#36959c'><span class='bold'>TRIUMPH(s) Awarded:</span></font> [tri_gained]"
 	shit += "<br><font color='#a02fa4'><span class='bold'>TRIUMPH(s) Stolen:</span></font> [tri_lost * -1]"
 	shit += "<br><font color='#ffd4fd'><span class='bold'>Pleasures:</span></font> [cums]"
-	if(GLOB.cuckolds.len)
-		shit += "<br><font color='#a02fa4'><span class='bold'>Cuckolds were:</span></font> "
-		for(var/i in 1 to GLOB.cuckolds.len)
-			shit += GLOB.cuckolds[i]
-			if(i != GLOB.cuckolds.len)
-				shit += ","
 	if(GLOB.confessors.len)
 		shit += "<br><font color='#93cac7'><span class='bold'>The Damned:</span></font> "
 		for(var/x in GLOB.confessors)

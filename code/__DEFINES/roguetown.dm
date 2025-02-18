@@ -290,12 +290,19 @@ GLOBAL_LIST_INIT(lockhashes, list())
 GLOBAL_LIST_INIT(lockids, list())
 GLOBAL_LIST_EMPTY(credits_icons)
 GLOBAL_LIST_EMPTY(confessors)
-GLOBAL_LIST_EMPTY(cuckolds)
 
 //preference stuff
-#define FAMILY_NONE 0
-#define FAMILY_FULL 1
-#define FAMILY_PARTIAL 2
+#define FAMILY_NONE "None"
+#define FAMILY_PARTIAL "Siblings"
+#define FAMILY_NEWLYWED "Newlywed"
+#define FAMILY_FULL "Parent"
+
+#define FAMILY_FATHER "Father"
+#define FAMILY_MOTHER "Mother"
+#define FAMILY_PROGENY "Progeny"
+#define FAMILY_ADOPTED "Adoptive Progeny"
+#define FAMILY_OMMER "Parents Sibling"
+#define FAMILY_INLAW "In Law"
 
 
 GLOBAL_LIST_EMPTY(head_bounties)

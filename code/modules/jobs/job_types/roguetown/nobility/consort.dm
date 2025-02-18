@@ -19,9 +19,6 @@
 	min_pq = 0
 	max_pq = null
 
-	family_blacklisted = TRUE
-	ruler_family = TRUE
-	lord_rel_type = REL_TYPE_SPOUSE
 
 // Prevent same sex ruler-consorts
 /datum/job/roguetown/consort/special_job_check(mob/dead/new_player/player)
@@ -44,6 +41,15 @@
 	spawn_positions = 0
 	display_order = JDO_LADY
 	give_bank_account = TRUE
+
+/datum/job/roguetown/consort/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(H.gender == FEMALE)
+			SSfamilytree.AddRoyal(H, FAMILY_MOTHER)
+		else
+			SSfamilytree.AddRoyal(H, FAMILY_FATHER)
 
 /datum/job/roguetown/consort/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()

@@ -31,8 +31,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	give_bank_account = 1000
 	required = TRUE
 
-	family_blacklisted = TRUE
-	ruler_family = TRUE
 
 /datum/job/roguetown/exlord //just used to change the lords title
 	title = "Duke Emeritus"
@@ -57,9 +55,11 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			GLOB.lordsurname = "of [L.real_name]"
 		SSticker.rulermob = L
 		if(L.gender != FEMALE)
+			SSfamilytree.AddRoyal(L, FAMILY_MOTHER)
 			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Duke of Rockhill.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 		else
+			SSfamilytree.AddRoyal(L, FAMILY_FATHER)
 			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Duchess of Rockhill.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 		var/mob/living/carbon/human/H = L
@@ -187,6 +187,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	else
 		family_guy.fully_replace_character_name(family_guy.real_name, family_guy.real_name + " " + GLOB.lordsurname)
 	return family_guy.real_name
+
 
 /obj/effect/proc_holder/spell/self/grant_title
 	name = "Grant Title"
