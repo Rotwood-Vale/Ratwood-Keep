@@ -65,5 +65,4 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.change_stat("strength", 2)
 			H.change_stat("perception", 1)
-	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

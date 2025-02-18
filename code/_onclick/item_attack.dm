@@ -498,7 +498,32 @@
 		else
 			return CLAMP(w_class * 6, 10, 100) // Multiply the item's weight class by 6, then clamp the value between 10 and 100
 
+proc/get_attack_flavor_text(mob/user, obj/item/I) // Arguments very important. The name comes from the fact that if you don't add the right arguments, then arguments break out between you and your screen. You start screaming, "WHY DOESN'T IT WOOOOORK?!!!".
+	if(!I) // If no item, return blank.
+		return ""
+
+	var/datum/skill/associated_skill = I.associated_skill // Yes, this grabs the delicious associated skill of the item we're using.
+	if(!associated_skill) // If we're using an item without a skill attached to it, we get nada.
+		return ""
+
+	if(!user.mind) // If we're a dumb mob without a player attached, we're definitely not utilizing the skill system. So don't just spam them with incompetently and inexpertly... It's not a very good look... (It's also a runtime safeguard)
+		return ""
+
+	var/skill_level = user.mind.get_skill_level(associated_skill) // Need this so we can actually grab skill levels of peoples
+	switch(skill_level) // Depending on our skill level
+		if(SKILL_LEVEL_NONE)	   return "incompetently "
+		if(SKILL_LEVEL_NOVICE)     return "inexpertly "
+		if(SKILL_LEVEL_APPRENTICE) return "amateurishly "
+		if(SKILL_LEVEL_JOURNEYMAN) return "competently "
+		if(SKILL_LEVEL_EXPERT)     return "adeptly "
+		if(SKILL_LEVEL_MASTER)     return "expertly "
+		if(SKILL_LEVEL_LEGENDARY)  return "masterfully "
+	return ""
+
 /mob/living/proc/send_item_attack_message(obj/item/I, mob/living/user, hit_area)
+	if(!I)
+		return 0
+	var/flavor_text = get_attack_flavor_text(user, I)
 	var/message_verb = "attacked"
 	if(user.used_intent)
 		message_verb = "[pick(user.used_intent.attack_verb)]"
@@ -510,8 +535,8 @@
 	var/attack_message = "[src] is [message_verb][message_hit_area] with [I]!"
 	var/attack_message_local = "I'm [message_verb][message_hit_area] with [I]!"
 	if(user in viewers(src, null))
-		attack_message = "[user] [message_verb] [src][message_hit_area] with [I]!"
-		attack_message_local = "[user] [message_verb] me[message_hit_area] with [I]!"
+		attack_message = "[user] [flavor_text][message_verb] [src][message_hit_area] with [I]!" // Delicious flavor texting area.
+		attack_message_local = "[user] [flavor_text][message_verb] me[message_hit_area] with [I]!" // Delicious flavor texting area.
 	visible_message(span_danger("[attack_message][next_attack_msg.Join()]"),\
 		span_danger("[attack_message_local][next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 	next_attack_msg.Cut()
