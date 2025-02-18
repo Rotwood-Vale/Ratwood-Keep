@@ -37,7 +37,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)	//Bandit mage. You failed out of mage school/didn't finish your apprenticeship, you get no learning skill boyo
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 		if(H.age == AGE_OLD)
 			head = /obj/item/clothing/head/roguetown/wizhat/gen
@@ -48,7 +48,7 @@
 			H.change_stat("perception", 1)
 			H.mind.adjust_spellpoints(1)
 		H.change_stat("strength", 2)
-		H.change_stat("intelligence", 1)
+		H.change_stat("intelligence", 2)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed",1)
 		H.mind.adjust_spellpoints(4)

@@ -101,12 +101,6 @@
 	aggressive = 1
 	summon_primer = "You are an imp, a small creature spending it's time in the infernal plane amusing itself and eating meat. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 	tier = 1
-//	stat_attack = UNCONSCIOUS
-
-	///this mob was updated to new ai
-//	AIStatus = AI_OFF
-//	can_have_ai = FALSE
-//	ai_controller = /datum/ai_controller/imp
 
 /obj/projectile/magic/firebolt
 	name = "ball of fire"
