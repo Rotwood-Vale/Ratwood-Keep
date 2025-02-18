@@ -5,6 +5,8 @@
 	desc = ""
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicebag"
+	grid_height = 64
+	grid_width = 32
 	var/last_shake_time
 	var/list/special_die = list(
 				/obj/item/dice/d1,
