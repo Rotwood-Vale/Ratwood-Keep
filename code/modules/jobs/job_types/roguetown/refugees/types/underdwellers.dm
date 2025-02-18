@@ -68,7 +68,7 @@
 			beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			backl = /obj/item/storage/backpack/rogue/satchel
 			l_hand = /obj/item/ammo_holder/quiver/arrows
-			cloak = /obj/item/clothing/cloak/tribal
+			cloak = /obj/item/clothing/cloak/volfmantle
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 2) // 3 more statpoints than the others since they don't get dodge expert/anything too unique
 			H.change_stat("fortune", 2)
