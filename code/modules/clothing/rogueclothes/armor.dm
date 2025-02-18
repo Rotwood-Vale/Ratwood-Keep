@@ -271,7 +271,7 @@
 	icon_state = "roguearmor"
 //	color = "#514339"
 	body_parts_covered = CHEST|GROIN|VITALS
-	armor = list("blunt" = 60, "slash" = 50, "stab" = 30, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 50, "stab" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -297,7 +297,7 @@
 	icon_state = "studleather"
 	item_state = "studleather"
 	blocksound = SOFTHIT
-	armor = list("blunt" = 80, "slash" = 80, "stab" = 60, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 70, "stab" = 60, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
 	nodismemsleeves = TRUE
 	body_parts_covered = CHEST|GROIN|VITALS
@@ -312,7 +312,7 @@
 	for its wearer, shielding from blows and weather alike."
 	icon_state = "roguearmor_belt"
 	item_state = "roguearmor_belt"
-	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 100, "slash" = 60, "stab" = 50, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
 	max_integrity = 300
 	sellprice = 25
@@ -323,7 +323,7 @@
 	icon_state = "roguearmor_coat"
 	item_state = "roguearmor_coat"
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS
-	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 100, "slash" = 60, "stab" = 50, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
 	max_integrity = 300
 	sellprice = 25
