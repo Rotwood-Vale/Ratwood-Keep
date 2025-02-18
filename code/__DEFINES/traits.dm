@@ -87,6 +87,9 @@
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 
+#define TRAIT_DEATHBYSNUSNU "Bed Breaker" // double sex damage (requires strong intent)
+#define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
+
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
 #define TRAIT_ATHEISM_CURSE "Curse of Atheism"
@@ -166,6 +169,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_TINY = span_info("I am tiny in size and quite fragile!"),
 	TRAIT_STUDENT = span_info("The scholar has taught me new skills!"),
 	TRAIT_DARKLING = span_info("I am a creature of the dark and am sensitive to the light. The hateful sun is especially harsh on my eyes, and I prefer to sleep during the dae.")
+
+	TRAIT_DEATHBYSNUSNU = "With strong intent, I can shatter pelvises.", // Ham change
+	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
 ))
 
 // trait accessor defines
