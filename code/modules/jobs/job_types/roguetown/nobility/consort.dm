@@ -11,7 +11,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	tutorial = "Picked out of your political value rather than likely any form of love, you have become the Ruler's most trusted confidant and likely friend throughout your marriage. Your loyalty and, perhaps, love; will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat."
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant)
+	spells = list(SPELL_CONVERT_ROLE_SERVANT)
 	outfit = /datum/outfit/job/roguetown/consort
 
 	display_order = JDO_LADY
@@ -49,6 +49,19 @@
 	. = ..()
 	if(GLOB.lordsurname && H)
 		give_lord_surname(H, preserve_original = TRUE)
+	if(ishuman(H))
+		var/index = findtext(H.real_name, " ")
+		if(index)
+			index = copytext(H.real_name, 1,index)
+		if(!index)
+			index = H.real_name
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/honorary = "Duke"
+		if(H.gender == FEMALE)
+			honorary = "Duchess"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 
 /datum/outfit/job/roguetown/consort/pre_equip(mob/living/carbon/human/H)
 	. = ..()

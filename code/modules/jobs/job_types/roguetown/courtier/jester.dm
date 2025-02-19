@@ -14,7 +14,7 @@
 		and someday you'll find yourself at the end of something sharper than you."
 
 	allowed_ages = ALL_AGES_LIST
-	spells = list(/obj/effect/proc_holder/spell/self/telljoke,/obj/effect/proc_holder/spell/self/telltragedy)
+	spells = list(SPELL_TELLJOKE,SPELL_TELLTRAGEDY)
 	outfit = /datum/outfit/job/roguetown/jester
 	display_order = JDO_JESTER
 	give_bank_account = TRUE
@@ -28,7 +28,7 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/jester
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/servant
-	beltl = /obj/item/storage/belt/rogue/pouch
+	beltl = /obj/item/ammo_holder/bomb/smokebombs
 	head = /obj/item/clothing/head/roguetown/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
 	//Desc says grenzelhoft has great jesters so 50% change to raceswap because slop lore
@@ -48,12 +48,12 @@
 			H.STAINT = clamp(roll("4d6-4"), 1, 20)
 			H.STALUC = clamp(roll("4d6-4"), 1, 20)
 		else if(isseelie(H))
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/seelie_dust)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summon_rat)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/strip)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/splash)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/roustame)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/animate_object)
+			H.mind.AddSpell(new SPELL_SEELIE_DUST)
+			H.mind.AddSpell(new SPELL_SUMMON_RAT)
+			H.mind.AddSpell(new SPELL_STRIP)
+			H.mind.AddSpell(new SPELL_SPLASH)
+			H.mind.AddSpell(new SPELL_ROUSTAME)
+			H.mind.AddSpell(new SPELL_ANIMATE_OBJECT)
 		H.cmode_music = 'sound/music/combat_jester.ogg'
 	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
 	H.verbs |= /mob/living/carbon/human/proc/ear_trick
@@ -61,4 +61,3 @@
 	ADD_TRAIT(H, TRAIT_LEAPER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
-

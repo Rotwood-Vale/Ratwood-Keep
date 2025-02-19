@@ -118,6 +118,7 @@
 	W.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
+	W.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 
 	if(isseelie(W.stored_mob))
@@ -142,6 +143,7 @@
 	ADD_TRAIT(W, TRAIT_IGNORESLOWDOWN, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_HARDDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_PIERCEIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 
 	invisibility = oldinv
 

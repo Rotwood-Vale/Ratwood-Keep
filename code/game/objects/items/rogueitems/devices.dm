@@ -36,3 +36,16 @@
 	new /obj/structure/roguemachine/merchantvend(step_turf)
 	to_chat(user, span_notice("With a bright flash, a GOLDFACE appears in front of you!"))
 	return TRUE
+
+/obj/item/gem_device/purity
+	name = "gemerald"
+	icon_state = "emerald_cut"
+	desc = "It's so bright."
+	usage_prompt = "Summon PURITY"
+
+/obj/item/gem_device/purity/on_use(mob/living/user)
+	var/turf/step_turf = get_step(get_turf(user), user.dir)
+	do_sparks(3, TRUE, step_turf)
+	new /obj/structure/roguemachine/drugmachine(step_turf)
+	to_chat(user, span_notice("With a bright flash, a PURITY appears in front of you!"))
+	return TRUE

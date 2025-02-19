@@ -289,7 +289,7 @@
 			return
 		if(berrypie && process_step == 2 && do_after(user,short_cooktime, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			to_chat(user, "<span class='notice'>Adding filling to the applepie. Needs more.</span>")
+			to_chat(user, "<span class='notice'>Adding filling to the berrypie. Needs more.</span>")
 			process_step += 1
 			poisoning = TRUE	
 			update_icon()
@@ -297,7 +297,7 @@
 			return
 		if(berrypie && process_step == 3 && do_after(user,short_cooktime, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			to_chat(user, "<span class='notice'>Filling the applepie to the brim. Still lacks a pie roof.</span>")
+			to_chat(user, "<span class='notice'>Filling the berrypie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			poisoning = TRUE	
 			update_icon()
@@ -532,12 +532,12 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | VEGETABLES
-	tastes = list("meat" = 1)
+	tastes = list("mushrooms" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/mince
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | MEAT
-	tastes = list("mushrooms" = 1)
+	tastes = list("meat" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/berry
 	w_class = WEIGHT_CLASS_NORMAL
@@ -556,7 +556,7 @@
 	icon_state = "handpie"
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 4
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION+MINCE_NUTRITION, /datum/reagent/medicine/omnizine = 5) // donkpocket
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION+MINCE_NUTRITION, /datum/reagent/medicine/omnizine = 5) // donkpocket
 	tastes = list("crispy dough" = 1)
 	rotprocess = null
 	dropshrink = 0.8

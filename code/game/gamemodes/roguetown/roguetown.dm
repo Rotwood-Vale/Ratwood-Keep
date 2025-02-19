@@ -60,18 +60,17 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	if(allmig)
 		return FALSE
 
-	if(ttime >= GLOB.round_timer)
-		if(roundvoteend)
-			if(ttime >= round_ends_at)
-				for(var/mob/living/carbon/human/H in GLOB.human_list)
-					if(H.stat != DEAD)
-						if(H.allmig_reward)
-							H.adjust_triumphs(H.allmig_reward)
-							H.allmig_reward = 0
-				return TRUE
-		else
-			if(!SSvote.mode && SSticker.autovote)
-				SSvote.initiate_vote("endround", "Zizo")
+	if(roundvoteend)
+		if(ttime >= round_ends_at)
+			for(var/mob/living/carbon/human/H in GLOB.human_list)
+				if(H.stat != DEAD)
+					if(H.allmig_reward)
+						H.adjust_triumphs(H.allmig_reward)
+						H.allmig_reward = 0
+			return TRUE
+	else if(ttime >= GLOB.round_timer)
+		if(!SSvote.mode && SSticker.autovote)
+			SSvote.initiate_vote("endround", "Zizo")
 
 	if(headrebdecree)
 		if(reb_end_time == 0)
@@ -230,10 +229,10 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Goblin Smith",
 	"Goblin Shaman")
 	var/num_bandits = 0
-	var/limit_bandits = pick(4,5,6,7,8)
-	if(num_players() >= 12)
-		// 1 bandit per 12 players,
-		num_bandits = round(num_players() / 12)
+	var/limit_bandits = 8
+	if(num_players() >= 9)
+		// 1 bandit per 9 players,
+		num_bandits = round(num_players() / 9)
 		if(num_bandits >= limit_bandits)	//caps bandits at 8
 			num_bandits = limit_bandits
 		var/datum/job/bandit_job = SSjob.GetJob("Bandit")

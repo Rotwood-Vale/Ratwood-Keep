@@ -1364,6 +1364,8 @@
 
 //Mobs on Fire
 /mob/living/proc/IgniteMob()
+	if (HAS_TRAIT(src, TRAIT_NOFIRE))
+		return
 	if(fire_stacks > 0 && !on_fire)
 		testing("ignis")
 		on_fire = TRUE
@@ -1401,7 +1403,8 @@
 /mob/living/proc/spreadFire(mob/living/L)
 	if(!istype(L))
 		return
-
+	if(HAS_TRAIT(L, TRAIT_NOFIRE) || HAS_TRAIT(src, TRAIT_NOFIRE))
+		return
 	if(on_fire)
 		if(L.on_fire) // If they were also on fire
 			var/firesplit = (fire_stacks + L.fire_stacks)/2
@@ -1527,7 +1530,7 @@
 			fall(!canstand_involuntary)
 		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
 		if (pixelshifted)
-			layer = 3.99 + pixelshift_layer //So mobs can pixelshift layers while lying down
+			layer = LYING_MOB_LAYER + pixelshift_layer //So mobs can pixelshift layers while lying down
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
@@ -1787,7 +1790,7 @@
 		return
 	if(!can_look_up())
 		return
-	changeNext_move(CLICK_CD_MELEE)
+	changeNext_move(CLICK_CD_RAPID)
 	if(m_intent != MOVE_INTENT_SNEAK)
 		visible_message(span_info("[src] looks up."))
 	var/turf/ceiling = get_step_multiz(src, UP)
@@ -1817,14 +1820,6 @@
 	if(T.can_see_sky())
 		do_time_change()
 
-	var/ttime = 10
-	if(STAPER > 5)
-		ttime = 10 - (STAPER - 5)
-		if(ttime < 0)
-			ttime = 0
-
-	if(!do_after(src, ttime, target = src))
-		return
 	reset_perspective(ceiling)
 	update_cone_show()
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking)) //We stop looking up if we move.
@@ -1880,18 +1875,11 @@
 
 	if(!OS)
 		return
-	var/ttime = 10
-	if(STAPER > 5)
-		ttime = 10 - (STAPER - 5)
-		if(ttime < 0)
-			ttime = 0
 
 	visible_message(span_info("[src] looks down through [T]."))
 
-	if(!do_after(src, ttime, target = src))
-		return
 
-	changeNext_move(CLICK_CD_MELEE)
+	changeNext_move(CLICK_CD_RAPID)
 	reset_perspective(OS)
 	update_cone_show()
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))

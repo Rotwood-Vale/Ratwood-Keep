@@ -24,7 +24,8 @@
 			adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
 
 /mob/living/proc/handle_blood()
-	if(HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK) || HAS_TRAIT(src, TRAIT_NO_BLOOD)) //cryosleep, husked people, or bloodless creatures do not pump blood
+		blood_volume = 0
 		return
 	
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)
@@ -70,7 +71,12 @@
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/handle_blood()
-	if(HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK) || HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		blood_volume = 0
+		remove_stress(/datum/stressevent/bleeding)
+		remove_status_effect(/datum/status_effect/debuff/bleeding)
+		remove_status_effect(/datum/status_effect/debuff/bleedingworse)
+		remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 		return
 	
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)
@@ -163,6 +169,8 @@
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/proc/bleed(amt)
+	if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		return FALSE
 	if(!iscarbon(src) && !HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 		return FALSE
 	if(blood_volume <= 0)
@@ -274,6 +282,8 @@
 
 //get the id of the substance this mob use as blood.
 /mob/proc/get_blood_id()
+	if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		return
 	return
 
 /mob/living/simple_animal/get_blood_id()
@@ -285,7 +295,7 @@
 		return /datum/reagent/blood
 
 /mob/living/carbon/human/get_blood_id()
-	if(HAS_TRAIT(src, TRAIT_HUSK))
+	if(HAS_TRAIT(src, TRAIT_HUSK) || HAS_TRAIT(src, TRAIT_NO_BLOOD))
 		return
 	if(dna?.species)
 		if(dna.species.exotic_blood)
@@ -319,6 +329,8 @@
 
 //to add a splatter of blood or other mob liquid.
 /mob/living/proc/add_splatter_floor(turf/T)
+	if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		return
 	if(!iscarbon(src))
 		if(!HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 			return
@@ -337,6 +349,8 @@
 	T?.pollute_turf(/datum/pollutant/metallic_scent, 30)
 
 /mob/living/proc/add_drip_floor(turf/T, amt)
+	if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		return
 	if(!iscarbon(src))
 		if(!HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 			return

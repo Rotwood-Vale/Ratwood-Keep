@@ -29,6 +29,9 @@
 	smeltresult = /obj/item/ingot/iron
 	can_cdg = TRUE
 
+/obj/item/rogueweapon/huntingknife/Initialize()
+	. = ..()
+	AddElement(/datum/element/tipped_item)
 
 /datum/intent/dagger
 	clickcd = 8
@@ -224,12 +227,58 @@
 	can_cdg = TRUE
 	can_assin = TRUE
 
+/obj/item/rogueweapon/huntingknife/idagger/attack_right(mob/user)
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/idaggerherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/idaggerherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/idaggerherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Iron Daggers...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/idaggerherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/idaggerherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/idaggerherald.dmi'
+		lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = "Regular Dagger"
+	else
+		..()
+
 /obj/item/rogueweapon/huntingknife/idagger/steel
 	name = "steel dagger"
 	desc = "This is a dagger made of solid steel, more durable."
 	icon_state = "sdagger"
 	max_integrity = 150
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/rogueweapon/huntingknife/idagger/steel/attack_right(mob/user)
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/daggerherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/daggerherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/daggerherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Steel Daggers...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/daggerherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/daggerherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/daggerherald.dmi'
+		lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = "Regular Dagger"
+	else
+		..()
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	icon_state = "sdaggeralt"
@@ -242,111 +291,10 @@
 	smeltresult = /obj/item/ingot/silver
 	var/last_used = 0
 
-/obj/item/rogueweapon/huntingknife/idagger/silver/pickup(mob/user)
+/obj/item/rogueweapon/huntingknife/idagger/silver/Initialize()
 	. = ..()
-	var/mob/living/carbon/human/H = user
-	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-	if(ishuman(H))
-		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-		if(W && W.transformed == TRUE)
-			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-
-
-/obj/item/rogueweapon/huntingknife/idagger/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
-	. = ..()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-				to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-		if(W && W.transformed == TRUE)
-			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-
-
-/obj/item/rogueweapon/huntingknife/idagger/silver/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
-	if(world.time < src.last_used + 100)
-		to_chat(user, span_notice("The silver effect is on cooldown."))
-		return
-
-	. = ..()
-	if(ishuman(target))
-		var/mob/living/carbon/human/s_user = user
-		var/mob/living/carbon/human/H = target
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
-		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-		if(V)
-			if(V.disguised)
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
-				to_chat(H, span_userdanger("I'm hit by my BANE!"))
-				H.adjustFireLoss(25)
-				H.fire_act(1,10)
-				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-				src.last_used = world.time
-			else
-				H.Stun(20)
-				to_chat(H, span_userdanger("I'm hit by my BANE!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.adjustFireLoss(25)
-				H.fire_act(1,10)
-				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-				src.last_used = world.time
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !V)
-				H.Knockdown(10)
-				H.Paralyze(10)
-				to_chat(H, span_userdanger("I'm hit by my BANE!"))
-				H.adjustFireLoss(25)
-				H.fire_act(1,10)
-				src.last_used = world.time
-			if(V_lord.vamplevel == 4 && !V)
-				s_user.Stun(10)
-				s_user.Paralyze(10)
-				s_user.adjustFireLoss(25)
-				s_user.fire_act(1,10)
-				to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
-				H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM THE ANCIENT!"))
-		if(W && W.transformed == TRUE)
-			H.adjustFireLoss(25)
-			H.Paralyze(10)
-			H.Stun(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-			to_chat(H, span_userdanger("I'm hit by my BANE!"))
-			src.last_used = world.time
-
+	var/datum/magic_item/mundane/silver/effect = new
+	AddComponent(/datum/component/magic_item, effect)
 
 /obj/item/rogueweapon/huntingknife/stoneknife
 	possible_item_intents = list(/datum/intent/dagger/cut,/datum/intent/dagger/chop)
@@ -474,6 +422,11 @@
 			H.fire_act(1,10)
 			to_chat(H, span_userdanger("I'm hit by my BANE!"))
 			src.last_used = world.time
+
+/obj/item/rogueweapon/huntingknife/elvish/Initialize()
+	. = ..()
+	var/datum/magic_item/mundane/silver/effect = new
+	AddComponent(/datum/component/magic_item, effect)
 
 /obj/item/rogueweapon/huntingknife/elvish/drow
 	name = "nite elf dagger"
