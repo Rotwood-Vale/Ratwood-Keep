@@ -121,7 +121,6 @@
 	desc = ""
 	icon_state = "javelinbag0"
 	item_state = "javelinbag"
-	icon = 'icons/roguetown/clothing/storage.dmi'
 	slot_flags = ITEM_SLOT_BACK
 
 /obj/item/quiver/javelin/attack_turf(turf/T, mob/living/user)

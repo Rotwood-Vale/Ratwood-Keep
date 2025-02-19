@@ -345,7 +345,6 @@
 	name = "iron javelin"
 	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a iron head; standard among militiamen and irregulars alike."
 	icon_state = "ijavelin"
-	icon = 'icons/roguetown/weapons/32.dmi'	//Spear-area
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
 	max_integrity = 50						//Breaks semi-easy, stops constant re-use. 
