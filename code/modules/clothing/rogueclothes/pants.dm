@@ -316,6 +316,26 @@
 	. = ..()
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 
+/obj/item/clothing/under/roguetown/platelegs/zizo
+	name = "darksteel garments"
+	desc = "Leg garments worn by true anointed of the Dame of Progress. In Her name."
+	icon_state = "zizocloth"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
+
 /obj/item/clothing/under/roguetown/chainlegs/skirt
 	name = "steel chain skirt"
 	desc = "Interlinked metal rings that drape down to the crotch and no farther."

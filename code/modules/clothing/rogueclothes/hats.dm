@@ -822,6 +822,45 @@
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 400
 
+/obj/item/clothing/head/roguetown/helmet/heavy/zizo
+	name = "darksteel barbute"
+	desc = "A darksteel barbute. This one has an adjustable visor. Called forth from the edge of what should be known. In Her name."
+	adjustable = CAN_CADJUST
+	icon_state = "zizobarbute"
+	max_integrity = 600
+
+/obj/item/clothing/head/roguetown/helmet/heavy/zizo/pickup(mob/living/user)
+	if(!HAS_TRAIT(user, TRAIT_CABAL))
+		to_chat(user, "<font color='purple'>UNWORTHY HANDS TOUCH THE HELMET, CEASE OR BE PUNISHED</font>")
+		if(loc == user)
+			user.adjust_fire_stacks(5)
+			user.IgniteMob()
+			user.Stun(40)
+	..()
+
+/obj/item/clothing/head/roguetown/helmet/heavy/zizo/AdjustClothes(mob/user)
+	if(loc == user)
+		playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "[initial(icon_state)]_raised"
+			body_parts_covered = HEAD|EARS|HAIR
+			flags_cover = null
+			flags_inv = null
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_head()
+			block2add = null
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			flags_inv = HIDEFACE
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_head()
+		user.update_fov_angles()
+	
+
 /obj/item/clothing/head/roguetown/helmet/heavy/guard
 	name = "savoyard"
 	desc = "A helmet with a menacing visage."
@@ -1192,6 +1231,22 @@
 	max_integrity = 450
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
+
+/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo
+	name = "darksteel froggemund"
+	desc = "A sleek and imposing darksteel froggemund. Called forth from the edge of what should be known. In Her name."
+	max_integrity = 650
+	icon_state = "zizofrogmouth"
+
+
+/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/zizo/pickup(mob/living/user)
+	if(!HAS_TRAIT(user, TRAIT_CABAL))
+		to_chat(user, "<font color='purple'>UNWORTHY HANDS TOUCH THE HELMET, CEASE OR BE PUNISHED</font>")
+		if(loc == user)
+			user.adjust_fire_stacks(5)
+			user.IgniteMob()
+			user.Stun(40)
+	..()
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/attackby(obj/item/W, mob/living/user, params)
 	..()
