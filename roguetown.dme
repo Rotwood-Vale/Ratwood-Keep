@@ -1975,7 +1975,6 @@
 #include "modular\ze_genesis_call\genesis_call.dm"
 #include "modular_azurepeak\_statpacks.dm"
 #include "modular_azurepeak\_virtue.dm"
-#include "modular_azurepeak\code\_DEFINES\donator.dm"
 #include "modular_azurepeak\code\datums\autopunctuation.dm"
 #include "modular_azurepeak\code\datums\item_equipped_movement_rustle.dm"
 #include "modular_azurepeak\code\datums\loadout.dm"

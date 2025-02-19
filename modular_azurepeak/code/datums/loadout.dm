@@ -242,5 +242,5 @@ GLOBAL_LIST_EMPTY(loadout_items)
 
 /datum/loadout_item/donator_plex
 	name = "Rapier di Aliseo"
-	path = /obj/item/rogueweapon/sword/rapier/dec/aliseo
+	path = /obj/item/rogueweapon/sword/rapier/aliseo
 	ckeywhitelist = list("plexiant")
