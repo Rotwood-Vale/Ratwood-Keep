@@ -31,10 +31,11 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 	var/planking_time = (40 - (skill_level * 5))
-	if(!sawable || !biglog)
-		user.visible_message("<span class='notice'>[src] can't be made into something smaller!</span>")
-		return
 	if(lumber_amount && I.tool_behaviour == TOOL_SAW || I.tool_behaviour == TOOL_IMPROVSAW)
+		if(!sawable || !biglog)
+			user.visible_message("<span class='notice'>[src] can't be made into something smaller!</span>")
+			get_complex_damage(I, user)
+			return
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
 		user.visible_message("<span class='notice'>[user] starts sawing [src] to smaller pieces.</span>")
 		if(do_after(user, planking_time))
@@ -125,6 +126,7 @@
 	name = "unstrung bow"
 	desc = "A partially completed bow, still waiting to be strung."
 	icon_state = "bowpartial"
+	static_debris = list(/obj/item/grown/log/tree/stick = 1)
 	max_integrity = 30
 	firefuel = 10 MINUTES
 	twohands_required = FALSE
