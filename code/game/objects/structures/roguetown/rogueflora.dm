@@ -303,8 +303,8 @@
 	var/bushtype
 	//Why bother generating the same list for every single bush? Static list time.
 	var/static/list/bush_options = list(
-        /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 5,
-        /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison = 3,
+        /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1,
+        /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison = 4,
         /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1
     )
 
