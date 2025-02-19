@@ -554,6 +554,9 @@
 	set name = "cmode-change"
 	set hidden = 1
 
+	if(SSticker.current_state >= GAME_STATE_FINISHED)
+		return
+
 	var/mob/living/L
 	if(isliving(src))
 		L = src
