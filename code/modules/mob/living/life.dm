@@ -127,7 +127,7 @@
 //		return TRUE
 	update_fire()
 	var/turf/location = get_turf(src)
-	location.hotspot_expose(700, 50, 1)
+	location?.hotspot_expose(700, 50, 1)
 
 /mob/living/proc/handle_wounds()
 	if(stat >= DEAD)

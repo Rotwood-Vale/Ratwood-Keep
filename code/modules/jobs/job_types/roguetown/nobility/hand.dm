@@ -173,6 +173,7 @@
 		H.change_stat("intelligence", rand(4,5))
 		H.change_stat("perception", 3)
 		H.mind.adjust_spellpoints(2)
+		ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	if(H.age == AGE_OLD)
 		H.change_stat("speed", -1)

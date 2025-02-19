@@ -31,7 +31,7 @@
 	sewrepair = TRUE
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/nobleboot
 	name = "noble boots"
@@ -44,7 +44,7 @@
 	sewrepair = TRUE
 	armor = list("blunt" = 35, "slash" = 15, "stab" = 25, "fire" = 0, "acid" = 0)
 	salvage_amount = 2
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/shortboots
 	name = "shortboots"
@@ -55,7 +55,7 @@
 	item_state = "shortboots"
 	sewrepair = TRUE
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/ridingboots
 	name = "riding boots"
@@ -66,7 +66,7 @@
 	item_state = "ridingboots"
 	sewrepair = TRUE
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 ///obj/item/clothing/shoes/roguetown/ridingboots/Initialize()
 //	. = ..()
@@ -82,7 +82,7 @@
 	resistance_flags = null
 	color = "#473a30"
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/simpleshoes/white
 	color = null
@@ -136,7 +136,7 @@
 	sewrepair = TRUE
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/boots/armor
 	name = "plated boots"
@@ -153,6 +153,22 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo
+	max_integrity = 500
+	name = "darksteel boots"
+	desc = "Plate boots. Called forth from the edge of what should be known. In Her name."
+	icon_state = "zizoboots"
+
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
 /obj/item/clothing/shoes/roguetown/otavan
 	name = "otavan leather boots"
 	desc = "Boots of outstanding craft, your fragile feet has never felt so protected and comfortable before."
@@ -165,7 +181,7 @@
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 100, "fire" = 0, "acid" = 0)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/shoes/roguetown/boots/armor/iron
 	name = "iron plated boots"

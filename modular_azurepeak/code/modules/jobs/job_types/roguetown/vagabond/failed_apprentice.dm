@@ -31,6 +31,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		H.mind.adjust_spellpoints(1)
+		ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", -1)
 		H.change_stat("endurance", -1)

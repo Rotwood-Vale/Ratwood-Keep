@@ -47,7 +47,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/armordress/alt
 	icon_state = "armordressalt"
@@ -76,7 +76,7 @@
 	desc = "A large shirt meant to be used below armor."
 	icon_state = "gambeson"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
-	armor = list("blunt" = 45, "slash" = 30, "stab" = 35, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 40, "stab" = 30, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -90,7 +90,7 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson/light
 	name = "light gambeson"
 	desc = "A barely padded gambeson, typically worn by the peasantry as cheap yet fashionable armor for the whole body."
-	armor = list("blunt" = 30, "slash" = 15, "stab" = 20, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 40, "slash" = 30, "stab" = 20, "fire" = 0, "acid" = 0)
 	prevent_crits = null // It won't help, like, at all.
 	sellprice = 10
 
@@ -98,8 +98,8 @@
 	name = "padded gambeson"
 	desc = "A gambeson with additional padding layers, hardened to make it more durable. It still cannot compare to proper armor."
 	icon_state = "gambesonp"
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_CHOP)
+	armor = list("blunt" = 80, "slash" = 50, "stab" = 40, "fire" = 0, "acid" = 0)
 	sellprice = 30
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/otavan
@@ -108,7 +108,7 @@
 	desc = "A large shirt with heavy padding meant to be used below armor."
 	icon_state = "fancygamb"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
-	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "piercing" = 25, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 50, "stab" = 40, "piercing" = 25, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -268,10 +268,10 @@
 /obj/item/clothing/suit/roguetown/armor/leather
 	name = "leather armor"
 	desc = "Flexible cowhide armor. Lightweight, better than nothing."
-	icon_state = "leather"
+	icon_state = "roguearmor"
 //	color = "#514339"
 	body_parts_covered = CHEST|GROIN|VITALS
-	armor = list("blunt" = 65, "slash" = 30, "stab" = 40, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 50, "stab" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -282,13 +282,13 @@
 	max_integrity = 150
 	sellprice = 20
 	armor_class = ARMOR_CLASS_LIGHT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/hide
 	name = "hide armor"
 	desc = "A light armor of wildbeast hide. Far more durable than leather."
 	icon_state = "hidearmor"
-	max_integrity = 230
+	max_integrity = 250
 	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded
@@ -297,8 +297,8 @@
 	icon_state = "studleather"
 	item_state = "studleather"
 	blocksound = SOFTHIT
-	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	armor = list("blunt" = 80, "slash" = 80, "stab" = 60, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
 	nodismemsleeves = TRUE
 	body_parts_covered = CHEST|GROIN|VITALS
 	max_integrity = 300
@@ -307,35 +307,25 @@
 	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy
-	name = "heavy leather armor"
+	name = "hardened leather armor"
 	desc = "A heavy steerhide jerkin with enough body to stand on its own. It forms a stiff, protective mantle \
 	for its wearer, shielding from blows and weather alike."
-	icon_state = "roguearmor"
-	item_state = "roguearmor"
-	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
-	max_integrity = 300
-	sellprice = 25
-
-/obj/item/clothing/suit/roguetown/armor/leather/heavy/belted
-	name = "belted heavy leather armor"
-	desc = "A heavy steerhide jerkin bearing a supplementary utility belt."
 	icon_state = "roguearmor_belt"
 	item_state = "roguearmor_belt"
-	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
 	max_integrity = 300
 	sellprice = 25
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
-	name = "armored leather coat"
+	name = "hardened leather coat"
 	desc = "A heavy steerhide jerkin that reaches past the hips and better protects the vitals."
 	icon_state = "roguearmor_coat"
 	item_state = "roguearmor_coat"
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS
-	armor = list("blunt" = 70, "slash" = 50, "stab" = 60, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
-	max_integrity = 200
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	max_integrity = 300
 	sellprice = 25
 
 /obj/item/clothing/suit/roguetown/armor/leather/bikini
@@ -628,6 +618,24 @@
 	equip_delay_other = 3 SECONDS
 	strip_delay = 6 SECONDS
 	smelt_bar_num = 4
+
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/zizo
+	name = "darksteel fullplate"
+	desc = "Full plate. Called forth from the edge of what should be known. In Her name."
+	icon_state = "zizoplate"
+	max_integrity = 700
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/zizo/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/zizo/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	name = "fullplate bikini"

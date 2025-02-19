@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(listener_ceiling)
 			if(istransparentturf(listener_ceiling))
 				listener_has_ceiling = FALSE
-		if(!Zs_too && !isobserver(AM))
+		if((!Zs_too && !isobserver(AM)) || message_mode == MODE_WHISPER)
 			if(AM.z != src.z)
 				continue
 		if(Zs_too && AM.z != src.z && !Zs_all)
@@ -377,12 +377,14 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				if(listener_obstructed && speaker_obstructed)
 					continue
 		var/highlighted_message
+		var/keenears
 		if(ishuman(AM))
 			var/mob/living/carbon/human/H = AM
+			keenears = HAS_TRAIT(H, TRAIT_KEENEARS)
 			var/name_to_highlight = H.nickname
 			if(name_to_highlight && name_to_highlight != "" && name_to_highlight != "Please Change Me")	//We don't need to highlight an unset or blank one.
 				highlighted_message = replacetext_char(message, name_to_highlight, "<b><font color = #[H.highlight_color]>[name_to_highlight]</font></b>")
-		if(eavesdrop_range && get_dist(source, AM) > message_range && !(the_dead[AM]))
+		if(eavesdrop_range && get_dist(source, AM) > message_range+keenears && !(the_dead[AM]))
 			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)
 		else if(highlighted_message)
 			AM.Hear(rendered, src, message_language, highlighted_message, , spans, message_mode, original_message)
