@@ -75,6 +75,22 @@
 		if(wound.can_become_infected) //We aren't going to bother cleaning broken bones
 			wound.clean_infection(sterilize)
 
+//If it weren't for the fact I'm using a signal on the other, I'd probably just make these the same proc
+/mob/living/proc/filthify_mob_wounds()
+	for(var/datum/wound/wound as anything in get_wounds())
+		if(wound.can_become_infected)
+			wound.filthify_wound()
+
+/mob/living/proc/treat_wound_infections(treatment_amount)
+	var/treated_any = FALSE
+	for(var/datum/wound/wound as anything in get_wounds())
+		if(treatment_amount <= 0)
+			continue
+		var/amount_treated = wound.treat_infection(treatment_amount)
+		if(amount_treated)
+			treatment_amount -= amount_treated
+			treated_any = TRUE
+	return treated_any
 
 /// Simple version for adding a wound - DO NOT CALL THIS ON CARBON MOBS!
 /mob/living/proc/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)

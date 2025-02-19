@@ -299,6 +299,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(isnull(whp))
 		return 0
 	var/amount_healed = min(whp, round(heal_amount, DAMAGE_PRECISION))
+	if(can_become_infected && infection_level > WOUND_INFECTION_INFECTED) 
+		amount_healed *= 0.5 //Infected wounds heal slower from all sources.
 	whp -= amount_healed
 	if(whp <= 0)
 		bleed_rate = 0
@@ -391,9 +393,19 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	return
 
 /datum/wound/proc/treat_infection(var/treatment_effectiveness = 25)
+	var/amount_treated = min(infection_level, round(treatment_effectiveness, DAMAGE_PRECISION))
 	infection_level = clamp((infection_level - treatment_effectiveness), 0, 300)
-	return
+	return amount_treated
 
+///Do cleaning behavior for the wound. An argument of TRUE will set it to sterile.
 /datum/wound/proc/clean_infection(var/sterilize = FALSE)
-	//This is mostly a helper, it's also useful if we need to do anything while cleaning. Like causing pain or something.
 	wound_cleanliness = sterilize ? WOUND_CLEANLINESS_STERILE : WOUND_CLEANLINESS_CLEAN
+
+///Do filthifying behavior for the wound
+/datum/wound/proc/filthify_wound()
+	if(!can_become_infected)
+		return
+	if(wound_cleanliness != WOUND_CLEANLINESS_FILTHY)
+		wound_cleanliness = WOUND_CLEANLINESS_FILTHY
+		if(owner)
+			owner.adjustToxLoss(0.2) //It's possible to have a LOT of wounds, so we want to be careful how much of this we deal

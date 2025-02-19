@@ -260,6 +260,11 @@
 	icon_state = "paving"
 	water_color = pick("#705a43","#697043")
 	.  = ..()
+/turf/open/water/sewer/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(isliving(AM) && !AM.throwing)
+		var/mob/living/L = AM
+		L.filthify_mob_wounds()
 
 /turf/open/water/swamp
 	name = "murk"
@@ -290,6 +295,7 @@
 			var/mob/living/carbon/C = AM
 			if(C.blood_volume <= 0)
 				return
+			C.filthify_mob_wounds()
 			var/zonee = list(BODY_ZONE_R_LEG,BODY_ZONE_L_LEG)
 			for(var/X in zonee)
 				var/obj/item/bodypart/BP = C.get_bodypart(X)
@@ -337,6 +343,7 @@
 			var/mob/living/carbon/C = AM
 			if(C.blood_volume <= 0)
 				return
+			C.filthify_mob_wounds()
 			var/zonee = list(BODY_ZONE_CHEST,BODY_ZONE_R_LEG,BODY_ZONE_L_LEG,BODY_ZONE_R_ARM,BODY_ZONE_L_ARM)
 			for(var/X in zonee)
 				var/obj/item/bodypart/BP = C.get_bodypart(X)

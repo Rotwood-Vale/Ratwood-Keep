@@ -562,15 +562,21 @@
 		M.confused = max(M.confused+3,0)
 	M.emote(pick("cough"))
 
-/datum/reagent/alch/syrum_ash/on_mob_metabolize(mob/living/carbon/M)
+//I'm going to replace this crap once the new alchemy system is in
+/datum/reagent/alch/syrum_ash/on_mob_life(mob/living/carbon/M)
 	M.adjustToxLoss(-1*REM, 0)
 	M.adjustFireLoss(0.25*REM, 0)
-	M.reagents.remove_all_type(/datum/reagent, 1)
+	M.reagents.remove_all_type(/datum/reagent/toxin, 1)
+	M.reagents.remove_all_type(/datum/reagent/berrypoison, 1)
+	M.reagents.remove_all_type(/datum/reagent/alch/syrum_poison_berry, 1)
 	M.emote(pick("gag"))
+	M.treat_wound_infections(2)
+	..()
 
-/datum/reagent/alch/syrum_poison_berry/on_mob_metabolize(mob/living/carbon/M)
+/datum/reagent/alch/syrum_poison_berry/on_mob_life(mob/living/carbon/M)
 	M.add_nausea(9)
-	M.adjustToxLoss(2, 0)
+	M.adjustToxLoss(4, 0)
+	..()
 
 /datum/reagent/medicine/caffeine/on_mob_life(mob/living/carbon/M)
 	M.energy_add(800)
@@ -648,7 +654,6 @@
 				deltimer(W.werewolf_infection_timer)
 				W.werewolf_infection_timer = null
 				to_chat(M, "You feel the drugs burning intensely in [B.name].")
-
 			// Handle destruction of the wound
 			W.Destroy(0)
 
