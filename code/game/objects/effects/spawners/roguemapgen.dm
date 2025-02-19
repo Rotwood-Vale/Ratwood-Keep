@@ -78,7 +78,7 @@
 	probby = 50
 	spawned = list(/obj/item/restraints/legcuffs/beartrap/armed/camouflage)
 
-/obj/effect/spawner/lootdrop/Initialize(mapload)
+/*obj/effect/spawner/lootdrop/Initialize(mapload)
 	..()
 	do_spawn()
 	return INITIALIZE_HINT_QDEL
@@ -156,4 +156,4 @@
 		/obj/item/reagent_containers/glass/alchemical/intpot = 10,
 		/obj/item/reagent_containers/glass/alchemical/spdpot = 10,
 		/obj/item/reagent_containers/glass/alchemical/lucpot = 10
-	)
+	)*/
