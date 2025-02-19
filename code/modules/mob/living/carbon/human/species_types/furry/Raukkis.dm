@@ -4,7 +4,9 @@
 /datum/species/rat
 	name = "Raukkis"
 	id = "rat"
-	desc = "" // to be added
+	desc = "The Raukki settled Rockhill thousands of years ago. Their species migrated from the southern lands of what is now Enigma. They were very resistant to joining the empire until several influential elders of their kind converted to Astrarta worship. \
+			They left their underground burrows and joined civilization. Raukki used to worship Dendor and Necra exclusively. They were called The Wild Father and Under Mother in their language. With the assimilation to the ten, they have adopted many of Enigmas traditions.\
+			Raukki would make families with whoever assisted in winter preparations. Permanent marriages were alien to them before becoming civilized. Raukki are very intelligent and are fantastic potion makers." 
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
