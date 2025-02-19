@@ -32,7 +32,7 @@
 	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 	var/planking_time = (40 - (skill_level * 5))
 	if(!sawable || !biglog)
-		user.visible_message("<span class='notice'>[src] can't be sawn into something smaller!</span>")
+		user.visible_message("<span class='notice'>[src] can't be made into something smaller!</span>")
 		return
 	if(lumber_amount && I.tool_behaviour == TOOL_SAW || I.tool_behaviour == TOOL_IMPROVSAW)
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
@@ -47,8 +47,6 @@
 			user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
 			new /obj/effect/decal/cleanable/debris/woody(get_turf(src))
 			qdel(src)
-			return
-		else
 			return
 	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount)
 		var/lumber_time = (40 - (skill_level * 5))
