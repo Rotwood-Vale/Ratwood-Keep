@@ -40,8 +40,11 @@
 			return FALSE
 
 /obj/item/quiver/attackby(obj/A, loc, params)
-	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue/arrow))
-		if(arrows.len < max_storage)
+	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
+		if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue/javelin))
+			to_chat(loc, span_warning("Javelins are too big to fit in a quiver, silly!"))
+			return FALSE
+		else if(arrows.len < max_storage)
 			if(ismob(loc))
 				var/mob/M = loc
 				M.doUnEquip(A, TRUE, src, TRUE, silent = TRUE)
