@@ -455,42 +455,67 @@
 		return
 	else
 		if(hud_used.bloods)
-			var/bloodloss = ((BLOOD_VOLUME_NORMAL - blood_volume) / BLOOD_VOLUME_NORMAL) * 100
+			// small check for no_blood trait (currently for liches)
+			if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+				// instead of utilizing blood volume, we're going to use limb damage for our health_hud
+				var/total_damage = 0
+				var/total_max = 0
+				for(var/X in bodyparts)
+					var/obj/item/bodypart/BP = X
+					total_damage += (BP.brute_dam + BP.burn_dam)
+					total_max += BP.max_damage
+				
+				var/damage_percent = 0
+				if(total_max > 0)
+					damage_percent = (total_damage / total_max) * 100
 
-			var/burnhead = 0
-			var/brutehead = 0
-			var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
-			if(head)
-				burnhead = (head.burn_dam / head.max_damage) * 100
-				brutehead = (head.brute_dam / head.max_damage) * 100
-
-			var/toxloss = getToxLoss()
-			var/oxloss = getOxyLoss()
-
-			var/hungloss = nutrition*-1 //this is smart i think
-
-			var/usedloss = 0
-			if(bloodloss > 0)
-				usedloss = bloodloss
-			if(burnhead > usedloss)
-				usedloss = burnhead
-			if(brutehead > usedloss)
-				usedloss = brutehead
-			if(toxloss > usedloss)
-				usedloss = toxloss
-			if(oxloss > usedloss)
-				usedloss = oxloss
-			if(hungloss > usedloss)
-				usedloss = hungloss
-
-			if(usedloss <= 0)
-				hud_used.bloods.icon_state = "dam0"
-			else
-				var/used = round(usedloss, 10)
-				if(used <= 80)
-					hud_used.bloods.icon_state = "dam[used]"
+				// here we use limb damage for our health_hud hehe
+				if(damage_percent <= 0)
+					hud_used.bloods.icon_state = "dam0"
 				else
-					hud_used.bloods.icon_state = "damelse"
+					var/used = round(damage_percent, 10)
+					if(used <= 80)
+						hud_used.bloods.icon_state = "dam[used]"
+					else
+						hud_used.bloods.icon_state = "damelse"
+			else
+				// normal blood hud flow etc
+				var/bloodloss = ((BLOOD_VOLUME_NORMAL - blood_volume) / BLOOD_VOLUME_NORMAL) * 100
+
+				var/burnhead = 0
+				var/brutehead = 0
+				var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
+				if(head)
+					burnhead = (head.burn_dam / head.max_damage) * 100
+					brutehead = (head.brute_dam / head.max_damage) * 100
+
+				var/toxloss = getToxLoss()
+				var/oxloss = getOxyLoss()
+
+				var/hungloss = nutrition*-1 //this is smart i think
+
+				var/usedloss = 0
+				if(bloodloss > 0)
+					usedloss = bloodloss
+				if(burnhead > usedloss)
+					usedloss = burnhead
+				if(brutehead > usedloss)
+					usedloss = brutehead
+				if(toxloss > usedloss)
+					usedloss = toxloss
+				if(oxloss > usedloss)
+					usedloss = oxloss
+				if(hungloss > usedloss)
+					usedloss = hungloss
+
+				if(usedloss <= 0)
+					hud_used.bloods.icon_state = "dam0"
+				else
+					var/used = round(usedloss, 10)
+					if(used <= 80)
+						hud_used.bloods.icon_state = "dam[used]"
+					else
+						hud_used.bloods.icon_state = "damelse"
 
 /*		if(hud_used.healthdoll)
 			hud_used.healthdoll.cut_overlays()
