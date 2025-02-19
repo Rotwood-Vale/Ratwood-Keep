@@ -153,6 +153,22 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo
+	max_integrity = 500
+	name = "darksteel boots"
+	desc = "Plate boots. Called forth from the edge of what should be known. In Her name."
+	icon_state = "zizoboots"
+
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/shoes/roguetown/boots/armor/zizo/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
 /obj/item/clothing/shoes/roguetown/otavan
 	name = "otavan leather boots"
 	desc = "Boots of outstanding craft, your fragile feet has never felt so protected and comfortable before."
