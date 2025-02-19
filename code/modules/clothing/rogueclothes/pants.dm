@@ -117,7 +117,7 @@
 	armor = list("blunt" = 80, "slash" = 50, "stab" = 40, "fire" = 0, "acid" = 0)
 	icon_state = "leathertrou"
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_SMASH)
-	max_integrity = 200
+	max_integrity = 150
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants
@@ -131,7 +131,7 @@
 	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH)
 	blocksound = SOFTHIT
-	max_integrity = 250
+	max_integrity = 200
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
@@ -153,10 +153,10 @@
 	desc = "padded leather armor made by Otavan tailors, its quality is remarkable."
 	icon_state = "fencerpants"
 	resistance_flags = FIRE_PROOF
-	armor = list("blunt" = 100, "slash" = 60, "stab" = 50, "piercing" = 20, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "piercing" = 20, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH)
 	blocksound = SOFTHIT
-	max_integrity = 300
+	max_integrity = 200
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = TRUE
 	allowed_race = NON_DWARVEN_RACE_TYPES
