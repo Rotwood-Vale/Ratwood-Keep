@@ -175,6 +175,18 @@
 	importexport_amt = 10
 	passive_generation = 3
 
+/datum/roguestock/stockpile/garlick
+	name = "Garlick"
+	desc = "A pungent root vegetable."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/garlick/rogue
+	held_items = list(0, 4)
+	payout_price = 2
+	withdraw_price = 3
+	transport_fee = 1
+	export_price = 3
+	importexport_amt = 10
+	passive_generation = 3
+
 /datum/roguestock/stockpile/apple
 	name = "Apple"
 	desc = "Harvested produce."

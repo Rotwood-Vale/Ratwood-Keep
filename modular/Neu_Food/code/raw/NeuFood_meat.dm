@@ -168,4 +168,13 @@
 /obj/item/reagent_containers/food/snacks/fish
 	chopping_sound = TRUE
 
-
+/* ............. fisj chop ................*/
+/obj/item/reagent_containers/food/snacks/rogue/meat/fish
+	name = "fish filet"
+	desc = "A filet of fish. All of them are the same inside."
+	icon_state = "fish_filet"
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fish/fried
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fish/fried
+	slices_num = 1
+	ingredient_size = 1
