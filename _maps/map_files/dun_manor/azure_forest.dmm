@@ -1187,7 +1187,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/under/town/basement)
 "jN" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
@@ -1875,7 +1875,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
 "py" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/needle/thorn,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -5495,7 +5495,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
 "Tg" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "Ti" = (

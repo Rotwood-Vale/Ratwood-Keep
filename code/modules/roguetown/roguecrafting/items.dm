@@ -635,7 +635,7 @@
 				  /obj/item/paper/scroll)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/datum/reagent/water = 48)
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/tribalrags
@@ -754,7 +754,7 @@
 	name = "heater shield"
 	result = /obj/item/rogueweapon/shield/heater/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 2,
-				/obj/item/natural/hide = 1)
+				/obj/item/natural/hide/cured = 1)
 	skillcraft = /datum/skill/craft/carpentry
 
 /obj/item/rogueweapon/shield/heater/crafted
@@ -763,14 +763,14 @@
 /datum/crafting_recipe/roguetown/collar
 	name = "collar"
 	result = /obj/item/clothing/neck/roguetown/collar
-	reqs = list(/obj/item/natural/hide = 1)
+	reqs = list(/obj/item/natural/hide/cured = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/bell_collar
 	name = "bell Collar"
 	result = /obj/item/clothing/neck/roguetown/collar/bell_collar
 	reqs = list(
-				/obj/item/natural/hide = 1,
+				/obj/item/natural/hide/cured = 1,
 				/obj/item/jingle_bells = 1,
 				)
 	craftdiff = 0
