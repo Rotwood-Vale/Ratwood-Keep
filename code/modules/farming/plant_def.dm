@@ -128,6 +128,14 @@
 	produce_amount_min = 3
 	produce_amount_max = 4
 
+/datum/plant_def/garlick
+	name = "garlick sprouts"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "onion"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/garlick/rogue
+	produce_amount_min = 2
+	produce_amount_max = 3
+
 /datum/plant_def/cabbage
 	name = "cabbages"
 	icon = 'icons/roguetown/misc/crops.dmi'
