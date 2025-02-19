@@ -536,7 +536,8 @@
 	tastes = list("sugar and crispy dough" = 1)
 	foodtype = SUGAR | GRAIN | DAIRY
 	rotprocess = SHELFLIFE_EXTREME
-	eat_effect = list(/datum/status_effect/buff/snackbuff, /datum/status_effect/buff/sweet)
+	eat_effect = /datum/status_effect/buff/snackbuff
+	extra_eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/rogue/pastry/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -746,7 +747,8 @@
 	slice_batch = TRUE
 	slice_sound = TRUE 
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = list(/datum/status_effect/buff/greatsnackbuff, /datum/status_effect/buff/sweet)
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice
@@ -758,7 +760,8 @@
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 3
-	eat_effect = list(/datum/status_effect/buff/greatsnackbuff, /datum/status_effect/buff/sweet)
+	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
 
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice/plated
@@ -793,7 +796,8 @@
 	slice_batch = TRUE
 	slice_sound = TRUE 
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = list(/datum/status_effect/buff/snackbuff, /datum/status_effect/buff/sweet)
+	eat_effect = /datum/status_effect/buff/snackbuff 
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice
@@ -805,7 +809,8 @@
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 2
-	eat_effect = list(/datum/status_effect/buff/snackbuff, /datum/status_effect/buff/sweet)
+	eat_effect = /datum/status_effect/buff/snackbuff 
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
 
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice/plated
