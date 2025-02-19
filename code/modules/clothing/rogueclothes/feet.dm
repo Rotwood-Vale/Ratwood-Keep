@@ -155,7 +155,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/zizo
 	max_integrity = 500
-	name = "Darksteel boots"
+	name = "darksteel boots"
 	desc = "Plate boots. Called forth from the edge of what should be known. In Her name."
 	icon_state = "zizoboots"
 

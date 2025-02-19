@@ -317,6 +317,7 @@
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 
 /obj/item/clothing/under/roguetown/platelegs/zizo
+	max_integrity = 600
 	name = "darksteel garments"
 	desc = "Leg garments worn by true anointed of the Dame of Progress. In Her name."
 	icon_state = "zizocloth"
