@@ -18,8 +18,8 @@
 /datum/statpack/wildcard/austere
 	name = "Austere"
 	desc = "You've kept your humors balanced, your body honed and mind sharp enough. Fate has left you mostly unchanged, in every way."
-/*
+
 /datum/statpack/wildcard/virtuous
 	name = "Virtuous"
-	desc = "The breadth of my being is one of a singular, defining virtue. \n (Allows access to 'virtues', special traits/quirks that replace the bonus normally given by a statpack.)"
-*/
+	desc = "The breadth of my being is one of many, distinguished talents. \n (Allows access to 'virtues', special traits/quirks that replace the bonus normally given by a statpack.)"
+

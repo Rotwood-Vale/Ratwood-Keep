@@ -103,6 +103,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_spellpoints(1)
+			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 			H.change_stat("endurance", 2)
 			H.change_stat("intelligence", 3)
 			H.change_stat("speed", 3)

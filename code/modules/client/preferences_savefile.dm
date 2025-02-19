@@ -347,11 +347,18 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 /datum/preferences/proc/_load_virtue(S)
 	var/virtue_type
+	var/virtuetwo_type
 	S["virtue"] >> virtue_type
+	S["virtuetwo"] >> virtuetwo_type
 	if (virtue_type)
 		virtue = new virtue_type()
 	else
 		virtue = new /datum/virtue/none
+
+	if( virtuetwo_type)
+		virtuetwo = new virtuetwo_type
+	else
+		virtuetwo = new /datum/virtue/none
 
 /datum/preferences/proc/_load_loadout(S)
 	var/loadout_type
@@ -622,6 +629,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["pronouns"] , pronouns)
 	WRITE_FILE(S["statpack"] , statpack.type)
 	WRITE_FILE(S["virtue"] , virtue.type)
+	WRITE_FILE(S["virtuetwo"], virtuetwo.type)
 	if(loadout)
 		WRITE_FILE(S["loadout"] , loadout.type)
 	else

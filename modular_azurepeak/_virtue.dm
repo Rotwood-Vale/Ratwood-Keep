@@ -30,7 +30,7 @@ GLOBAL_LIST_EMPTY(virtues)
 	if (!LAZYLEN(added_traits))
 		return
 	for(var/trait in added_traits)
-		ADD_TRAIT(recipient, trait, "[type]")
+		ADD_TRAIT(recipient, trait, TRAIT_VIRTUE)
 
 /datum/virtue/proc/handle_skills(mob/living/carbon/human/recipient)
 	if (!recipient.mind || !LAZYLEN(added_skills))

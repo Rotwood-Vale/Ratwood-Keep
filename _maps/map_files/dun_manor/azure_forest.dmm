@@ -14,6 +14,14 @@
 /obj/item/quiver/arrows,
 /obj/item/quiver/arrows,
 /obj/item/quiver/arrows,
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
+/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
+/obj/item/quiver/arrows,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter/woods)
 "ad" = (
@@ -1705,6 +1713,7 @@
 /obj/item/clothing/mask/rogue/wildguard,
 /obj/item/clothing/mask/rogue/wildguard,
 /obj/item/flashlight/flare/torch/lantern,
+/obj/item/rope/chain,
 /obj/item/rope/chain,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
@@ -5921,6 +5930,9 @@
 /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick,
 /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick,
 /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick,
+/obj/item/rogueweapon/huntingknife/idagger/steel,
+/obj/item/rogueweapon/huntingknife/idagger/steel,
+/obj/item/rogueweapon/huntingknife/idagger/steel,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter/woods)
 "WL" = (
@@ -6226,6 +6238,7 @@
 /obj/item/clothing/mask/rogue/wildguard,
 /obj/structure/rogue/trophy/deer,
 /obj/item/flashlight/flare/torch/lantern,
+/obj/item/rope/chain,
 /obj/item/rope/chain,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;

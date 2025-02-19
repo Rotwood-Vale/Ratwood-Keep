@@ -214,6 +214,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
 			ADD_TRAIT(H, TRAIT_ZOMBIE_IMMUNE, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 			H.cmode_music = 'sound/music/combat_cult.ogg'
 			if(H.age == AGE_OLD)

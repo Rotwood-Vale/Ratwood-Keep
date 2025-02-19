@@ -140,8 +140,26 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			return
 		if(!ishuman(src))
 			return
+		var/success = FALSE
+		var/obscured_name = FALSE 
+
+		var/static/list/unknown_names = list(
+		"Unknown",
+		"Unknown Man",
+		"Unknown Woman",
+		)
+		
 		var/mob/living/carbon/human/H = src
 		var/mob/living/carbon/human/user = usr
+
+		if(H.get_visible_name() in unknown_names)
+			obscured_name = TRUE
+
+		if(get_dist(user, H) <= 2 + clamp(floor(((user.STAPER - 10) / 2)),-1, 2) && (!obscured_name || H.client?.prefs.masked_examine))
+			success = TRUE
+		if(!success)
+			to_chat(user, span_info("They've moved too far away or put a mask on!"))
+			return
 		user.visible_message("[user] begins assessing [src].")
 		if(do_mob(user, src, (40 - (user.STAINT - 10) - (user.STAPER - 10) - user.mind?.get_skill_level(/datum/skill/misc/reading)), double_progress = TRUE))
 			var/is_guarded = HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)	//Will scramble Stats and prevent skills from being shown
@@ -340,6 +358,9 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 
 /proc/defense_report(var/obj/item/clothing/C, var/stupid, var/normal, var/smart, var/stupid_string)
 	var/list/str = list()
+	if(!istype(C, /obj/item/clothing))
+		str += "<br>---------------------------<br>"
+		return str
 	if(C.armor)
 		var/defense = "<u><b>ABSORPTION: </b></u><br>"
 		var/datum/armor/def_armor = C.armor

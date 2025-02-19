@@ -1,6 +1,6 @@
 /datum/virtue/combat/magical_potential
 	name = "Arcyne Potential"
-	desc = "I grasped the basics of arcyne magic at an early age, and have been able to prestidigitate for as long as I can remember."
+	desc = "I grasped the basics of arcyne magic at an early age, and have been able to prestidigitate for as long as I can remember. Combat-oriented classes get a weaker version of this virtue."
 	added_skills = list(/datum/skill/magic/arcane = 1)
 
 /datum/virtue/combat/magical_potential/apply_to_human(mob/living/carbon/human/recipient)
@@ -17,7 +17,7 @@
 
 /datum/virtue/combat/devotee
 	name = "Devotee"
-	desc = "Though not officially of the Church, my relationship with my chosen Patron is strong enough to grant me the most minor of their blessings. I've also kept a psycross of my deity."
+	desc = "Though not officially of the Church, my relationship with my chosen Patron is strong enough to grant me the most minor of their blessings. I've also kept a psycross of my deity. Combat-oriented classes get a weaker version of this virtue."
 	added_skills = list(/datum/skill/magic/holy = 1)
 
 /datum/virtue/combat/devotee/apply_to_human(mob/living/carbon/human/recipient)
@@ -166,7 +166,7 @@
 
 /datum/virtue/combat/guarded
 	name = "Guarded"
-	desc = "I have long kept my true capabilities and vices a secret. Sometimes being deceptively weak can save one's lyfe. Such a virtue allows me to avoid and perform feints easier."
+	desc = "I have long kept my true capabilities and vices a secret. Sometimes being deceptively weak can save one's lyfe. Such a virtue allows me to avoid and perform feints easier. My skills cannot be assessed, and I keep my Inhumen faith hidden even from the most keen eyes."
 	added_traits = list(TRAIT_DECEIVING_MEEKNESS)
 
 /*/datum/virtue/combat/impervious
@@ -182,3 +182,13 @@
 
 /datum/virtue/combat/rotcured/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.update_body() // applies the rot skin tone stuff
+
+/datum/virtue/combat/dualwielder
+	name = "Dual Wielder"
+	desc = "Whether it was by the Naledi scholars, Etruscan privateers or even the Kazengan senseis. I've been graced with the knowledge of how to wield two weapons at once, making my offense more formidable, at the expense of my defense. When I wield two identical type weapons, I roll attacks twice, but so does the enemy against me. I've also learned to become ambidextrous, ignoring any off-hand penalties."
+	added_traits = list(TRAIT_DUALWIELDER)
+
+/datum/virtue/combat/sharp
+	name = "Sentinel of Wits"
+	desc = "Whether it's by having an annoying sibling that kept prodding me with a stick, or years of study and observation, I've become adept at both parrying and dodging stronger opponents, by learning their moves and studying them. My own attacks however, still rely on true training of my weapons. \n I convert INT into dodge and parry chance, every 2 INT points above 10 adding 10% additional chance. Does not count artificial buffs to INT from potions or substances."
+	added_traits = list(TRAIT_SENTINELOFWITS)
