@@ -1982,7 +1982,6 @@
 #include "modular_azurepeak\code\game\objects\effects\temporary_visuals\miracles.dm"
 #include "modular_azurepeak\code\game\objects\effects\temporary_visuals\music.dm"
 #include "modular_azurepeak\code\game\objects\items\gwstrap.dm"
-#include "modular_azurepeak\code\game\objects\items\javelinbag.dm"
 #include "modular_azurepeak\code\game\objects\items\mundanities.dm"
 #include "modular_azurepeak\code\game\objects\items\quicksilver.dm"
 #include "modular_azurepeak\code\game\objects\items\ritechalk.dm"

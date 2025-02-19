@@ -40,7 +40,7 @@
 			return FALSE
 
 /obj/item/quiver/attackby(obj/A, loc, params)
-	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
+	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue/arrow))
 		if(arrows.len < max_storage)
 			if(ismob(loc))
 				var/mob/M = loc
@@ -112,3 +112,70 @@
 	update_icon()
 */
 
+
+/obj/item/quiver/javelin
+	name = "javelinbag"
+	desc = ""
+	icon_state = "javelinbag0"
+	item_state = "javelinbag"
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	slot_flags = ITEM_SLOT_BACK
+
+/obj/item/quiver/javelin/attack_turf(turf/T, mob/living/user)
+	if(arrows.len >= max_storage)
+		to_chat(user, span_warning("My [src.name] is full!"))
+		return
+	to_chat(user, span_notice("I begin to gather the ammunition..."))
+	for(var/obj/item/ammo_casing/caseless/rogue/javelin in T.contents)
+		if(do_after(user, 5))
+			if(!eatarrow(javelin))
+				break
+
+/obj/item/quiver/javelin/attackby(obj/A, loc, params)
+	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue/javelin))
+		if(arrows.len < max_storage)
+			if(ismob(loc))
+				var/mob/M = loc
+				M.doUnEquip(A, TRUE, src, TRUE, silent = TRUE)
+			else
+				A.forceMove(src)
+			arrows += A
+			update_icon()
+		else
+			to_chat(loc, span_warning("Full!"))
+		return
+	..()
+
+/obj/item/quiver/javelin/attack_right(mob/user)
+	if(arrows.len)
+		var/obj/O = arrows[arrows.len]
+		arrows -= O
+		O.forceMove(user.loc)
+		user.put_in_hands(O)
+		update_icon()
+		return TRUE
+
+/obj/item/quiver/javelin/examine(mob/user)
+	. = ..()
+	if(arrows.len)
+		. += span_notice("[arrows.len] inside.")
+
+/obj/item/quiver/javelin/update_icon()
+	if(arrows.len)
+		icon_state = "javelinbag1"
+	else
+		icon_state = "javelinbag0"
+
+/obj/item/quiver/javelins/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/ammo_casing/caseless/rogue/javelin/A = new()
+		arrows += A
+	update_icon()
+
+/obj/item/quiver/javelins/steel/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/item/ammo_casing/caseless/rogue/javelin/steel/A = new()
+		arrows += A
+	update_icon()

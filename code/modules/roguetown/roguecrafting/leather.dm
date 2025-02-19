@@ -53,7 +53,7 @@
 
 /datum/crafting_recipe/roguetown/leather/javelinbag
 	name = "javelin bag"
-	result = /obj/item/javelinbag
+	result = /obj/item/quiver/javelin
 	reqs = list(/obj/item/reagent_containers/food/snacks/tallow =1,
 				/obj/item/rope = 1)
 	sellprice = 30
