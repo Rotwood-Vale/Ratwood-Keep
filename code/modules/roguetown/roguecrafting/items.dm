@@ -776,7 +776,7 @@
 	craftdiff = 0
 
 // BOUQUETS & CROWNS
-/*
+
 /datum/crafting_recipe/roguetown/bouquet_rosa
 	name = "rosa bouquet"
 	result = /obj/item/bouquet/rosa
@@ -834,7 +834,7 @@
 	craftdiff = 0
 	verbage_simple = "tied"
 	verbage = "ties"
-*/
+
 /datum/crafting_recipe/roguetown/candle/eora
 	name = "eora's candle (x3)"
 	result = list(
