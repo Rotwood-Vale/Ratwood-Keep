@@ -171,7 +171,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"
-	desc = "An iron cross of PSYDON, who lives on in his daughter Astrata and her nine siblings. In His final moments, He struck a bargain with mankind: never allow His name to fade from the earth, and He will one day return."
+	desc = "An iron cross of PSYDON, whose will is like tempered metal and lives on in the eternal war of his Inquisition. In His final moments, He struck a bargain with mankind: never allow His name to fade from the earth, and He will one day return."
 	icon_state = "psicross"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/neck.dmi'
 	//dropshrink = 0.75
@@ -288,7 +288,7 @@
 
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden psycross"
-	desc = "A golden cross of PSYDON, who lives on in his daughter Astrata and her nine siblings. The Ten carry His will, yet His followers understand that their virtues stem from one single source, and that they must prepare the world for His inevitable return."
+	desc = "A golden cross of PSYDON, the antithesis to heresy and patron of mankind. The Ten carry His will, yet His followers understand that their virtues stem from one single source, and that they must prepare the world for His inevitable return."
 	icon_state = "psicrossg"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
