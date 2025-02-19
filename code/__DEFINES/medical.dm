@@ -144,6 +144,6 @@
 /// Wound has been cleaned and will become infected more slowly
 #define WOUND_CLEANLINESS_CLEAN 1
 /// Wound is still dirty and needs to be cleaned
-#define WOUND_CLEANLINESS_DIRTY 3
+#define WOUND_CLEANLINESS_DIRTY 5
 /// Wound has become filthy and really really needs to be cleaned
-#define WOUND_CLEANLINESS_FILTHY 4
+#define WOUND_CLEANLINESS_FILTHY 10
