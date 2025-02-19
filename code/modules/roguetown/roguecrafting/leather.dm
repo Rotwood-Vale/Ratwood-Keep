@@ -17,7 +17,8 @@
 /datum/crafting_recipe/roguetown/leather/corset
 	name = "corset"
 	result = /obj/item/clothing/suit/roguetown/armor/corset
-	reqs = list()
+	reqs = list(/obj/item/natural/hide = 1,
+				/obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
 	sellprice = 15
 	craftdiff = 2
