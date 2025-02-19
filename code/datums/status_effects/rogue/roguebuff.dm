@@ -37,8 +37,6 @@
 	effectedstats = list("constitution" = 1,"endurance" = 1)
 	duration = 10 MINUTES
 
-
-
 /atom/movable/screen/alert/status_effect/buff/greatsnackbuff
 	name = "Great Snack!"
 	desc = "Nothing like a great and nutritious snack to help you on that final strech. I feel invigorated."
@@ -64,6 +62,8 @@
 /datum/status_effect/buff/mealbuff/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/goodmeal)
+	if(owner.has_status_effect(/datum/status_effect/buff/greatmealbuff))
+		owner.remove_status_effect(/datum/status_effect/buff/mealbuff)
 
 /datum/status_effect/buff/greatmealbuff
 	id = "greatmeal"
