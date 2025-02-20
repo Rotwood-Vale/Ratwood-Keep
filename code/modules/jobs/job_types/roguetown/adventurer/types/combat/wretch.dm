@@ -135,7 +135,7 @@
 
 
 		if("Poacher")
-			to_chat(H, span_warning("You have rejected society and its laws, choosing life in the wilderness instead. Simple thieving highwayman or freedom fighter, you take from those who have and give to the have-nots. Fancy, how that includes yourself!"))
+			to_chat(H, span_warning("You have rejected society and its laws, choosing life in the wilderness instead. Simple thieving highwayman or freedom fighter, you take from those who have and give to the have-nots. Fancy, how the latter includes yourself!"))
 			head = /obj/item/clothing/head/roguetown/roguehood/darkgreen
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
@@ -167,28 +167,30 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
-			H.cmode_music = 'sound/music/combat_vaquero.ogg'
+			H.cmode_music = 'sound/music/combat_poacher.ogg'
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_OUTLAW, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_WOODSMAN, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_OUTDOORSMAN, TRAIT_GENERIC)
-			var/weapons = list("Dagger","Axe", "Goedendag")
+			var/weapons = list("Dagger","Axe", "Cudgel", "My Bow Is Enough")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			H.set_blindness(0)
 			switch(weapon_choice)
 				if("Dagger")
-					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 					beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 				if("Axe")
-					H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 					beltr = /obj/item/rogueweapon/stoneaxe/woodcut
-				if ("Goedendag")
-					H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-					beltr = /obj/item/rogueweapon/mace/goden
-			H.change_stat("strength", 1)
+				if ("Cudgel")
+					H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+					beltr = /obj/item/rogueweapon/mace/cudgel
+				if ("My Bow Is Enough")
+					H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+					head = /obj/item/clothing/head/roguetown/duelhat
 			H.change_stat("endurance", 1)
 			H.change_stat("perception", 2)
-			H.change_stat("speed", 1)
+			H.change_stat("speed", 2)
 			GLOB.outlawed_players += H.real_name
 
 		if("Heretic")
