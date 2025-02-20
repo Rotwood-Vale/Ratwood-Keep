@@ -15,10 +15,8 @@
 	turns_per_move = 5
 	response_help_continuous = "passes through"
 	response_help_simple = "pass through"
-	maxHealth = 50
-	health = 50
-	layer = 16
-	plane = 16
+	maxHealth = HAUNT_HEALTH
+	health = HAUNT_HEALTH
 	spacewalk = TRUE
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
@@ -46,6 +44,11 @@
 	canparry = TRUE
 	retreat_health = null
 	var/obj/structure/bonepile/slavepile
+
+	food_type = list(/obj/item/reagent_containers/food/snacks, /obj/item/bodypart)	
+	can_have_ai = FALSE //disable native ai
+	AIStatus = AI_OFF
+	ai_controller = /datum/ai_controller/haunt
 
 /mob/living/simple_animal/hostile/rogue/haunt/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE
@@ -122,7 +125,7 @@
 
 /obj/structure/bonepile/Initialize()
 	. = ..()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 	soundloop.start()
 //	for(var/i in 1 to maxhaunts)
 	spawn_haunt()
@@ -177,7 +180,7 @@
 
 /mob/living/simple_animal/hostile/rogue/haunt/Initialize()
 	. = ..()
-	set_light(2, 2, "#c0523f")
+	set_light(2, 2, 2, l_color = "#c0523f")
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 
@@ -222,7 +225,7 @@
 
 /mob/living/simple_animal/hostile/rogue/haunt/AttackingTarget()
 	. = ..()
-	if(. && prob(8) && iscarbon(target))
+	if(. && prob(10) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Immobilize(50)
 		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
@@ -239,3 +242,5 @@
 	chargetime = 0
 	penfactor = 10
 	swingdelay = 8
+	clickcd = HAUNT_ATTACK_SPEED
+

@@ -5,10 +5,12 @@
 	icon_state = ""
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = null
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/roguestatue/gold
 	name = "gold statue"
-	desc = "Made of heavy, gleaming gold!"
+	desc = "A statue made of heavy, gleaming gold!"
 	icon_state = "gstatue1"
 	smeltresult = /obj/item/ingot/gold
 	sellprice = 120
@@ -19,7 +21,7 @@
 
 /obj/item/roguestatue/gold/loot
 	name = "gold statuette"
-	desc = "Made of heavy, gleaming gold!"
+	desc = "A statue made of heavy, gleaming gold!"
 	icon_state = "lstatue1"
 	sellprice = 45
 
@@ -30,7 +32,7 @@
 
 /obj/item/roguestatue/silver
 	name = "silver statue"
-	desc = "Made of pure, shimmering silver!"
+	desc = "A statue made of pure, shimmering silver!"
 	icon_state = "sstatue1"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 90
@@ -44,7 +46,7 @@
 	desc = "An unyielding statue of resilient steel."
 	icon_state = "ststatue1"
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 60
+	sellprice = 40
 
 /obj/item/roguestatue/steel/Initialize()
 	. = ..()
@@ -55,7 +57,7 @@
 	desc = "A forged statue of cast iron!"
 	icon_state = "istatue1"
 	smeltresult = /obj/item/ingot/iron
-	sellprice = 40
+	sellprice = 20
 
 /obj/item/roguestatue/iron/Initialize()
 	. = ..()

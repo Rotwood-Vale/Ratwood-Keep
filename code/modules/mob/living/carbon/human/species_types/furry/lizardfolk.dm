@@ -5,17 +5,18 @@
 	name = "Sissean"
 	id = "lizardfolk"
 	desc = "<b>Sissean</b><br>\
-	Sisseans are semi-aquatic reptilian humanoids.\
-	Their skin is covered in scales and varied in color from dark green through to shades of brown and gray.\
-	Taller than humans and powerfully built, sisseans are often between 6 and 7 feet tall.\
-	Sisseans have non-prehensile muscular tails that grow to three or four feet in length, and these are used for balance.\
-	They also have sharp claws and teeth."
+	Sisseans are semi-aquatic reptilian humanoids. \
+	Their flesh is covered in scales varying in color from dark green to shades of brown and gray. \
+	Taller than humans and powerfully built, sisseans are often between 6 and 7 feet tall. \
+	Sisseans have non-prehensile muscular tails that grow to three or four feet in length, and these are used for balance. \
+	They also have sharp claws and teeth.<br>\
+	(+1 Constitution, +1 Endurance)"
 	skin_tone_wording = "Skin Colors"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
-	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fma.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male
@@ -32,7 +33,7 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	race_bonus = list(STAT_CONSTITUTION = 1)
+	race_bonus = list(STAT_CONSTITUTION = 1, STAT_ENDURANCE = 1)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'
@@ -67,6 +68,7 @@
 		/datum/customizer/organ/tail/lizard,
 		/datum/customizer/organ/tail_feature/lizard_spines,
 		/datum/customizer/organ/snout/lizard,
+		/datum/customizer/organ/ears/lizard,
 		/datum/customizer/organ/frills/lizard,
 		/datum/customizer/organ/horns/humanoid/sissean,
 		/datum/customizer/organ/testicles/anthro,
@@ -91,6 +93,7 @@
 		/datum/body_marking/tiger/dark,
 		/datum/body_marking/drake_eyes,
 		/datum/body_marking/tonage,
+		/datum/body_marking/nose,
 	)
 	languages = list(
 		/datum/language/common,

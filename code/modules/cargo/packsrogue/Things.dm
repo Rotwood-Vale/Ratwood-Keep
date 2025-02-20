@@ -25,22 +25,26 @@
 	cost = 5
 	contains = list(/obj/item/needle)
 
+/datum/supply_pack/rogue/Things/hknife
+	name = "Hunting Knife"
+	cost = 5
+	contains = list(/obj/item/rogueweapon/huntingknife)
+
 /datum/supply_pack/rogue/Things/cloth
 	name = "Cloth"
-	cost = 10
-	contains = list(/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth,
-	/obj/item/natural/cloth)
+	cost = 2
+	contains = list(/obj/item/natural/cloth)
 
 /datum/supply_pack/rogue/Things/Waterskin
 	name = "Waterskin"
 	cost = 10
 	contains = list(/obj/item/reagent_containers/glass/bottle/waterskin)
+
+/datum/supply_pack/rogue/Things/gwstrap
+	name = "Greatweapon Strap"
+	cost = 15
+	contains = list(/obj/item/gwstrap)
+
 
 /datum/supply_pack/rogue/Things/Lamp
 	name = "Lamptern"
@@ -60,17 +64,17 @@
 
 /datum/supply_pack/rogue/Things/ozium
 	name = "Ozium"
-	cost = 5
+	cost = 15
 	contains = list(/obj/item/reagent_containers/powder/ozium)
 
 /datum/supply_pack/rogue/Things/moondust
 	name = "Moon Dust"
-	cost = 10
+	cost = 15
 	contains = list(/obj/item/reagent_containers/powder/moondust)
 
 /datum/supply_pack/rogue/Things/spice
 	name = "Spice"
-	cost = 20
+	cost = 15
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 
@@ -81,5 +85,5 @@
 
 /datum/supply_pack/rogue/Things/Dragonscale
 	name = "Dragonscale Necklace"
-	cost = 750
+	cost = 900
 	contains = list(/obj/item/clothing/neck/roguetown/blkknight)

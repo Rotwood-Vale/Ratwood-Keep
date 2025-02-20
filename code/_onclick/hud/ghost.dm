@@ -47,7 +47,7 @@
 							// Store the current time for the player
 							GLOB.job_respawn_delays[G.ckey] = world.time + target_job.same_job_respawn_delay
 
-				G.returntolobby()
+				G.returntolobby(0)
 
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
@@ -55,7 +55,7 @@
 
 /atom/movable/screen/ghost/reenter_corpse/Click()
 	var/mob/dead/observer/G = usr
-	G.client?.admin_ghost()
+	G.reenter_corpse()
 
 /atom/movable/screen/ghost/teleport
 	name = "Teleport"
@@ -96,9 +96,11 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/grain
-	using.hud = src
-	static_inventory += using
+	grain = new /atom/movable/screen/grain
+	grain.hud = src
+	static_inventory += grain
+	if(owner.client?.prefs?.grain == TRUE)
+		grain.alpha = 55
 
 	scannies = new /atom/movable/screen/scannies
 	scannies.hud = src
@@ -161,9 +163,11 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/grain
-	using.hud = src
-	static_inventory += using
+	grain = new /atom/movable/screen/grain
+	grain.hud = src
+	static_inventory += grain
+	if(owner.client?.prefs?.grain == TRUE)
+		grain.alpha = 55
 
 	scannies = new /atom/movable/screen/scannies
 	scannies.hud = src
@@ -195,9 +199,11 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/grain
-	using.hud = src
-	static_inventory += using
+	grain = new /atom/movable/screen/grain
+	grain.hud = src
+	static_inventory += grain
+	if(owner.client?.prefs?.grain == TRUE)
+		grain.alpha = 55
 
 	scannies = new /atom/movable/screen/scannies
 	scannies.hud = src

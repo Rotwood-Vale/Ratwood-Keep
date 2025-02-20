@@ -10,7 +10,7 @@
 	maximum_possible_slots = 1
 	pickprob = 5
 
-	category_tags = list(CTAG_PILGRIM)
+	category_tags = list(CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/farmermaster/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -37,7 +37,12 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		pants = null
-	backpack_contents = list(/obj/item/seeds/wheat=1,/obj/item/seeds/apple=1,/obj/item/ash=1)
+	backpack_contents = list(
+						/obj/item/seeds/wheat=1,
+						/obj/item/seeds/apple=1,
+						/obj/item/ash=1,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	beltl = /obj/item/rogueweapon/sickle
 	beltr = /obj/item/flint
 	backr = /obj/item/rogueweapon/hoe

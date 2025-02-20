@@ -26,29 +26,33 @@
 				I = L.get_active_held_item()
 				if(I?.associated_skill)
 					theirskill = L.mind.get_skill_level(I.associated_skill)
-		if(ourskill > theirskill)
-			if(istype(user.rmb_intent, /datum/rmb_intent/feint))
-				perc += (ourskill - theirskill)*15
-			else
-				perc += (ourskill - theirskill)*10
-	if(user.STAINT < L.STAINT)
-		perc -= 15
-	if(L.d_intent == INTENT_DODGE)
-		perc = 0
+		perc += (ourskill - theirskill)*15 	//skill is of the essence
+		perc += (user.STAINT - L.STAINT)*10	//but it's also mostly a mindgame
 	if(!L.cmode)
 		perc = 0
 	if(L.has_status_effect(/datum/status_effect/debuff/feinted))
 		perc = 0
 	if(user.has_status_effect(/datum/status_effect/debuff/feintcd))
 		perc -= rand(10,30)
+	if(HAS_TRAIT(L,TRAIT_DECEIVING_MEEKNESS))
+		perc -= rand(20,40)
+	if(HAS_TRAIT(user,TRAIT_DECEIVING_MEEKNESS))
+		perc += rand(10,20)
 	user.apply_status_effect(/datum/status_effect/debuff/feintcd)
-	perc = CLAMP(perc, 0, 99)
-	if(prob(perc))
-		L.apply_status_effect(/datum/status_effect/debuff/feinted)
-		L.changeNext_move(4)
-		L.Immobilize(5)
-		to_chat(user, span_notice("[L] fell for my feint attack!"))
-		to_chat(L, span_danger("I fall for [user]'s feint attack!"))
+	perc = CLAMP(perc, 0, 90)
+	if(prob(perc)) //feint intent increases the immobilize duration significantly
+		if(istype(user.rmb_intent, /datum/rmb_intent/feint))
+			L.apply_status_effect(/datum/status_effect/debuff/feinted)
+			L.changeNext_move(10)
+			L.Immobilize(12)
+			to_chat(user, span_notice("[L] fell for my feint attack!"))
+			to_chat(L, span_danger("I fall for [user]'s feint attack!"))
+		else
+			L.apply_status_effect(/datum/status_effect/debuff/feinted)
+			L.changeNext_move(4)
+			L.Immobilize(5)
+			to_chat(user, span_notice("[L] fell for my feint attack!"))
+			to_chat(L, span_danger("I fall for [user]'s feint attack!"))
 	else
 		if(user.client?.prefs.showrolls)
 			to_chat(user, span_warning("[L] did not fall for my feint... [perc]%"))

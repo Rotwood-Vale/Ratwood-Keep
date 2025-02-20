@@ -72,7 +72,7 @@
 
 /datum/special_trait/night_owl
 	name = "Night Owl"
-	greet_text = span_notice("I've always preferred Noc over her sister")
+	greet_text = span_notice("I've always preferred Noc over his other half.")
 	weight = 100
 
 /datum/special_trait/night_owl/on_apply(mob/living/carbon/human/character, silent)
@@ -216,7 +216,7 @@
 
 /datum/special_trait/languagesavant
 	name = "Polyglot"
-	greet_text = span_notice("I have always picked up on languages easily, even those that are forbidden to mortals.")
+	greet_text = span_notice("I have always picked up on languages easily, even those that are forbidden to mortals... except that accursed beastial chatter. What even is that nonsense?")
 	weight = 100
 
 /datum/special_trait/languagesavant/on_apply(mob/living/carbon/human/character, silent)
@@ -225,7 +225,6 @@
 	character.grant_language(/datum/language/hellspeak)
 	character.grant_language(/datum/language/celestial)
 	character.grant_language(/datum/language/orcish)
-	character.grant_language(/datum/language/beast)
 	character.grant_language(/datum/language/draconic)
 
 /datum/special_trait/civilizedbarbarian
@@ -408,15 +407,6 @@
 
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
 	make_outlaw(character.real_name, TRUE)
-
-/datum/special_trait/sillyvoice
-	name = "Annoying"
-	greet_text = span_sans("People really hate my voice for some reason.")
-	weight = 100
-
-/datum/special_trait/sillyvoice/on_apply(mob/living/carbon/human/character)
-	ADD_TRAIT(character, TRAIT_COMICSANS, "[type]")
-	character.dna.add_mutation(WACKY)
 
 /datum/special_trait/unlucky
 	name = "Unlucky"

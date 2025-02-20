@@ -15,14 +15,31 @@
 /datum/crafting_recipe/roguetown/alchemy/ozium
 	name = "Ozium"
 	result = list(/obj/item/reagent_containers/powder/ozium)
-	reqs = list(/obj/item/ash = 2, /datum/reagent/berrypoison = 2, /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 2)
+	reqs = list(/obj/item/ash = 2, /datum/reagent/berrypoison = 2, /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 1)
 	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/alchemy/ozium_3x
+	name = "Ozium (x3)"
+	result = list(/obj/item/reagent_containers/powder/ozium,
+					/obj/item/reagent_containers/powder/ozium,
+					/obj/item/reagent_containers/powder/ozium)
+	reqs = list(/obj/item/ash = 3, /datum/reagent/berrypoison = 3, /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 2)
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/alchemy/moon
 	name = "Moondust"
 	result = list(/obj/item/reagent_containers/powder/moondust)
-	reqs = list(/obj/item/ash = 2, /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 2, /datum/reagent/berrypoison = 2)
+	reqs = list(/obj/item/ash = 2, /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1, /datum/reagent/berrypoison = 2)
 	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/alchemy/moon_3x
+	name = "Moondust (x3)"
+	result = list(/obj/item/reagent_containers/powder/moondust,
+					/obj/item/reagent_containers/powder/moondust,
+					/obj/item/reagent_containers/powder/moondust
+				)
+	reqs = list(/obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 2, /datum/reagent/berrypoison = 3)
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/alchemy/salt
 	name = "Salt Pile"
@@ -36,44 +53,24 @@
 	reqs = list(/obj/item/ash = 1, /datum/reagent/water = 10, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1)
 	craftdiff = 0
 
-/datum/crafting_recipe/roguetown/alchemy/manna_powder
-	name = "Manna Powder"
-	result = list(/obj/item/reagent_containers/powder/mana)
-	reqs = list(/obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/fish/eel = 1)
-	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/alchemy/manna_powder_3x
-	name = "3x Manna Powder"
-	result = list(
-				/obj/item/reagent_containers/powder/mana,
-				/obj/item/reagent_containers/powder/mana,
-				/obj/item/reagent_containers/powder/mana,
-				)
-	reqs = list(/obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/fish/eel = 2)
-	craftdiff = 3
-
-/datum/crafting_recipe/roguetown/alchemy/health_powder
-	name = "Health Powder"
-	result = list(/obj/item/reagent_containers/powder/health)
-	reqs = list(/obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1, /obj/item/natural/worms/leech = 1)
-	craftdiff = 4
-
-/datum/crafting_recipe/roguetown/alchemy/health_powder_3x
-	name = "3x Health Powder"
-	result = list(
-				/obj/item/reagent_containers/powder/health,
-				/obj/item/reagent_containers/powder/health,
-				/obj/item/reagent_containers/powder/health,
-				)
-	reqs = list(/obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 3, /obj/item/natural/worms/leech = 2)
+/datum/crafting_recipe/roguetown/alchemy/quicksilver
+	name = "quicksilver"
+	result = list(/obj/item/quicksilver = 1)
+	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/bloodied = 1, /datum/reagent/water/blessed = 45, /obj/item/natural/cloth = 1, /obj/item/ingot/silver = 1)
 	craftdiff = 4
 
 /// bottle craft
 
-
 /datum/crafting_recipe/roguetown/alchemy/glassbottles
-	name = "2x glass bottles"
-	result = list(/obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle)
+	name = "alchemy bottles"
+	result = list(/obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical, /obj/item/reagent_containers/glass/alchemical)
+	reqs = list(/obj/item/natural/stone = 1, /obj/item/natural/dirtclod = 1)
+	craftdiff = 1
+	verbage_simple = "forge"
+
+/datum/crafting_recipe/roguetown/alchemy/glassbottles2
+	name = "glass bottles"
+	result = list(/obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/bottle)
 	reqs = list(/obj/item/natural/stone = 1, /obj/item/natural/dirtclod = 1)
 	craftdiff = 1
 	verbage_simple = "forge"
@@ -183,3 +180,11 @@
 	reqs = list(/obj/item/roguegem/diamond = 2, /obj/item/rogueore/iron = 1, /obj/item/rogueore/coal = 1)
 	craftdiff = 6
 	verbage_simple = "transmute"
+
+/datum/crafting_recipe/roguetown/alchemy/alchmort
+	name = "alchemical mortar"
+	tools = list()
+	result = list(/obj/item/mortar = 1)
+	reqs = list(/obj/item/natural/stone = 3, /obj/item/rogueore/iron = 1)
+	verbage_simple = "fabricate"
+	verbage = "fabricates"

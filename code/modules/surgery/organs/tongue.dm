@@ -19,7 +19,8 @@
 		/datum/language/orcish,
 		/datum/language/draconic,
 		/datum/language/canilunzt,
-		/datum/language/thievescant
+		/datum/language/thievescant,
+		/datum/language/grenzelhoftian
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -238,3 +239,10 @@
 		else
 			new_message += message[i]
 	speech_args[SPEECH_MESSAGE] = new_message
+
+/obj/item/organ/tongue/wild_tongue
+	name = "wild tongue"
+
+/obj/item/organ/tongue/moth
+	name = "moth tongue"
+	say_mod = "flutters"

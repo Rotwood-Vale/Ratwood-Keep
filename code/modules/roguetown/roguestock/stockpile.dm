@@ -10,18 +10,6 @@
 	importexport_amt = 10
 	passive_generation = 5
 
-/datum/roguestock/stockpile/stone
-	name = "Stone"
-	desc = "High quality rocks of stone used for construction."
-	item_type = /obj/item/natural/stone
-	held_items = list(2, 0)
-	payout_price = 2
-	withdraw_price = 4
-	transport_fee = 3
-	export_price = 4
-	importexport_amt = 10
-	passive_generation = 5
-
 /datum/roguestock/stockpile/coal
 	name = "Coal"
 	desc = "Chunks of coal used for fuel and alloying."
@@ -121,10 +109,10 @@
 	desc = "Stripped hide from animals."
 	item_type = /obj/item/natural/hide
 	held_items = list(0, 0)
-	payout_price = 10
-	withdraw_price = 15
-	transport_fee = 3
-	export_price = 15
+	payout_price = 8
+	withdraw_price = 12
+	transport_fee = 2
+	export_price = 12
 	importexport_amt = 5
 	passive_generation = 2
 
@@ -133,12 +121,24 @@
 	desc = "Hide with a long winter coat from animals."
 	item_type = /obj/item/natural/fur
 	held_items = list(0, 0)
-	payout_price = 15
-	withdraw_price = 23
-	transport_fee = 5
-	export_price = 23
+	payout_price = 10
+	withdraw_price = 15
+	transport_fee = 4
+	export_price = 15
 	importexport_amt = 5
 	passive_generation = 1
+
+/datum/roguestock/stockpile/cured
+	name = "Cured Leather"
+	desc = "Cured Leather ready to be worked."
+	item_type = /obj/item/natural/hide/cured
+	held_items = list(2, 0)
+	payout_price = 3
+	withdraw_price = 7
+	transport_fee = 3
+	export_price = 7
+	importexport_amt = 10
+	passive_generation = 3
 
 /datum/roguestock/stockpile/salt
 	name = "Salt"
@@ -175,6 +175,18 @@
 	importexport_amt = 10
 	passive_generation = 3
 
+/datum/roguestock/stockpile/garlick
+	name = "Garlick"
+	desc = "A pungent root vegetable."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/garlick/rogue
+	held_items = list(0, 4)
+	payout_price = 2
+	withdraw_price = 3
+	transport_fee = 1
+	export_price = 3
+	importexport_amt = 10
+	passive_generation = 3
+
 /datum/roguestock/stockpile/apple
 	name = "Apple"
 	desc = "Harvested produce."
@@ -197,6 +209,18 @@
 	transport_fee = 2
 	export_price = 8
 	importexport_amt = 5
+	passive_generation = 2
+
+/datum/roguestock/stockpile/fishmince
+	name = "Fish Mince"
+	desc = "Descaled and ground fish meat."
+	item_type = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	held_items = list(0, 0)
+	payout_price = 2
+	withdraw_price = 4
+	transport_fee = 1
+	export_price = 3
+	importexport_amt = 10
 	passive_generation = 2
 
 /datum/roguestock/stockpile/poultry
@@ -232,6 +256,18 @@
 	withdraw_price = 5
 	transport_fee = 1
 	export_price = 5
+	importexport_amt = 5
+	passive_generation = 2
+
+/datum/roguestock/stockpile/tallow
+	name = "Tallow"
+	desc = "Shelf-stabilized fatty tissue."
+	item_type = /obj/item/reagent_containers/food/snacks/tallow
+	held_items = list(0, 0)
+	payout_price = 1
+	withdraw_price = 2
+	transport_fee = 1
+	export_price = 2
 	importexport_amt = 5
 	passive_generation = 2
 

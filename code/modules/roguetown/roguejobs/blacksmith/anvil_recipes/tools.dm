@@ -4,9 +4,9 @@
 
 // --------- IRON -----------
 /datum/anvil_recipe/tools/surgery/surgerytools
-	name = "Surgeon's Bag (+1 iron +1 hide)"
+	name = "Surgeon's Bag (+1 Iron, +1 Cured Leather)"
 	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/hide)
+	additional_items = list(/obj/item/ingot/iron, /obj/item/natural/hide/cured)
 	created_item = /obj/item/storage/belt/rogue/surgery_bag/full
 
 /datum/anvil_recipe/tools/iron/torch
@@ -127,14 +127,14 @@
 /datum/anvil_recipe/tools/iron/fork
 	name = "Iron Fork x3"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/kitchen/ironfork
+	created_item = /obj/item/kitchen/fork/ironfork
 	createditem_num = 3
 	craftdiff = 1
 
 /datum/anvil_recipe/tools/iron/spoon
 	name = "Iron Spoon x3"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/kitchen/ironspoon
+	created_item = /obj/item/kitchen/spoon/ironspoon
 	createditem_num = 3
 	craftdiff = 1
 
@@ -143,6 +143,12 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/reagent_containers/glass/bowl/iron
 	craftdiff = 1
+
+/datum/anvil_recipe/tools/scissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/huntingknife/scissors
+	i_type = "Tools"
 
 // --------- Steel -----------
 
@@ -170,6 +176,13 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/huntingknife/cleaver
 	createditem_num = 1
+
+/datum/anvil_recipe/tools/steelscissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/scissors/steel
+	i_type = "Tools"
+
 
 // --------- SILVER -----------
 

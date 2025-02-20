@@ -1,3 +1,5 @@
+GLOBAL_LIST_INIT(stress_messages, world.file2list("strings/rt/stress_messages.txt"))
+
 /mob/proc/add_stress(event_type)
 	return
 
@@ -76,8 +78,14 @@
 		if(diff_abs > 1)
 			if(ascending)
 				to_chat(src, span_smallred("I gain stress."))
+				if(diff_abs > 2)
+					if(!rogue_sneaking || alpha >= 100)
+						play_stress_indicator()
 			else
 				to_chat(src, span_smallgreen("I gain peace."))
+				if(diff_abs > 2)
+					if(!rogue_sneaking || alpha >= 100)
+						play_relief_indicator()
 
 	var/old_threshold = get_stress_threshold(oldstress)
 	var/new_threshold = get_stress_threshold(new_stress)
@@ -89,30 +97,34 @@
 				apply_status_effect(/datum/status_effect/mood/vgood)
 			if(STRESS_THRESHOLD_GOOD)
 				if(ascending)
-					to_chat(src, span_info("I no longer feel as good"))
+					to_chat(src, span_info("I no longer feel as good."))
 				else
-					to_chat(src, span_green("I feel good"))
+					to_chat(src, span_green("I feel good."))
 				apply_status_effect(/datum/status_effect/mood/good)
 			if(STRESS_THRESHOLD_NEUTRAL)
 				if(ascending)
-					to_chat(src, span_info("I no longer feel good"))
+					to_chat(src, span_info("I no longer feel good."))
 				else
-					to_chat(src, span_info("I no longer feel stressed"))
+					to_chat(src, span_info("I no longer feel stressed."))
 			if(STRESS_THRESHOLD_STRESSED)
 				if(ascending)
 					to_chat(src, span_red("I'm getting stressed..."))
 				else
-					to_chat(src, span_red("I'm stressed a little less, now"))
+					to_chat(src, span_red("I'm stressed a little less, now."))
 				apply_status_effect(/datum/status_effect/mood/bad)
 			if(STRESS_THRESHOLD_STRESSED_BAD)
 				if(ascending)
-					to_chat(src, span_boldred("I'm getting at my limit.."))
+					to_chat(src, span_boldred("I'm getting at my limit..."))
 				else
-					to_chat(src, span_boldred("I'm not freaking out that badly anymore..."))
+					to_chat(src, span_boldred("I'm not freaking out that badly anymore."))
 				apply_status_effect(/datum/status_effect/mood/vbad)
 			if(STRESS_THRESHOLD_FREAKING_OUT)
 				to_chat(src, span_boldred("I'M FREAKING OUT!!!"))
+				play_mental_break_indicator()
 				apply_status_effect(/datum/status_effect/mood/vbad)
+
+	if(new_stress >=15)
+		random_stress_message()
 
 	if(new_stress >= 20)
 		roll_streak_freakout()
@@ -124,8 +136,8 @@
 	if(!client)
 		return
 	/// Update grain alpha
-	var/atom/movable/screen/grain_obj = hud_used.grain
-	grain_obj.alpha = 55 + (new_stress * 1.5)
+	//var/atom/movable/screen/grain_obj = hud_used.grain
+	//grain_obj.alpha = 55 + (new_stress * 1.5)
 
 	var/fade_progress = 0
 	if(new_stress < 5)
@@ -199,6 +211,15 @@
 			continue
 		animate(whole_screen, transform = newmatrix, time = 1, easing = QUAD_EASING)
 		animate(transform = -newmatrix, time = 30, easing = QUAD_EASING)
+
+/mob/living/carbon/proc/random_stress_message()
+	if(mob_timers["next_stress_message"])
+		if(world.time < mob_timers["next_stress_message"])
+			return
+	mob_timers["next_stress_message"] = world.time + rand(80 SECONDS, 160 SECONDS) //not as important as freakout
+	var/stress_message_picked = pick(GLOB.stress_messages)
+	to_chat(client, span_danger("<b>[stress_message_picked]</b>"))
+
 
 /mob/living/carbon/get_stress_amount()
 	if(HAS_TRAIT(src, TRAIT_NOMOOD))

@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/thug
-	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	category_tags = list(CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/thug/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -30,7 +30,8 @@
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/workervest
-	beltr = /obj/item/rogueweapon/mace/cudgel // It claims to be a weapon for brigands but bandits don't actually use them...
+	beltr = /obj/item/rogueweapon/mace/cudgel
+	beltl = /obj/item/flashlight/flare/torch
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", -2)
 	H.change_stat("speed", -1)

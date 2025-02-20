@@ -10,9 +10,9 @@
 
 /datum/customizer/organ/horns/humanoid
 	customizer_choices = list(/datum/customizer_choice/organ/horns/humanoid)
+	allows_disabling = TRUE
 
 /datum/customizer/organ/horns/humanoid/sissean
-	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/horns/humanoid
@@ -57,7 +57,8 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
-		/datum/sprite_accessory/horns/tiefling
+		/datum/sprite_accessory/horns/tiefling,
+		/datum/sprite_accessory/horns/tieflingalt
 		)
 
 /datum/customizer/organ/horns/demihuman
@@ -105,7 +106,8 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
-		/datum/sprite_accessory/horns/tiefling
+		/datum/sprite_accessory/horns/tiefling,
+		/datum/sprite_accessory/horns/tieflingalt
 		)
 
 /datum/customizer/organ/horns/anthro
@@ -153,5 +155,6 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
-		/datum/sprite_accessory/horns/tiefling
+		/datum/sprite_accessory/horns/tiefling,
+		/datum/sprite_accessory/horns/tieflingalt
 		)

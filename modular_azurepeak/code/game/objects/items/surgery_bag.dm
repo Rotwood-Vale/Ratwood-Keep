@@ -11,33 +11,32 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
+	component_type = /datum/component/storage/concrete/roguetown/surgery_bag
+	populate_contents = list(
+		/obj/item/rogueweapon/surgery/scalpel,
+		/obj/item/rogueweapon/surgery/saw,
+		/obj/item/rogueweapon/surgery/hemostat/first,
+		/obj/item/rogueweapon/surgery/hemostat/second, //Different types, for the purpose of belt overlays.
+		/obj/item/rogueweapon/surgery/retractor,
+		/obj/item/rogueweapon/surgery/bonesetter,
+		/obj/item/rogueweapon/surgery/cautery,
+		/obj/item/needle
+	)
 
-/obj/item/storage/belt/rogue/surgery_bag/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 30
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 9
-		STR.not_while_equipped = TRUE
-		STR.set_holdable(list(/obj/item/rogueweapon/surgery, /obj/item/needle, /obj/item/natural/worms/leech, /obj/item/reagent_containers/lux))
+/obj/item/storage/belt/rogue/surgery_bag/full/physician
+	populate_contents = list(
+	/obj/item/rogueweapon/surgery/scalpel,
+	/obj/item/rogueweapon/surgery/saw,
+	/obj/item/rogueweapon/surgery/hemostat/first,
+	/obj/item/rogueweapon/surgery/hemostat/second,
+	/obj/item/rogueweapon/surgery/retractor,
+	/obj/item/rogueweapon/surgery/bonesetter,
+	/obj/item/rogueweapon/surgery/cautery,
+	/obj/item/needle/pestra //Gets the special needle!
+	)
 
-/obj/item/storage/belt/rogue/surgery_bag/full/PopulateContents()
-	new /obj/item/rogueweapon/surgery/scalpel(src)
-	new /obj/item/rogueweapon/surgery/saw(src)
-	new /obj/item/rogueweapon/surgery/hemostat/first(src)
-	new /obj/item/rogueweapon/surgery/hemostat/second(src) //Different types, for the purpose of belt overlays.
-	new /obj/item/rogueweapon/surgery/retractor(src)
-	new /obj/item/rogueweapon/surgery/bonesetter(src)
-	new /obj/item/rogueweapon/surgery/cautery(src)
-	new /obj/item/needle(src)
-
-/obj/item/storage/belt/rogue/surgery_bag/full/physician/PopulateContents()
-	new /obj/item/rogueweapon/surgery/scalpel(src)
-	new /obj/item/rogueweapon/surgery/saw(src)
-	new /obj/item/rogueweapon/surgery/hemostat/first(src)
-	new /obj/item/rogueweapon/surgery/hemostat/second(src)
-	new /obj/item/rogueweapon/surgery/retractor(src)
-	new /obj/item/rogueweapon/surgery/bonesetter(src)
-	new /obj/item/rogueweapon/surgery/cautery(src)
-	new /obj/item/needle/pestra(src) //Gets the special needle!
+/obj/item/storage/belt/rogue/pouch/medicine
+	populate_contents = list(
+	/obj/item/needle,
+	/obj/item/natural/bundle/cloth
+	)

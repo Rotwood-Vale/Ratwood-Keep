@@ -1,7 +1,7 @@
 
 /obj/item/bomb
 	name = "bottle bomb"
-	desc = "Dangerous explosion, in a bottle."
+	desc = "A fiery explosion waiting to be coaxed from its glass prison."
 	icon_state = "bbomb"
 	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
@@ -12,6 +12,8 @@
 	var/fuze = 50
 	var/lit = FALSE
 	var/prob2fail = 23
+	grid_width = 32
+	grid_height = 64
 
 
 /obj/item/bomb/spark_act()
@@ -62,7 +64,7 @@
 				snuff()
 			else
 				playsound(T, 'sound/items/firesnuff.ogg', 100)
-				new /obj/item/shard (T)
+				new /obj/item/natural/glass/shard (T)
 	qdel(src)
 
 /obj/item/bomb/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)

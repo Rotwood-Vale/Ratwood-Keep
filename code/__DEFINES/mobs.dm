@@ -79,8 +79,6 @@
 #define DEFAULT_BODYPART_ICON_ROBOTIC 'icons/mob/augmentation/augments.dmi'
 
 #define MONKEY_BODYPART "monkey"
-#define ALIEN_BODYPART "alien"
-#define LARVA_BODYPART "larva"
 #define DEVIL_BODYPART "devil"
 /*see __DEFINES/inventory.dm for bodypart bitflag defines*/
 
@@ -378,8 +376,6 @@
 #define MIRROR_PRIDE  (1<<2)
 //Race swap wizard event
 #define RACE_SWAP     (1<<3)
-//ERT spawn template (avoid races that don't function without correct gear)
-#define ERT_SPAWN     (1<<4)
 //xenobio black crossbreed
 #define SLIME_EXTRACT (1<<5)
 //Wabbacjack staff projectiles
@@ -414,12 +410,17 @@
 #define SKIN_COLOR_YUETHINDRYNN "2f2f38"
 
 //WOOD ELF SKIN TONES
+#define SKIN_COLOR_GRENZEL_WOODS "fff0e9"
 #define SKIN_COLOR_DANDELION_CREEK "ffe0d1"
 #define SKIN_COLOR_ROSEVEIL "fcccb3"
 #define SKIN_COLOR_AZUREGROVE "edc6b3"
 #define SKIN_COLOR_ARBORSHOME "e2b9a3"
+#define SKIN_COLOR_ETRUSCAN_SWAMPS "d9a284"
 #define SKIN_COLOR_ALMONDVALLE "c9a893"
 #define SKIN_COLOR_WALNUT_WOODS "ba9882"
+#define SKIN_COLOR_SHALVINE_FORESTS "ac8369"
+#define SKIN_COLOR_LALVE_STEPPES "9c6f52"
+#define SKIN_COLOR_NALEDI_COAST "4e3729"
 #define SKIN_COLOR_TIMBERBORN "5d4c41"
 #define SKIN_COLOR_LOTUS_COAST "eae1C8"
 
@@ -451,12 +452,20 @@
 #define SKIN_COLOR_ABYSSAL "22577a"
 
 //HALF ELF SKIN TONES
+#define SKIN_COLOR_GRENZEL_AVAR "fff0e9"
 #define SKIN_COLOR_TIMBER_GRONN "ffe0d1"
 #define SKIN_COLOR_GIZA_AZURE "fcccb3"
 #define SKIN_COLOR_WALNUT_STINE "edc6b3"
 #define SKIN_COLOR_ETRUSTCAN_DANDELION "e2b9a3"
 #define SKIN_COLOR_NALEDI_BORN "5a4a41"
 #define SKIN_COLOR_KAZE_LOTUS "E0D5B8"
+#define SKIN_COLOR_ETRUSCA_LIRVAS "d9a284"
+#define SKIN_COLOR_FREE_FOLK "c9a893"
+#define SKIN_COLOR_AVAR_BORNE "ba9882"
+#define SKIN_COLOR_SHALVINE_AZURE "ac8369"
+#define SKIN_COLOR_LALVE_NALEDI "9c6f52"
+#define SKIN_COLOR_NALEDI_OTAVA "4e3729"
+#define SKIN_COLOR_HAMMER_GRONN "5d4c41"
 
 //HALF ORK SKIN TONES
 #define SKIN_COLOR_BLOOD_AXE "A84C4F"

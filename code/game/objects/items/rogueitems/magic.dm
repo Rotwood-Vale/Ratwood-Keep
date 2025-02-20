@@ -15,6 +15,9 @@
 	dropshrink = 0.6
 	resistance_flags = FIRE_PROOF
 
+	grid_height = 32
+	grid_width = 32
+
 	var/mob/current_owner
 	var/last_scry
 
@@ -58,7 +61,7 @@
 		to_chat(user, span_boldwarning("You focus your thoughts on the orb, but feel a sharp pain!"))
 		visible_message("\The [src] shatters!")
 		user.flash_fullscreen("redflash1")
-		new /obj/item/shard(get_turf(src))
+		new /obj/item/natural/glass/shard(get_turf(src))
 		playsound(src, "shatter", 70, TRUE)
 		qdel(src)
 		return

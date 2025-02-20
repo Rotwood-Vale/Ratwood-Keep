@@ -16,6 +16,7 @@
 	min_pq = 2 //mentor role, not a high PQ requirement but not zero
 	max_pq = null
 	give_bank_account = 16
+	round_contrib_points = 3
 
 	cmode_music = 'sound/music/combat_bog.ogg'
 
@@ -69,6 +70,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
 		H.change_stat("perception", 2)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", -1)

@@ -123,6 +123,19 @@
 		return
 	qdel(src)
 
+/mob/living/carbon/human
+	var/mob/living/carbon/human/hostagetaker //Stores the person that took us hostage in a var, allows us to force them to attack the mob and such
+	var/mob/living/carbon/human/hostage //What hostage we have
+
+/mob/living/carbon/human/proc/attackhostage()
+	if(!istype(hostagetaker.get_active_held_item(), /obj/item/rogueweapon))
+		return
+	var/obj/item/rogueweapon/WP = hostagetaker.get_active_held_item()
+	WP.attack(src, hostagetaker)
+	hostagetaker.visible_message("<span class='danger'>\The [hostagetaker] attacks \the [src] reflexively!</span>")
+	hostagetaker.hostage = null
+	hostagetaker = null
+
 /obj/item/grabbing/attack(mob/living/M, mob/living/user)
 	if(M != grabbed)
 		return FALSE
@@ -221,6 +234,11 @@
 	to_chat(user, span_warning("I twist [C]'s [parse_zone(sublimb_grabbed)].[C.next_attack_msg.Join()]"))
 	C.next_attack_msg.Cut()
 	log_combat(user, C, "limbtwisted [sublimb_grabbed] ")
+	if(limb_grabbed.status == BODYPART_ROBOTIC && armor_block == 0) //Twisting off prosthetics.
+		C.visible_message(span_danger("[C]'s prosthetic [parse_zone(sublimb_grabbed)] twists off![C.next_attack_msg.Join()]"), \
+					span_userdanger("My prosthetic [parse_zone(sublimb_grabbed)] was twisted off of me![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("I twisted [C]'s prosthetic [parse_zone(sublimb_grabbed)] off.[C.next_attack_msg.Join()]"))
+		limb_grabbed.drop_limb(TRUE)
 
 /obj/item/grabbing/proc/twistitemlimb(mob/living/user) //implies limb_grabbed and sublimb are things
 	var/mob/living/M = grabbed
@@ -412,12 +430,17 @@
 			drinklimb(C)
 	return 1
 
+///Chewing after bite
 /obj/item/grabbing/bite/proc/bitelimb(mob/living/carbon/human/user) //implies limb_grabbed and sublimb are things
 	if(!user.Adjacent(grabbed))
 		qdel(src)
 		return
 	if(world.time <= user.next_move)
 		return
+	/*if(!user.can_bite()) // If this is enabled, check can_bite or else won't be able to chew after biting
+		to_chat(user, span_warning("My mouth has something in it."))
+		return FALSE*/
+
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/mob/living/carbon/C = grabbed
 	var/armor_block = C.run_armor_check(sublimb_grabbed, d_type)
@@ -428,17 +451,43 @@
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
 		playsound(C.loc, "smallslash", 100, FALSE, -1)
 		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
-		if(user.mind)
+		if(user.mind && caused_wound)
+			/*
+				WEREWOLF CHEW.
+			*/
 			if(istype(user.dna.species, /datum/species/werewolf))
 				caused_wound?.werewolf_infect_attempt()
 				if(prob(30))
 					user.werewolf_feed(C)
+
+			/*
+				ZOMBIE CHEW. ZOMBIFICATION
+			*/
 			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
-			if(zombie_antag)
+			if(zombie_antag && zombie_antag.has_turned)
 				zombie_antag.last_bite = world.time
-				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
-				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
-					user.mind.adjust_triumphs(1)
+				var/datum/antagonist/zombie/existing_zombie = C.mind?.has_antag_datum(/datum/antagonist/zombie) //If the bite target is a zombie
+				if(!existing_zombie && caused_wound?.zombie_infect_attempt())   // infect_attempt on wound
+					to_chat(user, span_danger("You feel your gift trickling into [C]'s wound...")) //message to the zombie they infected the target
+/*
+	Code below is for a zombie smashing the brains of unit. The code expects the brain to be part of the head which is not the case with AP. Kept for posterity in case it's used in an overhaul.
+*/
+/*			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
+				var/mob/living/carbon/human/H = C
+				if(istype(H))
+					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob/living/carbon/human, zombie_infect_attempt))
+				if(C.stat)
+					if(istype(limb_grabbed, /obj/item/bodypart/head))
+						var/obj/item/bodypart/head/HE = limb_grabbed
+						if(HE.brain)
+							QDEL_NULL(HE.brain)
+							C.visible_message("<span class='danger'>[user] consumes [C]'s brain!</span>", \
+								"<span class='userdanger'>[user] consumes my brain!</span>", "<span class='hear'>I hear a sickening sound of chewing!</span>", COMBAT_MESSAGE_RANGE, user)
+							to_chat(user, "<span class='boldnotice'>Braaaaaains!</span>")
+							if(!user.mob_timers["zombie_tri"])
+								user.mob_timers["zombie_tri"] = world.time
+							playsound(C.loc, 'sound/combat/fracture/headcrush (2).ogg', 100, FALSE, -1)
+							return*/
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 	C.visible_message(span_danger("[user] bites [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \
@@ -468,7 +517,7 @@
 		return
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		if(istype(H.wear_neck, /obj/item/clothing/neck/roguetown/psicross/silver))
+		if(istype(H.wear_neck, /obj/item/clothing/neck/roguetown/psicross/silver) || HAS_TRAIT(H, TRAIT_SILVER_BLESSED))
 			to_chat(user, span_userdanger("SILVER! HISSS!!!"))
 			return
 	last_drink = world.time
@@ -488,9 +537,9 @@
 			else
 				if(VVictim)
 					to_chat(user, span_warning("It's vitae, just like mine."))
-				else if (C.vitae_bank > 500)
+				else if (C.vitae_pool > 500)
 					C.blood_volume = max(C.blood_volume-45, 0)
-					C.vitae_bank -= 500
+					C.vitae_pool -= 500
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
 						if(H.virginity)

@@ -39,9 +39,12 @@
 /obj/item/roguecoin/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	playsound(loc, 'sound/foley/coins1.ogg', 100, TRUE, -2)
 	scatter(get_turf(src))
-	..()
+	..() 
 
 /obj/item/roguecoin/proc/scatter(turf/T)
+	if(istransparentturf(T))
+		scatter(GET_TURF_BELOW(T))
+		return
 	pixel_x = rand(-8, 8)
 	pixel_y = rand(-5, 5)
 	if(isturf(T) && quantity > 1)
@@ -164,7 +167,10 @@
 /obj/item/roguecoin/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/roguecoin))
 		var/obj/item/roguecoin/G = I
-		merge(G, user)
+		if(item_flags & IN_STORAGE)
+			merge(G, user)
+		else
+			G.merge(src, user)
 		return
 	return ..()
 
@@ -207,6 +213,10 @@
 /obj/item/roguecoin/gold/pile/Initialize()
 	. = ..()
 	set_quantity(rand(4,19))
+
+/obj/item/roguecoin/gold/virtuepile/Initialize()
+	. = ..()
+	set_quantity(rand(8,12))
 
 #undef CTYPE_GOLD
 #undef CTYPE_SILV

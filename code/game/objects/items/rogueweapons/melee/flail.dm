@@ -8,7 +8,7 @@
 	sharpness = IS_BLUNT
 	//dropshrink = 0.75
 	wlength = WLENGTH_NORMAL
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/whipsflails
 	anvilrepair = /datum/skill/craft/weaponsmithing
@@ -18,6 +18,8 @@
 	throwforce = 5
 	wdefense = 0
 	minstr = 4
+	grid_width = 32
+	grid_height = 96
 
 /datum/intent/flail/strike
 	name = "strike"
@@ -44,10 +46,10 @@
 /datum/intent/flail/strike/smash
 	name = "smash"
 	chargetime = 5
+	chargedrain = 2
 	no_early_release = TRUE
 	penfactor = 80
 	recovery = 10
-	swingdelay = 7
 	damfactor = 1.2
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
@@ -60,12 +62,12 @@
 /datum/intent/flail/strike/smashrange
 	name = "ranged smash"
 	chargetime = 25
+	chargedrain = 2
 	no_early_release = TRUE
 	penfactor = 50
 	recovery = 30
-	damfactor = 1.5
+	damfactor = 1.2
 	reach = 2
-	swingdelay = 8
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
 	icon_state = "insmash"
@@ -132,7 +134,7 @@
 	force = 21
 	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	name = "whip"
-	desc = "A leather whip, built to last with an sharp stone for a tip"
+	desc = "A leather whip. Built to last, with a sharp stone for a tip."
 	icon_state = "whip"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
@@ -147,6 +149,8 @@
 	throwforce = 5
 	wdefense = 0
 	minstr = 6
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/rogueweapon/whip/getonmobprop(tag)
 	. = ..()
@@ -165,6 +169,11 @@
 	minstr = 11
 	icon_state = "gwhip"
 
+/obj/item/rogueweapon/whip/antique/psywhip
+	name = "Daybreak"
+	desc = "I am wrath. I am silver. I am the mercy of HIM."
+	icon_state = "psywhip"
+	is_silver = TRUE
 
 /obj/item/rogueweapon/flail/peasantwarflail
 	force = 10

@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/vagabond/goatherd
 	category_tags = list(CTAG_VAGABOND)
-	horse = /mob/living/simple_animal/hostile/retaliate/rogue/goat/tame
+	horse = /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/tame
 
 /datum/outfit/job/roguetown/vagabond/goatherd/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -49,8 +49,10 @@
 /datum/intent/Destroy()
 	if(chargedloop)
 		chargedloop.stop()
-	if(mastermob.curplaying == src)
-		mastermob.curplaying = null
+	if(mastermob?.curplaying == src)
+		mastermob?.curplaying = null
+	mastermob = null
+	masteritem = null
 	return ..()
 
 /datum/intent/proc/examine(mob/user)
@@ -150,7 +152,7 @@
 	if(mastermob)
 		if(chargedloop)
 			if(!istype(chargedloop))
-				chargedloop = new chargedloop(list(mastermob))
+				chargedloop = new chargedloop(mastermob)
 
 /datum/intent/proc/on_charge_start() //what the fuck is going on here lol
 	if(mastermob.curplaying)
@@ -158,10 +160,10 @@
 		mastermob.curplaying = null
 	if(chargedloop)
 		if(!istype(chargedloop, /datum/looping_sound))
-			chargedloop = new chargedloop(list(mastermob))
+			chargedloop = new chargedloop(mastermob)
 		else
 			chargedloop.stop()
-		chargedloop.start(chargedloop.output_atoms)
+		chargedloop.start(chargedloop.parent)
 		mastermob.curplaying = src
 
 /datum/intent/proc/on_mouse_up()
@@ -265,6 +267,12 @@
 	volume = 100
 	extra_range = 3
 
+/datum/looping_sound/invokeascendant
+	mid_sounds = list('sound/magic/chargingold.ogg')
+	mid_length = 320
+	volume = 100
+	extra_range = 5
+
 /datum/looping_sound/flailswing
 	mid_sounds = list('sound/combat/wooshes/flail_swing.ogg')
 	mid_length = 7
@@ -290,16 +298,17 @@
 	chargetime = 0
 	swingdelay = 0
 
-/datum/intent/pick
+/datum/intent/pick //now like icepick intent, we really went in a circle huh
 	name = "pick"
 	icon_state = "inpick"
 	attack_verb = list("picks","impales")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
+	penfactor = 80
 	animname = "strike"
 	item_d_type = "stab"
 	blade_class = BCLASS_PICK
 	chargetime = 0
-	swingdelay = 3
+	swingdelay = 12
 
 /datum/intent/shoot //shooting crossbows or other guns, no parrydrain
 	name = "shoot"
@@ -312,6 +321,7 @@
 	noaa = TRUE
 	charging_slowdown = 3
 	warnoffset = 20
+	var/strength_check = FALSE //used when we fire HEAVY bows
 
 /datum/intent/shoot/prewarning()
 	if(masteritem && mastermob)
@@ -328,7 +338,8 @@
 	noaa = TRUE
 	charging_slowdown = 3
 	warnoffset = 20
-
+	var/strength_check = FALSE //used when we fire HEAVY bows
+	
 /datum/intent/proc/arc_check()
 	return FALSE
 
@@ -357,7 +368,7 @@
 	candodge = TRUE
 	canparry = TRUE
 	blade_class = BCLASS_PUNCH
-	miss_text = "swings a fist at the air!"
+	miss_text = "swing a fist at the air"
 	miss_sound = "punchwoosh"
 	item_d_type = "blunt"
 
@@ -375,8 +386,23 @@
 	return
 
 /datum/intent/unarmed/claw
+	name = "claw"
+	//icon_state
+	attack_verb = list("mauls", "scratches", "claws")
+	chargetime = 0
+	animname = "blank22"
+	hitsound = list('sound/combat/hits/punch/punch (1).ogg', 'sound/combat/hits/punch/punch (2).ogg', 'sound/combat/hits/punch/punch (3).ogg')
+	misscost = 5
+	releasedrain = 5
+	swingdelay = 0
+	penfactor = 10
+	candodge = TRUE
+	canparry = TRUE
 	blade_class = BCLASS_CUT
+	miss_text = "claw at the air"
+	miss_sound = "punchwoosh"
 	item_d_type = "slash"
+	
 
 /datum/intent/unarmed/shove
 	name = "shove"
@@ -471,7 +497,7 @@
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-	miss_text = "slashes the air!"
+	miss_text = "slash the air"
 	item_d_type = "slash"
 
 /datum/intent/simple/bite
@@ -506,7 +532,7 @@
 /datum/intent/simple/spear
 	name = "spear"
 	icon_state = "instrike"
-	attack_verb = list("stabs", "skewers", "bashes")
+	attack_verb = list("stabs", "skewers")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = list("genthrust", "genstab")

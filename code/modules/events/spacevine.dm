@@ -81,7 +81,7 @@
 
 /datum/spacevine_mutation/light/on_grow(obj/structure/spacevine/holder)
 	if(holder.energy)
-		holder.set_light(severity, 0.3)
+		holder.set_light(severity, severity, 0.3)
 
 /datum/spacevine_mutation/toxicity
 	name = "toxic"
@@ -90,10 +90,8 @@
 	quality = NEGATIVE
 
 /datum/spacevine_mutation/toxicity/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(issilicon(crosser))
-		return
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
-		to_chat(crosser, span_alert("I accidentally touch the vine and feel a strange sensation."))
+		to_chat(crosser, "<span class='alert'>I accidentally touch the vine and feel a strange sensation.</span>")
 		crosser.adjustToxLoss(5)
 
 /datum/spacevine_mutation/toxicity/on_eat(obj/structure/spacevine/holder, mob/living/eater)
@@ -161,66 +159,6 @@
 	holder.set_opacity(0)
 	holder.alpha = 125
 
-/datum/spacevine_mutation/oxy_eater
-	name = "oxygen consuming"
-	hue = "#ffff88"
-	severity = 3
-	quality = NEGATIVE
-
-/datum/spacevine_mutation/oxy_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/T = holder.loc
-	if(istype(T))
-		var/datum/gas_mixture/GM = T.air
-		if(!GM.gases[/datum/gas/oxygen])
-			return
-		GM.gases[/datum/gas/oxygen][MOLES] = max(GM.gases[/datum/gas/oxygen][MOLES] - severity * holder.energy, 0)
-		GM.garbage_collect()
-
-/datum/spacevine_mutation/nitro_eater
-	name = "nitrogen consuming"
-	hue = "#8888ff"
-	severity = 3
-	quality = NEGATIVE
-
-/datum/spacevine_mutation/nitro_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/T = holder.loc
-	if(istype(T))
-		var/datum/gas_mixture/GM = T.air
-		if(!GM.gases[/datum/gas/nitrogen])
-			return
-		GM.gases[/datum/gas/nitrogen][MOLES] = max(GM.gases[/datum/gas/nitrogen][MOLES] - severity * holder.energy, 0)
-		GM.garbage_collect()
-
-/datum/spacevine_mutation/carbondioxide_eater
-	name = "CO2 consuming"
-	hue = "#00ffff"
-	severity = 3
-	quality = POSITIVE
-
-/datum/spacevine_mutation/carbondioxide_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/T = holder.loc
-	if(istype(T))
-		var/datum/gas_mixture/GM = T.air
-		if(!GM.gases[/datum/gas/carbon_dioxide])
-			return
-		GM.gases[/datum/gas/carbon_dioxide][MOLES] = max(GM.gases[/datum/gas/carbon_dioxide][MOLES] - severity * holder.energy, 0)
-		GM.garbage_collect()
-
-/datum/spacevine_mutation/plasma_eater
-	name = "toxins consuming"
-	hue = "#ffbbff"
-	severity = 3
-	quality = POSITIVE
-
-/datum/spacevine_mutation/plasma_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/T = holder.loc
-	if(istype(T))
-		var/datum/gas_mixture/GM = T.air
-		if(!GM.gases[/datum/gas/plasma])
-			return
-		GM.gases[/datum/gas/plasma][MOLES] = max(GM.gases[/datum/gas/plasma][MOLES] - severity * holder.energy, 0)
-		GM.garbage_collect()
-
 /datum/spacevine_mutation/thorns
 	name = "thorny"
 	hue = "#666666"
@@ -231,13 +169,13 @@
 	if(prob(severity) && istype(crosser) && !isvineimmune(holder))
 		var/mob/living/M = crosser
 		M.adjustBruteLoss(5)
-		to_chat(M, span_alert("I cut myself on the thorny vines."))
+		to_chat(M, "<span class='alert'>I cut myself on the thorny vines.</span>")
 
 /datum/spacevine_mutation/thorns/on_hit(obj/structure/spacevine/holder, mob/living/hitter, obj/item/I, expected_damage)
 	if(prob(severity) && istype(hitter) && !isvineimmune(holder))
 		var/mob/living/M = hitter
 		M.adjustBruteLoss(5)
-		to_chat(M, span_alert("I cut myself on the thorny vines."))
+		to_chat(M, "<span class='alert'>I cut myself on the thorny vines.</span>")
 	. =	expected_damage
 
 /datum/spacevine_mutation/woodening
@@ -256,21 +194,6 @@
 		. = expected_damage * 0.5
 	else
 		. = expected_damage
-
-/datum/spacevine_mutation/flowering
-	name = "flowering"
-	hue = "#0A480D"
-	quality = NEGATIVE
-	severity = 10
-
-/datum/spacevine_mutation/flowering/on_grow(obj/structure/spacevine/holder)
-	if(holder.energy == 2 && prob(severity) && !locate(/obj/structure/alien/resin/flower_bud_enemy) in range(5,holder))
-		new/obj/structure/alien/resin/flower_bud_enemy(get_turf(holder))
-
-/datum/spacevine_mutation/flowering/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(prob(25))
-		holder.entangle(crosser)
-
 
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
@@ -347,7 +270,7 @@
 
 //	for(var/datum/spacevine_mutation/SM in mutations)
 //		damage_dealt = SM.on_hit(src, user, I, damage_dealt) //on_hit now takes override damage as arg and returns new value for other mutations to permutate further
-//	take_damage(damage_dealt, I.damtype, "blunt", 1)
+//	take_damage(damage_dealt, I.damtype, "melee", 1)
 
 /obj/structure/spacevine/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	switch(damage_type)
@@ -366,7 +289,7 @@
 	if(prob(23) && istype(crosser) && !isvineimmune(crosser))
 		var/mob/living/M = crosser
 		M.adjustBruteLoss(5)
-		to_chat(M, span_warning("I nick myself on the thorny vines."))
+		to_chat(M, "<span class='warning'>I nick myself on the thorny vines.</span>")
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/spacevine/attack_hand(mob/user)
@@ -379,9 +302,6 @@
 	for(var/datum/spacevine_mutation/SM in mutations)
 		SM.on_hit(src, user)
 	user_unbuckle_mob(user,user)
-
-/obj/structure/spacevine/attack_alien(mob/living/user)
-	eat(user)
 
 /datum/spacevine_controller
 	var/list/obj/structure/spacevine/vines
@@ -536,14 +456,14 @@
 	for(var/datum/spacevine_mutation/SM in mutations)
 		SM.on_buckle(src, V)
 	if((V.stat != DEAD) && (V.buckled != src)) //not dead or captured
-		to_chat(V, span_danger("The vines [pick("wind", "tangle", "tighten")] around me!"))
+		to_chat(V, "<span class='danger'>The vines [pick("wind", "tangle", "tighten")] around me!</span>")
 		buckle_mob(V, 1)
 	V.adjustOxyLoss(10)
 
 /obj/structure/spacevine/proc/spread()
 	var/direction = pick(GLOB.cardinals)
 	var/turf/stepturf = get_step(src,direction)
-	if (!isspaceturf(stepturf) && stepturf.Enter(src))
+	if (stepturf.Enter(src))
 		for(var/datum/spacevine_mutation/SM in mutations)
 			SM.on_spread(src, stepturf)
 			stepturf = get_step(src,direction) //in case turf changes, to make sure no runtimes happen

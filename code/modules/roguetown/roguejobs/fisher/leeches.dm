@@ -6,9 +6,48 @@
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "leech"
 	baitpenalty = 0
-	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 5,
-					/obj/item/reagent_containers/food/snacks/fish/eel = 5,
-					/obj/item/reagent_containers/food/snacks/fish/angler = 1)
+	freshfishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/carp = 200,
+		/obj/item/reagent_containers/food/snacks/fish/sunny = 305,
+		/obj/item/reagent_containers/food/snacks/fish/salmon = 210,
+		/obj/item/reagent_containers/food/snacks/fish/eel = 160,
+		/obj/item/grown/log/tree/stick = 3,
+		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
+		/obj/item/natural/cloth = 1,
+		/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+		/obj/item/clothing/ring/gold = 1,
+		/obj/item/reagent_containers/food/snacks/smallrat = 1, //That's not a fish...?
+		/obj/item/reagent_containers/glass/bottle/rogue/wine = 1,
+		/obj/item/reagent_containers/glass/bottle/rogue = 1,		
+		/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab = 20,		
+	)
+	seafishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/cod = 230,
+		/obj/item/reagent_containers/food/snacks/fish/plaice = 180,
+		/obj/item/reagent_containers/food/snacks/fish/sole = 250,
+		/obj/item/reagent_containers/food/snacks/fish/angler = 170,
+		/obj/item/reagent_containers/food/snacks/fish/lobster = 180,
+		/obj/item/reagent_containers/food/snacks/fish/bass = 230,
+		/obj/item/reagent_containers/food/snacks/fish/clam = 50,
+		/obj/item/reagent_containers/food/snacks/fish/clownfish = 40,
+		/obj/item/grown/log/tree/stick = 3,
+		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
+		/obj/item/natural/cloth = 1,
+		/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+		/obj/item/clothing/ring/gold = 1,
+		/obj/item/reagent_containers/food/snacks/smallrat = 1, //That's not a fish...?
+		/obj/item/reagent_containers/glass/bottle/rogue/wine = 1,
+		/obj/item/reagent_containers/glass/bottle/rogue = 1,	
+		/mob/living/carbon/human/species/goblin/npc/sea = 25,
+		/mob/living/simple_animal/hostile/rogue/deepone = 30,
+		/mob/living/simple_animal/hostile/rogue/deepone/spit = 30,			
+	)
+	mudfishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/mudskipper = 200,
+		/obj/item/natural/worms/leech = 50,
+		/obj/item/clothing/ring/gold = 1,	
+		/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab = 25,			
+	)	
 	embedding = list(
 		"embed_chance" = 100,
 		"embedded_unsafe_removal_time" = 0,
@@ -25,7 +64,7 @@
 	/// How much blood we suck on on_embed_life()
 	var/blood_sucking = 2
 	/// How much toxin damage we heal on on_embed_life()
-	var/toxin_healing = 2
+	var/toxin_healing = -2
 	/// Amount of blood we have stored
 	var/blood_storage = 0
 	/// Maximum amount of blood we can store
@@ -40,6 +79,10 @@
 	if(drainage)
 		START_PROCESSING(SSobj, src)
 
+/obj/item/natural/worms/leech/update_icon()
+	. = ..()
+	icon_state = initial(icon_state)
+
 /obj/item/natural/worms/leech/process()
 	if(!drainage && !is_embedded)
 		return PROCESS_KILL
@@ -49,7 +92,7 @@
 		return FALSE
 	if(!host)
 		return FALSE
-	host.adjustToxLoss(-toxin_healing)
+	host.adjustToxLoss(toxin_healing)
 	var/obj/item/bodypart/bp = loc
 	if(giving)
 		var/blood_given = min(BLOOD_VOLUME_MAXIMUM - host.blood_volume, blood_storage, blood_sucking)
@@ -70,6 +113,32 @@
 				bp.remove_embedded_object(src)
 			else
 				host.simple_remove_embedded_object(src)
+			return TRUE
+	return FALSE
+
+/obj/item/natural/worms/leech/on_embed_life(mob/living/user, obj/item/bodypart/bodypart)
+	if(!user)
+		return
+	user.adjustToxLoss(toxin_healing)
+	if(giving)
+		var/blood_given = min(BLOOD_VOLUME_MAXIMUM - user.blood_volume, blood_storage, blood_sucking)
+		user.blood_volume += blood_given
+		blood_storage = max(blood_storage - blood_given, 0)
+		if((blood_storage <= 0) || (user.blood_volume >= BLOOD_VOLUME_MAXIMUM))
+			if(bodypart)
+				bodypart.remove_embedded_object(src)
+			else
+				user.simple_remove_embedded_object(src)
+			return TRUE
+	else
+		var/blood_extracted = min(blood_maximum - blood_storage, user.blood_volume, blood_sucking)
+		user.blood_volume = max(user.blood_volume - blood_extracted, 0)
+		blood_storage += blood_extracted
+		if((blood_storage >= blood_maximum) || (user.blood_volume <= 0))
+			if(bodypart)
+				bodypart.remove_embedded_object(src)
+			else
+				user.simple_remove_embedded_object(src)
 			return TRUE
 	return FALSE
 
@@ -185,7 +254,7 @@
 				var/picked_desc = pickweight(possible_descs)
 				possible_descs -= picked_desc
 				descs += pickweight(possible_descs)
-	toxin_healing = max(round((MAX_LEECH_EVILNESS - evilness_rating)/MAX_LEECH_EVILNESS * 2 * initial(toxin_healing), 0.1), 1)
+	toxin_healing = min(round((MAX_LEECH_EVILNESS - evilness_rating)/MAX_LEECH_EVILNESS * 2 * initial(toxin_healing), 0.1), -1)
 	blood_sucking = max(round(evilness_rating/MAX_LEECH_EVILNESS * 2 * initial(blood_sucking), 0.1), 1)
 	if(evilness_rating < 10)
 		color = pickweight(all_colors)
@@ -203,7 +272,7 @@
 	consistent = TRUE
 	drainage = 0
 	blood_sucking = 5
-	toxin_healing = 2
+	toxin_healing = -2
 	blood_storage = BLOOD_VOLUME_SURVIVE
 	blood_maximum = BLOOD_VOLUME_BAD
 
@@ -218,3 +287,6 @@
 							span_notice("I squeeze [src]. It will now extract blood."))
 
 #undef MAX_LEECH_EVILNESS
+
+/obj/item/natural/worms/leech/attack_right(mob/user)
+	return

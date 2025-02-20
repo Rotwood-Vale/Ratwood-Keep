@@ -454,3 +454,15 @@
 	icon_state = "shortnosed"
 	color_keys = 2
 	color_key_names = list("Snout", "Nose")
+
+/datum/sprite_accessory/snout/stubby
+	name = "Stubby"
+	icon_state = "stubby"
+	color_keys = 2
+	color_key_names = list("Mask", "Snout")
+
+/datum/sprite_accessory/snout/stubbyalt
+	name = "Stubby ALT"
+	icon_state = "stubbyalt"
+	color_keys = 2
+	color_key_names = list("Snout", "Nose")

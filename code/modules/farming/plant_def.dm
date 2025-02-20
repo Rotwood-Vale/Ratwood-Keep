@@ -128,6 +128,14 @@
 	produce_amount_min = 3
 	produce_amount_max = 4
 
+/datum/plant_def/garlick
+	name = "garlick sprouts"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "onion"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/garlick/rogue
+	produce_amount_min = 2
+	produce_amount_max = 3
+
 /datum/plant_def/cabbage
 	name = "cabbages"
 	icon = 'icons/roguetown/misc/crops.dmi'
@@ -143,3 +151,12 @@
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	produce_amount_min = 3
 	produce_amount_max = 4
+/datum/plant_def/poppy
+	name = "poppies"
+	icon_state = "poppy"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/poppy
+	produce_amount_min = 1
+	produce_amount_max = 2
+	maturation_nutrition = 30
+	water_drain_rate = 1 / (2 MINUTES)
+

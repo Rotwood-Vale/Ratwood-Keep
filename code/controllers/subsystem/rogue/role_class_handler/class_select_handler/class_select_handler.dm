@@ -6,11 +6,6 @@
 	//Well, we basically need to fill out our options
 
 /*
-	This is basically a int, we add one extra slot per every x amount of PQ
-*/
-	var/PQ_boost_divider = 0
-
-/*
 	This list is organized like so
 	class_cat_alloc_attempts = list(CTAG_PILGRIM = 5, CTAG_ADVENTURER = 3, etc)
 	Wherein you will have this datum attempt to roll you up 5 pilgrim category classes, and 3 adventurer class categories
@@ -59,13 +54,19 @@
 	var/special_selected = FALSE
 
 	// If this is set to true we display all the challenge classes
-	var/showing_challenge_classes = FALSE
+	var/showing_combat_classes = FALSE
 
 	//classes we rolled, basically you get a datum followed by a number in here on how many times you rerolled it.
 	var/list/rolled_classes = list()
 
+	// The register id we use
+	var/register_id = null
+
+
 // The normal route for first use of this list.
 /datum/class_select_handler/proc/initial_setup()
+	if(register_id)
+		SSrole_class_handler.add_class_register_listener(register_id, linked_client.mob)
 	assemble_the_CLASSES()
 	second_step()
 
@@ -77,6 +78,8 @@
 	browser_slop()
 
 /datum/class_select_handler/Destroy()
+	if(register_id)
+		SSrole_class_handler.remove_class_register_listener(register_id, linked_client.mob)
 	ForceCloseMenus() // force menus closed
 	// Cleanup anything holding references, aka these lists holding refs to class datums and the other two
 	linked_client = null
@@ -104,44 +107,30 @@
 			else // If we are not bypassing reqs, time to do a req check
 				for(var/datum/advclass/CUR_AZZ in subsystem_ctag_list)
 					if(rolled_classes[CUR_AZZ])
+						testing("[CUR_AZZ] is in rolled_classes")
 						continue
 					if(CUR_AZZ.check_requirements(H))
+						testing("adding [CUR_AZZ] to sortlist")
 						local_insert_sortlist += CUR_AZZ
 
 			// Time to do some picking, make sure we got things in the list we dealin with
 			if(local_insert_sortlist.len)
-				var/attempts = class_cat_alloc_attempts[SORT_CAT_KEY]
-				var/pq = get_playerquality(linked_client.ckey)
-				if(pq >= 0)
-					var/extra_attempts = clamp(FLOOR(pq / 10, 1), 0, 4) // For every 10 PQ add an extra class to pick from, up to 4 extra
-					if(pq >= 5)
-						extra_attempts += 1 // Bonus 1 class for the first 5 points for encouragement
-					if(extra_attempts > 0)
-						if(linked_client)
-							to_chat(linked_client, span_notice("My player quality grants me extra [extra_attempts] class choices."))
-						attempts += extra_attempts
 				// Make sure we aren't going to attempt to pick more than what we even have avail
-				if(attempts > local_insert_sortlist.len)
-					attempts = local_insert_sortlist.len
+				if(class_cat_alloc_attempts[SORT_CAT_KEY] > local_insert_sortlist.len)
+					testing("class cat alloc attempts is greater than sortlist")
+					class_cat_alloc_attempts[SORT_CAT_KEY] = local_insert_sortlist.len
 
-				local_insert_sortlist = sortList(local_insert_sortlist)
-				for(var/i in 1 to attempts)
+				for(var/i in 1 to class_cat_alloc_attempts[SORT_CAT_KEY])
+					testing("[rolled_classes[local_insert_sortlist[i]]] equals zero")
 					rolled_classes[local_insert_sortlist[i]] = 0
 
 				// We are plusboosting too
-				/* DISABLE plusboosting for now
-				if(class_cat_plusboost_attempts && SORT_CAT_KEY in class_cat_plusboost_attempts)
+				if(class_cat_plusboost_attempts && (SORT_CAT_KEY in class_cat_plusboost_attempts))
 					if(class_cat_plusboost_attempts[SORT_CAT_KEY])
-
-						if(PQ_boost_divider)
-							var/slot_addition = ceil(get_playerquality(linked_client.ckey)/PQ_boost_divider)
-							class_cat_plusboost_attempts[SORT_CAT_KEY] += slot_addition
-
 						for(var/i in 1 to class_cat_plusboost_attempts[SORT_CAT_KEY])
 							var/datum/advclass/boostclass = pick(local_insert_sortlist)
 							if(boostclass in rolled_classes)
 								rolled_classes[boostclass] += 1
-				*/
 
 				local_sorted_class_cache[SORT_CAT_KEY] = local_insert_sortlist
 
@@ -179,21 +168,13 @@
 	rolled_classes.Remove(filled_class)
 
 	var/list/possible_list = list()
-	// Time to sort and find our viable classes depending on what conditions we gotta deal w
-	if(class_cat_alloc_attempts && class_cat_alloc_attempts.len)
-		for(var/CTAG_CAT in filled_class.category_tags)
-			for(var/datum/advclass/new_age_datum in local_sorted_class_cache[CTAG_CAT])
-				if(new_age_datum in rolled_classes)
-					continue
-				if(new_age_datum in possible_list) // In the offchance we got the datum in two cats, we don't want to cuck them by doubling up the chance to get it
-					continue
-				possible_list += new_age_datum
-
-	// If we got forced class additions
-	if(forced_class_additions && forced_class_additions.len)
-		for(var/uninstanced_azz_types in forced_class_additions)
-			var/datum/advclass/FORCE_IT_IN = new uninstanced_azz_types
-			possible_list += FORCE_IT_IN
+	for(var/CTAG_CAT in filled_class.category_tags)
+		for(var/datum/advclass/new_age_datum in local_sorted_class_cache[CTAG_CAT])
+			if(new_age_datum in rolled_classes)
+				continue
+			if(new_age_datum in possible_list) // In the offchance we got the datum in two cats, we don't want to cuck them by doubling up the chance to get it
+				continue
+			possible_list += new_age_datum
 
 	if(possible_list.len)
 		rolled_classes[pick(possible_list)] = 0
@@ -214,10 +195,12 @@
 		return
 	//Opening tags and empty head
 	var/data = {"
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<!DOCTYPE html>
+	<html lang='en'>
 	<html>
 		<head>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 			<style>
 				@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 				@import url('https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap');
@@ -233,28 +216,55 @@
 	data += "<div id='top_handwriting'> The fates giveth... </div>"
 	data += "<div id='class_select_box_div'>"
 
-	for(var/datum/advclass/datums in rolled_classes)
-		var/plus_str = ""
-		if(rolled_classes[datums] > 0)
-			var/plus_factor = rolled_classes[datums]
+	var/mob/living/carbon/human/H = linked_client.mob
+	if(!H.job)
+		return
+	if(H.job == "Drifter" && !showing_combat_classes)
+		for(var/datum/advclass/datums in rolled_classes)
+			if(!(CTAG_ADVENTURER in datums.category_tags))
+				continue
+			var/plus_str = ""
+/*			if(rolled_classes[datums] > 0)
+				var/plus_factor = rolled_classes[datums]
 
-			for(var/i in 1 to plus_factor)
-				plus_str += "+"
-		data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='haha_skull.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='haha_skull.gif' width=32 height=32></a></div>"
+				for(var/i in 1 to plus_factor)
+					plus_str += "+" */
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>"
+	else if(!showing_combat_classes)
+		for(var/datum/advclass/datums in rolled_classes)
+			var/plus_str = ""
+/*			if(rolled_classes[datums] > 0)
+				var/plus_factor = rolled_classes[datums]
+
+				for(var/i in 1 to plus_factor)
+					plus_str += "+" */
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>"
+
 	if(special_session_queue && special_session_queue.len)
 		for(var/datum/advclass/datums in special_session_queue)
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='haha_skull.gif' width=32 height=32>[datums.name]<img class='ninetysskull' src='haha_skull.gif' width=32 height=32></a></div>"
-	if(showing_challenge_classes)
-		for(var/datum/advclass/datums in SSrole_class_handler.sorted_class_categories[CTAG_CHALLENGE])
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='haha_skull.gif' width=32 height=32>[datums.name]<img class='ninetysskull' src='haha_skull.gif' width=32 height=32></a></div>"
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>"
+
+	if(showing_combat_classes)
+		for(var/datum/advclass/datums in rolled_classes)
+			if(!(CTAG_PILGRIM in datums.category_tags))
+				continue
+			var/plus_str = ""
+/*			if(rolled_classes[datums] > 0)
+				var/plus_factor = rolled_classes[datums]
+
+				for(var/i in 1 to plus_factor)
+					plus_str += "+" */
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>"
 	data += "</div>"
 
 	//Buttondiv Segment
 	data += "<div class='footer'>"
-	data += {"
-		<a class='mo_bottom_buttons' href='?src=\ref[src];show_challenge_class=1'>[showing_challenge_classes ? "Hide Challenge Classes" : "Show Challenge Classes"]</a>
-	</div>
-	"}
+
+	if(H.job == "Drifter")
+		data += {"
+			<a class='mo_bottom_buttons' href='?src=\ref[src];show_combat_class=1'>[showing_combat_classes ? "Show Combat Classes" : "Show Pilgrim Classes"]</a>
+		</div>
+		"}
 
 	//Closing Tags
 	data += {"
@@ -267,10 +277,12 @@
 /datum/class_select_handler/proc/class_select_slop()
 
 	var/data = {"
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<!DOCTYPE html>
+	<html lang='en'>	
 	<html>
 		<head>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 			<style>
 				@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 				@import url('https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap');
@@ -279,10 +291,19 @@
 			<link rel='stylesheet' type='text/css' href='slop_menustyle2.css'>
 		</head>
 		<body>
-			<div id="top_bloc">
+            <div id="top_bloc">
 				<span class="title_shit">Class Name:</span> <span class="post_title_shit">[cur_picked_class]</span><br>
-				<span class="title_shit">Description:</span> <span class="post_title_shit">[cur_picked_class.tutorial]</span>
-			</div>
+				<span class="title_shit">Description:</span> <span class="post_title_shit">[cur_picked_class.tutorial]</span>"}
+	if(cur_picked_class.classes)
+		data += {"<br><br><span class="subclassorz">Subclasses:</span>"}
+		for(var/i in cur_picked_class.classes)
+			data += {"
+			<br><div class="subclass_title">[i]
+			<span class="subclasses">[cur_picked_class.classes[i]]</span></div>
+			"}
+		data += "<br>"
+
+	data += {"</div>
 				<div id='button_div'>
 					<a class='class_desc_YES_LINK' href='?src=\ref[src];yes_to_class_select=1;special_class=0;'>This is my background</a><br>
 					<a class='bottom_buttons' href='?src=\ref[src];no_to_class_select=1'>I reject this background</a>
@@ -291,8 +312,10 @@
 		</body>
 	</html>
 	"}
-
-	linked_client << browse(data, "window=class_select_yea;size=610x300;can_close=0;can_minimize=0;can_maximize=0;can_resize=0;titlebar=1")
+	if(!cur_picked_class.classes)
+		linked_client << browse(data, "window=class_select_yea;size=610x300;can_close=0;can_minimize=0;can_maximize=0;can_resize=0;titlebar=1")
+	else
+		linked_client << browse(data, "window=class_select_yea;size=610x405;can_close=0;can_minimize=0;can_maximize=0;can_resize=0;titlebar=1")
 
 /datum/class_select_handler/Topic(href, href_list)
 	. = ..()
@@ -335,8 +358,8 @@
 			class_select_slop()
 		return
 
-	if(href_list["show_challenge_class"])
-		showing_challenge_classes = !showing_challenge_classes
+	if(href_list["show_combat_class"])
+		showing_combat_classes = !showing_combat_classes
 		browser_slop()
 		return
 
@@ -344,6 +367,3 @@
 	if(linked_client)
 		linked_client << browse(null, "window=class_handler_main")
 		linked_client << browse(null, "window=class_select_yea")
-
-
-

@@ -1,19 +1,21 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken
+	icon = 'icons/roguetown/mob/monster/chicken.dmi'
 	name = "\improper chicken"
 	desc = ""
-	gender = FEMALE
-	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	icon_state = "chicken_brown"
 	icon_living = "chicken_brown"
 	icon_dead = "chicken_brown_dead"
+
+	gender = FEMALE
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	emote_see = list("pecks at the ground.","flaps its wings viciously.")
 	density = FALSE
 	base_intents = list(/datum/intent/simple/claw)
 	speak_chance = 2
 	turns_per_move = 5
 	faction = list("chickens")
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1, /obj/item/natural/bone = 2)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1, /obj/item/natural/bone = 2, /obj/item/alch/sinew = 1, /obj/item/alch/bone = 1, /obj/item/alch/viscera = 1)
 	var/egg_type = /obj/item/reagent_containers/food/snacks/egg
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue,/obj/item/natural/worms,/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat)
 	response_help_continuous = "pets"

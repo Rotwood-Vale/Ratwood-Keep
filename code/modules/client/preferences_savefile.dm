@@ -167,11 +167,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["triumphs"]			>> triumphs
 	S["musicvol"]			>> musicvol
 	S["anonymize"]			>> anonymize
+	S["masked_examine"]		>> masked_examine
 	S["crt"]				>> crt
+	S["grain"]				>> grain
 	S["sexable"]			>> sexable
 	S["shake"]				>> shake
 	S["mastervol"]			>> mastervol
 	S["lastclass"]			>> lastclass
+	S["prefer_old_chat"]	>> prefer_old_chat
 
 
 	S["default_slot"]		>> default_slot
@@ -257,6 +260,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["triumphs"], triumphs)
 	WRITE_FILE(S["musicvol"], musicvol)
 	WRITE_FILE(S["anonymize"], anonymize)
+	WRITE_FILE(S["masked_examine"], masked_examine)
 	WRITE_FILE(S["crt"], crt)
 	WRITE_FILE(S["sexable"], sexable)
 	WRITE_FILE(S["shake"], shake)
@@ -298,6 +302,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["pda_style"], pda_style)
 	WRITE_FILE(S["pda_color"], pda_color)
 	WRITE_FILE(S["key_bindings"], key_bindings)
+	WRITE_FILE(S["prefer_old_chat"], prefer_old_chat)
 	return TRUE
 
 
@@ -340,6 +345,21 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		statpack = GLOB.statpacks[statpack]
 		//statpack = new statpack
 
+/datum/preferences/proc/_load_virtue(S)
+	var/virtue_type
+	var/virtuetwo_type
+	S["virtue"] >> virtue_type
+	S["virtuetwo"] >> virtuetwo_type
+	if (virtue_type)
+		virtue = new virtue_type()
+	else
+		virtue = new /datum/virtue/none
+
+	if( virtuetwo_type)
+		virtuetwo = new virtuetwo_type
+	else
+		virtuetwo = new /datum/virtue/none
+
 /datum/preferences/proc/_load_loadout(S)
 	var/loadout_type
 	S["loadout"] >> loadout_type
@@ -374,6 +394,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_ethcolor"]	>> features["ethcolor"]
 	S["pronouns"]			>> pronouns
 	S["voice_type"]			>> voice_type
+	S["nickname"]			>> nickname
+	S["highlight_color"]	>> highlight_color
 
 /datum/preferences/proc/load_character(slot)
 	if(!path)
@@ -399,6 +421,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Species
 	_load_species(S)
 
+	_load_virtue(S)
 	_load_flaw(S)
 
 	// LETHALSTONE edit: jank-ass load our statpack choice
@@ -567,6 +590,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_mcolor2"]					, features["mcolor2"])
 	WRITE_FILE(S["feature_mcolor3"]					, features["mcolor3"])
 	WRITE_FILE(S["feature_ethcolor"]					, features["ethcolor"])
+	WRITE_FILE(S["nickname"]			, nickname)
+	WRITE_FILE(S["highlight_color"]		, highlight_color)
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
@@ -603,6 +628,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["voice_type"] , voice_type)
 	WRITE_FILE(S["pronouns"] , pronouns)
 	WRITE_FILE(S["statpack"] , statpack.type)
+	WRITE_FILE(S["virtue"] , virtue.type)
+	WRITE_FILE(S["virtuetwo"], virtuetwo.type)
 	if(loadout)
 		WRITE_FILE(S["loadout"] , loadout.type)
 	else

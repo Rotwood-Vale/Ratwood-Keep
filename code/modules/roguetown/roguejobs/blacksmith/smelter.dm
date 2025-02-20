@@ -22,8 +22,6 @@
 	var/actively_smelting = FALSE // Are we currently smelting?
 
 	fueluse = 30 MINUTES
-	start_fuel = 5 MINUTES
-	fuel_modifier = 0.33
 	crossfire = FALSE
 
 /obj/machinery/light/rogue/smelter/attackby(obj/item/W, mob/living/user, params)
@@ -54,7 +52,7 @@
 			return
 
 	if(W.firefuel)
-		if (..())
+		if(!(..())) //False/null if using the item as fuel. If true, we want to try smelt it so go onto next segment.
 			return
 	if(W.smeltresult)
 		if(ore.len < maxore)
@@ -171,7 +169,8 @@
 					var/alloy //moving each alloy to it's own var allows for possible additions later
 					var/steelalloy
 					var/bronzealloy
-					var/blacksteelalloy
+//					var/blacksteelalloy
+
 					for(var/obj/item/I in ore)
 						if(I.smeltresult == /obj/item/rogueore/coal)
 							steelalloy = steelalloy + 1
@@ -181,21 +180,24 @@
 							bronzealloy = bronzealloy + 1
 						if(I.smeltresult == /obj/item/ingot/copper)
 							bronzealloy = bronzealloy + 2
-						if(I.smeltresult == /obj/item/ingot/silver)
-							blacksteelalloy = blacksteelalloy + 1
-						if(I.smeltresult == /obj/item/ingot/steel)
-							blacksteelalloy = blacksteelalloy + 2
+//						if(I.smeltresult == /obj/item/ingot/silver)
+//							blacksteelalloy = blacksteelalloy + 1
+//						if(I.smeltresult == /obj/item/ingot/steel)
+//							blacksteelalloy = blacksteelalloy + 2
+
 					if(steelalloy == 7)
 						testing("STEEL ALLOYED")
+						maxore = 3 // 3 iron + 1 coal = 3 steel
 						alloy = /obj/item/ingot/steel
 					else if(bronzealloy == 7)
 						testing("BRONZE ALLOYED")
 						alloy = /obj/item/ingot/bronze
-					else if(blacksteelalloy == 7)
-						testing("BLACKSTEEL ALLOYED")
-						alloy = /obj/item/ingot/blacksteel
+//					else if(blacksteelalloy == 15)
+//						testing("BLACKSTEEL ALLOYED")
+//						alloy = /obj/item/ingot/blacksteel
 					else
 						alloy = null
+
 					if(alloy)
 						// The smelting quality of all ores added together, divided by the number of ores, and then rounded to the lowest integer (this isn't done until after the for loop)
 						var/floor_mean_quality = SMELTERY_LEVEL_SPOIL
@@ -216,7 +218,9 @@
 								ore -= I
 								ore += R
 								qdel(I)
+
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("\The [src] finished smelting."))
+					maxore = initial(maxore)
 					cooking = 31
 					actively_smelting = FALSE

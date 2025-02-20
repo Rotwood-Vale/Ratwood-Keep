@@ -1,6 +1,5 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
-	pressure_resistance = 8
 	max_integrity = 300
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
 	layer = BELOW_OBJ_LAYER
@@ -17,7 +16,7 @@
 
 /obj/structure/Initialize()
 	if (!armor)
-		armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+		armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 50, "acid" = 50)
 	. = ..()
 	if(smooth)
 		queue_smooth(src)
@@ -26,7 +25,6 @@
 	if(redstone_id)
 		GLOB.redstone_objs += src
 		. = INITIALIZE_HINT_LATELOAD
-	GLOB.cameranet.updateVisibility(src)
 
 /obj/structure/Bumped(atom/movable/AM)
 	..()
@@ -34,16 +32,40 @@
 		if(ishuman(AM))
 			var/mob/living/carbon/human/H = AM
 			if(H.dir == get_dir(H,src) && H.m_intent == MOVE_INTENT_RUN && (H.mobility_flags & MOBILITY_STAND))
-				H.Immobilize(10)
-				H.apply_damage(15, BRUTE, "chest", H.run_armor_check("chest", "blunt", damage = 15))
+				var/is_bigguy = FALSE
+				if(HAS_TRAIT(H,TRAIT_BIGGUY))
+					if(istype(src,/obj/structure/mineral_door))
+						var/obj/structure/mineral_door/S = src
+						if(S.smashable)
+							is_bigguy = TRUE
+				if(is_bigguy && obj_integrity > max_integrity / 3)
+					if(max_integrity > 1000) 	//Custom-set HP door, should be respected
+						take_damage(max_integrity / 6 + 1)
+					else
+						if(H.STASTR >= 13)	//STR adding role w/ Giant or half-orc, seems fair
+							take_damage((max_integrity / 3) * 2 + 1)
+						else 
+							take_damage(max_integrity / 3 + 1)
+					H.Immobilize(20)
+					//MESSES you up
+					H.apply_damage(200, BRUTE, "chest", H.run_armor_check("chest", "blunt", damage = 200))
+					audible_message(span_warning("\The [src] shakes under the force of a great impact!"))
+					playsound(src, "meteor", 100, TRUE)
+					addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
+				else if(is_bigguy && obj_integrity <= max_integrity / 3)	//This charge will wreck it
+					take_damage(max_integrity)
+					H.Immobilize(5)
+					H.apply_damage(80, BRUTE, "chest", H.run_armor_check("chest", "blunt", damage = 80))
+				else	//Normal charge
+					H.Immobilize(10)
+					H.apply_damage(15, BRUTE, "head", H.run_armor_check("head", "blunt", damage = 15))
+					playsound(src, "genblunt", 100, TRUE)
+					addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
 				H.toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
-				playsound(src, "genblunt", 100, TRUE)
 				H.visible_message(span_warning("[H] runs into [src]!"), span_warning("I run into [src]!"))
-				addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
 
 
 /obj/structure/Destroy()
-	GLOB.cameranet.updateVisibility(src)
 	if(isturf(loc))
 		for(var/mob/living/user in loc)
 			if(climb_offset)
@@ -100,8 +122,6 @@
 			return
 	if(!istype(O, /obj/item) || user.get_active_held_item() != O)
 		return
-	if(iscyborg(user))
-		return
 	if(!user.dropItemToGround(O))
 		return
 	if (O.loc != src.loc)
@@ -125,7 +145,7 @@
 	adjusted_climb_time -= user.STASPD * 2
 	adjusted_climb_time = max(adjusted_climb_time, 0)
 //	if(adjusted_climb_time)
-//		user.visible_message(span_warning("[user] starts climbing onto [src]."), span_warning("I start climbing onto [src]..."))								
+//		user.visible_message(span_warning("[user] starts climbing onto [src]."), span_warning("I start climbing onto [src]..."))
 	structureclimber = user
 	if(do_mob(user, user, adjusted_climb_time))
 		if(src.loc) //Checking if structure has been destroyed

@@ -101,7 +101,7 @@
 	I.pixel_y = 0
 	client.images += I
 	client.hidden_images += I
-	I.appearance_flags = RESET_TRANSFORM|KEEP_TOGETHER
+	I.appearance_flags = RESET_TRANSFORM|KEEP_TOGETHER|PIXEL_SCALE
 	if(buckled)
 		var/image/IB = image(buckled, buckled)
 		IB.override = 1

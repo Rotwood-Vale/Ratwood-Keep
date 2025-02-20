@@ -21,9 +21,9 @@
 
 /obj/item/quiver/attack_turf(turf/T, mob/living/user)
 	if(arrows.len >= max_storage)
-		to_chat(user, span_warning("Your [src.name] is full!"))
+		to_chat(user, span_warning("My [src.name] is full!"))
 		return
-	to_chat(user, span_notice("You begin to gather the ammunition..."))
+	to_chat(user, span_notice("I begin to gather the ammunition..."))
 	for(var/obj/item/ammo_casing/caseless/rogue/arrow in T.contents)
 		if(do_after(user, 5))
 			if(!eatarrow(arrow))
@@ -42,7 +42,11 @@
 /obj/item/quiver/attackby(obj/A, loc, params)
 	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue))
 		if(arrows.len < max_storage)
-			A.forceMove(src)
+			if(ismob(loc))
+				var/mob/M = loc
+				M.doUnEquip(A, TRUE, src, TRUE, silent = TRUE)
+			else
+				A.forceMove(src)
 			arrows += A
 			update_icon()
 		else

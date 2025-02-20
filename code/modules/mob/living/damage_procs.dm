@@ -109,8 +109,6 @@
 			Immobilize(effect * hit_percent)
 		if(EFFECT_UNCONSCIOUS)
 			Unconscious(effect * hit_percent)
-		if(EFFECT_IRRADIATE)
-			radiation += max(effect * hit_percent, 0)
 		if(EFFECT_SLUR)
 			slurring = max(slurring,(effect * hit_percent))
 		if(EFFECT_STUTTER)
@@ -175,6 +173,8 @@
 		return FALSE
 	if(mob_timers && amount > 0)
 		mob_timers["lastoxydam"] = world.time
+	if(has_status_effect(/datum/status_effect/buff/fortify) && amount < 0)
+		amount *= 1.5
 	oxyloss = CLAMP((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	if(updating_health)
 		updatehealth()

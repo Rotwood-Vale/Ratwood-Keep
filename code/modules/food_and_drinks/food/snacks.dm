@@ -73,6 +73,8 @@ All foods are distributed among various categories. Use common sense.
 	var/rotprocess = FALSE
 	var/become_rot_type = null
 
+	var/plateable = FALSE //if it can be plated or not
+
 	var/mill_result = null
 
 	var/fertamount = 50
@@ -81,6 +83,7 @@ All foods are distributed among various categories. Use common sense.
 	smeltresult = /obj/item/ash
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 
+	var/cooked_smell
 
 
 /datum/intent/food
@@ -117,7 +120,7 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
-		if(!istype(loc, /obj/structure/closet/crate/chest))
+		if(!istype(loc, /obj/structure/closet/crate/chest) && !istype(loc, /obj/structure/roguemachine/vendor))
 			if(!locate(/obj/structure/table) in loc)
 				warming -= 20 //ssobj processing has a wait of 20
 			else
@@ -141,9 +144,12 @@ All foods are distributed among various categories. Use common sense.
 			return FALSE
 		else
 			var/obj/item/reagent_containers/NU = new become_rot_type(loc)
+			var/atom/movable/location = loc
 			NU.reagents.clear_reagents()
 			reagents.trans_to(NU.reagents, reagents.maximum_volume)
 			qdel(src)
+			if(!location || !SEND_SIGNAL(location, COMSIG_TRY_STORAGE_INSERT, NU, null, TRUE, TRUE))
+				NU.forceMove(get_turf(NU.loc))
 			return TRUE
 	else
 		color = "#6c6897"
@@ -167,16 +173,18 @@ All foods are distributed among various categories. Use common sense.
 		if(cooking < cooktime)
 			cooking = cooking + input
 			if(cooking >= cooktime)
-				return microwave_act(A)
+				return heating_act(A)
 			warming = 5 MINUTES
 			return
 	burning(input)
 
-/obj/item/reagent_containers/food/snacks/microwave_act(atom/A)
+/obj/item/reagent_containers/food/snacks/heating_act(atom/A)
 	if(istype(A,/obj/machinery/light/rogue/oven))
 		var/obj/item/result
 		if(cooked_type)
 			result = new cooked_type(A)
+			if(cooked_smell)
+				result.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
 		else
 			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
 		initialize_cooked_food(result, 1)
@@ -185,6 +193,8 @@ All foods are distributed among various categories. Use common sense.
 		var/obj/item/result
 		if(fried_type)
 			result = new fried_type(A)
+			if(cooked_smell)
+				result.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
 		else
 			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
 		initialize_cooked_food(result, 1)
@@ -228,7 +238,54 @@ All foods are distributed among various categories. Use common sense.
 	if(!eater)
 		return
 
-	if(eat_effect)
+	var/apply_effect = TRUE
+	// check to see if what we're eating is appropriate fare for our "social class" (aka nobles shouldn't be eating sticks of butter you troglodytes)
+	if (ishuman(eater))
+		var/mob/living/carbon/human/human_eater = eater
+		if (!HAS_TRAIT(human_eater, TRAIT_NASTY_EATER && TRAIT_ORGAN_EATER))
+			if (human_eater.is_noble())
+				if (!portable)
+					if(!(locate(/obj/structure/table) in range(1, eater)))
+						eater.add_stress(/datum/stressevent/noble_ate_without_table) // look i just had to okay?
+						if (prob(25))
+							to_chat(eater, span_red("I should really eat this at a table..."))
+				switch (faretype)
+					if (FARE_IMPOVERISHED)
+						eater.add_stress(/datum/stressevent/noble_impoverished_food)
+						to_chat(eater, span_red("This is disgusting... how can anyone eat this?"))
+						if (eater.nutrition >= NUTRITION_LEVEL_STARVING)
+							eater.taste(reagents)
+							human_eater.add_nausea(34)
+							return
+						else
+							if (eater.has_stress_event(/datum/stressevent/noble_impoverished_food))
+								eater.add_stress(/datum/stressevent/noble_desperate)
+							apply_effect = FALSE
+					if (FARE_POOR to FARE_NEUTRAL)
+						eater.add_stress(/datum/stressevent/noble_bland_food)
+						if (prob(25))
+							to_chat(eater, span_red("This is rather bland. I deserve better food than this..."))
+						apply_effect = FALSE
+					if (FARE_FINE)
+						eater.remove_stress(/datum/stressevent/noble_bland_food)
+					if (FARE_LAVISH)
+						eater.remove_stress(/datum/stressevent/noble_bland_food)
+						eater.add_stress(/datum/stressevent/noble_lavish_food)
+						if (prob(25))
+							to_chat(eater, span_green("Ah, food fit for my title."))
+			
+			// yeomen and courtiers are also used to a better quality of life but are way less picky
+			if (human_eater.is_yeoman() || human_eater.is_courtier())
+				switch (faretype)
+					if (FARE_IMPOVERISHED)
+						eater.add_stress(/datum/stressevent/noble_bland_food)
+						apply_effect = FALSE
+						if (prob(25))
+							to_chat(eater, span_red("This is rather bland. I deserve better food than this..."))
+					if (FARE_POOR to FARE_LAVISH)
+						eater.remove_stress(/datum/stressevent/noble_bland_food)
+
+	if(eat_effect && apply_effect)
 		eater.apply_status_effect(eat_effect)
 	eater.taste(reagents)
 
@@ -496,7 +553,7 @@ All foods are distributed among various categories. Use common sense.
 	S.filling_color = filling_color
 	S.update_snack_overlays(src)
 /*
-/obj/item/reagent_containers/food/snacks/microwave_act(obj/machinery/microwave/M)
+/obj/item/reagent_containers/food/snacks/heating_act(obj/machinery/microwave/M)
 	var/turf/T = get_turf(src)
 	var/obj/item/result
 
@@ -540,7 +597,7 @@ All foods are distributed among various categories. Use common sense.
 	. = ..()
 	if(!dunkable || !proximity)
 		return
-	if(istype(M, /obj/item/reagent_containers/glass) || istype(M, /obj/item/reagent_containers/food/drinks))	//you can dunk dunkable snacks into beakers or drinks
+	if(istype(M, /obj/item/reagent_containers/glass))	//you can dunk dunkable snacks into beakers or drinks
 		if(!M.is_drainable())
 			to_chat(user, span_warning("[M] is unable to be dunked in!"))
 			return
@@ -585,3 +642,13 @@ All foods are distributed among various categories. Use common sense.
 	else
 		return ..()
 
+
+/obj/item/reagent_containers/food/snacks/badrecipe
+	name = "burned mess"
+	desc = ""
+	icon_state = "badrecipe"
+	list_reagents = list(/datum/reagent/toxin/bad_food = 30)
+	filling_color = "#8B4513"
+	foodtype = GROSS
+	burntime = 0
+	cooktime = 0

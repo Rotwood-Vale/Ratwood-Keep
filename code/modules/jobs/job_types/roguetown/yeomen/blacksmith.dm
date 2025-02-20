@@ -8,13 +8,14 @@
 
 	allowed_races = RACES_ALL_KINDS
 
-	tutorial = "You studied for many decades under your master with a few other apprentices to become an Armorer, a trade that certainly has seen a boom in revenue in recent times with many a bannerlord seeing the importance in maintaining a well-equipped army."
+	tutorial = "You studied for many decades under your master with a few other apprentices to become an Armorer--a trade that certainly has seen a boom in recent times, with many a bannerlord keenly aware of the importance in maintaining a well-equipped army."
 
 	outfit = /datum/outfit/job/roguetown/armorsmith
 	display_order = JDO_ARMORER
 	give_bank_account = 11
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/armorsmith/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -78,6 +79,7 @@
 	give_bank_account = 11
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/weaponsmith/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -140,6 +142,7 @@
 	give_bank_account = 11
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/blacksmith/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -85,7 +85,7 @@
 		))))
 	if(!capped_pre && capped_post && !silent)
 		to_chat(mind.current, span_nicegreen(pick(list(
-			"My [lowertext(skillref.name)] is not gonna get any better without some rest...",
+			"My [lowertext(skillref.name)] can no longer improve without some rest and meditation...",
 		))))
 
 /datum/sleep_adv/proc/advance_cycle()
@@ -261,7 +261,14 @@
 	if(mind.has_studied)
 		mind.has_studied = FALSE
 		to_chat(mind.current, span_smallnotice("I feel like I can study my tome again...")) // AZURE PEAK ADDITION
-	to_chat(mind.current, span_notice("..and that's all I dreamt of"))
+	if(mind.has_rituos)
+		mind.has_rituos = FALSE
+		to_chat(mind.current, span_smallnotice("The toil of invoking Her Lesser Work has fled my feeble form. I can continue my transfiguration..."))
+	if (mind.rituos_spell)
+		to_chat(mind.current, span_warning("My glimpse of [mind.rituos_spell.name] flees my slumbering mind..."))
+		mind.RemoveSpell(mind.rituos_spell)
+		mind.rituos_spell = null
+	to_chat(mind.current, span_notice("...and that's all I dreamt of."))
 	close_ui()
 
 /datum/sleep_adv/Topic(href, list/href_list)

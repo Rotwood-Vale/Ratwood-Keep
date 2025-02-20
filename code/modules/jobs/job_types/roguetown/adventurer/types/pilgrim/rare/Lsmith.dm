@@ -11,7 +11,7 @@
 	maximum_possible_slots = 1
 	pickprob = 5
 
-	category_tags = list(CTAG_PILGRIM)
+	category_tags = list(CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -27,7 +27,13 @@
 	cloak = /obj/item/clothing/cloak/apron/blacksmith
 
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=2, /obj/item/rogueore/iron=2, /obj/item/rogueore/silver=1)
+	backpack_contents = list(
+						/obj/item/flint = 1,
+						/obj/item/rogueore/coal=2,
+						/obj/item/rogueore/iron=2,
+						/obj/item/rogueore/silver=1,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	ADD_TRAIT(H, TRAIT_TRAINED_SMITH, TRAIT_GENERIC)
 	if(H.pronouns == HE_HIM)
 

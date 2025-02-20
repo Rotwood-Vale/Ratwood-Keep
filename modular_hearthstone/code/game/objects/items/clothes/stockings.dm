@@ -8,6 +8,7 @@
 	l_sleeve_status = SLEEVE_NOMOD
 	body_parts_covered = null
 	flags_inv = null
+	salvage_amount = 1
 
 /obj/item/clothing/under/roguetown/tights/stockings/random/Initialize()
 	. = ..()
@@ -271,7 +272,7 @@
 //Fishnets
 
 /datum/supply_pack/rogue/wardrobe/suits/stockings_white_fishnet
-	name = "White Fishent Stockings"
+	name = "White Fishnet Stockings"
 	cost = 5
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/stockings/fishnet/white,
@@ -279,7 +280,7 @@
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/stockings_black_fishnet
-	name = "Black Fishent Stockings"
+	name = "Black Fishnet Stockings"
 	cost = 5
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/stockings/fishnet/black,
@@ -287,7 +288,7 @@
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/stockings_blue_fishnet
-	name = "Blue Fishent Stockings"
+	name = "Blue Fishnet Stockings"
 	cost = 5
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/stockings/fishnet/blue,
@@ -295,14 +296,14 @@
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/stockings_red_fishnet
-	name = "Red Fishent Stockings"
+	name = "Red Fishnet Stockings"
 	cost = 5
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/stockings/fishnet/red,
 					/obj/item/clothing/under/roguetown/tights/stockings/fishnet/red,
 				)
 /datum/supply_pack/rogue/wardrobe/suits/stockings_purple_fishnet
-	name = "Purple Fishent Stockings"
+	name = "Purple Fishnet Stockings"
 	cost = 5
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/stockings/fishnet/purple,

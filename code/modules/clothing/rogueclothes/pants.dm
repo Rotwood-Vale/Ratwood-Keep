@@ -102,17 +102,64 @@
 	item_state = "trou"
 //	adjustable = CAN_CADJUST
 	sewrepair = TRUE
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 40, "slash" = 20, "stab" = 10, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+	armor_class = ARMOR_CLASS_LIGHT
+	salvage_amount = 1
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/under/roguetown/trou/leather
 	name = "leather trousers"
+	armor = list("blunt" = 80, "slash" = 50, "stab" = 40, "fire" = 0, "acid" = 0)
 	icon_state = "leathertrou"
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_SMASH)
+	max_integrity = 150
 	resistance_flags = FIRE_PROOF
+
+/obj/item/clothing/under/roguetown/heavy_leather_pants
+	name = "hardened leather trousers"
+	desc = "Thick hide cut and sewn into a pair of very protective trousers. The dense leather can \
+	turn away errant chops."
+	gender = PLURAL
+	icon_state = "roguepants"
+	item_state = "roguepants"
+	sewrepair = TRUE
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH)
+	blocksound = SOFTHIT
+	max_integrity = 200
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+	resistance_flags = FIRE_PROOF
+	armor_class = ARMOR_CLASS_LIGHT
+	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
+	name = "hardened leather shorts"
+	desc = "A thick hide pair of shorts, favored by some for their ease of motion in spite of \
+	being less protective than full trousers."
+	icon_state = "rogueshorts"
+	item_state = "rogueshorts"
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH)
+	body_parts_covered = GROIN
+
+/obj/item/clothing/under/roguetown/trou/otavan
+	name = "otavan leather trousers"
+	desc = "padded leather armor made by Otavan tailors, its quality is remarkable."
+	icon_state = "fencerpants"
+	resistance_flags = FIRE_PROOF
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "piercing" = 20, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH)
+	blocksound = SOFTHIT
+	max_integrity = 200
+	blade_dulling = DULLING_BASHCHOP
+	sewrepair = TRUE
+	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
@@ -125,25 +172,98 @@
 	icon_state = "shadowpants"
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
+/obj/item/clothing/under/roguetown/trou/beltpants
+	name = "belt-buckled trousers"
+	desc = "Dark leather trousers adorned with far too many buckles to be pragmatic."
+	icon_state = "beltpants"
+	item_state = "beltpants"
+
+/obj/item/clothing/under/roguetown/trou/apothecary
+	name = "apothecary trousers"
+	desc = "Heavily padded trousers. They're stained by countless herbs."
+	icon_state = "apothpants"
+	item_state = "apothpants"
+
+/obj/item/clothing/under/roguetown/trou/artipants
+	name = "tinker trousers"
+	desc = "Thick leather trousers to protect from sparks or stray gear projectiles. Judging by the wear, its had plenty of use."
+	icon_state = "artipants"
+	item_state = "artipants"
+
+/obj/item/clothing/under/roguetown/trou/leathertights
+	name = "leather tights"
+	desc = "Classy leather tights, form-fitting but tasteful."
+	icon_state = "leathertights"
+	item_state = "leathertights"
+
+/obj/item/clothing/under/roguetown/skirt
+	name = "skirt"
+	desc = "Long, flowing, and modest."
+	icon_state = "skirt"
+	item_state = "skirt"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/pants.dmi'
+
+/obj/item/clothing/under/roguetown/skirt/random
+	name = "skirt"
+
+/obj/item/clothing/under/roguetown/skirt/random/Initialize()
+	color = pick("#6b5445", "#435436", "#704542", "#79763f", CLOTHING_BLUE)
+	..()
+
+/obj/item/clothing/under/roguetown/skirt/blue
+	color = CLOTHING_BLUE
+
+/obj/item/clothing/under/roguetown/skirt/green
+	color = CLOTHING_GREEN
+
+/obj/item/clothing/under/roguetown/skirt/red
+	color = CLOTHING_RED
+
 /obj/item/clothing/under/roguetown/chainlegs
 	name = "steel chain chausses"
 	desc = "Chain leggings composed of interlinked metal rings."
 	gender = PLURAL
 	icon_state = "chain_legs"
 	item_state = "chain_legs"
-//	adjustable = CAN_CADJUST
 	sewrepair = FALSE
-	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = CHAINHIT
 	max_integrity = 300
-	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	resistance_flags = FIRE_PROOF
+	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/under/roguetown/chainlegs/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle)
+
+/obj/item/clothing/under/roguetown/splintlegs
+	name = "brigandine chausses"
+	desc = "Splint mail and brigandine chausses, designed to protect the legs while still providing almost complete free range of movement."
+	icon_state = "splintlegs"
+	item_state = "splintlegs"
+	max_integrity = 250
+	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "piercing" = 60, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/iron
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+	armor_class = ARMOR_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_NORMAL
+	resistance_flags = FIRE_PROOF
+	sewrepair = FALSE
+
+/obj/item/clothing/under/roguetown/splintlegs/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_COAT_STEP)
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -152,7 +272,7 @@
 	icon_state = "chain_bootyshorts"
 	item_state = "chain_bootyshorts"
 	sewrepair = FALSE
-	armor = list("blunt" = 70, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 70, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	body_parts_covered = GROIN
 	blocksound = CHAINHIT
@@ -163,11 +283,12 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	resistance_flags = FIRE_PROOF
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/chainlegs/iron
 	name = "iron chain chausses"
 	icon_state = "ichain_legs"
-	max_integrity = 200
+	max_integrity = 250
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 
@@ -179,11 +300,10 @@
 	item_state = "plate_legs"
 //	adjustable = CAN_CADJUST
 	sewrepair = FALSE
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = PLATEHIT
 	max_integrity = 400
-	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
@@ -191,7 +311,32 @@
 	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
 	resistance_flags = FIRE_PROOF
+	armor_class = ARMOR_CLASS_HEAVY
 
+/obj/item/clothing/under/roguetown/platelegs/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo
+	max_integrity = 600
+	name = "darksteel garments"
+	desc = "Leg garments worn by true anointed of the Dame of Progress. In Her name."
+	icon_state = "zizocloth"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 
 /obj/item/clothing/under/roguetown/chainlegs/skirt
 	name = "steel chain skirt"
@@ -199,6 +344,7 @@
 	icon_state = "chain_skirt"
 	item_state = "chain_skirt"
 	body_parts_covered = GROIN
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/platelegs/skirt
 	name = "steel plate skirt"
@@ -206,6 +352,7 @@
 	icon_state = "plate_skirt"
 	item_state = "plate_skirt"
 	body_parts_covered = GROIN
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"
@@ -229,9 +376,10 @@
 	item_state = "grenzelpants"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	detail_tag = "_detail"
-	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_BLUNT)
 	var/picked = FALSE
+	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/under/roguetown/grenzelpants/attack_right(mob/user)
 	..()
@@ -274,25 +422,27 @@
 
 //----------------- BLACKSTEEL---------------------
 
-/obj/item/clothing/under/roguetown/blacksteel/platelegs
-	name = "Blacksteel Plate Chausses"
+/obj/item/clothing/under/roguetown/platelegs/blacksteel
+	name = "blacksteel plate chausses"
 	desc = "Reinforced leg plates forged of durable blacksteel."
 	gender = PLURAL
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bklegs"
 	item_state = "bklegs"
-//	adjustable = CAN_CADJUST
 	sewrepair = FALSE
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = PLATEHIT
 	max_integrity = 500
-	var/do_sound = FALSE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/blacksteel
-	r_sleeve_status = SLEEVE_NOMOD
-	l_sleeve_status = SLEEVE_NOMOD
 	smelt_bar_num = 2
-	resistance_flags = FIRE_PROOF
+
+/obj/item/clothing/under/roguetown/trou/leather/pontifex
+	name = "pontifex's chaqchur"
+	desc = "A handmade pair of baggy, thin leather pants. They end in a tight stocking around the calf, ballooning out around the thigh."
+	icon_state = "monkpants"
+	item_state = "monkpants"
+	naledicolor = TRUE

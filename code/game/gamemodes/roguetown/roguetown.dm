@@ -62,23 +62,14 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 
 	if(ttime >= GLOB.round_timer)
 		if(roundvoteend)
-			if(ttime >= round_ends_at)
+			if(ttime >= (GLOB.round_timer + 15 MINUTES) )
 				return TRUE
 		else
 			if(!SSvote.mode && SSticker.autovote)
-				SSvote.initiate_vote("endround", "the Gods")
+				SSvote.initiate_vote("endround", pick("Psydon", "Zizo"))
 
 	if(headrebdecree)
-		if(reb_end_time == 0)
-			to_chat(world, span_boldannounce("The peasant rebels took control of the throne, hail the new community!"))
-			if(ttime >= INITIAL_ROUND_TIMER)
-				reb_end_time = ttime + REBEL_RULE_TIME
-				to_chat(world, span_boldwarning("The round will end in 15 minutes."))
-			else
-				reb_end_time = INITIAL_ROUND_TIMER
-				to_chat(world, span_boldwarning("The round will end at the 2:30 hour mark."))
-		if(ttime >= reb_end_time)
-			return TRUE
+		return TRUE
 
 	check_for_lord()
 /*
@@ -93,7 +84,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	var/lord_dead = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(H.mind)
-			if(H.job == "Monarch")
+			if(H.job == "Grand Duke")
 				lord_found = TRUE
 				if(H.stat == DEAD)
 					lord_dead = TRUE
@@ -159,19 +150,24 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 				pick_rebels()
 				log_game("Major Antagonist: Rebellion")
 			*/
-			if(1 to 33)
+			if(1 to 25)
 				pick_bandits()
-				pick_aspirants()
-				log_game("Antagonists: Bandits & Aspirants")
-			if(34 to 66)
+				log_game("Antagonists: Bandits")
+			if(26 to 50)
 				//"pick_vampires() was removed from here, normally they spawn together
 				pick_werewolves()
 				pick_bandits()
 				log_game("Antagonists: Werewolves & Bandits")
-			if(67 to 100)
-				pick_werewolves()
-				pick_aspirants()
-				log_game("Antagonists: Werewolves & Aspirants")
+			if(51 to 75)
+				pick_lich()
+				pick_bandits()
+				log_game("Antagonists: Lich & Bandits")
+			if(76 to 89)
+				pick_lich()
+				log_game("Antagonists: Lich")
+			if(90 to 100)
+				pick_vampires()
+				log_game("Antagonists: Vampyr")
 			/* we've been having a lot of this, we can reimplement a random extended chance after seeing how the antags go
 			if(81 to 100)
 				log_game("Major Antagonist: Extended") //gotta put something here.
@@ -195,7 +191,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_bandits()
 	//BANDITS
 	banditgoal = rand(200,400)
-	restricted_jobs = list("Monarch",
+	restricted_jobs = list("Grand Duke",
 	"Consort",
 	"Merchant",
 	"Priest",
@@ -333,7 +329,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_maniac()
-	restricted_jobs = list("Monarch", "Consort")
+	restricted_jobs = list("Grand Duke", "Consort")
 	antag_candidates = get_players_for_role(ROLE_MANIAC)
 	var/datum/mind/villain = pick_n_take(antag_candidates)
 	if(villain)
@@ -353,7 +349,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 	restricted_jobs = list()
 
 /datum/game_mode/chaosmode/proc/pick_lich()
-	restricted_jobs = list("Monarch", "Consort", "Royal Guard", "Guard Captain")
+	restricted_jobs = list("Grand Duke", "Consort", "Royal Guard", "Guard Captain")
 	antag_candidates = get_players_for_role(ROLE_LICH)
 	var/datum/mind/lichman = pick_n_take(antag_candidates)
 	if(lichman)
@@ -375,7 +371,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_vampires()
 	var/vampsremaining = 3
 	restricted_jobs = list(
-	"Monarch",
+	"Grand Duke",
 	"Consort",
 	"Dungeoneer",
 	"Inquisitor",
@@ -422,7 +418,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "E
 /datum/game_mode/chaosmode/proc/pick_werewolves()
 	// Ideally we want adventurers/pilgrims/towners to roll it
 	restricted_jobs = list(
-	"Monarch",
+	"Grand Duke",
 	"Consort",
 	"Dungeoneer",
 	"Inquisitor",

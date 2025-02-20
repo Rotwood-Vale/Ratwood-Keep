@@ -4,8 +4,6 @@
 	opacity = 1
 	density = TRUE
 	blocks_air = TRUE
-	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
-	rad_insulation = RAD_MEDIUM_INSULATION
 	baseturfs = list(/turf/open/floor/rogue/naturalstone, /turf/open/transparent/openspace)
 	var/above_floor
 	var/wallpress = TRUE
@@ -196,11 +194,6 @@
 	to_chat(user, span_warning("I crawl up the wall."))
 	. = ..()
 
-
-/turf/closed/AfterChange()
-	..()
-	SSair.high_pressure_delta -= src
-
 /turf/closed/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	return FALSE
 
@@ -223,9 +216,6 @@
 /turf/closed/indestructible/Melt()
 	to_be_destroyed = FALSE
 	return src
-
-/turf/closed/indestructible/singularity_act()
-	return
 
 /turf/closed/indestructible/oldshuttle
 	name = "strange shuttle wall"

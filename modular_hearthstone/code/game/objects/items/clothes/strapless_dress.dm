@@ -28,6 +28,14 @@
 	color = pick(CLOTHING_BLACK, CLOTHING_BLUE, "#664357", "#6F0000")
 	..()
 
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/alt
+	mob_overlay_icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/dress.dmi'
+	name = "strapless dress"
+	desc = "It barely covers anything at all!"
+	flags_inv = HIDEBOOB|HIDECROTCH
+	icon_state = "strapless2"
+	icon = 'modular_hearthstone/icons/obj/items/clothes/dress.dmi'
+
 //CRAFTING
 
 /datum/crafting_recipe/roguetown/sewing/strapless_dress
@@ -62,6 +70,13 @@
 	name = "purple strapless dress"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/purple)
 	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/strapless_dress_alt
+	name = "strapless dress alt"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/alt)
+	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 

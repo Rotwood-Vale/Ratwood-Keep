@@ -31,7 +31,7 @@ GLOBAL_LIST_INIT(stone_bluntness_names, list(
 
 GLOBAL_LIST_INIT(stone_bluntness_descs, list(
 	"It is very blunt.",
-	"It is kinda hefty.",
+	"It is rather hefty.",
 	"It fills the hand.",
 	"It is quite a handfull",
 	"This stone feels like it was made for ME!",
@@ -62,12 +62,12 @@ GLOBAL_LIST_INIT(stone_magic_names, list(
 ))
 
 GLOBAL_LIST_INIT(stone_magic_descs, list(
-	"It hums with internal energy.",
+	"It hums with an energy coming from within.",
 	"It has a faint aura.",
 	"It has an odd sigil on it.",
 	"It has a small red stone pressed into it.",
 	"It is covered in tiny cracks.",
-	"It looks unsafe.",
+	"Something about it looks unsafe.",
 ))
 
 GLOBAL_LIST_INIT(stone_personalities, list(
@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(stone_personalities, list(
 GLOBAL_LIST_INIT(stone_personality_descs, list(
 	"This stone is full of personality!",
 	"They say the intelligent races built their foundations with stones.",
-	"One must think, where did this stone come from?",
+	"One must wonder: Where did this stone come from?",
 	"If all stones were like this, then they would be some pretty great stones.",
 	"I wish my personality was like this stone's...",
 	"I could sure do a whole lot with this stone.", 
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	gripped_intents = list(INTENT_GENERIC)
 	w_class = WEIGHT_CLASS_HUGE
 	twohands_required = TRUE
-	var/obj/item/stack/ore/mineralType = null
+	var/obj/item/rogueore/mineralType = null
 	var/mineralAmt = 1
 	blade_dulling = DULLING_BASH
 	max_integrity = 90

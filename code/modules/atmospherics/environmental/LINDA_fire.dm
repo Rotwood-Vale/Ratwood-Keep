@@ -1,6 +1,6 @@
 
 
-/atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/atom/proc/temperature_expose(exposed_temperature, exposed_volume)
 	return null
 
 
@@ -19,14 +19,12 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "1"
 	layer = GASFIRE_LAYER
-	blend_mode = BLEND_ADD
-	light_system = MOVABLE_LIGHT
-	light_range = LIGHT_RANGE_FIRE
-	light_power = 1
+	light_outer_range =  LIGHT_RANGE_FIRE
 	light_color = LIGHT_COLOR_FIRE
+	blend_mode = BLEND_ADD
 
 	var/volume = 125
-	var/temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST
+	var/temperature = 100+T0C
 	var/just_spawned = TRUE
 	var/bypassing = FALSE
 	var/visual_update_tick = 0
@@ -38,10 +36,9 @@
 //		new /obj/effect/temp_visual/small_smoke(src.loc)
 //	qdel(src)
 
-
 /obj/effect/hotspot/Initialize(mapload, starting_volume, starting_temperature)
 	. = ..()
-	SSair.hotspots += src
+	SShotspots.hotspots += src
 	if(!isnull(starting_volume))
 		volume = starting_volume
 	if(!isnull(starting_temperature))
@@ -54,29 +51,15 @@
 /obj/effect/hotspot/proc/perform_exposure()
 
 	var/turf/open/location = loc
-	if(!istype(location) || !(location.air))
+	if(!istype(location))
 		return
 
 	location.active_hotspot = src
 
-	bypassing = !just_spawned && (volume > CELL_VOLUME*0.95)
-
-	if(bypassing)
-		volume = location.air.reaction_results["fire"]*FIRE_GROWTH_RATE
-		temperature = location.air.temperature
-	else
-		var/datum/gas_mixture/affected = location.air.remove_ratio(volume/location.air.volume)
-		if(affected) //in case volume is 0
-			affected.temperature = temperature
-			affected.react(src)
-			temperature = affected.temperature
-			volume = affected.reaction_results["fire"]*FIRE_GROWTH_RATE
-			location.assume_air(affected)
-
 	for(var/A in location)
 		var/atom/AT = A
 		if(!QDELETED(AT) && AT != src) // It's possible that the item is deleted in temperature_expose
-			AT.fire_act(3, 20)
+			AT.fire_act(1, 20)
 	return
 
 /obj/effect/hotspot/proc/gauss_lerp(x, x1, x2)
@@ -128,7 +111,7 @@
 		add_overlay(fusion_overlay)
 		add_overlay(rainbow_overlay)
 
-	set_light_color(rgb(LERP(250, heat_r, greyscale_fire), LERP(160, heat_g, greyscale_fire), LERP(25, heat_b, greyscale_fire)))
+	set_light(l_color = rgb(LERP(250,heat_r,greyscale_fire),LERP(160,heat_g,greyscale_fire),LERP(25,heat_b,greyscale_fire)))
 
 	heat_r /= 255
 	heat_g /= 255
@@ -155,44 +138,27 @@
 	if(life <= 0)
 		qdel(src)
 		return
-
+		
 	perform_exposure()
+	return
 
 /obj/effect/hotspot/Destroy()
-	SSair.hotspots -= src
+	set_light(0)
+	SShotspots.hotspots -= src
 	var/turf/open/T = loc
 	if(istype(T) && T.active_hotspot == src)
 		T.active_hotspot = null
-	DestroyTurf()
 	return ..()
-
-/obj/effect/hotspot/proc/DestroyTurf()
-	if(isturf(loc))
-		var/turf/T = loc
-		if(T.to_be_destroyed && !T.changing_turf)
-			var/chance_of_deletion
-			if (T.heat_capacity) //beware of division by zero
-				chance_of_deletion = T.max_fire_temperature_sustained / T.heat_capacity * 8 //there is no problem with prob(23456), min() was redundant --rastaf0
-			else
-				chance_of_deletion = 100
-			if(prob(chance_of_deletion))
-				T.Melt()
-			else
-				T.to_be_destroyed = FALSE
-				T.max_fire_temperature_sustained = 0
 
 /obj/effect/hotspot/Crossed(atom/movable/AM, oldLoc)
 	..()
 	if(isliving(AM))
 		var/mob/living/L = AM
-		L.fire_act(3, 20)
-
-/obj/effect/hotspot/singularity_pull()
-	return
+		L.fire_act(1, 20)
 
 /obj/effect/dummy/lighting_obj/moblight/fire
 	name = "fire"
 	light_color = LIGHT_COLOR_FIRE
-	light_range = LIGHT_RANGE_FIRE
+	light_outer_range =  LIGHT_RANGE_FIRE
 
 #undef INSUFFICIENT

@@ -8,9 +8,6 @@
 	if (client)
 		var/turf/T = get_turf(src)
 		if(!T)
-			for(var/obj/effect/landmark/error/E in GLOB.landmarks_list)
-				forceMove(E.loc)
-				break
 			var/msg = "[ADMIN_LOOKUPFLW(src)] was found to have no .loc with an attached client, if the cause is unknown it would be wise to ask how this was accomplished."
 			message_admins(msg)
 			send2irc_adminless_only("Mob", msg, R_ADMIN)
@@ -33,8 +30,6 @@
 		return
 
 	if(!IS_IN_STASIS(src))
-		//Mutations and radiation
-		handle_mutations_and_radiation()
 		//Breathing, if applicable
 		handle_breathing(times_fired)
 		if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
@@ -45,17 +40,13 @@
 			for(var/datum/wound/wound as anything in get_wounds())
 				wound.heal_wound(1)
 
-		handle_diseases()// DEAD check is in the proc itself; we want it to spread even if the mob is dead, but to handle its disease-y properties only if you're not.
-
 		if (QDELETED(src)) // diseases can qdel the mob via transformations
 			return
 
+		handle_environment()
+
 		//Random events (vomiting etc)
 		handle_random_events()
-		//Handle temperature/pressure differences between body and environment
-		var/datum/gas_mixture/environment = loc?.return_air()
-		if(environment)
-			handle_environment(environment)
 
 		handle_gravity()
 
@@ -97,13 +88,6 @@
 /mob/living/proc/handle_breathing(times_fired)
 	return
 
-/mob/living/proc/handle_mutations_and_radiation()
-	radiation = 0 //so radiation don't accumulate in simple animals
-	return
-
-/mob/living/proc/handle_diseases()
-	return
-
 /mob/living/proc/handle_random_events()
 	//random painstun
 	if(!stat && !HAS_TRAIT(src, TRAIT_NOPAINSTUN))
@@ -122,7 +106,7 @@
 					Stun(110)
 					Knockdown(110)
 
-/mob/living/proc/handle_environment(datum/gas_mixture/environment)
+/mob/living/proc/handle_environment()
 	return
 
 /mob/living/proc/handle_fire()
@@ -143,7 +127,7 @@
 //		return TRUE
 	update_fire()
 	var/turf/location = get_turf(src)
-	location.hotspot_expose(700, 50, 1)
+	location?.hotspot_expose(700, 50, 1)
 
 /mob/living/proc/handle_wounds()
 	if(stat >= DEAD)

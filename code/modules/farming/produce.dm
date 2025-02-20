@@ -70,7 +70,7 @@
 	tastes = list("oat" = 1)
 	can_distill = TRUE
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
-	distill_amt = 12
+	distill_amt = 24
 	grind_results = list(/datum/reagent/floure = 10)
 	mill_result = /obj/item/reagent_containers/powder/flour
 
@@ -84,6 +84,7 @@
 	foodtype = FRUIT
 	tastes = list("apple" = 1)
 	trash = /obj/item/trash/applecore
+	faretype = FARE_POOR
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	slot_flags = ITEM_SLOT_HEAD
 	worn_x_dimension = 64
@@ -137,6 +138,7 @@
 	tastes = list("berry" = 1)
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	faretype = FARE_NEUTRAL
 	dropshrink = 0.75
 	var/color_index = "good"
 	can_distill = TRUE
@@ -198,6 +200,52 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 1
 	throw_range = 3
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/attack(mob/living/carbon/human/M, mob/user)
+	if(M == user)
+		return ..() //Eat it
+	if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		return ..() //Make THEM eat it.
+	if(!M.get_bleed_rate())
+		to_chat(user, span_warning("There is no blood to wick into the flower bud."))
+		return
+	var/success = FALSE
+	//Logic from funny_attack_effects
+	var/datum/antagonist/werewolf/Were = M.mind.has_antag_datum(/datum/antagonist/werewolf/)
+	var/datum/antagonist/vampirelord/Vamp = M.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+	if(Were && Were.transformed == TRUE)
+		user.visible_message(span_notice("[user] brings [src] to soak up the ichor of [M]'s wounds."))
+		if(do_after(user, 5 SECONDS, target = M))
+			user.visible_message(span_notice("[user] draws the ichor of Dendor's Curse from [M]'s open wounds into [src]."), \
+								 span_notice("I have captured the ferocity of Dendor's Curse inside [src]."))
+			success = TRUE
+	else if(Vamp)
+		user.visible_message(span_notice("[user] brings [src] to soak up the petrified blood of [M]'s wounds."))
+		if(do_after(user, 5 SECONDS, target = M))
+			user.visible_message(span_notice("[user] captures the petrified blood from [M]'s open wounds into [src]."), \
+								 span_notice("I have captured the quizzical properties of the petrified blood inside [src]."))
+			success = TRUE
+	else
+		to_chat(user, span_warning("Their blood is not robust enough to hold to the warmth of [src]."))
+	if(success)
+		changefood(/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/bloodied, user)
+
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/bloodied
+	name = "bloodied fyritius flower"
+	desc = "A once delicate orange flower, now soaked with gruesome accursed blood that slowly burns it away."
+	icon_state = "fyritius_blood"
+	filling_color = "#ff3300"
+	tastes = list("tastes like a burning coal and fire and blood" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
+	rotprocess = 10 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius/bloodied/become_rotten()
+	visible_message(span_danger("[src] burns into ash!"))
+	new /obj/item/ash(get_turf(src))
+	qdel(src)
+	return TRUE
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
 	seed = /obj/item/seeds/sweetleaf
@@ -285,3 +333,29 @@
 	distill_reagent = /datum/reagent/consumable/ethanol/beer/voddena
 	rotprocess = null
 	seed = /obj/item/seeds/potato
+
+/obj/item/reagent_containers/food/snacks/grown/garlick/rogue
+	name = "garlick bulb"
+	desc = ""
+	icon_state = "garlick"
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+	tastes = list("pungent umami" = 1)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1) //add a reagent that harms vampires later
+	can_distill = FALSE
+	rotprocess = null
+	seed = /obj/item/seeds/garlick
+
+// poppies, from vanderlin
+/obj/item/reagent_containers/food/snacks/grown/rogue/poppy
+	name = "poppy"
+	desc = "For their crimson beauty and the sedating effect of their crushed seeds, these flowers are considered a symbol of Eora."
+	icon_state = "poppy"
+	seed = /obj/item/seeds/poppy
+	throwforce = 0
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 0)
+	dropshrink = 0.5
+	rotprocess = null

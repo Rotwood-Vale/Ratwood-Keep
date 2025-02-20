@@ -26,7 +26,8 @@
 
 	if (H.mind)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.change_stat("perception", 2)
@@ -35,5 +36,6 @@
 
 		var/datum/devotion/C = new /datum/devotion(H, H.patron)
 		C.grant_spells(H)
+		START_PROCESSING(SSobj, C)
 		H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 		GLOB.excommunicated_players += H.real_name // john roguetown, you are EXCOMMUNICADO.

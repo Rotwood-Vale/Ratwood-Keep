@@ -1,3 +1,4 @@
+//intent datums ฅ^•ﻌ•^ฅ
 
 /datum/intent/spear/thrust
 	name = "thrust"
@@ -30,6 +31,50 @@
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	reach = 2
 	item_d_type = "slash"
+
+/datum/intent/spear/cut/halberd
+	damfactor = 0.9
+	swingdelay = 10
+
+/datum/intent/spear/cut/bardiche
+    damfactor = 1.0
+    chargetime = 1
+
+/datum/intent/spear/cast
+	name = "cast"
+	chargetime = 0
+	noaa = TRUE
+	misscost = 0
+	icon_state = "inuse"
+	no_attack = TRUE
+
+/datum/intent/sword/cut/zwei
+	reach = 2
+
+/datum/intent/sword/thrust/zwei
+	reach = 2
+
+/datum/intent/sword/thrust/estoc
+	name = "thrust"
+	penfactor = 50
+	recovery = 20
+	clickcd = 10
+
+/datum/intent/sword/lunge
+	name = "lunge"
+	icon_state = "inimpale"
+	attack_verb = list("lunges")
+	animname = "stab"
+	blade_class = BCLASS_STAB
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	reach = 2
+	penfactor = 30
+	damfactor = 1.2
+	chargetime = 5
+	recovery = 20
+	clickcd = 10
+
+//polearm objs ฅ^•ﻌ•^ฅ
 
 /obj/item/rogueweapon/woodstaff
 	force = 10
@@ -125,6 +170,14 @@
 	throwforce = 25
 	resistance_flags = FLAMMABLE
 
+/obj/item/rogueweapon/spear/psyspear
+	name = "psydonian spear"
+	desc = "Silver spear, crafted to impale those the Inquisiton hunts."
+	icon_state = "psyspear"
+	is_silver = TRUE
+	max_blade_int = 150
+	wdefense = 6
+
 /obj/item/rogueweapon/spear/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -202,13 +255,224 @@
 	max_integrity = 50
 	throwforce = 20
 
+/obj/item/rogueweapon/fishspear
+	force = 20
+	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH, SPEAR_CAST) //bash is for nonlethal takedowns, only targets limbs
+	name = "fishing spear"
+	desc = "This two-pronged and barbed spear was made to catch those pesky fish."
+	icon_state = "fishspear"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	bigboy = TRUE
+	gripsprite = TRUE
+	wlength = WLENGTH_GREAT
+	w_class = WEIGHT_CLASS_BULKY
+	minstr = 8
+	max_blade_int = 200
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/steel
+	associated_skill = /datum/skill/combat/polearms
+	blade_dulling = DULLING_BASHCHOP
+	walking_stick = TRUE
+	wdefense = 4
+	thrown_bclass = BCLASS_STAB
+	throwforce = 35
+	resistance_flags = FLAMMABLE
+
+/obj/item/rogueweapon/fishspear/depthseek //DO NOT ADD RECIPE. MEANT TO BE AN ABYSSORITE RELIC. IDEA COURTESY OF LORDINQPLAS
+	force = 45
+	name = "blessed depthseeker"
+	desc = "A beautifully crafted weapon, with handle carved of some beast's bone, inlaid with smooth seaglass at pommel and head, with two prongs smithed of fine dwarven steel. The seaglass carving at the head is a masterwork in and of itself, you can feel an abyssal energy radiating off it."
+	icon_state = "depthseek"
+	smeltresult = /obj/item/ingot/blacksteel
+	max_blade_int = 2600
+	wdefense = 8
+	throwforce = 50
+
+/obj/item/rogueweapon/fishspear/attack_self(mob/user)
+	if(user.used_intent.type == SPEAR_CAST)
+		if(user.doing)
+			user.doing = 0
+
+/obj/item/rogueweapon/fishspear/afterattack(obj/target, mob/user, proximity)
+	freshfishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/carp = 200,
+		/obj/item/reagent_containers/food/snacks/fish/sunny = 300,
+		/obj/item/reagent_containers/food/snacks/fish/salmon = 200,
+		/obj/item/reagent_containers/food/snacks/fish/eel = 150,
+		/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab = 20,
+	)
+	seafishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/cod = 200,
+		/obj/item/reagent_containers/food/snacks/fish/plaice = 200,
+		/obj/item/reagent_containers/food/snacks/fish/sole = 305,
+		/obj/item/reagent_containers/food/snacks/fish/angler = 150,
+		/obj/item/reagent_containers/food/snacks/fish/lobster = 300,
+		/obj/item/reagent_containers/food/snacks/fish/bass = 200,
+		/obj/item/reagent_containers/food/snacks/fish/clam = 100,
+		/obj/item/reagent_containers/food/snacks/fish/clownfish = 50,
+		/mob/living/carbon/human/species/goblin/npc/sea = 25,
+		/mob/living/simple_animal/hostile/rogue/deepone = 30,
+		/mob/living/simple_animal/hostile/rogue/deepone/spit = 30,
+	)
+	mudfishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/mudskipper = 200,
+		/obj/item/natural/worms/leech = 50,
+		/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab = 25,
+	)
+	var/sl = user.mind.get_skill_level(/datum/skill/labor/fishing) // User's skill level
+	var/ft = 160 //Time to get a catch, in ticks
+	var/fpp =  130 - (40 + (sl * 15)) // Fishing power penalty based on fishing skill level
+	var/frwt = list(/turf/open/water/river, /turf/open/water/cleanshallow, /turf/open/water/pond)
+	var/salwt = list(/turf/open/water/ocean, /turf/open/water/ocean/deep)
+	var/mud = list(/turf/open/water/swamp, /turf/open/water/swamp/deep)
+	if(istype(target, /turf/open/water))
+		if(user.used_intent.type == SPEAR_CAST && !user.doing)
+			if(target in range(user,3))
+				user.visible_message("<span class='warning'>[user] searches for a fish!</span>", \
+									"<span class='notice'>I begin looking for a fish to spear.</span>")
+				playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
+				ft -= (sl * 20) //every skill lvl is -2 seconds
+				ft = max(20,ft) //min of 2 seconds
+				if(do_after(user,ft, target = target))
+					var/fishchance = 100 // Total fishing chance, deductions applied below
+					if(user.mind)
+						if(!sl) // If we have zero fishing skill...
+							fishchance -= 50 // 50% chance to fish base
+						else
+							fishchance -= fpp // Deduct a penalty the lower our fishing level is (-0 at legendary)
+					var/mob/living/fisherman = user
+					if(prob(fishchance)) // Finally, roll the dice to see if we fish.
+						if(target.type in frwt)
+							var/A = pickweight(freshfishloot)
+							var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
+							to_chat(user, "<span class='notice'>You see something!</span>")
+							playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
+							if(!do_after(user,ow, target = target))
+								if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
+									var/mob/M = A
+									if(M.type in subtypesof(/mob/living/simple_animal/hostile))
+										new M(target)
+									else
+										new M(user.loc)
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
+								else
+									new A(user.loc)
+									to_chat(user, "<span class='warning'>Pull 'em in!</span>")
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
+									playsound(src.loc, 'sound/items/Fish_out.ogg', 100, TRUE)	
+							else
+								to_chat(user, "<span class='warning'>Damn, it got away... I should <b>pull away</b> next time.</span>")								
+						if(target.type in salwt)
+							var/A = pickweight(seafishloot)
+							var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
+							to_chat(user, "<span class='notice'>You see something!</span>")
+							playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
+							if(!do_after(user,ow, target = target))
+								if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
+									var/mob/M = A
+									if(M.type in subtypesof(/mob/living/simple_animal/hostile))
+										new M(target)
+									else
+										new M(user.loc)
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
+								else
+									new A(user.loc)
+									to_chat(user, "<span class='warning'>Pull 'em in!</span>")
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
+									playsound(src.loc, 'sound/items/Fish_out.ogg', 100, TRUE)	
+							else
+								to_chat(user, "<span class='warning'>Damn, it got away... I should <b>pull away</b> next time.</span>")							
+						if(target.type in mud)
+							var/A = pickweight(mudfishloot)
+							var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
+							to_chat(user, "<span class='notice'>You see something!</span>")
+							playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
+							if(!do_after(user,ow, target = target))
+								if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
+									var/mob/M = A
+									if(M.type in subtypesof(/mob/living/simple_animal/hostile))
+										new M(target)
+									else
+										new M(user.loc)
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
+								else
+									new A(user.loc)
+									to_chat(user, "<span class='warning'>Pull 'em in!</span>")
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
+									playsound(src.loc, 'sound/items/Fish_out.ogg', 100, TRUE)
+							else
+								to_chat(user, "<span class='warning'>Damn, it got away... I should <b>pull away</b> next time.</span>")
+					else
+						to_chat(user, "<span class='warning'>Not a single fish...</span>")
+						user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT/2) // Pity XP.
+				else
+					to_chat(user, "<span class='warning'>I must stand still to fish.</span>")
+			update_icon()
+
+/obj/item/rogueweapon/fishspear/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.6,
+					"sx" = -6,
+					"sy" = 7,
+					"nx" = 6,
+					"ny" = 8,
+					"wx" = 0,
+					"wy" = 6,
+					"ex" = -1,
+					"ey" = 8,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = -50,
+					"sturn" = 40,
+					"wturn" = 50,
+					"eturn" = -50,
+					"nflip" = 0,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+			if("wielded")
+				return list(
+					"shrink" = 0.6,
+					"sx" = 3,
+					"sy" = 1,
+					"nx" = -3,
+					"ny" = 1,
+					"wx" = -9,
+					"wy" = 1,
+					"ex" = 9,
+					"ey" = 1,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = -30,
+					"sturn" = 30,
+					"wturn" = -30,
+					"eturn" = 30,
+					"nflip" = 8,
+					"sflip" = 0,
+					"wflip" = 8,
+					"eflip" = 0,
+					)
+
 /obj/item/rogueweapon/halberd
 	force = 15
 	force_wielded = 30
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
 	name = "halberd"
-	desc = "An iron halberd, mostly used by town guards."
+	desc = "A steel halberd, mostly used by town guards."
 	icon_state = "halberd"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -242,7 +506,7 @@
 
 /obj/item/rogueweapon/halberd/bardiche
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/halberd, /datum/intent/axe/chop, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/bardiche, /datum/intent/axe/chop, SPEAR_BASH)
 	name = "bardiche"
 	desc = "A beautiful variant of the halberd."
 	icon_state = "bardiche"
@@ -250,9 +514,36 @@
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
 
-/datum/intent/spear/cut/halberd
-	damfactor = 0.9
-	swingdelay = 10
+/obj/item/rogueweapon/halberd/psyhalberd
+	name = "psydonian halberd"
+	desc = "A silver halberd, forged by the inquisiton."
+	max_blade_int = 250
+	icon_state = "psyhalberd"
+	is_silver = TRUE
+	wdefense = 7
+	smeltresult = /obj/item/ingot/silver
+
+/obj/item/rogueweapon/halberd/glaive
+	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/bardiche, /datum/intent/axe/chop, SPEAR_BASH)
+	name = "glaive"
+	desc = "A curved blade on a pole, specialised in durability and defence, but expensive to manufacture."
+	icon_state = "glaive"
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/steel
+	max_blade_int = 300
+	wdefense = 9
+
+/obj/item/rogueweapon/halberd/glaive/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded") 
+				return list("shrink" = 0.6,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onback") 
+				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/eaglebeak
 	force = 15
@@ -260,7 +551,7 @@
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/mace/smash/eaglebeak, SPEAR_BASH)
 	name = "eagle's beak"
-	desc = "A reinforced pole affixed with an ornate steel eagle's head, of which it's beak is intended to pierce with great harm."
+	desc = "A reinforced pole affixed with an ornate steel eagle's head, of which its beak is intended to pierce with great harm."
 	icon_state = "eaglebeak"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -368,17 +659,20 @@
 	max_blade_int = 200
 	wdefense = 4
 
-/datum/intent/sword/cut/zwei
-	reach = 2
-
-/datum/intent/sword/thrust/zwei
-	reach = 2
-
 /obj/item/rogueweapon/greatsword/grenz
 	name = "steel zweihander"
 	icon_state = "steelzwei"
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 3
+
+/obj/item/rogueweapon/greatsword/psygsword
+	name = "psydonian greatsword"
+	desc = "Silverd, and able to cut apart foes of the inquisiton!"
+	icon_state = "psygsword"
+	max_blade_int = 350
+	wdefense = 6
+	is_silver = TRUE
+	smeltresult = /obj/item/ingot/silver
 
 /obj/item/rogueweapon/estoc
 	name = "estoc"
@@ -466,23 +760,10 @@
 					"eflip" = 0,
 					)
 
-/datum/intent/sword/thrust/estoc
-	name = "thrust"
-	penfactor = 50
-	recovery = 20
-	clickcd = 10
-
-
-/datum/intent/sword/lunge
-	name = "lunge"
-	icon_state = "inimpale"
-	attack_verb = list("lunges")
-	animname = "stab"
-	blade_class = BCLASS_STAB
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	reach = 2
-	penfactor = 30
-	damfactor = 1.2
-	chargetime = 5
-	recovery = 20
-	clickcd = 10
+/obj/item/rogueweapon/woodstaff/naledi
+	name = "naledian warstaff"
+	desc = "A staff carrying the crescent moon of Psydon's knowledge, as well as the black and gold insignia of the war scholars."
+	icon_state = "naledistaff"
+	force = 18
+	force_wielded = 22
+	max_integrity = 250

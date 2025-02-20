@@ -38,7 +38,6 @@
 #define STRONG    	/datum/mutation/human/strong
 #define FIRESWEAT	/datum/mutation/human/fire
 #define THERMAL		/datum/mutation/human/thermal
-#define ANTENNA		/datum/mutation/human/antenna
 #define PARANOIA	/datum/mutation/human/paranoia
 #define MINDREAD	/datum/mutation/human/mindreader
 #define INSULATED	/datum/mutation/human/insulated
@@ -98,6 +97,8 @@
 #define TR_KEEPORGANS	(1<<8)
 #define TR_KEEPSTUNS	(1<<9)
 #define TR_KEEPREAGENTS	(1<<10)
+
+#define TR_KEEPAI		(1<<11)
 
 
 #define CLONER_FRESH_CLONE "fresh"

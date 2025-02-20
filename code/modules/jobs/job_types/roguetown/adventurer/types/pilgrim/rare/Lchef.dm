@@ -11,7 +11,7 @@
 
 	maximum_possible_slots = 1
 	pickprob = 5
-	category_tags = list(CTAG_PILGRIM)
+	category_tags = list(CTAG_TOWNER)
 
 /datum/outfit/job/roguetown/adventurer/masterchef/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -35,6 +35,7 @@
 	beltr = /obj/item/cooking/pan
 	mouth = /obj/item/rogueweapon/huntingknife/cleaver
 	beltl = /obj/item/flint
+	r_hand = /obj/item/flashlight/flare/torch
 	H.change_stat("intelligence", 3)
 	H.change_stat("constitution", 2)
 	if(H.age == AGE_OLD)

@@ -8,7 +8,7 @@
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE
-	max_integrity = 800
+	max_integrity = 100
 	integrity_failure = 0.1
 	var/base_state = "window-solid"
 	var/lockdir = 0
@@ -23,6 +23,11 @@
 
 /obj/structure/roguewindow/Initialize()
 	update_icon()
+	..()
+
+/obj/structure/roguewindow/obj_destruction(damage_flag)
+	message_admins("Window destroyed. [ADMIN_JMP(src)]")
+	log_admin("Window destroyed at X:[src.x] Y:[src.y] Z:[src.z] in area: [get_area(src)]")
 	..()
 
 /obj/structure/roguewindow/update_icon()
@@ -41,7 +46,7 @@
 	base_state = null
 	opacity = TRUE
 	max_integrity = 100 
-	integrity_failure = 0.75
+	integrity_failure = 0.5
 
 /obj/structure/roguewindow/stained/silver
 	icon_state = "stained-silver"
@@ -60,7 +65,7 @@
 	base_state = "woodwindow"
 	opacity = TRUE
 	max_integrity = 100
-	integrity_failure = 0.9
+	integrity_failure = 0.5
 
 /obj/structure/roguewindow/openclose/reinforced
 	desc = "A glass window. This one looks reinforced with a metal mesh."
@@ -167,6 +172,9 @@
 	if(brokenstate)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
+	if(HAS_TRAIT(user, TRAIT_BASHDOORS))
+		src.take_damage(15)
+		return
 	src.visible_message(span_info("[user] knocks on [src]."))
 	add_fingerprint(user)
 	playsound(src, 'sound/misc/glassknock.ogg', 100)
@@ -174,7 +182,10 @@
 /obj/structure/roguewindow/obj_break(damage_flag)
 	if(!brokenstate)
 		attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
-		new /obj/item/shard (get_turf(src))
+		message_admins("Window broken. [ADMIN_JMP(src)]")
+		log_admin("Window broken at X:[src.x] Y:[src.y] Z:[src.z] in area: [get_area(src)]")
+		new /obj/item/natural/glass/shard (get_turf(src))
+		new /obj/effect/decal/cleanable/glass(get_turf(src))
 		climbable = TRUE
 		brokenstate = TRUE
 		opacity = FALSE

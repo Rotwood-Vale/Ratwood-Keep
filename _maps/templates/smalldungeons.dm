@@ -36,6 +36,8 @@
 		/obj/item/clothing/gloves/roguetown/leather = 4,
 		/obj/item/clothing/shoes/roguetown/boots = 4,
 		/obj/item/clothing/shoes/roguetown/boots/leather = 4,
+		/obj/item/storage/belt/rogue/leather/knifebelt/iron = 2,
+		/obj/item/storage/belt/rogue/leather/knifebelt/black/steel = 1,
 
 		// Money
 		/obj/item/roguecoin/copper = 5,
@@ -48,7 +50,7 @@
 		// Garbage and Miscellanous
 		/obj/item/rogue/instrument/flute = 3,
 		/obj/item/ash = 5,
-		/obj/item/shard = 5,
+		/obj/item/natural/glass/shard = 5,
 		/obj/item/candle/yellow = 3,
 		/obj/item/flashlight/flare/torch = 3,
 		/obj/item/reagent_containers/glass/bowl = 4,
@@ -67,9 +69,9 @@
 		/obj/item/paper = 3,
 		/obj/item/reagent_containers/glass/bowl = 3,
 		/obj/item/storage/bag/tray = 3,
-		/obj/item/mundane/puzzlebox/medium = 1,
+		/obj/item/mundane/puzzlebox/medium = 3,
 		/obj/item/mundane/puzzlebox/easy = 1,
-		/obj/item/mundane/puzzlebox/impossible = 1,
+		/obj/item/mundane/puzzlebox/impossible = 2,
 
 		//medical
 		/obj/item/needle = 4,
@@ -103,6 +105,7 @@
 		/obj/item/rogueweapon/eaglebeak/lucerne = 1,
 		/obj/item/rogueweapon/eaglebeak = 1,
 		/obj/item/rogueweapon/spear/billhook = 1,
+		/obj/item/rogueweapon/huntingknife/throwingknife/steel = 1,
 
 		// tools
 		/obj/item/rogueweapon/shovel = 3,
@@ -140,7 +143,7 @@
 		/obj/item/clothing/suit/roguetown/armor/plate/bikini = 1,
 		/obj/item/clothing/suit/roguetown/armor/plate = 1,
 		/obj/item/clothing/suit/roguetown/armor/longcoat = 2,
-		/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass = 1,
+		/obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate = 1,
 
 
 		//food
@@ -205,7 +208,7 @@
 		/obj/item/rogue/instrument/lute = 3,
 		/obj/item/rogue/instrument/accord = 3,
 		/obj/item/ash = 5,
-		/obj/item/shard = 5,
+		/obj/item/natural/glass/shard = 5,
 		/obj/item/candle/yellow = 3,
 		/obj/item/flashlight/flare/torch = 3,
 		/obj/item/flashlight/flare/torch/lantern = 1,
@@ -319,8 +322,7 @@
 		/obj/item/clothing/suit/roguetown/armor/plate/bikini = 1,
 		/obj/item/clothing/suit/roguetown/armor/plate = 1,
 		/obj/item/clothing/suit/roguetown/armor/longcoat = 2,
-		/obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass = 1,
-
+		/obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate = 1,
 	)
 	lootcount = 1
 

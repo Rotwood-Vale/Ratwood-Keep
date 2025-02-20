@@ -22,9 +22,10 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
-		/obj/item/natural/worms/leech/cheele = 1,
-		/obj/item/natural/cloth = 2,
-	)
+						/obj/item/natural/worms/leech/cheele = 1,
+						/obj/item/natural/cloth = 2,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)

@@ -5,101 +5,122 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/weapons/sword
-	name = "Iron Swords"
-	cost = 60
+	name = "Iron Sword"
+	cost = 20
 	contains = list(
-					/obj/item/rogueweapon/sword/iron,
-					/obj/item/rogueweapon/sword/iron,
 					/obj/item/rogueweapon/sword/iron,
 				)
 
 /datum/supply_pack/rogue/weapons/mace
-	name = "Iron Maces"
-	cost = 60
+	name = "Iron Mace"
+	cost = 20
 	contains = list(
-					/obj/item/rogueweapon/mace,
-					/obj/item/rogueweapon/mace,
 					/obj/item/rogueweapon/mace,
 				)
 
 /datum/supply_pack/rogue/weapons/dagger
-	name = "Iron Daggers"
-	cost = 60
+	name = "Iron Dagger"
+	cost = 20
 	contains = list(
-					/obj/item/rogueweapon/huntingknife/idagger,
-					/obj/item/rogueweapon/huntingknife/idagger,
 					/obj/item/rogueweapon/huntingknife/idagger,
 				)
 
 /datum/supply_pack/rogue/weapons/axe
-	name = "Iron Axes"
-	cost = 60
+	name = "Iron Axe"
+	cost = 20
 	contains = list(
-					/obj/item/rogueweapon/stoneaxe/woodcut,
-					/obj/item/rogueweapon/stoneaxe/woodcut,
 					/obj/item/rogueweapon/stoneaxe/woodcut,
 				)
 
 /datum/supply_pack/rogue/weapons/spear
-	name = "Iron Spears"
-	cost = 60
+	name = "Iron Spear"
+	cost = 20
 	contains = list(
-					/obj/item/rogueweapon/spear,
-					/obj/item/rogueweapon/spear,
 					/obj/item/rogueweapon/spear,
 				)
 
 /datum/supply_pack/rogue/weapons/flail
-	name = "Iron Flails"
-	cost = 60
+	name = "Iron Flail"
+	cost = 20
 	contains = list(
-					/obj/item/rogueweapon/flail,
-					/obj/item/rogueweapon/flail,
 					/obj/item/rogueweapon/flail,
 				)
 
 /datum/supply_pack/rogue/weapons/daggerss
-	name = "Steel Daggers"
-	cost = 100
+	name = "Steel Dagger"
+	cost = 35
 	contains = list(
-					/obj/item/rogueweapon/huntingknife/idagger/steel,
-					/obj/item/rogueweapon/huntingknife/idagger/steel,
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
 				)
 
 /datum/supply_pack/rogue/weapons/shield
-	name = "Wooden Shields"
-	cost = 45
+	name = "Wooden Shield"
+	cost = 15
 	contains = list(
-					/obj/item/rogueweapon/shield/wood,
-					/obj/item/rogueweapon/shield/wood,
 					/obj/item/rogueweapon/shield/wood,
 				)
 
 /datum/supply_pack/rogue/weapons/crossbow
-	name = "Crossbows"
-	cost = 100
+	name = "Crossbow"
+	cost = 30
 	contains = list(
-					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
-					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 					/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 				)
 
-/datum/supply_pack/rogue/weapons/bow
-	name = "Bows"
-	cost = 30
+/datum/supply_pack/rogue/weapons/recurvebow
+	name = "Recurve Bow"
+	cost = 20
 	contains = list(
-					/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-					/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-					/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
+					/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
 				)
+
+/datum/supply_pack/rogue/weapons/saildagger
+	name = "Sail Dagger"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero,
+				)
+
+/datum/supply_pack/rogue/weapons/erapier
+	name = "Etruscan Rapier"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/sword/rapier/vaquero,
+	)
+
+/datum/supply_pack/rogue/weapons/shamshir
+	name = "Shamshir"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/sword/long/rider,
+				)
+
+
+/datum/supply_pack/rogue/weapons/beardedaxe
+	name = "Bearded Axe"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/stoneaxe/woodcut/steel/atgervi,
+	)
+
+/datum/supply_pack/rogue/weapons/naledistaff
+	name = "Naledi Warstaff"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/woodstaff/naledi,
+	)
+
+/datum/supply_pack/rogue/weapons/pulaxe
+	name = "Pulaski Axe"
+	cost = 80
+	contains = list(
+					/obj/item/rogueweapon/stoneaxe/woodcut/pick,
+	)
 
 /datum/supply_pack/rogue/weapons/quiver
 	name = "Quiver"
-	cost = 15
+	cost = 5
 	contains = list(
-					/obj/item/quiver,
-					/obj/item/quiver,
 					/obj/item/quiver,
 				)
 
@@ -131,19 +152,15 @@
 
 /datum/supply_pack/rogue/weapons/quivers/arrows
 	name = "Quiver of Arrows"
-	cost = 50
+	cost = 20
 	contains = list(
-					/obj/item/quiver/arrows,
-					/obj/item/quiver/arrows,
 					/obj/item/quiver/arrows,
 				)
 
 /datum/supply_pack/rogue/weapons/quivers/bolts
 	name = "Quiver of Bolts"
-	cost = 50
+	cost = 20
 	contains = list(
-					/obj/item/quiver/bolts,
-					/obj/item/quiver/bolts,
 					/obj/item/quiver/bolts,
 				)
 
@@ -206,4 +223,21 @@
 					/obj/item/ammo_casing/caseless/rogue/bolt/poison,
 					/obj/item/ammo_casing/caseless/rogue/bolt/poison)
 */
+/datum/supply_pack/rogue/weapons/tossbladeiron
+	name = "Iron tossblade belt"
+	cost = 20
+	contains = list(
+					/obj/item/storage/belt/rogue/leather/knifebelt/black/iron,
+				)
+
+
+/datum/supply_pack/rogue/weapons/tossbladesteel
+	name = "Steel tossblade belt"
+	cost = 40
+	contains = list(
+					/obj/item/storage/belt/rogue/leather/knifebelt/black/steel,
+				)
+
+
+
 

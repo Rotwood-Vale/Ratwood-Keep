@@ -20,6 +20,8 @@
 	var/infinite = FALSE
 	/// If this needle can be used to repair items
 	var/can_repair = TRUE
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/needle/examine()
 	. = ..()
@@ -70,40 +72,38 @@
 		return
 	return ..()
 
-
-
 /obj/item/needle/attack_obj(obj/O, mob/living/user)
 	var/obj/item/I = O
-	if(istype(I) && can_repair)
+	if(can_repair)
 		if(stringamt < 1)
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
-		if(!I.sewrepair || !I.max_integrity)
-			return
-		if(I.obj_integrity == I.max_integrity)
-			to_chat(user, span_warning("This is not broken."))
-			return
-		if(user.mind.get_skill_level(/datum/skill/misc/sewing) < I.required_repair_skill)
-			to_chat(user, span_warning("I don't know how to repair this..."))
-			return
-		if(!I.ontable())
-			to_chat(user, span_warning("I should put this on a table first."))
-			return
-		playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-		var/sewtime = 70
-		if(user.mind)
-			sewtime = (70 - ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10))
-		var/datum/component/storage/target_storage = I.GetComponent(/datum/component/storage) //Vrell - Part of storage item repair fix
-		if(do_after(user, sewtime, target = I))
+		if(I.sewrepair && I.max_integrity)
+			if(I.obj_integrity == I.max_integrity)
+				to_chat(user, span_warning("This is not broken."))
+				return
+			if(!I.ontable())
+				to_chat(user, span_warning("I should put this on a table first."))
+				return
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-			user.visible_message(span_info("[user] repairs [I]!"))
-			I.obj_integrity = I.max_integrity
-			if(I.obj_broken && istype(I, /obj/item/clothing))
-				var/obj/item/clothing/cloth = I
-				cloth.obj_fix()
-		//Vrell - Part of storage item repair fix
-		if(target_storage)
-			target_storage.being_repaired = FALSE
+			var/skill = ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10)
+			var/repairskill = ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 5)
+			var/sewtime = (60 - skill)
+			if(!do_after(user, sewtime, target = I))
+				return
+			if(prob(max(0, 60 - (skill * 2)))) //The more knowlegeable we are the less chance we damage the object
+				I.obj_integrity = max(0, I.obj_integrity - (30 - repairskill))
+				user.visible_message(span_info("[user] damages [I] due to a lack of skill!"))
+				playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing a repair teaches us something
+				return
+			else
+				if(I.obj_broken && istype(I, /obj/item/clothing))
+					var/obj/item/clothing/cloth = I
+					cloth.obj_fix()
+				playsound(loc, 'sound/foley/sewflesh.ogg', 50, TRUE, -2)
+				user.visible_message(span_info("[user] repairs [I]!"))
+				I.obj_integrity = min(I.obj_integrity + 10 + skill, I.max_integrity)
 		return
 	return ..()
 

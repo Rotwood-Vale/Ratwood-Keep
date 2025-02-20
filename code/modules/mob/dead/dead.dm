@@ -8,6 +8,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	throwforce = 0
 
 /mob/dead/Initialize()
+	SHOULD_CALL_PARENT(FALSE)
 	if(flags_1 & INITIALIZED_1)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags_1 |= INITIALIZED_1
@@ -77,6 +78,8 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	dat += "</center>"
 
 	for(var/datum/job/job in SSjob.occupations)
+		if(istype(job, /datum/job/roguetown/adventurer/courtagent))
+			continue
 		if(!job)
 			continue
 		var/readiedas = 0
@@ -92,10 +95,10 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 							var/thing = "[player.client.prefs.real_name]"
 							if(istype(job, /datum/job/roguetown/hand))
 								if(player != src)
-									if(client.prefs.job_preferences["Monarch"] == JP_HIGH)
+									if(client.prefs.job_preferences["Grand Duke"] == JP_HIGH)
 										thing = "<a href='byond://?src=[REF(src)];sethand=[player.client.ckey]'>[player.client.prefs.real_name]</a>"
 								for(var/mob/dead/new_player/Lord in GLOB.player_list)
-									if(Lord.client.prefs.job_preferences["Monarch"] == JP_HIGH)
+									if(Lord.client.prefs.job_preferences["Grand Duke"] == JP_HIGH)
 										if(Lord.brohand == player.ckey)
 											thing = "*[thing]*"
 											break
@@ -108,11 +111,13 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 			else
 				PL2 += "[PL[i]], "
 
+		var/str_job = job.title
+
 		if(readiedas)
 			if(PL2.len)
-				dat += "<B>[job.title]</B> ([readiedas]) - [PL2.Join()]<br>"
+				dat += "<B>[str_job]</B> ([readiedas]) - [PL2.Join()]<br>"
 			else
-				dat += "<B>[job.title]</B> ([readiedas])<br>"
+				dat += "<B>[str_job]</B> ([readiedas])<br>"
 	var/datum/browser/popup = new(src, "lobby_window", "<div align='center'>LOBBY</div>", 330, 430)
 	popup.set_window_options("can_close=1;can_minimize=0;can_maximize=0;can_resize=1;")
 	popup.set_content(dat.Join())

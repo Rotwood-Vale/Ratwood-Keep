@@ -11,7 +11,7 @@
 #define CHANNEL_RAIN 1015
 #define CHANNEL_MUSIC 1014
 #define CHANNEL_CMUSIC 1013
-#define CHANNEL_IMSICK 1012
+#define CHANNEL_WEATHER 1012
 
 //THIS SHOULD ALWAYS BE THE LOWEST ONE!
 //KEEP IT UPDATED
@@ -182,6 +182,10 @@
 						'sound/ambience/noises/birds (6).ogg',\
 						'sound/ambience/noises/birds (7).ogg')
 
+#define SFX_CHAIN_STEP "chain_step"
+#define SFX_PLATE_STEP	"plate_step"
+#define SFX_PLATE_COAT_STEP "plate_coat_step"
+#define SFX_JINGLE_BELLS "jingle_bells"
 
 #define INTERACTION_SOUND_RANGE_MODIFIER 0
 #define EQUIP_SOUND_VOLUME 100

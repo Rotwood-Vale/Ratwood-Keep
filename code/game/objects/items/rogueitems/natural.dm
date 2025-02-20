@@ -7,9 +7,14 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/bundletype = null
 	var/quality = SMELTERY_LEVEL_NORMAL // To not ruin blacksmith recipes
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/natural/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/natural/bundle))
+		if(item_flags & IN_STORAGE)
+			to_chat(user, span_warning("It's hard to find [W] in my bag."))
+			return
 		var/obj/item/natural/bundle/B = W
 		if(istype(src, B.stacktype))
 			if(B.amount < B.maxamount)
@@ -50,8 +55,14 @@
 	var/icon3 = null
 	var/stacktype = /obj/item/natural/fibers/
 	var/stackname = "fibers"
+	var/items_per_increase = 5
+
+	var/base_width = 32
+	var/base_height = 32
 
 /obj/item/natural/bundle/attackby(obj/item/W, mob/living/user)
+	if(item_flags & IN_STORAGE)
+		return
 	if(istype(W, /obj/item/natural/bundle))
 		var/obj/item/natural/bundle/B = W
 		if(src.stacktype == B.stacktype)
@@ -66,13 +77,15 @@
 					user.put_in_hands(H)
 					qdel(B)
 			else
-				to_chat(user, "You add the [W] to the [src].")
+				to_chat(user, "I add the [W] to the [src].")
 				src.amount += B.amount
 				update_bundle()
 				qdel(B)
 	else if(istype(W, stacktype))
+		if(item_flags & IN_STORAGE)
+			return
 		if(src.amount < src.maxamount)
-			to_chat(user, "You add the [W] to the [src].")
+			to_chat(user, "I add the [W] to the [src].")
 			src.amount++
 			qdel(W)
 		else
@@ -80,7 +93,23 @@
 	else
 		return ..()
 
+/obj/item/natural/bundle/use(used)
+	if(src.amount >= used)
+		src.amount -= used
+		src.update_bundle()
+		switch(src.amount)
+			if(1)
+				new src.stacktype(src.loc)
+				qdel(src)
+			if(0)
+				qdel(src)
+		return TRUE
+	else
+		return FALSE
+
 /obj/item/natural/bundle/attack_right(mob/user)
+	if(item_flags & IN_STORAGE)
+		return
 	var/mob/living/carbon/human/H = user
 	switch(amount)
 		if(2)
@@ -94,8 +123,31 @@
 			amount -= 1
 			var/obj/F = new stacktype(src.loc)
 			H.put_in_hands(F)
-			user.visible_message("[user] removes [F] from [src]")
+			user.visible_message("[user] removes [F] from [src].", "I remove [F] from [src].")
 	update_bundle()
+
+/obj/item/natural/bundle/attack_turf(turf/T, mob/living/user)
+	var/list/obj/item/stackables = list()
+	for(var/obj/I in T.contents)
+		if(I.type == stacktype)
+			stackables += I
+	if(stackables.len)
+		if(amount >= maxamount)
+			to_chat(user, span_info("[src] can't hold any more without falling apart."))
+			return
+		to_chat(user, span_info("I begin filling [src]..."))
+		for(var/obj/I in stackables)
+			if(amount >= maxamount)
+				break
+			if(I.type == stacktype)
+				if(!do_after(user, 5, TRUE, src))
+					break
+				if(!(I in T.contents))
+					continue
+				qdel(I)
+				src.amount++
+				update_bundle()
+
 
 /obj/item/natural/bundle/examine(mob/user)
 	. = ..()
@@ -111,3 +163,21 @@
 	else
 		if(icon3 != null)
 			icon_state = icon3
+	var/increases = FLOOR(amount / items_per_increase, 1)
+
+	var/height = FALSE
+	grid_height = base_height
+	grid_width = base_width
+	for(var/i = 1 to increases)
+		if(height)
+			height = FALSE
+			grid_height += 32
+		else
+			height = TRUE
+			grid_width += 32
+	if(item_flags & IN_STORAGE)
+		var/obj/item/location = loc
+		var/datum/component/storage/storage = location.GetComponent(/datum/component/storage)
+
+		storage.update_item(src)
+		storage.orient2hud()

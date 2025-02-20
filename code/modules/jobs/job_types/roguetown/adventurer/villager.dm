@@ -16,6 +16,7 @@
 	give_bank_account = TRUE
 	min_pq = -15
 	max_pq = null
+	round_contrib_points = 2
 	wanderer_examine = FALSE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE

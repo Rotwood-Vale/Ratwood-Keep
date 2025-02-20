@@ -8,10 +8,9 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/masterwoodcutter
-	maxchosen = 1
+	maximum_possible_slots = 1
 	pickprob = 5
-	isvillager = FALSE
-	ispilgrim = TRUE
+	category_tags = list(CTAG_TOWNER)
 	
 	
 /datum/outfit/job/roguetown/adventurer/masterwoodcutter/pre_equip(mob/living/carbon/human/H)
@@ -41,7 +40,10 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black 
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 	beltl = /obj/item/rogueweapon/huntingknife
-	backpack_contents = list(/obj/item/flint = 1)
+	backpack_contents = list(
+						/obj/item/flint = 1,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 	H.change_stat("strength", 4)
 	H.change_stat("constitution", 1)
 	H.change_stat("perception", 1)

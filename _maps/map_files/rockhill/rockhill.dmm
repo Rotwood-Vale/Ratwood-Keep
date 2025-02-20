@@ -7841,7 +7841,7 @@
 	},
 /area/rogue/indoors/town/manor)
 "hmk" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame,
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "hmt" = (
@@ -11408,7 +11408,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/bog)
 "lkv" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/needle/thorn,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
@@ -11843,7 +11843,7 @@
 "lIx" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/item/soap,
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "lIH" = (
@@ -12769,7 +12769,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet/bogcaves)
 "mNw" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/needle/thorn,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
@@ -14360,7 +14360,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "oDH" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/item/storage/roguebag,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
@@ -16050,7 +16050,7 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
 "qwp" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck{
+/mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck{
 	tame = 1
 	},
 /turf/open/floor/rogue/dirt/road,

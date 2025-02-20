@@ -4,16 +4,17 @@
 	icon = 'icons/mob/human.dmi'
 	icon_state = "human_basic"
 	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE
-	hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, NANITE_HUD, DIAG_NANITE_FULL_HUD,ANTAG_HUD,GLAND_HUD,SENTIENT_DISEASE_HUD)
+	hud_possible = list(ANTAG_HUD)
 	hud_type = /datum/hud/human
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	possible_mmb_intents = list(INTENT_STEAL, INTENT_JUMP, INTENT_KICK, INTENT_BITE, INTENT_GIVE)
-	pressure_resistance = 25
 	can_buckle = TRUE
 	buckle_lying = FALSE
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 
 	ambushable = 1
+
+	voice_pitch = 1
 
 	var/footstep_type = FOOTSTEP_MOB_HUMAN
 
@@ -31,7 +32,8 @@
 	var/eye_color = "000"
 
 	var/voice_color = "a0a0a0"
-
+	var/nickname = "Please Change Me"
+	var/highlight_color = "#FF0000"
 	var/detail_color = "000"
 
 	var/skin_tone = "caucasian1"	//Skin tone
@@ -74,7 +76,7 @@
 
 	var/list/datum/bioware = list()
 
-	var/static/list/can_ride_typecache = typecacheof(list(/mob/living/carbon/human, /mob/living/simple_animal/slime, /mob/living/simple_animal/parrot))
+	var/static/list/can_ride_typecache = typecacheof(list(/mob/living/carbon/human, /mob/living/simple_animal/parrot))
 	var/lastpuke = 0
 	var/last_fire_update
 	var/account_id
@@ -107,6 +109,7 @@
 	var/headshot_link = null
 	var/flavortext = null
 	var/ooc_notes = null
+	var/received_resident_key = FALSE
 
 	possible_rmb_intents = list(/datum/rmb_intent/feint,\
 	/datum/rmb_intent/aimed,\
@@ -119,3 +122,5 @@
 
 	var/voice_type = null // LETHALSTONE EDIT: defines what sound pack we use. keep this null so mobs resort to their typical gender typing - preferences set this
 	var/datum/statpack/statpack = null // Lethalstone Port - statpacks for greater customization
+	var/second_voice	// Virtue-specific. Can be swapped to / from and changed.
+	var/original_voice

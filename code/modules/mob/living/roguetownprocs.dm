@@ -185,20 +185,88 @@
 					attacker_skill = U.mind.get_skill_level(/datum/skill/combat/unarmed)
 					prob2defend -= (attacker_skill * 20)
 
+			if(HAS_TRAIT(src, TRAIT_GUIDANCE))
+				prob2defend += 10
+
+			if(HAS_TRAIT(user, TRAIT_GUIDANCE))
+				prob2defend -= 10
+
 			// parrying while knocked down sucks ass
 			if(!(mobility_flags & MOBILITY_STAND))
 				prob2defend *= 0.65
-			prob2defend = clamp(prob2defend, 5, 90)
-			if(src.client?.prefs.showrolls)
-				to_chat(src, span_info("Roll to parry... [prob2defend]%"))
 
-			if(prob(prob2defend))
+			if(HAS_TRAIT(H, TRAIT_SENTINELOFWITS))
+				if(ishuman(H))
+					var/mob/living/carbon/human/SH = H
+					var/sentinel = SH.calculate_sentinel_bonus()
+					prob2defend += sentinel
+
+			prob2defend = clamp(prob2defend, 5, 90)
+
+			//Dual Wielding
+			var/attacker_dualw
+			var/defender_dualw
+			var/extraattroll
+			var/extradefroll
+
+			//Dual Wielder defense disadvantage
+			if(HAS_TRAIT(src, TRAIT_DUALWIELDER) && istype(offhand, mainhand))
+				extradefroll = prob(prob2defend)
+				defender_dualw = TRUE
+
+			//dual-wielder attack advantage
+			var/obj/item/mainh = user.get_active_held_item()
+			var/obj/item/offh = user.get_inactive_held_item()
+			if(mainh && offh && HAS_TRAIT(user, TRAIT_DUALWIELDER))
+				if(istype(mainh, offh))
+					extraattroll = prob(prob2defend)
+					attacker_dualw = TRUE
+
+			if(src.client?.prefs.showrolls)
+				var/text = "Roll to parry... [prob2defend]%"
+				if((defender_dualw || attacker_dualw))
+					if(defender_dualw && attacker_dualw)
+						text += " Our dual wielding cancels out!"
+					else//If we're defending against or as a dual wielder, we roll disadv. But if we're both dual wielding it cancels out.
+						text += " Twice! Disadvantage!"
+				to_chat(src, span_info("[text]"))
+			
+			var/attacker_feedback 
+			if(user.client?.prefs.showrolls && attacker_dualw)
+				attacker_feedback = "Attacking with advantage."
+
+			var/parry_status = FALSE
+			if((defender_dualw && attacker_dualw) || (!defender_dualw && !attacker_dualw)) //They cancel each other out
+				if(attacker_feedback)
+					attacker_feedback += " Cancelled out!"
+				if(prob(prob2defend))
+					parry_status = TRUE
+			else if(attacker_dualw)
+				if(!prob(prob2defend) || !extraattroll)
+					parry_status = FALSE
+			else if(defender_dualw)
+				if(prob(prob2defend) && extradefroll)
+					parry_status = TRUE
+
+			if(attacker_feedback)
+				to_chat(user, span_info("[attacker_feedback]"))
+
+			if(parry_status)
 				if(intenty.masteritem)
 					if(intenty.masteritem.wbalance < 0 && user.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
 						drained = drained + ( intenty.masteritem.wbalance * ((user.STASTR - src.STASTR) * -5) )
 			else
 				to_chat(src, span_warning("The enemy defeated my parry!"))
-				return FALSE
+				if(HAS_TRAIT(src, TRAIT_MAGEARMOR))
+					if(H.magearmor == 0)
+						H.magearmor = 1
+						H.apply_status_effect(/datum/status_effect/buff/magearmor)
+						to_chat(src, span_boldwarning("My mage armor absorbs the hit and dissipates!"))
+						return TRUE
+					else
+						return FALSE
+				else
+					return FALSE
 
 			drained = max(drained, 5)
 
@@ -211,9 +279,13 @@
 
 			if(weapon_parry == TRUE)
 				if(do_parry(used_weapon, drained, user)) //show message
+					if ((mobility_flags & MOBILITY_STAND))
+						var/skill_target = attacker_skill
+						if(!HAS_TRAIT(U, TRAIT_GOODTRAINER))
+							skill_target -= SKILL_LEVEL_NOVICE
+						if (can_train_combat_skill(src, used_weapon.associated_skill, skill_target))
+							mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT*exp_multi), 0), FALSE)
 
-					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, used_weapon.associated_skill, SKILL_LEVEL_EXPERT))
-						mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT*exp_multi), 0), FALSE)
 					var/obj/item/AB = intenty.masteritem
 
 					//attacker skill gain
@@ -224,8 +296,12 @@
 							attacker_skill_type = AB.associated_skill
 						else
 							attacker_skill_type = /datum/skill/combat/unarmed
-						if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, SKILL_LEVEL_EXPERT))
-							U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT*exp_multi), 0), FALSE)
+						if ((mobility_flags & MOBILITY_STAND))
+							var/skill_target = defender_skill
+							if(!HAS_TRAIT(src, TRAIT_GOODTRAINER))
+								skill_target -= SKILL_LEVEL_NOVICE
+							if (can_train_combat_skill(U, attacker_skill_type, skill_target))
+								U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT*exp_multi), 0), FALSE)
 
 					if(prob(66) && AB)
 						if((used_weapon.flags_1 & CONDUCT_1) && (AB.flags_1 & CONDUCT_1))
@@ -249,8 +325,12 @@
 
 			if(weapon_parry == FALSE)
 				if(do_unarmed_parry(drained, user))
-					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(H, /datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT))
-						H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT*exp_multi), 0), FALSE)
+					if((mobility_flags & MOBILITY_STAND))
+						var/skill_target = attacker_skill
+						if(!HAS_TRAIT(U, TRAIT_GOODTRAINER))
+							skill_target -= SKILL_LEVEL_NOVICE
+						if(can_train_combat_skill(H, /datum/skill/combat/unarmed, skill_target))
+							H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT*exp_multi), 0), FALSE)
 					flash_fullscreen("blackflash2")
 					return TRUE
 				else
@@ -265,6 +345,8 @@
 				if(!istype(rmb_intent, /datum/rmb_intent/riposte))
 					return FALSE
 			if(has_status_effect(/datum/status_effect/debuff/riposted))
+				return FALSE
+			if(has_status_effect(/datum/status_effect/debuff/feinted))
 				return FALSE
 			last_dodge = world.time
 			if(src.loc == user.loc)
@@ -315,7 +397,16 @@
 						user.aftermiss()
 						return TRUE
 					else
-						return FALSE
+						if(HAS_TRAIT(src, TRAIT_MAGEARMOR))
+							if(H.magearmor == 0)
+								H.magearmor = 1
+								H.apply_status_effect(/datum/status_effect/buff/magearmor)
+								to_chat(src, span_boldwarning("My mage armor absorbs the hit and dissipates!"))
+								return TRUE
+							else
+								return FALSE
+						else
+							return FALSE
 			else
 				return FALSE
 
@@ -381,11 +472,11 @@
 		if(I.wbalance > 0 && U.STASPD > L.STASPD) //nme weapon is quick, so they get a bonus based on spddiff
 			prob2defend = prob2defend - ( I.wbalance * ((U.STASPD - L.STASPD) * 10) )
 		if(I.wbalance < 0 && L.STASPD > U.STASPD) //nme weapon is slow, so its easier to dodge if we're faster
-			prob2defend = prob2defend + ( I.wbalance * ((U.STASPD - L.STASPD) * -10) )
+			prob2defend = prob2defend + ( I.wbalance * ((U.STASPD - L.STASPD) * 10) )
 		if(UH?.mind)
 			prob2defend = prob2defend - (UH.mind.get_skill_level(I.associated_skill) * 10)
 	if(H)
-		if(!H?.check_armor_skill())
+		if(!H?.check_armor_skill() || H?.legcuffed)
 			H.Knockdown(1)
 			return FALSE
 		/* Commented out due to gaping imbalance
@@ -417,10 +508,54 @@
 		// dodging while knocked down sucks ass
 		if(!(L.mobility_flags & MOBILITY_STAND))
 			prob2defend *= 0.25
+
+		if(HAS_TRAIT(H, TRAIT_SENTINELOFWITS))
+			var/sentinel = H.calculate_sentinel_bonus()
+			prob2defend += sentinel
+
 		prob2defend = clamp(prob2defend, 5, 90)
+
+		//------------Duel Wielding Checks------------
+		var/attacker_dualw
+		var/defender_dualw
+		var/extraattroll
+		var/extradefroll
+		var/mainhand = L.get_active_held_item()
+		var/offhand	= L.get_inactive_held_item()
+		//Duel Wielder defense disadvantage
+		if(mainhand && offhand)
+			if(HAS_TRAIT(src, TRAIT_DUALWIELDER) && istype(offhand, mainhand))
+				extradefroll = prob(prob2defend)
+				defender_dualw = TRUE
+
+		//dual-wielder attack advantage
+		var/obj/item/mainh = U.get_active_held_item()
+		var/obj/item/offh = U.get_inactive_held_item()
+		if(mainh && offh && HAS_TRAIT(U, TRAIT_DUALWIELDER))
+			if(istype(mainh, offh))
+				extraattroll = prob(prob2defend)
+				attacker_dualw = TRUE
+		//----------Dual Wielding check end---------
+
+
 		if(client?.prefs.showrolls)
-			to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
-		if(!prob(prob2defend))
+			var/text = "Roll to dodge... [prob2defend]%"
+			if(defender_dualw)
+				text += " Twice! Disadvantage!"
+			to_chat(src, span_info("[text]"))
+
+		var/dodge_status = FALSE
+		if((defender_dualw && attacker_dualw) || (!defender_dualw && !attacker_dualw)) //They cancel each other out
+			if(prob(prob2defend))
+				dodge_status = TRUE
+		else if(attacker_dualw)
+			if(!prob(prob2defend) || !extraattroll)
+				dodge_status = FALSE
+		else if(defender_dualw)
+			if(prob(prob2defend) && extradefroll)
+				dodge_status = TRUE
+
+		if(!dodge_status)
 			return FALSE
 		if(!H.rogfat_add(max(drained,5)))
 			to_chat(src, span_warning("I'm too tired to dodge!"))
@@ -475,3 +610,27 @@
 	var/datum/atom_hud/antag/hud = GLOB.huds[antag_hud_type]
 	hud.leave_hud(src)
 	set_antag_hud(src, null)
+
+/mob/living/carbon/human/proc/calculate_sentinel_bonus()
+	if(STAINT > 10)
+		var/fakeint = STAINT
+		if(status_effects.len)
+			for(var/S in status_effects)
+				var/datum/status_effect/status = S
+				if(status.effectedstats.len)
+					if(status.effectedstats["intelligence"])
+						if(status.effectedstats["intelligence"] > 0)
+							fakeint -= status.effectedstats["intelligence"]
+		if(fakeint > 10)
+			var/bonus = round(((fakeint - 10) / 2)) * 10
+			if(bonus > 0)
+				if(HAS_TRAIT(src, TRAIT_HEAVYARMOR) || HAS_TRAIT(src, TRAIT_MEDIUMARMOR) || HAS_TRAIT(src, TRAIT_DODGEEXPERT) || HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+					bonus = clamp(bonus, 0, 25)
+				else
+					bonus = clamp(bonus, 0, 50)//20-21 INT
+			return bonus
+		else
+			return 0
+	else
+		return 0
+

@@ -24,6 +24,8 @@
 		/datum/sprite_accessory/snout/front/round,
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
+		/datum/sprite_accessory/snout/stubby,
+		/datum/sprite_accessory/snout/stubbyalt,
 		)
 
 /datum/customizer/organ/snout/vulpkanin
@@ -46,6 +48,8 @@
 		/datum/sprite_accessory/snout/front/round,
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
+		/datum/sprite_accessory/snout/stubby,
+		/datum/sprite_accessory/snout/stubbyalt,
 		)
 
 /datum/customizer/organ/snout/lupian
@@ -77,7 +81,9 @@
 		/datum/sprite_accessory/snout/front/scanidalt3,
 		/datum/sprite_accessory/snout/front/wolf,
 		/datum/sprite_accessory/snout/front/wolfalt,
-		/datum/sprite_accessory/snout/front/otie
+		/datum/sprite_accessory/snout/front/otie,
+		/datum/sprite_accessory/snout/stubby,
+		/datum/sprite_accessory/snout/stubbyalt,
 		)
 
 /datum/customizer/organ/snout/tajaran
@@ -104,6 +110,8 @@
 		/datum/sprite_accessory/snout/front/round,
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
+		/datum/sprite_accessory/snout/stubby,
+		/datum/sprite_accessory/snout/stubbyalt,
 		)
 
 /datum/customizer/organ/snout/anthro
@@ -200,6 +208,8 @@
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
 		/datum/sprite_accessory/snout/shortnosed,
+		/datum/sprite_accessory/snout/stubby,
+		/datum/sprite_accessory/snout/stubbyalt,
 		)
 
 /datum/customizer/organ/snout/akula
@@ -219,6 +229,8 @@
 		/datum/sprite_accessory/snout/front/round,
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
+		/datum/sprite_accessory/snout/stubby,
+		/datum/sprite_accessory/snout/stubbyalt,
 		)
 
 /datum/customizer/organ/snout/tabaxi
@@ -242,4 +254,6 @@
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
 		/datum/sprite_accessory/snout/shortnosed,
+		/datum/sprite_accessory/snout/stubby,
+		/datum/sprite_accessory/snout/stubbyalt,
 		)

@@ -19,6 +19,7 @@
 
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 2
 
 /datum/outfit/job/roguetown/apothecary/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -44,7 +45,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 	H.change_stat("intelligence", 3)
 	H.change_stat("perception", 2)
+	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)

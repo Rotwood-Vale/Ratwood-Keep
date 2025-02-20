@@ -10,6 +10,7 @@
 
 /datum/customizer/organ/frills/lizard
 	customizer_choices = list(/datum/customizer_choice/organ/frills/lizard)
+	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/frills/lizard
 	name = "Frills"

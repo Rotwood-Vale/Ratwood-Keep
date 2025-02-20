@@ -19,7 +19,7 @@
 
 /turf/open/transparent/update_multiz(prune_on_fail = FALSE, init = FALSE)
 	. = ..()
-	var/turf/T = below()
+	var/turf/T = GET_TURF_BELOW(src)
 	if(!T)
 		vis_contents.len = 0
 		if(!show_bottom_level() && prune_on_fail) //If we cant show whats below, and we prune on fail, change the turf to plating as a fallback
@@ -50,25 +50,3 @@
 	var/mutable_appearance/underlay_appearance = mutable_appearance(initial(path.icon), initial(path.icon_state), layer = TURF_LAYER, plane = PLANE_SPACE)
 	underlays += underlay_appearance
 	return TRUE
-
-
-/turf/open/transparent/glass
-	name = "Glass floor"
-	desc = ""
-	icon = 'icons/turf/floors/glass.dmi'
-	icon_state = "floor_glass"
-	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/open/transparent/glass, /turf/open/transparent/glass/reinforced)
-	footstep = FOOTSTEP_PLATING
-	barefootstep = FOOTSTEP_HARD_BAREFOOT
-	clawfootstep = FOOTSTEP_HARD_CLAW
-	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
-
-/turf/open/transparent/glass/Initialize()
-	icon_state = "" //Prevent the normal icon from appearing behind the smooth overlays
-	return ..()
-
-/turf/open/transparent/glass/reinforced
-	name = "Reinforced glass floor"
-	desc = ""
-	icon = 'icons/turf/floors/reinf_glass.dmi'

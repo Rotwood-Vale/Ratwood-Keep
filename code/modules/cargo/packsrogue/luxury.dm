@@ -11,7 +11,6 @@
 	cost = 3
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 
-
 /datum/supply_pack/rogue/luxury/ozium
 	name = "Ozium"
 	cost = 5
@@ -62,6 +61,32 @@
 	cost = 10
 	contains = list(/obj/item/rogue/instrument/drum)
 
+/datum/supply_pack/rogue/luxury/hurdygurdy
+	name = "Hurdy-Gurdy"
+	cost = 30
+	contains = list(/obj/item/rogue/instrument/hurdygurdy)
+
+/datum/supply_pack/rogue/luxury/viola
+	name = "Viola"
+	cost = 30
+	contains = list(/obj/item/rogue/instrument/viola)
+
+/datum/supply_pack/rogue/luxury/vocals
+	name = "Vocalist's Talisman"
+	cost = 30
+	contains = list(/obj/item/rogue/instrument/vocals)
+
+/datum/supply_pack/rogue/luxury/toper
+	name = "Toper"
+	cost = 55
+	contains = list(/obj/item/roguegem/yellow)
+
+
+/datum/supply_pack/rogue/luxury/silverdagger
+	name = "Silver Dagger"
+	cost = 150
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver)
+
 /datum/supply_pack/rogue/luxury/nomag
 	name = "Ring of Null Magic"
 	cost = 300
@@ -79,10 +104,33 @@
 
 /datum/supply_pack/rogue/luxury/riddleofsteel
 	name = "Riddle of Steel"
-	cost = 400
+	cost = 500
 	contains = list(/obj/item/riddleofsteel)
 
 /datum/supply_pack/rogue/luxury/polishing_kit
 	name = "Polishing Kit"
 	cost = 100
 	contains = list(/obj/item/polishing_cream, /obj/item/armor_brush)
+
+
+/datum/supply_pack/rogue/luxury/talkstone
+	name = "Talkstone"
+	cost = 150
+	contains = list(/obj/item/clothing/neck/roguetown/talkstone)
+
+
+/datum/supply_pack/rogue/luxury/circlet
+	name = "Circlet"
+	cost = 80
+	contains = list(/obj/item/clothing/head/roguetown/circlet)
+
+
+/datum/supply_pack/rogue/luxury/goldring
+	name = "Gold Ring"
+	cost = 70
+	contains = list(/obj/item/clothing/ring/gold)
+
+/datum/supply_pack/rogue/luxury/signet
+	name = "Signet"
+	cost = 220
+	contains = list(/obj/item/clothing/ring/signet)

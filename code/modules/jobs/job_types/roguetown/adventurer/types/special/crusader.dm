@@ -47,7 +47,10 @@
 	beltr = /obj/item/rogueweapon/sword/decorated
 	beltl = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 	neck = /obj/item/clothing/neck/roguetown/psicross/g
-	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/rich=1)
+	backpack_contents = list(
+						/obj/item/storage/belt/rogue/pouch/coins/rich = 1,
+						/obj/item/flashlight/flare/torch = 1,
+						)
 
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
@@ -70,7 +73,11 @@
 		backr = /obj/item/storage/backpack/rogue/satchel
 		gloves = null
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1, /obj/item/storage/belt/rogue/pouch/coins/rich=1)
+		backpack_contents = list(
+							/obj/item/rogueweapon/huntingknife/idagger/silver = 1,
+							/obj/item/storage/belt/rogue/pouch/coins/rich = 1,
+							/obj/item/flashlight/flare/torch = 1,
+							)
 		H.change_stat("strength", 1)
 
 
@@ -107,11 +114,7 @@
 
 /obj/item/clothing/cloak/cape/crusader/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 3
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 1
+	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
 
 /obj/item/clothing/cloak/cape/crusader/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)

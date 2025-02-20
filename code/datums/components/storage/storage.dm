@@ -29,18 +29,18 @@
 	var/locked = FALSE								//when locked nothing can see inside or use it.
 
 	var/max_w_class = WEIGHT_CLASS_SMALL			//max size of objects that will fit.
-	var/max_combined_w_class = 14					//max combined sizes of objects that will fit.
-	var/max_items = 7								//max number of objects that will fit.
+	var/max_combined_w_class = 1000					//max combined sizes of objects that will fit.
+	var/max_items = 1000								//max number of objects that will fit.
 
 	var/emp_shielded = FALSE
 
 	var/silent = FALSE								//whether this makes a message when things are put in.
 	var/click_gather = FALSE						//whether this can be clicked on items to pick it up rather than the other way around.
-	var/rustle_sound = TRUE							//play rustle sound on interact.
+	var/rustle_sound = "rustle"							//play rustle sound on interact. empty string or null to silence
 	var/allow_quick_empty = FALSE					//allow empty verb which allows dumping on the floor of everything inside quickly.
 	var/allow_quick_gather = FALSE					//allow toggle mob verb which toggles collecting all items from a tile.
 
-	var/allow_dump_out = FALSE
+	var/allow_dump_out = FALSE						//allow dumping out contents via LMB click-dragging
 
 	var/collection_mode = COLLECT_EVERYTHING
 
@@ -57,11 +57,11 @@
 	var/quickdraw = FALSE							//altclick interact
 
 	//Screen variables: Do not mess with these vars unless you know what you're doing. They're not defines so storage that isn't in the same location can be supported in the future.
-	var/screen_max_columns = 7							//These two determine maximum screen sizes.
-	var/screen_max_rows = INFINITY
+	var/screen_max_columns = INFINITY							//These two determine maximum screen sizes.
+	var/screen_max_rows = 9
 	var/screen_pixel_x = 16								//These two are pixel values for screen loc of boxes and closer
 	var/screen_pixel_y = 16
-	var/screen_start_x = 4								//These two are where the storage starts being rendered, screen_loc wise.
+	var/screen_start_x = 1								//These two are where the storage starts being rendered, screen_loc wise.
 	var/screen_start_y = 2
 	//End
 
@@ -69,6 +69,7 @@
 
 	//Vrell - Used for repair bypass clicks
 	var/being_repaired = FALSE
+
 
 /datum/component/storage/Initialize(datum/component/storage/concrete/master)
 	if(!isatom(parent))
@@ -122,6 +123,7 @@
 	QDEL_NULL(closer)
 	LAZYCLEARLIST(is_using)
 	return ..()
+
 
 /datum/component/storage/proc/set_holdable(can_hold_list, cant_hold_list)
 	can_hold_description = generate_hold_desc(can_hold_list)
@@ -272,15 +274,15 @@
 	progress.update(progress.goal - things.len)
 	return FALSE
 
-/datum/component/storage/proc/quick_empty(mob/M)
+/datum/component/storage/proc/quick_empty(mob/user) // Evidently this handles emptying sacks in Roguetown...
 	var/atom/A = parent
-	if(!M.canUseStorage() || !A.Adjacent(M) || M.incapacitated())
+	if(!user.canUseStorage() || !A.Adjacent(user) || user.incapacitated()) // Some sanity checks
 		return
 	if(locked)
-//		to_chat(M, span_warning("[parent] seems to be locked!"))
+//		to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
 		return FALSE
-	A.add_fingerprint(M)
-//	to_chat(M, span_notice("I start dumping out [parent]."))
+	A.add_fingerprint(user)
+//	to_chat(M, "<span class='notice'>I start dumping out [parent].</span>")
 //	var/turf/T = get_turf(A)
 	var/list/things = contents()
 	playsound(A, "rustle", 50, FALSE, -5)
@@ -288,14 +290,23 @@
 //	while (do_after(M, dump_time, TRUE, T, FALSE, CALLBACK(src, PROC_REF(mass_remove_from_storage), T, things, progress)))
 //		stoplag(1)
 //	qdel(progress)
-	var/turf/target = get_turf(A)
-	for(var/obj/item/I in things)
+	var/turf/T = get_step(user, user.dir)
+	for(var/obj/structure/S in T) // Is there a structure in the way that isn't a chest, table, rack, or handcart? Can't dump the sack out on that
+		if(S.density && !istype(S, /obj/structure/table) && !istype(S, /obj/structure/closet/crate) && !istype(S, /obj/structure/rack) && !istype(S, /obj/structure/bars) && !istype(S, /obj/structure/handcart))
+			to_chat(user, "<span class='warning'>Something in the way.</span>")
+			return
+
+	if(istype(T, /turf/closed)) // Is there an impassible turf in the way? Don't dump the sack out on that
+		to_chat(user, "<span class='warning'>Something in the way.</span>")
+		return
+
+	for(var/obj/item/I in things) // If the above aren't true, dump the sack onto the tile in front of us
 		things -= I
 //		if(I.loc != real_location)
 //			continue
-		remove_from_storage(I, target)
-		I.pixel_x = initial(I.pixel_x) += rand(-10,10)
-		I.pixel_y = initial(I.pixel_y) += rand(-10,10)
+		remove_from_storage(I, T)
+		I.pixel_x = initial(I.pixel_x) + rand(-10,10)
+		I.pixel_y = initial(I.pixel_y) + rand(-10,10)
 //		if(trigger_on_found && I.on_found())
 //			return FALSE
 
@@ -307,8 +318,8 @@
 			testing("debugbag5 [I]")
 			continue
 		remove_from_storage(I, target)
-		I.pixel_x = initial(I.pixel_x) += rand(-10,10)
-		I.pixel_y = initial(I.pixel_y) += rand(-10,10)
+		I.pixel_x = initial(I.pixel_x) + rand(-10,10)
+		I.pixel_y = initial(I.pixel_y) + rand(-10,10)
 		if(trigger_on_found && I.on_found())
 			testing("debugbag6 [I]")
 			return FALSE
@@ -359,8 +370,8 @@
 		numbered_contents = _process_numerical_display()
 		adjusted_contents = numbered_contents.len
 
-	var/columns = CLAMP(max_items, 1, screen_max_columns)
-	var/rows = CLAMP(CEILING(adjusted_contents / columns, 1), 1, screen_max_rows)
+	var/rows = CLAMP(max_items, 1, screen_max_rows)
+	var/columns = CLAMP(CEILING(adjusted_contents / rows, 1), 1, screen_max_columns)
 	standard_orient_objs(rows, columns, numbered_contents)
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
@@ -398,7 +409,7 @@
 				cy++
 				if(cy - screen_start_y >= rows)
 					break
-	closer.screen_loc = "[screen_start_x + cols]:[screen_pixel_x],[screen_start_y]:[screen_pixel_y]"
+	closer.screen_loc = "[screen_start_x]:[screen_pixel_x],[screen_start_y+rows]:[screen_pixel_y]"
 
 /datum/component/storage/proc/show_to(mob/M)
 	if(!M.client)
@@ -519,14 +530,6 @@
 
 //This proc is called when you want to place an item into the storage item.
 /datum/component/storage/proc/attackby(datum/source, obj/item/I, mob/M, params)
-	if(istype(I, /obj/item/hand_labeler))
-		var/obj/item/hand_labeler/labeler = I
-		if(labeler.mode)
-			return FALSE
-//	. = TRUE //no afterattack
-	if(iscyborg(M))
-		return
-	//Vrell - Adding a block here to allow sewing/hammering to repair containers. Clicking while trying to sew will bypass this requirement.
 	if(isitem(parent))
 		if(istype(I, /obj/item/rogueweapon/hammer))
 			var/obj/item/storage/this_item = parent
@@ -537,10 +540,13 @@
 		if(istype(I, /obj/item/needle))
 			var/obj/item/needle/sewer = I
 			var/obj/item/storage/this_item = parent
-			if(sewer.can_repair && this_item.sewrepair && this_item.max_integrity && !this_item.obj_broken && this_item.obj_integrity < this_item.max_integrity && M.mind.get_skill_level(/datum/skill/misc/sewing) >= this_item.required_repair_skill && this_item.ontable() && !being_repaired)
+			if(sewer.can_repair && this_item.sewrepair && this_item.max_integrity && !this_item.obj_broken && this_item.obj_integrity < this_item.max_integrity && M.mind.get_skill_level(/datum/skill/misc/sewing) >= 1 && this_item.ontable() && !being_repaired)
 				being_repaired = TRUE
 				return FALSE
+		if(M.used_intent.type == /datum/intent/snip) //This makes it so we can salvage
+			return FALSE
 	being_repaired = FALSE
+
 	if(!can_be_inserted(I, FALSE, M))
 		var/atom/real_location = real_location()
 		if(real_location.contents.len >= max_items) //don't use items on the backpack if they don't fit
@@ -581,8 +587,6 @@
 	if(!ismob(M))
 		return
 	if(!over_object)
-		return
-	if(ismecha(M.loc)) // stops inventory actions in a mech
 		return
 	if(M.incapacitated() || !M.canUseStorage())
 		return
@@ -644,7 +648,7 @@
 /datum/component/storage/proc/mousedrop_receive(datum/source, atom/movable/O, mob/M)
 	if(isitem(O))
 		var/obj/item/I = O
-		if(iscarbon(M) || isdrone(M))
+		if(iscarbon(M))
 			var/mob/living/L = M
 			if(!L.incapacitated() && I == L.get_active_held_item())
 				if(!SEND_SIGNAL(I, COMSIG_CONTAINS_STORAGE) && can_be_inserted(I, FALSE))	//If it has storage it should be trying to dump, not insert.

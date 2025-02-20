@@ -43,6 +43,7 @@
 			if(!HAS_TRAIT(L, TRAIT_KNEESTINGER_IMMUNITY))
 				if(L.electrocute_act(30, src))
 					L.emote("painscream")
+					L.update_sneak_invis(TRUE)
 					L.consider_ambush()
 	. = ..()
 
@@ -61,7 +62,7 @@
 
 /obj/structure/glowshroom/New(loc, obj/item/seeds/newseed, mutate_stats)
 	..()
-	set_light(1.5, 1.5, "#d4fcac")
+	set_light(1.5, 1.5, 1.5, l_color ="#d4fcac")
 
 	icon_state = "glowshroom[rand(1,3)]"
 
@@ -73,7 +74,7 @@
 	if(damage_type == BURN && damage_amount)
 		playsound(src.loc, 'sound/blank.ogg', 100, TRUE)
 
-/obj/structure/glowshroom/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/structure/glowshroom/temperature_expose(exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)
 		take_damage(5, BURN, 0, 0)
 

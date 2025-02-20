@@ -18,8 +18,9 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Cyclops (L)"=/datum/charflaw/noeyel,
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
+	"Sleepless"=/datum/charflaw/sleepless,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
-	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw
+	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw,
 	))
 
 /datum/charflaw
@@ -293,7 +294,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/charflaw/greedy/on_mob_creation(mob/user)
 	next_mammon_increase = world.time + rand(15 MINUTES, 25 MINUTES)
 	last_passed_check = world.time
-	ADD_TRAIT(user, TRAIT_SEEPRICES, "[type]")
+	ADD_TRAIT(user, TRAIT_SEEPRICES_SHITTY, "[type]")
 
 /datum/charflaw/greedy/flaw_on_life(mob/user)
 	if(!first_tick)
@@ -479,3 +480,10 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	for(var/atom/movable/content in movable.contents)
 		mammons += get_mammons_in_atom(content)
 	return mammons
+
+/datum/charflaw/sleepless
+	name = "Insomnia"
+	desc = "I do not sleep. I cannot sleep. I've tried everything."
+
+/datum/charflaw/sleepless/on_mob_creation(mob/user)
+	ADD_TRAIT(user, TRAIT_NOSLEEP, TRAIT_GENERIC)

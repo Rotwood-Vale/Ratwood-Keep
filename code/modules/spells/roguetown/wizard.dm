@@ -9,7 +9,7 @@
 	projectile_type = /obj/projectile/magic/lightning
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 15
+	chargetime = 20
 	charge_max = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -34,7 +34,7 @@
 	speed = 0.3
 	flag = "magic"
 	light_color = "#ffffff"
-	light_range = 7
+	light_outer_range = 7
 
 /obj/projectile/magic/lightning/on_hit(target)
 	. = ..()
@@ -47,7 +47,12 @@
 			return BULLET_ACT_BLOCK
 		if(isliving(target))
 			var/mob/living/L = target
-			L.electrocute_act(1, src)
+			if(L.STACON <= 14)
+				L.electrocute_act(2, src, 2, SHOCK_NOSTUN)
+				L.Paralyze(10)
+			else
+				L.electrocute_act(1, src, 1, SHOCK_NOSTUN)
+				L.Paralyze(10)
 	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning
@@ -82,7 +87,7 @@
 	speed = 0.3
 	flag = "magic"
 	light_color = "#802121"
-	light_range = 7
+	light_outer_range = 7
 
 /obj/projectile/magic/bloodlightning/on_hit(target)
 	. = ..()
@@ -95,7 +100,7 @@
 			return BULLET_ACT_BLOCK
 		if(isliving(target))
 			var/mob/living/L = target
-			L.electrocute_act(1, src)
+			L.electrocute_act(3, src)
 	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/bloodsteal
@@ -130,8 +135,7 @@
 	speed = 0.3
 	flag = "magic"
 	light_color = "#e74141"
-	light_range = 7
-	var/mob/living/carbon/human/sender
+	light_outer_range = 7
 
 /obj/projectile/magic/bloodsteal/on_hit(target)
 	. = ..()
@@ -241,8 +245,8 @@
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
-	chargetime = 3
-	charge_max = 3 SECONDS
+	chargetime = 1
+	charge_max = 4 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

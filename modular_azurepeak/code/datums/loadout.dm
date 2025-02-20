@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/archercap
 	name = "Archer's cap"
 	path = /obj/item/clothing/head/roguetown/archercap
-	
+
 /datum/loadout_item/strawhat
 	name = "Straw Hat"
 	path = /obj/item/clothing/head/roguetown/strawhat
@@ -42,6 +42,26 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/buckled_hat
 	name = "Buckled Hat"
 	path = /obj/item/clothing/head/roguetown/puritan
+
+/datum/loadout_item/folded_hat
+	name = "Folded Hat"
+	path = /obj/item/clothing/head/roguetown/bucklehat
+
+/datum/loadout_item/duelist_hat
+	name = "Duelist's Hat"
+	path = /obj/item/clothing/head/roguetown/duelhat
+
+/datum/loadout_item/hood
+	name = "Hood"
+	path = /obj/item/clothing/head/roguetown/roguehood
+
+/datum/loadout_item/hijab
+	name = "Hijab"
+	path = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab
+
+/datum/loadout_item/heavyhood
+	name = "Heavy Hood"
+	path = /obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
 
 //CLOAKS
 /datum/loadout_item/tabard
@@ -71,6 +91,18 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/raincloak
 	name = "Rain Cloak"
 	path = /obj/item/clothing/cloak/raincloak
+
+/datum/loadout_item/furcloak
+	name = "Fur Cloak"
+	path = /obj/item/clothing/cloak/raincloak/furcloak
+
+/datum/loadout_item/direcloak
+	name = "direbear cloak"
+	path = /obj/item/clothing/cloak/darkcloak/bear
+
+/datum/loadout_item/lightdirecloak
+	name = "light direbear cloak"
+	path = /obj/item/clothing/cloak/darkcloak/bear/light
 
 
 //SHOES
@@ -127,6 +159,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Strapless Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless
 
+/datum/loadout_item/straplessdress/alt
+	name = "Strapless Dress, alt"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen/strapless/alt
+
 /datum/loadout_item/leathervest
 	name = "Leather Vest"
 	path = /obj/item/clothing/suit/roguetown/armor/leather/vest
@@ -134,6 +170,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/nun_habit
 	name = "Nun Habit"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/nun
+
+//PANTS
+/datum/loadout_item/skirt
+	name = "Skirt"
+	path = /obj/item/clothing/under/roguetown/skirt
 
 //ACCESSORIES
 /datum/loadout_item/stockings
@@ -175,3 +216,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/feather
 	name = "Feather"
 	path = /obj/item/natural/feather
+
+/datum/loadout_item/collar
+	name = "Collar"
+	path = /obj/item/clothing/neck/roguetown/collar
+
+/datum/loadout_item/bell_collar
+	name = "Bell Collar"
+	path = /obj/item/clothing/neck/roguetown/collar/bell_collar

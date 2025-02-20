@@ -309,6 +309,11 @@
 /datum/sex_controller/proc/can_use_penis()
 	if(HAS_TRAIT(user, TRAIT_LIMPDICK))
 		return FALSE
+	var/obj/item/organ/penis/penor = user.getorganslot(ORGAN_SLOT_PENIS)
+	if(!penor)
+		return FALSE
+	if(!penor.functional)
+		return FALSE
 	return TRUE
 
 /datum/sex_controller/proc/considered_limp()
@@ -401,7 +406,7 @@
 		if("toggle_finished")
 			do_until_finished = !do_until_finished
 		if("set_arousal")
-			var/amount = input(user, "Value above 120 will immediately cause orgasm!", "Set Arousal", arousal) as num|null
+			var/amount = input(user, "Value above 120 will immediately cause orgasm!", "Set Arousal", arousal) as num
 			set_arousal(amount)
 		if("freeze_arousal")
 			arousal_frozen = !arousal_frozen

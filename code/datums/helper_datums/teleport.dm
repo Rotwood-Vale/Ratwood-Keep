@@ -13,7 +13,6 @@
 	var/static/list/delete_atoms = typecacheof(list(
 		/obj/effect,
 		)) - typecacheof(list(
-		/obj/effect/dummy/chameleon,
 		/obj/effect/wisp,
 		/obj/effect/mob_spawn,
 		))
@@ -28,17 +27,6 @@
 
 	switch(channel)
 		if(TELEPORT_CHANNEL_BLUESPACE)
-			if(istype(teleatom, /obj/item/storage/backpack/holding))
-				precision = rand(1,100)
-
-			var/static/list/bag_cache = typecacheof(/obj/item/storage/backpack/holding)
-			var/list/bagholding = typecache_filter_list(teleatom.GetAllContents(), bag_cache)
-			if(bagholding.len)
-				precision = max(rand(1,100)*bagholding.len,100)
-				if(isliving(teleatom))
-					var/mob/living/MM = teleatom
-					to_chat(MM, span_warning("The bluespace interface on your bag of holding interferes with the teleport!"))
-
 			// if effects are not specified and not explicitly disabled, sparks
 			if ((!effectin || !effectout) && !no_effects)
 				var/datum/effect_system/spark_spread/sparks = new
@@ -77,8 +65,6 @@
 	if (success)
 		log_game("[key_name(teleatom)] has teleported from [loc_name(curturf)] to [loc_name(destturf)]")
 		tele_play_specials(teleatom, destturf, effectout, asoundout)
-		if(ismegafauna(teleatom))
-			message_admins("[teleatom] [ADMIN_FLW(teleatom)] has teleported from [ADMIN_VERBOSEJMP(curturf)] to [ADMIN_VERBOSEJMP(destturf)].")
 
 	if(ismob(teleatom))
 		var/mob/M = teleatom
@@ -112,34 +98,6 @@
 		if(!isfloorturf(random_location))
 			continue
 		var/turf/open/floor/F = random_location
-		if(!F.air)
-			continue
-
-		var/datum/gas_mixture/A = F.air
-		var/list/A_gases = A.gases
-		var/trace_gases
-		for(var/id in A_gases)
-			if(id in GLOB.hardcoded_gases)
-				continue
-			trace_gases = TRUE
-			break
-
-		// Can most things breathe?
-		if(trace_gases)
-			continue
-		if(!(A_gases[/datum/gas/oxygen] && A_gases[/datum/gas/oxygen][MOLES] >= 16))
-			continue
-		if(A_gases[/datum/gas/plasma])
-			continue
-		if(A_gases[/datum/gas/carbon_dioxide] && A_gases[/datum/gas/carbon_dioxide][MOLES] >= 10)
-			continue
-
-		// Aim for goldilocks temperatures and pressure
-		if((A.temperature <= 270) || (A.temperature >= 360))
-			continue
-		var/pressure = A.return_pressure()
-		if((pressure <= 20) || (pressure >= 550))
-			continue
 
 		if(extended_safety_checks)
 			if(islava(F)) //chasms aren't /floor, and so are pre-filtered

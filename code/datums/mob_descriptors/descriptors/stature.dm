@@ -37,6 +37,12 @@
 /datum/mob_descriptor/stature/thug
 	name = "Thug"
 
+/datum/mob_descriptor/stature/knave
+	name = "Knave"
+
+/datum/mob_descriptor/stature/wench
+	name = "Wench"
+
 /datum/mob_descriptor/stature/snob
 	name = "Snob"
 

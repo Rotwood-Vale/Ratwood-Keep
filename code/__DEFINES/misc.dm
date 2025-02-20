@@ -11,6 +11,8 @@
 #define TEXT_EAST			"[EAST]"
 #define TEXT_WEST			"[WEST]"
 
+///Returns true if the dir is diagonal, false otherwise
+#define ISDIAGONALDIR(d) (d&(d-1))
 
 //Human Overlays Indexes/////////
 #define MUTATIONS_LAYER			49		//mutations. Tk headglows, cold resistance glow, etc
@@ -41,9 +43,9 @@
 #define GLOVES_LAYER			24
 #define ARM_DAMAGE_LAYER		23
 #define SHIRTSLEEVE_LAYER		22
-#define GLOVESLEEVE_LAYER		21
-#define WRISTSLEEVE_LAYER		20
-#define ARMORSLEEVE_LAYER		19
+#define WRISTSLEEVE_LAYER		21
+#define ARMORSLEEVE_LAYER		20
+#define GLOVESLEEVE_LAYER		19
 #define RING_LAYER				18
 #define GLASSES_LAYER			17
 #define NECK_LAYER				16

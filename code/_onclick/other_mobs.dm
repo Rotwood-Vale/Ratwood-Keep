@@ -153,11 +153,12 @@
 /mob/living/onbite(mob/living/carbon/human/user)
 	return
 
+///Initial bite on target
 /mob/living/carbon/onbite(mob/living/carbon/human/user)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("I don't want to harm [src]!"))
 		return FALSE
-	if(user.mouth)
+	if(!user.can_bite())
 		to_chat(user, span_warning("My mouth has something in it."))
 		return FALSE
 
@@ -188,7 +189,7 @@
 		var/armor_block = run_armor_check(user.zone_selected, "stab",blade_dulling=BCLASS_BITE)
 		if(!apply_damage(dam2do, BRUTE, def_zone, armor_block, user))
 			nodmg = TRUE
-			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
+			next_attack_msg += span_warning("Armor stops the damage.")
 
 	var/datum/wound/caused_wound
 	if(!nodmg)
@@ -198,18 +199,34 @@
 
 	next_attack_msg.Cut()
 
+//nodmg if they don't have an open wound
+//nodmg if we don't have strongbite
+//nodmg if our teeth can't break through their armour
+
 	if(!nodmg)
 		playsound(src, "smallslash", 100, TRUE, -1)
 		if(ishuman(src) && user.mind)
+			var/mob/living/carbon/human/bite_victim = src
+			/*
+				WEREWOLF INFECTION VIA BITE
+			*/
 			if(istype(user.dna.species, /datum/species/werewolf))
-				caused_wound?.werewolf_infect_attempt()
-				if(prob(30))
-					user.werewolf_feed(src, 10)
-			if(user.mind.has_antag_datum(/datum/antagonist/zombie))
-				var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
-				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
-					user.mind.adjust_triumphs(1)
-
+				if(HAS_TRAIT(src, TRAIT_SILVER_BLESSED))
+					to_chat(user, span_warning("BLEH! [bite_victim] tastes of SILVER! My gift cannot take hold."))
+				else
+					caused_wound?.werewolf_infect_attempt()
+					if(prob(30))
+						user.werewolf_feed(bite_victim, 10)
+			
+			/*
+				ZOMBIE INFECTION VIA BITE
+			*/
+			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
+			if(zombie_antag && zombie_antag.has_turned)
+				zombie_antag.last_bite = world.time
+				if(bite_victim.zombie_infect_attempt())   // infect_attempt on bite
+					to_chat(user, span_danger("You feel your gift trickling from your mouth into [bite_victim]'s wound..."))
+				
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)
 	if(user.mouth == B)
@@ -333,7 +350,7 @@
 				if(ishuman(src))
 					var/mob/living/carbon/human/H = src
 					jadded += H.get_complex_pain()/50
-					if(!H.check_armor_skill())
+					if(!H.check_armor_skill() || H.legcuffed)
 						jadded += 50
 						jrange = 1
 				if(rogfat_add(min(jadded,100)))
@@ -384,70 +401,67 @@
 					var/list/stealpos = list()
 					var/list/mobsbehind = list()
 					var/exp_to_gain = STAINT
-					if(stealroll > targetperception)
-					//TODO add exp here
-						// RATWOOD MODULAR START
-						if(V.cmode)
-							to_chat(src, "<span class='warning'>[V] is alert. I can't pickpocket them like this.</span>")
-							return
-						// RATWOOD MODULAR END
-						if(U.get_active_held_item())
-							to_chat(src, span_warning("I can't pickpocket while my hand is full!"))
-							return
-						if(!(zone_selected in stealablezones))
-							to_chat(src, span_warning("What am I going to steal from there?"))
-							return
-						mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
-						if(mobsbehind.Find(src) || V.IsUnconscious() || V.eyesclosed || V.eye_blind || V.eye_blurry || !(V.mobility_flags & MOBILITY_STAND))
-							switch(U.zone_selected)
-								if("chest")
-									if (V.get_item_by_slot(SLOT_BACK_L))
-										stealpos.Add(V.get_item_by_slot(SLOT_BACK_L))
-									if (V.get_item_by_slot(SLOT_BACK_R))
-										stealpos.Add(V.get_item_by_slot(SLOT_BACK_R))
-								if("neck")
-									if (V.get_item_by_slot(SLOT_NECK))
-										stealpos.Add(V.get_item_by_slot(SLOT_NECK))
-								if("groin")
-									if (V.get_item_by_slot(SLOT_BELT_R))
-										stealpos.Add(V.get_item_by_slot(SLOT_BELT_R))
-									if (V.get_item_by_slot(SLOT_BELT_L))
-										stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))
-								if("r_hand", "l_hand")
-									if (V.get_item_by_slot(SLOT_RING))
-										stealpos.Add(V.get_item_by_slot(SLOT_RING))
-							if (length(stealpos) > 0)
-								var/obj/item/picked = pick(stealpos)
-								V.dropItemToGround(picked, FALSE, TRUE)
-								put_in_active_hand(picked, FALSE, TRUE)
-								to_chat(src, span_green("I stole [picked]!"))
-								V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
-								U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
-								if (picked.sellprice)
-									exp_to_gain += floor(picked.sellprice / 2)
-								if (picked.contents)
-									exp_to_gain += floor(get_mammons_in_atom(picked) / 2)
-									for(var/atom/movable/thing in picked.contents)
-										if (thing.sellprice)
-											exp_to_gain += floor(thing.sellprice / 2)
+					to_chat(src, span_notice("I try to steal from [V]..."))	
+					if(do_after(src, 5, target = V, progress = 0))
+						if(stealroll > targetperception)
+						//TODO add exp here
+							// RATWOOD MODULAR START
+							if(V.cmode)
+								to_chat(src, "<span class='warning'>[V] is alert. I can't pickpocket them like this.</span>")
+								return
+							// RATWOOD MODULAR END
+							if(U.get_active_held_item())
+								to_chat(src, span_warning("I can't pickpocket while my hand is full!"))
+								return
+							if(!(zone_selected in stealablezones))
+								to_chat(src, span_warning("What am I going to steal from there?"))
+								return
+							mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
+							if(mobsbehind.Find(src) || V.IsUnconscious() || V.eyesclosed || V.eye_blind || V.eye_blurry || !(V.mobility_flags & MOBILITY_STAND))
+								switch(U.zone_selected)
+									if("chest")
+										if (V.get_item_by_slot(SLOT_BACK_L))
+											stealpos.Add(V.get_item_by_slot(SLOT_BACK_L))
+										if (V.get_item_by_slot(SLOT_BACK_R))
+											stealpos.Add(V.get_item_by_slot(SLOT_BACK_R))
+									if("neck")
+										if (V.get_item_by_slot(SLOT_NECK))
+											stealpos.Add(V.get_item_by_slot(SLOT_NECK))
+									if("groin")
+										if (V.get_item_by_slot(SLOT_BELT_R))
+											stealpos.Add(V.get_item_by_slot(SLOT_BELT_R))
+										if (V.get_item_by_slot(SLOT_BELT_L))
+											stealpos.Add(V.get_item_by_slot(SLOT_BELT_L))
+									if("r_hand", "l_hand")
+										if (V.get_item_by_slot(SLOT_RING))
+											stealpos.Add(V.get_item_by_slot(SLOT_RING))
+								if (length(stealpos) > 0)
+									var/obj/item/picked = pick(stealpos)
+									V.dropItemToGround(picked)
+									put_in_active_hand(picked)
+									to_chat(src, span_green("I stole [picked]!"))
+									V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
+									U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
+								else
+									exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
+									to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
 							else
-								exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
-								to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
-						else
-							to_chat(src, "<span class='warning'>They can see me!")
-					if(stealroll <= 4)
-						V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
-						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
-						to_chat(V, span_danger("Someone tried pickpocketing me!"))
-					if(stealroll < targetperception)
-						V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
-						U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
-						to_chat(src, span_danger("I failed to pick the pocket!"))
-						exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
-					// If we're pickpocketing someone else, and that person is conscious, grant XP
-					if(src != V && V.stat == CONSCIOUS)
-						mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
-					changeNext_move(mmb_intent.clickcd)
+								to_chat(src, "<span class='warning'>They can see me!")
+						if(stealroll <= 5)
+							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
+							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+							U.visible_message(span_danger("[U] failed to pickpocket [V]!"))
+							to_chat(V, span_danger("[U] tried pickpocketing me!"))
+						if(stealroll < targetperception)
+							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
+							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+							to_chat(src, span_danger("I failed to pick the pocket!"))
+							to_chat(V, span_danger("Someone tried pickpocketing me!"))
+							exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
+						// If we're pickpocketing someone else, and that person is conscious, grant XP
+						if(src != V && V.stat == CONSCIOUS)
+							mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+						changeNext_move(mmb_intent.clickcd)
 				return
 			if(INTENT_SPELL)
 				if(ranged_ability?.InterceptClickOn(src, params, A))
@@ -566,7 +580,7 @@
 	A.attack_animal(src)
 
 /atom/proc/attack_animal(mob/user)
-	return
+	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ANIMAL, user)
 
 /mob/living/RestrainedClickOn(atom/A)
 	return
@@ -611,59 +625,10 @@
 			to_chat(name, span_danger("I bite [ML]!"))
 			if(armor >= 2)
 				return
-			for(var/thing in diseases)
-				var/datum/disease/D = thing
-				ML.ForceContractDisease(D)
 		else
 			ML.visible_message(span_danger("[src]'s bite misses [ML]!"), \
 							span_danger("I avoid [src]'s bite!"), span_hear("I hear jaws snapping shut!"), COMBAT_MESSAGE_RANGE, src)
 			to_chat(src, span_danger("My bite misses [ML]!"))
-
-/*
-	Aliens
-	Defaults to same as monkey in most places
-*/
-/mob/living/carbon/alien/UnarmedAttack(atom/A)
-	A.attack_alien(src)
-
-/atom/proc/attack_alien(mob/living/carbon/alien/user)
-	attack_paw(user)
-	return
-
-/mob/living/carbon/alien/RestrainedClickOn(atom/A)
-	return
-
-// Babby aliens
-/mob/living/carbon/alien/larva/UnarmedAttack(atom/A)
-	A.attack_larva(src)
-/atom/proc/attack_larva(mob/user)
-	return
-
-
-/*
-	Slimes
-	Nothing happening here
-*/
-/mob/living/simple_animal/slime/UnarmedAttack(atom/A)
-	A.attack_slime(src)
-/atom/proc/attack_slime(mob/user)
-	return
-/mob/living/simple_animal/slime/RestrainedClickOn(atom/A)
-	return
-
-
-/*
-	Drones
-*/
-/mob/living/simple_animal/drone/UnarmedAttack(atom/A)
-	A.attack_drone(src)
-
-/atom/proc/attack_drone(mob/living/simple_animal/drone/user)
-	attack_hand(user) //defaults to attack_hand. Override it when you don't want drones to do same stuff as humans.
-
-/mob/living/simple_animal/slime/RestrainedClickOn(atom/A)
-	return
-
 
 /*
 	True Devil
@@ -678,15 +643,6 @@
 
 /mob/living/brain/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
 	return
-
-
-/*
-	pAI
-*/
-
-/mob/living/silicon/pai/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
-	return
-
 
 /*
 	Simple animals
@@ -709,7 +665,7 @@
 	if(dextrous && !ismob(A))
 		..()
 	else
-		AttackingTarget()
+		AttackingTarget(A)
 
 
 

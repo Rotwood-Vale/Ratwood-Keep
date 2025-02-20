@@ -61,7 +61,7 @@
 	var/devotion_multiplier = 1
 	if(holder?.mind)
 		devotion_multiplier += (holder.mind.get_skill_level(/datum/skill/magic/holy) / SKILL_LEVEL_LEGENDARY)
-	update_devotion(round(passive_devotion_gain * devotion_multiplier), round(passive_progression_gain * devotion_multiplier), silent = TRUE)
+	update_devotion((passive_devotion_gain * devotion_multiplier), (passive_progression_gain * devotion_multiplier), silent = TRUE)
 
 /datum/devotion/proc/check_devotion(obj/effect/proc_holder/spell/spell)
 	if(devotion - spell.devotion_cost < 0)
@@ -99,7 +99,7 @@
 	spell_unlocked = new spell_unlocked
 	if(!silent)
 		to_chat(holder, span_boldnotice("I have unlocked a new spell: [spell_unlocked]"))
-	usr.mind.AddSpell(spell_unlocked)
+	holder.mind.AddSpell(spell_unlocked)
 	LAZYADD(granted_spells, spell_unlocked)
 	return TRUE
 
@@ -115,6 +115,8 @@
 		H.mind.AddSpell(newspell)
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T1
+	passive_devotion_gain = 0.25
+	passive_progression_gain = 0.25
 	update_devotion(50, 50, silent = TRUE)
 
 /datum/devotion/proc/grant_spells_templar(mob/living/carbon/human/H)
@@ -123,7 +125,7 @@
 
 	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, patron.t0)
 	if(istype(patron,/datum/patron/divine))
-		spelllist += /obj/effect/proc_holder/spell/targeted/churn
+		spelllist += /obj/effect/proc_holder/spell/targeted/abrogation
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -230,4 +232,32 @@
 		prayersesh += prayer_effectiveness
 	visible_message("[src] concludes their prayer.", "I conclude my prayer.")
 	to_chat(src, "<font color='purple'>I gained [prayersesh] devotion!</font>")
+	return TRUE
+
+/mob/living/carbon/human/proc/changevoice()
+	set name = "Change Second Voice (Can only use Once!)"
+	set category = "Virtue"
+
+	var/newcolor = input(src, "Choose your character's SECOND voice color:", "VIRTUE","#a0a0a0") as color|null
+	if(newcolor)
+		second_voice = sanitize_hexcolor(newcolor)
+		src.verbs -= /mob/living/carbon/human/proc/changevoice
+		return TRUE
+	else
+		return FALSE
+
+/mob/living/carbon/human/proc/swapvoice()
+	set name = "Swap Voice"
+	set category = "Virtue"
+
+	if(!second_voice)
+		to_chat(src, span_info("I haven't decided on my second voice yet."))
+		return FALSE
+	if(voice_color != second_voice)
+		original_voice = voice_color
+		voice_color = second_voice
+		to_chat(src, span_info("I've changed my voice to the second one."))
+	else
+		voice_color = original_voice
+		to_chat(src, span_info("I've returned to my natural voice."))
 	return TRUE

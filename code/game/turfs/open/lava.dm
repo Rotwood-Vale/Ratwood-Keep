@@ -8,7 +8,7 @@
 	baseturfs = /turf/open/lava //lava all the way down
 	slowdown = 2
 
-	light_range = 4
+	light_outer_range =  4
 	light_power = 0.75
 	light_color = LIGHT_COLOR_LAVA
 	bullet_bounce_sound = 'sound/blank.ogg'
@@ -28,6 +28,8 @@
 /turf/open/lava/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
 
+/turf/open/lava/can_traverse_safely(atom/movable/traveler)
+	return FALSE
 
 /turf/open/lava/ex_act(severity, target)
 	contents_explosion(severity, target)
@@ -46,7 +48,6 @@
 	return
 
 /turf/open/lava/airless
-	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/lava/Entered(atom/movable/AM)
 	if(!AM.throwing)
@@ -64,7 +65,7 @@
 			if(!islava(newloc) && !L.on_fire)
 				L.update_fire()
 
-/turf/open/lava/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
+/turf/open/lava/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, damage_type = "blunt")
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 		playsound(src, 'sound/misc/lava_death.ogg', 100, FALSE)
@@ -73,43 +74,14 @@
 	if(!burn_stuff())
 		STOP_PROCESSING(SSobj, src)
 
-/turf/open/lava/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	switch(the_rcd.mode)
-		if(RCD_FLOORWALL)
-			return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 3)
-	return FALSE
-
-/turf/open/lava/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	switch(passed_mode)
-		if(RCD_FLOORWALL)
-			to_chat(user, span_notice("I build a floor."))
-			PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
-			return TRUE
-	return FALSE
-
-/turf/open/lava/singularity_act()
-	return
-
-/turf/open/lava/singularity_pull(S, current_size)
-	return
-
 /turf/open/lava/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	underlay_appearance.icon = 'icons/turf/floors.dmi'
 	underlay_appearance.icon_state = "basalt"
 	return TRUE
 
-/turf/open/lava/GetHeatCapacity()
-	. = 700000
-
-/turf/open/lava/GetTemperature()
-	. = 5000
-
-/turf/open/lava/TakeTemperature(temp)
-
-
 /turf/open/lava/proc/is_safe()
 	//if anything matching this typecache is found in the lava, we don't burn things
-	var/static/list/lava_safeties_typecache = typecacheof(list(/obj/structure/lattice/catwalk, /obj/structure/stone_tile))
+	var/static/list/lava_safeties_typecache = typecacheof(list(/obj/structure/stone_tile))
 	var/list/found_safeties = typecache_filter_list(contents, lava_safeties_typecache)
 	for(var/obj/structure/stone_tile/S in found_safeties)
 		if(S.fallen)
@@ -191,17 +163,15 @@
 	canSmoothWith = list(/turf/open/lava/smooth)
 
 /turf/open/lava/smooth/lava_land_surface
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
-	planetary_atmos = TRUE
+
 	baseturfs = /turf/open/lava/smooth/lava_land_surface
 
 /turf/open/lava/smooth/airless
-	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/lava/acid
 	name = "acid"
 	icon_state = "acid"
-	light_range = 4
+	light_outer_range =  4
 	light_power = 1
 	light_color = "#56ff0d"
 
@@ -248,17 +218,14 @@
 //					return
 				//make this acid
 				var/shouldupdate = FALSE
-				var/lethality = prob(95)
 				for(var/obj/item/bodypart/B in C.bodyparts)
 					if(!B.skeletonized && B.is_organic_limb())
-						B.skeletonize(lethality)
+						B.skeletonize()
 						shouldupdate = TRUE
-				if(!lethality)
-					ADD_TRAIT(C, TRAIT_NOLIMBDISABLE, "[type]")
 				if(shouldupdate)
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
-						qdel(H.underwear)
+						H.underwear = "Nude"
 					C.unequip_everything()
 					C.update_body()
 //				C.dust(drop_items = TRUE)
@@ -269,3 +236,20 @@
 
 			L.dust(drop_items = TRUE)
 
+/turf/open/lava/acid/onbite(mob/user)
+	if(isliving(user))
+		var/mob/living/L = user
+		if(L.stat != CONSCIOUS)
+			return
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			if(C.is_mouth_covered())
+				return
+		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
+		user.visible_message(span_info("[user] starts to drink from [src]."))
+		if(do_after(L, 25, target = src))
+			var/mob/living/carbon/C = user
+			to_chat(C, span_userdanger("OH SWEET PSYDON, WHY DID I THINK THIS WAS A GOOD IDEA???"))
+			C.flash_fullscreen("redflash3")
+			C.emote("agony", forced = TRUE)
+			C.gib() //YOU. LITERALLY. DESERVE THIS.

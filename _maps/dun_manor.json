@@ -7,10 +7,10 @@
 	"azure_forest.dmm",
 	"azure_coast.dmm"
 	],
-	"traits": [{"Name": "Dun Manor", "Up": 1}, {"Up": 1, "Down": -1}, {"Up": 1, "Down": -1}, {"Down": -1},
+	"traits": [{"Name": "Dun Manor", "Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true},
 	{"Name": "Magma Crater"},
-	{"Name": "Azure Forest", "Up": 1}, {"Up": 1, "Down": -1}, {"Up": 1, "Down": -1}, {"Down": -1},
-	{"Name": "Azure Coast", "Up": 1}, {"Up": 1, "Down": -1}, {"Up": 1, "Down": -1}, {"Down": -1}],
+	{"Name": "Azure Forest", "Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true},
+	{"Name": "Azure Coast", "Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true}],
 	"minetype": null,
 	"space_empty_levels": 0,
 	"space_ruin_levels": 0,

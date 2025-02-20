@@ -9,7 +9,6 @@
 	var/volume = 30
 	var/reagent_flags
 	var/list/list_reagents = null
-	var/spawned_disease = null
 	var/disease_amount = 20
 	var/spillable = FALSE
 	var/list/fill_icon_thresholds = null
@@ -17,39 +16,37 @@
 	var/drinksounds = list('sound/items/drink_gen (1).ogg','sound/items/drink_gen (2).ogg','sound/items/drink_gen (3).ogg')
 	var/fillsounds
 	var/poursounds
+	grid_height = 64
+	grid_width = 32
 
-/obj/item/reagent_containers/weather_trigger(W)
-	if(W==/datum/weather/rain)
-		START_PROCESSING(SSweather,src)
+	COOLDOWN_DECLARE(fill_cooldown)
 
 /obj/item/reagent_containers/Initialize(mapload, vol)
 	. = ..()
 	if(isnum(vol) && vol > 0)
 		volume = vol
 	create_reagents(volume, reagent_flags)
-	if(spawned_disease)
-		var/datum/disease/F = new spawned_disease()
-		var/list/data = list("viruses"= list(F))
-		reagents.add_reagent(/datum/reagent/blood, disease_amount, data)
 
 	add_initial_reagents()
+
+	if(spillable)
+		GLOB.weather_act_upon_list |= src
+
+/obj/item/reagent_containers/weather_act_on(weather_trait, severity)
+	if(weather_trait != PARTICLEWEATHER_RAIN || !COOLDOWN_FINISHED(src, fill_cooldown))
+		return
+
+	reagents.add_reagent(/datum/reagent/water, clamp(severity * 0.5, 1, 5))
+	COOLDOWN_START(src, fill_cooldown, 10 SECONDS)
+
+/obj/item/reagent_containers/Destroy()
+	. = ..()
+	if(spillable)
+		GLOB.weather_act_upon_list -= src
 
 /obj/item/reagent_containers/proc/add_initial_reagents()
 	if(list_reagents)
 		reagents.add_reagent_list(list_reagents)
-/*
-/obj/item/reagent_containers/attack_self(mob/user)
-	if(possible_transfer_amounts.len)
-		var/i=0
-		for(var/A in possible_transfer_amounts)
-			i++
-			if(A == amount_per_transfer_from_this)
-				if(i<possible_transfer_amounts.len)
-					amount_per_transfer_from_this = possible_transfer_amounts[i+1]
-				else
-					amount_per_transfer_from_this = possible_transfer_amounts[1]
-				to_chat(user, span_notice("[src]'s transfer amount is now [amount_per_transfer_from_this] units."))
-				return*/
 
 /obj/item/reagent_containers/attack(mob/M, mob/user, def_zone)
 	return ..()
@@ -129,11 +126,11 @@
 
 	reagents.clear_reagents()
 
-/obj/item/reagent_containers/microwave_act(obj/machinery/microwave/M)
+/obj/item/reagent_containers/heating_act()
 	reagents.expose_temperature(1000)
 	..()
 
-/obj/item/reagent_containers/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/item/reagent_containers/temperature_expose(exposed_temperature, exposed_volume)
 	reagents.expose_temperature(exposed_temperature)
 
 /obj/item/reagent_containers/on_reagent_change(changetype)

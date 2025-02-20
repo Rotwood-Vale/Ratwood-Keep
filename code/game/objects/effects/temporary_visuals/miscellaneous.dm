@@ -164,9 +164,6 @@
 		if(EAST)
 			icon_state = "beam_splash_e"
 
-/obj/projectile/curse_hand/update_icon()
-	icon_state = "[icon_state][handedness]"
-
 /obj/effect/temp_visual/wizard
 	name = "water"
 	icon = 'icons/mob/mob.dmi'
@@ -236,7 +233,7 @@
 /obj/effect/temp_visual/fire
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "3"
-	light_range = LIGHT_RANGE_FIRE
+	light_outer_range = LIGHT_RANGE_FIRE
 	light_color = LIGHT_COLOR_FIRE
 	duration = 10
 
@@ -302,6 +299,8 @@
 	name = "healing glow"
 	icon_state = "heal"
 	duration = 15
+	plane = GAME_PLANE_UPPER
+	layer = ABOVE_ALL_MOB_LAYER
 
 /obj/effect/temp_visual/heal/Initialize(mapload, set_color)
 	if(set_color)

@@ -61,7 +61,7 @@
 	set desc = ""
 	set category = "Admin"
 	if(mob)
-		var/msg = input("Say your meditation:", "Voices in your head") as text|null
+		var/msg = input("Submit your question to the Voices:", "Mentorhelp Input") as text|null
 		if(msg)
 			mob.schizohelp(msg)
 	else
@@ -199,6 +199,24 @@ Hotkey-Mode: (hotkey-mode must be on)
 		to_chat(src, "CRT... ON")
 		for(var/atom/movable/screen/scannies/S in screen)
 			S.alpha = 70
+
+/client/verb/grainfilter()
+	set category = "Options"
+	set name = "ToggleGrain"
+	if(!prefs)
+		return
+	if(prefs.grain == TRUE)
+		prefs.grain = FALSE
+		prefs.save_preferences()
+		to_chat(src, "Grain is <font color='gray'>OFF.</font>")
+		for(var/atom/movable/screen/grain/S in screen)
+			S.alpha = 0
+	else
+		prefs.grain = TRUE
+		prefs.save_preferences()
+		to_chat(src, "Grain is <font color='#007fff'>ON.</font>")
+		for(var/atom/movable/screen/grain/S in screen)
+			S.alpha = 55
 
 /client/verb/triggercommend()
 	set category = "OOC"

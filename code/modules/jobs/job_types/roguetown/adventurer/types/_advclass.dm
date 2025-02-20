@@ -1,5 +1,6 @@
 /datum/advclass
 	var/name
+	var/list/classes
 	var/outfit
 	var/tutorial = "Choose me!"
 	var/list/allowed_sexes
@@ -36,12 +37,6 @@
 	post_equip(H)
 
 	H.advjob = name
-
-	//sleep(1)
-	//testing("[H] spawn troch")
-	var/obj/item/flashlight/flare/torch/T = new()
-	T.spark_act()
-	H.put_in_hands(T, forced = TRUE)
 
 	var/turf/TU = get_turf(H)
 	if(TU)

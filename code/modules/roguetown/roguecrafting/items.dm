@@ -75,6 +75,15 @@
 	verbage_simple = "braid"
 	verbage = "braids"
 
+/datum/crafting_recipe/roguetown/net
+	name = "net"
+	result = /obj/item/net
+	craftdiff = 2
+	reqs = list(/obj/item/rope = 2,
+				/obj/item/natural/stone = 3)
+	verbage_simple = "braid"
+	verbage = "braids"
+
 /datum/crafting_recipe/roguetown/bowstring
 	name = "fiber bowstring"
 	result = /obj/item/natural/bowstring
@@ -104,7 +113,7 @@
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/bone = 2,
-		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/natural/fibers = 2,
 	)
 	tools = /obj/item/rogueweapon/huntingknife
@@ -129,7 +138,7 @@
 	reqs = list(
 		/obj/item/grown/log/tree = 1,
 		/obj/item/natural/cloth = 1,
-		/obj/item/reagent_containers/food/snacks/fat = 2,
+		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/natural/fibers = 2,
 	)
 	tools = /obj/item/rogueweapon/huntingknife
@@ -148,6 +157,14 @@
 	verbage = "strings together"
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/wickercloak
+	name = "wickercloak"
+	result = /obj/item/clothing/cloak/wickercloak
+	reqs = list(/obj/item/natural/dirtclod = 1,
+				/obj/item/grown/log/tree/stick = 5,
+				/obj/item/natural/fibers = 3)
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/torch
 	name = "torch"
 	result = /obj/item/flashlight/flare/torch
@@ -155,12 +172,23 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/soap
+	name = "soap (3x)"
+	result = list(
+				/obj/item/soap,
+				/obj/item/soap,
+				/obj/item/soap,
+				)
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1)
+
 /datum/crafting_recipe/roguetown/candle
 	name = "candle (x3)"
-	result = list(/obj/item/candle/yellow,
+	result = list(
 				/obj/item/candle/yellow,
-				/obj/item/candle/yellow)
-	reqs = list(/obj/item/reagent_containers/food/snacks/fat = 2)
+				/obj/item/candle/yellow,
+				/obj/item/candle/yellow,
+				)
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1)
 
 /datum/crafting_recipe/roguetown/stoneaxe
 	name = "stone axe"
@@ -206,6 +234,15 @@
 	reqs = list(/obj/item/rogueweapon/woodstaff = 1,
 				/obj/item/natural/stone = 1)
 	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/stonesword
+	name = "stone sword"
+	result = /obj/item/rogueweapon/sword/stone
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/stone = 3)
+	craftdiff = 1
+
 
 /datum/crafting_recipe/roguetown/woodclub
 	name = "wood club"
@@ -265,9 +302,17 @@
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/spoon
-	name = "spoon (x2)"
+	name = "spoon (x3)"
 	result = list(/obj/item/kitchen/spoon,
+				/obj/item/kitchen/spoon,
 				/obj/item/kitchen/spoon)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
+/datum/crafting_recipe/roguetown/fork
+	name = "fork (x3)"
+	result = list(/obj/item/kitchen/fork,
+				/obj/item/kitchen/fork,
+				/obj/item/kitchen/fork)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /datum/crafting_recipe/roguetown/platter
@@ -548,6 +593,13 @@
 /obj/item/rogueweapon/shovel/small/crafted
 	sellprice = 5
 
+/datum/crafting_recipe/roguetown/broom
+	name = "broom"
+	result = /obj/item/broom
+	reqs = list(/obj/item/natural/fibers = 1,
+			/obj/item/grown/log/tree/stick = 4)
+	craftdiff = 1
+
 /datum/crafting_recipe/roguetown/book_crafting_kit
 	name = "book crafting kit"
 	result = /obj/item/book_crafting_kit
@@ -583,7 +635,7 @@
 				  /obj/item/paper/scroll)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/datum/reagent/water = 48)
-	structurecraft = /obj/structure/fluff/dryingrack
+	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/tribalrags
@@ -638,18 +690,158 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 2
 
-/datum/crafting_recipe/roguetown/prosthetic/woodleft
+/datum/crafting_recipe/roguetown/prosthetic/woodleftarm
 	name = "wood arm (L)"
 	result = list(/obj/item/bodypart/l_arm/prosthetic/woodleft)
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/engineering
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/prosthetic/woodright
+/datum/crafting_recipe/roguetown/prosthetic/woodrightarm
 	name = "wood arm (R)"
 	result = list(/obj/item/bodypart/r_arm/prosthetic/woodright)
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-	/obj/item/roguegear = 1)
-	skillcraft = /datum/skill/craft/engineering
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
 	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/prosthetic/woodleftleft
+	name = "wood leg (L)"
+	result = list(/obj/item/bodypart/l_leg/prosthetic)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/prosthetic/woodrightleg
+	name = "wood leg (R)"
+	result = list(/obj/item/bodypart/r_leg/prosthetic)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/tarot_deck
+	name = "tarot deck"
+	result = list(/obj/item/toy/cards/deck/tarot)
+	reqs = list(/obj/item/paper/scroll = 3,
+				/obj/item/grown/log/tree/small = 1,
+				/obj/item/ash = 1)
+	skillcraft = /datum/skill/misc/reading
+	tools = list(/obj/item/natural/feather)
+	req_table = TRUE
+	craftdiff = 2
+
+// Woodcutting recipe
+/datum/crafting_recipe/roguetown/lumberjacking
+	skillcraft = /datum/skill/labor/lumberjacking
+	tools = list(/obj/item/rogueweapon/huntingknife = 1)
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
+	name = "woodcutters wheelbrace"
+	result = /obj/item/cart_upgrade/level_1
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/stone = 1)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade2
+	name = "reinforced woodcutters wheelbrace"
+	result = /obj/item/cart_upgrade/level_2
+	reqs = list(/obj/item/grown/log/tree/small = 4,
+				/obj/item/cart_upgrade/level_1 = 1,
+				/obj/item/ingot/iron = 1)
+	craftdiff = 4
+
+
+/datum/crafting_recipe/roguetown/heatershield
+	name = "heater shield"
+	result = /obj/item/rogueweapon/shield/heater/crafted
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/natural/hide/cured = 1)
+	skillcraft = /datum/skill/craft/carpentry
+
+/obj/item/rogueweapon/shield/heater/crafted
+	sellprice = 6
+
+/datum/crafting_recipe/roguetown/collar
+	name = "collar"
+	result = /obj/item/clothing/neck/roguetown/collar
+	reqs = list(/obj/item/natural/hide/cured = 1)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/bell_collar
+	name = "bell Collar"
+	result = /obj/item/clothing/neck/roguetown/collar/bell_collar
+	reqs = list(
+				/obj/item/natural/hide/cured = 1,
+				/obj/item/jingle_bells = 1,
+				)
+	craftdiff = 0
+
+// BOUQUETS & CROWNS
+
+/datum/crafting_recipe/roguetown/bouquet_rosa
+	name = "rosa bouquet"
+	result = /obj/item/bouquet/rosa
+	reqs = list(/obj/item/alch/rosa = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/paper/scroll = 1)
+	craftdiff = 0
+	verbage_simple = "arranged"
+	verbage = "arranges"
+
+/datum/crafting_recipe/roguetown/bouquet_salvia
+	name = "salvia bouquet"
+	result = /obj/item/bouquet/salvia
+	reqs = list(/obj/item/alch/salvia = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/paper/scroll = 1)
+	craftdiff = 0
+	verbage_simple = "arranged"
+	verbage = "arranges"
+
+/datum/crafting_recipe/roguetown/bouquet_matricaria
+	name = "matricaria bouquet"
+	result = /obj/item/bouquet/matricaria
+	reqs = list(/obj/item/alch/matricaria = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/paper/scroll = 1)
+	craftdiff = 0
+	verbage_simple = "arranged"
+	verbage = "arranges"
+
+/datum/crafting_recipe/roguetown/bouquet_calendula
+	name = "calendula bouquet"
+	result = /obj/item/bouquet/calendula
+	reqs = list(/obj/item/alch/calendula = 4,
+				/obj/item/natural/fibers = 2,
+				/obj/item/paper/scroll = 1)
+	craftdiff = 0
+	verbage_simple = "arranged"
+	verbage = "arranges"
+
+/datum/crafting_recipe/roguetown/flowercrown_rosa
+	name = "rosa crown"
+	result = /obj/item/flowercrown/rosa
+	reqs = list(/obj/item/alch/rosa = 4,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 0
+	verbage_simple = "tied"
+	verbage = "ties"
+
+/datum/crafting_recipe/roguetown/flowercrown_salvia
+	name = "salvia crown"
+	result = /obj/item/flowercrown/salvia
+	reqs = list(/obj/item/alch/salvia = 4,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 0
+	verbage_simple = "tied"
+	verbage = "ties"
+
+/datum/crafting_recipe/roguetown/candle/eora
+	name = "eora's candle (x3)"
+	result = list(
+				/obj/item/candle/eora,
+				/obj/item/candle/eora,
+				/obj/item/candle/eora,
+				)
+	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1,
+				/obj/item/alch/rosa = 1,
+				/datum/reagent/water/blessed = 25)

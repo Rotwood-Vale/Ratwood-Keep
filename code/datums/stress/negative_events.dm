@@ -53,7 +53,7 @@
 	max_stacks = 5
 	stressadd = 2
 	stressadd_per_extra_stack = 2
-	desc = span_red("Butchery.")
+	desc = span_red("I watched people get butchered.")
 
 /datum/stressevent/fviewdismember
 	timer = 1 MINUTES
@@ -169,17 +169,17 @@
 /datum/stressevent/parablood
 	timer = 15 SECONDS
 	stressadd = 3
-	desc = span_red("There is so much blood here.. it's like a battlefield!")
+	desc = span_red("There is so much blood here... It's like a battlefield!")
 
 /datum/stressevent/parastr
 	timer = 2 MINUTES
 	stressadd = 2
-	desc = span_red("That beast is stronger.. and might easily kill me!")
+	desc = span_red("That beast is stronger... And might easily kill me!")
 
 /datum/stressevent/paratalk
 	timer = 2 MINUTES
 	stressadd = 2
-	desc = span_red("They are plotting against me in evil tongues..")
+	desc = span_red("They are plotting against me in evil tongues...")
 
 /datum/stressevent/crowd
 	timer = 2 MINUTES
@@ -251,3 +251,53 @@
 	stressadd = 1
 	desc = list(span_red("I wasted my time on that foolish box."),span_red("Damned jester-box."))
 	timer = 5 MINUTES
+
+/datum/stressevent/noble_impoverished_food
+	stressadd = 2
+	desc = span_boldred("This is disgusting. How can anyone eat this?")
+	timer = 10 MINUTES
+
+/datum/stressevent/noble_desperate
+	stressadd = 6
+	desc = span_boldred("What level of desperation have I fallen to?")
+	timer = 60 MINUTES
+
+/datum/stressevent/noble_bland_food
+	stressadd = 1
+	desc = span_red("This fare is really beneath me. I deserve better than this...")
+	timer = 5 MINUTES
+
+/datum/stressevent/noble_bad_manners
+	stressadd = 1
+	desc = span_red("I should've used a spoon...")
+	timer = 5 MINUTES
+
+/datum/stressevent/noble_ate_without_table
+	stressadd = 1
+	desc = span_red("Eating such a meal without a table? Churlish.")
+	timer = 2 MINUTES
+
+/datum/stressevent/soulchurnerhorror
+	timer = 10 SECONDS
+	stressadd = 50
+	desc = span_red("The horrid wails of the dead call for relief! WHAT HAVE I DONE?!")
+
+/datum/stressevent/soulchurner
+	timer = 1 MINUTES
+	stressadd = 10
+	desc = span_red("The horrid wails of the dead call for relief!")
+
+/datum/stressevent/soulchurnerpsydon
+	timer = 1 MINUTES
+	stressadd = 1
+	desc = span_red("The horrid wails of the dead call for relief! I can ENDURE such calls...")
+
+/datum/stressevent/sewertouched
+	timer = 5 MINUTES
+	stressadd = 2
+	desc = span_red("Putrid stinking water!")
+
+/datum/stressevent/unseemly
+	stressadd = 3
+	desc = span_red("Their face is unbearable!")
+	timer = 3 MINUTES

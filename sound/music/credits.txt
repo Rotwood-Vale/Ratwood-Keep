@@ -7,11 +7,13 @@ combat_bandit.ogg: Deus Ex - Battery Park Combat
 combat_bandit2.ogg: Evanora Unlimited - Mithlond (Instrumental)
 combat_werewolf.ogg: Filmmaker - Federal Bestiary
 combat_guard.ogg: Deus Ex - Desolation Combat
-combat_guard2.ogg: Deus Ex - NYC Streets Combat
+combat_guard2.ogg: Thronebreaker Unreleased Soundtrack - Caldwell Battle Theme
 combat_physician.ogg: Pathologic (Classic) - Utroba Aggression
 combat_bum.ogg: Pathologic (Classic) - Most Combat Theme
 combat_knight.ogg: Dragon's Dogma OST: Tense Combat
 combat_duelist.ogg: Medieval Total War 2 OST: Spanish Battle Theme
+combat_cult.ogg: Igor Kornelyuk - Воланд
+combat_druid.ogg: The Witcher 3: Wild Hunt - Hunt or Be Hunted
 title1.ogg: Aphex Twin - Stone In Focus
 bath.ogg: Mabisyo - No Baby (Cropped to 1:00)
 tav_tune.ogg: Divinity Original Sin 2 - Black Bull Tavern
@@ -22,7 +24,6 @@ combat_bandit_brigand: Silent Scream - Lateralis
 combat_bandit_mage: Timestopper Tactics - corru.works
 combat_ascended: TO PIERCE THE BLACK SKY /// ENVY INTERLUDE - UNFORTUNATE DEVELOPMENT
 warscholar.ogg: Butcher's Boulevard - Kristjan Thomas Haaristo
-combat_fancy.ogg: Eric Heberling - Wilderness (Piano)
 guitar (7).ogg: https://youtu.be/to2iDSr6_KA
 guitar (8).ogg: https://youtu.be/8B6jOUzBKYc
 guitar (9).ogg: https://youtu.be/tux7GLWmV2M
@@ -30,3 +31,10 @@ guitar (10).ogg: https://open.spotify.com/track/37yQRGfndzGwUUScYOBMyk?si=d2d8c7
 roundend-vote-sound.ogg: A snippet of Thief Gold Soundtrack: Track 3 - Lord Bafford's Manor
 banditcamp.ogg: Tooth and Tail OST (2017) - Fuel For The Firebrand
 traitor.ogg: Tooth and Tail OST (2017) - Bellafide (Firebrand of The Longcoats)
+Iconoclast.ogg: Valley of Judgement- Lateralis
+dragonden.ogg: Ash Lake Theme - Dark Souls
+inquisitorcombat.ogg: Hellsing OST RAID Track 15 Survival on the Street of Insincerity
+templarofpsydon.ogg: 26 - Duty and Honor II (with Ryan Patrick Buckley) - Chivalry 2 (Original Game Soundtrack)
+combat_HEAVY_METAL.ogg: Soyuz - The Great War has come
+combat_holy.ogg: Jesper Kyd - Light of the Imperium
+combat_treasurehunter.ogg: Henry Jackman - Cut To The Chase

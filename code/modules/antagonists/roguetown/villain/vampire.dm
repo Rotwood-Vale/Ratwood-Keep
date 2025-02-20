@@ -130,6 +130,14 @@
 	if(H.advsetup)
 		return
 
+	if(world.time % 5)
+		if(GLOB.tod != "night")
+			if(isturf(H.loc))
+				var/turf/T = H.loc
+				if(T.can_see_sky())
+					if(T.get_lumcount() > 0.15)
+						if(!disguised)
+							H.fire_act(1,5)
 
 	if(H.on_fire)
 		if(disguised)
@@ -144,11 +152,19 @@
 	vitae = CLAMP(vitae, 0, 1666)
 
 	if(vitae > 0)
-		H.blood_volume = BLOOD_VOLUME_NORMAL
+		H.blood_volume = BLOOD_VOLUME_MAXIMUM
 		if(vitae < 200)
 			if(disguised)
-				to_chat(H, span_warning("My disguise fails!"))
+				to_chat(H, "<span class='warning'>My disguise fails!</span>")
 				H.vampire_undisguise(src)
+		vitae -= 1
+	else
+		to_chat(H, "<span class='userdanger'>I RAN OUT OF VITAE!</span>")
+		var/obj/shapeshift_holder/SS = locate() in H
+		if(SS)
+			SS.shape.dust()
+		H.dust()
+		return
 
 /mob/living/carbon/human/proc/disguise_button()
 	set name = "Disguise"
@@ -321,7 +337,7 @@
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
-	armor = list("blunt" = 100, "slash" = 100, "stab" = 90, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 100, "slash" = 100, "stab" = 90, "piercing" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -344,13 +360,14 @@
 	if(silver_curse_status)
 		to_chat(src, span_warning("My BANE is not letting me REGEN!."))
 		return
-	if(VD.vitae < 200)
+	if(VD.vitae < 300)
 		to_chat(src, span_warning("Not enough vitae."))
 		return
 	to_chat(src, span_greentext("! REGENERATE !"))
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-	VD.handle_vitae(-200)
+	VD.handle_vitae(-300)
 	fully_heal()
+	regenerate_limbs()
 
 /mob/living/carbon/human/proc/vampire_infect()
 	if(!mind)

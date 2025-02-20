@@ -43,7 +43,7 @@
 		set_light(0)
 		return
 	w_class = WEIGHT_CLASS_GIGANTIC
-	set_light(2, 2, "#1b7bf1")
+	set_light(2, 2, 2, l_color = "#1b7bf1")
 
 /obj/item/roguemachine/merchant/Initialize()
 	. = ..()
@@ -107,6 +107,7 @@
 #define UPGRADE_FOOD		(1<<3)
 #define UPGRADE_WARDROBE	(1<<4)
 #define UPGRADE_ALCOHOLS	(1<<5)
+#define UPGRADE_LIVESTOCK   (1<<6)
 
 /obj/structure/roguemachine/merchantvend
 	name = "GOLDFACE"
@@ -123,6 +124,7 @@
 	var/budget = 0
 	var/upgrade_flags
 	var/current_cat = "1"
+	var/lockid = "merchant"
 
 /obj/structure/roguemachine/merchantvend/Initialize()
 	. = ..()
@@ -133,14 +135,14 @@
 	if(obj_broken)
 		set_light(0)
 		return
-	set_light(1, 1, "#1b7bf1")
+	set_light(1, 1, 1, l_color = "#1b7bf1")
 	add_overlay(mutable_appearance(icon, "vendor-merch"))
 
 
 /obj/structure/roguemachine/merchantvend/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/roguekey))
 		var/obj/item/roguekey/K = P
-		if(K.lockid == "merchant")
+		if(K.lockid == lockid)
 			locked = !locked
 			playsound(loc, 'sound/misc/gold_misc.ogg', 100, FALSE, -1)
 			update_icon()
@@ -151,7 +153,7 @@
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
-			if(KE.lockid == "merchant")
+			if(KE.lockid == lockid)
 				locked = !locked
 				playsound(loc, 'sound/misc/gold_misc.ogg', 100, FALSE, -1)
 				update_icon()
@@ -176,7 +178,7 @@
 		if(!ispath(path, /datum/supply_pack))
 			message_admins("silly MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE GOLDFACE")
 			return
-		var/datum/supply_pack/PA = SSshuttle.supply_packs[path]
+		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
 		var/cost = PA.cost
 		var/tax_amt=round(SStreasury.tax_value * cost)
 		cost=cost+tax_amt
@@ -218,6 +220,8 @@
 			options += "Purchase Wardrobe License (50)"
 		if(!(upgrade_flags & UPGRADE_ALCOHOLS))
 			options += "Purchase Alcohols License (50)"
+		if(!(upgrade_flags & UPGRADE_LIVESTOCK))
+			options += "Purchase Livestock License (50)"
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
 		if(!select)
 			return
@@ -280,6 +284,16 @@
 				budget -= 50
 				upgrade_flags |= UPGRADE_ALCOHOLS
 				playsound(loc, 'sound/misc/gold_license.ogg', 100, FALSE, -1)
+			if("Purchase Livestock License (50)")
+				if(upgrade_flags & UPGRADE_LIVESTOCK)
+					return
+				if(budget < 50)
+					say("Ask again when you're serious.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				budget -= 50
+				upgrade_flags |= UPGRADE_LIVESTOCK
+				playsound(loc, 'sound/misc/gold_license.ogg', 100, FALSE, -1)
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/merchantvend/attack_hand(mob/living/user)
@@ -318,6 +332,8 @@
 		unlocked_cats+="Wardrobe"
 	if(upgrade_flags & UPGRADE_ALCOHOLS)
 		unlocked_cats+="Alcohols"
+	if(upgrade_flags & UPGRADE_LIVESTOCK)
+		unlocked_cats+="Livestock"
 
 	if(current_cat == "1")
 		contents += "<center>"
@@ -328,8 +344,8 @@
 		contents += "<center>[current_cat]<BR></center>"
 		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
 		var/list/pax = list()
-		for(var/pack in SSshuttle.supply_packs)
-			var/datum/supply_pack/PA = SSshuttle.supply_packs[pack]
+		for(var/pack in SSmerchant.supply_packs)
+			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == current_cat)
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))

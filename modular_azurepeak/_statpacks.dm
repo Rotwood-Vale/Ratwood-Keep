@@ -21,12 +21,18 @@ GLOBAL_LIST_EMPTY(statpacks)
 	return FALSE
 
 /datum/statpack/proc/description_string()
-	return "[desc]<br> <i>[generate_modifier_string()]</i>"
+	var/blurb = generate_modifier_string()
+	if (blurb)
+		return "[desc]<br> <i>[blurb]</i>"
+	else
+		return "[desc]"
 
 /datum/statpack/proc/generate_modifier_string()
 	/// Generates a blurb string for use in preferences, programatically, based on our desc and stat alterations.
 	var/result
 	var/list/concat = list()
+	if (!LAZYLEN(stat_array))
+		return FALSE
 	for (var/stat in stat_array)
 		if (!islist(stat_array[stat]))
 			var/value = stat_array[stat]

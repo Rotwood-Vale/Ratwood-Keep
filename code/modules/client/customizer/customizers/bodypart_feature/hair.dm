@@ -380,6 +380,20 @@
 		/datum/sprite_accessory/hair/head/thickcurly,
 		/datum/sprite_accessory/hair/head/thicklong_alt,
 		/datum/sprite_accessory/hair/head/baum,
+		/datum/sprite_accessory/hair/head/mcsqueeb,
+		/datum/sprite_accessory/hair/head/highlander,
+		/datum/sprite_accessory/hair/head/royalcurls,
+		/datum/sprite_accessory/hair/head/dreadlocksmessy,
+		/datum/sprite_accessory/hair/head/suave,
+		/datum/sprite_accessory/hair/head/dave,
+		/datum/sprite_accessory/hair/head/mediumbraid,
+		/datum/sprite_accessory/hair/head/countryponytailalt,
+		/datum/sprite_accessory/hair/head/ponytailwitcher,
+		/datum/sprite_accessory/hair/head/spicy,
+		/datum/sprite_accessory/hair/head/stacy,
+		/datum/sprite_accessory/hair/head/stacybun,
+		/datum/sprite_accessory/hair/head/zoey,
+		/datum/sprite_accessory/hair/head/kusanagi_alt,
 		)
 
 /datum/customizer_choice/bodypart_feature/hair/head/humanoid/get_random_accessory(datum/customizer_entry/entry, datum/preferences/prefs)

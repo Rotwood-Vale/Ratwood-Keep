@@ -14,8 +14,14 @@
 	resistance_flags = FLAMMABLE
 	destroy_sound
 	var/foodtype = NONE
+	/// How palatable is this food for a given social class?
+	var/faretype = FARE_IMPOVERISHED
+	/// If false, this will inflict mood debuffs on nobles who eat it without being near a table.
+	var/portable = TRUE
 	var/last_check_time
 	var/in_container = FALSE //currently just stops "was bitten X times!" messages on canned food
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/reagent_containers/food/Initialize(mapload)
 	. = ..()

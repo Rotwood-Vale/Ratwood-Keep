@@ -10,6 +10,9 @@
 	resistance_flags = NONE
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	max_integrity = 300
+	component_type = /datum/component/storage/concrete/roguetown/sack
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/storage/roguebag/examine(mob/user)
 	. = ..()
@@ -60,23 +63,6 @@
 		icon_state = "cbag"
 		w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/roguebag/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 20
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_items = 20
-	STR.click_gather = TRUE
-	STR.attack_hand_interact = FALSE
-	STR.collection_mode = COLLECT_EVERYTHING
-	STR.dump_time = 0
-	STR.allow_quick_gather = TRUE
-	STR.allow_quick_empty = TRUE
-	STR.allow_look_inside = FALSE
-	STR.allow_dump_out = TRUE
-	STR.display_numerical_stacking = TRUE
-
-
 /obj/item/storage/roguebag/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -105,3 +91,14 @@
 "eflip" = 8)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/storage/roguebag/food
+	populate_contents = list(
+	/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+	/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+	/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+	/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
+	/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
+	/obj/item/reagent_containers/food/snacks/grown/apple,
+	/obj/item/reagent_containers/glass/bottle/waterskin/milk
+	)

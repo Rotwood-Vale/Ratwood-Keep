@@ -1,33 +1,46 @@
 /proc/get_step_multiz(ref, dir)
 	if(dir & UP)
 		dir &= ~UP
-		return get_step(SSmapping.get_turf_above(get_turf(ref)), dir)
+		return get_step(GET_TURF_ABOVE(get_turf(ref)), dir)
 	if(dir & DOWN)
 		dir &= ~DOWN
-		return get_step(SSmapping.get_turf_below(get_turf(ref)), dir)
+		return get_step(GET_TURF_BELOW(get_turf(ref)), dir)
 	return get_step(ref, dir)
 
+/proc/get_multiz_accessible_levels(center_z)
+	. = list(center_z)
+	var/other_z = center_z
+	var/offset
+	while((offset = SSmapping.multiz_levels[other_z][Z_LEVEL_DOWN]))
+		other_z -= offset
+		if(other_z in .)
+			break	// no infinite loops
+		. += other_z
+	other_z = center_z
+	while((offset = SSmapping.multiz_levels[other_z][Z_LEVEL_UP]))
+		other_z += offset
+		if(other_z in .)
+			break	// no infinite loops
+		. += other_z
+
+/// A cache of stringified z-level zweb checks.
+/// GLOB.zweb_cache[num2text(my_z)][num2text(compare_z)] = TRUE/FALSE
+GLOBAL_LIST_EMPTY(zweb_cache)
 /proc/is_in_zweb(my_z, compare_z)
 	if(!my_z || !compare_z)
-		return
+		return FALSE
 	if(my_z == compare_z)
 		return TRUE
-	if(my_z > compare_z)
-		for(var/i in my_z to compare_z)
-			if(!i || i<0)
-				return FALSE
-			if(i == compare_z)
-				return TRUE
-			if(!SSmapping.level_trait(i, ZTRAIT_DOWN))
-				return FALSE
-	if(my_z < compare_z)
-		for(var/i in my_z to compare_z)
-			if(!i || i<0)
-				return FALSE
-			if(i == compare_z)
-				return TRUE
-			if(!SSmapping.level_trait(i, ZTRAIT_UP))
-				return FALSE
+	var/my_text = num2text(my_z)
+	var/comp_text = num2text(compare_z)
+	if(isnull(GLOB.zweb_cache[my_text]?[comp_text]))
+		LAZYINITLIST(GLOB.zweb_cache[my_text])
+		for(var/zlevel in get_multiz_accessible_levels(my_z))
+			var/ztext = num2text(zlevel)
+			GLOB.zweb_cache[my_text][ztext] = TRUE
+			LAZYINITLIST(GLOB.zweb_cache[ztext])
+			LAZYADD(GLOB.zweb_cache[ztext], my_text)
+	return GLOB.zweb_cache[my_text][comp_text]
 
 /proc/get_dir_multiz(turf/us, turf/them)
 	us = get_turf(us)
@@ -37,23 +50,17 @@
 	if(us.z == them.z)
 		return get_dir(us, them)
 	else
-		var/turf/T = us.above()
+		var/turf/T = GET_TURF_ABOVE(us)
 		var/dir = NONE
 		if(T && (T.z == them.z))
 			dir = UP
 		else
-			T = us.below()
+			T = GET_TURF_BELOW(us)
 			if(T && (T.z == them.z))
 				dir = DOWN
 			else
 				return get_dir(us, them)
 		return (dir | get_dir(us, them))
-
-/turf/proc/above()
-	return get_step_multiz(src, UP)
-
-/turf/proc/below()
-	return get_step_multiz(src, DOWN)
 
 /proc/dir_inverse_multiz(dir)
 	var/holder = dir & (UP|DOWN)

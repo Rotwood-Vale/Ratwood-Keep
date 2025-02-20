@@ -10,6 +10,8 @@
 	drop_sound = 'sound/foley/dropsound/book_drop.ogg'
 	force = 5
 	associated_skill = /datum/skill/misc/reading
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/book/rogue/getonmobprop(tag)
 	. = ..()
@@ -120,13 +122,13 @@
 		if(C.orders.len > 4)
 			to_chat(user, span_warning("Too much order."))
 			return
-		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSshuttle.supply_cats)
+		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSmerchant.supply_cats)
 		if(!picked_cat)
 			testing("yeye")
 			return
 		var/list/pax = list()
-		for(var/pack in SSshuttle.supply_packs)
-			var/datum/supply_pack/PA = SSshuttle.supply_packs[pack]
+		for(var/pack in SSmerchant.supply_packs)
+			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == picked_cat)
 				pax += PA
 		var/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
@@ -150,12 +152,12 @@
 		if(P.info)
 			to_chat(user, span_warning("Something is written here already."))
 			return
-		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSshuttle.supply_cats)
+		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSmerchant.supply_cats)
 		if(!picked_cat)
 			return
 		var/list/pax = list()
-		for(var/pack in SSshuttle.supply_packs)
-			var/datum/supply_pack/PA = SSshuttle.supply_packs[pack]
+		for(var/pack in SSmerchant.supply_packs)
+			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == picked_cat)
 				pax += PA
 		var/picked_pack = input(user, "Shipments", "Shipping Ledger") as null|anything in sortList(pax)
@@ -226,10 +228,10 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = ""
+	desc = "The Tome of Laws, as passed from the Holy See to its many Ten-worshipping communities."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
-	bookfile = "law.json"
+	bookfile = "law_2.json"
 
 /obj/item/book/rogue/cooking
 	name = "Tastes Fit For The Lord"
@@ -375,6 +377,35 @@
 	base_icon_state = "book8"
 	bookfile = "tales14.json"
 
+/obj/item/book/rogue/naledi1
+	name = "The Path of the War Scholar Volume 1"
+	desc = "By Jatholemew von Rittensquatter, Esq"
+	icon_state = "knowledge_0"
+	base_icon_state = "knowledge"
+	bookfile = "naledi1.json"
+
+/obj/item/book/rogue/naledi2
+	name = "The Path of the War Scholar Volume 3"
+	desc = "By Jatholemew von Rittensquatter, Esq"
+	icon_state = "book8_0"
+	base_icon_state = "book8"
+	bookfile = "naledi2.json"
+
+/obj/item/book/rogue/naledi3
+	name = "The Path of the War Scholar Volume 7"
+	desc = "By Jatholemew von Rittensquatter, Esq"
+	icon_state = "book7_0"
+	base_icon_state = "book7"
+	bookfile = "naledi3.json"
+
+/obj/item/book/rogue/naledi4
+	name = "The Path of the War Scholar Volume 20"
+	desc = "By Jatholemew von Rittensquatter, Esq"
+	icon_state = "book6_0"
+	base_icon_state = "book6"
+	bookfile = "naledi4.json"
+
+
 /obj/item/book/rogue/playerbook
 	var/player_book_text
 	var/player_book_title
@@ -393,7 +424,7 @@
 	"Brown with embossed gold" = "book1",
 	"Brown without embossed material" = "basic_book")
 	name = "unknown title"
-	desc = "by an unknown author"
+	desc = "Penned by an unknown author."
 	icon_state = "basic_book_0"
 	base_icon_state = "basic_book"
 	override_find_book = TRUE
@@ -444,11 +475,13 @@
 
 /obj/item/manuscript
 	name = "2 page manuscript"
-	desc = "A 2 page written piece, with aspirations of becoming a book."
+	desc = "A 2 page written piece aspiring to one dae become a book."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "manuscript"
 	dir = 2
 	resistance_flags = FLAMMABLE
+	grid_width = 32
+	grid_height = 64
 	var/number_of_pages = 2
 	var/compiled_pages = null
 	var/list/page_texts = list()
@@ -476,7 +509,7 @@
 
 	++number_of_pages
 	name = "[number_of_pages] page manuscript"
-	desc = "A [number_of_pages] page written piece, with aspirations of becoming a book."
+	desc = "A [number_of_pages] page written piece aspiring to one dae become a book."
 	page_texts += P.info
 	compiled_pages += "<p>[P.info]</p>"
 	qdel(P)
@@ -579,13 +612,13 @@
 		else
 			update_icon()
 			name = "[number_of_pages] page manuscript"
-			desc = "A [number_of_pages] page written piece, with aspirations of becoming a book."
+			desc = "A [number_of_pages] page written piece aspiring to one dae become a book."
 			return
 
 	. = ..()
 
 /obj/item/book_crafting_kit
 	name = "book crafting kit"
-	desc = "Apply on a written manuscript to create a book"
+	desc = "Apply on a written manuscript to create a book."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "book_crafting_kit"

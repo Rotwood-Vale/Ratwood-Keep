@@ -81,26 +81,32 @@
 	var/atom/movable/AM = parent
 	var/AM_dir = "[AM.dir]"
 	var/passindex = 0
+	var/has_fixedeye = FALSE
 	if(AM.has_buckled_mobs())
 		for(var/m in AM.buckled_mobs)
+			if(ishuman(m))
+				var/mob/living/carbon/human/H = m
+				if(H.fixedeye)
+					has_fixedeye = TRUE
 			passindex++
 			var/mob/living/buckled_mob = m
 			var/list/offsets = get_offsets(passindex)
 			var/rider_dir = get_rider_dir(passindex)
-			buckled_mob.setDir(rider_dir)
-			dir_loop:
-				for(var/offsetdir in offsets)
-					if(offsetdir == AM_dir)
-						var/list/diroffsets = offsets[offsetdir]
-						var/x2off
-						var/y2off
-						x2off = diroffsets[1]
-						if(diroffsets.len >= 2)
-							y2off = diroffsets[2]
-						if(diroffsets.len == 3)
-							buckled_mob.layer = diroffsets[3]
-						buckled_mob.set_mob_offsets("riding", _x = x2off, _y = y2off)
-						break dir_loop
+			if(!has_fixedeye)
+				buckled_mob.setDir(rider_dir)
+				dir_loop:
+					for(var/offsetdir in offsets)
+						if(offsetdir == AM_dir)
+							var/list/diroffsets = offsets[offsetdir]
+							var/x2off
+							var/y2off
+							x2off = diroffsets[1]
+							if(diroffsets.len >= 2)
+								y2off = diroffsets[2]
+							if(diroffsets.len == 3)
+								buckled_mob.layer = diroffsets[3]
+							buckled_mob.set_mob_offsets("riding", _x = x2off, _y = y2off)
+							break dir_loop
 	var/list/static/default_vehicle_pixel_offsets = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
 /*	var/px = default_vehicle_pixel_offsets[AM_dir]
 	var/py = default_vehicle_pixel_offsets[AM_dir]
@@ -274,10 +280,6 @@
 	var/atom/movable/AM = parent
 	if(user.incapacitated())
 		var/kick = TRUE
-		if(iscyborg(AM))
-			var/mob/living/silicon/robot/R = AM
-			if(R.module && R.module.ride_allow_incapacitated)
-				kick = FALSE
 		if(kick)
 			to_chat(user, span_danger("I fall off of [AM]!"))
 			Unbuckle(user)
@@ -307,13 +309,7 @@
 	if(AM.has_buckled_mobs())
 		for(var/mob/living/M in AM.buckled_mobs)
 			M.setDir(AM.dir)
-			if(iscyborg(AM))
-				var/mob/living/silicon/robot/R = AM
-				if(istype(R.module))
-					M.pixel_x = R.module.ride_offset_x[dir2text(AM.dir)]
-					M.pixel_y = R.module.ride_offset_y[dir2text(AM.dir)]
-			else
-				..()
+			..()
 
 /datum/component/riding/cyborg/force_dismount(mob/living/M)
 	var/atom/movable/AM = parent

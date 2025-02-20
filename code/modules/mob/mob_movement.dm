@@ -9,8 +9,6 @@
   */
 /client/verb/drop_item()
 	set hidden = 1
-	if(!iscyborg(mob) && mob.stat == CONSCIOUS)
-		mob.dropItemToGround(mob.get_active_held_item(), silent = FALSE)
 	return
 
 /**
@@ -116,9 +114,6 @@
 	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
 		return mob.remote_control.relaymove(mob, direct)
 
-	if(isAI(mob))
-		return AIMove(n,direct,mob)
-
 	if(Process_Grab()) //are we restrained by someone's grip?
 		return
 
@@ -163,9 +158,8 @@
 				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
 	else
 		if(L.dir != target_dir)
-			// Remove sprint intent if we change direction, but only if we sprinted atleast 1 tile
-			if(L.m_intent == MOVE_INTENT_RUN && L.sprinted_tiles > 0)
-				L.toggle_rogmove_intent(MOVE_INTENT_WALK)
+			// Reset our sprint counter if we change direction
+			L.sprinted_tiles = 0
 
 	. = ..()
 
@@ -301,17 +295,13 @@
 			var/turf/open/floor/stepTurf = get_step(L, direct)
 			if(stepTurf)
 				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
-					to_chat(L, span_warning("[S] bars your passage!"))
-					if(isrevenant(L))
-						var/mob/living/simple_animal/revenant/R = L
-						R.reveal(20)
-						R.stun(20)
+					to_chat(L, "<span class='warning'>[S] bars your passage!</span>")
 					return
 				if(stepTurf.flags_1 & NOJAUNT_1)
-					to_chat(L, span_warning("Some strange aura is blocking the way."))
+					to_chat(L, "<span class='warning'>Some strange aura is blocking the way.</span>")
 					return
 				if (locate(/obj/effect/blessing, stepTurf))
-					to_chat(L, span_warning("Holy energies block your path!"))
+					to_chat(L, "<span class='warning'>Holy energies block your path!</span>")
 					return
 
 				L.forceMove(stepTurf)
@@ -348,8 +338,6 @@
 			continue
 		else if(isturf(A))
 			var/turf/turf = A
-			if(isspaceturf(turf))
-				continue
 			if(!turf.density && !mob_negates_gravity())
 				continue
 			return A
@@ -598,15 +586,17 @@
 		rogue_sneaking = TRUE
 		return
 	var/turf/T = get_turf(src)
-	var/light_amount = 0
-	if(T)
-		light_amount = T.get_lumcount()
+
+	if(!T) //if the turf they're headed to is invalid
+		return
+
+	var/light_amount = T?.get_lumcount()
 	var/used_time = 50
 	if(mind)
 		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
 
 	if(rogue_sneaking) //If sneaking, check if they should be revealed
-		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold)
+		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold + (mind?.get_skill_level(/datum/skill/misc/sneaking)/200) )
 			used_time = round(clamp((50 - (used_time*1.75)), 5, 50),1)
 			animate(src, alpha = initial(alpha), time =	used_time) //sneak skill makes you reveal slower but not as drastic as disappearing speed
 			spawn(used_time) regenerate_icons()
@@ -614,37 +604,64 @@
 			return
 
 	else //not currently sneaking, check if we can sneak
-		if(light_amount < rogue_sneaking_light_threshhold && m_intent == MOVE_INTENT_SNEAK)
+		if(light_amount < rogue_sneaking_light_threshhold + (mind?.get_skill_level(/datum/skill/misc/sneaking)/200) && m_intent == MOVE_INTENT_SNEAK)
 			animate(src, alpha = 0, time = used_time)
 			spawn(used_time + 5) regenerate_icons()
 			rogue_sneaking = TRUE
 	return
 
+///Checked whenever a mob tries to change their movement intent
 /mob/proc/toggle_rogmove_intent(intent, silent = FALSE)
+	var/is_mounted = FALSE
+	if(buckled && intent != MOVE_INTENT_SNEAK)
+		if(istype(buckled, /mob/living/simple_animal/hostile/retaliate/rogue/saiga))
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/mob/living/simple_animal/hostile/retaliate/rogue/saiga/S = buckled
+				is_mounted = TRUE
+				if(H.m_intent == MOVE_INTENT_WALK)
+					H.visible_message(span_notice("[H] digs their heels into \the [S], preparing to gallop!"))
+					S.emote("aggro")
+					if(do_after(H, 20))
+						H.m_intent = MOVE_INTENT_RUN
+				else
+					H.visible_message(span_notice("\The [S] calms, slowing its gait."))
+					S.emote("idle")
+					if(do_after(H, 15))
+						H.m_intent = MOVE_INTENT_WALK
 	// If we're becoming sprinting from non-sprinting, reset the counter
 	if(!(m_intent == MOVE_INTENT_RUN && intent == MOVE_INTENT_RUN))
 		sprinted_tiles = 0
-	switch(intent)
-		if(MOVE_INTENT_SNEAK)
-			m_intent = MOVE_INTENT_SNEAK
-			update_sneak_invis()
-		if(MOVE_INTENT_WALK)
-			m_intent = MOVE_INTENT_WALK
-		if(MOVE_INTENT_RUN)
-			if(isliving(src))
-				var/mob/living/L = src
-				if(L.rogfat >= L.maxrogfat)
-					return
-				if(L.rogstam <= 0)
-					return
-				if(ishuman(L))
-					var/mob/living/carbon/human/H = L
-					if(!H.check_armor_skill())
+
+	if(!is_mounted)
+		switch(intent)
+			if(MOVE_INTENT_SNEAK)
+				m_intent = MOVE_INTENT_SNEAK
+				update_sneak_invis()
+
+			if(MOVE_INTENT_WALK)
+				m_intent = MOVE_INTENT_WALK
+
+			if(MOVE_INTENT_RUN)
+				if(isliving(src))
+					var/mob/living/L = src
+
+					//If mob is trying to switch to run, fail if any of these are true
+					if (L.rogfat >= L.maxrogfat || L.rogstam <= 0 || HAS_TRAIT(L, TRAIT_NORUN))
+						if (HAS_TRAIT(L, TRAIT_NORUN)) // If has trait blocker then inform them
+							to_chat(L, span_warning("My joints have decayed too much for running!"))
 						return
-			m_intent = MOVE_INTENT_RUN
-	if(hud_used && hud_used.static_inventory)
+
+					if(ishuman(L))
+						var/mob/living/carbon/human/H = L
+						if(!H.check_armor_skill() || H.legcuffed)
+							return
+
+				m_intent = MOVE_INTENT_RUN
+	if(hud_used?.static_inventory) //Update UI
 		for(var/atom/movable/screen/rogmove/selector in hud_used.static_inventory)
 			selector.update_icon()
+			
 	if(!silent)
 		playsound_local(src, 'sound/misc/click.ogg', 100)
 
@@ -663,6 +680,15 @@
 					return FALSE
 	if(istype(src.wear_shirt, /obj/item/clothing))
 		var/obj/item/clothing/CL = src.wear_shirt
+		if(CL.armor_class == ARMOR_CLASS_HEAVY)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				return FALSE
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
+					return FALSE
+	if(istype(src.wear_pants, /obj/item/clothing))
+		var/obj/item/clothing/CL = src.wear_pants
 		if(CL.armor_class == ARMOR_CLASS_HEAVY)
 			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
 				return FALSE
@@ -690,7 +716,44 @@
 			return FALSE
 		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
 			return FALSE
+	if(istype(src.wear_pants, /obj/item/clothing))
+		var/obj/item/clothing/CL = src.wear_pants
+		if(CL.armor_class == ARMOR_CLASS_HEAVY)
+			return FALSE
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+			return FALSE
 	return TRUE
+
+/mob/living/proc/check_mage_armor()
+	return TRUE
+
+/mob/living/carbon/human/check_mage_armor()
+	if(!HAS_TRAIT(src, TRAIT_MAGEARMOR))
+		return FALSE
+	if(istype(src.wear_armor, /obj/item/clothing))
+		var/obj/item/clothing/CL = src.wear_armor
+		if(CL.armor_class == ARMOR_CLASS_HEAVY)
+			return FALSE
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+			return FALSE
+	if(istype(src.wear_shirt, /obj/item/clothing))
+		var/obj/item/clothing/CL = src.wear_shirt
+		if(CL.armor_class == ARMOR_CLASS_HEAVY)
+			return FALSE
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+			return FALSE
+	if(istype(src.wear_pants, /obj/item/clothing))
+		var/obj/item/clothing/CL = src.wear_pants
+		if(CL.armor_class == ARMOR_CLASS_HEAVY)
+			return FALSE
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+			return FALSE
+	if(src.magearmor == 0)
+		src.magearmor = 1
+		src.apply_status_effect(/datum/status_effect/buff/magearmor)
+		return TRUE
+
+	
 
 /mob/proc/toggle_eye_intent(mob/user) //clicking the fixeye button either makes you fixeye or clears your target
 	if(fixedeye)

@@ -19,14 +19,6 @@
 				return 0
 	return ..()
 
-/mob/living/carbon/human/experience_pressure_difference()
-	playsound(src, 'sound/blank.ogg', 50, TRUE)
-	if(shoes && istype(shoes, /obj/item/clothing))
-		var/obj/item/clothing/S = shoes
-		if (S.clothing_flags & NOSLIP)
-			return 0
-	return ..()
-
 /mob/living/carbon/human/mob_has_gravity()
 	. = ..()
 	if(!.)
@@ -56,6 +48,14 @@
 	if(loc == NewLoc)
 		if(!has_gravity(loc))
 			return
+
+		if(hostage) // If we have a hostage.
+			hostage.hostagetaker = null
+			hostage = null
+			to_chat(src, "<span class='danger'>I need to stand still to make sure I don't lose concentration on my hostage!</span>")
+
+		if(hostagetaker) // If we are TAKEN hostage. Confusing vars at first but then it makes sense.
+			attackhostage()
 
 		if(wear_armor)
 			if(mobility_flags & MOBILITY_STAND)
@@ -95,7 +95,11 @@
 				//End bloody footprints
 				S.step_action()
 		if(mouth)
+		
 			if(mouth.spitoutmouth && prob(5))
+				visible_message(span_warning("[src] spits out [mouth]."))
+				dropItemToGround(mouth, silent = FALSE)
+			if(src.mind?.has_antag_datum(/datum/antagonist/zombie) && (!src.handcuffed) && prob(50))
 				visible_message(span_warning("[src] spits out [mouth]."))
 				dropItemToGround(mouth, silent = FALSE)
 		if(held_items.len)

@@ -1,4 +1,3 @@
-GLOBAL_LIST_INIT(searaider_quotes, world.file2list("strings/rt/searaiderlines.txt"))
 GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggrolines.txt"))
 
 /mob/living/carbon/human/species/human/northern/searaider
@@ -8,7 +7,9 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	ambushable = FALSE
 	dodgetime = 30
 	flee_in_pain = TRUE
+	stand_attempts = 6
 	possible_rmb_intents = list()
+	var/is_silent = FALSE /// Determines whether or not we will scream our funny lines at people.
 
 
 /mob/living/carbon/human/species/human/northern/searaider/ambush
@@ -22,7 +23,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	if(target)
 		aggressive=1
 		wander = TRUE
-		if(target != newtarg)
+		if(!is_silent && target != newtarg)
 			say(pick(GLOB.searaider_aggro))
 			linepoint(target)
 
@@ -34,9 +35,8 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 /mob/living/carbon/human/species/human/northern/searaider/Initialize()
 	. = ..()
 	set_species(/datum/species/human/northern)
-	spawn(10)
-		after_creation()
-	//addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
+	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
+	is_silent = TRUE
 
 
 /mob/living/carbon/human/species/human/northern/searaider/after_creation()
@@ -45,6 +45,7 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/northern/searaider)
 	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
 	if(organ_eyes)
@@ -67,14 +68,10 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 			face_atom(get_step(src,pick(GLOB.cardinals)))
 	if(!wander && prob(10))
 		face_atom(get_step(src,pick(GLOB.cardinals)))
-	if(prob(12))
-		say(pick(GLOB.searaider_quotes))
-	if(prob(12))
-		emote(pick("laugh","burp","yawn","grumble","mumble","blink_r","clap"))
 
 /mob/living/carbon/human/species/human/northern/searaider/handle_combat()
 	if(mode == AI_HUNT)
-		if(prob(50))
+		if(prob(50)) // ignores is_silent because they should at least still be able to scream at people!
 			emote("rage")
 	. = ..()
 

@@ -33,8 +33,6 @@
 	return bounds
 
 /datum/parsed_map/proc/initTemplateBounds()
-	var/list/obj/machinery/atmospherics/atmos_machines = list()
-	var/list/obj/structure/cable/cables = list()
 	var/list/atom/atoms = list()
 	var/list/area/areas = list()
 
@@ -48,19 +46,12 @@
 		areas |= B.loc
 		for(var/A in B)
 			atoms += A
-			if(istype(A, /obj/structure/cable))
-				cables += A
-				continue
-			if(istype(A, /obj/machinery/atmospherics))
-				atmos_machines += A
 	for(var/L in border)
 		var/turf/T = L
 		T.air_update_turf(TRUE) //calculate adjacent turfs along the border to prevent runtimes
 
 	SSmapping.reg_in_areas_in_z(areas)
 	SSatoms.InitializeAtoms(atoms)
-	SSmachines.setup_template_powernets(cables)
-	SSair.setup_template_machinery(atmos_machines)
 
 /datum/map_template/proc/load_new_z()
 	var/x = round((world.maxx - width)/2)
@@ -95,7 +86,6 @@
 							locate(min(T.x+width+1, world.maxx),	min(T.y+height+1, world.maxy), T.z))
 	for(var/L in border)
 		var/turf/turf_to_disable = L
-		SSair.remove_from_active(turf_to_disable) //stop processing turfs along the border to prevent runtimes, we return it in initTemplateBounds()
 		turf_to_disable.atmos_adjacent_turfs?.Cut()
 
 	// Accept cached maps, but don't save them automatically - we don't want
@@ -108,8 +98,7 @@
 	if(!bounds)
 		return
 
-	if(!SSmapping.loading_ruins) //Will be done manually during mapping ss init
-		repopulate_sorted_areas()
+	repopulate_sorted_areas()
 
 	//initialize things that are normally initialized after map load
 	parsed.initTemplateBounds()

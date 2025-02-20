@@ -416,6 +416,15 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 
+/datum/crafting_recipe/roguetown/structure/standingblue
+	name = "standing fire (blue)"
+	result = /obj/machinery/light/rogue/firebowl/standing/blue
+	reqs = list(/obj/item/natural/stone = 1,
+				/obj/item/rogueore/coal = 1,
+				/obj/item/ash = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+
 /datum/crafting_recipe/roguetown/structure/oven
 	name = "oven"
 	result = /obj/machinery/light/rogue/oven
@@ -426,12 +435,13 @@
 	skillcraft = /datum/skill/craft/masonry
 	wallcraft = TRUE
 
-/datum/crafting_recipe/roguetown/structure/dryingrack
+/datum/crafting_recipe/roguetown/structure/tanningrack
 	name = "drying rack"
-	result = /obj/structure/fluff/dryingrack
+	result = /obj/machinery/tanningrack
 	reqs = list(/obj/item/grown/log/tree/stick = 3)
 	verbage_simple = "construct"
 	verbage = "constructs"
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/bed
 	name = "bed"
@@ -440,6 +450,7 @@
 				/obj/item/natural/fibers = 1)
 	verbage_simple = "construct"
 	verbage = "constructs"
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/structure/nicebed
 	name = "nice bed"
@@ -459,6 +470,15 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/structure/operatingtable
+	name = "operating table"
+	result = /obj/structure/table/optable
+	reqs = list(/obj/item/grown/log/tree/small = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/structure/stonetable
 	name = "stone table"
@@ -587,6 +607,16 @@
 	wallcraft = TRUE
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/structure/wallcandleblue
+	name = "wall candles (blue)"
+	result = /obj/machinery/light/rogue/wallfire/candle/blue
+	reqs = list(/obj/item/natural/stone = 1, /obj/item/candle/yellow = 1, /obj/item/ash = 1)
+	verbage_simple = "build"
+	verbage = "builds"
+	skillcraft = /datum/skill/craft/masonry
+	wallcraft = TRUE
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/structure/stonewalldeco
 	name = "stone wall decoration"
 	result = /obj/structure/fluff/walldeco/stone
@@ -617,3 +647,12 @@
 	craftdiff = 3
 	wallcraft = TRUE
 	ontile = TRUE
+
+/datum/crafting_recipe/roguetown/structure/cauldronalchemy
+	name = "alchemy cauldron"
+	result = /obj/machinery/light/rogue/cauldron
+	reqs = list(/obj/item/ingot/iron = 3)
+	verbage_simple = "assemble"
+	verbage = "assembles"
+	skillcraft = /datum/skill/craft/alchemy
+	craftdiff = 1

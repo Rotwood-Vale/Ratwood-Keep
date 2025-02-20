@@ -19,7 +19,6 @@
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "together"
 	baseturfs = /turf/open/water
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	slowdown = 5
 	var/obj/effect/overlay/water/water_overlay
 	var/obj/effect/overlay/water/top/water_top_overlay
@@ -35,6 +34,10 @@
 	neighborlay_override = "edge"
 	var/water_color = "#6a9295"
 	var/water_reagent = /datum/reagent/water
+	var/water_reagent_purified = /datum/reagent/water // If put through a water filtration device, provides this reagent instead
+	var/mapped = TRUE // infinite source of water
+	var/water_volume = 100 // 100 is 1 bucket
+	var/water_maximum = 100
 	water_level = 2
 	var/wash_in = TRUE
 	var/swim_skill = FALSE
@@ -90,7 +93,7 @@
 					user.Immobilize(30)
 					addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, Knockdown), 30), 10)
 
-/turf/open/water/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
+/turf/open/water/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, damage_type = "blunt")
 	..()
 	playsound(src, pick('sound/foley/water_land1.ogg','sound/foley/water_land2.ogg','sound/foley/water_land3.ogg'), 100, FALSE)
 
@@ -141,13 +144,18 @@
 			if(C.reagents.holder_full())
 				to_chat(user, span_warning("[C] is full."))
 				return
+			playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 			if(do_after(user, 8, target = src))
 				user.changeNext_move(CLICK_CD_MELEE)
-				playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 				var/list/L = list()
+				var/message = "I fill [C] from [src]."
 				L[water_reagent] = 100
 				C.reagents.add_reagent_list(L)
-				to_chat(user, span_notice("I fill [C] from [src]."))
+				to_chat(user, span_notice(message))
+				// If the user is filling a water purifier and the water isn't already clean...
+				if (istype(C, /obj/item/reagent_containers/glass/bottle/waterskin/purifier) && water_reagent != water_reagent_purified)
+					var/obj/item/reagent_containers/glass/bottle/waterskin/purifier/P = C
+					P.cleanwater(user)
 			return
 	. = ..()
 
@@ -206,7 +214,7 @@
 	if(water_top_overlay)
 		QDEL_NULL(water_top_overlay)
 
-/turf/open/water/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
+/turf/open/water/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, damage_type = "blunt")
 	if(isobj(AM))
 		var/obj/O = AM
 		O.extinguish()
@@ -224,13 +232,13 @@
 
 /turf/open/water/bath
 	name = "water"
-	desc = "Soothing water, although don't drink the soap."
+	desc = "Soothing water, with soapy bubbles on the surface."
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "bathtileW"
 	water_level = 2
 	water_color = "#FFFFFF"
 	slowdown = 3
-	water_reagent = /datum/reagent/water/gross
+	water_reagent = /datum/reagent/water/bathwater
 
 /turf/open/water/bath/Initialize()
 	.  = ..()
@@ -272,15 +280,21 @@
 /turf/open/water/swamp/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
 	if(isliving(AM) && !AM.throwing)
-		if(!prob(3))
-			return
-		if(iscarbon(AM))
-			var/mob/living/carbon/C = AM
+		if(ishuman(AM))
+			var/mob/living/carbon/human/C = AM
+			var/chance = 3
+			if(C.m_intent == MOVE_INTENT_RUN)
+				chance = 6
+			if(C.m_intent == MOVE_INTENT_SNEAK)
+				chance = 1
+			if(!prob(chance))
+				return
 			if(C.blood_volume <= 0)
 				return
-			var/zonee = list(BODY_ZONE_R_LEG,BODY_ZONE_L_LEG)
-			for(var/X in zonee)
-				var/obj/item/bodypart/BP = C.get_bodypart(X)
+			var/list/zonee = list(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_CHEST)
+			for(var/i = 0, i <= zonee.len, i++)
+				var/zone = pick(zonee)
+				var/obj/item/bodypart/BP = C.get_bodypart(zone)
 				if(!BP)
 					continue
 				if(BP.skeletonized)
@@ -301,15 +315,21 @@
 /turf/open/water/swamp/deep/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
 	if(isliving(AM) && !AM.throwing)
-		if(!prob(8))
-			return
-		if(iscarbon(AM))
-			var/mob/living/carbon/C = AM
+		if(ishuman(AM))
+			var/mob/living/carbon/human/C = AM
+			var/chance = 6
+			if(C.m_intent == MOVE_INTENT_RUN)
+				chance = 12		//yikes
+			if(C.m_intent == MOVE_INTENT_SNEAK)
+				chance = 2
+			if(!prob(chance))
+				return
 			if(C.blood_volume <= 0)
 				return
-			var/zonee = list(BODY_ZONE_CHEST,BODY_ZONE_R_LEG,BODY_ZONE_L_LEG,BODY_ZONE_R_ARM,BODY_ZONE_L_ARM)
-			for(var/X in zonee)
-				var/obj/item/bodypart/BP = C.get_bodypart(X)
+			var/list/zonee = list(BODY_ZONE_CHEST,BODY_ZONE_R_LEG,BODY_ZONE_L_LEG,BODY_ZONE_R_ARM,BODY_ZONE_L_ARM)
+			for(var/i = 0, i <= zonee.len, i++)
+				var/zone = pick(zonee)
+				var/obj/item/bodypart/BP = C.get_bodypart(zone)
 				if(!BP)
 					continue
 				if(BP.skeletonized)
@@ -368,6 +388,9 @@
 /turf/open/water/river/proc/process_river()
 	river_processing = null
 	for(var/atom/movable/A in contents)
+		for(var/obj/structure/S in src)
+			if(S.obj_flags & BLOCK_Z_OUT_DOWN)
+				return
 		if((A.loc == src) && A.has_gravity())
 			A.ConveyorMove(dir)
 
@@ -381,7 +404,7 @@
 	slowdown = 4
 	swim_skill = TRUE
 	wash_in = TRUE
-	water_reagent = /datum/reagent/water/gross
+	water_reagent = /datum/reagent/water/salty
 
 /turf/open/water/ocean/deep
 	name = "salt water"
@@ -392,7 +415,7 @@
 	water_color = "#3e7459"
 	slowdown = 8
 	swim_skill = TRUE
-	wash_in = FALSE
+	wash_in = TRUE
 
 /turf/open/water/pond
 	name = "pond"
@@ -400,6 +423,7 @@
 	icon_state = "pond"
 	icon = 'icons/turf/roguefloor.dmi'
 	water_level = 3
+	water_color = "#367e94"
 	slowdown = 3
 	swim_skill = TRUE
 	wash_in = TRUE

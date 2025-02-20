@@ -1,6 +1,6 @@
 /obj/item/natural/poo
 	name = "nightsoil"
-	desc = "This smells bad."
+	desc = "It smells awful."
 	icon_state = "humpoo"
 	dropshrink = 0.75
 	throwforce = 0
@@ -9,10 +9,10 @@
 
 /obj/item/natural/poo/cow
 	name = "cow pie"
-	desc = "Smells bad, but you know it's just grass. Or is it?"
+	desc = "It smells awful, but I know it's just digested grass... Right?"
 	icon_state = "cowpoo"
 
 /obj/item/natural/poo/horse
 	name = "droppings"
-	desc = "Smells bad, but you know it's just grass."
+	desc = "It smells awful, but I know it's just digested grass."
 	icon_state = "horsepoo"

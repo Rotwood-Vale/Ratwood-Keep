@@ -1,3 +1,5 @@
+GLOBAL_LIST_INIT(time_change_tips, world.file2list("strings/rt/timechangetips.txt"))
+
 //Returns the world time in english
 /proc/worldtime2text()
 	return gameTimestamp("hh:mm:ss", world.time)
@@ -43,33 +45,24 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 		if(!GLOB.forecast)
 			switch(GLOB.tod)
 				if("dawn")
-					if(prob(12))
-						GLOB.forecast = "fog"
-					if(prob(13))
+					if(prob(25))
 						GLOB.forecast = "rain"
 				if("day")
 					if(prob(5))
 						GLOB.forecast = "rain"
 				if("dusk")
-					if(prob(13))
+					if(prob(33))
 						GLOB.forecast = "rain"
 				if("night")
-					if(prob(5))
-						GLOB.forecast = "fog"
-					if(prob(21))
+					if(prob(40))
 						GLOB.forecast = "rain"
+
 			if(GLOB.forecast == "rain")
 				var/foundnd
-				for(var/datum/weather/rain/R in SSweather.curweathers)
+				if(SSParticleWeather?.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
 					foundnd = TRUE
 				if(!foundnd)
-					SSweather.run_weather(/datum/weather/rain, 1)
-		/*	if(GLOB.forecast == "fog")
-				var/foundnd
-				for(var/datum/weather/fog/R in SSweather.curweathers)
-					foundnd = TRUE
-				if(!foundnd)
-					SSweather.run_weather(/datum/weather/fog, 1) */
+					SSParticleWeather?.run_weather(pick(/datum/particle_weather/rain_gentle, /datum/particle_weather/rain_storm))
 		else
 			switch(GLOB.forecast) //end the weather now
 				if("rain")
@@ -78,8 +71,6 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 					else
 						GLOB.forecast = null
 				if("rainbow")
-					GLOB.forecast = null
-				if("fog")
 					GLOB.forecast = null
 
 	if(GLOB.tod != oldtod)
@@ -99,6 +90,9 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 		return null
 
 /mob/living/proc/do_time_change()
+
+//first - tips/lore
+
 	if(!mind)
 		return
 	if(GLOB.tod == "dawn")
@@ -133,14 +127,22 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 		T.maptext_height = 209
 		T.maptext_x = 12
 		T.maptext_y = -120
-		playsound_local(src, 'sound/misc/newday.ogg', 100, FALSE)
+		playsound_local(src, 'sound/misc/newday.ogg', 60, FALSE)
 		animate(T, alpha = 255, time = 10, easing = EASE_IN)
 		addtimer(CALLBACK(src, PROC_REF(clear_area_text), T), 35)
+		var/time_change_tips_random = pick(GLOB.time_change_tips)
+		to_chat(client, span_notice("<b>[time_change_tips_random]</b>"))
+	else if(GLOB.tod == "day")
+		playsound_local(src, 'sound/misc/midday.ogg', 100, FALSE)
+	else if(GLOB.tod == "night")
+		playsound_local(src, 'sound/misc/nightfall.ogg', 100, FALSE)
+
 	var/atom/movable/screen/daynight/D = new()
 	D.alpha = 0
 	client.screen += D
 	animate(D, alpha = 255, time = 20, easing = EASE_IN)
 	addtimer(CALLBACK(src, PROC_REF(clear_time_icon), D), 30)
+
 
 /proc/station_time_debug(force_set)
 	if(isnum(force_set))
@@ -210,3 +212,6 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 
 /proc/daysSince(realtimev)
 	return round((world.realtime - realtimev) / (24 HOURS))
+
+//returns time diff of two times normalized to time_rate_multiplier
+/proc/daytimeDiff(timeA, timeB)

@@ -42,6 +42,13 @@
 
 	return colors
 
+/datum/body_marking/nose
+	icon = 'icons/mob/body_markings/other_markings.dmi'
+	name = "Nose"
+	icon_state = "nose"
+	default_color = "FF0000"
+	affected_bodyparts = HEAD
+
 /datum/body_marking/flushed_cheeks
 	icon = 'icons/mob/body_markings/other_markings.dmi'
 	name = "Flushed Cheeks"
@@ -221,6 +228,13 @@
 	icon_state = "drake_eyes"
 	affected_bodyparts = HEAD
 	default_color = "FF0000"
+
+/datum/body_marking/small/nose
+	icon = 'icons/mob/body_markings/other_markings.dmi'
+	name = "Nose (Volk)"
+	icon_state = "nose_s"
+	default_color = "FF0000"
+	affected_bodyparts = HEAD
 
 /datum/body_marking/small/plain
 	icon = 'icons/mob/body_markings/small_plain_markings.dmi'
