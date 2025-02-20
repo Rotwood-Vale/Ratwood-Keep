@@ -205,10 +205,10 @@
 							H.apply_status_effect(/datum/status_effect/buff/churnerprotection)
 					if(/datum/patron/inhumen/matthios)
 						if(usr?.client?.prefs?.be_russian)
-							to_chat(H, (span_hypnophrase("Голос из песни зовёт вас..."))) //sm
+							to_chat(H, (span_hypnophrase("Голос из песни зовёт вас...")))
 							to_chat(H, (span_cultsmall(pick(ru_matthioslines))))
 						else
-							to_chat(H, (span_hypnophrase("A voice calls out from the song for you..."))) //sm
+							to_chat(H, (span_hypnophrase("A voice calls out from the song for you...")))
 							to_chat(H, (span_cultsmall(pick(matthioslines))))
 						H.add_stress(/datum/stressevent/soulchurnerheretic)
 					if(/datum/patron/zizo)
@@ -248,7 +248,7 @@
 							to_chat(H, (span_hypnophrase("Голос из песни зовёт вас...")))
 							to_chat(H, (span_cultsmall(pick(ru_noclines))))
 						else
-							to_chat(H, (span_hypnophrase("A voice calls out from the song for you..."))) //iley
+							to_chat(H, (span_hypnophrase("A voice calls out from the song for you...")))
 							to_chat(H, (span_cultsmall(pick(noclines))))
 						H.add_stress(/datum/stressevent/soulchurner)
 					if(/datum/patron/divine/necra)
@@ -283,7 +283,7 @@
 							to_chat(H, (span_hypnophrase("A voice calls out from the song for you...")))
 							to_chat(H, (span_cultsmall(pick(dendorlines))))
 						H.add_stress(/datum/stressevent/soulchurner)
-					if(/datum/patron/divine/xylix) //sos
+					if(/datum/patron/divine/xylix)
 						if(usr?.client?.prefs?.be_russian)
 							to_chat(H, (span_hypnophrase("Голос из песни зовёт вас...")))
 							to_chat(H, (span_cultsmall(pick(ru_xylixlines))))
@@ -307,7 +307,7 @@
 							to_chat(H, (span_hypnophrase("A voice calls out from the song for you...")))
 							to_chat(H, (span_cultsmall(pick(abyssorlines))))
 						H.add_stress(/datum/stressevent/soulchurner)
-					if(/datum/patron/divine/ravox) //at
+					if(/datum/patron/divine/ravox)
 						if(usr?.client?.prefs?.be_russian)
 							to_chat(H, (span_hypnophrase("Голос из песни зовёт вас...")))
 							to_chat(H, (span_cultsmall(pick(ru_ravoxlines))))
