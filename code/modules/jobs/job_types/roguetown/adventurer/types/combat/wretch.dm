@@ -149,6 +149,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 			H.set_blindness(0)
 			var/weapons = list("Bastard Sword","Mace","Flail")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
@@ -180,7 +181,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/tower/metal
 			beltl = /obj/item/roguekey/inhumen
-			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1)
+			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/ritechalk = 1)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells(H)
 			START_PROCESSING(SSobj, C)

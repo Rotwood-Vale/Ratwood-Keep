@@ -12,8 +12,8 @@
 
 	var/ritechoices = list()
 	switch (user.patron?.type)
-/*		if(/datum/patron/inhumen/zizo)
-			ritechoices+="Rune of ZIZO" */
+		if(/datum/patron/inhumen/zizo)
+			ritechoices+="Rune of ZIZO" 
 		if(/datum/patron/divine/astrata)
 			ritechoices+="Rune of Sun"
 		if(/datum/patron/divine/noc)
@@ -88,8 +88,8 @@
 			if(do_after(user, 30, src))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
 				new /obj/structure/ritualcircle/abyssor(step_turf)
-	/*	if("Rune of ZIZO")
+		if("Rune of ZIZO")
 			to_chat(user,span_cultsmall("I begin inscribing the rune of Her Knowledge..."))
 			if(do_after(user, 30, src))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
-				new /obj/structure/ritualcircle/zizo(step_turf) */
+				new /obj/structure/ritualcircle/zizo(step_turf)
