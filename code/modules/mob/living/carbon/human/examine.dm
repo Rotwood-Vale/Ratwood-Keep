@@ -52,7 +52,7 @@
 		obscure_name = FALSE
 
 	if(obscure_name)
-		. = list("<span class='info'>ø ------------ ø\nThis is <EM>Unknown</EM>.")
+		. = list(span_info("ø ------------ ø\nThis is <EM>Unknown</EM>."))
 	else
 		on_examine_face(user)
 		var/used_name = name
@@ -72,11 +72,11 @@
 			if(islatejoin)
 				is_returning = TRUE
 		if(display_as_wanderer)
-			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
+			. = list(span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name]."))
 		else if(used_title)
-			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [is_returning ? "returning " : ""][race_name] [used_title].")
+			. = list(span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the [is_returning ? "returning " : ""][race_name] [used_title]."))
 		else
-			. = list("<span class='info'>ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name].")
+			. = list(span_info("ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name]."))
 
 		if(GLOB.lord_titles[name])
 			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
