@@ -50,6 +50,7 @@
 	)
 
 /datum/virtue/utility/linguist/apply_to_human(mob/living/carbon/human/recipient)
+	recipient.change_stat("intelligence", 1)
 	addtimer(CALLBACK(src, .proc/linguist_apply, recipient), 50)
 
 /datum/virtue/utility/linguist/proc/linguist_apply(mob/living/carbon/human/recipient)
@@ -81,8 +82,6 @@
 				choices -= chosen_language
 				to_chat(recipient, span_info("I recall my knowledge of [chosen_language]..."))
 				count--
-
-	recipient.change_stat("intelligence", 1)
 
 /datum/virtue/utility/deathless
 	name = "Deathless"
