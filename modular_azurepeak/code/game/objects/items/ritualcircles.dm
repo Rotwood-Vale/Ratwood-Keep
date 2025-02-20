@@ -296,7 +296,7 @@
 	name = "Rune of Progress"
 	desc = "A Holy Rune of ZIZO"
 	var/materialrequirements = 0
-// icon_state = zizo_chalky
+// icon_state = zizo_chalky - when we have it.
 	var/zizorites = list("Rite of Armaments")
 
 /obj/structure/ritualcircle/zizo/attack_hand(mob/living/user)
@@ -322,11 +322,14 @@
 						//	icon_state = "zizo_active"
 							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
 							zizoarmaments(src)
-//							icon_state = zizo_chalky
+//							icon_state = zizo_chalky - whip these bad boys out when we actually have the sprites + add a spawn timer to set the chalk state back.
 
 /obj/structure/ritualcircle/zizo/proc/zizoarmaments(src)
 	var/ritualtargets = view(0, loc)
 	for(var/mob/living/carbon/human/target in ritualtargets)
+		if(!HAS_TRAIT(target, TRAIT_CABAL))
+			loc.visible_message(span_cult("THE RITE REJECTS ONE NOT OF THE CABAL"))
+			return
 		target.Stun(60)
 		target.Knockdown(60)
 		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
@@ -337,7 +340,8 @@
 			playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
 			target.equipOutfit(/datum/outfit/job/roguetown/darksteelrite)
 			target.apply_status_effect(/datum/status_effect/debuff/devitalised)
-			to_chat(target, span_purple("They are ignorant, backwards, without hope. You. You will be powerful."))
+			spawn(40)
+				to_chat(target, span_purple("They are ignorant, backwards, without hope. You. You will be powerful."))
 
 /datum/outfit/job/roguetown/darksteelrite/pre_equip(mob/living/carbon/human/H)
 	..()
