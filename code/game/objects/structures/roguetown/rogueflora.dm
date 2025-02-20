@@ -179,16 +179,31 @@
 	var/lumber = /obj/item/grown/log/tree/small
 
 /obj/structure/table/roguetree/stump/attackby(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/rogueweapon/shovel))
-		to_chat(user, "I start unearthing the stump...")
-		playsound(loc,'sound/items/dig_shovel.ogg', 100, TRUE)
-		if(do_after(user, 50))
-			user.visible_message("<span class='notice'>[user] unearths \the [src].</span>", \
-								"<span class='notice'>I unearth \the [src].</span>")
-			new lumber(get_turf(src))
-			obj_destruction("brute")
+	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount)
+		var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+		var/lumber_time = (120 - (skill_level * 15))
+		playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
+		if(!do_after(user, lumber_time, target = user))
+			return
+		lumber_amount = rand(lumber_amount, max(lumber_amount, round(skill_level / 2)))
+		var/essense_sound_played = FALSE //This is here so the sound wont play multiple times if the essense itself spawns multiple times
+		for(var/i = 0; i < lumber_amount; i++)
+			if(prob(skill_level + user.goodluck(2)))
+				new /obj/item/grown/log/tree/small/essence(get_turf(src))
+				if(!essense_sound_played)
+					essense_sound_played = TRUE
+					to_chat(user, span_warning("Dendor watches over us..."))
+					playsound(src,pick('sound/items/gem.ogg'), 100, FALSE)
+			else
+				new lumber(get_turf(src))
+		if(!skill_level)
+			to_chat(user, span_info("I could have gotten more timber were I more skilled..."))
+		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+		playsound(src, destroy_sound, 100, TRUE)
+		qdel(src)
+		return TRUE
 	else
-		. = ..()
+		..()
 
 /obj/structure/table/roguetree/stump/Initialize()
 	. = ..()
