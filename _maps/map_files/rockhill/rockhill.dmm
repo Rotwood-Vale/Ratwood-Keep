@@ -17974,6 +17974,7 @@
 /obj/item/key/bog_master,
 /obj/item/ammo_holder/bullet/lead,
 /obj/item/powderflask,
+/obj/item/gun/ballistic/firearm/handgonne,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "jmQ" = (
@@ -35793,6 +35794,9 @@
 /obj/item/ammo_holder/bullet/lead,
 /obj/item/ammo_holder/bullet/lead,
 /obj/item/ammo_holder/bullet/lead,
+/obj/item/gun/ballistic/firearm/arquebus,
+/obj/item/gun/ballistic/firearm/arquebus,
+/obj/item/gun/ballistic/firearm/arquebus,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "sTg" = (
