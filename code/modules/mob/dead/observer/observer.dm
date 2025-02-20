@@ -16,7 +16,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	invisibility = INVISIBILITY_OBSERVER
 	hud_type = /datum/hud/ghost
-	movement_type = GROUND | FLYING
+	movement_type = GROUND | FLYING | UNSTOPPABLE
 	var/draw_icon = FALSE
 	light_system = MOVABLE_LIGHT
 	light_range = 1
@@ -81,31 +81,10 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	alpha = 100
 
 /mob/dead/observer/rogue/Move(n, direct)
-	if(world.time < next_gmove)
+	if(world.time < next_move)
 		return
-	next_gmove = world.time + 3
-	var/turf/T = n
-
+	next_move = world.time + 3
 	setDir(direct)
-
-	if(!loc.Exit(src, T))
-		return
-
-	if(istype(T))
-		if(T.density)
-			return
-		for(var/obj/structure/O in T)
-/*			if(istype(O, /obj/structure/fluff/psycross))
-				go2hell()
-				next_gmove = world.time + 30
-				return*/
-			if(O.density && !O.climbable)
-				if(!misting)
-					return
-		for(var/obj/item/reagent_containers/powder/salt/S in T)
-//			go2hell()
-//			next_gmove = world.time + 30
-			return
 	. = ..()
 
 /mob/dead/observer/screye
@@ -389,6 +368,9 @@ Works together with spawning an observer, noted above.
 		ghost = new /mob/dead/observer/rogue(src)
 	if(!admin)
 		ghost.add_client_colour(/datum/client_colour/monochrome)
+		if(!iscarbon(src)) // Brainnnzz
+			ghost.icon = icon
+			ghost.icon_state = icon_state
 	ghost.ghostize_time = world.time
 	SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
 	ghost.can_reenter_corpse = can_reenter_corpse
@@ -488,8 +470,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(usr, span_warning("Another consciousness is in my body... It is resisting me."))
 		return
 	if("undead" in mind.current.faction)
-		to_chat(usr, span_warning("ZIZO has puppeted my body."))
-		return
+		if(is_antag_banned(key, "Deadite"))
+			to_chat(usr, span_warning("ZIZO has puppeted my body."))
+			return
 //	stop_all_loops()
 	SSdroning.kill_rain(src.client)
 	SSdroning.kill_loop(src.client)

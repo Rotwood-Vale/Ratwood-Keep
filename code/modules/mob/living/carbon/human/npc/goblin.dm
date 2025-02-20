@@ -241,11 +241,6 @@
 			equipOutfit(O)
 
 /datum/component/rot/corpse/goblin/process()
-	var/amt2add = 10 //1 second
-	if(last_process)
-		amt2add = ((world.time - last_process)/10) * amt2add
-	last_process = world.time
-	amount += amt2add
 	var/mob/living/carbon/C = parent
 	if(!C)
 		qdel(src)
@@ -254,12 +249,12 @@
 		qdel(src)
 		return
 	var/should_update = FALSE
-	if(amount > 20 MINUTES)
+	if(time_of_death + 20 MINUTES < world.time)
 		for(var/obj/item/bodypart/B in C.bodyparts)
 			if(!B.skeletonized)
 				B.skeletonized = TRUE
 				should_update = TRUE
-	else if(amount > 12 MINUTES)
+	else if(time_of_death + 12 MINUTES < world.time)
 		for(var/obj/item/bodypart/B in C.bodyparts)
 			if(!B.rotted)
 				B.rotted = TRUE
@@ -269,11 +264,11 @@
 				if(istype(T))
 					T.pollute_turf(/datum/pollutant/rot, 10)
 	if(should_update)
-		if(amount > 20 MINUTES)
+		if(time_of_death + 20 MINUTES < world.time)
 			C.update_body()
 			qdel(src)
 			return
-		else if(amount > 12 MINUTES)
+		else if(time_of_death + 12 MINUTES < world.time)
 			C.update_body()
 
 /////

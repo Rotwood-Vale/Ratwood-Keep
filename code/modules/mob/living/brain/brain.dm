@@ -6,6 +6,8 @@
 	see_invisible = SEE_INVISIBLE_LIVING
 	base_intents = list(INTENT_HELP, INTENT_HARM) //for mechas
 	speech_span = SPAN_ROBOT
+	icon_state = "brain"
+	icon = 'icons/obj/surgery.dmi'
 
 /mob/living/brain/Initialize()
 	. = ..()
@@ -30,7 +32,7 @@
 		if(mind)	//You aren't allowed to return to brains that don't exist
 			mind.current = null
 		testing("BASEDLOL ")
-		ghostize(drawskip=TRUE)		//Ghostize checks for key so nothing else is necessary.
+		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	return ..()
 
 /mob/living/brain/update_mobility()
