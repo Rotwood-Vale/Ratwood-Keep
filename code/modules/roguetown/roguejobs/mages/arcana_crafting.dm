@@ -3,6 +3,7 @@
 	tools = list()
 	skillcraft = /datum/skill/magic/arcane
 	subtype_reqs = TRUE
+	xpgain = FALSE
 
 /datum/crafting_recipe/roguetown/arcana/amethyst
 	name = "amythortz"
