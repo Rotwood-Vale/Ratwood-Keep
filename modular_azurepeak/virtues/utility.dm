@@ -42,49 +42,47 @@
 	name = "Intellectual"
 	desc = "I've spent my life surrounded by various books or sophisticated foreigners, be it through travel or other fortunes beset on my life. I've picked up several tongues and wits, and keep a journal closeby. I can tell people's exact prowess.(+1 INT, 3 Languages, Stashed Book, Ability to Assess)"
 	added_traits = list(TRAIT_INTELLECTUAL)
+	added_skills = list(list(/datum/skill/misc/reading, 3, 6))
+	added_stashed_items = list(
+		"Quill" = /obj/item/natural/feather,
+		"Scroll" = /obj/item/paper/scroll,
+		"Book" = /obj/item/book/rogue/playerbook
+	)
 
 /datum/virtue/utility/linguist/apply_to_human(mob/living/carbon/human/recipient)
-    addtimer(CALLBACK(src, .proc/linguist_apply, recipient), 50)
+	addtimer(CALLBACK(src, .proc/linguist_apply, recipient), 50)
 
 /datum/virtue/utility/linguist/proc/linguist_apply(mob/living/carbon/human/recipient)
-    var/static/list/selectable_languages = list(
-        /datum/language/elvish,
-        /datum/language/dwarvish,
-        /datum/language/orcish, 
-        /datum/language/hellspeak,
-        /datum/language/draconic,
-        /datum/language/celestial,
-        /datum/language/grenzelhoftian
-    )
-    
-    var/list/choices = list()
-    for(var/language_type in selectable_languages)
-        if(recipient.has_language(language_type))
-            continue
-        var/datum/language/a_language = new language_type()
-        choices[a_language.name] = language_type
-    
-    if(!length(choices))
-        return // no new languages to learn - we probably picked archivist
-        
-    var/lang_count = 3
-    var/count = lang_count
-    for(var/i in 1 to lang_count)
-        var/chosen_language = input(recipient, "Choose your extra spoken language.", "VIRTUE: [count] LEFT") as null|anything in choices
-        if(chosen_language)
-            var/language_type = choices[chosen_language]
-            recipient.grant_language(language_type)
-            choices -= chosen_language
-            to_chat(recipient, span_info("I recall my knowledge of [chosen_language]..."))
-            count--
-            
-    recipient.change_stat("intelligence", 1)
-    added_skills = list(list(/datum/skill/misc/reading, 3, 6))
-    added_stashed_items = list(
-        "Quill" = /obj/item/natural/feather,
-        "Scroll" = /obj/item/paper/scroll,
-        "Book" = /obj/item/book/rogue/playerbook
-    )
+	var/static/list/selectable_languages = list(
+		/datum/language/elvish,
+		/datum/language/dwarvish,
+		/datum/language/orcish, 
+		/datum/language/hellspeak,
+		/datum/language/draconic,
+		/datum/language/celestial,
+		/datum/language/grenzelhoftian
+	)
+		
+	var/list/choices = list()
+	for(var/language_type in selectable_languages)
+		if(recipient.has_language(language_type))
+			continue
+		var/datum/language/a_language = new language_type()
+		choices[a_language.name] = language_type
+
+	if(length(choices))	//If this isn't true then we have no new languages learn -- we probably picked archivist
+		var/lang_count = 3
+		var/count = lang_count
+		for(var/i in 1 to lang_count)
+			var/chosen_language = input(recipient, "Choose your extra spoken language.", "VIRTUE: [count] LEFT") as null|anything in choices
+			if(chosen_language)
+				var/language_type = choices[chosen_language]
+				recipient.grant_language(language_type)
+				choices -= chosen_language
+				to_chat(recipient, span_info("I recall my knowledge of [chosen_language]..."))
+				count--
+
+	recipient.change_stat("intelligence", 1)
 
 /datum/virtue/utility/deathless
 	name = "Deathless"
