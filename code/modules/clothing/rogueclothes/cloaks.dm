@@ -30,6 +30,7 @@
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
 	var/picked
+	var/overarmor = TRUE
 
 /obj/item/clothing/cloak/abyssortabard
 	name = "abyssorite tabard"
@@ -43,6 +44,17 @@
 	boobed = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
+	var/overarmor = TRUE
+
+/obj/item/clothing/cloak/abyssortabard/MiddleClick(mob/user)
+	overarmor = !overarmor
+	to_chat(user, span_info("I [overarmor ? "wear the tabard over my armor" : "wear the tabard under my armor"]."))
+	if(overarmor)
+		alternate_worn_layer = TABARD_LAYER
+	else
+		alternate_worn_layer = UNDER_ARMOR_LAYER
+	user.update_inv_cloak()
+	user.update_inv_armor()
 
 /obj/item/clothing/cloak/psydontabard
 	name = "psydonian tabard"
@@ -57,6 +69,7 @@
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
 	var/open_wear = FALSE
+	var/overarmor = TRUE
 
 /obj/item/clothing/cloak/psydontabard/alt
 	name = "opened psydonian tabard"
@@ -66,6 +79,18 @@
 	item_state = "psydontabardalt"
 	flags_inv = HIDECROTCH
 	open_wear = TRUE
+
+
+/obj/item/clothing/cloak/psydontabard/MiddleClick(mob/user) 
+	overarmor = !overarmor
+	to_chat(user, span_info("I [overarmor ? "wear the tabard over my armor" : "wear the tabard under my armor"]."))
+	if(overarmor)
+		alternate_worn_layer = TABARD_LAYER
+	else
+		alternate_worn_layer = UNDER_ARMOR_LAYER
+	user.update_inv_cloak()
+	user.update_inv_armor()
+	user.update_inv_shirt()
 
 /obj/item/clothing/cloak/psydontabard/attack_right(mob/user)
 	switch(open_wear)
@@ -102,6 +127,18 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/cloak/tabard/MiddleClick(mob/user)
+	overarmor = !overarmor
+	to_chat(user, span_info("I [overarmor ? "wear the tabard over my armor" : "wear the tabard under my armor"]."))
+	if(overarmor)
+		alternate_worn_layer = TABARD_LAYER
+	else
+		alternate_worn_layer = UNDER_ARMOR_LAYER
+	user.update_inv_cloak()
+	user.update_inv_armor()
+
+
 
 /obj/item/clothing/cloak/tabard/attack_right(mob/user)
 	if(picked)
@@ -379,6 +416,17 @@
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
 	var/picked
+	var/overarmor = TRUE
+
+/obj/item/clothing/cloak/stabard/MiddleClick(mob/user) 
+	overarmor = !overarmor
+	to_chat(user, span_info("I [overarmor ? "wear the tabard over my armor" : "wear the tabard under my armor"]."))
+	if(overarmor)
+		alternate_worn_layer = TABARD_LAYER
+	else
+		alternate_worn_layer = UNDER_ARMOR_LAYER
+	user.update_inv_cloak()
+	user.update_inv_armor()
 
 /obj/item/clothing/cloak/stabard/attack_right(mob/user)
 	if(picked)
@@ -1126,6 +1174,9 @@
 	color = null
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
+/obj/item/clothing/cloak/templar
+	var/overarmor = TRUE
+
 /obj/item/clothing/cloak/templar/psydon
 	name = "psydon tabard"
 	desc = "An outer garment commonly worn by soldiers. This one has the symbol of Psydon on it."
@@ -1302,6 +1353,16 @@
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	
+/obj/item/clothing/cloak/templar/MiddleClick(mob/user) 
+	overarmor = !overarmor
+	to_chat(user, span_info("I [overarmor ? "wear the tabard over my armor" : "wear the tabard under my armor"]."))
+	if(overarmor)
+		alternate_worn_layer = TABARD_LAYER
+	else
+		alternate_worn_layer = UNDER_ARMOR_LAYER
+	user.update_inv_cloak()
+	user.update_inv_armor()
 
 /obj/item/clothing/cloak/templar/eora
 	name = "eora tabard"
