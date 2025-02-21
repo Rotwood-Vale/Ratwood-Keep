@@ -3,7 +3,7 @@
 	flag = GRABBER
 	department_flag = MERCENARIES
 	faction = "Station"
-	total_positions = 0
+	total_positions = 0 //replaced by ruma clan
 	spawn_positions = 0
 
 	allowed_races = RACES_VERY_SHUNNED_UP
