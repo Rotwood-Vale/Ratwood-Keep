@@ -7,8 +7,8 @@
 		return thing
 	return null
 
-#define MAX_TOY_SIZE WEIGHT_CLASS_HUGE
-#define MAX_INSERT_SIZE WEIGHT_CLASS_BULKY
+#define MAX_TOY_SIZE WEIGHT_CLASS_BULKY
+#define MAX_INSERT_SIZE WEIGHT_CLASS_NORMAL
 
 /proc/get_funobject_in_hand(mob/living/user)
 	var/obj/item/thing = user.get_active_held_item()
