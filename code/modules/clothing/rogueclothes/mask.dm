@@ -129,6 +129,9 @@
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/dropped(mob/living/carbon/human/user)
 	. = ..()
+	REMOVE_TRAIT(user, TRAIT_PACIFISM, "cursedmask")
+	REMOVE_TRAIT(user, TRAIT_SPELLCOCKBLOCK, "cursedmask")
+	REMOVE_TRAIT(user, TRAIT_CRITICAL_WEAKNESS, "cursedmask")
 	if(QDELETED(src))
 		return
 	qdel(src)
@@ -139,14 +142,10 @@
 		return
 	else if(slot == SLOT_WEAR_MASK)
 		active_item = TRUE
-		to_chat(user, span_warning("This accursed mask saps the energy from my body..."))
-		user.change_stat("strength", -4)
-		user.change_stat("constitution", -4)
-		user.change_stat("endurance", -4)
-		user.change_stat("speed", -4)
-		user.change_stat("perception", -4)
-		user.change_stat("intelligence", -4)
-		user.change_stat("fortune", -4)
+		to_chat(user, span_warning("This accursed mask pacifies me!"))
+		ADD_TRAIT(user, TRAIT_PACIFISM, "cursedmask")
+		ADD_TRAIT(user, TRAIT_SPELLCOCKBLOCK, "cursedmask")
+		ADD_TRAIT(user, TRAIT_CRITICAL_WEAKNESS, "cursedmask")
 	return
 
 /obj/item/clothing/mask/rogue/facemask/steel

@@ -241,8 +241,8 @@
 /obj/structure/chair/arrestchair
 	name = "POENA"
 	desc = "A chair-esque machine that collects bounties, for a greater reward, in exchange for a penalty that some might consider worse than death."
-	icon = 'icons/obj/chairs.dmi'
-	icon_state = "brass_chair"
+	icon = 'icons/roguetown/misc/machines.dmi'
+	icon_state = "evilchair"
 	blade_dulling = DULLING_BASH
 	item_chair = null
 	anchored = TRUE
