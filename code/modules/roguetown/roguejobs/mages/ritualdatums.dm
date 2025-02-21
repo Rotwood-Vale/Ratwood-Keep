@@ -193,8 +193,8 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 			sac_stack.use(how_much_to_use)
 			continue
 
-		if(istype(sacrificed, /obj/item/reagent_containers))
-			var/obj/item/reagent_containers/RC = sacrificed
+		if(istype(sacrificed, /obj/item/reagent_containers/glass))
+			var/obj/item/reagent_containers/glass/RC = sacrificed
 			for(var/req_type in required_atoms)
 				var/amount = required_atoms[req_type]
 				if (RC.reagents.has_reagent(req_type, amount))
