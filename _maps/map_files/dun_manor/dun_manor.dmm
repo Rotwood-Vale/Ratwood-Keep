@@ -15283,6 +15283,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
+/obj/item/roguebin/water,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/outdoors/mountains)
 "lUr" = (
@@ -18325,7 +18326,7 @@
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town/tavern)
 "ohR" = (
-/obj/item/roguebin/water,
+/obj/structure/fluff/clock,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/outdoors/mountains)
 "oim" = (
