@@ -1,5 +1,5 @@
 /datum/job/roguetown/rumacaptain
-	title = "Ruma-Clan Captain"
+	title = "Ruma Captain"
 	flag = RUMACAPTAIN
 	department_flag = RUMACLAN
 	faction = "Station"
