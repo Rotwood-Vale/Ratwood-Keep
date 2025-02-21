@@ -295,7 +295,6 @@
 /obj/structure/ritualcircle/zizo
 	name = "Rune of Progress"
 	desc = "A Holy Rune of ZIZO"
-	var/materialrequirements = 0
 // icon_state = zizo_chalky - when we have it.
 	var/zizorites = list("Rite of Armaments")
 
