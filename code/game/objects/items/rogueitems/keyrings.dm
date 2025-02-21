@@ -107,7 +107,7 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/storage/keyring/marshal
-	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor)
+	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/knight)
 
 /obj/item/storage/keyring/councillor
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon,  /obj/item/key/manor)
@@ -131,7 +131,7 @@
 	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
 
 /obj/item/storage/keyring/captain
-	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
+	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls, /obj/item/key/knight)
 
 /obj/item/storage/keyring/dungeoneer
 	keys = list(/obj/item/key/keep_dungeon, /obj/item/key/keep_dungeon_torture, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/bog_gatehouse, /obj/item/key/manor, /obj/item/key/keep_barracks)
@@ -140,7 +140,7 @@
 	keys = list(/obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
 
 /obj/item/storage/keyring/knight
-	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
+	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls, /obj/item/key/knight)
 
 /obj/item/storage/keyring/mayor
 	keys = list(/obj/item/key/mayor, /obj/item/key/blacksmith/town, /obj/item/key/farm, /obj/item/key/butcher)

@@ -464,6 +464,12 @@
 	icon_state = "spikekey"
 	lockid = "keep_armory"
 
+/obj/item/key/knight
+	name = "knight key"
+	desc = "This key opens the knight rooms."
+	icon_state = "spikekey"
+	lockid = "knight"
+
 //grenchensnacker
 /obj/item/key/porta
 	name = "strange key"
