@@ -32,6 +32,76 @@
 	max_storage = 10
 	ammo_type = list(/obj/item/ammo_casing) //common denominator type for runelock and arquebus bullets
 
+//scabbards 
+/obj/item/ammo_holder/quiver/mulyeog
+	name = "simple scabard"
+	icon_state = "simplescab0"
+	item_state = "simplescab"
+	desc = "A piece of steel lined with wood. Great for batting away blows."
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
+	max_storage = 1
+	ammo_type = list (/obj/item/rogueweapon/sword/sabre/mulyeog, /obj/item/rogueweapon/sword/sabre/mulyeog/mentor)
+	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
+	sharpness = IS_BLUNT
+	wlength = WLENGTH_SHORT
+	resistance_flags = FLAMMABLE
+	can_parry = TRUE
+	wdefense = 9
+	var/coverage = 10
+	parrysound = "parrywood"
+	attacked_sound = "parrywood"
+	max_integrity = 150
+	blade_dulling = DULLING_BASHCHOP
+	anvilrepair = /datum/skill/craft/blacksmithing
+	COOLDOWN_DECLARE(shield_bang)
+	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/ammo_holder/mulyeog/rumahench
+	name = "lentincular scabard"
+	icon_state = "steelscab0"
+	item_state = "steelscab"
+	desc = "A cloud-patterned scabard with a cloth sash. Somewhat fragile."
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
+	max_storage = 1
+	ammo_type = list (/obj/item/rogueweapon/sword/sabre/mulyeog)
+	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
+	sharpness = IS_BLUNT
+	wlength = WLENGTH_SHORT
+	resistance_flags = FLAMMABLE
+	can_parry = TRUE
+	wdefense = 9
+	var/coverage = 10
+	parrysound = "parrywood"
+	attacked_sound = "parrywood"
+	max_integrity = 100
+	blade_dulling = DULLING_BASHCHOP
+	anvilrepair = /datum/skill/craft/blacksmithing
+	COOLDOWN_DECLARE(shield_bang)
+	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/ammo_holder/mulyeog/rumahcaptain
+	name = "gold-stained scabard"
+	icon_state = "goldscab0"
+	item_state = "goldscab1"
+	desc = "An ornate, wooden scabbard with a sash. Kind-of fragile."
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
+	max_storage = 1
+	ammo_type = list (/obj/item/rogueweapon/sword/sabre/mulyeog)
+	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
+	sharpness = IS_BLUNT
+	wlength = WLENGTH_SHORT
+	resistance_flags = FLAMMABLE
+	can_parry = TRUE
+	wdefense = 9
+	var/coverage = 10
+	parrysound = "parrywood"
+	attacked_sound = "parrywood"
+	max_integrity = 100
+	blade_dulling = DULLING_BASHCHOP
+	anvilrepair = /datum/skill/craft/blacksmithing
+	COOLDOWN_DECLARE(shield_bang)
+	w_class = WEIGHT_CLASS_BULKY
+
 /obj/item/ammo_holder/quiver/attack_turf(turf/T, mob/living/user)
 	if(ammo.len >= max_storage)
 		to_chat(user, span_warning("Your [src.name] is full!"))

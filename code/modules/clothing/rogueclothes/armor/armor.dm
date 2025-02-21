@@ -1088,3 +1088,83 @@
 	icon_state = "corset"
 	armor_class = ARMOR_CLASS_LIGHT
 	body_parts_covered = CHEST
+
+/obj/item/clothing/suit/roguetown/armor/eastsuit1
+	name = "old dobo robe"
+	desc = "You are no warrior."
+	icon_state = "eastsuit1"
+	item_state = "eastsuit1"
+	blocksound = SOFTHIT
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	armor = list("blunt" = 70, "slash" = 65, "stab" = 65, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	nodismemsleeves = TRUE
+	body_parts_covered = CHEST|GROIN|VITALS
+	max_integrity = 300 
+	sellprice = 25
+	armor_class = ARMOR_CLASS_LIGHT
+	sewrepair = TRUE
+	allowed_race = NON_DWARVEN_RACE_TYPES //can't afford dwarf sprites - og plan was to exclude small races from these roles anyways
+	flags_inv = HIDEBOOB|HIDECROTCH
+
+/obj/item/clothing/suit/roguetown/armor/eastsuit2
+	name = "decorated dobo robe"
+	desc = "A dobo robe with a red tassel. Leather inlays are sewn in."
+	icon_state = "eastsuit2"
+	item_state = "eastsuit2"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	blocksound = SOFTHIT
+	armor = list("blunt" = 60, "slash" = 50, "stab" = 50, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
+	nodismemsleeves = TRUE
+	max_integrity = 250
+	sellprice = 20
+	armor_class = ARMOR_CLASS_LIGHT
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	flags_inv = HIDEBOOB|HIDECROTCH
+
+
+/obj/item/clothing/suit/roguetown/armor/eastsuit3
+	name = "simple dobo robe"
+	desc = "A dirty dobo robe with white lapels."
+	icon_state = "eastsuit3"
+	item_state = "eastsuit3"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	body_parts_covered = CHEST|GROIN|VITALS
+	armor = list("blunt" = 50, "slash" = 35, "stab" = 40, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
+	nodismemsleeves = TRUE
+	max_integrity = 175
+	sellprice = 20
+	armor_class = ARMOR_CLASS_LIGHT
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	flags_inv = HIDEBOOB|HIDECROTCH
+
+
+/obj/item/clothing/suit/roguetown/armor/eastsuit4
+	name = "foreign robes"
+	desc = "Flower-styled robes You are the Captain."
+	icon_state = "eastsuit4"
+	item_state = "eastsuit4"
+	blocksound = SOFTHIT
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	armor = list("blunt" = 70, "slash" = 65, "stab" = 65, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	nodismemsleeves = TRUE
+	body_parts_covered = CHEST|GROIN|VITALS
+	max_integrity = 300 
+	sellprice = 25
+	armor_class = ARMOR_CLASS_LIGHT
+	sewrepair = TRUE
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	flags_inv = HIDEBOOB|HIDECROTCH

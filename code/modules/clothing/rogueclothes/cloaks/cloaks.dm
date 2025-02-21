@@ -1456,3 +1456,33 @@
 	inhand_mod = FALSE
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	flags_inv = HIDECROTCH|HIDEBOOB
+
+//eastern update
+
+/obj/item/clothing/cloak/eastcloak1
+	name = "cloud-cutter's cloak"
+	desc = "A brown cloak with white swirls. This denotes the rank of a Ruma Clan Enforcer, or Kyodai."
+	color = null
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+	icon_state = "eastcloak1"
+	item_state = "eastcloak1"
+	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
+	nodismemsleeves = TRUE
+	inhand_mod = FALSE
+	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
+/obj/item/clothing/cloak/eastcloak2
+	name = "leather cloak"
+	desc = "A brown cloak. This denotes the lowest rank of a Ruma Clan Member - a Wakashu."
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+	color = null
+	icon_state = "eastcloak2"
+	item_state = "eastcloak2"
+	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
+	nodismemsleeves = TRUE
+	inhand_mod = FALSE
+	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
+	allowed_race = NON_DWARVEN_RACE_TYPES

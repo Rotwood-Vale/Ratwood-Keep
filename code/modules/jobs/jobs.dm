@@ -180,6 +180,18 @@ GLOBAL_LIST_INIT(roguefight_positions, list(
 	"Green Fighter",
 ))
 
+GLOBAL_LIST_INIT(mulyeog_positions, list(
+	"Mentor",
+	"Bunsu",
+	"Salsu",
+))
+
+GLOBAL_LIST_INIT(rumaclan_positions, list(
+	"Captain",
+	"Kyodai",
+	"Wakashu",
+))
+
 GLOBAL_LIST_INIT(test_positions, list(
 	"Tester",
 ))
@@ -196,6 +208,8 @@ GLOBAL_LIST_INIT(job_assignment_order, get_job_assignment_order())
 	sorting_order += GLOB.yeoman_positions
 	sorting_order += GLOB.peasant_positions
 	sorting_order += GLOB.youngfolk_positions
+	sorting_order += GLOB.mulyeog_positions
+	sorting_order += GLOB.rumaclan_positions
 	sorting_order += GLOB.mercenary_positions
 	sorting_order += GLOB.foreigner_positions
 	return sorting_order

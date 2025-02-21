@@ -223,6 +223,11 @@
 /obj/item/storage/keyring/harbormaster
 	keys = list(/obj/item/key/harbor, /obj/item/key/ship,)
 
+/obj/item/storage/keyring/mentor
+	keys = list(/obj/item/key/mentor, /obj/item/key/ship)
+
+/obj/item/storage/keyring/mulyeog
+	keys = list(/obj/item/key/ship)
 
 /obj/item/lockpickring
 	name = "lockpickring"

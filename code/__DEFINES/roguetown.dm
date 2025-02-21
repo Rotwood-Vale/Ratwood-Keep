@@ -165,6 +165,15 @@
 	/datum/species/goblin/moon,\
 )
 
+//non-dwarfs, restricted furries - primarily used for eastern update since stats can get really weird considering easy access to stat-drugs
+#define EAST_GRONN_TYPES list(\
+	/datum/species/human/northern,\
+	/datum/species/human/halfelf,\
+	/datum/species/elf/wood,\
+	/datum/species/tieberian,\
+	/datum/species/aasimar,\
+	/datum/species/demihuman,\
+)
 
 #define RACES_WITH_BEARD_GROWTH list(\
 	/datum/species/human/northern,\

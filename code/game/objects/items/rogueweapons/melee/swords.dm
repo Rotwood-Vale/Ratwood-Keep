@@ -850,3 +850,36 @@
 		if(istype(I))
 			I.afterchange()
 	update_icon()
+
+	//eastern-gronn update below
+
+/obj/item/rogueweapon/sword/sabre/mulyeog
+	force = 25
+	name = "foreign straight sword"
+	desc = "A foreign sword used by cut-throats & thugs. There's a red tassel on the hilt."
+	icon_state = "eastsword1"
+	smeltresult = /obj/item/ingot/steel
+	max_integrity = 205
+	wdefense = 5
+
+/obj/item/rogueweapon/sword/sabre/mulyeog/mentor
+	force = 30
+	name = "mentor's blade"
+	desc = "A foreign sword once used by Eastern-Gronn bodyguards. There's an old red tassel on the hilt."
+	icon_state = "eastsword1"
+	max_integrity = 30
+	wdefense = 8
+
+/obj/item/rogueweapon/sword/sabre/mulyeog/rumahench
+	name = "lenticular straight sword"
+	desc = "A steel sword with cloud patterns on the groove. Obey the Captain."
+	icon_state = "eastsword2"
+	wdefense = 0
+
+/obj/item/rogueweapon/sword/sabre/mulyeog/rumacaptain
+	force = 30
+	name = "Kokuuntō"
+	desc = "A gold-stained sword that proves your worth as 38th Captain of the Ruma Clan."
+	icon_state = "eastsword3"
+	max_integrity = 30
+	wdefense = 8
