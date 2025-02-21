@@ -504,13 +504,14 @@
 
 
 /mob/living/simple_animal/hostile/proc/EscapeConfinement()
-	if(buckled)
-		buckled.attack_animal(src)
-	if(!targets_from.loc)
-		return
-	if(!isturf(targets_from.loc))//Did someone put us in something?
-		var/atom/A = targets_from.loc
-		A.attack_animal(src)//Bang on it till we get out
+	if(targets_from)
+		if(buckled)
+			buckled.attack_animal(src)
+		if(!targets_from.loc)
+			return
+		if(!isturf(targets_from.loc))//Did someone put us in something?
+			var/atom/A = targets_from.loc
+			A.attack_animal(src)//Bang on it till we get out
 
 
 /mob/living/simple_animal/hostile/proc/FindHidden()

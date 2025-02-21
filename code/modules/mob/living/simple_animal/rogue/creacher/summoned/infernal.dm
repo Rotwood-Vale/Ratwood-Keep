@@ -1,8 +1,24 @@
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/AIShouldSleep(list/possible_targets)
+	if(!FindTarget(possible_targets, 1))
+		addtimer(CALLBACK(src,PROC_REF(despawncheck)), del_on_deaggro)
+		return TRUE
+	else
+		return FALSE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/proc/despawncheck()
+	if(AIStatus == AI_IDLE)
+		new /obj/effect/particle_effect/smoke/bad(src.loc)
+		src.visible_message(span_notice("[src] returns to it's plane of origin."))
+		dropcomponents()
+		qdel(src)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/Initialize()
 	. = ..()
 	ADD_TRAIT(src,TRAIT_NOFIRE, "[type]")
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_DARKVISION_BETTER, TRAIT_GENERIC)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/Life()
 	..()
 	if(pulledby)
@@ -125,6 +141,10 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/Initialize()
 	. = ..()
 
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/obsidian(leavespot)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/death(gibbed)
 	..()
 	var/turf/deathspot = get_turf(src)
@@ -175,7 +195,7 @@
 	melee_damage_upper = 17
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
@@ -201,6 +221,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/Initialize()
 	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t1(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/death(gibbed)
 	..()
@@ -256,7 +280,7 @@
 	melee_damage_upper = 30
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 4
 	minimum_distance = 3
@@ -301,6 +325,10 @@
 	if(patience)
 		GainPatience()
 
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t2(leavespot)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/death(gibbed)
 	..()
 	var/turf/deathspot = get_turf(src)
@@ -342,7 +370,7 @@
 	melee_damage_upper = 30
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_WALLS
 	simple_detect_bonus = 20
 	retreat_distance = 4
 	minimum_distance = 4
@@ -371,6 +399,10 @@
 	var/summon_cd = 0
 	summon_primer = "You are fiend, a large sized demon from the infernal plane. You have imps and hounds at your beck and call, able to do whatever you wished. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 	tier = 4
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t3(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/death(gibbed)
 	..()
