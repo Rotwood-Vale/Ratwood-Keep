@@ -3,8 +3,8 @@
 	flag = HARBORMASTER
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0 //replaced by lineage
+	spawn_positions = 0
 	allowed_races = list(/datum/species/axian, /datum/species/human/northern, /datum/species/lizardfolk)
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)

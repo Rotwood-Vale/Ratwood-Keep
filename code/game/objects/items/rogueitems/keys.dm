@@ -511,6 +511,12 @@
 	icon_state = "spikekey"
 	lockid = "harbor"
 
+// Mentor Key
+/obj/item/key/mentor
+	name = "mentor key"
+	desc = "This iron key opens the Mulyeong Lineage Mentor's office."
+	icon_state = "rustkey"
+	lockid = "mentor"
 //Shop Keys
 /obj/item/key/portshop
 	name = "port shop key"
