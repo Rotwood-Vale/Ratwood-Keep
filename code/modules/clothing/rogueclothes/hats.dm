@@ -561,7 +561,6 @@
 	name = "helmet"
 	desc = "A helmet that doesn't get any more simple in design."
 	body_parts_covered = HEAD|HAIR|NOSE
-	flags_inv = HIDESNOUT
 	icon_state = "nasal"
 	sleevetype = null
 	sleeved = null
@@ -574,7 +573,6 @@
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT
 	max_integrity = 200
-	
 	grid_height = 64
 	grid_width = 64
 
@@ -757,7 +755,7 @@
 			block2add = null
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEFACE
+			flags_inv = HIDEFACE|HIDESNOUT
 			if(user)
 				if(ishuman(user))
 					var/mob/living/carbon/H = user
