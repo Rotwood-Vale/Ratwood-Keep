@@ -24,6 +24,7 @@
 	var/static/list/selectable_colors = list(
   		"Scrape Off Coating" = "#ffffff",
 		"Burn With Oil" = "#5f5f5f",
+		"Burn with Natural Oil" = "#757474",
 		"Low" = "#f9d083",
 		"Medium" = "#6f6398",
 		"Medium-Hot" = "#6c7ca8",
