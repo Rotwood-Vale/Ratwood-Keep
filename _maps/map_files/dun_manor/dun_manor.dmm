@@ -4215,6 +4215,7 @@
 "dgf" = (
 /obj/structure/bed/rogue/inn/wool,
 /obj/item/bedsheet/rogue/pelt,
+/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
 "dhs" = (
@@ -6766,6 +6767,11 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
+"fja" = (
+/obj/structure/bed/rogue/inn/wool,
+/obj/item/bedsheet/rogue/pelt,
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town)
 "fjm" = (
 /obj/machinery/light/rogue/lanternpost{
 	dir = 1
@@ -31161,12 +31167,6 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town)
-"ybV" = (
-/obj/structure/bed/rogue/inn/wool,
-/obj/item/bedsheet/rogue/pelt,
-/obj/machinery/light/rogue/wallfire/candle/r,
-/turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
 "ycm" = (
 /obj/structure/stairs/stone,
@@ -58560,8 +58560,8 @@ bxn
 bxn
 inM
 fNg
-klC
-klC
+gog
+gog
 ymg
 cHT
 ymg
@@ -59032,7 +59032,7 @@ bxn
 inM
 fNg
 gog
-klC
+gog
 ymg
 cHT
 ymg
@@ -82432,9 +82432,9 @@ tXZ
 tXZ
 tXZ
 mbj
-dgf
+fja
 ugB
-ybV
+dgf
 eSe
 eGy
 mbj
