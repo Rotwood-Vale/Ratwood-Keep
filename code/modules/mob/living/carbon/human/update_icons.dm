@@ -1653,7 +1653,7 @@ generate/load female uniform sprites matching all previously decided variables
 	var/racecustom
 	if(dna.species.custom_clothes)
 		racecustom = dna.species.clothes_id
-	var/index = "[I.icon_state][((gender == FEMALE && !dna.species.use_m)|| dna.species.use_f) ? "_f" : ""][racecustom ? "_[racecustom]" : ""]"
+	var/index = "[I.sleeves_state_override ? I.sleeves_state_override : I.icon_state][((gender == FEMALE && !dna.species.use_m)|| dna.species.use_f) ? "_f" : ""][racecustom ? "_[racecustom]" : ""]"
 	var/static/list/bloody_r = list()
 	var/static/list/bloody_l = list()
 	if(I.nodismemsleeves && sleeveindex) //armor pauldrons that show up above arms but don't get dismembered
