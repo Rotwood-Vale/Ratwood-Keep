@@ -30,9 +30,9 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/mercenary_boss
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	neck = /obj/item/clothing/neck/roguetown/bervor
+	neck = /obj/item/clothing/neck/roguetown/bervor/grenzel
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft //Gives them back this so they can color again.
-	head = /obj/item/clothing/head/roguetown/grenzelhofthat
+	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/grenzel
 	armor = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass/hardened //Buffs this to instead be like a chainmaille and cuirass together
 	pants = /obj/item/clothing/under/roguetown/blacksteel/platelegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
@@ -40,6 +40,8 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/sword/long/rider/messer
 
+	backpack_contents = list(/obj/item/clothing/head/roguetown/grenzelhofthat)
+	
 	var/weapons = list("billhook", "halberd", "zweihander", "estoc")
 	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
 

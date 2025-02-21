@@ -638,6 +638,11 @@
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
 	block2add = FOV_BEHIND
 
+/obj/item/clothing/head/roguetown/helmet/sallet/visored/grenzel
+	name = "treated visored sallet"
+	desc = "A steel helmet which protects the ears, eyes and nose. This one has been heat treated to match the look of blacksteel"
+	color = "#757474"
+
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)

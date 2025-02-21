@@ -115,6 +115,11 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
+	/obj/item/clothing/neck/roguetown/bervor/grenzel
+	name = "treated bevor"
+	desc = "A steel bevor that protects the lower part of the head, that being the neck, mouth and nose. This one has been heat treated to match the look blacksteel"
+	color = "#757474"
+
 /obj/item/clothing/neck/roguetown/gorget
 	name = "gorget"
 	desc = "An iron gorget to protect the neck."

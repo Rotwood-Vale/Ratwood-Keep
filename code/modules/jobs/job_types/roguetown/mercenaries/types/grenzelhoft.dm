@@ -29,13 +29,14 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
-	head = /obj/item/clothing/head/roguetown/grenzelhofthat
+	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/grenzel
 	armor = /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
 	pants = /obj/item/clothing/under/roguetown/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel
 
+	backpack_contents = list(/obj/item/clothing/head/roguetown/grenzelhofthat)
 
 	var/weapons = list("billhook", "halberd", "zweihander")
 	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
