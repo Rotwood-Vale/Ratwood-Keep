@@ -239,7 +239,7 @@
 	info = scroll_text
 
 /obj/structure/chair/arrestchair
-	name = "POENA"
+	name = "CASTIFICO"
 	desc = "A chair-esque machine that collects bounties, for a greater reward, in exchange for a penalty that some might consider worse than death."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "evilchair"
@@ -247,14 +247,23 @@
 	item_chair = null
 	anchored = TRUE
 
-/obj/structure/chair/arrestchair/buckle_mob(mob/living/carbon/human/M, force, check_loc)
+/obj/structure/chair/arrestchair/attack_right(mob/living/carbon/human/A)
 	. = ..()
-	if(!(ishuman(M)))
+	var/mob/living/carbon/human/M = null
+	for(var/l in buckled_mobs)
+		M = l
+	if(!ismob(M))
+		say("Cannot begin skull structure analysis without a subject buckled to the Castifico.")
 		return
-	if(M.loc != loc)
-		M.forceMove(get_turf(src))
-		buckle_mob(M)
+	if(!ishuman(M))
+		say("Subject is non-human entity. Aborting...")
 		return
+	if(!M.buckled)
+		say("Subject is not properly secured for analysis.")
+		return
+	if(!do_after(A, 5 SECONDS, TRUE, M))
+		return
+
 
 	playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
 	M.Paralyze(3 SECONDS)
