@@ -207,10 +207,12 @@ GLOBAL_LIST(teleport_runes)
 				return
 			if(pickritual1.tier > src.tier)
 				to_chat(user, span_hierophant_warning("Your ritual rune is not strong enough to perform this ritual."))
+				rune_in_use = FALSE
 				return
 			invoke(invokers, pickritual1)
 		else
 			to_chat(user, span_danger("You need [req_invokers - length(invokers)] more adjacent invokers to use this rune in such a manner."))	//Needs more invokers, fails invoke
+			rune_in_use = FALSE
 			fail_invoke()
 	. = ..()
 
@@ -462,7 +464,7 @@ GLOBAL_LIST(teleport_runes)
 	desc = "arcane symbols pulse upon the ground..."
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "imbuement"
-	tier = 3
+	tier = 4
 	runesize = 2
 	pixel_x = -64 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -64
