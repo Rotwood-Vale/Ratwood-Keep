@@ -440,6 +440,6 @@
 	/datum/job/roguetown/mulyeogenhenchman,\
 
 #define RUMACLAN_ROLES \
-	/datum/job/roguetown/captain,\
+	/datum/job/roguetown/rumacaptain,\
 	/datum/job/roguetown/kyodai,\
 	/datum/job/roguetown/wakashu,\
