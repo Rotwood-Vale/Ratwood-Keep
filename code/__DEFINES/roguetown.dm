@@ -171,7 +171,6 @@
 	/datum/species/human/halfelf,\
 	/datum/species/elf/wood,\
 	/datum/species/tieberian,\
-	/datum/species/aasimar,\
 	/datum/species/demihuman,\
 )
 
