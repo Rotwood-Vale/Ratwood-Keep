@@ -359,6 +359,7 @@
 	body_parts_covered = NONE
 	w_class = WEIGHT_CLASS_TINY
 	spitoutmouth = FALSE
+	muteinmouth = FALSE
 	alternate_worn_layer  = 8.9 //On top of helmet
 
 	major_pot = /datum/alch_cauldron_recipe/rosewater_potion
