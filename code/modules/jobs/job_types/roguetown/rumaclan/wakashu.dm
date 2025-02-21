@@ -1,5 +1,5 @@
 /datum/job/roguetown/wakashu
-	title = "Wakashu"
+	title = "Hireling" //changed to be themed around triads - i really dont want to redo all of the defines for some simple name changes
 	flag = WAKASHU
 	department_flag = RUMACLAN
 	faction = "Station"
@@ -14,18 +14,18 @@
 	You are dirt compared to those above you - but still better than the rest of this shithole. Act like it."
 	display_order = JDO_WAKASHU
 	whitelist_req = TRUE
-	outfit = /datum/outfit/job/roguetown/wakashu
+	outfit = /datum/outfit/job/roguetown/hireling
 	min_pq = 0 //turn into 3 after testing
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_rumaclan.ogg'
 
-/datum/outfit/job/roguetown/wakashu/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/hireling/pre_equip(mob/living/carbon/human/H)
 	..()
 	gloves = /obj/item/clothing/gloves/roguetown/eastgloves2
 	pants = /obj/item/clothing/under/roguetown/trou/eastpants1
 	shirt = /obj/item/clothing/suit/roguetown/shirt/easttats
-	armor = /obj/item/clothing/suit/roguetown/shirt/eastshirt1
+	armor = /obj/item/clothing/suit/roguetown/shirt/eastshirt2
 	cloak = /obj/item/clothing/cloak/eastcloak2
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	beltr = /obj/item/rogueweapon/sword/sabre/mulyeog/rumahench

@@ -1,7 +1,7 @@
 /datum/job/roguetown/kyodai
-	title = "Kyodai"
+	title = "Red Pole"
 	flag = KYODAI
-	department_flag = MULYEOGLINEAGE
+	department_flag = RUMACLAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
@@ -14,18 +14,18 @@
 	Direct your underlings & ensure the satisfaction of your Captain."
 	display_order = JDO_KYODAI
 	whitelist_req = TRUE
-	outfit = /datum/outfit/job/roguetown/kyodai
+	outfit = /datum/outfit/job/roguetown/redpole
 	min_pq = 0 //turn into 5 after testing
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_rumaclan.ogg'
 
-/datum/outfit/job/roguetown/kyodai/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/redpole/pre_equip(mob/living/carbon/human/H)
 	..()
 	gloves = /obj/item/clothing/gloves/roguetown/eastgloves2
 	pants = /obj/item/clothing/under/roguetown/trou/eastpants2
 	shirt = /obj/item/clothing/suit/roguetown/shirt/easttats
-	armor = /obj/item/clothing/suit/roguetown/shirt/eastshirt2
+	armor = /obj/item/clothing/suit/roguetown/shirt/eastshirt1
 	cloak = /obj/item/clothing/cloak/eastcloak1
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	beltr = /obj/item/rogueweapon/sword/sabre/mulyeog/rumahench

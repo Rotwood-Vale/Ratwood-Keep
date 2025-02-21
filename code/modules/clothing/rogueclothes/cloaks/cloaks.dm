@@ -1461,7 +1461,7 @@
 
 /obj/item/clothing/cloak/eastcloak1
 	name = "cloud-cutter's cloak"
-	desc = "A brown cloak with white swirls. This denotes the rank of a Ruma Clan Enforcer, or Kyodai."
+	desc = "A brown cloak with white swirls. This denotes the rank of a Ruma Clan Enforcer, or Red Pole."
 	color = null
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	icon_state = "eastcloak1"
@@ -1475,7 +1475,7 @@
 
 /obj/item/clothing/cloak/eastcloak2
 	name = "leather cloak"
-	desc = "A brown cloak. This denotes the lowest rank of a Ruma Clan Member - a Wakashu."
+	desc = "A brown cloak. This denotes the lowest rank of a Ruma Clan Member - a henchman."
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	color = null
 	icon_state = "eastcloak2"

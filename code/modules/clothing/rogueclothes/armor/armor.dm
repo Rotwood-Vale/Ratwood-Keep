@@ -1100,6 +1100,8 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
 	nodismemsleeves = TRUE
 	body_parts_covered = CHEST|GROIN|VITALS
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	max_integrity = 300 
 	sellprice = 25
 	armor_class = ARMOR_CLASS_LIGHT
@@ -1161,6 +1163,8 @@
 	armor = list("blunt" = 70, "slash" = 65, "stab" = 65, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
 	nodismemsleeves = TRUE
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	body_parts_covered = CHEST|GROIN|VITALS
 	max_integrity = 300 
 	sellprice = 25

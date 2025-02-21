@@ -187,9 +187,9 @@ GLOBAL_LIST_INIT(mulyeog_positions, list(
 ))
 
 GLOBAL_LIST_INIT(rumaclan_positions, list(
-	"Ruma Captain",
-	"Kyodai",
-	"Wakashu",
+	"Dragon Head",
+	"Red Pole",
+	"Hireling",
 ))
 
 GLOBAL_LIST_INIT(test_positions, list(

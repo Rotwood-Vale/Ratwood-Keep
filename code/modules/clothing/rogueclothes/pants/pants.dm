@@ -416,7 +416,7 @@
 
 /obj/item/clothing/under/roguetown/trou/eastpants2
 	name = "strange ripped pants"
-	desc = "Weird pants typically worn by Ruma Clan Enforcers."
+	desc = "Weird pants typically worn by Ruma Clan Red Poles."
 	icon_state = "eastpants2"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
 	max_integrity = 130

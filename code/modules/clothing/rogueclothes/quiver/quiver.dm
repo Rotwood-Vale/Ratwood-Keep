@@ -82,7 +82,7 @@
 /obj/item/ammo_holder/mulyeog/rumahcaptain
 	name = "gold-stained scabard"
 	icon_state = "goldscab0"
-	item_state = "goldscab1"
+	item_state = "goldscab"
 	desc = "An ornate, wooden scabbard with a sash. Kind-of fragile."
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
 	max_storage = 1
