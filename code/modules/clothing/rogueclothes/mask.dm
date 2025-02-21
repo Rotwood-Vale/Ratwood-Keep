@@ -118,9 +118,13 @@
 	icon_state = "psydonmask"
 	item_state = "psydonmask"
 
+/obj/item/clothing/mask/rogue/facemask/prisoner
+	name = "cursed mask"
+	desc = "An iron mask that seals around the head, making it impossible to remove. It seems to be enchanted with some kind of vile magic..."
+	var/active_item
+
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
 	. = ..()
-	name = "cursed mask"
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/dropped(mob/living/carbon/human/user)
@@ -128,6 +132,22 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
+
+/obj/item/clothing/mask/rogue/facemask/prisoner/equipped(mob/living/user, slot)
+	. = ..()
+	if(active_item)
+		return
+	else if(slot == SLOT_WEAR_MASK)
+		active_item = TRUE
+		to_chat(user, span_warning("This accursed mask saps the energy from my body..."))
+		user.change_stat("strength", -4)
+		user.change_stat("constitution", -4)
+		user.change_stat("endurance", -4)
+		user.change_stat("speed", -4)
+		user.change_stat("perception", -4)
+		user.change_stat("intelligence", -4)
+		user.change_stat("fortune", -4)
+	return
 
 /obj/item/clothing/mask/rogue/facemask/steel
 	name = "steel mask"

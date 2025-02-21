@@ -2982,6 +2982,10 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/manor)
+"ckW" = (
+/obj/structure/chair/arrestchair,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/town)
 "clq" = (
 /obj/structure/table/wood{
 	icon_state = "map3"
@@ -8158,6 +8162,10 @@
 /obj/item/natural/feather,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church/chapel)
+"gtX" = (
+/obj/structure/roguemachine/bounty,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/town)
 "gur" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/item/natural/cloth,
@@ -64194,7 +64202,7 @@ lfd
 xAg
 gog
 gog
-gog
+ckW
 rIo
 hvn
 hvn
@@ -64351,7 +64359,7 @@ xAg
 tRy
 gog
 gog
-gog
+gtX
 hvn
 hvn
 hvn
