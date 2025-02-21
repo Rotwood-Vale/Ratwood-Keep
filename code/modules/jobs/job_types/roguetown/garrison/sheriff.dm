@@ -5,6 +5,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
+	selection_color = JCOLOR_SOLDIER
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
@@ -58,3 +59,4 @@
 		H.change_stat("constitution", 2)
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	H.verbs |= /mob/proc/haltyell
