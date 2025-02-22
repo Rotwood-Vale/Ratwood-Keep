@@ -30,6 +30,29 @@
 	sellprice = 30
 	wdefense = 4
 
+/obj/item/rogueweapon/sword/attack_right(mob/user)
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/swordherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/swordherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/swordherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Steel Swords...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/swordherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/swordherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/swordherald.dmi'
+		lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/rogue_righthand.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = "Regular Sword"
+	else
+		..()
+
 /obj/item/rogueweapon/sword/Initialize()
 	. = ..()
 	if(icon_state == "sword1")
@@ -421,6 +444,29 @@
 	sellprice = 10
 	can_cdg = TRUE
 
+/obj/item/rogueweapon/sword/iron/attack_right(mob/user)
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/iswordherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/iswordherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/iswordherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Iron Swords...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/iswordherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/iswordherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/iswordherald.dmi'
+		lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/rogue_righthand.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = "Regular Sword"
+	else
+		..()
+
 /obj/item/rogueweapon/sword/iron/short
 	name = "short sword"
 	desc = "An archaic iron sword."
@@ -486,7 +532,7 @@
 	name = "rapier"
 	desc = "A duelist's weapon derived from western battlefield instruments, it features a tapered \
 	blade with a specialized stabbing tip."
-	icon = 'icons/roguetown/weapons/64.dmi'	
+	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "rapier"
 	max_integrity = 215
 	bigboy = TRUE
@@ -732,6 +778,11 @@
 			to_chat(H, span_userdanger("I'm hit by my BANE!"))
 			src.last_used = world.time
 
+/obj/item/rogueweapon/sword/sabre/elf/Initialize()
+	.=..()
+	var/datum/magic_item/mundane/silver/effect = new
+	AddComponent(/datum/component/magic_item, effect)
+
 /obj/item/rogueweapon/sword/gladius
 	force = 22
 	name = "Gladius"
@@ -768,7 +819,7 @@
 	penfactor = 20
 	swingdelay = 6
 	damfactor = 1.2
-	blade_class = BCLASS_BURN	
+	blade_class = BCLASS_BURN
 
 /datum/intent/sword/cut/sabre/freeze
 	clickcd = 10

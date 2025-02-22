@@ -33,6 +33,19 @@
 	. = ..()
 	if(GLOB.lordsurname && H)
 		give_lord_surname(H)
+	if(ishuman(H))
+		var/index = findtext(H.real_name, " ")
+		if(index)
+			index = copytext(H.real_name, 1,index)
+		if(!index)
+			index = H.real_name
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/honorary = "Lord"
+		if(H.gender == FEMALE)
+			honorary = "Lady"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 
 /datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -149,10 +162,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/message)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/darkvision)
+		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+		H.mind.AddSpell(new SPELL_MESSAGE)
+		H.mind.AddSpell(new SPELL_FETCH)
+		H.mind.AddSpell(new SPELL_DARKVISION)
 		H.change_stat("intelligence", 3)
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 1)

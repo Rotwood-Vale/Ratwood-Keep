@@ -52,7 +52,7 @@
 	reqs = list(/obj/item/natural/fibers = 1,
 				/obj/item/natural/cloth = 1)
 	skill_level = 0
-	
+
 /datum/crafting_recipe/roguetown/sewing/leash
 	name = "rope leash (rope) - (1 rope; NONE)"
 	result = list(/obj/item/leash = 1)
@@ -307,6 +307,27 @@
 /datum/crafting_recipe/roguetown/sewing/wizrobeblue
 	name = "robe (wizard) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/wizard)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/mageadept
+	name = "adept robe (mage) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/newmage/adept)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/warlock
+	name = "warlock robe (mage) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/newmage/warlock)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/magesorcerer
+	name = "sorcerer robe (mage) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/newmage/sorcerer)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
@@ -951,4 +972,25 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 4)
+	skill_level = 6
+
+/datum/crafting_recipe/roguetown/sewing/exoticsilkbra
+	name = "exotic silk bra - (4 silk, 1 gold ring; MASTER)"
+	result = list (/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra)
+	reqs = list(/obj/item/natural/silk = 3,
+				/obj/item/clothing/ring/gold = 1)
+	skill_level = 6
+
+/datum/crafting_recipe/roguetown/sewing/exoticsilkmask
+	name = "exotic silk mask - (1 silk, 1 gold ring; MASTER)"
+	result = list (/obj/item/clothing/mask/rogue/exoticsilkmask)
+	reqs = list(/obj/item/natural/silk = 2,
+				/obj/item/clothing/ring/gold = 1)
+	skill_level = 6
+
+/datum/crafting_recipe/roguetown/sewing/exoticsilkbelt
+	name = "exotic silk belt - (2 silk, 1 gold ring; MASTER)"
+	result = list (/obj/item/storage/belt/rogue/leather/exoticsilkbelt)
+	reqs = list(/obj/item/natural/silk = 3,
+				/obj/item/clothing/ring/gold = 1)
 	skill_level = 6

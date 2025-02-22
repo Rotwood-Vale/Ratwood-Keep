@@ -12,7 +12,7 @@
 	allowed_ages = ALL_AGES_LIST
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/archivist
-	spells = list(/obj/effect/proc_holder/spell/invoked/teach, /obj/effect/proc_holder/spell/invoked/learnspell, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation, /obj/effect/proc_holder/spell/invoked/projectile/fetch, /obj/effect/proc_holder/spell/invoked/message)
+	spells = list(SPELL_TEACH, SPELL_PRESTIDIGITATION, SPELL_FETCH, SPELL_MESSAGE)
 	display_order = JDO_ARCHIVIST
 	give_bank_account = 25
 	min_pq = 5 //the player should actually have some experience to properly play the role
@@ -67,7 +67,7 @@
 		if(H.age == AGE_OLD)
 			H.change_stat("speed", -1)
 			H.change_stat("intelligence", 1)
-		H.mind.adjust_spellpoints(-2)
+		H.mind.adjust_spellpoints(-1)
 
 /datum/outfit/job/roguetown/archivist/post_equip(mob/living/carbon/human/H)
 	..()
@@ -87,20 +87,24 @@
 	. = ..()
 	var/list/choices = list()
 	var/list/skill_choices = list(
-    /datum/skill/misc/reading,
-    /datum/skill/misc/lockpicking,
-    /datum/skill/misc/riding,
-    /datum/skill/misc/music,
-    /datum/skill/misc/treatment,
-    /datum/skill/misc/sewing,
-    /datum/skill/magic/arcane,
-    /datum/skill/labor/farming,
-    /datum/skill/craft/crafting,
-    /datum/skill/craft/blacksmithing,
-    /datum/skill/craft/carpentry,
-    /datum/skill/craft/masonry,
-    /datum/skill/craft/cooking,
-    /datum/skill/craft/engineering
+	/datum/skill/craft/blacksmithing,
+	/datum/skill/craft/carpentry,
+	/datum/skill/craft/cooking,
+	/datum/skill/craft/crafting,
+	/datum/skill/craft/engineering,
+	/datum/skill/craft/hunting,
+	/datum/skill/craft/masonry,
+	/datum/skill/labor/farming,
+	/datum/skill/labor/fishing,
+	/datum/skill/labor/lumberjacking,
+	/datum/skill/labor/mining,
+	/datum/skill/magic/arcane,
+	/datum/skill/misc/lockpicking,
+	/datum/skill/misc/music,
+	/datum/skill/misc/reading,
+	/datum/skill/misc/riding,
+	/datum/skill/misc/sewing,
+	/datum/skill/misc/treatment
     )
 	for(var/i = 1, i <= skill_choices.len, i++)
 		choices["[skill_choices[i].name]"] = skill_choices[i]
@@ -145,7 +149,7 @@
 						else
 							to_chat(usr, span_warning("[L] got distracted and wandered off!"))
 							to_chat(L, span_warning("I must be more focused on my studies!"))
-							return	
+							return
 					else  // +1 skill level if apprentice or better
 						if(do_after(usr, teachingtime, target = L))
 							user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
@@ -155,11 +159,10 @@
 						else
 							to_chat(usr, span_warning("[L] got distracted and wandered off!"))
 							to_chat(L, span_warning("I must be more focused on my studies!"))
-							return	
+							return
 			else
 				to_chat(usr, span_warning("My student can barely hear me from there."))
 				return
 	else
 		revert_cast()
 		return FALSE
-

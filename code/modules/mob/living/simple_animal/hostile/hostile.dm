@@ -91,6 +91,8 @@
 		return 0
 	if(has_buckled_mobs() && tame)
 		return 0
+	if(binded)
+		return 0
 	var/list/possible_targets = ListTargets() //we look around for potential targets and make it a list for later use.
 
 	if(environment_smash)
@@ -110,7 +112,7 @@
 	if(!target)
 		var/escape_path
 		for(var/obj/structure/flora/RT in view(6, src))
-			if(istype(RT,/obj/structure/flora/roguetree/stump))
+			if(istype(RT,/obj/structure/table/roguetree/stump))
 				continue
 			if(istype(RT,/obj/structure/flora/roguetree))
 				escape_path = RT
@@ -293,6 +295,8 @@
 	if(!target || !CanAttack(target))
 		LoseTarget()
 		return 0
+	if(binded)
+		return 0
 	if(target in possible_targets)
 		var/target_distance = get_dist(targets_from,target)
 		if(ranged) //We ranged? Shoot at em
@@ -345,7 +349,7 @@
 			FindTarget()
 
 
-/mob/living/simple_animal/hostile/proc/AttackingTarget(mob/living/target)
+/mob/living/simple_animal/hostile/proc/AttackingTarget()
 	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
 		return FALSE //but more importantly return before attack_animal called
 	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)

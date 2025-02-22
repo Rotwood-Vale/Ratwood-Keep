@@ -60,7 +60,7 @@
 		"Dark Green" = "#264d26",
 		"Teal" = "#249589",
 		"Periwinkle Blue" = "#8f99fb",
-		"Woad Blue" = "#597fb9",
+		"Woad Blue" = "#537bc6",
 		"Royal Purple" = "#8747b1",
 		"Magenta" = "#962e5c",
 		"Orchil" = "#66023C",

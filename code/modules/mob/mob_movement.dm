@@ -200,7 +200,7 @@
 	//		popup.set_content()
 	//		popup.open()
 	//		popup.close()
-			mob << browse(null, "window=[X]")
+			mob << browse(null, "window=[X.window_id]")
 			open_popups -= X
 /**
   * Checks to see if you're being grabbed and if so attempts to break it
@@ -234,8 +234,13 @@
 		if(L.cmode && !L.resting && !L.incapacitated() && M.grab_state < GRAB_AGGRESSIVE)
 			move_delay = world.time + 10
 			to_chat(src, span_warning("[L] still has footing! I need a stronger grip!"))
-			return TRUE    
-
+			return TRUE
+	var/mob/living/simple_animal/bound = mob.pulling
+	if(bound)
+		if(bound.binded)
+			move_delay = world.time + 10
+			to_chat(src, span_warning("[bound] is bound in a summoning circle. I can't move them!"))
+			return TRUE
 /**
   * Allows mobs to ignore density and phase through objects
   *

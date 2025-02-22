@@ -18,7 +18,7 @@
 				All in the name of fulfilling your duty to your Duke."
 	whitelist_req = FALSE
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard, /obj/effect/proc_holder/spell/self/convertrole/bog)
+	spells = list(SPELL_CONVERT_ROLE_GUARD, SPELL_CONVERT_ROLE_BOG)
 	outfit = /datum/outfit/job/roguetown/marshal
 
 	give_bank_account = 40
@@ -62,7 +62,6 @@
 		H.change_stat("fortune", 1)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	H.verbs |= /mob/proc/haltyell
 	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/living/carbon/human/proc/request_law, /mob/living/carbon/human/proc/request_law_removal, /mob/living/carbon/human/proc/request_purge)
 
 /mob/living/carbon/human/proc/request_law()
