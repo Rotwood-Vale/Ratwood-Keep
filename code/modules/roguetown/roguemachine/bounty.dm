@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/bounty
 	name = "EXCIDIUM"
-	desc = "A machine that sets and collects bounties. Its bloodied maw could easily fit a human head."
+	desc = "Created by a fanatical sect of devout followers of Ravox, this machine sets and collects bounties. Its bloodied maw could easily fit a human head."
 	icon = 'icons/roguetown/topadd/statue1.dmi'
 	icon_state = "baldguy"
 	density = FALSE
@@ -240,7 +240,7 @@
 
 /obj/structure/chair/arrestchair
 	name = "CASTIFICO"
-	desc = "A chair-esque machine that collects bounties, for a greater reward, in exchange for a penalty that some might consider worse than death."
+	desc = "A chair-esque machine that collects bounties from the Excidium, for a greater reward, in exchange for a penalty that some might consider worse than death."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "evilchair"
 	blade_dulling = DULLING_BASH

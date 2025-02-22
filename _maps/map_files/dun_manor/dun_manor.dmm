@@ -3626,6 +3626,10 @@
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/indoors/shelter/woods)
+"cLo" = (
+/obj/structure/roguemachine/bounty,
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/rtfield)
 "cLG" = (
 /obj/structure/fluff/walldeco/sparrowflag,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -9199,6 +9203,12 @@
 /obj/structure/underworld/barrier,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"hlM" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "hlN" = (
 /obj/structure/closet/crate/chest/neu_fancy,
 /obj/item/paper/scroll,
@@ -9888,6 +9898,12 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
+"hOw" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "hON" = (
 /obj/structure/table/wood,
 /obj/item/clothing/mask/cigarette/pipe/westman{
@@ -18262,6 +18278,12 @@
 	icon_state = "greenstone"
 	},
 /area/rogue/indoors/town/manor)
+"ohm" = (
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/rtfield)
 "ohs" = (
 /obj/machinery/light/rogue/torchholder/c{
 	pixel_y = -32
@@ -19111,11 +19133,12 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "oLU" = (
-/obj/effect/decal/cobbleedge{
-	dir = 9
-	},
 /obj/structure/fluff/railing/border{
 	dir = 6
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-e"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
@@ -22424,6 +22447,12 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/manor)
+"roD" = (
+/obj/structure/fluff/railing/border{
+	dir = 10
+	},
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/rtfield)
 "roU" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -23215,6 +23244,9 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/shop)
+"rUZ" = (
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/outdoors/rtfield)
 "rVd" = (
 /obj/structure/table/wood,
 /turf/open/floor/rogue/ruinedwood,
@@ -25633,6 +25665,10 @@
 	},
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
+"tOh" = (
+/obj/structure/fluff/railing/border,
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/rtfield)
 "tOl" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/blocks,
@@ -25673,6 +25709,12 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
+"tPI" = (
+/obj/structure/fluff/walldeco/customflag{
+	pixel_y = 32
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "tQj" = (
 /obj/structure/closet/crate/chest/neu_iron,
 /obj/item/scrying,
@@ -30440,6 +30482,16 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/dwarfin)
+"xCp" = (
+/obj/effect/decal/cobbleedge{
+	dir = 5
+	},
+/obj/structure/chair/arrestchair,
+/obj/effect/decal/cobbleedge{
+	dir = 5
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/rtfield)
 "xCI" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -65242,8 +65294,8 @@ oYo
 wDa
 wDa
 oYo
-wDa
-fsP
+ohm
+hlM
 ylN
 ylN
 ylN
@@ -65399,8 +65451,8 @@ wDa
 wDa
 tGa
 wDa
-wDa
-jIk
+tOh
+xCp
 ylN
 ylN
 ylN
@@ -65556,9 +65608,9 @@ wDa
 wDa
 wDa
 wDa
-wDa
-jIk
-ylN
+tOh
+rUZ
+tPI
 ylN
 ylN
 jIk
@@ -65713,8 +65765,8 @@ wDa
 wDa
 wDa
 wDa
-wDa
-jIk
+tOh
+cLo
 ylN
 ylN
 ylN
@@ -65870,8 +65922,8 @@ wDa
 omo
 jIk
 wDa
-wDa
-jIk
+roD
+hOw
 ylN
 ylN
 ylN
