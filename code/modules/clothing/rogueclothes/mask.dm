@@ -122,6 +122,7 @@
 	name = "cursed mask"
 	desc = "An iron mask that seals around the head, making it impossible to remove. It seems to be enchanted with some kind of vile magic..."
 	var/active_item
+	var/bounty_amount
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
 	. = ..()
@@ -135,6 +136,17 @@
 		return
 	qdel(src)
 
+/obj/item/clothing/mask/rogue/facemask/prisoner/proc/timerup(mob/living/carbon/human/user)
+	REMOVE_TRAIT(user, TRAIT_PACIFISM, "cursedmask")
+	REMOVE_TRAIT(user, TRAIT_SPELLCOCKBLOCK, "cursedmask")
+	visible_message(span_warning("The cursed mask opens with a click, falling off of [user]'s face and clambering apart on the ground, their penance complete."))
+	say("YOUR PENANCE IS COMPLETE.")
+	playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
+	if(QDELETED(src))
+		return
+	qdel(src)
+	
+
 /obj/item/clothing/mask/rogue/facemask/prisoner/equipped(mob/living/user, slot)
 	. = ..()
 	if(active_item)
@@ -144,6 +156,18 @@
 		to_chat(user, span_warning("This accursed mask pacifies me!"))
 		ADD_TRAIT(user, TRAIT_PACIFISM, "cursedmask")
 		ADD_TRAIT(user, TRAIT_SPELLCOCKBLOCK, "cursedmask")
+
+		var/timer = 30 MINUTES
+
+		if(bounty_amount >= 100)
+			var/additional_time = bounty_amount * 0.1
+			additional_time = round(additional_time)
+			timer += additional_time MINUTES
+
+		var/timer_minutes = timer / 600
+
+		addtimer(CALLBACK(src, PROC_REF(timerup), user), timer)
+		say("YOUR PENANCE WILL BE COMPLETE IN [timer_minutes] MINUTES.")
 	return
 
 /obj/item/clothing/mask/rogue/facemask/steel
