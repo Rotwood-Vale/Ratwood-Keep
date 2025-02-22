@@ -168,14 +168,14 @@
 	else
 		icon_state = "javelinbag0"
 
-/obj/item/quiver/javelins/Initialize()
+/obj/item/quiver/javelin/iron/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/ammo_casing/caseless/rogue/javelin/A = new()
 		arrows += A
 	update_icon()
 
-/obj/item/quiver/javelins/steel/Initialize()
+/obj/item/quiver/javelin/steel/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/ammo_casing/caseless/rogue/javelin/steel/A = new()
