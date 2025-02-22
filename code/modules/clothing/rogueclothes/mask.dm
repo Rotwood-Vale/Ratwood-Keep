@@ -131,7 +131,6 @@
 	. = ..()
 	REMOVE_TRAIT(user, TRAIT_PACIFISM, "cursedmask")
 	REMOVE_TRAIT(user, TRAIT_SPELLCOCKBLOCK, "cursedmask")
-	REMOVE_TRAIT(user, TRAIT_NORUN, "cursedmask")
 	if(QDELETED(src))
 		return
 	qdel(src)
@@ -142,10 +141,9 @@
 		return
 	else if(slot == SLOT_WEAR_MASK)
 		active_item = TRUE
-		to_chat(user, span_warning("This accursed mask weakens me!"))
+		to_chat(user, span_warning("This accursed mask pacifies me!"))
 		ADD_TRAIT(user, TRAIT_PACIFISM, "cursedmask")
 		ADD_TRAIT(user, TRAIT_SPELLCOCKBLOCK, "cursedmask")
-		ADD_TRAIT(user, TRAIT_NORUN, "cursedmask")
 	return
 
 /obj/item/clothing/mask/rogue/facemask/steel
