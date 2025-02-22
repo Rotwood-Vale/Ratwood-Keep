@@ -207,12 +207,6 @@
 	icon_state = "druggy"
 	alpha = 80
 
-/atom/movable/screen/fullscreen/purest
-	icon = 'icons/mob/screen_gen.dmi'
-	screen_loc = "WEST,SOUTH to EAST,NORTH"
-	icon_state = "purest"
-	alpha = 100
-
 /atom/movable/screen/fullscreen/fade
 	icon = 'icons/mob/roguehudback2.dmi'
 	screen_loc = ui_backhudl
