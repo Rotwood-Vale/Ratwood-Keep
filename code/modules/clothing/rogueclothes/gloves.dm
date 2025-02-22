@@ -22,6 +22,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	anvilrepair = null
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/gloves/roguetown/leather/black
 	color = CLOTHING_BLACK
@@ -58,6 +59,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	anvilrepair = null
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/fur
 
 /obj/item/clothing/gloves/roguetown/fingerless_leather
 	name = "fingerless leather gloves"
@@ -74,6 +76,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	anvilrepair = null
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/gloves/roguetown/chain
 	name = "chain gauntlets"
@@ -124,6 +127,7 @@
 	desc = "Masterfully crafted leather gloves, psycross included."
 	icon_state = "inqgloves"
 	item_state = "inqgloves"
+	salvage_result = /obj/item/natural/hide/cured
 
 //rogtodo sprites for this
 /obj/item/clothing/gloves/roguetown/plate
@@ -143,6 +147,23 @@
 
 	grid_width = 64
 	grid_height = 32
+
+/obj/item/clothing/gloves/roguetown/plate/zizo
+	name = "darksteel gauntlets"
+	desc = "darksteel plate gauntlets. Called forth from the edge of what should be known. In Her name."
+	icon_state = "zizogauntlets"
+	max_integrity = 500
+
+/obj/item/clothing/gloves/roguetown/plate/zizo/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/gloves/roguetown/plate/zizo/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
 
 /obj/item/clothing/gloves/roguetown/grenzelgloves
 	name = "grenzelhoft gloves"

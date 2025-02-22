@@ -58,8 +58,34 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		return
 	if (!player.prefs)
 		return
-	var/virtue_type = player.prefs.virtue
-	apply_virtue(character, virtue_type)
+
+	var/virtuous = FALSE
+	var/heretic = FALSE
+	if(istype(player.prefs.selected_patron, /datum/patron/inhumen))
+		heretic = TRUE
+
+	if(player.prefs.statpack.name == "Virtuous")
+		virtuous = TRUE
+
+	var/datum/virtue/virtue_type = player.prefs.virtue
+	var/datum/virtue/virtuetwo_type = player.prefs.virtuetwo
+	if(virtue_type)
+		if(virtue_check(virtue_type, heretic))
+			apply_virtue(character, virtue_type)
+		else
+			to_chat(character, "Incorrect Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
+	if(virtuetwo_type && virtuous)
+		if(virtue_check(virtuetwo_type, heretic))
+			apply_virtue(character, virtuetwo_type)
+		else
+			to_chat(character, "Incorrect Second Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
+
+/proc/virtue_check(var/datum/virtue/V, heretic = FALSE)
+	if(V)
+		if(istype(V,/datum/virtue/heretic) && !heretic)
+			return FALSE
+		return TRUE
+	return FALSE
 
 /proc/apply_charflaw_equipment(mob/living/carbon/human/character, client/player)
 	if(character.charflaw)

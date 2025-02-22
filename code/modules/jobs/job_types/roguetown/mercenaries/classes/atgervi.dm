@@ -130,6 +130,7 @@
 	desc = "A carefully forged steel helmet in the shape of an owl's face, with added chain to cover the face and neck against many blows."
 	icon_state = "atgervi_raider"
 	item_state = "atgervi_raider"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDESNOUT
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/atgervi.dmi'
 	block2add = null
 	worn_x_dimension = 32
@@ -140,6 +141,7 @@
 	desc = "A deceptively strong hood of hide with a pair of large heavy antlers. It is the fourth and final trial of the Shamans, To slay a Grinning moose with naught but metal claw and teeth."
 	icon_state = "atgervi_shaman"
 	item_state = "atgervi_shaman"
+	flags_inv = HIDEEARS|HIDEFACE
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/atgervi.dmi'
 	flags_inv = HIDEEARS
 	worn_x_dimension = 32

@@ -6,6 +6,9 @@
 	force = 7
 	dropshrink = 0.9
 
+	grid_width = 32
+	grid_height = 64
+
 /obj/item/mortar
 	name = "alchemical mortar"
 	desc = "A heavy-duty mortar used to grind alchemical ingredients."
@@ -13,6 +16,9 @@
 	icon_state = "mortar"
 	dropshrink = 0.9
 	var/obj/item/to_grind
+
+	grid_width = 64
+	grid_height = 32
 
 /obj/item/mortar/attack_right(mob/user)
 	user.changeNext_move(CLICK_CD_MELEE)

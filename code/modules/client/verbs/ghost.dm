@@ -85,5 +85,6 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 
 	client?.verbs -= GLOB.ghost_verbs
 	M.key = key
-	qdel(src)
+	if(istype(src, /mob/dead/observer)) //Be rid of clogging ghost shades
+		qdel(src)
 	return

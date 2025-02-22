@@ -171,6 +171,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Nun Habit"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/nun
 
+//PANTS
+/datum/loadout_item/skirt
+	name = "Skirt"
+	path = /obj/item/clothing/under/roguetown/skirt
+
 //ACCESSORIES
 /datum/loadout_item/stockings
 	name = "Stockings"

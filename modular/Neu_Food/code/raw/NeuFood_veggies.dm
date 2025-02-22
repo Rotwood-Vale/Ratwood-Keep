@@ -64,3 +64,20 @@
 	faretype = FARE_FINE
 	tastes = list("airy apple" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+
+/*	..................   Garlick   ................... */
+/obj/item/reagent_containers/food/snacks/grown/garlick/rogue
+	desc = "Hated by the foule vampyres that lurk in the dark. Garlick."
+	eat_effect = null
+	slices_num = 5
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove
+	tastes = list("pungent umami" = 1)
+	chopping_sound = TRUE
+
+/obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove
+	name = "garlick clove"
+	icon_state = "garlic_clove"
+	faretype = FARE_POOR
+	desc = "A clove of garlick. Don't eat this."
+	tastes = list("pungent umami" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)

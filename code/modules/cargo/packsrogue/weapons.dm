@@ -74,7 +74,7 @@
 					/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
 				)
 
-/datum/supply_pack/rogue/weapons/parrydagger
+/datum/supply_pack/rogue/weapons/saildagger
 	name = "Sail Dagger"
 	cost = 80
 	contains = list(
@@ -88,7 +88,7 @@
 					/obj/item/rogueweapon/sword/rapier/vaquero,
 	)
 
-/datum/supply_pack/rogue/weapons/parrydagger
+/datum/supply_pack/rogue/weapons/shamshir
 	name = "Shamshir"
 	cost = 80
 	contains = list(

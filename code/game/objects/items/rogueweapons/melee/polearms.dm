@@ -298,14 +298,37 @@
 			user.doing = 0
 
 /obj/item/rogueweapon/fishspear/afterattack(obj/target, mob/user, proximity)
-	fishloot = list(
-		/obj/item/reagent_containers/food/snacks/fish/carp = 5,
-		/obj/item/reagent_containers/food/snacks/fish/angler = 1,
-		/obj/item/reagent_containers/food/snacks/fish/clownfish = 1,
+	freshfishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/carp = 200,
+		/obj/item/reagent_containers/food/snacks/fish/sunny = 300,
+		/obj/item/reagent_containers/food/snacks/fish/salmon = 200,
+		/obj/item/reagent_containers/food/snacks/fish/eel = 150,
+		/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab = 20,
+	)
+	seafishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/cod = 200,
+		/obj/item/reagent_containers/food/snacks/fish/plaice = 200,
+		/obj/item/reagent_containers/food/snacks/fish/sole = 305,
+		/obj/item/reagent_containers/food/snacks/fish/angler = 150,
+		/obj/item/reagent_containers/food/snacks/fish/lobster = 300,
+		/obj/item/reagent_containers/food/snacks/fish/bass = 200,
+		/obj/item/reagent_containers/food/snacks/fish/clam = 100,
+		/obj/item/reagent_containers/food/snacks/fish/clownfish = 50,
+		/mob/living/carbon/human/species/goblin/npc/sea = 25,
+		/mob/living/simple_animal/hostile/rogue/deepone = 30,
+		/mob/living/simple_animal/hostile/rogue/deepone/spit = 30,
+	)
+	mudfishloot = list(
+		/obj/item/reagent_containers/food/snacks/fish/mudskipper = 200,
+		/obj/item/natural/worms/leech = 50,
+		/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab = 25,
 	)
 	var/sl = user.mind.get_skill_level(/datum/skill/labor/fishing) // User's skill level
 	var/ft = 160 //Time to get a catch, in ticks
 	var/fpp =  130 - (40 + (sl * 15)) // Fishing power penalty based on fishing skill level
+	var/frwt = list(/turf/open/water/river, /turf/open/water/cleanshallow, /turf/open/water/pond)
+	var/salwt = list(/turf/open/water/ocean, /turf/open/water/ocean/deep)
+	var/mud = list(/turf/open/water/swamp, /turf/open/water/swamp/deep)
 	if(istype(target, /turf/open/water))
 		if(user.used_intent.type == SPEAR_CAST && !user.doing)
 			if(target in range(user,3))
@@ -323,25 +346,66 @@
 							fishchance -= fpp // Deduct a penalty the lower our fishing level is (-0 at legendary)
 					var/mob/living/fisherman = user
 					if(prob(fishchance)) // Finally, roll the dice to see if we fish.
-						var/A = pickweight(fishloot)
-						var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
-						to_chat(user, "<span class='notice'>You see something!</span>")
-						playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
-						if(!do_after(user,ow, target = target))
-							if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
-								var/mob/M = A
-								if(M.type in subtypesof(/mob/living/simple_animal/hostile))
-									new M(target)
+						if(target.type in frwt)
+							var/A = pickweight(freshfishloot)
+							var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
+							to_chat(user, "<span class='notice'>You see something!</span>")
+							playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
+							if(!do_after(user,ow, target = target))
+								if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
+									var/mob/M = A
+									if(M.type in subtypesof(/mob/living/simple_animal/hostile))
+										new M(target)
+									else
+										new M(user.loc)
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
 								else
-									new M(user.loc)
-								user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
+									new A(user.loc)
+									to_chat(user, "<span class='warning'>Pull 'em in!</span>")
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
+									playsound(src.loc, 'sound/items/Fish_out.ogg', 100, TRUE)	
 							else
-								new A(user.loc)
-								to_chat(user, "<span class='warning'>Pull 'em in!</span>")
-								user.mind.add_sleep_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
-								playsound(src.loc, 'sound/items/Fish_out.ogg', 100, TRUE)
-						else
-							to_chat(user, "<span class='warning'>Damn, it got away... I should <b>pull away</b> next time.</span>")
+								to_chat(user, "<span class='warning'>Damn, it got away... I should <b>pull away</b> next time.</span>")								
+						if(target.type in salwt)
+							var/A = pickweight(seafishloot)
+							var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
+							to_chat(user, "<span class='notice'>You see something!</span>")
+							playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
+							if(!do_after(user,ow, target = target))
+								if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
+									var/mob/M = A
+									if(M.type in subtypesof(/mob/living/simple_animal/hostile))
+										new M(target)
+									else
+										new M(user.loc)
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
+								else
+									new A(user.loc)
+									to_chat(user, "<span class='warning'>Pull 'em in!</span>")
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
+									playsound(src.loc, 'sound/items/Fish_out.ogg', 100, TRUE)	
+							else
+								to_chat(user, "<span class='warning'>Damn, it got away... I should <b>pull away</b> next time.</span>")							
+						if(target.type in mud)
+							var/A = pickweight(mudfishloot)
+							var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
+							to_chat(user, "<span class='notice'>You see something!</span>")
+							playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
+							if(!do_after(user,ow, target = target))
+								if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
+									var/mob/M = A
+									if(M.type in subtypesof(/mob/living/simple_animal/hostile))
+										new M(target)
+									else
+										new M(user.loc)
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
+								else
+									new A(user.loc)
+									to_chat(user, "<span class='warning'>Pull 'em in!</span>")
+									user.mind.add_sleep_experience(/datum/skill/labor/fishing, round(fisherman.STAINT, 2), FALSE) // Level up!
+									playsound(src.loc, 'sound/items/Fish_out.ogg', 100, TRUE)
+							else
+								to_chat(user, "<span class='warning'>Damn, it got away... I should <b>pull away</b> next time.</span>")
 					else
 						to_chat(user, "<span class='warning'>Not a single fish...</span>")
 						user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT/2) // Pity XP.

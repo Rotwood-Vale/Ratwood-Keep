@@ -21,7 +21,7 @@
 /datum/intent/shoot/bow/get_chargetime() //this handles how long it takes for us to fully aim our bow. damage is handled below in /obj/item/gun/ballistic/revolver/grenadelauncher/bow/process_fire
 	if(mastermob && chargetime)
 		var/newtime = 0
-		newtime = ((newtime + 10) - (mastermob.mind.get_skill_level(/datum/skill/combat/bows) * (2)))
+		newtime = ((newtime + 10) - (mastermob.mind?.get_skill_level(/datum/skill/combat/bows) * (2)))
 		if(strength_check == TRUE)
 			newtime = ((newtime + 10) - (mastermob.STASTR / 2))
 		else
@@ -58,7 +58,7 @@
 /datum/intent/arc/bow/get_chargetime() //same calc as above, but with a higher absolute floor for how fast you can shoot
 	if(mastermob && chargetime)
 		var/newtime = 0
-		newtime = ((newtime + 10) - (mastermob.mind.get_skill_level(/datum/skill/combat/bows) * (2)))
+		newtime = ((newtime + 10) - (mastermob.mind?.get_skill_level(/datum/skill/combat/bows) * (2)))
 		if(strength_check == TRUE)
 			newtime = ((newtime + 10) - (mastermob.STASTR / 2))
 		else
