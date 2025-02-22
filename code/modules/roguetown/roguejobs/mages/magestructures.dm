@@ -246,7 +246,7 @@ s
 	name = "manaflower"
 	desc = ""
 	icon = 'icons/roguetown/misc/crops.dmi'
-	icon_state = "manabloom"
+	icon_state = "manabloom2"
 	color = null
 	layer = BELOW_MOB_LAYER
 	max_integrity = 60
