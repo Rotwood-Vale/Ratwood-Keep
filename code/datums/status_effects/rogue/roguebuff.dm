@@ -174,6 +174,26 @@
 	desc = ""
 	icon_state = "weed"
 
+// stat swap drugs
+
+/datum/status_effect/debuff/hardballz
+	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
+	id = "hardballz"
+	effectedstats = list("endurance" = 2, "intelligence" = 2)
+	duration = 30 SECONDS
+
+/datum/status_effect/buff/hardballz/on_apply()
+	. = ..()
+
+/datum/status_effect/buff/hardballz/on_remove()
+	. = ..()
+
+	/atom/movable/screen/alert/status_effect/debuff/witness
+	name = "Hardy"
+	icon_state = "druqks"
+	desc = "My breaths grow lighter by the second. I'm harder to wind out."
+
+
 /atom/movable/screen/alert/status_effect/buff/featherfall
 	name = "Featherfall"
 	desc = "I am somewhat protected against falling from heights."
@@ -423,3 +443,4 @@
 	name = "Darkling"
 	desc = "You are at home in the dark. Unbothered. In your lane. Moisturized."
 	icon_state = "stressg"
+

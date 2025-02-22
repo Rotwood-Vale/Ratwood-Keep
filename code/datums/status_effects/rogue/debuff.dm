@@ -382,3 +382,48 @@
 	name = "Macabre chill"
 	desc = "I can feel the cold embrace of death seeping into my bones"
 	icon_state = "muscles"
+
+// paralysis drug
+
+/datum/status_effect/debuff/paralysis
+	id = "paralysis"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/paralysis
+	effectedstats = list("strength" = -5, "constitution" = -5, "perception" = -5)
+	duration = 30 SECONDS
+
+/datum/status_effect/debuff/paralysis/on_apply()
+	. = ..()
+	if(iscarbon(src))
+		var/mob/living/carbon/C = src
+		C.Paralyze(120)
+	return ..()
+
+/datum/status_effect/buff/debuff/on_remove()
+	. = ..()
+
+	/atom/movable/screen/alert/status_effect/debuff/paralysis
+	name = "Drug-Induced Paralysis"
+	icon_state = "muscles"
+	desc = "I can't move, I've been poisoned!"
+
+// blindness drug
+
+/datum/status_effect/debuff/witness
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/witness
+	id = "witness"
+	duration = 30 SECONDS
+
+/datum/status_effect/debuff/witness/on_apply()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.blind_eyes(120)
+	return ..()
+
+/datum/status_effect/buff/debuff/on_remove()
+	. = ..()
+
+	/atom/movable/screen/alert/status_effect/debuff/witness
+	name = "Blindness"
+	icon_state = "druqks"
+	desc = "I can't see, I've been poisoned!"
