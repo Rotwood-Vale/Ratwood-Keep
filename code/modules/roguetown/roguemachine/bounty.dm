@@ -240,7 +240,7 @@
 
 /obj/structure/chair/arrestchair
 	name = "CASTIFICO"
-	desc = "A chair-esque machine that collects bounties from the Excidium, for a greater reward, in exchange for a penalty that some might consider worse than death."
+	desc = "A chair-shaped machine that collects bounties, for a greater reward, in exchange for a penalty that some might consider worse than death."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "evilchair"
 	blade_dulling = DULLING_BASH
