@@ -338,6 +338,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	retreat_distance = 0
+	retreat_health = 0
 	minimum_distance = 0
 	aggressive = 1
 	speed = 5

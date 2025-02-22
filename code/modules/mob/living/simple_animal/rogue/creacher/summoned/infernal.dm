@@ -107,7 +107,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = 'sound/combat/hits/bladed/smallslash (1).ogg'
 	attack_verb_continuous = "claws"
@@ -184,7 +184,7 @@
 	speak_chance = 1
 	turns_per_move = 6
 	see_in_dark = 6
-	move_to_delay = 6
+	move_to_delay = 4
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("infernal")
@@ -210,7 +210,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
 	dodgetime = 30
@@ -295,7 +295,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = list('sound/misc/lava_death.ogg')
 	dodgetime = 30
@@ -386,7 +386,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = list('sound/misc/lava_death.ogg')
 	dodgetime = 30

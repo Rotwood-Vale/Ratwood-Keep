@@ -347,7 +347,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	releasedrain = 50
 	chargedrain = 3
 	chargetime = 15
-	charge_max = 20 SECONDS
+	charge_max = 40 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
@@ -400,7 +400,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	var/exp_light = 0
 	var/exp_flash = 1
 	var/exp_fire = 0
-	damage = 15	//no armor really has burn protection. So assuming all three connect, 45 burn damage- average damage of fireball with firestacks nerfed. Thats a big 'if' however. Notably, won't cause wounds,
+	damage = 5		// 5 damage per impact, leading to 15 if all three hit. More notably, Each projectile adds 3 firestacks.
 	damage_type = BURN
 	homing = TRUE
 	nodamage = FALSE
@@ -413,12 +413,15 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 
 /obj/projectile/magic/aoe/rogue2/on_hit(target)
 	if(ismob(target))
-		var/mob/M = target
+		var/mob/living/M = target
 		if(M.anti_magic_check())
 			visible_message(span_warning("[src] fizzles on contact with [target]!"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
+		else
+			M.adjust_fire_stacks(3)
+			M.IgniteMob()
 	var/turf/T
 	if(isturf(target))
 		T = target
@@ -1481,7 +1484,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 50
-	charge_max = 50 SECONDS
+	charge_max = 100 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
@@ -1659,7 +1662,7 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 50
-	charge_max = 50 SECONDS
+	charge_max = 100 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE

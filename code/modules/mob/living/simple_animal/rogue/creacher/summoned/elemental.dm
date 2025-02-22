@@ -14,6 +14,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/Initialize()
 	. = ..()
+	ADD_TRAIT(src,TRAIT_NOFIRE, "[type]")
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
@@ -120,7 +121,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 5 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = 'sound/combat/hits/onstone/wallhit.ogg'
 	attack_verb_continuous = "pounds"
@@ -189,7 +190,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	rapid = TRUE
 	attack_sound = 'sound/combat/hits/onstone/wallhit.ogg'
@@ -247,20 +248,22 @@
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 6
 	see_in_dark = 6
 	move_to_delay = 12
 	base_intents = list(/datum/intent/simple/elementalt2_unarmed)
 	butcher_results = list()
 	faction = list("elemental")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	ranged = TRUE
+	projectiletype = /obj/projectile/earthenfist
 	health = 800
 	maxHealth = 800
 	melee_damage_lower = 55
 	melee_damage_upper = 80
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_WALLS
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
@@ -276,7 +279,8 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
+	ranged_message = "sends its fist flying"
 	food = 0
 	attack_sound = 'sound/combat/hits/onstone/wallhit.ogg'
 	dodgetime = 30
@@ -365,7 +369,13 @@
 		FindHidden()
 		return 1
 
-/mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/proc/quake()
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/OpenFire()
+	.=..()
+	if(world.time >= src.rock_cd + 200)
+		quake(target)
+		src.rock_cd = world.time
+
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/proc/quake(target)
 	var/turf/focalpoint = get_turf(target)
 	for (var/turf/open/visual in view(1, focalpoint))
 		new /obj/effect/temp_visual/marker(visual)
@@ -380,10 +390,26 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/proc/yeet(target)
 	if(isliving(target))
-		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target)) //ill be real I got no idea why this worked.
+		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target))
 		var/mob/living/L = target
 		L.throw_at(throw_target, 7, 4)
-		L.adjustBruteLoss(30)
+		L.adjustBruteLoss(20)
+
+/obj/projectile/earthenfist
+	name = "Elemental fist"
+	icon_state = "rock"
+	damage = 15
+	damage_type = BRUTE
+	flag = "magic"
+	range = 10
+	speed = 5 //higher is slower
+
+/obj/projectile/earthenfist/on_hit(target)
+	. = ..()
+	if(isliving(target))
+		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target))
+		var/mob/living/L = target
+		L.throw_at(throw_target, 2, 2)
 
 /datum/intent/simple/elementalt2_unarmed
 	name = "elemental unarmed"
@@ -440,7 +466,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = 'sound/combat/hits/onstone/wallhit.ogg'
 	pixel_x = -32

@@ -109,7 +109,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 5 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = 'sound/combat/hits/bladed/smallslash (1).ogg'
 	attack_verb_continuous = "jabs"
@@ -188,7 +188,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 20 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = list()
 	dodgetime = 40
@@ -274,7 +274,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 30 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = "plantcross"
 	dodgetime = 30
@@ -290,9 +290,21 @@
 	if(isturf(newloc))
 		var/turf/T = newloc
 		if(contains_vines(T))
-			src.move_to_delay = 4
+			src.move_to_delay = 2
 		else
 			src.move_to_delay = 8
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/AttackingTarget()
+	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
+		return FALSE //but more importantly return before attack_animal called
+	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)
+	in_melee = TRUE
+	if(!target)
+		return
+	if(client && world.time >= src.vine_cd + 100)
+		addtimer(CALLBACK(src,PROC_REF(vine),target), 1 SECONDS)
+	return target.attack_animal(src)
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/proc/contains_vines(var/turf/T)
 	for(var/obj/structure/spacevine/dendor/V in T)
@@ -319,7 +331,6 @@
 			return 1
 		if(world.time >= src.vine_cd + 100)
 			vine()
-			src.vine_cd = world.time
 		if(retreat_distance != null) //If we have a retreat distance, check if we need to run from our target
 			if(target_distance <= retreat_distance) //If target's closer than our retreat distance, run
 				walk_away(src,target,retreat_distance,move_to_delay)
@@ -347,6 +358,7 @@
 	target.visible_message(span_boldwarning("Vines spread out from [src]!"))
 	for(var/turf/turf as anything in RANGE_TURFS(3,src.loc))
 		new /obj/structure/spacevine/dendor(turf)
+	src.vine_cd = world.time
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dropcomponents()
 	var/turf/leavespot = get_turf(src)
@@ -408,7 +420,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 30 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = null
 	dodgetime = 40
@@ -424,7 +436,7 @@
 
 /obj/projectile/magic/frostbolt/greater
 	name = "greater frostbolt"
-	damage = 25
+	damage = 15
 	range = 6
 	speed = 6 //higher is slower
 
@@ -451,7 +463,7 @@
 	if(!target)
 		return
 	for(var/turf/turf as anything in RANGE_TURFS(3,src.loc))
-		if(prob(25))
+		if(prob(15))
 			new /obj/structure/glowshroom(turf)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/dropcomponents()
