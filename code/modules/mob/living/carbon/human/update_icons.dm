@@ -1066,6 +1066,7 @@ There are several things that need to be remembered:
 	remove_overlay(CLOAK_LAYER)
 	remove_overlay(CLOAK_BEHIND_LAYER)
 	remove_overlay(TABARD_LAYER)
+	remove_overlay(UNDER_ARMOR_LAYER)
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_CLOAK]
@@ -1102,6 +1103,8 @@ There are several things that need to be remembered:
 					cloak_overlay.pixel_y += dna.species.offset_features[OFFSET_CLOAK_F][2]
 			if(cloak.alternate_worn_layer == TABARD_LAYER)
 				overlays_standing[TABARD_LAYER] = cloak_overlay
+			if(cloak.alternate_worn_layer == UNDER_ARMOR_LAYER)
+				overlays_standing[UNDER_ARMOR_LAYER] = cloak_overlay	
 			if(cloak.alternate_worn_layer == CLOAK_BEHIND_LAYER)
 				overlays_standing[CLOAK_BEHIND_LAYER] = cloak_overlay
 			if(!cloak.alternate_worn_layer)
@@ -1178,6 +1181,7 @@ There are several things that need to be remembered:
 	apply_overlay(TABARD_LAYER)
 	apply_overlay(CLOAK_BEHIND_LAYER)
 	apply_overlay(CLOAK_LAYER)
+	apply_overlay(UNDER_ARMOR_LAYER)
 
 /mob/living/carbon/human/update_inv_shirt()
 	remove_overlay(SHIRT_LAYER)

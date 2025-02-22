@@ -40,7 +40,7 @@
 		)
 
 /datum/customizer/organ/neck_feature/anthro
-	name = "Wild-Kin Fluff"
+	name = "Fluff"
 	allows_disabling = TRUE
 	default_disabled = TRUE
 	customizer_choices = list(
@@ -48,7 +48,7 @@
 		)
 
 /datum/customizer_choice/organ/neck_feature/anthro_fluff
-	name = "Wild-Kin Fluff"
+	name = "Fluff"
 	organ_type = /obj/item/organ/neck_feature/anthro_fluff
 	sprite_accessories = list(
 		/datum/sprite_accessory/neck_feature/mammal_fluff/fluff,
