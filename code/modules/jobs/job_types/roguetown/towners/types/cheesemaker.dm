@@ -27,7 +27,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltr = /obj/item/flint
 	beltl = /obj/item/rogueweapon/huntingknife
-	backpack_contents = list(/obj/item/cooking/pan = 1, /obj/item/reagent_containers/food/snacks/rogue/cheddar = 1, /obj/item/reagent_containers/glass/bottle/rogue/milk = 3, /obj/item/natural/cloth = 1)
+	backpack_contents = list(/obj/item/cooking/pan = 1, /obj/item/reagent_containers/food/snacks/rogue/cheddar = 1, /obj/item/reagent_containers/glass/bottle/rogue/milk = 3, /obj/item/natural/cloth = 1, /obj/item/reagent_containers/powder/salt = 4)
 	H.change_stat("strength", 2)
 	H.change_stat("constitution", 2)
 	H.change_stat("endurance", 1)
