@@ -144,7 +144,7 @@
 		beard.accessory_type = /datum/sprite_accessory/hair/facial/stubble
 		to_chat(src, span_warning("My face itches."))
 		update_hair()
-	
+
 
 /mob/living/carbon/human/handle_traits()
 	if (getOrganLoss(ORGAN_SLOT_BRAIN) >= 60)
