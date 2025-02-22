@@ -3,6 +3,7 @@
 	f_title = "Goblin Chieftess"
 	flag = GOBLINCHIEF
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
