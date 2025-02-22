@@ -188,7 +188,7 @@
 /datum/status_effect/buff/hardballz/on_remove()
 	. = ..()
 
-	/atom/movable/screen/alert/status_effect/debuff/witness
+/atom/movable/screen/alert/status_effect/debuff/witness
 	name = "Hardy"
 	icon_state = "druqks"
 	desc = "My breaths grow lighter by the second. I'm harder to wind out."

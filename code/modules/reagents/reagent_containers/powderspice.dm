@@ -454,42 +454,39 @@
 		if(trans_volume >= 10) 
 			C.apply_status_effect(/datum/status_effect/debuff/witness)
 
-// berserker powder
+// stat swap drugs
 
-/obj/item/reagent_containers/powder/steroids
-	name = "Capaytha Madness"
-	desc = "A very powerful stimulant."
+/obj/item/reagent_containers/powder/hardballz
+	name = "hardballz"
+	desc = "Endurance enhancing drugs."
 	icon = 'icons/roguetown/items/produce.dmi'
-	icon_state = "zerkerorb"
+	icon_state = "spicenew"
 	possible_transfer_amounts = list()
 	volume = 15
-	list_reagents = list(/datum/reagent/steroids = 15)
-	grind_results = list(/datum/reagent/steroids = 15)
+	list_reagents = list(/datum/reagent/hardballz = 15)
+	grind_results = list(/datum/reagent/hardballz = 15)
 	sellprice = 5
 
-/datum/reagent/steroids
-	name = "Capaytha Madness"
+/datum/reagent/hardballz
+	name = "hardballz"
 	description = ""
-	color = "#41270a" // rgb: 96, 165, 132
+	color = "#54581b" // rgb: 96, 165, 132
 	overdose_threshold = 16
 	metabolization_rate = 0.2
 
-/datum/reagent/steroids/overdose_process(mob/living/M)
+/datum/reagent/hardballz/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.25*REM, 0)
 	..()
 	. = 1
 
-/datum/reagent/steroids/on_mob_life(mob/living/carbon/M)
-	narcolepsy_drug_up(M)
-
-/datum/reagent/steroids/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+/datum/reagent/witness/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
 	var/mob/living/carbon/C = A
 	if(method == INJECT && iscarbon(A))
 		if(trans_volume >= 4) 
-			C.apply_status_effect(/datum/status_effect/buff/steroids)
+			C.apply_status_effect(/datum/status_effect/buff/hardballz)
 	else if(method == "swallow" && iscarbon(A))
 		if(trans_volume >= 10) 
-			C.apply_status_effect(/datum/status_effect/buff/steroids)
+			C.apply_status_effect(/datum/status_effect/buff/hardballz)
 
 //SEELIE DRUGS
 

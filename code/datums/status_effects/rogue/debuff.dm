@@ -401,7 +401,7 @@
 /datum/status_effect/buff/debuff/on_remove()
 	. = ..()
 
-	/atom/movable/screen/alert/status_effect/debuff/paralysis
+/atom/movable/screen/alert/status_effect/debuff/paralysis
 	name = "Drug-Induced Paralysis"
 	icon_state = "muscles"
 	desc = "I can't move, I've been poisoned!"
@@ -423,7 +423,7 @@
 /datum/status_effect/buff/debuff/on_remove()
 	. = ..()
 
-	/atom/movable/screen/alert/status_effect/debuff/witness
+/atom/movable/screen/alert/status_effect/debuff/witness
 	name = "Blindness"
-	icon_state = "druqks"
+	icon_state = "high"
 	desc = "I can't see, I've been poisoned!"
