@@ -198,6 +198,9 @@
 	check_other_side = TRUE
 	invis_without_trait = TRUE
 
+/obj/structure/fluff/traveltile/bog
+	can_gain_by_walking = TRUE
+
 /obj/structure/fluff/traveltile/goblin_interior
 	check_other_side = TRUE
 

@@ -589,3 +589,46 @@
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "pecks the air!"
+
+
+// mob+ intents for dungeon
+
+/datum/intent/unarmed/grabmob
+	name = "grabmob"
+	icon_state = "ingrab"
+	attack_verb = list("grabs")
+	chargetime = 0
+	noaa = TRUE
+	rmb_ranged = TRUE
+	releasedrain = 15
+	misscost = 12
+	candodge = TRUE
+	canparry = FALSE
+	item_d_type = "blunt"
+
+/datum/intent/simple/bitewarg
+	name = "bitewarg"
+	icon_state = "instrike"
+	attack_verb = list("bites")
+	animname = "blank22"
+	blade_class = BCLASS_CUT
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 30
+	swingdelay = 1
+	candodge = FALSE
+	canparry = TRUE
+
+/datum/intent/simple/headbuttstrong
+	name = "headbuttboss"
+	icon_state = "instrike"
+	attack_verb = list("headbutts", "rams")
+	animname = "blank22"
+	blade_class = BCLASS_BLUNT
+	hitsound = "punch_hard"
+	chargetime = 0
+	penfactor = 30
+	swingdelay = 0
+	candodge = FALSE
+	canparry = FALSE
+	item_d_type = "blunt"
