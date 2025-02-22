@@ -164,6 +164,7 @@
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T4
 	passive_devotion_gain = 1
+	devotion = max_devotion
 	update_devotion(300, CLERIC_REQ_4, silent = TRUE)
 	START_PROCESSING(SSobj, src)
 
@@ -181,6 +182,7 @@
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T4
 	passive_devotion_gain = 1
+	devotion = max_devotion
 	update_devotion(300, CLERIC_REQ_4, silent = TRUE)
 	START_PROCESSING(SSobj, src)
 
