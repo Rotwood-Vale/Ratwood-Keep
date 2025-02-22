@@ -102,7 +102,7 @@
 	item_state = "trou"
 //	adjustable = CAN_CADJUST
 	sewrepair = TRUE
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 40, "slash" = 20, "stab" = 10, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -110,41 +110,42 @@
 	l_sleeve_status = SLEEVE_NORMAL
 	armor_class = ARMOR_CLASS_LIGHT
 	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/under/roguetown/trou/leather
 	name = "leather trousers"
-	armor = list("blunt" = 50, "slash" = 40, "stab" = 40, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 50, "stab" = 40, "fire" = 0, "acid" = 0)
 	icon_state = "leathertrou"
-	max_integrity = 200
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_SMASH)
+	max_integrity = 150
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants
-	name = "heavy leather trousers"
+	name = "hardened leather trousers"
 	desc = "Thick hide cut and sewn into a pair of very protective trousers. The dense leather can \
 	turn away errant chops."
 	gender = PLURAL
 	icon_state = "roguepants"
 	item_state = "roguepants"
 	sewrepair = TRUE
-	armor = list("blunt" = 75, "slash" = 70, "stab" = 60, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH)
 	blocksound = SOFTHIT
-	max_integrity = 250
+	max_integrity = 200
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	resistance_flags = FIRE_PROOF
 	armor_class = ARMOR_CLASS_LIGHT
-	salvage_result = /obj/item/natural/hide
+	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
-	name = "heavy leather shorts"
+	name = "hardened leather shorts"
 	desc = "A thick hide pair of shorts, favored by some for their ease of motion in spite of \
 	being less protective than full trousers."
 	icon_state = "rogueshorts"
 	item_state = "rogueshorts"
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH)
 	body_parts_covered = GROIN
 
 /obj/item/clothing/under/roguetown/trou/otavan
@@ -152,10 +153,10 @@
 	desc = "padded leather armor made by Otavan tailors, its quality is remarkable."
 	icon_state = "fencerpants"
 	resistance_flags = FIRE_PROOF
-	armor = list("blunt" = 85, "slash" = 75, "stab" = 70, "piercing" = 20, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	armor = list("blunt" = 100, "slash" = 70, "stab" = 50, "piercing" = 20, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH)
 	blocksound = SOFTHIT
-	max_integrity = 300
+	max_integrity = 200
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = TRUE
 	allowed_race = NON_DWARVEN_RACE_TYPES
@@ -313,6 +314,27 @@
 	armor_class = ARMOR_CLASS_HEAVY
 
 /obj/item/clothing/under/roguetown/platelegs/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo
+	max_integrity = 600
+	name = "darksteel garments"
+	desc = "Leg garments worn by true anointed of the Dame of Progress. In Her name."
+	icon_state = "zizocloth"
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
+/obj/item/clothing/under/roguetown/platelegs/zizo/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP)
 

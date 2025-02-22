@@ -532,8 +532,8 @@
 			mmb_intent.update_chargeloop()
 	
 	if(hud_used)		
-		hud_used.quad_intents.switch_intent(input)
-		hud_used.give_intent.switch_intent(input)
+		hud_used.quad_intents?.switch_intent(input)
+		hud_used.give_intent?.switch_intent(input)
 	givingto = null
 
 /mob/verb/def_intent_change(input as num)
@@ -553,6 +553,9 @@
 /mob/verb/toggle_cmode()
 	set name = "cmode-change"
 	set hidden = 1
+
+	if(SSticker.current_state >= GAME_STATE_FINISHED)
+		return
 
 	var/mob/living/L
 	if(isliving(src))

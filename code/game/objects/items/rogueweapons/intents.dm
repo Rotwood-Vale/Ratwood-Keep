@@ -49,8 +49,8 @@
 /datum/intent/Destroy()
 	if(chargedloop)
 		chargedloop.stop()
-	if(mastermob.curplaying == src)
-		mastermob.curplaying = null
+	if(mastermob?.curplaying == src)
+		mastermob?.curplaying = null
 	mastermob = null
 	masteritem = null
 	return ..()

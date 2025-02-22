@@ -1133,6 +1133,13 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
+"aQw" = (
+/obj/effect/decal/cobbleedge{
+	dir = 6
+	},
+/obj/machinery/light/rogue/torchholder/l,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/town)
 "aQA" = (
 /obj/structure/chair/bench/ultimacouch,
 /turf/open/floor/rogue/tile,
@@ -4476,7 +4483,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
 "dqL" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "dqO" = (
@@ -4545,7 +4552,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 9
 	},
-/obj/structure/fluff/dryingrack{
+/obj/machinery/tanningrack{
 	pixel_y = -6;
 	pixel_x = 5
 	},
@@ -7766,7 +7773,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "gdU" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
@@ -9761,7 +9768,6 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/bath)
 "hKO" = (
-/obj/item/reagent_containers/food/snacks/fat,
 /obj/structure/closet/crate/chest{
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
@@ -10954,7 +10960,7 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/town)
 "iLZ" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
 "iMl" = (
@@ -12484,8 +12490,8 @@
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/armor/leather/heavy,
 /obj/item/clothing/suit/roguetown/armor/leather/heavy,
-/obj/item/clothing/suit/roguetown/armor/leather/heavy/belted,
-/obj/item/clothing/suit/roguetown/armor/leather/heavy/belted,
+/obj/item/clothing/suit/roguetown/armor/leather/heavy,
+/obj/item/clothing/suit/roguetown/armor/leather/heavy,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
 "jVC" = (
@@ -12551,7 +12557,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
 "jWI" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "jWN" = (
@@ -15003,7 +15009,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/sewer)
 "lLa" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
 "lLL" = (
@@ -15051,6 +15057,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/clothing/cloak/apron/waist/brown,
+/obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "lPB" = (
@@ -15307,6 +15314,12 @@
 /area/rogue/indoors)
 "mbj" = (
 /turf/closed/wall/mineral/rogue/decowood/vert,
+/area/rogue/indoors/town)
+"mby" = (
+/obj/structure/roguewindow/openclose{
+	dir = 8
+	},
+/turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town)
 "mbB" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -15618,14 +15631,10 @@
 /obj/item/natural/hide,
 /obj/item/natural/hide,
 /obj/item/natural/hide,
-/obj/item/natural/hide,
-/obj/item/natural/hide,
-/obj/item/natural/hide,
 /obj/structure/closet/crate/chest{
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
 	},
-/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "mmv" = (
@@ -17691,6 +17700,7 @@
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
 	},
+/obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "nQj" = (
@@ -20589,7 +20599,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/exposed/town/keep)
 "pSD" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "pTh" = (
@@ -21118,7 +21128,6 @@
 /obj/item/natural/fur,
 /obj/item/natural/fur,
 /obj/item/natural/fur,
-/obj/item/natural/fur,
 /obj/structure/closet/crate/chest{
 	base_icon_state = "woodchestalt";
 	icon_state = "woodchestalt"
@@ -21448,7 +21457,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "qIk" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
@@ -22971,7 +22980,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement/keep)
 "rRb" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors/town)
 "rRc" = (
@@ -25927,7 +25936,7 @@
 	},
 /area/rogue/indoors/town/garrison)
 "ufu" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
 "ufv" = (
@@ -26242,7 +26251,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/exposed/town/keep)
 "uth" = (
-/obj/structure/fluff/dryingrack,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/magician)
 "uts" = (
@@ -65897,8 +65906,8 @@ lcu
 uvM
 hvn
 waT
-sby
 oyZ
+sby
 oyZ
 mlJ
 waT
@@ -66064,7 +66073,7 @@ waT
 vOh
 hvn
 liZ
-rLi
+aQw
 sLb
 kLO
 api
@@ -90264,7 +90273,7 @@ qhb
 ouw
 ouw
 tvX
-weW
+mby
 tvX
 tvX
 ouw

@@ -86,3 +86,31 @@
 	gripped_intents = null
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	bundletype = /obj/item/natural/bundle/bone
+
+/obj/item/natural/hide/cured
+	name = "cured leather"
+	icon_state = "leather"
+	desc = "A hide piece that has been cured and may now be worked."
+	sellprice = 7
+	bundletype = /obj/item/natural/bundle/curred_hide
+
+/obj/item/natural/bundle/curred_hide
+	name = "bundle of cured leather"
+	desc = "A bunch of cured leather pieces bundled together."
+	icon_state = "leatherroll1"
+	maxamount = 10
+	spitoutmouth = FALSE
+	stacktype = /obj/item/natural/hide/cured
+	stackname = "cured leather"
+	icon1 = "leatherroll1"
+	icon1step = 5
+	icon2 = "leatherroll2"
+	icon2step = 10
+
+/obj/item/natural/cured/essence
+	name = "essense of wilderness"
+	icon_state = "wessence"
+	desc = "A mystical essense embued with the power of Dendor. Merely holding it transports one's mind to ancient times."
+	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_SMALL
+	sellprice = 20

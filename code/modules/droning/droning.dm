@@ -32,6 +32,9 @@ SUBSYSTEM_DEF(droning)
 /datum/controller/subsystem/droning/proc/play_area_sound(area/area_player, client/listener)
 	if(!area_player || !listener)
 		return
+	
+	if(SSticker.current_state >= GAME_STATE_FINISHED) //stop drones in round end
+		return
 
 	if(area_player.we_droning_here)
 
@@ -147,7 +150,7 @@ SUBSYSTEM_DEF(droning)
 /datum/controller/subsystem/droning/proc/kill_droning(client/victim)
 	if(!victim?.droning_sound)
 		return
-	var/sound/sound_killer = sound()
+	var/sound/sound_killer = sound('sound/blank.ogg')
 	sound_killer.channel = victim.droning_sound.channel
 	SEND_SOUND(victim, sound_killer)
 	victim.droning_sound = null
