@@ -356,6 +356,7 @@
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 35, "embedded_fall_chance" = 10)	//Better than iron throwing knife by 10%
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
+	associated_skill = /datum/skill/combat/polearms
 	heavy_metal = FALSE					//Stops spin animation, maybe.
 
 /obj/item/ammo_casing/caseless/rogue/javelin/steel
