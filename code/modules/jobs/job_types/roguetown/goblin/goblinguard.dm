@@ -2,6 +2,7 @@
 	title = "Goblin Guard"
 	flag = GOBLINGUARD
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 3//From 6
 	spawn_positions = 3//From 6
