@@ -3626,10 +3626,6 @@
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/indoors/shelter/woods)
-"cLo" = (
-/obj/structure/roguemachine/bounty,
-/turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/rtfield)
 "cLG" = (
 /obj/structure/fluff/walldeco/sparrowflag,
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -6479,6 +6475,12 @@
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors)
+"eYS" = (
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/rtfield)
 "eYT" = (
 /obj/structure/mineral_door/wood/violet{
 	locked = 1;
@@ -6593,6 +6595,12 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
+"fcX" = (
+/obj/structure/fluff/walldeco/customflag{
+	pixel_y = 32
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/rtfield)
 "fdk" = (
 /obj/structure/stairs{
 	dir = 1
@@ -6966,6 +6974,10 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
+"frv" = (
+/obj/structure/chair/arrestchair,
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/rtfield)
 "frx" = (
 /obj/structure/stairs{
 	dir = 4
@@ -9203,12 +9215,6 @@
 /obj/structure/underworld/barrier,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
-"hlM" = (
-/obj/structure/fluff/railing/border{
-	dir = 4
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "hlN" = (
 /obj/structure/closet/crate/chest/neu_fancy,
 /obj/item/paper/scroll,
@@ -9238,6 +9244,12 @@
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors/beach)
+"hmd" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "hmF" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/ruinedwood,
@@ -9898,12 +9910,6 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
-"hOw" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
 "hON" = (
 /obj/structure/table/wood,
 /obj/item/clothing/mask/cigarette/pipe/westman{
@@ -10344,6 +10350,10 @@
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town)
+"ihY" = (
+/obj/structure/roguemachine/bounty,
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/rtfield)
 "iim" = (
 /obj/item/book/rogue/festus,
 /obj/item/book/rogue/fishing,
@@ -18071,6 +18081,10 @@
 /obj/structure/fireaxecabinet/south,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
+"nYf" = (
+/obj/structure/fluff/railing/border,
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/rtfield)
 "nYt" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -18278,12 +18292,6 @@
 	icon_state = "greenstone"
 	},
 /area/rogue/indoors/town/manor)
-"ohm" = (
-/obj/structure/fluff/railing/border{
-	dir = 6
-	},
-/turf/open/floor/rogue/grassyel,
-/area/rogue/outdoors/rtfield)
 "ohs" = (
 /obj/machinery/light/rogue/torchholder/c{
 	pixel_y = -32
@@ -18627,6 +18635,12 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern)
+"osR" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "osX" = (
 /obj/structure/stairs{
 	dir = 4
@@ -20632,6 +20646,9 @@
 /obj/structure/roguemachine/scomm/l,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
+"pQl" = (
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/outdoors/rtfield)
 "pQC" = (
 /obj/structure/fluff/walldeco/customflag,
 /turf/closed/wall/mineral/rogue/stone,
@@ -20911,6 +20928,12 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
+"qbq" = (
+/obj/structure/fluff/railing/border{
+	dir = 10
+	},
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/rtfield)
 "qbw" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/gloves/roguetown/fingerless_leather,
@@ -22305,13 +22328,10 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
 "rhy" = (
-/obj/effect/decal/cobbleedge{
-	dir = 9
-	},
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
 	},
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "rhJ" = (
 /obj/structure/closet/crate/chest/wicker{
@@ -22447,12 +22467,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town/manor)
-"roD" = (
-/obj/structure/fluff/railing/border{
-	dir = 10
-	},
-/turf/open/floor/rogue/grassyel,
-/area/rogue/outdoors/rtfield)
 "roU" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -22614,13 +22628,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town)
 "rvB" = (
-/obj/effect/decal/cobbleedge{
-	dir = 5
-	},
 /obj/structure/chair/arrestchair,
-/obj/effect/decal/cobbleedge{
-	dir = 5
-	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/town)
 "rvG" = (
@@ -23244,9 +23252,6 @@
 /obj/item/natural/feather,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/shop)
-"rUZ" = (
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/outdoors/rtfield)
 "rVd" = (
 /obj/structure/table/wood,
 /turf/open/floor/rogue/ruinedwood,
@@ -25665,10 +25670,6 @@
 	},
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
-"tOh" = (
-/obj/structure/fluff/railing/border,
-/turf/open/floor/rogue/grassyel,
-/area/rogue/outdoors/rtfield)
 "tOl" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/blocks,
@@ -25709,12 +25710,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors/town)
-"tPI" = (
-/obj/structure/fluff/walldeco/customflag{
-	pixel_y = 32
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/rtfield)
 "tQj" = (
 /obj/structure/closet/crate/chest/neu_iron,
 /obj/item/scrying,
@@ -30294,6 +30289,10 @@
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-e"
+	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
 "xux" = (
@@ -30482,16 +30481,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/dwarfin)
-"xCp" = (
-/obj/effect/decal/cobbleedge{
-	dir = 5
-	},
-/obj/structure/chair/arrestchair,
-/obj/effect/decal/cobbleedge{
-	dir = 5
-	},
-/turf/open/floor/rogue/concrete,
-/area/rogue/outdoors/rtfield)
 "xCI" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -65294,8 +65283,8 @@ oYo
 wDa
 wDa
 oYo
-ohm
-hlM
+eYS
+osR
 ylN
 ylN
 ylN
@@ -65451,8 +65440,8 @@ wDa
 wDa
 tGa
 wDa
-tOh
-xCp
+nYf
+frv
 ylN
 ylN
 ylN
@@ -65608,9 +65597,9 @@ wDa
 wDa
 wDa
 wDa
-tOh
-rUZ
-tPI
+nYf
+pQl
+fcX
 ylN
 ylN
 jIk
@@ -65765,8 +65754,8 @@ wDa
 wDa
 wDa
 wDa
-tOh
-cLo
+nYf
+ihY
 ylN
 ylN
 ylN
@@ -65922,8 +65911,8 @@ wDa
 omo
 jIk
 wDa
-roD
-hOw
+qbq
+hmd
 ylN
 ylN
 ylN
@@ -69575,7 +69564,7 @@ rJM
 jiN
 rJM
 rJM
-hvn
+rJM
 hvn
 hvn
 fhF
@@ -69732,7 +69721,7 @@ pJn
 pJn
 oLU
 xuk
-pJn
+sxT
 hvn
 hvn
 hvn
@@ -69889,7 +69878,7 @@ pIs
 sxT
 lwz
 rvB
-pJn
+hvn
 hvn
 hvn
 hvn
