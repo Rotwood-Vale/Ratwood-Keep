@@ -59,6 +59,7 @@
 				used_time -= max((C.mind.get_skill_level(/datum/skill/craft/traps) * 2 SECONDS), 2 SECONDS)
 			if(do_after(user, used_time, target = src))
 				armed = FALSE
+				w_class = initial(w_class)
 				update_icon()
 				alpha = 255
 				C.visible_message(span_notice("[C] disarms \the [src]."), \
@@ -94,10 +95,12 @@
 	..()
 
 /obj/item/restraints/legcuffs/beartrap/armed
+	w_class = WEIGHT_CLASS_BULKY
 	armed = TRUE
 	anchored = TRUE // Pre mapped traps (bad mapping btw, don't) start anchored
 
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage
+	w_class = WEIGHT_CLASS_BULKY
 	armed = TRUE
 	alpha = 80
 
@@ -121,6 +124,10 @@
 		if(do_after(user, 50 - (L.STASTR*2), target = user))
 			if(prob(50))
 				armed = !armed
+				if(armed)
+					w_class = WEIGHT_CLASS_BULKY
+				else
+					w_class = initial(w_class)
 				update_icon()
 				to_chat(user, span_notice("[src] is now [armed ? "armed" : "disarmed"]"))
 			else
@@ -128,6 +135,7 @@
 
 /obj/item/restraints/legcuffs/beartrap/proc/close_trap()
 	armed = FALSE
+	w_class = initial(w_class)
 	anchored = FALSE // Take it off the ground
 	alpha = 255
 	update_icon()
