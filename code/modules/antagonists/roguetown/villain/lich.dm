@@ -30,7 +30,8 @@
 		TRAIT_HEAVYARMOR,
 		TRAIT_CABAL,
 		TRAIT_DEATHSIGHT,
-		TRAIT_COUNTERCOUNTERSPELL
+		TRAIT_COUNTERCOUNTERSPELL,
+		TRAIT_RITUALIST
 		)
 
 	var/STASTR = 10
@@ -183,6 +184,7 @@
 		SLOT_BELT_R,
 		SLOT_BELT_L,
 		SLOT_HANDS,
+		SLOT_HANDS,
 		SLOT_BACK_L,
 		)
 
@@ -199,6 +201,7 @@
 		/obj/item/reagent_containers/glass/bottle/rogue/manapot,
 		/obj/item/rogueweapon/huntingknife/idagger/steel,
 		/obj/item/rogueweapon/woodstaff/wise,
+		/obj/item/ritechalk,
 		/obj/item/storage/backpack/rogue/satchel,
 	)
 	for (var/i = 1, i <= equipment_slots.len, i++)

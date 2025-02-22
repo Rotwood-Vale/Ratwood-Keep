@@ -24,6 +24,14 @@
 	craftdiff = 3
 	sellprice = 19
 
+/datum/crafting_recipe/roguetown/weaving/puritan
+
+	name = "puritan's cape"
+	result = list(/obj/item/clothing/cloak/cape/puritan)
+	reqs = list(/obj/item/natural/silk = 4)
+	craftdiff = 3
+	sellprice = 35
+
 /datum/crafting_recipe/roguetown/weaving/shirt
 	name = "formal silks"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan)
