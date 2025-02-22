@@ -235,8 +235,8 @@
 	if(isliving(target))
 		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target)) //ill be real I got no idea why this worked.
 		var/mob/living/L = target
-		L.throw_at(throw_target, 7, 4)
-		L.adjustBruteLoss(20)
+		if(L)
+			L.throw_at(throw_target, 7, 4)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth
 	icon = 'icons/mob/summonable/32x64.dmi'
@@ -392,8 +392,8 @@
 	if(isliving(target))
 		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target))
 		var/mob/living/L = target
-		L.throw_at(throw_target, 7, 4)
-		L.adjustBruteLoss(20)
+		if(L)
+			L.throw_at(throw_target, 7, 4)
 
 /obj/projectile/earthenfist
 	name = "Elemental fist"
