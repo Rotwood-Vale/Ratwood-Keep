@@ -13378,6 +13378,15 @@
 /obj/structure/stairs,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/town/basement/keep)
+"ksW" = (
+/obj/structure/closet/crate/drawer{
+	pixel_y = 8
+	},
+/obj/machinery/light/rogue/torchholder/l{
+	dir = 8
+	},
+/turf/open/floor/carpet/red,
+/area/rogue/indoors)
 "ktd" = (
 /obj/structure/table/wood{
 	icon_state = "longtable"
@@ -17980,6 +17989,15 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
+"nIg" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/machinery/light/rogue/torchholder/l{
+	dir = 8
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors)
 "nIj" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -52152,7 +52170,7 @@ qZy
 bRO
 bRO
 bRO
-bRO
+bCQ
 bRO
 qZy
 bId
@@ -53720,7 +53738,7 @@ bId
 bId
 qZy
 bRO
-bRO
+aHr
 uVf
 obx
 obx
@@ -54662,13 +54680,13 @@ bId
 bId
 qZy
 rNB
-bRO
+bCQ
 tBN
 rPp
 rPp
 cOv
 bRO
-bRO
+bCQ
 hMO
 qZy
 vqj
@@ -77114,7 +77132,7 @@ bRO
 bRO
 bRO
 bRO
-bRO
+bCQ
 bRO
 xpd
 bRO
@@ -78999,7 +79017,7 @@ xOC
 qZy
 bRO
 bRO
-rPp
+eLI
 rPp
 rPp
 qZy
@@ -79626,13 +79644,13 @@ xOC
 xOC
 qZy
 bRO
-sSz
+nIg
 kCb
 kCb
 qgg
 urD
 bRO
-nkz
+ksW
 qHr
 qZy
 xOC
