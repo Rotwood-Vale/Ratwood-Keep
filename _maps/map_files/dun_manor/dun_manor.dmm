@@ -19110,6 +19110,15 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
+"oLU" = (
+/obj/effect/decal/cobbleedge{
+	dir = 9
+	},
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/town)
 "oMI" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/carpet,
@@ -69669,7 +69678,7 @@ pJn
 pJn
 pJn
 pJn
-ckW
+oLU
 xuk
 pJn
 hvn
