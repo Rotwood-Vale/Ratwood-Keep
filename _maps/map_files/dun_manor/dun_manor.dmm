@@ -2930,26 +2930,9 @@
 	},
 /area/rogue/indoors/town)
 "cia" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/robe/necra,
-/obj/item/clothing/suit/roguetown/shirt/robe/necra,
-/obj/item/clothing/head/roguetown/necrahood,
-/obj/item/clothing/head/roguetown/necrahood,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
-/obj/item/clothing/cloak/templar/malumite,
-/obj/item/clothing/cloak/templar/malumite,
-/obj/item/clothing/cloak/templar/necran,
-/obj/item/clothing/cloak/templar/necran,
-/obj/item/clothing/cloak/templar/astratan,
-/obj/item/clothing/cloak/templar/astratan,
-/obj/item/clothing/suit/roguetown/shirt/robe/abyssor,
-/obj/item/clothing/suit/roguetown/shirt/robe/abyssor,
-/obj/item/clothing/head/roguetown/roguehood/abyssor,
-/obj/item/clothing/head/roguetown/roguehood/abyssor,
-/obj/item/clothing/cloak/templar/pestran,
-/obj/item/clothing/cloak/templar/pestran,
-/obj/item/clothing/cloak/templar/pestran,
+/obj/structure/closet/crate/chest/neu,
+/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/rogue/satchel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
 "cip" = (
@@ -5580,12 +5563,13 @@
 	},
 /area/rogue/indoors/town/vault)
 "ekU" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/item/clothing/suit/roguetown/shirt/robe/dendor{
-	pixel_y = 8
-	},
-/obj/item/clothing/suit/roguetown/shirt/robe/dendor{
-	pixel_y = 8
+/obj/structure/rack/rogue/shelf/biggest,
+/obj/item/clothing/suit/roguetown/shirt/robe/eora,
+/obj/item/clothing/suit/roguetown/shirt/robe/eora,
+/obj/item/clothing/head/roguetown/eoramask,
+/obj/item/clothing/head/roguetown/eoramask,
+/obj/structure/fluff/walldeco/psybanner{
+	pixel_y = 29
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
@@ -9179,12 +9163,14 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/tavern)
 "hkz" = (
-/obj/structure/rack/rogue/shelf{
-	pixel_y = -6
+/obj/structure/rack/rogue/shelf/biggest,
+/obj/item/clothing/suit/roguetown/shirt/robe/necra,
+/obj/item/clothing/suit/roguetown/shirt/robe/necra,
+/obj/item/clothing/head/roguetown/necrahood,
+/obj/item/clothing/head/roguetown/necrahood,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
 	},
-/obj/item/clothing/head/roguetown/nochood,
-/obj/item/clothing/head/roguetown/nochood,
-/turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town/church/chapel)
 "hkC" = (
 /obj/machinery/light/rogue/wallfire{
@@ -10391,28 +10377,11 @@
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/tavern)
 "ikf" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/neck/roguetown/psicross/pestra,
-/obj/item/clothing/neck/roguetown/psicross/pestra,
-/obj/item/clothing/neck/roguetown/psicross/noc,
-/obj/item/clothing/neck/roguetown/psicross/noc,
-/obj/item/clothing/neck/roguetown/psicross/necra,
-/obj/item/clothing/neck/roguetown/psicross/necra,
-/obj/item/clothing/neck/roguetown/psicross/eora,
-/obj/item/clothing/neck/roguetown/psicross/eora,
-/obj/item/clothing/neck/roguetown/psicross/dendor,
-/obj/item/clothing/neck/roguetown/psicross/dendor,
-/obj/item/clothing/neck/roguetown/psicross/astrata,
-/obj/item/clothing/neck/roguetown/psicross/astrata,
-/obj/item/clothing/neck/roguetown/psicross/ravox,
-/obj/item/clothing/neck/roguetown/psicross/ravox,
-/obj/item/clothing/neck/roguetown/psicross/malum,
-/obj/item/clothing/neck/roguetown/psicross/malum,
-/obj/item/clothing/neck/roguetown/psicross/abyssor,
-/obj/item/clothing/neck/roguetown/psicross/abyssor,
-/obj/machinery/light/rogue/torchholder/l,
-/turf/open/floor/rogue/cobble,
-/area/rogue/indoors/town/church/chapel)
+/obj/structure/closet/crate/chest/neu,
+/obj/item/storage/belt/rogue/surgery_bag/full,
+/obj/item/storage/belt/rogue/surgery_bag/full,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/church)
 "ikj" = (
 /obj/structure/stairs{
 	dir = 1
@@ -12600,7 +12569,6 @@
 /area/rogue/indoors/town/magician)
 "jWG" = (
 /obj/item/clothing/cloak/half,
-/obj/structure/closet/crate/roguecloset,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
@@ -13837,14 +13805,15 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "kSP" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/item/clothing/suit/roguetown/shirt/robe/eora{
-	pixel_y = 8
+/obj/effect/decal/cobbleedge,
+/obj/structure/rack/rogue/shelf/biggest,
+/obj/item/clothing/suit/roguetown/shirt/robe/noc,
+/obj/item/clothing/suit/roguetown/shirt/robe/noc,
+/obj/item/clothing/head/roguetown/nochood,
+/obj/item/clothing/head/roguetown/nochood,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/eora{
-	pixel_y = 8
-	},
-/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
 "kSX" = (
 /obj/effect/decal/cleanable/blood,
@@ -16567,14 +16536,28 @@
 /turf/closed/wall/mineral/rogue/wooddark/horizontal,
 /area/rogue/indoors/town/physician)
 "mWR" = (
-/obj/structure/roguewindow/stained/silver,
-/obj/structure/rack/rogue/shelf{
-	pixel_y = -6
+/obj/structure/closet/crate/roguecloset,
+/obj/item/clothing/neck/roguetown/psicross/pestra,
+/obj/item/clothing/neck/roguetown/psicross/pestra,
+/obj/item/clothing/neck/roguetown/psicross/noc,
+/obj/item/clothing/neck/roguetown/psicross/noc,
+/obj/item/clothing/neck/roguetown/psicross/necra,
+/obj/item/clothing/neck/roguetown/psicross/necra,
+/obj/item/clothing/neck/roguetown/psicross/eora,
+/obj/item/clothing/neck/roguetown/psicross/eora,
+/obj/item/clothing/neck/roguetown/psicross/dendor,
+/obj/item/clothing/neck/roguetown/psicross/dendor,
+/obj/item/clothing/neck/roguetown/psicross/astrata,
+/obj/item/clothing/neck/roguetown/psicross/astrata,
+/obj/item/clothing/neck/roguetown/psicross/ravox,
+/obj/item/clothing/neck/roguetown/psicross/ravox,
+/obj/item/clothing/neck/roguetown/psicross/malum,
+/obj/item/clothing/neck/roguetown/psicross/malum,
+/obj/item/clothing/neck/roguetown/psicross/abyssor,
+/obj/item/clothing/neck/roguetown/psicross/abyssor,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
 	},
-/obj/item/clothing/head/roguetown/roguehood/astrata,
-/obj/item/clothing/head/roguetown/roguehood/astrata,
-/obj/item/clothing/head/roguetown/roguehood/astrata,
-/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church/chapel)
 "mXc" = (
 /obj/machinery/light/rogue/torchholder/r,
@@ -18146,9 +18129,6 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/under/town/basement/keep)
 "occ" = (
-/obj/structure/closet/crate/chest/neu,
-/obj/item/storage/belt/rogue/surgery_bag/full,
-/obj/item/storage/belt/rogue/surgery_bag/full,
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -23919,13 +23899,14 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/sewer)
 "syp" = (
-/obj/structure/roguewindow/stained/silver,
-/obj/structure/rack/rogue/shelf{
-	pixel_y = -6
+/obj/structure/rack/rogue/shelf/biggest,
+/obj/item/clothing/suit/roguetown/shirt/robe/abyssor,
+/obj/item/clothing/suit/roguetown/shirt/robe/abyssor,
+/obj/item/clothing/head/roguetown/roguehood/abyssor,
+/obj/item/clothing/head/roguetown/roguehood/abyssor,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
 	},
-/obj/item/clothing/head/roguetown/eoramask,
-/obj/item/clothing/head/roguetown/eoramask,
-/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church/chapel)
 "sys" = (
 /obj/structure/closet/crate/chest/neu,
@@ -23945,9 +23926,17 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "szp" = (
-/obj/structure/closet/crate/chest/neu,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/structure/closet/crate/roguecloset,
+/obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
+/obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
+/obj/item/clothing/cloak/templar/malumite,
+/obj/item/clothing/cloak/templar/malumite,
+/obj/item/clothing/cloak/templar/astratan,
+/obj/item/clothing/cloak/templar/astratan,
+/obj/item/clothing/cloak/templar/pestran,
+/obj/item/clothing/cloak/templar/pestran,
+/obj/item/clothing/cloak/templar/necran,
+/obj/item/clothing/cloak/templar/necran,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -24833,14 +24822,15 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "tiP" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/item/clothing/suit/roguetown/shirt/robe/noc{
-	pixel_y = 8
-	},
-/obj/item/clothing/suit/roguetown/shirt/robe/noc{
-	pixel_y = 8
-	},
 /obj/effect/decal/cobbleedge,
+/obj/structure/rack/rogue/shelf/biggest,
+/obj/item/clothing/suit/roguetown/shirt/robe/astrata,
+/obj/item/clothing/suit/roguetown/shirt/robe/astrata,
+/obj/item/clothing/head/roguetown/roguehood/astrata,
+/obj/item/clothing/head/roguetown/roguehood/astrata,
+/obj/structure/fluff/walldeco/psybanner{
+	pixel_y = 29
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -28040,17 +28030,12 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/manor)
 "vVG" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/item/clothing/suit/roguetown/shirt/robe/astrata{
-	pixel_y = 8
-	},
-/obj/item/clothing/suit/roguetown/shirt/robe/astrata{
-	pixel_y = 8
-	},
-/obj/effect/decal/cobbleedge,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
-	},
+/obj/structure/rack/rogue/shelf/biggest,
+/obj/item/clothing/suit/roguetown/shirt/robe/dendor,
+/obj/item/clothing/suit/roguetown/shirt/robe/dendor,
+/obj/item/clothing/head/roguetown/dendormask,
+/obj/item/clothing/head/roguetown/dendormask,
+/turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
 "vVR" = (
 /obj/structure/bars/passage/shutter{
@@ -30976,11 +30961,6 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "xTt" = (
-/obj/structure/rack/rogue/shelf{
-	pixel_y = -6
-	},
-/obj/item/clothing/head/roguetown/dendormask,
-/obj/item/clothing/head/roguetown/dendormask,
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town/church/chapel)
 "xTQ" = (
@@ -63225,7 +63205,7 @@ jXG
 dwf
 wgE
 mvz
-vfo
+ikf
 aag
 mrZ
 jWG
@@ -110161,7 +110141,7 @@ qhb
 qhb
 qhb
 qhb
-ouw
+ixQ
 ixQ
 ixQ
 ixQ
@@ -110319,8 +110299,8 @@ qhb
 qhb
 qhb
 ixQ
-ixQ
-ikf
+vVG
+eeZ
 cia
 ixQ
 txv
@@ -110632,10 +110612,10 @@ qhb
 qhb
 qhb
 qhb
-syp
-kSP
+pIq
+gKA
 sta
-hto
+syp
 ixQ
 dHC
 hto
@@ -110789,10 +110769,10 @@ qhb
 qhb
 qhb
 qhb
-mWR
-vVG
+pIq
+unn
 hto
-hto
+hkz
 ixQ
 aVU
 hto
@@ -110946,10 +110926,10 @@ qhb
 qhb
 qhb
 qhb
-hkz
+xTt
 tiP
 hto
-hto
+mWR
 ixQ
 tdF
 hto
@@ -111104,7 +111084,7 @@ qhb
 qhb
 qhb
 ixQ
-ixQ
+kSP
 occ
 szp
 ixQ
@@ -111260,7 +111240,7 @@ qhb
 qhb
 qhb
 qhb
-ouw
+ixQ
 ixQ
 qVf
 qVf
