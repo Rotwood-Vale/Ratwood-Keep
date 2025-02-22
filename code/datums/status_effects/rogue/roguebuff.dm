@@ -176,10 +176,10 @@
 
 // stat swap drugs
 
-/datum/status_effect/debuff/hardballz
-	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
+/datum/status_effect/buff/hardballz //great for armored defense
+	alert_type = /atom/movable/screen/alert/status_effect/buff/hardballz
 	id = "hardballz"
-	effectedstats = list("endurance" = 2, "intelligence" = 2)
+	effectedstats = list("endurance" = 2, "constitution" = -2)
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/hardballz/on_apply()
@@ -188,11 +188,72 @@
 /datum/status_effect/buff/hardballz/on_remove()
 	. = ..()
 
-/atom/movable/screen/alert/status_effect/debuff/witness
+/atom/movable/screen/alert/status_effect/buff/hardballz
 	name = "Hardy"
 	icon_state = "druqks"
 	desc = "My breaths grow lighter by the second. I'm harder to wind out."
 
+// hawkeyes
+
+/datum/status_effect/buff/hawkeyes
+	alert_type = /atom/movable/screen/alert/status_effect/buff/hawkeyes
+	id = "hawkeyes"
+	effectedstats = list("perception" = 2, "endurance" = -2)
+	duration = 30 SECONDS
+
+/datum/status_effect/buff/hawkeyes/on_apply()
+	. = ..()
+
+/datum/status_effect/buff/hawkeyes/on_remove()
+	. = ..()
+
+/atom/movable/screen/alert/status_effect/buff/hawkeyes
+	name = "Focused"
+	icon_state = "druqks"
+	desc = "It's easier to notice the finer details. I have less difficulty being precise."
+
+ // stoneskin
+
+/datum/status_effect/buff/stoneskin
+	alert_type = /atom/movable/screen/alert/status_effect/buff/stoneskin
+	id = "stoneskin"
+	effectedstats = list("constitution" = 3, "endurance" = 3, "speed" = -2)
+	duration = 30 SECONDS
+
+/datum/status_effect/buff/stoneskin/on_apply()
+	. = ..()
+
+/datum/status_effect/buff/stoneskin/on_remove()
+	. = ..()
+
+/atom/movable/screen/alert/status_effect/buff/stoneskin
+	name = "Tough"
+	icon_state = "druqks"
+	desc = "The skin on my body hardens, it's harder to move."
+
+ // salvation
+
+/datum/status_effect/buff/salvation
+	alert_type = /atom/movable/screen/alert/status_effect/buff/salvation
+	id = "salvation"
+	effectedstats = list("constitution" = 2, "endurance" = 2, "speed" = -5)
+	duration = 30 SECONDS
+
+/datum/status_effect/buff/salvation/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+
+/datum/status_effect/buff/salvation/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+
+/atom/movable/screen/alert/status_effect/buff/salvation
+	name = "Thick-Skinned"
+	icon_state = "druqks"
+	desc = "Cuts aren't as bad, anymore. But it hurts to move."
+
+
+// magic stuff below
 
 /atom/movable/screen/alert/status_effect/buff/featherfall
 	name = "Featherfall"

@@ -15,7 +15,7 @@
 	display_order = JDO_RUMACAPTAIN
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/rumacaptain
-	min_pq = 0 //turn into 8 after testing
+	min_pq = 8
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_rumaclan.ogg'

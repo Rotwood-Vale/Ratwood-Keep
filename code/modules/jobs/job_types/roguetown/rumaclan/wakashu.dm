@@ -15,7 +15,7 @@
 	display_order = JDO_WAKASHU
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/hireling
-	min_pq = 0 //turn into 3 after testing
+	min_pq = 3
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_rumaclan.ogg'

@@ -15,7 +15,7 @@
 	display_order = JDO_BUNYU
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/bunsu
-	min_pq = 0 //turn into 5 after testing
+	min_pq = 5
 	max_pq = null
 	foreign_examine = TRUE
 

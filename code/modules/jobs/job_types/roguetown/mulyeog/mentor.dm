@@ -15,7 +15,7 @@
 	display_order = JDO_MENTOR
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/mentor
-	min_pq = 0 //turn into 8 after testing
+	min_pq = 8
 	max_pq = null
 	foreign_examine = TRUE
 

@@ -15,7 +15,7 @@
 	display_order = JDO_SALSU
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/salsu
-	min_pq = 0 //turn into 3 after testing
+	min_pq = 3
 	max_pq = null
 	foreign_examine = TRUE
 

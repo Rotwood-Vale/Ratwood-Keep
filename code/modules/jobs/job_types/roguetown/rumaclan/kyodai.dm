@@ -15,7 +15,7 @@
 	display_order = JDO_KYODAI
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/redpole
-	min_pq = 0 //turn into 5 after testing
+	min_pq = 5
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_rumaclan.ogg'
