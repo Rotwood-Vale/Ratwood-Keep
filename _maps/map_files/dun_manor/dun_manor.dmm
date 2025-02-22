@@ -12515,7 +12515,6 @@
 /area/rogue/indoors/town/magician)
 "jWG" = (
 /obj/item/clothing/cloak/half,
-/obj/structure/closet/crate/roguecloset,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
