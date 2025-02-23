@@ -402,7 +402,7 @@
 	createditem_num = 4
 
 /datum/anvil_recipe/weapons/silver/javelin
-	name = "Steel Javelin (+1 Small Log)"
+	name = "Silver Javelin (+1 Small Log)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin/silver
