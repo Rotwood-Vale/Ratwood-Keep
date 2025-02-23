@@ -17,6 +17,7 @@
 	max_pq = null
 	subclass_cat_rolls = list(CTAG_GOBS = 20)
 	advjob_examine = TRUE
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinguard
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
