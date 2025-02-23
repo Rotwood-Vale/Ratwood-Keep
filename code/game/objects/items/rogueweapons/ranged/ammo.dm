@@ -348,6 +348,7 @@
 	icon_state = "ijavelin"
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
+	armor_penetration = 35					//Redfined because.. it's not a weapon, it's an 'arrow' basically.
 	max_integrity = 50						//Breaks semi-easy, stops constant re-use. 
 	wdefense = 3							//Worse than a spear
 	thrown_bclass = BCLASS_STAB				//Knives are slash, lets try out stab and see if it's too strong in terms of wounding.
@@ -361,6 +362,7 @@
 
 /obj/item/ammo_casing/caseless/rogue/javelin/steel
 	force = 16
+	armor_penetration = 50
 	name = "steel javelin"
 	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a steel head; perfect for piercing armor!"
 	icon_state = "javelin"
