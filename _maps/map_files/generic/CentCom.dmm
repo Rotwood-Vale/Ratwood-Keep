@@ -1509,6 +1509,13 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/banditcamp)
+"ir" = (
+/obj/structure/fluff/railing/border{
+	icon_state = "border";
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods)
 "iy" = (
 /obj/effect/landmark/start/bandit{
 	icon_state = "arrow";
@@ -1643,6 +1650,12 @@
 	icon_state = "chess"
 	},
 /area/rogue/indoors)
+"oa" = (
+/obj/structure/roguemachine/bounty{
+	color = "#F75D59"
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/woods)
 "on" = (
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/banditcamp)
@@ -1777,6 +1790,13 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue)
+"sQ" = (
+/obj/structure/fluff/railing/border{
+	icon_state = "border";
+	dir = 8
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/woods)
 "tN" = (
 /turf/closed,
 /area/rogue/under)
@@ -1801,6 +1821,10 @@
 	dir = 1
 	},
 /area/rogue/indoors/banditcamp)
+"uV" = (
+/obj/machinery/light/rogue/torchholder/c,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/woods)
 "vb" = (
 /obj/structure/fluff/statue/evil,
 /turf/open/floor/rogue/dirt/road,
@@ -2200,6 +2224,12 @@
 /obj/structure/closet/crate/coffin/vampire,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
+"GK" = (
+/obj/structure/chair/freedomchair{
+	color = "#F75D59"
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/woods)
 "Hc" = (
 /obj/effect/landmark/start/bandit{
 	icon_state = "arrow";
@@ -8642,7 +8672,7 @@ WB
 WB
 WB
 WB
-Te
+ir
 vQ
 dD
 vQ
@@ -8772,7 +8802,7 @@ ni
 dr
 dy
 WB
-Te
+GK
 dD
 dD
 Te
@@ -8902,8 +8932,8 @@ ni
 ds
 dz
 WB
-Te
-vQ
+bC
+uV
 vQ
 Te
 Te
@@ -9032,7 +9062,7 @@ ni
 dt
 ni
 WB
-Te
+oa
 dD
 vQ
 Te
@@ -9162,7 +9192,7 @@ ni
 Zl
 Zl
 WB
-Te
+sQ
 vQ
 dD
 Te

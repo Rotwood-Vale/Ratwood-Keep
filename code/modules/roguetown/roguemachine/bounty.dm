@@ -231,8 +231,42 @@
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "evilchair"
 	blade_dulling = DULLING_BASH
+	color = "#F75D59"
 	item_chair = null
 	anchored = TRUE
+
+/obj/structure/chair/freedomchair/crafted
+	desc = "A chair-shaped machine normally used to place cursed masks onto a prisoner's head. This one's clearly been tampered with, and looks suspicious."
+
+/obj/structure/chair/freedomchair/crafted/attack_right(mob/living/carbon/human/A)
+	var/mob/living/carbon/human/M = null
+	for(var/l in buckled_mobs)
+		M = l
+	if(!ismob(M))
+		say("CANNOT BEGIN WITHOUT SUBJECT BUCKLED.")
+		return
+	if(!ishuman(M))
+		say("NON-HUMAN ENTITY. ABORT. ABORT.")
+		return
+	if(!M.buckled)
+		say("SUBJECT... NOT PROPERLY SECURED...")
+		return
+	if(!do_after(A, 3 SECONDS, TRUE, M))
+		return
+
+	playsound(src.loc, 'sound/items/pickgood1.ogg', 100, TRUE, -1)
+	M.Paralyze(3 SECONDS)
+
+	var/obj/item/clothing/mask/old_mask = M.get_item_by_slot(SLOT_WEAR_MASK)
+	if(old_mask)
+		if(istype(old_mask, /obj/item/clothing/mask/rogue/facemask/prisoner))
+			say("ERROR: UNLAWFUL SYSTEM TAMPERING DETECTED... ENGAGING SELF DESTRUCT...")
+			explosion(src, light_impact_range = 1, flame_range = 2)
+			M.dropItemToGround(old_mask, TRUE)
+			qdel(src)
+	else
+		say("ANALYSIS COMPLETE. NO CURSED MASK FOUND. ABORT.")
+		return
 
 /obj/structure/chair/freedomchair/attack_right(mob/living/carbon/human/A)
 	var/mob/living/carbon/human/M = null
