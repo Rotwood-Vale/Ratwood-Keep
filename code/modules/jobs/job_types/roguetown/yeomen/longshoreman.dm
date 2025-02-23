@@ -3,8 +3,8 @@
 	flag = LONGSHOREMAN
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 0 //replaced by lineage
+	spawn_positions = 0
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/axian, /datum/species/human/northern, /datum/species/lizardfolk)
