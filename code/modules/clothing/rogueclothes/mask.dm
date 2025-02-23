@@ -190,7 +190,7 @@
 /obj/item/clothing/mask/rogue/shepherd
 	name = "halfmask"
 	icon_state = "shepherd"
-	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	body_parts_covered = NECK|MOUTH
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	adjustable = CAN_CADJUST
@@ -244,7 +244,7 @@
 	resistance_flags = FIRE_PROOF
 	armor = list("blunt" = 10, "slash" = 40, "stab" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = null
-	flags_inv = HIDEFACE
+	flags_inv = HIDEFACE|HIDESNOUT
 	body_parts_covered = FACE
 	block2add = FOV_BEHIND
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
@@ -275,7 +275,7 @@
 				H.update_inv_wear_mask()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEFACE|HIDEFACIALHAIR
+			flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 			body_parts_covered = NECK|MOUTH
 			if(user)
 				if(ishuman(user))

@@ -152,26 +152,22 @@
 	if (istype(target, /obj/structure/roguewindow))
 		user.visible_message(span_notice("[user] gestures at \the [target.name], tiny motes of arcyne power running across its surface..."), span_notice("I begin to clean \the [target.name] with my arcyne power..."))
 		if (do_after(user, src.cleanspeed, target = target))
-			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-			target.set_opacity(initial(target.opacity))
+			wash_atom(target,CLEAN_MEDIUM)
 			to_chat(user, span_notice("I render \the [target.name] clean."))
 			return TRUE
 		return FALSE
 	else if (istype(target, /obj/effect/decal/cleanable))
 		user.visible_message(span_notice("[user] gestures at \the [target.name], arcyne power slowly scouring it away..."), span_notice("I begin to scour \the [target.name] away with my arcyne power..."))
 		if (do_after(user, src.cleanspeed, target = target))
+			wash_atom(get_turf(target),CLEAN_MEDIUM)
 			to_chat(user, span_notice("I expunge \the [target.name] with my mana."))
-			qdel(target)
 			return TRUE
 		return FALSE
 	else
 		user.visible_message(span_notice("[user] gestures at \the [target.name], tiny motes of arcyne power surging over [target.p_them()]..."), span_notice("I begin to clean \the [target.name] with my arcyne power..."))
 		if (do_after(user, src.cleanspeed, target = target))
+			wash_atom(target,CLEAN_MEDIUM)
 			to_chat(user, span_notice("I render \the [target.name] clean."))
-			for (var/obj/effect/decal/cleanable/C in target)
-				qdel(C)
-			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-			SEND_SIGNAL(target, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_MEDIUM)
 			return TRUE
 		return FALSE
 

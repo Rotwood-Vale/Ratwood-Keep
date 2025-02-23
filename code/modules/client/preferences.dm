@@ -2038,6 +2038,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 				if("save")
 					save_preferences()
 					save_character()
+					to_chat(user, span_notice("CHARACTER SAVED."))
 
 				if("load")
 					load_preferences()

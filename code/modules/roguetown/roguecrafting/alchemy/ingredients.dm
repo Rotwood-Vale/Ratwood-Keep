@@ -363,8 +363,8 @@
 	alternate_worn_layer  = 8.9 //On top of helmet
 
 	major_pot = /datum/alch_cauldron_recipe/rosewater_potion
-	med_pot = /datum/alch_cauldron_recipe/end_potion
-	minor_pot = /datum/alch_cauldron_recipe/antidote
+	med_pot = /datum/alch_cauldron_recipe/rosewater_potion
+	minor_pot = /datum/alch_cauldron_recipe/rosewater_potion
 
 /obj/item/alch/rosa/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
