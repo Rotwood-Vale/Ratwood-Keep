@@ -262,7 +262,7 @@
 		if(istype(old_mask, /obj/item/clothing/mask/rogue/facemask/prisoner))
 			say("ERROR: UNLAWFUL SYSTEM TAMPERING DETECTED... ENGAGING SELF DESTRUCT...")
 			sleep(1 SECONDS)
-			explosion(src, light_impact_range = 1, flame_range = 0)
+			explosion(src, light_impact_range = 1, flame_range = 1)
 			M.dropItemToGround(old_mask, TRUE)
 			qdel(src)
 	else
