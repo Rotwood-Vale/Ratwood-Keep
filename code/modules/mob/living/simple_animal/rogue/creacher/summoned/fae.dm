@@ -5,6 +5,9 @@
 	else
 		return FALSE
 
+/mob/living/simple_animal/hostile/retaliate/rogue/fae
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/proc/despawncheck()
 	if(AIStatus == AI_IDLE)
 		new /obj/effect/particle_effect/smoke/bad(src.loc)
@@ -12,13 +15,18 @@
 		dropcomponents()
 		qdel(src)
 
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/Move(newloc)
+	if(binded)
+		to_chat(src,span_warning("You're currently bound and unable to move!"))
+		return
+	.=..()
+
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_DARKVISION_BETTER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_VINE_WALKER, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/Life()
@@ -286,7 +294,7 @@
 	tier = 3
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/Move(newloc)	//vine movespeed buff
-	..()
+	.=..()
 	if(isturf(newloc))
 		var/turf/T = newloc
 		if(contains_vines(T))

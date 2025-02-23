@@ -4,6 +4,14 @@
 		return TRUE
 	else
 		return FALSE
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/Move(newloc)
+	if(binded)
+		to_chat(src,span_warning("You're currently bound and unable to move!"))
+		return
+	.=..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/proc/despawncheck()
 	if(AIStatus == AI_IDLE)
@@ -18,7 +26,6 @@
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_DARKVISION_BETTER, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/Life()
 	..()
@@ -370,7 +377,8 @@
 		return 1
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/OpenFire()
-	.=..()
+	if(!..())	//VERY important. Calls parent and checks if it fails (used to check for binded)
+		return
 	if(world.time >= src.rock_cd + 200)
 		quake(target)
 		src.rock_cd = world.time

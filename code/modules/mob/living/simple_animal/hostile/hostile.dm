@@ -407,6 +407,9 @@
 /mob/living/simple_animal/hostile/proc/OpenFire(atom/A)
 	if(CheckFriendlyFire(A))
 		return
+	if(binded)
+		to_chat(src, span_warning("I'm bound and can't hurt anyone!"))
+		return
 	visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
 
 

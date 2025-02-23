@@ -1405,13 +1405,14 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 /obj/effect/proc_holder/spell/invoked/mending/cast(list/targets, mob/living/user)
 	if(istype(targets[1], /obj/item))
 		var/obj/item/I = targets[1]
+		if(I.obj_broken == TRUE)
+			to_chat(user, span_warning("This item is too broken to repair!"))
+			return
 		if(I.obj_integrity < I.max_integrity)
 			var/repair_percent = 0.25
 			repair_percent *= I.max_integrity
 			I.obj_integrity = min(I.obj_integrity + repair_percent, I.max_integrity)
 			user.visible_message(span_info("[I] glows in a faint mending light."))
-			if(I.obj_broken == TRUE)
-				I.obj_broken = FALSE
 		else
 			user.visible_message(span_info("[I] appears to be in pefect condition."))
 			revert_cast()
