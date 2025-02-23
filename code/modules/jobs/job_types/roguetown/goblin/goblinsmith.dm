@@ -14,6 +14,7 @@
 	outfit = /datum/outfit/job/roguetown/goblinsmith
 	min_pq = 2
 	max_pq = null
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinsmith
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
