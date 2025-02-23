@@ -153,14 +153,14 @@
 				if (THEY_THEM, THEY_THEM_F, IT_ITS)
 					. += span_beautiful_nb("[m1] good-looking!")
 
-	if (HAS_TRAIT(src, TRAIT_UNSEEMLY))
-		switch (pronouns)
-			if (HE_HIM)
-				. += span_redtext("[m1] revolting!")
-			if (SHE_HER)
-				. += span_redtext("[m1] repugnant!")
-			if (THEY_THEM, THEY_THEM_F, IT_ITS)
-				. += span_redtext("[m1] repulsive!")
+		if (HAS_TRAIT(src, TRAIT_UNSEEMLY))
+			switch (pronouns)
+				if (HE_HIM)
+					. += span_redtext("[m1] revolting!")
+				if (SHE_HER)
+					. += span_redtext("[m1] repugnant!")
+				if (THEY_THEM, THEY_THEM_F, IT_ITS)
+					. += span_redtext("[m1] repulsive!")
 
 	var/is_stupid = FALSE
 	var/is_smart = FALSE
