@@ -31,9 +31,12 @@
 	name = "undervestments"
 	desc = ""
 	icon_state = "priestunder"
-	sleeved = null
+	item_state = "priestunder"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
+	boobed = TRUE
+	flags_inv= HIDEBOOB|HIDECROTCH
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black
