@@ -122,6 +122,7 @@
 	icon_state = "javelinbag0"
 	item_state = "javelinbag"
 	slot_flags = ITEM_SLOT_BACK
+	max_storage = 4
 
 /obj/item/quiver/javelin/attack_turf(turf/T, mob/living/user)
 	if(arrows.len >= max_storage)
