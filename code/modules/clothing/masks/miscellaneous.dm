@@ -21,7 +21,7 @@
 	desc = ""
 	icon_state = "pig"
 	item_state = "pig"
-	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	clothing_flags = VOICEBOX_TOGGLABLE
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
@@ -33,7 +33,7 @@
 /obj/item/clothing/mask/pig/cursed
 	name = "pig face"
 	desc = ""
-	flags_inv = HIDEFACIALHAIR
+	flags_inv = HIDEFACIALHAIR|HIDESNOUT
 	clothing_flags = NONE
 
 /obj/item/clothing/mask/rat
@@ -41,7 +41,7 @@
 	desc = ""
 	icon_state = "rat"
 	item_state = "rat"
-	flags_inv = HIDEFACE
+	flags_inv = HIDEFACE|HIDESNOUT
 	flags_cover = MASKCOVERSMOUTH
 
 /obj/item/clothing/mask/rat/fox
@@ -91,8 +91,8 @@
 	desc = ""
 	w_class = WEIGHT_CLASS_TINY
 	flags_cover = MASKCOVERSMOUTH
-	flags_inv = HIDEFACE|HIDEFACIALHAIR
-	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR
+	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_cover = MASKCOVERSMOUTH | PEPPERPROOF
 	slot_flags = ITEM_SLOT_MASK
 	adjusted_flags = ITEM_SLOT_HEAD

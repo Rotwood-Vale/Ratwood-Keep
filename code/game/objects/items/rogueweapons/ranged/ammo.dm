@@ -337,6 +337,88 @@
 	flag = "piercing"
 	speed = 10
 
+//Javelins - Basically spears, but to get them working as proper javelins and able to fit in a bag, they are 'ammo'. (Maybe make an atlatl later?)
+//Only ammo casing, no 'projectiles'. You throw the casing, as weird as it is.
+/obj/item/ammo_casing/caseless/rogue/javelin
+	force = 14
+	throw_speed = 3		//1 lower than throwing knives, it hits harder + embeds more.
+	name = "iron javelin"
+	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a iron head; standard among militiamen and irregulars alike."
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "ijavelin"
+	wlength = WLENGTH_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
+	max_integrity = 50						//Breaks semi-easy, stops constant re-use. 
+	wdefense = 3							//Worse than a spear
+	thrown_bclass = BCLASS_STAB				//Knives are slash, lets try out stab and see if it's too strong in terms of wounding.
+	throwforce = 25							//throwing knife is 22, slightly better for being bulkier.
+	possible_item_intents = list(/datum/intent/sword/thrust, /datum/intent/spear/bash, /datum/intent/spear/cut)	//Sword-thrust to avoid having 2 reach.
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 35, "embedded_fall_chance" = 10)	//Better than iron throwing knife by 10%
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/iron
+	associated_skill = /datum/skill/combat/polearms
+	heavy_metal = FALSE					//Stops spin animation, maybe.
+
+/obj/item/ammo_casing/caseless/rogue/javelin/steel
+	force = 16
+	name = "steel javelin"
+	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a steel head; perfect for piercing armor!"
+	icon_state = "javelin"
+	max_integrity = 100						//In-line with other stabbing weapons.
+	throwforce = 28							//Equal to steel knife BUT this has peircing damage type so..
+	thrown_bclass = BCLASS_PICK				//Bypasses crit protection better than stabbing. Makes it better against heavy-targets.
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 45, "embedded_fall_chance" = 10) //Better than steel throwing knife by 10%
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/ammo_casing/caseless/rogue/javelin/silver
+	name = "silver javelin"
+	desc = "A tool used for centuries, as early as recorded history. This one appears to be tipped with a silver head. Decorative, perhaps.. or for some sort of specialized hunter."
+	icon_state = "sjavelin"
+	is_silver = TRUE
+	throwforce = 25							//Less than steel because it's.. silver. Good at killing vampires/WW's still.
+	thrown_bclass = BCLASS_PICK				//Bypasses crit protection better than stabbing. Makes it better against heavy-targets.
+	smeltresult = /obj/item/ingot/silver
+
+//Snowflake code to make sure the silver-bane is applied on hit to targeted mob. Thanks to Aurorablade for getting this code to work.
+/obj/item/ammo_casing/caseless/rogue/javelin/silver/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	..() 
+	if(!iscarbon(hit_atom))
+		return//abort
+	check_dmg(hit_atom)//apply effects and damages
+		
+/obj/item/ammo_casing/caseless/rogue/javelin/silver/proc/check_dmg(mob/living/hit_atom)
+	var/mob/living/carbon/human/H = hit_atom
+	if(H.mind)
+		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		if(V)
+			if(V.disguised)
+				H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+			else
+				H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !V)
+				H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+			if(V_lord.vamplevel == 4 && !V)
+				to_chat(H, "<font color='red'> The silver weapon fails!</font>")
+				H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM ANCIENT!"))
+		if(W && W.transformed == TRUE)
+			H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+			to_chat(H, span_userdanger("I'm hit by my BANE!"))
+			H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+			src.last_used = world.time
+	return
+
 #undef ARROW_DAMAGE
 #undef BOLT_DAMAGE
 #undef BULLET_DAMAGE

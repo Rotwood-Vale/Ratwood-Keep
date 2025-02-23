@@ -52,7 +52,7 @@
 		obscure_name = FALSE
 
 	if(obscure_name)
-		. = list("<span class='info'>ø ------------ ø\nThis is <EM>Unknown</EM>.")
+		. = list(span_info("ø ------------ ø\nThis is <EM>Unknown</EM>."))
 	else
 		on_examine_face(user)
 		var/used_name = name
@@ -72,11 +72,11 @@
 			if(islatejoin)
 				is_returning = TRUE
 		if(display_as_wanderer)
-			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
+			. = list(span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name]."))
 		else if(used_title)
-			. = list("<span class='info'>ø ------------ ø\nThis is <EM>[used_name]</EM>, the [is_returning ? "returning " : ""][race_name] [used_title].")
+			. = list(span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the [is_returning ? "returning " : ""][race_name] [used_title]."))
 		else
-			. = list("<span class='info'>ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name].")
+			. = list(span_info("ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name]."))
 
 		if(GLOB.lord_titles[name])
 			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
@@ -141,26 +141,26 @@
 		if(inquisition_text)
 			. +=span_notice(inquisition_text)
 
-	if(leprosy == 1)
-		. += span_necrosis("A LEPER...")
+		if(leprosy == 1)
+			. += span_necrosis("A LEPER...")
 	
-	if (HAS_TRAIT(src, TRAIT_BEAUTIFUL))
-		switch (pronouns)
-			if (HE_HIM)
-				. += span_beautiful_masc("[m1] handsome!")
-			if (SHE_HER)
-				. += span_beautiful_fem("[m1] beautiful!")
-			if (THEY_THEM, THEY_THEM_F, IT_ITS)
-				. += span_beautiful_nb("[m1] good-looking!")
+		if (HAS_TRAIT(src, TRAIT_BEAUTIFUL))
+			switch (pronouns)
+				if (HE_HIM)
+					. += span_beautiful_masc("[m1] handsome!")
+				if (SHE_HER)
+					. += span_beautiful_fem("[m1] beautiful!")
+				if (THEY_THEM, THEY_THEM_F, IT_ITS)
+					. += span_beautiful_nb("[m1] good-looking!")
 
-	if (HAS_TRAIT(src, TRAIT_UNSEEMLY))
-		switch (pronouns)
-			if (HE_HIM)
-				. += span_redtext("[m1] revolting!")
-			if (SHE_HER)
-				. += span_redtext("[m1] repugnant!")
-			if (THEY_THEM, THEY_THEM_F, IT_ITS)
-				. += span_redtext("[m1] repulsive!")
+		if (HAS_TRAIT(src, TRAIT_UNSEEMLY))
+			switch (pronouns)
+				if (HE_HIM)
+					. += span_redtext("[m1] revolting!")
+				if (SHE_HER)
+					. += span_redtext("[m1] repugnant!")
+				if (THEY_THEM, THEY_THEM_F, IT_ITS)
+					. += span_redtext("[m1] repulsive!")
 
 	var/is_stupid = FALSE
 	var/is_smart = FALSE
@@ -794,6 +794,8 @@
 /// Same as get_heretic_text, but returns a simple symbol depending on the type of heretic!
 /mob/living/proc/get_heretic_symbol(mob/examiner)
 	var/heretic_text
+	if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
+		return
 	if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(examiner, TRAIT_COMMIE))
 		heretic_text += "♠"
 	else if(HAS_TRAIT(src, TRAIT_CABAL) && HAS_TRAIT(examiner, TRAIT_CABAL))

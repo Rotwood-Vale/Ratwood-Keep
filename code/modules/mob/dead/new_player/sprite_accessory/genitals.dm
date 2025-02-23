@@ -1,5 +1,5 @@
 /datum/sprite_accessory/penis
-	icon = 'icons/mob/sprite_accessory/genitals/penis.dmi'
+	icon = 'icons/mob/sprite_accessory/genitals/pintle.dmi'
 	color_keys = 2
 	color_key_names = list("Member", "Skin")
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER) //Vrell - Yes I know this is hacky but it works for now
@@ -86,7 +86,7 @@
 	default_colors = list("C52828", "C52828")
 
 /datum/sprite_accessory/testicles
-	icon = 'icons/mob/sprite_accessory/genitals/testicles.dmi'
+	icon = 'icons/mob/sprite_accessory/genitals/gonads.dmi'
 	color_key_name = "Sack"
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -143,7 +143,7 @@
 	color_key_defaults = list(KEY_CHEST_COLOR)
 
 /datum/sprite_accessory/vagina
-	icon = 'icons/mob/sprite_accessory/genitals/vagina.dmi'
+	icon = 'icons/mob/sprite_accessory/genitals/nethers.dmi'
 	color_key_name = "Nethers"
 	relevant_layers = list(BODY_FRONT_LAYER)
 

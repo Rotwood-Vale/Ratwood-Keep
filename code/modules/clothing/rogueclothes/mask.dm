@@ -87,7 +87,7 @@
 	resistance_flags = FIRE_PROOF
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
-	flags_inv = HIDEFACE
+	flags_inv = HIDEFACE|HIDESNOUT
 	body_parts_covered = FACE
 	block2add = FOV_BEHIND
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
@@ -104,7 +104,7 @@
 	resistance_flags = FIRE_PROOF
 	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
-	flags_inv = HIDEFACE
+	flags_inv = HIDEFACE|HIDESNOUT
 	body_parts_covered = FACE
 	block2add = FOV_BEHIND
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
@@ -145,7 +145,7 @@
 /obj/item/clothing/mask/rogue/shepherd
 	name = "halfmask"
 	icon_state = "shepherd"
-	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	body_parts_covered = NECK|MOUTH
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	adjustable = CAN_CADJUST
@@ -166,7 +166,7 @@
 				H.update_inv_wear_mask()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEFACE|HIDEFACIALHAIR
+			flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 			body_parts_covered = NECK|MOUTH
 			if(user)
 				if(ishuman(user))
@@ -182,7 +182,7 @@
 	name = "plague mask"
 	desc = "What better laboratory than the blood-soaked battlefield?"
 	icon_state = "physmask"
-	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS|HIDESNOUT
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
@@ -199,7 +199,7 @@
 	resistance_flags = FIRE_PROOF
 	armor = list("blunt" = 10, "slash" = 40, "stab" = 40, "fire" = 0, "acid" = 0)
 	prevent_crits = null
-	flags_inv = HIDEFACE
+	flags_inv = HIDEFACE|HIDESNOUT
 	body_parts_covered = FACE
 	block2add = FOV_BEHIND
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
@@ -209,7 +209,7 @@
 /obj/item/clothing/mask/rogue/ragmask
 	name = "rag mask"
 	icon_state = "ragmask"
-	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	body_parts_covered = NECK|MOUTH
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	adjustable = CAN_CADJUST
@@ -230,7 +230,7 @@
 				H.update_inv_wear_mask()
 		else if(adjustable == CADJUSTED)
 			ResetAdjust(user)
-			flags_inv = HIDEFACE|HIDEFACIALHAIR
+			flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 			body_parts_covered = NECK|MOUTH
 			if(user)
 				if(ishuman(user))

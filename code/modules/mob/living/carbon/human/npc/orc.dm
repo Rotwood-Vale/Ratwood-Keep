@@ -18,10 +18,10 @@
 	possible_rmb_intents = list(/datum/rmb_intent/feint, /datum/rmb_intent/aimed, /datum/rmb_intent/strong, /datum/rmb_intent/weak, /datum/rmb_intent/swift, /datum/rmb_intent/riposte)
 	possible_rmb_intents = list()
 	stand_attempts = 4
-	cmode_music = 'sound/music/combat_gronn.ogg'
 	aggressive = 1
 	mode = AI_IDLE
 	wander = FALSE
+	cmode_music = FALSE
 
 /datum/outfit/job/roguetown/orc/npc/pre_equip(mob/living/carbon/human/H) //gives some default skills and equipment for player controlled orcs
 	..()

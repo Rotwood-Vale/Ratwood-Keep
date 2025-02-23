@@ -930,3 +930,11 @@
 /obj/structure/mineral_door/wood/towner/woodcutter
 	resident_advclass = /datum/advclass/woodcutter
 	lockid = "towner_woodcutter"
+
+/obj/structure/mineral_door/wood/towner/fisher
+	resident_advclass = /datum/advclass/fisher
+	lockid = "towner_fisher"
+
+/obj/structure/mineral_door/wood/towner/hunter
+	resident_advclass = /datum/advclass/hunter
+	lockid = "towner_hunter"
