@@ -14,6 +14,7 @@
 	display_order = JDO_GOBLINRABBLE
 	min_pq = 0
 	max_pq = null
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinrabble
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
