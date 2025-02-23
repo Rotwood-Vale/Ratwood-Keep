@@ -3,7 +3,7 @@
 	set category = "OOC"
 	set name = "Link Discord Account"
 	set desc = ""
-	set hidden = FALSE
+	set hidden = TRUE // Set FALSE to return option
 	// Safety checks
 	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(src, span_warning("This feature requires the SQL backend to be running."))
