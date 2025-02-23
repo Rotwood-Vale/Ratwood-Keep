@@ -31844,17 +31844,6 @@
 /obj/machinery/light/rogue/cauldron,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter/mountains)
-"xVd" = (
-/obj/structure/fluff/railing/border{
-	dir = 5
-	},
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "horzw"
-	},
-/area/rogue/outdoors/town)
 "xVg" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/reagent_containers/powder/salt,
@@ -48456,7 +48445,7 @@ qZy
 hmo
 nIB
 qZy
-xVd
+vqj
 bUh
 bId
 qZy
@@ -49076,10 +49065,10 @@ aWN
 aWN
 aWN
 aWN
-lbE
-xkg
 aWN
 aWN
+dZj
+mTa
 aWN
 aWN
 aWN
@@ -49233,8 +49222,8 @@ oYp
 nCr
 ffF
 xcg
-tjM
-ffF
+xcg
+xcg
 xcg
 tjM
 oYp
@@ -49390,8 +49379,8 @@ tXQ
 tOs
 nqJ
 bId
-iOr
-nqJ
+bId
+bId
 bId
 cKj
 tXQ
@@ -50495,7 +50484,7 @@ bId
 jiU
 kQv
 nwO
-bId
+jvJ
 bId
 bId
 bId
@@ -50651,8 +50640,8 @@ obx
 bId
 iOr
 mzh
-mTa
-bId
+cRA
+nqJ
 bId
 bId
 bId
@@ -50808,8 +50797,8 @@ bId
 bId
 jiU
 kov
-nCr
-bId
+bsD
+jvJ
 bId
 obx
 wYJ
@@ -50966,7 +50955,7 @@ bId
 iOr
 tXQ
 tOs
-bId
+nqJ
 bId
 qZy
 obx
