@@ -17,6 +17,7 @@
 	display_order = JDO_GOBLINSHAMAN
 	min_pq = 5
 	max_pq = null
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinshaman
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
