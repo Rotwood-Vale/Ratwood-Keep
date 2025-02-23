@@ -80,7 +80,7 @@
 			GLOB.outlawed_players += H.real_name
 			var/bounty_total
 			bounty_total = rand(151, 250)
-			add_bounty(H.real_name, bounty_total, FALSE, "Desertion", "the Justiciary of Azuria")
+			add_bounty(H.real_name, bounty_total, FALSE, "Desertion", "The Justiciary of Azuria")
 
 		if("Outlaw")
 			to_chat(H, span_warning("You're a seasoned criminal known for your heinous acts, your face plastered on wanted posters across the region. A life of theft, robbery, and ill-gotten-gains comes naturally to you."))
@@ -138,7 +138,7 @@
 				my_crime = "crimes against the Crown"
 			var/bounty_total
 			bounty_total = rand(151, 250)
-			add_bounty(H.real_name, bounty_total, FALSE, my_crime, "the Justiciary of Azuria")
+			add_bounty(H.real_name, bounty_total, FALSE, my_crime, "The Justiciary of Azuria")
 
 
 		if("Heretic")

@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/bounty
 	name = "EXCIDIUM"
-	desc = "Created by a fanatical sect of devout followers of Ravox, this machine sets and collects bounties. Its bloodied maw could easily fit a human head."
+	desc = "Created by a fanatical sect of devout followers of Ravox, this machine sets bounties."
 	icon = 'icons/roguetown/topadd/statue1.dmi'
 	icon_state = "baldguy"
 	density = FALSE
@@ -26,7 +26,7 @@
 	var/mob/living/carbon/human/H = user
 
 	// Main Menu
-	var/list/choices = list("Consult Bounties", "Set Bounty", "Print List of Bounties")
+	var/list/choices = list("Consult Bounties", "Set Bounty", "Print List of Bounties", "Remove Bounty")
 	var/selection = input(user, "The Excidium listens", src) as null|anything in choices
 
 	switch(selection)
@@ -40,50 +40,12 @@
 		if("Print List of Bounties")
 			print_bounty_scroll(H)
 
+		if("Remove Bounty")
+			remove_bounty(H)
+
 /obj/structure/roguemachine/bounty/attackby(obj/item/P, mob/user, params)
 
 	if(!(ishuman(user))) return
-
-	// Only heads are allowed
-	if(P.type != /obj/item/bodypart/head) return
-
-	var/machine_location = get_turf(src)
-	var/obj/item/bodypart/head/stored_head = P
-	var/correct_head = FALSE
-
-	var/reward_amount = 0
-
-	user.dropItemToGround(P)
-	P.forceMove(src)
-
-	say(pick(list("Performing intra-cranial inspection...", "Analyzing skull structure...", "Commencing cephalic dissection...")))
-
-	sleep(1 SECONDS)
-
-	var/list/headcrush = list('sound/combat/fracture/headcrush (2).ogg', 'sound/combat/fracture/headcrush (3).ogg', 'sound/combat/fracture/headcrush (4).ogg')
-	playsound(src, pick_n_take(headcrush), 100, FALSE, -1)
-	sleep(1 SECONDS)
-	playsound(src, pick(headcrush), 100, FALSE, -1)
-
-	sleep(2 SECONDS)
-
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == stored_head.real_name)
-			correct_head = TRUE
-			say("A bounty has been sated.")
-			reward_amount += b.amount
-			GLOB.head_bounties -= b
-
-	if(!correct_head)
-		say("This skull carries no reward.")
-		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-	else
-		budget2change(reward_amount, user)
-
-	// Head has been "analyzed". Return it.
-	sleep(2 SECONDS)
-	playsound(src, 'sound/combat/vite.ogg', 100, FALSE, -1)
-	P.forceMove(machine_location)
 
 ///Shows all active bounties to the user.
 /obj/structure/roguemachine/bounty/proc/consult_bounties(mob/living/carbon/human/user)
@@ -101,6 +63,38 @@
 		popup.open()
 	else
 		say("No bounties are currently active.")
+
+/obj/structure/roguemachine/bounty/proc/remove_bounty(mob/living/carbon/human/user)
+	var/list/bounty_list = list()
+
+	for(var/datum/bounty/removable_bounties in GLOB.head_bounties)
+		if(removable_bounties.employer == user.real_name)
+			bounty_list += removable_bounties.target
+
+	if(!bounty_list.len)
+		say("You have no active bounty listings to remove.")
+		return
+
+	var/target_name = input(user, "Whose name shall be struck from the wanted list?", src) as null|anything in bounty_list
+	if(!target_name)
+		return
+
+	var/certainty = input(user, "Are you certain?", src) in list("Yes", "No")
+
+	while(certainty != "Yes")
+		target_name = null
+		target_name = input(user, "Whose name shall be struck from the wanted list?", src) as null|anything in bounty_list
+		certainty = input(user, "Are you certain?", src) in list("Yes", "No")
+
+	say("Removing [target_name] from bounty list...")
+
+	for(var/datum/bounty/removing_bounty in GLOB.head_bounties)
+		if(removing_bounty.target == target_name && user.real_name == removing_bounty.employer)
+			GLOB.head_bounties -= removing_bounty
+			scom_announce("The bounty posting on [target_name] has been removed.")
+			message_admins("[ADMIN_LOOKUPFLW(user)] has removed the bounty on [ADMIN_LOOKUPFLW(target_name)]")
+			return
+	say("Error. Bounty no longer active.") 
 
 ///Sets a bounty on a target player through user input.
 ///@param user: The player setting the bounty.
@@ -159,7 +153,7 @@
 
 	//Announce it locally and on scomm
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-	var/bounty_announcement = "The Excidium hungers for the head of [target]."
+	var/bounty_announcement = "The Excidium hungers for [target]."
 	say(bounty_announcement)
 	scom_announce(bounty_announcement)
 
@@ -180,13 +174,13 @@
 /proc/compose_bounty(datum/bounty/new_bounty)
 	switch(rand(1, 3))
 		if(1)
-			new_bounty.banner += "A dire bounty hangs upon the head of [new_bounty.target], for '[new_bounty.reason]'.<BR>"
+			new_bounty.banner += "A dire bounty hangs upon the capture of [new_bounty.target], for '[new_bounty.reason]'.<BR>"
 			new_bounty.banner += "The patron, [new_bounty.employer], offers [new_bounty.amount] mammons for the task.<BR>"
 		if(2)
-			new_bounty.banner += "The head of [new_bounty.target] is wanted for '[new_bounty.reason]''.<BR>"
+			new_bounty.banner += "The capture of [new_bounty.target] is wanted for '[new_bounty.reason]''.<BR>"
 			new_bounty.banner += "The employer, [new_bounty.employer], offers [new_bounty.amount] mammons for the deed.<BR>"
 		if(3)
-			new_bounty.banner += "[new_bounty.employer] hath offered to pay [new_bounty.amount] mammons for the head of [new_bounty.target].<BR>"
+			new_bounty.banner += "[new_bounty.employer] hath offered to pay [new_bounty.amount] mammons for the capture of [new_bounty.target].<BR>"
 			new_bounty.banner += "By reason of the following: '[new_bounty.reason]'.<BR>"
 	new_bounty.banner += "--------------<BR>"
 
@@ -291,16 +285,24 @@
 		M = l
 	if(!ismob(M))
 		say("Cannot begin skull structure analysis without a subject buckled to the Castifico.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	if(!ishuman(M))
 		say("Subject is non-human entity. Aborting...")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	if(!M.buckled)
 		say("Subject is not properly secured for analysis.")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+		return
+	var/obj/item/bodypart/head/headcheck
+	headcheck = M.get_bodypart(check_zone(BODY_ZONE_HEAD))
+	if(!headcheck)
+		say("Subject is missing cranium. Aborting...")
+		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	if(!do_after(A, 5 SECONDS, TRUE, M))
 		return
-
 
 	playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
 	M.Paralyze(3 SECONDS)
@@ -319,10 +321,10 @@
 	sleep(1 SECONDS)
 
 	if(M.stat == DEAD)
-		say("Necra's hands grasp at this one... send them to the EXCIDIUM.")
+		reward_amount = reward_amount / 2
+		say("Subject is deceased. Rewarding half of posted bounty amount.")
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
-		unbuckle_all_mobs()
-		return
+		sleep(1 SECONDS)
 
 	var/list/headcrush = list('sound/combat/fracture/headcrush (2).ogg', 'sound/combat/fracture/headcrush (3).ogg', 'sound/combat/fracture/headcrush (4).ogg')
 	playsound(src, pick_n_take(headcrush), 100, FALSE, -1)
@@ -337,7 +339,7 @@
 
 	if(correct_head)
 		say("A bounty has been sated.")
-		budget2change((reward_amount*2))
+		budget2change((reward_amount))
 
 		var/obj/item/clothing/mask/old_mask = M.get_item_by_slot(SLOT_WEAR_MASK)
 		if(old_mask)
