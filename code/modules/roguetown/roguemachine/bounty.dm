@@ -110,7 +110,10 @@
 		say("Invalid amount.")
 		return
 	if(amount < 100)
-		say("Insufficient amount. Bounty must be at least 100 mammons.")
+		say("Insufficient amount. Bounty must be at least 100 mammon.")
+		return
+	if(amount > 500)
+		say("Insufficient amount. Bounties cannot be more than 500 mammon.")
 		return
 
 	// Has user a bank account?
