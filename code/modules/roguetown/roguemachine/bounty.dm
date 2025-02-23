@@ -79,13 +79,6 @@
 	if(!target_name)
 		return
 
-	var/certainty = input(user, "Are you certain?", src) in list("Yes", "No")
-
-	while(certainty != "Yes")
-		target_name = null
-		target_name = input(user, "Whose name shall be struck from the wanted list?", src) as null|anything in bounty_list
-		certainty = input(user, "Are you certain?", src) in list("Yes", "No")
-
 	say("Removing [target_name] from bounty list...")
 
 	for(var/datum/bounty/removing_bounty in GLOB.head_bounties)
