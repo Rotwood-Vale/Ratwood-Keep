@@ -23929,16 +23929,6 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town)
-"sbp" = (
-/obj/effect/decal/cobbleedge{
-	dir = 5
-	},
-/obj/structure/fluff/railing/wood{
-	dir = 1;
-	pixel_y = -1
-	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/outdoors/town/roofs/keep)
 "sby" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/ruinedwood/herringbone,
@@ -97703,7 +97693,7 @@ oTS
 jJT
 jJT
 oUz
-sbp
+hzT
 qwC
 wfx
 qhb
@@ -97860,7 +97850,7 @@ wxA
 jJT
 eGP
 oUz
-ezh
+jYO
 hzT
 ybe
 qhb
@@ -98017,7 +98007,7 @@ tIW
 oUz
 oUz
 oUz
-ezh
+jYO
 jYO
 wfx
 qhb
@@ -122038,7 +122028,7 @@ tYX
 tYX
 tYX
 tYX
-hCZ
+tYX
 hCZ
 hCZ
 mvx
@@ -122193,9 +122183,9 @@ tYX
 tYX
 tYX
 tYX
-hCZ
-hCZ
-hCZ
+tYX
+tYX
+tYX
 hCZ
 hCZ
 mvx
@@ -122349,10 +122339,10 @@ tYX
 tYX
 tYX
 tYX
-hCZ
-hCZ
-hCZ
-hCZ
+tYX
+tYX
+tYX
+tYX
 hCZ
 hCZ
 mvx
