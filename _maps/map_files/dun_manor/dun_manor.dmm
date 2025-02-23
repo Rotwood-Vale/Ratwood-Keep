@@ -7231,6 +7231,12 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement/keep)
+"fug" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/rtfield)
 "fuY" = (
 /obj/structure/stairs{
 	dir = 4
@@ -66758,7 +66764,7 @@ omo
 jIk
 wDa
 qbq
-hmd
+fug
 ylN
 ylN
 ylN
