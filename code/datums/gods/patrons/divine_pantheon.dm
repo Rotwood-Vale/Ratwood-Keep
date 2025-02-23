@@ -136,6 +136,7 @@
 	t2 = /obj/effect/proc_holder/spell/invoked/heatmetal
 	t3 = /obj/effect/proc_holder/spell/invoked/hammerfall
 	t4 = /obj/effect/proc_holder/spell/invoked/craftercovenant
+	extra_spell = /obj/effect/proc_holder/spell/invoked/malum_flame_rogue
 	confess_lines = list(
 		"MALUM IS MY MUSE!",
 		"TRUE VALUE IS IN THE TOIL!",

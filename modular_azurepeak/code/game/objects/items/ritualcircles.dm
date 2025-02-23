@@ -290,3 +290,70 @@
 		target.apply_status_effect(/datum/status_effect/buff/pacify)
 
 // TIME FOR THE ASCENDANT. These can be stronger. As they are pretty much antag exclusive - Iconoclast for Matthios, Lich for ZIZO. ZIZO!
+
+
+/obj/structure/ritualcircle/zizo
+	name = "Rune of Progress"
+	desc = "A Holy Rune of ZIZO"
+// icon_state = zizo_chalky - when we have it.
+	var/zizorites = list("Rite of Armaments")
+
+/obj/structure/ritualcircle/zizo/attack_hand(mob/living/user)
+	if((user.patron?.type) != /datum/patron/inhumen/zizo)
+		to_chat(user,span_smallred("I don't know the proper rites for this..."))
+		return
+	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
+		to_chat(user,span_smallred("I don't know the proper rites for this..."))
+		return
+	if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
+		to_chat(user,span_smallred("I have performed enough rituals for the day... I must rest before communing more."))
+		return
+	var/riteselection = input(user, "Rituals of Progress", src) as null|anything in zizorites
+	switch(riteselection) // put ur rite selection here
+		if("Rite of Armaments")
+			if(do_after(user, 50))
+				user.say("ZIZO! ZIZO! DAME OF PROGRESS!!")
+				if(do_after(user, 50))
+					user.say("ZIZO! ZIZO! HEED MY CALL!!")
+					if(do_after(user, 50))
+						user.say("ZIZO! ZIZO! ARMS TO SLAY THE IGNORANT!!")
+						if(do_after(user, 50))
+						//	icon_state = "zizo_active"
+							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
+							zizoarmaments(src)
+//							icon_state = zizo_chalky - whip these bad boys out when we actually have the sprites + add a spawn timer to set the chalk state back.
+
+/obj/structure/ritualcircle/zizo/proc/zizoarmaments(src)
+	var/onrune = view(0, loc)
+	var/list/possible_targets = list()
+	for(var/mob/living/carbon/human/persononrune in onrune)
+		possible_targets += persononrune
+	var/mob/living/carbon/human/target = pick(possible_targets)
+	if(!HAS_TRAIT(target, TRAIT_CABAL))
+		loc.visible_message(span_cult("THE RITE REJECTS ONE NOT OF THE CABAL"))
+		return
+	target.Stun(60)
+	target.Knockdown(60)
+	to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+	target.emote("Agony")
+	playsound(loc, 'sound/combat/newstuck.ogg', 50)
+	loc.visible_message(span_cult("Great hooks come from the rune, embedding into [target]'s ankles, pulling them onto the rune. Then, into their wrists. Their lux is torn from their chest, and reforms into armor. "))
+	spawn(20)
+		playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
+		target.equipOutfit(/datum/outfit/job/roguetown/darksteelrite)
+		target.apply_status_effect(/datum/status_effect/debuff/devitalised)
+		spawn(40)
+			to_chat(target, span_purple("They are ignorant, backwards, without hope. You. You will be powerful."))
+
+/datum/outfit/job/roguetown/darksteelrite/pre_equip(mob/living/carbon/human/H)
+	..()
+	var/list/items = list()
+	items |= H.get_equipped_items(TRUE)
+	for(var/I in items)
+		H.dropItemToGround(I, TRUE)
+	H.drop_all_held_items()
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
+	pants = /obj/item/clothing/under/roguetown/platelegs/zizo
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/zizo
+	gloves = /obj/item/clothing/gloves/roguetown/plate/zizo
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/zizo

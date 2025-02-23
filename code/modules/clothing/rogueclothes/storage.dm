@@ -215,6 +215,21 @@
 	sewrepair = TRUE
 	component_type = /datum/component/storage/concrete/roguetown/backpack
 
+/obj/item/storage/backpack/rogue/artibackpack
+	name = "Cooling backpack"
+	desc = "A leather backpack with complex pipework coursing through it. It hums and vibrates constantly."
+	icon_state = "artibackpack"
+	item_state = "artibackpack" 
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK_L
+	resistance_flags = FIRE_PROOF
+	max_integrity = 300
+	equip_sound = 'sound/blank.ogg'
+	bloody_icon_state = "bodyblood"
+	sewrepair = FALSE
+	component_type = /datum/component/storage/concrete/roguetown/backpack
+
 /obj/item/storage/belt/rogue/leather/plaquegold/steward
 	name = "fancy gold belt"
 	desc = "A dark belt with real gold making up the buckle and highlights. How bougie."

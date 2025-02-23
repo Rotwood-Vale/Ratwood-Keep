@@ -68,10 +68,12 @@
 
 /datum/reagent/druqks/on_mob_end_metabolize(mob/living/M)
 	M.clear_fullscreen("druqk")
-	M.update_body_parts_head_only()
+	M.set_drugginess(0)
+	M.remove_status_effect(/datum/status_effect/buff/druqks)
 	if(M.client)
 		REMOVE_TRAIT(M, TRAIT_DRUQK, "based")
 		SSdroning.play_area_sound(get_area(M), M.client)
+	M.update_body_parts_head_only()
 //		if(M.client.screen && M.client.screen.len)
 ///			var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in M.client.screen
 //			PM.backdrop(M.client.mob)
@@ -235,7 +237,7 @@
 	. = 1
 
 /datum/reagent/moondust/on_mob_metabolize(mob/living/M)
-	M.flash_fullscreen("can_you_see")
+	M.flash_fullscreen("whiteflash")
 	animate(M.client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 	animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
 
@@ -282,14 +284,12 @@
 
 /datum/reagent/moondust_purest/on_mob_metabolize(mob/living/M)
 	M.playsound_local(M, 'sound/ravein/small/hello_my_friend.ogg', 100, FALSE)
-	M.flash_fullscreen("can_you_see")
-	M.overlay_fullscreen("purest_kaif", /atom/movable/screen/fullscreen/purest)
+	M.flash_fullscreen("whiteflash")
 	animate(M.client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 	animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
 
 /datum/reagent/moondust_purest/on_mob_end_metabolize(mob/living/M)
 	animate(M.client)
-	M.clear_fullscreen("purest_kaif")
 
 /datum/reagent/moondust_purest/on_mob_life(mob/living/carbon/M)
 	narcolepsy_drug_up(M)
