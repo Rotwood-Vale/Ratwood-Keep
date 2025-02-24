@@ -42,6 +42,7 @@ Please do not confuse the two.
 	head = /obj/item/clothing/head/roguetown/helmet/overseer
 	mask = /obj/item/clothing/mask/rogue/overseer
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
+	cloak = /obj/item/clothing/cloak/cape/inquisitor
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/overseer
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black

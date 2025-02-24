@@ -218,3 +218,17 @@
 	anvilrepair = null
 	sewrepair = TRUE
 	allowed_race = NON_DWARVEN_RACE_TYPES
+
+/obj/item/clothing/gloves/roguetown/leather/overseer
+    name = "leather gloves"
+    desc = "Black leather gloves, adorned with bright strips."
+    icon_state = "overseergloves"
+    item_state = "overseergloves"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+
+/obj/item/clothing/gloves/roguetown/leather/overseer/vice
+    icon_state = "viceseergloves"
+    item_state = "viceseergloves"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'

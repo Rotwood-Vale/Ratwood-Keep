@@ -34,7 +34,7 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	shoes = /obj/item/clothing/shoes/roguetown/armor/inqboots
 	pants = /obj/item/clothing/under/roguetown/tights/black
-	cloak = /obj/item/clothing/cloak/cape/puritan
+	cloak = /obj/item/clothing/cloak/cape/inquisitor
 	beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
 	beltl = /obj/item/storage/belt/rogue/pouch/ammo
 	head = /obj/item/clothing/head/roguetown/inqhat
