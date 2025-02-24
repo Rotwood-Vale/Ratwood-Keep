@@ -956,6 +956,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				H.Jitter(5)
 			hunger_rate = 10 * HUNGER_FACTOR*/
 //		hunger_rate *= H.physiology.hunger_mod
+
+		//hunger modifier based on strength/muscle mass
+		var/robust_hunger_modifer = ((H.STASTR / 10) + 1) / 2
+		hunger_rate *= robust_hunger_modifer
+
 		H.adjust_nutrition(-hunger_rate)
 
 		var/obj/item/organ/vagina/vagina = H.getorganslot(ORGAN_SLOT_VAGINA)
@@ -965,16 +970,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					if(H.nutrition > NUTRITION_LEVEL_HUNGRY && H.getorganslot(ORGAN_SLOT_BREASTS).lactating && H.getorganslot(ORGAN_SLOT_BREASTS).milk_max > H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored) //Vrell - numbers may need to be tweaked for balance but hey this works for now.
 						var/milk_to_make = min(hunger_rate, H.getorganslot(ORGAN_SLOT_BREASTS).milk_max - H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
 						H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored += milk_to_make
-						H.adjust_nutrition(-milk_to_make * 20)
-
-					else if(H.nutrition < NUTRITION_LEVEL_STARVING && H.getorganslot(ORGAN_SLOT_BREASTS).lactating) //Vrell - If starving, your milk drains automatically to slow your starvation.
-						var/milk_to_take = min(hunger_rate, H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored)
-						H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored -= milk_to_take
-						H.adjust_nutrition(milk_to_take * 20)
+						H.adjust_nutrition(-milk_to_make * 6)
+						H.adjust_hydration(-milk_to_make * 11)
 
 	if (H.hydration > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOHUNGER))
 		// THEY HUNGER
 		var/hunger_rate = HUNGER_FACTOR
+
+		//thirst modifier based on constitution/blood volume
+		var/robust_thirst_modifer = ((H.STACON / 10) + 1) / 2
+		hunger_rate *= robust_thirst_modifer
+
 //		hunger_rate *= H.physiology.hunger_mod
 		H.adjust_hydration(-hunger_rate)
 

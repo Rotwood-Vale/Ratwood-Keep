@@ -12,7 +12,7 @@
 	allowed_ages = ALL_AGES_LIST
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/archivist
-	spells = list(SPELL_TEACH, SPELL_LEARNSPELL, SPELL_PRESTIDIGITATION, SPELL_FETCH, SPELL_MESSAGE)
+	spells = list(SPELL_TEACH, SPELL_PRESTIDIGITATION, SPELL_FETCH, SPELL_MESSAGE)
 	display_order = JDO_ARCHIVIST
 	give_bank_account = 25
 	min_pq = 5 //the player should actually have some experience to properly play the role
@@ -67,7 +67,7 @@
 		if(H.age == AGE_OLD)
 			H.change_stat("speed", -1)
 			H.change_stat("intelligence", 1)
-		H.mind.adjust_spellpoints(-2)
+		H.mind.adjust_spellpoints(-1)
 
 /datum/outfit/job/roguetown/archivist/post_equip(mob/living/carbon/human/H)
 	..()
@@ -149,7 +149,7 @@
 						else
 							to_chat(usr, span_warning("[L] got distracted and wandered off!"))
 							to_chat(L, span_warning("I must be more focused on my studies!"))
-							return	
+							return
 					else  // +1 skill level if apprentice or better
 						if(do_after(usr, teachingtime, target = L))
 							user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
@@ -159,7 +159,7 @@
 						else
 							to_chat(usr, span_warning("[L] got distracted and wandered off!"))
 							to_chat(L, span_warning("I must be more focused on my studies!"))
-							return	
+							return
 			else
 				to_chat(usr, span_warning("My student can barely hear me from there."))
 				return

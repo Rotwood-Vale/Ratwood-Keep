@@ -19,6 +19,19 @@
 	miracle = FALSE
 	devotion_cost = 0
 
+/obj/effect/proc_holder/spell/targeted/docheallsser  /////// lesser miricle, granted by enchanted rings
+	action_icon = 'icons/mob/actions/roguespells.dmi'
+	name = "Close Wounds"
+	overlay_state = "doc"
+	range = 1
+	include_user = TRUE
+	sound = 'sound/gore/flesh_eat_03.ogg'
+	associated_skill = /datum/skill/misc/treatment
+	antimagic_allowed = TRUE
+	charge_max = 60 SECONDS
+	miracle = FALSE
+	devotion_cost = 0
+
 /obj/effect/proc_holder/spell/targeted/stable // sets ox lose to 0 knocks out some toxin, brings blood levels to safe. epi stabalizes ox lose, antihol purges booze, water and iron slowly restores blood.
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "Stabilising Syringe"
@@ -106,7 +119,7 @@
 		to_chat(user, span_warning("They need to be mended more."))
 		revert_cast()
 		return FALSE
-	
+
 	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
 	//GET OVER HERE!
 	if(underworld_spirit)
@@ -203,7 +216,7 @@
 			ghost.mind.transfer_to(target, TRUE)
 			qdel(underworld_spirit)
 	target.grab_ghost(force = TRUE) // even suicides
-	
+
 	target.update_body()
 	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
 
@@ -245,6 +258,29 @@
 		return TRUE
 	revert_cast()
 	return FALSE
+
+/obj/effect/proc_holder/spell/targeted/docheallsser/cast(list/targets, mob/living/user)
+	. = ..()
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		target.visible_message(span_green("[user] tends to [target]'s wounds."), span_notice("I feel better already."))
+		if(iscarbon(target))
+			var/mob/living/carbon/C = target
+			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
+			if(affecting)
+				if(affecting.heal_damage(25, 25))
+					C.update_damage_overlays()
+				if(affecting.heal_wounds(25))
+					C.update_damage_overlays()
+		else
+			target.adjustBruteLoss(-25)
+			target.adjustFireLoss(-25)
+		target.adjustToxLoss(-25)
+		target.adjustOxyLoss(-25)
+		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
+		return TRUE
+	return FALSE
+
 
 /obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
 	. = ..()
@@ -686,7 +722,7 @@
 /*documentation: 15 oz = 45 units
 2 lesser health makes 1 health bottle, 2 health makes 1 greater health
 you need 4 lesser bottles to make 2 health to make 1 half bottle of greater
-8 lesser bottles for 1 bottle of greater 
+8 lesser bottles for 1 bottle of greater
 end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bottle of greater*/
 
 /datum/chemical_reaction/alch/mana
@@ -730,13 +766,13 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	id = "puresalt"
 	required_reagents = list(/datum/reagent/water/salty = 30) //Boil off the water to get pure salt
 	results = list(/datum/reagent/rawsalt = 15)
-	
+
 /datum/chemical_reaction/alch/saltsea
 	name = "saltsea"
 	id = "saltsea"
 	required_reagents = list(/datum/reagent/rawsalt = 15)
 
-/datum/chemical_reaction/alch/saltsea/on_reaction(datum/reagents/holder, created_volume)	
+/datum/chemical_reaction/alch/saltsea/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/powder/salt(location)
