@@ -222,8 +222,8 @@
 //eastern content
 
 /obj/item/clothing/gloves/roguetown/eastgloves1
-	name = "black swordsman gloves"
-	desc = "Sleek gloves typically used by wandering vagabonds."
+	name = "black gloves"
+	desc = "Sleek gloves typically used by Achimgoyo swordsmen."
 	icon_state = "eastgloves1"
 	item_state = "eastgloves1"
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -235,7 +235,7 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 
 /obj/item/clothing/gloves/roguetown/eastgloves2
-	name = "black swordsman gloves"
+	name = "stylish gloves"
 	desc = "Unusual gloves worn by the Ruma Clan."
 	icon_state = "eastgloves2"
 	item_state = "eastgloves2"

@@ -10,7 +10,7 @@
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	tutorial = "A disgraced body guard from foreign lands; \
-	After the murder of the State Official underneath your protection, you were hunted down across Gronn. Now, you are a vagabond - travelling with fellow abandoned swordsmen who have the murderous intent to survive. \
+	After the murder of an Achimgoyo State Official underneath your protection, you were hunted down across the state. Now, you are a vagabond - travelling with fellow abandoned swordsmen who have the murderous intent to survive. \
 	You deeply care for your family, and would do anything to see them survive."
 	display_order = JDO_MENTOR
 	whitelist_req = TRUE
