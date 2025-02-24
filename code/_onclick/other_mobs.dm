@@ -440,21 +440,21 @@
 									V.dropItemToGround(picked)
 									put_in_active_hand(picked)
 									to_chat(src, span_green("I stole [picked]!"))
-									V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
-									U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
+									V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="white")
+									U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="white")
 								else
 									exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
 									to_chat(src, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
 							else
 								to_chat(src, "<span class='warning'>They can see me!")
 						if(stealroll <= 5)
-							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
-							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="white")
+							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="white")
 							U.visible_message(span_danger("[U] failed to pickpocket [V]!"))
 							to_chat(V, span_danger("[U] tried pickpocketing me!"))
 						if(stealroll < targetperception)
-							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="black")
-							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="black")
+							V.log_message("has had an attempted pickpocket by [key_name(U)]", LOG_ATTACK, color="white")
+							U.log_message("has attempted to pickpocket [key_name(V)]", LOG_ATTACK, color="white")
 							to_chat(src, span_danger("I failed to pick the pocket!"))
 							to_chat(V, span_danger("Someone tried pickpocketing me!"))
 							exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
