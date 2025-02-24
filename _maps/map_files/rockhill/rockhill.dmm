@@ -3107,6 +3107,10 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/tavern)
+"aNu" = (
+/obj/structure/bars/grille,
+/turf/open/dark_filler,
+/area/rogue/indoors/town/tavern)
 "aNy" = (
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/church)
@@ -10496,7 +10500,8 @@
 /area/rogue/indoors)
 "eIK" = (
 /obj/machinery/light/rogue/wallfire/candle,
-/turf/open/floor/rogue/woodturned,
+/obj/structure/bars/grille,
+/turf/open/dark_filler,
 /area/rogue/indoors/town/tavern)
 "eIZ" = (
 /obj/structure/gravemarker,
@@ -19734,6 +19739,12 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
+"jLD" = (
+/obj/structure/chair/wood/rogue{
+	dir = 8
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/tavern)
 "jLG" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "manor";
@@ -27503,7 +27514,7 @@
 	dir = 6;
 	icon_state = "largetable"
 	},
-/turf/open/floor/rogue/woodturned,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
 "nZO" = (
 /obj/machinery/light/rogue/torchholder{
@@ -28772,6 +28783,13 @@
 /obj/item/roguegem/diamond,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
+"oFO" = (
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "largetable"
+	},
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/town/tavern)
 "oFS" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood,
@@ -33036,10 +33054,6 @@
 	pixel_x = -10
 	},
 /turf/open/floor/rogue/concrete,
-/area/rogue/indoors/town/tavern)
-"qVX" = (
-/obj/structure/bars/grille,
-/turf/open/transparent/openspace,
 /area/rogue/indoors/town/tavern)
 "qWe" = (
 /obj/item/roguebin/water,
@@ -440297,9 +440311,9 @@ fZJ
 wNn
 rZy
 wRK
-wRK
-qVX
-dZp
+aNu
+iHm
+byk
 mcw
 iwD
 aAy
@@ -440729,9 +440743,9 @@ fZJ
 wNn
 low
 wRK
-wRK
-qVX
-gah
+aNu
+iHm
+oFO
 mcw
 bDY
 aAy
@@ -441162,7 +441176,7 @@ wNn
 wNn
 wNn
 eIK
-qVX
+iHm
 nZw
 mcw
 bDY
@@ -441593,9 +441607,9 @@ fHB
 cWz
 bJU
 wNn
-wRK
-qVX
-hbg
+aNu
+iHm
+jLD
 owH
 tAU
 cVW
