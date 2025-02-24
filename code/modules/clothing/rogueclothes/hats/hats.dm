@@ -1697,7 +1697,7 @@
     item_state = "overseermask"
     icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
     mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    max_integrity = 250
+    max_integrity = 150
     flags_inv = HIDEFACE
     body_parts_covered = FACE|HEAD|HAIR|EARS|NOSE
     flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
