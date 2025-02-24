@@ -865,7 +865,7 @@
 /obj/item/rogueweapon/sword/sabre/mulyeog/mentor
 	force = 30
 	name = "mentor's blade"
-	desc = "A foreign sword once used by Eastern-Gronn bodyguards. There's an old red tassel on the hilt."
+	desc = "A foreign sword once used by Achimgoyo bodyguards. There's an old red tassel on the hilt."
 	icon_state = "eastsword1"
 	max_integrity = 30
 	wdefense = 8
@@ -874,12 +874,12 @@
 	name = "lenticular straight sword"
 	desc = "A steel sword with cloud patterns on the groove. Obey the Captain."
 	icon_state = "eastsword2"
-	wdefense = 0
+	wdefense = 5
 
 /obj/item/rogueweapon/sword/sabre/mulyeog/rumacaptain
 	force = 30
-	name = "Kokuuntō"
-	desc = "A gold-stained sword that proves your worth as 38th Captain of the Ruma Clan."
+	name = "Heiyundao"
+	desc = "A gold-stained sword that shows you are the 38th Captain of the Ruma Clan."
 	icon_state = "eastsword3"
 	max_integrity = 30
 	wdefense = 8

@@ -540,7 +540,7 @@
 /obj/item/clothing/suit/roguetown/shirt/eastshirt1
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	name = "black foreign shirt"
-	desc = "A shirt typically used by East-Gronn thugs."
+	desc = "A shirt typically used by Achimgoyo thugs."
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "eastshirt1"
 	do_sound_bell = FALSE

@@ -405,7 +405,7 @@
 
 /obj/item/clothing/under/roguetown/trou/eastpants1
 	name = "cut-throat's pants"
-	desc = "Foreign Gronn pants, with leather insewns."
+	desc = "Foreign pants, with leather insewns."
 	icon_state = "eastpants1"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
 	max_integrity = 130
