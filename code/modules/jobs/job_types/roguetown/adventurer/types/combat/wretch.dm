@@ -168,6 +168,7 @@
 			H.change_stat("endurance", 1)
 			if (istype (H.patron, /datum/patron/inhumen/zizo))
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
+				ADD_TRAIT(H, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/black
 			cloak = /obj/item/clothing/cloak/cape/crusader
 			gloves = /obj/item/clothing/gloves/roguetown/chain/blk
@@ -216,6 +217,7 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
 			ADD_TRAIT(H, TRAIT_ZOMBIE_IMMUNE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 			H.cmode_music = 'sound/music/combat_cult.ogg'
 			if(H.age == AGE_OLD)

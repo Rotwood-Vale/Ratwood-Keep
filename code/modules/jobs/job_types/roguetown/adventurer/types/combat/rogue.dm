@@ -50,6 +50,7 @@
 			H.cmode_music = 'sound/music/combat_treasurehunter.ogg'
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 			var/weapons = list("Sabre","Whip")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			H.set_blindness(0)
