@@ -144,22 +144,22 @@
 	message.embed = embed
 	embed.author = new /datum/tgs_chat_embed/provider/author/glob("Ксайликс объявляет результаты")
 	embed.title = "Партия длилась [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)]."
-	embed.description = "[SSticker.get_end_reason()]"
+	embed.description = [SSticker.get_end_reason()]
 	embed.colour = "#f19a37"
-	var/datum/tgs_chat_embed/field/deaths = new ("💀Смертей: ", "[SSticker.deaths]")
-	var/datum/tgs_chat_embed/field/players = new (":ghost:Заблудшие души: ", "[GLOB.player_list.len]")
-	var/datum/tgs_chat_embed/field/bloodspilled = new ("🩸Крови пролито: ", "[round(SSticker.blood_lost / 100, 1)]L")
-	var/datum/tgs_chat_embed/field/triumphgained = new ("🏆Триумфов получено: ", "[SSticker.tri_gained]")
-	var/datum/tgs_chat_embed/field/triumphslost = new (":woman_detective:Триумфов украдено: ","[SSticker.tri_lost*-1]")
-	var/datum/tgs_chat_embed/field/pleasures = new ("💦Наслаждений: ", "[SSticker.cums]")
-	var/datum/tgs_chat_embed/field/violated_by_baotha = new (":smiling_imp:Осквернено Баотой: ", "[SSticker.violated_by_baotha.len]") // baotha_steals_triumphs
-	var/datum/tgs_chat_embed/field/confessors = new (":orthodox_cross:Исповедники: ", "[GLOB.confessors.len]")
+	var/datum/tgs_chat_embed/field/deaths = new ("💀 Смертей: ", "[SSticker.deaths]")
+	var/datum/tgs_chat_embed/field/players = new (":ghost: Заблудшие души: ", "[GLOB.player_list.len]")
+	var/datum/tgs_chat_embed/field/bloodspilled = new ("🩸 Крови пролито: ", "[round(SSticker.blood_lost / 100, 1)]L")
+	var/datum/tgs_chat_embed/field/triumphgained = new ("🏆 Триумфов получено: ", "[SSticker.tri_gained]")
+	var/datum/tgs_chat_embed/field/triumphslost = new (":woman_detective: Триумфов украдено: ","[SSticker.tri_lost*-1]")
+	var/datum/tgs_chat_embed/field/pleasures = new ("💦 Наслаждений: ", "[SSticker.cums]")
+	var/datum/tgs_chat_embed/field/violated_by_baotha = new (":smiling_imp: Осквернено Баотой: ", "[SSticker.violated_by_baotha.len]") // baotha_steals_triumphs
+	var/datum/tgs_chat_embed/field/confessors = new (":orthodox_cross: Исповедники: ", "[GLOB.confessors.len]")
 	var/datum/tgs_chat_embed/field/families = new (":ring:Семьи: ", "[SSfamily.families.len]") // family_changes
-	var/datum/tgs_chat_embed/field/families_failed = new (":trollge::Пытались сформировать семью: ", "[length(SSfamily.family_candidates)]") // family_changes
-	var/datum/tgs_chat_embed/field/boys = new (":man_beard:Мужчины: ", "[SSticker.males] ([percent_of_males]%)")
-	var/datum/tgs_chat_embed/field/womens = new (":woman:Женщины: ", "[SSticker.females] ([percent_of_females]%)")
-	var/datum/tgs_chat_embed/field/femboys = new (":man:Кантбои: ", "[SSticker.males_with_vagina] ([percent_of_males_with_vagina]%)")
-	var/datum/tgs_chat_embed/field/futacocks = new (":woman_beard:Фута: ", "[SSticker.females_with_penis] ([percent_of_females_with_penis]%)")
+	var/datum/tgs_chat_embed/field/families_failed = new (":trollge: Пытались сформировать семью: ", "[length(SSfamily.family_candidates)]") // family_changes
+	var/datum/tgs_chat_embed/field/boys = new (":man_beard: Мужчины: ", "[SSticker.males] ([percent_of_males]%)")
+	var/datum/tgs_chat_embed/field/womens = new (":woman: Женщины: ", "[SSticker.females] ([percent_of_females]%)")
+	var/datum/tgs_chat_embed/field/femboys = new (":man: Кантбои: ", "[SSticker.males_with_vagina] ([percent_of_males_with_vagina]%)")
+	var/datum/tgs_chat_embed/field/futacocks = new (":woman_beard: Фута: ", "[SSticker.females_with_penis] ([percent_of_females_with_penis]%)")
 
 	embed.fields = list(deaths, bloodspilled, triumphgained, triumphslost, pleasures, violated_by_baotha, confessors, families, families_failed, players, boys, womens, femboys, futacocks)
 
