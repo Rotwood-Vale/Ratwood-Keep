@@ -38,7 +38,7 @@
 
 /obj/item/roguecoin/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	playsound(loc, 'sound/foley/coins1.ogg', 100, TRUE, -2)
-	scatter(get_turf(src))
+	INVOKE_ASYNC(get_turf(src), PROC_REF(scatter))
 	..()
 
 /obj/item/roguecoin/pickup(mob/user)
