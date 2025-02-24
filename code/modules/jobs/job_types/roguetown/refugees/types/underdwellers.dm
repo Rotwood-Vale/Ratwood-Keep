@@ -3,7 +3,7 @@
 	tutorial = "You are of those not quite fit for society, those who hide away in the caves and sewers. That society has deemed you lesser. So now, you live amongst your own little communities, far from where the surface dwellers dare see you."
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/kobold, /datum/species/anthromorphsmall)
+	allowed_races = list(/datum/species/kobold, /datum/species/anthromorphsmall, /datum/species/rat)
 	category_tags = list(CTAG_REFUGEE)
 
 	maximum_possible_slots = 10
