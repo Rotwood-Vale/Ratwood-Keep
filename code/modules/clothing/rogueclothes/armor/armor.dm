@@ -1090,7 +1090,7 @@
 	body_parts_covered = CHEST
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/overseer
-    name = "overseer jacket"
+    name = "confessor jacket"
     desc = "Padded jacket that provides adequate protection against unarmed innocents."
     icon_state = "overseerjacket"
     icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
@@ -1105,7 +1105,7 @@
     boobed = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat/overseer
-    name = "vice overseer coat"
+    name = "Lord inquisitor coat"
     desc = "Heavy, reinforced coat with a tasteful burgundy covering will not leave anyone indifferent."
     icon_state = "viceseercoat"
     icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'

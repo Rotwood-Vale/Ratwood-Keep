@@ -1691,7 +1691,7 @@
 	color = null
 
 /obj/item/clothing/head/roguetown/helmet/overseer
-    name = "overseer mask"
+    name = "Confessor mask"
     desc = "An iconic brass-colored metallic mask depicting visage of the Crying God. Too bulky to be worn with helmets."
     icon_state = "overseermask"
     item_state = "overseermask"
@@ -1706,7 +1706,7 @@
     sellprice = 25
 
 /obj/item/clothing/head/roguetown/helmet/overseer/vice
-    name = "vice overseer mask"
+    name = "Lord Inquisitor mask"
     desc = "Silver-colored metallic mask covered in protective runes, depicting visage of the Crying God. Too bulky to be worn with helmets."
     icon_state = "viceseermask"
     item_state = "viceseermask"
