@@ -6,6 +6,7 @@
 	density = FALSE
 	blade_dulling = DULLING_BASH
 	anchored = TRUE
+	max_integrity = 999999
 
 /datum/bounty
 	var/target
@@ -308,6 +309,7 @@
 	blade_dulling = DULLING_BASH
 	item_chair = null
 	anchored = TRUE
+	max_integrity = 999999
 
 /obj/structure/chair/arrestchair/attack_right(mob/living/carbon/human/A)
 	. = ..()
