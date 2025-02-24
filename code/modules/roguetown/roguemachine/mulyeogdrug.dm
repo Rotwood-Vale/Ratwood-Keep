@@ -5,9 +5,9 @@
 #define DRUGRADE_CLOTHES 	      	(1<<4)
 #define DRUGRADE_NOTAX				(1<<5)
 
-/obj/structure/roguemachine/drugmachine
-	name = "PURITY"
-	desc = "You want to destroy your life."
+/obj/structure/roguemachine/mulyeogdrug
+	name = "LOVE"
+	desc = "You care for yourself."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -23,7 +23,7 @@
 	var/last_payout = 0
 	var/drugrade_flags
 
-/obj/structure/roguemachine/drugmachine/attackby(obj/item/P, mob/user, params)
+/obj/structure/roguemachine/mulyeogdrug/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/key))
 		var/obj/item/key/K = P
 		if(K.lockid == "nightman")
@@ -37,7 +37,7 @@
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/K = P
 		for(var/obj/item/key/KE in K.contents)
-			if(KE.lockid == "nightman")
+			if(KE.lockid == "mentor")
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
@@ -50,7 +50,7 @@
 		return attack_hand(user)
 	..()
 
-/obj/structure/roguemachine/drugmachine/process()
+/obj/structure/roguemachine/mulyeogdrug/process()
 	if(recent_payments)
 		if(world.time > last_payout + rand(6 MINUTES,8 MINUTES))
 			var/amt = recent_payments * 0.10
@@ -59,10 +59,10 @@
 			if(drugrade_flags & DRUGRADE_MONEYB)
 				amt = recent_payments * 0.50
 			recent_payments = 0
-			send_ooc_note("<b>Income from PURITY:</b> [amt]", job = "Nightmaster")
+			send_ooc_note("<b>Income from LOVE:</b> [amt]", job = "Mentor")
 			secret_budget += amt
 
-/obj/structure/roguemachine/drugmachine/Topic(href, href_list)
+/obj/structure/roguemachine/mulyeogdrug/Topic(href, href_list)
 	. = ..()
 	if(!ishuman(usr))
 		return
@@ -156,7 +156,7 @@
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	return attack_hand(usr)
 
-/obj/structure/roguemachine/drugmachine/attack_hand(mob/living/user)
+/obj/structure/roguemachine/mulyeogdrug/attack_hand(mob/living/user)
     . = ..()
     if(.)
         return
@@ -169,14 +169,14 @@
     var/canread = user.can_read(src, TRUE)
     var/contents
     if(canread)
-        contents = "<center>PURITY - In the name of pleasure.<BR>"
+        contents = "<center>LOVE - Let's have fun.<BR>"
         contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
     else
-        contents = "<center>[stars("PURITY - In the name of pleasure.")]<BR>"
+        contents = "<center>[stars("LOVE - Let's have fun.")]<BR>"
         contents += "<a href='?src=[REF(src)];change=1'>[stars("MAMMON LOADED:")]</a> [budget]<BR>"
 
     var/mob/living/carbon/human/H = user
-    if(H.job == "Nightmaster")
+    if(H.job == "Mentor") //kinda crashes the game if it's a Mentor - i've learned
         if(canread)
             contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a><BR>"
         else
@@ -206,14 +206,14 @@
     popup.set_content(contents)
     popup.open()
 
-/obj/structure/roguemachine/drugmachine/obj_break(damage_flag)
+/obj/structure/roguemachine/mulyeogdrug/obj_break(damage_flag)
 	..()
 	budget2change(budget)
 	set_light(0)
 	update_icon()
 	icon_state = "streetvendor0"
 
-/obj/structure/roguemachine/drugmachine/update_icon()
+/obj/structure/roguemachine/mulyeogdrug/update_icon()
 	cut_overlays()
 	if(obj_broken)
 		set_light(0)
@@ -222,34 +222,34 @@
 	add_overlay(mutable_appearance(icon, "vendor-drug"))
 
 
-/obj/structure/roguemachine/drugmachine/Destroy()
+/obj/structure/roguemachine/mulyeogdrug/Destroy()
 	set_light(0)
 	STOP_PROCESSING(SSroguemachine, src)
 	return ..()
 
-/obj/structure/roguemachine/drugmachine/Initialize()
+/obj/structure/roguemachine/mulyeogdrug/Initialize()
 	. = ..()
 	START_PROCESSING(SSroguemachine, src)
 	update_icon()
-	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/snekbt] = list("PRICE" = rand(30,40),"NAME" = "snake bite")
-	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(30,35),"NAME" = "spice")
-	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(10,20),"NAME" = "ozium")
-	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(35,40),"NAME" = "moondust")
-	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(8,12),"NAME" = "swampweed zig")
-	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/nourish] = list("PRICE" = rand(40,45),"NAME" = "NOURISH")
-	held_items[/obj/item/storage/fancy/shhig] = list("PRICE" = rand(40,60),"NAME" = "box of ssssigs")
-	held_items[/obj/item/storage/box/matches] = list("PRICE" = rand(10,25),"NAME" = "tinderbox")
-	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/detox] = list("PRICE" = rand(30,35),"NAME" = "DETOX")
-	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(30,35),"NAME" = "alembic")
-	held_items[/obj/item/storage/fancy/pilltin/wake] = list("PRICE" = rand(35,40),"NAME" = "pep pills tin")
-	held_items[/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify] = list("PRICE" = rand(25,30),"NAME" = "PURIFY")
-	held_items[/obj/item/natural/bundle/cloth/bandage/full] = list("PRICE" = rand(10,20),"NAME" = "roll of bandages")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/snekbt] = list("PRICE" = rand(25,30),"NAME" = "snake bite")
+	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(20,25),"NAME" = "spice")
+	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(5,10),"NAME" = "ozium")
+	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(25,30),"NAME" = "moondust")
+	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(3,6),"NAME" = "swampweed zig")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/nourish] = list("PRICE" = rand(30,35),"NAME" = "NOURISH")
+	held_items[/obj/item/storage/fancy/shhig] = list("PRICE" = rand(30,50),"NAME" = "box of ssssigs")
+	held_items[/obj/item/storage/box/matches] = list("PRICE" = rand(5,15),"NAME" = "tinderbox")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/detox] = list("PRICE" = rand(20,25),"NAME" = "DETOX")
+	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(20,25),"NAME" = "alembic")
+	held_items[/obj/item/storage/fancy/pilltin/wake] = list("PRICE" = rand(25,30),"NAME" = "pep pills tin")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify] = list("PRICE" = rand(15,20),"NAME" = "PURIFY")
+	held_items[/obj/item/natural/bundle/cloth/bandage/full] = list("PRICE" = rand(5,10),"NAME" = "roll of bandages")
 	held_items[/obj/item/reagent_containers/powder/paralysis] = list("PRICE" = rand(20,25),"NAME" = "stundust")
-	held_items[/obj/item/reagent_containers/powder/witness] = list("PRICE" = rand(30,35),"NAME" = "WITNESS")
-	held_items[/obj/item/reagent_containers/powder/hardballz] = list("PRICE" = rand(25,30),"NAME" = "hardballz")
-	held_items[/obj/item/reagent_containers/powder/hawkeyes] = list("PRICE" = rand(25,30),"NAME" = "hawkeyes")
-	held_items[/obj/item/reagent_containers/powder/stoneskin] = list("PRICE" = rand(35,40),"NAME" = "stoneskin")
-	held_items[/obj/item/reagent_containers/powder/salvation] = list("PRICE" = rand(50,55),"NAME" = "salvation")
+	held_items[/obj/item/reagent_containers/powder/witness] = list("PRICE" = rand(20,25),"NAME" = "WITNESS")
+	held_items[/obj/item/reagent_containers/powder/hardballz] = list("PRICE" = rand(15,20),"NAME" = "hardballz")
+	held_items[/obj/item/reagent_containers/powder/hawkeyes] = list("PRICE" = rand(15,20),"NAME" = "hawkeyes")
+	held_items[/obj/item/reagent_containers/powder/stoneskin] = list("PRICE" = rand(25,30),"NAME" = "stoneskin")
+	held_items[/obj/item/reagent_containers/powder/salvation] = list("PRICE" = rand(40,45),"NAME" = "salvation")
 #undef DRUGRADE_MONEYA
 #undef DRUGRADE_MONEYB
 #undef DRUGRADE_WINE
