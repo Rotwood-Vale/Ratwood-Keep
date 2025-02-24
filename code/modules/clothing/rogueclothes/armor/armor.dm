@@ -346,6 +346,7 @@
 	armor = list("blunt" = 30, "slash" = 15, "stab" = 20, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = null // It won't help, like, at all.
 	sellprice = 10
+	sleeves_state_override = "gambeson" // nearly similar sprites with regular gambeson, so no point to make another set of sleeved icons
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	name = "padded gambeson"
@@ -354,6 +355,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	sellprice = 30
+	sleeves_state_override = "gambeson" // nearly similar sprites with regular gambeson, so no point to make another set of sleeved icons
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	name = "arming jacket"
