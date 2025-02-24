@@ -58,7 +58,7 @@
 				if(16 to 19)
 					backpack_contents = list(/obj/item/clothing/shoes/roguetown/anklets = 1, /obj/item/clothing/mask/rogue/exoticsilkmask = 1, /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra = 1, /obj/item/storage/belt/rogue/leather/exoticsilkbelt = 1, /obj/item/clothing/suit/roguetown/shirt/dress/velvetdress = 1, /obj/item/clothing/suit/roguetown/shirt/dress/nobledress = 1, /obj/item/clothing/shoes/roguetown/armor/nobleboot = 2)
 				if(20)
-					backpack_contents = list(/obj/item/clothing/ring/active/nomag = 1, /obj/item/roguestatue/silver = 2, /obj/item/riddleofsteel = 1, /datum/supply_pack/rogue/luxury/listenst = 1, /obj/item/roguegem/diamond = 2)
+					backpack_contents = list(/obj/item/clothing/ring/active/nomag = 1, /obj/item/roguestatue/silver = 2, /obj/item/riddleofsteel = 1, /obj/item/listenstone = 1, /obj/item/roguegem/diamond = 2)
 					to_chat(H, span_info("I got out with quite the haul."))
 				
 		if("Spicer")
@@ -89,13 +89,5 @@
 		// TODO: add useless trinkets before this class makes sense
 		// if("Hoaxer")
 		// 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
-	if(ishumannorthern(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Giza"]
-		H.update_body()
-	if(isdemihuman(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Giza"]
-		H.update_body()
 
 	H.set_blindness(0)
