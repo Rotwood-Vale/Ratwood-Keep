@@ -9,6 +9,8 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/proc/despawncheck()
+	if(nearbyhumanpresent(5))	//check for humans in range
+		return	//return if humans in range
 	if(AIStatus == AI_IDLE)
 		new /obj/effect/particle_effect/smoke/bad(src.loc)
 		src.visible_message(span_notice("[src] returns to it's plane of origin."))
@@ -364,8 +366,9 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/proc/vine()
 	target.visible_message(span_boldwarning("Vines spread out from [src]!"))
-	for(var/turf/turf as anything in RANGE_TURFS(3,src.loc))
-		new /obj/structure/spacevine/dendor(turf)
+	for(var/turf/turf as anything in RANGE_TURFS(2,src.loc))
+		if(!locate(/obj/structure/spacevine) in turf)
+			new /obj/structure/spacevine/dendor(turf)
 	src.vine_cd = world.time
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dropcomponents()

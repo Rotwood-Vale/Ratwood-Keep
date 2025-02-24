@@ -14,12 +14,19 @@
 	.=..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/proc/despawncheck()
+	if(nearbyhumanpresent(5))	//check for humans in range
+		return	//return if humans in range
 	if(AIStatus == AI_IDLE)
 		new /obj/effect/particle_effect/smoke/bad(src.loc)
 		src.visible_message(span_notice("[src] returns to it's plane of origin."))
 		dropcomponents()
 		qdel(src)
 
+/mob/living/simple_animal/hostile/retaliate/rogue/proc/nearbyhumanpresent(var/range_dist)
+	for (var/mob/M in view(range_dist, src))	//check mobs in range
+		if(istype(M, /mob/living/carbon/human))	//check if human
+			return TRUE	//humans found in range
+	return FALSE	//No humans found, return false
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/Initialize()
 	. = ..()
 	ADD_TRAIT(src,TRAIT_NOFIRE, "[type]")

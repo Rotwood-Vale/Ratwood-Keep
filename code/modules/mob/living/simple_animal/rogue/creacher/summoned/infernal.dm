@@ -9,6 +9,8 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/proc/despawncheck()
+	if(nearbyhumanpresent(5))	//check for humans in range
+		return	//return if humans in range
 	if(AIStatus == AI_IDLE)
 		new /obj/effect/particle_effect/smoke/bad(src.loc)
 		src.visible_message(span_notice("[src] returns to it's plane of origin."))
