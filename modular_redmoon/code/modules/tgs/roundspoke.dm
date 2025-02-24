@@ -144,7 +144,7 @@
 	message.embed = embed
 	embed.author = new /datum/tgs_chat_embed/provider/author/glob("Ксайликс объявляет результаты")
 	embed.title = "Партия длилась [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)]."
-	embed.description = [SSticker.get_end_reason()]
+	embed.description = SSticker.get_end_reason()
 	embed.colour = "#f19a37"
 	var/datum/tgs_chat_embed/field/deaths = new ("💀 Смертей: ", "[SSticker.deaths]")
 	var/datum/tgs_chat_embed/field/players = new (":ghost: Заблудшие души: ", "[GLOB.player_list.len]")

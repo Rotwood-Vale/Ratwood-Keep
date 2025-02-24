@@ -845,6 +845,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		new_knight.ckey = C.key
 		new_knight.equipOutfit(/datum/job/roguetown/deathknight)
 		new_knight.regenerate_icons()
+	else
+		qdel(src)
 
 // DEATH KNIGHT ANTAG
 /datum/antagonist/skeleton/knight
