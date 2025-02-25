@@ -1380,7 +1380,7 @@
 
 /datum/emote/living/hiss
 	key = "hiss"
-	key_third_person = "hiss!"
+	key_third_person = "hisses!"
 	message = "hisses!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	message_muffled = "makes a muffled sound!"
@@ -1392,6 +1392,24 @@
 		set name = "Hiss"
 		set category = "Noises"
 		emote("hiss", intentional = TRUE)
+	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
+		return
+
+/datum/emote/living/phiss
+	key = "phiss"
+	key_third_person = "hisses!"
+	message = "hisses!"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	message_muffled = "makes a muffled sound!"
+	vary = TRUE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_phiss()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
+		set name = "PHiss"
+		set category = "Noises"
+		emote("phiss", intentional = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return

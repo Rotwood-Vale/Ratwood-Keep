@@ -106,6 +106,8 @@
 				used = list('sound/vo/mobs/bird/peep.ogg')
 			if("hiss")
 				used = list('sound/vo/mobs/snake/hiss.ogg')
+			if("phiss")
+				used = list('sound/vo/mobs/possum/phiss.ogg')
 			if("squeak")
 				used = list('sound/vo/mobs/mouse/squeak.ogg')
 			if("hoot")
