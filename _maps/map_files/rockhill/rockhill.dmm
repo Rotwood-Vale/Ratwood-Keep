@@ -4592,9 +4592,6 @@
 "cqD" = (
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/bog)
-"cqF" = (
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors/town/academy)
 "cqP" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "farm"
@@ -7668,6 +7665,13 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
+"dST" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4;
+	pixel_x = 2
+	},
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/academy)
 "dSV" = (
 /obj/structure/flora/newleaf,
 /turf/open/floor/rogue/grass,
@@ -10513,6 +10517,13 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/church)
+"fot" = (
+/obj/structure/roguewindow/openclose/reinforced,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors)
 "fov" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -15126,13 +15137,6 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
-"hNV" = (
-/obj/structure/roguewindow/openclose/reinforced,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/indoors)
 "hNW" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/garrison)
@@ -16910,7 +16914,9 @@
 /area/rogue/indoors/town/tavern)
 "iHT" = (
 /obj/structure/table/vtable/v2,
-/obj/item/reagent_containers/glass/alembic,
+/obj/item/reagent_containers/glass/alembic{
+	pixel_y = 5
+	},
 /obj/structure/roguemachine/withdraw,
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4;
@@ -19145,14 +19151,6 @@
 	icon_state = "tile"
 	},
 /area/rogue/indoors/town/tavern)
-"jQh" = (
-/obj/structure/lever/wall{
-	dir = 4;
-	redstone_id = "shutter_bastion";
-	name = "Isolation Chamber"
-	},
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors)
 "jQo" = (
 /obj/structure/mineral_door/wood/red{
 	locked = 1;
@@ -22165,6 +22163,9 @@
 "lyG" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town/tavern)
+"lyH" = (
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/academy)
 "lyO" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/ruinedwood{
@@ -22854,13 +22855,6 @@
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church)
-"lSX" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4;
-	pixel_x = 2
-	},
-/turf/open/floor/rogue/church,
-/area/rogue/indoors/town/academy)
 "lTg" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -25339,6 +25333,14 @@
 /obj/item/clothing/gloves/roguetown/nomagic,
 /turf/open/floor/rogue/volcanic,
 /area/rogue/indoors/town/magician)
+"nhq" = (
+/obj/structure/lever/wall{
+	dir = 4;
+	redstone_id = "shutter_bastion";
+	name = "Isolation Chamber"
+	},
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors)
 "nhy" = (
 /obj/structure/flora/newleaf,
 /obj/structure/flora/newbranch/connector{
@@ -27068,6 +27070,12 @@
 	},
 /turf/open/floor/rogue/greenstone,
 /area/rogue/indoors/town/magician)
+"ocL" = (
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/town/academy)
 "ocQ" = (
 /obj/structure/stairs{
 	dir = 8
@@ -27821,6 +27829,12 @@
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"ova" = (
+/obj/machinery/light/rogue/oven/south{
+	pixel_y = 0
+	},
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town/academy)
 "ovc" = (
 /obj/structure/roguemachine/withdraw{
 	pixel_x = -32;
@@ -45756,10 +45770,6 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "xTV" = (
-/obj/machinery/light/rogue/oven/south{
-	pixel_y = 0;
-	pixel_x = -32
-	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/academy)
 "xUa" = (
@@ -45819,7 +45829,10 @@
 /area/rogue/under/town/basement)
 "xWj" = (
 /obj/structure/table/vtable,
-/obj/item/reagent_containers/glass/mortar,
+/obj/item/reagent_containers/glass/mortar{
+	pixel_x = -5;
+	pixel_y = 5
+	},
 /obj/structure/fluff/wallclock,
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/church,
@@ -335493,7 +335506,7 @@ gFP
 yht
 tTh
 rDt
-jQh
+nhq
 ssB
 ssB
 aqY
@@ -338972,7 +338985,7 @@ wsY
 pOX
 erZ
 jqs
-hNV
+fot
 uqR
 uqR
 xbD
@@ -339404,7 +339417,7 @@ wsY
 muF
 erZ
 jqs
-hNV
+fot
 etg
 uqR
 xbD
@@ -452959,7 +452972,7 @@ oSn
 oSn
 dLj
 oSn
-dLj
+ova
 oSn
 oSn
 dLj
@@ -453387,7 +453400,7 @@ jqs
 fZJ
 fZJ
 oSn
-aes
+ocL
 aes
 oSn
 xWj
@@ -453823,8 +453836,8 @@ qJG
 uuS
 oSn
 iHT
-lSX
-lSX
+dST
+dST
 gDy
 dKp
 uJh
@@ -454255,8 +454268,8 @@ aWf
 uox
 oSn
 sBf
-cqF
-cqF
+lyH
+lyH
 cIc
 oSn
 uJh
@@ -454686,9 +454699,9 @@ oSn
 fRs
 fRs
 poO
-cqF
-cqF
-cqF
+lyH
+lyH
+lyH
 bWV
 dKp
 uJh
@@ -455552,7 +455565,7 @@ oSn
 oSn
 oSn
 oSn
-oSn
+dLj
 oSn
 dLj
 uJh
