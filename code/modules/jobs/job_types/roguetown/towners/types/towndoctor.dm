@@ -50,5 +50,3 @@
 		H.mind.AddSpell(new SPELL_DOCHEAL)
 		H.mind.AddSpell(new SPELL_STABLE)
 		H.mind.AddSpell(new SPELL_PURGE)
-		H.mind.AddSpell(new SPELL_DEBRIDE)
-		H.mind.AddSpell(new SPELL_CPR)

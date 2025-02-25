@@ -291,7 +291,7 @@
 		target.reagents.add_reagent(rid, ramount)
 		target.visible_message(span_green("[user] stabs [target]'s chest with a syringe."), span_notice("My grip on life tightens!"))
 		target.setOxyLoss(-100)
-		target.adjustToxLoss(-50)
+		target.adjustToxLoss(-30)
 		target.emote("rage")
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
@@ -309,8 +309,8 @@
 			return FALSE
 		BPA.add_wound(/datum/wound/artery/)
 		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]."))
-		target.adjustToxLoss(-999)
-		target.reagents.remove_all_type(/datum/reagent, 9999)
+		target.adjustToxLoss(-30)
+		target.reagents.remove_all_type(/datum/reagent, 15)
 		target.emote("scream")
 		return TRUE
 	revert_cast()
@@ -986,8 +986,7 @@ end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bot
 	new /obj/item/rogueweapon/surgery/retractor(src)
 	new /obj/item/rogueweapon/surgery/bonesetter(src)
 	new /obj/item/rogueweapon/surgery/cautery(src)
-	new /obj/item/natural/worms/leech/cheele(src)
-	new /obj/item/needle/pestra(src)
+	new /obj/item/needle(src)
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
