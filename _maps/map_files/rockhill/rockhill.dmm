@@ -2547,6 +2547,10 @@
 /obj/item/paper,
 /obj/item/paper,
 /obj/item/paper,
+/obj/machinery/light/rogue/wallfire/candle/blue/l{
+	pixel_x = 0;
+	pixel_y = 32
+	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
 "bnV" = (
@@ -6812,6 +6816,13 @@
 	icon_state = "horzw"
 	},
 /area/rogue/indoors/town/magician)
+"dwk" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4;
+	pixel_x = 2
+	},
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/academy)
 "dwC" = (
 /obj/structure/bars/grille{
 	dir = 8
@@ -9052,6 +9063,13 @@
 "eCU" = (
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/tavern)
+"eCZ" = (
+/obj/structure/roguewindow/openclose/reinforced,
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
+	},
+/area/rogue/indoors)
 "eDl" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/cobble,
@@ -11542,6 +11560,14 @@
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
+/area/rogue/indoors)
+"fQY" = (
+/obj/structure/lever/wall{
+	dir = 4;
+	redstone_id = "shutter_bastion";
+	name = "Isolation Chamber"
+	},
+/turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "fRj" = (
 /obj/structure/glowshroom,
@@ -15143,6 +15169,9 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
+"hOv" = (
+/turf/open/floor/rogue/tile,
+/area/rogue/indoors/town/academy)
 "hOw" = (
 /obj/structure/bookcase/random/archive,
 /obj/item/book/rogue/noc,
@@ -16989,9 +17018,6 @@
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
-"iKh" = (
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors/town/academy)
 "iKJ" = (
 /obj/structure/bars/grille{
 	dir = 1
@@ -17795,6 +17821,9 @@
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/druidgrove)
+"jfG" = (
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue/indoors/town/academy)
 "jfW" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -20878,12 +20907,6 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/sewer)
-"kKz" = (
-/obj/structure/fluff/railing/border{
-	dir = 6
-	},
-/turf/open/transparent/openspace,
-/area/rogue/indoors/town/academy)
 "kLP" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -21493,14 +21516,6 @@
 	},
 /obj/item/rogueweapon/stoneaxe/woodcut,
 /turf/open/floor/rogue/woodturned,
-/area/rogue/indoors)
-"lfb" = (
-/obj/structure/lever/wall{
-	dir = 4;
-	redstone_id = "shutter_bastion";
-	name = "Isolation Chamber"
-	},
-/turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "lfg" = (
 /obj/structure/fluff/railing/wood{
@@ -34040,13 +34055,6 @@
 	icon_state = "greenstone"
 	},
 /area/rogue/under/town/basement)
-"rMd" = (
-/obj/structure/roguewindow/openclose/reinforced,
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/indoors)
 "rMK" = (
 /obj/structure/fluff/railing/border,
 /obj/effect/decal/cobbleedge{
@@ -39196,13 +39204,6 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
-"uzL" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4;
-	pixel_x = 2
-	},
-/turf/open/floor/rogue/church,
-/area/rogue/indoors/town/academy)
 "uAe" = (
 /obj/structure/fluff/canopy/side{
 	dir = 1;
@@ -40557,6 +40558,12 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors)
+"voc" = (
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/town/academy)
 "voi" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -41749,6 +41756,10 @@
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/tavern)
+"vUV" = (
+/obj/machinery/light/rogue/oven/south,
+/turf/closed/wall/mineral/rogue/decowood,
+/area/rogue/indoors/town/academy)
 "vUX" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -43912,9 +43923,6 @@
 	dir = 8
 	},
 /area/rogue/indoors/town/shop)
-"wWt" = (
-/turf/closed/wall/mineral/rogue/stonebrick,
-/area/rogue/indoors/town/academy)
 "wWV" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/carpet,
@@ -45770,10 +45778,6 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "xTV" = (
-/obj/machinery/light/rogue/oven/south{
-	pixel_y = 0;
-	pixel_x = -32
-	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/academy)
 "xUa" = (
@@ -335510,7 +335514,7 @@ gFP
 yht
 tTh
 rDt
-lfb
+fQY
 ssB
 ssB
 aqY
@@ -338989,7 +338993,7 @@ wsY
 pOX
 erZ
 jqs
-rMd
+eCZ
 uqR
 uqR
 xbD
@@ -339421,7 +339425,7 @@ wsY
 muF
 erZ
 jqs
-rMd
+eCZ
 etg
 uqR
 xbD
@@ -452977,7 +452981,7 @@ oSn
 dLj
 oSn
 dLj
-oSn
+vUV
 oSn
 dLj
 uJh
@@ -453404,7 +453408,7 @@ jqs
 fZJ
 fZJ
 oSn
-kKz
+voc
 aes
 oSn
 xWj
@@ -453840,8 +453844,8 @@ qJG
 uuS
 oSn
 iHT
-uzL
-uzL
+dwk
+dwk
 gDy
 dKp
 uJh
@@ -454272,8 +454276,8 @@ aWf
 uox
 oSn
 sBf
-iKh
-iKh
+hOv
+hOv
 cIc
 oSn
 uJh
@@ -454703,9 +454707,9 @@ oSn
 fRs
 fRs
 poO
-iKh
-iKh
-iKh
+hOv
+hOv
+hOv
 bWV
 dKp
 uJh
@@ -455569,7 +455573,7 @@ dLj
 oSn
 oSn
 oSn
-wWt
+jfG
 oSn
 dLj
 uJh
