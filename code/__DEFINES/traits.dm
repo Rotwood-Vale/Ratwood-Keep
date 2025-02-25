@@ -105,7 +105,7 @@
 #define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
-
+#define TRAIT_TRAIT_HERETIC "Mark of heresy" //Preist puts it on you prevents ressurection
 
 
 GLOBAL_LIST_INIT(roguetraits, list(
