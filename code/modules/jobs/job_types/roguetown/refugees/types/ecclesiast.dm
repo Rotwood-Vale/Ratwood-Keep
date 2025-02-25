@@ -10,8 +10,6 @@
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
 
-	maximum_possible_slots = 5
-
 	outfit = /datum/outfit/job/roguetown/refugee/ecclesiast
 
 /datum/outfit/job/roguetown/refugee/ecclesiast
