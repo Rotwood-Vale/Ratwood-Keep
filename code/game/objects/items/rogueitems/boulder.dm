@@ -64,7 +64,7 @@
 /obj/projectile/rock_shard
 	name = "rock shard"
 	icon_state = "bullet"
-	damage = 15
+	damage = 150
 	range = 8
 	pass_flags = PASSTABLE | PASSGRILLE
 	armor_penetration = 15
