@@ -9,7 +9,7 @@
 	category_tags = list(CTAG_ADVENTURER)
 	classes = list("Deserter" = "You were once a venerated and revered knight - now, a traitor who abandoned your liege. You live the life of an outlaw, shunned and looked down upon by society.",
 					"Outlaw" = "You're a seasoned criminal known for your heinous acts, your face plastered on wanted posters across the region. A life of theft, robbery, and ill-gotten-gains comes naturally to you.",
-					"Poacher" = "You have rejected society and its laws, choosing life in the wilderness instead. Simple thieving highwayman or freedom fighter, you take from those who have and give to the have-nots. Fancy, how that includes yourself!",
+					"Poacher" = "You have rejected society and its laws, choosing life in the wilderness instead. Simple thieving highwayman or freedom fighter, you take from those who have and give to the have-nots. Fancy, how the latter includes yourself!",
 					"Heretic" = "You are a heretic, spurned by the church, cast out from society - frowned upon by Psydon and his children for your faith.",
 					"Necromancer" = "You have been ostracized and hunted by society for your dark magics and perversion of life.")
 
@@ -201,6 +201,9 @@
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)
 			GLOB.outlawed_players += H.real_name
+			var/bounty_total
+			bounty_total = rand(151, 250)
+			add_bounty(H.real_name, bounty_total, FALSE, "Poaching", "The Justiciary of Azuria")
 
 		if("Heretic")
 			to_chat(H, span_warning("You are a heretic, spurned by the church, cast out from society - frowned upon by Psydon and his children for your faith."))
