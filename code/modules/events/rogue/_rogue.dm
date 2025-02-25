@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(badomens, list())
 		if(OMEN_NOPRIEST)
 			used = "The High Priest is dead!"
 		if(OMEN_NOBLEDEATH)
-			used = "A Noble has perished."
+			used = "A Consort has perished."
 		if(OMEN_SUNSTEAL)
 			used = "The Sun, she is wounded!"
 		if(OMEN_SKELETONSIEGE)

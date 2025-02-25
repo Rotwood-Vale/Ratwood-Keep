@@ -111,10 +111,8 @@
 						HU.playsound_local(get_turf(HU), 'sound/music/lorddeath.ogg', 80, FALSE, pressure_affected = FALSE)
 			if("Priest")
 				addomen(OMEN_NOPRIEST)
-//		if(yeae)
-//			if(mind)
-//				if((mind.assigned_role == "Lord") || (mind.assigned_role == "Priest") || (mind.assigned_role == "Retinue Captain") || (mind.assigned_role == "Merchant"))
-//					addomen(OMEN_NOBLEDEATH)
+			if("Duke Consort")
+				addomen(OMEN_NOBLEDEATH)
 
 		if(!gibbed && yeae)
 			for(var/mob/living/carbon/human/HU in viewers(7, src))
