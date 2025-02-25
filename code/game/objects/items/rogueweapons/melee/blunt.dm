@@ -335,6 +335,12 @@
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
 
+/obj/item/rogueweapon/mace/goden/steel/ravox
+	name = "duel settler"
+	desc = "The tenets of ravoxian duels are enscribed upon the head of this maul."
+	icon_state = "ravoxhammer"
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+
 /obj/item/rogueweapon/mace/goden/psymace
 	name = "psydonian grand mace"
 	desc = "A silvered grand mace, used by the Inquisiton. For when you need to be blunt."

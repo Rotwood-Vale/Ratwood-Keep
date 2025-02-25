@@ -54,7 +54,7 @@
 			cloak = /obj/item/clothing/cloak/tabard/crusader/astrata
 		if(/datum/patron/divine/abyssor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
-			cloak = /obj/item/clothing/cloak/abyssortabard	
+			cloak = /obj/item/clothing/cloak/abyssortabard
 		if(/datum/patron/divine/dendor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
@@ -80,7 +80,6 @@
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/sandals
-	r_hand = /obj/item/rogueweapon/katar
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -116,6 +115,24 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+
+/datum/outfit/job/roguetown/templar/monk/choose_loadout(mob/living/carbon/human/H)
+	. = ..()
+	var/weapons = list("Katar")
+	switch(H.patron?.type)
+		if(/datum/patron/divine/eora)
+			weapons += "Close Caress"
+		if(/datum/patron/divine/abyssor)
+			weapons += "Barotrauma"
+
+	var/weapon_choice = input(H,"Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	switch(weapon_choice)
+		if("Katar")
+			H.put_in_hands(new /obj/item/rogueweapon/katar(H), TRUE)
+		if("Close Caress")
+			H.put_in_hands(new /obj/item/rogueweapon/knuckles/eora(H), TRUE)
+		if("Barotrauma")
+			H.put_in_hands(new /obj/item/rogueweapon/katar/abyssor(H), TRUE)
 
 /datum/advclass/templar/crusader
 	name = "Templar"
@@ -218,6 +235,23 @@
 /datum/outfit/job/roguetown/templar/crusader/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
 	var/weapons = list("Bastard Sword","Flail","Mace","Battle Axe")
+	switch(H.patron?.type)
+		if(/datum/patron/divine/astrata) //Unique patron weapons, more can be added here if wanted.
+			weapons += "Solar Judgement"
+		if(/datum/patron/divine/noc)
+			weapons += "Moonlight Khopesh"
+		if(/datum/patron/divine/necra)
+			weapons += "Swift End"
+		if(/datum/patron/divine/pestra)
+			weapons += "Plaguebringer Sickles"
+		if(/datum/patron/divine/malum)
+			weapons += "Forgefiend"
+		if(/datum/patron/divine/dendor)
+			weapons += "Summer Scythe"
+		if(/datum/patron/divine/xylix)
+			weapons += "Cackle Lash"
+		if(/datum/patron/divine/ravox)
+			weapons += "Duel Settler"
 	var/weapon_choice = input(H,"Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	switch(weapon_choice)
 		if("Bastard Sword")
@@ -232,3 +266,30 @@
 		if("Battle Axe")
 			H.put_in_hands(new /obj/item/rogueweapon/stoneaxe/battle(H), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+		if("Solar Judgement")
+			H.put_in_hands(new /obj/item/rogueweapon/sword/long/exe/astrata(H), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		if("Moonlight Khopesh")
+			H.put_in_hands(new /obj/item/rogueweapon/sword/sabre/nockhopesh(H), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		if("Swift End")
+			H.put_in_hands(new /obj/item/rogueweapon/flail/necraflail(H), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+		if("Plaguebringer Sickles")
+			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle(H), TRUE)
+			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle(H), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE) // actually makes them usable for the templar.
+		if("Forgefiend")
+			H.put_in_hands(new /obj/item/rogueweapon/sword/long/malumflamm(H), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		if("Summer Scythe")
+			H.put_in_hands(new /obj/item/rogueweapon/halberd/bardiche/scythe(H), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE) // again, needs skill to actually use the weapon
+		if("Cackle Lash")
+			H.put_in_hands(new /obj/item/rogueweapon/whip/xylix(H), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+		if("Duel Settler")
+			H.put_in_hands(new /obj/item/rogueweapon/mace/goden/steel/ravox(H), TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+
+
