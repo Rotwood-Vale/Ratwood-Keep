@@ -1414,6 +1414,24 @@
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return
 
+/datum/emote/living/roar
+	key = "roar"
+	key_third_person = "roars!"
+	message = "roars!"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	message_muffled = "makes a muffled sound!"
+	vary = TRUE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_roar()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
+		set name = "Roar"
+		set category = "Noises"
+		emote("roar", intentional = TRUE)
+	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
+		return
+
 /datum/emote/living/snap
 	key = "snap"
 	key_third_person = "finger snaps!"
@@ -1426,6 +1444,19 @@
 	set category = "Noises"
 
 	emote("snap", intentional = TRUE)
+
+/datum/emote/living/blink
+	key = "blink"
+	key_third_person = "blinks."
+	message = "blinks."
+	emote_type = EMOTE_VISIBLE
+	show_runechat = FALSE
+
+/mob/living/carbon/human/verb/emote_blink()
+	set name = "Blink"
+	set category = "Noises"
+
+	emote("blink", intentional = TRUE)
 
 /datum/emote/living/snap2
 	key = "snap2"
