@@ -405,7 +405,7 @@
 			H.change_stat("endurance", 1)
 			H.change_stat("fortune", 1)
 
-			if("Peddler")
+		if("Peddler")
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)

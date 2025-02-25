@@ -173,7 +173,6 @@
 			beltl = /obj/item/rogueweapon/huntingknife
 			backl = /obj/item/storage/backpack/rogue/satchel
 			r_hand = /obj/item/rogueweapon/woodstaff
-			if(H.mind)
 			to_chat(H, span_warning("Magic is often times refered to as an art. At times it is treated as a primordial beast, chaos incarnate. To more learned men it is a precise science, to be studied and examined. In the end, magic is all three of the above. It is Art, Chaos, and Science: a blessing, a curse, and progress. It all depends on who calls upon it, and for what purpose."))
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
@@ -203,7 +202,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 
 		if("Sorcerer")
-			tutorial = "In some places in Grimmoria, people are banned from the study of magic. Those that do even then are afforded the title Sorcerer in honor of their resolve."
+			to_chat(H, span_warning("In some places in Grimmoria, people are banned from the study of magic. Those that do even then are afforded the title Sorcerer in honor of their resolve."))
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
@@ -211,9 +210,8 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 			beltl = /obj/item/rogueweapon/huntingknife
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor	
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			r_hand = /obj/item/rogueweapon/woodstaff
-			if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,1,1), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, pick(0,1,1), TRUE)
@@ -233,7 +231,7 @@
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
-			
+
 	H.set_blindness(0)
 
 //Decoupled occultist. For admin use.
