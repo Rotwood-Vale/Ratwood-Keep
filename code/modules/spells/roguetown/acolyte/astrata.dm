@@ -86,6 +86,7 @@
 		if(HAS_TRAIT(target, TRAIT_HERETIC))
 			to_chat(user, span_warning("Necra will not allow them to return back."))
 			revert_cast()
+			return FALSE
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
 		//GET OVER HERE!
