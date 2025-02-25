@@ -1817,9 +1817,9 @@
 /proc/found_ping(atom/A, client/C, state)
 	if(!A || !C || !state)
 		return
-	var/image/I = image(icon = 'icons/effects/effects.dmi', loc = A, icon_state = state, layer = 19)
-	I.layer = 19
-	I.plane = 19
+	var/image/I = image(icon = 'icons/effects/effects.dmi', loc = A, icon_state = state, layer = 18)
+	I.layer = 18
+	I.plane = 18
 	if(!I)
 		return
 	I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
