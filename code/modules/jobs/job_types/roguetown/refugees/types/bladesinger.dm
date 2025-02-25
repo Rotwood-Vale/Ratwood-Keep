@@ -6,7 +6,7 @@
 	pickprob = 25
 	maximum_possible_slots = 2
 	traits_applied = list(TRAIT_MEDIUMARMOR)
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_REFUGEE)
 
 	outfit = /datum/outfit/job/roguetown/adventurer/bladesinger
 

@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
 	traits_applied = list(TRAIT_HEAVYARMOR)
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_REFUGEE)
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
 

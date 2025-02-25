@@ -7,7 +7,7 @@
 
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	maximum_possible_slots = 2
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_REFUGEE)
 
 /datum/outfit/job/roguetown/adventurer/dwarfwarrior/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -33,7 +33,7 @@
 	else
 		r_hand = /obj/item/rogueweapon/halberd
 		beltl = /obj/item/rogueweapon/huntingknife
-		
+
 
 	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)

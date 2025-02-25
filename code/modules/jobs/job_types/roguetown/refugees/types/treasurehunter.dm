@@ -1,50 +1,59 @@
-/datum/subclassclass/gravedigger
-	name = "Treasure Hunter"
-	tutorial = "A treasure hunter trained in the art of the Giza, discern what is treasure or not, your fortune could be hidden anywhere."
+/datum/subclass/puritan
+	name = "Witch Hunter"
+	tutorial = "Witch Hunters belong to a special sect of the One-God Church that believe all magyk \
+	use is inherently sinful. They are extremely devoted to hunting necromancers and often preach \
+	to magyk users to end their sinful ways."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
-	outfit = /datum/outfit/job/roguetown/adventurer/gravedigger
+	allowed_races = RACES_TOLERATED_UP
+	outfit = /datum/outfit/job/roguetown/adventurer/puritan
+	maximum_possible_slots = 2
 	pickprob = 11
-	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_SEEPRICES)
-	category_tags = list(CTAG_ADVENTURER)
+	traits_applied = list(TRAIT_MEDIUMARMOR)
+	category_tags = list(CTAG_REFUGEE)
 
-/datum/outfit/job/roguetown/adventurer/gravedigger/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/adventurer/puritan
+	allowed_patrons = list(/datum/patron/psydon)
+
+/datum/outfit/job/roguetown/adventurer/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest
-	backr = /obj/item/storage/backpack/rogue/satchel
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	belt = /obj/item/storage/belt/rogue/leather
-	backpack_contents = list(/obj/item/bait = 1, /obj/item/flashlight/flare/torch/metal = 1, /obj/item/lockpick = 1)
-	gloves = /obj/item/clothing/gloves/roguetown/leather
-	cloak = /obj/item/clothing/cloak/raincloak/mortus
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	shoes = /obj/item/clothing/shoes/roguetown/armor
+	pants = /obj/item/clothing/under/roguetown/tights/black
+	cloak = /obj/item/clothing/cloak/cape/puritan
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltl = /obj/item/rogueweapon/sword/iron/short
-	beltr = /obj/item/rogueweapon/whip
-	backl = /obj/item/rogueweapon/shovel
 	head = /obj/item/clothing/head/roguetown/puritan
+	gloves = /obj/item/clothing/gloves/roguetown/leather
+	beltl = /obj/item/rogueweapon/sword/rapier
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1)
+
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE) // rogue gets 4 in knives, and a 3 in swords. This role is rarer, and has less stats than a rogue
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, rand(4,5), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("perception", 1)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, rand(4,5), TRUE)
 		H.change_stat("intelligence", 1)
-		H.change_stat("speed", 2) 
-		H.change_stat("endurance", -2)
-		H.change_stat("fortune", 1)
+		H.change_stat("strength", 1)
+		H.change_stat("endurance", 1)
+		H.change_stat("speed", 1)
+		H.change_stat("constitution", 1)
+		H.change_stat("perception", 2)
+	H.verbs |= /mob/living/carbon/human/proc/torture_victim
+	H.verbs |= /mob/living/carbon/human/proc/faith_test
+
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

@@ -1,4 +1,4 @@
-/datum/subclass/vaquero
+/datum/advclass/vaquero
 	name = "Vaquero"
 	tutorial = "Vaquero are Tieberian swashbucklers who have their origins as skilled horse-tamers of Asturia. It's hard to find horses these days..."
 	allowed_sexes = list(MALE, FEMALE)
@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/vaquero
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
 	cmode_music = 'sound/music/combat_vaquero.ogg'
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_REFUGEE)
 
 /datum/advclass/vaquero/equipme(mob/living/carbon/human/H)
 	if(H.gender == FEMALE)

@@ -7,7 +7,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/rogue
 	traits_applied = list(TRAIT_MEDIUMARMOR)
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_REFUGEE)
 
 /datum/outfit/job/roguetown/adventurer/rogue
 
@@ -87,7 +87,7 @@
 			cloak = /obj/item/clothing/cloak/cape/black
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/sword/rapier
-			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor	
+			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			H.change_stat("intelligence", 1)
 			H.change_stat("speed", 3)
 			H.change_stat("endurance", 1)
