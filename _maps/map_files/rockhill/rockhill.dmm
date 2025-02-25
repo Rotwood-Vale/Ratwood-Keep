@@ -42568,8 +42568,8 @@
 /obj/item/clothing/under/roguetown/tights/black,
 /obj/item/storage/belt/rogue/pouch/coins/mid,
 /obj/item/clothing/suit/roguetown/shirt/robe/wizard,
-/obj/item/clothing/head/roguetown/wizhat/gen/wise,
 /obj/item/clothing/head/roguetown/wizhat/gen,
+/obj/item/clothing/head/roguetown/wizhat,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/magician)
 "wpk" = (
@@ -456853,7 +456853,7 @@ fZJ
 fZJ
 oSn
 aes
-oSn
+iFe
 fdJ
 tXj
 gtU
