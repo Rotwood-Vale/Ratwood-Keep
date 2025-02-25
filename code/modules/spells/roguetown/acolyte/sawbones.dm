@@ -106,8 +106,11 @@
 	if(HAS_TRAIT(target, TRAIT_RITUALIZED))
 		to_chat(user, span_warning("The life essence was sucked out of this body."))
 		revert_cast()
+	if(HAS_TRAIT(target, TRAIT_HERETIC))
+		to_chat(user, span_warning("Necra will not allow them to return back."))
+		revert_cast()
 		return FALSE
-	if(world.time > target.mob_timers["lastdied"] + 10 MINUTES)
+	if(world.time > target.mob_timers["lastdied"] + 3 MINUTES)
 		to_chat(user, span_warning("It's too late."))
 		revert_cast()
 		return FALSE
