@@ -34,6 +34,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/pull_book_file_names,
 	/client/proc/adminwho,
 	/client/proc/admin_spread_effect,
+	/client/proc/open_bounty_menu,
 	// RATWOOD MODULAR START
 	/client/proc/bunker_bypass,
 	// RATWOOD MODULAR END
@@ -364,6 +365,25 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		return
 	show_popup_menus = !show_popup_menus
 	to_chat(src, show_popup_menus ? "Right click menus are now enabled" : "Right click menus are now disabled")
+
+/client/proc/open_bounty_menu()
+	set category = "Admin"
+	set name = "View Bounty List"
+	if(!holder)
+		return
+	var/bounty_found = FALSE
+	var/consult_menu
+	consult_menu += "<center>BOUNTIES<BR>"
+	consult_menu += "--------------<BR>"
+	for(var/datum/bounty/saved_bounty in GLOB.head_bounties)
+		consult_menu += saved_bounty.banner
+		bounty_found = TRUE
+	if(bounty_found)
+		var/datum/browser/popup = new(mob, "BOUNTIES", "", 500, 300)
+		popup.set_content(consult_menu)
+		popup.open()
+	else
+		to_chat(mob, "No bounties are currently active.")
 
 /client/proc/toggle_aghost_invis()
 	set category = "GameMaster"
