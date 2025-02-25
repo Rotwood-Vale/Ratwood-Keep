@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BOG_TREKKING = "Expert in navigating these lands.",
 	TRAIT_DEATHBYSNUSNU = "With strong intent, I can shatter pelvises.", // Ham change
 	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
-	TRAIT_HERETIC = span_info("I have been marked as a heretic. Necra will allow me to return back, Pestra will not heal my wounds, Eora will not share her love..."),
+	TRAIT_HERETIC = span_info("I have been marked as a heretic. Necra will allow me to return back, Pestra will not take the rot away..."),
 ))
 
 // trait accessor defines
