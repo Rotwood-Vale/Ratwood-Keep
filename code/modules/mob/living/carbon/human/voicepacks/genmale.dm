@@ -122,6 +122,8 @@
 				used = list('sound/vo/blink.ogg')
 			if("roar")
 				used = list('sound/vo/mobs/cat/roar1.ogg', 'sound/vo/mobs/cat/roar2.ogg', 'sound/vo/mobs/cat/roar3.ogg', 'sound/vo/mobs/cat/roar4.ogg')
+			if("howl")
+				used = list('sound/vo/mobs/wwolf/ehowl1.ogg', 'sound/vo/mobs/wwolf/ehowl2.ogg', 'sound/vo/mobs/wwolf/ehowl3.ogg', 'sound/vo/mobs/wwolf/ehowl4.ogg', 'sound/vo/mobs/wwolf/ehowl5.ogg')
 			if("purr")
 				used = list('sound/vo/mobs/cat/cat_purr1.ogg', 'sound/vo/mobs/cat/cat_purr2.ogg', 'sound/vo/mobs/cat/cat_purr3.ogg', 'sound/vo/mobs/cat/cat_purr4.ogg')
 			if("moo")
