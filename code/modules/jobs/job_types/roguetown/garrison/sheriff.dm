@@ -58,3 +58,4 @@
 		H.change_stat("constitution", 2)
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_GUARDSMAN, TRAIT_GENERIC)	//applies debuff of -2end -2 spd when in the bog
