@@ -10,7 +10,7 @@
 
 /datum/migrant_wave/templar_down_one
 	name = "The Two Templars"
-	shared_wave_type = /datum/migrant_wave/templar
+	shared_wave_type = /datum/migrant_wave/templars
 	downgrade_wave = /datum/migrant_wave/templar_down_two
 	can_roll = FALSE
 	roles = list(
@@ -20,7 +20,7 @@
 
 /datum/migrant_wave/templar_down_two
 	name = "The One Templar"
-	shared_wave_type = /datum/migrant_wave/templar
+	shared_wave_type = /datum/migrant_wave/templars
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/templar = 1

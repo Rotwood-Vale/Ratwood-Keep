@@ -1,13 +1,13 @@
 /datum/migrant_role/templar
-	title = "Templar"
+	name = "Templar"
 	greet_text = "A crusader returning from the Great Land!"
-	outfit = /datum/migrant_role/templar
+	outfit = /datum/outfit/job/roguetown/migrant_templar
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
 
-/datum/migrant_role/templar/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/migrant_templar/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	cloak = /obj/item/clothing/cloak/tabard/crusader/tief
@@ -123,6 +123,6 @@
 	C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
-/datum/migrant_role/templar/post_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/migrant_templar/post_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE
