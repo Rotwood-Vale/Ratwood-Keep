@@ -83,6 +83,7 @@
 	var/list/datum/skill/skill_choices = list(
     /datum/skill/misc/reading,
     /datum/skill/misc/lockpicking,
+	/datum/skill/misc/tracking,
     /datum/skill/misc/riding,
     /datum/skill/misc/music,
     /datum/skill/misc/medicine,

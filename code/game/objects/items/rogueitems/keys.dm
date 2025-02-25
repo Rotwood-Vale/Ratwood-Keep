@@ -44,6 +44,7 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
 	destroy_sound = 'sound/items/pickbreak.ogg'
 	resistance_flags = FIRE_PROOF
+	associated_skill = /datum/skill/misc/lockpicking	//Doesn't do anything, for tracking purposes only
 
 	grid_width = 32
 	grid_height = 64
