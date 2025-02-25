@@ -1758,27 +1758,37 @@
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	if(m_intent != MOVE_INTENT_SNEAK)
 		visible_message(span_info("[src] begins looking around."))
-	var/looktime = 50 - (STAPER * 2)
+	var/looktime = 50 - (STAPER * 2) - (mind?.get_skill_level(/datum/skill/misc/tracking) * 5)
+	looktime = clamp(looktime, 7, 50)
 	if(do_after(src, looktime, target = src))
 		for(var/mob/living/M in view(7,src))
 			if(M == src)
 				continue
 			if(see_invisible < M.invisibility)
 				continue
+			var/probby = (3 * STAPER) + (mind?.get_skill_level(/datum/skill/misc/tracking)) * 5
 			if(M.mob_timers[MT_INVISIBILITY] > world.time) // Check if the mob is affected by the invisibility spell
-				continue
-			var/probby = 3 * STAPER
-			if(M.mind)
-				probby -= (M.mind.get_skill_level(/datum/skill/misc/sneaking) * 10)
+				if(mind?.get_skill_level(/datum/skill/misc/tracking) <= SKILL_LEVEL_EXPERT)	//Master or Legendary from this point
+					continue
+			if(M.mind)	//We find the biggest value and use that, to account for mages / Nocites / sneaky people all at once
+				var/target_sneak = M.mind?.get_skill_level(/datum/skill/misc/sneaking)
+				var/target_holy = M.mind?.get_skill_level(/datum/skill/magic/holy)
+				var/target_arcyne = M.mind?.get_skill_level(/datum/skill/magic/arcane)
+				var/chosen_skill = max(target_sneak, target_holy, target_arcyne)
+				probby -= chosen_skill * 10
+				if(M.STAPER > 10)
+					probby -= (M.STAPER) / 2
 			probby = (max(probby, 5))
 			if(prob(probby))
 				found_ping(get_turf(M), client, "hidden")
+				M.mob_timers[MT_INVISIBILITY] = world.time
+				M.update_sneak_invis()
+				to_chat(M, span_danger("[src] sees me! I'm found!"))
 				if(M.m_intent == MOVE_INTENT_SNEAK)
 					emote("huh")
-					to_chat(M, span_danger("[src] sees me! I'm found!"))
 					M.mob_timers[MT_FOUNDSNEAK] = world.time
 			else
-				if(M.m_intent == MOVE_INTENT_SNEAK)
+				if(M.m_intent == MOVE_INTENT_SNEAK || M.mob_timers[MT_INVISIBILITY] > world.time)
 					if(M.client?.prefs.showrolls)
 						to_chat(M, span_warning("[src] didn't find me... [probby]%"))
 					else
