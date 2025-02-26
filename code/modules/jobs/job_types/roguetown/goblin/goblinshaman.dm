@@ -2,6 +2,7 @@
 	title = "Goblin Shaman"
 	flag = GOBLINSHAMAN
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -16,6 +17,7 @@
 	display_order = JDO_GOBLINSHAMAN
 	min_pq = 5
 	max_pq = null
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinshaman
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
