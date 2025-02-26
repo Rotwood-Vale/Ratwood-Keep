@@ -53,6 +53,9 @@
 		departing_mob.mind.unknow_all_people()
 		for(var/datum/mind/MF in get_minds())
 			departing_mob.mind.become_unknown_to(MF)
+		for(var/datum/bounty/removing_bounty in GLOB.head_bounties)
+			if(removing_bounty.target == departing_mob.real_name)
+				GLOB.head_bounties -= removing_bounty
 	GLOB.chosen_names -= departing_mob.real_name
 	LAZYREMOVE(GLOB.actors_list, departing_mob.mobid)
 	LAZYREMOVE(GLOB.roleplay_ads, departing_mob.mobid)

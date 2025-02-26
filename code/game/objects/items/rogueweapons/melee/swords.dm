@@ -212,6 +212,29 @@
 			if("onback") return list("shrink" = 0.5, "sx" = -1, "sy" = 2, "nx" = 0, "ny" = 2, "wx" = 2, "wy" = 1, "ex" = 0, "ey" = 1, "nturn" = 0, "sturn" = 0, "wturn" = 70, "eturn" = 15, "nflip" = 1, "sflip" = 1, "wflip" = 1, "eflip" = 1, "northabove" = 1, "southabove" = 0, "eastabove" = 0, "westabove" = 0)
 			if("onbelt") return list("shrink" = 0.4, "sx" = -4, "sy" = -6, "nx" = 5, "ny" = -6, "wx" = 0, "wy" = -6, "ex" = -1, "ey" = -6, "nturn" = 100, "sturn" = 156, "wturn" = 90, "eturn" = 180, "nflip" = 0, "sflip" = 0, "wflip" = 0, "eflip" = 0, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0)
 
+/obj/item/rogueweapon/sword/long/malumflamm
+	name = "forgefiend"
+	desc = "This sword's creation took a riddle in its own making. A great sacrifice for perfect quality."
+	icon_state = "malumflamberge"
+	max_integrity = 200
+
+/obj/item/rogueweapon/sword/long/zizo
+	name = "darksteel longsword"
+	desc = "A wicked and red blade. Called forth from the edge of what should be known. In Her name."
+	force = 30
+	force_wielded = 35
+	icon_state = "zizosword"
+
+/obj/item/rogueweapon/sword/long/zizo/pickup(mob/living/user)
+	if(!HAS_TRAIT(user, TRAIT_CABAL))
+		to_chat(user, "<font color='purple'>UNWORTHY HANDS TOUCH THE SWORD, CEASE OR BE PUNISHED</font>")
+		if(loc == user)
+			user.adjust_fire_stacks(5)
+			user.IgniteMob()
+			user.Stun(40)
+	..()
+
+
 /obj/item/rogueweapon/sword/long/heirloom
 	force = 20
 	force_wielded = 32
@@ -458,6 +481,15 @@
 	minstr = 10
 	slot_flags = ITEM_SLOT_BACK //Too big for hip
 
+
+/obj/item/rogueweapon/sword/long/exe/astrata
+	name = "solar judge"
+	desc = "This wicked executioner's blade calls for order."
+	icon_state = "astratasword"
+	max_integrity = 200
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
+
 /obj/item/rogueweapon/sword/long/exe/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -547,6 +579,15 @@
 	minstr = 5
 	wdefense = 6
 	wbalance = 1
+
+/obj/item/rogueweapon/sword/sabre/nockhopesh
+	name = "moonlight khopesh"
+	icon_state = "nockhopesh"
+	desc = "Glittering moonlight upon blued steel."
+	wdefense = 7
+	force = 25
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/chop/falx)
+	max_integrity = 200
 
 /obj/item/rogueweapon/sword/sabre/dec
 	icon_state = "decsaber"
@@ -961,12 +1002,12 @@
 			if("onbelt") 
 				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/rogueweapon/sword/long/eclipsum
+/obj/item/rogueweapon/sword/long/holysee
 	force = 34
 	force_wielded = 50
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
-	icon_state = "astratasword"
+	icon_state = "eclipsum"
 	name = "eclipsum sword"
 	desc = "A mutual effort of Noc and Astrata's followers, this blade was forged with both Silver and Gold alike. Blessed to hold strength and bring hope. Whether dae or nite."
 	is_silver = TRUE

@@ -30,6 +30,12 @@
 	log_admin("Window destroyed at X:[src.x] Y:[src.y] Z:[src.z] in area: [get_area(src)]")
 	..()
 
+/obj/structure/roguewindow/attacked_by(obj/item/I, mob/living/user)
+	..()
+	if(obj_broken || obj_destroyed)
+		var/obj/effect/track/structure/new_track = new(get_turf(src))
+		new_track.handle_creation(user)
+
 /obj/structure/roguewindow/update_icon()
 	if(brokenstate)
 		icon_state = "[base_state]br"

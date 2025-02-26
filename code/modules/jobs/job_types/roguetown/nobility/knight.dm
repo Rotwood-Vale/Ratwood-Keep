@@ -257,12 +257,12 @@
 	H.change_stat("intelligence", 1)
 
 	H.adjust_blindness(-3)
-	var/weapons = list("Sabre + Crossbow","Billhook + Recurve Bow")
+	var/weapons = list("Bastard Sword + Crossbow","Billhook + Recurve Bow")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("Sabre + Crossbow")
-			beltl = /obj/item/rogueweapon/sword/sabre
+		if("Bastard Sword + Crossbow")
+			beltl = /obj/item/rogueweapon/sword/long
 			beltr = /obj/item/quiver/bolts
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 

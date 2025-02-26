@@ -357,3 +357,4 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/zizo
 	gloves = /obj/item/clothing/gloves/roguetown/plate/zizo
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/zizo
+	backr = /obj/item/rogueweapon/sword/long/zizo
