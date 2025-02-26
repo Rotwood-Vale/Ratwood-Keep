@@ -58,3 +58,13 @@
 
 	if(zMove(DOWN, TRUE))
 		to_chat(src, span_notice("I fly down."))
+
+/mob/living/simple_animal/hostile/retaliate/bat/crow
+	name = "zad"
+	desc = ""
+	icon = 'icons/roguetown/mob/monster/crow.dmi'
+	icon_state = "crow_flying"
+	icon_living = "crow_flying"
+	icon_dead = "crow1"
+	icon_gib = "crow1"
+	speak_emote = list("caws")
