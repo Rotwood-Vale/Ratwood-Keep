@@ -113,7 +113,6 @@
 #define AGE_OLD				"Old"
 
 #define ALL_AGES_LIST list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-#define AGE_VALUES list(AGE_ADULT = 1, AGE_MIDDLEAGED = 2, AGE_OLD = 3)
 
 //Voice ranges
 #define MIN_VOICE_PITCH		0.8
