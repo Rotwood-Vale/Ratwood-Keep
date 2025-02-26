@@ -2387,4 +2387,6 @@
 #include "modular_redmoon\modules\tetris\waterskin.dm"
 #include "modular_redmoon\modules\tetris\weaponry.dm"
 #include "modular_redmoon\modules\tetris\wrists.dm"
+#include "modular_redmoon\modules\brigandinerebalance\anvil_recipes\armor.dm"
+#include "modular_redmoon\modules\brigandinerebalance\armor\armor.dm"
 // END_INCLUDE
