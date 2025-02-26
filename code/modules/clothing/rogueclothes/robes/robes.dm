@@ -164,7 +164,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	color = null
-	sellprice = 100
+	sellprice = 10
 
 /obj/item/clothing/suit/roguetown/shirt/robe/physician
 	name = "plague coat"
@@ -179,7 +179,7 @@
 	flags_inv = HIDEBOOB|HIDETAIL //DO NOT CHANGE THIS, I WILL THROW HANDS WITH YOU IDIOTS
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	
+
 /obj/item/clothing/suit/roguetown/shirt/robe/eora
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "eoran robe"
