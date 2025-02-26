@@ -32,10 +32,11 @@
 /datum/magic_item/mythic/infernalflame/on_hit_response(var/obj/item/I, var/mob/living/carbon/human/owner, var/mob/living/carbon/human/attacker)
 	if(world.time < src.last_used + 100)
 		return
-	attacker.adjust_fire_stacks(10)
-	attacker.IgniteMob()
-	attacker.visible_message(span_danger("[I] sets [attacker] on fire!"))
-	src.last_used = world.time
+	if(isliving(attacker) && attacker != owner)
+		attacker.adjust_fire_stacks(10)
+		attacker.IgniteMob()
+		attacker.visible_message(span_danger("[I] sets [attacker] on fire!"))
+		src.last_used = world.time
 
 /datum/magic_item/mythic/freezing
 	name = "freezing"
@@ -45,9 +46,10 @@
 /datum/magic_item/mythic/freezing/on_hit_response(var/obj/item/I, var/mob/living/carbon/human/owner, var/mob/living/carbon/human/attacker)
 	if(world.time < src.last_used + 100)
 		return
-	attacker.apply_status_effect(/datum/status_effect/freon/freezing)
-	attacker.visible_message(span_danger("[I] freezes [attacker] solid!"))
-	src.last_used = world.time
+	if(isliving(attacker) && attacker != owner)
+		attacker.apply_status_effect(/datum/status_effect/freon/freezing)
+		attacker.visible_message(span_danger("[I] freezes [attacker] solid!"))
+		src.last_used = world.time
 
 /datum/magic_item/mythic/freezing/projectile_hit(atom/fired_from, atom/movable/firer, atom/target, Angle)
 	if(world.time < src.last_used + 100)

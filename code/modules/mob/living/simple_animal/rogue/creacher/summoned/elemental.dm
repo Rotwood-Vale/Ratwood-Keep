@@ -1,13 +1,45 @@
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/AIShouldSleep(list/possible_targets)
+	if(!FindTarget(possible_targets, 1))
+		addtimer(CALLBACK(src,PROC_REF(despawncheck)), del_on_deaggro)
+		return TRUE
+	else
+		return FALSE
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/Move(newloc)
+	if(binded)
+		to_chat(src,span_warning("You're currently bound and unable to move!"))
+		return
+	.=..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/proc/despawncheck()
+	if(nearbyhumanpresent(5))	//check for humans in range
+		return	//return if humans in range
+	if(AIStatus == AI_IDLE)
+		new /obj/effect/particle_effect/smoke/bad(src.loc)
+		src.visible_message(span_notice("[src] returns to it's plane of origin."))
+		dropcomponents()
+		qdel(src)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/proc/nearbyhumanpresent(var/range_dist)
+	for (var/mob/M in view(range_dist, src))	//check mobs in range
+		if(istype(M, /mob/living/carbon/human))	//check if human
+			return TRUE	//humans found in range
+	return FALSE	//No humans found, return false
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/Initialize()
 	. = ..()
+	ADD_TRAIT(src,TRAIT_NOFIRE, "[type]")
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/Life()
 	..()
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)
+/mob/living/simple_animal/hostile/retaliate/rogue/proc/dropcomponents()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/simple_limb_hit(zone)
 	if(!zone)
@@ -87,7 +119,7 @@
 	melee_damage_upper = 17
 	vision_range = 8
 	aggro_vision_range = 11
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
@@ -102,8 +134,8 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	del_on_deaggro = 5 SECONDS
+	retreat_health = 0
 	food = 0
 	attack_sound = 'sound/combat/hits/onstone/wallhit.ogg'
 	attack_verb_continuous = "pounds"
@@ -115,6 +147,9 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/crawler/Initialize()
 	. = ..()
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/crawler/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/manacrystal(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/crawler/death(gibbed)
 	..()
@@ -153,7 +188,7 @@
 	melee_damage_upper = 17
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
@@ -169,7 +204,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	rapid = TRUE
 	attack_sound = 'sound/combat/hits/onstone/wallhit.ogg'
@@ -181,6 +216,9 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden/Initialize()
 	. = ..()
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t1(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden/death(gibbed)
 	..()
@@ -208,10 +246,11 @@
 	return target.attack_animal(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden/proc/yeet(target)
-	var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target)) //ill be real I got no idea why this worked.
-	var/mob/living/L = target
-	L.throw_at(throw_target, 7, 4)
-	L.adjustBruteLoss(20)
+	if(isliving(target))
+		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target)) //ill be real I got no idea why this worked.
+		var/mob/living/L = target
+		if(L)
+			L.throw_at(throw_target, 7, 4)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth
 	icon = 'icons/mob/summonable/32x64.dmi'
@@ -223,13 +262,15 @@
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 6
 	see_in_dark = 6
 	move_to_delay = 12
 	base_intents = list(/datum/intent/simple/elementalt2_unarmed)
 	butcher_results = list()
 	faction = list("elemental")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	ranged = TRUE
+	projectiletype = /obj/projectile/earthenfist
 	health = 800
 	maxHealth = 800
 	melee_damage_lower = 55
@@ -241,7 +282,7 @@
 	retreat_distance = 0
 	minimum_distance = 0
 	food_type = list()
-	footstep_type = FOOTSTEP_MOB_BAREFOOT
+	footstep_type = FOOTSTEP_MOB_HEAVY
 	pooptype = null
 	STACON = 17
 	STAEND = 17
@@ -252,7 +293,8 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
+	ranged_message = "sends its fist flying"
 	food = 0
 	attack_sound = 'sound/combat/hits/onstone/wallhit.ogg'
 	dodgetime = 30
@@ -263,6 +305,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/Initialize()
 	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t2(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/death(gibbed)
 	..()
@@ -337,7 +383,14 @@
 		FindHidden()
 		return 1
 
-/mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/proc/quake()
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/OpenFire()
+	if(!..())	//VERY important. Calls parent and checks if it fails (used to check for binded)
+		return
+	if(world.time >= src.rock_cd + 200)
+		quake(target)
+		src.rock_cd = world.time
+
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/proc/quake(target)
 	var/turf/focalpoint = get_turf(target)
 	for (var/turf/open/visual in view(1, focalpoint))
 		new /obj/effect/temp_visual/marker(visual)
@@ -351,11 +404,27 @@
 		QDEL_IN(giant_rock, 200)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/proc/yeet(target)
-	var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target)) //ill be real I got no idea why this worked.
 	if(isliving(target))
+		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target))
 		var/mob/living/L = target
-		L.throw_at(throw_target, 7, 4)
-		L.adjustBruteLoss(30)
+		if(L)
+			L.throw_at(throw_target, 7, 4)
+
+/obj/projectile/earthenfist
+	name = "Elemental fist"
+	icon_state = "rock"
+	damage = 15
+	damage_type = BRUTE
+	flag = "magic"
+	range = 10
+	speed = 5 //higher is slower
+
+/obj/projectile/earthenfist/on_hit(target)
+	. = ..()
+	if(isliving(target))
+		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target))
+		var/mob/living/L = target
+		L.throw_at(throw_target, 2, 2)
 
 /datum/intent/simple/elementalt2_unarmed
 	name = "elemental unarmed"
@@ -393,14 +462,14 @@
 	melee_damage_upper = 70
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	environment_smash = ENVIRONMENT_SMASH_WALLS
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
 	food_type = list()
 	ranged = TRUE
 	projectiletype = /obj/projectile/earthenchunk
-	footstep_type = FOOTSTEP_MOB_BAREFOOT
+	footstep_type = FOOTSTEP_MOB_HEAVY
 	pooptype = null
 	STACON = 20
 	STAEND = 20
@@ -412,7 +481,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = 'sound/combat/hits/onstone/wallhit.ogg'
 	pixel_x = -32
@@ -466,6 +535,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/collossus/Initialize()
 	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/elemental/collossus/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t3(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/collossus/death(gibbed)
 	..()

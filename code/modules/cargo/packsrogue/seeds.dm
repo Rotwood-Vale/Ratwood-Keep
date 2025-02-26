@@ -115,3 +115,14 @@
 					/obj/item/seeds/apple,
 					/obj/item/seeds/apple,
 				)
+
+/datum/supply_pack/rogue/seeds/manabloom
+	name = "manabloom"
+	cost = 20
+	contains = list(
+					/obj/item/seeds/manabloom,
+					/obj/item/seeds/manabloom,
+					/obj/item/seeds/manabloom,
+					/obj/item/seeds/manabloom,
+					/obj/item/seeds/manabloom,
+				)

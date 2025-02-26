@@ -6,8 +6,16 @@
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_DARKVISION_BETTER, TRAIT_GENERIC)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the obelisk
 	return
+
+/mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk/Move(newloc)
+	if(binded)
+		to_chat(src,span_warning("You're currently bound and unable to move!"))
+		return
+	.=..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk/Life()
 	..()
@@ -48,6 +56,8 @@
 	STASTR = 12
 	STASPD = 8
 
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	environment_smash = ENVIRONMENT_SMASH_WALLS
 	simple_detect_bonus = 60
 	retreat_distance = 0
 	minimum_distance = 0
@@ -271,6 +281,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_DARKVISION_BETTER, TRAIT_GENERIC)
 	for(var/action_type in attack_action_types)
 		var/datum/action/innate/megafauna_attack/attack_action = new action_type()
 		attack_action.Grant(src)
@@ -328,13 +339,16 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	speak_emote = list("roars")
 	emote_hear = null
 	emote_see = null
+	environment_smash = ENVIRONMENT_SMASH_WALLS
 	base_intents = list(/datum/intent/unarmed/dragonclaw)
 	faction = list("abberant")
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	retreat_distance = 0
+	retreat_health = 0
 	minimum_distance = 0
 	aggressive = 1
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	speed = 5
 	move_to_delay = 5
 	ranged = TRUE
@@ -669,6 +683,9 @@ It will also call down lightning strikes from the sky, and fling people with it'
 		..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/Move()
+	if(binded)
+		to_chat(src,span_warning("You're currently bound and unable to move!"))
+		return
 	if(!swooping)
 		..()
 

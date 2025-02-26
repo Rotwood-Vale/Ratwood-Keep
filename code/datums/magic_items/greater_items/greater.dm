@@ -51,7 +51,7 @@
 /datum/magic_item/greater/frostveil/on_hit_response(var/obj/item/I, var/mob/living/carbon/human/owner, var/mob/living/carbon/human/attacker)
 	if(world.time < src.last_used + 100)
 		return
-	if(isliving(attacker))
+	if(isliving(attacker) && attacker != owner)
 		attacker.apply_status_effect(/datum/status_effect/debuff/cold)
 		attacker.visible_message(span_danger("[I] chills [attacker]!"))
 		src.last_used = world.time
@@ -64,10 +64,11 @@
 /datum/magic_item/greater/phoenixguard/on_hit_response(var/obj/item/I, var/mob/living/carbon/human/owner, var/mob/living/carbon/human/attacker)
 	if(world.time < src.last_used + 100)
 		return
-	attacker.adjust_fire_stacks(5)
-	attacker.IgniteMob()
-	attacker.visible_message(span_danger("[I] sets [attacker] on fire!"))
-	src.last_used = world.time
+	if(isliving(attacker) && attacker != owner)
+		attacker.adjust_fire_stacks(5)
+		attacker.IgniteMob()
+		attacker.visible_message(span_danger("[I] sets [attacker] on fire!"))
+		src.last_used = world.time
 
 /datum/magic_item/greater/woundclosing
 	name = "wound closing"
