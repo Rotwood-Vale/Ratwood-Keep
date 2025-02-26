@@ -1375,6 +1375,7 @@
 #include "code\modules\jobs\job_types\roguetown\refugees\types\vagabond.dm"
 #include "code\modules\jobs\job_types\roguetown\towners\towner.dm"
 #include "code\modules\jobs\job_types\roguetown\towners\types\blacksmith.dm"
+#include "code\modules\jobs\job_types\roguetown\towners\types\cheesemaker.dm"
 #include "code\modules\jobs\job_types\roguetown\towners\types\fisher.dm"
 #include "code\modules\jobs\job_types\roguetown\towners\types\hunter.dm"
 #include "code\modules\jobs\job_types\roguetown\towners\types\miner.dm"
