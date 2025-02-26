@@ -65,6 +65,9 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 	if(method in list(TOUCH, VAPOR, PATCH))
 		M.adjust_fire_stacks(reac_volume / 15)
+		//Wine and beer are not strong enough
+		if(boozepwr > 50)
+			M.clean_mob_wounds(TRUE)
 
 	return ..()
 
