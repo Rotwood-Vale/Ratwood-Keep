@@ -93,6 +93,7 @@
 	STACON = rand(6,13)
 	STAEND = rand(6,13)
 	STAINT = 1
+	save_stats_as_roundstarted() // REDMOON ADD - after_death_stats_fix - такие статы станут раундстартовыми для зомби
 
 
 /mob/living/carbon/human/species/deadite/handle_ai()

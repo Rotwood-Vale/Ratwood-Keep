@@ -91,6 +91,7 @@
 			qdel(underworld_spirit)
 			ghost.mind.transfer_to(target, TRUE)
 		target.grab_ghost(force = TRUE) // even suicides
+		target.recalculate_stats() // REDMOON ADD - after_death_stats_fix
 		target.revive(admin_revive = TRUE)
 		target.emote("breathgasp")
 		target.Jitter(100)

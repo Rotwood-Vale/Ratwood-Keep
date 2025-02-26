@@ -38,6 +38,7 @@
 		ghost.mind.transfer_to(Dead, TRUE)
 
 	Dead.grab_ghost(force = TRUE) // even suicides
+	Dead.recalculate_stats() // REDMOON ADD - after_death_stats_fix
 	Dead.revive(admin_revive = TRUE)
 	Dead.emote("breathgasp")
 	Dead.Jitter(100)
