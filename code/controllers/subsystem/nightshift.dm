@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(TodUpdate)
 
 SUBSYSTEM_DEF(nightshift)
 	name = "Night Shift"
-	wait = 10 SECONDS
+	wait = 360 SECONDS
 	flags = SS_NO_TICK_CHECK
 	priority = 1
 	var/current_tod = null
@@ -20,6 +20,43 @@ SUBSYSTEM_DEF(nightshift)
 	var/nightshift_first_check = 2 SECONDS
 
 	var/high_security_mode = FALSE
+
+proc/is_nighttime()
+	if(GLOB.tod == "night")  
+		return TRUE
+	return FALSE
+
+/mob/living/carbon
+	var/next_sleep_time = 0
+	var/first_sleep = 432000
+	var/sleep_interval = 864000
+
+/datum/controller/subsystem/personal_sleep
+	name = "Personal Sleep"
+	wait = 360 SECONDS
+
+/proc/check_personal_sleep()
+	var/day_length = 864000
+	for(var/mob/living/carbon/M in GLOB.mob_list)
+		if(M)
+			if(M.next_sleep_time == 0)
+				M.next_sleep_time = (station_time() + M.first_sleep) % day_length
+			else
+				if(!HAS_TRAIT(M, TRAIT_NOSLEEP) && !HAS_TRAIT(M, TRAIT_NOSTAMINA))
+					if(station_time() >= M.next_sleep_time)
+						if(!(HAS_TRAIT(M, TRAIT_NIGHT_OWL) && is_nighttime()))
+							M.ForceSleepyTime()
+							M.next_sleep_time = (station_time() + M.sleep_interval) % day_length
+						else
+							M.next_sleep_time = (station_time() + 36000) % day_length
+
+
+/datum/controller/subsystem/personal_sleep/fire(resumed = FALSE)
+	check_personal_sleep()
+
+/mob/living/carbon/proc/ForceSleepyTime()
+	apply_status_effect(/datum/status_effect/debuff/sleepytime)
+	add_stress(/datum/stressevent/sleepytime)
 
 /datum/controller/subsystem/nightshift/Initialize()
 	if(!CONFIG_GET(flag/enable_night_shifts))
@@ -86,6 +123,9 @@ SUBSYSTEM_DEF(nightshift)
 		try_grow_beard()
 		if(HAS_TRAIT(src, TRAIT_VAMP_DREAMS))
 			apply_status_effect(/datum/status_effect/debuff/vamp_dreams)
+		if(HAS_TRAIT(src, TRAIT_DARKLING) && !HAS_TRAIT(src, TRAIT_NOSTAMINA) && !HAS_TRAIT(src, TRAIT_NOSLEEP))
+			add_stress(/datum/stressevent/sleepytime)
+
 	if(todd == "night")
 		if(HAS_TRAIT(src, TRAIT_DARKLING))
 			return ..()
@@ -93,8 +133,5 @@ SUBSYSTEM_DEF(nightshift)
 			return ..()
 		if(HAS_TRAIT(src, TRAIT_NOSLEEP))
 			return ..()
-		apply_status_effect(/datum/status_effect/debuff/sleepytime)
 		if(HAS_TRAIT(src, TRAIT_NIGHT_OWL))
 			add_stress(/datum/stressevent/night_owl)
-		else
-			add_stress(/datum/stressevent/sleepytime)
