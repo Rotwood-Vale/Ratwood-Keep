@@ -225,6 +225,15 @@
 	force_wielded = 35
 	icon_state = "zizosword"
 
+/obj/item/rogueweapon/sword/long/zizo/pickup(mob/living/user)
+	if(!HAS_TRAIT(user, TRAIT_CABAL))
+		to_chat(user, "<font color='purple'>UNWORTHY HANDS TOUCH THE SWORD, CEASE OR BE PUNISHED</font>")
+		if(loc == user)
+			user.adjust_fire_stacks(5)
+			user.IgniteMob()
+			user.Stun(40)
+	..()
+
 
 /obj/item/rogueweapon/sword/long/heirloom
 	force = 20
