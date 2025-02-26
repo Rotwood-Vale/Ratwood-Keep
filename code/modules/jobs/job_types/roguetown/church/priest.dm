@@ -45,6 +45,7 @@
 	)
 	ADD_TRAIT(H, TRAIT_CHOSEN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 	if(H.mind)
 		H.cmode_music = 'sound/music/combat_holy.ogg' 
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
