@@ -7,7 +7,7 @@
 	spawn_positions = 4
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/axian, /datum/species/human/northern, /datum/species/lizardfolk)
+	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "You answered Abyssor's call when you were young, though in troublesome ways, \
 	pilaging for treasury from anyone who'd cross your path. Now your captain retires from a life of crime, \
