@@ -15,13 +15,15 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	belt = /obj/item/storage/belt/rogue/leather/black
-	beltl = /obj/item/rogueweapon/huntingknife
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/under/roguetown/trou
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
+						/obj/item/mortar = 1,
+						/obj/item/pestle = 1,
 						/obj/item/ritechalk = 1,
+						/obj/item/candle/yellow = 2,
 						)
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/corset
@@ -30,6 +32,8 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.change_stat("intelligence", 3)
