@@ -946,3 +946,7 @@
 /obj/structure/mineral_door/wood/towner/hunter
 	resident_advclass = /datum/advclass/hunter
 	lockid = "towner_hunter"
+
+/obj/structure/mineral_door/wood/towner/witch
+	resident_advclass = /datum/advclass/witch
+	lockid = "towner_witch"

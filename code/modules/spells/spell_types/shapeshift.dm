@@ -21,6 +21,7 @@
 		/mob/living/simple_animal/pet/dog/corgi
 	)
 /obj/effect/proc_holder/spell/targeted/shapeshift/cast(list/targets,mob/user = usr)
+	. = ..()
 	var/datum/antagonist/vampirelord/VD = usr?.mind?.has_antag_datum(/datum/antagonist/vampirelord)
 	if(VD)
 		if(VD.disguised)

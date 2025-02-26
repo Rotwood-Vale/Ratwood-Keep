@@ -1426,7 +1426,6 @@
 	name = "shawl"
 	desc = "Keeps the hair in check, and looks proper."
 	icon_state = "shawl"
-	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/roguetown/articap
 	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."
@@ -1442,7 +1441,7 @@
 	desc = "My cure is most effective."
 	icon_state = "feldhood"
 	item_state = "feldhood"
-	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	body_parts_covered = HEAD|EARS|NOSE
 	color = null
 
 //............... Physicians Hood ............... //
@@ -1451,7 +1450,7 @@
 	desc = "My cure is mostly effective."
 	icon_state = "surghood"
 	item_state = "surghood"
-	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	body_parts_covered = HEAD|EARS|NOSE
 	color = null
 
 //............... Eora Helmet ............... //
