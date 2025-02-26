@@ -205,6 +205,7 @@
 				ghost.mind.transfer_to(target, TRUE)
 				qdel(underworld_spirit)
 		target.grab_ghost(force = TRUE) // even suicides
+		target.recalculate_stats() // REDMOON ADD - after_death_stats_fix
 
 		target.update_body()
 		target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))

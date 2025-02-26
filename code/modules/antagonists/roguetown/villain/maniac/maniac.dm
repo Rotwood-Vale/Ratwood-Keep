@@ -90,12 +90,17 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			owner.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
 			owner.adjust_skillrank_up_to(/datum/skill/misc/treatment, 3, TRUE)
 			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
+			dreamer.change_stat("strength", 16 - dreamer.ROUNDSTART_STASTR, "maniac_role_str") // REDMOON ADD START - after_death_stats_fix - изменение статов роли по новой системе распределения
+			dreamer.change_stat("constitution", 16 - dreamer.ROUNDSTART_STACON, "maniac_role_con")
+			dreamer.change_stat("endurance", 16 - dreamer.ROUNDSTART_STAEND, "maniac_role_end") // REDMOON ADD END
+			/* REDMOON REMOVAL START - after_death_stats_fix - для изменения статов используются функции выше
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
 			STAEND = dreamer.STAEND
 			dreamer.STASTR = 16
 			dreamer.STACON = 16
 			dreamer.STAEND = 16
+			/ REDMOON REMOVAL END */
 			if(heart) // clear any inscryptions, in case of being made maniac midround
 				heart.inscryptions = list()
 				heart.inscryption_keys = list()
@@ -123,9 +128,14 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			to_chat(owner.current,span_danger("I am no longer a MANIAC!"))
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
-			dreamer.STASTR = STASTR
+			dreamer.change_stat("strength", 0, "maniac_role_str") // REDMOON ADD START - after_death_stats_fix - изменение статов роли по новой системе распределения
+			dreamer.change_stat("constitution", 0, "maniac_role_con") // REDMOON ADD START - after_death_stats_fix - изменение статов роли по новой системе распределения
+			dreamer.change_stat("endurance", 0, "maniac_role_end") // REDMOON ADD START - after_death_stats_fix - изменение статов роли по новой системе распределения
+			/* REDMOON REMOVAL START - after_death_stats_fix - для изменения статов используются функции выше
+			dreamer.STASTR = STASTR 
 			dreamer.STACON = STACON
 			dreamer.STAEND = STAEND
+			/ REDMOON REMOVAL END */
 			var/client/clinet = dreamer?.client
 			if(clinet) //clear screenshake animation
 				animate(clinet, dreamer.pixel_y)

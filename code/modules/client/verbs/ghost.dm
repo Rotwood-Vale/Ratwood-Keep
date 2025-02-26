@@ -78,6 +78,12 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 		O.ckey = ckey
 		O.set_patron(prefs.selected_patron)
 		O.prevmind = prevmind // for if we get buried later
+		if(!O.prevmind.known_skills.len) // REDMOON ADD START - after_death_stats_fix - фикс пропадания навыков после смерти
+			O.mind.skill_experience = O.prevmind.backup_skill_experience // Присвоение зомби-антага всем погибшим игрокам сбрасывает скиллы. Это предотвращает.
+			O.mind.known_skills = O.prevmind.backup_known_skills 
+		else
+			O.mind.skill_experience = O.prevmind.skill_experience // По сути, нужно для всех, кто не может стать зомби после смерти
+			O.mind.known_skills = O.prevmind.known_skills // REDMOON ADD END
 		SSdroning.area_entered(get_area(O), O.client)
 		break
 	verbs -= GLOB.ghost_verbs
