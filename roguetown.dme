@@ -1402,6 +1402,7 @@
 #include "code\modules\jobs\job_types\roguetown\peasants\prisoner.dm"
 #include "code\modules\jobs\job_types\roguetown\peasants\soilson.dm"
 #include "code\modules\jobs\job_types\roguetown\refugees\refugee.dm"
+#include "code\modules\jobs\job_types\roguetown\refugees\types\amazon.dm"
 #include "code\modules\jobs\job_types\roguetown\refugees\types\deserter.dm"
 #include "code\modules\jobs\job_types\roguetown\refugees\types\ecclesiast.dm"
 #include "code\modules\jobs\job_types\roguetown\refugees\types\healer.dm"
