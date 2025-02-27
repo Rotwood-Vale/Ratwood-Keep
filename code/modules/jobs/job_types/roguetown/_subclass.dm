@@ -75,6 +75,10 @@
 	if(length(local_allowed_sexes) && !(H.gender in local_allowed_sexes))
 		return FALSE
 
+	if(length(allowed_races) && !(H.dna.species.name in allowed_races))
+		if(!(H.client.triumph_ids.Find("race_all")))
+			return FALSE
+
 	if(length(allowed_races) && !(H.dna.species.type in allowed_races))
 		return FALSE
 

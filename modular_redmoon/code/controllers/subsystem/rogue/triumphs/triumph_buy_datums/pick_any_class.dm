@@ -1,2 +1,2 @@
 /datum/triumph_buy/pick_any_class
-	triumph_cost = 10
+	triumph_cost = 30

@@ -1,3 +1,6 @@
+/client
+	var/list/triumph_ids = list() //I am not sure if i should put it here, but if it work? this check for specific triumph IDs.
+
 /client/New()
 	. = ..()
 	spawn() // Goonchat does some non-instant checks in start()
