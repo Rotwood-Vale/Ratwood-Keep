@@ -134,11 +134,11 @@
 		send2chat(random_message, "status")
 
 /world/proc/SendTGSRoundEnd()
-	var/count_of_joined_characters = SSticker.males + SSticker.females + SSticker.males_with_vagina + SSticker.females_with_penis
-	var/percent_of_males = PERCENT(SSticker.males/count_of_joined_characters)
-	var/percent_of_males_with_vagina = PERCENT(SSticker.males_with_vagina/count_of_joined_characters)
-	var/percent_of_females = PERCENT(SSticker.females/count_of_joined_characters)
-	var/percent_of_females_with_penis = PERCENT(SSticker.females_with_penis/count_of_joined_characters)
+	var/count_of_joined_characters = SSround_end_statistics.males + SSround_end_statistics.females + SSround_end_statistics.males_with_vagina + SSround_end_statistics.females_with_penis
+	var/percent_of_males = PERCENT(SSround_end_statistics.males/count_of_joined_characters)
+	var/percent_of_males_with_vagina = PERCENT(SSround_end_statistics.males_with_vagina/count_of_joined_characters)
+	var/percent_of_females = PERCENT(SSround_end_statistics.females/count_of_joined_characters)
+	var/percent_of_females_with_penis = PERCENT(SSround_end_statistics.females_with_penis/count_of_joined_characters)
 	var/datum/tgs_message_content/message = new ("...вот и сказочке конец.")
 	var/datum/tgs_chat_embed/structure/embed = new()
 	message.embed = embed
@@ -152,16 +152,39 @@
 	var/datum/tgs_chat_embed/field/triumphgained = new ("🏆 Триумфов получено: ", "[SSticker.tri_gained]")
 	var/datum/tgs_chat_embed/field/triumphslost = new (":woman_detective: Триумфов украдено: ","[SSticker.tri_lost*-1]")
 	var/datum/tgs_chat_embed/field/pleasures = new ("💦 Наслаждений: ", "[SSticker.cums]")
-	var/datum/tgs_chat_embed/field/violated_by_baotha = new (":smiling_imp: Осквернено Баотой: ", "[SSticker.violated_by_baotha.len]") // baotha_steals_triumphs
+	var/datum/tgs_chat_embed/field/violated_by_baotha = new (":smiling_imp: Осквернено Баотой: ", "[SSround_end_statistics.violated_by_baotha.len]") // baotha_steals_triumphs
 	var/datum/tgs_chat_embed/field/confessors = new (":orthodox_cross: Исповедники: ", "[GLOB.confessors.len]")
 	var/datum/tgs_chat_embed/field/families = new (":ring:Семьи: ", "[SSfamily.families.len]") // family_changes
-	var/datum/tgs_chat_embed/field/families_failed = new (":trollge: Пытались сформировать семью: ", "[length(SSfamily.family_candidates)]") // family_changes
-	var/datum/tgs_chat_embed/field/boys = new (":man_beard: Мужчины: ", "[SSticker.males] ([percent_of_males]%)")
-	var/datum/tgs_chat_embed/field/womens = new (":woman: Женщины: ", "[SSticker.females] ([percent_of_females]%)")
-	var/datum/tgs_chat_embed/field/femboys = new (":man: Кантбои: ", "[SSticker.males_with_vagina] ([percent_of_males_with_vagina]%)")
-	var/datum/tgs_chat_embed/field/futacocks = new (":woman_beard: Фута: ", "[SSticker.females_with_penis] ([percent_of_females_with_penis]%)")
+	var/datum/tgs_chat_embed/field/families_failed = new (":heart: Пытались сформировать семью: ", "[length(SSfamily.family_candidates)]") // family_changes
+	var/datum/tgs_chat_embed/field/men = new (":man_beard: Мужчины: ", "[SSround_end_statistics.males] ([percent_of_males]%)")
+	var/datum/tgs_chat_embed/field/women = new (":woman: Женщины: ", "[SSround_end_statistics.females] ([percent_of_females]%)")
+	var/datum/tgs_chat_embed/field/cuntboys = new (":man: Кантбои: ", "[SSround_end_statistics.males_with_vagina] ([percent_of_males_with_vagina]%)")
+	var/datum/tgs_chat_embed/field/futas = new (":woman_beard: Фута: ", "[SSround_end_statistics.females_with_penis] ([percent_of_females_with_penis]%)")
+	var/datum/tgs_chat_embed/field/species = new (":people_hugging: Расы: ", "\
+	Аасимары: [SSround_end_statistics.species_aasimar] | \
+	Аксиане: [SSround_end_statistics.species_axian] | \
+	Верминволки: [SSround_end_statistics.species_anthromorphsmall] | \
+	Вульпканин: [SSround_end_statistics.species_vulpkanin] | \
+	Гоблины: [SSround_end_statistics.species_goblinp] | \
+	Дварфы: [SSround_end_statistics.species_dwarf] | \
+	Дикари: [SSround_end_statistics.species_anthromorph] | \
+	Дракониды: [SSround_end_statistics.species_dracon] | \
+	Дроу: [SSround_end_statistics.species_drow] | \
+	Кобольды: [SSround_end_statistics.species_kobold] | \
+	Люпины: [SSround_end_statistics.species_lupian] | \
+	Люди: [SSround_end_statistics.species_humen] | \
+	Моли: [SSround_end_statistics.species_moth] | \
+	Полукровки: [SSround_end_statistics.species_demihuman] | \
+	Полуорки: [SSround_end_statistics.species_halfork] | \
+	Полуэльфы: [SSround_end_statistics.species_halfelf] | \
+	Сиссеане: [SSround_end_statistics.species_lizardfolk] | \
+	Табакси: [SSround_end_statistics.species_tabaxi] | \
+	Тифлинги: [SSround_end_statistics.species_tiefling] | \
+	Феи: [SSround_end_statistics.species_seelie] | \
+	Эльфы: [SSround_end_statistics.species_elf] | \
+	")
 
-	embed.fields = list(deaths, bloodspilled, triumphgained, triumphslost, pleasures, violated_by_baotha, confessors, families, families_failed, players, boys, womens, femboys, futacocks)
+	embed.fields = list(deaths, bloodspilled, triumphgained, triumphslost, pleasures, violated_by_baotha, confessors, families, families_failed, players, men, women, cuntboys, futas, species)
 
 	send2chat(message, "status")
 

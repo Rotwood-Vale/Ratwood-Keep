@@ -260,40 +260,64 @@
 /datum/controller/subsystem/ticker/proc/stats_report()
 	var/list/shit = list()
 	shit += "<br><span class='bold'>Δ--------------------Δ</span><br>"
-	shit += "<br><font color='#9b6937'><span class='bold'>Deaths:</span></font> [deaths]"
-	shit += "<br><font color='#af2323'><span class='bold'>Blood spilt:</span></font> [round(blood_lost / 100, 1)]L"
-	shit += "<br><font color='#36959c'><span class='bold'>TRIUMPH(s) Awarded:</span></font> [tri_gained]"
-	shit += "<br><font color='#a02fa4'><span class='bold'>TRIUMPH(s) Stolen:</span></font> [tri_lost * -1]"
-	shit += "<br><font color='#ffd4fd'><span class='bold'>Pleasures:</span></font> [cums]"
+	shit += "<br><font color='#9b6937'><span class='bold'>Погибло:</span></font> [deaths]"
+	shit += "<br><font color='#af2323'><span class='bold'>Крови пролито:</span></font> [round(blood_lost / 100, 1)]L"
+	shit += "<br><font color='#36959c'><span class='bold'>Триумфов Получено:</span></font> [tri_gained]"
+	shit += "<br><font color='#a02fa4'><span class='bold'>Триумфов Украдено:</span></font> [tri_lost * -1]"
+	shit += "<br><font color='#ffd4fd'><span class='bold'>Удовольствий:</span></font> [cums]"
 	if(GLOB.cuckolds.len)
-		shit += "<br><font color='#a02fa4'><span class='bold'>Cuckolds were:</span></font> "
+		shit += "<br><font color='#a02fa4'><span class='bold'>Получили рога:</span></font> "
 		for(var/i in 1 to GLOB.cuckolds.len)
 			shit += GLOB.cuckolds[i]
 			if(i != GLOB.cuckolds.len)
 				shit += ","
 	if(GLOB.confessors.len)
-		shit += "<br><font color='#93cac7'><span class='bold'>The Damned:</span></font> "
+		shit += "<br><font color='#93cac7'><span class='bold'>Покаявшиеся инквизитору:</span></font> "
 		for(var/x in GLOB.confessors)
 			shit += "[x]"
 	// REDMOON ADD START
-	//  вывод статистики в конце раунда о количестве семей и осквернённых Баотой
-	shit += "<br><font color='#115726'><span class='bold'>Tried to form up a familty: </span></font> [length(SSfamily.family_candidates)]"
-	shit += "<br><font color='#22833f'><span class='bold'>Families were in Rockhill:</span></font> [SSfamily.families.len]" // family_changes
-	shit += "<br><font color='#a1489d'><span class='bold'>Corrputed by Baotha:</span></font> [SSticker.violated_by_baotha.len]" // baotha_steals_triumphs
+	// вывод статистики в конце раунда о количестве семей и осквернённых Баотой
+	shit += "<br><font color='#115726'><span class='bold'>Пытались создать семью: </span></font> [length(SSfamily.family_candidates)]"
+	shit += "<br><font color='#22833f'><span class='bold'>Семей проживало в Рокхилле:</span></font> [SSfamily.families.len]" // family_changes
+	shit += "<br><font color='#a1489d'><span class='bold'>Осквернено Баотой:</span></font> [SSround_end_statistics.violated_by_baotha.len]" // baotha_steals_triumphs
 	// start_reports_with_gender_lists - вывод статистики в конце раунда о половой принадлежности
-	var/count_of_joined_characters = males + females + males_with_vagina + females_with_penis
-	var/percent_of_males = PERCENT(males/count_of_joined_characters)
-	var/percent_of_males_with_vagina = PERCENT(males_with_vagina/count_of_joined_characters)
-	var/percent_of_females = PERCENT(females/count_of_joined_characters)
-	var/percent_of_females_with_penis = PERCENT(females_with_penis/count_of_joined_characters)
+	var/count_of_joined_characters = SSround_end_statistics.males + SSround_end_statistics.females + SSround_end_statistics.males_with_vagina + SSround_end_statistics.females_with_penis
+	var/percent_of_males = PERCENT(SSround_end_statistics.males/count_of_joined_characters)
+	var/percent_of_males_with_vagina = PERCENT(SSround_end_statistics.males_with_vagina/count_of_joined_characters)
+	var/percent_of_females = PERCENT(SSround_end_statistics.females/count_of_joined_characters)
+	var/percent_of_females_with_penis = PERCENT(SSround_end_statistics.females_with_penis/count_of_joined_characters)
 	shit += "<br><span class='bold'>⇕--------------------⇕</span>"
-	shit += "<br><font color='#a78fa8'><span class='bold'>Beginnings Statistics:</span></font> "
-	shit += "<br><font color='#4183c0'><span class='italics'>Men:</span></font> [males] ([percent_of_males]%)"
-	shit += "<br><font color='#c74ec1'><span class='italics'>Women:</span></font> [females] ([percent_of_females]%)"
-	shit += "<br><font color='#d19445'><span class='italics'>Men with female beginnings:</span></font> [males_with_vagina] ([percent_of_males_with_vagina]%)"
-	shit += "<br><font color='#80097a'><span class='italics'>Women with male beginnings:</span></font> [females_with_penis] ([percent_of_females_with_penis]%)"
+	shit += "<br><font color='#a78fa8'><span class='bold'>Эора подарила Рокхиллу... </span></font> "
+	shit += "<br><font color='#4183c0'><span class='italics'>Мужчин:</span></font> [SSround_end_statistics.males] ([percent_of_males]%)"
+	shit += "<br><font color='#c74ec1'><span class='italics'>Женщин:</span></font> [SSround_end_statistics.females] ([percent_of_females]%)"
+	shit += "<br><font color='#d19445'><span class='italics'>Мужчин с иным началом:</span></font> [SSround_end_statistics.males_with_vagina] ([percent_of_males_with_vagina]%)"
+	shit += "<br><font color='#80097a'><span class='italics'>Женщин с иным началом:</span></font> [SSround_end_statistics.females_with_penis] ([percent_of_females_with_penis]%)"
+	// species_statistics
+	shit += "<br><span class='bold'>⇕--------------------⇕</span>"
+	shit += "<br><font color='#489b53'><span class='bold'>Под солнцем Астраты были...</span></font> "
+	if(SSround_end_statistics.species_aasimar)			shit += "<br><font color='#36693c'><span class='italics'>Аасимары: </span></font>[SSround_end_statistics.species_aasimar]"
+	if(SSround_end_statistics.species_axian)			shit += "<br><font color='#36693c'><span class='italics'>Аксиане: </span></font>[SSround_end_statistics.species_axian]"
+	if(SSround_end_statistics.species_anthromorphsmall) shit += "<br><font color='#36693c'><span class='italics'>Верминволки: </span></font>[SSround_end_statistics.species_anthromorphsmall]"
+	if(SSround_end_statistics.species_vulpkanin)		shit += "<br><font color='#36693c'><span class='italics'>Вульпканин: </span></font>[SSround_end_statistics.species_vulpkanin]"
+	if(SSround_end_statistics.species_goblinp)			shit += "<br><font color='#36693c'><span class='italics'>Гоблины: </span></font>[SSround_end_statistics.species_goblinp]"
+	if(SSround_end_statistics.species_dwarf)			shit += "<br><font color='#36693c'><span class='italics'>Дварфы: </span></font>[SSround_end_statistics.species_dwarf]"
+	if(SSround_end_statistics.species_anthromorph) 		shit += "<br><font color='#36693c'><span class='italics'>Дикари: </span></font>[SSround_end_statistics.species_anthromorph]"
+	if(SSround_end_statistics.species_dracon)			shit += "<br><font color='#36693c'><span class='italics'>Дракониды: </span></font>[SSround_end_statistics.species_dracon]"
+	if(SSround_end_statistics.species_drow)				shit += "<br><font color='#36693c'><span class='italics'>Дроу: </span></font>[SSround_end_statistics.species_drow]"
+	if(SSround_end_statistics.species_kobold)			shit += "<br><font color='#36693c'><span class='italics'>Кобольды: </span></font>[SSround_end_statistics.species_kobold]"
+	if(SSround_end_statistics.species_lupian)			shit += "<br><font color='#36693c'><span class='italics'>Люпины: </span></font>[SSround_end_statistics.species_lupian]"
+	if(SSround_end_statistics.species_humen)			shit += "<br><font color='#36693c'><span class='italics'>Люди: </span></font>[SSround_end_statistics.species_humen]"
+	if(SSround_end_statistics.species_moth)				shit += "<br><font color='#36693c'><span class='italics'>Моли: </span></font>[SSround_end_statistics.species_moth]"
+	if(SSround_end_statistics.species_demihuman)		shit += "<br><font color='#36693c'><span class='italics'>Полукровки: </span></font>[SSround_end_statistics.species_demihuman]"
+	if(SSround_end_statistics.species_halfork)			shit += "<br><font color='#36693c'><span class='italics'>Полуорки: </span></font>[SSround_end_statistics.species_halfork]"
+	if(SSround_end_statistics.species_halfelf)			shit += "<br><font color='#36693c'><span class='italics'>Полуэльфы: </span></font>[SSround_end_statistics.species_halfelf]"
+	if(SSround_end_statistics.species_lizardfolk)		shit += "<br><font color='#36693c'><span class='italics'>Сиссеане: </span></font>[SSround_end_statistics.species_lizardfolk]"
+	if(SSround_end_statistics.species_tabaxi)			shit += "<br><font color='#36693c'><span class='italics'>Табакси: </span></font>[SSround_end_statistics.species_tabaxi]"
+	if(SSround_end_statistics.species_tiefling)			shit += "<br><font color='#36693c'><span class='italics'>Тифлинги: </span></font>[SSround_end_statistics.species_tiefling]"
+	if(SSround_end_statistics.species_seelie)			shit += "<br><font color='#36693c'><span class='italics'>Феи: </span></font>[SSround_end_statistics.species_seelie]"
+	if(SSround_end_statistics.species_elf)				shit += "<br><font color='#36693c'><span class='italics'>Эльфы: </span></font>[SSround_end_statistics.species_elf]"
 	// REDMOON ADD END
-	shit += "<br><br><span class='bold'>∇--------------------∇</span>"
+	shit += "<br><span class='bold'>∇--------------------∇</span>"
 	to_chat(world, "[shit.Join()]")
 	return
 

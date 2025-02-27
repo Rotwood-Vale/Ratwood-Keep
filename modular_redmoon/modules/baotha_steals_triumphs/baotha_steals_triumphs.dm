@@ -4,13 +4,13 @@
 	/// Количество совершенных действий. Нужно, чтобы баотиты за секунду не воровали чужие триумфы.
 	var/actions_made = 0
 
-/datum/controller/subsystem/ticker
+/datum/controller/subsystem/round_end_statistics
 	var/list/violated_by_baotha = list()
 
 /datum/sex_controller/proc/baotha_invitation(var/mob/living/baotha_cultist, var/mob/living/victim)
-	if(victim.real_name in SSticker.violated_by_baotha)
+	if(victim.real_name in SSround_end_statistics.violated_by_baotha)
 		return FALSE
-	SSticker.violated_by_baotha += victim.real_name
+	SSround_end_statistics.violated_by_baotha += victim.real_name
 	baotha_cultist.adjust_triumphs(1)
 	victim.adjust_triumphs(-1)
 	to_chat(victim, victim.client.prefs.be_russian ? span_userdanger("Я чувствую, как мою душу оскверняют!") : span_userdanger("I feel how my soul is being corrupted by them!"))
@@ -35,7 +35,7 @@
 		return FALSE
 	var/amount_to_change_nutrition = min(100, NUTRITION_LEVEL_FULL - baotha_cultist.nutrition)
 	var/amount_to_change_hydration = min(100, HYDRATION_LEVEL_FULL - baotha_cultist.nutrition)
-	if(victim.real_name in SSticker.violated_by_baotha)
+	if(victim.real_name in SSround_end_statistics.violated_by_baotha)
 		target.adjust_nutrition(-amount_to_change_nutrition)
 		target.adjust_hydration(-amount_to_change_hydration)
 		baotha_cultist.adjust_nutrition(amount_to_change_nutrition)
