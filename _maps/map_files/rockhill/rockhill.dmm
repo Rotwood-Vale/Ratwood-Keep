@@ -10349,6 +10349,7 @@
 	dir = 10;
 	icon_state = "largetable"
 	},
+/obj/item/book/rogue/law,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/manor)
 "fiv" = (
@@ -16172,6 +16173,12 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
+"ilE" = (
+/obj/structure/roguemachine/scomm{
+	pixel_y = -32
+	},
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/town/manor)
 "ilS" = (
 /obj/structure/bars/passage/steel{
 	redstone_id = "dungeonpit"
@@ -42172,6 +42179,13 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
+"vZV" = (
+/obj/structure/table/wood{
+	icon_state = "map5"
+	},
+/obj/item/book/rogue/law,
+/turf/open/floor/rogue/carpet/lord/center,
+/area/rogue/indoors/town/manor)
 "vZW" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -562040,7 +562054,7 @@ szJ
 xlm
 xlm
 xlm
-xlm
+ilE
 wtF
 qSA
 esF
@@ -563334,7 +563348,7 @@ dxv
 wtF
 uiW
 nlX
-pDF
+vZV
 cHH
 kLJ
 wtF
