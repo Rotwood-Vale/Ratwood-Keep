@@ -38,6 +38,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/clothing/head/roguetown/headband
 
 //CLOAKS
+/datum/loadout_item/hood
+	name = "Hood"
+	desc = "Капюшон."
+	path = /obj/item/clothing/head/roguetown/roguehood
+
 /datum/loadout_item/tabard
 	name = "Tabard"
 	desc = "Плащ."
