@@ -697,14 +697,6 @@
 /obj/item/clothing/cloak/apron/waist/bar
 	color = "#251f1d"
 
-/obj/item/clothing/cloak/apron/waist/maid
-	name = "maid apron"
-	desc = "A fancy, somewhat short apron usually worn by servants."
-	icon = 'icons/roguetown/clothing/maiddress/maid.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/maiddress/onmob/maid.dmi'
-	icon_state = "maidapron"
-	item_state = "maidapron"
-
 /obj/item/clothing/cloak/apron/cook
 	name = "cook apron"
 	desc = "An apron meant to show how clean the cook is."

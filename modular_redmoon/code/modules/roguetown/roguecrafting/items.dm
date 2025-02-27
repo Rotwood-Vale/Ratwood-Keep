@@ -77,3 +77,24 @@
 	name = "fullplate bikini to bra"
 	result = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bikini/bra)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bikini = 1)
+
+/datum/crafting_recipe/roguetown/sewing/maiddress
+	name = "maid dress (3 cloths, fiber; EXPERT)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/maiddress)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/maidhead
+	name = "maid headdress (1 cloth, fiber; EXPERT)"
+	result = list(/obj/item/clothing/head/roguetown/maidhead)
+	reqs = list(/obj/item/natural/cloth = 1,
+				/obj/item/natural/fibers = 1)
+	skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/maidapron
+	name = "maid apron (2 cloth, fiber; EXPERT)"
+	result = list(/obj/item/clothing/cloak/apron/waist/maid)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	skill_level = 4

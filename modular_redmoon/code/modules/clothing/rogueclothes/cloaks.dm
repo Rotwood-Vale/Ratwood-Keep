@@ -14,3 +14,11 @@
 /obj/item/clothing/cloak/tabard/crusader/abyssor
 	color = "#373f69"
 	detail_color = "#974305"
+
+/obj/item/clothing/cloak/apron/waist/maid
+	name = "maid apron"
+	desc = "A fancy, somewhat short apron usually worn by servants."
+	icon = 'modular_redmoon/icons/cloak.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/cloak_onmob.dmi'
+	icon_state = "maidapron"
+	item_state = "maidapron"

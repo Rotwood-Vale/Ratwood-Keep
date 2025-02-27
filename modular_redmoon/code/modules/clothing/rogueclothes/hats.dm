@@ -524,3 +524,11 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/head/roguetown/maidhead
+	name = "maid headdress"
+	desc = "A decorative cloth headband clearly indicating the wearer as a maid."
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
+	icon_state = "maidhead"
+	item_state = "maidhead"
