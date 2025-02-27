@@ -120,11 +120,14 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
-		if(!istype(loc, /obj/structure/closet/crate/chest) && !istype(loc, /obj/structure/roguemachine/vendor) && !istype (loc, /obj/item/storage/backpack/rogue/artibackpack))
+		if(!istype(loc, /obj/structure/closet/crate/chest) && !istype(loc, /obj/structure/roguemachine/vendor) && !istype (loc, /obj/item/storage/backpack/rogue/artibackpack)&& !istype (loc, /obj/structure/table/cooling))
 			if(!locate(/obj/structure/table) in loc)
 				warming -= 20 //ssobj processing has a wait of 20
 			else
-				warming -= 10
+				if(locate(/obj/structure/table/cooling) in loc)
+					warming -= 0
+				else
+					warming -= 10
 			if(warming < (-1*rotprocess))
 				if(become_rotten())
 					STOP_PROCESSING(SSobj, src)
@@ -273,7 +276,7 @@ All foods are distributed among various categories. Use common sense.
 						eater.add_stress(/datum/stressevent/noble_lavish_food)
 						if (prob(25))
 							to_chat(eater, span_green("Ah, food fit for my title."))
-			
+
 			// yeomen and courtiers are also used to a better quality of life but are way less picky
 			if (human_eater.is_yeoman() || human_eater.is_courtier())
 				switch (faretype)

@@ -454,20 +454,20 @@
 	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 
 /datum/anvil_recipe/weapons/iron/bolts
-	name = "Crossbow Bolts 5x (+1 Stick)"
+	name = "Crossbow Bolts 10x (+2 Stick)"
 	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/grown/log/tree/stick)
+	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/bolt
-	createditem_num = 5
+	createditem_num = 10
 	i_type = "Ammo"
 
 /// RANGED
 /datum/anvil_recipe/weapons/iron/arrows
-	name = "Arrows 5x (+1 Stick)"
+	name = "Arrows 10x (+2 Stick)"
 	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/grown/log/tree/stick)
+	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/ammo_casing/caseless/rogue/arrow/iron
-	createditem_num = 5
+	createditem_num = 10
 	i_type = "Ammo"
 	craftdiff = 0
 
