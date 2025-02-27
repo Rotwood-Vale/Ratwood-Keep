@@ -1617,6 +1617,7 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 
 		else	//Getting previously marked item
 			var/obj/item/rogueweapon/item_to_retrieve = marked_item
+
 			var/infinite_recursion = 0 //I don't want to know how someone could put something inside itself but these are wizards so let's be safe
 			while(!isturf(item_to_retrieve.loc) && infinite_recursion < 10) //if it's in something you get the whole thing.
 				if(isitem(item_to_retrieve.loc))
@@ -1634,7 +1635,8 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 								part.remove_embedded_object(item_to_retrieve)
 								to_chat(C, span_warning("The [item_to_retrieve] that was embedded in your [L] has mysteriously vanished. How fortunate!"))
 								break
-					item_to_retrieve = item_to_retrieve.loc
+					if(!isturf(item_to_retrieve.loc))
+						item_to_retrieve = item_to_retrieve.loc
 
 				infinite_recursion += 1
 
