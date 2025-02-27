@@ -431,6 +431,14 @@
 				/obj/item/natural/feather = 1)
 	skill_level = 3
 
+
+/datum/crafting_recipe/roguetown/sewing/kaftan
+	name = "kaftan - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/kaftan)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
 /* craftdif of 4 EXPERT */
 
 /datum/crafting_recipe/roguetown/sewing/stockdress
