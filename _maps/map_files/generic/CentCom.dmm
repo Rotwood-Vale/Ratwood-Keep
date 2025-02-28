@@ -2959,14 +2959,6 @@
 "tq" = (
 /turf/open/floor/carpet/red,
 /area/rogue/under/town/goblin)
-"tx" = (
-/mob/living/carbon/human/species/human/northern/bum/frontliner{
-	health = 300;
-	faction = list("dungeon");
-	zone_selected = "right_leg"
-	},
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/woods)
 "tH" = (
 /obj/structure/toilet,
 /turf/open/floor/rogue/greenstone,
@@ -12453,7 +12445,7 @@ lF
 lF
 PQ
 PQ
-tx
+Wp
 IK
 Wp
 PQ
@@ -13144,7 +13136,7 @@ Wp
 IK
 Wp
 Wp
-tx
+Wp
 Wp
 Wp
 Wp
