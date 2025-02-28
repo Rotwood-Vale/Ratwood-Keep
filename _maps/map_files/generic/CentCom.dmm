@@ -2126,6 +2126,24 @@
 /obj/structure/flora/roguetree,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
+"lp" = (
+/mob/living/simple_animal/hostile/rogue/werewolf{
+	damage_coeff = list("brute" = 0.4, "fire" = 0, "toxin" = 0, "clone" = 1, "stamina" = 0, "oxygen" = 0.2);
+	name = "Dark werewolf";
+	health = 150;
+	melee_damage_lower = 50;
+	melee_damage_upper = 55;
+	zone_selected = "neck";
+	faction = list("dungeon");
+	STACON = 20;
+	ai_controller = /datum/ai_controller/volf;
+	base_intents = list(/datum/intent/unarmed/wwolf);
+	STAPER = 20;
+	blood_volume = 3000;
+	icon_dead = "vvd"
+	},
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/outdoors/woods)
 "lq" = (
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/tile,
@@ -2362,9 +2380,10 @@
 	ai_controller = /datum/ai_controller/volf;
 	base_intents = list(/datum/intent/unarmed/wwolf);
 	STAPER = 20;
-	blood_volume = 3000
+	blood_volume = 3000;
+	icon_dead = "vvd"
 	},
-/turf/open/floor/rogue/cobble/mossy,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)
 "od" = (
 /obj/structure/table/vtable,
@@ -3116,7 +3135,6 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/outdoors/woods)
 "vJ" = (
-/obj/structure/flora/roguegrass,
 /mob/living/simple_animal/hostile/rogue/werewolf{
 	damage_coeff = list("brute" = 0.4, "fire" = 0, "toxin" = 0, "clone" = 1, "stamina" = 0, "oxygen" = 0.2);
 	name = "Dark werewolf";
@@ -3129,9 +3147,10 @@
 	ai_controller = /datum/ai_controller/volf;
 	base_intents = list(/datum/intent/unarmed/wwolf);
 	STAPER = 20;
-	blood_volume = 3000
+	blood_volume = 3000;
+	icon_dead = "vvd"
 	},
-/turf/open/floor/rogue/cobble/mossy,
+/turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/woods)
 "vP" = (
 /turf/closed/wall/mineral/rogue/stone,
@@ -3194,7 +3213,8 @@
 	ai_controller = /datum/ai_controller/volf;
 	base_intents = list(/datum/intent/unarmed/wwolf);
 	STAPER = 20;
-	blood_volume = 3000
+	blood_volume = 3000;
+	icon_dead = "vvd"
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/outdoors/woods)
@@ -4293,9 +4313,10 @@
 	ai_controller = /datum/ai_controller/volf;
 	base_intents = list(/datum/intent/unarmed/wwolf);
 	STAPER = 20;
-	blood_volume = 3000
+	blood_volume = 3000;
+	icon_dead = "vvd"
 	},
-/turf/open/floor/rogue/ruinedwood,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/woods)
 "JN" = (
 /obj/structure/flora/roguegrass,
@@ -4920,7 +4941,8 @@
 	ai_controller = /datum/ai_controller/volf;
 	base_intents = list(/datum/intent/unarmed/wwolf);
 	STAPER = 20;
-	blood_volume = 3000
+	blood_volume = 3000;
+	icon_dead = "vvd"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/woods)
@@ -11547,8 +11569,8 @@ Wp
 Wp
 Wp
 Wp
-Wp
 Rm
+Wp
 Wp
 Wp
 Wp
@@ -12701,8 +12723,8 @@ Dk
 Dp
 fD
 Uu
+lp
 Va
-JL
 WY
 Wp
 lF
@@ -14077,8 +14099,8 @@ Wp
 Wp
 Wp
 Wp
-Wp
 Rm
+Wp
 Wp
 Wp
 PQ
@@ -19350,7 +19372,7 @@ kB
 Wp
 el
 Wp
-Rm
+Wp
 Wp
 Wp
 Wp
@@ -19395,7 +19417,7 @@ vQ
 PQ
 PQ
 PQ
-PQ
+ob
 vQ
 PQ
 Te
@@ -19581,7 +19603,7 @@ lF
 XD
 lF
 lF
-PQ
+ob
 lF
 lF
 Ys
@@ -26300,7 +26322,7 @@ PK
 kx
 ya
 dA
-dD
+JL
 zb
 dA
 zb
@@ -27441,7 +27463,7 @@ wC
 wC
 Da
 zT
-vJ
+zT
 zb
 dA
 dA
@@ -27672,7 +27694,7 @@ Xa
 Da
 dA
 dA
-dA
+vJ
 dA
 Yz
 dA
@@ -27917,7 +27939,7 @@ Ul
 zb
 zb
 zb
-ob
+dD
 zb
 dA
 zb
