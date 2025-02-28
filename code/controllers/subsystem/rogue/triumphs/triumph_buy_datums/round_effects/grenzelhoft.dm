@@ -60,7 +60,7 @@
 		else
 			return set_eye_color(H, "#ff0000", "#ff0000")
 	eyes.update_accessory_colors()
-	var/datum/bodypart_feature/hair/facial/hair = get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	var/datum/bodypart_feature/hair/facial/hair = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 	var/num2 = rand(0, 6)
 	switch(num2)
 		if(0)
