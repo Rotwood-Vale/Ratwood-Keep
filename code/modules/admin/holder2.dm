@@ -149,6 +149,25 @@ GLOBAL_PROTECT(href_token)
 /datum/admins/vv_edit_var(var_name, var_value)
 	return FALSE //nice try trialmin
 
+/datum/admins/proc/admin_command(command, target)
+	var/mob/resolved = locate(target)
+	if(QDELETED(resolved))
+		return
+
+	switch(command)
+		if(FLAG_GIB)
+			resolved.gib()
+		if(FLAG_PP)
+			show_player_panel(resolved)
+		if(FLAG_VV)
+			owner.debug_variables(resolved)
+		if(FLAG_JUMP)
+			owner.jumptomob(resolved)
+		if(FLAG_JUMP_GHOST)
+			if(!isobserver(owner))
+				owner.admin_ghost()
+			owner.jumptomob(resolved)
+
 /*
 checks if usr is an admin with at least ONE of the flags in rights_required. (Note, they don't need all the flags)
 if rights_required == 0, then it simply checks if they are an admin.
