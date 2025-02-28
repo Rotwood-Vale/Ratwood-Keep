@@ -7,10 +7,6 @@
 	spawn_positions = 6
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
-	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	whitelist_req = TRUE
-
-
 	tutorial = "You're the lowest of the low. A goblin among many other goblins. \
 	There's little to say about you, aside from your Chief deeming you less than fit for service."
 	outfit = /datum/outfit/job/roguetown/goblinrabble
@@ -18,12 +14,14 @@
 	min_pq = 0
 	max_pq = null
 
+/datum/job/roguetown/goblinrabble/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 
 /datum/outfit/job/roguetown/goblinrabble
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 
 /datum/outfit/job/roguetown/goblinrabble/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.faction += "orcs"
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -31,25 +29,21 @@
 	r_hand = /obj/item/rogueweapon/spear/stone
 	belt = /obj/item/storage/belt/rogue/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/storage/keyring/goblin = 1, /obj/item/lockpickring/mundane = 1)
+	backpack_contents = list(/obj/item/storage/keyring/goblin = 1, /obj/item/lockpick = 1)
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltr = /obj/item/ammo_holder/quiver/arrows
-	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/stealing, round(rand(1,5)), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, round(rand(1,5)), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.change_stat("strength", -1)
 		H.change_stat("perception", 2)
