@@ -26371,6 +26371,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town/harbor)
+"nGy" = (
+/obj/structure/mannequin/male,
+/turf/open/floor/rogue/carpet/lord/center,
+/area/rogue/indoors/town/manor)
 "nGM" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/rogue/cobblerock,
@@ -43427,6 +43431,7 @@
 /obj/item/rope/chain,
 /obj/item/clothing/under/roguetown/tights/black,
 /obj/item/clothing/suit/roguetown/shirt/tunic,
+/obj/item/clothing/cloak/hierophant,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/manor)
 "wFe" = (
@@ -340413,7 +340418,7 @@ xKo
 sHm
 kEA
 fGm
-wxB
+nGy
 eAu
 uYE
 sHm
@@ -342141,7 +342146,7 @@ xKo
 sHm
 kEA
 aar
-wxB
+nGy
 eAu
 uYE
 sHm
