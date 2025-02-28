@@ -68,6 +68,8 @@
 	if(do_after(user,50, user))
 		on_reading_finished(user)
 		reading = FALSE
+	else
+		reading = FALSE	//Sanity check to stop interruptions to do after causing it to break.
 	return TRUE
 
 ///ACTION BUTTONS///

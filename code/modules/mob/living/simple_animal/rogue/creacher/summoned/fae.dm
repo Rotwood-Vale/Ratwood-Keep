@@ -1,9 +1,35 @@
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/AIShouldSleep(list/possible_targets)
+	if(!FindTarget(possible_targets, 1))
+		addtimer(CALLBACK(src,PROC_REF(despawncheck)), del_on_deaggro)
+		return TRUE
+	else
+		return FALSE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/proc/despawncheck()
+	if(nearbyhumanpresent(5))	//check for humans in range
+		return	//return if humans in range
+	if(AIStatus == AI_IDLE)
+		new /obj/effect/particle_effect/smoke/bad(src.loc)
+		src.visible_message(span_notice("[src] returns to it's plane of origin."))
+		dropcomponents()
+		qdel(src)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/Move(newloc)
+	if(binded)
+		to_chat(src,span_warning("You're currently bound and unable to move!"))
+		return
+	.=..()
+
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_VINE_WALKER, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/Life()
 	..()
@@ -92,8 +118,8 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	del_on_deaggro = 5 SECONDS
+	retreat_health = 0
 	food = 0
 	attack_sound = 'sound/combat/hits/bladed/smallslash (1).ogg'
 	attack_verb_continuous = "jabs"
@@ -106,6 +132,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite/Initialize()
 	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite/death(gibbed)
 	..()
@@ -152,7 +182,7 @@
 	melee_damage_upper = 17
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	ranged = FALSE
 	retreat_distance = 0
@@ -167,8 +197,8 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	del_on_deaggro = 20 SECONDS
+	retreat_health = 0
 	food = 0
 	attack_sound = list()
 	dodgetime = 40
@@ -179,6 +209,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing/Initialize()
 	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t1(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing/death(gibbed)
 	..()
@@ -223,7 +257,7 @@
 	speak_chance = 1
 	turns_per_move = 6
 	see_in_dark = 6
-	move_to_delay = 12
+	move_to_delay = 8
 	base_intents = list(/datum/intent/simple/elementalt2_unarmed)
 	butcher_results = list()
 	faction = list("fae")
@@ -249,8 +283,8 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	del_on_deaggro = 30 SECONDS
+	retreat_health = 0
 	food = 0
 	attack_sound = "plantcross"
 	dodgetime = 30
@@ -260,6 +294,32 @@
 	var/vine_cd
 	summon_primer = "You are a dryad, a large sized fae. You spend time tending to forests, guarding sacred ground from tresspassers. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
 	tier = 3
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/Move(newloc)	//vine movespeed buff
+	.=..()
+	if(isturf(newloc))
+		var/turf/T = newloc
+		if(contains_vines(T))
+			src.move_to_delay = 2
+		else
+			src.move_to_delay = 8
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/AttackingTarget()
+	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
+		return FALSE //but more importantly return before attack_animal called
+	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)
+	in_melee = TRUE
+	if(!target)
+		return
+	if(client && world.time >= src.vine_cd + 100)
+		addtimer(CALLBACK(src,PROC_REF(vine),target), 1 SECONDS)
+	return target.attack_animal(src)
+
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/proc/contains_vines(var/turf/T)
+	for(var/obj/structure/spacevine/dendor/V in T)
+		return TRUE
+	return FALSE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the watcher
 	return
@@ -281,7 +341,6 @@
 			return 1
 		if(world.time >= src.vine_cd + 100)
 			vine()
-			src.vine_cd = world.time
 		if(retreat_distance != null) //If we have a retreat distance, check if we need to run from our target
 			if(target_distance <= retreat_distance) //If target's closer than our retreat distance, run
 				walk_away(src,target,retreat_distance,move_to_delay)
@@ -307,8 +366,14 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/proc/vine()
 	target.visible_message(span_boldwarning("Vines spread out from [src]!"))
-	for(var/turf/turf as anything in RANGE_TURFS(3,src.loc))
-		new /obj/structure/spacevine(turf)
+	for(var/turf/turf as anything in RANGE_TURFS(2,src.loc))
+		if(!locate(/obj/structure/spacevine) in turf)
+			new /obj/structure/spacevine/dendor(turf)
+	src.vine_cd = world.time
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t2(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/death(gibbed)
 	..()
@@ -351,7 +416,7 @@
 	melee_damage_upper = 30
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 4
 	minimum_distance = 4
@@ -365,8 +430,8 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	del_on_deaggro = 30 SECONDS
+	retreat_health = 0
 	food = 0
 	attack_sound = null
 	dodgetime = 40
@@ -382,7 +447,7 @@
 
 /obj/projectile/magic/frostbolt/greater
 	name = "greater frostbolt"
-	damage = 25
+	damage = 15
 	range = 6
 	speed = 6 //higher is slower
 
@@ -409,9 +474,12 @@
 	if(!target)
 		return
 	for(var/turf/turf as anything in RANGE_TURFS(3,src.loc))
-		if(prob(25))
+		if(prob(15))
 			new /obj/structure/glowshroom(turf)
 
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t3(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/death(gibbed)
 	..()
