@@ -1268,7 +1268,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(0)
 			var/color = "#f81a1a"
 			str = elaborate ? "<font color = '[color]'>[input] (F)</font>" : "<font color = '[color]'>[input] (F)</font>"
-		if(10 to 19)
+		if(1 to 19)
 			var/color = "#680d0d"
 			str = elaborate ? "<font color = '[color]'>[input] (D)</font>" : "<font color = '[color]'>[input] (D)</font>"
 		if(20 to 39)
