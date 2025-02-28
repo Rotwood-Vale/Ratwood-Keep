@@ -38,15 +38,16 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("intelligence", 2)
-		H.change_stat("constitution", 6)
-		H.change_stat("endurance", 1)
+		H.change_stat("constitution", 3)
+		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
 
 //If a non-Goblin or Horc gets control by admin intervention.
@@ -67,32 +68,29 @@
 			return FALSE
 		priority_announce("[inputty]", title = "The Goblin Chief Speaks", sound = 'sound/misc/dun.ogg')
 */
-/*
-/mob/living/carbon/human/proc/goblinopenslot()
+
+/* /mob/living/carbon/human/proc/goblinopenslot()
 	set name = "Open Slot"
-	set category = "Goblin King"
+	set category = "Goblin Chief"
 	if(stat)
 		return
 	var/datum/job/cookjob = SSjob.GetJob("Goblin Cook")
 	var/datum/job/guardjob = SSjob.GetJob("Goblin Guard")
 	var/datum/job/smithjob = SSjob.GetJob("Goblin Smith")
 	var/list/souloptions = list("Goblin Cook", "Goblin Guard", "Goblin Smith")
-	var/pickedsoul = input("Which worker shall join kingdom?", "Available workers") as null|anything in souloptions
-	if(!istype(get_area(src), /area/rogue/indoors/shelter/mountains/decap))
-		to_chat(src, span_warning("I need to do this from the Goblin Kingdom."))
-		return FALSE
+	var/pickedsoul = input("Which worker shall join the tribe?", "Available workers") as null|anything in souloptions
 	if(!pickedsoul)
 		return
 	switch(pickedsoul)
 		if("Goblin Cook")
 			cookjob.total_positions += 1
-			priority_announce("Goblin Cook shall join our Kingdom", title = "The Goblin King Hires", sound = 'sound/misc/dun.ogg')
+			priority_announce("Goblin Cook shall join our Chiefdom", title = "The Goblin Chief Hires")
 		if("Goblin Guard")
 			guardjob.total_positions += 1
-			priority_announce("Goblin Guard shall join our Kingdom", title = "The Goblin King Hires", sound = 'sound/misc/dun.ogg')
+			priority_announce("Goblin Guard shall join our Chiefdom", title = "The Goblin Chief Hires")
 		if("Goblin Smith")
 			smithjob.total_positions += 1
-			priority_announce("Goblin Smith shall join our Kingdom", title = "The Goblin King Hires", sound = 'sound/misc/dun.ogg')
-*/
+			priority_announce("Goblin Smith shall join our Chiefdom", title = "The Goblin Chief Hires")*/
+
 
 
