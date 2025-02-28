@@ -20069,8 +20069,11 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
 "kjF" = (
-/obj/structure/roguemachine/scomm,
-/turf/open/floor/rogue/cobble/mossy,
+/obj/structure/roguemachine/scomm{
+	pixel_y = 0;
+	pixel_x = 32
+	},
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "kjP" = (
 /turf/closed/wall/mineral/rogue/wooddark/horizontal,
@@ -26729,8 +26732,8 @@
 /obj/item/clothing/cloak/hierophant,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
 /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/nightman,
-/obj/item/clothing/under/roguetown/tights/black,
 /obj/item/clothing/suit/roguetown/shirt/tunic,
+/obj/item/clothing/under/roguetown/shadow,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "nPT" = (
@@ -43429,9 +43432,9 @@
 	},
 /obj/item/rope/chain,
 /obj/item/rope/chain,
-/obj/item/clothing/under/roguetown/tights/black,
 /obj/item/clothing/suit/roguetown/shirt/tunic,
 /obj/item/clothing/cloak/hierophant,
+/obj/item/clothing/under/roguetown/shadow,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/manor)
 "wFe" = (
@@ -45985,8 +45988,8 @@
 "xTt" = (
 /obj/structure/fluff/nest,
 /obj/item/reagent_containers/food/snacks/crow,
-/turf/open/floor/rogue/rooftop{
-	icon_state = "roofg"
+/turf/open/floor/rogue/rooftop/green{
+	dir = 8
 	},
 /area/rogue/outdoors/town/roofs)
 "xTv" = (
@@ -216979,10 +216982,10 @@ wKg
 vWF
 lcg
 hUD
+sjP
+fxx
+fxx
 kjF
-fxx
-fxx
-fxx
 sjP
 nqU
 irt
@@ -569421,10 +569424,10 @@ iXq
 iXq
 iXq
 iXq
+xAt
+xAt
+xAt
 hox
-qvA
-qvA
-qvA
 qvA
 qvA
 qvA
@@ -569853,10 +569856,10 @@ iXq
 iXq
 iXq
 iXq
+xAt
+xAt
+xAt
 nbz
-rZi
-rZi
-rZi
 gxc
 gft
 gft
@@ -570285,10 +570288,10 @@ iXq
 iXq
 iXq
 iXq
-nbz
-rZi
+xAt
+xAt
+xAt
 xTt
-rZi
 col
 eNY
 eNY
@@ -570717,10 +570720,10 @@ iXq
 iXq
 iXq
 iXq
-uFv
-rZi
-rZi
-rZi
+xAt
+xAt
+xAt
+nbz
 col
 eNY
 eNY
@@ -571149,10 +571152,10 @@ iXq
 iXq
 iXq
 iXq
-ptX
-kqe
-kqe
-xqU
+xAt
+xAt
+xAt
+nbz
 col
 eNY
 eNY
