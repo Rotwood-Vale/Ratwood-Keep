@@ -450,7 +450,7 @@ obj/item/hourglass/temporal/stop()
 	var/being_used = FALSE
 	var/sentience_type = SENTIENCE_ORGANIC
 	var/chosen_name
-	var/binding
+	var/binding = FALSE
 /obj/item/rope/chain/bindingshackles/Initialize()
 	.=..()
 	src.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
