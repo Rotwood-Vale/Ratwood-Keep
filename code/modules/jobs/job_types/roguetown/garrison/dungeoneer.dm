@@ -59,4 +59,3 @@
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
-
