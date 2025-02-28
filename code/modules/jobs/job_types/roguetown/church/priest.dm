@@ -185,6 +185,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.real_name == inputty)
 					H.remove_stress(/datum/stressevent/psycurse)
+					REMOVE_TRAIT(H, TRAIT_HERETIC, TRAIT_GENERIC)
 			return
 		var/found = FALSE
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -193,6 +194,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 			if(H.real_name == inputty)
 				found = TRUE
 				H.add_stress(/datum/stressevent/psycurse)
+				ADD_TRAIT(H, TRAIT_HERETIC, TRAIT_GENERIC)
 		if(!found)
 			return FALSE
 		GLOB.heretical_players += inputty
