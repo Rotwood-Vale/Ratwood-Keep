@@ -10,7 +10,7 @@
 	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 
-/datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/refugee/amazon/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
@@ -23,7 +23,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/rogueweapon/huntingknife
