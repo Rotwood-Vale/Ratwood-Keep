@@ -3,6 +3,10 @@
 	name = "Craft"
 	desc = ""
 
+/datum/skill/craft/alchemy
+	name = "Alchemy"
+	desc = ""
+
 /datum/skill/craft/crafting
 	name = "Crafting"
 	desc = ""
