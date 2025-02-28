@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	possible_rmb_intents = list()
 	wander = FALSE
 	var/bum_boss = FALSE//If you ever want a bum boss to spawn without his outfit, for some reason.
+	var/bum_frontliner = FALSE // u are supposed to add this var var var
 
 //Special types.
 /mob/living/carbon/human/species/human/northern/bum/ambush
@@ -22,6 +23,11 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	aggressive=1
 	flee_in_pain = FALSE
 	bum_boss = TRUE
+
+/mob/living/carbon/human/species/human/northern/bum/frontliner
+	aggressive=1
+	flee_in_pain = FALSE
+	wander = TRUE
 
 //Creation stuff.
 /mob/living/carbon/human/species/human/northern/bum/after_creation()
@@ -34,6 +40,8 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	if(!bum_boss)
 		equipOutfit(new /datum/outfit/job/roguetown/vagrant_bum)
+	if(!bum_frontliner)
+		equipOutfit(new /datum/outfit/job/roguetown/vagrant_frontliner)	
 
 /mob/living/carbon/human/species/human/northern/bum/boss/after_creation()
 	..()
@@ -42,6 +50,13 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	if(bum_boss)
 		equipOutfit(new /datum/outfit/job/roguetown/vagrant_boss)
 
+/mob/living/carbon/human/species/human/northern/bum/frontliner/after_creation()
+	..()
+	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+	if(!bum_frontliner)
+		equipOutfit(new /datum/outfit/job/roguetown/vagrant_frontliner)
+		
 //Their outfits.
 
 //Standard Bum
@@ -148,6 +163,61 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 	H.STASPD = 8
 	H.STACON = 14
 	H.STAEND = 14
+	H.STAINT = 1
+
+//Dungeon boy
+/datum/outfit/job/roguetown/vagrant_frontliner/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(prob(25))
+		mask = /obj/item/clothing/mask/rogue/facemask/hound
+	else
+		mask = /obj/item/clothing/mask/rogue/facemask
+
+	if(prob(30))
+		head = /obj/item/clothing/head/roguetown/helmet/leather
+	else
+		head = /obj/item/clothing/head/roguetown/helmet/skullcap
+
+	if(prob(10))
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	else
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+
+	if(prob(10))
+		armor = /obj/item/clothing/suit/roguetown/armor/leather
+	else
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/advanced
+
+	if(prob(30))
+		neck = /obj/item/clothing/neck/roguetown/gorget
+	else
+		neck = /obj/item/clothing/neck/roguetown/leather
+
+	if(prob(20))
+		gloves = /obj/item/clothing/gloves/roguetown/leather
+	else
+		gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
+
+	if(prob(50))
+		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	else
+		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+
+	if(prob(30))
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
+	else
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
+
+	if(prob(50))
+		r_hand = /obj/item/rogueweapon/spear
+	else
+		r_hand = /obj/item/rogueweapon/huntingknife/idagger
+
+
+	H.STASTR = 17
+	H.STASPD = 12
+	H.STACON = 15
+	H.STAEND = 15
 	H.STAINT = 1
 
 //Everything else that isn't outfits.

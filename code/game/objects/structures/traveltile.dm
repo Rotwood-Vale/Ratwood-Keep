@@ -201,6 +201,9 @@
 /obj/structure/fluff/traveltile/goblin_interior
 	check_other_side = TRUE
 
+/obj/structure/fluff/traveltile/bog
+	can_gain_by_walking = TRUE	
+
 /obj/structure/fluff/traveltile/dungeon
 	name = "gate"
 	desc = "This gate's enveloping darkness is so opressive you dread to step through it."
