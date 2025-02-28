@@ -73,7 +73,7 @@
 	color = "#cbcac9"
 
 /obj/item/clothing/shoes/roguetown/anklets
-	name = "gold anklets"
+	name = "Gold Anklets"
 	desc = "Delicate golden hoops worn around the ankle."
 	icon_state = "anklets"
 	item_state = "anklets"
@@ -119,7 +119,7 @@
 	// ----------------- BLACKSTEEL -----------------------
 
 /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
-	name = "blacksteel plate boots"
+	name = "Blacksteel Plate Boots"
 	desc = "Boots forged of durable blacksteel."
 	body_parts_covered = FEET
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'

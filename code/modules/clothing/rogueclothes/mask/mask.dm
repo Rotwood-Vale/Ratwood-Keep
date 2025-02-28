@@ -164,14 +164,14 @@
 	sewrepair = TRUE
 
 /obj/item/clothing/mask/rogue/facemask/goldmask
-	name = "gold mask"
+	name = "Gold Mask"
 	icon_state = "goldmask"
 	max_integrity = 150
 	sellprice = 100
 	smeltresult = /obj/item/ingot/gold
 
 /obj/item/clothing/mask/rogue/exoticsilkmask
-	name = "exotic silk mask"
+	name = "Exotic Silk Mask"
 	icon_state = "exoticsilkmask"
 	flags_inv = HIDEFACE|HIDEFACIALHAIR
 	body_parts_covered = NECK|MOUTH

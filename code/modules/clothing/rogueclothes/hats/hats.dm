@@ -1291,7 +1291,7 @@
 //----------------- BLACKSTEEL ---------------------
 
 /obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
-	name = "blacksteel bucket helm"
+	name = "Blacksteel Bucket Helm"
 	desc = "A bucket helmet forged of durable blacksteel. None shall pass.."
 	body_parts_covered = FULL_HEAD
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'

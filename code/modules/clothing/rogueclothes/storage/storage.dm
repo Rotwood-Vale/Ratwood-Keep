@@ -351,7 +351,7 @@
 		STR.allow_dump_out = TRUE
 
 /obj/item/storage/belt/rogue/leather/exoticsilkbelt
-	name = "exotic silk belt"
+	name = "Exotic Silk Belt"
 	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
 	icon_state = "exoticsilkbelt"
 	heldz_items = 1

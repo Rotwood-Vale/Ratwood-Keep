@@ -383,7 +383,7 @@
 //----------------- MORE AZURE SPRITEWORK ---------------------
 
 /obj/item/clothing/neck/roguetown/ornateamulet
-	name = "ornate amulet"
+	name = "Ornate Amulet"
 	desc = "A beautiful amulet, made of solid gold."
 	icon_state = "ornateamulet"
 	//dropshrink = 0.75
@@ -392,7 +392,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 
 /obj/item/clothing/neck/roguetown/skullamulet
-	name = "skull amulet"
+	name = "Skull Amulet"
 	desc = "Gold shaped into the form of a skull, made into an amulet."
 	icon_state = "skullamulet"
 	//dropshrink = 0.75

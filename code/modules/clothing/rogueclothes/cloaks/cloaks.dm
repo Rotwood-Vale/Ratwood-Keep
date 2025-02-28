@@ -1413,8 +1413,8 @@
 	inhand_mod = TRUE
 
 /obj/item/clothing/cloak/cape/inquisitor
-	name = "inquisitors cloak"
-	desc = "A time honored cloak of Valorian design, used by founding clans of the Valorian Lodge."
+	name = "Inquisitors Cloak"
+	desc = "A time honored cloak Valorian design, used by founding clans of the Valorian Lodge"
 	icon_state = "inquisitor_cloak"
 	icon = 'icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'

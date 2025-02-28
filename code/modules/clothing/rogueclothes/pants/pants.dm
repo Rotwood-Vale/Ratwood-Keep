@@ -240,7 +240,7 @@
 //----------------- BLACKSTEEL---------------------
 
 /obj/item/clothing/under/roguetown/blacksteel/platelegs
-	name = "blacksteel plate chausses"
+	name = "Blacksteel Plate Chausses"
 	desc = "Reinforced leg plates forged of durable blacksteel."
 	gender = PLURAL
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
