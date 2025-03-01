@@ -303,7 +303,6 @@
 			var/list/istates = J.IconStates()
 			GLOB.IconStates_cache |= icon
 			GLOB.IconStates_cache['icons/roguetown/weapons/halberdherald.dmi'] = istates
-			alpha = 0
 
 		var/picked_name = input(user, "Choose thy Weapon", "Halberds...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/halberdherald.dmi'])
 		if(!picked_name)
@@ -316,7 +315,7 @@
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/halberdherald.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			cut_overlays()
+			icon_state = "Regular Halberd"
 	else
 		..()
 
