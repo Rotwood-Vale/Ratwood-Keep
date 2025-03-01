@@ -41,10 +41,6 @@
 	M.set_glide_size(AM.glide_size)
 	M.updating_glide_size = FALSE
 	handle_vehicle_offsets()
-	// REDMOON ADD START - убираем возможность бегать на сайгах, пока их не сделают корректнее (иначе это гоночная машина)
-	if(M.m_intent == MOVE_INTENT_RUN)
-		M.toggle_rogmove_intent(MOVE_INTENT_WALK)
-	// REDMOON ADD END
 
 /datum/component/riding/proc/handle_vehicle_layer()
 	var/atom/movable/AM = parent

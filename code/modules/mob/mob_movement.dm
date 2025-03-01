@@ -639,11 +639,6 @@
 		if(MOVE_INTENT_WALK)
 			m_intent = MOVE_INTENT_WALK
 		if(MOVE_INTENT_RUN)
-			// REDMOON ADD START - убираем возможность спринтить, пока пристёгнуты. В основном, нужно для сайгаков, пока их адекватно не изменят.
-			if(buckled)
-				to_chat(src, span_warning("I cannot sprint while am buckled!"))
-				return
-			// REDMOON ADD END
 			if(isliving(src))
 				var/mob/living/L = src
 				if(L.stamina >= L.max_stamina)
