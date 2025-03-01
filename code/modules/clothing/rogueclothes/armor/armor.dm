@@ -481,7 +481,7 @@
 //Gronn
 /obj/item/clothing/suit/roguetown/armor/hudesutu_quyaq
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "Hudesutu quyaq"
+	name = "hudesutu quyaq"
 	desc = "Lamellar Armor made of iron and leathers."
 	body_parts_covered = CHEST|GROIN|LEGS|VITALS
 	icon_state = "hudesutu"
@@ -497,7 +497,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/kurche
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "Kurche"
+	name = "kurche"
 	desc = "Pieces of Iron Plates and Leathers that protect the vitals."
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "kurche"
@@ -661,7 +661,7 @@
 
 //Gronn
 /obj/item/clothing/suit/roguetown/armor/leather/chargah
-	name = "Chargah"
+	name = "chargah"
 	desc = "A robe made from padded cloth."
 	icon_state = "chargah"
 	item_state = "chargah"
@@ -678,7 +678,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/hatanga_degel
-	name = "Hatanga Degel"
+	name = "hatanga degel"
 	desc = "A soft padded armor made from leathers."
 	icon_state = "hatanga"
 	item_state = "hatanga"
@@ -695,7 +695,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/hatanga_degel_fur
-	name = "Hatanga Degel Fur"
+	name = "hatanga degel fur"
 	desc = "A soft padded armor made from leathers and fur."
 	icon_state = "hatangafur"
 	item_state = "hatangafur"
@@ -712,7 +712,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/Huus_quyaq
-	name = "Huus quyaq"
+	name = "huus quyaq"
 	desc = "Armor made of leather plates."
 	icon_state = "huus"
 	item_state = "huus"
