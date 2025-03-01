@@ -128,7 +128,7 @@
 	name = "Greater Mana Potion"
 	description = "Gradually regenerates stamina and removes tiredness."
 	reagent_state = LIQUID
-	color = "#0000ffc9"
+	color = "#4c00ffe3"
 	taste_description = "pure manna"
 	overdose_threshold = 0 //effectively a energy drink, no reason to add a overdose unlike health
 	metabolization_rate = 20 * REAGENTS_METABOLISM
