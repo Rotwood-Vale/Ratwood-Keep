@@ -44,6 +44,8 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/swordherald.dmi', picked_name)
 		M.alpha = 255
 		alpha = 255
+		bigboy = 0
+		gripsprite = FALSE
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/swordherald.dmi'
 		lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
@@ -134,8 +136,8 @@
 	swingsound = BLADEWOOSH_LARGE
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
 	bigboy = 1
-	wlength = WLENGTH_LONG
 	gripsprite = TRUE
+	wlength = WLENGTH_LONG
 	pixel_y = -16
 	pixel_x = -16
 	inhand_x_dimension = 64
