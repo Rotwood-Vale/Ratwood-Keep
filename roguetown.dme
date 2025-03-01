@@ -2198,6 +2198,8 @@
 #include "modular_redmoon\code\modules\surgery\organs\feature_organs\tails.dm"
 #include "modular_redmoon\code\modules\tgs\roundspoke.dm"
 #include "modular_redmoon\modules\acolytes_can_coronate\acolytes_can_coronate.dm"
+#include "modular_redmoon\modules\artificerandguns\runelock.dm"
+#include "modular_redmoon\modules\artificerandguns\runelockrecpies.dm"
 #include "modular_redmoon\modules\baotha_steals_triumphs\baotha_steals_triumphs.dm"
 #include "modular_redmoon\modules\brigandinerebalance\anvil_recipes\armor.dm"
 #include "modular_redmoon\modules\brigandinerebalance\armor\armor.dm"
