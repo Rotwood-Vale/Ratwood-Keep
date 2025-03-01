@@ -16,6 +16,7 @@
 	var/DropPodOnly = FALSE//only usable by the Bluespace Drop Pod via the express cargo console
 	var/admin_spawned = FALSE
 	var/small_item = FALSE //Small items can be grouped into a single crate.
+	var/time_lock = FALSE //How much time before this becomes purchaseable
 
 /datum/supply_pack/New()
 	..()
